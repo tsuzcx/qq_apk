@@ -1,36 +1,38 @@
 package com.tencent.qqmini.minigame.plugins;
 
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 class BlockAdPlugin$7
   implements Runnable
 {
-  BlockAdPlugin$7(BlockAdPlugin paramBlockAdPlugin, int paramInt1, String paramString, int paramInt2, RequestEvent paramRequestEvent) {}
+  BlockAdPlugin$7(BlockAdPlugin paramBlockAdPlugin, String paramString) {}
   
   public void run()
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("state", "error");
-      localJSONObject.put("compId", this.val$compId);
-      localJSONObject.put("errMsg", this.val$errMsg);
-      localJSONObject.put("errCode", this.val$errorCode);
-      BlockAdPlugin.access$200(this.this$0, this.val$req, localJSONObject, "onBlockAdStateChange");
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
+      localHttpURLConnection.setRequestMethod("GET");
+      localHttpURLConnection.setConnectTimeout(10000);
+      localHttpURLConnection.setReadTimeout(10000);
+      localHttpURLConnection.setUseCaches(false);
+      localHttpURLConnection.setInstanceFollowRedirects(true);
+      localHttpURLConnection.connect();
+      int i = localHttpURLConnection.getResponseCode();
+      QMLog.i("BlockAdPlugin", "reportBlockAd rspCode" + i);
       return;
     }
-    catch (JSONException localJSONException)
+    catch (Throwable localThrowable)
     {
-      QMLog.e("BlockAdPlugin", "bannerErrorStateCallback error", localJSONException);
+      QMLog.i("BlockAdPlugin", "reportBlockAd error, url = " + this.val$reportUrl, localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.BlockAdPlugin.7
  * JD-Core Version:    0.7.0.1
  */

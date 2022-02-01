@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aftf;
 import android.view.View;
-import blgi;
+import com.tencent.widget.XBaseAdapter;
 import com.tencent.widget.XListView;
 
 class MediaPlayerManager$6
@@ -12,11 +11,11 @@ class MediaPlayerManager$6
   
   public void run()
   {
-    aftf localaftf;
+    MediaPlayerManager.Callback localCallback;
     float f;
     if (MediaPlayerManager.a(this.this$0) != null)
     {
-      localaftf = MediaPlayerManager.a(this.this$0, MediaPlayerManager.a(this.this$0));
+      localCallback = MediaPlayerManager.a(this.this$0, MediaPlayerManager.a(this.this$0));
       long l = MediaPlayerManager.a(this.this$0).b();
       f = 0.0F;
       if (l > 0L) {
@@ -25,8 +24,8 @@ class MediaPlayerManager$6
       if (MediaPlayerManager.a(this.this$0) != null) {
         break label100;
       }
-      if (localaftf != null) {
-        localaftf.a(MediaPlayerManager.a(this.this$0), -1, null, MediaPlayerManager.a(this.this$0), this.a, f);
+      if (localCallback != null) {
+        localCallback.a(MediaPlayerManager.a(this.this$0), -1, null, MediaPlayerManager.a(this.this$0), this.a, f);
       }
     }
     label100:
@@ -36,13 +35,13 @@ class MediaPlayerManager$6
       return;
       i = MediaPlayerManager.a(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0));
     } while (i > MediaPlayerManager.a(this.this$0).getCount());
-    View localView = AIOUtils.getViewByPostion(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0).getHeaderViewsCount() + i);
-    localaftf.a(MediaPlayerManager.a(this.this$0), i, localView, MediaPlayerManager.a(this.this$0), this.a, f);
+    View localView = AIOUtils.a(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0).getHeaderViewsCount() + i);
+    localCallback.a(MediaPlayerManager.a(this.this$0), i, localView, MediaPlayerManager.a(this.this$0), this.a, f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.MediaPlayerManager.6
  * JD-Core Version:    0.7.0.1
  */

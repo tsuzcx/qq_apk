@@ -19,7 +19,7 @@ public class KanDianVideoUploadBrocast
     if (paramContext == null) {
       return;
     }
-    QQToast.a(paramContext, paramInt, paramCharSequence, 0).b(paramContext.getResources().getDimensionPixelSize(2131299080));
+    QQToast.a(paramContext, paramInt, paramCharSequence, 0).b(paramContext.getResources().getDimensionPixelSize(2131299166));
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -47,19 +47,19 @@ public class KanDianVideoUploadBrocast
     if ((!this.a.isEmpty()) && (!this.a.contains(str))) {
       return;
     }
-    a(paramContext, 2, paramContext.getString(2131717932));
+    a(paramContext, 2, paramContext.getString(2131718424));
     return;
     str = paramIntent.getStringExtra("mfaileMessage");
     paramIntent = str;
     if (TextUtils.isEmpty(str)) {
-      paramIntent = paramContext.getString(2131717709);
+      paramIntent = paramContext.getString(2131718211);
     }
     a(paramContext, 1, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.KanDianVideoUploadBrocast
  * JD-Core Version:    0.7.0.1
  */

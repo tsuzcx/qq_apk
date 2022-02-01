@@ -17,13 +17,13 @@ public class FaceData
   public String groupid = "";
   public long h;
   public boolean isFromSystem = true;
-  public boolean isRecommend;
+  public boolean isRecommend = false;
   public long opertime;
   public long owner_uin;
   public String photo_id = "";
   public String quanid = "";
   public int quanstate;
-  public ArrayList<FaceRecommendInfo> recommend_infos;
+  public ArrayList<FaceRecommendInfo> recommend_infos = null;
   public String targetGroupid;
   public String targetnick = "";
   public long targetuin;
@@ -173,7 +173,7 @@ public class FaceData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.FaceData
  * JD-Core Version:    0.7.0.1
  */

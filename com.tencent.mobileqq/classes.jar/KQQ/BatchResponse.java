@@ -9,10 +9,10 @@ public final class BatchResponse
 {
   static byte[] cache_buffer;
   static int cache_type;
-  public byte[] buffer;
-  public int result;
-  public int seq;
-  public int type;
+  public byte[] buffer = null;
+  public int result = 0;
+  public int seq = 0;
+  public int type = 0;
   
   public BatchResponse() {}
   
@@ -49,7 +49,7 @@ public final class BatchResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.BatchResponse
  * JD-Core Version:    0.7.0.1
  */

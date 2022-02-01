@@ -1,20 +1,15 @@
 package com.tencent.mobileqq.model;
 
-import aiin;
-import awyr;
-import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonTab;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-public class EmoticonManager$18
+class EmoticonManager$18
   implements Runnable
 {
-  public EmoticonManager$18(awyr paramawyr, String paramString) {}
+  EmoticonManager$18(EmoticonManager paramEmoticonManager) {}
   
   public void run()
   {
@@ -26,13 +21,13 @@ public class EmoticonManager$18
       try
       {
         localEntityTransaction.begin();
-        Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
+        Iterator localIterator1 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator1.hasNext())
         {
-          str = (String)localIterator.next();
-          awyr.a(this.this$0, str, true, false);
+          str = (String)localIterator1.next();
+          EmoticonManager.a(this.this$0, str, true, false);
           continue;
-          localObject2 = finally;
+          localObject1 = finally;
         }
       }
       finally
@@ -40,29 +35,14 @@ public class EmoticonManager$18
         localEntityTransaction.end();
       }
     }
-    Object localObject5 = this.this$0.b.iterator();
-    while (((Iterator)localObject5).hasNext())
+    Iterator localIterator2 = this.this$0.b.iterator();
+    while (localIterator2.hasNext())
     {
-      str = (String)((Iterator)localObject5).next();
-      awyr.a(this.this$0, str, false, true);
+      str = (String)localIterator2.next();
+      EmoticonManager.a(this.this$0, str, false, true);
     }
-    localObject2.commit();
-    localObject2.end();
-    Object localObject3 = this.this$0.a(this.a);
-    if (localObject3 == null) {
-      return;
-    }
-    ??? = new HashSet();
-    localObject3 = ((List)localObject3).iterator();
-    while (((Iterator)localObject3).hasNext())
-    {
-      localObject5 = (Emoticon)((Iterator)localObject3).next();
-      if (((Emoticon)localObject5).name != null) {
-        ((HashSet)???).add(((Emoticon)localObject5).name);
-      }
-    }
-    aiin.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Collection)???);
-    this.this$0.a(this.a);
+    localObject1.commit();
+    localObject1.end();
   }
 }
 

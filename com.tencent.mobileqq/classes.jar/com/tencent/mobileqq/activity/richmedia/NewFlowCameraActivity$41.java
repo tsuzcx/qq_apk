@@ -1,28 +1,60 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import anvx;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.CircleProgress;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class NewFlowCameraActivity$41
   implements Runnable
 {
-  NewFlowCameraActivity$41(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  NewFlowCameraActivity$41(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean) {}
   
   public void run()
   {
-    if (!this.this$0.m)
+    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 3) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 4))
     {
-      this.this$0.a.a(2002, anvx.a(2131706936), false);
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "[@] ERR_CODE_CAMERA_CREATE  黑名单机型,2秒还没有获取到预览帧,可能没有权限");
+      if (this.this$0.j) {
+        if (this.this$0.f >= 60000)
+        {
+          i = 10000;
+          if (!this.this$0.C) {
+            break label142;
+          }
+          this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(i * 1.0F / (this.this$0.o * 10));
+        }
+      }
+      for (;;)
+      {
+        if (this.a) {
+          this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(100.0F);
+        }
+        return;
+        i = this.this$0.f % 10000;
+        break;
+        i = this.this$0.f;
+        break;
+        label142:
+        if (!NewFlowCameraActivity.k(this.this$0)) {
+          break label181;
+        }
+        this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(i * 1.0F / (NewFlowCameraActivity.d(this.this$0) * 10));
+      }
+      label181:
+      CircleProgress localCircleProgress = this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress;
+      float f = i;
+      if (this.this$0.h) {}
+      for (int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b() + 1;; i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b())
+      {
+        localCircleProgress.setProgress(1.0F * f / i);
+        break;
       }
     }
+    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.41
  * JD-Core Version:    0.7.0.1
  */

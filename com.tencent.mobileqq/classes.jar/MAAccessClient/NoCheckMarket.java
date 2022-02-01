@@ -9,7 +9,7 @@ public final class NoCheckMarket
 {
   public String pkgName = "";
   public String signatureMd5 = "";
-  public int versionCode;
+  public int versionCode = 0;
   
   public NoCheckMarket() {}
   

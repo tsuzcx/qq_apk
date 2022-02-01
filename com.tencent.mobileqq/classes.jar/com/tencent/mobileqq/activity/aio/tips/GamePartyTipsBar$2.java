@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aikn;
 import android.widget.TextView;
 
-public class GamePartyTipsBar$2
+class GamePartyTipsBar$2
   implements Runnable
 {
-  public GamePartyTipsBar$2(aikn paramaikn, String paramString) {}
+  GamePartyTipsBar$2(GamePartyTipsBar paramGamePartyTipsBar, String paramString) {}
   
   public void run()
   {
-    aikn.a(this.this$0).setText(this.a);
+    GamePartyTipsBar.a(this.this$0).setText(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar.2
  * JD-Core Version:    0.7.0.1
  */

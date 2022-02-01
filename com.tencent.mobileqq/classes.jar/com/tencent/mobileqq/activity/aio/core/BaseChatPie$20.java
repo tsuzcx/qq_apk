@@ -7,12 +7,12 @@ class BaseChatPie$20
   
   public void run()
   {
-    this.this$0.updateUnreadNumOnTitleBar();
+    this.this$0.V();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.20
  * JD-Core Version:    0.7.0.1
  */

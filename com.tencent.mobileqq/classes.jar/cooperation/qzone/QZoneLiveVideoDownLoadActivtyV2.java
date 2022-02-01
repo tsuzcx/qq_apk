@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import Override;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -9,12 +8,12 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anvx;
-import bjkv;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import common.config.service.QzoneConfig;
@@ -265,7 +264,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
       return;
     }
     installPlugin();
-    bjkv.a().a(anvx.a(2131711404));
+    ToastUtil.a().a(HardCodeUtil.a(2131711919));
     doFinish();
   }
   
@@ -287,7 +286,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2
  * JD-Core Version:    0.7.0.1
  */

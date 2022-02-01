@@ -701,23 +701,65 @@ public class FileUtils
     return 3 + paramFile.getAbsolutePath() + File.separator + str;
   }
   
-  private static File getExternalFilesDir(Context paramContext)
+  public static String getDefaultPrivatePath(Context paramContext, String paramString)
   {
-    Context localContext = null;
     try
     {
-      paramContext = new File(UploadGlobalConfig.getUploadEnv().getSDKPrivatePath("uploader"));
-      if ((paramContext.isDirectory()) || (paramContext.mkdirs())) {
-        localContext = paramContext;
+      File localFile = Environment.getExternalStorageDirectory();
+      if ((localFile == null) || (!localFile.exists()) || (paramContext == null)) {
+        return null;
       }
-      return localContext;
     }
-    catch (Exception paramContext)
+    catch (Exception localException)
     {
+      Object localObject;
       for (;;)
       {
-        UploadLog.e(tag, paramContext.toString());
-        paramContext = null;
+        localObject = null;
+      }
+      StringBuilder localStringBuilder = new StringBuilder(11);
+      localStringBuilder.append(localObject.getAbsolutePath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("Android");
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("data");
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(paramContext.getPackageName());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("files");
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(paramString);
+      return localStringBuilder.toString();
+    }
+  }
+  
+  private static File getExternalFilesDir(Context paramContext)
+  {
+    String str = UploadGlobalConfig.getUploadEnv().getSDKPrivatePath("uploader");
+    if (TextUtils.isEmpty(str)) {
+      UploadLog.w(tag, "dirPath is empty");
+    }
+    for (paramContext = getDefaultPrivatePath(paramContext, "uploader");; paramContext = str) {
+      try
+      {
+        paramContext = new File(paramContext);
+        if (paramContext == null)
+        {
+          UploadLog.w(tag, "uploadDir == null");
+          return null;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        do
+        {
+          for (;;)
+          {
+            UploadLog.e(tag, paramContext.toString());
+            paramContext = null;
+          }
+        } while ((!paramContext.isDirectory()) && (!paramContext.mkdirs()));
+        return paramContext;
       }
     }
   }
@@ -810,16 +852,16 @@ public class FileUtils
     //   3: new 94	java/io/FileInputStream
     //   6: dup
     //   7: aload_0
-    //   8: invokespecial 302	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   8: invokespecial 324	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   11: astore_2
     //   12: aload_2
     //   13: astore_0
-    //   14: ldc_w 304
-    //   17: invokestatic 310	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   14: ldc_w 326
+    //   17: invokestatic 332	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   20: astore_3
     //   21: aload_2
     //   22: astore_0
-    //   23: ldc_w 311
+    //   23: ldc_w 333
     //   26: newarray byte
     //   28: astore 5
     //   30: aload_2
@@ -836,15 +878,15 @@ public class FileUtils
     //   46: aload 5
     //   48: iconst_0
     //   49: iload_1
-    //   50: invokevirtual 314	java/security/MessageDigest:update	([BII)V
+    //   50: invokevirtual 336	java/security/MessageDigest:update	([BII)V
     //   53: goto -23 -> 30
     //   56: astore_3
     //   57: aload_2
     //   58: astore_0
-    //   59: ldc_w 316
-    //   62: ldc_w 318
+    //   59: ldc_w 338
+    //   62: ldc_w 340
     //   65: aload_3
-    //   66: invokestatic 257	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   66: invokestatic 281	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   69: aload 4
     //   71: astore_0
     //   72: aload_2
@@ -858,8 +900,8 @@ public class FileUtils
     //   85: aload_2
     //   86: astore_0
     //   87: aload_3
-    //   88: invokevirtual 322	java/security/MessageDigest:digest	()[B
-    //   91: invokestatic 327	com/tencent/upload/utils/StringUtils:toHexString	([B)Ljava/lang/String;
+    //   88: invokevirtual 344	java/security/MessageDigest:digest	()[B
+    //   91: invokestatic 349	com/tencent/upload/utils/StringUtils:toHexString	([B)Ljava/lang/String;
     //   94: astore_3
     //   95: aload_3
     //   96: astore_0
@@ -884,10 +926,10 @@ public class FileUtils
     //   123: astore_2
     //   124: aload_2
     //   125: astore_0
-    //   126: ldc_w 316
-    //   129: ldc_w 329
+    //   126: ldc_w 338
+    //   129: ldc_w 351
     //   132: aload_3
-    //   133: invokestatic 257	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   133: invokestatic 281	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   136: aload 4
     //   138: astore_0
     //   139: aload_2
@@ -1052,11 +1094,11 @@ public class FileUtils
     //   19: invokevirtual 126	java/io/File:length	()J
     //   22: lstore_3
     //   23: lload_3
-    //   24: ldc2_w 379
+    //   24: ldc2_w 401
     //   27: lcmp
     //   28: ifle +136 -> 164
     //   31: lload_3
-    //   32: ldc2_w 381
+    //   32: ldc2_w 403
     //   35: ldiv
     //   36: lstore_3
     //   37: bipush 32
@@ -1067,11 +1109,11 @@ public class FileUtils
     //   45: new 94	java/io/FileInputStream
     //   48: dup
     //   49: aload_0
-    //   50: invokespecial 302	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   50: invokespecial 324	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   53: astore_0
     //   54: aload_0
     //   55: lload_3
-    //   56: invokevirtual 386	java/io/FileInputStream:skip	(J)J
+    //   56: invokevirtual 408	java/io/FileInputStream:skip	(J)J
     //   59: pop2
     //   60: iconst_0
     //   61: istore_2
@@ -1084,13 +1126,13 @@ public class FileUtils
     //   71: bipush 8
     //   73: imul
     //   74: bipush 8
-    //   76: invokevirtual 389	java/io/FileInputStream:read	([BII)I
+    //   76: invokevirtual 411	java/io/FileInputStream:read	([BII)I
     //   79: pop
     //   80: aload_0
     //   81: lload_3
-    //   82: ldc2_w 390
+    //   82: ldc2_w 412
     //   85: lsub
-    //   86: invokevirtual 386	java/io/FileInputStream:skip	(J)J
+    //   86: invokevirtual 408	java/io/FileInputStream:skip	(J)J
     //   89: pop2
     //   90: iload_2
     //   91: iconst_1
@@ -1098,7 +1140,7 @@ public class FileUtils
     //   93: istore_2
     //   94: goto -32 -> 62
     //   97: aload 5
-    //   99: invokestatic 327	com/tencent/upload/utils/StringUtils:toHexString	([B)Ljava/lang/String;
+    //   99: invokestatic 349	com/tencent/upload/utils/StringUtils:toHexString	([B)Ljava/lang/String;
     //   102: astore_1
     //   103: aload_1
     //   104: astore 5
@@ -1141,7 +1183,7 @@ public class FileUtils
     //   163: athrow
     //   164: aload_0
     //   165: aload_1
-    //   166: invokestatic 370	com/tencent/upload/utils/FileUtils:getMessageDigestByFile_REAL	(Ljava/io/File;Ljava/lang/String;)Ljava/lang/String;
+    //   166: invokestatic 392	com/tencent/upload/utils/FileUtils:getMessageDigestByFile_REAL	(Ljava/io/File;Ljava/lang/String;)Ljava/lang/String;
     //   169: areturn
     //   170: astore_0
     //   171: goto -41 -> 130
@@ -1204,22 +1246,22 @@ public class FileUtils
     //   28: aload 7
     //   30: astore_3
     //   31: aload_1
-    //   32: invokestatic 310	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   32: invokestatic 332	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   35: astore 8
     //   37: aload 7
     //   39: astore_3
     //   40: aload 8
-    //   42: invokevirtual 375	java/security/MessageDigest:reset	()V
+    //   42: invokevirtual 397	java/security/MessageDigest:reset	()V
     //   45: aload 7
     //   47: astore_3
-    //   48: new 393	java/io/BufferedInputStream
+    //   48: new 415	java/io/BufferedInputStream
     //   51: dup
     //   52: new 94	java/io/FileInputStream
     //   55: dup
     //   56: aload_0
-    //   57: invokespecial 302	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   57: invokespecial 324	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   60: sipush 8192
-    //   63: invokespecial 396	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   63: invokespecial 418	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   66: astore_0
     //   67: aload_0
     //   68: astore_1
@@ -1230,7 +1272,7 @@ public class FileUtils
     //   76: astore_1
     //   77: aload_0
     //   78: aload_3
-    //   79: invokevirtual 397	java/io/BufferedInputStream:read	([B)I
+    //   79: invokevirtual 419	java/io/BufferedInputStream:read	([B)I
     //   82: istore_2
     //   83: iload_2
     //   84: ifle +40 -> 124
@@ -1240,26 +1282,26 @@ public class FileUtils
     //   91: aload_3
     //   92: iconst_0
     //   93: iload_2
-    //   94: invokevirtual 314	java/security/MessageDigest:update	([BII)V
+    //   94: invokevirtual 336	java/security/MessageDigest:update	([BII)V
     //   97: goto -22 -> 75
     //   100: astore_3
     //   101: aload_0
     //   102: astore_1
     //   103: getstatic 50	com/tencent/upload/utils/FileUtils:tag	Ljava/lang/String;
     //   106: aload_3
-    //   107: invokevirtual 398	java/security/NoSuchAlgorithmException:toString	()Ljava/lang/String;
-    //   110: invokestatic 251	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   107: invokevirtual 420	java/security/NoSuchAlgorithmException:toString	()Ljava/lang/String;
+    //   110: invokestatic 272	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   113: aload_0
     //   114: ifnull +7 -> 121
     //   117: aload_0
-    //   118: invokevirtual 399	java/io/BufferedInputStream:close	()V
+    //   118: invokevirtual 421	java/io/BufferedInputStream:close	()V
     //   121: ldc 184
     //   123: areturn
     //   124: aload_0
     //   125: astore_1
     //   126: aload 8
-    //   128: invokevirtual 322	java/security/MessageDigest:digest	()[B
-    //   131: invokestatic 327	com/tencent/upload/utils/StringUtils:toHexString	([B)Ljava/lang/String;
+    //   128: invokevirtual 344	java/security/MessageDigest:digest	()[B
+    //   131: invokestatic 349	com/tencent/upload/utils/StringUtils:toHexString	([B)Ljava/lang/String;
     //   134: astore_3
     //   135: aload_3
     //   136: astore_1
@@ -1268,21 +1310,21 @@ public class FileUtils
     //   139: aload_0
     //   140: ifnull -126 -> 14
     //   143: aload_0
-    //   144: invokevirtual 399	java/io/BufferedInputStream:close	()V
+    //   144: invokevirtual 421	java/io/BufferedInputStream:close	()V
     //   147: aload_1
     //   148: areturn
     //   149: astore_0
     //   150: getstatic 50	com/tencent/upload/utils/FileUtils:tag	Ljava/lang/String;
     //   153: aload_0
-    //   154: invokevirtual 400	java/io/IOException:toString	()Ljava/lang/String;
-    //   157: invokestatic 251	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   154: invokevirtual 422	java/io/IOException:toString	()Ljava/lang/String;
+    //   157: invokestatic 272	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   160: aload_1
     //   161: areturn
     //   162: astore_0
     //   163: getstatic 50	com/tencent/upload/utils/FileUtils:tag	Ljava/lang/String;
     //   166: aload_0
-    //   167: invokevirtual 400	java/io/IOException:toString	()Ljava/lang/String;
-    //   170: invokestatic 251	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   167: invokevirtual 422	java/io/IOException:toString	()Ljava/lang/String;
+    //   170: invokestatic 272	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   173: goto -52 -> 121
     //   176: astore_1
     //   177: aload 4
@@ -1291,18 +1333,18 @@ public class FileUtils
     //   181: astore_3
     //   182: getstatic 50	com/tencent/upload/utils/FileUtils:tag	Ljava/lang/String;
     //   185: aload_1
-    //   186: invokevirtual 401	java/io/FileNotFoundException:toString	()Ljava/lang/String;
-    //   189: invokestatic 251	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   186: invokevirtual 423	java/io/FileNotFoundException:toString	()Ljava/lang/String;
+    //   189: invokestatic 272	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   192: aload_0
     //   193: ifnull -72 -> 121
     //   196: aload_0
-    //   197: invokevirtual 399	java/io/BufferedInputStream:close	()V
+    //   197: invokevirtual 421	java/io/BufferedInputStream:close	()V
     //   200: goto -79 -> 121
     //   203: astore_0
     //   204: getstatic 50	com/tencent/upload/utils/FileUtils:tag	Ljava/lang/String;
     //   207: aload_0
-    //   208: invokevirtual 400	java/io/IOException:toString	()Ljava/lang/String;
-    //   211: invokestatic 251	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   208: invokevirtual 422	java/io/IOException:toString	()Ljava/lang/String;
+    //   211: invokestatic 272	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   214: goto -93 -> 121
     //   217: astore_1
     //   218: aload 5
@@ -1311,18 +1353,18 @@ public class FileUtils
     //   222: astore_3
     //   223: getstatic 50	com/tencent/upload/utils/FileUtils:tag	Ljava/lang/String;
     //   226: aload_1
-    //   227: invokevirtual 402	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   230: invokestatic 251	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   227: invokevirtual 424	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
+    //   230: invokestatic 272	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   233: aload_0
     //   234: ifnull -113 -> 121
     //   237: aload_0
-    //   238: invokevirtual 399	java/io/BufferedInputStream:close	()V
+    //   238: invokevirtual 421	java/io/BufferedInputStream:close	()V
     //   241: goto -120 -> 121
     //   244: astore_0
     //   245: getstatic 50	com/tencent/upload/utils/FileUtils:tag	Ljava/lang/String;
     //   248: aload_0
-    //   249: invokevirtual 400	java/io/IOException:toString	()Ljava/lang/String;
-    //   252: invokestatic 251	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   249: invokevirtual 422	java/io/IOException:toString	()Ljava/lang/String;
+    //   252: invokestatic 272	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   255: goto -134 -> 121
     //   258: astore_1
     //   259: aload 6
@@ -1331,31 +1373,31 @@ public class FileUtils
     //   263: astore_3
     //   264: getstatic 50	com/tencent/upload/utils/FileUtils:tag	Ljava/lang/String;
     //   267: aload_1
-    //   268: invokevirtual 400	java/io/IOException:toString	()Ljava/lang/String;
-    //   271: invokestatic 251	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   268: invokevirtual 422	java/io/IOException:toString	()Ljava/lang/String;
+    //   271: invokestatic 272	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   274: aload_0
     //   275: ifnull -154 -> 121
     //   278: aload_0
-    //   279: invokevirtual 399	java/io/BufferedInputStream:close	()V
+    //   279: invokevirtual 421	java/io/BufferedInputStream:close	()V
     //   282: goto -161 -> 121
     //   285: astore_0
     //   286: getstatic 50	com/tencent/upload/utils/FileUtils:tag	Ljava/lang/String;
     //   289: aload_0
-    //   290: invokevirtual 400	java/io/IOException:toString	()Ljava/lang/String;
-    //   293: invokestatic 251	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   290: invokevirtual 422	java/io/IOException:toString	()Ljava/lang/String;
+    //   293: invokestatic 272	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   296: goto -175 -> 121
     //   299: astore_0
     //   300: aload_3
     //   301: ifnull +7 -> 308
     //   304: aload_3
-    //   305: invokevirtual 399	java/io/BufferedInputStream:close	()V
+    //   305: invokevirtual 421	java/io/BufferedInputStream:close	()V
     //   308: aload_0
     //   309: athrow
     //   310: astore_1
     //   311: getstatic 50	com/tencent/upload/utils/FileUtils:tag	Ljava/lang/String;
     //   314: aload_1
-    //   315: invokevirtual 400	java/io/IOException:toString	()Ljava/lang/String;
-    //   318: invokestatic 251	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   315: invokevirtual 422	java/io/IOException:toString	()Ljava/lang/String;
+    //   318: invokestatic 272	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   321: goto -13 -> 308
     //   324: astore_0
     //   325: aload_1
@@ -1478,31 +1520,49 @@ public class FileUtils
   
   public static String getTempFilePath(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    if (paramString1 == null) {}
-    int i;
-    int j;
-    do
+    if (paramString1 == null) {
+      return null;
+    }
+    String str = paramString2;
+    if (paramString2 == null) {
+      str = "";
+    }
+    int i = str.hashCode();
+    int j = paramString1.hashCode();
+    boolean bool = "mounted".equals(Environment.getExternalStorageState());
+    UploadLog.d(tag, "mounted:" + bool);
+    int k;
+    if (bool)
     {
-      do
-      {
-        return null;
-        String str = paramString2;
-        if (paramString2 == null) {
-          str = "";
-        }
-        i = str.hashCode();
-        j = paramString1.hashCode();
-        if (("mounted".equals(Environment.getExternalStorageState())) && (getSdCardAvailableSize() > 5))
-        {
-          paramString1 = getExternalFilesDir(paramContext);
-          if (paramString1 != null) {
-            return getTempFileAbsolutePath(paramString1.getAbsolutePath(), i, j, paramInt);
-          }
-        }
-      } while (getInternalAvailableSize() <= 5);
+      k = getSdCardAvailableSize();
+      if (k <= 5) {
+        break label151;
+      }
+      paramString1 = getExternalFilesDir(paramContext);
+      if (paramString1 != null) {
+        return getTempFileAbsolutePath(paramString1.getAbsolutePath(), i, j, paramInt);
+      }
+      UploadLog.w(tag, "externalCacheDir == null");
+    }
+    for (;;)
+    {
+      k = getInternalAvailableSize();
+      if (k <= 5) {
+        break label192;
+      }
       paramContext = paramContext.getDir("uploader", 0);
-    } while (paramContext == null);
-    return getTempFileAbsolutePath(paramContext.getAbsolutePath(), i, j, paramInt);
+      if (paramContext == null) {
+        break;
+      }
+      return getTempFileAbsolutePath(paramContext.getAbsolutePath(), i, j, paramInt);
+      label151:
+      UploadLog.w(tag, "not enough sdCardAvailableSize:" + k);
+    }
+    UploadLog.w(tag, "internalFilesDir == null");
+    return null;
+    label192:
+    UploadLog.w(tag, "not enough internalAvailableSize:" + k);
+    return null;
   }
   
   public static final String getTempFilePerfix(int paramInt1, int paramInt2)
@@ -1538,23 +1598,23 @@ public class FileUtils
     //   16: new 82	java/io/FileNotFoundException
     //   19: dup
     //   20: aload_0
-    //   21: invokespecial 425	java/io/FileNotFoundException:<init>	(Ljava/lang/String;)V
+    //   21: invokespecial 460	java/io/FileNotFoundException:<init>	(Ljava/lang/String;)V
     //   24: athrow
-    //   25: new 427	java/io/ByteArrayOutputStream
+    //   25: new 462	java/io/ByteArrayOutputStream
     //   28: dup
     //   29: aload_2
     //   30: invokevirtual 126	java/io/File:length	()J
     //   33: l2i
-    //   34: invokespecial 428	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   34: invokespecial 463	java/io/ByteArrayOutputStream:<init>	(I)V
     //   37: astore 4
-    //   39: new 393	java/io/BufferedInputStream
+    //   39: new 415	java/io/BufferedInputStream
     //   42: dup
     //   43: new 94	java/io/FileInputStream
     //   46: dup
     //   47: aload_2
-    //   48: invokespecial 302	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   48: invokespecial 324	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   51: sipush 8192
-    //   54: invokespecial 396	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   54: invokespecial 418	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   57: astore_2
     //   58: aload_2
     //   59: astore_0
@@ -1567,7 +1627,7 @@ public class FileUtils
     //   69: aload_3
     //   70: iconst_0
     //   71: sipush 8192
-    //   74: invokevirtual 429	java/io/BufferedInputStream:read	([BII)I
+    //   74: invokevirtual 464	java/io/BufferedInputStream:read	([BII)I
     //   77: istore_1
     //   78: iconst_m1
     //   79: iload_1
@@ -1578,7 +1638,7 @@ public class FileUtils
     //   87: aload_3
     //   88: iconst_0
     //   89: iload_1
-    //   90: invokevirtual 430	java/io/ByteArrayOutputStream:write	([BII)V
+    //   90: invokevirtual 465	java/io/ByteArrayOutputStream:write	([BII)V
     //   93: goto -27 -> 66
     //   96: astore_3
     //   97: aload_2
@@ -1595,20 +1655,20 @@ public class FileUtils
     //   110: aload_3
     //   111: astore_0
     //   112: aload_2
-    //   113: invokevirtual 399	java/io/BufferedInputStream:close	()V
+    //   113: invokevirtual 421	java/io/BufferedInputStream:close	()V
     //   116: aload 4
-    //   118: invokevirtual 431	java/io/ByteArrayOutputStream:close	()V
+    //   118: invokevirtual 466	java/io/ByteArrayOutputStream:close	()V
     //   121: aload_0
     //   122: athrow
     //   123: aload_2
     //   124: astore_0
     //   125: aload 4
-    //   127: invokevirtual 433	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   127: invokevirtual 468	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   130: astore_3
     //   131: aload_2
-    //   132: invokevirtual 399	java/io/BufferedInputStream:close	()V
+    //   132: invokevirtual 421	java/io/BufferedInputStream:close	()V
     //   135: aload 4
-    //   137: invokevirtual 431	java/io/ByteArrayOutputStream:close	()V
+    //   137: invokevirtual 466	java/io/ByteArrayOutputStream:close	()V
     //   140: aload_3
     //   141: areturn
     //   142: astore_0
@@ -1660,7 +1720,7 @@ public class FileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.upload.utils.FileUtils
  * JD-Core Version:    0.7.0.1
  */

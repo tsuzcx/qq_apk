@@ -3,18 +3,19 @@ package com.tencent.mobileqq.transfile;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import auqk;
-import azla;
-import azlb;
-import bjgx;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardConstants;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsShareMsg.ShareData;
+import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -23,8 +24,9 @@ import org.json.JSONObject;
 
 public class ForwardSdkShareProcessor
   extends BaseTransProcessor
-  implements auqk
+  implements ForwardConstants
 {
+  private static final String DEFAULT_UPLOAD_FAIL_IMG_URL = "https://pub.idqqimg.com/pc/misc/files/20191015/32ed5b691a1138ac452a59e42f3f83b5.png";
   private static final int MAX_RETRY_COUNT = 2;
   private static final String STAG = "Q.share.ForwardSdkShareProcessor";
   protected QQAppInterface app = (QQAppInterface)this.app;
@@ -40,9 +42,9 @@ public class ForwardSdkShareProcessor
   private int mLackOfItems;
   protected String mLocalImgUrl;
   private String mPkgName;
-  private boolean mRefreshTicket;
+  private boolean mRefreshTicket = false;
   protected String mRemoteImgUrl;
-  private int mRetryCount;
+  private int mRetryCount = 0;
   private ForwardSdkShareProcessor.RichStep mRichStep;
   private String mSKey;
   private ForwardSdkShareProcessor.ForwardStep mSendMsgByServerStep;
@@ -75,26 +77,26 @@ public class ForwardSdkShareProcessor
         QLog.i("BaseTransProcessor", 1, "forwardShare info.imageUrlStatus =" + paramBaseTransFileController.imageUrlStatus + ",mRemoteImgUrl=" + this.mRemoteImgUrl);
         paramTransferRequest = this.mIsThumbReady;
         if ((paramBaseTransFileController.imageUrlStatus != 1) && (paramBaseTransFileController.imageUrlStatus != 3)) {
-          break label319;
+          break label329;
         }
         bool1 = true;
-        label261:
+        label271:
         paramTransferRequest.set(bool1);
         paramTransferRequest = this.mIsImgUrlShort;
         if (paramBaseTransFileController.imageUrlStatus != 1) {
-          break label324;
+          break label334;
         }
         bool1 = true;
-        label281:
+        label291:
         paramTransferRequest.set(bool1);
         paramTransferRequest = this.mIsAllUrlShort;
         if (paramBaseTransFileController.shortUrlStatus != 1) {
-          break label329;
+          break label339;
         }
       }
-      label319:
-      label324:
       label329:
+      label334:
+      label339:
       for (boolean bool1 = bool2;; bool1 = false)
       {
         paramTransferRequest.set(bool1);
@@ -102,15 +104,15 @@ public class ForwardSdkShareProcessor
         this.mRemoteImgUrl = paramBaseTransFileController.imageUrl;
         break;
         bool1 = false;
-        break label261;
+        break label271;
         bool1 = false;
-        break label281;
+        break label291;
       }
     }
     QLog.i("BaseTransProcessor", 1, "mUiRequest.mExtraObj instanceof TransferRequest.ShareExtraInfo : false");
   }
   
-  public static TransferRequest buildTransferRequest(MessageRecord paramMessageRecord, JSONObject paramJSONObject, azla paramazla)
+  public static TransferRequest buildTransferRequest(MessageRecord paramMessageRecord, JSONObject paramJSONObject, UpCallBack paramUpCallBack)
   {
     TransferRequest.ShareExtraInfo localShareExtraInfo = new TransferRequest.ShareExtraInfo();
     localShareExtraInfo.forwardType = paramJSONObject.optInt("forward_type");
@@ -141,7 +143,7 @@ public class ForwardSdkShareProcessor
     paramJSONObject.mBusiType = 11;
     paramJSONObject.needSendMsg = false;
     paramJSONObject.mExtraObj = localShareExtraInfo;
-    paramJSONObject.mUpCallBack = paramazla;
+    paramJSONObject.mUpCallBack = paramUpCallBack;
     return paramJSONObject;
   }
   
@@ -179,10 +181,10 @@ public class ForwardSdkShareProcessor
     return paramAbsShareMsg;
   }
   
-  public static TransferRequest buildTransferRequestFromMessageExtra(MessageRecord paramMessageRecord, AbsShareMsg paramAbsShareMsg, azla paramazla)
+  public static TransferRequest buildTransferRequestFromMessageExtra(MessageRecord paramMessageRecord, AbsShareMsg paramAbsShareMsg, UpCallBack paramUpCallBack)
   {
     paramMessageRecord = buildTransferRequestFromMessage(paramMessageRecord, paramAbsShareMsg);
-    paramMessageRecord.mUpCallBack = paramazla;
+    paramMessageRecord.mUpCallBack = paramUpCallBack;
     return paramMessageRecord;
   }
   
@@ -197,7 +199,7 @@ public class ForwardSdkShareProcessor
     if (this.mSendMsgByServerStep != null) {
       this.mSendMsgByServerStep.cancel();
     }
-    this.mController.mHandler.post(new ForwardSdkShareProcessor.1(this));
+    ThreadManager.excute(new ForwardSdkShareProcessor.1(this), 128, null, true);
   }
   
   public int cancel()
@@ -210,7 +212,7 @@ public class ForwardSdkShareProcessor
     if (this.mSendMsgByServerStep != null) {
       this.mSendMsgByServerStep.cancel();
     }
-    this.app.getMessageFacade().updateMsgExtraFlagByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq, 32768, 9037);
+    this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq, 32768, 9037);
     sendMessageToUpdate(1004);
     return 0;
   }
@@ -238,7 +240,7 @@ public class ForwardSdkShareProcessor
       onError();
       return -1;
     }
-    if (!ForwardUtils.isAsyncShareSupport(this.mForwardType, this.mServiceType))
+    if (!ForwardUtils.a(this.mForwardType, this.mServiceType))
     {
       String str = "err forwardType=" + this.mForwardType + ",serviceType=" + this.mServiceType;
       QLog.w("Q.share.ForwardSdkShareProcessor", 1, "checkParam|" + str);
@@ -265,12 +267,12 @@ public class ForwardSdkShareProcessor
     if (this.mSendMsgByServerStep != null) {
       this.mSendMsgByServerStep.cancel();
     }
-    azlb localazlb = new azlb();
-    localazlb.jdField_a_of_type_Int = -1;
+    UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+    localSendResult.jdField_a_of_type_Int = -1;
     Object localObject;
     if ((this.mUiRequest != null) && (this.mUiRequest.mUpCallBack != null))
     {
-      if ((isSdkShare()) && (this.errCode == 9402) && (!ForwardUtils.hasSDPermission(this.mAppContext)))
+      if ((isSdkShare()) && (this.errCode == 9402) && (!ForwardUtils.a(this.mAppContext)))
       {
         String str1 = (String)this.mUrlMap.get("audioUrl");
         String str2 = this.mRemoteImgUrl;
@@ -278,10 +280,10 @@ public class ForwardSdkShareProcessor
         if (TextUtils.isEmpty(str1)) {
           localObject = this.mAudioUrl;
         }
-        localazlb.jdField_a_of_type_JavaLangObject = new String[] { str2, localObject };
-        localazlb.b = this.errCode;
+        localSendResult.jdField_a_of_type_JavaLangObject = new String[] { str2, localObject };
+        localSendResult.b = this.errCode;
       }
-      this.mUiRequest.mUpCallBack.onSend(localazlb);
+      this.mUiRequest.mUpCallBack.b(localSendResult);
     }
     if (isSdkShare()) {
       QLog.d("Q.share.ForwardSdkShareProcessor", 1, "SDK_SHARE onError");
@@ -293,9 +295,9 @@ public class ForwardSdkShareProcessor
       ((Bundle)localObject).putString("act_type", "56");
       ((Bundle)localObject).putString("intext_1", "" + this.errCode);
       ((Bundle)localObject).putString("intext_5", "" + l);
-      bjgx.a().a((Bundle)localObject, "" + this.mAppId, this.app.getCurrentUin(), false, isSdkShare());
+      ReportCenter.a().a((Bundle)localObject, "" + this.mAppId, this.app.getCurrentUin(), false, isSdkShare());
       return;
-      this.app.getMessageFacade().updateMsgExtraFlagByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq, 32768, this.errCode);
+      this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq, 32768, this.errCode);
       sendMessageToUpdate(1005);
     }
   }
@@ -304,13 +306,13 @@ public class ForwardSdkShareProcessor
   {
     long l = System.currentTimeMillis() - this.mStartTime;
     QLog.d("Q.share.ForwardSdkShareProcessor", 1, "OnSuccess, cost=" + l);
-    Object localObject = this.app.getMessageFacade().queryMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+    Object localObject = this.app.getMessageFacade().b(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
     if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ((((MessageForStructing)localObject).structingMsg instanceof AbsShareMsg)))
     {
       localObject = (AbsShareMsg)((MessageForStructing)localObject).structingMsg;
       ((AbsShareMsg)localObject).shareData.status = 1003;
       ((AbsShareMsg)localObject).forwardType = 0;
-      this.app.getMessageFacade().updateMsgContentByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq, ((AbsShareMsg)localObject).getBytes());
+      this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq, ((AbsShareMsg)localObject).getBytes());
     }
     super.onSuccess();
     localObject = new Bundle();
@@ -318,7 +320,7 @@ public class ForwardSdkShareProcessor
     ((Bundle)localObject).putString("act_type", "56");
     ((Bundle)localObject).putString("intext_1", "0");
     ((Bundle)localObject).putString("intext_5", "" + l);
-    bjgx.a().a((Bundle)localObject, "" + this.mAppId, this.app.getCurrentUin(), false, isSdkShare());
+    ReportCenter.a().a((Bundle)localObject, "" + this.mAppId, this.app.getCurrentUin(), false, isSdkShare());
   }
   
   public void pause()
@@ -379,14 +381,14 @@ public class ForwardSdkShareProcessor
       this.mSendMsgStep.setLastSteps(new ForwardSdkShareProcessor.ForwardStep[] { localUrlExchangeStep });
       break;
       label163:
-      localUrlExchangeStep.setLastSteps(new ForwardSdkShareProcessor.ForwardStep[] { localGetAppInfoStep, localImageUploadStep });
+      localUrlExchangeStep.setLastSteps(new ForwardSdkShareProcessor.ForwardStep[] { localImageUploadStep });
       this.mRichStep = new ForwardSdkShareProcessor.RichStep(this);
-      localImageUploadStep.setLastSteps(new ForwardSdkShareProcessor.ForwardStep[] { this.mRichStep, localGetSKeyStep });
+      localImageUploadStep.setLastSteps(new ForwardSdkShareProcessor.ForwardStep[] { localGetAppInfoStep, this.mRichStep, localGetSKeyStep });
     }
     label215:
     this.mSendMsgStep.doStep();
     sendMessageToUpdate(1001);
-    sendMessageToUpdateDelay(1002, MessageHandler.f);
+    sendMessageToUpdateDelay(1002, MessageHandler.e);
   }
 }
 

@@ -1,0 +1,37 @@
+package com.tencent.biz.subscribe.bizdapters;
+
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+
+public class RelativeLiveFeedsAdapter$RelativeFeedVH
+  extends RecyclerView.ViewHolder
+{
+  public TextView a;
+  
+  public RelativeLiveFeedsAdapter$RelativeFeedVH(RelativeLiveFeedsAdapter paramRelativeLiveFeedsAdapter, View paramView)
+  {
+    super(paramView);
+    if (((paramView instanceof FrameLayout)) && (((FrameLayout)paramView).getChildCount() > 0))
+    {
+      paramRelativeLiveFeedsAdapter = ((FrameLayout)paramView).getChildAt(0);
+      if ((paramRelativeLiveFeedsAdapter instanceof TextView)) {
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLiveFeedsAdapter);
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.biz.subscribe.bizdapters.RelativeLiveFeedsAdapter.RelativeFeedVH
+ * JD-Core Version:    0.7.0.1
+ */

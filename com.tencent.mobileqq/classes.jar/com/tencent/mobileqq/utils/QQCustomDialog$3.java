@@ -14,10 +14,10 @@ class QQCustomDialog$3
   {
     DialogInterface.OnClickListener localOnClickListener;
     QQCustomDialog localQQCustomDialog;
-    if (this.val$pl != null)
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
     {
-      localOnClickListener = this.val$pl;
-      localQQCustomDialog = this.this$0;
+      localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+      localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
       if (!paramBoolean) {
         break label44;
       }

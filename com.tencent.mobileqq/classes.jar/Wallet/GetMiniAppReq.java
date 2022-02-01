@@ -3,9 +3,6 @@ package Wallet;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import mqq.app.AppRuntime;
 
 public final class GetMiniAppReq
   extends JceStruct
@@ -16,23 +13,23 @@ public final class GetMiniAppReq
   public static final int ACTION_NORMAL_GET_INFO = 0;
   public static final int ACTION_QQ_SCAN_CODE = 1;
   public static final int ACTION_WX_SCAN_CODE = 2;
-  public int action;
+  public int action = 0;
   public String extra_keys = "";
   public String mini_appid = "";
-  public int mini_version;
+  public int mini_version = 0;
   public String platform = "";
   public String qq_version = "";
   public String uin = "";
   
   public GetMiniAppReq() {}
   
-  public GetMiniAppReq(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public GetMiniAppReq(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     this.mini_appid = paramString1;
-    this.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    this.uin = paramString3;
     this.mini_version = paramInt1;
-    this.platform = ("Android|" + DeviceInfoUtil.getDeviceOSVersion() + "|" + DeviceInfoUtil.getModel());
-    this.qq_version = DeviceInfoUtil.getQQVersion();
+    this.platform = paramString4;
+    this.qq_version = paramString5;
     this.action = paramInt2;
     this.extra_keys = paramString2;
   }

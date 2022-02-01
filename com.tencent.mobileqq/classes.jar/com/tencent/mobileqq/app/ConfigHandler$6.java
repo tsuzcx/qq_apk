@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ansg;
-import bbvn;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.richstatus.StatusManager;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -12,23 +11,23 @@ import java.util.HashMap;
 import mqq.app.MobileQQ;
 import protocol.KQQConfig.GetResourceRespInfo;
 
-public class ConfigHandler$6
+class ConfigHandler$6
   implements Runnable
 {
-  public ConfigHandler$6(ansg paramansg, String paramString, bbvn parambbvn, GetResourceRespInfo paramGetResourceRespInfo) {}
+  ConfigHandler$6(ConfigHandler paramConfigHandler, String paramString, StatusManager paramStatusManager, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
     boolean bool = true;
-    Object localObject1 = new File(this.this$0.app.getApplication().getFilesDir(), "rich_status.tmp");
+    Object localObject1 = new File(this.this$0.a.getApplication().getFilesDir(), "rich_status.tmp");
     Object localObject2 = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.downloadData(this.this$0.app, (String)localObject2, (File)localObject1);
+    int i = HttpDownloadUtil.downloadData(this.this$0.a, (String)localObject2, (File)localObject1);
     if (QLog.isColorLevel()) {
       QLog.w("Q.richstatus.xml", 2, "handleUpdateStatusActions download " + this.jdField_a_of_type_JavaLangString + " result " + i);
     }
     String str;
     if (i == 0) {
-      if (this.jdField_a_of_type_Bbvn.a((File)localObject1, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer))
+      if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a((File)localObject1, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer))
       {
         this.this$0.notifyUI(7, true, Integer.valueOf(102));
         localObject1 = StatisticCollector.getInstance(BaseApplication.getContext());
@@ -36,7 +35,7 @@ public class ConfigHandler$6
         ((HashMap)localObject2).put("result", String.valueOf(i));
         ((HashMap)localObject2).put("version", String.valueOf(this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer));
         ((HashMap)localObject2).put("url", this.jdField_a_of_type_JavaLangString);
-        str = this.this$0.app.getCurrentAccountUin();
+        str = this.this$0.a.getCurrentAccountUin();
         if (i != 0) {
           break label327;
         }
@@ -65,7 +64,7 @@ public class ConfigHandler$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.open.agent.report;
 
 import android.os.Bundle;
-import bjgx;
 
-public class ReportCenter$6
+class ReportCenter$6
   implements Runnable
 {
-  public ReportCenter$6(bjgx parambjgx, Bundle paramBundle, String paramString, boolean paramBoolean) {}
+  ReportCenter$6(ReportCenter paramReportCenter, Bundle paramBundle, String paramString, boolean paramBoolean) {}
   
   /* Error */
   public void run()
@@ -24,12 +23,12 @@ public class ReportCenter$6
     //   18: ldc 43
     //   20: invokestatic 47	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   23: return
-    //   24: invokestatic 52	bizw:a	()Lbizw;
-    //   27: invokevirtual 55	bizw:a	()Landroid/content/Context;
+    //   24: invokestatic 52	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
+    //   27: invokevirtual 55	com/tencent/open/adapter/CommonDataAdapter:a	()Landroid/content/Context;
     //   30: aconst_null
-    //   31: invokestatic 60	bjlt:a	(Landroid/content/Context;Ljava/lang/String;)Lbjlt;
+    //   31: invokestatic 60	com/tencent/open/business/base/OpenConfig:a	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/open/business/base/OpenConfig;
     //   34: ldc 62
-    //   36: invokevirtual 65	bjlt:a	(Ljava/lang/String;)I
+    //   36: invokevirtual 65	com/tencent/open/business/base/OpenConfig:a	(Ljava/lang/String;)I
     //   39: istore_3
     //   40: iload_3
     //   41: ifne +254 -> 295
@@ -268,7 +267,7 @@ public class ReportCenter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.report.ReportCenter.6
  * JD-Core Version:    0.7.0.1
  */

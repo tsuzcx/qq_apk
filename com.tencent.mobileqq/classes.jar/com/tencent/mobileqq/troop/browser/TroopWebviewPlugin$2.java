@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.troop.browser;
 
-import bfda;
-import bifw;
 import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 
-public class TroopWebviewPlugin$2
+class TroopWebviewPlugin$2
   implements Runnable
 {
-  public TroopWebviewPlugin$2(bfda parambfda, String paramString) {}
+  TroopWebviewPlugin$2(TroopWebviewPlugin paramTroopWebviewPlugin, String paramString) {}
   
   public void run()
   {

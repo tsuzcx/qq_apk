@@ -9,27 +9,27 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anvx;
-import ascz;
-import asdd;
-import bhcu;
-import bhdj;
-import bheg;
-import bifw;
-import bikl;
-import bkzi;
-import bkzz;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.OutputStream;
@@ -66,26 +66,26 @@ public class AvatarPendantJsPlugin
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("params", paramJSONObject.toString());
-    super.sendRemoteReq(asdd.a("getPendantNumberPic", paramString, this.mOnRemoteResp.key, localBundle), false, false);
+    super.sendRemoteReq(DataFactory.a("getPendantNumberPic", paramString, this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   private Bitmap getRoundFaceBitmap(String paramString)
   {
     if (new File(paramString).exists())
     {
-      Object localObject = bheg.a(new BitmapFactory.Options(), paramString, 200);
+      Object localObject = ImageUtil.a(new BitmapFactory.Options(), paramString, 200);
       try
       {
         paramString = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
         int i = paramString.getWidth();
         int j = paramString.getHeight();
-        localObject = bheg.a(paramString, i, i, j);
+        localObject = ImageUtil.a(paramString, i, i, j);
         paramString = (String)localObject;
         if (localObject != null)
         {
           paramString = (String)localObject;
           if (((Bitmap)localObject).getWidth() > 200) {
-            paramString = bheg.a((Bitmap)localObject, 200);
+            paramString = ImageUtil.a((Bitmap)localObject, 200);
           }
         }
         return paramString;
@@ -95,7 +95,7 @@ public class AvatarPendantJsPlugin
         return null;
       }
     }
-    return bheg.a();
+    return ImageUtil.c();
   }
   
   private void showDiyGuide(JSONObject paramJSONObject, String paramString)
@@ -131,12 +131,12 @@ public class AvatarPendantJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("AvatarPendantJsPlugin", 2, "changeFace: " + paramJSONObject);
     }
-    paramJSONObject = (bkzi)bkzz.a(this.mRuntime.a(), null);
-    paramJSONObject.c(anvx.a(2131700382));
-    paramJSONObject.c(anvx.a(2131700384));
-    paramJSONObject.d(anvx.a(2131700365));
-    paramJSONObject.a(new AvatarPendantJsPlugin.5(this, paramString, paramJSONObject));
-    paramJSONObject.a(new AvatarPendantJsPlugin.6(this, paramString));
+    paramJSONObject = (ActionSheet)ActionSheetHelper.a(this.mRuntime.a(), null);
+    paramJSONObject.addButton(HardCodeUtil.a(2131700960));
+    paramJSONObject.addButton(HardCodeUtil.a(2131700962));
+    paramJSONObject.addCancelButton(HardCodeUtil.a(2131700943));
+    paramJSONObject.setOnButtonClickListener(new AvatarPendantJsPlugin.5(this, paramString, paramJSONObject));
+    paramJSONObject.setOnDismissListener(new AvatarPendantJsPlugin.6(this, paramString));
     paramJSONObject.show();
   }
   
@@ -156,6 +156,11 @@ public class AvatarPendantJsPlugin
   protected long getPluginBusiness()
   {
     return 2147484160L;
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 128L;
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -307,7 +312,7 @@ public class AvatarPendantJsPlugin
       label200:
       Object localObject2 = new ByteArrayOutputStream();
       ((Bitmap)localObject1).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject2);
-      String str3 = bhcu.encodeToString(((ByteArrayOutputStream)localObject2).toByteArray(), 2);
+      String str3 = Base64Util.encodeToString(((ByteArrayOutputStream)localObject2).toByteArray(), 2);
       paramBundle.put("result", 1);
       paramBundle.put("file", "data:image/png;base64," + str3);
       paramBundle.put("size", ((Bitmap)localObject1).getWidth());
@@ -315,8 +320,8 @@ public class AvatarPendantJsPlugin
       continue;
       label291:
       Object localObject1 = this.mRuntime.a(this.mRuntime.a());
-      if ((localObject1 != null) && ((localObject1 instanceof bikl))) {
-        QQToast.a(this.mRuntime.a(), 2131718542, 0).b(((bikl)localObject1).getTitleBarHeight());
+      if ((localObject1 != null) && ((localObject1 instanceof WebUiUtils.WebTitleBarInterface))) {
+        QQToast.a(this.mRuntime.a(), 2131719065, 0).b(((WebUiUtils.WebTitleBarInterface)localObject1).getTitleBarHeight());
       }
       paramBundle.put("result", 1001);
       continue;
@@ -363,15 +368,15 @@ public class AvatarPendantJsPlugin
       paramJSONObject = paramJSONObject.getJSONArray("button");
       if (paramJSONObject.length() >= 1)
       {
-        QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = bhdj.a(this.mRuntime.a(), 230);
-        localQQCustomDialogThreeBtns.setTitle(str2);
-        localQQCustomDialogThreeBtns.setMessage(str1);
-        localQQCustomDialogThreeBtns.setLeftButton(paramJSONObject.getString(0), new AvatarPendantJsPlugin.2(this, paramString));
+        QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.a(this.mRuntime.a(), 230);
+        localQQCustomDialogThreeBtns.a(str2);
+        localQQCustomDialogThreeBtns.b(str1);
+        localQQCustomDialogThreeBtns.a(paramJSONObject.getString(0), new AvatarPendantJsPlugin.2(this, paramString));
         if (paramJSONObject.length() >= 2) {
-          localQQCustomDialogThreeBtns.setMiddleButton(paramJSONObject.getString(1), new AvatarPendantJsPlugin.3(this, paramString));
+          localQQCustomDialogThreeBtns.b(paramJSONObject.getString(1), new AvatarPendantJsPlugin.3(this, paramString));
         }
         if (paramJSONObject.length() >= 3) {
-          localQQCustomDialogThreeBtns.setRightButton(paramJSONObject.getString(2), new AvatarPendantJsPlugin.4(this, paramString));
+          localQQCustomDialogThreeBtns.c(paramJSONObject.getString(2), new AvatarPendantJsPlugin.4(this, paramString));
         }
         localQQCustomDialogThreeBtns.show();
         paramJSONObject = new JSONObject();
@@ -422,7 +427,7 @@ public class AvatarPendantJsPlugin
         }
       }
       localBundle.putBoolean("is_diypendant", bool1);
-      super.sendRemoteReq(asdd.a("updatePendantId", paramString, this.mOnRemoteResp.key, localBundle), false, false);
+      super.sendRemoteReq(DataFactory.a("updatePendantId", paramString, this.mOnRemoteResp.key, localBundle), false, false);
       return;
     }
     catch (JSONException paramJSONObject)
@@ -436,7 +441,7 @@ public class AvatarPendantJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin
  * JD-Core Version:    0.7.0.1
  */

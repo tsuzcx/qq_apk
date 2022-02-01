@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import akug;
-import akux;
-import akvs;
-import akwh;
-import albw;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -21,26 +16,31 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import antp;
-import anvk;
-import anvx;
-import bhdf;
-import bmhg;
-import bmhn;
-import bmho;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.busylogic.HbBusiUtils;
+import com.tencent.mobileqq.activity.qwallet.fragment.busylogic.MoneyWatcher;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.activity.qwallet.utils.ReportUtils;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.util.api.ITroopDBUtilsApi;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import cooperation.qwallet.QwUtils;
+import cooperation.qwallet.pluginshare.HbInfo;
+import cooperation.qwallet.pluginshare.HbInfo.BundleInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -56,7 +56,7 @@ public class ExclusiveHbFragment
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bmho jdField_a_of_type_Bmho = new bmho();
+  private HbInfo.BundleInfo jdField_a_of_type_CooperationQwalletPluginshareHbInfo$BundleInfo = new HbInfo.BundleInfo();
   private String jdField_a_of_type_JavaLangString;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private int jdField_b_of_type_Int;
@@ -66,7 +66,7 @@ public class ExclusiveHbFragment
   
   public ExclusiveHbFragment()
   {
-    this.jdField_a_of_type_AndroidTextTextWatcher = new akug(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new ExclusiveHbFragment.1(this);
   }
   
   private String a(ArrayList<String> paramArrayList)
@@ -124,7 +124,7 @@ public class ExclusiveHbFragment
       Object localObject1 = paramIntent.getParcelableArrayListExtra("result_set");
       if (localObject1 != null)
       {
-        paramIntent = (anvk)this.mActivity.getAppInterface().getManager(QQManagerFactory.FRIENDS_MANAGER);
+        paramIntent = (FriendsManager)this.mActivity.getAppInterface().getManager(QQManagerFactory.FRIENDS_MANAGER);
         localObject1 = ((ArrayList)localObject1).iterator();
         for (;;)
         {
@@ -163,7 +163,7 @@ public class ExclusiveHbFragment
     {
       if (this.jdField_a_of_type_JavaLangString.equals("2"))
       {
-        localObject2 = ((antp)localQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.jdField_b_of_type_JavaLangString, localResultRecord.uin);
+        localObject2 = ((DiscussionManager)localQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.jdField_b_of_type_JavaLangString, localResultRecord.uin);
         if (localObject2 == null) {
           break;
         }
@@ -173,7 +173,7 @@ public class ExclusiveHbFragment
       if (!this.jdField_a_of_type_JavaLangString.equals("3")) {
         break;
       }
-      localObject2 = bhdf.a().a(localQQAppInterface, this.jdField_b_of_type_JavaLangString, localResultRecord.uin);
+      localObject2 = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(localQQAppInterface, this.jdField_b_of_type_JavaLangString, localResultRecord.uin);
       if (localObject2 == null) {
         break;
       }
@@ -208,23 +208,23 @@ public class ExclusiveHbFragment
   
   private void a(View paramView, Bundle paramBundle)
   {
-    bmhn.a(paramBundle, this.jdField_a_of_type_Bmho);
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bmho.recv_type;
+    HbInfo.a(paramBundle, this.jdField_a_of_type_CooperationQwalletPluginshareHbInfo$BundleInfo);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_CooperationQwalletPluginshareHbInfo$BundleInfo.recv_type;
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("recv_uin");
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131362687));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131362713));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new akwh(this.jdField_a_of_type_AndroidWidgetEditText));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363869));
-    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131366291));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379971));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new MoneyWatcher(this.jdField_a_of_type_AndroidWidgetEditText));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363967));
+    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131366463));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380402));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370298));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370566));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetEditText.setHint(akvs.a(this.channel, this.jdField_a_of_type_Bmho, this.mActivity.a(), anvx.a(2131703706)));
-    paramView.findViewById(2131369353).setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetEditText.setHint(HbBusiUtils.a(this.channel, this.jdField_a_of_type_CooperationQwalletPluginshareHbInfo$BundleInfo, this.mActivity.getConfigLogic(), HardCodeUtil.a(2131704254)));
+    paramView.findViewById(2131369607).setOnClickListener(this);
     if (QLog.isColorLevel()) {
-      QLog.i("ExclusiveHbFragment", 2, "bizParams:" + this.jdField_a_of_type_Bmho.biz_params);
+      QLog.i("ExclusiveHbFragment", 2, "bizParams:" + this.jdField_a_of_type_CooperationQwalletPluginshareHbInfo$BundleInfo.biz_params);
     }
   }
   
@@ -232,7 +232,7 @@ public class ExclusiveHbFragment
   {
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(paramBoolean);
     if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131696506));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131696759));
     }
   }
   
@@ -243,13 +243,13 @@ public class ExclusiveHbFragment
     TextView localTextView;
     if (this.jdField_a_of_type_Int == 1)
     {
-      i = 2130847168;
+      i = 2130847525;
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, i, 0);
       localObject = this.jdField_a_of_type_AndroidWidgetTextView;
       if (this.jdField_a_of_type_Int != 1) {
         break label105;
       }
-      i = 2131696499;
+      i = 2131696752;
       ((TextView)localObject).setText(i);
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
       if (this.jdField_a_of_type_Int != 1) {
@@ -258,14 +258,14 @@ public class ExclusiveHbFragment
     }
     label105:
     label112:
-    for (Object localObject = anvx.a(2131703709) + getString(2131696499);; localObject = anvx.a(2131703701) + getString(2131696498))
+    for (Object localObject = HardCodeUtil.a(2131704257) + getString(2131696752);; localObject = HardCodeUtil.a(2131704249) + getString(2131696751))
     {
       localTextView.setContentDescription((CharSequence)localObject);
       d();
       return;
-      i = 2130847167;
+      i = 2130847524;
       break;
-      i = 2131696498;
+      i = 2131696751;
       break label40;
     }
   }
@@ -277,14 +277,14 @@ public class ExclusiveHbFragment
       return;
     }
     this.jdField_a_of_type_Long = l;
-    Map localMap = this.mActivity.a();
+    Map localMap = this.mActivity.getMapPacketExtra();
     String str;
     try
     {
       str = a(this.jdField_a_of_type_JavaUtilArrayList);
       if ((this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (TextUtils.isEmpty(str)))
       {
-        this.mActivity.c(anvx.a(2131703705));
+        this.mActivity.showCommonHbToast(HardCodeUtil.a(2131704253));
         return;
       }
     }
@@ -295,14 +295,15 @@ public class ExclusiveHbFragment
     }
     localException.put("grab_uin_list", str);
     this.c = String.valueOf(a());
-    combineUploadData(this.jdField_a_of_type_Bmho, this.channel, this.jdField_b_of_type_Int, bmhg.a(this.c), "only.wrappacket.wrap");
+    combineUploadData(this.jdField_a_of_type_CooperationQwalletPluginshareHbInfo$BundleInfo, this.channel, this.jdField_b_of_type_Int, QwUtils.a(this.c), "only.wrappacket.wrap");
     localException.put("type", String.valueOf(1));
-    localException.put("wishing", akvs.a(this.jdField_b_of_type_AndroidWidgetEditText));
+    localException.put("wishing", HbBusiUtils.a(this.jdField_b_of_type_AndroidWidgetEditText));
     localException.put("bus_type", this.jdField_a_of_type_Int + "");
     localException.put("total_num", this.jdField_b_of_type_Int + "");
-    localException.put("total_amount", bmhg.a(this.c));
+    localException.put("total_amount", QwUtils.a(this.c));
     localException.put("channel", String.valueOf(this.channel));
     this.mLogic.a(localException);
+    ReportUtils.a(this.mQApp, "redpack.paybtn.click", null, this.jdField_a_of_type_CooperationQwalletPluginshareHbInfo$BundleInfo.panel_name);
   }
   
   private void d()
@@ -320,7 +321,7 @@ public class ExclusiveHbFragment
     }
     this.c = String.valueOf(f);
     a(true);
-    String str = getString(2131696506) + this.c + anvx.a(2131703704);
+    String str = getString(2131696759) + this.c + HardCodeUtil.a(2131704252);
     this.jdField_a_of_type_AndroidWidgetButton.setText(str);
   }
   
@@ -328,13 +329,13 @@ public class ExclusiveHbFragment
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(anvx.a(2131703702));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(HardCodeUtil.a(2131704250));
     TextView localTextView = new TextView(getActivity());
-    localTextView.setText(anvx.a(2131703703));
+    localTextView.setText(HardCodeUtil.a(2131704251));
     localTextView.setSingleLine();
     localTextView.setTextSize(15.0F);
-    localTextView.setTextColor(getActivity().getResources().getColor(2131166204));
-    albw.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, 0.6F);
+    localTextView.setTextColor(getActivity().getResources().getColor(2131166210));
+    QWalletTools.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, 0.6F);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localTextView);
     d();
   }
@@ -342,7 +343,7 @@ public class ExclusiveHbFragment
   protected float a()
   {
     this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.size();
-    float f2 = bmhg.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+    float f2 = QwUtils.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
     float f1 = f2;
     if (this.jdField_a_of_type_Int == 1) {
       f1 = f2 * this.jdField_b_of_type_Int;
@@ -378,8 +379,8 @@ public class ExclusiveHbFragment
             {
               String str = (String)localArrayList.get(i);
               ImageView localImageView = new ImageView(getActivity());
-              LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(ViewUtils.dpToPx(32.0F), ViewUtils.dpToPx(32.0F));
-              localLayoutParams.setMargins(-ViewUtils.dip2px(5.0F), 0, 0, 0);
+              LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(ViewUtils.b(32.0F), ViewUtils.b(32.0F));
+              localLayoutParams.setMargins(-ViewUtils.a(5.0F), 0, 0, 0);
               localImageView.setLayoutParams(localLayoutParams);
               localImageView.setImageDrawable(FaceDrawable.getFaceDrawable((QQAppInterface)getActivity().getAppRuntime(), 1, str));
               this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localImageView);
@@ -407,7 +408,7 @@ public class ExclusiveHbFragment
           }
         }
         if (!TextUtils.isEmpty(localStringBuffer)) {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(anvx.a(2131703708) + j + anvx.a(2131703707) + localStringBuffer.toString());
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(HardCodeUtil.a(2131704256) + j + HardCodeUtil.a(2131704255) + localStringBuffer.toString());
         }
         d();
         return;
@@ -436,7 +437,7 @@ public class ExclusiveHbFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.mActivity.c("only.wrappacket.wrap");
+      this.mActivity.addHbUploadData("only.wrappacket.wrap");
       c();
       continue;
       if (this.jdField_a_of_type_Int == 1) {}
@@ -449,7 +450,7 @@ public class ExclusiveHbFragment
       if (this.jdField_a_of_type_Long + 1200L <= l)
       {
         this.jdField_a_of_type_Long = l;
-        this.mActivity.a(this.jdField_a_of_type_Bmho.recv_type, this.jdField_a_of_type_JavaUtilArrayList);
+        this.mActivity.callForwardPage(this.jdField_a_of_type_CooperationQwalletPluginshareHbInfo$BundleInfo.recv_type, this.jdField_a_of_type_JavaUtilArrayList);
       }
     }
   }
@@ -457,7 +458,7 @@ public class ExclusiveHbFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561939, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562075, null);
     a(paramLayoutInflater, getArguments());
     a();
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -471,14 +472,14 @@ public class ExclusiveHbFragment
     {
       QLog.i("ExclusiveHbFragment", 2, "ExclusiveHb enter...");
       if (this.mActivity != null) {
-        this.mActivity.c("only.wrappacket.show");
+        this.mActivity.addHbUploadData("only.wrappacket.show");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment
  * JD-Core Version:    0.7.0.1
  */

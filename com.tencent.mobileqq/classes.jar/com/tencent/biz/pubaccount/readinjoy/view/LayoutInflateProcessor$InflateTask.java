@@ -6,43 +6,41 @@ import android.view.LayoutInflater;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ArrayBlockingQueue;
-import syx;
-import syy;
 
 class LayoutInflateProcessor$InflateTask
   implements Runnable
 {
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private syx[] jdField_a_of_type_ArrayOfSyx;
+  private LayoutInflateProcessor.InflateParams[] jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor$InflateParams;
   
-  public LayoutInflateProcessor$InflateTask(syx[] paramArrayOfsyx, LayoutInflater paramLayoutInflater)
+  public LayoutInflateProcessor$InflateTask(LayoutInflateProcessor.InflateParams[] paramArrayOfInflateParams, LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_ArrayOfSyx = paramArrayOfsyx;
+    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor$InflateParams = paramArrayOfInflateParams;
     this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
   }
   
-  private boolean a(syx paramsyx)
+  private boolean a(LayoutInflateProcessor.InflateParams paramInflateParams)
   {
-    if ((paramsyx.a == null) || (paramsyx.a.size() >= 9)) {}
+    if ((paramInflateParams.a == null) || (paramInflateParams.a.size() >= 9)) {}
     for (;;)
     {
       return false;
       if (QLog.isColorLevel()) {
-        QLog.d("LayoutPreloadInflater", 2, "preload start: resid=" + this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(syx.a(paramsyx)));
+        QLog.d("LayoutPreloadInflater", 2, "preload start: resid=" + this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(LayoutInflateProcessor.InflateParams.a(paramInflateParams)));
       }
       try
       {
-        View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(syx.a(paramsyx), syx.a(paramsyx), false);
+        View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(LayoutInflateProcessor.InflateParams.a(paramInflateParams), LayoutInflateProcessor.InflateParams.a(paramInflateParams), false);
         if (localView == null) {
           continue;
         }
-        if (syx.a(paramsyx) != null) {
-          syx.a(paramsyx).a(localView);
+        if (LayoutInflateProcessor.InflateParams.a(paramInflateParams) != null) {
+          LayoutInflateProcessor.InflateParams.a(paramInflateParams).a(localView);
         }
-        if ((paramsyx.a == null) || (paramsyx.a.size() >= 9)) {
+        if ((paramInflateParams.a == null) || (paramInflateParams.a.size() >= 9)) {
           continue;
         }
-        paramsyx.a.add(localView);
+        paramInflateParams.a.add(localView);
         return true;
       }
       catch (RuntimeException localRuntimeException)
@@ -60,19 +58,19 @@ class LayoutInflateProcessor$InflateTask
   
   public void run()
   {
-    syx[] arrayOfsyx = this.jdField_a_of_type_ArrayOfSyx;
-    int k = arrayOfsyx.length;
+    LayoutInflateProcessor.InflateParams[] arrayOfInflateParams = this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor$InflateParams;
+    int k = arrayOfInflateParams.length;
     int i = 0;
     if (i < k)
     {
-      syx localsyx = arrayOfsyx[i];
-      if (localsyx == null) {}
+      LayoutInflateProcessor.InflateParams localInflateParams = arrayOfInflateParams[i];
+      if (localInflateParams == null) {}
       for (;;)
       {
         i += 1;
         break;
         int j = 0;
-        while ((j < syx.b(localsyx)) && (a(localsyx))) {
+        while ((j < LayoutInflateProcessor.InflateParams.b(localInflateParams)) && (a(localInflateParams))) {
           j += 1;
         }
       }
@@ -81,7 +79,7 @@ class LayoutInflateProcessor$InflateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.LayoutInflateProcessor.InflateTask
  * JD-Core Version:    0.7.0.1
  */

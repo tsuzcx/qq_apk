@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mi_" android:background="@color/gk" android:layout_width="fill_parent" android:layout_height="44.0dip" android:minHeight="44.0dip"
+<FrameLayout android:background="@color/m7" android:layout_width="fill_parent" android:layout_height="40.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mib" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/mia" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:src="@drawable/cig" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
-    <ImageView android:id="@id/mic" android:paddingTop="10.0dip" android:paddingRight="16.0dip" android:paddingBottom="10.0dip" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="44.0dip" android:src="@drawable/bks" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/wja" />
-    <ImageView android:id="@id/mie" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/bkv" android:layout_toLeftOf="@id/mic" android:layout_centerVertical="true" android:contentDescription="@string/wjd" />
-    <TextView android:textSize="14.0dip" android:ellipsize="end" android:id="@id/mif" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.5dip" android:layout_marginRight="10.0dip" android:singleLine="true" android:layout_toLeftOf="@id/mia" android:layout_toRightOf="@id/mib" android:layout_centerVertical="true" style="@style/mv" />
-</RelativeLayout>
+    <View android:layout_gravity="top" android:background="#ffe0e0e6" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <dov.com.qq.im.aeeditor.module.edit.widgets.AEEditorCheckGroupView android:orientation="horizontal" android:id="@id/mp9" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o0x" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageView android:id="@id/n9e" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bjp" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/bh0" android:textColor="@color/ml" android:id="@id/obf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w9c" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o11" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageView android:id="@id/n9j" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bjr" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/bh0" android:textColor="@color/ml" android:id="@id/obh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w_2" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o19" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageView android:id="@id/n9r" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bju" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/bh0" android:textColor="@color/ml" android:id="@id/obn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w_w" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o15" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageView android:id="@id/n9o" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bjt" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/bh0" android:textColor="@color/ml" android:id="@id/obk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w_a" />
+        </LinearLayout>
+    </dov.com.qq.im.aeeditor.module.edit.widgets.AEEditorCheckGroupView>
+</FrameLayout>

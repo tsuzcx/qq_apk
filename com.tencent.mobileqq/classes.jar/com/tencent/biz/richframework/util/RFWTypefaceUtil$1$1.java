@@ -2,12 +2,11 @@ package com.tencent.biz.richframework.util;
 
 import android.graphics.Typeface;
 import android.widget.TextView;
-import zqa;
 
-public class RFWTypefaceUtil$1$1
+class RFWTypefaceUtil$1$1
   implements Runnable
 {
-  public RFWTypefaceUtil$1$1(zqa paramzqa, Typeface paramTypeface) {}
+  RFWTypefaceUtil$1$1(RFWTypefaceUtil.1 param1, Typeface paramTypeface) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class RFWTypefaceUtil$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.util.RFWTypefaceUtil.1.1
  * JD-Core Version:    0.7.0.1
  */

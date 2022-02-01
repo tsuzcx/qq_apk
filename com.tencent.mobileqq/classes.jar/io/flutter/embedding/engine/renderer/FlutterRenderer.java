@@ -93,7 +93,7 @@ public class FlutterRenderer
   
   public boolean isSoftwareRenderingEnabled()
   {
-    return this.flutterJNI.nativeGetIsSoftwareRenderingEnabled();
+    return this.flutterJNI.getIsSoftwareRenderingEnabled();
   }
   
   public void removeIsDisplayingFlutterUiListener(@NonNull FlutterUiDisplayListener paramFlutterUiDisplayListener)
@@ -169,10 +169,16 @@ public class FlutterRenderer
   {
     this.flutterJNI.onSurfaceChanged(paramInt1, paramInt2);
   }
+  
+  public void swapSurface(@NonNull Surface paramSurface)
+  {
+    this.surface = paramSurface;
+    this.flutterJNI.onSurfaceWindowChanged(paramSurface);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.renderer.FlutterRenderer
  * JD-Core Version:    0.7.0.1
  */

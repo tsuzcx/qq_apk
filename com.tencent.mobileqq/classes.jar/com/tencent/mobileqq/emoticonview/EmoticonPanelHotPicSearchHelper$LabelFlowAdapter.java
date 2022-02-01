@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
@@ -41,15 +42,15 @@ class EmoticonPanelHotPicSearchHelper$LabelFlowAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {
-      paramView = View.inflate(this.mContext, 2131559165, null);
+      paramView = View.inflate(this.mContext, 2131559207, null);
     }
     for (;;)
     {
-      Button localButton = (Button)paramView.findViewById(2131364060);
+      Button localButton = (Button)paramView.findViewById(2131364161);
       localButton.setText((CharSequence)this.mDatas.get(paramInt));
       localButton.setContentDescription((CharSequence)this.mDatas.get(paramInt));
       localButton.setBackgroundDrawable(this.this$0.getShapeDrawable(12));
-      if (ThemeUtil.isNowThemeIsNight(this.this$0.getApp(), false, null)) {
+      if (ThemeUtil.isNowThemeIsNight(this.this$0.getApp().getAppRuntime(), false, null)) {
         localButton.setTextColor(Color.parseColor("#B0B3BF"));
       }
       for (;;)
@@ -64,7 +65,7 @@ class EmoticonPanelHotPicSearchHelper$LabelFlowAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelHotPicSearchHelper.LabelFlowAdapter
  * JD-Core Version:    0.7.0.1
  */

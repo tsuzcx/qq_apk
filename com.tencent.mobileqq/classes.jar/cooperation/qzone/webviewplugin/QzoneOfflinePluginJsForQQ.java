@@ -1,22 +1,23 @@
 package cooperation.qzone.webviewplugin;
 
-import aatf;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bifw;
-import bijv;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.webviewplugin.WebSoPlugin;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.webso.WebSoUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IDataUtils;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebView;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.font.FontInterface;
-import cooperation.qzone.util.DataUtils;
 import cooperation.qzone.util.QzoneBanApkDownloadHelper;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
@@ -516,10 +517,10 @@ public class QzoneOfflinePluginJsForQQ
   {
     Object localObject2;
     Object localObject1;
-    if ((paramWebView != null) && (aatf.a(paramWebView)) && (bijv.b(paramString1)) && (!checkOfflineUrl(paramString1)) && (!checkDownloadFont(paramString1)))
+    if ((paramWebView != null) && (WebSoPlugin.a(paramWebView)) && (WebSoUtils.b(paramString1)) && (!checkOfflineUrl(paramString1)) && (!checkDownloadFont(paramString1)))
     {
-      localObject2 = paramWebView.getTag(2131374479);
-      localObject1 = paramWebView.getTag(2131374480);
+      localObject2 = paramWebView.getTag(2131374839);
+      localObject1 = paramWebView.getTag(2131374840);
       if ((localObject2 instanceof String))
       {
         localObject2 = (String)localObject2;
@@ -531,13 +532,13 @@ public class QzoneOfflinePluginJsForQQ
       try
       {
         paramAppInterface = new BufferedInputStream(new ByteArrayInputStream(((String)localObject2).getBytes("UTF-8")), INPUTSTREAM_BUFFER_SIZE);
-        paramWebView.setTag(2131374479, null);
-        paramWebView.setTag(2131374480, null);
+        paramWebView.setTag(2131374839, null);
+        paramWebView.setTag(2131374840, null);
         paramWebView = new WebResourceResponse("text/html", "UTF-8", paramAppInterface);
         if (QLog.isColorLevel())
         {
           if ((localObject1 == null) || (!(localObject1 instanceof Long))) {
-            break label679;
+            break label690;
           }
           l1 = ((Long)localObject1).longValue();
           long l2 = System.currentTimeMillis();
@@ -555,11 +556,11 @@ public class QzoneOfflinePluginJsForQQ
         paramWebView = getConfigExtMap();
         localObject1 = getFileExt(paramString1);
         if ((paramWebView == null) || (!paramWebView.containsKey(localObject1))) {
-          break label674;
+          break label685;
         }
       }
-      label668:
-      label674:
+      label679:
+      label685:
       for (paramWebView = (String)paramWebView.get(localObject1);; paramWebView = null)
       {
         if ((paramWebView == null) || (paramWebView.length() == 0))
@@ -590,11 +591,11 @@ public class QzoneOfflinePluginJsForQQ
           {
             paramAppInterface = new BufferedInputStream(new FileInputStream(paramAppInterface), INPUTSTREAM_BUFFER_SIZE);
             if ((localObject1 == null) || (!"gzip".equalsIgnoreCase((String)((HashMap)localObject1).get("Content-Encoding")))) {
-              break label668;
+              break label679;
             }
             if (!isSupportGZIP())
             {
-              DataUtils.closeDataObject(paramAppInterface);
+              ((IDataUtils)QRoute.api(IDataUtils.class)).closeDataObject(paramAppInterface);
               return null;
             }
             ((HashMap)localObject1).remove("Content-Encoding");
@@ -632,7 +633,7 @@ public class QzoneOfflinePluginJsForQQ
           int i = 0;
         }
       }
-      label679:
+      label690:
       long l1 = 0L;
     }
   }
@@ -695,7 +696,7 @@ public class QzoneOfflinePluginJsForQQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneOfflinePluginJsForQQ
  * JD-Core Version:    0.7.0.1
  */

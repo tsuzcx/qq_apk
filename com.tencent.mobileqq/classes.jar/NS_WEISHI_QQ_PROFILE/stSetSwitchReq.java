@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class stSetSwitchReq
   extends JceStruct
 {
-  public int op;
-  public long uin;
+  public int op = 0;
+  public long uin = 0L;
   
   public stSetSwitchReq() {}
   

@@ -252,20 +252,8 @@ public class TXLivePusherJSAdapter
   
   private TXJSAdapterError bgmLivePusherOperate(String paramString, JSONObject paramJSONObject)
   {
-    double d = 1.0D;
-    if (paramString.equalsIgnoreCase("playBGM"))
-    {
-      paramString = "";
-      if (paramJSONObject != null) {
-        paramString = paramJSONObject.optString("BGMFilePath", "");
-      }
-      QMLog.d("TXLivePusherJSAdapter", "playBGM filePath = " + paramString);
-      if ((paramString != null) && (paramString.length() > 0))
-      {
-        WXLivePusherReflect.playBGM(paramString, this.mLivePusher);
-        return new TXJSAdapterError();
-      }
-      return new TXJSAdapterError(-2, "fail");
+    if (paramString.equalsIgnoreCase("playBGM")) {
+      return playBGM(paramJSONObject);
     }
     if (paramString.equalsIgnoreCase("stopBGM"))
     {
@@ -285,31 +273,14 @@ public class TXLivePusherJSAdapter
       this.mBGMPlaying = true;
       return new TXJSAdapterError();
     }
-    if (paramString.equalsIgnoreCase("setBGMPosition"))
-    {
-      if ((this.mBGMPlaying) && (paramJSONObject != null))
-      {
-        int i = paramJSONObject.optInt("BGMPosition", -1);
-        if (i > 0) {
-          WXLivePusherReflect.setBGMPosition(i, this.mLivePusher);
-        }
-      }
-      return new TXJSAdapterError();
+    if (paramString.equalsIgnoreCase("setBGMPosition")) {
+      return setBGMPosition(paramJSONObject);
     }
-    if (paramString.equalsIgnoreCase("setBGMVolume"))
-    {
-      if (paramJSONObject != null) {
-        d = paramJSONObject.optDouble("volume", 1.0D);
-      }
-      WXLivePusherReflect.setBGMVolume((float)d, this.mLivePusher);
-      return new TXJSAdapterError();
+    if (paramString.equalsIgnoreCase("setBGMVolume")) {
+      return setBGMVolume(paramJSONObject);
     }
-    if (paramString.equalsIgnoreCase("setMICVolume"))
-    {
-      if (paramJSONObject != null) {
-        d = paramJSONObject.optDouble("volume", 1.0D);
-      }
-      WXLivePusherReflect.setMicVolume((float)d, this.mLivePusher);
+    if (paramString.equalsIgnoreCase("setMICVolume")) {
+      setMICVolume(paramJSONObject);
     }
     return null;
   }
@@ -394,6 +365,54 @@ public class TXLivePusherJSAdapter
     return null;
   }
   
+  private void handleAudioReverbType(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("audioReverbType", this.mAudioReverbType);
+    if (i != this.mAudioReverbType) {
+      WXLivePusherReflect.setReverb(i, this.mLivePusher);
+    }
+    this.mAudioReverbType = i;
+  }
+  
+  private void handleBeatyAndWhiteness(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("beauty", this.mBeauty);
+    int j = paramBundle.getInt("whiteness", this.mWhiteness);
+    if (i != this.mBeauty) {
+      WXLivePusherReflect.setBeautyFilter(0, i, j, 2, this.mLivePusher);
+    }
+    this.mBeauty = i;
+    this.mWhiteness = j;
+  }
+  
+  private void handleDebug(Bundle paramBundle, boolean paramBoolean)
+  {
+    boolean bool = paramBundle.getBoolean("debug", this.mDebug);
+    if ((paramBoolean) || (bool != this.mDebug)) {
+      WXLivePusherReflect.showDebugLog(bool, this.mLivePusher);
+    }
+    this.mDebug = bool;
+  }
+  
+  private void handleRemoteMirror(Bundle paramBundle)
+  {
+    boolean bool = this.mRemoteMirror;
+    if (paramBundle.keySet().contains("remoteMirror")) {
+      bool = paramBundle.getBoolean("remoteMirror");
+    }
+    for (;;)
+    {
+      if (bool != this.mRemoteMirror) {
+        WXLivePusherReflect.setMirror(bool, this.mLivePusher);
+      }
+      this.mRemoteMirror = bool;
+      return;
+      if (paramBundle.keySet().contains("mirror")) {
+        bool = paramBundle.getBoolean("mirror");
+      }
+    }
+  }
+  
   private void initPusherKeyList()
   {
     if (this.pusherKeyList == null)
@@ -440,7 +459,7 @@ public class TXLivePusherJSAdapter
   
   private boolean isBooleanKeyForParams(String paramString)
   {
-    return (paramString.equalsIgnoreCase("hide")) || (paramString.equalsIgnoreCase("autopush")) || (paramString.equalsIgnoreCase("muted")) || (paramString.equalsIgnoreCase("enableCamera")) || (paramString.equalsIgnoreCase("enableMic")) || (paramString.equalsIgnoreCase("enableAGC")) || (paramString.equalsIgnoreCase("enableANS")) || (paramString.equalsIgnoreCase("enableEarMonitor")) || (paramString.equalsIgnoreCase("backgroundMute")) || (paramString.equalsIgnoreCase("zoom")) || (paramString.equalsIgnoreCase("needEvent")) || (paramString.equalsIgnoreCase("needBGMEvent")) || (paramString.equalsIgnoreCase("debug")) || (paramString.equalsIgnoreCase("mirror")) || (paramString.equalsIgnoreCase("remoteMirror"));
+    return (paramString.equalsIgnoreCase("hide")) || (paramString.equalsIgnoreCase("autopush")) || (paramString.equalsIgnoreCase("muted")) || (paramString.equalsIgnoreCase("enableCamera")) || (paramString.equalsIgnoreCase("enableMic")) || (paramString.equalsIgnoreCase("enableAGC")) || (paramString.equalsIgnoreCase("enableANS")) || (isaBooleanKeyP2(paramString));
   }
   
   private boolean isFloatKeyForParams(String paramString)
@@ -463,9 +482,34 @@ public class TXLivePusherJSAdapter
     return (paramString.equalsIgnoreCase("pushUrl")) || (paramString.equalsIgnoreCase("orientation")) || (paramString.equalsIgnoreCase("backgroundImage")) || (paramString.equalsIgnoreCase("audioQuality")) || (paramString.equalsIgnoreCase("watermarkImage")) || (paramString.equalsIgnoreCase("audioVolumeType")) || (paramString.equalsIgnoreCase("localMirror")) || (paramString.equalsIgnoreCase("devicePosition"));
   }
   
+  private boolean isVideoWHValid(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 > 0) && (paramInt1 <= 1920) && (paramInt2 > 0) && (paramInt2 <= 1920);
+  }
+  
+  private boolean isaBooleanKeyP2(String paramString)
+  {
+    return (paramString.equalsIgnoreCase("enableEarMonitor")) || (paramString.equalsIgnoreCase("backgroundMute")) || (paramString.equalsIgnoreCase("zoom")) || (paramString.equalsIgnoreCase("needEvent")) || (paramString.equalsIgnoreCase("needBGMEvent")) || (paramString.equalsIgnoreCase("debug")) || (paramString.equalsIgnoreCase("mirror")) || (paramString.equalsIgnoreCase("remoteMirror"));
+  }
+  
   private boolean needApplyConfig(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, String paramString1, int paramInt5, int paramInt6, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    return (paramInt1 != this.mVideoAspect) || (paramInt2 != this.mMinBitrate) || (paramInt3 != this.mMaxBitrate) || (paramInt4 != this.mFocusMode) || (paramBoolean1 != this.mFrontCamera) || (paramBoolean2 != this.mPauseAudio) || (paramBoolean3 != this.mEnableZoom) || (paramBoolean4 != this.mEnableAgc) || (paramBoolean5 != this.mEnableAns) || (paramBoolean6 != this.mEnableEarMonitor) || (paramBoolean7 != this.mEnableCamera) || (!paramString1.equalsIgnoreCase(this.mLocalMirror)) || (paramInt5 != this.mVideoWidth) || (paramInt6 != this.mVideoHeight) || (paramFloat1 != this.mWatermarkLeft) || (paramFloat2 != this.mWatermarkTop) || (paramFloat3 != this.mWatermarkWidth) || (!paramString2.equalsIgnoreCase(this.mAudioVolumeType)) || (!paramString3.equalsIgnoreCase(this.mPauseImageFilePath)) || (!paramString4.equalsIgnoreCase(this.mOrientation)) || (!paramString5.equalsIgnoreCase(this.mAudioQuality)) || (!paramString6.equalsIgnoreCase(this.mWatermarkImage));
+    return (needApplyVideoConfig(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1, paramBoolean7, paramString1, paramInt5)) || (needApplyOtherConfig(paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramBoolean6, paramInt6, paramFloat1, paramFloat2, paramFloat3)) || (needApplyStrConfig(paramString2, paramString3, paramString4, paramString5, paramString6));
+  }
+  
+  private boolean needApplyOtherConfig(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    return (paramInt != this.mVideoHeight) || (paramBoolean1 != this.mPauseAudio) || (paramBoolean2 != this.mEnableZoom) || (paramBoolean3 != this.mEnableAgc) || (paramBoolean4 != this.mEnableAns) || (paramBoolean5 != this.mEnableEarMonitor) || (paramFloat1 != this.mWatermarkLeft) || (paramFloat2 != this.mWatermarkTop) || (paramFloat3 != this.mWatermarkWidth);
+  }
+  
+  private boolean needApplyStrConfig(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    return (!paramString1.equalsIgnoreCase(this.mAudioVolumeType)) || (!paramString2.equalsIgnoreCase(this.mPauseImageFilePath)) || (!paramString3.equalsIgnoreCase(this.mOrientation)) || (!paramString4.equalsIgnoreCase(this.mAudioQuality)) || (!paramString5.equalsIgnoreCase(this.mWatermarkImage));
+  }
+  
+  private boolean needApplyVideoConfig(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt5)
+  {
+    return (paramInt1 != this.mVideoAspect) || (paramInt2 != this.mMinBitrate) || (paramInt3 != this.mMaxBitrate) || (paramInt4 != this.mFocusMode) || (paramBoolean1 != this.mFrontCamera) || (paramBoolean2 != this.mEnableCamera) || (!paramString.equalsIgnoreCase(this.mLocalMirror)) || (paramInt5 != this.mVideoWidth);
   }
   
   private TXJSAdapterError otherLivePusherOperate(String paramString, JSONObject paramJSONObject)
@@ -545,64 +589,60 @@ public class TXLivePusherJSAdapter
         String str1 = paramBundle.getString("audioQuality", this.mAudioQuality);
         setRealTimeVideoChatMode(i1, i, m, n, str1, j, k);
         int i2 = paramBundle.getInt("focusMode", this.mFocusMode);
-        boolean bool1;
+        boolean bool2;
         String str2;
+        String str3;
+        String str4;
+        boolean bool3;
+        boolean bool4;
+        float f1;
+        float f2;
+        float f3;
+        String str5;
+        boolean bool5;
+        boolean bool6;
+        boolean bool7;
+        String str6;
+        boolean bool8;
         if (i2 != 0)
         {
           bool1 = true;
           WXLivePushConfigReflect.setTouchFocus(bool1, this.mLivePushConfig);
-          boolean bool2 = setFrontCamera(paramBundle, this.mFrontCamera);
+          bool2 = setFrontCamera(paramBundle, this.mFrontCamera);
           str2 = paramBundle.getString("orientation", this.mOrientation);
-          if (!str2.equalsIgnoreCase(this.mOrientation))
-          {
-            if (!str2.equalsIgnoreCase("horizontal")) {
-              break label1082;
-            }
-            adjustHomeOrientation(this.mLastAngle, str2);
-            WXLivePusherReflect.setRenderRotation(90, this.mLivePusher);
-          }
-          label348:
-          String str3 = paramBundle.getString("localMirror", this.mLocalMirror);
+          setRenderOrientation(str2);
+          str3 = paramBundle.getString("localMirror", this.mLocalMirror);
           setLocalVideoMirror(str3);
-          String str4 = paramBundle.getString("backgroundImage", this.mPauseImageFilePath);
+          str4 = paramBundle.getString("backgroundImage", this.mPauseImageFilePath);
           WXLivePushConfigReflect.setPauseImg(BitmapFactory.decodeFile(str4), this.mLivePushConfig);
-          boolean bool3 = paramBundle.getBoolean("backgroundMute", this.mPauseAudio);
+          bool3 = paramBundle.getBoolean("backgroundMute", this.mPauseAudio);
           setPauseAudioFlag(bool3);
-          boolean bool4 = paramBundle.getBoolean("zoom", this.mEnableZoom);
+          bool4 = paramBundle.getBoolean("zoom", this.mEnableZoom);
           WXLivePushConfigReflect.setEnableZoom(bool4, this.mLivePushConfig);
-          float f1 = paramBundle.getFloat("watermarkLeft", this.mWatermarkLeft);
-          float f2 = paramBundle.getFloat("watermarkTop", this.mWatermarkTop);
-          float f3 = paramBundle.getFloat("watermarkWidth", this.mWatermarkWidth);
-          String str5 = paramBundle.getString("watermarkImage", this.mWatermarkImage);
+          f1 = paramBundle.getFloat("watermarkLeft", this.mWatermarkLeft);
+          f2 = paramBundle.getFloat("watermarkTop", this.mWatermarkTop);
+          f3 = paramBundle.getFloat("watermarkWidth", this.mWatermarkWidth);
+          str5 = paramBundle.getString("watermarkImage", this.mWatermarkImage);
           setWaterMark(paramBundle, f1, f2, f3, BitmapFactory.decodeFile(str5));
-          boolean bool5 = paramBundle.getBoolean("enableAGC", this.mEnableAgc);
+          bool5 = paramBundle.getBoolean("enableAGC", this.mEnableAgc);
           WXLivePushConfigReflect.enableAGC(bool5, this.mLivePushConfig);
-          boolean bool6 = paramBundle.getBoolean("enableANS", this.mEnableAns);
+          bool6 = paramBundle.getBoolean("enableANS", this.mEnableAns);
           WXLivePushConfigReflect.enableANS(bool6, this.mLivePushConfig);
-          boolean bool7 = paramBundle.getBoolean("enableEarMonitor", this.mEnableEarMonitor);
+          bool7 = paramBundle.getBoolean("enableEarMonitor", this.mEnableEarMonitor);
           WXLivePushConfigReflect.enableAudioEarMonitoring(bool7, this.mLivePushConfig);
-          String str6 = paramBundle.getString("audioVolumeType", this.mAudioVolumeType);
+          str6 = paramBundle.getString("audioVolumeType", this.mAudioVolumeType);
           setAudioVolumeType(str6);
-          boolean bool8 = paramBundle.getBoolean("enableCamera", this.mEnableCamera);
+          bool8 = paramBundle.getBoolean("enableCamera", this.mEnableCamera);
           if (bool8) {
-            break label1113;
+            break label837;
           }
-          bool1 = true;
-          label605:
+        }
+        label837:
+        for (boolean bool1 = true;; bool1 = false)
+        {
           WXLivePushConfigReflect.enablePureAudioPush(bool1, this.mLivePushConfig);
-          bool1 = needApplyConfig(i, j, k, i2, bool2, bool3, bool4, bool5, bool6, bool7, bool8, str3, m, n, f1, f2, f3, str6, str4, str2, str1, str5);
-          if ((paramBoolean) || (bool1)) {
-            WXLivePusherReflect.setConfig(this.mLivePushConfig, this.mLivePusher);
-          }
-          if (bool8 != this.mEnableCamera)
-          {
-            if (!bool8) {
-              break label1119;
-            }
-            stopPreview();
-            startPreview(bool8);
-          }
-          label707:
+          setLivePusherConfig(paramBoolean, needApplyConfig(i, j, k, i2, bool2, bool3, bool4, bool5, bool6, bool7, bool8, str3, m, n, f1, f2, f3, str6, str4, str2, str1, str5));
+          setEnableCamera(bool8);
           setEnableMic(paramBundle, paramBoolean);
           this.mMode = i1;
           this.mVideoAspect = i;
@@ -629,55 +669,13 @@ public class TXLivePusherJSAdapter
           this.mWatermarkImage = str5;
           this.mNeedEvent = paramBundle.getBoolean("needEvent", this.mNeedEvent);
           this.mNeedBGMEvent = paramBundle.getBoolean("needBGMEvent", this.mNeedBGMEvent);
-          bool1 = this.mRemoteMirror;
-          if (!paramBundle.keySet().contains("remoteMirror")) {
-            break label1126;
-          }
-          bool1 = paramBundle.getBoolean("remoteMirror");
-        }
-        for (;;)
-        {
-          if (bool1 != this.mRemoteMirror) {
-            WXLivePusherReflect.setMirror(bool1, this.mLivePusher);
-          }
-          this.mRemoteMirror = bool1;
-          i = paramBundle.getInt("beauty", this.mBeauty);
-          j = paramBundle.getInt("whiteness", this.mWhiteness);
-          if (i != this.mBeauty) {
-            WXLivePusherReflect.setBeautyFilter(0, i, j, 2, this.mLivePusher);
-          }
-          this.mBeauty = i;
-          this.mWhiteness = j;
-          i = paramBundle.getInt("audioReverbType", this.mAudioReverbType);
-          if (i != this.mAudioReverbType) {
-            WXLivePusherReflect.setReverb(i, this.mLivePusher);
-          }
-          this.mAudioReverbType = i;
-          bool1 = paramBundle.getBoolean("debug", this.mDebug);
-          if ((paramBoolean) || (bool1 != this.mDebug)) {
-            WXLivePusherReflect.showDebugLog(bool1, this.mLivePusher);
-          }
-          this.mDebug = bool1;
+          handleRemoteMirror(paramBundle);
+          handleBeatyAndWhiteness(paramBundle);
+          handleAudioReverbType(paramBundle);
+          handleDebug(paramBundle, paramBoolean);
           return;
           bool1 = false;
           break;
-          label1082:
-          if (!str2.equalsIgnoreCase("vertical")) {
-            break label348;
-          }
-          adjustHomeOrientation(this.mLastAngle, str2);
-          WXLivePusherReflect.setRenderRotation(0, this.mLivePusher);
-          break label348;
-          label1113:
-          bool1 = false;
-          break label605;
-          label1119:
-          stopPreview();
-          break label707;
-          label1126:
-          if (paramBundle.keySet().contains("mirror")) {
-            bool1 = paramBundle.getBoolean("mirror");
-          }
         }
         k = n;
         j = m;
@@ -685,6 +683,21 @@ public class TXLivePusherJSAdapter
       k = i;
       i = j;
     }
+  }
+  
+  private TXJSAdapterError playBGM(JSONObject paramJSONObject)
+  {
+    String str = "";
+    if (paramJSONObject != null) {
+      str = paramJSONObject.optString("BGMFilePath", "");
+    }
+    QMLog.d("TXLivePusherJSAdapter", "playBGM filePath = " + str);
+    if ((str != null) && (str.length() > 0))
+    {
+      WXLivePusherReflect.playBGM(str, this.mLivePusher);
+      return new TXJSAdapterError();
+    }
+    return new TXJSAdapterError(-2, "fail");
   }
   
   private void printJSParams(String paramString, Bundle paramBundle)
@@ -727,6 +740,44 @@ public class TXLivePusherJSAdapter
       return;
     }
     WXLivePushConfigReflect.setVolumeType(1, this.mLivePushConfig);
+  }
+  
+  private TXJSAdapterError setBGMPosition(JSONObject paramJSONObject)
+  {
+    if ((this.mBGMPlaying) && (paramJSONObject != null))
+    {
+      int i = paramJSONObject.optInt("BGMPosition", -1);
+      if (i > 0) {
+        WXLivePusherReflect.setBGMPosition(i, this.mLivePusher);
+      }
+    }
+    return new TXJSAdapterError();
+  }
+  
+  private TXJSAdapterError setBGMVolume(JSONObject paramJSONObject)
+  {
+    double d = 1.0D;
+    if (paramJSONObject != null) {
+      d = paramJSONObject.optDouble("volume", 1.0D);
+    }
+    WXLivePusherReflect.setBGMVolume((float)d, this.mLivePusher);
+    return new TXJSAdapterError();
+  }
+  
+  private void setEnableCamera(boolean paramBoolean)
+  {
+    if (paramBoolean != this.mEnableCamera)
+    {
+      if (paramBoolean)
+      {
+        stopPreview();
+        startPreview(paramBoolean);
+      }
+    }
+    else {
+      return;
+    }
+    stopPreview();
   }
   
   private void setEnableMic(Bundle paramBundle, boolean paramBoolean)
@@ -797,6 +848,13 @@ public class TXLivePusherJSAdapter
     return bool;
   }
   
+  private void setLivePusherConfig(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) || (paramBoolean2)) {
+      WXLivePusherReflect.setConfig(this.mLivePushConfig, this.mLivePusher);
+    }
+  }
+  
   private void setLocalVideoMirror(String paramString)
   {
     if (!paramString.equalsIgnoreCase(this.mLocalMirror))
@@ -819,6 +877,15 @@ public class TXLivePusherJSAdapter
     WXLivePusherReflect.setLocalVideoMirrorType(2, this.mLivePushConfig);
   }
   
+  private void setMICVolume(JSONObject paramJSONObject)
+  {
+    double d = 1.0D;
+    if (paramJSONObject != null) {
+      d = paramJSONObject.optDouble("volume", 1.0D);
+    }
+    WXLivePusherReflect.setMicVolume((float)d, this.mLivePusher);
+  }
+  
   private void setPauseAudioFlag(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -834,16 +901,16 @@ public class TXLivePusherJSAdapter
     if (paramInt1 == 6)
     {
       if (paramInt2 != 1) {
-        break label113;
+        break label99;
       }
       WXLivePushConfigReflect.setVideoResolution(13, this.mLivePushConfig);
     }
-    label113:
+    label99:
     do
     {
       for (;;)
       {
-        if ((paramInt3 > 0) && (paramInt3 <= 1920) && (paramInt4 > 0) && (paramInt4 <= 1920)) {
+        if (isVideoWHValid(paramInt3, paramInt4)) {
           WXLivePushConfigReflect.setVideoResolution(paramInt3, paramInt4, this.mLivePushConfig);
         }
         if ((paramInt5 != -1) && (paramInt6 != -1) && (paramInt5 <= paramInt6))
@@ -862,6 +929,24 @@ public class TXLivePusherJSAdapter
       }
     } while (!paramString.equalsIgnoreCase("high"));
     WXLivePushConfigReflect.setAudioSampleRate(48000, this.mLivePushConfig);
+  }
+  
+  private void setRenderOrientation(String paramString)
+  {
+    if (!paramString.equalsIgnoreCase(this.mOrientation))
+    {
+      if (!paramString.equalsIgnoreCase("horizontal")) {
+        break label40;
+      }
+      adjustHomeOrientation(this.mLastAngle, paramString);
+      WXLivePusherReflect.setRenderRotation(90, this.mLivePusher);
+    }
+    label40:
+    while (!paramString.equalsIgnoreCase("vertical")) {
+      return;
+    }
+    adjustHomeOrientation(this.mLastAngle, paramString);
+    WXLivePusherReflect.setRenderRotation(0, this.mLivePusher);
   }
   
   private void setWaterMark(Bundle paramBundle, float paramFloat1, float paramFloat2, float paramFloat3, Bitmap paramBitmap)
@@ -1177,7 +1262,7 @@ public class TXLivePusherJSAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.live.TXLivePusherJSAdapter
  * JD-Core Version:    0.7.0.1
  */

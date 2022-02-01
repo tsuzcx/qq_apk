@@ -11,11 +11,11 @@ public final class RespLastGameInfo
   static ArrayList<GameLogoUrl> cache_stGameLogoInfo;
   public boolean bNative = true;
   public boolean bShowGameLogo = true;
-  public byte iResult;
+  public byte iResult = 0;
   public byte iVersion = 1;
   public String sLogoUrl = "";
   public String sProfileUrl = "";
-  public ArrayList<GameLogoUrl> stGameLogoInfo;
+  public ArrayList<GameLogoUrl> stGameLogoInfo = null;
   
   public RespLastGameInfo() {}
   

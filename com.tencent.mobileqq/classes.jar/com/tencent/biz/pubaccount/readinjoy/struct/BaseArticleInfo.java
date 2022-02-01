@@ -3,15 +3,28 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.graphics.Paint;
 import android.support.annotation.VisibleForTesting;
 import android.text.TextUtils;
-import aogi;
-import bcjs;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.VideoInfo.RichTitleInfo;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.preparse.RIJPreParseData;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJSmartCropUtils;
+import com.tencent.biz.pubaccount.readinjoy.feedsdynamicinsert.data.RIJFeedsInsertAction;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment.WaterFallPic;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.utils.IStrategy;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.utils.IStrategy.URLCallback;
+import com.tencent.biz.pubaccount.readinjoy.protocol.RIJPBFieldUtils;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFHandlerUtils;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSParcelableUtil;
+import com.tencent.biz.pubaccount.readinjoy.srtUtils.ShortWithLongContentUtil;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.viewmodels.ArticleViewModel;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.SmallMiniGameInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.UniteSearchHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -23,6 +36,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.pts.core.PTSComposer;
 import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
@@ -38,38 +52,6 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 import pb.unite.search.RequestSearchWord.Rcmd;
-import pqa;
-import pqw;
-import pre;
-import pzd;
-import qci;
-import qcj;
-import qxl;
-import qxm;
-import raf;
-import rny;
-import ron;
-import rop;
-import ror;
-import ros;
-import rpb;
-import rpd;
-import rpe;
-import rph;
-import rpj;
-import rpk;
-import rpr;
-import rps;
-import rpx;
-import rqd;
-import rqh;
-import rqw;
-import rqy;
-import rrl;
-import rrq;
-import rsh;
-import rsk;
-import rsn;
 import tencent.im.oidb.articlesummary.articlesummary.AggregatedList;
 import tencent.im.oidb.articlesummary.articlesummary.ArkAppFeedsInfo;
 import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
@@ -92,12 +74,10 @@ import tencent.im.oidb.articlesummary.articlesummary.VideoColumnInfo;
 import tencent.im.oidb.articlesummary.articlesummary.VideoDownloadBarInfo;
 import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
 import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
-import ttb;
-import uge;
 
 public class BaseArticleInfo
   extends Entity
-  implements rpj
+  implements IVideoCardUIModel
 {
   @notColumn
   public static final int ARTICLE_TYPE_NOMAL = 0;
@@ -105,20 +85,20 @@ public class BaseArticleInfo
   public static final int ARTICLE_TYPE_SHORT_CONTENT = 1;
   @notColumn
   private static final String TAG = "Q.readinjoy.BaseArticleInfo";
-  public static int TYPE_ARTICLE_BROWSER = 1;
-  public static int TYPE_ARTICLE_KANDIAN;
-  public static int TYPE_ARTICLE_NOVEL = 2;
+  public static int TYPE_ARTICLE_BROWSER;
+  public static int TYPE_ARTICLE_KANDIAN = 0;
+  public static int TYPE_ARTICLE_NOVEL;
   public static int TYPE_FOLLOWED_BUTTON = 2;
-  public static int TYPE_UNFOLLOW_BUTTON = 1;
+  public static int TYPE_UNFOLLOW_BUTTON;
   public String adReportCommonData;
   public String aioShareUrl;
-  public int articleStyle;
+  public int articleStyle = 0;
   @notColumn
-  public ttb articleViewModel;
+  public ArticleViewModel articleViewModel;
   public String avatar;
-  public boolean bindShowFollowButton;
+  public boolean bindShowFollowButton = false;
   public int busiType = 1;
-  public long businessId;
+  public long businessId = 0L;
   public String businessName = "";
   public String businessNamePrefix = "";
   public String businessUrl = "";
@@ -138,55 +118,60 @@ public class BaseArticleInfo
   public String dtReportBackendInfo = "";
   public int dtReportContentType = 5;
   @notColumn
-  public rpd familyCommentInfo;
+  public FamilyCommentInfo familyCommentInfo;
   public byte[] familyCommentInfoByte;
   @notColumn
   public int feedsFirstExposurePos = -1;
   @notColumn
-  private rpe firstFrameInfo;
+  private FirstFrameInfo firstFrameInfo;
   public String galleryReprotExdData;
   public String gifCoverUrl;
-  public boolean hasAwesome;
+  public boolean hasAwesome = false;
   @notColumn
-  public boolean hasBeenInsertIntoList;
+  public boolean hasBeenInsertIntoList = false;
   @notColumn
   public boolean hasRequestFollowStatus;
   public boolean hasWalletIcon;
   @notColumn
-  public boolean hintFlag;
+  public boolean hintFlag = false;
   @notColumn
-  public rph hotWordInfo;
+  public HotWordInfo hotWordInfo;
   public byte[] hotWordInfoListBytes;
   public int iconHeight;
   public String iconUrl;
   public int iconWith;
   public String innerUniqueID;
+  public String inserSeqNo;
+  public RIJFeedsInsertAction insertAction;
   public String interfaceData;
-  public boolean isAccountShown;
-  public int isCardJumpUrlAvailable;
-  public int isCloseDislike;
-  public boolean isColumnAnimationPlay;
+  public boolean isAccountShown = false;
+  public int isCardJumpUrlAvailable = 0;
+  public int isCloseDislike = 0;
+  public boolean isColumnAnimationPlay = false;
   public boolean isExtraBiuExpanded;
-  public boolean isForbidReprint;
+  @notColumn
+  public boolean isFeedsDynamicInsert = false;
+  public boolean isForbidReprint = false;
   @notColumn
   public boolean isNeeaRealExposureFilter;
   @notColumn
   public boolean isNeedShowBtnWhenFollowed;
   @notColumn
-  public boolean isPublicAccountFollowed;
-  public boolean isShowColumnAnimation;
-  public int isShowFollowButton;
+  public boolean isPublicAccountFollowed = false;
+  public boolean isShowColumnAnimation = false;
+  public int isShowFollowButton = 0;
   @notColumn
   public boolean isShowFreeNetFlow;
   @notColumn
   public boolean isShowGif;
   @notColumn
   public boolean isShowRecommendList;
-  public int isSuperTop;
-  public boolean isSuperTopic;
+  public int isSuperTop = 0;
+  public boolean isSuperTopic = false;
   @notColumn
-  public boolean isTwoItem;
+  public boolean isTwoItem = false;
   public boolean isUseGif;
+  public boolean isWatchLater;
   public String jumpUrl;
   @notColumn
   public boolean like;
@@ -195,14 +180,14 @@ public class BaseArticleInfo
   public long mAlgorithmGroup = -1L;
   public long mAlgorithmID = -1L;
   @notColumn
-  public ron mArkAppFeedsInfo;
+  public ArkAppFeedsInfo mArkAppFeedsInfo;
   public byte[] mArkAppFeedsInfoBytes;
   public String mArticleContentUrl = "";
   public String mArticleFriendLikeText;
   public long mArticleID = -1L;
   public String mArticleSubscriptColor;
   public String mArticleSubscriptText;
-  public int mArticleType;
+  public int mArticleType = 0;
   @notColumn
   private URL mCacheVideoURL;
   public String mCardJumpUrl;
@@ -213,7 +198,7 @@ public class BaseArticleInfo
   public int mChannelInfoType = -1;
   public long mCircleId;
   public long mCommentCount = -1L;
-  public int mCommentIconType;
+  public int mCommentIconType = 0;
   public byte[] mCommentInfoBytes;
   @notColumn
   public List<articlesummary.CommentInfo> mCommentsObj;
@@ -226,17 +211,17 @@ public class BaseArticleInfo
   public ArrayList<DislikeInfo> mDislikeInfos;
   public byte[] mExtraBiuBriefBytes;
   @notColumn
-  public rpb mExtraBiuBriefInfo;
+  public ExtraBiuBriefInfo mExtraBiuBriefInfo;
   public String mFeedCookie;
-  public long mFeedId;
+  public long mFeedId = 0L;
   @notColumn
   public long mFeedIndexInGroup;
-  public int mFeedType;
+  public int mFeedType = 0;
   public String mFirstPagePicUrl = "";
   public String mGWCommonData;
   @notColumn
   public galleryFeeds.GalleryFeedsInfo mGalleryFeedsInfo;
-  public int mGalleryPicNumber;
+  public int mGalleryPicNumber = 0;
   @notColumn
   public long mGroupCount;
   @notColumn
@@ -245,33 +230,33 @@ public class BaseArticleInfo
   public List<BaseArticleInfo> mGroupSubArticleList;
   @notColumn
   public URL mHeaderIconUrl;
-  public int mIsDispTimestamp;
-  public int mIsGallery;
+  public int mIsDispTimestamp = 0;
+  public int mIsGallery = 0;
   @notColumn
   public boolean mIsGalleryChannel;
   @notColumn
   public boolean mIsInPolymeric;
-  public boolean mIsPolymericGallery;
-  public int mIsShowSearchord;
+  public boolean mIsPolymericGallery = false;
+  public int mIsShowSearchord = 0;
   public String mJsonPictureList;
   public String mJsonVideoList;
   @notColumn
-  public int mJumpType;
+  public int mJumpType = 0;
   @notColumn
-  public rpk mKdLiveInfo;
+  public KandianLiveInfo mKdLiveInfo;
   public byte[] mKdLiveInfoBytes;
   @notColumn
   public List<articlesummary.ChannelInfo> mLabelListObj;
   public byte[] mLableListInfoBytes;
   public long mMergeVideoId;
   @notColumn
-  private rpj mModel;
+  private IVideoCardUIModel mModel;
   public byte[] mMultiBiuSameListBytes;
   @notColumn
   public List<articlesummary.MultiBiuSameContent> mMultiBiuSameListObj;
   public byte[] mNewPackInfoBytes;
   @notColumn
-  public rps mNewPolymericInfo;
+  public NewPolymericInfo mNewPolymericInfo;
   public String mOriginalUrl = "";
   public boolean mPUinIsActive = true;
   public byte[] mPackInfoBytes;
@@ -283,7 +268,7 @@ public class BaseArticleInfo
   @notColumn
   public URL[] mPictures;
   @notColumn
-  public rpx mPolymericInfo;
+  public PolymericInfo mPolymericInfo;
   @notColumn
   public URL mPolymericSmallVideoCoverUrl;
   @notColumn
@@ -291,7 +276,7 @@ public class BaseArticleInfo
   public long mRecommendFollowId;
   public byte[] mRecommendFollowInfoBytes;
   @notColumn
-  public rqd mRecommendFollowInfos;
+  public RecommendFollowInfos mRecommendFollowInfos;
   public long mRecommendSeq = -1L;
   public long mRecommendTime = -1L;
   public String mRecommentdReason = "";
@@ -304,14 +289,15 @@ public class BaseArticleInfo
   public String mSearchWordTitle;
   public ArrayList<RequestSearchWord.Rcmd> mSearchWords = new ArrayList();
   public byte[] mServerContext;
-  public boolean mShowBigPicture;
+  public int mShareCount = 0;
+  public boolean mShowBigPicture = false;
   @notColumn
   public VideoColumnInfo mSimpleVideoColumnInfo;
   public byte[] mSimpleVideoColumnInfoBytes;
   @notColumn
   public URL mSinglePicture;
   @notColumn
-  public uge mSmallMiniGameInfo;
+  public SmallMiniGameInfo mSmallMiniGameInfo;
   @notColumn
   public SocializeFeedsInfo mSocialFeedInfo;
   public byte[] mSocialFeedInfoByte;
@@ -335,9 +321,9 @@ public class BaseArticleInfo
   public long mTime = -1L;
   public String mTitle = "";
   public String mTopicPicInfo = "";
-  public double mTopicPicWHRatio;
+  public double mTopicPicWHRatio = 0.0D;
   @notColumn
-  public rsh mTopicRecommendFeedsInfo;
+  public TopicRecommendFeedsInfo mTopicRecommendFeedsInfo;
   public byte[] mTopicRecommendFeedsInfoByte;
   public int mVideoAdsJumpType;
   public String mVideoAdsJumpUrl;
@@ -349,7 +335,7 @@ public class BaseArticleInfo
   public byte[] mVideoColumnInfoBytes;
   public int mVideoCommentCount;
   @notColumn
-  private ros mVideoCoverInterceptor;
+  private BaseArticleInfo.OnVideoCoverInterceptor mVideoCoverInterceptor;
   @notColumn
   public URL mVideoCoverUrl;
   @notColumn
@@ -362,27 +348,30 @@ public class BaseArticleInfo
   @notColumn
   public int mVideoJsonWidth;
   public String mVideoLogoUrl;
-  public int mVideoPlayCount;
-  public int mVideoType;
+  public int mVideoPlayCount = 0;
+  public int mVideoType = 0;
   @notColumn
   public String mVideoVid;
   public byte[] mWeishiUGInfo;
   @notColumn
   public long mXGFileSize;
+  public String miniAppMovieName;
+  public String miniProgramName;
+  public String miniRowKey;
   public String msgBoxBriefContent;
   public String msgBoxBriefPreFix;
   public int msgBoxBriefPreFixType;
   @notColumn
   public ArrayList<MultiBiuSameContent> multiBiuSameContentList;
   @notColumn
-  public rpr multiVideoColumnInfo;
+  public MultiVideoColumnInfo multiVideoColumnInfo;
   public byte[] multiVideoColumnInfoBytes;
   @notColumn
-  public boolean needShowFollwedButton;
+  public boolean needShowFollwedButton = false;
   public String nickName;
   public String oldCommentId;
   @notColumn
-  public rop patchStatus = new rop();
+  public ArticlePatchStatus patchStatus = new ArticlePatchStatus();
   @notColumn
   public String preloadAvatarUrl;
   public String proteusItemsData;
@@ -393,27 +382,30 @@ public class BaseArticleInfo
   public byte[] ptsItemDataBytes;
   public String ptsLitePageName;
   @notColumn
-  public boolean ptsRoundCornerCard;
+  public boolean ptsRoundCornerCard = false;
   @notColumn
-  public boolean ptsSpecialCard;
+  public boolean ptsSpecialCard = false;
   @notColumn
-  public PTSComposer.IPTSUpdateDataListener ptsUpdateDataListener = new ror(this);
+  public PTSComposer.IPTSUpdateDataListener ptsUpdateDataListener = new BaseArticleInfo.1(this);
   public long publishUin;
   public String qzoneShareUrl;
   public String rawkey;
+  public int reqSource;
+  public ArrayList<VideoInfo.RichTitleInfo> richTitleInfoList;
   @notColumn
-  public rqh scripCmsInfo;
+  public ScripCmsInfo scripCmsInfo;
   public byte[] scripCmsInfoByte;
-  public boolean showBreathAnimation;
+  public int shareCalcuPermission = 0;
+  public boolean showBreathAnimation = false;
   public int showFollowButtonType = TYPE_UNFOLLOW_BUTTON;
   @notColumn
-  public int showMyFollowText;
+  public int showMyFollowText = 0;
   public String smallGameData;
   @notColumn
   public List<articlesummary.SRTUniversalID> srtUniversalID;
   public byte[] srtUniversalIDBytesList;
-  public qci strategy;
-  public qcj strategyCallback;
+  public IStrategy strategy;
+  public IStrategy.URLCallback strategyCallback;
   public String subscriptBgColor;
   public int subscriptLocation;
   public int subscriptType;
@@ -426,6 +418,8 @@ public class BaseArticleInfo
   public String thirdUin;
   @notColumn
   public String thirdUinName;
+  @notColumn
+  public String titleWithTopicJson;
   public long uin;
   public boolean unowned;
   public String vIconUrl;
@@ -435,12 +429,19 @@ public class BaseArticleInfo
   public String videoReportInfo;
   public String viewRowkey;
   @notColumn
-  public pzd waterFallPic;
+  public ReadInJoyPicWaterFallFragment.WaterFallPic waterFallPic;
   public String wechatShareUrl;
   @notColumn
   public articlesummary.WeishiUGInfo weishiUGInfo;
   private String wormholeData;
   private String wormholeId;
+  
+  static
+  {
+    TYPE_ARTICLE_BROWSER = 1;
+    TYPE_ARTICLE_NOVEL = 2;
+    TYPE_UNFOLLOW_BUTTON = 1;
+  }
   
   private void convertToPB()
   {
@@ -467,14 +468,14 @@ public class BaseArticleInfo
   private void ensureFirstFrameInfoNonNull()
   {
     if (this.firstFrameInfo == null) {
-      this.firstFrameInfo = new rpe();
+      this.firstFrameInfo = new FirstFrameInfo();
     }
   }
   
-  private rpj getLazyModel()
+  private IVideoCardUIModel getLazyModel()
   {
     if (this.mModel == null) {
-      this.mModel = rsn.a(this);
+      this.mModel = VideoCardUIModelUtils.a(this);
     }
     return this.mModel;
   }
@@ -482,15 +483,15 @@ public class BaseArticleInfo
   private String getPartnerAccountInfoStr()
   {
     if (this.mPartnerAccountInfo != null) {
-      return String.format("{uin: %d, head jump url: %s, reason: %s, icon_url: %s}", new Object[] { Long.valueOf(this.mPartnerAccountInfo.uint64_uin.get()), this.mPartnerAccountInfo.bytes_head_jump_url.get().toStringUtf8(), this.mPartnerAccountInfo.bytes_recommend_reason.get().toStringUtf8(), this.mPartnerAccountInfo.bytes_v_icon_url.get().toStringUtf8() });
+      return String.format("{uin: %d, head jump url: %s, reason: %s, icon_url: %s, display: %d}", new Object[] { Long.valueOf(this.mPartnerAccountInfo.uint64_uin.get()), this.mPartnerAccountInfo.bytes_head_jump_url.get().toStringUtf8(), this.mPartnerAccountInfo.bytes_recommend_reason.get().toStringUtf8(), this.mPartnerAccountInfo.bytes_v_icon_url.get().toStringUtf8(), Integer.valueOf(this.mPartnerAccountInfo.uint32_is_account_display.get()) });
     }
     return null;
   }
   
   private void getPublishUin()
   {
-    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Rqy != null)) {
-      this.publishUin = this.mSocialFeedInfo.jdField_a_of_type_Rqy.jdField_a_of_type_Long;
+    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser != null)) {
+      this.publishUin = this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long;
     }
     if ((this.mNewPolymericInfo != null) && (this.mNewPolymericInfo.jdField_a_of_type_Boolean) && (this.publishUin == 0L) && ((this.mNewPolymericInfo.jdField_a_of_type_Int == 6) || (this.mNewPolymericInfo.jdField_a_of_type_Int == 11))) {}
     try
@@ -523,7 +524,7 @@ public class BaseArticleInfo
   
   private void handleFeedsTypeInOldVersionDatabaseForGalleryCard()
   {
-    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Rrl != null) && (this.mSocialFeedInfo.jdField_a_of_type_Rrl.c == 1) && ((this.mSocialFeedInfo.jdField_a_of_type_Int == 9) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 3) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 8)))
+    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.c == 1) && ((this.mSocialFeedInfo.jdField_a_of_type_Int == 9) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 3) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 8)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.BaseArticleInfo", 2, "rewrite feedstype for gallery card articleinfo = " + toString());
@@ -531,12 +532,12 @@ public class BaseArticleInfo
       if (this.mFeedType != 1) {
         break label200;
       }
-      if (this.mSocialFeedInfo.jdField_a_of_type_Rqw == null) {
-        this.mSocialFeedInfo.jdField_a_of_type_Rqw = new rqw();
+      if (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo == null) {
+        this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo = new SocializeFeedsInfo.BiuInfo();
       }
-      if ((this.mSocialFeedInfo.jdField_a_of_type_Rqw.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_Rqw.b.intValue() != 23))
+      if ((this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.b.intValue() != 23))
       {
-        this.mSocialFeedInfo.jdField_a_of_type_Rqw.b = new Long(23L);
+        this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.b = new Long(23L);
         if (QLog.isColorLevel()) {
           QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu gallery card");
         }
@@ -573,18 +574,18 @@ public class BaseArticleInfo
   
   private void handleFeedsTypeInOldVersionDatabaseForQACard()
   {
-    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Rru != null))
+    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$WendaInfo != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.BaseArticleInfo", 2, "rewrite feedstype for wenda article articleinfo = " + toString());
       }
-      if ((this.mFeedType != 1) || (this.mSocialFeedInfo.jdField_a_of_type_Rqw == null) || (this.mSocialFeedInfo.jdField_a_of_type_Rqw.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_Rrq == null)) {
+      if ((this.mFeedType != 1) || (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo == null) || (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo == null)) {
         break label221;
       }
-      if ((this.mSocialFeedInfo.jdField_a_of_type_Rrq.b != 3) || (this.mSocialFeedInfo.jdField_a_of_type_Rqw.b.intValue() == 21)) {
+      if ((this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b != 3) || (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.b.intValue() == 21)) {
         break label157;
       }
-      this.mSocialFeedInfo.jdField_a_of_type_Rqw.b = Long.valueOf(21L);
+      this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.b = Long.valueOf(21L);
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu question card");
       }
@@ -608,20 +609,20 @@ public class BaseArticleInfo
               do
               {
                 return;
-              } while ((this.mSocialFeedInfo.jdField_a_of_type_Rrq.b != 4) || (this.mSocialFeedInfo.jdField_a_of_type_Rqw.b.intValue() == 22));
-              this.mSocialFeedInfo.jdField_a_of_type_Rqw.b = Long.valueOf(22L);
+              } while ((this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b != 4) || (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.b.intValue() == 22));
+              this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.b = Long.valueOf(22L);
             } while (!QLog.isColorLevel());
             QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu answer card");
             return;
-          } while ((this.mFeedType == 1) || (this.mSocialFeedInfo.jdField_a_of_type_Rrq == null));
-          if ((this.mSocialFeedInfo.jdField_a_of_type_Rrq.b != 3) || (this.mFeedType == 21)) {
+          } while ((this.mFeedType == 1) || (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo == null));
+          if ((this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b != 3) || (this.mFeedType == 21)) {
             break;
           }
           this.mFeedType = 21;
         } while (!QLog.isColorLevel());
         QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for question card");
         return;
-      } while ((this.mSocialFeedInfo.jdField_a_of_type_Rrq.b != 4) || (this.mFeedType == 22));
+      } while ((this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b != 4) || (this.mFeedType == 22));
       this.mFeedType = 22;
     } while (!QLog.isColorLevel());
     QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for answer card");
@@ -629,92 +630,92 @@ public class BaseArticleInfo
   
   private void handlePBValueFromStream1()
   {
-    this.mCommentsObj = qxl.a(this.mCommentInfoBytes, articlesummary.CommentInfo.class);
-    this.mMultiBiuSameListObj = qxl.a(this.mMultiBiuSameListBytes, articlesummary.MultiBiuSameContent.class);
+    this.mCommentsObj = RIJPBFieldUtils.a(this.mCommentInfoBytes, articlesummary.CommentInfo.class);
+    this.mMultiBiuSameListObj = RIJPBFieldUtils.a(this.mMultiBiuSameListBytes, articlesummary.MultiBiuSameContent.class);
     if (this.mMultiBiuSameListObj != null) {
       this.multiBiuSameContentList = MultiBiuSameContent.a(this.mMultiBiuSameListObj);
     }
-    this.mPackInfoObj = ((articlesummary.PackInfo)qxl.a(this.mPackInfoBytes, new articlesummary.PackInfo()));
+    this.mPackInfoObj = ((articlesummary.PackInfo)RIJPBFieldUtils.a(this.mPackInfoBytes, new articlesummary.PackInfo()));
     if (this.mPackInfoObj != null)
     {
-      this.mGroupId = qxl.a(this.mPackInfoObj.uint64_pack_id);
-      this.mPolymericInfo = rpx.a(this.mPackInfoObj);
+      this.mGroupId = RIJPBFieldUtils.a(this.mPackInfoObj.uint64_pack_id);
+      this.mPolymericInfo = PolymericInfo.a(this.mPackInfoObj);
     }
-    this.mSubscribeInfoObj = ((articlesummary.SubscribeInfo)qxl.a(this.mSubscribeInfoBytes, new articlesummary.SubscribeInfo()));
-    Object localObject = (articlesummary.SocializeFeedsInfo)qxl.a(this.mSocialFeedInfoByte, new articlesummary.SocializeFeedsInfo());
+    this.mSubscribeInfoObj = ((articlesummary.SubscribeInfo)RIJPBFieldUtils.a(this.mSubscribeInfoBytes, new articlesummary.SubscribeInfo()));
+    Object localObject = (articlesummary.SocializeFeedsInfo)RIJPBFieldUtils.a(this.mSocialFeedInfoByte, new articlesummary.SocializeFeedsInfo());
     if (localObject != null) {
       this.mSocialFeedInfo = SocializeFeedsInfo.a((articlesummary.SocializeFeedsInfo)localObject);
     }
-    localObject = (articlesummary.VideoColumnInfo)qxl.a(this.mVideoColumnInfoBytes, new articlesummary.VideoColumnInfo());
+    localObject = (articlesummary.VideoColumnInfo)RIJPBFieldUtils.a(this.mVideoColumnInfoBytes, new articlesummary.VideoColumnInfo());
     if (localObject != null) {
       this.mVideoColumnInfo = VideoColumnInfo.a((articlesummary.VideoColumnInfo)localObject);
     }
-    localObject = (articlesummary.VideoColumnInfo)qxl.a(this.multiVideoColumnInfoBytes, new articlesummary.VideoColumnInfo());
+    localObject = (articlesummary.VideoColumnInfo)RIJPBFieldUtils.a(this.multiVideoColumnInfoBytes, new articlesummary.VideoColumnInfo());
     if (localObject != null) {
-      this.multiVideoColumnInfo = rpr.a((articlesummary.VideoColumnInfo)localObject);
+      this.multiVideoColumnInfo = MultiVideoColumnInfo.a((articlesummary.VideoColumnInfo)localObject);
     }
-    localObject = (articlesummary.KdLiveInfo)qxl.a(this.mKdLiveInfoBytes, new articlesummary.KdLiveInfo());
+    localObject = (articlesummary.KdLiveInfo)RIJPBFieldUtils.a(this.mKdLiveInfoBytes, new articlesummary.KdLiveInfo());
     if (localObject != null) {
-      this.mKdLiveInfo = rpk.a((articlesummary.KdLiveInfo)localObject);
+      this.mKdLiveInfo = KandianLiveInfo.a((articlesummary.KdLiveInfo)localObject);
     }
-    localObject = (articlesummary.VideoColumnInfo)qxl.a(this.mSimpleVideoColumnInfoBytes, new articlesummary.VideoColumnInfo());
+    localObject = (articlesummary.VideoColumnInfo)RIJPBFieldUtils.a(this.mSimpleVideoColumnInfoBytes, new articlesummary.VideoColumnInfo());
     if (localObject != null) {
       this.mSimpleVideoColumnInfo = VideoColumnInfo.a((articlesummary.VideoColumnInfo)localObject);
     }
-    localObject = (articlesummary.ScripCmsInfo)qxl.a(this.scripCmsInfoByte, new articlesummary.ScripCmsInfo());
+    localObject = (articlesummary.ScripCmsInfo)RIJPBFieldUtils.a(this.scripCmsInfoByte, new articlesummary.ScripCmsInfo());
     if (localObject != null) {
-      this.scripCmsInfo = rqh.a((articlesummary.ScripCmsInfo)localObject);
+      this.scripCmsInfo = ScripCmsInfo.a((articlesummary.ScripCmsInfo)localObject);
     }
-    localObject = (articlesummary.FamilyCommentInfo)qxl.a(this.familyCommentInfoByte, new articlesummary.FamilyCommentInfo());
+    localObject = (articlesummary.FamilyCommentInfo)RIJPBFieldUtils.a(this.familyCommentInfoByte, new articlesummary.FamilyCommentInfo());
     if (localObject != null) {
-      this.familyCommentInfo = rpd.a((articlesummary.FamilyCommentInfo)localObject);
+      this.familyCommentInfo = FamilyCommentInfo.a((articlesummary.FamilyCommentInfo)localObject);
     }
   }
   
   private void handlePBValueFromStream2()
   {
-    this.mLabelListObj = qxl.a(this.mLableListInfoBytes, articlesummary.ChannelInfo.class);
-    Object localObject = (articlesummary.TopicRecommendFeedsInfo)qxl.a(this.mTopicRecommendFeedsInfoByte, new articlesummary.TopicRecommendFeedsInfo());
+    this.mLabelListObj = RIJPBFieldUtils.a(this.mLableListInfoBytes, articlesummary.ChannelInfo.class);
+    Object localObject = (articlesummary.TopicRecommendFeedsInfo)RIJPBFieldUtils.a(this.mTopicRecommendFeedsInfoByte, new articlesummary.TopicRecommendFeedsInfo());
     if (localObject != null) {
-      this.mTopicRecommendFeedsInfo = rsh.a((articlesummary.TopicRecommendFeedsInfo)localObject);
+      this.mTopicRecommendFeedsInfo = TopicRecommendFeedsInfo.a((articlesummary.TopicRecommendFeedsInfo)localObject);
     }
-    localObject = (articlesummary.ArkAppFeedsInfo)qxl.a(this.mArkAppFeedsInfoBytes, new articlesummary.ArkAppFeedsInfo());
+    localObject = (articlesummary.ArkAppFeedsInfo)RIJPBFieldUtils.a(this.mArkAppFeedsInfoBytes, new articlesummary.ArkAppFeedsInfo());
     if (localObject != null) {
-      this.mArkAppFeedsInfo = ron.a((articlesummary.ArkAppFeedsInfo)localObject);
+      this.mArkAppFeedsInfo = ArkAppFeedsInfo.a((articlesummary.ArkAppFeedsInfo)localObject);
     }
-    this.mSubSummaryListObj = qxl.a(this.mSubArticleListBytes, articlesummary.ArticleSummary.class);
+    this.mSubSummaryListObj = RIJPBFieldUtils.a(this.mSubArticleListBytes, articlesummary.ArticleSummary.class);
     if ((this.mSubSummaryListObj != null) && (this.mSubSummaryListObj.size() > 0))
     {
       localObject = new ArrayList(this.mSubSummaryListObj.size());
       Iterator localIterator = this.mSubSummaryListObj.iterator();
       while (localIterator.hasNext()) {
-        ((ArrayList)localObject).add(qxm.a((articlesummary.ArticleSummary)localIterator.next(), (int)this.mChannelID, 0, null));
+        ((ArrayList)localObject).add(ReadInJoyMSFHandlerUtils.a((articlesummary.ArticleSummary)localIterator.next(), (int)this.mChannelID, 0, null));
       }
       this.mSubArtilceList = ((List)localObject);
     }
-    localObject = (articlesummary.NewPackInfo)qxl.a(this.mNewPackInfoBytes, new articlesummary.NewPackInfo());
+    localObject = (articlesummary.NewPackInfo)RIJPBFieldUtils.a(this.mNewPackInfoBytes, new articlesummary.NewPackInfo());
     if (localObject != null) {
-      this.mNewPolymericInfo = rps.a((articlesummary.NewPackInfo)localObject);
+      this.mNewPolymericInfo = NewPolymericInfo.a((articlesummary.NewPackInfo)localObject);
     }
-    localObject = (articlesummary.RecommendFollowInfos)qxl.a(this.mRecommendFollowInfoBytes, new articlesummary.RecommendFollowInfos());
+    localObject = (articlesummary.RecommendFollowInfos)RIJPBFieldUtils.a(this.mRecommendFollowInfoBytes, new articlesummary.RecommendFollowInfos());
     if (localObject != null) {
-      this.mRecommendFollowInfos = rqd.a((articlesummary.RecommendFollowInfos)localObject);
+      this.mRecommendFollowInfos = RecommendFollowInfos.a((articlesummary.RecommendFollowInfos)localObject);
     }
-    localObject = (articlesummary.HotWordInfo)qxl.a(this.hotWordInfoListBytes, new articlesummary.HotWordInfo());
+    localObject = (articlesummary.HotWordInfo)RIJPBFieldUtils.a(this.hotWordInfoListBytes, new articlesummary.HotWordInfo());
     if (localObject != null) {
-      this.hotWordInfo = rph.a((articlesummary.HotWordInfo)localObject);
+      this.hotWordInfo = HotWordInfo.a((articlesummary.HotWordInfo)localObject);
     }
-    localObject = (articlesummary.AggregatedList)qxl.a(this.mExtraBiuBriefBytes, new articlesummary.AggregatedList());
+    localObject = (articlesummary.AggregatedList)RIJPBFieldUtils.a(this.mExtraBiuBriefBytes, new articlesummary.AggregatedList());
     if (localObject != null) {
-      this.mExtraBiuBriefInfo = rpb.a((articlesummary.AggregatedList)localObject);
+      this.mExtraBiuBriefInfo = ExtraBiuBriefInfo.a((articlesummary.AggregatedList)localObject);
     }
     handlerFeedsTypeInOldVersionDatabase();
-    this.mGalleryFeedsInfo = ((galleryFeeds.GalleryFeedsInfo)qxl.a(this.bytesBusiData, new galleryFeeds.GalleryFeedsInfo()));
-    this.mVideoDownloadBarInfo = ((articlesummary.VideoDownloadBarInfo)qxl.a(this.mVideoDownloadBarInfoBytes, new articlesummary.VideoDownloadBarInfo()));
-    this.mPartnerAccountInfo = ((articlesummary.PartnerAccountInfo)qxl.a(this.mPartnerAccountInfoBytes, new articlesummary.PartnerAccountInfo()));
-    this.srtUniversalID = qxl.a(this.srtUniversalIDBytesList, articlesummary.SRTUniversalID.class);
-    this.weishiUGInfo = ((articlesummary.WeishiUGInfo)qxl.a(this.mWeishiUGInfo, new articlesummary.WeishiUGInfo()));
-    rny.a(this);
+    this.mGalleryFeedsInfo = ((galleryFeeds.GalleryFeedsInfo)RIJPBFieldUtils.a(this.bytesBusiData, new galleryFeeds.GalleryFeedsInfo()));
+    this.mVideoDownloadBarInfo = ((articlesummary.VideoDownloadBarInfo)RIJPBFieldUtils.a(this.mVideoDownloadBarInfoBytes, new articlesummary.VideoDownloadBarInfo()));
+    this.mPartnerAccountInfo = ((articlesummary.PartnerAccountInfo)RIJPBFieldUtils.a(this.mPartnerAccountInfoBytes, new articlesummary.PartnerAccountInfo()));
+    this.srtUniversalID = RIJPBFieldUtils.a(this.srtUniversalIDBytesList, articlesummary.SRTUniversalID.class);
+    this.weishiUGInfo = ((articlesummary.WeishiUGInfo)RIJPBFieldUtils.a(this.mWeishiUGInfo, new articlesummary.WeishiUGInfo()));
+    ShortWithLongContentUtil.a(this);
   }
   
   private <T extends MessageMicro<T>> byte[] toByteArrayOrNull(T paramT)
@@ -809,9 +810,9 @@ public class BaseArticleInfo
   {
     if (this.mPolymericSmallVideoCoverUrl == null)
     {
-      rpj localrpj = getLazyModel();
-      if ((localrpj instanceof rsk)) {
-        this.mPolymericSmallVideoCoverUrl = ((rsk)localrpj).getVideoCoverWithSmartCut(paramInt1, paramInt2);
+      IVideoCardUIModel localIVideoCardUIModel = getLazyModel();
+      if ((localIVideoCardUIModel instanceof UGCVideoCardUIModel)) {
+        this.mPolymericSmallVideoCoverUrl = ((UGCVideoCardUIModel)localIVideoCardUIModel).getVideoCoverWithSmartCut(paramInt1, paramInt2);
       }
     }
     else
@@ -826,7 +827,7 @@ public class BaseArticleInfo
     if (this.mPolymericSmallVideoCoverUrl == null)
     {
       if (!TextUtils.isEmpty(paramString)) {
-        this.mPolymericSmallVideoCoverUrl = pqa.a(pre.a(paramString, paramInt1, paramInt2));
+        this.mPolymericSmallVideoCoverUrl = RIJPreParseData.a(RIJSmartCropUtils.a(paramString, paramInt1, paramInt2));
       }
     }
     else {
@@ -874,7 +875,7 @@ public class BaseArticleInfo
     try
     {
       JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("feeds_type", this.mFeedType).put("feeds_id", this.mFeedId).put("rowkey", this.innerUniqueID).put("article_id", String.valueOf(this.mArticleID)).put("article_title", this.mTitle).put("video_json", this.mJsonVideoList).put("article_content_url", this.mArticleContentUrl).put("comment_count", this.mCommentCount).put("video_comment_count", this.mVideoCommentCount).put("firstpage_pic_url", this.mFirstPagePicUrl).put("video_logo_url", this.mVideoLogoUrl).put("socialize_info", getSocialInfo()).put("bind_json", this.proteusItemsData).put("video_play_count", this.mVideoPlayCount).put("ads_jump_url", this.mVideoAdsJumpUrl).put("ads_jump_type", this.mVideoAdsJumpType).put("ads_source", this.mVideoAdsSource).put("channel_id", this.mChannelID).put("algorithm_id", this.mAlgorithmID).put("strategy_id", this.mStrategyId).put("article_type", this.mArticleType).put("recommend_time", this.mRecommendTime).put("recommend_seq", this.mRecommendSeq).put("article_time", this.mTime).put("article_style", getWormholeId());
+      localJSONObject2.put("feeds_type", this.mFeedType).put("feeds_id", this.mFeedId).put("rowkey", this.innerUniqueID).put("article_id", String.valueOf(this.mArticleID)).put("article_title", this.mTitle).put("video_json", this.mJsonVideoList).put("article_content_url", this.mArticleContentUrl).put("comment_count", this.mCommentCount).put("share_count", this.mShareCount).put("video_comment_count", this.mVideoCommentCount).put("firstpage_pic_url", this.mFirstPagePicUrl).put("video_logo_url", this.mVideoLogoUrl).put("socialize_info", getSocialInfo()).put("bind_json", this.proteusItemsData).put("video_play_count", this.mVideoPlayCount).put("ads_jump_url", this.mVideoAdsJumpUrl).put("ads_jump_type", this.mVideoAdsJumpType).put("ads_source", this.mVideoAdsSource).put("channel_id", this.mChannelID).put("algorithm_id", this.mAlgorithmID).put("strategy_id", this.mStrategyId).put("article_type", this.mArticleType).put("recommend_time", this.mRecommendTime).put("recommend_seq", this.mRecommendSeq).put("article_time", this.mTime).put("article_style", getWormholeId());
       localJSONObject1.put("loadInstance", new JSONObject().put("id", getWormholeId()).put("param", localJSONObject2));
       this.wormholeData = localJSONObject1.toString();
       return this.wormholeData;
@@ -917,12 +918,12 @@ public class BaseArticleInfo
   
   public boolean hasOnlyTwoVideoFeeds()
   {
-    if ((!pqw.a(this)) && (!pqw.f(this))) {}
+    if ((!RIJFeedsType.a(this)) && (!RIJFeedsType.f(this))) {}
     while ((this.mSubArtilceList == null) || (this.mSubArtilceList.size() != 1)) {
       return false;
     }
     ArticleInfo localArticleInfo = (ArticleInfo)this.mSubArtilceList.get(0);
-    if ((localArticleInfo != null) && ((pqw.a(localArticleInfo)) || (pqw.f(localArticleInfo)))) {}
+    if ((localArticleInfo != null) && ((RIJFeedsType.a(localArticleInfo)) || (RIJFeedsType.f(localArticleInfo)))) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -940,12 +941,12 @@ public class BaseArticleInfo
   
   public boolean isPGCShortContent()
   {
-    return ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Rrl != null) && (this.mSocialFeedInfo.jdField_a_of_type_Rrl.jdField_a_of_type_Boolean)) || (this.mArticleType == 1);
+    return ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_Boolean)) || (this.mArticleType == 1);
   }
   
   public boolean isSocialFeed()
   {
-    return (this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Rqy != null);
+    return (this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser != null);
   }
   
   public boolean isSubscriptFeed()
@@ -993,22 +994,22 @@ public class BaseArticleInfo
   {
     handlePBValueFromStream1();
     handlePBValueFromStream2();
-    PBRepeatMessageField localPBRepeatMessageField = qxl.a(this.columnEntrancesBytes, articlesummary.VideoColumnInfo.class);
+    PBRepeatMessageField localPBRepeatMessageField = RIJPBFieldUtils.a(this.columnEntrancesBytes, articlesummary.VideoColumnInfo.class);
     if (localPBRepeatMessageField != null) {
       this.columnEntrances = VideoColumnInfo.a(localPBRepeatMessageField);
     }
     if ((this.ptsItemDataBytes != null) && (this.ptsItemDataBytes.length > 0)) {
-      this.ptsItemData = ((PTSItemData)raf.a(this.ptsItemDataBytes, PTSItemData.CREATOR));
+      this.ptsItemData = ((PTSItemData)PTSParcelableUtil.a(this.ptsItemDataBytes, PTSItemData.CREATOR));
     }
     if (!TextUtils.isEmpty(this.smallGameData)) {
-      this.mSmallMiniGameInfo = uge.a(this.smallGameData);
+      this.mSmallMiniGameInfo = SmallMiniGameInfo.a(this.smallGameData);
     }
   }
   
   public void prewrite()
   {
-    this.mCommentInfoBytes = qxl.a(this.mCommentsObj, articlesummary.CommentInfo.class);
-    this.mMultiBiuSameListBytes = qxl.a(this.mMultiBiuSameListObj, articlesummary.MultiBiuSameContent.class);
+    this.mCommentInfoBytes = RIJPBFieldUtils.a(this.mCommentsObj, articlesummary.CommentInfo.class);
+    this.mMultiBiuSameListBytes = RIJPBFieldUtils.a(this.mMultiBiuSameListObj, articlesummary.MultiBiuSameContent.class);
     this.mPackInfoBytes = toByteArrayOrNull(this.mPackInfoObj);
     this.mSubArticleListBytes = toByteArrayOrNull(this.mSubscribeInfoObj);
     if (this.mTopicRecommendFeedsInfo != null) {
@@ -1017,8 +1018,8 @@ public class BaseArticleInfo
     if (this.mArkAppFeedsInfo != null) {
       this.mArkAppFeedsInfoBytes = toByteArrayOrNull(this.mArkAppFeedsInfo.a());
     }
-    this.mLableListInfoBytes = qxl.a(this.mLabelListObj, articlesummary.ChannelInfo.class);
-    this.mSubArticleListBytes = qxl.a(this.mSubSummaryListObj, articlesummary.ArticleSummary.class);
+    this.mLableListInfoBytes = RIJPBFieldUtils.a(this.mLabelListObj, articlesummary.ChannelInfo.class);
+    this.mSubArticleListBytes = RIJPBFieldUtils.a(this.mSubSummaryListObj, articlesummary.ArticleSummary.class);
     getPublishUin();
     if (this.mExtraBiuBriefInfo != null) {
       this.mExtraBiuBriefBytes = this.mExtraBiuBriefInfo.a();
@@ -1032,10 +1033,10 @@ public class BaseArticleInfo
       while (localIterator.hasNext()) {
         localPBRepeatMessageField.add(((VideoColumnInfo)localIterator.next()).a());
       }
-      this.columnEntrancesBytes = qxl.a(localPBRepeatMessageField);
+      this.columnEntrancesBytes = RIJPBFieldUtils.a(localPBRepeatMessageField);
     }
     if (this.ptsItemData != null) {
-      this.ptsItemDataBytes = raf.a(this.ptsItemData);
+      this.ptsItemDataBytes = PTSParcelableUtil.a(this.ptsItemData);
     }
     convertToPB();
   }
@@ -1064,9 +1065,9 @@ public class BaseArticleInfo
     this.firstFrameInfo.a(paramBoolean);
   }
   
-  public void setOnVideoCoverInterceptor(ros paramros)
+  public void setOnVideoCoverInterceptor(BaseArticleInfo.OnVideoCoverInterceptor paramOnVideoCoverInterceptor)
   {
-    this.mVideoCoverInterceptor = paramros;
+    this.mVideoCoverInterceptor = paramOnVideoCoverInterceptor;
   }
   
   public void setSearchWordInfo(String paramString, PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField)
@@ -1084,8 +1085,8 @@ public class BaseArticleInfo
     this.mSearchWords.clear();
     localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Paint localPaint = new Paint();
-    localPaint.setTextSize(AIOUtils.dp2px(14.0F, ((QQAppInterface)localObject).getApp().getResources()));
-    int i = (int)DeviceInfoUtil.getWidth() - AIOUtils.dp2px(14.0F, ((QQAppInterface)localObject).getApp().getResources()) - (int)localPaint.measureText(paramString);
+    localPaint.setTextSize(AIOUtils.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()));
+    int i = (int)DeviceInfoUtil.k() - AIOUtils.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()) - (int)localPaint.measureText(paramString);
     int j;
     label146:
     RequestSearchWord.Rcmd localRcmd;
@@ -1105,13 +1106,13 @@ public class BaseArticleInfo
         {
           localRcmd = (RequestSearchWord.Rcmd)paramPBStringField.next();
           int k = (int)localPaint.measureText(localRcmd.word.get().toStringUtf8());
-          k = AIOUtils.dp2px(38.0F, ((QQAppInterface)localObject).getApp().getResources()) + k;
+          k = AIOUtils.a(38.0F, ((QQAppInterface)localObject).getApp().getResources()) + k;
           if (i - k > 0) {
             if (TextUtils.isEmpty(paramString))
             {
               paramString = paramString + localRcmd.word.get().toStringUtf8();
               label264:
-              int m = AIOUtils.dp2px(14.0F, ((QQAppInterface)localObject).getApp().getResources());
+              int m = AIOUtils.a(14.0F, ((QQAppInterface)localObject).getApp().getResources());
               this.mSearchWords.add(localRcmd);
               paramPBStringField.remove();
               i -= k - m;
@@ -1133,8 +1134,8 @@ public class BaseArticleInfo
       if (this.innerUniqueID != null) {
         paramPBRepeatMessageField = ByteStringMicro.copyFromUtf8(this.innerUniqueID).toStringUtf8();
       }
-      bcjs.a(null, new ReportModelDC02528().module("all_result").action("exp_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(this.mArticleContentUrl).ver4(paramString).ver5(this.mTitle).ver6(paramPBRepeatMessageField).session_id(this.mSearchWordSessionId));
-      ((aogi)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.UNITE_SEARCH_HANDLER)).a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "exp_Kdfeedsback_list", this.mSearchWordSessionId, this.mArticleContentUrl, paramString, this.mTitle, paramPBRepeatMessageField);
+      UniteSearchReportController.a(null, new ReportModelDC02528().module("all_result").action("exp_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(this.mArticleContentUrl).ver4(paramString).ver5(this.mTitle).ver6(paramPBRepeatMessageField).session_id(this.mSearchWordSessionId));
+      ((UniteSearchHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.UNITE_SEARCH_HANDLER)).a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "exp_Kdfeedsback_list", this.mSearchWordSessionId, this.mArticleContentUrl, paramString, this.mTitle, paramPBRepeatMessageField);
       return;
     }
   }
@@ -1146,7 +1147,7 @@ public class BaseArticleInfo
   
   public String toSString()
   {
-    return "BaseArticleInfo{mArticleID=" + this.mArticleID + ", mTitle='" + this.mTitle + '\'' + ", mSummary='" + this.mSummary + '\'' + ", mFirstPagePicUrl='" + this.mFirstPagePicUrl + '\'' + ", mOriginalUrl='" + this.mOriginalUrl + '\'' + ", mArticleContentUrl='" + this.mArticleContentUrl + '\'' + ", mTime=" + this.mTime + ", mCommentCount=" + this.mCommentCount + ", mCommentShareUrl=" + this.commentShareUrl + ", mSubscribeID='" + this.mSubscribeID + '\'' + ", mSubscribeName='" + this.mSubscribeName + '\'' + ", mRecommendTime=" + this.mRecommendTime + ", mChannelID=" + this.mChannelID + ", mRecommendSeq=" + this.mRecommendSeq + ", mShowBigPicture=" + this.mShowBigPicture + ", mAlgorithmID=" + this.mAlgorithmID + ", mAlgorithmGroup=" + this.mAlgorithmGroup + ", mRecommentdReason='" + this.mRecommentdReason + '\'' + ", mJsonVideoList='" + this.mJsonVideoList + '\'' + ", mJsonPictureList='" + this.mJsonPictureList + '\'' + ", mAbandonRepeatFlag=" + this.mAbandonRepeatFlag + ", mArticleSubscriptText='" + this.mArticleSubscriptText + '\'' + ", mArticleSubscriptColor='" + this.mArticleSubscriptColor + '\'' + ", mArticleFriendLikeText='" + this.mArticleFriendLikeText + '\'' + ", mStrategyId=" + this.mStrategyId + ", mTopicPicWHRatio=" + this.mTopicPicWHRatio + ", mTopicPicInfo='" + this.mTopicPicInfo + '\'' + ", thirdIcon='" + this.thirdIcon + '\'' + ", thirdName='" + this.thirdName + '\'' + ", thirdAction='" + this.thirdAction + '\'' + ", busiType=" + this.busiType + ", innerUniqueID='" + this.innerUniqueID + '\'' + ", mVideoType=" + this.mVideoType + ", mChannelInfoId=" + this.mChannelInfoId + ", mChannelInfoName='" + this.mChannelInfoName + '\'' + ", mChannelInfoType=" + this.mChannelInfoType + ", mChannelInfoDisplayName='" + this.mChannelInfoDisplayName + '\'' + ", mCommentIconType=" + this.mCommentIconType + ", mServerContext=" + Arrays.toString(this.mServerContext) + ", mDiskLikeInfoString='" + this.mDiskLikeInfoString + '\'' + ", mSocialFeedInfoByte=" + Arrays.toString(this.mSocialFeedInfoByte) + ", mTopicRecommendFeedsInfoByte=" + Arrays.toString(this.mTopicRecommendFeedsInfoByte) + ", mFeedId=" + this.mFeedId + ", mFeedType=" + this.mFeedType + ", mCircleId=" + this.mCircleId + ", mStrCircleId='" + this.mStrCircleId + '\'' + ", mPUinIsActive=" + this.mPUinIsActive + ", mIsDispTimestamp=" + this.mIsDispTimestamp + ", mIsGallery=" + this.mIsGallery + ", mGalleryPicNumber=" + this.mGalleryPicNumber + ", mCommentInfoBytes=" + Arrays.toString(this.mCommentInfoBytes) + ", mPackInfoBytes=" + Arrays.toString(this.mPackInfoBytes) + ", mSubscribeInfoBytes=" + Arrays.toString(this.mSubscribeInfoBytes) + ", mVideoPlayCount=" + this.mVideoPlayCount + ", mLableListInfoBytes=" + Arrays.toString(this.mLableListInfoBytes) + ", videoJumpChannelID=" + this.videoJumpChannelID + ", videoJumpChannelType=" + this.videoJumpChannelType + ", videoJumpChannelName='" + this.videoJumpChannelName + '\'' + ", businessId=" + this.businessId + ", businessName='" + this.businessName + '\'' + ", businessUrl='" + this.businessUrl + '\'' + ", businessNamePrefix='" + this.businessNamePrefix + '\'' + ", mAccountLess=" + this.mAccountLess + ", publishUin=" + this.publishUin + ", interfaceData='" + this.interfaceData + '\'' + ", galleryReprotExdData='" + this.galleryReprotExdData + '\'' + ", articleStyle=" + this.articleStyle + ", proteusItemsData='" + this.proteusItemsData + '\'' + ", mArkAppFeedsInfo=" + this.mArkAppFeedsInfo + ", mArkAppFeedsInfoBytes=" + Arrays.toString(this.mArkAppFeedsInfoBytes) + ", mDislikeInfos=" + this.mDislikeInfos + ", like=" + this.like + ", mPictures=" + Arrays.toString(this.mPictures) + ", mSinglePicture=" + this.mSinglePicture + ", mVideoCoverUrl=" + this.mVideoCoverUrl + ", mVideoVid='" + this.mVideoVid + '\'' + ", mVideoDuration=" + this.mVideoDuration + ", mVideoJsonWidth=" + this.mVideoJsonWidth + ", mVideoJsonHeight=" + this.mVideoJsonHeight + ", mXGFileSize=" + this.mXGFileSize + ", mThirdVideoURL='" + this.mThirdVideoURL + '\'' + ", mThirdVideoURLExpireTime=" + this.mThirdVideoURLExpireTime + ", thirdUin='" + this.thirdUin + '\'' + ", thirdUinName='" + this.thirdUinName + '\'' + ", mCommentsObj=" + this.mCommentsObj + ", mPackInfoObj=" + this.mPackInfoObj + ", mPolymericInfo=" + this.mPolymericInfo + ", mIsInPolymeric=" + this.mIsInPolymeric + ", mSubscribeInfoObj=" + this.mSubscribeInfoObj + ", mGroupId=" + this.mGroupId + ", mGroupCount=" + this.mGroupCount + ", mFeedIndexInGroup=" + this.mFeedIndexInGroup + ", mHeaderIconUrl=" + this.mHeaderIconUrl + ", mSocialFeedInfo=" + this.mSocialFeedInfo + ", mLabelListObj=" + this.mLabelListObj + ", mTopicRecommendFeedsInfo=" + this.mTopicRecommendFeedsInfo + ", isNeedShowBtnWhenFollowed=" + this.isNeedShowBtnWhenFollowed + ", feedsFirstExposurePos=" + this.feedsFirstExposurePos + ", mSubArticleListBytes=" + Arrays.toString(this.mSubArticleListBytes) + ", mSubSummaryListObj=" + this.mSubSummaryListObj + ", mSubArtilceList=" + this.mSubArtilceList + ", mMergeVideoId=" + this.mMergeVideoId + ", mGroupSubArticleList=" + this.mGroupSubArticleList + ", mVideoCommentCount=" + this.mVideoCommentCount + ", mProteusTemplateBean=" + this.mProteusTemplateBean + ", mVideoArticleSubsText='" + this.mVideoArticleSubsText + '\'' + ", mVideoArticleSubsColor='" + this.mVideoArticleSubsColor + '\'' + ", mVideoAdsJumpUrl='" + this.mVideoAdsJumpUrl + '\'' + ", mVideoAdsJumpType=" + this.mVideoAdsJumpType + ", mVideoAdsSource=" + this.mVideoAdsSource + ", mVideoLogoUrl=" + this.mVideoLogoUrl + '}';
+    return "BaseArticleInfo{mArticleID=" + this.mArticleID + ", mTitle='" + this.mTitle + '\'' + ", mSummary='" + this.mSummary + '\'' + ", mFirstPagePicUrl='" + this.mFirstPagePicUrl + '\'' + ", mOriginalUrl='" + this.mOriginalUrl + '\'' + ", mArticleContentUrl='" + this.mArticleContentUrl + '\'' + ", mTime=" + this.mTime + ", mCommentCount=" + this.mCommentCount + ", mShareCount=" + this.mShareCount + ", mCommentShareUrl=" + this.commentShareUrl + ", mSubscribeID='" + this.mSubscribeID + '\'' + ", mSubscribeName='" + this.mSubscribeName + '\'' + ", mRecommendTime=" + this.mRecommendTime + ", mChannelID=" + this.mChannelID + ", mRecommendSeq=" + this.mRecommendSeq + ", mShowBigPicture=" + this.mShowBigPicture + ", mAlgorithmID=" + this.mAlgorithmID + ", mAlgorithmGroup=" + this.mAlgorithmGroup + ", mRecommentdReason='" + this.mRecommentdReason + '\'' + ", mJsonVideoList='" + this.mJsonVideoList + '\'' + ", mJsonPictureList='" + this.mJsonPictureList + '\'' + ", mAbandonRepeatFlag=" + this.mAbandonRepeatFlag + ", mArticleSubscriptText='" + this.mArticleSubscriptText + '\'' + ", mArticleSubscriptColor='" + this.mArticleSubscriptColor + '\'' + ", mArticleFriendLikeText='" + this.mArticleFriendLikeText + '\'' + ", mStrategyId=" + this.mStrategyId + ", mTopicPicWHRatio=" + this.mTopicPicWHRatio + ", mTopicPicInfo='" + this.mTopicPicInfo + '\'' + ", thirdIcon='" + this.thirdIcon + '\'' + ", thirdName='" + this.thirdName + '\'' + ", thirdAction='" + this.thirdAction + '\'' + ", busiType=" + this.busiType + ", innerUniqueID='" + this.innerUniqueID + '\'' + ", mVideoType=" + this.mVideoType + ", mChannelInfoId=" + this.mChannelInfoId + ", mChannelInfoName='" + this.mChannelInfoName + '\'' + ", mChannelInfoType=" + this.mChannelInfoType + ", mChannelInfoDisplayName='" + this.mChannelInfoDisplayName + '\'' + ", mCommentIconType=" + this.mCommentIconType + ", mServerContext=" + Arrays.toString(this.mServerContext) + ", mDiskLikeInfoString='" + this.mDiskLikeInfoString + '\'' + ", mSocialFeedInfoByte=" + Arrays.toString(this.mSocialFeedInfoByte) + ", mTopicRecommendFeedsInfoByte=" + Arrays.toString(this.mTopicRecommendFeedsInfoByte) + ", mFeedId=" + this.mFeedId + ", mFeedType=" + this.mFeedType + ", mCircleId=" + this.mCircleId + ", mStrCircleId='" + this.mStrCircleId + '\'' + ", mPUinIsActive=" + this.mPUinIsActive + ", mIsDispTimestamp=" + this.mIsDispTimestamp + ", mIsGallery=" + this.mIsGallery + ", mGalleryPicNumber=" + this.mGalleryPicNumber + ", mCommentInfoBytes=" + Arrays.toString(this.mCommentInfoBytes) + ", mPackInfoBytes=" + Arrays.toString(this.mPackInfoBytes) + ", mSubscribeInfoBytes=" + Arrays.toString(this.mSubscribeInfoBytes) + ", mVideoPlayCount=" + this.mVideoPlayCount + ", mLableListInfoBytes=" + Arrays.toString(this.mLableListInfoBytes) + ", videoJumpChannelID=" + this.videoJumpChannelID + ", videoJumpChannelType=" + this.videoJumpChannelType + ", videoJumpChannelName='" + this.videoJumpChannelName + '\'' + ", businessId=" + this.businessId + ", businessName='" + this.businessName + '\'' + ", businessUrl='" + this.businessUrl + '\'' + ", businessNamePrefix='" + this.businessNamePrefix + '\'' + ", mAccountLess=" + this.mAccountLess + ", publishUin=" + this.publishUin + ", interfaceData='" + this.interfaceData + '\'' + ", galleryReprotExdData='" + this.galleryReprotExdData + '\'' + ", articleStyle=" + this.articleStyle + ", proteusItemsData='" + this.proteusItemsData + '\'' + ", mArkAppFeedsInfo=" + this.mArkAppFeedsInfo + ", mArkAppFeedsInfoBytes=" + Arrays.toString(this.mArkAppFeedsInfoBytes) + ", mDislikeInfos=" + this.mDislikeInfos + ", like=" + this.like + ", mPictures=" + Arrays.toString(this.mPictures) + ", mSinglePicture=" + this.mSinglePicture + ", mVideoCoverUrl=" + this.mVideoCoverUrl + ", mVideoVid='" + this.mVideoVid + '\'' + ", mVideoDuration=" + this.mVideoDuration + ", mVideoJsonWidth=" + this.mVideoJsonWidth + ", mVideoJsonHeight=" + this.mVideoJsonHeight + ", mXGFileSize=" + this.mXGFileSize + ", mThirdVideoURL='" + this.mThirdVideoURL + '\'' + ", mThirdVideoURLExpireTime=" + this.mThirdVideoURLExpireTime + ", thirdUin='" + this.thirdUin + '\'' + ", thirdUinName='" + this.thirdUinName + '\'' + ", mCommentsObj=" + this.mCommentsObj + ", mPackInfoObj=" + this.mPackInfoObj + ", mPolymericInfo=" + this.mPolymericInfo + ", mIsInPolymeric=" + this.mIsInPolymeric + ", mSubscribeInfoObj=" + this.mSubscribeInfoObj + ", mGroupId=" + this.mGroupId + ", mGroupCount=" + this.mGroupCount + ", mFeedIndexInGroup=" + this.mFeedIndexInGroup + ", mHeaderIconUrl=" + this.mHeaderIconUrl + ", mSocialFeedInfo=" + this.mSocialFeedInfo + ", mLabelListObj=" + this.mLabelListObj + ", mTopicRecommendFeedsInfo=" + this.mTopicRecommendFeedsInfo + ", isNeedShowBtnWhenFollowed=" + this.isNeedShowBtnWhenFollowed + ", feedsFirstExposurePos=" + this.feedsFirstExposurePos + ", mSubArticleListBytes=" + Arrays.toString(this.mSubArticleListBytes) + ", mSubSummaryListObj=" + this.mSubSummaryListObj + ", mSubArtilceList=" + this.mSubArtilceList + ", mMergeVideoId=" + this.mMergeVideoId + ", mGroupSubArticleList=" + this.mGroupSubArticleList + ", mVideoCommentCount=" + this.mVideoCommentCount + ", mProteusTemplateBean=" + this.mProteusTemplateBean + ", mVideoArticleSubsText='" + this.mVideoArticleSubsText + '\'' + ", mVideoArticleSubsColor='" + this.mVideoArticleSubsColor + '\'' + ", mVideoAdsJumpUrl='" + this.mVideoAdsJumpUrl + '\'' + ", mVideoAdsJumpType=" + this.mVideoAdsJumpType + ", mVideoAdsSource=" + this.mVideoAdsSource + ", mVideoLogoUrl=" + this.mVideoLogoUrl + ", titleWithTopicJson=" + this.titleWithTopicJson + '}';
   }
   
   public String toString()
@@ -1154,13 +1155,13 @@ public class BaseArticleInfo
     StringBuilder localStringBuilder = new StringBuilder().append("BaseArticleInfo{mArticleID=").append(this.mArticleID).append("\n, mRecommendSeq=").append(this.mRecommendSeq).append("\n, mTitle=").append(this.mTitle).append("\n, mSummary=").append(this.mSummary).append("\n, mPUinIsActive=").append(this.mPUinIsActive).append("\n, mFeedType=").append(this.mFeedType).append("\n, mResolvedFeedType=").append(this.mResolvedFeedType).append("\n, mRowKey=").append(this.innerUniqueID).append("\n, icon_url=").append(this.iconUrl).append("\n, icon_with=").append(this.iconWith).append("\n, icon_height=").append(this.iconHeight).append("\n, uin=").append(this.uin).append("\n, nick_name=").append(this.nickName).append("\n, comment_id=").append(this.oldCommentId).append("\n, content=").append(this.content).append("\n, jump_url=").append(this.jumpUrl).append("\n, isUseGif=").append(this.isUseGif).append("\n, mFirstPagePicUrl= ").append(this.mFirstPagePicUrl).append("\n, mJsonPictureList= ").append(this.mJsonPictureList).append("\n, mJsonVideoList= ").append(this.mJsonVideoList).append("\n, proteusItemsData= ").append(this.proteusItemsData).append("\n, mNewPolymericInfo= ").append(this.mNewPolymericInfo).append("\n, mFeedId=");
     if (this.mSocialFeedInfo != null) {}
     for (long l = this.mSocialFeedInfo.jdField_a_of_type_Long;; l = 0L) {
-      return l + "\n, isShowRecommendList= " + this.isShowRecommendList + "\n, isPGCShortContent= " + isPGCShortContent() + "\n, isAccountShown= " + this.isAccountShown + "\n, mSocialFeedInfo= " + this.mSocialFeedInfo + "\n, mExtraBiuLevel= " + rpb.a(this) + "\n, mArticleContentUrl= " + this.mArticleContentUrl + "\n, isCardJumpUrlAvailable= " + this.isCardJumpUrlAvailable + "\n, mCardJumpUrl= " + this.mCardJumpUrl + "\n, commentBtnJumpUrl= " + this.commentBtnJumpUrl + "\n, mPartnerAccountInfo= " + getPartnerAccountInfoStr() + "\n, comment_jump_url= " + this.commentJumpUrl + "\n, adReportCommonData= " + this.adReportCommonData + "\n, isForbidReprint=" + this.isForbidReprint + "\n, isShowFollowButton=" + this.isShowFollowButton + '}';
+      return l + "\n, isShowRecommendList= " + this.isShowRecommendList + "\n, isPGCShortContent= " + isPGCShortContent() + "\n, isAccountShown= " + this.isAccountShown + "\n, mSocialFeedInfo= " + this.mSocialFeedInfo + "\n, mExtraBiuLevel= " + ExtraBiuBriefInfo.a(this) + "\n, mArticleContentUrl= " + this.mArticleContentUrl + "\n, isCardJumpUrlAvailable= " + this.isCardJumpUrlAvailable + "\n, mCardJumpUrl= " + this.mCardJumpUrl + "\n, commentBtnJumpUrl= " + this.commentBtnJumpUrl + "\n, mPartnerAccountInfo= " + getPartnerAccountInfoStr() + "\n, comment_jump_url= " + this.commentJumpUrl + "\n, adReportCommonData= " + this.adReportCommonData + "\n, isForbidReprint=" + this.isForbidReprint + "\n, isShowFollowButton=" + this.isShowFollowButton + "\n, titleWithTopicJson=" + this.titleWithTopicJson + '}';
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo
  * JD-Core Version:    0.7.0.1
  */

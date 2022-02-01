@@ -1,31 +1,39 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bheg;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.qphone.base.util.QLog;
 
 class ReadinjoyTabFrame$19
-  implements Runnable
+  extends ReadInJoyObserver
 {
-  public void run()
+  ReadinjoyTabFrame$19(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  
+  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setRound(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImagePlaceHolder(bheg.a()).setImage(new URL(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo)));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyTabFrame", 2, "onLocationChanged changeType = " + paramInt);
     }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      localMalformedURLException.printStackTrace();
+    ReadinjoyTabFrame.a(this.a, paramInt, paramPositionData);
+  }
+  
+  public void m()
+  {
+    super.m();
+    if (ReadinjoyTabFrame.a(this.a) != null) {
+      ReadinjoyTabFrame.a(this.a).post(new ReadinjoyTabFrame.19.1(this));
     }
+  }
+  
+  public void n()
+  {
+    QLog.d("ReadInJoyTabFrame", 2, "onHideChannel");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.19
  * JD-Core Version:    0.7.0.1
  */

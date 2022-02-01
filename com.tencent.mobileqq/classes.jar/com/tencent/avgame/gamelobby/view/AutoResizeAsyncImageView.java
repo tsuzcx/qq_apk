@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.ImageView;
@@ -24,13 +25,13 @@ public class AutoResizeAsyncImageView
 {
   public static final String a;
   private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener;
+  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = null;
   private URLDrawable.URLDrawableOptions jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float = -1.0F;
-  private int jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 0;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   
   static
@@ -122,9 +123,10 @@ public class AutoResizeAsyncImageView
   
   public void a(String paramString, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    if (a(paramString))
-    {
+    if (a(paramString)) {
       a();
+    }
+    while (TextUtils.isEmpty(paramString)) {
       return;
     }
     paramString = URLDrawable.getDrawable(paramString, paramURLDrawableOptions);
@@ -162,7 +164,7 @@ public class AutoResizeAsyncImageView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     Drawable localDrawable = getDrawable();
     int j = View.MeasureSpec.getMode(paramInt1);
@@ -173,13 +175,13 @@ public class AutoResizeAsyncImageView
       if ((localDrawable.getIntrinsicHeight() < 0) || (localDrawable.getIntrinsicWidth() < 0))
       {
         i = 1;
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "Drawable not null");
+        QLog.d(jdField_a_of_type_JavaLangString, QLog._DEFAULT_REPORTLOG_LEVEL, "Drawable not null");
         if ((j != 1073741824) || ((k != -2147483648) && (k != 0))) {
-          break label148;
+          break label150;
         }
         paramInt2 = View.MeasureSpec.getSize(paramInt1);
         if (i == 0) {
-          break label95;
+          break label97;
         }
         paramInt1 = this.jdField_b_of_type_Int;
       }
@@ -189,14 +191,14 @@ public class AutoResizeAsyncImageView
         return;
         i = 0;
         break;
-        label95:
+        label97:
         if (this.jdField_a_of_type_Boolean) {
           paramInt1 = (int)Math.ceil(paramInt2 * this.jdField_a_of_type_Float / this.jdField_b_of_type_Float);
         } else {
           paramInt1 = (int)Math.ceil(paramInt2 * localDrawable.getIntrinsicHeight() / localDrawable.getIntrinsicWidth());
         }
       }
-      label148:
+      label150:
       if (((j == -2147483648) || (j == 0)) && (k == 1073741824))
       {
         paramInt2 = View.MeasureSpec.getSize(paramInt2);
@@ -217,7 +219,7 @@ public class AutoResizeAsyncImageView
       super.onMeasure(paramInt1, paramInt2);
       return;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "Drawable null");
+    QLog.d(jdField_a_of_type_JavaLangString, QLog._DEFAULT_REPORTLOG_LEVEL, "Drawable null");
     if ((j == 1073741824) && ((k == -2147483648) || (k == 0)))
     {
       setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.jdField_b_of_type_Int);
@@ -279,7 +281,7 @@ public class AutoResizeAsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView
  * JD-Core Version:    0.7.0.1
  */

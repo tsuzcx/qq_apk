@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.magicface.view;
 
 import android.view.View;
-import awsw;
-import awsz;
 import com.tencent.image.URLDrawable;
 
-public class MagicfaceViewController$7$2
+class MagicfaceViewController$7$2
   implements Runnable
 {
-  public MagicfaceViewController$7$2(awsz paramawsz) {}
+  MagicfaceViewController$7$2(MagicfaceViewController.7 param7) {}
   
   public void run()
   {
     
     if (this.a.jdField_a_of_type_Int == 1)
     {
-      ((View)this.a.jdField_a_of_type_Awsw.b).setBackgroundColor(0);
-      this.a.jdField_a_of_type_Awsw.g();
+      ((View)this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.b).setBackgroundColor(0);
+      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.g();
     }
   }
 }

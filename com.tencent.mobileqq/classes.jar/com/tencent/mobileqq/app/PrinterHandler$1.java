@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import ansr;
-import anzy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,10 +7,10 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class PrinterHandler$1
+class PrinterHandler$1
   extends TimerTask
 {
-  public PrinterHandler$1(anzy paramanzy, ansr paramansr, Timer paramTimer) {}
+  PrinterHandler$1(PrinterHandler paramPrinterHandler, DataLineHandler paramDataLineHandler, Timer paramTimer) {}
   
   public void run()
   {
@@ -27,7 +25,7 @@ public class PrinterHandler$1
         if (localIterator.hasNext())
         {
           long l = ((Long)localIterator.next()).longValue();
-          this.jdField_a_of_type_Ansr.a(0, l, true);
+          this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(0, l, true);
           this.this$0.a(Long.valueOf(l), false);
         }
       }
@@ -37,7 +35,7 @@ public class PrinterHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PrinterHandler.1
  * JD-Core Version:    0.7.0.1
  */

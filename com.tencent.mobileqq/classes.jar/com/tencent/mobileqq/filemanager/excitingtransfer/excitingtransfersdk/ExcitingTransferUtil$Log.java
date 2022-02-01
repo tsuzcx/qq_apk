@@ -7,7 +7,7 @@ public class ExcitingTransferUtil$Log
   public static int CLR = 1;
   public static int DEV = 2;
   public static String LG_HEAD = "ExcitingT.";
-  public static int USR;
+  public static int USR = 0;
   
   public static void d(String paramString1, int paramInt, String paramString2)
   {
@@ -55,7 +55,7 @@ public class ExcitingTransferUtil$Log
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUtil.Log
  * JD-Core Version:    0.7.0.1
  */

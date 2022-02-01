@@ -5,13 +5,12 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import awqq;
 import com.tencent.mobileqq.R.styleable;
 
 public class LyricView
   extends FrameLayout
 {
-  protected awqq a;
+  protected LyricViewAttribute a;
   protected LyricViewInternal a;
   protected LyricViewScroll a;
   protected boolean a;
@@ -21,8 +20,8 @@ public class LyricView
   {
     super(paramContext, paramAttributeSet);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ModuleLyricView, 0, 0);
-    this.jdField_a_of_type_Awqq = new awqq();
-    this.jdField_a_of_type_Awqq.a(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewAttribute = new LyricViewAttribute();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewAttribute.a(paramContext);
     this.jdField_a_of_type_Boolean = paramContext.getBoolean(16, false);
     paramContext.recycle();
   }
@@ -42,7 +41,7 @@ public class LyricView
     return this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.a(paramMotionEvent);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a(paramInt4 - paramInt2);

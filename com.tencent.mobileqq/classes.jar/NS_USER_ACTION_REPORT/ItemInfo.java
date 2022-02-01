@@ -11,14 +11,14 @@ public final class ItemInfo
   static ArrayList<ActionInfo> cache_action_infos;
   static RuleInfo cache_rule_info;
   static ArrayList<String> cache_sub_item_id = new ArrayList();
-  public ArrayList<ActionInfo> action_infos;
+  public ArrayList<ActionInfo> action_infos = null;
   public String busi_info = "";
   public String item_id = "";
   public String item_type = "";
   public String module_id = "";
   public String position_id = "";
-  public RuleInfo rule_info;
-  public ArrayList<String> sub_item_id;
+  public RuleInfo rule_info = null;
+  public ArrayList<String> sub_item_id = null;
   public String sub_module_id = "";
   public String trigger_info = "";
   

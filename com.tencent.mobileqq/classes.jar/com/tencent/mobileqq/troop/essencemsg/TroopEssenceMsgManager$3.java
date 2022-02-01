@@ -1,16 +1,27 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bflc;
-import tencent.im.oidb.cmd0x857.TroopTips0x857.QQGroupDigestMsg;
+import com.tencent.mobileqq.troop.api.essence.data.TroopEssenceMsgItem.TroopEssenceMsgItemKey;
+import com.tencent.mobileqq.troop.api.essence.data.TroopEssenceMsgItem.TroopEssenceMsgItemValue;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class TroopEssenceMsgManager$3
-  implements Runnable
+class TroopEssenceMsgManager$3
+  implements TroopEssenceMsgManager.callbackInMainThread
 {
-  public TroopEssenceMsgManager$3(bflc parambflc, TroopTips0x857.QQGroupDigestMsg paramQQGroupDigestMsg, boolean paramBoolean) {}
+  TroopEssenceMsgManager$3(TroopEssenceMsgManager paramTroopEssenceMsgManager, TroopEssenceMsgItem.TroopEssenceMsgItemKey paramTroopEssenceMsgItemKey) {}
   
-  public void run()
+  public void a(long paramLong, HashMap<TroopEssenceMsgItem.TroopEssenceMsgItemKey, TroopEssenceMsgItem.TroopEssenceMsgItemValue> paramHashMap)
   {
-    bflc.a(this.this$0, this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$QQGroupDigestMsg, this.jdField_a_of_type_Boolean);
+    if (paramHashMap == null) {}
+    do
+    {
+      return;
+      paramHashMap = (TroopEssenceMsgItem.TroopEssenceMsgItemValue)paramHashMap.get(this.jdField_a_of_type_ComTencentMobileqqTroopApiEssenceDataTroopEssenceMsgItem$TroopEssenceMsgItemKey);
+    } while ((paramHashMap == null) || (paramHashMap.a != 1));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopEssenceMsgManager", 2, "isEssenceMsg refreshAio key:" + paramLong);
+    }
+    TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager, paramLong);
   }
 }
 

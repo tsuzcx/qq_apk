@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class FeedsInfo
   extends JceStruct
 {
-  public int appid;
-  public long hostUin;
+  public int appid = 0;
+  public long hostUin = 0L;
   public String jumpUrl = "";
   public String likekey = "";
   

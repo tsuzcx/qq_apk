@@ -2,6 +2,8 @@ package com.tencent.qqlive.module.videoreport.utils;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.support.annotation.Nullable;
@@ -14,6 +16,9 @@ import java.util.Random;
 
 public class ReportUtils
 {
+  private static final String BUGLY_APP_ID = "c7924ada07";
+  private static final String BUGLY_SDK_SP = "BuglySdkInfos";
+  private static volatile boolean sBuglyInited = false;
   private static volatile Context sContext;
   private static volatile Application sCurrentApplication;
   private static volatile boolean sGetCurrentApplicationChecked;
@@ -66,39 +71,39 @@ public class ReportUtils
   private static Application getCurrentApplication()
   {
     // Byte code:
-    //   0: getstatic 100	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
+    //   0: getstatic 111	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
     //   3: ifne +55 -> 58
     //   6: ldc 2
     //   8: monitorenter
-    //   9: getstatic 100	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
+    //   9: getstatic 111	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
     //   12: istore_0
     //   13: iload_0
     //   14: ifne +41 -> 55
-    //   17: ldc 102
-    //   19: invokestatic 108	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   22: ldc 110
+    //   17: ldc 113
+    //   19: invokestatic 119	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   22: ldc 121
     //   24: iconst_0
-    //   25: anewarray 104	java/lang/Class
-    //   28: invokevirtual 114	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   25: anewarray 115	java/lang/Class
+    //   28: invokevirtual 125	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   31: aconst_null
     //   32: iconst_0
     //   33: anewarray 4	java/lang/Object
-    //   36: invokevirtual 120	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   39: checkcast 122	android/app/Application
-    //   42: putstatic 124	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sCurrentApplication	Landroid/app/Application;
-    //   45: getstatic 124	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sCurrentApplication	Landroid/app/Application;
+    //   36: invokevirtual 131	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   39: checkcast 133	android/app/Application
+    //   42: putstatic 135	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sCurrentApplication	Landroid/app/Application;
+    //   45: getstatic 135	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sCurrentApplication	Landroid/app/Application;
     //   48: ifnull +7 -> 55
     //   51: iconst_1
-    //   52: putstatic 100	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
+    //   52: putstatic 111	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
     //   55: ldc 2
     //   57: monitorexit
-    //   58: getstatic 124	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sCurrentApplication	Landroid/app/Application;
+    //   58: getstatic 135	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sCurrentApplication	Landroid/app/Application;
     //   61: areturn
     //   62: astore_1
     //   63: iconst_1
-    //   64: putstatic 100	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
+    //   64: putstatic 111	com/tencent/qqlive/module/videoreport/utils/ReportUtils:sGetCurrentApplicationChecked	Z
     //   67: aload_1
-    //   68: invokevirtual 127	java/lang/Throwable:printStackTrace	()V
+    //   68: invokevirtual 138	java/lang/Throwable:printStackTrace	()V
     //   71: goto -16 -> 55
     //   74: astore_1
     //   75: ldc 2
@@ -154,6 +159,22 @@ public class ReportUtils
     return "";
   }
   
+  public static void initCrashReport(Context paramContext)
+  {
+    if (!sBuglyInited) {
+      try
+      {
+        if (!sBuglyInited)
+        {
+          writeBuglySpInfo(paramContext);
+          sBuglyInited = true;
+        }
+        return;
+      }
+      finally {}
+    }
+  }
+  
   public static void printStack(String paramString)
   {
     if (VideoReportInner.getInstance().isDebugMode())
@@ -172,6 +193,17 @@ public class ReportUtils
   public static void setContext(Context paramContext)
   {
     sContext = paramContext.getApplicationContext();
+  }
+  
+  private static void writeBuglySpInfo(Context paramContext)
+  {
+    paramContext = paramContext.getSharedPreferences("BuglySdkInfos", 0);
+    String str1 = paramContext.getString("c7924ada07", "");
+    String str2 = String.valueOf(1808);
+    if (TextUtils.equals(str1, str2)) {
+      return;
+    }
+    paramContext.edit().putString("c7924ada07", str2).apply();
   }
 }
 

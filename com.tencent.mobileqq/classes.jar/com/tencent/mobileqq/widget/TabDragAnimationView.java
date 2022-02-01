@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnDoubleTapListener;
@@ -28,30 +27,25 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import biud;
-import biue;
-import biuf;
-import biug;
-import biuh;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.R.styleable;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.vas.VasApngUtil;
+import com.tencent.mobileqq.vas.api.R.styleable;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class TabDragAnimationView
   extends View
 {
-  private static final int jdField_g_of_type_Int = ViewUtils.dpToPx(2.0F);
+  private static final int jdField_g_of_type_Int = ViewUtils.b(2.0F);
   float jdField_a_of_type_Float = 0.0F;
   protected int a;
-  public ValueAnimator a;
+  ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
@@ -61,11 +55,11 @@ public class TabDragAnimationView
   private GestureDetector.OnDoubleTapListener jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private biue jdField_a_of_type_Biue;
-  private final biuf jdField_a_of_type_Biuf;
-  private final biug jdField_a_of_type_Biug;
-  private final biuh jdField_a_of_type_Biuh;
   public URLDrawable a;
+  private TabDragAnimationView.OnDragListener jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$OnDragListener;
+  private final TabDragAnimationView.ScaleAnimUpdateListener jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener;
+  private final TabDragAnimationView.ScrollAnimUpdateListener jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScrollAnimUpdateListener;
+  private final TabDragAnimationView.StopAnimUpdateListener jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$StopAnimUpdateListener;
   private String jdField_a_of_type_JavaLangString = "TabDragAnimationView@" + Integer.toHexString(hashCode());
   public boolean a;
   float jdField_b_of_type_Float = 0.0F;
@@ -73,28 +67,28 @@ public class TabDragAnimationView
   ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   protected boolean b;
-  public float c;
+  float jdField_c_of_type_Float = 0.0F;
   protected int c;
-  private Drawable c;
+  private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
   public boolean c;
-  public float d;
-  public int d;
+  float jdField_d_of_type_Float = 0.0F;
+  int jdField_d_of_type_Int = 1;
   private Drawable jdField_d_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
+  private boolean jdField_d_of_type_Boolean = false;
+  private float jdField_e_of_type_Float = 0.0F;
   int jdField_e_of_type_Int;
   private Drawable jdField_e_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_e_of_type_Boolean;
+  private boolean jdField_e_of_type_Boolean = false;
   int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
+  private boolean jdField_f_of_type_Boolean = false;
   private final boolean jdField_g_of_type_Boolean;
   private int jdField_h_of_type_Int;
-  private boolean jdField_h_of_type_Boolean;
+  private boolean jdField_h_of_type_Boolean = false;
   private int jdField_i_of_type_Int;
   private boolean jdField_i_of_type_Boolean = true;
   private int j = -1;
-  private int k;
-  private int l;
+  private int k = 0;
+  private int l = 0;
   private int m = -1;
   private int n = 10000;
   
@@ -111,29 +105,27 @@ public class TabDragAnimationView
   public TabDragAnimationView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_c_of_type_Float = 0.0F;
-    this.jdField_d_of_type_Float = 0.0F;
-    this.jdField_d_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.TabDragAnimationView, paramInt, 0);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aR, paramInt, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getInt(0, 0);
-      this.jdField_h_of_type_Int = paramAttributeSet.getDimensionPixelSize(2, 0);
-      this.jdField_i_of_type_Int = paramAttributeSet.getDimensionPixelSize(1, 0);
+      this.jdField_a_of_type_Int = paramAttributeSet.getInt(R.styleable.jdField_a_of_type_Int, 0);
+      this.jdField_h_of_type_Int = paramAttributeSet.getDimensionPixelSize(R.styleable.jdField_c_of_type_Int, 0);
+      this.jdField_i_of_type_Int = paramAttributeSet.getDimensionPixelSize(R.styleable.jdField_b_of_type_Int, 0);
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, "load xml attr, expected logo width=" + this.jdField_h_of_type_Int + ", expected logo height=" + this.jdField_i_of_type_Int);
       }
       paramAttributeSet.recycle();
-      this.jdField_a_of_type_Biuh = new biuh(this);
-      this.jdField_a_of_type_Biug = new biug(this);
-      this.jdField_a_of_type_Biuf = new biuf(this);
-      this.jdField_c_of_type_Boolean = ThemeUtil.isNowThemeIsAnimate();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$StopAnimUpdateListener = new TabDragAnimationView.StopAnimUpdateListener(this);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScrollAnimUpdateListener = new TabDragAnimationView.ScrollAnimUpdateListener(this);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener = new TabDragAnimationView.ScaleAnimUpdateListener(this);
+      this.jdField_c_of_type_Boolean = ThemeUtil.c();
       if ((Build.MODEL.contains("vivo")) || (Build.MANUFACTURER.contains("vivo"))) {
         bool = true;
       }
       this.jdField_g_of_type_Boolean = bool;
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new biud(this), this.jdField_a_of_type_AndroidOsHandler);
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new TabDragAnimationView.1(this), this.jdField_a_of_type_AndroidOsHandler);
       return;
     }
     finally
@@ -191,14 +183,14 @@ public class TabDragAnimationView
       if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
         return this.jdField_a_of_type_ComTencentImageURLDrawable;
       }
-      String str1 = ThemeUtil.getAnimatePathByTag(this.jdField_e_of_type_Int);
+      String str1 = ThemeUtil.a(this.jdField_e_of_type_Int);
       Drawable localDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
       Bundle localBundle = new Bundle();
       localBundle.putInt("key_width", this.jdField_b_of_type_Int);
       localBundle.putInt("key_height", this.jdField_c_of_type_Int);
       localBundle.putInt("key_loop", 1);
       int i1 = this.jdField_f_of_type_Int;
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
       String str2 = "- tab-" + this.jdField_e_of_type_Int;
       String str3 = "- tab-" + this.jdField_e_of_type_Int;
       this.jdField_a_of_type_ComTencentImageURLDrawable = VasApngUtil.getApngDrawable(localAppRuntime, str1, str2, localDrawable, new int[] { i1 }, str3, localBundle);
@@ -233,27 +225,27 @@ public class TabDragAnimationView
   public void a(Bitmap paramBitmap, String paramString)
   {
     // Byte code:
-    //   0: new 338	java/io/FileOutputStream
+    //   0: new 346	java/io/FileOutputStream
     //   3: dup
     //   4: aload_2
-    //   5: invokespecial 341	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 349	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   8: astore_3
     //   9: aload_3
     //   10: astore_2
     //   11: aload_1
-    //   12: getstatic 347	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   12: getstatic 355	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   15: bipush 90
     //   17: aload_3
-    //   18: invokevirtual 353	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   18: invokevirtual 361	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   21: pop
     //   22: aload_3
     //   23: ifnull +7 -> 30
     //   26: aload_3
-    //   27: invokevirtual 356	java/io/FileOutputStream:close	()V
+    //   27: invokevirtual 364	java/io/FileOutputStream:close	()V
     //   30: return
     //   31: astore_1
     //   32: aload_1
-    //   33: invokevirtual 359	java/io/IOException:printStackTrace	()V
+    //   33: invokevirtual 367	java/io/IOException:printStackTrace	()V
     //   36: return
     //   37: astore 4
     //   39: aconst_null
@@ -261,15 +253,15 @@ public class TabDragAnimationView
     //   41: aload_1
     //   42: astore_2
     //   43: aload 4
-    //   45: invokevirtual 360	java/lang/Exception:printStackTrace	()V
+    //   45: invokevirtual 368	java/lang/Exception:printStackTrace	()V
     //   48: aload_1
     //   49: ifnull -19 -> 30
     //   52: aload_1
-    //   53: invokevirtual 356	java/io/FileOutputStream:close	()V
+    //   53: invokevirtual 364	java/io/FileOutputStream:close	()V
     //   56: return
     //   57: astore_1
     //   58: aload_1
-    //   59: invokevirtual 359	java/io/IOException:printStackTrace	()V
+    //   59: invokevirtual 367	java/io/IOException:printStackTrace	()V
     //   62: return
     //   63: astore_1
     //   64: aconst_null
@@ -277,12 +269,12 @@ public class TabDragAnimationView
     //   66: aload_2
     //   67: ifnull +7 -> 74
     //   70: aload_2
-    //   71: invokevirtual 356	java/io/FileOutputStream:close	()V
+    //   71: invokevirtual 364	java/io/FileOutputStream:close	()V
     //   74: aload_1
     //   75: athrow
     //   76: astore_2
     //   77: aload_2
-    //   78: invokevirtual 359	java/io/IOException:printStackTrace	()V
+    //   78: invokevirtual 367	java/io/IOException:printStackTrace	()V
     //   81: goto -7 -> 74
     //   84: astore_1
     //   85: goto -19 -> 66
@@ -319,7 +311,7 @@ public class TabDragAnimationView
   {
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Biuh.a();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$StopAnimUpdateListener.a();
       f();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return;
@@ -340,13 +332,13 @@ public class TabDragAnimationView
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Biuf);
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener);
     }
     this.jdField_d_of_type_Int = 1;
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(200L);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Biuf);
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -376,8 +368,8 @@ public class TabDragAnimationView
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Biuf);
-      this.jdField_a_of_type_Biuf.a();
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener.a();
       this.jdField_b_of_type_AndroidAnimationValueAnimator = null;
     }
   }
@@ -387,12 +379,12 @@ public class TabDragAnimationView
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Biuh);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$StopAnimUpdateListener);
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Biuh);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$StopAnimUpdateListener);
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -400,7 +392,7 @@ public class TabDragAnimationView
     invalidate();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i4 = getPaddingLeft();
     int i3 = getRight() - getLeft() - getPaddingRight();
@@ -422,11 +414,11 @@ public class TabDragAnimationView
       if ((this.jdField_d_of_type_Int != 1) || (this.jdField_a_of_type_Boolean)) {
         break label659;
       }
-      if (((this.jdField_a_of_type_Biuf.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Biuf.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
+      if (((this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
       {
         localDrawable2 = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
         label208:
-        if (((!this.jdField_a_of_type_Biuf.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Biuf.jdField_b_of_type_Boolean)) || (!this.jdField_d_of_type_Boolean)) {
+        if (((!this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener.jdField_b_of_type_Boolean)) || (!this.jdField_d_of_type_Boolean)) {
           break label650;
         }
       }
@@ -436,8 +428,8 @@ public class TabDragAnimationView
     label650:
     for (Drawable localDrawable1 = a();; localDrawable1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
     {
-      if (this.jdField_a_of_type_Biuf.jdField_a_of_type_Float != 1.0F) {
-        paramCanvas.scale(this.jdField_a_of_type_Biuf.jdField_a_of_type_Float, this.jdField_a_of_type_Biuf.jdField_a_of_type_Float, i6, i5);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener.jdField_a_of_type_Float != 1.0F) {
+        paramCanvas.scale(this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener.jdField_a_of_type_Float, i6, i5);
       }
       if (localDrawable1 != null)
       {
@@ -626,7 +618,7 @@ public class TabDragAnimationView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i4 = getPaddingLeft();
     int i5 = getPaddingRight();
@@ -674,7 +666,7 @@ public class TabDragAnimationView
     case 3: 
       if (this.jdField_g_of_type_Boolean)
       {
-        i6 = (int)(DeviceInfoUtil.getPortraitHeight() - ViewUtils.dip2px(14.0F));
+        i6 = (int)(DeviceInfoUtil.j() - ViewUtils.a(14.0F));
         if (this.jdField_e_of_type_Float > i6)
         {
           this.jdField_a_of_type_Float = 0.0F;
@@ -702,8 +694,8 @@ public class TabDragAnimationView
       if (((i6 >= i2) || (i7 <= i2)) && (f1 > 0.0F) && (f1 < i3) && (f2 > 0.0F) && (f2 < i4)) {}
       for (i1 = 1;; i1 = 0)
       {
-        if ((i1 == 0) && (this.jdField_a_of_type_Biue != null)) {
-          this.jdField_a_of_type_Biue.a();
+        if ((i1 == 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$OnDragListener != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$OnDragListener.a();
         }
         if ((this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null) && (getParent() != null) && (i1 != 0))
         {
@@ -912,7 +904,7 @@ public class TabDragAnimationView
   public void setIconSize(int paramInt1, int paramInt2)
   {
     Drawable localDrawable;
-    if (((this.jdField_a_of_type_Biuf.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Biuf.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
+    if (((this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$ScaleAnimUpdateListener.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
     {
       localDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
       if (paramInt2 < 0) {
@@ -952,12 +944,12 @@ public class TabDragAnimationView
     this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener = paramOnDoubleTapListener;
   }
   
-  public void setOnDragListener(biue parambiue)
+  public void setOnDragListener(TabDragAnimationView.OnDragListener paramOnDragListener)
   {
-    this.jdField_a_of_type_Biue = parambiue;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView$OnDragListener = paramOnDragListener;
   }
   
-  public void setOnLongClickListener(@Nullable View.OnLongClickListener paramOnLongClickListener)
+  public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
     super.setOnLongClickListener(paramOnLongClickListener);
     this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
@@ -981,7 +973,7 @@ public class TabDragAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabDragAnimationView
  * JD-Core Version:    0.7.0.1
  */

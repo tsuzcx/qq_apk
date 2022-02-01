@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import bbpz;
-import bbqx;
+import com.tencent.mobileqq.richmediabrowser.presenter.AIOBrowserBasePresenter;
+import com.tencent.mobileqq.richmediabrowser.view.AIOBrowserBaseView;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 
@@ -21,7 +21,7 @@ class ImmersionHelper$ImmersionTimerRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.ImmersionHelper.ImmersionTimerRunnable
  * JD-Core Version:    0.7.0.1
  */

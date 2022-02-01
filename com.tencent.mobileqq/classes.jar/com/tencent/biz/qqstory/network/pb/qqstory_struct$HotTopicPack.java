@@ -31,7 +31,7 @@ public final class qqstory_struct$HotTopicPack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.HotTopicPack
  * JD-Core Version:    0.7.0.1
  */

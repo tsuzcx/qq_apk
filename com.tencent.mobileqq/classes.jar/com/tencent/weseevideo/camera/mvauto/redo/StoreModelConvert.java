@@ -1,8 +1,6 @@
 package com.tencent.weseevideo.camera.mvauto.redo;
 
 import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.VideoConfigurationModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -24,18 +22,11 @@ public final class StoreModelConvert
   public final CutModelKt convert(@NotNull MediaClipModel paramMediaClipModel)
   {
     Intrinsics.checkParameterIsNotNull(paramMediaClipModel, "it");
-    Object localObject1 = VideoResourceModelKt.Companion;
-    Object localObject2 = paramMediaClipModel.getResource();
-    Intrinsics.checkExpressionValueIsNotNull(localObject2, "it.resource");
-    localObject1 = ((VideoResourceModelKt.Companion)localObject1).from((VideoResourceModel)localObject2);
-    localObject2 = VideoConfigurationModelKt.Companion;
-    VideoConfigurationModel localVideoConfigurationModel = paramMediaClipModel.getVideoConfigurationModel();
-    Intrinsics.checkExpressionValueIsNotNull(localVideoConfigurationModel, "it.videoConfigurationModel");
-    return new CutModelKt(null, (VideoResourceModelKt)localObject1, ((VideoConfigurationModelKt.Companion)localObject2).from(localVideoConfigurationModel), paramMediaClipModel.getAudioConfigurationModel(), 1, null);
+    return new CutModelKt(null, VideoResourceModelKt.Companion.from(paramMediaClipModel.getResource()), VideoConfigurationModelKt.Companion.from(paramMediaClipModel.getVideoConfigurationModel()), paramMediaClipModel.getAudioConfigurationModel(), 1, null);
   }
   
   @NotNull
-  public final List<CutModelKt> convert(@NotNull List<? extends MediaClipModel> paramList)
+  public final List<CutModelKt> convert(@NotNull List<MediaClipModel> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "resource");
     Object localObject = (Iterable)paramList;
@@ -68,7 +59,7 @@ public final class StoreModelConvert
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.StoreModelConvert
  * JD-Core Version:    0.7.0.1
  */

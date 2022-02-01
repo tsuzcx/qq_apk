@@ -11,11 +11,11 @@ public final class s_weishi
 {
   static Map<String, String> cache_dc_report = new HashMap();
   public String cover_url = "";
-  public Map<String, String> dc_report;
-  public boolean need_show_related;
+  public Map<String, String> dc_report = null;
+  public boolean need_show_related = false;
   public String nick_name = "";
   public String pull_weishi_alg_id = "";
-  public int pull_weishi_mask;
+  public int pull_weishi_mask = 0;
   public String related_button_text = "";
   public String weishi_clipbrd = "";
   public String weishi_download_url = "";

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.imaxad;
 
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseToolAppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ImaxAppInterface
-  extends AppInterface
+  extends BaseToolAppInterface
 {
   public ImaxAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
@@ -36,7 +36,7 @@ public class ImaxAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAppInterface
  * JD-Core Version:    0.7.0.1
  */

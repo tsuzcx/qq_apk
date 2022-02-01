@@ -1,30 +1,28 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahfz;
-import ahgk;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class ShortVideoItemBuilder$11
+class ShortVideoItemBuilder$11
   implements Runnable
 {
-  public ShortVideoItemBuilder$11(ahfz paramahfz, MessageForShortVideo paramMessageForShortVideo) {}
+  ShortVideoItemBuilder$11(ShortVideoItemBuilder paramShortVideoItemBuilder, MessageForShortVideo paramMessageForShortVideo) {}
   
   public void run()
   {
-    ahgk localahgk = ahfz.a(this.this$0, this.a.uniseq);
-    if (localahgk != null)
+    ShortVideoItemBuilder.Holder localHolder = ShortVideoItemBuilder.a(this.this$0, this.a.uniseq);
+    if (localHolder != null)
     {
-      localahgk.a.setVisibility(8);
-      localahgk.d.setVisibility(8);
-      ahfz.a(this.this$0, localahgk, 2131718121);
+      localHolder.a.setVisibility(8);
+      localHolder.d.setVisibility(8);
+      ShortVideoItemBuilder.a(this.this$0, localHolder, 2131718625);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.11
  * JD-Core Version:    0.7.0.1
  */

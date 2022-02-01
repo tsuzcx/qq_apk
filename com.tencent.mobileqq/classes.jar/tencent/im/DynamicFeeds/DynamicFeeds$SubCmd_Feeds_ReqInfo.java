@@ -21,7 +21,7 @@ public final class DynamicFeeds$SubCmd_Feeds_ReqInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tencent.im.DynamicFeeds.DynamicFeeds.SubCmd_Feeds_ReqInfo
  * JD-Core Version:    0.7.0.1
  */

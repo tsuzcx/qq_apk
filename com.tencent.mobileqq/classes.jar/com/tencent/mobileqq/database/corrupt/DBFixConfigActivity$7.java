@@ -267,23 +267,23 @@ class DBFixConfigActivity$7
     //   518: invokevirtual 46	android/widget/Button:post	(Ljava/lang/Runnable;)Z
     //   521: pop
     //   522: aload 4
-    //   524: invokevirtual 186	com/tencent/mobileqq/database/corrupt/DBFixManager:c	()V
+    //   524: invokevirtual 185	com/tencent/mobileqq/database/corrupt/DBFixManager:d	()V
     //   527: aload 5
     //   529: ifnull +8 -> 537
     //   532: aload 5
-    //   534: invokevirtual 189	java/io/BufferedInputStream:close	()V
+    //   534: invokevirtual 188	java/io/BufferedInputStream:close	()V
     //   537: aload 6
     //   539: ifnull -479 -> 60
     //   542: aload 6
-    //   544: invokevirtual 190	java/io/BufferedOutputStream:close	()V
+    //   544: invokevirtual 189	java/io/BufferedOutputStream:close	()V
     //   547: return
     //   548: astore 4
     //   550: aload 4
-    //   552: invokevirtual 193	java/io/IOException:printStackTrace	()V
+    //   552: invokevirtual 192	java/io/IOException:printStackTrace	()V
     //   555: return
     //   556: astore 4
     //   558: aload 4
-    //   560: invokevirtual 193	java/io/IOException:printStackTrace	()V
+    //   560: invokevirtual 192	java/io/IOException:printStackTrace	()V
     //   563: goto -26 -> 537
     //   566: astore 6
     //   568: aconst_null
@@ -292,27 +292,27 @@ class DBFixConfigActivity$7
     //   572: astore 5
     //   574: getstatic 100	com/tencent/mobileqq/database/corrupt/DBFixConfigActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   577: iconst_1
-    //   578: ldc 195
+    //   578: ldc 194
     //   580: aload 6
-    //   582: invokestatic 198	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   582: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   585: aload 6
-    //   587: invokevirtual 193	java/io/IOException:printStackTrace	()V
+    //   587: invokevirtual 192	java/io/IOException:printStackTrace	()V
     //   590: aload 5
     //   592: ifnull +8 -> 600
     //   595: aload 5
-    //   597: invokevirtual 189	java/io/BufferedInputStream:close	()V
+    //   597: invokevirtual 188	java/io/BufferedInputStream:close	()V
     //   600: aload 4
     //   602: ifnull -542 -> 60
     //   605: aload 4
-    //   607: invokevirtual 190	java/io/BufferedOutputStream:close	()V
+    //   607: invokevirtual 189	java/io/BufferedOutputStream:close	()V
     //   610: return
     //   611: astore 4
     //   613: aload 4
-    //   615: invokevirtual 193	java/io/IOException:printStackTrace	()V
+    //   615: invokevirtual 192	java/io/IOException:printStackTrace	()V
     //   618: return
     //   619: astore 5
     //   621: aload 5
-    //   623: invokevirtual 193	java/io/IOException:printStackTrace	()V
+    //   623: invokevirtual 192	java/io/IOException:printStackTrace	()V
     //   626: goto -26 -> 600
     //   629: astore 4
     //   631: aconst_null
@@ -322,20 +322,20 @@ class DBFixConfigActivity$7
     //   637: aload 5
     //   639: ifnull +8 -> 647
     //   642: aload 5
-    //   644: invokevirtual 189	java/io/BufferedInputStream:close	()V
+    //   644: invokevirtual 188	java/io/BufferedInputStream:close	()V
     //   647: aload 6
     //   649: ifnull +8 -> 657
     //   652: aload 6
-    //   654: invokevirtual 190	java/io/BufferedOutputStream:close	()V
+    //   654: invokevirtual 189	java/io/BufferedOutputStream:close	()V
     //   657: aload 4
     //   659: athrow
     //   660: astore 5
     //   662: aload 5
-    //   664: invokevirtual 193	java/io/IOException:printStackTrace	()V
+    //   664: invokevirtual 192	java/io/IOException:printStackTrace	()V
     //   667: goto -20 -> 647
     //   670: astore 5
     //   672: aload 5
-    //   674: invokevirtual 193	java/io/IOException:printStackTrace	()V
+    //   674: invokevirtual 192	java/io/IOException:printStackTrace	()V
     //   677: goto -20 -> 657
     //   680: astore 4
     //   682: aconst_null
@@ -431,7 +431,7 @@ class DBFixConfigActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixConfigActivity.7
  * JD-Core Version:    0.7.0.1
  */

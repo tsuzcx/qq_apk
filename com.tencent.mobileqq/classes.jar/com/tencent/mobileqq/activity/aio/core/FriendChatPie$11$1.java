@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import agab;
-import agad;
-
-public class FriendChatPie$11$1
+class FriendChatPie$11$1
   implements Runnable
 {
-  public FriendChatPie$11$1(agad paramagad) {}
+  FriendChatPie$11$1(FriendChatPie.11 param11) {}
   
   public void run()
   {
-    this.a.a.updateAddFriendAndShieldView();
+    this.a.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.11.1
  * JD-Core Version:    0.7.0.1
  */

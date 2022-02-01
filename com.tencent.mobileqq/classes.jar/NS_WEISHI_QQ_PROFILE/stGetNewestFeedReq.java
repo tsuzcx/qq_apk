@@ -10,7 +10,7 @@ public final class stGetNewestFeedReq
   extends JceStruct
 {
   static Map<Long, stGetNewestFeedReqInner> cache_mapReq = new HashMap();
-  public Map<Long, stGetNewestFeedReqInner> mapReq;
+  public Map<Long, stGetNewestFeedReqInner> mapReq = null;
   
   static
   {

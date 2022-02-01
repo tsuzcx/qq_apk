@@ -56,6 +56,10 @@ public class TPNativePlayerInitConfig
   public static final int LONG_START_PLAYING_TIME_MS = 100;
   public static final int LONG_TCP_TIMEOUT_MS = 108;
   public static final int LONG_VIDEO_DROP_FRAME_TIME_UNIT_MS = 207;
+  public static final int OPTION_ID_BEFORE_INT_AUDIO_FRAME_HZ = 350;
+  public static final int OPTION_ID_BEFORE_INT_FRAME_SIZE_BYTE = 353;
+  public static final int OPTION_ID_BEFORE_INT_SAMPLE_FORMAT = 351;
+  public static final int OPTION_ID_BEFORE_LONG_CHANNEL_LAYOUT = 352;
   public static final int QUEUE_INT_AUDIO_DECODER_TYPE = 202;
   public static final int QUEUE_INT_VIDEO_DECODER_TYPE = 203;
   public static final int QUEUE_STRING_HLS_TAG_CALLBACK = 113;
@@ -142,7 +146,7 @@ public class TPNativePlayerInitConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerInitConfig
  * JD-Core Version:    0.7.0.1
  */

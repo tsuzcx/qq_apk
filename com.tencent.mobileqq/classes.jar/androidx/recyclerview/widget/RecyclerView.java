@@ -46,7 +46,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewConfigurationCompat;
 import androidx.core.view.accessibility.AccessibilityEventCompat;
 import androidx.core.widget.EdgeEffectCompat;
-import f;
+import androidx.recyclerview.R.styleable;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -236,7 +236,7 @@ public class RecyclerView
   
   public RecyclerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034914);
+    this(paramContext, paramAttributeSet, 2131034908);
   }
   
   public RecyclerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
@@ -284,18 +284,18 @@ public class RecyclerView
       }
       this.mAccessibilityManager = ((AccessibilityManager)getContext().getSystemService("accessibility"));
       setAccessibilityDelegateCompat(new RecyclerViewAccessibilityDelegate(this));
-      localObject = paramContext.obtainStyledAttributes(paramAttributeSet, f.jdField_f_of_type_ArrayOfInt, paramInt, 0);
+      localObject = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_f_of_type_ArrayOfInt, paramInt, 0);
       if (Build.VERSION.SDK_INT >= 29) {
-        saveAttributeDataForStyleable(paramContext, f.jdField_f_of_type_ArrayOfInt, paramAttributeSet, (TypedArray)localObject, paramInt, 0);
+        saveAttributeDataForStyleable(paramContext, R.styleable.jdField_f_of_type_ArrayOfInt, paramAttributeSet, (TypedArray)localObject, paramInt, 0);
       }
-      String str = ((TypedArray)localObject).getString(f.i);
-      if (((TypedArray)localObject).getInt(f.c, -1) == -1) {
+      String str = ((TypedArray)localObject).getString(R.styleable.i);
+      if (((TypedArray)localObject).getInt(R.styleable.c, -1) == -1) {
         setDescendantFocusability(262144);
       }
-      this.mClipToPadding = ((TypedArray)localObject).getBoolean(f.b, true);
-      this.mEnableFastScroller = ((TypedArray)localObject).getBoolean(f.d, false);
+      this.mClipToPadding = ((TypedArray)localObject).getBoolean(R.styleable.b, true);
+      this.mEnableFastScroller = ((TypedArray)localObject).getBoolean(R.styleable.d, false);
       if (this.mEnableFastScroller) {
-        initFastScroller((StateListDrawable)((TypedArray)localObject).getDrawable(f.g), ((TypedArray)localObject).getDrawable(f.h), (StateListDrawable)((TypedArray)localObject).getDrawable(f.e), ((TypedArray)localObject).getDrawable(f.jdField_f_of_type_Int));
+        initFastScroller((StateListDrawable)((TypedArray)localObject).getDrawable(R.styleable.g), ((TypedArray)localObject).getDrawable(R.styleable.h), (StateListDrawable)((TypedArray)localObject).getDrawable(R.styleable.e), ((TypedArray)localObject).getDrawable(R.styleable.jdField_f_of_type_Int));
       }
       ((TypedArray)localObject).recycle();
       createLayoutManager(paramContext, str, paramAttributeSet, paramInt, 0);
@@ -1547,7 +1547,7 @@ public class RecyclerView
     return (this.mItemAnimator == null) || (this.mItemAnimator.canReuseUpdatedViewHolder(paramViewHolder, paramViewHolder.getUnmodifiedPayloads()));
   }
   
-  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return ((paramLayoutParams instanceof RecyclerView.LayoutParams)) && (this.mLayout.checkLayoutParams((RecyclerView.LayoutParams)paramLayoutParams));
   }
@@ -1923,12 +1923,12 @@ public class RecyclerView
     return true;
   }
   
-  protected void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
+  public void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchThawSelfOnly(paramSparseArray);
   }
   
-  protected void dispatchSaveInstanceState(SparseArray<Parcelable> paramSparseArray)
+  public void dispatchSaveInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchFreezeSelfOnly(paramSparseArray);
   }
@@ -2513,7 +2513,7 @@ public class RecyclerView
     }
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     if (this.mLayout == null) {
       throw new IllegalStateException("RecyclerView has no LayoutManager" + exceptionLabel());
@@ -2529,7 +2529,7 @@ public class RecyclerView
     return this.mLayout.generateLayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     if (this.mLayout == null) {
       throw new IllegalStateException("RecyclerView has no LayoutManager" + exceptionLabel());
@@ -2581,7 +2581,7 @@ public class RecyclerView
     return -1;
   }
   
-  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
+  public int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     if (this.mChildDrawingOrderCallback == null) {
       return super.getChildDrawingOrder(paramInt1, paramInt2);
@@ -2772,7 +2772,7 @@ public class RecyclerView
       throw new IllegalArgumentException("Trying to set fast scroller without both required drawables." + exceptionLabel());
     }
     Resources localResources = getContext().getResources();
-    new FastScroller(this, paramStateListDrawable1, paramDrawable1, paramStateListDrawable2, paramDrawable2, localResources.getDimensionPixelSize(2131297004), localResources.getDimensionPixelSize(2131297006), localResources.getDimensionPixelOffset(2131297005));
+    new FastScroller(this, paramStateListDrawable1, paramDrawable1, paramStateListDrawable2, paramDrawable2, localResources.getDimensionPixelSize(2131297025), localResources.getDimensionPixelSize(2131297027), localResources.getDimensionPixelOffset(2131297026));
   }
   
   void invalidateGlows()
@@ -2982,7 +2982,7 @@ public class RecyclerView
     requestLayout();
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     boolean bool = true;
     super.onAttachedToWindow();
@@ -3030,7 +3030,7 @@ public class RecyclerView
   
   public void onChildDetachedFromWindow(@NonNull View paramView) {}
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.mItemAnimator != null) {
@@ -3268,7 +3268,7 @@ public class RecyclerView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     TraceCompat.beginSection("RV OnLayout");
     dispatchLayout();
@@ -3276,7 +3276,7 @@ public class RecyclerView
     this.mFirstLayoutComplete = true;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int j = 0;
     if (this.mLayout == null) {
@@ -3357,7 +3357,7 @@ public class RecyclerView
     }
   }
   
-  protected boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
+  public boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
   {
     if (isComputingLayout()) {
       return false;
@@ -3365,7 +3365,7 @@ public class RecyclerView
     return super.onRequestFocusInDescendants(paramInt, paramRect);
   }
   
-  protected void onRestoreInstanceState(Parcelable paramParcelable)
+  public void onRestoreInstanceState(Parcelable paramParcelable)
   {
     if (!(paramParcelable instanceof RecyclerView.SavedState)) {
       super.onRestoreInstanceState(paramParcelable);
@@ -3379,7 +3379,7 @@ public class RecyclerView
     this.mLayout.onRestoreInstanceState(this.mPendingSavedState.mLayoutState);
   }
   
-  protected Parcelable onSaveInstanceState()
+  public Parcelable onSaveInstanceState()
   {
     RecyclerView.SavedState localSavedState = new RecyclerView.SavedState(super.onSaveInstanceState());
     if (this.mPendingSavedState != null)
@@ -3400,7 +3400,7 @@ public class RecyclerView
   
   public void onScrolled(@Px int paramInt1, @Px int paramInt2) {}
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {
@@ -3700,7 +3700,7 @@ public class RecyclerView
     }
   }
   
-  protected void removeDetachedView(View paramView, boolean paramBoolean)
+  public void removeDetachedView(View paramView, boolean paramBoolean)
   {
     RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(paramView);
     if (localViewHolder != null)
@@ -4414,7 +4414,7 @@ public class RecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView
  * JD-Core Version:    0.7.0.1
  */

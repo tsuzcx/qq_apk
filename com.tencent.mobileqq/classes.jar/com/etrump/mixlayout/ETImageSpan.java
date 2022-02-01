@@ -1,23 +1,13 @@
 package com.etrump.mixlayout;
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import fk;
 
 public class ETImageSpan
-  extends fk
+  extends AnimatedImageSpan
 {
-  private int mLeft;
-  private int mTop;
-  
-  public ETImageSpan(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
-  
   public ETImageSpan(Drawable paramDrawable)
   {
     super(paramDrawable);
@@ -43,30 +33,10 @@ public class ETImageSpan
   {
     return super.getDrawable();
   }
-  
-  public int getLeft()
-  {
-    return this.mLeft;
-  }
-  
-  public int getTop()
-  {
-    return this.mTop;
-  }
-  
-  public void setLeft(int paramInt)
-  {
-    this.mLeft = paramInt;
-  }
-  
-  public void setTop(int paramInt)
-  {
-    this.mTop = paramInt;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.etrump.mixlayout.ETImageSpan
  * JD-Core Version:    0.7.0.1
  */

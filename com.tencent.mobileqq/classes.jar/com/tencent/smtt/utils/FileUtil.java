@@ -730,8 +730,8 @@ public class FileUtil
     //   33: ifeq +14 -> 47
     //   36: aload_0
     //   37: invokevirtual 221	java/io/File:isFile	()Z
-    //   40: istore 4
-    //   42: iload 4
+    //   40: istore 6
+    //   42: iload 6
     //   44: ifne +29 -> 73
     //   47: iconst_0
     //   48: ifeq +11 -> 59
@@ -756,8 +756,8 @@ public class FileUtil
     //   85: aload_0
     //   86: aload_1
     //   87: invokeinterface 456 3 0
-    //   92: istore 4
-    //   94: iload 4
+    //   92: istore 6
+    //   94: iload 6
     //   96: ifeq +29 -> 125
     //   99: iconst_0
     //   100: ifeq +11 -> 111
@@ -788,8 +788,8 @@ public class FileUtil
     //   149: ifne +40 -> 189
     //   152: aload_2
     //   153: invokevirtual 78	java/io/File:mkdirs	()Z
-    //   156: istore 4
-    //   158: iload 4
+    //   156: istore 6
+    //   158: iload 6
     //   160: ifne +29 -> 189
     //   163: iconst_0
     //   164: ifeq +11 -> 175
@@ -819,13 +819,13 @@ public class FileUtil
     //   212: astore_3
     //   213: aload_2
     //   214: invokevirtual 463	java/nio/channels/FileChannel:size	()J
-    //   217: lstore 5
+    //   217: lstore 4
     //   219: aload_3
     //   220: aload_2
     //   221: lconst_0
-    //   222: lload 5
+    //   222: lload 4
     //   224: invokevirtual 467	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
-    //   227: lload 5
+    //   227: lload 4
     //   229: lcmp
     //   230: ifeq +25 -> 255
     //   233: aload_1
@@ -879,8 +879,8 @@ public class FileUtil
     //   0	309	1	paramFile2	File
     //   0	309	2	paramFileFilter	FileFilter
     //   0	309	3	parama	FileUtil.a
-    //   40	119	4	bool	boolean
-    //   217	11	5	l	long
+    //   217	11	4	l	long
+    //   40	119	6	bool	boolean
     //   1	276	7	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -1188,88 +1188,82 @@ public class FileUtil
   
   private static FileLock g(Context paramContext)
   {
-    FileLock localFileLock2 = null;
-    Object localObject2 = null;
+    FileLock localFileLock4 = null;
     FileLock localFileLock1 = null;
-    Object localObject1 = localFileLock2;
+    FileLock localFileLock2 = localFileLock4;
     for (;;)
     {
-      TbsLogReport.TbsLogInfo localTbsLogInfo;
       int i;
       try
       {
-        localTbsLogInfo = TbsLogReport.getInstance(paramContext).tbsLogInfo();
-        localObject1 = localFileLock2;
+        TbsLogReport.TbsLogInfo localTbsLogInfo = TbsLogReport.getInstance(paramContext).tbsLogInfo();
+        localFileLock2 = localFileLock4;
         localTbsLogInfo.setErrorCode(803);
-        localObject1 = localFileLock2;
+        localFileLock2 = localFileLock4;
         File localFile = a(paramContext, "tbs_rename_lock");
-        localObject1 = localFileLock2;
-        bool = TbsDownloadConfig.getInstance(paramContext).getTbsCoreLoadRenameFileLockWaitEnable();
-        localObject1 = localObject2;
-        if (bool)
+        localFileLock2 = localFileLock4;
+        boolean bool = TbsDownloadConfig.getInstance(paramContext).getTbsCoreLoadRenameFileLockWaitEnable();
+        if (!bool) {
+          break;
+        }
+        i = 0;
+        if ((i < 20) && (localFileLock1 == null)) {
+          try
+          {
+            Thread.sleep(100L);
+            localFileLock2 = localFileLock1;
+            d = new RandomAccessFile(localFile.getAbsolutePath(), "r");
+            localFileLock2 = localFileLock1;
+            localFileLock4 = d.getChannel().tryLock(0L, 9223372036854775807L, true);
+            localFileLock1 = localFileLock4;
+          }
+          catch (Exception localException)
+          {
+            localFileLock2 = localFileLock1;
+            localException.printStackTrace();
+            continue;
+          }
+          catch (Throwable localThrowable) {}
+        }
+        FileLock localFileLock3;
+        if (localFileLock1 != null)
         {
-          i = 0;
-          if ((i < 20) && (localFileLock1 == null)) {
-            try
-            {
-              Thread.sleep(100L);
-              localObject1 = localFileLock1;
-              d = new RandomAccessFile(localFile.getAbsolutePath(), "r");
-              localObject1 = localFileLock1;
-              localFileLock2 = d.getChannel().tryLock(0L, 9223372036854775807L, true);
-              localFileLock1 = localFileLock2;
-            }
-            catch (Exception localException)
-            {
-              localObject1 = localFileLock1;
-              localException.printStackTrace();
-              continue;
-            }
-            catch (Throwable localThrowable)
-            {
-              localObject1 = localFileLock1;
-              localThrowable.printStackTrace();
-            }
+          localFileLock3 = localFileLock1;
+          localTbsLogInfo.setErrorCode(802);
+          localFileLock3 = localFileLock1;
+          TbsLogReport.getInstance(paramContext).eventReport(TbsLogReport.EventType.TYPE_SDK_REPORT_INFO, localTbsLogInfo);
+          localFileLock3 = localFileLock1;
+          paramContext = new StringBuilder().append("getTbsCoreLoadFileLock,retry num=").append(i).append("success=");
+          if (localFileLock1 == null)
+          {
+            bool = true;
+            localFileLock3 = localFileLock1;
+            TbsLog.i("FileHelper", bool);
+            return localFileLock1;
           }
         }
         else
         {
-          return localObject1;
+          localFileLock3 = localFileLock1;
+          localTbsLogInfo.setErrorCode(801);
+          continue;
         }
+        bool = false;
       }
       catch (Exception paramContext)
       {
         paramContext.printStackTrace();
+        return localFileLock3;
       }
-      if (localFileLock1 != null)
-      {
-        localObject1 = localFileLock1;
-        localTbsLogInfo.setErrorCode(802);
-        localObject1 = localFileLock1;
-        TbsLogReport.getInstance(paramContext).eventReport(TbsLogReport.EventType.TYPE_SDK_REPORT_INFO, localTbsLogInfo);
-        localObject1 = localFileLock1;
-        paramContext = new StringBuilder().append("getTbsCoreLoadFileLock,retry num=").append(i).append("success=");
-        if (localFileLock1 != null) {
-          break label259;
-        }
-      }
-      label259:
-      for (boolean bool = true;; bool = false)
-      {
-        localObject1 = localFileLock1;
-        TbsLog.i("FileHelper", bool);
-        return localFileLock1;
-        localObject1 = localFileLock1;
-        localTbsLogInfo.setErrorCode(801);
-        break;
-      }
+      continue;
       i += 1;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.utils.FileUtil
  * JD-Core Version:    0.7.0.1
  */

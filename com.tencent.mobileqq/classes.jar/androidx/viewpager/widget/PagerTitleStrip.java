@@ -127,7 +127,7 @@ public class PagerTitleStrip
     return this.mScaledTextSpacing;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     Object localObject = getParent();
@@ -147,7 +147,7 @@ public class PagerTitleStrip
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.mPager != null)
@@ -159,7 +159,7 @@ public class PagerTitleStrip
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     float f = 0.0F;
     if (this.mPager != null)
@@ -171,7 +171,7 @@ public class PagerTitleStrip
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (View.MeasureSpec.getMode(paramInt1) != 1073741824) {
       throw new IllegalStateException("Must measure with an exact width");
@@ -387,7 +387,7 @@ public class PagerTitleStrip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.viewpager.widget.PagerTitleStrip
  * JD-Core Version:    0.7.0.1
  */

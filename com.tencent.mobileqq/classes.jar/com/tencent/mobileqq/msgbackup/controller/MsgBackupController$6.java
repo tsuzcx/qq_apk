@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import awzp;
-import awzz;
-import axae;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupDBHelper;
 import java.util.List;
 
-public class MsgBackupController$6
+class MsgBackupController$6
   implements Runnable
 {
-  public MsgBackupController$6(awzp paramawzp, axae paramaxae, awzz paramawzz, List paramList) {}
+  MsgBackupController$6(MsgBackupController paramMsgBackupController, MsgBackupDBHelper paramMsgBackupDBHelper, MsgBackupSessionRequest paramMsgBackupSessionRequest, List paramList) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Axae, this.jdField_a_of_type_Awzz, this.jdField_a_of_type_JavaUtilList);
+    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupDBHelper, this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupSessionRequest, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

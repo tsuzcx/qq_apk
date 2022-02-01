@@ -1,63 +1,63 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import aanb;
-import boiw;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import ykq;
-import zeb;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.biz.videostory.support.VSReporter;
+import dov.com.qq.im.capture.music.MusicDownloadListener;
 
 class VideoCompositeHelper$3
-  extends boiw
+  extends MusicDownloadListener
 {
-  private long mStartTime;
+  private long jdField_a_of_type_Long = 0L;
   
   VideoCompositeHelper$3(VideoCompositeHelper paramVideoCompositeHelper, PublishVideoEntry paramPublishVideoEntry, VideoCompositeHelper.RetCode paramRetCode, String paramString) {}
   
-  public void onCancel(String paramString)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString)
   {
-    this.val$code.setCode(-3);
-    this.val$code.setMessage("task canceled");
-    VideoCompositeHelper.access$000(this.this$0, "needAndStartDownloadMusic");
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$RetCode.a(-3);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$RetCode.a("task canceled");
+    VideoCompositeHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper, "needAndStartDownloadMusic");
   }
   
-  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
   {
-    ykq.c(VideoCompositeHelper.TAG, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " music onStart download onFinish ");
-    this.val$info.backgroundMusicPath = paramString;
+    SLog.c(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download");
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    SLog.c(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download onFinish ");
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicPath = paramString;
     long l1 = System.currentTimeMillis();
-    long l2 = this.mStartTime;
+    long l2 = this.jdField_a_of_type_Long;
     switch (paramInt)
     {
     default: 
-      this.val$code.setCode(paramInt);
-      this.val$code.setMessage("unknown error the music download failed");
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$RetCode.a(paramInt);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$RetCode.a("unknown error the music download failed");
     }
     for (;;)
     {
-      aanb.a("edit_music_download", aanb.a(this.val$code.getCode(), l1 - l2, this.val$musicNeedDownloadUrl, zeb.a(paramString)));
-      VideoCompositeHelper.access$000(this.this$0, "needAndStartDownloadMusic");
+      VSReporter.a("edit_music_download", VSReporter.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$RetCode.a(), l1 - l2, this.jdField_a_of_type_JavaLangString, FileUtils.a(paramString)));
+      VideoCompositeHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper, "needAndStartDownloadMusic");
       return;
-      this.val$code.setCode(0);
-      this.val$code.setMessage("music downloadSuccess");
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$RetCode.a(0);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$RetCode.a("music downloadSuccess");
       continue;
-      this.val$code.setCode(-2);
-      this.val$code.setMessage("none network");
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$RetCode.a(-2);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$RetCode.a("none network");
     }
-  }
-  
-  public void onNetChange(int paramInt) {}
-  
-  public void onProgress(String paramString, int paramInt) {}
-  
-  public void onStart(String paramString, boolean paramBoolean)
-  {
-    ykq.c(VideoCompositeHelper.TAG, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " music onStart download");
-    this.mStartTime = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public final class Cell
   public int iLac = -1;
   public short shMcc = -1;
   public short shMnc = -1;
-  public short shRssi;
+  public short shRssi = 0;
   
   public Cell() {}
   

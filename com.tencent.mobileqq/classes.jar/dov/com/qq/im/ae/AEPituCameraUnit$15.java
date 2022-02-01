@@ -1,12 +1,11 @@
 package dov.com.qq.im.ae;
 
-import bmxa;
 import dov.com.qq.im.ae.camera.core.AECameraManager;
 
-public class AEPituCameraUnit$15
+class AEPituCameraUnit$15
   implements Runnable
 {
-  public AEPituCameraUnit$15(bmxa parambmxa) {}
+  AEPituCameraUnit$15(AEPituCameraUnit paramAEPituCameraUnit) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class AEPituCameraUnit$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.15
  * JD-Core Version:    0.7.0.1
  */

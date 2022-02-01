@@ -265,8 +265,13 @@ public class AppRuntimeLoaderManager
     while (localIterator.hasNext())
     {
       RuntimeLoaderConfiguration.RuntimeLoaderInfo localRuntimeLoaderInfo = (RuntimeLoaderConfiguration.RuntimeLoaderInfo)localIterator.next();
-      if ((localRuntimeLoaderInfo.creator.isEnginePrepared(paramBundle)) && (localRuntimeLoaderInfo.creator.support(paramMiniAppInfo)))
+      if (!localRuntimeLoaderInfo.creator.isEnginePrepared(paramBundle))
       {
+        QMLog.i("minisdk-start_AppRuntimeLoaderManager", "RuntimeLoader engine is not prepared! " + localRuntimeLoaderInfo.creator);
+      }
+      else if (localRuntimeLoaderInfo.creator.support(paramMiniAppInfo))
+      {
+        QMLog.i("minisdk-start_AppRuntimeLoaderManager", "RuntimeLoader engine support: " + localRuntimeLoaderInfo.creator);
         if (this.mProcessType < 0)
         {
           QMLog.w("minisdk-start_AppRuntimeLoaderManager", "set ProcessType to " + this.mProcessType);
@@ -583,7 +588,7 @@ public class AppRuntimeLoaderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppRuntimeLoaderManager
  * JD-Core Version:    0.7.0.1
  */

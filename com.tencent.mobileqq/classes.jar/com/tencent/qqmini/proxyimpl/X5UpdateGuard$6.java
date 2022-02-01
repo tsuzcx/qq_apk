@@ -1,18 +1,16 @@
 package com.tencent.qqmini.proxyimpl;
 
-import anvx;
-import bksl;
-import bksq;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class X5UpdateGuard$6
+class X5UpdateGuard$6
   implements Runnable
 {
-  public X5UpdateGuard$6(bksl parambksl, int paramInt) {}
+  X5UpdateGuard$6(X5UpdateGuard paramX5UpdateGuard, int paramInt) {}
   
   public void run()
   {
-    if ((bksl.a(this.this$0) != null) && (bksl.a(this.this$0).isShowing())) {
-      bksl.a(this.this$0).a(anvx.a(2131705366) + this.a + "%");
+    if ((X5UpdateGuard.a(this.this$0) != null) && (X5UpdateGuard.a(this.this$0).isShowing())) {
+      X5UpdateGuard.a(this.this$0).a(HardCodeUtil.a(2131705909) + this.a + "%");
     }
   }
 }

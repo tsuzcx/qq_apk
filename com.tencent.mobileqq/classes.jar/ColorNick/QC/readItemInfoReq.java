@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class readItemInfoReq
   extends JceStruct
 {
-  public long implat;
-  public int index;
+  public long implat = 0L;
+  public int index = 0;
   public String qqver = "";
   
   public readItemInfoReq() {}

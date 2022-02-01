@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.apollo;
 
-import amnl;
-
-public class ApolloRender$15$1
+class ApolloRender$15$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$15$1(amnl paramamnl) {}
+  ApolloRender$15$1(ApolloRender.15 param15, String paramString) {}
   
   public String a()
   {
-    return "handshakeCompleted";
+    return "setEditorBtnClick";
   }
   
   public void run()
   {
-    ((ApolloSurfaceView)this.this$0.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(this.this$0.jdField_a_of_type_Long, 5);
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().b(this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr, this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.15.1
  * JD-Core Version:    0.7.0.1
  */

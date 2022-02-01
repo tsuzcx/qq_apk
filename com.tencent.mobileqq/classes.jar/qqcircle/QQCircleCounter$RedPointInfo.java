@@ -24,6 +24,7 @@ public final class QQCircleCounter$RedPointInfo
   public final PBUInt32Field pushTime = PBField.initUInt32(0);
   public QQCircleCounter.PymkRedPointInfo pymkRedInfo = new QQCircleCounter.PymkRedPointInfo();
   public QQCircleCounter.QQProfilePointInfo qqProfileInfo = new QQCircleCounter.QQProfilePointInfo();
+  public QQCircleCounter.RedPointJumpInfo redJumpInfo = new QQCircleCounter.RedPointJumpInfo();
   public final PBUInt32Field redTotalNum = PBField.initUInt32(0);
   public final PBEnumField redType = PBField.initEnum(1);
   public final PBRepeatMessageField<QQCircleCounter.RedDisplayInfo> rptRedInfo = PBField.initRepeatMessage(QQCircleCounter.RedDisplayInfo.class);
@@ -34,12 +35,12 @@ public final class QQCircleCounter$RedPointInfo
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 50, 56, 66, 72, 170, 178, 186, 194, 202, 210 }, new String[] { "appid", "redType", "redTotalNum", "rptRedInfo", "pushTime", "extend", "lastVisitTime", "transInfo", "tabType", "allPushInfo", "outLayerInfo", "qqProfileInfo", "groupInfo", "smallRedInfoExt", "pymkRedInfo" }, new Object[] { "", Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(0), "", Long.valueOf(0L), localByteStringMicro, Integer.valueOf(1), null, null, null, null, null, null }, RedPointInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 50, 56, 66, 72, 82, 170, 178, 186, 194, 202, 210 }, new String[] { "appid", "redType", "redTotalNum", "rptRedInfo", "pushTime", "extend", "lastVisitTime", "transInfo", "tabType", "redJumpInfo", "allPushInfo", "outLayerInfo", "qqProfileInfo", "groupInfo", "smallRedInfoExt", "pymkRedInfo" }, new Object[] { "", Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(0), "", Long.valueOf(0L), localByteStringMicro, Integer.valueOf(1), null, null, null, null, null, null, null }, RedPointInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     qqcircle.QQCircleCounter.RedPointInfo
  * JD-Core Version:    0.7.0.1
  */

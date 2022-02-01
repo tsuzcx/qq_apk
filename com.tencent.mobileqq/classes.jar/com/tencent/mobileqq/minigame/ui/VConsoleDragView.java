@@ -9,15 +9,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.util.LiuHaiUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class VConsoleDragView
   extends ImageView
 {
   private int bottom;
   private int height;
-  private boolean isDrag;
+  private boolean isDrag = false;
   private int lastX;
   private int lastY;
   private int left;
@@ -51,8 +51,8 @@ public class VConsoleDragView
   
   private void initScreenConfig()
   {
-    this.mScreenWidth = ViewUtils.getScreenWidth();
-    int j = ViewUtils.getScreenHeight();
+    this.mScreenWidth = ViewUtils.a();
+    int j = ViewUtils.b();
     if (LiuHaiUtils.b()) {}
     for (int i = ImmersiveUtils.getStatusBarHeight(getContext());; i = 0)
     {
@@ -73,7 +73,7 @@ public class VConsoleDragView
     return this.isDrag;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.width = getMeasuredWidth();
@@ -144,8 +144,8 @@ public class VConsoleDragView
   
   public void requestLandscapeLayout()
   {
-    int i = ViewUtils.getScreenWidth();
-    int k = ViewUtils.getScreenHeight();
+    int i = ViewUtils.a();
+    int k = ViewUtils.b();
     if (i > k)
     {
       j = i;

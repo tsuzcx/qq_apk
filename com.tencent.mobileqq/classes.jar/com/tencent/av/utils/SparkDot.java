@@ -30,7 +30,7 @@ public class SparkDot
   ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = null;
   int jdField_b_of_type_Int = 40;
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap = null;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   int c = 0;
   int d = 0;
   int e = 6;
@@ -120,7 +120,7 @@ public class SparkDot
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
     localLayoutParams.width = (this.jdField_b_of_type_Int * this.e);
@@ -153,7 +153,7 @@ public class SparkDot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.SparkDot
  * JD-Core Version:    0.7.0.1
  */

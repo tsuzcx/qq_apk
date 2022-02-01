@@ -9,8 +9,8 @@ public final class ReqGetDiscussInteRemark
   extends JceStruct
 {
   static ArrayList<Long> cache_UinList;
-  public long DiscussUin;
-  public ArrayList<Long> UinList;
+  public long DiscussUin = 0L;
+  public ArrayList<Long> UinList = null;
   
   public ReqGetDiscussInteRemark() {}
   

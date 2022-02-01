@@ -2,9 +2,8 @@ package com.tencent.mobileqq.app;
 
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import anra;
-import bdme;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqperf.monitor.backgroundcpu.BackgroundCpuMonitor;
 
 class BaseActivity2$2
   implements Runnable
@@ -14,21 +13,21 @@ class BaseActivity2$2
   public void run()
   {
     int i = 0;
-    boolean bool = SettingCloneUtil.readValue(this.this$0, null, this.this$0.getString(2131694747), "qqsetting_screenshot_key", false);
+    boolean bool = SettingCloneUtil.readValue(this.this$0, null, this.this$0.getString(2131694985), "qqsetting_screenshot_key", false);
     if ((bool) && (BaseActivity2.access$300() == null))
     {
-      localanra = new anra(null);
+      localMyShakeListener = new BaseActivity2.MyShakeListener(null);
       localSensorManager = (SensorManager)this.this$0.getSystemService("sensor");
       localSensor = localSensorManager.getDefaultSensor(1);
-      if (bdme.a().a()) {
+      if (BackgroundCpuMonitor.a().a()) {
         i = 2;
       }
-      localSensorManager.registerListener(localanra, localSensor, i);
-      BaseActivity2.access$302(localanra);
+      localSensorManager.registerListener(localMyShakeListener, localSensor, i);
+      BaseActivity2.access$302(localMyShakeListener);
     }
     while ((bool) || (BaseActivity2.access$300() == null))
     {
-      anra localanra;
+      BaseActivity2.MyShakeListener localMyShakeListener;
       SensorManager localSensorManager;
       Sensor localSensor;
       return;

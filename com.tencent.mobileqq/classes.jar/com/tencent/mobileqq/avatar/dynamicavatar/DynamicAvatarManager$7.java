@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import aokb;
-import aqeq;
+import com.tencent.mobileqq.app.face.DynamicFaceDrawable;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.util.WeakReference;
 
-public class DynamicAvatarManager$7
+class DynamicAvatarManager$7
   implements Runnable
 {
-  public DynamicAvatarManager$7(aqeq paramaqeq, aokb paramaokb) {}
+  DynamicAvatarManager$7(DynamicAvatarManager paramDynamicAvatarManager, DynamicFaceDrawable paramDynamicFaceDrawable) {}
   
   public void run()
   {
@@ -37,7 +36,7 @@ public class DynamicAvatarManager$7
           if ((localWeakReference == null) || (localWeakReference.get() == null) || (this.this$0.a.contains(localWeakReference))) {
             break label233;
           }
-          boolean bool = this.this$0.a((aokb)localWeakReference.get());
+          boolean bool = this.this$0.a((DynamicFaceDrawable)localWeakReference.get());
           if (QLog.isColorLevel()) {
             QLog.i("Q.dynamicAvatar", 2, "onPlayFinished to play. result : " + bool);
           }

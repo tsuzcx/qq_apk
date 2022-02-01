@@ -1,84 +1,81 @@
 package com.tencent.mobileqq.profilecard.bussiness.colorscreen;
 
 import android.os.Bundle;
-import auml;
-import baao;
-import baap;
-import baaq;
-import bhpa;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
+import com.tencent.mobileqq.floatscr.ColorScreenConfig;
+import com.tencent.mobileqq.vas.VasManager.CompleteListener;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class ProfileColorScreenComponent$ColorScreenLoader
-  implements bhpa<auml>, Runnable
+class ProfileColorScreenComponent$ColorScreenLoader
+  implements VasManager.CompleteListener<ColorScreenConfig>, Runnable
 {
-  private int jdField_a_of_type_Int;
-  private auml jdField_a_of_type_Auml;
-  private LottieComposition jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition;
+  private int colorScreenId;
+  private LottieComposition mComposition;
+  private ColorScreenConfig mConfig;
   
   ProfileColorScreenComponent$ColorScreenLoader(ProfileColorScreenComponent paramProfileColorScreenComponent, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.colorScreenId = paramInt;
   }
   
-  public void a(auml paramauml, Object paramObject)
+  public void onComplete(ColorScreenConfig paramColorScreenConfig, Object paramObject)
   {
-    if ((paramauml == null) || (!ProfileColorScreenComponent.a(this.this$0)) || (ProfileColorScreenComponent.a(this.this$0) == null))
+    if ((paramColorScreenConfig == null) || (!ProfileColorScreenComponent.access$000(this.this$0)) || (ProfileColorScreenComponent.access$100(this.this$0) == null))
     {
-      QLog.e("ColorScreenManager", 1, "early return, config is " + paramauml);
+      QLog.e("ColorScreenManager", 1, "early return, config is " + paramColorScreenConfig);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ColorScreenManager", 2, "onComplete, anim file is " + paramauml.jdField_a_of_type_JavaLangString);
+      QLog.d("ColorScreenManager", 2, "onComplete, anim file is " + paramColorScreenConfig.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Auml = paramauml;
+    this.mConfig = paramColorScreenConfig;
     try
     {
-      paramauml = new FileInputStream(paramauml.jdField_a_of_type_JavaLangString);
+      paramColorScreenConfig = new FileInputStream(paramColorScreenConfig.jdField_a_of_type_JavaLangString);
       paramObject = new Bundle();
-      paramObject.putString("key", "lottie_colorscreen_" + String.valueOf(this.jdField_a_of_type_Int) + "unzip");
-      paramObject.putString("path", ProfileColorScreenComponent.b(this.this$0).getFilesDir().getAbsolutePath() + "/" + "color_screen" + "/" + this.jdField_a_of_type_Int + "/" + "unzip" + "/images/");
-      LottieComposition.Factory.fromInputStreamWithCacheBitmap(ProfileColorScreenComponent.c(this.this$0), paramauml, ProfileColorScreenComponent.a(this.this$0).getLottieDrawable(), new baao(this), paramObject, BaseApplicationImpl.sImageCache);
+      paramObject.putString("key", "lottie_colorscreen_" + String.valueOf(this.colorScreenId) + "unzip");
+      paramObject.putString("path", ProfileColorScreenComponent.access$200(this.this$0).getFilesDir().getAbsolutePath() + "/" + "color_screen" + "/" + this.colorScreenId + "/" + "unzip" + "/images/");
+      LottieComposition.Factory.fromInputStreamWithCacheBitmap(ProfileColorScreenComponent.access$300(this.this$0), paramColorScreenConfig, ProfileColorScreenComponent.access$400(this.this$0).getLottieDrawable(), new ProfileColorScreenComponent.ColorScreenLoader.1(this), paramObject, GlobalImageCache.a);
       return;
     }
-    catch (FileNotFoundException paramauml)
+    catch (FileNotFoundException paramColorScreenConfig)
     {
-      QLog.e("ColorScreenManager", 1, "colorScreen", paramauml);
+      QLog.e("ColorScreenManager", 1, "colorScreen", paramColorScreenConfig);
     }
   }
   
   public void run()
   {
-    if (!ProfileColorScreenComponent.a(this.this$0)) {
+    if (!ProfileColorScreenComponent.access$000(this.this$0)) {
       QLog.e("ColorScreenManager", 1, "early return, invalid before setComposition");
     }
     do
     {
       return;
-      if (ProfileColorScreenComponent.a(this.this$0) == this.jdField_a_of_type_Int)
+      if (ProfileColorScreenComponent.access$900(this.this$0) == this.colorScreenId)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ColorScreenManager", 2, "play : " + this.jdField_a_of_type_Int);
+          QLog.d("ColorScreenManager", 2, "play : " + this.colorScreenId);
         }
-        ProfileColorScreenComponent.a(this.this$0).cancelAnimation();
-        ProfileColorScreenComponent.a(this.this$0).setImageAssetDelegate(new baap(this));
+        ProfileColorScreenComponent.access$400(this.this$0).cancelAnimation();
+        ProfileColorScreenComponent.access$400(this.this$0).setImageAssetDelegate(new ProfileColorScreenComponent.ColorScreenLoader.2(this));
         try
         {
-          baaq localbaaq = new baaq(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
-          ProfileColorScreenComponent.a(this.this$0).setComposition(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition);
-          ProfileColorScreenComponent.a(this.this$0).setProgress(0.0F);
-          ProfileColorScreenComponent.a(this.this$0).setRepeatCount(this.jdField_a_of_type_Auml.jdField_a_of_type_Int);
-          ProfileColorScreenComponent.a(this.this$0).addAnimatorListener(localbaaq);
-          ProfileColorScreenComponent.a(this.this$0).addAnimatorUpdateListener(localbaaq);
-          ProfileColorScreenComponent.a(this.this$0).setVisibility(0);
-          ProfileColorScreenComponent.a(this.this$0).playAnimation();
+          ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener localColorScreenListener = new ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener(this, this.mComposition.getDuration());
+          ProfileColorScreenComponent.access$400(this.this$0).setComposition(this.mComposition);
+          ProfileColorScreenComponent.access$400(this.this$0).setProgress(0.0F);
+          ProfileColorScreenComponent.access$400(this.this$0).setRepeatCount(this.mConfig.jdField_a_of_type_Int);
+          ProfileColorScreenComponent.access$400(this.this$0).addAnimatorListener(localColorScreenListener);
+          ProfileColorScreenComponent.access$400(this.this$0).addAnimatorUpdateListener(localColorScreenListener);
+          ProfileColorScreenComponent.access$400(this.this$0).setVisibility(0);
+          ProfileColorScreenComponent.access$400(this.this$0).playAnimation();
           return;
         }
         catch (Exception localException)
@@ -88,7 +85,7 @@ public class ProfileColorScreenComponent$ColorScreenLoader
         }
       }
     } while (!QLog.isColorLevel());
-    QLog.d("ColorScreenManager", 2, "won't play old anim: " + this.jdField_a_of_type_Int + " because have new anim: " + ProfileColorScreenComponent.a(this.this$0));
+    QLog.d("ColorScreenManager", 2, "won't play old anim: " + this.colorScreenId + " because have new anim: " + ProfileColorScreenComponent.access$900(this.this$0));
   }
 }
 

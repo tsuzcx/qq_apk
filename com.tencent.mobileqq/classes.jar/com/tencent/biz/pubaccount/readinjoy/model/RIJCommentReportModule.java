@@ -1,12 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.os.Handler;
-import bjum;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyOidbHelper;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qav.thread.ThreadManager;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -16,22 +18,18 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qgn;
-import qhj;
-import qxn;
-import qxp;
 import tencent.im.oidb.cmd0xef5.oidb_cmd0xef5.ReqBody;
 import tencent.im.oidb.cmd0xef5.oidb_cmd0xef5.RspBody;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/model/RIJCommentReportModule;", "Lcom/tencent/biz/pubaccount/readinjoy/model/ReadInJoyEngineModule;", "app", "Lcom/tencent/common/app/AppInterface;", "entityManager", "Lcom/tencent/mobileqq/persistence/EntityManager;", "executor", "Ljava/util/concurrent/ExecutorService;", "msfService", "Lcom/tencent/biz/pubaccount/readinjoy/protocol/ReadInJoyMSFService;", "mainThreadHandler", "Landroid/os/Handler;", "(Lcom/tencent/common/app/AppInterface;Lcom/tencent/mobileqq/persistence/EntityManager;Ljava/util/concurrent/ExecutorService;Lcom/tencent/biz/pubaccount/readinjoy/protocol/ReadInJoyMSFService;Landroid/os/Handler;)V", "onReceive", "", "req", "Lcom/tencent/qphone/base/remote/ToServiceMsg;", "res", "Lcom/tencent/qphone/base/remote/FromServiceMsg;", "data", "", "requestCommentReport", "commentReportInfo", "Lcom/tencent/biz/pubaccount/readinjoy/model/RIJCommentReportModule$CommentReportInfo;", "unInitialize", "CommentReportInfo", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class RIJCommentReportModule
-  extends qhj
+  extends ReadInJoyEngineModule
 {
-  public static final qgn a = new qgn(null);
+  public static final RIJCommentReportModule.Companion a = new RIJCommentReportModule.Companion(null);
   
-  public RIJCommentReportModule(@Nullable AppInterface paramAppInterface, @Nullable EntityManager paramEntityManager, @Nullable ExecutorService paramExecutorService, @Nullable qxn paramqxn, @Nullable Handler paramHandler)
+  public RIJCommentReportModule(@Nullable AppInterface paramAppInterface, @Nullable EntityManager paramEntityManager, @Nullable ExecutorService paramExecutorService, @Nullable ReadInJoyMSFService paramReadInJoyMSFService, @Nullable Handler paramHandler)
   {
-    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqxn, paramHandler);
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
   }
   
   public void a() {}
@@ -77,7 +75,7 @@ public final class RIJCommentReportModule
           if (QLog.isColorLevel()) {
             QLog.d("RIJCommentReportModule", 2, "requestCommentReport(): CommentReportInfo:" + paramCommentReportInfo + ", byteArray.length:" + localObject.length);
           }
-          localObject = qxp.a("OidbSvc.0xef5", 3829, 1, (byte[])localObject);
+          localObject = ReadInJoyOidbHelper.a("OidbSvc.0xef5", 3829, 1, (byte[])localObject);
           if (localObject != null)
           {
             localHashMap = ((ToServiceMsg)localObject).getAttributes();
@@ -121,7 +119,7 @@ public final class RIJCommentReportModule
     if (Intrinsics.areEqual(paramFromServiceMsg.getServiceCmd(), "OidbSvc.0xef5"))
     {
       oidb_cmd0xef5.RspBody localRspBody = new oidb_cmd0xef5.RspBody();
-      i = qxp.a(paramFromServiceMsg, paramObject, (MessageMicro)localRspBody);
+      i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, (MessageMicro)localRspBody);
       j = localRspBody.ret.get();
       paramFromServiceMsg = localRspBody.err_message.get();
       paramToServiceMsg = paramToServiceMsg.getAttributes();
@@ -141,7 +139,7 @@ public final class RIJCommentReportModule
       if (QLog.isColorLevel()) {
         QLog.d("RIJCommentReportModule", 2, "onReceive(): result:" + i + ", retCode:" + j + ", errMsg:" + paramFromServiceMsg + ", commentReportInfo:" + paramToServiceMsg);
       }
-      bjum.c((Runnable)new RIJCommentReportModule.onReceive.1(bool, j, paramFromServiceMsg, paramToServiceMsg));
+      ThreadManager.c((Runnable)new RIJCommentReportModule.onReceive.1(bool, j, paramFromServiceMsg, paramToServiceMsg));
       return;
       paramToServiceMsg = null;
       break;
@@ -150,7 +148,7 @@ public final class RIJCommentReportModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.RIJCommentReportModule
  * JD-Core Version:    0.7.0.1
  */

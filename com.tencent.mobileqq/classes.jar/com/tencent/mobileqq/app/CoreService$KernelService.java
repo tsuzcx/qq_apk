@@ -4,8 +4,8 @@ import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class CoreService$KernelService
   extends Service
@@ -19,7 +19,7 @@ public class CoreService$KernelService
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("k_start_mode", 2);
-    BaseApplicationImpl.sApplication.onActivityCreate(this, localIntent);
+    MobileQQ.getMobileQQ().onActivityCreate(this, localIntent);
     super.onCreate();
     if (QLog.isColorLevel()) {
       QLog.d("GuardManager", 2, "TempService.onCreate");

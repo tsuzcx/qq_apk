@@ -20,11 +20,12 @@ final class YtSDKKitCommon$StateNameHelper$1
     put(YtSDKKitCommon.StateNameHelper.StateClassName.NET_OCR_REQ_RESULT_STATE, "com.tencent.youtu.sdkkitframework.ocr.NetOcrReqResultState");
     put(YtSDKKitCommon.StateNameHelper.StateClassName.LIPREAD_STATE, "com.tencent.youtu.sdkkitframework.liveness.LipReadLivenessState");
     put(YtSDKKitCommon.StateNameHelper.StateClassName.DETECTONLY_STATE, "com.tencent.youtu.sdkkitframework.liveness.DetectOnlyState");
+    put(YtSDKKitCommon.StateNameHelper.StateClassName.OCR_VIID_STATE, "com.tencent.youtu.sdkkitframework.ocr.OcrVideoIdentState");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.StateNameHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public final class DataForQboss
   extends JceStruct
 {
   static Map<Integer, tAdvDesc> cache_map_adv_desc = new HashMap();
-  public Map<Integer, tAdvDesc> map_adv_desc;
+  public Map<Integer, tAdvDesc> map_adv_desc = null;
   
   static
   {

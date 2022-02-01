@@ -151,7 +151,7 @@ public class HippyTextView
     this.mLayout = null;
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
   }
@@ -181,7 +181,7 @@ public class HippyTextView
     return this.mGestureDispatcher;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     try
     {
@@ -356,7 +356,7 @@ public class HippyTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.text.HippyTextView
  * JD-Core Version:    0.7.0.1
  */

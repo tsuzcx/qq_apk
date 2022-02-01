@@ -2,16 +2,13 @@ package cooperation.qzone.report.lp;
 
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.component.network.module.common.NetworkState;
-import cooperation.qzone.PlatformInfor;
-import cooperation.qzone.QUA;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 public class LpReportInfo_dc01831
@@ -62,24 +59,6 @@ public class LpReportInfo_dc01831
     this.subactiontype = paramInt2;
     this.reserves = paramInt3;
     this.infos = paramMap;
-  }
-  
-  private int convertNetworkTypeToFitInDc01831(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 4: 
-    case 5: 
-    default: 
-      return 9;
-    case 1: 
-      return 1;
-    case 3: 
-      return 2;
-    case 2: 
-      return 3;
-    }
-    return 4;
   }
   
   public static void report(int paramInt1, int paramInt2, int paramInt3)
@@ -142,12 +121,12 @@ public class LpReportInfo_dc01831
         try
         {
           i = Integer.parseInt((String)localHashMap.get("network_type"));
-          localHashMap.put("network_type", String.valueOf(convertNetworkTypeToFitInDc01831(i)));
+          localHashMap.put("network_type", String.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).convertNetworkTypeToFitInDc00518(i)));
           localHashMap.put("app_id", String.valueOf(AppSetting.a()));
-          localHashMap.put("qua", QUA.getQUA3());
+          localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
           localHashMap.put("device", "1");
           localHashMap.put("os_version", "android_" + Build.VERSION.RELEASE);
-          localHashMap.put("imei", PlatformInfor.g().getIMEI());
+          localHashMap.put("imei", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getIMEI());
           return localHashMap;
           localJSONObject = new JSONObject();
         }
@@ -155,7 +134,7 @@ public class LpReportInfo_dc01831
         {
           for (;;)
           {
-            i = NetworkState.g().getNetworkType();
+            i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
           }
         }
       }
@@ -172,7 +151,7 @@ public class LpReportInfo_dc01831
         localHashMap.put("reserves", String.valueOf(this.reserves));
       }
       if (!localHashMap.containsKey("uin")) {
-        localHashMap.put("uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+        localHashMap.put("uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
       }
       if (!localHashMap.containsKey("touin")) {
         localHashMap.put("touin", String.valueOf(this.touin));
@@ -182,13 +161,13 @@ public class LpReportInfo_dc01831
     for (;;)
     {
       JSONObject localJSONObject;
-      int i = NetworkState.g().getNetworkType();
+      int i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc01831
  * JD-Core Version:    0.7.0.1
  */

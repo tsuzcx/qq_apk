@@ -1,13 +1,5 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import agdk;
-import agdm;
-import agdr;
-import agdv;
-import agdw;
-import agdx;
-import agdz;
-import agea;
 import android.graphics.Path;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -15,19 +7,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lagdm;>;
+import java.util.List<Lcom.tencent.mobileqq.activity.aio.doodle.PathData.PointData;>;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class HalfAlgorithm
-  extends agdk
-  implements agea
+  extends PathAlgorithm
+  implements TransPathJobListener
 {
-  private int jdField_a_of_type_Int;
-  private agdw jdField_a_of_type_Agdw = new agdw();
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private List<agdr> jdField_a_of_type_JavaUtilList;
-  private Map<Integer, agdx> jdField_a_of_type_JavaUtilMap;
+  private int jdField_a_of_type_Int = 0;
+  private Path jdField_a_of_type_AndroidGraphicsPath = null;
+  private PointSet jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet = new PointSet();
+  private List<PathDrawer.PathSegment> jdField_a_of_type_JavaUtilList = null;
+  private Map<Integer, ResultInfo> jdField_a_of_type_JavaUtilMap = null;
   
   private void a()
   {
@@ -41,28 +33,28 @@ public class HalfAlgorithm
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
   }
   
-  private void a(List<agdr> paramList1, List<agdr> paramList2)
+  private void a(List<PathDrawer.PathSegment> paramList1, List<PathDrawer.PathSegment> paramList2)
   {
     if ((paramList2 == null) || (paramList1 == null) || (paramList2.size() == 0)) {
       return;
     }
     long l;
     if (paramList1.size() > 0) {
-      l = ((agdr)paramList1.get(paramList1.size() - 1)).a();
+      l = ((PathDrawer.PathSegment)paramList1.get(paramList1.size() - 1)).a();
     }
-    for (int i = ((agdr)paramList1.get(paramList1.size() - 1)).a();; i = 0)
+    for (int i = ((PathDrawer.PathSegment)paramList1.get(paramList1.size() - 1)).a();; i = 0)
     {
-      if (((agdr)paramList2.get(0)).a() == l)
+      if (((PathDrawer.PathSegment)paramList2.get(0)).a() == l)
       {
         QLog.d("DoodleAlgorithm", 2, "addjust time and seg :" + l);
         Iterator localIterator = paramList2.iterator();
         while (localIterator.hasNext())
         {
-          agdr localagdr = (agdr)localIterator.next();
-          if (localagdr.a() != l) {
+          PathDrawer.PathSegment localPathSegment = (PathDrawer.PathSegment)localIterator.next();
+          if (localPathSegment.a() != l) {
             break;
           }
-          localagdr.a(localagdr.a() + i + 1);
+          localPathSegment.a(localPathSegment.a() + i + 1);
         }
       }
       paramList1.addAll(paramList2);
@@ -71,14 +63,14 @@ public class HalfAlgorithm
     }
   }
   
-  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong1, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, long paramLong2, Path paramPath, List<agdr> paramList)
+  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong1, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, long paramLong2, Path paramPath, List<PathDrawer.PathSegment> paramList)
   {
     paramPath.moveTo(paramFloat1, paramFloat2);
     paramPath.quadTo(paramFloat4, paramFloat5, paramFloat6, paramFloat7);
     return a(paramList, paramPath, paramFloat3, paramFloat8, paramLong1, paramLong2);
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<agdr> paramList)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<PathDrawer.PathSegment> paramList)
   {
     if (paramPath == null) {}
     do
@@ -86,13 +78,13 @@ public class HalfAlgorithm
       return;
       paramPath.reset();
       paramPath.moveTo(paramFloat1, paramFloat2);
-      this.jdField_a_of_type_Agdw.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
     } while (paramList == null);
     paramList.clear();
     a();
   }
   
-  public void a(int paramInt, boolean paramBoolean, Path paramPath, List<agdr> paramList)
+  public void a(int paramInt, boolean paramBoolean, Path paramPath, List<PathDrawer.PathSegment> paramList)
   {
     if (this.jdField_a_of_type_JavaUtilMap == null) {
       return;
@@ -105,12 +97,12 @@ public class HalfAlgorithm
     }
     synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      agdx localagdx = new agdx();
-      localagdx.jdField_a_of_type_Int = paramInt;
-      localagdx.jdField_a_of_type_Boolean = paramBoolean;
-      localagdx.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-      localagdx.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localagdx);
+      ResultInfo localResultInfo = new ResultInfo();
+      localResultInfo.jdField_a_of_type_Int = paramInt;
+      localResultInfo.jdField_a_of_type_Boolean = paramBoolean;
+      localResultInfo.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+      localResultInfo.jdField_a_of_type_JavaUtilList = paramList;
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localResultInfo);
       if (this.jdField_a_of_type_JavaUtilMap.size() == this.jdField_a_of_type_Int)
       {
         this.jdField_a_of_type_JavaUtilMap.notifyAll();
@@ -120,17 +112,17 @@ public class HalfAlgorithm
     }
   }
   
-  public void a(Path paramPath, List<agdr> paramList)
+  public void a(Path paramPath, List<PathDrawer.PathSegment> paramList)
   {
     if (paramList == null)
     {
-      this.jdField_a_of_type_Agdw.a();
-      paramPath.quadTo(this.jdField_a_of_type_Agdw.c.jdField_a_of_type_Float, this.jdField_a_of_type_Agdw.c.b, this.jdField_a_of_type_Agdw.b.jdField_a_of_type_Float, this.jdField_a_of_type_Agdw.b.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a();
+      paramPath.quadTo(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.c.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.c.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.b);
       return;
     }
     a();
-    this.jdField_a_of_type_Agdw.a();
-    if (a(this.jdField_a_of_type_Agdw.a.jdField_a_of_type_Float, this.jdField_a_of_type_Agdw.a.b, this.jdField_a_of_type_Agdw.a.c, this.jdField_a_of_type_Agdw.a.jdField_a_of_type_Long, this.jdField_a_of_type_Agdw.c.jdField_a_of_type_Float, this.jdField_a_of_type_Agdw.c.b, this.jdField_a_of_type_Agdw.b.jdField_a_of_type_Float, this.jdField_a_of_type_Agdw.b.b, this.jdField_a_of_type_Agdw.b.c, this.jdField_a_of_type_Agdw.b.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList))
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a();
+    if (a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.c.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.c.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList))
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
@@ -146,7 +138,7 @@ public class HalfAlgorithm
     QLog.d("DoodleAlgorithm", 2, "finish failed:" + System.currentTimeMillis());
   }
   
-  public void a(List<agdm> paramList, Path paramPath, List<agdr> paramList1)
+  public void a(List<PathData.PointData> paramList, Path paramPath, List<PathDrawer.PathSegment> paramList1)
   {
     if ((paramList == null) || (paramList.size() == 0) || (paramPath == null) || (paramList1 == null)) {
       return;
@@ -156,16 +148,16 @@ public class HalfAlgorithm
     int i = 1;
     if (paramList.hasNext())
     {
-      agdm localagdm = (agdm)paramList.next();
+      PathData.PointData localPointData = (PathData.PointData)paramList.next();
       if (i != 0)
       {
-        a(localagdm.a(), localagdm.b(), localagdm.c(), localagdm.a(), paramPath, null);
+        a(localPointData.a(), localPointData.b(), localPointData.c(), localPointData.a(), paramPath, null);
         i = 0;
       }
       for (;;)
       {
         break;
-        b(localagdm.a(), localagdm.b(), localagdm.c(), localagdm.a(), paramPath, null);
+        b(localPointData.a(), localPointData.b(), localPointData.c(), localPointData.a(), paramPath, null);
       }
     }
     a(paramPath, null);
@@ -173,7 +165,7 @@ public class HalfAlgorithm
     QLog.d("DoodleAlgorithm", 2, "patchpath end:" + paramList1.size());
   }
   
-  public void a(List<agdm> arg1, Path paramPath, List<agdr> paramList1, int paramInt)
+  public void a(List<PathData.PointData> arg1, Path paramPath, List<PathDrawer.PathSegment> paramList1, int paramInt)
   {
     if ((??? == null) || (???.size() == 0) || (paramPath == null) || (paramList1 == null)) {}
     int i;
@@ -194,11 +186,11 @@ public class HalfAlgorithm
         if (!???.hasNext()) {
           break label178;
         }
-        localObject1 = (agdm)???.next();
+        localObject1 = (PathData.PointData)???.next();
         if (paramInt == 0) {
           break label149;
         }
-        a(((agdm)localObject1).a(), ((agdm)localObject1).b(), ((agdm)localObject1).c(), ((agdm)localObject1).a(), paramPath, paramList1);
+        a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a(), paramPath, paramList1);
         paramInt = 0;
       }
       for (;;)
@@ -206,7 +198,7 @@ public class HalfAlgorithm
         break label86;
         i = 0;
         break;
-        b(((agdm)localObject1).a(), ((agdm)localObject1).b(), ((agdm)localObject1).c(), ((agdm)localObject1).a(), paramPath, paramList1);
+        b(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a(), paramPath, paramList1);
       }
       a(paramPath, paramList1);
       QLog.d("DoodleAlgorithm", 2, "before merge:" + paramList1.size());
@@ -228,18 +220,18 @@ public class HalfAlgorithm
     this.jdField_a_of_type_JavaUtilMap.clear();
     QLog.d("DoodleAlgorithm", 2, "transPath begin multithread begin");
     Object localObject2 = ???.iterator();
-    ??? = (List<agdm>)localObject1;
+    ??? = (List<PathData.PointData>)localObject1;
     while (((Iterator)localObject2).hasNext())
     {
-      localObject1 = (agdm)((Iterator)localObject2).next();
+      localObject1 = (PathData.PointData)((Iterator)localObject2).next();
       if (??? == null)
       {
-        ??? = new agdz();
+        ??? = new SubPathInfo();
         ???.a(paramInt);
-        ???.a(((agdm)localObject1).a(), ((agdm)localObject1).b(), ((agdm)localObject1).c(), ((agdm)localObject1).a());
-        paramPath.moveTo(((agdm)localObject1).a(), ((agdm)localObject1).b());
+        ???.a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a());
+        paramPath.moveTo(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b());
       }
-      else if (???.a(((agdm)localObject1).a(), ((agdm)localObject1).b(), ((agdm)localObject1).c(), ((agdm)localObject1).a()))
+      else if (???.a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a()))
       {
         localObject1 = ???.a();
         i = this.jdField_a_of_type_Int + 1;
@@ -266,13 +258,13 @@ public class HalfAlgorithm
         localObject1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (agdx)((Iterator)localObject1).next();
-          if (((agdx)localObject2).jdField_a_of_type_AndroidGraphicsPath != null) {
-            paramPath.addPath(((agdx)localObject2).jdField_a_of_type_AndroidGraphicsPath);
+          localObject2 = (ResultInfo)((Iterator)localObject1).next();
+          if (((ResultInfo)localObject2).jdField_a_of_type_AndroidGraphicsPath != null) {
+            paramPath.addPath(((ResultInfo)localObject2).jdField_a_of_type_AndroidGraphicsPath);
           }
-          if (((agdx)localObject2).jdField_a_of_type_JavaUtilList != null)
+          if (((ResultInfo)localObject2).jdField_a_of_type_JavaUtilList != null)
           {
-            a(paramList1, ((agdx)localObject2).jdField_a_of_type_JavaUtilList);
+            a(paramList1, ((ResultInfo)localObject2).jdField_a_of_type_JavaUtilList);
             continue;
             paramPath = finally;
             throw paramPath;
@@ -307,20 +299,20 @@ public class HalfAlgorithm
     }
   }
   
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<agdr> paramList)
+  public void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<PathDrawer.PathSegment> paramList)
   {
     if (paramPath == null) {
       return;
     }
     if (paramList == null)
     {
-      this.jdField_a_of_type_Agdw.a(paramFloat1, paramFloat2, paramFloat3, paramLong, true);
-      paramPath.quadTo(this.jdField_a_of_type_Agdw.c.jdField_a_of_type_Float, this.jdField_a_of_type_Agdw.c.b, this.jdField_a_of_type_Agdw.b.jdField_a_of_type_Float, this.jdField_a_of_type_Agdw.b.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a(paramFloat1, paramFloat2, paramFloat3, paramLong, true);
+      paramPath.quadTo(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.c.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.c.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.b);
       return;
     }
     a();
-    boolean bool = a(this.jdField_a_of_type_Agdw.b.jdField_a_of_type_Float, this.jdField_a_of_type_Agdw.b.b, this.jdField_a_of_type_Agdw.b.c, this.jdField_a_of_type_Agdw.b.jdField_a_of_type_Long, this.jdField_a_of_type_Agdw.d.jdField_a_of_type_Float, this.jdField_a_of_type_Agdw.d.b, (this.jdField_a_of_type_Agdw.d.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.jdField_a_of_type_Agdw.d.b + paramFloat2) / 2.0F, (this.jdField_a_of_type_Agdw.d.c + paramFloat3) / 2.0F, (this.jdField_a_of_type_Agdw.d.jdField_a_of_type_Long + paramLong) / 2L, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Agdw.a(paramFloat1, paramFloat2, paramFloat3, paramLong, bool);
+    boolean bool = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.b.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.d.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.d.b, (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.d.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.d.b + paramFloat2) / 2.0F, (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.d.c + paramFloat3) / 2.0F, (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.d.jdField_a_of_type_Long + paramLong) / 2L, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a(paramFloat1, paramFloat2, paramFloat3, paramLong, bool);
     if (bool)
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
@@ -337,7 +329,7 @@ public class HalfAlgorithm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.HalfAlgorithm
  * JD-Core Version:    0.7.0.1
  */

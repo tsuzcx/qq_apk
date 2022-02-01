@@ -11,13 +11,13 @@ public final class RspGetNearbyPubAcctInfo
   static int cache_eReplyCode;
   static byte[] cache_vContext;
   static ArrayList<PubAcctInfo> cache_vGroupInfo;
-  public int eReplyCode;
-  public int iCompletedFlag;
-  public int iFlagStamp;
-  public int iRadius;
-  public int iRedFlag;
-  public byte[] vContext;
-  public ArrayList<PubAcctInfo> vGroupInfo;
+  public int eReplyCode = 0;
+  public int iCompletedFlag = 0;
+  public int iFlagStamp = 0;
+  public int iRadius = 0;
+  public int iRedFlag = 0;
+  public byte[] vContext = null;
+  public ArrayList<PubAcctInfo> vGroupInfo = null;
   
   public RspGetNearbyPubAcctInfo() {}
   

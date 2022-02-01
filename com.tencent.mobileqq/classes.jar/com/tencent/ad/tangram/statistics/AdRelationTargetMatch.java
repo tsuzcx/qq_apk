@@ -28,11 +28,6 @@ public final class AdRelationTargetMatch
     do
     {
       return;
-      if (!paramAd.isHitRelationTargetInstallExp())
-      {
-        AdLog.i("AdRelationTargetMatch", "not match relation target exp");
-        return;
-      }
       if (paramAd.isAppProductType())
       {
         handleApp(paramWeakReference, paramAd);
@@ -91,7 +86,7 @@ public final class AdRelationTargetMatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.statistics.AdRelationTargetMatch
  * JD-Core Version:    0.7.0.1
  */

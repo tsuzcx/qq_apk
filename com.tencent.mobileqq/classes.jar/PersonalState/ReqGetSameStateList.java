@@ -16,11 +16,11 @@ public final class ReqGetSameStateList
   public int eFetchSex = -1;
   public int eSelfSex = 2;
   public int iPageSize = -1;
-  public long lFriendUin;
-  public BusiReqHead oHead;
-  public LBSInfo oLbsInfo;
-  public stRishState oSelfRishState;
-  public byte[] vCookie;
+  public long lFriendUin = 0L;
+  public BusiReqHead oHead = null;
+  public LBSInfo oLbsInfo = null;
+  public stRishState oSelfRishState = null;
+  public byte[] vCookie = null;
   
   public ReqGetSameStateList() {}
   

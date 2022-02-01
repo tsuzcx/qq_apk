@@ -1,0 +1,35 @@
+package com.tencent.mobileqq.ar;
+
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager.Stub;
+import com.tencent.qphone.base.util.QLog;
+
+class ARGlobalRemoteManager$1
+  implements ServiceConnection
+{
+  ARGlobalRemoteManager$1(ARGlobalRemoteManager paramARGlobalRemoteManager) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    ARGlobalRemoteManager.a(this.a, IArGlobalConfigManager.Stub.a(paramIBinder));
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + ARGlobalRemoteManager.a(this.a));
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    ARGlobalRemoteManager.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + ARGlobalRemoteManager.a(this.a));
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.mobileqq.ar.ARGlobalRemoteManager.1
+ * JD-Core Version:    0.7.0.1
+ */

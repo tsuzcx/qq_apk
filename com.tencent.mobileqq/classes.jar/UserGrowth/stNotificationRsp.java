@@ -15,18 +15,18 @@ public final class stNotificationRsp
   static ArrayList<stSimpleMetaPerson> cache_persons;
   static int cache_type = 0;
   static ArrayList<String> cache_vtFeedid;
-  public int cid;
-  public stGlobalConfig config;
+  public int cid = 0;
+  public stGlobalConfig config = null;
   public String h5Url = "";
   public String imgurl = "";
   public String jump_url = "";
-  public Map<String, String> map_ext;
-  public ArrayList<stSimpleMetaPerson> persons;
+  public Map<String, String> map_ext = null;
+  public ArrayList<stSimpleMetaPerson> persons = null;
   public String scheme_url = "";
   public String text = "";
   public String trace_id = "";
-  public int type;
-  public ArrayList<String> vtFeedid;
+  public int type = 0;
+  public ArrayList<String> vtFeedid = null;
   
   static
   {

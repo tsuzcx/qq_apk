@@ -22,12 +22,12 @@ public class FullScreenEmptyView
   
   public int a()
   {
-    return UIUtils.getWindowScreenHeight(super.getContext()) - AIOUtils.dp2px(55.0F, super.getResources()) - UIUtils.getStatusBarHeight(super.getContext());
+    return UIUtils.d(super.getContext()) - AIOUtils.a(55.0F, super.getResources()) - UIUtils.e(super.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.FullScreenEmptyView
  * JD-Core Version:    0.7.0.1
  */

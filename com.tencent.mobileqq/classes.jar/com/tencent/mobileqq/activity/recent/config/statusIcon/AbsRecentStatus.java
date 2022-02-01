@@ -1,29 +1,27 @@
 package com.tencent.mobileqq.activity.recent.config.statusIcon;
 
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.IRecentProcessor;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.activity.recent.config.IRecentBaseDataProcessor;
 
 public abstract class AbsRecentStatus
-  implements IRecentProcessor
+  implements IRecentBaseDataProcessor
 {
-  public static int PRIORITY_DRAFT = 10;
-  public static int PRIORITY_VIDEO = 5;
+  public static int a = 5;
+  public static int b = 10;
   
-  public int compareTo(IRecentProcessor paramIRecentProcessor)
+  public int a(IRecentBaseDataProcessor paramIRecentBaseDataProcessor)
   {
-    if (priority() == paramIRecentProcessor.priority()) {
-      throw new RuntimeException("Duplication Priority! " + getClass().getName() + " ," + paramIRecentProcessor.getClass().getName());
+    if (a() == paramIRecentBaseDataProcessor.a()) {
+      throw new RuntimeException("Duplication Priority! " + getClass().getName() + " ," + paramIRecentBaseDataProcessor.getClass().getName());
     }
-    if (priority() > paramIRecentProcessor.priority()) {
+    if (a() > paramIRecentBaseDataProcessor.a()) {
       return 1;
     }
     return -1;
   }
   
-  public abstract int[] declareStatus();
-  
-  public abstract boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime);
+  public abstract boolean a(RecentBaseData paramRecentBaseData, BaseQQAppInterface paramBaseQQAppInterface);
 }
 
 

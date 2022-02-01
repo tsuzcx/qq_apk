@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akjp;
-import akjq;
-
 class FileVideoMediaPlayHelper$3$1
   implements Runnable
 {
@@ -10,14 +7,14 @@ class FileVideoMediaPlayHelper$3$1
   
   public void run()
   {
-    if (akjp.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoFileVideoMediaPlayHelper$3.this$0) != null) {
-      akjp.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoFileVideoMediaPlayHelper$3.this$0).a(true, this.jdField_a_of_type_JavaLangString);
+    if (FileVideoMediaPlayHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoFileVideoMediaPlayHelper$3.this$0) != null) {
+      FileVideoMediaPlayHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoFileVideoMediaPlayHelper$3.this$0).a(true, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.FileVideoMediaPlayHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

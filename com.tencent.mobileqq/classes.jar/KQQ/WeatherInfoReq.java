@@ -8,7 +8,7 @@ public final class WeatherInfoReq
   extends JceStruct
 {
   public String city = "";
-  public int iAppId;
+  public int iAppId = 0;
   public String strSessionKey = "";
   
   public WeatherInfoReq() {}

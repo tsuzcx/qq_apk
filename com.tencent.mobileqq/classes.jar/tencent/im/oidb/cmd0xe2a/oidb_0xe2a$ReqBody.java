@@ -6,8 +6,9 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 public final class oidb_0xe2a$ReqBody
   extends MessageMicro<ReqBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "msg_add_video_req", "msg_move_video_req" }, new Object[] { null, null }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 66 }, new String[] { "msg_add_video_req", "msg_move_video_req", "msg_judge_topic_video_num_req" }, new Object[] { null, null, null }, ReqBody.class);
   public oidb_0xe2a.AddVideoReq msg_add_video_req = new oidb_0xe2a.AddVideoReq();
+  public oidb_0xe2a.JudgeTopicVideoNumReq msg_judge_topic_video_num_req = new oidb_0xe2a.JudgeTopicVideoNumReq();
   public oidb_0xe2a.MoveVideoReq msg_move_video_req = new oidb_0xe2a.MoveVideoReq();
 }
 

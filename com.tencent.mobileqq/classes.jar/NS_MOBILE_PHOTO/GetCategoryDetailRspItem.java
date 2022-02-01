@@ -12,12 +12,12 @@ public final class GetCategoryDetailRspItem
   static ArrayList<face_show_info> cache_face_shows;
   static CategoryPhoto cache_photos = new CategoryPhoto();
   static CategoryRecommend cache_recommend;
-  public SummaryInfo attr;
-  public ArrayList<face_show_info> face_shows;
-  public boolean is_recommend_appoint;
-  public CategoryPhoto photos;
-  public CategoryRecommend recommend;
-  public int ret;
+  public SummaryInfo attr = null;
+  public ArrayList<face_show_info> face_shows = null;
+  public boolean is_recommend_appoint = false;
+  public CategoryPhoto photos = null;
+  public CategoryRecommend recommend = null;
+  public int ret = 0;
   
   static
   {

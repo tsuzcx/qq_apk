@@ -9,7 +9,7 @@ public final class stLabelInfo
   extends JceStruct
 {
   static ArrayList<String> cache_labels = new ArrayList();
-  public ArrayList<String> labels;
+  public ArrayList<String> labels = null;
   
   static
   {

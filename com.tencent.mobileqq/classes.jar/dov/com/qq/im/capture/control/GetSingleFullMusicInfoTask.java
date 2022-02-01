@@ -1,22 +1,21 @@
 package dov.com.qq.im.capture.control;
 
 import android.text.TextUtils;
-import bkwk;
-import bofz;
-import bogd;
-import bohc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.data.FlowMusic;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.securitysdk.utils.MD5;
+import dov.com.qq.im.capture.CaptureContext;
+import dov.com.qq.im.capture.QIMManager;
 import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,32 +29,32 @@ import org.json.JSONObject;
 
 public class GetSingleFullMusicInfoTask
   extends AsyncStep
-  implements INetEngine.INetEngineListener
+  implements INetEngineListener
 {
-  private bohc jdField_a_of_type_Bohc;
   protected FlowMusic a;
-  private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  private IHttpEngineService jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
+  private GetSingleFullMusicInfoTask.GetMusicInfoCallback jdField_a_of_type_DovComQqImCaptureControlGetSingleFullMusicInfoTask$GetMusicInfoCallback;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   protected FlowMusic b;
   private String b;
   private String c;
   
-  public GetSingleFullMusicInfoTask(FlowMusic paramFlowMusic, bohc parambohc)
+  public GetSingleFullMusicInfoTask(FlowMusic paramFlowMusic, GetSingleFullMusicInfoTask.GetMusicInfoCallback paramGetMusicInfoCallback)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataFlowMusic = paramFlowMusic;
-    this.jdField_a_of_type_Bohc = parambohc;
-    paramFlowMusic = (QIMMusicConfigManager)bogd.a(2);
+    this.jdField_a_of_type_DovComQqImCaptureControlGetSingleFullMusicInfoTask$GetMusicInfoCallback = paramGetMusicInfoCallback;
+    paramFlowMusic = (QIMMusicConfigManager)QIMManager.a(2);
     this.c = paramFlowMusic.getApp().getCurrentAccountUin();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = paramFlowMusic.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = paramFlowMusic.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
   }
   
-  public GetSingleFullMusicInfoTask(String paramString, bohc parambohc)
+  public GetSingleFullMusicInfoTask(String paramString, GetSingleFullMusicInfoTask.GetMusicInfoCallback paramGetMusicInfoCallback)
   {
     this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bohc = parambohc;
-    paramString = (QIMMusicConfigManager)bogd.a(2);
+    this.jdField_a_of_type_DovComQqImCaptureControlGetSingleFullMusicInfoTask$GetMusicInfoCallback = paramGetMusicInfoCallback;
+    paramString = (QIMMusicConfigManager)QIMManager.a(2);
     this.c = paramString.getApp().getCurrentAccountUin();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = paramString.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = paramString.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
   }
   
   private static String a(long paramLong)
@@ -63,7 +62,7 @@ public class GetSingleFullMusicInfoTask
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000228").append("_").append("TCOHANTCNlddnsTY").append("_").append("uZliVvhTJzkDPlHX").append("_").append(paramLong);
     localObject = ((StringBuilder)localObject).toString();
-    String str = bkwk.a((String)localObject).toLowerCase();
+    String str = MD5.a((String)localObject).toLowerCase();
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "generate the sign string, pre=" + (String)localObject + ", md5=" + str);
     }
@@ -112,9 +111,9 @@ public class GetSingleFullMusicInfoTask
   
   private void a(boolean paramBoolean, FlowMusic arg2)
   {
-    if (this.jdField_a_of_type_Bohc != null)
+    if (this.jdField_a_of_type_DovComQqImCaptureControlGetSingleFullMusicInfoTask$GetMusicInfoCallback != null)
     {
-      this.jdField_a_of_type_Bohc.a(paramBoolean, ???);
+      this.jdField_a_of_type_DovComQqImCaptureControlGetSingleFullMusicInfoTask$GetMusicInfoCallback.a(paramBoolean, ???);
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -132,15 +131,15 @@ public class GetSingleFullMusicInfoTask
       HttpNetReq localHttpNetReq = new HttpNetReq();
       localHttpNetReq.mHttpMethod = 0;
       localHttpNetReq.mPrioty = 1;
-      localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+      localHttpNetReq.mContinuErrorLimit = NetworkUtil.a(NetworkCenter.getInstance().getNetType());
       localHttpNetReq.mExcuteTimeLimit = 60000L;
       localHttpNetReq.mCallback = this;
       long l = System.currentTimeMillis() / 1000L;
-      String str = ((TicketManagerImpl)bofz.a().getManager(2)).getSkey(this.c);
+      String str = ((TicketManagerImpl)CaptureContext.a().getManager(2)).getSkey(this.c);
       HashMap localHashMap = new HashMap();
       localHashMap.put("app_id", "2000000228");
       localHashMap.put("app_key", "TCOHANTCNlddnsTY");
-      localHashMap.put("device_id", DeviceInfoUtil.getIMEI());
+      localHashMap.put("device_id", DeviceInfoUtil.a());
       localHashMap.put("timestamp", String.valueOf(l));
       localHashMap.put("sign", a(l));
       localHashMap.put("song_mid", ???);
@@ -149,8 +148,8 @@ public class GetSingleFullMusicInfoTask
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "QQMusicReq SingleFullMusicInfoTask songId:" + (String)???);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.sendReq(localHttpNetReq);
-      if (this.jdField_a_of_type_Bohc != null) {}
+      this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq(localHttpNetReq);
+      if (this.jdField_a_of_type_DovComQqImCaptureControlGetSingleFullMusicInfoTask$GetMusicInfoCallback != null) {}
     }
     try
     {
@@ -243,7 +242,7 @@ public class GetSingleFullMusicInfoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.control.GetSingleFullMusicInfoTask
  * JD-Core Version:    0.7.0.1
  */

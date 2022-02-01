@@ -10,8 +10,8 @@ public final class session_report
 {
   static ArrayList<feed_report_info> cache_vecFeedReportInfo = new ArrayList();
   public String strSession = "";
-  public int uReqId;
-  public ArrayList<feed_report_info> vecFeedReportInfo;
+  public int uReqId = 0;
+  public ArrayList<feed_report_info> vecFeedReportInfo = null;
   
   static
   {

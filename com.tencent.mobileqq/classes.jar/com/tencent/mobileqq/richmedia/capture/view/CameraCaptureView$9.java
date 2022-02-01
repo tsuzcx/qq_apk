@@ -7,12 +7,12 @@ class CameraCaptureView$9
   
   public void run()
   {
-    this.this$0.l();
+    this.this$0.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.9
  * JD-Core Version:    0.7.0.1
  */

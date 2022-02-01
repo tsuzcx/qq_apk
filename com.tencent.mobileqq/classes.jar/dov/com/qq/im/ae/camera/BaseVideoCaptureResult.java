@@ -13,7 +13,7 @@ public class BaseVideoCaptureResult
   public String mergedMp4FilePath;
   public int orientation;
   public int type;
-  public int videoFrameCount;
+  public int videoFrameCount = 0;
   public String videoMp4FilePath;
   
   public String toString()
@@ -23,7 +23,7 @@ public class BaseVideoCaptureResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.BaseVideoCaptureResult
  * JD-Core Version:    0.7.0.1
  */

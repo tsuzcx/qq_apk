@@ -6,16 +6,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anvx;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopMostCommonlyUsedInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
 class MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder
@@ -36,13 +36,13 @@ class MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder
   {
     super(paramView);
     this.activityReference = paramWeakReference;
-    this.backgroundView = paramView.findViewById(2131371188);
-    this.icon = ((ImageView)paramView.findViewById(2131371191));
-    this.title = ((TextView)paramView.findViewById(2131371194));
-    this.helpInfo = ((TextView)paramView.findViewById(2131371190));
-    this.addBtn = ((ImageView)paramView.findViewById(2131371187));
-    this.closeBtn = ((ImageView)paramView.findViewById(2131371189));
-    this.helpInfo.setText(anvx.a(2131706366));
+    this.backgroundView = paramView.findViewById(2131371467);
+    this.icon = ((ImageView)paramView.findViewById(2131371470));
+    this.title = ((TextView)paramView.findViewById(2131371473));
+    this.helpInfo = ((TextView)paramView.findViewById(2131371469));
+    this.addBtn = ((ImageView)paramView.findViewById(2131371466));
+    this.closeBtn = ((ImageView)paramView.findViewById(2131371468));
+    this.helpInfo.setText(HardCodeUtil.a(2131706906));
     this.backgroundView.setOnClickListener(this);
     this.addBtn.setOnClickListener(this);
     this.closeBtn.setOnClickListener(this);
@@ -107,25 +107,24 @@ class MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder
     this.title.setText(paramDesktopMostCommonlyUsedInfo);
     this.state = 0;
     setAllVisibility(0);
-    MiniProgramLpReportDC04239.reportAsync("desktop", "commonly", "expo", null);
+    paramDesktopMostCommonlyUsedInfo = new MiniAppConfig(this.miniAppInfo);
+    paramDesktopMostCommonlyUsedInfo.launchParam.scene = 3027;
+    MiniProgramLpReportDC04239.reportAsync(paramDesktopMostCommonlyUsedInfo, "page_view", "expo", null, null);
   }
   
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
-    case 2131371188: 
+    case 2131371467: 
     default: 
       onOtherClicked();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
+    case 2131371466: 
       onAddBtnClicked();
-      continue;
-      onCloseBtnClicked();
+      return;
     }
+    onCloseBtnClicked();
   }
   
   public void rejectFrequentlyRecommends()

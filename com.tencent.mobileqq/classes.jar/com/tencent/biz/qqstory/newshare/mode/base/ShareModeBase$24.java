@@ -1,13 +1,12 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import wvy;
-import wxa;
-import wyf;
+import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
+import com.tencent.biz.qqstory.newshare.model.ShareData;
 
-public class ShareModeBase$24
+class ShareModeBase$24
   implements Runnable
 {
-  public ShareModeBase$24(wxa paramwxa, wyf paramwyf) {}
+  ShareModeBase$24(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class ShareModeBase$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.24
  * JD-Core Version:    0.7.0.1
  */

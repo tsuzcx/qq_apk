@@ -6,22 +6,21 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJStringUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.RefreshUserInfoCallBack;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import prg;
-import qhl;
-import taw;
 
 public class ReadInJoyNickNameTextView
   extends TextView
-  implements qhl
+  implements ReadInJoyUserInfoModule.RefreshUserInfoCallBack
 {
   private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private taw jdField_a_of_type_Taw;
+  private ReadInJoyNickNameTextView.OnSetNickNameListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView$OnSetNickNameListener;
+  private String jdField_a_of_type_JavaLangString = null;
   private boolean jdField_a_of_type_Boolean;
   
   public ReadInJoyNickNameTextView(Context paramContext)
@@ -46,11 +45,11 @@ public class ReadInJoyNickNameTextView
     {
       return;
       if (this.jdField_a_of_type_Boolean) {
-        setText(prg.a(paramReadInJoyUserInfo.nick));
+        setText(RIJStringUtils.a(paramReadInJoyUserInfo.nick));
       }
-      while (this.jdField_a_of_type_Taw != null)
+      while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView$OnSetNickNameListener != null)
       {
-        this.jdField_a_of_type_Taw.a(paramReadInJoyUserInfo.nick);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView$OnSetNickNameListener.a(paramReadInJoyUserInfo.nick);
         return;
         setText(paramReadInJoyUserInfo.nick);
       }
@@ -88,7 +87,7 @@ public class ReadInJoyNickNameTextView
     {
       localObject = str;
       if (this.jdField_a_of_type_Boolean) {
-        localObject = prg.a(str);
+        localObject = RIJStringUtils.a(str);
       }
       setText((CharSequence)localObject);
       return;
@@ -124,9 +123,9 @@ public class ReadInJoyNickNameTextView
     setNickNameByUin(l1, paramBoolean);
   }
   
-  public void setOnSetNickNameListener(taw paramtaw)
+  public void setOnSetNickNameListener(ReadInJoyNickNameTextView.OnSetNickNameListener paramOnSetNickNameListener)
   {
-    this.jdField_a_of_type_Taw = paramtaw;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView$OnSetNickNameListener = paramOnSetNickNameListener;
   }
   
   public void setPrefix(String paramString)
@@ -145,7 +144,7 @@ public class ReadInJoyNickNameTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView
  * JD-Core Version:    0.7.0.1
  */

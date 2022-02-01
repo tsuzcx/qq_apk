@@ -4,12 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import bofc;
 
 public class BringToFrontLinear
   extends LinearLayout
 {
-  private bofc a;
+  private BringToFrontHelper a;
   
   public BringToFrontLinear(Context paramContext)
   {
@@ -33,7 +32,7 @@ public class BringToFrontLinear
   {
     setWillNotDraw(true);
     setChildrenDrawingOrderEnabled(true);
-    this.a = new bofc();
+    this.a = new BringToFrontHelper();
   }
   
   public void bringChildToFront(View paramView)
@@ -41,14 +40,14 @@ public class BringToFrontLinear
     this.a.a(this, paramView);
   }
   
-  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
+  public int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     return this.a.a(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.videotrack.BringToFrontLinear
  * JD-Core Version:    0.7.0.1
  */

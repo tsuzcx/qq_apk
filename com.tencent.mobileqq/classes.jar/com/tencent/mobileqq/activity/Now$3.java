@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import wjs;
-import wke;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
 
 class Now$3
   implements Runnable
@@ -10,12 +10,12 @@ class Now$3
   
   public void run()
   {
-    ((wke)wjs.a(2)).c();
+    ((UserManager)SuperManager.a(2)).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Now.3
  * JD-Core Version:    0.7.0.1
  */

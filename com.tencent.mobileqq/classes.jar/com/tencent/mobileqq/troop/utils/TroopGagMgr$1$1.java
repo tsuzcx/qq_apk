@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import anrb;
-import bgki;
+import com.tencent.mobileqq.app.BizTroopHandler;
 import java.util.ArrayList;
 
 class TroopGagMgr$1$1
@@ -11,7 +10,7 @@ class TroopGagMgr$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$1.jdField_a_of_type_Anrb.d(new bgki(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList));
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$1.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.d(new TroopGagMgr.GagStatus(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList));
   }
 }
 

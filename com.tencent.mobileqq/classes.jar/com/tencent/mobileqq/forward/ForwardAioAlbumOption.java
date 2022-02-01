@@ -3,22 +3,20 @@ package com.tencent.mobileqq.forward;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import aupp;
-import aupt;
-import bhbx;
+import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nwu;
 
 public class ForwardAioAlbumOption
-  extends aupt
+  extends ForwardBaseOption
 {
   public ForwardAioAlbumOption(Intent paramIntent)
   {
@@ -33,24 +31,14 @@ public class ForwardAioAlbumOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bhbx.a(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(aupp.h))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!nwu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.h))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
         localArrayList.add(localRecentUser);
       }
     }
     return localArrayList;
   }
   
-  public void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_dataline", true))
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(f);
-      this.jdField_a_of_type_JavaUtilSet.add(k);
-    }
-  }
-  
-  public void a(Intent paramIntent)
+  protected void a(Intent paramIntent)
   {
     ArrayList localArrayList3 = null;
     ArrayList localArrayList4 = this.jdField_a_of_type_AndroidOsBundle.getParcelableArrayList("fileinfo_array");
@@ -77,7 +65,7 @@ public class ForwardAioAlbumOption
     }
   }
   
-  public void a(Drawable paramDrawable, boolean paramBoolean)
+  protected void a(Drawable paramDrawable, boolean paramBoolean)
   {
     URLDrawable localURLDrawable;
     if (paramBoolean)
@@ -99,13 +87,23 @@ public class ForwardAioAlbumOption
   
   public void b()
   {
+    super.b();
+    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_dataline", true))
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(f);
+      this.jdField_a_of_type_JavaUtilSet.add(k);
+    }
+  }
+  
+  protected void c()
+  {
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(null);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageCount(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardAioAlbumOption
  * JD-Core Version:    0.7.0.1
  */

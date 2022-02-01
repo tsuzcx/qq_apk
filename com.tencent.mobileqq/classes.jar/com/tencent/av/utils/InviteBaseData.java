@@ -3,12 +3,11 @@ package com.tencent.av.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import msx;
 
 public class InviteBaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator<InviteBaseData> CREATOR = new msx();
+  public static final Parcelable.Creator<InviteBaseData> CREATOR = new InviteBaseData.1();
   public int a;
   public String a;
   public int b;
@@ -21,7 +20,7 @@ public class InviteBaseData
     this.jdField_b_of_type_Int = 0;
   }
   
-  public InviteBaseData(Parcel paramParcel)
+  protected InviteBaseData(Parcel paramParcel)
   {
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -58,7 +57,7 @@ public class InviteBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.InviteBaseData
  * JD-Core Version:    0.7.0.1
  */

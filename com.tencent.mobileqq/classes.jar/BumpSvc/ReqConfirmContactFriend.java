@@ -8,14 +8,14 @@ public final class ReqConfirmContactFriend
   extends JceStruct
 {
   static byte[] cache_vSig;
-  public byte bGroupId;
-  public byte bType;
-  public long lFromMobile;
-  public long lToMID;
-  public long lToMobile;
+  public byte bGroupId = 0;
+  public byte bType = 0;
+  public long lFromMobile = 0L;
+  public long lToMID = 0L;
+  public long lToMobile = 0L;
   public String strNickName = "";
   public String strReason = "";
-  public byte[] vSig;
+  public byte[] vSig = null;
   
   public ReqConfirmContactFriend() {}
   

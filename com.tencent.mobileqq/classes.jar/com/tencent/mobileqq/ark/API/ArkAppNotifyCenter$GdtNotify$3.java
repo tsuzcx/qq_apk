@@ -1,28 +1,26 @@
 package com.tencent.mobileqq.ark.API;
 
-import acaf;
-import acah;
-import achn;
-import apsw;
-import apsx;
+import com.tencent.gdtad.aditem.GdtAdLoader;
+import com.tencent.gdtad.aditem.GdtAdLoader.Session;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet;
 
-public class ArkAppNotifyCenter$GdtNotify$3
+class ArkAppNotifyCenter$GdtNotify$3
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$3(apsw paramapsw, String paramString1, WeakReference paramWeakReference1, boolean paramBoolean, String paramString2, WeakReference paramWeakReference2) {}
+  ArkAppNotifyCenter$GdtNotify$3(ArkAppNotifyCenter.GdtNotify paramGdtNotify, String paramString1, WeakReference paramWeakReference1, boolean paramBoolean, String paramString2, WeakReference paramWeakReference2) {}
   
   public void run()
   {
     try
     {
-      this.this$0.a = new apsx(this);
-      acah localacah = new acah();
-      localacah.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(achn.a(new qq_ad_get.QQAdGet(), new JSONObject(this.jdField_b_of_type_JavaLangString))));
-      new acaf(localacah, new WeakReference(this.this$0.a)).a(this.jdField_b_of_type_JavaLangRefWeakReference);
+      this.this$0.a = new ArkAppNotifyCenter.GdtNotify.3.1(this);
+      GdtAdLoader.Session localSession = new GdtAdLoader.Session();
+      localSession.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), new JSONObject(this.jdField_b_of_type_JavaLangString))));
+      new GdtAdLoader(localSession, new WeakReference(this.this$0.a)).a(this.jdField_b_of_type_JavaLangRefWeakReference);
       return;
     }
     catch (Throwable localThrowable)

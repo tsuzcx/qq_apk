@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.os.Handler;
-import beso;
 import com.tencent.superplayer.api.ISuperPlayer;
 
-public class TribeVideoListPlayerFragment$12$1
+class TribeVideoListPlayerFragment$12$1
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$12$1(beso parambeso) {}
+  TribeVideoListPlayerFragment$12$1(TribeVideoListPlayerFragment.12 param12) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class TribeVideoListPlayerFragment$12$1
       TribeVideoListPlayerFragment.jdField_a_of_type_AndroidOsHandler.postDelayed(new TribeVideoListPlayerFragment.12.1.1(this), 500L);
       this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
       return;
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.b(this.a.jdField_a_of_type_Betg);
+      this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.b(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment$BaseVideoViewHolder);
     }
   }
 }

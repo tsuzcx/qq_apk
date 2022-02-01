@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
-import apap;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.applets.AppletsHandler;
 
 class MiniAppDesktop$4
   implements Runnable
@@ -12,14 +12,14 @@ class MiniAppDesktop$4
   public void run()
   {
     if (this.val$app == null) {}
-    apap localapap;
+    AppletsHandler localAppletsHandler;
     do
     {
       return;
-      localapap = (apap)this.val$app.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
-    } while (localapap == null);
-    localapap.a();
-    localapap.c();
+      localAppletsHandler = (AppletsHandler)this.val$app.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+    } while (localAppletsHandler == null);
+    localAppletsHandler.a();
+    localAppletsHandler.c();
   }
 }
 

@@ -1,0 +1,102 @@
+package com.tencent.av.so;
+
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+
+class ResDownloadControl$1
+  implements INetEngineListener
+{
+  ResDownloadControl$1(ResDownloadControl paramResDownloadControl, ResDownloadControl.DownloadInfo paramDownloadInfo) {}
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
+    int i;
+    if (paramNetResp.mResult == 0)
+    {
+      paramNetResp = new File(localHttpNetReq.mOutPath);
+      if (paramNetResp.exists())
+      {
+        try
+        {
+          if (!ResMgr.a(localHttpNetReq.mOutPath, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resZipMd5)) {
+            break label253;
+          }
+          String str = paramNetResp.getParent();
+          FileUtils.a(localHttpNetReq.mOutPath, str, false);
+          boolean bool = ResMgr.a(str + File.separator + this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resFileName, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resMd5);
+          if (!bool) {
+            break label253;
+          }
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            i = 0;
+            continue;
+            QLog.e("AVResMgr", 1, "download end but failed. uncompressZip failed or md5 not match. " + this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+            ResDownloadControl.a(-1, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.b, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+          }
+        }
+        paramNetResp.delete();
+      }
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        QLog.i("AVResMgr", 1, "download successfully. " + this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+        if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resId.equalsIgnoreCase("AVAINSMediaLabModel")) {
+          ResMgr.a();
+        }
+        ResDownloadControl.a(1, 100, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+        if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq)
+        {
+          this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
+          this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_Int = 0;
+          ResDownloadControl.a(this.jdField_a_of_type_ComTencentAvSoResDownloadControl).remove(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo);
+        }
+        return;
+      }
+      label253:
+      i = 0;
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.b = i;
+      if (QLog.isColorLevel()) {
+        QLog.d("AVResMgr", 2, "download... progress = " + i + ", " + this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      }
+      ResDownloadControl.a(2, i, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.av.so.ResDownloadControl.1
+ * JD-Core Version:    0.7.0.1
+ */

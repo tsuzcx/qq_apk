@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import axqc;
-import aydf;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
 import java.lang.ref.WeakReference;
 
-public final class InterestGuide$1
+final class InterestGuide$1
   implements Runnable
 {
   public void run()
   {
-    if (((Boolean)axqc.a(this.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.TRUE)).booleanValue())
+    if (((Boolean)NearbySPUtil.a(this.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.TRUE)).booleanValue())
     {
-      aydf.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(new aydf(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int));
-      aydf.jdField_a_of_type_JavaLangBoolean = Boolean.TRUE;
+      InterestGuide.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(new InterestGuide(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int));
+      InterestGuide.jdField_a_of_type_JavaLangBoolean = Boolean.TRUE;
       return;
     }
-    aydf.jdField_a_of_type_JavaLangBoolean = Boolean.FALSE;
+    InterestGuide.jdField_a_of_type_JavaLangBoolean = Boolean.FALSE;
   }
 }
 

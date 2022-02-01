@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import axii;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.multimsg.LongTextMsgManager;
 import com.tencent.qphone.base.util.QLog;
 
-public final class ChatActivityFacade$13
+final class ChatActivityFacade$13
   implements Runnable
 {
-  public ChatActivityFacade$13(boolean paramBoolean1, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, boolean paramBoolean2) {}
+  ChatActivityFacade$13(boolean paramBoolean1, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -18,12 +18,12 @@ public final class ChatActivityFacade$13
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        ((axii)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        ((LongTextMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
         return;
       }
       if (this.b)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addMsgForForward(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
         return;
       }
     }
@@ -32,12 +32,12 @@ public final class ChatActivityFacade$13
       QLog.e("ChatActivityFacade", 1, "life circle2:", localException);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addAndSendMessage(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.13
  * JD-Core Version:    0.7.0.1
  */

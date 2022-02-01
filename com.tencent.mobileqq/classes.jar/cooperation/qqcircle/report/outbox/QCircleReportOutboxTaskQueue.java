@@ -5,15 +5,20 @@ import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.text.TextUtils;
-import bizw;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.statistic.Singleton;
-import cooperation.qzone.util.NetworkState;
-import cooperation.qzone.util.NetworkState.NetworkStateListener;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.qcircle.api.db.util.Singleton;
+import cooperation.qqcircle.QCircleConfig;
+import cooperation.qqcircle.report.QCircleQualityReporter;
+import cooperation.qqcircle.report.QCircleReportHelper;
+import cooperation.qqcircle.utils.NetworkState;
+import cooperation.qqcircle.utils.NetworkState.NetworkStateListener;
+import feedcloud.FeedCloudCommon.Entry;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.TimeZone;
 import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class QCircleReportOutboxTaskQueue
   extends SimpleTaskQueue
@@ -31,12 +36,13 @@ public class QCircleReportOutboxTaskQueue
   private static final long TIME_OFFSET = TimeZone.getTimeZone("GMT+8").getRawOffset();
   private static final Singleton<QCircleReportOutboxTaskQueue, Void> sSingleton = new QCircleReportOutboxTaskQueue.1();
   private Runnable checkRetry = new QCircleReportOutboxTaskQueue.2(this);
+  private Runnable excuteRetry = new QCircleReportOutboxTaskQueue.3(this);
   private Handler mHandler;
   private HandlerThread mHandlerThread;
   
   private QCircleReportOutboxTaskQueue()
   {
-    QLog.d("QCircleReportOutboxTaskQueue", 1, "new instance");
+    RFLog.d("QCircleReportOutboxTaskQueue", RFLog.USR, "new instance");
     this.mHandlerThread = new HandlerThread("qqcircle_report_outbox", 10);
     this.mHandlerThread.start();
     this.mHandler = new Handler(this.mHandlerThread.getLooper(), this);
@@ -57,7 +63,7 @@ public class QCircleReportOutboxTaskQueue
   
   public static SimpleTaskQueue getInstance()
   {
-    if (QzoneConfig.getQQCircleReportOutboxSwitchOpen()) {
+    if (QCircleConfig.getQQCircleReportOutboxSwitchOpen()) {
       return (SimpleTaskQueue)sSingleton.get(null);
     }
     return new SimpleTaskQueue();
@@ -79,7 +85,7 @@ public class QCircleReportOutboxTaskQueue
     do
     {
       return false;
-      MAX_TASK_RETRY_COUNT = QzoneConfig.getInstance().getConfig("qqcircle", "qqcircle_max_retry_count", MAX_TASK_RETRY_COUNT);
+      MAX_TASK_RETRY_COUNT = QCircleConfig.getInstance().getConfigValue("qqcircle", "qqcircle_max_retry_count", Integer.valueOf(MAX_TASK_RETRY_COUNT)).intValue();
     } while ((paramQCircleReportOutboxTask.getState() != 2) || (!resultCodeCanRetry(paramQCircleReportOutboxTask.getResultCode())) || (paramQCircleReportOutboxTask.getRetryNum() >= MAX_TASK_RETRY_COUNT));
     return true;
   }
@@ -127,7 +133,7 @@ public class QCircleReportOutboxTaskQueue
   
   private void onResetTask()
   {
-    QLog.i("QCircleReportOutboxTaskQueue", 1, "onResetTask task size:" + getTaskCount());
+    RFLog.i("QCircleReportOutboxTaskQueue", RFLog.USR, "onResetTask task size:" + getTaskCount());
     QCircleReportOutboxTaskManager.getInstance().reset();
     release();
   }
@@ -139,7 +145,7 @@ public class QCircleReportOutboxTaskQueue
       this.mHandler.removeCallbacks(this.checkRetry);
       this.mHandler.postDelayed(this.checkRetry, 3000L);
     }
-    QLog.i("QCircleReportOutboxTaskQueue", 1, "onRestore taskList size:" + getTaskCount());
+    RFLog.i("QCircleReportOutboxTaskQueue", RFLog.USR, "onRestore taskList size:" + getTaskCount());
   }
   
   private void onResumeTask(Message paramMessage)
@@ -155,7 +161,7 @@ public class QCircleReportOutboxTaskQueue
   
   private void release()
   {
-    QLog.i("QCircleReportOutboxTaskQueue", 1, "release uin:" + bizw.a().a());
+    RFLog.i("QCircleReportOutboxTaskQueue", RFLog.USR, "release uin:" + MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin());
     this.mHandler.removeCallbacksAndMessages(null);
     this.mHandlerThread.quit();
     this.mHandlerThread = null;
@@ -163,9 +169,47 @@ public class QCircleReportOutboxTaskQueue
     sSingleton.release();
   }
   
+  private void reportOutboxResendFinalFailed(QCircleReportOutboxTask paramQCircleReportOutboxTask)
+  {
+    QCircleQualityReporter.reportQualityEvent("outbox_task_resend_event_final", Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("ret_code", paramQCircleReportOutboxTask.getResultCode() + ""), QCircleReportHelper.newEntry("url", paramQCircleReportOutboxTask.getResultMsg()), QCircleReportHelper.newEntry("refer", paramQCircleReportOutboxTask.mCmdName + ""), QCircleReportHelper.newEntry("count", paramQCircleReportOutboxTask.getRetryNum() + ""), QCircleReportHelper.newEntry("attach_info", paramQCircleReportOutboxTask.getTaskId() + "_" + paramQCircleReportOutboxTask.getResultCode() + "_" + paramQCircleReportOutboxTask.getResultMsg() + "_state=" + paramQCircleReportOutboxTask.getState()) }), false);
+  }
+  
   private boolean resultCodeCanRetry(long paramLong)
   {
     return paramLong == 0L;
+  }
+  
+  private void resumeOutboxTasks()
+  {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = getTaskList();
+    if (localCopyOnWriteArrayList != null)
+    {
+      int j = localCopyOnWriteArrayList.size();
+      RFLog.i("QCircleReportOutboxTaskQueue", RFLog.USR, "checkRetry taskList size:" + j);
+      int i = 0;
+      if (i < j)
+      {
+        QCircleReportOutboxTask localQCircleReportOutboxTask = (QCircleReportOutboxTask)localCopyOnWriteArrayList.get(i);
+        localQCircleReportOutboxTask.printTaskInfo("QCircleReportOutboxTaskQueue", "checkRetry");
+        if (localQCircleReportOutboxTask.getState() == 1) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (needRetry(localQCircleReportOutboxTask))
+          {
+            RFLog.d("QCircleReportOutboxTaskQueue", RFLog.USR, "retryTask id:" + localQCircleReportOutboxTask.getTaskId() + " ,state:" + localQCircleReportOutboxTask.getState() + " ,cmd:" + localQCircleReportOutboxTask.mCmdName + " ,curRetryNum:" + localQCircleReportOutboxTask.getRetryNum());
+            resumeTask(localQCircleReportOutboxTask);
+          }
+          else
+          {
+            reportOutboxResendFinalFailed(localQCircleReportOutboxTask);
+            RFLog.d("QCircleReportOutboxTaskQueue", RFLog.USR, "removeTask id:" + localQCircleReportOutboxTask.getTaskId() + " ,state:" + localQCircleReportOutboxTask.getState() + " ,cmd:" + localQCircleReportOutboxTask.mCmdName + " ,curRetryNum:" + localQCircleReportOutboxTask.getRetryNum() + " ,resultCode:" + localQCircleReportOutboxTask.getResultCode());
+            removeTask(localQCircleReportOutboxTask);
+          }
+        }
+      }
+    }
   }
   
   private boolean runTask()
@@ -184,22 +228,20 @@ public class QCircleReportOutboxTaskQueue
   
   public void completeTask(QCircleReportOutboxTask paramQCircleReportOutboxTask, boolean paramBoolean)
   {
-    int i = 1;
     if (paramQCircleReportOutboxTask == null)
     {
-      QLog.i("QCircleReportOutboxTaskQueue", 1, "completeTask null");
+      RFLog.i("QCircleReportOutboxTaskQueue", RFLog.USR, "completeTask null");
       return;
     }
     Message localMessage = Message.obtain();
     localMessage.what = 5;
     if (paramBoolean) {}
-    for (;;)
+    for (int i = 1;; i = 0)
     {
       localMessage.arg1 = i;
       localMessage.obj = paramQCircleReportOutboxTask;
       this.mHandler.sendMessage(localMessage);
       return;
-      i = 0;
     }
   }
   
@@ -240,7 +282,7 @@ public class QCircleReportOutboxTaskQueue
   {
     long l = System.currentTimeMillis();
     CopyOnWriteArrayList localCopyOnWriteArrayList = QCircleReportOutboxTaskManager.getInstance().getTaskList();
-    QLog.d("QCircleReportOutboxTaskQueue", 1, "getTaskList timeCost:" + (System.currentTimeMillis() - l));
+    RFLog.d("QCircleReportOutboxTaskQueue", RFLog.USR, "getTaskList timeCost:" + (System.currentTimeMillis() - l));
     return localCopyOnWriteArrayList;
   }
   
@@ -297,7 +339,7 @@ public class QCircleReportOutboxTaskQueue
       localMessage.obj = paramQCircleReportOutboxTask;
       this.mHandler.sendMessage(localMessage);
       return bool;
-      QLog.d("QCircleReportOutboxTaskQueue", 1, "removeTask id:" + paramQCircleReportOutboxTask.getTaskId() + ",unexpect state:" + paramQCircleReportOutboxTask.getState());
+      RFLog.d("QCircleReportOutboxTaskQueue", RFLog.USR, "removeTask id:" + paramQCircleReportOutboxTask.getTaskId() + ",unexpect state:" + paramQCircleReportOutboxTask.getState());
       bool = false;
     }
   }
@@ -329,7 +371,7 @@ public class QCircleReportOutboxTaskQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue
  * JD-Core Version:    0.7.0.1
  */

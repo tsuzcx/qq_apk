@@ -1,25 +1,24 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaba;
 import android.graphics.Bitmap;
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.util.Map;
 
-public class SubscribeShareHelper$4
+class SubscribeShareHelper$4
   implements Runnable
 {
-  public SubscribeShareHelper$4(aaba paramaaba, Map paramMap, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  SubscribeShareHelper$4(SubscribeShareHelper paramSubscribeShareHelper, Map paramMap, String paramString1, String paramString2, String paramString3, int paramInt) {}
   
   public void run()
   {
-    if ((aaba.a(this.this$0) != null) && (aaba.a(this.this$0).isShowing())) {
-      aaba.a(this.this$0).dismiss();
+    if ((SubscribeShareHelper.a(this.this$0) != null) && (SubscribeShareHelper.a(this.this$0).isShowing())) {
+      SubscribeShareHelper.a(this.this$0).dismiss();
     }
-    aaba.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+    SubscribeShareHelper.a(this.this$0, String.valueOf(System.currentTimeMillis()));
     Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
     WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str1 = aaba.a(this.this$0);
+    String str1 = SubscribeShareHelper.a(this.this$0);
     String str2 = this.jdField_a_of_type_JavaLangString;
     String str3 = this.b;
     String str4 = this.c;
@@ -33,7 +32,7 @@ public class SubscribeShareHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeShareHelper.4
  * JD-Core Version:    0.7.0.1
  */

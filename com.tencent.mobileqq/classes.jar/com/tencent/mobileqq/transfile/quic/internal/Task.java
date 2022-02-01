@@ -29,7 +29,7 @@ public class Task<T>
   Map<String, String> headers = null;
   T netListener;
   public QuicNetReport report;
-  public boolean running = true;
+  public boolean running = false;
   
   Task(ITaskHandler paramITaskHandler, String paramString1, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap, T paramT)
   {
@@ -50,8 +50,8 @@ public class Task<T>
   private void copyFile(String paramString)
   {
     paramString = new File(paramString);
-    boolean bool = FileUtils.copyFile(paramString, new File(this.report.savePath), true);
-    FileUtils.deleteFile(paramString);
+    boolean bool = FileUtils.a(paramString, new File(this.report.savePath), true);
+    FileUtils.a(paramString);
     if (bool)
     {
       paramString = Message.obtain();
@@ -80,7 +80,7 @@ public class Task<T>
       return;
     }
     this.report.errCode = paramInt1;
-    if (NetworkUtil.isNetworkAvailable()) {}
+    if (NetworkUtil.a()) {}
     for (this.report.failReason = paramInt2;; this.report.failReason = 6)
     {
       Message localMessage = Message.obtain();
@@ -106,14 +106,14 @@ public class Task<T>
     if (localFile.exists())
     {
       localFile.delete();
-      FileUtils.createFile(this.report.tempPath);
+      FileUtils.a(this.report.tempPath);
       return;
     }
     localFile = localFile.getParentFile();
     if ((localFile != null) && (!localFile.exists())) {
-      FileUtils.createDirectory(localFile.getAbsolutePath());
+      FileUtils.b(localFile.getAbsolutePath());
     }
-    FileUtils.createFile(this.report.tempPath);
+    FileUtils.a(this.report.tempPath);
   }
   
   protected void parseStateLine(String paramString)

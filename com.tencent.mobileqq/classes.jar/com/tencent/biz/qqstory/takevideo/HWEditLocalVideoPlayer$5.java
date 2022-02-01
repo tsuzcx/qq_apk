@@ -1,8 +1,5 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ylq;
-import ymb;
-
 class HWEditLocalVideoPlayer$5
   implements Runnable
 {
@@ -10,19 +7,19 @@ class HWEditLocalVideoPlayer$5
   
   public void run()
   {
-    Object localObject = (ylq)this.this$0.a(ylq.class);
+    Object localObject = (EditMusicExport)this.this$0.a(EditMusicExport.class);
     if (localObject != null) {
-      ((ylq)localObject).b();
+      ((EditMusicExport)localObject).b();
     }
-    localObject = (ymb)this.this$0.a(ymb.class);
+    localObject = (EditSubtitleExport)this.this$0.a(EditSubtitleExport.class);
     if (localObject != null) {
-      ((ymb)localObject).a();
+      ((EditSubtitleExport)localObject).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.5
  * JD-Core Version:    0.7.0.1
  */

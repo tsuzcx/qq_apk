@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.dating;
 
-import Override;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -14,25 +13,23 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anwd;
-import anwo;
-import arxx;
-import aryp;
-import axql;
-import bdla;
-import bhde;
-import biso;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HotChatHandler;
 import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.CustomHandler;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -48,11 +45,13 @@ public class NearbyTransitActivity
   implements DialogInterface.OnCancelListener, DialogInterface.OnDismissListener, Handler.Callback
 {
   public static final String a;
-  private static long jdField_b_of_type_Long;
+  public static long b;
+  public static long c;
+  private static long jdField_d_of_type_Long;
   protected int a;
   long jdField_a_of_type_Long;
-  private anwo jdField_a_of_type_Anwo = new aryp(this);
-  public biso a;
+  private HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new NearbyTransitActivity.2(this);
+  protected QQProgressNotifier a;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -60,18 +59,21 @@ public class NearbyTransitActivity
   private boolean jdField_b_of_type_Boolean = true;
   private int jdField_c_of_type_Int;
   private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
+  private int jdField_d_of_type_Int = 0;
   private String jdField_d_of_type_JavaLangString;
-  private int e;
+  private int e = 0;
   
   static
   {
-    jdField_a_of_type_JavaLangString = anwd.jdField_c_of_type_JavaLangString;
+    jdField_a_of_type_JavaLangString = HotChatHandler.jdField_c_of_type_JavaLangString;
+    jdField_d_of_type_Long = 0L;
+    jdField_b_of_type_Long = 0L;
+    jdField_c_of_type_Long = 0L;
   }
   
   private void a()
   {
-    arxx.a("NearbyTransitActivity", new Object[] { "parseParams" });
+    DatingUtil.a("NearbyTransitActivity", new Object[] { "parseParams" });
     Intent localIntent = getIntent();
     Bundle localBundle = localIntent.getExtras();
     this.jdField_b_of_type_JavaLangString = localBundle.getString("from");
@@ -90,20 +92,20 @@ public class NearbyTransitActivity
       this.e = 1;
     }
     this.jdField_a_of_type_Long = localIntent.getLongExtra("enter_time", System.currentTimeMillis());
-    this.jdField_a_of_type_Biso = new biso(this, 2131561447);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131299080);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2131561555);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131299166);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqOsMqqHandler = new bhde(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public static void a(Context paramContext, String paramString)
   {
     a("openNearbyTransitActivity", 0);
-    long l = Math.abs(System.currentTimeMillis() - jdField_b_of_type_Long);
+    long l = Math.abs(System.currentTimeMillis() - jdField_d_of_type_Long);
     if ((paramContext == null) || ((l >= 0L) && (l < 800L))) {
       return;
     }
-    jdField_b_of_type_Long = System.currentTimeMillis();
+    jdField_d_of_type_Long = System.currentTimeMillis();
     Intent localIntent = new Intent(paramContext, NearbyTransitActivity.class);
     localIntent.putExtra("from", "10002");
     localIntent.putExtra("action", 2);
@@ -115,11 +117,11 @@ public class NearbyTransitActivity
   public static void a(Context paramContext, String paramString, int paramInt, HashMap<String, String> paramHashMap)
   {
     a("openNearbyTransitActivity", 0);
-    long l = Math.abs(System.currentTimeMillis() - jdField_b_of_type_Long);
+    long l = Math.abs(System.currentTimeMillis() - jdField_d_of_type_Long);
     if ((paramContext == null) || ((l >= 0L) && (l < 800L)) || (paramHashMap == null)) {
       return;
     }
-    jdField_b_of_type_Long = System.currentTimeMillis();
+    jdField_d_of_type_Long = System.currentTimeMillis();
     String str1;
     String str2;
     label89:
@@ -219,7 +221,7 @@ public class NearbyTransitActivity
     a("enterAIO", 1);
     if (this.jdField_b_of_type_Int > 0)
     {
-      localIntent = AIOUtils.setOpenAIOIntent(new Intent(this, SplashActivity.class), null);
+      localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
       localIntent.putExtra("uin", paramString1);
       localIntent.putExtra("uintype", 1);
       localIntent.putExtra("troop_uin", paramString2);
@@ -261,7 +263,7 @@ public class NearbyTransitActivity
   public static void a(String paramString, boolean paramBoolean, long paramLong, int paramInt)
   {
     if (QLog.isDevelopLevel()) {
-      axql.a("NearbyTransitActivity", "reportResult", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      NearbyUtils.a("NearbyTransitActivity", "reportResult", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     }
     ThreadManager.getSubThreadHandler().post(new NearbyTransitActivity.4(paramInt, paramString, paramBoolean, paramLong));
   }
@@ -269,7 +271,7 @@ public class NearbyTransitActivity
   private boolean a(HotChatInfo paramHotChatInfo)
   {
     HotChatInfo localHotChatInfo = ((HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a();
-    bdla.b(this.app, "CliOper", "", "", "0X8004412", "0X8004412", 1, 0, "", "", "", "");
+    ReportController.b(this.app, "CliOper", "", "", "0X8004412", "0X8004412", 1, 0, "", "", "", "");
     if (localHotChatInfo == null)
     {
       a(paramHotChatInfo);
@@ -293,21 +295,21 @@ public class NearbyTransitActivity
     int k = 0;
     int i = 0;
     a("doAction", 1);
-    arxx.a("NearbyTransitActivity", new Object[] { "doAction", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    DatingUtil.a("NearbyTransitActivity", new Object[] { "doAction", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
     Object localObject;
-    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    if (NetworkUtil.d(BaseApplication.getContext()))
     {
-      this.app.addObserver(this.jdField_a_of_type_Anwo, true);
+      this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver, true);
       if (this.jdField_c_of_type_Int == 1)
       {
-        localObject = (anwd)this.app.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER);
+        localObject = (HotChatHandler)this.app.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER);
         if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
           if (this.jdField_b_of_type_Int > 0)
           {
-            if (!((anwd)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean, 0, this.jdField_b_of_type_Int)) {
+            if (!((HotChatHandler)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean, 0, this.jdField_b_of_type_Int)) {
               i = 1;
             }
             j = i;
@@ -338,7 +340,7 @@ public class NearbyTransitActivity
           this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject, 200L);
           return;
           i = j;
-          if (!((anwd)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean)) {
+          if (!((HotChatHandler)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean)) {
             i = 1;
           }
           j = i;
@@ -382,7 +384,7 @@ public class NearbyTransitActivity
           continue;
         }
         QLog.d("NearbyTransitActivity", 2, "", localJSONException);
-        this.app.removeObserver(this.jdField_a_of_type_Anwo);
+        this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
         k = 7;
         int m = 1;
         continue;
@@ -417,7 +419,7 @@ public class NearbyTransitActivity
         Message localMessage = Message.obtain();
         localMessage.what = 1;
         localMessage.arg1 = 2;
-        localMessage.obj = getString(2131693091);
+        localMessage.obj = getString(2131693237);
         break label183;
         label461:
         localMessage = null;
@@ -441,7 +443,7 @@ public class NearbyTransitActivity
   
   protected void a(Common.WifiPOIInfo paramWifiPOIInfo)
   {
-    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    if (NetworkUtil.d(BaseApplication.getContext()))
     {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(2);
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(5);
@@ -453,7 +455,7 @@ public class NearbyTransitActivity
     paramWifiPOIInfo = Message.obtain();
     paramWifiPOIInfo.what = 1;
     paramWifiPOIInfo.arg1 = 2;
-    paramWifiPOIInfo.obj = getString(2131693091);
+    paramWifiPOIInfo.obj = getString(2131693237);
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramWifiPOIInfo);
   }
   
@@ -482,16 +484,16 @@ public class NearbyTransitActivity
   
   public void doOnDestroy()
   {
-    arxx.a("NearbyTransitActivity", new Object[] { "doOnDestroy" });
+    DatingUtil.a("NearbyTransitActivity", new Object[] { "doOnDestroy" });
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    this.app.removeObserver(this.jdField_a_of_type_Anwo);
+    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
     super.doOnDestroy();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    arxx.a("NearbyTransitActivity", new Object[] { "handleMessage", Integer.valueOf(paramMessage.what) });
+    DatingUtil.a("NearbyTransitActivity", new Object[] { "handleMessage", Integer.valueOf(paramMessage.what) });
     switch (paramMessage.what)
     {
     }
@@ -499,15 +501,15 @@ public class NearbyTransitActivity
     do
     {
       return false;
-      if (this.jdField_a_of_type_Biso != null) {
-        this.jdField_a_of_type_Biso.b();
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
       }
       long l;
       if ((paramMessage.what == 2) || ((paramMessage.obj instanceof String)))
       {
         if (paramMessage.what == 2)
         {
-          str1 = getString(2131693091);
+          str1 = getString(2131693237);
           if ((paramMessage.obj instanceof String)) {
             str1 = (String)paramMessage.obj;
           }
@@ -517,7 +519,7 @@ public class NearbyTransitActivity
       else
       {
         this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-        this.app.removeObserver(this.jdField_a_of_type_Anwo);
+        this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
         l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
         if (l > 0L)
         {
@@ -535,20 +537,20 @@ public class NearbyTransitActivity
         str1 = jdField_a_of_type_JavaLangString;
         break;
       }
-      if (this.jdField_a_of_type_Biso != null) {
-        this.jdField_a_of_type_Biso.b();
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
       }
       paramMessage = (Object[])paramMessage.obj;
       a((String)paramMessage[0], (String)paramMessage[1], (String)paramMessage[2]);
       this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-      this.app.removeObserver(this.jdField_a_of_type_Anwo);
+      this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
       finish();
       return false;
       a((Common.WifiPOIInfo)paramMessage.obj);
       return false;
-    } while (this.jdField_a_of_type_Biso == null);
+    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null);
     if (this.e == 1) {}
-    for (String str1 = getString(2131693082);; str1 = getString(2131693081))
+    for (String str1 = getString(2131693228);; str1 = getString(2131693227))
     {
       String str2 = str1;
       if (paramMessage.obj != null)
@@ -557,10 +559,10 @@ public class NearbyTransitActivity
         if ((paramMessage.obj instanceof String))
         {
           str2 = (String)paramMessage.obj;
-          axql.a("NearbyTransitActivity", new Object[] { "handleMessage MSG_SHOW_LOADING ", str2 });
+          NearbyUtils.a("NearbyTransitActivity", new Object[] { "handleMessage MSG_SHOW_LOADING ", str2 });
         }
       }
-      this.jdField_a_of_type_Biso.a(0, str2, 0, this);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, str2, 0, this);
       return false;
     }
   }
@@ -598,7 +600,7 @@ public class NearbyTransitActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.NearbyTransitActivity
  * JD-Core Version:    0.7.0.1
  */

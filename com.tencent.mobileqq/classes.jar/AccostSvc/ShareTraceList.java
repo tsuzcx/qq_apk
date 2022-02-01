@@ -10,9 +10,9 @@ public final class ShareTraceList
 {
   static ArrayList<Long> cache_vecClose;
   static ArrayList<Long> cache_vecOpen;
-  public byte cType;
-  public ArrayList<Long> vecClose;
-  public ArrayList<Long> vecOpen;
+  public byte cType = 0;
+  public ArrayList<Long> vecClose = null;
+  public ArrayList<Long> vecOpen = null;
   
   public ShareTraceList() {}
   

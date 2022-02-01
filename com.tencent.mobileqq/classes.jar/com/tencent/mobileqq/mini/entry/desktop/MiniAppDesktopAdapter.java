@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Vibrator;
 import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
-import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.util.Log;
@@ -24,15 +23,16 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-import anvx;
-import arbw;
-import blas;
 import com.tencent.common.app.AppInterface;
 import com.tencent.ditto.shell.DittoUIEngine;
+import com.tencent.mobileqq.activity.springfestival.HBEntryBannerData;
+import com.tencent.mobileqq.activity.springfestival.HBEntryBannerView;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.cache.MiniCacheFreeManager;
@@ -68,7 +68,7 @@ import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.CustomWidgetUtil;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,11 +79,11 @@ import mqq.os.MqqHandler;
 
 public class MiniAppDesktopAdapter
   extends DragAdapter
-  implements MiniAppDesktopLayout.DesktopChangeListener, DesktopDataManager.DataChangeListener, DragRecyclerView.OnItemChangeListener
+  implements DesktopChangeListener, DesktopDataManager.DataChangeListener, DragRecyclerView.OnItemChangeListener
 {
-  private static final String DEVELOP = anvx.a(2131706257);
+  private static final String DEVELOP = HardCodeUtil.a(2131706797);
   private static final long DRAG_INSERT_DURA = 200L;
-  private static final String EXPERIENCE = anvx.a(2131706266);
+  private static final String EXPERIENCE = HardCodeUtil.a(2131706806);
   public static final int REFER_CONTACTS = 1;
   public static final int REFER_CONVERSATION = 0;
   public static final int REFER_LEBA = 2;
@@ -91,7 +91,7 @@ public class MiniAppDesktopAdapter
   private static final int TYPE_MIMI_APP_SPECIAL = 3;
   private static final int TYPE_MINI_APP_NORMAL = 1;
   private static final int TYPE_MINI_APP_TOP = 2;
-  private static int sMiniAppOpenedCount;
+  private static int sMiniAppOpenedCount = 0;
   int currDragMoveLeft;
   int currDragMoveTop;
   boolean isDesktopOpened;
@@ -103,12 +103,13 @@ public class MiniAppDesktopAdapter
   private MiniAppDesktopAdapter.OnAnimationListener mAnimListener;
   private boolean mCanShowRedDot;
   private Context mContext;
-  private boolean mDeletePrepared;
-  private MiniAppDesktopAdapter.DesktopMostCommonlyUsedViewHolder mDesktopMostCommonlyUsedViewHolder;
+  private boolean mDeletePrepared = false;
+  private MiniAppDesktopAdapter.DesktopMostCommonlyUsedViewHolder mDesktopMostCommonlyUsedViewHolder = null;
   private RecyclerView.ViewHolder mDragViewHolder;
   private int mInsertFrom = -1;
   private MiniAppDesktopAdapter.InsertItemRunnable mInsertItemRunnable = new MiniAppDesktopAdapter.InsertItemRunnable(this, null);
   private int mInsertTarget = -1;
+  private List<DesktopLifeCycleListener> mLifeCycleListenerList = new ArrayList();
   private Handler mMainHandler = new Handler(Looper.getMainLooper());
   private MiniAppDesktopAdapter.MoveItemRunnable mMoveItemRunnable = new MiniAppDesktopAdapter.MoveItemRunnable(this, null);
   private List<MiniAppInfo> mOrigData = new ArrayList();
@@ -271,7 +272,7 @@ public class MiniAppDesktopAdapter
     paramMicroAppViewHolder.itemView.setVisibility(0);
     if (paramDesktopAppInfo.isTemp)
     {
-      paramMicroAppViewHolder.imageView.setImageResource(2130841015);
+      paramMicroAppViewHolder.imageView.setImageResource(2130841147);
       paramMicroAppViewHolder.textView.setVisibility(4);
       paramMicroAppViewHolder.versionTypeMark.setVisibility(4);
       paramMicroAppViewHolder.recommendBadge.setVisibility(4);
@@ -329,7 +330,7 @@ public class MiniAppDesktopAdapter
         break label1011;
       }
       paramMicroAppViewHolder.redDot.setVisibility(0);
-      blas.a(paramMicroAppViewHolder.redDot, 7, i, 0);
+      CustomWidgetUtil.a(paramMicroAppViewHolder.redDot, 7, i, 0);
       label475:
       if (paramDesktopAppInfo.getModuleType() != 1) {
         break label1030;
@@ -479,6 +480,9 @@ public class MiniAppDesktopAdapter
     if ((this.mData.get(paramInt) instanceof DesktopEmptyGuideInfo)) {
       return 4;
     }
+    if ((this.mData.get(paramInt) instanceof HBEntryBannerData)) {
+      return 13;
+    }
     if ((this.mData.get(paramInt) instanceof DesktopSearchInfo)) {
       return 5;
     }
@@ -536,52 +540,52 @@ public class MiniAppDesktopAdapter
     if (this.mData.size() <= 0) {
       QLog.e("MiniAppDesktopAdapter", 1, "[MiniAppUserAppInfoListManager].onBindViewHolder, size = " + this.mData.size());
     }
-    for (;;)
+    DesktopPopularModuleInfo localDesktopPopularModuleInfo;
+    Activity localActivity;
+    do
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
       return;
       switch (getItemViewType(paramInt))
       {
       case 3: 
       case 7: 
       default: 
-        break;
+        return;
       case 1: 
         ((MiniAppDesktopAdapter.ModuleViewHolder)paramViewHolder).update((DesktopAppModuleInfo)this.mData.get(paramInt));
-        break;
+        return;
       case 2: 
         updateHolder((MiniAppDesktopAdapter.MicroAppViewHolder)paramViewHolder, (DesktopAppInfo)this.mData.get(paramInt), paramInt);
-        break;
+        return;
       case 4: 
         ((MiniAppDesktopAdapter.ModuleGuideViewHolder)paramViewHolder).update();
-        break;
+        return;
       case 5: 
         ((MiniAppDesktopAdapter.SearchViewHolder)paramViewHolder).update((DesktopSearchInfo)this.mData.get(paramInt));
-        break;
+        return;
       case 6: 
         ((MiniAppDesktopAdapter.DesktopModuleListViewHolder)paramViewHolder).bindView((DesktopAppGroupInfo)this.mData.get(paramInt), 0);
-        break;
+        return;
       case 12: 
         ((MiniAppDesktopAdapter.DesktopMostCommonlyUsedViewHolder)paramViewHolder).bindView((DesktopMostCommonlyUsedInfo)this.mData.get(paramInt));
-        break;
+        return;
       case 8: 
         ((MiniAppDesktopAdapter.RecommendModuleViewHolder)paramViewHolder).bindView((Activity)this.mActivity.get(), (DesktopRecommendModuleInfo)this.mData.get(paramInt));
-        break;
+        return;
       case 10: 
         ((MiniAppDesktopAdapter.FriendsPkViewHolder)paramViewHolder).bindView((Activity)this.mActivity.get(), (DesktopFriendsPkModuleInfo)this.mData.get(paramInt));
-        break;
+        return;
       case 9: 
-        MiniAppDesktopAdapter.PopularityListModuleViewHolder localPopularityListModuleViewHolder = (MiniAppDesktopAdapter.PopularityListModuleViewHolder)paramViewHolder;
-        DesktopPopularModuleInfo localDesktopPopularModuleInfo = (DesktopPopularModuleInfo)this.mData.get(paramInt);
-        Activity localActivity = (Activity)this.mActivity.get();
-        if (localActivity != null) {
-          localPopularityListModuleViewHolder.update(localDesktopPopularModuleInfo, localActivity);
-        }
-        break;
-      case 11: 
-        ((MiniAppDesktopAdapter.DittoViewHolder)paramViewHolder).bindView((DesktopDittoInfo)this.mData.get(paramInt));
+        paramViewHolder = (MiniAppDesktopAdapter.PopularityListModuleViewHolder)paramViewHolder;
+        localDesktopPopularModuleInfo = (DesktopPopularModuleInfo)this.mData.get(paramInt);
+        localActivity = (Activity)this.mActivity.get();
       }
-    }
+    } while (localActivity == null);
+    paramViewHolder.update(localDesktopPopularModuleInfo, localActivity);
+    return;
+    ((MiniAppDesktopAdapter.HBEntryViewHolder)paramViewHolder).bindView((HBEntryBannerData)this.mData.get(paramInt));
+    return;
+    ((MiniAppDesktopAdapter.DittoViewHolder)paramViewHolder).bindView((DesktopDittoInfo)this.mData.get(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -593,34 +597,38 @@ public class MiniAppDesktopAdapter
       return null;
     case 1: 
       if (Build.VERSION.SDK_INT > 21) {}
-      for (paramViewGroup = ModeInfoLayoutKt.buildModuleInfoLayout(paramViewGroup.getContext());; paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562406, paramViewGroup, false)) {
+      for (paramViewGroup = ModeInfoLayoutKt.buildModuleInfoLayout(paramViewGroup.getContext());; paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562544, paramViewGroup, false)) {
         return new MiniAppDesktopAdapter.ModuleViewHolder(paramViewGroup, (Activity)this.mActivity.get());
       }
     case 2: 
-      return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562404, paramViewGroup, false));
+      return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562542, paramViewGroup, false));
     case 3: 
       return new MiniAppDesktopAdapter.MicroAppViewHolder(new View(paramViewGroup.getContext()));
     case 4: 
-      return new MiniAppDesktopAdapter.ModuleGuideViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559436, paramViewGroup, false));
+      return new MiniAppDesktopAdapter.ModuleGuideViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559503, paramViewGroup, false));
+    case 13: 
+      return new MiniAppDesktopAdapter.HBEntryViewHolder(this, new HBEntryBannerView(paramViewGroup.getContext()), this.mActivity);
     case 5: 
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559440, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559507, paramViewGroup, false);
       return new MiniAppDesktopAdapter.SearchViewHolder(this.mActivity, paramViewGroup);
     case 6: 
-      return new MiniAppDesktopAdapter.DesktopModuleListViewHolder(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559435, paramViewGroup, false), this.mContext, this.mRecyclerView.getDragDeleteListener());
+      return new MiniAppDesktopAdapter.DesktopModuleListViewHolder(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559502, paramViewGroup, false), this.mContext, this.mRecyclerView.getDragDeleteListener());
     case 12: 
-      this.mDesktopMostCommonlyUsedViewHolder = new MiniAppDesktopAdapter.DesktopMostCommonlyUsedViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559437, paramViewGroup, false), this.mActivity);
+      this.mDesktopMostCommonlyUsedViewHolder = new MiniAppDesktopAdapter.DesktopMostCommonlyUsedViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559504, paramViewGroup, false), this.mActivity);
       return this.mDesktopMostCommonlyUsedViewHolder;
     case 8: 
-      return new MiniAppDesktopAdapter.RecommendModuleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559439, paramViewGroup, false));
+      return new MiniAppDesktopAdapter.RecommendModuleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559506, paramViewGroup, false));
     case 9: 
       if (Build.VERSION.SDK_INT > 21) {}
-      for (paramViewGroup = PopularityListLayoutKt.buildPopularityListLayout(paramViewGroup.getContext());; paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559438, paramViewGroup, false)) {
+      for (paramViewGroup = PopularityListLayoutKt.buildPopularityListLayout(paramViewGroup.getContext());; paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559505, paramViewGroup, false)) {
         return new MiniAppDesktopAdapter.PopularityListModuleViewHolder(paramViewGroup);
       }
     case 10: 
-      return new MiniAppDesktopAdapter.FriendsPkViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559433, paramViewGroup, false));
+      return new MiniAppDesktopAdapter.FriendsPkViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559500, paramViewGroup, false));
     }
-    return new MiniAppDesktopAdapter.DittoViewHolder(new DesktopDittoAreaView((Context)this.mActivity.get()));
+    paramViewGroup = new MiniAppDesktopAdapter.DittoViewHolder(new DesktopDittoAreaView((Context)this.mActivity.get()));
+    this.mLifeCycleListenerList.add(paramViewGroup);
+    return paramViewGroup;
   }
   
   public void onCustomMove(RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2)
@@ -640,7 +648,7 @@ public class MiniAppDesktopAdapter
       int k = ((View)localViewHolder.itemView.getParent()).getTop();
       int m = localViewHolder.itemView.getLeft();
       int n = localViewHolder.itemView.getTop();
-      if ((Math.abs(paramInt1 - (j + m)) <= ViewUtils.dpToPx(20.0F)) && (Math.abs(paramInt2 - (k + n)) <= ViewUtils.dpToPx(20.0F)))
+      if ((Math.abs(paramInt1 - (j + m)) <= ViewUtils.b(20.0F)) && (Math.abs(paramInt2 - (k + n)) <= ViewUtils.b(20.0F)))
       {
         if (this.mMoveItemRunnable.pendingMoveTargetIndex == i) {
           return;
@@ -658,6 +666,15 @@ public class MiniAppDesktopAdapter
     setData(((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).getData());
   }
   
+  public void onDesktopAccountChanged()
+  {
+    QLog.d("MiniAppDesktopAdapter", 1, "onDesktopAccountChanged");
+    Iterator localIterator = this.mLifeCycleListenerList.iterator();
+    while (localIterator.hasNext()) {
+      ((DesktopLifeCycleListener)localIterator.next()).onAccountChanged();
+    }
+  }
+  
   public void onDesktopClosed()
   {
     this.isDesktopOpened = false;
@@ -669,6 +686,16 @@ public class MiniAppDesktopAdapter
       }
       this.mDesktopMostCommonlyUsedViewHolder = null;
     }
+  }
+  
+  public void onDesktopDestroy()
+  {
+    QLog.d("MiniAppDesktopAdapter", 1, "onDesktopDestroy");
+    Iterator localIterator = this.mLifeCycleListenerList.iterator();
+    while (localIterator.hasNext()) {
+      ((DesktopLifeCycleListener)localIterator.next()).onDestroy();
+    }
+    this.mLifeCycleListenerList.clear();
   }
   
   public void onDesktopOpened()
@@ -714,7 +741,7 @@ public class MiniAppDesktopAdapter
           localObject = (FrameLayout.LayoutParams)this.mDragMirrorLayout.getLayoutParams();
           k = paramViewHolder.itemView.getLeft();
           j = (int)paramFloat1 + (j + k);
-          i = paramViewHolder.itemView.getTop() + i + (int)paramFloat2 - ViewUtils.dpToPx(8.0F);
+          i = paramViewHolder.itemView.getTop() + i + (int)paramFloat2 - ViewUtils.b(8.0F);
           this.currDragMoveLeft = j;
           this.currDragMoveTop = i;
           ((FrameLayout.LayoutParams)localObject).setMargins(j, i, 0, 0);
@@ -727,7 +754,7 @@ public class MiniAppDesktopAdapter
             if (this.mInsertTarget < 0)
             {
               paramViewHolder = this.mRecyclerView.findViewHolderForAdapterPosition(getItemCount() - 1);
-              if ((paramViewHolder != null) && (Math.abs(j - paramViewHolder.itemView.getLeft()) >= ViewUtils.dpToPx(20.0F)) && (i - paramViewHolder.itemView.getTop() >= ViewUtils.dpToPx(30.0F)))
+              if ((paramViewHolder != null) && (Math.abs(j - paramViewHolder.itemView.getLeft()) >= ViewUtils.b(20.0F)) && (i - paramViewHolder.itemView.getTop() >= ViewUtils.b(30.0F)))
               {
                 paramViewHolder = (DesktopItemInfo)this.mData.get(getItemCount() - 1);
                 if ((paramViewHolder.dropEnable) && (!paramViewHolder.isTemp) && (!isSameModule(this.mDragIndex, getItemCount() - 1)))
@@ -768,7 +795,7 @@ public class MiniAppDesktopAdapter
           if ((k != 0) && (this.mDragMirrorMarkImage != null)) {
             this.mDragMirrorMarkImage.setVisibility(0);
           }
-          if ((Math.abs(j - this.lastDragLeft) > ViewUtils.dpToPx(25.0F)) || (Math.abs(i - this.lastDragTop) > ViewUtils.dpToPx(25.0F)))
+          if ((Math.abs(j - this.lastDragLeft) > ViewUtils.b(25.0F)) || (Math.abs(i - this.lastDragTop) > ViewUtils.b(25.0F)))
           {
             QLog.i("MiniAppDesktopAdapter", 1, "Desktop-Drag DragMirror left:" + j + " top:" + i);
             this.lastDragLeft = j;
@@ -805,7 +832,7 @@ public class MiniAppDesktopAdapter
       }
       for (;;)
       {
-        if ((Math.abs(j - this.lastDragMoveLeft) <= ViewUtils.dpToPx(20.0F)) && (Math.abs(j - this.lastDragMoveTop) <= ViewUtils.dpToPx(20.0F))) {
+        if ((Math.abs(j - this.lastDragMoveLeft) <= ViewUtils.b(20.0F)) && (Math.abs(j - this.lastDragMoveTop) <= ViewUtils.b(20.0F))) {
           break label224;
         }
         this.lastDragMoveLeft = i;
@@ -833,6 +860,8 @@ public class MiniAppDesktopAdapter
   {
     super.onItemPrepared(paramInt);
   }
+  
+  public void onStartDesktopOpenAnimation() {}
   
   public void setData(List<DesktopItemInfo> paramList)
   {
@@ -890,7 +919,7 @@ public class MiniAppDesktopAdapter
     this.mData.addAll(paramList);
     this.mRedDotData.clear();
     this.mRedDotData.putAll(paramMap);
-    this.mCanShowRedDot = arbw.d();
+    this.mCanShowRedDot = MiniAppConfProcessor.d();
   }
   
   public void setRedDotSwitchState(int paramInt)

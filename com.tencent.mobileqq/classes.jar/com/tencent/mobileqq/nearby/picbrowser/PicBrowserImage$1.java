@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import ayda;
 import com.tencent.image.URLDrawable;
 
-public class PicBrowserImage$1
+class PicBrowserImage$1
   implements Runnable
 {
-  public PicBrowserImage$1(ayda paramayda, URLDrawable paramURLDrawable) {}
+  PicBrowserImage$1(PicBrowserImage paramPicBrowserImage, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

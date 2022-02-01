@@ -9,8 +9,8 @@ public final class RespGetPoint
 {
   static GPS cache_stGps;
   static UserDetailLocalInfo cache_stUDLinfo;
-  public GPS stGps;
-  public UserDetailLocalInfo stUDLinfo;
+  public GPS stGps = null;
+  public UserDetailLocalInfo stUDLinfo = null;
   
   public RespGetPoint() {}
   

@@ -1,5 +1,6 @@
 package com.tencent.qqlive.tvkplayer.vinfo.common;
 
+import android.support.annotation.NonNull;
 import com.tencent.qqlive.tvkplayer.tools.utils.ITVKHttpProcessor;
 import com.tencent.qqlive.tvkplayer.tools.utils.ITVKHttpProcessor.ITVKHttpCallback;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKHttpProcessorFactory;
@@ -30,16 +31,19 @@ public class TVKVideoInfoHttpProcessor
   
   public void addToRequestQueue(int paramInt, String paramString, Map<String, String> paramMap1, Map<String, String> paramMap2, ITVKHttpProcessor.ITVKHttpCallback paramITVKHttpCallback)
   {
+    addToRequestQueue(paramInt, paramString, paramMap1, paramMap2, new byte[0], paramITVKHttpCallback);
+  }
+  
+  public void addToRequestQueue(int paramInt, String paramString, Map<String, String> paramMap1, Map<String, String> paramMap2, @NonNull byte[] paramArrayOfByte, ITVKHttpProcessor.ITVKHttpCallback paramITVKHttpCallback)
+  {
     paramString = new UriBuilder().setUrl(paramString).addParam(paramMap1).buildUri();
     TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoHttpProcessor.java]", "http request, url:" + paramString);
-    paramMap1 = TVKHttpProcessorFactory.getInstance();
-    int i = this.mCgiNonWifiTimeout;
-    paramMap1.postAsync(paramString, paramMap2, new byte[0], i * paramInt, paramITVKHttpCallback);
+    TVKHttpProcessorFactory.getInstance().postAsync(paramString, paramMap2, paramArrayOfByte, this.mCgiNonWifiTimeout * paramInt, paramITVKHttpCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoHttpProcessor
  * JD-Core Version:    0.7.0.1
  */

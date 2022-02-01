@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bjko;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
 
 public class PackageInstallReceiver
   extends BroadcastReceiver
@@ -14,10 +14,10 @@ public class PackageInstallReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bjko.c(this.a, "onReceive >> " + paramIntent.getAction());
+    LogUtility.c(this.a, "onReceive >> " + paramIntent.getAction());
     paramContext = paramIntent.getDataString();
     if (TextUtils.isEmpty(paramContext)) {
-      bjko.e(this.a, "onReceive intentPkgNameString == null ");
+      LogUtility.e(this.a, "onReceive intentPkgNameString == null ");
     }
     Object localObject;
     do
@@ -33,7 +33,7 @@ public class PackageInstallReceiver
       }
       else
       {
-        bjko.e(this.a, "onReceive packageName == null " + paramIntent.getDataString());
+        LogUtility.e(this.a, "onReceive packageName == null " + paramIntent.getDataString());
         return;
       }
       if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REPLACED"))
@@ -47,7 +47,7 @@ public class PackageInstallReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.PackageInstallReceiver
  * JD-Core Version:    0.7.0.1
  */

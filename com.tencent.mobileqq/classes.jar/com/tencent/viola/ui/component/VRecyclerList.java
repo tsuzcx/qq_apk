@@ -210,6 +210,18 @@ public class VRecyclerList
     return new VRecyclerView(paramContext);
   }
   
+  private float cutDistanceWhenExistKdRefresh(float paramFloat)
+  {
+    if ((this.mDomObj == null) && (this.mDomObj.getDomChildCount() <= 0)) {}
+    DomObject localDomObject;
+    do
+    {
+      return paramFloat;
+      localDomObject = this.mDomObj.getChild(0);
+    } while ((localDomObject == null) || (!"kdrefresh".equals(localDomObject.getType())));
+    return paramFloat - localDomObject.getLayoutHeight() - localDomObject.getMarginVertical();
+  }
+  
   private void dealChildMarginWith(DomObject paramDomObject, FrameLayout.LayoutParams paramLayoutParams)
   {
     if (!isVertical()) {}
@@ -360,22 +372,22 @@ public class VRecyclerList
     if (this.mOrientation == 1)
     {
       if (i == 0) {
-        break label110;
+        break label114;
       }
-      f2 = calFinalDistance(compatWithPagerSnap(ViolaUtils.getLayoutYInList(str, paramString1)), paramInt3, paramInt1, paramString2, ((VRecyclerView)getHostView()).getHeight(), (int)localDomObject.getLayoutHeight());
+      f2 = calFinalDistance(compatWithPagerSnap(cutDistanceWhenExistKdRefresh(ViolaUtils.getLayoutYInList(str, paramString1))), paramInt3, paramInt1, paramString2, ((VRecyclerView)getHostView()).getHeight(), (int)localDomObject.getLayoutHeight());
     }
-    label110:
-    for (float f1 = 0.0F;; f1 = calFinalDistance(ViolaUtils.getLayoutXInList(str, paramString1), paramInt2, paramInt1, paramString2, ((VRecyclerView)getHostView()).getWidth(), (int)localDomObject.getLayoutWidth()))
+    label114:
+    for (float f1 = 0.0F;; f1 = calFinalDistance(cutDistanceWhenExistKdRefresh(ViolaUtils.getLayoutXInList(str, paramString1)), paramInt2, paramInt1, paramString2, ((VRecyclerView)getHostView()).getWidth(), (int)localDomObject.getLayoutWidth()))
     {
       if (paramInt4 <= 0) {
-        break label145;
+        break label153;
       }
       ((VRecyclerView)getHostView()).smoothScrollBy((int)f1, (int)f2);
       return;
       i = 0;
       break;
     }
-    label145:
+    label153:
     ((VRecyclerView)getHostView()).scrollBy((int)f1, (int)f2);
   }
   
@@ -1349,7 +1361,7 @@ public class VRecyclerList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.component.VRecyclerList
  * JD-Core Version:    0.7.0.1
  */

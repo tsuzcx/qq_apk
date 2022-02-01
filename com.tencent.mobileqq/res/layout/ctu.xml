@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/mm" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/beh" android:textStyle="bold" android:textColor="@color/ag7" android:gravity="center_horizontal" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wyw" />
-    <TextView android:textSize="@dimen/beo" android:textColor="@color/ag7" android:gravity="left" android:id="@id/bgz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="40.0dip" />
-    <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/beh" android:textStyle="bold" android:textColor="@color/ag7" android:gravity="center" android:id="@id/mvs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginBottom="17.0dip" android:text="@string/woq" />
-</LinearLayout>
+<FrameLayout android:id="@id/mbx" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

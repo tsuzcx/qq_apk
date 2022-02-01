@@ -1,6 +1,7 @@
 package com.tencent.qqmini.sdk.widget;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import com.tencent.qqmini.sdk.action.AppStateEvent;
 import com.tencent.qqmini.sdk.action.GetShareState;
 import com.tencent.qqmini.sdk.action.HideInputAction;
@@ -10,6 +11,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ShareProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import com.tencent.qqmini.sdk.manager.LoginManager;
 
 public class CapsuleButtonClickListener
   implements CapsuleButton.CapsuleBtnClickListener
@@ -46,21 +48,26 @@ public class CapsuleButtonClickListener
   public void onMoreClick()
   {
     QMLog.i("CapsuleButton", "on more click");
-    ShareState localShareState = GetShareState.obtain(this.mMiniAppContext);
-    if (localShareState != null)
+    if (TextUtils.isEmpty(LoginManager.getInstance().getAccount())) {
+      QMLog.e("CapsuleButton", "uin is empty, not show MoreClick. ");
+    }
+    do
     {
-      localShareState.launchFrom = 0;
-      localShareState.stagingJsonParams = null;
-    }
-    this.mShareProxy.showSharePanel(this.mMiniAppContext);
-    if (this.mMiniAppContext.getMiniAppInfo() != null) {
-      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonMoreClick(this.mMiniAppContext);
-    }
+      return;
+      ShareState localShareState = GetShareState.obtain(this.mMiniAppContext);
+      if (localShareState != null)
+      {
+        localShareState.launchFrom = 0;
+        localShareState.stagingJsonParams = null;
+      }
+      this.mShareProxy.showSharePanel(this.mMiniAppContext);
+    } while (this.mMiniAppContext.getMiniAppInfo() == null);
+    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonMoreClick(this.mMiniAppContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.CapsuleButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

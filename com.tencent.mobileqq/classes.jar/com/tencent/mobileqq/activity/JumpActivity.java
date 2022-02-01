@@ -1,27 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import aeen;
-import aeeo;
-import aeep;
-import aeeq;
-import aeer;
-import aees;
-import aeet;
-import aeeu;
-import aeev;
-import aeew;
-import aeey;
-import aeez;
-import aefa;
-import aefb;
-import aefc;
-import aefd;
-import aefe;
-import aeff;
-import aefg;
-import aefh;
-import aefi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -40,17 +18,17 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import aobq;
-import aoud;
-import avjl;
-import bheh;
-import bhfa;
-import bkyc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQMapActivityProxy;
+import com.tencent.mobileqq.app.parser.JumpActivityHelper;
+import com.tencent.mobileqq.haoliyou.sso.OnCheckShareListener;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpReportCtr;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.HashMap;
 import mqq.observer.WtloginObserver;
 import mqq.os.MqqHandler;
@@ -58,20 +36,20 @@ import org.jetbrains.annotations.NotNull;
 
 public class JumpActivity
   extends BaseActivity
-  implements DialogInterface.OnDismissListener, Handler.Callback, avjl
+  implements DialogInterface.OnDismissListener, Handler.Callback, OnCheckShareListener
 {
   public static int a;
   public static HashMap<String, Integer> a;
   public static String[] a;
-  public static boolean e;
-  public static boolean f;
+  public static boolean e = false;
+  public static boolean f = false;
   public static volatile boolean g;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   public Intent a;
   public HandlerThread a;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public aobq a;
-  private bhfa jdField_a_of_type_Bhfa;
+  public QQMapActivityProxy a;
+  private JumpReportCtr jdField_a_of_type_ComTencentMobileqqUtilsJumpReportCtr;
   public String a;
   public WtloginObserver a;
   public final MqqHandler a;
@@ -89,31 +67,39 @@ public class JumpActivity
   static
   {
     jdField_a_of_type_Int = -1;
+    g = false;
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "mqq", "mqqapi", "mqqmdpass", "mqqwpa", "mqqopensdkapi", "mqqflyticket", "wtloginmqq", "imto", "mqqtribe", "mqqvoipivr", "mqqverifycode", "mqqdevlock", "qapp", "qqwifi", "mqqconnect", "qqstory", "mqqconferenceflyticket", "mqqavshare" };
   }
   
   public JumpActivity()
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_MqqOsMqqHandler = new bkyc(Looper.getMainLooper(), this, true);
-    this.jdField_a_of_type_MqqObserverWtloginObserver = new aeen(this);
+    this.jdField_a_of_type_AndroidContentIntent = null;
+    this.jdField_b_of_type_AndroidContentIntent = null;
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+    this.jdField_a_of_type_AndroidOsHandlerThread = null;
+    this.jdField_b_of_type_MqqOsMqqHandler = null;
+    this.jdField_a_of_type_MqqObserverWtloginObserver = new JumpActivity.1(this);
   }
   
   public static String a(Context paramContext)
   {
-    return aoud.a(paramContext);
+    return JumpActivityHelper.a(paramContext);
   }
   
   public static void a(Context paramContext, Intent paramIntent)
   {
-    aoud.a(paramContext, paramIntent);
+    JumpActivityHelper.a(paramContext, paramIntent);
   }
   
   public static void a(String paramString, boolean paramBoolean)
   {
     try
     {
-      aoud.a(paramString, paramBoolean);
+      JumpActivityHelper.a(paramString, paramBoolean);
       return;
     }
     finally
@@ -125,17 +111,17 @@ public class JumpActivity
   
   private void a(boolean paramBoolean, Intent paramIntent)
   {
-    aoud.a(this, paramBoolean, paramIntent);
+    JumpActivityHelper.a(this, paramBoolean, paramIntent);
   }
   
   public static boolean a(String paramString)
   {
-    return aoud.a(paramString);
+    return JumpActivityHelper.a(paramString);
   }
   
   private boolean b(Intent paramIntent)
   {
-    return (aoud.c(this, paramIntent)) && (aoud.d(this, paramIntent)) && (aoud.e(this, paramIntent));
+    return (JumpActivityHelper.c(this, paramIntent)) && (JumpActivityHelper.d(this, paramIntent)) && (JumpActivityHelper.e(this, paramIntent));
   }
   
   public static boolean b(String paramString)
@@ -146,14 +132,14 @@ public class JumpActivity
     return false;
   }
   
-  public static void g(Intent paramIntent)
+  public static void f(Intent paramIntent)
   {
-    aoud.a(paramIntent);
+    JumpActivityHelper.a(paramIntent);
   }
   
-  private static void j(Intent paramIntent)
+  private static void i(Intent paramIntent)
   {
-    aoud.b(paramIntent);
+    JumpActivityHelper.b(paramIntent);
   }
   
   public static void p()
@@ -170,25 +156,25 @@ public class JumpActivity
   
   public int a(Bundle paramBundle)
   {
-    return aoud.a(this, paramBundle);
+    return JumpActivityHelper.a(this, paramBundle);
   }
   
   public int a(Bundle paramBundle, HashMap<String, String> paramHashMap)
   {
-    return aoud.a(this, paramBundle, paramHashMap);
+    return JumpActivityHelper.a(this, paramBundle, paramHashMap);
   }
   
   public int a(Bundle paramBundle, HashMap<String, String> paramHashMap, Uri paramUri, String paramString)
   {
-    return aoud.a(this, paramBundle, paramHashMap, paramUri, paramString);
+    return JumpActivityHelper.a(this, paramBundle, paramHashMap, paramUri, paramString);
   }
   
   public int a(HashMap<String, String> paramHashMap)
   {
-    return aoud.a(this, paramHashMap);
+    return JumpActivityHelper.a(this, paramHashMap);
   }
   
-  public aeer a(int paramInt)
+  public JumpActivity.BaseResultPlugin a(int paramInt)
   {
     QLog.d("JumpAction", 1, "createPlugin pluginKey: " + paramInt);
     switch (paramInt)
@@ -198,37 +184,37 @@ public class JumpActivity
       return null;
     case 800: 
     case 880: 
-      return new aeev(this);
+      return new JumpActivity.ProfilePreviewResultPlugin(this);
     case 18: 
-      return new aees(this);
+      return new JumpActivity.LBSResultPlugin(this);
     case 19: 
-      return new aeew(this);
+      return new JumpActivity.ShareLoginResultPlugin(this);
     case 20: 
-      return new aeff(this);
+      return new JumpActivity.ViewLoginResultPlugin(this);
     case 21: 
-      return new aefh(this);
+      return new JumpActivity.WPALoginResultPlugin(this);
     case 22: 
-      return new aefg(this);
+      return new JumpActivity.WPAGesturePWDResultPlugin(this);
     case 26: 
-      return new aefe(this);
+      return new JumpActivity.ThirdPartyLoginResultPlugin(this);
     case 27: 
-      return new aefd(this);
+      return new JumpActivity.ThirdPartyGesturePWDResultPlugin(this);
     case 24: 
-      return new aeet(this);
+      return new JumpActivity.MiniAppLoginResultPlugin(this);
     case 1: 
-      return new aeeu(this);
+      return new JumpActivity.MultiVoiceCallResultPlugin(this);
     case 2: 
-      return new aefc(this);
+      return new JumpActivity.SingleVoiceCallResultPlugin(this);
     case 571: 
-      return new aefa(this);
+      return new JumpActivity.ShortCutJumpQReaderResultPlugin(this);
     case 572: 
-      return new aeez(this);
+      return new JumpActivity.ShortCutJumpQQComicResultPlugin(this);
     case 25: 
-      return new aefi(this);
+      return new JumpActivity.WebSecurityVerifyResultPlugin(this);
     case 570: 
-      return new aeey(this);
+      return new JumpActivity.ShortCutJumpQFileResultPlugin(this);
     }
-    return new aefb(this);
+    return new JumpActivity.ShortCutJumpSmartDeviceResultPlugin(this);
   }
   
   @NotNull
@@ -241,7 +227,7 @@ public class JumpActivity
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aeeo(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new JumpActivity.2(this);
       IntentFilter localIntentFilter = new IntentFilter("ShareToQZoneAndFinishTheLastActivity");
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
@@ -250,8 +236,8 @@ public class JumpActivity
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     Object localObject = null;
-    if (this.jdField_a_of_type_Aobq != null) {
-      this.jdField_a_of_type_Aobq = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQMapActivityProxy != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQMapActivityProxy = null;
     }
     if (paramIntent != null) {
       localObject = paramIntent.getExtras();
@@ -261,7 +247,7 @@ public class JumpActivity
       paramIntent = ((Bundle)localObject).getString("latitude");
       localObject = ((Bundle)localObject).getString("longitude");
       if (this.c) {
-        aoud.a(this, "ret=0&lon=" + (String)localObject + "&lat=" + paramIntent);
+        JumpActivityHelper.a(this, "ret=0&lon=" + (String)localObject + "&lat=" + paramIntent);
       }
       finish();
     }
@@ -269,49 +255,49 @@ public class JumpActivity
   
   public void a(Intent paramIntent)
   {
-    aoud.e(this, paramIntent);
+    JumpActivityHelper.e(this, paramIntent);
   }
   
   public void a(Intent paramIntent, Bundle paramBundle)
   {
-    aoud.a(this, paramIntent, paramBundle);
+    JumpActivityHelper.a(this, paramIntent, paramBundle);
   }
   
   public void a(Bundle paramBundle)
   {
-    aoud.b(this, paramBundle);
+    JumpActivityHelper.b(this, paramBundle);
   }
   
   public void a(boolean paramBoolean)
   {
-    aoud.a(this, paramBoolean);
+    JumpActivityHelper.a(this, paramBoolean);
   }
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    aoud.a(this, paramBoolean, paramInt1, paramInt2, paramString1, paramString2);
+    JumpActivityHelper.a(this, paramBoolean, paramInt1, paramInt2, paramString1, paramString2);
   }
   
   public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    aoud.a(this, paramBoolean1, paramString, paramBoolean2);
+    JumpActivityHelper.a(this, paramBoolean1, paramString, paramBoolean2);
   }
   
   protected boolean a(Intent paramIntent)
   {
-    return (b(paramIntent)) && (aoud.f(this, paramIntent));
+    return (b(paramIntent)) && (JumpActivityHelper.f(this, paramIntent));
   }
   
-  public boolean a(bheh parambheh)
+  public boolean a(JumpAction paramJumpAction)
   {
-    return aoud.a(this.app, parambheh);
+    return JumpActivityHelper.a(this.app, paramJumpAction);
   }
   
   public void b()
   {
     if (this.jdField_b_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new aeep(this);
+      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new JumpActivity.3(this);
       IntentFilter localIntentFilter = new IntentFilter("BroadcastReceiverFinishActivity");
       registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
@@ -324,8 +310,8 @@ public class JumpActivity
       paramIntent = paramIntent.getStringExtra("roomId");
       if (paramIntent != null)
       {
-        aeeq localaeeq = new aeeq(this);
-        if (ChatActivityUtils.a(this.app, this, 3000, paramIntent, true, true, localaeeq, null)) {
+        JumpActivity.4 local4 = new JumpActivity.4(this);
+        if (ChatActivityUtils.a(this.app, this, 3000, paramIntent, true, true, local4, null)) {
           finish();
         }
       }
@@ -336,31 +322,31 @@ public class JumpActivity
   
   public void b(Intent paramIntent)
   {
-    aoud.g(this, paramIntent);
+    JumpActivityHelper.g(this, paramIntent);
   }
   
   public void b(boolean paramBoolean)
   {
-    Intent localIntent = aoud.a(this, paramBoolean);
+    Intent localIntent = JumpActivityHelper.a(this, paramBoolean);
     if (localIntent == null) {
       return;
     }
-    aoud.a(this, localIntent, 1);
+    JumpActivityHelper.a(this, localIntent, 1);
   }
   
   public void b(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    aoud.b(this, paramBoolean1, paramString, paramBoolean2);
+    JumpActivityHelper.b(this, paramBoolean1, paramString, paramBoolean2);
   }
   
-  public boolean b(bheh parambheh)
+  public boolean b(JumpAction paramJumpAction)
   {
-    return aoud.a(this, parambheh);
+    return JumpActivityHelper.a(this, paramJumpAction);
   }
   
   public void c()
   {
-    aoud.b(this);
+    JumpActivityHelper.b(this);
   }
   
   public void c(int paramInt1, int paramInt2, Intent paramIntent)
@@ -370,18 +356,18 @@ public class JumpActivity
   
   public void c(Intent paramIntent)
   {
-    aoud.h(this, paramIntent);
+    JumpActivityHelper.h(this, paramIntent);
   }
   
   public void c(boolean paramBoolean)
   {
-    aoud.c(this, paramBoolean);
+    JumpActivityHelper.c(this, paramBoolean);
   }
   
   public void d()
   {
     if (this.c) {
-      aoud.a(this, "HexUtil.bytes2HexStr(fileKey)");
+      JumpActivityHelper.a(this, "HexUtil.bytes2HexStr(fileKey)");
     }
     finish();
   }
@@ -393,7 +379,7 @@ public class JumpActivity
   
   public void d(Intent paramIntent)
   {
-    aoud.i(this, paramIntent);
+    JumpActivityHelper.i(this, paramIntent);
   }
   
   @Override
@@ -432,7 +418,7 @@ public class JumpActivity
           localObject = "null";
           break;
         }
-        ((aeer)localObject).a(paramInt1, paramInt2, paramIntent);
+        ((JumpActivity.BaseResultPlugin)localObject).a(paramInt1, paramInt2, paramIntent);
         return;
       }
       catch (Exception paramIntent)
@@ -465,9 +451,9 @@ public class JumpActivity
         finish();
         return false;
       }
-      j(paramBundle);
-      this.jdField_a_of_type_Bhfa = new bhfa();
-      this.jdField_a_of_type_Bhfa.a(this.app, this, paramBundle);
+      i(paramBundle);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpReportCtr = new JumpReportCtr();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpReportCtr.a(this.app, this, paramBundle);
       boolean bool = a(paramBundle);
       return bool;
     }
@@ -499,10 +485,10 @@ public class JumpActivity
       this.jdField_a_of_type_AndroidOsHandlerThread.quit();
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
     }
-    if (this.jdField_a_of_type_Bhfa != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpReportCtr != null)
     {
-      this.jdField_a_of_type_Bhfa.a(null);
-      this.jdField_a_of_type_Bhfa = null;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpReportCtr.a(null);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpReportCtr = null;
     }
   }
   
@@ -521,7 +507,7 @@ public class JumpActivity
   
   public void e(Intent paramIntent)
   {
-    aoud.a(this, paramIntent, this.mRuntime);
+    JumpActivityHelper.c(this, paramIntent);
   }
   
   public void f()
@@ -529,14 +515,14 @@ public class JumpActivity
     b(false);
   }
   
-  public void f(Intent paramIntent)
-  {
-    aoud.c(this, paramIntent);
-  }
-  
   public void g()
   {
     b(false, null, true);
+  }
+  
+  public void g(Intent paramIntent)
+  {
+    JumpActivityHelper.j(this, paramIntent);
   }
   
   public void h()
@@ -546,7 +532,7 @@ public class JumpActivity
   
   public void h(Intent paramIntent)
   {
-    aoud.j(this, paramIntent);
+    JumpActivityHelper.n(this, paramIntent);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -567,11 +553,11 @@ public class JumpActivity
         r();
         if (i == 0)
         {
-          if (!aoud.a(this)) {
+          if (!JumpActivityHelper.a(this)) {
             a(localIntent.getExtras());
           }
         }
-        else if (!aoud.a(this))
+        else if (!JumpActivityHelper.a(this))
         {
           Bundle localBundle = localIntent.getExtras();
           paramMessage = localBundle;
@@ -587,11 +573,6 @@ public class JumpActivity
   public void i()
   {
     a(false, null, true);
-  }
-  
-  public void i(Intent paramIntent)
-  {
-    aoud.n(this, paramIntent);
   }
   
   public void j()
@@ -612,7 +593,7 @@ public class JumpActivity
   public void m()
   {
     if (this.jdField_a_of_type_AndroidContentIntent != null) {
-      aoud.d(this, this.jdField_a_of_type_AndroidContentIntent);
+      JumpActivityHelper.d(this, this.jdField_a_of_type_AndroidContentIntent);
     }
     finish();
   }
@@ -620,7 +601,7 @@ public class JumpActivity
   public void n()
   {
     if (this.jdField_b_of_type_AndroidContentIntent != null) {
-      aoud.f(this, this.jdField_b_of_type_AndroidContentIntent);
+      JumpActivityHelper.f(this, this.jdField_b_of_type_AndroidContentIntent);
     }
     finish();
   }
@@ -646,8 +627,8 @@ public class JumpActivity
   {
     try
     {
-      setContentView(2131561182);
-      this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)findViewById(2131369643));
+      setContentView(2131561283);
+      this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)findViewById(2131369918));
       return;
     }
     catch (Throwable localThrowable)
@@ -663,7 +644,7 @@ public class JumpActivity
   
   public boolean showPreview()
   {
-    if (aoud.b(this)) {
+    if (JumpActivityHelper.b(this)) {
       return true;
     }
     return super.showPreview();
@@ -672,10 +653,10 @@ public class JumpActivity
   public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
     super.startActivityForResult(paramIntent, paramInt, paramBundle);
-    if (this.jdField_a_of_type_Bhfa != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpReportCtr != null)
     {
-      this.jdField_a_of_type_Bhfa.a(paramIntent);
-      this.jdField_a_of_type_Bhfa = null;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpReportCtr.a(paramIntent);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpReportCtr = null;
     }
   }
 }

@@ -1,7 +1,11 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.config.api.IAppSettingApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.widget.QQToast;
 import java.io.Serializable;
+import mqq.app.MobileQQ;
 
 public class QCircleReportBean
   implements Serializable
@@ -21,10 +25,10 @@ public class QCircleReportBean
   {
     if (paramQCircleReportBean != null)
     {
-      QLog.d(paramString, 1, ":getPageId value:" + paramQCircleReportBean.getPageId());
+      RFLog.d(paramString, RFLog.USR, ":getPageId value:" + paramQCircleReportBean.getPageId());
       return paramQCircleReportBean.getPageId();
     }
-    QLog.d(paramString, 1, ":getPageId return invalid value:0");
+    RFLog.d(paramString, RFLog.USR, ":getPageId return invalid value:0");
     return 0;
   }
   
@@ -32,10 +36,10 @@ public class QCircleReportBean
   {
     if (paramQCircleReportBean != null)
     {
-      QLog.d(paramString, 1, ":getParentPageId value:" + paramQCircleReportBean.getPageId());
+      RFLog.d(paramString, RFLog.USR, ":getParentPageId value:" + paramQCircleReportBean.getPageId());
       return paramQCircleReportBean.getFromPageId();
     }
-    QLog.d(paramString, 1, ":getParentPageId return invalid value:0");
+    RFLog.d(paramString, RFLog.USR, ":getParentPageId return invalid value:0");
     return 0;
   }
   
@@ -44,10 +48,19 @@ public class QCircleReportBean
     QCircleReportBean localQCircleReportBean = paramQCircleReportBean;
     if (paramQCircleReportBean == null)
     {
-      localQCircleReportBean = new QCircleReportBean();
-      QLog.d("QCircleReportBean", 1, paramString + ":getReportBean is empty");
+      if (!((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()) {
+        break label86;
+      }
+      QQToast.a(MobileQQ.sMobileQQ.getApplicationContext(), paramString + ":getReportBean is empty", 1).a();
     }
-    return localQCircleReportBean;
+    for (;;)
+    {
+      RFLog.d("QCircleReportBean", RFLog.USR, paramString + ":getReportBean is empty");
+      localQCircleReportBean = paramQCircleReportBean;
+      return localQCircleReportBean;
+      label86:
+      paramQCircleReportBean = new QCircleReportBean();
+    }
   }
   
   public static boolean isContentDetailPage(int paramInt)
@@ -64,7 +77,10 @@ public class QCircleReportBean
   {
     if (paramQCircleReportBean == null)
     {
-      QLog.d("QCircleReportBean", 1, paramString + ":setReportBean input is null");
+      if (((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()) {
+        QQToast.a(MobileQQ.sMobileQQ.getApplicationContext(), paramString + ":setReportBean input is null", 1).a();
+      }
+      RFLog.d("QCircleReportBean", RFLog.USR, paramString + ":setReportBean input is null");
       return null;
     }
     return paramQCircleReportBean.clone();
@@ -182,7 +198,7 @@ public class QCircleReportBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReportBean
  * JD-Core Version:    0.7.0.1
  */

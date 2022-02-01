@@ -1,18 +1,15 @@
 package com.tencent.open.downloadnew;
 
-import bjna;
-import bjnn;
-
-public class DownloadManager$1
+class DownloadManager$1
   implements Runnable
 {
-  public DownloadManager$1(bjna parambjna) {}
+  DownloadManager$1(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
     if (!this.this$0.a)
     {
-      if (!bjnn.a().b()) {
+      if (!MyAppApi.a().b()) {
         this.this$0.a(true);
       }
       this.this$0.a = true;
@@ -21,7 +18,7 @@ public class DownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

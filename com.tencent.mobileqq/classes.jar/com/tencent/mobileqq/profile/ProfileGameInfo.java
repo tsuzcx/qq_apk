@@ -7,11 +7,11 @@ public class ProfileGameInfo
   implements Serializable
 {
   public ArrayList<ProfileGameInfo.UserHeroInfo> bestHeroList = new ArrayList();
-  public int bestOccupation;
-  public long gamesTotal;
-  public int mGrade;
-  public long mvpTotal;
-  public double seasonWinRate;
+  public int bestOccupation = 0;
+  public long gamesTotal = 0L;
+  public int mGrade = 0;
+  public long mvpTotal = 0L;
+  public double seasonWinRate = 0.0D;
   
   public boolean isEmpty()
   {

@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqHeader
   extends JceStruct
 {
-  public int iSeq;
-  public long lMID;
-  public short shVersion;
+  public int iSeq = 0;
+  public long lMID = 0L;
+  public short shVersion = 0;
   
   public ReqHeader() {}
   

@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.profilecard.bussiness.extendfriend;
 
-import baax;
 import com.tencent.qphone.base.util.QLog;
 
-public class ProfileExtendFriendComponent$3
+class ProfileExtendFriendComponent$3
   implements Runnable
 {
-  public ProfileExtendFriendComponent$3(baax parambaax) {}
+  ProfileExtendFriendComponent$3(ProfileExtendFriendComponent paramProfileExtendFriendComponent) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ProfileExtendFriendComponent", 2, "");
     }
-    if (!baax.d(this.this$0))
+    if (!ProfileExtendFriendComponent.access$300(this.this$0))
     {
-      baax.b(this.this$0, true);
-      baax.b(this.this$0);
+      ProfileExtendFriendComponent.access$302(this.this$0, true);
+      ProfileExtendFriendComponent.access$400(this.this$0);
     }
   }
 }

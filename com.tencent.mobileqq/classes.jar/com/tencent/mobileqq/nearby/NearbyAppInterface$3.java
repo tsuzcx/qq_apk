@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import axut;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
 
 class NearbyAppInterface$3
   implements Runnable

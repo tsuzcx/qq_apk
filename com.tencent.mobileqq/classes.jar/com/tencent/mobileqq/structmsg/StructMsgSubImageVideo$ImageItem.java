@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.util.Log;
-import bdnt;
-import bdpl;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -16,23 +14,23 @@ public class StructMsgSubImageVideo$ImageItem
   public String schema;
   public String title;
   
-  private static ImageItem a(bdpl parambdpl)
+  private static ImageItem a(StructMsgNode paramStructMsgNode)
   {
-    Iterator localIterator = parambdpl.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramStructMsgNode.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject1 = null;
     Object localObject2 = null;
     Object localObject3;
     if (localIterator.hasNext())
     {
-      localObject3 = (bdpl)localIterator.next();
-      if ("title".equals(((bdpl)localObject3).b)) {
+      localObject3 = (StructMsgNode)localIterator.next();
+      if ("title".equals(((StructMsgNode)localObject3).b)) {
         localObject2 = localObject3;
       }
     }
     for (;;)
     {
       break;
-      if ("picture".equals(((bdpl)localObject3).b))
+      if ("picture".equals(((StructMsgNode)localObject3).b))
       {
         localObject1 = localObject3;
         continue;
@@ -42,11 +40,11 @@ public class StructMsgSubImageVideo$ImageItem
           return null;
         }
         localObject3 = new ImageItem();
-        ((ImageItem)localObject3).schema = parambdpl.a("url");
+        ((ImageItem)localObject3).schema = paramStructMsgNode.a("url");
         if (localObject2 == null) {}
-        for (parambdpl = "";; parambdpl = localObject2.jdField_a_of_type_JavaLangString)
+        for (paramStructMsgNode = "";; paramStructMsgNode = localObject2.jdField_a_of_type_JavaLangString)
         {
-          ((ImageItem)localObject3).title = parambdpl;
+          ((ImageItem)localObject3).title = paramStructMsgNode;
           ((ImageItem)localObject3).imageUrl = localObject1.a("cover");
           return localObject3;
         }
@@ -61,19 +59,19 @@ public class StructMsgSubImageVideo$ImageItem
     this.schema = paramObjectInput.readUTF();
   }
   
-  public void toXml(bdnt parambdnt)
+  public void toXml(AbsStructMsg.XmlSerializerWithFilter paramXmlSerializerWithFilter)
   {
-    parambdnt.startTag(null, "item");
-    parambdnt.attribute(null, "apptype", "10");
-    parambdnt.attribute(null, "type", "0");
-    parambdnt.attribute(null, "url", this.schema);
-    parambdnt.startTag(null, "title");
+    paramXmlSerializerWithFilter.startTag(null, "item");
+    paramXmlSerializerWithFilter.attribute(null, "apptype", "10");
+    paramXmlSerializerWithFilter.attribute(null, "type", "0");
+    paramXmlSerializerWithFilter.attribute(null, "url", this.schema);
+    paramXmlSerializerWithFilter.startTag(null, "title");
     if (this.title == null)
     {
       str = "";
-      parambdnt.text(str);
-      parambdnt.endTag(null, "title");
-      parambdnt.startTag(null, "picture");
+      paramXmlSerializerWithFilter.text(str);
+      paramXmlSerializerWithFilter.endTag(null, "title");
+      paramXmlSerializerWithFilter.startTag(null, "picture");
       if (this.imageUrl != null) {
         break label124;
       }
@@ -81,9 +79,9 @@ public class StructMsgSubImageVideo$ImageItem
     label124:
     for (String str = "";; str = this.imageUrl)
     {
-      parambdnt.attribute(null, "cover", str);
-      parambdnt.endTag(null, "picture");
-      parambdnt.endTag(null, "item");
+      paramXmlSerializerWithFilter.attribute(null, "cover", str);
+      paramXmlSerializerWithFilter.endTag(null, "picture");
+      paramXmlSerializerWithFilter.endTag(null, "item");
       return;
       str = this.title;
       break;

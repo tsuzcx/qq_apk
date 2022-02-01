@@ -8,8 +8,8 @@ public final class BigDataIpInfo
   extends JceStruct
 {
   public String sIp = "";
-  public long uPort;
-  public long uType;
+  public long uPort = 0L;
+  public long uType = 0L;
   
   public BigDataIpInfo() {}
   

@@ -3,32 +3,31 @@ package com.tencent.mobileqq.tribe.videoupload;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import beue;
-import beug;
-import beuh;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tencent.biz.qqstory.base.videoupload.task.BaseTaskInfo;
+import com.tencent.biz.qqstory.base.videoupload.task.OnPublishTaskListener;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
-import wdw;
-import wdx;
 
 public class TribeVideoUploadTask
-  extends BasePublishTask<beug>
-  implements wdx
+  extends BasePublishTask<TribeVideoTaskInfo>
+  implements OnPublishTaskListener
 {
   protected Handler a;
   protected WeakReference<BaseActivity> a;
   
-  public TribeVideoUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, beug parambeug)
+  public TribeVideoUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, TribeVideoTaskInfo paramTribeVideoTaskInfo)
   {
-    super(parambeug);
-    parambeug.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    beue localbeue = new beue(parambeug.jdField_a_of_type_JavaLangString);
-    localbeue.a(new beuh(this, parambeug));
-    parambeug.jdField_a_of_type_JavaUtilList.add(localbeue);
+    super(paramTribeVideoTaskInfo);
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    paramTribeVideoTaskInfo.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    TribeVideoFileObject localTribeVideoFileObject = new TribeVideoFileObject(paramTribeVideoTaskInfo.jdField_a_of_type_JavaLangString);
+    localTribeVideoFileObject.a(new TribeVideoUploadTask.1(this, paramTribeVideoTaskInfo));
+    paramTribeVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localTribeVideoFileObject);
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
     a(this);
@@ -54,7 +53,7 @@ public class TribeVideoUploadTask
   public void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage)
   {
     QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "upload finish status:" + paramBasePublishTask.a().a);
-    paramBasePublishTask = (beug)paramBasePublishTask.a();
+    paramBasePublishTask = (TribeVideoTaskInfo)paramBasePublishTask.a();
     if (paramBasePublishTask.b())
     {
       QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "uploadVideo succ " + paramBasePublishTask.c);

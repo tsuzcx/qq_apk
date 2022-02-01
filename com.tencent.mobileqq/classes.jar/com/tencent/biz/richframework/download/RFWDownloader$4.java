@@ -1,12 +1,13 @@
 package com.tencent.biz.richframework.download;
 
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Headers;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 class RFWDownloader$4
   implements Callback
@@ -15,7 +16,7 @@ class RFWDownloader$4
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    QLog.d("RFWDownloader", 1, "checkResource:" + this.val$url + " onFailure");
+    RFLog.d("RFWDownloader", RFLog.USR, "checkResource:" + this.val$url + " onFailure");
     this.val$checkResultListener.onCheckResult(false, this.val$isFileDownloaded, false, this.val$preMd5);
   }
   
@@ -24,13 +25,14 @@ class RFWDownloader$4
     try
     {
       paramCall = paramResponse.headers().get("X-COS-META-MD5");
+      paramResponse.body().contentLength();
       if ((TextUtils.isEmpty(paramCall)) || (this.val$preMd5.equals(paramCall)))
       {
-        QLog.d("RFWDownloader", 1, "checkResource:" + this.val$url + " is up to date");
+        RFLog.d("RFWDownloader", RFLog.USR, "checkResource:" + this.val$url + " is up to date");
         this.val$checkResultListener.onCheckResult(true, this.val$isFileDownloaded, false, paramCall);
         return;
       }
-      QLog.d("RFWDownloader", 1, "checkResource:" + this.val$url + " need update");
+      RFLog.d("RFWDownloader", RFLog.USR, "checkResource:" + this.val$url + " need update");
       this.val$checkResultListener.onCheckResult(true, this.val$isFileDownloaded, true, paramCall);
       return;
     }
@@ -42,7 +44,7 @@ class RFWDownloader$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.download.RFWDownloader.4
  * JD-Core Version:    0.7.0.1
  */

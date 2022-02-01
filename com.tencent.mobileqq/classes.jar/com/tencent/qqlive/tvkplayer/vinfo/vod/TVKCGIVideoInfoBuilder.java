@@ -4,7 +4,9 @@ import android.text.TextUtils;
 import com.tencent.qqlive.tvkplayer.TVideoMgr;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKUtils;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -28,7 +30,15 @@ public class TVKCGIVideoInfoBuilder
   private String vid;
   private TVKCGIVideoInfo videoInfo = new TVKCGIVideoInfo();
   private TVKVideoInfoParams videoInfoParams;
+  private Map<String, Class> vinfoFormatNodeNameMap = new HashMap();
+  private Map<String, TVKCGIVideoInfoBuilder.ParseVinfoViNodeAction> vinfoViActionMap = new HashMap();
   private String vinfoXml;
+  
+  public TVKCGIVideoInfoBuilder()
+  {
+    initVinfoViActionMap();
+    initVinfoFormatNodeNameMap();
+  }
   
   private void buildClipMp4CdnUrl(String paramString)
   {
@@ -68,15 +78,15 @@ public class TVKCGIVideoInfoBuilder
     {
       localObject2 = (TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)((Iterator)localObject1).next();
       int i = 0;
-      label349:
+      label354:
       if (i < this.videoInfo.getUrlInfos().size())
       {
         str = ((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)this.videoInfo.getUrlInfos().get(i)).getUrl();
         if (!TextUtils.isEmpty(paramString)) {
-          break label456;
+          break label461;
         }
       }
-      label456:
+      label461:
       for (str = generateMp4url(str + generateClipMp4Filename(this.fn, ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).getIdx()), ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).getVkey(), ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).getKeyid());; str = ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).getUrl())
       {
         if (i == 0) {
@@ -84,7 +94,7 @@ public class TVKCGIVideoInfoBuilder
         }
         ((TVKCGIVideoInfo.TVKCGIVideoMp4ClipInfo)localObject2).addUrlList(str);
         i += 1;
-        break label349;
+        break label354;
         break;
       }
     }
@@ -100,15 +110,15 @@ public class TVKCGIVideoInfoBuilder
       if (localObject != null)
       {
         if (!TextUtils.isEmpty(paramString)) {
-          break label277;
+          break label281;
         }
         if (this.dltype != 3) {
-          break label235;
+          break label238;
         }
         this.url = (((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getUrl() + String.format("%s&hlskey=%s&sdtfrom=%s", new Object[] { ((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getPt(), ((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getHk(), str }));
       }
     }
-    label277:
+    label281:
     for (;;)
     {
       localObject = this.videoInfo.getUrlInfos().iterator();
@@ -133,7 +143,7 @@ public class TVKCGIVideoInfoBuilder
           this.urlList.add(localStringBuffer.toString());
         }
       }
-      label235:
+      label238:
       if (this.dltype == 8)
       {
         this.url = (((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getUrl() + "&sdtfrom=" + str);
@@ -160,11 +170,11 @@ public class TVKCGIVideoInfoBuilder
       TVKCGIVideoInfo.TVKCGIVideoUrlInfo localTVKCGIVideoUrlInfo = (TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localIterator.next();
       localObject = localTVKCGIVideoUrlInfo.getUrl();
       if (!TextUtils.isEmpty(paramString)) {
-        break label176;
+        break label178;
       }
       localObject = generateMp4url(localTVKCGIVideoUrlInfo.getUrl() + this.fn, this.fvkey, "");
     }
-    label176:
+    label178:
     for (;;)
     {
       this.urlList.add(localObject);
@@ -264,6 +274,105 @@ public class TVKCGIVideoInfoBuilder
       return TVideoMgr.getVinfoSdtfrom(this.videoInfoParams.getPlatForm());
     }
     return TVideoMgr.getVinfoSdtfrom();
+  }
+  
+  private void initVinfoFormatNodeNameMap()
+  {
+    this.vinfoFormatNodeNameMap.put("id", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("name", String.class);
+    this.vinfoFormatNodeNameMap.put("br", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("fs", Long.TYPE);
+    this.vinfoFormatNodeNameMap.put("sl", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("cname", String.class);
+    this.vinfoFormatNodeNameMap.put("lmt", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("profile", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("drm", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("super", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("video", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("audio", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("sb", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("hdr10enh", Integer.TYPE);
+    this.vinfoFormatNodeNameMap.put("sname", String.class);
+    this.vinfoFormatNodeNameMap.put("resolution", String.class);
+  }
+  
+  private void initVinfoViActionMap()
+  {
+    this.vinfoViActionMap.put("vi", new TVKCGIVideoInfoBuilder.ViParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("vid", new TVKCGIVideoInfoBuilder.VidParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("fn", new TVKCGIVideoInfoBuilder.FnParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("st", new TVKCGIVideoInfoBuilder.StParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("lnk", new TVKCGIVideoInfoBuilder.LnkParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("fvkey", new TVKCGIVideoInfoBuilder.FvkeyParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("base", new TVKCGIVideoInfoBuilder.BaseParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("duration", new TVKCGIVideoInfoBuilder.DurationParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("ch", new TVKCGIVideoInfoBuilder.ChParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("ckc", new TVKCGIVideoInfoBuilder.ChkParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("ct", new TVKCGIVideoInfoBuilder.CtParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("dm", new TVKCGIVideoInfoBuilder.DmParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("drm", new TVKCGIVideoInfoBuilder.DrmParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("enc", new TVKCGIVideoInfoBuilder.EncParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("fmd5", new TVKCGIVideoInfoBuilder.Fmd5ParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("fps", new TVKCGIVideoInfoBuilder.FpsParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("keyid", new TVKCGIVideoInfoBuilder.KeyidParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("fs", new TVKCGIVideoInfoBuilder.FsParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("fst", new TVKCGIVideoInfoBuilder.FstParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("head", new TVKCGIVideoInfoBuilder.HeadParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("hevc", new TVKCGIVideoInfoBuilder.HevcParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("iflag", new TVKCGIVideoInfoBuilder.IflagParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("mst", new TVKCGIVideoInfoBuilder.MstParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("tail", new TVKCGIVideoInfoBuilder.TailParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("targetid", new TVKCGIVideoInfoBuilder.TargetIdParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("td", new TVKCGIVideoInfoBuilder.TdParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("ti", new TVKCGIVideoInfoBuilder.TiParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("tie", new TVKCGIVideoInfoBuilder.TieParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("type", new TVKCGIVideoInfoBuilder.TypeParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("vh", new TVKCGIVideoInfoBuilder.VhParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("vw", new TVKCGIVideoInfoBuilder.VwParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("wh", new TVKCGIVideoInfoBuilder.WhParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("videotype", new TVKCGIVideoInfoBuilder.VideotypeParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("vr", new TVKCGIVideoInfoBuilder.VrParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("vst", new TVKCGIVideoInfoBuilder.VstParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("swhdcp", new TVKCGIVideoInfoBuilder.SwhdcpParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("br", new TVKCGIVideoInfoBuilder.BrParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("cl", new TVKCGIVideoInfoBuilder.ClParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("ul", new TVKCGIVideoInfoBuilder.UlParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("pl", new TVKCGIVideoInfoBuilder.PlParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("wl", new TVKCGIVideoInfoBuilder.WlParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("ad", new TVKCGIVideoInfoBuilder.AdParseVinfoViNodeAction(this));
+    this.vinfoViActionMap.put("ll", new TVKCGIVideoInfoBuilder.LlParseVinfoViNodeAction(this));
+  }
+  
+  private void innerParseVinfoFormatNode(Node paramNode, TVKCGIVideoInfo.TVKCGIVideoFormatInfo paramTVKCGIVideoFormatInfo)
+  {
+    String str;
+    if (paramNode.getNodeType() == 1)
+    {
+      str = paramNode.getNodeName().toLowerCase();
+      if (!str.equals("fi")) {
+        break label41;
+      }
+      parseVinfoFormatNode(paramNode.getChildNodes());
+    }
+    label41:
+    do
+    {
+      do
+      {
+        return;
+      } while (!this.vinfoFormatNodeNameMap.containsKey(str));
+      if (this.vinfoFormatNodeNameMap.get(str) == Integer.TYPE)
+      {
+        TVKUtils.invokeSetterMethod(paramTVKCGIVideoFormatInfo, str, Integer.TYPE, Integer.valueOf(TVKUtils.optInt(getFirstChildNodeValue(paramNode), 0)));
+        return;
+      }
+      if (this.vinfoFormatNodeNameMap.get(str) == Long.TYPE)
+      {
+        TVKUtils.invokeSetterMethod(paramTVKCGIVideoFormatInfo, str, Long.TYPE, Long.valueOf(TVKUtils.optLong(getFirstChildNodeValue(paramNode), 0L)));
+        return;
+      }
+    } while (this.vinfoFormatNodeNameMap.get(str) != String.class);
+    TVKUtils.invokeSetterMethod(paramTVKCGIVideoFormatInfo, str, String.class, getFirstChildNodeValue(paramNode));
   }
   
   private void parseTvLogoNode(NodeList paramNodeList)
@@ -441,55 +550,10 @@ public class TVKCGIVideoInfoBuilder
     {
       TVKCGIVideoInfo.TVKCGIVideoFormatInfo localTVKCGIVideoFormatInfo = new TVKCGIVideoInfo.TVKCGIVideoFormatInfo();
       int i = 0;
-      if (i < paramNodeList.getLength())
+      while (i < paramNodeList.getLength())
       {
-        Node localNode = paramNodeList.item(i);
-        if (localNode.getNodeType() == 1)
-        {
-          if (!localNode.getNodeName().equalsIgnoreCase("fi")) {
-            break label78;
-          }
-          parseVinfoFormatNode(localNode.getChildNodes());
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label78:
-          if (localNode.getNodeName().equalsIgnoreCase("id")) {
-            localTVKCGIVideoFormatInfo.setId(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("name")) {
-            localTVKCGIVideoFormatInfo.setName(getFirstChildNodeValue(localNode));
-          } else if (localNode.getNodeName().equalsIgnoreCase("br")) {
-            localTVKCGIVideoFormatInfo.setBr(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("fs")) {
-            localTVKCGIVideoFormatInfo.setFs(TVKUtils.optLong(getFirstChildNodeValue(localNode), 0L));
-          } else if (localNode.getNodeName().equalsIgnoreCase("sl")) {
-            localTVKCGIVideoFormatInfo.setSl(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("cname")) {
-            localTVKCGIVideoFormatInfo.setCname(getFirstChildNodeValue(localNode));
-          } else if (localNode.getNodeName().equalsIgnoreCase("lmt")) {
-            localTVKCGIVideoFormatInfo.setLmt(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("profile")) {
-            localTVKCGIVideoFormatInfo.setProfile(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("drm")) {
-            localTVKCGIVideoFormatInfo.setDrm(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("super")) {
-            localTVKCGIVideoFormatInfo.setSuperNode(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("video")) {
-            localTVKCGIVideoFormatInfo.setVideo(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("audio")) {
-            localTVKCGIVideoFormatInfo.setAudio(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("sb")) {
-            localTVKCGIVideoFormatInfo.setSb(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("hdr10enh")) {
-            localTVKCGIVideoFormatInfo.setHdr10enh(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          } else if (localNode.getNodeName().equalsIgnoreCase("sname")) {
-            localTVKCGIVideoFormatInfo.setSname(getFirstChildNodeValue(localNode));
-          } else if (localNode.getNodeName().equalsIgnoreCase("resolution")) {
-            localTVKCGIVideoFormatInfo.setResolution(getFirstChildNodeValue(localNode));
-          }
-        }
+        innerParseVinfoFormatNode(paramNodeList.item(i), localTVKCGIVideoFormatInfo);
+        i += 1;
       }
       if (!TextUtils.isEmpty(localTVKCGIVideoFormatInfo.getName())) {
         this.videoInfo.addFormatInfo(localTVKCGIVideoFormatInfo);
@@ -759,196 +823,20 @@ public class TVKCGIVideoInfoBuilder
       if (i < paramNodeList.getLength())
       {
         Node localNode = paramNodeList.item(i);
-        if (localNode.getNodeType() == 1)
-        {
-          if (!localNode.getNodeName().equalsIgnoreCase("vi")) {
-            break label66;
+        if (localNode.getNodeType() == 1) {
+          if (localNode.getNodeName() == null) {
+            break label90;
           }
-          parseVinfoViNode(localNode.getChildNodes());
         }
-        for (;;)
+        label90:
+        for (Object localObject = localNode.getNodeName().toLowerCase();; localObject = "")
         {
+          localObject = (TVKCGIVideoInfoBuilder.ParseVinfoViNodeAction)this.vinfoViActionMap.get(localObject);
+          if (localObject != null) {
+            ((TVKCGIVideoInfoBuilder.ParseVinfoViNodeAction)localObject).onParseVinfoViNode(localNode);
+          }
           i += 1;
           break;
-          label66:
-          if (localNode.getNodeName().equalsIgnoreCase("vid"))
-          {
-            this.vid = getFirstChildNodeValue(localNode);
-            this.videoInfo.setVid(this.vid);
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("fn"))
-          {
-            this.fn = getFirstChildNodeValue(localNode);
-            this.videoInfo.setFn(this.fn);
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("st"))
-          {
-            this.st = TVKUtils.optInt(getFirstChildNodeValue(localNode), 0);
-            this.videoInfo.setSt(this.st);
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("lnk"))
-          {
-            this.linkvid = getFirstChildNodeValue(localNode);
-            this.videoInfo.setLnk(this.linkvid);
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("fvkey"))
-          {
-            this.fvkey = getFirstChildNodeValue(localNode);
-            this.videoInfo.setFvkey(this.fvkey);
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("base"))
-          {
-            this.videoInfo.setBase(getFirstChildNodeValue(localNode));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("duration"))
-          {
-            this.videoInfo.setDuration(TVKUtils.optDouble(getFirstChildNodeValue(localNode), 0.0D));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("ch"))
-          {
-            this.videoInfo.setCh(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("ckc"))
-          {
-            this.videoInfo.setCkc(getFirstChildNodeValue(localNode));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("ct"))
-          {
-            this.videoInfo.setCt(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("dm"))
-          {
-            this.videoInfo.setDm(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("drm"))
-          {
-            this.videoInfo.setDrm(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("enc"))
-          {
-            this.videoInfo.setEnc(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("fmd5"))
-          {
-            this.videoInfo.setFmd5(getFirstChildNodeValue(localNode));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("fps"))
-          {
-            this.videoInfo.setFps(getFirstChildNodeValue(localNode));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("keyid"))
-          {
-            this.videoInfo.setKeyid(getFirstChildNodeValue(localNode));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("fs"))
-          {
-            this.videoInfo.setFs(TVKUtils.optLong(getFirstChildNodeValue(localNode), 0L));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("fst"))
-          {
-            this.videoInfo.setFst(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("head"))
-          {
-            this.videoInfo.setHead(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("hevc"))
-          {
-            this.videoInfo.setHevc(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("iflag"))
-          {
-            this.videoInfo.setIflag(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("lnk"))
-          {
-            this.videoInfo.setLnk(getFirstChildNodeValue(localNode));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("mst"))
-          {
-            this.videoInfo.setMst(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("tail"))
-          {
-            this.videoInfo.setTail(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("targetid"))
-          {
-            this.videoInfo.setTargetid(TVKUtils.optLong(getFirstChildNodeValue(localNode), 0L));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("td"))
-          {
-            this.videoInfo.setTd(TVKUtils.optFloat(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("ti"))
-          {
-            this.videoInfo.setTi(getFirstChildNodeValue(localNode));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("tie"))
-          {
-            this.videoInfo.setTie(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("type"))
-          {
-            this.videoInfo.setType(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("vh"))
-          {
-            this.videoInfo.setVh(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("vw"))
-          {
-            this.videoInfo.setVw(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("wh"))
-          {
-            this.videoInfo.setWh(TVKUtils.optFloat(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("videotype"))
-          {
-            this.videoInfo.setVideotype(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("vr"))
-          {
-            this.videoInfo.setVr(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("vst"))
-          {
-            this.videoInfo.setVst(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("swhdcp"))
-          {
-            this.videoInfo.setSwhdcp(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("br"))
-          {
-            this.videoInfo.setBr(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("cl"))
-          {
-            parseVinfoClipNode(localNode.getChildNodes());
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("ul"))
-          {
-            parseVinfoUrlNode(localNode.getChildNodes());
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("pl"))
-          {
-            this.videoInfo.setPlInfoXml(convertNodeToXmlString(localNode));
-            parseVinfoPlNode(localNode.getChildNodes());
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("wl"))
-          {
-            parseVinfoWlNode(localNode.getChildNodes());
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("ad"))
-          {
-            parseVinfoAdNode(localNode.getChildNodes());
-          }
-          else if (localNode.getNodeName().equalsIgnoreCase("ll"))
-          {
-            parseTvLogoNode(localNode.getChildNodes());
-          }
         }
       }
     }
@@ -1226,7 +1114,7 @@ public class TVKCGIVideoInfoBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfoBuilder
  * JD-Core Version:    0.7.0.1
  */

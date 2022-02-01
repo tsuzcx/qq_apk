@@ -14,9 +14,9 @@ public class StructLongMessageIpSaver
   private static final String LONG_MSG_IPLIST = AppConstants.SDCARD_DATABASE + "longMsgList.ini";
   private static final String LONG_MSG_IPLIST_TMP = AppConstants.SDCARD_DATABASE + "longMsgList.tmp";
   public static final String TAG = "StructLongMessageIpSaver";
-  private int connectionFlag;
-  private String ipCellular;
-  private String ipWifi;
+  private int connectionFlag = 0;
+  private String ipCellular = null;
+  private String ipWifi = null;
   
   public StructLongMessageIpSaver()
   {
@@ -36,7 +36,7 @@ public class StructLongMessageIpSaver
     {
       try
       {
-        int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
+        int i = NetworkUtil.b(BaseApplicationImpl.getContext());
         switch (i)
         {
         default: 
@@ -63,79 +63,79 @@ public class StructLongMessageIpSaver
     //   7: aload_2
     //   8: astore_1
     //   9: getstatic 40	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST	Ljava/lang/String;
-    //   12: invokestatic 108	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   12: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/io/File;
     //   15: astore 5
     //   17: aload_2
     //   18: astore_1
     //   19: aload 5
-    //   21: invokevirtual 114	java/io/File:length	()J
+    //   21: invokevirtual 118	java/io/File:length	()J
     //   24: lconst_0
     //   25: lcmp
     //   26: ifne +40 -> 66
     //   29: aload_2
     //   30: astore_1
-    //   31: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   31: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   34: ifeq +13 -> 47
     //   37: aload_2
     //   38: astore_1
     //   39: ldc 12
     //   41: iconst_2
-    //   42: ldc 121
-    //   44: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   42: ldc 125
+    //   44: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   47: iconst_0
     //   48: ifeq +11 -> 59
-    //   51: new 127	java/lang/NullPointerException
+    //   51: new 131	java/lang/NullPointerException
     //   54: dup
-    //   55: invokespecial 128	java/lang/NullPointerException:<init>	()V
+    //   55: invokespecial 132	java/lang/NullPointerException:<init>	()V
     //   58: athrow
     //   59: return
     //   60: astore_1
     //   61: aload_1
-    //   62: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   62: invokevirtual 135	java/io/IOException:printStackTrace	()V
     //   65: return
     //   66: aload_2
     //   67: astore_1
-    //   68: new 133	java/io/BufferedReader
+    //   68: new 137	java/io/BufferedReader
     //   71: dup
-    //   72: new 135	java/io/InputStreamReader
+    //   72: new 139	java/io/InputStreamReader
     //   75: dup
-    //   76: new 137	java/io/FileInputStream
+    //   76: new 141	java/io/FileInputStream
     //   79: dup
     //   80: aload 5
-    //   82: invokespecial 140	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   85: invokespecial 143	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   88: invokespecial 146	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   82: invokespecial 144	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   85: invokespecial 147	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   88: invokespecial 150	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   91: astore_2
     //   92: aload_0
     //   93: aload_2
-    //   94: invokevirtual 149	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   97: putfield 151	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   94: invokevirtual 153	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   97: putfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
     //   100: aload_0
     //   101: aload_2
-    //   102: invokevirtual 149	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   105: putfield 153	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   102: invokevirtual 153	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   105: putfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
     //   108: aload_0
-    //   109: getfield 151	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   109: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
     //   112: ifnull +14 -> 126
     //   115: aload_0
     //   116: aload_0
-    //   117: getfield 151	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   117: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
     //   120: invokespecial 155	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:checkLegality	(Ljava/lang/String;)Z
     //   123: ifne +8 -> 131
     //   126: aload_0
     //   127: aconst_null
-    //   128: putfield 151	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   128: putfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
     //   131: aload_0
-    //   132: getfield 153	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   132: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
     //   135: ifnull +14 -> 149
     //   138: aload_0
     //   139: aload_0
-    //   140: getfield 153	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   140: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
     //   143: invokespecial 155	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:checkLegality	(Ljava/lang/String;)Z
     //   146: ifne +8 -> 154
     //   149: aload_0
     //   150: aconst_null
-    //   151: putfield 153	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   151: putfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
     //   154: aload_2
     //   155: ifnull -96 -> 59
     //   158: aload_2
@@ -143,7 +143,7 @@ public class StructLongMessageIpSaver
     //   162: return
     //   163: astore_1
     //   164: aload_1
-    //   165: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   165: invokevirtual 135	java/io/IOException:printStackTrace	()V
     //   168: return
     //   169: astore_1
     //   170: aload_3
@@ -152,14 +152,14 @@ public class StructLongMessageIpSaver
     //   173: astore_3
     //   174: aload_2
     //   175: astore_1
-    //   176: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   176: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   179: ifeq +13 -> 192
     //   182: aload_2
     //   183: astore_1
     //   184: ldc 12
     //   186: iconst_2
     //   187: ldc 160
-    //   189: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   189: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   192: aload_2
     //   193: astore_1
     //   194: aload_3
@@ -171,21 +171,21 @@ public class StructLongMessageIpSaver
     //   206: return
     //   207: astore_1
     //   208: aload_1
-    //   209: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   209: invokevirtual 135	java/io/IOException:printStackTrace	()V
     //   212: return
     //   213: astore_3
     //   214: aload 4
     //   216: astore_2
     //   217: aload_2
     //   218: astore_1
-    //   219: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   219: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   222: ifeq +13 -> 235
     //   225: aload_2
     //   226: astore_1
     //   227: ldc 12
     //   229: iconst_2
     //   230: ldc 163
-    //   232: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   232: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   235: aload_2
     //   236: astore_1
     //   237: aload_3
@@ -197,7 +197,7 @@ public class StructLongMessageIpSaver
     //   249: return
     //   250: astore_1
     //   251: aload_1
-    //   252: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   252: invokevirtual 135	java/io/IOException:printStackTrace	()V
     //   255: return
     //   256: astore_3
     //   257: aload_1
@@ -212,7 +212,7 @@ public class StructLongMessageIpSaver
     //   270: athrow
     //   271: astore_2
     //   272: aload_2
-    //   273: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   273: invokevirtual 135	java/io/IOException:printStackTrace	()V
     //   276: goto -7 -> 269
     //   279: astore_1
     //   280: goto -19 -> 261
@@ -300,7 +300,7 @@ public class StructLongMessageIpSaver
     //   9: aload_2
     //   10: astore_1
     //   11: getstatic 40	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST	Ljava/lang/String;
-    //   14: invokestatic 108	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   14: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/io/File;
     //   17: astore 5
     //   19: aload_2
     //   20: astore_1
@@ -315,27 +315,27 @@ public class StructLongMessageIpSaver
     //   37: aload_2
     //   38: astore_1
     //   39: aload_0
-    //   40: getfield 151	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   40: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
     //   43: ifnonnull +52 -> 95
     //   46: aload_2
     //   47: astore_1
     //   48: aload_0
-    //   49: getfield 153	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   49: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
     //   52: astore 6
     //   54: aload 6
     //   56: ifnonnull +39 -> 95
     //   59: iconst_0
     //   60: ifeq +11 -> 71
-    //   63: new 127	java/lang/NullPointerException
+    //   63: new 131	java/lang/NullPointerException
     //   66: dup
-    //   67: invokespecial 128	java/lang/NullPointerException:<init>	()V
+    //   67: invokespecial 132	java/lang/NullPointerException:<init>	()V
     //   70: athrow
     //   71: aload_0
     //   72: monitorexit
     //   73: return
     //   74: astore_1
     //   75: aload_1
-    //   76: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   76: invokevirtual 135	java/io/IOException:printStackTrace	()V
     //   79: goto -8 -> 71
     //   82: astore_1
     //   83: aload_0
@@ -349,7 +349,7 @@ public class StructLongMessageIpSaver
     //   95: aload_2
     //   96: astore_1
     //   97: getstatic 44	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST_TMP	Ljava/lang/String;
-    //   100: invokestatic 108	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   100: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/io/File;
     //   103: astore 6
     //   105: aload_2
     //   106: astore_1
@@ -380,10 +380,10 @@ public class StructLongMessageIpSaver
     //   153: invokespecial 187	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
     //   156: astore_2
     //   157: aload_0
-    //   158: getfield 151	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   158: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
     //   161: ifnull +77 -> 238
     //   164: aload_0
-    //   165: getfield 151	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   165: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
     //   168: astore_1
     //   169: aload_2
     //   170: aload_1
@@ -392,10 +392,10 @@ public class StructLongMessageIpSaver
     //   175: ldc 193
     //   177: invokevirtual 191	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   180: aload_0
-    //   181: getfield 153	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   181: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
     //   184: ifnull +60 -> 244
     //   187: aload_0
-    //   188: getfield 153	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   188: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
     //   191: astore_1
     //   192: aload_2
     //   193: aload_1
@@ -417,7 +417,7 @@ public class StructLongMessageIpSaver
     //   227: goto -156 -> 71
     //   230: astore_1
     //   231: aload_1
-    //   232: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   232: invokevirtual 135	java/io/IOException:printStackTrace	()V
     //   235: goto -164 -> 71
     //   238: ldc 203
     //   240: astore_1
@@ -434,14 +434,14 @@ public class StructLongMessageIpSaver
     //   261: astore_2
     //   262: aload_2
     //   263: astore_1
-    //   264: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   264: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   267: ifeq +13 -> 280
     //   270: aload_2
     //   271: astore_1
     //   272: ldc 12
     //   274: iconst_2
     //   275: ldc 160
-    //   277: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   277: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   280: aload_2
     //   281: astore_1
     //   282: aload_3
@@ -453,7 +453,7 @@ public class StructLongMessageIpSaver
     //   294: goto -223 -> 71
     //   297: astore_1
     //   298: aload_1
-    //   299: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   299: invokevirtual 135	java/io/IOException:printStackTrace	()V
     //   302: goto -231 -> 71
     //   305: astore_1
     //   306: aload_1
@@ -466,14 +466,14 @@ public class StructLongMessageIpSaver
     //   317: astore_3
     //   318: aload_2
     //   319: astore_1
-    //   320: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   320: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   323: ifeq +13 -> 336
     //   326: aload_2
     //   327: astore_1
     //   328: ldc 12
     //   330: iconst_2
     //   331: ldc 163
-    //   333: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   333: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   336: aload_2
     //   337: astore_1
     //   338: aload_3
@@ -485,7 +485,7 @@ public class StructLongMessageIpSaver
     //   350: goto -279 -> 71
     //   353: astore_1
     //   354: aload_1
-    //   355: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   355: invokevirtual 135	java/io/IOException:printStackTrace	()V
     //   358: goto -287 -> 71
     //   361: astore_1
     //   362: aload_1
@@ -504,7 +504,7 @@ public class StructLongMessageIpSaver
     //   383: athrow
     //   384: astore_2
     //   385: aload_2
-    //   386: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   386: invokevirtual 135	java/io/IOException:printStackTrace	()V
     //   389: goto -7 -> 382
     //   392: astore_2
     //   393: aload_2

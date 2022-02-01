@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount;
 
-import olx;
-
-public class SoftAdExpoStatManager$3
+class SoftAdExpoStatManager$3
   implements Runnable
 {
-  public SoftAdExpoStatManager$3(olx paramolx, Runnable paramRunnable) {}
+  SoftAdExpoStatManager$3(SoftAdExpoStatManager paramSoftAdExpoStatManager, Runnable paramRunnable) {}
   
   public void run()
   {
@@ -22,7 +20,7 @@ public class SoftAdExpoStatManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.SoftAdExpoStatManager.3
  * JD-Core Version:    0.7.0.1
  */

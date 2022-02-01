@@ -1,20 +1,17 @@
 package com.tencent.mobileqq.nearby.gift;
 
-import aail;
-import axti;
-import axtj;
-import axtk;
+import com.tencent.biz.troopgift.TroopGiftAioPanelData;
 import com.tencent.biz.troopgift.TroopGiftPanel;
 
-public class NearbyGiftPanelDialog$1$1$1
+class NearbyGiftPanelDialog$1$1$1
   implements Runnable
 {
-  public NearbyGiftPanelDialog$1$1$1(axtk paramaxtk, aail paramaail) {}
+  NearbyGiftPanelDialog$1$1$1(NearbyGiftPanelDialog.1.1 param1, TroopGiftAioPanelData paramTroopGiftAioPanelData) {}
   
   public void run()
   {
-    axti.a(this.jdField_a_of_type_Axtk.a.jdField_a_of_type_Axti).setGiftData(this.jdField_a_of_type_Aail, true);
-    axti.a(this.jdField_a_of_type_Axtk.a.jdField_a_of_type_Axti).b(this.jdField_a_of_type_Axtk.a.jdField_a_of_type_Int);
+    NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1$1.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog).setGiftData(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData, true);
+    NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1$1.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog).b(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1$1.a.jdField_a_of_type_Int);
   }
 }
 

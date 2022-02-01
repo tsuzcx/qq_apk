@@ -1,31 +1,30 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import amwn;
-import amyd;
-import amyo;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public final class CmGameToolCmdChannel$5
+final class CmGameToolCmdChannel$5
   implements Runnable
 {
-  public CmGameToolCmdChannel$5(int paramInt, String paramString1, String paramString2) {}
+  CmGameToolCmdChannel$5(int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
     CmGameStartChecker.StartCheckParam localStartCheckParam;
     try
     {
-      amyo localamyo = amwn.a(this.jdField_a_of_type_Int);
-      if ((localamyo == null) || (localamyo.a() == null))
+      CmGameLauncher localCmGameLauncher = CmGameUtil.a(this.jdField_a_of_type_Int);
+      if ((localCmGameLauncher == null) || (localCmGameLauncher.a() == null))
       {
         QLog.e("cmgame_process.CmGameToolCmdChannel", 1, "cmd:" + this.jdField_a_of_type_JavaLangString + "cmGameLauncher == null || cmGameLauncher.getCheckParam() == null");
         return;
       }
-      localStartCheckParam = localamyo.a();
+      localStartCheckParam = localCmGameLauncher.a();
       if (TextUtils.isEmpty(localStartCheckParam.mTempAIOUin))
       {
         QLog.e("cmgame_process.CmGameToolCmdChannel", 1, "cmd:" + this.jdField_a_of_type_JavaLangString + "startCheckParam.mTempAIOUin is empty");
@@ -42,7 +41,7 @@ public final class CmGameToolCmdChannel$5
     localJSONObject.put("nickName", localStartCheckParam.mTempAIONickName);
     localJSONObject.put("robotOpenId", localStartCheckParam.mRobotOpenId);
     localJSONObject.put("gameId", this.jdField_a_of_type_Int);
-    amyd.a(this.jdField_a_of_type_JavaLangString, localJSONObject.toString(), false, null, this.jdField_a_of_type_Int);
+    CmGameToolCmdChannel.a(this.jdField_a_of_type_JavaLangString, localJSONObject.toString(), false, null, this.jdField_a_of_type_Int);
     Activity localActivity = localException.a();
     if (localActivity != null) {
       localActivity.finish();
@@ -51,7 +50,7 @@ public final class CmGameToolCmdChannel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.chanel.CmGameToolCmdChannel.5
  * JD-Core Version:    0.7.0.1
  */

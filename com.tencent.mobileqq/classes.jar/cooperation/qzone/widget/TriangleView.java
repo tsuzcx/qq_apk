@@ -25,7 +25,7 @@ public class TriangleView
     this.drawColor = paramInt2;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawColor(0);
@@ -55,7 +55,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.TriangleView
  * JD-Core Version:    0.7.0.1
  */

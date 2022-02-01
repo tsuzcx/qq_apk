@@ -2,12 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
-import qfb;
 
-public class ChannelInfoModule$5
+class ChannelInfoModule$5
   implements Runnable
 {
-  public ChannelInfoModule$5(qfb paramqfb, ChannelInfo paramChannelInfo) {}
+  ChannelInfoModule$5(ChannelInfoModule paramChannelInfoModule, ChannelInfo paramChannelInfo) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class ChannelInfoModule$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule.5
  * JD-Core Version:    0.7.0.1
  */

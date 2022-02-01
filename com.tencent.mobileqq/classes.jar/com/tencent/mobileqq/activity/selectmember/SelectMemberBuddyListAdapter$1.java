@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alyc;
-
-public class SelectMemberBuddyListAdapter$1
+class SelectMemberBuddyListAdapter$1
   implements Runnable
 {
-  public SelectMemberBuddyListAdapter$1(alyc paramalyc) {}
+  SelectMemberBuddyListAdapter$1(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class SelectMemberBuddyListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

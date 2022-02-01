@@ -28,7 +28,7 @@ public class SingleLineTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = paramInt3 - paramInt1;
@@ -44,7 +44,7 @@ public class SingleLineTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.SingleLineTextView
  * JD-Core Version:    0.7.0.1
  */

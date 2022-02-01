@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.jsp;
 
-import awci;
-import bhao;
-import bifw;
+import com.tencent.mobileqq.util.ScreenShotUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import org.json.JSONObject;
 
-public class UiApiPlugin$8
+class UiApiPlugin$8
   implements Runnable
 {
   UiApiPlugin$8(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
@@ -13,7 +12,7 @@ public class UiApiPlugin$8
   public void run()
   {
     this.this$0.i = this.a.optString("callback");
-    bhao.a(this.this$0.mRuntime.a(), new awci(this));
+    ScreenShotUtil.a(this.this$0.mRuntime.a(), new UiApiPlugin.8.1(this));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
-import bjpl;
+import com.tencent.open.model.AccountInfo;
 
 class OpenAuthorityFragment$9
   implements Runnable
@@ -15,7 +15,7 @@ class OpenAuthorityFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.OpenAuthorityFragment.9
  * JD-Core Version:    0.7.0.1
  */

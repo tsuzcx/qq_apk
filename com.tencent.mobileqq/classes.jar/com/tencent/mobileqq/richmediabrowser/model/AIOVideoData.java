@@ -27,18 +27,23 @@ public class AIOVideoData
   public int h;
   public String h;
   public boolean h;
-  public int i;
+  public int i = 0;
   public boolean i;
   public int j;
-  public int k;
+  public int k = 0;
   public int l;
   public int m;
   
   public AIOVideoData()
   {
+    this.jdField_g_of_type_Int = 0;
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_h_of_type_Int = 0;
     this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
   }
   
   public int describeContents()
@@ -59,7 +64,7 @@ public class AIOVideoData
     this.jdField_c_of_type_Int = paramParcel.readInt();
     this.jdField_d_of_type_Int = paramParcel.readInt();
     this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.f = paramParcel.readInt();
+    this.jdField_f_of_type_Int = paramParcel.readInt();
     this.jdField_e_of_type_Long = paramParcel.readLong();
     this.jdField_g_of_type_Int = paramParcel.readInt();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
@@ -81,7 +86,7 @@ public class AIOVideoData
     paramParcel.writeInt(this.jdField_c_of_type_Int);
     paramParcel.writeInt(this.jdField_d_of_type_Int);
     paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeInt(this.f);
+    paramParcel.writeInt(this.jdField_f_of_type_Int);
     paramParcel.writeLong(this.jdField_e_of_type_Long);
     paramParcel.writeInt(this.jdField_g_of_type_Int);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
@@ -97,7 +102,7 @@ public class AIOVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOVideoData
  * JD-Core Version:    0.7.0.1
  */

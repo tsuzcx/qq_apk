@@ -5,20 +5,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anvx;
-import aruy;
-import axcu;
-import bcrn;
-import bcxb;
-import bisa;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupRichTextParse;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pic.LoggerInterface;
+import com.tencent.mobileqq.service.message.MessageConstants;
+import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
 import localpb.richMsg.RichMsg.VideoFile;
 import tencent.im.msg.hummer.resv.videoFile.ResvAttr;
 import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype27;
@@ -29,7 +29,7 @@ import tencent.im.msg.im_msg_body.VideoFile;
 
 public class MessageForShortVideo
   extends MessageForRichText
-  implements Parcelable, axcu
+  implements Parcelable, MsgBackupRichTextParse, LoggerInterface
 {
   public static final int BUSI_TYPE_MULTI_FORWARD_VIDEO = 1010;
   public static final int BUSI_TYPE_PUBACCOUNT_PERM_VIDEO = 1009;
@@ -37,7 +37,7 @@ public class MessageForShortVideo
   public static final int BUSI_TYPE_SHORT_VIDEO = 1;
   public static final int BUSI_TYPE_SHORT_VIDEO_PTV = 2;
   public static final int BUSI_TYPE_VIDEO = 0;
-  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new aruy();
+  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new MessageForShortVideo.1();
   public static final int EXTRA_FLAG_FORWARD = 2;
   public static final int EXTRA_FLAG_UPLOAD = 1;
   public static final int FORWARD_CHAT_TYPE_DISCUS = 2;
@@ -60,7 +60,7 @@ public class MessageForShortVideo
   public static final int VIDEO_FORMAT_WMV = 3;
   public int binarySet;
   public int busiType;
-  public boolean collectFromForward;
+  public boolean collectFromForward = false;
   public int fileHeight;
   public String fileSource;
   public int fileType;
@@ -72,28 +72,28 @@ public class MessageForShortVideo
   public String hotVideoTitle = "";
   public String hotVideoUrl = "";
   public boolean isAllowAutoDown = true;
-  public boolean isPause;
-  public boolean isStoryVideo;
+  public boolean isPause = false;
+  public boolean isStoryVideo = false;
   public long lastModified;
   public String mLocalMd5;
   public boolean mPreUpload;
-  public bisa mProgressPie;
+  public ProgressPieDrawable mProgressPie;
   public Runnable mShowProgressTask;
   public String mThumbFilePath;
   public String mVideoFileSourceDir;
   public String md5;
   public boolean mediacodecEncode;
-  public int msgTailType;
+  public int msgTailType = 0;
   public int progress;
   public Runnable progressTask;
-  public int redBagStat;
-  public int redBagType;
-  public boolean sendRawVideo;
+  public int redBagStat = 0;
+  public int redBagType = 0;
+  public boolean sendRawVideo = false;
   public String shortVideoId = "";
-  public int specialVideoType;
+  public int specialVideoType = 0;
   public int subBusiType;
   public boolean supportProgressive;
-  public boolean syncToStory;
+  public boolean syncToStory = false;
   public String templateId = "";
   public String templateName = "";
   public int thumbFileSize;
@@ -282,11 +282,11 @@ public class MessageForShortVideo
     }
     else
     {
-      if (!"1".equals(getExtInfoFromExtStr(bcrn.n))) {
+      if (!"1".equals(getExtInfoFromExtStr(MessageConstants.n))) {
         break label728;
       }
       this.syncToStory = true;
-      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(bcrn.C));
+      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(MessageConstants.C));
       return;
     }
   }
@@ -302,22 +302,22 @@ public class MessageForShortVideo
     return this.msgData;
   }
   
-  public bcxb getDownloadInfo(int paramInt)
+  public ShortVideoDownloadInfo getDownloadInfo(int paramInt)
   {
-    bcxb localbcxb = new bcxb();
-    localbcxb.jdField_a_of_type_Int = paramInt;
-    localbcxb.jdField_a_of_type_Long = this.uniseq;
-    localbcxb.jdField_b_of_type_Int = this.istroop;
-    localbcxb.jdField_b_of_type_JavaLangString = this.selfuin;
-    localbcxb.jdField_c_of_type_JavaLangString = this.frienduin;
-    localbcxb.jdField_d_of_type_JavaLangString = this.senderuin;
-    localbcxb.jdField_a_of_type_JavaLangString = this.uuid;
-    localbcxb.e = this.md5;
-    localbcxb.jdField_c_of_type_Int = this.videoFileTime;
-    localbcxb.jdField_d_of_type_Int = this.videoFileFormat;
-    localbcxb.jdField_c_of_type_Int = this.videoFileTime;
-    localbcxb.g = this.thumbMD5;
-    return localbcxb;
+    ShortVideoDownloadInfo localShortVideoDownloadInfo = new ShortVideoDownloadInfo();
+    localShortVideoDownloadInfo.jdField_a_of_type_Int = paramInt;
+    localShortVideoDownloadInfo.jdField_a_of_type_Long = this.uniseq;
+    localShortVideoDownloadInfo.jdField_b_of_type_Int = this.istroop;
+    localShortVideoDownloadInfo.jdField_b_of_type_JavaLangString = this.selfuin;
+    localShortVideoDownloadInfo.jdField_c_of_type_JavaLangString = this.frienduin;
+    localShortVideoDownloadInfo.jdField_d_of_type_JavaLangString = this.senderuin;
+    localShortVideoDownloadInfo.jdField_a_of_type_JavaLangString = this.uuid;
+    localShortVideoDownloadInfo.e = this.md5;
+    localShortVideoDownloadInfo.jdField_c_of_type_Int = this.videoFileTime;
+    localShortVideoDownloadInfo.jdField_d_of_type_Int = this.videoFileFormat;
+    localShortVideoDownloadInfo.jdField_c_of_type_Int = this.videoFileTime;
+    localShortVideoDownloadInfo.g = this.thumbMD5;
+    return localShortVideoDownloadInfo;
   }
   
   public String getMd5()
@@ -331,15 +331,12 @@ public class MessageForShortVideo
   public im_msg_body.RichText getRichText()
   {
     im_msg_body.RichText localRichText = null;
-    if ((this instanceof MessageForLightVideo)) {
-      localRichText = parseLightVideo(this);
+    if (this.busiType == 0) {
+      localRichText = parseMessageForVideo(this);
     }
     do
     {
       return localRichText;
-      if (this.busiType == 0) {
-        return parseMessageForVideo(this);
-      }
       if (this.busiType == 1) {
         return parseMessageForVideo(this);
       }
@@ -477,7 +474,7 @@ public class MessageForShortVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return anvx.a(2131706087);
+      return HardCodeUtil.a(2131706627);
     }
     return this.msg;
   }
@@ -724,7 +721,7 @@ public class MessageForShortVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForShortVideo
  * JD-Core Version:    0.7.0.1
  */

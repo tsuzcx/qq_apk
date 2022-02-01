@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
-import axoc;
-import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.dpc.api.IDPCApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 class NearbyAppInterface$2
@@ -17,7 +17,7 @@ class NearbyAppInterface$2
       if (!bool) {}
       try
       {
-        DeviceProfileManager.a(this.this$0, axoc.j).a(this.this$0);
+        ((IDPCApi)QRoute.api(IDPCApi.class)).registerBroadCast(this.this$0);
         this.this$0.d = true;
         return;
       }

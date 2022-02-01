@@ -17,7 +17,7 @@ import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.filter.FaceOffNoseOcclusionFilter;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FrameUtil;
 import java.io.File;
@@ -50,7 +50,7 @@ public class StyleChildTransformFilter
       {
         updateFilterShader(VERTEX_SHADER, FRAGMENT_SHADER);
         this.useMeshType = ReshapeType.VTF;
-        setInitMesh(VideoMaterialUtil.toFlatArray(VideoMaterialUtil.genFullScreenVertices(this.XCOORD_NUM, this.YCOORD_NUM, 0.0F, 1.0F, 0.0F, 1.0F)), VideoMaterialUtil.toFlatArray(VideoMaterialUtil.genFullScreenVertices(this.XCOORD_NUM, this.YCOORD_NUM, 0.0F, 1.0F, 0.0F, 1.0F)));
+        setInitMesh(VideoMaterial.toFlatArray(VideoMaterial.genFullScreenVertices(this.XCOORD_NUM, this.YCOORD_NUM, 0.0F, 1.0F, 0.0F, 1.0F)), VideoMaterial.toFlatArray(VideoMaterial.genFullScreenVertices(this.XCOORD_NUM, this.YCOORD_NUM, 0.0F, 1.0F, 0.0F, 1.0F)));
         this.mFace.loadFaceTex(paramString);
       }
       this.width = paramInt1;
@@ -228,7 +228,7 @@ public class StyleChildTransformFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.StyleChildTransformFilter
  * JD-Core Version:    0.7.0.1
  */

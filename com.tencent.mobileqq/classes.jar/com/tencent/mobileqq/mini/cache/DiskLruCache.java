@@ -50,9 +50,9 @@ public final class DiskLruCache
   private Writer journalWriter;
   private final LinkedHashMap<String, DiskLruCache.Entry> lruEntries = new LinkedHashMap(0, 0.75F, true);
   private long maxSize;
-  private long nextSequenceNumber;
+  private long nextSequenceNumber = 0L;
   private int redundantOpCount;
-  private long size;
+  private long size = 0L;
   private final int valueCount;
   
   private DiskLruCache(File paramFile, int paramInt1, int paramInt2, long paramLong)
@@ -310,7 +310,7 @@ public final class DiskLruCache
     //   4: new 423	java/io/FileInputStream
     //   7: dup
     //   8: aload_0
-    //   9: getfield 127	com/tencent/mobileqq/mini/cache/DiskLruCache:journalFile	Ljava/io/File;
+    //   9: getfield 131	com/tencent/mobileqq/mini/cache/DiskLruCache:journalFile	Ljava/io/File;
     //   12: invokespecial 425	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   15: getstatic 428	com/tencent/mobileqq/mini/cache/Util:US_ASCII	Ljava/nio/charset/Charset;
     //   18: invokespecial 429	com/tencent/mobileqq/mini/cache/StrictLineReader:<init>	(Ljava/io/InputStream;Ljava/nio/charset/Charset;)V
@@ -339,13 +339,13 @@ public final class DiskLruCache
     //   64: invokevirtual 438	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   67: ifeq +44 -> 111
     //   70: aload_0
-    //   71: getfield 120	com/tencent/mobileqq/mini/cache/DiskLruCache:appVersion	I
+    //   71: getfield 124	com/tencent/mobileqq/mini/cache/DiskLruCache:appVersion	I
     //   74: invokestatic 443	java/lang/Integer:toString	(I)Ljava/lang/String;
     //   77: aload 5
     //   79: invokevirtual 438	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   82: ifeq +29 -> 111
     //   85: aload_0
-    //   86: getfield 133	com/tencent/mobileqq/mini/cache/DiskLruCache:valueCount	I
+    //   86: getfield 137	com/tencent/mobileqq/mini/cache/DiskLruCache:valueCount	I
     //   89: invokestatic 443	java/lang/Integer:toString	(I)Ljava/lang/String;
     //   92: aload 6
     //   94: invokevirtual 438	java/lang/String:equals	(Ljava/lang/Object;)Z
@@ -356,28 +356,28 @@ public final class DiskLruCache
     //   108: ifne +77 -> 185
     //   111: new 305	java/io/IOException
     //   114: dup
-    //   115: new 214	java/lang/StringBuilder
+    //   115: new 218	java/lang/StringBuilder
     //   118: dup
-    //   119: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   119: invokespecial 219	java/lang/StringBuilder:<init>	()V
     //   122: ldc_w 447
-    //   125: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: aload_3
-    //   129: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   132: ldc_w 449
-    //   135: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   138: aload 4
-    //   140: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: ldc_w 449
-    //   146: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   146: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: aload 6
-    //   151: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   154: ldc_w 449
-    //   157: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: aload 7
-    //   162: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   165: ldc_w 451
-    //   168: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: invokevirtual 228	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   168: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   174: invokespecial 452	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   177: athrow
     //   178: astore_3
@@ -400,15 +400,15 @@ public final class DiskLruCache
     //   203: aload_0
     //   204: iload_1
     //   205: aload_0
-    //   206: getfield 91	com/tencent/mobileqq/mini/cache/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
+    //   206: getfield 93	com/tencent/mobileqq/mini/cache/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
     //   209: invokevirtual 348	java/util/LinkedHashMap:size	()I
     //   212: isub
-    //   213: putfield 180	com/tencent/mobileqq/mini/cache/DiskLruCache:redundantOpCount	I
+    //   213: putfield 184	com/tencent/mobileqq/mini/cache/DiskLruCache:redundantOpCount	I
     //   216: aload_2
     //   217: invokevirtual 462	com/tencent/mobileqq/mini/cache/StrictLineReader:hasUnterminatedLine	()Z
     //   220: ifeq +12 -> 232
     //   223: aload_0
-    //   224: invokespecial 176	com/tencent/mobileqq/mini/cache/DiskLruCache:rebuildJournal	()V
+    //   224: invokespecial 180	com/tencent/mobileqq/mini/cache/DiskLruCache:rebuildJournal	()V
     //   227: aload_2
     //   228: invokestatic 456	com/tencent/mobileqq/mini/cache/Util:closeQuietly	(Ljava/io/Closeable;)V
     //   231: return
@@ -420,13 +420,13 @@ public final class DiskLruCache
     //   241: new 468	java/io/FileOutputStream
     //   244: dup
     //   245: aload_0
-    //   246: getfield 127	com/tencent/mobileqq/mini/cache/DiskLruCache:journalFile	Ljava/io/File;
+    //   246: getfield 131	com/tencent/mobileqq/mini/cache/DiskLruCache:journalFile	Ljava/io/File;
     //   249: iconst_1
     //   250: invokespecial 471	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   253: getstatic 428	com/tencent/mobileqq/mini/cache/Util:US_ASCII	Ljava/nio/charset/Charset;
     //   256: invokespecial 474	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/nio/charset/Charset;)V
     //   259: invokespecial 477	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   262: putfield 139	com/tencent/mobileqq/mini/cache/DiskLruCache:journalWriter	Ljava/io/Writer;
+    //   262: putfield 143	com/tencent/mobileqq/mini/cache/DiskLruCache:journalWriter	Ljava/io/Writer;
     //   265: goto -38 -> 227
     // Local variable table:
     //   start	length	slot	name	signature
@@ -646,10 +646,10 @@ public final class DiskLruCache
     //   10: aload_1
     //   11: invokespecial 311	com/tencent/mobileqq/mini/cache/DiskLruCache:validateKey	(Ljava/lang/String;)V
     //   14: aload_0
-    //   15: getfield 91	com/tencent/mobileqq/mini/cache/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
+    //   15: getfield 93	com/tencent/mobileqq/mini/cache/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
     //   18: aload_1
     //   19: invokevirtual 314	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   22: checkcast 196	com/tencent/mobileqq/mini/cache/DiskLruCache$Entry
+    //   22: checkcast 200	com/tencent/mobileqq/mini/cache/DiskLruCache$Entry
     //   25: astore 6
     //   27: aload 6
     //   29: ifnonnull +10 -> 39
@@ -662,17 +662,17 @@ public final class DiskLruCache
     //   39: aload 4
     //   41: astore_3
     //   42: aload 6
-    //   44: invokestatic 205	com/tencent/mobileqq/mini/cache/DiskLruCache$Entry:access$600	(Lcom/tencent/mobileqq/mini/cache/DiskLruCache$Entry;)Z
+    //   44: invokestatic 209	com/tencent/mobileqq/mini/cache/DiskLruCache$Entry:access$600	(Lcom/tencent/mobileqq/mini/cache/DiskLruCache$Entry;)Z
     //   47: ifeq -12 -> 35
     //   50: aload_0
-    //   51: getfield 133	com/tencent/mobileqq/mini/cache/DiskLruCache:valueCount	I
+    //   51: getfield 137	com/tencent/mobileqq/mini/cache/DiskLruCache:valueCount	I
     //   54: anewarray 555	java/io/InputStream
     //   57: astore 5
     //   59: iconst_0
     //   60: istore_2
     //   61: iload_2
     //   62: aload_0
-    //   63: getfield 133	com/tencent/mobileqq/mini/cache/DiskLruCache:valueCount	I
+    //   63: getfield 137	com/tencent/mobileqq/mini/cache/DiskLruCache:valueCount	I
     //   66: if_icmpge +65 -> 131
     //   69: aload 5
     //   71: iload_2
@@ -680,7 +680,7 @@ public final class DiskLruCache
     //   75: dup
     //   76: aload 6
     //   78: iload_2
-    //   79: invokevirtual 238	com/tencent/mobileqq/mini/cache/DiskLruCache$Entry:getCleanFile	(I)Ljava/io/File;
+    //   79: invokevirtual 242	com/tencent/mobileqq/mini/cache/DiskLruCache$Entry:getCleanFile	(I)Ljava/io/File;
     //   82: invokespecial 425	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   85: aastore
     //   86: iload_2
@@ -695,7 +695,7 @@ public final class DiskLruCache
     //   98: astore_3
     //   99: iload_2
     //   100: aload_0
-    //   101: getfield 133	com/tencent/mobileqq/mini/cache/DiskLruCache:valueCount	I
+    //   101: getfield 137	com/tencent/mobileqq/mini/cache/DiskLruCache:valueCount	I
     //   104: if_icmpge -69 -> 35
     //   107: aload 4
     //   109: astore_3
@@ -714,31 +714,31 @@ public final class DiskLruCache
     //   128: goto -32 -> 96
     //   131: aload_0
     //   132: aload_0
-    //   133: getfield 180	com/tencent/mobileqq/mini/cache/DiskLruCache:redundantOpCount	I
+    //   133: getfield 184	com/tencent/mobileqq/mini/cache/DiskLruCache:redundantOpCount	I
     //   136: iconst_1
     //   137: iadd
-    //   138: putfield 180	com/tencent/mobileqq/mini/cache/DiskLruCache:redundantOpCount	I
+    //   138: putfield 184	com/tencent/mobileqq/mini/cache/DiskLruCache:redundantOpCount	I
     //   141: aload_0
-    //   142: getfield 139	com/tencent/mobileqq/mini/cache/DiskLruCache:journalWriter	Ljava/io/Writer;
-    //   145: new 214	java/lang/StringBuilder
+    //   142: getfield 143	com/tencent/mobileqq/mini/cache/DiskLruCache:journalWriter	Ljava/io/Writer;
+    //   145: new 218	java/lang/StringBuilder
     //   148: dup
-    //   149: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   149: invokespecial 219	java/lang/StringBuilder:<init>	()V
     //   152: ldc_w 557
-    //   155: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   158: aload_1
-    //   159: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   162: bipush 10
-    //   164: invokevirtual 276	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   167: invokevirtual 228	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   164: invokevirtual 278	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   167: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   170: invokevirtual 560	java/io/Writer:append	(Ljava/lang/CharSequence;)Ljava/io/Writer;
     //   173: pop
     //   174: aload_0
-    //   175: invokespecial 164	com/tencent/mobileqq/mini/cache/DiskLruCache:journalRebuildRequired	()Z
+    //   175: invokespecial 168	com/tencent/mobileqq/mini/cache/DiskLruCache:journalRebuildRequired	()Z
     //   178: ifeq +15 -> 193
     //   181: aload_0
-    //   182: getfield 109	com/tencent/mobileqq/mini/cache/DiskLruCache:executorService	Ljava/util/concurrent/ThreadPoolExecutor;
+    //   182: getfield 113	com/tencent/mobileqq/mini/cache/DiskLruCache:executorService	Ljava/util/concurrent/ThreadPoolExecutor;
     //   185: aload_0
-    //   186: getfield 116	com/tencent/mobileqq/mini/cache/DiskLruCache:cleanupCallable	Ljava/util/concurrent/Callable;
+    //   186: getfield 120	com/tencent/mobileqq/mini/cache/DiskLruCache:cleanupCallable	Ljava/util/concurrent/Callable;
     //   189: invokevirtual 294	java/util/concurrent/ThreadPoolExecutor:submit	(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;
     //   192: pop
     //   193: new 562	com/tencent/mobileqq/mini/cache/DiskLruCache$Snapshot
@@ -749,7 +749,7 @@ public final class DiskLruCache
     //   201: invokestatic 318	com/tencent/mobileqq/mini/cache/DiskLruCache$Entry:access$1200	(Lcom/tencent/mobileqq/mini/cache/DiskLruCache$Entry;)J
     //   204: aload 5
     //   206: aload 6
-    //   208: invokestatic 246	com/tencent/mobileqq/mini/cache/DiskLruCache$Entry:access$1000	(Lcom/tencent/mobileqq/mini/cache/DiskLruCache$Entry;)[J
+    //   208: invokestatic 250	com/tencent/mobileqq/mini/cache/DiskLruCache$Entry:access$1000	(Lcom/tencent/mobileqq/mini/cache/DiskLruCache$Entry;)[J
     //   211: aconst_null
     //   212: invokespecial 565	com/tencent/mobileqq/mini/cache/DiskLruCache$Snapshot:<init>	(Lcom/tencent/mobileqq/mini/cache/DiskLruCache;Ljava/lang/String;J[Ljava/io/InputStream;[JLcom/tencent/mobileqq/mini/cache/DiskLruCache$1;)V
     //   215: astore_3
@@ -814,7 +814,7 @@ public final class DiskLruCache
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 139	com/tencent/mobileqq/mini/cache/DiskLruCache:journalWriter	Ljava/io/Writer;
+    //   3: getfield 143	com/tencent/mobileqq/mini/cache/DiskLruCache:journalWriter	Ljava/io/Writer;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnonnull +9 -> 17

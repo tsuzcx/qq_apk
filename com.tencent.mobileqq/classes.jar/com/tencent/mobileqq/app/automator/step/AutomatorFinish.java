@@ -5,10 +5,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.util.Log;
-import aoem;
-import aoxx;
-import aoyg;
-import bdgy;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ims.signature.SignatureKickData;
@@ -17,10 +13,14 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.proxy.FTSDBManager;
+import com.tencent.mobileqq.app.proxy.fts.FTSTroopOperator;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qqperf.opt.suspendthread.DeviceOptSwitch;
+import com.tencent.qqperf.opt.threadpriority.ThreadOptimizer;
 import java.io.File;
 import java.util.HashMap;
 import mqq.app.Constants.LogoutReason;
@@ -40,11 +40,12 @@ public class AutomatorFinish
     int i = 1;
     jdField_a_of_type_Long = System.currentTimeMillis();
     long l = jdField_a_of_type_Long - this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Long;
-    bdgy.jdField_c_of_type_Int |= 0x20;
+    DeviceOptSwitch.a |= 0x20;
+    DeviceOptSwitch.e = jdField_a_of_type_Long;
     this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Long = 0L;
     Object localObject = new HashMap();
-    ((HashMap)localObject).put("param_threadOpId", String.valueOf(aoem.a().a()));
-    StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).collectPerformance(null, "actQQInit", true, l, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b, (HashMap)localObject, null);
+    ((HashMap)localObject).put("param_threadOpId", String.valueOf(ThreadOptimizer.a().a()));
+    StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).collectPerformance(null, "actQQInit", true, l, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b, (HashMap)localObject, null);
     Log.i("AutoMonitor", "QQInitialize, cost=" + l + ", totalFailCount=" + this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b);
     try
     {
@@ -52,7 +53,7 @@ public class AutomatorFinish
       if (i != 0) {}
       try
       {
-        StatisticCollector.getInstance(BaseApplicationImpl.sApplication).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentUin(), "qqDetectAttack", true, 0L, 0L, null, null);
+        StatisticCollector.getInstance(BaseApplicationImpl.sApplication).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "qqDetectAttack", true, 0L, 0L, null, null);
         localObject = BaseApplicationImpl.sApplication.getSharedPreferences("QQDetectAttack", 0);
         i = ((SharedPreferences)localObject).getInt("AttackCount", 0);
         if (i >= 10)
@@ -65,14 +66,14 @@ public class AutomatorFinish
           int j = BaseApplicationImpl.sApplication.getSharedPreferences("SecSig", 0).getInt("SecResEntry", -1);
           localSignatureKickData.u32_check_result.set(j & 0x12);
           Resources localResources = BaseApplicationImpl.sApplication.getResources();
-          localSignatureKickData.str_right_button.set(localResources.getString(2131691780));
+          localSignatureKickData.str_right_button.set(localResources.getString(2131691898));
           localSignatureKickData.str_url.set("https://im.qq.com");
           localIntent.putExtra("data", localSignatureKickData.toByteArray());
-          localIntent.putExtra("title", localResources.getString(2131719347));
-          localIntent.putExtra("msg", localResources.getString(2131698399));
+          localIntent.putExtra("title", localResources.getString(2131719906));
+          localIntent.putExtra("msg", localResources.getString(2131698679));
           MsfSdkUtils.updateSimpleAccount(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.getCurrentAccountUin(), false);
           BaseApplicationImpl.sApplication.setSortAccountList(MsfSdkUtils.getLoginedAccountList());
-          this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.logout(true);
+          this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.logout(true);
           localIntent.setFlags(872415232);
           BaseApplicationImpl.sApplication.startActivity(localIntent);
         }
@@ -81,19 +82,19 @@ public class AutomatorFinish
         if (((File)localObject).exists()) {
           ((File)localObject).delete();
         }
-        if (bdgy.jdField_c_of_type_Boolean)
+        if (DeviceOptSwitch.b)
         {
-          localObject = (aoyg)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getFTSDBManager().a(2);
+          localObject = (FTSTroopOperator)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a(2);
           if (QLog.isColorLevel()) {
             QLog.d("Perf", 0, "after automator finish,fts get the troop list");
           }
-          ((aoyg)localObject).g();
+          ((FTSTroopOperator)localObject).g();
         }
       }
       catch (Throwable localThrowable2)
       {
-        label526:
-        break label526;
+        label532:
+        break label532;
       }
       return 7;
     }

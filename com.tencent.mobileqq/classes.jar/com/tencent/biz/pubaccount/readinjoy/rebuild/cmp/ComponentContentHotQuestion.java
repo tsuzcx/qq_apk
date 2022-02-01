@@ -11,34 +11,32 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvx;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentInheritView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.NewPolymericInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.NewPolymericInfo.PackArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.NewPolymericInfo.PackQuestionAnswerExtraInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.NewPolymericInfo.PackTopicExtraInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.widget.BorderTextView;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.List;
-import pjr;
-import qfw;
-import rbn;
-import rbx;
-import rfw;
-import rgn;
-import rps;
-import rpt;
-import rpu;
-import rpv;
 
 public class ComponentContentHotQuestion
   extends RelativeLayout
-  implements rbn
+  implements ComponentInheritView
 {
-  public Context a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new rgn(this);
+  Context jdField_a_of_type_AndroidContentContext;
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ComponentContentHotQuestion.1(this);
   TextView jdField_a_of_type_AndroidWidgetTextView;
+  CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   BorderTextView jdField_a_of_type_ComTencentWidgetBorderTextView;
-  public rfw a;
   TextView b;
   
   public ComponentContentHotQuestion(Context paramContext)
@@ -61,7 +59,7 @@ public class ComponentContentHotQuestion
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Rfw = new rfw();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramContext);
     a();
@@ -69,7 +67,7 @@ public class ComponentContentHotQuestion
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560161, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560239, this, true);
   }
   
   public void a() {}
@@ -81,94 +79,94 @@ public class ComponentContentHotQuestion
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131368572));
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView = ((BorderTextView)paramView.findViewById(2131366208));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379001));
-    this.b = ((TextView)paramView.findViewById(2131372158));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131368802));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView = ((BorderTextView)paramView.findViewById(2131366380));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379432));
+    this.b = ((TextView)paramView.findViewById(2131372460));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setBorderColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setBorderWidth(2);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setRadius(4.0F);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(anvx.a(2131701786));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(HardCodeUtil.a(2131702341));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.b.setVisibility(8);
   }
   
+  public void a(FeedItemCell.CellListener paramCellListener)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
+  }
+  
   public void a(Object paramObject)
   {
     b();
     ArticleInfo localArticleInfo;
-    rpt localrpt;
-    if ((paramObject instanceof qfw))
+    NewPolymericInfo.PackArticleInfo localPackArticleInfo;
+    if ((paramObject instanceof IReadInJoyModel))
     {
-      paramObject = (qfw)paramObject;
-      this.jdField_a_of_type_Rfw.a(paramObject);
+      paramObject = (IReadInJoyModel)paramObject;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramObject);
       localArticleInfo = paramObject.a();
-      localrpt = (rpt)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
-      pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mSinglePicture, getContext());
-      if (!TextUtils.isEmpty(localrpt.jdField_a_of_type_JavaLangString))
+      localPackArticleInfo = (NewPolymericInfo.PackArticleInfo)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
+      ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mSinglePicture, getContext());
+      if (!TextUtils.isEmpty(localPackArticleInfo.jdField_a_of_type_JavaLangString))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localrpt.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(localPackArticleInfo.jdField_a_of_type_JavaLangString);
       }
-      if ((localrpt.jdField_a_of_type_Rpu != null) && (!TextUtils.isEmpty(localrpt.jdField_a_of_type_Rpu.b)))
+      if ((localPackArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructNewPolymericInfo$PackQuestionAnswerExtraInfo != null) && (!TextUtils.isEmpty(localPackArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructNewPolymericInfo$PackQuestionAnswerExtraInfo.b)))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localrpt.jdField_a_of_type_Rpu.b);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(localPackArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructNewPolymericInfo$PackQuestionAnswerExtraInfo.b);
       }
-      if ((localrpt.jdField_a_of_type_Rpv != null) && (localrpt.jdField_a_of_type_Rpv.jdField_a_of_type_Int >= 0))
+      if ((localPackArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructNewPolymericInfo$PackTopicExtraInfo != null) && (localPackArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructNewPolymericInfo$PackTopicExtraInfo.jdField_a_of_type_Int >= 0))
       {
         this.b.setVisibility(0);
-        StringBuilder localStringBuilder = new StringBuilder().append(bmhv.b(localrpt.jdField_a_of_type_Rpv.jdField_a_of_type_Int));
-        if (!TextUtils.isEmpty(localrpt.jdField_a_of_type_Rpv.jdField_a_of_type_JavaLangString)) {
+        StringBuilder localStringBuilder = new StringBuilder().append(ReadInJoyHelper.b(localPackArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructNewPolymericInfo$PackTopicExtraInfo.jdField_a_of_type_Int));
+        if (!TextUtils.isEmpty(localPackArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructNewPolymericInfo$PackTopicExtraInfo.jdField_a_of_type_JavaLangString)) {
           break label240;
         }
-        paramObject = anvx.a(2131701801);
+        paramObject = HardCodeUtil.a(2131702356);
         paramObject = paramObject;
         this.b.setText(paramObject);
       }
-      if (TextUtils.isEmpty(localrpt.h)) {
+      if (TextUtils.isEmpty(localPackArticleInfo.h)) {
         break label251;
       }
-      this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(localrpt.h);
+      this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(localPackArticleInfo.h);
     }
     label240:
     label251:
     do
     {
       return;
-      paramObject = localrpt.jdField_a_of_type_Rpv.jdField_a_of_type_JavaLangString;
+      paramObject = localPackArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructNewPolymericInfo$PackTopicExtraInfo.jdField_a_of_type_JavaLangString;
       break;
       if (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 12)
       {
-        this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(anvx.a(2131701820));
+        this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(HardCodeUtil.a(2131702375));
         return;
       }
     } while (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int != 13);
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(anvx.a(2131701752));
-  }
-  
-  public void a(rbx paramrbx)
-  {
-    this.jdField_a_of_type_Rfw.a(paramrbx);
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(HardCodeUtil.a(2131702307));
   }
   
   public void b()
   {
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
-    localLayoutParams.width = AIOUtils.dp2px(150.0F, getResources());
-    localLayoutParams.height = AIOUtils.dp2px(150.0F, getResources());
+    localLayoutParams.width = AIOUtils.a(150.0F, getResources());
+    localLayoutParams.height = AIOUtils.a(150.0F, getResources());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotQuestion
  * JD-Core Version:    0.7.0.1
  */

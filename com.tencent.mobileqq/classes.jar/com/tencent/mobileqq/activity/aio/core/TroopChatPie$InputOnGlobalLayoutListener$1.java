@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import agbs;
-import aoep;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class TroopChatPie$InputOnGlobalLayoutListener$1
+class TroopChatPie$InputOnGlobalLayoutListener$1
   implements Runnable
 {
-  public TroopChatPie$InputOnGlobalLayoutListener$1(agbs paramagbs) {}
+  TroopChatPie$InputOnGlobalLayoutListener$1(TroopChatPie.InputOnGlobalLayoutListener paramInputOnGlobalLayoutListener) {}
   
   public void run()
   {
-    String str1 = this.a.a.sessionInfo.curFriendUin;
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((aoep)this.a.a.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a();
+    String str1 = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((TroopHandler)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a();
     Object localObject = localTroopBatchAddFriendMgr.a(str1);
     ArrayList localArrayList = new ArrayList();
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
@@ -33,7 +32,7 @@ public class TroopChatPie$InputOnGlobalLayoutListener$1
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.tag, 2, "CheckNewMemberDataWhenEnterAIO visibleUins size = " + localArrayList.size() + ",visibleUins = " + localArrayList);
+      QLog.d(this.a.a.b, 2, "CheckNewMemberDataWhenEnterAIO visibleUins size = " + localArrayList.size() + ",visibleUins = " + localArrayList);
     }
     if (localArrayList.size() > 0) {
       localTroopBatchAddFriendMgr.a(str1, localArrayList, 4);
@@ -42,7 +41,7 @@ public class TroopChatPie$InputOnGlobalLayoutListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.InputOnGlobalLayoutListener.1
  * JD-Core Version:    0.7.0.1
  */

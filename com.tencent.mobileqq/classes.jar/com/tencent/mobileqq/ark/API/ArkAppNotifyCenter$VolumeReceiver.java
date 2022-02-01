@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.ark.API;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+
+class ArkAppNotifyCenter$VolumeReceiver
+  extends BroadcastReceiver
+{
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ark.ArkAppNotifyCenter", 2, "--VolumeReceiver---" + paramIntent.getAction());
+    }
+    ArkAppNotifyCenter.access$100("com.tencent.gouwu.video");
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.VolumeReceiver
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,22 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.preload;
 
+import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadHelper;
 import com.tencent.qphone.base.util.QLog;
-import qko;
-import qkp;
-import qkq;
-import qku;
 
-public class FeedsPreloadManager$4
+class FeedsPreloadManager$4
   implements Runnable
 {
-  public FeedsPreloadManager$4(qkq paramqkq, qkp paramqkp, long paramLong) {}
+  FeedsPreloadManager$4(FeedsPreloadManager paramFeedsPreloadManager, FeedsPreloadDataModule.PreloadCache paramPreloadCache, long paramLong) {}
   
   public void run()
   {
-    qko localqko = qko.a();
-    if (localqko != null)
+    FeedsPreloadDataModule localFeedsPreloadDataModule = FeedsPreloadDataModule.a();
+    if (localFeedsPreloadDataModule != null)
     {
-      if (!qku.b(this.jdField_a_of_type_Qkp.a)) {
+      if (!FeedsPreloadHelper.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPreloadFeedsPreloadDataModule$PreloadCache.a)) {
         QLog.d("FeedsPreloadManager", 1, "is not latest request, do not update preload cache.");
       }
     }
@@ -30,12 +27,12 @@ public class FeedsPreloadManager$4
       return;
     }
     QLog.d("FeedsPreloadManager", 1, "update preload cache.");
-    localqko.a(this.jdField_a_of_type_Qkp);
+    localFeedsPreloadDataModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPreloadFeedsPreloadDataModule$PreloadCache);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.preload.FeedsPreloadManager.4
  * JD-Core Version:    0.7.0.1
  */

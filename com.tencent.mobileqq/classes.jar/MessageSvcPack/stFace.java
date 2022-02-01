@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stFace
   extends JceStruct
 {
-  public long index;
+  public long index = 0L;
   
   public stFace() {}
   

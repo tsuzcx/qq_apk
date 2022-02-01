@@ -7,17 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aquf;
-import aqug;
-import aquh;
-import aqui;
-import aquj;
-import aquk;
-import aqul;
-import blgg;
 import com.tencent.mobileqq.remind.widget.WheelTextView;
 import com.tencent.mobileqq.remind.widget.WheelView;
 import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
 
 public class IphonePickerView
   extends LinearLayout
@@ -26,13 +19,13 @@ public class IphonePickerView
   private static int b = -12303292;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aquk jdField_a_of_type_Aquk;
-  private aqul jdField_a_of_type_Aqul;
-  private blgg jdField_a_of_type_Blgg = new aquh(this);
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new aqug(this);
-  private aquj[] jdField_a_of_type_ArrayOfAquj;
+  private IphonePickerView.IphonePickListener jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener;
+  private IphonePickerView.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter;
+  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new IphonePickerView.2(this);
+  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new IphonePickerView.3(this);
+  private IphonePickerView.InnerAdapter[] jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter;
   private WheelView[] jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
-  private int c;
+  private int c = 0;
   
   static
   {
@@ -78,13 +71,13 @@ public class IphonePickerView
   private void a(WheelView paramWheelView, int paramInt)
   {
     paramWheelView.setTag(Integer.valueOf(paramInt));
-    aquj localaquj = new aquj(this, paramInt, 25);
+    IphonePickerView.InnerAdapter localInnerAdapter = new IphonePickerView.InnerAdapter(this, paramInt, 25);
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[paramInt] = paramWheelView;
-    this.jdField_a_of_type_ArrayOfAquj[paramInt] = localaquj;
-    paramWheelView.setAdapter(localaquj);
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter[paramInt] = localInnerAdapter;
+    paramWheelView.setAdapter(localInnerAdapter);
     paramWheelView.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
-    paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_Blgg);
-    paramWheelView.setOnEndMovementListener(new aqui(this, paramInt));
+    paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener);
+    paramWheelView.setOnEndMovementListener(new IphonePickerView.EndMovementListener(this, paramInt));
   }
   
   public int a(int paramInt)
@@ -97,55 +90,55 @@ public class IphonePickerView
   
   public void a()
   {
-    findViewById(2131379109).setVisibility(8);
+    findViewById(2131379543).setVisibility(8);
   }
   
   public void a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAquj.length)) {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter.length)) {
       throw new IllegalArgumentException("Error column index " + paramInt);
     }
-    this.jdField_a_of_type_ArrayOfAquj[paramInt].notifyDataSetChanged();
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter[paramInt].notifyDataSetChanged();
   }
   
-  public void a(aqul paramaqul)
+  public void a(IphonePickerView.PickerViewAdapter paramPickerViewAdapter)
   {
     Object localObject1 = getContext().getResources();
-    jdField_a_of_type_Int = ((Resources)localObject1).getColor(2131167116);
-    b = ((Resources)localObject1).getColor(2131167072);
-    setBackgroundColor(((Resources)localObject1).getColor(2131167077));
-    Object localObject2 = findViewById(2131378935);
+    jdField_a_of_type_Int = ((Resources)localObject1).getColor(2131167123);
+    b = ((Resources)localObject1).getColor(2131167079);
+    setBackgroundColor(((Resources)localObject1).getColor(2131167084));
+    Object localObject2 = findViewById(2131379366);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167129));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167136));
     }
-    localObject2 = findViewById(2131378936);
+    localObject2 = findViewById(2131379367);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167129));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167136));
     }
-    localObject2 = findViewById(2131370140);
+    localObject2 = findViewById(2131370411);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167128));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167135));
     }
-    localObject2 = findViewById(2131370120);
+    localObject2 = findViewById(2131370391);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167128));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167135));
     }
-    this.jdField_a_of_type_Aqul = paramaqul;
-    this.c = this.jdField_a_of_type_Aqul.a();
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter = paramPickerViewAdapter;
+    this.c = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter.getColumnCount();
     if ((this.c <= 0) || (this.c > 3)) {
       throw new RuntimeException("Unsupportted column count " + this.c);
     }
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[this.c];
-    this.jdField_a_of_type_ArrayOfAquj = new aquj[this.c];
-    paramaqul = (WheelView)findViewById(2131365423);
-    localObject1 = (WheelView)findViewById(2131368357);
-    localObject2 = (WheelView)findViewById(2131371470);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378933));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378961));
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter = new IphonePickerView.InnerAdapter[this.c];
+    paramPickerViewAdapter = (WheelView)findViewById(2131365588);
+    localObject1 = (WheelView)findViewById(2131368575);
+    localObject2 = (WheelView)findViewById(2131371782);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131379364));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379392));
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aquf(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new IphonePickerView.1(this));
     }
-    a(paramaqul, 0);
+    a(paramPickerViewAdapter, 0);
     if (this.c < 2) {
       ((WheelView)localObject1).setVisibility(8);
     }
@@ -160,9 +153,9 @@ public class IphonePickerView
     a((WheelView)localObject2, 2);
   }
   
-  public void setPickListener(aquk paramaquk)
+  public void setPickListener(IphonePickerView.IphonePickListener paramIphonePickListener)
   {
-    this.jdField_a_of_type_Aquk = paramaquk;
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener = paramIphonePickListener;
   }
   
   public void setSelection(int paramInt1, int paramInt2)

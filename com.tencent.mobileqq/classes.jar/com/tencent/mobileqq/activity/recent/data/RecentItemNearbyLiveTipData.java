@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acmw;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -47,9 +47,9 @@ public class RecentItemNearbyLiveTipData
       return;
     }
     Object localObject = paramQQAppInterface.getMessageFacade();
-    acmw localacmw = paramQQAppInterface.getConversationFacade();
+    ConversationFacade localConversationFacade = paramQQAppInterface.getConversationFacade();
     if (localObject != null) {}
-    for (localObject = ((QQMessageFacade)localObject).getLastMessage(this.mData.senderuin, this.mData.istroop);; localObject = null)
+    for (localObject = ((QQMessageFacade)localObject).a(this.mData.senderuin, this.mData.istroop);; localObject = null)
     {
       MsgSummary localMsgSummary = getMsgSummaryTemp();
       if (localObject == null)
@@ -60,8 +60,8 @@ public class RecentItemNearbyLiveTipData
         QLog.i("Q.nearby.tag_nearby_live_tip", 2, "RecentItemNearbyLiveTipData, msg = null");
         return;
       }
-      this.mDisplayTime = ((QQMessageFacade.Message)localObject).time;
-      this.nearbyLiveTipMsg = ((MessageForNearbyLiveTip)paramQQAppInterface.getMessageFacade().getMsgItemByUniseq(((QQMessageFacade.Message)localObject).senderuin, ((QQMessageFacade.Message)localObject).istroop, ((QQMessageFacade.Message)localObject).uniseq));
+      this.mDisplayTime = ((Message)localObject).time;
+      this.nearbyLiveTipMsg = ((MessageForNearbyLiveTip)paramQQAppInterface.getMessageFacade().a(((Message)localObject).senderuin, ((Message)localObject).istroop, ((Message)localObject).uniseq));
       if (this.nearbyLiveTipMsg == null)
       {
         if (!QLog.isColorLevel()) {
@@ -73,14 +73,14 @@ public class RecentItemNearbyLiveTipData
       this.nearbyLiveTipMsg.parse();
       this.mTitleName = this.nearbyLiveTipMsg.nickName;
       localMsgSummary.strContent = this.nearbyLiveTipMsg.msg;
-      if (localacmw != null)
+      if (localConversationFacade != null)
       {
-        this.mUnreadNum = localacmw.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
+        this.mUnreadNum = localConversationFacade.a(((Message)localObject).frienduin, ((Message)localObject).istroop);
         if (a().equals("1822701914")) {
           this.mUnreadFlag = 3;
         }
         extraUpdate(paramQQAppInterface, paramContext, localMsgSummary);
-        if (!AppSetting.c) {
+        if (!AppSetting.d) {
           break;
         }
         paramQQAppInterface = new StringBuilder(24);
@@ -113,7 +113,7 @@ public class RecentItemNearbyLiveTipData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="32.0dip" android:layout_height="32.0dip"
+<RelativeLayout android:gravity="bottom" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.shareGroup.infocard.view.CircleImageView android:layout_gravity="center" android:id="@id/dcw" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerCrop" />
-</FrameLayout>
+    <FrameLayout android:id="@id/jt9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <View android:id="@id/o_m" android:background="@drawable/d0d" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/n4s" android:background="@drawable/d0d" android:layout_width="fill_parent" android:layout_height="40.0dip">
+            <ImageView android:id="@id/n4r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/goq" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:id="@id/n4u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/n4t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/gom" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/l1q" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jt9" />
+</RelativeLayout>

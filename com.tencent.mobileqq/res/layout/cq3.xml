@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/f_l" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/c_y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" layout="@layout/aly" />
-    <com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView android:id="@id/ec1" android:focusable="false" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:transcriptMode="normal" android:cacheColorHint="@null" android:divider="@null" android:layout_below="@id/c_y" />
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/fa9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
-        <View android:id="@id/ju1" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        <ImageView android:layout_gravity="center" android:id="@id/dce" android:background="@drawable/e99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:layout_gravity="center" android:id="@id/jfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/b82" />
-        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/n5t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/e7l" android:layout_width="70.5dip" android:layout_height="23.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/noi" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="广告" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:background="#4cffffff" android:layout_width="0.5dip" android:layout_height="fill_parent" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/o5e" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="3秒" android:maxLines="1" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:background="@drawable/e7i" android:layout_width="fill_parent" android:layout_height="62.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="33.0dip" android:layout_marginBottom="9.0dip" android:layout_alignParentBottom="true">
+        <com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView android:id="@id/kc0" android:layout_width="33.0dip" android:layout_height="33.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="8.0dip" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/kr9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="肯德基" android:maxLines="1" />
+            <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/fz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="TF Boys 送你新春金桶旺财祝福，新年新惊喜肯" android:maxLines="1" />
+        </LinearLayout>
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nok" android:background="@drawable/e7k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:text="查看" />
     </LinearLayout>
 </RelativeLayout>

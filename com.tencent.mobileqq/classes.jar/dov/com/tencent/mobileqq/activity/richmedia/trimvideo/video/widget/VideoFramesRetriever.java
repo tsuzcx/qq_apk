@@ -2,37 +2,33 @@ package dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
 import android.annotation.TargetApi;
 import android.media.MediaMetadataRetriever;
-import bpks;
-import bpkw;
-import bpky;
-import bpld;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 
 @TargetApi(10)
 public class VideoFramesRetriever
-  implements bpky
+  implements OnFetchFrameListener
 {
-  private static long jdField_a_of_type_Long;
+  private static long jdField_a_of_type_Long = 0L;
   private float jdField_a_of_type_Float;
   private volatile int jdField_a_of_type_Int;
   private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
-  private bpks jdField_a_of_type_Bpks;
-  private BlockingQueue<bpld> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap<Integer, bpld> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private FrameAdapter jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter;
+  private BlockingQueue<VideoFramesRetriever.FrameFetchTask> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, VideoFramesRetriever.FrameFetchTask> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private volatile boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
   
-  private bpkw b(int paramInt)
+  private FramesProcessor.Frame b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesRetriever", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    bpld localbpld2;
+    VideoFramesRetriever.FrameFetchTask localFrameFetchTask2;
     do
     {
       return null;
@@ -40,10 +36,10 @@ public class VideoFramesRetriever
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          bpld localbpld1 = (bpld)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          VideoFramesRetriever.FrameFetchTask localFrameFetchTask1 = (VideoFramesRetriever.FrameFetchTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localbpld1.jdField_a_of_type_Long = l;
+          localFrameFetchTask1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -54,13 +50,13 @@ public class VideoFramesRetriever
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localbpld2 = new bpld(this, l, paramInt, paramInt + this.b);
+      localFrameFetchTask2 = new VideoFramesRetriever.FrameFetchTask(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localbpld2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localFrameFetchTask2);
     return null;
   }
   
-  public bpkw a(int paramInt)
+  public FramesProcessor.Frame a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -69,8 +65,8 @@ public class VideoFramesRetriever
       }
       return null;
     }
-    if (this.jdField_a_of_type_Bpks.a(paramInt)) {
-      return this.jdField_a_of_type_Bpks.a(paramInt);
+    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt)) {
+      return this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt);
     }
     return b(this.b * paramInt);
   }
@@ -101,7 +97,7 @@ public class VideoFramesRetriever
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever
  * JD-Core Version:    0.7.0.1
  */

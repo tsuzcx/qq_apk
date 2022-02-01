@@ -6,12 +6,12 @@ public class MessageForLimitChatConfirm
   public static final String TAG = MessageForLimitChatConfirm.class.getName();
   public String SenderNickName = "";
   public boolean bEnterMsg = true;
-  public int c2cExpiredTime;
+  public int c2cExpiredTime = 0;
   public int leaveChatType = -1;
   public int leftChatTime = -1;
-  public int matchExpiredTime;
-  public long readyTs;
-  public long timeStamp;
+  public int matchExpiredTime = 0;
+  public long readyTs = 0L;
+  public long timeStamp = 0L;
   public String tipsWording = "";
   
   /* Error */
@@ -19,84 +19,84 @@ public class MessageForLimitChatConfirm
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 53	com/tencent/mobileqq/data/MessageForLimitChatConfirm:msgData	[B
+    //   1: getfield 61	com/tencent/mobileqq/data/MessageForLimitChatConfirm:msgData	[B
     //   4: ifnonnull +4 -> 8
     //   7: return
-    //   8: new 55	java/io/ObjectInputStream
+    //   8: new 63	java/io/ObjectInputStream
     //   11: dup
-    //   12: new 57	java/io/ByteArrayInputStream
+    //   12: new 65	java/io/ByteArrayInputStream
     //   15: dup
     //   16: aload_0
-    //   17: getfield 53	com/tencent/mobileqq/data/MessageForLimitChatConfirm:msgData	[B
-    //   20: invokespecial 60	java/io/ByteArrayInputStream:<init>	([B)V
-    //   23: invokespecial 63	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   17: getfield 61	com/tencent/mobileqq/data/MessageForLimitChatConfirm:msgData	[B
+    //   20: invokespecial 68	java/io/ByteArrayInputStream:<init>	([B)V
+    //   23: invokespecial 71	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   26: astore_2
     //   27: aload_2
     //   28: astore_1
     //   29: aload_0
     //   30: aload_2
-    //   31: invokevirtual 67	java/io/ObjectInputStream:readBoolean	()Z
+    //   31: invokevirtual 75	java/io/ObjectInputStream:readBoolean	()Z
     //   34: putfield 34	com/tencent/mobileqq/data/MessageForLimitChatConfirm:bEnterMsg	Z
     //   37: aload_2
     //   38: astore_1
     //   39: aload_0
     //   40: aload_2
-    //   41: invokevirtual 71	java/io/ObjectInputStream:readInt	()I
+    //   41: invokevirtual 79	java/io/ObjectInputStream:readInt	()I
     //   44: putfield 36	com/tencent/mobileqq/data/MessageForLimitChatConfirm:leaveChatType	I
     //   47: aload_2
     //   48: astore_1
     //   49: aload_0
     //   50: aload_2
-    //   51: invokevirtual 71	java/io/ObjectInputStream:readInt	()I
-    //   54: putfield 38	com/tencent/mobileqq/data/MessageForLimitChatConfirm:leftChatTime	I
+    //   51: invokevirtual 79	java/io/ObjectInputStream:readInt	()I
+    //   54: putfield 40	com/tencent/mobileqq/data/MessageForLimitChatConfirm:leftChatTime	I
     //   57: aload_2
     //   58: astore_1
     //   59: aload_0
     //   60: aload_2
-    //   61: invokevirtual 75	java/io/ObjectInputStream:readLong	()J
-    //   64: putfield 77	com/tencent/mobileqq/data/MessageForLimitChatConfirm:timeStamp	J
+    //   61: invokevirtual 83	java/io/ObjectInputStream:readLong	()J
+    //   64: putfield 38	com/tencent/mobileqq/data/MessageForLimitChatConfirm:timeStamp	J
     //   67: aload_2
     //   68: astore_1
     //   69: aload_0
     //   70: aload_2
-    //   71: invokevirtual 71	java/io/ObjectInputStream:readInt	()I
-    //   74: putfield 79	com/tencent/mobileqq/data/MessageForLimitChatConfirm:matchExpiredTime	I
+    //   71: invokevirtual 79	java/io/ObjectInputStream:readInt	()I
+    //   74: putfield 42	com/tencent/mobileqq/data/MessageForLimitChatConfirm:matchExpiredTime	I
     //   77: aload_2
     //   78: astore_1
     //   79: aload_0
     //   80: aload_2
-    //   81: invokevirtual 71	java/io/ObjectInputStream:readInt	()I
-    //   84: putfield 81	com/tencent/mobileqq/data/MessageForLimitChatConfirm:c2cExpiredTime	I
+    //   81: invokevirtual 79	java/io/ObjectInputStream:readInt	()I
+    //   84: putfield 44	com/tencent/mobileqq/data/MessageForLimitChatConfirm:c2cExpiredTime	I
     //   87: aload_2
     //   88: astore_1
     //   89: aload_0
     //   90: aload_2
-    //   91: invokevirtual 84	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
-    //   94: putfield 42	com/tencent/mobileqq/data/MessageForLimitChatConfirm:SenderNickName	Ljava/lang/String;
+    //   91: invokevirtual 86	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
+    //   94: putfield 48	com/tencent/mobileqq/data/MessageForLimitChatConfirm:SenderNickName	Ljava/lang/String;
     //   97: aload_2
     //   98: astore_1
     //   99: aload_0
     //   100: aload_2
-    //   101: invokevirtual 84	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
-    //   104: putfield 44	com/tencent/mobileqq/data/MessageForLimitChatConfirm:tipsWording	Ljava/lang/String;
+    //   101: invokevirtual 86	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
+    //   104: putfield 50	com/tencent/mobileqq/data/MessageForLimitChatConfirm:tipsWording	Ljava/lang/String;
     //   107: aload_2
     //   108: astore_1
     //   109: aload_0
     //   110: aload_2
-    //   111: invokevirtual 75	java/io/ObjectInputStream:readLong	()J
-    //   114: putfield 86	com/tencent/mobileqq/data/MessageForLimitChatConfirm:readyTs	J
+    //   111: invokevirtual 83	java/io/ObjectInputStream:readLong	()J
+    //   114: putfield 52	com/tencent/mobileqq/data/MessageForLimitChatConfirm:readyTs	J
     //   117: aload_2
     //   118: ifnull +7 -> 125
     //   121: aload_2
     //   122: invokevirtual 89	java/io/ObjectInputStream:close	()V
-    //   125: new 55	java/io/ObjectInputStream
+    //   125: new 63	java/io/ObjectInputStream
     //   128: dup
-    //   129: new 57	java/io/ByteArrayInputStream
+    //   129: new 65	java/io/ByteArrayInputStream
     //   132: dup
     //   133: aload_0
-    //   134: getfield 53	com/tencent/mobileqq/data/MessageForLimitChatConfirm:msgData	[B
-    //   137: invokespecial 60	java/io/ByteArrayInputStream:<init>	([B)V
-    //   140: invokespecial 63	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   134: getfield 61	com/tencent/mobileqq/data/MessageForLimitChatConfirm:msgData	[B
+    //   137: invokespecial 68	java/io/ByteArrayInputStream:<init>	([B)V
+    //   140: invokespecial 71	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   143: pop
     //   144: return
     //   145: astore_1
@@ -239,43 +239,43 @@ public class MessageForLimitChatConfirm
     //   40: astore_1
     //   41: aload_2
     //   42: aload_0
-    //   43: getfield 38	com/tencent/mobileqq/data/MessageForLimitChatConfirm:leftChatTime	I
+    //   43: getfield 40	com/tencent/mobileqq/data/MessageForLimitChatConfirm:leftChatTime	I
     //   46: invokevirtual 142	java/io/ObjectOutputStream:writeInt	(I)V
     //   49: aload_2
     //   50: astore_1
     //   51: aload_2
     //   52: aload_0
-    //   53: getfield 77	com/tencent/mobileqq/data/MessageForLimitChatConfirm:timeStamp	J
+    //   53: getfield 38	com/tencent/mobileqq/data/MessageForLimitChatConfirm:timeStamp	J
     //   56: invokevirtual 146	java/io/ObjectOutputStream:writeLong	(J)V
     //   59: aload_2
     //   60: astore_1
     //   61: aload_2
     //   62: aload_0
-    //   63: getfield 79	com/tencent/mobileqq/data/MessageForLimitChatConfirm:matchExpiredTime	I
+    //   63: getfield 42	com/tencent/mobileqq/data/MessageForLimitChatConfirm:matchExpiredTime	I
     //   66: invokevirtual 142	java/io/ObjectOutputStream:writeInt	(I)V
     //   69: aload_2
     //   70: astore_1
     //   71: aload_2
     //   72: aload_0
-    //   73: getfield 81	com/tencent/mobileqq/data/MessageForLimitChatConfirm:c2cExpiredTime	I
+    //   73: getfield 44	com/tencent/mobileqq/data/MessageForLimitChatConfirm:c2cExpiredTime	I
     //   76: invokevirtual 142	java/io/ObjectOutputStream:writeInt	(I)V
     //   79: aload_2
     //   80: astore_1
     //   81: aload_2
     //   82: aload_0
-    //   83: getfield 42	com/tencent/mobileqq/data/MessageForLimitChatConfirm:SenderNickName	Ljava/lang/String;
+    //   83: getfield 48	com/tencent/mobileqq/data/MessageForLimitChatConfirm:SenderNickName	Ljava/lang/String;
     //   86: invokevirtual 150	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
     //   89: aload_2
     //   90: astore_1
     //   91: aload_2
     //   92: aload_0
-    //   93: getfield 44	com/tencent/mobileqq/data/MessageForLimitChatConfirm:tipsWording	Ljava/lang/String;
+    //   93: getfield 50	com/tencent/mobileqq/data/MessageForLimitChatConfirm:tipsWording	Ljava/lang/String;
     //   96: invokevirtual 150	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
     //   99: aload_2
     //   100: astore_1
     //   101: aload_2
     //   102: aload_0
-    //   103: getfield 86	com/tencent/mobileqq/data/MessageForLimitChatConfirm:readyTs	J
+    //   103: getfield 52	com/tencent/mobileqq/data/MessageForLimitChatConfirm:readyTs	J
     //   106: invokevirtual 146	java/io/ObjectOutputStream:writeLong	(J)V
     //   109: aload_2
     //   110: astore_1
@@ -286,7 +286,7 @@ public class MessageForLimitChatConfirm
     //   117: aload_0
     //   118: aload 4
     //   120: invokevirtual 154	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   123: putfield 53	com/tencent/mobileqq/data/MessageForLimitChatConfirm:msgData	[B
+    //   123: putfield 61	com/tencent/mobileqq/data/MessageForLimitChatConfirm:msgData	[B
     //   126: aload_2
     //   127: ifnull +7 -> 134
     //   130: aload_2
@@ -423,7 +423,7 @@ public class MessageForLimitChatConfirm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForLimitChatConfirm
  * JD-Core Version:    0.7.0.1
  */

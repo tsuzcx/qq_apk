@@ -12,9 +12,9 @@ public final class mobile_single_feeds_req
 {
   static ArrayList<single_feeds_req_info> cache_req_feeds_info = new ArrayList();
   static Map<String, String> cache_stMapExtendinfo;
-  public int get_type;
-  public ArrayList<single_feeds_req_info> req_feeds_info;
-  public Map<String, String> stMapExtendinfo;
+  public int get_type = 0;
+  public ArrayList<single_feeds_req_info> req_feeds_info = null;
+  public Map<String, String> stMapExtendinfo = null;
   
   static
   {

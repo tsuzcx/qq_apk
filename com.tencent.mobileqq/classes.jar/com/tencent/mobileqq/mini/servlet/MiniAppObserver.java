@@ -24,6 +24,7 @@ public class MiniAppObserver
   public static final int MINI_APP_DC_REPORT = 1005;
   public static final int MINI_APP_DEL_ITEM = 1006;
   public static final int MINI_APP_DEL_PHONE_NUMBER = 1074;
+  public static final int MINI_APP_DO_GAME_RAFFLE = 1090;
   public static final int MINI_APP_DO_LIKE = 1009;
   public static final int MINI_APP_GENERAL_CODE = 9000;
   public static final int MINI_APP_GET_APPINFO_BY_ID = 1024;
@@ -36,12 +37,12 @@ public class MiniAppObserver
   public static final int MINI_APP_GET_EXT_CONFIG_DETAIL = 1040;
   static final int MINI_APP_GET_FORM_ID = 1020;
   public static final int MINI_APP_GET_FRIEND_CLOUD_STORAGE = 1019;
+  public static final int MINI_APP_GET_GAME_RAFFLE_MATERIAL = 1089;
   public static final int MINI_APP_GET_GROUP_CLOUD_STORAGE = 1018;
   public static final int MINI_APP_GET_GROUP_SHARE_INFO = 1033;
   public static final int MINI_APP_GET_HOT_SEARCH_APPS = 1071;
   public static final int MINI_APP_GET_KUOLIE_APPLIST = 1044;
   public static final int MINI_APP_GET_LOGIN_CODE = 1000;
-  public static final int MINI_APP_GET_MINE_STORY_FEED_LIST = 1031;
   public static final int MINI_APP_GET_NATIVE_APPINFO = 1030;
   public static final int MINI_APP_GET_NEW_BASELIB = 1004;
   public static final int MINI_APP_GET_NEW_BASELIB_FOR_SDK = 1057;
@@ -187,9 +188,6 @@ public class MiniAppObserver
     if (1030 == paramInt) {
       return "MINI_APP_GET_NATIVE_APPINFO";
     }
-    if (1031 == paramInt) {
-      return "MINI_APP_GET_MINE_STORY_FEED_LIST";
-    }
     if (1032 == paramInt) {
       return "MINI_APP_GET_USER_INFO_EXTRA";
     }
@@ -319,6 +317,12 @@ public class MiniAppObserver
     if (1086 == paramInt) {
       return "MINI_APP_SEARCH_GUESS_YOU_LIKE";
     }
+    if (1089 == paramInt) {
+      return "MINI_APP_GET_GAME_RAFFLE_MATERIAL";
+    }
+    if (1090 == paramInt) {
+      return "MINI_APP_DO_GAME_RAFFLE";
+    }
     return "default cmd";
   }
   
@@ -401,11 +405,6 @@ public class MiniAppObserver
       if (paramInt == 1011)
       {
         onLocalSearchDataFin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1031)
-      {
-        onGetMineStoryFeedList(i, paramBoolean, paramBundle);
         return;
       }
       if (paramInt == 1012)
@@ -743,8 +742,18 @@ public class MiniAppObserver
         onRejectFrequentlyRecommends(i, paramBoolean, paramBundle);
         return;
       }
-    } while (paramInt != 1086);
-    onGuessYouLike(i, paramBoolean, paramBundle);
+      if (paramInt == 1086)
+      {
+        onGuessYouLike(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1089)
+      {
+        onGetGameRaffleMaterial(i, paramBoolean, paramBundle);
+        return;
+      }
+    } while (paramInt != 1090);
+    onDoGameRaffle(i, paramBoolean, paramBundle);
   }
   
   protected void onAddPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -779,6 +788,8 @@ public class MiniAppObserver
   
   protected void onDelPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onDoGameRaffle(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onGetAppInfoByIdForSDKServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetAppInfoByIdServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -799,6 +810,8 @@ public class MiniAppObserver
   
   protected void onGetFriendCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onGetGameRaffleMaterial(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onGetGeneralCmdFin(int paramInt, long paramLong, byte[] paramArrayOfByte, String paramString) {}
   
   protected void onGetGroupCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -814,8 +827,6 @@ public class MiniAppObserver
   protected void onGetMidasConsumeResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetMidasQueryResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void onGetMineStoryFeedList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetNativeAppInfoForJump(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   

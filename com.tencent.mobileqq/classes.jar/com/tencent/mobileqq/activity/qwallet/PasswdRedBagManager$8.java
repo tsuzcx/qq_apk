@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akqc;
-import akqe;
-
-public class PasswdRedBagManager$8
+class PasswdRedBagManager$8
   implements Runnable
 {
-  public PasswdRedBagManager$8(akqe paramakqe) {}
+  PasswdRedBagManager$8(PasswdRedBagManager paramPasswdRedBagManager) {}
   
   public void run()
   {
-    akqe.a(this.this$0).b();
+    PasswdRedBagManager.a(this.this$0).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.8
  * JD-Core Version:    0.7.0.1
  */

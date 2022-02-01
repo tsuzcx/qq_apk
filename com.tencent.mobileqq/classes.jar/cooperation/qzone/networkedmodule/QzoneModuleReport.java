@@ -17,9 +17,9 @@ public class QzoneModuleReport
   public static final String QZONE_MODULE_RESOVLE_CLASS_SUCCESS = "1";
   private static final String SUCCESS_CODE = "1";
   private static final String TAG = "QzoneModuleReport";
-  private static boolean sNeedReport;
-  private static long sampleValidEndTime;
-  private static long sampleValidStartTime;
+  private static boolean sNeedReport = false;
+  private static long sampleValidEndTime = 0L;
+  private static long sampleValidStartTime = 0L;
   
   private static long getSpecifiedTimeInMillis(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
@@ -151,7 +151,7 @@ public class QzoneModuleReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleReport
  * JD-Core Version:    0.7.0.1
  */

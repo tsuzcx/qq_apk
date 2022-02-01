@@ -12,17 +12,17 @@ public final class RespHYCommonCard
   static RespHead cache_stHeader;
   static ArrayList<FaceInfo> cache_vFaceInfo;
   static byte[] cache_vQQFaceID;
-  public byte bFavorited;
-  public byte bQzoneInfo;
-  public byte bShareLBS;
-  public byte bVoted;
-  public byte bWeiboInfo;
-  public byte cSqqLevel;
-  public CommonCard stCommonCard;
-  public RespHead stHeader;
+  public byte bFavorited = 0;
+  public byte bQzoneInfo = 0;
+  public byte bShareLBS = 0;
+  public byte bVoted = 0;
+  public byte bWeiboInfo = 0;
+  public byte cSqqLevel = 0;
+  public CommonCard stCommonCard = null;
+  public RespHead stHeader = null;
   public String strReMark = "";
-  public ArrayList<FaceInfo> vFaceInfo;
-  public byte[] vQQFaceID;
+  public ArrayList<FaceInfo> vFaceInfo = null;
+  public byte[] vQQFaceID = null;
   
   public RespHYCommonCard() {}
   

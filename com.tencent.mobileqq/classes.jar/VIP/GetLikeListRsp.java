@@ -9,11 +9,11 @@ public final class GetLikeListRsp
 {
   static CommRsp cache_errInfo = new CommRsp();
   static LikeListInfo cache_stLikeList = new LikeListInfo();
-  public CommRsp errInfo;
-  public long iTotal;
+  public CommRsp errInfo = null;
+  public long iTotal = 0L;
   public boolean isEnd = true;
   public String sCookie = "";
-  public LikeListInfo stLikeList;
+  public LikeListInfo stLikeList = null;
   
   public GetLikeListRsp() {}
   

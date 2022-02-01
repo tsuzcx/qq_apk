@@ -20,7 +20,7 @@ class HotChatFlashPicActivity$7
         QLog.d("Q.hotchat", 2, "delete, thumb  :" + localFile.getPath());
       }
     }
-    FileUtils.deleteFile(HotChatFlashPicActivity.b(this.this$0));
+    FileUtils.e(HotChatFlashPicActivity.b(this.this$0));
     if (QLog.isColorLevel()) {
       QLog.d("Q.hotchat", 2, "delete :" + HotChatFlashPicActivity.b(this.this$0));
     }
@@ -28,7 +28,7 @@ class HotChatFlashPicActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.HotChatFlashPicActivity.7
  * JD-Core Version:    0.7.0.1
  */

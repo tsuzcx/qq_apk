@@ -1,23 +1,21 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bksl;
-
-public class X5UpdateGuard$4
+class X5UpdateGuard$4
   implements Runnable
 {
-  public X5UpdateGuard$4(bksl parambksl, int paramInt) {}
+  X5UpdateGuard$4(X5UpdateGuard paramX5UpdateGuard, int paramInt) {}
   
   public void run()
   {
-    if (this.a == bksl.a()) {
+    if (this.a == X5UpdateGuard.a()) {
       return;
     }
-    if ((this.a == bksl.b()) || (this.a == bksl.c()))
+    if ((this.a == X5UpdateGuard.b()) || (this.a == X5UpdateGuard.c()))
     {
-      bksl.a(this.this$0);
+      X5UpdateGuard.a(this.this$0);
       return;
     }
-    bksl.b(this.this$0);
+    X5UpdateGuard.b(this.this$0);
   }
 }
 

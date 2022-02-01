@@ -1,29 +1,27 @@
 package dov.com.qq.im.ae.play;
 
-import android.util.Log;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class EditTextViewer$3
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
   EditTextViewer$3(EditTextViewer paramEditTextViewer) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    try
-    {
-      EditTextViewer.access$000(this.this$0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      Log.e(EditTextViewer.access$100(), "drawText Error!");
-    }
+    EditTextViewer.access$102(this.this$0, false);
+    this.this$0.invalidate();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    EditTextViewer.access$102(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.EditTextViewer.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import acnf;
-import aeoy;
-import aeoz;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
@@ -12,6 +8,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+import com.tencent.imcore.message.BaseMsgProxy;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,13 +19,8 @@ public class QQBroadcastActivity
   extends BaseSystemActivity
   implements Observer
 {
-  public aeoz a;
-  public Handler a;
-  
-  public QQBroadcastActivity()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new aeoy(this);
-  }
+  Handler jdField_a_of_type_AndroidOsHandler = new QQBroadcastActivity.1(this);
+  QQBroadcastActivity.Adapter jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter;
   
   private void c()
   {
@@ -37,7 +29,7 @@ public class QQBroadcastActivity
     int j;
     if (localQQMessageFacade != null)
     {
-      j = localQQMessageFacade.getUnreadMsgsNum();
+      j = localQQMessageFacade.b();
       if (j <= 0) {
         break label79;
       }
@@ -47,35 +39,35 @@ public class QQBroadcastActivity
     }
     for (;;)
     {
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131719161) + "(" + i + ")"));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131719718) + "(" + i + ")"));
       return;
       label79:
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131719161)));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131719718)));
       return;
       label99:
       i = j;
     }
   }
   
-  public Cursor a()
+  protected Cursor a()
   {
     return this.app.getMessageProxy(0).a(a(), 0);
   }
   
   protected CursorAdapter a()
   {
-    if (this.jdField_a_of_type_Aeoz == null) {
-      this.jdField_a_of_type_Aeoz = new aeoz(this, this, this.app.getMessageProxy(0).a(a(), 0));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter = new QQBroadcastActivity.Adapter(this, this, this.app.getMessageProxy(0).a(a(), 0));
     }
-    return this.jdField_a_of_type_Aeoz;
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter;
   }
   
   protected CharSequence a()
   {
-    return getString(2131719140);
+    return getString(2131719682);
   }
   
-  public String a()
+  protected String a()
   {
     return String.valueOf(AppConstants.QQBROADCAST_MSG_UIN);
   }
@@ -104,7 +96,7 @@ public class QQBroadcastActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.app.getMessageFacade().setReaded(a(), 0);
+    this.app.getMessageFacade().c(a(), 0);
     c();
     this.rightViewText.setVisibility(8);
   }
@@ -112,8 +104,8 @@ public class QQBroadcastActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aeoz != null) {
-      this.jdField_a_of_type_Aeoz.changeCursor(null);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.changeCursor(null);
     }
   }
   
@@ -124,7 +116,7 @@ public class QQBroadcastActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBroadcastActivity
  * JD-Core Version:    0.7.0.1
  */

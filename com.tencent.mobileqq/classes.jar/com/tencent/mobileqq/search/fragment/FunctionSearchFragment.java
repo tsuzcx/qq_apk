@@ -2,11 +2,9 @@ package com.tencent.mobileqq.search.fragment;
 
 import android.os.Bundle;
 import android.view.View;
-import bbzh;
-import bcbc;
-import bcce;
-import bccf;
-import bclw;
+import com.tencent.mobileqq.search.SearchEntryConfigManager;
+import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
 import com.tencent.widget.ListView;
 import cooperation.qqfav.globalsearch.FunctionSearchEngine;
 
@@ -23,19 +21,19 @@ public class FunctionSearchFragment
     return 120;
   }
   
-  protected bcbc a()
+  protected BaseMvpAdapter a()
   {
-    return new bccf(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
+    return new FunctionSearchFragment.2(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
   }
   
-  protected bclw a()
+  protected ISearchEngine a()
   {
     return new FunctionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1);
   }
   
   protected String a()
   {
-    return bbzh.a();
+    return SearchEntryConfigManager.a();
   }
   
   protected void a(String paramString, int paramInt)
@@ -46,12 +44,12 @@ public class FunctionSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new bcce(this));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new FunctionSearchFragment.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.FunctionSearchFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -53,7 +53,7 @@ public class AppActivity
   private int mRequestCode;
   private int mResultCode;
   private Intent mResultData;
-  protected AppRuntime mRuntime = null;
+  public AppRuntime mRuntime = null;
   private int mWindowFocusState = -1;
   
   private boolean isActivityLocaleUpdated(Locale paramLocale)
@@ -273,7 +273,6 @@ public class AppActivity
       AndroidOUIWrapperUtil.fixOrientation(this);
     }
     super.onCreate(paramBundle);
-    Foreground.onCreate(this);
     if (this.mIsSplashing)
     {
       this.mOnCreateBundle = paramBundle;
@@ -289,7 +288,6 @@ public class AppActivity
       doOnDestroy();
     }
     super.onDestroy();
-    Foreground.onDestroy(this);
     this.mProRuntime = null;
   }
   
@@ -325,7 +323,6 @@ public class AppActivity
     if (!this.mIsSplashing) {
       doOnPause();
     }
-    Foreground.onPause(this.mProRuntime);
     this.mIsResume = false;
     super.onPause();
   }
@@ -415,7 +412,6 @@ public class AppActivity
     {
       super.onResume();
       this.mIsResume = true;
-      Foreground.onResume(this.mProRuntime);
       if (!this.mIsSplashing) {
         doOnResume();
       }
@@ -472,7 +468,6 @@ public class AppActivity
   protected void onStart()
   {
     super.onStart();
-    Foreground.onStart(this.mProRuntime, this);
     if (!this.mIsSplashing)
     {
       doOnStart();
@@ -484,7 +479,6 @@ public class AppActivity
   @Deprecated
   protected void onStop()
   {
-    Foreground.onStop(this.mProRuntime);
     if (!this.mIsSplashing) {
       doOnStop();
     }

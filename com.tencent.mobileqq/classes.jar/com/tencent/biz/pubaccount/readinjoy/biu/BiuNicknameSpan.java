@@ -4,19 +4,20 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.text.style.ForegroundColorSpan;
 import android.util.SparseIntArray;
+import com.tencent.biz.pubaccount.readinjoy.view.text.DeleteAsAWholeSpan;
+import com.tencent.biz.pubaccount.readinjoy.view.text.ISpan;
 import com.tencent.mobileqq.text.EmotcationConstants;
 import org.jetbrains.annotations.NotNull;
-import tnq;
-import tns;
 
 public class BiuNicknameSpan
   extends ForegroundColorSpan
-  implements tnq, tns
+  implements DeleteAsAWholeSpan, ISpan
 {
   private int a;
   public long a;
   public String a;
-  private String b;
+  private int jdField_b_of_type_Int = 0;
+  private String jdField_b_of_type_JavaLangString;
   
   public BiuNicknameSpan(String paramString, long paramLong, CharSequence paramCharSequence)
   {
@@ -27,21 +28,7 @@ public class BiuNicknameSpan
     if (paramCharSequence != null) {}
     for (paramString = paramCharSequence.toString();; paramString = "")
     {
-      this.b = paramString;
-      return;
-    }
-  }
-  
-  public BiuNicknameSpan(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
-  {
-    super(paramInt);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    if (paramCharSequence != null) {}
-    for (paramString = paramCharSequence.toString();; paramString = "")
-    {
-      this.b = paramString;
+      this.jdField_b_of_type_JavaLangString = paramString;
       return;
     }
   }
@@ -55,7 +42,7 @@ public class BiuNicknameSpan
     if (paramCharSequence != null) {}
     for (paramString = paramCharSequence.toString();; paramString = "")
     {
-      this.b = paramString;
+      this.jdField_b_of_type_JavaLangString = paramString;
       return;
     }
   }
@@ -95,14 +82,14 @@ public class BiuNicknameSpan
   @NotNull
   public String a()
   {
-    return this.b;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
   public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan
  * JD-Core Version:    0.7.0.1
  */

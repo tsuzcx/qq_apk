@@ -35,13 +35,13 @@ class ApolloRenderDriver$9
     //   40: getfield 12	com/tencent/mobileqq/apollo/ApolloRenderDriver$9:this$0	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
     //   43: invokestatic 48	com/tencent/mobileqq/apollo/ApolloRenderDriver:a	(Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;)Ljava/lang/ref/WeakReference;
     //   46: invokevirtual 54	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   49: checkcast 56	amnv
+    //   49: checkcast 56	com/tencent/mobileqq/apollo/ApolloRenderDriver$GameStatListener
     //   52: astore 4
     //   54: invokestatic 62	android/os/SystemClock:uptimeMillis	()J
     //   57: lstore_2
     //   58: aload_0
     //   59: getfield 14	com/tencent/mobileqq/apollo/ApolloRenderDriver$9:a	Ljava/lang/String;
-    //   62: invokestatic 67	amwn:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   62: invokestatic 67	com/tencent/mobileqq/apollo/process/CmGameUtil:a	(Ljava/lang/String;)Ljava/lang/String;
     //   65: astore 6
     //   67: aload 6
     //   69: astore 5
@@ -53,49 +53,49 @@ class ApolloRenderDriver$9
     //   83: aload_0
     //   84: getfield 14	com/tencent/mobileqq/apollo/ApolloRenderDriver$9:a	Ljava/lang/String;
     //   87: invokespecial 41	java/io/File:<init>	(Ljava/lang/String;)V
-    //   90: invokestatic 79	com/tencent/mobileqq/utils/FileUtils:readFileToString	(Ljava/io/File;)Ljava/lang/String;
+    //   90: invokestatic 79	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;)Ljava/lang/String;
     //   93: astore 5
     //   95: aload_0
     //   96: getfield 14	com/tencent/mobileqq/apollo/ApolloRenderDriver$9:a	Ljava/lang/String;
     //   99: aload 5
-    //   101: invokestatic 83	amwn:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokestatic 82	com/tencent/mobileqq/apollo/process/CmGameUtil:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: invokestatic 62	android/os/SystemClock:uptimeMillis	()J
     //   107: lload_2
     //   108: lsub
     //   109: lstore_2
-    //   110: ldc 85
+    //   110: ldc 84
     //   112: iconst_1
     //   113: iconst_2
-    //   114: anewarray 87	java/lang/Object
+    //   114: anewarray 86	java/lang/Object
     //   117: dup
     //   118: iconst_0
-    //   119: ldc 89
+    //   119: ldc 88
     //   121: aastore
     //   122: dup
     //   123: iconst_1
     //   124: lload_2
-    //   125: invokestatic 95	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   125: invokestatic 94	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   128: aastore
-    //   129: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   129: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   132: aload 4
     //   134: ifnull +11 -> 145
     //   137: aload 4
     //   139: lload_2
-    //   140: invokeinterface 104 3 0
-    //   145: getstatic 109	amme:c	Ljava/lang/String;
+    //   140: invokeinterface 103 3 0
+    //   145: getstatic 108	com/tencent/mobileqq/apollo/api/impl/ApolloManagerServiceImpl:sApolloGameStkey	Ljava/lang/String;
     //   148: ifnull +19 -> 167
     //   151: aload_0
     //   152: getfield 12	com/tencent/mobileqq/apollo/ApolloRenderDriver$9:this$0	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
-    //   155: getfield 112	com/tencent/mobileqq/apollo/ApolloRenderDriver:jdField_a_of_type_ComTencentMobileqqApolloApolloEngine	Lcom/tencent/mobileqq/apollo/ApolloEngine;
-    //   158: getstatic 109	amme:c	Ljava/lang/String;
-    //   161: invokevirtual 118	java/lang/String:getBytes	()[B
-    //   164: invokevirtual 123	com/tencent/mobileqq/apollo/ApolloEngine:a	([B)V
-    //   167: getstatic 125	amme:b	Ljava/lang/String;
+    //   155: getfield 111	com/tencent/mobileqq/apollo/ApolloRenderDriver:jdField_a_of_type_ComTencentMobileqqApolloApolloEngine	Lcom/tencent/mobileqq/apollo/ApolloEngine;
+    //   158: getstatic 108	com/tencent/mobileqq/apollo/api/impl/ApolloManagerServiceImpl:sApolloGameStkey	Ljava/lang/String;
+    //   161: invokevirtual 117	java/lang/String:getBytes	()[B
+    //   164: invokevirtual 122	com/tencent/mobileqq/apollo/ApolloEngine:a	([B)V
+    //   167: getstatic 125	com/tencent/mobileqq/apollo/api/impl/ApolloManagerServiceImpl:sApolloGameSt	Ljava/lang/String;
     //   170: ifnull +19 -> 189
     //   173: aload_0
     //   174: getfield 12	com/tencent/mobileqq/apollo/ApolloRenderDriver$9:this$0	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
-    //   177: getfield 112	com/tencent/mobileqq/apollo/ApolloRenderDriver:jdField_a_of_type_ComTencentMobileqqApolloApolloEngine	Lcom/tencent/mobileqq/apollo/ApolloEngine;
-    //   180: getstatic 125	amme:b	Ljava/lang/String;
+    //   177: getfield 111	com/tencent/mobileqq/apollo/ApolloRenderDriver:jdField_a_of_type_ComTencentMobileqqApolloApolloEngine	Lcom/tencent/mobileqq/apollo/ApolloEngine;
+    //   180: getstatic 125	com/tencent/mobileqq/apollo/api/impl/ApolloManagerServiceImpl:sApolloGameSt	Ljava/lang/String;
     //   183: invokestatic 131	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
     //   186: invokevirtual 133	com/tencent/mobileqq/apollo/ApolloEngine:b	([B)V
     //   189: aload 4
@@ -106,7 +106,7 @@ class ApolloRenderDriver$9
     //   204: lstore_2
     //   205: aload_0
     //   206: getfield 12	com/tencent/mobileqq/apollo/ApolloRenderDriver$9:this$0	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
-    //   209: getfield 112	com/tencent/mobileqq/apollo/ApolloRenderDriver:jdField_a_of_type_ComTencentMobileqqApolloApolloEngine	Lcom/tencent/mobileqq/apollo/ApolloEngine;
+    //   209: getfield 111	com/tencent/mobileqq/apollo/ApolloRenderDriver:jdField_a_of_type_ComTencentMobileqqApolloApolloEngine	Lcom/tencent/mobileqq/apollo/ApolloEngine;
     //   212: aload 5
     //   214: invokevirtual 137	com/tencent/mobileqq/apollo/ApolloEngine:a	(Ljava/lang/String;)V
     //   217: invokestatic 62	android/os/SystemClock:uptimeMillis	()J
@@ -118,10 +118,10 @@ class ApolloRenderDriver$9
     //   228: aload 4
     //   230: lload_2
     //   231: invokeinterface 139 3 0
-    //   236: ldc 85
+    //   236: ldc 84
     //   238: iconst_1
     //   239: iconst_2
-    //   240: anewarray 87	java/lang/Object
+    //   240: anewarray 86	java/lang/Object
     //   243: dup
     //   244: iconst_0
     //   245: ldc 141
@@ -129,16 +129,16 @@ class ApolloRenderDriver$9
     //   248: dup
     //   249: iconst_1
     //   250: lload_2
-    //   251: invokestatic 95	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   251: invokestatic 94	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   254: aastore
-    //   255: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   255: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   258: aload_0
     //   259: getfield 12	com/tencent/mobileqq/apollo/ApolloRenderDriver$9:this$0	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
     //   262: getfield 31	com/tencent/mobileqq/apollo/ApolloRenderDriver:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
     //   265: invokevirtual 144	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   268: return
     //   269: astore 4
-    //   271: ldc 85
+    //   271: ldc 84
     //   273: iconst_1
     //   274: new 146	java/lang/StringBuilder
     //   277: dup
@@ -159,7 +159,7 @@ class ApolloRenderDriver$9
     //   315: aload 4
     //   317: athrow
     //   318: astore 4
-    //   320: ldc 85
+    //   320: ldc 84
     //   322: iconst_1
     //   323: new 146	java/lang/StringBuilder
     //   326: dup
@@ -174,7 +174,7 @@ class ApolloRenderDriver$9
     //   349: goto -91 -> 258
     //   352: invokestatic 167	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   355: ifeq -97 -> 258
-    //   358: ldc 85
+    //   358: ldc 84
     //   360: iconst_2
     //   361: new 146	java/lang/StringBuilder
     //   364: dup
@@ -195,7 +195,7 @@ class ApolloRenderDriver$9
     //   0	395	0	this	9
     //   24	2	1	bool	boolean
     //   57	194	2	l	long
-    //   52	177	4	localamnv	amnv
+    //   52	177	4	localGameStatListener	ApolloRenderDriver.GameStatListener
     //   269	18	4	localOutOfMemoryError	java.lang.OutOfMemoryError
     //   303	13	4	localObject1	java.lang.Object
     //   318	18	4	localThrowable	java.lang.Throwable
@@ -245,7 +245,7 @@ class ApolloRenderDriver$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRenderDriver.9
  * JD-Core Version:    0.7.0.1
  */

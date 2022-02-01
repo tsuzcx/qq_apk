@@ -3,12 +3,11 @@ package com.tencent.avgame.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import nni;
 
 public class UserInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<UserInfo> CREATOR = new nni();
+  public static final Parcelable.Creator<UserInfo> CREATOR = new UserInfo.1();
   public int a;
   public String a;
   public boolean a;
@@ -17,7 +16,7 @@ public class UserInfo
   public int c;
   public String c;
   
-  public UserInfo(Parcel paramParcel)
+  protected UserInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -72,7 +71,7 @@ public class UserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ipc.UserInfo
  * JD-Core Version:    0.7.0.1
  */

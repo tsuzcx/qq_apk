@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.shortvideo;
 
 import android.os.Message;
 import android.widget.SeekBar;
-import bhxu;
+import com.tencent.mobileqq.video.IMediaPlayer;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -14,10 +14,10 @@ class ShortVideoPreviewActivity$21
   public void run()
   {
     Message localMessage;
-    if ((this.this$0.jdField_a_of_type_Bhxu.b()) && (this.this$0.jdField_a_of_type_AndroidViewSurfaceView != null))
+    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.b()) && (this.this$0.jdField_a_of_type_AndroidViewSurfaceView != null))
     {
       localMessage = Message.obtain();
-      localMessage.arg1 = this.this$0.jdField_a_of_type_Bhxu.b();
+      localMessage.arg1 = this.this$0.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.b();
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoPreviewActivity", 2, "此时时间为+" + localMessage.arg1);
       }
@@ -34,7 +34,7 @@ class ShortVideoPreviewActivity$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.21
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -31,7 +30,7 @@ public class QzoneFullscreenPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzoneFullscreenPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

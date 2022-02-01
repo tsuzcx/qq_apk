@@ -6,7 +6,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/mini/appbrand/utils/ThreadPools$mainThreadExecutor$1", "Ljava/util/concurrent/Executor;", "execute", "", "command", "Ljava/lang/Runnable;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/mini/appbrand/utils/ThreadPools$mainThreadExecutor$1", "Ljava/util/concurrent/Executor;", "execute", "", "command", "Ljava/lang/Runnable;", "qqmini_impl_release"}, k=1, mv={1, 1, 16})
 public final class ThreadPools$mainThreadExecutor$1
   implements Executor
 {

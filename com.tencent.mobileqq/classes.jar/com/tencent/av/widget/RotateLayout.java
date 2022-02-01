@@ -35,12 +35,12 @@ public class RotateLayout
     setWillNotDraw(false);
   }
   
-  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return paramLayoutParams instanceof RotateLayout.LayoutParams;
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     paramCanvas.save();
     paramCanvas.rotate(-this.jdField_a_of_type_Int, getWidth() / 2.0F, getHeight() / 2.0F);
@@ -62,7 +62,7 @@ public class RotateLayout
     return new RotateLayout.LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return new RotateLayout.LayoutParams(paramLayoutParams);
   }
@@ -73,7 +73,7 @@ public class RotateLayout
     return super.invalidateChildInParent(paramArrayOfInt, paramRect);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (this.jdField_a_of_type_Boolean)
     {
@@ -91,7 +91,7 @@ public class RotateLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     View localView = getChildAt(0);
     if (localView != null)
@@ -123,7 +123,7 @@ public class RotateLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.widget.RotateLayout
  * JD-Core Version:    0.7.0.1
  */

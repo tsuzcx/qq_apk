@@ -19,8 +19,8 @@ public class TimeCostTrace
   public static final String TRACE_CODE_REFRESH_MORE = "101";
   public static HashMap<String, TimeCostTrace> map;
   public boolean isColdBoot;
-  public long mFirstTime;
-  public int sceneId;
+  public long mFirstTime = 0L;
+  public int sceneId = 0;
   private String tag;
   private Map<String, long[]> timeMap = new ConcurrentHashMap();
   

@@ -1,28 +1,27 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import acdk;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bkqx;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.proxyimpl.RewardedVideoAdPlugin;
 import kotlin.Metadata;
 import mqq.util.WeakReference;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/RewardedBrowsingCallbackReceiver;", "Landroid/content/BroadcastReceiver;", "plugin", "Lcom/tencent/qqmini/proxyimpl/RewardedVideoAdPlugin;", "proxy", "Lcom/tencent/qqmini/proxyimpl/AdProxyImpl;", "(Lcom/tencent/qqmini/proxyimpl/RewardedVideoAdPlugin;Lcom/tencent/qqmini/proxyimpl/AdProxyImpl;)V", "mPlugin", "Lmqq/util/WeakReference;", "mProxy", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/RewardedBrowsingCallbackReceiver;", "Landroid/content/BroadcastReceiver;", "plugin", "Lcom/tencent/qqmini/proxyimpl/RewardedVideoAdPlugin;", "proxy", "Lcom/tencent/qqmini/proxyimpl/AdProxyImpl;", "(Lcom/tencent/qqmini/proxyimpl/RewardedVideoAdPlugin;Lcom/tencent/qqmini/proxyimpl/AdProxyImpl;)V", "mPlugin", "Lmqq/util/WeakReference;", "mProxy", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "Companion", "qqmini_impl_release"}, k=1, mv={1, 1, 16})
 public final class RewardedBrowsingCallbackReceiver
   extends BroadcastReceiver
 {
-  public static final acdk a;
-  private final WeakReference<bkqx> a;
+  public static final RewardedBrowsingCallbackReceiver.Companion a;
+  private final WeakReference<RewardedVideoAdPlugin> a;
   private final WeakReference<AdProxyImpl> b;
   
   static
   {
-    jdField_a_of_type_Acdk = new acdk(null);
+    jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver$Companion = new RewardedBrowsingCallbackReceiver.Companion(null);
   }
   
   public RewardedBrowsingCallbackReceiver()
@@ -30,9 +29,9 @@ public final class RewardedBrowsingCallbackReceiver
     this(null, null, 3, null);
   }
   
-  public RewardedBrowsingCallbackReceiver(@Nullable bkqx parambkqx, @Nullable AdProxyImpl paramAdProxyImpl)
+  public RewardedBrowsingCallbackReceiver(@Nullable RewardedVideoAdPlugin paramRewardedVideoAdPlugin, @Nullable AdProxyImpl paramAdProxyImpl)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parambkqx);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramRewardedVideoAdPlugin);
     this.b = new WeakReference(paramAdProxyImpl);
   }
   
@@ -52,7 +51,7 @@ public final class RewardedBrowsingCallbackReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivebrowsing.RewardedBrowsingCallbackReceiver
  * JD-Core Version:    0.7.0.1
  */

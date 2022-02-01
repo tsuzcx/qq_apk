@@ -8,15 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
-import bnge;
-import bngl;
-import bnka;
-import bnkb;
-import bnrh;
-import bofz;
-import bogd;
 import com.tencent.common.app.AppInterface;
 import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
+import dov.com.qq.im.ae.data.AEMaterialCategory;
+import dov.com.qq.im.ae.data.AEMaterialManager;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.capture.CaptureContext;
+import dov.com.qq.im.capture.QIMManager;
 import java.util.List;
 
 public class AEWaterMarkProviderView
@@ -24,54 +22,54 @@ public class AEWaterMarkProviderView
 {
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
-  private bnge jdField_a_of_type_Bnge;
-  private bngl jdField_a_of_type_Bngl;
-  private bnkb jdField_a_of_type_Bnkb;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bofz.a();
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = CaptureContext.a();
+  private AEWaterMarkAdapter jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkAdapter;
+  private AEWaterMarkPanel.AEWaterMarkPanelListener jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener;
   private AEVideoStoryTopBarViewModel.Ratio jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio;
+  private AEMaterialManager jdField_a_of_type_DovComQqImAeDataAEMaterialManager;
   private View b;
   
-  public AEWaterMarkProviderView(@NonNull Context paramContext, bngl parambngl)
+  public AEWaterMarkProviderView(@NonNull Context paramContext, AEWaterMarkPanel.AEWaterMarkPanelListener paramAEWaterMarkPanelListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_Bngl = parambngl;
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener = paramAEWaterMarkPanelListener;
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
-    bnrh.a("AEWaterMarkProviderView", "watermark initView");
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558494, this);
-    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131381348);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366806));
+    AEQLog.a("AEWaterMarkProviderView", "watermark initView");
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558500, this);
+    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131381809);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366989));
     LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(paramContext, 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_Bnge = new bnge(paramContext, this.jdField_a_of_type_Bngl);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bnge);
-    this.jdField_a_of_type_Bnkb = ((bnkb)bogd.a(18));
-    this.jdField_a_of_type_Bnkb.b(false);
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkAdapter = new AEWaterMarkAdapter(paramContext, this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkAdapter);
+    this.jdField_a_of_type_DovComQqImAeDataAEMaterialManager = ((AEMaterialManager)QIMManager.a(18));
+    this.jdField_a_of_type_DovComQqImAeDataAEMaterialManager.b(false);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bnge != null) {
-      this.jdField_a_of_type_Bnge.a();
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkAdapter != null) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkAdapter.a();
     }
   }
   
-  public void a(List<bnka> paramList)
+  public void a(List<AEMaterialCategory> paramList)
   {
     if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_Bnge.a(((bnka)paramList.get(0)).a);
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkAdapter.a(((AEMaterialCategory)paramList.get(0)).a);
     }
   }
   
   public void setCaptureRadio(AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    bnrh.a("AEWaterMarkProviderView", "pannel setCaptureRadio" + paramRatio);
+    AEQLog.a("AEWaterMarkProviderView", "pannel setCaptureRadio" + paramRatio);
     this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio = paramRatio;
-    if (this.jdField_a_of_type_Bnge != null) {
-      this.jdField_a_of_type_Bnge.a(paramRatio);
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkAdapter != null) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEWaterMarkAdapter.a(paramRatio);
     }
     if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.FULL) {
       this.b.setBackgroundColor(getResources().getColor(2131165361));
@@ -80,7 +78,7 @@ public class AEWaterMarkProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.panel.AEWaterMarkProviderView
  * JD-Core Version:    0.7.0.1
  */

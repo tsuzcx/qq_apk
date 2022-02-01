@@ -7,14 +7,11 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.Surface;
-import bbky;
-import bbla;
-import bblb;
 import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
 import java.util.concurrent.atomic.AtomicLong;
-import ykq;
 
 class HWVideoDecoder$DecodeRunnable
   implements Runnable
@@ -25,9 +22,9 @@ class HWVideoDecoder$DecodeRunnable
   private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
   private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
   private Surface jdField_a_of_type_AndroidViewSurface;
-  private final bbky jdField_a_of_type_Bbky;
+  private final DecodeConfig jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig;
   @NonNull
-  private final bblb jdField_a_of_type_Bblb;
+  private final HWDecodeListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString = "HWVideoDecoder.DecodeRunnable";
   private final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(-1L);
@@ -35,31 +32,31 @@ class HWVideoDecoder$DecodeRunnable
   ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer;
   private int jdField_b_of_type_Int;
   public final long b;
-  private final bbky jdField_b_of_type_Bbky;
+  private final DecodeConfig jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig;
   private final String jdField_b_of_type_JavaLangString;
   private final AtomicLong jdField_b_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(-1L);
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   ByteBuffer[] jdField_b_of_type_ArrayOfJavaNioByteBuffer;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private long jdField_d_of_type_Long;
-  private boolean jdField_d_of_type_Boolean;
-  private volatile boolean e;
+  private long jdField_c_of_type_Long = 0L;
+  private boolean jdField_c_of_type_Boolean = false;
+  private long jdField_d_of_type_Long = 0L;
+  private boolean jdField_d_of_type_Boolean = false;
+  private volatile boolean e = false;
   
-  public HWVideoDecoder$DecodeRunnable(@NonNull String paramString, Surface paramSurface, bblb parambblb)
+  public HWVideoDecoder$DecodeRunnable(@NonNull String paramString, Surface paramSurface, HWDecodeListener paramHWDecodeListener)
   {
-    ykq.b("HWVideoDecoder.DecodeRunnable", "create DecodeRunnable filePath: %s", paramString);
+    SLog.b("HWVideoDecoder.DecodeRunnable", "create DecodeRunnable filePath: %s", paramString);
     this.jdField_a_of_type_AndroidViewSurface = paramSurface;
-    if (parambblb != null) {}
+    if (paramHWDecodeListener != null) {}
     for (;;)
     {
-      this.jdField_a_of_type_Bblb = parambblb;
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener = paramHWDecodeListener;
       this.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_b_of_type_Long = VideoCompositeHelper.getDurationOfVideo(paramString);
-      this.jdField_a_of_type_Bbky = new bbky(paramString, 0, true, false, 0L, this.jdField_b_of_type_Long);
-      this.jdField_b_of_type_Bbky = new bbky(paramString, 0, true, false, 0L, this.jdField_b_of_type_Long);
+      this.jdField_b_of_type_Long = VideoCompositeHelper.a(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig = new DecodeConfig(paramString, 0, true, false, 0L, this.jdField_b_of_type_Long);
+      this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig = new DecodeConfig(paramString, 0, true, false, 0L, this.jdField_b_of_type_Long);
       return;
-      parambblb = new bbla();
+      paramHWDecodeListener = new EmptyHWDecodeListener();
     }
   }
   
@@ -85,7 +82,7 @@ class HWVideoDecoder$DecodeRunnable
       this.jdField_a_of_type_AndroidMediaMediaCodec.flush();
       this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(paramLong, 0);
       long l2 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-      this.jdField_a_of_type_Bblb.b(l2 / 1000L);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener.b(l2 / 1000L);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_b_of_type_Boolean = false;
       this.jdField_c_of_type_Boolean = false;
@@ -110,9 +107,9 @@ class HWVideoDecoder$DecodeRunnable
   
   private void a()
   {
-    if (this.jdField_b_of_type_Bbky.jdField_a_of_type_Int == 3)
+    if (this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Int == 3)
     {
-      this.jdField_c_of_type_Long = (this.jdField_b_of_type_Bbky.jdField_b_of_type_Long * 1000L);
+      this.jdField_c_of_type_Long = (this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Long * 1000L);
       return;
     }
     this.jdField_c_of_type_Long = 0L;
@@ -123,151 +120,151 @@ class HWVideoDecoder$DecodeRunnable
   {
     // Byte code:
     //   0: aload_0
-    //   1: new 129	android/media/MediaExtractor
+    //   1: new 140	android/media/MediaExtractor
     //   4: dup
-    //   5: invokespecial 188	android/media/MediaExtractor:<init>	()V
-    //   8: putfield 127	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   5: invokespecial 191	android/media/MediaExtractor:<init>	()V
+    //   8: putfield 138	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
     //   11: aload_0
-    //   12: getfield 127	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   12: getfield 138	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
     //   15: aload_0
-    //   16: getfield 90	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   19: invokevirtual 192	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
+    //   16: getfield 102	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   19: invokevirtual 195	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
     //   22: iconst_0
     //   23: istore_1
     //   24: iload_1
     //   25: aload_0
-    //   26: getfield 127	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
-    //   29: invokevirtual 195	android/media/MediaExtractor:getTrackCount	()I
+    //   26: getfield 138	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   29: invokevirtual 198	android/media/MediaExtractor:getTrackCount	()I
     //   32: if_icmpge +211 -> 243
     //   35: aload_0
-    //   36: getfield 127	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   36: getfield 138	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
     //   39: iload_1
-    //   40: invokevirtual 199	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   40: invokevirtual 202	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   43: astore_2
     //   44: aload_2
-    //   45: ldc 201
-    //   47: invokevirtual 207	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: ldc 204
+    //   47: invokevirtual 210	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   50: astore_3
     //   51: aload_3
-    //   52: ldc 209
-    //   54: invokevirtual 215	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   52: ldc 212
+    //   54: invokevirtual 218	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   57: ifeq +229 -> 286
     //   60: aload_0
     //   61: aload_2
-    //   62: ldc 217
-    //   64: invokevirtual 221	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   67: putfield 222	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Int	I
+    //   62: ldc 220
+    //   64: invokevirtual 224	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   67: putfield 225	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Int	I
     //   70: aload_0
     //   71: aload_2
-    //   72: ldc 224
-    //   74: invokevirtual 221	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   77: putfield 226	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Int	I
+    //   72: ldc 227
+    //   74: invokevirtual 224	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   77: putfield 229	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Int	I
     //   80: aload_0
-    //   81: getfield 127	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   81: getfield 138	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
     //   84: iload_1
-    //   85: invokevirtual 230	android/media/MediaExtractor:selectTrack	(I)V
+    //   85: invokevirtual 233	android/media/MediaExtractor:selectTrack	(I)V
     //   88: aload_0
-    //   89: getfield 107	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Bbky	Lbbky;
-    //   92: getfield 231	bbky:jdField_c_of_type_Boolean	Z
+    //   89: getfield 118	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   92: getfield 234	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:jdField_c_of_type_Boolean	Z
     //   95: ifeq +129 -> 224
     //   98: aload_0
-    //   99: getfield 107	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Bbky	Lbbky;
-    //   102: getfield 232	bbky:jdField_b_of_type_Int	I
+    //   99: getfield 118	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   102: getfield 235	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:jdField_b_of_type_Int	I
     //   105: istore_1
     //   106: aload_2
-    //   107: ldc 234
+    //   107: ldc 237
     //   109: iload_1
-    //   110: invokevirtual 238	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   110: invokevirtual 241	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
     //   113: aload_0
     //   114: aload_3
-    //   115: invokestatic 242	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
-    //   118: putfield 120	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   115: invokestatic 245	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   118: putfield 131	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
     //   121: aload_0
-    //   122: getfield 86	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
-    //   125: invokevirtual 247	android/view/Surface:isValid	()Z
+    //   122: getfield 98	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   125: invokevirtual 250	android/view/Surface:isValid	()Z
     //   128: ifne +101 -> 229
-    //   131: new 118	java/lang/RuntimeException
+    //   131: new 129	java/lang/RuntimeException
     //   134: dup
-    //   135: ldc 249
-    //   137: invokespecial 251	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   135: ldc 252
+    //   137: invokespecial 254	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   140: athrow
     //   141: astore_2
-    //   142: invokestatic 256	java/lang/Thread:interrupted	()Z
+    //   142: invokestatic 259	java/lang/Thread:interrupted	()Z
     //   145: ifeq +100 -> 245
     //   148: aload_0
     //   149: getfield 34	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   152: iconst_2
-    //   153: ldc_w 258
+    //   153: ldc_w 261
     //   156: aload_2
-    //   157: invokestatic 261	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   157: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   160: iconst_0
     //   161: ireturn
     //   162: astore_2
     //   163: aload_2
-    //   164: invokevirtual 264	java/io/IOException:printStackTrace	()V
+    //   164: invokevirtual 267	java/io/IOException:printStackTrace	()V
     //   167: iconst_0
     //   168: ireturn
     //   169: astore_2
-    //   170: invokestatic 256	java/lang/Thread:interrupted	()Z
+    //   170: invokestatic 259	java/lang/Thread:interrupted	()Z
     //   173: ifeq +17 -> 190
     //   176: aload_0
     //   177: getfield 34	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   180: iconst_2
-    //   181: ldc_w 258
+    //   181: ldc_w 261
     //   184: aload_2
-    //   185: invokestatic 261	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   185: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   188: iconst_0
     //   189: ireturn
-    //   190: new 118	java/lang/RuntimeException
+    //   190: new 129	java/lang/RuntimeException
     //   193: dup
     //   194: aload_2
-    //   195: invokespecial 267	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   195: invokespecial 270	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
     //   198: astore_3
     //   199: aload_0
-    //   200: getfield 88	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Bblb	Lbblb;
+    //   200: getfield 100	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/HWDecodeListener;
     //   203: iconst_1
     //   204: aload_3
-    //   205: invokeinterface 270 3 0
+    //   205: invokeinterface 273 3 0
     //   210: aload_0
     //   211: getfield 34	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   214: iconst_2
-    //   215: ldc_w 272
+    //   215: ldc_w 275
     //   218: aload_2
-    //   219: invokestatic 261	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   219: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   222: iconst_0
     //   223: ireturn
     //   224: iconst_0
     //   225: istore_1
     //   226: goto -120 -> 106
     //   229: aload_0
-    //   230: getfield 120	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   230: getfield 131	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
     //   233: aload_2
     //   234: aload_0
-    //   235: getfield 86	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   235: getfield 98	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
     //   238: aconst_null
     //   239: iconst_0
-    //   240: invokevirtual 276	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   240: invokevirtual 279	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
     //   243: iconst_1
     //   244: ireturn
-    //   245: new 118	java/lang/RuntimeException
+    //   245: new 129	java/lang/RuntimeException
     //   248: dup
     //   249: aload_2
-    //   250: invokespecial 267	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   250: invokespecial 270	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
     //   253: astore_3
     //   254: aload_0
-    //   255: getfield 36	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Boolean	Z
+    //   255: getfield 40	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Boolean	Z
     //   258: ifne +14 -> 272
     //   261: aload_0
-    //   262: getfield 88	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Bblb	Lbblb;
+    //   262: getfield 100	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/HWDecodeListener;
     //   265: iconst_1
     //   266: aload_3
-    //   267: invokeinterface 270 3 0
+    //   267: invokeinterface 273 3 0
     //   272: aload_0
     //   273: getfield 34	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   276: iconst_2
-    //   277: ldc_w 278
+    //   277: ldc_w 281
     //   280: aload_2
-    //   281: invokestatic 261	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   281: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   284: iconst_0
     //   285: ireturn
     //   286: iload_1
@@ -309,7 +306,7 @@ class HWVideoDecoder$DecodeRunnable
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkToRender, render :" + paramBoolean + " info.presentationTimeUs:" + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs / 1000L + " - " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
       }
-      if ((this.jdField_b_of_type_Bbky.jdField_a_of_type_Boolean) || (!paramBoolean)) {
+      if ((this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Boolean) || (!paramBoolean)) {
         break;
       }
     case -3: 
@@ -353,7 +350,7 @@ class HWVideoDecoder$DecodeRunnable
       }
       try
       {
-        this.jdField_a_of_type_Bblb.a(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs * 1000L);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener.a(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs * 1000L);
         return true;
       }
       catch (InterruptedException localInterruptedException2)
@@ -382,12 +379,12 @@ class HWVideoDecoder$DecodeRunnable
         }
         l = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
       } while (l <= 0L);
-      if ((l > this.jdField_b_of_type_Bbky.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_Bbky.jdField_b_of_type_Long)) {
+      if ((l > this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Long)) {
         break;
       }
       this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicLong.compareAndSet(l, -1L);
     } while (!QLog.isColorLevel());
-    QLog.d("HWVideoDecoder.DecodeRunnable", 2, "checkToRender, not in playrange, pos:" + l + ": [" + this.jdField_b_of_type_Bbky.jdField_a_of_type_Long + "-" + this.jdField_b_of_type_Bbky.jdField_b_of_type_Long + "]");
+    QLog.d("HWVideoDecoder.DecodeRunnable", 2, "checkToRender, not in playrange, pos:" + l + ": [" + this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Long + "-" + this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Long + "]");
     return paramBoolean;
     if (l > paramLong)
     {
@@ -407,7 +404,7 @@ class HWVideoDecoder$DecodeRunnable
       QLog.e(this.jdField_a_of_type_JavaLangString, 2, "Can't find video info!");
       return false;
     }
-    this.jdField_a_of_type_Bblb.g();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener.g();
     try
     {
       this.jdField_a_of_type_AndroidMediaMediaCodec.start();
@@ -422,8 +419,8 @@ class HWVideoDecoder$DecodeRunnable
         this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
         this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
         this.jdField_a_of_type_Long = System.currentTimeMillis();
-        if (this.jdField_b_of_type_Bbky.jdField_a_of_type_Int == 3) {
-          this.jdField_c_of_type_Long = (this.jdField_b_of_type_Bbky.jdField_b_of_type_Long * 1000L);
+        if (this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Int == 3) {
+          this.jdField_c_of_type_Long = (this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Long * 1000L);
         }
         return true;
       }
@@ -432,7 +429,7 @@ class HWVideoDecoder$DecodeRunnable
         if (this.jdField_a_of_type_Boolean) {
           break label185;
         }
-        this.jdField_a_of_type_Bblb.a(2, localException);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener.a(2, localException);
         QLog.e(this.jdField_a_of_type_JavaLangString, 2, "decode start error2", localException);
       }
       localThrowable = localThrowable;
@@ -443,7 +440,7 @@ class HWVideoDecoder$DecodeRunnable
       }
       localRuntimeException = new RuntimeException(localThrowable);
       if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Bblb.a(2, localRuntimeException);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener.a(2, localRuntimeException);
       }
       QLog.e(this.jdField_a_of_type_JavaLangString, 2, "decode start error", localThrowable);
       return false;
@@ -471,7 +468,7 @@ class HWVideoDecoder$DecodeRunnable
       long l2;
       int j;
       long l3;
-      if (this.jdField_b_of_type_Bbky.jdField_a_of_type_Int == 3)
+      if (this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Int == 3)
       {
         l1 = this.jdField_c_of_type_Long - 1000;
         if (("xiaomi".equalsIgnoreCase(Build.MANUFACTURER)) && ("MI 6".equalsIgnoreCase(Build.MODEL)))
@@ -488,14 +485,14 @@ class HWVideoDecoder$DecodeRunnable
       {
         j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(localByteBuffer, 0);
         l3 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-        l2 = 1000L * this.jdField_b_of_type_Bbky.jdField_a_of_type_Long;
-        long l4 = 1000L * this.jdField_b_of_type_Bbky.jdField_b_of_type_Long;
+        l2 = 1000L * this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Long;
+        long l4 = 1000L * this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Long;
         if (QLog.isColorLevel()) {
           QLog.d("HWVideoDecoder.DecodeRunnable", 2, "intput sampleTime = " + l3 + " sampleSize = " + j + " endTime = " + l4);
         }
         if ((j >= 0) && ((l4 <= 0L) || (l3 <= l4)))
         {
-          if (this.jdField_b_of_type_Bbky.jdField_a_of_type_Int != 3) {
+          if (this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Int != 3) {
             break label364;
           }
           if (l2 <= 0L) {
@@ -529,7 +526,7 @@ class HWVideoDecoder$DecodeRunnable
         label364:
         l1 = this.jdField_c_of_type_Long;
         this.jdField_c_of_type_Long = l3;
-        this.jdField_d_of_type_Long = a(this.jdField_b_of_type_Bbky.jdField_a_of_type_Int, this.jdField_d_of_type_Long, l3 - l1);
+        this.jdField_d_of_type_Long = a(this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Int, this.jdField_d_of_type_Long, l3 - l1);
         this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, this.jdField_d_of_type_Long, 0);
         this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
       }
@@ -547,7 +544,7 @@ class HWVideoDecoder$DecodeRunnable
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bbky.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Int = paramInt;
   }
   
   public void a(long paramLong)
@@ -565,7 +562,7 @@ class HWVideoDecoder$DecodeRunnable
     }
     if (paramLong1 >= this.jdField_b_of_type_Long)
     {
-      ykq.e("HWVideoDecoder.DecodeRunnable", "setPlayRange ignore, startTimeMs=%d, videoDuration=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.jdField_b_of_type_Long) });
+      SLog.e("HWVideoDecoder.DecodeRunnable", "setPlayRange ignore, startTimeMs=%d, videoDuration=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.jdField_b_of_type_Long) });
       return;
     }
     if (paramLong2 > this.jdField_b_of_type_Long) {
@@ -577,14 +574,14 @@ class HWVideoDecoder$DecodeRunnable
       if (paramLong2 == 0L) {
         l = this.jdField_b_of_type_Long;
       }
-      if ((paramLong1 == this.jdField_a_of_type_Bbky.jdField_a_of_type_Long) && (l == this.jdField_a_of_type_Bbky.jdField_b_of_type_Long))
+      if ((paramLong1 == this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Long) && (l == this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Long))
       {
-        ykq.d("HWVideoDecoder.DecodeRunnable", "segment not changed, setPlayRange ignore, startTimeMs=%d, endTimeMs=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(l) });
+        SLog.d("HWVideoDecoder.DecodeRunnable", "segment not changed, setPlayRange ignore, startTimeMs=%d, endTimeMs=%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(l) });
         return;
       }
-      this.jdField_a_of_type_Bbky.jdField_a_of_type_Long = paramLong1;
-      this.jdField_a_of_type_Bbky.jdField_b_of_type_Long = l;
-      if (this.jdField_a_of_type_Bbky.jdField_a_of_type_Int == 3)
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Long = paramLong1;
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Long = l;
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Int == 3)
       {
         a(l);
         return;
@@ -594,22 +591,22 @@ class HWVideoDecoder$DecodeRunnable
     }
   }
   
-  public void a(@NonNull bbky parambbky)
+  public void a(@NonNull DecodeConfig paramDecodeConfig)
   {
-    if (!TextUtils.equals(this.jdField_b_of_type_JavaLangString, parambbky.jdField_a_of_type_JavaLangString)) {
-      ykq.d("HWVideoDecoder.DecodeRunnable", "DecodeRunnable does not support changing the file");
+    if (!TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramDecodeConfig.jdField_a_of_type_JavaLangString)) {
+      SLog.d("HWVideoDecoder.DecodeRunnable", "DecodeRunnable does not support changing the file");
     }
-    a(parambbky.jdField_a_of_type_Int);
-    a(parambbky.jdField_a_of_type_Long, parambbky.jdField_b_of_type_Long);
-    b(parambbky.jdField_b_of_type_Boolean);
-    a(parambbky.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Bbky.jdField_b_of_type_Int = parambbky.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Bbky.jdField_c_of_type_Boolean = parambbky.jdField_c_of_type_Boolean;
+    a(paramDecodeConfig.jdField_a_of_type_Int);
+    a(paramDecodeConfig.jdField_a_of_type_Long, paramDecodeConfig.jdField_b_of_type_Long);
+    b(paramDecodeConfig.jdField_b_of_type_Boolean);
+    a(paramDecodeConfig.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Int = paramDecodeConfig.jdField_b_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_c_of_type_Boolean = paramDecodeConfig.jdField_c_of_type_Boolean;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bbky.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public int b()
@@ -619,91 +616,91 @@ class HWVideoDecoder$DecodeRunnable
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bbky.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   /* Error */
   public void run()
   {
     // Byte code:
-    //   0: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 46	java/lang/System:currentTimeMillis	()J
     //   3: lstore_3
     //   4: aload_0
-    //   5: getfield 107	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Bbky	Lbbky;
+    //   5: getfield 118	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
     //   8: aload_0
-    //   9: getfield 105	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Bbky	Lbbky;
-    //   12: invokevirtual 498	bbky:a	(Lbbky;)Z
+    //   9: getfield 116	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   12: invokevirtual 497	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:a	(Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;)Z
     //   15: pop
     //   16: aload_0
-    //   17: invokespecial 500	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:a	()Z
+    //   17: invokespecial 499	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:a	()Z
     //   20: ifne +4 -> 24
     //   23: return
     //   24: aload_0
-    //   25: invokespecial 502	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:b	()Z
+    //   25: invokespecial 501	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:b	()Z
     //   28: ifeq -5 -> 23
-    //   31: invokestatic 158	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   31: invokestatic 161	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   34: ifeq +35 -> 69
     //   37: aload_0
     //   38: getfield 34	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   41: iconst_2
-    //   42: new 59	java/lang/StringBuilder
+    //   42: new 71	java/lang/StringBuilder
     //   45: dup
-    //   46: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   49: ldc_w 504
-    //   52: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   46: invokespecial 72	java/lang/StringBuilder:<init>	()V
+    //   49: ldc_w 503
+    //   52: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: invokestatic 46	java/lang/System:currentTimeMillis	()J
     //   58: lload_3
     //   59: lsub
-    //   60: invokevirtual 165	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   63: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   66: invokestatic 172	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   69: invokestatic 256	java/lang/Thread:interrupted	()Z
+    //   60: invokevirtual 168	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   63: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   69: invokestatic 259	java/lang/Thread:interrupted	()Z
     //   72: ifne +416 -> 488
     //   75: aload_0
-    //   76: getfield 36	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Boolean	Z
+    //   76: getfield 40	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Boolean	Z
     //   79: ifne +409 -> 488
     //   82: aload_0
-    //   83: getfield 105	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Bbky	Lbbky;
-    //   86: getfield 180	bbky:jdField_a_of_type_Int	I
+    //   83: getfield 116	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   86: getfield 183	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:jdField_a_of_type_Int	I
     //   89: aload_0
-    //   90: getfield 107	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Bbky	Lbbky;
-    //   93: getfield 180	bbky:jdField_a_of_type_Int	I
+    //   90: getfield 118	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   93: getfield 183	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:jdField_a_of_type_Int	I
     //   96: if_icmpeq +29 -> 125
     //   99: aload_0
-    //   100: getfield 105	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Bbky	Lbbky;
-    //   103: getfield 180	bbky:jdField_a_of_type_Int	I
+    //   100: getfield 116	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   103: getfield 183	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:jdField_a_of_type_Int	I
     //   106: iconst_3
     //   107: if_icmpne +18 -> 125
     //   110: aload_0
     //   111: aload_0
-    //   112: getfield 107	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Bbky	Lbbky;
-    //   115: getfield 181	bbky:jdField_b_of_type_Long	J
-    //   118: ldc2_w 137
+    //   112: getfield 118	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   115: getfield 184	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:jdField_b_of_type_Long	J
+    //   118: ldc2_w 148
     //   121: lmul
-    //   122: putfield 150	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_c_of_type_Long	J
+    //   122: putfield 50	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_c_of_type_Long	J
     //   125: aload_0
-    //   126: getfield 107	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Bbky	Lbbky;
+    //   126: getfield 118	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
     //   129: aload_0
-    //   130: getfield 105	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Bbky	Lbbky;
-    //   133: invokevirtual 498	bbky:a	(Lbbky;)Z
+    //   130: getfield 116	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   133: invokevirtual 497	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:a	(Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;)Z
     //   136: pop
     //   137: aload_0
-    //   138: getfield 107	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Bbky	Lbbky;
-    //   141: getfield 355	bbky:jdField_a_of_type_Long	J
-    //   144: ldc2_w 137
+    //   138: getfield 118	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   141: getfield 354	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:jdField_a_of_type_Long	J
+    //   144: ldc2_w 148
     //   147: lmul
     //   148: lstore_3
-    //   149: ldc2_w 137
+    //   149: ldc2_w 148
     //   152: aload_0
-    //   153: getfield 107	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Bbky	Lbbky;
-    //   156: getfield 181	bbky:jdField_b_of_type_Long	J
+    //   153: getfield 118	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   156: getfield 184	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:jdField_b_of_type_Long	J
     //   159: lmul
     //   160: lstore 5
     //   162: iconst_0
     //   163: istore_2
     //   164: aload_0
-    //   165: getfield 53	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong	Ljava/util/concurrent/atomic/AtomicLong;
-    //   168: invokevirtual 354	java/util/concurrent/atomic/AtomicLong:get	()J
+    //   165: getfield 61	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong	Ljava/util/concurrent/atomic/AtomicLong;
+    //   168: invokevirtual 353	java/util/concurrent/atomic/AtomicLong:get	()J
     //   171: lstore 7
     //   173: iload_2
     //   174: istore_1
@@ -725,129 +722,129 @@ class HWVideoDecoder$DecodeRunnable
     //   198: ifgt +12 -> 210
     //   201: aload_0
     //   202: lload 7
-    //   204: invokespecial 506	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:a	(J)J
+    //   204: invokespecial 505	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:a	(J)J
     //   207: pop2
     //   208: iconst_1
     //   209: istore_1
     //   210: aload_0
-    //   211: getfield 53	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong	Ljava/util/concurrent/atomic/AtomicLong;
+    //   211: getfield 61	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong	Ljava/util/concurrent/atomic/AtomicLong;
     //   214: lload 7
-    //   216: ldc2_w 47
-    //   219: invokevirtual 359	java/util/concurrent/atomic/AtomicLong:compareAndSet	(JJ)Z
+    //   216: ldc2_w 55
+    //   219: invokevirtual 358	java/util/concurrent/atomic/AtomicLong:compareAndSet	(JJ)Z
     //   222: pop
-    //   223: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   223: invokestatic 46	java/lang/System:currentTimeMillis	()J
     //   226: lstore 7
     //   228: aload_0
     //   229: iconst_1
-    //   230: invokespecial 508	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:c	(Z)V
+    //   230: invokespecial 507	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:c	(Z)V
     //   233: iload_1
     //   234: ifeq +42 -> 276
-    //   237: invokestatic 158	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   237: invokestatic 161	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   240: ifeq +36 -> 276
     //   243: aload_0
     //   244: getfield 34	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   247: iconst_2
-    //   248: new 59	java/lang/StringBuilder
+    //   248: new 71	java/lang/StringBuilder
     //   251: dup
-    //   252: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   255: ldc_w 504
-    //   258: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   261: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   252: invokespecial 72	java/lang/StringBuilder:<init>	()V
+    //   255: ldc_w 503
+    //   258: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: invokestatic 46	java/lang/System:currentTimeMillis	()J
     //   264: lload 7
     //   266: lsub
-    //   267: invokevirtual 165	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   270: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   273: invokestatic 172	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   267: invokevirtual 168	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   270: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   273: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   276: aload_0
-    //   277: getfield 146	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_c_of_type_Boolean	Z
+    //   277: getfield 38	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_c_of_type_Boolean	Z
     //   280: ifeq +59 -> 339
-    //   283: invokestatic 158	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   283: invokestatic 161	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   286: ifeq +14 -> 300
     //   289: aload_0
     //   290: getfield 34	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   293: iconst_2
-    //   294: ldc_w 510
-    //   297: invokestatic 172	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   294: ldc_w 509
+    //   297: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   300: aload_0
-    //   301: getfield 107	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Bbky	Lbbky;
-    //   304: getfield 490	bbky:jdField_b_of_type_Boolean	Z
+    //   301: getfield 118	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   304: getfield 489	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:jdField_b_of_type_Boolean	Z
     //   307: ifeq +181 -> 488
     //   310: aload_0
-    //   311: getfield 107	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_Bbky	Lbbky;
-    //   314: getfield 180	bbky:jdField_a_of_type_Int	I
+    //   311: getfield 118	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig;
+    //   314: getfield 183	com/tencent/mobileqq/richmedia/mediacodec/decoder/DecodeConfig:jdField_a_of_type_Int	I
     //   317: iconst_3
     //   318: if_icmpne +159 -> 477
     //   321: lload 5
     //   323: lstore_3
     //   324: aload_0
     //   325: lload_3
-    //   326: invokespecial 506	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:a	(J)J
+    //   326: invokespecial 505	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:a	(J)J
     //   329: pop2
     //   330: aload_0
-    //   331: getfield 88	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Bblb	Lbblb;
-    //   334: invokeinterface 513 1 0
+    //   331: getfield 100	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/HWDecodeListener;
+    //   334: invokeinterface 512 1 0
     //   339: aload_0
-    //   340: getfield 281	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:e	Z
+    //   340: getfield 67	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:e	Z
     //   343: ifeq -274 -> 69
     //   346: aload_0
-    //   347: getfield 57	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   347: getfield 69	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   350: astore 9
     //   352: aload 9
     //   354: monitorenter
     //   355: aload_0
-    //   356: getfield 36	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Boolean	Z
+    //   356: getfield 40	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Boolean	Z
     //   359: ifne +10 -> 369
     //   362: aload_0
-    //   363: getfield 57	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   366: invokevirtual 516	java/lang/Object:wait	()V
+    //   363: getfield 69	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   366: invokevirtual 515	java/lang/Object:wait	()V
     //   369: aload 9
     //   371: monitorexit
     //   372: aload_0
-    //   373: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   373: invokestatic 46	java/lang/System:currentTimeMillis	()J
     //   376: aload_0
-    //   377: getfield 286	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo	Landroid/media/MediaCodec$BufferInfo;
-    //   380: getfield 312	android/media/MediaCodec$BufferInfo:presentationTimeUs	J
-    //   383: ldc2_w 137
+    //   377: getfield 287	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo	Landroid/media/MediaCodec$BufferInfo;
+    //   380: getfield 313	android/media/MediaCodec$BufferInfo:presentationTimeUs	J
+    //   383: ldc2_w 148
     //   386: ldiv
     //   387: lsub
-    //   388: putfield 44	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Long	J
+    //   388: putfield 48	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Long	J
     //   391: goto -322 -> 69
     //   394: astore 9
     //   396: aload 9
-    //   398: invokevirtual 321	java/lang/InterruptedException:printStackTrace	()V
+    //   398: invokevirtual 322	java/lang/InterruptedException:printStackTrace	()V
     //   401: aload_0
     //   402: iconst_1
-    //   403: putfield 36	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Boolean	Z
+    //   403: putfield 40	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Boolean	Z
     //   406: goto -337 -> 69
     //   409: astore 9
-    //   411: invokestatic 256	java/lang/Thread:interrupted	()Z
+    //   411: invokestatic 259	java/lang/Thread:interrupted	()Z
     //   414: ifeq +19 -> 433
     //   417: aload_0
     //   418: getfield 34	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   421: iconst_2
-    //   422: ldc_w 258
+    //   422: ldc_w 261
     //   425: aload 9
-    //   427: invokestatic 261	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   427: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   430: goto -197 -> 233
-    //   433: new 118	java/lang/RuntimeException
+    //   433: new 129	java/lang/RuntimeException
     //   436: dup
     //   437: aload 9
-    //   439: invokespecial 267	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   439: invokespecial 270	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
     //   442: astore 10
     //   444: aload_0
-    //   445: getfield 36	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Boolean	Z
+    //   445: getfield 40	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Boolean	Z
     //   448: ifne +15 -> 463
     //   451: aload_0
-    //   452: getfield 88	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Bblb	Lbblb;
+    //   452: getfield 100	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/HWDecodeListener;
     //   455: iconst_3
     //   456: aload 10
-    //   458: invokeinterface 270 3 0
+    //   458: invokeinterface 273 3 0
     //   463: aload_0
     //   464: getfield 34	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   467: iconst_2
-    //   468: ldc_w 278
+    //   468: ldc_w 281
     //   471: aload 9
-    //   473: invokestatic 261	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   473: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   476: return
     //   477: goto -153 -> 324
     //   480: astore 10
@@ -856,38 +853,38 @@ class HWVideoDecoder$DecodeRunnable
     //   485: aload 10
     //   487: athrow
     //   488: aload_0
-    //   489: getfield 120	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   492: invokevirtual 519	android/media/MediaCodec:stop	()V
+    //   489: getfield 131	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   492: invokevirtual 518	android/media/MediaCodec:stop	()V
     //   495: aload_0
-    //   496: getfield 120	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   499: invokevirtual 522	android/media/MediaCodec:release	()V
+    //   496: getfield 131	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   499: invokevirtual 521	android/media/MediaCodec:release	()V
     //   502: aload_0
-    //   503: getfield 127	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
-    //   506: invokevirtual 523	android/media/MediaExtractor:release	()V
+    //   503: getfield 138	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   506: invokevirtual 522	android/media/MediaExtractor:release	()V
     //   509: aload_0
-    //   510: getfield 146	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_c_of_type_Boolean	Z
+    //   510: getfield 38	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_c_of_type_Boolean	Z
     //   513: ifeq +48 -> 561
     //   516: aload_0
-    //   517: getfield 88	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Bblb	Lbblb;
-    //   520: invokeinterface 526 1 0
+    //   517: getfield 100	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/HWDecodeListener;
+    //   520: invokeinterface 525 1 0
     //   525: return
     //   526: astore 9
     //   528: ldc 32
     //   530: iconst_1
-    //   531: new 59	java/lang/StringBuilder
+    //   531: new 71	java/lang/StringBuilder
     //   534: dup
-    //   535: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   538: ldc_w 528
-    //   541: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   535: invokespecial 72	java/lang/StringBuilder:<init>	()V
+    //   538: ldc_w 527
+    //   541: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   544: aload 9
-    //   546: invokevirtual 529	java/lang/Exception:toString	()Ljava/lang/String;
-    //   549: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   552: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   555: invokestatic 177	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   546: invokevirtual 528	java/lang/Exception:toString	()Ljava/lang/String;
+    //   549: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   552: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   555: invokestatic 180	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   558: goto -49 -> 509
     //   561: aload_0
-    //   562: getfield 88	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_Bblb	Lbblb;
-    //   565: invokeinterface 532 1 0
+    //   562: getfield 100	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder$DecodeRunnable:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/HWDecodeListener;
+    //   565: invokeinterface 531 1 0
     //   570: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -916,7 +913,7 @@ class HWVideoDecoder$DecodeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.decoder.HWVideoDecoder.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

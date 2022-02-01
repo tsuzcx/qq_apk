@@ -3,11 +3,11 @@ package com.tencent.avgame.gameroom.video;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.av.opengl.ui.GLRootView;
+import com.tencent.avgame.gameroom.IGameRoomPresenter;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.opengles.GL10;
-import nio;
 
 public class VideoGLView
   extends GLRootView
@@ -24,7 +24,7 @@ public class VideoGLView
     super(paramContext, paramAttributeSet);
   }
   
-  public void a(nio paramnio) {}
+  public void a(IGameRoomPresenter paramIGameRoomPresenter) {}
   
   public void onPause()
   {
@@ -50,7 +50,7 @@ public class VideoGLView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.VideoGLView
  * JD-Core Version:    0.7.0.1
  */

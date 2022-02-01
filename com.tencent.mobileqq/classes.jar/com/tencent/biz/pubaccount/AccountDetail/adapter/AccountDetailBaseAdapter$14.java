@@ -1,29 +1,27 @@
 package com.tencent.biz.pubaccount.AccountDetail.adapter;
 
 import android.util.Pair;
+import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfo;
+import com.tencent.biz.pubaccount.AccountDetail.bean.MsgAttr;
+import com.tencent.biz.pubaccount.AccountDetail.bean.PictureAttr;
+import com.tencent.biz.pubaccount.AccountDetail.bean.VideoAttr;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import nzu;
-import oam;
-import oap;
-import oaq;
-import oar;
-import oas;
-import pjr;
-import tlv;
-import tlw;
 
-public class AccountDetailBaseAdapter$14
+class AccountDetailBaseAdapter$14
   implements Runnable
 {
-  public AccountDetailBaseAdapter$14(nzu paramnzu, long paramLong1, List paramList, int paramInt1, int paramInt2, long paramLong2) {}
+  AccountDetailBaseAdapter$14(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, long paramLong1, List paramList, int paramInt1, int paramInt2, long paramLong2) {}
   
   public void run()
   {
-    if (nzu.a(this.this$0) != this.jdField_a_of_type_Long) {}
+    if (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long) {}
     label25:
     LinkedList localLinkedList;
     label38:
@@ -54,56 +52,56 @@ public class AccountDetailBaseAdapter$14
           break label38;
           i = this.jdField_a_of_type_JavaUtilList.size();
           break label25;
-          if (nzu.a(this.this$0) != this.jdField_a_of_type_Long) {
+          if (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long) {
             break;
           }
           try
           {
-            oap localoap = (oap)this.jdField_a_of_type_JavaUtilList.get(j);
-            if (localoap == null) {
+            DynamicInfo localDynamicInfo = (DynamicInfo)this.jdField_a_of_type_JavaUtilList.get(j);
+            if (localDynamicInfo == null) {
               continue;
             }
-            if (localoap.jdField_a_of_type_Oaq.jdField_a_of_type_Int != 2) {
+            if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanMsgAttr.jdField_a_of_type_Int != 2) {
               break label232;
             }
-            if (localoap.jdField_a_of_type_Oas == null) {
+            if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr == null) {
               continue;
             }
-            if (localoap.jdField_a_of_type_Oas.e != 1) {
+            if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr.e != 1) {
               break label201;
             }
-            localLinkedList.add(oam.a(new URL(localoap.jdField_a_of_type_Oas.d), pjr.e()));
+            localLinkedList.add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr.d), ReadInJoyDisplayUtils.e()));
           }
           catch (Exception localException)
           {
             localException.printStackTrace();
           }
-          if (nzu.a(this.this$0) != this.jdField_a_of_type_Long)
+          if (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long)
           {
             return;
-            localLinkedList.add(oam.a(new URL(localException.jdField_a_of_type_Oas.jdField_a_of_type_JavaLangString), pjr.a()));
+            localLinkedList.add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr.jdField_a_of_type_JavaLangString), ReadInJoyDisplayUtils.a()));
             continue;
-            if (localException.jdField_a_of_type_Oar != null) {
-              if (localException.jdField_a_of_type_Oar.jdField_a_of_type_Int == 1) {
-                localLinkedList.add(oam.a(new URL(localException.jdField_a_of_type_Oar.b), pjr.e()));
+            if (localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr != null) {
+              if (localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr.jdField_a_of_type_Int == 1) {
+                localLinkedList.add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr.b), ReadInJoyDisplayUtils.e()));
               } else {
-                localLinkedList.add(oam.a(new URL(localException.jdField_a_of_type_Oar.jdField_a_of_type_JavaLangString), pjr.a()));
+                localLinkedList.add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr.jdField_a_of_type_JavaLangString), ReadInJoyDisplayUtils.a()));
               }
             }
           }
         }
-      } while (nzu.a(this.this$0) != this.jdField_a_of_type_Long);
+      } while (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long);
       Iterator localIterator = localLinkedList.iterator();
       while (localIterator.hasNext())
       {
-        oam localoam = (oam)localIterator.next();
-        if ((localoam != null) && (localoam.jdField_a_of_type_JavaNetURL != null))
+        AccountDetailBaseAdapter.PreloadImgInfo localPreloadImgInfo = (AccountDetailBaseAdapter.PreloadImgInfo)localIterator.next();
+        if ((localPreloadImgInfo != null) && (localPreloadImgInfo.jdField_a_of_type_JavaNetURL != null))
         {
-          tlw localtlw = new tlw();
-          localtlw.jdField_a_of_type_JavaNetURL = localoam.jdField_a_of_type_JavaNetURL;
-          localtlw.jdField_a_of_type_Int = ((Integer)localoam.jdField_a_of_type_AndroidUtilPair.first).intValue();
-          localtlw.jdField_b_of_type_Int = ((Integer)localoam.jdField_a_of_type_AndroidUtilPair.second).intValue();
-          tlv.a().a(localtlw, null);
+          ImageRequest localImageRequest = new ImageRequest();
+          localImageRequest.jdField_a_of_type_JavaNetURL = localPreloadImgInfo.jdField_a_of_type_JavaNetURL;
+          localImageRequest.jdField_a_of_type_Int = ((Integer)localPreloadImgInfo.jdField_a_of_type_AndroidUtilPair.first).intValue();
+          localImageRequest.jdField_b_of_type_Int = ((Integer)localPreloadImgInfo.jdField_a_of_type_AndroidUtilPair.second).intValue();
+          ImageManager.a().a(localImageRequest, null);
         }
       }
     } while (!QLog.isColorLevel());
@@ -113,7 +111,7 @@ public class AccountDetailBaseAdapter$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.14
  * JD-Core Version:    0.7.0.1
  */

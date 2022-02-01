@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import anvx;
 import com.tencent.ark.ark;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -31,7 +31,7 @@ public class MessageForArkFlashChat
     if (this.ark_app_message != null) {
       return this.ark_app_message.getSummery();
     }
-    return anvx.a(2131706089);
+    return HardCodeUtil.a(2131706629);
   }
   
   public boolean isSupportReply()
@@ -106,7 +106,7 @@ public class MessageForArkFlashChat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForArkFlashChat
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,10 @@ public final class GetPhotoSearchReq
   static ArrayList<Integer> cache_types = new ArrayList();
   public String albumid = "";
   public String attach_info = "";
-  public Map<Integer, PhotoSearchBoxChosenItem> items;
+  public Map<Integer, PhotoSearchBoxChosenItem> items = null;
   public int req_type = 0;
-  public ArrayList<Integer> types;
-  public long uin;
+  public ArrayList<Integer> types = null;
+  public long uin = 0L;
   
   static
   {

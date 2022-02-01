@@ -1,12 +1,11 @@
 package com.tencent.open.filedownload;
 
 import android.widget.TextView;
-import bjoy;
 
-public class ApkFileDownloadFragment$2$1
+class ApkFileDownloadFragment$2$1
   implements Runnable
 {
-  public ApkFileDownloadFragment$2$1(bjoy parambjoy) {}
+  ApkFileDownloadFragment$2$1(ApkFileDownloadFragment.2 param2) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class ApkFileDownloadFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.filedownload.ApkFileDownloadFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

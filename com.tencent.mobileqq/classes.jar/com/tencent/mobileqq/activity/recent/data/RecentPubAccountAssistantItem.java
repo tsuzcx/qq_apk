@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acmw;
-import afuo;
 import android.content.Context;
 import android.text.TextUtils;
-import aoan;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
 import com.tencent.mobileqq.data.PubAccountAssistantData;
 import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class RecentPubAccountAssistantItem
   private void a()
   {
     StringBuilder localStringBuilder;
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       localStringBuilder = new StringBuilder(24);
       localStringBuilder.append(this.mTitleName);
@@ -89,42 +89,42 @@ public class RecentPubAccountAssistantItem
     return false;
   }
   
-  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
     Object localObject1 = null;
-    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {}
     QQAppInterface localQQAppInterface;
     do
     {
       return;
-      localQQAppInterface = (QQAppInterface)paramIMCoreAppRuntime;
+      localQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
     } while ((localQQAppInterface == null) || (paramContext == null));
     Object localObject2 = getRecentUserUin();
     int i = getRecentUserType();
-    paramIMCoreAppRuntime = localQQAppInterface.getMessageFacade();
-    if (paramIMCoreAppRuntime != null) {}
-    for (QQMessageFacade.Message localMessage = paramIMCoreAppRuntime.getLastMessage((String)localObject2, i);; localMessage = null)
+    paramBaseQQAppInterface = localQQAppInterface.getMessageFacade();
+    if (paramBaseQQAppInterface != null) {}
+    for (Message localMessage = paramBaseQQAppInterface.a((String)localObject2, i);; localMessage = null)
     {
       String str;
       if (localMessage != null)
       {
         this.mDisplayTime = localMessage.time;
-        paramIMCoreAppRuntime = localQQAppInterface.getConversationFacade();
-        if (paramIMCoreAppRuntime != null)
+        paramBaseQQAppInterface = localQQAppInterface.getConversationFacade();
+        if (paramBaseQQAppInterface != null)
         {
-          this.mUnreadNum = paramIMCoreAppRuntime.a(localMessage.frienduin, localMessage.istroop);
-          paramIMCoreAppRuntime = (aoan)localQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
-          if (paramIMCoreAppRuntime == null) {
+          this.mUnreadNum = paramBaseQQAppInterface.a(localMessage.frienduin, localMessage.istroop);
+          paramBaseQQAppInterface = (PublicAccountDataManager)localQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+          if (paramBaseQQAppInterface == null) {
             break label456;
           }
-          paramIMCoreAppRuntime = paramIMCoreAppRuntime.b((String)localObject2);
-          if (paramIMCoreAppRuntime == null) {
+          paramBaseQQAppInterface = paramBaseQQAppInterface.b((String)localObject2);
+          if (paramBaseQQAppInterface == null) {
             break label456;
           }
-          str = paramIMCoreAppRuntime.name;
+          str = paramBaseQQAppInterface.name;
         }
       }
-      for (paramIMCoreAppRuntime = paramIMCoreAppRuntime.summary;; paramIMCoreAppRuntime = (IMCoreAppRuntime)localObject1)
+      for (paramBaseQQAppInterface = paramBaseQQAppInterface.summary;; paramBaseQQAppInterface = (BaseQQAppInterface)localObject1)
       {
         localObject1 = str;
         if (str == null) {
@@ -144,16 +144,16 @@ public class RecentPubAccountAssistantItem
           label201:
           if ((TextUtils.isEmpty(((MsgSummary)localObject1).strContent)) && (TextUtils.isEmpty(((MsgSummary)localObject1).suffix)))
           {
-            if (paramIMCoreAppRuntime != null) {
+            if (paramBaseQQAppInterface != null) {
               break label453;
             }
-            paramIMCoreAppRuntime = "";
+            paramBaseQQAppInterface = "";
           }
         }
         label453:
         for (;;)
         {
-          ((MsgSummary)localObject1).strContent = paramIMCoreAppRuntime;
+          ((MsgSummary)localObject1).strContent = paramBaseQQAppInterface;
           dealStatus(localQQAppInterface);
           dealDraft(localQQAppInterface, (MsgSummary)localObject1);
           extraUpdate(localQQAppInterface, paramContext, (MsgSummary)localObject1);
@@ -165,7 +165,7 @@ public class RecentPubAccountAssistantItem
           this.mUnreadNum = 0;
           break;
           ((MsgSummary)localObject1).strContent = "";
-          localObject2 = afuo.a(localMessage);
+          localObject2 = XMLMessageUtils.a(localMessage);
           if ((localObject2 == null) || (((PAMessage)localObject2).items == null) || (((PAMessage)localObject2).items.size() == 0))
           {
             buildMessageBody(localMessage, i, localQQAppInterface, paramContext, (MsgSummary)localObject1);
@@ -189,7 +189,7 @@ public class RecentPubAccountAssistantItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentPubAccountAssistantItem
  * JD-Core Version:    0.7.0.1
  */

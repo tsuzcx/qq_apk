@@ -18,6 +18,11 @@ public class TPDownloadProxyNative
     return TPDownloadProxyNative.SingletonHolder.access$100();
   }
   
+  private static int nativeIntMessageCallback(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
+  {
+    return TPListenerManager.getInstance().handleIntCallbackMessage(paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
+  }
+  
   private static void nativeLogCallback(int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
     if (paramInt1 == 6)
@@ -48,11 +53,21 @@ public class TPDownloadProxyNative
     TPListenerManager.getInstance().handleCallbackMessage(paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
   }
   
+  private static String nativeStringMessageCallback(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
+  {
+    return TPListenerManager.getInstance().handleStringCallbackMessage(paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
+  }
+  
   public native int createDownloadTask(int paramInt1, String paramString, int paramInt2, int paramInt3);
   
   public native int deInitService(int paramInt);
   
   public native int deleteCache(String paramString1, String paramString2);
+  
+  public Context getAppContext()
+  {
+    return appContext;
+  }
   
   public native byte[] getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3);
   
@@ -60,9 +75,11 @@ public class TPDownloadProxyNative
   
   public native byte[] getHLSOfflineExttag(String paramString1, String paramString2, int paramInt, long paramLong);
   
+  public native byte[] getNativeInfo(String paramString);
+  
   public String getNativeVersion()
   {
-    String str = "1.9.0.00016";
+    String str = "2.0.0.00016";
     if (isLoadDownloadProxySucceed) {
       str = TPDLProxyUtils.byteArrayToString(getVersion());
     }
@@ -140,7 +157,9 @@ public class TPDownloadProxyNative
   
   public void setAppContext(Context paramContext)
   {
-    appContext = paramContext;
+    if (paramContext != null) {
+      appContext = paramContext.getApplicationContext();
+    }
   }
   
   public native void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
@@ -173,7 +192,7 @@ public class TPDownloadProxyNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative
  * JD-Core Version:    0.7.0.1
  */

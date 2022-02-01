@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.qassistant.audio;
 
-import baiy;
-
-public class AudioNewController$1
+class AudioNewController$1
   implements Runnable
 {
-  public AudioNewController$1(baiy parambaiy, int paramInt) {}
+  AudioNewController$1(AudioNewController paramAudioNewController, int paramInt) {}
   
   public void run()
   {

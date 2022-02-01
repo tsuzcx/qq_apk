@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.ark.API;
 
-import aptb;
-import aptd;
-import aqba;
 import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.image.ChooseImageIPCModule;
 import com.tencent.qphone.base.util.QLog;
 
-public class ArkAppQQModule$19$1
+class ArkAppQQModule$19$1
   implements Runnable
 {
-  public ArkAppQQModule$19$1(aptd paramaptd, String paramString) {}
+  ArkAppQQModule$19$1(ArkAppQQModule.19 param19, String paramString) {}
   
   public void run()
   {
-    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Aptd.jdField_a_of_type_Aptb.a(this.jdField_a_of_type_Aptd.jdField_a_of_type_Long);
+    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppQQModule$19.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppQQModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppQQModule$19.jdField_a_of_type_Long);
     if (localVariantWrapper1 == null)
     {
-      aqba.a().a(null);
+      ChooseImageIPCModule.a().a(null);
       return;
     }
     ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
@@ -28,7 +26,7 @@ public class ArkAppQQModule$19$1
     localVariantWrapper2.Reset();
     localVariantWrapper1.Reset();
     QLog.i("ArkApp", 1, "QQ.ChooseImage callback : " + this.jdField_a_of_type_JavaLangString);
-    aqba.a().a(null);
+    ChooseImageIPCModule.a().a(null);
   }
 }
 

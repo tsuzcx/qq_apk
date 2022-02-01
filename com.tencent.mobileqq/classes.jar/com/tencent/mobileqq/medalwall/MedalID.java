@@ -3,12 +3,11 @@ package com.tencent.mobileqq.medalwall;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awuw;
 
 public class MedalID
   implements Parcelable
 {
-  public static final Parcelable.Creator<MedalID> CREATOR = new awuw();
+  public static final Parcelable.Creator<MedalID> CREATOR = new MedalID.1();
   public int a;
   public int b;
   
@@ -18,7 +17,7 @@ public class MedalID
     this.b = paramInt2;
   }
   
-  public MedalID(Parcel paramParcel)
+  protected MedalID(Parcel paramParcel)
   {
     this.a = paramParcel.readInt();
     this.b = paramParcel.readInt();

@@ -49,11 +49,15 @@
     <event name="chooseImage">
         <request-permission>android.permission.CAMERA</request-permission>
     </event>
+    <event name="chooseMedia">
+        <request-permission>android.permission.CAMERA</request-permission>
+    </event>
     <event name="startRecord">
         <request-permission>scope.record</request-permission>
         <request-permission>android.permission.RECORD_AUDIO</request-permission>
     </event>
     <event name="operateRecorder">
+        <request-permission>scope.record</request-permission>
         <request-permission>android.permission.RECORD_AUDIO</request-permission>
     </event>
     <event name="joinVoIPChat">

@@ -1,0 +1,43 @@
+package com.tencent.ilivesdk.avpreloadservice_interface;
+
+import com.tencent.falco.base.libapi.ServiceBaseInterface;
+
+public abstract interface AVPreloadServiceInterface
+  extends ServiceBaseInterface
+{
+  public abstract AVPreloadTaskInterface a(String paramString);
+  
+  public abstract String a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(AVPreloadServiceAdapter paramAVPreloadServiceAdapter);
+  
+  public abstract void a(AVPreloadServiceInterface.AVPreloadResultListener paramAVPreloadResultListener);
+  
+  public abstract void a(AVPreloadServiceInterface.AVPreloadScenes paramAVPreloadScenes);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract String b(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void b(AVPreloadServiceInterface.AVPreloadResultListener paramAVPreloadResultListener);
+  
+  public abstract void b(String paramString);
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.ilivesdk.avpreloadservice_interface.AVPreloadServiceInterface
+ * JD-Core Version:    0.7.0.1
+ */

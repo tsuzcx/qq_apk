@@ -625,6 +625,7 @@ public class HardwareUtil
       }
       catch (NumberFormatException paramString)
       {
+        LogUtil.e("HardwareUtil", "parseFileForValue failed.", paramString);
         return -1;
       }
       catch (IOException paramString)
@@ -633,13 +634,13 @@ public class HardwareUtil
       }
       k = i;
       if (j >= m) {
-        break label129;
+        break label138;
       }
       k = j - i;
       if (arrayOfByte[j] != paramString.charAt(k))
       {
         k = i;
-        break label129;
+        break label138;
       }
       if (k == paramString.length() - 1)
       {
@@ -666,7 +667,7 @@ public class HardwareUtil
           j = i;
           break;
         }
-        label129:
+        label138:
         j = k + 1;
       }
     }
@@ -674,7 +675,7 @@ public class HardwareUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.utils.HardwareUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/muu" android:background="#99131415" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/mut" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <View android:id="@id/mus" android:layout_width="255.0dip" android:layout_height="147.0dip" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <ProgressBar android:layout_gravity="center_vertical" android:id="@id/mvo" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/jt" android:indeterminateBehavior="repeat" />
+    <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/mvn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/cuy" />
+</LinearLayout>

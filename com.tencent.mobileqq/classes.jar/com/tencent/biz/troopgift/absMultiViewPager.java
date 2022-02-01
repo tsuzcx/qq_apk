@@ -1,6 +1,5 @@
 package com.tencent.biz.troopgift;
 
-import aajw;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -15,9 +14,9 @@ public abstract class absMultiViewPager
   extends ViewPager
   implements AdapterView.OnItemClickListener
 {
-  protected aajw a;
   protected ViewPager.OnPageChangeListener a;
   protected AdapterView.OnItemClickListener a;
+  protected absMultiViewPager.OnPagerSizeChangeListener a;
   protected absMultiViewPager.ViewPagerAdapter a;
   protected ArrayList<Object> a;
   protected ArrayList<View> b = new ArrayList();
@@ -54,8 +53,8 @@ public abstract class absMultiViewPager
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Aajw != null) {
-      this.jdField_a_of_type_Aajw.a(paramInt1, paramInt2, getCurrentItem());
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$OnPagerSizeChangeListener != null) {
+      this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$OnPagerSizeChangeListener.a(paramInt1, paramInt2, getCurrentItem());
     }
   }
   
@@ -108,14 +107,14 @@ public abstract class absMultiViewPager
     super.setOnPageChangeListener(paramOnPageChangeListener);
   }
   
-  public void setOnPagerSizeChangeListener(aajw paramaajw)
+  public void setOnPagerSizeChangeListener(absMultiViewPager.OnPagerSizeChangeListener paramOnPagerSizeChangeListener)
   {
-    this.jdField_a_of_type_Aajw = paramaajw;
+    this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$OnPagerSizeChangeListener = paramOnPagerSizeChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.troopgift.absMultiViewPager
  * JD-Core Version:    0.7.0.1
  */

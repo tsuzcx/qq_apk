@@ -5,39 +5,38 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import beco;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class TeamWorkShareActionSheetBuilder$1
+class TeamWorkShareActionSheetBuilder$1
   implements Runnable
 {
-  public TeamWorkShareActionSheetBuilder$1(beco parambeco, String paramString1, String paramString2) {}
+  TeamWorkShareActionSheetBuilder$1(TeamWorkShareActionSheetBuilder paramTeamWorkShareActionSheetBuilder, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject = (RelativeLayout.LayoutParams)beco.a(this.this$0).getLayoutParams();
-    int j = beco.a(this.this$0).getWidth() - ((RelativeLayout.LayoutParams)localObject).leftMargin - 80 - beco.a(this.this$0).getWidth() - beco.b(this.this$0).getWidth();
-    if (beco.c(this.this$0).getPaint().measureText(this.a + this.b) > j)
+    Object localObject = (RelativeLayout.LayoutParams)TeamWorkShareActionSheetBuilder.a(this.this$0).getLayoutParams();
+    int j = TeamWorkShareActionSheetBuilder.a(this.this$0).getWidth() - ((RelativeLayout.LayoutParams)localObject).leftMargin - 80 - TeamWorkShareActionSheetBuilder.a(this.this$0).getWidth() - TeamWorkShareActionSheetBuilder.b(this.this$0).getWidth();
+    if (TeamWorkShareActionSheetBuilder.c(this.this$0).getPaint().measureText(this.a + this.b) > j)
     {
       int i = 0;
       for (;;)
       {
-        if ((i >= this.a.length()) || (beco.c(this.this$0).getPaint().measureText(this.a.substring(0, i) + beco.a(this.this$0).getString(2131690236) + this.b) > j))
+        if ((i >= this.a.length()) || (TeamWorkShareActionSheetBuilder.c(this.this$0).getPaint().measureText(this.a.substring(0, i) + TeamWorkShareActionSheetBuilder.a(this.this$0).getString(2131690300) + this.b) > j))
         {
           if (i == 0) {
             break;
           }
           localObject = this.a.substring(0, i - 1);
-          beco.c(this.this$0).setText(this.b + (String)localObject + beco.a(this.this$0).getString(2131690236));
+          TeamWorkShareActionSheetBuilder.c(this.this$0).setText(this.b + (String)localObject + TeamWorkShareActionSheetBuilder.a(this.this$0).getString(2131690300));
           return;
         }
         i += 1;
       }
-      beco.c(this.this$0).setText(this.b + this.a.substring(0) + beco.a(this.this$0).getString(2131690236));
+      TeamWorkShareActionSheetBuilder.c(this.this$0).setText(this.b + this.a.substring(0) + TeamWorkShareActionSheetBuilder.a(this.this$0).getString(2131690300));
       return;
     }
     localObject = this.b + this.a;
-    beco.c(this.this$0).setText((CharSequence)localObject);
+    TeamWorkShareActionSheetBuilder.c(this.this$0).setText((CharSequence)localObject);
   }
 }
 

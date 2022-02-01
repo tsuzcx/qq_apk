@@ -2,10 +2,10 @@ package com.tencent.mobileqq.data;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import bhgf;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.utils.QAVHrMeeting;
 import com.tencent.qphone.base.util.QLog;
 
 public class DiscussionInfo
@@ -20,7 +20,7 @@ public class DiscussionInfo
   public String faceUinSet;
   public long groupCode;
   public long groupUin;
-  public boolean hasCollect;
+  public boolean hasCollect = false;
   public long infoSeq;
   public String inheritOwnerUin;
   @notColumn
@@ -86,7 +86,7 @@ public class DiscussionInfo
   
   public int getHrExtra()
   {
-    return bhgf.a(this.mOriginExtra);
+    return QAVHrMeeting.a(this.mOriginExtra);
   }
   
   public boolean hasRenamed()
@@ -96,12 +96,12 @@ public class DiscussionInfo
   
   public boolean isDiscussHrMeeting()
   {
-    return bhgf.b(this.mOrigin);
+    return QAVHrMeeting.b(this.mOrigin);
   }
   
   public boolean isHidden()
   {
-    return ((this.mOrigin & 0x2) == 2L) && (getHrExtra() == 1) && (bhgf.a(this.mSelfRight));
+    return ((this.mOrigin & 0x2) == 2L) && (getHrExtra() == 1) && (QAVHrMeeting.a(this.mSelfRight));
   }
   
   public boolean isOwnerOrInheritOwner(String paramString)
@@ -115,7 +115,7 @@ public class DiscussionInfo
   
   public boolean isPSTNConf()
   {
-    return bhgf.a(this.mOrigin);
+    return QAVHrMeeting.a(this.mOrigin);
   }
   
   public boolean isUIControlFlag_Hidden_RecentUser()

@@ -8,9 +8,9 @@ public final class s_redbonus_man
   extends JceStruct
 {
   static s_user cache_user = new s_user();
-  public long payMoney;
-  public long payTime;
-  public s_user user;
+  public long payMoney = 0L;
+  public long payTime = 0L;
+  public s_user user = null;
   
   public s_redbonus_man() {}
   

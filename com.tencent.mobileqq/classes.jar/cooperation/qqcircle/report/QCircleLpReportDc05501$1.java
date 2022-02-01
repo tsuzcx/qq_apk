@@ -1,6 +1,6 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import feedcloud.FeedCloudCommon.Entry;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -79,13 +79,13 @@ final class QCircleLpReportDc05501$1
       break label374;
     }
     label775:
-    QLog.w("QCircleReporter", 1, "QCircleLpReportDc05501 report miss Session: actiontype:" + QCircleLpReportDc05501.DataBuilder.access$100(this.val$builder) + ",subActionType:" + QCircleLpReportDc05501.DataBuilder.access$200(this.val$builder) + ",add Miss Session report cache list");
+    RFLog.w("QCircleReporter", RFLog.USR, "QCircleLpReportDc05501 report miss Session: actiontype:" + QCircleLpReportDc05501.DataBuilder.access$100(this.val$builder) + ",subActionType:" + QCircleLpReportDc05501.DataBuilder.access$200(this.val$builder) + ",add Miss Session report cache list");
     QCircleReporter.getInstance().addMissSessionReportDataCache((QQCircleReport.SingleDcData)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05501.1
  * JD-Core Version:    0.7.0.1
  */

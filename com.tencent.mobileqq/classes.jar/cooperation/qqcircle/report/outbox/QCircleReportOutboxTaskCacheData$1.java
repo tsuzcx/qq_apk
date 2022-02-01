@@ -2,12 +2,12 @@ package cooperation.qqcircle.report.outbox;
 
 import android.database.Cursor;
 import android.os.Parcel;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.qcircle.api.db.IDBCacheDataWrapper.DbCreator;
+import com.tencent.mobileqq.qcircle.api.db.IDBCacheDataWrapper.Structure;
 
 final class QCircleReportOutboxTaskCacheData$1
-  implements DbCacheData.DbCreator<QCircleReportOutboxTaskCacheData>
+  implements IDBCacheDataWrapper.DbCreator<QCircleReportOutboxTaskCacheData>
 {
   public QCircleReportOutboxTaskCacheData createFromCursor(Cursor paramCursor)
   {
@@ -25,7 +25,7 @@ final class QCircleReportOutboxTaskCacheData$1
     }
     catch (Throwable paramCursor)
     {
-      QLog.w("QueueTaskCacheData", 1, paramCursor.getMessage());
+      RFLog.w("QueueTaskCacheData", RFLog.USR, paramCursor.getMessage());
     }
     return null;
   }
@@ -35,9 +35,9 @@ final class QCircleReportOutboxTaskCacheData$1
     return null;
   }
   
-  public DbCacheData.Structure[] structure()
+  public IDBCacheDataWrapper.Structure[] structure()
   {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("cache_key", "TEXT UNIQUE"), new DbCacheData.Structure("save_data", "BLOB") };
+    return new IDBCacheDataWrapper.Structure[] { new IDBCacheDataWrapper.Structure("cache_key", "TEXT UNIQUE"), new IDBCacheDataWrapper.Structure("save_data", "BLOB") };
   }
   
   public int version()
@@ -47,7 +47,7 @@ final class QCircleReportOutboxTaskCacheData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskCacheData.1
  * JD-Core Version:    0.7.0.1
  */

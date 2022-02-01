@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import aphn;
+import com.tencent.mobileqq.ar.ScanEntranceDPC;
 
 class QRScanEntryView$9
   implements Runnable
@@ -10,7 +10,7 @@ class QRScanEntryView$9
   public void run()
   {
     if (!QRScanEntryView.b(this.this$0)) {
-      if (this.a > aphn.a().c) {
+      if (this.a > ScanEntranceDPC.a().c) {
         break label54;
       }
     }

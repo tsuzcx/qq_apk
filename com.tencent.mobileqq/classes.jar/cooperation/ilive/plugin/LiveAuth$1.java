@@ -1,9 +1,9 @@
 package cooperation.ilive.plugin;
 
 import NS_KING_PUBLIC.stAuth;
-import blvl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.ilive.manager.IliveAuthManager.Callback;
+import cooperation.ilive.util.ElapseStat;
 
 final class LiveAuth$1
   implements IliveAuthManager.Callback
@@ -20,12 +20,12 @@ final class LiveAuth$1
       return;
     }
     LiveAuth.liveToken(paramstAuth.sUid, paramstAuth.sSessionKey);
-    blvl.b("refreshToken");
+    ElapseStat.b("refreshToken");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.plugin.LiveAuth.1
  * JD-Core Version:    0.7.0.1
  */

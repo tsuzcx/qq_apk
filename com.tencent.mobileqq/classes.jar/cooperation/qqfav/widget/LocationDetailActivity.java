@@ -1,6 +1,5 @@
 package cooperation.qqfav.widget;
 
-import Override;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -16,24 +15,12 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aqnr;
-import aqoa;
-import aupt;
-import bmaf;
-import bman;
-import bmar;
-import bmbt;
-import bmbx;
-import bmby;
-import bmbz;
-import bmca;
-import bmcb;
-import bmcc;
-import bmcd;
-import bmce;
 import com.tencent.biz.PoiMapActivity;
 import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.colornote.ColorNoteController;
+import com.tencent.mobileqq.colornote.IServiceInfo;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -41,23 +28,26 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.FadeIconImageView;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import cooperation.qqfav.QfavHelper;
+import cooperation.qqfav.QfavReport;
+import cooperation.qqfav.QfavUtil;
 
 public class LocationDetailActivity
   extends PoiMapActivity
 {
-  private aqnr jdField_a_of_type_Aqnr;
-  public bmbt a;
-  private FadeIconImageView jdField_a_of_type_ComTencentWidgetFadeIconImageView;
+  private ColorNoteController jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController;
+  private FadeIconImageView jdField_a_of_type_ComTencentWidgetFadeIconImageView = null;
+  public FavoriteActionSheet a;
   public long b = -1L;
-  public ImageView d;
-  public TextView f;
+  public ImageView d = null;
+  public TextView f = null;
   public String r;
   public String s;
   public String t;
-  public String u;
-  public boolean v;
-  private boolean w;
-  private boolean x;
+  public String u = null;
+  public boolean v = false;
+  private boolean w = false;
+  private boolean x = false;
   
   @TargetApi(11)
   private void B()
@@ -71,7 +61,7 @@ public class LocationDetailActivity
       return;
     }
     this.f.setVisibility(0);
-    if (VersionUtils.isHoneycomb()) {
+    if (VersionUtils.e()) {
       this.f.setAlpha(0.9F);
     }
     this.f.setText(new QQText(this.u, 3, 22));
@@ -79,7 +69,7 @@ public class LocationDetailActivity
   
   private void C()
   {
-    bmaf.a(this, "", this.b, 0L);
+    QfavHelper.a(this, "", this.b, 0L);
   }
   
   private void D()
@@ -90,14 +80,14 @@ public class LocationDetailActivity
   
   private void E()
   {
-    this.jdField_a_of_type_Aqnr = new aqnr(this, true, false, true, true, 0);
-    this.jdField_a_of_type_Aqnr.a(a(false));
-    this.jdField_a_of_type_Aqnr.a(this);
-    this.jdField_a_of_type_Aqnr.a(new bmcc(this));
-    this.jdField_a_of_type_Aqnr.a(new bmcd(this));
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController = new ColorNoteController(this, true, false, true, true, 0);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.a(a(false));
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.a(new LocationDetailActivity.5(this));
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.a(new LocationDetailActivity.6(this));
     boolean bool = c();
     if (!bool) {
-      this.jdField_a_of_type_Aqnr.g();
+      this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.g();
     }
     for (;;)
     {
@@ -105,20 +95,20 @@ public class LocationDetailActivity
         QLog.i("PoiMapActivity", 2, "initColorNoteController: checkShowFileColorNote[" + bool + "]");
       }
       return;
-      this.jdField_a_of_type_Aqnr.h();
+      this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.h();
     }
   }
   
   private void F()
   {
-    bman.a(null, "User_Modify", 7, 0, getIntent().getIntExtra("category", 1));
-    bmaf.b(this, "", this.b);
+    QfavReport.a(null, "User_Modify", 7, 0, getIntent().getIntExtra("category", 1));
+    QfavHelper.b(this, "", this.b);
     super.finish();
   }
   
   private int a()
   {
-    if ((this.jdField_a_of_type_Aqnr != null) && (this.jdField_a_of_type_Aqnr.c())) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController != null) && (this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.c())) {}
     for (int i = 256;; i = 128) {
       return i | 0x50;
     }
@@ -135,31 +125,31 @@ public class LocationDetailActivity
     return null;
   }
   
-  public void A()
+  protected void A()
   {
-    if ((this.jdField_a_of_type_Aqnr != null) && (this.jdField_a_of_type_Aqnr.c())) {
-      this.jdField_a_of_type_Aqnr.f();
+    if ((this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController != null) && (this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.c())) {
+      this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.f();
     }
   }
   
-  public aqoa a(boolean paramBoolean)
+  public IServiceInfo a(boolean paramBoolean)
   {
-    return new bmbx(this, Long.valueOf(this.b));
+    return new LocationColorNoteServiceInfo(this, Long.valueOf(this.b));
   }
   
-  public void a(Bundle paramBundle)
+  protected void a(Bundle paramBundle)
   {
     Intent localIntent = b();
     if (localIntent != null)
     {
       localIntent.putExtras(paramBundle);
-      aupt.a(getActivity(), localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_shoucang");
+      ForwardBaseOption.a(getActivity(), localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_shoucang");
       return;
     }
-    QQToast.a(this, 2131692147, 1, 2000).b(5);
+    QQToast.a(this, 2131692279, 1, 2000).b(5);
   }
   
-  public void b(boolean paramBoolean)
+  protected void b(boolean paramBoolean)
   {
     Object localObject = a(this);
     Intent localIntent = new Intent(b(this));
@@ -172,7 +162,7 @@ public class LocationDetailActivity
     if (paramBoolean) {}
     for (int i = 13322;; i = 13321)
     {
-      bmaf.a(this, (String)localObject, localIntent, i);
+      QfavHelper.a(this, (String)localObject, localIntent, i);
       return;
     }
   }
@@ -182,17 +172,17 @@ public class LocationDetailActivity
     return true;
   }
   
-  public boolean d()
+  protected boolean d()
   {
     this.v = true;
-    if ((this.jdField_a_of_type_Aqnr != null) && (!this.jdField_a_of_type_Aqnr.c()))
+    if ((this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController != null) && (!this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.c()))
     {
-      if (this.jdField_a_of_type_Aqnr.b())
+      if (this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.b())
       {
-        this.jdField_a_of_type_Aqnr.e();
+        this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.e();
         return true;
       }
-      this.jdField_a_of_type_Aqnr.i();
+      this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.i();
       return false;
     }
     this.v = false;
@@ -210,8 +200,8 @@ public class LocationDetailActivity
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Aqnr != null) && (this.b != -1L) && (this.b != 0L)) {
-      this.jdField_a_of_type_Aqnr.p();
+    if ((this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController != null) && (this.b != -1L) && (this.b != 0L)) {
+      this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.p();
     }
     super.finish();
   }
@@ -262,7 +252,7 @@ public class LocationDetailActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = super.findViewById(2131377155);
+    paramBundle = super.findViewById(2131377575);
     paramBundle.setFocusable(false);
     paramBundle.setContentDescription(null);
     if (!this.x) {}
@@ -286,12 +276,12 @@ public class LocationDetailActivity
         paramBundle = (FrameLayout)super.findViewById(16908290);
         float f1 = super.getResources().getDisplayMetrics().density;
         this.f = new TextView(paramBundle.getContext());
-        this.f.setId(2131372074);
-        this.f.setBackgroundResource(2130839455);
+        this.f.setId(2131372377);
+        this.f.setBackgroundResource(2130839534);
         this.f.setMaxLines(3);
         int i = (int)(15.0F * f1);
         this.f.setPadding(i, i, i, i);
-        this.f.setTextColor(super.getResources().getColor(2131167026));
+        this.f.setTextColor(super.getResources().getColor(2131167033));
         this.f.setTextSize(14.0F);
         this.f.setIncludeFontPadding(false);
         FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
@@ -305,24 +295,24 @@ public class LocationDetailActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aqnr != null) {
-      this.jdField_a_of_type_Aqnr.c();
+    if (this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.c();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aqnr != null) {
-      this.jdField_a_of_type_Aqnr.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aqnr != null) {
-      this.jdField_a_of_type_Aqnr.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteController.a();
     }
   }
   
@@ -339,24 +329,24 @@ public class LocationDetailActivity
     this.r = localBundle.getString("lat");
     this.s = localBundle.getString("lon");
     this.b = localBundle.getLong("favId");
-    TextView localTextView1 = (TextView)findViewById(2131369231);
-    localTextView1.setText(2131692175);
-    localTextView1.setOnClickListener(new bmby(this));
-    ((TextView)super.findViewById(2131369278)).setText(2131693687);
-    TextView localTextView2 = (TextView)super.findViewById(2131369262);
+    TextView localTextView1 = (TextView)findViewById(2131369487);
+    localTextView1.setText(2131692307);
+    localTextView1.setOnClickListener(new LocationDetailActivity.1(this));
+    ((TextView)super.findViewById(2131369534)).setText(2131693856);
+    TextView localTextView2 = (TextView)super.findViewById(2131369518);
     this.x = super.getIntent().getBooleanExtra("forNoteNewFavorite", false);
     if ((!this.x) && (!localBundle.getBoolean("forNewFavorite", false)))
     {
-      this.jdField_a_of_type_Bmbt = new bmbz(this, this, new bmce(this), a(), 7, null);
+      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet = new LocationDetailActivity.2(this, this, new LocationDetailActivity.LocationActions(this), a(), 7, null);
       localTextView1.setText(localBundle.getString("leftViewText"));
       localTextView2.setVisibility(8);
-      this.d = ((ImageView)super.findViewById(2131369245));
+      this.d = ((ImageView)super.findViewById(2131369501));
       this.d.setVisibility(0);
-      this.d.setImageResource(2130840365);
-      this.d.setContentDescription(super.getString(2131694053));
-      this.d.setOnClickListener(this.jdField_a_of_type_Bmbt);
-      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131369249));
-      if (!bmar.a()) {
+      this.d.setImageResource(2130840478);
+      this.d.setContentDescription(super.getString(2131694255));
+      this.d.setOnClickListener(this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet);
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131369505));
+      if (!QfavUtil.a()) {
         if (this.jdField_a_of_type_ComTencentWidgetFadeIconImageView != null)
         {
           this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(0);
@@ -374,14 +364,14 @@ public class LocationDetailActivity
         continue;
         if (this.x)
         {
-          localTextView2.setText(2131694399);
-          localTextView2.setOnClickListener(new bmca(this));
+          localTextView2.setText(2131694615);
+          localTextView2.setOnClickListener(new LocationDetailActivity.3(this));
         }
         else
         {
-          localTextView1.setText(2131690499);
-          localTextView2.setText(2131694288);
-          localTextView2.setOnClickListener(new bmcb(this));
+          localTextView1.setText(2131690601);
+          localTextView2.setText(2131694492);
+          localTextView2.setOnClickListener(new LocationDetailActivity.4(this));
         }
       }
     }
@@ -389,7 +379,7 @@ public class LocationDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqfav.widget.LocationDetailActivity
  * JD-Core Version:    0.7.0.1
  */

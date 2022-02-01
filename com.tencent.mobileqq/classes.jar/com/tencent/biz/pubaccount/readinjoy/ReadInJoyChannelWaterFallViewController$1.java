@@ -1,13 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface;
 import java.util.Map;
-import orh;
-import pzb;
 
-public class ReadInJoyChannelWaterFallViewController$1
+class ReadInJoyChannelWaterFallViewController$1
   implements Runnable
 {
-  public ReadInJoyChannelWaterFallViewController$1(orh paramorh, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
+  ReadInJoyChannelWaterFallViewController$1(ReadInJoyChannelWaterFallViewController paramReadInJoyChannelWaterFallViewController, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class ReadInJoyChannelWaterFallViewController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelWaterFallViewController.1
  * JD-Core Version:    0.7.0.1
  */

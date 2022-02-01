@@ -45,6 +45,39 @@ public class FlutterRuntimeLoader
     getAppStateManager().isFlutter = true;
   }
   
+  private void onApkgLoadTaskDone()
+  {
+    if ((this.apkgLoadTask.isSucceed()) && (this.mMiniAppInfo != null)) {
+      this.mMiniAppInfo.apkgInfo = this.apkgLoadTask.getApkgInfo();
+    }
+  }
+  
+  private void onPreloadFlagTaskDone()
+  {
+    if ((getAppStateManager().isFromPreload == true) && (this.mMiniAppInfo == null)) {
+      setStatus(4);
+    }
+    notifyRuntimeEvent(3, new Object[0]);
+  }
+  
+  private void onRuntimeInitTaskDone()
+  {
+    if (this.runtimeInitTask.isSucceed())
+    {
+      notifyRuntimeEvent(10, new Object[0]);
+      onRuntimeLoadResult(0, "");
+      MiniAppPrelaunchRecorder.get().onFlutterTaskDone();
+      if (this.baselibLoadTask != null)
+      {
+        BaselibLoader.BaselibContent localBaselibContent = this.baselibLoadTask.getBaselibContent();
+        if ((localBaselibContent != null) && ((getRuntime() instanceof NativeAppBrandRuntime))) {
+          ((NativeAppBrandRuntime)getRuntime()).setBaselibContent(localBaselibContent);
+        }
+      }
+    }
+    this.mIsRunning = false;
+  }
+  
   private void setRuntimeBaselib()
   {
     if ((this.mRuntime == null) || (this.baselibLoadTask.getBaselibContent() == null)) {
@@ -105,47 +138,25 @@ public class FlutterRuntimeLoader
     if (checkAllTaskIsDone()) {
       setStatus(5);
     }
-    if (paramBaseTask == this.preloadFlagTask)
-    {
-      if ((getAppStateManager().isFromPreload == true) && (this.mMiniAppInfo == null)) {
-        setStatus(4);
-      }
-      notifyRuntimeEvent(3, new Object[0]);
+    if (paramBaseTask == this.preloadFlagTask) {
+      onPreloadFlagTaskDone();
     }
     for (;;)
     {
       super.onTaskDone(paramBaseTask);
       return;
-      if (paramBaseTask == this.baselibLoadTask)
-      {
+      if (paramBaseTask == this.baselibLoadTask) {
         setRuntimeBaselib();
-      }
-      else if (paramBaseTask == this.runtimeCreateTask)
+      } else if (paramBaseTask == this.runtimeCreateTask)
       {
         if (this.runtimeCreateTask.isSucceed()) {
           setRuntimeBaselib();
         }
       }
-      else if (paramBaseTask == this.runtimeInitTask)
-      {
-        if (this.runtimeInitTask.isSucceed())
-        {
-          notifyRuntimeEvent(10, new Object[0]);
-          onRuntimeLoadResult(0, "");
-          MiniAppPrelaunchRecorder.get().onFlutterTaskDone();
-          if (this.baselibLoadTask != null)
-          {
-            BaselibLoader.BaselibContent localBaselibContent = this.baselibLoadTask.getBaselibContent();
-            if ((localBaselibContent != null) && ((getRuntime() instanceof NativeAppBrandRuntime))) {
-              ((NativeAppBrandRuntime)getRuntime()).setBaselibContent(localBaselibContent);
-            }
-          }
-        }
-        this.mIsRunning = false;
-      }
-      else if ((paramBaseTask == this.apkgLoadTask) && (this.apkgLoadTask.isSucceed()) && (this.mMiniAppInfo != null))
-      {
-        this.mMiniAppInfo.apkgInfo = this.apkgLoadTask.getApkgInfo();
+      else if (paramBaseTask == this.runtimeInitTask) {
+        onRuntimeInitTaskDone();
+      } else if (paramBaseTask == this.apkgLoadTask) {
+        onApkgLoadTaskDone();
       }
     }
   }
@@ -159,7 +170,7 @@ public class FlutterRuntimeLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.flutter.FlutterRuntimeLoader
  * JD-Core Version:    0.7.0.1
  */

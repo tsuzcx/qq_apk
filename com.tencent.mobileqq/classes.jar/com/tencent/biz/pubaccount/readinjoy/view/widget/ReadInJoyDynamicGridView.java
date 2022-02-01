@@ -30,48 +30,32 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import toz;
-import tpa;
-import tpb;
-import tpc;
-import tpd;
-import tpe;
-import tpg;
-import tph;
-import tpi;
-import tpk;
-import tpm;
-import tpn;
-import tpo;
-import tpp;
-import tpq;
-import tpr;
 
 public class ReadInJoyDynamicGridView
   extends GridView
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = -1L;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
   private View jdField_a_of_type_AndroidViewView;
+  private ReadInJoyDynamicGridView.OnDragListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDragListener;
+  private ReadInJoyDynamicGridView.OnDropListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDropListener;
+  private ReadInJoyDynamicGridView.OnEditModeChangeListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnEditModeChangeListener;
+  private ReadInJoyDynamicGridView.OnSelectedItemBitmapCreationListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnSelectedItemBitmapCreationListener;
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener;
   private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private tpm jdField_a_of_type_Tpm;
-  private tpn jdField_a_of_type_Tpn;
-  private tpo jdField_a_of_type_Tpo;
-  private tpp jdField_a_of_type_Tpp;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int = 0;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private AbsListView.OnScrollListener jdField_b_of_type_ComTencentWidgetAbsListView$OnScrollListener = new tpe(this);
-  private AdapterView.OnItemClickListener jdField_b_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new toz(this);
+  private AbsListView.OnScrollListener jdField_b_of_type_ComTencentWidgetAbsListView$OnScrollListener = new ReadInJoyDynamicGridView.6(this);
+  private AdapterView.OnItemClickListener jdField_b_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new ReadInJoyDynamicGridView.1(this);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean;
+  private boolean jdField_d_of_type_Boolean = false;
   private int jdField_e_of_type_Int = -1;
   private boolean jdField_e_of_type_Boolean;
   private int jdField_f_of_type_Int = -1;
@@ -80,9 +64,9 @@ public class ReadInJoyDynamicGridView
   private boolean jdField_g_of_type_Boolean = true;
   private int jdField_h_of_type_Int = -1;
   private boolean jdField_h_of_type_Boolean;
-  private int i;
+  private int i = 0;
   private int j = 0;
-  private int k;
+  private int k = 0;
   
   public ReadInJoyDynamicGridView(Context paramContext)
   {
@@ -104,6 +88,9 @@ public class ReadInJoyDynamicGridView
   
   public static float a(View paramView)
   {
+    if (paramView == null) {
+      return 0.0F;
+    }
     return Math.abs((paramView.getRight() - paramView.getLeft()) / 2);
   }
   
@@ -185,15 +172,15 @@ public class ReadInJoyDynamicGridView
     return paramView;
   }
   
-  private tph a()
+  private ReadInJoyDynamicGridView.DynamicGridAdapterInterface a()
   {
-    return (tph)getAdapter();
+    return (ReadInJoyDynamicGridView.DynamicGridAdapterInterface)getAdapter();
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Tpm != null) {
-      this.jdField_a_of_type_Tpm.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDragListener != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDragListener.a(paramInt1, paramInt2);
     }
     a().b(paramInt1, paramInt2);
   }
@@ -219,7 +206,7 @@ public class ReadInJoyDynamicGridView
     this.jdField_d_of_type_Int = this.jdField_e_of_type_Int;
     this.jdField_c_of_type_Int = this.jdField_f_of_type_Int;
     if ((c()) && (b())) {
-      paramView = new tpi(this, paramInt2, paramInt1);
+      paramView = new ReadInJoyDynamicGridView.KitKatSwitchCellAnimator(this, paramInt2, paramInt1);
     }
     for (;;)
     {
@@ -227,9 +214,9 @@ public class ReadInJoyDynamicGridView
       paramView.a(m, n);
       return;
       if (b()) {
-        paramView = new tpq(this, paramInt2, paramInt1);
+        paramView = new ReadInJoyDynamicGridView.PreHoneycombCellAnimator(this, paramInt2, paramInt1);
       } else {
-        paramView = new tpk(this, paramInt2, paramInt1);
+        paramView = new ReadInJoyDynamicGridView.LSwitchCellAnimator(this, paramInt2, paramInt1);
       }
     }
   }
@@ -251,10 +238,10 @@ public class ReadInJoyDynamicGridView
   @TargetApi(11)
   private void a(View paramView)
   {
-    Object localObject = new tpa(this);
+    Object localObject = new ReadInJoyDynamicGridView.2(this);
     localObject = ObjectAnimator.ofObject(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable, "bounds", (TypeEvaluator)localObject, new Object[] { this.jdField_a_of_type_AndroidGraphicsRect });
-    ((ObjectAnimator)localObject).addUpdateListener(new tpb(this));
-    ((ObjectAnimator)localObject).addListener(new tpc(this, paramView));
+    ((ObjectAnimator)localObject).addUpdateListener(new ReadInJoyDynamicGridView.3(this));
+    ((ObjectAnimator)localObject).addListener(new ReadInJoyDynamicGridView.4(this, paramView));
     ((ObjectAnimator)localObject).start();
   }
   
@@ -291,20 +278,20 @@ public class ReadInJoyDynamicGridView
     if (localView != null)
     {
       this.jdField_a_of_type_Long = getAdapter().getItemId(paramInt);
-      if (this.jdField_a_of_type_Tpp != null) {
-        this.jdField_a_of_type_Tpp.a(localView, paramInt, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnSelectedItemBitmapCreationListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnSelectedItemBitmapCreationListener.a(localView, paramInt, this.jdField_a_of_type_Long);
       }
       this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = a(localView);
-      if (this.jdField_a_of_type_Tpp != null) {
-        this.jdField_a_of_type_Tpp.b(localView, paramInt, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnSelectedItemBitmapCreationListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnSelectedItemBitmapCreationListener.b(localView, paramInt, this.jdField_a_of_type_Long);
       }
       if (c()) {
         localView.setVisibility(4);
       }
       this.jdField_a_of_type_Boolean = true;
       a(this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Tpm != null) {
-        this.jdField_a_of_type_Tpm.a(paramInt);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDragListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDragListener.a(paramInt);
       }
     }
   }
@@ -365,7 +352,7 @@ public class ReadInJoyDynamicGridView
     ((AnimatorSet)localObject).playTogether(localLinkedList);
     ((AnimatorSet)localObject).setDuration(300L);
     ((AnimatorSet)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-    ((AnimatorSet)localObject).addListener(new tpd(this));
+    ((AnimatorSet)localObject).addListener(new ReadInJoyDynamicGridView.5(this));
     ((AnimatorSet)localObject).start();
   }
   
@@ -558,8 +545,8 @@ public class ReadInJoyDynamicGridView
   {
     this.jdField_d_of_type_Boolean = false;
     requestDisallowInterceptTouchEvent(false);
-    if (this.jdField_a_of_type_Tpo != null) {
-      this.jdField_a_of_type_Tpo.a(false);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnEditModeChangeListener != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnEditModeChangeListener.a(false);
     }
   }
   
@@ -574,27 +561,27 @@ public class ReadInJoyDynamicGridView
       if (paramInt != -1) {
         b(paramInt);
       }
-    } while (this.jdField_a_of_type_Tpo == null);
-    this.jdField_a_of_type_Tpo.a(true);
+    } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnEditModeChangeListener == null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnEditModeChangeListener.a(true);
   }
   
   public void a(int paramInt1, int paramInt2, Object paramObject)
   {
     Object localObject;
     if ((c()) && (b())) {
-      localObject = new tpi(this, 0, 0);
+      localObject = new ReadInJoyDynamicGridView.KitKatSwitchCellAnimator(this, 0, 0);
     }
     for (;;)
     {
-      if ((getAdapter() instanceof tpg)) {
-        ((tpg)getAdapter()).a(0, paramObject);
+      if ((getAdapter() instanceof ReadInJoyDynamicGridView.BaseDynamicGridAdapter)) {
+        ((ReadInJoyDynamicGridView.BaseDynamicGridAdapter)getAdapter()).a(0, paramObject);
       }
-      ((tpr)localObject).a(paramInt1 + 1, paramInt2);
+      ((ReadInJoyDynamicGridView.SwitchCellAnimator)localObject).a(paramInt1 + 1, paramInt2);
       return;
       if (b()) {
-        localObject = new tpq(this, 0, 0);
+        localObject = new ReadInJoyDynamicGridView.PreHoneycombCellAnimator(this, 0, 0);
       } else {
-        localObject = new tpk(this, 0, 0);
+        localObject = new ReadInJoyDynamicGridView.LSwitchCellAnimator(this, 0, 0);
       }
     }
   }
@@ -606,16 +593,16 @@ public class ReadInJoyDynamicGridView
     this.i = ((int)(8.0F * paramContext.density + 0.5F));
     this.jdField_g_of_type_Int = ((int)(paramContext.density * 16.0F + 0.5F));
     setNumColumns(4);
-    setHorizontalSpacing(ViewUtils.dip2px(0.0F));
-    setVerticalSpacing(ViewUtils.dip2px(0.0F));
+    setHorizontalSpacing(ViewUtils.a(0.0F));
+    setVerticalSpacing(ViewUtils.a(0.0F));
     setSelector(17170445);
     setClipChildren(false);
   }
   
   public void a(Object paramObject)
   {
-    if ((getAdapter() instanceof tpg)) {
-      ((tpg)getAdapter()).b(paramObject);
+    if ((getAdapter() instanceof ReadInJoyDynamicGridView.BaseDynamicGridAdapter)) {
+      ((ReadInJoyDynamicGridView.BaseDynamicGridAdapter)getAdapter()).b(paramObject);
     }
   }
   
@@ -631,17 +618,17 @@ public class ReadInJoyDynamicGridView
     }
     Object localObject;
     if ((c()) && (b())) {
-      localObject = new tpi(this, 0, 0);
+      localObject = new ReadInJoyDynamicGridView.KitKatSwitchCellAnimator(this, 0, 0);
     }
     for (;;)
     {
       a().b(paramInt1);
-      ((tpr)localObject).a(paramInt1, paramInt2);
+      ((ReadInJoyDynamicGridView.SwitchCellAnimator)localObject).a(paramInt1, paramInt2);
       return true;
       if (b()) {
-        localObject = new tpq(this, 0, 0);
+        localObject = new ReadInJoyDynamicGridView.PreHoneycombCellAnimator(this, 0, 0);
       } else {
-        localObject = new tpk(this, 0, 0);
+        localObject = new ReadInJoyDynamicGridView.LSwitchCellAnimator(this, 0, 0);
       }
     }
   }
@@ -732,14 +719,14 @@ public class ReadInJoyDynamicGridView
             b();
             return false;
             c();
-            if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Tpn != null))
+            if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDropListener != null))
             {
-              this.jdField_a_of_type_Tpn.a();
+              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDropListener.a();
               continue;
               e();
-              if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Tpn != null))
+              if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDropListener != null))
               {
-                this.jdField_a_of_type_Tpn.a();
+                this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDropListener.a();
                 continue;
                 if (paramMotionEvent.getPointerId((paramMotionEvent.getAction() & 0xFF00) >> 8) == this.jdField_h_of_type_Int) {
                   c();
@@ -772,19 +759,19 @@ public class ReadInJoyDynamicGridView
     this.k = paramInt;
   }
   
-  public void setOnDragListener(tpm paramtpm)
+  public void setOnDragListener(ReadInJoyDynamicGridView.OnDragListener paramOnDragListener)
   {
-    this.jdField_a_of_type_Tpm = paramtpm;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDragListener = paramOnDragListener;
   }
   
-  public void setOnDropListener(tpn paramtpn)
+  public void setOnDropListener(ReadInJoyDynamicGridView.OnDropListener paramOnDropListener)
   {
-    this.jdField_a_of_type_Tpn = paramtpn;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnDropListener = paramOnDropListener;
   }
   
-  public void setOnEditModeChangeListener(tpo paramtpo)
+  public void setOnEditModeChangeListener(ReadInJoyDynamicGridView.OnEditModeChangeListener paramOnEditModeChangeListener)
   {
-    this.jdField_a_of_type_Tpo = paramtpo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnEditModeChangeListener = paramOnEditModeChangeListener;
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
@@ -798,14 +785,14 @@ public class ReadInJoyDynamicGridView
     this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = paramOnScrollListener;
   }
   
-  public void setOnSelectedItemBitmapCreationListener(tpp paramtpp)
+  public void setOnSelectedItemBitmapCreationListener(ReadInJoyDynamicGridView.OnSelectedItemBitmapCreationListener paramOnSelectedItemBitmapCreationListener)
   {
-    this.jdField_a_of_type_Tpp = paramtpp;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView$OnSelectedItemBitmapCreationListener = paramOnSelectedItemBitmapCreationListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView
  * JD-Core Version:    0.7.0.1
  */

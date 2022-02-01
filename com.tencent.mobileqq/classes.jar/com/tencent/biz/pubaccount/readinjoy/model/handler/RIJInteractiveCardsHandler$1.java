@@ -1,22 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model.handler;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import java.util.ArrayList;
-import pvm;
-import qix;
 
-public class RIJInteractiveCardsHandler$1
+class RIJInteractiveCardsHandler$1
   implements Runnable
 {
-  public RIJInteractiveCardsHandler$1(qix paramqix, ArrayList paramArrayList) {}
+  RIJInteractiveCardsHandler$1(RIJInteractiveCardsHandler paramRIJInteractiveCardsHandler, ArrayList paramArrayList) {}
   
   public void run()
   {
-    pvm.a().a(this.a);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.handler.RIJInteractiveCardsHandler.1
  * JD-Core Version:    0.7.0.1
  */

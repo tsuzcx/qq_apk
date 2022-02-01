@@ -8,8 +8,8 @@ public final class FaceInfo
   extends JceStruct
 {
   static byte[] cache_vFaceID;
-  public int uAddTimeStamp;
-  public byte[] vFaceID;
+  public int uAddTimeStamp = 0;
+  public byte[] vFaceID = null;
   
   public FaceInfo() {}
   

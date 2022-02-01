@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
 
 class DesktopDataManager$15$1
   implements Runnable
 {
-  DesktopDataManager$15$1(DesktopDataManager.15 param15, List paramList, StringBuilder paramStringBuilder) {}
+  DesktopDataManager$15$1(DesktopDataManager.15 param15, List paramList) {}
   
   public void run()
   {
-    if (DesktopDataManager.access$1600(this.this$1.this$0).size() <= 0)
+    if ((this.val$appInfoList.size() > 0) && ((DesktopDataManager.access$1600(this.this$1.this$0) == null) || (DesktopDataManager.access$1600(this.this$1.this$0).size() == 0)))
     {
-      DesktopDataManager.access$1600(this.this$1.this$0).addAll(this.val$backupList);
+      DesktopDataManager.access$1602(this.this$1.this$0, new ArrayList(this.val$appInfoList));
       MiniAppUtils.updateMiniAppList(2);
-      QLog.e("DesktopDataManager", 1, "useLocalDataIfRequestFailed, " + this.val$sb.toString());
     }
+    while ((DesktopDataManager.access$1600(this.this$1.this$0) != null) && (DesktopDataManager.access$1600(this.this$1.this$0).size() != 0)) {
+      return;
+    }
+    DesktopDataManager.access$2700(this.this$1.this$0);
   }
 }
 

@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class ViolaBridgeWebView
   extends CustomWebView
 {
-  private HashMap<String, Object> a = new HashMap();
+  private HashMap<String, ViolaBridgeApiHelper.InvokeListener> a = new HashMap();
   
   public ViolaBridgeWebView(Context paramContext)
   {
@@ -30,7 +30,7 @@ public class ViolaBridgeWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.ViolaBridgeWebView
  * JD-Core Version:    0.7.0.1
  */

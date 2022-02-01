@@ -5,9 +5,6 @@ import android.text.TextUtils;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,13 +15,13 @@ public final class ReqWalletConfig
   static Map<String, String> cache_mParameter = new HashMap();
   public String adcode = "";
   public String commonMsg = "";
-  public int iNetType;
-  public LBSInfo lbsInfo;
-  public Map<String, String> mParameter;
+  public int iNetType = 0;
+  public LBSInfo lbsInfo = null;
+  public Map<String, String> mParameter = null;
   public String platform = "";
-  public long reqType;
-  public long seriesNo;
-  public long uin;
+  public long reqType = 0L;
+  public long seriesNo = 0L;
+  public long uin = 0L;
   public String version = "";
   
   static
@@ -32,17 +29,17 @@ public final class ReqWalletConfig
     cache_mParameter.put("", "");
   }
   
-  public static ReqWalletConfig createReq(long paramLong1, long paramLong2, long paramLong3, String paramString, Map<String, String> paramMap)
+  public static ReqWalletConfig createReq(long paramLong1, long paramLong2, long paramLong3, String paramString1, Map<String, String> paramMap, String paramString2, String paramString3, int paramInt)
   {
     ReqWalletConfig localReqWalletConfig = new ReqWalletConfig();
     localReqWalletConfig.reqType = paramLong1;
     localReqWalletConfig.uin = paramLong2;
-    localReqWalletConfig.platform = ("Android|" + DeviceInfoUtil.getDeviceOSVersion() + "|" + DeviceInfoUtil.getModel());
-    localReqWalletConfig.version = DeviceInfoUtil.getQQVersion();
-    localReqWalletConfig.iNetType = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext());
+    localReqWalletConfig.platform = paramString2;
+    localReqWalletConfig.version = paramString3;
+    localReqWalletConfig.iNetType = paramInt;
     localReqWalletConfig.seriesNo = paramLong3;
-    if (!TextUtils.isEmpty(paramString)) {
-      localReqWalletConfig.commonMsg = paramString;
+    if (!TextUtils.isEmpty(paramString1)) {
+      localReqWalletConfig.commonMsg = paramString1;
     }
     if (paramMap != null) {
       localReqWalletConfig.mParameter = paramMap;

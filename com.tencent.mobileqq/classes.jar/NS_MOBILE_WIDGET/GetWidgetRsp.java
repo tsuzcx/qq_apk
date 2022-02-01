@@ -11,17 +11,17 @@ public final class GetWidgetRsp
   static PluginInfo cache_plugin_info = new PluginInfo();
   static byte[] cache_widget = (byte[])new byte[1];
   public String attach_info = "";
-  public int expire;
-  public int iNameplateFlag;
-  public int iNeedRedPacket;
-  public int no_update;
-  public PartnerPlugin partner_info;
-  public PluginInfo plugin_info;
-  public int stored_widget_id;
+  public int expire = 0;
+  public int iNameplateFlag = 0;
+  public int iNeedRedPacket = 0;
+  public int no_update = 0;
+  public PartnerPlugin partner_info = null;
+  public PluginInfo plugin_info = null;
+  public int stored_widget_id = 0;
   public String tmp_data_json = "";
   public String tmp_url = "";
-  public int today_delta;
-  public byte[] widget;
+  public int today_delta = 0;
+  public byte[] widget = null;
   
   static
   {

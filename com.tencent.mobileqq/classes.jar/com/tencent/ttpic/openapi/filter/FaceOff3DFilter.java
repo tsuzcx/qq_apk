@@ -21,9 +21,9 @@ import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.model.FaceItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
@@ -274,7 +274,7 @@ public class FaceOff3DFilter
     while (!AlgoUtils.isFace3DPointsValid(this.detectInfo.face3DVerticesArray)) {
       return;
     }
-    FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoordsForFaceOffFilter(VideoMaterialUtil.copyList(this.detectInfo.facePoints), 5.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.face3dTexCoords);
+    FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoordsForFaceOffFilter(VideoMaterial.copyList(this.detectInfo.facePoints), 5.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.face3dTexCoords);
     addAttribParam(new AttributeParam("inputTextureCoordinate", this.face3dTexCoords, 2));
   }
   
@@ -511,7 +511,7 @@ public class FaceOff3DFilter
   
   public void updatePointParams(List<PointF> paramList, float[] paramArrayOfFloat)
   {
-    Object localObject = FaceOffUtil.getFullCoordsForFaceOffFilter(VideoMaterialUtil.copyList(paramList), 5.0F);
+    Object localObject = FaceOffUtil.getFullCoordsForFaceOffFilter(VideoMaterial.copyList(paramList), 5.0F);
     this.pointVis = FaceOffUtil.getFullPointsVisForFaceOffFilter(paramArrayOfFloat);
     setPositions(FaceOffUtil.initFacePositions((List)localObject, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
     setCoordNum(690);
@@ -610,7 +610,7 @@ public class FaceOff3DFilter
       this.lastIndex = -1;
       return;
     }
-    List localList = VideoMaterialUtil.copyList(paramObject.facePoints);
+    List localList = VideoMaterial.copyList(paramObject.facePoints);
     float[] arrayOfFloat = paramObject.pointsVis;
     updateMouthOpenFactor(localList);
     updatePointParams(localList, arrayOfFloat);
@@ -663,7 +663,7 @@ public class FaceOff3DFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FaceOff3DFilter
  * JD-Core Version:    0.7.0.1
  */

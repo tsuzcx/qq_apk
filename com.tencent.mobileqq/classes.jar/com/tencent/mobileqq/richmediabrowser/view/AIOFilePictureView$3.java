@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
 import android.net.Uri;
-import bbra;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import java.io.File;
 import java.util.ArrayList;
 
-public class AIOFilePictureView$3
+class AIOFilePictureView$3
   implements Runnable
 {
-  public AIOFilePictureView$3(bbra parambbra, File paramFile, ArrayList paramArrayList) {}
+  AIOFilePictureView$3(AIOFilePictureView paramAIOFilePictureView, File paramFile, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class AIOFilePictureView$3
       if (this.jdField_a_of_type_JavaIoFile != null)
       {
         Uri localUri = Uri.parse("file://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        bbra.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
+        AIOFilePictureView.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
       }
       return;
     }
@@ -31,7 +30,7 @@ public class AIOFilePictureView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFilePictureView.3
  * JD-Core Version:    0.7.0.1
  */

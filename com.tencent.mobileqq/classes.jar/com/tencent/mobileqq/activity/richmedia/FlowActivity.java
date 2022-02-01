@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import Override;
-import alpv;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -25,14 +23,14 @@ public abstract class FlowActivity
     this.jdField_a_of_type_Boolean = true;
   }
   
-  protected alpv a()
-  {
-    return null;
-  }
-  
   public View a()
   {
     return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  protected FlowPanel a()
+  {
+    return null;
   }
   
   protected void a(Bundle paramBundle)
@@ -40,7 +38,7 @@ public abstract class FlowActivity
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297090));
+    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297111));
   }
   
   protected abstract void a(ViewGroup paramViewGroup);
@@ -59,7 +57,7 @@ public abstract class FlowActivity
     super.finish();
     if (this.jdField_a_of_type_Boolean)
     {
-      overridePendingTransition(0, 2130772001);
+      overridePendingTransition(0, 2130772003);
       return;
     }
     overridePendingTransition(0, 0);
@@ -84,17 +82,17 @@ public abstract class FlowActivity
     getWindow().addFlags(512);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null) {
-      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297090));
+      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297111));
     }
     a(paramBundle);
     setContentView(2131558451);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131367062));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131367254));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       a(this.jdField_a_of_type_AndroidViewViewGroup);
     }
     paramBundle = a();
     if (paramBundle != null) {
-      paramBundle.a((ViewGroup)findViewById(2131367042));
+      paramBundle.a((ViewGroup)findViewById(2131367234));
     }
   }
   
@@ -131,7 +129,7 @@ public abstract class FlowActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.FlowActivity
  * JD-Core Version:    0.7.0.1
  */

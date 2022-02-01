@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import kotlin.Metadata;
 import org.junit.Test;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/mini/entry/util/Xml2Layout;", "", "()V", "createLayout", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/mini/entry/util/Xml2Layout;", "", "()V", "createLayout", "", "qqmini_impl_release"}, k=1, mv={1, 1, 16})
 public final class Xml2Layout
 {
   @Test

@@ -2,29 +2,29 @@ package com.tencent.biz.subscribe.utils;
 
 public class EvilReportUtil$EvilReportParams
 {
-  public String appid = "";
-  public String appname = "";
-  public String audio_evidence = "";
-  public String buddyflag = "";
-  public String contentid = "";
-  public String eviluin = "";
-  public String file_evidence = "";
-  public String groupid = "";
-  public String img_evidence = "";
-  public String scene = "";
-  public String srv_para = "";
-  public String subapp = "";
-  public String system = "";
-  public String text_evidence = "";
-  public String uintype = "";
-  public String url_evidence = "";
-  public String user_input_param = "";
-  public String version = "";
-  public String video_evidence = "";
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.EvilReportUtil.EvilReportParams
  * JD-Core Version:    0.7.0.1
  */

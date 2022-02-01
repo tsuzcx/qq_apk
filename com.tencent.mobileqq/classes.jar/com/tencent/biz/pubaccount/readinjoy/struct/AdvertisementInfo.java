@@ -4,10 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bmhv;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.AdClickPos;
 import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadExKt;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdDislikeInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementExtInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementSoftInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.CommentAdParams;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.experiment.AdExperimentData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdSwitchUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -20,22 +25,15 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import rol;
-import rpp;
 import tencent.im.oidb.articlesummary.articlesummary.AdInfo;
 import tencent.im.oidb.articlesummary.articlesummary.NegFeedback;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
-import ufc;
-import ufz;
-import uga;
-import ugb;
-import ugh;
-import ukr;
 
 public class AdvertisementInfo
   extends ArticleInfo
@@ -48,115 +46,126 @@ public class AdvertisementInfo
   public static final int AD_STYLE_3 = 3;
   public static final int APP_STATE_DOWNLOAD = 0;
   public static final int APP_STATE_OPEN = 1;
-  public static final Parcelable.Creator<AdvertisementInfo> CREATOR = new rol();
+  public static final Parcelable.Creator<AdvertisementInfo> CREATOR = new AdvertisementInfo.1();
   public static final int IMAX_IMG_TYPE = 1002;
   public static final int IMAX_VIDEO_TYPE = 1001;
   public static final int PRODUCT_TYPE_APP = 12;
   public static final String TABLE_NAME = AdvertisementInfo.class.getSimpleName();
   public AdClickPos adClickPos;
   @notColumn
-  public ugh adExperimentData = new ugh();
+  public AdExperimentData adExperimentData = new AdExperimentData();
   @notColumn
-  public int adStrategyType;
+  public int adPosType;
   @notColumn
-  public int adbt;
+  public int adStrategyType = 0;
   @notColumn
-  public int adpa;
+  public int adbt = 0;
   @notColumn
-  public int adpb;
+  public int adpa = 0;
+  @notColumn
+  public int adpb = 0;
+  @notColumn
   public String amsNfbUrl;
   public int clickPos = -1;
-  public int clickType;
+  public int clickType = 0;
   @notColumn
   public int downloadState = 0;
+  @notColumn
+  public double ecpm;
   @notColumn
   public VideoInfo.GameAdComData gameAdComData;
   @notColumn
   public boolean hasAddExposure;
   @notColumn
-  public boolean isBottomAd;
-  public boolean isClickFromPkFragment;
+  public boolean isBottomAd = false;
+  public boolean isClickFromPkFragment = false;
+  @notColumn
   public boolean isClickReplay;
   @notColumn
-  public boolean isHideForAnimate;
+  public int isContract;
   @notColumn
-  public boolean isIMaxAndNewStyle;
-  public boolean isMultiyVideo;
-  public boolean isShowBrandAnimate;
+  public boolean isHideForAnimate = false;
   @notColumn
-  public boolean isShowingGuide;
+  public boolean isIMaxAndNewStyle = false;
+  @notColumn
+  public boolean isKolGame;
+  public boolean isMultiyVideo = false;
+  public boolean isShowBrandAnimate = false;
+  @notColumn
+  public boolean isShowingGuide = false;
+  @notColumn
   public String liujinReportUrl;
-  public long mADVideoAutoPlay;
-  public long mAdAdvertiseId;
-  public long mAdAid;
-  public String mAdAppDownLoadSchema;
-  public String mAdAppJson;
-  public String mAdApurl;
-  public String mAdBtnTxt;
-  public String mAdCanvasJson;
-  public String mAdCl;
-  public String mAdCorporateImageName;
-  public String mAdCorporateLogo;
-  public String mAdCorporationName;
-  public int mAdCostType;
-  public String mAdCustomizedInvokeUrl;
-  public String mAdDesc;
-  public int mAdDestType;
+  public long mADVideoAutoPlay = 0L;
+  public long mAdAdvertiseId = 0L;
+  public long mAdAid = 0L;
+  public String mAdAppDownLoadSchema = null;
+  public String mAdAppJson = null;
+  public String mAdApurl = null;
+  public String mAdBtnTxt = null;
+  public String mAdCanvasJson = null;
+  public String mAdCl = null;
+  public String mAdCorporateImageName = null;
+  public String mAdCorporateLogo = null;
+  public String mAdCorporationName = null;
+  public int mAdCostType = 0;
+  public String mAdCustomizedInvokeUrl = null;
+  public String mAdDesc = null;
+  public int mAdDestType = 0;
   @notColumn
-  public ArrayList<AdDislikeInfo> mAdDislikeInfos;
+  public ArrayList<AdDislikeInfo> mAdDislikeInfos = null;
   public String mAdDownloadApiUrl;
-  public String mAdEffectUrl;
-  public String mAdExt;
-  public String mAdExtInfo;
-  public long mAdFeedId;
-  public long mAdFetchTime;
-  public String mAdImg;
+  public String mAdEffectUrl = null;
+  public String mAdExt = null;
+  public String mAdExtInfo = null;
+  public long mAdFeedId = 0L;
+  public long mAdFetchTime = 0L;
+  public String mAdImg = null;
   public ArrayList<String> mAdImgList = new ArrayList();
-  public String mAdImgs;
-  public String mAdInteractionReportUrl;
-  public int mAdJumpMode;
-  public int mAdKdPos;
-  public String mAdLandingPage;
-  public String mAdLandingPageReportUrl;
-  public int mAdLayout;
+  public String mAdImgs = null;
+  public String mAdInteractionReportUrl = null;
+  public int mAdJumpMode = 0;
+  public int mAdKdPos = 0;
+  public String mAdLandingPage = null;
+  public String mAdLandingPageReportUrl = null;
+  public int mAdLayout = 0;
   @notColumn
   public int mAdLocalSource = 1;
-  public int mAdMaterialHeight;
-  public int mAdMaterialId;
-  public int mAdMaterialWidth;
-  public long mAdNocoId;
-  public long mAdPosID;
-  public int mAdPosLayout;
-  public String mAdPrice;
-  public String mAdProductId;
-  public int mAdProductType;
-  public String mAdRl;
+  public int mAdMaterialHeight = 0;
+  public int mAdMaterialId = 0;
+  public int mAdMaterialWidth = 0;
+  public long mAdNocoId = 0L;
+  public long mAdPosID = 0L;
+  public int mAdPosLayout = 0;
+  public String mAdPrice = null;
+  public String mAdProductId = null;
+  public int mAdProductType = 0;
+  public String mAdRl = null;
   public int mAdScoreNum;
-  public String mAdTraceId;
-  public String mAdTxt;
-  public int mAdType;
-  public long mAdUin;
-  public String mAdVia;
-  public long mAdVideoFileSize;
-  public String mAdVideoUrl;
-  public String mAdViewId;
+  public String mAdTraceId = null;
+  public String mAdTxt = null;
+  public int mAdType = 0;
+  public long mAdUin = 0L;
+  public String mAdVia = null;
+  public long mAdVideoFileSize = 0L;
+  public String mAdVideoUrl = null;
+  public String mAdViewId = null;
   @notColumn
-  public ufz mAdvertisementExtInfo;
+  public AdvertisementExtInfo mAdvertisementExtInfo;
   @notColumn
-  public uga mAdvertisementSoftInfo;
+  public AdvertisementSoftInfo mAdvertisementSoftInfo;
   @notColumn
   public JSONObject mBusiJson;
   @notColumn
-  public ArrayList<String> mC2SClickUrl;
+  public ArrayList<String> mC2SClickUrl = null;
   @notColumn
-  public ArrayList<String> mC2SExposureUrl;
+  public ArrayList<String> mC2SExposureUrl = null;
   public int mC2SReportTriggerTime;
   @notColumn
-  public int mC2SSwitch;
+  public int mC2SSwitch = 0;
   @notColumn
-  public ArrayList<String> mC2SVideoPlayUrl;
+  public ArrayList<String> mC2SVideoPlayUrl = null;
   @notColumn
-  public ugb mCommentAdParams;
+  public CommentAdParams mCommentAdParams;
   @notColumn
   public String mImaxImg;
   @notColumn
@@ -174,7 +183,7 @@ public class AdvertisementInfo
   public int mInteractEffectType;
   public String mInteractImageList = "";
   public int mInteractType;
-  public rpp mLocalInfo;
+  public LocalInfo mLocalInfo = null;
   @notColumn
   public int mOrigin;
   public int mPhoneComponetId;
@@ -188,14 +197,19 @@ public class AdvertisementInfo
   public String mSoftAdData;
   public int mSoftAdType;
   public String mSubordinateProductId;
-  public int materialGroup;
+  public int materialGroup = 0;
   public int miniProgramType;
+  @notColumn
   public String packageName;
   @notColumn
   public int progress;
   @notColumn
   public int replay;
+  @notColumn
+  public String scene;
+  @notColumn
   public String ticket;
+  @notColumn
   public int videoReplayCount;
   
   public AdvertisementInfo() {}
@@ -260,7 +274,7 @@ public class AdvertisementInfo
     this.mSoftAdType = paramParcel.readInt();
     this.mSoftAdData = paramParcel.readString();
     this.mRevisionVideoType = paramParcel.readInt();
-    this.mAdvertisementExtInfo = new ufz(this.mAdExtInfo);
+    this.mAdvertisementExtInfo = new AdvertisementExtInfo(this.mAdExtInfo);
     processAdExtraDataInfo(this.mAdExtInfo);
   }
   
@@ -343,20 +357,20 @@ public class AdvertisementInfo
     }
     this.mAdVideoFileSize = paramAdInfo.uint64_video_file_size.get();
     processAdExtraDataInfo(this.mAdExtInfo);
-    this.mLocalInfo = new rpp(paramAdInfo.local_info);
+    this.mLocalInfo = new LocalInfo(paramAdInfo.local_info);
     this.mInteractEffectType = paramAdInfo.uint32_interact_effect_type.get();
     if (paramAdInfo.string_interact_image_list.has()) {
       this.mInteractImageList = paramAdInfo.string_interact_image_list.get();
     }
     this.mInteractType = paramAdInfo.uint32_interact_type.get();
-    this.mAdvertisementExtInfo = new ufz(this.mAdExtInfo);
+    this.mAdvertisementExtInfo = new AdvertisementExtInfo(this.mAdExtInfo);
     processAdExt(this.mAdExt);
   }
   
   public static int getAdStyle(AdvertisementInfo paramAdvertisementInfo)
   {
     if (isAdvertisementInfo(paramAdvertisementInfo)) {
-      return ukr.c(paramAdvertisementInfo);
+      return ReadInJoyAdSwitchUtil.c(paramAdvertisementInfo);
     }
     return 0;
   }
@@ -364,7 +378,7 @@ public class AdvertisementInfo
   public static int getBigAppAdStyle(AdvertisementInfo paramAdvertisementInfo)
   {
     if (isAppAdvertisementInfo(paramAdvertisementInfo)) {
-      return ukr.c(paramAdvertisementInfo);
+      return ReadInJoyAdSwitchUtil.c(paramAdvertisementInfo);
     }
     return 0;
   }
@@ -380,7 +394,7 @@ public class AdvertisementInfo
     {
       paramBaseArticleInfo = (AdvertisementInfo)paramBaseArticleInfo;
       if ((paramBaseArticleInfo.mAdvertisementSoftInfo != null) && (paramBaseArticleInfo.mAdvertisementSoftInfo.e == 1)) {}
-      while ((ufc.e(paramBaseArticleInfo)) || (ufc.g(paramBaseArticleInfo)) || (paramBaseArticleInfo.mAdProductType == 12)) {
+      while ((RIJAdDownloadExKt.e(paramBaseArticleInfo)) || (RIJAdDownloadExKt.g(paramBaseArticleInfo)) || (paramBaseArticleInfo.mAdProductType == 12)) {
         return true;
       }
       return false;
@@ -481,10 +495,10 @@ public class AdvertisementInfo
         QLog.d("processAdExtraDataInfo", 2, "buttonFlag = " + paramJSONObject);
       }
       if (paramJSONObject.equals("0")) {
-        break label71;
+        break label72;
       }
     }
-    label71:
+    label72:
     for (boolean bool = true;; bool = false)
     {
       this.mShowAdButton = bool;
@@ -536,14 +550,14 @@ public class AdvertisementInfo
     if (!TextUtils.isEmpty(this.amsNfbUrl)) {
       return this.amsNfbUrl;
     }
-    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.N)))
+    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.V)))
     {
-      this.amsNfbUrl = this.mAdvertisementSoftInfo.N;
+      this.amsNfbUrl = this.mAdvertisementSoftInfo.V;
       return this.amsNfbUrl;
     }
-    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.E)))
+    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.F)))
     {
-      this.amsNfbUrl = this.gameAdComData.E;
+      this.amsNfbUrl = this.gameAdComData.F;
       return this.amsNfbUrl;
     }
     return null;
@@ -574,14 +588,14 @@ public class AdvertisementInfo
     if (!TextUtils.isEmpty(this.liujinReportUrl)) {
       return this.liujinReportUrl;
     }
-    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.L)))
+    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.T)))
     {
-      this.liujinReportUrl = this.mAdvertisementSoftInfo.L;
+      this.liujinReportUrl = this.mAdvertisementSoftInfo.T;
       return this.liujinReportUrl;
     }
-    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.C)))
+    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.D)))
     {
-      this.liujinReportUrl = this.gameAdComData.C;
+      this.liujinReportUrl = this.gameAdComData.D;
       return this.liujinReportUrl;
     }
     return null;
@@ -628,14 +642,14 @@ public class AdvertisementInfo
     if (!TextUtils.isEmpty(this.ticket)) {
       return this.ticket;
     }
-    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.M)))
+    if ((this.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(this.mAdvertisementSoftInfo.U)))
     {
-      this.ticket = this.mAdvertisementSoftInfo.M;
+      this.ticket = this.mAdvertisementSoftInfo.U;
       return this.ticket;
     }
-    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.D)))
+    if ((this.gameAdComData != null) && (!TextUtils.isEmpty(this.gameAdComData.E)))
     {
-      this.ticket = this.gameAdComData.D;
+      this.ticket = this.gameAdComData.E;
       return this.ticket;
     }
     return null;
@@ -770,6 +784,12 @@ public class AdvertisementInfo
       if (paramString.has("phone_component_id")) {
         this.mPhoneComponetId = paramString.optInt("phone_component_id");
       }
+      if (paramString.has("ecpm")) {
+        this.ecpm = paramString.optDouble("ecpm");
+      }
+      if (paramString.has("isContract")) {
+        this.isContract = paramString.optInt("isContract", 0);
+      }
       if (paramString.has("showAdType")) {
         this.mImaxShowAdType = paramString.optInt("showAdType");
       }
@@ -788,11 +808,11 @@ public class AdvertisementInfo
       if (paramString.has("imaxShowSlipAllowMs")) {
         this.mImaxShowSlipAllowMs = paramString.optInt("imaxShowSlipAllowMs", 3000);
       }
-      this.mImaxStyle = bmhv.a("sp_key_ad_imax_style");
+      this.mImaxStyle = ReadInJoyHelper.a("sp_key_ad_imax_style");
       if ((this.mImaxShowAdType == 1001) && ("1".equals(this.mImaxStyle))) {
         this.isIMaxAndNewStyle = true;
       }
-      this.mCommentAdParams = new ugb();
+      this.mCommentAdParams = new CommentAdParams();
       this.mCommentAdParams.jdField_a_of_type_Boolean = paramString.optBoolean("comment_get_ads");
       this.mCommentAdParams.jdField_b_of_type_Boolean = paramString.optBoolean("comment_show_comment");
       this.mCommentAdParams.jdField_c_of_type_Boolean = paramString.optBoolean("comment_button_flag");
@@ -810,12 +830,12 @@ public class AdvertisementInfo
   
   public void processSoftDataInfo(String paramString)
   {
-    this.mAdvertisementSoftInfo = new uga(paramString);
+    this.mAdvertisementSoftInfo = new AdvertisementSoftInfo(paramString);
   }
   
   public void processSoftDataInfo(JSONObject paramJSONObject)
   {
-    this.mAdvertisementSoftInfo = new uga(paramJSONObject);
+    this.mAdvertisementSoftInfo = new AdvertisementSoftInfo(paramJSONObject);
   }
   
   public void resetClickPos()
@@ -897,7 +917,7 @@ public class AdvertisementInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -76,13 +76,13 @@ public class PTSScrollView
     clearLastVisibleChildIndexList();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     clearLastVisibleChildIndexList();
   }
   
-  protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
+  public void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
     if (paramInt != 0) {
@@ -113,7 +113,7 @@ public class PTSScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSScrollView
  * JD-Core Version:    0.7.0.1
  */

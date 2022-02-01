@@ -5,92 +5,86 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qphone.base.util.QLog;
 
 public class ImmersiveTitleBar2
   extends View
 {
-  public static boolean a;
-  public static boolean b;
-  public int a;
-  private int b;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
-  }
+  public static boolean TRANSLUCENT_STATUS_BAR = true;
+  public static boolean mNeedDrawStatus = true;
+  private int mStatusBarHeight;
+  public int mViewHeight;
   
   public ImmersiveTitleBar2(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    initUI(paramContext);
   }
   
   public ImmersiveTitleBar2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(paramContext);
+    initUI(paramContext);
   }
   
   public ImmersiveTitleBar2(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramContext);
+    initUI(paramContext);
   }
   
-  public void a(int paramInt)
-  {
-    setBackgroundColor(paramInt);
-  }
-  
-  public void a(Context paramContext)
+  public void initUI(Context paramContext)
   {
     boolean bool = true;
     if (QLog.isColorLevel()) {
       QLog.d("status", 2, "ImmersiveTitleBar initUI");
     }
-    if ((jdField_a_of_type_Boolean) && (ImmersiveUtils.isSupporImmersive() == 1))
+    if ((TRANSLUCENT_STATUS_BAR) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
-      jdField_b_of_type_Boolean = bool;
-      this.jdField_b_of_type_Int = ImmersiveUtils.getStatusBarHeight(paramContext);
-      if (!jdField_b_of_type_Boolean) {
-        break label74;
+      mNeedDrawStatus = bool;
+      this.mStatusBarHeight = ImmersiveUtils.getStatusBarHeight(paramContext);
+      if (!mNeedDrawStatus) {
+        break label73;
       }
-      setCustomHeight(this.jdField_b_of_type_Int);
+      setCustomHeight(this.mStatusBarHeight);
     }
     for (;;)
     {
-      if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
-        break label82;
+      if (!QQTheme.b()) {
+        break label81;
       }
-      setBackgroundResource(2130850109);
+      setBackgroundResource(2130850507);
       return;
       bool = false;
       break;
-      label74:
+      label73:
       setCustomHeight(0);
     }
-    label82:
-    setBackgroundColor(getResources().getColor(2131167084));
+    label81:
+    setBackgroundColor(getResources().getColor(2131167091));
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
-    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int, 1073741824));
-    setMeasuredDimension(getMeasuredWidth(), this.jdField_a_of_type_Int);
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.mViewHeight, 1073741824));
+    setMeasuredDimension(getMeasuredWidth(), this.mViewHeight);
+  }
+  
+  public void resetBkColor(int paramInt)
+  {
+    setBackgroundColor(paramInt);
   }
   
   public void setCustomHeight(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.mViewHeight = paramInt;
     requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.immersive.ImmersiveTitleBar2
  * JD-Core Version:    0.7.0.1
  */

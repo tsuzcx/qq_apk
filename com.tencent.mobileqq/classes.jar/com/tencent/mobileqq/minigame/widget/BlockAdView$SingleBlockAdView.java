@@ -43,10 +43,10 @@ class BlockAdView$SingleBlockAdView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131559459, this, true);
-    this.mIconView = ((ImageView)findViewById(2131371350));
-    this.mNameView = ((TextView)findViewById(2131371351));
-    this.mAdIconView = ((ImageView)findViewById(2131371349));
+    this.mLayoutInflater.inflate(2131559527, this, true);
+    this.mIconView = ((ImageView)findViewById(2131371630));
+    this.mNameView = ((TextView)findViewById(2131371631));
+    this.mAdIconView = ((ImageView)findViewById(2131371629));
   }
   
   public void setData(MiniAppInfo paramMiniAppInfo, GdtAd paramGdtAd, int paramInt)

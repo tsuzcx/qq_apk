@@ -4,71 +4,42 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anri;
-import aqnl;
-import ayyw;
-import ayyx;
-import ayyy;
-import ayyz;
-import ayza;
-import ayzb;
-import ayzc;
-import ayzd;
-import ayze;
-import ayzf;
-import azac;
-import azal;
-import azaz;
-import azba;
-import azbb;
-import azbd;
-import azbe;
-import azbh;
-import azbj;
-import azbo;
-import azbq;
-import azbs;
-import azbu;
-import azby;
-import azbz;
-import azcb;
-import azcd;
-import azce;
-import azch;
-import azcj;
-import azck;
-import azcl;
-import azfj;
-import bdla;
-import bhdj;
-import bhmz;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.chat.autoreply.AutoReplyUtil;
 import com.tencent.mobileqq.data.AutoReplyText;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.onlinestatus.view.AutoStatusAccountView;
+import com.tencent.mobileqq.onlinestatus.view.BaseStatusCardView.OnDismissCallback;
+import com.tencent.mobileqq.onlinestatus.view.MyMoodView;
+import com.tencent.mobileqq.onlinestatus.view.StatusCardViewHolder;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.vas.CustomOnlineStatusManager.Utils;
 import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -82,7 +53,7 @@ import mqq.os.MqqHandler;
 
 public class AccountOnlineStateActivity
   extends IphoneTitleBarFragment
-  implements View.OnClickListener, azal, azbb, azbz, azcd, azck
+  implements View.OnClickListener, AutoReplyAdapter.OnAutoReplyItemListener, BaseOnlineStatusDisplayInfo.UpdateUIListener, OnlineStatusPagerAdapter.OnStatusItemClickListener, OnlineStatusPanel.OnlineStatusPanelListener, OnlineStatusPermissionManager.ReceiveDataListener, OnlineStatusViewCtrl.OnStatusItemCheckListener, BaseStatusCardView.OnDismissCallback
 {
   private long jdField_a_of_type_Long;
   private volatile FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
@@ -90,35 +61,43 @@ public class AccountOnlineStateActivity
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private azac jdField_a_of_type_Azac;
-  private azbd jdField_a_of_type_Azbd = new ayze(this);
-  private azbe jdField_a_of_type_Azbe = new azbe();
-  private azbh jdField_a_of_type_Azbh = new azbh(false, false);
-  private azbs jdField_a_of_type_Azbs = new azbs();
-  private azby jdField_a_of_type_Azby = new ayzd(this);
-  private azce jdField_a_of_type_Azce = new ayzc(this);
-  private azcj jdField_a_of_type_Azcj;
-  private azfj jdField_a_of_type_Azfj;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ayza(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new AccountOnlineStateActivity.4(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private AutoReplyText jdField_a_of_type_ComTencentMobileqqDataAutoReplyText;
+  private AutoReplyAdapter jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter;
+  private OnBatteryChangeObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnBatteryChangeObserver = new AccountOnlineStateActivity.8(this);
+  private OnLineStatusBlurBg jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg = new OnLineStatusBlurBg();
+  private OnLineStatusCustomSmartViewCtrl jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusCustomSmartViewCtrl = new OnLineStatusCustomSmartViewCtrl(false, false);
+  private OnlineStatusDisplayInfoBuilder jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusDisplayInfoBuilder = new OnlineStatusDisplayInfoBuilder();
+  private OnlineStatusObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver = new AccountOnlineStateActivity.7(this);
   private OnlineStatusPermissionChecker.OnlineStatusPermissionItem jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem;
+  private OnlineStatusPermissionObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver = new AccountOnlineStateActivity.6(this);
+  private OnlineStatusViewCtrl jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl;
+  private StatusCardViewHolder jdField_a_of_type_ComTencentMobileqqOnlinestatusViewStatusCardViewHolder = new StatusCardViewHolder();
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+  protected QQProgressDialog a;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private AppRuntime.Status jdField_a_of_type_MqqAppAppRuntime$Status;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new ayzb(this);
-  private boolean jdField_a_of_type_Boolean;
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new AccountOnlineStateActivity.5(this);
+  private boolean jdField_a_of_type_Boolean = false;
+  private long jdField_b_of_type_Long;
   private View jdField_b_of_type_AndroidViewView;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private AutoReplyText jdField_b_of_type_ComTencentMobileqqDataAutoReplyText;
   private OnlineStatusPermissionChecker.OnlineStatusPermissionItem jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem;
   private FormSimpleItem jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-  private boolean jdField_b_of_type_Boolean;
+  private AppRuntime.Status jdField_b_of_type_MqqAppAppRuntime$Status;
+  private boolean jdField_b_of_type_Boolean = false;
   private View jdField_c_of_type_AndroidViewView;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
   private View d;
+  
+  public AccountOnlineStateActivity()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+  }
   
   private void a(OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem)
   {
@@ -139,9 +118,9 @@ public class AccountOnlineStateActivity
   {
     int j = 0;
     ArrayList localArrayList;
-    if (this.jdField_a_of_type_Azac != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter != null)
     {
-      localArrayList = this.jdField_a_of_type_Azac.a();
+      localArrayList = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter.a();
       if (this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText == null) {
         break label70;
       }
@@ -152,7 +131,7 @@ public class AccountOnlineStateActivity
       if (this.jdField_b_of_type_ComTencentMobileqqDataAutoReplyText != null) {
         j = this.jdField_b_of_type_ComTencentMobileqqDataAutoReplyText.mTextId;
       }
-      ((anri)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(localArrayList, i, j, paramBoolean);
+      ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(localArrayList, i, j, paramBoolean);
       return;
     }
   }
@@ -167,86 +146,93 @@ public class AccountOnlineStateActivity
     }
     if (paramBoolean)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2, 2131718972, 1).a();
+      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2, 2131719506, 1).a();
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.setResult(-1);
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
     }
     for (;;)
     {
-      azcl.a("0X800AF9D");
+      ReportHelperKt.a("0X800AF9D");
       return;
-      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131718970, 1).a();
+      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131719504, 1).a();
     }
   }
   
-  private boolean a(azbu paramazbu, AppRuntime.Status paramStatus)
+  private boolean a(OnlineStatusItem paramOnlineStatusItem, AppRuntime.Status paramStatus)
   {
     AppRuntime.Status localStatus = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineStatus();
-    long l = azbj.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    return (paramStatus == localStatus) && ((l == paramazbu.jdField_a_of_type_Long) || ((l > 40000L) && (paramazbu.jdField_a_of_type_Long > 40000L)));
+    long l = OnLineStatusHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return (paramStatus == localStatus) && ((l == paramOnlineStatusItem.jdField_a_of_type_Long) || ((l > 40000L) && (paramOnlineStatusItem.jdField_a_of_type_Long > 40000L)));
   }
   
   private boolean a(AppRuntime.Status paramStatus, long paramLong)
   {
     AppRuntime.Status localStatus = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineStatus();
-    long l = azbj.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    long l = OnLineStatusHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     return (paramStatus == localStatus) && ((l == paramLong) || ((l > 40000L) && (paramLong > 40000L)));
   }
   
   private void b()
   {
-    setRightButton(2131694399, new ayyw(this));
-    setTitle(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131718979));
+    setRightButton(2131694615, new AccountOnlineStateActivity.1(this));
+    setTitle(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131719514));
     LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
     localLinearLayout.setOrientation(1);
-    localLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDrawable(2130839458));
-    Object localObject = getResources().getDrawable(2130844669);
-    this.jdField_a_of_type_Azcj = new azcj(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localLinearLayout, this, 3, 2);
-    this.jdField_a_of_type_Azcj.a();
-    this.jdField_a_of_type_Azac = new azac(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (Drawable)localObject);
-    this.jdField_a_of_type_Azac.a(this);
+    localLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDrawable(2130839537));
+    Object localObject = getResources().getDrawable(2130844830);
+    OnlineStatusPanelParams localOnlineStatusPanelParams = new OnlineStatusPanelParams();
+    localOnlineStatusPanelParams.a = 2;
+    localOnlineStatusPanelParams.jdField_b_of_type_Boolean = false;
+    localOnlineStatusPanelParams.c = false;
+    localOnlineStatusPanelParams.h = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDisplayMetrics().widthPixels;
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl = new OnlineStatusViewCtrl(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localLinearLayout, this, localOnlineStatusPanelParams, this);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a();
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter = new AutoReplyAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (Drawable)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter.a(this);
     this.jdField_a_of_type_MqqAppAppRuntime$Status = ((AppRuntime.Status)getActivity().getIntent().getSerializableExtra("KEY_ONLINE_STATUS"));
     this.jdField_a_of_type_Long = getActivity().getIntent().getLongExtra("KEY_ONLINE_EXT_STATUS", 0L);
     if (this.jdField_a_of_type_MqqAppAppRuntime$Status == null)
     {
       this.jdField_a_of_type_MqqAppAppRuntime$Status = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineStatus();
-      this.jdField_a_of_type_Long = azbj.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Long = OnLineStatusHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    this.jdField_a_of_type_Azcj.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long, this);
+    this.jdField_b_of_type_MqqAppAppRuntime$Status = this.jdField_a_of_type_MqqAppAppRuntime$Status;
+    this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long, this);
     this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131361919));
     if ((this.jdField_a_of_type_ComTencentWidgetListView instanceof SwipListView))
     {
       ((SwipListView)this.jdField_a_of_type_ComTencentWidgetListView).setDragEnable(true);
-      ((SwipListView)this.jdField_a_of_type_ComTencentWidgetListView).setRightIconMenuListener(new ayyz(this));
+      ((SwipListView)this.jdField_a_of_type_ComTencentWidgetListView).setRightIconMenuListener(new AccountOnlineStateActivity.2(this));
     }
     this.jdField_a_of_type_ComTencentWidgetListView.addHeaderView(localLinearLayout);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Azac);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter);
     this.jdField_a_of_type_ComTencentWidgetListView.setDividerHeight(0);
     localObject = View.inflate(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131558423, null);
     if (getActivity().getIntent().getBooleanExtra("KEY_HAS_LEFT_BUTTON_TEXT", false)) {
-      setLeftButton(2131690697, null);
+      setLeftButton(2131690800, null);
     }
-    this.jdField_a_of_type_Azbh.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localLinearLayout, 0);
-    this.jdField_a_of_type_Azbh.b().setOnClickListener(this);
-    this.jdField_a_of_type_Azbh.a().setOnClickListener(this);
-    this.jdField_a_of_type_Azbh.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Azbh.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusCustomSmartViewCtrl.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localLinearLayout, 0);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusCustomSmartViewCtrl.b().setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusCustomSmartViewCtrl.a().setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusCustomSmartViewCtrl.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusCustomSmartViewCtrl.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
     b((View)localObject);
   }
   
   private void b(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370499));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370783));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView.findViewById(2131361911));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378950));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379381));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView.findViewById(2131361916));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131372215);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377652));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377666));
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131372517);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378063));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378077));
     this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131361914);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369112);
-    this.d = paramView.findViewById(2131377667);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369363);
+    this.d = paramView.findViewById(2131378078);
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361913));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361912));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
@@ -284,14 +270,14 @@ public class AccountOnlineStateActivity
       while (i < this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem.getPermissionUins().size())
       {
         Long localLong = (Long)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem.getPermissionUins().get(i);
-        ((SpannableStringBuilder)localObject).append(ContactUtils.getFriendShowName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localLong)));
+        ((SpannableStringBuilder)localObject).append(ContactUtils.m(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localLong)));
         if (i != this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem.getPermissionUins().size() - 1) {
           ((SpannableStringBuilder)localObject).append("、");
         }
         i += 1;
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setText(((SpannableStringBuilder)localObject).toString());
-      localObject = getResources().getDrawable(2130839337);
+      localObject = getResources().getDrawable(2130839414);
       ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
       this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
       if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem.getPermissionUins().size() > 0) {
@@ -302,6 +288,19 @@ public class AccountOnlineStateActivity
     }
   }
   
+  private void c(View paramView)
+  {
+    paramView = (MyMoodView)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewStatusCardViewHolder.a(paramView, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg, this, 1055L);
+    paramView.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
+    if (OnLineStatusHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineStatus(), OnLineStatusHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {}
+    for (int i = 2;; i = 1)
+    {
+      ReportHelperKt.a("0X800B7AE", i);
+      paramView.show();
+      return;
+    }
+  }
+  
   private void d()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem == null)
@@ -309,7 +308,7 @@ public class AccountOnlineStateActivity
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem = ((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)getActivity().getIntent().getSerializableExtra("online_status_permission_item"));
       if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem == null)
       {
-        OnlineStatusFriendsPermissionItem localOnlineStatusFriendsPermissionItem = ((azcb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.ONLINE_STATUS_PERMISSION_MANAGER)).a(40001L, false, this);
+        OnlineStatusFriendsPermissionItem localOnlineStatusFriendsPermissionItem = ((OnlineStatusPermissionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.ONLINE_STATUS_PERMISSION_MANAGER)).a(40001L, false, this);
         if (localOnlineStatusFriendsPermissionItem != null)
         {
           this.jdField_a_of_type_Boolean = false;
@@ -334,50 +333,70 @@ public class AccountOnlineStateActivity
   
   private void e()
   {
+    boolean bool1 = OnLineStatusHelper.a(this.jdField_b_of_type_MqqAppAppRuntime$Status, this.jdField_b_of_type_Long);
+    boolean bool2 = OnLineStatusHelper.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, new Object[] { "refreshPanelWhenMoodChange last=", Long.valueOf(this.jdField_b_of_type_Long), " curExtID=", Long.valueOf(this.jdField_a_of_type_Long) });
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl != null) && ((bool2) || (bool1))) {
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a(true, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
+    }
+  }
+  
+  private void f()
+  {
     if (QLog.isColorLevel()) {
       QLog.d("AccountOnlineStateActivity", 2, "onSubmit online status " + this.jdField_a_of_type_MqqAppAppRuntime$Status);
     }
     if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) {
       return;
     }
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity))
+    if (!NetworkUtil.g(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131718971, 1).a();
+      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131719505, 1).a();
       return;
     }
-    if (this.jdField_a_of_type_Azac.b()) {
+    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter.b()) {
       a(true);
     }
     for (;;)
     {
-      azbq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
-      azbq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText);
-      int i = aqnl.a(this.jdField_a_of_type_MqqAppAppRuntime$Status);
+      OnlineStatusDataReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
+      OnlineStatusDataReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText);
+      int i = AutoReplyUtil.a(this.jdField_a_of_type_MqqAppAppRuntime$Status);
       if (i <= 0) {
         break;
       }
-      azcl.a("0X800B23A", i);
+      ReportHelperKt.a("0X800B23A", i);
       return;
-      azbu localazbu = this.jdField_a_of_type_Azcj.a();
-      AppRuntime.Status localStatus = azbj.a().a(localazbu);
-      azba localazba = this.jdField_a_of_type_Azbs.a(localazbu.jdField_a_of_type_Long, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-      if ((localStatus != null) && (!a(localazbu, localStatus)))
+      OnlineStatusItem localOnlineStatusItem = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a();
+      if (localOnlineStatusItem == null)
       {
-        if (localazba != null)
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("AccountOnlineStateActivity", 2, "onSubmit online status is empty");
+        return;
+      }
+      AppRuntime.Status localStatus = OnLineStatusHelper.a().a(localOnlineStatusItem);
+      BaseOnlineStatusDisplayInfo localBaseOnlineStatusDisplayInfo = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusDisplayInfoBuilder.a(localOnlineStatusItem.jdField_a_of_type_Long, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+      if ((localStatus != null) && (!a(localOnlineStatusItem, localStatus)))
+      {
+        if (localBaseOnlineStatusDisplayInfo != null)
         {
           this.jdField_b_of_type_Boolean = true;
-          localazba.a(false, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem);
+          localBaseOnlineStatusDisplayInfo.a(false, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.updateOnlineStatus(localStatus, localazbu.jdField_a_of_type_Long);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.updateOnlineStatus(localStatus, localOnlineStatusItem.jdField_a_of_type_Long);
           this.jdField_b_of_type_Boolean = true;
         }
       }
-      else if (localazba != null)
+      else if (localBaseOnlineStatusDisplayInfo != null)
       {
         this.jdField_b_of_type_Boolean = true;
-        localazba.a(true, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem);
+        localBaseOnlineStatusDisplayInfo.a(true, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem);
       }
       else
       {
@@ -386,11 +405,11 @@ public class AccountOnlineStateActivity
     }
   }
   
-  private void f()
+  private void g()
   {
-    List localList = ((azaz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.AUTO_REPLY_MANAGER)).a();
-    if ((localList != null) && (localList.size() > 0) && (this.jdField_a_of_type_Azac != null)) {
-      this.jdField_a_of_type_Azac.a(localList);
+    List localList = ((AutoReplyManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.AUTO_REPLY_MANAGER)).a();
+    if ((localList != null) && (localList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter.a(localList);
     }
     ThreadManager.getSubThreadHandler().post(new AccountOnlineStateActivity.3(this));
   }
@@ -410,10 +429,11 @@ public class AccountOnlineStateActivity
   
   public ArrayList<Integer> a()
   {
-    if (this.jdField_a_of_type_Azfj == null) {
+    AutoStatusAccountView localAutoStatusAccountView = (AutoStatusAccountView)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewStatusCardViewHolder.a(40000L);
+    if (localAutoStatusAccountView == null) {
       return null;
     }
-    return this.jdField_a_of_type_Azfj.c();
+    return localAutoStatusAccountView.a();
   }
   
   public void a()
@@ -421,20 +441,40 @@ public class AccountOnlineStateActivity
     a(this.jdField_a_of_type_Long, false);
   }
   
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl != null) {
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a(this.jdField_b_of_type_MqqAppAppRuntime$Status, this.jdField_b_of_type_Long, this);
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (paramLong == 40001L)
+    {
+      a(((AutoStatusAccountView)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewStatusCardViewHolder.a(40000L)).a());
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a(AppRuntime.Status.online, 40001L, this);
+    }
+    while (!OnLineStatusHelper.a(AppRuntime.Status.online, paramLong)) {
+      return;
+    }
+    a(OnLineStatusHelper.a().a(AppRuntime.Status.online, paramLong), null);
+  }
+  
   public void a(long paramLong, boolean paramBoolean)
   {
     if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
       return;
     }
-    azba localazba = this.jdField_a_of_type_Azbs.a(paramLong, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    if (localazba == null)
+    BaseOnlineStatusDisplayInfo localBaseOnlineStatusDisplayInfo = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusDisplayInfoBuilder.a(paramLong, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    if (localBaseOnlineStatusDisplayInfo == null)
     {
       this.jdField_a_of_type_ComTencentWidgetListView.removeFooterView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
       return;
     }
     label79:
     String str;
-    if (localazba.jdField_a_of_type_Boolean)
+    if (localBaseOnlineStatusDisplayInfo.jdField_a_of_type_Boolean)
     {
       this.jdField_c_of_type_AndroidViewView.setVisibility(0);
       d();
@@ -446,27 +486,27 @@ public class AccountOnlineStateActivity
         this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
       }
       Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (!TextUtils.isEmpty(localazba.jdField_a_of_type_JavaLangString)) {
+      if (!TextUtils.isEmpty(localBaseOnlineStatusDisplayInfo.jdField_a_of_type_JavaLangString)) {
         break label248;
       }
       str = "";
       label126:
       ((TextView)localObject).setText(str);
       localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-      if (!TextUtils.isEmpty(localazba.b)) {
+      if (!TextUtils.isEmpty(localBaseOnlineStatusDisplayInfo.b)) {
         break label258;
       }
       str = "在线";
       label155:
       ((FormSimpleItem)localObject).setLeftText(str);
       localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-      if (!TextUtils.isEmpty(localazba.c)) {
+      if (!TextUtils.isEmpty(localBaseOnlineStatusDisplayInfo.c)) {
         break label268;
       }
       str = "";
       label184:
       ((FormSimpleItem)localObject).setRightText(str);
-      if (!localazba.a()) {
+      if (!localBaseOnlineStatusDisplayInfo.a()) {
         break label278;
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setClickable(true);
@@ -474,7 +514,7 @@ public class AccountOnlineStateActivity
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(localazba.d)) {
+      if (!TextUtils.isEmpty(localBaseOnlineStatusDisplayInfo.d)) {
         break label297;
       }
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
@@ -484,13 +524,13 @@ public class AccountOnlineStateActivity
       label246:
       break;
       label248:
-      str = localazba.jdField_a_of_type_JavaLangString;
+      str = localBaseOnlineStatusDisplayInfo.jdField_a_of_type_JavaLangString;
       break label126;
       label258:
-      str = localazba.b;
+      str = localBaseOnlineStatusDisplayInfo.b;
       break label155;
       label268:
-      str = localazba.c;
+      str = localBaseOnlineStatusDisplayInfo.c;
       break label184;
       label278:
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setClickable(false);
@@ -498,34 +538,10 @@ public class AccountOnlineStateActivity
     }
     label297:
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftText(localazba.d);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftText(localBaseOnlineStatusDisplayInfo.d);
   }
   
   public void a(View paramView) {}
-  
-  public void a(azbu paramazbu)
-  {
-    setRightButtonEnable(true);
-    if (paramazbu != null)
-    {
-      this.jdField_a_of_type_MqqAppAppRuntime$Status = azbj.a().a(paramazbu);
-      this.jdField_a_of_type_Long = paramazbu.jdField_a_of_type_Long;
-    }
-    this.jdField_a_of_type_Azac.a(azbo.a(this.jdField_a_of_type_MqqAppAppRuntime$Status));
-    this.jdField_a_of_type_Azbh.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
-    paramazbu = this.jdField_a_of_type_Azbs.a(this.jdField_a_of_type_Long, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    if (paramazbu != null) {
-      paramazbu.d();
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      a(this.jdField_a_of_type_Long, false);
-    }
-  }
-  
-  public void a(azbu paramazbu1, azbu paramazbu2, View paramView)
-  {
-    a(paramazbu2);
-  }
   
   public void a(AutoReplyText paramAutoReplyText)
   {
@@ -553,7 +569,7 @@ public class AccountOnlineStateActivity
       QLog.d("AccountOnlineStateActivity", 2, paramAutoReplyText + " is delete");
     }
     setRightButtonEnable(true);
-    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E88", "0X8009E88", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E88", "0X8009E88", 0, 0, "", "", "", "");
   }
   
   public void a(OnlineStatusFriendsPermissionItem paramOnlineStatusFriendsPermissionItem, List<Integer> paramList)
@@ -565,6 +581,43 @@ public class AccountOnlineStateActivity
     }
   }
   
+  public void a(OnlineStatusItem paramOnlineStatusItem, View paramView)
+  {
+    setRightButtonEnable(true);
+    if (paramOnlineStatusItem != null)
+    {
+      this.jdField_a_of_type_MqqAppAppRuntime$Status = OnLineStatusHelper.a().a(paramOnlineStatusItem);
+      this.jdField_a_of_type_Long = paramOnlineStatusItem.jdField_a_of_type_Long;
+    }
+    if ((paramView != null) && (OnLineStatusHelper.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long))) {
+      c(paramView);
+    }
+    do
+    {
+      return;
+      e();
+      this.jdField_b_of_type_MqqAppAppRuntime$Status = this.jdField_a_of_type_MqqAppAppRuntime$Status;
+      this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter.a(OnlineStatusConstants.a(this.jdField_a_of_type_MqqAppAppRuntime$Status));
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusCustomSmartViewCtrl.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
+      paramOnlineStatusItem = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusDisplayInfoBuilder.a(this.jdField_a_of_type_Long, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+      if (paramOnlineStatusItem != null) {
+        paramOnlineStatusItem.d();
+      }
+    } while (this.jdField_a_of_type_AndroidWidgetLinearLayout == null);
+    a(this.jdField_a_of_type_Long, false);
+  }
+  
+  public void a(OnlineStatusItem paramOnlineStatusItem1, OnlineStatusItem paramOnlineStatusItem2, View paramView)
+  {
+    a(paramOnlineStatusItem2, paramView);
+  }
+  
+  public ArrayList<OnlineStatusItem> b()
+  {
+    return OnLineStatusHelper.a().a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
+  }
+  
   public void b(AutoReplyText paramAutoReplyText, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
@@ -572,12 +625,20 @@ public class AccountOnlineStateActivity
     }
     setRightButtonEnable(true);
     if ((paramAutoReplyText != null) && (paramAutoReplyText.getExtra().getBoolean("addFlag", false))) {
-      azbq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      OnlineStatusDataReporter.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
     if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) {
       AutoReplyEditActivity.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 325, paramAutoReplyText);
     }
-    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E87", "0X8009E87", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E87", "0X8009E87", 0, 0, "", "", "", "");
+  }
+  
+  public ArrayList<OnlineStatusItem> c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a();
+    }
+    return null;
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -587,7 +648,7 @@ public class AccountOnlineStateActivity
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app;
       b();
-      f();
+      g();
       if (!a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long)) {
         break label109;
       }
@@ -596,10 +657,10 @@ public class AccountOnlineStateActivity
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Azbd);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnBatteryChangeObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Azby);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Azce);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver);
       return;
       label109:
       setRightButtonEnable(true);
@@ -621,48 +682,46 @@ public class AccountOnlineStateActivity
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramIntent == null) {
       if ((paramInt1 == 100) && (paramInt2 == 0)) {
-        azcl.a("0X800AF4B", 2);
+        ReportHelperKt.a("0X800AF4B", 2);
       }
     }
+    Object localObject;
     do
     {
       do
       {
         do
         {
-          do
-          {
-            return;
-            if (paramInt1 != 325) {
-              break;
-            }
-          } while (paramInt2 != 325);
-          localObject = (AutoReplyText)paramIntent.getParcelableExtra("AutoReplyEditActivity:text");
-          if (localObject != null)
-          {
-            this.jdField_a_of_type_Azac.a((AutoReplyText)localObject);
-            this.jdField_a_of_type_Azac.a(((AutoReplyText)localObject).getTextId());
+          return;
+          if (paramInt1 != 325) {
+            break;
           }
-        } while ((!paramIntent.getBooleanExtra("AutoReplyEditActivity:new_text", false)) || (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null));
-        QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2, 2131690266, 1).a();
-        return;
-        if (paramInt1 != 100) {
-          break;
+        } while (paramInt2 != 325);
+        localObject = (AutoReplyText)paramIntent.getParcelableExtra("AutoReplyEditActivity:text");
+        if (localObject != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter.a((AutoReplyText)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter.a(((AutoReplyText)localObject).getTextId());
         }
-        paramIntent = OnlineStatusPermissionChecker.a(paramIntent, paramInt2, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, false);
-      } while (paramIntent == null);
-      a(paramIntent);
-      a(this.jdField_a_of_type_Long, true);
-      azcl.a("0X800AF4A", 2);
+      } while ((!paramIntent.getBooleanExtra("AutoReplyEditActivity:new_text", false)) || (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null));
+      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2, 2131690331, 1).a();
       return;
-      if ((paramInt1 == 999) && (this.jdField_a_of_type_Azfj != null))
-      {
-        this.jdField_a_of_type_Azfj.a(paramInt1, paramInt2, paramIntent);
-        return;
+      if (paramInt1 != 100) {
+        break;
       }
-    } while (paramInt1 != 1001);
-    Object localObject = this.jdField_a_of_type_Azcj.a();
-    this.jdField_a_of_type_Azbs.a(((azbu)localObject).jdField_a_of_type_Long, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).a(paramInt1, paramInt2, paramIntent);
+      paramIntent = OnlineStatusPermissionChecker.a(paramIntent, paramInt2, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, false);
+    } while (paramIntent == null);
+    a(paramIntent);
+    a(this.jdField_a_of_type_Long, true);
+    ReportHelperKt.a("0X800AF4A", 2);
+    return;
+    if (paramInt1 == 1040)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a();
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusDisplayInfoBuilder.a(((OnlineStatusItem)localObject).jdField_a_of_type_Long, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).a(paramInt1, paramInt2, paramIntent);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewStatusCardViewHolder.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onAttach(Activity paramActivity)
@@ -673,14 +732,14 @@ public class AccountOnlineStateActivity
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Azac.b()) {
-      if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)) {
+    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter.b()) {
+      if (NetworkUtil.g(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)) {
         a(false);
       }
     }
     while (!getRightTextView().isEnabled())
     {
-      azcl.a("0X800AF9B", 1);
+      ReportHelperKt.a("0X800AF9B", 1);
       super.onBackEvent();
       return true;
       QLog.d("AccountOnlineStateActivity", 2, "onBackEvent network is not available");
@@ -689,27 +748,26 @@ public class AccountOnlineStateActivity
         QLog.d("AccountOnlineStateActivity", 2, "onBackEvent auto reply list not changed!");
       }
     }
-    Object localObject = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131698152);
-    String str1 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131694808);
-    String str2 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131718146);
-    localObject = bhdj.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, null, (CharSequence)localObject, str1, str2, new ayzf(this), new ayyx(this));
+    Object localObject = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131698428);
+    String str1 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131695046);
+    String str2 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131718650);
+    localObject = DialogUtil.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, null, (CharSequence)localObject, str1, str2, new AccountOnlineStateActivity.9(this), new AccountOnlineStateActivity.10(this));
     ((QQCustomDialog)localObject).setMessageMaxLine(1);
     ((QQCustomDialog)localObject).show();
-    azcl.a("0X800AF9B", 2);
+    ReportHelperKt.a("0X800AF9B", 2);
     return true;
   }
   
   public void onClick(View paramView)
   {
-    Object localObject = null;
     setRightButtonEnable(true);
+    Object localObject;
     switch (paramView.getId())
     {
     default: 
     case 2131361914: 
-    case 2131365359: 
-    case 2131364040: 
-    case 2131365361: 
+    case 2131365509: 
+    case 2131365511: 
     case 2131361911: 
     case 2131361916: 
       for (;;)
@@ -724,56 +782,27 @@ public class AccountOnlineStateActivity
           a(OnlineStatusPermissionChecker.OnlineStatusPermissionItem.create(this.jdField_a_of_type_Long, true, null));
           a(this.jdField_a_of_type_Long, true);
         }
-        azcl.a("0X800AF99", 1);
+        ReportHelperKt.a("0X800AF99", 1);
         continue;
-        if (this.jdField_a_of_type_Azfj == null)
+        AutoStatusAccountView localAutoStatusAccountView = (AutoStatusAccountView)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewStatusCardViewHolder.a(paramView, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg, this, 40000L);
+        boolean bool = OnlineStatusItem.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
+        if (this.jdField_a_of_type_Boolean) {}
+        for (localObject = null;; localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem)
         {
-          this.jdField_a_of_type_Azfj = new azfj(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Azbe);
-          this.jdField_a_of_type_Azfj.jdField_a_of_type_Int = 2;
-          this.jdField_a_of_type_Azfj.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-          this.jdField_a_of_type_Azfj.a(azch.a(paramView));
-        }
-        boolean bool = azbu.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          label216:
-          if (Build.VERSION.SDK_INT < 23) {
-            break label276;
-          }
-          this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.requestPermissions(new ayyy(this, bool, (OnlineStatusPermissionChecker.OnlineStatusPermissionItem)localObject), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-        }
-        for (;;)
-        {
-          azcl.a("0X800AF9A");
-          azcl.a("0X800AF3E", 2);
+          localAutoStatusAccountView.a(bool, (OnlineStatusPermissionChecker.OnlineStatusPermissionItem)localObject);
           break;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem;
-          break label216;
-          label276:
-          this.jdField_a_of_type_Azfj.a(bool);
-          this.jdField_a_of_type_Azfj.a((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)localObject);
-          this.jdField_a_of_type_Azfj.show();
         }
-        if (this.jdField_a_of_type_Azfj != null)
+        CustomOnlineStatusManager.Utils.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "panel");
+        ReportHelperKt.a("0X800AF42", 2);
+        continue;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusDisplayInfoBuilder.a(this.jdField_a_of_type_Long, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+        if (localObject != null)
         {
-          this.jdField_a_of_type_Azfj.c();
-          a(this.jdField_a_of_type_Azfj.a());
-          this.jdField_a_of_type_Azcj.a(AppRuntime.Status.online, 40001L, this);
-          this.jdField_a_of_type_Azfj.dismiss();
-          azch.a(this.jdField_a_of_type_Azfj, paramView);
+          ((BaseOnlineStatusDisplayInfo)localObject).b();
           continue;
-          bhmz.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "panel");
-          azcl.a("0X800AF42", 2);
-          continue;
-          localObject = this.jdField_a_of_type_Azbs.a(this.jdField_a_of_type_Long, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-          if (localObject != null)
-          {
-            ((azba)localObject).b();
-            continue;
-            localObject = this.jdField_a_of_type_Azbs.a(this.jdField_a_of_type_Long, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-            if (localObject != null) {
-              ((azba)localObject).c();
-            }
+          localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusDisplayInfoBuilder.a(this.jdField_a_of_type_Long, this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+          if (localObject != null) {
+            ((BaseOnlineStatusDisplayInfo)localObject).c();
           }
         }
       }
@@ -787,25 +816,25 @@ public class AccountOnlineStateActivity
         if (this.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem == null)
         {
           localObject = "null";
-          label485:
+          label323:
           QLog.d("AccountOnlineStateActivity", 2, new Object[] { "account_online_status_show_part! mLastPartPermission:", localObject });
         }
       }
       else
       {
         if (this.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem != null) {
-          break label545;
+          break label383;
         }
         OnlineStatusPermissionChecker.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem, false);
       }
     }
     for (;;)
     {
-      azcl.a("0X800AF99", 2);
+      ReportHelperKt.a("0X800AF99", 2);
       break;
       localObject = " not null";
-      break label485;
-      label545:
+      break label323;
+      label383:
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem = this.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem;
       a(this.jdField_a_of_type_Long, true);
       continue;
@@ -817,11 +846,12 @@ public class AccountOnlineStateActivity
   {
     super.onDestroy();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Azbd);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnBatteryChangeObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Azby);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Azce);
-    this.jdField_a_of_type_Azbs.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusDisplayInfoBuilder.a();
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewStatusCardViewHolder.b();
   }
   
   public void onDetach()

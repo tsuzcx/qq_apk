@@ -7,12 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class SetSelectedSkinReq
   extends JceStruct
 {
-  public int app_type;
-  public long op_uin;
+  public int app_type = 0;
+  public long op_uin = 0L;
   public String phone_model = "";
   public String phone_os = "";
   public String qq_version = "";
-  public int skin_id;
+  public int skin_id = 0;
   
   public SetSelectedSkinReq() {}
   

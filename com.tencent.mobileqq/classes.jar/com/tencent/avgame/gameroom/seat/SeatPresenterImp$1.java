@@ -1,21 +1,20 @@
 package com.tencent.avgame.gameroom.seat;
 
-import nfc;
-import nke;
+import com.tencent.avgame.gamelogic.GameEngine;
 
-public class SeatPresenterImp$1
+class SeatPresenterImp$1
   implements Runnable
 {
-  public SeatPresenterImp$1(nke paramnke) {}
+  SeatPresenterImp$1(SeatPresenterImp paramSeatPresenterImp) {}
   
   public void run()
   {
-    this.this$0.a(nfc.a().a());
+    this.this$0.a(GameEngine.a().a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.SeatPresenterImp.1
  * JD-Core Version:    0.7.0.1
  */

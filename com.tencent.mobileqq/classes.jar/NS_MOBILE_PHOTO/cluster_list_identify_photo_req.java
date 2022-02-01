@@ -9,8 +9,8 @@ public final class cluster_list_identify_photo_req
 {
   static comm_page_info cache_page_info = new comm_page_info();
   public String categoryid = "";
-  public long op_uin;
-  public comm_page_info page_info;
+  public long op_uin = 0L;
+  public comm_page_info page_info = null;
   
   public cluster_list_identify_photo_req() {}
   

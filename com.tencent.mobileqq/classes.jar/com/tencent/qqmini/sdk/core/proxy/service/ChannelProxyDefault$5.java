@@ -13,7 +13,7 @@ class ChannelProxyDefault$5
   
   public boolean onReply(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    QMLog.w("ChannelProxyDefault", "useHttpDirectly recvData " + this.val$request + ",retCode = " + paramInt);
+    QMLog.w("ChannelProxyDefault", "recvData " + this.val$request + ",retCode = " + paramInt);
     if (paramInt == 0) {
       if (this.val$result != null)
       {

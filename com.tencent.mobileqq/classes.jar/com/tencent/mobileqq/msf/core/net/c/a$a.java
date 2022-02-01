@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.msf.core.net.c;
 
+import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
+import com.tencent.mobileqq.msf.core.i;
 import com.tencent.qphone.base.util.QLog;
 
 class a$a
@@ -30,7 +32,9 @@ class a$a
   {
     boolean bool = true;
     if (this.a > 0L) {
-      if (Math.abs((int)((SystemClock.elapsedRealtime() - this.a) / 120000L) + 1 - this.b) <= 1) {}
+      if ((i.a().h()) && ("huawei".equalsIgnoreCase(Build.MANUFACTURER))) {
+        if (Math.abs(SystemClock.elapsedRealtime() - this.a - (this.b - 1) * 120000) <= 120000L) {}
+      }
     }
     for (;;)
     {
@@ -40,7 +44,12 @@ class a$a
       return bool;
       bool = false;
       continue;
-      bool = false;
+      if (Math.abs((int)((SystemClock.elapsedRealtime() - this.a) / 120000L) + 1 - this.b) <= 1)
+      {
+        bool = false;
+        continue;
+        bool = false;
+      }
     }
   }
   

@@ -42,7 +42,7 @@ public class TransCircleMaskView
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
-    this.c = getResources().getColor(2131167143);
+    this.c = getResources().getColor(2131167150);
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -68,7 +68,7 @@ public class TransCircleMaskView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (((paramInt1 != 0) && (paramInt2 != 0) && (paramInt1 != paramInt3)) || (paramInt2 != paramInt4)) {}
     try
@@ -125,7 +125,7 @@ public class TransCircleMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TransCircleMaskView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import anvk;
-import azbm;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class OnLineStatusPresenter$1
+class OnLineStatusPresenter$1
   implements Runnable
 {
-  public OnLineStatusPresenter$1(azbm paramazbm, anvk paramanvk, QQAppInterface paramQQAppInterface) {}
+  OnLineStatusPresenter$1(OnLineStatusPresenter paramOnLineStatusPresenter, FriendsManager paramFriendsManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Anvk.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
     this.this$0.a("FriendsEntityNotLoad", true);
   }
 }

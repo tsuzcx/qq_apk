@@ -5,14 +5,12 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import biqb;
-import biqc;
 
 public class CommonImageView
   extends ImageView
-  implements biqc
+  implements MosaicEffect.IMosaicEffect
 {
-  private biqb a;
+  private MosaicEffect a;
   
   public CommonImageView(Context paramContext)
   {
@@ -29,16 +27,6 @@ public class CommonImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void b(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
-  }
-  
-  public void c(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-  }
-  
   public void draw(Canvas paramCanvas)
   {
     if (this.a != null)
@@ -49,7 +37,7 @@ public class CommonImageView
     super.draw(paramCanvas);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.a != null)
     {
@@ -59,22 +47,32 @@ public class CommonImageView
     super.onDraw(paramCanvas);
   }
   
-  public void setMosaicEffect(biqb parambiqb)
+  public void setMosaicEffect(MosaicEffect paramMosaicEffect)
   {
-    biqb localbiqb = this.a;
-    if (localbiqb != null) {
-      localbiqb.a(null);
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null) {
+      localMosaicEffect.a(null);
     }
-    this.a = parambiqb;
-    if (parambiqb != null) {
-      parambiqb.a(this);
+    this.a = paramMosaicEffect;
+    if (paramMosaicEffect != null) {
+      paramMosaicEffect.a(this);
     }
     invalidate();
+  }
+  
+  public void superDrawMosaic(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+  }
+  
+  public void superOnDrawMosaic(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CommonImageView
  * JD-Core Version:    0.7.0.1
  */

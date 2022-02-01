@@ -1,17 +1,23 @@
 package com.tencent.mobileqq.utils;
 
-import bheh;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class JumpAction$12
-  implements Runnable
+class JumpAction$12
+  implements View.OnClickListener
 {
-  public JumpAction$12(bheh parambheh) {}
+  JumpAction$12(JumpAction paramJumpAction) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.this$0.i) {
-      this.this$0.b(2131719335);
+    if ((JumpAction.a(this.a) != null) && (JumpAction.a(this.a).isShowing())) {
+      JumpAction.a(this.a).dismiss();
     }
+    ((BaseActivity)this.a.a).finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

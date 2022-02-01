@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
 import java.util.TimerTask;
 
-public class TroopFileThumbnailFetchWorker$3
+class TroopFileThumbnailFetchWorker$3
   extends TimerTask
 {
   public void run() {}

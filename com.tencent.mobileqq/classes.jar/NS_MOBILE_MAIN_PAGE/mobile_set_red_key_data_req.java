@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_set_red_key_data_req
   extends JceStruct
 {
-  public long appid;
+  public long appid = 0L;
   public String pay_key = "";
   public String ugc_key = "";
-  public long uin;
+  public long uin = 0L;
   
   public mobile_set_red_key_data_req() {}
   

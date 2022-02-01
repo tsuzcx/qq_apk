@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_ss_recom_pic_report_req
   extends JceStruct
 {
-  public byte op;
-  public long uin;
+  public byte op = 0;
+  public long uin = 0L;
   
   public mobile_ss_recom_pic_report_req() {}
   

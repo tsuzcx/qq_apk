@@ -1,0 +1,32 @@
+package com.tencent.mobileqq.activity.aio.rebuild;
+
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.troop.utils.TroopBindPublicAccountMgr;
+import org.json.JSONObject;
+
+class PublicAccountChatPie$25
+  implements HttpWebCgiAsyncTask.Callback
+{
+  PublicAccountChatPie$25(PublicAccountChatPie paramPublicAccountChatPie) {}
+  
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  {
+    if (paramJSONObject == null) {}
+    while (paramJSONObject.optInt("retcode", -1) != 0) {
+      return;
+    }
+    paramJSONObject = (TroopBindPublicAccountMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
+    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.25
+ * JD-Core Version:    0.7.0.1
+ */

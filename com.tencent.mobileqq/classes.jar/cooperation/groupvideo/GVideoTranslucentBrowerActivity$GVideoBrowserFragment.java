@@ -2,10 +2,10 @@ package cooperation.groupvideo;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import avue;
-import bdla;
-import bieo;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
+import com.tencent.mobileqq.intervideo.huayang.Monitor;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
@@ -20,14 +20,14 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
   public int doCreateLoopStep_Final(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_Final(paramBundle);
-    this.mSwiftTitleUI.setTitleBarVisibility(false);
-    this.mUIStyleHandler.mLoadingProgressBar.setVisibility(8);
+    this.mSwiftTitleUI.b(false);
+    this.mUIStyleHandler.a.setVisibility(8);
     return i;
   }
   
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
-    this.mUIStyle.mFloatBarRulesFromUrl = 0L;
+    this.mUIStyle.c = 0L;
     return super.doCreateLoopStep_InitUIContent(paramBundle);
   }
   
@@ -44,11 +44,11 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
   public void onDestroy()
   {
     super.onDestroy();
-    avue.a("2729128");
+    Monitor.a("2729128");
     if (!this.a)
     {
-      avue.a("2489207");
-      bdla.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.4.10", "", "");
+      Monitor.a("2489207");
+      ReportController.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.5.5", "", "");
     }
   }
   
@@ -66,7 +66,7 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.groupvideo.GVideoTranslucentBrowerActivity.GVideoBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

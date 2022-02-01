@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.fragment;
 
-import auws;
-
-public class NearbyHybridFragment$15$1
+class NearbyHybridFragment$15$1
   implements Runnable
 {
-  public NearbyHybridFragment$15$1(auws paramauws) {}
+  NearbyHybridFragment$15$1(NearbyHybridFragment.15 param15) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class NearbyHybridFragment$15$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.15.1
  * JD-Core Version:    0.7.0.1
  */

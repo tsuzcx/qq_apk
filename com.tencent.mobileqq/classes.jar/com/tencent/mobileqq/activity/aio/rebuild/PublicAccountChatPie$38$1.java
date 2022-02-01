@@ -1,15 +1,11 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aido;
-import aiem;
-import anty;
-import anvx;
-import bjxa;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.EqqDetailDataManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
@@ -17,18 +13,20 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.qidian.QidianManager;
 import java.util.Iterator;
 import java.util.List;
 
-public class PublicAccountChatPie$38$1
+class PublicAccountChatPie$38$1
   implements Runnable
 {
-  public PublicAccountChatPie$38$1(aiem paramaiem) {}
+  PublicAccountChatPie$38$1(PublicAccountChatPie.38 param38) {}
   
   public void run()
   {
-    Object localObject = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    EqqDetail localEqqDetail = (EqqDetail)((EntityManager)localObject).find(EqqDetail.class, this.a.a.sessionInfo.curFriendUin);
+    Object localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EqqDetail localEqqDetail = (EqqDetail)((EntityManager)localObject).find(EqqDetail.class, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     ((EntityManager)localObject).close();
     if (localEqqDetail == null) {
       return;
@@ -47,14 +45,14 @@ public class PublicAccountChatPie$38$1
         while (localIterator2.hasNext())
         {
           mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)localIterator2.next();
-          if (localConfigInfo.title.get().equals(anvx.a(2131708214))) {
+          if (localConfigInfo.title.get().equals(HardCodeUtil.a(2131708741))) {
             localConfigInfo.state.set(1);
           }
         }
       }
       localEqqDetail.accountData = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).toByteArray();
-      ((anty)this.a.a.app.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER)).a(localEqqDetail);
-      this.a.a.a.a(true);
+      ((EqqDetailDataManager)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER)).a(localEqqDetail);
+      this.a.a.jdField_a_of_type_ComTencentQidianQidianManager.a(true);
       return;
     }
     catch (Exception localException) {}
@@ -62,7 +60,7 @@ public class PublicAccountChatPie$38$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.38.1
  * JD-Core Version:    0.7.0.1
  */

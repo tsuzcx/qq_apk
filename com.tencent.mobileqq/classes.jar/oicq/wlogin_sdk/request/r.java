@@ -7,6 +7,7 @@ import oicq.wlogin_sdk.tlv_type.tlv_t161;
 import oicq.wlogin_sdk.tlv_type.tlv_t174;
 import oicq.wlogin_sdk.tlv_type.tlv_t17a;
 import oicq.wlogin_sdk.tlv_type.tlv_t17b;
+import oicq.wlogin_sdk.tlv_type.tlv_t183;
 import oicq.wlogin_sdk.tlv_type.tlv_t542;
 import oicq.wlogin_sdk.tlv_type.tlv_t543;
 import oicq.wlogin_sdk.tlv_type.tlv_t8;
@@ -104,44 +105,65 @@ public class r
     tlv_t104 localtlv_t104 = new tlv_t104();
     tlv_t17b localtlv_t17b = new tlv_t17b();
     tlv_t161 localtlv_t161 = new tlv_t161();
-    tlv_t543 localtlv_t543 = new tlv_t543();
+    Object localObject = new tlv_t543();
     async_context localasync_context = t.b(this.x.h);
+    StringBuffer localStringBuffer = new StringBuffer("request_flushsms").append(util.LOG_TAG_GATEWAY_LOGIN_NEW_DOV);
     paramInt2 = c(paramArrayOfByte, paramInt1 + 2);
-    util.LOGD(getClass().getName(), "type=" + paramInt2);
+    localStringBuffer.append(",type=").append(paramInt2);
     int j = paramInt1 + 5;
-    paramInt1 = localtlv_t543.get_tlv(paramArrayOfByte, j, this.c - j);
-    localasync_context._t543 = localtlv_t543;
-    util.LOGI("flushsms tlv 543 ret:" + paramInt1, "");
+    paramInt1 = ((tlv_t543)localObject).get_tlv(paramArrayOfByte, j, this.c - j);
+    localasync_context._t543 = ((tlv_t543)localObject);
+    localStringBuffer.append(",tlv 543 ret=").append(paramInt1);
+    localObject = new tlv_t183();
+    paramInt1 = ((tlv_t183)localObject).get_tlv(paramArrayOfByte, j, this.c - j);
+    if (paramInt1 >= 0)
+    {
+      localasync_context._msalt = ((tlv_t183)localObject).getMsalt();
+      localStringBuffer.append(",tlv 183 ret=").append(paramInt1).append(",_msalt=").append(Long.toHexString(localasync_context._msalt));
+    }
     switch (paramInt2)
     {
     default: 
       c(paramArrayOfByte, j, this.c - j - 1);
       paramInt1 = paramInt2;
-    }
-    int i;
-    do
-    {
-      do
+      if (localasync_context._last_err_msg != null)
       {
-        do
-        {
-          return paramInt1;
-          i = localtlv_t104.get_tlv(paramArrayOfByte, j, this.c - j);
-          paramInt1 = i;
-        } while (i < 0);
-        localasync_context._t104 = localtlv_t104;
-        i = localtlv_t17b.get_tlv(paramArrayOfByte, j, this.c - j);
-        paramInt1 = i;
-      } while (i < 0);
+        localStringBuffer.append(",err type=").append(localasync_context._last_err_msg.getType());
+        localStringBuffer.append(",err title=").append(localasync_context._last_err_msg.getTitle());
+        localStringBuffer.append(",err msg=").append(localasync_context._last_err_msg.getMessage());
+      }
+      break;
+    }
+    for (;;)
+    {
+      util.LOGI(localStringBuffer.toString(), "");
+      return paramInt1;
+      int i = localtlv_t104.get_tlv(paramArrayOfByte, j, this.c - j);
+      paramInt1 = i;
+      if (i < 0) {
+        break;
+      }
+      localasync_context._t104 = localtlv_t104;
+      i = localtlv_t17b.get_tlv(paramArrayOfByte, j, this.c - j);
+      paramInt1 = i;
+      if (i < 0) {
+        break;
+      }
       localasync_context._t17b = localtlv_t17b;
       a((ErrMsg)null);
-      return paramInt2;
+      paramInt1 = paramInt2;
+      break;
       i = localtlv_t161.get_tlv(paramArrayOfByte, j, this.c - j - 1);
       paramInt1 = i;
-    } while (i < 0);
-    a(localtlv_t161);
-    c(paramArrayOfByte, j, this.c - j - 1);
-    return paramInt2;
+      if (i < 0) {
+        break;
+      }
+      a(localtlv_t161);
+      c(paramArrayOfByte, j, this.c - j - 1);
+      paramInt1 = paramInt2;
+      break;
+      localStringBuffer.append(",err = null");
+    }
   }
 }
 

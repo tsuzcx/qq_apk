@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class cell_patch
   extends JceStruct
 {
-  public long uTestNum;
+  public long uTestNum = 0L;
   
   public cell_patch() {}
   

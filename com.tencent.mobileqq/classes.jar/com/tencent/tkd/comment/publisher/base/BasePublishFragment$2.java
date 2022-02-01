@@ -12,17 +12,20 @@ class BasePublishFragment$2
   
   public void run()
   {
-    Window localWindow = this.this$0.getDialog().getWindow();
-    localWindow.setGravity(BasePublishFragment.access$000(this.this$0));
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localLayoutParams.y = 0;
-    localWindow.setAttributes(localLayoutParams);
-    BasePublishFragment.access$100(this.this$0).requestLayout();
+    if ((this.this$0.getDialog() != null) && (this.this$0.getDialog().getWindow() != null))
+    {
+      Window localWindow = this.this$0.getDialog().getWindow();
+      localWindow.setGravity(BasePublishFragment.access$000(this.this$0));
+      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+      localLayoutParams.y = 0;
+      localWindow.setAttributes(localLayoutParams);
+      BasePublishFragment.access$100(this.this$0).requestLayout();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.base.BasePublishFragment.2
  * JD-Core Version:    0.7.0.1
  */

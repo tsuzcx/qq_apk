@@ -8,7 +8,7 @@ public final class eLinkStrategyType
   public static final int _eLinkStrategyTypeATest = 1;
   public static final int _eLinkStrategyTypeBTest = 2;
   public static final int _eLinkStrategyTypeDTest = 4;
-  public static final int _eLinkStrategyTypeETest = 7;
+  public static final int _eLinkStrategyTypeGTest = 7;
 }
 
 

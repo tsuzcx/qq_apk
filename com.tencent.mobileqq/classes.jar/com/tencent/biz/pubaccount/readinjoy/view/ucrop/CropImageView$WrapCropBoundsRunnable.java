@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view.ucrop;
 
 import android.graphics.RectF;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.util.CubicEasing;
 import java.lang.ref.WeakReference;
-import ton;
 
 class CropImageView$WrapCropBoundsRunnable
   implements Runnable
@@ -47,9 +47,9 @@ class CropImageView$WrapCropBoundsRunnable
         return;
         long l = System.currentTimeMillis();
         f1 = (float)Math.min(this.jdField_a_of_type_Long, l - this.jdField_b_of_type_Long);
-        f2 = ton.a(f1, 0.0F, this.c, (float)this.jdField_a_of_type_Long);
-        f3 = ton.a(f1, 0.0F, this.d, (float)this.jdField_a_of_type_Long);
-        f4 = ton.b(f1, 0.0F, this.f, (float)this.jdField_a_of_type_Long);
+        f2 = CubicEasing.a(f1, 0.0F, this.c, (float)this.jdField_a_of_type_Long);
+        f3 = CubicEasing.a(f1, 0.0F, this.d, (float)this.jdField_a_of_type_Long);
+        f4 = CubicEasing.b(f1, 0.0F, this.f, (float)this.jdField_a_of_type_Long);
       } while (f1 >= (float)this.jdField_a_of_type_Long);
       localCropImageView.a(f2 - (localCropImageView.b[0] - this.jdField_a_of_type_Float), f3 - (localCropImageView.b[1] - this.jdField_b_of_type_Float));
       if (!this.jdField_a_of_type_Boolean) {
@@ -61,7 +61,7 @@ class CropImageView$WrapCropBoundsRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ucrop.CropImageView.WrapCropBoundsRunnable
  * JD-Core Version:    0.7.0.1
  */

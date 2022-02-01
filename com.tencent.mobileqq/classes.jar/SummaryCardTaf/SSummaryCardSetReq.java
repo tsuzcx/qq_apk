@@ -10,16 +10,16 @@ public final class SSummaryCardSetReq
   static int cache_cmd = 0;
   static cardDiyComplicatedInfo cache_stDiyComplicated = new cardDiyComplicatedInfo();
   static cardDiyTextInfo cache_stDiyText = new cardDiyTextInfo();
-  public long bgid;
-  public long cardid;
+  public long bgid = 0L;
+  public long cardid = 0L;
   public int cmd = 2;
-  public long color;
+  public long color = 0L;
   public String extInfo = "";
-  public long platform;
-  public cardDiyComplicatedInfo stDiyComplicated;
-  public cardDiyTextInfo stDiyText;
-  public long styleid;
-  public long uin;
+  public long platform = 0L;
+  public cardDiyComplicatedInfo stDiyComplicated = null;
+  public cardDiyTextInfo stDiyText = null;
+  public long styleid = 0L;
+  public long uin = 0L;
   public String url = "";
   public String version = "4.7.0";
   
@@ -85,7 +85,7 @@ public final class SSummaryCardSetReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SSummaryCardSetReq
  * JD-Core Version:    0.7.0.1
  */

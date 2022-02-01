@@ -72,7 +72,7 @@
                 "$busi_type"
               ],
               "setShouldRepeat:": "YES",
-              "setPlayIconUrl:": "http://pub.idqqimg.com/pc/misc/files/20200609/9a711edcef31434296a24ad323932e46.png",
+              "setPlayIconUrl:": "https://pub.idqqimg.com/pc/misc/files/20200609/9a711edcef31434296a24ad323932e46.png",
               "setPlayIconWidth: heigth:": [
                 "100",
                 "100"
@@ -91,7 +91,7 @@
             },
             "attributes": {
               "setImageWithURLString:lineup:": [
-                "http://pub.idqqimg.com/pc/misc/files/20191014/4fa5936693444c9a874e8df17645b914.png",
+                "https://pub.idqqimg.com/pc/misc/files/20191014/4fa5936693444c9a874e8df17645b914.png",
                 "0"
               ],
               "setAttatchInfo:": "$recommend_icon_url"

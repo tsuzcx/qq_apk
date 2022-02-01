@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.gamecenter.data;
 
-import abuf;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.text.TextUtils;
-import anvx;
-import bhfn;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gamecenter.appointment.GameCenterUtils;
+import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
+import com.tencent.gamecenter.wadl.biz.entity.WadlResult;
+import com.tencent.gamecenter.wadl.util.GameCenterSpUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
 import java.io.File;
 import java.util.Date;
 import org.json.JSONException;
@@ -93,12 +94,12 @@ public class GameNoticeInfo
   {
     if (paramWadlResult.jdField_b_of_type_Int == 9)
     {
-      if (bhfn.a(BaseApplicationImpl.getContext(), paramWadlResult.a.f)) {
+      if (PackageUtil.a(BaseApplicationImpl.getContext(), paramWadlResult.a.f)) {
         return 2;
       }
       paramWadlResult.jdField_b_of_type_Int = 6;
     }
-    if ((paramWadlResult.jdField_b_of_type_Int == 6) && (FileUtils.fileExists(paramWadlResult.jdField_b_of_type_JavaLangString))) {
+    if ((paramWadlResult.jdField_b_of_type_Int == 6) && (FileUtils.a(paramWadlResult.jdField_b_of_type_JavaLangString))) {
       return 1;
     }
     return 0;
@@ -365,7 +366,7 @@ public class GameNoticeInfo
         } while (!QLog.isColorLevel());
         QLog.w("GameNoticeInfo", 1, "isValid file not exists filePath=" + this.filePath);
         return false;
-        i = abuf.a(this.packageName);
+        i = GameCenterUtils.a(this.packageName);
         if ((i <= 0) || (this.versionCode <= 0) || (i < this.versionCode)) {
           break;
         }
@@ -373,7 +374,7 @@ public class GameNoticeInfo
       QLog.w("GameNoticeInfo", 1, "isValid installVersion=" + i + ",versionCode=" + this.versionCode);
       return false;
       return true;
-    } while ((this.bannerType != 2) || (abuf.a(this.packageName) < 1));
+    } while ((this.bannerType != 2) || (GameCenterUtils.a(this.packageName) < 1));
     return true;
   }
   
@@ -395,8 +396,8 @@ public class GameNoticeInfo
               do
               {
                 return;
-                l2 = abuf.a("MILLISECONDS_DELAY");
-                long l3 = abuf.a("MILLISECONDS_INTERVAL");
+                l2 = GameCenterSpUtils.a("MILLISECONDS_DELAY");
+                long l3 = GameCenterSpUtils.a("MILLISECONDS_INTERVAL");
                 l1 = l2;
                 if (l2 < 1L) {
                   l1 = 300000L;
@@ -417,16 +418,16 @@ public class GameNoticeInfo
             this.startTime = (l1 + paramContext.lastModified());
             this.endTime = (l2 + this.startTime);
           } while (readTipInfo(this));
-          this.title = (this.appName + anvx.a(2131704528));
+          this.title = (this.appName + HardCodeUtil.a(2131705078));
           this.jumpUrl = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
           return;
         } while (this.bannerType != 2);
-        paramContext = abuf.a(this.packageName);
+        paramContext = GameCenterUtils.a(this.packageName);
       } while (paramContext == null);
       this.startTime = (l1 + paramContext.firstInstallTime);
       this.endTime = (l2 + this.startTime);
     } while (readTipInfo(this));
-    this.title = (this.appName + anvx.a(2131704527));
+    this.title = (this.appName + HardCodeUtil.a(2131705077));
     this.jumpUrl = String.format("https://speed.gamecenter.qq.com/pushgame/v1/detail?appid=%s&_wv=2164260896&_wwv=448&autolaunch=1", new Object[] { this.appId });
   }
   
@@ -440,7 +441,7 @@ public class GameNoticeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameNoticeInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,11 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import ascz;
-import asdd;
-import bifw;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,7 +67,7 @@ public class PraiseJsPlugin
         if (QLog.isColorLevel()) {
           QLog.i("PraiseJsPlugin", 2, "queryLocal " + paramJsBridgeListener.toString());
         }
-        paramString1 = asdd.a("queryPraiseLocal", paramString1, this.mOnRemoteResp.key, new Bundle());
+        paramString1 = DataFactory.a("queryPraiseLocal", paramString1, this.mOnRemoteResp.key, new Bundle());
         try
         {
           if (paramJsBridgeListener.has("type")) {
@@ -94,7 +94,7 @@ public class PraiseJsPlugin
     }
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
-    super.sendRemoteReq(asdd.a("setupPraise", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(DataFactory.a("setupPraise", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
     return true;
   }
   
@@ -176,7 +176,7 @@ public class PraiseJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.PraiseJsPlugin
  * JD-Core Version:    0.7.0.1
  */

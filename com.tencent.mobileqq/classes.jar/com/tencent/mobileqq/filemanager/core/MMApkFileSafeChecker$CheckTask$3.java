@@ -2,13 +2,12 @@ package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Handler;
 import android.os.Looper;
-import atms;
 import java.util.TimerTask;
 
-public class MMApkFileSafeChecker$CheckTask$3
+class MMApkFileSafeChecker$CheckTask$3
   extends TimerTask
 {
-  public MMApkFileSafeChecker$CheckTask$3(atms paramatms) {}
+  MMApkFileSafeChecker$CheckTask$3(MMApkFileSafeChecker.CheckTask paramCheckTask) {}
   
   public void run()
   {
@@ -21,7 +20,7 @@ public class MMApkFileSafeChecker$CheckTask$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.CheckTask.3
  * JD-Core Version:    0.7.0.1
  */

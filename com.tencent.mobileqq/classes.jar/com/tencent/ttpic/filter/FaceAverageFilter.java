@@ -11,8 +11,8 @@ import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.FaceImageLayer;
 import com.tencent.ttpic.openapi.model.FaceItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.FaceDetectUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
@@ -51,8 +51,8 @@ public class FaceAverageFilter
   
   private List<PointF> getVertexCoords(List<PointF> paramList1, List<PointF> paramList2, int paramInt1, int paramInt2, float paramFloat, float[] paramArrayOfFloat)
   {
-    paramList1 = VideoMaterialUtil.copyList(paramList1);
-    paramList2 = VideoMaterialUtil.copyList(paramList2);
+    paramList1 = VideoMaterial.copyList(paramList1);
+    paramList2 = VideoMaterial.copyList(paramList2);
     PointF localPointF1 = new PointF(((PointF)paramList2.get(64)).x, ((PointF)paramList2.get(64)).y);
     Object localObject = new PointF(((PointF)paramList1.get(64)).x, ((PointF)paramList1.get(64)).y);
     float f1 = (float)-Math.atan((((PointF)paramList1.get(35)).y - ((PointF)paramList1.get(45)).y) / (((PointF)paramList1.get(35)).x - ((PointF)paramList1.get(45)).x));
@@ -247,7 +247,7 @@ public class FaceAverageFilter
       localList1 = FaceOffUtil.genPointsDouble(this.mFaceLayer.imageFacePoint);
       FaceDetectUtil.facePointf83to90(localList1);
       localList1 = FaceOffUtil.getFullCoords(localList1, 3.0F);
-      localList2 = FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramObject.facePoints), 3.0F);
+      localList2 = FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramObject.facePoints), 3.0F);
       addAttribParam("inputTextureCoordinate2", FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(localList2, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices, this.mFaceLayer.faceTriangleID));
     } while (this.materialBitmap == null);
     addAttribParam("position", FaceOffUtil.initFacePositionsFaceAverage(getVertexCoords(localList1, localList2, this.materialBitmap.getWidth(), this.materialBitmap.getHeight(), (float)this.mFaceLayer.distortionAlpha, paramObject.faceAngles), this.width, this.height, this.positions, this.mFaceLayer.faceTriangleID));
@@ -255,7 +255,7 @@ public class FaceAverageFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceAverageFilter
  * JD-Core Version:    0.7.0.1
  */

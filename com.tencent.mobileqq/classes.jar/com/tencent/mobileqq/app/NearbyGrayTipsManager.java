@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import acnf;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anzq;
-import bcsc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.BaseMsgProxy;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -32,14 +31,14 @@ public class NearbyGrayTipsManager
   private long jdField_a_of_type_Long;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ArrayList<NearbyGrayTipsManager.GrayTipsConfig> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<NearbyGrayTipsManager.GreetWording> jdField_a_of_type_JavaUtilList;
+  private List<NearbyGrayTipsManager.GreetWording> jdField_a_of_type_JavaUtilList = null;
   private Random jdField_a_of_type_JavaUtilRandom;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private List<NearbyGrayTipsManager.FaceScoreWording> jdField_b_of_type_JavaUtilList;
+  private List<NearbyGrayTipsManager.FaceScoreWording> jdField_b_of_type_JavaUtilList = null;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
-  private List<NearbyGrayTipsManager.GrayTipStatisticData> jdField_c_of_type_JavaUtilList;
+  private List<NearbyGrayTipsManager.GrayTipStatisticData> jdField_c_of_type_JavaUtilList = null;
   private int d;
   
   public NearbyGrayTipsManager(QQAppInterface paramQQAppInterface)
@@ -2437,7 +2436,7 @@ public class NearbyGrayTipsManager
           if (i < 0) {
             break label165;
           }
-          if (!bcsc.a(((ChatMessage)paramList.get(i)).msgtype))
+          if (!MessageUtils.a(((ChatMessage)paramList.get(i)).msgtype))
           {
             k = j + 1;
             j = k;
@@ -2710,7 +2709,7 @@ public class NearbyGrayTipsManager
         localObject3 = new ArrayList();
         a(localObject1, (List)localObject3);
         a(paramLong, localObject1, (List)localObject3);
-        Collections.sort((List)localObject3, new anzq(this));
+        Collections.sort((List)localObject3, new NearbyGrayTipsManager.1(this));
         localObject2 = (QQMessageFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_MSG_FACADE);
         paramInt1 = 0;
         localObject3 = ((List)localObject3).iterator();
@@ -2718,8 +2717,8 @@ public class NearbyGrayTipsManager
           break label256;
         }
         Object localObject4 = (MessageRecord)((Iterator)localObject3).next();
-        localObject4 = ((QQMessageFacade)localObject2).getLastMessage(((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).istroop);
-        if ((localObject4 == null) || (((QQMessageFacade.Message)localObject4).hasReply)) {
+        localObject4 = ((QQMessageFacade)localObject2).a(((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).istroop);
+        if ((localObject4 == null) || (((Message)localObject4).hasReply)) {
           break label253;
         }
         paramInt2 = paramInt1 + 1;
@@ -2745,7 +2744,7 @@ public class NearbyGrayTipsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyGrayTipsManager
  * JD-Core Version:    0.7.0.1
  */

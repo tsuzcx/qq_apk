@@ -2,9 +2,8 @@ package com.tencent.mobileqq.ark;
 
 import android.content.Context;
 import android.view.MotionEvent;
-import apzu;
+import com.tencent.mobileqq.activity.fling.StickerDismissGestureDetector;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.StickerDismissGestureDetector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class ArkTopGestureLayout
@@ -19,15 +18,15 @@ public class ArkTopGestureLayout
   
   public void init(Context paramContext)
   {
-    this.gestureListener = new apzu(this, paramContext);
-    this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, paramContext, this.gestureListener);
+    this.gestureListener = new ArkTopGestureLayout.ArkEdgeTopGestureDetector(this, paramContext);
+    this.mTopGestureDetector = new StickerDismissGestureDetector(this, paramContext, this.gestureListener);
     this.defaultGestureDetector = this.mTopGestureDetector;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = false;
-    if (paramMotionEvent.getX() <= this.a / 100.0F * (float)DeviceInfoUtil.getPortraitWidth()) {}
+    if (paramMotionEvent.getX() <= this.a / 100.0F * (float)DeviceInfoUtil.i()) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {

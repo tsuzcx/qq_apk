@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import axyg;
-
-public class ShortVideoCommentsView$10$1
+class ShortVideoCommentsView$10$1
   implements Runnable
 {
-  public ShortVideoCommentsView$10$1(axyg paramaxyg) {}
+  ShortVideoCommentsView$10$1(ShortVideoCommentsView.10 param10) {}
   
   public void run()
   {

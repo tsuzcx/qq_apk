@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.contact.addcontact.findtroop;
 
-import aivz;
-
-public class AddContactViewPagerTroopFragment$4$1
+class AddContactViewPagerTroopFragment$4$1
   implements Runnable
 {
-  public AddContactViewPagerTroopFragment$4$1(aivz paramaivz) {}
+  AddContactViewPagerTroopFragment$4$1(AddContactViewPagerTroopFragment.4 param4) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class AddContactViewPagerTroopFragment$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

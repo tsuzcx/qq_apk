@@ -5,37 +5,34 @@ import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bfuq;
-import bfvi;
-import bfvl;
-import bfvm;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
 
-public class AudioItem$AudioUploadCallback$2
+class AudioItem$AudioUploadCallback$2
   implements Runnable
 {
-  public AudioItem$AudioUploadCallback$2(bfvl parambfvl) {}
+  AudioItem$AudioUploadCallback$2(AudioItem.AudioUploadCallback paramAudioUploadCallback) {}
   
   public void run()
   {
-    bfvm localbfvm = (bfvm)this.a.jdField_a_of_type_Bfvi.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Bfuq.c);
-    if (localbfvm != null)
+    AudioItem.AudioViewHolder localAudioViewHolder = (AudioItem.AudioViewHolder)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.c);
+    if (localAudioViewHolder != null)
     {
-      if (!this.a.jdField_a_of_type_Bfuq.a) {
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.a) {
         break label103;
       }
-      AnimationDrawable localAnimationDrawable = (AnimationDrawable)bfvi.a(this.a.jdField_a_of_type_Bfvi).getResources().getDrawable(2130772270);
-      localbfvm.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
+      AnimationDrawable localAnimationDrawable = (AnimationDrawable)AudioItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem).getResources().getDrawable(2130772285);
+      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
       localAnimationDrawable.start();
     }
     for (;;)
     {
-      localbfvm.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      localbfvm.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      localbfvm.c.setVisibility(0);
+      localAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      localAudioViewHolder.c.setVisibility(0);
       return;
       label103:
-      localbfvm.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847042);
+      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847396);
     }
   }
 }

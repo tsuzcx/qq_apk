@@ -1,6 +1,5 @@
 package com.tencent.qqmini.sdk.launcher.ui;
 
-import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -247,7 +246,7 @@ public class MiniActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ui.MiniActivity
  * JD-Core Version:    0.7.0.1
  */

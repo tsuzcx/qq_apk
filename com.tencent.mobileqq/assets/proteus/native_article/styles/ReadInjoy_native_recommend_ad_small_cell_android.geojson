@@ -192,7 +192,7 @@
                     },
                     "subviews": [
                       {
-                        "view_type": "ReadInjoyAsynImageView",
+                        "view_type": "ReadInJoyAdCommonBlurImageView",
                         "view_id": "id_recommend_cover_img",
                         "height": {
                           "type": "match_parent"
@@ -202,11 +202,7 @@
                         },
                         "event_type": "ad_img_click_in_detail",
                         "attributes": {
-                          "setScaleType:": "2",
-                          "setImageWithURLString:lineup:": [
-                            "-1",
-                            "-1"
-                          ]
+                          "setFeedsModel:": "$article_model"
                         }
                       },
                       {

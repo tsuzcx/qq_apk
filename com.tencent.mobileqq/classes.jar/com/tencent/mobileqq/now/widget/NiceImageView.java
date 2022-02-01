@@ -262,7 +262,7 @@ public class NiceImageView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     paramCanvas.saveLayer(this.jdField_a_of_type_AndroidGraphicsRectF, null, 31);
     if (!this.jdField_b_of_type_Boolean) {
@@ -302,7 +302,7 @@ public class NiceImageView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.k = paramInt1;

@@ -8,6 +8,7 @@ public abstract interface IDTVisitProvider
   
   public abstract String getCallScheme();
   
+  @IDTVisitProvider.StartType
   public abstract int getStartType();
 }
 

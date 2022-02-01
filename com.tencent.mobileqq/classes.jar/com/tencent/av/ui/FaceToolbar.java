@@ -1,21 +1,31 @@
 package com.tencent.av.ui;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
-import bdla;
+import com.tencent.av.AVLog;
+import com.tencent.av.QavABTestUtils;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectConfigBase.IEffectConfigCallback;
 import com.tencent.av.business.manager.EffectOperateManager;
+import com.tencent.av.business.manager.magicface.EffectFaceManager;
 import com.tencent.av.business.manager.magicface.FaceItem;
+import com.tencent.av.business.manager.magicface.MagicDataReport;
+import com.tencent.av.business.manager.support.EffectSupportManager;
+import com.tencent.av.opengl.effects.AEKitAbilityInfo;
+import com.tencent.av.opengl.effects.EffectsRenderController;
+import com.tencent.av.ptu.PtuResChecker;
+import com.tencent.av.redtouch.AVRedTouchUtil;
+import com.tencent.av.tips.TipsUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -25,33 +35,13 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lbd;
-import lfe;
-import lgw;
-import lhd;
-import lhg;
-import lin;
-import lir;
-import lot;
-import lph;
-import lvv;
-import mbf;
-import mcl;
-import mee;
-import mef;
-import mhn;
-import mht;
-import mhu;
-import mim;
-import min;
-import mqq.app.MobileQQ;
 
 public class FaceToolbar
   extends BaseToolbar
-  implements View.OnClickListener, lgw<FaceItem>, mhu
+  implements View.OnClickListener, EffectConfigBase.IEffectConfigCallback<FaceItem>, QAVPtvTemplateAdapter.IItemDownloadMgr
 {
   public static String TAG = "FaceToolbar";
-  static String unbaleInfo;
+  static String unbaleInfo = null;
   FrameLayout btnFace;
   FrameLayout btnInteractiveVideo;
   FrameLayout btnPendant;
@@ -60,39 +50,39 @@ public class FaceToolbar
   View lineInteractiveVideo;
   View linePendant;
   View lineVoiceSticker;
-  BroadcastReceiver mActionReceiver = null;
-  mhn mAdapterFace;
-  mhn mAdapterInteractiveVideo;
-  public mhn mAdapterPendant;
-  mhn mAdapterVoiceSticker;
-  mht mFaceClickCallback = new mef(this);
-  public lhd mFaceManager;
-  ArrayList<min> mFaceTmpList;
-  ArrayList<min> mInteractiveVideoTmpList;
+  QAVPtvTemplateAdapter mAdapterFace;
+  QAVPtvTemplateAdapter mAdapterInteractiveVideo;
+  QAVPtvTemplateAdapter mAdapterPendant;
+  QAVPtvTemplateAdapter mAdapterVoiceSticker;
+  private ControlUIObserver mControlUIObs = null;
+  QAVPtvTemplateAdapter.IEffectCallback mFaceClickCallback = new FaceToolbar.3(this);
+  EffectFaceManager mFaceManager;
+  ArrayList<QavListItemBase.ItemInfo> mFaceTmpList;
+  ArrayList<QavListItemBase.ItemInfo> mInteractiveVideoTmpList;
   HorizontalListView mListView;
-  ArrayList<min> mPeandantTmpList;
+  ArrayList<QavListItemBase.ItemInfo> mPeandantTmpList;
   private RedTouch mRedTouchInteractiveVideo;
   int mSelectTab = 0;
-  lin mSupportManager;
-  mcl mUIInfo = null;
-  ArrayList<min> mVoiceStickerTmpList;
+  EffectSupportManager mSupportManager;
+  BaseToolbar.UIInfo mUIInfo = null;
+  ArrayList<QavListItemBase.ItemInfo> mVoiceStickerTmpList;
   
   public FaceToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
     super(paramVideoAppInterface, paramAVActivity);
   }
   
-  private ArrayList<min> getList(String paramString)
+  private ArrayList<QavListItemBase.ItemInfo> getList(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = new min();
-    ((min)localObject1).jdField_a_of_type_JavaLangString = "-1";
-    localArrayList.add(0, localObject1);
-    boolean bool3 = lir.b();
+    Object localObject = new QavListItemBase.ItemInfo();
+    ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = "-1";
+    localArrayList.add(0, localObject);
+    boolean bool3 = PtuResChecker.a().a();
     boolean bool1;
     boolean bool4;
     boolean bool5;
-    if ((lot.b()) && (lot.a(this.mApp)))
+    if ((AEKitAbilityInfo.b()) && (PtuResChecker.a().a()))
     {
       bool1 = true;
       bool4 = this.mSupportManager.a(3, "normal");
@@ -101,139 +91,135 @@ public class FaceToolbar
       QLog.w(TAG, 1, "getList, type[" + paramString + "], supportNormal[" + bool4 + "], supportInteract[" + bool5 + "], supportCreative[" + bool6 + "], isSOExist[" + bool3 + "], isLibPagSOExist[" + bool1 + "]");
       if ("pendant".equals(paramString))
       {
-        localObject1 = new min();
-        ((min)localObject1).jdField_a_of_type_JavaLangString = "0";
-        ((min)localObject1).jdField_b_of_type_JavaLangString = String.valueOf(2130842225);
+        localObject = new QavListItemBase.ItemInfo();
+        ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = "0";
+        ((QavListItemBase.ItemInfo)localObject).jdField_b_of_type_JavaLangString = String.valueOf(2130842368);
         if (bool5) {
-          break label407;
+          break label409;
         }
         bool2 = true;
-        label214:
-        ((min)localObject1).jdField_c_of_type_Boolean = bool2;
-        ((min)localObject1).d = this.mApp.getApp().getString(2131695182);
-        localArrayList.add(localObject1);
+        label216:
+        ((QavListItemBase.ItemInfo)localObject).jdField_c_of_type_Boolean = bool2;
+        ((QavListItemBase.ItemInfo)localObject).d = this.mApp.getApp().getString(2131695425);
+        localArrayList.add(localObject);
       }
       if ("creativecop".equals(paramString))
       {
-        localObject1 = new min();
-        ((min)localObject1).jdField_a_of_type_JavaLangString = "0";
-        ((min)localObject1).jdField_b_of_type_JavaLangString = String.valueOf(2130842225);
+        localObject = new QavListItemBase.ItemInfo();
+        ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = "0";
+        ((QavListItemBase.ItemInfo)localObject).jdField_b_of_type_JavaLangString = String.valueOf(2130842368);
         if (bool5) {
-          break label412;
+          break label414;
         }
         bool2 = true;
-        label287:
-        ((min)localObject1).jdField_c_of_type_Boolean = bool2;
-        ((min)localObject1).d = this.mApp.getApp().getString(2131695182);
-        localArrayList.add(localObject1);
+        label289:
+        ((QavListItemBase.ItemInfo)localObject).jdField_c_of_type_Boolean = bool2;
+        ((QavListItemBase.ItemInfo)localObject).d = this.mApp.getApp().getString(2131695425);
+        localArrayList.add(localObject);
       }
       if (!"creativecop".equals(paramString)) {
-        break label422;
+        break label424;
       }
       paramString = this.mFaceManager.a(paramString);
       if ((paramString == null) || (paramString.size() == 0)) {
-        break label574;
+        break label515;
       }
       paramString = paramString.iterator();
-      label356:
+      label358:
       if (!paramString.hasNext()) {
-        break label574;
+        break label515;
       }
-      localObject1 = (FaceItem)paramString.next();
+      localObject = (FaceItem)paramString.next();
       if ((!bool6) || (!bool1)) {
-        break label417;
+        break label419;
       }
     }
-    label407:
-    label412:
-    label417:
+    label409:
+    label414:
+    label419:
     for (boolean bool2 = true;; bool2 = false)
     {
-      localArrayList.add(getListItemFromInteractiveFilterItemInfo((FaceItem)localObject1, bool2));
-      break label356;
+      localArrayList.add(getListItemFromInteractiveFilterItemInfo((FaceItem)localObject, bool2));
+      break label358;
       bool1 = false;
       break;
       bool2 = false;
-      break label214;
+      break label216;
       bool2 = false;
-      break label287;
+      break label289;
     }
-    label422:
-    localObject1 = this.mFaceManager.a(paramString);
-    if ((localObject1 != null) && (((List)localObject1).size() != 0))
+    label424:
+    paramString = this.mFaceManager.a(paramString);
+    if ((paramString != null) && (paramString.size() != 0))
     {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      paramString = paramString.iterator();
+      while (paramString.hasNext())
       {
-        Object localObject2 = (FaceItem)((Iterator)localObject1).next();
-        if (((FaceItem)localObject2).isShow())
+        localObject = (FaceItem)paramString.next();
+        if (((FaceItem)localObject).isShow())
         {
           if ((bool5) && (bool3)) {}
           for (bool1 = true;; bool1 = false)
           {
-            localObject2 = getListItemInfoFromEmotionInfo((FaceItem)localObject2, bool4, bool1);
-            if (("pendant".equals(paramString)) && (!checkPeerFaceSupport()) && (((min)localObject2).jdField_a_of_type_JavaLangString.equals("huanlian")) && (bool5) && (bool4) && (bool3)) {
-              ((min)localObject2).jdField_c_of_type_Boolean = true;
-            }
-            localArrayList.add(localObject2);
+            localArrayList.add(getListItemInfoFromEmotionInfo((FaceItem)localObject, bool4, bool1));
             break;
           }
         }
       }
     }
-    label574:
+    label515:
     return localArrayList;
   }
   
-  static min getListItemFromInteractiveFilterItemInfo(FaceItem paramFaceItem, boolean paramBoolean)
+  static QavListItemBase.ItemInfo getListItemFromInteractiveFilterItemInfo(FaceItem paramFaceItem, boolean paramBoolean)
   {
-    min localmin = new min();
-    localmin.jdField_a_of_type_Int = 3;
-    localmin.jdField_a_of_type_JavaLangString = paramFaceItem.getId();
-    localmin.jdField_c_of_type_JavaLangString = paramFaceItem.getText();
-    localmin.jdField_b_of_type_JavaLangString = paramFaceItem.getIconurl();
-    localmin.jdField_b_of_type_Int = paramFaceItem.getVipLevel();
-    localmin.d = paramFaceItem.getDesc();
+    QavListItemBase.ItemInfo localItemInfo = new QavListItemBase.ItemInfo();
+    localItemInfo.jdField_a_of_type_Int = 3;
+    localItemInfo.jdField_a_of_type_JavaLangString = paramFaceItem.getId();
+    localItemInfo.jdField_c_of_type_JavaLangString = paramFaceItem.getText();
+    localItemInfo.jdField_b_of_type_JavaLangString = paramFaceItem.getIconurl();
+    localItemInfo.jdField_b_of_type_Int = paramFaceItem.getVipLevel();
+    localItemInfo.d = paramFaceItem.getDesc();
     if (!paramBoolean)
     {
       paramBoolean = true;
-      localmin.jdField_c_of_type_Boolean = paramBoolean;
-      if (!localmin.jdField_c_of_type_Boolean) {
+      localItemInfo.jdField_c_of_type_Boolean = paramBoolean;
+      if (!localItemInfo.jdField_c_of_type_Boolean) {
         break label88;
       }
     }
     label88:
-    for (localmin.jdField_a_of_type_Boolean = true;; localmin.jdField_a_of_type_Boolean = paramFaceItem.isUsable())
+    for (localItemInfo.jdField_a_of_type_Boolean = true;; localItemInfo.jdField_a_of_type_Boolean = paramFaceItem.isUsable())
     {
-      localmin.jdField_a_of_type_JavaLangObject = paramFaceItem;
-      return localmin;
+      localItemInfo.jdField_a_of_type_JavaLangObject = paramFaceItem;
+      return localItemInfo;
       paramBoolean = false;
       break;
     }
   }
   
-  static min getListItemInfoFromEmotionInfo(FaceItem paramFaceItem, boolean paramBoolean1, boolean paramBoolean2)
+  static QavListItemBase.ItemInfo getListItemInfoFromEmotionInfo(FaceItem paramFaceItem, boolean paramBoolean1, boolean paramBoolean2)
   {
-    min localmin = new min();
-    localmin.jdField_a_of_type_Int = 1;
-    localmin.jdField_a_of_type_JavaLangString = paramFaceItem.getId();
-    localmin.jdField_c_of_type_JavaLangString = paramFaceItem.getText();
-    localmin.jdField_b_of_type_JavaLangString = paramFaceItem.getIconurl();
-    localmin.jdField_b_of_type_Int = paramFaceItem.getVipLevel();
-    localmin.d = paramFaceItem.getDesc();
+    QavListItemBase.ItemInfo localItemInfo = new QavListItemBase.ItemInfo();
+    localItemInfo.jdField_a_of_type_Int = 1;
+    localItemInfo.jdField_a_of_type_JavaLangString = paramFaceItem.getId();
+    localItemInfo.jdField_c_of_type_JavaLangString = paramFaceItem.getText();
+    localItemInfo.jdField_b_of_type_JavaLangString = paramFaceItem.getIconurl();
+    localItemInfo.jdField_b_of_type_Int = paramFaceItem.getVipLevel();
+    localItemInfo.d = paramFaceItem.getDesc();
     if ((!paramBoolean1) || ((!paramBoolean2) && (paramFaceItem.isInteract())))
     {
       paramBoolean1 = true;
-      localmin.jdField_c_of_type_Boolean = paramBoolean1;
-      if (!localmin.jdField_c_of_type_Boolean) {
+      localItemInfo.jdField_c_of_type_Boolean = paramBoolean1;
+      if (!localItemInfo.jdField_c_of_type_Boolean) {
         break label99;
       }
     }
     label99:
-    for (localmin.jdField_a_of_type_Boolean = true;; localmin.jdField_a_of_type_Boolean = paramFaceItem.isUsable())
+    for (localItemInfo.jdField_a_of_type_Boolean = true;; localItemInfo.jdField_a_of_type_Boolean = paramFaceItem.isUsable())
     {
-      localmin.jdField_a_of_type_JavaLangObject = paramFaceItem;
-      return localmin;
+      localItemInfo.jdField_a_of_type_JavaLangObject = paramFaceItem;
+      return localItemInfo;
       paramBoolean1 = false;
       break;
     }
@@ -256,248 +242,171 @@ public class FaceToolbar
       bool1 = bool2;
       if (!paramVideoController.a().k)
       {
-        unbaleInfo = paramVideoController.a().getString(2131695205);
+        unbaleInfo = paramVideoController.a().getString(2131695448);
         bool1 = false;
       }
     }
     return bool1;
   }
   
-  public boolean checkDimmStatus(min parammin)
+  boolean checkDimmStatus(QavListItemBase.ItemInfo paramItemInfo)
   {
-    int j = 2131695231;
+    int j = 2131695471;
     boolean bool2 = false;
     boolean bool1 = bool2;
+    Object localObject;
+    boolean bool3;
     int i;
+    label99:
     int k;
-    if (parammin.jdField_c_of_type_Boolean)
+    if (paramItemInfo.jdField_c_of_type_Boolean)
     {
-      lph.g();
-      lot.c(this.mApp);
-      if (!"huanlian".equalsIgnoreCase(parammin.jdField_a_of_type_JavaLangString)) {
-        break label216;
+      EffectsRenderController.g();
+      AEKitAbilityInfo.a(this.mApp);
+      localObject = (FaceItem)this.mFaceManager.a(paramItemInfo.jdField_a_of_type_JavaLangString);
+      if (localObject == null) {
+        break label567;
       }
-      if (this.mSupportManager.a(3, "SUPPORT_SWITCH_FACE")) {
-        break label171;
+      bool3 = ((FaceItem)localObject).isInCreative();
+      if (!bool3) {
+        break label313;
       }
-      i = 2131695231;
-      k = i;
+      bool1 = this.mSupportManager.a(3, "creative");
+      if ((!AEKitAbilityInfo.b()) || (!PtuResChecker.a().a())) {
+        break label295;
+      }
+      i = 1;
+      if (bool1) {
+        break label300;
+      }
+      i = 0;
+      k = j;
+      if (i != 0)
+      {
+        k = j;
+        if ((paramItemInfo.jdField_a_of_type_JavaLangObject instanceof FaceItem))
+        {
+          localObject = (FaceItem)paramItemInfo.jdField_a_of_type_JavaLangObject;
+          bool1 = PtuResChecker.a().a();
+          if ((!AEKitAbilityInfo.b()) || (!PtuResChecker.a().a())) {
+            break label397;
+          }
+          i = 1;
+          label153:
+          if (!bool3) {
+            break label408;
+          }
+          if ((this.mSupportManager.a(3, "creative")) && (i != 0)) {
+            break label402;
+          }
+          bool1 = true;
+          label178:
+          paramItemInfo.jdField_c_of_type_Boolean = bool1;
+          k = j;
+        }
+      }
     }
     for (;;)
     {
-      if ((!parammin.jdField_c_of_type_Boolean) && ((parammin.jdField_a_of_type_JavaLangObject instanceof FaceItem)))
+      if ((!paramItemInfo.jdField_c_of_type_Boolean) && ((paramItemInfo.jdField_a_of_type_JavaLangObject instanceof FaceItem)))
       {
-        localObject = (FaceItem)parammin.jdField_a_of_type_JavaLangObject;
-        parammin.jdField_a_of_type_Boolean = ((FaceItem)localObject).isUsable();
+        localObject = (FaceItem)paramItemInfo.jdField_a_of_type_JavaLangObject;
+        paramItemInfo.jdField_a_of_type_Boolean = ((FaceItem)localObject).isUsable();
         if (!((FaceItem)localObject).isSameType("face")) {
-          break label556;
+          break label476;
         }
         if (this.mAdapterFace != null) {
           this.mAdapterFace.notifyDataSetChanged();
         }
       }
-      label123:
-      parammin = (AVActivity)this.mActivity.get();
-      if ((k != 0) && (parammin != null)) {
-        mbf.a(this.mApp, 1010, k);
-      }
-      bool1 = bool2;
-      if (k != 0) {
-        bool1 = true;
-      }
-      return bool1;
-      label171:
-      i = this.mSupportManager.a(3, "SUPPORT_SWITCH_FACE");
-      if (i == -1)
+      for (;;)
       {
-        i = 2131695228;
-        break;
-      }
-      if (i == 0)
-      {
-        i = 2131695227;
-        break;
-      }
-      parammin.jdField_c_of_type_Boolean = false;
-      i = 0;
-      break;
-      label216:
-      Object localObject = (FaceItem)this.mFaceManager.a(parammin.jdField_a_of_type_JavaLangString);
-      if (localObject != null)
-      {
-        boolean bool3 = ((FaceItem)localObject).isInCreative();
-        if (bool3)
-        {
-          bool1 = this.mSupportManager.a(3, "creative");
-          if ((lot.b()) && (lot.a(this.mApp)))
-          {
-            i = 1;
-            label279:
-            if (bool1) {
-              break label380;
-            }
-            i = 0;
-          }
+        paramItemInfo = (AVActivity)this.mActivity.get();
+        if ((k != 0) && (paramItemInfo != null)) {
+          TipsUtil.a(this.mApp, 1010, k);
         }
-        for (;;)
-        {
-          label286:
-          k = j;
-          if (i == 0) {
-            break;
-          }
-          k = j;
-          if (!(parammin.jdField_a_of_type_JavaLangObject instanceof FaceItem)) {
-            break;
-          }
-          localObject = (FaceItem)parammin.jdField_a_of_type_JavaLangObject;
-          bool1 = lir.b();
-          if ((lot.b()) && (lot.a(this.mApp)))
-          {
-            i = 1;
-            label338:
-            if (!bool3) {
-              break label488;
-            }
-            if ((this.mSupportManager.a(3, "creative")) && (i != 0)) {
-              break label482;
-            }
-          }
-          label430:
-          label482:
-          for (bool1 = true;; bool1 = false)
-          {
-            parammin.jdField_c_of_type_Boolean = bool1;
-            k = j;
-            break;
-            i = 0;
-            break label279;
-            label380:
-            j = 2131695542;
-            if (i == 0) {
-              break label638;
-            }
-            i = 1;
-            break label286;
-            if (((FaceItem)localObject).isInteract()) {}
-            for (localObject = "interact";; localObject = "normal")
-            {
-              if (this.mSupportManager.a(3, (String)localObject)) {
-                break label430;
-              }
-              i = 0;
-              break;
-            }
-            i = this.mSupportManager.a(3, (String)localObject);
-            if (i == -1)
-            {
-              j = 2131695228;
-              i = 0;
-              break label286;
-            }
-            if (i == 0)
-            {
-              j = 2131695226;
-              i = 0;
-              break label286;
-            }
-            j = 2131695542;
-            i = 1;
-            break label286;
-            i = 0;
-            break label338;
-          }
-          label488:
-          bool3 = this.mSupportManager.a(3, "normal");
-          boolean bool4 = this.mSupportManager.a(3, "interact");
-          if ((!bool3) || (((!bool4) || (!bool1)) && (((FaceItem)localObject).isInteract()))) {}
-          for (bool1 = true;; bool1 = false)
-          {
-            parammin.jdField_c_of_type_Boolean = bool1;
-            k = j;
-            break;
-          }
-          label556:
-          if (((FaceItem)localObject).isSameType("pendant"))
-          {
-            if (this.mAdapterPendant == null) {
-              break label123;
-            }
-            this.mAdapterPendant.notifyDataSetChanged();
-            break label123;
-          }
-          if (((FaceItem)localObject).isSameType("voicesticker"))
-          {
-            if (this.mAdapterVoiceSticker == null) {
-              break label123;
-            }
-            this.mAdapterVoiceSticker.notifyDataSetChanged();
-            break label123;
-          }
-          if ((!((FaceItem)localObject).isSameType("creativecop")) || (this.mAdapterInteractiveVideo == null)) {
-            break label123;
-          }
-          this.mAdapterInteractiveVideo.notifyDataSetChanged();
-          break label123;
-          label638:
-          i = 0;
-        }
-      }
-      k = 0;
-    }
-  }
-  
-  public boolean checkPeerFaceSupport()
-  {
-    boolean bool2 = false;
-    int i;
-    int j;
-    label35:
-    int k;
-    if (this.mSupportManager.a(3, "normal") == 1)
-    {
-      i = 1;
-      if (this.mSupportManager.a(3, "interact") != 1) {
-        break label113;
-      }
-      j = 1;
-      if (this.mSupportManager.a(3, "SUPPORT_SWITCH_FACE") != 1) {
-        break label118;
-      }
-      k = 1;
-      label52:
-      if ((i == 0) || (j == 0)) {
-        break label123;
-      }
-    }
-    label113:
-    label118:
-    label123:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (!bool1) {
-        break label129;
-      }
-      VideoController localVideoController = this.mApp.a();
-      if (localVideoController.b(localVideoController.a().d) != 2)
-      {
         bool1 = bool2;
-        if (k == 0) {}
+        if (k != 0) {
+          bool1 = true;
+        }
+        return bool1;
+        label295:
+        i = 0;
+        break;
+        label300:
+        if (i == 0) {
+          break label558;
+        }
+        j = 2131695783;
+        i = 1;
+        break label99;
+        label313:
+        if (((FaceItem)localObject).isInteract()) {}
+        for (localObject = "interact";; localObject = "normal")
+        {
+          if (this.mSupportManager.a(3, (String)localObject)) {
+            break label350;
+          }
+          i = 0;
+          break;
+        }
+        label350:
+        i = this.mSupportManager.a(3, (String)localObject);
+        if (i == -1)
+        {
+          i = 0;
+          j = 2131695469;
+          break label99;
+        }
+        if (i == 0)
+        {
+          i = 0;
+          j = 2131695469;
+          break label99;
+        }
+        j = 2131695783;
+        i = 1;
+        break label99;
+        label397:
+        i = 0;
+        break label153;
+        label402:
+        bool1 = false;
+        break label178;
+        label408:
+        bool3 = this.mSupportManager.a(3, "normal");
+        boolean bool4 = this.mSupportManager.a(3, "interact");
+        if ((!bool3) || (((!bool4) || (!bool1)) && (((FaceItem)localObject).isInteract()))) {}
+        for (bool1 = true;; bool1 = false)
+        {
+          paramItemInfo.jdField_c_of_type_Boolean = bool1;
+          k = j;
+          break;
+        }
+        label476:
+        if (((FaceItem)localObject).isSameType("pendant"))
+        {
+          if (this.mAdapterPendant != null) {
+            this.mAdapterPendant.notifyDataSetChanged();
+          }
+        }
+        else if (((FaceItem)localObject).isSameType("voicesticker"))
+        {
+          if (this.mAdapterVoiceSticker != null) {
+            this.mAdapterVoiceSticker.notifyDataSetChanged();
+          }
+        }
+        else if ((((FaceItem)localObject).isSameType("creativecop")) && (this.mAdapterInteractiveVideo != null)) {
+          this.mAdapterInteractiveVideo.notifyDataSetChanged();
+        }
       }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
+      label558:
+      j = 2131695783;
       i = 0;
-      break;
-      j = 0;
-      break label35;
+      break label99;
+      label567:
       k = 0;
-      break label52;
     }
-    label129:
-    return bool1;
   }
   
   public void chooseTab(int paramInt)
@@ -537,7 +446,7 @@ public class FaceToolbar
       label144:
       ((View)localObject).setVisibility(i);
       localObject = this.lineInteractiveVideo;
-      if ((paramInt != 4) || (!lot.b())) {
+      if ((paramInt != 4) || (!AEKitAbilityInfo.b())) {
         break label375;
       }
       i = 0;
@@ -577,7 +486,7 @@ public class FaceToolbar
       }
       this.mListView.setAdapter(this.mAdapterPendant);
       this.mAdapterPendant.notifyDataSetChanged();
-      lhg.b((String)localObject);
+      MagicDataReport.b((String)localObject);
     }
     for (;;)
     {
@@ -615,26 +524,26 @@ public class FaceToolbar
       {
         this.mListView.setAdapter(this.mAdapterFace);
         this.mAdapterFace.notifyDataSetChanged();
-        lhg.c((String)localObject);
+        MagicDataReport.c((String)localObject);
       }
       else if (paramInt == 3)
       {
         this.mListView.setAdapter(this.mAdapterVoiceSticker);
         this.mAdapterVoiceSticker.notifyDataSetChanged();
-        lhg.d((String)localObject);
+        MagicDataReport.d((String)localObject);
       }
       else if (paramInt == 4)
       {
         this.mListView.setAdapter(this.mAdapterInteractiveVideo);
         this.mAdapterInteractiveVideo.notifyDataSetChanged();
-        bdla.b(null, "CliOper", "", "", "0X800A74B", "0X800A74B", 0, 0, "", "", "", "");
+        ReportController.b(null, "CliOper", "", "", "0X800A74B", "0X800A74B", 0, 0, "", "", "", "");
       }
     }
   }
   
   void enterDoubleScreen()
   {
-    lhg.a(this.mApp.a().a(this.mApp.a().a().d) + "");
+    MagicDataReport.a(this.mApp.a().a(this.mApp.a().a().d) + "");
     this.mApp.a().a(4, "1");
     ((AVActivity)this.mActivity.get()).a(2, false);
   }
@@ -647,12 +556,12 @@ public class FaceToolbar
   void fixDimmed(int paramInt)
   {
     if (this.mSupportManager == null) {}
-    label310:
+    label312:
     do
     {
       boolean bool2;
       boolean bool3;
-      min localmin;
+      QavListItemBase.ItemInfo localItemInfo;
       boolean bool1;
       do
       {
@@ -667,7 +576,7 @@ public class FaceToolbar
               if (paramInt != 0) {
                 break;
               }
-              bool2 = lir.b();
+              bool2 = PtuResChecker.a().a();
               bool3 = this.mSupportManager.a(3, "normal");
               bool4 = this.mSupportManager.a(3, "interact");
               if (QLog.isDevelopLevel()) {
@@ -677,14 +586,14 @@ public class FaceToolbar
             localIterator = this.mPeandantTmpList.iterator();
             while (localIterator.hasNext())
             {
-              localmin = (min)localIterator.next();
-              if ((localmin.jdField_a_of_type_JavaLangObject instanceof FaceItem))
+              localItemInfo = (QavListItemBase.ItemInfo)localIterator.next();
+              if ((localItemInfo.jdField_a_of_type_JavaLangObject instanceof FaceItem))
               {
-                FaceItem localFaceItem = (FaceItem)localmin.jdField_a_of_type_JavaLangObject;
+                FaceItem localFaceItem = (FaceItem)localItemInfo.jdField_a_of_type_JavaLangObject;
                 if ((!bool3) || (((!bool4) || (!bool2)) && (localFaceItem.isInteract()))) {}
                 for (bool1 = true;; bool1 = false)
                 {
-                  localmin.jdField_c_of_type_Boolean = bool1;
+                  localItemInfo.jdField_c_of_type_Boolean = bool1;
                   break;
                 }
               }
@@ -693,7 +602,7 @@ public class FaceToolbar
           this.mAdapterPendant.notifyDataSetChanged();
           return;
         } while (paramInt != 1);
-        if ((!lot.b()) || (!lot.a(this.mApp))) {
+        if ((!AEKitAbilityInfo.b()) || (!PtuResChecker.a().a())) {
           break;
         }
         bool1 = true;
@@ -705,12 +614,12 @@ public class FaceToolbar
       Iterator localIterator = this.mInteractiveVideoTmpList.iterator();
       if (localIterator.hasNext())
       {
-        localmin = (min)localIterator.next();
+        localItemInfo = (QavListItemBase.ItemInfo)localIterator.next();
         if ((!bool3) || (!bool1)) {}
         for (bool2 = true;; bool2 = false)
         {
-          localmin.jdField_c_of_type_Boolean = bool2;
-          break label310;
+          localItemInfo.jdField_c_of_type_Boolean = bool2;
+          break label312;
           bool1 = false;
           break;
         }
@@ -719,15 +628,15 @@ public class FaceToolbar
     this.mAdapterInteractiveVideo.notifyDataSetChanged();
   }
   
-  protected mcl getUIInfo()
+  protected BaseToolbar.UIInfo getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new mcl();
+      this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 2;
-      this.mUIInfo.f = 2131559823;
-      this.mUIInfo.e = 2130842023;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131695659);
+      this.mUIInfo.g = 2131559899;
+      this.mUIInfo.f = 2130842166;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131695902);
     }
     return this.mUIInfo;
   }
@@ -742,9 +651,9 @@ public class FaceToolbar
     return isEnable(this.mApp.a());
   }
   
-  public void notifyEvent(Integer paramInteger, Object paramObject1, Object paramObject2)
+  protected void notifyEvent(Integer paramInteger, Object paramObject1, Object paramObject2)
   {
-    lbd.f(TAG, "notifyEvent :" + paramInteger + "|" + paramObject1 + "|" + paramObject2);
+    AVLog.printColorLog(TAG, "notifyEvent :" + paramInteger + "|" + paramObject1 + "|" + paramObject2);
     this.mApp.a(new Object[] { paramInteger, paramObject1, paramObject2 });
   }
   
@@ -752,7 +661,7 @@ public class FaceToolbar
   {
     long l = AudioHelper.b();
     EffectSettingUi.a(this.mApp, l);
-    if ((paramView.getId() == 2131363981) || (paramView.getId() == 2131363904))
+    if ((paramView.getId() == 2131364076) || (paramView.getId() == 2131364002))
     {
       enterDoubleScreen();
       switch (paramView.getId())
@@ -774,7 +683,7 @@ public class FaceToolbar
       chooseTab(4);
       if (this.mRedTouchInteractiveVideo != null)
       {
-        lvv.a(this.mApp, this.mRedTouchInteractiveVideo, 5);
+        AVRedTouchUtil.a(this.mApp, this.mRedTouchInteractiveVideo, 5);
         this.mRedTouchInteractiveVideo = null;
       }
     }
@@ -783,25 +692,28 @@ public class FaceToolbar
   protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
     QLog.w(TAG, 1, "TAG, onCreate, seq[" + paramLong + "]");
-    this.mFaceManager = ((lhd)this.mApp.a(3));
-    this.mSupportManager = ((lin)this.mApp.a(5));
+    this.mFaceManager = ((EffectFaceManager)this.mApp.a(3));
+    this.mSupportManager = ((EffectSupportManager)this.mApp.a(5));
     this.mSelectTab = 0;
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131368362));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131368580));
     this.mListView.setStayDisplayOffsetZero(true);
-    this.linePendant = this.toolbarView.findViewById(2131370131);
-    this.lineFace = this.toolbarView.findViewById(2131370121);
-    this.lineVoiceSticker = this.toolbarView.findViewById(2131370144);
-    this.lineInteractiveVideo = this.toolbarView.findViewById(2131370127);
-    this.btnPendant = ((FrameLayout)this.toolbarView.findViewById(2131363981));
-    this.btnFace = ((FrameLayout)this.toolbarView.findViewById(2131363904));
-    this.btnVoiceSticker = ((FrameLayout)this.toolbarView.findViewById(2131364084));
-    this.btnInteractiveVideo = ((FrameLayout)this.toolbarView.findViewById(2131363935));
-    boolean bool1 = lph.b();
-    boolean bool2 = lot.b();
+    this.linePendant = this.toolbarView.findViewById(2131370402);
+    this.lineFace = this.toolbarView.findViewById(2131370392);
+    this.lineVoiceSticker = this.toolbarView.findViewById(2131370415);
+    this.lineInteractiveVideo = this.toolbarView.findViewById(2131370398);
+    this.btnPendant = ((FrameLayout)this.toolbarView.findViewById(2131364076));
+    this.btnFace = ((FrameLayout)this.toolbarView.findViewById(2131364002));
+    this.btnVoiceSticker = ((FrameLayout)this.toolbarView.findViewById(2131364187));
+    this.btnInteractiveVideo = ((FrameLayout)this.toolbarView.findViewById(2131364032));
+    boolean bool1 = EffectsRenderController.b();
+    boolean bool2 = AEKitAbilityInfo.b();
     if (!bool1) {
       this.btnPendant.setVisibility(8);
     }
     if ((!bool1) || (!bool2)) {
+      this.btnInteractiveVideo.setVisibility(8);
+    }
+    if (QavABTestUtils.d()) {
       this.btnInteractiveVideo.setVisibility(8);
     }
     if (QLog.isColorLevel()) {
@@ -814,8 +726,8 @@ public class FaceToolbar
     Object localObject;
     if (this.mRedTouchInteractiveVideo == null)
     {
-      localObject = this.toolbarView.findViewById(2131370127);
-      this.mRedTouchInteractiveVideo = lvv.a(this.mApp, (View)localObject, 5);
+      localObject = this.toolbarView.findViewById(2131370398);
+      this.mRedTouchInteractiveVideo = AVRedTouchUtil.a(this.mApp, (View)localObject, 5);
     }
     this.mFaceTmpList = getList("face");
     this.mPeandantTmpList = getList("pendant");
@@ -824,52 +736,51 @@ public class FaceToolbar
     {
       localObject = getList("creativecop");
       this.mInteractiveVideoTmpList = ((ArrayList)localObject);
-      this.mAdapterFace = new mhn(this.mApp, paramAVActivity, this.mFaceTmpList, this.mListView);
+      this.mAdapterFace = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mFaceTmpList, this.mListView);
       this.mAdapterFace.a(this.mFaceClickCallback);
       this.mAdapterFace.a(this);
       this.mAdapterFace.a(false);
       this.mAdapterFace.b(false);
-      this.mAdapterPendant = new mhn(this.mApp, paramAVActivity, this.mPeandantTmpList, this.mListView);
+      this.mAdapterPendant = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mPeandantTmpList, this.mListView);
       this.mAdapterPendant.a(this.mFaceClickCallback);
       this.mAdapterPendant.a(this);
       this.mAdapterPendant.a(true);
       this.mAdapterPendant.b(true);
-      this.mAdapterVoiceSticker = new mhn(this.mApp, paramAVActivity, this.mVoiceStickerTmpList, this.mListView);
+      this.mAdapterVoiceSticker = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mVoiceStickerTmpList, this.mListView);
       this.mAdapterVoiceSticker.a(this.mFaceClickCallback);
       this.mAdapterVoiceSticker.a(this);
       this.mAdapterVoiceSticker.a(false);
       this.mAdapterVoiceSticker.b(false);
-      this.mAdapterInteractiveVideo = new mhn(this.mApp, paramAVActivity, this.mInteractiveVideoTmpList, this.mListView);
+      this.mAdapterInteractiveVideo = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mInteractiveVideoTmpList, this.mListView);
       this.mAdapterInteractiveVideo.a(this.mFaceClickCallback);
       this.mAdapterInteractiveVideo.a(this);
       this.mAdapterInteractiveVideo.a(true);
       this.mAdapterInteractiveVideo.b(true);
       paramAVActivity = (FaceItem)this.mFaceManager.a();
       if (paramAVActivity == null) {
-        break label813;
+        break label803;
       }
       if (!paramAVActivity.isSameType("creativecop")) {
-        break label788;
+        break label778;
       }
       chooseTab(4);
-      label690:
-      bool1 = lir.b();
-      if ((!lot.b()) || (!lot.a(this.mApp))) {
-        break label849;
+      label705:
+      bool1 = PtuResChecker.a().a();
+      if ((!AEKitAbilityInfo.b()) || (!PtuResChecker.a().a())) {
+        break label839;
       }
     }
-    label788:
-    label813:
-    label849:
+    label778:
+    label803:
+    label839:
     for (int i = 1;; i = 0)
     {
-      if (((!bool1) || (i == 0)) && (this.mActionReceiver == null))
+      if ((!bool1) || (i == 0))
       {
-        this.mActionReceiver = new mee(this);
-        paramAVActivity = new IntentFilter();
-        paramAVActivity.addAction("tencent.video.q2v.ptusoDownloadRet");
-        paramAVActivity.addAction("tencent.video.q2v.ptuLibpagDownloadRet");
-        this.mApp.getApplication().registerReceiver(this.mActionReceiver, paramAVActivity);
+        if (this.mControlUIObs == null) {
+          this.mControlUIObs = new FaceToolbar.1(this);
+        }
+        this.mApp.a(this.mControlUIObs);
       }
       return;
       localObject = null;
@@ -877,42 +788,42 @@ public class FaceToolbar
       if (paramAVActivity.isSameType("pendant"))
       {
         chooseTab(2);
-        break label690;
+        break label705;
       }
       chooseTab(1);
-      break label690;
+      break label705;
       if (this.mVoiceStickerTmpList.size() > 1)
       {
         chooseTab(3);
-        break label690;
+        break label705;
       }
       this.btnVoiceSticker.setVisibility(8);
       chooseTab(1);
-      break label690;
+      break label705;
     }
   }
   
   protected void onDestroy(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    if (this.mActionReceiver != null)
+    if (this.mControlUIObs != null)
     {
-      paramVideoAppInterface.getApplication().unregisterReceiver(this.mActionReceiver);
-      this.mActionReceiver = null;
+      paramVideoAppInterface.b(this.mControlUIObs);
+      this.mControlUIObs = null;
     }
     this.mFaceManager.b(paramLong, this);
     this.mListView = null;
     this.mAdapterFace = null;
     this.mAdapterPendant = null;
     this.mAdapterVoiceSticker = null;
-    min localmin;
+    QavListItemBase.ItemInfo localItemInfo;
     if (this.mFaceTmpList != null)
     {
       paramVideoAppInterface = this.mFaceTmpList.iterator();
       while (paramVideoAppInterface.hasNext())
       {
-        localmin = (min)paramVideoAppInterface.next();
-        if ((!"0".equals(localmin.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localmin.jdField_b_of_type_JavaLangString))) {
-          URLDrawable.removeMemoryCacheByUrl(localmin.jdField_b_of_type_JavaLangString);
+        localItemInfo = (QavListItemBase.ItemInfo)paramVideoAppInterface.next();
+        if ((!"0".equals(localItemInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localItemInfo.jdField_b_of_type_JavaLangString))) {
+          URLDrawable.removeMemoryCacheByUrl(localItemInfo.jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -922,9 +833,9 @@ public class FaceToolbar
       paramVideoAppInterface = this.mPeandantTmpList.iterator();
       while (paramVideoAppInterface.hasNext())
       {
-        localmin = (min)paramVideoAppInterface.next();
-        if ((!"0".equals(localmin.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localmin.jdField_b_of_type_JavaLangString))) {
-          URLDrawable.removeMemoryCacheByUrl(localmin.jdField_b_of_type_JavaLangString);
+        localItemInfo = (QavListItemBase.ItemInfo)paramVideoAppInterface.next();
+        if ((!"0".equals(localItemInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localItemInfo.jdField_b_of_type_JavaLangString))) {
+          URLDrawable.removeMemoryCacheByUrl(localItemInfo.jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -934,9 +845,9 @@ public class FaceToolbar
       paramVideoAppInterface = this.mVoiceStickerTmpList.iterator();
       while (paramVideoAppInterface.hasNext())
       {
-        localmin = (min)paramVideoAppInterface.next();
-        if ((!"0".equals(localmin.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localmin.jdField_b_of_type_JavaLangString))) {
-          URLDrawable.removeMemoryCacheByUrl(localmin.jdField_b_of_type_JavaLangString);
+        localItemInfo = (QavListItemBase.ItemInfo)paramVideoAppInterface.next();
+        if ((!"0".equals(localItemInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localItemInfo.jdField_b_of_type_JavaLangString))) {
+          URLDrawable.removeMemoryCacheByUrl(localItemInfo.jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -946,9 +857,9 @@ public class FaceToolbar
       paramVideoAppInterface = this.mInteractiveVideoTmpList.iterator();
       while (paramVideoAppInterface.hasNext())
       {
-        localmin = (min)paramVideoAppInterface.next();
-        if ((!"0".equals(localmin.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localmin.jdField_b_of_type_JavaLangString))) {
-          URLDrawable.removeMemoryCacheByUrl(localmin.jdField_b_of_type_JavaLangString);
+        localItemInfo = (QavListItemBase.ItemInfo)paramVideoAppInterface.next();
+        if ((!"0".equals(localItemInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localItemInfo.jdField_b_of_type_JavaLangString))) {
+          URLDrawable.removeMemoryCacheByUrl(localItemInfo.jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -1009,7 +920,7 @@ public class FaceToolbar
     EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.mApp.a(8);
     if ((localEffectOperateManager != null) && (localEffectOperateManager.a()) && (paramFaceItem != null))
     {
-      lbd.f(TAG, "onItemSelectedChanged type: " + paramFaceItem.getType() + ", id: " + paramFaceItem.getId());
+      AVLog.printColorLog(TAG, "onItemSelectedChanged type: " + paramFaceItem.getType() + ", id: " + paramFaceItem.getId());
       paramFaceItem = paramFaceItem.getType();
       if ("pendant".equals(paramFaceItem)) {
         chooseTab(2);
@@ -1093,7 +1004,7 @@ public class FaceToolbar
     if (localFaceItem == null)
     {
       str = "0";
-      lbd.f(TAG, "setLastSelectedIndex:" + str);
+      AVLog.printColorLog(TAG, "setLastSelectedIndex:" + str);
       if (this.mSelectTab != 2) {
         break label133;
       }
@@ -1139,19 +1050,19 @@ public class FaceToolbar
     else {
       return;
     }
-    localAVActivity.a.a().a(Boolean.valueOf(false), 0, 2130842210);
+    localAVActivity.a.a().a(Boolean.valueOf(false), 0, 2130842353);
   }
   
-  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, min parammin, mim parammim)
+  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, QavListItemBase.ItemInfo paramItemInfo, QavListItemBase.IDownloadCallback paramIDownloadCallback)
   {
-    paramAppInterface = (FaceItem)this.mFaceManager.a(parammin.jdField_a_of_type_JavaLangString);
+    paramAppInterface = (FaceItem)this.mFaceManager.a(paramItemInfo.jdField_a_of_type_JavaLangString);
     if (paramAppInterface != null)
     {
       this.mFaceManager.a(paramLong, paramAppInterface);
       return;
     }
     QLog.w(TAG, 1, "startDownloadTemplate, item为空, seq[" + paramLong + "]");
-    parammim.a(paramLong, parammin.jdField_a_of_type_JavaLangString, false);
+    paramIDownloadCallback.a(paramLong, paramItemInfo.jdField_a_of_type_JavaLangString, false);
   }
   
   public void update(Object[] paramArrayOfObject)
@@ -1209,7 +1120,7 @@ public class FaceToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.FaceToolbar
  * JD-Core Version:    0.7.0.1
  */

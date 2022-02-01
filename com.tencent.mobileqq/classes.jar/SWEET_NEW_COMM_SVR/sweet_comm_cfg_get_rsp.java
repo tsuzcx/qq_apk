@@ -12,8 +12,8 @@ public final class sweet_comm_cfg_get_rsp
 {
   static Map<Long, sweet_comm_cfg_item> cache_m_cfg_res;
   static sweet_rsp_comm cache_rsp_comm = new sweet_rsp_comm();
-  public Map<Long, sweet_comm_cfg_item> m_cfg_res;
-  public sweet_rsp_comm rsp_comm;
+  public Map<Long, sweet_comm_cfg_item> m_cfg_res = null;
+  public sweet_rsp_comm rsp_comm = null;
   
   static
   {

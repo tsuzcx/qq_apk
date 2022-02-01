@@ -15,6 +15,7 @@ public class AbstractImageAdapter$URLImageView2
   public AbstractImageAdapter$URLImageView2(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)

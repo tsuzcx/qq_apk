@@ -6,9 +6,6 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import azbu;
-import azbz;
-import azcg;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,25 +17,25 @@ public class OnlineStatusPagerAdapter
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  private azbz jdField_a_of_type_Azbz;
-  private azcg jdField_a_of_type_Azcg = new azcg();
-  public ArrayList<azbu> a;
-  private boolean jdField_a_of_type_Boolean;
+  private OnlineStatusPagerAdapter.OnStatusItemClickListener jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener;
+  private OnlineStatusPanelParams jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams;
+  private OnlineStatusRecycleBin jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusRecycleBin = new OnlineStatusRecycleBin();
+  public ArrayList<OnlineStatusItem> a;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
-  private ArrayList<azbu> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private int c;
+  private ArrayList<OnlineStatusItem> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   
-  OnlineStatusPagerAdapter(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean, ViewPager paramViewPager)
+  OnlineStatusPagerAdapter(Context paramContext, OnlineStatusPanelParams paramOnlineStatusPanelParams, ViewPager paramViewPager)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = (paramInt1 * 4);
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = (paramOnlineStatusPanelParams.jdField_b_of_type_Int * paramOnlineStatusPanelParams.c);
+    this.jdField_a_of_type_Boolean = paramOnlineStatusPanelParams.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams = paramOnlineStatusPanelParams;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
   }
   
-  private List<azbu> a(int paramInt)
+  private List<OnlineStatusItem> a(int paramInt)
   {
     paramInt = this.jdField_a_of_type_Int * paramInt;
     int i = Math.min(this.jdField_b_of_type_JavaUtilArrayList.size(), this.jdField_a_of_type_Int + paramInt);
@@ -52,11 +49,11 @@ public class OnlineStatusPagerAdapter
       return 0;
     }
     int j = k;
-    azbu localazbu;
+    OnlineStatusItem localOnlineStatusItem;
     int i;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1)
     {
-      localazbu = (azbu)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      localOnlineStatusItem = (OnlineStatusItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       i = 0;
     }
     for (;;)
@@ -64,7 +61,7 @@ public class OnlineStatusPagerAdapter
       j = k;
       if (i < this.jdField_b_of_type_JavaUtilArrayList.size())
       {
-        if (((azbu)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a == localazbu.a) {
+        if (((OnlineStatusItem)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a == localOnlineStatusItem.a) {
           j = i;
         }
       }
@@ -75,7 +72,7 @@ public class OnlineStatusPagerAdapter
     }
   }
   
-  public ArrayList<azbu> a()
+  public ArrayList<OnlineStatusItem> a()
   {
     return this.jdField_b_of_type_JavaUtilArrayList;
   }
@@ -112,21 +109,21 @@ public class OnlineStatusPagerAdapter
   
   public void a(int paramInt)
   {
-    this.c = paramInt;
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void a(azbu paramazbu, View paramView)
+  public void a(OnlineStatusItem paramOnlineStatusItem, View paramView)
   {
-    azbu localazbu = null;
+    OnlineStatusItem localOnlineStatusItem = null;
     if (!this.jdField_a_of_type_Boolean)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        localazbu = (azbu)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        localOnlineStatusItem = (OnlineStatusItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       }
       this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramazbu);
-      if (this.jdField_a_of_type_Azbz != null) {
-        this.jdField_a_of_type_Azbz.a(localazbu, paramazbu, paramView);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramOnlineStatusItem);
+      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener.a(localOnlineStatusItem, paramOnlineStatusItem, paramView);
       }
     }
     do
@@ -134,24 +131,24 @@ public class OnlineStatusPagerAdapter
       do
       {
         return;
-        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramazbu)) {
+        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramOnlineStatusItem)) {
           break;
         }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramazbu);
-      } while (this.jdField_a_of_type_Azbz == null);
-      this.jdField_a_of_type_Azbz.a(paramazbu, null, paramView);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(paramOnlineStatusItem);
+      } while (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener == null);
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener.a(paramOnlineStatusItem, null, paramView);
       return;
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramazbu);
-    } while (this.jdField_a_of_type_Azbz == null);
-    this.jdField_a_of_type_Azbz.a(null, paramazbu, paramView);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramOnlineStatusItem);
+    } while (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener == null);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener.a(null, paramOnlineStatusItem, paramView);
   }
   
-  public void a(azbz paramazbz)
+  void a(OnlineStatusPagerAdapter.OnStatusItemClickListener paramOnStatusItemClickListener)
   {
-    this.jdField_a_of_type_Azbz = paramazbz;
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener = paramOnStatusItemClickListener;
   }
   
-  public void a(ArrayList<azbu> paramArrayList)
+  public void a(ArrayList<OnlineStatusItem> paramArrayList)
   {
     this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -163,7 +160,7 @@ public class OnlineStatusPagerAdapter
       OnlineStatusListLayout localOnlineStatusListLayout = (OnlineStatusListLayout)paramObject;
       localOnlineStatusListLayout.setPageIndex(-1);
       paramViewGroup.removeView(localOnlineStatusListLayout);
-      this.jdField_a_of_type_Azcg.a(paramInt, (View)paramObject);
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusRecycleBin.a(paramInt, (View)paramObject);
     }
   }
   
@@ -184,41 +181,23 @@ public class OnlineStatusPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    boolean bool2 = true;
     List localList = a(paramInt);
-    OnlineStatusListLayout localOnlineStatusListLayout2 = (OnlineStatusListLayout)this.jdField_a_of_type_Azcg.a(paramInt);
+    OnlineStatusListLayout localOnlineStatusListLayout2 = (OnlineStatusListLayout)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusRecycleBin.a(paramInt);
     OnlineStatusListLayout localOnlineStatusListLayout1 = localOnlineStatusListLayout2;
     if (localOnlineStatusListLayout2 == null)
     {
       localOnlineStatusListLayout1 = new OnlineStatusListLayout(this.jdField_a_of_type_AndroidContentContext);
-      localOnlineStatusListLayout1.setItemWidth(this.c);
-      localOnlineStatusListLayout1.setItemMargin(OnlineStatusPanel.a(this.jdField_b_of_type_Int, localOnlineStatusListLayout1.getResources()));
-      if (this.jdField_b_of_type_Int != 1) {
-        break label172;
-      }
-      bool1 = true;
-      localOnlineStatusListLayout1.setUseWhiteBg(bool1);
-      if (this.jdField_b_of_type_Int != 3) {
-        break label177;
-      }
-    }
-    label172:
-    label177:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localOnlineStatusListLayout1.setUseLightNightBg(bool1);
-      localOnlineStatusListLayout1.setMultiMode(this.jdField_a_of_type_Boolean);
+      localOnlineStatusListLayout1.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams);
+      localOnlineStatusListLayout1.setItemWidth(this.jdField_b_of_type_Int);
       localOnlineStatusListLayout1.setOnClickListener(this);
       localOnlineStatusListLayout1.a(this.jdField_a_of_type_Int, this);
-      localOnlineStatusListLayout1.a(localList, this.jdField_a_of_type_JavaUtilArrayList);
-      localOnlineStatusListLayout1.setPageIndex(paramInt);
-      if ((localOnlineStatusListLayout1.getParent() != paramViewGroup) && (paramInt < getCount())) {
-        paramViewGroup.addView(localOnlineStatusListLayout1);
-      }
-      return localOnlineStatusListLayout1;
-      bool1 = false;
-      break;
     }
+    localOnlineStatusListLayout1.a(localList, this.jdField_a_of_type_JavaUtilArrayList);
+    localOnlineStatusListLayout1.setPageIndex(paramInt);
+    if ((localOnlineStatusListLayout1.getParent() != paramViewGroup) && (paramInt < getCount())) {
+      paramViewGroup.addView(localOnlineStatusListLayout1);
+    }
+    return localOnlineStatusListLayout1;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -230,17 +209,17 @@ public class OnlineStatusPagerAdapter
   {
     Object localObject = paramView.getTag();
     if ((paramView instanceof OnlineStatusListLayout)) {
-      if ((((OnlineStatusListLayout)paramView).a()) && (this.jdField_a_of_type_Azbz != null)) {
-        this.jdField_a_of_type_Azbz.a(paramView);
+      if ((((OnlineStatusListLayout)paramView).a()) && (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter$OnStatusItemClickListener.a(paramView);
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((localObject instanceof azbu))
+      if ((localObject instanceof OnlineStatusItem))
       {
-        a((azbu)localObject, paramView);
+        a((OnlineStatusItem)localObject, paramView);
         a();
       }
     }

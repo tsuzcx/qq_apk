@@ -15,12 +15,12 @@ class HotChatCenterFragment$5
       String str1 = "" + this.jdField_a_of_type_Int;
       if (!HotChatCenterFragment.a(this.this$0))
       {
-        str1 = this.this$0.getString(2131719161) + "(" + this.jdField_a_of_type_Int + ")";
+        str1 = this.this$0.getString(2131719718) + "(" + this.jdField_a_of_type_Int + ")";
         if (this.jdField_a_of_type_Int > 99) {
-          str1 = this.this$0.getString(2131719161) + "(99+)";
+          str1 = this.this$0.getString(2131719718) + "(99+)";
         }
         if (this.jdField_a_of_type_Int <= 0) {
-          str1 = this.this$0.getString(2131719161);
+          str1 = this.this$0.getString(2131719718);
         }
       }
       String str2 = str1;
@@ -39,7 +39,7 @@ class HotChatCenterFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.activity.HotChatCenterFragment.5
  * JD-Core Version:    0.7.0.1
  */

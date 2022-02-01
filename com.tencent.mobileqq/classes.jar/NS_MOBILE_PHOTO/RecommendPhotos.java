@@ -11,7 +11,7 @@ public final class RecommendPhotos
 {
   static ArrayList<s_picdata> cache_recommend_photos = new ArrayList();
   public String recommend_id = "";
-  public ArrayList<s_picdata> recommend_photos;
+  public ArrayList<s_picdata> recommend_photos = null;
   
   static
   {

@@ -50,7 +50,7 @@ public class CircleGuideView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
     try

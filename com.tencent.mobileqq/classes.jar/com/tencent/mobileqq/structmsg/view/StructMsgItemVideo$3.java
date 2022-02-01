@@ -3,25 +3,23 @@ package com.tencent.mobileqq.structmsg.view;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
-import bdny;
-import bdte;
-import bdtm;
+import com.tencent.mobileqq.structmsg.CGILoader;
 
-public class StructMsgItemVideo$3
+class StructMsgItemVideo$3
   implements Runnable
 {
-  public StructMsgItemVideo$3(bdte parambdte, Context paramContext, View paramView) {}
+  StructMsgItemVideo$3(StructMsgItemVideo paramStructMsgItemVideo, Context paramContext, View paramView) {}
   
   public void run()
   {
-    String str = bdny.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.ab, bdte.a(this.this$0));
+    String str = CGILoader.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.ab, StructMsgItemVideo.a(this.this$0));
     this.this$0.a.obtainMessage().obj = this.jdField_a_of_type_AndroidViewView;
     if (!TextUtils.isEmpty(str))
     {
-      bdte.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, str);
+      StructMsgItemVideo.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, str);
       return;
     }
-    bdte.a(this.this$0, this.jdField_a_of_type_AndroidContentContext);
+    StructMsgItemVideo.a(this.this$0, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

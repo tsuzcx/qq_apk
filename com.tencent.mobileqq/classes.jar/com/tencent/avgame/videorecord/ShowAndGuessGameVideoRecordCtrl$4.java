@@ -1,26 +1,25 @@
 package com.tencent.avgame.videorecord;
 
-import bjuc;
-import nrk;
+import com.tencent.qav.log.AVLog;
 
-public class ShowAndGuessGameVideoRecordCtrl$4
+class ShowAndGuessGameVideoRecordCtrl$4
   implements Runnable
 {
-  public ShowAndGuessGameVideoRecordCtrl$4(nrk paramnrk) {}
+  ShowAndGuessGameVideoRecordCtrl$4(ShowAndGuessGameVideoRecordCtrl paramShowAndGuessGameVideoRecordCtrl) {}
   
   public void run()
   {
-    bjuc.a(this.this$0.a, "onEncodeError man call check");
-    if (nrk.a(this.this$0))
+    AVLog.a(this.this$0.a, "onEncodeError man call check");
+    if (ShowAndGuessGameVideoRecordCtrl.a(this.this$0))
     {
-      bjuc.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
-      this.this$0.a(nrk.b(this.this$0));
+      AVLog.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
+      this.this$0.a(ShowAndGuessGameVideoRecordCtrl.b(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.videorecord.ShowAndGuessGameVideoRecordCtrl.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll android:id="@id/l37" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <dov.com.qq.im.aeeditor.lyric.widget.LyricViewInternalDetail android:id="@id/l36" android:layout_width="fill_parent" android:layout_height="wrap_content" app:aelvLyricHilightColor="@color/fh" app:aelvLyricHilightSize="18.0sp" app:aelvLyricHilightThinColor="@color/fh" app:aelvLyricLineHeight="18.0dip" app:aelvLyricLineMargin="20.0dip" app:aelvLyricScoreHighColor="@color/fi" app:aelvLyricScoreLowColor="@color/fi" app:aelvLyricScoreMiddleColor="@color/fi" app:aelvLyricTextColor="@color/fi" app:aelvLyricTextSize="18.0sp" app:aelvLyricTextThinColor="@color/fi" />
-    </FrameLayout>
-</dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="48.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/n_c" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/g5d" android:layout_centerVertical="true" android:contentDescription="@string/w_c" />
+    <ImageView android:id="@id/n_j" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/g5l" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/w_d" />
+</RelativeLayout>

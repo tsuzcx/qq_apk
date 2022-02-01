@@ -4,21 +4,15 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import anud;
-import anwf;
-import arfs;
-import arft;
-import awyr;
-import azjj;
-import azjk;
-import azlg;
-import bdlg;
-import bdqa;
-import bhdi;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.dataline.util.file.FileUtil;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.FlashPicHelper;
+import com.tencent.mobileqq.app.GlobalImageCache;
+import com.tencent.mobileqq.app.HotChatHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.RichmediaHttpsConfProcessor;
+import com.tencent.mobileqq.config.business.RichmediaHttpsConfProcessor.RichmediaHttpsConfigBean;
 import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -32,12 +26,21 @@ import com.tencent.mobileqq.highway.netprobe.ProbeTask;
 import com.tencent.mobileqq.highway.netprobe.TracerouteProbe;
 import com.tencent.mobileqq.highway.netprobe.WeakNetLearner;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.DownloadEncryptConf;
+import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.DownCallBack;
+import com.tencent.mobileqq.pic.DownCallBack.DownResult;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.statistics.RichMediaBugReport;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemImage;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
+import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.mobileqq.transfile.report.RMServMonitorReport;
+import com.tencent.mobileqq.utils.DESUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.PicCryptor;
 import com.tencent.mobileqq.utils.StringUtil;
@@ -47,10 +50,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import fd;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.regex.Matcher;
@@ -60,7 +63,7 @@ import mqq.manager.TicketManager;
 
 public class BasePicDownloadProcessor
   extends BaseDownloadProcessor
-  implements INetEngine.NetFailedListener
+  implements NetFailedListener
 {
   public static final String C2C_PIC_DOWNLOAD_DOMAIN = "c2cpicdw.qpic.cn";
   public static final String C2C_PIC_DOWNLOAD_ERROR_CODE = "C2CPicDownloadErrorCode";
@@ -74,25 +77,25 @@ public class BasePicDownloadProcessor
   public static final String KEY_PIC_DOWNLOAD_ERROR_CODE = "param_detail_code";
   public static final String REPORT_TAG_DIRECT_DOWNLOAD_FAIL = "report_direct_download_fail";
   private static final Pattern URL_ENCRYPR_PATH_PATTERN = Pattern.compile(".*//[^/]*/[^/]*/(.*)/.*");
-  protected long decryptConsumeTime;
+  protected long decryptConsumeTime = 0L;
   private ArrayList<String> failIpReported = new ArrayList();
   protected String mDecryptErrorMsg;
   protected String mDirectDownFailReason = "";
-  protected boolean mEncryptPic;
-  protected boolean mEncryptUrl;
-  protected boolean mIpFromInnerDns;
+  protected boolean mEncryptPic = false;
+  protected boolean mEncryptUrl = false;
+  protected boolean mIpFromInnerDns = false;
   protected TransferRequest.PicDownExtraInfo mPicDownExtra;
-  protected boolean mPicEncryptRollback;
-  protected int mSSORequestReason;
+  protected boolean mPicEncryptRollback = false;
+  protected int mSSORequestReason = 0;
   protected byte[] mST;
   protected byte[] mSTKey;
   public WeakNetLearner mWeakNetLearner;
   
   public BasePicDownloadProcessor() {}
   
-  public BasePicDownloadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public BasePicDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     this.mWeakNetLearner = BaseTransProcessorStaticVariable.WEAK_NET_LEARNER;
     this.mProxyIpList = ((ProxyIpManager)this.app.getManager(3)).getProxyIp(3);
     encryptConfigInit();
@@ -166,55 +169,55 @@ public class BasePicDownloadProcessor
   private void writeProgressiveFirstSlice(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: new 246	java/io/File
+    //   0: new 258	java/io/File
     //   3: dup
     //   4: aload_2
-    //   5: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_3
-    //   9: new 246	java/io/File
+    //   9: new 258	java/io/File
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore 4
     //   19: aload 4
-    //   21: invokevirtual 252	java/io/File:exists	()Z
+    //   21: invokevirtual 264	java/io/File:exists	()Z
     //   24: ifeq +9 -> 33
     //   27: aload 4
-    //   29: invokevirtual 255	java/io/File:delete	()Z
+    //   29: invokevirtual 267	java/io/File:delete	()Z
     //   32: pop
-    //   33: invokestatic 258	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   33: invokestatic 270	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   36: ifeq +43 -> 79
-    //   39: ldc_w 260
+    //   39: ldc_w 272
     //   42: iconst_4
-    //   43: new 194	java/lang/StringBuilder
+    //   43: new 206	java/lang/StringBuilder
     //   46: dup
-    //   47: invokespecial 195	java/lang/StringBuilder:<init>	()V
-    //   50: ldc_w 262
-    //   53: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   50: ldc_w 274
+    //   53: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: aload_3
-    //   57: invokevirtual 265	java/io/File:length	()J
-    //   60: invokevirtual 268	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   63: ldc_w 270
-    //   66: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: invokevirtual 277	java/io/File:length	()J
+    //   60: invokevirtual 280	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   63: ldc_w 282
+    //   66: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   69: aload_1
-    //   70: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   70: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: invokestatic 286	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   79: aload_3
-    //   80: invokevirtual 252	java/io/File:exists	()Z
+    //   80: invokevirtual 264	java/io/File:exists	()Z
     //   83: ifeq +90 -> 173
-    //   86: new 276	java/io/RandomAccessFile
+    //   86: new 288	java/io/RandomAccessFile
     //   89: dup
     //   90: aload_3
-    //   91: ldc_w 278
-    //   94: invokespecial 281	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   91: ldc_w 290
+    //   94: invokespecial 293	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   97: astore 4
     //   99: aload 4
     //   101: astore_3
     //   102: aload 4
     //   104: aload 4
-    //   106: invokevirtual 282	java/io/RandomAccessFile:length	()J
-    //   109: invokevirtual 286	java/io/RandomAccessFile:seek	(J)V
+    //   106: invokevirtual 294	java/io/RandomAccessFile:length	()J
+    //   109: invokevirtual 298	java/io/RandomAccessFile:seek	(J)V
     //   112: aload 4
     //   114: astore_3
     //   115: aload 4
@@ -222,41 +225,41 @@ public class BasePicDownloadProcessor
     //   118: newarray byte
     //   120: dup
     //   121: iconst_0
-    //   122: ldc_w 287
+    //   122: ldc_w 299
     //   125: bastore
     //   126: dup
     //   127: iconst_1
-    //   128: ldc_w 288
+    //   128: ldc_w 300
     //   131: bastore
-    //   132: invokevirtual 292	java/io/RandomAccessFile:write	([B)V
+    //   132: invokevirtual 304	java/io/RandomAccessFile:write	([B)V
     //   135: aload 4
     //   137: ifnull +8 -> 145
     //   140: aload 4
-    //   142: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   142: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   145: aload_2
     //   146: aload_1
-    //   147: invokestatic 301	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   147: invokestatic 313	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   150: ifne +23 -> 173
     //   153: aload_2
     //   154: aload_1
-    //   155: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   155: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   158: ifeq +24 -> 182
-    //   161: new 246	java/io/File
+    //   161: new 258	java/io/File
     //   164: dup
     //   165: aload_2
-    //   166: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   169: invokevirtual 255	java/io/File:delete	()Z
+    //   166: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   169: invokevirtual 267	java/io/File:delete	()Z
     //   172: pop
     //   173: return
     //   174: astore_3
     //   175: aload_3
-    //   176: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   176: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   179: goto -34 -> 145
-    //   182: new 246	java/io/File
+    //   182: new 258	java/io/File
     //   185: dup
     //   186: aload_2
-    //   187: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   190: invokevirtual 255	java/io/File:delete	()Z
+    //   187: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   190: invokevirtual 267	java/io/File:delete	()Z
     //   193: pop
     //   194: return
     //   195: astore 5
@@ -265,35 +268,35 @@ public class BasePicDownloadProcessor
     //   200: aload 4
     //   202: astore_3
     //   203: aload 5
-    //   205: invokevirtual 306	java/io/FileNotFoundException:printStackTrace	()V
+    //   205: invokevirtual 317	java/io/FileNotFoundException:printStackTrace	()V
     //   208: aload 4
     //   210: ifnull +8 -> 218
     //   213: aload 4
-    //   215: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   215: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   218: aload_2
     //   219: aload_1
-    //   220: invokestatic 301	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   220: invokestatic 313	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   223: ifne -50 -> 173
     //   226: aload_2
     //   227: aload_1
-    //   228: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   228: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   231: ifeq +24 -> 255
-    //   234: new 246	java/io/File
+    //   234: new 258	java/io/File
     //   237: dup
     //   238: aload_2
-    //   239: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   242: invokevirtual 255	java/io/File:delete	()Z
+    //   239: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   242: invokevirtual 267	java/io/File:delete	()Z
     //   245: pop
     //   246: return
     //   247: astore_3
     //   248: aload_3
-    //   249: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   249: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   252: goto -34 -> 218
-    //   255: new 246	java/io/File
+    //   255: new 258	java/io/File
     //   258: dup
     //   259: aload_2
-    //   260: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   263: invokevirtual 255	java/io/File:delete	()Z
+    //   260: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   263: invokevirtual 267	java/io/File:delete	()Z
     //   266: pop
     //   267: return
     //   268: astore 5
@@ -302,35 +305,35 @@ public class BasePicDownloadProcessor
     //   273: aload 4
     //   275: astore_3
     //   276: aload 5
-    //   278: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   278: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   281: aload 4
     //   283: ifnull +8 -> 291
     //   286: aload 4
-    //   288: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   288: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   291: aload_2
     //   292: aload_1
-    //   293: invokestatic 301	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   293: invokestatic 313	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   296: ifne -123 -> 173
     //   299: aload_2
     //   300: aload_1
-    //   301: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   301: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   304: ifeq +24 -> 328
-    //   307: new 246	java/io/File
+    //   307: new 258	java/io/File
     //   310: dup
     //   311: aload_2
-    //   312: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   315: invokevirtual 255	java/io/File:delete	()Z
+    //   312: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   315: invokevirtual 267	java/io/File:delete	()Z
     //   318: pop
     //   319: return
     //   320: astore_3
     //   321: aload_3
-    //   322: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   322: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   325: goto -34 -> 291
-    //   328: new 246	java/io/File
+    //   328: new 258	java/io/File
     //   331: dup
     //   332: aload_2
-    //   333: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   336: invokevirtual 255	java/io/File:delete	()Z
+    //   333: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   336: invokevirtual 267	java/io/File:delete	()Z
     //   339: pop
     //   340: return
     //   341: astore 4
@@ -339,32 +342,32 @@ public class BasePicDownloadProcessor
     //   345: aload_3
     //   346: ifnull +7 -> 353
     //   349: aload_3
-    //   350: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   350: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   353: aload_2
     //   354: aload_1
-    //   355: invokestatic 301	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   355: invokestatic 313	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   358: ifne +23 -> 381
     //   361: aload_2
     //   362: aload_1
-    //   363: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   363: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   366: ifeq +26 -> 392
-    //   369: new 246	java/io/File
+    //   369: new 258	java/io/File
     //   372: dup
     //   373: aload_2
-    //   374: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   377: invokevirtual 255	java/io/File:delete	()Z
+    //   374: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   377: invokevirtual 267	java/io/File:delete	()Z
     //   380: pop
     //   381: aload 4
     //   383: athrow
     //   384: astore_3
     //   385: aload_3
-    //   386: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   386: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   389: goto -36 -> 353
-    //   392: new 246	java/io/File
+    //   392: new 258	java/io/File
     //   395: dup
     //   396: aload_2
-    //   397: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   400: invokevirtual 255	java/io/File:delete	()Z
+    //   397: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   400: invokevirtual 267	java/io/File:delete	()Z
     //   403: pop
     //   404: goto -23 -> 381
     //   407: astore 4
@@ -420,76 +423,76 @@ public class BasePicDownloadProcessor
     //   1: astore 6
     //   3: aconst_null
     //   4: astore 4
-    //   6: new 194	java/lang/StringBuilder
+    //   6: new 206	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 195	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 207	java/lang/StringBuilder:<init>	()V
     //   13: aload_1
-    //   14: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: ldc_w 308
-    //   20: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   14: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc_w 319
+    //   20: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   26: astore 7
     //   28: aload_1
     //   29: aload 7
-    //   31: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   31: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   34: pop
-    //   35: new 246	java/io/File
+    //   35: new 258	java/io/File
     //   38: dup
     //   39: aload 7
-    //   41: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
+    //   41: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
     //   44: astore 5
-    //   46: new 246	java/io/File
+    //   46: new 258	java/io/File
     //   49: dup
     //   50: aload_2
-    //   51: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
+    //   51: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
     //   54: astore 8
-    //   56: invokestatic 258	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   56: invokestatic 270	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   59: ifeq +44 -> 103
-    //   62: ldc_w 260
+    //   62: ldc_w 272
     //   65: iconst_4
-    //   66: new 194	java/lang/StringBuilder
+    //   66: new 206	java/lang/StringBuilder
     //   69: dup
-    //   70: invokespecial 195	java/lang/StringBuilder:<init>	()V
-    //   73: ldc_w 310
-    //   76: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   73: ldc_w 321
+    //   76: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: aload 8
-    //   81: invokevirtual 265	java/io/File:length	()J
-    //   84: invokevirtual 268	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   87: ldc_w 270
-    //   90: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: invokevirtual 277	java/io/File:length	()J
+    //   84: invokevirtual 280	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   87: ldc_w 282
+    //   90: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: aload_1
-    //   94: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   94: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokestatic 286	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   103: aload 5
-    //   105: invokevirtual 252	java/io/File:exists	()Z
+    //   105: invokevirtual 264	java/io/File:exists	()Z
     //   108: ifeq +140 -> 248
     //   111: aload 8
-    //   113: invokevirtual 252	java/io/File:exists	()Z
+    //   113: invokevirtual 264	java/io/File:exists	()Z
     //   116: ifeq +132 -> 248
-    //   119: new 276	java/io/RandomAccessFile
+    //   119: new 288	java/io/RandomAccessFile
     //   122: dup
     //   123: aload 5
-    //   125: ldc_w 278
-    //   128: invokespecial 281	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   125: ldc_w 290
+    //   128: invokespecial 293	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   131: astore_2
     //   132: aload_2
     //   133: aload_0
-    //   134: getfield 167	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
-    //   137: getfield 204	com/tencent/mobileqq/transfile/TransferRequest:mRequestOffset	I
+    //   134: getfield 179	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
+    //   137: getfield 216	com/tencent/mobileqq/transfile/TransferRequest:mRequestOffset	I
     //   140: i2l
-    //   141: invokevirtual 286	java/io/RandomAccessFile:seek	(J)V
-    //   144: new 312	java/io/FileInputStream
+    //   141: invokevirtual 298	java/io/RandomAccessFile:seek	(J)V
+    //   144: new 323	java/io/FileInputStream
     //   147: dup
     //   148: aload 8
-    //   150: invokespecial 315	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   150: invokespecial 326	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   153: astore 5
     //   155: sipush 1024
     //   158: newarray byte
     //   160: astore 4
     //   162: aload 5
     //   164: aload 4
-    //   166: invokevirtual 319	java/io/FileInputStream:read	([B)I
+    //   166: invokevirtual 330	java/io/FileInputStream:read	([B)I
     //   169: istore_3
     //   170: iload_3
     //   171: ifle +78 -> 249
@@ -497,7 +500,7 @@ public class BasePicDownloadProcessor
     //   175: aload 4
     //   177: iconst_0
     //   178: iload_3
-    //   179: invokevirtual 322	java/io/RandomAccessFile:write	([BII)V
+    //   179: invokevirtual 333	java/io/RandomAccessFile:write	([BII)V
     //   182: goto -20 -> 162
     //   185: astore 4
     //   187: aload_2
@@ -507,83 +510,83 @@ public class BasePicDownloadProcessor
     //   193: aload 4
     //   195: ifnull +8 -> 203
     //   198: aload 4
-    //   200: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   200: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   203: aload_2
     //   204: ifnull +7 -> 211
     //   207: aload_2
-    //   208: invokevirtual 323	java/io/FileInputStream:close	()V
+    //   208: invokevirtual 334	java/io/FileInputStream:close	()V
     //   211: aload 8
-    //   213: invokevirtual 255	java/io/File:delete	()Z
+    //   213: invokevirtual 267	java/io/File:delete	()Z
     //   216: pop
     //   217: aload 7
     //   219: aload_1
-    //   220: invokestatic 301	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   220: invokestatic 313	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   223: ifne +25 -> 248
     //   226: aload 7
     //   228: aload_1
-    //   229: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   229: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   232: ifeq +121 -> 353
-    //   235: new 246	java/io/File
+    //   235: new 258	java/io/File
     //   238: dup
     //   239: aload 7
-    //   241: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   244: invokevirtual 255	java/io/File:delete	()Z
+    //   241: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   244: invokevirtual 267	java/io/File:delete	()Z
     //   247: pop
     //   248: return
     //   249: aload_2
     //   250: ifnull +7 -> 257
     //   253: aload_2
-    //   254: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   254: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   257: aload 5
     //   259: ifnull +8 -> 267
     //   262: aload 5
-    //   264: invokevirtual 323	java/io/FileInputStream:close	()V
+    //   264: invokevirtual 334	java/io/FileInputStream:close	()V
     //   267: aload 8
-    //   269: invokevirtual 255	java/io/File:delete	()Z
+    //   269: invokevirtual 267	java/io/File:delete	()Z
     //   272: pop
     //   273: aload 7
     //   275: aload_1
-    //   276: invokestatic 301	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   276: invokestatic 313	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   279: ifne -31 -> 248
     //   282: aload 7
     //   284: aload_1
-    //   285: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   285: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   288: ifeq +33 -> 321
-    //   291: new 246	java/io/File
+    //   291: new 258	java/io/File
     //   294: dup
     //   295: aload 7
-    //   297: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   300: invokevirtual 255	java/io/File:delete	()Z
+    //   297: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   300: invokevirtual 267	java/io/File:delete	()Z
     //   303: pop
     //   304: return
     //   305: astore_2
     //   306: aload_2
-    //   307: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   307: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   310: goto -53 -> 257
     //   313: astore_2
     //   314: aload_2
-    //   315: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   315: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   318: goto -51 -> 267
-    //   321: new 246	java/io/File
+    //   321: new 258	java/io/File
     //   324: dup
     //   325: aload 7
-    //   327: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   330: invokevirtual 255	java/io/File:delete	()Z
+    //   327: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   330: invokevirtual 267	java/io/File:delete	()Z
     //   333: pop
     //   334: return
     //   335: astore 4
     //   337: aload 4
-    //   339: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   339: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   342: goto -139 -> 203
     //   345: astore_2
     //   346: aload_2
-    //   347: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   347: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   350: goto -139 -> 211
-    //   353: new 246	java/io/File
+    //   353: new 258	java/io/File
     //   356: dup
     //   357: aload 7
-    //   359: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   362: invokevirtual 255	java/io/File:delete	()Z
+    //   359: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   362: invokevirtual 267	java/io/File:delete	()Z
     //   365: pop
     //   366: return
     //   367: astore 4
@@ -594,43 +597,43 @@ public class BasePicDownloadProcessor
     //   375: aload_2
     //   376: ifnull +7 -> 383
     //   379: aload_2
-    //   380: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   380: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   383: aload 5
     //   385: ifnull +8 -> 393
     //   388: aload 5
-    //   390: invokevirtual 323	java/io/FileInputStream:close	()V
+    //   390: invokevirtual 334	java/io/FileInputStream:close	()V
     //   393: aload 8
-    //   395: invokevirtual 255	java/io/File:delete	()Z
+    //   395: invokevirtual 267	java/io/File:delete	()Z
     //   398: pop
     //   399: aload 7
     //   401: aload_1
-    //   402: invokestatic 301	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   402: invokestatic 313	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   405: ifne +25 -> 430
     //   408: aload 7
     //   410: aload_1
-    //   411: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   411: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   414: ifeq +35 -> 449
-    //   417: new 246	java/io/File
+    //   417: new 258	java/io/File
     //   420: dup
     //   421: aload 7
-    //   423: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   426: invokevirtual 255	java/io/File:delete	()Z
+    //   423: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   426: invokevirtual 267	java/io/File:delete	()Z
     //   429: pop
     //   430: aload 4
     //   432: athrow
     //   433: astore_2
     //   434: aload_2
-    //   435: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   435: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   438: goto -55 -> 383
     //   441: astore_2
     //   442: aload_2
-    //   443: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   443: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   446: goto -53 -> 393
-    //   449: new 246	java/io/File
+    //   449: new 258	java/io/File
     //   452: dup
     //   453: aload 7
-    //   455: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   458: invokevirtual 255	java/io/File:delete	()Z
+    //   455: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   458: invokevirtual 267	java/io/File:delete	()Z
     //   461: pop
     //   462: goto -32 -> 430
     //   465: astore 4
@@ -698,76 +701,76 @@ public class BasePicDownloadProcessor
     //   1: astore 6
     //   3: aconst_null
     //   4: astore 4
-    //   6: new 194	java/lang/StringBuilder
+    //   6: new 206	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 195	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 207	java/lang/StringBuilder:<init>	()V
     //   13: aload_1
-    //   14: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: ldc_w 308
-    //   20: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   14: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc_w 319
+    //   20: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   26: astore 7
     //   28: aload_1
     //   29: aload 7
-    //   31: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   31: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   34: pop
-    //   35: new 246	java/io/File
+    //   35: new 258	java/io/File
     //   38: dup
     //   39: aload 7
-    //   41: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
+    //   41: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
     //   44: astore 5
-    //   46: new 246	java/io/File
+    //   46: new 258	java/io/File
     //   49: dup
     //   50: aload_2
-    //   51: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
+    //   51: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
     //   54: astore 8
-    //   56: invokestatic 258	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   56: invokestatic 270	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   59: ifeq +44 -> 103
-    //   62: ldc_w 260
+    //   62: ldc_w 272
     //   65: iconst_4
-    //   66: new 194	java/lang/StringBuilder
+    //   66: new 206	java/lang/StringBuilder
     //   69: dup
-    //   70: invokespecial 195	java/lang/StringBuilder:<init>	()V
-    //   73: ldc_w 325
-    //   76: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   73: ldc_w 336
+    //   76: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: aload 8
-    //   81: invokevirtual 265	java/io/File:length	()J
-    //   84: invokevirtual 268	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   87: ldc_w 270
-    //   90: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: invokevirtual 277	java/io/File:length	()J
+    //   84: invokevirtual 280	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   87: ldc_w 282
+    //   90: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: aload_1
-    //   94: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   94: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokestatic 286	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   103: aload 5
-    //   105: invokevirtual 252	java/io/File:exists	()Z
+    //   105: invokevirtual 264	java/io/File:exists	()Z
     //   108: ifeq +140 -> 248
     //   111: aload 8
-    //   113: invokevirtual 252	java/io/File:exists	()Z
+    //   113: invokevirtual 264	java/io/File:exists	()Z
     //   116: ifeq +132 -> 248
-    //   119: new 276	java/io/RandomAccessFile
+    //   119: new 288	java/io/RandomAccessFile
     //   122: dup
     //   123: aload 5
-    //   125: ldc_w 278
-    //   128: invokespecial 281	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   125: ldc_w 290
+    //   128: invokespecial 293	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   131: astore_2
     //   132: aload_2
     //   133: aload_0
-    //   134: getfield 167	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
-    //   137: getfield 204	com/tencent/mobileqq/transfile/TransferRequest:mRequestOffset	I
+    //   134: getfield 179	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
+    //   137: getfield 216	com/tencent/mobileqq/transfile/TransferRequest:mRequestOffset	I
     //   140: i2l
-    //   141: invokevirtual 286	java/io/RandomAccessFile:seek	(J)V
-    //   144: new 312	java/io/FileInputStream
+    //   141: invokevirtual 298	java/io/RandomAccessFile:seek	(J)V
+    //   144: new 323	java/io/FileInputStream
     //   147: dup
     //   148: aload 8
-    //   150: invokespecial 315	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   150: invokespecial 326	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   153: astore 5
     //   155: sipush 1024
     //   158: newarray byte
     //   160: astore 4
     //   162: aload 5
     //   164: aload 4
-    //   166: invokevirtual 319	java/io/FileInputStream:read	([B)I
+    //   166: invokevirtual 330	java/io/FileInputStream:read	([B)I
     //   169: istore_3
     //   170: iload_3
     //   171: ifle +78 -> 249
@@ -775,7 +778,7 @@ public class BasePicDownloadProcessor
     //   175: aload 4
     //   177: iconst_0
     //   178: iload_3
-    //   179: invokevirtual 322	java/io/RandomAccessFile:write	([BII)V
+    //   179: invokevirtual 333	java/io/RandomAccessFile:write	([BII)V
     //   182: goto -20 -> 162
     //   185: astore 4
     //   187: aload_2
@@ -785,27 +788,27 @@ public class BasePicDownloadProcessor
     //   193: aload 4
     //   195: ifnull +8 -> 203
     //   198: aload 4
-    //   200: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   200: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   203: aload_2
     //   204: ifnull +7 -> 211
     //   207: aload_2
-    //   208: invokevirtual 323	java/io/FileInputStream:close	()V
+    //   208: invokevirtual 334	java/io/FileInputStream:close	()V
     //   211: aload 8
-    //   213: invokevirtual 255	java/io/File:delete	()Z
+    //   213: invokevirtual 267	java/io/File:delete	()Z
     //   216: pop
     //   217: aload 7
     //   219: aload_1
-    //   220: invokestatic 301	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   220: invokestatic 313	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   223: ifne +25 -> 248
     //   226: aload 7
     //   228: aload_1
-    //   229: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   229: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   232: ifeq +106 -> 338
-    //   235: new 246	java/io/File
+    //   235: new 258	java/io/File
     //   238: dup
     //   239: aload 7
-    //   241: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   244: invokevirtual 255	java/io/File:delete	()Z
+    //   241: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   244: invokevirtual 267	java/io/File:delete	()Z
     //   247: pop
     //   248: return
     //   249: aload_2
@@ -813,51 +816,51 @@ public class BasePicDownloadProcessor
     //   251: newarray byte
     //   253: dup
     //   254: iconst_0
-    //   255: ldc_w 287
+    //   255: ldc_w 299
     //   258: bastore
     //   259: dup
     //   260: iconst_1
-    //   261: ldc_w 288
+    //   261: ldc_w 300
     //   264: bastore
-    //   265: invokevirtual 292	java/io/RandomAccessFile:write	([B)V
+    //   265: invokevirtual 304	java/io/RandomAccessFile:write	([B)V
     //   268: aload_2
     //   269: ifnull +7 -> 276
     //   272: aload_2
-    //   273: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   273: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   276: aload 5
     //   278: ifnull +8 -> 286
     //   281: aload 5
-    //   283: invokevirtual 323	java/io/FileInputStream:close	()V
+    //   283: invokevirtual 334	java/io/FileInputStream:close	()V
     //   286: aload 8
-    //   288: invokevirtual 255	java/io/File:delete	()Z
+    //   288: invokevirtual 267	java/io/File:delete	()Z
     //   291: pop
     //   292: aload 7
     //   294: aload_1
-    //   295: invokestatic 301	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   295: invokestatic 313	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   298: ifne -50 -> 248
     //   301: aload 7
     //   303: aload_1
-    //   304: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   304: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   307: ifeq +17 -> 324
-    //   310: new 246	java/io/File
+    //   310: new 258	java/io/File
     //   313: dup
     //   314: aload 7
-    //   316: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   319: invokevirtual 255	java/io/File:delete	()Z
+    //   316: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   319: invokevirtual 267	java/io/File:delete	()Z
     //   322: pop
     //   323: return
-    //   324: new 246	java/io/File
+    //   324: new 258	java/io/File
     //   327: dup
     //   328: aload 7
-    //   330: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   333: invokevirtual 255	java/io/File:delete	()Z
+    //   330: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   333: invokevirtual 267	java/io/File:delete	()Z
     //   336: pop
     //   337: return
-    //   338: new 246	java/io/File
+    //   338: new 258	java/io/File
     //   341: dup
     //   342: aload 7
-    //   344: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   347: invokevirtual 255	java/io/File:delete	()Z
+    //   344: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   347: invokevirtual 267	java/io/File:delete	()Z
     //   350: pop
     //   351: return
     //   352: astore 4
@@ -868,35 +871,35 @@ public class BasePicDownloadProcessor
     //   360: aload_2
     //   361: ifnull +7 -> 368
     //   364: aload_2
-    //   365: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   365: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   368: aload 5
     //   370: ifnull +8 -> 378
     //   373: aload 5
-    //   375: invokevirtual 323	java/io/FileInputStream:close	()V
+    //   375: invokevirtual 334	java/io/FileInputStream:close	()V
     //   378: aload 8
-    //   380: invokevirtual 255	java/io/File:delete	()Z
+    //   380: invokevirtual 267	java/io/File:delete	()Z
     //   383: pop
     //   384: aload 7
     //   386: aload_1
-    //   387: invokestatic 301	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   387: invokestatic 313	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   390: ifne +25 -> 415
     //   393: aload 7
     //   395: aload_1
-    //   396: invokestatic 304	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   396: invokestatic 315	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   399: ifeq +19 -> 418
-    //   402: new 246	java/io/File
+    //   402: new 258	java/io/File
     //   405: dup
     //   406: aload 7
-    //   408: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   411: invokevirtual 255	java/io/File:delete	()Z
+    //   408: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   411: invokevirtual 267	java/io/File:delete	()Z
     //   414: pop
     //   415: aload 4
     //   417: athrow
-    //   418: new 246	java/io/File
+    //   418: new 258	java/io/File
     //   421: dup
     //   422: aload 7
-    //   424: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
-    //   427: invokevirtual 255	java/io/File:delete	()Z
+    //   424: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
+    //   427: invokevirtual 267	java/io/File:delete	()Z
     //   430: pop
     //   431: goto -16 -> 415
     //   434: astore_2
@@ -976,7 +979,7 @@ public class BasePicDownloadProcessor
     if (this.mUiRequest.mDownMode == 0)
     {
       str = "&rf=aio";
-      str = "cldver=8.4.10.4875" + str;
+      str = "cldver=8.5.5.5105" + str;
       paramInt = paramString.indexOf("?");
       if (paramInt <= 0) {
         break label219;
@@ -1008,6 +1011,14 @@ public class BasePicDownloadProcessor
         paramString = paramString + "?" + str;
       }
     }
+  }
+  
+  protected void checkFailCodeReport(boolean paramBoolean)
+  {
+    if ((paramBoolean) || (this.errCode != 0) || (!QLog.isColorLevel())) {
+      return;
+    }
+    RichMediaBugReport.a("PIC_TRANS_0_ERROR", Arrays.toString(new Throwable().getStackTrace()));
   }
   
   protected boolean checkMemoryForEncrypt()
@@ -1054,7 +1065,7 @@ public class BasePicDownloadProcessor
       this.mIpFromInnerDns = true;
       this.mDirectMsgUrlDown = true;
       this.mStepDirectDown.logStartTime();
-      paramString = arfs.a();
+      paramString = RichmediaHttpsConfProcessor.a();
       if (paramString != null)
       {
         bool = paramString.a();
@@ -1071,7 +1082,7 @@ public class BasePicDownloadProcessor
       return;
       if (this.mUrlPath.contains("com.tencent.mobileqq"))
       {
-        bdlg.a("Download_Pic_URL_Invalid", this.mUrlPath);
+        RichMediaBugReport.a("Download_Pic_URL_Invalid", this.mUrlPath);
         QLog.d("BaseTransProcessor", 1, "directMsgUrlDown Download_Pic_URL_Invalid:" + this.mUrlPath);
       }
     }
@@ -1147,7 +1158,7 @@ public class BasePicDownloadProcessor
           PicCryptor localPicCryptor = new PicCryptor(this.mSTKey);
           localPicCryptor.a = paramHttpNetReq;
           paramHttpNetReq.decoder = localPicCryptor;
-          paramHttpNetReq.mTempPath = (paramHttpNetReq.mOutPath + "." + MD5.toMD5(RichMediaUtil.getUrlResoursePath(paramString, false)) + ".tmp");
+          paramHttpNetReq.mTempPath = (paramHttpNetReq.mOutPath + "." + MD5.toMD5(TransFileUtil.getUrlResoursePath(paramString, false)) + ".tmp");
         }
       }
     }
@@ -1155,7 +1166,7 @@ public class BasePicDownloadProcessor
     {
       if ((this.mPicEncryptRollback) && (!this.mEncryptPic))
       {
-        paramHttpNetReq.mTempPath = (paramHttpNetReq.mOutPath + "." + MD5.toMD5(RichMediaUtil.getUrlResoursePath(paramString, false)) + ".tmp");
+        paramHttpNetReq.mTempPath = (paramHttpNetReq.mOutPath + "." + MD5.toMD5(TransFileUtil.getUrlResoursePath(paramString, false)) + ".tmp");
         paramHttpNetReq.mReqUrl = (paramString + "&rollback=1");
       }
       return;
@@ -1225,7 +1236,7 @@ public class BasePicDownloadProcessor
     for (;;)
     {
       return;
-      if (DeviceInfoUtil.getDispalyDpi() >= 240)
+      if (DeviceInfoUtil.e() >= 240)
       {
         if ((localObject2 instanceof MessageForMixedMsg))
         {
@@ -1239,10 +1250,10 @@ public class BasePicDownloadProcessor
           if (localObject1 == null) {
             break label250;
           }
-          if (((anwf.a((MessageRecord)localObject1)) || (anud.a((MessageRecord)localObject1))) && (!TextUtils.isEmpty(((MessageForPic)localObject1).md5)))
+          if (((HotChatHelper.a((MessageRecord)localObject1)) || (FlashPicHelper.a((MessageRecord)localObject1))) && (!TextUtils.isEmpty(((MessageForPic)localObject1).md5)))
           {
             localObject2 = this.mUiRequest.mOutFilePath + "_fp";
-            bhdi.a(this.mUiRequest.mOutFilePath, (String)localObject2, ((MessageForPic)localObject1).md5);
+            DESUtil.a(this.mUiRequest.mOutFilePath, (String)localObject2, ((MessageForPic)localObject1).md5);
             return;
             localObject1 = localObject2;
             if (!(localObject2 instanceof MessageForStructing)) {
@@ -1259,10 +1270,10 @@ public class BasePicDownloadProcessor
               break;
             }
             localObject1 = localObject2;
-            if (((bdqa)localObject3).a == null) {
+            if (((StructMsgItemImage)localObject3).a == null) {
               break;
             }
-            localObject1 = ((bdqa)localObject3).a;
+            localObject1 = ((StructMsgItemImage)localObject3).a;
             break;
           }
           updateThumb((MessageForPic)localObject1);
@@ -1353,7 +1364,7 @@ public class BasePicDownloadProcessor
           localObject2 = (ServerAddr)paramNetResp.next();
           try
           {
-            ((StringBuffer)localObject1).append(StringUtil.toHexString(((ServerAddr)localObject2).mIp) + ",");
+            ((StringBuffer)localObject1).append(StringUtil.b(((ServerAddr)localObject2).mIp) + ",");
           }
           catch (Exception localException)
           {
@@ -1480,12 +1491,12 @@ public class BasePicDownloadProcessor
       localObject1 = this.mDownCallBacks.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject4 = (azjj)((Iterator)localObject1).next();
-        azjk localazjk = new azjk();
-        localazjk.jdField_a_of_type_Int = -1;
-        localazjk.jdField_b_of_type_Int = this.errCode;
-        localazjk.jdField_a_of_type_JavaLangString = this.errDesc;
-        ((azjj)localObject4).a(localazjk);
+        localObject4 = (DownCallBack)((Iterator)localObject1).next();
+        DownCallBack.DownResult localDownResult = new DownCallBack.DownResult();
+        localDownResult.jdField_a_of_type_Int = -1;
+        localDownResult.jdField_b_of_type_Int = this.errCode;
+        localDownResult.jdField_a_of_type_JavaLangString = this.errDesc;
+        ((DownCallBack)localObject4).a(localDownResult);
         if (QLog.isColorLevel()) {
           QLog.d("PIC_TAG", 2, "onError ");
         }
@@ -1504,7 +1515,7 @@ public class BasePicDownloadProcessor
     int i;
     if ((this.errCode == 9014) || (this.errCode == 9050))
     {
-      Object localObject3 = RichMediaUtil.getIpAndPortFromUrl(((HttpNetReq)this.mNetReq).mReqUrl);
+      Object localObject3 = TransFileUtil.getIpAndPortFromUrl(((HttpNetReq)this.mNetReq).mReqUrl);
       if (localObject3 != null)
       {
         localObject3 = ((ServerAddr)localObject3).mIp;
@@ -1527,11 +1538,11 @@ public class BasePicDownloadProcessor
       }
     }
     sendMessageToUpdate(2005);
-    if (awyr.b(this.mUiRequest.mRec)) {
-      awyr.a(String.valueOf(this.errCode), 3);
+    if (EmoticonManager.b(this.mUiRequest.mRec)) {
+      EmoticonManager.a(String.valueOf(this.errCode), 3);
     }
     label374:
-    while (!awyr.a(this.mUiRequest.mRec))
+    while (!EmoticonManager.a(this.mUiRequest.mRec))
     {
       return;
       ((ProbeChain)localObject4).addProbeItem(new PingProbe());
@@ -1541,7 +1552,7 @@ public class BasePicDownloadProcessor
       break label308;
     }
     label401:
-    awyr.a(String.valueOf(this.errCode), 2);
+    EmoticonManager.a(String.valueOf(this.errCode), 2);
   }
   
   public void onFailed(NetResp paramNetResp)
@@ -1627,7 +1638,7 @@ public class BasePicDownloadProcessor
     for (;;)
     {
       Object localObject3;
-      azjk localazjk;
+      DownCallBack.DownResult localDownResult;
       boolean bool;
       try
       {
@@ -1647,13 +1658,13 @@ public class BasePicDownloadProcessor
         if (!((Iterator)localObject1).hasNext()) {
           break label401;
         }
-        localObject3 = (azjj)((Iterator)localObject1).next();
-        localazjk = new azjk();
-        localazjk.jdField_a_of_type_Int = 0;
-        localazjk.jdField_b_of_type_JavaLangString = this.mUiRequest.mOutFilePath;
-        localazjk.jdField_c_of_type_JavaLangString = this.mUiRequest.mMd5;
-        localazjk.jdField_c_of_type_Int = this.mUiRequest.mFileType;
-        localazjk.d = this.mUiRequest.mDownMode;
+        localObject3 = (DownCallBack)((Iterator)localObject1).next();
+        localDownResult = new DownCallBack.DownResult();
+        localDownResult.jdField_a_of_type_Int = 0;
+        localDownResult.jdField_b_of_type_JavaLangString = this.mUiRequest.mOutFilePath;
+        localDownResult.jdField_c_of_type_JavaLangString = this.mUiRequest.mMd5;
+        localDownResult.jdField_c_of_type_Int = this.mUiRequest.mFileType;
+        localDownResult.d = this.mUiRequest.mDownMode;
         if (i == 2) {
           break label490;
         }
@@ -1662,10 +1673,10 @@ public class BasePicDownloadProcessor
         }
       }
       finally {}
-      localazjk.jdField_a_of_type_Boolean = bool;
-      ((azjj)localObject3).a(localazjk);
+      localDownResult.jdField_a_of_type_Boolean = bool;
+      ((DownCallBack)localObject3).a(localDownResult);
       if ((this.mUiRequest.mFileType == 131075) && (QLog.isDevelopLevel())) {
-        QLog.d("peak_pgjpeg", 4, "BasePicDownloadProcessor.onSuccess():" + this.mUiRequest.mOutFilePath + ", isPart " + localazjk.jdField_a_of_type_Boolean);
+        QLog.d("peak_pgjpeg", 4, "BasePicDownloadProcessor.onSuccess():" + this.mUiRequest.mOutFilePath + ", isPart " + localDownResult.jdField_a_of_type_Boolean);
       }
       if (QLog.isColorLevel())
       {
@@ -1683,13 +1694,13 @@ public class BasePicDownloadProcessor
           logRichMediaEvent("notify", "end");
         }
         sendMessageToUpdate(2003);
-        if (awyr.b(this.mUiRequest.mRec)) {
-          awyr.a("0", 3);
+        if (EmoticonManager.b(this.mUiRequest.mRec)) {
+          EmoticonManager.a("0", 3);
         }
-        while (!awyr.a(this.mUiRequest.mRec)) {
+        while (!EmoticonManager.a(this.mUiRequest.mRec)) {
           return;
         }
-        awyr.a("0", 2);
+        EmoticonManager.a("0", 2);
         return;
         label490:
         bool = true;
@@ -1701,7 +1712,7 @@ public class BasePicDownloadProcessor
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
     // Byte code:
-    //   0: ldc2_w 1127
+    //   0: ldc2_w 1142
     //   3: lload_2
     //   4: lmul
     //   5: lload 4
@@ -1710,29 +1721,29 @@ public class BasePicDownloadProcessor
     //   9: istore 6
     //   11: iload 6
     //   13: aload_0
-    //   14: getfield 1131	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mLastProgress	I
+    //   14: getfield 1146	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mLastProgress	I
     //   17: if_icmple +33 -> 50
     //   20: aload_0
     //   21: iload 6
-    //   23: putfield 1131	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mLastProgress	I
+    //   23: putfield 1146	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mLastProgress	I
     //   26: aload_0
-    //   27: getfield 406	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mPicDownExtra	Lcom/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo;
-    //   30: getfield 1135	com/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo:mHandler	Lcom/tencent/image/URLDrawableHandler;
+    //   27: getfield 439	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mPicDownExtra	Lcom/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo;
+    //   30: getfield 1150	com/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo:mHandler	Lcom/tencent/image/URLDrawableHandler;
     //   33: ifnull +17 -> 50
     //   36: aload_0
-    //   37: getfield 406	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mPicDownExtra	Lcom/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo;
-    //   40: getfield 1135	com/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo:mHandler	Lcom/tencent/image/URLDrawableHandler;
+    //   37: getfield 439	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mPicDownExtra	Lcom/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo;
+    //   40: getfield 1150	com/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo:mHandler	Lcom/tencent/image/URLDrawableHandler;
     //   43: iload 6
-    //   45: invokeinterface 1140 2 0
+    //   45: invokeinterface 1155 2 0
     //   50: aload_0
     //   51: monitorenter
     //   52: aload_0
-    //   53: getfield 970	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
+    //   53: getfield 987	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
     //   56: ifnull +13 -> 69
     //   59: aload_0
-    //   60: getfield 970	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
+    //   60: getfield 987	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
     //   63: sipush 2002
-    //   66: putfield 975	com/tencent/mobileqq/transfile/FileMsg:status	I
+    //   66: putfield 992	com/tencent/mobileqq/transfile/FileMsg:status	I
     //   69: iconst_0
     //   70: istore 10
     //   72: iconst_0
@@ -1740,15 +1751,15 @@ public class BasePicDownloadProcessor
     //   75: iconst_0
     //   76: istore 9
     //   78: aload_0
-    //   79: getfield 167	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
+    //   79: getfield 179	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
     //   82: astore 13
     //   84: aload 13
-    //   86: getfield 1143	com/tencent/mobileqq/transfile/TransferRequest:mRequestDisplayLength	I
+    //   86: getfield 1158	com/tencent/mobileqq/transfile/TransferRequest:mRequestDisplayLength	I
     //   89: istore 7
     //   91: iload 9
     //   93: istore 8
     //   95: aload 13
-    //   97: getfield 204	com/tencent/mobileqq/transfile/TransferRequest:mRequestOffset	I
+    //   97: getfield 216	com/tencent/mobileqq/transfile/TransferRequest:mRequestOffset	I
     //   100: ifne +249 -> 349
     //   103: iload 9
     //   105: istore 8
@@ -1757,27 +1768,27 @@ public class BasePicDownloadProcessor
     //   112: iload 9
     //   114: istore 8
     //   116: aload 13
-    //   118: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   118: getfield 1118	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
     //   121: ifnull +228 -> 349
-    //   124: new 246	java/io/File
+    //   124: new 258	java/io/File
     //   127: dup
     //   128: aload 13
-    //   130: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
-    //   133: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
+    //   130: getfield 1118	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   133: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
     //   136: astore 14
-    //   138: new 246	java/io/File
+    //   138: new 258	java/io/File
     //   141: dup
     //   142: aload_1
-    //   143: getfield 157	com/tencent/mobileqq/transfile/NetReq:mTempPath	Ljava/lang/String;
-    //   146: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
+    //   143: getfield 169	com/tencent/mobileqq/transfile/NetReq:mTempPath	Ljava/lang/String;
+    //   146: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
     //   149: astore 16
     //   151: aload 16
-    //   153: invokevirtual 265	java/io/File:length	()J
+    //   153: invokevirtual 277	java/io/File:length	()J
     //   156: lstore_2
     //   157: iload 9
     //   159: istore 8
     //   161: aload 14
-    //   163: invokevirtual 252	java/io/File:exists	()Z
+    //   163: invokevirtual 264	java/io/File:exists	()Z
     //   166: ifne +183 -> 349
     //   169: iload 9
     //   171: istore 8
@@ -1792,18 +1803,18 @@ public class BasePicDownloadProcessor
     //   186: lload_2
     //   187: lcmp
     //   188: ifge +161 -> 349
-    //   191: new 246	java/io/File
+    //   191: new 258	java/io/File
     //   194: dup
-    //   195: new 194	java/lang/StringBuilder
+    //   195: new 206	java/lang/StringBuilder
     //   198: dup
-    //   199: invokespecial 195	java/lang/StringBuilder:<init>	()V
+    //   199: invokespecial 207	java/lang/StringBuilder:<init>	()V
     //   202: aload 13
-    //   204: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
-    //   207: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   210: ldc_w 1145
-    //   213: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   216: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   219: invokespecial 249	java/io/File:<init>	(Ljava/lang/String;)V
+    //   204: getfield 1118	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   207: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   210: ldc_w 1160
+    //   213: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   219: invokespecial 261	java/io/File:<init>	(Ljava/lang/String;)V
     //   222: astore 15
     //   224: aconst_null
     //   225: astore 12
@@ -1813,7 +1824,7 @@ public class BasePicDownloadProcessor
     //   231: aload 15
     //   233: iconst_0
     //   234: iload 7
-    //   236: invokestatic 1149	com/tencent/mobileqq/utils/FileUtils:copyFileUsingFileChannels	(Ljava/io/File;Ljava/io/File;II)J
+    //   236: invokestatic 1163	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/io/File;Ljava/io/File;II)J
     //   239: lstore_2
     //   240: lload_2
     //   241: iload 7
@@ -1821,10 +1832,10 @@ public class BasePicDownloadProcessor
     //   244: lcmp
     //   245: ifeq +147 -> 392
     //   248: aload 15
-    //   250: invokevirtual 252	java/io/File:exists	()Z
+    //   250: invokevirtual 264	java/io/File:exists	()Z
     //   253: ifeq +139 -> 392
     //   256: aload 15
-    //   258: invokevirtual 255	java/io/File:delete	()Z
+    //   258: invokevirtual 267	java/io/File:delete	()Z
     //   261: pop
     //   262: iload 9
     //   264: istore 8
@@ -1833,12 +1844,12 @@ public class BasePicDownloadProcessor
     //   270: iload 10
     //   272: istore 9
     //   274: aload_1
-    //   275: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   275: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   278: iload 10
     //   280: istore 9
     //   282: aload 15
     //   284: aload 14
-    //   286: invokestatic 1153	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   286: invokestatic 1166	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
     //   289: pop
     //   290: iconst_1
     //   291: istore 11
@@ -1848,68 +1859,68 @@ public class BasePicDownloadProcessor
     //   298: istore 8
     //   300: iload 11
     //   302: istore 9
-    //   304: invokestatic 258	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   304: invokestatic 270	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   307: ifeq +42 -> 349
     //   310: iload 11
     //   312: istore 9
-    //   314: ldc_w 260
+    //   314: ldc_w 272
     //   317: iconst_4
-    //   318: new 194	java/lang/StringBuilder
+    //   318: new 206	java/lang/StringBuilder
     //   321: dup
-    //   322: invokespecial 195	java/lang/StringBuilder:<init>	()V
-    //   325: ldc_w 1155
-    //   328: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   325: ldc_w 1168
+    //   328: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   331: aload 13
-    //   333: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
-    //   336: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   339: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   342: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   333: getfield 1118	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   336: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   342: invokestatic 286	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   345: iload 10
     //   347: istore 8
     //   349: aload_0
-    //   350: getfield 978	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mDownCallBacks	Ljava/util/ArrayList;
-    //   353: invokevirtual 862	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   350: getfield 995	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mDownCallBacks	Ljava/util/ArrayList;
+    //   353: invokevirtual 879	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   356: astore_1
     //   357: aload_1
-    //   358: invokeinterface 867 1 0
+    //   358: invokeinterface 884 1 0
     //   363: ifeq +255 -> 618
     //   366: aload_1
-    //   367: invokeinterface 871 1 0
-    //   372: checkcast 980	azjj
+    //   367: invokeinterface 888 1 0
+    //   372: checkcast 997	com/tencent/mobileqq/pic/DownCallBack
     //   375: iload 6
     //   377: iload 8
-    //   379: invokeinterface 1158 3 0
+    //   379: invokeinterface 1171 3 0
     //   384: goto -27 -> 357
     //   387: astore_1
     //   388: aload_0
     //   389: monitorexit
     //   390: aload_1
     //   391: athrow
-    //   392: new 276	java/io/RandomAccessFile
+    //   392: new 288	java/io/RandomAccessFile
     //   395: dup
     //   396: aload 15
-    //   398: ldc_w 278
-    //   401: invokespecial 281	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   398: ldc_w 290
+    //   401: invokespecial 293	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   404: astore_1
     //   405: aload_1
     //   406: lload_2
-    //   407: invokevirtual 286	java/io/RandomAccessFile:seek	(J)V
+    //   407: invokevirtual 298	java/io/RandomAccessFile:seek	(J)V
     //   410: aload_1
     //   411: iconst_2
     //   412: newarray byte
     //   414: dup
     //   415: iconst_0
-    //   416: ldc_w 287
+    //   416: ldc_w 299
     //   419: bastore
     //   420: dup
     //   421: iconst_1
-    //   422: ldc_w 288
+    //   422: ldc_w 300
     //   425: bastore
-    //   426: invokevirtual 292	java/io/RandomAccessFile:write	([B)V
+    //   426: invokevirtual 304	java/io/RandomAccessFile:write	([B)V
     //   429: goto -167 -> 262
     //   432: astore_1
     //   433: aload_1
-    //   434: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   434: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   437: iload 9
     //   439: istore 8
     //   441: goto -92 -> 349
@@ -1923,12 +1934,12 @@ public class BasePicDownloadProcessor
     //   456: iload 11
     //   458: istore 9
     //   460: aload_1
-    //   461: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   461: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   464: iload 11
     //   466: istore 9
     //   468: aload 15
     //   470: aload 14
-    //   472: invokestatic 1153	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   472: invokestatic 1166	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
     //   475: pop
     //   476: iconst_1
     //   477: istore 11
@@ -1938,28 +1949,28 @@ public class BasePicDownloadProcessor
     //   484: istore 8
     //   486: iload 11
     //   488: istore 9
-    //   490: invokestatic 258	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   490: invokestatic 270	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   493: ifeq -144 -> 349
     //   496: iload 11
     //   498: istore 9
-    //   500: ldc_w 260
+    //   500: ldc_w 272
     //   503: iconst_4
-    //   504: new 194	java/lang/StringBuilder
+    //   504: new 206	java/lang/StringBuilder
     //   507: dup
-    //   508: invokespecial 195	java/lang/StringBuilder:<init>	()V
-    //   511: ldc_w 1155
-    //   514: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   508: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   511: ldc_w 1168
+    //   514: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   517: aload 13
-    //   519: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
-    //   522: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   525: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   528: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   519: getfield 1118	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   522: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   525: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   528: invokestatic 286	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   531: iload 10
     //   533: istore 8
     //   535: goto -186 -> 349
     //   538: astore_1
     //   539: aload_1
-    //   540: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   540: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   543: iload 9
     //   545: istore 8
     //   547: goto -198 -> 349
@@ -1969,30 +1980,30 @@ public class BasePicDownloadProcessor
     //   554: aload_1
     //   555: ifnull +52 -> 607
     //   558: aload_1
-    //   559: invokevirtual 295	java/io/RandomAccessFile:close	()V
+    //   559: invokevirtual 307	java/io/RandomAccessFile:close	()V
     //   562: aload 15
     //   564: aload 14
-    //   566: invokestatic 1153	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   566: invokestatic 1166	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
     //   569: pop
-    //   570: invokestatic 258	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   570: invokestatic 270	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   573: ifeq +34 -> 607
-    //   576: ldc_w 260
+    //   576: ldc_w 272
     //   579: iconst_4
-    //   580: new 194	java/lang/StringBuilder
+    //   580: new 206	java/lang/StringBuilder
     //   583: dup
-    //   584: invokespecial 195	java/lang/StringBuilder:<init>	()V
-    //   587: ldc_w 1155
-    //   590: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   584: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   587: ldc_w 1168
+    //   590: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   593: aload 13
-    //   595: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
-    //   598: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   601: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   604: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   595: getfield 1118	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   598: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   601: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   604: invokestatic 286	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   607: aload 12
     //   609: athrow
     //   610: astore_1
     //   611: aload_1
-    //   612: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   612: invokevirtual 316	java/io/IOException:printStackTrace	()V
     //   615: goto -8 -> 607
     //   618: aload_0
     //   619: monitorexit
@@ -2092,7 +2103,7 @@ public class BasePicDownloadProcessor
           label99:
           localCompressInfo.e = ((String)localObject);
           localCompressInfo.a = paramMessageForPic.thumbWidthHeightDP;
-          azlg.b(localCompressInfo);
+          CompressOperator.b(localCompressInfo);
           if (localCompressInfo.e != null)
           {
             localObject = new File((String)localObject);
@@ -2104,11 +2115,11 @@ public class BasePicDownloadProcessor
       }
     }
     label257:
-    for (boolean bool = fd.a(new File(localCompressInfo.jdField_c_of_type_JavaLangString), (File)localObject);; bool = true)
+    for (boolean bool = FileUtil.a(new File(localCompressInfo.jdField_c_of_type_JavaLangString), (File)localObject);; bool = true)
     {
-      if ((bool) && (BaseApplicationImpl.sImageCache.get(localURL.toString()) != null))
+      if ((bool) && (GlobalImageCache.a.get(localURL.toString()) != null))
       {
-        BaseApplicationImpl.sImageCache.remove(localURL.toString());
+        GlobalImageCache.a.remove(localURL.toString());
         localObject = URLDrawable.getDrawable(localURL);
         if (localObject != null)
         {

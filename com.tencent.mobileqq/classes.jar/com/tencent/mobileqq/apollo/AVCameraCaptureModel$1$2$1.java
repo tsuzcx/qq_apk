@@ -1,17 +1,14 @@
 package com.tencent.mobileqq.apollo;
 
-import amlh;
-import amli;
-import amlk;
-import amwn;
-import amzc;
 import android.text.TextUtils;
 import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameOpenIdFinder;
 
-public class AVCameraCaptureModel$1$2$1
+class AVCameraCaptureModel$1$2$1
   extends IApolloRunnableTask
 {
-  public AVCameraCaptureModel$1$2$1(amlk paramamlk, AVVideoCtrl.VideoFrame paramVideoFrame, ApolloSurfaceView paramApolloSurfaceView) {}
+  AVCameraCaptureModel$1$2$1(AVCameraCaptureModel.1.2 param2, AVVideoCtrl.VideoFrame paramVideoFrame, ApolloSurfaceView paramApolloSurfaceView) {}
   
   public String a()
   {
@@ -20,15 +17,15 @@ public class AVCameraCaptureModel$1$2$1
   
   public void run()
   {
-    amzc localamzc = amwn.a(amlh.a(this.jdField_a_of_type_Amlk.a.a));
-    if (localamzc == null) {
+    CmGameOpenIdFinder localCmGameOpenIdFinder = CmGameUtil.a(AVCameraCaptureModel.a(this.jdField_a_of_type_ComTencentMobileqqApolloAVCameraCaptureModel$1$2.a.a));
+    if (localCmGameOpenIdFinder == null) {
       return;
     }
-    String str2 = localamzc.b(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier);
+    String str2 = localCmGameOpenIdFinder.b(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier);
     String str1 = str2;
     if (TextUtils.isEmpty(str2))
     {
-      str2 = localamzc.a(Long.parseLong(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier));
+      str2 = localCmGameOpenIdFinder.a(Long.parseLong(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier));
       str1 = str2;
       if (TextUtils.isEmpty(str2)) {
         str1 = this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier;
@@ -39,7 +36,7 @@ public class AVCameraCaptureModel$1$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.2.1
  * JD-Core Version:    0.7.0.1
  */

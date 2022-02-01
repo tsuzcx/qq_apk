@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import bjhh;
+import com.tencent.open.agent.util.AuthorityUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class BindGroupConfirmActivity$3
@@ -19,11 +19,11 @@ class BindGroupConfirmActivity$3
       Object localObject2 = null;
       try
       {
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.a, 2130842654);
+        Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.a, 2130842800);
         if (localBitmap == null) {
           continue;
         }
-        localBitmap = bjhh.a(this.this$0, localBitmap, 50, 50);
+        localBitmap = AuthorityUtil.a(this.this$0, localBitmap, 50, 50);
         if (localBitmap == null) {
           continue;
         }
@@ -47,7 +47,7 @@ class BindGroupConfirmActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.3
  * JD-Core Version:    0.7.0.1
  */

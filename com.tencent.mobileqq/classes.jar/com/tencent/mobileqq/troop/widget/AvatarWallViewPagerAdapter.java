@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.troop.widget;
 
-import akjf;
-import akln;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.view.PagerAdapter;
@@ -16,15 +15,17 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import bghb;
-import bgna;
-import bgxc;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.AvatarInfo;
+import com.tencent.mobileqq.activity.photo.TroopPhotoUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.troop.api.ITroopAvatarUtilApi;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class AvatarWallViewPagerAdapter
   protected QQAppInterface a;
   protected AvatarWallViewPager a;
   protected String a;
-  protected List<akjf> a;
+  protected List<AvatarInfo> a;
   protected WeakReference<Activity> a;
   protected boolean a;
   protected int b;
@@ -54,6 +55,7 @@ public class AvatarWallViewPagerAdapter
   public AvatarWallViewPagerAdapter(WeakReference<Activity> paramWeakReference, AvatarWallViewPager paramAvatarWallViewPager, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, String paramString1, boolean paramBoolean, Handler paramHandler, String paramString2)
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
@@ -72,9 +74,9 @@ public class AvatarWallViewPagerAdapter
     }
   }
   
-  private URLDrawable a(String paramString, akjf paramakjf)
+  private URLDrawable a(String paramString, AvatarInfo paramAvatarInfo)
   {
-    paramString = akln.a(paramString);
+    paramString = TroopPhotoUtil.a(paramString);
     if (paramString == null) {
       return null;
     }
@@ -82,9 +84,9 @@ public class AvatarWallViewPagerAdapter
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
     paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
     localObject = new Rect();
-    akln.a((Rect)localObject, paramakjf.d);
-    paramString.setTag(bgxc.a(((Rect)localObject).left, ((Rect)localObject).top, ((Rect)localObject).width(), ((Rect)localObject).height(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-    paramString.setDecodeHandler(bgxc.y);
+    TroopPhotoUtil.a((Rect)localObject, paramAvatarInfo.d);
+    paramString.setTag(URLDrawableDecodeHandler.a(((Rect)localObject).left, ((Rect)localObject).top, ((Rect)localObject).width(), ((Rect)localObject).height(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
+    paramString.setDecodeHandler(URLDrawableDecodeHandler.y);
     return paramString;
   }
   
@@ -93,12 +95,12 @@ public class AvatarWallViewPagerAdapter
     return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public List<akjf> a()
+  public List<AvatarInfo> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public boolean a(List<akjf> paramList)
+  public boolean a(List<AvatarInfo> paramList)
   {
     if (this.jdField_a_of_type_Boolean) {
       if (QLog.isColorLevel()) {
@@ -108,7 +110,7 @@ public class AvatarWallViewPagerAdapter
     do
     {
       return false;
-      if (!akjf.a(paramList, this.jdField_a_of_type_JavaUtilList)) {
+      if (!AvatarInfo.a(paramList, this.jdField_a_of_type_JavaUtilList)) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -150,9 +152,9 @@ public class AvatarWallViewPagerAdapter
     if (paramObject.getTag() == null) {
       return -2;
     }
-    paramObject = (akjf)paramObject.getTag();
-    akjf localakjf = (akjf)this.jdField_a_of_type_JavaUtilList.get(i);
-    if ((!paramObject.jdField_c_of_type_JavaLangString.equals(localakjf.jdField_c_of_type_JavaLangString)) || (paramObject.jdField_b_of_type_Int != localakjf.jdField_b_of_type_Int) || (paramObject.jdField_c_of_type_Boolean != localakjf.jdField_c_of_type_Boolean)) {
+    paramObject = (AvatarInfo)paramObject.getTag();
+    AvatarInfo localAvatarInfo = (AvatarInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+    if ((!paramObject.jdField_c_of_type_JavaLangString.equals(localAvatarInfo.jdField_c_of_type_JavaLangString)) || (paramObject.jdField_b_of_type_Int != localAvatarInfo.jdField_b_of_type_Int) || (paramObject.jdField_c_of_type_Boolean != localAvatarInfo.jdField_c_of_type_Boolean)) {
       return -2;
     }
     return -1;
@@ -160,7 +162,7 @@ public class AvatarWallViewPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = null;
+    Object localObject1 = null;
     int i = a();
     if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (i == 0))
     {
@@ -211,60 +213,62 @@ public class AvatarWallViewPagerAdapter
     }
     for (;;)
     {
-      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).inflate(2131559918, null);
-      bgna localbgna = new bgna(this);
-      localbgna.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368524));
-      localbgna.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).inflate(2131559994, null);
+      AvatarWallViewPagerAdapter.ViewHolder localViewHolder = new AvatarWallViewPagerAdapter.ViewHolder(this);
+      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368754));
+      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
       if (a() <= i) {
         i = 0;
       }
       for (;;)
       {
-        akjf localakjf = (akjf)this.jdField_a_of_type_JavaUtilList.get(i);
+        AvatarInfo localAvatarInfo = (AvatarInfo)this.jdField_a_of_type_JavaUtilList.get(i);
         int j;
-        if (localakjf != null)
+        Object localObject2;
+        if (localAvatarInfo != null)
         {
-          j = localakjf.jdField_b_of_type_Int;
-          if ((j == 1) && ((localakjf.jdField_b_of_type_JavaLangString == null) || (!new File(localakjf.jdField_b_of_type_JavaLangString).exists())))
+          j = localAvatarInfo.jdField_b_of_type_Int;
+          localObject2 = (ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class);
+          if ((j == 1) && ((localAvatarInfo.jdField_b_of_type_JavaLangString == null) || (!new File(localAvatarInfo.jdField_b_of_type_JavaLangString).exists())))
           {
-            localObject = bghb.b(bghb.a(localakjf.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1));
-            label358:
+            localObject1 = ((ITroopAvatarUtilApi)localObject2).getArtWork(((ITroopAvatarUtilApi)localObject2).getAvatarAddress(localAvatarInfo.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1));
+            label377:
             if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-              localView.setContentDescription(((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131695801));
+              localView.setContentDescription(((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131696049));
             }
-            if (localObject != null)
+            if (localObject1 != null)
             {
-              URLDrawable localURLDrawable = a((String)localObject, localakjf);
-              if (localURLDrawable != null)
+              localObject2 = a((String)localObject1, localAvatarInfo);
+              if (localObject2 != null)
               {
-                localURLDrawable.setColorFilter(this.c, PorterDuff.Mode.SRC_ATOP);
-                localbgna.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
+                ((URLDrawable)localObject2).setColorFilter(this.c, PorterDuff.Mode.SRC_ATOP);
+                localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
               }
               if (QLog.isColorLevel()) {
-                QLog.i("AvatarWallViewPagerAdapter", 2, String.format("viewFactory: FROM_OTHERS, path=" + (String)localObject, new Object[0]));
+                QLog.i("AvatarWallViewPagerAdapter", 2, String.format("viewFactory: FROM_OTHERS, path=" + (String)localObject1, new Object[0]));
               }
             }
-            if (!localakjf.jdField_c_of_type_Boolean) {
-              break label661;
+            if (!localAvatarInfo.jdField_c_of_type_Boolean) {
+              break label688;
             }
-            if (localbgna.jdField_a_of_type_AndroidViewView == null)
+            if (localViewHolder.jdField_a_of_type_AndroidViewView == null)
             {
-              localbgna.jdField_a_of_type_AndroidViewView = ((ViewStub)localView.findViewById(2131380705)).inflate();
-              localObject = (FrameLayout.LayoutParams)localbgna.jdField_a_of_type_AndroidViewView.getLayoutParams();
-              ((FrameLayout.LayoutParams)localObject).height = -1;
-              ((FrameLayout.LayoutParams)localObject).width = -1;
-              localbgna.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+              localViewHolder.jdField_a_of_type_AndroidViewView = ((ViewStub)localView.findViewById(2131381153)).inflate();
+              localObject1 = (FrameLayout.LayoutParams)localViewHolder.jdField_a_of_type_AndroidViewView.getLayoutParams();
+              ((FrameLayout.LayoutParams)localObject1).height = -1;
+              ((FrameLayout.LayoutParams)localObject1).width = -1;
+              localViewHolder.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
             }
-            localbgna.jdField_a_of_type_AndroidViewView.setVisibility(0);
+            localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
           }
         }
         else
         {
-          label547:
-          localView.setTag(localakjf);
+          label566:
+          localView.setTag(localAvatarInfo);
           localView.setId(i);
           if (paramViewGroup == null) {
-            break label682;
+            break label709;
           }
           paramViewGroup.addView(localView);
         }
@@ -278,23 +282,23 @@ public class AvatarWallViewPagerAdapter
           }
           i = paramInt - 1;
           break;
-          if ((j == 2) || ((localakjf.jdField_b_of_type_JavaLangString != null) && (new File(localakjf.jdField_b_of_type_JavaLangString).exists())))
+          if ((j == 2) || ((localAvatarInfo.jdField_b_of_type_JavaLangString != null) && (new File(localAvatarInfo.jdField_b_of_type_JavaLangString).exists())))
           {
-            localObject = localakjf.jdField_b_of_type_JavaLangString;
-            break label358;
+            localObject1 = localAvatarInfo.jdField_b_of_type_JavaLangString;
+            break label377;
           }
           if (j != 3) {
-            break label358;
+            break label377;
           }
-          localObject = bghb.b(bghb.a(localakjf.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0));
-          break label358;
-          label661:
-          if (localbgna.jdField_a_of_type_AndroidViewView == null) {
-            break label547;
+          localObject1 = ((ITroopAvatarUtilApi)localObject2).getArtWork(((ITroopAvatarUtilApi)localObject2).getAvatarAddress(localAvatarInfo.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0));
+          break label377;
+          label688:
+          if (localViewHolder.jdField_a_of_type_AndroidViewView == null) {
+            break label566;
           }
-          localbgna.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          break label547;
-          label682:
+          localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          break label566;
+          label709:
           i = getCount();
           if (i > 1) {
             if (paramInt == 1) {

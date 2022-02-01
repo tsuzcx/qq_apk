@@ -6,15 +6,15 @@ class SuperPlayerState
   implements ISuperPlayerState
 {
   private static final String FILENAME = "SuperPlayerState.java";
-  private String TAG;
   private volatile int mCurState = 0;
   private volatile int mPreState = 0;
   private volatile ISuperPlayerState.OnPlayStateChangeListener mStateListener;
   private final Object mStateLock = new Object();
+  private String mTAG;
   
   SuperPlayerState(String paramString)
   {
-    this.TAG = (paramString + "-" + "SuperPlayerState.java");
+    this.mTAG = (paramString + "-" + "SuperPlayerState.java");
   }
   
   static String getStateStr(int paramInt)
@@ -59,7 +59,7 @@ class SuperPlayerState
         if (this.mStateListener != null) {
           this.mStateListener.onStateChange(copy());
         }
-        LogUtil.i(this.TAG, "changeStateAndNotify(), " + getStateStr(i) + " ==> " + getStateStr(paramInt));
+        LogUtil.i(this.mTAG, "changeStateAndNotify(), " + getStateStr(i) + " ==> " + getStateStr(paramInt));
       }
       return;
     }
@@ -67,7 +67,7 @@ class SuperPlayerState
   
   SuperPlayerState copy()
   {
-    SuperPlayerState localSuperPlayerState = new SuperPlayerState(this.TAG);
+    SuperPlayerState localSuperPlayerState = new SuperPlayerState(this.mTAG);
     localSuperPlayerState.mCurState = this.mCurState;
     localSuperPlayerState.mPreState = this.mPreState;
     return localSuperPlayerState;
@@ -102,12 +102,12 @@ class SuperPlayerState
   
   void updatePlayerTag(String paramString)
   {
-    this.TAG = (paramString + "-" + "SuperPlayerState.java");
+    this.mTAG = (paramString + "-" + "SuperPlayerState.java");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerState
  * JD-Core Version:    0.7.0.1
  */

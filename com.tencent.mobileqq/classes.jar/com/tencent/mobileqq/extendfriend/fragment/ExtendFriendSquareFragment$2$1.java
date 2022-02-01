@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import asqd;
-import asqk;
-
-public class ExtendFriendSquareFragment$2$1
+class ExtendFriendSquareFragment$2$1
   implements Runnable
 {
-  public ExtendFriendSquareFragment$2$1(asqd paramasqd) {}
+  ExtendFriendSquareFragment$2$1(ExtendFriendSquareFragment.2 param2) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class ExtendFriendSquareFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

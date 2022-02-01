@@ -1,37 +1,36 @@
 package com.tencent.mobileqq.app;
 
-import ansg;
-import bhew;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.utils.JumpFilterHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.MobileQQ;
 
-public class ConfigHandler$1
+class ConfigHandler$1
   implements Runnable
 {
-  public ConfigHandler$1(ansg paramansg, String paramString, long paramLong) {}
+  ConfigHandler$1(ConfigHandler paramConfigHandler, String paramString, long paramLong) {}
   
   public void run()
   {
-    File localFile = new File(this.this$0.app.getApplication().getFilesDir(), "qq_safe_jump_whitelist.zip");
+    File localFile = new File(this.this$0.a.getApplication().getFilesDir(), "qq_safe_jump_whitelist.zip");
     String str = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.downloadData(this.this$0.app, str, localFile);
+    int i = HttpDownloadUtil.downloadData(this.this$0.a, str, localFile);
     if (QLog.isColorLevel()) {
       QLog.d("JumpWhiteList", 2, "handleJumpWhiteList download: " + i);
     }
     if (i == 0)
     {
-      bhew.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+      JumpFilterHelper.a().a(this.this$0.a, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
       return;
     }
-    bhew.a().a(this.this$0.app.getApplication());
+    JumpFilterHelper.a().a(this.this$0.a.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.1
  * JD-Core Version:    0.7.0.1
  */

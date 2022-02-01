@@ -9,7 +9,7 @@ public final class GetBulkImageClassifyReq
   extends JceStruct
 {
   static ArrayList<SmartFilterReqItem> cache_MultiPics = new ArrayList();
-  public ArrayList<SmartFilterReqItem> MultiPics;
+  public ArrayList<SmartFilterReqItem> MultiPics = null;
   
   static
   {
@@ -38,7 +38,7 @@ public final class GetBulkImageClassifyReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetBulkImageClassifyReq
  * JD-Core Version:    0.7.0.1
  */

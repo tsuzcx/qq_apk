@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/eb7" />
-    <item android:state_pressed="false" android:drawable="@drawable/eb8" />
-</selector>
+    <item android:id="@android:id/background">
+        <shape>
+            <size android:height="3.0dip" />
+            <corners android:radius="0.0dip" />
+            <gradient android:startColor="@color/al9" android:endColor="@color/al9" android:angle="45.0" android:centerY="0.75" android:centerColor="@color/al9" />
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <size android:height="3.0dip" />
+                <corners android:radius="0.0dip" />
+                <gradient android:startColor="@color/al9" android:endColor="@color/al9" android:angle="45.0" android:centerY="0.75" android:centerColor="@color/al9" />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <size android:height="3.0dip" />
+                <corners android:radius="0.0dip" />
+                <gradient android:startColor="#ff6d75ff" android:endColor="#ff6d75ff" android:angle="45.0" android:centerY="0.75" android:centerColor="#ff6d75ff" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

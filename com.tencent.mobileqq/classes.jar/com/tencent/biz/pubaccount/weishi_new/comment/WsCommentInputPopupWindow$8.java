@@ -2,21 +2,20 @@ package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import vab;
 
-public class WsCommentInputPopupWindow$8
+class WsCommentInputPopupWindow$8
   implements Runnable
 {
-  public WsCommentInputPopupWindow$8(vab paramvab, View paramView) {}
+  WsCommentInputPopupWindow$8(WsCommentInputPopupWindow paramWsCommentInputPopupWindow, View paramView) {}
   
   public void run()
   {
-    vab.a(this.this$0).showSoftInput(this.a, 1);
+    WsCommentInputPopupWindow.a(this.this$0).showSoftInput(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.8
  * JD-Core Version:    0.7.0.1
  */

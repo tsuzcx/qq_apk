@@ -16,11 +16,11 @@ class ScribblePicUploadProcessor$1
   
   public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    long l = SystemClock.uptimeMillis();
+    Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
     paramArrayOfByte = (String)paramHashMap.get("tc_p:");
     String str1 = (String)paramHashMap.get("rep_bdhTrans");
     String str2 = (String)paramHashMap.get("segspercnt");
@@ -28,7 +28,7 @@ class ScribblePicUploadProcessor$1
     String str4 = (String)paramHashMap.get("param_conf_segNum");
     paramHashMap = (String)paramHashMap.get("param_conf_connNum");
     if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.val$startTime) + "ms");
+      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.val$startTime) + "ms");
     }
     this.this$0.mReportInfo.put("X-piccachetime", paramArrayOfByte);
     this.this$0.mReportInfo.put("param_BdhTrans", str1);
@@ -36,18 +36,17 @@ class ScribblePicUploadProcessor$1
     this.this$0.mReportInfo.put("param_conf_segSize", str3);
     this.this$0.mReportInfo.put("param_conf_segNum", str4);
     this.this$0.mReportInfo.put("param_conf_connNum", paramHashMap);
-    this.this$0.reportDataFlow(l2, l3, l4, l5);
     this.this$0.setError(paramInt, "OnFailed.", "", this.this$0.mStepTrans);
     this.this$0.onError();
   }
   
   public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    long l = SystemClock.uptimeMillis();
+    Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
     String str1 = (String)paramHashMap.get("tc_p:");
     String str2 = (String)paramHashMap.get("rep_bdhTrans");
     String str3 = (String)paramHashMap.get("segspercnt");
@@ -55,7 +54,7 @@ class ScribblePicUploadProcessor$1
     String str5 = (String)paramHashMap.get("param_conf_segNum");
     paramHashMap = (String)paramHashMap.get("param_conf_connNum");
     if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - this.val$startTime) + "ms ,fileSize:" + this.this$0.file.fileSize + " transInfo:" + str2);
+      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.val$startTime) + "ms ,fileSize:" + this.this$0.file.fileSize + " transInfo:" + str2);
     }
     this.this$0.mReportInfo.put("X-piccachetime", str1);
     this.this$0.mReportInfo.put("param_BdhTrans", str2);
@@ -75,7 +74,6 @@ class ScribblePicUploadProcessor$1
       {
         this.this$0.setError(-1, "URL IS NULL", "", this.this$0.mStepTrans);
         this.this$0.onError();
-        this.this$0.reportDataFlow(l2, l3, l4, l5);
         this.this$0.file.closeInputStream();
         return;
       }

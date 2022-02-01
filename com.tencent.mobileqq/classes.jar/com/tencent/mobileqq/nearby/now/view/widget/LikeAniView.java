@@ -14,8 +14,8 @@ import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.av.utils.UITools;
 import java.util.Random;
-import mvk;
 
 public class LikeAniView
   extends FrameLayout
@@ -45,12 +45,12 @@ public class LikeAniView
   
   private void a()
   {
-    this.jdField_a_of_type_Int = ((int)mvk.a(getContext(), 90.0F));
-    this.jdField_b_of_type_Int = ((int)mvk.a(getContext(), 90.0F));
+    this.jdField_a_of_type_Int = ((int)UITools.a(getContext(), 90.0F));
+    this.jdField_b_of_type_Int = ((int)UITools.a(getContext(), 90.0F));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841375);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841515);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   

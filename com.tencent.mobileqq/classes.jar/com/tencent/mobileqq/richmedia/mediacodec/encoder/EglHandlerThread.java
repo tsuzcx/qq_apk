@@ -5,9 +5,7 @@ import android.opengl.EGLContext;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import bbmk;
-import bbml;
-import bbnu;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.ShortVideoExceptionReporter;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(18)
@@ -16,9 +14,9 @@ public class EglHandlerThread
 {
   private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bbmk jdField_a_of_type_Bbmk;
-  private bbml jdField_a_of_type_Bbml;
-  private boolean jdField_a_of_type_Boolean;
+  private EglCore jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore;
+  private EglSurfaceBase jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglSurfaceBase;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public EglHandlerThread(String paramString, EGLContext paramEGLContext)
   {
@@ -37,14 +35,14 @@ public class EglHandlerThread
       {
         return;
       } while (!this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Bbml != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglSurfaceBase != null)
       {
-        this.jdField_a_of_type_Bbml.a();
-        this.jdField_a_of_type_Bbml = null;
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglSurfaceBase.a();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglSurfaceBase = null;
       }
-    } while (this.jdField_a_of_type_Bbmk == null);
-    this.jdField_a_of_type_Bbmk.a();
-    this.jdField_a_of_type_Bbmk = null;
+    } while (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore == null);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore.a();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore = null;
   }
   
   public Handler a()
@@ -63,10 +61,10 @@ public class EglHandlerThread
     {
       super.onLooperPrepared();
       this.jdField_a_of_type_AndroidOsHandler = new Handler(getLooper());
-      this.jdField_a_of_type_Bbmk = new bbmk(this.jdField_a_of_type_AndroidOpenglEGLContext, 1);
-      this.jdField_a_of_type_Bbml = new bbml(this.jdField_a_of_type_Bbmk);
-      this.jdField_a_of_type_Bbml.a(64, 64);
-      this.jdField_a_of_type_Bbml.b();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore = new EglCore(this.jdField_a_of_type_AndroidOpenglEGLContext, 1);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglSurfaceBase = new EglSurfaceBase(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglSurfaceBase.a(64, 64);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglSurfaceBase.b();
       this.jdField_a_of_type_Boolean = true;
       return;
     }
@@ -74,7 +72,7 @@ public class EglHandlerThread
     {
       this.jdField_a_of_type_Boolean = false;
       QLog.e("EglHandlerThread", 2, localException, new Object[0]);
-      bbnu.a(localException);
+      ShortVideoExceptionReporter.a(localException);
     }
   }
   
@@ -99,7 +97,7 @@ public class EglHandlerThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.encoder.EglHandlerThread
  * JD-Core Version:    0.7.0.1
  */

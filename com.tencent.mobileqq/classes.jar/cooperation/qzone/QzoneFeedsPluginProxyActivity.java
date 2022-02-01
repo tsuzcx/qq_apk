@@ -1,12 +1,11 @@
 package cooperation.qzone;
 
-import Override;
-import aczy;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.MotionEvent;
+import com.tencent.mm.hardcoder.HardCoderManager;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -73,7 +72,7 @@ public class QzoneFeedsPluginProxyActivity
   {
     super.onResume();
     if (getIntent().getIntExtra("hc_code", 0) != 0) {
-      aczy.a().a(getIntent().getIntExtra("hc_code", 0), true);
+      HardCoderManager.a().a(getIntent().getIntExtra("hc_code", 0), true);
     }
   }
   
@@ -84,7 +83,7 @@ public class QzoneFeedsPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzoneFeedsPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

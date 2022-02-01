@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bhym;
+import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
 
 class ThemeJsPlugin$4
-  implements bhym
+  implements CUKingCardHelper.CUKingDialogListener
 {
   ThemeJsPlugin$4(ThemeJsPlugin paramThemeJsPlugin, String paramString1, String paramString2, boolean paramBoolean, String paramString3) {}
   
@@ -23,7 +23,7 @@ class ThemeJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

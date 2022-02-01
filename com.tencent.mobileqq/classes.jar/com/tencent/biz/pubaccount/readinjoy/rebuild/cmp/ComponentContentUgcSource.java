@@ -15,27 +15,27 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJItemViewType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJFrameworkReportManager;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentInheritView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import olh;
-import ppe;
-import pqb;
-import pqw;
-import qfw;
-import rbn;
-import rbx;
-import rfw;
 
 public class ComponentContentUgcSource
   extends LinearLayout
-  implements View.OnClickListener, rbn
+  implements View.OnClickListener, ComponentInheritView
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
+  CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
   private String jdField_a_of_type_JavaLangString;
-  rfw jdField_a_of_type_Rfw;
   
   public ComponentContentUgcSource(Context paramContext)
   {
@@ -59,25 +59,25 @@ public class ComponentContentUgcSource
     do
     {
       return;
-      localObject = new Intent(getContext(), PublicAccountBrowser.class);
+      localObject = new Intent(getContext(), PublicAccountBrowserImpl.class);
       ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
       getContext().startActivity((Intent)localObject);
-      localObject = this.jdField_a_of_type_Rfw.a.a();
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
     } while (localObject == null);
-    olh.a((ArticleInfo)localObject);
-    pqb.b((ArticleInfo)localObject, this.jdField_a_of_type_Rfw.a.e());
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportLabelsClick((ArticleInfo)localObject);
+    RIJFrameworkReportManager.b((ArticleInfo)localObject, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.e());
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Rfw = new rfw();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
     a(paramContext);
     a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560342, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560411, this, true);
   }
   
   public void a()
@@ -92,17 +92,22 @@ public class ComponentContentUgcSource
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380413));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380856));
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380414));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380857));
+  }
+  
+  public void a(FeedItemCell.CellListener paramCellListener)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof qfw))
+    if ((paramObject instanceof IReadInJoyModel))
     {
-      paramObject = (qfw)paramObject;
-      this.jdField_a_of_type_Rfw.a(paramObject);
+      paramObject = (IReadInJoyModel)paramObject;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramObject);
       paramObject = paramObject.a();
       if (paramObject != null) {
         break label46;
@@ -113,7 +118,7 @@ public class ComponentContentUgcSource
     }
     return;
     label46:
-    if ((ppe.g(paramObject)) || ((ppe.i(paramObject)) && (!ppe.m(paramObject))) || (pqw.h(paramObject)) || ((pqw.i(paramObject)) && (!ppe.l(paramObject))) || (ppe.d(paramObject)))
+    if ((RIJItemViewType.g(paramObject)) || ((RIJItemViewType.i(paramObject)) && (!RIJItemViewType.m(paramObject))) || (RIJFeedsType.h(paramObject)) || ((RIJFeedsType.i(paramObject)) && (!RIJItemViewType.l(paramObject))) || (RIJItemViewType.d(paramObject)))
     {
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = 0;
@@ -141,11 +146,6 @@ public class ComponentContentUgcSource
     }
   }
   
-  public void a(rbx paramrbx)
-  {
-    this.jdField_a_of_type_Rfw.a(paramrbx);
-  }
-  
   public void onClick(View paramView)
   {
     switch (paramView.getId())
@@ -161,7 +161,7 @@ public class ComponentContentUgcSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource
  * JD-Core Version:    0.7.0.1
  */

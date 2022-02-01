@@ -2,10 +2,10 @@ package com.tencent.mobileqq.activity.history;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anzc;
-import apac;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.MessageRoamHandler;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimeZone;
@@ -68,11 +68,11 @@ class ChatHistoryC2CAllFragment$5
         localEditor.putInt("setting_guide_tips_show_time" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i).commit();
         this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10, this.this$0.jdField_b_of_type_AndroidViewView));
       }
-      if (this.this$0.jdField_a_of_type_Anzc.b() == 0)
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b() == 0)
       {
-        localObject = (apac)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
+        localObject = (MessageRoamHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
         if (localObject != null) {
-          ((apac)localObject).a();
+          ((MessageRoamHandler)localObject).a();
         }
       }
       return;
@@ -105,7 +105,7 @@ class ChatHistoryC2CAllFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.5
  * JD-Core Version:    0.7.0.1
  */

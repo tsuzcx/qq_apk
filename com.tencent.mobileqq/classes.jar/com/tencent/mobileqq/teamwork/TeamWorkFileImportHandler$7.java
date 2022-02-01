@@ -3,37 +3,35 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bebl;
-import bece;
-import beeg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.tencentdocreport.TenDocLogReportHelper;
 
-public class TeamWorkFileImportHandler$7
+class TeamWorkFileImportHandler$7
   implements Runnable
 {
-  public TeamWorkFileImportHandler$7(bebl parambebl, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  TeamWorkFileImportHandler$7(TeamWorkFileImportHandler paramTeamWorkFileImportHandler, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
-    if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a.jdField_f_of_type_JavaLangString))) {
-      beeg.a("TeamWorkFileImportHandler", "import fail", "srcUrl is null or app is null", this.a.k);
+    if ((TeamWorkFileImportHandler.a(this.this$0) == null) || (TextUtils.isEmpty(this.a.jdField_f_of_type_JavaLangString))) {
+      TenDocLogReportHelper.a("TeamWorkFileImportHandler", "import fail", "srcUrl is null or app is null", this.a.k);
     }
     for (;;)
     {
       return;
-      Object localObject = bece.b(this.a, this.this$0.app.getCurrentAccountUin());
+      Object localObject = TeamWorkHttpUtils.b(this.a, TeamWorkFileImportHandler.a(this.this$0).getCurrentAccountUin());
       boolean bool = false;
       if (localObject != null) {
-        bool = bebl.b(this.this$0, (String)localObject, this.a);
+        bool = TeamWorkFileImportHandler.b(this.this$0, (String)localObject, this.a);
       }
-      while ((!bool) && (bebl.a(this.this$0) != null))
+      while ((!bool) && (TeamWorkFileImportHandler.a(this.this$0) != null))
       {
-        localObject = bebl.a(this.this$0).obtainMessage(8002);
+        localObject = TeamWorkFileImportHandler.a(this.this$0).obtainMessage(8002);
         ((Message)localObject).obj = this.a;
-        bebl.a(this.this$0).sendMessage((Message)localObject);
+        TeamWorkFileImportHandler.a(this.this$0).sendMessage((Message)localObject);
         return;
         this.a.jdField_f_of_type_Int = -1000;
-        beeg.a("TeamWorkFileImportHandler", "import fail", "url2doc network fail", this.a.k);
+        TenDocLogReportHelper.a("TeamWorkFileImportHandler", "import fail", "url2doc network fail", this.a.k);
       }
     }
   }

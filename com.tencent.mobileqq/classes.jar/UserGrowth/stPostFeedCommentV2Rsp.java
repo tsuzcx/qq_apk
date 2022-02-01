@@ -8,8 +8,8 @@ public final class stPostFeedCommentV2Rsp
   extends JceStruct
 {
   static stSimpleMetaComment cache_comment = new stSimpleMetaComment();
-  public stSimpleMetaComment comment;
-  public int prompt;
+  public stSimpleMetaComment comment = null;
+  public int prompt = 0;
   
   public stPostFeedCommentV2Rsp() {}
   

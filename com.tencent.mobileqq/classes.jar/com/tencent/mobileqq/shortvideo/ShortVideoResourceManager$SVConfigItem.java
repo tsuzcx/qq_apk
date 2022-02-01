@@ -20,7 +20,7 @@ public class ShortVideoResourceManager$SVConfigItem
   
   public boolean check64BitReady()
   {
-    return (!StringUtil.isEmpty(this.arm64v8a_md5)) && (!StringUtil.isEmpty(this.arm64v8a_url));
+    return (!StringUtil.a(this.arm64v8a_md5)) && (!StringUtil.a(this.arm64v8a_url));
   }
   
   public String getSignature()
@@ -38,7 +38,7 @@ public class ShortVideoResourceManager$SVConfigItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem
  * JD-Core Version:    0.7.0.1
  */

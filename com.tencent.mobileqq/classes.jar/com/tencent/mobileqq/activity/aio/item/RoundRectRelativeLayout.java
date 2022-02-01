@@ -34,7 +34,7 @@ public class RoundRectRelativeLayout
     this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, this.b, this.c), i, i, Path.Direction.CCW);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     Integer localInteger = null;
     if (this.jdField_a_of_type_AndroidGraphicsPath != null)
@@ -50,7 +50,7 @@ public class RoundRectRelativeLayout
   }
   
   @SuppressLint({"DrawAllocation"})
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getWidth();
@@ -88,7 +88,7 @@ public class RoundRectRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.RoundRectRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

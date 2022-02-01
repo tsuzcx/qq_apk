@@ -7,7 +7,6 @@ import android.opengl.GLUtils;
 import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import bdza;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -30,17 +29,17 @@ public class GLTextureView
   private GLSurfaceView.Renderer jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer;
   private GLTextureView.RenderThreadRunnable jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<bdza> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private List<GLTextureView.OnSurfaceChangedListener> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
   private EGLConfig jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig;
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
   private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
   private GL10 jdField_a_of_type_JavaxMicroeditionKhronosOpenglesGL10;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private List<Runnable> jdField_b_of_type_JavaUtilList = new LinkedList();
-  private volatile boolean jdField_b_of_type_Boolean;
+  private volatile boolean jdField_b_of_type_Boolean = false;
   private int c;
   
   public GLTextureView(Context paramContext)
@@ -208,9 +207,9 @@ public class GLTextureView
     ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable, 10, null, true);
   }
   
-  public void a(bdza parambdza)
+  public void a(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)
   {
-    this.jdField_a_of_type_JavaUtilList.add(parambdza);
+    this.jdField_a_of_type_JavaUtilList.add(paramOnSurfaceChangedListener);
   }
   
   public void a(Runnable paramRunnable)
@@ -222,9 +221,9 @@ public class GLTextureView
     }
   }
   
-  public void b(bdza parambdza)
+  public void b(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(parambdza);
+    this.jdField_a_of_type_JavaUtilList.remove(paramOnSurfaceChangedListener);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)

@@ -20,7 +20,7 @@ class WtloginHelper$HelperThread$7
       t.c(this.this$1.mUserSigInfo._seqence);
       WtloginHelper.HelperThread.access$600(this.this$1, localasync_context);
       WtloginHelper.HelperThread.access$700(this.this$1, localasync_context, this.val$ret);
-      if (this.this$1.mDwDstAppid == WtloginHelper.access$1300(this.this$1.this$0))
+      if (this.this$1.mDwDstAppid == WtloginHelper.access$1400(this.this$1.this$0))
       {
         this.this$1.mDwDstAppid = this.this$1.mDwSubDstAppid;
         this.this$1.mDwSubDstAppid = 0L;

@@ -4,19 +4,17 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.os.MqqHandler;
-import rte;
-import rtf;
 
-public class PageLoadManager$1
+class PageLoadManager$1
   implements Runnable
 {
-  public PageLoadManager$1(rte paramrte, rtf paramrtf) {}
+  PageLoadManager$1(PageLoadManager paramPageLoadManager, PageLoadManager.QueryProvider paramQueryProvider) {}
   
   public void run()
   {
     try
     {
-      List localList = this.a.a(rte.a(this.this$0), rte.b(this.this$0));
+      List localList = this.a.a(PageLoadManager.a(this.this$0), PageLoadManager.b(this.this$0));
       ThreadManager.getUIHandler().post(new PageLoadManager.1.1(this, localList));
       return;
     }
@@ -31,7 +29,7 @@ public class PageLoadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.PageLoadManager.1
  * JD-Core Version:    0.7.0.1
  */

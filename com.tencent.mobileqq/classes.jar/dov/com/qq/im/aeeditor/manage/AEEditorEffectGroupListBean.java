@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.manage;
 
 import android.text.TextUtils;
-import bnrh;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class AEEditorEffectGroupListBean
       paramList.add(localAEEditorEffectGroupItem);
       i += 1;
       continue;
-      bnrh.d("AEEditorEffectGroupListBean", "group list empty.");
+      AEQLog.d("AEEditorEffectGroupListBean", "group list empty.");
     }
   }
   
@@ -64,7 +64,7 @@ public class AEEditorEffectGroupListBean
       paramList.add(localAEEditorEffectItem);
       i += 1;
       continue;
-      bnrh.d("AEEditorEffectGroupListBean", "effect list is empty.");
+      AEQLog.d("AEEditorEffectGroupListBean", "effect list is empty.");
     }
   }
   
@@ -82,14 +82,14 @@ public class AEEditorEffectGroupListBean
     }
     catch (Exception paramString)
     {
-      bnrh.d("AEEditorEffectGroupListBean", paramString.toString());
+      AEQLog.d("AEEditorEffectGroupListBean", paramString.toString());
     }
     return localAEEditorEffectGroupListBean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.troop.data;
 
-import bfgk;
-
-public class TroopAioNotificationBar$2
+class TroopAioNotificationBar$2
   implements Runnable
 {
-  public TroopAioNotificationBar$2(bfgk parambfgk) {}
+  TroopAioNotificationBar$2(TroopAioNotificationBar paramTroopAioNotificationBar) {}
   
   public void run()
   {
-    bfgk.a(this.this$0);
+    TroopAioNotificationBar.a(this.this$0);
   }
 }
 

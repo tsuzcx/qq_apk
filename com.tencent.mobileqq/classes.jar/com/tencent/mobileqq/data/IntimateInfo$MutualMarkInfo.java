@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import axma;
+import com.tencent.mobileqq.mutualmark.MutualMarkUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -20,6 +20,8 @@ public class IntimateInfo$MutualMarkInfo
   public mutualmark.ResourceInfo gradeResourceInfo = new mutualmark.ResourceInfo();
   public String iconStaticUrl = "";
   public int level;
+  public String maxVersion = "";
+  public String minVersion = "";
   public long subLevel;
   public int type;
   
@@ -49,7 +51,7 @@ public class IntimateInfo$MutualMarkInfo
         }
         localMutualMarkInfo.days = i;
         if (!paramMutualMarkInfo.uint64_sub_level.has()) {
-          break label284;
+          break label389;
         }
         l = paramMutualMarkInfo.uint64_sub_level.get();
         localMutualMarkInfo.subLevel = l;
@@ -64,14 +66,24 @@ public class IntimateInfo$MutualMarkInfo
         if ((localMutualMarkInfo.gradeResourceInfo != null) && (localMutualMarkInfo.gradeResourceInfo.bytes_static_url.has()) && (!TextUtils.isEmpty(localMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8()))) {
           localMutualMarkInfo.iconStaticUrl = localMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8();
         }
-        localMutualMarkInfo.iconStaticUrl = axma.c(localMutualMarkInfo.iconStaticUrl);
-        return localMutualMarkInfo;
-        i = 0;
-        continue;
-        i = 0;
-        break label59;
-        label284:
-        l = 0L;
+        localMutualMarkInfo.iconStaticUrl = MutualMarkUtils.b(localMutualMarkInfo.iconStaticUrl);
+        if ((paramMutualMarkInfo.bytes_min_ver.has()) && (!TextUtils.isEmpty(paramMutualMarkInfo.bytes_min_ver.get().toStringUtf8()))) {
+          localMutualMarkInfo.minVersion = paramMutualMarkInfo.bytes_min_ver.get().toStringUtf8();
+        }
+        if ((paramMutualMarkInfo.bytes_max_ver.has()) && (!TextUtils.isEmpty(paramMutualMarkInfo.bytes_max_ver.get().toStringUtf8()))) {
+          localMutualMarkInfo.maxVersion = paramMutualMarkInfo.bytes_max_ver.get().toStringUtf8();
+        }
+        if (!MutualMarkUtils.a(localMutualMarkInfo.minVersion, localMutualMarkInfo.maxVersion))
+        {
+          QLog.i("IntimateInfo", 1, "oidb_0xcf4.MutualMarkInfo，isCurrentVersionShouldShow=false");
+          return null;
+          i = 0;
+          continue;
+          i = 0;
+          break label59;
+          label389:
+          l = 0L;
+        }
       }
       catch (Throwable localThrowable)
       {
@@ -82,6 +94,7 @@ public class IntimateInfo$MutualMarkInfo
         }
       }
     }
+    return localMutualMarkInfo;
   }
   
   public static MutualMarkInfo copyFromJson(JSONObject paramJSONObject)
@@ -92,6 +105,8 @@ public class IntimateInfo$MutualMarkInfo
     localMutualMarkInfo.days = paramJSONObject.optInt("days");
     localMutualMarkInfo.subLevel = paramJSONObject.optInt("subLevel");
     localMutualMarkInfo.iconStaticUrl = paramJSONObject.optString("iconStaticUrl");
+    localMutualMarkInfo.minVersion = paramJSONObject.optString("minVersion");
+    localMutualMarkInfo.maxVersion = paramJSONObject.optString("maxVersion");
     return localMutualMarkInfo;
   }
   
@@ -105,6 +120,8 @@ public class IntimateInfo$MutualMarkInfo
       localJSONObject.put("days", this.days);
       localJSONObject.put("subLevel", this.subLevel);
       localJSONObject.put("iconStaticUrl", this.iconStaticUrl);
+      localJSONObject.put("minVersion", this.minVersion);
+      localJSONObject.put("maxVersion", this.maxVersion);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -116,12 +133,12 @@ public class IntimateInfo$MutualMarkInfo
   
   public String toString()
   {
-    return "MutualMarkInfo{type=" + this.type + ", level=" + this.level + ", days=" + this.days + ", subLevel=" + this.subLevel + ", iconStaticUrl=" + this.iconStaticUrl + '}';
+    return "MutualMarkInfo{type=" + this.type + ", level=" + this.level + ", days=" + this.days + ", subLevel=" + this.subLevel + ", iconStaticUrl=" + this.iconStaticUrl + ", minVersion=" + this.minVersion + ", maxVersion=" + this.maxVersion + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.IntimateInfo.MutualMarkInfo
  * JD-Core Version:    0.7.0.1
  */

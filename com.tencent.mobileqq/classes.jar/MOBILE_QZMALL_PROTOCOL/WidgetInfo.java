@@ -12,9 +12,9 @@ public final class WidgetInfo
   static CommWidgetInfo cache_stCommWidgetInfo = new CommWidgetInfo();
   static EventWidgetInfo cache_stEventWidgetInfo = new EventWidgetInfo();
   public int category = 0;
-  public int src;
-  public CommWidgetInfo stCommWidgetInfo;
-  public EventWidgetInfo stEventWidgetInfo;
+  public int src = 0;
+  public CommWidgetInfo stCommWidgetInfo = null;
+  public EventWidgetInfo stEventWidgetInfo = null;
   
   public WidgetInfo() {}
   

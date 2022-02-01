@@ -1,37 +1,43 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import android.content.Intent;
-import bbfm;
-import bbfs;
-import bbfx;
-import xut;
+import com.tencent.mobileqq.soso.location.SosoInterfaceOnLocationListener;
+import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
+import com.tencent.mobileqq.soso.location.data.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
 class NewFlowCameraActivity$26
-  implements Runnable
+  extends SosoInterfaceOnLocationListener
 {
-  NewFlowCameraActivity$26(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void run()
+  NewFlowCameraActivity$26(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    Object localObject = bbfs.a().a().a(this.this$0.d);
-    if (localObject != null) {
-      ((bbfm)localObject).a(103);
-    }
-    for (;;)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-      localObject = this.this$0.getIntent();
-      ((Intent)localObject).putExtra("flow_back", 0);
-      this.this$0.setResult(1001, (Intent)localObject);
-      this.this$0.a.b();
-      this.this$0.finish();
-      return;
-      this.this$0.g();
+      this.a.a = paramSosoLbsInfo.mLocation.mLat02;
+      this.a.b = paramSosoLbsInfo.mLocation.mLon02;
+      if (QLog.isColorLevel()) {
+        QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
+      }
+      if (NewFlowCameraActivity.a(this.a) != null) {
+        NewFlowCameraActivity.d(this.a);
+      }
     }
+    do
+    {
+      return;
+      this.a.a = 0.0D;
+      this.a.b = 0.0D;
+    } while (!QLog.isColorLevel());
+    QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.26
  * JD-Core Version:    0.7.0.1
  */

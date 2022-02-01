@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aejb;
-
-public class NotificationActivity$1$1
+class NotificationActivity$1$1
   implements Runnable
 {
-  public NotificationActivity$1$1(aejb paramaejb) {}
+  NotificationActivity$1$1(NotificationActivity.1 param1) {}
   
   public void run()
   {
-    this.a.a.c();
+    this.a.a.exitApp();
   }
 }
 

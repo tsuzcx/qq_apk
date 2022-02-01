@@ -4,8 +4,6 @@ public abstract interface TroopAssistantDataStub
 {
   public abstract long getLastdrafttime();
   
-  public abstract long getLastmsgtime();
-  
   public abstract String getTroopUin();
 }
 

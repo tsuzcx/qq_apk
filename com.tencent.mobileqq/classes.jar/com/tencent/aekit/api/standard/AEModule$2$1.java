@@ -3,8 +3,8 @@ package com.tencent.aekit.api.standard;
 import com.tencent.aekit.openrender.AEOpenRenderConfig;
 import com.tencent.ttpic.baseutils.device.DeviceAttrs.UpdateListener;
 import com.tencent.ttpic.baseutils.device.DeviceInstance.SOC_CLASS;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.device.DeviceUtils;
 
 class AEModule$2$1
   implements DeviceAttrs.UpdateListener
@@ -26,7 +26,7 @@ class AEModule$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.api.standard.AEModule.2.1
  * JD-Core Version:    0.7.0.1
  */

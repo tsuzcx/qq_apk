@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 public class LimitTextView
   extends AnimationTextView
 {
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence = null;
   private Field jdField_a_of_type_JavaLangReflectField;
   private boolean jdField_a_of_type_Boolean = true;
   private Field b;
@@ -82,7 +82,7 @@ public class LimitTextView
   }
   
   @SuppressLint({"NewApi"})
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getMaxLines();

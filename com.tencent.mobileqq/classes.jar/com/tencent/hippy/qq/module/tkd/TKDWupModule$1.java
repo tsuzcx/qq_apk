@@ -1,10 +1,10 @@
 package com.tencent.hippy.qq.module.tkd;
 
-import aogk;
+import com.tencent.mobileqq.app.UniteSearchObserver;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 class TKDWupModule$1
-  extends aogk
+  extends UniteSearchObserver
 {
   TKDWupModule$1(TKDWupModule paramTKDWupModule) {}
   
@@ -16,7 +16,7 @@ class TKDWupModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDWupModule.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,28 +2,28 @@ package com.tencent.open.component.cache.database;
 
 public class DbCacheData$Structure
 {
-  protected String mName;
-  protected String mType;
+  protected String a;
+  protected String b;
   
   public DbCacheData$Structure(String paramString1, String paramString2)
   {
-    this.mName = paramString1;
-    this.mType = paramString2;
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public String getName()
+  public String a()
   {
-    return this.mName;
+    return this.a;
   }
   
-  public String getType()
+  public String b()
   {
-    return this.mType;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.component.cache.database.DbCacheData.Structure
  * JD-Core Version:    0.7.0.1
  */

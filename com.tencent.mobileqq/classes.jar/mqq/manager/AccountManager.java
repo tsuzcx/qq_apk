@@ -31,9 +31,9 @@ public abstract interface AccountManager
   
   public abstract void sendRegisterByCommitSmsVerifycode(String paramString, AccountObserver paramAccountObserver);
   
-  public abstract void sendRegisterBySetPass(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, AccountObserver paramAccountObserver);
+  public abstract void sendRegisterBySetPass(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, Bundle paramBundle, AccountObserver paramAccountObserver);
   
-  public abstract void sendRegisterBySetPassWithLH(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, AccountObserver paramAccountObserver);
+  public abstract void sendRegisterBySetPassWithLH(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, Bundle paramBundle, AccountObserver paramAccountObserver);
   
   public abstract void sendRegisterQueryMobile(String paramString1, String paramString2, AccountObserver paramAccountObserver);
   

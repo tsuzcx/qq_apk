@@ -9,7 +9,7 @@ public final class RspTopic
 {
   static byte[] cache_strRspTopic;
   public short shShowPos = 4;
-  public byte[] strRspTopic;
+  public byte[] strRspTopic = null;
   
   public RspTopic() {}
   

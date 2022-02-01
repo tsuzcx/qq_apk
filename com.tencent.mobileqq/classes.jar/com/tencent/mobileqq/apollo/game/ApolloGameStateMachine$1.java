@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.game;
 
-import amsy;
 import android.os.Process;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -12,20 +11,20 @@ class ApolloGameStateMachine$1
   
   public void run()
   {
-    amsy localamsy2 = ApolloGameStateMachine.jdField_a_of_type_Amsy;
-    amsy localamsy1 = localamsy2;
-    if (localamsy2 == null) {
-      localamsy1 = new amsy();
+    ApolloGameStateMachine.HardwareInfo localHardwareInfo2 = ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo;
+    ApolloGameStateMachine.HardwareInfo localHardwareInfo1 = localHardwareInfo2;
+    if (localHardwareInfo2 == null) {
+      localHardwareInfo1 = new ApolloGameStateMachine.HardwareInfo();
     }
-    localamsy1.b = DeviceInfoUtil.getApplicationMemory(Process.myPid());
-    localamsy1.c = DeviceInfoUtil.getMemoryClass();
-    ApolloGameStateMachine.jdField_a_of_type_Amsy = localamsy1;
+    localHardwareInfo1.b = DeviceInfoUtil.a(Process.myPid());
+    localHardwareInfo1.c = DeviceInfoUtil.f();
+    ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo = localHardwareInfo1;
     ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.1
  * JD-Core Version:    0.7.0.1
  */

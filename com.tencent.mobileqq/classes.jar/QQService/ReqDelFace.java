@@ -10,9 +10,9 @@ public final class ReqDelFace
 {
   static ReqHead cache_stHeader;
   static ArrayList<FaceInfo> cache_vFaceInfo;
-  public ReqHead stHeader;
-  public int uFaceTimeStamp;
-  public ArrayList<FaceInfo> vFaceInfo;
+  public ReqHead stHeader = null;
+  public int uFaceTimeStamp = 0;
+  public ArrayList<FaceInfo> vFaceInfo = null;
   
   public ReqDelFace() {}
   

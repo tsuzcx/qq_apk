@@ -2,9 +2,9 @@ package com.tencent.av;
 
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import lfe;
-import llq;
+import com.tencent.av.core.VcSystemInfo;
 
 class VideoController$StartRingRunnable
   implements Runnable
@@ -21,9 +21,9 @@ class VideoController$StartRingRunnable
   {
     if (this.this$0.a().jdField_o_of_type_Int < 0)
     {
-      llq.a();
-      long l = llq.d();
-      int i = llq.f();
+      VcSystemInfo.getCpuInfo();
+      long l = VcSystemInfo.getMaxCpuFreq();
+      int i = VcSystemInfo.getCpuArchitecture();
       int j = Build.VERSION.SDK_INT;
       if ((i < 4) || (l / 1000L < 800L) || (j < 9)) {
         this.this$0.a().jdField_o_of_type_Int = 0;
@@ -48,7 +48,7 @@ class VideoController$StartRingRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.VideoController.StartRingRunnable
  * JD-Core Version:    0.7.0.1
  */

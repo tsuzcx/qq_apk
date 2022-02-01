@@ -15,7 +15,7 @@ public final class UinList$UinListUploadReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     msg.uin_list.UinList.UinListUploadReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package cooperation.qzone;
 
 import android.support.v4.app.FragmentActivity;
-import astf;
+import com.tencent.mobileqq.extendfriend.utils.ExtendFriendSendMsgHelper.ISendMsgInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneNavigateToQQTransparentFragment$1
-  implements astf
+  implements ExtendFriendSendMsgHelper.ISendMsgInterface
 {
   QZoneNavigateToQQTransparentFragment$1(QZoneNavigateToQQTransparentFragment paramQZoneNavigateToQQTransparentFragment, FragmentActivity paramFragmentActivity) {}
   
@@ -36,7 +36,7 @@ class QZoneNavigateToQQTransparentFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneNavigateToQQTransparentFragment.1
  * JD-Core Version:    0.7.0.1
  */

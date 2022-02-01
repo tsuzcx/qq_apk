@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.webkit.URLUtil;
-import auuv;
-import bisl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.share.opensdk.OpenSdkShareModel;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ final class MiniProgramOpenSdkUtil$3
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
     int i = 1;
-    auuv.b("KEY_STAGE_1_GET_SHARE_INFO");
+    ForwardStatisticsReporter.b("KEY_STAGE_1_GET_SHARE_INFO");
     QLog.d("MiniProgramOpenSdkUtil", 1, new Object[] { "arkShareJson:", paramJSONObject.toString() });
     ThreadManager.getUIHandler().removeCallbacks(this.val$timeoutRunnable);
     ThreadManager.getUIHandler().removeCallbacks(this.val$showLoadingRunnable);
@@ -47,7 +47,7 @@ final class MiniProgramOpenSdkUtil$3
       if ((!URLUtil.isHttpUrl(this.val$finalNotEmptyPicUri)) && (!URLUtil.isHttpsUrl(this.val$finalNotEmptyPicUri))) {}
       while (i != 0)
       {
-        auuv.a("KEY_STAGE_1_UPLOAD_IMAGE");
+        ForwardStatisticsReporter.a("KEY_STAGE_1_UPLOAD_IMAGE");
         MiniArkShareAsyncManager.performUploadArkShareImage(this.val$finalNotEmptyPicUri, new MiniProgramOpenSdkUtil.3.1(this, paramJSONObject, localOpenSdkShareModel));
         return;
         i = 0;

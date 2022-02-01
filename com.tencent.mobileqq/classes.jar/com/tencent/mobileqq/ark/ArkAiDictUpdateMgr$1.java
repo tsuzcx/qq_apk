@@ -1,45 +1,41 @@
 package com.tencent.mobileqq.ark;
 
-import apww;
-import apwz;
-import apxa;
-import apxn;
-import aqzf;
-import aqzr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.ArkManageConfig.AIDictConfig;
+import com.tencent.mobileqq.config.business.ArkManageConfig.DictConfig;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class ArkAiDictUpdateMgr$1
+class ArkAiDictUpdateMgr$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$1(apwz paramapwz) {}
+  ArkAiDictUpdateMgr$1(ArkAiDictUpdateMgr paramArkAiDictUpdateMgr) {}
   
   public void run()
   {
-    if ((QQAppInterface)apwz.a(this.this$0).get() == null) {
+    if ((QQAppInterface)ArkAiDictUpdateMgr.a(this.this$0).get() == null) {
       ArkAppCenter.c("ArkApp.Dict.Update", "updateLocalDict, qq app is NULL, return");
     }
     for (;;)
     {
       return;
-      aqzf localaqzf1 = apwz.a();
-      Object localObject2 = apwz.a(localaqzf1);
-      aqzf localaqzf3 = apwz.b();
+      ArkManageConfig.AIDictConfig localAIDictConfig1 = ArkAiDictUpdateMgr.a();
+      Object localObject2 = ArkAiDictUpdateMgr.a(localAIDictConfig1);
+      ArkManageConfig.AIDictConfig localAIDictConfig3 = ArkAiDictUpdateMgr.b();
       Object localObject1 = new ArrayList();
       Object localObject3 = ((Map)localObject2).keySet().iterator();
       while (((Iterator)localObject3).hasNext())
       {
         String str = (String)((Iterator)localObject3).next();
-        aqzr localaqzr = (aqzr)((Map)localObject2).get(str);
-        if (!apwz.a(this.this$0, localaqzr))
+        ArkManageConfig.DictConfig localDictConfig = (ArkManageConfig.DictConfig)((Map)localObject2).get(str);
+        if (!ArkAiDictUpdateMgr.a(this.this$0, localDictConfig))
         {
           ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateLocalDict, local dict is not integrity, update, id=%s", new Object[] { str }));
-          ((ArrayList)localObject1).add(localaqzr);
+          ((ArrayList)localObject1).add(localDictConfig);
         }
         else
         {
@@ -48,29 +44,29 @@ public class ArkAiDictUpdateMgr$1
       }
       if (((ArrayList)localObject1).isEmpty())
       {
-        apwz.a(localaqzf1);
-        apww.b((AppInterface)apwz.a(this.this$0).get());
+        ArkAiDictUpdateMgr.a(localAIDictConfig1);
+        ArkAiDictMgr.b((AppInterface)ArkAiDictUpdateMgr.a(this.this$0).get());
         return;
       }
       try
       {
-        if (apwz.a(this.this$0))
+        if (ArkAiDictUpdateMgr.a(this.this$0))
         {
           ArkAppCenter.c("ArkApp.Dict.Update", "updateLocalDict, update in progress, wait current task complete");
-          apwz.a(this.this$0, true);
+          ArkAiDictUpdateMgr.a(this.this$0, true);
           return;
         }
       }
       finally {}
-      apwz.b(this.this$0, true);
-      localObject2 = new apxn(null);
-      ((apxn)localObject2).jdField_a_of_type_Boolean = true;
-      ((apxn)localObject2).jdField_a_of_type_Int = ((ArrayList)localObject1).size();
+      ArkAiDictUpdateMgr.b(this.this$0, true);
+      localObject2 = new ArkAiDictUpdateMgr.UpdateState(null);
+      ((ArkAiDictUpdateMgr.UpdateState)localObject2).jdField_a_of_type_Boolean = true;
+      ((ArkAiDictUpdateMgr.UpdateState)localObject2).jdField_a_of_type_Int = ((ArrayList)localObject1).size();
       localObject1 = ((ArrayList)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject3 = (aqzr)((Iterator)localObject1).next();
-        apwz.a(this.this$0, localaqzf3, (aqzr)localObject3, new apxa(this, (aqzr)localObject3, (apxn)localObject2, localaqzf2));
+        localObject3 = (ArkManageConfig.DictConfig)((Iterator)localObject1).next();
+        ArkAiDictUpdateMgr.a(this.this$0, localAIDictConfig3, (ArkManageConfig.DictConfig)localObject3, new ArkAiDictUpdateMgr.1.1(this, (ArkManageConfig.DictConfig)localObject3, (ArkAiDictUpdateMgr.UpdateState)localObject2, localAIDictConfig2));
       }
     }
   }

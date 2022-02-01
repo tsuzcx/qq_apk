@@ -60,8 +60,8 @@ public class QzoneImagesContainer
         ((URLImageView)localObject2).setVisibility(0);
         ((URLImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER_CROP);
         ((URLImageView)localObject2).setImageURL((String)localObject1);
-        localObject1 = new LinearLayout.LayoutParams(AIOUtils.dp2px(60.0F, getResources()), AIOUtils.dp2px(60.0F, getResources()));
-        ((LinearLayout.LayoutParams)localObject1).setMargins(0, 0, AIOUtils.dp2px(2.0F, getResources()), 0);
+        localObject1 = new LinearLayout.LayoutParams(AIOUtils.a(60.0F, getResources()), AIOUtils.a(60.0F, getResources()));
+        ((LinearLayout.LayoutParams)localObject1).setMargins(0, 0, AIOUtils.a(2.0F, getResources()), 0);
         addViewInLayout((View)localObject2, j - 1, (ViewGroup.LayoutParams)localObject1);
         ((URLImageView)localObject2).setDuplicateParentStateEnabled(true);
         i = j;
@@ -78,7 +78,7 @@ public class QzoneImagesContainer
         ((MaskURLImageView)localObject2).setVisibility(0);
         ((MaskURLImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER_CROP);
         ((MaskURLImageView)localObject2).setImageURL((String)localObject1);
-        addViewInLayout((View)localObject2, j - 1, new LinearLayout.LayoutParams(AIOUtils.dp2px(60.0F, getResources()), AIOUtils.dp2px(60.0F, getResources())));
+        addViewInLayout((View)localObject2, j - 1, new LinearLayout.LayoutParams(AIOUtils.a(60.0F, getResources()), AIOUtils.a(60.0F, getResources())));
         ((MaskURLImageView)localObject2).setHasMore(paramInt - j);
         ((MaskURLImageView)localObject2).setDuplicateParentStateEnabled(true);
         i = j;
@@ -92,7 +92,7 @@ public class QzoneImagesContainer
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt2 = getChildCount();
@@ -114,7 +114,7 @@ public class QzoneImagesContainer
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -137,7 +137,7 @@ public class QzoneImagesContainer
       ((MaskURLImageView)localObject1).setVisibility(0);
       ((MaskURLImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
       ((MaskURLImageView)localObject1).setImageURL(paramList);
-      addView((View)localObject1, new LinearLayout.LayoutParams(AIOUtils.dp2px(60.0F, getResources()), AIOUtils.dp2px(60.0F, getResources())));
+      addView((View)localObject1, new LinearLayout.LayoutParams(AIOUtils.a(60.0F, getResources()), AIOUtils.a(60.0F, getResources())));
       ((MaskURLImageView)localObject1).setNeedSowPlayIcon(true);
       ((MaskURLImageView)localObject1).setDuplicateParentStateEnabled(true);
       return;
@@ -152,7 +152,7 @@ public class QzoneImagesContainer
     if (paramList.hasNext())
     {
       localObject1 = ((ByteStringMicro)paramList.next()).toStringUtf8();
-      k = AIOUtils.dp2px(60.0F, getResources());
+      k = AIOUtils.a(60.0F, getResources());
       if (!URLUtil.isValidUrl((String)localObject1)) {
         break label423;
       }
@@ -167,7 +167,7 @@ public class QzoneImagesContainer
         localURLDrawableOptions.mRequestWidth = k;
         ((URLImageView)localObject2).setImageDrawable(URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions));
         localObject1 = new LinearLayout.LayoutParams(k, k);
-        ((LinearLayout.LayoutParams)localObject1).setMargins(0, 0, AIOUtils.dp2px(2.0F, getResources()), 0);
+        ((LinearLayout.LayoutParams)localObject1).setMargins(0, 0, AIOUtils.a(2.0F, getResources()), 0);
         addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
         ((URLImageView)localObject2).setDuplicateParentStateEnabled(true);
         i = j;
@@ -203,7 +203,7 @@ public class QzoneImagesContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneImagesContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -59,7 +59,7 @@ public class PayProxyImpl
       return paramActivity;
     }
     QLog.d(this.a, 1, "goMidasPay requestSource = " + i);
-    return PayBridgeActivity.a(AppLoaderFactory.getMiniAppInterface(), paramActivity, new PayProxyImpl.1(this, new Handler(Looper.getMainLooper()), paramIPayResultCallBack), i, paramBundle);
+    return PayBridgeActivity.newPay(AppLoaderFactory.getMiniAppInterface(), paramActivity, new PayProxyImpl.1(this, new Handler(Looper.getMainLooper()), paramIPayResultCallBack), i, paramBundle);
   }
 }
 

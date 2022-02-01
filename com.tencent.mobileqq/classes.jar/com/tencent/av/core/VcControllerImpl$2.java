@@ -2,7 +2,6 @@ package com.tencent.av.core;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import lll;
 import mqq.os.MqqHandler;
 
 class VcControllerImpl$2
@@ -28,7 +27,7 @@ class VcControllerImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.core.VcControllerImpl.2
  * JD-Core Version:    0.7.0.1
  */

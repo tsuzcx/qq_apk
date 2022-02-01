@@ -3,11 +3,9 @@ package com.tencent.qapmsdk.looper;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
-import com.tencent.qapmsdk.common.activty.ActivityInfo;
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.thread.ThreadManager;
 import java.lang.reflect.Field;
@@ -55,34 +53,25 @@ class GetStackRunnable
   
   private String getDropFrameScene()
   {
-    Object localObject1 = "";
     try
     {
       if ((this.dropFrameInstance == null) && (this.dropFrameSceneField == null))
       {
-        Object localObject3 = Class.forName("com.tencent.qapmsdk.dropframe.DropFrameMonitor");
-        localObject2 = ((Class)localObject3).getDeclaredMethod("getInstance", new Class[0]).invoke(null, new Object[0]);
-        localObject3 = ((Class)localObject3).getDeclaredField("currentScene");
-        ((Field)localObject3).setAccessible(true);
-        this.dropFrameInstance = localObject2;
-        this.dropFrameSceneField = ((Field)localObject3);
+        Object localObject2 = Class.forName("com.tencent.qapmsdk.dropframe.DropFrameMonitor");
+        localObject1 = ((Class)localObject2).getDeclaredMethod("getInstance", new Class[0]).invoke(null, new Object[0]);
+        localObject2 = ((Class)localObject2).getDeclaredField("currentScene");
+        ((Field)localObject2).setAccessible(true);
+        this.dropFrameInstance = localObject1;
+        this.dropFrameSceneField = ((Field)localObject2);
       }
-      localObject2 = String.valueOf(this.dropFrameSceneField.get(this.dropFrameInstance));
-      localObject1 = localObject2;
+      Object localObject1 = String.valueOf(this.dropFrameSceneField.get(this.dropFrameInstance));
+      return localObject1;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject2;
-        Logger.INSTANCE.w(new String[] { "QAPM_looper_GetStackRunnable", "get dropFrame scene may be error" });
-      }
+      Logger.INSTANCE.w(new String[] { "QAPM_looper_GetStackRunnable", "get dropFrame scene may be error" });
     }
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = ActivityInfo.getCurrentActivityName();
-    }
-    return localObject2;
+    return "";
   }
   
   private String getStack(boolean paramBoolean)
@@ -218,7 +207,7 @@ class GetStackRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.GetStackRunnable
  * JD-Core Version:    0.7.0.1
  */

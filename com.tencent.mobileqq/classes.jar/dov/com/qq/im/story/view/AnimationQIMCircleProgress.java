@@ -9,21 +9,21 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import androidx.annotation.NonNull;
-import bnru;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
+import dov.com.qq.im.ae.view.AECircleCaptureStyle;
 import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class AnimationQIMCircleProgress
   extends QIMCircleProgress
 {
-  private bnru a;
+  private AECircleCaptureStyle a;
   private RectF b;
-  private boolean d;
+  private boolean d = false;
   Paint jdField_e_of_type_AndroidGraphicsPaint;
-  private boolean jdField_e_of_type_Boolean;
-  private boolean f;
+  private boolean jdField_e_of_type_Boolean = false;
+  private boolean f = false;
   private float jdField_g_of_type_Float = 1.0F;
   private boolean jdField_g_of_type_Boolean = true;
   private int m;
@@ -34,11 +34,13 @@ public class AnimationQIMCircleProgress
   public AnimationQIMCircleProgress(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_DovComQqImAeViewAECircleCaptureStyle = null;
   }
   
   public AnimationQIMCircleProgress(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_DovComQqImAeViewAECircleCaptureStyle = null;
   }
   
   public void a()
@@ -47,27 +49,27 @@ public class AnimationQIMCircleProgress
     this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    setBackgroundResource(2130844414);
-    this.o = ViewUtils.dip2px(30.0F);
-    this.p = ViewUtils.dip2px(6.0F);
+    setBackgroundResource(2130844604);
+    this.o = ViewUtils.a(30.0F);
+    this.p = ViewUtils.a(6.0F);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   }
   
   public void a(int paramInt)
   {
-    if ((this.f) && (this.jdField_a_of_type_Bnru != null)) {
-      setBackgroundResource(this.jdField_a_of_type_Bnru.c);
+    if ((this.f) && (this.jdField_a_of_type_DovComQqImAeViewAECircleCaptureStyle != null)) {
+      setBackgroundResource(this.jdField_a_of_type_DovComQqImAeViewAECircleCaptureStyle.c);
     }
     for (;;)
     {
       super.a(paramInt);
       return;
       if (this.jdField_e_of_type_Boolean) {
-        setBackgroundResource(2130837967);
+        setBackgroundResource(2130838023);
       } else if ((paramInt != 1) && (this.d)) {
         setBackgroundDrawable(null);
       } else {
-        setBackgroundResource(2130844414);
+        setBackgroundResource(2130844604);
       }
     }
   }
@@ -103,34 +105,34 @@ public class AnimationQIMCircleProgress
     this.jdField_e_of_type_Boolean = paramBoolean;
     if (this.jdField_e_of_type_Boolean)
     {
-      setBackgroundResource(2130837967);
-      setCenterCircleColor(getResources().getColor(2131166307));
+      setBackgroundResource(2130838023);
+      setCenterCircleColor(getResources().getColor(2131166314));
     }
     for (;;)
     {
       invalidate();
       return;
-      setBackgroundResource(2130844414);
+      setBackgroundResource(2130844604);
       setCenterCircleColor(-1);
     }
   }
   
-  public void a(boolean paramBoolean, @NonNull bnru parambnru)
+  public void a(boolean paramBoolean, @NonNull AECircleCaptureStyle paramAECircleCaptureStyle)
   {
     this.f = paramBoolean;
-    this.jdField_a_of_type_Bnru = parambnru;
+    this.jdField_a_of_type_DovComQqImAeViewAECircleCaptureStyle = paramAECircleCaptureStyle;
     if (this.f)
     {
-      setBackgroundResource(this.jdField_a_of_type_Bnru.c);
+      setBackgroundResource(this.jdField_a_of_type_DovComQqImAeViewAECircleCaptureStyle.c);
       setCenterCircleColor(0);
-      setProgressOffset(AIOUtils.dp2px(2.5F, getResources()));
-      setProgressColor(this.jdField_a_of_type_Bnru.g);
+      setProgressOffset(AIOUtils.a(2.5F, getResources()));
+      setProgressColor(this.jdField_a_of_type_DovComQqImAeViewAECircleCaptureStyle.g);
     }
     for (;;)
     {
       invalidate();
       return;
-      setBackgroundResource(2130844414);
+      setBackgroundResource(2130844604);
       setCenterCircleColor(-1);
     }
   }
@@ -150,7 +152,7 @@ public class AnimationQIMCircleProgress
   
   protected void d(Canvas paramCanvas)
   {
-    int i = UIUtils.dip2px(getContext(), 3.0F);
+    int i = UIUtils.a(getContext(), 3.0F);
     Color.parseColor("#33000000");
     float f1 = this.i / 2;
     float f2 = this.i / 2;
@@ -164,8 +166,8 @@ public class AnimationQIMCircleProgress
   public void setCenterView()
   {
     super.setCenterView();
-    this.m = ViewUtils.dip2px(3.0F);
-    this.n = (ViewUtils.dip2px(53.0F) / 2);
+    this.m = ViewUtils.a(3.0F);
+    this.n = (ViewUtils.a(53.0F) / 2);
   }
   
   public void setDrawCenterCircle(boolean paramBoolean)
@@ -187,13 +189,13 @@ public class AnimationQIMCircleProgress
     {
       invalidate();
       return;
-      setBackgroundResource(2130844414);
+      setBackgroundResource(2130844604);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.story.view.AnimationQIMCircleProgress
  * JD-Core Version:    0.7.0.1
  */

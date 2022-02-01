@@ -1,25 +1,36 @@
 package com.tencent.common.app;
 
-import android.content.Intent;
-import com.tencent.mobileqq.bigbrother.TeleScreenRunnable;
+import com.tencent.mobileqq.qroute.route.ILogger;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseApplicationImpl$1
-  implements TeleScreenRunnable
+  implements ILogger
 {
-  BaseApplicationImpl$1(BaseApplicationImpl paramBaseApplicationImpl, Intent paramIntent) {}
+  BaseApplicationImpl$1(BaseApplicationImpl paramBaseApplicationImpl) {}
   
-  public void run()
+  public void debug(String paramString1, String paramString2)
   {
-    try
-    {
-      BaseApplicationImpl.access$001(this.this$0, this.val$intent);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("BaseApplicationImpl", 1, localThrowable, new Object[0]);
-    }
+    QLog.d(paramString1, 4, paramString2);
+  }
+  
+  public void info(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void warning(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void warning(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, 1, paramString2, paramThrowable);
   }
 }
 

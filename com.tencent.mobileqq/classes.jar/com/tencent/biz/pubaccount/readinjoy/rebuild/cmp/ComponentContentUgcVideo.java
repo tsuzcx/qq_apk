@@ -8,19 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
-import pjr;
-import pqw;
-import qfw;
-import rfw;
-import rrq;
-import rrs;
 
 public class ComponentContentUgcVideo
   extends ComponentContentBigImageVideo
@@ -42,17 +41,17 @@ public class ComponentContentUgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560172, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560250, this, true);
   }
   
-  public URL a(qfw paramqfw)
+  public URL a(IReadInJoyModel paramIReadInJoyModel)
   {
-    ArticleInfo localArticleInfo = paramqfw.a();
+    ArticleInfo localArticleInfo = paramIReadInJoyModel.a();
     if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.a != null) && (localArticleInfo.mSocialFeedInfo.a.b.size() > 0))
     {
-      Object localObject = (rrs)localArticleInfo.mSocialFeedInfo.a.b.get(0);
-      int i = ((rrs)localObject).c;
-      int j = ((rrs)localObject).d;
+      Object localObject = (SocializeFeedsInfo.UGCVideoInfo)localArticleInfo.mSocialFeedInfo.a.b.get(0);
+      int i = ((SocializeFeedsInfo.UGCVideoInfo)localObject).c;
+      int j = ((SocializeFeedsInfo.UGCVideoInfo)localObject).d;
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams() != null))
       {
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
@@ -70,8 +69,8 @@ public class ComponentContentUgcVideo
           }
           while (localObject != null)
           {
-            paramqfw = (qfw)localObject;
-            return paramqfw;
+            paramIReadInJoyModel = (IReadInJoyModel)localObject;
+            return paramIReadInJoyModel;
             label204:
             QLog.d("ComponentContentUgcVideo", 2, "ivWidth: " + k + ", ivHeight: " + m);
           }
@@ -92,7 +91,7 @@ public class ComponentContentUgcVideo
         if (localObject == null) {
           break label327;
         }
-        paramqfw = (qfw)localObject;
+        paramIReadInJoyModel = (IReadInJoyModel)localObject;
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -103,7 +102,7 @@ public class ComponentContentUgcVideo
       }
     }
     label327:
-    return super.a(paramqfw);
+    return super.a(paramIReadInJoyModel);
   }
   
   public void a(View paramView)
@@ -125,18 +124,18 @@ public class ComponentContentUgcVideo
     int k;
     boolean bool;
     int j;
-    if ((this.jdField_a_of_type_Rfw.a != null) && (this.jdField_a_of_type_Rfw.a.a() != null))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a() != null))
     {
-      localArticleInfo = this.jdField_a_of_type_Rfw.a.a();
+      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
       if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.a != null) && (localArticleInfo.mSocialFeedInfo.a.b.size() > 0))
       {
         localLayoutParams = getLayoutParams();
         localObject = getResources().getDisplayMetrics();
         i = Math.min(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
-        k = AIOUtils.dp2px(12.0F, getResources());
+        k = AIOUtils.a(12.0F, getResources());
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
-        rrs localrrs = (rrs)localArticleInfo.mSocialFeedInfo.a.b.get(0);
-        if (pqw.a(localrrs.c, localrrs.d)) {
+        SocializeFeedsInfo.UGCVideoInfo localUGCVideoInfo = (SocializeFeedsInfo.UGCVideoInfo)localArticleInfo.mSocialFeedInfo.a.b.get(0);
+        if (RIJFeedsType.a(localUGCVideoInfo.c, localUGCVideoInfo.d)) {
           break label299;
         }
         bool = true;
@@ -165,7 +164,7 @@ public class ComponentContentUgcVideo
       label305:
       if (localArticleInfo.mChannelID == 0L)
       {
-        i = pjr.a(i, getResources());
+        i = ReadInJoyDisplayUtils.a(i, getResources());
         QLog.d("ComponentContentUgcVideo", 2, "main feeds | ivWidth is " + i + "; ivHeight is " + i);
         j = i;
       }
@@ -179,7 +178,7 @@ public class ComponentContentUgcVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo
  * JD-Core Version:    0.7.0.1
  */

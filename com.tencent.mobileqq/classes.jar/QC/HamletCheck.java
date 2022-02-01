@@ -9,9 +9,9 @@ public final class HamletCheck
   extends JceStruct
 {
   static ArrayList<UniBusinessCheckItem> cache_itemlist = new ArrayList();
-  public ArrayList<UniBusinessCheckItem> itemlist;
-  public int locationtype;
-  public long uid;
+  public ArrayList<UniBusinessCheckItem> itemlist = null;
+  public int locationtype = 0;
+  public long uid = 0L;
   
   static
   {

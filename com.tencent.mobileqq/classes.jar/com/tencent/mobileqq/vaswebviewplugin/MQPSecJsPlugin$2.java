@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import bifb;
-import bifw;
-import bikl;
-import bisl;
+import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class MQPSecJsPlugin$2
   implements Runnable
@@ -17,12 +17,12 @@ class MQPSecJsPlugin$2
     {
       if ((MQPSecJsPlugin.access$100(this.this$0) == null) && (!this.this$0.activity.isFinishing()))
       {
-        bifb localbifb = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-        if ((localbifb != null) && ((localbifb instanceof bikl)))
+        WebUiBaseInterface localWebUiBaseInterface = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+        if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebTitleBarInterface)))
         {
-          MQPSecJsPlugin.access$102(this.this$0, new bisl(this.this$0.activity, ((bikl)localbifb).getTitleBarHeight()));
+          MQPSecJsPlugin.access$102(this.this$0, new QQProgressDialog(this.this$0.activity, ((WebUiUtils.WebTitleBarInterface)localWebUiBaseInterface).getTitleBarHeight()));
           MQPSecJsPlugin.access$100(this.this$0).setCancelable(false);
-          MQPSecJsPlugin.access$100(this.this$0).c(2131694477);
+          MQPSecJsPlugin.access$100(this.this$0).c(2131694694);
         }
       }
     }
@@ -40,7 +40,7 @@ class MQPSecJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MQPSecJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.transfile;
 
 public class BaseTransProcessor$StepInfo
 {
-  public int failTryCount;
-  public long finishTime;
+  public int failTryCount = 0;
+  public long finishTime = 0L;
   public int result = -1;
-  public long startTime;
-  public int successTryCount;
+  public long startTime = 0L;
+  public int successTryCount = 0;
   
   public void fixAtPttPreSend(long paramLong)
   {

@@ -11,9 +11,9 @@ public final class stJumpInfo
 {
   static Map<String, String> cache_mapExt = new HashMap();
   public String h5url = "";
-  public int id;
-  public int index;
-  public Map<String, String> mapExt;
+  public int id = 0;
+  public int index = 0;
+  public Map<String, String> mapExt = null;
   public String schema_url = "";
   public String text = "";
   public String trace_id = "";

@@ -4,18 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import viw;
 
 public class WSPushGloryKingModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushGloryKingModel> CREATOR = new viw();
+  public static final Parcelable.Creator<WSPushGloryKingModel> CREATOR = new WSPushGloryKingModel.1();
   public int a;
   public String a;
   
   protected WSPushGloryKingModel() {}
   
-  public WSPushGloryKingModel(Parcel paramParcel)
+  protected WSPushGloryKingModel(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -46,7 +45,7 @@ public class WSPushGloryKingModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushGloryKingModel
  * JD-Core Version:    0.7.0.1
  */

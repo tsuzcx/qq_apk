@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app;
 
+import android.content.SharedPreferences;
 import android.os.Looper;
 import mqq.os.MqqHandler;
 
@@ -49,7 +50,7 @@ public class ThreadManager
     finally {}
   }
   
-  public static void initDPC() {}
+  public static void initDPC(SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
 }
 
 

@@ -1,7 +1,6 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageRsp;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.text.TextUtils;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
@@ -10,56 +9,58 @@ import org.json.JSONObject;
 class OpenDataCommonJsPlugin$8
   implements AsyncResult
 {
-  OpenDataCommonJsPlugin$8(OpenDataCommonJsPlugin paramOpenDataCommonJsPlugin, RequestEvent paramRequestEvent) {}
+  OpenDataCommonJsPlugin$8(OpenDataCommonJsPlugin paramOpenDataCommonJsPlugin, RequestEvent paramRequestEvent, String paramString1, Boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("OpenDataCommonJsPlugin", "getUserInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
+    QMLog.d("OpenDataCommonJsPlugin", "modifyFriendInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
     if (paramJSONObject == null)
     {
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
-      this.val$req.fail("request request is null.");
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
+      this.val$req.fail("request ret is null.");
       return;
     }
     if (paramBoolean)
     {
       int i;
-      JSONObject localJSONObject;
+      String str1;
       try
       {
-        Object localObject = (CloudStorage.StGetUserInteractiveStorageRsp)paramJSONObject.get("response");
         i = paramJSONObject.getInt("retCode");
-        paramJSONObject = paramJSONObject.getString("errMsg");
-        String str = ((CloudStorage.StGetUserInteractiveStorageRsp)localObject).encryptedData.get();
-        localObject = ((CloudStorage.StGetUserInteractiveStorageRsp)localObject).iv.get();
-        localJSONObject = new JSONObject();
+        str1 = paramJSONObject.getString("errMsg");
+        paramJSONObject = new JSONObject();
         if (i == 0)
         {
-          localJSONObject.put("encryptedData", str);
-          localJSONObject.put("iv", localObject);
-          this.val$req.ok(localJSONObject);
+          this.val$req.ok();
+          if ((!TextUtils.isEmpty(this.val$title)) && (!this.val$quiet.booleanValue()))
+          {
+            str1 = this.val$object + this.val$action;
+            String str2 = "已" + this.val$action + "\n马上QQ告诉好友？";
+            this.this$0.doShowFriendInteractiveDialog(str1, str2, this.val$openid, this.val$nick, this.val$title, this.val$imageUrl, this.val$imageUrlId, this.val$req);
+          }
+          OpenDataCommonJsPlugin.access$600(this.this$0, paramJSONObject, this.val$req, this.val$key);
           return;
         }
       }
       catch (Exception paramJSONObject)
       {
-        QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error ", paramJSONObject);
-        this.val$req.fail(paramJSONObject.getMessage());
+        QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ", paramJSONObject);
+        this.val$req.fail();
         return;
       }
-      localJSONObject.put("retErrMsg", paramJSONObject);
-      localJSONObject.put("errCode", i);
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE " + localJSONObject.toString());
-      this.val$req.fail(localJSONObject, "");
+      paramJSONObject.put("errMsg", str1);
+      paramJSONObject.put("errCode", i);
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE " + paramJSONObject.toString());
+      this.val$req.fail(paramJSONObject, "");
       return;
     }
-    QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
+    QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
     this.val$req.fail("request failed.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

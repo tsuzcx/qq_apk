@@ -2,8 +2,8 @@ package cooperation.qzone.statistic.access;
 
 public abstract class HttpMultiServer
 {
-  protected String defaultServer;
-  protected boolean optionalEnabled;
+  protected String defaultServer = null;
+  protected boolean optionalEnabled = false;
   
   public HttpMultiServer()
   {
@@ -58,7 +58,7 @@ public abstract class HttpMultiServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.statistic.access.HttpMultiServer
  * JD-Core Version:    0.7.0.1
  */

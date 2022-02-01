@@ -1,23 +1,22 @@
 package com.tencent.biz.qqstory.comment;
 
 import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.model.LikeManager;
+import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
-import whe;
-import wje;
-import wke;
-import yck;
 
-public class FeedLikeLego$2
+class FeedLikeLego$2
   implements Runnable
 {
-  public FeedLikeLego$2(whe paramwhe, wke paramwke, String paramString, LikeEntry paramLikeEntry) {}
+  FeedLikeLego$2(FeedLikeLego paramFeedLikeLego, UserManager paramUserManager, String paramString, LikeEntry paramLikeEntry) {}
   
   public void run()
   {
-    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_Wke.b(this.jdField_a_of_type_JavaLangString);
+    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
     LikeEntry localLikeEntry;
     if (localQQUserUIItem != null)
     {
@@ -31,8 +30,8 @@ public class FeedLikeLego$2
     {
       localLikeEntry.role = l;
       this.this$0.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
-      this.this$0.jdField_a_of_type_Wje.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
-      this.this$0.jdField_a_of_type_Yck.a(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      this.this$0.jdField_a_of_type_ComTencentBizQqstoryModelLikeManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
+      this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
       ThreadManager.getUIHandler().post(new FeedLikeLego.2.1(this));
       return;
     }
@@ -40,7 +39,7 @@ public class FeedLikeLego$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeLego.2
  * JD-Core Version:    0.7.0.1
  */

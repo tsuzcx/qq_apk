@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.ocr;
 
-import aysr;
-import ayvn;
+import com.tencent.mobileqq.ocr.view.TDProgressDialog;
 
-public class OCRResultFragmentNew$7$4
+class OCRResultFragmentNew$7$4
   implements Runnable
 {
-  public OCRResultFragmentNew$7$4(aysr paramaysr, int paramInt) {}
+  OCRResultFragmentNew$7$4(OCRResultFragmentNew.7 param7, int paramInt) {}
   
   public void run()
   {
-    OCRResultFragmentNew.a(this.jdField_a_of_type_Aysr.a, true);
-    OCRResultFragmentNew.a(this.jdField_a_of_type_Aysr.a).a(this.jdField_a_of_type_Int);
+    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a, true);
+    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a).a(this.jdField_a_of_type_Int);
   }
 }
 

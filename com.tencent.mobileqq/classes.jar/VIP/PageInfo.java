@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class PageInfo
   extends JceStruct
 {
-  public long iPos;
+  public long iPos = 0L;
   
   public PageInfo() {}
   

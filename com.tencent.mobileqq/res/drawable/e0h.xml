@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="@color/bp" android:endColor="@color/ajr" android:angle="90.0" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/ggz" />
+    <item android:drawable="@drawable/ggy" />
+</selector>

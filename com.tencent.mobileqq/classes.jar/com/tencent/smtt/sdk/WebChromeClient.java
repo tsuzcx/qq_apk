@@ -38,6 +38,7 @@ public class WebChromeClient
     return false;
   }
   
+  @Deprecated
   public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, WebStorage.QuotaUpdater paramQuotaUpdater)
   {
     paramQuotaUpdater.updateQuota(paramLong2);
@@ -72,6 +73,7 @@ public class WebChromeClient
     return JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult);
   }
   
+  @Deprecated
   public boolean onJsTimeout()
   {
     return true;
@@ -83,6 +85,7 @@ public class WebChromeClient
   
   public void onProgressChanged(WebView paramWebView, int paramInt) {}
   
+  @Deprecated
   public void onReachedMaxAppCacheSize(long paramLong1, long paramLong2, WebStorage.QuotaUpdater paramQuotaUpdater)
   {
     paramQuotaUpdater.updateQuota(paramLong2);
@@ -96,6 +99,7 @@ public class WebChromeClient
   
   public void onRequestFocus(WebView paramWebView) {}
   
+  @Deprecated
   public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
   
   public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
@@ -112,7 +116,7 @@ public class WebChromeClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebChromeClient
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,184 @@
+package com.tencent.mobileqq.profilesetting;
+
+import android.content.Intent;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.util.List;
+
+class ProfileCardMoreActivity$7
+  extends FriendListObserver
+{
+  ProfileCardMoreActivity$7(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  
+  public void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if (!paramBoolean)
+    {
+      this.a.notifyUser(2131719077, 1);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(true);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  public void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if (!paramBoolean)
+    {
+      this.a.notifyUser(2131719077, 1);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
+      this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  public void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString1)) || (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.d = paramString2;
+      this.a.b(paramString2);
+      if ((this.a.jdField_a_of_type_Int & 0x1) == 1)
+      {
+        paramString1 = this.a;
+        if (!paramBoolean) {
+          break label190;
+        }
+        paramByte = 2131693408;
+        label77:
+        if (!paramBoolean) {
+          break label197;
+        }
+      }
+    }
+    label188:
+    label190:
+    label197:
+    for (int i = 2;; i = 1)
+    {
+      paramString1.notifyUser(paramByte, i);
+      this.a.jdField_a_of_type_Int &= 0xFFFFFFFE;
+      return;
+      paramString1 = (FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (paramString1 == null) {}
+      for (paramString1 = null;; paramString1 = paramString1.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
+      {
+        if (paramString1 == null) {
+          break label188;
+        }
+        if (paramString1.remark != null) {
+          this.a.d = paramString1.remark;
+        }
+        this.a.b(this.a.d);
+        break;
+      }
+      break;
+      paramByte = 2131693407;
+      break label77;
+    }
+  }
+  
+  public void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(String.valueOf(paramObject))))
+    {
+      this.a.notifyUser(2131691544, 2);
+      if (this.a.jdField_a_of_type_AndroidContentIntent == null) {
+        this.a.jdField_a_of_type_AndroidContentIntent = new Intent();
+      }
+      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
+      this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
+      this.a.finish();
+    }
+  }
+  
+  public void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Object localObject2;
+    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != null) && (ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
+    {
+      localObject2 = (FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (localObject2 != null) {
+        break label172;
+      }
+      localObject1 = null;
+      if (localObject1 != null)
+      {
+        if (((Friends)localObject1).remark != null) {
+          this.a.d = ((Friends)localObject1).remark;
+        }
+        this.a.b(this.a.d);
+        localObject1 = ((FriendsManager)localObject2).a(String.valueOf(((Friends)localObject1).groupid));
+        if ((localObject1 != null) && (!Utils.a(this.a.jdField_c_of_type_JavaLangString, ((Groups)localObject1).group_name)))
+        {
+          this.a.jdField_c_of_type_JavaLangString = ((Groups)localObject1).group_name;
+          localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+          if (!TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)) {
+            break label191;
+          }
+        }
+      }
+    }
+    label172:
+    label191:
+    for (Object localObject1 = "";; localObject1 = this.a.jdField_c_of_type_JavaLangString)
+    {
+      ((FormSimpleItem)localObject2).setRightText((CharSequence)localObject1);
+      return;
+      localObject1 = ((FriendsManager)localObject2).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+      break;
+    }
+  }
+  
+  public void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if (!String.valueOf(paramLong).equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) {}
+    do
+    {
+      return;
+      if (!paramBoolean1) {}
+      for (paramBoolean1 = true; Thread.currentThread() == Looper.getMainLooper().getThread(); paramBoolean1 = false)
+      {
+        this.a.a(paramBoolean2, paramBoolean1);
+        return;
+      }
+    } while (this.a.b == null);
+    this.a.b.post(new ProfileCardMoreActivity.7.2(this, paramBoolean2, paramBoolean1));
+  }
+  
+  public void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (!Utils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, paramString))) {}
+    for (;;)
+    {
+      return;
+      paramString = (FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (paramString == null) {}
+      for (paramString = null; (paramString != null) && (!Utils.a(this.a.jdField_c_of_type_JavaLangString, paramString.group_name)); paramString = paramString.a(String.valueOf(paramByte1)))
+      {
+        this.a.jdField_c_of_type_JavaLangString = paramString.group_name;
+        this.a.runOnUiThread(new ProfileCardMoreActivity.7.1(this));
+        return;
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity.7
+ * JD-Core Version:    0.7.0.1
+ */

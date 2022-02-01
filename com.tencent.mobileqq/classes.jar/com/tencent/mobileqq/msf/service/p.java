@@ -3,7 +3,7 @@ package com.tencent.mobileqq.msf.service;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.s;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,10 +17,10 @@ final class p
   {
     Object localObject = new HashMap();
     ((HashMap)localObject).put("msfCoreCost", "" + (this.a - MsfService.serviceInitStart));
-    com.tencent.mobileqq.msf.core.c.k localk;
+    j localj;
     if (MsfService.core.statReporter != null)
     {
-      localk = MsfService.core.statReporter;
+      localj = MsfService.core.statReporter;
       if (this.b <= 2000L) {
         break label159;
       }
@@ -29,8 +29,8 @@ final class p
     label159:
     for (boolean bool = false;; bool = true)
     {
-      localk.a("msfInitCost", bool, this.b, 0L, (Map)localObject, false, false);
-      s.c();
+      localj.a("msfInitCost", bool, this.b, 0L, (Map)localObject, false, false);
+      com.tencent.mobileqq.msf.core.k.c();
       localObject = BaseApplication.getContext().getSharedPreferences("crashcontrol", 4);
       j = ((SharedPreferences)localObject).getInt("countRecvKillMsf", 0);
       if (j <= 0) {

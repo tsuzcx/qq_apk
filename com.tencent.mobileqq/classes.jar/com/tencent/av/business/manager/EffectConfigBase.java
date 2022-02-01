@@ -6,13 +6,19 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bgzr;
+import com.tencent.av.AVLog;
+import com.tencent.av.AVPathUtil;
+import com.tencent.av.ManageConfig.QAVConfItem;
+import com.tencent.av.ManageConfig.QAVConfig;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.utils.UITools;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.util.JSONUtils;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -24,36 +30,24 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lbd;
-import lbh;
-import lbs;
-import lbt;
-import lfe;
-import lgp;
-import lgt;
-import lgv;
-import lgw;
-import lgx;
-import lgy;
-import mvk;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public abstract class EffectConfigBase<T extends lgx>
-  extends lgp
+public abstract class EffectConfigBase<T extends EffectConfigBase.ItemBase>
+  extends BusinessManager
 {
   public static String b;
   public static String c;
   private static String d;
   private static String e;
-  public int a;
-  public Handler a;
+  int a;
+  protected Handler a;
+  protected final Checker a;
+  protected T a;
   protected List<T> a;
-  protected final lgt a;
-  public T a;
   protected List<T> b;
   protected List<T> c;
-  protected List<WeakReference<lgw<T>>> d;
+  protected List<WeakReference<EffectConfigBase.IEffectConfigCallback<T>>> d;
   
   static
   {
@@ -66,9 +60,9 @@ public abstract class EffectConfigBase<T extends lgx>
   public EffectConfigBase(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_Lgt = new lgt();
+    this.jdField_a_of_type_ComTencentAvBusinessManagerChecker = new Checker();
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler = new lgy(this.jdField_a_of_type_JavaLangString, this);
+    this.jdField_a_of_type_AndroidOsHandler = new EffectConfigBase.MyHander(this.jdField_a_of_type_JavaLangString, this);
     this.jdField_d_of_type_JavaUtilList = new ArrayList();
   }
   
@@ -80,20 +74,20 @@ public abstract class EffectConfigBase<T extends lgx>
   
   public static String a(int paramInt, String paramString)
   {
-    if ((AudioHelper.e()) && (TextUtils.isEmpty(paramString))) {
+    if ((AudioHelper.d()) && (TextUtils.isEmpty(paramString))) {
       throw new IllegalArgumentException("getConfigSPName uin不能为空, configId:" + paramInt);
     }
     return jdField_d_of_type_JavaLangString + paramInt + "_" + paramString;
   }
   
-  private WeakReference<lgw<T>> a(lgw<T> paramlgw)
+  private WeakReference<EffectConfigBase.IEffectConfigCallback<T>> a(EffectConfigBase.IEffectConfigCallback<T> paramIEffectConfigCallback)
   {
     int j = this.jdField_d_of_type_JavaUtilList.size();
     int i = 0;
     while (i < j)
     {
       WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
-      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((lgw)localWeakReference.get()).equals(paramlgw))) {
+      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((EffectConfigBase.IEffectConfigCallback)localWeakReference.get()).equals(paramIEffectConfigCallback))) {
         return localWeakReference;
       }
       i += 1;
@@ -130,7 +124,7 @@ public abstract class EffectConfigBase<T extends lgx>
   
   private void a(long paramLong, T paramT, boolean paramBoolean)
   {
-    if (AudioHelper.f()) {
+    if (AudioHelper.e()) {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "triggleonResourceDownloadFinished, id[" + paramT.getId() + "], isSuccess[" + paramBoolean + "], seq[" + paramLong + "]");
     }
     Object localObject;
@@ -138,7 +132,7 @@ public abstract class EffectConfigBase<T extends lgx>
     {
       localObject = a(paramT.getId());
       if (localObject != null) {
-        ((lgx)localObject).setUsable(true);
+        ((EffectConfigBase.ItemBase)localObject).setUsable(true);
       }
     }
     int j = this.jdField_d_of_type_JavaUtilList.size();
@@ -147,7 +141,7 @@ public abstract class EffectConfigBase<T extends lgx>
     {
       localObject = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
       if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-        ((lgw)((WeakReference)localObject).get()).onDownloadFinish(paramLong, paramT, paramBoolean);
+        ((EffectConfigBase.IEffectConfigCallback)((WeakReference)localObject).get()).onDownloadFinish(paramLong, paramT, paramBoolean);
       }
       i += 1;
     }
@@ -161,7 +155,7 @@ public abstract class EffectConfigBase<T extends lgx>
     {
       WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((lgw)localWeakReference.get()).onProgressUpdate(paramT, paramInt);
+        ((EffectConfigBase.IEffectConfigCallback)localWeakReference.get()).onProgressUpdate(paramT, paramInt);
       }
       i += 1;
     }
@@ -196,7 +190,7 @@ public abstract class EffectConfigBase<T extends lgx>
     {
       WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((lgw)localWeakReference.get()).onItemSelectedChanged(paramLong, paramT);
+        ((EffectConfigBase.IEffectConfigCallback)localWeakReference.get()).onItemSelectedChanged(paramLong, paramT);
       }
       i += 1;
     }
@@ -214,21 +208,67 @@ public abstract class EffectConfigBase<T extends lgx>
     return 0;
   }
   
+  public T a()
+  {
+    return this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase;
+  }
+  
+  public T a(String paramString)
+  {
+    b();
+    Iterator localIterator;
+    EffectConfigBase.ItemBase localItemBase;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localItemBase = (EffectConfigBase.ItemBase)localIterator.next();
+        if (paramString.equals(localItemBase.getId())) {
+          return localItemBase;
+        }
+      }
+    }
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localItemBase = (EffectConfigBase.ItemBase)localIterator.next();
+        if (paramString.equals(localItemBase.getId())) {
+          return localItemBase;
+        }
+      }
+    }
+    if ((this.jdField_c_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localItemBase = (EffectConfigBase.ItemBase)localIterator.next();
+        if (paramString.equals(localItemBase.getId())) {
+          return localItemBase;
+        }
+      }
+    }
+    return null;
+  }
+  
   protected abstract Class<?> a();
   
   protected String a()
   {
     String str = null;
-    lbs locallbs = lbt.b(a());
-    if (locallbs != null) {
-      str = locallbs.jdField_a_of_type_JavaLangString;
+    QAVConfItem localQAVConfItem = QAVConfig.b(a());
+    if (localQAVConfItem != null) {
+      str = localQAVConfItem.jdField_a_of_type_JavaLangString;
     }
     return str;
   }
   
   public String a(T paramT)
   {
-    return lbh.a() + paramT.cid + File.separator + "temp" + File.separator + paramT.getId() + ".zip";
+    return AVPathUtil.a() + paramT.cid + File.separator + "temp" + File.separator + paramT.getId() + ".zip";
   }
   
   protected List<T> a(int paramInt, String paramString)
@@ -238,7 +278,7 @@ public abstract class EffectConfigBase<T extends lgx>
     int i;
     int j;
     label68:
-    lgx locallgx;
+    EffectConfigBase.ItemBase localItemBase;
     int m;
     boolean bool1;
     if (!TextUtils.isEmpty(paramString))
@@ -246,7 +286,7 @@ public abstract class EffectConfigBase<T extends lgx>
       try
       {
         localObject = new JSONObject(paramString);
-        k = mvk.a();
+        k = UITools.getQQVersion();
         if (paramInt != 543) {
           break label432;
         }
@@ -269,19 +309,19 @@ public abstract class EffectConfigBase<T extends lgx>
         j = 0;
         if (j < paramString.length())
         {
-          locallgx = (lgx)bgzr.a((JSONObject)paramString.get(j), (Class)localObject);
-          if ((locallgx == null) || (TextUtils.isEmpty(locallgx.getId()))) {
+          localItemBase = (EffectConfigBase.ItemBase)JSONUtils.a((JSONObject)paramString.get(j), (Class)localObject);
+          if ((localItemBase == null) || (TextUtils.isEmpty(localItemBase.getId()))) {
             break label423;
           }
-          locallgx.cid = paramInt;
-          m = locallgx.getPlatform();
-          lbd.f(this.jdField_a_of_type_JavaLangString, "cid = " + locallgx.cid + ", item: " + locallgx.toString() + "|" + k + "|" + m);
-          bool2 = a(locallgx);
+          localItemBase.cid = paramInt;
+          m = localItemBase.getPlatform();
+          AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, "cid = " + localItemBase.cid + ", item: " + localItemBase.toString() + "|" + k + "|" + m);
+          bool2 = a(localItemBase);
           bool1 = bool2;
           if (bool2)
           {
-            str1 = a(locallgx);
-            str2 = b(locallgx);
+            str1 = a(localItemBase);
+            str2 = b(localItemBase);
             localFile = new File(str2);
             bool1 = localFile.exists();
             if (bool1) {}
@@ -296,27 +336,27 @@ public abstract class EffectConfigBase<T extends lgx>
     {
       try
       {
-        FileUtils.uncompressZip(str1, str2, false);
+        FileUtils.a(str1, str2, false);
         bool1 = localFile.exists();
         if (i == 0) {
           break label382;
         }
-        locallgx.setUsable(bool1);
-        localArrayList.add(locallgx);
+        localItemBase.setUsable(bool1);
+        localArrayList.add(localItemBase);
         break label423;
         paramString = b();
       }
       catch (Throwable localThrowable)
       {
-        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "parse item fail, item[" + locallgx + "]", localThrowable);
+        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "parse item fail, item[" + localItemBase + "]", localThrowable);
         continue;
       }
       return localArrayList;
       label382:
       if ((m == 0) || (k >= m))
       {
-        locallgx.setUsable(bool1);
-        localArrayList.add(locallgx);
+        localItemBase.setUsable(bool1);
+        localArrayList.add(localItemBase);
       }
       for (;;)
       {
@@ -344,65 +384,19 @@ public abstract class EffectConfigBase<T extends lgx>
     return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public T a()
-  {
-    return this.jdField_a_of_type_Lgx;
-  }
+  protected void a() {}
   
-  public T a(String paramString)
+  public void a(long paramLong, EffectConfigBase.IEffectConfigCallback<T> paramIEffectConfigCallback)
   {
-    b();
-    Iterator localIterator;
-    lgx locallgx;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
+    if (paramIEffectConfigCallback != null)
     {
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if (a(paramIEffectConfigCallback) == null)
       {
-        locallgx = (lgx)localIterator.next();
-        if (paramString.equals(locallgx.getId())) {
-          return locallgx;
-        }
-      }
-    }
-    if ((this.jdField_b_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        locallgx = (lgx)localIterator.next();
-        if (paramString.equals(locallgx.getId())) {
-          return locallgx;
-        }
-      }
-    }
-    if ((this.jdField_c_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        locallgx = (lgx)localIterator.next();
-        if (paramString.equals(locallgx.getId())) {
-          return locallgx;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(long paramLong, lgw<T> paramlgw)
-  {
-    if (paramlgw != null)
-    {
-      if (a(paramlgw) == null)
-      {
-        WeakReference localWeakReference = new WeakReference(paramlgw);
+        WeakReference localWeakReference = new WeakReference(paramIEffectConfigCallback);
         this.jdField_d_of_type_JavaUtilList.add(localWeakReference);
       }
       if (QLog.isColorLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "addCallback, callback[" + paramlgw.getClass().getSimpleName() + "], callback[" + paramlgw + "], seq[" + paramLong + "]");
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "addCallback, callback[" + paramIEffectConfigCallback.getClass().getSimpleName() + "], callback[" + paramIEffectConfigCallback + "], seq[" + paramLong + "]");
       }
     }
   }
@@ -417,27 +411,60 @@ public abstract class EffectConfigBase<T extends lgx>
       return;
     }
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mCallback = new lgv(this, paramLong, paramT);
+    localHttpNetReq.mCallback = new EffectConfigBase.1(this, paramLong, paramT);
     localHttpNetReq.mReqUrl = paramT.getResurl();
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mOutPath = a(paramT);
-    localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+    localHttpNetReq.mContinuErrorLimit = NetworkUtil.a(NetworkCenter.getInstance().getNetType());
     localHttpNetReq.setUserData(paramT);
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "startDownload, item[" + paramT + "], seq[" + paramLong + "]");
     paramT.isDownloading = true;
     ThreadManager.post(new EffectConfigBase.NetReqRunnable(this, localHttpNetReq), 5, null, true);
   }
   
-  public void a(Message paramMessage) {}
+  protected void a(Message paramMessage) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  protected void a(T paramT) {}
+  
+  protected void a(String paramString, boolean paramBoolean)
   {
     if ((paramBoolean) && ((paramString.equals(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().jdField_d_of_type_JavaLangString)) || (paramString.equals(String.valueOf(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().g))))) {
       a(AudioHelper.b(), null);
     }
   }
   
-  public void a(T paramT) {}
+  public boolean a(long paramLong, T paramT)
+  {
+    EffectConfigBase.ItemBase localItemBase = null;
+    Object localObject = null;
+    if (!a(this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase, paramT))
+    {
+      localItemBase = this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase;
+      this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase = paramT;
+      if (AudioHelper.e())
+      {
+        if (QLog.isDevelopLevel()) {
+          localObject = new Throwable("打印调用栈");
+        }
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem, notify MSG_ON_ITEM_SELECT_CHANGED, seq[" + paramLong + "], count_MSG[" + this.jdField_a_of_type_Int + "], \nlast[" + localItemBase + "], \nnew[" + this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase + "]", (Throwable)localObject);
+      }
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_a_of_type_Int = 1;
+      paramT = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, paramT);
+      paramT.arg1 = ((int)paramLong);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramT);
+      return true;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = localItemBase;
+      if (QLog.isDevelopLevel()) {
+        localObject = new Throwable("打印调用栈");
+      }
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem, 重复, seq[" + paramLong + "], count_MSG_ON_ITEM_SELECT_CHANGED[" + this.jdField_a_of_type_Int + "], item[" + paramT + "]", (Throwable)localObject);
+    }
+    return false;
+  }
   
   public boolean a(long paramLong, String paramString)
   {
@@ -453,39 +480,6 @@ public abstract class EffectConfigBase<T extends lgx>
     return true;
   }
   
-  public boolean a(long paramLong, T paramT)
-  {
-    lgx locallgx = null;
-    Object localObject = null;
-    if (!a(this.jdField_a_of_type_Lgx, paramT))
-    {
-      locallgx = this.jdField_a_of_type_Lgx;
-      this.jdField_a_of_type_Lgx = paramT;
-      if (AudioHelper.f())
-      {
-        if (QLog.isDevelopLevel()) {
-          localObject = new Throwable("打印调用栈");
-        }
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem, notify MSG_ON_ITEM_SELECT_CHANGED, seq[" + paramLong + "], count_MSG[" + this.jdField_a_of_type_Int + "], \nlast[" + locallgx + "], \nnew[" + this.jdField_a_of_type_Lgx + "]", (Throwable)localObject);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      this.jdField_a_of_type_Int = 1;
-      paramT = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, paramT);
-      paramT.arg1 = ((int)paramLong);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramT);
-      return true;
-    }
-    if (QLog.isDevelopLevel())
-    {
-      localObject = locallgx;
-      if (QLog.isDevelopLevel()) {
-        localObject = new Throwable("打印调用栈");
-      }
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem, 重复, seq[" + paramLong + "], count_MSG_ON_ITEM_SELECT_CHANGED[" + this.jdField_a_of_type_Int + "], item[" + paramT + "]", (Throwable)localObject);
-    }
-    return false;
-  }
-  
   protected boolean a(T paramT)
   {
     if ((paramT == null) || (paramT.cid <= 0) || (TextUtils.isEmpty(paramT.getId())))
@@ -495,7 +489,7 @@ public abstract class EffectConfigBase<T extends lgx>
       if (paramT != null) {}
       for (paramT = Integer.valueOf(paramT.cid);; paramT = "item == null")
       {
-        lbd.h(str, paramT + "|");
+        AVLog.printErrorLog(str, paramT + "|");
         return false;
       }
     }
@@ -510,13 +504,13 @@ public abstract class EffectConfigBase<T extends lgx>
     str = SecUtil.getFileMd5(str);
     long l2 = SystemClock.elapsedRealtime();
     paramT = paramT.getMd5();
-    lbd.f(this.jdField_a_of_type_JavaLangString, "isTemplateUsable :" + str + "|" + paramT + "|" + (l2 - l1));
+    AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, "isTemplateUsable :" + str + "|" + paramT + "|" + (l2 - l1));
     return paramT.equalsIgnoreCase(str);
   }
   
   public int b(int paramInt, String paramString)
   {
-    lbd.f(this.jdField_a_of_type_JavaLangString, "onSendMessageToPeer :" + paramInt + "|" + paramString);
+    AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, "onSendMessageToPeer :" + paramInt + "|" + paramString);
     return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(paramInt, paramString);
   }
   
@@ -527,7 +521,7 @@ public abstract class EffectConfigBase<T extends lgx>
   
   public String b(T paramT)
   {
-    return lbh.a() + paramT.cid + File.separator + paramT.getId() + File.separator;
+    return AVPathUtil.a() + paramT.cid + File.separator + paramT.getId() + File.separator;
   }
   
   public void b()
@@ -540,35 +534,35 @@ public abstract class EffectConfigBase<T extends lgx>
     if (a() == 176)
     {
       if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() == 0)) {
-        this.jdField_b_of_type_JavaUtilList = a(370, lbt.b(370).jdField_a_of_type_JavaLangString);
+        this.jdField_b_of_type_JavaUtilList = a(370, QAVConfig.b(370).jdField_a_of_type_JavaLangString);
       }
       if ((this.jdField_c_of_type_JavaUtilList == null) || (this.jdField_c_of_type_JavaUtilList.size() == 0)) {
-        this.jdField_c_of_type_JavaUtilList = a(543, lbt.b(543).jdField_a_of_type_JavaLangString);
+        this.jdField_c_of_type_JavaUtilList = a(543, QAVConfig.b(543).jdField_a_of_type_JavaLangString);
       }
     }
   }
   
-  public void b(long paramLong, lgw<T> paramlgw)
+  public void b(long paramLong, EffectConfigBase.IEffectConfigCallback<T> paramIEffectConfigCallback)
   {
-    if (paramlgw != null)
+    if (paramIEffectConfigCallback != null)
     {
-      if (a(paramlgw) != null) {
-        this.jdField_d_of_type_JavaUtilList.remove(paramlgw);
+      if (a(paramIEffectConfigCallback) != null) {
+        this.jdField_d_of_type_JavaUtilList.remove(paramIEffectConfigCallback);
       }
       if (QLog.isColorLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "removeCallback, callback[" + paramlgw.getClass().getSimpleName() + "], callback[" + paramlgw + "], seq[" + paramLong + "]");
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "removeCallback, callback[" + paramIEffectConfigCallback.getClass().getSimpleName() + "], callback[" + paramIEffectConfigCallback + "], seq[" + paramLong + "]");
       }
     }
   }
   
   public String c(T paramT)
   {
-    return lbh.a() + paramT.cid + File.separator + paramT.getId();
+    return AVPathUtil.a() + paramT.cid + File.separator + paramT.getId();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.EffectConfigBase
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bieg;
-import bifw;
-import bjqp;
-import com.tencent.common.app.AppInterface;
+import com.tencent.gamecenter.wadl.util.WLog;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.open.appcommon.js.BaseInterface;
 import com.tencent.open.wadl.WadlJsBridge;
 import java.lang.reflect.Method;
@@ -13,13 +12,14 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import mqq.app.AppRuntime;
 
 public class WadlWebViewJsPlugin
-  extends bieg
+  extends JsWebViewPlugin
 {
   public static final String PLUGIN_NAMESPACE = "wadl_download";
   public static final String TAG = "WadlWebViewJsPlugin";
-  private Map<String, BaseInterface> apiMap;
+  private Map<String, BaseInterface> apiMap = null;
   
   private void initMap()
   {
@@ -49,7 +49,7 @@ public class WadlWebViewJsPlugin
     int i;
     if (localBaseInterface != null)
     {
-      bjqp.c("WadlWebViewJsPlugin", "handleJsRequest pkgName=" + paramString2 + ",methodName=" + paramString3);
+      WLog.c("WadlWebViewJsPlugin", "handleJsRequest pkgName=" + paramString2 + ",methodName=" + paramString3);
       Method[] arrayOfMethod = localBaseInterface.getClass().getDeclaredMethods();
       int j = arrayOfMethod.length;
       i = 0;
@@ -97,7 +97,7 @@ public class WadlWebViewJsPlugin
     return true;
   }
   
-  public void onAppRuntimeReady(AppInterface paramAppInterface) {}
+  public void onAppRuntimeReady(AppRuntime paramAppRuntime) {}
   
   public void onCreate() {}
   
@@ -120,7 +120,7 @@ public class WadlWebViewJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin
  * JD-Core Version:    0.7.0.1
  */

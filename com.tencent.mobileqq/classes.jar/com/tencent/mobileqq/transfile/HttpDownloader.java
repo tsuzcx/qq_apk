@@ -2,14 +2,16 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Build.VERSION;
 import android.view.animation.AnimationUtils;
-import azkw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.StructPicLimitConfigProcessor;
+import com.tencent.mobileqq.config.business.StructPicLimitDataBean;
+import com.tencent.mobileqq.pic.StructMsgPicPreDelegate;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.impl.HttpEngineServiceImpl;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -39,11 +41,10 @@ public class HttpDownloader
 {
   private static final int BUFFER_SIZE = 4096;
   public static final int STRUCT_ITEM_COVER = 1001;
+  public static final int STRUCT_PIC_LIMIT_ERROR_CODE = 17174;
   public static final String TAG = "HttpDownloader";
-  private static boolean sShutdownSniSupport;
-  private static boolean sShutdownSniSupportInited;
   protected AtomicBoolean isCancelled = new AtomicBoolean(false);
-  public boolean mSupportInnerIp;
+  public boolean mSupportInnerIp = false;
   
   public HttpDownloader() {}
   
@@ -132,17 +133,19 @@ public class HttpDownloader
     {
       return;
     }
-    INetEngine localINetEngine = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getNetEngine(0);
+    IHttpEngineService localIHttpEngineService = (IHttpEngineService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IHttpEngineService.class, "all");
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mNeedIpConnect = true;
     localHttpNetReq.mNeedNotReferer = true;
-    localHttpNetReq.mCallback = new HttpDownloader.1(paramURLDrawableHandler, paramString, paramHttpDownloaderParams);
+    localHttpNetReq.mSupportBreakResume = true;
+    boolean bool = StructPicLimitConfigProcessor.a().jdField_a_of_type_Boolean;
+    localHttpNetReq.mCallback = new HttpDownloader.1(StructPicLimitConfigProcessor.a().jdField_a_of_type_Long, bool, localIHttpEngineService, paramURLDrawableHandler, paramString, paramHttpDownloaderParams);
     localHttpNetReq.mReqUrl = paramString;
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mOutPath = str;
     localHttpNetReq.mPrioty = 2;
     localHttpNetReq.mIsPreStructPic = paramHttpDownloaderParams.isPreDownload;
-    localINetEngine.sendReq(localHttpNetReq);
+    localIHttpEngineService.sendReq(localHttpNetReq);
   }
   
   private void report(DownloadParams paramDownloadParams, boolean paramBoolean1, URL paramURL, boolean paramBoolean2, int paramInt1, int paramInt2, IOException paramIOException)
@@ -209,7 +212,7 @@ public class HttpDownloader
             int n;
             paramHttpDownloaderParams = null;
             continue;
-            if (SystemUtil.getSDCardAvailableSize() < 8L)
+            if (SystemUtil.a() < 8L)
             {
               paramInt1 = 2;
               i = 1;
@@ -228,7 +231,7 @@ public class HttpDownloader
         }
         n = paramInt1 * 10000;
         if (paramInt1 == 200) {
-          if (!SystemUtil.isExistSDCard())
+          if (!SystemUtil.a())
           {
             paramInt1 = 1;
             i = 1;
@@ -245,7 +248,7 @@ public class HttpDownloader
               }
             }
             if (n < 0) {
-              break label456;
+              break label457;
             }
             paramInt1 = m + n;
           }
@@ -269,7 +272,7 @@ public class HttpDownloader
         {
           paramHttpDownloaderParams.put("param_DirectList", "");
           if (0 != 0) {
-            break label473;
+            break label474;
           }
           paramIOException = "";
           paramHttpDownloaderParams.put("param_LastDirectUrl", paramIOException);
@@ -280,8 +283,8 @@ public class HttpDownloader
           }
           StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "StructMsgPicDown", paramBoolean1, 0L, 0L, paramHttpDownloaderParams, null);
         }
-        label456:
-        label473:
+        label457:
+        label474:
         paramInt1 = 0;
       }
       localObject = paramURL;
@@ -298,7 +301,7 @@ public class HttpDownloader
     if (paramException != null)
     {
       if (paramInt2 != -1) {
-        break label222;
+        break label223;
       }
       paramInt2 = adjustFailCodeByExceptionType(20000, paramException, paramBoolean);
     }
@@ -314,7 +317,7 @@ public class HttpDownloader
         QLog.e("HttpDownloader", 2, "[reportHttpsResult] url=" + paramString + " port=" + paramInt1 + " responseCode=" + i + " " + paramInt3);
       }
       return;
-      label222:
+      label223:
       paramInt2 += 10000;
     }
   }
@@ -331,37 +334,6 @@ public class HttpDownloader
     if (QLog.isColorLevel()) {
       QLog.e("HttpDownloader", 2, "[reportHttpsSniMethod] reflectOrNot=" + paramInt1 + " host=" + paramString1 + " " + paramInt2);
     }
-  }
-  
-  public static boolean shutdownSniSupport()
-  {
-    if (!sShutdownSniSupportInited) {
-      sShutdownSniSupportInited = true;
-    }
-    try
-    {
-      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_config.name(), "");
-      if (QLog.isColorLevel()) {
-        QLog.d("HttpDownloader", 2, "shutdownSniSupport:" + (String)localObject);
-      }
-      localObject = ((String)localObject).split("\\|");
-      if (localObject.length > 15) {
-        sShutdownSniSupport = localObject[15].equals("1");
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("HttpDownloader", 2, "shutdownSniSupport e:" + localException.toString());
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpDownloader", 2, "shutdownSniSupport " + sShutdownSniSupport);
-    }
-    return sShutdownSniSupport;
   }
   
   private void writeToFile(InputStream paramInputStream, long paramLong, OutputStream paramOutputStream, URLDrawableHandler paramURLDrawableHandler)
@@ -409,7 +381,7 @@ public class HttpDownloader
     if ((paramDownloadParams.mHttpDownloaderParams != null) && ((paramDownloadParams.mHttpDownloaderParams instanceof HttpDownloaderParams)))
     {
       localHttpDownloaderParams = (HttpDownloaderParams)paramDownloadParams.mHttpDownloaderParams;
-      if ((localHttpDownloaderParams.businessType != 1001) || (!azkw.a)) {}
+      if ((localHttpDownloaderParams.businessType != 1001) || (!StructMsgPicPreDelegate.jdField_a_of_type_Boolean)) {}
     }
     try
     {
@@ -441,29 +413,37 @@ public class HttpDownloader
       QLog.i("HttpDownloader", 2, " downloadImage url = " + paramDownloadParams.url.toString() + " needCheckNetType:" + bool1 + " isMobileNet:" + bool2 + "isAutoDownloadAbled:" + bool3);
     }
     if ((paramDownloadParams.needCheckNetType) && (bool2) && (!bool3)) {}
-    while (downByHttpEngine(paramDownloadParams, paramURLDrawableHandler)) {
-      return null;
-    }
-    paramURLDrawableHandler.onFileDownloadStarted();
-    paramURL = new HttpNetReq();
-    paramURL.mReqUrl = paramDownloadParams.url.toString();
-    paramURL.mHttpMethod = 0;
-    paramURL.mNeedIpConnect = this.mSupportInnerIp;
-    paramURL.mOutStream = paramOutputStream;
-    paramURL.mContinuErrorLimit = paramDownloadParams.retryCount;
-    paramURL.mCallback = new HttpDownloader.2(this, paramURLDrawableHandler);
-    paramOutputStream = OldHttpEngine.transSync(paramURL);
-    copyRespInfo(paramOutputStream, paramURLDrawableHandler);
-    if (paramOutputStream != null) {
-      QLog.i("HttpDownloader", 1, " resp.mResult = " + paramOutputStream.mResult + " , resp.mErrCode = " + paramOutputStream.mErrCode + " , resp.mErrDesc = " + paramOutputStream.mErrDesc);
-    }
-    if (paramOutputStream.mResult == 0)
+    HttpNetReq localHttpNetReq;
+    do
     {
-      paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.mTotalFileLen);
+      do
+      {
+        return null;
+      } while (downByHttpEngine(paramDownloadParams, paramURLDrawableHandler));
+      paramURLDrawableHandler.onFileDownloadStarted();
+      localHttpNetReq = new HttpNetReq();
+      localHttpNetReq.mReqUrl = paramDownloadParams.url.toString();
+      localHttpNetReq.mHttpMethod = 0;
+      localHttpNetReq.mNeedIpConnect = this.mSupportInnerIp;
+      localHttpNetReq.mOutStream = paramOutputStream;
+      localHttpNetReq.mContinuErrorLimit = paramDownloadParams.retryCount;
+      localHttpNetReq.mCallback = new HttpDownloader.2(this, paramURLDrawableHandler);
+      paramDownloadParams = HttpEngineServiceImpl.transSync(localHttpNetReq);
+      copyRespInfo(paramDownloadParams, paramURLDrawableHandler);
+    } while (paramDownloadParams == null);
+    paramURL = new StringBuilder().append(" resp.mResult = ").append(paramDownloadParams.mResult).append(" , resp.mErrCode = ").append(paramDownloadParams.mErrCode).append(" , resp.mErrDesc = ").append(paramDownloadParams.mErrDesc).append(" file exists: ");
+    if ((AbsDownloader.sDiskCache != null) && (AbsDownloader.sDiskCache.getDirectory() != null)) {}
+    for (paramOutputStream = Boolean.valueOf(new File(AbsDownloader.sDiskCache.getDirectory(), getFileName(localHttpNetReq.mReqUrl) + ".tmp").exists());; paramOutputStream = "null")
+    {
+      QLog.i("HttpDownloader", 1, paramOutputStream);
+      if (paramDownloadParams.mResult != 0) {
+        break;
+      }
+      paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.mTotalFileLen);
       return null;
     }
-    paramURLDrawableHandler.onFileDownloadFailed(paramOutputStream.mHttpCode);
-    throw new IOException(paramOutputStream.mErrDesc);
+    paramURLDrawableHandler.onFileDownloadFailed(paramDownloadParams.mHttpCode);
+    throw new IOException(paramDownloadParams.mErrDesc);
   }
   
   @Nullable

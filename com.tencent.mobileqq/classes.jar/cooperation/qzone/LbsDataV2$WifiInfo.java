@@ -9,7 +9,7 @@ public class LbsDataV2$WifiInfo
 {
   public static final Parcelable.Creator<WifiInfo> CREATOR = new LbsDataV2.WifiInfo.1();
   public String mac = "";
-  public int rssi;
+  public int rssi = 0;
   
   public LbsDataV2$WifiInfo() {}
   
@@ -37,7 +37,7 @@ public class LbsDataV2$WifiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.WifiInfo
  * JD-Core Version:    0.7.0.1
  */

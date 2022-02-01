@@ -2,9 +2,9 @@ package com.tencent.av.gaudio;
 
 import android.graphics.Bitmap;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.utils.AVUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import mrr;
 
 class GaInviteLockActivity$11
   implements Runnable
@@ -15,9 +15,9 @@ class GaInviteLockActivity$11
   {
     int i = this.this$0.jdField_a_of_type_Int;
     long l = this.this$0.jdField_a_of_type_Long;
-    int j = mrr.c(this.this$0.jdField_b_of_type_Int);
-    String str1 = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, String.valueOf(l), null);
-    String str2 = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(j, String.valueOf(this.this$0.jdField_b_of_type_Long), String.valueOf(this.this$0.jdField_a_of_type_Long));
+    int j = AVUtil.c(this.this$0.jdField_b_of_type_Int);
+    String str1 = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, String.valueOf(l), null);
+    String str2 = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(j, String.valueOf(this.this$0.jdField_b_of_type_Long), String.valueOf(this.this$0.jdField_a_of_type_Long));
     Bitmap localBitmap = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(j, String.valueOf(this.this$0.jdField_b_of_type_Long), null, true, true);
     QLog.w(this.this$0.jdField_b_of_type_JavaLangString, 1, "mAsyncSubThreadRunnable[groupName," + str1 + "],[peerName," + str2 + "]");
     if ((!this.this$0.isFinishing()) && (GaInviteLockActivity.a(this.this$0) != null))
@@ -30,7 +30,7 @@ class GaInviteLockActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteLockActivity.11
  * JD-Core Version:    0.7.0.1
  */

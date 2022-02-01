@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import ansr;
-
-public class DataLineHandler$15
+class DataLineHandler$15
   implements Runnable
 {
-  public DataLineHandler$15(ansr paramansr, long paramLong, int paramInt) {}
+  DataLineHandler$15(DataLineHandler paramDataLineHandler, long paramLong, int paramInt) {}
   
   public void run()
   {
-    ansr.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    DataLineHandler.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.15
  * JD-Core Version:    0.7.0.1
  */

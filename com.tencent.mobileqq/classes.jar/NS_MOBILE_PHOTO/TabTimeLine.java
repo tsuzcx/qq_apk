@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class TabTimeLine
   extends JceStruct
 {
-  public long begin_time;
-  public long end_time;
-  public long month;
-  public long year;
+  public long begin_time = 0L;
+  public long end_time = 0L;
+  public long month = 0L;
+  public long year = 0L;
   
   public TabTimeLine() {}
   

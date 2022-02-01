@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
-import omc;
 
 public class VideoInfo$AdTagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<AdTagInfo> CREATOR = new omc();
+  public static final Parcelable.Creator<AdTagInfo> CREATOR = new VideoInfo.AdTagInfo.1();
   public int a;
   public VideoInfo.ClassInfo a;
   public String a;
@@ -20,12 +19,14 @@ public class VideoInfo$AdTagInfo
   public VideoInfo$AdTagInfo()
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public VideoInfo$AdTagInfo(Parcel paramParcel)
+  protected VideoInfo$AdTagInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_JavaUtilArrayList = paramParcel.createTypedArrayList(VideoInfo.KdTagItem.CREATOR);
@@ -52,7 +53,7 @@ public class VideoInfo$AdTagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.AdTagInfo
  * JD-Core Version:    0.7.0.1
  */

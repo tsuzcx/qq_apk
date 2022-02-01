@@ -11,7 +11,7 @@ public class QzonePublishPlugin
   public void onDestroy() {}
   
   /* Error */
-  public void onInvoke(org.json.JSONObject paramJSONObject, com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext paramJSContext)
+  public void onInvoke(org.json.JSONObject paramJSONObject, com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext paramJSContext)
   {
     // Byte code:
     //   0: aload_1
@@ -260,7 +260,7 @@ public class QzonePublishPlugin
     //   start	length	slot	name	signature
     //   0	535	0	this	QzonePublishPlugin
     //   0	535	1	paramJSONObject	org.json.JSONObject
-    //   0	535	2	paramJSContext	com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext
+    //   0	535	2	paramJSContext	com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext
     //   102	33	3	d1	double
     //   110	39	5	d2	double
     //   351	37	7	i	int

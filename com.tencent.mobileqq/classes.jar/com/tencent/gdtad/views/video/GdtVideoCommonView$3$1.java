@@ -1,11 +1,9 @@
 package com.tencent.gdtad.views.video;
 
-import acka;
-
-public class GdtVideoCommonView$3$1
+class GdtVideoCommonView$3$1
   implements Runnable
 {
-  public GdtVideoCommonView$3$1(acka paramacka) {}
+  GdtVideoCommonView$3$1(GdtVideoCommonView.3 param3) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class GdtVideoCommonView$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.3.1
  * JD-Core Version:    0.7.0.1
  */

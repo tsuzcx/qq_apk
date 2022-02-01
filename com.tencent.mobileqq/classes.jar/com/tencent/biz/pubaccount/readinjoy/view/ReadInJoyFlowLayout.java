@@ -12,16 +12,15 @@ import android.widget.Adapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.AdapterDataSetObserver;
-import taf;
 
 public class ReadInJoyFlowLayout
   extends AdapterView
 {
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int = AIOUtils.dp2px(8.0F, getResources());
+  private float jdField_a_of_type_Float = 0.0F;
+  private final int jdField_a_of_type_Int = AIOUtils.a(8.0F, getResources());
   private Adapter jdField_a_of_type_AndroidWidgetAdapter;
-  private AdapterView.AdapterDataSetObserver jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver = new taf(this);
-  private float b;
+  private AdapterView.AdapterDataSetObserver jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver = new ReadInJoyFlowLayout.1(this);
+  private float b = 0.0F;
   
   public ReadInJoyFlowLayout(Context paramContext)
   {
@@ -60,7 +59,7 @@ public class ReadInJoyFlowLayout
     invalidate();
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     return new ViewGroup.MarginLayoutParams(super.generateDefaultLayoutParams());
   }
@@ -70,7 +69,7 @@ public class ReadInJoyFlowLayout
     return new ViewGroup.MarginLayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return new ViewGroup.MarginLayoutParams(paramLayoutParams);
   }
@@ -223,7 +222,7 @@ public class ReadInJoyFlowLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i4 = getPaddingLeft();
     int i5 = getPaddingRight();
@@ -398,7 +397,7 @@ public class ReadInJoyFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout
  * JD-Core Version:    0.7.0.1
  */

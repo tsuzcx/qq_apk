@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="54.0dip"
+<FrameLayout android:id="@id/n9a" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.vas.qvip.view.QvipArkView android:layout_gravity="center" android:id="@id/cvu" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/n6t" android:background="@drawable/intimate_relationship_friend_mark_bg" android:layout_width="fill_parent" android:layout_height="115.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="3.0dip" android:layout_marginBottom="20.0dip">
+        <com.tencent.widget.RoundRectImageView android:id="@id/msz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    </RelativeLayout>
 </FrameLayout>

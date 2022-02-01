@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.startup.step;
 
-import bdjn;
-
 class LoadDex$1
   implements Runnable
 {
@@ -9,7 +7,7 @@ class LoadDex$1
   
   public void run()
   {
-    bdjn.b(16, this.this$0.mDirector, null).step();
+    Step.AmStepFactory.b(16, this.this$0.mDirector, null).step();
   }
 }
 

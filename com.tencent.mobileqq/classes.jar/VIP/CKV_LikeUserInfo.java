@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class CKV_LikeUserInfo
   extends JceStruct
 {
-  public long iLstQueryTime;
-  public long iUin;
+  public long iLstQueryTime = 0L;
+  public long iUin = 0L;
   public boolean isFriend = true;
   public String sNickName = "";
   

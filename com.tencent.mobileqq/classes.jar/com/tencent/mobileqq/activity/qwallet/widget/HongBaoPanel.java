@@ -1,17 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import afrr;
-import aftr;
-import aktz;
-import akxe;
-import akyj;
-import akyl;
-import akym;
-import akyn;
-import albv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
@@ -29,19 +21,29 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdla;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.OnCustomizeListener;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
 import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
 import com.tencent.mobileqq.activity.qwallet.emoj.EmojiRedpacketUserGuideDialog;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager.ShowInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.PanelData;
+import com.tencent.mobileqq.activity.qwallet.redpacket.PanelTabData;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletRedPkgUtils;
+import com.tencent.mobileqq.activity.qwallet.utils.ReportUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qwallet.preload.IPreloadServiceAbs;
+import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.StringUtil;
@@ -75,18 +77,18 @@ public class HongBaoPanel
   private String actionId;
   private View.OnClickListener bottomTabClickListener = new HongBaoPanel.3(this);
   private LinearLayout bottomTabLayout;
-  private int failedImageReTryTimes;
+  private int failedImageReTryTimes = 0;
   private List<Integer> failedPositionList = new ArrayList();
   private String fontColorAct = "#000000";
   private String fontColorIcon = "#5B6175";
   private String fontColorTab = "#27BEF6";
-  private boolean isNightMode;
+  private boolean isNightMode = false;
   boolean isSoftKeyBoardHeight = false;
-  int itemTopMargin = ImmersiveUtils.a(14.0F);
+  int itemTopMargin = ImmersiveUtils.dpToPx(14.0F);
   private RelativeLayout layoutAction;
   private RelativeLayout layoutBottom;
   ViewGroup mAIORootView;
-  afrr mActionCustomListener = new HongBaoPanel.1(this);
+  CustomizeStrategyFactory.OnCustomizeListener mActionCustomListener = new HongBaoPanel.1(this);
   private ImageView mActionRedDot;
   private TextView mActionTxtView;
   protected BaseActivity mActivity;
@@ -99,13 +101,14 @@ public class HongBaoPanel
   private ImageView mImgActionFire;
   private ImageView mImgPanelBackGround;
   GridLayoutManager mLayoutManager;
-  private Integer mNightModeIconTxtColor;
+  private Integer mNightModeIconTxtColor = null;
   SessionInfo mSessionInfo;
   private TroopUnAccalimedRedPacketList mTroopUnAccalimedRedPacketList;
+  List<Integer> needReportIconList = new ArrayList();
   private String panelBgColor;
   private String panelBgPic;
-  akyj redManager;
-  private boolean setNightColorSucc;
+  QWalletRedManager redManager;
+  private boolean setNightColorSucc = false;
   int spanCount = 4;
   private String url_action;
   
@@ -130,14 +133,14 @@ public class HongBaoPanel
   private int getNightModeIconTxtColor()
   {
     if (this.mNightModeIconTxtColor == null) {
-      this.mNightModeIconTxtColor = Integer.valueOf(getResources().getColor(2131167026));
+      this.mNightModeIconTxtColor = Integer.valueOf(getResources().getColor(2131167033));
     }
     return this.mNightModeIconTxtColor.intValue();
   }
   
   private void gotoTroopNotReceive()
   {
-    if ((this.mBaseChatPie == null) || (this.mBaseChatPie.getActivity() == null) || (this.mSessionInfo == null))
+    if ((this.mBaseChatPie == null) || (this.mBaseChatPie.a() == null) || (this.mSessionInfo == null))
     {
       if (QLog.isColorLevel()) {
         QLog.e("HongBaoPanel", 2, "open troop red package fail!!!");
@@ -146,8 +149,8 @@ public class HongBaoPanel
     }
     try
     {
-      String str = this.mSessionInfo.curFriendUin;
-      int i = this.mSessionInfo.curType;
+      String str = this.mSessionInfo.jdField_a_of_type_JavaLangString;
+      int i = this.mSessionInfo.jdField_a_of_type_Int;
       if (this.mTroopUnAccalimedRedPacketList == null) {
         this.mTroopUnAccalimedRedPacketList = new TroopUnAccalimedRedPacketList(this.mApp, this.mBaseChatPie);
       }
@@ -174,12 +177,12 @@ public class HongBaoPanel
     Object localObject1;
     if (i < localList.size())
     {
-      localObject2 = (akyn)localList.get(i);
+      localObject2 = (PanelTabData)localList.get(i);
       if (i != 0)
       {
         localObject3 = new View(this.mContext);
-        localObject1 = new LinearLayout.LayoutParams(ImmersiveUtils.a(0.5F), ImmersiveUtils.a(15.0F));
-        ((LinearLayout.LayoutParams)localObject1).leftMargin = ImmersiveUtils.a(9.0F);
+        localObject1 = new LinearLayout.LayoutParams(ImmersiveUtils.dpToPx(0.5F), ImmersiveUtils.dpToPx(15.0F));
+        ((LinearLayout.LayoutParams)localObject1).leftMargin = ImmersiveUtils.dpToPx(9.0F);
         ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
         if (!isNightModeTxtEnable()) {
           break label290;
@@ -198,19 +201,19 @@ public class HongBaoPanel
       ((LinearLayout.LayoutParams)localObject3).gravity = 16;
       ((TextView)localObject1).setGravity(1);
       if (i != 0) {
-        ((LinearLayout.LayoutParams)localObject3).leftMargin = ImmersiveUtils.a(10.0F);
+        ((LinearLayout.LayoutParams)localObject3).leftMargin = ImmersiveUtils.dpToPx(10.0F);
       }
-      if (StringUtil.isEmpty(this.fontColorTab)) {
+      if (StringUtil.a(this.fontColorTab)) {
         this.fontColorTab = "#27BEF6";
       }
-      localObject2 = ((akyn)localObject2).b;
+      localObject2 = ((PanelTabData)localObject2).b;
       if (!"#27BEF6".equals(this.fontColorTab)) {
         break label297;
       }
     }
     label290:
     label297:
-    for (int j = this.mContext.getResources().getColor(2131167037);; j = Color.parseColor(this.fontColorTab))
+    for (int j = this.mContext.getResources().getColor(2131167044);; j = Color.parseColor(this.fontColorTab))
     {
       setTextViewNameColor((TextView)localObject1, (String)localObject2, j, 1);
       i += 1;
@@ -223,14 +226,14 @@ public class HongBaoPanel
   
   private void initPanelBgAndHongBaoAction()
   {
-    Object localObject2 = (aktz)this.mApp.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
-    if (isInValidTime((aktz)localObject2, ((aktz)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "begintime" }), ((aktz)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "endtime" })))
+    Object localObject2 = (QWalletConfigManager)this.mApp.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
+    if (isInValidTime((QWalletConfigManager)localObject2, ((QWalletConfigManager)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "begintime" }), ((QWalletConfigManager)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "endtime" })))
     {
-      this.fontColorIcon = ((aktz)localObject2).a("redPackPanel", "#5B6175", new String[] { "themeInfo", "fontColorIcon" });
-      this.fontColorAct = ((aktz)localObject2).a("redPackPanel", "#000000", new String[] { "themeInfo", "fontColorAct" });
-      this.fontColorTab = ((aktz)localObject2).a("redPackPanel", "#27BEF6", new String[] { "themeInfo", "fontColorTab" });
-      this.panelBgPic = ((aktz)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "panelPic" });
-      this.panelBgColor = ((aktz)localObject2).a("redPackPanel", "#FFFFFF", new String[] { "themeInfo", "panelColor" });
+      this.fontColorIcon = ((QWalletConfigManager)localObject2).a("redPackPanel", "#5B6175", new String[] { "themeInfo", "fontColorIcon" });
+      this.fontColorAct = ((QWalletConfigManager)localObject2).a("redPackPanel", "#000000", new String[] { "themeInfo", "fontColorAct" });
+      this.fontColorTab = ((QWalletConfigManager)localObject2).a("redPackPanel", "#27BEF6", new String[] { "themeInfo", "fontColorTab" });
+      this.panelBgPic = ((QWalletConfigManager)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "panelPic" });
+      this.panelBgColor = ((QWalletConfigManager)localObject2).a("redPackPanel", "#FFFFFF", new String[] { "themeInfo", "panelColor" });
     }
     if (ThemeUtil.isCustomTheme(false))
     {
@@ -238,11 +241,11 @@ public class HongBaoPanel
       this.fontColorIcon = "#5B6175";
       this.panelBgColor = "";
     }
-    if (!StringUtil.isEmpty(this.panelBgColor)) {}
+    if (!StringUtil.a(this.panelBgColor)) {}
     try
     {
       setBackgroundColor(Color.parseColor(this.panelBgColor));
-      if (!StringUtil.isEmpty(this.panelBgPic))
+      if (!StringUtil.a(this.panelBgPic))
       {
         Object localObject1 = new CustomizeStrategyFactory.RedPacketInfo();
         ((CustomizeStrategyFactory.RedPacketInfo)localObject1).skinType = 100;
@@ -252,15 +255,15 @@ public class HongBaoPanel
         if (localObject1 != null) {
           updatePanelPictures((CustomizeStrategyFactory.RedPacketInfo)localObject1);
         }
-        localObject1 = ((aktz)localObject2).a("redPackPanel", new String[] { "panelAct" });
+        localObject1 = ((QWalletConfigManager)localObject2).a("redPackPanel", new String[] { "panelAct" });
         if (localObject1 != null) {
-          if (isInValidTime((aktz)localObject2, ((aktz)localObject2).a("redPackPanel", "", new String[] { "panelAct", "params", "begintime" }), ((aktz)localObject2).a("redPackPanel", "", new String[] { "panelAct", "params", "endtime" })))
+          if (isInValidTime((QWalletConfigManager)localObject2, ((QWalletConfigManager)localObject2).a("redPackPanel", "", new String[] { "panelAct", "params", "begintime" }), ((QWalletConfigManager)localObject2).a("redPackPanel", "", new String[] { "panelAct", "params", "endtime" })))
           {
             localObject2 = ((JSONObject)localObject1).optJSONObject("params");
             if (localObject2 != null) {
               this.url_action = ((JSONObject)localObject2).optString("url");
             }
-            if (!StringUtil.isEmpty(this.url_action))
+            if (!StringUtil.a(this.url_action))
             {
               this.layoutAction.setVisibility(0);
               setTextViewNameColor(this.mActionTxtView, ((JSONObject)localObject1).optString("name"), Color.parseColor(this.fontColorAct), 2);
@@ -303,15 +306,15 @@ public class HongBaoPanel
         }
         else
         {
-          setBackgroundResource(2130850291);
+          setBackgroundResource(2130850689);
         }
       }
     }
   }
   
-  private boolean isInValidTime(aktz paramaktz, String paramString1, String paramString2)
+  private boolean isInValidTime(QWalletConfigManager paramQWalletConfigManager, String paramString1, String paramString2)
   {
-    if (paramaktz == null) {
+    if (paramQWalletConfigManager == null) {
       return false;
     }
     try
@@ -319,9 +322,9 @@ public class HongBaoPanel
       boolean bool = RedPacketManager.isValidDate(paramString1, paramString2);
       return bool;
     }
-    catch (Throwable paramaktz)
+    catch (Throwable paramQWalletConfigManager)
     {
-      paramaktz.printStackTrace();
+      paramQWalletConfigManager.printStackTrace();
     }
     return false;
   }
@@ -329,6 +332,34 @@ public class HongBaoPanel
   private boolean isNightModeTxtEnable()
   {
     return (this.isNightMode) && (this.setNightColorSucc);
+  }
+  
+  private void reportIconListShow()
+  {
+    try
+    {
+      Rect localRect = new Rect();
+      this.mHbRecyclerView.getHitRect(localRect);
+      Iterator localIterator = this.needReportIconList.iterator();
+      while (localIterator.hasNext())
+      {
+        int i = ((Integer)localIterator.next()).intValue();
+        Object localObject = this.mHbRecyclerView.getChildAt(i);
+        if ((localObject != null) && (((View)localObject).getLocalVisibleRect(localRect)) && (localRect.height() == ((View)localObject).getHeight()))
+        {
+          localObject = this.mAdapter.getPanelDataAtPos(i);
+          if (localObject != null) {
+            ReportUtils.a(this.mApp, "aio.lucky.show", this.mSessionInfo, ((PanelData)localObject).b);
+          }
+          localIterator.remove();
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("HongBaoPanel", 1, localException, new Object[0]);
+    }
   }
   
   private void setTextViewNameColor(TextView paramTextView, String paramString, int paramInt1, int paramInt2)
@@ -379,7 +410,7 @@ public class HongBaoPanel
   private void updateActionRedDotById(String paramString)
   {
     ImageView localImageView;
-    if ((!StringUtil.isEmpty(paramString)) && (this.redManager != null))
+    if ((!StringUtil.a(paramString)) && (this.redManager != null))
     {
       paramString = this.redManager.a(paramString);
       if (paramString != null)
@@ -435,7 +466,7 @@ public class HongBaoPanel
         return;
         if (isNightModeTxtEnable())
         {
-          this.layoutAction.setBackgroundResource(2130847360);
+          this.layoutAction.setBackgroundResource(2130847717);
           return;
         }
       } while ((paramRedPacketInfo == null) || (paramRedPacketInfo.icon == null));
@@ -462,10 +493,10 @@ public class HongBaoPanel
     int i = 0;
     while (i < ((List)localObject).size())
     {
-      localArrayList.add(((akym)((List)localObject).get(i)).jdField_a_of_type_JavaLangString);
+      localArrayList.add(((PanelData)((List)localObject).get(i)).jdField_a_of_type_JavaLangString);
       i += 1;
     }
-    localObject = ((aktz)this.mApp.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER)).a("redPackPanel", new String[] { "panelAct" });
+    localObject = ((QWalletConfigManager)this.mApp.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER)).a("redPackPanel", new String[] { "panelAct" });
     if (localObject != null) {
       localArrayList.add(((JSONObject)localObject).optString("id"));
     }
@@ -478,22 +509,22 @@ public class HongBaoPanel
     this.mContext = paramContext;
     this.isNightMode = ThemeUtil.isNowThemeIsNight(this.mApp, false, null);
     this.mBaseChatPie = paramBaseChatPie;
-    this.mActivity = paramBaseChatPie.mActivity;
-    this.redManager = ((akyj)this.mApp.getManager(QQManagerFactory.QWALLET_RED_MANAGER));
-    this.mAIORootView = paramBaseChatPie.mAIORootView;
-    this.mSessionInfo = paramBaseChatPie.sessionInfo;
-    this.mImgPanelBackGround = ((ImageView)findViewById(2131368660));
-    this.mHbRecyclerView = ((RecyclerView)findViewById(2131368287));
+    this.mActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.redManager = ((QWalletRedManager)this.mApp.getManager(QQManagerFactory.QWALLET_RED_MANAGER));
+    this.mAIORootView = paramBaseChatPie.c;
+    this.mSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.mImgPanelBackGround = ((ImageView)findViewById(2131368892));
+    this.mHbRecyclerView = ((RecyclerView)findViewById(2131368504));
     this.mHbRecyclerView.setHasFixedSize(true);
-    this.layoutBottom = ((RelativeLayout)findViewById(2131369811));
-    this.bottomTabLayout = ((LinearLayout)findViewById(2131369813));
-    this.mImgActionFire = ((ImageView)findViewById(2131368702));
-    this.layoutAction = ((RelativeLayout)findViewById(2131368274));
+    this.layoutBottom = ((RelativeLayout)findViewById(2131370080));
+    this.bottomTabLayout = ((LinearLayout)findViewById(2131370082));
+    this.mImgActionFire = ((ImageView)findViewById(2131368933));
+    this.layoutAction = ((RelativeLayout)findViewById(2131368488));
     this.layoutAction.setVisibility(8);
-    this.mActionRedDot = ((ImageView)findViewById(2131361965));
+    this.mActionRedDot = ((ImageView)findViewById(2131361967));
     this.mActionRedDot.setVisibility(8);
     this.layoutAction.setOnClickListener(this);
-    this.mActionTxtView = ((TextView)findViewById(2131378684));
+    this.mActionTxtView = ((TextView)findViewById(2131379117));
     this.mLayoutManager = new GridLayoutManager(this.mContext, this.spanCount);
     this.mLayoutManager.setOrientation(1);
     this.mHbRecyclerView.setLayoutManager(this.mLayoutManager);
@@ -518,8 +549,8 @@ public class HongBaoPanel
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    if ((this.mContext != null) && (!StringUtil.isEmpty(this.url_action))) {
-      albv.b(this.mContext, this.url_action);
+    if ((this.mContext != null) && (!StringUtil.a(this.url_action))) {
+      QWalletRedPkgUtils.b(this.mContext, this.url_action);
     }
     if (this.redManager != null) {
       this.redManager.a(this.actionId);
@@ -528,10 +559,10 @@ public class HongBaoPanel
     String str = "";
     label183:
     int i;
-    if ((this.mSessionInfo.curType == 0) || (this.mSessionInfo.curType == 1000) || (this.mSessionInfo.curType == 1004) || (this.mSessionInfo.curType == 1001) || (this.mSessionInfo.curType == 10002) || (this.mSessionInfo.curType == 10004) || (this.mSessionInfo.curType == 10008))
+    if ((this.mSessionInfo.jdField_a_of_type_Int == 0) || (this.mSessionInfo.jdField_a_of_type_Int == 1000) || (this.mSessionInfo.jdField_a_of_type_Int == 1004) || (this.mSessionInfo.jdField_a_of_type_Int == 1001) || (this.mSessionInfo.jdField_a_of_type_Int == 10002) || (this.mSessionInfo.jdField_a_of_type_Int == 10004) || (this.mSessionInfo.jdField_a_of_type_Int == 10008))
     {
       str = "entrance.click.c2c";
-      i = aftr.a();
+      i = PlusPanelUtils.a();
       if (i != 0) {
         break label287;
       }
@@ -539,14 +570,14 @@ public class HongBaoPanel
     }
     for (;;)
     {
-      bdla.b(this.mApp, "P_CliOper", "Vip_pay_mywallet", "", "wallet", str, 0, 0, "10000", "", "", "");
+      ReportController.b(this.mApp, "P_CliOper", "Vip_pay_mywallet", "", "wallet", str, 0, 0, "10000", "", "", "");
       break;
-      if (this.mSessionInfo.curType == 3000)
+      if (this.mSessionInfo.jdField_a_of_type_Int == 3000)
       {
         str = "entrance.click.group";
         break label183;
       }
-      if (this.mSessionInfo.curType != 1) {
+      if (this.mSessionInfo.jdField_a_of_type_Int != 1) {
         break label183;
       }
       str = "entrance.click.chatgroup";
@@ -570,16 +601,40 @@ public class HongBaoPanel
   {
     Object localObject = this.mAdapter.getDatas();
     if ((localObject == null) || (((List)localObject).size() <= 0)) {}
-    akym localakym;
+    PanelData localPanelData;
     do
     {
       return;
       while (!((Iterator)localObject).hasNext()) {
         localObject = ((List)localObject).iterator();
       }
-      localakym = (akym)((Iterator)localObject).next();
-    } while ((localakym == null) || (localakym.jdField_a_of_type_Int != 8));
-    PreloadManager.a().c(EmojiRedpacketUserGuideDialog.URL_DEFAULT, null);
+      localPanelData = (PanelData)((Iterator)localObject).next();
+    } while ((localPanelData == null) || (localPanelData.jdField_a_of_type_Int != 8));
+    PreloadStaticApi.a().getResPath(EmojiRedpacketUserGuideDialog.URL_DEFAULT, null);
+  }
+  
+  public void reportIconListClick()
+  {
+    try
+    {
+      List localList = this.mAdapter.getDatas();
+      if (localList != null)
+      {
+        int i = 0;
+        while (i < localList.size())
+        {
+          this.needReportIconList.add(Integer.valueOf(i));
+          i += 1;
+        }
+        this.mHbRecyclerView.postDelayed(new HongBaoPanel.6(this), 300L);
+        this.mHbRecyclerView.addOnScrollListener(new HongBaoPanel.7(this));
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("HongBaoPanel", 1, localException, new Object[0]);
+    }
   }
   
   public void tryGetFailedImage()
@@ -606,7 +661,7 @@ public class HongBaoPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel
  * JD-Core Version:    0.7.0.1
  */

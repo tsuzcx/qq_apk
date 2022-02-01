@@ -1,16 +1,12 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import bfns;
-import bfnw;
-import bfny;
-
-public class TroopFileThumbnailMgr$4
+class TroopFileThumbnailMgr$4
   implements Runnable
 {
   public void run()
   {
-    bfny.a(this.this$0).a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Int);
-    bfny.a(this.this$0).a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Int);
+    TroopFileThumbnailMgr.a(this.this$0).a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Int);
+    TroopFileThumbnailMgr.a(this.this$0).a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Int);
   }
 }
 

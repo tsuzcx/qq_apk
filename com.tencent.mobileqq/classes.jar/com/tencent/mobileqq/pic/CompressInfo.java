@@ -3,14 +3,13 @@ package com.tencent.mobileqq.pic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import azji;
 import com.tencent.mobileqq.data.ThumbWidthHeightDP;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class CompressInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CompressInfo> CREATOR = new azji();
+  public static final Parcelable.Creator<CompressInfo> CREATOR = new CompressInfo.1();
   public int a;
   public ThumbWidthHeightDP a;
   public String a;
@@ -40,12 +39,16 @@ public class CompressInfo
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_d_of_type_Boolean = true;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
   }
   
   private CompressInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_d_of_type_Boolean = true;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
     a(paramParcel);
   }
   
@@ -53,6 +56,8 @@ public class CompressInfo
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_d_of_type_Boolean = true;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
     this.jdField_c_of_type_JavaLangString = paramString;
     this.jdField_g_of_type_Int = paramInt;
   }
@@ -61,6 +66,8 @@ public class CompressInfo
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_d_of_type_Boolean = true;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
     this.jdField_c_of_type_JavaLangString = paramString;
     this.jdField_g_of_type_Int = paramInt1;
     this.jdField_a_of_type_Int = paramInt2;
@@ -102,7 +109,7 @@ public class CompressInfo
     this.jdField_b_of_type_Boolean = true;
     BaseApplication localBaseApplication = BaseApplication.getContext();
     if (paramBoolean) {}
-    for (int k = 2131691011;; k = 2131691007)
+    for (int k = 2131691118;; k = 2131691114)
     {
       this.jdField_b_of_type_JavaLangString = localBaseApplication.getString(k);
       return;

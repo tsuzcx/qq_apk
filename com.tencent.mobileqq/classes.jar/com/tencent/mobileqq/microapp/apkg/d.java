@@ -35,7 +35,7 @@ final class d
       DownloadParam localDownloadParam = new DownloadParam();
       localDownloadParam.headers = new LinkedList();
       localDownloadParam.url = (paramMiniAppConfig.config.apkg_url + "?sign=" + URLEncoder.encode(paramMiniAppConfig.config.cos_sign));
-      paramString2.a(localDownloadParam, new e(this, paramString1));
+      paramString2.getResPath(localDownloadParam, new e(this, paramString1));
       return;
     }
     this.b.onCheckForUpdate(false);

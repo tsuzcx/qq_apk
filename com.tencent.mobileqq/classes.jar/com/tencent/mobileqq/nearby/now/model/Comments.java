@@ -3,15 +3,15 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axwc;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Comments
   implements Parcelable
 {
-  public static final Parcelable.Creator<Comments> CREATOR = new axwc();
+  public static final Parcelable.Creator<Comments> CREATOR = new Comments.1();
   public long a;
+  public Comments.LastDeleteInfo a;
   public List<Comments.Comment> a;
   public boolean a;
   public List<Comments.Comment> b = new ArrayList();
@@ -19,11 +19,13 @@ public class Comments
   public Comments()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$LastDeleteInfo = null;
   }
   
   public Comments(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$LastDeleteInfo = null;
     this.jdField_a_of_type_Long = paramParcel.readLong();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)

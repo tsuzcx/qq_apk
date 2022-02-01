@@ -24,9 +24,9 @@ public class UploadSoDownloader
   private static int MAX_DOWNLOADER_RETRY_COUNT = 5;
   private static final String PRE_UPLOAD_DOWNLOAD = "qzone_upload_so";
   private static final String TAG = "[upload2]UploadEnv";
-  private static boolean isSoDownloading;
+  private static boolean isSoDownloading = false;
   private static File mUploadSoDir = BaseApplicationImpl.getContext().getDir("qzoneupload", 0);
-  private static volatile boolean useDownloadedSo;
+  private static volatile boolean useDownloadedSo = false;
   
   private boolean checkSoMd5(String paramString)
   {
@@ -48,7 +48,7 @@ public class UploadSoDownloader
         if (((File)localObject1).exists()) {
           try
           {
-            localObject1 = new JSONObject(FileUtils.readFileContent((File)localObject1)).getJSONArray("so_lib");
+            localObject1 = new JSONObject(FileUtils.a((File)localObject1)).getJSONArray("so_lib");
             i = 0;
             bool2 = bool1;
             if (i < ((JSONArray)localObject1).length())
@@ -222,24 +222,24 @@ public class UploadSoDownloader
     //   1: istore_3
     //   2: aload_0
     //   3: monitorenter
-    //   4: invokestatic 351	blpl:a	()Lblpl;
-    //   7: ldc_w 353
-    //   10: ldc_w 355
+    //   4: invokestatic 350	common/config/service/QzoneAlphaConfig:a	()Lcommon/config/service/QzoneAlphaConfig;
+    //   7: ldc_w 352
+    //   10: ldc_w 354
     //   13: iconst_0
-    //   14: invokevirtual 358	blpl:a	(Ljava/lang/String;Ljava/lang/String;I)I
+    //   14: invokevirtual 357	common/config/service/QzoneAlphaConfig:a	(Ljava/lang/String;Ljava/lang/String;I)I
     //   17: istore_2
     //   18: ldc 20
     //   20: iconst_1
     //   21: new 76	java/lang/StringBuilder
     //   24: dup
     //   25: invokespecial 77	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 360
+    //   28: ldc_w 359
     //   31: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: iload_2
     //   35: invokevirtual 222	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: ldc_w 362
+    //   38: ldc_w 361
     //   41: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: getstatic 61	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
+    //   44: getstatic 47	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
     //   47: invokevirtual 234	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   50: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   53: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -247,7 +247,7 @@ public class UploadSoDownloader
     //   57: iconst_1
     //   58: if_icmpeq +7 -> 65
     //   61: iconst_0
-    //   62: putstatic 61	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
+    //   62: putstatic 47	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
     //   65: aload_0
     //   66: invokespecial 277	cooperation/qzone/UploadSoDownloader:getSoDownloadState	()Z
     //   69: istore 4
@@ -256,7 +256,7 @@ public class UploadSoDownloader
     //   74: new 76	java/lang/StringBuilder
     //   77: dup
     //   78: invokespecial 77	java/lang/StringBuilder:<init>	()V
-    //   81: ldc_w 364
+    //   81: ldc_w 363
     //   84: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: iload 4
     //   89: invokevirtual 234	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -265,8 +265,8 @@ public class UploadSoDownloader
     //   98: iload 4
     //   100: ifne +7 -> 107
     //   103: iconst_0
-    //   104: putstatic 61	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
-    //   107: getstatic 61	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
+    //   104: putstatic 47	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
+    //   107: getstatic 47	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
     //   110: ifeq +149 -> 259
     //   113: new 74	java/io/File
     //   116: dup
@@ -274,15 +274,15 @@ public class UploadSoDownloader
     //   120: dup
     //   121: invokespecial 77	java/lang/StringBuilder:<init>	()V
     //   124: getstatic 45	cooperation/qzone/UploadSoDownloader:mUploadSoDir	Ljava/io/File;
-    //   127: invokevirtual 367	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   127: invokevirtual 366	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   130: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   133: getstatic 84	java/io/File:separator	Ljava/lang/String;
     //   136: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: ldc_w 369
+    //   139: ldc_w 368
     //   142: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   145: aload_1
     //   146: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: ldc_w 371
+    //   149: ldc_w 370
     //   152: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   158: invokespecial 93	java/io/File:<init>	(Ljava/lang/String;)V
@@ -293,14 +293,14 @@ public class UploadSoDownloader
     //   170: iload 4
     //   172: ifeq +94 -> 266
     //   175: aload 5
-    //   177: invokevirtual 367	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   180: invokestatic 376	java/lang/System:load	(Ljava/lang/String;)V
+    //   177: invokevirtual 366	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   180: invokestatic 375	java/lang/System:load	(Ljava/lang/String;)V
     //   183: ldc 20
     //   185: iconst_1
     //   186: new 76	java/lang/StringBuilder
     //   189: dup
     //   190: invokespecial 77	java/lang/StringBuilder:<init>	()V
-    //   193: ldc_w 378
+    //   193: ldc_w 377
     //   196: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   199: aload_1
     //   200: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -316,32 +316,32 @@ public class UploadSoDownloader
     //   217: new 76	java/lang/StringBuilder
     //   220: dup
     //   221: invokespecial 77	java/lang/StringBuilder:<init>	()V
-    //   224: ldc_w 380
+    //   224: ldc_w 379
     //   227: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: aload_1
-    //   231: invokevirtual 381	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   231: invokevirtual 380	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   234: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   237: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   240: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   243: iconst_0
-    //   244: putstatic 61	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
+    //   244: putstatic 47	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
     //   247: aload_0
     //   248: iconst_0
-    //   249: invokespecial 67	cooperation/qzone/UploadSoDownloader:saveSoDownloadState	(Z)V
+    //   249: invokespecial 69	cooperation/qzone/UploadSoDownloader:saveSoDownloadState	(Z)V
     //   252: getstatic 45	cooperation/qzone/UploadSoDownloader:mUploadSoDir	Ljava/io/File;
     //   255: invokevirtual 322	java/io/File:delete	()Z
     //   258: pop
-    //   259: getstatic 61	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
+    //   259: getstatic 47	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
     //   262: istore_3
     //   263: goto -54 -> 209
     //   266: iconst_0
-    //   267: putstatic 61	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
+    //   267: putstatic 47	cooperation/qzone/UploadSoDownloader:useDownloadedSo	Z
     //   270: ldc 20
     //   272: iconst_1
     //   273: new 76	java/lang/StringBuilder
     //   276: dup
     //   277: invokespecial 77	java/lang/StringBuilder:<init>	()V
-    //   280: ldc_w 383
+    //   280: ldc_w 382
     //   283: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   286: aload_1
     //   287: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -349,7 +349,7 @@ public class UploadSoDownloader
     //   293: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   296: aload_0
     //   297: iconst_0
-    //   298: invokespecial 67	cooperation/qzone/UploadSoDownloader:saveSoDownloadState	(Z)V
+    //   298: invokespecial 69	cooperation/qzone/UploadSoDownloader:saveSoDownloadState	(Z)V
     //   301: getstatic 45	cooperation/qzone/UploadSoDownloader:mUploadSoDir	Ljava/io/File;
     //   304: invokevirtual 322	java/io/File:delete	()Z
     //   307: pop
@@ -391,7 +391,7 @@ public class UploadSoDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.UploadSoDownloader
  * JD-Core Version:    0.7.0.1
  */

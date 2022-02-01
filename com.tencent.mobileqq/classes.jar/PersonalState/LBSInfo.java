@@ -11,9 +11,9 @@ public final class LBSInfo
   static GPS cache_stGps;
   static ArrayList<Cell> cache_vCells;
   static ArrayList<Wifi> cache_vWifis;
-  public GPS stGps;
-  public ArrayList<Cell> vCells;
-  public ArrayList<Wifi> vWifis;
+  public GPS stGps = null;
+  public ArrayList<Cell> vCells = null;
+  public ArrayList<Wifi> vWifis = null;
   
   public LBSInfo() {}
   

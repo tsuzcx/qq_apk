@@ -9,7 +9,7 @@ public final class stVideoTag
 {
   public String bgColor = "";
   public String imgUrl = "";
-  public int tagId;
+  public int tagId = 0;
   public String text = "";
   public String textColor = "";
   

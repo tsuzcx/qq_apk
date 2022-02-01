@@ -7,7 +7,7 @@ import java.util.List;
 class BubbleViewGroup$WarpLine
 {
   private List<View> bubbleViews = new ArrayList();
-  private int height;
+  private int height = 0;
   private int lineWidth = this.this$0.getPaddingLeft() + this.this$0.getPaddingRight();
   
   private BubbleViewGroup$WarpLine(BubbleViewGroup paramBubbleViewGroup) {}

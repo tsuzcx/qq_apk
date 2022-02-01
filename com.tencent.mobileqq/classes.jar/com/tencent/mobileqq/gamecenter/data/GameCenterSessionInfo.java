@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import avbv;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -19,32 +18,31 @@ import org.json.JSONObject;
 public class GameCenterSessionInfo
   implements Parcelable, Comparable<GameCenterSessionInfo>
 {
-  public static final Parcelable.Creator<GameCenterSessionInfo> CREATOR = new avbv();
-  public int a;
-  public long a;
-  public String a;
-  boolean a;
-  public GameCenterSessionInfo.SimpleMessage[] a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  
-  public GameCenterSessionInfo()
-  {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage = new GameCenterSessionInfo.SimpleMessage[0];
-  }
+  public static final Parcelable.Creator<GameCenterSessionInfo> CREATOR = new GameCenterSessionInfo.1();
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  GameCenterSessionInfo.SimpleMessage[] jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage = new GameCenterSessionInfo.SimpleMessage[0];
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  long jdField_c_of_type_Long;
+  String jdField_c_of_type_JavaLangString;
+  int jdField_d_of_type_Int;
+  long jdField_d_of_type_Long;
+  String jdField_d_of_type_JavaLangString;
+  int jdField_e_of_type_Int;
+  String jdField_e_of_type_JavaLangString;
+  String f;
+  String g;
+  String h;
+  String i;
+  String j;
+  String k;
+  String l;
+  String m;
   
   public int a()
   {
@@ -69,7 +67,7 @@ public class GameCenterSessionInfo
   
   public String a()
   {
-    return this.k;
+    return this.m;
   }
   
   public List<GameCenterSessionInfo.SimpleMessage> a()
@@ -94,15 +92,21 @@ public class GameCenterSessionInfo
       localJSONObject.put("gameName", f());
       localJSONObject.put("faceUrl", this.jdField_d_of_type_JavaLangString);
       localJSONObject.put("nickName", h());
-      localJSONObject.put("firstMsg", new QQText(this.f, 6, 32, -1).toPlainText());
+      localJSONObject.put("firstMsg", new QQText(this.h, 6, 32, -1).toPlainText());
       localJSONObject.put("firstMsgTime", this.jdField_a_of_type_Long);
       localJSONObject.put("requestCount", this.jdField_c_of_type_Int);
-      localJSONObject.put("lastMsg", new QQText(this.g, 6, 32, -1).toPlainText());
+      localJSONObject.put("lastMsg", new QQText(this.i, 6, 32, -1).toPlainText());
       localJSONObject.put("lastMsgTime", this.jdField_b_of_type_Long);
       localJSONObject.put("unreadMsg", this.jdField_d_of_type_Int);
       localJSONObject.put("onlineType", this.jdField_e_of_type_Int);
-      localJSONObject.put("onlineDesc", this.j);
-      localJSONObject.put("gameIcon", this.k);
+      localJSONObject.put("onlineDesc", this.l);
+      localJSONObject.put("gameIcon", this.m);
+      localJSONObject.put("fromTinyId", this.jdField_c_of_type_Long);
+      localJSONObject.put("toTinyId", this.jdField_d_of_type_Long);
+      localJSONObject.put("fromRoleId", this.j);
+      localJSONObject.put("toRoleId", this.k);
+      localJSONObject.put("qqUin", this.f);
+      localJSONObject.put("qqNick", this.g);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -129,34 +133,39 @@ public class GameCenterSessionInfo
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = paramQQAppInterface.getMessageFacade().getMessages(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_d_of_type_Int);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0)) {
+    try
+    {
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_d_of_type_Int);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0)) {
+        try
+        {
+          this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage = new GameCenterSessionInfo.SimpleMessage[paramQQAppInterface.size()];
+          int n = 0;
+          while (n < paramQQAppInterface.size())
+          {
+            this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage[n] = new GameCenterSessionInfo.SimpleMessage(((MessageRecord)paramQQAppInterface.get(n)).time, ((MessageRecord)paramQQAppInterface.get(n)).msg);
+            n += 1;
+          }
+          return;
+        }
+        finally {}
+      }
       try
       {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage = new GameCenterSessionInfo.SimpleMessage[paramQQAppInterface.size()];
-        int m = 0;
-        while (m < paramQQAppInterface.size())
-        {
-          this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage[m] = new GameCenterSessionInfo.SimpleMessage(((MessageRecord)paramQQAppInterface.get(m)).time, ((MessageRecord)paramQQAppInterface.get(m)).msg);
-          m += 1;
+        if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage != null) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage.length != 0)) {
+          this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage = new GameCenterSessionInfo.SimpleMessage[0];
         }
         return;
       }
       finally {}
-    }
-    try
-    {
-      if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage != null) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage.length != 0)) {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage = new GameCenterSessionInfo.SimpleMessage[0];
-      }
       return;
     }
-    finally {}
+    catch (Throwable paramQQAppInterface) {}
   }
   
   public void a(String paramString)
   {
-    this.k = paramString;
+    this.m = paramString;
   }
   
   public void a(boolean paramBoolean)
@@ -171,7 +180,7 @@ public class GameCenterSessionInfo
   
   public String b()
   {
-    return this.i;
+    return this.k;
   }
   
   public void b(int paramInt)
@@ -186,7 +195,7 @@ public class GameCenterSessionInfo
   
   public void b(String paramString)
   {
-    this.i = paramString;
+    this.k = paramString;
   }
   
   public int c()
@@ -196,7 +205,7 @@ public class GameCenterSessionInfo
   
   public String c()
   {
-    return this.h;
+    return this.j;
   }
   
   public void c(int paramInt)
@@ -204,9 +213,14 @@ public class GameCenterSessionInfo
     this.jdField_c_of_type_Int = paramInt;
   }
   
+  public void c(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
   public void c(String paramString)
   {
-    this.j = paramString;
+    this.l = paramString;
   }
   
   public String d()
@@ -219,9 +233,14 @@ public class GameCenterSessionInfo
     this.jdField_d_of_type_Int = paramInt;
   }
   
+  public void d(long paramLong)
+  {
+    this.jdField_d_of_type_Long = paramLong;
+  }
+  
   public void d(String paramString)
   {
-    this.h = paramString;
+    this.j = paramString;
   }
   
   public int describeContents()
@@ -282,7 +301,7 @@ public class GameCenterSessionInfo
   
   public String i()
   {
-    return this.g;
+    return this.i;
   }
   
   public void i(String paramString)
@@ -292,17 +311,27 @@ public class GameCenterSessionInfo
   
   public void j(String paramString)
   {
-    this.f = paramString;
+    this.g = paramString;
   }
   
   public void k(String paramString)
   {
-    this.g = paramString;
+    this.f = paramString;
+  }
+  
+  public void l(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  public void m(String paramString)
+  {
+    this.i = paramString;
   }
   
   public String toString()
   {
-    return "GameCenterSessionInfo{sessionType=" + this.jdField_a_of_type_Int + ", sessionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", gameId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", gameName='" + this.jdField_c_of_type_JavaLangString + '\'' + ", faceUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", nickName='" + this.jdField_e_of_type_JavaLangString + '\'' + ", firstMsg='" + this.f + '\'' + ", firstMsgTime=" + this.jdField_a_of_type_Long + ", requestCount=" + this.jdField_c_of_type_Int + ", lastMsg='" + this.g + '\'' + ", lastMsgTime=" + this.jdField_b_of_type_Long + ", unreadMsg=" + this.jdField_d_of_type_Int + ", onlienType=" + this.jdField_e_of_type_Int + ", roleId='" + this.h + '\'' + ", myRoleId='" + this.i + '\'' + ", onLineDesc='" + this.j + '\'' + ", gameIcon='" + this.k + '\'' + '}';
+    return "GameCenterSessionInfo{sessionType=" + this.jdField_a_of_type_Int + ", sessionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", gameId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", gameName='" + this.jdField_c_of_type_JavaLangString + '\'' + ", faceUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", nickName='" + this.jdField_e_of_type_JavaLangString + '\'' + ", firstMsg='" + this.h + '\'' + ", firstMsgTime=" + this.jdField_a_of_type_Long + ", requestCount=" + this.jdField_c_of_type_Int + ", lastMsg='" + this.i + '\'' + ", lastMsgTime=" + this.jdField_b_of_type_Long + ", unreadMsg=" + this.jdField_d_of_type_Int + ", onlienType=" + this.jdField_e_of_type_Int + ", roleId='" + this.j + '\'' + ", myRoleId='" + this.k + '\'' + ", onLineDesc='" + this.l + '\'' + ", gameIcon='" + this.m + '\'' + ", fromTinyId='" + this.jdField_c_of_type_Long + '\'' + ", toTinyId='" + this.jdField_d_of_type_Long + '\'' + ", qqUin='" + this.f + '\'' + ", qqNick='" + this.g + '\'' + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -315,16 +344,20 @@ public class GameCenterSessionInfo
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
     paramParcel.writeString(this.f);
+    paramParcel.writeString(this.g);
+    paramParcel.writeString(this.h);
     paramParcel.writeLong(this.jdField_a_of_type_Long);
     paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeString(this.g);
+    paramParcel.writeString(this.i);
     paramParcel.writeLong(this.jdField_b_of_type_Long);
     paramParcel.writeInt(this.jdField_d_of_type_Int);
     paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeString(this.h);
-    paramParcel.writeString(this.i);
     paramParcel.writeString(this.j);
     paramParcel.writeString(this.k);
+    paramParcel.writeString(this.l);
+    paramParcel.writeString(this.m);
+    paramParcel.writeLong(this.jdField_c_of_type_Long);
+    paramParcel.writeLong(this.jdField_d_of_type_Long);
     try
     {
       paramParcel.writeParcelableArray(this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterDataGameCenterSessionInfo$SimpleMessage, 0);
@@ -335,7 +368,7 @@ public class GameCenterSessionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo
  * JD-Core Version:    0.7.0.1
  */

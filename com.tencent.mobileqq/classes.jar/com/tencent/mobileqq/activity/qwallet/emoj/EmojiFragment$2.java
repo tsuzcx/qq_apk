@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
 import com.tencent.image.URLDrawable;
-import cooperation.qwallet.plugin.QWalletPicHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import cooperation.qwallet.plugin.IQWalletPicHelper;
 
 class EmojiFragment$2
   implements Runnable
@@ -10,12 +11,12 @@ class EmojiFragment$2
   
   public void run()
   {
-    QWalletPicHelper.decodeDrawable(this.val$imgItemDrawable2, null);
+    ((IQWalletPicHelper)QRoute.api(IQWalletPicHelper.class)).decodeDrawable(this.val$imgItemDrawable2, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiFragment.2
  * JD-Core Version:    0.7.0.1
  */

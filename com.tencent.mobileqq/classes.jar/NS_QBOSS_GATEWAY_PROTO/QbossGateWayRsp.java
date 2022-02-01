@@ -12,8 +12,8 @@ public final class QbossGateWayRsp
   extends JceStruct
 {
   static Map<Integer, ArrayList<tAdvDesc>> cache_mapAdv = new HashMap();
-  public int iRet;
-  public Map<Integer, ArrayList<tAdvDesc>> mapAdv;
+  public int iRet = 0;
+  public Map<Integer, ArrayList<tAdvDesc>> mapAdv = null;
   public String strMsg = "";
   
   static

@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apje;
-
-public class ARCamera$1
+class ARCamera$1
   implements Runnable
 {
-  public ARCamera$1(apje paramapje, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  ARCamera$1(ARCamera paramARCamera, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
-    apje.a(this.this$0, this.a, this.b, this.c, this.d, apje.f());
+    ARCamera.a(this.this$0, this.a, this.b, this.c, this.d, ARCamera.f());
   }
 }
 

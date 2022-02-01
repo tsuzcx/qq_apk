@@ -1,7 +1,5 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import xbg;
-
 class StoryPlayerActivity$2
   implements Runnable
 {
@@ -14,7 +12,7 @@ class StoryPlayerActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerActivity.2
  * JD-Core Version:    0.7.0.1
  */

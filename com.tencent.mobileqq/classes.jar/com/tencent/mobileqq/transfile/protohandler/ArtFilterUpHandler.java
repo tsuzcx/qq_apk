@@ -6,8 +6,8 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.RichMediaUtil;
+import com.tencent.mobileqq.transfile.TransFileUtil;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
 import tencent.im.cs.cmd0x352.cmd0x352.ReqBody;
 import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
 
@@ -32,7 +32,7 @@ public class ArtFilterUpHandler
     localTryUpImgReq.uint32_pic_width.set(paramReqCommon.width);
     localTryUpImgReq.uint32_pic_height.set(paramReqCommon.height);
     localTryUpImgReq.uint32_pic_type.set(paramReqCommon.picType);
-    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(RichMediaUtil.getVersionCode()));
+    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(TransFileUtil.getVersionCode()));
     localTryUpImgReq.bool_reject_tryfast.set(true);
     paramReqBody.rpt_msg_tryup_img_req.add(localTryUpImgReq);
   }
@@ -41,7 +41,7 @@ public class ArtFilterUpHandler
   {
     if ((paramRichProtoReq != null) && (paramRichProtoReq.reqs != null) && (paramRichProtoReq.protoReqMgr != null))
     {
-      ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
+      ProtoReqManagerImpl.ProtoReq localProtoReq = new ProtoReqManagerImpl.ProtoReq();
       localProtoReq.ssoCmd = "LongConn.ArtisticFilter";
       localProtoReq.reqBody = constructReqBody(paramRichProtoReq.reqs);
       localProtoReq.busiData = paramRichProtoReq;

@@ -1,6 +1,5 @@
 package com.sina.weibo.sdk.share;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -154,7 +153,7 @@ public class ShareStoryActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.sina.weibo.sdk.share.ShareStoryActivity
  * JD-Core Version:    0.7.0.1
  */

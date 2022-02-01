@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MapProxy.MapSnapshotCallback;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.utils.SaveCaptureImageUitl;
@@ -15,7 +14,7 @@ import com.tencent.tencentmap.mapsdk.maps.TencentMap.SnapshotReadyCallback;
 class MapProxyImplDefault$1
   implements TencentMap.SnapshotReadyCallback
 {
-  MapProxyImplDefault$1(MapProxyImplDefault paramMapProxyImplDefault, ViewGroup paramViewGroup, MapProxy.MapSnapshotCallback paramMapSnapshotCallback, View paramView, IMiniAppContext paramIMiniAppContext) {}
+  MapProxyImplDefault$1(MapProxyImplDefault paramMapProxyImplDefault, ViewGroup paramViewGroup, MapProxy.MapSnapshotCallback paramMapSnapshotCallback, View paramView) {}
   
   public void onSnapshotReady(Bitmap paramBitmap)
   {
@@ -50,7 +49,7 @@ class MapProxyImplDefault$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.map.proxyImpl.MapProxyImplDefault.1
  * JD-Core Version:    0.7.0.1
  */

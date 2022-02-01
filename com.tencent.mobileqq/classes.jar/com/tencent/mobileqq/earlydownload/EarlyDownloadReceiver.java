@@ -2,7 +2,6 @@ package com.tencent.mobileqq.earlydownload;
 
 import android.content.Context;
 import android.content.Intent;
-import asbm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import mqq.app.AppRuntime;
@@ -17,7 +16,7 @@ public class EarlyDownloadReceiver
     {
       paramAppRuntime = (QQAppInterface)paramAppRuntime;
       if (paramAppRuntime.isLogin()) {
-        ((asbm)paramAppRuntime.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER)).a(paramIntent);
+        ((EarlyDownloadManager)paramAppRuntime.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER)).a(paramIntent);
       }
     }
     else
@@ -34,7 +33,7 @@ public class EarlyDownloadReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.EarlyDownloadReceiver
  * JD-Core Version:    0.7.0.1
  */

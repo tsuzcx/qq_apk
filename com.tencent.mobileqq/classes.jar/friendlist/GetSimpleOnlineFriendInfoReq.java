@@ -9,13 +9,13 @@ public final class GetSimpleOnlineFriendInfoReq
   extends JceStruct
 {
   static ReqCheckIn cache_stReqCheckIn;
-  public byte cSrcType;
-  public byte ifShowTermType;
-  public byte ifgetFriendVideoAbi;
-  public byte isReqCheckIn;
-  public ReqCheckIn stReqCheckIn;
-  public long uin;
-  public long version;
+  public byte cSrcType = 0;
+  public byte ifShowTermType = 0;
+  public byte ifgetFriendVideoAbi = 0;
+  public byte isReqCheckIn = 0;
+  public ReqCheckIn stReqCheckIn = null;
+  public long uin = 0L;
+  public long version = 0L;
   
   public GetSimpleOnlineFriendInfoReq() {}
   
@@ -59,7 +59,7 @@ public final class GetSimpleOnlineFriendInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.GetSimpleOnlineFriendInfoReq
  * JD-Core Version:    0.7.0.1
  */

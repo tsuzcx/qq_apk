@@ -1,23 +1,27 @@
 package com.tencent.avgame.gameroom;
 
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.avgame.gamelogic.GameEngine;
 
 class GameRoomFragment$8
   implements Runnable
 {
-  GameRoomFragment$8(GameRoomFragment paramGameRoomFragment, int paramInt, String paramString) {}
+  GameRoomFragment$8(GameRoomFragment paramGameRoomFragment, View paramView) {}
   
   public void run()
   {
-    if ((this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing())) {
-      QQToast.a(this.this$0.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).a();
+    if ((GameEngine.a().e()) || (GameRoomFragment.b(this.this$0)))
+    {
+      GameRoomFragment.a(this.this$0).setVisibility(8);
+      return;
     }
+    GameRoomFragment.b(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomFragment.8
  * JD-Core Version:    0.7.0.1
  */

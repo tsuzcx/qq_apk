@@ -8,17 +8,17 @@ public final class SmartBox_HotWordsItem
   extends JceStruct
 {
   public int bubbleCanClose = 1;
-  public int iBubbleStyle;
-  public int iClickCount;
+  public int iBubbleStyle = 0;
+  public int iClickCount = 0;
   public int iDisplayPosition = -1;
-  public int iDuration;
-  public long iEndTimeStamp;
-  public int iExposureCount;
-  public int iId;
-  public int iIsForcedInsertion;
-  public int iSubType;
-  public int iType;
-  public int iWordSource;
+  public int iDuration = 0;
+  public long iEndTimeStamp = 0L;
+  public int iExposureCount = 0;
+  public int iId = 0;
+  public int iIsForcedInsertion = 0;
+  public int iSubType = 0;
+  public int iType = 0;
+  public int iWordSource = 0;
   public String sAppend = "";
   public String sIcon = "";
   public String sItemExtInfo = "";
@@ -138,7 +138,7 @@ public final class SmartBox_HotWordsItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hotword.SmartBox_HotWordsItem
  * JD-Core Version:    0.7.0.1
  */

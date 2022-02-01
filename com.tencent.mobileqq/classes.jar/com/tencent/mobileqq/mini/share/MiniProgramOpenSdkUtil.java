@@ -9,17 +9,18 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.webkit.URLUtil;
-import aupt;
-import auuv;
-import bhcu;
-import bheh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
+import com.tencent.mobileqq.loginregister.ILoginRegisterApi;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.share.opensdk.OpenSdkShareModel;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -41,9 +42,9 @@ public class MiniProgramOpenSdkUtil
   public static final String KEY_MINI_PROGRAM_SHARE_OBJ = "KEY_MINI_PROGRAM_SHARE_OBJ";
   private static final String TAG = "MiniProgramOpenSdkUtil";
   
-  public static boolean asyncShareMiniProgram(bheh parambheh)
+  public static boolean asyncShareMiniProgram(JumpAction paramJumpAction)
   {
-    return (isSharingMiniProgram(parambheh.a)) && (!"to_qzone".equals(parambheh.c));
+    return (isSharingMiniProgram(paramJumpAction.a)) && (!"to_qzone".equals(paramJumpAction.c));
   }
   
   private static JSONObject buildArkConfig(JSONObject paramJSONObject, String paramString)
@@ -105,7 +106,8 @@ public class MiniProgramOpenSdkUtil
   
   private static void finishPreviousActivity(Context paramContext)
   {
-    if ((!(paramContext instanceof JumpActivity)) && (!(paramContext instanceof LoginActivity))) {}
+    ILoginRegisterApi localILoginRegisterApi = (ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class);
+    if ((!(paramContext instanceof JumpActivity)) && (!localILoginRegisterApi.getLoginActivityClass().isInstance(paramContext))) {}
     while (((BaseActivity)paramContext).isFinishing()) {
       return;
     }
@@ -141,7 +143,7 @@ public class MiniProgramOpenSdkUtil
     paramHashMap = buildShareInfoRequest((MiniArkShareModel)localObject);
     paramContext = new MiniProgramOpenSdkUtil.3(local2, local1, localTimeOutInfo, str2, str3, str4, str7, ((MiniArkShareModel)localObject).getAppidRich(), str5, str6, paramBundle, paramContext, paramIntent, str1);
     QLog.d("MiniProgramOpenSdkUtil", 1, "forwardShare");
-    auuv.a("KEY_STAGE_1_GET_SHARE_INFO");
+    ForwardStatisticsReporter.a("KEY_STAGE_1_GET_SHARE_INFO");
     MiniAppCmdUtil.getInstance().getShareInfo(paramHashMap, paramContext);
   }
   
@@ -228,8 +230,8 @@ public class MiniProgramOpenSdkUtil
       com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = true;
       paramIntent.putExtra("KEY_MINI_PROGRAM_SHARE_OBJ", paramOpenSdkShareModel);
       paramIntent.putExtra("forward_ark_app_meta", str3);
-      paramIntent.putExtras(QQCustomArkDialog.AppInfo.zipArgs(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
-      aupt.a(paramContext, paramIntent);
+      paramIntent.putExtras(QQCustomArkDialog.AppInfo.a(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
+      ForwardBaseOption.a(paramContext, paramIntent);
       finishPreviousActivity(paramContext);
       return;
     }
@@ -244,7 +246,7 @@ public class MiniProgramOpenSdkUtil
     }
     try
     {
-      paramString = new String(bhcu.decode(paramString, 0));
+      paramString = new String(Base64Util.decode(paramString, 0));
       return paramString;
     }
     catch (Exception paramString) {}

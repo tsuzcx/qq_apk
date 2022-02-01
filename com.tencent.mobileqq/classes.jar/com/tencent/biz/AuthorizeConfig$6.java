@@ -1,27 +1,26 @@
 package com.tencent.biz;
 
 import java.util.concurrent.atomic.AtomicBoolean;
-import nro;
 
-public class AuthorizeConfig$6
+class AuthorizeConfig$6
   implements Runnable
 {
-  public AuthorizeConfig$6(nro paramnro) {}
+  AuthorizeConfig$6(AuthorizeConfig paramAuthorizeConfig) {}
   
   public void run()
   {
     this.this$0.j();
-    if (this.this$0.h == null) {
+    if (this.this$0.e == null) {
       this.this$0.f();
     }
-    if (nro.a.compareAndSet(false, true)) {
+    if (AuthorizeConfig.a.compareAndSet(false, true)) {
       this.this$0.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfig.6
  * JD-Core Version:    0.7.0.1
  */

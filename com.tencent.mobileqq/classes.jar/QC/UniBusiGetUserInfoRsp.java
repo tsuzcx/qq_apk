@@ -12,10 +12,10 @@ public final class UniBusiGetUserInfoRsp
   static ArrayList<UniBusiItemDetail> cache_uniBusiHistoryItemList;
   static ArrayList<UniBusiUsingItem> cache_uniBusiUsingItemList = new ArrayList();
   public String errmsg = "";
-  public UniBusiItemDetail globalUsingItem;
-  public int ret;
-  public ArrayList<UniBusiItemDetail> uniBusiHistoryItemList;
-  public ArrayList<UniBusiUsingItem> uniBusiUsingItemList;
+  public UniBusiItemDetail globalUsingItem = null;
+  public int ret = 0;
+  public ArrayList<UniBusiItemDetail> uniBusiHistoryItemList = null;
+  public ArrayList<UniBusiUsingItem> uniBusiUsingItemList = null;
   
   static
   {

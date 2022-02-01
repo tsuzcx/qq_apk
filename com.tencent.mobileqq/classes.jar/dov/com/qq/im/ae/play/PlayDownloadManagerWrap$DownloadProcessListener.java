@@ -1,41 +1,41 @@
 package dov.com.qq.im.ae.play;
 
-import bnke;
-import bnkq;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.data.AEMaterialMetaData;
+import dov.com.qq.im.ae.download.AEMaterialDownloader.MaterialDownloadListener;
 
 class PlayDownloadManagerWrap$DownloadProcessListener
-  implements bnkq
+  implements AEMaterialDownloader.MaterialDownloadListener
 {
-  public void onDownloadFinish(bnke parambnke, boolean paramBoolean)
+  public void onDownloadFinish(AEMaterialMetaData paramAEMaterialMetaData, boolean paramBoolean, int paramInt)
   {
-    if (parambnke == null) {
+    if (paramAEMaterialMetaData == null) {
       return;
     }
-    parambnke.f = false;
+    paramAEMaterialMetaData.f = false;
     if (paramBoolean) {
-      parambnke.e = true;
+      paramAEMaterialMetaData.e = true;
     }
     for (;;)
     {
-      PlayDownloadManagerWrap.getInstance().notifyDownloadFinish(parambnke, paramBoolean);
-      PlayDownloadManagerWrap.access$300(PlayDownloadManagerWrap.getInstance(), parambnke.a);
+      PlayDownloadManagerWrap.getInstance().notifyDownloadFinish(paramAEMaterialMetaData, paramBoolean);
+      PlayDownloadManagerWrap.access$300(PlayDownloadManagerWrap.getInstance(), paramAEMaterialMetaData.a);
       return;
-      QLog.e("PlayDownloadManagerWrap", 1, "download failed with id: " + parambnke.a);
+      QLog.e("PlayDownloadManagerWrap", 1, "download failed with id: " + paramAEMaterialMetaData.a);
     }
   }
   
-  public void onProgressUpdate(bnke parambnke, int paramInt)
+  public void onProgressUpdate(AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
   {
     if (paramInt <= 1) {
       return;
     }
-    PlayDownloadManagerWrap.getInstance().notifyDownloadProgress(parambnke.a, paramInt);
+    PlayDownloadManagerWrap.getInstance().notifyDownloadProgress(paramAEMaterialMetaData.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.PlayDownloadManagerWrap.DownloadProcessListener
  * JD-Core Version:    0.7.0.1
  */

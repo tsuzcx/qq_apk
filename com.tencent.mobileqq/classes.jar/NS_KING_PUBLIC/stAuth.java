@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stAuth
   extends JceStruct
 {
-  public int iAuthType;
+  public int iAuthType = 0;
   public String sAccessToken = "";
   public String sRefreshToken = "";
   public String sSessionKey = "";

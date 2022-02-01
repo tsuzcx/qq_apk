@@ -18,18 +18,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import anvx;
-import bheh;
-import bhey;
-import bjkv;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -38,6 +39,7 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.api.FeedListView;
 import cooperation.qzone.api.FeedViewHolderInterface;
 import cooperation.qzone.api.QZoneApiProxy;
 import cooperation.qzone.contentbox.model.BottomItem;
@@ -63,6 +65,8 @@ public class QZoneMsgFragment
 {
   public static final String ACTION = "action";
   public static final String ACTION_SYNC_QZONE_COMMENT_LIKE = "com.qzone.sync_comment_like";
+  public static final int CLICK_CLOSE_GUIDECARD = 6;
+  public static final int CLICK_PUBLISH_GUIDECARD = 7;
   public static final int CLICK_TYPE_COMMENT = 2;
   public static final int CLICK_TYPE_DETAIL = 0;
   public static final int CLICK_TYPE_FRIENDFEED = 5;
@@ -87,6 +91,9 @@ public class QZoneMsgFragment
   private Handler handler;
   private volatile boolean hasMore = true;
   private boolean isNightMode;
+  private MsgCardView lastCardView;
+  private MsgNewLargeCardView lastNewLargeCarView;
+  private MsgNewSmallCardView lastNewSmallCardView;
   private ListView listView;
   private FeedViewHolderInterface mFeedHolder;
   private FootNavigationLayout mFootNavigationLayout;
@@ -94,11 +101,11 @@ public class QZoneMsgFragment
   private boolean mShowFeeds;
   BroadcastReceiver mSyncCommentLikeReceiver = new QZoneMsgFragment.2(this);
   private boolean mUseNewUI;
-  private boolean manual;
-  MsgOnClickListener msgOnClickListener = new QZoneMsgFragment.9(this);
+  private boolean manual = false;
+  MsgOnClickListener msgOnClickListener = new QZoneMsgFragment.10(this);
   QZoneMsgFragment.QZoneMsgUIObserver observer;
   private final AbsListView.OnScrollListener onScrollListener = new QZoneMsgFragment.7(this);
-  private volatile boolean refreshed;
+  private volatile boolean refreshed = false;
   private int requestState = 0;
   LinearLayout viewFooterContainer;
   MsgFootTips viewListFooter;
@@ -127,8 +134,8 @@ public class QZoneMsgFragment
     this.viewFooterContainer.setGravity(1);
     this.listView.addFooterView(this.viewFooterContainer);
     this.viewListFooter = new MsgFootTips(getActivity(), this.handler);
-    this.viewListFooter.setLoadingDataText(getString(2131692187));
-    this.viewListFooter.setLoadingMoreDataText(getString(2131692188));
+    this.viewListFooter.setLoadingDataText(getString(2131692319));
+    this.viewListFooter.setLoadingMoreDataText(getString(2131692320));
     if (!paramBoolean) {
       setFooterState(5);
     }
@@ -141,12 +148,39 @@ public class QZoneMsgFragment
     }
   }
   
+  private void initLastCardView()
+  {
+    if ((this.lastCardView != null) && (this.lastCardView.getFeedsListView() != null)) {
+      this.lastCardView.getFeedsListView().onStart();
+    }
+    if ((this.lastNewSmallCardView != null) && (this.lastNewSmallCardView.getFeedsListView() != null)) {
+      this.lastNewSmallCardView.getFeedsListView().onStart();
+    }
+    if ((this.lastNewLargeCarView != null) && (this.lastNewLargeCarView.getFeedsListView() != null)) {
+      this.lastNewLargeCarView.getFeedsListView().onStart();
+    }
+  }
+  
+  private boolean isAllNewMsgCard(ArrayList<MQMsg> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() < 1)) {
+      return false;
+    }
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      if (!((MQMsg)paramArrayList.next()).isNewStyleCard()) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
   private void loadMore(boolean paramBoolean) {}
   
   private void loadMoreFinish(boolean paramBoolean)
   {
     if ((!paramBoolean) && (this.manual)) {
-      bjkv.a().a(anvx.a(2131711487));
+      ToastUtil.a().a(HardCodeUtil.a(2131712002));
     }
     setMoreFootState(paramBoolean);
     this.requestState = 0;
@@ -166,30 +200,38 @@ public class QZoneMsgFragment
     } while (k <= 0);
     int j = 0;
     int i = 0;
-    label24:
-    Object localObject;
     if (j < k)
     {
       localObject = this.listView.getChildAt(j);
-      if ((localObject instanceof MsgCardView)) {
-        break label54;
+      if (!(localObject instanceof MsgCardView)) {}
+      for (;;)
+      {
+        j += 1;
+        break;
+        localObject = (MsgCardView)localObject;
+        if ((i == 0) && ((((MsgCardView)localObject).isLargePhotoTotalVisible()) || (this.mUseNewUI)))
+        {
+          ((MsgCardView)localObject).startPlay();
+          i = 1;
+        }
+        else
+        {
+          ((MsgCardView)localObject).stopPlay();
+        }
       }
+    }
+    Object localObject = this.listView.getChildAt(k - 1);
+    if ((localObject instanceof MsgCardView)) {
+      this.lastCardView = ((MsgCardView)localObject);
     }
     for (;;)
     {
-      j += 1;
-      break label24;
-      break;
-      label54:
-      localObject = (MsgCardView)localObject;
-      if ((i == 0) && ((((MsgCardView)localObject).isLargePhotoTotalVisible()) || (this.mUseNewUI)))
-      {
-        ((MsgCardView)localObject).startPlay();
-        i = 1;
-      }
-      else
-      {
-        ((MsgCardView)localObject).stopPlay();
+      initLastCardView();
+      return;
+      if ((localObject instanceof MsgNewSmallCardView)) {
+        this.lastNewSmallCardView = ((MsgNewSmallCardView)localObject);
+      } else if ((localObject instanceof MsgNewLargeCardView)) {
+        this.lastNewLargeCarView = ((MsgNewLargeCardView)localObject);
       }
     }
   }
@@ -268,6 +310,19 @@ public class QZoneMsgFragment
     }
   }
   
+  private void refreshLastMsgFeedList()
+  {
+    if ((this.lastCardView != null) && (this.lastCardView.getFeedsListView() != null)) {
+      this.lastCardView.getFeedsListView().loadMore(this.lastCardView);
+    }
+    if ((this.lastNewSmallCardView != null) && (this.lastNewSmallCardView.getFeedsListView() != null)) {
+      this.lastNewSmallCardView.getFeedsListView().loadMore(this.lastNewSmallCardView);
+    }
+    if ((this.lastNewLargeCarView != null) && (this.lastNewLargeCarView.getFeedsListView() != null)) {
+      this.lastNewLargeCarView.getFeedsListView().loadMore(this.lastNewLargeCarView);
+    }
+  }
+  
   private boolean removeLastEmptyMQMsg()
   {
     if (this.adapter == null)
@@ -283,8 +338,8 @@ public class QZoneMsgFragment
     if (paramQZoneMsgEntityNew == null)
     {
       paramQZoneMsgEntityNew = new ArrayList();
-      paramQZoneMsgEntityNew.add(new BottomItem(anvx.a(2131719159), "mqqzone://arouse/activefeed"));
-      paramQZoneMsgEntityNew.add(new BottomItem(anvx.a(2131711483), "mqqzone://arouse/albumlist"));
+      paramQZoneMsgEntityNew.add(new BottomItem(HardCodeUtil.a(2131719716), "mqqzone://arouse/activefeed"));
+      paramQZoneMsgEntityNew.add(new BottomItem(HardCodeUtil.a(2131711998), "mqqzone://arouse/albumlist"));
     }
     for (;;)
     {
@@ -339,7 +394,7 @@ public class QZoneMsgFragment
           QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsg: mqMsg.msgBody.photolist==null");
         }
       }
-    } while (((localMQMsg.msgBody != null) && (localMQMsg.msgBody.photolist != null) && (!localMQMsg.msgBody.photolist.isEmpty()) && (!StringUtil.isEmpty(((MQPhotoCell)localMQMsg.msgBody.photolist.get(0)).coverUrl))) || (localMQMsg.msgType != 9));
+    } while (((localMQMsg.msgBody != null) && (localMQMsg.msgBody.photolist != null) && (!localMQMsg.msgBody.photolist.isEmpty()) && (!StringUtil.a(((MQPhotoCell)localMQMsg.msgBody.photolist.get(0)).coverUrl))) || (localMQMsg.msgType != 9));
     localMQMsg.uniKey = this.mLocalPhotoGroupData.unikey;
     localMQMsg.eventTitle = this.mLocalPhotoGroupData.title;
     localMQMsg.capTime = this.mLocalPhotoGroupData.capTime;
@@ -353,7 +408,7 @@ public class QZoneMsgFragment
       ((ArrayList)localObject1).add(localMQPhotoCell);
     }
     localMQMsg.msgBody.photolist = ((ArrayList)localObject1);
-    this.handler.post(new QZoneMsgFragment.8(this, localMQMsg));
+    this.handler.post(new QZoneMsgFragment.9(this, localMQMsg));
     QLog.d("QZoneMsgManager.QZoneMsgFragment", 2, "setLocalPhotoGroupData: update last empty MQMsg.");
   }
   
@@ -391,24 +446,25 @@ public class QZoneMsgFragment
     Object localObject;
     if ((paramMQMsg != null) && (!TextUtils.isEmpty(paramMQMsg.jumpUrlToDetail)))
     {
-      localObject = bhey.a(this.app, getActivity(), paramMQMsg.jumpUrlToDetail);
+      localObject = JumpParser.a(this.app, getActivity(), paramMQMsg.jumpUrlToDetail);
       if (localObject != null)
       {
-        ((bheh)localObject).a();
+        ((JumpAction)localObject).a();
         return;
       }
       localObject = new Intent(getActivity(), QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", paramMQMsg.jumpUrlToDetail);
       QZoneHelper.addSource((Intent)localObject);
       startActivity((Intent)localObject);
+      LpReportInfo_dc02880.report(paramMQMsg.jumpUrlToDetail, paramMQMsg.reportValue, paramMQMsg.getReportRev6());
       return;
     }
     QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "msg.jumpUrlToDetail is null");
-    if ((paramMQMsg != null) && (paramMQMsg.msgType == 9) && (!StringUtil.isEmpty(paramMQMsg.uniKey)))
+    if ((paramMQMsg != null) && (paramMQMsg.msgType == 9) && (!StringUtil.a(paramMQMsg.uniKey)))
     {
       localObject = "mqqzone://arouse/photogrouprecommenddetail?usecache=true&checkgroup=false&unikey=" + paramMQMsg.uniKey;
       jumpToPhotoGroupRecommendDetail((String)localObject);
-      LpReportInfo_dc02880.report(2, 2, (String)localObject, "29", false, true);
+      LpReportInfo_dc02880.report(2, 2, (String)localObject, "29", false, true, paramMQMsg.getReportRev6());
       LpReportInfo_pf00064.allReport(133, 14, String.valueOf(paramMQMsg.msgType));
       QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "jumpToPhotoGroupRecommendDetail: uniKey=" + paramMQMsg.uniKey);
       return;
@@ -485,7 +541,7 @@ public class QZoneMsgFragment
     }
     for (;;)
     {
-      paramLayoutInflater = paramLayoutInflater.inflate(2131562418, paramViewGroup, false);
+      paramLayoutInflater = paramLayoutInflater.inflate(2131562558, paramViewGroup, false);
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
       paramViewGroup.setBackgroundColor(-1380874);
@@ -521,11 +577,34 @@ public class QZoneMsgFragment
     }
   }
   
+  public void onResume()
+  {
+    super.onResume();
+    if ((this.lastCardView != null) && (this.lastCardView.getFeedsListView() != null)) {
+      this.lastCardView.getFeedsListView().onResume();
+    }
+    if ((this.lastNewSmallCardView != null) && (this.lastNewSmallCardView.getFeedsListView() != null)) {
+      this.lastNewSmallCardView.getFeedsListView().onResume();
+    }
+    if ((this.lastNewLargeCarView != null) && (this.lastNewLargeCarView.getFeedsListView() != null)) {
+      this.lastNewLargeCarView.getFeedsListView().onResume();
+    }
+  }
+  
   public void onStart()
   {
     super.onStart();
     if (this.mFeedHolder != null) {
       this.mFeedHolder.onStart();
+    }
+    if ((this.lastCardView != null) && (this.lastCardView.getFeedsListView() != null)) {
+      this.lastCardView.getFeedsListView().onStart();
+    }
+    if ((this.lastNewSmallCardView != null) && (this.lastNewSmallCardView.getFeedsListView() != null)) {
+      this.lastNewSmallCardView.getFeedsListView().onStart();
+    }
+    if ((this.lastNewLargeCarView != null) && (this.lastNewLargeCarView.getFeedsListView() != null)) {
+      this.lastNewLargeCarView.getFeedsListView().onStart();
     }
   }
   
@@ -535,13 +614,22 @@ public class QZoneMsgFragment
     if (this.mFeedHolder != null) {
       this.mFeedHolder.onStop();
     }
+    if ((this.lastCardView != null) && (this.lastCardView.getFeedsListView() != null)) {
+      this.lastCardView.getFeedsListView().onStop();
+    }
+    if ((this.lastNewSmallCardView != null) && (this.lastNewSmallCardView.getFeedsListView() != null)) {
+      this.lastNewSmallCardView.getFeedsListView().onStop();
+    }
+    if ((this.lastNewLargeCarView != null) && (this.lastNewLargeCarView.getFeedsListView() != null)) {
+      this.lastNewLargeCarView.getFeedsListView().onStop();
+    }
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.listView = ((ListView)paramView.findViewById(2131371625));
-    paramBundle = paramView.findViewById(2131375477);
+    this.listView = ((ListView)paramView.findViewById(2131371936));
+    paramBundle = paramView.findViewById(2131375856);
     this.listView.setEmptyView(paramBundle);
     paramBundle = getActivity();
     if ((this.mShowFeeds) && (paramBundle != null))
@@ -557,7 +645,7 @@ public class QZoneMsgFragment
       this.adapter.setMsgOnClickListener(this.msgOnClickListener);
       this.listView.setOnScrollListener(this.onScrollListener);
       this.listView.setAdapter(this.adapter);
-      this.mFootNavigationLayout = ((FootNavigationLayout)paramView.findViewById(2131371619));
+      this.mFootNavigationLayout = ((FootNavigationLayout)paramView.findViewById(2131371932));
       paramBundle = this.mFootNavigationLayout;
       if (!this.mUseNewUI) {
         break label249;
@@ -579,6 +667,18 @@ public class QZoneMsgFragment
       this.mFeedHolder.onDestroy();
       this.mFeedHolder = null;
       break;
+    }
+  }
+  
+  public void sendNegativeFeedBack(int paramInt1, int paramInt2)
+  {
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject != null)
+    {
+      QZoneMsgNegativeManager localQZoneMsgNegativeManager = (QZoneMsgNegativeManager)((QQAppInterface)localObject).getManager(QQManagerFactory.QZONE_MSGCARD_NEGATIVE_MANAGER);
+      localObject = new QZoneMsgNegativeRequest(0L, ((QQAppInterface)localObject).getLongAccountUin(), paramInt1, paramInt2);
+      ((QZoneMsgNegativeRequest)localObject).setType(0);
+      localQZoneMsgNegativeManager.sendRequest((QZoneMsgNegativeRequest)localObject);
     }
   }
   
@@ -613,12 +713,14 @@ public class QZoneMsgFragment
   public void setLocalPhotoGroupData(LocalPhotoGroupData paramLocalPhotoGroupData)
   {
     this.mLocalPhotoGroupData = paramLocalPhotoGroupData;
-    updateMQMsg();
+    if (this.handler != null) {
+      this.handler.post(new QZoneMsgFragment.8(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment
  * JD-Core Version:    0.7.0.1
  */

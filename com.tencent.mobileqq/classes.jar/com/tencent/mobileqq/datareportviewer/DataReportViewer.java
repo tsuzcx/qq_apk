@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import aeow;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -27,18 +26,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.core.content.ContextCompat;
-import arww;
-import arwx;
-import arwz;
-import arxa;
-import arxb;
-import arxc;
-import arxd;
-import arxe;
-import arxf;
-import arxg;
-import arxh;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -49,18 +38,18 @@ public class DataReportViewer
   extends RelativeLayout
   implements View.OnClickListener
 {
-  public float a;
+  protected float a;
   protected Path a;
   protected Handler a;
   protected Button a;
   protected CheckBox a;
-  public LinearLayout a;
+  protected LinearLayout a;
   protected ListView a;
-  public RelativeLayout a;
-  public TextView a;
-  protected arxg a;
-  public ArrayList<ReportData> a;
-  public boolean a;
+  protected RelativeLayout a;
+  protected TextView a;
+  protected DataReportViewer.DataAdapter a;
+  protected ArrayList<ReportData> a;
+  protected boolean a;
   protected Button b;
   protected Button c;
   
@@ -68,17 +57,18 @@ public class DataReportViewer
   {
     super(paramContext);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+    this.jdField_a_of_type_Float = 0.0F;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_Boolean = true;
-    LayoutInflater.from(paramContext).inflate(2131559648, this);
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131373310);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370209));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373309));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371468));
-    this.b = ((Button)findViewById(2131364663));
-    this.c = ((Button)findViewById(2131377481));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131363100));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370187));
+    LayoutInflater.from(paramContext).inflate(2131559724, this);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131373634);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370481));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373633));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371780));
+    this.b = ((Button)findViewById(2131364777));
+    this.c = ((Button)findViewById(2131377899));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131363145));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370459));
     localLinearLayout.setBackgroundColor(getResources().getColor(2131165393));
     int i = 0;
     while (i < localLinearLayout.getChildCount())
@@ -91,9 +81,9 @@ public class DataReportViewer
       }
       i += 1;
     }
-    this.jdField_a_of_type_Arxg = new arxg(this);
+    this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer$DataAdapter = new DataReportViewer.DataAdapter(this);
     new DefaultItemAnimator().setRemoveDuration(500L);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Arxg);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer$DataAdapter);
     setWillNotDraw(false);
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -101,8 +91,8 @@ public class DataReportViewer
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new arww(this));
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new arwz(this, paramContext));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new DataReportViewer.1(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new DataReportViewer.2(this, paramContext));
   }
   
   private void a(Context paramContext, int paramInt)
@@ -114,34 +104,34 @@ public class DataReportViewer
     }
     WindowManager localWindowManager = (WindowManager)getContext().getSystemService("window");
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131559646, null));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131559722, null));
     }
-    arxh localarxh = new arxh(this, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    DataReportViewer.ViewHolder localViewHolder = new DataReportViewer.ViewHolder(this, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     ReportData localReportData = (ReportData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    localarxh.jdField_a_of_type_AndroidWidgetTextView.setText(localReportData.table);
-    localarxh.b.setText(localReportData.mainAction);
-    localarxh.c.setText(localReportData.subAction);
-    localarxh.d.setText(localReportData.actionName);
-    localarxh.e.setText(String.valueOf(localReportData.opType));
-    localarxh.f.setText(String.valueOf(localReportData.result));
-    localarxh.g.setText(localReportData.r2);
-    localarxh.h.setText(localReportData.r3);
-    localarxh.i.setText(localReportData.r4);
-    localarxh.j.setText(localReportData.r5);
-    ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365639)).setOnClickListener(new arxa(this, localWindowManager));
-    ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365633)).setOnClickListener(new arxb(this, paramContext, localReportData, localWindowManager));
+    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localReportData.table);
+    localViewHolder.b.setText(localReportData.mainAction);
+    localViewHolder.c.setText(localReportData.subAction);
+    localViewHolder.d.setText(localReportData.actionName);
+    localViewHolder.e.setText(String.valueOf(localReportData.opType));
+    localViewHolder.f.setText(String.valueOf(localReportData.result));
+    localViewHolder.g.setText(localReportData.r2);
+    localViewHolder.h.setText(localReportData.r3);
+    localViewHolder.i.setText(localReportData.r4);
+    localViewHolder.j.setText(localReportData.r5);
+    ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365802)).setOnClickListener(new DataReportViewer.3(this, localWindowManager));
+    ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365796)).setOnClickListener(new DataReportViewer.4(this, paramContext, localReportData, localWindowManager));
     if (Build.VERSION.SDK_INT >= 26) {}
     for (paramInt = 2038;; paramInt = 2003)
     {
       paramContext = new WindowManager.LayoutParams(-1, -1, paramInt, 776, -2);
       paramContext.gravity = 49;
       localWindowManager.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, paramContext);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new arxc(this, localWindowManager));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new DataReportViewer.5(this, localWindowManager));
       return;
     }
   }
   
-  public void a()
+  protected void a()
   {
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(new DataReportViewer.6(this), 3000L);
@@ -152,7 +142,7 @@ public class DataReportViewer
   {
     this.jdField_a_of_type_JavaUtilArrayList.add(paramReportData);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
-    this.jdField_a_of_type_Arxg.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer$DataAdapter.notifyDataSetChanged();
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -171,25 +161,25 @@ public class DataReportViewer
   
   protected void b()
   {
-    Object localObject = ValueAnimator.ofFloat(new float[] { DisplayUtil.dip2px(getContext(), 25.0F), (float)DeviceInfoUtil.getWidth() });
+    Object localObject = ValueAnimator.ofFloat(new float[] { DisplayUtil.a(getContext(), 25.0F), (float)DeviceInfoUtil.k() });
     ((ValueAnimator)localObject).setDuration(500L);
-    ((ValueAnimator)localObject).addUpdateListener(new arxd(this));
+    ((ValueAnimator)localObject).addUpdateListener(new DataReportViewer.7(this));
     ((ValueAnimator)localObject).setTarget(this);
     ((ValueAnimator)localObject).start();
     localObject = new AlphaAnimation(1.0F, 0.5F);
     ((AlphaAnimation)localObject).setDuration(200L);
-    ((AlphaAnimation)localObject).setAnimationListener(new arxe(this));
+    ((AlphaAnimation)localObject).setAnimationListener(new DataReportViewer.8(this));
     this.jdField_a_of_type_AndroidWidgetTextView.startAnimation((Animation)localObject);
   }
   
   protected void c()
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { (float)DeviceInfoUtil.getWidth(), DisplayUtil.dip2px(getContext(), 25.0F) });
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { (float)DeviceInfoUtil.k(), DisplayUtil.a(getContext(), 25.0F) });
     localValueAnimator.setDuration(500L);
-    localValueAnimator.addUpdateListener(new arxf(this));
+    localValueAnimator.addUpdateListener(new DataReportViewer.9(this));
     localValueAnimator.setTarget(this);
     localValueAnimator.start();
-    localValueAnimator.addListener(new arwx(this));
+    localValueAnimator.addListener(new DataReportViewer.10(this));
   }
   
   public void d() {}
@@ -199,8 +189,8 @@ public class DataReportViewer
     paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    float f2 = DisplayUtil.dip2px(getContext(), 25.0F);
-    float f3 = DisplayUtil.dip2px(getContext(), 25.0F);
+    float f2 = DisplayUtil.a(getContext(), 25.0F);
+    float f3 = DisplayUtil.a(getContext(), 25.0F);
     if (this.jdField_a_of_type_Float == 0.0F) {}
     for (float f1 = getWidth();; f1 = this.jdField_a_of_type_Float)
     {
@@ -229,16 +219,16 @@ public class DataReportViewer
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
-      this.jdField_a_of_type_Arxg.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer$DataAdapter.notifyDataSetChanged();
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(new DataReportViewer.11(this), 3000L);
       continue;
-      aeow.a(getContext(), PublicFragmentActivity.class, DataReportSettingFragment.class);
+      PublicFragmentActivity.Launcher.a(getContext(), PublicFragmentActivity.class, DataReportSettingFragment.class);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewer
  * JD-Core Version:    0.7.0.1
  */

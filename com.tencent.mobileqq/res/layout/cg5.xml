@@ -1,3 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/cks" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar android:id="@id/jt2" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/bc0" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/o8p" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom|center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:id="@id/o8q" android:padding="10.0dip" android:layout_width="44.0dip" android:layout_height="44.0dip" android:src="@drawable/bjf" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/o8r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-6.0dip" android:text="00:00/00:00" android:shadowColor="#3b000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" />
+            </LinearLayout>
+            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="bottom|center" android:id="@id/o8n" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:text="@string/w_k" android:shadowColor="#3b000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" />
+            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/o8o" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="66.0dip" android:text="@string/w_k" android:shadowColor="#3b000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/al3" android:layout_gravity="bottom|center" android:id="@id/mxx" android:background="@drawable/bja" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:text="" />
+            <ViewStub android:id="@id/mua" android:layout="@layout/cf_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <RelativeLayout android:layout_gravity="bottom|center|right" android:id="@id/o10" android:background="@drawable/bjw" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip">
+                <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="2.0dip" android:text="@string/w9g" android:layout_toRightOf="@id/n9h" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/n9h" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/g9b" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </FrameLayout>
+        <View android:id="@id/ogt" android:layout_width="fill_parent" android:layout_height="@dimen/b_p" />
+        <include android:layout_width="fill_parent" android:layout_height="@dimen/b_r" layout="@layout/cg6" />
+    </LinearLayout>
+    <dov.com.qq.im.aeeditor.module.controlpanel.AEEditorMusicControlPanel android:layout_gravity="bottom" android:id="@id/nmm" android:background="@color/m7" android:layout_width="fill_parent" android:layout_height="@dimen/b_p" android:layout_marginBottom="@dimen/b_r" />
+    <dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel android:layout_gravity="bottom" android:id="@id/mxq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/b_r" />
+    <dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel android:layout_gravity="bottom" android:id="@id/o93" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/b_r" />
+    <dov.com.qq.im.aeeditor.module.autotemplate.AEEditorAutoTemplatePanel android:layout_gravity="bottom" android:id="@id/mg4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/b_r" />
+    <FrameLayout android:id="@id/myc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

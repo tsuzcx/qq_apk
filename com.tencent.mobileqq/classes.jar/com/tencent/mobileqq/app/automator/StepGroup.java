@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.app.automator;
 
-import aohp;
-
 public class StepGroup
   extends AsyncStep
 {
@@ -90,7 +88,7 @@ public class StepGroup
   {
     if (this.e < this.jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.e] = aohp.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator, this.jdField_a_of_type_ArrayOfJavaLangString[this.e]);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.e] = StepFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator, this.jdField_a_of_type_ArrayOfJavaLangString[this.e]);
       this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.e].jdField_a_of_type_ArrayOfJavaLangObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
       AsyncStep[] arrayOfAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep;
       int i = this.e;

@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import anza;
-import axcw;
-import axiv;
-import bdla;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
+import com.tencent.mobileqq.multimsg.MultiMsgUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -14,14 +13,15 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.mobileqq.transfile.RichMediaUtil;
 import com.tencent.mobileqq.transfile.ServerAddr;
+import com.tencent.mobileqq.transfile.TransFileUtil;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -72,7 +72,7 @@ public class MultiMsgDownHandler
           if (localObject2 != null)
           {
             MultiMsg.Ipv4Info localIpv4Info = new MultiMsg.Ipv4Info();
-            localIpv4Info.uint32_ip_v4_addr.set(axcw.a(((ExcitingTransferHostInfo)localObject2).mstrIp));
+            localIpv4Info.uint32_ip_v4_addr.set(MsgBackupUtil.a(((ExcitingTransferHostInfo)localObject2).mstrIp));
             if (QLog.isDevelopLevel()) {
               QLog.i("MultiMsg_TAG_opt", 2, "Multimsg download handler ipv4:  " + ((ExcitingTransferHostInfo)localObject2).mstrIp);
             }
@@ -140,7 +140,7 @@ public class MultiMsgDownHandler
         }
       }
       paramReqBody.rpt_multimsg_applydown_req.add(localMultiMsgApplyDownReq);
-      if ((paramReqCommon.multiMsgType == 0) && (axiv.b)) {
+      if ((paramReqCommon.multiMsgType == 0) && (MultiMsgUtil.b)) {
         paramReqBody.uint32_bu_type.set(2);
       }
     }
@@ -173,7 +173,7 @@ public class MultiMsgDownHandler
       ((MultiMsg.ReqBody)localObject).uint32_term_type.set(5);
       ((MultiMsg.ReqBody)localObject).uint32_platform_type.set(9);
       ((MultiMsg.ReqBody)localObject).uint32_net_type.set(j);
-      ((MultiMsg.ReqBody)localObject).bytes_build_ver.set(ByteStringMicro.copyFromUtf8(RichMediaUtil.getVersionCode()));
+      ((MultiMsg.ReqBody)localObject).bytes_build_ver.set(ByteStringMicro.copyFromUtf8(TransFileUtil.getVersionCode()));
       ((MultiMsg.ReqBody)localObject).uint32_req_channel_type.set(2);
       i = 0;
       while (i < paramList.size())
@@ -205,18 +205,18 @@ public class MultiMsgDownHandler
     }
   }
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     localObject1 = paramProtoResp.resp;
     byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    anza localanza = paramProtoResp.statisInfo;
+    StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
     if (((FromServiceMsg)localObject1).getResultCode() != 1000)
     {
       i = ((FromServiceMsg)localObject1).getResultCode();
       if ((i == 1002) || (i == 1013)) {
-        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject1), "", localanza, localRichProtoResp.resps);
+        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject1), "", localStatictisInfo, localRichProtoResp.resps);
       }
     }
     List localList;
@@ -224,7 +224,7 @@ public class MultiMsgDownHandler
     {
       RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
       return;
-      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject1), "", localanza, localRichProtoResp.resps);
+      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject1), "", localStatictisInfo, localRichProtoResp.resps);
       continue;
       try
       {
@@ -236,7 +236,7 @@ public class MultiMsgDownHandler
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localStatictisInfo, localRichProtoResp.resps);
       }
     }
     int i = 0;
@@ -269,7 +269,7 @@ public class MultiMsgDownHandler
         localObject1 = null;
       }
     }
-    setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
+    setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
     for (;;)
     {
       i += 1;
@@ -337,11 +337,11 @@ public class MultiMsgDownHandler
           j += 1;
         }
       }
-      setResult(0, 0, "", "", localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
+      setResult(0, 0, "", "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
       continue;
       label899:
       if (j == 196) {
-        bdla.b(null, "CliOper", "", "", "0X8006627", "0X8006627", 0, 1, 0, "", "", "", "");
+        ReportController.b(null, "CliOper", "", "", "0X8006627", "0X8006627", 0, 1, 0, "", "", "", "");
       }
       if (GroupPicUpHandler.shouldRetryByRetCode(j))
       {
@@ -352,7 +352,7 @@ public class MultiMsgDownHandler
           return;
         }
       }
-      setResult(-1, -9527, BaseTransProcessor.getUrlReason(j), "", localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
+      setResult(-1, -9527, BaseTransProcessor.getUrlReason(j), "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
     }
   }
   
@@ -360,7 +360,7 @@ public class MultiMsgDownHandler
   {
     if ((paramRichProtoReq != null) && (paramRichProtoReq.reqs != null) && (paramRichProtoReq.protoReqMgr != null))
     {
-      ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
+      ProtoReqManagerImpl.ProtoReq localProtoReq = new ProtoReqManagerImpl.ProtoReq();
       localProtoReq.ssoCmd = "MultiMsg.ApplyDown";
       localProtoReq.reqBody = constructReqBody(paramRichProtoReq.reqs);
       localProtoReq.busiData = paramRichProtoReq;

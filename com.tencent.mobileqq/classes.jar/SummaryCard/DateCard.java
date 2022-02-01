@@ -12,24 +12,24 @@ public final class DateCard
   static byte[] cache_vFaces = (byte[])new byte[1];
   static byte[] cache_vGroupList;
   static byte[] cache_vNearbyInfo;
-  public byte bConstellation;
-  public byte bMarriage;
-  public long lTinyId;
+  public byte bConstellation = 0;
+  public byte bMarriage = 0;
+  public long lTinyId = 0L;
   public String strCompany = "";
   public String strDistance = "";
   public String strElapse = "";
   public String strSchool = "";
-  public long uHomeCity;
-  public long uHomeCountry;
-  public long uHomeProvince;
-  public long uHomeZone;
-  public long uProfession;
-  public long uSchoolId;
-  public byte[] vActivityList;
-  public byte[] vDateInfo;
-  public byte[] vFaces;
-  public byte[] vGroupList;
-  public byte[] vNearbyInfo;
+  public long uHomeCity = 0L;
+  public long uHomeCountry = 0L;
+  public long uHomeProvince = 0L;
+  public long uHomeZone = 0L;
+  public long uProfession = 0L;
+  public long uSchoolId = 0L;
+  public byte[] vActivityList = null;
+  public byte[] vDateInfo = null;
+  public byte[] vFaces = null;
+  public byte[] vGroupList = null;
+  public byte[] vNearbyInfo = null;
   
   static
   {
@@ -132,7 +132,7 @@ public final class DateCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.DateCard
  * JD-Core Version:    0.7.0.1
  */

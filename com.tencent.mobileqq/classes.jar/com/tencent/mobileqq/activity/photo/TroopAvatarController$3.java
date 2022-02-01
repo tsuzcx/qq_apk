@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akjf;
-import aklk;
-import bgmj;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
 
-public class TroopAvatarController$3
+class TroopAvatarController$3
   implements Runnable
 {
-  public TroopAvatarController$3(aklk paramaklk, akjf paramakjf, bgmj parambgmj) {}
+  TroopAvatarController$3(TroopAvatarController paramTroopAvatarController, AvatarInfo paramAvatarInfo, TroopUploadingThread.UploadState paramUploadState) {}
   
   public void run()
   {
-    this.this$0.notifyUpdate(this.jdField_a_of_type_Akjf, this.jdField_a_of_type_Bgmj);
+    this.this$0.notifyUpdate(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAvatarInfo, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.TroopAvatarController.3
  * JD-Core Version:    0.7.0.1
  */

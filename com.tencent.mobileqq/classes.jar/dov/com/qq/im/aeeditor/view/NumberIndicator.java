@@ -8,7 +8,8 @@ import android.widget.TextView;
 public class NumberIndicator
   extends TextView
 {
-  private int a;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = false;
   private int b;
   
   public NumberIndicator(Context paramContext)
@@ -28,7 +29,7 @@ public class NumberIndicator
   
   private void a()
   {
-    setText(this.a + " / " + this.b);
+    setText(this.jdField_a_of_type_Int + " / " + this.b);
   }
   
   public void setCurrentIndex(int paramInt)
@@ -36,13 +37,13 @@ public class NumberIndicator
     if ((paramInt <= 0) || (paramInt > this.b)) {
       throw new IllegalArgumentException("currentIndex not valid, out of range");
     }
-    this.a = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
     a();
   }
   
   public void setTotalCount(int paramInt)
   {
-    if (paramInt < this.a) {
+    if (paramInt < this.jdField_a_of_type_Int) {
       throw new IllegalArgumentException("totalCount not valid, totalCount < currentIndex");
     }
     this.b = paramInt;
@@ -51,7 +52,7 @@ public class NumberIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.NumberIndicator
  * JD-Core Version:    0.7.0.1
  */

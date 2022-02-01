@@ -8,11 +8,11 @@ public final class OnlineInfo
   extends JceStruct
 {
   static byte[] cache_subPlatform = (byte[])new byte[1];
-  public int clientType;
-  public int instanceId;
-  public int onlineStatus;
-  public int platformId;
-  public byte[] subPlatform;
+  public int clientType = 0;
+  public int instanceId = 0;
+  public int onlineStatus = 0;
+  public int platformId = 0;
+  public byte[] subPlatform = null;
   
   static
   {

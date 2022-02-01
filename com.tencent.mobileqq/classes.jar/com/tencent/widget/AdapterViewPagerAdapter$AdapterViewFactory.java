@@ -5,7 +5,7 @@ import android.widget.AdapterView;
 
 public abstract interface AdapterViewPagerAdapter$AdapterViewFactory
 {
-  public abstract AdapterView create(Context paramContext, int paramInt);
+  public abstract AdapterView a(Context paramContext, int paramInt);
 }
 
 

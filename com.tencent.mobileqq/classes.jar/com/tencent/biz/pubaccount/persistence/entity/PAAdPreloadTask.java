@@ -23,15 +23,15 @@ public class PAAdPreloadTask
   public static final int SOURCE_PRELOAD_MESSAGE = 2;
   public static final int SOURCE_PRELOAD_PLAY = 3;
   public static final String TABLE_NAME = PAAdPreloadTask.class.getSimpleName();
-  public long mExpireTime;
-  public String mMsgId;
+  public long mExpireTime = 0L;
+  public String mMsgId = null;
   public int mNetworkType = 1;
-  public int mPreloadState;
-  public long mReceiveTime;
-  public int mSource;
-  public String mTaskId;
-  public String mUserUin;
-  public String mVideoVid;
+  public int mPreloadState = 0;
+  public long mReceiveTime = 0L;
+  public int mSource = 0;
+  public String mTaskId = null;
+  public String mUserUin = null;
+  public String mVideoVid = null;
   
   public static int checkNetworkType(int paramInt)
   {
@@ -119,8 +119,8 @@ public class PAAdPreloadTask
   
   public boolean isNetworkValid()
   {
-    if (((this.mNetworkType & 0x1) != 0) && (NetworkUtil.isWifiConnected(null))) {}
-    while (((this.mNetworkType & 0x2) != 0) && (NetworkUtil.getSystemNetwork(BaseApplication.getContext()) == 4)) {
+    if (((this.mNetworkType & 0x1) != 0) && (NetworkUtil.h(null))) {}
+    while (((this.mNetworkType & 0x2) != 0) && (NetworkUtil.a(BaseApplication.getContext()) == 4)) {
       return true;
     }
     return false;
@@ -128,7 +128,7 @@ public class PAAdPreloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask
  * JD-Core Version:    0.7.0.1
  */

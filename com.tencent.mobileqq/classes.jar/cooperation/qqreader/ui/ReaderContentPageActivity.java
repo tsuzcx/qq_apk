@@ -1,30 +1,21 @@
 package cooperation.qqreader.ui;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
-import bmgm;
-import bmgx;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.utils.Log;
+import cooperation.qqreader.view.ReaderTitleBarView;
 
 public class ReaderContentPageActivity
   extends ReaderBaseWebActivity
 {
-  private boolean a;
-  
-  public WebViewFragment a(WebViewTabBarData paramWebViewTabBarData)
-  {
-    if (this.a) {
-      return ReaderSplashPageFragment.a(getIntent());
-    }
-    return super.a(paramWebViewTabBarData);
-  }
+  private boolean a = false;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -46,12 +37,20 @@ public class ReaderContentPageActivity
       do
       {
         return;
-        localObject = (ReaderBaseFragment)a();
+        localObject = (ReaderBaseFragment)getCurrentWebViewFragment();
       } while ((localObject == null) || (!((ReaderBaseFragment)localObject).b));
-      localObject = (bmgx)((ReaderBaseFragment)localObject).mSwiftTitleUI;
+      localObject = (ReaderTitleBarView)((ReaderBaseFragment)localObject).mSwiftTitleUI;
       localWindow = getWindow();
     } while ((localObject == null) || (localWindow == null));
-    ((bmgx)localObject).a(false, localWindow);
+    ((ReaderTitleBarView)localObject).a(false, localWindow);
+  }
+  
+  public WebViewFragment getFragmentByTabBarData(WebViewTabBarData paramWebViewTabBarData)
+  {
+    if (this.a) {
+      return ReaderSplashPageFragment.a(getIntent());
+    }
+    return super.getFragmentByTabBarData(paramWebViewTabBarData);
   }
   
   @Override
@@ -65,18 +64,18 @@ public class ReaderContentPageActivity
   {
     this.a = getIntent().getBooleanExtra("is_to_splash_activity", false);
     if (this.a) {
-      g();
+      disableSwipeLayout();
     }
     super.onCreate(paramBundle);
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
-    bmgm.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
+    Log.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderContentPageActivity
  * JD-Core Version:    0.7.0.1
  */

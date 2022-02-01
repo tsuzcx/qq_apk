@@ -1,12 +1,11 @@
 package cooperation.qappcenter.remote;
 
-import blxv;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class RemoteServiceProxy$2
+class RemoteServiceProxy$2
   extends Thread
 {
-  public RemoteServiceProxy$2(blxv paramblxv) {}
+  RemoteServiceProxy$2(RemoteServiceProxy paramRemoteServiceProxy) {}
   
   public void run()
   {
@@ -29,7 +28,7 @@ public class RemoteServiceProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qappcenter.remote.RemoteServiceProxy.2
  * JD-Core Version:    0.7.0.1
  */

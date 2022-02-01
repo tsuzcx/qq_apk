@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afzn;
-import agld;
-import agle;
+import com.tencent.mobileqq.activity.aio.core.BaseTroopChatPie;
 
-public class TroopRobotHelper$1$1
+class TroopRobotHelper$1$1
   implements Runnable
 {
-  public TroopRobotHelper$1$1(agle paramagle) {}
+  TroopRobotHelper$1$1(TroopRobotHelper.1 param1) {}
   
   public void run()
   {
-    if ((agld.a(this.a.a) instanceof afzn))
+    if ((TroopRobotHelper.a(this.a.a) instanceof BaseTroopChatPie))
     {
-      ((afzn)agld.a(this.a.a)).f = false;
+      ((BaseTroopChatPie)TroopRobotHelper.a(this.a.a)).R = false;
       this.a.a.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

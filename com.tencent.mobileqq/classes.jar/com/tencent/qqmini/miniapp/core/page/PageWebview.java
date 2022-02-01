@@ -37,6 +37,7 @@ public class PageWebview
   extends BasePageWebview
 {
   private static final String TAG = "PageWebview";
+  private static final boolean enableEmbeddedElementConfig;
   private static final boolean enableEmbeddedLiveConfig;
   private static final boolean enableEmbeddedVideoConfiog;
   private AppBrandPageContainer mAppBrandPageContainer;
@@ -57,16 +58,25 @@ public class PageWebview
       bool1 = true;
       enableEmbeddedVideoConfiog = bool1;
       if (WnsConfig.getConfig("qqminiapp", "enable_embedded_live", 1) != 1) {
-        break label44;
+        break label62;
+      }
+      bool1 = true;
+      label34:
+      enableEmbeddedLiveConfig = bool1;
+      if (WnsConfig.getConfig("qqminiapp", "enable_embedded_element", 1) != 1) {
+        break label67;
       }
     }
-    label44:
+    label62:
+    label67:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      enableEmbeddedLiveConfig = bool1;
+      enableEmbeddedElementConfig = bool1;
       return;
       bool1 = false;
       break;
+      bool1 = false;
+      break label34;
     }
   }
   
@@ -167,7 +177,7 @@ public class PageWebview
       {
         EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)localIterator.next()).getValue();
         if (localEmbeddedWidgetClientHolder != null) {
-          localEmbeddedWidgetClientHolder.webViewDestory();
+          localEmbeddedWidgetClientHolder.webViewDestroy();
         }
         localIterator.remove();
       }
@@ -199,7 +209,7 @@ public class PageWebview
   
   public void init()
   {
-    boolean bool2 = true;
+    boolean bool4 = true;
     setScrollBarStyle(0);
     if (getX5WebViewExtension() != null) {
       getX5WebViewExtension().setVerticalTrackDrawable(null);
@@ -226,24 +236,31 @@ public class PageWebview
           bool1 = AppLoaderFactory.g().getContext().getSharedPreferences((String)localObject + "_user_embedded_video_", 0).getBoolean("_user_embedded_video_", true);
           bool2 = AppLoaderFactory.g().getContext().getSharedPreferences((String)localObject + "_user_embedded_live_", 0).getBoolean("_user_embedded_live_", true);
           if ((!bool3) || (!bool1)) {
-            break label335;
+            break label359;
           }
           bool1 = true;
-          break label322;
+          break label346;
           this.mEmbeddedState.setEnableEmbeddedVideo(bool1);
           this.mEmbeddedState.setEnableEmbeddedLive(bool2);
+          this.mEmbeddedState.setEnableEmbeddedElement(bool3);
         }
         else
         {
           if ((!bool3) || (!enableEmbeddedVideoConfiog)) {
-            break label348;
+            break label372;
           }
           bool1 = true;
-          label284:
+          label293:
           if ((!bool3) || (!enableEmbeddedLiveConfig)) {
-            break label353;
+            break label377;
           }
-          break label345;
+          bool2 = true;
+          label305:
+          if ((!bool3) || (!enableEmbeddedElementConfig)) {
+            break label382;
+          }
+          bool3 = bool4;
+          break label369;
         }
       }
       else
@@ -257,24 +274,27 @@ public class PageWebview
       QMLog.e("miniapp-embedded", "registerEmbeddedWidget error,", localThrowable);
       return;
     }
-    label322:
+    label346:
     if ((bool3) && (bool2)) {}
-    for (bool2 = true;; bool2 = false)
+    for (boolean bool2 = true;; bool2 = false)
     {
       break;
-      label335:
+      label359:
       bool1 = false;
-      break label322;
+      break label346;
     }
     for (;;)
     {
-      label345:
+      label369:
       break;
-      label348:
+      label372:
       bool1 = false;
-      break label284;
-      label353:
+      break label293;
+      label377:
       bool2 = false;
+      break label305;
+      label382:
+      bool3 = false;
     }
   }
   
@@ -293,7 +313,7 @@ public class PageWebview
     super.onPause();
     QMLog.d("PageWebview", "pagewebview onPause, id is  " + this.mPageWebviewId);
     if (this.mAppBrandPageContainer != null) {
-      this.mAppBrandPageContainer.notifyOnPageWebViewPause();
+      this.mAppBrandPageContainer.notifyOnPageWebViewPause(this.mPageWebviewId);
     }
     if (this.mBrandPageWebview != null) {
       this.mBrandPageWebview.evaluateJs("document.title=\"\"", null);
@@ -312,19 +332,19 @@ public class PageWebview
     onHide();
   }
   
-  public void onResume(boolean paramBoolean)
+  public void onResume()
   {
     super.onResume();
-    QMLog.d("PageWebview", "pagewebview onResume, id is " + this.mPageWebviewId + " fromRouting:" + paramBoolean);
+    QMLog.d("PageWebview", "pagewebview onResume, id is " + this.mPageWebviewId);
     if (this.mAppBrandPageContainer != null) {
       this.mAppBrandPageContainer.notifyOnPageWebViewResume();
     }
     if ((this.mBrandPageWebview != null) && (this.mAppBrandPageContainer != null) && (this.mContext != null)) {
       if (this.mContext.getMiniAppInfo() == null) {
-        break label271;
+        break label257;
       }
     }
-    label271:
+    label257:
     for (Object localObject1 = this.mContext.getMiniAppInfo().appId;; localObject1 = null)
     {
       if (this.mAppBrandPageContainer.getShowingPage() != null) {}
@@ -332,7 +352,7 @@ public class PageWebview
       {
         localObject1 = "\"" + (String)localObject1 + ":" + (String)localObject2 + ":VISIBLE\"";
         this.mBrandPageWebview.evaluateJs("document.title=" + (String)localObject1, null);
-        if ((paramBoolean) && (this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap() != null))
+        if ((this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap() != null))
         {
           localObject1 = this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap().entrySet().iterator();
           while (((Iterator)localObject1).hasNext())
@@ -348,7 +368,7 @@ public class PageWebview
     }
   }
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((this.webviewScrollListenerList != null) && (this.webviewScrollListenerList.size() > 0))
@@ -415,7 +435,7 @@ public class PageWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.PageWebview
  * JD-Core Version:    0.7.0.1
  */

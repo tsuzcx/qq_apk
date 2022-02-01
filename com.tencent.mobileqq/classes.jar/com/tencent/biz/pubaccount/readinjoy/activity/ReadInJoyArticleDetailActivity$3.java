@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicManager;
 import com.tencent.mobileqq.app.BrowserAppInterface;
-import pvp;
 
 class ReadInJoyArticleDetailActivity$3
   implements Runnable
@@ -17,7 +17,7 @@ class ReadInJoyArticleDetailActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.3
  * JD-Core Version:    0.7.0.1
  */

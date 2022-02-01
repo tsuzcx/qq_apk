@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.vas;
 
-import bhmx;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class CustomOnlineStatusManager$1
+class CustomOnlineStatusManager$1
   implements Runnable
 {
-  public CustomOnlineStatusManager$1(bhmx parambhmx) {}
+  CustomOnlineStatusManager$1(CustomOnlineStatusManager paramCustomOnlineStatusManager) {}
   
   public void run()
   {
-    Iterator localIterator = bhmx.a(this.this$0).iterator();
+    Iterator localIterator = CustomOnlineStatusManager.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       Runnable localRunnable = (Runnable)((WeakReference)localIterator.next()).get();
@@ -26,7 +25,7 @@ public class CustomOnlineStatusManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.CustomOnlineStatusManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,31 @@
 package com.tencent.av.ui;
 
-import com.tencent.av.VideoController;
-import lwf;
-import mbf;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.vipav.VipFunCallMediaListener;
 
 class AVActivity$11
-  implements Runnable
+  extends VipFunCallMediaListener
 {
   AVActivity$11(AVActivity paramAVActivity) {}
   
-  public void run()
+  public void a()
   {
-    mbf.a(VideoController.a().a, 8, 0L, true);
-    if (!lwf.a)
-    {
-      mbf.a(VideoController.a().a, 10, 3000L);
-      lwf.a = true;
+    if (this.a.a != null) {
+      this.a.a.a().postDelayed(new AVActivity.11.1(this), 0L);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.a != null) {
+      this.a.a.a().post(new AVActivity.11.2(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.11
  * JD-Core Version:    0.7.0.1
  */

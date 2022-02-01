@@ -3,9 +3,9 @@ package com.tencent.mobileqq.activity.contact.addcontact;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import java.util.List;
 
 class ClassificationSearchActivity$14
@@ -25,7 +25,7 @@ class ClassificationSearchActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.14
  * JD-Core Version:    0.7.0.1
  */

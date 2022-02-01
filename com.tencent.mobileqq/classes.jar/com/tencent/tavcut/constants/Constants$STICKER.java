@@ -7,6 +7,7 @@ public class Constants$STICKER
   public static final String KEY_LAST_STICKER_TEXT_FONT = "key_last_sticker_text_font";
   public static final String KEY_STICKER_CARRY_TEXT_FROM_OTHERS = "key_sticker_carry_text_from_others";
   public static final String KEY_STICKER_ENABLE_ROTATE = "key_sticker_enable_rotate";
+  public static final String KEY_STICKER_INTERACTIVE = "key_sticker_interactive";
   public static final String KEY_STICKER_LOCK_RATIO = "key_sticker_lock_ratio";
   public static final String KEY_STICKER_SCALE_MAX_X = "key_sticker_scale_max_x";
   public static final String KEY_STICKER_SCALE_MAX_Y = "key_sticker_scale_max_y";
@@ -19,7 +20,7 @@ public class Constants$STICKER
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.constants.Constants.STICKER
  * JD-Core Version:    0.7.0.1
  */

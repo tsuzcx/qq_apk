@@ -1,29 +1,28 @@
 package com.tencent.open.appstore.dl;
 
-import bizw;
-import bjjo;
-import bjjq;
-import bjko;
-import bjlo;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.appstore.db.DownloadInfoDB;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.AppUtil;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class DownloadManagerV2$3
+class DownloadManagerV2$3
   implements Runnable
 {
-  public DownloadManagerV2$3(bjjq parambjjq) {}
+  DownloadManagerV2$3(DownloadManagerV2 paramDownloadManagerV2) {}
   
   public void run()
   {
-    bjjq.a(this.this$0, bjjo.a().a());
+    DownloadManagerV2.a(this.this$0, DownloadInfoDB.a().a());
     Object localObject1;
     Object localObject2;
-    if (bjjq.a(this.this$0) != null)
+    if (DownloadManagerV2.a(this.this$0) != null)
     {
-      localObject1 = bjjq.a(this.this$0).values().iterator();
+      localObject1 = DownloadManagerV2.a(this.this$0).values().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (DownloadInfo)((Iterator)localObject1).next();
@@ -58,26 +57,26 @@ public class DownloadManagerV2$3
           if (localObject2 != null) {
             break;
           }
-          bjjq.a(this.this$0, localDownloadInfo);
+          DownloadManagerV2.a(this.this$0, localDownloadInfo);
           return;
         }
       }
       catch (Exception localException)
       {
-        bjko.c("DownloadManagerV2", "speical clear>>>", localException);
+        LogUtility.c("DownloadManagerV2", "speical clear>>>", localException);
         return;
       }
       localObject2 = this.this$0.a(localDownloadInfo.i);
       str = localDownloadInfo.l;
     }
-    if ((((TMAssistantDownloadTaskInfo)localObject2).mState == 4) && (bjlo.c(str) <= bizw.a().a())) {
-      bjjq.a(this.this$0, localDownloadInfo);
+    if ((((TMAssistantDownloadTaskInfo)localObject2).mState == 4) && (AppUtil.c(str) <= CommonDataAdapter.a().a())) {
+      DownloadManagerV2.a(this.this$0, localDownloadInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.3
  * JD-Core Version:    0.7.0.1
  */

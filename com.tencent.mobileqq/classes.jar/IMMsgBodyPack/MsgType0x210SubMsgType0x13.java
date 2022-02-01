@@ -8,16 +8,16 @@ public final class MsgType0x210SubMsgType0x13
   extends JceStruct
 {
   static byte[] cache_bytes_buf;
-  public byte[] bytes_buf;
-  public long uint32_dst_app_id;
-  public long uint32_dst_inst_id;
-  public long uint32_index;
-  public long uint32_size;
-  public long uint32_src_app_id;
-  public long uint32_src_inst_id;
-  public long uint32_type;
-  public long uint64_dst_uin;
-  public long uint64_sessionid;
+  public byte[] bytes_buf = null;
+  public long uint32_dst_app_id = 0L;
+  public long uint32_dst_inst_id = 0L;
+  public long uint32_index = 0L;
+  public long uint32_size = 0L;
+  public long uint32_src_app_id = 0L;
+  public long uint32_src_inst_id = 0L;
+  public long uint32_type = 0L;
+  public long uint64_dst_uin = 0L;
+  public long uint64_sessionid = 0L;
   
   public MsgType0x210SubMsgType0x13() {}
   

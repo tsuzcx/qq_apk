@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class ResultRecord$DefaultComparator
   implements Comparator<ResultRecord>
 {
-  public int compare(ResultRecord paramResultRecord1, ResultRecord paramResultRecord2)
+  public int a(ResultRecord paramResultRecord1, ResultRecord paramResultRecord2)
   {
     int j = -1;
     long l1;

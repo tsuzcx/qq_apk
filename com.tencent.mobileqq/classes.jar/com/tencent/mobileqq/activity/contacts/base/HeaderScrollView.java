@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.contacts.base;
 
-import ajjo;
-import ajjp;
-import ajjq;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build.VERSION;
@@ -20,12 +17,12 @@ public class HeaderScrollView
   extends LinearLayout
 {
   private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ajjo jdField_a_of_type_Ajjo;
-  private ajjq jdField_a_of_type_Ajjq;
+  private int jdField_a_of_type_Int = 0;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
+  private HeaderScrollHelper jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper;
+  private HeaderScrollView.OnScrollListener jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView$OnScrollListener;
   public boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -33,13 +30,13 @@ public class HeaderScrollView
   private float jdField_c_of_type_Float;
   private int jdField_c_of_type_Int;
   private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
+  private float jdField_d_of_type_Float = 0.0F;
   private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
+  private boolean jdField_d_of_type_Boolean = false;
   private int e;
   private int f;
-  private int g;
-  private int h;
+  private int g = 0;
+  private int h = 0;
   private int i;
   private int j;
   private int k;
@@ -57,8 +54,9 @@ public class HeaderScrollView
   public HeaderScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_Ajjo = new ajjo();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper = new HeaderScrollHelper();
     paramContext = ViewConfiguration.get(paramContext);
     this.jdField_b_of_type_Int = paramContext.getScaledTouchSlop();
     this.jdField_c_of_type_Int = paramContext.getScaledMinimumFlingVelocity();
@@ -122,7 +120,7 @@ public class HeaderScrollView
   
   public boolean b()
   {
-    return (this.i == this.h) && (this.jdField_a_of_type_Ajjo.a());
+    return (this.i == this.h) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper.a());
   }
   
   public void computeScroll()
@@ -138,7 +136,7 @@ public class HeaderScrollView
       {
         m = this.jdField_a_of_type_AndroidWidgetScroller.getFinalY() - m;
         int n = b(this.jdField_a_of_type_AndroidWidgetScroller.getDuration(), this.jdField_a_of_type_AndroidWidgetScroller.timePassed());
-        this.jdField_a_of_type_Ajjo.a(a(m, n), m, n);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper.a(a(m, n), m, n);
         this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
       }
     }
@@ -153,7 +151,7 @@ public class HeaderScrollView
       this.k = m;
       return;
       label101:
-      if ((this.jdField_a_of_type_Ajjo.a()) || (this.jdField_c_of_type_Boolean))
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper.a()) || (this.jdField_c_of_type_Boolean))
       {
         scrollTo(0, m - this.k + getScrollY());
         if (this.i <= this.h)
@@ -180,7 +178,7 @@ public class HeaderScrollView
     {
       super.dispatchTouchEvent(paramMotionEvent);
       return true;
-      this.jdField_a_of_type_Ajjo.a(true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper.a(true);
       this.jdField_d_of_type_Boolean = false;
       this.jdField_b_of_type_Boolean = false;
       this.jdField_a_of_type_Boolean = false;
@@ -201,13 +199,13 @@ public class HeaderScrollView
           do
           {
             bool = a();
-            if ((!this.jdField_a_of_type_Boolean) || (((this.jdField_d_of_type_Float <= 0.0F) || (bool)) && (!this.jdField_a_of_type_Ajjo.a()) && (!this.jdField_c_of_type_Boolean))) {
+            if ((!this.jdField_a_of_type_Boolean) || (((this.jdField_d_of_type_Float <= 0.0F) || (bool)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper.a()) && (!this.jdField_c_of_type_Boolean))) {
               break;
             }
             if (!this.jdField_d_of_type_Boolean)
             {
               this.jdField_d_of_type_Boolean = true;
-              this.jdField_a_of_type_Ajjo.a(false);
+              this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper.a(false);
             }
             scrollBy(0, (int)(this.jdField_d_of_type_Float + 0.5D));
             invalidate();
@@ -250,7 +248,7 @@ public class HeaderScrollView
     }
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
     if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.jdField_a_of_type_AndroidViewView.isClickable())) {
@@ -258,7 +256,7 @@ public class HeaderScrollView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_AndroidViewView = getChildAt(0);
     measureChildWithMargins(this.jdField_a_of_type_AndroidViewView, paramInt1, 0, 0, 0);
@@ -298,8 +296,8 @@ public class HeaderScrollView
     for (;;)
     {
       this.i = m;
-      if (this.jdField_a_of_type_Ajjq != null) {
-        this.jdField_a_of_type_Ajjq.a(m, this.g);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView$OnScrollListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView$OnScrollListener.a(m, this.g);
       }
       super.scrollTo(paramInt1, m);
       return;
@@ -310,14 +308,14 @@ public class HeaderScrollView
     }
   }
   
-  public void setCurrentScrollableContainer(ajjp paramajjp)
+  public void setCurrentScrollableContainer(HeaderScrollHelper.ScrollableContainer paramScrollableContainer)
   {
-    this.jdField_a_of_type_Ajjo.a(paramajjp);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper.a(paramScrollableContainer);
   }
   
-  public void setOnScrollListener(ajjq paramajjq)
+  public void setOnScrollListener(HeaderScrollView.OnScrollListener paramOnScrollListener)
   {
-    this.jdField_a_of_type_Ajjq = paramajjq;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView$OnScrollListener = paramOnScrollListener;
   }
   
   public void setTopOffset(int paramInt)
@@ -327,7 +325,7 @@ public class HeaderScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.HeaderScrollView
  * JD-Core Version:    0.7.0.1
  */

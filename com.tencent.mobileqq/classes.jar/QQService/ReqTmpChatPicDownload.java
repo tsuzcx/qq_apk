@@ -10,9 +10,9 @@ public final class ReqTmpChatPicDownload
   extends JceStruct
   implements Cloneable
 {
-  public byte getPicSize;
-  public long lSeq;
-  public long lUIN;
+  public byte getPicSize = 0;
+  public long lSeq = 0L;
+  public long lUIN = 0L;
   public String strFlieKey = "";
   
   static

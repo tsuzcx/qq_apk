@@ -172,7 +172,7 @@ public enum AdSettingsUtil
     }
     label78:
     label85:
-    for (Object localObject = this.currentSettings.urlForSettings;; localObject = "https://i.gtimg.cn/ams-web/public/tangram-report/settings-android-qq-8-4-10.json")
+    for (Object localObject = this.currentSettings.urlForSettings;; localObject = "https://i.gtimg.cn/ams-web/public/tangram-report/settings-android-qq-8-5-0.json")
     {
       localObject = AdUriUtil.replaceHttpsWithHttpForVivoY67OnAndroidM((String)localObject);
       if ((this.loadSettingsTimeMillis == -2147483648L) || (System.currentTimeMillis() - this.loadSettingsTimeMillis >= i)) {
@@ -203,7 +203,7 @@ public enum AdSettingsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.settings.AdSettingsUtil
  * JD-Core Version:    0.7.0.1
  */

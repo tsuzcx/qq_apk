@@ -1,11 +1,9 @@
 package dov.com.qq.im.capture.data;
 
-import bohs;
-
-public class CaptureTemplateManager$1
+class CaptureTemplateManager$1
   implements Runnable
 {
-  public CaptureTemplateManager$1(bohs parambohs) {}
+  CaptureTemplateManager$1(CaptureTemplateManager paramCaptureTemplateManager) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class CaptureTemplateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.data.CaptureTemplateManager.1
  * JD-Core Version:    0.7.0.1
  */

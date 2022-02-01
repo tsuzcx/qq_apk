@@ -8,19 +8,19 @@ public final class UpgradeInfo
   extends JceStruct
 {
   static PublicAccountInfo cache_stAccountInfo;
-  public byte bAppType;
-  public byte bGray;
+  public byte bAppType = 0;
+  public byte bGray = 0;
   public byte bNewSwitch = 1;
-  public int iActionType;
-  public int iAppid;
-  public int iDisplayDay;
-  public int iIncrementUpgrade;
-  public int iNewTimeStamp;
-  public int iTipsType;
-  public int iTipsWaitDay;
-  public int iUpgradeSdkId;
-  public int iUpgradeType;
-  public PublicAccountInfo stAccountInfo;
+  public int iActionType = 0;
+  public int iAppid = 0;
+  public int iDisplayDay = 0;
+  public int iIncrementUpgrade = 0;
+  public int iNewTimeStamp = 0;
+  public int iTipsType = 0;
+  public int iTipsWaitDay = 0;
+  public int iUpgradeSdkId = 0;
+  public int iUpgradeType = 0;
+  public PublicAccountInfo stAccountInfo = null;
   public String strBannerPicUrl = "";
   public String strButtonDesc = "";
   public String strCancelButtonDesc = "";
@@ -149,7 +149,7 @@ public final class UpgradeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     protocol.KQQConfig.UpgradeInfo
  * JD-Core Version:    0.7.0.1
  */

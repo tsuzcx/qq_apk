@@ -2,24 +2,23 @@ package com.tencent.biz.qqstory.playmode.util;
 
 import android.widget.FrameLayout;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import wzj;
-import zen;
-import zep;
-import zer;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.IPollWidget;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.OnPollDetailClickListener;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.OnWidgetElementClickListener;
 
-public final class PlayModePollViewUtils$1
+final class PlayModePollViewUtils$1
   implements Runnable
 {
-  public PlayModePollViewUtils$1(zer paramzer, zep paramzep, FrameLayout paramFrameLayout, zen paramzen, int paramInt, StoryVideoItem paramStoryVideoItem) {}
+  PlayModePollViewUtils$1(PollWidgetUtils.OnWidgetElementClickListener paramOnWidgetElementClickListener, PollWidgetUtils.OnPollDetailClickListener paramOnPollDetailClickListener, FrameLayout paramFrameLayout, PollWidgetUtils.IPollWidget paramIPollWidget, int paramInt, StoryVideoItem paramStoryVideoItem) {}
   
   public void run()
   {
-    wzj.a(this.jdField_a_of_type_Zer, this.jdField_a_of_type_Zep, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Zen, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, true);
+    PlayModePollViewUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener, this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnPollDetailClickListener, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModePollViewUtils.1
  * JD-Core Version:    0.7.0.1
  */

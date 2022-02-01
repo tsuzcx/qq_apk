@@ -1,36 +1,35 @@
 package com.tencent.mobileqq.profilecard.bussiness.personalitysign;
 
 import android.widget.TextView;
-import azru;
-import babn;
-import babu;
-import babv;
-import bdla;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profile.SigTopicManager;
+import com.tencent.mobileqq.profilecard.bussiness.personalitysign.utils.UiUtils;
+import com.tencent.mobileqq.profilecard.bussiness.personalitysign.utils.UiUtils.Companion;
 import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.util.Pair;
 import java.util.List;
 
-public class ProfileContentSignComponent$3
+class ProfileContentSignComponent$3
   implements Runnable
 {
-  public ProfileContentSignComponent$3(babn parambabn, TextView paramTextView, RichStatus paramRichStatus) {}
+  ProfileContentSignComponent$3(ProfileContentSignComponent paramProfileContentSignComponent, TextView paramTextView, RichStatus paramRichStatus) {}
   
   public void run()
   {
     int i;
-    if ((babn.c(this.this$0) != null) && (!babn.d(this.this$0).isFinishing()))
+    if ((ProfileContentSignComponent.access$2200(this.this$0) != null) && (!ProfileContentSignComponent.access$2300(this.this$0).isFinishing()))
     {
-      i = azru.a().a(this.jdField_a_of_type_AndroidWidgetTextView, (String)((Pair)this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics.get(0)).second, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText, babn.a(this.this$0), babn.c(this.this$0), babn.b(this.this$0));
+      i = SigTopicManager.a().a(this.val$info, (String)((Pair)this.val$richStatus.topics.get(0)).second, this.val$richStatus.actionText, ProfileContentSignComponent.access$1800(this.this$0), ProfileContentSignComponent.access$1900(this.this$0), ProfileContentSignComponent.access$2000(this.this$0));
       if (i != -2147483648) {}
     }
     else
     {
       return;
     }
-    babu.a.a(this.jdField_a_of_type_AndroidWidgetTextView, -i, 0);
-    azru.a().a(babn.h(this.this$0));
-    bdla.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
+    UiUtils.Companion.showProfileSignGuideAsDropDown(this.val$info, -i, 0);
+    SigTopicManager.a().a(ProfileContentSignComponent.access$2400(this.this$0));
+    ReportController.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
   }
 }
 

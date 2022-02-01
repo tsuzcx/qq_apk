@@ -10,7 +10,7 @@ public final class UgcDecoQualReq
   extends JceStruct
 {
   static Map<Integer, Integer> cache_mapItemId = new HashMap();
-  public Map<Integer, Integer> mapItemId;
+  public Map<Integer, Integer> mapItemId = null;
   
   static
   {

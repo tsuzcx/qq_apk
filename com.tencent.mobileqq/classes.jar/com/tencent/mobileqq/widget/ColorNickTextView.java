@@ -22,27 +22,23 @@ import android.text.style.CharacterStyle;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import bhta;
-import bimv;
-import bimw;
-import biqb;
-import biqc;
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.text.style.EmoticonSpan;
+import com.tencent.mobileqq.vas.troopnick.TroopNickNameHelper;
 import com.tencent.mobileqq.vas.troopnick.TroopNickResDrawable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ColorNickTextView
   extends TextView
-  implements biqc
+  implements MosaicEffect.IMosaicEffect
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private bimw jdField_a_of_type_Bimw = new bimw();
-  private biqb jdField_a_of_type_Biqb;
+  private ColorClearableEditText.SpanComparator jdField_a_of_type_ComTencentMobileqqWidgetColorClearableEditText$SpanComparator = new ColorClearableEditText.SpanComparator();
+  private MosaicEffect jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private ArrayList<bimv> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<ColorClearableEditText.Paragraph> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   private float[] jdField_a_of_type_ArrayOfFloat;
   private int[] jdField_a_of_type_ArrayOfInt;
@@ -54,17 +50,19 @@ public class ColorNickTextView
   
   public ColorNickTextView(Context paramContext)
   {
-    super(paramContext);
+    this(paramContext, null);
   }
   
   public ColorNickTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    super(paramContext, paramAttributeSet);
+    this(paramContext, paramAttributeSet, 0);
   }
   
   public ColorNickTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
+    setLayerType(1, null);
   }
   
   private Canvas a(int paramInt1, int paramInt2)
@@ -89,21 +87,21 @@ public class ColorNickTextView
     float f = 0.0F;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject = (bimv)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      switch (((bimv)localObject).jdField_c_of_type_Int)
+      Object localObject = (ColorClearableEditText.Paragraph)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      switch (((ColorClearableEditText.Paragraph)localObject).jdField_c_of_type_Int)
       {
       }
       for (;;)
       {
         i += 1;
         break;
-        localPointF.x += getPaint().measureText(((bimv)localObject).jdField_a_of_type_JavaLangString);
-        getPaint().getTextBounds(((bimv)localObject).jdField_a_of_type_JavaLangString, 0, ((bimv)localObject).jdField_a_of_type_JavaLangString.length(), localRect);
+        localPointF.x += getPaint().measureText(((ColorClearableEditText.Paragraph)localObject).jdField_a_of_type_JavaLangString);
+        getPaint().getTextBounds(((ColorClearableEditText.Paragraph)localObject).jdField_a_of_type_JavaLangString, 0, ((ColorClearableEditText.Paragraph)localObject).jdField_a_of_type_JavaLangString.length(), localRect);
         f = Math.max(f, localRect.height());
         continue;
-        localObject = (QQText.EmoticonSpan)((bimv)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        localPointF.x += ((QQText.EmoticonSpan)localObject).getDrawable().getBounds().width();
-        f = Math.max(f, ((QQText.EmoticonSpan)localObject).getDrawable().getBounds().height());
+        localObject = (EmoticonSpan)((ColorClearableEditText.Paragraph)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        localPointF.x += ((EmoticonSpan)localObject).getDrawable().getBounds().width();
+        f = Math.max(f, ((EmoticonSpan)localObject).getDrawable().getBounds().height());
       }
     }
     localPointF.y = f;
@@ -119,7 +117,7 @@ public class ColorNickTextView
     Paint localPaint;
     int i;
     int j;
-    bimv localbimv;
+    ColorClearableEditText.Paragraph localParagraph;
     if (this.jdField_a_of_type_Int != 0)
     {
       a();
@@ -149,8 +147,8 @@ public class ColorNickTextView
         j = 0;
         while (j < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          localbimv = (bimv)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-          switch (localbimv.jdField_c_of_type_Int)
+          localParagraph = (ColorClearableEditText.Paragraph)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+          switch (localParagraph.jdField_c_of_type_Int)
           {
           default: 
             j += 1;
@@ -160,7 +158,7 @@ public class ColorNickTextView
             if (i != 0) {
               break label1116;
             }
-            getPaint().getTextBounds(localbimv.jdField_a_of_type_JavaLangString, 0, localbimv.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
+            getPaint().getTextBounds(localParagraph.jdField_a_of_type_JavaLangString, 0, localParagraph.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
             i = this.jdField_a_of_type_AndroidGraphicsRect.height();
           }
         }
@@ -174,9 +172,9 @@ public class ColorNickTextView
     {
       int k = 0;
       float f2;
-      if (k < localbimv.jdField_a_of_type_JavaLangString.length())
+      if (k < localParagraph.jdField_a_of_type_JavaLangString.length())
       {
-        float f7 = getPaint().measureText(localbimv.jdField_a_of_type_JavaLangString, k, k + 1);
+        float f7 = getPaint().measureText(localParagraph.jdField_a_of_type_JavaLangString, k, k + 1);
         if (this.jdField_b_of_type_Int == 1)
         {
           f2 = f1;
@@ -210,7 +208,7 @@ public class ColorNickTextView
         }
       }
       break label216;
-      f1 += ((QQText.EmoticonSpan)localbimv.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
+      f1 += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
       break label216;
       localObject = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
       getPaint().setShader((Shader)localObject);
@@ -256,8 +254,8 @@ public class ColorNickTextView
       j = 0;
       if (j < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        localbimv = (bimv)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-        switch (localbimv.jdField_c_of_type_Int)
+        localParagraph = (ColorClearableEditText.Paragraph)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        switch (localParagraph.jdField_c_of_type_Int)
         {
         }
         for (;;)
@@ -265,9 +263,9 @@ public class ColorNickTextView
           j += 1;
           break;
           k = 0;
-          while (k < localbimv.jdField_a_of_type_JavaLangString.length())
+          while (k < localParagraph.jdField_a_of_type_JavaLangString.length())
           {
-            f2 = getPaint().measureText(localbimv.jdField_a_of_type_JavaLangString, k, k + 1);
+            f2 = getPaint().measureText(localParagraph.jdField_a_of_type_JavaLangString, k, k + 1);
             localPaint.setColor(this.jdField_a_of_type_ArrayOfInt[(i % this.jdField_a_of_type_ArrayOfInt.length)]);
             localPaint.setStyle(Paint.Style.FILL);
             ((Canvas)localObject).drawRect(f1, 0.0F, f1 + f2, f6, localPaint);
@@ -276,7 +274,7 @@ public class ColorNickTextView
             f1 += f2;
           }
           continue;
-          f1 += ((QQText.EmoticonSpan)localbimv.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
+          f1 += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
         }
       }
       localObject = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
@@ -323,7 +321,7 @@ public class ColorNickTextView
         arrayOfCharacterStyle = (CharacterStyle[])((Spanned)localObject1).getSpans(0, getText().length(), CharacterStyle.class);
         if (arrayOfCharacterStyle.length == 0)
         {
-          localObject1 = new bimv(1, 0, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_JavaLangCharSequence.toString(), null);
+          localObject1 = new ColorClearableEditText.Paragraph(1, 0, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_JavaLangCharSequence.toString(), null);
           this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
         }
       }
@@ -331,8 +329,8 @@ public class ColorNickTextView
       {
         return;
       }
-      this.jdField_a_of_type_Bimw.a((Spanned)localObject1);
-      Arrays.sort(arrayOfCharacterStyle, this.jdField_a_of_type_Bimw);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetColorClearableEditText$SpanComparator.a((Spanned)localObject1);
+      Arrays.sort(arrayOfCharacterStyle, this.jdField_a_of_type_ComTencentMobileqqWidgetColorClearableEditText$SpanComparator);
       int i = 0;
       label135:
       int m;
@@ -344,23 +342,23 @@ public class ColorNickTextView
         k = ((Spanned)localObject1).getSpanEnd(arrayOfCharacterStyle[i]);
         if (m > j)
         {
-          localObject2 = new bimv(1, j, m, getText().subSequence(j, m).toString(), null);
+          localObject2 = new ColorClearableEditText.Paragraph(1, j, m, getText().subSequence(j, m).toString(), null);
           this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
         }
         localObject2 = getText().subSequence(m, k).toString();
-        if (!(arrayOfCharacterStyle[i] instanceof QQText.EmoticonSpan)) {
+        if (!(arrayOfCharacterStyle[i] instanceof EmoticonSpan)) {
           break label364;
         }
       }
       label364:
       for (j = 2;; j = 3)
       {
-        localObject2 = new bimv(j, m, k, (String)localObject2, arrayOfCharacterStyle[i]);
+        localObject2 = new ColorClearableEditText.Paragraph(j, m, k, (String)localObject2, arrayOfCharacterStyle[i]);
         this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
         if ((i == arrayOfCharacterStyle.length - 1) && (k < getText().length()))
         {
           localObject2 = getText().subSequence(k, getText().length()).toString();
-          localObject2 = new bimv(1, k, getText().length(), (String)localObject2, null);
+          localObject2 = new ColorClearableEditText.Paragraph(1, k, getText().length(), (String)localObject2, null);
           this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
         }
         i += 1;
@@ -381,21 +379,11 @@ public class ColorNickTextView
     }
   }
   
-  public void b(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
-  }
-  
-  public void c(Canvas paramCanvas)
-  {
-    a(paramCanvas);
-  }
-  
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Biqb != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null)
     {
-      this.jdField_a_of_type_Biqb.a(paramCanvas);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -412,11 +400,11 @@ public class ColorNickTextView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Biqb != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null)
     {
-      this.jdField_a_of_type_Biqb.b(paramCanvas);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.b(paramCanvas);
       return;
     }
     a(paramCanvas);
@@ -433,17 +421,17 @@ public class ColorNickTextView
       ((TroopNickResDrawable)localObject).b(paramInt);
       return;
     }
-    bhta.a(this, getContext(), paramInt, true);
+    TroopNickNameHelper.a(this, getContext(), paramInt, true);
   }
   
-  public void setMosaicEffect(biqb parambiqb)
+  public void setMosaicEffect(MosaicEffect paramMosaicEffect)
   {
-    if (this.jdField_a_of_type_Biqb != null) {
-      this.jdField_a_of_type_Biqb.a(null);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.a(null);
     }
-    this.jdField_a_of_type_Biqb = parambiqb;
-    if (this.jdField_a_of_type_Biqb != null) {
-      this.jdField_a_of_type_Biqb.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect = paramMosaicEffect;
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.a(this);
     }
     invalidate();
   }
@@ -470,10 +458,20 @@ public class ColorNickTextView
     super.setText(paramCharSequence, paramBufferType);
     b();
   }
+  
+  public void superDrawMosaic(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+  }
+  
+  public void superOnDrawMosaic(Canvas paramCanvas)
+  {
+    a(paramCanvas);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ColorNickTextView
  * JD-Core Version:    0.7.0.1
  */

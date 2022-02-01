@@ -14,6 +14,7 @@ import com.tencent.hippy.qq.view.tkd.common.HippyTKDCommonBorderHandler.HippyQBC
 import com.tencent.hippy.qq.view.tkd.common.HippyTKDSkinHandler;
 import com.tencent.hippy.qq.view.tkd.common.HippyTKDSkinHandler.HippyQBCommonSkin;
 import com.tencent.hippy.qq.view.tkd.listview.ResourceUtil;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyInstanceContext;
 import com.tencent.mtt.hippy.common.HippyArray;
@@ -27,7 +28,7 @@ import com.tencent.mtt.hippy.views.image.HippyImageView;
 import com.tencent.mtt.supportui.adapters.image.IDrawableTarget;
 import com.tencent.mtt.supportui.views.asyncimage.BackgroundDrawable;
 import com.tencent.mtt.supportui.views.asyncimage.ContentDrawable;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 public class HippyTKDImageView
@@ -47,27 +48,28 @@ public class HippyTKDImageView
   public static final int MAX_RETRYCOUNTS = 2;
   public static final int NIGHT_MODE_MASK_COLOR = -2147483648;
   public static final long RETRY_INTERVAL = 2000L;
-  private Bitmap mBlurBitmap;
-  private String mBlurBitmapKey;
+  private Bitmap mBlurBitmap = null;
+  private String mBlurBitmapKey = null;
   int mBlurRadius;
   private String mBusinessName = "";
   private int mClipBgColor = 0;
-  private HippyMap mClipInfoMap;
+  private HippyMap mClipInfoMap = null;
   boolean mEnableCacheImg;
   boolean mEnableLoadingImg;
   boolean mEnableNoPicMode;
   Path mFeedsClipPath = new Path();
-  private boolean mFeedsNeedClip;
+  private boolean mFeedsNeedClip = false;
   boolean mFitSystemRotation;
   private boolean mGifEnabled;
   private HippyEngineContext mHippyContext;
   HippyTKDSkinHandler mHippyTKDSkinHandler;
+  private HippyMap mInitPropMap;
   private long mLastTriggerTime;
-  private boolean mReported;
+  private boolean mReported = false;
   protected boolean mRequestUseDnsParse;
   private int mRetryCounts;
-  private Bitmap mRotationBitmap;
-  private String mRotationBitmapKey;
+  private Bitmap mRotationBitmap = null;
+  private String mRotationBitmapKey = null;
   private String mSourceFrom = "";
   HippyArray mSources;
   private long mStartFetchTime;
@@ -181,14 +183,14 @@ public class HippyTKDImageView
     {
       localObject2 = (HippyMap)localObject1;
       if ((this.mEnableLoadingImg) || (!this.mEnableCacheImg)) {
-        break label198;
+        break label217;
       }
       ((HippyMap)localObject2).pushObject("RequestLevel", new Integer(2));
       if (this.mUseThumbnail)
       {
         RenderNode localRenderNode = this.mHippyContext.getRenderManager().getRenderNode(getId());
         if (localRenderNode == null) {
-          break label216;
+          break label235;
         }
         j = localRenderNode.getWidth();
         i = localRenderNode.getHeight();
@@ -202,11 +204,14 @@ public class HippyTKDImageView
       ((HippyMap)localObject2).pushObject("gifEnabled", Boolean.valueOf(this.mGifEnabled));
       ((HippyMap)localObject2).pushObject("reportdata", this.mSourceFrom);
       ((HippyMap)localObject2).pushObject("businessname", "Hippy_" + this.mBusinessName);
+      if (this.mInitPropMap != null) {
+        ((HippyMap)localObject2).pushJSONObject(this.mInitPropMap.toJSONObject());
+      }
       return localObject1;
-      label198:
+      label217:
       ((HippyMap)localObject2).pushObject("RequestLevel", new Integer(1));
       break;
-      label216:
+      label235:
       j = 0;
     }
   }
@@ -218,44 +223,6 @@ public class HippyTKDImageView
   
   public void handleGetImageFail(Throwable paramThrowable)
   {
-    if ((this.mUrl != null) && ((UrlUtils.isWebUrl(this.mUrl)) || (UrlUtils.isFileUrl(this.mUrl))))
-    {
-      long l = System.currentTimeMillis();
-      if ((this.mRetryCounts < 2) && (l - this.mLastTriggerTime > 2000L))
-      {
-        this.mLastTriggerTime = l;
-        this.mRetryCounts += 1;
-        if (isAttached())
-        {
-          onDrawableDetached();
-          doFetchImage(null, SOURCE_TYPE_SRC);
-          if (paramThrowable != null) {
-            break label91;
-          }
-        }
-      }
-      label91:
-      do
-      {
-        return;
-        paramThrowable.toString();
-        return;
-        if ((this.mRetryCounts != 2) || (l - this.mLastTriggerTime <= 2000L)) {
-          break;
-        }
-        this.mRetryCounts += 1;
-        onGetImageRetry(this.mUrl, paramThrowable);
-      } while (!isAttached());
-      onDrawableDetached();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("useDNSParse", Boolean.valueOf(this.mRequestUseDnsParse));
-      doFetchImage(localHashMap, SOURCE_TYPE_SRC);
-      if (paramThrowable == null) {
-        return;
-      }
-      paramThrowable.toString();
-      return;
-    }
     resetRetry();
     super.handleGetImageFail(paramThrowable);
     onGetImageFailed(this.mUrl, paramThrowable);
@@ -347,7 +314,7 @@ public class HippyTKDImageView
     int i;
     if ((paramString != null) && ((UrlUtils.isWebUrl(paramString)) || (UrlUtils.isFileUrl(paramString))))
     {
-      i = ResourceUtil.getColor(2131167262);
+      i = ResourceUtil.getColor(2131167271);
       if (this.mHippyTKDSkinHandler.getBackgroundColors() == null) {
         break label147;
       }
@@ -383,7 +350,7 @@ public class HippyTKDImageView
   public void onGaussianBlurComplete(Bitmap paramBitmap, Map paramMap)
   {
     this.mBlurBitmap = paramBitmap;
-    post(new HippyTKDImageView.1(this));
+    post(new HippyTKDImageView.2(this));
   }
   
   public void onGetImageFailed(String paramString, Throwable paramThrowable)
@@ -424,6 +391,9 @@ public class HippyTKDImageView
   public void setBlurRadius(int paramInt)
   {
     this.mBlurRadius = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("hippyImageView", 2, "setBlurRadius blurRadius:" + paramInt);
+    }
   }
   
   public void setBorderBottomColors(HippyArray paramHippyArray)
@@ -464,6 +434,12 @@ public class HippyTKDImageView
   public void setGifEnabled(boolean paramBoolean)
   {
     this.mGifEnabled = paramBoolean;
+  }
+  
+  public void setIniProps(HippyMap paramHippyMap)
+  {
+    super.setIniProps(paramHippyMap);
+    this.mInitPropMap = paramHippyMap;
   }
   
   public void setNightModeOption(HippyMap paramHippyMap)
@@ -582,7 +558,10 @@ public class HippyTKDImageView
         if ((this.mBlurRadius <= 0) || (this.mSourceDrawable == null) || (this.mSourceDrawable.getBitmap() == null)) {
           break;
         }
-      } while ((getUrl() + "_" + this.mBlurRadius).equals(this.mBlurBitmapKey));
+        localObject = getUrl() + "_" + this.mBlurRadius;
+      } while (((String)localObject).equals(this.mBlurBitmapKey));
+      this.mBlurBitmapKey = ((String)localObject);
+      ThreadManagerV2.excute(new HippyTKDImageView.1(this), 16, null, false);
       return false;
       if ((!this.mFitSystemRotation) || (this.mSourceDrawable == null) || (this.mSourceDrawable.getBitmap() == null)) {
         break;
@@ -602,7 +581,7 @@ public class HippyTKDImageView
         j = this.mSourceDrawable.getBitmap().getWidth();
         k = this.mSourceDrawable.getBitmap().getHeight();
         if (i / 90 % 2 == 0) {
-          break label394;
+          break label419;
         }
         m = j;
       }
@@ -634,7 +613,7 @@ public class HippyTKDImageView
           i1 = 0;
           i2 = 0;
         }
-        label394:
+        label419:
         m = k;
       }
     }
@@ -652,7 +631,7 @@ public class HippyTKDImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.image.HippyTKDImageView
  * JD-Core Version:    0.7.0.1
  */

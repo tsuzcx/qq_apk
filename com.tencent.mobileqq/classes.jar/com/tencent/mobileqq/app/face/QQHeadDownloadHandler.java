@@ -1,11 +1,15 @@
 package com.tencent.mobileqq.app.face;
 
 import AvatarInfo.QQHeadInfo;
-import aqwz;
-import asmj;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.api.IQQAvatarBroadcastService;
+import com.tencent.mobileqq.avatar.api.IQQAvatarDataService;
+import com.tencent.mobileqq.avatar.api.impl.QQAvatarHandlerApiImpl;
+import com.tencent.mobileqq.avatar.handler.AvatarHandler;
+import com.tencent.mobileqq.avatar.utils.ApolloUtil;
+import com.tencent.mobileqq.config.PicIPManager;
 import com.tencent.mobileqq.data.Setting;
 import java.io.File;
 import mqq.os.MqqHandler;
@@ -14,27 +18,25 @@ public class QQHeadDownloadHandler
   extends FaceDownloader
 {
   private static final String QQ_HEAD_DH = "Q.qqhead.QQHeadDownloadHandler";
-  private static final int[] TROOPS_SYSTEM_HEADS = { 2130840576, 2130850754, 2130850755, 2130850756 };
+  private static final int[] TROOPS_SYSTEM_HEADS = { 2130840707, 2130851183, 2130851184, 2130851185 };
   private static Object syncCopyQQHeadLock = new Object();
-  private QQAppInterface app;
-  private FriendListHandler friendHandler;
+  private AppInterface app;
+  private AvatarHandler avatarHandler;
   private MqqHandler mSubhandler = new MqqHandler(ThreadManager.getSubThreadLooper());
   
-  public QQHeadDownloadHandler(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  public QQHeadDownloadHandler(AppInterface paramAppInterface, AvatarHandler paramAvatarHandler)
   {
-    super(paramQQAppInterface);
-    this.app = paramQQAppInterface;
-    this.friendHandler = paramFriendListHandler;
+    super(paramAppInterface);
+    this.app = paramAppInterface;
+    this.avatarHandler = paramAvatarHandler;
   }
-  
-  public static void clearIpList() {}
   
   private void notifyDownloadHeadComplete(QQHeadInfo paramQQHeadInfo, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, String paramString3)
   {
     if ((paramBoolean2) || (!paramBoolean1))
     {
       if (paramQQHeadInfo.dstUsrType == 11) {
-        this.friendHandler.notifyUI(39, true, new Object[] { paramString1 });
+        this.avatarHandler.notifyUI(2, true, new Object[] { paramString1 });
       }
     }
     else {
@@ -42,66 +44,70 @@ public class QQHeadDownloadHandler
     }
     if (paramQQHeadInfo.dstUsrType == 4)
     {
-      this.friendHandler.notifyUI(30, true, new Object[] { paramString1 });
-      this.app.sendQQHeadBroadcast(4, paramString1, 0, paramString2);
+      this.avatarHandler.notifyUI(3, true, new Object[] { paramString1 });
+      ((IQQAvatarBroadcastService)this.app.getRuntimeService(IQQAvatarBroadcastService.class, "")).sendQQHeadBroadcast(4, paramString1, 0, paramString2);
       return;
     }
     if (paramQQHeadInfo.dstUsrType == 32)
     {
-      this.friendHandler.notifyUI(5, true, new Object[] { paramString1, Integer.valueOf(paramQQHeadInfo.idType), Boolean.valueOf(true) });
-      this.friendHandler.notifyUI(104, true, new Object[] { paramString1, Integer.valueOf(paramQQHeadInfo.idType), paramString3 });
+      this.avatarHandler.notifyUI(4, true, new Object[] { paramString1, Integer.valueOf(paramQQHeadInfo.idType), Boolean.valueOf(true) });
+      this.avatarHandler.notifyUI(9, true, new Object[] { paramString1, Integer.valueOf(paramQQHeadInfo.idType), paramString3 });
       return;
     }
     if (paramQQHeadInfo.dstUsrType == 16)
     {
-      this.friendHandler.notifyUI(6, true, new Object[] { paramString1, Integer.valueOf(paramQQHeadInfo.idType), Boolean.valueOf(true) });
+      this.avatarHandler.notifyUI(5, true, new Object[] { paramString1, Integer.valueOf(paramQQHeadInfo.idType), Boolean.valueOf(true) });
       return;
     }
     if (paramQQHeadInfo.dstUsrType == 116)
     {
-      this.friendHandler.notifyUI(135, true, new Object[] { paramString1, Integer.valueOf(paramQQHeadInfo.sizeType), Boolean.valueOf(true) });
+      this.avatarHandler.notifyUI(8, true, new Object[] { paramString1, Integer.valueOf(paramQQHeadInfo.sizeType), Boolean.valueOf(true) });
       return;
     }
-    this.app.sendQQHeadBroadcast(1, paramString1, 0, paramString2);
+    paramQQHeadInfo = (IQQAvatarBroadcastService)this.app.getRuntimeService(IQQAvatarBroadcastService.class, "");
+    paramQQHeadInfo.sendQQHeadBroadcast(1, paramString1, 0, paramString2);
     if (paramString1.equals(this.app.getCurrentAccountUin())) {
-      this.app.sendSelfQQHeadBroadcast(1, paramString1, 0, paramString2);
+      paramQQHeadInfo.sendSelfQQHeadBroadcast(1, paramString1, 0, paramString2);
     }
-    this.friendHandler.notifyUI(4, true, new Object[] { paramString1 });
+    this.app.getBusinessHandler(QQAvatarHandlerApiImpl.MESSAGE_HANDLER).notifyUI(1, true, new Object[] { paramString1 });
   }
   
   private void removeCache(QQHeadInfo paramQQHeadInfo, String paramString, boolean paramBoolean)
   {
+    IQQAvatarDataService localIQQAvatarDataService;
     if (paramBoolean)
     {
+      localIQQAvatarDataService = (IQQAvatarDataService)this.app.getRuntimeService(IQQAvatarDataService.class, "");
       if (paramQQHeadInfo.dstUsrType == 4) {
-        this.app.removeFaceIconCache(4, paramString, paramQQHeadInfo.idType);
+        localIQQAvatarDataService.removeFaceIconCache(4, paramString, paramQQHeadInfo.idType);
       }
     }
-    else {
+    else
+    {
       return;
     }
     if (paramQQHeadInfo.dstUsrType == 32)
     {
-      this.app.removeFaceIconCache(32, paramString, paramQQHeadInfo.idType);
+      localIQQAvatarDataService.removeFaceIconCache(32, paramString, paramQQHeadInfo.idType);
       return;
     }
     if (paramQQHeadInfo.dstUsrType == 16)
     {
-      this.app.removeFaceIconCache(16, paramString, paramQQHeadInfo.idType);
+      localIQQAvatarDataService.removeFaceIconCache(16, paramString, paramQQHeadInfo.idType);
       return;
     }
     if (paramQQHeadInfo.dstUsrType == 116)
     {
-      this.app.removeFaceIconCacheApollo(116, paramString, paramQQHeadInfo.sizeType);
+      localIQQAvatarDataService.removeFaceIconCacheApollo(116, paramString, paramQQHeadInfo.sizeType);
       return;
     }
-    this.app.removeFaceIconCache(1, paramString, paramQQHeadInfo.idType);
+    localIQQAvatarDataService.removeFaceIconCache(1, paramString, paramQQHeadInfo.idType);
   }
   
   private void removeFileCache(QQHeadInfo paramQQHeadInfo, String paramString)
   {
     if (paramQQHeadInfo.dstUsrType == 116) {
-      asmj.a(this.app, paramQQHeadInfo.dstUsrType, paramString);
+      ApolloUtil.a(this.app, paramQQHeadInfo.dstUsrType, paramString);
     }
   }
   
@@ -140,27 +146,27 @@ public class QQHeadDownloadHandler
     //   20: iconst_0
     //   21: istore_3
     //   22: aload_0
-    //   23: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   26: invokevirtual 138	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   29: invokevirtual 144	mqq/app/MobileQQ:getResources	()Landroid/content/res/Resources;
+    //   23: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   26: invokevirtual 159	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   29: invokevirtual 165	mqq/app/MobileQQ:getResources	()Landroid/content/res/Resources;
     //   32: getstatic 26	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:TROOPS_SYSTEM_HEADS	[I
     //   35: iload_3
     //   36: iaload
-    //   37: invokevirtual 150	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   37: invokevirtual 171	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
     //   40: astore 6
     //   42: aload 6
     //   44: astore 4
     //   46: sipush 512
     //   49: newarray byte
     //   51: astore 6
-    //   53: new 152	java/io/FileOutputStream
+    //   53: new 173	java/io/FileOutputStream
     //   56: dup
     //   57: aload_2
-    //   58: invokespecial 155	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   58: invokespecial 176	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   61: astore_2
     //   62: aload 4
     //   64: aload 6
-    //   66: invokevirtual 161	java/io/InputStream:read	([B)I
+    //   66: invokevirtual 182	java/io/InputStream:read	([B)I
     //   69: istore_1
     //   70: iload_1
     //   71: ifle +51 -> 122
@@ -168,33 +174,33 @@ public class QQHeadDownloadHandler
     //   75: aload 6
     //   77: iconst_0
     //   78: iload_1
-    //   79: invokevirtual 165	java/io/FileOutputStream:write	([BII)V
+    //   79: invokevirtual 186	java/io/FileOutputStream:write	([BII)V
     //   82: goto -20 -> 62
     //   85: astore 5
-    //   87: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   87: invokestatic 192	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   90: ifeq +13 -> 103
     //   93: ldc 8
     //   95: iconst_2
-    //   96: ldc 173
+    //   96: ldc 194
     //   98: aload 5
-    //   100: invokestatic 177	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   100: invokestatic 198	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   103: aload_2
     //   104: ifnull +7 -> 111
     //   107: aload_2
-    //   108: invokevirtual 180	java/io/FileOutputStream:close	()V
+    //   108: invokevirtual 201	java/io/FileOutputStream:close	()V
     //   111: aload 4
     //   113: ifnull +8 -> 121
     //   116: aload 4
-    //   118: invokevirtual 181	java/io/InputStream:close	()V
+    //   118: invokevirtual 202	java/io/InputStream:close	()V
     //   121: return
     //   122: aload_2
     //   123: ifnull +7 -> 130
     //   126: aload_2
-    //   127: invokevirtual 180	java/io/FileOutputStream:close	()V
+    //   127: invokevirtual 201	java/io/FileOutputStream:close	()V
     //   130: aload 4
     //   132: ifnull -11 -> 121
     //   135: aload 4
-    //   137: invokevirtual 181	java/io/InputStream:close	()V
+    //   137: invokevirtual 202	java/io/InputStream:close	()V
     //   140: return
     //   141: astore_2
     //   142: aconst_null
@@ -202,11 +208,11 @@ public class QQHeadDownloadHandler
     //   145: aload 5
     //   147: ifnull +8 -> 155
     //   150: aload 5
-    //   152: invokevirtual 180	java/io/FileOutputStream:close	()V
+    //   152: invokevirtual 201	java/io/FileOutputStream:close	()V
     //   155: aload 4
     //   157: ifnull +8 -> 165
     //   160: aload 4
-    //   162: invokevirtual 181	java/io/InputStream:close	()V
+    //   162: invokevirtual 202	java/io/InputStream:close	()V
     //   165: aload_2
     //   166: athrow
     //   167: astore_2
@@ -264,27 +270,27 @@ public class QQHeadDownloadHandler
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 190	com/tencent/mobileqq/app/face/FaceInfo:a	LAvatarInfo/QQHeadInfo;
+    //   1: getfield 211	com/tencent/mobileqq/app/face/FaceInfo:a	LAvatarInfo/QQHeadInfo;
     //   4: astore 35
     //   6: aload_0
-    //   7: getfield 55	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:friendHandler	Lcom/tencent/mobileqq/app/FriendListHandler;
+    //   7: getfield 55	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:avatarHandler	Lcom/tencent/mobileqq/avatar/handler/AvatarHandler;
     //   10: aload 35
-    //   12: getfield 194	AvatarInfo/QQHeadInfo:uin	J
+    //   12: getfield 215	AvatarInfo/QQHeadInfo:uin	J
     //   15: aload 35
-    //   17: getfield 197	AvatarInfo/QQHeadInfo:phoneNum	Ljava/lang/String;
-    //   20: invokevirtual 201	com/tencent/mobileqq/app/FriendListHandler:getUinOrMobile	(JLjava/lang/String;)Ljava/lang/String;
+    //   17: getfield 218	AvatarInfo/QQHeadInfo:phoneNum	Ljava/lang/String;
+    //   20: invokevirtual 221	com/tencent/mobileqq/avatar/handler/AvatarHandler:a	(JLjava/lang/String;)Ljava/lang/String;
     //   23: astore 36
     //   25: aload_0
-    //   26: getfield 55	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:friendHandler	Lcom/tencent/mobileqq/app/FriendListHandler;
+    //   26: getfield 55	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:avatarHandler	Lcom/tencent/mobileqq/avatar/handler/AvatarHandler;
     //   29: iconst_0
     //   30: aload 36
     //   32: aload 35
-    //   34: getfield 68	AvatarInfo/QQHeadInfo:dstUsrType	B
+    //   34: getfield 67	AvatarInfo/QQHeadInfo:dstUsrType	B
     //   37: iconst_3
-    //   38: invokevirtual 205	com/tencent/mobileqq/app/FriendListHandler:statGetQQHeadCostTime	(ILjava/lang/String;II)V
+    //   38: invokevirtual 224	com/tencent/mobileqq/avatar/handler/AvatarHandler:a	(ILjava/lang/String;II)V
     //   41: aload_1
-    //   42: getstatic 208	com/tencent/mobileqq/app/face/FaceInfo:n	I
-    //   45: invokevirtual 211	com/tencent/mobileqq/app/face/FaceInfo:a	(I)V
+    //   42: getstatic 227	com/tencent/mobileqq/app/face/FaceInfo:n	I
+    //   45: invokevirtual 230	com/tencent/mobileqq/app/face/FaceInfo:a	(I)V
     //   48: iconst_0
     //   49: istore 27
     //   51: iconst_0
@@ -306,7 +312,7 @@ public class QQHeadDownloadHandler
     //   75: iconst_0
     //   76: istore 12
     //   78: aload 35
-    //   80: getfield 214	AvatarInfo/QQHeadInfo:downLoadUrl	Ljava/lang/String;
+    //   80: getfield 233	AvatarInfo/QQHeadInfo:downLoadUrl	Ljava/lang/String;
     //   83: astore 32
     //   85: iconst_0
     //   86: istore 21
@@ -341,9 +347,9 @@ public class QQHeadDownloadHandler
     //   133: iload 20
     //   135: istore_3
     //   136: aload 35
-    //   138: getfield 214	AvatarInfo/QQHeadInfo:downLoadUrl	Ljava/lang/String;
-    //   141: invokestatic 220	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   144: ifne +2378 -> 2522
+    //   138: getfield 233	AvatarInfo/QQHeadInfo:downLoadUrl	Ljava/lang/String;
+    //   141: invokestatic 239	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   144: ifne +2438 -> 2582
     //   147: iload 14
     //   149: istore 10
     //   151: iload 29
@@ -358,13 +364,13 @@ public class QQHeadDownloadHandler
     //   167: aload 35
     //   169: aload 36
     //   171: aload 35
-    //   173: getfield 68	AvatarInfo/QQHeadInfo:dstUsrType	B
+    //   173: getfield 67	AvatarInfo/QQHeadInfo:dstUsrType	B
     //   176: aload 36
     //   178: aload 35
-    //   180: getfield 84	AvatarInfo/QQHeadInfo:idType	I
-    //   183: invokestatic 224	com/tencent/mobileqq/app/QQAppInterface:getFaceSettingKey	(ILjava/lang/String;I)Ljava/lang/String;
+    //   180: getfield 91	AvatarInfo/QQHeadInfo:idType	I
+    //   183: invokestatic 244	com/tencent/mobileqq/avatar/utils/AvatarUtil:a	(ILjava/lang/String;I)Ljava/lang/String;
     //   186: iconst_0
-    //   187: invokevirtual 228	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:getFaceSetting	(LAvatarInfo/QQHeadInfo;Ljava/lang/String;Ljava/lang/String;Z)[Ljava/lang/Object;
+    //   187: invokevirtual 248	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:getFaceSetting	(LAvatarInfo/QQHeadInfo;Ljava/lang/String;Ljava/lang/String;Z)[Ljava/lang/Object;
     //   190: astore 31
     //   192: iload 14
     //   194: istore 10
@@ -379,8 +385,8 @@ public class QQHeadDownloadHandler
     //   211: aload 31
     //   213: iconst_0
     //   214: aaload
-    //   215: checkcast 92	java/lang/Boolean
-    //   218: invokevirtual 231	java/lang/Boolean:booleanValue	()Z
+    //   215: checkcast 99	java/lang/Boolean
+    //   218: invokevirtual 251	java/lang/Boolean:booleanValue	()Z
     //   221: istore 23
     //   223: iload 14
     //   225: istore 10
@@ -395,7 +401,7 @@ public class QQHeadDownloadHandler
     //   242: aload 31
     //   244: iconst_1
     //   245: aaload
-    //   246: checkcast 233	com/tencent/mobileqq/data/Setting
+    //   246: checkcast 253	com/tencent/mobileqq/data/Setting
     //   249: astore 37
     //   251: iload 23
     //   253: ifeq +30 -> 283
@@ -412,7 +418,7 @@ public class QQHeadDownloadHandler
     //   275: aload_0
     //   276: aload 35
     //   278: aload 36
-    //   280: invokespecial 235	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:removeFileCache	(LAvatarInfo/QQHeadInfo;Ljava/lang/String;)V
+    //   280: invokespecial 255	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:removeFileCache	(LAvatarInfo/QQHeadInfo;Ljava/lang/String;)V
     //   283: iload 14
     //   285: istore 10
     //   287: iload 29
@@ -424,10 +430,10 @@ public class QQHeadDownloadHandler
     //   299: iload 20
     //   301: istore_3
     //   302: aload_0
-    //   303: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   306: invokevirtual 239	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   309: invokevirtual 245	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
-    //   312: invokestatic 250	aoks:a	(Landroid/content/Context;)Z
+    //   303: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   306: invokevirtual 259	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   309: invokevirtual 265	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
+    //   312: invokestatic 270	com/tencent/mobileqq/app/face/util/FaceUtil:a	(Landroid/content/Context;)Z
     //   315: ifeq +128 -> 443
     //   318: iload 14
     //   320: istore 10
@@ -439,7 +445,7 @@ public class QQHeadDownloadHandler
     //   332: astore 30
     //   334: iload 20
     //   336: istore_3
-    //   337: invokestatic 255	com/tencent/mobileqq/util/SystemUtil:isExistSDCard	()Z
+    //   337: invokestatic 274	com/tencent/mobileqq/util/SystemUtil:a	()Z
     //   340: ifeq +103 -> 443
     //   343: iload 14
     //   345: istore 10
@@ -466,26 +472,26 @@ public class QQHeadDownloadHandler
     //   386: aload 31
     //   388: monitorenter
     //   389: aload_0
-    //   390: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   393: invokevirtual 239	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   396: invokevirtual 245	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
-    //   399: invokestatic 250	aoks:a	(Landroid/content/Context;)Z
+    //   390: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   393: invokevirtual 259	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   396: invokevirtual 265	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
+    //   399: invokestatic 270	com/tencent/mobileqq/app/face/util/FaceUtil:a	(Landroid/content/Context;)Z
     //   402: ifeq +24 -> 426
-    //   405: invokestatic 255	com/tencent/mobileqq/util/SystemUtil:isExistSDCard	()Z
+    //   405: invokestatic 274	com/tencent/mobileqq/util/SystemUtil:a	()Z
     //   408: istore 22
     //   410: iload 22
     //   412: ifeq +14 -> 426
-    //   415: ldc_w 257
-    //   418: getstatic 262	com/tencent/mobileqq/app/AppConstants:PATH_CUSTOM_HEAD_ROOT_SDCARD	Ljava/lang/String;
+    //   415: ldc_w 276
+    //   418: getstatic 281	com/tencent/mobileqq/app/AppConstants:PATH_CUSTOM_HEAD_ROOT_SDCARD	Ljava/lang/String;
     //   421: iconst_1
-    //   422: invokestatic 268	com/tencent/mobileqq/utils/FileUtils:copyDirectory	(Ljava/lang/String;Ljava/lang/String;Z)I
+    //   422: invokestatic 286	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;Ljava/lang/String;Z)I
     //   425: pop
     //   426: aload_0
-    //   427: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   430: invokevirtual 239	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   433: invokevirtual 245	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
+    //   427: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   430: invokevirtual 259	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   433: invokevirtual 265	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
     //   436: iconst_0
-    //   437: invokestatic 271	aoks:a	(Landroid/content/Context;Z)V
+    //   437: invokestatic 289	com/tencent/mobileqq/app/face/util/FaceUtil:a	(Landroid/content/Context;Z)V
     //   440: aload 31
     //   442: monitorexit
     //   443: iload 14
@@ -499,1210 +505,1227 @@ public class QQHeadDownloadHandler
     //   459: iload 20
     //   461: istore_3
     //   462: aload_0
-    //   463: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   466: aload 37
-    //   468: aload 35
-    //   470: getfield 84	AvatarInfo/QQHeadInfo:idType	I
-    //   473: aload 35
-    //   475: getfield 98	AvatarInfo/QQHeadInfo:sizeType	I
-    //   478: invokevirtual 275	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePathBySetting	(Lcom/tencent/mobileqq/data/Setting;II)Ljava/lang/String;
-    //   481: astore 33
-    //   483: iload 14
-    //   485: istore 10
-    //   487: iload 29
-    //   489: istore 24
-    //   491: iload 18
-    //   493: istore 7
-    //   495: aload 32
-    //   497: astore 30
-    //   499: iload 20
-    //   501: istore_3
-    //   502: new 277	java/io/File
-    //   505: dup
-    //   506: aload 33
-    //   508: iconst_0
-    //   509: aload 33
-    //   511: ldc_w 279
-    //   514: invokevirtual 283	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   517: invokevirtual 287	java/lang/String:substring	(II)Ljava/lang/String;
-    //   520: invokespecial 290	java/io/File:<init>	(Ljava/lang/String;)V
-    //   523: astore 31
-    //   525: aload 31
-    //   527: ifnull +55 -> 582
-    //   530: iload 14
-    //   532: istore 10
-    //   534: iload 29
-    //   536: istore 24
-    //   538: iload 18
-    //   540: istore 7
-    //   542: aload 32
-    //   544: astore 30
-    //   546: iload 20
-    //   548: istore_3
-    //   549: aload 31
-    //   551: invokevirtual 293	java/io/File:exists	()Z
-    //   554: ifne +28 -> 582
-    //   557: iload 14
-    //   559: istore 10
-    //   561: iload 29
-    //   563: istore 24
-    //   565: iload 18
-    //   567: istore 7
-    //   569: aload 32
-    //   571: astore 30
-    //   573: iload 20
-    //   575: istore_3
-    //   576: aload 31
-    //   578: invokevirtual 296	java/io/File:mkdirs	()Z
-    //   581: pop
-    //   582: iload 14
-    //   584: istore 10
-    //   586: iload 29
-    //   588: istore 24
-    //   590: iload 18
-    //   592: istore 7
-    //   594: aload 32
-    //   596: astore 30
-    //   598: iload 20
-    //   600: istore_3
-    //   601: new 277	java/io/File
-    //   604: dup
-    //   605: aload 33
-    //   607: invokespecial 290	java/io/File:<init>	(Ljava/lang/String;)V
-    //   610: astore 38
-    //   612: iload 23
-    //   614: istore 22
-    //   616: iload 23
-    //   618: ifne +37 -> 655
-    //   621: iload 14
-    //   623: istore 10
-    //   625: iload 29
-    //   627: istore 24
-    //   629: iload 18
-    //   631: istore 7
-    //   633: aload 32
-    //   635: astore 30
-    //   637: iload 20
-    //   639: istore_3
-    //   640: aload 38
-    //   642: invokevirtual 293	java/io/File:exists	()Z
-    //   645: istore 22
-    //   647: iload 22
-    //   649: ifne +897 -> 1546
-    //   652: iconst_1
-    //   653: istore 22
-    //   655: iload 22
-    //   657: ifeq +1519 -> 2176
-    //   660: iload 15
-    //   662: istore 11
-    //   664: iload 28
-    //   666: istore 25
-    //   668: iload 17
-    //   670: istore 8
-    //   672: aload 32
-    //   674: astore 31
-    //   676: iload 19
-    //   678: istore 4
-    //   680: iload 14
-    //   682: istore 10
-    //   684: iload 29
-    //   686: istore 24
-    //   688: iload 18
-    //   690: istore 7
-    //   692: aload 32
-    //   694: astore 30
-    //   696: iload 20
-    //   698: istore_3
-    //   699: aload_0
-    //   700: aload_1
-    //   701: iconst_0
-    //   702: invokevirtual 300	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:getQQHeadDownloadUrl	(Lcom/tencent/mobileqq/app/face/FaceInfo;Z)Ljava/lang/String;
-    //   705: astore 34
-    //   707: iload 15
-    //   709: istore 11
-    //   711: iload 28
-    //   713: istore 25
-    //   715: iload 17
-    //   717: istore 8
-    //   719: aload 34
-    //   721: astore 31
-    //   723: iload 19
-    //   725: istore 4
-    //   727: iload 14
-    //   729: istore 10
-    //   731: iload 29
-    //   733: istore 24
-    //   735: iload 18
-    //   737: istore 7
-    //   739: aload 34
-    //   741: astore 30
-    //   743: iload 20
-    //   745: istore_3
-    //   746: aload 35
-    //   748: getfield 303	AvatarInfo/QQHeadInfo:cHeadType	B
-    //   751: ifne +903 -> 1654
-    //   754: iload 15
-    //   756: istore 11
-    //   758: iload 28
-    //   760: istore 25
-    //   762: iload 17
-    //   764: istore 8
-    //   766: aload 34
-    //   768: astore 31
-    //   770: iload 19
-    //   772: istore 4
-    //   774: iload 14
-    //   776: istore 10
-    //   778: iload 29
-    //   780: istore 24
-    //   782: iload 18
-    //   784: istore 7
-    //   786: aload 34
-    //   788: astore 30
-    //   790: iload 20
-    //   792: istore_3
-    //   793: aload 35
-    //   795: getfield 68	AvatarInfo/QQHeadInfo:dstUsrType	B
-    //   798: istore 5
-    //   800: iload 5
-    //   802: iconst_4
-    //   803: if_icmpne +851 -> 1654
-    //   806: iload 15
-    //   808: istore 11
-    //   810: iload 28
-    //   812: istore 25
-    //   814: iload 17
-    //   816: istore 8
-    //   818: aload 34
-    //   820: astore 31
-    //   822: iload 19
-    //   824: istore 4
-    //   826: iload 14
-    //   828: istore 10
-    //   830: iload 29
-    //   832: istore 24
-    //   834: iload 18
-    //   836: istore 7
-    //   838: aload 34
-    //   840: astore 30
-    //   842: iload 20
-    //   844: istore_3
-    //   845: aload 38
-    //   847: invokevirtual 293	java/io/File:exists	()Z
-    //   850: ifne +53 -> 903
-    //   853: iload 15
-    //   855: istore 11
-    //   857: iload 28
-    //   859: istore 25
-    //   861: iload 17
-    //   863: istore 8
-    //   865: aload 34
-    //   867: astore 31
-    //   869: iload 19
-    //   871: istore 4
-    //   873: iload 14
-    //   875: istore 10
-    //   877: iload 29
-    //   879: istore 24
-    //   881: iload 18
-    //   883: istore 7
-    //   885: aload 34
-    //   887: astore 30
-    //   889: iload 20
-    //   891: istore_3
-    //   892: aload_0
-    //   893: aload 35
-    //   895: getfield 307	AvatarInfo/QQHeadInfo:systemHeadID	S
-    //   898: aload 38
-    //   900: invokespecial 309	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:writeTroopSystemHead	(ILjava/io/File;)V
-    //   903: iconst_1
-    //   904: istore 23
-    //   906: aload 34
-    //   908: astore 32
-    //   910: iload 12
-    //   912: istore 5
-    //   914: iload 13
-    //   916: istore 6
-    //   918: iload 9
-    //   920: istore 11
-    //   922: iload 23
-    //   924: istore 25
-    //   926: iload 5
-    //   928: istore 8
-    //   930: aload 32
-    //   932: astore 31
-    //   934: iload_2
-    //   935: istore 4
-    //   937: iload 6
-    //   939: istore 10
-    //   941: iload 23
-    //   943: istore 24
-    //   945: iload 5
-    //   947: istore 7
-    //   949: aload 32
-    //   951: astore 30
-    //   953: iload_2
-    //   954: istore_3
-    //   955: aload_0
-    //   956: aload 35
-    //   958: aload 36
-    //   960: iload 23
-    //   962: invokespecial 311	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:removeCache	(LAvatarInfo/QQHeadInfo;Ljava/lang/String;Z)V
-    //   965: iload 9
-    //   967: istore 4
-    //   969: iload 6
-    //   971: istore_3
-    //   972: aload 32
-    //   974: astore 30
-    //   976: aload_0
-    //   977: aload 35
-    //   979: aload 36
-    //   981: aload 33
-    //   983: iload 22
-    //   985: iload 23
-    //   987: aload 30
-    //   989: invokespecial 313	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:notifyDownloadHeadComplete	(LAvatarInfo/QQHeadInfo;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;)V
-    //   992: iload 4
-    //   994: istore 6
-    //   996: iload_3
-    //   997: istore 4
+    //   463: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   466: ldc 134
+    //   468: ldc 77
+    //   470: invokevirtual 83	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   473: checkcast 134	com/tencent/mobileqq/avatar/api/IQQAvatarDataService
+    //   476: aload 37
+    //   478: aload 35
+    //   480: getfield 91	AvatarInfo/QQHeadInfo:idType	I
+    //   483: aload 35
+    //   485: getfield 105	AvatarInfo/QQHeadInfo:sizeType	I
+    //   488: invokeinterface 293 4 0
+    //   493: astore 33
+    //   495: iload 14
+    //   497: istore 10
+    //   499: iload 29
+    //   501: istore 24
+    //   503: iload 18
+    //   505: istore 7
+    //   507: aload 32
+    //   509: astore 30
+    //   511: iload 20
+    //   513: istore_3
+    //   514: new 295	java/io/File
+    //   517: dup
+    //   518: aload 33
+    //   520: iconst_0
+    //   521: aload 33
+    //   523: ldc_w 297
+    //   526: invokevirtual 301	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   529: invokevirtual 305	java/lang/String:substring	(II)Ljava/lang/String;
+    //   532: invokespecial 308	java/io/File:<init>	(Ljava/lang/String;)V
+    //   535: astore 31
+    //   537: aload 31
+    //   539: ifnull +55 -> 594
+    //   542: iload 14
+    //   544: istore 10
+    //   546: iload 29
+    //   548: istore 24
+    //   550: iload 18
+    //   552: istore 7
+    //   554: aload 32
+    //   556: astore 30
+    //   558: iload 20
+    //   560: istore_3
+    //   561: aload 31
+    //   563: invokevirtual 311	java/io/File:exists	()Z
+    //   566: ifne +28 -> 594
+    //   569: iload 14
+    //   571: istore 10
+    //   573: iload 29
+    //   575: istore 24
+    //   577: iload 18
+    //   579: istore 7
+    //   581: aload 32
+    //   583: astore 30
+    //   585: iload 20
+    //   587: istore_3
+    //   588: aload 31
+    //   590: invokevirtual 314	java/io/File:mkdirs	()Z
+    //   593: pop
+    //   594: iload 14
+    //   596: istore 10
+    //   598: iload 29
+    //   600: istore 24
+    //   602: iload 18
+    //   604: istore 7
+    //   606: aload 32
+    //   608: astore 30
+    //   610: iload 20
+    //   612: istore_3
+    //   613: new 295	java/io/File
+    //   616: dup
+    //   617: aload 33
+    //   619: invokespecial 308	java/io/File:<init>	(Ljava/lang/String;)V
+    //   622: astore 38
+    //   624: iload 23
+    //   626: istore 22
+    //   628: iload 23
+    //   630: ifne +37 -> 667
+    //   633: iload 14
+    //   635: istore 10
+    //   637: iload 29
+    //   639: istore 24
+    //   641: iload 18
+    //   643: istore 7
+    //   645: aload 32
+    //   647: astore 30
+    //   649: iload 20
+    //   651: istore_3
+    //   652: aload 38
+    //   654: invokevirtual 311	java/io/File:exists	()Z
+    //   657: istore 22
+    //   659: iload 22
+    //   661: ifne +909 -> 1570
+    //   664: iconst_1
+    //   665: istore 22
+    //   667: iload 22
+    //   669: ifeq +1549 -> 2218
+    //   672: iload 15
+    //   674: istore 11
+    //   676: iload 28
+    //   678: istore 25
+    //   680: iload 17
+    //   682: istore 8
+    //   684: aload 32
+    //   686: astore 31
+    //   688: iload 19
+    //   690: istore 4
+    //   692: iload 14
+    //   694: istore 10
+    //   696: iload 29
+    //   698: istore 24
+    //   700: iload 18
+    //   702: istore 7
+    //   704: aload 32
+    //   706: astore 30
+    //   708: iload 20
+    //   710: istore_3
+    //   711: aload_0
+    //   712: aload_1
+    //   713: iconst_0
+    //   714: invokevirtual 318	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:getQQHeadDownloadUrl	(Lcom/tencent/mobileqq/app/face/FaceInfo;Z)Ljava/lang/String;
+    //   717: astore 34
+    //   719: iload 15
+    //   721: istore 11
+    //   723: iload 28
+    //   725: istore 25
+    //   727: iload 17
+    //   729: istore 8
+    //   731: aload 34
+    //   733: astore 31
+    //   735: iload 19
+    //   737: istore 4
+    //   739: iload 14
+    //   741: istore 10
+    //   743: iload 29
+    //   745: istore 24
+    //   747: iload 18
+    //   749: istore 7
+    //   751: aload 34
+    //   753: astore 30
+    //   755: iload 20
+    //   757: istore_3
+    //   758: aload 35
+    //   760: getfield 321	AvatarInfo/QQHeadInfo:cHeadType	B
+    //   763: ifne +921 -> 1684
+    //   766: iload 15
+    //   768: istore 11
+    //   770: iload 28
+    //   772: istore 25
+    //   774: iload 17
+    //   776: istore 8
+    //   778: aload 34
+    //   780: astore 31
+    //   782: iload 19
+    //   784: istore 4
+    //   786: iload 14
+    //   788: istore 10
+    //   790: iload 29
+    //   792: istore 24
+    //   794: iload 18
+    //   796: istore 7
+    //   798: aload 34
+    //   800: astore 30
+    //   802: iload 20
+    //   804: istore_3
+    //   805: aload 35
+    //   807: getfield 67	AvatarInfo/QQHeadInfo:dstUsrType	B
+    //   810: istore 5
+    //   812: iload 5
+    //   814: iconst_4
+    //   815: if_icmpne +869 -> 1684
+    //   818: iload 15
+    //   820: istore 11
+    //   822: iload 28
+    //   824: istore 25
+    //   826: iload 17
+    //   828: istore 8
+    //   830: aload 34
+    //   832: astore 31
+    //   834: iload 19
+    //   836: istore 4
+    //   838: iload 14
+    //   840: istore 10
+    //   842: iload 29
+    //   844: istore 24
+    //   846: iload 18
+    //   848: istore 7
+    //   850: aload 34
+    //   852: astore 30
+    //   854: iload 20
+    //   856: istore_3
+    //   857: aload 38
+    //   859: invokevirtual 311	java/io/File:exists	()Z
+    //   862: ifne +53 -> 915
+    //   865: iload 15
+    //   867: istore 11
+    //   869: iload 28
+    //   871: istore 25
+    //   873: iload 17
+    //   875: istore 8
+    //   877: aload 34
+    //   879: astore 31
+    //   881: iload 19
+    //   883: istore 4
+    //   885: iload 14
+    //   887: istore 10
+    //   889: iload 29
+    //   891: istore 24
+    //   893: iload 18
+    //   895: istore 7
+    //   897: aload 34
+    //   899: astore 30
+    //   901: iload 20
+    //   903: istore_3
+    //   904: aload_0
+    //   905: aload 35
+    //   907: getfield 325	AvatarInfo/QQHeadInfo:systemHeadID	S
+    //   910: aload 38
+    //   912: invokespecial 327	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:writeTroopSystemHead	(ILjava/io/File;)V
+    //   915: iconst_1
+    //   916: istore 23
+    //   918: aload 34
+    //   920: astore 32
+    //   922: iload 12
+    //   924: istore 5
+    //   926: iload 13
+    //   928: istore 6
+    //   930: iload 9
+    //   932: istore 11
+    //   934: iload 23
+    //   936: istore 25
+    //   938: iload 5
+    //   940: istore 8
+    //   942: aload 32
+    //   944: astore 31
+    //   946: iload_2
+    //   947: istore 4
+    //   949: iload 6
+    //   951: istore 10
+    //   953: iload 23
+    //   955: istore 24
+    //   957: iload 5
+    //   959: istore 7
+    //   961: aload 32
+    //   963: astore 30
+    //   965: iload_2
+    //   966: istore_3
+    //   967: aload_0
+    //   968: aload 35
+    //   970: aload 36
+    //   972: iload 23
+    //   974: invokespecial 329	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:removeCache	(LAvatarInfo/QQHeadInfo;Ljava/lang/String;Z)V
+    //   977: iload 9
+    //   979: istore 4
+    //   981: iload 6
+    //   983: istore_3
+    //   984: aload 32
+    //   986: astore 30
+    //   988: aload_0
+    //   989: aload 35
+    //   991: aload 36
+    //   993: aload 33
+    //   995: iload 22
+    //   997: iload 23
     //   999: aload 30
-    //   1001: astore 32
-    //   1003: iload 23
-    //   1005: istore 24
-    //   1007: aload 33
-    //   1009: astore 30
-    //   1011: iload 22
-    //   1013: istore 23
-    //   1015: iload 24
-    //   1017: istore 22
-    //   1019: iload 6
-    //   1021: istore_3
-    //   1022: iload_2
-    //   1023: istore 6
-    //   1025: iload 4
-    //   1027: istore_2
-    //   1028: new 315	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable
-    //   1031: dup
-    //   1032: aload_0
-    //   1033: iload_2
-    //   1034: aload 36
-    //   1036: aload 35
-    //   1038: getfield 84	AvatarInfo/QQHeadInfo:idType	I
-    //   1041: aload 35
-    //   1043: getfield 98	AvatarInfo/QQHeadInfo:sizeType	I
-    //   1046: aload 35
-    //   1048: getfield 68	AvatarInfo/QQHeadInfo:dstUsrType	B
-    //   1051: iconst_4
-    //   1052: iload 5
-    //   1054: aload 32
-    //   1056: iload 6
-    //   1058: invokestatic 321	java/lang/System:currentTimeMillis	()J
-    //   1061: invokespecial 324	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;ILjava/lang/String;IIIIILjava/lang/String;IJ)V
-    //   1064: aconst_null
-    //   1065: iconst_0
-    //   1066: invokestatic 328	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   1069: aload_0
-    //   1070: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1073: getstatic 333	com/tencent/mobileqq/app/QQManagerFactory:CLASSIC_HEAD_ACIVITY_MANAGER	I
-    //   1076: invokevirtual 337	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1079: checkcast 339	aozr
-    //   1082: astore 31
-    //   1084: iload_2
-    //   1085: istore 4
-    //   1087: aload 32
-    //   1089: astore 33
-    //   1091: iload_3
-    //   1092: istore 5
-    //   1094: iload 22
-    //   1096: istore 24
-    //   1098: iload 23
-    //   1100: istore 25
-    //   1102: aload 30
-    //   1104: astore 34
-    //   1106: iload 22
-    //   1108: ifne +95 -> 1203
-    //   1111: iload_2
-    //   1112: istore 4
-    //   1114: aload 32
-    //   1116: astore 33
-    //   1118: iload_3
-    //   1119: istore 5
-    //   1121: iload 22
-    //   1123: istore 24
-    //   1125: iload 23
-    //   1127: istore 25
-    //   1129: aload 30
-    //   1131: astore 34
-    //   1133: aload 31
-    //   1135: ifnull +68 -> 1203
-    //   1138: iload_2
-    //   1139: istore 4
-    //   1141: aload 32
-    //   1143: astore 33
-    //   1145: iload_3
-    //   1146: istore 5
-    //   1148: iload 22
-    //   1150: istore 24
-    //   1152: iload 23
-    //   1154: istore 25
-    //   1156: aload 30
-    //   1158: astore 34
-    //   1160: aload 31
-    //   1162: invokevirtual 341	aozr:a	()Z
-    //   1165: ifeq +38 -> 1203
-    //   1168: aload 31
-    //   1170: aload 35
-    //   1172: getfield 194	AvatarInfo/QQHeadInfo:uin	J
-    //   1175: invokestatic 344	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1178: invokevirtual 346	aozr:a	(Ljava/lang/String;)V
-    //   1181: aload 30
-    //   1183: astore 34
-    //   1185: iload 23
-    //   1187: istore 25
-    //   1189: iload 22
-    //   1191: istore 24
-    //   1193: iload_3
-    //   1194: istore 5
-    //   1196: aload 32
-    //   1198: astore 33
-    //   1200: iload_2
-    //   1201: istore 4
-    //   1203: ldc 8
-    //   1205: iconst_2
-    //   1206: new 348	java/lang/StringBuilder
-    //   1209: dup
-    //   1210: invokespecial 349	java/lang/StringBuilder:<init>	()V
-    //   1213: ldc_w 351
-    //   1216: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1219: iload 24
-    //   1221: invokevirtual 358	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1224: ldc_w 360
-    //   1227: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1230: iload 4
-    //   1232: invokevirtual 363	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1235: ldc_w 365
-    //   1238: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1241: iload 25
-    //   1243: invokevirtual 358	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1246: ldc_w 367
-    //   1249: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1252: iload 5
-    //   1254: invokevirtual 363	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1257: ldc_w 369
-    //   1260: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1263: aload_1
-    //   1264: invokevirtual 372	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1267: ldc_w 374
-    //   1270: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1273: aload 35
-    //   1275: invokevirtual 372	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1278: ldc_w 376
-    //   1281: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1284: aload 34
-    //   1286: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1289: ldc_w 378
-    //   1292: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1295: aload 33
-    //   1297: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1300: invokevirtual 381	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1303: invokestatic 385	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1306: return
-    //   1307: astore 30
-    //   1309: aload 30
-    //   1311: invokevirtual 388	java/lang/Exception:printStackTrace	()V
-    //   1314: goto -888 -> 426
-    //   1317: astore 33
-    //   1319: aload 31
-    //   1321: monitorexit
-    //   1322: iload 14
-    //   1324: istore 10
-    //   1326: iload 29
-    //   1328: istore 24
-    //   1330: iload 18
-    //   1332: istore 7
-    //   1334: aload 32
-    //   1336: astore 30
-    //   1338: iload 20
-    //   1340: istore_3
-    //   1341: aload 33
-    //   1343: athrow
-    //   1344: astore 30
-    //   1346: iconst_0
-    //   1347: istore_2
-    //   1348: iconst_0
-    //   1349: istore 22
-    //   1351: aconst_null
-    //   1352: astore 30
-    //   1354: aload 32
-    //   1356: astore 31
-    //   1358: iload 6
-    //   1360: istore 5
-    //   1362: sipush 9204
-    //   1365: istore_3
-    //   1366: new 315	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable
-    //   1369: dup
-    //   1370: aload_0
-    //   1371: sipush 9204
-    //   1374: aload 36
-    //   1376: aload 35
-    //   1378: getfield 84	AvatarInfo/QQHeadInfo:idType	I
-    //   1381: aload 35
-    //   1383: getfield 98	AvatarInfo/QQHeadInfo:sizeType	I
-    //   1386: aload 35
-    //   1388: getfield 68	AvatarInfo/QQHeadInfo:dstUsrType	B
-    //   1391: iconst_4
-    //   1392: iload 5
-    //   1394: aload 31
-    //   1396: iload 4
-    //   1398: invokestatic 321	java/lang/System:currentTimeMillis	()J
-    //   1401: invokespecial 324	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;ILjava/lang/String;IIIIILjava/lang/String;IJ)V
-    //   1404: aconst_null
-    //   1405: iconst_0
-    //   1406: invokestatic 328	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   1409: aload_0
-    //   1410: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1413: getstatic 333	com/tencent/mobileqq/app/QQManagerFactory:CLASSIC_HEAD_ACIVITY_MANAGER	I
-    //   1416: invokevirtual 337	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1419: checkcast 339	aozr
-    //   1422: astore 32
-    //   1424: iload_3
-    //   1425: istore 4
-    //   1427: aload 31
-    //   1429: astore 33
-    //   1431: iload_2
-    //   1432: istore 5
-    //   1434: iload 22
-    //   1436: istore 24
-    //   1438: iload 23
-    //   1440: istore 25
-    //   1442: aload 30
-    //   1444: astore 34
-    //   1446: iload 22
-    //   1448: ifne -245 -> 1203
-    //   1451: iload_3
-    //   1452: istore 4
-    //   1454: aload 31
-    //   1456: astore 33
-    //   1458: iload_2
-    //   1459: istore 5
-    //   1461: iload 22
-    //   1463: istore 24
-    //   1465: iload 23
-    //   1467: istore 25
-    //   1469: aload 30
-    //   1471: astore 34
-    //   1473: aload 32
-    //   1475: ifnull -272 -> 1203
-    //   1478: iload_3
-    //   1479: istore 4
-    //   1481: aload 31
-    //   1483: astore 33
-    //   1485: iload_2
-    //   1486: istore 5
-    //   1488: iload 22
-    //   1490: istore 24
-    //   1492: iload 23
-    //   1494: istore 25
-    //   1496: aload 30
-    //   1498: astore 34
-    //   1500: aload 32
-    //   1502: invokevirtual 341	aozr:a	()Z
-    //   1505: ifeq -302 -> 1203
-    //   1508: aload 32
-    //   1510: aload 35
-    //   1512: getfield 194	AvatarInfo/QQHeadInfo:uin	J
-    //   1515: invokestatic 344	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1518: invokevirtual 346	aozr:a	(Ljava/lang/String;)V
-    //   1521: iload_3
-    //   1522: istore 4
-    //   1524: aload 31
-    //   1526: astore 33
-    //   1528: iload_2
-    //   1529: istore 5
-    //   1531: iload 22
-    //   1533: istore 24
-    //   1535: iload 23
-    //   1537: istore 25
-    //   1539: aload 30
-    //   1541: astore 34
-    //   1543: goto -340 -> 1203
-    //   1546: iconst_0
-    //   1547: istore 22
-    //   1549: goto -894 -> 655
-    //   1552: astore_1
-    //   1553: new 315	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable
-    //   1556: dup
-    //   1557: aload_0
-    //   1558: sipush 9202
-    //   1561: aload 36
-    //   1563: aload 35
-    //   1565: getfield 84	AvatarInfo/QQHeadInfo:idType	I
-    //   1568: aload 35
-    //   1570: getfield 98	AvatarInfo/QQHeadInfo:sizeType	I
-    //   1573: aload 35
-    //   1575: getfield 68	AvatarInfo/QQHeadInfo:dstUsrType	B
-    //   1578: iconst_4
-    //   1579: iconst_0
-    //   1580: aload 32
-    //   1582: iconst_0
-    //   1583: invokestatic 321	java/lang/System:currentTimeMillis	()J
-    //   1586: invokespecial 324	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;ILjava/lang/String;IIIIILjava/lang/String;IJ)V
-    //   1589: aconst_null
-    //   1590: iconst_0
-    //   1591: invokestatic 328	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   1594: aload_0
-    //   1595: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1598: getstatic 333	com/tencent/mobileqq/app/QQManagerFactory:CLASSIC_HEAD_ACIVITY_MANAGER	I
-    //   1601: invokevirtual 337	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1604: checkcast 339	aozr
-    //   1607: astore_1
-    //   1608: aload_1
-    //   1609: ifnull -303 -> 1306
-    //   1612: aload_1
-    //   1613: invokevirtual 341	aozr:a	()Z
-    //   1616: ifeq -310 -> 1306
-    //   1619: aload_1
-    //   1620: aload 35
-    //   1622: getfield 194	AvatarInfo/QQHeadInfo:uin	J
-    //   1625: invokestatic 344	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1628: invokevirtual 346	aozr:a	(Ljava/lang/String;)V
-    //   1631: return
-    //   1632: astore 30
-    //   1634: sipush 9202
-    //   1637: istore 6
-    //   1639: iload 26
-    //   1641: istore 23
-    //   1643: iload 12
-    //   1645: istore 5
-    //   1647: aload 34
-    //   1649: astore 32
-    //   1651: goto -733 -> 918
-    //   1654: iload 15
-    //   1656: istore 11
-    //   1658: iload 28
-    //   1660: istore 25
-    //   1662: iload 17
-    //   1664: istore 8
-    //   1666: aload 34
-    //   1668: astore 31
-    //   1670: iload 19
-    //   1672: istore 4
-    //   1674: iload 14
-    //   1676: istore 10
-    //   1678: iload 29
-    //   1680: istore 24
-    //   1682: iload 18
-    //   1684: istore 7
-    //   1686: aload 34
-    //   1688: astore 30
-    //   1690: iload 20
-    //   1692: istore_3
-    //   1693: aload_0
-    //   1694: aload 34
-    //   1696: aload 38
-    //   1698: aload_1
-    //   1699: iconst_0
-    //   1700: invokevirtual 392	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:downloadData	(Ljava/lang/String;Ljava/io/File;Lcom/tencent/mobileqq/app/face/FaceInfo;Z)I
-    //   1703: istore 5
-    //   1705: aload 34
-    //   1707: astore 32
-    //   1709: iload 5
-    //   1711: istore_2
-    //   1712: iload 5
-    //   1714: ifeq +228 -> 1942
-    //   1717: aload 34
-    //   1719: astore 32
-    //   1721: iload 5
-    //   1723: istore_2
-    //   1724: iload 15
-    //   1726: istore 11
-    //   1728: iload 28
-    //   1730: istore 25
-    //   1732: iload 17
-    //   1734: istore 8
-    //   1736: aload 34
-    //   1738: astore 31
-    //   1740: iload 5
-    //   1742: istore 4
-    //   1744: iload 14
-    //   1746: istore 10
-    //   1748: iload 29
-    //   1750: istore 24
-    //   1752: iload 18
-    //   1754: istore 7
-    //   1756: aload 34
-    //   1758: astore 30
-    //   1760: iload 5
-    //   1762: istore_3
-    //   1763: iconst_1
-    //   1764: invokestatic 398	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getActiveNetIpFamily	(Z)I
-    //   1767: iconst_3
-    //   1768: if_icmpne +174 -> 1942
-    //   1771: iload 15
-    //   1773: istore 11
-    //   1775: iload 28
-    //   1777: istore 25
-    //   1779: iload 17
-    //   1781: istore 8
-    //   1783: aload 34
-    //   1785: astore 31
-    //   1787: iload 5
-    //   1789: istore 4
-    //   1791: iload 14
-    //   1793: istore 10
-    //   1795: iload 29
-    //   1797: istore 24
-    //   1799: iload 18
-    //   1801: istore 7
-    //   1803: aload 34
-    //   1805: astore 30
-    //   1807: iload 5
-    //   1809: istore_3
-    //   1810: aload_0
-    //   1811: aload_1
-    //   1812: iconst_1
-    //   1813: invokevirtual 300	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:getQQHeadDownloadUrl	(Lcom/tencent/mobileqq/app/face/FaceInfo;Z)Ljava/lang/String;
-    //   1816: astore 32
-    //   1818: iload 15
-    //   1820: istore 11
-    //   1822: iload 28
-    //   1824: istore 25
-    //   1826: iload 17
-    //   1828: istore 8
-    //   1830: aload 32
-    //   1832: astore 31
-    //   1834: iload 5
-    //   1836: istore 4
-    //   1838: iload 14
-    //   1840: istore 10
-    //   1842: iload 29
-    //   1844: istore 24
-    //   1846: iload 18
-    //   1848: istore 7
-    //   1850: aload 32
-    //   1852: astore 30
-    //   1854: iload 5
-    //   1856: istore_3
-    //   1857: aload_0
-    //   1858: aload 32
-    //   1860: aload 38
-    //   1862: aload_1
-    //   1863: iconst_0
-    //   1864: invokevirtual 392	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:downloadData	(Ljava/lang/String;Ljava/io/File;Lcom/tencent/mobileqq/app/face/FaceInfo;Z)I
-    //   1867: istore_2
-    //   1868: iload 15
-    //   1870: istore 11
-    //   1872: iload 28
-    //   1874: istore 25
-    //   1876: iload 17
-    //   1878: istore 8
+    //   1001: invokespecial 331	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:notifyDownloadHeadComplete	(LAvatarInfo/QQHeadInfo;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;)V
+    //   1004: iload 4
+    //   1006: istore 6
+    //   1008: iload_3
+    //   1009: istore 4
+    //   1011: aload 30
+    //   1013: astore 32
+    //   1015: iload 23
+    //   1017: istore 24
+    //   1019: aload 33
+    //   1021: astore 30
+    //   1023: iload 22
+    //   1025: istore 23
+    //   1027: iload 24
+    //   1029: istore 22
+    //   1031: iload 6
+    //   1033: istore_3
+    //   1034: iload_2
+    //   1035: istore 6
+    //   1037: iload 4
+    //   1039: istore_2
+    //   1040: new 333	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable
+    //   1043: dup
+    //   1044: aload_0
+    //   1045: iload_2
+    //   1046: aload 36
+    //   1048: aload 35
+    //   1050: getfield 91	AvatarInfo/QQHeadInfo:idType	I
+    //   1053: aload 35
+    //   1055: getfield 105	AvatarInfo/QQHeadInfo:sizeType	I
+    //   1058: aload 35
+    //   1060: getfield 67	AvatarInfo/QQHeadInfo:dstUsrType	B
+    //   1063: iconst_4
+    //   1064: iload 5
+    //   1066: aload 32
+    //   1068: iload 6
+    //   1070: invokestatic 339	java/lang/System:currentTimeMillis	()J
+    //   1073: invokespecial 342	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;ILjava/lang/String;IIIIILjava/lang/String;IJ)V
+    //   1076: aconst_null
+    //   1077: iconst_0
+    //   1078: invokestatic 346	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1081: aload_0
+    //   1082: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   1085: ldc_w 348
+    //   1088: ldc 77
+    //   1090: invokevirtual 83	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   1093: checkcast 348	com/tencent/mobileqq/avatar/api/IQQClassicAvatarService
+    //   1096: astore 31
+    //   1098: iload_2
+    //   1099: istore 4
+    //   1101: aload 32
+    //   1103: astore 33
+    //   1105: iload_3
+    //   1106: istore 5
+    //   1108: iload 22
+    //   1110: istore 24
+    //   1112: iload 23
+    //   1114: istore 25
+    //   1116: aload 30
+    //   1118: astore 34
+    //   1120: iload 22
+    //   1122: ifne +99 -> 1221
+    //   1125: iload_2
+    //   1126: istore 4
+    //   1128: aload 32
+    //   1130: astore 33
+    //   1132: iload_3
+    //   1133: istore 5
+    //   1135: iload 22
+    //   1137: istore 24
+    //   1139: iload 23
+    //   1141: istore 25
+    //   1143: aload 30
+    //   1145: astore 34
+    //   1147: aload 31
+    //   1149: ifnull +72 -> 1221
+    //   1152: iload_2
+    //   1153: istore 4
+    //   1155: aload 32
+    //   1157: astore 33
+    //   1159: iload_3
+    //   1160: istore 5
+    //   1162: iload 22
+    //   1164: istore 24
+    //   1166: iload 23
+    //   1168: istore 25
+    //   1170: aload 30
+    //   1172: astore 34
+    //   1174: aload 31
+    //   1176: invokeinterface 351 1 0
+    //   1181: ifeq +40 -> 1221
+    //   1184: aload 31
+    //   1186: aload 35
+    //   1188: getfield 215	AvatarInfo/QQHeadInfo:uin	J
+    //   1191: invokestatic 354	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1194: invokeinterface 357 2 0
+    //   1199: aload 30
+    //   1201: astore 34
+    //   1203: iload 23
+    //   1205: istore 25
+    //   1207: iload 22
+    //   1209: istore 24
+    //   1211: iload_3
+    //   1212: istore 5
+    //   1214: aload 32
+    //   1216: astore 33
+    //   1218: iload_2
+    //   1219: istore 4
+    //   1221: ldc 8
+    //   1223: iconst_2
+    //   1224: new 359	java/lang/StringBuilder
+    //   1227: dup
+    //   1228: invokespecial 360	java/lang/StringBuilder:<init>	()V
+    //   1231: ldc_w 362
+    //   1234: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1237: iload 24
+    //   1239: invokevirtual 369	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1242: ldc_w 371
+    //   1245: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1248: iload 4
+    //   1250: invokevirtual 374	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1253: ldc_w 376
+    //   1256: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1259: iload 25
+    //   1261: invokevirtual 369	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1264: ldc_w 378
+    //   1267: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1270: iload 5
+    //   1272: invokevirtual 374	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1275: ldc_w 380
+    //   1278: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1281: aload_1
+    //   1282: invokevirtual 383	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1285: ldc_w 385
+    //   1288: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1291: aload 35
+    //   1293: invokevirtual 383	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1296: ldc_w 387
+    //   1299: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1302: aload 34
+    //   1304: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1307: ldc_w 389
+    //   1310: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1313: aload 33
+    //   1315: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1318: invokevirtual 392	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1321: invokestatic 396	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1324: return
+    //   1325: astore 30
+    //   1327: aload 30
+    //   1329: invokevirtual 399	java/lang/Exception:printStackTrace	()V
+    //   1332: goto -906 -> 426
+    //   1335: astore 33
+    //   1337: aload 31
+    //   1339: monitorexit
+    //   1340: iload 14
+    //   1342: istore 10
+    //   1344: iload 29
+    //   1346: istore 24
+    //   1348: iload 18
+    //   1350: istore 7
+    //   1352: aload 32
+    //   1354: astore 30
+    //   1356: iload 20
+    //   1358: istore_3
+    //   1359: aload 33
+    //   1361: athrow
+    //   1362: astore 30
+    //   1364: iconst_0
+    //   1365: istore_2
+    //   1366: iconst_0
+    //   1367: istore 22
+    //   1369: aconst_null
+    //   1370: astore 30
+    //   1372: aload 32
+    //   1374: astore 31
+    //   1376: iload 6
+    //   1378: istore 5
+    //   1380: sipush 9204
+    //   1383: istore_3
+    //   1384: new 333	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable
+    //   1387: dup
+    //   1388: aload_0
+    //   1389: sipush 9204
+    //   1392: aload 36
+    //   1394: aload 35
+    //   1396: getfield 91	AvatarInfo/QQHeadInfo:idType	I
+    //   1399: aload 35
+    //   1401: getfield 105	AvatarInfo/QQHeadInfo:sizeType	I
+    //   1404: aload 35
+    //   1406: getfield 67	AvatarInfo/QQHeadInfo:dstUsrType	B
+    //   1409: iconst_4
+    //   1410: iload 5
+    //   1412: aload 31
+    //   1414: iload 4
+    //   1416: invokestatic 339	java/lang/System:currentTimeMillis	()J
+    //   1419: invokespecial 342	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;ILjava/lang/String;IIIIILjava/lang/String;IJ)V
+    //   1422: aconst_null
+    //   1423: iconst_0
+    //   1424: invokestatic 346	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1427: aload_0
+    //   1428: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   1431: ldc_w 348
+    //   1434: ldc 77
+    //   1436: invokevirtual 83	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   1439: checkcast 348	com/tencent/mobileqq/avatar/api/IQQClassicAvatarService
+    //   1442: astore 32
+    //   1444: iload_3
+    //   1445: istore 4
+    //   1447: aload 31
+    //   1449: astore 33
+    //   1451: iload_2
+    //   1452: istore 5
+    //   1454: iload 22
+    //   1456: istore 24
+    //   1458: iload 23
+    //   1460: istore 25
+    //   1462: aload 30
+    //   1464: astore 34
+    //   1466: iload 22
+    //   1468: ifne -247 -> 1221
+    //   1471: iload_3
+    //   1472: istore 4
+    //   1474: aload 31
+    //   1476: astore 33
+    //   1478: iload_2
+    //   1479: istore 5
+    //   1481: iload 22
+    //   1483: istore 24
+    //   1485: iload 23
+    //   1487: istore 25
+    //   1489: aload 30
+    //   1491: astore 34
+    //   1493: aload 32
+    //   1495: ifnull -274 -> 1221
+    //   1498: iload_3
+    //   1499: istore 4
+    //   1501: aload 31
+    //   1503: astore 33
+    //   1505: iload_2
+    //   1506: istore 5
+    //   1508: iload 22
+    //   1510: istore 24
+    //   1512: iload 23
+    //   1514: istore 25
+    //   1516: aload 30
+    //   1518: astore 34
+    //   1520: aload 32
+    //   1522: invokeinterface 351 1 0
+    //   1527: ifeq -306 -> 1221
+    //   1530: aload 32
+    //   1532: aload 35
+    //   1534: getfield 215	AvatarInfo/QQHeadInfo:uin	J
+    //   1537: invokestatic 354	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1540: invokeinterface 357 2 0
+    //   1545: iload_3
+    //   1546: istore 4
+    //   1548: aload 31
+    //   1550: astore 33
+    //   1552: iload_2
+    //   1553: istore 5
+    //   1555: iload 22
+    //   1557: istore 24
+    //   1559: iload 23
+    //   1561: istore 25
+    //   1563: aload 30
+    //   1565: astore 34
+    //   1567: goto -346 -> 1221
+    //   1570: iconst_0
+    //   1571: istore 22
+    //   1573: goto -906 -> 667
+    //   1576: astore_1
+    //   1577: new 333	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable
+    //   1580: dup
+    //   1581: aload_0
+    //   1582: sipush 9202
+    //   1585: aload 36
+    //   1587: aload 35
+    //   1589: getfield 91	AvatarInfo/QQHeadInfo:idType	I
+    //   1592: aload 35
+    //   1594: getfield 105	AvatarInfo/QQHeadInfo:sizeType	I
+    //   1597: aload 35
+    //   1599: getfield 67	AvatarInfo/QQHeadInfo:dstUsrType	B
+    //   1602: iconst_4
+    //   1603: iconst_0
+    //   1604: aload 32
+    //   1606: iconst_0
+    //   1607: invokestatic 339	java/lang/System:currentTimeMillis	()J
+    //   1610: invokespecial 342	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;ILjava/lang/String;IIIIILjava/lang/String;IJ)V
+    //   1613: aconst_null
+    //   1614: iconst_0
+    //   1615: invokestatic 346	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1618: aload_0
+    //   1619: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   1622: ldc_w 348
+    //   1625: ldc 77
+    //   1627: invokevirtual 83	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   1630: checkcast 348	com/tencent/mobileqq/avatar/api/IQQClassicAvatarService
+    //   1633: astore_1
+    //   1634: aload_1
+    //   1635: ifnull -311 -> 1324
+    //   1638: aload_1
+    //   1639: invokeinterface 351 1 0
+    //   1644: ifeq -320 -> 1324
+    //   1647: aload_1
+    //   1648: aload 35
+    //   1650: getfield 215	AvatarInfo/QQHeadInfo:uin	J
+    //   1653: invokestatic 354	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1656: invokeinterface 357 2 0
+    //   1661: return
+    //   1662: astore 30
+    //   1664: sipush 9202
+    //   1667: istore 6
+    //   1669: iload 26
+    //   1671: istore 23
+    //   1673: iload 12
+    //   1675: istore 5
+    //   1677: aload 34
+    //   1679: astore 32
+    //   1681: goto -751 -> 930
+    //   1684: iload 15
+    //   1686: istore 11
+    //   1688: iload 28
+    //   1690: istore 25
+    //   1692: iload 17
+    //   1694: istore 8
+    //   1696: aload 34
+    //   1698: astore 31
+    //   1700: iload 19
+    //   1702: istore 4
+    //   1704: iload 14
+    //   1706: istore 10
+    //   1708: iload 29
+    //   1710: istore 24
+    //   1712: iload 18
+    //   1714: istore 7
+    //   1716: aload 34
+    //   1718: astore 30
+    //   1720: iload 20
+    //   1722: istore_3
+    //   1723: aload_0
+    //   1724: aload 34
+    //   1726: aload 38
+    //   1728: aload_1
+    //   1729: iconst_0
+    //   1730: invokevirtual 403	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:downloadData	(Ljava/lang/String;Ljava/io/File;Lcom/tencent/mobileqq/app/face/FaceInfo;Z)I
+    //   1733: istore 5
+    //   1735: aload 34
+    //   1737: astore 32
+    //   1739: iload 5
+    //   1741: istore_2
+    //   1742: iload 5
+    //   1744: ifeq +228 -> 1972
+    //   1747: aload 34
+    //   1749: astore 32
+    //   1751: iload 5
+    //   1753: istore_2
+    //   1754: iload 15
+    //   1756: istore 11
+    //   1758: iload 28
+    //   1760: istore 25
+    //   1762: iload 17
+    //   1764: istore 8
+    //   1766: aload 34
+    //   1768: astore 31
+    //   1770: iload 5
+    //   1772: istore 4
+    //   1774: iload 14
+    //   1776: istore 10
+    //   1778: iload 29
+    //   1780: istore 24
+    //   1782: iload 18
+    //   1784: istore 7
+    //   1786: aload 34
+    //   1788: astore 30
+    //   1790: iload 5
+    //   1792: istore_3
+    //   1793: iconst_1
+    //   1794: invokestatic 409	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getActiveNetIpFamily	(Z)I
+    //   1797: iconst_3
+    //   1798: if_icmpne +174 -> 1972
+    //   1801: iload 15
+    //   1803: istore 11
+    //   1805: iload 28
+    //   1807: istore 25
+    //   1809: iload 17
+    //   1811: istore 8
+    //   1813: aload 34
+    //   1815: astore 31
+    //   1817: iload 5
+    //   1819: istore 4
+    //   1821: iload 14
+    //   1823: istore 10
+    //   1825: iload 29
+    //   1827: istore 24
+    //   1829: iload 18
+    //   1831: istore 7
+    //   1833: aload 34
+    //   1835: astore 30
+    //   1837: iload 5
+    //   1839: istore_3
+    //   1840: aload_0
+    //   1841: aload_1
+    //   1842: iconst_1
+    //   1843: invokevirtual 318	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:getQQHeadDownloadUrl	(Lcom/tencent/mobileqq/app/face/FaceInfo;Z)Ljava/lang/String;
+    //   1846: astore 32
+    //   1848: iload 15
+    //   1850: istore 11
+    //   1852: iload 28
+    //   1854: istore 25
+    //   1856: iload 17
+    //   1858: istore 8
+    //   1860: aload 32
+    //   1862: astore 31
+    //   1864: iload 5
+    //   1866: istore 4
+    //   1868: iload 14
+    //   1870: istore 10
+    //   1872: iload 29
+    //   1874: istore 24
+    //   1876: iload 18
+    //   1878: istore 7
     //   1880: aload 32
-    //   1882: astore 31
-    //   1884: iload_2
-    //   1885: istore 4
-    //   1887: iload 14
-    //   1889: istore 10
-    //   1891: iload 29
-    //   1893: istore 24
-    //   1895: iload 18
-    //   1897: istore 7
-    //   1899: aload 32
-    //   1901: astore 30
-    //   1903: iload_2
-    //   1904: istore_3
-    //   1905: ldc 8
-    //   1907: iconst_1
-    //   1908: new 348	java/lang/StringBuilder
-    //   1911: dup
-    //   1912: invokespecial 349	java/lang/StringBuilder:<init>	()V
-    //   1915: ldc_w 400
-    //   1918: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1921: aload 32
-    //   1923: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1926: ldc_w 402
-    //   1929: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1932: iload_2
-    //   1933: invokevirtual 363	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1936: invokevirtual 381	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1939: invokestatic 385	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1942: iload_2
-    //   1943: ifne +190 -> 2133
-    //   1946: iload 15
-    //   1948: istore 11
-    //   1950: iload 28
-    //   1952: istore 25
-    //   1954: iload 17
-    //   1956: istore 8
-    //   1958: aload 32
-    //   1960: astore 31
+    //   1882: astore 30
+    //   1884: iload 5
+    //   1886: istore_3
+    //   1887: aload_0
+    //   1888: aload 32
+    //   1890: aload 38
+    //   1892: aload_1
+    //   1893: iconst_0
+    //   1894: invokevirtual 403	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:downloadData	(Ljava/lang/String;Ljava/io/File;Lcom/tencent/mobileqq/app/face/FaceInfo;Z)I
+    //   1897: istore_2
+    //   1898: iload 15
+    //   1900: istore 11
+    //   1902: iload 28
+    //   1904: istore 25
+    //   1906: iload 17
+    //   1908: istore 8
+    //   1910: aload 32
+    //   1912: astore 31
+    //   1914: iload_2
+    //   1915: istore 4
+    //   1917: iload 14
+    //   1919: istore 10
+    //   1921: iload 29
+    //   1923: istore 24
+    //   1925: iload 18
+    //   1927: istore 7
+    //   1929: aload 32
+    //   1931: astore 30
+    //   1933: iload_2
+    //   1934: istore_3
+    //   1935: ldc 8
+    //   1937: iconst_1
+    //   1938: new 359	java/lang/StringBuilder
+    //   1941: dup
+    //   1942: invokespecial 360	java/lang/StringBuilder:<init>	()V
+    //   1945: ldc_w 411
+    //   1948: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1951: aload 32
+    //   1953: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1956: ldc_w 413
+    //   1959: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1962: iload_2
-    //   1963: istore 4
-    //   1965: iload 14
-    //   1967: istore 10
-    //   1969: iload 29
-    //   1971: istore 24
-    //   1973: iload 18
-    //   1975: istore 7
-    //   1977: aload 32
-    //   1979: astore 30
-    //   1981: iload_2
-    //   1982: istore_3
-    //   1983: aload 38
-    //   1985: invokevirtual 405	java/io/File:length	()J
-    //   1988: l2i
-    //   1989: istore 5
-    //   1991: iconst_1
-    //   1992: istore 26
-    //   1994: iconst_1
-    //   1995: istore 27
-    //   1997: iconst_1
-    //   1998: istore 23
-    //   2000: iload 15
-    //   2002: istore 11
-    //   2004: iload 26
-    //   2006: istore 25
-    //   2008: iload 5
-    //   2010: istore 8
-    //   2012: aload 32
-    //   2014: astore 31
-    //   2016: iload_2
-    //   2017: istore 4
-    //   2019: iload 14
-    //   2021: istore 10
-    //   2023: iload 27
-    //   2025: istore 24
-    //   2027: iload 5
-    //   2029: istore 7
-    //   2031: aload 32
-    //   2033: astore 30
-    //   2035: iload_2
-    //   2036: istore_3
-    //   2037: aload_0
-    //   2038: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   2041: aload 37
-    //   2043: invokevirtual 409	com/tencent/mobileqq/app/QQAppInterface:updateSettingTableCache	(Lcom/tencent/mobileqq/data/Setting;)V
-    //   2046: iload 15
-    //   2048: istore 11
-    //   2050: iload 26
-    //   2052: istore 25
-    //   2054: iload 5
-    //   2056: istore 8
-    //   2058: aload 32
-    //   2060: astore 31
-    //   2062: iload_2
-    //   2063: istore 4
-    //   2065: iload 14
-    //   2067: istore 10
-    //   2069: iload 27
-    //   2071: istore 24
-    //   2073: iload 5
-    //   2075: istore 7
-    //   2077: aload 32
-    //   2079: astore 30
-    //   2081: iload_2
-    //   2082: istore_3
-    //   2083: aload_0
-    //   2084: getfield 51	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:mSubhandler	Lmqq/os/MqqHandler;
-    //   2087: new 411	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$UpdateSettingRunnable
-    //   2090: dup
-    //   2091: aload_0
-    //   2092: aload 37
-    //   2094: aload_1
-    //   2095: invokespecial 414	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$UpdateSettingRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;Lcom/tencent/mobileqq/data/Setting;Lcom/tencent/mobileqq/app/face/FaceInfo;)V
-    //   2098: invokevirtual 418	mqq/os/MqqHandler:postAtFrontOfQueue	(Ljava/lang/Runnable;)Z
-    //   2101: pop
-    //   2102: iload 13
-    //   2104: istore 6
-    //   2106: goto -1188 -> 918
-    //   2109: astore 30
-    //   2111: iload 11
-    //   2113: istore_2
-    //   2114: iload 22
-    //   2116: istore 23
-    //   2118: aload 33
-    //   2120: astore 30
-    //   2122: iload 8
-    //   2124: istore 5
-    //   2126: iload 25
-    //   2128: istore 22
-    //   2130: goto -768 -> 1362
-    //   2133: iload 14
-    //   2135: istore 10
-    //   2137: iload 29
-    //   2139: istore 24
-    //   2141: iload 18
-    //   2143: istore 7
-    //   2145: aload 32
-    //   2147: astore 30
-    //   2149: iload_2
-    //   2150: istore_3
-    //   2151: aload_0
-    //   2152: iload_2
-    //   2153: invokespecial 420	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:setResultCodeByErrorCode	(I)I
-    //   2156: istore 4
-    //   2158: iload 4
-    //   2160: istore 6
-    //   2162: iload_2
-    //   2163: istore 9
-    //   2165: iload 26
-    //   2167: istore 23
-    //   2169: iload 12
-    //   2171: istore 5
-    //   2173: goto -1255 -> 918
-    //   2176: iload 15
-    //   2178: istore 11
-    //   2180: iload 28
-    //   2182: istore 25
-    //   2184: iload 17
-    //   2186: istore 8
-    //   2188: aload 32
-    //   2190: astore 31
-    //   2192: iload 19
-    //   2194: istore 4
-    //   2196: iload 14
-    //   2198: istore 10
-    //   2200: iload 29
-    //   2202: istore 24
-    //   2204: iload 18
-    //   2206: istore 7
-    //   2208: aload 32
-    //   2210: astore 30
-    //   2212: iload 20
-    //   2214: istore_3
-    //   2215: aload_0
-    //   2216: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   2219: aload 37
-    //   2221: invokevirtual 409	com/tencent/mobileqq/app/QQAppInterface:updateSettingTableCache	(Lcom/tencent/mobileqq/data/Setting;)V
-    //   2224: iload 15
-    //   2226: istore 11
-    //   2228: iload 28
-    //   2230: istore 25
-    //   2232: iload 17
-    //   2234: istore 8
-    //   2236: aload 32
-    //   2238: astore 31
-    //   2240: iload 19
-    //   2242: istore 4
-    //   2244: iload 14
-    //   2246: istore 10
-    //   2248: iload 29
-    //   2250: istore 24
-    //   2252: iload 18
-    //   2254: istore 7
-    //   2256: aload 32
-    //   2258: astore 30
-    //   2260: iload 20
-    //   2262: istore_3
-    //   2263: aload_0
-    //   2264: getfield 51	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:mSubhandler	Lmqq/os/MqqHandler;
-    //   2267: new 411	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$UpdateSettingRunnable
-    //   2270: dup
-    //   2271: aload_0
-    //   2272: aload 37
-    //   2274: aload_1
-    //   2275: invokespecial 414	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$UpdateSettingRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;Lcom/tencent/mobileqq/data/Setting;Lcom/tencent/mobileqq/app/face/FaceInfo;)V
-    //   2278: invokevirtual 418	mqq/os/MqqHandler:postAtFrontOfQueue	(Ljava/lang/Runnable;)Z
-    //   2281: pop
-    //   2282: iconst_0
-    //   2283: istore 4
-    //   2285: iconst_0
-    //   2286: istore_3
-    //   2287: aload 32
-    //   2289: astore 30
-    //   2291: iload 27
-    //   2293: istore 23
-    //   2295: iload 16
-    //   2297: istore_2
-    //   2298: goto -1322 -> 976
-    //   2301: astore_1
-    //   2302: iload_3
-    //   2303: istore_2
-    //   2304: iload 7
-    //   2306: istore 5
-    //   2308: new 315	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable
-    //   2311: dup
-    //   2312: aload_0
-    //   2313: iload 10
-    //   2315: aload 36
-    //   2317: aload 35
-    //   2319: getfield 84	AvatarInfo/QQHeadInfo:idType	I
-    //   2322: aload 35
-    //   2324: getfield 98	AvatarInfo/QQHeadInfo:sizeType	I
-    //   2327: aload 35
-    //   2329: getfield 68	AvatarInfo/QQHeadInfo:dstUsrType	B
-    //   2332: iconst_4
-    //   2333: iload 5
-    //   2335: aload 30
-    //   2337: iload_2
-    //   2338: invokestatic 321	java/lang/System:currentTimeMillis	()J
-    //   2341: invokespecial 324	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;ILjava/lang/String;IIIIILjava/lang/String;IJ)V
-    //   2344: aconst_null
-    //   2345: iconst_0
-    //   2346: invokestatic 328	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   2349: aload_0
-    //   2350: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   2353: getstatic 333	com/tencent/mobileqq/app/QQManagerFactory:CLASSIC_HEAD_ACIVITY_MANAGER	I
-    //   2356: invokevirtual 337	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   2359: checkcast 339	aozr
-    //   2362: astore 30
-    //   2364: iload 24
-    //   2366: ifne +29 -> 2395
-    //   2369: aload 30
-    //   2371: ifnull +24 -> 2395
-    //   2374: aload 30
-    //   2376: invokevirtual 341	aozr:a	()Z
-    //   2379: ifeq +16 -> 2395
-    //   2382: aload 30
-    //   2384: aload 35
-    //   2386: getfield 194	AvatarInfo/QQHeadInfo:uin	J
-    //   2389: invokestatic 344	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   2392: invokevirtual 346	aozr:a	(Ljava/lang/String;)V
-    //   2395: aload_1
-    //   2396: athrow
-    //   2397: astore_1
-    //   2398: iload_3
-    //   2399: istore 10
-    //   2401: iload 23
-    //   2403: istore 24
-    //   2405: goto -97 -> 2308
-    //   2408: astore 30
-    //   2410: iconst_0
-    //   2411: istore_2
-    //   2412: iconst_0
-    //   2413: istore 22
-    //   2415: iconst_0
-    //   2416: istore 23
-    //   2418: aconst_null
-    //   2419: astore 30
-    //   2421: iload 6
-    //   2423: istore 5
-    //   2425: aload 32
-    //   2427: astore 31
-    //   2429: goto -1067 -> 1362
-    //   2432: astore 30
-    //   2434: iconst_0
-    //   2435: istore_2
-    //   2436: iconst_0
-    //   2437: istore 22
-    //   2439: aload 33
-    //   2441: astore 30
-    //   2443: iload 6
-    //   2445: istore 5
-    //   2447: aload 32
-    //   2449: astore 31
-    //   2451: goto -1089 -> 1362
-    //   2454: astore 30
-    //   2456: iload_2
-    //   2457: istore_3
-    //   2458: iconst_0
-    //   2459: istore 24
-    //   2461: iload 22
-    //   2463: istore 23
-    //   2465: aload 33
-    //   2467: astore 30
-    //   2469: iload 6
-    //   2471: istore 5
-    //   2473: aload 32
-    //   2475: astore 31
-    //   2477: iload_2
-    //   2478: istore 4
-    //   2480: iload_3
-    //   2481: istore_2
-    //   2482: iload 24
-    //   2484: istore 22
-    //   2486: goto -1124 -> 1362
-    //   2489: astore 31
-    //   2491: iload 4
-    //   2493: istore_3
-    //   2494: iload 22
-    //   2496: istore 24
-    //   2498: aload 30
-    //   2500: astore 31
-    //   2502: iload_2
-    //   2503: istore 4
-    //   2505: iload_3
-    //   2506: istore_2
-    //   2507: iload 23
-    //   2509: istore 22
-    //   2511: iload 24
-    //   2513: istore 23
-    //   2515: aload 33
-    //   2517: astore 30
-    //   2519: goto -1157 -> 1362
-    //   2522: iconst_0
-    //   2523: istore_3
-    //   2524: iconst_0
-    //   2525: istore 22
-    //   2527: iconst_0
-    //   2528: istore 23
-    //   2530: aconst_null
-    //   2531: astore 30
-    //   2533: iload 21
-    //   2535: istore_2
-    //   2536: iload 11
-    //   2538: istore 5
-    //   2540: iload 8
-    //   2542: istore 6
-    //   2544: goto -1516 -> 1028
+    //   1963: invokevirtual 374	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1966: invokevirtual 392	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1969: invokestatic 396	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1972: iload_2
+    //   1973: ifne +202 -> 2175
+    //   1976: iload 15
+    //   1978: istore 11
+    //   1980: iload 28
+    //   1982: istore 25
+    //   1984: iload 17
+    //   1986: istore 8
+    //   1988: aload 32
+    //   1990: astore 31
+    //   1992: iload_2
+    //   1993: istore 4
+    //   1995: iload 14
+    //   1997: istore 10
+    //   1999: iload 29
+    //   2001: istore 24
+    //   2003: iload 18
+    //   2005: istore 7
+    //   2007: aload 32
+    //   2009: astore 30
+    //   2011: iload_2
+    //   2012: istore_3
+    //   2013: aload 38
+    //   2015: invokevirtual 416	java/io/File:length	()J
+    //   2018: l2i
+    //   2019: istore 5
+    //   2021: iconst_1
+    //   2022: istore 26
+    //   2024: iconst_1
+    //   2025: istore 27
+    //   2027: iconst_1
+    //   2028: istore 23
+    //   2030: iload 15
+    //   2032: istore 11
+    //   2034: iload 26
+    //   2036: istore 25
+    //   2038: iload 5
+    //   2040: istore 8
+    //   2042: aload 32
+    //   2044: astore 31
+    //   2046: iload_2
+    //   2047: istore 4
+    //   2049: iload 14
+    //   2051: istore 10
+    //   2053: iload 27
+    //   2055: istore 24
+    //   2057: iload 5
+    //   2059: istore 7
+    //   2061: aload 32
+    //   2063: astore 30
+    //   2065: iload_2
+    //   2066: istore_3
+    //   2067: aload_0
+    //   2068: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   2071: ldc 134
+    //   2073: ldc 77
+    //   2075: invokevirtual 83	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   2078: checkcast 134	com/tencent/mobileqq/avatar/api/IQQAvatarDataService
+    //   2081: aload 37
+    //   2083: invokeinterface 420 2 0
+    //   2088: iload 15
+    //   2090: istore 11
+    //   2092: iload 26
+    //   2094: istore 25
+    //   2096: iload 5
+    //   2098: istore 8
+    //   2100: aload 32
+    //   2102: astore 31
+    //   2104: iload_2
+    //   2105: istore 4
+    //   2107: iload 14
+    //   2109: istore 10
+    //   2111: iload 27
+    //   2113: istore 24
+    //   2115: iload 5
+    //   2117: istore 7
+    //   2119: aload 32
+    //   2121: astore 30
+    //   2123: iload_2
+    //   2124: istore_3
+    //   2125: aload_0
+    //   2126: getfield 51	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:mSubhandler	Lmqq/os/MqqHandler;
+    //   2129: new 422	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$UpdateSettingRunnable
+    //   2132: dup
+    //   2133: aload_0
+    //   2134: aload 37
+    //   2136: aload_1
+    //   2137: invokespecial 425	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$UpdateSettingRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;Lcom/tencent/mobileqq/data/Setting;Lcom/tencent/mobileqq/app/face/FaceInfo;)V
+    //   2140: invokevirtual 429	mqq/os/MqqHandler:postAtFrontOfQueue	(Ljava/lang/Runnable;)Z
+    //   2143: pop
+    //   2144: iload 13
+    //   2146: istore 6
+    //   2148: goto -1218 -> 930
+    //   2151: astore 30
+    //   2153: iload 11
+    //   2155: istore_2
+    //   2156: iload 22
+    //   2158: istore 23
+    //   2160: aload 33
+    //   2162: astore 30
+    //   2164: iload 8
+    //   2166: istore 5
+    //   2168: iload 25
+    //   2170: istore 22
+    //   2172: goto -792 -> 1380
+    //   2175: iload 14
+    //   2177: istore 10
+    //   2179: iload 29
+    //   2181: istore 24
+    //   2183: iload 18
+    //   2185: istore 7
+    //   2187: aload 32
+    //   2189: astore 30
+    //   2191: iload_2
+    //   2192: istore_3
+    //   2193: aload_0
+    //   2194: iload_2
+    //   2195: invokespecial 431	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:setResultCodeByErrorCode	(I)I
+    //   2198: istore 4
+    //   2200: iload 4
+    //   2202: istore 6
+    //   2204: iload_2
+    //   2205: istore 9
+    //   2207: iload 26
+    //   2209: istore 23
+    //   2211: iload 12
+    //   2213: istore 5
+    //   2215: goto -1285 -> 930
+    //   2218: iload 15
+    //   2220: istore 11
+    //   2222: iload 28
+    //   2224: istore 25
+    //   2226: iload 17
+    //   2228: istore 8
+    //   2230: aload 32
+    //   2232: astore 31
+    //   2234: iload 19
+    //   2236: istore 4
+    //   2238: iload 14
+    //   2240: istore 10
+    //   2242: iload 29
+    //   2244: istore 24
+    //   2246: iload 18
+    //   2248: istore 7
+    //   2250: aload 32
+    //   2252: astore 30
+    //   2254: iload 20
+    //   2256: istore_3
+    //   2257: aload_0
+    //   2258: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   2261: ldc 134
+    //   2263: ldc 77
+    //   2265: invokevirtual 83	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   2268: checkcast 134	com/tencent/mobileqq/avatar/api/IQQAvatarDataService
+    //   2271: aload 37
+    //   2273: invokeinterface 420 2 0
+    //   2278: iload 15
+    //   2280: istore 11
+    //   2282: iload 28
+    //   2284: istore 25
+    //   2286: iload 17
+    //   2288: istore 8
+    //   2290: aload 32
+    //   2292: astore 31
+    //   2294: iload 19
+    //   2296: istore 4
+    //   2298: iload 14
+    //   2300: istore 10
+    //   2302: iload 29
+    //   2304: istore 24
+    //   2306: iload 18
+    //   2308: istore 7
+    //   2310: aload 32
+    //   2312: astore 30
+    //   2314: iload 20
+    //   2316: istore_3
+    //   2317: aload_0
+    //   2318: getfield 51	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:mSubhandler	Lmqq/os/MqqHandler;
+    //   2321: new 422	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$UpdateSettingRunnable
+    //   2324: dup
+    //   2325: aload_0
+    //   2326: aload 37
+    //   2328: aload_1
+    //   2329: invokespecial 425	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$UpdateSettingRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;Lcom/tencent/mobileqq/data/Setting;Lcom/tencent/mobileqq/app/face/FaceInfo;)V
+    //   2332: invokevirtual 429	mqq/os/MqqHandler:postAtFrontOfQueue	(Ljava/lang/Runnable;)Z
+    //   2335: pop
+    //   2336: iconst_0
+    //   2337: istore 4
+    //   2339: iconst_0
+    //   2340: istore_3
+    //   2341: aload 32
+    //   2343: astore 30
+    //   2345: iload 27
+    //   2347: istore 23
+    //   2349: iload 16
+    //   2351: istore_2
+    //   2352: goto -1364 -> 988
+    //   2355: astore_1
+    //   2356: iload_3
+    //   2357: istore_2
+    //   2358: iload 7
+    //   2360: istore 5
+    //   2362: new 333	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable
+    //   2365: dup
+    //   2366: aload_0
+    //   2367: iload 10
+    //   2369: aload 36
+    //   2371: aload 35
+    //   2373: getfield 91	AvatarInfo/QQHeadInfo:idType	I
+    //   2376: aload 35
+    //   2378: getfield 105	AvatarInfo/QQHeadInfo:sizeType	I
+    //   2381: aload 35
+    //   2383: getfield 67	AvatarInfo/QQHeadInfo:dstUsrType	B
+    //   2386: iconst_4
+    //   2387: iload 5
+    //   2389: aload 30
+    //   2391: iload_2
+    //   2392: invokestatic 339	java/lang/System:currentTimeMillis	()J
+    //   2395: invokespecial 342	com/tencent/mobileqq/app/face/QQHeadDownloadHandler$HeadCostStatRunnable:<init>	(Lcom/tencent/mobileqq/app/face/QQHeadDownloadHandler;ILjava/lang/String;IIIIILjava/lang/String;IJ)V
+    //   2398: aconst_null
+    //   2399: iconst_0
+    //   2400: invokestatic 346	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   2403: aload_0
+    //   2404: getfield 53	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:app	Lcom/tencent/common/app/AppInterface;
+    //   2407: ldc_w 348
+    //   2410: ldc 77
+    //   2412: invokevirtual 83	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   2415: checkcast 348	com/tencent/mobileqq/avatar/api/IQQClassicAvatarService
+    //   2418: astore 30
+    //   2420: iload 24
+    //   2422: ifne +33 -> 2455
+    //   2425: aload 30
+    //   2427: ifnull +28 -> 2455
+    //   2430: aload 30
+    //   2432: invokeinterface 351 1 0
+    //   2437: ifeq +18 -> 2455
+    //   2440: aload 30
+    //   2442: aload 35
+    //   2444: getfield 215	AvatarInfo/QQHeadInfo:uin	J
+    //   2447: invokestatic 354	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   2450: invokeinterface 357 2 0
+    //   2455: aload_1
+    //   2456: athrow
+    //   2457: astore_1
+    //   2458: iload_3
+    //   2459: istore 10
+    //   2461: iload 23
+    //   2463: istore 24
+    //   2465: goto -103 -> 2362
+    //   2468: astore 30
+    //   2470: iconst_0
+    //   2471: istore_2
+    //   2472: iconst_0
+    //   2473: istore 22
+    //   2475: iconst_0
+    //   2476: istore 23
+    //   2478: aconst_null
+    //   2479: astore 30
+    //   2481: iload 6
+    //   2483: istore 5
+    //   2485: aload 32
+    //   2487: astore 31
+    //   2489: goto -1109 -> 1380
+    //   2492: astore 30
+    //   2494: iconst_0
+    //   2495: istore_2
+    //   2496: iconst_0
+    //   2497: istore 22
+    //   2499: aload 33
+    //   2501: astore 30
+    //   2503: iload 6
+    //   2505: istore 5
+    //   2507: aload 32
+    //   2509: astore 31
+    //   2511: goto -1131 -> 1380
+    //   2514: astore 30
+    //   2516: iload_2
+    //   2517: istore_3
+    //   2518: iconst_0
+    //   2519: istore 24
+    //   2521: iload 22
+    //   2523: istore 23
+    //   2525: aload 33
+    //   2527: astore 30
+    //   2529: iload 6
+    //   2531: istore 5
+    //   2533: aload 32
+    //   2535: astore 31
+    //   2537: iload_2
+    //   2538: istore 4
+    //   2540: iload_3
+    //   2541: istore_2
+    //   2542: iload 24
+    //   2544: istore 22
+    //   2546: goto -1166 -> 1380
+    //   2549: astore 31
+    //   2551: iload 4
+    //   2553: istore_3
+    //   2554: iload 22
+    //   2556: istore 24
+    //   2558: aload 30
+    //   2560: astore 31
+    //   2562: iload_2
+    //   2563: istore 4
+    //   2565: iload_3
+    //   2566: istore_2
+    //   2567: iload 23
+    //   2569: istore 22
+    //   2571: iload 24
+    //   2573: istore 23
+    //   2575: aload 33
+    //   2577: astore 30
+    //   2579: goto -1199 -> 1380
+    //   2582: iconst_0
+    //   2583: istore_3
+    //   2584: iconst_0
+    //   2585: istore 22
+    //   2587: iconst_0
+    //   2588: istore 23
+    //   2590: aconst_null
+    //   2591: astore 30
+    //   2593: iload 21
+    //   2595: istore_2
+    //   2596: iload 11
+    //   2598: istore 5
+    //   2600: iload 8
+    //   2602: istore 6
+    //   2604: goto -1564 -> 1040
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2547	0	this	QQHeadDownloadHandler
-    //   0	2547	1	paramFaceInfo	FaceInfo
-    //   116	2420	2	i	int
-    //   135	2389	3	j	int
-    //   107	2397	4	k	int
-    //   61	2478	5	m	int
-    //   67	2476	6	n	int
-    //   127	2178	7	i1	int
-    //   104	2437	8	i2	int
-    //   98	2066	9	i3	int
-    //   119	2281	10	i4	int
-    //   64	2473	11	i5	int
-    //   76	2094	12	i6	int
-    //   92	2011	13	i7	int
-    //   89	2156	14	i8	int
-    //   95	2130	15	i9	int
-    //   101	2195	16	i10	int
-    //   70	2163	17	i11	int
-    //   73	2180	18	i12	int
-    //   110	2131	19	i13	int
-    //   113	2148	20	i14	int
-    //   86	2448	21	i15	int
-    //   408	2118	22	bool1	boolean
-    //   221	2308	23	bool2	boolean
-    //   123	2389	24	bool3	boolean
-    //   666	1565	25	bool4	boolean
-    //   58	2108	26	bool5	boolean
-    //   49	2243	27	bool6	boolean
-    //   52	2177	28	bool7	boolean
-    //   55	2194	29	bool8	boolean
-    //   131	1051	30	localObject1	Object
-    //   1307	3	30	localException1	java.lang.Exception
-    //   1336	1	30	localObject2	Object
-    //   1344	1	30	localThrowable1	java.lang.Throwable
-    //   1352	188	30	localObject3	Object
-    //   1632	1	30	localException2	java.lang.Exception
-    //   1688	392	30	localObject4	Object
-    //   2109	1	30	localThrowable2	java.lang.Throwable
-    //   2120	263	30	localObject5	Object
-    //   2408	1	30	localThrowable3	java.lang.Throwable
-    //   2419	1	30	localObject6	Object
-    //   2432	1	30	localThrowable4	java.lang.Throwable
-    //   2441	1	30	localObject7	Object
-    //   2454	1	30	localThrowable5	java.lang.Throwable
-    //   2467	65	30	localObject8	Object
-    //   190	2286	31	localObject9	Object
-    //   2489	1	31	localThrowable6	java.lang.Throwable
-    //   2500	1	31	localObject10	Object
-    //   83	2391	32	localObject11	Object
-    //   481	815	33	localObject12	Object
-    //   1317	25	33	localObject13	Object
-    //   1429	1087	33	localObject14	Object
-    //   705	1099	34	localObject15	Object
-    //   4	2381	35	localQQHeadInfo	QQHeadInfo
-    //   23	2293	36	str	String
-    //   249	2024	37	localSetting	Setting
-    //   610	1374	38	localFile	File
+    //   0	2607	0	this	QQHeadDownloadHandler
+    //   0	2607	1	paramFaceInfo	FaceInfo
+    //   116	2480	2	i	int
+    //   135	2449	3	j	int
+    //   107	2457	4	k	int
+    //   61	2538	5	m	int
+    //   67	2536	6	n	int
+    //   127	2232	7	i1	int
+    //   104	2497	8	i2	int
+    //   98	2108	9	i3	int
+    //   119	2341	10	i4	int
+    //   64	2533	11	i5	int
+    //   76	2136	12	i6	int
+    //   92	2053	13	i7	int
+    //   89	2210	14	i8	int
+    //   95	2184	15	i9	int
+    //   101	2249	16	i10	int
+    //   70	2217	17	i11	int
+    //   73	2234	18	i12	int
+    //   110	2185	19	i13	int
+    //   113	2202	20	i14	int
+    //   86	2508	21	i15	int
+    //   408	2178	22	bool1	boolean
+    //   221	2368	23	bool2	boolean
+    //   123	2449	24	bool3	boolean
+    //   678	1607	25	bool4	boolean
+    //   58	2150	26	bool5	boolean
+    //   49	2297	27	bool6	boolean
+    //   52	2231	28	bool7	boolean
+    //   55	2248	29	bool8	boolean
+    //   131	1069	30	localObject1	Object
+    //   1325	3	30	localException1	java.lang.Exception
+    //   1354	1	30	localObject2	Object
+    //   1362	1	30	localThrowable1	java.lang.Throwable
+    //   1370	194	30	localObject3	Object
+    //   1662	1	30	localException2	java.lang.Exception
+    //   1718	404	30	localObject4	Object
+    //   2151	1	30	localThrowable2	java.lang.Throwable
+    //   2162	279	30	localObject5	Object
+    //   2468	1	30	localThrowable3	java.lang.Throwable
+    //   2479	1	30	localObject6	Object
+    //   2492	1	30	localThrowable4	java.lang.Throwable
+    //   2501	1	30	localObject7	Object
+    //   2514	1	30	localThrowable5	java.lang.Throwable
+    //   2527	65	30	localObject8	Object
+    //   190	2346	31	localObject9	Object
+    //   2549	1	31	localThrowable6	java.lang.Throwable
+    //   2560	1	31	localObject10	Object
+    //   83	2451	32	localObject11	Object
+    //   493	821	33	localObject12	Object
+    //   1335	25	33	localObject13	Object
+    //   1449	1127	33	localObject14	Object
+    //   717	1117	34	localObject15	Object
+    //   4	2439	35	localQQHeadInfo	QQHeadInfo
+    //   23	2347	36	str	String
+    //   249	2078	37	localSetting	Setting
+    //   622	1392	38	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   415	426	1307	java/lang/Exception
-    //   389	410	1317	finally
-    //   415	426	1317	finally
-    //   426	443	1317	finally
-    //   1309	1314	1317	finally
-    //   1319	1322	1317	finally
-    //   242	251	1344	java/lang/Throwable
-    //   275	283	1344	java/lang/Throwable
-    //   302	318	1344	java/lang/Throwable
-    //   337	343	1344	java/lang/Throwable
-    //   362	367	1344	java/lang/Throwable
-    //   386	389	1344	java/lang/Throwable
-    //   462	483	1344	java/lang/Throwable
-    //   1341	1344	1344	java/lang/Throwable
-    //   462	483	1552	java/lang/Exception
-    //   502	525	1552	java/lang/Exception
-    //   549	557	1552	java/lang/Exception
-    //   576	582	1552	java/lang/Exception
-    //   601	612	1552	java/lang/Exception
-    //   640	647	1552	java/lang/Exception
-    //   845	853	1632	java/lang/Exception
-    //   892	903	1632	java/lang/Exception
-    //   699	707	2109	java/lang/Throwable
-    //   746	754	2109	java/lang/Throwable
-    //   793	800	2109	java/lang/Throwable
-    //   845	853	2109	java/lang/Throwable
-    //   892	903	2109	java/lang/Throwable
-    //   955	965	2109	java/lang/Throwable
-    //   1693	1705	2109	java/lang/Throwable
-    //   1763	1771	2109	java/lang/Throwable
-    //   1810	1818	2109	java/lang/Throwable
-    //   1857	1868	2109	java/lang/Throwable
-    //   1905	1942	2109	java/lang/Throwable
-    //   1983	1991	2109	java/lang/Throwable
-    //   2037	2046	2109	java/lang/Throwable
-    //   2083	2102	2109	java/lang/Throwable
-    //   2215	2224	2109	java/lang/Throwable
-    //   2263	2282	2109	java/lang/Throwable
-    //   136	147	2301	finally
-    //   166	192	2301	finally
-    //   211	223	2301	finally
-    //   242	251	2301	finally
-    //   275	283	2301	finally
-    //   302	318	2301	finally
-    //   337	343	2301	finally
-    //   362	367	2301	finally
-    //   386	389	2301	finally
-    //   462	483	2301	finally
-    //   502	525	2301	finally
-    //   549	557	2301	finally
-    //   576	582	2301	finally
-    //   601	612	2301	finally
-    //   640	647	2301	finally
-    //   699	707	2301	finally
-    //   746	754	2301	finally
-    //   793	800	2301	finally
-    //   845	853	2301	finally
-    //   892	903	2301	finally
-    //   955	965	2301	finally
-    //   1341	1344	2301	finally
-    //   1693	1705	2301	finally
-    //   1763	1771	2301	finally
-    //   1810	1818	2301	finally
-    //   1857	1868	2301	finally
-    //   1905	1942	2301	finally
-    //   1983	1991	2301	finally
-    //   2037	2046	2301	finally
-    //   2083	2102	2301	finally
-    //   2151	2158	2301	finally
-    //   2215	2224	2301	finally
-    //   2263	2282	2301	finally
-    //   976	992	2397	finally
-    //   136	147	2408	java/lang/Throwable
-    //   166	192	2408	java/lang/Throwable
-    //   211	223	2408	java/lang/Throwable
-    //   502	525	2432	java/lang/Throwable
-    //   549	557	2432	java/lang/Throwable
-    //   576	582	2432	java/lang/Throwable
-    //   601	612	2432	java/lang/Throwable
-    //   640	647	2432	java/lang/Throwable
-    //   2151	2158	2454	java/lang/Throwable
-    //   976	992	2489	java/lang/Throwable
+    //   415	426	1325	java/lang/Exception
+    //   389	410	1335	finally
+    //   415	426	1335	finally
+    //   426	443	1335	finally
+    //   1327	1332	1335	finally
+    //   1337	1340	1335	finally
+    //   242	251	1362	java/lang/Throwable
+    //   275	283	1362	java/lang/Throwable
+    //   302	318	1362	java/lang/Throwable
+    //   337	343	1362	java/lang/Throwable
+    //   362	367	1362	java/lang/Throwable
+    //   386	389	1362	java/lang/Throwable
+    //   462	495	1362	java/lang/Throwable
+    //   1359	1362	1362	java/lang/Throwable
+    //   462	495	1576	java/lang/Exception
+    //   514	537	1576	java/lang/Exception
+    //   561	569	1576	java/lang/Exception
+    //   588	594	1576	java/lang/Exception
+    //   613	624	1576	java/lang/Exception
+    //   652	659	1576	java/lang/Exception
+    //   857	865	1662	java/lang/Exception
+    //   904	915	1662	java/lang/Exception
+    //   711	719	2151	java/lang/Throwable
+    //   758	766	2151	java/lang/Throwable
+    //   805	812	2151	java/lang/Throwable
+    //   857	865	2151	java/lang/Throwable
+    //   904	915	2151	java/lang/Throwable
+    //   967	977	2151	java/lang/Throwable
+    //   1723	1735	2151	java/lang/Throwable
+    //   1793	1801	2151	java/lang/Throwable
+    //   1840	1848	2151	java/lang/Throwable
+    //   1887	1898	2151	java/lang/Throwable
+    //   1935	1972	2151	java/lang/Throwable
+    //   2013	2021	2151	java/lang/Throwable
+    //   2067	2088	2151	java/lang/Throwable
+    //   2125	2144	2151	java/lang/Throwable
+    //   2257	2278	2151	java/lang/Throwable
+    //   2317	2336	2151	java/lang/Throwable
+    //   136	147	2355	finally
+    //   166	192	2355	finally
+    //   211	223	2355	finally
+    //   242	251	2355	finally
+    //   275	283	2355	finally
+    //   302	318	2355	finally
+    //   337	343	2355	finally
+    //   362	367	2355	finally
+    //   386	389	2355	finally
+    //   462	495	2355	finally
+    //   514	537	2355	finally
+    //   561	569	2355	finally
+    //   588	594	2355	finally
+    //   613	624	2355	finally
+    //   652	659	2355	finally
+    //   711	719	2355	finally
+    //   758	766	2355	finally
+    //   805	812	2355	finally
+    //   857	865	2355	finally
+    //   904	915	2355	finally
+    //   967	977	2355	finally
+    //   1359	1362	2355	finally
+    //   1723	1735	2355	finally
+    //   1793	1801	2355	finally
+    //   1840	1848	2355	finally
+    //   1887	1898	2355	finally
+    //   1935	1972	2355	finally
+    //   2013	2021	2355	finally
+    //   2067	2088	2355	finally
+    //   2125	2144	2355	finally
+    //   2193	2200	2355	finally
+    //   2257	2278	2355	finally
+    //   2317	2336	2355	finally
+    //   988	1004	2457	finally
+    //   136	147	2468	java/lang/Throwable
+    //   166	192	2468	java/lang/Throwable
+    //   211	223	2468	java/lang/Throwable
+    //   514	537	2492	java/lang/Throwable
+    //   561	569	2492	java/lang/Throwable
+    //   588	594	2492	java/lang/Throwable
+    //   613	624	2492	java/lang/Throwable
+    //   652	659	2492	java/lang/Throwable
+    //   2193	2200	2514	java/lang/Throwable
+    //   988	1004	2549	java/lang/Throwable
   }
   
   public String getChoosedIP()
   {
-    return aqwz.a(0);
+    return PicIPManager.a(0);
   }
   
   public String getChoosedStrangerGroupIp()
   {
-    return aqwz.a(1);
+    return PicIPManager.a(1);
   }
   
   public Object[] getFaceSetting(QQHeadInfo paramQQHeadInfo, String paramString1, String paramString2, boolean paramBoolean)
   {
-    Setting localSetting2 = this.app.getQQHeadSettingFromDB(paramString2);
+    IQQAvatarDataService localIQQAvatarDataService = (IQQAvatarDataService)this.app.getRuntimeService(IQQAvatarDataService.class, "");
+    Setting localSetting2 = localIQQAvatarDataService.getQQHeadSettingFromDB(paramString2);
     Setting localSetting1 = localSetting2;
     if (localSetting2 == null)
     {
@@ -1720,13 +1743,13 @@ public class QQHeadDownloadHandler
       b = 0;
       localSetting1.bSourceType = b;
       if (paramBoolean) {
-        break label318;
+        break label334;
       }
       if (localSetting1.bHeadType == paramQQHeadInfo.cHeadType) {
-        break label262;
+        break label278;
       }
       paramBoolean = true;
-      label109:
+      label125:
       bool = paramBoolean;
       if (paramQQHeadInfo.dstUsrType != 32)
       {
@@ -1739,7 +1762,7 @@ public class QQHeadDownloadHandler
             bool = paramBoolean;
             if (paramQQHeadInfo.cHeadType == 0)
             {
-              paramString1 = new File(this.app.getCustomFaceFilePath(localSetting1.bUsrType, paramString1, paramQQHeadInfo.idType));
+              paramString1 = new File(localIQQAvatarDataService.getCustomFaceFilePath(localSetting1.bUsrType, paramString1, paramQQHeadInfo.idType));
               bool = paramBoolean;
               if (paramString1 != null)
               {
@@ -1753,8 +1776,8 @@ public class QQHeadDownloadHandler
         }
       }
     }
-    label262:
-    label318:
+    label278:
+    label334:
     for (boolean bool = paramBoolean;; bool = paramBoolean)
     {
       localSetting1.bHeadType = paramQQHeadInfo.cHeadType;
@@ -1768,24 +1791,24 @@ public class QQHeadDownloadHandler
         if (localSetting1.systemHeadID != paramQQHeadInfo.systemHeadID)
         {
           paramBoolean = true;
-          break label109;
+          break label125;
         }
         paramBoolean = false;
-        break label109;
+        break label125;
       }
       if (localSetting1.headImgTimestamp != paramQQHeadInfo.dwTimestamp)
       {
         paramBoolean = true;
-        break label109;
+        break label125;
       }
       paramBoolean = false;
-      break label109;
+      break label125;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.QQHeadDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

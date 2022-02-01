@@ -4,10 +4,9 @@ import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListReq;
 import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
 import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
 import android.support.annotation.Nullable;
-import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
 
 public class GetMineStoryFeedListRequest
   extends ProtoBufRequest
@@ -53,8 +52,8 @@ public class GetMineStoryFeedListRequest
   
   private static void setErrorLog(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetMineStoryFeedListRequest", 2, paramString);
+    if (RFLog.isColorLevel()) {
+      RFLog.e("GetMineStoryFeedListRequest", RFLog.CLR, paramString);
     }
   }
   
@@ -65,7 +64,7 @@ public class GetMineStoryFeedListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.GetMineStoryFeedListRequest
  * JD-Core Version:    0.7.0.1
  */

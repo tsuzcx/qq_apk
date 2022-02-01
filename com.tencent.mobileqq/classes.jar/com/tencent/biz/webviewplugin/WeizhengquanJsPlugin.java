@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bieg;
-import bifw;
-import bmhf;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.QwJsInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class WeizhengquanJsPlugin
-  extends bieg
+  extends JsWebViewPlugin
 {
   Activity jdField_a_of_type_AndroidAppActivity;
   String jdField_a_of_type_JavaLangString = "";
@@ -48,16 +48,16 @@ public class WeizhengquanJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("WeizhengquanJsPlugin", 2, "prosGetPayAdInfo...");
     }
-    if (!(this.mRuntime.a() instanceof bmhf)) {
+    if (!(this.mRuntime.a() instanceof QwJsInterface)) {
       QLog.i("WeizhengquanJsPlugin", 2, "activity error : " + this.jdField_a_of_type_AndroidAppActivity);
     }
     do
     {
       return;
-      i = ((bmhf)this.mRuntime.a()).a();
+      i = ((QwJsInterface)this.mRuntime.a()).a();
       QLog.i("WeizhengquanJsPlugin", 2, "bzCode = " + i);
     } while (1 != i);
-    paramVarArgs = (Bundle)((bmhf)this.mRuntime.a()).b();
+    paramVarArgs = (Bundle)((QwJsInterface)this.mRuntime.a()).b();
     if (paramVarArgs == null)
     {
       QLog.i("WeizhengquanJsPlugin", 2, "error bundle is null...");
@@ -153,7 +153,7 @@ public class WeizhengquanJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.WeizhengquanJsPlugin
  * JD-Core Version:    0.7.0.1
  */

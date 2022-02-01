@@ -10,7 +10,7 @@ public final class operation_addreply_rsp
   public String msg = "";
   public String replyLikeKey = "";
   public String replyid = "";
-  public int ret;
+  public int ret = 0;
   public String verifyurl = "";
   
   public operation_addreply_rsp() {}

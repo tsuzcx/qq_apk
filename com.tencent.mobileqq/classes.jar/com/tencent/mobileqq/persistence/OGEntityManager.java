@@ -3,7 +3,7 @@ package com.tencent.mobileqq.persistence;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mobileqq.app.SQLiteOpenHelper;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.OGEntityDaoManager;
+import com.tencent.mobileqq.imcore.proxy.db.OGEntityDaoManagerProxy;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.QLog;
@@ -37,21 +37,24 @@ public class OGEntityManager
         i = 1;
         label64:
         if (i >= paramCursor.length) {
-          break label221;
+          break label266;
         }
         String str = paramCursor[i].trim().split(" ")[0];
-        if (!localField.getName().equals(str)) {}
+        if (localField.getName().equals(str)) {
+          if (QLog.isColorLevel()) {
+            QLog.e("EntityManager", 2, "extractedStatementByReflect -> new field name: " + localField.getName() + ", old field name: " + str);
+          }
+        }
       }
     }
-    label178:
-    label221:
+    label266:
     for (int i = 1;; i = 0)
     {
       boolean bool;
       if (i == 0)
       {
         if (!localField.isAnnotationPresent(defaultzero.class)) {
-          break label178;
+          break label223;
         }
         i = 0;
         bool = true;
@@ -63,6 +66,7 @@ public class OGEntityManager
         break;
         i += 1;
         break label64;
+        label223:
         if (localField.isAnnotationPresent(defaultValue.class))
         {
           i = ((defaultValue)localField.getAnnotation(defaultValue.class)).defaultInteger();
@@ -79,11 +83,8 @@ public class OGEntityManager
   
   protected ContentValues createContentValue(Entity paramEntity)
   {
-    if (!ORMConfig.ENABLE_WRITE_OPT) {
-      return super.createContentValue(paramEntity);
-    }
     System.nanoTime();
-    OGAbstractDao localOGAbstractDao = IMCoreProxyRoute.OGEntityDaoManager.getEntityDao(paramEntity.getClass());
+    OGAbstractDao localOGAbstractDao = OGEntityDaoManagerProxy.getEntityDao(paramEntity.getClass());
     if (localOGAbstractDao != null)
     {
       ContentValues localContentValues = new ContentValues(localOGAbstractDao.columnLen);
@@ -95,7 +96,7 @@ public class OGEntityManager
   
   public Entity cursor2Entity(Class<? extends Entity> paramClass, String paramString, Cursor paramCursor, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    OGAbstractDao localOGAbstractDao = IMCoreProxyRoute.OGEntityDaoManager.getEntityDao(paramClass);
+    OGAbstractDao localOGAbstractDao = OGEntityDaoManagerProxy.getEntityDao(paramClass);
     if (localOGAbstractDao != null) {
       if (paramCursor.isBeforeFirst()) {
         paramCursor.moveToFirst();

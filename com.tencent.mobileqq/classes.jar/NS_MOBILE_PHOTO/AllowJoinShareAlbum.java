@@ -8,7 +8,7 @@ public class AllowJoinShareAlbum
   extends JceStruct
 {
   static byte[] cache_data = (byte[])new byte[1];
-  public byte[] data;
+  public byte[] data = null;
   public int source = 0;
   
   static

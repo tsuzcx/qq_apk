@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class showdrying_taginfo
   extends JceStruct
 {
-  public int iTagType;
+  public int iTagType = 0;
   public String strContent = "";
   public String strIcon = "";
   public String strShowInfo = "";

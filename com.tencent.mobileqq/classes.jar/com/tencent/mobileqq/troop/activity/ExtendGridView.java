@@ -88,13 +88,13 @@ public class ExtendGridView
   }
   
   @TargetApi(8)
-  protected void onConfigurationChanged(Configuration paramConfiguration)
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
     a();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.jdField_a_of_type_Boolean) {
       paramInt2 = View.MeasureSpec.makeMeasureSpec(536870911, -2147483648);

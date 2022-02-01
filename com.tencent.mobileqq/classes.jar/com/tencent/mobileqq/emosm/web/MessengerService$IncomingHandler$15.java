@@ -2,17 +2,16 @@ package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
 import android.os.Message;
-import asfk;
-import asfl;
-import asgo;
-import ashe;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.VipComicFavorEmoStructMsgInfo;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
 import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
+import com.tencent.mobileqq.emosm.vipcomic.VipComicMqqManager;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
@@ -24,10 +23,10 @@ import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MessengerService$IncomingHandler$15
+class MessengerService$IncomingHandler$15
   extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$15(ashe paramashe, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, asfk paramasfk, EntityManager paramEntityManager, asgo paramasgo, QQAppInterface paramQQAppInterface) {}
+  MessengerService$IncomingHandler$15(MessengerService.IncomingHandler paramIncomingHandler, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, FavroamingDBManager paramFavroamingDBManager, EntityManager paramEntityManager, VipComicMqqManager paramVipComicMqqManager, QQAppInterface paramQQAppInterface) {}
   
   public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2)
   {
@@ -102,14 +101,14 @@ public class MessengerService$IncomingHandler$15
       if (paramList2 != null) {
         paramList2.obtainMessage(10).sendToTarget();
       }
-      paramList2 = (asfl)this.val$qqApp.getManager(QQManagerFactory.FAV_ROAMING_MANAGER);
+      paramList2 = (FavroamingManager)this.val$qqApp.getManager(QQManagerFactory.FAV_ROAMING_MANAGER);
     } while (paramList2 == null);
     paramList2.b(paramList1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.15
  * JD-Core Version:    0.7.0.1
  */

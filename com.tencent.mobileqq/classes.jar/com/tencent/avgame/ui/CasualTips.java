@@ -80,7 +80,7 @@ public class CasualTips
         QLog.e("CasualTips", 2, "setNextTip mContext is null");
         return;
       }
-      int k = AIOUtils.dp2px(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int k = AIOUtils.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       int m = localObject1.length;
       int i = 0;
       int j = 0;
@@ -126,12 +126,12 @@ public class CasualTips
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 2000L);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -155,7 +155,7 @@ public class CasualTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ui.CasualTips
  * JD-Core Version:    0.7.0.1
  */

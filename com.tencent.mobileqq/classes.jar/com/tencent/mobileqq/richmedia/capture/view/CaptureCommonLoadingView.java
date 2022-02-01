@@ -31,7 +31,7 @@ public class CaptureCommonLoadingView
   private float jdField_d_of_type_Float = a(2.5F, getContext());
   private int jdField_d_of_type_Int;
   private int e = 100;
-  private int f;
+  private int f = 0;
   
   public CaptureCommonLoadingView(Context paramContext)
   {
@@ -74,7 +74,7 @@ public class CaptureCommonLoadingView
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_Float, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -86,12 +86,12 @@ public class CaptureCommonLoadingView
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_Int = paramInt1;
@@ -124,7 +124,7 @@ public class CaptureCommonLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CaptureCommonLoadingView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,13 @@
 package com.tencent.qidian;
 
-import bjxa;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qidian.data.BmqqAccountType;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public class QidianManager$4
+class QidianManager$4
   implements Runnable
 {
-  public QidianManager$4(bjxa parambjxa, String paramString) {}
+  QidianManager$4(QidianManager paramQidianManager, String paramString) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class QidianManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.QidianManager.4
  * JD-Core Version:    0.7.0.1
  */

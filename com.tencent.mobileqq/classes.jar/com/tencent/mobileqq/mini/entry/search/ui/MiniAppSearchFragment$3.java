@@ -8,7 +8,6 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class MiniAppSearchFragment$3
   implements AbsListView.OnScrollListener
@@ -19,7 +18,6 @@ class MiniAppSearchFragment$3
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
     if ((paramAbsListView.getLastVisiblePosition() == MiniAppSearchFragment.access$300(this.this$0).getCount() - 1) && (paramInt == 0))
     {
       paramAbsListView = MiniAppSearchFragment.access$200(this.this$0).getText().toString();

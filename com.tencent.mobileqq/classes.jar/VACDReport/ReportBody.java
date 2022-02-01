@@ -10,10 +10,10 @@ public final class ReportBody
   implements Cloneable
 {
   static ArrayList<ReportItem> cache_reportItems;
-  public ArrayList<ReportItem> reportItems;
+  public ArrayList<ReportItem> reportItems = null;
   public String sKey = "";
-  public long startTime;
-  public long totalTime;
+  public long startTime = 0L;
+  public long totalTime = 0L;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import anri;
-import anrz;
-import anvk;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
@@ -53,8 +50,8 @@ class ConditionSearchManager$4$1
             localCard.strHometownCity = localObject[2];
           }
         }
-        ((anvk)anrz.a(this.a.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(localCard);
-        ((anri)anrz.a(this.a.this$0).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).notifyUI(43, true, localCard);
+        ((FriendsManager)ConditionSearchManager.a(this.a.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(localCard);
+        ((CardHandler)ConditionSearchManager.a(this.a.this$0).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).notifyUI(43, true, localCard);
       }
       this.a.this$0.d = false;
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;
@@ -69,7 +66,7 @@ class ConditionSearchManager$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.4.1
  * JD-Core Version:    0.7.0.1
  */

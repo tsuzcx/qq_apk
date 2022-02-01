@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import atxa;
-import atzu;
-import becb;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.teamwork.TeamWorkHandler;
 
-public class SimpleFilePresenter$1
+class SimpleFilePresenter$1
   implements Runnable
 {
-  public SimpleFilePresenter$1(atzu paramatzu, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  SimpleFilePresenter$1(SimpleFilePresenter paramSimpleFilePresenter, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
-    becb.a(this.a.m, this.this$0.a.m());
+    TeamWorkHandler.a(this.a.m, this.this$0.a.m());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.1
  * JD-Core Version:    0.7.0.1
  */

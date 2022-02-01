@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.transfile;
 
-import azjj;
-import azla;
-import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.activity.photo.PhotoSendParams;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.DownCallBack;
+import com.tencent.mobileqq.pic.UpCallBack;
 import com.wx.voice.vad.WXVadSeg;
 import java.io.OutputStream;
 
 public class TransferRequest
 {
-  public boolean bEnableEnc;
+  public boolean bEnableEnc = false;
   public int chatType;
   public Object extraObject;
-  public boolean isJubaoMsgType;
-  public boolean isQzonePic;
+  public boolean isJubaoMsgType = false;
+  public boolean isQzonePic = false;
   public boolean isShareImageByServer;
   public int mBusiType;
   public boolean mCanSendMsg;
   public int mCommandId;
   public int mDbRecVersion = 5;
   public String mDisplayOutFilePath;
-  public azjj mDownCallBack;
+  public DownCallBack mDownCallBack;
   public int mDownMode;
   public byte[] mExtentionInfo;
   public Object mExtraObj;
@@ -31,15 +30,14 @@ public class TransferRequest
   public int mFileType;
   public long mGroupFileID;
   public String mGroupFileKeyStr;
-  public URLDrawableHandler mHandler;
-  public boolean mIsFastForward;
-  public boolean mIsOnlyGetUrl;
+  public boolean mIsFastForward = false;
+  public boolean mIsOnlyGetUrl = false;
   public boolean mIsPresend;
   public boolean mIsPttPreSend;
   public boolean mIsSecSnapChatPic;
-  public boolean mIsSelfSend;
+  public boolean mIsSelfSend = false;
   public boolean mIsUp;
-  private String mKey;
+  private String mKey = null;
   public String mLocalPath;
   public String mMd5;
   public long mMsgTime;
@@ -49,9 +47,9 @@ public class TransferRequest
   public String mPeerUin;
   public int mPicSendSource;
   public int mPrioty = 1;
-  public boolean mPttCompressFinish;
+  public boolean mPttCompressFinish = false;
   public int mPttUploadPanel;
-  public MessageRecord mRec;
+  public MessageRecord mRec = null;
   public int mRequestDisplayLength;
   public int mRequestLength;
   public int mRequestOffset;
@@ -62,14 +60,14 @@ public class TransferRequest
   public String mSelfUin;
   public String mServerPath;
   public long mSubMsgId;
-  public boolean mSupportRangeBreakDown;
+  public boolean mSupportRangeBreakDown = false;
   public String mThumbMd5;
   public String mThumbPath;
   public int mUinType;
   public long mUniseq;
-  public azla mUpCallBack;
+  public UpCallBack mUpCallBack;
   public int multiMsgType;
-  public boolean myPresendInvalid;
+  public boolean myPresendInvalid = false;
   public boolean needSendMsg = true;
   public int pcmForVadNum;
   public String pcmForVadPath;

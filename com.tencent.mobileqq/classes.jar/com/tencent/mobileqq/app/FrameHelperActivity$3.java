@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app;
 
 import android.support.v4.app.FragmentActivity;
-import anvk;
 import com.tencent.qphone.base.util.QLog;
 
 class FrameHelperActivity$3
@@ -22,10 +21,10 @@ class FrameHelperActivity$3
         localObject = ((FragmentActivity)localObject).app;
         if (localObject != null)
         {
-          anvk localanvk = (anvk)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER);
-          if (localanvk != null)
+          FriendsManager localFriendsManager = (FriendsManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER);
+          if (localFriendsManager != null)
           {
-            FrameHelperActivity.a(this.this$0, localanvk.b(((QQAppInterface)localObject).getCurrentAccountUin()));
+            FrameHelperActivity.a(this.this$0, localFriendsManager.a(((QQAppInterface)localObject).getCurrentAccountUin()));
             return;
           }
         }
@@ -42,7 +41,7 @@ class FrameHelperActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,7 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.SystemClock;
 import android.view.Surface;
-import apdt;
-import apdu;
-import bbmm;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -32,7 +30,7 @@ public class VideoEncoderCore
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private Surface jdField_a_of_type_AndroidViewSurface;
-  private apdt jdField_a_of_type_Apdt;
+  private VideoEncoder.VideoEncoderCallback jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback;
   private Thread jdField_a_of_type_JavaLangThread;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -93,8 +91,8 @@ public class VideoEncoderCore
               {
                 this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
                 this.jdField_d_of_type_Boolean = true;
-                if (this.jdField_a_of_type_Apdt != null) {
-                  this.jdField_a_of_type_Apdt.b();
+                if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback != null) {
+                  this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback.b();
                 }
               }
             }
@@ -213,8 +211,8 @@ public class VideoEncoderCore
             {
               this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
               this.jdField_d_of_type_Boolean = true;
-              if (this.jdField_a_of_type_Apdt != null) {
-                this.jdField_a_of_type_Apdt.b();
+              if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback != null) {
+                this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback.b();
               }
             }
           }
@@ -346,14 +344,14 @@ public class VideoEncoderCore
     }
   }
   
-  public void a(bbmm parambbmm, apdt paramapdt)
+  public void a(EncodeConfig paramEncodeConfig, VideoEncoder.VideoEncoderCallback paramVideoEncoderCallback)
   {
-    this.jdField_a_of_type_Apdt = paramapdt;
-    this.jdField_a_of_type_AndroidMediaMediaFormat = MediaFormat.createVideoFormat("video/avc", parambbmm.jdField_a_of_type_Int, parambbmm.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback = paramVideoEncoderCallback;
+    this.jdField_a_of_type_AndroidMediaMediaFormat = MediaFormat.createVideoFormat("video/avc", paramEncodeConfig.jdField_a_of_type_Int, paramEncodeConfig.jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("color-format", 2130708361);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("bitrate", parambbmm.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("frame-rate", parambbmm.d);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("i-frame-interval", parambbmm.e);
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("bitrate", paramEncodeConfig.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("frame-rate", paramEncodeConfig.d);
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("i-frame-interval", paramEncodeConfig.e);
     this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("video/avc");
     this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, 1);
     this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_AndroidMediaMediaCodec.createInputSurface();
@@ -370,13 +368,13 @@ public class VideoEncoderCore
     this.jdField_b_of_type_AndroidMediaMediaCodec.start();
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoEncodeThread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new apdu(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-    paramapdt = new File(parambbmm.jdField_a_of_type_JavaLangString);
-    if (!paramapdt.exists()) {
-      FileUtils.createFileIfNotExits(paramapdt.getAbsolutePath());
+    this.jdField_a_of_type_AndroidOsHandler = new VideoEncoderCore.AudioEncodeHandler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    paramVideoEncoderCallback = new File(paramEncodeConfig.jdField_a_of_type_JavaLangString);
+    if (!paramVideoEncoderCallback.exists()) {
+      FileUtils.c(paramVideoEncoderCallback.getAbsolutePath());
     }
-    this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(parambbmm.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(parambbmm.g);
+    this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramEncodeConfig.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramEncodeConfig.g);
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
     this.jdField_b_of_type_Boolean = false;
@@ -395,7 +393,7 @@ public class VideoEncoderCore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore
  * JD-Core Version:    0.7.0.1
  */

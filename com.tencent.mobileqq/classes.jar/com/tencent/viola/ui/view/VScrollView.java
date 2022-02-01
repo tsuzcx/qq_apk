@@ -124,7 +124,7 @@ public class VScrollView
   
   public void onHeaderRebounded() {}
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     onScroll(getScrollX(), getScrollY());
@@ -195,7 +195,7 @@ public class VScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.VScrollView
  * JD-Core Version:    0.7.0.1
  */

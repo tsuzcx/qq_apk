@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.ark;
 
-import apyz;
-import apzj;
-import apzk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 
-public final class ArkMessageServerLogic$1
+final class ArkMessageServerLogic$1
   implements Runnable
 {
-  public ArkMessageServerLogic$1(apzk paramapzk) {}
+  ArkMessageServerLogic$1(ArkMessageServerLogic.IRequestArkAppListHandler paramIRequestArkAppListHandler) {}
   
   public void run()
   {
@@ -38,7 +35,7 @@ public final class ArkMessageServerLogic$1
           ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark sso is null");
           break;
         }
-      } while (((apyz)localObject).a("ArkAppPanel.List", 10000, 0, new apzj(this)));
+      } while (((ArkAppSSO)localObject).a("ArkAppPanel.List", 10000, 0, new ArkMessageServerLogic.1.1(this)));
       ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, fail send sso request");
     }
   }

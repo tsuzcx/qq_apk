@@ -1,23 +1,22 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import ydz;
-import yhn;
-import ykq;
+import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
-public class FeedSegment$16
+class FeedSegment$16
   implements Runnable
 {
-  public FeedSegment$16(yhn paramyhn, int paramInt, ydz paramydz, String paramString) {}
+  FeedSegment$16(FeedSegment paramFeedSegment, int paramInt, StoryHomeFeed paramStoryHomeFeed, String paramString) {}
   
   public void run()
   {
-    ykq.b("Q.qqstory.home:FeedSegment", "doScrollHorizal, findViewHolder, null, waiting done");
-    yhn.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ydz, this.jdField_a_of_type_JavaLangString, true);
+    SLog.b("Q.qqstory.home:FeedSegment", "doScrollHorizal, findViewHolder, null, waiting done");
+    FeedSegment.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed, this.jdField_a_of_type_JavaLangString, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.16
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.bubble;
 
-import aqjb;
-
-public class VipBubbleDrawable$1
+class VipBubbleDrawable$1
   implements Runnable
 {
-  public VipBubbleDrawable$1(aqjb paramaqjb) {}
+  VipBubbleDrawable$1(VipBubbleDrawable paramVipBubbleDrawable) {}
   
   public void run()
   {

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.startup.step;
 
-import acxk;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import arqj;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.kingkong.Utils;
+import com.tencent.mobileqq.cooperation.ApkUtils;
 import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -61,13 +61,13 @@ public class UpdatePatchConfig
     Context localContext = BaseApplicationImpl.sApplication.getApplicationContext();
     SharedPreferences localSharedPreferences = localContext.getSharedPreferences("sp_update_version", 0);
     String str1 = localSharedPreferences.getString("key_cur_version", "");
-    String str2 = arqj.a(localContext) + "." + arqj.a(localContext);
+    String str2 = ApkUtils.a(localContext) + "." + ApkUtils.a(localContext);
     QLog.d("PatchLogTag", 1, "UpdatePatchConfig oldVersion=" + str1 + ", curVersion=" + str2);
     if (!str2.equals(str1))
     {
       a(localContext);
       localSharedPreferences.edit().putString("key_cur_version", str2).commit();
-      acxk.a(localContext);
+      Utils.a(localContext);
     }
     return true;
   }

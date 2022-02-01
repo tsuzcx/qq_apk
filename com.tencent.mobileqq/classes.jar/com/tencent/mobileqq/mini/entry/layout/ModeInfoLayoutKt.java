@@ -12,11 +12,10 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import kotlin.Metadata;
-import kotlin.Unit;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"buildModuleInfoLayout", "Landroid/view/View;", "context", "Landroid/content/Context;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"buildModuleInfoLayout", "Landroid/view/View;", "context", "Landroid/content/Context;", "qqmini_impl_release"}, k=2, mv={1, 1, 16})
 public final class ModeInfoLayoutKt
 {
   @NotNull
@@ -33,29 +32,30 @@ public final class ModeInfoLayoutKt
     label116:
     ViewGroup localViewGroup;
     Object localObject;
-    label275:
-    label299:
-    label322:
-    label346:
-    label495:
+    label263:
+    label287:
+    label310:
+    label334:
+    label471:
+    label494:
     View localView;
     if (localLayoutParams != null)
     {
       i = localLayoutParams.height;
       if (paramContext.getLayoutParams() == null) {
-        break label741;
+        break label713;
       }
       paramContext.getLayoutParams().width = -1;
       paramContext.getLayoutParams().height = i;
       paramContext = (View)localRelativeLayout;
       localLayoutParams = paramContext.getLayoutParams();
       if (localLayoutParams == null) {
-        break label760;
+        break label732;
       }
       i = localLayoutParams.width;
       j = LayoutAttrsKt.getDp(16);
       if (paramContext.getLayoutParams() == null) {
-        break label765;
+        break label737;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
@@ -65,10 +65,8 @@ public final class ModeInfoLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.topMargin = LayoutAttrsKt.getDp(17);
-        paramContext = Unit.INSTANCE;
       }
       localLayoutParams = ((View)localRelativeLayout).getLayoutParams();
       paramContext = localLayoutParams;
@@ -76,36 +74,33 @@ public final class ModeInfoLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.bottomMargin = LayoutAttrsKt.getDp(12);
-        paramContext = Unit.INSTANCE;
       }
       localRelativeLayout.setGravity(16);
       localViewGroup = (ViewGroup)localRelativeLayout;
       localObject = new TextView(localViewGroup.getContext());
       ((TextView)localObject).setTag(localViewGroup);
-      paramContext = Unit.INSTANCE;
-      ((TextView)localObject).setId(2131371237);
+      ((TextView)localObject).setId(2131371516);
       paramContext = (View)localObject;
       localLayoutParams = paramContext.getLayoutParams();
       if (localLayoutParams == null) {
-        break label784;
+        break label756;
       }
       i = localLayoutParams.height;
       if (paramContext.getLayoutParams() == null) {
-        break label789;
+        break label761;
       }
       paramContext.getLayoutParams().width = -2;
       paramContext.getLayoutParams().height = i;
       paramContext = (View)localObject;
       localLayoutParams = paramContext.getLayoutParams();
       if (localLayoutParams == null) {
-        break label809;
+        break label781;
       }
       i = localLayoutParams.width;
       if (paramContext.getLayoutParams() == null) {
-        break label814;
+        break label786;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -2;
@@ -115,74 +110,67 @@ public final class ModeInfoLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.leftMargin = LayoutAttrsKt.getDp(14);
-        paramContext = Unit.INSTANCE;
       }
       ((TextView)localObject).setTextSize(12.0F);
-      ((TextView)localObject).setTextColor(((TextView)localObject).getResources().getColor(2131167110));
+      ((TextView)localObject).setTextColor(((TextView)localObject).getResources().getColor(2131167040));
       localViewGroup.addView((View)localObject);
-      paramContext = Unit.INSTANCE;
       localViewGroup = (ViewGroup)localRelativeLayout;
       localObject = new ImageView(localViewGroup.getContext());
       ((ImageView)localObject).setTag(localViewGroup);
-      paramContext = Unit.INSTANCE;
-      ((ImageView)localObject).setId(2131371236);
+      ((ImageView)localObject).setId(2131371515);
       paramContext = (View)localObject;
       j = LayoutAttrsKt.getDp(30);
       localLayoutParams = paramContext.getLayoutParams();
       if (localLayoutParams == null) {
-        break label834;
+        break label806;
       }
       i = localLayoutParams.height;
       if (paramContext.getLayoutParams() == null) {
-        break label839;
+        break label811;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label518:
       paramContext = (View)localObject;
       localLayoutParams = paramContext.getLayoutParams();
       if (localLayoutParams == null) {
-        break label858;
+        break label830;
       }
       i = localLayoutParams.width;
-      label541:
+      label517:
       if (paramContext.getLayoutParams() == null) {
-        break label863;
+        break label835;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -1;
-      label564:
-      ((ImageView)localObject).setImageResource(2130850159);
+      label540:
+      ((ImageView)localObject).setImageResource(2130850557);
       localLayoutParams = ((View)localObject).getLayoutParams();
       paramContext = localLayoutParams;
       if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.rightMargin = LayoutAttrsKt.getDp(7);
-        paramContext = Unit.INSTANCE;
       }
       localView = (View)localObject;
       paramContext = localView.getLayoutParams();
       if (paramContext == null) {
-        break label882;
+        break label854;
       }
       i = paramContext.width;
-      label638:
+      label610:
       paramContext = localView.getLayoutParams();
       if (paramContext == null) {
-        break label891;
+        break label863;
       }
     }
     RelativeLayout.LayoutParams localLayoutParams1;
-    label741:
-    label760:
-    label891:
+    label713:
+    label732:
+    label863:
     for (int j = paramContext.height;; j = localView.getHeight())
     {
       localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
@@ -193,11 +181,11 @@ public final class ModeInfoLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label904;
+        break label872;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label904;
+        break label872;
       }
       int m = paramContext.length;
       i = 0;
@@ -214,46 +202,43 @@ public final class ModeInfoLayoutKt
       break label64;
       i = 0;
       break label87;
-      label765:
+      label737:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
       break label116;
+      label756:
       i = 0;
-      break label275;
+      break label263;
+      label761:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-2, i));
-      break label299;
+      break label287;
       i = 0;
-      break label322;
+      break label310;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
-      break label346;
+      break label334;
       i = 0;
-      break label495;
+      break label471;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label518;
+      break label494;
       i = 0;
-      break label541;
+      break label517;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
-      break label564;
+      break label540;
       i = localView.getWidth();
-      break label638;
+      break label610;
     }
-    label784:
-    label789:
-    label809:
-    label814:
-    label834:
-    label839:
-    label858:
-    label863:
-    label882:
-    paramContext = Unit.INSTANCE;
-    label904:
+    label781:
+    label786:
+    label806:
+    label811:
+    label830:
+    label835:
+    label854:
+    label872:
     localLayoutParams1.addRule(11, -1);
-    paramContext = Unit.INSTANCE;
     localView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
     ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER);
     ((ImageView)localObject).setVisibility(8);
     localViewGroup.addView((View)localObject);
-    paramContext = Unit.INSTANCE;
     return (View)localRelativeLayout;
   }
 }

@@ -1,26 +1,21 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class DesktopDataManager$16$1
   implements Runnable
 {
-  DesktopDataManager$16$1(DesktopDataManager.16 param16, List paramList) {}
+  DesktopDataManager$16$1(DesktopDataManager.16 param16, List paramList, StringBuilder paramStringBuilder) {}
   
   public void run()
   {
-    if ((this.val$itemInfoList.size() > 0) && ((DesktopDataManager.access$1600(this.this$1.this$0) == null) || (DesktopDataManager.access$1600(this.this$1.this$0).size() == 0))) {
-      DesktopDataManager.access$1602(this.this$1.this$0, new ArrayList(this.val$itemInfoList));
-    }
-    if (DesktopDataManager.access$1700(this.this$1.this$0) == null) {
-      DesktopDataManager.access$1702(this.this$1.this$0, new ArrayList());
-    }
-    DesktopDataManager.access$1700(this.this$1.this$0).clear();
-    DesktopDataManager.access$1702(this.this$1.this$0, this.this$1.this$0.parseRecommendExposureFromSp());
-    if ((DesktopDataManager.access$1600(this.this$1.this$0) != null) && (DesktopDataManager.access$1600(this.this$1.this$0).size() > 0)) {
-      MiniAppUtils.updateMiniAppList(8);
+    if (DesktopDataManager.access$1600(this.this$1.this$0).size() <= 0)
+    {
+      DesktopDataManager.access$1600(this.this$1.this$0).addAll(this.val$backupList);
+      MiniAppUtils.updateMiniAppList(2);
+      QLog.e("DesktopDataManager", 1, "useLocalDataIfRequestFailed, " + this.val$sb.toString());
     }
   }
 }

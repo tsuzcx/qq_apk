@@ -1,13 +1,30 @@
 package com.tencent.mobileqq.transfile;
 
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.StatictisInfo;
+import com.tencent.qphone.base.util.QLog;
+
 class GroupPttUploadProcessor$4
-  implements Runnable
+  extends MessageObserver
 {
   GroupPttUploadProcessor$4(GroupPttUploadProcessor paramGroupPttUploadProcessor) {}
   
-  public void run()
+  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, StatictisInfo paramStatictisInfo)
   {
-    this.this$0.inter_retry();
+    if ((this.this$0.mUiRequest.mUinType == 1026) && (QLog.isColorLevel())) {
+      QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
+    }
+    this.this$0.logRichMediaEvent("sendMsgFinish", "success:" + paramBoolean);
+    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
+    {
+      this.this$0.onSuccess();
+      return;
+    }
+    if (paramStatictisInfo != null) {
+      this.this$0.shouldMsgReportSucc = paramStatictisInfo.d;
+    }
+    this.this$0.onError();
   }
 }
 

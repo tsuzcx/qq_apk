@@ -10,19 +10,19 @@ public final class HttpDownloadResp
   static byte[] cache_encryKey;
   static VerifyCode cache_stVerifyCode;
   static byte[] cache_vFileData;
-  public int encryFrom;
-  public byte[] encryKey;
-  public int encryTo;
-  public byte encryType;
-  public int iReplyCode;
-  public long lMID;
-  public int sessionID;
-  public VerifyCode stVerifyCode;
+  public int encryFrom = 0;
+  public byte[] encryKey = null;
+  public int encryTo = 0;
+  public byte encryType = 0;
+  public int iReplyCode = 0;
+  public long lMID = 0L;
+  public int sessionID = 0;
+  public VerifyCode stVerifyCode = null;
   public String strFileName = "";
   public String strResult = "";
-  public long uFileLen;
-  public int uSeq;
-  public byte[] vFileData;
+  public long uFileLen = 0L;
+  public int uSeq = 0;
+  public byte[] vFileData = null;
   
   public HttpDownloadResp() {}
   

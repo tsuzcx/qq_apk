@@ -10,7 +10,7 @@ public final class VideoLayerUserActionInfo
   extends JceStruct
 {
   static Map<String, VideoLayerUserAction> cache_actions = new HashMap();
-  public Map<String, VideoLayerUserAction> actions;
+  public Map<String, VideoLayerUserAction> actions = null;
   
   static
   {

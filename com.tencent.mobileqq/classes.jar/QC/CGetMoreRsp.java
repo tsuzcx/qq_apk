@@ -13,12 +13,12 @@ public final class CGetMoreRsp
   static Map<String, String> cache_extParams;
   static ArrayList<ItemDisDetail> cache_itemList = new ArrayList();
   public String errmsg = "";
-  public Map<String, String> extParams;
-  public int isListEnd;
-  public ArrayList<ItemDisDetail> itemList;
-  public int nextIndex;
-  public int ret;
-  public long ruleid;
+  public Map<String, String> extParams = null;
+  public int isListEnd = 0;
+  public ArrayList<ItemDisDetail> itemList = null;
+  public int nextIndex = 0;
+  public int ret = 0;
+  public long ruleid = 0L;
   
   static
   {

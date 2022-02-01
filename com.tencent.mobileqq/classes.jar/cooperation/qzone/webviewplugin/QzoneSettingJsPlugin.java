@@ -5,19 +5,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import bifw;
-import bikl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.utils.IQzoneHardwareRestriction;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.RemoteRequestSender;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QzoneHardwareRestriction;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,8 +30,8 @@ public class QzoneSettingJsPlugin
   public static final int AUTO = 0;
   public static final String NAMESPACE = "Qzone";
   public static final String TAG = "QzoneSettingJsPlugin";
-  private static boolean gIsInitSupportPerformance;
-  private static boolean gIsSupportPerformanceDevice;
+  private static boolean gIsInitSupportPerformance = false;
+  private static boolean gIsSupportPerformanceDevice = false;
   private SharedPreferences sp = BaseApplicationImpl.sApplication.getSharedPreferences("qzone_detail_sp", 4);
   
   private boolean handleCustomBrowseInfoSwitchSetting(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
@@ -408,7 +409,7 @@ public class QzoneSettingJsPlugin
     try
     {
       paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      int i = LocalMultiProcConfig.getInt(localActivity.getResources().getString(2131718179), 0);
+      int i = LocalMultiProcConfig.getInt(localActivity.getResources().getString(2131718683), 0);
       paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
       QLog.i("QzoneSettingJsPlugin", 4, "---handlePictureModeGet-:" + i);
       return true;
@@ -446,7 +447,7 @@ public class QzoneSettingJsPlugin
     }
     paramWebViewPlugin.sendBroadcast(new Intent("com.tencent.qq.syncNoPhotoSetting"));
     QLog.i("QzoneSettingJsPlugin", 4, "---handlePictureModeSetting-:" + i);
-    LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131718179), i);
+    LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131718683), i);
     return true;
   }
   
@@ -497,8 +498,8 @@ public class QzoneSettingJsPlugin
       boolean bool = localJSONObject.optBoolean("hidden");
       localJSONObject.optBoolean("disable");
       paramWebViewPlugin = paramWebViewPlugin.mRuntime.a(paramWebViewPlugin.mRuntime.a());
-      if ((paramWebViewPlugin != null) && ((paramWebViewPlugin instanceof bikl))) {
-        ((bikl)paramWebViewPlugin).setRightButton(paramArrayOfString, paramJsBridgeListener, null, bool, i + 1000, 0, null, null);
+      if ((paramWebViewPlugin != null) && ((paramWebViewPlugin instanceof WebUiUtils.WebTitleBarInterface))) {
+        ((WebUiUtils.WebTitleBarInterface)paramWebViewPlugin).setRightButton(paramArrayOfString, paramJsBridgeListener, null, bool, i + 1000, 0, null, null);
       }
     }
     catch (JSONException paramJsBridgeListener)
@@ -690,7 +691,7 @@ public class QzoneSettingJsPlugin
         paramArrayOfString.printStackTrace();
       }
     }
-    bool = LocalMultiProcConfig.getBool(localActivity.getString(2131718174) + l, true);
+    bool = LocalMultiProcConfig.getBool(localActivity.getString(2131718678) + l, true);
     if (bool) {
       i = 1;
     }
@@ -726,7 +727,7 @@ public class QzoneSettingJsPlugin
         continue;
       }
       QLog.i("QzoneSettingJsPlugin", 4, "---handleShowQzoneRemindfeedSetting-:" + bool);
-      LocalMultiProcConfig.putBooleanAsync(localActivity.getString(2131718174) + l, bool);
+      LocalMultiProcConfig.putBooleanAsync(localActivity.getString(2131718678) + l, bool);
       return true;
       bool = true;
     }
@@ -898,7 +899,7 @@ public class QzoneSettingJsPlugin
   {
     if (!gIsSupportPerformanceDevice)
     {
-      gIsInitSupportPerformance = QzoneHardwareRestriction.meetHardwareRestriction(1, 1);
+      gIsInitSupportPerformance = ((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(1, 1);
       gIsSupportPerformanceDevice = true;
     }
     return gIsInitSupportPerformance;
@@ -1080,7 +1081,7 @@ public class QzoneSettingJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneSettingJsPlugin
  * JD-Core Version:    0.7.0.1
  */

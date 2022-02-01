@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bgxc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -24,9 +23,9 @@ import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.search.comm.SearchInfo;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager.SearchResultDataChangedListener;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -98,12 +97,12 @@ public class SearchResultAdapter
     //   81: dup
     //   82: bipush 254
     //   84: ldc 101
-    //   86: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:dpToPx	(F)I
+    //   86: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:b	(F)I
     //   89: invokespecial 110	android/widget/LinearLayout$LayoutParams:<init>	(II)V
     //   92: astore 5
     //   94: aload 5
     //   96: ldc 111
-    //   98: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:dpToPx	(F)I
+    //   98: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:b	(F)I
     //   101: putfield 114	android/widget/LinearLayout$LayoutParams:rightMargin	I
     //   104: aload 4
     //   106: aload 5
@@ -117,7 +116,7 @@ public class SearchResultAdapter
     //   124: new 100	android/widget/LinearLayout$LayoutParams
     //   127: dup
     //   128: ldc 122
-    //   130: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:dpToPx	(F)I
+    //   130: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:b	(F)I
     //   133: iconst_m1
     //   134: invokespecial 110	android/widget/LinearLayout$LayoutParams:<init>	(II)V
     //   137: astore 5
@@ -169,7 +168,7 @@ public class SearchResultAdapter
     //   235: bipush 17
     //   237: putfield 125	android/widget/LinearLayout$LayoutParams:gravity	I
     //   240: ldc 168
-    //   242: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:dpToPx	(F)I
+    //   242: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:b	(F)I
     //   245: istore_2
     //   246: aload_1
     //   247: iload_2
@@ -254,16 +253,16 @@ public class SearchResultAdapter
   
   public static Drawable getAvatarDrawable(Context paramContext, String paramString)
   {
-    paramContext = paramContext.getResources().getDrawable(2130840348);
+    paramContext = paramContext.getResources().getDrawable(2130840452);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = paramContext;
     localURLDrawableOptions.mFailedDrawable = paramContext;
-    int i = ViewUtils.dip2px(12.0F);
+    int i = ViewUtils.a(12.0F);
     localURLDrawableOptions.mRequestHeight = i;
     localURLDrawableOptions.mRequestWidth = i;
     paramContext = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramContext.setTag(bgxc.a(ViewUtils.dip2px(12.0F), ViewUtils.dip2px(12.0F)));
-    paramContext.setDecodeHandler(bgxc.p);
+    paramContext.setTag(URLDrawableDecodeHandler.a(ViewUtils.a(12.0F), ViewUtils.a(12.0F)));
+    paramContext.setDecodeHandler(URLDrawableDecodeHandler.p);
     return paramContext;
   }
   
@@ -297,49 +296,45 @@ public class SearchResultAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    SearchResultAdapter.SearchResultViewHolder localSearchResultViewHolder;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559452, paramViewGroup, false);
-      localSearchResultViewHolder = new SearchResultAdapter.SearchResultViewHolder();
-      localSearchResultViewHolder.icon = ((ImageView)paramView.findViewById(2131371327));
-      localSearchResultViewHolder.name = ((TextView)paramView.findViewById(2131371328));
-      localSearchResultViewHolder.category = ((TextView)paramView.findViewById(2131371329));
-      localSearchResultViewHolder.desc = ((TextView)paramView.findViewById(2131371326));
-      localSearchResultViewHolder.userNumDesc = ((TextView)paramView.findViewById(2131371338));
-      localSearchResultViewHolder.divider = paramView.findViewById(2131371332);
-      localSearchResultViewHolder.avatarContainer = ((LinearLayout)paramView.findViewById(2131371330));
-      localSearchResultViewHolder.payingFriendsDesc = ((TextView)paramView.findViewById(2131371334));
-      localSearchResultViewHolder.couponTitle = ((TextView)paramView.findViewById(2131371307));
-      localSearchResultViewHolder.pkRankingContainer = ((RelativeLayout)paramView.findViewById(2131371319));
-      localSearchResultViewHolder.couponScrollView = ((ViewGroup)paramView.findViewById(2131371306));
-      localSearchResultViewHolder.couponContainer = ((LinearLayout)paramView.findViewById(2131371305));
-      localSearchResultViewHolder.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371206)));
-      localSearchResultViewHolder.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371207)));
-      localSearchResultViewHolder.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371208)));
-      localSearchResultViewHolder.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371209)));
-      ((SearchResultAdapter.Item)localSearchResultViewHolder.mRanking.get(0)).mCrown.setVisibility(0);
-      ((SearchResultAdapter.Item)localSearchResultViewHolder.mRanking.get(3)).setOutOfRankStyle();
-      paramView.setTag(localSearchResultViewHolder);
+      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559519, paramViewGroup, false);
+      paramViewGroup = new SearchResultAdapter.SearchResultViewHolder();
+      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131371607));
+      paramViewGroup.name = ((TextView)paramView.findViewById(2131371608));
+      paramViewGroup.category = ((TextView)paramView.findViewById(2131371609));
+      paramViewGroup.desc = ((TextView)paramView.findViewById(2131371606));
+      paramViewGroup.userNumDesc = ((TextView)paramView.findViewById(2131371618));
+      paramViewGroup.divider = paramView.findViewById(2131371612);
+      paramViewGroup.avatarContainer = ((LinearLayout)paramView.findViewById(2131371610));
+      paramViewGroup.payingFriendsDesc = ((TextView)paramView.findViewById(2131371614));
+      paramViewGroup.couponTitle = ((TextView)paramView.findViewById(2131371587));
+      paramViewGroup.pkRankingContainer = ((RelativeLayout)paramView.findViewById(2131371599));
+      paramViewGroup.couponScrollView = ((ViewGroup)paramView.findViewById(2131371586));
+      paramViewGroup.couponContainer = ((LinearLayout)paramView.findViewById(2131371585));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371485)));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371486)));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371487)));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371488)));
+      ((SearchResultAdapter.Item)paramViewGroup.mRanking.get(0)).mCrown.setVisibility(0);
+      ((SearchResultAdapter.Item)paramViewGroup.mRanking.get(3)).setOutOfRankStyle();
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
       SearchInfo localSearchInfo = (SearchInfo)this.appList.get(paramInt);
       try
       {
-        localSearchResultViewHolder.update(localSearchResultViewHolder, paramView, localSearchInfo, (Activity)this.mActivityReference.get(), this.mKeyword, this.mRefer);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        paramViewGroup.update(paramViewGroup, paramView, localSearchInfo, (Activity)this.mActivityReference.get(), this.mKeyword, this.mRefer);
         return paramView;
-        localSearchResultViewHolder = (SearchResultAdapter.SearchResultViewHolder)paramView.getTag();
       }
-      catch (Exception localException)
+      catch (Exception paramViewGroup)
       {
-        for (;;)
-        {
-          QLog.e("SearchResultAdapter", 1, "getView exception: " + Log.getStackTraceString(localException));
-        }
+        QLog.e("SearchResultAdapter", 1, "getView exception: " + Log.getStackTraceString(paramViewGroup));
       }
+      paramViewGroup = (SearchResultAdapter.SearchResultViewHolder)paramView.getTag();
     }
+    return paramView;
   }
   
   public void onResultDataChanged()

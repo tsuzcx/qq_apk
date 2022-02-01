@@ -2,16 +2,17 @@ package com.tencent.mobileqq.activity.selectmember;
 
 import QQService.AddDiscussMemberInfo;
 import android.text.TextUtils;
-import antl;
-import antp;
-import anvk;
-import bhdf;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.util.api.ITroopDBUtilsApi;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -19,20 +20,20 @@ import java.util.ArrayList;
 class SelectMemberActivity$12
   extends Thread
 {
-  SelectMemberActivity$12(SelectMemberActivity paramSelectMemberActivity, anvk paramanvk) {}
+  SelectMemberActivity$12(SelectMemberActivity paramSelectMemberActivity, FriendsManager paramFriendsManager) {}
   
   public void run()
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject1 = ContactUtils.getAccountNickName(this.this$0.app, this.this$0.app.getCurrentAccountUin());
-    int i = this.this$0.mResultList.size() - 1;
+    Object localObject1 = ContactUtils.h(this.this$0.app, this.this$0.app.getCurrentAccountUin());
+    int i = this.this$0.e.size() - 1;
     ResultRecord localResultRecord;
     Object localObject2;
     String str;
     if (i >= 0)
     {
-      localResultRecord = (ResultRecord)this.this$0.mResultList.get(i);
+      localResultRecord = (ResultRecord)this.this$0.e.get(i);
       localObject2 = new AddDiscussMemberInfo();
       if (localResultRecord.type == 4)
       {
@@ -45,9 +46,9 @@ class SelectMemberActivity$12
         if (localResultRecord.type != 0) {
           break label330;
         }
-        localObject2 = this.val$fm.e(localResultRecord.uin);
+        localObject2 = this.a.e(localResultRecord.uin);
         if (localObject2 == null) {
-          break label827;
+          break label834;
         }
         localObject1 = ((Friends)localObject2).name;
         if (!TextUtils.isEmpty(((Friends)localObject2).remark)) {
@@ -88,7 +89,7 @@ class SelectMemberActivity$12
         Object localObject5;
         if (localResultRecord.type == 1)
         {
-          localObject5 = bhdf.a().a(this.this$0.app, localResultRecord.groupUin, localResultRecord.uin);
+          localObject5 = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.this$0.app, localResultRecord.groupUin, localResultRecord.uin);
           localObject1 = localObject3;
           if (localObject5 == null) {
             break label207;
@@ -108,7 +109,7 @@ class SelectMemberActivity$12
         }
         if (localResultRecord.type == 2)
         {
-          localObject5 = ((antp)this.this$0.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(localResultRecord.groupUin, localResultRecord.uin);
+          localObject5 = ((DiscussionManager)this.this$0.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(localResultRecord.groupUin, localResultRecord.uin);
           localObject1 = localObject3;
           if (localObject5 == null) {
             break label207;
@@ -167,30 +168,30 @@ class SelectMemberActivity$12
           if (!QLog.isColorLevel()) {
             continue;
           }
-          QLog.d("SelectMemberActivity", 2, "add discussion member: groupCode: " + this.this$0.mGroupCode + " member count: " + localArrayList1.size());
-          ((antl)localObject1).b(Long.valueOf(this.this$0.mGroupCode).longValue(), localArrayList1);
+          QLog.d("SelectMemberActivity", 2, "add discussion member: groupCode: " + this.this$0.jdField_c_of_type_JavaLangString + " member count: " + localArrayList1.size());
+          ((DiscussionHandler)localObject1).b(Long.valueOf(this.this$0.jdField_c_of_type_JavaLangString).longValue(), localArrayList1);
           return;
         }
-        localObject1 = (antl)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
-        if (this.this$0.mGroupCode != null) {
+        localObject1 = (DiscussionHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
+        if (this.this$0.jdField_c_of_type_JavaLangString != null) {
           continue;
         }
         if (QLog.isColorLevel()) {
           QLog.d("SelectMemberActivity", 2, "create discussion: " + (String)localObject3 + " member count: " + localArrayList1.size());
         }
-        SelectMemberActivity.sNeedBlockDiscussSelfInviteMsg = false;
-        ((antl)localObject1).a((String)localObject3, localArrayList1, this.this$0.mFrom);
+        SelectMemberActivity.b = false;
+        ((DiscussionHandler)localObject1).a((String)localObject3, localArrayList1, this.this$0.jdField_c_of_type_Int);
         return;
         i += 1;
       }
-      label827:
+      label834:
       localObject1 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.12
  * JD-Core Version:    0.7.0.1
  */

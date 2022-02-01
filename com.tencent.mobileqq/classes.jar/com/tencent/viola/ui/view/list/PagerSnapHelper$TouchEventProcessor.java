@@ -102,20 +102,21 @@ class PagerSnapHelper$TouchEventProcessor
   {
     if (PagerSnapHelper.access$200(this.this$0) == null) {}
     int i;
-    int j;
     do
     {
       do
       {
         return false;
       } while ((PagerSnapHelper.access$1100(this.this$0).getAdapter() == null) || (!PagerSnapHelper.access$500(this.this$0)));
-      i = PagerSnapHelper.access$1100(this.this$0).getMinFlingVelocity();
-      j = this.lastCenterPosition;
-    } while ((Math.abs(paramFloat2) <= i) && (Math.abs(paramFloat1) <= i));
+      if (PagerSnapHelper.access$1200(this.this$0) <= 0) {
+        PagerSnapHelper.access$1202(this.this$0, PagerSnapHelper.access$1100(this.this$0).getMinFlingVelocity());
+      }
+      i = this.lastCenterPosition;
+    } while ((Math.abs(paramFloat2) <= PagerSnapHelper.access$1200(this.this$0)) && (Math.abs(paramFloat1) <= PagerSnapHelper.access$1200(this.this$0)));
     try
     {
       TraceCompat.beginSection("snapFromFling");
-      boolean bool = PagerSnapHelper.access$1200(this.this$0, PagerSnapHelper.access$200(this.this$0), this.moveXDistance, this.moveYDistance, paramFloat1, paramFloat2, j);
+      boolean bool = PagerSnapHelper.access$1300(this.this$0, PagerSnapHelper.access$200(this.this$0), this.moveXDistance, this.moveYDistance, paramFloat1, paramFloat2, i);
       return bool;
     }
     finally
@@ -177,7 +178,7 @@ class PagerSnapHelper$TouchEventProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.PagerSnapHelper.TouchEventProcessor
  * JD-Core Version:    0.7.0.1
  */

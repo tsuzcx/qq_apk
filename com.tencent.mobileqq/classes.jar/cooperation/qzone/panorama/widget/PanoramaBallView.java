@@ -16,18 +16,18 @@ import com.tencent.mobileqq.utils.ViewUtils;
 public class PanoramaBallView
   extends View
 {
-  public static final int HEIGHT = ViewUtils.dpToPx(32.0F);
+  public static final int HEIGHT = ViewUtils.b(32.0F);
   private static final int SWEEP_ANGLE_MAX = 120;
   private static final int SWEEP_ANGLE_MIN = 45;
-  public static final int WIDTH = ViewUtils.dpToPx(32.0F);
+  public static final int WIDTH = ViewUtils.b(32.0F);
   private int colorBackground;
   private int innerCircleRadius;
   private Paint mPaint;
   private int mViewHeight = HEIGHT;
   private int mViewWidth = WIDTH;
   private int modeType;
-  private int moveDegreeX;
-  private int moveDegreeY;
+  private int moveDegreeX = 0;
+  private int moveDegreeY = 0;
   private int outCircleRadius;
   private int sectorDegree = 360;
   private float sweepAngle;
@@ -142,7 +142,7 @@ public class PanoramaBallView
     return this.moveDegreeY;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.outCircleRadius = (this.mViewWidth / 2);
@@ -152,7 +152,7 @@ public class PanoramaBallView
     drawContent(paramCanvas);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(measureWidth(paramInt1), measureHeight(paramInt2));
   }
@@ -178,7 +178,7 @@ public class PanoramaBallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaBallView
  * JD-Core Version:    0.7.0.1
  */

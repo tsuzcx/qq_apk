@@ -1,27 +1,25 @@
 package com.tencent.mobileqq.ark;
 
-import apxp;
-import apyb;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import mqq.app.MobileQQ;
 
-public class ArkAppCGI$8
+class ArkAppCGI$8
   implements Runnable
 {
-  public ArkAppCGI$8(apxp paramapxp, QQAppInterface paramQQAppInterface, apyb paramapyb, HttpNetReq paramHttpNetReq) {}
+  ArkAppCGI$8(ArkAppCGI paramArkAppCGI, QQAppInterface paramQQAppInterface, ArkAppCGI.QueryTask paramQueryTask, HttpNetReq paramHttpNetReq) {}
   
   public void run()
   {
-    if ((apxp.a(this.this$0) == null) || (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
+    if ((ArkAppCGI.a(this.this$0) == null) || (!NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
     {
       ArkAppCenter.c("ArkApp.ArkAppCGI", "runTask_retry, network not available");
-      apxp.a(this.this$0, this.jdField_a_of_type_Apyb, false, null);
+      ArkAppCGI.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$QueryTask, false, null);
       return;
     }
-    apxp.a(this.this$0).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    ArkAppCGI.a(this.this$0).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 

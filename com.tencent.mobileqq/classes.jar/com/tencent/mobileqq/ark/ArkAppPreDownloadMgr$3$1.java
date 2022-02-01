@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.ark;
 
 import android.text.TextUtils;
-import apyv;
-import apyy;
 import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.qphone.base.util.QLog;
 
-public class ArkAppPreDownloadMgr$3$1
+class ArkAppPreDownloadMgr$3$1
   implements Runnable
 {
   ArkAppPreDownloadMgr$3$1(ArkAppPreDownloadMgr.3 param3) {}
@@ -21,7 +19,7 @@ public class ArkAppPreDownloadMgr$3$1
       if (QLog.isColorLevel()) {
         QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp begin app = ", this.a.a.a });
       }
-      ArkAppMgr.getInstance().getAppPathByName(this.a.a.a, "", "0.0.0.1", null, new apyv(this));
+      ArkAppMgr.getInstance().getAppPathByName(this.a.a.a, "", "0.0.0.1", null, new ArkAppPreDownloadMgr.3.1.1(this));
     }
     label106:
     while (!QLog.isColorLevel()) {

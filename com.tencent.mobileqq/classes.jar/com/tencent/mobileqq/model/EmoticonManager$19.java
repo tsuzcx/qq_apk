@@ -1,54 +1,67 @@
 package com.tencent.mobileqq.model;
 
-import android.text.TextUtils;
-import awyr;
-import com.tencent.mobileqq.data.RecentEmotion;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonTab;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
 
-public class EmoticonManager$19
+class EmoticonManager$19
   implements Runnable
 {
-  public EmoticonManager$19(awyr paramawyr, RecentEmotion paramRecentEmotion) {}
+  EmoticonManager$19(EmoticonManager paramEmoticonManager, String paramString) {}
   
   public void run()
   {
-    if (this.a == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "addRecentEmotionToCache key = " + this.a);
-    }
-    String str = this.a.keyword;
-    if (TextUtils.isEmpty(str))
+    String str;
+    synchronized (this.this$0)
     {
-      QLog.e("EmoticonManager", 1, "addRecentEmotionToCache keyword empty");
-      return;
-    }
-    RecentEmotion localRecentEmotion = this.a;
-    CopyOnWriteArrayList localCopyOnWriteArrayList = awyr.a(this.this$0, str);
-    if (localCopyOnWriteArrayList != null)
-    {
-      int i = localCopyOnWriteArrayList.indexOf(this.a);
-      if (i > -1)
+      this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(EmoticonTab.class.getSimpleName());
+      EntityTransaction localEntityTransaction = this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
+      try
       {
-        localRecentEmotion = (RecentEmotion)localCopyOnWriteArrayList.get(i);
-        localRecentEmotion.replace(this.a);
+        localEntityTransaction.begin();
+        Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          EmoticonManager.a(this.this$0, str, true, false);
+          continue;
+          localObject2 = finally;
+        }
+      }
+      finally
+      {
+        localEntityTransaction.end();
       }
     }
-    for (;;)
+    Object localObject5 = this.this$0.b.iterator();
+    while (((Iterator)localObject5).hasNext())
     {
-      this.this$0.d.remove(localRecentEmotion);
-      this.this$0.d.add(0, localRecentEmotion);
-      return;
-      localCopyOnWriteArrayList.add(this.a);
-      continue;
-      localCopyOnWriteArrayList = new CopyOnWriteArrayList();
-      localCopyOnWriteArrayList.add(this.a);
-      this.this$0.e.put(str, localCopyOnWriteArrayList);
+      str = (String)((Iterator)localObject5).next();
+      EmoticonManager.a(this.this$0, str, false, true);
     }
+    localObject2.commit();
+    localObject2.end();
+    Object localObject3 = this.this$0.a(this.a);
+    if (localObject3 == null) {
+      return;
+    }
+    ??? = new HashSet();
+    localObject3 = ((List)localObject3).iterator();
+    while (((Iterator)localObject3).hasNext())
+    {
+      localObject5 = (Emoticon)((Iterator)localObject3).next();
+      if (((Emoticon)localObject5).name != null) {
+        ((HashSet)???).add(((Emoticon)localObject5).name);
+      }
+    }
+    StickerRecManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Collection)???);
+    this.this$0.a(this.a);
   }
 }
 

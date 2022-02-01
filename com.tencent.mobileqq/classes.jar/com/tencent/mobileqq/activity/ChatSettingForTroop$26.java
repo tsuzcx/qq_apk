@@ -1,54 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import bheg;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class ChatSettingForTroop$26
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  ChatSettingForTroop$26(ChatSettingForTroop paramChatSettingForTroop, long paramLong) {}
+  ChatSettingForTroop$26(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = this.this$0.b.size();
-    int i = 0;
-    ImageView localImageView;
-    Object localObject;
-    if (i < j)
-    {
-      localImageView = (ImageView)this.this$0.b.get(i);
-      localObject = (String)localImageView.getTag();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      try
-      {
-        long l = Long.valueOf((String)localObject).longValue();
-        if (l == this.a)
-        {
-          localObject = bheg.a();
-          localObject = FaceDrawable.getFaceDrawableFrom(this.this$0.app, 1, Long.toString(this.a), 3, (Drawable)localObject, (Drawable)localObject, 4);
-          this.this$0.runOnUiThread(new ChatSettingForTroop.26.1(this, localImageView, (FaceDrawable)localObject));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.26
  * JD-Core Version:    0.7.0.1
  */

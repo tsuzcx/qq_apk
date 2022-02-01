@@ -11,8 +11,8 @@ public final class send_common_gift_req
 {
   static s_send_gift_item cache_giftItem = new s_send_gift_item();
   static Map<String, String> cache_mapExt = new HashMap();
-  public s_send_gift_item giftItem;
-  public Map<String, String> mapExt;
+  public s_send_gift_item giftItem = null;
+  public Map<String, String> mapExt = null;
   
   static
   {

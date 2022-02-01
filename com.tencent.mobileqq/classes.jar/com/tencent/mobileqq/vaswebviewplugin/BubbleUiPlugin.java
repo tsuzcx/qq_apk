@@ -2,10 +2,10 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.content.Intent;
 import android.os.Handler;
-import ascz;
-import ashz;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -13,19 +13,19 @@ public class BubbleUiPlugin
   extends VasWebviewUiPlugin
 {
   private static final String TAG = "BubbleUiPlugin";
-  ascz mOnRemoteResp = new BubbleUiPlugin.2(this);
+  Client.OnRemoteRespObserver mOnRemoteResp = new BubbleUiPlugin.2(this);
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    ashz.a().b(this.mOnRemoteResp);
+    WebIPCOperator.a().b(this.mOnRemoteResp);
   }
   
   void OnActivityResume()
   {
     super.OnActivityResume();
-    ashz.a().a(this.mOnRemoteResp);
-    if (ashz.a().a())
+    WebIPCOperator.a().a(this.mOnRemoteResp);
+    if (WebIPCOperator.a().a())
     {
       reportBubbleSetting();
       if (QLog.isColorLevel()) {
@@ -43,6 +43,11 @@ public class BubbleUiPlugin
   protected long getPluginBusiness()
   {
     return 64L;
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 3L;
   }
   
   public boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -85,7 +90,7 @@ public class BubbleUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.BubbleUiPlugin
  * JD-Core Version:    0.7.0.1
  */

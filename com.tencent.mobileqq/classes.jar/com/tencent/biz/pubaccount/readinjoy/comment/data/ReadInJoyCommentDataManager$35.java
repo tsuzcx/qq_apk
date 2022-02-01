@@ -1,22 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import pdv;
-import pfe;
-import pfh;
+import com.google.gson.reflect.TypeToken;
+import java.util.List;
 
-public class ReadInJoyCommentDataManager$35
-  implements Runnable
+class ReadInJoyCommentDataManager$35
+  extends TypeToken<List<BaseCommentData.CommentLinkData>>
 {
-  public ReadInJoyCommentDataManager$35(pdv parampdv, pfe parampfe, pfh parampfh) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Pfe.a(this.jdField_a_of_type_Pfh);
-  }
+  ReadInJoyCommentDataManager$35(ReadInJoyCommentDataManager paramReadInJoyCommentDataManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.data.ReadInJoyCommentDataManager.35
  * JD-Core Version:    0.7.0.1
  */

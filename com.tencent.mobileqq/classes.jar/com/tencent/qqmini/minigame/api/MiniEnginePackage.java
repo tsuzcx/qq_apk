@@ -10,18 +10,21 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/minigame/api/MiniEnginePackage;", "Lcom/tencent/mobileqq/triton/filesystem/EnginePackage;", "baseLibDir", "Ljava/io/File;", "version", "Lcom/tencent/mobileqq/triton/model/Version;", "soDir", "jarFile", "globalConfig", "", "(Ljava/io/File;Lcom/tencent/mobileqq/triton/model/Version;Ljava/io/File;Ljava/io/File;Ljava/lang/String;)V", "getBaseLibDir", "()Ljava/io/File;", "engineJar", "getEngineJar", "getGlobalConfig", "()Ljava/lang/String;", "getSoDir", "getVersion", "()Lcom/tencent/mobileqq/triton/model/Version;", "getEngineNativeLibrary", "name", "getScript", "Lcom/tencent/mobileqq/triton/script/ScriptFile;", "lib_minigame_internalRelease"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/minigame/api/MiniEnginePackage;", "Lcom/tencent/mobileqq/triton/filesystem/EnginePackage;", "jsLibVersion", "Lcom/tencent/mobileqq/triton/model/Version;", "baseLibDir", "Ljava/io/File;", "tritonSoVersion", "soDir", "jarFile", "globalConfig", "", "(Lcom/tencent/mobileqq/triton/model/Version;Ljava/io/File;Lcom/tencent/mobileqq/triton/model/Version;Ljava/io/File;Ljava/io/File;Ljava/lang/String;)V", "getBaseLibDir", "()Ljava/io/File;", "engineJar", "getEngineJar", "getGlobalConfig", "()Ljava/lang/String;", "getJsLibVersion", "()Lcom/tencent/mobileqq/triton/model/Version;", "getSoDir", "version", "getVersion", "getEngineNativeLibrary", "name", "getScript", "Lcom/tencent/mobileqq/triton/script/ScriptFile;", "lib_minigame_internalRelease"}, k=1, mv={1, 1, 16})
 public final class MiniEnginePackage
   implements EnginePackage
 {
   @NotNull
   private final File baseLibDir;
+  @NotNull
+  private final Version jsLibVersion;
   @Nullable
   private final File soDir;
   
-  public MiniEnginePackage(@NotNull File paramFile1, @NotNull Version paramVersion, @Nullable File paramFile2, @Nullable File paramFile3, @Nullable String paramString)
+  public MiniEnginePackage(@NotNull Version paramVersion1, @NotNull File paramFile1, @NotNull Version paramVersion2, @Nullable File paramFile2, @Nullable File paramFile3, @Nullable String paramString)
   {
-    this.$$delegate_0 = EnginePackage.Companion.create(paramFile1, paramVersion, paramFile2, paramFile3, paramString);
+    this.$$delegate_0 = EnginePackage.Companion.create(paramFile1, paramVersion2, paramFile2, paramFile3, paramString);
+    this.jsLibVersion = paramVersion1;
     this.baseLibDir = paramFile1;
     this.soDir = paramFile2;
   }
@@ -52,6 +55,12 @@ public final class MiniEnginePackage
   }
   
   @NotNull
+  public final Version getJsLibVersion()
+  {
+    return this.jsLibVersion;
+  }
+  
+  @NotNull
   public ScriptFile getScript(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "name");
@@ -72,7 +81,7 @@ public final class MiniEnginePackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.api.MiniEnginePackage
  * JD-Core Version:    0.7.0.1
  */

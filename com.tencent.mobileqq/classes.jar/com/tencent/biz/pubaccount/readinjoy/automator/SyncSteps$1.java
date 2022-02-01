@@ -1,13 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import ovw;
-import ovx;
-import owb;
-
-public class SyncSteps$1
+class SyncSteps$1
   implements Runnable
 {
-  public SyncSteps$1(owb paramowb, ovx paramovx) {}
+  SyncSteps$1(SyncSteps paramSyncSteps, BaseStep paramBaseStep) {}
   
   public void run()
   {
@@ -18,7 +14,7 @@ public class SyncSteps$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.automator.SyncSteps.1
  * JD-Core Version:    0.7.0.1
  */

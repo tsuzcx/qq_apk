@@ -1,11 +1,18 @@
 package com.tencent.biz.qqstory.model.item;
 
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.database.LiveVideoEntry;
 import com.tencent.biz.qqstory.database.StoryEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.LiveVideoDes;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryDes;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.StoryListUtils;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.StringAppendTool;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -13,17 +20,10 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import vzk;
-import wjp;
-import wjs;
-import wke;
-import yex;
-import yey;
-import ykq;
 
 public class StoryItem
   extends BaseUIItem
-  implements vzk
+  implements Copyable
 {
   public static final int TYPE_EXPIRE = 2;
   public static final int TYPE_NORMAL = 0;
@@ -51,7 +51,7 @@ public class StoryItem
     this.key = paramStoryEntry.key;
     this.type = paramStoryEntry.type;
     this.unionId = paramStoryEntry.unionId;
-    this.user = ((wke)wjs.a(2)).b(this.unionId);
+    this.user = ((UserManager)SuperManager.a(2)).b(this.unionId);
     if (this.user == null)
     {
       this.user = new QQUserUIItem();
@@ -89,11 +89,11 @@ public class StoryItem
   
   public void convertFrom(int paramInt, qqstory_struct.StoryDes paramStoryDes)
   {
-    Object localObject = (wke)wjs.a(2);
+    Object localObject = (UserManager)SuperManager.a(2);
     QQUserUIItem localQQUserUIItem = new QQUserUIItem();
     localQQUserUIItem.convertFrom(paramStoryDes.user);
-    this.user = ((wke)localObject).a(localQQUserUIItem);
-    localObject = ((wjp)wjs.a(5)).a(this.user.uid, paramInt);
+    this.user = ((UserManager)localObject).a(localQQUserUIItem);
+    localObject = ((StoryManager)SuperManager.a(5)).a(this.user.uid, paramInt);
     if (paramStoryDes.new_story_time.has())
     {
       this.updateTime = (paramStoryDes.new_story_time.get() * 1000L);
@@ -154,7 +154,7 @@ public class StoryItem
       }
       catch (Exception paramStoryDes)
       {
-        ykq.b("Q.qqstory.home.StoryItem", "decode json fail", paramStoryDes);
+        SLog.b("Q.qqstory.home.StoryItem", "decode json fail", paramStoryDes);
         return;
       }
       if (localObject != null)
@@ -238,7 +238,7 @@ public class StoryItem
   
   public float getCountDown()
   {
-    return yex.a(this.updateTime);
+    return StoryListUtils.a(this.updateTime);
   }
   
   public String getCoverUrl()
@@ -248,7 +248,7 @@ public class StoryItem
   
   public String getTime()
   {
-    return yex.a(this.updateTime);
+    return StoryListUtils.a(this.updateTime);
   }
   
   public String getTitle()
@@ -267,12 +267,12 @@ public class StoryItem
   
   public String toString()
   {
-    return yey.a(new Object[] { "StoryItem{ key=", this.key, ", type=", Integer.valueOf(this.type), ", user=", this.user, ", updateTime=", Long.valueOf(this.updateTime), ", cover= ", this.cover, ", totalTime=", Long.valueOf(this.totalTime), ", videoCount=", Integer.valueOf(this.videoCount), ", unReadCount=", Integer.valueOf(this.unReadCount), ", liveVideo=", this.liveVideo, ", storyLabel=", this.storyLabel, ", mDoodleText=", this.mDoodleText });
+    return StringAppendTool.a(new Object[] { "StoryItem{ key=", this.key, ", type=", Integer.valueOf(this.type), ", user=", this.user, ", updateTime=", Long.valueOf(this.updateTime), ", cover= ", this.cover, ", totalTime=", Long.valueOf(this.totalTime), ", videoCount=", Integer.valueOf(this.videoCount), ", unReadCount=", Integer.valueOf(this.unReadCount), ", liveVideo=", this.liveVideo, ", storyLabel=", this.storyLabel, ", mDoodleText=", this.mDoodleText });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.StoryItem
  * JD-Core Version:    0.7.0.1
  */

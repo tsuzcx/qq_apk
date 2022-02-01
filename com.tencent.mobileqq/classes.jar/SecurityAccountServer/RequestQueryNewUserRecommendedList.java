@@ -8,7 +8,7 @@ public final class RequestQueryNewUserRecommendedList
   extends JceStruct
 {
   public String MobileUniqueNo = "";
-  public long WantNum;
+  public long WantNum = 0L;
   
   public RequestQueryNewUserRecommendedList() {}
   

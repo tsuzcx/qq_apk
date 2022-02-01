@@ -1,23 +1,22 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
 import android.content.res.AssetManager;
-import boii;
-import boiu;
-import bpqs;
+import com.tencent.biz.common.util.Util;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.data.TemplateGroupItem;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import nwo;
 
-public class QIMPtvTemplateManager$1
+class QIMPtvTemplateManager$1
   implements Runnable
 {
-  public QIMPtvTemplateManager$1(bpqs parambpqs, boolean paramBoolean) {}
+  QIMPtvTemplateManager$1(QIMPtvTemplateManager paramQIMPtvTemplateManager, boolean paramBoolean) {}
   
   public void run()
   {
@@ -35,7 +34,7 @@ public class QIMPtvTemplateManager$1
           localObject5 = BaseApplication.getContext().getAssets().open("ptv_template_new.cfg");
           localObject1 = localObject5;
           localObject3 = localObject5;
-          String str = nwo.a((InputStream)localObject5);
+          String str = Util.a((InputStream)localObject5);
           localObject1 = str;
           localObject3 = localObject1;
           if (localObject5 == null) {}
@@ -96,7 +95,7 @@ public class QIMPtvTemplateManager$1
             if (this.this$0.getApp() == null) {
               continue;
             }
-            this.this$0.getApp().notifyObservers(boiu.class, 3, true, null);
+            this.this$0.getApp().notifyObservers(CaptureConfigUpdateObserver.class, 3, true, null);
             return;
           }
         }
@@ -115,12 +114,12 @@ public class QIMPtvTemplateManager$1
           localObject3 = localObject1;
         }
       }
-      localObject1 = bpqs.a(this.this$0, (String)localObject3);
+      localObject1 = QIMPtvTemplateManager.a(this.this$0, (String)localObject3);
     } while ((localObject1 == null) || (((List)localObject1).isEmpty()));
     localObject3 = ((List)localObject1).iterator();
     while (((Iterator)localObject3).hasNext())
     {
-      localObject5 = ((boii)((Iterator)localObject3).next()).jdField_a_of_type_JavaUtilList.iterator();
+      localObject5 = ((TemplateGroupItem)((Iterator)localObject3).next()).jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject5).hasNext())
       {
         localObject6 = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject5).next();
@@ -137,7 +136,7 @@ public class QIMPtvTemplateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager.1
  * JD-Core Version:    0.7.0.1
  */

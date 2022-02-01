@@ -39,7 +39,7 @@ public final class QAPMPluginManager
 {
   @JvmField
   @NotNull
-  public static final List<DefaultPluginConfig> ALL_PLUGIN = CollectionsKt.listOf(new DefaultPluginConfig[] { IO_PLUGIN, DB_PLUGIN, BREAD_CRUMB_PLUGIN, CRASH_PLUGIN, ANR_PLUGIN, DEVICE_PLUGIN, DROP_FRAME_PLUGIN, JS_ERROR_PLUGIN, LOOP_STACK_PLUGIN, CELLING_PLUGIN, LEAK_PLUGIN, RESOURCE_PLUGIN, WEB_VIEW_PLUGIN, HTTP_PLUGIN, BIG_BITMAP_PLUGIN });
+  public static final List<DefaultPluginConfig> ALL_PLUGIN;
   @JvmField
   @NotNull
   public static final DefaultPluginConfig ANR_PLUGIN;
@@ -82,6 +82,9 @@ public final class QAPMPluginManager
   public static final DefaultPluginConfig LOOP_STACK_PLUGIN;
   @JvmField
   @NotNull
+  public static final DefaultPluginConfig QQ_BATTERY_PLUGIN;
+  @JvmField
+  @NotNull
   public static final DefaultPluginConfig RESOURCE_PLUGIN;
   private static final String TAG = "QAPM_manager_QAPMPluginManager";
   @JvmField
@@ -106,6 +109,14 @@ public final class QAPMPluginManager
     WEB_VIEW_PLUGIN = PluginCombination.webViewPlugin;
     HTTP_PLUGIN = PluginCombination.httpPlugin;
     BIG_BITMAP_PLUGIN = PluginCombination.bigBitmapPlugin;
+    QQ_BATTERY_PLUGIN = PluginCombination.qqBatteryPlugin;
+    Collection localCollection = (Collection)CollectionsKt.listOf(new DefaultPluginConfig[] { IO_PLUGIN, DB_PLUGIN, BREAD_CRUMB_PLUGIN, CRASH_PLUGIN, ANR_PLUGIN, DEVICE_PLUGIN, DROP_FRAME_PLUGIN, JS_ERROR_PLUGIN, LOOP_STACK_PLUGIN, CELLING_PLUGIN, LEAK_PLUGIN, RESOURCE_PLUGIN, WEB_VIEW_PLUGIN, HTTP_PLUGIN, BIG_BITMAP_PLUGIN });
+    if (!SDKConfig.PURE_QAPM) {}
+    for (List localList = CollectionsKt.listOf(QQ_BATTERY_PLUGIN);; localList = CollectionsKt.emptyList())
+    {
+      ALL_PLUGIN = CollectionsKt.plus(localCollection, (Iterable)localList);
+      return;
+    }
   }
   
   private final List<QAPMMonitorPlugin> allPlugins()
@@ -163,11 +174,11 @@ public final class QAPMPluginManager
               localObject4 = (Map)this.plugins;
               localObject5 = paramDefaultPluginConfig.pluginName;
               if (localClass == null) {
-                break label382;
+                break label384;
               }
               localObject1 = localClass.getConstructor(new Class[0]);
               if (localObject1 == null) {
-                break label382;
+                break label384;
               }
               localObject1 = (QAPMMonitorPlugin)((Constructor)localObject1).newInstance(new Object[0]);
               ((Map)localObject4).put(localObject5, localObject1);
@@ -192,7 +203,7 @@ public final class QAPMPluginManager
           Logger.INSTANCE.e(new String[] { "QAPM_manager_QAPMPluginManager", localClassNotFoundException + ": can not find class " + paramDefaultPluginConfig.entrance + '.' });
           return;
         }
-        label382:
+        label384:
         Object localObject2 = null;
       }
     }
@@ -303,7 +314,7 @@ public final class QAPMPluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qapmsdk.qapmmanager.QAPMPluginManager
  * JD-Core Version:    0.7.0.1
  */

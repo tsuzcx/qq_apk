@@ -16,11 +16,11 @@ import android.graphics.Xfermode;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import blfw;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.filecommon.api.R.styleable;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ThemeImageWrapper;
 import com.tencent.widget.URLThemeImageView;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -30,12 +30,12 @@ public class AsyncImageView
   extends URLThemeImageView
 {
   private int jdField_a_of_type_Int = 128;
-  private Context jdField_a_of_type_AndroidContentContext;
+  private Context jdField_a_of_type_AndroidContentContext = null;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private Xfermode jdField_a_of_type_AndroidGraphicsXfermode;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   private float[] jdField_a_of_type_ArrayOfFloat;
   private int jdField_b_of_type_Int = 128;
   private Path jdField_b_of_type_AndroidGraphicsPath;
@@ -50,18 +50,18 @@ public class AsyncImageView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RectFAsyncImageView);
-    this.c = paramContext.getDimensionPixelOffset(0, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ar);
+    this.c = paramContext.getDimensionPixelOffset(R.styleable.jdField_a_of_type_Int, 0);
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     if (Build.VERSION.SDK_INT <= 26) {}
     for (this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);; this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT))
     {
-      this.jdField_a_of_type_Blfw.a(blfw.jdField_b_of_type_Int);
+      this.themeImageWrapper.setMaskShape(ThemeImageWrapper.MODE_SQURE);
       this.jdField_b_of_type_AndroidGraphicsPath = new Path();
       this.jdField_a_of_type_ArrayOfFloat = new float[8];
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
       a();
-      c();
+      b();
       paramContext.recycle();
       return;
     }
@@ -140,6 +140,18 @@ public class AsyncImageView
     this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
   }
   
+  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ArrayOfFloat[0] = (paramInt1 / 2.0F);
+    this.jdField_a_of_type_ArrayOfFloat[1] = (paramInt1 / 2.0F);
+    this.jdField_a_of_type_ArrayOfFloat[2] = (paramInt2 / 2.0F);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (paramInt2 / 2.0F);
+    this.jdField_a_of_type_ArrayOfFloat[4] = (paramInt3 / 2.0F);
+    this.jdField_a_of_type_ArrayOfFloat[5] = (paramInt3 / 2.0F);
+    this.jdField_a_of_type_ArrayOfFloat[6] = (paramInt4 / 2.0F);
+    this.jdField_a_of_type_ArrayOfFloat[7] = (paramInt4 / 2.0F);
+  }
+  
   private void a(Drawable paramDrawable)
   {
     if (paramDrawable == null) {
@@ -170,7 +182,7 @@ public class AsyncImageView
     return false;
   }
   
-  private void c()
+  private void b()
   {
     if (this.c > 0)
     {
@@ -213,7 +225,7 @@ public class AsyncImageView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     a();
@@ -318,7 +330,15 @@ public class AsyncImageView
   {
     this.c = paramInt;
     a();
-    c();
+    b();
+    invalidate();
+  }
+  
+  public void setCornerRadius(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.c = 1;
+    a();
+    a(paramInt1, paramInt2, paramInt3, paramInt4);
     invalidate();
   }
   
@@ -370,7 +390,7 @@ public class AsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

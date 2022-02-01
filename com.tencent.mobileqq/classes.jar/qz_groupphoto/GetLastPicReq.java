@@ -8,11 +8,11 @@ public final class GetLastPicReq
   extends JceStruct
 {
   static _LoginInfo cache_stLoginInfo;
-  public long cnt;
-  public long gid;
-  public long lasttime;
-  public _LoginInfo stLoginInfo;
-  public long uin;
+  public long cnt = 0L;
+  public long gid = 0L;
+  public long lasttime = 0L;
+  public _LoginInfo stLoginInfo = null;
+  public long uin = 0L;
   
   public GetLastPicReq() {}
   
@@ -50,7 +50,7 @@ public final class GetLastPicReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     qz_groupphoto.GetLastPicReq
  * JD-Core Version:    0.7.0.1
  */

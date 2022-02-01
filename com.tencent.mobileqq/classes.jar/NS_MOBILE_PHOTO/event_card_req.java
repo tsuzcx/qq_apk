@@ -13,10 +13,10 @@ public final class event_card_req
   static ArrayList<event_card> cache_cards;
   static Map<String, String> cache_extern;
   static lbs_info cache_lbs = new lbs_info();
-  public ArrayList<event_card> cards;
-  public Map<String, String> extern;
-  public lbs_info lbs;
-  public long uin;
+  public ArrayList<event_card> cards = null;
+  public Map<String, String> extern = null;
+  public lbs_info lbs = null;
+  public long uin = 0L;
   
   static
   {

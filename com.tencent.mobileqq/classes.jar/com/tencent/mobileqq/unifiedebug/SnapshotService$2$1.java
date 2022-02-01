@@ -7,7 +7,7 @@ class SnapshotService$2$1
   
   public void run()
   {
-    SnapshotService.b(this.a.this$0, this.a.jdField_a_of_type_Bgur, this.a.jdField_a_of_type_Bgut);
+    SnapshotService.b(this.a.this$0, this.a.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$DebugCommand, this.a.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot);
   }
 }
 

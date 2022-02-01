@@ -1,7 +1,11 @@
 package com.tencent.qqmini.sdk.launcher.core.model;
 
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.core.IProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.SpecialProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.ApkgBaseInfo;
 import com.tencent.qqmini.sdk.launcher.model.AppConfigInfo;
@@ -61,6 +65,32 @@ public class ApkgInfo
     }
   }
   
+  public static boolean initNetwork(ApkgInfo paramApkgInfo)
+  {
+    if (paramApkgInfo != null) {}
+    try
+    {
+      if ((paramApkgInfo.mAppConfigInfo == null) || (paramApkgInfo.mAppConfigInfo.networkTimeoutInfo == null))
+      {
+        QMLog.e("ApkgInfo", "initNetwork param is wrong");
+        return false;
+      }
+      SpecialProxy localSpecialProxy = (SpecialProxy)AppLoaderFactory.g().getProxyManager().get(SpecialProxy.class);
+      if (localSpecialProxy != null)
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putParcelable("NetworkTimeOutInfo", paramApkgInfo.mAppConfigInfo.networkTimeoutInfo);
+        localSpecialProxy.sendEventToHost(2, localBundle, null);
+      }
+      return true;
+    }
+    catch (Throwable paramApkgInfo)
+    {
+      QMLog.e("ApkgInfo", "initNetwork failed", paramApkgInfo);
+    }
+    return false;
+  }
+  
   public static ApkgInfo loadApkgInfoFromFolderPath(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
   {
     if ((TextUtils.isEmpty(paramString1)) || (!new File(paramString1).exists())) {
@@ -68,6 +98,8 @@ public class ApkgInfo
     }
     paramString1 = new ApkgInfo(paramString1, paramMiniAppInfo);
     paramString1.init(paramString2);
+    QMLog.e("ApkgInfo", "loadApkgInfoFromFolderPath initNetwork");
+    initNetwork(paramString1);
     return paramString1;
   }
   
@@ -317,7 +349,7 @@ public class ApkgInfo
           paramString = this.mMiniAppInfo.launchParam.entryPath;
         }
         localObject = paramString;
-        if (!isUrlFileExist(paramString)) {
+        if (TextUtils.isEmpty(paramString)) {
           localObject = str;
         }
         paramString = AppBrandUtil.getAppLaunchInfo((String)localObject, this.mMiniAppInfo);
@@ -503,7 +535,7 @@ public class ApkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo
  * JD-Core Version:    0.7.0.1
  */

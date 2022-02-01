@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.List;
-import pwb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import uuc;
 
-public final class ReadinjoySPEventReport$15
+final class ReadinjoySPEventReport$15
   implements Runnable
 {
-  public ReadinjoySPEventReport$15(List paramList, int paramInt1, int paramInt2) {}
+  ReadinjoySPEventReport$15(List paramList, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -21,10 +21,10 @@ public final class ReadinjoySPEventReport$15
     ArrayList localArrayList;
     oidb_cmd0x80a.AttributeList localAttributeList;
     PBStringField localPBStringField;
-    if (pwb.b(60))
+    if (ReadinjoySPEventReport.b(60))
     {
-      long l1 = pwb.b();
-      l2 = pwb.a(l1 * 1000L) / 1000L;
+      long l1 = ReadinjoySPEventReport.b();
+      l2 = ReadinjoySPEventReport.a(l1 * 1000L) / 1000L;
       int k = this.jdField_a_of_type_JavaUtilList.size() - 1;
       int i = 0;
       if (k >= 0)
@@ -55,7 +55,7 @@ public final class ReadinjoySPEventReport$15
       localObject = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(1);
       ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("aiotype");
-      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(pwb.a(this.jdField_a_of_type_Int)));
+      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(ReadinjoySPEventReport.a(this.jdField_a_of_type_Int)));
       localArrayList.add(localObject);
       localObject = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
@@ -67,7 +67,7 @@ public final class ReadinjoySPEventReport$15
       localAttributeList.att_name.set("hassendmsg");
       localPBStringField = localAttributeList.att_value;
       if (i == 0) {
-        break label441;
+        break label451;
       }
       localObject = "1";
       localPBStringField.set((String)localObject);
@@ -77,11 +77,11 @@ public final class ReadinjoySPEventReport$15
       localAttributeList.att_name.set("hasrecvmsg");
       localPBStringField = localAttributeList.att_value;
       if (j == 0) {
-        break label448;
+        break label458;
       }
     }
-    label441:
-    label448:
+    label451:
+    label458:
     for (Object localObject = "1";; localObject = "0")
     {
       localPBStringField.set((String)localObject);
@@ -91,7 +91,7 @@ public final class ReadinjoySPEventReport$15
       ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("costtime");
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set("" + l2);
       localArrayList.add(localObject);
-      uuc.a(60, localArrayList);
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPushEffectEvent(60, localArrayList);
       return;
       localObject = "0";
       break;
@@ -100,7 +100,7 @@ public final class ReadinjoySPEventReport$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.15
  * JD-Core Version:    0.7.0.1
  */

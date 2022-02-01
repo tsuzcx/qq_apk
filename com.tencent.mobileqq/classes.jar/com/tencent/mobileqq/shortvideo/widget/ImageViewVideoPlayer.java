@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bdaw;
+import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener;
@@ -20,10 +20,10 @@ import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
 import com.tencent.image.VideoDrawable.OnPlayerOneFrameListener;
 import com.tencent.image.VideoDrawable.VideoDrawableParams;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
-import zeb;
 
 public class ImageViewVideoPlayer
   extends LinearLayout
@@ -44,25 +44,25 @@ public class ImageViewVideoPlayer
   private static final String TAG = "ImageViewVideoPlayer";
   public static final int VIDEO_FRAME_LIMIT_NUM = 11;
   private static ColorDrawable sLoading = new ColorDrawable(-14342358);
-  private String mAFile;
-  private int mCurrentPlayedFrame;
-  private boolean mEnableCyclePlay;
-  public ImageViewVideoPlayer.IMPFrameListener mFrameListener;
-  private boolean mHaveEnded;
-  public Bitmap mLastFramePicture;
-  public BitmapDrawable mLoadingBitmap;
-  private boolean mNeedPlayAudio;
+  private String mAFile = null;
+  private int mCurrentPlayedFrame = 0;
+  private boolean mEnableCyclePlay = false;
+  public ImageViewVideoPlayer.IMPFrameListener mFrameListener = null;
+  private boolean mHaveEnded = false;
+  public Bitmap mLastFramePicture = null;
+  public BitmapDrawable mLoadingBitmap = null;
+  private boolean mNeedPlayAudio = false;
   private boolean mNeedProgress = true;
   public URLImageView mPlayer;
-  public ImageViewVideoPlayer.IMPlayerEndListener mPlayerEndListener;
+  public ImageViewVideoPlayer.IMPlayerEndListener mPlayerEndListener = null;
   public int mPlayerState = 1;
   private PlayerProgressBar mProgressBar;
   public boolean mRequireAudioFocus = true;
-  public boolean mSecurityChecked;
-  private int mTotalFrame;
-  private URLDrawable mUrlDrawable;
-  private String mVFile;
-  public VideoDrawable mVideoDrawable;
+  public boolean mSecurityChecked = false;
+  private int mTotalFrame = 0;
+  private URLDrawable mUrlDrawable = null;
+  private String mVFile = null;
+  public VideoDrawable mVideoDrawable = null;
   
   public ImageViewVideoPlayer(Context paramContext)
   {
@@ -86,7 +86,7 @@ public class ImageViewVideoPlayer
       {
         this.mVideoDrawable = ((VideoDrawable)this.mUrlDrawable.getCurrDrawable());
         boolean bool2 = this.mVideoDrawable.isAudioPlaying();
-        if ((!bdaw.d(bdaw.c)) && (!bdaw.a(bdaw.d))) {
+        if ((!CameraCompatibleList.d(CameraCompatibleList.c)) && (!CameraCompatibleList.a(CameraCompatibleList.d))) {
           break label141;
         }
         bool1 = true;
@@ -178,7 +178,7 @@ public class ImageViewVideoPlayer
     return -1;
     String str = localFile.getAbsolutePath() + File.separator;
     if (QLog.isColorLevel()) {
-      QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), sourceDirFile =" + localFile.getAbsolutePath() + ",files = " + Arrays.toString(paramString) + ",filse count = " + localFile.listFiles().length);
+      QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), sourceDirFile =" + localFile.getAbsolutePath() + ",files = " + Arrays.toString(paramString) + ", file count = " + localFile.listFiles().length);
     }
     int j = paramString.length;
     i = 0;
@@ -191,7 +191,7 @@ public class ImageViewVideoPlayer
       if (localFile.endsWith(".af")) {
         this.mAFile = (str + localFile);
       }
-      if ((localFile.endsWith(".vf")) && (zeb.a(str + localFile) > 0L)) {
+      if ((localFile.endsWith(".vf")) && (FileUtils.a(str + localFile) > 0L)) {
         this.mVFile = (str + localFile);
       }
       i += 1;
@@ -203,7 +203,7 @@ public class ImageViewVideoPlayer
       return -2;
     }
     this.mNeedPlayAudio = false;
-    if (zeb.a(this.mAFile) > 0L)
+    if (FileUtils.a(this.mAFile) > 0L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), mNeedPlayAudio = " + this.mNeedPlayAudio);

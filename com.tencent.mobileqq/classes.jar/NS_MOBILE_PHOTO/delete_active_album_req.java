@@ -10,9 +10,9 @@ public final class delete_active_album_req
   extends JceStruct
 {
   static Map<String, String> cache_map_params = new HashMap();
-  public Map<String, String> map_params;
+  public Map<String, String> map_params = null;
   public String mgz_id = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

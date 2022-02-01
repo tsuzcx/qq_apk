@@ -1,24 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import set;
-import sex;
-import spn;
-
-public class VideoPlayerWrapper$2
+class VideoPlayerWrapper$2
   implements Runnable
 {
-  public VideoPlayerWrapper$2(spn paramspn) {}
+  VideoPlayerWrapper$2(VideoPlayerWrapper paramVideoPlayerWrapper) {}
   
   public void run()
   {
-    if (spn.a(this.this$0) != null) {
-      spn.a(this.this$0).a(spn.a(this.this$0).a());
+    if (VideoPlayerWrapper.a(this.this$0) != null) {
+      VideoPlayerWrapper.a(this.this$0).a(VideoPlayerWrapper.a(this.this$0).a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper.2
  * JD-Core Version:    0.7.0.1
  */

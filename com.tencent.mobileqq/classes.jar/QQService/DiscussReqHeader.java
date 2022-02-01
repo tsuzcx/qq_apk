@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class DiscussReqHeader
   extends JceStruct
 {
-  public int Version;
+  public int Version = 0;
   
   public DiscussReqHeader() {}
   

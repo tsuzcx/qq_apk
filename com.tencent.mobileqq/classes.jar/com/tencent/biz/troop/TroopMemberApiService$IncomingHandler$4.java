@@ -1,14 +1,13 @@
 package com.tencent.biz.troop;
 
-import aaeq;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.MessageRecord;
 
-public class TroopMemberApiService$IncomingHandler$4
+class TroopMemberApiService$IncomingHandler$4
   implements Runnable
 {
-  public TroopMemberApiService$IncomingHandler$4(aaeq paramaaeq, TroopManager paramTroopManager, String paramString1, String paramString2, Bundle paramBundle, int paramInt) {}
+  TroopMemberApiService$IncomingHandler$4(TroopMemberApiService.IncomingHandler paramIncomingHandler, TroopManager paramTroopManager, String paramString1, String paramString2, Bundle paramBundle, int paramInt) {}
   
   public void run()
   {
@@ -21,7 +20,7 @@ public class TroopMemberApiService$IncomingHandler$4
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aaeq.a.a(72, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(72, this.jdField_a_of_type_AndroidOsBundle);
       return;
       this.jdField_a_of_type_AndroidOsBundle.putLong("lastMsgTime", 0L);
       this.jdField_a_of_type_AndroidOsBundle.putString("lastMsgContent", "");
@@ -31,7 +30,7 @@ public class TroopMemberApiService$IncomingHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.4
  * JD-Core Version:    0.7.0.1
  */

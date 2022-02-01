@@ -8,11 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import azjx;
-import azkl;
-import azkn;
-import azkq;
-import blvp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
@@ -23,7 +18,11 @@ import com.tencent.image.URLDrawableHandler;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.pic.PicDownloadInfo;
 import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.pic.PicUiInterface;
+import com.tencent.mobileqq.pic.PicUploadInfo;
+import com.tencent.mobileqq.pic.PreDownloadStrategyBeta;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.bitmapcreator.CustomBitmap;
 import com.tencent.mobileqq.transfile.bitmapcreator.ExifBitmapCreator;
@@ -31,6 +30,7 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.peak.PeakUtils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -64,6 +64,11 @@ public abstract class AbstractImageDownloader
   protected BaseApplicationImpl application;
   protected String tag;
   
+  static
+  {
+    DISPLAY_HEIGHT = 0;
+  }
+  
   public AbstractImageDownloader(String paramString, BaseApplicationImpl paramBaseApplicationImpl)
   {
     this.tag = paramString;
@@ -80,12 +85,12 @@ public abstract class AbstractImageDownloader
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 81	java/io/File:length	()J
+    //   1: invokevirtual 85	java/io/File:length	()J
     //   4: lstore 6
-    //   6: new 83	java/io/FileInputStream
+    //   6: new 87	java/io/FileInputStream
     //   9: dup
     //   10: aload_1
-    //   11: invokespecial 86	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   11: invokespecial 90	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   14: astore_1
     //   15: lconst_0
     //   16: lstore 4
@@ -94,7 +99,7 @@ public abstract class AbstractImageDownloader
     //   23: astore 8
     //   25: aload_1
     //   26: aload 8
-    //   28: invokevirtual 90	java/io/FileInputStream:read	([B)I
+    //   28: invokevirtual 94	java/io/FileInputStream:read	([B)I
     //   31: istore_3
     //   32: iload_3
     //   33: iconst_m1
@@ -103,9 +108,9 @@ public abstract class AbstractImageDownloader
     //   38: aload 8
     //   40: iconst_0
     //   41: iload_3
-    //   42: invokevirtual 96	java/io/OutputStream:write	([BII)V
+    //   42: invokevirtual 100	java/io/OutputStream:write	([BII)V
     //   45: aload_0
-    //   46: invokevirtual 99	java/io/OutputStream:flush	()V
+    //   46: invokevirtual 103	java/io/OutputStream:flush	()V
     //   49: lload 4
     //   51: iload_3
     //   52: i2l
@@ -117,28 +122,28 @@ public abstract class AbstractImageDownloader
     //   60: lload 6
     //   62: l2f
     //   63: fdiv
-    //   64: ldc 100
+    //   64: ldc 104
     //   66: fmul
     //   67: f2i
-    //   68: invokeinterface 106 2 0
+    //   68: invokeinterface 110 2 0
     //   73: goto -48 -> 25
     //   76: astore_2
     //   77: aload_1
     //   78: astore_0
     //   79: aload_2
-    //   80: invokevirtual 110	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   83: ldc 112
-    //   85: invokevirtual 118	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   80: invokevirtual 114	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   83: ldc 116
+    //   85: invokevirtual 122	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   88: ifeq +47 -> 135
-    //   91: new 120	com/tencent/mobileqq/transfile/FileDownloadFailedException
+    //   91: new 124	com/tencent/mobileqq/transfile/FileDownloadFailedException
     //   94: dup
     //   95: sipush 9040
-    //   98: ldc2_w 121
+    //   98: ldc2_w 125
     //   101: aload_2
-    //   102: invokevirtual 110	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   102: invokevirtual 114	java/io/IOException:getMessage	()Ljava/lang/String;
     //   105: iconst_0
     //   106: iconst_0
-    //   107: invokespecial 125	com/tencent/mobileqq/transfile/FileDownloadFailedException:<init>	(IJLjava/lang/String;ZZ)V
+    //   107: invokespecial 129	com/tencent/mobileqq/transfile/FileDownloadFailedException:<init>	(IJLjava/lang/String;ZZ)V
     //   110: athrow
     //   111: astore_2
     //   112: aload_0
@@ -148,23 +153,23 @@ public abstract class AbstractImageDownloader
     //   116: aload_1
     //   117: ifnull +7 -> 124
     //   120: aload_1
-    //   121: invokevirtual 128	java/io/FileInputStream:close	()V
+    //   121: invokevirtual 132	java/io/FileInputStream:close	()V
     //   124: aload_0
     //   125: athrow
     //   126: aload_1
     //   127: ifnull +7 -> 134
     //   130: aload_1
-    //   131: invokevirtual 128	java/io/FileInputStream:close	()V
+    //   131: invokevirtual 132	java/io/FileInputStream:close	()V
     //   134: return
-    //   135: new 120	com/tencent/mobileqq/transfile/FileDownloadFailedException
+    //   135: new 124	com/tencent/mobileqq/transfile/FileDownloadFailedException
     //   138: dup
     //   139: sipush 9301
-    //   142: ldc2_w 129
+    //   142: ldc2_w 133
     //   145: aload_2
-    //   146: invokevirtual 110	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   146: invokevirtual 114	java/io/IOException:getMessage	()Ljava/lang/String;
     //   149: iconst_0
     //   150: iconst_0
-    //   151: invokespecial 125	com/tencent/mobileqq/transfile/FileDownloadFailedException:<init>	(IJLjava/lang/String;ZZ)V
+    //   151: invokespecial 129	com/tencent/mobileqq/transfile/FileDownloadFailedException:<init>	(IJLjava/lang/String;ZZ)V
     //   154: athrow
     //   155: astore_0
     //   156: aconst_null
@@ -244,35 +249,6 @@ public abstract class AbstractImageDownloader
     }
   }
   
-  public static String getExceptionMessage(Exception paramException)
-  {
-    int i = 8;
-    if (paramException == null) {
-      return "Exception e is null";
-    }
-    Object localObject = paramException.getMessage();
-    StackTraceElement[] arrayOfStackTraceElement = paramException.getStackTrace();
-    if (arrayOfStackTraceElement != null)
-    {
-      localObject = new StringBuilder(":");
-      int j = arrayOfStackTraceElement.length;
-      if (j > 8) {}
-      for (;;)
-      {
-        ((StringBuilder)localObject).append("\n");
-        j = 0;
-        while (j < i)
-        {
-          ((StringBuilder)localObject).append(arrayOfStackTraceElement[j].toString()).append("\n");
-          j += 1;
-        }
-        i = j;
-      }
-      return paramException.toString() + ((StringBuilder)localObject).toString();
-    }
-    return localObject;
-  }
-  
   public static int getRoundRadius(Application paramApplication, int paramInt)
   {
     float f1 = 1.0F;
@@ -294,9 +270,9 @@ public abstract class AbstractImageDownloader
     if ((paramObject instanceof DownloadParams))
     {
       localObject = (DownloadParams)paramObject;
-      if ((((DownloadParams)localObject).tag instanceof azkl))
+      if ((((DownloadParams)localObject).tag instanceof PicUiInterface))
       {
-        paramObject = (azkl)((DownloadParams)localObject).tag;
+        paramObject = (PicUiInterface)((DownloadParams)localObject).tag;
         localObject = ((DownloadParams)localObject).url.getProtocol();
         if (paramObject.isSendFromLocal())
         {
@@ -642,7 +618,7 @@ public abstract class AbstractImageDownloader
           localObject3 = localObject2;
           if (i != 0)
           {
-            bool = FileUtils.fileExists((String)localObject1);
+            bool = FileUtils.a((String)localObject1);
             if (bool)
             {
               localObject3 = SafeBitmapFactory.decodeFile((String)localObject1, paramOptions);
@@ -650,7 +626,7 @@ public abstract class AbstractImageDownloader
               if (localObject3 == null)
               {
                 String str2 = MD5Utils.encodeFileHexStr((String)localObject1);
-                FileUtils.deleteFile((String)localObject1);
+                FileUtils.e((String)localObject1);
                 localObject2 = localObject3;
                 if (QLog.isColorLevel())
                 {
@@ -675,7 +651,7 @@ public abstract class AbstractImageDownloader
         if (localObject3 != null)
         {
           if (i != 0) {
-            FileUtils.deleteFile((String)localObject1);
+            FileUtils.e((String)localObject1);
           }
           localObject1 = localObject3;
           if (paramDownloadParams.mDecodeHandler != null) {
@@ -722,11 +698,11 @@ public abstract class AbstractImageDownloader
           logDecodeFile(paramDownloadParams, paramFile, str1, paramOptions, 1, true, "step:create roundBitmap");
           return localObject1;
         }
-        if (!((azkl)paramDownloadParams.tag).isSendFromLocal())
+        if (!((PicUiInterface)paramDownloadParams.tag).isSendFromLocal())
         {
           localObject1 = MD5Utils.encodeFileHexStr(paramFile.getAbsolutePath());
-          localObject2 = ((azkl)paramDownloadParams.tag).getPicDownloadInfo();
-          QLog.i("Q.richmedia." + RichMediaUtil.getUinDesc(((azjx)localObject2).b) + ".dw", 1, "id:" + String.valueOf(((azjx)localObject2).a) + "step: UIDecoder FAIL srcPicMD5:" + (String)localObject1);
+          localObject2 = ((PicUiInterface)paramDownloadParams.tag).getPicDownloadInfo();
+          QLog.i("Q.richmedia." + TransFileUtil.getUinDesc(((PicDownloadInfo)localObject2).b) + ".dw", 1, "id:" + String.valueOf(((PicDownloadInfo)localObject2).a) + "step: UIDecoder FAIL srcPicMD5:" + (String)localObject1);
         }
         paramFile.delete();
         logDecodeFile(paramDownloadParams, paramFile, str1, paramOptions, 1, false, "step:decode error, not valid pic");
@@ -794,7 +770,7 @@ public abstract class AbstractImageDownloader
     }
     catch (Exception localException)
     {
-      paramURLDrawableHandler = getExceptionMessage(localException);
+      paramURLDrawableHandler = BaseTransProcessor.getExceptionMessage(localException);
       if (paramURLDrawableHandler != null)
       {
         paramFile = paramURLDrawableHandler;
@@ -825,25 +801,25 @@ public abstract class AbstractImageDownloader
   {
     // Byte code:
     //   0: aload_3
-    //   1: getfield 559	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   1: getfield 543	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
     //   4: astore 17
     //   6: aload 4
     //   8: aload 4
     //   10: aload_3
-    //   11: getfield 790	com/tencent/image/DownloadParams:reqWidth	I
+    //   11: getfield 779	com/tencent/image/DownloadParams:reqWidth	I
     //   14: aload_3
-    //   15: getfield 793	com/tencent/image/DownloadParams:reqHeight	I
-    //   18: invokestatic 794	com/tencent/mobileqq/transfile/AbstractImageDownloader:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   21: putfield 337	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   15: getfield 782	com/tencent/image/DownloadParams:reqHeight	I
+    //   18: invokestatic 783	com/tencent/mobileqq/transfile/AbstractImageDownloader:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   21: putfield 319	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   24: aload 4
-    //   26: getfield 766	android/graphics/BitmapFactory$Options:outWidth	I
+    //   26: getfield 752	android/graphics/BitmapFactory$Options:outWidth	I
     //   29: istore 7
     //   31: aload 4
-    //   33: getfield 763	android/graphics/BitmapFactory$Options:outHeight	I
+    //   33: getfield 749	android/graphics/BitmapFactory$Options:outHeight	I
     //   36: istore 8
     //   38: aload 4
     //   40: iconst_0
-    //   41: putfield 569	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   41: putfield 553	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   44: iconst_0
     //   45: istore 10
     //   47: aconst_null
@@ -851,24 +827,24 @@ public abstract class AbstractImageDownloader
     //   50: iconst_1
     //   51: istore 6
     //   53: aload_1
-    //   54: invokevirtual 264	java/net/URL:getProtocol	()Ljava/lang/String;
-    //   57: ldc_w 796
-    //   60: invokevirtual 516	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   54: invokevirtual 246	java/net/URL:getProtocol	()Ljava/lang/String;
+    //   57: ldc_w 785
+    //   60: invokevirtual 500	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   63: ifne +42 -> 105
     //   66: aload_1
-    //   67: invokevirtual 264	java/net/URL:getProtocol	()Ljava/lang/String;
-    //   70: ldc_w 798
-    //   73: invokevirtual 516	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   67: invokevirtual 246	java/net/URL:getProtocol	()Ljava/lang/String;
+    //   70: ldc_w 787
+    //   73: invokevirtual 500	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   76: ifne +29 -> 105
     //   79: aload_1
-    //   80: invokevirtual 264	java/net/URL:getProtocol	()Ljava/lang/String;
-    //   83: ldc_w 800
-    //   86: invokevirtual 516	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   80: invokevirtual 246	java/net/URL:getProtocol	()Ljava/lang/String;
+    //   83: ldc_w 789
+    //   86: invokevirtual 500	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   89: ifne +16 -> 105
     //   92: aload_1
-    //   93: invokevirtual 264	java/net/URL:getProtocol	()Ljava/lang/String;
-    //   96: ldc_w 802
-    //   99: invokevirtual 516	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   93: invokevirtual 246	java/net/URL:getProtocol	()Ljava/lang/String;
+    //   96: ldc_w 791
+    //   99: invokevirtual 500	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   102: ifeq +754 -> 856
     //   105: iconst_3
     //   106: istore 5
@@ -878,26 +854,26 @@ public abstract class AbstractImageDownloader
     //   113: iload 5
     //   115: if_icmpgt +730 -> 845
     //   118: aload_2
-    //   119: invokevirtual 342	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   119: invokevirtual 324	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   122: aload 4
-    //   124: invokestatic 592	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   124: invokestatic 576	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   127: astore 16
     //   129: aload 16
     //   131: astore_1
-    //   132: ldc_w 804
+    //   132: ldc_w 793
     //   135: aload_3
-    //   136: getfield 807	com/tencent/image/DownloadParams:mExtraInfo	Ljava/lang/Object;
-    //   139: invokevirtual 516	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   136: getfield 796	com/tencent/image/DownloadParams:mExtraInfo	Ljava/lang/Object;
+    //   139: invokevirtual 500	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   142: ifeq +708 -> 850
     //   145: aload 16
     //   147: astore_1
-    //   148: new 667	com/tencent/mobileqq/transfile/bitmapcreator/ExifBitmapCreator
+    //   148: new 649	com/tencent/mobileqq/transfile/bitmapcreator/ExifBitmapCreator
     //   151: dup
     //   152: aload_2
-    //   153: invokevirtual 342	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   156: invokespecial 668	com/tencent/mobileqq/transfile/bitmapcreator/ExifBitmapCreator:<init>	(Ljava/lang/String;)V
+    //   153: invokevirtual 324	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   156: invokespecial 650	com/tencent/mobileqq/transfile/bitmapcreator/ExifBitmapCreator:<init>	(Ljava/lang/String;)V
     //   159: aload 16
-    //   161: invokevirtual 671	com/tencent/mobileqq/transfile/bitmapcreator/ExifBitmapCreator:creatBitmap	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   161: invokevirtual 653	com/tencent/mobileqq/transfile/bitmapcreator/ExifBitmapCreator:creatBitmap	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   164: astore 16
     //   166: aload 16
     //   168: astore_1
@@ -905,53 +881,53 @@ public abstract class AbstractImageDownloader
     //   170: ifnonnull +258 -> 428
     //   173: iload 10
     //   175: istore 11
-    //   177: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   177: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   180: ifeq +60 -> 240
     //   183: iload 10
     //   185: istore 11
     //   187: aload_0
     //   188: aload_3
-    //   189: ldc_w 325
-    //   192: new 169	java/lang/StringBuilder
+    //   189: ldc_w 307
+    //   192: new 173	java/lang/StringBuilder
     //   195: dup
-    //   196: invokespecial 170	java/lang/StringBuilder:<init>	()V
-    //   199: ldc_w 809
-    //   202: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   199: ldc_w 798
+    //   202: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   205: aload 17
-    //   207: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   210: ldc_w 811
-    //   213: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   210: ldc_w 800
+    //   213: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   216: iload 6
-    //   218: invokevirtual 330	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   221: ldc_w 813
-    //   224: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: invokevirtual 312	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   221: ldc_w 802
+    //   224: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   227: aload_2
-    //   228: invokevirtual 342	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   231: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   237: invokespecial 348	com/tencent/mobileqq/transfile/AbstractImageDownloader:log	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   228: invokevirtual 324	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   231: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   237: invokespecial 330	com/tencent/mobileqq/transfile/AbstractImageDownloader:log	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   240: iload 10
     //   242: istore 11
-    //   244: new 556	java/lang/OutOfMemoryError
+    //   244: new 540	java/lang/OutOfMemoryError
     //   247: dup
-    //   248: new 169	java/lang/StringBuilder
+    //   248: new 173	java/lang/StringBuilder
     //   251: dup
-    //   252: invokespecial 170	java/lang/StringBuilder:<init>	()V
-    //   255: ldc_w 809
-    //   258: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   255: ldc_w 798
+    //   258: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   261: aload 17
-    //   263: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: ldc_w 811
-    //   269: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   263: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: ldc_w 800
+    //   269: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   272: iload 6
-    //   274: invokevirtual 330	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   277: ldc_w 813
-    //   280: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   274: invokevirtual 312	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   277: ldc_w 802
+    //   280: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   283: aload_2
-    //   284: invokevirtual 342	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   287: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   290: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: invokespecial 814	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
+    //   284: invokevirtual 324	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   287: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   293: invokespecial 803	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
     //   296: athrow
     //   297: astore 16
     //   299: iload 11
@@ -959,78 +935,78 @@ public abstract class AbstractImageDownloader
     //   303: aload_1
     //   304: ifnull +7 -> 311
     //   307: aload_1
-    //   308: invokevirtual 665	android/graphics/Bitmap:recycle	()V
+    //   308: invokevirtual 647	android/graphics/Bitmap:recycle	()V
     //   311: aload 16
     //   313: ifnull +468 -> 781
     //   316: aload 16
-    //   318: invokevirtual 721	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   318: invokevirtual 705	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   321: astore 16
-    //   323: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   323: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   326: ifeq +81 -> 407
     //   329: aload_0
     //   330: aload_3
-    //   331: ldc_w 325
-    //   334: new 169	java/lang/StringBuilder
+    //   331: ldc_w 307
+    //   334: new 173	java/lang/StringBuilder
     //   337: dup
-    //   338: invokespecial 170	java/lang/StringBuilder:<init>	()V
-    //   341: ldc_w 816
-    //   344: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   338: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   341: ldc_w 805
+    //   344: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   347: iload 6
-    //   349: invokevirtual 330	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   352: ldc_w 332
-    //   355: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   349: invokevirtual 312	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   352: ldc_w 314
+    //   355: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   358: aload 4
-    //   360: getfield 337	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   363: invokevirtual 330	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   366: ldc_w 339
-    //   369: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   360: getfield 319	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   363: invokevirtual 312	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   366: ldc_w 321
+    //   369: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   372: aload_2
-    //   373: invokevirtual 342	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   376: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   379: ldc_w 344
-    //   382: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   373: invokevirtual 324	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   376: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   379: ldc_w 326
+    //   382: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   385: aload 17
-    //   387: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   390: ldc_w 818
-    //   393: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   387: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   390: ldc_w 807
+    //   393: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   396: aload 16
-    //   398: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   401: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   404: invokespecial 348	com/tencent/mobileqq/transfile/AbstractImageDownloader:log	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   398: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   404: invokespecial 330	com/tencent/mobileqq/transfile/AbstractImageDownloader:log	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   407: iload 6
     //   409: iconst_1
     //   410: iadd
     //   411: istore 6
     //   413: aload 4
     //   415: aload 4
-    //   417: getfield 337	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   417: getfield 319	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   420: iconst_2
     //   421: imul
-    //   422: putfield 337	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   422: putfield 319	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   425: goto -314 -> 111
     //   428: iload 10
     //   430: istore 11
-    //   432: getstatic 823	android/os/Build$VERSION:SDK_INT	I
+    //   432: getstatic 812	android/os/Build$VERSION:SDK_INT	I
     //   435: bipush 11
     //   437: if_icmplt +341 -> 778
     //   440: iload 10
     //   442: istore 11
     //   444: aload_1
-    //   445: invokestatic 829	com/tencent/image/SliceBitmap:needSlice	(Landroid/graphics/Bitmap;)Z
+    //   445: invokestatic 818	com/tencent/image/SliceBitmap:needSlice	(Landroid/graphics/Bitmap;)Z
     //   448: istore 12
     //   450: iload 12
     //   452: ifeq +326 -> 778
     //   455: iload 10
     //   457: istore 11
-    //   459: new 825	com/tencent/image/SliceBitmap
+    //   459: new 814	com/tencent/image/SliceBitmap
     //   462: dup
     //   463: aload_1
-    //   464: invokespecial 832	com/tencent/image/SliceBitmap:<init>	(Landroid/graphics/Bitmap;)V
+    //   464: invokespecial 821	com/tencent/image/SliceBitmap:<init>	(Landroid/graphics/Bitmap;)V
     //   467: astore 16
     //   469: iconst_1
     //   470: istore 10
     //   472: aload_1
-    //   473: invokevirtual 665	android/graphics/Bitmap:recycle	()V
+    //   473: invokevirtual 647	android/graphics/Bitmap:recycle	()V
     //   476: aload_0
     //   477: aload_3
     //   478: aload_2
@@ -1038,8 +1014,8 @@ public abstract class AbstractImageDownloader
     //   481: aload 4
     //   483: iload 6
     //   485: iconst_1
-    //   486: ldc_w 834
-    //   489: invokespecial 700	com/tencent/mobileqq/transfile/AbstractImageDownloader:logDecodeFile	(Lcom/tencent/image/DownloadParams;Ljava/io/File;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;IZLjava/lang/String;)V
+    //   486: ldc_w 823
+    //   489: invokespecial 682	com/tencent/mobileqq/transfile/AbstractImageDownloader:logDecodeFile	(Lcom/tencent/image/DownloadParams;Ljava/io/File;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;IZLjava/lang/String;)V
     //   492: aload 16
     //   494: astore_1
     //   495: iconst_1
@@ -1055,24 +1031,24 @@ public abstract class AbstractImageDownloader
     //   510: aload 4
     //   512: iload 6
     //   514: iload 11
-    //   516: ldc 157
-    //   518: invokespecial 700	com/tencent/mobileqq/transfile/AbstractImageDownloader:logDecodeFile	(Lcom/tencent/image/DownloadParams;Ljava/io/File;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;IZLjava/lang/String;)V
+    //   516: ldc 161
+    //   518: invokespecial 682	com/tencent/mobileqq/transfile/AbstractImageDownloader:logDecodeFile	(Lcom/tencent/image/DownloadParams;Ljava/io/File;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;IZLjava/lang/String;)V
     //   521: aload_3
-    //   522: getfield 253	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
+    //   522: getfield 235	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
     //   525: ifnull +185 -> 710
     //   528: aload_3
-    //   529: getfield 253	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
-    //   532: instanceof 356
+    //   529: getfield 235	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
+    //   532: instanceof 338
     //   535: ifeq +175 -> 710
     //   538: aload_3
-    //   539: getfield 253	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
-    //   542: checkcast 356	com/tencent/mobileqq/data/MessageForPic
+    //   539: getfield 235	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
+    //   542: checkcast 338	com/tencent/mobileqq/data/MessageForPic
     //   545: astore_2
     //   546: aload_2
-    //   547: getfield 359	com/tencent/mobileqq/data/MessageForPic:selfuin	Ljava/lang/String;
+    //   547: getfield 341	com/tencent/mobileqq/data/MessageForPic:selfuin	Ljava/lang/String;
     //   550: astore_3
     //   551: aload_2
-    //   552: invokevirtual 835	com/tencent/mobileqq/data/MessageForPic:isSendFromLocal	()Z
+    //   552: invokevirtual 824	com/tencent/mobileqq/data/MessageForPic:isSendFromLocal	()Z
     //   555: istore 15
     //   557: aload_1
     //   558: ifnull +235 -> 793
@@ -1083,7 +1059,7 @@ public abstract class AbstractImageDownloader
     //   568: imul
     //   569: istore 9
     //   571: iload 9
-    //   573: getstatic 838	com/tencent/common/app/BaseApplicationImpl:sImageCacheSize	I
+    //   573: getstatic 828	com/tencent/mobileqq/app/GlobalImageCache:a	I
     //   576: if_icmple +223 -> 799
     //   579: iconst_1
     //   580: istore 12
@@ -1095,29 +1071,29 @@ public abstract class AbstractImageDownloader
     //   595: if_icmple +210 -> 805
     //   598: iconst_1
     //   599: istore 13
-    //   601: getstatic 840	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_WIDTH	I
+    //   601: getstatic 53	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_WIDTH	I
     //   604: ifeq +9 -> 613
-    //   607: getstatic 842	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_HEIGHT	I
+    //   607: getstatic 55	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_HEIGHT	I
     //   610: ifne +35 -> 645
     //   613: aload_0
-    //   614: getfield 65	com/tencent/mobileqq/transfile/AbstractImageDownloader:application	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   617: invokevirtual 684	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   620: invokevirtual 234	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   623: getfield 687	android/util/DisplayMetrics:widthPixels	I
-    //   626: putstatic 840	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_WIDTH	I
+    //   614: getfield 69	com/tencent/mobileqq/transfile/AbstractImageDownloader:application	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   617: invokevirtual 666	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   620: invokevirtual 216	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   623: getfield 669	android/util/DisplayMetrics:widthPixels	I
+    //   626: putstatic 53	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_WIDTH	I
     //   629: aload_0
-    //   630: getfield 65	com/tencent/mobileqq/transfile/AbstractImageDownloader:application	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   633: invokevirtual 684	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   636: invokevirtual 234	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   639: getfield 693	android/util/DisplayMetrics:heightPixels	I
-    //   642: putstatic 842	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_HEIGHT	I
-    //   645: getstatic 840	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_WIDTH	I
-    //   648: getstatic 842	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_HEIGHT	I
+    //   630: getfield 69	com/tencent/mobileqq/transfile/AbstractImageDownloader:application	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   633: invokevirtual 666	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   636: invokevirtual 216	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   639: getfield 675	android/util/DisplayMetrics:heightPixels	I
+    //   642: putstatic 55	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_HEIGHT	I
+    //   645: getstatic 53	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_WIDTH	I
+    //   648: getstatic 55	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_HEIGHT	I
     //   651: if_icmple +160 -> 811
-    //   654: getstatic 840	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_WIDTH	I
+    //   654: getstatic 53	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_WIDTH	I
     //   657: istore 7
     //   659: iload 9
-    //   661: getstatic 845	com/tencent/mobileqq/transfile/URLDrawableHelper:smallSize	I
+    //   661: getstatic 831	com/tencent/mobileqq/transfile/URLDrawableHelper:smallSize	I
     //   664: if_icmpgt +155 -> 819
     //   667: iload 7
     //   669: sipush 1000
@@ -1133,43 +1109,43 @@ public abstract class AbstractImageDownloader
     //   689: iload 5
     //   691: aload_3
     //   692: iload 11
-    //   694: invokespecial 847	com/tencent/mobileqq/transfile/AbstractImageDownloader:reportDecodeData	(ZZZZIILjava/lang/String;Z)V
+    //   694: invokespecial 833	com/tencent/mobileqq/transfile/AbstractImageDownloader:reportDecodeData	(ZZZZIILjava/lang/String;Z)V
     //   697: aload_0
     //   698: aload_0
-    //   699: getfield 65	com/tencent/mobileqq/transfile/AbstractImageDownloader:application	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   699: getfield 69	com/tencent/mobileqq/transfile/AbstractImageDownloader:application	Lcom/tencent/common/app/BaseApplicationImpl;
     //   702: aload_3
     //   703: iload 9
     //   705: iload 15
-    //   707: invokespecial 849	com/tencent/mobileqq/transfile/AbstractImageDownloader:reportBitmapSize	(Landroid/app/Application;Ljava/lang/String;IZ)V
+    //   707: invokespecial 835	com/tencent/mobileqq/transfile/AbstractImageDownloader:reportBitmapSize	(Landroid/app/Application;Ljava/lang/String;IZ)V
     //   710: aload_1
     //   711: ifnonnull +114 -> 825
-    //   714: new 75	java/io/IOException
+    //   714: new 79	java/io/IOException
     //   717: dup
-    //   718: ldc_w 851
-    //   721: invokespecial 718	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   718: ldc_w 837
+    //   721: invokespecial 702	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   724: athrow
     //   725: astore 16
     //   727: iload 10
     //   729: istore 11
     //   731: aload_0
     //   732: aload_3
-    //   733: ldc_w 325
-    //   736: new 169	java/lang/StringBuilder
+    //   733: ldc_w 307
+    //   736: new 173	java/lang/StringBuilder
     //   739: dup
-    //   740: invokespecial 170	java/lang/StringBuilder:<init>	()V
-    //   743: ldc_w 853
-    //   746: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   740: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   743: ldc_w 839
+    //   746: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   749: aload 16
-    //   751: invokevirtual 205	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   754: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   757: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   760: invokespecial 348	com/tencent/mobileqq/transfile/AbstractImageDownloader:log	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   751: invokevirtual 840	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   754: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   757: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   760: invokespecial 330	com/tencent/mobileqq/transfile/AbstractImageDownloader:log	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   763: iload 10
     //   765: istore 11
-    //   767: new 556	java/lang/OutOfMemoryError
+    //   767: new 540	java/lang/OutOfMemoryError
     //   770: dup
-    //   771: ldc_w 855
-    //   774: invokespecial 814	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
+    //   771: ldc_w 842
+    //   774: invokespecial 803	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
     //   777: athrow
     //   778: goto -280 -> 498
     //   781: aconst_null
@@ -1187,7 +1163,7 @@ public abstract class AbstractImageDownloader
     //   805: iconst_0
     //   806: istore 13
     //   808: goto -207 -> 601
-    //   811: getstatic 842	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_HEIGHT	I
+    //   811: getstatic 55	com/tencent/mobileqq/transfile/AbstractImageDownloader:DISPLAY_HEIGHT	I
     //   814: istore 7
     //   816: goto -157 -> 659
     //   819: iconst_0
@@ -1272,7 +1248,7 @@ public abstract class AbstractImageDownloader
       {
         f3 = this.application.getResources().getDisplayMetrics().density;
         int m = this.application.getResources().getDisplayMetrics().densityDpi;
-        boolean bool = blvp.a(paramDownloadParams.mImgType);
+        boolean bool = PeakUtils.a(paramDownloadParams.mImgType);
         j = CommonImgThumbHelper.getImgThumbMinPx(bool);
         i = CommonImgThumbHelper.getImgThumbMaxPx(bool);
         n = paramBitmap.getWidth();

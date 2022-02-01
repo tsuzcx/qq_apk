@@ -7,10 +7,8 @@ import android.graphics.Rect;
 import android.opengl.GLES20;
 import android.opengl.GLES31;
 import android.opengl.Matrix;
-import apmz;
-import bblu;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.minicode.GlUtil;
+import com.tencent.mobileqq.ar.codeEngine.AIRect;
 import com.tencent.mobileqq.minicode.RecogProxy;
 import com.tencent.mobileqq.minicode.RecogUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -26,10 +24,10 @@ public class MiniCodeRecog
 {
   protected static final int MAX_CODE_NUM = 2;
   private final String TAG = "MiniRecog.recog";
-  private boolean inited;
+  private boolean inited = false;
   private float inputTextAspect;
   private final Object mLock = new Object();
-  private long mNativeObj;
+  private long mNativeObj = 0L;
   private RenderBuffer miniFbo;
   private MiniParam miniParam;
   private float[] scale_to_keep_aspect;
@@ -41,7 +39,7 @@ public class MiniCodeRecog
     this.miniParam = paramMiniParam;
     this.scale_to_keep_aspect = new float[16];
     this.textureRender = new TextureRender();
-    this.texture31In = GlUtil.createTexture31(paramMiniParam.netWidth, paramMiniParam.netHeight);
+    this.texture31In = com.tencent.mobileqq.minicode.GlUtil.createTexture31(paramMiniParam.netWidth, paramMiniParam.netHeight);
     this.miniFbo = new RenderBuffer(paramMiniParam.netWidth, paramMiniParam.netHeight);
     RecogUtil.markMiniScanError(false);
     this.mNativeObj = RecogProxy.QCodeInit(this.miniParam.runType, this.miniParam.netHeight, this.miniParam.netWidth, this.miniParam.modelString, this.miniParam.paramPath, this.miniParam.anchorPath, this.miniParam.kernelBinaryIndex, 0.35F);
@@ -117,7 +115,7 @@ public class MiniCodeRecog
     }
   }
   
-  public List<apmz> detect(int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean)
+  public List<AIRect> detect(int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean)
   {
     if (!this.inited) {
       return null;
@@ -182,11 +180,11 @@ public class MiniCodeRecog
               QLog.i("MiniRecog.recog", 2, String.format("debug_minicode_point=[%f,%f,%f,%f,%f,%d]", new Object[] { Float.valueOf(localObject2[0]), Float.valueOf(localObject2[1]), Float.valueOf(localObject2[2]), Float.valueOf(localObject2[3]), Float.valueOf(localObject2[4]), Integer.valueOf(m) }));
             }
             Rect localRect = getRect2Src(paramInt2, paramInt3, (float[])localObject2);
-            apmz localapmz = new apmz();
-            localapmz.jdField_a_of_type_AndroidGraphicsRect.set(localRect);
-            localapmz.jdField_a_of_type_Int = m;
-            localapmz.jdField_a_of_type_Float = localObject2[4];
-            localArrayList.add(localapmz);
+            AIRect localAIRect = new AIRect();
+            localAIRect.jdField_a_of_type_AndroidGraphicsRect.set(localRect);
+            localAIRect.jdField_a_of_type_Int = m;
+            localAIRect.jdField_a_of_type_Float = localObject2[4];
+            localArrayList.add(localAIRect);
           }
         }
       }
@@ -209,7 +207,7 @@ public class MiniCodeRecog
         GLES20.glFlush();
         try
         {
-          ??? = GlUtil.convertTexToBitmap(this.texture31In, this.miniParam.netWidth, this.miniParam.netHeight);
+          ??? = com.tencent.mobileqq.minicode.GlUtil.convertTexToBitmap(this.texture31In, this.miniParam.netWidth, this.miniParam.netHeight);
           localObject2 = new SimpleDateFormat("MM-dd HH:mm:ss", BaseApplicationImpl.getContext().getResources().getConfiguration().locale);
           localObject2 = paramLong + "-" + ((SimpleDateFormat)localObject2).format(new Date(paramLong));
           RecogUtil.validBmpData((Bitmap)???, (String)localObject2);
@@ -238,7 +236,7 @@ public class MiniCodeRecog
     }
     if (this.texture31In >= 0)
     {
-      bblu.b(this.texture31In);
+      com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.GlUtil.b(this.texture31In);
       this.texture31In = -1;
     }
     if (this.miniFbo != null) {

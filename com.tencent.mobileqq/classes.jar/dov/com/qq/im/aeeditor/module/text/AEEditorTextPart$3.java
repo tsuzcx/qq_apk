@@ -1,14 +1,13 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bocp;
 import com.tencent.tavcut.session.TAVCutSession;
 import com.tencent.tavcut.session.TAVCutVideoSession;
 import com.tencent.weseevideo.model.effect.StickerModel;
 
-public class AEEditorTextPart$3
+class AEEditorTextPart$3
   implements Runnable
 {
-  public AEEditorTextPart$3(bocp parambocp, TAVCutSession paramTAVCutSession, StickerModel paramStickerModel) {}
+  AEEditorTextPart$3(AEEditorTextPart paramAEEditorTextPart, TAVCutSession paramTAVCutSession, StickerModel paramStickerModel) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class AEEditorTextPart$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.text.AEEditorTextPart.3
  * JD-Core Version:    0.7.0.1
  */

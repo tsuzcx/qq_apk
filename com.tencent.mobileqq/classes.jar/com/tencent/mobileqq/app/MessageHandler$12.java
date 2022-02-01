@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 
 class MessageHandler$12
   implements Runnable
@@ -13,7 +13,7 @@ class MessageHandler$12
     long l1 = 480000L;
     long l2 = 3L - this.jdField_a_of_type_Long;
     if (this.jdField_a_of_type_Long == 0L) {
-      if (this.this$0.app.getMessageFacade().getLastMessage(this.jdField_a_of_type_JavaLangString, 1001).hasReply) {
+      if (this.this$0.a.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 1001).hasReply) {
         break label105;
       }
     }
@@ -29,7 +29,7 @@ class MessageHandler$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.12
  * JD-Core Version:    0.7.0.1
  */

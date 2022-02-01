@@ -1,23 +1,22 @@
 package com.tencent.avgame.gameroom.video;
 
+import com.tencent.avgame.gameroom.IGameRoomPresenter;
+import com.tencent.avgame.gameroom.seat.ISeatPresenter;
 import com.tencent.qav.QavDef.MultiUserInfo;
-import nio;
-import nju;
-import nmb;
 
-public class AVGameControlUIImpl$2$2
+class AVGameControlUIImpl$2$2
   implements Runnable
 {
-  public AVGameControlUIImpl$2$2(nmb paramnmb, QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
+  AVGameControlUIImpl$2$2(AVGameControlUIImpl.2 param2, QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nmb.a.a.a().a(this.jdField_a_of_type_ComTencentQavQavDef$MultiUserInfo.mUin, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.a.a().a(this.jdField_a_of_type_ComTencentQavQavDef$MultiUserInfo.mUin, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.2
  * JD-Core Version:    0.7.0.1
  */

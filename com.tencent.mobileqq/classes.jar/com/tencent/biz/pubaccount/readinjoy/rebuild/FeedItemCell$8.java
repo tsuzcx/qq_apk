@@ -1,15 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild;
 
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import qfw;
-import rbp;
-import szd;
 
-public class FeedItemCell$8
+class FeedItemCell$8
   implements Runnable
 {
-  public FeedItemCell$8(rbp paramrbp, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject, boolean paramBoolean) {}
+  FeedItemCell$8(FeedItemCell paramFeedItemCell, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject, boolean paramBoolean) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class FeedItemCell$8
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localArrayList.add(((qfw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
+      localArrayList.add(((IReadInJoyModel)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
       i += 1;
     }
     StringBuilder localStringBuilder;
@@ -39,7 +38,7 @@ public class FeedItemCell$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.8
  * JD-Core Version:    0.7.0.1
  */

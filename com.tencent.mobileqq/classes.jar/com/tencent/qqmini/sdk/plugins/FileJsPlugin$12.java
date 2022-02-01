@@ -18,32 +18,35 @@ class FileJsPlugin$12
     long l2 = System.currentTimeMillis();
     if ((TextUtils.isEmpty(this.val$dirPath)) || (this.val$reqParamObj.isNull("dirPath")))
     {
-      FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$dirPath);
-      return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "fail parameter error: parameter.dirPath should be String instead of Null;");
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$dirPath);
+      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "fail parameter error: parameter.dirPath should be String instead of Null;");
     }
-    if (((MiniAppFileManager)FileJsPlugin.access$5300(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$dirPath) != 2)
+    if (((MiniAppFileManager)FileJsPlugin.access$5100(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$dirPath) != 2)
     {
-      FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$dirPath);
-      return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$dirPath);
+      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
     }
-    String str = ((MiniAppFileManager)FileJsPlugin.access$5400(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$dirPath);
+    String str = ((MiniAppFileManager)FileJsPlugin.access$5200(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$dirPath);
+    if (TextUtils.isEmpty(str)) {
+      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "no such file or directory, open dirPath is null");
+    }
     if (!new File(str).exists())
     {
-      FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, str);
-      return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$dirPath);
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l2, str);
+      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$dirPath);
     }
     if (this.val$recursive) {}
     for (long l1 = FileUtils.deleteDirectory(str);; l1 = FileUtils.deleteFilesInDirectory(str))
     {
-      FileJsPlugin.access$2600(this.this$0).updateFolderSize(2, -l1);
-      FileJsPlugin.access$1100(this.this$0, this.val$req.event, true, this.val$startMS, l2, str);
-      return FileJsPlugin.access$1300(this.this$0, this.val$req, null);
+      FileJsPlugin.access$2400(this.this$0).updateFolderSize(2, -l1);
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, true, this.val$startMS, l2, str);
+      return FileJsPlugin.access$1100(this.this$0, this.val$req, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin.12
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import abuf;
-import amwn;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import aves;
+import com.tencent.gamecenter.appointment.GameCenterUtils;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import com.tencent.mobileqq.gamecenter.protocol.GmpEnterInfoRsp;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
 import com.tencent.mobileqq.gamecenter.view.NavBarQQGamePub;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ class QQGameFeedWebFragment$18
       this.this$0.a.a(false);
       this.this$0.a.a(this.a.icon, this.a.content, this.a.url);
       this.this$0.a.setmBubbleid(this.a.bubble_id);
-      aves.a(this.a);
+      QQGameHelper.a(this.a);
       HashMap localHashMap = new HashMap();
       if (!TextUtils.isEmpty(this.a.bubble_id)) {
         localHashMap.put(Integer.valueOf(2), this.a.bubble_id);
@@ -35,13 +35,13 @@ class QQGameFeedWebFragment$18
       localHashMap.put(Integer.valueOf(3), "3");
       localHashMap.put(Integer.valueOf(4), "8");
       localHashMap.put(Integer.valueOf(24), "1");
-      abuf.a(amwn.a(), "770", "207021", "", "77002", "1", "160", localHashMap);
+      GameCenterUtils.a(CmGameUtil.a(), "770", "207021", "", "77002", "1", "160", localHashMap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.18
  * JD-Core Version:    0.7.0.1
  */

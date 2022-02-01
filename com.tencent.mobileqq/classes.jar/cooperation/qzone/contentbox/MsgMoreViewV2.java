@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class MsgMoreViewV2
   extends FrameLayout
 {
-  private static final int AVATAR_GAP = ViewUtils.dpToPx(14.0F);
+  private static final int AVATAR_GAP = ViewUtils.b(14.0F);
   private QQAppInterface mApp;
   private ImageView mArrow;
   private FrameLayout mAvatarListLayout;
@@ -50,39 +50,37 @@ public class MsgMoreViewV2
   private void init(Context paramContext)
   {
     this.mContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131562421, this);
-    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363170));
-    this.mText = ((TextView)findViewById(2131371581));
-    this.mArrow = ((ImageView)findViewById(2131362985));
+    LayoutInflater.from(paramContext).inflate(2131562561, this);
+    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363223));
+    this.mText = ((TextView)findViewById(2131371891));
+    this.mArrow = ((ImageView)findViewById(2131363027));
   }
   
   public void setData(MQMsg paramMQMsg, boolean paramBoolean)
   {
-    int j = 0;
     paramMQMsg = paramMQMsg.bottomCell;
     if (paramMQMsg.userAvatar != null)
     {
       this.mAvatarListLayout.setVisibility(0);
       this.mAvatarListLayout.removeAllViews();
-      int i;
-      if (5 < paramMQMsg.userAvatar.size()) {
-        i = 5;
-      }
-      while (j < i)
+      if (5 < paramMQMsg.userAvatar.size()) {}
+      for (int i = 5;; i = paramMQMsg.userAvatar.size())
       {
-        UserListItemView localUserListItemView = new UserListItemView(this.mContext, 2, paramBoolean);
-        localUserListItemView.setUin((String)paramMQMsg.userAvatar.get(j));
-        localUserListItemView.setTranslationX(AVATAR_GAP * j);
-        this.mAvatarListLayout.addView(localUserListItemView, j);
-        j += 1;
-        continue;
-        i = paramMQMsg.userAvatar.size();
+        int j = 0;
+        while (j < i)
+        {
+          UserListItemView localUserListItemView = new UserListItemView(this.mContext, 2, paramBoolean, false);
+          localUserListItemView.setUin((String)paramMQMsg.userAvatar.get(j));
+          localUserListItemView.setTranslationX(AVATAR_GAP * j);
+          this.mAvatarListLayout.addView(localUserListItemView, j);
+          j += 1;
+        }
       }
     }
     if (paramBoolean)
     {
       this.mText.setTextColor(-1);
-      this.mArrow.setImageDrawable(getResources().getDrawable(2130844025));
+      this.mArrow.setImageDrawable(getResources().getDrawable(2130844202));
     }
     if (!TextUtils.isEmpty(paramMQMsg.content)) {
       this.mText.setText(paramMQMsg.content);
@@ -99,7 +97,7 @@ public class MsgMoreViewV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgMoreViewV2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,19 @@ import android.os.Parcelable.Creator;
 final class WebViewTitleStyle$1
   implements Parcelable.Creator<WebViewTitleStyle>
 {
-  public WebViewTitleStyle createFromParcel(Parcel paramParcel)
+  public WebViewTitleStyle a(Parcel paramParcel)
   {
     return new WebViewTitleStyle(paramParcel);
   }
   
-  public WebViewTitleStyle[] newArray(int paramInt)
+  public WebViewTitleStyle[] a(int paramInt)
   {
     return new WebViewTitleStyle[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebViewTitleStyle.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
 import com.tencent.viola.annotation.JSMethod;
@@ -23,9 +24,6 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import six;
-import uac;
-import uaf;
 
 public class VVideo
   extends VComponentContainer<VVideoView>
@@ -34,7 +32,7 @@ public class VVideo
   private String mCurrentVid;
   private String mCurrentVideoUrl;
   private Boolean mIsForNV = Boolean.valueOf(false);
-  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new uac(this);
+  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new VVideo.1(this);
   
   public VVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -203,7 +201,7 @@ public class VVideo
     }
   }
   
-  public uaf getVideoViewControlListener()
+  public VVideoView.OnVideoViewControlListener getVideoViewControlListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();
@@ -217,8 +215,7 @@ public class VVideo
     VVideoView localVVideoView = new VVideoView(paramContext, this);
     localVVideoView.a(this);
     if (getDomObject().getAttributes().containsKey("playerType")) {}
-    label407:
-    label541:
+    label515:
     for (int i = ((Integer)getDomObject().getAttributes().get("playerType")).intValue();; i = 0)
     {
       int j = 100;
@@ -235,7 +232,8 @@ public class VVideo
           bool1 = true;
         }
       }
-      label465:
+      label457:
+      label591:
       for (Object localObject1 = Boolean.valueOf(bool1);; localObject1 = Boolean.valueOf(true))
       {
         if (getDomObject().getAttributes().containsKey("handAttachVideoView")) {
@@ -257,15 +255,18 @@ public class VVideo
                 paramContext = getDomObject().getAttributes().entrySet().iterator();
                 localObject1 = initDefaultVideoData();
                 if (!paramContext.hasNext()) {
-                  break label541;
+                  break label591;
                 }
                 localObject2 = (Map.Entry)paramContext.next();
                 localObject3 = (String)((Map.Entry)localObject2).getKey();
+                if (QLog.isColorLevel()) {
+                  QLog.d(TAG, 2, "initComponentHostView: key=" + (String)localObject3 + ", value=" + ((Map.Entry)localObject2).getValue());
+                }
                 if (!"src".equals(localObject3)) {
-                  break label465;
+                  break label515;
                 }
                 if (!(((Map.Entry)localObject2).getValue() instanceof String)) {
-                  break label407;
+                  break label457;
                 }
                 localObject3 = new JSONObject();
                 this.mCurrentVideoUrl = ((String)((Map.Entry)localObject2).getValue());
@@ -482,7 +483,7 @@ public class VVideo
     View localView;
     if ((getHostView() != null) && (getInstance() != null) && (getInstance().getActivity() != null))
     {
-      six.a(getInstance().getActivity(), paramInt1, paramInt2);
+      VideoFeedsHelper.a(getInstance().getActivity(), paramInt1, paramInt2);
       localView = getHostView();
       if ((localView != null) && (localView.getScaleY() == 1.0F) && (localView.getScaleX() == 1.0F))
       {
@@ -518,12 +519,12 @@ public class VVideo
           ((FrameLayout.LayoutParams)localView.getLayoutParams()).gravity = 17;
         }
         localView.setLayoutParams(localView.getLayoutParams());
-        paramInt1 = six.a(getInstance().getActivity(), paramInt1, paramInt2);
+        paramInt1 = VideoFeedsHelper.a(getInstance().getActivity(), paramInt1, paramInt2);
         if (paramInt1 != 2) {
           break label289;
         }
         getVideoViewControlListener().a((VVideoView)getHostView(), "cover");
-        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), localView.getPaddingRight(), six.a(getInstance().getActivity()));
+        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), localView.getPaddingRight(), VideoFeedsHelper.a(getInstance().getActivity()));
       }
       while (paramInt1 != 0) {
         return;
@@ -625,7 +626,7 @@ public class VVideo
   public void setEndWithLastFrame(boolean paramBoolean)
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().b_(paramBoolean);
+      getVideoViewControlListener().c_(paramBoolean);
     }
   }
   
@@ -650,7 +651,7 @@ public class VVideo
   public void setLoopBack(boolean paramBoolean)
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().a_(paramBoolean);
+      getVideoViewControlListener().b_(paramBoolean);
     }
   }
   
@@ -737,7 +738,7 @@ public class VVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo
  * JD-Core Version:    0.7.0.1
  */

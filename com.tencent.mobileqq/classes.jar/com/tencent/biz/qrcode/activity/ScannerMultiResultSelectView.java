@@ -17,42 +17,40 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import apnc;
-import bdla;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ar.codeEngine.MiniCodeController;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qbar.QBarResult;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import com.tencent.util.LiuHaiUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.os.MqqHandler;
-import zmh;
-import zmi;
 
 public class ScannerMultiResultSelectView
   extends RelativeLayout
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ScannerMultiResultSelectView.ImageData jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$ImageData;
+  private ScannerMultiResultSelectView.MultiSelectListener jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$MultiSelectListener;
   private ScannerResult jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult;
   private Runnable jdField_a_of_type_JavaLangRunnable = new ScannerMultiResultSelectView.3(this);
-  private zmh jdField_a_of_type_Zmh;
-  private zmi jdField_a_of_type_Zmi;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int c;
-  private int d;
+  private int d = 0;
   
   public ScannerMultiResultSelectView(Context paramContext)
   {
@@ -74,7 +72,7 @@ public class ScannerMultiResultSelectView
     try
     {
       localObject = new int[paramInt1 * paramInt2];
-      if (apnc.a((int[])localObject, paramArrayOfByte, paramInt1, paramInt2) == 0)
+      if (MiniCodeController.a((int[])localObject, paramArrayOfByte, paramInt1, paramInt2) == 0)
       {
         paramArrayOfByte = Bitmap.createBitmap((int[])localObject, paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
         localObject = paramArrayOfByte;
@@ -153,7 +151,7 @@ public class ScannerMultiResultSelectView
     localDiniFlyAnimationView.setImageAssetsFolder("qr_scan_multi_point/images");
     localDiniFlyAnimationView.setAnimation("qr_scan_multi_point/data.json");
     localDiniFlyAnimationView.setRepeatCount(-1);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.dip2px(54.0F), ViewUtils.dip2px(54.0F));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.a(54.0F), ViewUtils.a(54.0F));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localDiniFlyAnimationView, localLayoutParams);
     localDiniFlyAnimationView.setOnClickListener(this);
     localDiniFlyAnimationView.setVisibility(8);
@@ -162,18 +160,18 @@ public class ScannerMultiResultSelectView
   
   private void a(RelativeLayout paramRelativeLayout)
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131560469, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131368501));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131364250));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131378950));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)((View)localObject).findViewById(2131373020));
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131560556, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131368729));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131364357));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131379381));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)((View)localObject).findViewById(2131373346));
     localObject = new RelativeLayout.LayoutParams(-1, -1);
     setBackgroundColor(-16777216);
     paramRelativeLayout.addView(this, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_Boolean = true;
     if (LiuHaiUtils.b()) {
-      ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams()).topMargin = ViewUtils.dip2px(60.0F);
+      ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams()).topMargin = ViewUtils.a(60.0F);
     }
   }
   
@@ -242,16 +240,16 @@ public class ScannerMultiResultSelectView
         }
       }
       if (j == 1) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131716486);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131716981);
       }
       while ((this.jdField_b_of_type_Int > 0) && (this.c > 0))
       {
         this.jdField_a_of_type_JavaLangRunnable.run();
         return;
         if (j == 2) {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131716485);
+          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131716980);
         } else {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131716484);
+          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131716979);
         }
       }
       break;
@@ -260,10 +258,10 @@ public class ScannerMultiResultSelectView
   
   private void c()
   {
-    if (this.jdField_a_of_type_Zmh == null) {
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$ImageData == null) {
       return;
     }
-    ThreadManagerV2.excute(new ScannerMultiResultSelectView.1(this, this.jdField_a_of_type_Zmh), 16, null, true);
+    ThreadManagerV2.excute(new ScannerMultiResultSelectView.1(this, this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$ImageData), 16, null, true);
   }
   
   private void d()
@@ -292,18 +290,18 @@ public class ScannerMultiResultSelectView
       }
       removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    } while (this.jdField_a_of_type_Zmi == null);
-    this.jdField_a_of_type_Zmi.a();
+    } while (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$MultiSelectListener == null);
+    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$MultiSelectListener.a();
   }
   
-  public void a(RelativeLayout paramRelativeLayout, ScannerResult paramScannerResult, int paramInt1, zmh paramzmh, int paramInt2)
+  public void a(RelativeLayout paramRelativeLayout, ScannerResult paramScannerResult, int paramInt1, ScannerMultiResultSelectView.ImageData paramImageData, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ScannerMultiResultSelectView", 2, "show requestType：" + paramInt1 + " scannerResult:" + paramScannerResult + " data:" + paramzmh);
+      QLog.i("ScannerMultiResultSelectView", 2, "show requestType：" + paramInt1 + " scannerResult:" + paramScannerResult + " data:" + paramImageData);
     }
     this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult = paramScannerResult;
     this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Zmh = paramzmh;
+    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$ImageData = paramImageData;
     if (!this.jdField_a_of_type_Boolean) {
       a(paramRelativeLayout);
     }
@@ -311,7 +309,7 @@ public class ScannerMultiResultSelectView
     setVisibility(0);
     this.jdField_b_of_type_Boolean = true;
     this.d = paramInt2;
-    bdla.b(null, "dc00898", "", "", "0X800B5E1", "0X800B5E1", this.d, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800B5E1", "0X800B5E1", this.d, 0, "", "", "", "");
   }
   
   public boolean a()
@@ -321,7 +319,7 @@ public class ScannerMultiResultSelectView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Zmi == null) {}
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$MultiSelectListener == null) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
@@ -329,33 +327,33 @@ public class ScannerMultiResultSelectView
       if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 1000L)
       {
         this.jdField_a_of_type_Long = System.currentTimeMillis();
-        if (paramView.getId() == 2131364250)
+        if (paramView.getId() == 2131364357)
         {
           a();
-          this.jdField_a_of_type_Zmi.a();
-          bdla.b(null, "dc00898", "", "", "0X800B5E3", "0X800B5E3", this.d, 0, "", "", "", "");
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$MultiSelectListener.a();
+          ReportController.b(null, "dc00898", "", "", "0X800B5E3", "0X800B5E3", this.d, 0, "", "", "", "");
         }
         else
         {
           Object localObject = paramView.getTag();
           if ((localObject != null) && ((localObject instanceof QBarResult)))
           {
-            this.jdField_a_of_type_Zmi.a((QBarResult)localObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_Zmh);
+            this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$MultiSelectListener.a((QBarResult)localObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$ImageData);
             a(false);
-            bdla.b(null, "dc00898", "", "", "0X800B5E2", "0X800B5E2", this.d, 0, "", "", "", "");
+            ReportController.b(null, "dc00898", "", "", "0X800B5E2", "0X800B5E2", this.d, 0, "", "", "", "");
           }
           else if ((localObject != null) && ((localObject instanceof QMiniResult)))
           {
-            this.jdField_a_of_type_Zmi.a((QMiniResult)localObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_Zmh);
+            this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$MultiSelectListener.a((QMiniResult)localObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$ImageData);
             a(false);
-            bdla.b(null, "dc00898", "", "", "0X800B5E2", "0X800B5E2", this.d, 0, "", "", "", "");
+            ReportController.b(null, "dc00898", "", "", "0X800B5E2", "0X800B5E2", this.d, 0, "", "", "", "");
           }
         }
       }
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getMeasuredWidth();
@@ -369,14 +367,14 @@ public class ScannerMultiResultSelectView
     }
   }
   
-  public void setMultiSelectListener(zmi paramzmi)
+  public void setMultiSelectListener(ScannerMultiResultSelectView.MultiSelectListener paramMultiSelectListener)
   {
-    this.jdField_a_of_type_Zmi = paramzmi;
+    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView$MultiSelectListener = paramMultiSelectListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.ScannerMultiResultSelectView
  * JD-Core Version:    0.7.0.1
  */

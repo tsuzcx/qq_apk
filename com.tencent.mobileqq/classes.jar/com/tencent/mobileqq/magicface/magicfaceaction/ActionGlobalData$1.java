@@ -1,28 +1,26 @@
 package com.tencent.mobileqq.magicface.magicfaceaction;
 
-import awrn;
-import awro;
 import java.util.TimerTask;
 
-public class ActionGlobalData$1
+class ActionGlobalData$1
   extends TimerTask
 {
-  public ActionGlobalData$1(awrn paramawrn) {}
+  ActionGlobalData$1(ActionGlobalData paramActionGlobalData) {}
   
   public void run()
   {
-    awrn localawrn = this.this$0;
-    localawrn.h += 1;
-    localawrn = this.this$0;
-    localawrn.jdField_a_of_type_Float -= 0.1F;
-    if (this.this$0.jdField_a_of_type_Awro != null) {
-      this.this$0.jdField_a_of_type_Awro.b();
+    ActionGlobalData localActionGlobalData = this.this$0;
+    localActionGlobalData.h += 1;
+    localActionGlobalData = this.this$0;
+    localActionGlobalData.jdField_a_of_type_Float -= 0.1F;
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver != null) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver.b();
     }
     if (this.this$0.h * 100 == this.this$0.c * 1000)
     {
       this.this$0.jdField_a_of_type_Float = 0.0F;
-      if (this.this$0.jdField_a_of_type_Awro != null) {
-        this.this$0.jdField_a_of_type_Awro.a();
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver != null) {
+        this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver.a();
       }
       cancel();
     }

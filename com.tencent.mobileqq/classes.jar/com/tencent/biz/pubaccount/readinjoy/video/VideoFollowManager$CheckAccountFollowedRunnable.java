@@ -2,7 +2,6 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Handler;
 import com.tencent.biz.pubaccount.VideoInfo;
-import six;
 
 class VideoFollowManager$CheckAccountFollowedRunnable
   implements Runnable
@@ -23,7 +22,7 @@ class VideoFollowManager$CheckAccountFollowedRunnable
   {
     try
     {
-      boolean bool = six.a(VideoFollowManager.a(this.this$0), Long.valueOf(this.a.j).longValue());
+      boolean bool = VideoFeedsHelper.a(VideoFollowManager.a(this.this$0), Long.valueOf(this.a.j).longValue());
       if (VideoFollowManager.a(this.this$0) == null) {
         return;
       }
@@ -35,7 +34,7 @@ class VideoFollowManager$CheckAccountFollowedRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFollowManager.CheckAccountFollowedRunnable
  * JD-Core Version:    0.7.0.1
  */

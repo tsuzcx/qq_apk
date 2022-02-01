@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.startup.step;
 
-import bdha;
 import mqq.app.MobileQQ;
 
 public class BroadcastReportRegister
@@ -8,7 +7,7 @@ public class BroadcastReportRegister
 {
   protected boolean doStep()
   {
-    MobileQQ.sMobileQQ.registerAppCallbacks(new bdha(this));
+    MobileQQ.sMobileQQ.registerAppCallbacks(new BroadcastReportRegister.1(this));
     this.mDirector = null;
     return true;
   }

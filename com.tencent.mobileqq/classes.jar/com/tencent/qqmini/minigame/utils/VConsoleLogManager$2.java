@@ -1,6 +1,5 @@
 package com.tencent.qqmini.minigame.utils;
 
-import Override;
 import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;

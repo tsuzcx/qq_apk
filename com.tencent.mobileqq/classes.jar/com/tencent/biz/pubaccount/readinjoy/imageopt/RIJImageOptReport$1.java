@@ -1,26 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.imageopt;
 
-import qdm;
-import tlw;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
 
-public final class RIJImageOptReport$1
+final class RIJImageOptReport$1
   implements Runnable
 {
-  public RIJImageOptReport$1(tlw paramtlw, String paramString) {}
+  RIJImageOptReport$1(ImageRequest paramImageRequest, String paramString) {}
   
   public void run()
   {
-    if (qdm.a(this.jdField_a_of_type_Tlw))
+    if (RIJImageOptReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest))
     {
-      qdm.a(6, this.jdField_a_of_type_Tlw);
-      this.jdField_a_of_type_Tlw.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      qdm.b(this.jdField_a_of_type_Tlw);
+      RIJImageOptReport.a(6, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      RIJImageOptReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptReport.1
  * JD-Core Version:    0.7.0.1
  */

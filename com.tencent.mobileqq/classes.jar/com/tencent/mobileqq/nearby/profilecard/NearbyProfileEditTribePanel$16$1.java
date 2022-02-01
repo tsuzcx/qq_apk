@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ayih;
-
 class NearbyProfileEditTribePanel$16$1
   implements Runnable
 {
@@ -9,7 +7,7 @@ class NearbyProfileEditTribePanel$16$1
   
   public void run()
   {
-    ayih.a(this.a.this$0);
+    NearbyProfileEditTribePanel.a(this.a.this$0);
   }
 }
 

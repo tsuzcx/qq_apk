@@ -9,8 +9,8 @@ public class MiniReportManager$MiniAppLaunchState
   public Map<Integer, String> attachInfo = new HashMap();
   public Map<Integer, Long> eventTime = new HashMap();
   public Map<Integer, Long> eventTime_first = new HashMap();
-  public boolean firstRender;
-  public boolean hasOnloaded;
+  public boolean firstRender = false;
+  public boolean hasOnloaded = false;
   public String launchId;
   public String launchId_first;
 }

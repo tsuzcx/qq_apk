@@ -14,7 +14,7 @@ public class ClassicEmoticonPanelViewBinder
   private int[] SYS_EMOTION_ORDER;
   private EmoticonLinearLayout.EmoticonAdapter adapter;
   private EmoticonCallback callback;
-  private List<EmoticonInfo> panelData;
+  private List<EmoticonInfo> panelData = null;
   
   public ClassicEmoticonPanelViewBinder(Context paramContext, EmoticonCallback paramEmoticonCallback, int paramInt)
   {
@@ -80,7 +80,7 @@ public class ClassicEmoticonPanelViewBinder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ClassicEmoticonPanelViewBinder
  * JD-Core Version:    0.7.0.1
  */

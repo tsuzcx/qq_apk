@@ -8,9 +8,9 @@ public final class MeasureInfo
   extends JceStruct
 {
   public byte bDefault = 1;
-  public byte bLinkType;
+  public byte bLinkType = 0;
   public byte bProxy = 1;
-  public int iPort;
+  public int iPort = 0;
   public String sIP = "";
   public String sImsi = "";
   
@@ -50,7 +50,7 @@ public final class MeasureInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     protocol.KQQConfig.MeasureInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bnqu;
-import bocy;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.util.AECameraPrefsUtil;
 import dov.com.qq.im.ae.view.AECompoundButton;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public abstract class AEEditorToolBar
@@ -22,7 +20,7 @@ public abstract class AEEditorToolBar
   implements View.OnClickListener
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorToolBar.class.getSimpleName();
-  protected bocy a;
+  protected AEEditorToolBar.ToolBarBaseListener a;
   private List<AECompoundButton> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public AEEditorToolBar(Context paramContext)
@@ -58,12 +56,12 @@ public abstract class AEEditorToolBar
     localAECompoundButton.setOnClickListener(this);
     localAECompoundButton.setBackgroundResource(paramInt3);
     localAECompoundButton.setForegroundResource(paramInt2);
-    localAECompoundButton.setForegroundSize(ViewUtils.dip2px(32.0F), ViewUtils.dip2px(32.0F));
+    localAECompoundButton.setForegroundSize(ViewUtils.a(32.0F), ViewUtils.a(32.0F));
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.width = ViewUtils.dip2px(56.0F);
-    localLayoutParams.height = ViewUtils.dip2px(56.0F);
+    localLayoutParams.width = ViewUtils.a(56.0F);
+    localLayoutParams.height = ViewUtils.a(56.0F);
     if ((a(paramString)) && (!b(paramString))) {
-      localAECompoundButton.addView(LayoutInflater.from(getContext()).inflate(2131558573, localAECompoundButton, false));
+      localAECompoundButton.addView(LayoutInflater.from(getContext()).inflate(2131558595, localAECompoundButton, false));
     }
     addView(localAECompoundButton, paramInt1, localLayoutParams);
     this.jdField_a_of_type_JavaUtilList.add(paramInt1, localAECompoundButton);
@@ -71,44 +69,14 @@ public abstract class AEEditorToolBar
   
   abstract void a(String paramString);
   
-  public void a(String paramString, int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      AECompoundButton localAECompoundButton = (AECompoundButton)localIterator.next();
-      if (paramString.equals(localAECompoundButton.getTag())) {
-        localAECompoundButton.setForegroundResource(paramInt);
-      }
-    }
-  }
-  
   protected boolean a(String paramString)
   {
     return false;
   }
   
-  public void b()
-  {
-    setVisibility(4);
-  }
-  
-  public void b(String paramString)
-  {
-    paramString = findViewById(2131376768);
-    if (paramString != null) {
-      paramString.setVisibility(8);
-    }
-  }
-  
   protected boolean b(String paramString)
   {
-    return bnqu.a().a("ae_editor_tool_bar_red_dot_" + paramString, false, 0);
-  }
-  
-  public void c()
-  {
-    setVisibility(0);
+    return AECameraPrefsUtil.a().a("ae_editor_tool_bar_red_dot_" + paramString, false, 0);
   }
   
   public void onClick(View paramView)
@@ -117,14 +85,14 @@ public abstract class AEEditorToolBar
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setToolBarListener(bocy parambocy)
+  public void setToolBarListener(AEEditorToolBar.ToolBarBaseListener paramToolBarBaseListener)
   {
-    this.jdField_a_of_type_Bocy = parambocy;
+    this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar$ToolBarBaseListener = paramToolBarBaseListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.toolbar.AEEditorToolBar
  * JD-Core Version:    0.7.0.1
  */

@@ -133,7 +133,7 @@ public class NativeLayoutImpl
     this.mView = null;
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     ViewGroup.LayoutParams localLayoutParams = paramLayoutParams;
     if (paramLayoutParams == null) {
@@ -194,7 +194,7 @@ public class NativeLayoutImpl
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.mBackgroundColor != 0)
     {
@@ -221,9 +221,9 @@ public class NativeLayoutImpl
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  protected void onMeasure(int paramInt1, int paramInt2) {}
+  public void onMeasure(int paramInt1, int paramInt2) {}
   
   public void setBackgroundColor(int paramInt)
   {
@@ -274,7 +274,7 @@ public class NativeLayoutImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.helper.nativelayout.NativeLayoutImpl
  * JD-Core Version:    0.7.0.1
  */

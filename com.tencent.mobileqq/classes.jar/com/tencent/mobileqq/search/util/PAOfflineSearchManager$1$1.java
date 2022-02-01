@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.search.util;
 
 import android.text.TextUtils;
-import bcmv;
-import bcmw;
+import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.qphone.base.util.QLog;
-import nuz;
 
-public class PAOfflineSearchManager$1$1
+class PAOfflineSearchManager$1$1
   implements Runnable
 {
-  public PAOfflineSearchManager$1$1(bcmw parambcmw) {}
+  PAOfflineSearchManager$1$1(PAOfflineSearchManager.1 param1) {}
   
   public void run()
   {
-    String str = nuz.a("1011");
+    String str = HtmlOffline.a("1011");
     if ((str == null) || (TextUtils.equals(str, ""))) {}
     do
     {
@@ -28,7 +26,7 @@ public class PAOfflineSearchManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.PAOfflineSearchManager.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_droplist_operate_rsp
   extends JceStruct
 {
-  public int retCode;
+  public int retCode = 0;
   public String retMsg = "";
   
   public mobile_droplist_operate_rsp() {}

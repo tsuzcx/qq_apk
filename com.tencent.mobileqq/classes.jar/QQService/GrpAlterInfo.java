@@ -9,8 +9,8 @@ public final class GrpAlterInfo
   extends JceStruct
 {
   static ArrayList<GrpInfoItem> cache_AlterInfo;
-  public ArrayList<GrpInfoItem> AlterInfo;
-  public long GrpId;
+  public ArrayList<GrpInfoItem> AlterInfo = null;
+  public long GrpId = 0L;
   
   public GrpAlterInfo() {}
   

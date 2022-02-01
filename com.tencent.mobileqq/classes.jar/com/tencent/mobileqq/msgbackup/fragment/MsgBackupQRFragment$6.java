@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import awzh;
-import awzs;
+import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthProcessor;
+import com.tencent.mobileqq.msgbackup.controller.MsgBackupManager;
 import mqq.os.MqqHandler;
 
 class MsgBackupQRFragment$6
@@ -11,11 +11,11 @@ class MsgBackupQRFragment$6
   
   public void run()
   {
-    awzs localawzs = awzs.a();
-    String str = localawzs.a().a();
+    MsgBackupManager localMsgBackupManager = MsgBackupManager.a();
+    String str = localMsgBackupManager.a().a();
     if (str != null)
     {
-      localawzs.a(str);
+      localMsgBackupManager.a(str);
       this.this$0.b.postDelayed(this, 500L);
     }
   }

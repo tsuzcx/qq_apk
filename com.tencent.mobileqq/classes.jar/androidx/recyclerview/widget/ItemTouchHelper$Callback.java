@@ -42,7 +42,7 @@ public abstract class ItemTouchHelper$Callback
   private int getMaxDragScroll(RecyclerView paramRecyclerView)
   {
     if (this.mCachedMaxScrollSpeed == -1) {
-      this.mCachedMaxScrollSpeed = paramRecyclerView.getResources().getDimensionPixelSize(2131297260);
+      this.mCachedMaxScrollSpeed = paramRecyclerView.getResources().getDimensionPixelSize(2131297285);
     }
     return this.mCachedMaxScrollSpeed;
   }
@@ -376,7 +376,7 @@ public abstract class ItemTouchHelper$Callback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.recyclerview.widget.ItemTouchHelper.Callback
  * JD-Core Version:    0.7.0.1
  */

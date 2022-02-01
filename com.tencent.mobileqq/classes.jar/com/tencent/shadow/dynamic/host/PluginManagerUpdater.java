@@ -7,15 +7,15 @@ public abstract interface PluginManagerUpdater
 {
   public abstract File getLatest();
   
-  public abstract Future isAvailable(File paramFile);
+  public abstract Future<Boolean> isAvailable(File paramFile);
   
-  public abstract Future update();
+  public abstract Future<File> update();
   
   public abstract boolean wasUpdating();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.PluginManagerUpdater
  * JD-Core Version:    0.7.0.1
  */

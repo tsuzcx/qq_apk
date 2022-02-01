@@ -1,12 +1,12 @@
 package com.tencent.msfmqpsdkbridge;
 
 import android.text.TextUtils;
-import bize;
-import bizf;
-import bizg;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mqpsdk.INetTransportProvider;
+import com.tencent.mqpsdk.INetTransportProvider.INetTransportCodec;
+import com.tencent.mqpsdk.INetTransportProvider.INetTransportEventListener;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.Iterator;
@@ -16,10 +16,10 @@ import java.util.Set;
 
 public class MSFNetTransportProvider
   extends BusinessHandler
-  implements bize
+  implements INetTransportProvider
 {
-  private Map<String, bizf> mCodecMap;
-  private Map<String, bizg> mEventListenerMap;
+  private Map<String, INetTransportProvider.INetTransportCodec> mCodecMap = null;
+  private Map<String, INetTransportProvider.INetTransportEventListener> mEventListenerMap = null;
   private Map<String, String> mServiceNameMap = new LinkedHashMap();
   
   public MSFNetTransportProvider(QQAppInterface paramQQAppInterface)
@@ -30,7 +30,7 @@ public class MSFNetTransportProvider
     this.mServiceNameMap.put("SecCheckSigSvc.UploadReq", "sig_check");
   }
   
-  public bizf getCodec(String paramString)
+  public INetTransportProvider.INetTransportCodec getCodec(String paramString)
   {
     if (this.mCodecMap == null) {
       this.mCodecMap = new LinkedHashMap();
@@ -38,7 +38,7 @@ public class MSFNetTransportProvider
     Object localObject2;
     if (this.mCodecMap.containsKey(paramString))
     {
-      localObject2 = (bizf)this.mCodecMap.get(paramString);
+      localObject2 = (INetTransportProvider.INetTransportCodec)this.mCodecMap.get(paramString);
       return localObject2;
     }
     Object localObject1;
@@ -97,7 +97,7 @@ public class MSFNetTransportProvider
         } while (!this.mServiceNameMap.containsKey(paramObject));
         paramObject = (String)this.mServiceNameMap.get(paramObject);
       } while (!this.mEventListenerMap.containsKey(paramObject));
-      paramObject = (bizg)this.mEventListenerMap.get(paramObject);
+      paramObject = (INetTransportProvider.INetTransportEventListener)this.mEventListenerMap.get(paramObject);
     } while (paramObject == null);
     paramObject.a(paramToServiceMsg, paramFromServiceMsg);
   }
@@ -110,21 +110,21 @@ public class MSFNetTransportProvider
     return 0;
   }
   
-  public void setNetTransportEventListener(String paramString, bizg parambizg)
+  public void setNetTransportEventListener(String paramString, INetTransportProvider.INetTransportEventListener paramINetTransportEventListener)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (parambizg == null) {
+    while (paramINetTransportEventListener == null) {
       return;
     }
     if (this.mEventListenerMap == null) {
       this.mEventListenerMap = new LinkedHashMap();
     }
-    this.mEventListenerMap.put(paramString, parambizg);
+    this.mEventListenerMap.put(paramString, paramINetTransportEventListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.msfmqpsdkbridge.MSFNetTransportProvider
  * JD-Core Version:    0.7.0.1
  */

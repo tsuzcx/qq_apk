@@ -17,10 +17,15 @@ public class VideoSDKMaterialParser
   {
     return VideoTemplateParser.parseVideoMaterial(paramString1, paramString2, true, decryptListener, paramHashMap);
   }
+  
+  public static VideoMaterial parseVideoMaterialForEdit(String paramString1, String paramString2)
+  {
+    return VideoTemplateParser.parseVideoMaterialForEdit(paramString1, paramString2, true, decryptListener);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoSDKMaterialParser
  * JD-Core Version:    0.7.0.1
  */

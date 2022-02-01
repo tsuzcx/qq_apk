@@ -111,7 +111,7 @@ public class RotationSeekBar
   
   void initUI() {}
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.mMarkPercent != null)

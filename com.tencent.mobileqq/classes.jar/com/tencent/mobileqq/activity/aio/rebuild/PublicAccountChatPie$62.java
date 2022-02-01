@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aido;
-import onc;
+import com.tencent.biz.pubaccount.assistant.PubAccountTipsManager;
 
-public class PublicAccountChatPie$62
+class PublicAccountChatPie$62
   implements Runnable
 {
-  public PublicAccountChatPie$62(aido paramaido, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
+  PublicAccountChatPie$62(PublicAccountChatPie paramPublicAccountChatPie, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class PublicAccountChatPie$62
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.62
  * JD-Core Version:    0.7.0.1
  */

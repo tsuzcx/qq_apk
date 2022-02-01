@@ -1,0 +1,17 @@
+package com.tencent.gamecenter.wadl.biz.listener;
+
+import com.tencent.gamecenter.wadl.biz.entity.WadlResult;
+import java.util.ArrayList;
+
+public abstract interface WadlResCallBack
+{
+  public abstract void a(WadlResult paramWadlResult);
+  
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.gamecenter.wadl.biz.listener.WadlResCallBack
+ * JD-Core Version:    0.7.0.1
+ */

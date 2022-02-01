@@ -11,29 +11,29 @@ public class TBSOneStandaloneService
   extends Service
 {
   public static final String IMPL_CLASS_NAME_KEY = "implClassName";
-  private TBSOneStandaloneService.ServiceImpl mServiceImpl;
+  private TBSOneStandaloneService.ServiceImpl a;
   
   @Nullable
   public IBinder onBind(Intent paramIntent)
   {
-    if (this.mServiceImpl == null) {
+    if (this.a == null) {
       return null;
     }
-    return this.mServiceImpl.onBind(paramIntent);
+    return this.a.onBind(paramIntent);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (this.mServiceImpl != null) {
-      this.mServiceImpl.onConfigurationChanged(paramConfiguration);
+    if (this.a != null) {
+      this.a.onConfigurationChanged(paramConfiguration);
     }
   }
   
   public void onDestroy()
   {
-    if (this.mServiceImpl != null) {
-      this.mServiceImpl.onDestroy();
+    if (this.a != null) {
+      this.a.onDestroy();
     }
     super.onDestroy();
   }
@@ -41,38 +41,38 @@ public class TBSOneStandaloneService
   public void onLowMemory()
   {
     super.onLowMemory();
-    if (this.mServiceImpl != null) {
-      this.mServiceImpl.onLowMemory();
+    if (this.a != null) {
+      this.a.onLowMemory();
     }
   }
   
   public void onRebind(Intent paramIntent)
   {
     super.onRebind(paramIntent);
-    if (this.mServiceImpl != null) {
-      this.mServiceImpl.onRebind(paramIntent);
+    if (this.a != null) {
+      this.a.onRebind(paramIntent);
     }
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     String str = paramIntent.getStringExtra("implClassName");
-    if ((!TextUtils.isEmpty(str)) && ((this.mServiceImpl == null) || (!this.mServiceImpl.getClass().getName().equals(str)))) {
-      if (this.mServiceImpl != null)
+    if ((!TextUtils.isEmpty(str)) && ((this.a == null) || (!this.a.getClass().getName().equals(str)))) {
+      if (this.a != null)
       {
-        this.mServiceImpl.onDestroy();
-        this.mServiceImpl = null;
+        this.a.onDestroy();
+        this.a = null;
       }
     }
     try
     {
-      this.mServiceImpl = ((TBSOneStandaloneService.ServiceImpl)Class.forName(str).newInstance());
-      this.mServiceImpl.setBaseService(this);
-      if (this.mServiceImpl != null) {
-        this.mServiceImpl.onCreate();
+      this.a = ((TBSOneStandaloneService.ServiceImpl)Class.forName(str).newInstance());
+      this.a.setBaseService(this);
+      if (this.a != null) {
+        this.a.onCreate();
       }
-      if (this.mServiceImpl != null) {
-        return this.mServiceImpl.onStartCommand(paramIntent, paramInt1, paramInt2);
+      if (this.a != null) {
+        return this.a.onStartCommand(paramIntent, paramInt1, paramInt2);
       }
     }
     catch (Throwable localThrowable)
@@ -88,30 +88,30 @@ public class TBSOneStandaloneService
   public void onTaskRemoved(Intent paramIntent)
   {
     super.onTaskRemoved(paramIntent);
-    if (this.mServiceImpl != null) {
-      this.mServiceImpl.onTaskRemoved(paramIntent);
+    if (this.a != null) {
+      this.a.onTaskRemoved(paramIntent);
     }
   }
   
   public void onTrimMemory(int paramInt)
   {
     super.onTrimMemory(paramInt);
-    if (this.mServiceImpl != null) {
-      this.mServiceImpl.onTrimMemory(paramInt);
+    if (this.a != null) {
+      this.a.onTrimMemory(paramInt);
     }
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    if (this.mServiceImpl == null) {
+    if (this.a == null) {
       return super.onUnbind(paramIntent);
     }
-    return this.mServiceImpl.onUnbind(paramIntent);
+    return this.a.onUnbind(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tbs.one.optional.TBSOneStandaloneService
  * JD-Core Version:    0.7.0.1
  */

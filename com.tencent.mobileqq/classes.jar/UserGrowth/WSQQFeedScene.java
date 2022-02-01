@@ -5,8 +5,11 @@ import java.io.Serializable;
 public final class WSQQFeedScene
   implements Serializable
 {
+  public static final int QQ_FEED_SCENE_AB_TEST_POLICY = 10009;
   public static final int QQ_FEED_SCENE_AIO_TO_FLOATING_LAYER = 12;
   public static final int QQ_FEED_SCENE_FALLS_LIST = 1;
+  public static final int QQ_FEED_SCENE_FEED_OP_INFO = 10011;
+  public static final int QQ_FEED_SCENE_FEED_PRELOAD_FALLS = 8;
   public static final int QQ_FEED_SCENE_FLOATING_LAYER = 2;
   public static final int QQ_FEED_SCENE_FOLLOW_LIST = 9;
   public static final int QQ_FEED_SCENE_FOLLOW_VIDEO = 10;
@@ -19,10 +22,11 @@ public final class WSQQFeedScene
   public static final int QQ_FEED_SCENE_PERSON_WEISHI = 6;
   public static final int QQ_FEED_SCENE_PLAY_COMMENT_LIST = 10003;
   public static final int QQ_FEED_SCENE_PUBLISHER = 10004;
-  public static final int QQ_FEED_SCENE_PUSH_PRELOAD = 8;
+  public static final int QQ_FEED_SCENE_PUSH_PRELOAD_IMMERSIVE = 13;
   public static final int QQ_FEED_SCENE_RED_DOT_NOTIFICATION = 10001;
   public static final int QQ_FEED_SCENE_RELAY_H5 = 11;
   public static final int QQ_FEED_SCENE_ROBOT_CHAT_GROUP = 10007;
+  public static final int QQ_FEED_SCENE_TABS_INFO = 10010;
   public static final int QQ_FEED_SCENE_USER_AUTH_ALERT = 10005;
   public static final int QQ_FEED_SCENE_WINDOWS = 3;
 }

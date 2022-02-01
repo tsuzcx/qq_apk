@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
-import ahuc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
+import com.tencent.mobileqq.activity.aio.photo.PhotoDecoder;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 public class PicFileGalleryOrigDecoder
-  extends ahuc
+  extends PhotoDecoder
 {
   public PicFileGalleryOrigDecoder(BaseApplicationImpl paramBaseApplicationImpl)
   {
@@ -26,7 +26,7 @@ public class PicFileGalleryOrigDecoder
       try
       {
         paramDownloadParams = localURL.getFile();
-        if (!FileUtils.fileExists(paramDownloadParams))
+        if (!FileUtils.a(paramDownloadParams))
         {
           paramDownloadParams = localURL.toURI().getPath();
           paramDownloadParams = new File(paramDownloadParams);

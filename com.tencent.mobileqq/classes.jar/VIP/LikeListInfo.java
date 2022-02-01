@@ -10,8 +10,8 @@ public final class LikeListInfo
 {
   static RedTouchInfo cache_stRedInfo = new RedTouchInfo();
   static ArrayList<LikeUserInfo> cache_vLikeList = new ArrayList();
-  public RedTouchInfo stRedInfo;
-  public ArrayList<LikeUserInfo> vLikeList;
+  public RedTouchInfo stRedInfo = null;
+  public ArrayList<LikeUserInfo> vLikeList = null;
   
   static
   {

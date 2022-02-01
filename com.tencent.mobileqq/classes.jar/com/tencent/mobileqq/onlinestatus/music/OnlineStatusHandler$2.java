@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.onlinestatus.music;
 
-import azff;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class OnlineStatusHandler$2
+class OnlineStatusHandler$2
   implements Runnable
 {
-  public OnlineStatusHandler$2(azff paramazff, String paramString) {}
+  OnlineStatusHandler$2(OnlineStatusHandler paramOnlineStatusHandler) {}
   
   public void run()
   {
-    ((FriendListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getOnlineInfo(this.a, false);
+    QQToast.a(OnlineStatusHandler.a(this.this$0).getApp(), 1, "“我的位置” 切换失败，请重试。", 1).a();
   }
 }
 

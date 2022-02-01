@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import aryy;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 
@@ -15,16 +14,16 @@ public class InputBar
 {
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private aryy jdField_a_of_type_Aryy;
+  private InputBar.IIputBarCallback jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int b;
   private int c;
   private int d;
   private int e;
   private int f;
   private int g;
-  private int h;
+  private int h = 0;
   
   public InputBar(Context paramContext)
   {
@@ -37,7 +36,7 @@ public class InputBar
   }
   
   @TargetApi(11)
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.h == 0) {
@@ -50,8 +49,8 @@ public class InputBar
         while (!this.jdField_a_of_type_Boolean)
         {
           return;
-          if ((paramInt4 == this.h) && (this.jdField_a_of_type_Aryy != null)) {
-            this.jdField_a_of_type_Aryy.a();
+          if ((paramInt4 == this.h) && (this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback != null)) {
+            this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback.a();
           }
         }
         if (QLog.isDevelopLevel()) {
@@ -77,14 +76,14 @@ public class InputBar
     this.d = paramInt2;
   }
   
-  public void setmCallback(aryy paramaryy)
+  public void setmCallback(InputBar.IIputBarCallback paramIIputBarCallback)
   {
-    this.jdField_a_of_type_Aryy = paramaryy;
+    this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback = paramIIputBarCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.widget.InputBar
  * JD-Core Version:    0.7.0.1
  */

@@ -3,17 +3,16 @@ package com.tencent.mobileqq.receipt;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bbba;
 
-public class ReceiptMessageReadMemberListFragment$MemberInfo
+class ReceiptMessageReadMemberListFragment$MemberInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MemberInfo> CREATOR = new bbba();
+  public static final Parcelable.Creator<MemberInfo> CREATOR = new ReceiptMessageReadMemberListFragment.MemberInfo.1();
   public long a;
   public String a;
   public String b;
   
-  public ReceiptMessageReadMemberListFragment$MemberInfo(Parcel paramParcel)
+  protected ReceiptMessageReadMemberListFragment$MemberInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
@@ -41,7 +40,7 @@ public class ReceiptMessageReadMemberListFragment$MemberInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo
  * JD-Core Version:    0.7.0.1
  */

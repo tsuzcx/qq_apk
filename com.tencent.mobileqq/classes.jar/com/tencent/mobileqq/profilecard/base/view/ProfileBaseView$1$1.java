@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.profilecard.base.view;
 
 import android.widget.ImageView;
-import azrb;
-import bdla;
-import bhcs;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
 import com.tencent.mobileqq.vas.AvatarPendantManager;
 import com.tencent.mobileqq.vas.PendantInfo;
 
@@ -18,25 +18,25 @@ class ProfileBaseView$1$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.isPendantValid()))
+    if ((this.val$info != null) && (this.val$info.isPendantValid()))
     {
-      ProfileBaseView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0).setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId;
-      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
-      if (bhcs.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0.jdField_a_of_type_Long)) {
-        localAvatarPendantManager.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0.jdField_a_of_type_Long).a(ProfileBaseView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0), 2, PendantInfo.c, this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.jdField_a_of_type_Azrb.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+      ProfileBaseView.access$000(this.this$1.this$0).setVisibility(0);
+      this.this$1.this$0.mPendantId = this.val$info.pendantId;
+      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.this$1.this$0.mApp.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
+      if (AvatarPendantUtil.a(this.this$1.this$0.mPendantId)) {
+        localAvatarPendantManager.a(this.this$1.this$0.mPendantId).a(ProfileBaseView.access$000(this.this$1.this$0), 2, PendantInfo.c, this.this$1.val$cardInfo.a.a, this.val$info.pendantDiyId);
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.jdField_a_of_type_Boolean) {
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
+        if (this.this$1.val$isInit) {
+          ReportController.b(this.this$1.this$0.mApp, "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
         }
         return;
-        localAvatarPendantManager.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0.jdField_a_of_type_Long).a(ProfileBaseView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0), 1, PendantInfo.c, this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.jdField_a_of_type_Azrb.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+        localAvatarPendantManager.a(this.this$1.this$0.mPendantId).a(ProfileBaseView.access$000(this.this$1.this$0), 1, PendantInfo.c, this.this$1.val$cardInfo.a.a, this.val$info.pendantDiyId);
       }
     }
-    ProfileBaseView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0).setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView$1.this$0.jdField_a_of_type_Long = 0L;
+    ProfileBaseView.access$000(this.this$1.this$0).setVisibility(4);
+    this.this$1.this$0.mPendantId = 0L;
   }
 }
 

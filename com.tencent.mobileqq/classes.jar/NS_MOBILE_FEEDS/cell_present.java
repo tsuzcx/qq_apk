@@ -9,8 +9,8 @@ public final class cell_present
   extends JceStruct
 {
   static ArrayList<s_presentman> cache_presentmans = new ArrayList();
-  public long num;
-  public ArrayList<s_presentman> presentmans;
+  public long num = 0L;
+  public ArrayList<s_presentman> presentmans = null;
   
   static
   {

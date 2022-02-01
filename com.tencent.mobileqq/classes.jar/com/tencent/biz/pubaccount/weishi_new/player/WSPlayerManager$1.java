@@ -1,25 +1,22 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import vfs;
-import vgb;
-import vgc;
-import vmp;
 
-public class WSPlayerManager$1
+class WSPlayerManager$1
   implements Runnable
 {
-  WSPlayerManager$1(WSPlayerManager paramWSPlayerManager, vgb paramvgb) {}
+  WSPlayerManager$1(WSPlayerManager paramWSPlayerManager, WSPlayerParam paramWSPlayerParam) {}
   
   public void run()
   {
-    vmp.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] endTime:" + System.currentTimeMillis());
+    WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] endTime:" + System.currentTimeMillis());
     if (WSPlayerManager.a(this.this$0) != null)
     {
       Iterator localIterator = WSPlayerManager.a(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        ((vgc)localIterator.next()).f(this.a);
+        ((WSPlayerStatusListener)localIterator.next()).f(this.a);
       }
     }
     if (this.a.a != null)
@@ -45,7 +42,7 @@ public class WSPlayerManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.1
  * JD-Core Version:    0.7.0.1
  */

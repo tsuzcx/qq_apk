@@ -10,8 +10,8 @@ public abstract class FragmentPagerAdapter
 {
   private static final boolean DEBUG = false;
   private static final String TAG = "FragmentPagerAdapter";
-  private FragmentTransaction mCurTransaction;
-  private Fragment mCurrentPrimaryItem;
+  private FragmentTransaction mCurTransaction = null;
+  private Fragment mCurrentPrimaryItem = null;
   private final FragmentManager mFragmentManager;
   
   public FragmentPagerAdapter(FragmentManager paramFragmentManager)

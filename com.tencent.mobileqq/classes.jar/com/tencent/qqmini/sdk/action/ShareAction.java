@@ -22,7 +22,8 @@ public class ShareAction
   public static final String KEY_MINI_APP_SHARE_CHAT_TYPE = "key_mini_app_share_chat_type";
   public static final String KEY_MINI_APP_SHARE_CHAT_UIN = "key_mini_app_share_chat_uin";
   public static final String KEY_SHARE_ITEM_ID = "key_share_item_id";
-  public static final int SHARE_OTHER = 6;
+  public static final int SHARE_GAME_RAFFLE = 6;
+  public static final int SHARE_OTHER = 7;
   public static final int SHARE_QQ = 1;
   public static final int SHARE_QQ_CHAT = 5;
   public static final int SHARE_QZONE = 2;
@@ -344,192 +345,217 @@ public class ShareAction
     QMLog.e("Action", "on forward wechat moments click exception js service==null");
   }
   
+  private void handleRaffleShare(BaseRuntime paramBaseRuntime, ShareState paramShareState)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("fromShareButton", 0);
+      localJSONObject.put("shareTarget", 0);
+      localJSONObject.put("shareActionName", "raffleShare");
+      QMLog.d("Action", "handleRaffleShare param: " + localJSONObject.toString());
+      paramShareState.fromShareMenuBtn = 0;
+      paramBaseRuntime = paramBaseRuntime.getJsService();
+      if (paramBaseRuntime != null) {
+        paramBaseRuntime.evaluateSubscribeJS("onShareAppMessage", localJSONObject.toString(), 0);
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QMLog.e("Action", "handleRaffleShare", localJSONException);
+      }
+    }
+  }
+  
   /* Error */
   private void handleShareChatDirectly(BaseRuntime paramBaseRuntime, ShareState paramShareState)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 193	com/tencent/qqmini/sdk/action/ShareAction:data	Landroid/os/Bundle;
+    //   1: getfield 214	com/tencent/qqmini/sdk/action/ShareAction:data	Landroid/os/Bundle;
     //   4: ifnonnull +4 -> 8
     //   7: return
     //   8: aload_0
-    //   9: getfield 193	com/tencent/qqmini/sdk/action/ShareAction:data	Landroid/os/Bundle;
+    //   9: getfield 214	com/tencent/qqmini/sdk/action/ShareAction:data	Landroid/os/Bundle;
     //   12: ldc 18
-    //   14: invokevirtual 199	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   14: invokevirtual 220	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   17: astore 9
     //   19: aload_0
-    //   20: getfield 193	com/tencent/qqmini/sdk/action/ShareAction:data	Landroid/os/Bundle;
+    //   20: getfield 214	com/tencent/qqmini/sdk/action/ShareAction:data	Landroid/os/Bundle;
     //   23: ldc 15
-    //   25: invokevirtual 203	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   25: invokevirtual 224	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   28: istore_3
     //   29: aload_0
-    //   30: getfield 193	com/tencent/qqmini/sdk/action/ShareAction:data	Landroid/os/Bundle;
+    //   30: getfield 214	com/tencent/qqmini/sdk/action/ShareAction:data	Landroid/os/Bundle;
     //   33: ldc 12
-    //   35: invokevirtual 199	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   35: invokevirtual 220	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   38: astore 8
-    //   40: ldc2_w 204
+    //   40: ldc2_w 225
     //   43: lstore 6
     //   45: lload 6
     //   47: lstore 4
     //   49: aload 9
     //   51: ifnull +13 -> 64
     //   54: aload 9
-    //   56: invokestatic 211	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   59: invokevirtual 215	java/lang/Long:longValue	()J
+    //   56: invokestatic 232	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   59: invokevirtual 236	java/lang/Long:longValue	()J
     //   62: lstore 4
-    //   64: new 217	com/tencent/qqmini/sdk/launcher/model/ShareChatModel
+    //   64: new 238	com/tencent/qqmini/sdk/launcher/model/ShareChatModel
     //   67: dup
     //   68: iload_3
     //   69: lload 4
     //   71: aload 8
-    //   73: invokespecial 220	com/tencent/qqmini/sdk/launcher/model/ShareChatModel:<init>	(IJLjava/lang/String;)V
+    //   73: invokespecial 241	com/tencent/qqmini/sdk/launcher/model/ShareChatModel:<init>	(IJLjava/lang/String;)V
     //   76: astore 12
-    //   78: new 66	org/json/JSONObject
+    //   78: new 68	org/json/JSONObject
     //   81: dup
-    //   82: invokespecial 67	org/json/JSONObject:<init>	()V
+    //   82: invokespecial 69	org/json/JSONObject:<init>	()V
     //   85: astore 11
-    //   87: ldc 69
+    //   87: ldc 71
     //   89: astore 9
     //   91: aload 9
     //   93: astore 8
     //   95: aload_2
-    //   96: getfield 74	com/tencent/qqmini/sdk/launcher/model/ShareState:launchFrom	I
+    //   96: getfield 76	com/tencent/qqmini/sdk/launcher/model/ShareState:launchFrom	I
     //   99: iconst_1
     //   100: if_icmpne +172 -> 272
-    //   103: ldc 76
+    //   103: ldc 78
     //   105: astore 10
     //   107: aload 10
     //   109: astore 9
     //   111: aload 10
     //   113: astore 8
     //   115: aload_2
-    //   116: getfield 80	com/tencent/qqmini/sdk/launcher/model/ShareState:tapIndexMap	Ljava/util/HashMap;
+    //   116: getfield 82	com/tencent/qqmini/sdk/launcher/model/ShareState:tapIndexMap	Ljava/util/HashMap;
     //   119: ifnull +179 -> 298
     //   122: aload 10
     //   124: astore 8
     //   126: aload 11
-    //   128: ldc 82
+    //   128: ldc 84
     //   130: iconst_m1
-    //   131: invokevirtual 140	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   131: invokevirtual 142	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   134: pop
-    //   135: ldc 76
+    //   135: ldc 78
     //   137: astore 8
     //   139: aload_1
-    //   140: invokevirtual 100	com/tencent/qqmini/sdk/launcher/core/BaseRuntime:isMiniGame	()Z
+    //   140: invokevirtual 102	com/tencent/qqmini/sdk/launcher/core/BaseRuntime:isMiniGame	()Z
     //   143: ifne +24 -> 167
     //   146: aload_0
     //   147: aload_1
-    //   148: invokespecial 102	com/tencent/qqmini/sdk/action/ShareAction:getCurrPage	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;)Ljava/lang/String;
+    //   148: invokespecial 104	com/tencent/qqmini/sdk/action/ShareAction:getCurrPage	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;)Ljava/lang/String;
     //   151: ifnull +16 -> 167
     //   154: aload 11
-    //   156: ldc 104
+    //   156: ldc 106
     //   158: aload_0
     //   159: aload_1
-    //   160: invokespecial 102	com/tencent/qqmini/sdk/action/ShareAction:getCurrPage	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;)Ljava/lang/String;
-    //   163: invokevirtual 94	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   160: invokespecial 104	com/tencent/qqmini/sdk/action/ShareAction:getCurrPage	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;)Ljava/lang/String;
+    //   163: invokevirtual 96	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   166: pop
     //   167: aload 11
-    //   169: ldc 222
+    //   169: ldc 243
     //   171: aload 12
-    //   173: invokevirtual 225	com/tencent/qqmini/sdk/launcher/model/ShareChatModel:getEntryHash	()Ljava/lang/String;
-    //   176: invokevirtual 94	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   173: invokevirtual 246	com/tencent/qqmini/sdk/launcher/model/ShareChatModel:getEntryHash	()Ljava/lang/String;
+    //   176: invokevirtual 96	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   179: pop
     //   180: aload 8
     //   182: astore 9
     //   184: aload_2
     //   185: iconst_0
-    //   186: putfield 107	com/tencent/qqmini/sdk/launcher/model/ShareState:fromShareMenuBtn	I
+    //   186: putfield 109	com/tencent/qqmini/sdk/launcher/model/ShareState:fromShareMenuBtn	I
     //   189: aload_2
     //   190: aload 12
-    //   192: putfield 229	com/tencent/qqmini/sdk/launcher/model/ShareState:shareChatModel	Lcom/tencent/qqmini/sdk/launcher/model/ShareChatModel;
+    //   192: putfield 250	com/tencent/qqmini/sdk/launcher/model/ShareState:shareChatModel	Lcom/tencent/qqmini/sdk/launcher/model/ShareChatModel;
     //   195: aload_2
-    //   196: getfield 111	com/tencent/qqmini/sdk/launcher/model/ShareState:requestEvent	Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;
+    //   196: getfield 113	com/tencent/qqmini/sdk/launcher/model/ShareState:requestEvent	Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;
     //   199: ifnull +124 -> 323
     //   202: aload_2
-    //   203: getfield 111	com/tencent/qqmini/sdk/launcher/model/ShareState:requestEvent	Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;
-    //   206: getfield 117	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsService	Lcom/tencent/qqmini/sdk/launcher/core/IJsService;
+    //   203: getfield 113	com/tencent/qqmini/sdk/launcher/model/ShareState:requestEvent	Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;
+    //   206: getfield 119	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsService	Lcom/tencent/qqmini/sdk/launcher/core/IJsService;
     //   209: astore 8
     //   211: aload 8
     //   213: ifnull +145 -> 358
     //   216: aload_2
-    //   217: getfield 74	com/tencent/qqmini/sdk/launcher/model/ShareState:launchFrom	I
+    //   217: getfield 76	com/tencent/qqmini/sdk/launcher/model/ShareState:launchFrom	I
     //   220: iconst_1
     //   221: if_icmpne +117 -> 338
     //   224: aload 9
     //   226: aload 11
-    //   228: invokestatic 123	com/tencent/qqmini/sdk/launcher/core/utils/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    //   228: invokestatic 125	com/tencent/qqmini/sdk/launcher/core/utils/ApiUtil:wrapCallbackOk	(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;
     //   231: astore_1
     //   232: aload_1
     //   233: ifnull +99 -> 332
     //   236: aload_1
-    //   237: invokevirtual 126	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   237: invokevirtual 128	org/json/JSONObject:toString	()Ljava/lang/String;
     //   240: astore_1
     //   241: aload 8
     //   243: aload_2
-    //   244: getfield 129	com/tencent/qqmini/sdk/launcher/model/ShareState:shareCallbackId	I
+    //   244: getfield 131	com/tencent/qqmini/sdk/launcher/model/ShareState:shareCallbackId	I
     //   247: aload_1
-    //   248: invokeinterface 135 3 0
+    //   248: invokeinterface 137 3 0
     //   253: return
     //   254: astore 9
-    //   256: ldc 144
-    //   258: ldc 231
+    //   256: ldc 146
+    //   258: ldc 252
     //   260: aload 9
-    //   262: invokestatic 152	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   262: invokestatic 154	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   265: lload 6
     //   267: lstore 4
     //   269: goto -205 -> 64
     //   272: aload 9
     //   274: astore 8
     //   276: aload 11
-    //   278: ldc 137
+    //   278: ldc 139
     //   280: iconst_0
-    //   281: invokevirtual 140	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   281: invokevirtual 142	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   284: pop
     //   285: aload 9
     //   287: astore 8
     //   289: aload 11
-    //   291: ldc 142
+    //   291: ldc 144
     //   293: iconst_5
-    //   294: invokevirtual 140	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   294: invokevirtual 142	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   297: pop
     //   298: aload 9
     //   300: astore 8
     //   302: goto -163 -> 139
     //   305: astore 9
-    //   307: ldc 144
-    //   309: ldc 233
+    //   307: ldc 146
+    //   309: ldc 254
     //   311: aload 9
-    //   313: invokestatic 152	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   313: invokestatic 154	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   316: aload 8
     //   318: astore 9
     //   320: goto -136 -> 184
     //   323: aload_1
-    //   324: invokevirtual 156	com/tencent/qqmini/sdk/launcher/core/BaseRuntime:getJsService	()Lcom/tencent/qqmini/sdk/launcher/core/IJsService;
+    //   324: invokevirtual 158	com/tencent/qqmini/sdk/launcher/core/BaseRuntime:getJsService	()Lcom/tencent/qqmini/sdk/launcher/core/IJsService;
     //   327: astore 8
     //   329: goto -118 -> 211
-    //   332: ldc 158
+    //   332: ldc 160
     //   334: astore_1
     //   335: goto -94 -> 241
     //   338: aload 8
     //   340: aload 9
     //   342: aload 11
-    //   344: invokevirtual 126	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   344: invokevirtual 128	org/json/JSONObject:toString	()Ljava/lang/String;
     //   347: aload_0
     //   348: aload_1
-    //   349: invokespecial 160	com/tencent/qqmini/sdk/action/ShareAction:getCurrPageId	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;)I
-    //   352: invokeinterface 164 4 0
+    //   349: invokespecial 162	com/tencent/qqmini/sdk/action/ShareAction:getCurrPageId	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;)I
+    //   352: invokeinterface 166 4 0
     //   357: return
-    //   358: ldc 144
-    //   360: ldc 235
-    //   362: invokestatic 174	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   365: return
-    //   366: astore 9
-    //   368: goto -61 -> 307
+    //   358: ldc 146
+    //   360: ldc_w 256
+    //   363: invokestatic 176	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   366: return
+    //   367: astore 9
+    //   369: goto -62 -> 307
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	371	0	this	ShareAction
-    //   0	371	1	paramBaseRuntime	BaseRuntime
-    //   0	371	2	paramShareState	ShareState
+    //   0	372	0	this	ShareAction
+    //   0	372	1	paramBaseRuntime	BaseRuntime
+    //   0	372	2	paramShareState	ShareState
     //   28	41	3	i	int
     //   47	221	4	l1	long
     //   43	223	6	l2	long
@@ -538,7 +564,7 @@ public class ShareAction
     //   254	45	9	localThrowable	java.lang.Throwable
     //   305	7	9	localJSONException1	JSONException
     //   318	23	9	localObject3	Object
-    //   366	1	9	localJSONException2	JSONException
+    //   367	1	9	localJSONException2	JSONException
     //   105	18	10	str	String
     //   85	258	11	localJSONObject	JSONObject
     //   76	115	12	localShareChatModel	com.tencent.qqmini.sdk.launcher.model.ShareChatModel
@@ -550,8 +576,8 @@ public class ShareAction
     //   126	135	305	org/json/JSONException
     //   276	285	305	org/json/JSONException
     //   289	298	305	org/json/JSONException
-    //   139	167	366	org/json/JSONException
-    //   167	180	366	org/json/JSONException
+    //   139	167	367	org/json/JSONException
+    //   167	180	367	org/json/JSONException
   }
   
   private void handleShareOther(BaseRuntime paramBaseRuntime, ShareState paramShareState, int paramInt)
@@ -628,6 +654,8 @@ public class ShareAction
       handleForwardWeChatMoment(paramBaseRuntime, localShareState);
       continue;
       handleShareChatDirectly(paramBaseRuntime, localShareState);
+      continue;
+      handleRaffleShare(paramBaseRuntime, localShareState);
       continue;
       if (this.data == null)
       {

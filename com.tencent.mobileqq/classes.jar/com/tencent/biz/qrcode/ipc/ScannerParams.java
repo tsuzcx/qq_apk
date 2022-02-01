@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.qrcode.activity.ScannerResult;
-import zmw;
 
 public class ScannerParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<ScannerParams> CREATOR = new zmw();
+  public static final Parcelable.Creator<ScannerParams> CREATOR = new ScannerParams.1();
   public int a;
   public ScannerResult a;
   public String a;
@@ -29,7 +28,7 @@ public class ScannerParams
   
   public ScannerParams() {}
   
-  public ScannerParams(Parcel paramParcel)
+  protected ScannerParams(Parcel paramParcel)
   {
     if (paramParcel.readByte() != 0)
     {
@@ -239,7 +238,7 @@ public class ScannerParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.ipc.ScannerParams
  * JD-Core Version:    0.7.0.1
  */

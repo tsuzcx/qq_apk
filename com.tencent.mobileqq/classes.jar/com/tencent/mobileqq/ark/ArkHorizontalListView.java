@@ -7,13 +7,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
-import apza;
-import bldq;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import com.tencent.widget.ListView;
+import com.tencent.widget.OverScroller;
 import java.lang.ref.WeakReference;
 
 public class ArkHorizontalListView
@@ -21,7 +20,7 @@ public class ArkHorizontalListView
 {
   private float jdField_a_of_type_Float = 0.08F;
   private int jdField_a_of_type_Int;
-  private WeakReference<apza> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ArkHorizontalListView.RefreshUiCallback> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private int b = 3;
   
@@ -31,7 +30,7 @@ public class ArkHorizontalListView
     paramContext = paramContext.getResources();
     int i = BaseChatItemLayout.o;
     int j = MessageForArkApp.dp2px(40.0F);
-    this.jdField_a_of_type_Int = (paramContext.getDimensionPixelSize(2131296388) + (i * 2 + j));
+    this.jdField_a_of_type_Int = (paramContext.getDimensionPixelSize(2131296404) + (i * 2 + j));
     setStayDisplayOffsetZero(true);
     a();
   }
@@ -42,7 +41,7 @@ public class ArkHorizontalListView
     paramContext = paramContext.getResources();
     int i = BaseChatItemLayout.o;
     int j = MessageForArkApp.dp2px(40.0F);
-    this.jdField_a_of_type_Int = (paramContext.getDimensionPixelSize(2131296388) + (i * 2 + j));
+    this.jdField_a_of_type_Int = (paramContext.getDimensionPixelSize(2131296404) + (i * 2 + j));
     setStayDisplayOffsetZero(true);
     a();
   }
@@ -60,7 +59,7 @@ public class ArkHorizontalListView
       return false;
     }
     Object localObject = null;
-    int j = ArkAppCenterUtil.sRealDisplayWith;
+    int j = ArkAppCenterUtil.d;
     int i = 0;
     View localView;
     if (i <= getChildCount())
@@ -79,8 +78,8 @@ public class ArkHorizontalListView
       int n;
       if (this.jdField_a_of_type_Boolean)
       {
-        k = ArkAppCenterUtil.sRealDisplayWith - this.jdField_a_of_type_Int - i / 2;
-        QLog.d("ArkHorizontalListView", 2, new Object[] { "---start find card mNextX=", Integer.valueOf(this.mNextX), ",scrollStartX=", Integer.valueOf(this.mScroller.c()), ",sRealDisplayWith=", Integer.valueOf(ArkAppCenterUtil.sRealDisplayWith), ",priovtX=", Integer.valueOf(k), ",mIsSend=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+        k = ArkAppCenterUtil.d - this.jdField_a_of_type_Int - i / 2;
+        QLog.d("ArkHorizontalListView", 2, new Object[] { "---start find card mNextX=", Integer.valueOf(this.mNextX), ",scrollStartX=", Integer.valueOf(this.mScroller.getStartX()), ",sRealDisplayWith=", Integer.valueOf(ArkAppCenterUtil.d), ",priovtX=", Integer.valueOf(k), ",mIsSend=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
         i = 0;
         m = 0;
         if (i > getChildCount()) {
@@ -125,7 +124,7 @@ public class ArkHorizontalListView
             if (!this.jdField_a_of_type_Boolean) {
               break label611;
             }
-            if (k <= ArkAppCenterUtil.sRealDisplayWith) {
+            if (k <= ArkAppCenterUtil.d) {
               break label606;
             }
             i = 1;
@@ -135,7 +134,7 @@ public class ArkHorizontalListView
             if (i == 0) {
               break label625;
             }
-            j = k - ArkAppCenterUtil.sRealDisplayWith;
+            j = k - ArkAppCenterUtil.d;
             if (!this.jdField_a_of_type_Boolean) {
               break label656;
             }
@@ -147,7 +146,7 @@ public class ArkHorizontalListView
             if (QLog.isColorLevel()) {
               QLog.d("ArkHorizontalListView", 2, new Object[] { "---end find card mNextX=", Integer.valueOf(this.mNextX), ", newNextX=", Integer.valueOf(i), ", mIsSend=", Boolean.valueOf(this.jdField_a_of_type_Boolean), ",targetIndex=", Integer.valueOf(m) });
             }
-            if (!this.mScroller.a(this.mNextX + getScrollX(), 0, i, i, 0, 0, 1000)) {
+            if (!this.mScroller.springBack(this.mNextX + getScrollX(), 0, i, i, 0, 0, 1000)) {
               break label680;
             }
             if (QLog.isColorLevel()) {
@@ -176,7 +175,7 @@ public class ArkHorizontalListView
           i = 0;
           break label418;
           label625:
-          j = ArkAppCenterUtil.sRealDisplayWith - k;
+          j = ArkAppCenterUtil.d - k;
           break label435;
           label634:
           j = k;
@@ -232,7 +231,7 @@ public class ArkHorizontalListView
       if (QLog.isColorLevel()) {
         QLog.d("ArkHorizontalListView", 2, "onTouchEvent updateHeadBorder action=" + (paramMotionEvent.getAction() & 0xFF));
       }
-      ((apza)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this);
+      ((ArkHorizontalListView.RefreshUiCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -242,9 +241,9 @@ public class ArkHorizontalListView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setRefreshCallback(apza paramapza)
+  public void setRefreshCallback(ArkHorizontalListView.RefreshUiCallback paramRefreshUiCallback)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramapza);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramRefreshUiCallback);
   }
 }
 

@@ -99,7 +99,7 @@ public class MiniGamePkg
   
   public String getRootPath(String paramString)
   {
-    if (StringUtil.isEmpty(paramString)) {
+    if (StringUtil.a(paramString)) {
       return "";
     }
     if (this.subPackRoots != null)

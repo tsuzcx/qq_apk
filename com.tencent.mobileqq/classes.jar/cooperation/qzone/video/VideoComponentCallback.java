@@ -1,13 +1,15 @@
 package cooperation.qzone.video;
 
-import alpu;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.takevideo.slideshow.QzoneSlideShowPhotoListManager;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.richmedia.FlowComponentInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -19,11 +21,9 @@ import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import yzm;
-import yzz;
 
 public class VideoComponentCallback
-  implements alpu
+  implements FlowComponentInterface
 {
   public static final int BUSINESS_TYPE = 1;
   public static final String KEY_QZONE_NICKNAME = "nickname";
@@ -128,7 +128,7 @@ public class VideoComponentCallback
     for (paramInt1 = 213;; paramInt1 = 214)
     {
       paramString3.putInt("param.uploadEntrance", paramInt1);
-      paramString3.putInt("param.entranceSource", yzm.a().a());
+      paramString3.putInt("param.entranceSource", QzoneSlideShowPhotoListManager.a().a());
       if (paramInt6 >= 0)
       {
         paramString3.putInt("extra_key_font_id", paramInt6);
@@ -198,8 +198,8 @@ public class VideoComponentCallback
     label293:
     if ("cover_mall_record_video".equals(getRefer()))
     {
-      int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299080);
-      localObject = paramActivity.getString(2131717520);
+      int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299166);
+      localObject = paramActivity.getString(2131718015);
       QQToast.a(paramActivity, (CharSequence)localObject, 0).b(i);
       QLog.i(TAG, 2, "video cover,not support trim," + (String)localObject);
       return;
@@ -332,7 +332,7 @@ public class VideoComponentCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.video.VideoComponentCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bpaf;
-import bpag;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-public class GLTextureView$GLThread
+class GLTextureView$GLThread
   extends Thread
 {
   private int jdField_a_of_type_Int = 0;
-  private bpaf jdField_a_of_type_Bpaf;
+  private GLTextureView.EglHelper jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EglHelper;
   private WeakReference<GLTextureView> jdField_a_of_type_JavaLangRefWeakReference;
   private ArrayList<Runnable> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 0;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = 1;
@@ -46,7 +44,7 @@ public class GLTextureView$GLThread
     if (this.j)
     {
       this.j = false;
-      this.jdField_a_of_type_Bpaf.b();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EglHelper.b();
     }
   }
   
@@ -54,7 +52,7 @@ public class GLTextureView$GLThread
   {
     if (this.i)
     {
-      this.jdField_a_of_type_Bpaf.c();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EglHelper.c();
       this.i = false;
       GLTextureView.a().b(this);
     }
@@ -65,18 +63,18 @@ public class GLTextureView$GLThread
   {
     // Byte code:
     //   0: aload_0
-    //   1: new 67	bpaf
+    //   1: new 69	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper
     //   4: dup
     //   5: aload_0
-    //   6: getfield 48	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   9: invokespecial 87	bpaf:<init>	(Ljava/lang/ref/WeakReference;)V
-    //   12: putfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_Bpaf	Lbpaf;
+    //   6: getfield 50	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   9: invokespecial 89	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper:<init>	(Ljava/lang/ref/WeakReference;)V
+    //   12: putfield 67	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EglHelper	Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper;
     //   15: aload_0
     //   16: iconst_0
-    //   17: putfield 71	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:i	Z
+    //   17: putfield 73	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:i	Z
     //   20: aload_0
     //   21: iconst_0
-    //   22: putfield 63	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
+    //   22: putfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
     //   25: iconst_0
     //   26: istore 10
     //   28: aconst_null
@@ -101,7 +99,7 @@ public class GLTextureView$GLThread
     //   54: istore_2
     //   55: iconst_0
     //   56: istore 4
-    //   58: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   58: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   61: astore 23
     //   63: aload 23
     //   65: monitorenter
@@ -112,18 +110,18 @@ public class GLTextureView$GLThread
     //   74: iload 4
     //   76: istore 14
     //   78: aload_0
-    //   79: getfield 89	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_b_of_type_Boolean	Z
+    //   79: getfield 91	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_b_of_type_Boolean	Z
     //   82: ifeq +34 -> 116
     //   85: aload 23
     //   87: monitorexit
-    //   88: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   88: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   91: astore 21
     //   93: aload 21
     //   95: monitorenter
     //   96: aload_0
-    //   97: invokespecial 91	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
+    //   97: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
     //   100: aload_0
-    //   101: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	()V
+    //   101: invokespecial 95	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	()V
     //   104: aload 21
     //   106: monitorexit
     //   107: return
@@ -133,14 +131,14 @@ public class GLTextureView$GLThread
     //   113: aload 22
     //   115: athrow
     //   116: aload_0
-    //   117: getfield 36	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   120: invokevirtual 96	java/util/ArrayList:isEmpty	()Z
+    //   117: getfield 38	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   120: invokevirtual 98	java/util/ArrayList:isEmpty	()Z
     //   123: ifne +93 -> 216
     //   126: aload_0
-    //   127: getfield 36	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   127: getfield 38	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   130: iconst_0
-    //   131: invokevirtual 100	java/util/ArrayList:remove	(I)Ljava/lang/Object;
-    //   134: checkcast 102	java/lang/Runnable
+    //   131: invokevirtual 102	java/util/ArrayList:remove	(I)Ljava/lang/Object;
+    //   134: checkcast 104	java/lang/Runnable
     //   137: astore 21
     //   139: iload 10
     //   141: istore 7
@@ -163,7 +161,7 @@ public class GLTextureView$GLThread
     //   170: aload 21
     //   172: ifnull +648 -> 820
     //   175: aload 21
-    //   177: invokeinterface 105 1 0
+    //   177: invokeinterface 107 1 0
     //   182: iload 6
     //   184: istore 11
     //   186: aconst_null
@@ -184,31 +182,31 @@ public class GLTextureView$GLThread
     //   211: istore 7
     //   213: goto -155 -> 58
     //   216: aload_0
-    //   217: getfield 57	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:e	Z
+    //   217: getfield 59	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:e	Z
     //   220: aload_0
-    //   221: getfield 107	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:d	Z
+    //   221: getfield 109	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:d	Z
     //   224: if_icmpeq +1055 -> 1279
     //   227: aload_0
-    //   228: getfield 107	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:d	Z
+    //   228: getfield 109	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:d	Z
     //   231: istore 19
     //   233: aload_0
     //   234: aload_0
-    //   235: getfield 107	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:d	Z
-    //   238: putfield 57	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:e	Z
-    //   241: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   244: invokevirtual 112	java/lang/Object:notifyAll	()V
+    //   235: getfield 109	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:d	Z
+    //   238: putfield 59	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:e	Z
+    //   241: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   244: invokevirtual 114	java/lang/Object:notifyAll	()V
     //   247: iload_3
     //   248: istore 4
     //   250: aload_0
-    //   251: getfield 114	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:l	Z
+    //   251: getfield 116	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:l	Z
     //   254: ifeq +19 -> 273
     //   257: aload_0
-    //   258: invokespecial 91	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
+    //   258: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
     //   261: aload_0
-    //   262: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	()V
+    //   262: invokespecial 95	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	()V
     //   265: aload_0
     //   266: iconst_0
-    //   267: putfield 114	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:l	Z
+    //   267: putfield 116	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:l	Z
     //   270: iconst_1
     //   271: istore 4
     //   273: iload 10
@@ -216,27 +214,27 @@ public class GLTextureView$GLThread
     //   277: iload 10
     //   279: ifeq +14 -> 293
     //   282: aload_0
-    //   283: invokespecial 91	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
+    //   283: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
     //   286: aload_0
-    //   287: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	()V
+    //   287: invokespecial 95	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	()V
     //   290: iconst_0
     //   291: istore 7
     //   293: iload 19
     //   295: ifeq +14 -> 309
     //   298: aload_0
-    //   299: getfield 63	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
+    //   299: getfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
     //   302: ifeq +7 -> 309
     //   305: aload_0
-    //   306: invokespecial 91	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
+    //   306: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
     //   309: iload 19
     //   311: ifeq +48 -> 359
     //   314: aload_0
-    //   315: getfield 71	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:i	Z
+    //   315: getfield 73	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:i	Z
     //   318: ifeq +41 -> 359
     //   321: aload_0
-    //   322: getfield 48	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   325: invokevirtual 120	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   328: checkcast 75	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView
+    //   322: getfield 50	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   325: invokevirtual 122	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   328: checkcast 77	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView
     //   331: astore 24
     //   333: aload 24
     //   335: ifnonnull +346 -> 681
@@ -244,63 +242,63 @@ public class GLTextureView$GLThread
     //   339: istore 20
     //   341: iload 20
     //   343: ifeq +12 -> 355
-    //   346: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   349: invokevirtual 122	bpag:a	()Z
+    //   346: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   349: invokevirtual 124	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager:a	()Z
     //   352: ifeq +7 -> 359
     //   355: aload_0
-    //   356: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	()V
+    //   356: invokespecial 95	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	()V
     //   359: iload 19
     //   361: ifeq +19 -> 380
-    //   364: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   367: invokevirtual 124	bpag:b	()Z
+    //   364: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   367: invokevirtual 126	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager:b	()Z
     //   370: ifeq +10 -> 380
     //   373: aload_0
-    //   374: getfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_Bpaf	Lbpaf;
-    //   377: invokevirtual 73	bpaf:c	()V
+    //   374: getfield 67	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EglHelper	Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper;
+    //   377: invokevirtual 75	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper:c	()V
     //   380: aload_0
-    //   381: getfield 59	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	Z
+    //   381: getfield 61	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	Z
     //   384: ifne +71 -> 455
     //   387: aload_0
-    //   388: getfield 126	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:h	Z
+    //   388: getfield 128	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:h	Z
     //   391: ifne +64 -> 455
-    //   394: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   394: invokestatic 133	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   397: ifeq +31 -> 428
-    //   400: ldc 133
+    //   400: ldc 135
     //   402: iconst_2
-    //   403: new 135	java/lang/StringBuilder
+    //   403: new 137	java/lang/StringBuilder
     //   406: dup
-    //   407: invokespecial 136	java/lang/StringBuilder:<init>	()V
-    //   410: ldc 138
-    //   412: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   407: invokespecial 138	java/lang/StringBuilder:<init>	()V
+    //   410: ldc 140
+    //   412: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   415: aload_0
-    //   416: invokevirtual 146	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:getId	()J
-    //   419: invokevirtual 149	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   422: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   425: invokestatic 156	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   416: invokevirtual 148	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:getId	()J
+    //   419: invokevirtual 151	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   422: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   425: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   428: aload_0
-    //   429: getfield 63	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
+    //   429: getfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
     //   432: ifeq +7 -> 439
     //   435: aload_0
-    //   436: invokespecial 91	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
+    //   436: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
     //   439: aload_0
     //   440: iconst_1
-    //   441: putfield 126	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:h	Z
+    //   441: putfield 128	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:h	Z
     //   444: aload_0
     //   445: iconst_0
-    //   446: putfield 61	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	Z
-    //   449: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   452: invokevirtual 112	java/lang/Object:notifyAll	()V
+    //   446: putfield 63	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	Z
+    //   449: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   452: invokevirtual 114	java/lang/Object:notifyAll	()V
     //   455: aload_0
-    //   456: getfield 59	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	Z
+    //   456: getfield 61	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	Z
     //   459: ifeq +21 -> 480
     //   462: aload_0
-    //   463: getfield 126	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:h	Z
+    //   463: getfield 128	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:h	Z
     //   466: ifeq +14 -> 480
     //   469: aload_0
     //   470: iconst_0
-    //   471: putfield 126	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:h	Z
-    //   474: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   477: invokevirtual 112	java/lang/Object:notifyAll	()V
+    //   471: putfield 128	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:h	Z
+    //   474: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   477: invokevirtual 114	java/lang/Object:notifyAll	()V
     //   480: iload 14
     //   482: istore 12
     //   484: iload 5
@@ -313,9 +311,9 @@ public class GLTextureView$GLThread
     //   497: istore 12
     //   499: aload_0
     //   500: iconst_1
-    //   501: putfield 158	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:n	Z
-    //   504: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   507: invokevirtual 112	java/lang/Object:notifyAll	()V
+    //   501: putfield 160	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:n	Z
+    //   504: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   507: invokevirtual 114	java/lang/Object:notifyAll	()V
     //   510: iload 4
     //   512: istore_3
     //   513: iload 6
@@ -327,14 +325,14 @@ public class GLTextureView$GLThread
     //   525: iload 11
     //   527: istore 18
     //   529: aload_0
-    //   530: invokespecial 159	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:b	()Z
+    //   530: invokespecial 161	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:b	()Z
     //   533: ifeq +250 -> 783
     //   536: iload 4
     //   538: istore_3
     //   539: iload 11
     //   541: istore 10
     //   543: aload_0
-    //   544: getfield 71	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:i	Z
+    //   544: getfield 73	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:i	Z
     //   547: ifne +14 -> 561
     //   550: iload 4
     //   552: ifeq +139 -> 691
@@ -343,14 +341,14 @@ public class GLTextureView$GLThread
     //   557: iload 11
     //   559: istore 10
     //   561: aload_0
-    //   562: getfield 71	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:i	Z
+    //   562: getfield 73	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:i	Z
     //   565: ifeq +703 -> 1268
     //   568: aload_0
-    //   569: getfield 63	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
+    //   569: getfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
     //   572: ifne +696 -> 1268
     //   575: aload_0
     //   576: iconst_1
-    //   577: putfield 63	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
+    //   577: putfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
     //   580: iconst_1
     //   581: istore 9
     //   583: iconst_1
@@ -358,18 +356,18 @@ public class GLTextureView$GLThread
     //   586: iconst_1
     //   587: istore 4
     //   589: aload_0
-    //   590: getfield 63	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
+    //   590: getfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:j	Z
     //   593: ifeq +695 -> 1288
     //   596: aload_0
-    //   597: getfield 38	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:o	Z
+    //   597: getfield 40	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:o	Z
     //   600: ifeq +651 -> 1251
     //   603: iconst_1
     //   604: istore_2
     //   605: aload_0
-    //   606: getfield 40	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_Int	I
+    //   606: getfield 42	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_Int	I
     //   609: istore 6
     //   611: aload_0
-    //   612: getfield 42	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_b_of_type_Int	I
+    //   612: getfield 44	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_b_of_type_Int	I
     //   615: istore_1
     //   616: iconst_1
     //   617: istore 8
@@ -377,12 +375,12 @@ public class GLTextureView$GLThread
     //   620: istore 5
     //   622: aload_0
     //   623: iconst_0
-    //   624: putfield 38	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:o	Z
+    //   624: putfield 40	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:o	Z
     //   627: aload_0
     //   628: iconst_0
-    //   629: putfield 44	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:m	Z
-    //   632: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   635: invokevirtual 112	java/lang/Object:notifyAll	()V
+    //   629: putfield 46	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:m	Z
+    //   632: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   635: invokevirtual 114	java/lang/Object:notifyAll	()V
     //   638: iload 4
     //   640: istore 11
     //   642: iload 12
@@ -407,12 +405,12 @@ public class GLTextureView$GLThread
     //   676: istore 8
     //   678: goto -511 -> 167
     //   681: aload 24
-    //   683: invokestatic 162	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Z
+    //   683: invokestatic 164	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Z
     //   686: istore 20
     //   688: goto -347 -> 341
-    //   691: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   691: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   694: aload_0
-    //   695: invokevirtual 165	bpag:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread;)Z
+    //   695: invokevirtual 167	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread;)Z
     //   698: istore 19
     //   700: iload 4
     //   702: istore_3
@@ -421,15 +419,15 @@ public class GLTextureView$GLThread
     //   707: iload 19
     //   709: ifeq -148 -> 561
     //   712: aload_0
-    //   713: getfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_Bpaf	Lbpaf;
-    //   716: invokevirtual 167	bpaf:a	()V
+    //   713: getfield 67	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EglHelper	Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper;
+    //   716: invokevirtual 169	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper:a	()V
     //   719: aload_0
     //   720: iconst_1
-    //   721: putfield 71	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:i	Z
+    //   721: putfield 73	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:i	Z
     //   724: iconst_1
     //   725: istore 10
-    //   727: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   730: invokevirtual 112	java/lang/Object:notifyAll	()V
+    //   727: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   730: invokevirtual 114	java/lang/Object:notifyAll	()V
     //   733: iload 4
     //   735: istore_3
     //   736: goto -175 -> 561
@@ -439,26 +437,26 @@ public class GLTextureView$GLThread
     //   744: aload 21
     //   746: athrow
     //   747: astore 22
-    //   749: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   749: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   752: astore 21
     //   754: aload 21
     //   756: monitorenter
     //   757: aload_0
-    //   758: invokespecial 91	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
+    //   758: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:f	()V
     //   761: aload_0
-    //   762: invokespecial 93	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	()V
+    //   762: invokespecial 95	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	()V
     //   765: aload 21
     //   767: monitorexit
     //   768: aload 22
     //   770: athrow
     //   771: astore 21
-    //   773: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   773: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   776: aload_0
-    //   777: invokevirtual 83	bpag:b	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread;)V
+    //   777: invokevirtual 85	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager:b	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread;)V
     //   780: aload 21
     //   782: athrow
-    //   783: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   786: invokevirtual 170	java/lang/Object:wait	()V
+    //   783: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   786: invokevirtual 172	java/lang/Object:wait	()V
     //   789: iload 12
     //   791: istore 14
     //   793: iload 13
@@ -477,18 +475,18 @@ public class GLTextureView$GLThread
     //   820: iload 9
     //   822: ifeq +426 -> 1248
     //   825: aload_0
-    //   826: getfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_Bpaf	Lbpaf;
-    //   829: invokevirtual 171	bpaf:a	()Z
+    //   826: getfield 67	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EglHelper	Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper;
+    //   829: invokevirtual 173	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper:a	()Z
     //   832: ifeq +325 -> 1157
-    //   835: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   835: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   838: astore 23
     //   840: aload 23
     //   842: monitorenter
     //   843: aload_0
     //   844: iconst_1
-    //   845: putfield 173	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:k	Z
-    //   848: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   851: invokevirtual 112	java/lang/Object:notifyAll	()V
+    //   845: putfield 175	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:k	Z
+    //   848: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   851: invokevirtual 114	java/lang/Object:notifyAll	()V
     //   854: aload 23
     //   856: monitorexit
     //   857: iconst_0
@@ -496,13 +494,13 @@ public class GLTextureView$GLThread
     //   860: iload 8
     //   862: ifeq +383 -> 1245
     //   865: aload_0
-    //   866: getfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_Bpaf	Lbpaf;
-    //   869: invokevirtual 176	bpaf:a	()Ljavax/microedition/khronos/opengles/GL;
-    //   872: checkcast 178	javax/microedition/khronos/opengles/GL10
+    //   866: getfield 67	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EglHelper	Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper;
+    //   869: invokevirtual 178	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper:a	()Ljavax/microedition/khronos/opengles/GL;
+    //   872: checkcast 180	javax/microedition/khronos/opengles/GL10
     //   875: astore 22
-    //   877: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   877: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   880: aload 22
-    //   882: invokevirtual 181	bpag:a	(Ljavax/microedition/khronos/opengles/GL10;)V
+    //   882: invokevirtual 183	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager:a	(Ljavax/microedition/khronos/opengles/GL10;)V
     //   885: iconst_0
     //   886: istore 8
     //   888: iload 10
@@ -510,81 +508,81 @@ public class GLTextureView$GLThread
     //   892: iload 10
     //   894: ifeq +50 -> 944
     //   897: aload_0
-    //   898: getfield 48	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   901: invokevirtual 120	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   904: checkcast 75	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView
+    //   898: getfield 50	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   901: invokevirtual 122	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   904: checkcast 77	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView
     //   907: astore 23
     //   909: aload 23
     //   911: ifnull +396 -> 1307
     //   914: aload 23
-    //   916: invokestatic 184	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
+    //   916: invokestatic 186	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
     //   919: ifnull +388 -> 1307
     //   922: aload 23
-    //   924: invokestatic 184	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
+    //   924: invokestatic 186	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
     //   927: aload 22
     //   929: aload_0
-    //   930: getfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_Bpaf	Lbpaf;
-    //   933: getfield 187	bpaf:a	Ljavax/microedition/khronos/egl/EGLConfig;
-    //   936: invokeinterface 193 3 0
+    //   930: getfield 67	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EglHelper	Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper;
+    //   933: getfield 189	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper:a	Ljavax/microedition/khronos/egl/EGLConfig;
+    //   936: invokeinterface 195 3 0
     //   941: goto +366 -> 1307
     //   944: iload 7
     //   946: istore 10
     //   948: iload 7
     //   950: ifeq +46 -> 996
     //   953: aload_0
-    //   954: getfield 48	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   957: invokevirtual 120	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   960: checkcast 75	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView
+    //   954: getfield 50	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   957: invokevirtual 122	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   960: checkcast 77	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView
     //   963: astore 23
     //   965: aload 23
     //   967: ifnull +346 -> 1313
     //   970: aload 23
-    //   972: invokestatic 184	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
+    //   972: invokestatic 186	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
     //   975: ifnull +338 -> 1313
     //   978: aload 23
-    //   980: invokestatic 184	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
+    //   980: invokestatic 186	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
     //   983: aload 22
     //   985: iload_1
     //   986: iload 4
-    //   988: invokeinterface 197 4 0
+    //   988: invokeinterface 199 4 0
     //   993: goto +320 -> 1313
     //   996: aload_0
-    //   997: getfield 48	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   1000: invokevirtual 120	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   1003: checkcast 75	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView
+    //   997: getfield 50	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   1000: invokevirtual 122	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   1003: checkcast 77	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView
     //   1006: astore 23
     //   1008: aload 23
     //   1010: ifnull +28 -> 1038
     //   1013: aload 23
-    //   1015: invokestatic 184	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
+    //   1015: invokestatic 186	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
     //   1018: ifnull +20 -> 1038
     //   1021: aload 22
     //   1023: ifnull +15 -> 1038
     //   1026: aload 23
-    //   1028: invokestatic 184	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
+    //   1028: invokestatic 186	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
     //   1031: aload 22
-    //   1033: invokeinterface 200 2 0
+    //   1033: invokeinterface 202 2 0
     //   1038: aload_0
-    //   1039: getfield 65	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_Bpaf	Lbpaf;
-    //   1042: invokevirtual 203	bpaf:a	()I
+    //   1039: getfield 67	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EglHelper	Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper;
+    //   1042: invokevirtual 205	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper:a	()I
     //   1045: istore 12
     //   1047: iload 6
     //   1049: istore 7
     //   1051: iload 12
     //   1053: lookupswitch	default:+266->1319, 12288:+62->1115, 12302:+170->1223
     //   1081: <illegal opcode>
-    //   1082: ldc 207
+    //   1082: ldc 209
     //   1084: iload 12
-    //   1086: invokestatic 210	bpaf:a	(Ljava/lang/String;Ljava/lang/String;I)V
-    //   1089: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   1086: invokestatic 212	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$EglHelper:a	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   1089: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   1092: astore 23
     //   1094: aload 23
     //   1096: monitorenter
     //   1097: aload_0
     //   1098: iconst_1
-    //   1099: putfield 61	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	Z
-    //   1102: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   1105: invokevirtual 112	java/lang/Object:notifyAll	()V
+    //   1099: putfield 63	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	Z
+    //   1102: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   1105: invokevirtual 114	java/lang/Object:notifyAll	()V
     //   1108: aload 23
     //   1110: monitorexit
     //   1111: iload 6
@@ -613,18 +611,18 @@ public class GLTextureView$GLThread
     //   1153: monitorexit
     //   1154: aload 21
     //   1156: athrow
-    //   1157: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   1157: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   1160: astore 23
     //   1162: aload 23
     //   1164: monitorenter
     //   1165: aload_0
     //   1166: iconst_1
-    //   1167: putfield 173	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:k	Z
+    //   1167: putfield 175	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:k	Z
     //   1170: aload_0
     //   1171: iconst_1
-    //   1172: putfield 61	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	Z
-    //   1175: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
-    //   1178: invokevirtual 112	java/lang/Object:notifyAll	()V
+    //   1172: putfield 63	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:g	Z
+    //   1175: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
+    //   1178: invokevirtual 114	java/lang/Object:notifyAll	()V
     //   1181: aload 23
     //   1183: monitorexit
     //   1184: iload 6
@@ -723,7 +721,7 @@ public class GLTextureView$GLThread
     //   339	348	20	bool2	boolean
     //   51	137	21	localObject1	Object
     //   739	6	21	localObject2	Object
-    //   752	14	21	localbpag	bpag
+    //   752	14	21	localGLThreadManager	GLTextureView.GLThreadManager
     //   771	10	21	localRuntimeException	java.lang.RuntimeException
     //   1149	6	21	localObject3	Object
     //   1215	6	21	localObject4	Object
@@ -967,31 +965,31 @@ public class GLTextureView$GLThread
   {
     // Byte code:
     //   0: aload_0
-    //   1: new 135	java/lang/StringBuilder
+    //   1: new 137	java/lang/StringBuilder
     //   4: dup
-    //   5: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   5: invokespecial 138	java/lang/StringBuilder:<init>	()V
     //   8: ldc 247
-    //   10: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   13: aload_0
-    //   14: invokevirtual 146	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:getId	()J
-    //   17: invokevirtual 149	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   20: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   14: invokevirtual 148	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:getId	()J
+    //   17: invokevirtual 151	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   20: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   23: invokevirtual 250	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:setName	(Ljava/lang/String;)V
     //   26: aload_0
     //   27: invokespecial 252	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread:h	()V
-    //   30: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   30: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   33: aload_0
-    //   34: invokevirtual 254	bpag:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread;)V
+    //   34: invokevirtual 254	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread;)V
     //   37: return
     //   38: astore_1
-    //   39: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   39: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   42: aload_0
-    //   43: invokevirtual 254	bpag:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread;)V
+    //   43: invokevirtual 254	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread;)V
     //   46: return
     //   47: astore_1
-    //   48: invokestatic 78	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Lbpag;
+    //   48: invokestatic 80	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView:a	()Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager;
     //   51: aload_0
-    //   52: invokevirtual 254	bpag:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread;)V
+    //   52: invokevirtual 254	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThreadManager:a	(Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/GLTextureView$GLThread;)V
     //   55: aload_1
     //   56: athrow
     // Local variable table:
@@ -1007,7 +1005,7 @@ public class GLTextureView$GLThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.GLThread
  * JD-Core Version:    0.7.0.1
  */

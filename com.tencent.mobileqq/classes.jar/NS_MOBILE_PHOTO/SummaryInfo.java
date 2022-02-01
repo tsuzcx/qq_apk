@@ -14,12 +14,12 @@ public final class SummaryInfo
   static CategoryPhoto cache_preview_elements;
   static int cache_type = 0;
   public String categoryid = "";
-  public face_show_info face_show;
-  public label_show_info label_show;
-  public long photo_num;
-  public cell_lbs poi_info;
-  public CategoryPhoto preview_elements;
-  public int type;
+  public face_show_info face_show = null;
+  public label_show_info label_show = null;
+  public long photo_num = 0L;
+  public cell_lbs poi_info = null;
+  public CategoryPhoto preview_elements = null;
+  public int type = 0;
   public String url = "";
   
   static

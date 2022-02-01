@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.filemanageraux.fileviewer.model;
 
-import atxg;
-import auka;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
 
-public class DocsExportFileModel$2
+class DocsExportFileModel$2
   implements Runnable
 {
-  public DocsExportFileModel$2(auka paramauka) {}
+  DocsExportFileModel$2(DocsExportFileModel paramDocsExportFileModel) {}
   
   public void run()
   {
-    if (auka.f(this.this$0) != null) {
-      auka.g(this.this$0).a(50.0F);
+    if (DocsExportFileModel.f(this.this$0) != null) {
+      DocsExportFileModel.g(this.this$0).a(50.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.model.DocsExportFileModel.2
  * JD-Core Version:    0.7.0.1
  */

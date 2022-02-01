@@ -1,0 +1,64 @@
+package com.tencent.imcore.message;
+
+import com.tencent.imcore.message.core.MsgLock;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Lock;
+
+public class MsgPool
+{
+  protected ConcurrentHashMap<String, Lock> a;
+  private ConcurrentHashMap<String, List<MessageRecord>> b;
+  private ConcurrentHashMap<String, List<MessageRecord>> c;
+  
+  public MsgPool()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgPool", 2, "MsgPool() called " + this);
+    }
+    this.c = new ConcurrentHashMap();
+    this.a = new ConcurrentHashMap();
+    this.b = a();
+  }
+  
+  public Map<String, List<MessageRecord>> a()
+  {
+    return this.c;
+  }
+  
+  protected ConcurrentHashMap<String, List<MessageRecord>> a()
+  {
+    return new ConcurrentHashMap();
+  }
+  
+  public Lock a(String paramString)
+  {
+    if (!this.a.containsKey(paramString)) {}
+    synchronized (this.a)
+    {
+      if (!this.a.containsKey(paramString)) {
+        this.a.put(paramString, new MsgLock("MsgPool"));
+      }
+      return (Lock)this.a.get(paramString);
+    }
+  }
+  
+  public Lock a(String paramString, int paramInt)
+  {
+    return a(UinTypeUtil.a(paramString, paramInt));
+  }
+  
+  public ConcurrentHashMap<String, List<MessageRecord>> b()
+  {
+    return this.b;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     com.tencent.imcore.message.MsgPool
+ * JD-Core Version:    0.7.0.1
+ */

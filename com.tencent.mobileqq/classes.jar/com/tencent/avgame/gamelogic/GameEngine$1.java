@@ -1,24 +1,29 @@
 package com.tencent.avgame.gamelogic;
 
-import java.util.List;
-import nfc;
-import nfv;
-import ngl;
+import com.tencent.avgame.gamelogic.data.EngineData;
+import com.tencent.avgame.qav.AVGameBusinessCtrl;
+import com.tencent.avgame.util.AVGamePerfReporter;
 
-public class GameEngine$1
+class GameEngine$1
   implements Runnable
 {
-  public GameEngine$1(nfc paramnfc, nfv paramnfv) {}
+  GameEngine$1(GameEngine paramGameEngine, long paramLong) {}
   
   public void run()
   {
-    List localList = this.a.a();
-    new ngl(this.this$0.a()).a(localList, ".mp3", false);
+    boolean bool = AVGameBusinessCtrl.b().c();
+    AVGamePerfReporter localAVGamePerfReporter = AVGamePerfReporter.a();
+    if (bool) {}
+    for (int i = 1;; i = 2)
+    {
+      localAVGamePerfReporter.a(i, this.this$0.a().a(), this.this$0.a().b(), System.currentTimeMillis() - this.a);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.GameEngine.1
  * JD-Core Version:    0.7.0.1
  */

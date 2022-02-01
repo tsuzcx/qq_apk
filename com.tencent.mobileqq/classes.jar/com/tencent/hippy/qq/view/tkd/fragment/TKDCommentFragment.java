@@ -7,10 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity.SerializableMap;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment.HippyCommentPageListener;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
+import com.tencent.biz.pubaccount.readinjoy.comment.topic.RIJCommentTopicUtil;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebPTSUtils;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaUiDelegate;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.hippy.qq.app.TKDHippyEngine;
 import com.tencent.hippy.qq.fragment.HippyActivityLifecycleDispatcher;
@@ -28,12 +33,8 @@ import kotlin.jvm.JvmStatic;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import pbf;
-import pbq;
-import tjg;
-import tvg;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/hippy/qq/view/tkd/fragment/TKDCommentFragment;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/ViolaFragment;", "Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleOwner;", "()V", "adTag", "", "getAdTag", "()I", "setAdTag", "(I)V", "anchorData", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/AnchorData;", "getAnchorData", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/data/AnchorData;", "setAnchorData", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/data/AnchorData;)V", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "getArticleInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "setArticleInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;)V", "biuType", "getBiuType", "setBiuType", "commentEventListener", "Lcom/tencent/hippy/qq/utils/tkd/TKDCommentDispatcher$HippyCommentEvent;", "getCommentEventListener", "()Lcom/tencent/hippy/qq/utils/tkd/TKDCommentDispatcher$HippyCommentEvent;", "commentState", "getCommentState", "setCommentState", "commentTopGestureLayout", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentTopGestureLayout;", "getCommentTopGestureLayout", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentTopGestureLayout;", "setCommentTopGestureLayout", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentTopGestureLayout;)V", "container", "Landroid/view/ViewGroup;", "getContainer", "()Landroid/view/ViewGroup;", "setContainer", "(Landroid/view/ViewGroup;)V", "contentSrc", "getContentSrc", "setContentSrc", "dispatcher", "Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleDispatcher;", "hippyCommentPageListener", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentListFragment$HippyCommentPageListener;", "getHippyCommentPageListener", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentListFragment$HippyCommentPageListener;", "setHippyCommentPageListener", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentListFragment$HippyCommentPageListener;)V", "isEdit", "", "()Z", "setEdit", "(Z)V", "createHippyQQEngine", "Lcom/tencent/hippy/qq/app/HippyQQEngine;", "moduleName", "", "getDispatcher", "getHippyListView", "Lcom/tencent/mtt/hippy/views/list/HippyListView;", "viewGroup", "getPropsMap", "Lcom/tencent/mtt/hippy/common/HippyMap;", "initAfterVisible", "", "bundle", "Landroid/os/Bundle;", "contentView", "onActivityCreated", "savedInstanceState", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onCreateFragment", "onDestroy", "onDestroyView", "onHippyPageLoad", "isSuccess", "errMsg", "onPause", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "setGestureLayout", "shouldFinishActivity", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/hippy/qq/view/tkd/fragment/TKDCommentFragment;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/ViolaFragment;", "Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleOwner;", "()V", "adTag", "", "getAdTag", "()I", "setAdTag", "(I)V", "anchorData", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/AnchorData;", "getAnchorData", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/data/AnchorData;", "setAnchorData", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/data/AnchorData;)V", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "getArticleInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "setArticleInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;)V", "biuType", "getBiuType", "setBiuType", "commentEventListener", "Lcom/tencent/hippy/qq/utils/tkd/TKDCommentDispatcher$HippyCommentEvent;", "getCommentEventListener", "()Lcom/tencent/hippy/qq/utils/tkd/TKDCommentDispatcher$HippyCommentEvent;", "commentState", "getCommentState", "setCommentState", "commentTopGestureLayout", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentTopGestureLayout;", "getCommentTopGestureLayout", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentTopGestureLayout;", "setCommentTopGestureLayout", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentTopGestureLayout;)V", "container", "Landroid/view/ViewGroup;", "getContainer", "()Landroid/view/ViewGroup;", "setContainer", "(Landroid/view/ViewGroup;)V", "contentSrc", "getContentSrc", "setContentSrc", "dispatcher", "Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleDispatcher;", "hippyCommentPageListener", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentListFragment$HippyCommentPageListener;", "getHippyCommentPageListener", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentListFragment$HippyCommentPageListener;", "setHippyCommentPageListener", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentListFragment$HippyCommentPageListener;)V", "isEdit", "", "()Z", "setEdit", "(Z)V", "createHippyQQEngine", "Lcom/tencent/hippy/qq/app/HippyQQEngine;", "moduleName", "", "getDispatcher", "getHippyListView", "Lcom/tencent/mtt/hippy/views/list/HippyListView;", "viewGroup", "getJsPropsMap", "Lcom/tencent/mtt/hippy/common/HippyMap;", "getPropsMap", "initAfterVisible", "", "bundle", "Landroid/os/Bundle;", "contentView", "onActivityCreated", "savedInstanceState", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onCreateFragment", "onDestroy", "onDestroyView", "onHippyPageLoad", "isSuccess", "errMsg", "onPause", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "setGestureLayout", "shouldFinishActivity", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class TKDCommentFragment
   extends ViolaFragment
   implements HippyActivityLifecycleOwner
@@ -63,7 +64,7 @@ public final class TKDCommentFragment
   private int contentSrc;
   private final HippyActivityLifecycleDispatcher dispatcher = new HippyActivityLifecycleDispatcher();
   @Nullable
-  private pbf hippyCommentPageListener;
+  private ReadInJoyCommentListFragment.HippyCommentPageListener hippyCommentPageListener;
   private boolean isEdit;
   
   static
@@ -178,7 +179,7 @@ public final class TKDCommentFragment
   }
   
   @Nullable
-  public final pbf getHippyCommentPageListener()
+  public final ReadInJoyCommentListFragment.HippyCommentPageListener getHippyCommentPageListener()
   {
     return this.hippyCommentPageListener;
   }
@@ -213,6 +214,12 @@ public final class TKDCommentFragment
   }
   
   @NotNull
+  public final HippyMap getJsPropsMap()
+  {
+    return getPropsMap();
+  }
+  
+  @NotNull
   public HippyMap getPropsMap()
   {
     int j = 0;
@@ -221,7 +228,7 @@ public final class TKDCommentFragment
     Object localObject1;
     if (this.articleInfo != null)
     {
-      localObject1 = pbq.a(this.articleInfo, null);
+      localObject1 = ReadInJoyCommentUtils.a(this.articleInfo, null);
       Object localObject3 = ((Pair)localObject1).first;
       Intrinsics.checkExpressionValueIsNotNull(localObject3, "biuTypeAndAdTag.first");
       this.biuType = ((Number)localObject3).intValue();
@@ -230,13 +237,13 @@ public final class TKDCommentFragment
       this.adTag = ((Number)localObject1).intValue();
       localObject1 = this.articleInfo;
       if (localObject1 == null) {
-        break label334;
+        break label345;
       }
       localObject1 = ((ArticleInfo)localObject1).innerUniqueID;
       localHippyMap.pushString("rowkey", (String)localObject1);
       localObject1 = this.articleInfo;
       if (localObject1 == null) {
-        break label339;
+        break label350;
       }
       localObject1 = Long.valueOf(((ArticleInfo)localObject1).mArticleID);
       label119:
@@ -249,26 +256,27 @@ public final class TKDCommentFragment
         localObject1 = ((AnchorData)localObject3).jdField_a_of_type_JavaLangString;
       }
       localHippyMap.pushString("anchorFirstCommentId", (String)localObject1);
-      localHippyMap.pushDouble("fontScale", tjg.a().floatValue());
+      localHippyMap.pushDouble("fontScale", FastWebPTSUtils.a().floatValue());
       if (!this.isEdit) {
-        break label344;
+        break label355;
       }
       i = 1;
       label232:
       localHippyMap.pushInt("isEdit", i);
+      localHippyMap.pushBoolean("topicSwitch", RIJCommentTopicUtil.a());
       localObject1 = this.anchorData;
       if (localObject1 != null)
       {
         localHippyMap.pushString("anchorSubCommentId", ((AnchorData)localObject1).jdField_b_of_type_JavaLangString);
         if (!((AnchorData)localObject1).jdField_b_of_type_Boolean) {
-          break label349;
+          break label360;
         }
       }
     }
-    label334:
-    label339:
-    label344:
-    label349:
+    label345:
+    label350:
+    label355:
+    label360:
     for (int i = 0;; i = 1)
     {
       localHippyMap.pushInt("defaultCommentType", i);
@@ -290,9 +298,9 @@ public final class TKDCommentFragment
   
   public void initAfterVisible(@Nullable Bundle paramBundle, @Nullable ViewGroup paramViewGroup)
   {
-    tvg localtvg = this.mViolaUiDelegate;
-    if (localtvg != null) {
-      localtvg.a(false);
+    ViolaUiDelegate localViolaUiDelegate = this.mViolaUiDelegate;
+    if (localViolaUiDelegate != null) {
+      localViolaUiDelegate.a(false);
     }
     super.initAfterVisible(paramBundle, paramViewGroup);
     if (paramViewGroup != null) {
@@ -453,9 +461,9 @@ public final class TKDCommentFragment
     }
   }
   
-  public final void setHippyCommentPageListener(@Nullable pbf parampbf)
+  public final void setHippyCommentPageListener(@Nullable ReadInJoyCommentListFragment.HippyCommentPageListener paramHippyCommentPageListener)
   {
-    this.hippyCommentPageListener = parampbf;
+    this.hippyCommentPageListener = paramHippyCommentPageListener;
   }
   
   public boolean shouldFinishActivity()
@@ -465,7 +473,7 @@ public final class TKDCommentFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.fragment.TKDCommentFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import adhm;
-import adhn;
-import adlk;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
@@ -14,15 +10,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
-import anvx;
-import azcl;
-import bgzv;
-import bhbx;
-import bkzi;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.onlinestatus.ReportHelperKt;
+import com.tencent.mobileqq.util.NearbyProfileUtil;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.widget.DispatchActionMoveScrollView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ActionSheet;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -32,17 +28,17 @@ public class AgeSelectionActivity
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int;
-  adlk jdField_a_of_type_Adlk;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bkzi jdField_a_of_type_Bkzi;
+  BirthdayPickHelper jdField_a_of_type_ComTencentMobileqqActivityBirthdayPickHelper;
+  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
   private String jdField_a_of_type_JavaLangString;
   private Calendar jdField_a_of_type_JavaUtilCalendar;
-  public int b;
+  int jdField_b_of_type_Int;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   @Nullable
   private String jdField_b_of_type_JavaLangString;
-  public int c;
-  public int d;
+  int c;
+  int d;
   private int e;
   private int f;
   private int g;
@@ -50,7 +46,7 @@ public class AgeSelectionActivity
   
   public static int a(String paramString)
   {
-    return Arrays.asList(bgzv.c).indexOf(paramString);
+    return Arrays.asList(NearbyProfileUtil.c).indexOf(paramString);
   }
   
   private void a()
@@ -79,8 +75,8 @@ public class AgeSelectionActivity
     if (this.h < 0) {
       this.h = 0;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.h + anvx.a(2131699521));
-    this.jdField_a_of_type_JavaLangString = bhbx.a(paramInt2, paramInt3);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.h + HardCodeUtil.a(2131700099));
+    this.jdField_a_of_type_JavaLangString = Utils.a(paramInt2, paramInt3);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
   
@@ -91,28 +87,28 @@ public class AgeSelectionActivity
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bkzi == null)
+    if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
-      this.jdField_a_of_type_Adlk = new adlk(getBaseContext(), this.jdField_a_of_type_Int, false);
-      this.jdField_a_of_type_Bkzi = bkzi.c(this);
-      this.jdField_a_of_type_Bkzi.e(true);
-      this.jdField_a_of_type_Bkzi.a(this.jdField_a_of_type_Adlk.a(), null);
-      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_Bkzi.findViewById(2131361981);
-      ((DispatchActionMoveScrollView)localObject).dispatchActionMove = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityBirthdayPickHelper = new BirthdayPickHelper(getBaseContext(), this.jdField_a_of_type_Int, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.createMenuSheet(this);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setCloseAutoRead(true);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setActionContentView(this.jdField_a_of_type_ComTencentMobileqqActivityBirthdayPickHelper.a(), null);
+      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131361983);
+      ((DispatchActionMoveScrollView)localObject).a = true;
       ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
       if (Build.VERSION.SDK_INT >= 11)
       {
-        localObject = this.jdField_a_of_type_Bkzi.getWindow();
+        localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet.getWindow();
         if (localObject != null) {
           ((Window)localObject).setFlags(16777216, 16777216);
         }
       }
-      this.jdField_a_of_type_Adlk.a(new adhn(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBirthdayPickHelper.a(new AgeSelectionActivity.2(this));
     }
-    if (!this.jdField_a_of_type_Bkzi.isShowing()) {}
+    if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {}
     try
     {
-      this.jdField_a_of_type_Bkzi.show();
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       return;
     }
     catch (Exception localException) {}
@@ -130,16 +126,16 @@ public class AgeSelectionActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560970);
+    super.setContentView(2131561056);
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("param_launch_from");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362305));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365086));
-    findViewById(2131362309).setOnClickListener(this);
-    findViewById(2131365089).setOnClickListener(this);
-    setTitle(anvx.a(2131699518));
-    setLeftViewName(2131690499);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362333));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365222));
+    findViewById(2131362337).setOnClickListener(this);
+    findViewById(2131365225).setOnClickListener(this);
+    setTitle(HardCodeUtil.a(2131700096));
+    setLeftViewName(2131690601);
     if (a()) {
-      setRightButton(2131692403, new adhm(this));
+      setRightButton(2131692534, new AgeSelectionActivity.1(this));
     }
     this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
     this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
@@ -173,7 +169,7 @@ public class AgeSelectionActivity
     {
       return super.onBackEvent();
       if ("VAL_FROM_STATUS_MSG_TAB".equals(this.jdField_b_of_type_JavaLangString)) {
-        azcl.a("0X800AF46");
+        ReportHelperKt.a("0X800AF46");
       }
     }
   }
@@ -200,7 +196,7 @@ public class AgeSelectionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AgeSelectionActivity
  * JD-Core Version:    0.7.0.1
  */

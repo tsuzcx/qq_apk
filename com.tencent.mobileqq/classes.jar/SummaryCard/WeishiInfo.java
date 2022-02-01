@@ -13,7 +13,7 @@ public final class WeishiInfo
 {
   static ArrayList<WeishiFeed> cache_vecWeishiFeeds;
   public String strSchema = "";
-  public ArrayList<WeishiFeed> vecWeishiFeeds;
+  public ArrayList<WeishiFeed> vecWeishiFeeds = null;
   
   static
   {
@@ -138,7 +138,7 @@ public final class WeishiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.WeishiInfo
  * JD-Core Version:    0.7.0.1
  */

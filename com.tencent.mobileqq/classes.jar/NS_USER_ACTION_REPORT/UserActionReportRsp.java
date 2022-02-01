@@ -9,9 +9,10 @@ public final class UserActionReportRsp
   extends JceStruct
 {
   static ArrayList<String> cache_trace_details = new ArrayList();
-  public int ret_code;
+  public long report_interval = 0L;
+  public int ret_code = 0;
   public String ret_msg = "";
-  public ArrayList<String> trace_details;
+  public ArrayList<String> trace_details = null;
   
   static
   {
@@ -20,11 +21,12 @@ public final class UserActionReportRsp
   
   public UserActionReportRsp() {}
   
-  public UserActionReportRsp(int paramInt, String paramString, ArrayList<String> paramArrayList)
+  public UserActionReportRsp(int paramInt, String paramString, ArrayList<String> paramArrayList, long paramLong)
   {
     this.ret_code = paramInt;
     this.ret_msg = paramString;
     this.trace_details = paramArrayList;
+    this.report_interval = paramLong;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -32,6 +34,7 @@ public final class UserActionReportRsp
     this.ret_code = paramJceInputStream.read(this.ret_code, 0, false);
     this.ret_msg = paramJceInputStream.readString(1, false);
     this.trace_details = ((ArrayList)paramJceInputStream.read(cache_trace_details, 2, false));
+    this.report_interval = paramJceInputStream.read(this.report_interval, 3, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -43,6 +46,7 @@ public final class UserActionReportRsp
     if (this.trace_details != null) {
       paramJceOutputStream.write(this.trace_details, 2);
     }
+    paramJceOutputStream.write(this.report_interval, 3);
   }
 }
 

@@ -11,8 +11,8 @@ public final class QzoneUserInfo
   implements Cloneable
 {
   static Map<String, String> cache_extendInfo = new HashMap();
-  public int eStarState;
-  public Map<String, String> extendInfo;
+  public int eStarState = 0;
+  public Map<String, String> extendInfo = null;
   
   static
   {
@@ -43,7 +43,7 @@ public final class QzoneUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.QzoneUserInfo
  * JD-Core Version:    0.7.0.1
  */

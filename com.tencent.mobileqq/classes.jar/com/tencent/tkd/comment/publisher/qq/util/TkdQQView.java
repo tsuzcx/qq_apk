@@ -21,6 +21,11 @@ public class TkdQQView
     QQPublishCommentManager.getInstance().getViewBridge().bindInput(paramEditText);
   }
   
+  public static void bindTopic(View paramView)
+  {
+    QQPublishCommentManager.getInstance().getViewBridge().bindTopic(paramView);
+  }
+  
   public static void deleteGif()
   {
     QQPublishCommentManager.getInstance().getViewBridge().deleteGif();
@@ -83,7 +88,7 @@ public class TkdQQView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.util.TkdQQView
  * JD-Core Version:    0.7.0.1
  */

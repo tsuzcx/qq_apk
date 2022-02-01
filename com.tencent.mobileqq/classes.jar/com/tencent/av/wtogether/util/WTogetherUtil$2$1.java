@@ -1,6 +1,6 @@
 package com.tencent.av.wtogether.util;
 
-import aaqo;
+import com.tencent.biz.webviewplugin.NewReportPlugin;
 
 class WTogetherUtil$2$1
   implements Runnable
@@ -9,12 +9,12 @@ class WTogetherUtil$2$1
   
   public void run()
   {
-    aaqo.a(this.this$0.a, this.a);
+    NewReportPlugin.a(this.this$0.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.util.WTogetherUtil.2.1
  * JD-Core Version:    0.7.0.1
  */

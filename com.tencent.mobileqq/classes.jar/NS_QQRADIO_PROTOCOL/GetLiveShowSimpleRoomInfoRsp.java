@@ -8,12 +8,12 @@ public final class GetLiveShowSimpleRoomInfoRsp
   extends JceStruct
 {
   static RecordPlayInfo cache_recordPlayInfo = new RecordPlayInfo();
-  public int happychat;
-  public int isRecordVideo;
+  public int happychat = 0;
+  public int isRecordVideo = 0;
   public String multiVideoStreamUrl = "";
-  public RecordPlayInfo recordPlayInfo;
+  public RecordPlayInfo recordPlayInfo = null;
   public String roomName = "";
-  public int roomStatus;
+  public int roomStatus = 0;
   public String roomid = "";
   public String uid = "";
   public String videoRtmpUrl = "";

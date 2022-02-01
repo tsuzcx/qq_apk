@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
+import com.tencent.biz.qqstory.support.logging.SLog;
 import java.io.IOException;
-import ykq;
 
 class ShellCommand
 {
@@ -14,7 +14,7 @@ class ShellCommand
     }
     catch (IOException localIOException)
     {
-      ykq.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
+      SLog.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
     }
     return null;
   }
@@ -35,7 +35,7 @@ class ShellCommand
       }
       catch (InterruptedException localInterruptedException1)
       {
-        ykq.c("Q.qqstory.ffmpeg.FFmpeg", "Interrupt exception", localInterruptedException1);
+        SLog.c("Q.qqstory.ffmpeg.FFmpeg", "Interrupt exception", localInterruptedException1);
         Util.destroyProcess(localProcess);
         localObject2 = localObject3;
         localObject3 = paramArrayOfString;
@@ -52,7 +52,7 @@ class ShellCommand
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.ShellCommand
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public final class tGetMusicInfoReq
   extends JceStruct
 {
   static ArrayList<String> cache_vecSongId = new ArrayList();
-  public int iNeedUrl;
-  public long lUin;
-  public ArrayList<String> vecSongId;
+  public int iNeedUrl = 0;
+  public long lUin = 0L;
+  public ArrayList<String> vecSongId = null;
   
   static
   {

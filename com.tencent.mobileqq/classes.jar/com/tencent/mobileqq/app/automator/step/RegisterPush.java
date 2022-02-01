@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aojb;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -14,8 +13,8 @@ public class RegisterPush
   
   public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getMsgHandler().e();
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.sendRegisterPush();
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getMsgHandler().e();
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.sendRegisterPush();
     return 2;
   }
   
@@ -24,8 +23,8 @@ public class RegisterPush
     if (this.b == 13) {}
     for (this.c = 0;; this.c = 10)
     {
-      this.jdField_a_of_type_MqqObserverAccountObserver = new aojb(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
+      this.jdField_a_of_type_MqqObserverAccountObserver = new RegisterPush.MyAccountObserver(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
       return;
     }
   }
@@ -34,7 +33,7 @@ public class RegisterPush
   {
     if (this.jdField_a_of_type_MqqObserverAccountObserver != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
       this.jdField_a_of_type_MqqObserverAccountObserver = null;
     }
     if ((this.b == 12) && (this.jdField_a_of_type_Int == 6)) {

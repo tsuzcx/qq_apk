@@ -5,13 +5,12 @@ import android.hardware.Camera;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import bbjd;
 import javax.microedition.khronos.opengles.GL10;
 
 public class IdentifierCameraCaptureView
   extends CameraCaptureView
 {
-  public bbjd a;
+  public IdentifierCameraCaptureView.OutPreviewCallback a;
   
   public IdentifierCameraCaptureView(@NonNull Context paramContext)
   {
@@ -36,14 +35,14 @@ public class IdentifierCameraCaptureView
     }
   }
   
-  public void setPreviewCallback(bbjd parambbjd)
+  public void setPreviewCallback(IdentifierCameraCaptureView.OutPreviewCallback paramOutPreviewCallback)
   {
-    this.a = parambbjd;
+    this.a = paramOutPreviewCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.IdentifierCameraCaptureView
  * JD-Core Version:    0.7.0.1
  */

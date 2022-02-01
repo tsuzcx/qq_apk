@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.startup.step;
 
-import aclx;
-import acly;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.QFixApplicationImpl;
+import com.tencent.hotpatch.config.PatchConfig;
+import com.tencent.hotpatch.config.PatchConfigManager;
 import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
 
 class Rdm$1
@@ -13,9 +13,9 @@ class Rdm$1
   
   public void run()
   {
-    aclx localaclx = acly.a(BaseApplicationImpl.sApplication, "dex");
-    if ((localaclx != null) && (localaclx.a(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName))) {
-      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localaclx.b(), 0);
+    PatchConfig localPatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "dex");
+    if ((localPatchConfig != null) && (localPatchConfig.a(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName))) {
+      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localPatchConfig.b(), 0);
     }
     QFixApplicationImpl.a(BaseApplicationImpl.sApplication);
   }

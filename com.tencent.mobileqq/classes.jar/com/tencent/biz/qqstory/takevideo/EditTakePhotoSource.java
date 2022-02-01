@@ -5,12 +5,11 @@ import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import java.io.File;
-import ymd;
 
 public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new ymd();
+  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new EditTakePhotoSource.1();
   public final double a;
   public final int a;
   @NonNull
@@ -19,7 +18,7 @@ public class EditTakePhotoSource
   public final int b;
   public final int c;
   
-  public EditTakePhotoSource(Parcel paramParcel)
+  protected EditTakePhotoSource(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -42,13 +41,29 @@ public class EditTakePhotoSource
     this.c = paramInt3;
     this.jdField_a_of_type_Double = paramDouble1;
     this.jdField_b_of_type_Double = paramDouble2;
-    paramString = checkParam();
+    paramString = b();
     if (paramString != null) {
       throw new IllegalArgumentException(paramString);
     }
   }
   
-  public String checkParam()
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  @NonNull
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.c;
+  }
+  
+  public String b()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return "sourcePath is empty";
@@ -64,22 +79,6 @@ public class EditTakePhotoSource
     return 0;
   }
   
-  public int getHeight()
-  {
-    return this.c;
-  }
-  
-  @NonNull
-  public String getSourcePath()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int getWidth()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
@@ -92,7 +91,7 @@ public class EditTakePhotoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditTakePhotoSource
  * JD-Core Version:    0.7.0.1
  */

@@ -11,10 +11,10 @@ public final class MobileCommConf
   static NewMobileGlobalConf cache_new_mobile_global_conf = new NewMobileGlobalConf();
   static NewMobileUserConf cache_new_mobile_user_conf = new NewMobileUserConf();
   static ArrayList<String> cache_vecAppList = new ArrayList();
-  public int maxScanNum;
-  public NewMobileGlobalConf new_mobile_global_conf;
-  public NewMobileUserConf new_mobile_user_conf;
-  public ArrayList<String> vecAppList;
+  public int maxScanNum = 0;
+  public NewMobileGlobalConf new_mobile_global_conf = null;
+  public NewMobileUserConf new_mobile_user_conf = null;
+  public ArrayList<String> vecAppList = null;
   
   static
   {

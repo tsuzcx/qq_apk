@@ -229,9 +229,9 @@ class f
     Object localObject2;
     label439:
     label469:
+    label497:
     Object localObject4;
-    label520:
-    label535:
+    label512:
     int m;
     for (;;)
     {
@@ -277,7 +277,7 @@ class f
             continue;
           }
           paramBoolean2 = true;
-          break label894;
+          break label871;
           bool1 = paramBoolean1;
           if (paramBoolean1)
           {
@@ -286,7 +286,7 @@ class f
             TbsLog.i("SDKEngine", "isTbsCoreLegal: " + bool1 + "; cost: " + (System.currentTimeMillis() - l));
           }
           if (!bool1) {
-            break label780;
+            break label757;
           }
           paramBoolean1 = this.f;
           if (!paramBoolean1) {
@@ -299,7 +299,7 @@ class f
         bool1 = false;
         continue;
         paramBoolean2 = false;
-        break label894;
+        break label871;
         paramBoolean1 = false;
         continue;
         try
@@ -316,13 +316,13 @@ class f
             paramo.a("read_core_info", (byte)2);
           }
           if (!paramBoolean1) {
-            break label520;
+            break label497;
           }
           localObject3 = new File(TbsShareManager.c(paramContext));
           localObject2 = p.a().q(paramContext);
           localObject1 = TbsShareManager.e(paramContext);
           if (localObject2 != null) {
-            break label908;
+            break label885;
           }
           this.f = false;
           QbSdk.a(paramContext, "SDKEngine::useSystemWebView by error_tbs_core_dexopt_dir null!");
@@ -331,17 +331,13 @@ class f
         {
           TbsLog.e("SDKEngine", "useSystemWebView by exception: " + paramo);
           if (paramo != null) {
-            break label765;
+            break label742;
           }
         }
         TbsCoreLoadStat.getInstance().a(paramContext, 326);
         this.f = false;
         QbSdk.a(paramContext, "SDKEngine::useSystemWebView by exception: " + paramo);
-        paramo = c.a(paramContext);
-        if (this.c != null) {
-          paramo.a(this.c.b());
-        }
-        paramo.a();
+        c.a().a(paramContext);
         this.j = p.s(paramContext);
         this.g = true;
         continue;
@@ -360,23 +356,18 @@ class f
       TbsLog.addLog(996, null, new Object[0]);
       localObject2 = p.a().q(paramContext);
       if (h == 25436) {
-        break label911;
+        break label888;
       }
       if (h != 25437) {
-        break label917;
+        break label894;
       }
-      break label911;
-      label609:
+      break label888;
+      label586:
       if (m == 0) {
-        break label923;
+        break label900;
       }
     }
-    label651:
-    label780:
-    label908:
-    label911:
-    label917:
-    label923:
+    label900:
     for (Object localObject1 = paramContext.getApplicationContext();; localObject1 = paramContext)
     {
       if (localObject2 == null)
@@ -387,9 +378,10 @@ class f
         if (TbsShareManager.getHostCorePathAppDefined() != null)
         {
           localObject2 = TbsShareManager.getHostCorePathAppDefined();
+          label628:
           TbsLog.i("SDKEngine", "SDKEngine init optDir is " + (String)localObject2);
           if (this.d == null) {
-            break label734;
+            break label711;
           }
           this.c = this.d;
           this.c.a(paramContext, (Context)localObject1, ((File)localObject3).getAbsolutePath(), (String)localObject2, (String[])localObject4, QbSdk.d, paramo);
@@ -399,13 +391,14 @@ class f
           this.f = true;
           break;
           localObject2 = ((File)localObject2).getAbsolutePath();
-          break label651;
-          label734:
+          break label628;
+          label711:
           this.c = new v(paramContext, (Context)localObject1, ((File)localObject3).getAbsolutePath(), (String)localObject2, (String[])localObject4, QbSdk.d, paramo);
         }
-        label765:
+        label742:
         TbsCoreLoadStat.getInstance().a(paramContext, 327, paramo);
         break label439;
+        label757:
         paramo = "can_load_x5=" + bool2 + "; is_compatible=" + paramBoolean2;
         TbsLog.e("SDKEngine", "SDKEngine.init canLoadTbs=false; failure: " + paramo);
         if ((QbSdk.a) && (this.f)) {
@@ -418,18 +411,21 @@ class f
       localObject4 = localObject2;
       localObject3 = localObject2;
       localObject2 = localObject4;
-      break label535;
-      label894:
+      break label512;
+      label871:
       if ((!bool2) || (!paramBoolean2)) {
         break label291;
       }
       paramBoolean1 = true;
       break;
-      break label535;
+      label885:
+      break label512;
+      label888:
       m = 1;
-      break label609;
+      break label586;
+      label894:
       m = 0;
-      break label609;
+      break label586;
     }
   }
   
@@ -494,7 +490,7 @@ class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.f
  * JD-Core Version:    0.7.0.1
  */

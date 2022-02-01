@@ -2,29 +2,28 @@ package com.etrump.mixlayout;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import gm;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
 
-public final class VasShieldFont$1
+final class VasShieldFont$1
   implements Runnable
 {
-  public VasShieldFont$1(QQAppInterface paramQQAppInterface, MqqHandler paramMqqHandler) {}
+  VasShieldFont$1(QQAppInterface paramQQAppInterface, MqqHandler paramMqqHandler) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VasShieldFont", 2, "loadDefaultFont: type=" + gm.a);
+      QLog.d("VasShieldFont", 2, "loadDefaultFont: type=" + VasShieldFont.a);
     }
-    if (!gm.a().get())
+    if (!VasShieldFont.a().get())
     {
-      if (gm.b() == null)
+      if (VasShieldFont.b() == null)
       {
-        if (!gm.a()) {
+        if (!VasShieldFont.a()) {
           break label135;
         }
-        gm.c();
-        gm.b();
+        VasShieldFont.c();
+        VasShieldFont.b();
       }
       if (this.jdField_a_of_type_MqqOsMqqHandler != null)
       {
@@ -36,7 +35,7 @@ public final class VasShieldFont$1
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("loadDefaultFont: typeface=");
-      if (gm.b() == null) {
+      if (VasShieldFont.b() == null) {
         break label145;
       }
     }
@@ -45,16 +44,16 @@ public final class VasShieldFont$1
     for (boolean bool = true;; bool = false)
     {
       QLog.d("VasShieldFont", 2, bool);
-      gm.b().set(false);
+      VasShieldFont.b().set(false);
       return;
-      gm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      VasShieldFont.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.etrump.mixlayout.VasShieldFont.1
  * JD-Core Version:    0.7.0.1
  */

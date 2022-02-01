@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.content.Context;
-import bglf;
+import com.tencent.mobileqq.troop.utils.TroopMemberGlobalLevelUtils;
 import mqq.util.WeakReference;
 
 public class TroopChatPie$CheckGlamourPicturesRunnable
@@ -20,12 +20,12 @@ public class TroopChatPie$CheckGlamourPicturesRunnable
     if (localContext == null) {
       return;
     }
-    bglf.a(localContext);
+    TroopMemberGlobalLevelUtils.a(localContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.CheckGlamourPicturesRunnable
  * JD-Core Version:    0.7.0.1
  */

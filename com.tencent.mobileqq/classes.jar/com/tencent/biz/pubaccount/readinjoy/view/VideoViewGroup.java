@@ -11,9 +11,9 @@ import com.tencent.mobileqq.R.styleable;
 public class VideoViewGroup
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private boolean jdField_a_of_type_Boolean = true;
-  private float b;
+  private float b = 0.0F;
   
   public VideoViewGroup(Context paramContext)
   {
@@ -50,7 +50,7 @@ public class VideoViewGroup
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getSize(paramInt1);
     int j = View.MeasureSpec.getSize(paramInt2);
@@ -94,7 +94,7 @@ public class VideoViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup
  * JD-Core Version:    0.7.0.1
  */

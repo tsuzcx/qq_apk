@@ -14,15 +14,15 @@ public class EMEmoticon
   private static final int FLAG_LOAD_EMOTICON_CONCISE = 1;
   private static final int FLAG_LOAD_EMOTICON_DEFAULT = 0;
   private static final String TAG = "HiBoomFont.EMEmoticon";
-  private ETEngine mEngine;
-  public ETFont mFont;
+  private ETEngine mEngine = null;
+  public ETFont mFont = null;
   private int mFrameDelay;
   private int mFrameIndex = -1;
-  private int mFrameNum;
-  private int mHeight;
-  private long mNativeDescriptorHandle;
+  private int mFrameNum = 0;
+  private int mHeight = 0;
+  private long mNativeDescriptorHandle = 0L;
   public String mText;
-  private int mWidth;
+  private int mWidth = 0;
   
   public static void callbackDrawText(int paramInt1, Canvas paramCanvas, Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, int paramInt3, float paramFloat6, float paramFloat7, float paramFloat8, boolean paramBoolean3, int paramInt4, float paramFloat9)
   {
@@ -294,7 +294,7 @@ public class EMEmoticon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.etrump.mixlayout.EMEmoticon
  * JD-Core Version:    0.7.0.1
  */

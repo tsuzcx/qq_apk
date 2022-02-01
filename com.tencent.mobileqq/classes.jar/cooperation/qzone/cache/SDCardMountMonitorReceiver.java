@@ -15,12 +15,12 @@ import java.util.List;
 public class SDCardMountMonitorReceiver
   extends BroadcastReceiver
 {
-  private static SDCardMountMonitorReceiver mInstance;
-  private boolean canWrite;
-  private boolean isMountRead;
-  private boolean isWriteRead;
-  private boolean mIsRegisteReceiver;
-  private boolean mIsSDCardMount;
+  private static SDCardMountMonitorReceiver mInstance = null;
+  private boolean canWrite = false;
+  private boolean isMountRead = false;
+  private boolean isWriteRead = false;
+  private boolean mIsRegisteReceiver = false;
+  private boolean mIsSDCardMount = false;
   private List<SDCardMountMonitorReceiver.SDCardMountStateListener> observers = new ArrayList();
   
   public static SDCardMountMonitorReceiver getInstance()
@@ -168,7 +168,7 @@ public class SDCardMountMonitorReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.cache.SDCardMountMonitorReceiver
  * JD-Core Version:    0.7.0.1
  */

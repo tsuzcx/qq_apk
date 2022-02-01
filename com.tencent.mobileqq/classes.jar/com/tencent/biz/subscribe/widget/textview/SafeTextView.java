@@ -85,7 +85,7 @@ public class SafeTextView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     try
     {
@@ -131,7 +131,7 @@ public class SafeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.SafeTextView
  * JD-Core Version:    0.7.0.1
  */

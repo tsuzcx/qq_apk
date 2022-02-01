@@ -13,10 +13,10 @@ public final class stNuanNuanComment
   static ArrayList<String> cache_vcFirstComments = new ArrayList();
   static ArrayList<String> cache_vcOtherComments;
   public int iPageCount = 5;
-  public int iStatus;
-  public ArrayList<OfficialComment> vcComments;
-  public ArrayList<String> vcFirstComments;
-  public ArrayList<String> vcOtherComments;
+  public int iStatus = 0;
+  public ArrayList<OfficialComment> vcComments = null;
+  public ArrayList<String> vcFirstComments = null;
+  public ArrayList<String> vcOtherComments = null;
   
   static
   {

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.ark.API;
 
-import aptv;
-import beki;
+import com.tencent.mobileqq.together.TogetherUtils;
 import java.util.Map;
 
-public class ArkAppSchemeCenter$QQSchemeHandler$2
+class ArkAppSchemeCenter$QQSchemeHandler$2
   implements Runnable
 {
-  public ArkAppSchemeCenter$QQSchemeHandler$2(aptv paramaptv, Map paramMap1, Map paramMap2) {}
+  ArkAppSchemeCenter$QQSchemeHandler$2(ArkAppSchemeCenter.QQSchemeHandler paramQQSchemeHandler, Map paramMap1, Map paramMap2) {}
   
   public void run()
   {
-    beki.a(4, this.a, this.b);
+    TogetherUtils.a(4, this.a, this.b);
   }
 }
 

@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity.contacts.base.tabs;
 
-import ajjp;
-import ajjs;
-import ajjt;
-import ajju;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Rect;
@@ -14,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.image.ApngImage;
+import com.tencent.mobileqq.activity.contacts.base.HeaderScrollHelper.ScrollableContainer;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -24,18 +21,24 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 
 public abstract class ContactsBaseFragment
   extends ReportV4Fragment
-  implements ajjp, AbsListView.OnScrollListener
+  implements HeaderScrollHelper.ScrollableContainer, AbsListView.OnScrollListener
 {
   public static Rect a;
   private int a;
-  protected ajjt a;
-  public ajju a;
+  protected ContactsBaseFragment.FragmentLifeListener a;
+  public ContactsBaseFragment.RefreshDataListener a;
   public BaseActivity a;
   public QQAppInterface a;
   public boolean a;
   private int b;
   protected View b;
   public boolean b;
+  protected boolean c = false;
+  
+  static
+  {
+    jdField_a_of_type_AndroidGraphicsRect = null;
+  }
   
   public int a()
   {
@@ -51,14 +54,14 @@ public abstract class ContactsBaseFragment
   
   public abstract void a();
   
-  public void a(ajjt paramajjt)
+  public void a(ContactsBaseFragment.FragmentLifeListener paramFragmentLifeListener)
   {
-    this.jdField_a_of_type_Ajjt = paramajjt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$FragmentLifeListener = paramFragmentLifeListener;
   }
   
-  public void a(ajju paramajju)
+  public void a(ContactsBaseFragment.RefreshDataListener paramRefreshDataListener)
   {
-    this.jdField_a_of_type_Ajju = paramajju;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$RefreshDataListener = paramRefreshDataListener;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -77,7 +80,7 @@ public abstract class ContactsBaseFragment
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void ah_();
+  public abstract void ag_();
   
   public int b()
   {
@@ -154,7 +157,7 @@ public abstract class ContactsBaseFragment
     this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
-      paramLayoutInflater.setAccessibilityDelegate(new ajjs(this));
+      paramLayoutInflater.setAccessibilityDelegate(new ContactsBaseFragment.1(this));
     }
     if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
     {
@@ -180,8 +183,8 @@ public abstract class ContactsBaseFragment
     }
     this.jdField_b_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Ajjt != null) {
-      this.jdField_a_of_type_Ajjt.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$FragmentLifeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$FragmentLifeListener.a(this.jdField_a_of_type_Int);
     }
   }
   
@@ -218,7 +221,7 @@ public abstract class ContactsBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment
  * JD-Core Version:    0.7.0.1
  */

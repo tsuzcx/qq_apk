@@ -11,15 +11,15 @@ public final class operation_delugc_req
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
   static Map<String, String> cache_mapEx;
-  public int appid;
-  public Map<Integer, String> busi_param;
+  public int appid = 0;
+  public Map<Integer, String> busi_param = null;
   public String content = "";
-  public int isverified;
-  public Map<String, String> mapEx;
-  public long ownuin;
+  public int isverified = 0;
+  public Map<String, String> mapEx = null;
+  public long ownuin = 0L;
   public String srcId = "";
   public String srcSubid = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

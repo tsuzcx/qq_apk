@@ -3,7 +3,8 @@ package com.tencent.image;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.image.api.ITool;
+import com.tencent.image.api.URLDrawableDepWrap;
 
 public class AudioUtils
 {
@@ -11,9 +12,9 @@ public class AudioUtils
   {
     if (Build.VERSION.SDK_INT >= 8)
     {
-      BaseApplication localBaseApplication = BaseApplication.getContext();
-      if (localBaseApplication != null) {
-        ((AudioManager)localBaseApplication.getSystemService("audio")).abandonAudioFocus(null);
+      Context localContext = URLDrawable.depImp.mTool.getContext();
+      if (localContext != null) {
+        ((AudioManager)localContext.getSystemService("audio")).abandonAudioFocus(null);
       }
     }
   }
@@ -22,9 +23,9 @@ public class AudioUtils
   {
     if (Build.VERSION.SDK_INT >= 8)
     {
-      BaseApplication localBaseApplication = BaseApplication.getContext();
-      if (localBaseApplication != null) {
-        ((AudioManager)localBaseApplication.getSystemService("audio")).requestAudioFocus(null, 3, 2);
+      Context localContext = URLDrawable.depImp.mTool.getContext();
+      if (localContext != null) {
+        ((AudioManager)localContext.getSystemService("audio")).requestAudioFocus(null, 3, 2);
       }
     }
   }

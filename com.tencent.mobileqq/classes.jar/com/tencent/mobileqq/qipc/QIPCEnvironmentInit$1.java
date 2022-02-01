@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.qipc;
 
-import com.tencent.mobileqq.app.ThreadManager;
-import eipc.EIPCThreadEngine;
+import eipc.EIPCModule;
+import eipc.EIPCModuleFactory;
 
 final class QIPCEnvironmentInit$1
-  extends EIPCThreadEngine
+  implements EIPCModuleFactory
 {
-  public void excute(Runnable paramRunnable)
+  public EIPCModule onCreateModule(String paramString)
   {
-    ThreadManager.executeOnSubThread(paramRunnable);
+    return QIPCServerModuleFactory.onCreateModule(paramString);
   }
 }
 

@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class KandianRedDotInfo$DailyFloatingWindowData
   implements Serializable
 {
-  public boolean remove;
+  public boolean remove = false;
   public String rowkey = "";
   public String topicID = "";
-  public int type;
+  public int type = 0;
   public String url = "";
   
   public void clear()
@@ -27,7 +27,7 @@ public class KandianRedDotInfo$DailyFloatingWindowData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo.DailyFloatingWindowData
  * JD-Core Version:    0.7.0.1
  */

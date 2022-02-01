@@ -27,17 +27,21 @@ public abstract interface ITbsReaderEditAtom
   
   public abstract boolean isDocModified();
   
+  public abstract boolean qryFitScreenMode();
+  
   public abstract void revertEdit();
   
   public abstract void saveDoc(String paramString);
   
   public abstract void setDecryptPassWord(String paramString);
   
+  public abstract void setExcelEditBarBottomMargin(int paramInt);
+  
   public abstract void setFindText(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tbs.reader.external.ITbsReaderEditAtom
  * JD-Core Version:    0.7.0.1
  */

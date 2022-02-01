@@ -1,42 +1,41 @@
 package com.tencent.mobileqq.app;
 
-import aoan;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import mqq.util.WeakReference;
-import pvj;
-import uot;
-import uqx;
 
 class PublicAccountHandler$FolderRefreshRunnable
   implements Runnable
 {
   private final WeakReference<QQAppInterface> a;
-  private final WeakReference<aoan> b;
+  private final WeakReference<PublicAccountDataManager> b;
   
-  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, aoan paramaoan)
+  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, PublicAccountDataManager paramPublicAccountDataManager)
   {
     this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramaoan);
+    this.b = new WeakReference(paramPublicAccountDataManager);
   }
   
   public void run()
   {
     Object localObject = (QQAppInterface)this.a.get();
-    aoan localaoan = (aoan)this.b.get();
-    if ((localObject != null) && (localaoan != null))
+    PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)this.b.get();
+    if ((localObject != null) && (localPublicAccountDataManager != null))
     {
-      uqx.a().a((QQAppInterface)localObject, localaoan.a());
-      uot.a().c((QQAppInterface)localObject);
-      uqx.a().g((QQAppInterface)localObject);
-      localObject = pvj.a();
+      TroopBarAssistantManager.a().a((QQAppInterface)localObject, localPublicAccountDataManager.a());
+      ServiceAccountFolderManager.a().c((QQAppInterface)localObject);
+      TroopBarAssistantManager.a().g((QQAppInterface)localObject);
+      localObject = ReadInJoyLogicEngine.a();
       if (localObject != null) {
-        ((pvj)localObject).e();
+        ((ReadInJoyLogicEngine)localObject).e();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PublicAccountHandler.FolderRefreshRunnable
  * JD-Core Version:    0.7.0.1
  */

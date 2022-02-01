@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.teamwork.spread;
 
 import android.text.TextUtils;
-import bedv;
-import bedy;
-import beeb;
-import beed;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.qphone.base.util.QLog;
 
-public class DataLineMessageSpreadManager$1
+class DataLineMessageSpreadManager$1
   implements Runnable
 {
-  public DataLineMessageSpreadManager$1(beed parambeed, DataLineMsgRecord paramDataLineMsgRecord) {}
+  DataLineMessageSpreadManager$1(DataLineMessageSpreadManager paramDataLineMessageSpreadManager, DataLineMsgRecord paramDataLineMsgRecord) {}
   
   public void run()
   {
@@ -19,7 +15,7 @@ public class DataLineMessageSpreadManager$1
     if (QLog.isDebugVersion()) {
       QLog.i("DataLineMessageSpreadManager", 1, "SubThread Process Start");
     }
-    if (!beed.a(this.this$0, this.a)) {
+    if (!DataLineMessageSpreadManager.a(this.this$0, this.a)) {
       if (QLog.isColorLevel()) {
         QLog.i("DataLineMessageSpreadManager", 1, "config return false!");
       }
@@ -46,21 +42,21 @@ public class DataLineMessageSpreadManager$1
             if (QLog.isDebugVersion()) {
               QLog.i("DataLineMessageSpreadManager", 1, "message is MessageForFile");
             }
-            beed.a(this.this$0, new bedy(beed.a(this.this$0), this.a, beed.a(this.this$0)));
-            if (beed.a(this.this$0).a()) {
+            DataLineMessageSpreadManager.a(this.this$0, new BuddyFileDataLineMsgTips(DataLineMessageSpreadManager.a(this.this$0), this.a, DataLineMessageSpreadManager.a(this.this$0)));
+            if (DataLineMessageSpreadManager.a(this.this$0).a()) {
               break label179;
             }
           } while (!QLog.isColorLevel());
-          QLog.i("DataLineMessageSpreadManager", 1, "file[" + beed.a(this.this$0).a() + "] is not support!");
+          QLog.i("DataLineMessageSpreadManager", 1, "file[" + DataLineMessageSpreadManager.a(this.this$0).a() + "] is not support!");
           return;
         } while (!QLog.isDebugVersion());
         QLog.i("DataLineMessageSpreadManager", 1, "message is unknown");
         return;
-        str2 = beed.a(this.this$0).a();
+        str2 = DataLineMessageSpreadManager.a(this.this$0).a();
         if (QLog.isColorLevel()) {
           QLog.i("DataLineMessageSpreadManager", 1, "recv new File name is :" + str2);
         }
-        arrayOfString = beed.a(this.this$0).a(beed.a(this.this$0));
+        arrayOfString = DataLineMessageSpreadManager.a(this.this$0).a(DataLineMessageSpreadManager.a(this.this$0));
         str1 = "";
         if (arrayOfString.length != 0) {
           break;
@@ -73,14 +69,14 @@ public class DataLineMessageSpreadManager$1
         if (QLog.isColorLevel()) {
           QLog.i("DataLineMessageSpreadManager", 1, "keyWord[" + (String)localObject + "] find!");
         }
-        str1 = beed.a(this.this$0).a(beed.a(this.this$0));
-        localObject = beed.a(this.this$0).b(beed.a(this.this$0));
+        str1 = DataLineMessageSpreadManager.a(this.this$0).a(DataLineMessageSpreadManager.a(this.this$0));
+        localObject = DataLineMessageSpreadManager.a(this.this$0).b(DataLineMessageSpreadManager.a(this.this$0));
         if ((TextUtils.isEmpty(str1)) && (QLog.isColorLevel())) {
           QLog.i("DataLineMessageSpreadManager", 1, "tips is null! return, tips[" + str1 + "], link[" + (String)localObject + "]");
         }
         str1 = str1 + "。" + (String)localObject;
-      } while (!(beed.a(this.this$0) instanceof bedy));
-      beed.a(this.this$0, this.a, str1, (String)localObject, "keyword", null);
+      } while (!(DataLineMessageSpreadManager.a(this.this$0) instanceof BuddyFileDataLineMsgTips));
+      DataLineMessageSpreadManager.a(this.this$0, this.a, str1, (String)localObject, "keyword", null);
       return;
       if (QLog.isDebugVersion())
       {

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ModGroupName
   extends JceStruct
 {
-  public long dwGroupID;
+  public long dwGroupID = 0L;
   public String strGroupName = "";
   
   public ModGroupName() {}

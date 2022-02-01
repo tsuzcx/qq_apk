@@ -12,13 +12,13 @@ public final class event_photo
   static Map<String, String> cache_ext;
   static lbs_info cache_lbs = new lbs_info();
   static byte[] cache_longTag;
-  public Map<String, String> ext;
-  public lbs_info lbs;
-  public byte[] longTag;
-  public long modifytime;
+  public Map<String, String> ext = null;
+  public lbs_info lbs = null;
+  public byte[] longTag = null;
+  public long modifytime = 0L;
   public String picid = "";
-  public long shoottime;
-  public long tag;
+  public long shoottime = 0L;
+  public long tag = 0L;
   
   static
   {

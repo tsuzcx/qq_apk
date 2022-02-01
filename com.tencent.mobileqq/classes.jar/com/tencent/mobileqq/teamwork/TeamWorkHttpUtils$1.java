@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.teamwork;
 
-import becu;
 import java.util.TimerTask;
 
-public final class TeamWorkHttpUtils$1
+final class TeamWorkHttpUtils$1
   extends TimerTask
 {
-  public TeamWorkHttpUtils$1(int[] paramArrayOfInt, becu parambecu) {}
+  TeamWorkHttpUtils$1(int[] paramArrayOfInt, TenDocOCRExportHandler paramTenDocOCRExportHandler) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_ArrayOfInt[0] >= 99)
     {
-      this.jdField_a_of_type_Becu.notifyUI(4, true, new Object[] { Integer.valueOf(99) });
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkTenDocOCRExportHandler.notifyUI(4, true, new Object[] { Integer.valueOf(99) });
       return;
     }
     int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
     arrayOfInt[0] += 2;
-    this.jdField_a_of_type_Becu.notifyUI(4, true, new Object[] { Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[0]) });
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkTenDocOCRExportHandler.notifyUI(4, true, new Object[] { Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[0]) });
   }
 }
 

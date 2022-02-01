@@ -13,7 +13,7 @@ class RequestServer$2
   
   public boolean onReply(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    QMLog.w("RequestServer", "recvData " + this.val$request + ",retCode = " + paramInt);
+    QMLog.w("RequestServer", "useHttpDirectly recvData " + this.val$request + ",retCode = " + paramInt);
     if (paramInt == 0) {
       if (this.val$result != null)
       {

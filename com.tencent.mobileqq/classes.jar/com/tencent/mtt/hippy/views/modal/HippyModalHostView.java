@@ -55,12 +55,13 @@ public class HippyModalHostView
   
   private void dismiss()
   {
-    if (this.mDialog != null)
-    {
-      this.mDialog.dismiss();
-      this.mDialog = null;
-      ((ViewGroup)this.mHostView.getParent()).removeViewAt(0);
+    if (isActivityFinishing()) {}
+    while (this.mDialog == null) {
+      return;
     }
+    this.mDialog.dismiss();
+    this.mDialog = null;
+    ((ViewGroup)this.mHostView.getParent()).removeViewAt(0);
   }
   
   private int getScreenHeight()
@@ -113,16 +114,21 @@ public class HippyModalHostView
     }
   }
   
-  private void updateProperties()
+  private boolean isActivityFinishing()
   {
     Object localObject = (HippyInstanceContext)getContext();
-    if ((localObject != null) && ((((HippyInstanceContext)localObject).getBaseContext() instanceof Activity)))
-    {
-      localObject = (Activity)((HippyInstanceContext)localObject).getBaseContext();
-      if ((localObject != null) && (((Activity)localObject).isFinishing())) {
-        return;
-      }
+    if (localObject == null) {
+      return true;
     }
+    localObject = ((HippyInstanceContext)localObject).getBaseContext();
+    if ((localObject == null) || (!(localObject instanceof Activity))) {
+      return true;
+    }
+    return ((Activity)localObject).isFinishing();
+  }
+  
+  private void updateProperties()
+  {
     if (this.mTransparent)
     {
       this.mDialog.getWindow().clearFlags(2);
@@ -318,52 +324,52 @@ public class HippyModalHostView
   
   protected void showOrUpdate()
   {
-    if (this.mDialog != null)
-    {
-      if (this.mPropertyRequiresNewDialog) {
-        dismiss();
-      }
-    }
-    else
-    {
-      this.mPropertyRequiresNewDialog = false;
-      this.mAniType = 0;
-      if ((TextUtils.isEmpty(this.mAnimationType)) || (!this.mAnimationType.equals("fade"))) {
-        break label213;
-      }
-      this.mAniType = 1;
-      this.mDialog = createDialog(getContext());
-      this.mContentView = createContentView(this.mHostView);
-      this.mDialog.setContentView(this.mContentView);
-      updateProperties();
-      if ((this.mDialog != null) && (this.mDialog.getWindow() != null) && (this.mEnterImmersionStatusBar)) {
-        setDialogBar(this.mStatusBarTextDarkColor);
-      }
-      this.mDialog.setOnShowListener(new HippyModalHostView.1(this));
-      this.mDialog.setOnDismissListener(new HippyModalHostView.2(this));
-      this.mDialog.setOnKeyListener(new HippyModalHostView.3(this));
-      this.mDialog.getWindow().setSoftInputMode(16);
-      this.mDialog.show();
-      if (this.mAniType != 1) {
-        break label244;
-      }
-      this.mContentView.setAlpha(0.0F);
-    }
-    label213:
-    label244:
+    if (isActivityFinishing()) {}
+    label221:
     int i;
     do
     {
       do
       {
         return;
-        updateProperties();
-        return;
-        if ((TextUtils.isEmpty(this.mAnimationType)) || (!this.mAnimationType.equals("slide"))) {
-          break;
+        if (this.mDialog != null)
+        {
+          if (this.mPropertyRequiresNewDialog) {
+            dismiss();
+          }
         }
-        this.mAniType = 2;
-        break;
+        else
+        {
+          this.mPropertyRequiresNewDialog = false;
+          this.mAniType = 0;
+          if ((TextUtils.isEmpty(this.mAnimationType)) || (!this.mAnimationType.equals("fade"))) {
+            break label221;
+          }
+        }
+        for (this.mAniType = 1;; this.mAniType = 2) {
+          do
+          {
+            this.mDialog = createDialog(getContext());
+            this.mContentView = createContentView(this.mHostView);
+            this.mDialog.setContentView(this.mContentView);
+            updateProperties();
+            if ((this.mDialog != null) && (this.mDialog.getWindow() != null) && (this.mEnterImmersionStatusBar)) {
+              setDialogBar(this.mStatusBarTextDarkColor);
+            }
+            this.mDialog.setOnShowListener(new HippyModalHostView.1(this));
+            this.mDialog.setOnDismissListener(new HippyModalHostView.2(this));
+            this.mDialog.setOnKeyListener(new HippyModalHostView.3(this));
+            this.mDialog.getWindow().setSoftInputMode(16);
+            this.mDialog.show();
+            if (this.mAniType != 1) {
+              break;
+            }
+            this.mContentView.setAlpha(0.0F);
+            return;
+            updateProperties();
+            return;
+          } while ((TextUtils.isEmpty(this.mAnimationType)) || (!this.mAnimationType.equals("slide")));
+        }
       } while (this.mAniType != 2);
       i = getScreenHeight();
     } while (i == -1);
@@ -372,7 +378,7 @@ public class HippyModalHostView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.modal.HippyModalHostView
  * JD-Core Version:    0.7.0.1
  */

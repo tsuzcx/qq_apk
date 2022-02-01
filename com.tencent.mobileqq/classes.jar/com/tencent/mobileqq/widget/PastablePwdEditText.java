@@ -24,7 +24,12 @@ public class PastablePwdEditText
     setClearButtonVisible(false);
   }
   
-  protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  public void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
   }
@@ -37,7 +42,7 @@ public class PastablePwdEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PastablePwdEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import mqq.app.MobileQQ;
 
 class QQAppInterface$16
   implements Runnable
@@ -9,21 +12,15 @@ class QQAppInterface$16
   
   public void run()
   {
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.this$0.getApp()).edit();
+    localEditor.putString("LastScreenShotUri", "");
+    localEditor.commit();
     try
     {
-      QQAppInterface.access$3000(this.this$0).unregisterReceiver(QQAppInterface.access$2900(this.this$0));
-      try
-      {
-        label17:
-        QQAppInterface.access$3100(this.this$0).unregisterReceiver(QQAppInterface.access$1500(this.this$0));
-        return;
-      }
-      catch (Exception localException1) {}
+      QQAppInterface.access$2700(this.this$0).unregisterReceiver(QQAppInterface.access$2600(this.this$0));
+      return;
     }
-    catch (Exception localException2)
-    {
-      break label17;
-    }
+    catch (Exception localException) {}
   }
 }
 

@@ -7,8 +7,6 @@ import android.widget.LinearLayout;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mil;
-import min;
 
 public abstract class QavListItemBase
   extends LinearLayout
@@ -16,8 +14,8 @@ public abstract class QavListItemBase
 {
   protected int a;
   Context jdField_a_of_type_AndroidContentContext;
+  QavListItemBase.IClickCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback;
   final String jdField_a_of_type_JavaLangString;
-  mil jdField_a_of_type_Mil;
   
   public QavListItemBase(Context paramContext)
   {
@@ -35,25 +33,25 @@ public abstract class QavListItemBase
   
   public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(int paramInt, mil parammil)
+  public void a(int paramInt, QavListItemBase.IClickCallback paramIClickCallback)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Mil = parammil;
+    this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback = paramIClickCallback;
   }
   
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, min parammin, mil parammil);
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, QavListItemBase.ItemInfo paramItemInfo, QavListItemBase.IClickCallback paramIClickCallback);
   
-  public void a(min parammin, int paramInt) {}
+  public void a(QavListItemBase.ItemInfo paramItemInfo, int paramInt) {}
   
   public abstract void b(int paramInt1, int paramInt2);
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Mil != null)
+    if (this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback != null)
     {
       long l = AudioHelper.b();
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onClick, seq[" + l + "], mPosition[" + this.jdField_a_of_type_Int + "]");
-      this.jdField_a_of_type_Mil.a(l, this.jdField_a_of_type_Int, this);
+      this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback.a(l, this.jdField_a_of_type_Int, this);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -62,7 +60,7 @@ public abstract class QavListItemBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.QavListItemBase
  * JD-Core Version:    0.7.0.1
  */

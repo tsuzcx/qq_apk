@@ -7,8 +7,8 @@ import NS_MINI_REPORT.REPORT.StDcReportReq;
 import NS_MINI_REPORT.REPORT.StThirdDcReportReq;
 import android.os.Handler;
 import android.os.HandlerThread;
-import bgzr;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
+import com.tencent.mobileqq.util.JSONUtils;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class MiniProgramReporter
   private List<APP_REPORT_TRANSFER.SingleDcData> launchDcDataList = new ArrayList();
   private Map<String, String> launchedMiniAppMap = new HashMap();
   private Handler reportHandler;
-  private boolean reportLaunchNeedflush;
+  private boolean reportLaunchNeedflush = false;
   private List<APP_REPORT_TRANSFER.SingleDcData> singleDcDataListPool = new ArrayList();
   private List<REPORT.SingleDcData> subscribeDcDataListPool = new ArrayList();
   private List<REPORT.SingleDcData> thirdPartyDcDataListPool = new ArrayList();
@@ -409,7 +409,7 @@ public class MiniProgramReporter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramSingleDcData != null) {
-      localStringBuilder.append(bgzr.a(paramSingleDcData));
+      localStringBuilder.append(JSONUtils.a(paramSingleDcData));
     }
     return localStringBuilder.toString();
   }
@@ -418,7 +418,7 @@ public class MiniProgramReporter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramSingleDcData != null) {
-      localStringBuilder.append(bgzr.a(paramSingleDcData));
+      localStringBuilder.append(JSONUtils.a(paramSingleDcData));
     }
     return localStringBuilder.toString();
   }

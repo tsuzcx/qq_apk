@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Bundle;
-import bhce;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.File;
 
-public class AntiFraudConfigFileUtil$4
+class AntiFraudConfigFileUtil$4
   implements Runnable
 {
-  public AntiFraudConfigFileUtil$4(bhce parambhce, String paramString1, String paramString2, String paramString3) {}
+  AntiFraudConfigFileUtil$4(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
@@ -23,7 +22,7 @@ public class AntiFraudConfigFileUtil$4
     {
       String str2 = SecUtil.getFileMd5(((File)localObject).getAbsolutePath());
       if (!this.c.equalsIgnoreCase(str2)) {
-        bhce.b(this.this$0).putInt(this.c, 2);
+        AntiFraudConfigFileUtil.b(this.this$0).putInt(this.c, 2);
       }
     }
     else
@@ -32,13 +31,13 @@ public class AntiFraudConfigFileUtil$4
     }
     if (((File)localObject).renameTo(localFile))
     {
-      bhce.b(this.this$0).putInt(this.c, 3);
+      AntiFraudConfigFileUtil.b(this.this$0).putInt(this.c, 3);
       this.this$0.a(this.a, System.currentTimeMillis());
       this.this$0.a(this.a, this.c);
-      bhce.b(this.this$0, str1);
+      AntiFraudConfigFileUtil.b(this.this$0, str1);
       return;
     }
-    bhce.b(this.this$0).putInt(this.c, 2);
+    AntiFraudConfigFileUtil.b(this.this$0).putInt(this.c, 2);
     ((File)localObject).delete();
   }
 }

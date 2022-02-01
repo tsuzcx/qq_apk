@@ -2,12 +2,6 @@ package com.tencent.mobileqq.richmedia.conn;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import bbju;
-import bbjv;
-import bbjw;
-import bbjx;
-import bbjy;
-import bbjz;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 import com.tencent.qphone.base.util.QLog;
@@ -18,21 +12,21 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class LiteTcpConnection
-  implements bbjw
+  implements IConnection
 {
   private int jdField_a_of_type_Int;
   public long a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private bbju jdField_a_of_type_Bbju;
-  private bbjv jdField_a_of_type_Bbjv;
-  private bbjx jdField_a_of_type_Bbjx;
-  private bbjy jdField_a_of_type_Bbjy;
-  private bbjz jdField_a_of_type_Bbjz = new bbjz();
+  private ConnManager jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager;
+  private HostInfo jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo;
+  private IConnectionListener jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnectionListener;
+  private LiteTcpConnection.ConnWorker jdField_a_of_type_ComTencentMobileqqRichmediaConnLiteTcpConnection$ConnWorker;
   private LiteTcpConnection.ReadRunnable jdField_a_of_type_ComTencentMobileqqRichmediaConnLiteTcpConnection$ReadRunnable;
-  private MsfSocketInputBuffer jdField_a_of_type_ComTencentQphoneBaseUtilMsfSocketInputBuffer;
+  private SubTitleProtocoDataCodec jdField_a_of_type_ComTencentMobileqqRichmediaConnSubTitleProtocoDataCodec = new SubTitleProtocoDataCodec();
+  private MsfSocketInputBuffer jdField_a_of_type_ComTencentQphoneBaseUtilMsfSocketInputBuffer = null;
   private OutputStream jdField_a_of_type_JavaIoOutputStream;
-  private InetSocketAddress jdField_a_of_type_JavaNetInetSocketAddress;
+  private InetSocketAddress jdField_a_of_type_JavaNetInetSocketAddress = null;
   private Socket jdField_a_of_type_JavaNetSocket;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock(true);
@@ -40,169 +34,170 @@ public class LiteTcpConnection
   private long jdField_b_of_type_Long;
   private HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
   private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private int jdField_c_of_type_Int;
+  private int jdField_c_of_type_Int = 0;
   private AtomicBoolean jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private AtomicBoolean d = new AtomicBoolean(false);
   
-  public LiteTcpConnection(bbju parambbju, long paramLong, bbjv parambbjv, int paramInt1, int paramInt2)
+  public LiteTcpConnection(ConnManager paramConnManager, long paramLong, HostInfo paramHostInfo, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Bbju = parambbju;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager = paramConnManager;
     this.jdField_b_of_type_Int = 32768;
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bbjv = parambbjv;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo = paramHostInfo;
     this.jdField_c_of_type_Int = paramInt1;
     this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("SubTitle-CONN", 0);
   }
   
   /* Error */
-  private int a(bbjv parambbjv)
+  private int a(HostInfo paramHostInfo)
   {
     // Byte code:
-    //   0: ldc 85
+    //   0: ldc 91
     //   2: iconst_1
-    //   3: new 87	java/lang/StringBuilder
+    //   3: new 93	java/lang/StringBuilder
     //   6: dup
-    //   7: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   10: ldc 90
-    //   12: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7: invokespecial 94	java/lang/StringBuilder:<init>	()V
+    //   10: ldc 96
+    //   12: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: aload_1
-    //   16: getfield 99	bbjv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   19: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: ldc 101
-    //   24: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: getfield 105	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   19: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: ldc 107
+    //   24: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: aload_1
-    //   28: getfield 102	bbjv:jdField_a_of_type_Int	I
-    //   31: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   34: ldc 107
-    //   36: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: getfield 108	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_Int	I
+    //   31: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   34: ldc 113
+    //   36: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: aload_0
-    //   40: getfield 63	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
-    //   43: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 119	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   40: getfield 71	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
+    //   43: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   52: aload_0
     //   53: getfield 45	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   56: invokevirtual 123	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   56: invokevirtual 129	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   59: ifne +13 -> 72
     //   62: aload_0
     //   63: getfield 43	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   66: invokevirtual 123	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   66: invokevirtual 129	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   69: ifeq +26 -> 95
     //   72: aload_0
     //   73: getfield 45	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   76: invokevirtual 123	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   76: invokevirtual 129	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   79: ifeq +16 -> 95
     //   82: aload_0
     //   83: getfield 45	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   86: iconst_0
-    //   87: invokevirtual 126	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   87: invokevirtual 132	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   90: aload_0
     //   91: iconst_2
-    //   92: invokespecial 129	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:a	(I)V
+    //   92: invokespecial 135	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:a	(I)V
     //   95: bipush 14
     //   97: istore_2
-    //   98: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   98: invokestatic 141	android/os/SystemClock:uptimeMillis	()J
     //   101: lstore 8
-    //   103: ldc2_w 136
+    //   103: ldc2_w 142
     //   106: lstore 6
     //   108: aload_0
     //   109: getfield 38	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   112: ldc2_w 138
-    //   115: getstatic 145	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   118: invokevirtual 149	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
+    //   112: ldc2_w 144
+    //   115: getstatic 151	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   118: invokevirtual 155	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
     //   121: istore 10
     //   123: iload 10
     //   125: ifeq +945 -> 1070
     //   128: lload 6
     //   130: lstore 4
     //   132: aload_0
-    //   133: new 151	java/net/InetSocketAddress
+    //   133: new 157	java/net/InetSocketAddress
     //   136: dup
     //   137: aload_1
-    //   138: getfield 99	bbjv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   138: getfield 105	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   141: aload_1
-    //   142: getfield 102	bbjv:jdField_a_of_type_Int	I
-    //   145: invokespecial 154	java/net/InetSocketAddress:<init>	(Ljava/lang/String;I)V
-    //   148: putfield 156	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetInetSocketAddress	Ljava/net/InetSocketAddress;
+    //   142: getfield 108	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_Int	I
+    //   145: invokespecial 160	java/net/InetSocketAddress:<init>	(Ljava/lang/String;I)V
+    //   148: putfield 47	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetInetSocketAddress	Ljava/net/InetSocketAddress;
     //   151: lload 6
     //   153: lstore 4
     //   155: aload_0
     //   156: getfield 43	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   159: iconst_0
-    //   160: invokevirtual 126	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   160: invokevirtual 132	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   163: lload 6
     //   165: lstore 4
     //   167: aload_0
-    //   168: new 158	java/net/Socket
+    //   168: new 162	java/net/Socket
     //   171: dup
-    //   172: invokespecial 159	java/net/Socket:<init>	()V
-    //   175: putfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   172: invokespecial 163	java/net/Socket:<init>	()V
+    //   175: putfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   178: lload 6
     //   180: lstore 4
     //   182: aload_0
-    //   183: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   183: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   186: iconst_1
-    //   187: invokevirtual 164	java/net/Socket:setKeepAlive	(Z)V
+    //   187: invokevirtual 168	java/net/Socket:setKeepAlive	(Z)V
     //   190: lload 6
     //   192: lstore 4
     //   194: aload_0
-    //   195: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   195: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   198: iconst_1
-    //   199: invokevirtual 167	java/net/Socket:setTcpNoDelay	(Z)V
+    //   199: invokevirtual 171	java/net/Socket:setTcpNoDelay	(Z)V
     //   202: lload 6
     //   204: lstore 4
     //   206: aload_0
-    //   207: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   207: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   210: aload_0
-    //   211: getfield 61	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Int	I
-    //   214: invokevirtual 170	java/net/Socket:setSoTimeout	(I)V
+    //   211: getfield 69	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Int	I
+    //   214: invokevirtual 174	java/net/Socket:setSoTimeout	(I)V
     //   217: lload 6
     //   219: lstore 4
     //   221: aload_0
-    //   222: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
-    //   225: ldc 171
-    //   227: invokevirtual 174	java/net/Socket:setSendBufferSize	(I)V
+    //   222: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   225: ldc 175
+    //   227: invokevirtual 178	java/net/Socket:setSendBufferSize	(I)V
     //   230: lload 6
     //   232: lstore 4
-    //   234: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   234: invokestatic 141	android/os/SystemClock:uptimeMillis	()J
     //   237: lstore 6
     //   239: lload 6
     //   241: lstore 4
     //   243: aload_0
-    //   244: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   244: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   247: aload_0
-    //   248: getfield 156	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetInetSocketAddress	Ljava/net/InetSocketAddress;
+    //   248: getfield 47	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetInetSocketAddress	Ljava/net/InetSocketAddress;
     //   251: aload_0
-    //   252: getfield 67	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_c_of_type_Int	I
-    //   255: invokevirtual 178	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
+    //   252: getfield 51	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_c_of_type_Int	I
+    //   255: invokevirtual 182	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
     //   258: lload 6
     //   260: lstore 4
     //   262: aload_0
-    //   263: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   263: invokestatic 141	android/os/SystemClock:uptimeMillis	()J
     //   266: lload 6
     //   268: lsub
-    //   269: putfield 180	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Long	J
+    //   269: putfield 57	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Long	J
     //   272: lload 6
     //   274: lstore 4
     //   276: aload_0
     //   277: aload_0
-    //   278: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
-    //   281: invokevirtual 184	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
-    //   284: putfield 186	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaIoOutputStream	Ljava/io/OutputStream;
+    //   278: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   281: invokevirtual 186	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
+    //   284: putfield 188	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaIoOutputStream	Ljava/io/OutputStream;
     //   287: lload 6
     //   289: lstore 4
     //   291: aload_0
-    //   292: new 188	com/tencent/qphone/base/util/MsfSocketInputBuffer
+    //   292: new 190	com/tencent/qphone/base/util/MsfSocketInputBuffer
     //   295: dup
     //   296: aload_0
-    //   297: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   297: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   300: aload_0
-    //   301: getfield 59	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Int	I
-    //   304: ldc 190
+    //   301: getfield 67	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Int	I
+    //   304: ldc 192
     //   306: iconst_m1
-    //   307: invokespecial 193	com/tencent/qphone/base/util/MsfSocketInputBuffer:<init>	(Ljava/net/Socket;ILjava/lang/String;I)V
-    //   310: putfield 195	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentQphoneBaseUtilMsfSocketInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
+    //   307: invokespecial 195	com/tencent/qphone/base/util/MsfSocketInputBuffer:<init>	(Ljava/net/Socket;ILjava/lang/String;I)V
+    //   310: putfield 49	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentQphoneBaseUtilMsfSocketInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
     //   313: lload 6
     //   315: lstore 4
     //   317: aload_0
@@ -216,7 +211,7 @@ public class LiteTcpConnection
     //   333: aload_0
     //   334: ldc 204
     //   336: iconst_0
-    //   337: invokestatic 75	com/tencent/mobileqq/app/ThreadManager:newFreeHandlerThread	(Ljava/lang/String;I)Landroid/os/HandlerThread;
+    //   337: invokestatic 81	com/tencent/mobileqq/app/ThreadManager:newFreeHandlerThread	(Ljava/lang/String;I)Landroid/os/HandlerThread;
     //   340: putfield 206	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
     //   343: lload 6
     //   345: lstore 4
@@ -236,9 +231,9 @@ public class LiteTcpConnection
     //   376: lload 6
     //   378: lstore 4
     //   380: aload_0
-    //   381: getfield 49	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:d	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   381: getfield 55	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:d	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   384: iconst_1
-    //   385: invokevirtual 126	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   385: invokevirtual 132	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   388: lload 6
     //   390: lstore 4
     //   392: aload_0
@@ -252,134 +247,134 @@ public class LiteTcpConnection
     //   408: aload_0
     //   409: getfield 43	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   412: iconst_1
-    //   413: invokevirtual 126	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   413: invokevirtual 132	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   416: iconst_1
     //   417: istore 10
-    //   419: new 87	java/lang/StringBuilder
+    //   419: new 93	java/lang/StringBuilder
     //   422: dup
     //   423: ldc 228
     //   425: invokespecial 231	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   428: astore 12
     //   430: aload_0
-    //   431: getfield 65	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Bbjv	Lbbjv;
-    //   434: getfield 99	bbjv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   431: getfield 73	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo	Lcom/tencent/mobileqq/richmedia/conn/HostInfo;
+    //   434: getfield 105	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   437: ldc 233
     //   439: invokevirtual 239	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   442: ifeq +57 -> 499
     //   445: aload_0
-    //   446: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   446: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   449: invokevirtual 243	java/net/Socket:getRemoteSocketAddress	()Ljava/net/SocketAddress;
     //   452: astore 13
     //   454: aload 13
     //   456: ifnull +43 -> 499
     //   459: aload 13
-    //   461: instanceof 151
+    //   461: instanceof 157
     //   464: ifeq +35 -> 499
     //   467: aload 13
-    //   469: checkcast 151	java/net/InetSocketAddress
+    //   469: checkcast 157	java/net/InetSocketAddress
     //   472: invokevirtual 247	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
     //   475: invokevirtual 252	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
     //   478: astore 13
     //   480: aload 12
     //   482: ldc 254
-    //   484: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   484: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   487: aload 13
-    //   489: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   489: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   492: ldc_w 256
-    //   495: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   495: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   498: pop
     //   499: iconst_0
     //   500: istore_2
-    //   501: ldc 85
+    //   501: ldc 91
     //   503: iconst_1
-    //   504: new 87	java/lang/StringBuilder
+    //   504: new 93	java/lang/StringBuilder
     //   507: dup
-    //   508: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   508: invokespecial 94	java/lang/StringBuilder:<init>	()V
     //   511: ldc_w 258
-    //   514: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   514: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   517: aload_1
-    //   518: getfield 99	bbjv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   521: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   524: ldc 101
-    //   526: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   518: getfield 105	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   521: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   524: ldc 107
+    //   526: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   529: aload_1
-    //   530: getfield 102	bbjv:jdField_a_of_type_Int	I
-    //   533: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   536: ldc 107
-    //   538: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   530: getfield 108	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_Int	I
+    //   533: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   536: ldc 113
+    //   538: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   541: aload_0
-    //   542: getfield 63	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
-    //   545: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   542: getfield 71	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
+    //   545: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   548: ldc_w 260
-    //   551: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   551: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   554: lload 6
-    //   556: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   556: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   559: ldc_w 262
-    //   562: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   562: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   565: aload 12
-    //   567: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   570: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   567: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   570: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   573: ldc_w 264
-    //   576: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   576: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   579: aload_0
-    //   580: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   580: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   583: invokevirtual 268	java/net/Socket:getLocalPort	()I
-    //   586: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   589: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   586: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   589: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   592: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   595: aload_0
     //   596: getfield 38	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
     //   599: invokevirtual 274	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   602: iconst_1
     //   603: istore 10
-    //   605: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   605: invokestatic 141	android/os/SystemClock:uptimeMillis	()J
     //   608: lstore 4
     //   610: aload_0
-    //   611: getfield 276	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Bbjx	Lbbjx;
+    //   611: getfield 276	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnectionListener	Lcom/tencent/mobileqq/richmedia/conn/IConnectionListener;
     //   614: ifnull +94 -> 708
-    //   617: ldc 85
+    //   617: ldc 91
     //   619: iconst_1
-    //   620: new 87	java/lang/StringBuilder
+    //   620: new 93	java/lang/StringBuilder
     //   623: dup
-    //   624: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   624: invokespecial 94	java/lang/StringBuilder:<init>	()V
     //   627: ldc_w 278
-    //   630: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   630: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   633: aload_0
-    //   634: getfield 63	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
-    //   637: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   634: getfield 71	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
+    //   637: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   640: ldc_w 280
-    //   643: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   643: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   646: iload 10
     //   648: invokevirtual 283	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   651: ldc_w 285
-    //   654: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   654: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   657: iload_2
-    //   658: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   658: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   661: ldc_w 287
-    //   664: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   664: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   667: lload 4
     //   669: lload 8
     //   671: lsub
-    //   672: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   672: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   675: ldc_w 289
-    //   678: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   681: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   684: invokestatic 119	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   678: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   681: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   684: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   687: aload_0
-    //   688: getfield 276	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Bbjx	Lbbjx;
+    //   688: getfield 276	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnectionListener	Lcom/tencent/mobileqq/richmedia/conn/IConnectionListener;
     //   691: iload 10
     //   693: aload_0
-    //   694: getfield 63	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
+    //   694: getfield 71	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
     //   697: aload_0
     //   698: aload_0
-    //   699: getfield 65	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Bbjv	Lbbjv;
+    //   699: getfield 73	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo	Lcom/tencent/mobileqq/richmedia/conn/HostInfo;
     //   702: iload_2
     //   703: invokeinterface 294 7 0
     //   708: iload 10
     //   710: ifeq +195 -> 905
     //   713: aload_0
-    //   714: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Bbjy	Lbbjy;
-    //   717: invokevirtual 300	bbjy:b	()V
+    //   714: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentMobileqqRichmediaConnLiteTcpConnection$ConnWorker	Lcom/tencent/mobileqq/richmedia/conn/LiteTcpConnection$ConnWorker;
+    //   717: invokevirtual 300	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection$ConnWorker:b	()V
     //   720: iload_2
     //   721: ireturn
     //   722: astore 12
@@ -388,38 +383,38 @@ public class LiteTcpConnection
     //   727: iconst_0
     //   728: istore 10
     //   730: aload_0
-    //   731: getfield 56	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Bbju	Lbbju;
-    //   734: invokevirtual 304	bbju:a	()Z
+    //   731: getfield 64	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager	Lcom/tencent/mobileqq/richmedia/conn/ConnManager;
+    //   734: invokevirtual 304	com/tencent/mobileqq/richmedia/conn/ConnManager:a	()Z
     //   737: istore 11
-    //   739: ldc 85
+    //   739: ldc 91
     //   741: iconst_1
-    //   742: new 87	java/lang/StringBuilder
+    //   742: new 93	java/lang/StringBuilder
     //   745: dup
-    //   746: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   746: invokespecial 94	java/lang/StringBuilder:<init>	()V
     //   749: ldc_w 306
-    //   752: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   752: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   755: aload_1
-    //   756: getfield 99	bbjv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   759: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   762: ldc 101
-    //   764: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   756: getfield 105	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   759: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   762: ldc 107
+    //   764: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   767: aload_1
-    //   768: getfield 102	bbjv:jdField_a_of_type_Int	I
-    //   771: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   774: ldc 107
-    //   776: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   768: getfield 108	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_Int	I
+    //   771: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   774: ldc 113
+    //   776: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   779: aload_0
-    //   780: getfield 63	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
-    //   783: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   780: getfield 71	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
+    //   783: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   786: ldc_w 260
-    //   789: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   789: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   792: lload 4
-    //   794: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   794: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   797: ldc_w 308
-    //   800: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   800: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   803: iload 11
     //   805: invokevirtual 283	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   808: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   808: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   811: aload 12
     //   813: invokestatic 311	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   816: aload_0
@@ -434,22 +429,22 @@ public class LiteTcpConnection
     //   831: invokevirtual 274	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   834: goto -229 -> 605
     //   837: astore 12
-    //   839: ldc 85
+    //   839: ldc 91
     //   841: iconst_1
-    //   842: new 87	java/lang/StringBuilder
+    //   842: new 93	java/lang/StringBuilder
     //   845: dup
-    //   846: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   846: invokespecial 94	java/lang/StringBuilder:<init>	()V
     //   849: ldc_w 316
-    //   852: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   852: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   855: aload_1
-    //   856: getfield 99	bbjv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   859: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   862: ldc 101
-    //   864: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   856: getfield 105	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   859: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   862: ldc 107
+    //   864: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   867: aload_1
-    //   868: getfield 102	bbjv:jdField_a_of_type_Int	I
-    //   871: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   874: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   868: getfield 108	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_Int	I
+    //   871: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   874: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   877: aload 12
     //   879: invokestatic 311	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   882: goto -277 -> 605
@@ -469,27 +464,27 @@ public class LiteTcpConnection
     //   912: astore 12
     //   914: aload 12
     //   916: ldc_w 321
-    //   919: new 87	java/lang/StringBuilder
+    //   919: new 93	java/lang/StringBuilder
     //   922: dup
-    //   923: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   923: invokespecial 94	java/lang/StringBuilder:<init>	()V
     //   926: ldc_w 323
-    //   929: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   929: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   932: iload_2
-    //   933: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   936: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   933: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   936: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   939: invokevirtual 327	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   942: pop
     //   943: aload 12
     //   945: ldc_w 329
-    //   948: new 87	java/lang/StringBuilder
+    //   948: new 93	java/lang/StringBuilder
     //   951: dup
-    //   952: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   952: invokespecial 94	java/lang/StringBuilder:<init>	()V
     //   955: ldc_w 323
-    //   958: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   958: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   961: aload_1
-    //   962: getfield 99	bbjv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   965: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   968: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   962: getfield 105	com/tencent/mobileqq/richmedia/conn/HostInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   965: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   968: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   971: invokevirtual 327	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   974: pop
     //   975: invokestatic 335	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
@@ -503,8 +498,8 @@ public class LiteTcpConnection
     //   990: aconst_null
     //   991: invokevirtual 347	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   994: aload_0
-    //   995: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Bbjy	Lbbjy;
-    //   998: invokevirtual 349	bbjy:a	()V
+    //   995: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentMobileqqRichmediaConnLiteTcpConnection$ConnWorker	Lcom/tencent/mobileqq/richmedia/conn/LiteTcpConnection$ConnWorker;
+    //   998: invokevirtual 349	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection$ConnWorker:a	()V
     //   1001: iload_2
     //   1002: ireturn
     //   1003: astore 12
@@ -551,7 +546,7 @@ public class LiteTcpConnection
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	1079	0	this	LiteTcpConnection
-    //   0	1079	1	parambbjv	bbjv
+    //   0	1079	1	paramHostInfo	HostInfo
     //   97	979	2	i	int
     //   824	2	3	j	int
     //   130	934	4	l1	long
@@ -686,71 +681,71 @@ public class LiteTcpConnection
     //   3: istore 4
     //   5: iconst_0
     //   6: istore_2
-    //   7: ldc 85
+    //   7: ldc 91
     //   9: iconst_1
-    //   10: new 87	java/lang/StringBuilder
+    //   10: new 93	java/lang/StringBuilder
     //   13: dup
-    //   14: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   14: invokespecial 94	java/lang/StringBuilder:<init>	()V
     //   17: ldc_w 402
-    //   20: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: aload_0
-    //   24: getfield 63	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
-    //   27: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   24: getfield 71	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
+    //   27: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   30: ldc_w 404
-    //   33: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: iload_1
-    //   37: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   40: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: invokestatic 119	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   37: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   40: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   43: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   46: aload_0
-    //   47: getfield 49	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:d	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   47: getfield 55	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:d	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   50: iconst_0
-    //   51: invokevirtual 126	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   51: invokevirtual 132	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   54: aload_0
-    //   55: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   55: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   58: ifnull +275 -> 333
     //   61: aload_0
     //   62: getfield 43	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   65: invokevirtual 123	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   65: invokevirtual 129	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   68: ifne +4 -> 72
     //   71: return
     //   72: aload_0
     //   73: getfield 38	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   76: ldc2_w 138
-    //   79: getstatic 145	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   82: invokevirtual 149	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
+    //   76: ldc2_w 144
+    //   79: getstatic 151	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   82: invokevirtual 155	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
     //   85: ifeq +199 -> 284
     //   88: aload_0
-    //   89: getfield 186	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaIoOutputStream	Ljava/io/OutputStream;
+    //   89: getfield 188	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaIoOutputStream	Ljava/io/OutputStream;
     //   92: astore 5
     //   94: aload 5
     //   96: ifnull +3 -> 99
     //   99: aload_0
-    //   100: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Bbjy	Lbbjy;
+    //   100: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentMobileqqRichmediaConnLiteTcpConnection$ConnWorker	Lcom/tencent/mobileqq/richmedia/conn/LiteTcpConnection$ConnWorker;
     //   103: astore 5
     //   105: aload 5
     //   107: ifnull +8 -> 115
     //   110: aload 5
-    //   112: invokevirtual 349	bbjy:a	()V
+    //   112: invokevirtual 349	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection$ConnWorker:a	()V
     //   115: aload_0
     //   116: aconst_null
-    //   117: putfield 195	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentQphoneBaseUtilMsfSocketInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
+    //   117: putfield 49	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentQphoneBaseUtilMsfSocketInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
     //   120: aload_0
     //   121: aconst_null
-    //   122: putfield 186	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaIoOutputStream	Ljava/io/OutputStream;
+    //   122: putfield 188	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaIoOutputStream	Ljava/io/OutputStream;
     //   125: aload_0
-    //   126: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   126: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   129: ifnull +10 -> 139
     //   132: aload_0
-    //   133: getfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   133: getfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   136: invokevirtual 407	java/net/Socket:close	()V
     //   139: aload_0
     //   140: getfield 43	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   143: iconst_0
-    //   144: invokevirtual 126	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   144: invokevirtual 132	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   147: aload_0
     //   148: aconst_null
-    //   149: putfield 161	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
+    //   149: putfield 165	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaNetSocket	Ljava/net/Socket;
     //   152: aload_0
     //   153: getfield 206	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
     //   156: ifnull +16 -> 172
@@ -773,31 +768,31 @@ public class LiteTcpConnection
     //   189: iconst_1
     //   190: istore_2
     //   191: aload_0
-    //   192: getfield 276	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Bbjx	Lbbjx;
+    //   192: getfield 276	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnectionListener	Lcom/tencent/mobileqq/richmedia/conn/IConnectionListener;
     //   195: astore 5
     //   197: aload 5
     //   199: ifnull +15 -> 214
     //   202: aload 5
     //   204: aload_0
-    //   205: getfield 63	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
+    //   205: getfield 71	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
     //   208: aload_0
     //   209: invokeinterface 413 4 0
-    //   214: ldc 85
+    //   214: ldc 91
     //   216: iconst_1
-    //   217: new 87	java/lang/StringBuilder
+    //   217: new 93	java/lang/StringBuilder
     //   220: dup
-    //   221: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   221: invokespecial 94	java/lang/StringBuilder:<init>	()V
     //   224: ldc_w 415
-    //   227: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   227: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: aload_0
-    //   231: getfield 63	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
-    //   234: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   231: getfield 71	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_Long	J
+    //   234: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   237: ldc_w 417
-    //   240: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   240: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   243: iload_2
     //   244: invokevirtual 283	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   247: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   250: invokestatic 119	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   247: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   250: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   253: return
     //   254: astore 5
     //   256: aload_0
@@ -808,7 +803,7 @@ public class LiteTcpConnection
     //   266: astore 5
     //   268: iload_3
     //   269: istore_2
-    //   270: ldc 85
+    //   270: ldc 91
     //   272: iconst_1
     //   273: ldc_w 419
     //   276: aload 5
@@ -817,12 +812,12 @@ public class LiteTcpConnection
     //   284: aload_0
     //   285: getfield 45	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   288: iconst_1
-    //   289: invokevirtual 126	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   289: invokevirtual 132	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   292: goto -101 -> 191
     //   295: astore 5
     //   297: iload 4
     //   299: istore_2
-    //   300: ldc 85
+    //   300: ldc 91
     //   302: iconst_1
     //   303: ldc_w 419
     //   306: aload 5
@@ -893,7 +888,7 @@ public class LiteTcpConnection
     {
       try
       {
-        arrayOfByte = this.jdField_a_of_type_Bbju.a();
+        arrayOfByte = this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager.a();
         if (arrayOfByte != null) {
           break label113;
         }
@@ -925,13 +920,13 @@ public class LiteTcpConnection
   public void a()
   {
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Bbjy = new bbjy(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_a_of_type_Bbjy.sendEmptyMessage(1);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaConnLiteTcpConnection$ConnWorker = new LiteTcpConnection.ConnWorker(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaConnLiteTcpConnection$ConnWorker.sendEmptyMessage(1);
   }
   
-  public void a(bbjx parambbjx)
+  public void a(IConnectionListener paramIConnectionListener)
   {
-    this.jdField_a_of_type_Bbjx = parambbjx;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnectionListener = paramIConnectionListener;
   }
   
   public void b()
@@ -941,7 +936,7 @@ public class LiteTcpConnection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.LiteTcpConnection
  * JD-Core Version:    0.7.0.1
  */

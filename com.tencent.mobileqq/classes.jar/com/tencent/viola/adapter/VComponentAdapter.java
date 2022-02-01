@@ -26,11 +26,13 @@ public abstract interface VComponentAdapter
   
   public abstract void setImgSpan(String paramString, int paramInt1, int paramInt2, ImageAdapterHolder paramImageAdapterHolder);
   
+  public abstract void setVRElementReuseIdentifier(View paramView, String paramString);
+  
   public abstract boolean useCustomFont(TextPaint paramTextPaint, String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.adapter.VComponentAdapter
  * JD-Core Version:    0.7.0.1
  */

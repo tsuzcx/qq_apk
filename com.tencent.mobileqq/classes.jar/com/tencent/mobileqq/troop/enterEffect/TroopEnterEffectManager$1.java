@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
 import android.os.Handler;
-import bfkf;
-import bfkw;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class TroopEnterEffectManager$1
+class TroopEnterEffectManager$1
   implements Runnable
 {
-  public TroopEnterEffectManager$1(bfkw parambfkw, String paramString) {}
+  TroopEnterEffectManager$1(TroopEnterEffectManager paramTroopEnterEffectManager, String paramString) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Bfkf = this.this$0.a();
-    if (this.this$0.jdField_a_of_type_Bfkf.a.get()) {
+    this.this$0.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig = this.this$0.a();
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.a.get()) {
       this.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectManager.1.1(this));
     }
   }

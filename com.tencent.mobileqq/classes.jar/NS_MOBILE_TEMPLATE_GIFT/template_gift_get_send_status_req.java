@@ -12,9 +12,9 @@ public final class template_gift_get_send_status_req
 {
   static ArrayList<Long> cache_birth_friend_list = new ArrayList();
   static Map<String, String> cache_mapExt;
-  public ArrayList<Long> birth_friend_list;
-  public Map<String, String> mapExt;
-  public long uin;
+  public ArrayList<Long> birth_friend_list = null;
+  public Map<String, String> mapExt = null;
+  public long uin = 0L;
   
   static
   {

@@ -9,8 +9,8 @@ public final class ClientMsg
 {
   static ReqHeader cache_stHeader;
   static Msg cache_stMsg;
-  public ReqHeader stHeader;
-  public Msg stMsg;
+  public ReqHeader stHeader = null;
+  public Msg stMsg = null;
   
   public ClientMsg() {}
   

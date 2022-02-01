@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.matchchat;
 
-import aslo;
-import asrt;
-import awui;
-import bbdh;
-import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
+import com.tencent.mobileqq.extendfriend.limitchat.ExpandFriendChatUtil;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatManager;
+import com.tencent.mobileqq.extendfriend.utils.ExpandReportUtils;
+import com.tencent.mobileqq.relationx.icebreaking.IceBreakingMng;
+import com.tencent.mobileqq.statistics.ReportController;
 import mqq.os.MqqHandler;
 
 class MatchChatSettingFragment$2
@@ -17,11 +18,16 @@ class MatchChatSettingFragment$2
   
   public void run()
   {
-    bdla.b(MatchChatSettingFragment.a(this.this$0), "dc00898", "", "", "0X800A699", "0X800A699", 0, 0, "", "", "", "");
-    awui.a(MatchChatSettingFragment.a(this.this$0));
-    asrt.b(MatchChatSettingFragment.a(this.this$0));
-    ((aslo)MatchChatSettingFragment.a(this.this$0).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).d();
-    ((bbdh)MatchChatSettingFragment.a(this.this$0).getManager(QQManagerFactory.ICE_BREAKING_MNG)).a();
+    if (MatchChatSettingFragment.a(this.this$0) == null) {
+      return;
+    }
+    ReportController.b(MatchChatSettingFragment.a(this.this$0), "dc00898", "", "", "0X800A699", "0X800A699", 0, 0, "", "", "", "");
+    ExpandReportUtils.a("click#message_setting_page#delete_all_message", true, -1L, -1L, null, true, true);
+    MatchChatMsgUtil.a(MatchChatSettingFragment.a(this.this$0));
+    ExpandFriendChatUtil.b(MatchChatSettingFragment.a(this.this$0));
+    ((ExtendFriendManager)MatchChatSettingFragment.a(this.this$0).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).e();
+    ((ExtendFriendLimitChatManager)MatchChatSettingFragment.a(this.this$0).getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER)).a();
+    ((IceBreakingMng)MatchChatSettingFragment.a(this.this$0).getManager(QQManagerFactory.ICE_BREAKING_MNG)).a();
     ThreadManager.getUIHandler().post(new MatchChatSettingFragment.2.1(this));
   }
 }

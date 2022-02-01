@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.support.v4.app.FragmentActivity;
-import apsu;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.music.QQPlayerService;
 
-public class ArkAppMusicModule$2
+class ArkAppMusicModule$2
   implements Runnable
 {
-  public ArkAppMusicModule$2(apsu paramapsu) {}
+  ArkAppMusicModule$2(ArkAppMusicModule paramArkAppMusicModule) {}
   
   public void run()
   {

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import com.tencent.av.app.VideoAppInterface;
-import mpj;
 
 public abstract class ZimuViewMotion
   extends ZimuView
@@ -18,7 +17,7 @@ public abstract class ZimuViewMotion
   {
     super(paramLong, paramVideoAppInterface, paramContext, paramAttributeSet);
     this.c = 92;
-    this.jdField_a_of_type_AndroidOsHandler = new mpj(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ZimuViewMotion.MyHandler(this);
   }
   
   public int a()
@@ -52,7 +51,7 @@ public abstract class ZimuViewMotion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewMotion
  * JD-Core Version:    0.7.0.1
  */

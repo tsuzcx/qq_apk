@@ -15,48 +15,44 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
+import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.ListenerBuilder;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.OnGalleryImageClickListener;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.preparse.RIJPreParseData;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentInheritView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.GalleryPGCFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.PGCFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.PGCPicInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import pih;
-import pjr;
-import pnr;
-import pnt;
-import pqa;
-import pqw;
-import qfw;
-import rbn;
-import rbx;
-import rfw;
-import rgf;
-import rgg;
-import rjl;
-import rqz;
-import rrl;
-import rrm;
-import szd;
 
 public class ComponentContentGalleryBiu
   extends FrameLayout
-  implements rbn
+  implements ComponentInheritView
 {
   private float jdField_a_of_type_Float = 3.0F;
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
+  private ReadInJoyBaseAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter;
   private List<KandianUrlImageView> jdField_a_of_type_JavaUtilList;
-  private rfw jdField_a_of_type_Rfw;
-  private szd jdField_a_of_type_Szd;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private KandianUrlImageView jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private KandianUrlImageView c;
   private KandianUrlImageView d;
   private KandianUrlImageView e;
@@ -100,16 +96,16 @@ public class ComponentContentGalleryBiu
     return 1;
   }
   
-  public static int a(ArticleInfo paramArticleInfo, szd paramszd)
+  public static int a(ArticleInfo paramArticleInfo, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    return pih.a(paramszd.a(), pqw.a(paramArticleInfo));
+    return GalleryReportedUtils.a(paramReadInJoyBaseAdapter.a(), RIJFeedsType.a(paramArticleInfo));
   }
   
   private Pair<Integer, Integer> a()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    int k = (localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(this.jdField_a_of_type_Float * 2.0F, localResources) - AIOUtils.dp2px(22.0F, localResources)) / 3;
-    int j = localResources.getDimensionPixelSize(2131298742);
+    int k = (localResources.getDisplayMetrics().widthPixels - AIOUtils.a(this.jdField_a_of_type_Float * 2.0F, localResources) - AIOUtils.a(22.0F, localResources)) / 3;
+    int j = localResources.getDimensionPixelSize(2131298830);
     if (this.jdField_a_of_type_Boolean) {
       j = k;
     }
@@ -118,14 +114,14 @@ public class ComponentContentGalleryBiu
   
   private void a(ArticleInfo paramArticleInfo)
   {
-    if ((this.jdField_a_of_type_Szd == null) || (paramArticleInfo == null)) {}
-    pnt localpnt;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter == null) || (paramArticleInfo == null)) {}
+    OnGalleryImageClickListener localOnGalleryImageClickListener;
     do
     {
       return;
-      localpnt = this.jdField_a_of_type_Szd.a().a();
-    } while (localpnt == null);
-    localpnt.a(getContext(), paramArticleInfo, 0, paramArticleInfo.innerUniqueID, 5, this.jdField_a_of_type_Int, 0);
+      localOnGalleryImageClickListener = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a().a();
+    } while (localOnGalleryImageClickListener == null);
+    localOnGalleryImageClickListener.a(getContext(), paramArticleInfo, 0, paramArticleInfo.innerUniqueID, 5, this.jdField_a_of_type_Int, 0);
   }
   
   private void a(KandianUrlImageView paramKandianUrlImageView)
@@ -153,7 +149,7 @@ public class ComponentContentGalleryBiu
       int j = 0;
       while (j < paramList.size())
       {
-        ((KandianUrlImageView)paramList.get(j)).setOnClickListener(new rgg(this, paramArticleInfo, paramArrayOfLong[j], paramString, j));
+        ((KandianUrlImageView)paramList.get(j)).setOnClickListener(new ComponentContentGalleryBiu.2(this, paramArticleInfo, paramArrayOfLong[j], paramString, j));
         j += 1;
       }
     }
@@ -161,7 +157,7 @@ public class ComponentContentGalleryBiu
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Rfw = new rfw();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramContext);
     a();
@@ -188,19 +184,19 @@ public class ComponentContentGalleryBiu
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView);
   }
   
-  public void a(Object paramObject)
+  public void a(FeedItemCell.CellListener paramCellListener)
   {
-    if ((paramObject instanceof qfw))
-    {
-      paramObject = (qfw)paramObject;
-      this.jdField_a_of_type_Rfw.a(paramObject);
-      setContent(paramObject);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
   }
   
-  public void a(rbx paramrbx)
+  public void a(Object paramObject)
   {
-    this.jdField_a_of_type_Rfw.a(paramrbx);
+    if ((paramObject instanceof IReadInJoyModel))
+    {
+      paramObject = (IReadInJoyModel)paramObject;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramObject);
+      setContent(paramObject);
+    }
   }
   
   public void a(KandianUrlImageView... paramVarArgs)
@@ -213,7 +209,7 @@ public class ComponentContentGalleryBiu
       if (localKandianUrlImageView != null)
       {
         a(localKandianUrlImageView);
-        ((LinearLayout.LayoutParams)localKandianUrlImageView.getLayoutParams()).setMargins(0, 0, AIOUtils.dp2px(this.jdField_a_of_type_Float, getResources()), 0);
+        ((LinearLayout.LayoutParams)localKandianUrlImageView.getLayoutParams()).setMargins(0, 0, AIOUtils.a(this.jdField_a_of_type_Float, getResources()), 0);
       }
       j += 1;
     }
@@ -230,17 +226,17 @@ public class ComponentContentGalleryBiu
     }
   }
   
-  public void setAdapter(szd paramszd)
+  public void setAdapter(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    this.jdField_a_of_type_Szd = paramszd;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter = paramReadInJoyBaseAdapter;
   }
   
-  public void setContent(qfw paramqfw)
+  public void setContent(IReadInJoyModel paramIReadInJoyModel)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
     Object localObject1 = new LinearLayout.LayoutParams(-2, -2);
-    ArticleInfo localArticleInfo = paramqfw.a();
-    if ((localArticleInfo == null) || (localArticleInfo.mSocialFeedInfo == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.jdField_a_of_type_Rqz == null)) {}
+    ArticleInfo localArticleInfo = paramIReadInJoyModel.a();
+    if ((localArticleInfo == null) || (localArticleInfo.mSocialFeedInfo == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo == null)) {}
     String str;
     Object localObject2;
     Object localObject3;
@@ -252,21 +248,21 @@ public class ComponentContentGalleryBiu
         return;
         if (this.jdField_b_of_type_Boolean)
         {
-          paramqfw = new TextView(getContext());
-          paramqfw.setPadding(0, 0, 0, AIOUtils.dp2px(11.0F, getContext().getResources()));
-          paramqfw.setMaxLines(2);
-          paramqfw.setEllipsize(TextUtils.TruncateAt.END);
-          paramqfw.setTextColor(Color.parseColor("#000000"));
-          paramqfw.setTextSize(1, 17.0F);
-          paramqfw.setIncludeFontPadding(false);
-          paramqfw.setText(localArticleInfo.mTitle);
-          paramqfw.setOnClickListener(new rgf(this, localArticleInfo));
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramqfw);
+          paramIReadInJoyModel = new TextView(getContext());
+          paramIReadInJoyModel.setPadding(0, 0, 0, AIOUtils.a(11.0F, getContext().getResources()));
+          paramIReadInJoyModel.setMaxLines(2);
+          paramIReadInJoyModel.setEllipsize(TextUtils.TruncateAt.END);
+          paramIReadInJoyModel.setTextColor(Color.parseColor("#000000"));
+          paramIReadInJoyModel.setTextSize(1, 17.0F);
+          paramIReadInJoyModel.setIncludeFontPadding(false);
+          paramIReadInJoyModel.setText(localArticleInfo.mTitle);
+          paramIReadInJoyModel.setOnClickListener(new ComponentContentGalleryBiu.1(this, localArticleInfo));
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramIReadInJoyModel);
         }
         str = localArticleInfo.innerUniqueID;
-        paramqfw = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl;
-        localObject2 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.jdField_a_of_type_Rqz;
-        localObject3 = paramqfw.jdField_a_of_type_JavaUtilArrayList;
+        paramIReadInJoyModel = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo;
+        localObject2 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo;
+        localObject3 = paramIReadInJoyModel.jdField_a_of_type_JavaUtilArrayList;
       } while ((localObject3 == null) || (((ArrayList)localObject3).size() == 0));
       j = ((ArrayList)localObject3).size();
     } while (j <= 0);
@@ -284,39 +280,39 @@ public class ComponentContentGalleryBiu
       if (j >= k) {
         break label374;
       }
-      paramqfw = (rrm)((ArrayList)localObject3).get(j);
-      arrayOfLong[j] = paramqfw.a;
-      paramqfw = paramqfw.b;
-      if (!pqa.a(paramqfw)) {
+      paramIReadInJoyModel = (SocializeFeedsInfo.PGCPicInfo)((ArrayList)localObject3).get(j);
+      arrayOfLong[j] = paramIReadInJoyModel.a;
+      paramIReadInJoyModel = paramIReadInJoyModel.b;
+      if (!RIJPreParseData.a(paramIReadInJoyModel)) {
         break label1289;
       }
-      paramqfw = pqa.a(paramqfw, ((Integer)localPair.second).intValue(), ((Integer)localPair.first).intValue(), 1);
+      paramIReadInJoyModel = RIJPreParseData.a(paramIReadInJoyModel, ((Integer)localPair.second).intValue(), ((Integer)localPair.first).intValue(), 1);
     }
     label1289:
     for (;;)
     {
-      localArrayList.add(pqa.a(paramqfw));
+      localArrayList.add(RIJPreParseData.a(paramIReadInJoyModel));
       j += 1;
       break label286;
       bool = false;
       break;
       label374:
-      long l = ((rqz)localObject2).a;
+      long l = ((SocializeFeedsInfo.GalleryPGCFeedsInfo)localObject2).a;
       if ((k == 1) || (k == 3))
       {
-        paramqfw = new LinearLayout(getContext());
-        paramqfw.setOrientation(0);
-        paramqfw.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localObject1 = LayoutInflater.from(getContext()).inflate(2131560159, null);
-        ((TextView)((View)localObject1).findViewById(2131380073)).setText(l + anvx.a(2131701825));
+        paramIReadInJoyModel = new LinearLayout(getContext());
+        paramIReadInJoyModel.setOrientation(0);
+        paramIReadInJoyModel.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        localObject1 = LayoutInflater.from(getContext()).inflate(2131560237, null);
+        ((TextView)((View)localObject1).findViewById(2131380511)).setText(l + HardCodeUtil.a(2131702380));
         if (k == 1)
         {
-          paramqfw.addView((View)localObject1);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)((View)localObject1).findViewById(2131368501));
+          paramIReadInJoyModel.addView((View)localObject1);
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)((View)localObject1).findViewById(2131368729));
           this.jdField_a_of_type_JavaUtilList = Arrays.asList(new KandianUrlImageView[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView });
-          rjl.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
-          pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mSinglePicture, getContext());
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramqfw);
+          UtilsForComponent.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
+          ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mSinglePicture, getContext());
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramIReadInJoyModel);
         }
       }
       for (;;)
@@ -325,51 +321,51 @@ public class ComponentContentGalleryBiu
         return;
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(getContext());
         this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(getContext());
-        this.c = ((KandianUrlImageView)((View)localObject1).findViewById(2131368501));
-        paramqfw.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
-        paramqfw.addView(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
-        paramqfw.addView((View)localObject1);
+        this.c = ((KandianUrlImageView)((View)localObject1).findViewById(2131368729));
+        paramIReadInJoyModel.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
+        paramIReadInJoyModel.addView(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
+        paramIReadInJoyModel.addView((View)localObject1);
         a(new KandianUrlImageView[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView });
         b(new KandianUrlImageView[] { this.c });
         this.jdField_a_of_type_JavaUtilList = Arrays.asList(new KandianUrlImageView[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.c });
-        pjr.a(this.jdField_a_of_type_JavaUtilList, localArrayList, getContext());
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramqfw);
+        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_JavaUtilList, localArrayList, getContext());
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramIReadInJoyModel);
         continue;
         if (k == 9)
         {
-          paramqfw = new LinearLayout(getContext());
+          paramIReadInJoyModel = new LinearLayout(getContext());
           localObject2 = new LinearLayout(getContext());
           localObject3 = new LinearLayout(getContext());
-          paramqfw.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          paramIReadInJoyModel.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
           ((LinearLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          ((LinearLayout)localObject2).setPadding(0, AIOUtils.dp2px(this.jdField_a_of_type_Float, getResources()), 0, 0);
-          ((LinearLayout)localObject3).setPadding(0, AIOUtils.dp2px(this.jdField_a_of_type_Float, getResources()), 0, 0);
+          ((LinearLayout)localObject2).setPadding(0, AIOUtils.a(this.jdField_a_of_type_Float, getResources()), 0, 0);
+          ((LinearLayout)localObject3).setPadding(0, AIOUtils.a(this.jdField_a_of_type_Float, getResources()), 0, 0);
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(getContext());
           this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = new KandianUrlImageView(getContext());
           this.c = new KandianUrlImageView(getContext());
-          paramqfw.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
-          paramqfw.addView(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
-          paramqfw.addView(this.c);
+          paramIReadInJoyModel.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
+          paramIReadInJoyModel.addView(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView);
+          paramIReadInJoyModel.addView(this.c);
           this.d = new KandianUrlImageView(getContext());
           this.e = new KandianUrlImageView(getContext());
           this.f = new KandianUrlImageView(getContext());
           ((LinearLayout)localObject2).addView(this.d);
           ((LinearLayout)localObject2).addView(this.e);
           ((LinearLayout)localObject2).addView(this.f);
-          localObject1 = LayoutInflater.from(getContext()).inflate(2131560159, null);
-          ((TextView)((View)localObject1).findViewById(2131380073)).setText(l + anvx.a(2131701751));
+          localObject1 = LayoutInflater.from(getContext()).inflate(2131560237, null);
+          ((TextView)((View)localObject1).findViewById(2131380511)).setText(l + HardCodeUtil.a(2131702306));
           this.g = new KandianUrlImageView(getContext());
           this.h = new KandianUrlImageView(getContext());
-          this.i = ((KandianUrlImageView)((View)localObject1).findViewById(2131368501));
+          this.i = ((KandianUrlImageView)((View)localObject1).findViewById(2131368729));
           ((LinearLayout)localObject3).addView(this.g);
           ((LinearLayout)localObject3).addView(this.h);
           ((LinearLayout)localObject3).addView((View)localObject1);
           a(new KandianUrlImageView[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.d, this.e, this.g, this.h });
           b(new KandianUrlImageView[] { this.c, this.f, this.i });
           this.jdField_a_of_type_JavaUtilList = Arrays.asList(new KandianUrlImageView[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.c, this.d, this.e, this.f, this.g, this.h, this.i });
-          pjr.a(this.jdField_a_of_type_JavaUtilList, localArrayList, getContext());
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramqfw);
+          ReadInJoyDisplayUtils.a(this.jdField_a_of_type_JavaUtilList, localArrayList, getContext());
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramIReadInJoyModel);
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject3);
         }
@@ -389,7 +385,7 @@ public class ComponentContentGalleryBiu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu
  * JD-Core Version:    0.7.0.1
  */

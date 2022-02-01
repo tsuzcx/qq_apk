@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.text.TextPaint;
 import android.text.style.URLSpan;
 import android.view.View;
-import anvk;
-import bdla;
-import bhbu;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.util.TroopReportor;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
@@ -58,14 +58,14 @@ class TroopRequestActivity$NumberSpan
       label194:
       for (paramView = "0";; paramView = "1")
       {
-        bdla.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
-        TroopUtils.openTroopInfoActivity(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, (Bundle)localObject, 2);
+        ReportController.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
+        TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, (Bundle)localObject, 2);
         return;
         i = 0;
         break;
       }
     }
-    if (((anvk)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.jdField_a_of_type_JavaLangString))
+    if (((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.jdField_a_of_type_JavaLangString))
     {
       localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, 1);
       paramView = "";
@@ -79,8 +79,8 @@ class TroopRequestActivity$NumberSpan
     }
     for (;;)
     {
-      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", paramView, "", "");
-      bhbu.a("Grp_contacts_news", "notice", "see_fromdata", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", paramView });
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", paramView, "", "");
+      TroopReportor.a("Grp_contacts_news", "notice", "see_fromdata", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", paramView });
       ProfileActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, (ProfileActivity.AllInOne)localObject);
       return;
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 2) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() == 3))
@@ -90,7 +90,7 @@ class TroopRequestActivity$NumberSpan
         break;
       }
       localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, 24);
-      TroopUtils.prepareTroopNotifyData(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, (ProfileActivity.AllInOne)localObject);
+      TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, (ProfileActivity.AllInOne)localObject);
       break;
       label480:
       if ((i == 3) || (i == 15) || (i == 16)) {
@@ -110,7 +110,7 @@ class TroopRequestActivity$NumberSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRequestActivity.NumberSpan
  * JD-Core Version:    0.7.0.1
  */

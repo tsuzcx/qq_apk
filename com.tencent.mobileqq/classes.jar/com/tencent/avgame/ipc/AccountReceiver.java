@@ -6,17 +6,16 @@ import android.content.Intent;
 import android.os.Process;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import nne;
 
 public class AccountReceiver
   extends BroadcastReceiver
 {
+  private AccountReceiver.AccountListener jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener;
   private String jdField_a_of_type_JavaLangString;
-  private nne jdField_a_of_type_Nne;
   
-  public AccountReceiver(nne paramnne, String paramString)
+  public AccountReceiver(AccountReceiver.AccountListener paramAccountListener, String paramString)
   {
-    this.jdField_a_of_type_Nne = paramnne;
+    this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener = paramAccountListener;
     this.jdField_a_of_type_JavaLangString = ("mqq.intent.action.EXIT_" + paramString);
     QLog.i("AccountReceiver", 1, "AccountReceiver, packageName[" + paramString + "]");
   }
@@ -52,8 +51,8 @@ public class AccountReceiver
           if (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
             break label110;
           }
-          if (this.jdField_a_of_type_Nne != null) {
-            this.jdField_a_of_type_Nne.b(1001);
+          if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener != null) {
+            this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener.b(1001);
           }
           Process.killProcess(Process.myPid());
           return;
@@ -64,38 +63,38 @@ public class AccountReceiver
       return;
       if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
       {
-        if (this.jdField_a_of_type_Nne != null) {
-          this.jdField_a_of_type_Nne.b(1003);
+        if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener != null) {
+          this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener.b(1003);
         }
         Process.killProcess(Process.myPid());
         return;
       }
       if ("mqq.intent.action.LOGOUT".equals(paramContext))
       {
-        if (this.jdField_a_of_type_Nne != null) {
-          this.jdField_a_of_type_Nne.b(1002);
+        if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener != null) {
+          this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener.b(1002);
         }
         Process.killProcess(Process.myPid());
         return;
       }
       if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramContext))
       {
-        if (this.jdField_a_of_type_Nne != null) {
-          this.jdField_a_of_type_Nne.b(1005);
+        if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener != null) {
+          this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener.b(1005);
         }
         Process.killProcess(Process.myPid());
         return;
       }
     } while (!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramContext));
-    if (this.jdField_a_of_type_Nne != null) {
-      this.jdField_a_of_type_Nne.b(1004);
+    if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener != null) {
+      this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver$AccountListener.b(1004);
     }
     Process.killProcess(Process.myPid());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ipc.AccountReceiver
  * JD-Core Version:    0.7.0.1
  */

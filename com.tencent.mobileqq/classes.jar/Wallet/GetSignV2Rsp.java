@@ -9,14 +9,14 @@ public final class GetSignV2Rsp
 {
   public String busi_info = "";
   public String mch_id = "";
-  public int nav_type;
-  public int ret;
+  public int nav_type = 0;
+  public int ret = 0;
   public String sign = "";
-  public long time_stamp;
-  public int token_scene;
-  public int token_type;
-  public long userid;
-  public int userid_type;
+  public long time_stamp = 0L;
+  public int token_scene = 0;
+  public int token_type = 0;
+  public long userid = 0L;
+  public int userid_type = 0;
   
   public GetSignV2Rsp() {}
   

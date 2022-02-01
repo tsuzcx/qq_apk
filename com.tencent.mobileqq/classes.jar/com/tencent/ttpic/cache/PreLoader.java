@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.io.File;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -27,7 +27,7 @@ public abstract class PreLoader
   {
     this.cache = paramMap;
     this.dataPath = paramString;
-    this.materialId = VideoMaterialUtil.getMaterialId(paramString);
+    this.materialId = VideoMaterial.getMaterialId(paramString);
     this.item = paramStickerItem;
     this.capacity = paramInt;
   }
@@ -81,7 +81,7 @@ public abstract class PreLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.cache.PreLoader
  * JD-Core Version:    0.7.0.1
  */

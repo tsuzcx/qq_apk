@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.forward;
 
-import ausq;
-import ausu;
 import java.util.List;
 
 class ForwardPreviewTroopMemberController$1$1
@@ -11,16 +9,16 @@ class ForwardPreviewTroopMemberController$1$1
   
   public void run()
   {
-    if (ausq.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0) != null)
+    if (ForwardPreviewTroopMemberController.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0) != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0.e();
-      ausq.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
+      ForwardPreviewTroopMemberController.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.1.1
  * JD-Core Version:    0.7.0.1
  */

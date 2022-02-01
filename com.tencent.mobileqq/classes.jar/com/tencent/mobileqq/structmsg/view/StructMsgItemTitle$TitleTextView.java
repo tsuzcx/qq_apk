@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class StructMsgItemTitle$TitleTextView
   extends TextView
 {
-  public int a;
+  public int a = 0;
   
   public StructMsgItemTitle$TitleTextView(Context paramContext)
   {
@@ -36,7 +36,7 @@ public class StructMsgItemTitle$TitleTextView
     a(paramCharSequence, paramInt);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.a = getMeasuredWidth();

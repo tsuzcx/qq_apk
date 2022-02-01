@@ -1,10 +1,9 @@
 package androidx.lifecycle;
 
-import androidx.annotation.RestrictTo;
+import androidx.annotation.NonNull;
 
-@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class CompositeGeneratedAdaptersObserver
-  implements GenericLifecycleObserver
+class CompositeGeneratedAdaptersObserver
+  implements LifecycleEventObserver
 {
   private final GeneratedAdapter[] mGeneratedAdapters;
   
@@ -13,7 +12,7 @@ public class CompositeGeneratedAdaptersObserver
     this.mGeneratedAdapters = paramArrayOfGeneratedAdapter;
   }
   
-  public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
+  public void onStateChanged(@NonNull LifecycleOwner paramLifecycleOwner, @NonNull Lifecycle.Event paramEvent)
   {
     int j = 0;
     MethodCallsLogger localMethodCallsLogger = new MethodCallsLogger();
@@ -37,7 +36,7 @@ public class CompositeGeneratedAdaptersObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.lifecycle.CompositeGeneratedAdaptersObserver
  * JD-Core Version:    0.7.0.1
  */

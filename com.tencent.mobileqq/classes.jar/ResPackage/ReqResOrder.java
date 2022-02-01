@@ -13,8 +13,8 @@ public final class ReqResOrder
   static byte[] cache_PkgInfo;
   static int cache_ResID;
   public String Path = "";
-  public byte[] PkgInfo;
-  public int ResID;
+  public byte[] PkgInfo = null;
+  public int ResID = 0;
   
   static
   {

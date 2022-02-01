@@ -26,9 +26,9 @@ public class HippyQQVideoView
   private Activity mActivity;
   private boolean mHasExictlySize = true;
   private HippyEngineContext mHippyContext;
-  private boolean mIsDoingFullscreen;
+  private boolean mIsDoingFullscreen = false;
   private int mOriginalHeight;
-  private int mOriginalIndex;
+  private int mOriginalIndex = 0;
   private ViewGroup.LayoutParams mOriginalLayoutParams;
   private ViewGroup mOriginalParent;
   private int mOriginalWidth;
@@ -176,7 +176,7 @@ public class HippyQQVideoView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (getChildAt(0) != null) {
@@ -211,7 +211,7 @@ public class HippyQQVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.HippyQQVideoView
  * JD-Core Version:    0.7.0.1
  */

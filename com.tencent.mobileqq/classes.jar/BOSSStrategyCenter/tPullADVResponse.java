@@ -10,8 +10,8 @@ public final class tPullADVResponse
   extends JceStruct
 {
   static Map<Integer, tAdvDesc> cache_map_adv_desc = new HashMap();
-  public Map<Integer, tAdvDesc> map_adv_desc;
-  public int ret;
+  public Map<Integer, tAdvDesc> map_adv_desc = null;
+  public int ret = 0;
   public String s_ret_msg = "";
   
   static

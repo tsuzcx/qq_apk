@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
-import bmhv;
 import com.tencent.biz.pubaccount.readinjoy.struct.MySelfNormalItemRedPointInfo;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -18,14 +18,14 @@ class KandianMergeManager$37
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bmhv.a(KandianMergeManager.a(this.this$0), true, false).edit();
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.this$0), true, false).edit();
     Object localObject = new ByteArrayOutputStream();
     try
     {
       new ObjectOutputStream((OutputStream)localObject).writeObject(this.a);
       localObject = new String(Base64.encode(((ByteArrayOutputStream)localObject).toByteArray(), 0));
       localEditor.putString("kandian_myself_red_point" + this.a.itemId, (String)localObject);
-      bmhv.a(localEditor, true);
+      ReadInJoyHelper.a(localEditor, true);
       return;
     }
     catch (IOException localIOException)
@@ -37,7 +37,7 @@ class KandianMergeManager$37
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.37
  * JD-Core Version:    0.7.0.1
  */

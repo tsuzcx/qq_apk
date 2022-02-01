@@ -19,7 +19,7 @@ public class TroopNotificationCache
   public String feedsId;
   public long filterID;
   public boolean needConfirm;
-  public boolean read;
+  public boolean read = false;
   public int serviceID;
   public int src;
   public int time;
@@ -30,7 +30,7 @@ public class TroopNotificationCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopNotificationCache
  * JD-Core Version:    0.7.0.1
  */

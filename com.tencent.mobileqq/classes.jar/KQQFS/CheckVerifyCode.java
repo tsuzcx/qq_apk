@@ -9,7 +9,7 @@ public final class CheckVerifyCode
 {
   static byte[] cache_vEncryptUsrInfo;
   public String strVerifyCode = "";
-  public byte[] vEncryptUsrInfo;
+  public byte[] vEncryptUsrInfo = null;
   
   public CheckVerifyCode() {}
   

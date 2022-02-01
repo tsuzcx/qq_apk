@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import bdzk;
-
-public class Texture$2
+class Texture$2
   implements Runnable
 {
-  public Texture$2(bdzk parambdzk) {}
+  Texture$2(Texture paramTexture) {}
   
   public void run()
   {

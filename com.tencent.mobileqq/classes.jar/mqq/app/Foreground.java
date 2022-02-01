@@ -1,6 +1,7 @@
 package mqq.app;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -12,24 +13,76 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Foreground
   implements Handler.Callback
 {
   private static final int DELAY_BROADCAST = 100;
+  public static final int FROM_OTHER = 0;
+  public static final int FROM_PAUSE_BEFORE_CALL_SUPER = 4;
+  public static final int FROM_RESUME_BEFORE_CALL_SUPER = 3;
+  public static final int FROM_START_BEFORE_CALL_SUPER = 1;
+  public static final int FROM_STOP_BEFORE_CALL_SUPER = 2;
   private static final int MSG_BACK = 0;
   private static final int MSG_FORE = 1;
   public static final String TAG = "ApplicationLife";
-  private static List<Foreground.AppLifeCycleCallback> callbacks = new LinkedList();
+  private static Foreground.ForegroundActivityLifecycleCallbacks sCallbacks;
   private static Context sContext;
-  public static int sCountActivity = 0;
-  public static int sCountResume = 0;
+  public static AtomicInteger sCountActivity = new AtomicInteger(0);
+  public static AtomicInteger sCountResume = new AtomicInteger(0);
   private static Handler sHandler;
   private static String sProcessName;
   private static WeakReference<Activity> sTopActivity;
+  
+  public static void addActivityLifeCallback(QActivityLifecycleCallbacks paramQActivityLifecycleCallbacks)
+  {
+    try
+    {
+      if (sCallbacks != null) {
+        sCallbacks.addActivityLifecycleCallbacks(paramQActivityLifecycleCallbacks);
+      }
+      return;
+    }
+    finally
+    {
+      paramQActivityLifecycleCallbacks = finally;
+      throw paramQActivityLifecycleCallbacks;
+    }
+  }
+  
+  public static int getActivityCount()
+  {
+    return sCountActivity.get();
+  }
+  
+  public static int getActivityCountFromLifecycle(int paramInt)
+  {
+    if (paramInt == 2) {
+      return sCountActivity.get() - 1;
+    }
+    if (paramInt == 1) {
+      return sCountActivity.get() + 1;
+    }
+    return sCountActivity.get();
+  }
+  
+  public static int getResumeActivityCount()
+  {
+    return sCountResume.get();
+  }
+  
+  public static int getResumeActivityCountFromLifecycle(int paramInt)
+  {
+    if (paramInt == 4) {
+      return sCountResume.get() - 1;
+    }
+    if (paramInt == 3) {
+      return sCountResume.get() + 1;
+    }
+    return sCountResume.get();
+  }
   
   public static Activity getTopActivity()
   {
@@ -41,48 +94,37 @@ public class Foreground
   
   public static void init(Context paramContext, Looper paramLooper, String paramString)
   {
-    if (sHandler == null) {
-      try
+    if (sHandler == null) {}
+    try
+    {
+      if (sHandler == null)
       {
-        if (sHandler == null)
-        {
-          sContext = paramContext;
-          sProcessName = paramString;
-          sHandler = new Handler(paramLooper, new Foreground());
-        }
-        return;
+        sContext = paramContext;
+        sProcessName = paramString;
+        sHandler = new Handler(paramLooper, new Foreground());
       }
-      finally {}
+      if (sCallbacks == null)
+      {
+        sCallbacks = new Foreground.ForegroundActivityLifecycleCallbacks();
+        ((Application)paramContext).registerActivityLifecycleCallbacks(sCallbacks);
+      }
+      return;
     }
+    finally {}
   }
   
-  public static void onCreate(Activity paramActivity)
+  public static boolean isCurrentProcessForeground()
   {
-    synchronized (callbacks)
-    {
-      Iterator localIterator = callbacks.iterator();
-      if (localIterator.hasNext()) {
-        ((Foreground.AppLifeCycleCallback)localIterator.next()).onActivityCreated(paramActivity);
-      }
-    }
+    return getActivityCount() > 0;
   }
   
-  public static void onDestroy(Activity paramActivity)
-  {
-    synchronized (callbacks)
-    {
-      Iterator localIterator = callbacks.iterator();
-      if (localIterator.hasNext()) {
-        ((Foreground.AppLifeCycleCallback)localIterator.next()).onActivityDestroyed(paramActivity);
-      }
-    }
-  }
+  private static void onCreate(Activity paramActivity) {}
   
-  public static void onPause(AppRuntime paramAppRuntime)
+  private static void onDestroy(Activity paramActivity) {}
+  
+  private static void onPause(AppRuntime paramAppRuntime)
   {
-    int i = sCountResume - 1;
-    sCountResume = i;
-    if ((i <= 0) && (paramAppRuntime != null))
+    if ((sCountResume.decrementAndGet() <= 0) && (paramAppRuntime != null))
     {
       paramAppRuntime.isBackgroundPause = true;
       Iterator localIterator = paramAppRuntime.subRuntimeMap.values().iterator();
@@ -93,11 +135,9 @@ public class Foreground
     }
   }
   
-  public static void onResume(AppRuntime paramAppRuntime)
+  private static void onResume(AppRuntime paramAppRuntime)
   {
-    int i = sCountResume + 1;
-    sCountResume = i;
-    if ((i > 0) && (paramAppRuntime != null))
+    if ((sCountResume.incrementAndGet() > 0) && (paramAppRuntime != null))
     {
       paramAppRuntime.isBackgroundPause = false;
       Iterator localIterator = paramAppRuntime.subRuntimeMap.values().iterator();
@@ -108,46 +148,51 @@ public class Foreground
     }
   }
   
-  public static void onStart(AppRuntime paramAppRuntime, Activity paramActivity)
+  private static void onStart(AppRuntime paramAppRuntime, Activity paramActivity)
   {
     sTopActivity = new WeakReference(paramActivity);
-    sCountActivity += 1;
-    if ((sCountActivity == 1) || (sCountActivity == 2))
+    sCountActivity.incrementAndGet();
+    if ((getActivityCount() == 1) || (getActivityCount() == 2))
     {
       long l = SystemClock.uptimeMillis();
       paramAppRuntime = sHandler.obtainMessage(1, (int)(l >>> 32), (int)(l & 0xFFFFFFFF), paramAppRuntime);
+      sCallbacks.onProcessForeground();
       sHandler.sendMessageDelayed(paramAppRuntime, 100L);
     }
   }
   
-  public static void onStop(AppRuntime paramAppRuntime)
+  private static void onStop(AppRuntime paramAppRuntime)
   {
-    QLog.d("ApplicationLife", 1, new Object[] { "[process] onStop: invoked. ", " sCountActivity: ", Integer.valueOf(sCountActivity) });
-    int i = sCountActivity - 1;
-    sCountActivity = i;
-    if (i == 0)
+    QLog.d("ApplicationLife", 1, new Object[] { "[process] onStop: invoked. ", " sCountActivity: ", Integer.valueOf(getActivityCount()) });
+    if ((sCountActivity.decrementAndGet() == 0) && (paramAppRuntime != null))
     {
       long l = SystemClock.uptimeMillis();
       paramAppRuntime = sHandler.obtainMessage(0, (int)(l >>> 32), (int)(l & 0xFFFFFFFF), paramAppRuntime);
       sHandler.sendMessageDelayed(paramAppRuntime, 100L);
-      QLog.d("ApplicationLife", 1, new Object[] { "[process] onStop: invoked. send MSG_BACK", " sCountActivity: ", Integer.valueOf(sCountActivity) });
+      sCallbacks.onProcessBackground();
+      QLog.d("ApplicationLife", 1, new Object[] { "[process] onStop: invoked. send MSG_BACK", " sCountActivity: ", Integer.valueOf(getActivityCount()) });
     }
   }
   
-  public static void registerLifeCycleCallback(Foreground.AppLifeCycleCallback paramAppLifeCycleCallback)
+  public static void removeActivityLifeCallback(QActivityLifecycleCallbacks paramQActivityLifecycleCallbacks)
   {
-    synchronized (callbacks)
+    try
     {
-      if (!callbacks.contains(paramAppLifeCycleCallback)) {
-        callbacks.add(paramAppLifeCycleCallback);
+      if (sCallbacks != null) {
+        sCallbacks.removeActivityLifecycleCallbacks(paramQActivityLifecycleCallbacks);
       }
       return;
+    }
+    finally
+    {
+      paramQActivityLifecycleCallbacks = finally;
+      throw paramQActivityLifecycleCallbacks;
     }
   }
   
   public static void setReady()
   {
-    if (sCountActivity > 0)
+    if (getActivityCount() > 0)
     {
       l = SystemClock.uptimeMillis();
       localMessage = sHandler.obtainMessage(1, (int)(l >>> 32), (int)(l & 0xFFFFFFFF), null);
@@ -159,25 +204,16 @@ public class Foreground
     sHandler.sendMessageDelayed(localMessage, 100L);
   }
   
-  public static void unregisterLifeCycleCallback(Foreground.AppLifeCycleCallback paramAppLifeCycleCallback)
-  {
-    synchronized (callbacks)
-    {
-      callbacks.remove(paramAppLifeCycleCallback);
-      return;
-    }
-  }
-  
   public static void updateRuntimeState(AppRuntime paramAppRuntime)
   {
     boolean bool2 = true;
     if (paramAppRuntime != null)
     {
-      if (sCountResume <= 0)
+      if (getResumeActivityCount() <= 0)
       {
         bool1 = true;
         paramAppRuntime.isBackgroundPause = bool1;
-        if (sCountActivity > 0) {
+        if (getActivityCount() > 0) {
           break label91;
         }
       }
@@ -198,69 +234,55 @@ public class Foreground
     }
   }
   
-  public boolean handleMessage(Message arg1)
+  public boolean handleMessage(Message paramMessage)
   {
-    AppRuntime localAppRuntime = (AppRuntime)???.obj;
-    long l = ???.arg1 << 32 | ???.arg2 & 0xFFFFFFFF;
+    AppRuntime localAppRuntime = (AppRuntime)paramMessage.obj;
+    long l = paramMessage.arg1 << 32 | paramMessage.arg2 & 0xFFFFFFFF;
     if (QLog.isColorLevel()) {
-      QLog.i("mqq", 2, ???.what + ", " + sProcessName + ", " + l + ", " + sCountActivity + ", rt = " + localAppRuntime);
+      QLog.i("mqq", 2, paramMessage.what + ", " + sProcessName + ", " + l + ", " + getActivityCount() + ", rt = " + localAppRuntime);
     }
-    switch (???.what)
+    switch (paramMessage.what)
     {
     }
     do
     {
       return true;
-      if (sCountActivity > 0)
+      if (getActivityCount() > 0)
       {
         if ((localAppRuntime != null) && (localAppRuntime.isBackgroundStop))
         {
           localAppRuntime.onRunningForeground();
-          ??? = localAppRuntime.subRuntimeMap.values().iterator();
-          while (???.hasNext()) {
-            ((AppRuntime)???.next()).onRunningForeground();
+          paramMessage = localAppRuntime.subRuntimeMap.values().iterator();
+          while (paramMessage.hasNext()) {
+            ((AppRuntime)paramMessage.next()).onRunningForeground();
           }
         }
-        synchronized (callbacks)
-        {
-          Iterator localIterator2 = callbacks.iterator();
-          if (localIterator2.hasNext()) {
-            ((Foreground.AppLifeCycleCallback)localIterator2.next()).onRunningForeground();
-          }
-        }
-        ??? = new Intent("com.tencent.process.starting");
-        ???.putExtra("runningProcessName", sProcessName);
-        ???.putExtra("runningtime", l);
-        sContext.sendBroadcast(???);
+        paramMessage = new Intent("com.tencent.process.starting");
+        paramMessage.putExtra("runningProcessName", sProcessName);
+        paramMessage.putExtra("runningtime", l);
+        sContext.sendBroadcast(paramMessage);
         QLog.d("ApplicationLife", 1, new Object[] { "[process] handleMessage: invoked. send starting", " sProcessName: ", sProcessName });
       }
-      QLog.d("ApplicationLife", 1, new Object[] { "[process] handleMessage: invoked. ", " sCountActivity: ", Integer.valueOf(sCountActivity) });
-    } while (sCountActivity != 0);
-    if (localObject1 != null)
+      QLog.d("ApplicationLife", 1, new Object[] { "[process] handleMessage: invoked. ", " sCountActivity: ", Integer.valueOf(getActivityCount()) });
+    } while (getActivityCount() != 0);
+    if (localAppRuntime != null)
     {
-      localObject1.onRunningBackground();
-      ??? = localObject1.subRuntimeMap.values().iterator();
-      while (???.hasNext()) {
-        ((AppRuntime)???.next()).onRunningBackground();
-      }
-    }
-    synchronized (callbacks)
-    {
-      Iterator localIterator1 = callbacks.iterator();
-      if (localIterator1.hasNext()) {
-        ((Foreground.AppLifeCycleCallback)localIterator1.next()).onRunningBackground();
+      localAppRuntime.onRunningBackground();
+      paramMessage = localAppRuntime.subRuntimeMap.values().iterator();
+      while (paramMessage.hasNext()) {
+        ((AppRuntime)paramMessage.next()).onRunningBackground();
       }
     }
     try
     {
-      ??? = new Intent("com.tencent.process.stopping");
-      ???.putExtra("runningProcessName", sProcessName);
-      ???.putExtra("runningtime", l);
-      sContext.sendBroadcast(???);
+      paramMessage = new Intent("com.tencent.process.stopping");
+      paramMessage.putExtra("runningProcessName", sProcessName);
+      paramMessage.putExtra("runningtime", l);
+      sContext.sendBroadcast(paramMessage);
       QLog.d("ApplicationLife", 1, new Object[] { "[process] handleMessage: invoked. send stopping", " sProcessName: ", sProcessName });
       return true;
     }
-    catch (Exception ???) {}
+    catch (Exception paramMessage) {}
     return true;
   }
 }

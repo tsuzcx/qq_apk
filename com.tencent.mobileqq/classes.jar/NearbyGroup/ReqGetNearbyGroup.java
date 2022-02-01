@@ -10,23 +10,23 @@ public final class ReqGetNearbyGroup
   static LBSInfo cache_stLBSInfo;
   static byte[] cache_vClientVersion;
   static byte[] cache_vContext = (byte[])new byte[1];
-  public boolean bShowActivity;
-  public boolean bShowOpen;
-  public boolean bShowXiaoQu;
-  public int iCount;
-  public int iFilterId;
-  public int iKeyType;
-  public short shSortType;
-  public short shVersion;
-  public LBSInfo stLBSInfo;
+  public boolean bShowActivity = false;
+  public boolean bShowOpen = false;
+  public boolean bShowXiaoQu = false;
+  public int iCount = 0;
+  public int iFilterId = 0;
+  public int iKeyType = 0;
+  public short shSortType = 0;
+  public short shVersion = 0;
+  public LBSInfo stLBSInfo = null;
   public String strCity = "";
   public String strCityCode = "";
   public String strGroupArea = "";
   public String strKey = "";
-  public long uiClientType;
-  public long uiLabelStyle;
-  public byte[] vClientVersion;
-  public byte[] vContext;
+  public long uiClientType = 0L;
+  public long uiLabelStyle = 0L;
+  public byte[] vClientVersion = null;
+  public byte[] vContext = null;
   
   static
   {

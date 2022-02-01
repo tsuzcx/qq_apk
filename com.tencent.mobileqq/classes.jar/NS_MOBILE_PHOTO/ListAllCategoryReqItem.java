@@ -9,7 +9,7 @@ public final class ListAllCategoryReqItem
 {
   static CategoryPoiMap cache_poi_map_req = new CategoryPoiMap();
   public String page_str = "";
-  public CategoryPoiMap poi_map_req;
+  public CategoryPoiMap poi_map_req = null;
   
   public ListAllCategoryReqItem() {}
   

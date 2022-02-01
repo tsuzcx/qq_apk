@@ -2,18 +2,16 @@ package com.tencent.mobileqq.surfaceviewaction.builder;
 
 import android.os.Handler;
 import android.os.Looper;
-import bdyb;
-import bdyn;
-import bdyw;
+import com.tencent.mobileqq.surfaceviewaction.ISpriteView;
 
-public class SceneBuilder$1
+class SceneBuilder$1
   implements Runnable
 {
-  public SceneBuilder$1(bdyn parambdyn, bdyb parambdyb, bdyw parambdyw) {}
+  SceneBuilder$1(SceneBuilder paramSceneBuilder, ISpriteView paramISpriteView, SceneBuilder.OnBuiltListener paramOnBuiltListener) {}
   
   public void run()
   {
-    String str = bdyn.a(bdyn.a(this.this$0) + "/scene.json");
+    String str = SceneBuilder.a(SceneBuilder.a(this.this$0) + "/scene.json");
     new Handler(Looper.getMainLooper()).post(new SceneBuilder.1.1(this, str));
   }
 }

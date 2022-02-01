@@ -9,7 +9,7 @@ public final class elaborate_feed_report_req
   extends JceStruct
 {
   static ArrayList<session_report> cache_vecSessionReport = new ArrayList();
-  public ArrayList<session_report> vecSessionReport;
+  public ArrayList<session_report> vecSessionReport = null;
   
   static
   {

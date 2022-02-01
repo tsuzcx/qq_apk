@@ -7,16 +7,16 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import bnrh;
+import dov.com.qq.im.ae.util.AEQLog;
 import dov.com.qq.im.aeeditor.view.timebar.ScaleTimeBar;
 
 public class ScaleScrollLayout
   extends RelativeLayout
 {
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private Point jdField_a_of_type_AndroidGraphicsPoint = null;
+  private View jdField_a_of_type_AndroidViewView = null;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public ScaleScrollLayout(Context paramContext)
   {
@@ -50,7 +50,7 @@ public class ScaleScrollLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    bnrh.a("MvCutFragment", paramMotionEvent.getAction() + "");
+    AEQLog.a("MvCutFragment", paramMotionEvent.getAction() + "");
     this.jdField_a_of_type_AndroidGraphicsPoint = new Point((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY());
     if ((paramMotionEvent.getActionMasked() == 1) || (paramMotionEvent.getActionMasked() == 3)) {}
     for (boolean bool = true;; bool = false)
@@ -102,7 +102,7 @@ public class ScaleScrollLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.timeline.ScaleScrollLayout
  * JD-Core Version:    0.7.0.1
  */

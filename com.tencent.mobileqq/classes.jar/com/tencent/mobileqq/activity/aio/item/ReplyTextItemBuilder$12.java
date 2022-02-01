@@ -3,10 +3,10 @@ package com.tencent.mobileqq.activity.aio.item;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 
-public final class ReplyTextItemBuilder$12
+final class ReplyTextItemBuilder$12
   implements Runnable
 {
-  public ReplyTextItemBuilder$12(String paramString, URLDrawable paramURLDrawable) {}
+  ReplyTextItemBuilder$12(String paramString, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public final class ReplyTextItemBuilder$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.12
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -17,7 +18,6 @@ import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.S
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import znl;
 
 public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   extends WebViewFragment
@@ -27,20 +27,20 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   {
     if (super.getWebView() != null)
     {
-      if ((this.mUIStyle.mRulesFromUrl & 0x80000) == 0L) {
+      if ((this.mUIStyle.a & 0x80000) == 0L) {
         break label223;
       }
-      this.mUIStyleHandler.mLoadingProgressBar.setVisibility(8);
+      this.mUIStyleHandler.a.setVisibility(8);
       Intent localIntent = getIntent();
       if ((localIntent == null) || (!localIntent.getBooleanExtra("from_qreader", false))) {
         break label172;
       }
       a((ViewGroup)getActivity().getWindow().getDecorView());
-      if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
-        ((RefreshView)this.mUIStyleHandler.webviewWrapper).a(false);
+      if ((this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
+        ((RefreshView)this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).a(false);
       }
-      if (this.mUIStyleHandler.mBrowserTips != null) {
-        this.mUIStyleHandler.mBrowserTips.setVisibility(8);
+      if (this.mUIStyleHandler.jdField_c_of_type_AndroidViewView != null) {
+        this.mUIStyleHandler.jdField_c_of_type_AndroidViewView.setVisibility(8);
       }
       if (this.webView.getX5WebViewExtension() == null) {
         break label195;
@@ -64,7 +64,7 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
       setRightButton(true);
       super.getWebView().setVisibility(4);
       return;
-      super.getActivity().getWindow().setBackgroundDrawableResource(2131167296);
+      super.getActivity().getWindow().setBackgroundDrawableResource(2131167305);
       break;
       label195:
       this.webView.setBackgroundColor(0);
@@ -73,8 +73,8 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
         this.webView.setLayerType(1, null);
         continue;
         label223:
-        if (this.mUIStyleHandler.mBrowserTips != null) {
-          this.mUIStyleHandler.mBrowserTips.setVisibility(0);
+        if (this.mUIStyleHandler.jdField_c_of_type_AndroidViewView != null) {
+          this.mUIStyleHandler.jdField_c_of_type_AndroidViewView.setVisibility(0);
         }
       }
     }
@@ -129,13 +129,13 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    znl.a(1, 2131694977);
+    QRUtils.a(1, 2131695216);
     super.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity.QQVasH5PayBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

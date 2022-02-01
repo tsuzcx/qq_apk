@@ -1,22 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pvm;
-import qfy;
-import rpo;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.struct.KingMomentInfo;
 
-public class KingShareReadInjoyModule$1
+class KingShareReadInjoyModule$1
   implements Runnable
 {
-  public KingShareReadInjoyModule$1(qfy paramqfy, int paramInt, rpo paramrpo) {}
+  KingShareReadInjoyModule$1(KingShareReadInjoyModule paramKingShareReadInjoyModule, int paramInt, KingMomentInfo paramKingMomentInfo) {}
   
   public void run()
   {
-    pvm.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Rpo);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKingMomentInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.KingShareReadInjoyModule.1
  * JD-Core Version:    0.7.0.1
  */

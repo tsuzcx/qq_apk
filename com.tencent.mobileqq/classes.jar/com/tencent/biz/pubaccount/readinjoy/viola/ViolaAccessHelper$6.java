@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import ttv;
-
-public final class ViolaAccessHelper$6
+final class ViolaAccessHelper$6
   implements Runnable
 {
-  public ViolaAccessHelper$6(ttv paramttv) {}
+  ViolaAccessHelper$6(ViolaAccessHelper.SDKInitCallback paramSDKInitCallback) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public final class ViolaAccessHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.6
  * JD-Core Version:    0.7.0.1
  */

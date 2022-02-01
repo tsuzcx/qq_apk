@@ -47,59 +47,59 @@ class PlatformChannel$1
     if (((String)localObject).equals("SystemChrome.setPreferredOrientations"))
     {
       i = 2;
-      break label986;
+      break label903;
       if (((String)localObject).equals("SystemChrome.setEnabledSystemUIOverlays"))
       {
         i = 4;
-        break label986;
+        break label903;
         if (((String)localObject).equals("Clipboard.getData"))
         {
-          i = 10;
-          break label986;
+          i = 8;
+          break label903;
           if (((String)localObject).equals("SystemChrome.setSystemUIOverlayStyle"))
           {
             i = 6;
-            break label986;
-            if (((String)localObject).equals("SystemChrome.restoreSystemUIOverlays"))
+            break label903;
+            if (((String)localObject).equals("Clipboard.hasStrings"))
             {
-              i = 5;
-              break label986;
-              if (((String)localObject).equals("SystemGestures.setSystemGestureExclusionRects"))
+              i = 10;
+              break label903;
+              if (((String)localObject).equals("SystemChrome.restoreSystemUIOverlays"))
               {
-                i = 9;
-                break label986;
-                if (((String)localObject).equals("SystemGestures.getSystemGestureExclusionRects"))
+                i = 5;
+                break label903;
+                if (((String)localObject).equals("SystemSound.play"))
                 {
-                  i = 8;
-                  break label986;
-                  if (((String)localObject).equals("SystemSound.play"))
+                  i = 0;
+                  break label903;
+                  if (((String)localObject).equals("HapticFeedback.vibrate"))
                   {
-                    i = 0;
-                    break label986;
-                    if (((String)localObject).equals("HapticFeedback.vibrate"))
+                    i = 1;
+                    break label903;
+                    if (((String)localObject).equals("SystemChrome.setApplicationSwitcherDescription"))
                     {
-                      i = 1;
-                      break label986;
-                      if (((String)localObject).equals("SystemChrome.setApplicationSwitcherDescription"))
+                      i = 3;
+                      break label903;
+                      if (((String)localObject).equals("Clipboard.setData"))
                       {
-                        i = 3;
-                        break label986;
-                        if (((String)localObject).equals("Clipboard.setData"))
+                        i = 9;
+                        break label903;
+                        if (((String)localObject).equals("SystemNavigator.pop"))
                         {
-                          i = 11;
-                          break label986;
-                          if (((String)localObject).equals("SystemNavigator.pop"))
-                          {
-                            i = 7;
-                            break label986;
-                            paramMethodCall = ((JSONObject)paramMethodCall).getString("text");
-                            PlatformChannel.access$000(this.this$0).setClipboardData(paramMethodCall);
-                            paramResult.success(null);
-                            return;
-                            localObject = (String)paramMethodCall;
-                            if (localObject == null) {
-                              break label1051;
-                            }
+                          i = 7;
+                          break label903;
+                          boolean bool = PlatformChannel.access$000(this.this$0).clipboardHasStrings();
+                          paramMethodCall = new JSONObject();
+                          paramMethodCall.put("value", bool);
+                          paramResult.success(paramMethodCall);
+                          return;
+                          paramMethodCall = ((JSONObject)paramMethodCall).getString("text");
+                          PlatformChannel.access$000(this.this$0).setClipboardData(paramMethodCall);
+                          paramResult.success(null);
+                          return;
+                          localObject = (String)paramMethodCall;
+                          if (localObject == null) {
+                            break label967;
                           }
                         }
                       }
@@ -134,24 +134,6 @@ class PlatformChannel$1
         paramResult.error("error", paramMethodCall.toString(), null);
       }
       paramResult.success(null);
-      return;
-      if (!(paramMethodCall instanceof JSONArray))
-      {
-        paramResult.error("inputTypeError", "Input type is incorrect. Ensure that a List<Map<String, int>> is passed as the input for SystemGestureExclusionRects.setSystemGestureExclusionRects.", null);
-        return;
-      }
-      paramMethodCall = (JSONArray)paramMethodCall;
-      paramMethodCall = PlatformChannel.access$600(this.this$0, paramMethodCall);
-      PlatformChannel.access$000(this.this$0).setSystemGestureExclusionRects(paramMethodCall);
-      paramResult.success(null);
-      return;
-      paramMethodCall = PlatformChannel.access$000(this.this$0).getSystemGestureExclusionRects();
-      if (paramMethodCall == null)
-      {
-        paramResult.error("error", "Exclusion rects only exist for Android API 29+.", null);
-        return;
-      }
-      paramResult.success(PlatformChannel.access$500(this.this$0, paramMethodCall));
       return;
       PlatformChannel.access$000(this.this$0).popSystemNavigator();
       paramResult.success(null);
@@ -231,34 +213,34 @@ class PlatformChannel$1
           }
           catch (NoSuchFieldException paramMethodCall)
           {
-            break label872;
+            label789:
+            break label789;
           }
         }
         catch (NoSuchFieldException paramMethodCall)
         {
-          label776:
-          break label776;
+          label693:
+          break label693;
         }
       }
       catch (NoSuchFieldException paramMethodCall)
       {
-        label708:
-        label872:
-        break label708;
+        label625:
+        break label625;
       }
-      label986:
+      label903:
       switch (i)
       {
       }
       break;
-      label1051:
+      label967:
       paramMethodCall = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformChannel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,15 @@
 package com.tencent.biz.richframework.eventbus;
 
-import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.biz.richframework.delegate.impl.RFApplication;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class SimpleEventBus
 {
@@ -20,8 +18,8 @@ public class SimpleEventBus
   public static String IPC_SERVICE_MODULE_NAME;
   private static final SimpleEventBus OUR_INSTANCE = new SimpleEventBus();
   private static final String TAG = "SimpleEventBus";
-  private WeakReference<NativePlugin.JSContext> mCurrentJsContext;
   private final ConcurrentHashMap<String, ConcurrentHashMap<Integer, WeakReference<SimpleEventReceiver>>> mEventCenter = new ConcurrentHashMap();
+  private SimpleEventBusReceiver mSimpleEventBusReceiver;
   
   static
   {
@@ -31,15 +29,7 @@ public class SimpleEventBus
   
   private SimpleEventBus()
   {
-    if (BaseApplicationImpl.sProcessId == 1) {}
-    for (;;)
-    {
-      if (i != 0) {
-        QIPCServerHelper.getInstance().register(new SimpleEventBus.1(this, "SUBSCRIBE_IPC_MODULE"));
-      }
-      return;
-      i = 0;
-    }
+    initBroadCastReceiver();
   }
   
   public static SimpleEventBus getInstance()
@@ -47,30 +37,23 @@ public class SimpleEventBus
     return OUR_INSTANCE;
   }
   
-  private void interceptBaseEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  private void initBroadCastReceiver()
   {
-    if ((this.mCurrentJsContext != null) && (this.mCurrentJsContext.get() != null) && ((paramSimpleBaseEvent instanceof PraisedUpdateEvents))) {
-      notifyMiniProgram((PraisedUpdateEvents)paramSimpleBaseEvent);
-    }
-  }
-  
-  private void notifyMiniProgram(PraisedUpdateEvents paramPraisedUpdateEvents)
-  {
-    try
+    if ((RFApplication.getApplication() != null) && (this.mSimpleEventBusReceiver == null))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("feedid", paramPraisedUpdateEvents.mTargetFeedId);
-      localJSONObject.put("likestatus", paramPraisedUpdateEvents.mPraisedStatus);
-      paramPraisedUpdateEvents = new JSONObject();
-      paramPraisedUpdateEvents.put("data", localJSONObject);
-      ((NativePlugin.JSContext)this.mCurrentJsContext.get()).callJs("onSubscribeDoLikeUpdateEvent", paramPraisedUpdateEvents);
-      QLog.d("SimpleEventBus", 2, "notifyMiniProgram onSubscribeDoLikeUpdateEvent success ");
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("SimpleEventBusReceiver_DISPATCH_SIMPLE_BUS_EVENT");
+      this.mSimpleEventBusReceiver = new SimpleEventBusReceiver();
+      if (RFApplication.getApplication() == null) {
+        break label57;
+      }
+      RFApplication.getApplication().registerReceiver(this.mSimpleEventBusReceiver, localIntentFilter);
+    }
+    label57:
+    while (!RFApplication.isDebug()) {
       return;
     }
-    catch (JSONException paramPraisedUpdateEvents)
-    {
-      paramPraisedUpdateEvents.printStackTrace();
-    }
+    throw new RuntimeException("please invoke RFApplication at your application onCreate Method");
   }
   
   private void registerEachReceiver(String paramString, SimpleEventReceiver paramSimpleEventReceiver)
@@ -82,7 +65,7 @@ public class SimpleEventBus
     }
     localConcurrentHashMap1.put(Integer.valueOf(paramSimpleEventReceiver.hashCode()), new WeakReference(paramSimpleEventReceiver));
     this.mEventCenter.put(paramString, localConcurrentHashMap1);
-    QLog.d("SimpleEventBus", 2, "registerReceiver event Name:" + paramString + ",key：[" + paramSimpleEventReceiver.getClass().getSimpleName() + ":" + paramSimpleEventReceiver.hashCode() + "], subscribers size:" + localConcurrentHashMap1.size());
+    RFLog.d("SimpleEventBus", RFLog.CLR, "registerReceiver event Name:" + paramString + ",key：[" + paramSimpleEventReceiver.getClass().getSimpleName() + ":" + paramSimpleEventReceiver.hashCode() + "], subscribers size:" + localConcurrentHashMap1.size());
   }
   
   private void unRegisterEachReceiver(String paramString, SimpleEventReceiver paramSimpleEventReceiver)
@@ -95,31 +78,49 @@ public class SimpleEventBus
     if (localConcurrentHashMap.size() == 0) {
       this.mEventCenter.remove(paramString);
     }
-    QLog.d("SimpleEventBus", 2, "unRegisterReceiver event Name:" + paramString + ",key：[" + paramSimpleEventReceiver.getClass().getSimpleName() + ":" + paramSimpleEventReceiver.hashCode() + "], subscribers size:" + localConcurrentHashMap.size());
+    RFLog.d("SimpleEventBus", RFLog.CLR, "unRegisterReceiver event Name:" + paramString + ",key：[" + paramSimpleEventReceiver.getClass().getSimpleName() + ":" + paramSimpleEventReceiver.hashCode() + "], subscribers size:" + localConcurrentHashMap.size());
   }
   
   public void dispatchEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    Object localObject = (ConcurrentHashMap)this.mEventCenter.get(paramSimpleBaseEvent.getClass().getName());
-    if (localObject == null) {}
+    dispatchEvent(paramSimpleBaseEvent, false);
+  }
+  
+  public void dispatchEvent(SimpleBaseEvent paramSimpleBaseEvent, boolean paramBoolean)
+  {
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = new Intent();
+      ((Intent)localObject).setAction("SimpleEventBusReceiver_DISPATCH_SIMPLE_BUS_EVENT");
+      ((Intent)localObject).putExtra("intent_key_dispatch_event", paramSimpleBaseEvent);
+      if (RFApplication.getApplication() != null) {
+        RFApplication.getApplication().sendBroadcast((Intent)localObject);
+      }
+    }
     for (;;)
     {
       return;
-      interceptBaseEvent(paramSimpleBaseEvent);
-      localObject = ((ConcurrentHashMap)localObject).values().iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject = (ConcurrentHashMap)this.mEventCenter.get(paramSimpleBaseEvent.getClass().getName());
+      if (localObject != null)
       {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((SimpleEventReceiver)localWeakReference.get()).onReceiveEvent(paramSimpleBaseEvent);
+        localObject = ((ConcurrentHashMap)localObject).values().iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+          if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+            ((SimpleEventReceiver)localWeakReference.get()).onReceiveEvent(paramSimpleBaseEvent);
+          }
         }
       }
     }
   }
   
-  public void registerCurrentJsContext(NativePlugin.JSContext paramJSContext)
+  public void onDestroy()
   {
-    this.mCurrentJsContext = new WeakReference(paramJSContext);
+    if ((RFApplication.getApplication() != null) && (this.mSimpleEventBusReceiver != null)) {
+      RFApplication.getApplication().unregisterReceiver(this.mSimpleEventBusReceiver);
+    }
   }
   
   public void registerReceiver(SimpleEventReceiver paramSimpleEventReceiver)
@@ -158,7 +159,7 @@ public class SimpleEventBus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.eventbus.SimpleEventBus
  * JD-Core Version:    0.7.0.1
  */

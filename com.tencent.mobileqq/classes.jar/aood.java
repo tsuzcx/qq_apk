@@ -1,7 +1,0 @@
-public abstract interface aood {}
-
-
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     aood
- * JD-Core Version:    0.7.0.1
- */

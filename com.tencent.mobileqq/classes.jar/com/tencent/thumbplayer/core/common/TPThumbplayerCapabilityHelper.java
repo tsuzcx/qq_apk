@@ -29,8 +29,8 @@ public class TPThumbplayerCapabilityHelper
   public static TPCodecCapability.TPVCodecMaxCapability getVCodecMaxCapability(int paramInt)
   {
     TPCodecCapability.TPVCodecMaxCapability localTPVCodecMaxCapability2 = new TPCodecCapability.TPVCodecMaxCapability(0, 0, 0, 30);
-    HashMap localHashMap1 = TPPlayerDecoderCapability.getVCodecDecoderMaxCapabilityMap(TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC);
-    HashMap localHashMap2 = TPPlayerDecoderCapability.getVCodecDecoderMaxCapabilityMap(TPDecoderType.TP_VIDEO_DECODER_FFMPEG);
+    HashMap localHashMap1 = TPPlayerDecoderCapability.getVCodecDecoderMaxCapabilityMap(102);
+    HashMap localHashMap2 = TPPlayerDecoderCapability.getVCodecDecoderMaxCapabilityMap(101);
     TPCodecCapability.TPVCodecMaxCapability localTPVCodecMaxCapability1;
     if ((localHashMap1 != null) && (localHashMap2 != null))
     {
@@ -41,13 +41,13 @@ public class TPThumbplayerCapabilityHelper
         if (localHashMap2.containsKey(Integer.valueOf(paramInt)))
         {
           if (((TPCodecCapability.TPVCodecMaxCapability)localHashMap1.get(Integer.valueOf(paramInt))).maxLumaSamples < ((TPCodecCapability.TPVCodecMaxCapability)localHashMap2.get(Integer.valueOf(paramInt))).maxLumaSamples) {
-            break label110;
+            break label108;
           }
           localTPVCodecMaxCapability1 = (TPCodecCapability.TPVCodecMaxCapability)localHashMap1.get(Integer.valueOf(paramInt));
         }
       }
     }
-    label110:
+    label108:
     do
     {
       do
@@ -144,10 +144,10 @@ public class TPThumbplayerCapabilityHelper
   
   public static boolean isVCodecCapabilityCanSupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (isVCodecCapabilitySupport(TPDecoderType.TP_VIDEO_DECODER_FFMPEG, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6)) {
+    if (isVCodecCapabilitySupport(101, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6)) {
       return true;
     }
-    return isVCodecCapabilitySupport(TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+    return isVCodecCapabilitySupport(102, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
   }
   
   @Deprecated
@@ -163,7 +163,7 @@ public class TPThumbplayerCapabilityHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPThumbplayerCapabilityHelper
  * JD-Core Version:    0.7.0.1
  */

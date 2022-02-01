@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.intimate.view;
 
-import agll;
-import agmk;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -10,11 +8,12 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import bdla;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.intimate.BaseIntimateView;
 import com.tencent.mobileqq.data.IntimateInfo;
 import com.tencent.mobileqq.data.IntimateInfo.CommonBody;
 import com.tencent.mobileqq.data.IntimateInfo.FriendGiftInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -24,13 +23,13 @@ import java.util.List;
 public class IntimateContentItemGiftView
   extends IntimateContentItemBaseView
 {
-  private agmk jdField_a_of_type_Agmk;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private IntimateContentItemGiftView.FriendGiftAdapter jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemGiftView$FriendGiftAdapter;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   private TextView b;
   private int c = 1;
-  private boolean d;
+  private boolean d = false;
   
   public IntimateContentItemGiftView(Context paramContext)
   {
@@ -49,14 +48,14 @@ public class IntimateContentItemGiftView
   
   protected void a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559315, this, true);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131367369);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367370));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)localView.findViewById(2131367373));
-    this.b = ((TextView)localView.findViewById(2131367372));
-    this.jdField_a_of_type_Agmk = new agmk(this, null);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(ViewUtils.dip2px(5.0F));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Agmk);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559380, this, true);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131367556);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367557));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)localView.findViewById(2131367560));
+    this.b = ((TextView)localView.findViewById(2131367559));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemGiftView$FriendGiftAdapter = new IntimateContentItemGiftView.FriendGiftAdapter(this, null);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(ViewUtils.a(5.0F));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemGiftView$FriendGiftAdapter);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnTouchListener(this);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setTransTouchStateToParent(true);
@@ -70,7 +69,7 @@ public class IntimateContentItemGiftView
     default: 
       return;
     }
-    paramView = new Intent(this.jdField_a_of_type_Agll.a(), QQBrowserActivity.class);
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), QQBrowserActivity.class);
     String str = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.friendGiftInfo.str_custom_url;
     if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, String.format("goToFriendGiftWebPage, url: %s", new Object[] { str }));
@@ -79,10 +78,10 @@ public class IntimateContentItemGiftView
     paramView.putExtra("finish_animation_out_to_right", true);
     paramView.putExtra("is_wrap_content", true);
     paramView.putExtra("hide_left_button", false);
-    if (this.jdField_a_of_type_Agll.a() != null) {
-      this.jdField_a_of_type_Agll.a().startActivity(paramView);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().startActivity(paramView);
     }
-    bdla.b(null, "dc00898", "", "", "0X800A3B4", "0X800A3B4", this.c, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A3B4", "0X800A3B4", this.c, 0, "", "", "", "");
   }
   
   protected void a(IntimateInfo paramIntimateInfo, int paramInt)
@@ -90,15 +89,15 @@ public class IntimateContentItemGiftView
     this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(paramIntimateInfo.friendGiftInfo.str_send_times));
     this.b.setText(paramIntimateInfo.friendGiftInfo.str_desc);
     if (paramIntimateInfo.friendGiftInfo.str_gift_url.size() > 6) {
-      this.jdField_a_of_type_Agmk.a(paramIntimateInfo.friendGiftInfo.str_gift_url.subList(0, 6));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemGiftView$FriendGiftAdapter.a(paramIntimateInfo.friendGiftInfo.str_gift_url.subList(0, 6));
     }
     for (;;)
     {
       if (this.d) {
-        bdla.b(null, "dc00898", "", "", "0X800A3B3", "0X800A3B3", this.c, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800A3B3", "0X800A3B3", this.c, 0, "", "", "", "");
       }
       return;
-      this.jdField_a_of_type_Agmk.a(paramIntimateInfo.friendGiftInfo.str_gift_url);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemGiftView$FriendGiftAdapter.a(paramIntimateInfo.friendGiftInfo.str_gift_url);
     }
   }
   
@@ -134,7 +133,7 @@ public class IntimateContentItemGiftView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemGiftView
  * JD-Core Version:    0.7.0.1
  */

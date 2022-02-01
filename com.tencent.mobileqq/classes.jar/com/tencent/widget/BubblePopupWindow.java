@@ -27,13 +27,6 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import blai;
-import blaj;
-import blak;
-import blal;
-import blam;
-import blan;
-import blfw;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
 import com.tencent.qphone.base.util.QLog;
@@ -51,30 +44,30 @@ public class BubblePopupWindow
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
   private View jdField_a_of_type_AndroidViewView;
-  private ViewTreeObserver.OnScrollChangedListener jdField_a_of_type_AndroidViewViewTreeObserver$OnScrollChangedListener = new blai(this);
+  private ViewTreeObserver.OnScrollChangedListener jdField_a_of_type_AndroidViewViewTreeObserver$OnScrollChangedListener = new BubblePopupWindow.1(this);
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private blaj jdField_a_of_type_Blaj;
-  private blak jdField_a_of_type_Blak;
-  private blal jdField_a_of_type_Blal;
-  private blan jdField_a_of_type_Blan;
+  private BubblePopupWindow.MyClipDrawable jdField_a_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable;
+  private BubblePopupWindow.OnDismissListener jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener;
+  private BubblePopupWindow.OnKeyBackListener jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnKeyBackListener;
+  private BubblePopupWindow.QQMenuNoIconEmptyInterface jdField_a_of_type_ComTencentWidgetBubblePopupWindow$QQMenuNoIconEmptyInterface;
   private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int = 1;
   private View jdField_b_of_type_AndroidViewView;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private blaj jdField_b_of_type_Blaj;
+  private BubblePopupWindow.MyClipDrawable jdField_b_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable;
   private boolean jdField_b_of_type_Boolean;
   private int[] jdField_b_of_type_ArrayOfInt = new int[2];
   private int jdField_c_of_type_Int = -1;
-  private blaj jdField_c_of_type_Blaj;
+  private BubblePopupWindow.MyClipDrawable jdField_c_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable;
   private boolean jdField_c_of_type_Boolean;
   private int jdField_d_of_type_Int;
   private boolean jdField_d_of_type_Boolean = true;
   private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
+  private boolean jdField_e_of_type_Boolean = false;
   private int jdField_f_of_type_Int;
   private boolean jdField_f_of_type_Boolean = true;
   private int jdField_g_of_type_Int;
@@ -84,15 +77,15 @@ public class BubblePopupWindow
   private int jdField_i_of_type_Int;
   private boolean jdField_i_of_type_Boolean = true;
   private int jdField_j_of_type_Int;
-  private boolean jdField_j_of_type_Boolean;
+  private boolean jdField_j_of_type_Boolean = false;
   private int jdField_k_of_type_Int;
-  private boolean jdField_k_of_type_Boolean;
+  private boolean jdField_k_of_type_Boolean = false;
   private int jdField_l_of_type_Int;
   private boolean jdField_l_of_type_Boolean;
-  private int jdField_m_of_type_Int;
+  private int jdField_m_of_type_Int = 0;
   private boolean jdField_m_of_type_Boolean;
   private int jdField_n_of_type_Int = 1000;
-  private boolean jdField_n_of_type_Boolean;
+  private boolean jdField_n_of_type_Boolean = false;
   private int o = -1;
   private int p;
   private int q;
@@ -148,9 +141,9 @@ public class BubblePopupWindow
       if (this.jdField_b_of_type_Boolean)
       {
         if (this.jdField_m_of_type_Boolean) {
-          return 2131755179;
+          return 2131755181;
         }
-        return 2131755178;
+        return 2131755180;
       }
       return 0;
     }
@@ -349,11 +342,11 @@ public class BubblePopupWindow
   private void a(WindowManager.LayoutParams paramLayoutParams, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
   {
     if (paramBoolean1) {}
-    for (int i1 = (ViewUtils.getScreenWidth() - paramInt2) / 2;; i1 = ViewUtils.dpToPx(15.0F))
+    for (int i1 = (ViewUtils.a() - paramInt2) / 2;; i1 = ViewUtils.b(15.0F))
     {
       paramLayoutParams.x = (paramInt1 - paramInt2 / 2);
       paramLayoutParams.x = Math.max(i1, paramLayoutParams.x);
-      int i2 = ViewUtils.getScreenWidth();
+      int i2 = ViewUtils.a();
       paramLayoutParams.x = Math.min(paramLayoutParams.x, i2 - i1 - paramInt2);
       if (QLog.isColorLevel()) {
         QLog.d("BubblePopupWindow", 2, "[menu] layoutMenuContainerX ParamX: " + paramLayoutParams.x + " centerX: " + paramInt1 + " isMenusLineFull: " + paramBoolean1 + " popupWidth: " + paramInt2);
@@ -380,7 +373,7 @@ public class BubblePopupWindow
         QLog.d("BubblePopupWindow", 2, "[menu] layoutMenuContainerX handle long view! Bottom: " + (arrayOfInt[1] + paramView1.getHeight() + paramInt2) + " containerBottom: " + paramInteger);
         paramLayoutParams.y = (paramInteger.intValue() - paramInt2);
         if (QLog.isColorLevel()) {
-          QLog.d("BubblePopupWindow", 2, new Object[] { "[menu] layoutMenuContainerY ViewY: ", Integer.valueOf(arrayOfInt[1]), " ViewB: ", Integer.valueOf(arrayOfInt[1] + paramView1.getBottom()), " ViewT: ", Integer.valueOf(paramView1.getTop()), " ViewH: ", Integer.valueOf(paramView1.getHeight()), " ContainerBottom: ", paramInteger, " displayFrame: ", paramRect, " screenH: ", Integer.valueOf(ViewUtils.getScreenHeight()), " screenW: ", Integer.valueOf(ViewUtils.getScreenWidth()), " onTop: ", Boolean.valueOf(paramBoolean), " popupH: ", Integer.valueOf(paramInt2), " ParamY: ", Integer.valueOf(paramLayoutParams.y), " ViewH: ", Integer.valueOf(paramView1.getHeight()), " RootH: ", Integer.valueOf(paramView2.getHeight()) });
+          QLog.d("BubblePopupWindow", 2, new Object[] { "[menu] layoutMenuContainerY ViewY: ", Integer.valueOf(arrayOfInt[1]), " ViewB: ", Integer.valueOf(arrayOfInt[1] + paramView1.getBottom()), " ViewT: ", Integer.valueOf(paramView1.getTop()), " ViewH: ", Integer.valueOf(paramView1.getHeight()), " ContainerBottom: ", paramInteger, " displayFrame: ", paramRect, " screenH: ", Integer.valueOf(ViewUtils.b()), " screenW: ", Integer.valueOf(ViewUtils.a()), " onTop: ", Boolean.valueOf(paramBoolean), " popupH: ", Integer.valueOf(paramInt2), " ParamY: ", Integer.valueOf(paramLayoutParams.y), " ViewH: ", Integer.valueOf(paramView1.getHeight()), " RootH: ", Integer.valueOf(paramView2.getHeight()) });
         }
         this.jdField_l_of_type_Int = (arrayOfInt[0] + paramView1.getWidth() / 2);
         a(paramLayoutParams, this.jdField_l_of_type_Int, bool, paramBoolean, paramInt1);
@@ -400,7 +393,7 @@ public class BubblePopupWindow
     if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewWindowManager == null)) {
       throw new IllegalStateException("You must specify a valid content view by calling setContentView() before attempting to show the popup.");
     }
-    blam localblam = new blam(this, this.jdField_a_of_type_AndroidContentContext);
+    BubblePopupWindow.PopupViewContainer localPopupViewContainer = new BubblePopupWindow.PopupViewContainer(this, this.jdField_a_of_type_AndroidContentContext);
     Object localObject = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
     if (paramBoolean) {
       ((FrameLayout)localObject).setOnClickListener(this);
@@ -414,31 +407,31 @@ public class BubblePopupWindow
     if ((this.jdField_a_of_type_AndroidViewView instanceof QQCustomMenuNoIconLayout))
     {
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Blaj = new blaj(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838977));
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable = new BubblePopupWindow.MyClipDrawable(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839045));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, new FrameLayout.LayoutParams(-2, -2, 17));
       ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, new FrameLayout.LayoutParams(-2, -2, 17));
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 17);
-      localLayoutParams.setMargins(0, ViewUtils.dpToPx(9.0F), 0, ViewUtils.dpToPx(9.0F));
-      localblam.addView((View)localObject, localLayoutParams);
+      localLayoutParams.setMargins(0, ViewUtils.b(9.0F), 0, ViewUtils.b(9.0F));
+      localPopupViewContainer.addView((View)localObject, localLayoutParams);
       this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
       localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 51);
-      paramBoolean = blfw.a();
+      paramBoolean = ThemeImageWrapper.isNightMode();
       if (!(this.jdField_a_of_type_AndroidViewView instanceof QQCustomMenuNoIconLayout)) {
         break label764;
       }
       localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
       if (paramBoolean)
       {
-        i1 = 2130838973;
-        this.jdField_b_of_type_Blaj = new blaj(this, ((Resources)localObject).getDrawable(i1));
+        i1 = 2130839041;
+        this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable = new BubblePopupWindow.MyClipDrawable(this, ((Resources)localObject).getDrawable(i1));
         localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
         if (!paramBoolean) {
           break label757;
         }
-        i1 = 2130838973;
-        localObject = new LayerDrawable(new Drawable[] { ((Resources)localObject).getDrawable(i1), this.jdField_b_of_type_Blaj });
+        i1 = 2130839041;
+        localObject = new LayerDrawable(new Drawable[] { ((Resources)localObject).getDrawable(i1), this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable });
         this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-        localblam.addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
+        localPopupViewContainer.addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
         this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
         localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 83);
         if (!(this.jdField_a_of_type_AndroidViewView instanceof QQCustomMenuNoIconLayout)) {
@@ -448,19 +441,19 @@ public class BubblePopupWindow
         if (!paramBoolean) {
           break label828;
         }
-        i1 = 2130838969;
+        i1 = 2130839037;
         label410:
-        this.jdField_c_of_type_Blaj = new blaj(this, ((Resources)localObject).getDrawable(i1));
+        this.jdField_c_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable = new BubblePopupWindow.MyClipDrawable(this, ((Resources)localObject).getDrawable(i1));
         localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
         if (!paramBoolean) {
           break label835;
         }
-        i1 = 2130838969;
+        i1 = 2130839037;
         label445:
-        localObject = new LayerDrawable(new Drawable[] { ((Resources)localObject).getDrawable(i1), this.jdField_c_of_type_Blaj });
+        localObject = new LayerDrawable(new Drawable[] { ((Resources)localObject).getDrawable(i1), this.jdField_c_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable });
         this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-        localblam.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-        this.jdField_b_of_type_AndroidViewView = localblam;
+        localPopupViewContainer.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+        this.jdField_b_of_type_AndroidViewView = localPopupViewContainer;
         this.jdField_j_of_type_Int = paramLayoutParams.width;
         this.jdField_k_of_type_Int = paramLayoutParams.height;
       }
@@ -476,34 +469,34 @@ public class BubblePopupWindow
     for (;;)
     {
       ((FrameLayout)localObject).setPadding(i2, Math.round(TypedValue.applyDimension(1, 8.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics())), i1, Math.round(TypedValue.applyDimension(1, 8.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics())));
-      localblam.addView((View)localObject, -1, -1);
+      localPopupViewContainer.addView((View)localObject, -1, -1);
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
       ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -1, -1);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838976);
-      this.jdField_a_of_type_Blaj = new blaj(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838977));
-      localObject = new LayerDrawable(new Drawable[] { localObject, this.jdField_a_of_type_Blaj });
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839044);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable = new BubblePopupWindow.MyClipDrawable(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839045));
+      localObject = new LayerDrawable(new Drawable[] { localObject, this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable });
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable((Drawable)localObject);
       localObject = new FrameLayout.LayoutParams(-1, -1, 17);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
       break;
-      i1 = 2130838974;
+      i1 = 2130839042;
       break label269;
       label757:
-      i1 = 2130838974;
+      i1 = 2130839042;
       break label304;
       label764:
-      this.jdField_b_of_type_Blaj = new blaj(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838975));
-      localObject = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838972), this.jdField_b_of_type_Blaj });
+      this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable = new BubblePopupWindow.MyClipDrawable(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839043));
+      localObject = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839040), this.jdField_b_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable });
       break label333;
       label828:
-      i1 = 2130838970;
+      i1 = 2130839038;
       break label410;
       label835:
-      i1 = 2130838970;
+      i1 = 2130839038;
       break label445;
       label842:
-      this.jdField_c_of_type_Blaj = new blaj(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838971));
-      localObject = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838968), this.jdField_c_of_type_Blaj });
+      this.jdField_c_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable = new BubblePopupWindow.MyClipDrawable(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839039));
+      localObject = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839036), this.jdField_c_of_type_ComTencentWidgetBubblePopupWindow$MyClipDrawable });
       break label474;
       label906:
       i1 = 0;
@@ -678,7 +671,7 @@ public class BubblePopupWindow
     if (this.jdField_a_of_type_AndroidContentContext != null) {
       paramLayoutParams.packageName = this.jdField_a_of_type_AndroidContentContext.getPackageName();
     }
-    if (VersionUtils.isIceScreamSandwich()) {
+    if (VersionUtils.d()) {
       this.jdField_b_of_type_AndroidViewView.setFitsSystemWindows(this.jdField_j_of_type_Boolean);
     }
     if (this.jdField_b_of_type_AndroidViewView.getParent() == null) {
@@ -740,8 +733,8 @@ public class BubblePopupWindow
         ((ViewGroup)this.jdField_b_of_type_AndroidViewView).removeView(this.jdField_a_of_type_AndroidViewView);
       }
       this.jdField_b_of_type_AndroidViewView = null;
-      if (this.jdField_a_of_type_Blak != null) {
-        this.jdField_a_of_type_Blak.a();
+      if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener != null) {
+        this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener.onDismiss();
       }
     }
   }
@@ -845,7 +838,7 @@ public class BubblePopupWindow
   {
     paramInt1 = (int)(paramInt1 + this.jdField_a_of_type_AndroidViewView.getX() * 2.0F);
     WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
-    if (this.jdField_l_of_type_Int > ViewUtils.getScreenWidth() / 2) {
+    if (this.jdField_l_of_type_Int > ViewUtils.a() / 2) {
       localLayoutParams.x = (localLayoutParams.x + paramInt2 - paramInt1);
     }
     a(this.jdField_m_of_type_Boolean, this.jdField_l_of_type_Int - localLayoutParams.x);
@@ -939,14 +932,14 @@ public class BubblePopupWindow
     b(localLayoutParams);
   }
   
-  public void a(blak paramblak)
+  public void a(BubblePopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.jdField_a_of_type_Blak = paramblak;
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener = paramOnDismissListener;
   }
   
-  public void a(blan paramblan)
+  public void a(BubblePopupWindow.QQMenuNoIconEmptyInterface paramQQMenuNoIconEmptyInterface)
   {
-    this.jdField_a_of_type_Blan = paramblan;
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$QQMenuNoIconEmptyInterface = paramQQMenuNoIconEmptyInterface;
   }
   
   public void a(boolean paramBoolean)
@@ -1064,15 +1057,15 @@ public class BubblePopupWindow
   public void onClick(View paramView)
   {
     a();
-    if (this.jdField_a_of_type_Blan != null) {
-      this.jdField_a_of_type_Blan.a();
+    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$QQMenuNoIconEmptyInterface != null) {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$QQMenuNoIconEmptyInterface.a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.BubblePopupWindow
  * JD-Core Version:    0.7.0.1
  */

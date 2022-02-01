@@ -3,10 +3,10 @@ package com.tencent.mobileqq.listentogether.data;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anvx;
-import awfw;
-import awhy;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.listentogether.player.IConst.Caller;
+import com.tencent.mobileqq.listentogether.predownload.ListenTogetherResDownloader;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -22,9 +22,9 @@ import java.util.List;
 import tencent.aio.media.aio_media.Song;
 
 public class MusicInfo
-  implements ISong
+  implements ISong, IConst.Caller
 {
-  public static final Parcelable.Creator<MusicInfo> CREATOR = new awfw();
+  public static final Parcelable.Creator<MusicInfo> CREATOR = new MusicInfo.1();
   public int a;
   public long a;
   public String a;
@@ -66,7 +66,7 @@ public class MusicInfo
     default: 
       return 0;
     }
-    return 2130840602;
+    return 2130840733;
   }
   
   public static MusicInfo a(aio_media.Song paramSong)
@@ -152,7 +152,7 @@ public class MusicInfo
     case 1: 
       return "QQ音乐";
     }
-    return anvx.a(2131706498);
+    return HardCodeUtil.a(2131707039);
   }
   
   public static String a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong)
@@ -161,7 +161,7 @@ public class MusicInfo
       return "";
     }
     if (paramInt == 2) {}
-    for (paramQQAppInterface = ContactUtils.getBuddyName(paramQQAppInterface, String.valueOf(paramLong), true);; paramQQAppInterface = ContactUtils.getTroopMemberName(paramQQAppInterface, paramString, String.valueOf(paramLong)))
+    for (paramQQAppInterface = ContactUtils.c(paramQQAppInterface, String.valueOf(paramLong), true);; paramQQAppInterface = ContactUtils.g(paramQQAppInterface, paramString, String.valueOf(paramLong)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AioShareMusic", 2, " getSourceStr() type = " + paramInt + " sessionUin = " + paramString + " shareUin =" + paramLong + " nickName =" + paramQQAppInterface);
@@ -221,7 +221,7 @@ public class MusicInfo
   
   public String c()
   {
-    return awhy.a(this.jdField_a_of_type_JavaLangString);
+    return ListenTogetherResDownloader.a(this.jdField_a_of_type_JavaLangString);
   }
   
   public String d()

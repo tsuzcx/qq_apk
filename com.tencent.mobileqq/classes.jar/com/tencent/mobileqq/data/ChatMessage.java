@@ -13,14 +13,12 @@ public abstract class ChatMessage
   public boolean isDui;
   public boolean isFirstMsg;
   public boolean isFlowMessage;
-  private boolean isQcircleRedDotPulled;
-  public boolean isShowQIMStyleGroup;
+  public boolean isShowQIMStyleGroup = false;
   public boolean isShowQWalletPubAd;
-  private boolean isShowQcircleRedDot;
-  public boolean isShowQimStyleAvater;
-  public boolean isShowTIMStyleGroup;
-  public boolean isShowTimStyleAvater;
-  public boolean mAnimFlag = true;
+  public boolean isShowQimStyleAvater = false;
+  public boolean isShowTIMStyleGroup = false;
+  public boolean isShowTimStyleAvater = false;
+  public boolean mAnimFlag = false;
   public boolean mIsParsed;
   private boolean mIsSentByXG;
   @Deprecated
@@ -30,26 +28,21 @@ public abstract class ChatMessage
   @Deprecated
   public boolean mNeedGrayTips;
   public boolean mNeedTimeStamp;
+  public boolean mNewAnimFlag = false;
   public boolean mPendantAnimatable;
   @notColumn
   private int mViewHeight;
-  private String qCircleRedDotJumpSchema = "";
+  @notColumn
+  public Object redDotInfo = null;
   
   protected abstract void doParse();
   
-  public boolean getQcircleRedDotFlag()
+  public ChatMsgRedDotInfo getChatMsgRedDotInfo()
   {
-    return this.isShowQcircleRedDot;
-  }
-  
-  public String getQcircleRedDotJumpSchema()
-  {
-    return this.qCircleRedDotJumpSchema;
-  }
-  
-  public boolean getQcircleRedDotPulledFlag()
-  {
-    return this.isQcircleRedDotPulled;
+    if (this.redDotInfo == null) {
+      this.redDotInfo = new ChatMsgRedDotInfo();
+    }
+    return (ChatMsgRedDotInfo)this.redDotInfo;
   }
   
   public String getSummaryMsg()
@@ -126,21 +119,6 @@ public abstract class ChatMessage
     this.mIsSentByXG = paramBoolean;
   }
   
-  public void setQcircleRedDotFlag(boolean paramBoolean)
-  {
-    this.isShowQcircleRedDot = paramBoolean;
-  }
-  
-  public void setQcircleRedDotJumpSchema(String paramString)
-  {
-    this.qCircleRedDotJumpSchema = paramString;
-  }
-  
-  public void setQcircleRedDotPulledFlag(boolean paramBoolean)
-  {
-    this.isQcircleRedDotPulled = paramBoolean;
-  }
-  
   public void setViewHeight(int paramInt)
   {
     this.mViewHeight = paramInt;
@@ -148,7 +126,7 @@ public abstract class ChatMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ChatMessage
  * JD-Core Version:    0.7.0.1
  */

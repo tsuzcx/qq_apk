@@ -3,8 +3,6 @@ package com.tencent.mobileqq.profilesetting;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bags;
-import bagt;
 import kotlin.Metadata;
 import kotlin.jvm.JvmField;
 import kotlin.jvm.internal.Intrinsics;
@@ -16,15 +14,15 @@ public final class ReqSetSettingItem
 {
   @JvmField
   @NotNull
-  public static final Parcelable.Creator<ReqSetSettingItem> CREATOR = (Parcelable.Creator)new bagt();
-  public static final bags a;
+  public static final Parcelable.Creator<ReqSetSettingItem> CREATOR = (Parcelable.Creator)new ReqSetSettingItem.Companion.CREATOR.1();
+  public static final ReqSetSettingItem.Companion a;
   private int a;
   private int b;
   private int c;
   
   static
   {
-    jdField_a_of_type_Bags = new bags(null);
+    jdField_a_of_type_ComTencentMobileqqProfilesettingReqSetSettingItem$Companion = new ReqSetSettingItem.Companion(null);
   }
   
   public ReqSetSettingItem(int paramInt1, int paramInt2, int paramInt3)

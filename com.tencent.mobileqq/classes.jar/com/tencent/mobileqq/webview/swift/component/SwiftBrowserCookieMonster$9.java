@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bigx;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
@@ -21,7 +20,7 @@ final class SwiftBrowserCookieMonster$9
             localObject1 = (TicketManager)((AppRuntime)localObject1).getManager(2);
             if (localObject1 != null)
             {
-              SwiftBrowserCookieMonster.a = new bigx();
+              SwiftBrowserCookieMonster.a = new SwiftBrowserCookieMonster.TicketRefreshListener();
               ((TicketManager)localObject1).registTicketManagerListener(SwiftBrowserCookieMonster.a);
             }
           }
@@ -33,7 +32,7 @@ final class SwiftBrowserCookieMonster$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.9
  * JD-Core Version:    0.7.0.1
  */

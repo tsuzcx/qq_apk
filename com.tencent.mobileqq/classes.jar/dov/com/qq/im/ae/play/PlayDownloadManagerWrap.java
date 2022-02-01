@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.play;
 
 import android.support.annotation.NonNull;
-import bnkb;
-import bnke;
-import bnkq;
-import bnqc;
 import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.data.AEMaterialManager;
+import dov.com.qq.im.ae.data.AEMaterialMetaData;
+import dov.com.qq.im.ae.download.AEMaterialDownloader.MaterialDownloadListener;
+import dov.com.qq.im.ae.part.VideoStoryCapturePartManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,16 +17,16 @@ import mqq.util.WeakReference;
 public class PlayDownloadManagerWrap
 {
   private static final String TAG = "PlayDownloadManagerWrap";
-  private final Map<String, bnkq> downloadingMap = new HashMap();
+  private final Map<String, AEMaterialDownloader.MaterialDownloadListener> downloadingMap = new HashMap();
   private String finalDownloadId = "";
-  private WeakReference<bnqc> mPartManager;
+  private WeakReference<VideoStoryCapturePartManager> mPartManager;
   private final Map<String, List<IProgressObserver>> observerMap = new HashMap();
   
-  private void addDownloadListener(String paramString, bnkq parambnkq)
+  private void addDownloadListener(String paramString, AEMaterialDownloader.MaterialDownloadListener paramMaterialDownloadListener)
   {
     synchronized (this.downloadingMap)
     {
-      this.downloadingMap.put(paramString, parambnkq);
+      this.downloadingMap.put(paramString, paramMaterialDownloadListener);
       return;
     }
   }
@@ -87,7 +87,7 @@ public class PlayDownloadManagerWrap
     this.observerMap.clear();
   }
   
-  public Map<String, bnkq> getDownloadingMap()
+  public Map<String, AEMaterialDownloader.MaterialDownloadListener> getDownloadingMap()
   {
     return this.downloadingMap;
   }
@@ -97,9 +97,9 @@ public class PlayDownloadManagerWrap
     return this.finalDownloadId;
   }
   
-  public void notifyDownloadFinish(bnke parambnke, boolean paramBoolean)
+  public void notifyDownloadFinish(AEMaterialMetaData paramAEMaterialMetaData, boolean paramBoolean)
   {
-    if (parambnke == null) {}
+    if (paramAEMaterialMetaData == null) {}
     for (;;)
     {
       return;
@@ -107,10 +107,10 @@ public class PlayDownloadManagerWrap
       List localList;
       try
       {
-        str = parambnke.a;
+        str = paramAEMaterialMetaData.a;
         localList = (List)this.observerMap.get(str);
-        if ((this.finalDownloadId != null) && (this.finalDownloadId.equals(str)) && (paramBoolean) && (parambnke.equals(AEPlayShowGridAdapter.selectedMaterial))) {
-          ThreadManager.getUIHandler().post(new PlayDownloadManagerWrap.2(this, parambnke));
+        if ((this.finalDownloadId != null) && (this.finalDownloadId.equals(str)) && (paramBoolean) && (paramAEMaterialMetaData.equals(AEPlayShowGridAdapter.selectedMaterial))) {
+          ThreadManager.getUIHandler().post(new PlayDownloadManagerWrap.2(this, paramAEMaterialMetaData));
         }
         if (localList == null)
         {
@@ -119,9 +119,9 @@ public class PlayDownloadManagerWrap
         }
       }
       finally {}
-      parambnke = localList.iterator();
-      while (parambnke.hasNext()) {
-        ((IProgressObserver)parambnke.next()).onDownloadFinish(str, paramBoolean);
+      paramAEMaterialMetaData = localList.iterator();
+      while (paramAEMaterialMetaData.hasNext()) {
+        ((IProgressObserver)paramAEMaterialMetaData.next()).onDownloadFinish(str, paramBoolean);
       }
       this.observerMap.remove(str);
     }
@@ -207,23 +207,23 @@ public class PlayDownloadManagerWrap
     }
   }
   
-  public void startDownload(bnqc parambnqc, @NonNull bnkb parambnkb, @NonNull bnke parambnke)
+  public void startDownload(VideoStoryCapturePartManager paramVideoStoryCapturePartManager, @NonNull AEMaterialManager paramAEMaterialManager, @NonNull AEMaterialMetaData paramAEMaterialMetaData)
   {
-    if (isListenerExits(parambnke.a)) {
+    if (isListenerExits(paramAEMaterialMetaData.a)) {
       return;
     }
     if ((this.mPartManager == null) || (this.mPartManager.get() == null)) {
-      this.mPartManager = new WeakReference(parambnqc);
+      this.mPartManager = new WeakReference(paramVideoStoryCapturePartManager);
     }
-    parambnqc = new PlayDownloadManagerWrap.DownloadProcessListener(null);
-    addDownloadListener(parambnke.a, parambnqc);
-    this.finalDownloadId = parambnke.a;
-    ThreadManager.excute(new PlayDownloadManagerWrap.1(this, parambnkb, parambnke, parambnqc), 128, null, true);
+    paramVideoStoryCapturePartManager = new PlayDownloadManagerWrap.DownloadProcessListener(null);
+    addDownloadListener(paramAEMaterialMetaData.a, paramVideoStoryCapturePartManager);
+    this.finalDownloadId = paramAEMaterialMetaData.a;
+    ThreadManager.excute(new PlayDownloadManagerWrap.1(this, paramAEMaterialManager, paramAEMaterialMetaData, paramVideoStoryCapturePartManager), 128, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.PlayDownloadManagerWrap
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.app.face;
 
 import android.util.Pair;
-import antl;
-import aokk;
+import com.tencent.mobileqq.app.DiscussionHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,56 +16,56 @@ class GroupIconHelper$CheckDisIconThread
   
   private GroupIconHelper$CheckDisIconThread(GroupIconHelper paramGroupIconHelper) {}
   
-  private int a(int paramInt, long paramLong, ArrayList<Pair<String, aokk>> paramArrayList, ArrayList<String> paramArrayList1)
+  private int a(int paramInt, long paramLong, ArrayList<Pair<String, GroupIconHelper.GroupIconInfo>> paramArrayList, ArrayList<String> paramArrayList1)
   {
     Iterator localIterator = GroupIconHelper.a(this.this$0).keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      aokk localaokk = (aokk)GroupIconHelper.a(this.this$0).get(str);
-      if ((localaokk != null) && (localaokk.jdField_b_of_type_Int >= 8))
+      GroupIconHelper.GroupIconInfo localGroupIconInfo = (GroupIconHelper.GroupIconInfo)GroupIconHelper.a(this.this$0).get(str);
+      if ((localGroupIconInfo != null) && (localGroupIconInfo.jdField_b_of_type_Int >= 8))
       {
-        if ((GroupIconHelper.a(this.this$0) instanceof antl)) {
-          ((antl)GroupIconHelper.a(this.this$0)).a(false, true, str);
+        if ((GroupIconHelper.a(this.this$0) instanceof DiscussionHandler)) {
+          ((DiscussionHandler)GroupIconHelper.a(this.this$0)).a(false, true, str);
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Q.qqhead.dih", 2, "CheckDisIcon, maxCreateCnt: " + str + ",crateIconCount=" + localaokk.jdField_b_of_type_Int);
+          QLog.d("Q.qqhead.dih", 2, "CheckDisIcon, maxCreateCnt: " + str + ",crateIconCount=" + localGroupIconInfo.jdField_b_of_type_Int);
         }
       }
-      else if ((localaokk != null) && (!localaokk.e))
+      else if ((localGroupIconInfo != null) && (!localGroupIconInfo.e))
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqhead.dih", 2, "CheckDisIcon isFromCreate: " + str + ",fromCreate is false");
         }
       }
-      else if ((localaokk != null) && (localaokk.jdField_a_of_type_JavaLangString != null) && (localaokk.jdField_a_of_type_Byte != 3))
+      else if ((localGroupIconInfo != null) && (localGroupIconInfo.jdField_a_of_type_JavaLangString != null) && (localGroupIconInfo.jdField_a_of_type_Byte != 3))
       {
-        paramInt = a(paramInt, paramLong, paramArrayList, paramArrayList1, str, localaokk);
+        paramInt = a(paramInt, paramLong, paramArrayList, paramArrayList1, str, localGroupIconInfo);
       }
     }
     return paramInt;
   }
   
-  private int a(int paramInt, long paramLong, ArrayList<Pair<String, aokk>> paramArrayList, ArrayList<String> paramArrayList1, String paramString, aokk paramaokk)
+  private int a(int paramInt, long paramLong, ArrayList<Pair<String, GroupIconHelper.GroupIconInfo>> paramArrayList, ArrayList<String> paramArrayList1, String paramString, GroupIconHelper.GroupIconInfo paramGroupIconInfo)
   {
     boolean bool2 = false;
     boolean bool1 = false;
     int i;
-    if ((paramaokk.jdField_a_of_type_Byte == 1) && (paramLong - paramaokk.jdField_a_of_type_Long >= GroupIconHelper.a(this.this$0)))
+    if ((paramGroupIconInfo.jdField_a_of_type_Byte == 1) && (paramLong - paramGroupIconInfo.jdField_a_of_type_Long >= GroupIconHelper.a(this.this$0)))
     {
       paramArrayList1 = paramString;
       if (GroupIconHelper.a(paramString)) {
         paramArrayList1 = GroupIconHelper.b(paramString);
       }
-      i = paramaokk.jdField_a_of_type_JavaUtilArrayList.size();
-      paramaokk.jdField_a_of_type_Byte = 2;
+      i = paramGroupIconInfo.jdField_a_of_type_JavaUtilArrayList.size();
+      paramGroupIconInfo.jdField_a_of_type_Byte = 2;
       if (i > 0)
       {
-        if (paramaokk.jdField_b_of_type_JavaLangString == null) {
+        if (paramGroupIconInfo.jdField_b_of_type_JavaLangString == null) {
           break label299;
         }
-        paramString = GroupIconHelper.a(paramaokk.jdField_a_of_type_JavaUtilArrayList, false);
-        if (!paramaokk.jdField_b_of_type_JavaLangString.equals(paramString)) {
+        paramString = GroupIconHelper.a(paramGroupIconInfo.jdField_a_of_type_JavaUtilArrayList, false);
+        if (!paramGroupIconInfo.jdField_b_of_type_JavaLangString.equals(paramString)) {
           break label299;
         }
       }
@@ -76,27 +75,27 @@ class GroupIconHelper$CheckDisIconThread
       bool2 = bool1;
       if (bool1)
       {
-        paramArrayList.add(Pair.create(paramArrayList1, paramaokk));
+        paramArrayList.add(Pair.create(paramArrayList1, paramGroupIconInfo));
         GroupIconHelper.a(this.this$0).remove(paramArrayList1);
         bool2 = bool1;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.dih", 2, "CheckDisIcon expired: " + paramArrayList1 + ", isTryCreate: " + bool2 + paramaokk.toString());
+        QLog.d("Q.qqhead.dih", 2, "CheckDisIcon expired: " + paramArrayList1 + ", isTryCreate: " + bool2 + paramGroupIconInfo.toString());
       }
       i = paramInt + 1;
       do
       {
         return i;
-        if ((paramaokk.jdField_a_of_type_Byte == 2) && (paramLong - paramaokk.jdField_a_of_type_Long >= GroupIconHelper.b(this.this$0)))
+        if ((paramGroupIconInfo.jdField_a_of_type_Byte == 2) && (paramLong - paramGroupIconInfo.jdField_a_of_type_Long >= GroupIconHelper.b(this.this$0)))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon timeout: " + paramString + paramaokk.toString());
+            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon timeout: " + paramString + paramGroupIconInfo.toString());
           }
           paramArrayList1.add(paramString);
           return paramInt + 1;
         }
         i = paramInt;
-      } while (paramaokk.jdField_a_of_type_Byte == 3);
+      } while (paramGroupIconInfo.jdField_a_of_type_Byte == 3);
       return paramInt + 1;
       label299:
       bool1 = true;
@@ -126,7 +125,7 @@ class GroupIconHelper$CheckDisIconThread
             if ((i < ((ArrayList)localObject3).size()) && (this.a))
             {
               ??? = (Pair)((ArrayList)localObject3).get(i);
-              GroupIconHelper.a(this.this$0, (String)((Pair)???).first, (aokk)((Pair)???).second, true);
+              GroupIconHelper.a(this.this$0, (String)((Pair)???).first, (GroupIconHelper.GroupIconInfo)((Pair)???).second, true);
               i += 1;
             }
           }
@@ -174,7 +173,7 @@ class GroupIconHelper$CheckDisIconThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.GroupIconHelper.CheckDisIconThread
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,6 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import bgns;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.PinnedHeaderExpandableListView;
@@ -22,11 +21,11 @@ import java.lang.reflect.Field;
 public class PinnedHeaderIphoneTreeView
   extends PinnedHeaderExpandableListView
 {
-  public int a;
+  int jdField_a_of_type_Int = -1;
   public final Rect a;
   public Drawable a;
   public View.OnTouchListener a;
-  public View a;
+  View jdField_a_of_type_AndroidViewView;
   public boolean a;
   public Drawable b;
   public View b;
@@ -36,27 +35,24 @@ public class PinnedHeaderIphoneTreeView
   public PinnedHeaderIphoneTreeView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bgns(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new PinnedHeaderIphoneTreeView.1(this);
     a();
   }
   
   public PinnedHeaderIphoneTreeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bgns(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new PinnedHeaderIphoneTreeView.1(this);
     a();
   }
   
   public PinnedHeaderIphoneTreeView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bgns(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new PinnedHeaderIphoneTreeView.1(this);
     a();
   }
   
@@ -105,7 +101,7 @@ public class PinnedHeaderIphoneTreeView
   
   public void dispatchDraw(Canvas paramCanvas)
   {
-    if (a() == null) {}
+    if (getExpandableListAdapter() == null) {}
     for (;;)
     {
       try
@@ -157,17 +153,17 @@ public class PinnedHeaderIphoneTreeView
         }
         else
         {
-          long l = a(j);
-          i = c(l);
-          b(l);
+          long l = getExpandableListPosition(j);
+          i = getPackedPositionGroup(l);
+          getPackedPositionType(l);
           this.jdField_b_of_type_AndroidViewView = null;
-          if ((i == -1) || (!c(i))) {
+          if ((i == -1) || (!isGroupExpanded(i))) {
             break label777;
           }
           if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Int != i))
           {
             this.jdField_a_of_type_Int = i;
-            this.jdField_a_of_type_AndroidViewView = a().getGroupView(i, true, this.c, this);
+            this.jdField_a_of_type_AndroidViewView = getExpandableListAdapter().getGroupView(i, true, this.c, this);
             if (this.jdField_a_of_type_AndroidViewView != null)
             {
               this.jdField_a_of_type_AndroidViewView.setSelected(((View)localObject5).isSelected());
@@ -177,7 +173,7 @@ public class PinnedHeaderIphoneTreeView
           if (this.jdField_a_of_type_AndroidViewView != this.c) {
             this.c = this.jdField_a_of_type_AndroidViewView;
           }
-          if (b(l) == 0) {
+          if (getPackedPositionType(l) == 0) {
             this.jdField_b_of_type_AndroidViewView = ((View)localObject5);
           }
           if (this.jdField_a_of_type_AndroidViewView != null)
@@ -195,7 +191,7 @@ public class PinnedHeaderIphoneTreeView
           super.dispatchDraw(paramCanvas);
           if (this.jdField_a_of_type_AndroidViewView != null)
           {
-            if ((b(a(j + 1)) != 0) || (localObject4 == null)) {
+            if ((getPackedPositionType(getExpandableListPosition(j + 1)) != 0) || (localObject4 == null)) {
               break label826;
             }
             i = ((View)localObject4).getTop();

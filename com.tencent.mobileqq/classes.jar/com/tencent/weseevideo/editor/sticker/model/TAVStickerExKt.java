@@ -42,6 +42,15 @@ public class TAVStickerExKt
     return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_min_y", 0.0F);
   }
   
+  public static int getStickerInteractive(TAVSticker paramTAVSticker)
+  {
+    int i = 0;
+    if (paramTAVSticker != null) {
+      i = paramTAVSticker.getExtraBundle().getInt("key_sticker_interactive", 0);
+    }
+    return i;
+  }
+  
   public static float getStickerScaleMaxX(TAVSticker paramTAVSticker)
   {
     return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_max_x", 0.0F);
@@ -129,6 +138,11 @@ public class TAVStickerExKt
     paramTAVSticker.getExtraBundle().putBoolean("key_sticker_enable_rotate", paramBoolean);
   }
   
+  public static void setStickerInteractive(TAVSticker paramTAVSticker, int paramInt)
+  {
+    paramTAVSticker.getExtraBundle().putInt("key_sticker_interactive", paramInt);
+  }
+  
   public static void setStickerLockRatio(TAVSticker paramTAVSticker, boolean paramBoolean)
   {
     paramTAVSticker.getExtraBundle().putBoolean("key_sticker_lock_ratio", paramBoolean);
@@ -176,7 +190,7 @@ public class TAVStickerExKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.model.TAVStickerExKt
  * JD-Core Version:    0.7.0.1
  */

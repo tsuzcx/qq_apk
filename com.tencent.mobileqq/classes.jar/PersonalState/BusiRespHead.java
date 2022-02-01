@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class BusiRespHead
   extends JceStruct
 {
-  public int iReplyCode;
-  public int iSeq;
-  public short shVersion;
+  public int iReplyCode = 0;
+  public int iSeq = 0;
+  public short shVersion = 0;
   public String strResult = "";
   
   public BusiRespHead() {}

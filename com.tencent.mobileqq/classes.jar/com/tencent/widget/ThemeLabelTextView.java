@@ -5,14 +5,12 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import blfw;
-import blfx;
 
 public class ThemeLabelTextView
   extends TextView
-  implements blfx
+  implements ThemeImageWrapper.DrawInterface
 {
-  blfw a;
+  ThemeImageWrapper a;
   
   public ThemeLabelTextView(Context paramContext)
   {
@@ -37,16 +35,11 @@ public class ThemeLabelTextView
     setSupportMaskView(false);
   }
   
-  public void a(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
-  }
-  
   public void draw(Canvas paramCanvas)
   {
     if (this.a != null)
     {
-      this.a.a(paramCanvas, this);
+      this.a.onDraw(paramCanvas, this);
       return;
     }
     super.draw(paramCanvas);
@@ -55,7 +48,7 @@ public class ThemeLabelTextView
   public void setMaskShape(int paramInt)
   {
     if (this.a != null) {
-      this.a.a(paramInt);
+      this.a.setMaskShape(paramInt);
     }
   }
   
@@ -64,20 +57,25 @@ public class ThemeLabelTextView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new blfw();
+        this.a = new ThemeImageWrapper();
       }
-      this.a.a(true);
-      setMaskShape(blfw.c);
+      this.a.setSupportMaskView(true);
+      setMaskShape(ThemeImageWrapper.MODE_OTHER);
     }
     while (this.a == null) {
       return;
     }
-    this.a.a(false);
+    this.a.setSupportMaskView(false);
+  }
+  
+  public void superOnDraw(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ThemeLabelTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.subscript;
 
 import java.util.HashMap;
 
-public final class SubscriptConstants$1
+final class SubscriptConstants$1
   extends HashMap<String, String>
 {
-  public SubscriptConstants$1()
+  SubscriptConstants$1()
   {
     put("2", "2958760001");
     put("3", "2192758784");
@@ -122,7 +122,7 @@ public final class SubscriptConstants$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptConstants.1
  * JD-Core Version:    0.7.0.1
  */

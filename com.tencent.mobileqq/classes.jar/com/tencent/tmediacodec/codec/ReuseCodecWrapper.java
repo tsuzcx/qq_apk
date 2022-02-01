@@ -95,24 +95,36 @@ public abstract class ReuseCodecWrapper
     this.codecMaxValues = new CodecMaxValues(paramFormatWrapper.maxWidth, paramFormatWrapper.maxHeight, paramFormatWrapper.maxInputSize);
     this.codecName = TUtils.getCodeName(this.codec);
     this.adaptationMode = ReuseHelper.codecAdaptationWorkaroundMode(this.codecName);
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.capabilities = this.codec.getCodecInfo().getCapabilitiesForType(paramFormatWrapper.sampleMimeType);
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      if ((Build.VERSION.SDK_INT == 29) && (paramFormatWrapper.rotationDegrees != 0)) {
+        break label265;
+      }
+      bool1 = true;
+      LogUtils.d("ReuseCodecWrapper", "canCallGetCodecInfo:" + bool1);
+      if (bool1) {
+        this.capabilities = this.codec.getCodecInfo().getCapabilitiesForType(paramFormatWrapper.sampleMimeType);
+      }
     }
     if ((this.capabilities != null) && (TUtils.isAdaptive(this.capabilities)))
     {
       bool1 = true;
+      label234:
       this.adaptive = bool1;
       if ((this.capabilities == null) || (!TUtils.isSecure(this.capabilities))) {
-        break label225;
+        break label275;
       }
     }
-    label225:
+    label265:
+    label275:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.secure = bool1;
       return;
       bool1 = false;
       break;
+      bool1 = false;
+      break label234;
     }
   }
   
@@ -972,8 +984,11 @@ public abstract class ReuseCodecWrapper
   
   public final void recycle()
   {
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("ReuseCodecWrapper", this + ", recycle isRecycled:" + this.isRecycled + " ...... stack:" + Log.getStackTraceString(new Throwable()));
+    LogUtils.d("ReuseCodecWrapper", this + ", recycle isRecycled:" + this.isRecycled + " ...... stack:" + Log.getStackTraceString(new Throwable()));
+    if (this.isRecycled)
+    {
+      LogUtils.w("ReuseCodecWrapper", "ignore recycle for has isRecycled is true.");
+      return;
     }
     this.mHasConfigureCalled = false;
     this.isRecycled = true;
@@ -1258,7 +1273,7 @@ public abstract class ReuseCodecWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tmediacodec.codec.ReuseCodecWrapper
  * JD-Core Version:    0.7.0.1
  */

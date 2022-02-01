@@ -1,6 +1,6 @@
 package cooperation.ilive;
 
-import aoaj;
+import com.tencent.qqperf.tools.ProcessStats;
 
 class IliveLaunchFragment$4
   implements Runnable
@@ -9,12 +9,12 @@ class IliveLaunchFragment$4
   
   public void run()
   {
-    aoaj.a(false);
+    ProcessStats.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.4
  * JD-Core Version:    0.7.0.1
  */

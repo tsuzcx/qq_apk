@@ -1,13 +1,13 @@
 package cooperation.qzone.webviewplugin;
 
-import aeow;
 import android.content.Intent;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.activateFriend.ActivateFriendShareFragment;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,7 +51,7 @@ public class QzoneBasicJsPlugin
           paramString3.putExtra("content", paramJsBridgeListener);
           paramString3.putExtra("jumpUrl", paramString1);
           paramString3.putExtra("timestamp", l);
-          aeow.a(this.parentPlugin.mRuntime.a(), paramString3, PublicTransFragmentActivity.class, ActivateFriendShareFragment.class);
+          PublicFragmentActivity.Launcher.a(this.parentPlugin.mRuntime.a(), paramString3, PublicTransFragmentActivity.class, ActivateFriendShareFragment.class);
           return false;
         }
         catch (Throwable paramJsBridgeListener)
@@ -72,7 +72,7 @@ public class QzoneBasicJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneBasicJsPlugin
  * JD-Core Version:    0.7.0.1
  */

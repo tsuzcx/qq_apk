@@ -10,10 +10,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
 import android.text.TextUtils;
 import android.util.LruCache;
-import bheg;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -38,31 +38,33 @@ public class GifAntishakeModule
   public static int ANTISHAKE_END_NORMALLY = 0;
   public static String ANTISHAKE_STATUS;
   private static final int HASH_SIZE = 8;
-  private static int SIMILARITY_DHASH_ERROR_CODE = 16;
+  private static int SIMILARITY_DHASH_ERROR_CODE = 0;
   private static final String TAG = "QzoneVision";
-  private static int doneAntishakeFrameNum;
+  private static int doneAntishakeFrameNum = 0;
   public static GifAntishakeModule mInstance;
   private static boolean mNativeLibLoaded;
-  private static int pathCount;
+  private static int pathCount = 0;
   private static ThreadPoolExecutor threadPoolExecutor;
   private String NO_MEDIA_FILE_NAME = ".nomedia";
   private String SDCARD_ANTISHAKEGIF_SAVE = AppConstants.SDCARD_ROOT + "/tencent/Qzone/AntishakeGif/";
   private long antishakeMaxFrameGapTime = Long.parseLong(QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeMaxFrameShootTime", "3000"));
   private long antishakeMaxTotalGapTime = Long.parseLong(QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeMaxGroupShootTime", "60000"));
   private boolean isFirstTimeEqualsTen;
-  private boolean mHasDetectDir;
+  private boolean mHasDetectDir = false;
   private float mMinSimilarityForAntishake = Float.parseFloat(QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeMinSimilarity", "0.6"));
-  private GifAntishakeModule.postProgressListener mProgressListener;
+  private GifAntishakeModule.postProgressListener mProgressListener = null;
   private boolean needToCheckShootTime;
   private boolean needToCheckSimilarity;
   private boolean useDHash;
   
   static
   {
+    mNativeLibLoaded = false;
+    SIMILARITY_DHASH_ERROR_CODE = 16;
     ANTISHAKE_STATUS = "GIFANTISHAKEMODULE_STATUS";
     ANTISHAKE_END_NORMALLY = 1;
     ANTISHAKE_END_DOING_OR_FAILED = 2;
-    threadPoolExecutor = new ThreadPoolExecutor(DeviceInfoUtil.getCpuNumber(), DeviceInfoUtil.getCpuNumber() + 5, 200L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
+    threadPoolExecutor = new ThreadPoolExecutor(DeviceInfoUtil.b(), DeviceInfoUtil.b() + 5, 200L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
     tryToLoadLibrary();
   }
   
@@ -73,10 +75,10 @@ public class GifAntishakeModule
       bool1 = true;
       this.needToCheckShootTime = bool1;
       if (QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeNeedToCheckSimilarity", 1) != 1) {
-        break label173;
+        break label183;
       }
     }
-    label173:
+    label183:
     for (boolean bool1 = true;; bool1 = false)
     {
       this.needToCheckSimilarity = bool1;
@@ -482,7 +484,7 @@ public class GifAntishakeModule
     File localFile = new File((String)localObject);
     try
     {
-      bheg.a(localBitmap2, localFile);
+      ImageUtil.a(localBitmap2, localFile);
       arrayOfString[0] = localObject;
       doneAntishakeFrameNum = 1;
       postProgress(doneAntishakeFrameNum);
@@ -603,7 +605,7 @@ public class GifAntishakeModule
       bool2 = bool3;
     } while (!checkFolder(paramArrayList));
     if (QLog.isColorLevel()) {
-      QLog.d("QzoneVision", 2, "DeviceInfoUtil.getMemoryClass() = " + DeviceInfoUtil.getMemoryClass() / 1048576L + "M, DeviceInfoUtil.getSystemAvaialbeMemory() = " + DeviceInfoUtil.getSystemAvaialbeMemory() / 1048576L + "M");
+      QLog.d("QzoneVision", 2, "DeviceInfoUtil.getMemoryClass() = " + DeviceInfoUtil.f() / 1048576L + "M, DeviceInfoUtil.getSystemAvaialbeMemory() = " + DeviceInfoUtil.e() / 1048576L + "M");
     }
     if ((this.needToCheckShootTime) && (this.needToCheckSimilarity))
     {
@@ -714,7 +716,7 @@ public class GifAntishakeModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.GifAntishakeModule
  * JD-Core Version:    0.7.0.1
  */

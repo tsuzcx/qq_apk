@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.armap.sensor.rotation;
 
-import aqdy;
 import java.io.Serializable;
 
 public class Quaternion
@@ -220,8 +219,8 @@ public class Quaternion
   public Quaternion setFromAxis(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     paramFloat4 = 0.01745329F * paramFloat4;
-    float f = aqdy.a(paramFloat4 / 2.0F);
-    return set(paramFloat1 * f, paramFloat2 * f, f * paramFloat3, aqdy.b(paramFloat4 / 2.0F)).nor();
+    float f = MathUtils.a(paramFloat4 / 2.0F);
+    return set(paramFloat1 * f, paramFloat2 * f, f * paramFloat3, MathUtils.b(paramFloat4 / 2.0F)).nor();
   }
   
   public Quaternion setFromAxis(Vector3 paramVector3, float paramFloat)

@@ -5,7 +5,7 @@ import android.os.FileObserver;
 public class MediaScannerFileObserver
   extends FileObserver
 {
-  private final String TAG = "MediaScannerFileObserver";
+  private static final String TAG = "MediaScannerFileObserver";
   private String mFolderPath = null;
   private MediaScanner mMediaScanner = null;
   
@@ -33,7 +33,7 @@ public class MediaScannerFileObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaScannerFileObserver
  * JD-Core Version:    0.7.0.1
  */

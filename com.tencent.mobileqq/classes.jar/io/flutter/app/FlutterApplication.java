@@ -3,7 +3,8 @@ package io.flutter.app;
 import android.app.Activity;
 import android.app.Application;
 import androidx.annotation.CallSuper;
-import io.flutter.view.FlutterMain;
+import io.flutter.FlutterInjector;
+import io.flutter.embedding.engine.loader.FlutterLoader;
 
 public class FlutterApplication
   extends Application
@@ -19,7 +20,7 @@ public class FlutterApplication
   public void onCreate()
   {
     super.onCreate();
-    FlutterMain.startInitialization(this);
+    FlutterInjector.instance().flutterLoader().startInitialization(this);
   }
   
   public void setCurrentActivity(Activity paramActivity)
@@ -29,7 +30,7 @@ public class FlutterApplication
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.app.FlutterApplication
  * JD-Core Version:    0.7.0.1
  */

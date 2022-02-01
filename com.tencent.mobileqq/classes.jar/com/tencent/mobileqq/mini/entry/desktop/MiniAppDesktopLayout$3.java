@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import alcz;
-import arbw;
+import com.tencent.mobileqq.activity.recent.AppletsFolderManager;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 
 class MiniAppDesktopLayout$3
   implements Runnable
@@ -13,19 +13,23 @@ class MiniAppDesktopLayout$3
   
   public void run()
   {
-    MiniAppDesktopAdapter localMiniAppDesktopAdapter;
-    if (arbw.h())
+    Object localObject;
+    if (MiniAppConfProcessor.h())
     {
-      boolean bool = ((alcz)this.val$activity.app.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).a();
-      localMiniAppDesktopAdapter = MiniAppDesktopLayout.access$300(this.this$0);
-      if (!bool) {
-        break label53;
+      localObject = (AppletsFolderManager)this.val$activity.app.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER);
+      if (localObject != null)
+      {
+        boolean bool = ((AppletsFolderManager)localObject).a();
+        localObject = MiniAppDesktopLayout.access$300(this.this$0);
+        if (!bool) {
+          break label59;
+        }
       }
     }
-    label53:
+    label59:
     for (int i = 1;; i = 0)
     {
-      localMiniAppDesktopAdapter.setRedDotSwitchState(i);
+      ((MiniAppDesktopAdapter)localObject).setRedDotSwitchState(i);
       MiniAppDesktopLayout.access$400(this.this$0);
       return;
     }

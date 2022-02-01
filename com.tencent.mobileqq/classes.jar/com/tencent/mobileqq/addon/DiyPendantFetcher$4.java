@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.addon;
 
-import amks;
 import android.graphics.Typeface;
-import bhcs;
+import com.etrump.mixlayout.FontInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
+import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LRULinkedHashMap;
-import ga;
 import mqq.app.AppRuntime;
 
-public class DiyPendantFetcher$4
+class DiyPendantFetcher$4
   implements Runnable
 {
-  public DiyPendantFetcher$4(amks paramamks, int paramInt, String paramString) {}
+  DiyPendantFetcher$4(DiyPendantFetcher paramDiyPendantFetcher, int paramInt, String paramString) {}
   
   public void run()
   {
-    if (bhcs.a(String.valueOf(this.jdField_a_of_type_Int))) {
+    if (AvatarPendantUtil.a(String.valueOf(this.jdField_a_of_type_Int))) {
       if (this.jdField_a_of_type_Int == 1) {}
     }
     AppRuntime localAppRuntime;
@@ -27,7 +25,7 @@ public class DiyPendantFetcher$4
     {
       try
       {
-        ((ga)this.this$0.b.get(Integer.valueOf(this.jdField_a_of_type_Int))).a = Typeface.createFromFile(this.jdField_a_of_type_JavaLangString);
+        ((FontInfo)this.this$0.b.get(Integer.valueOf(this.jdField_a_of_type_Int))).a = Typeface.createFromFile(this.jdField_a_of_type_JavaLangString);
         this.this$0.d();
         return;
       }
@@ -40,12 +38,12 @@ public class DiyPendantFetcher$4
       }
       localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     } while (!(localAppRuntime instanceof QQAppInterface));
-    ((VasQuickUpdateManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).downloadItem(4L, "faceAddon.stickerFont.android." + this.jdField_a_of_type_Int, "DiyPendantFetcher");
+    ((IVasQuickUpdateService)localAppRuntime.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(4L, "faceAddon.stickerFont.android." + this.jdField_a_of_type_Int, "DiyPendantFetcher");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.4
  * JD-Core Version:    0.7.0.1
  */

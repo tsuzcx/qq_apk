@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.mini.entry;
 
-import apaq;
-import arbw;
+import com.tencent.mobileqq.applets.AppletsObserver;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 class MiniAppUserAppInfoListManager$1
-  extends apaq
+  extends AppletsObserver
 {
   MiniAppUserAppInfoListManager$1(MiniAppUserAppInfoListManager paramMiniAppUserAppInfoListManager) {}
   
   public void onGetAppletsPushUnreadInfo(Object paramObject)
   {
-    if ((arbw.d()) && ((paramObject instanceof MiniAppRedDotEntity)))
+    if ((MiniAppConfProcessor.d()) && ((paramObject instanceof MiniAppRedDotEntity)))
     {
       paramObject = (MiniAppRedDotEntity)paramObject;
       this.this$0.setMiniAppPushRedDotData(paramObject);

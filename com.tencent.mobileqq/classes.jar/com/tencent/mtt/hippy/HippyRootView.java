@@ -88,7 +88,7 @@ public class HippyRootView
     return this.mTimeMonitor;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     try
@@ -106,7 +106,7 @@ public class HippyRootView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     try
@@ -120,9 +120,9 @@ public class HippyRootView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
   }
@@ -141,7 +141,7 @@ public class HippyRootView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))
@@ -204,7 +204,7 @@ public class HippyRootView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyRootView
  * JD-Core Version:    0.7.0.1
  */

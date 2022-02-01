@@ -6,26 +6,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import lta;
-import ltb;
-import ltg;
-import lth;
-import ltj;
-import ltk;
-import ltl;
 
 class RandomWebProtocol$MatchTask
   extends Thread
 {
-  List<lta> jdField_a_of_type_JavaUtilList = new ArrayList();
-  ltb jdField_a_of_type_Ltb;
-  ltg jdField_a_of_type_Ltg;
+  RandomWebProtocol.Request jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request;
+  RandomWebProtocol.Response jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response;
+  List<RandomWebProtocol.OnRequestListener> jdField_a_of_type_JavaUtilList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
   
-  RandomWebProtocol$MatchTask(RandomWebProtocol paramRandomWebProtocol, ltb paramltb)
+  RandomWebProtocol$MatchTask(RandomWebProtocol paramRandomWebProtocol, RandomWebProtocol.Request paramRequest)
   {
     this.jdField_a_of_type_JavaUtilList.addAll(paramRandomWebProtocol.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Ltb = paramltb;
+    this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request = paramRequest;
   }
   
   void a()
@@ -39,46 +32,46 @@ class RandomWebProtocol$MatchTask
     if (QLog.isColorLevel()) {
       QLog.d("RandomWebProtocol", 2, "[randomWeb] quitMatch. result: " + paramInt);
     }
-    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ltg != null))
+    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response != null))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((lta)localIterator.next()).a(paramInt, this.jdField_a_of_type_Ltg);
+        ((RandomWebProtocol.OnRequestListener)localIterator.next()).a(paramInt, this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response);
       }
     }
     a();
-    if (this.jdField_a_of_type_Ltb != null) {
-      RandomWebProtocol.a(this.this$0).remove(this.jdField_a_of_type_Ltb.d);
+    if (this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request != null) {
+      RandomWebProtocol.a(this.this$0).remove(this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request.d);
     }
   }
   
   public void run()
   {
-    this.jdField_a_of_type_Ltg = null;
+    this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response = null;
     if (QLog.isColorLevel()) {
-      QLog.d("RandomWebProtocol", 2, "[random room owner] realRequest.reqtype:" + this.jdField_a_of_type_Ltb.a);
+      QLog.d("RandomWebProtocol", 2, "[random room owner] realRequest.reqtype:" + this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request.a);
     }
-    if (this.jdField_a_of_type_Ltb != null)
+    if (this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request != null)
     {
-      if (1 != this.jdField_a_of_type_Ltb.a) {
+      if (1 != this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request.a) {
         break label106;
       }
-      this.jdField_a_of_type_Ltg = new lth();
+      this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response = new RandomWebProtocol.RspDouble();
     }
-    while ((this.jdField_a_of_type_Ltb == null) || (this.jdField_a_of_type_Ltg == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Ltb.c)))
+    while ((this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request == null) || (this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request.c)))
     {
       a(true, -2);
       return;
       label106:
-      if (2 == this.jdField_a_of_type_Ltb.a) {
-        this.jdField_a_of_type_Ltg = new ltj(this.this$0);
-      } else if (3 == this.jdField_a_of_type_Ltb.a) {
-        this.jdField_a_of_type_Ltg = new ltk(this.this$0);
-      } else if ((4 == this.jdField_a_of_type_Ltb.a) || (5 == this.jdField_a_of_type_Ltb.a)) {
-        this.jdField_a_of_type_Ltg = new ltl(this.this$0);
+      if (2 == this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request.a) {
+        this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response = new RandomWebProtocol.RspMulti(this.this$0);
+      } else if (3 == this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request.a) {
+        this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response = new RandomWebProtocol.RspMultiPull(this.this$0);
+      } else if ((4 == this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request.a) || (5 == this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request.a)) {
+        this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response = new RandomWebProtocol.RspMultiRoomOwner(this.this$0);
       }
     }
-    String str1 = this.jdField_a_of_type_Ltb.a();
+    String str1 = this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request.a();
     if (QLog.isColorLevel()) {
       QLog.d("RandomWebProtocol", 2, "[randomWeb] [random room owner][1v1] json post:" + str1);
     }
@@ -88,19 +81,19 @@ class RandomWebProtocol$MatchTask
       return;
     }
     long l = System.currentTimeMillis();
-    if (System.currentTimeMillis() - l < this.jdField_a_of_type_Ltg.c)
+    if (System.currentTimeMillis() - l < this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response.c)
     {
       if (this.jdField_a_of_type_Boolean)
       {
         a(false, -2);
         return;
       }
-      String str2 = RandomWebProtocol.a(this.jdField_a_of_type_Ltb.c, str1, null);
+      String str2 = RandomWebProtocol.a(this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Request.c, str1, null);
       if (QLog.isColorLevel()) {
         QLog.d("RandomWebProtocol", 2, "[randomWeb][random room owner][1v1] json result:" + str2);
       }
-      this.jdField_a_of_type_Ltg.a(str2);
-      int i = this.jdField_a_of_type_Ltg.b;
+      this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response.a(str2);
+      int i = this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response.b;
       switch (i)
       {
       default: 
@@ -116,21 +109,21 @@ class RandomWebProtocol$MatchTask
         {
           try
           {
-            Thread.sleep(this.jdField_a_of_type_Ltg.d);
+            Thread.sleep(this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response.d);
           }
           catch (InterruptedException localInterruptedException)
           {
             localInterruptedException.printStackTrace();
           }
           break;
-          if (((this.jdField_a_of_type_Ltg instanceof lth)) && (i == 1))
+          if (((this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response instanceof RandomWebProtocol.RspDouble)) && (i == 1))
           {
             a(true, 1);
             return;
           }
           a(true, 0);
           return;
-          if ((this.jdField_a_of_type_Ltg instanceof ltl)) {
+          if ((this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$Response instanceof RandomWebProtocol.RspMultiRoomOwner)) {
             i = 1;
           } else {
             i = 0;
@@ -161,7 +154,7 @@ class RandomWebProtocol$MatchTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.random.RandomWebProtocol.MatchTask
  * JD-Core Version:    0.7.0.1
  */

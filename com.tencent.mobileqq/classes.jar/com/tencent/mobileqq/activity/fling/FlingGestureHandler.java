@@ -5,7 +5,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -23,15 +22,10 @@ public class FlingGestureHandler
   
   private ViewGroup a(Activity paramActivity)
   {
-    ViewGroup localViewGroup = (ViewGroup)paramActivity.getWindow().getDecorView();
-    View localView = localViewGroup.getChildAt(0);
-    paramActivity = localViewGroup;
-    if (localView != null)
-    {
-      paramActivity = localViewGroup;
-      if ((localView instanceof DragFrameLayout)) {
-        paramActivity = (ViewGroup)localView;
-      }
+    paramActivity = (ViewGroup)paramActivity.getWindow().getDecorView();
+    View localView = paramActivity.getChildAt(0);
+    if (FlingHelperUtils.utils.isDragFrameLayoutClass(localView)) {
+      paramActivity = (ViewGroup)localView;
     }
     return paramActivity;
   }
@@ -139,7 +133,7 @@ public class FlingGestureHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.FlingGestureHandler
  * JD-Core Version:    0.7.0.1
  */

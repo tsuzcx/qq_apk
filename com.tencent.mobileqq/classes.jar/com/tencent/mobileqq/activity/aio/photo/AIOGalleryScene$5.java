@@ -1,24 +1,21 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahri;
-import ahsn;
-import ahtm;
-import aklr;
+import com.tencent.mobileqq.activity.photo.VideoPlayControllerForAIO;
 import mqq.os.MqqHandler;
 
-public class AIOGalleryScene$5
+class AIOGalleryScene$5
   implements Runnable
 {
-  public AIOGalleryScene$5(ahri paramahri) {}
+  AIOGalleryScene$5(AIOGalleryScene paramAIOGalleryScene) {}
   
   public void run()
   {
     this.this$0.c(false);
     this.this$0.a(false);
-    if ((this.this$0.jdField_a_of_type_Ahsn.a() != null) && ((this.this$0.jdField_a_of_type_Ahsn.a().a instanceof AIOShortVideoData))) {
-      ahri.a(this.this$0, true);
+    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a() != null) && ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a instanceof AIOShortVideoData))) {
+      AIOGalleryScene.a(this.this$0, true);
     }
-    if (this.this$0.jdField_a_of_type_Aklr.c())
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO.c())
     {
       this.this$0.u();
       this.this$0.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.this$0.b);
@@ -29,7 +26,7 @@ public class AIOGalleryScene$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.5
  * JD-Core Version:    0.7.0.1
  */

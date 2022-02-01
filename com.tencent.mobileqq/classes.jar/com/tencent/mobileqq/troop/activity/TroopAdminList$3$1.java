@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bewh;
+import com.tencent.widget.XListView;
 
 class TroopAdminList$3$1
   implements Runnable
@@ -9,9 +9,8 @@ class TroopAdminList$3$1
   
   public void run()
   {
-    if (this.a.this$0.a != null) {
-      this.a.this$0.a.notifyDataSetChanged();
-    }
+    this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter = new TroopAdminList.AdminListAdapter(this.a.this$0, this.a.this$0);
+    this.a.this$0.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter);
   }
 }
 

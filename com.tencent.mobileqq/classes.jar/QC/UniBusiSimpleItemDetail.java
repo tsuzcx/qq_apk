@@ -10,15 +10,15 @@ public final class UniBusiSimpleItemDetail
   static UniBusiCommItemAidInfo cache_stAidInfo = new UniBusiCommItemAidInfo();
   static UniBusiSimpleFontItem cache_stFontItem = new UniBusiSimpleFontItem();
   static UniBusiSimpleSigItem cache_stSigItem = new UniBusiSimpleSigItem();
-  public int appId;
-  public int feeType;
+  public int appId = 0;
+  public int feeType = 0;
   public String image = "";
   public String itemBgColor = "";
-  public int itemId;
+  public int itemId = 0;
   public String name = "";
-  public UniBusiCommItemAidInfo stAidInfo;
-  public UniBusiSimpleFontItem stFontItem;
-  public UniBusiSimpleSigItem stSigItem;
+  public UniBusiCommItemAidInfo stAidInfo = null;
+  public UniBusiSimpleFontItem stFontItem = null;
+  public UniBusiSimpleSigItem stSigItem = null;
   
   public UniBusiSimpleItemDetail() {}
   

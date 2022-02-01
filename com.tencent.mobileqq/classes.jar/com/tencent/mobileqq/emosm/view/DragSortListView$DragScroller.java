@@ -2,7 +2,6 @@ package com.tencent.mobileqq.emosm.view;
 
 import android.os.SystemClock;
 import android.view.View;
-import asge;
 
 class DragSortListView$DragScroller
   implements Runnable
@@ -14,7 +13,7 @@ class DragSortListView$DragScroller
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private long c;
   
   public DragSortListView$DragScroller(DragSortListView paramDragSortListView) {}
@@ -84,7 +83,7 @@ class DragSortListView$DragScroller
         this.jdField_b_of_type_Boolean = false;
         return;
       }
-      this.jdField_b_of_type_Float = this.this$0.jdField_a_of_type_Asge.a((this.this$0.jdField_b_of_type_Float - i2) / this.this$0.c, this.jdField_a_of_type_Long);
+      this.jdField_b_of_type_Float = this.this$0.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScrollProfile.a((this.this$0.jdField_b_of_type_Float - i2) / this.this$0.c, this.jdField_a_of_type_Long);
       this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_a_of_type_Float = ((float)(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
       this.jdField_a_of_type_Int = Math.round(this.jdField_b_of_type_Float * this.jdField_a_of_type_Float);
@@ -126,7 +125,7 @@ class DragSortListView$DragScroller
         this.jdField_b_of_type_Boolean = false;
         return;
       }
-      this.jdField_b_of_type_Float = (-this.this$0.jdField_a_of_type_Asge.a((i1 - this.this$0.jdField_a_of_type_Float) / this.this$0.d, this.jdField_a_of_type_Long));
+      this.jdField_b_of_type_Float = (-this.this$0.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScrollProfile.a((i1 - this.this$0.jdField_a_of_type_Float) / this.this$0.d, this.jdField_a_of_type_Long));
       break;
       label470:
       this.jdField_a_of_type_Int = Math.max(-n, this.jdField_a_of_type_Int);
@@ -135,7 +134,7 @@ class DragSortListView$DragScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView.DragScroller
  * JD-Core Version:    0.7.0.1
  */

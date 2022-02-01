@@ -6,16 +6,13 @@ import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.ContextMenu;
 import android.widget.EditText;
-import auyr;
-import auys;
-import auyt;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class BlockableEditTextView
   extends EditText
 {
   int jdField_a_of_type_Int = -1;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   int b = -1;
   private int c = 0;
   
@@ -41,9 +38,9 @@ public class BlockableEditTextView
   {
     setEditableFactory(TroopBarPublishUtils.a);
     if (Build.VERSION.SDK_INT >= 11) {
-      setCustomSelectionActionModeCallback(new auyr(this));
+      setCustomSelectionActionModeCallback(new BlockableEditTextView.1(this));
     }
-    addTextChangedListener(new auys(this));
+    addTextChangedListener(new BlockableEditTextView.2(this));
   }
   
   private boolean a()
@@ -53,11 +50,11 @@ public class BlockableEditTextView
     if (getEditableText() == null) {
       return false;
     }
-    auyt[] arrayOfauyt = (auyt[])getEditableText().getSpans(i, j, auyt.class);
-    if ((arrayOfauyt != null) && (arrayOfauyt.length > 0) && ((arrayOfauyt[0] instanceof auyt)))
+    BlockableEditTextView.BlockAble[] arrayOfBlockAble = (BlockableEditTextView.BlockAble[])getEditableText().getSpans(i, j, BlockableEditTextView.BlockAble.class);
+    if ((arrayOfBlockAble != null) && (arrayOfBlockAble.length > 0) && ((arrayOfBlockAble[0] instanceof BlockableEditTextView.BlockAble)))
     {
-      i = getEditableText().getSpanEnd(arrayOfauyt[0]);
-      j = getEditableText().getSpanStart(arrayOfauyt[0]);
+      i = getEditableText().getSpanEnd(arrayOfBlockAble[0]);
+      j = getEditableText().getSpanStart(arrayOfBlockAble[0]);
       if ((j >= 0) && (i > j)) {
         return false;
       }
@@ -65,7 +62,7 @@ public class BlockableEditTextView
     return true;
   }
   
-  protected void onCreateContextMenu(ContextMenu paramContextMenu)
+  public void onCreateContextMenu(ContextMenu paramContextMenu)
   {
     if ((a()) || (Build.VERSION.SDK_INT >= 11)) {
       super.onCreateContextMenu(paramContextMenu);
@@ -84,14 +81,14 @@ public class BlockableEditTextView
       {
         do
         {
-          auyt[] arrayOfauyt;
+          BlockableEditTextView.BlockAble[] arrayOfBlockAble;
           do
           {
             return;
-            arrayOfauyt = (auyt[])getEditableText().getSpans(paramInt1, paramInt2, auyt.class);
-          } while ((arrayOfauyt == null) || (arrayOfauyt.length <= 0));
-          i = getEditableText().getSpanEnd(arrayOfauyt[0]);
-          j = getEditableText().getSpanStart(arrayOfauyt[0]);
+            arrayOfBlockAble = (BlockableEditTextView.BlockAble[])getEditableText().getSpans(paramInt1, paramInt2, BlockableEditTextView.BlockAble.class);
+          } while ((arrayOfBlockAble == null) || (arrayOfBlockAble.length <= 0));
+          i = getEditableText().getSpanEnd(arrayOfBlockAble[0]);
+          j = getEditableText().getSpanStart(arrayOfBlockAble[0]);
         } while ((i <= j) || (j < 0));
         if ((paramInt1 == j) && (paramInt2 == j) && (this.jdField_a_of_type_Boolean))
         {
@@ -130,7 +127,7 @@ public class BlockableEditTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.BlockableEditTextView
  * JD-Core Version:    0.7.0.1
  */

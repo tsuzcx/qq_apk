@@ -1,63 +1,44 @@
 package com.tencent.mobileqq.apollo;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.nio.ByteBuffer;
 
 final class ApolloRender$26
   implements Runnable
 {
-  ApolloRender$26(long paramLong, int paramInt, View paramView, ApolloRender paramApolloRender) {}
+  ApolloRender$26(int paramInt, Intent paramIntent, View paramView) {}
   
   public void run()
   {
-    try
-    {
-      ApolloRender.access$902(this.jdField_a_of_type_Long);
-      Intent localIntent;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        localIntent = new Intent("android.intent.action.PICK");
-        localIntent.setType("image/*");
-        ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).startActivityForResult(localIntent, 14006);
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        localIntent = new Intent();
-        localIntent.addCategory("android.intent.category.DEFAULT");
-        Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
-        ApolloRender.access$1002(new File(ApolloRender.CMSHOW_FILE_PATH));
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
-        ApolloRender.access$1000().createNewFile();
-        localObject = this.jdField_a_of_type_AndroidViewView.getContext();
-        ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
-        FileProvider7Helper.setSystemCapture((Context)localObject, ApolloRender.access$1000(), localIntent);
-        ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).startActivityForResult(localIntent, 14005);
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("sava_ApolloRender", 2, "imageselector selectimagecallback ");
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    if (this.jdField_a_of_type_Int == -1)
     {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("sava_ApolloRender", 2, localOutOfMemoryError.getMessage());
-        return;
-      }
+      Object localObject = (Bitmap)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("data");
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(((Bitmap)localObject).getByteCount());
+      int i = ((Bitmap)localObject).getWidth();
+      int j = ((Bitmap)localObject).getHeight();
+      ((Bitmap)localObject).copyPixelsToBuffer(localByteBuffer);
+      localObject = localByteBuffer.array();
+      QLog.e("sava_ApolloRender", 2, "imageselector selectimageallback textureView  " + this.jdField_a_of_type_Int + " data: ");
+      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(ApolloRender.access$900(), 1, i, j, (byte[])localObject);
+      return;
     }
-    catch (Exception localException)
+    if (this.jdField_a_of_type_Int == 0)
     {
-      QLog.e("sava_ApolloRender", 2, "imageselector  fail e=" + localException.toString());
+      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(ApolloRender.access$900(), 3, 0, 0, null);
+      return;
     }
+    ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(ApolloRender.access$900(), 2, 0, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.26
  * JD-Core Version:    0.7.0.1
  */

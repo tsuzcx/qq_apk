@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="12.0sp" android:textColor="#ff333333" android:ellipsize="end" android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<com.tencent.avgame.gameroom.seat.background.SurvivalMemberItemView android:id="@id/mkg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.RoundCorneredRelativeLayout android:id="@id/jsv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/fnh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    </com.tencent.mobileqq.widget.RoundCorneredRelativeLayout>
+</com.tencent.avgame.gameroom.seat.background.SurvivalMemberItemView>

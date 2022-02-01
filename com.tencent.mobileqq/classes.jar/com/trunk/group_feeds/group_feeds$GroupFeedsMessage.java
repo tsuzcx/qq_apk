@@ -82,7 +82,7 @@ public final class group_feeds$GroupFeedsMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.trunk.group_feeds.group_feeds.GroupFeedsMessage
  * JD-Core Version:    0.7.0.1
  */

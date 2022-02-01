@@ -1,25 +1,27 @@
 package com.tencent.qqmini.miniapp.core.page;
 
-import android.os.Handler;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
-import com.tencent.qqmini.sdk.manager.ApkgManager.OnInitApkgListener;
-import com.tencent.qqmini.sdk.widget.ToastView;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 
 class AppBrandPageContainer$4
-  implements ApkgManager.OnInitApkgListener
+  implements Animation.AnimationListener
 {
-  AppBrandPageContainer$4(AppBrandPageContainer paramAppBrandPageContainer, ToastView paramToastView, String paramString1, WeakReference paramWeakReference, String paramString2) {}
+  AppBrandPageContainer$4(AppBrandPageContainer paramAppBrandPageContainer, AppBrandPage paramAppBrandPage) {}
   
-  public void onInitApkgInfo(int paramInt, ApkgInfo paramApkgInfo, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ThreadManager.getUIHandler().post(new AppBrandPageContainer.4.1(this, paramInt, paramApkgInfo, paramString));
+    this.val$appBrandPage.setVisibility(8);
+    AppBrandTask.runTaskOnUiThreadDelay(new AppBrandPageContainer.4.1(this), 50L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.4
  * JD-Core Version:    0.7.0.1
  */

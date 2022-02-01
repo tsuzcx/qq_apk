@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import ayde;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ import org.json.JSONObject;
 public class PicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PicInfo> CREATOR = new ayde();
+  public static final Parcelable.Creator<PicInfo> CREATOR = new PicInfo.1();
   public int a;
   public String a;
   public String b;

@@ -11,11 +11,11 @@ public final class SQ_CLIENT_UPDATE_REQ
   static int cache_triggerType = 0;
   static ArrayList<UPDATE_INFO> cache_vModule;
   static ArrayList<UPDATE_INFO> cache_vPlugin = new ArrayList();
-  public int apiLevel;
+  public int apiLevel = 0;
   public String qua = "";
-  public int triggerType;
-  public ArrayList<UPDATE_INFO> vModule;
-  public ArrayList<UPDATE_INFO> vPlugin;
+  public int triggerType = 0;
+  public ArrayList<UPDATE_INFO> vModule = null;
+  public ArrayList<UPDATE_INFO> vPlugin = null;
   public String version = "";
   
   static

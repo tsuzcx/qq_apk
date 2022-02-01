@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ActYellowDiamond
   extends JceStruct
 {
-  public int iTenYearUser;
+  public int iTenYearUser = 0;
   public String strPicZip = "";
   
   public ActYellowDiamond() {}

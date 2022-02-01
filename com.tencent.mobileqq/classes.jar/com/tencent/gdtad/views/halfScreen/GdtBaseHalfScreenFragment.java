@@ -1,11 +1,5 @@
 package com.tencent.gdtad.views.halfScreen;
 
-import acho;
-import acjq;
-import acjr;
-import acjs;
-import acko;
-import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bieb;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
 import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasView;
@@ -25,9 +18,13 @@ import com.tencent.ad.tangram.util.AdUIUtils;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.views.videoceiling.GdtWebViewBuilder;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivityForTool;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.webview.WebViewDirector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -35,10 +32,10 @@ import mqq.app.MobileQQ;
 public abstract class GdtBaseHalfScreenFragment
   extends PublicBaseFragment
 {
-  private acko jdField_a_of_type_Acko;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private AdCanvasView jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  private GdtWebViewBuilder jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder;
   
   private void a(int paramInt, AdCanvasData paramAdCanvasData, String paramString, FrameLayout paramFrameLayout)
   {
@@ -58,9 +55,9 @@ public abstract class GdtBaseHalfScreenFragment
     paramAdCanvasData = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
     this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(getActivity());
     paramFrameLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    this.jdField_a_of_type_Acko = new acjs(this, getActivity(), getActivity(), null, paramAdCanvasData);
-    this.jdField_a_of_type_Acko.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    new bieb(this.jdField_a_of_type_Acko).a(null, paramAdCanvasData, getActivity().getIntent());
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder = new GdtBaseHalfScreenFragment.3(this, getActivity(), getActivity(), null, paramAdCanvasData);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+    new WebViewDirector(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder).a(null, paramAdCanvasData, getActivity().getIntent());
     this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(paramString);
   }
   
@@ -68,10 +65,10 @@ public abstract class GdtBaseHalfScreenFragment
   {
     if ((paramActivity == null) || (paramAd == null) || (!paramAd.isValid()))
     {
-      acho.d("GdtBaseHalfScreenFragment", "start error");
+      GdtLog.d("GdtBaseHalfScreenFragment", "start error");
       return;
     }
-    acho.b("GdtBaseHalfScreenFragment", "start GdtBaseHalfScreenFragment" + paramInt);
+    GdtLog.b("GdtBaseHalfScreenFragment", "start GdtBaseHalfScreenFragment" + paramInt);
     Bundle localBundle = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       localBundle.putAll(paramBundle);
@@ -85,23 +82,23 @@ public abstract class GdtBaseHalfScreenFragment
     paramAd.putExtra("canvas_data", paramAdCanvasData);
     paramAd.putExtra("style", paramInt);
     if (TextUtils.isEmpty(paramAd.getStringExtra("big_brother_ref_source_key"))) {
-      acho.d("GdtBaseHalfScreenFragment", "start gdt empty refId");
+      GdtLog.d("GdtBaseHalfScreenFragment", "start gdt empty refId");
     }
     if (paramInt == 2)
     {
-      aeow.a(paramActivity, paramAd, PublicTransFragmentActivity.class, paramClass);
+      PublicFragmentActivity.Launcher.a(paramActivity, paramAd, PublicTransFragmentActivity.class, paramClass);
       return;
     }
-    aeow.a(paramActivity, paramAd, PublicTransFragmentActivityForTool.class, paramClass);
+    PublicFragmentActivity.Launcher.a(paramActivity, paramAd, PublicTransFragmentActivityForTool.class, paramClass);
   }
   
   private void a(FrameLayout paramFrameLayout, View paramView)
   {
     if (paramFrameLayout != null) {
-      paramFrameLayout.setOnClickListener(new acjq(this));
+      paramFrameLayout.setOnClickListener(new GdtBaseHalfScreenFragment.1(this));
     }
     if (paramView != null) {
-      paramView.setOnClickListener(new acjr(this));
+      paramView.setOnClickListener(new GdtBaseHalfScreenFragment.2(this));
     }
   }
   
@@ -144,11 +141,11 @@ public abstract class GdtBaseHalfScreenFragment
       localObject = (GdtAd)getActivity().getIntent().getSerializableExtra("data");
       localObject = getActivity().getIntent().getStringExtra("url");
       int i = getActivity().getIntent().getIntExtra("style", -2147483648);
-      paramLayoutInflater = paramLayoutInflater.inflate(2131559268, paramViewGroup, false);
-      paramViewGroup = (FrameLayout)paramLayoutInflater.findViewById(2131369772);
-      FrameLayout localFrameLayout = (FrameLayout)paramLayoutInflater.findViewById(2131379356);
-      View localView = paramLayoutInflater.findViewById(2131363323);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379001));
+      paramLayoutInflater = paramLayoutInflater.inflate(2131559309, paramViewGroup, false);
+      paramViewGroup = (FrameLayout)paramLayoutInflater.findViewById(2131370041);
+      FrameLayout localFrameLayout = (FrameLayout)paramLayoutInflater.findViewById(2131379779);
+      View localView = paramLayoutInflater.findViewById(2131363402);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379432));
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(AdUIUtils.dp2px(120.0F, getResources()));
       a(localFrameLayout, localView);
       a(i, paramBundle, (String)localObject, paramViewGroup);
@@ -160,8 +157,8 @@ public abstract class GdtBaseHalfScreenFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Acko != null) {
-      this.jdField_a_of_type_Acko.c();
+    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder != null) {
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.c();
     }
     if (this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView != null) {
       this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView.onActivityDestroy();
@@ -178,8 +175,8 @@ public abstract class GdtBaseHalfScreenFragment
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Acko != null) {
-      this.jdField_a_of_type_Acko.b();
+    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder != null) {
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.b();
     }
     if (this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView != null) {
       this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView.onActivityPause();
@@ -189,8 +186,8 @@ public abstract class GdtBaseHalfScreenFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Acko != null) {
-      this.jdField_a_of_type_Acko.a();
+    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder != null) {
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.a();
     }
     if (this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView != null) {
       this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView.onActivityResume();
@@ -199,7 +196,7 @@ public abstract class GdtBaseHalfScreenFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment
  * JD-Core Version:    0.7.0.1
  */

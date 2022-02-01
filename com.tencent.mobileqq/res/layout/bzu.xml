@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/dqy" android:layout_width="fill_parent" android:layout_height="@dimen/bbu" android:contentDescription="@string/hr8"
+<RelativeLayout android:id="@id/dqy" android:layout_width="fill_parent" android:layout_height="@dimen/bca" android:contentDescription="@string/hr8"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/dqx" android:background="@drawable/jm" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="@dimen/f7" android:layout_marginTop="8.0dip">
         <TextView android:textSize="14.0dip" android:textColor="@color/afi" android:id="@id/dr5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/f4" android:text="@string/hr8" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/dre" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="8.669983dip" android:layout_alignParentTop="true">
-        <com.tencent.mobileqq.gamecenter.view.ShadowView android:id="@id/lrw" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true" />
+        <com.tencent.mobileqq.gamecenter.view.ShadowView android:id="@id/mby" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true" />
         <com.tencent.mobileqq.subaccount.UpArrowView android:id="@id/yw" android:duplicateParentState="true" android:layout_width="12.0dip" android:layout_height="8.0dip" android:layout_marginLeft="34.0dip" android:layout_alignParentBottom="true" />
     </RelativeLayout>
 </RelativeLayout>

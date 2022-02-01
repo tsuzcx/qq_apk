@@ -4,14 +4,11 @@ import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.net.Uri;
 import android.os.Bundle;
-import biex;
-import bigl;
-import bigr;
-import bihv;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtils;
+import com.tencent.mobileqq.webprocess.temp.api.IWebviewApi;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebBackForwardList;
@@ -97,62 +94,30 @@ public class SonicClientImpl
     if (QLog.isColorLevel()) {
       QLog.d("sonicSdkImpl_SonicClientImpl", 2, "destroy");
     }
-    int i = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-    int j = i;
-    if (i == 0) {
-      j = -1;
+    int j = NetworkUtil.a(BaseApplication.getContext());
+    int i = j;
+    if (j == 0) {
+      i = -1;
     }
-    int k = 0;
-    i = k;
+    j = 0;
     Object localObject;
     if (this.webView != null)
     {
-      Context localContext = this.webView.getContext();
-      localObject = localContext;
-      if ((localContext instanceof MutableContextWrapper)) {
-        localObject = ((MutableContextWrapper)localContext).getBaseContext();
+      localObject = this.webView.getContext();
+      if (!(localObject instanceof MutableContextWrapper)) {
+        break label174;
       }
-      if (!(localObject instanceof bigr)) {
-        break label226;
-      }
-      localObject = (bihv)((bigr)localObject).getComponentProvider().a(-2);
+      localObject = ((MutableContextWrapper)localObject).getBaseContext();
     }
+    label174:
     for (;;)
     {
-      i = k;
-      if (localObject != null)
-      {
-        if (!((bihv)localObject).w) {
-          break label269;
-        }
-        i = 2;
-      }
-      for (;;)
-      {
-        localObject = this.session.getStatistics();
-        VasWebviewUtil.doSonicSpeedReport("SonicReport", "SonicSpeed", ((SonicSessionStatistics)localObject).srcUrl, ((SonicSessionStatistics)localObject).finalMode, ((SonicSessionStatistics)localObject).originalMode, ((SonicSessionStatistics)localObject).sonicStartTime, ((SonicSessionStatistics)localObject).sonicFlowStartTime, ((SonicSessionStatistics)localObject).cacheVerifyTime, ((SonicSessionStatistics)localObject).connectionFlowStartTime, ((SonicSessionStatistics)localObject).connectionConnectTime, ((SonicSessionStatistics)localObject).connectionRespondTime, ((SonicSessionStatistics)localObject).connectionFlowFinishTime, 0L, 0L, 0L, 0L, j, i, ((SonicSessionStatistics)localObject).isDirectAddress + "", "");
-        this.session.destroy();
-        this.webView = null;
-        return;
-        label226:
-        if (!(localObject instanceof biex)) {
-          break label285;
-        }
-        localObject = ((biex)localObject).a();
-        if (localObject == null) {
-          break label285;
-        }
-        localObject = (bihv)((WebViewFragment)localObject).getComponentProvider().a(-2);
-        break;
-        label269:
-        if (bihv.s) {
-          i = 1;
-        } else {
-          i = 0;
-        }
-      }
-      label285:
-      localObject = null;
+      j = ((IWebviewApi)QRoute.api(IWebviewApi.class)).getWebViewPreloadMode((Context)localObject);
+      localObject = this.session.getStatistics();
+      VasWebviewUtils.a("SonicReport", "SonicSpeed", ((SonicSessionStatistics)localObject).srcUrl, ((SonicSessionStatistics)localObject).finalMode, ((SonicSessionStatistics)localObject).originalMode, ((SonicSessionStatistics)localObject).sonicStartTime, ((SonicSessionStatistics)localObject).sonicFlowStartTime, ((SonicSessionStatistics)localObject).cacheVerifyTime, ((SonicSessionStatistics)localObject).connectionFlowStartTime, ((SonicSessionStatistics)localObject).connectionConnectTime, ((SonicSessionStatistics)localObject).connectionRespondTime, ((SonicSessionStatistics)localObject).connectionFlowFinishTime, 0L, 0L, 0L, 0L, i, j, ((SonicSessionStatistics)localObject).isDirectAddress + "", "");
+      this.session.destroy();
+      this.webView = null;
+      return;
     }
   }
   
@@ -187,7 +152,7 @@ public class SonicClientImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicClientImpl
  * JD-Core Version:    0.7.0.1
  */

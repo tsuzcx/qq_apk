@@ -4,22 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anvx;
-import bibz;
-import bica;
-import bicd;
-import bici;
+import com.tencent.av.utils.TraeHelper;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.voicechange.IVoiceChangeListener;
+import com.tencent.mobileqq.voicechange.VoiceChangeBasicParams;
+import com.tencent.mobileqq.voicechange.VoiceChangeManager;
+import com.tencent.mobileqq.voicechange.VoiceChangeParams.IOnCompressFinish;
 import com.tencent.mobileqq.widget.QQToast;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.webviewplugin.QZonePublishSecretShuoShuoH5Plugin;
 import cooperation.qzone.webviewplugin.QZonePublishVoiceShuoShuoH5Plugin;
 import eipc.EIPCClient;
-import muy;
 
 public class RecordAndChangeVoiceService
-  implements bibz, bici
+  implements IVoiceChangeListener, VoiceChangeParams.IOnCompressFinish
 {
   public static final String ACTION_TYPE = "com.tencent.qq.syncSecretShuoshuoMsgType";
   public static final String BROADCAST_SYNC_SECRET_SHUOSHUO_MESSAGE = "com.tencent.qq.syncSecretShuoshuoMsg";
@@ -33,8 +33,8 @@ public class RecordAndChangeVoiceService
   private QZonePublishSecretShuoShuoH5Plugin mQZonePublishSecretShuoShuoH5Plugin;
   private String recordPath;
   private long recordTime;
-  private String sVCSoPath = muy.a(BaseApplicationImpl.getContext());
-  public bica voiceChangeParams;
+  private String sVCSoPath = TraeHelper.a(BaseApplicationImpl.getContext());
+  public VoiceChangeBasicParams voiceChangeParams;
   
   private RecordAndChangeVoiceService()
   {
@@ -218,19 +218,19 @@ public class RecordAndChangeVoiceService
   {
     if (TextUtils.isEmpty(this.sVCSoPath))
     {
-      this.sVCSoPath = muy.a(BaseApplicationImpl.getContext());
+      this.sVCSoPath = TraeHelper.a(BaseApplicationImpl.getContext());
       if (TextUtils.isEmpty(this.sVCSoPath))
       {
         QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-        QQToast.a(BaseApplicationImpl.getContext(), anvx.a(2131712740), 1);
+        QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131713236), 1);
       }
       return;
     }
     QZLog.d("RecordAndChangeVoiceService", 2, "getMoodVoiceData callback" + paramString + " voiceID " + paramInt);
     this.base64Callback = paramString;
     this.mQZonePublishSecretShuoShuoH5Plugin = paramQZonePublishSecretShuoShuoH5Plugin;
-    bicd.a(BaseApplicationImpl.getContext(), this.voiceChangeParams, this.sVCSoPath, this);
-    bicd.a(this.recordPath, this);
+    VoiceChangeManager.a(BaseApplicationImpl.getContext(), this.voiceChangeParams, this.sVCSoPath, this);
+    VoiceChangeManager.a(this.recordPath, this);
   }
   
   public void getMoodVoiceRecordTime(String paramString, QZonePublishSecretShuoShuoH5Plugin paramQZonePublishSecretShuoShuoH5Plugin)
@@ -284,7 +284,7 @@ public class RecordAndChangeVoiceService
     int k = paramIntent.getIntExtra("key_record_param_audio_type", 0);
     if ((!TextUtils.isEmpty(this.recordPath)) && (this.recordTime > 0L))
     {
-      this.voiceChangeParams = new bica(this.recordPath, i, j, k, 0);
+      this.voiceChangeParams = new VoiceChangeBasicParams(this.recordPath, i, j, k, 0);
       switch (paramInt)
       {
       default: 
@@ -305,11 +305,11 @@ public class RecordAndChangeVoiceService
   {
     if (TextUtils.isEmpty(this.sVCSoPath))
     {
-      this.sVCSoPath = muy.a(BaseApplicationImpl.getContext());
+      this.sVCSoPath = TraeHelper.a(BaseApplicationImpl.getContext());
       if (TextUtils.isEmpty(this.sVCSoPath))
       {
         QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-        QQToast.a(BaseApplicationImpl.getContext(), anvx.a(2131712739), 1);
+        QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131713235), 1);
       }
     }
     while (this.voiceChangeParams == null) {
@@ -317,7 +317,7 @@ public class RecordAndChangeVoiceService
     }
     this.currentVoiceID = paramInt;
     this.voiceChangeParams.f = paramInt;
-    bicd.b(BaseApplicationImpl.getContext(), this.voiceChangeParams, this.sVCSoPath, this);
+    VoiceChangeManager.b(BaseApplicationImpl.getContext(), this.voiceChangeParams, this.sVCSoPath, this);
   }
   
   public void playMoodVoice(String paramString, int paramInt, QZonePublishSecretShuoShuoH5Plugin paramQZonePublishSecretShuoShuoH5Plugin)
@@ -345,13 +345,13 @@ public class RecordAndChangeVoiceService
   {
     QZLog.d("RecordAndChangeVoiceService", 2, "stopPlayingMoodVoice");
     if (this.voiceChangeParams != null) {
-      bicd.b(this.voiceChangeParams);
+      VoiceChangeManager.b(this.voiceChangeParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.RecordAndChangeVoiceService
  * JD-Core Version:    0.7.0.1
  */

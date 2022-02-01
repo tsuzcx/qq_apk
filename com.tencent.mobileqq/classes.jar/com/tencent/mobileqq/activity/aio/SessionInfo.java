@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afrb;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,72 +9,149 @@ public class SessionInfo
   implements Parcelable, Cloneable
 {
   public static final Parcelable.Creator<SessionInfo> CREATOR = new SessionInfo.1();
-  public int addFriendSourceId = 3999;
-  public afrb chatBg;
-  public String contactUin;
-  public String curFriendNick;
-  public String curFriendUin;
-  public int curType;
-  public boolean debugFilterMemberMsgCommand;
-  public String debugFilterMsgTargetUin;
-  public String directArtificial = "";
-  public int entrance = 0;
-  public int extraUintype;
-  public boolean isBarrageMsg;
-  public int isFromForward;
-  public boolean isFromFrdRecConfess;
-  public boolean isFromGroupRecConfess;
-  public boolean isNightMode;
-  public boolean isQimUserBubbleForm;
-  public boolean isQimUserOnline;
-  public boolean isQimUserOnlineIcon;
-  public boolean isQimUserTitleForm;
-  public boolean isTimUserBubbleForm;
-  public boolean isTimUserOnline;
-  public boolean isTimUserOnlineIcon;
-  public boolean isTimUserTitleForm;
-  public boolean isUpComingPrevious;
-  private Bundle mExtras;
-  private String mFriendRoleId;
-  public long mLastReadMsgId = -1L;
-  private String mMyRoleId;
-  public long miniMsgBarrageTimeLocation;
-  public long miniMsgUniseq;
-  public String phoneNum;
-  public String realTroopUin;
-  public int textSizeForTextItem;
-  public int topicId;
-  public String troopUin;
-  public String uinName;
+  public int a;
+  public long a;
+  private Bundle a;
+  public ChatBackground a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public boolean e;
+  public int f;
+  public String f;
+  public boolean f = false;
+  public int g;
+  public String g;
+  public boolean g;
+  public String h;
+  public boolean h = false;
+  public String i;
+  public boolean i;
+  private String j;
+  public boolean j;
+  private String k;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
   
-  public SessionInfo() {}
+  public SessionInfo()
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_i_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 3999;
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_j_of_type_Boolean = false;
+    this.jdField_k_of_type_Boolean = false;
+  }
   
   public SessionInfo(Parcel paramParcel)
   {
-    this.curType = paramParcel.readInt();
-    this.curFriendUin = paramParcel.readString();
-    this.troopUin = paramParcel.readString();
-    this.curFriendNick = paramParcel.readString();
-    this.phoneNum = paramParcel.readString();
-    this.addFriendSourceId = paramParcel.readInt();
-    this.mFriendRoleId = paramParcel.readString();
-    this.mMyRoleId = paramParcel.readString();
-    this.mExtras = paramParcel.readBundle(getClass().getClassLoader());
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_i_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 3999;
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_j_of_type_Boolean = false;
+    this.jdField_k_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_d_of_type_Int = paramParcel.readInt();
+    this.jdField_k_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_j_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle(getClass().getClassLoader());
   }
   
   public SessionInfo(SessionInfo paramSessionInfo)
   {
-    this.curType = paramSessionInfo.curType;
-    this.curFriendUin = paramSessionInfo.curFriendUin;
-    this.troopUin = paramSessionInfo.troopUin;
-    this.curFriendNick = paramSessionInfo.curFriendNick;
-    this.phoneNum = paramSessionInfo.phoneNum;
-    this.addFriendSourceId = paramSessionInfo.addFriendSourceId;
-    this.mFriendRoleId = paramSessionInfo.mFriendRoleId;
-    this.mMyRoleId = paramSessionInfo.mMyRoleId;
-    if (paramSessionInfo.mExtras != null) {
-      this.mExtras = new Bundle(paramSessionInfo.mExtras);
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_i_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 3999;
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_j_of_type_Boolean = false;
+    this.jdField_k_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramSessionInfo.jdField_b_of_type_JavaLangString;
+    this.jdField_d_of_type_JavaLangString = paramSessionInfo.jdField_d_of_type_JavaLangString;
+    this.jdField_e_of_type_JavaLangString = paramSessionInfo.jdField_e_of_type_JavaLangString;
+    this.jdField_d_of_type_Int = paramSessionInfo.jdField_d_of_type_Int;
+    this.jdField_k_of_type_JavaLangString = paramSessionInfo.jdField_k_of_type_JavaLangString;
+    this.jdField_j_of_type_JavaLangString = paramSessionInfo.jdField_j_of_type_JavaLangString;
+    if (paramSessionInfo.jdField_a_of_type_AndroidOsBundle != null) {
+      this.jdField_a_of_type_AndroidOsBundle = new Bundle(paramSessionInfo.jdField_a_of_type_AndroidOsBundle);
     }
+  }
+  
+  public Bundle a()
+  {
+    return this.jdField_a_of_type_AndroidOsBundle;
+  }
+  
+  public String a()
+  {
+    return this.jdField_k_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    this.l = false;
+    this.jdField_i_of_type_JavaLangString = null;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_k_of_type_JavaLangString = paramString;
+  }
+  
+  public String b()
+  {
+    return this.jdField_j_of_type_JavaLangString;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_j_of_type_JavaLangString = paramString;
   }
   
   public Object clone()
@@ -88,58 +164,22 @@ public class SessionInfo
     return 0;
   }
   
-  public Bundle getExtras()
-  {
-    return this.mExtras;
-  }
-  
-  public String getFriendRoleId()
-  {
-    return this.mFriendRoleId;
-  }
-  
-  public String getMyRoleId()
-  {
-    return this.mMyRoleId;
-  }
-  
-  public void reset()
-  {
-    this.debugFilterMemberMsgCommand = false;
-    this.debugFilterMsgTargetUin = null;
-  }
-  
-  public void setExtras(Bundle paramBundle)
-  {
-    this.mExtras = paramBundle;
-  }
-  
-  public void setFriendRoleId(String paramString)
-  {
-    this.mFriendRoleId = paramString;
-  }
-  
-  public void setMyRoleId(String paramString)
-  {
-    this.mMyRoleId = paramString;
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.curType);
-    paramParcel.writeString(this.curFriendUin);
-    paramParcel.writeString(this.troopUin);
-    paramParcel.writeString(this.curFriendNick);
-    paramParcel.writeString(this.phoneNum);
-    paramParcel.writeInt(this.addFriendSourceId);
-    paramParcel.writeString(this.mFriendRoleId);
-    paramParcel.writeString(this.mMyRoleId);
-    paramParcel.writeBundle(this.mExtras);
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
+    paramParcel.writeInt(this.jdField_d_of_type_Int);
+    paramParcel.writeString(this.jdField_k_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
+    paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.SessionInfo
  * JD-Core Version:    0.7.0.1
  */

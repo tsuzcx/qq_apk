@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aido;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.api.IPublicAccountManager;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForPubAccount;
 import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.Iterator;
 import java.util.List;
-import okn;
 
-public class PublicAccountChatPie$49
+class PublicAccountChatPie$49
   implements Runnable
 {
-  public PublicAccountChatPie$49(aido paramaido) {}
+  PublicAccountChatPie$49(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    if (okn.a().a(this.this$0.app, this.this$0.sessionInfo.curFriendUin) != 0L) {}
+    if (((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getMsgID(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) != 0L) {}
     for (;;)
     {
       return;
-      Object localObject1 = this.this$0.app.getMessageFacade().getAIOList(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType);
+      Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
         localObject1 = ((List)localObject1).iterator();
@@ -39,7 +39,7 @@ public class PublicAccountChatPie$49
                 long l = Long.parseLong((String)localObject2);
                 if (l > 0L)
                 {
-                  okn.a().a(this.this$0.app, this.this$0.sessionInfo.curFriendUin, l);
+                  ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).setMsgID(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, l);
                   return;
                 }
               }
@@ -53,7 +53,7 @@ public class PublicAccountChatPie$49
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.49
  * JD-Core Version:    0.7.0.1
  */

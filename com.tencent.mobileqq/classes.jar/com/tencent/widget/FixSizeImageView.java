@@ -8,14 +8,14 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
-import bgyo;
-import blcm;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GlobalImageCache;
+import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class FixSizeImageView
   extends ThemeImageView
-  implements blcm
+  implements IRecentImgv
 {
   protected float a;
   protected long a;
@@ -26,14 +26,20 @@ public class FixSizeImageView
   protected float b;
   protected Paint b;
   protected boolean b;
-  protected float c;
+  protected float c = 0.0F;
   
   public FixSizeImageView(Context paramContext)
   {
     super(paramContext);
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_b_of_type_Float = -1.0F;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_b_of_type_AndroidGraphicsPaint = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
     this.jdField_a_of_type_Long = 5L;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   public FixSizeImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -41,7 +47,13 @@ public class FixSizeImageView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_b_of_type_Float = -1.0F;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_b_of_type_AndroidGraphicsPaint = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
     this.jdField_a_of_type_Long = 5L;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   public FixSizeImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -49,7 +61,13 @@ public class FixSizeImageView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_b_of_type_Float = -1.0F;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_b_of_type_AndroidGraphicsPaint = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
     this.jdField_a_of_type_Long = 5L;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   protected static Bitmap a(long paramLong)
@@ -61,7 +79,7 @@ public class FixSizeImageView
     Object localObject = "";
     if (paramLong == 1L)
     {
-      i = 2130850475;
+      i = 2130850878;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
       if (i >= 0) {
         break label58;
@@ -75,23 +93,23 @@ public class FixSizeImageView
       if (paramLong != 2L) {
         break;
       }
-      i = 2130850477;
+      i = 2130850880;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
       break;
-      if (BaseApplicationImpl.sImageCache != null) {
-        localBitmap2 = (Bitmap)BaseApplicationImpl.sImageCache.get(localObject);
+      if (GlobalImageCache.a != null) {
+        localBitmap2 = (Bitmap)GlobalImageCache.a.get(localObject);
       }
       localBitmap1 = localBitmap2;
       if (localBitmap2 == null)
       {
-        localBitmap2 = bgyo.b(BaseApplicationImpl.getApplication().getResources(), i);
+        localBitmap2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), i);
         localBitmap1 = localBitmap2;
         if (localBitmap2 != null)
         {
           localBitmap1 = localBitmap2;
-          if (BaseApplicationImpl.sImageCache != null)
+          if (GlobalImageCache.a != null)
           {
-            BaseApplicationImpl.sImageCache.put(localObject, localBitmap2);
+            GlobalImageCache.a.put(localObject, localBitmap2);
             localBitmap1 = localBitmap2;
           }
         }
@@ -100,11 +118,6 @@ public class FixSizeImageView
     } while (!QLog.isColorLevel());
     QLog.i("FixSizeImageView", 2, "getTroopCreditStatusIcon:" + (System.currentTimeMillis() - l));
     return localBitmap1;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_Blfw = null;
   }
   
   public void a(long paramLong)
@@ -130,7 +143,7 @@ public class FixSizeImageView
     }
   }
   
-  protected void b(Canvas paramCanvas)
+  protected void a(Canvas paramCanvas)
   {
     int i;
     int j;
@@ -173,19 +186,24 @@ public class FixSizeImageView
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     if ((this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean)) {
-      b(paramCanvas);
+      a(paramCanvas);
     }
+  }
+  
+  protected void init()
+  {
+    this.themeImageWrapper = null;
   }
   
   public void requestLayout() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.FixSizeImageView
  * JD-Core Version:    0.7.0.1
  */

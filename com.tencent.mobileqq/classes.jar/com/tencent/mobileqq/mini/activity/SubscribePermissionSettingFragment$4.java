@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.activity;
 
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class SubscribePermissionSettingFragment$4
   implements Runnable

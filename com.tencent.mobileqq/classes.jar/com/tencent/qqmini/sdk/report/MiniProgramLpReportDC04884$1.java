@@ -22,8 +22,8 @@ final class MiniProgramLpReportDC04884$1
     if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
       QMLog.d("MiniProgramLpReportDC04", "reportApiReportcalled with args: " + this.val$jsonParams);
     }
-    Object localObject = StorageUtil.getPreference().getString("version", "1.19.0.00043");
-    localObject = new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("appid", this.val$appId), MiniProgramReportHelper.newEntry("miniapp_version", this.val$miniapp_version), MiniProgramReportHelper.newEntry("baselib_version", (String)localObject), MiniProgramReportHelper.newEntry("apiResult", this.val$jsonParams) }));
+    Object localObject = StorageUtil.getPreference().getString("version", "1.22.0.00008");
+    localObject = new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("appid", this.val$appId), MiniProgramReportHelper.newEntry("miniapp_version", this.val$miniappVersion), MiniProgramReportHelper.newEntry("baselib_version", (String)localObject), MiniProgramReportHelper.newEntry("apiResult", this.val$jsonParams) }));
     if (!QUAUtil.isQQApp()) {
       ((ArrayList)localObject).addAll(MiniProgramReportHelper.newThirdSourceEntries());
     }
@@ -33,7 +33,7 @@ final class MiniProgramLpReportDC04884$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04884.1
  * JD-Core Version:    0.7.0.1
  */

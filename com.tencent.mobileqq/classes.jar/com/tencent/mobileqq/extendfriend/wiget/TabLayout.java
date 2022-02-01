@@ -11,14 +11,13 @@ import android.view.ViewParent;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import asvp;
 
 public class TabLayout
   extends HorizontalScrollView
 {
   protected float a;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private asvp jdField_a_of_type_Asvp;
+  private TabLayout.TabAdapter jdField_a_of_type_ComTencentMobileqqExtendfriendWigetTabLayout$TabAdapter;
   protected float b;
   protected float c;
   protected float d;
@@ -55,14 +54,14 @@ public class TabLayout
     return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
   
-  public void a(asvp paramasvp)
+  public void a(TabLayout.TabAdapter paramTabAdapter)
   {
     int i = 1;
     int k = 0;
     int m;
-    if (paramasvp != null)
+    if (paramTabAdapter != null)
     {
-      m = paramasvp.a();
+      m = paramTabAdapter.a();
       if (m > 0) {
         break label23;
       }
@@ -71,21 +70,21 @@ public class TabLayout
     {
       return;
       label23:
-      this.jdField_a_of_type_Asvp = paramasvp;
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetTabLayout$TabAdapter = paramTabAdapter;
       this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
       int j;
-      if (m <= paramasvp.b())
+      if (m <= paramTabAdapter.b())
       {
         setFillViewport(true);
         j = 0;
       }
       while (k < m)
       {
-        View localView = paramasvp.a(k);
+        View localView = paramTabAdapter.a(k);
         if (localView != null)
         {
           LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, -1, i);
-          Rect localRect = paramasvp.a(k);
+          Rect localRect = paramTabAdapter.a(k);
           localLayoutParams.leftMargin = localRect.left;
           localLayoutParams.topMargin = localRect.top;
           localLayoutParams.rightMargin = localRect.right;
@@ -94,7 +93,7 @@ public class TabLayout
         }
         k += 1;
         continue;
-        j = paramasvp.c();
+        j = paramTabAdapter.c();
         setFillViewport(false);
         i = 0;
       }
@@ -131,7 +130,7 @@ public class TabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.TabLayout
  * JD-Core Version:    0.7.0.1
  */

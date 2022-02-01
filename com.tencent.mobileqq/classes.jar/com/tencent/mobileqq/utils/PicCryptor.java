@@ -2,11 +2,11 @@ package com.tencent.mobileqq.utils;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.HttpNetReq.IFlowDecoder;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
@@ -33,11 +33,12 @@ public class PicCryptor
   
   static
   {
-    SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "piccryptor");
+    SoLoadUtilNew.loadSoByName(BaseApplication.getContext(), "piccryptor");
   }
   
   public PicCryptor(byte[] paramArrayOfByte)
   {
+    this.jdField_a_of_type_Long = 0L;
     this.jdField_c_of_type_ArrayOfByte = paramArrayOfByte;
     this.f = 0;
   }
@@ -184,10 +185,10 @@ public class PicCryptor
       localByteBuffer2.rewind();
       this.jdField_d_of_type_Int = localByteBuffer2.getShort();
       if (this.jdField_d_of_type_Int <= 0) {
-        break label448;
+        break label449;
       }
     }
-    label448:
+    label449:
     for (bool1 = bool2;; bool1 = false)
     {
       a(bool1, "seed len is no allow negative");

@@ -14,16 +14,16 @@ public final class WeishiAggregatePageRsp
   static int cache_page_type = 0;
   static s_outshare cache_share_info = new s_outshare();
   static s_weishi cache_weishi_info = new s_weishi();
-  public s_button bottom_button;
+  public s_button bottom_button = null;
   public String id = "";
-  public long like_num;
-  public int page_type;
-  public s_outshare share_info;
+  public long like_num = 0L;
+  public int page_type = 0;
+  public s_outshare share_info = null;
   public String shot_page_title = "";
   public String summary = "";
   public String title = "";
-  public long video_num;
-  public s_weishi weishi_info;
+  public long video_num = 0L;
+  public s_weishi weishi_info = null;
   
   public WeishiAggregatePageRsp() {}
   

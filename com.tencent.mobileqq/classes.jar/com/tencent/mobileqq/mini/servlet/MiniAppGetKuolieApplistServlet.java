@@ -7,7 +7,6 @@ import NS_MINI_INTERFACE.INTERFACE.StGetExpandAppListRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhjl;
 import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -15,6 +14,7 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -55,18 +55,19 @@ public class MiniAppGetKuolieApplistServlet
           {
             MiniAppInfo localMiniAppInfo = MiniAppInfo.from(paramArrayOfByte);
             MiniAppRecommInfo.MiniApp localMiniApp = new MiniAppRecommInfo.MiniApp();
-            localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo = localMiniAppInfo;
+            localMiniApp.jdField_a_of_type_ArrayOfByte = paramArrayOfByte.toByteArray();
+            localMiniApp.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StApiAppInfo = paramArrayOfByte;
             localMiniApp.jdField_a_of_type_JavaLangString = localMiniAppInfo.appId;
             if (!TextUtils.isEmpty(localStExpandItem.icon.get()))
             {
               paramArrayOfByte = localStExpandItem.icon.get();
-              label245:
+              label253:
               localMiniApp.c = paramArrayOfByte;
               if (TextUtils.isEmpty(localStExpandItem.name.get())) {
-                break label318;
+                break label326;
               }
             }
-            label318:
+            label326:
             for (paramArrayOfByte = localStExpandItem.name.get();; paramArrayOfByte = localMiniAppInfo.name)
             {
               localMiniApp.b = paramArrayOfByte;
@@ -74,7 +75,7 @@ public class MiniAppGetKuolieApplistServlet
               localMiniAppRecommInfo.appInfoList.add(localMiniApp);
               break;
               paramArrayOfByte = localMiniAppInfo.iconUrl;
-              break label245;
+              break label253;
             }
           }
         }
@@ -103,7 +104,7 @@ public class MiniAppGetKuolieApplistServlet
         localObject = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetExpandAppList");
-      paramPacket.putSendData(bhjl.a((byte[])localObject));
+      paramPacket.putSendData(WupUtil.a((byte[])localObject));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

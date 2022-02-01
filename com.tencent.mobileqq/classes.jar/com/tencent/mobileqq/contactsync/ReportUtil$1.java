@@ -5,10 +5,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public final class ReportUtil$1
+final class ReportUtil$1
   implements Runnable
 {
-  public ReportUtil$1(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
+  ReportUtil$1(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public final class ReportUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.contactsync.ReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

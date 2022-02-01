@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amme;
 import android.util.SparseIntArray;
-import asdi;
-import awyr;
-import bdla;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.api.IApolloManagerService;
+import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
+import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.text.EmotcationConstants;
 import com.tencent.mobileqq.text.TextUtils;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class ReportWorker
   implements Runnable
@@ -38,44 +41,44 @@ public class ReportWorker
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder(this.mMsg);
+    ArrayList localArrayList = new ArrayList();
     int i = 0;
-    label35:
     int j;
     int k;
     if (i < localStringBuilder.length())
     {
       j = localStringBuilder.codePointAt(i);
-      if ((j != 20) || (i >= localStringBuilder.length() - 1)) {
-        break label592;
+      if ((j == 20) && (i < localStringBuilder.length() - 1))
+      {
+        k = localStringBuilder.charAt(i + 1);
+        if ((k < EmotcationConstants.VALID_SYS_EMOTCATION_COUNT) || (250 == k))
+        {
+          if (250 != k) {
+            break label761;
+          }
+          k = 10;
+        }
       }
-      k = localStringBuilder.charAt(i + 1);
-      if ((k >= EmotcationConstants.VALID_SYS_EMOTCATION_COUNT) && (250 != k)) {
-        break label245;
-      }
-      if (250 != k) {
-        break label702;
-      }
-      k = 10;
     }
-    label702:
+    label761:
     for (;;)
     {
-      bdla.b(this.mAppInterface, "CliOper", "", "", "ep_mall", "0X80057A3", 0, 0, k + "", "", "", "");
-      if (TextUtils.isApolloEmoticon(k)) {
-        VipUtils.a(this.mAppInterface, "cmshow", "Apollo", "0X800812E", ApolloUtil.b(this.mCurType), 0, new String[] { String.valueOf(k), String.valueOf(amme.a(this.mAppInterface)) });
+      ReportController.b(this.mAppInterface, "CliOper", "", "", "ep_mall", "0X80057A3", 0, 0, k + "", "", "", "");
+      if (TextUtils.isApolloEmoticon(k))
+      {
+        VipUtils.a(this.mAppInterface, "cmshow", "Apollo", "0X800812E", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.mCurType), 0, new String[] { String.valueOf(k), String.valueOf(((IApolloManagerService)this.mAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getApolloUserStatus(this.mAppInterface)) });
+        localArrayList.add(Integer.valueOf(k));
       }
-      awyr.b("0", 1);
+      EmoticonManager.b("0", 1);
       j = i;
       if (QLog.isColorLevel())
       {
         QLog.d("ReportWorker", 2, "report emoji send amount, index:" + k);
         j = i;
       }
-      label245:
       do
       {
         i = j + 1;
-        break label35;
         break;
         j = i;
       } while (k != 255);
@@ -102,7 +105,7 @@ public class ReportWorker
           }
         }
       }
-      localObject = asdi.a((char[])localObject);
+      localObject = EmosmUtils.a((char[])localObject);
       if ((localObject != null) && (localObject.length == 2))
       {
         k = localObject[0];
@@ -123,22 +126,21 @@ public class ReportWorker
         if (this.mIsForward) {}
         for (localObject = "0X800588C";; localObject = "0X80057AF")
         {
-          bdla.b(this.mAppInterface, "CliOper", "", "", "ep_mall", (String)localObject, 0, 0, k + "", j + "", str, "");
-          awyr.b("0", 5);
+          ReportController.b(this.mAppInterface, "CliOper", "", "", "ep_mall", (String)localObject, 0, 0, k + "", j + "", str, "");
+          EmoticonManager.b("0", 5);
           if (QLog.isColorLevel()) {
             QLog.d("ReportWorker", 2, "report small emoticon send amount, epId:" + k + ",eId:" + j + ",tabOrder:" + str);
           }
           j = i + 4;
           break;
         }
-        label592:
         k = EmotcationConstants.EMOJI_MAP.get(j, -1);
         j = i;
         if (k < 0) {
           break;
         }
-        bdla.b(this.mAppInterface, "CliOper", "", "", "ep_mall", "0X80057A4", 0, 0, k + "", "", "", "");
-        awyr.b("0", 1);
+        ReportController.b(this.mAppInterface, "CliOper", "", "", "ep_mall", "0X80057A4", 0, 0, k + "", "", "", "");
+        EmoticonManager.b("0", 1);
         j = i;
         if (!QLog.isColorLevel()) {
           break;
@@ -146,6 +148,8 @@ public class ReportWorker
         QLog.d("ReportWorker", 2, "report system emoticon send amount, emoIdx:" + k);
         j = i;
         break;
+        ApolloDtReportUtil.a(localArrayList, this.mAppInterface, this.mCurType);
+        return;
         j = 0;
         k = 0;
       }
@@ -154,7 +158,7 @@ public class ReportWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ReportWorker
  * JD-Core Version:    0.7.0.1
  */

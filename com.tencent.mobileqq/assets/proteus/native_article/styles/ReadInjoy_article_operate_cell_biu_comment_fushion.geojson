@@ -263,30 +263,50 @@
                 }
             },
             {
-                     "view_type":"UILabel",
-                     "view_id":"id_biu_count",
-                     "above_of_view":"id_biu",
-                     "right_of_view":"id_biu",
-                     "margin_bottom":"-18",
-                     "margin_left": "-11",
-                     "height":{
-                         "type":"relative",
-                         "value":"12"
-                     },
-                     "width":{
-                         "type":"wrap_content"
-                     },
-                     "attributes":{
-                         "setText:":"$biu_count",
-                         "setTextColorString:":"#B3262626",
-                         "setNumberOfLinesString:": "1",
-                         "setTextAlignmentString:":"0",
-                         "setAndroidFontFilePath:iOSFontName:size:" : [
-                            "fonts/readinjoy_operation_bar_number.ttf",
-                            "Bebas",
-                            "12"
-                         ]
-                     }
+                "view_type":"UILabel",
+                "view_id":"id_biu_count",
+                "above_of_view":"id_biu",
+                "right_of_view":"id_biu",
+                "margin_bottom":"-18",
+                "margin_left":"-11",
+                "height":{
+                    "type":"relative",
+                    "value":"12"
+                },
+                "width":{
+                    "type":"wrap_content"
+                },
+                "attributes":{
+                    "setText:":"$biu_count",
+                    "setTextColorString:":"#B3262626",
+                    "setNumberOfLinesString:":"1",
+                    "setTextAlignmentString:":"0",
+                    "setAndroidFontFilePath:iOSFontName:size:":[
+                        "fonts/readinjoy_operation_bar_number.ttf",
+                        "Bebas",
+                        "12"
+                    ]
+                }
+            },
+            {
+                "view_type":"UIButton",
+                "view_id":"id_share",
+                "right_of_view":"id_like",
+                "margin_left":"6",
+                "event_type":"cmd_share_click",
+                "default_visible":"YES",
+                "align_parent_center_vertical":"YES",
+                "height":{
+                    "type":"relative",
+                    "value":"46"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"50"
+                },
+                "attributes":{
+                    "setImage:":"share_bottom_icon"
+                }
             }
         ]
     }

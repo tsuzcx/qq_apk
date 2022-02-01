@@ -2,7 +2,8 @@ package com.tencent.mobileqq.minigame.splash;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.impl.HttpEngineServiceImpl;
 import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 import com.tencent.qphone.base.util.QLog;
 
@@ -27,7 +28,7 @@ final class SplashMiniGameDownloadManager$1
     localHttpNetReq.mReqUrl = this.val$downloadUrl;
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mOutPath = this.val$path;
-    ((OldHttpEngine)this.app.getNetEngine(0)).sendReq(localHttpNetReq);
+    ((HttpEngineServiceImpl)this.app.getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
   }
 }
 

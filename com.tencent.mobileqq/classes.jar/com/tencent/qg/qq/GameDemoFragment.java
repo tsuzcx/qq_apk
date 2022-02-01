@@ -1,6 +1,5 @@
 package com.tencent.qg.qq;
 
-import adai;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Display;
@@ -8,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import bjwk;
+import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI;
 import com.tencent.mobileqq.miniapp.ui.MiniAppBaseFragment;
 import com.tencent.qg.sdk.QGGLSurfaceView;
 import com.tencent.qg.sdk.doraemon.DoraemonApiWrapper;
@@ -19,7 +18,7 @@ public class GameDemoFragment
   extends MiniAppBaseFragment
 {
   private QGGLSurfaceView jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView;
-  public DoraemonApiWrapper a;
+  DoraemonApiWrapper jdField_a_of_type_ComTencentQgSdkDoraemonDoraemonApiWrapper;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -28,10 +27,10 @@ public class GameDemoFragment
     this.jdField_a_of_type_ArrayOfJavaLangString = getArguments().getStringArray("key_run_js");
     getActivity().getWindowManager().getDefaultDisplay().getWidth();
     getActivity().getWindowManager().getDefaultDisplay().getHeight();
-    adai.a(getActivity(), 3, a());
+    DoraemonOpenAPI.a(getActivity(), 3, a());
     this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView = new QGGLSurfaceView(getActivity());
     this.jdField_a_of_type_ComTencentQgSdkDoraemonDoraemonApiWrapper = new DoraemonApiWrapperMockImpl(this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView);
-    this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView.setQGEventListener(new bjwk(this));
+    this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView.setQGEventListener(new GameDemoFragment.1(this));
     paramLayoutInflater = this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -49,7 +48,7 @@ public class GameDemoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qg.qq.GameDemoFragment
  * JD-Core Version:    0.7.0.1
  */

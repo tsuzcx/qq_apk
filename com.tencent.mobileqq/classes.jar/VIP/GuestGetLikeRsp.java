@@ -9,7 +9,7 @@ public final class GuestGetLikeRsp
 {
   static CommRsp cache_errInfo = new CommRsp();
   public boolean canLike = true;
-  public CommRsp errInfo;
+  public CommRsp errInfo = null;
   public boolean hasLiked = true;
   
   public GuestGetLikeRsp() {}

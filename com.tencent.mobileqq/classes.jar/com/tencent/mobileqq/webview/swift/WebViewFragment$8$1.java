@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bigl;
-import bihz;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
 
 class WebViewFragment$8$1
   implements Runnable
@@ -10,15 +10,15 @@ class WebViewFragment$8$1
   
   public void run()
   {
-    bihz localbihz = (bihz)this.a.this$0.mComponentsProvider.a(16);
-    if (localbihz != null) {
-      localbihz.a();
+    SwiftBrowserTBSHandler localSwiftBrowserTBSHandler = (SwiftBrowserTBSHandler)this.a.this$0.mComponentsProvider.a(16);
+    if (localSwiftBrowserTBSHandler != null) {
+      localSwiftBrowserTBSHandler.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment.8.1
  * JD-Core Version:    0.7.0.1
  */

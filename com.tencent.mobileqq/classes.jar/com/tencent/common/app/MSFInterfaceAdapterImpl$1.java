@@ -1,20 +1,19 @@
 package com.tencent.common.app;
 
-import aaus;
-import aclx;
-import acly;
+import com.tencent.hotpatch.config.PatchConfig;
+import com.tencent.hotpatch.config.PatchConfigManager;
 import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
 
-public class MSFInterfaceAdapterImpl$1
+class MSFInterfaceAdapterImpl$1
   implements Runnable
 {
-  public MSFInterfaceAdapterImpl$1(aaus paramaaus) {}
+  MSFInterfaceAdapterImpl$1(MSFInterfaceAdapterImpl paramMSFInterfaceAdapterImpl) {}
   
   public void run()
   {
-    aclx localaclx = acly.a(BaseApplicationImpl.sApplication, "dex");
-    if ((localaclx != null) && (localaclx.a(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName))) {
-      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName, localaclx.b(), 0);
+    PatchConfig localPatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "dex");
+    if ((localPatchConfig != null) && (localPatchConfig.a(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName))) {
+      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName, localPatchConfig.b(), 0);
     }
   }
 }

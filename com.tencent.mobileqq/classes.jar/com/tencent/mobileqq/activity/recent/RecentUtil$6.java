@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.recent;
 
 import android.text.TextUtils;
-import bdla;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public final class RecentUtil$6
+final class RecentUtil$6
   implements Runnable
 {
-  public RecentUtil$6(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  RecentUtil$6(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {
-    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(this.jdField_a_of_type_JavaLangString, 1008);
+    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 1008);
     String str1 = "0";
     if (localMessage != null)
     {
@@ -48,14 +48,14 @@ public final class RecentUtil$6
     if (this.jdField_a_of_type_Int == 1)
     {
       localObject = "0X8005C36";
-      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "" + localMessage.frienduin, (String)localObject, (String)localObject, 0, 1, 0, str3, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "" + localMessage.frienduin, (String)localObject, (String)localObject, 0, 1, 0, str3, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.6
  * JD-Core Version:    0.7.0.1
  */

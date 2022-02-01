@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aggs;
-
-public class AIOShakeHelper$2
+class AIOShakeHelper$2
   implements Runnable
 {
-  public AIOShakeHelper$2(aggs paramaggs) {}
+  AIOShakeHelper$2(AIOShakeHelper paramAIOShakeHelper) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class AIOShakeHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,17 +13,17 @@ public class FeedsItemData$LabelInfo
   public int friendType;
   public String iconUrl;
   public List<String> icons;
-  public boolean isFriend;
+  public boolean isFriend = false;
   public String jumpUrl;
   public String msgId;
   public String name;
   public FeedsItemData.RedInfo redInfo;
   public String reportId;
-  public boolean showFriend;
+  public boolean showFriend = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.FeedsItemData.LabelInfo
  * JD-Core Version:    0.7.0.1
  */

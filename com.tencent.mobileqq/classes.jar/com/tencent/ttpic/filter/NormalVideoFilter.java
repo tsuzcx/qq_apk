@@ -29,12 +29,12 @@ import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.manager.TouchTriggerManager;
 import com.tencent.ttpic.openapi.model.RedPacketPosition;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.model.VideoMaterial.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.recorder.ActVideoDecoder;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.util.PTFaceLogUtil;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
@@ -64,11 +64,15 @@ public abstract class NormalVideoFilter
   private boolean mHasSeenValid = false;
   private boolean mIsLastPause = false;
   private boolean mIsNeedSeekTime = false;
+  private int mLastPosition = -1;
+  private int mMusicPlayFirstSync = -1;
   private PlayerUtil.Player mPlayer;
   public List<PointF> mPreviousBodyPoints = null;
   private long mPreviousLostTime = System.currentTimeMillis();
   private long mTimesForLostProtect = 2000L;
   protected ActVideoDecoder mVideoDecoder;
+  protected int musicPlayCount = 1;
+  boolean needPlayMusic = false;
   protected int playMode = 0;
   private int spritePictureColumn;
   private int spritePictureHeight;
@@ -119,6 +123,17 @@ public abstract class NormalVideoFilter
     this.mPreviousBodyPoints = paramPTDetectInfo.bodyPoints;
   }
   
+  private void checkFirstSysnc()
+  {
+    if ((this.mMusicPlayFirstSync > 0) && (Math.abs(System.currentTimeMillis() - this.frameStartTime - this.mPlayer.getCurrentPosition()) > 500L))
+    {
+      int i = (int)(System.currentTimeMillis() - this.frameStartTime);
+      LogUtils.i(TAG, this.mPlayer.getCurrentPosition() + "||CORRECT:" + i);
+      PlayerUtil.seekPlayer(this.mPlayer, i);
+      this.mMusicPlayFirstSync = 0;
+    }
+  }
+  
   private void initAudio()
   {
     if (this.mPlayer != null) {}
@@ -149,7 +164,7 @@ public abstract class NormalVideoFilter
     for (;;)
     {
       if (i >= j) {
-        break label51;
+        break label52;
       }
       float f = paramAttributeParam[i];
       if ((Float.compare(-1.0F, f) != 0) && (Float.compare(1.0F, f) != 0)) {
@@ -157,8 +172,29 @@ public abstract class NormalVideoFilter
       }
       i += 1;
     }
-    label51:
+    label52:
     return true;
+  }
+  
+  private void playMusic(boolean paramBoolean)
+  {
+    if (this.playMode == 0)
+    {
+      PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
+      recordMusicStartInfo(false);
+      checkFirstSysnc();
+      return;
+    }
+    if ((this.playMode == 1) && (this.mIsNeedSeekTime))
+    {
+      long l = System.currentTimeMillis();
+      PlayerUtil.seekPlayer(this.mPlayer, (int)(l - this.firstTriggerInStateTime) % this.mPlayer.getDuration());
+      this.mIsNeedSeekTime = false;
+      return;
+    }
+    PlayerUtil.startPlayer(this.mPlayer, false);
+    recordMusicStartInfo(false);
+    checkFirstSysnc();
   }
   
   private void recordMusicStartInfo(boolean paramBoolean)
@@ -189,7 +225,7 @@ public abstract class NormalVideoFilter
   {
     super.ApplyGLSLFilter();
     GlUtil.createEtcTexture(this.tex);
-    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG))
+    if ((this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.PAG))
     {
       String str2 = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id;
       String str1 = str2;
@@ -198,7 +234,7 @@ public abstract class NormalVideoFilter
       }
       this.mVideoDecoder = new ActVideoDecoder(str1, this.tex[0]);
     }
-    if (this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) {
+    if (this.item.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.PAG) {
       VideoMemoryManager.getInstance().initInGLThread(this.item.id, this.tex[0]);
     }
   }
@@ -273,11 +309,11 @@ public abstract class NormalVideoFilter
   
   protected int getNextFrame(int paramInt)
   {
-    if (VideoMaterialUtil.isEmptyItem(this.item)) {
+    if (VideoMaterial.isEmptyItem(this.item)) {
       return this.tex[0];
     }
     Object localObject = VideoMemoryManager.getInstance().getVideoPath();
-    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG)) {
+    if ((this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.PAG)) {
       if ((localObject != null) && (((String)localObject).endsWith(".png")))
       {
         localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
@@ -322,7 +358,7 @@ public abstract class NormalVideoFilter
           VideoMemoryManager.getInstance().setVideoPath(null);
           continue;
           if (this.tex[0] != 0) {
-            if ((this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
+            if ((this.item.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
             {
               if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0)
               {
@@ -489,6 +525,8 @@ public abstract class NormalVideoFilter
     this.mPreviousBodyPoints = null;
     this.mAudioPause = false;
     pauseAndSeekToOrigin();
+    this.mLastPosition = -1;
+    this.musicPlayCount = 1;
   }
   
   public void setAudioPause(boolean paramBoolean)
@@ -499,6 +537,13 @@ public abstract class NormalVideoFilter
   public void setAudioScaleFactor(float paramFloat)
   {
     this.audioScaleFactor = paramFloat;
+  }
+  
+  public void setFirstPlaySync(int paramInt)
+  {
+    if (this.mMusicPlayFirstSync < 0) {
+      this.mMusicPlayFirstSync = paramInt;
+    }
   }
   
   public void setFirstTriggerInStateTime(long paramLong)
@@ -582,42 +627,21 @@ public abstract class NormalVideoFilter
       if (this.item.audioLoopCount <= 0) {
         break;
       }
-    } while (!paramBoolean);
-    if (this.playMode == 0)
-    {
-      PlayerUtil.startPlayer(this.mPlayer, true);
-      recordMusicStartInfo(false);
-      return;
-    }
-    long l;
-    if ((this.playMode == 1) && (this.mIsNeedSeekTime))
-    {
-      l = System.currentTimeMillis();
-      PlayerUtil.seekPlayer(this.mPlayer, (int)(l - this.firstTriggerInStateTime) % this.mPlayer.getDuration());
-      this.mIsNeedSeekTime = false;
-      return;
-    }
-    PlayerUtil.startPlayer(this.mPlayer, false);
-    recordMusicStartInfo(false);
+      if (this.mLastPosition > this.mPlayer.getCurrentPosition())
+      {
+        this.musicPlayCount += 1;
+        LogUtils.i(TAG, "music Count :" + this.musicPlayCount);
+      }
+      this.mLastPosition = this.mPlayer.getCurrentPosition();
+    } while ((!paramBoolean) && (this.musicPlayCount >= this.item.audioLoopCount));
+    playMusic(paramBoolean);
+    this.needPlayMusic = false;
     return;
-    if (this.playMode == 0)
-    {
-      PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
-      recordMusicStartInfo(false);
-      return;
-    }
-    if ((this.playMode == 1) && (this.mIsNeedSeekTime))
-    {
-      l = System.currentTimeMillis();
-      PlayerUtil.seekPlayer(this.mPlayer, (int)(l - this.firstTriggerInStateTime) % this.mPlayer.getDuration());
-      this.mIsNeedSeekTime = false;
-      return;
-    }
-    PlayerUtil.startPlayer(this.mPlayer, false);
-    recordMusicStartInfo(false);
+    playMusic(paramBoolean);
     return;
     PlayerUtil.stopPlayer(this.mPlayer);
     recordMusicStartInfo(true);
+    LogUtils.i(TAG, "Stop !");
   }
   
   protected void updatePositions(List<PointF> paramList) {}
@@ -640,7 +664,7 @@ public abstract class NormalVideoFilter
     int i;
     for (;;)
     {
-      if (VideoMaterialUtil.isBodyDetectItem(this.item)) {
+      if (VideoMaterial.isBodyDetectItem(this.item)) {
         avoidBodyPointsShake(paramObject);
       }
       updatePlayer(this.isFirstTriggered);
@@ -656,16 +680,16 @@ public abstract class NormalVideoFilter
       addParam(new UniformParam.TextureParam("inputImageTexture5", 0, 33989));
       addParam(new UniformParam.FloatParam("useDisplacementMask", 0.0F));
     }
-    if (VideoMaterialUtil.isGestureItem(this.item)) {
+    if (VideoMaterial.isGestureItem(this.item)) {
       updatePositions(paramObject.handPoints);
     }
     for (;;)
     {
       updateTextureParam(i, paramObject.timestamp);
       return;
-      if (VideoMaterialUtil.isBodyDetectItem(this.item))
+      if (VideoMaterial.isBodyDetectItem(this.item))
       {
-        if (VideoMaterialUtil.isBody4AnchorItem(this.item)) {
+        if (VideoMaterial.isBody4AnchorItem(this.item)) {
           updatePositionsForMultiAnchor(paramObject.bodyPoints, 4);
         }
         for (;;)
@@ -675,7 +699,7 @@ public abstract class NormalVideoFilter
           }
           paramObject.bodyPoints = null;
           break;
-          if (VideoMaterialUtil.isBody2AnchorItem(this.item)) {
+          if (VideoMaterial.isBody2AnchorItem(this.item)) {
             updatePositionsForMultiAnchor(paramObject.bodyPoints, 2);
           } else {
             updatePositions(paramObject.bodyPoints);
@@ -685,7 +709,7 @@ public abstract class NormalVideoFilter
       else
       {
         label279:
-        if (VideoMaterialUtil.isCatItem(this.item)) {
+        if (VideoMaterial.isCatItem(this.item)) {
           updateCatFacePositions(paramObject.catFacePoints, paramObject.catFaceAngles, paramObject.phoneAngle);
         } else {
           updatePositions(paramObject.facePoints, paramObject.faceAngles, paramObject.phoneAngle);
@@ -775,7 +799,7 @@ public abstract class NormalVideoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.NormalVideoFilter
  * JD-Core Version:    0.7.0.1
  */

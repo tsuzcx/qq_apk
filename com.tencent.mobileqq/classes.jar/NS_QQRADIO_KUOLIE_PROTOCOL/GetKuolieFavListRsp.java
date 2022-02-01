@@ -10,8 +10,8 @@ public final class GetKuolieFavListRsp
 {
   static CommonInfo cache_commInfo = new CommonInfo();
   static ArrayList<SimpleKuolieRoomInfo> cache_roomList = new ArrayList();
-  public CommonInfo commInfo;
-  public ArrayList<SimpleKuolieRoomInfo> roomList;
+  public CommonInfo commInfo = null;
+  public ArrayList<SimpleKuolieRoomInfo> roomList = null;
   
   static
   {

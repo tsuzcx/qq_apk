@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
-import alci;
-import alcj;
-import alck;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -19,7 +16,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
@@ -31,14 +28,14 @@ public class RecordMicView
 {
   float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 10000;
-  private alck jdField_a_of_type_Alck;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(5);
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private List<alcj> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private RecordMicView.StatusListener jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView$StatusListener;
+  private List<RecordMicView.CircleHolder> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
-  private float jdField_b_of_type_Float = DisplayUtil.dip2px(getContext(), 2.0F);
+  private float jdField_b_of_type_Float = DisplayUtil.a(getContext(), 2.0F);
   private int jdField_b_of_type_Int = 0;
   private int c;
   private int d;
@@ -48,19 +45,19 @@ public class RecordMicView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
-    int i = DisplayUtil.dip2px(getContext(), 120.0F);
+    int i = DisplayUtil.a(getContext(), 120.0F);
     this.d = i;
     this.c = i;
-    this.e = DisplayUtil.dip2px(getContext(), 33.0F);
+    this.e = DisplayUtil.a(getContext(), 33.0F);
     ViewCompat.setImportantForAccessibility(this, 1);
-    setContentDescription(anvx.a(2131712741));
+    setContentDescription(HardCodeUtil.a(2131713237));
     setClickable(true);
   }
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
   {
-    alcj localalcj = new alcj(DisplayUtil.dip2px(getContext(), paramFloat1), DisplayUtil.dip2px(getContext(), paramFloat2), paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
-    this.jdField_a_of_type_JavaUtilList.add(localalcj);
+    RecordMicView.CircleHolder localCircleHolder = new RecordMicView.CircleHolder(DisplayUtil.a(getContext(), paramFloat1), DisplayUtil.a(getContext(), paramFloat2), paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaUtilList.add(localCircleHolder);
   }
   
   private void d()
@@ -72,7 +69,7 @@ public class RecordMicView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new alci(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new RecordMicView.1(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -122,7 +119,7 @@ public class RecordMicView
     super.draw(paramCanvas);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
@@ -133,7 +130,7 @@ public class RecordMicView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     float f1 = 1.0F;
     super.onDraw(paramCanvas);
@@ -141,37 +138,37 @@ public class RecordMicView
     int i;
     if (this.jdField_b_of_type_Int == 2)
     {
-      this.jdField_b_of_type_Float = DisplayUtil.dip2px(getContext(), 1.0F);
+      this.jdField_b_of_type_Float = DisplayUtil.a(getContext(), 1.0F);
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        alcj localalcj = (alcj)((Iterator)localObject).next();
+        RecordMicView.CircleHolder localCircleHolder = (RecordMicView.CircleHolder)((Iterator)localObject).next();
         paramCanvas.save();
-        float f2 = localalcj.jdField_a_of_type_Float;
-        f1 = localalcj.jdField_b_of_type_Float;
+        float f2 = localCircleHolder.jdField_a_of_type_Float;
+        f1 = localCircleHolder.jdField_b_of_type_Float;
         f2 = (getWidth() - f2) / 2.0F;
         f1 = (getHeight() - f1) / 2.0F;
-        i = (int)(255.0F * localalcj.c);
+        i = (int)(255.0F * localCircleHolder.c);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-3405);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Float * 0.5F + f2, this.jdField_b_of_type_Float * 0.5F + f1, getWidth() - this.jdField_b_of_type_Float * 0.5F - f2, getHeight() - this.jdField_b_of_type_Float * 0.5F - f1);
-        paramCanvas.scale(localalcj.d, localalcj.e, getWidth() / 2, getHeight() / 2);
-        paramCanvas.rotate(localalcj.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
+        paramCanvas.scale(localCircleHolder.d, localCircleHolder.e, getWidth() / 2, getHeight() / 2);
+        paramCanvas.rotate(localCircleHolder.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
         paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
         paramCanvas.restore();
       }
       paramCanvas.save();
       paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
-      localObject = getResources().getDrawable(2130847342);
+      localObject = getResources().getDrawable(2130847699);
       ((Drawable)localObject).setBounds(0, 0, a(), b());
       ((Drawable)localObject).setAlpha(127);
       ((Drawable)localObject).draw(paramCanvas);
       paramCanvas.restore();
       return;
     }
-    this.jdField_b_of_type_Float = DisplayUtil.dip2px(getContext(), 2.0F);
+    this.jdField_b_of_type_Float = DisplayUtil.a(getContext(), 2.0F);
     paramCanvas.save();
     paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
     if (this.jdField_b_of_type_Int == 0)
@@ -196,7 +193,7 @@ public class RecordMicView
       this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
       this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Float * 0.5F, this.jdField_b_of_type_Float * 0.5F, a() - this.jdField_b_of_type_Float * 0.5F, b() - this.jdField_b_of_type_Float * 0.5F);
       paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-      localObject = getResources().getDrawable(2130847342);
+      localObject = getResources().getDrawable(2130847699);
       ((Drawable)localObject).setBounds(0, 0, a(), b());
       ((Drawable)localObject).setAlpha(i);
       ((Drawable)localObject).draw(paramCanvas);
@@ -231,8 +228,8 @@ public class RecordMicView
       this.jdField_b_of_type_Int = 1;
       invalidate();
       b();
-      if (this.jdField_a_of_type_Alck != null) {
-        this.jdField_a_of_type_Alck.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView$StatusListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView$StatusListener.a();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
       return true;
@@ -242,8 +239,8 @@ public class RecordMicView
     {
       if (i != 0)
       {
-        if (this.jdField_a_of_type_Alck != null) {
-          this.jdField_a_of_type_Alck.d();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView$StatusListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView$StatusListener.d();
         }
         c();
         break;
@@ -254,10 +251,10 @@ public class RecordMicView
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_Alck == null) {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView$StatusListener == null) {
           break label204;
         }
-        this.jdField_a_of_type_Alck.b();
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView$StatusListener.b();
         break;
         c();
       }
@@ -272,14 +269,14 @@ public class RecordMicView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setStatusListener(alck paramalck)
+  public void setStatusListener(RecordMicView.StatusListener paramStatusListener)
   {
-    this.jdField_a_of_type_Alck = paramalck;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView$StatusListener = paramStatusListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.voice.RecordMicView
  * JD-Core Version:    0.7.0.1
  */

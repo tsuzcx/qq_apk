@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import afne;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView;
 
-public class ReminderListFragment$9$1
+class ReminderListFragment$9$1
   implements Runnable
 {
-  public ReminderListFragment$9$1(afne paramafne) {}
+  ReminderListFragment$9$1(ReminderListFragment.9 param9) {}
   
   public void run()
   {
@@ -22,7 +21,7 @@ public class ReminderListFragment$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.9.1
  * JD-Core Version:    0.7.0.1
  */

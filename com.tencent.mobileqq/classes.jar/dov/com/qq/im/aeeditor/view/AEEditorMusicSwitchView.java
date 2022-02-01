@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import bodm;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class AEEditorMusicSwitchView
@@ -22,7 +21,7 @@ public class AEEditorMusicSwitchView
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bodm jdField_a_of_type_Bodm;
+  private AEEditorMusicSwitchView.SwitchClickListener jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicSwitchView$SwitchClickListener;
   private TextView b;
   
   public AEEditorMusicSwitchView(@NonNull Context paramContext)
@@ -46,17 +45,17 @@ public class AEEditorMusicSwitchView
     this.jdField_a_of_type_Int = paramInt;
     b(paramInt);
     c(paramInt);
-    if (this.jdField_a_of_type_Bodm != null) {
-      this.jdField_a_of_type_Bodm.a(paramInt);
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicSwitchView$SwitchClickListener != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicSwitchView$SwitchClickListener.a(paramInt);
     }
   }
   
   private void a(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131558571, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380065));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379796));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369547));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131558593, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380502));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380224));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369814));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     b(this.jdField_a_of_type_Int);
@@ -92,7 +91,7 @@ public class AEEditorMusicSwitchView
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131380065) {
+    if (i == 2131380502) {
       if (this.jdField_a_of_type_Int != 0) {}
     }
     for (;;)
@@ -101,20 +100,20 @@ public class AEEditorMusicSwitchView
       return;
       a(0);
       continue;
-      if ((i == 2131379796) && (this.jdField_a_of_type_Int != 1)) {
+      if ((i == 2131380224) && (this.jdField_a_of_type_Int != 1)) {
         a(1);
       }
     }
   }
   
-  public void setSwitchClickListener(@Nullable bodm parambodm)
+  public void setSwitchClickListener(@Nullable AEEditorMusicSwitchView.SwitchClickListener paramSwitchClickListener)
   {
-    this.jdField_a_of_type_Bodm = parambodm;
+    this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicSwitchView$SwitchClickListener = paramSwitchClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.AEEditorMusicSwitchView
  * JD-Core Version:    0.7.0.1
  */

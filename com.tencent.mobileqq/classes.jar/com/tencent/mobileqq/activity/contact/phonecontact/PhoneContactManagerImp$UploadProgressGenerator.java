@@ -4,7 +4,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
-public class PhoneContactManagerImp$UploadProgressGenerator
+class PhoneContactManagerImp$UploadProgressGenerator
   implements Runnable
 {
   int jdField_a_of_type_Int = 0;
@@ -71,7 +71,7 @@ public class PhoneContactManagerImp$UploadProgressGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.UploadProgressGenerator
  * JD-Core Version:    0.7.0.1
  */

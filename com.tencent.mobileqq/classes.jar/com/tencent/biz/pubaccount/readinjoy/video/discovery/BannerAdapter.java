@@ -15,7 +15,6 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import ssd;
 
 public class BannerAdapter
   extends BannerView.BannerViewAdapter<DiscoveryBannerInfo, LinearLayout>
@@ -24,7 +23,7 @@ public class BannerAdapter
   private static final String jdField_a_of_type_JavaLangString = BannerAdapter.class.getSimpleName();
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private ssd jdField_a_of_type_Ssd;
+  private BannerAdapter.OnBannerClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryBannerAdapter$OnBannerClickListener;
   private int b;
   
   private void a(LinearLayout paramLinearLayout, int paramInt, DiscoveryBannerInfo paramDiscoveryBannerInfo)
@@ -36,7 +35,7 @@ public class BannerAdapter
       do
       {
         return;
-        paramLinearLayout = (KandianUrlImageView)paramLinearLayout.findViewById(2131365726);
+        paramLinearLayout = (KandianUrlImageView)paramLinearLayout.findViewById(2131365889);
         localObject = paramLinearLayout.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
         ((ViewGroup.LayoutParams)localObject).height = this.b;
@@ -68,7 +67,7 @@ public class BannerAdapter
   
   public LinearLayout a(int paramInt, DiscoveryBannerInfo paramDiscoveryBannerInfo)
   {
-    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560362, null);
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560432, null);
     a(localLinearLayout, paramInt, paramDiscoveryBannerInfo);
     return localLinearLayout;
   }
@@ -83,15 +82,15 @@ public class BannerAdapter
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       Object localObject = paramView.getTag();
-      if ((localObject != null) && ((localObject instanceof DiscoveryBannerInfo)) && (this.jdField_a_of_type_Ssd != null)) {
-        this.jdField_a_of_type_Ssd.a(paramView, (DiscoveryBannerInfo)localObject);
+      if ((localObject != null) && ((localObject instanceof DiscoveryBannerInfo)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryBannerAdapter$OnBannerClickListener != null)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryBannerAdapter$OnBannerClickListener.a(paramView, (DiscoveryBannerInfo)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.BannerAdapter
  * JD-Core Version:    0.7.0.1
  */

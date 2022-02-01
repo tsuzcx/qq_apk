@@ -1,7 +1,5 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ylc;
-
 class EditVideoGuide$GotoLocationPageDelayRunnable
   implements Runnable
 {
@@ -9,15 +7,15 @@ class EditVideoGuide$GotoLocationPageDelayRunnable
   
   public void run()
   {
-    ylc localylc = (ylc)this.this$0.a(ylc.class);
-    if (localylc != null) {
-      localylc.b();
+    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.this$0.a(EditDoodleExport.class);
+    if (localEditDoodleExport != null) {
+      localEditDoodleExport.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoGuide.GotoLocationPageDelayRunnable
  * JD-Core Version:    0.7.0.1
  */

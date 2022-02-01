@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build.VERSION;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
@@ -13,12 +14,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
+import android.view.animation.AlphaAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anvx;
-import bgnf;
-import bgng;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ExpandableTextView
@@ -29,8 +29,8 @@ public class ExpandableTextView
   private int jdField_a_of_type_Int;
   private SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;
   protected TextView a;
-  private bgnf jdField_a_of_type_Bgnf;
-  private bgng jdField_a_of_type_Bgng;
+  private ExpandableTextView.OnExpandStateListener jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView$OnExpandStateListener;
+  private ExpandableTextView.OnGlobalLayoutListenerByEllipsize jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView$OnGlobalLayoutListenerByEllipsize;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -70,9 +70,9 @@ public class ExpandableTextView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366303));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366477));
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366300));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366473));
     TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
     if (this.jdField_b_of_type_Boolean) {}
     for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
@@ -92,7 +92,7 @@ public class ExpandableTextView
     this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(3);
     this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = anvx.a(2131703710);
+      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704258);
     }
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       this.jdField_b_of_type_JavaLangString = "";
@@ -100,6 +100,26 @@ public class ExpandableTextView
     paramAttributeSet.recycle();
     setOrientation(1);
     setVisibility(8);
+  }
+  
+  private static boolean a()
+  {
+    return Build.VERSION.SDK_INT >= 11;
+  }
+  
+  @TargetApi(11)
+  private static void b(View paramView, float paramFloat)
+  {
+    if (a())
+    {
+      paramView.setAlpha(paramFloat);
+      return;
+    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramFloat, paramFloat);
+    localAlphaAnimation.setDuration(0L);
+    localAlphaAnimation.setFillAfter(true);
+    paramView.clearAnimation();
+    paramView.startAnimation(localAlphaAnimation);
   }
   
   public TextView a()
@@ -131,16 +151,16 @@ public class ExpandableTextView
       if (this.jdField_a_of_type_AndroidUtilSparseBooleanArray != null) {
         this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.f, this.jdField_b_of_type_Boolean);
       }
-      if (this.jdField_a_of_type_Bgnf != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView$OnExpandStateListener != null)
       {
-        bgnf localbgnf = this.jdField_a_of_type_Bgnf;
+        ExpandableTextView.OnExpandStateListener localOnExpandStateListener = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView$OnExpandStateListener;
         TextView localTextView1 = this.jdField_a_of_type_AndroidWidgetTextView;
         TextView localTextView2 = this.jdField_b_of_type_AndroidWidgetTextView;
         bool1 = bool2;
         if (!this.jdField_b_of_type_Boolean) {
           bool1 = true;
         }
-        localbgnf.a(localTextView1, localTextView2, bool1);
+        localOnExpandStateListener.a(localTextView1, localTextView2, bool1);
       }
       this.jdField_a_of_type_Boolean = true;
       break;
@@ -155,7 +175,7 @@ public class ExpandableTextView
   }
   
   @SuppressLint({"MissingSuperCall"})
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     a();
   }
@@ -165,7 +185,7 @@ public class ExpandableTextView
     return this.jdField_c_of_type_Boolean;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if ((!this.jdField_a_of_type_Boolean) || (getVisibility() == 8)) {
       super.onMeasure(paramInt1, paramInt2);
@@ -184,10 +204,10 @@ public class ExpandableTextView
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(this.jdField_c_of_type_Int);
-        if (this.jdField_a_of_type_Bgng == null) {
-          this.jdField_a_of_type_Bgng = new bgng(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView$OnGlobalLayoutListenerByEllipsize == null) {
+          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView$OnGlobalLayoutListenerByEllipsize = new ExpandableTextView.OnGlobalLayoutListenerByEllipsize(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_c_of_type_Int);
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_Bgng);
+        this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView$OnGlobalLayoutListenerByEllipsize);
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       super.onMeasure(paramInt1, paramInt2);
@@ -196,9 +216,9 @@ public class ExpandableTextView
     this.jdField_a_of_type_Int = getMeasuredHeight();
   }
   
-  public void setOnExpandStateChangeListener(bgnf parambgnf)
+  public void setOnExpandStateChangeListener(ExpandableTextView.OnExpandStateListener paramOnExpandStateListener)
   {
-    this.jdField_a_of_type_Bgnf = parambgnf;
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView$OnExpandStateListener = paramOnExpandStateListener;
   }
   
   public void setOrientation(int paramInt)

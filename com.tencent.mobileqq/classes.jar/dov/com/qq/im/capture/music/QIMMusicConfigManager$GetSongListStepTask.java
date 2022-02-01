@@ -1,14 +1,14 @@
 package dov.com.qq.im.capture.music;
 
-import boha;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.control.CaptureAsyncControl;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.TicketManagerImpl;
@@ -78,13 +78,13 @@ final class QIMMusicConfigManager$GetSongListStepTask
             HashMap localHashMap = new HashMap();
             localHashMap.put("app_id", "2000000228");
             localHashMap.put("app_key", "TCOHANTCNlddnsTY");
-            localHashMap.put("device_id", DeviceInfoUtil.getIMEI());
+            localHashMap.put("device_id", DeviceInfoUtil.a());
             localHashMap.put("timestamp", String.valueOf(l2));
             localHashMap.put("sign", a(l2));
             localHashMap.put("dissid", String.valueOf(l1));
             localHashMap.putAll(a(this.c, (String)localObject2));
             ((HttpNetReq)localObject1).mReqUrl = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_detail.fcg", localHashMap);
-            this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.sendReq((NetReq)localObject1);
+            this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq((NetReq)localObject1);
             if (!QLog.isColorLevel()) {
               break label389;
             }
@@ -113,7 +113,7 @@ final class QIMMusicConfigManager$GetSongListStepTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QIMMusicConfigManager.GetSongListStepTask
  * JD-Core Version:    0.7.0.1
  */

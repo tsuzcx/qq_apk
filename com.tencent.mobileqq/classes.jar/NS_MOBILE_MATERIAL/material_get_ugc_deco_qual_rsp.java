@@ -8,8 +8,8 @@ public final class material_get_ugc_deco_qual_rsp
   extends JceStruct
 {
   static byte[] cache_vecBuf = (byte[])new byte[1];
-  public int iCode;
-  public byte[] vecBuf;
+  public int iCode = 0;
+  public byte[] vecBuf = null;
   
   static
   {

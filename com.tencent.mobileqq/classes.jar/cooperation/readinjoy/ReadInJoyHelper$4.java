@@ -1,30 +1,29 @@
 package cooperation.readinjoy;
 
-import bmhv;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
-public final class ReadInJoyHelper$4
+final class ReadInJoyHelper$4
   implements Runnable
 {
-  public ReadInJoyHelper$4(AppRuntime paramAppRuntime) {}
+  ReadInJoyHelper$4(AppRuntime paramAppRuntime) {}
   
   public void run()
   {
     int m = 0;
     int n = -1;
-    Object localObject2 = bmhv.a("remote_kd_tab_switch");
-    Object localObject1 = bmhv.a("local_kd_tab_switch");
+    Object localObject2 = ReadInJoyHelper.a("remote_kd_tab_switch");
+    Object localObject1 = ReadInJoyHelper.a("local_kd_tab_switch");
     int j;
     int i1;
     int i2;
     label69:
     int k;
-    if (bmhv.l())
+    if (ReadInJoyHelper.m())
     {
       j = 1;
-      i1 = bmhv.a("local_kd_tab_switch").intValue();
-      i2 = bmhv.a("local_kd_tab_switch_prefix").intValue();
+      i1 = ReadInJoyHelper.a("local_kd_tab_switch").intValue();
+      i2 = ReadInJoyHelper.a("local_kd_tab_switch_prefix").intValue();
       if (!(localObject2 instanceof Boolean)) {
         break label233;
       }
@@ -34,7 +33,7 @@ public final class ReadInJoyHelper$4
       i = 1;
       k = i;
       label71:
-      localObject2 = bmhv.a("local_kd_tab_has_set");
+      localObject2 = ReadInJoyHelper.a("local_kd_tab_has_set");
       if (!(localObject1 instanceof Boolean)) {
         break label244;
       }
@@ -69,7 +68,7 @@ public final class ReadInJoyHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.readinjoy.ReadInJoyHelper.4
  * JD-Core Version:    0.7.0.1
  */

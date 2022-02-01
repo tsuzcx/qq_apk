@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
+import com.tencent.mobileqq.mini.api.IPrePullListener;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import org.json.JSONObject;
 class MiniAppPrePullManager$2
   implements MiniAppCmdInterface
 {
-  MiniAppPrePullManager$2(MiniAppPrePullManager paramMiniAppPrePullManager, String paramString1, String paramString2, MiniAppPrePullManager.IPrePullListener paramIPrePullListener) {}
+  MiniAppPrePullManager$2(MiniAppPrePullManager paramMiniAppPrePullManager, String paramString1, String paramString2, IPrePullListener paramIPrePullListener) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {

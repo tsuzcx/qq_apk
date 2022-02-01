@@ -12,8 +12,8 @@ public final class UniBusiGetSimpleItemRsp
 {
   static Map<Integer, ArrayList<UniBusiSimpleItemDetail>> cache_mAppidItemDetail = new HashMap();
   public String errmsg = "";
-  public Map<Integer, ArrayList<UniBusiSimpleItemDetail>> mAppidItemDetail;
-  public int ret;
+  public Map<Integer, ArrayList<UniBusiSimpleItemDetail>> mAppidItemDetail = null;
+  public int ret = 0;
   
   static
   {

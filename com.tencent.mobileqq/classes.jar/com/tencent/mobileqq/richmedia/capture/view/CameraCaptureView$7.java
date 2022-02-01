@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import bbii;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
 import java.util.Map;
 
@@ -11,15 +10,15 @@ class CameraCaptureView$7
   
   public void run()
   {
-    if (!this.this$0.a.containsKey(bbii.c)) {
-      this.this$0.a.put(bbii.c, new RenderBuffer(this.this$0.n, this.this$0.o, 33984));
+    if (!this.this$0.a.containsKey(CameraCaptureView.CaptureParam.c)) {
+      this.this$0.a.put(CameraCaptureView.CaptureParam.c, new RenderBuffer(this.this$0.n, this.this$0.o, 33984));
     }
-    this.this$0.b(false);
+    this.this$0.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.7
  * JD-Core Version:    0.7.0.1
  */

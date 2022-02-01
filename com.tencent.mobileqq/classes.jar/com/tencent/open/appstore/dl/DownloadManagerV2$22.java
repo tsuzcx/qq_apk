@@ -2,26 +2,25 @@ package com.tencent.open.appstore.dl;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bjjq;
-import bjkf;
-import bjko;
-import bjmy;
-import bkwg;
+import com.tencent.open.appstore.report.AppCenterReporter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.securitysdk.utils.ApkExternalInfoTool;
 import java.io.File;
 import java.io.IOException;
 
-public class DownloadManagerV2$22
+class DownloadManagerV2$22
   implements Runnable
 {
-  public DownloadManagerV2$22(bjjq parambjjq, Bundle paramBundle) {}
+  DownloadManagerV2$22(DownloadManagerV2 paramDownloadManagerV2, Bundle paramBundle) {}
   
   public void run()
   {
     String str1;
     try
     {
-      Object localObject1 = this.a.getString(bjmy.a);
+      Object localObject1 = this.a.getString(DownloadConstants.a);
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return;
       }
@@ -29,17 +28,17 @@ public class DownloadManagerV2$22
       str1 = this.a.getString("PackageName");
       if (localObject1 == null)
       {
-        bjko.e("DownloadManagerV2", "[writeApkCodeAsync]  pkgName=" + str1 + " download info is null");
+        LogUtility.e("DownloadManagerV2", "[writeApkCodeAsync]  pkgName=" + str1 + " download info is null");
         return;
       }
     }
     catch (Exception localException)
     {
-      bjko.c("DownloadManagerV2", "[writeApkCodeAsync] >>>", localException);
+      LogUtility.c("DownloadManagerV2", "[writeApkCodeAsync] >>>", localException);
       return;
     }
     String str2 = this.a.getString("Code");
-    bjko.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + ", code=" + str2);
+    LogUtility.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + ", code=" + str2);
     if (TextUtils.isEmpty(str2))
     {
       localException.j = 0;
@@ -47,8 +46,8 @@ public class DownloadManagerV2$22
       this.this$0.c(localException);
       this.this$0.a(4, localException);
       this.this$0.a(localException, localException.c);
-      bjko.b("AppCenterReporter", "from:[writeApkCodeAsync] code is empty");
-      bjkf.b(localException);
+      LogUtility.b("AppCenterReporter", "from:[writeApkCodeAsync] code is empty");
+      AppCenterReporter.b(localException);
       if (localException.a) {
         this.this$0.a(localException, false);
       }
@@ -59,19 +58,19 @@ public class DownloadManagerV2$22
       Object localObject2 = new File(localException.l);
       try
       {
-        bkwg.a((File)localObject2, str2);
-        localObject2 = bkwg.a((File)localObject2);
-        bjko.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + ",check code=" + (String)localObject2);
+        ApkExternalInfoTool.a((File)localObject2, str2);
+        localObject2 = ApkExternalInfoTool.a((File)localObject2);
+        LogUtility.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + ",check code=" + (String)localObject2);
         bool = str2.equals(localObject2);
         if (bool)
         {
-          bjko.b("DownloadManagerV2", "[writeApkCodeAsync]  pkgName=" + str1 + " write code and check code suc");
+          LogUtility.b("DownloadManagerV2", "[writeApkCodeAsync]  pkgName=" + str1 + " write code and check code suc");
           localException.j = 0;
           this.this$0.c(localException);
           this.this$0.a(4, localException);
           this.this$0.a(localException, localException.c);
-          bjko.b("AppCenterReporter", "from:[writeApkCodeAsync] APK_WRITE_CODE_SUC");
-          bjkf.b(localException);
+          LogUtility.b("AppCenterReporter", "from:[writeApkCodeAsync] APK_WRITE_CODE_SUC");
+          AppCenterReporter.b(localException);
           if (!localException.a) {
             return;
           }
@@ -82,21 +81,21 @@ public class DownloadManagerV2$22
       {
         for (;;)
         {
-          bjko.b("DownloadManagerV2", "[writeApkCodeAsync] Exception=" + localIOException.getMessage());
+          LogUtility.b("DownloadManagerV2", "[writeApkCodeAsync] Exception=" + localIOException.getMessage());
           boolean bool = false;
         }
-        bjko.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + " write code or check code fail");
+        LogUtility.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + " write code or check code fail");
         localException.j = -20;
         localException.a(-2);
         this.this$0.c(localException);
-        bjjq.a(this.this$0, localException, localException.j, null);
+        DownloadManagerV2.a(this.this$0, localException, localException.j, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.22
  * JD-Core Version:    0.7.0.1
  */

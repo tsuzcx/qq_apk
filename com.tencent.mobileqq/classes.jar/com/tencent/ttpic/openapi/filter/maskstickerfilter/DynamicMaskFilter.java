@@ -11,8 +11,8 @@ import com.tencent.aekit.openrender.UniformParam.Mat4Param;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.filter.NormalVideoFilter;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
 import java.util.List;
@@ -170,7 +170,7 @@ public class DynamicMaskFilter
       float f3;
       float f4;
       double d1;
-      if ((VideoMaterialUtil.isGestureItem(this.item)) && (paramList.size() > 22))
+      if ((VideoMaterial.isGestureItem(this.item)) && (paramList.size() > 22))
       {
         localPointF1 = (PointF)paramList.get(14);
         localPointF2 = (PointF)paramList.get(22);
@@ -236,7 +236,7 @@ public class DynamicMaskFilter
           {
             f2 = (float)Math.atan2(localPointF1.y - localPointF2.y, localPointF1.x - localPointF2.x);
             f3 = this.item.angle;
-            if ((VideoMaterialUtil.isGestureItem(this.item)) && (this.item.needHandRotation == 1)) {}
+            if ((VideoMaterial.isGestureItem(this.item)) && (this.item.needHandRotation == 1)) {}
             for (f1 = 0.0F;; f1 = (float)d1)
             {
               addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, f1 + (f2 - f3)));
@@ -247,7 +247,7 @@ public class DynamicMaskFilter
               break label199;
             }
           }
-          if ((!VideoMaterialUtil.isGestureItem(this.item)) || (this.item.needHandRotation != 1)) {
+          if ((!VideoMaterial.isGestureItem(this.item)) || (this.item.needHandRotation != 1)) {
             break;
           }
           addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, this.item.angle + (float)d1));
@@ -274,7 +274,7 @@ public class DynamicMaskFilter
       i = this.item.alignFacePoints[0];
       PointF localPointF2 = (PointF)paramList.get(i);
       localPointF1 = new PointF((localPointF1.x + localPointF2.x) / 2.0F, (localPointF1.y + localPointF2.y) / 2.0F);
-      if (VideoMaterialUtil.isFaceItem(this.item))
+      if (VideoMaterial.isFaceItem(this.item))
       {
         localPointF1.x = ((float)(localPointF1.x / this.mFaceDetScale));
         localPointF1.y = ((float)(localPointF1.y / this.mFaceDetScale));
@@ -285,13 +285,13 @@ public class DynamicMaskFilter
       setPositions(AlgoUtils.adjustPosition(AlgoUtils.calPositions(paramFloat, this.item.height + f1, paramFloat + f2, f1, this.width, this.height), this.audioScaleFactor));
       addParam(new UniformParam.Float2fParam("texAnchor", localPointF1.x - this.canvasCenter.x, localPointF1.y - this.canvasCenter.y));
       localPointF1 = new PointF(((PointF)paramList.get(this.item.scalePivots[0])).x, ((PointF)paramList.get(this.item.scalePivots[0])).y);
-      if (VideoMaterialUtil.isFaceItem(this.item))
+      if (VideoMaterial.isFaceItem(this.item))
       {
         localPointF1.x = ((float)(localPointF1.x / this.mFaceDetScale));
         localPointF1.y = ((float)(localPointF1.y / this.mFaceDetScale));
       }
       paramList = new PointF(((PointF)paramList.get(this.item.scalePivots[1])).x, ((PointF)paramList.get(this.item.scalePivots[1])).y);
-      if (VideoMaterialUtil.isFaceItem(this.item))
+      if (VideoMaterial.isFaceItem(this.item))
       {
         paramList.x = ((float)(paramList.x / this.mFaceDetScale));
         paramList.y = ((float)(paramList.y / this.mFaceDetScale));
@@ -423,7 +423,7 @@ public class DynamicMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.maskstickerfilter.DynamicMaskFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -9,16 +9,16 @@ public final class UniBusiItemDetail
 {
   static ExtraAppInfo cache_extraappinfo = new ExtraAppInfo();
   static UniBusiExtraInfo cache_extrainfo = new UniBusiExtraInfo();
-  public int appid;
-  public ExtraAppInfo extraappinfo;
-  public UniBusiExtraInfo extrainfo;
-  public int feetype;
+  public int appid = 0;
+  public ExtraAppInfo extraappinfo = null;
+  public UniBusiExtraInfo extrainfo = null;
+  public int feetype = 0;
   public String image = "";
   public String itemBgColor = "";
-  public int itemid;
+  public int itemid = 0;
   public String itemname = "";
-  public long validlast;
-  public long validts;
+  public long validlast = 0L;
+  public long validts = 0L;
   
   public UniBusiItemDetail() {}
   

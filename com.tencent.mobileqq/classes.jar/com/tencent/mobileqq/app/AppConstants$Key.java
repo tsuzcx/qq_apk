@@ -208,6 +208,7 @@ public abstract interface AppConstants$Key
   public static final String KEY_CUSTOMED_GAME_TROOP = "key_customed_troop";
   public static final String KEY_DATE_FROM_ID = "dating_from_id";
   public static final String KEY_DIRECT_SEND_EMOJI = "direct_send_emoji";
+  public static final String KEY_ENTER_FROM_TEMP_MSG_BOX = "enter_from_temp_msg_box";
   public static final String KEY_FAV_FILE_FORWARD_BUSID = "key_fav_file_forward_busid";
   public static final String KEY_FAV_FILE_FORWARD_CID = "key_fav_file_forward_cid";
   public static final String KEY_FAV_FILE_FORWARD_FILE_SIZE = "key_fav_file_forward_file_size";
@@ -232,6 +233,7 @@ public abstract interface AppConstants$Key
   public static final String KEY_MESSAGE_BOX_CLICK = "message_box_click";
   public static final String KEY_MSG_IN_CONVESATION_BOX = "msg_in_box";
   public static final String KEY_NEED_SINGLE_TOP = "single_top";
+  public static final String KEY_NEED_TO_SHOW_UNREAD_NUM = "need_to_show_unread_num";
   public static final String KEY_NEED_TRACK_BACK = "key_need_track_back";
   public static final String KEY_NEW_SHARE_SERVICE_ID = "new_share_service_id";
   public static final String KEY_NOTIFICATION_CLICK_ACTION = "key_notification_click_action";

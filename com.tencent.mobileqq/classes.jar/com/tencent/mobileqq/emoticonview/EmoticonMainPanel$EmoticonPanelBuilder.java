@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.emoticonview;
 
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
 
 public class EmoticonMainPanel$EmoticonPanelBuilder
 {
   private final EmoticonPanelController.EmoticonPanelParams mPanelParams;
   
-  public EmoticonMainPanel$EmoticonPanelBuilder(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, int paramInt)
+  EmoticonMainPanel$EmoticonPanelBuilder(EmoticonMainPanel paramEmoticonMainPanel, QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, BaseChatPie paramBaseChatPie, int paramInt)
   {
-    this.mPanelParams = new EmoticonPanelController.EmoticonPanelParams();
-    this.mPanelParams.app = paramQQAppInterface;
+    this.mPanelParams = new EmoticonPanelController.EmoticonPanelParams(paramEmoticonMainPanel);
+    this.mPanelParams.app = paramQQEmoticonMainPanelApp;
     this.mPanelParams.mBaseChatPie = paramBaseChatPie;
     this.mPanelParams.sessionType = paramInt;
   }
   
-  EmoticonMainPanel$EmoticonPanelBuilder(EmoticonMainPanel paramEmoticonMainPanel, QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, int paramInt)
+  public EmoticonMainPanel$EmoticonPanelBuilder(QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, BaseChatPie paramBaseChatPie, int paramInt)
   {
-    this.mPanelParams = new EmoticonPanelController.EmoticonPanelParams(paramEmoticonMainPanel);
-    this.mPanelParams.app = paramQQAppInterface;
+    this.mPanelParams = new EmoticonPanelController.EmoticonPanelParams();
+    this.mPanelParams.app = paramQQEmoticonMainPanelApp;
     this.mPanelParams.mBaseChatPie = paramBaseChatPie;
     this.mPanelParams.sessionType = paramInt;
   }
@@ -131,7 +131,7 @@ public class EmoticonMainPanel$EmoticonPanelBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonMainPanel.EmoticonPanelBuilder
  * JD-Core Version:    0.7.0.1
  */

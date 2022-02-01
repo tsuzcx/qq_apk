@@ -2,8 +2,8 @@ package cooperation.qzone.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import bheg;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.pfc.opencv.QzoneVision;
 import java.io.File;
@@ -32,7 +32,7 @@ class GifAntishakeModule$1
           QLog.d("QzoneVision", 2, "frame: " + this.val$frame + ", endAntishake and startSave at " + System.currentTimeMillis());
         }
         String str = PhotoUtils.getCameraPath(GifAntishakeModule.access$000(this.this$0), ".IMG" + this.val$frame, ".jpg");
-        bheg.a(localBitmap2, new File(str));
+        ImageUtil.a(localBitmap2, new File(str));
         if (!localBitmap1.isRecycled()) {
           localBitmap1.recycle();
         }
@@ -59,7 +59,7 @@ class GifAntishakeModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.GifAntishakeModule.1
  * JD-Core Version:    0.7.0.1
  */

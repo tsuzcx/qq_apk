@@ -64,7 +64,7 @@ public class QZoneLayoutTemplate1
     paramView.setPadding(this.d, this.d, this.d, this.d);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt1 = this.jdField_a_of_type_Int / 3;
     if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
@@ -85,7 +85,7 @@ public class QZoneLayoutTemplate1
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_Int = View.MeasureSpec.getSize(paramInt1);
     this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * 2 / 3 + this.c);
@@ -167,7 +167,7 @@ public class QZoneLayoutTemplate1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.QZoneLayoutTemplate1
  * JD-Core Version:    0.7.0.1
  */

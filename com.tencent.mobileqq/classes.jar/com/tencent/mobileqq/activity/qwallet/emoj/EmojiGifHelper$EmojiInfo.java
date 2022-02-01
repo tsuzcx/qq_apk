@@ -5,7 +5,7 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 public class EmojiGifHelper$EmojiInfo
 {
   public String gifPath;
-  public boolean isImmeSend;
+  public boolean isImmeSend = false;
   public final byte[] lock = new byte[0];
   public SessionInfo sessionInfo;
   public int tag;
@@ -28,7 +28,7 @@ public class EmojiGifHelper$EmojiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.EmojiInfo
  * JD-Core Version:    0.7.0.1
  */

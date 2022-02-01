@@ -19,7 +19,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 public class BarrageView
@@ -35,7 +34,6 @@ public class BarrageView
   private static final int DEFAULT_PADDING = 15;
   private static final boolean DEFAULT_RANDOMCOLOR = false;
   private static final String TAG = "BarrageView";
-  private int INTERVAL = 500;
   private final SparseArray<Animation> animCache = new SparseArray();
   private final List<Barrage> barrages = new LinkedList();
   private int borderColor = -16777216;
@@ -46,8 +44,7 @@ public class BarrageView
   private int maxTextSize = 18;
   private int minTextSize = 18;
   private boolean noRepeat = true;
-  private Random random = new Random(System.currentTimeMillis());
-  private boolean random_color = false;
+  private boolean randomColor = false;
   private int textBottomPadding = 15;
   private int textLeftPadding = 15;
   private int textRightPadding = 15;
@@ -224,7 +221,7 @@ public class BarrageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.danmu.BarrageView
  * JD-Core Version:    0.7.0.1
  */

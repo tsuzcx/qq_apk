@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class DelFriendReq
   extends JceStruct
 {
-  public byte delType;
-  public long deluin;
-  public long uin;
-  public int version;
+  public byte delType = 0;
+  public long deluin = 0L;
+  public long uin = 0L;
+  public int version = 0;
   
   public DelFriendReq() {}
   
@@ -40,7 +40,7 @@ public final class DelFriendReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.DelFriendReq
  * JD-Core Version:    0.7.0.1
  */

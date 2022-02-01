@@ -1,29 +1,51 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import anll;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.graphics.BitmapFactory;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 final class ApolloGameUtil$15
   implements Runnable
 {
-  ApolloGameUtil$15(Context paramContext, int paramInt, Intent paramIntent, String paramString, Bitmap paramBitmap, anll paramanll) {}
+  ApolloGameUtil$15(String paramString, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof ApolloGameActivity)))
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
+    localIntent.putExtra("key_shortcut_name", this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Int == 1) {
+      localIntent.putExtra("jump_game_city", true);
+    }
+    for (;;)
     {
-      VipUtils.a(null, "cmshow", "Apollo", "pressSendToDesktopButton", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Int) });
-      ((ApolloGameActivity)this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Anll);
+      try
+      {
+        Bitmap localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130838607);
+        localIntent.setFlags(337641472);
+        ApolloGameUtil.a(localIntent, this.jdField_a_of_type_JavaLangString, localBitmap, null);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ApolloGameUtil", 1, localException, new Object[0]);
+        Object localObject1 = null;
+        continue;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        QLog.e("ApolloGameUtil", 1, localOutOfMemoryError, new Object[0]);
+      }
+      Object localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.15
  * JD-Core Version:    0.7.0.1
  */

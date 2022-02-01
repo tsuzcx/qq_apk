@@ -1,10 +1,10 @@
 package cooperation.qqcircle.report.outbox;
 
-import com.tencent.biz.qcircleshadow.local.requests.QCircleBaseRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qcircle.api.requests.QCircleBaseRequest;
 import feedcloud.FeedCloudCommon.BytesEntry;
 
 public class QCircleReportOutboxRequest
@@ -41,7 +41,7 @@ public class QCircleReportOutboxRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxRequest
  * JD-Core Version:    0.7.0.1
  */

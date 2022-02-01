@@ -13,17 +13,17 @@ public final class SharpVideoMsg
 {
   static ArrayList<Long> cache_to_uin;
   static byte[] cache_video_buff;
-  public short call_type;
-  public int client_state;
-  public long from_uin;
-  public long msg_seq;
-  public long msg_time;
-  public long msg_type;
-  public long msg_uid;
-  public ArrayList<Long> to_uin;
-  public byte type;
-  public byte ver;
-  public byte[] video_buff;
+  public short call_type = 0;
+  public int client_state = 0;
+  public long from_uin = 0L;
+  public long msg_seq = 0L;
+  public long msg_time = 0L;
+  public long msg_type = 0L;
+  public long msg_uid = 0L;
+  public ArrayList<Long> to_uin = null;
+  public byte type = 0;
+  public byte ver = 0;
+  public byte[] video_buff = null;
   
   static
   {

@@ -15,9 +15,9 @@ class PublicAccountImageCollectionMainActivity$9
     if (localTranslateAnimation != null)
     {
       this.this$0.a.setVisibility(0);
-      this.this$0.a.findViewById(2131380606).setVisibility(0);
-      this.this$0.a.findViewById(2131380602).setVisibility(0);
-      this.this$0.a.findViewById(2131380603).setVisibility(0);
+      this.this$0.a.findViewById(2131381051).setVisibility(0);
+      this.this$0.a.findViewById(2131381047).setVisibility(0);
+      this.this$0.a.findViewById(2131381048).setVisibility(0);
       this.this$0.a.bringToFront();
       this.this$0.a.startAnimation(localTranslateAnimation);
     }
@@ -25,7 +25,7 @@ class PublicAccountImageCollectionMainActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.9
  * JD-Core Version:    0.7.0.1
  */

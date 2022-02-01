@@ -5,9 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.text.TextUtils;
-import arbw;
-import bhjl;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
@@ -17,6 +16,7 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -47,7 +47,7 @@ public class MiniAppAbstractServlet
   public static final String KEY_WITH_CREDENTIAL = "key_with_credential";
   public static final String TAG = "MiniAppAbstractServlet";
   private MiniAppConfig miniAppConfig;
-  protected int observerId;
+  protected int observerId = 0;
   private String page;
   private boolean shouldPerformDCReport = true;
   
@@ -143,7 +143,7 @@ public class MiniAppAbstractServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bhjl.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         localBundle.putLong("retCode", localStQWebRsp.retCode.get());
         localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
@@ -187,7 +187,7 @@ public class MiniAppAbstractServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     Object localObject = null;
-    int i = arbw.a("MiniAppMsfTimeoutValue", 10000);
+    int i = MiniAppConfProcessor.a("MiniAppMsfTimeoutValue", 10000);
     if (paramPacket != null) {
       paramPacket.setTimeout(i);
     }

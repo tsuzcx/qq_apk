@@ -1,9 +1,7 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import aanc;
-import aanf;
-import acxy;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
@@ -17,42 +15,54 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bbhm;
-import bbns;
-import bddl;
-import bdeb;
-import bgyo;
-import bogd;
-import boje;
-import bomw;
-import bomx;
-import bppn;
-import bppp;
+import com.tencent.biz.qqstory.app.QQStoryConstant;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.database.QQStoryEntityManagerFactory;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.utils.AssertUtils;
+import com.tencent.biz.qqstory.utils.BitmapUtils;
+import com.tencent.biz.qqstory.utils.VideoUtils;
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils;
+import com.tencent.biz.videostory.support.VideoStoryPicToVideo;
+import com.tencent.biz.videostory.support.VideoStoryPicToVideo.RetCode;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.shortvideo.EncodeVideoUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.AudioDataUtil;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.shortvideo.mediacodec.VideoConverterLog;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
 import com.tencent.mobileqq.shortvideo.mediadevice.EncodeThread;
 import com.tencent.mobileqq.shortvideo.util.AudioEncoder;
+import com.tencent.mobileqq.shortvideo.util.AudioEncoder.AudioData;
 import com.tencent.mobileqq.shortvideo.util.FileUtil;
 import com.tencent.mobileqq.shortvideo.util.HwVideoMerge;
+import com.tencent.mobileqq.shortvideo.util.PicToVideoConverter;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter;
+import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.MagnifierSDK;
+import com.tencent.qqperf.monitor.base.IAPMModuleCelling;
+import com.tencent.richmedia.videocompress.VideoConverter;
 import com.tencent.sveffects.SvEffectSdkInitor.QQSpecialAVFilterResource;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.music.QimMusicPlayer;
+import dov.com.qq.im.capture.util.CaptureFreqMonitor;
+import dov.com.qq.im.capture.util.CaptureFreqMonitorItem;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo.EditParam;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
@@ -61,34 +71,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vzh;
-import wde;
-import wii;
-import wjl;
-import wjs;
-import ykq;
-import ykv;
-import zdl;
-import zdr;
-import zeb;
-import zfl;
 
 @TargetApi(14)
 public class VideoCompositeHelper
 {
-  private static final int LOCK_TIME_OUT = 340000;
-  private static final int MAX_VIDEO_SIZE = 2097152;
-  public static String TAG = "Q.qqstory.publish.upload.VideoCompositeHelper";
-  private boolean isAdjustBitrate;
-  private boolean mIsNotifyLock;
+  public static String a;
+  private boolean a;
+  private boolean b = false;
   
   static
   {
+    jdField_a_of_type_JavaLangString = "Q.qqstory.publish.upload.VideoCompositeHelper";
     try
     {
-      ykq.b(TAG, "LoadExtractedShortVideoSo :soLoadStatus=" + VideoEnvironment.getShortVideoSoLibLoadStatus());
-      int i = VideoEnvironment.loadAVCodecSoNotify("AVCodec", null, true);
-      ykq.b(TAG, "LoadExtractedShortVideoSo :code=" + i);
+      int i = VideoEnvironment.loadAVCodecSo();
+      SLog.b(jdField_a_of_type_JavaLangString, "LoadExtractedShortVideoSo :code=" + i);
       return;
     }
     catch (Throwable localThrowable)
@@ -97,432 +94,35 @@ public class VideoCompositeHelper
     }
   }
   
-  private void compressForQzone(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString1, String paramString2)
+  private int a(PublishVideoEntry paramPublishVideoEntry)
   {
-    if (EncodeVideoUtil.adjustBitrate(paramString1, paramString2, paramPublishVideoEntry) != 0)
-    {
-      ykq.d(TAG, "adjustBitrate: errcode" + paramInt);
-      File localFile = new File(paramString2);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-      zeb.c(paramString1, paramString2);
-      paramPublishVideoEntry.useSrcFile = true;
-    }
-  }
-  
-  private int compressVideoByFFMPEG(String paramString1, String paramString2, int paramInt)
-  {
-    ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramString1 + " [improve_video_clear] encode video file is too big, so need to compress to:" + paramInt);
-    long l2 = System.currentTimeMillis();
-    Object localObject1 = new Object();
-    AtomicInteger localAtomicInteger = new AtomicInteger(-1);
-    long l1 = 0L;
-    str = paramString2 + ".temp.mp4";
-    for (;;)
-    {
-      try
-      {
-        ykq.c(TAG, "compressVideoWithBitrate!");
-        FFmpegUtils.compressVideoWithBitrate(paramString2, str, paramInt, new VideoCompositeHelper.FFMPEGResponseCallback(localObject1, localAtomicInteger, 1));
-      }
-      catch (IOException localIOException)
-      {
-        ykq.d(TAG, "Wait encode video exception:" + localIOException);
-        paramInt = 943001;
-        continue;
-      }
-      catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
-      {
-        ykq.d(TAG, "Wait encode video exception:" + localFFmpegCommandAlreadyRunningException);
-        paramInt = 943002;
-        continue;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        ykq.d(TAG, "Wait encode video exception:" + localInterruptedException);
-        paramInt = 943003;
-        continue;
-        FileUtils.deleteFile(str);
-        int i = 0;
-        continue;
-      }
-      try
-      {
-        localObject1.wait(180000L);
-        paramInt = localAtomicInteger.get();
-        ykq.c(TAG, "compressVideoWithBitrate end!");
-        if (paramInt == 0)
-        {
-          FileUtils.deleteFile(paramString2);
-          FileUtils.rename(str, paramString2);
-          l1 = zeb.a(paramString2);
-          i = zfl.c(paramString2);
-          ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramString1 + " [improve_video_clear] ffmpeg compress encode video file size to:" + l1 + " video bitrate to:" + i);
-          l2 = System.currentTimeMillis() - l2;
-          ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramString1 + " compressVideoByFFMPEG end errorCode:" + paramInt + " cost time=" + l2);
-          ykv.b("video_improve", "compress_video_2", 0, paramInt, new String[] { String.valueOf(i), String.valueOf(l2), String.valueOf(l1) });
-          return paramInt;
-        }
-      }
-      finally {}
-    }
-  }
-  
-  private int convertImageToVideo(PublishVideoEntry paramPublishVideoEntry)
-  {
-    aanf localaanf = new aanf(940006, "");
+    VideoStoryPicToVideo.RetCode localRetCode = new VideoStoryPicToVideo.RetCode(940006, "");
     String str = paramPublishVideoEntry.getStringExtra("KEY_PIC_TO_VIDEO_LOCAL_PIC_PATH", "");
-    if ((str.isEmpty()) || (!zeb.c(str))) {
-      return localaanf.a();
+    if ((str.isEmpty()) || (!com.tencent.biz.qqstory.utils.FileUtils.c(str))) {
+      return localRetCode.a();
     }
-    zeb.f(paramPublishVideoEntry.mLocalRawVideoDir);
+    com.tencent.biz.qqstory.utils.FileUtils.f(paramPublishVideoEntry.mLocalRawVideoDir);
     int n = paramPublishVideoEntry.backgroundMusicDuration / 1000;
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
-    bgyo.a(str, localOptions);
+    BitmapManager.a(str, localOptions);
     int i = ScreenUtil.SCREEN_WIDTH;
     float f = localOptions.outWidth / localOptions.outHeight;
-    int k = bbhm.a(i);
-    int m = bbhm.a((int)(k / f));
+    int k = CaptureUtil.a(i);
+    int m = CaptureUtil.a((int)(k / f));
     int j = k;
     i = m;
-    if (m > bppn.a)
+    if (m > MergeEditVideo.a)
     {
-      j = bbhm.a((int)(k * bppn.a / m));
-      i = bppn.a;
+      j = CaptureUtil.a((int)(k * MergeEditVideo.a / m));
+      i = MergeEditVideo.a;
     }
-    aanc.a().a(str, paramPublishVideoEntry.mLocalRawVideoDir, String.valueOf(n), j, i, false, 0, new VideoCompositeHelper.2(this, localaanf, paramPublishVideoEntry));
-    waitThread("convertImageToVideo ");
-    return localaanf.a();
+    VideoStoryPicToVideo.a().a(str, paramPublishVideoEntry.mLocalRawVideoDir, String.valueOf(n), j, i, false, 0, new VideoCompositeHelper.2(this, localRetCode, paramPublishVideoEntry));
+    b("convertImageToVideo ");
+    return localRetCode.a();
   }
   
-  private static void deleteCache(PublishVideoEntry paramPublishVideoEntry)
-  {
-    if (new File(paramPublishVideoEntry.mLocalRawVideoDir).isDirectory())
-    {
-      zeb.d(paramPublishVideoEntry.mLocalRawVideoDir);
-      ykq.d(TAG, "delete filePath: %s", new Object[] { paramPublishVideoEntry.mLocalRawVideoDir });
-      return;
-    }
-    int i = paramPublishVideoEntry.mLocalRawVideoDir.lastIndexOf("/");
-    paramPublishVideoEntry = paramPublishVideoEntry.mLocalRawVideoDir.substring(0, i);
-    zeb.d(paramPublishVideoEntry);
-    ykq.d(TAG, "delete filePath: %s", new Object[] { paramPublishVideoEntry });
-  }
-  
-  public static void deleteVideoCache(PublishVideoEntry paramPublishVideoEntry)
-  {
-    if (paramPublishVideoEntry.businessId == 2)
-    {
-      ykq.b(TAG, "deleteVideoCache ignore because business id is qq");
-      return;
-    }
-    if ((!paramPublishVideoEntry.isLocalPublish) && (!TextUtils.isEmpty(paramPublishVideoEntry.mLocalRawVideoDir)) && (!paramPublishVideoEntry.mLocalRawVideoDir.contains(Environment.DIRECTORY_DCIM)))
-    {
-      if (paramPublishVideoEntry.hasFragments) {
-        break label139;
-      }
-      deleteCache(paramPublishVideoEntry);
-    }
-    for (;;)
-    {
-      if (paramPublishVideoEntry.isPicture) {
-        QQStoryContext.a().a().sendBroadcast(new Intent("android.intent.action.MEDIA_MOUNTED", Uri.parse("file://" + Environment.getExternalStorageDirectory())));
-      }
-      zeb.d(paramPublishVideoEntry.videoUploadTempDir);
-      ykq.d(TAG, "delete file:%s", new Object[] { paramPublishVideoEntry.videoUploadTempDir });
-      return;
-      label139:
-      updatePublishVideoProcessState(paramPublishVideoEntry.fakeVid, PublishVideoEntry.VIDEO_PROCESS_STATE_UPLOAD_SUC);
-      if (isAllPartSuccess(paramPublishVideoEntry.multiFragmentGroupId, PublishVideoEntry.VIDEO_PROCESS_STATE_UPLOAD_SUC))
-      {
-        ykq.d(TAG, "groupId=%s all success", new Object[] { paramPublishVideoEntry.multiFragmentGroupId });
-        deleteCache(paramPublishVideoEntry);
-      }
-      else
-      {
-        ykq.d(TAG, "groupId=%s not all success", new Object[] { paramPublishVideoEntry.multiFragmentGroupId });
-      }
-    }
-  }
-  
-  /* Error */
-  private boolean detectHasAudioStream(String paramString)
-  {
-    // Byte code:
-    //   0: new 408	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$RetCode
-    //   3: dup
-    //   4: iconst_m1
-    //   5: ldc_w 410
-    //   8: invokespecial 411	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$RetCode:<init>	(ILjava/lang/String;)V
-    //   11: astore 4
-    //   13: getstatic 25	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:TAG	Ljava/lang/String;
-    //   16: ldc_w 412
-    //   19: invokestatic 138	ykq:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   22: getstatic 417	android/os/Build$VERSION:SDK_INT	I
-    //   25: bipush 16
-    //   27: if_icmpge +15 -> 42
-    //   30: aload 4
-    //   32: invokevirtual 420	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$RetCode:getCode	()I
-    //   35: ifne +5 -> 40
-    //   38: iconst_1
-    //   39: ireturn
-    //   40: iconst_0
-    //   41: ireturn
-    //   42: new 422	android/media/MediaExtractor
-    //   45: dup
-    //   46: invokespecial 423	android/media/MediaExtractor:<init>	()V
-    //   49: astore_3
-    //   50: aload_3
-    //   51: aload_1
-    //   52: invokevirtual 426	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
-    //   55: iconst_0
-    //   56: istore_2
-    //   57: iload_2
-    //   58: aload_3
-    //   59: invokevirtual 429	android/media/MediaExtractor:getTrackCount	()I
-    //   62: if_icmpge +29 -> 91
-    //   65: aload_3
-    //   66: iload_2
-    //   67: invokevirtual 433	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
-    //   70: ldc_w 435
-    //   73: invokevirtual 441	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   76: ldc_w 443
-    //   79: invokevirtual 446	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   82: ifeq +23 -> 105
-    //   85: aload 4
-    //   87: iconst_0
-    //   88: invokevirtual 449	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$RetCode:setCode	(I)V
-    //   91: aload_3
-    //   92: invokevirtual 452	android/media/MediaExtractor:release	()V
-    //   95: aload 4
-    //   97: invokevirtual 420	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$RetCode:getCode	()I
-    //   100: ifeq -62 -> 38
-    //   103: iconst_0
-    //   104: ireturn
-    //   105: iload_2
-    //   106: iconst_1
-    //   107: iadd
-    //   108: istore_2
-    //   109: goto -52 -> 57
-    //   112: astore_1
-    //   113: aload_1
-    //   114: invokevirtual 453	java/io/IOException:printStackTrace	()V
-    //   117: aload_3
-    //   118: invokevirtual 452	android/media/MediaExtractor:release	()V
-    //   121: iconst_1
-    //   122: ireturn
-    //   123: astore_1
-    //   124: aload_3
-    //   125: invokevirtual 452	android/media/MediaExtractor:release	()V
-    //   128: aload_1
-    //   129: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	130	0	this	VideoCompositeHelper
-    //   0	130	1	paramString	String
-    //   56	53	2	i	int
-    //   49	76	3	localMediaExtractor	android.media.MediaExtractor
-    //   11	85	4	localRetCode	VideoCompositeHelper.RetCode
-    // Exception table:
-    //   from	to	target	type
-    //   50	55	112	java/io/IOException
-    //   57	91	112	java/io/IOException
-    //   50	55	123	finally
-    //   57	91	123	finally
-    //   113	117	123	finally
-  }
-  
-  private int encodeLocalVideo(PublishVideoEntry paramPublishVideoEntry, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, boolean paramBoolean, int paramInt4)
-  {
-    paramInt1 = encodeLocalVideoInner(paramPublishVideoEntry, paramString1, paramInt1, paramInt2, paramInt3, paramString2, paramString3, paramBoolean, paramInt4);
-    if ((paramInt1 == 0) && (paramPublishVideoEntry.videoNeedRotate))
-    {
-      paramString2 = new File(paramString3);
-      paramPublishVideoEntry = paramPublishVideoEntry.videoUploadTempDir + "rotate_" + paramString2.getName();
-      paramInt2 = rotateVideoWhenNeeded(paramString3, paramPublishVideoEntry);
-      if (paramInt2 == 0)
-      {
-        ykq.d(TAG, "EncodeLocalVideo: Change need rotation. inputVideoPath=%s  rotateFilePath=%s", new Object[] { paramString1, paramPublishVideoEntry });
-        zeb.b(paramPublishVideoEntry, paramString3);
-      }
-    }
-    else
-    {
-      return paramInt1;
-    }
-    ykq.e(TAG, "EncodeLocalVideo: not rotate retcode =" + paramInt2);
-    return paramInt1;
-  }
-  
-  private int encodeLocalVideoInner(PublishVideoEntry paramPublishVideoEntry, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, boolean paramBoolean, int paramInt4)
-  {
-    if (!zeb.c(paramString1)) {
-      return 940007;
-    }
-    File localFile = new File(paramString1);
-    paramString2 = paramString2 + "compressed_" + localFile.getName();
-    boolean bool;
-    if ((!Build.MODEL.equalsIgnoreCase("HUAWEI NXT-AL10")) && (!Build.MODEL.equalsIgnoreCase("HUAWEI MT7-TL00")))
-    {
-      bool = true;
-      if (!bool) {
-        ykq.e(TAG, "encode local video incompatible: model = " + Build.MODEL + " compatible = " + bool);
-      }
-      paramPublishVideoEntry = new VideoCompositeHelper.HWCompressProcessor(paramPublishVideoEntry, paramString2, paramInt3, paramInt1, paramInt2, paramBoolean, true, paramInt4);
-      VideoConverter localVideoConverter = new VideoConverter();
-      if ((!bool) || (!localVideoConverter.start(localFile, paramPublishVideoEntry, true)) || (paramPublishVideoEntry.e != null)) {
-        break label214;
-      }
-      if (setMoovAndTimeStamp(paramString2, paramString3) != 0) {
-        break label203;
-      }
-      zeb.g(paramString2);
-    }
-    for (;;)
-    {
-      return 0;
-      bool = false;
-      break;
-      label203:
-      zeb.b(paramString2, paramString3);
-    }
-    label214:
-    paramPublishVideoEntry = new Object();
-    paramString2 = new AtomicInteger(942009);
-    try
-    {
-      FFmpegUtils.compressLocalVideo(BaseApplicationImpl.getApplication(), paramString1, paramInt1, paramInt2 - paramInt1, paramInt3, paramBoolean, paramString3, new VideoCompositeHelper.FFMPEGResponseCallback(paramPublishVideoEntry, paramString2, 1));
-      try
-      {
-        paramPublishVideoEntry.wait(180000L);
-        paramInt1 = paramString2.get();
-        return paramInt1;
-      }
-      finally {}
-      return 943003;
-    }
-    catch (IOException paramPublishVideoEntry)
-    {
-      ykq.d(TAG, "Wait encode video exception:" + paramPublishVideoEntry);
-      return 943001;
-    }
-    catch (FFmpegCommandAlreadyRunningException paramPublishVideoEntry)
-    {
-      ykq.d(TAG, "Wait encode video exception:" + paramPublishVideoEntry);
-      return 943002;
-    }
-    catch (InterruptedException paramPublishVideoEntry)
-    {
-      ykq.d(TAG, "Wait encode video exception:" + paramPublishVideoEntry);
-    }
-  }
-  
-  private int encodePicToVideo(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 18) {}
-    for (boolean bool = false; bool; bool = ((Boolean)((wjl)wjs.a(10)).b("boolean_enable_hw_encode_pic_to_video", Boolean.valueOf(true))).booleanValue())
-    {
-      int j = new bdeb().a(paramPublishVideoEntry.mLocalRawVideoDir, paramString);
-      int i = j;
-      if (j != 0)
-      {
-        i = j;
-        if (j != 942014)
-        {
-          ykq.d(TAG, "convert picture to video by mediaCodec error. use ffmepg to convert again.");
-          i = encodePicToVideoWithFFmpeg(paramPublishVideoEntry.mLocalRawVideoDir, paramString);
-        }
-      }
-      return i;
-    }
-    return encodePicToVideoWithFFmpeg(paramPublishVideoEntry.mLocalRawVideoDir, paramString);
-  }
-  
-  private int encodePicToVideoWithFFmpeg(String paramString1, String paramString2)
-  {
-    int i = 0;
-    ykq.d(TAG, "encodePicToVideoWithFFmpeg");
-    if (!zeb.c(paramString1)) {
-      i = 940007;
-    }
-    Object localObject;
-    AtomicInteger localAtomicInteger;
-    String str;
-    for (;;)
-    {
-      return i;
-      localObject = new Object();
-      localAtomicInteger = new AtomicInteger(942010);
-      try
-      {
-        FFmpegUtils.convertPicToVideo(BaseApplicationImpl.getApplication(), paramString1, paramString2, new VideoCompositeHelper.FFMPEGResponseCallback(localObject, localAtomicInteger, 2));
-        try
-        {
-          localObject.wait(300000L);
-          int j = localAtomicInteger.get();
-          if (j == 0) {
-            continue;
-          }
-          ykq.d(TAG, "Compress pic to video failed, trying to compress small pic. encodeRequest.get() = %d", new Object[] { Integer.valueOf(localAtomicInteger.get()) });
-          str = paramString1 + ".small.jpeg";
-          i = resizeToSmallBitmap(paramString1, str);
-          if (i != 0)
-          {
-            ykq.e(TAG, "resizeToSmallBitmap failed. nRetCode = " + i);
-            return i;
-          }
-        }
-        finally {}
-        localAtomicInteger.set(942010);
-      }
-      catch (IOException paramString1)
-      {
-        ykq.d(TAG, "Wait convert pic exception:" + paramString1);
-        return 942001;
-      }
-      catch (FFmpegCommandAlreadyRunningException paramString1)
-      {
-        ykq.d(TAG, "Wait convert pic exception:" + paramString1);
-        return 942002;
-      }
-      catch (InterruptedException paramString1)
-      {
-        ykq.d(TAG, "Wait convert pic exception:" + paramString1);
-        return 942003;
-      }
-    }
-    try
-    {
-      FFmpegUtils.convertPicToVideo(BaseApplicationImpl.getApplication(), str, paramString2, new VideoCompositeHelper.FFMPEGResponseCallback(localObject, localAtomicInteger, 2));
-      try
-      {
-        localObject.wait(300000L);
-        ykq.d(TAG, "convertPicToVideo end");
-        i = localAtomicInteger.get();
-        return i;
-      }
-      finally {}
-      return 942003;
-    }
-    catch (IOException paramString1)
-    {
-      ykq.d(TAG, "Wait convert pic exception:" + paramString1);
-      return 942001;
-    }
-    catch (FFmpegCommandAlreadyRunningException paramString1)
-    {
-      ykq.d(TAG, "Wait convert pic exception:" + paramString1);
-      return 942002;
-    }
-    catch (InterruptedException paramString1)
-    {
-      ykq.d(TAG, "Wait convert pic exception:" + paramString1);
-    }
-  }
-  
-  private int encodeRecordVideoForAFVF(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  private int a(PublishVideoEntry paramPublishVideoEntry, String paramString)
   {
     CodecParam.mRecordTime = (int)paramPublishVideoEntry.recordTime;
     CodecParam.mRecordFrames = paramPublishVideoEntry.recordFrames;
@@ -559,7 +159,7 @@ public class VideoCompositeHelper
       }
       catch (JSONException localJSONException1)
       {
-        label290:
+        label285:
         int k;
         for (;;)
         {
@@ -572,7 +172,7 @@ public class VideoCompositeHelper
           l5 = l6;
           l6 = l2;
         }
-        ykq.d(TAG, "version = %d", new Object[] { Integer.valueOf(k) });
+        SLog.d(jdField_a_of_type_JavaLangString, "version = %d", new Object[] { Integer.valueOf(k) });
         return i;
       }
       try
@@ -595,11 +195,11 @@ public class VideoCompositeHelper
         l2 = ((JSONObject)localObject).optLong("afTimeEnd", -1L);
         l4 = l5;
         l3 = l2;
-        ykq.b(TAG, "this is part video encode start %d end %d, audio start %d end %d", Long.valueOf(l1), Long.valueOf(l6), Long.valueOf(l5), Long.valueOf(l2));
+        SLog.b(jdField_a_of_type_JavaLangString, "this is part video encode start %d end %d, audio start %d end %d", Long.valueOf(l1), Long.valueOf(l6), Long.valueOf(l5), Long.valueOf(l2));
         l4 = l6;
         l6 = l2;
-        if ((paramPublishVideoEntry.hwEncodeRecordVideo) || (TextUtils.isEmpty(paramPublishVideoEntry.mIFrameVideoPath)) || (!zeb.a(paramPublishVideoEntry.mIFrameVideoPath, paramString))) {
-          break label690;
+        if ((paramPublishVideoEntry.hwEncodeRecordVideo) || (TextUtils.isEmpty(paramPublishVideoEntry.mIFrameVideoPath)) || (!com.tencent.biz.qqstory.utils.FileUtils.a(paramPublishVideoEntry.mIFrameVideoPath, paramString))) {
+          break label685;
         }
         j = 1;
         i = 0;
@@ -612,25 +212,25 @@ public class VideoCompositeHelper
         break;
         i = -1;
         j = 0;
-        break label290;
+        break label285;
       }
       if (j == 0) {
-        i = encodeVideo(paramPublishVideoEntry.mLocalRawVideoDir, l1, l4, l5, l6, paramPublishVideoEntry.mMosaicMask, paramPublishVideoEntry.mMosaicSize, paramPublishVideoEntry.isMuteRecordVoice, paramString);
+        i = a(paramPublishVideoEntry.mLocalRawVideoDir, l1, l4, l5, l6, paramPublishVideoEntry.mMosaicMask, paramPublishVideoEntry.mMosaicSize, paramPublishVideoEntry.isMuteRecordVoice, paramString);
       }
       localObject = new File(paramString);
       localObject = paramPublishVideoEntry.videoUploadTempDir + "rotate_" + ((File)localObject).getName();
-      if (rotateVideoWhenNeeded(paramString, (String)localObject) == 0)
+      if (b(paramString, (String)localObject) == 0)
       {
-        ykq.d(TAG, "EncodeLocalVideo: Change need rotation. inputVideoPath = " + paramString + " rotateFilePath = " + (String)localObject);
-        zeb.b((String)localObject, paramString);
+        SLog.d(jdField_a_of_type_JavaLangString, "EncodeLocalVideo: Change need rotation. inputVideoPath = " + paramString + " rotateFilePath = " + (String)localObject);
+        com.tencent.biz.qqstory.utils.FileUtils.b((String)localObject, paramString);
       }
       k = VideoEnvironment.getAVCodecVersion();
       if (k <= 28) {
-        break label637;
+        break label632;
       }
-      ykq.d(TAG, "version is %d", new Object[] { Integer.valueOf(k) });
-      l2 = zeb.c(paramString);
-      ykq.b(TAG, "file size %d, file %s", Long.valueOf(l2), paramString);
+      SLog.d(jdField_a_of_type_JavaLangString, "version is %d", new Object[] { Integer.valueOf(k) });
+      l2 = com.tencent.biz.qqstory.utils.FileUtils.c(paramString);
+      SLog.b(jdField_a_of_type_JavaLangString, "file size %d, file %s", Long.valueOf(l2), paramString);
       k = i;
       if (l2 > 2097152L)
       {
@@ -638,14 +238,14 @@ public class VideoCompositeHelper
         if (j == 0)
         {
           k = i;
-          if (zeb.g(paramString))
+          if (com.tencent.biz.qqstory.utils.FileUtils.g(paramString))
           {
             CodecParam.mBitrateMode = 1;
             i = CodecParam.mMaxrate;
             CodecParam.mMaxrate = 1677720;
-            k = encodeVideo(paramPublishVideoEntry.mLocalRawVideoDir, l1, l4, l5, l6, paramPublishVideoEntry.mMosaicMask, paramPublishVideoEntry.mMosaicSize, paramPublishVideoEntry.isMuteRecordVoice, paramString);
-            l1 = zeb.c(paramString);
-            ykq.d(TAG, "fix bitrate file size %d, orig bitrate:%d, file %s", new Object[] { Long.valueOf(l1), Integer.valueOf(i), paramString });
+            k = a(paramPublishVideoEntry.mLocalRawVideoDir, l1, l4, l5, l6, paramPublishVideoEntry.mMosaicMask, paramPublishVideoEntry.mMosaicSize, paramPublishVideoEntry.isMuteRecordVoice, paramString);
+            l1 = com.tencent.biz.qqstory.utils.FileUtils.c(paramString);
+            SLog.d(jdField_a_of_type_JavaLangString, "fix bitrate file size %d, orig bitrate:%d, file %s", new Object[] { Long.valueOf(l1), Integer.valueOf(i), paramString });
             CodecParam.mBitrateMode = 0;
             CodecParam.mMaxrate = i;
           }
@@ -655,21 +255,111 @@ public class VideoCompositeHelper
     }
   }
   
-  private static int encodeVideo(String paramString1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean, String paramString2)
+  private int a(PublishVideoEntry paramPublishVideoEntry, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, boolean paramBoolean, int paramInt4)
   {
-    wjl localwjl = (wjl)wjs.a(10);
-    int m = ((Integer)localwjl.b("key_encode_crf", Integer.valueOf(23))).intValue();
+    paramInt1 = b(paramPublishVideoEntry, paramString1, paramInt1, paramInt2, paramInt3, paramString2, paramString3, paramBoolean, paramInt4);
+    if ((paramInt1 == 0) && (paramPublishVideoEntry.videoNeedRotate))
+    {
+      paramString2 = new File(paramString3);
+      paramPublishVideoEntry = paramPublishVideoEntry.videoUploadTempDir + "rotate_" + paramString2.getName();
+      paramInt2 = b(paramString3, paramPublishVideoEntry);
+      if (paramInt2 == 0)
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "EncodeLocalVideo: Change need rotation. inputVideoPath=%s  rotateFilePath=%s", new Object[] { paramString1, paramPublishVideoEntry });
+        com.tencent.biz.qqstory.utils.FileUtils.b(paramPublishVideoEntry, paramString3);
+      }
+    }
+    else
+    {
+      return paramInt1;
+    }
+    SLog.e(jdField_a_of_type_JavaLangString, "EncodeLocalVideo: not rotate retcode =" + paramInt2);
+    return paramInt1;
+  }
+  
+  private int a(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean)
+  {
+    int j = 0;
+    String str = paramPublishVideoEntry.videoUploadTempDir + "hwtemp.mp4";
+    int i = b(paramPublishVideoEntry, paramString, paramBoolean);
+    if (i != 0) {
+      j = i;
+    }
+    label182:
+    do
+    {
+      return j;
+      if (paramPublishVideoEntry.isCancel)
+      {
+        com.tencent.biz.qqstory.utils.FileUtils.g(paramString);
+        return -19;
+      }
+      l = System.currentTimeMillis();
+      int k = -1;
+      i = k;
+      if (paramPublishVideoEntry.isLocalPublish)
+      {
+        i = k;
+        if (paramPublishVideoEntry.businessId == 14)
+        {
+          i = k;
+          if (paramPublishVideoEntry.getBooleanExtra("KEY_VIDEO_STORY_CAMERA_TYPE", false)) {
+            i = 0;
+          }
+        }
+      }
+      i = a(paramString, str, i);
+      if (CaptureFreqMonitor.c) {
+        CaptureFreqMonitor.g.a(2, System.currentTimeMillis() - l);
+      }
+      if (i != 0) {
+        break;
+      }
+      SLog.d(jdField_a_of_type_JavaLangString, "set moov in front of file success. targetMergedTempMp4 = " + str);
+      com.tencent.biz.qqstory.utils.FileUtils.b(str, paramString);
+      j = i;
+    } while (!AudioHelper.a());
+    long l = System.currentTimeMillis();
+    if (!paramPublishVideoEntry.isCancel) {
+      i = VideoCompositeManager.a(paramString);
+    }
+    if (paramPublishVideoEntry.isCancel) {
+      i = -22;
+    }
+    if (i == 0) {
+      SLog.d(jdField_a_of_type_JavaLangString, "isHuaweiGreen: reEncodeVideoWithFFMpeg succeed. output path = " + paramString);
+    }
+    for (;;)
+    {
+      j = i;
+      if (!CaptureFreqMonitor.c) {
+        break;
+      }
+      CaptureFreqMonitor.g.a(3, System.currentTimeMillis() - l);
+      return i;
+      SLog.d(jdField_a_of_type_JavaLangString, "set moov in front of file fail %d", new Object[] { Integer.valueOf(i) });
+      SLog.b(jdField_a_of_type_JavaLangString, "set moov in front of file failed targetFile = " + paramString);
+      i = j;
+      break label182;
+      SLog.e(jdField_a_of_type_JavaLangString, "isHuaweiGreen: reEncodeVideoWithFFMpeg failed. errorCode = " + i);
+    }
+  }
+  
+  private static int a(String paramString1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean, String paramString2)
+  {
+    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
+    int m = ((Integer)localStoryConfigManager.b("key_encode_crf", Integer.valueOf(23))).intValue();
     int i = CodecParam.mQmax;
     int j = CodecParam.mQmin;
     int k = CodecParam.mMaxQdiff;
-    int n = ((Integer)localwjl.b("key_encode_qmax", Integer.valueOf(CodecParam.mQmax))).intValue();
-    int i1 = ((Integer)localwjl.b("key_encode_qmin", Integer.valueOf(CodecParam.mQmin))).intValue();
-    int i2 = ((Integer)localwjl.b("key_encode_qdiff", Integer.valueOf(CodecParam.mMaxQdiff))).intValue();
+    int n = ((Integer)localStoryConfigManager.b("key_encode_qmax", Integer.valueOf(CodecParam.mQmax))).intValue();
+    int i1 = ((Integer)localStoryConfigManager.b("key_encode_qmin", Integer.valueOf(CodecParam.mQmin))).intValue();
+    int i2 = ((Integer)localStoryConfigManager.b("key_encode_qdiff", Integer.valueOf(CodecParam.mMaxQdiff))).intValue();
     CodecParam.mCRFValue = m;
     CodecParam.mQmax = 35;
     CodecParam.mQmin = i1;
     CodecParam.mMaxQdiff = i2;
-    ykq.d(TAG, "story encode param crf=%d, qmax=%d->%d, qmin=%d->%d, qdiff=>%d->%d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i1), Integer.valueOf(k), Integer.valueOf(i2) });
+    SLog.d(jdField_a_of_type_JavaLangString, "story encode param crf=%d, qmax=%d->%d, qmin=%d->%d, qdiff=>%d->%d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i1), Integer.valueOf(k), Integer.valueOf(i2) });
     try
     {
       paramString1 = new EncodeThread(null, new Handler(Looper.getMainLooper()), paramString1, paramString2, null);
@@ -693,9 +383,89 @@ public class VideoCompositeHelper
     }
   }
   
-  public static long getDurationOfVideo(String paramString)
+  private static int a(String paramString1, String paramString2)
   {
-    if (!zeb.b(paramString)) {}
+    return a(paramString1, paramString2, -1);
+  }
+  
+  private static int a(String paramString1, String paramString2, int paramInt)
+  {
+    Object localObject = new Object();
+    AtomicInteger localAtomicInteger = new AtomicInteger(953005);
+    long l = System.currentTimeMillis();
+    SLog.b(jdField_a_of_type_JavaLangString, "setMoovAndTimeStamp start!");
+    try
+    {
+      FFmpegUtils.setTimestamp(BaseApplicationImpl.getApplication(), paramString1, paramString2, paramInt, new VideoCompositeHelper.FFMPEGResponseCallback(localObject, localAtomicInteger, 3));
+      try
+      {
+        localObject.wait(180000L);
+        SLog.a(jdField_a_of_type_JavaLangString, "setMoovAndTimeStamp end, take time:%d", Long.valueOf(System.currentTimeMillis() - l));
+        paramInt = localAtomicInteger.get();
+        return paramInt;
+      }
+      finally {}
+      return 953004;
+    }
+    catch (IOException paramString1)
+    {
+      SLog.d(jdField_a_of_type_JavaLangString, "Wait encode video exception:" + paramString1);
+      return 945002;
+    }
+    catch (FFmpegCommandAlreadyRunningException paramString1)
+    {
+      SLog.d(jdField_a_of_type_JavaLangString, "Wait encode video exception:" + paramString1);
+      return 953003;
+    }
+    catch (InterruptedException paramString1)
+    {
+      SLog.d(jdField_a_of_type_JavaLangString, "Wait encode video exception:" + paramString1);
+    }
+  }
+  
+  private int a(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry, boolean paramBoolean)
+  {
+    SLog.d(jdField_a_of_type_JavaLangString, "videoSynthesisForStory start");
+    long l = SystemClock.elapsedRealtime();
+    Object localObject = new MergeEditVideo.EditParam(paramPublishVideoEntry.videoMaxrate, paramPublishVideoEntry);
+    ((MergeEditVideo.EditParam)localObject).b(paramPublishVideoEntry.hwBitrateMode);
+    if (paramBoolean) {
+      ((MergeEditVideo.EditParam)localObject).a();
+    }
+    if (paramPublishVideoEntry.isNeedHighProfile)
+    {
+      ((MergeEditVideo.EditParam)localObject).c(8);
+      SLog.b(jdField_a_of_type_JavaLangString, "codec high profile is enable when story video encode");
+    }
+    if (StoryConfigManager.e())
+    {
+      SLog.d(jdField_a_of_type_JavaLangString, "story debug mode is enable");
+      localObject = (StoryConfigManager)SuperManager.a(10);
+      i = ((Integer)((StoryConfigManager)localObject).b("int_story_debug_bitrate", Integer.valueOf(2000))).intValue();
+      int j = ((Integer)((StoryConfigManager)localObject).b("int_story_debug_bitrate_mode", Integer.valueOf(-1))).intValue();
+      paramBoolean = ((Boolean)((StoryConfigManager)localObject).b("boolean_story_debug_use_high_profile", Boolean.valueOf(false))).booleanValue();
+      MergeEditVideo.EditParam localEditParam = new MergeEditVideo.EditParam(i * 1000, paramPublishVideoEntry);
+      localEditParam.a();
+      localEditParam.b(j);
+      localObject = localEditParam;
+      if (paramBoolean)
+      {
+        localEditParam.c(8);
+        localObject = localEditParam;
+      }
+    }
+    int i = new MergeEditVideo().a(paramString1, paramString2, (MergeEditVideo.EditParam)localObject, paramPublishVideoEntry);
+    l = SystemClock.elapsedRealtime() - l;
+    SLog.d(jdField_a_of_type_JavaLangString, "[videoSynthesis]generate files|first step cost:" + l / 1000.0D);
+    if (CaptureFreqMonitor.c) {
+      CaptureFreqMonitor.g.a(0, l);
+    }
+    return i;
+  }
+  
+  public static long a(String paramString)
+  {
+    if (!com.tencent.biz.qqstory.utils.FileUtils.b(paramString)) {}
     while (Build.VERSION.SDK_INT < 10) {
       return 0L;
     }
@@ -712,38 +482,49 @@ public class VideoCompositeHelper
     return 0L;
   }
   
-  public static float getHeightWidthRatioOfVideo(String paramString)
+  private VideoCompositeHelper.RetCode a(PublishVideoEntry paramPublishVideoEntry)
   {
-    if (!zeb.b(paramString)) {}
-    while (Build.VERSION.SDK_INT < 10) {
-      return 0.0F;
-    }
-    try
+    VideoCompositeHelper.RetCode localRetCode = new VideoCompositeHelper.RetCode(-1, "");
+    String str1 = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_music_download_url", "");
+    String str2 = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_music_mid_id", "");
+    if (StringUtil.a(str1))
     {
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(18);
-      String str = localMediaMetadataRetriever.extractMetadata(19);
-      localMediaMetadataRetriever.release();
-      int i = Integer.valueOf(paramString).intValue();
-      int j = Integer.valueOf(str).intValue();
-      return j * 1.0F / i;
+      localRetCode.a(0);
+      localRetCode.a("don't need to download Music");
+      return localRetCode;
     }
-    catch (Exception paramString)
+    str2 = SvEffectSdkInitor.QQSpecialAVFilterResource.jdField_a_of_type_JavaLangString + str2 + FFmpegUtils.getAuidoType(str1);
+    paramPublishVideoEntry.backgroundMusicPath = str2;
+    if (FileUtil.checkFileExist(str2))
     {
-      paramString.printStackTrace();
+      localRetCode.a(0);
+      localRetCode.a("needDownloadMusic and the file exist");
+      return localRetCode;
     }
-    return 0.0F;
+    QimMusicPlayer localQimMusicPlayer = (QimMusicPlayer)QIMManager.a().c(8);
+    MusicItemInfo localMusicItemInfo = new MusicItemInfo();
+    localMusicItemInfo.setPath(str2);
+    localMusicItemInfo.mUrl = str1;
+    localMusicItemInfo.mType = 5;
+    localMusicItemInfo.mMusicName = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_song_name", "unknown name");
+    if (!localQimMusicPlayer.a(localMusicItemInfo, new VideoCompositeHelper.3(this, paramPublishVideoEntry, localRetCode, str1)))
+    {
+      localRetCode.a(-1);
+      localRetCode.a("needDownloadMusic cant startDownload maybe path is null or the music has downloaded");
+      return localRetCode;
+    }
+    b("needAndStartDownloadMusic");
+    return localRetCode;
   }
   
   @NonNull
-  public static PublishVideoEntry getPublishVideoEntry(String paramString)
+  public static PublishVideoEntry a(String paramString)
   {
-    Object localObject1 = new wii(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    ((wii)localObject1).verifyAuthentication();
-    Object localObject2 = ((wii)localObject1).createEntityManager();
+    Object localObject1 = new QQStoryEntityManagerFactory(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    ((QQStoryEntityManagerFactory)localObject1).verifyAuthentication();
+    Object localObject2 = ((QQStoryEntityManagerFactory)localObject1).createEntityManager();
     localObject1 = new PublishVideoEntry();
-    localObject2 = query((EntityManager)localObject2, PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getVidSelectionNoArgs(), new String[] { paramString });
+    localObject2 = a((EntityManager)localObject2, PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getVidSelectionNoArgs(), new String[] { paramString });
     paramString = (String)localObject1;
     if (localObject2 != null)
     {
@@ -759,96 +540,255 @@ public class VideoCompositeHelper
     return localObject1;
   }
   
-  @TargetApi(14)
-  public static int getVideoBitrate(String paramString)
+  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    int i = 0;
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    localMediaMetadataRetriever.setDataSource(paramString);
-    paramString = localMediaMetadataRetriever.extractMetadata(20);
-    localMediaMetadataRetriever.release();
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception localException)
-    {
-      ykq.e(TAG, "format error %s", new Object[] { paramString });
-    }
-    return 0;
+    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
-  private int hwEncodeRecordVideo(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean)
+  public static void a(PublishVideoEntry paramPublishVideoEntry)
   {
-    int j = 0;
-    String str = paramPublishVideoEntry.videoUploadTempDir + "hwtemp.mp4";
-    int i = hwEncodeRecordVideoInner(paramPublishVideoEntry, paramString, paramBoolean);
-    if (i != 0) {
-      j = i;
-    }
-    label182:
-    do
+    if (paramPublishVideoEntry.businessId == 2)
     {
-      return j;
-      if (paramPublishVideoEntry.isCancel)
-      {
-        zeb.g(paramString);
-        return -19;
-      }
-      l = System.currentTimeMillis();
-      int k = -1;
-      i = k;
-      if (paramPublishVideoEntry.isLocalPublish)
-      {
-        i = k;
-        if (paramPublishVideoEntry.businessId == 14)
-        {
-          i = k;
-          if (paramPublishVideoEntry.getBooleanExtra("KEY_VIDEO_STORY_CAMERA_TYPE", false)) {
-            i = 0;
-          }
-        }
-      }
-      i = setMoovAndTimeStamp(paramString, str, i);
-      if (bomw.c) {
-        bomw.g.a(2, System.currentTimeMillis() - l);
-      }
-      if (i != 0) {
-        break;
-      }
-      ykq.d(TAG, "set moov in front of file success. targetMergedTempMp4 = " + str);
-      zeb.b(str, paramString);
-      j = i;
-    } while (!AudioHelper.a());
-    long l = System.currentTimeMillis();
-    if (!paramPublishVideoEntry.isCancel) {
-      i = wde.a(paramString);
+      SLog.b(jdField_a_of_type_JavaLangString, "deleteVideoCache ignore because business id is qq");
+      return;
     }
-    if (paramPublishVideoEntry.isCancel) {
-      i = -22;
-    }
-    if (i == 0) {
-      ykq.d(TAG, "isHuaweiGreen: reEncodeVideoWithFFMpeg succeed. output path = " + paramString);
+    if ((!paramPublishVideoEntry.isLocalPublish) && (!TextUtils.isEmpty(paramPublishVideoEntry.mLocalRawVideoDir)) && (!paramPublishVideoEntry.mLocalRawVideoDir.contains(Environment.DIRECTORY_DCIM)))
+    {
+      if (paramPublishVideoEntry.hasFragments) {
+        break label139;
+      }
+      b(paramPublishVideoEntry);
     }
     for (;;)
     {
-      j = i;
-      if (!bomw.c) {
-        break;
+      if (paramPublishVideoEntry.isPicture) {
+        QQStoryContext.a().a().sendBroadcast(new Intent("android.intent.action.MEDIA_MOUNTED", Uri.parse("file://" + Environment.getExternalStorageDirectory())));
       }
-      bomw.g.a(3, System.currentTimeMillis() - l);
-      return i;
-      ykq.d(TAG, "set moov in front of file fail %d", new Object[] { Integer.valueOf(i) });
-      ykq.b(TAG, "set moov in front of file failed targetFile = " + paramString);
-      i = j;
-      break label182;
-      ykq.e(TAG, "isHuaweiGreen: reEncodeVideoWithFFMpeg failed. errorCode = " + i);
+      com.tencent.biz.qqstory.utils.FileUtils.d(paramPublishVideoEntry.videoUploadTempDir);
+      SLog.d(jdField_a_of_type_JavaLangString, "delete file:%s", new Object[] { paramPublishVideoEntry.videoUploadTempDir });
+      return;
+      label139:
+      a(paramPublishVideoEntry.fakeVid, PublishVideoEntry.VIDEO_PROCESS_STATE_UPLOAD_SUC);
+      if (b(paramPublishVideoEntry.multiFragmentGroupId, PublishVideoEntry.VIDEO_PROCESS_STATE_UPLOAD_SUC))
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "groupId=%s all success", new Object[] { paramPublishVideoEntry.multiFragmentGroupId });
+        b(paramPublishVideoEntry);
+      }
+      else
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "groupId=%s not all success", new Object[] { paramPublishVideoEntry.multiFragmentGroupId });
+      }
     }
   }
   
-  private int hwEncodeRecordVideoInner(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean)
+  private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString1, String paramString2)
+  {
+    if (EncodeVideoUtil.a(paramString1, paramString2, paramPublishVideoEntry) != 0)
+    {
+      SLog.d(jdField_a_of_type_JavaLangString, "adjustBitrate: errcode" + paramInt);
+      File localFile = new File(paramString2);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      com.tencent.biz.qqstory.utils.FileUtils.c(paramString1, paramString2);
+      paramPublishVideoEntry.useSrcFile = true;
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    try
+    {
+      notifyAll();
+      SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow]  | " + paramString + " notifyAll() ");
+      return;
+    }
+    finally {}
+  }
+  
+  /* Error */
+  private boolean a(String paramString)
+  {
+    // Byte code:
+    //   0: new 600	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$RetCode
+    //   3: dup
+    //   4: iconst_m1
+    //   5: ldc_w 823
+    //   8: invokespecial 601	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$RetCode:<init>	(ILjava/lang/String;)V
+    //   11: astore 4
+    //   13: getstatic 19	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   16: ldc_w 825
+    //   19: invokestatic 821	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: getstatic 579	android/os/Build$VERSION:SDK_INT	I
+    //   25: bipush 16
+    //   27: if_icmpge +15 -> 42
+    //   30: aload 4
+    //   32: invokevirtual 826	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$RetCode:a	()I
+    //   35: ifne +5 -> 40
+    //   38: iconst_1
+    //   39: ireturn
+    //   40: iconst_0
+    //   41: ireturn
+    //   42: new 828	android/media/MediaExtractor
+    //   45: dup
+    //   46: invokespecial 829	android/media/MediaExtractor:<init>	()V
+    //   49: astore_3
+    //   50: aload_3
+    //   51: aload_1
+    //   52: invokevirtual 830	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
+    //   55: iconst_0
+    //   56: istore_2
+    //   57: iload_2
+    //   58: aload_3
+    //   59: invokevirtual 833	android/media/MediaExtractor:getTrackCount	()I
+    //   62: if_icmpge +29 -> 91
+    //   65: aload_3
+    //   66: iload_2
+    //   67: invokevirtual 837	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   70: ldc_w 839
+    //   73: invokevirtual 844	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   76: ldc_w 846
+    //   79: invokevirtual 849	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   82: ifeq +23 -> 105
+    //   85: aload 4
+    //   87: iconst_0
+    //   88: invokevirtual 611	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$RetCode:a	(I)V
+    //   91: aload_3
+    //   92: invokevirtual 850	android/media/MediaExtractor:release	()V
+    //   95: aload 4
+    //   97: invokevirtual 826	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$RetCode:a	()I
+    //   100: ifeq -62 -> 38
+    //   103: iconst_0
+    //   104: ireturn
+    //   105: iload_2
+    //   106: iconst_1
+    //   107: iadd
+    //   108: istore_2
+    //   109: goto -52 -> 57
+    //   112: astore_1
+    //   113: aload_1
+    //   114: invokevirtual 851	java/io/IOException:printStackTrace	()V
+    //   117: aload_3
+    //   118: invokevirtual 850	android/media/MediaExtractor:release	()V
+    //   121: iconst_1
+    //   122: ireturn
+    //   123: astore_1
+    //   124: aload_3
+    //   125: invokevirtual 850	android/media/MediaExtractor:release	()V
+    //   128: aload_1
+    //   129: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	130	0	this	VideoCompositeHelper
+    //   0	130	1	paramString	String
+    //   56	53	2	i	int
+    //   49	76	3	localMediaExtractor	android.media.MediaExtractor
+    //   11	85	4	localRetCode	VideoCompositeHelper.RetCode
+    // Exception table:
+    //   from	to	target	type
+    //   50	55	112	java/io/IOException
+    //   57	91	112	java/io/IOException
+    //   50	55	123	finally
+    //   57	91	123	finally
+    //   113	117	123	finally
+  }
+  
+  public static boolean a(String paramString, int paramInt)
+  {
+    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    paramString = a(paramString);
+    paramString.videoProcessState = paramInt;
+    return localEntityManager.update(paramString);
+  }
+  
+  private int b(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    if (Build.VERSION.SDK_INT < 18) {}
+    for (boolean bool = false; bool; bool = ((Boolean)((StoryConfigManager)SuperManager.a(10)).b("boolean_enable_hw_encode_pic_to_video", Boolean.valueOf(true))).booleanValue())
+    {
+      int j = new PicToVideoConverter().a(paramPublishVideoEntry.mLocalRawVideoDir, paramString);
+      int i = j;
+      if (j != 0)
+      {
+        i = j;
+        if (j != 942014)
+        {
+          SLog.d(jdField_a_of_type_JavaLangString, "convert picture to video by mediaCodec error. use ffmepg to convert again.");
+          i = c(paramPublishVideoEntry.mLocalRawVideoDir, paramString);
+        }
+      }
+      return i;
+    }
+    return c(paramPublishVideoEntry.mLocalRawVideoDir, paramString);
+  }
+  
+  private int b(PublishVideoEntry paramPublishVideoEntry, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, boolean paramBoolean, int paramInt4)
+  {
+    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString1)) {
+      return 940007;
+    }
+    Object localObject = new File(paramString1);
+    paramString2 = paramString2 + "compressed_" + ((File)localObject).getName();
+    boolean bool;
+    if ((!Build.MODEL.equalsIgnoreCase("HUAWEI NXT-AL10")) && (!Build.MODEL.equalsIgnoreCase("HUAWEI MT7-TL00"))) {
+      bool = true;
+    }
+    for (;;)
+    {
+      if (!bool)
+      {
+        SLog.e(jdField_a_of_type_JavaLangString, "encode local video incompatible: model = " + Build.MODEL + " compatible = " + bool);
+        label123:
+        paramPublishVideoEntry = new Object();
+        paramString2 = new AtomicInteger(942009);
+      }
+      try
+      {
+        FFmpegUtils.compressLocalVideo(BaseApplicationImpl.getApplication(), paramString1, paramInt1, paramInt2 - paramInt1, paramInt3, paramBoolean, paramString3, new VideoCompositeHelper.FFMPEGResponseCallback(paramPublishVideoEntry, paramString2, 1));
+        try
+        {
+          paramPublishVideoEntry.wait(180000L);
+          paramInt1 = paramString2.get();
+          return paramInt1;
+        }
+        finally {}
+      }
+      catch (IOException paramPublishVideoEntry)
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "Wait encode video exception:" + paramPublishVideoEntry);
+        return 943001;
+        bool = false;
+        continue;
+        localObject = BaseApplicationImpl.getApplication().getApplicationContext();
+        paramPublishVideoEntry = new VideoCompositeHelper.HWCompressProcessor(paramPublishVideoEntry, paramString2, paramInt3, paramInt1, paramInt2, paramBoolean, true, paramInt4);
+        VideoConverter localVideoConverter = new VideoConverter(new VideoConverterLog());
+        localVideoConverter.setCompressMode(1);
+        if (localVideoConverter.startCompress((Context)localObject, paramString1, paramPublishVideoEntry, true) != 0) {
+          break label123;
+        }
+        if (a(paramString2, paramString3) == 0) {
+          com.tencent.biz.qqstory.utils.FileUtils.g(paramString2);
+        }
+        for (;;)
+        {
+          return 0;
+          com.tencent.biz.qqstory.utils.FileUtils.b(paramString2, paramString3);
+        }
+      }
+      catch (FFmpegCommandAlreadyRunningException paramPublishVideoEntry)
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "Wait encode video exception:" + paramPublishVideoEntry);
+        return 943002;
+      }
+      catch (InterruptedException paramPublishVideoEntry)
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "Wait encode video exception:" + paramPublishVideoEntry);
+      }
+    }
+    return 943003;
+  }
+  
+  private int b(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean)
   {
     String str2 = paramPublishVideoEntry.mLocalRawVideoDir;
     boolean bool = paramPublishVideoEntry.getBooleanExtra("enable_flow_decode", true);
@@ -865,7 +805,7 @@ public class VideoCompositeHelper
         str1 = paramPublishVideoEntry.mIFrameVideoPath;
       }
     }
-    if (!zeb.c(str1)) {
+    if (!com.tencent.biz.qqstory.utils.FileUtils.c(str1)) {
       return 940007;
     }
     str2 = paramPublishVideoEntry.videoUploadTempDir + "_merge_video_x.mp4";
@@ -873,7 +813,7 @@ public class VideoCompositeHelper
     long l1 = SystemClock.elapsedRealtime();
     int i = 0;
     if (!paramPublishVideoEntry.isCancel) {
-      i = videoSynthesisForStory(str1, str2, paramPublishVideoEntry, paramBoolean);
+      i = a(str1, str2, paramPublishVideoEntry, paramBoolean);
     }
     if (paramPublishVideoEntry.isCancel) {
       i = -15;
@@ -886,70 +826,70 @@ public class VideoCompositeHelper
         if (((File)localObject).exists()) {
           ((File)localObject).delete();
         }
-        if (this.isAdjustBitrate)
+        if (this.jdField_a_of_type_Boolean)
         {
-          compressForQzone(paramPublishVideoEntry, i, str1, str2);
+          a(paramPublishVideoEntry, i, str1, str2);
           i = 0;
         }
       }
     }
     for (;;)
     {
-      ykq.d(TAG, "hwEncodeRecordVideo mediaCodec trim video cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l1) });
-      long l2 = getDurationOfVideo(paramPublishVideoEntry.mLocalRawVideoDir);
+      SLog.d(jdField_a_of_type_JavaLangString, "hwEncodeRecordVideo mediaCodec trim video cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l1) });
+      long l2 = a(paramPublishVideoEntry.mLocalRawVideoDir);
       l1 = SystemClock.elapsedRealtime();
       int j;
-      if ((!TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath)) && (zeb.c(paramPublishVideoEntry.backgroundMusicPath))) {
+      if ((!TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath)) && (com.tencent.biz.qqstory.utils.FileUtils.c(paramPublishVideoEntry.backgroundMusicPath))) {
         j = 1;
       }
-      bddl localbddl;
+      AudioEncoder.AudioData localAudioData;
       for (;;)
       {
         if ((!paramPublishVideoEntry.isMuteRecordVoice) && ((j == 0) || (paramPublishVideoEntry.isMixOriginal)) && (!TextUtils.isEmpty(paramPublishVideoEntry.mAudioFilePath)) && (!paramPublishVideoEntry.isLocalPublish))
         {
-          if (!zeb.c(paramPublishVideoEntry.mAudioFilePath))
+          if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramPublishVideoEntry.mAudioFilePath))
           {
-            ykq.d(TAG, "audio not exist");
-            zeb.b(str2, paramString);
+            SLog.d(jdField_a_of_type_JavaLangString, "audio not exist");
+            com.tencent.biz.qqstory.utils.FileUtils.b(str2, paramString);
             return 0;
-            zeb.c(str1, str2);
+            com.tencent.biz.qqstory.utils.FileUtils.c(str1, str2);
             paramPublishVideoEntry.useSrcFile = true;
             break;
             return i;
             j = 0;
             continue;
           }
-          ykq.d(TAG, "trim audio");
+          SLog.d(jdField_a_of_type_JavaLangString, "trim audio");
           localObject = paramPublishVideoEntry.videoUploadTempDir + l1 + "_segment_mc_audio";
           if (!paramPublishVideoEntry.isCancel) {
-            i = bbns.a(paramPublishVideoEntry.mAudioFilePath, (String)localObject, paramPublishVideoEntry.videoRangeStart * 1.0F / (float)l2, paramPublishVideoEntry.videoRangeEnd * 1.0F / (float)l2);
+            i = AudioDataUtil.a(paramPublishVideoEntry.mAudioFilePath, (String)localObject, paramPublishVideoEntry.videoRangeStart * 1.0F / (float)l2, paramPublishVideoEntry.videoRangeEnd * 1.0F / (float)l2);
           }
           if (paramPublishVideoEntry.isCancel) {
             return -17;
           }
           if (i != 0)
           {
-            ykq.d(TAG, "mediacodec AudioEncoder.clipAudioFile: errcode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
-            ykv.b("publish_story", "clip_audio", 1, i, new String[] { "rangeStart=" + paramPublishVideoEntry.videoRangeStart + " rangeEnd=" + paramPublishVideoEntry.videoRangeEnd + " duration=" + l2 });
-            zeb.b(str2, paramString);
+            SLog.d(jdField_a_of_type_JavaLangString, "mediacodec AudioEncoder.clipAudioFile: errcode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
+            StoryReportor.b("publish_story", "clip_audio", 1, i, new String[] { "rangeStart=" + paramPublishVideoEntry.videoRangeStart + " rangeEnd=" + paramPublishVideoEntry.videoRangeEnd + " duration=" + l2 });
+            com.tencent.biz.qqstory.utils.FileUtils.b(str2, paramString);
             return 0;
           }
           j = AudioEncoder.a((String)localObject);
           if (j != 0)
           {
-            ykq.d(TAG, "checkSourceAudioIsOK: errorCode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
-            ykv.b("publish_story", "clip_audio", 1, j, new String[] { "rangeStart=" + paramPublishVideoEntry.videoRangeStart + " rangeEnd=" + paramPublishVideoEntry.videoRangeEnd + " duration=" + l2 });
-            zeb.b(str2, paramString);
+            SLog.d(jdField_a_of_type_JavaLangString, "checkSourceAudioIsOK: errorCode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
+            StoryReportor.b("publish_story", "clip_audio", 1, j, new String[] { "rangeStart=" + paramPublishVideoEntry.videoRangeStart + " rangeEnd=" + paramPublishVideoEntry.videoRangeEnd + " duration=" + l2 });
+            com.tencent.biz.qqstory.utils.FileUtils.b(str2, paramString);
             return 0;
           }
-          ykq.d(TAG, "audio to mp4");
+          SLog.d(jdField_a_of_type_JavaLangString, "audio to mp4");
           str1 = paramPublishVideoEntry.videoUploadTempDir + "mc_audio.mp4";
           if (paramPublishVideoEntry.saveMode <= 5)
           {
             i = paramPublishVideoEntry.saveMode;
-            localbddl = AudioEncoder.a(null, null, i);
-            localbddl.b = str1;
-            localbddl.a = ((String)localObject);
+            localAudioData = AudioEncoder.a(null, null, i);
+            localAudioData.b = str1;
+            localAudioData.jdField_a_of_type_JavaLangString = ((String)localObject);
             if (paramPublishVideoEntry.isCancel) {
               break label1045;
             }
@@ -957,15 +897,15 @@ public class VideoCompositeHelper
         }
       }
       label1045:
-      for (i = AudioEncoder.a(localbddl);; i = j)
+      for (i = AudioEncoder.a(localAudioData);; i = j)
       {
         if (paramPublishVideoEntry.isCancel) {
           i = -21;
         }
         if (i != 0)
         {
-          zeb.g(str1);
-          ykq.d(TAG, "mediacodec AudioEncoder.encodeSafely: errorCode=%s", new Object[] { Integer.valueOf(i) });
+          com.tencent.biz.qqstory.utils.FileUtils.g(str1);
+          SLog.d(jdField_a_of_type_JavaLangString, "mediacodec AudioEncoder.encodeSafely: errorCode=%s", new Object[] { Integer.valueOf(i) });
           return i;
           i = 0;
           break;
@@ -974,211 +914,96 @@ public class VideoCompositeHelper
         if (((File)localObject).exists()) {
           ((File)localObject).delete();
         }
-        ykq.d(TAG, "video audio mp4");
+        SLog.d(jdField_a_of_type_JavaLangString, "video audio mp4");
         l2 = SystemClock.elapsedRealtime();
-        zeb.g(str3);
+        com.tencent.biz.qqstory.utils.FileUtils.g(str3);
         if (!paramPublishVideoEntry.isCancel) {
           i = HwVideoMerge.merge(str2, str1, str3, 0);
         }
         if (paramPublishVideoEntry.isCancel)
         {
-          zeb.g(str1);
-          zeb.g(str3);
+          com.tencent.biz.qqstory.utils.FileUtils.g(str1);
+          com.tencent.biz.qqstory.utils.FileUtils.g(str3);
           return -18;
         }
-        ykq.d(TAG, "[HwVideoMerge.merge]cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l2) });
+        SLog.d(jdField_a_of_type_JavaLangString, "[HwVideoMerge.merge]cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l2) });
         if (i != 0)
         {
-          ykq.d(TAG, "HwVideoMerge->merge: errorCode=%s", new Object[] { Integer.valueOf(i) });
+          SLog.d(jdField_a_of_type_JavaLangString, "HwVideoMerge->merge: errorCode=%s", new Object[] { Integer.valueOf(i) });
           return i;
         }
         l1 = SystemClock.elapsedRealtime() - l1;
-        ykq.a(TAG, "mediacodec encode audio time cost=%s", Long.valueOf(l1));
-        if (bomw.c) {
-          bomw.g.a(1, l1);
+        SLog.a(jdField_a_of_type_JavaLangString, "mediacodec encode audio time cost=%s", Long.valueOf(l1));
+        if (CaptureFreqMonitor.c) {
+          CaptureFreqMonitor.g.a(1, l1);
         }
         for (paramPublishVideoEntry = str3;; paramPublishVideoEntry = str2)
         {
-          zeb.b(paramPublishVideoEntry, paramString);
+          com.tencent.biz.qqstory.utils.FileUtils.b(paramPublishVideoEntry, paramString);
           return i;
         }
       }
     }
   }
   
-  public static boolean isAllPartSuccess(String paramString, int paramInt)
-  {
-    paramString = query(QQStoryContext.a().a().createEntityManager(), PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getGroupIdNoArgs(), new String[] { paramString });
-    if (paramString == null) {
-      return false;
-    }
-    paramString = paramString.iterator();
-    while (paramString.hasNext()) {
-      if (((PublishVideoEntry)paramString.next()).videoProcessState < paramInt) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  private VideoCompositeHelper.RetCode needAndStartDownloadMusic(PublishVideoEntry paramPublishVideoEntry)
-  {
-    VideoCompositeHelper.RetCode localRetCode = new VideoCompositeHelper.RetCode(-1, "");
-    String str1 = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_music_download_url", "");
-    String str2 = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_music_mid_id", "");
-    if (StringUtil.isEmpty(str1))
-    {
-      localRetCode.setCode(0);
-      localRetCode.setMessage("don't need to download Music");
-      return localRetCode;
-    }
-    str2 = SvEffectSdkInitor.QQSpecialAVFilterResource.STORAGE_DIR + str2 + FFmpegUtils.getAuidoType(str1);
-    paramPublishVideoEntry.backgroundMusicPath = str2;
-    if (FileUtil.checkFileExist(str2))
-    {
-      localRetCode.setCode(0);
-      localRetCode.setMessage("needDownloadMusic and the file exist");
-      return localRetCode;
-    }
-    boje localboje = (boje)bogd.a().c(8);
-    MusicItemInfo localMusicItemInfo = new MusicItemInfo();
-    localMusicItemInfo.setPath(str2);
-    localMusicItemInfo.mUrl = str1;
-    localMusicItemInfo.mType = 5;
-    localMusicItemInfo.mMusicName = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_song_name", "unknown name");
-    if (!localboje.a(localMusicItemInfo, new VideoCompositeHelper.3(this, paramPublishVideoEntry, localRetCode, str1)))
-    {
-      localRetCode.setCode(-1);
-      localRetCode.setMessage("needDownloadMusic cant startDownload maybe path is null or the music has downloaded");
-      return localRetCode;
-    }
-    waitThread("needAndStartDownloadMusic");
-    return localRetCode;
-  }
-  
-  private void notifyThread(String paramString)
-  {
-    try
-    {
-      notifyAll();
-      ykq.c(TAG, "[vs_publish_flow]  | " + paramString + " notifyAll() ");
-      return;
-    }
-    finally {}
-  }
-  
-  public static List<? extends Entity> query(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  private int resizeToSmallBitmap(String paramString1, String paramString2)
-  {
-    int j = 0;
-    paramString1 = bgyo.a(paramString1);
-    int i;
-    if (paramString1 == null)
-    {
-      ykq.e(TAG, "BitmapManager.decodeFile in resizeToSmallBitmap failed");
-      i = 942007;
-    }
-    do
-    {
-      do
-      {
-        return i;
-        i = paramString1.getHeight();
-        int m = paramString1.getWidth();
-        int k = i * 540 / m;
-        i = k;
-        if (k % 2 != 0) {
-          i = k + 1;
-        }
-        if (m <= 540)
-        {
-          ykq.e(TAG, "No need resize. srcWidth < destWidth, srcWidth = " + m + " destWidth = " + 540);
-          return 942006;
-        }
-        Bitmap localBitmap = zdr.b(paramString1, 540, i, false, false);
-        if (localBitmap == null)
-        {
-          ykq.e(TAG, "resizeAndFillBitmapEdge in resizeToSmallBitmap failed");
-          return 942005;
-        }
-        if (!zdr.a(localBitmap, paramString2))
-        {
-          ykq.e(TAG, "compressToFile in resizeToSmallBitmap failed");
-          return 942008;
-        }
-        if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-          localBitmap.recycle();
-        }
-        i = j;
-      } while (paramString1 == null);
-      i = j;
-    } while (paramString1.isRecycled());
-    paramString1.recycle();
-    return 0;
-  }
-  
   /* Error */
-  private int rotateVideoWhenNeeded(String paramString1, String paramString2)
+  private int b(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: invokestatic 127	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 343	java/lang/System:currentTimeMillis	()J
     //   3: lstore 4
     //   5: new 4	java/lang/Object
     //   8: dup
-    //   9: invokespecial 68	java/lang/Object:<init>	()V
+    //   9: invokespecial 53	java/lang/Object:<init>	()V
     //   12: astore 6
-    //   14: new 129	java/util/concurrent/atomic/AtomicInteger
+    //   14: new 469	java/util/concurrent/atomic/AtomicInteger
     //   17: dup
     //   18: iconst_m1
-    //   19: invokespecial 132	java/util/concurrent/atomic/AtomicInteger:<init>	(I)V
+    //   19: invokespecial 473	java/util/concurrent/atomic/AtomicInteger:<init>	(I)V
     //   22: astore 7
     //   24: aload_1
-    //   25: invokestatic 1155	zfl:a	(Ljava/lang/String;)I
+    //   25: invokestatic 1031	com/tencent/biz/qqstory/utils/VideoUtils:a	(Ljava/lang/String;)I
     //   28: istore_3
     //   29: iload_3
     //   30: iconst_m1
     //   31: if_icmpne +7 -> 38
-    //   34: ldc_w 1156
+    //   34: ldc_w 1032
     //   37: ireturn
-    //   38: getstatic 25	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:TAG	Ljava/lang/String;
-    //   41: ldc_w 1158
-    //   44: invokestatic 55	ykq:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   47: invokestatic 526	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   50: invokevirtual 1162	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   38: getstatic 19	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   41: ldc_w 1034
+    //   44: invokestatic 48	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   47: invokestatic 481	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   50: invokevirtual 910	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
     //   53: aload_1
     //   54: iload_3
-    //   55: invokestatic 199	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   55: invokestatic 136	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   58: aload_2
-    //   59: new 140	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$FFMPEGResponseCallback
+    //   59: new 483	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$FFMPEGResponseCallback
     //   62: dup
     //   63: aload 6
     //   65: aload 7
     //   67: iconst_4
-    //   68: invokespecial 143	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$FFMPEGResponseCallback:<init>	(Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicInteger;I)V
-    //   71: invokestatic 1166	com/tencent/biz/qqstory/utils/ffmpeg/FFmpegUtils:changeOrientationInVideo	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/biz/qqstory/utils/ffmpeg/FFmpegExecuteResponseCallback;)V
+    //   68: invokespecial 486	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper$FFMPEGResponseCallback:<init>	(Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicInteger;I)V
+    //   71: invokestatic 1038	com/tencent/biz/qqstory/utils/ffmpeg/FFmpegUtils:changeOrientationInVideo	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/biz/qqstory/utils/ffmpeg/FFmpegExecuteResponseCallback;)V
     //   74: aload 6
     //   76: monitorenter
     //   77: aload 6
-    //   79: ldc2_w 150
-    //   82: invokevirtual 155	java/lang/Object:wait	(J)V
-    //   85: getstatic 25	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:TAG	Ljava/lang/String;
+    //   79: ldc2_w 493
+    //   82: invokevirtual 498	java/lang/Object:wait	(J)V
+    //   85: getstatic 19	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   88: new 27	java/lang/StringBuilder
     //   91: dup
     //   92: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   95: ldc_w 1168
+    //   95: ldc_w 1040
     //   98: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: invokestatic 127	java/lang/System:currentTimeMillis	()J
+    //   101: invokestatic 343	java/lang/System:currentTimeMillis	()J
     //   104: lload 4
     //   106: lsub
-    //   107: invokevirtual 183	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   110: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 55	ykq:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   107: invokevirtual 962	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   110: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   113: invokestatic 48	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   116: aload 7
-    //   118: invokevirtual 158	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   118: invokevirtual 506	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   121: istore_3
     //   122: aload 6
     //   124: monitorexit
@@ -1190,32 +1015,32 @@ public class VideoCompositeHelper
     //   131: aload_1
     //   132: athrow
     //   133: astore_1
-    //   134: getstatic 25	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:TAG	Ljava/lang/String;
+    //   134: getstatic 19	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   137: new 27	java/lang/StringBuilder
     //   140: dup
     //   141: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   144: ldc_w 1170
+    //   144: ldc_w 1042
     //   147: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   150: aload_1
-    //   151: invokevirtual 212	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   154: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   157: invokestatic 87	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   160: ldc_w 1171
+    //   151: invokevirtual 511	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   154: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   157: invokestatic 282	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   160: ldc_w 1043
     //   163: ireturn
     //   164: astore_1
-    //   165: getstatic 25	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:TAG	Ljava/lang/String;
+    //   165: getstatic 19	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   168: new 27	java/lang/StringBuilder
     //   171: dup
     //   172: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   175: ldc_w 1173
+    //   175: ldc_w 1045
     //   178: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   181: aload_1
-    //   182: invokevirtual 212	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   185: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   188: invokestatic 87	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   182: invokevirtual 511	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   188: invokestatic 282	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   191: aload 6
     //   193: monitorexit
-    //   194: ldc_w 1174
+    //   194: ldc_w 1046
     //   197: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1236,99 +1061,83 @@ public class VideoCompositeHelper
     //   77	85	164	java/lang/InterruptedException
   }
   
-  private static int setMoovAndTimeStamp(String paramString1, String paramString2)
+  private int b(String paramString1, String paramString2, int paramInt)
   {
-    return setMoovAndTimeStamp(paramString1, paramString2, -1);
-  }
-  
-  private static int setMoovAndTimeStamp(String paramString1, String paramString2, int paramInt)
-  {
-    Object localObject = new Object();
-    AtomicInteger localAtomicInteger = new AtomicInteger(953005);
-    long l = System.currentTimeMillis();
-    ykq.b(TAG, "setMoovAndTimeStamp start!");
-    try
+    SLog.d(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramString1 + " [improve_video_clear] encode video file is too big, so need to compress to:" + paramInt);
+    long l2 = System.currentTimeMillis();
+    Object localObject1 = new Object();
+    AtomicInteger localAtomicInteger = new AtomicInteger(-1);
+    long l1 = 0L;
+    str = paramString2 + ".temp.mp4";
+    for (;;)
     {
-      FFmpegUtils.setTimestamp(BaseApplicationImpl.getApplication(), paramString1, paramString2, paramInt, new VideoCompositeHelper.FFMPEGResponseCallback(localObject, localAtomicInteger, 3));
       try
       {
-        localObject.wait(180000L);
-        ykq.a(TAG, "setMoovAndTimeStamp end, take time:%d", Long.valueOf(System.currentTimeMillis() - l));
+        SLog.c(jdField_a_of_type_JavaLangString, "compressVideoWithBitrate!");
+        FFmpegUtils.compressVideoWithBitrate(paramString2, str, paramInt, new VideoCompositeHelper.FFMPEGResponseCallback(localObject1, localAtomicInteger, 1));
+      }
+      catch (IOException localIOException)
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "Wait encode video exception:" + localIOException);
+        paramInt = 943001;
+        continue;
+      }
+      catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "Wait encode video exception:" + localFFmpegCommandAlreadyRunningException);
+        paramInt = 943002;
+        continue;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "Wait encode video exception:" + localInterruptedException);
+        paramInt = 943003;
+        continue;
+        com.tencent.mobileqq.utils.FileUtils.e(str);
+        int i = 0;
+        continue;
+      }
+      try
+      {
+        localObject1.wait(180000L);
         paramInt = localAtomicInteger.get();
-        return paramInt;
+        SLog.c(jdField_a_of_type_JavaLangString, "compressVideoWithBitrate end!");
+        if (paramInt == 0)
+        {
+          com.tencent.mobileqq.utils.FileUtils.e(paramString2);
+          com.tencent.mobileqq.utils.FileUtils.c(str, paramString2);
+          l1 = com.tencent.biz.qqstory.utils.FileUtils.a(paramString2);
+          i = VideoUtils.c(paramString2);
+          SLog.d(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramString1 + " [improve_video_clear] ffmpeg compress encode video file size to:" + l1 + " video bitrate to:" + i);
+          l2 = System.currentTimeMillis() - l2;
+          SLog.d(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramString1 + " compressVideoByFFMPEG end errorCode:" + paramInt + " cost time=" + l2);
+          StoryReportor.b("video_improve", "compress_video_2", 0, paramInt, new String[] { String.valueOf(i), String.valueOf(l2), String.valueOf(l1) });
+          return paramInt;
+        }
       }
       finally {}
-      return 953004;
-    }
-    catch (IOException paramString1)
-    {
-      ykq.d(TAG, "Wait encode video exception:" + paramString1);
-      return 945002;
-    }
-    catch (FFmpegCommandAlreadyRunningException paramString1)
-    {
-      ykq.d(TAG, "Wait encode video exception:" + paramString1);
-      return 953003;
-    }
-    catch (InterruptedException paramString1)
-    {
-      ykq.d(TAG, "Wait encode video exception:" + paramString1);
     }
   }
   
-  public static boolean updatePublishVideoProcessState(String paramString, int paramInt)
+  private static void b(PublishVideoEntry paramPublishVideoEntry)
   {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    paramString = getPublishVideoEntry(paramString);
-    paramString.videoProcessState = paramInt;
-    return localEntityManager.update(paramString);
+    if (new File(paramPublishVideoEntry.mLocalRawVideoDir).isDirectory())
+    {
+      com.tencent.biz.qqstory.utils.FileUtils.d(paramPublishVideoEntry.mLocalRawVideoDir);
+      SLog.d(jdField_a_of_type_JavaLangString, "delete filePath: %s", new Object[] { paramPublishVideoEntry.mLocalRawVideoDir });
+      return;
+    }
+    int i = paramPublishVideoEntry.mLocalRawVideoDir.lastIndexOf("/");
+    paramPublishVideoEntry = paramPublishVideoEntry.mLocalRawVideoDir.substring(0, i);
+    com.tencent.biz.qqstory.utils.FileUtils.d(paramPublishVideoEntry);
+    SLog.d(jdField_a_of_type_JavaLangString, "delete filePath: %s", new Object[] { paramPublishVideoEntry });
   }
   
-  private int videoSynthesisForStory(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry, boolean paramBoolean)
-  {
-    ykq.d(TAG, "videoSynthesisForStory start");
-    long l = SystemClock.elapsedRealtime();
-    Object localObject = new bppp(paramPublishVideoEntry.videoMaxrate, paramPublishVideoEntry);
-    ((bppp)localObject).b(paramPublishVideoEntry.hwBitrateMode);
-    if (paramBoolean) {
-      ((bppp)localObject).a();
-    }
-    if (paramPublishVideoEntry.isNeedHighProfile)
-    {
-      ((bppp)localObject).c(8);
-      ykq.b(TAG, "codec high profile is enable when story video encode");
-    }
-    if (wjl.e())
-    {
-      ykq.d(TAG, "story debug mode is enable");
-      localObject = (wjl)wjs.a(10);
-      i = ((Integer)((wjl)localObject).b("int_story_debug_bitrate", Integer.valueOf(2000))).intValue();
-      int j = ((Integer)((wjl)localObject).b("int_story_debug_bitrate_mode", Integer.valueOf(-1))).intValue();
-      paramBoolean = ((Boolean)((wjl)localObject).b("boolean_story_debug_use_high_profile", Boolean.valueOf(false))).booleanValue();
-      bppp localbppp = new bppp(i * 1000, paramPublishVideoEntry);
-      localbppp.a();
-      localbppp.b(j);
-      localObject = localbppp;
-      if (paramBoolean)
-      {
-        localbppp.c(8);
-        localObject = localbppp;
-      }
-    }
-    int i = new bppn().a(paramString1, paramString2, (bppp)localObject, paramPublishVideoEntry);
-    l = SystemClock.elapsedRealtime() - l;
-    ykq.d(TAG, "[videoSynthesis]generate files|first step cost:" + l / 1000.0D);
-    if (bomw.c) {
-      bomw.g.a(0, l);
-    }
-    return i;
-  }
-  
-  private void waitThread(String paramString)
+  private void b(String paramString)
   {
     try
     {
-      ykq.c(TAG, "[vs_publish_flow]  | " + paramString + " wait() ");
+      SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow]  | " + paramString + " wait() ");
       wait(340000L);
       return;
     }
@@ -1336,39 +1145,244 @@ public class VideoCompositeHelper
     {
       for (;;)
       {
-        ykq.c(TAG, "[vs_publish_flow]  | " + paramString + " wait InterruptedException");
+        SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow]  | " + paramString + " wait InterruptedException");
         localInterruptedException.printStackTrace();
       }
     }
     finally {}
   }
   
-  public void composite(@NonNull PublishVideoEntry paramPublishVideoEntry, @NonNull String paramString, boolean paramBoolean1, boolean paramBoolean2, @NonNull VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
+  public static boolean b(String paramString, int paramInt)
   {
-    zdl.a(paramPublishVideoEntry);
-    zdl.a(paramString);
-    zdl.a(paramVideoCompositeCallBack);
-    ykq.d(TAG, "composite create thread");
+    paramString = a(QQStoryContext.a().a().createEntityManager(), PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getGroupIdNoArgs(), new String[] { paramString });
+    if (paramString == null) {
+      return false;
+    }
+    paramString = paramString.iterator();
+    while (paramString.hasNext()) {
+      if (((PublishVideoEntry)paramString.next()).videoProcessState < paramInt) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  private int c(String paramString1, String paramString2)
+  {
+    int i = 0;
+    SLog.d(jdField_a_of_type_JavaLangString, "encodePicToVideoWithFFmpeg");
+    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString1)) {
+      i = 940007;
+    }
+    Object localObject;
+    AtomicInteger localAtomicInteger;
+    String str;
+    for (;;)
+    {
+      return i;
+      localObject = new Object();
+      localAtomicInteger = new AtomicInteger(942010);
+      try
+      {
+        FFmpegUtils.convertPicToVideo(BaseApplicationImpl.getApplication(), paramString1, paramString2, new VideoCompositeHelper.FFMPEGResponseCallback(localObject, localAtomicInteger, 2));
+        try
+        {
+          localObject.wait(300000L);
+          int j = localAtomicInteger.get();
+          if (j == 0) {
+            continue;
+          }
+          SLog.d(jdField_a_of_type_JavaLangString, "Compress pic to video failed, trying to compress small pic. encodeRequest.get() = %d", new Object[] { Integer.valueOf(localAtomicInteger.get()) });
+          str = paramString1 + ".small.jpeg";
+          i = d(paramString1, str);
+          if (i != 0)
+          {
+            SLog.e(jdField_a_of_type_JavaLangString, "resizeToSmallBitmap failed. nRetCode = " + i);
+            return i;
+          }
+        }
+        finally {}
+        localAtomicInteger.set(942010);
+      }
+      catch (IOException paramString1)
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "Wait convert pic exception:" + paramString1);
+        return 942001;
+      }
+      catch (FFmpegCommandAlreadyRunningException paramString1)
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "Wait convert pic exception:" + paramString1);
+        return 942002;
+      }
+      catch (InterruptedException paramString1)
+      {
+        SLog.d(jdField_a_of_type_JavaLangString, "Wait convert pic exception:" + paramString1);
+        return 942003;
+      }
+    }
+    try
+    {
+      FFmpegUtils.convertPicToVideo(BaseApplicationImpl.getApplication(), str, paramString2, new VideoCompositeHelper.FFMPEGResponseCallback(localObject, localAtomicInteger, 2));
+      try
+      {
+        localObject.wait(300000L);
+        SLog.d(jdField_a_of_type_JavaLangString, "convertPicToVideo end");
+        i = localAtomicInteger.get();
+        return i;
+      }
+      finally {}
+      return 942003;
+    }
+    catch (IOException paramString1)
+    {
+      SLog.d(jdField_a_of_type_JavaLangString, "Wait convert pic exception:" + paramString1);
+      return 942001;
+    }
+    catch (FFmpegCommandAlreadyRunningException paramString1)
+    {
+      SLog.d(jdField_a_of_type_JavaLangString, "Wait convert pic exception:" + paramString1);
+      return 942002;
+    }
+    catch (InterruptedException paramString1)
+    {
+      SLog.d(jdField_a_of_type_JavaLangString, "Wait convert pic exception:" + paramString1);
+    }
+  }
+  
+  private int d(String paramString1, String paramString2)
+  {
+    int j = 0;
+    paramString1 = BitmapManager.a(paramString1);
+    int i;
+    if (paramString1 == null)
+    {
+      SLog.e(jdField_a_of_type_JavaLangString, "BitmapManager.decodeFile in resizeToSmallBitmap failed");
+      i = 942007;
+    }
+    do
+    {
+      do
+      {
+        return i;
+        i = paramString1.getHeight();
+        int m = paramString1.getWidth();
+        int k = i * 540 / m;
+        i = k;
+        if (k % 2 != 0) {
+          i = k + 1;
+        }
+        if (m <= 540)
+        {
+          SLog.e(jdField_a_of_type_JavaLangString, "No need resize. srcWidth < destWidth, srcWidth = " + m + " destWidth = " + 540);
+          return 942006;
+        }
+        Bitmap localBitmap = BitmapUtils.b(paramString1, 540, i, false, false);
+        if (localBitmap == null)
+        {
+          SLog.e(jdField_a_of_type_JavaLangString, "resizeAndFillBitmapEdge in resizeToSmallBitmap failed");
+          return 942005;
+        }
+        if (!BitmapUtils.a(localBitmap, paramString2))
+        {
+          SLog.e(jdField_a_of_type_JavaLangString, "compressToFile in resizeToSmallBitmap failed");
+          return 942008;
+        }
+        if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+          localBitmap.recycle();
+        }
+        i = j;
+      } while (paramString1 == null);
+      i = j;
+    } while (paramString1.isRecycled());
+    paramString1.recycle();
+    return 0;
+  }
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, boolean paramBoolean, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
+  {
+    boolean bool = false;
+    SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " start mergeMusic");
+    if ((TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath)) || (MergeEditVideo.a(paramPublishVideoEntry)) || ((paramPublishVideoEntry.useSrcFile) && (!paramPublishVideoEntry.isMuteRecordVoice) && (!paramPublishVideoEntry.isMixOriginal))) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      com.tencent.biz.qqstory.utils.FileUtils.b(paramString1, paramString2);
+      SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " noMerge end");
+      paramVideoCompositeCallBack.a(0, "", paramString2);
+      return;
+    }
+    VideoCompositeHelper.RetCode localRetCode = a(paramPublishVideoEntry);
+    if ((localRetCode.a() != 0) || (!com.tencent.biz.qqstory.utils.FileUtils.b(paramPublishVideoEntry.backgroundMusicPath)))
+    {
+      SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " needAndStartDownloadMusic failed code:" + localRetCode.a() + ",msg:" + localRetCode.a());
+      paramVideoCompositeCallBack.a(941000, localRetCode.a(), "");
+      return;
+    }
+    long l = a(paramString1);
+    if (l > 0L)
+    {
+      SLog.b(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " duration > 0 need to modify video duration from %d to %d", Integer.valueOf(paramPublishVideoEntry.backgroundMusicDuration), Long.valueOf(l));
+      paramPublishVideoEntry.backgroundMusicDuration = ((int)Math.min(paramPublishVideoEntry.backgroundMusicDuration, l));
+    }
+    if ((!paramPublishVideoEntry.isLocalPublish) || (a(paramString1))) {
+      bool = true;
+    }
+    SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " detect mp4 whether has original Audio:" + bool);
+    try
+    {
+      if ((paramPublishVideoEntry.isMixOriginal) && (bool))
+      {
+        SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " mixOriginalAndBackgroundMusic start");
+        FFmpegUtils.mixOriginalAndBackgroundMusic(BaseApplicationImpl.getApplication(), paramString1, paramString2, paramPublishVideoEntry, paramBoolean, new VideoCompositeHelper.MusicCallBack(paramString1, paramString2, paramVideoCompositeCallBack));
+        return;
+      }
+    }
+    catch (Exception paramString2)
+    {
+      SLog.b(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " combine audio throw exception:", paramString2);
+      com.tencent.biz.qqstory.utils.FileUtils.g(paramString1);
+      paramVideoCompositeCallBack.a(941000, "combine audio exception", "");
+      return;
+    }
+    if ((paramPublishVideoEntry.isLocalPublish) && (paramPublishVideoEntry.isPicture))
+    {
+      FFmpegUtils.combinBackgroundMusicWithVideCodecH264(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, new VideoCompositeHelper.MusicCallBack(paramString1, paramString2, paramVideoCompositeCallBack));
+      return;
+    }
+    SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + "  recordVideo combinBackgroundMusic start");
+    FFmpegUtils.combinBackgroundMusic(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, paramBoolean, new VideoCompositeHelper.MusicCallBack(paramString1, paramString2, paramVideoCompositeCallBack));
+  }
+  
+  public void a(@NonNull PublishVideoEntry paramPublishVideoEntry, @NonNull String paramString, boolean paramBoolean1, boolean paramBoolean2, @NonNull VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
+  {
+    AssertUtils.a(paramPublishVideoEntry);
+    AssertUtils.a(paramString);
+    AssertUtils.a(paramVideoCompositeCallBack);
+    SLog.d(jdField_a_of_type_JavaLangString, "composite create thread");
     ThreadManager.newFreeThread(new VideoCompositeHelper.1(this, paramPublishVideoEntry, paramString, paramBoolean1, paramBoolean2, paramVideoCompositeCallBack), "StoryVideoComposite", 5).start();
   }
   
-  public void doComposite(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
+  public void a(boolean paramBoolean)
   {
-    ykq.c(TAG, "[vs_publish_flow]  doComposite from:" + paramPublishVideoEntry.businessId + "| fakeid:" + paramPublishVideoEntry.fakeVid + " doComposite start");
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
+  {
+    SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow]  doComposite from:" + paramPublishVideoEntry.businessId + "| fakeid:" + paramPublishVideoEntry.fakeVid + " doComposite start");
     paramPublishVideoEntry.isMixOriginal = paramPublishVideoEntry.getBooleanExtra("isMixOriginal", false);
-    Object localObject = new File(vzh.g);
+    Object localObject = new File(QQStoryConstant.g);
     ((File)localObject).mkdirs();
-    String str = localObject + File.separator + zeb.a(paramPublishVideoEntry.mLocalRawVideoDir) + ".mp4";
+    String str = localObject + File.separator + com.tencent.biz.qqstory.utils.FileUtils.a(paramPublishVideoEntry.mLocalRawVideoDir) + ".mp4";
     int i;
     if ((paramPublishVideoEntry.isPicture) && (!paramPublishVideoEntry.hwEncodeRecordVideo))
     {
-      ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodePicToVideo start");
-      i = encodePicToVideo(paramPublishVideoEntry, str);
+      SLog.d(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodePicToVideo start");
+      i = b(paramPublishVideoEntry, str);
       if ((i != 942014) && (i != 942007)) {
-        break label1061;
+        break label1071;
       }
-      localObject = "outOfMemory file info:" + zdr.a(paramPublishVideoEntry.mLocalRawVideoDir);
-      ykq.d(TAG, "memory info:%s", new Object[] { MagnifierSDK.a().a().c() });
+      localObject = "outOfMemory file info:" + BitmapUtils.a(paramPublishVideoEntry.mLocalRawVideoDir);
+      SLog.d(jdField_a_of_type_JavaLangString, "memory info:%s", new Object[] { MagnifierSDK.a().a().c() });
     }
     for (;;)
     {
@@ -1376,26 +1390,26 @@ public class VideoCompositeHelper
       int j;
       if (i != 0)
       {
-        ykq.e(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + "[improve_video_clear] mediaCodec encode video failed:" + i);
-        paramVideoCompositeCallBack.onVideoCompositeFinish(i, (String)localObject, paramString);
+        SLog.e(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + "[improve_video_clear] mediaCodec encode video failed:" + i);
+        paramVideoCompositeCallBack.a(i, (String)localObject, paramString);
         return;
         if (QLog.isColorLevel()) {
-          ykq.a(TAG, "[improve_video_clear] record video (local file is %s)size=%s, bitrate=%s and need to encode to bitrate=%s", Boolean.valueOf(paramPublishVideoEntry.isLocalPublish), Long.valueOf(zeb.a(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(zfl.c(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(paramPublishVideoEntry.videoMaxrate));
+          SLog.a(jdField_a_of_type_JavaLangString, "[improve_video_clear] record video (local file is %s)size=%s, bitrate=%s and need to encode to bitrate=%s", Boolean.valueOf(paramPublishVideoEntry.isLocalPublish), Long.valueOf(com.tencent.biz.qqstory.utils.FileUtils.a(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(VideoUtils.c(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(paramPublishVideoEntry.videoMaxrate));
         }
         if ((paramPublishVideoEntry.isLocalPublish) && (!paramPublishVideoEntry.hwEncodeRecordVideo))
         {
-          ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodeLocalVideo start");
-          i = encodeLocalVideo(paramPublishVideoEntry, paramPublishVideoEntry.mLocalRawVideoDir, paramPublishVideoEntry.videoRangeStart, paramPublishVideoEntry.videoRangeEnd, paramPublishVideoEntry.videoMaxrate, paramPublishVideoEntry.videoUploadTempDir, str, paramPublishVideoEntry.isMuteRecordVoice, paramPublishVideoEntry.businessId);
-          l1 = zeb.a(str);
-          int k = zfl.c(str);
-          ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " encode video info file size:" + l1 + " bitrate=" + k + " and upload limit=" + wjl.c());
+          SLog.d(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodeLocalVideo start");
+          i = a(paramPublishVideoEntry, paramPublishVideoEntry.mLocalRawVideoDir, paramPublishVideoEntry.videoRangeStart, paramPublishVideoEntry.videoRangeEnd, paramPublishVideoEntry.videoMaxrate, paramPublishVideoEntry.videoUploadTempDir, str, paramPublishVideoEntry.isMuteRecordVoice, paramPublishVideoEntry.businessId);
+          l1 = com.tencent.biz.qqstory.utils.FileUtils.a(str);
+          int k = VideoUtils.c(str);
+          SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " encode video info file size:" + l1 + " bitrate=" + k + " and upload limit=" + StoryConfigManager.c());
           if (paramPublishVideoEntry.businessId == 1)
           {
-            if (wjl.c())
+            if (StoryConfigManager.c())
             {
               j = 1;
-              label529:
-              ykv.b("video_improve", "encode_video", j, i, new String[] { String.valueOf(k), String.valueOf(paramPublishVideoEntry.videoDuration), String.valueOf(l1) });
+              label533:
+              StoryReportor.b("video_improve", "encode_video", j, i, new String[] { String.valueOf(k), String.valueOf(paramPublishVideoEntry.videoDuration), String.valueOf(l1) });
             }
           }
           else
@@ -1408,20 +1422,20 @@ public class VideoCompositeHelper
               if (paramPublishVideoEntry.videoDuration > 0L)
               {
                 j = i;
-                if (l1 > wjl.c() / 10000 * paramPublishVideoEntry.videoDuration)
+                if (l1 > StoryConfigManager.c() / 10000 * paramPublishVideoEntry.videoDuration)
                 {
-                  i = wjl.d();
-                  j = compressVideoByFFMPEG(paramPublishVideoEntry.fakeVid, str, i);
+                  i = StoryConfigManager.d();
+                  j = b(paramPublishVideoEntry.fakeVid, str, i);
                   if (paramPublishVideoEntry.isCancel)
                   {
-                    zeb.g(str);
+                    com.tencent.biz.qqstory.utils.FileUtils.g(str);
                     j = -20;
                   }
                 }
               }
             }
-            if (bomw.c) {
-              bomw.g.a(4, System.currentTimeMillis() - l2);
+            if (CaptureFreqMonitor.c) {
+              CaptureFreqMonitor.g.a(4, System.currentTimeMillis() - l2);
             }
             i = j;
             localObject = "";
@@ -1429,13 +1443,13 @@ public class VideoCompositeHelper
         }
         else if (paramPublishVideoEntry.hwEncodeRecordVideo)
         {
-          if ((!paramPublishVideoEntry.isLocalPublish) || (!paramPublishVideoEntry.getBooleanExtra("KEY_FROM_PIC_TO_VIDEO", false)) || (StringUtil.isEmpty(paramPublishVideoEntry.backgroundMusicPath))) {
-            break label1055;
+          if ((!paramPublishVideoEntry.isLocalPublish) || (!paramPublishVideoEntry.getBooleanExtra("KEY_FROM_PIC_TO_VIDEO", false)) || (StringUtil.a(paramPublishVideoEntry.backgroundMusicPath))) {
+            break label1065;
           }
           l1 = System.currentTimeMillis();
-          ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " convertImageToVideo start");
-          j = convertImageToVideo(paramPublishVideoEntry);
-          ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " convertImageToVideo end errorCode:" + j + " cost:" + (System.currentTimeMillis() - l1) + "ms");
+          SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " convertImageToVideo start");
+          j = a(paramPublishVideoEntry);
+          SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " convertImageToVideo end errorCode:" + j + " cost:" + (System.currentTimeMillis() - l1) + "ms");
         }
       }
       for (;;)
@@ -1444,21 +1458,21 @@ public class VideoCompositeHelper
         if (j != 0) {
           break;
         }
-        ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " hwEncodeRecordVideo start");
+        SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " hwEncodeRecordVideo start");
         l1 = System.currentTimeMillis();
         if (!paramPublishVideoEntry.isCancel) {
-          j = hwEncodeRecordVideo(paramPublishVideoEntry, str, paramBoolean1);
+          j = a(paramPublishVideoEntry, str, paramBoolean1);
         }
         i = j;
         if (paramPublishVideoEntry.isCancel)
         {
-          zeb.g(str);
+          com.tencent.biz.qqstory.utils.FileUtils.g(str);
           i = -14;
         }
-        ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " hwEncodeRecordVideo end errorCode:" + i + " cost:" + (System.currentTimeMillis() - l1) + "ms");
+        SLog.c(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " hwEncodeRecordVideo end errorCode:" + i + " cost:" + (System.currentTimeMillis() - l1) + "ms");
         break;
-        ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodeRecordVideoForAFVF start");
-        j = encodeRecordVideoForAFVF(paramPublishVideoEntry, str);
+        SLog.d(jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodeRecordVideoForAFVF start");
+        j = a(paramPublishVideoEntry, str);
         i = j;
         if (j == 0) {
           break;
@@ -1466,79 +1480,20 @@ public class VideoCompositeHelper
         i = -13;
         break;
         j = 0;
-        break label529;
-        mergeMusic(paramPublishVideoEntry, str, paramString, paramBoolean2, paramVideoCompositeCallBack);
+        break label533;
+        a(paramPublishVideoEntry, str, paramString, paramBoolean2, paramVideoCompositeCallBack);
         return;
-        label1055:
+        label1065:
         j = 0;
       }
-      label1061:
+      label1071:
       localObject = "";
     }
-  }
-  
-  public void mergeMusic(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, boolean paramBoolean, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
-  {
-    boolean bool = false;
-    ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " start mergeMusic");
-    if ((TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath)) || (bppn.a(paramPublishVideoEntry)) || ((paramPublishVideoEntry.useSrcFile) && (!paramPublishVideoEntry.isMuteRecordVoice) && (!paramPublishVideoEntry.isMixOriginal))) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      zeb.b(paramString1, paramString2);
-      ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " noMerge end");
-      paramVideoCompositeCallBack.onVideoCompositeFinish(0, "", paramString2);
-      return;
-    }
-    VideoCompositeHelper.RetCode localRetCode = needAndStartDownloadMusic(paramPublishVideoEntry);
-    if ((localRetCode.getCode() != 0) || (!zeb.b(paramPublishVideoEntry.backgroundMusicPath)))
-    {
-      ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " needAndStartDownloadMusic failed code:" + localRetCode.getCode() + ",msg:" + localRetCode.getMessage());
-      paramVideoCompositeCallBack.onVideoCompositeFinish(941000, localRetCode.getMessage(), "");
-      return;
-    }
-    long l = getDurationOfVideo(paramString1);
-    if (l > 0L)
-    {
-      ykq.b(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " duration > 0 need to modify video duration from %d to %d", Integer.valueOf(paramPublishVideoEntry.backgroundMusicDuration), Long.valueOf(l));
-      paramPublishVideoEntry.backgroundMusicDuration = ((int)Math.min(paramPublishVideoEntry.backgroundMusicDuration, l));
-    }
-    if ((!paramPublishVideoEntry.isLocalPublish) || (detectHasAudioStream(paramString1))) {
-      bool = true;
-    }
-    ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " detect mp4 whether has original Audio:" + bool);
-    try
-    {
-      if ((paramPublishVideoEntry.isMixOriginal) && (bool))
-      {
-        ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " mixOriginalAndBackgroundMusic start");
-        FFmpegUtils.mixOriginalAndBackgroundMusic(BaseApplicationImpl.getApplication(), paramString1, paramString2, paramPublishVideoEntry, paramBoolean, new VideoCompositeHelper.MusicCallBack(paramString1, paramString2, paramVideoCompositeCallBack));
-        return;
-      }
-    }
-    catch (Exception paramString2)
-    {
-      ykq.b(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " combine audio throw exception:", paramString2);
-      zeb.g(paramString1);
-      paramVideoCompositeCallBack.onVideoCompositeFinish(941000, "combine audio exception", "");
-      return;
-    }
-    if ((paramPublishVideoEntry.isLocalPublish) && (paramPublishVideoEntry.isPicture))
-    {
-      FFmpegUtils.combinBackgroundMusicWithVideCodecH264(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, new VideoCompositeHelper.MusicCallBack(paramString1, paramString2, paramVideoCompositeCallBack));
-      return;
-    }
-    ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + "  recordVideo combinBackgroundMusic start");
-    FFmpegUtils.combinBackgroundMusic(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, paramBoolean, new VideoCompositeHelper.MusicCallBack(paramString1, paramString2, paramVideoCompositeCallBack));
-  }
-  
-  public void setAdjustBitrate(boolean paramBoolean)
-  {
-    this.isAdjustBitrate = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper
  * JD-Core Version:    0.7.0.1
  */

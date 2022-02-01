@@ -7,17 +7,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import vix;
 
 public class WSPushOpDialogModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushOpDialogModel> CREATOR = new vix();
+  public static final Parcelable.Creator<WSPushOpDialogModel> CREATOR = new WSPushOpDialogModel.1();
   public stPopWindowsConfig mStPopWindowsConfig;
   
   public WSPushOpDialogModel() {}
   
-  public WSPushOpDialogModel(Parcel paramParcel)
+  protected WSPushOpDialogModel(Parcel paramParcel)
   {
     this.mStPopWindowsConfig = ((stPopWindowsConfig)paramParcel.readSerializable());
   }
@@ -69,7 +68,7 @@ public class WSPushOpDialogModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushOpDialogModel
  * JD-Core Version:    0.7.0.1
  */

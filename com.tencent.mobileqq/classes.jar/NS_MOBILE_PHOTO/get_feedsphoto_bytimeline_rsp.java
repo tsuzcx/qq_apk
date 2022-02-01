@@ -9,9 +9,9 @@ public final class get_feedsphoto_bytimeline_rsp
   extends JceStruct
 {
   static ArrayList<PhotoFeedsData> cache_all_applist_data = new ArrayList();
-  public ArrayList<PhotoFeedsData> all_applist_data;
+  public ArrayList<PhotoFeedsData> all_applist_data = null;
   public String attach_info = "";
-  public int hasmore;
+  public int hasmore = 0;
   
   static
   {

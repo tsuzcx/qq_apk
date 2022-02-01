@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import pvm;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public final class FastWebRequestUtil$5
+final class FastWebRequestUtil$5
   implements Runnable
 {
   public void run()
   {
-    pvm.a().c();
+    ReadInJoyLogicEngineEventDispatcher.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.5
  * JD-Core Version:    0.7.0.1
  */

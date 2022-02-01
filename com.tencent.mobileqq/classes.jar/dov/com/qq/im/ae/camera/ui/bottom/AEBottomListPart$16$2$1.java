@@ -1,24 +1,22 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bnbg;
-import bnda;
-import bndg;
-import bnkb;
+import dov.com.qq.im.ae.camera.ui.AECaptureController;
+import dov.com.qq.im.ae.data.AEMaterialManager;
 
-public class AEBottomListPart$16$2$1
+class AEBottomListPart$16$2$1
   implements Runnable
 {
-  public AEBottomListPart$16$2$1(bndg parambndg) {}
+  AEBottomListPart$16$2$1(AEBottomListPart.16.2 param2) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListPart$16.this$0.jdField_a_of_type_Bnbg.a(this.a.jdField_a_of_type_Bnke);
-    this.a.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListPart$16.this$0.jdField_a_of_type_Bnkb.b(this.a.jdField_a_of_type_Bnke, false);
+    this.a.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListPart$16.this$0.jdField_a_of_type_DovComQqImAeCameraUiAECaptureController.a(this.a.jdField_a_of_type_DovComQqImAeDataAEMaterialMetaData);
+    this.a.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListPart$16.this$0.jdField_a_of_type_DovComQqImAeDataAEMaterialManager.b(this.a.jdField_a_of_type_DovComQqImAeDataAEMaterialMetaData, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.16.2.1
  * JD-Core Version:    0.7.0.1
  */

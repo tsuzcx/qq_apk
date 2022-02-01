@@ -3,28 +3,33 @@ package com.tencent.tbs.one;
 public class TBSOneException
   extends Exception
 {
-  private int mErrorCode = -1;
+  private int a = -1;
   
   public TBSOneException(int paramInt, String paramString)
   {
     super(paramString);
-    this.mErrorCode = paramInt;
+    this.a = paramInt;
   }
   
   public TBSOneException(int paramInt, String paramString, Throwable paramThrowable)
   {
     super(paramString, paramThrowable);
-    this.mErrorCode = paramInt;
+    this.a = paramInt;
   }
   
   public int getErrorCode()
   {
-    return this.mErrorCode;
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return "[" + this.a + "] " + getLocalizedMessage();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tbs.one.TBSOneException
  * JD-Core Version:    0.7.0.1
  */

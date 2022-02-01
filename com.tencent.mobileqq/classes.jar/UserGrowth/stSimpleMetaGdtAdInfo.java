@@ -20,33 +20,34 @@ public class stSimpleMetaGdtAdInfo
   public int advPos;
   public String appid;
   public s_button bottomButton;
-  public Map<Integer, String> busiParam;
+  public Map<Integer, String> busiParam = null;
   public String canvasData;
   public String cellId = "";
   public Map<Integer, String> cookie;
   public ArrayList<s_droplist_option> customDroplist;
   public int dest_type;
   public String dest_url;
-  public stFloatingLayerCardStyle floatingLayerCardStyle;
+  public stFloatingLayerCardStyle floatingLayerCardStyle = null;
   public String gdtTangramAdJson = "";
   public int hasReportExposure;
   public String impressionUrl;
-  public boolean isGdtAdImpressionReport;
-  public boolean isGdtAdVidoReport;
-  public boolean isGdtAdclicked;
+  public boolean isGdtAdImpressionReport = false;
+  public boolean isGdtAdOriginalImpressionReport = false;
+  public boolean isGdtAdVidoReport = false;
+  public boolean isGdtAdclicked = false;
   public boolean isWeishiGdtTangramAdv;
   public stNewIconStyle left_top_button;
-  public Map<Integer, byte[]> mapPassBack;
-  public int numbersOfGdtAdPlayed;
-  public stImgReplacement pictureUrl;
+  public Map<Integer, byte[]> mapPassBack = null;
+  public int numbersOfGdtAdPlayed = 0;
+  public stImgReplacement pictureUrl = null;
   public byte playType;
   public int rankCurrentWithHalfStar;
   public String reportUrl;
   public String schemaPageUrl;
-  public Map<Integer, Integer> stMapABTest;
+  public Map<Integer, Integer> stMapABTest = null;
   public String summary;
   public stSimpleMetaPerson user;
-  public int videoClickType;
+  public int videoClickType = 0;
   public String videoId;
   public long videoTime;
   public int videoType;
@@ -60,7 +61,7 @@ public class stSimpleMetaGdtAdInfo
   
   public stSimpleMetaGdtAdInfo() {}
   
-  public stSimpleMetaGdtAdInfo(boolean paramBoolean1, String paramString1, String paramString2, stFloatingLayerCardStyle paramstFloatingLayerCardStyle, Map<Integer, String> paramMap1, String paramString3, s_button params_button, byte paramByte, int paramInt1, long paramLong, stSimpleMetaPerson paramstSimpleMetaPerson, String paramString4, String paramString5, int paramInt2, String paramString6, stImgReplacement paramstImgReplacement, ArrayList<s_droplist_option> paramArrayList, String paramString7, String paramString8, int paramInt3, String paramString9, String paramString10, int paramInt4, String paramString11, stNewIconStyle paramstNewIconStyle, Map<Integer, byte[]> paramMap, Map<Integer, Integer> paramMap2, int paramInt5, Map<Integer, String> paramMap3, int paramInt6, String paramString12, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt7)
+  public stSimpleMetaGdtAdInfo(boolean paramBoolean1, String paramString1, String paramString2, stFloatingLayerCardStyle paramstFloatingLayerCardStyle, Map<Integer, String> paramMap1, String paramString3, s_button params_button, byte paramByte, int paramInt1, long paramLong, stSimpleMetaPerson paramstSimpleMetaPerson, String paramString4, String paramString5, int paramInt2, String paramString6, stImgReplacement paramstImgReplacement, ArrayList<s_droplist_option> paramArrayList, String paramString7, String paramString8, int paramInt3, String paramString9, String paramString10, int paramInt4, String paramString11, stNewIconStyle paramstNewIconStyle, Map<Integer, byte[]> paramMap, Map<Integer, Integer> paramMap2, int paramInt5, Map<Integer, String> paramMap3, int paramInt6, String paramString12, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt7, boolean paramBoolean5)
   {
     this.isWeishiGdtTangramAdv = paramBoolean1;
     this.gdtTangramAdJson = paramString1;
@@ -97,6 +98,7 @@ public class stSimpleMetaGdtAdInfo
     this.isGdtAdVidoReport = paramBoolean3;
     this.isGdtAdclicked = paramBoolean4;
     this.numbersOfGdtAdPlayed = paramInt7;
+    this.isGdtAdOriginalImpressionReport = paramBoolean5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -136,6 +138,7 @@ public class stSimpleMetaGdtAdInfo
     this.isGdtAdVidoReport = paramJceInputStream.read(this.isGdtAdVidoReport, 32, false);
     this.isGdtAdclicked = paramJceInputStream.read(this.isGdtAdclicked, 33, false);
     this.numbersOfGdtAdPlayed = paramJceInputStream.read(this.numbersOfGdtAdPlayed, 34, false);
+    this.isGdtAdOriginalImpressionReport = paramJceInputStream.read(this.isGdtAdOriginalImpressionReport, 35, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -219,6 +222,7 @@ public class stSimpleMetaGdtAdInfo
     paramJceOutputStream.write(this.isGdtAdVidoReport, 32);
     paramJceOutputStream.write(this.isGdtAdclicked, 33);
     paramJceOutputStream.write(this.numbersOfGdtAdPlayed, 34);
+    paramJceOutputStream.write(this.isGdtAdOriginalImpressionReport, 35);
   }
 }
 

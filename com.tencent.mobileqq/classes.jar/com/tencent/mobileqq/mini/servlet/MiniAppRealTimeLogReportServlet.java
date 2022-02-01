@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_REALTIMELOG.REALTIMELOG.StReportLogRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhjl;
+import com.tencent.mobileqq.utils.WupUtil;
 import java.util.ArrayList;
 import mqq.app.Packet;
 
@@ -41,7 +41,7 @@ public class MiniAppRealTimeLogReportServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_log_report.ReportLog");
-    paramPacket.putSendData(bhjl.a((byte[])localObject1));
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
     super.onSend(paramIntent, paramPacket);
   }
 }

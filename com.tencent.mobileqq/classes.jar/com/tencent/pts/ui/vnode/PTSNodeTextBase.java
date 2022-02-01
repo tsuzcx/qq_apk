@@ -84,7 +84,8 @@ public abstract class PTSNodeTextBase<T extends TextView>
     }
     int i = ((Integer)localObject).intValue();
     int j = this.textColor;
-    localObject = new ColorStateList(new int[][] { { 16842919 }, new int[0] }, new int[] { i, j });
+    localObject = new int[0];
+    localObject = new ColorStateList(new int[][] { { 16842919 }, localObject }, new int[] { i, j });
     ((TextView)getView()).setTextColor((ColorStateList)localObject);
   }
   
@@ -223,7 +224,7 @@ public abstract class PTSNodeTextBase<T extends TextView>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeTextBase
  * JD-Core Version:    0.7.0.1
  */

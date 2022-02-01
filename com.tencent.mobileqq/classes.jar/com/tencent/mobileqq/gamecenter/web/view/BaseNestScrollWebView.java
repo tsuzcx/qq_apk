@@ -4,16 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
-import avha;
-import avhb;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.biz.ui.TouchWebView;
 
 public abstract class BaseNestScrollWebView
   extends TouchWebView
 {
-  public avha mIHeaderView;
-  private avhb mILoadingView;
+  public IHeaderView mIHeaderView;
+  private ILoadingView mILoadingView;
   public int scrollY;
   public boolean useDefaultLoadingLayout = true;
   
@@ -27,9 +25,9 @@ public abstract class BaseNestScrollWebView
     super(paramContext, paramAttributeSet);
   }
   
-  public void attachHeaderView(avha paramavha)
+  public void attachHeaderView(IHeaderView paramIHeaderView)
   {
-    this.mIHeaderView = paramavha;
+    this.mIHeaderView = paramIHeaderView;
   }
   
   public boolean handleBack()
@@ -99,13 +97,13 @@ public abstract class BaseNestScrollWebView
     this.scrollY = paramInt2;
   }
   
-  public void setLoadingView(avhb paramavhb)
+  public void setLoadingView(ILoadingView paramILoadingView)
   {
-    if (((paramavhb == null) || (!this.useDefaultLoadingLayout)) && (this.mILoadingView != null)) {
+    if (((paramILoadingView == null) || (!this.useDefaultLoadingLayout)) && (this.mILoadingView != null)) {
       this.mILoadingView.b(this);
     }
     if (this.mILoadingView == null) {
-      this.mILoadingView = paramavhb;
+      this.mILoadingView = paramILoadingView;
     }
     if (this.mILoadingView != null) {
       this.mILoadingView.a(this);
@@ -115,13 +113,13 @@ public abstract class BaseNestScrollWebView
   
   public void setPaddingTop(int paramInt)
   {
-    String str = "if (document.body && document.body.style) {document.body.style.paddingTop='" + UIUtils.px2dip(getContext(), paramInt) + "px';} void 0";
+    String str = "if (document.body && document.body.style) {document.body.style.paddingTop='" + UIUtils.a(getContext(), paramInt) + "px';} void 0";
     loadUrl("javascript:" + str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.view.BaseNestScrollWebView
  * JD-Core Version:    0.7.0.1
  */

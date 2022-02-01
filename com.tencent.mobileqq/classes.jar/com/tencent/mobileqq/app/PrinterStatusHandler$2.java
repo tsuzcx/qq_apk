@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import aoab;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class PrinterStatusHandler$2
+class PrinterStatusHandler$2
   implements Runnable
 {
-  public PrinterStatusHandler$2(aoab paramaoab, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  PrinterStatusHandler$2(PrinterStatusHandler paramPrinterStatusHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class PrinterStatusHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PrinterStatusHandler.2
  * JD-Core Version:    0.7.0.1
  */

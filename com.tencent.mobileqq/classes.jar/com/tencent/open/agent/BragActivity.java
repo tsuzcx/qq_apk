@@ -1,6 +1,5 @@
 package com.tencent.open.agent;
 
-import Override;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -11,36 +10,35 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import bjca;
-import bjgt;
-import bjkn;
-import bjko;
-import bjlu;
-import bjre;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.open.agent.datamodel.ImageLoader;
+import com.tencent.open.base.LengthInputFilter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.widget.IKeyboardChanged;
 import com.tencent.open.widget.KeyboardDetectorRelativeLayout;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class BragActivity
   extends ChallengeBragBase
-  implements bjre
+  implements IKeyboardChanged
 {
-  public ImageView a;
+  protected ImageView a;
   protected ScrollView a;
   protected KeyboardDetectorRelativeLayout a;
   protected InputFilter[] a;
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131363767));
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131376794));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131363866));
+    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131377198));
     this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363766));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131366263));
-    this.b = ((TextView)super.findViewById(2131365639));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365633));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379807));
-    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new bjkn(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363865));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131366435));
+    this.b = ((TextView)super.findViewById(2131365802));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365796));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380236));
+    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new LengthInputFilter(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
     this.jdField_a_of_type_AndroidWidgetEditText.setText(this.i);
     this.b.setOnClickListener(this);
@@ -48,7 +46,7 @@ public class BragActivity
     try
     {
       a(this.h);
-      Bitmap localBitmap = bjgt.a().a(this.j);
+      Bitmap localBitmap = ImageLoader.a().a(this.j);
       if (localBitmap != null)
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
@@ -57,17 +55,17 @@ public class BragActivity
     }
     catch (Exception localException)
     {
-      bjko.c("BragActivity", "getNickName error. " + localException.getMessage(), localException);
+      LogUtility.c("BragActivity", "getNickName error. " + localException.getMessage(), localException);
       c();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840348);
-    bjgt.a().a(this.j, new bjca(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840452);
+    ImageLoader.a().a(this.j, new BragActivity.1(this));
   }
   
   public void a(int paramInt)
   {
-    paramInt = DisplayUtil.px2dip(this, paramInt) - 10 - 10;
+    paramInt = DisplayUtil.b(this, paramInt) - 10 - 10;
     if ((this.jdField_a_of_type_AndroidWidgetScrollView != null) && (paramInt < 255))
     {
       paramInt = paramInt - 20 - 145;
@@ -75,7 +73,7 @@ public class BragActivity
         break label79;
       }
       this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.dip2px(this, paramInt);
+      this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.a(this, paramInt);
       this.jdField_a_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(true);
     }
     label79:
@@ -90,7 +88,7 @@ public class BragActivity
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = DisplayUtil.dip2px(this, 90.0F);
+      this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = DisplayUtil.a(this, 90.0F);
       this.jdField_a_of_type_AndroidWidgetImageView.setVerticalFadingEdgeEnabled(false);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
@@ -116,15 +114,15 @@ public class BragActivity
   {
     super.getWindow().requestFeature(1);
     super.onCreate(paramBundle);
-    super.setContentView(2131559715);
+    super.setContentView(2131559791);
     super.a();
     a();
-    bjlu.a("100", "ANDROIDQQ.BRAG.FS", this.jdField_c_of_type_JavaLangString, true);
+    StaticAnalyz.a("100", "ANDROIDQQ.BRAG.FS", this.jdField_c_of_type_JavaLangString, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.BragActivity
  * JD-Core Version:    0.7.0.1
  */

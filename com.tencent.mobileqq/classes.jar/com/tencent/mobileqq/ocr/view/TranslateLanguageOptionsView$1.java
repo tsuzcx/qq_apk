@@ -4,10 +4,10 @@ import android.widget.RadioButton;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.qphone.base.util.QLog;
 
-public final class TranslateLanguageOptionsView$1
+final class TranslateLanguageOptionsView$1
   implements Runnable
 {
-  public TranslateLanguageOptionsView$1(RadioButton paramRadioButton, BounceScrollView paramBounceScrollView) {}
+  TranslateLanguageOptionsView$1(RadioButton paramRadioButton, BounceScrollView paramBounceScrollView) {}
   
   public void run()
   {

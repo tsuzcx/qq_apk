@@ -29,21 +29,21 @@ public class e
       String str = (String)this.d.get(Integer.valueOf(paramInt));
       this.d.remove(Integer.valueOf(paramInt));
       parama.a(str);
-      TbsLog.e(a, "Executed command: " + paramInt + ", extra: " + str + ", emergency configuration has requested");
+      TbsLog.i(a, "Executed command: " + paramInt + ", extra: " + str + ", emergency configuration has requested");
       return;
     }
     if (this.e == -1)
     {
       this.c.put(Integer.valueOf(paramInt), parama);
-      TbsLog.e(a, "Emergency configuration has not yet dispatched. Command query: " + paramInt + " has been suspended");
+      TbsLog.i(a, "Emergency configuration has not yet dispatched. Command query: " + paramInt + " has been suspended");
       return;
     }
-    TbsLog.e(a, "Emergency configuration has been dispatched, status: " + this.e + ". Command query: " + paramInt + " ignored");
+    TbsLog.i(a, "Emergency configuration has been dispatched, status: " + this.e + ". Command query: " + paramInt + " ignored");
   }
   
   public void a(int paramInt, Map<Integer, String> paramMap)
   {
-    TbsLog.e(a, "Handle emergency commands in sdk, status: " + paramInt);
+    TbsLog.i(a, "Handle emergency commands in sdk, status: " + paramInt);
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     if (paramInt == 0)
     {
@@ -73,7 +73,7 @@ public class e
       }
     }
     this.c.clear();
-    TbsLog.e(a, "Handle emergency commands failed, ignore all unhandled emergencies, status: " + paramInt);
+    TbsLog.i(a, "Handle emergency commands failed, ignore all unhandled emergencies, status: " + paramInt);
     label196:
     this.d = localLinkedHashMap;
     this.e = paramInt;
@@ -81,7 +81,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.e
  * JD-Core Version:    0.7.0.1
  */

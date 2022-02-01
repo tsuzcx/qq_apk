@@ -8,9 +8,9 @@ public final class ReqPicSafetyCheck
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public int iScene;
-  public long lToUIN;
-  public ReqHead stHeader;
+  public int iScene = 0;
+  public long lToUIN = 0L;
+  public ReqHead stHeader = null;
   
   public ReqPicSafetyCheck() {}
   

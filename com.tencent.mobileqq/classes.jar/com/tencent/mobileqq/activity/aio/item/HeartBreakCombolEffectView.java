@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agvb;
-import agvc;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -13,8 +11,8 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bheg;
 import com.tencent.mobileqq.app.utils.PokeBigResHandler;
+import com.tencent.mobileqq.utils.ImageUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
@@ -23,13 +21,13 @@ public class HeartBreakCombolEffectView
   extends View
   implements Runnable
 {
-  static boolean jdField_a_of_type_Boolean;
+  static boolean jdField_a_of_type_Boolean = false;
   int jdField_a_of_type_Int = 0;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
   Handler jdField_a_of_type_AndroidOsHandler;
   HeartBreakCombolEffectView.DecodeRunnable jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable;
-  ArrayList<agvc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<HeartBreakCombolEffectView.OneFrame> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Vector<Bitmap> jdField_a_of_type_JavaUtilVector = new Vector();
   int jdField_b_of_type_Int = 0;
   Handler jdField_b_of_type_AndroidOsHandler;
@@ -54,7 +52,7 @@ public class HeartBreakCombolEffectView
   
   private void d()
   {
-    setOnTouchListener(new agvb(this));
+    setOnTouchListener(new HeartBreakCombolEffectView.1(this));
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     e();
     HandlerThread localHandlerThread = new HandlerThread("decode");
@@ -102,16 +100,16 @@ public class HeartBreakCombolEffectView
     setVisibility(0);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
     this.jdField_a_of_type_AndroidOsHandler.post(this);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bheg.a(((agvc)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(((HeartBreakCombolEffectView.OneFrame)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).jdField_a_of_type_JavaLangString, null);
     jdField_a_of_type_Boolean = true;
   }
   
   public void a(String paramString, int paramInt)
   {
-    agvc localagvc = new agvc(this);
-    localagvc.jdField_a_of_type_JavaLangString = paramString;
-    localagvc.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList.add(localagvc);
+    HeartBreakCombolEffectView.OneFrame localOneFrame = new HeartBreakCombolEffectView.OneFrame(this);
+    localOneFrame.jdField_a_of_type_JavaLangString = paramString;
+    localOneFrame.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList.add(localOneFrame);
   }
   
   public void b()
@@ -176,7 +174,7 @@ public class HeartBreakCombolEffectView
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable = new HeartBreakCombolEffectView.DecodeRunnable(this, this.jdField_b_of_type_JavaUtilArrayList);
       }
-      agvc localagvc = (agvc)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      HeartBreakCombolEffectView.OneFrame localOneFrame = (HeartBreakCombolEffectView.OneFrame)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       this.jdField_b_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable);
       this.jdField_b_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable);
       this.jdField_a_of_type_Int += 1;
@@ -193,7 +191,7 @@ public class HeartBreakCombolEffectView
       {
         this.jdField_a_of_type_AndroidGraphicsBitmap = a();
         invalidate();
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, localagvc.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, localOneFrame.jdField_a_of_type_Int);
         return;
         label150:
         localBitmap.recycle();
@@ -204,7 +202,7 @@ public class HeartBreakCombolEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView
  * JD-Core Version:    0.7.0.1
  */

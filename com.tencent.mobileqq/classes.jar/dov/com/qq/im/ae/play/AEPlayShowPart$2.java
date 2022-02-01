@@ -1,10 +1,10 @@
 package dov.com.qq.im.ae.play;
 
 import android.support.v4.view.ViewPager;
-import boph;
+import dov.com.qq.im.capture.view.QIMSlidingTabView.IOnTabCheckListener;
 
 class AEPlayShowPart$2
-  implements boph
+  implements QIMSlidingTabView.IOnTabCheckListener
 {
   AEPlayShowPart$2(AEPlayShowPart paramAEPlayShowPart) {}
   
@@ -15,7 +15,7 @@ class AEPlayShowPart$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEPlayShowPart.2
  * JD-Core Version:    0.7.0.1
  */

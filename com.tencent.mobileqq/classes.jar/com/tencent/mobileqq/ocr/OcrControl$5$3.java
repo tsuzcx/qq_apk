@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.ocr;
 
-import ayte;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public class OcrControl$5$3
+class OcrControl$5$3
   implements Runnable
 {
-  public OcrControl$5$3(ayte paramayte, int paramInt1, int paramInt2, int paramInt3) {}
+  OcrControl$5$3(OcrControl.5 param5, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {

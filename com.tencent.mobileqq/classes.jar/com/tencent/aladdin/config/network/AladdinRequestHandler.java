@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.aladdin.config.utils.DeviceInfoUtils;
 import com.tencent.aladdin.config.utils.SpUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -105,29 +105,25 @@ public abstract class AladdinRequestHandler
   {
     com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", "[handleSingleConfigRsp] id = " + paramInt1 + ", version = " + paramInt2 + ", content = " + paramString + ", wipeFlag = " + paramInt3);
     AladdinConfigVersionManager localAladdinConfigVersionManager = Aladdin.getVersionManager();
-    int i = localAladdinConfigVersionManager.getConfigVersionById(paramInt1);
-    boolean bool = true;
-    if (paramInt2 > i) {
-      try
+    localAladdinConfigVersionManager.getConfigVersionById(paramInt1);
+    try
+    {
+      SimpleConfigHandler localSimpleConfigHandler = Aladdin.getConfigHandlerById(paramInt1);
+      if (paramInt3 != 0)
       {
-        AladdinConfigHandler localAladdinConfigHandler = Aladdin.getConfigHandlerById(paramInt1);
-        if (paramInt3 != 0)
-        {
-          localAladdinConfigHandler.onWipeConfig(paramInt3);
-          localAladdinConfigVersionManager.setConfigVersionById(paramInt1, 0);
-          return true;
-        }
-        bool = localAladdinConfigHandler.onReceiveConfig(paramInt1, paramInt2, paramString);
-        localAladdinConfigVersionManager.setConfigVersionById(paramInt1, paramInt2);
-        return bool;
+        localSimpleConfigHandler.onWipeConfig(paramInt3);
+        localAladdinConfigVersionManager.setConfigVersionById(paramInt1, 0);
+        return true;
       }
-      catch (Exception paramString)
-      {
-        com.tencent.aladdin.config.utils.Log.e("AladdinRequestHandler", "handleSingleConfigRsp: ", paramString);
-        bool = false;
-      }
+      boolean bool = localSimpleConfigHandler.onReceiveConfig(paramInt1, paramInt2, paramString);
+      localAladdinConfigVersionManager.setConfigVersionById(paramInt1, paramInt2);
+      return bool;
     }
-    return bool;
+    catch (Exception paramString)
+    {
+      com.tencent.aladdin.config.utils.Log.e("AladdinRequestHandler", "handleSingleConfigRsp: ", paramString);
+    }
+    return false;
   }
   
   private static oidb_cmd0xbf8.ReqBody makeAckBody(String paramString, List<AladdinRequestHandler.ConfigResult> paramList)
@@ -230,7 +226,7 @@ public abstract class AladdinRequestHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aladdin.config.network.AladdinRequestHandler
  * JD-Core Version:    0.7.0.1
  */

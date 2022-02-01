@@ -1,17 +1,16 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.app.Activity;
-import bifw;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import java.util.HashMap;
 import org.json.JSONObject;
-import uvh;
 
-public class ReadInjoyWebShareHelper$3
+class ReadInjoyWebShareHelper$3
   implements Runnable
 {
-  public ReadInjoyWebShareHelper$3(uvh paramuvh, HashMap paramHashMap, String paramString1, String paramString2, JSONObject paramJSONObject, String paramString3, String paramString4, String paramString5) {}
+  ReadInjoyWebShareHelper$3(ReadInjoyWebShareHelper paramReadInjoyWebShareHelper, HashMap paramHashMap, String paramString1, String paramString2, JSONObject paramJSONObject, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
@@ -28,19 +27,19 @@ public class ReadInjoyWebShareHelper$3
         localObject2 = this.b;
       }
       localObject1 = new ReadInjoyWebShareHelper.3.1(this, (String)localObject1, (String)localObject2);
-      if (uvh.a(this.this$0).getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity"))
+      if (ReadInjoyWebShareHelper.a(this.this$0).getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity"))
       {
-        uvh.a(this.this$0).runOnUiThread((Runnable)localObject1);
+        ReadInjoyWebShareHelper.a(this.this$0).runOnUiThread((Runnable)localObject1);
         return;
       }
-      uvh.a(this.this$0).a().runOnUiThread((Runnable)localObject1);
+      ReadInjoyWebShareHelper.a(this.this$0).a().runOnUiThread((Runnable)localObject1);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.3
  * JD-Core Version:    0.7.0.1
  */

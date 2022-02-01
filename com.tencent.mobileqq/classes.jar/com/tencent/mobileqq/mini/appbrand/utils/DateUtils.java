@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
 import android.text.TextUtils;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -104,7 +104,7 @@ public class DateUtils
     }
     SimpleDateFormat localSimpleDateFormat;
     if (paramString.length() >= 10) {
-      if (Pattern.compile(anvx.a(2131702315)).matcher(paramString).matches()) {
+      if (Pattern.compile(HardCodeUtil.a(2131702863)).matcher(paramString).matches()) {
         localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
       }
     }

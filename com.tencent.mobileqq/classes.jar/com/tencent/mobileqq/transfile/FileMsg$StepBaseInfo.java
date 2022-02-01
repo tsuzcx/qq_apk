@@ -5,13 +5,13 @@ public class FileMsg$StepBaseInfo
   public long detailErrCode = 9223372036854775807L;
   public int errCode = 9001;
   public String errDesc = "";
-  public int failTryCount;
-  public long finishTime;
-  public boolean isReported;
+  public int failTryCount = 0;
+  public long finishTime = 0L;
+  public boolean isReported = false;
   public boolean result = true;
   public int retryCount = 1;
-  public long startTime;
-  public int successTryCount;
+  public long startTime = 0L;
+  public int successTryCount = 0;
   
   public String getStepReportInfo(int paramInt)
   {

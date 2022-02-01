@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import achn;
-import acho;
 import android.content.Context;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
@@ -14,10 +14,10 @@ import com.tencent.viola.core.ViolaInstance;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class BridgeModuleHelper$14
+final class BridgeModuleHelper$14
   implements Runnable
 {
-  public BridgeModuleHelper$14(JSONObject paramJSONObject, boolean paramBoolean, BridgeModule paramBridgeModule, String paramString) {}
+  BridgeModuleHelper$14(JSONObject paramJSONObject, boolean paramBoolean, BridgeModule paramBridgeModule, String paramString) {}
   
   public void run()
   {
@@ -28,8 +28,8 @@ public final class BridgeModuleHelper$14
     Object localObject = BaseActivity.sTopActivity.getApplicationContext();
     JSONObject localJSONObject = new JSONObject();
     GdtDeviceInfoHelper.Params localParams = new GdtDeviceInfoHelper.Params();
-    localParams.businessIdForAidTicketAndTaidTicket = this.jdField_a_of_type_OrgJsonJSONObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
-    localObject = GdtDeviceInfoHelper.create((Context)localObject, localParams);
+    localParams.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
+    localObject = GdtDeviceInfoHelper.a((Context)localObject, localParams);
     if (localObject == null)
     {
       localObject = null;
@@ -47,13 +47,13 @@ public final class BridgeModuleHelper$14
         }
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
         return;
-        localObject = ((GdtDeviceInfoHelper.Result)localObject).deviceInfo;
+        localObject = ((GdtDeviceInfoHelper.Result)localObject).a;
         if (localObject == null)
         {
           localObject = null;
           break;
         }
-        localObject = achn.a((PBField)localObject);
+        localObject = GdtJsonPbUtil.a((PBField)localObject);
         if (localObject == null)
         {
           localObject = null;
@@ -68,11 +68,11 @@ public final class BridgeModuleHelper$14
       }
       catch (JSONException localJSONException)
       {
-        acho.d("BridgeModuleHelper", "handleJsCallRequest", localJSONException);
+        GdtLog.d("BridgeModuleHelper", "handleJsCallRequest", localJSONException);
         continue;
       }
       label164:
-      acho.d("BridgeModuleHelper", "handleJsCallRequest error");
+      GdtLog.d("BridgeModuleHelper", "handleJsCallRequest error");
     }
     label174:
     ViolaBridgeManager.getInstance().callbackJavascript(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getInstanceId(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getModuleName(), "callback", this.jdField_a_of_type_JavaLangString, localJSONObject, true);
@@ -80,7 +80,7 @@ public final class BridgeModuleHelper$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModuleHelper.14
  * JD-Core Version:    0.7.0.1
  */

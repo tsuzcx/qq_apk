@@ -8,32 +8,32 @@ public final class UserInfo
   extends JceStruct
 {
   static int cache_iUserType = 0;
-  public int iEverSSuperVip;
-  public int iEverSuperVip;
-  public int iEverVip;
-  public int iEverYearVip;
-  public int iLevel;
-  public int iMaxScore;
-  public int iSSuperVip;
-  public int iScore;
-  public int iSpeed;
-  public int iSuperVip;
-  public int iUserType;
-  public int iVip;
-  public int iYearVip;
+  public int iEverSSuperVip = 0;
+  public int iEverSuperVip = 0;
+  public int iEverVip = 0;
+  public int iEverYearVip = 0;
+  public int iLevel = 0;
+  public int iMaxScore = 0;
+  public int iSSuperVip = 0;
+  public int iScore = 0;
+  public int iSpeed = 0;
+  public int iSuperVip = 0;
+  public int iUserType = 0;
+  public int iVip = 0;
+  public int iYearVip = 0;
   public String strSSuperVipRenewal = "";
   public String strSuperVipRenewal = "";
   public String strUid = "";
   public String strVipRenewal = "";
-  public long uiLastCalcTime;
-  public long uiSSuperVipCloseTime;
-  public long uiSSuperVipOpenTime;
-  public long uiSuperVipCloseTime;
-  public long uiSuperVipOpenTime;
-  public long uiVipCloseTime;
-  public long uiVipOpenTime;
-  public long uiYearVipCloseTime;
-  public long uiYearVipOpenTime;
+  public long uiLastCalcTime = 0L;
+  public long uiSSuperVipCloseTime = 0L;
+  public long uiSSuperVipOpenTime = 0L;
+  public long uiSuperVipCloseTime = 0L;
+  public long uiSuperVipOpenTime = 0L;
+  public long uiVipCloseTime = 0L;
+  public long uiVipOpenTime = 0L;
+  public long uiYearVipCloseTime = 0L;
+  public long uiYearVipOpenTime = 0L;
   
   public UserInfo() {}
   

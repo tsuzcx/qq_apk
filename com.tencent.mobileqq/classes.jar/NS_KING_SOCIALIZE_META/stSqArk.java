@@ -10,7 +10,7 @@ public final class stSqArk
   static stShareBody cache_shareBody = new stShareBody();
   public String arkData = "";
   public String coverProto = "";
-  public stShareBody shareBody;
+  public stShareBody shareBody = null;
   
   public stSqArk() {}
   

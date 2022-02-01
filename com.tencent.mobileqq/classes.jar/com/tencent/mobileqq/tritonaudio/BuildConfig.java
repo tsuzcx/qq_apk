@@ -8,7 +8,7 @@ public final class BuildConfig
   public static final boolean DEBUG = false;
   public static final String FLAVOR = "";
   public static final String LIBRARY_PACKAGE_NAME = "com.tencent.mobileqq.tritonaudio";
-  public static final String LOCAL_TRITON_VERSION_INFO = "{\n    \"triton_info\": {\n        \"version\": \"1.8.0.66.3735de7\",\n        \"timestamp\": 1600749448814\n    }\n}";
+  public static final String LOCAL_TRITON_VERSION_INFO = "{\n    \"triton_info\": {\n        \"version\": \"1.8.0.74.062e92e\",\n        \"timestamp\": 1609833458180\n    }\n}";
   public static final int VERSION_CODE = 1;
   public static final String VERSION_NAME = "1.0";
 }

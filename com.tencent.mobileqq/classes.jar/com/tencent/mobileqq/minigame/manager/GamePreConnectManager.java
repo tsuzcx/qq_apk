@@ -13,6 +13,8 @@ import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -31,13 +33,21 @@ public class GamePreConnectManager
   private static final String DELIMITER = ",";
   private static final String HEADER_CONNECTION = "Connection";
   private static final String HOST_HTTPS_PREFIX = "https://";
+  public static final long MINI_APP_PRECONNECTION_DURATION_MS = GameWnsUtils.getPreconnectTimeInterval() * 1000L;
   private static final int PRE_CONNECTION_LIMIT = ;
   private static final String PRE_CONNECT_BLACK_APP_ID_LIST = GameWnsUtils.getPreConnectBlackAppIdList();
   private static final String SHARED_PREFERENCES_NAME = "MiniGamePreConnect";
   private static final String TAG = "GamePreConnectManager";
-  private static Set<String> connectUrlSet = new HashSet();
+  private static Set<String> connectUrlSet;
+  public static long lastMiniAppLaunched;
   private static boolean sHasSaveHostList;
-  private static boolean sPreConnectDownloader;
+  private static boolean sPreConnectDownloader = false;
+  
+  static
+  {
+    connectUrlSet = new HashSet();
+    sHasSaveHostList = false;
+  }
   
   public static void connectHost(MiniGamePkg paramMiniGamePkg)
   {
@@ -144,6 +154,18 @@ public class GamePreConnectManager
     return null;
   }
   
+  public static boolean isMiniAppRecentlyLaunched()
+  {
+    lastMiniAppLaunched = StorageUtil.getPreference().getLong("key_mini_app_last_use_time", 0L);
+    long l = System.currentTimeMillis();
+    if ((lastMiniAppLaunched != 0L) && (l - lastMiniAppLaunched < MINI_APP_PRECONNECTION_DURATION_MS)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("GamePreConnectManager", 1, "current time = " + l + "ms; lastMiniAppLaunchedTime = " + lastMiniAppLaunched + "ms; time interval = " + (l - lastMiniAppLaunched) + "ms; miniAppPreconnectionDuration = " + MINI_APP_PRECONNECTION_DURATION_MS + "ms; isMiniAppRecentlyLaunched = " + bool);
+      return bool;
+    }
+  }
+  
   public static void onUrlConnect(String paramString, int paramInt)
   {
     ThreadPools.getComputationThreadPool().execute(new GamePreConnectManager.2(paramInt, paramString));
@@ -151,7 +173,7 @@ public class GamePreConnectManager
   
   public static void preConnectDownloader()
   {
-    if ((!sPreConnectDownloader) && (GameWnsUtils.enableDownloaderPreConnect()) && (Build.VERSION.SDK_INT > 19) && (MiniappDownloadUtil.getInstance().needPreConnect()))
+    if ((!sPreConnectDownloader) && (GameWnsUtils.enableDownloaderPreConnect()) && (Build.VERSION.SDK_INT > 19) && (MiniappDownloadUtil.getInstance().needPreConnect()) && (isMiniAppRecentlyLaunched()))
     {
       sPreConnectDownloader = true;
       ThreadPools.getComputationThreadPool().execute(new GamePreConnectManager.5());
@@ -160,7 +182,7 @@ public class GamePreConnectManager
   
   public static void preConnectDownloaderForSDK()
   {
-    if ((!sPreConnectDownloader) && (GameWnsUtils.enableDownloaderPreConnect()) && (Build.VERSION.SDK_INT > 19))
+    if ((!sPreConnectDownloader) && (GameWnsUtils.enableDownloaderPreConnect()) && (Build.VERSION.SDK_INT > 19) && (isMiniAppRecentlyLaunched()))
     {
       sPreConnectDownloader = true;
       ThreadPools.getComputationThreadPool().execute(new GamePreConnectManager.6());

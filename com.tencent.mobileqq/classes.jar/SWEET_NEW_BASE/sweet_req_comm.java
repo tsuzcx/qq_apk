@@ -9,12 +9,12 @@ public final class sweet_req_comm
 {
   static int cache_pf = 0;
   static int cache_src = 0;
-  public long loveuin;
-  public long opuin;
-  public int pf;
+  public long loveuin = 0L;
+  public long opuin = 0L;
+  public int pf = 0;
   public String qua = "";
-  public int src;
-  public long uin;
+  public int src = 0;
+  public long uin = 0L;
   
   public sweet_req_comm() {}
   

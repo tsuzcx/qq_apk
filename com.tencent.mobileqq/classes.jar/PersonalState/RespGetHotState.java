@@ -10,8 +10,8 @@ public final class RespGetHotState
 {
   static BusiRespHead cache_oHead;
   static ArrayList<HotRishState> cache_vHostRichSateList;
-  public BusiRespHead oHead;
-  public ArrayList<HotRishState> vHostRichSateList;
+  public BusiRespHead oHead = null;
+  public ArrayList<HotRishState> vHostRichSateList = null;
   
   public RespGetHotState() {}
   

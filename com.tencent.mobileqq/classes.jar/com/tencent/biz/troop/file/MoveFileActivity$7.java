@@ -1,7 +1,7 @@
 package com.tencent.biz.troop.file;
 
 import android.widget.EditText;
-import bkxz;
+import com.tencent.util.InputMethodUtil;
 
 class MoveFileActivity$7
   implements Runnable
@@ -10,12 +10,12 @@ class MoveFileActivity$7
   
   public void run()
   {
-    bkxz.a(this.a);
+    InputMethodUtil.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity.7
  * JD-Core Version:    0.7.0.1
  */

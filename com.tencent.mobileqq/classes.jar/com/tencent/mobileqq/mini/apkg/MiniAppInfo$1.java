@@ -60,7 +60,7 @@ final class MiniAppInfo$1
         bool = true;
         localMiniAppInfo.isSupportBlueBar = bool;
         if (paramParcel.readInt() != 1) {
-          break label686;
+          break label713;
         }
         bool = true;
         label411:
@@ -91,17 +91,20 @@ final class MiniAppInfo$1
         localMiniAppInfo.tianshuAdId = paramParcel.readInt();
         localMiniAppInfo.resourcePreCacheInfo = paramParcel.createTypedArrayList(ResourcePreCacheInfo.CREATOR);
         if (paramParcel.readInt() != 1) {
-          break label691;
+          break label718;
         }
       }
-      label686:
-      label691:
+      label713:
+      label718:
       for (boolean bool = true;; bool = false)
       {
         localMiniAppInfo.enableLoadingAd = bool;
         localMiniAppInfo.deviceOrientation = paramParcel.readInt();
         localMiniAppInfo.showStatusBar = paramParcel.readInt();
         localMiniAppInfo.prepayId = paramParcel.readString();
+        localMiniAppInfo.userNum = paramParcel.readInt();
+        localMiniAppInfo.friendNum = paramParcel.readInt();
+        localMiniAppInfo.users = paramParcel.createTypedArrayList(UseUserInfo.CREATOR);
         return localMiniAppInfo;
         bool = false;
         break;

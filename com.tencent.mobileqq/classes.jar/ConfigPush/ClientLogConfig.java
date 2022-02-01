@@ -9,12 +9,12 @@ public final class ClientLogConfig
 {
   static TimeStamp cache_time_finish;
   static TimeStamp cache_time_start;
-  public int cookie;
-  public byte loglevel;
-  public long lseq;
-  public TimeStamp time_finish;
-  public TimeStamp time_start;
-  public int type;
+  public int cookie = 0;
+  public byte loglevel = 0;
+  public long lseq = 0L;
+  public TimeStamp time_finish = null;
+  public TimeStamp time_start = null;
+  public int type = 0;
   
   public ClientLogConfig() {}
   

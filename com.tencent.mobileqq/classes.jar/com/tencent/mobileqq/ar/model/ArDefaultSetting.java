@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apoi;
 
 public class ArDefaultSetting
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new apoi();
+  public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new ArDefaultSetting.1();
   public int a;
   public String a;
   public int b;

@@ -1,6 +1,7 @@
 package com.tencent.hippy.qq.module.tkd;
 
 import androidx.annotation.NonNull;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -14,7 +15,6 @@ import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
-import pkh;
 
 @HippyNativeModule(name="TKDAccountModule")
 public class TKDAccountModule
@@ -45,7 +45,7 @@ public class TKDAccountModule
   @NonNull
   public static TKDAccountModule.AccountInfo getCurAccountInfo()
   {
-    long l = pkh.a();
+    long l = ReadInJoyUtils.a();
     TKDAccountModule.AccountInfo localAccountInfo = new TKDAccountModule.AccountInfo();
     Object localObject = ReadInJoyUserInfoModule.a(l, null);
     if (localObject != null)
@@ -71,7 +71,7 @@ public class TKDAccountModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDAccountModule
  * JD-Core Version:    0.7.0.1
  */

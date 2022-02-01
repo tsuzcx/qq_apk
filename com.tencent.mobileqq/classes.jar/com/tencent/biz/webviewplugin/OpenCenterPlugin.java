@@ -1,11 +1,12 @@
 package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
-import bieg;
-import bieh;
-import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
+import com.tencent.mobileqq.webview.swift.MultiNameSpacePluginCompact;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.open.adapter.OpenAppClient;
+import com.tencent.open.appcommon.js.AppInterface;
 import com.tencent.open.appcommon.js.BaseInterface;
 import com.tencent.open.appcommon.js.BaseJsCallBack;
 import com.tencent.open.appcommon.js.DownloadInterface;
@@ -19,12 +20,13 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import mqq.app.AppRuntime;
 
 public class OpenCenterPlugin
-  extends bieg
-  implements bieh
+  extends JsWebViewPlugin
+  implements MultiNameSpacePluginCompact
 {
-  private Map<String, BaseInterface> a;
+  private Map<String, BaseInterface> a = null;
   
   private void a()
   {
@@ -33,7 +35,7 @@ public class OpenCenterPlugin
     BaseJsCallBack localBaseJsCallBack = new BaseJsCallBack((Activity)localObject);
     VipDownloadInterface localVipDownloadInterface = new VipDownloadInterface((Activity)localObject, this.mRuntime.a());
     HttpInterface localHttpInterface = new HttpInterface((Activity)localObject, this.mRuntime.a());
-    com.tencent.open.appcommon.js.AppInterface localAppInterface = new com.tencent.open.appcommon.js.AppInterface((Activity)localObject, this.mRuntime.a());
+    AppInterface localAppInterface = new AppInterface((Activity)localObject, this.mRuntime.a());
     DownloadInterface localDownloadInterface = new DownloadInterface((Activity)localObject, this.mRuntime.a());
     DINewForCommonWebView localDINewForCommonWebView = new DINewForCommonWebView((Activity)localObject, this.mRuntime.a());
     localObject = new DownloadWebInterface((Activity)localObject, this.mRuntime.a());
@@ -143,7 +145,7 @@ public class OpenCenterPlugin
     return true;
   }
   
-  public void onAppRuntimeReady(com.tencent.common.app.AppInterface paramAppInterface) {}
+  public void onAppRuntimeReady(AppRuntime paramAppRuntime) {}
   
   public void onCreate() {}
   
@@ -166,7 +168,7 @@ public class OpenCenterPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OpenCenterPlugin
  * JD-Core Version:    0.7.0.1
  */

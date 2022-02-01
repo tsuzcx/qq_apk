@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data;
 
-import pmz;
-
-public class RIJDataFetchManager$3
+class RIJDataFetchManager$3
   implements Runnable
 {
-  public RIJDataFetchManager$3(pmz parampmz, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
+  RIJDataFetchManager$3(RIJDataFetchManager paramRIJDataFetchManager, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class RIJDataFetchManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data.RIJDataFetchManager.3
  * JD-Core Version:    0.7.0.1
  */

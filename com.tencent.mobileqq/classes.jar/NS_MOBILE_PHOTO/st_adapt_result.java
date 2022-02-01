@@ -8,9 +8,9 @@ public final class st_adapt_result
   extends JceStruct
 {
   public String albumid = "";
-  public byte blocked;
-  public byte deleted;
-  public long owner;
+  public byte blocked = 0;
+  public byte deleted = 0;
+  public long owner = 0L;
   public String photoid = "";
   
   public st_adapt_result() {}

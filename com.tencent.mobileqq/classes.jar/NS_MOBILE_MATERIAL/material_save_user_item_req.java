@@ -10,10 +10,10 @@ public final class material_save_user_item_req
   extends JceStruct
 {
   static Map<String, String> cache_mapExtInfo = new HashMap();
-  public int iAppid;
-  public int iSendFeed;
-  public long lUin;
-  public Map<String, String> mapExtInfo;
+  public int iAppid = 0;
+  public int iSendFeed = 0;
+  public long lUin = 0L;
+  public Map<String, String> mapExtInfo = null;
   public String strItemId = "";
   public String strQua = "";
   public String strSkey = "";

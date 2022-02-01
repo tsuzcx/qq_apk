@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import uso;
 
 public class ProfileParams$CurLoginUsr
   implements Parcelable
 {
-  public static final Parcelable.Creator<CurLoginUsr> CREATOR = new uso();
+  public static final Parcelable.Creator<CurLoginUsr> CREATOR = new ProfileParams.CurLoginUsr.1();
   public final String a;
   public final String b;
   
@@ -31,7 +30,7 @@ public class ProfileParams$CurLoginUsr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr
  * JD-Core Version:    0.7.0.1
  */

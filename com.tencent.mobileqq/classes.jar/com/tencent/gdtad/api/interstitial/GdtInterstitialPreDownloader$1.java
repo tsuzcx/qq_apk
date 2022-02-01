@@ -1,15 +1,14 @@
 package com.tencent.gdtad.api.interstitial;
 
-import accf;
 import android.content.Context;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.settings.AdSettingsUtil;
 import java.lang.ref.WeakReference;
 
-public class GdtInterstitialPreDownloader$1
+class GdtInterstitialPreDownloader$1
   implements Runnable
 {
-  public GdtInterstitialPreDownloader$1(accf paramaccf, WeakReference paramWeakReference) {}
+  GdtInterstitialPreDownloader$1(GdtInterstitialPreDownloader paramGdtInterstitialPreDownloader, WeakReference paramWeakReference) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class GdtInterstitialPreDownloader$1
     for (Context localContext = (Context)this.a.get();; localContext = null)
     {
       localAdSettingsUtil.update(localContext);
-      accf.a().a();
+      GdtInterstitialPreDownloader.a().a();
       AdLog.i("GdtInterstitialPreDownloader", "preDownloadAfterToolProcessStartup durationMillis:" + (System.currentTimeMillis() - l));
       return;
     }
@@ -27,7 +26,7 @@ public class GdtInterstitialPreDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialPreDownloader.1
  * JD-Core Version:    0.7.0.1
  */

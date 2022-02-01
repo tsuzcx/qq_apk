@@ -1,13 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.qphone.base.util.QLog;
-import pvm;
-import qez;
 
-public class ChannelCoverInfoModule$8
+class ChannelCoverInfoModule$8
   implements Runnable
 {
-  public ChannelCoverInfoModule$8(qez paramqez, boolean paramBoolean) {}
+  ChannelCoverInfoModule$8(ChannelCoverInfoModule paramChannelCoverInfoModule, boolean paramBoolean) {}
   
   public void run()
   {
@@ -16,12 +15,12 @@ public class ChannelCoverInfoModule$8
       i = 1;
     }
     QLog.d("ChannelCoverInfoModule", 2, new Object[] { "notifyHasMoreChannelRedPoint, success = ", Integer.valueOf(i) });
-    pvm.a().b(this.a);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.8
  * JD-Core Version:    0.7.0.1
  */

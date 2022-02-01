@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import zwu;
 
 public class WorkSpaceView
   extends FrameLayout
@@ -22,7 +21,7 @@ public class WorkSpaceView
   private Handler jdField_a_of_type_AndroidOsHandler;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private zwu jdField_a_of_type_Zwu;
+  private WorkSpaceView.OnScreenChangeListener jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView$OnScreenChangeListener;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = -1;
@@ -76,8 +75,8 @@ public class WorkSpaceView
       }
       paramInt = getWidth() * i - getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
-      if (this.jdField_a_of_type_Zwu != null) {
-        this.jdField_a_of_type_Zwu.a(i);
+      if (this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView$OnScreenChangeListener != null) {
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView$OnScreenChangeListener.a(i);
       }
       invalidate();
       return;
@@ -172,7 +171,7 @@ public class WorkSpaceView
     return false;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt4 = getChildCount();
     paramInt1 = 0;
@@ -190,7 +189,7 @@ public class WorkSpaceView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int j = getChildCount();
@@ -299,14 +298,14 @@ public class WorkSpaceView
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  public void setOnScreenChangeListener(zwu paramzwu)
+  public void setOnScreenChangeListener(WorkSpaceView.OnScreenChangeListener paramOnScreenChangeListener)
   {
-    this.jdField_a_of_type_Zwu = paramzwu;
+    this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView$OnScreenChangeListener = paramOnScreenChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.WorkSpaceView
  * JD-Core Version:    0.7.0.1
  */

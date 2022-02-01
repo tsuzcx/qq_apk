@@ -1,22 +1,13 @@
 package com.tencent.mobileqq.data;
 
 public class DraftSummaryInfo
+  implements DraftSummaryInfoInterface
 {
   private String atInfoStr;
   private String summary;
   private long time;
   private int type;
   private String uin;
-  
-  public DraftSummaryInfo() {}
-  
-  public DraftSummaryInfo(String paramString1, int paramInt, String paramString2, long paramLong)
-  {
-    this.uin = paramString1;
-    this.type = paramInt;
-    this.summary = paramString2;
-    this.time = paramLong;
-  }
   
   public String getAtInfoStr()
   {
@@ -31,16 +22,6 @@ public class DraftSummaryInfo
   public long getTime()
   {
     return this.time / 1000L;
-  }
-  
-  public int getType()
-  {
-    return this.type;
-  }
-  
-  public String getUin()
-  {
-    return this.uin;
   }
   
   public void setAtInfoStr(String paramString)

@@ -42,7 +42,7 @@ final class MiniAppReportManager2$2
       }
       catch (Throwable localThrowable)
       {
-        QLog.e("MiniAppReportManager2", 2, localThrowable.getStackTrace());
+        QLog.e("MiniAppReportManager2", 2, "", localThrowable);
         return;
       }
     }

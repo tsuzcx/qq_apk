@@ -1,6 +1,6 @@
 package cooperation.qqcircle.picload.avatar;
 
-import cooperation.qqcircle.picload.Option;
+import com.tencent.mobileqq.qcircle.api.data.Option;
 
 public class AvatarOption
   extends Option
@@ -32,7 +32,7 @@ public class AvatarOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.picload.avatar.AvatarOption
  * JD-Core Version:    0.7.0.1
  */

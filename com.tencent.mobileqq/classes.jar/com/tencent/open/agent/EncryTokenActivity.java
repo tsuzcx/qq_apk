@@ -1,14 +1,14 @@
 package com.tencent.open.agent;
 
-import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bjpy;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
+import com.tencent.open.settings.OpensdkPreference;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONObject;
 
@@ -52,9 +52,10 @@ public class EncryTokenActivity
         paramBundle = str;
       }
     }
+    ForwardStatisticsReporter.a(paramBundle, 0L);
     if ("action_check_token".equals(paramBundle))
     {
-      localObject = bjpy.a(this, "openid_encrytoken");
+      localObject = OpensdkPreference.a(this, "openid_encrytoken");
       try
       {
         paramBundle = super.getIntent().getStringExtra("openid") + "";

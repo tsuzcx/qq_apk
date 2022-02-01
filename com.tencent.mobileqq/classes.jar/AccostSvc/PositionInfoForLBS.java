@@ -12,11 +12,11 @@ public final class PositionInfoForLBS
   static ArrayList<Cell> cache_vCells;
   static byte[] cache_vLBSKeyData;
   static ArrayList<Long> cache_vMacs;
-  public byte bPositionInfoType;
-  public GPS stGps;
-  public ArrayList<Cell> vCells;
-  public byte[] vLBSKeyData;
-  public ArrayList<Long> vMacs;
+  public byte bPositionInfoType = 0;
+  public GPS stGps = null;
+  public ArrayList<Cell> vCells = null;
+  public byte[] vLBSKeyData = null;
+  public ArrayList<Long> vMacs = null;
   
   public PositionInfoForLBS() {}
   

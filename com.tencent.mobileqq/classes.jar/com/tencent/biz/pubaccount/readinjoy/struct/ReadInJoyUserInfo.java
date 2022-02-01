@@ -24,11 +24,12 @@ public class ReadInJoyUserInfo
   @notColumn
   public int isApproved = -1;
   public String largeIconUrl;
+  public long lastUpdateTimeMilliSecond = 0L;
   public oidb_cmd0xb81.LiveStatus liveStatus;
   public String nick;
-  public boolean readlTimeRead;
+  public boolean readlTimeRead = false;
   @notColumn
-  public boolean requestFlag;
+  public boolean requestFlag = false;
   public String smallIconUrl;
   public int systemID;
   public long timestamp;
@@ -70,12 +71,12 @@ public class ReadInJoyUserInfo
   
   public String toString()
   {
-    return "ReadInJoyUserInfo, accountType = " + this.accountType + '\n' + "uin = " + this.uin + '\n' + "nick = " + this.nick + '\n' + "faceType = " + this.faceType + '\n' + "timestamp = " + this.timestamp + '\n' + "faceFlag = " + this.faceFlag + '\n' + "faceUrl = " + this.faceUrl + '\n' + "systemID = " + this.systemID + '\n' + "requestFlag = " + this.requestFlag + '\n' + "accountLevel = " + this.accountLevel + '\n' + "smallIconUrl = " + this.smallIconUrl + '\n' + "largeIconUrl = " + this.largeIconUrl + '\n' + "authorizeDesc = " + this.authorizeDesc + '\n' + "readlTimeRead = " + this.readlTimeRead + '\n' + "liveStatus = " + getLiveStatusString() + '\n' + "decorationName='" + this.decorationName + '\n' + "decorationId=" + this.decorationId + '\n' + "decorationIcon='" + this.decorationIcon + '\n';
+    return "ReadInJoyUserInfo, accountType = " + this.accountType + '\n' + "uin = " + this.uin + '\n' + "nick = " + this.nick + '\n' + "faceType = " + this.faceType + '\n' + "timestamp = " + this.timestamp + '\n' + "faceFlag = " + this.faceFlag + '\n' + "faceUrl = " + this.faceUrl + '\n' + "systemID = " + this.systemID + '\n' + "requestFlag = " + this.requestFlag + '\n' + "accountLevel = " + this.accountLevel + '\n' + "smallIconUrl = " + this.smallIconUrl + '\n' + "largeIconUrl = " + this.largeIconUrl + '\n' + "authorizeDesc = " + this.authorizeDesc + '\n' + "readlTimeRead = " + this.readlTimeRead + '\n' + "liveStatus = " + getLiveStatusString() + '\n' + "decorationName='" + this.decorationName + '\n' + "decorationId=" + this.decorationId + '\n' + "decorationIcon='" + this.decorationIcon + '\n' + "updateTimeMilliSecond = " + this.lastUpdateTimeMilliSecond + '\n';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo
  * JD-Core Version:    0.7.0.1
  */

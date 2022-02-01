@@ -7,10 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({java.lang.annotation.ElementType.FIELD})
-public @interface ParcelAnnotation$ParcelVersion
-{
-  int version() default 0;
-}
+public @interface ParcelAnnotation$ParcelVersion {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

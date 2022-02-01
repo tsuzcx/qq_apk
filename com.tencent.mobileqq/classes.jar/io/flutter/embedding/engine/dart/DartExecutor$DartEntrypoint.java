@@ -1,7 +1,8 @@
 package io.flutter.embedding.engine.dart;
 
 import androidx.annotation.NonNull;
-import io.flutter.view.FlutterMain;
+import io.flutter.FlutterInjector;
+import io.flutter.embedding.engine.loader.FlutterLoader;
 
 public class DartExecutor$DartEntrypoint
 {
@@ -19,7 +20,11 @@ public class DartExecutor$DartEntrypoint
   @NonNull
   public static DartEntrypoint createDefault()
   {
-    return new DartEntrypoint(FlutterMain.findAppBundlePath(), "main");
+    FlutterLoader localFlutterLoader = FlutterInjector.instance().flutterLoader();
+    if (localFlutterLoader.initialized()) {
+      return new DartEntrypoint(localFlutterLoader.findAppBundlePath(), "main");
+    }
+    throw new AssertionError("DartEntrypoints can only be created once a FlutterEngine is created.");
   }
   
   public boolean equals(Object paramObject)
@@ -65,7 +70,7 @@ public class DartExecutor$DartEntrypoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.dart.DartExecutor.DartEntrypoint
  * JD-Core Version:    0.7.0.1
  */

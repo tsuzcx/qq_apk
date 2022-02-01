@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import awgx;
-
-public class LyricsController$1
+class LyricsController$1
   implements Runnable
 {
-  public LyricsController$1(awgx paramawgx) {}
+  LyricsController$1(LyricsController paramLyricsController) {}
   
   public void run()
   {

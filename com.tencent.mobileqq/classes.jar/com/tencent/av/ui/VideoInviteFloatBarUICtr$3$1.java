@@ -1,25 +1,23 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.app.VideoAppInterface;
-import mli;
-import mll;
 
-public class VideoInviteFloatBarUICtr$3$1
+class VideoInviteFloatBarUICtr$3$1
   implements Runnable
 {
-  public VideoInviteFloatBarUICtr$3$1(mll parammll, long paramLong) {}
+  VideoInviteFloatBarUICtr$3$1(VideoInviteFloatBarUICtr.3 param3, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mll.a.jdField_a_of_type_Lfe.al = true;
-    if (this.jdField_a_of_type_Mll.a.b == 1) {
-      this.jdField_a_of_type_Mll.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBarUICtr$3.a.jdField_a_of_type_ComTencentAvAppSessionInfo.an = true;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBarUICtr$3.a.b == 1) {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBarUICtr$3.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteFloatBarUICtr.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.hippy.qq.update;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.biz.common.offline.OfflineEnvHelper;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
-import nvf;
 
 public class HippyQQFileUtil
 {
@@ -220,10 +220,7 @@ public class HippyQQFileUtil
   {
     try
     {
-      File localFile = new File(getHippyFile(), "libs");
-      if (!localFile.exists()) {
-        localFile.mkdir();
-      }
+      File localFile = getHippyFileByType("libs");
       return localFile;
     }
     finally {}
@@ -257,17 +254,13 @@ public class HippyQQFileUtil
   {
     try
     {
-      File localFile = new File(getHippyFile(), "dif");
-      if (!localFile.exists()) {
-        localFile.mkdir();
-      }
-      paramString = new File(localFile, paramString + paramInt + ".dif");
+      paramString = new File(getHippyFileByType("dif"), paramString + paramInt + ".dif");
       return paramString;
     }
     finally {}
   }
   
-  private static File getHippyFile()
+  public static File getHippyFile()
   {
     Object localObject = BaseApplicationImpl.getContext();
     if (localObject != null)
@@ -281,18 +274,44 @@ public class HippyQQFileUtil
     return null;
   }
   
-  public static File getModuleFile(String paramString, int paramInt)
+  public static File getHippyFileByType(String paramString)
+  {
+    File localFile = getHippyFile();
+    if (localFile == null) {
+      paramString = null;
+    }
+    do
+    {
+      return paramString;
+      localFile = new File(localFile, paramString);
+      paramString = localFile;
+    } while (localFile.exists());
+    localFile.mkdir();
+    return localFile;
+  }
+  
+  public static File getModuleFile(String paramString)
   {
     try
     {
-      File localFile = new File(getHippyFile(), "bundle");
-      if (!localFile.exists()) {
-        localFile.mkdir();
+      File localFile = getHippyFileByType("bundle");
+      if (localFile == null) {
+        return null;
       }
       paramString = new File(localFile, paramString);
       if (!paramString.exists()) {
         paramString.mkdir();
       }
+      return paramString;
+    }
+    finally {}
+  }
+  
+  public static File getModuleFile(String paramString, int paramInt)
+  {
+    try
+    {
+      paramString = getModuleFile(paramString);
       if (paramInt < 0) {
         return paramString;
       }
@@ -312,7 +331,7 @@ public class HippyQQFileUtil
   
   public static File getOfflineDownloadFile()
   {
-    Object localObject = nvf.a("1011");
+    Object localObject = OfflineEnvHelper.a("1011");
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     do
     {
@@ -326,11 +345,7 @@ public class HippyQQFileUtil
   {
     try
     {
-      File localFile = new File(getHippyFile(), "zip");
-      if (!localFile.exists()) {
-        localFile.mkdir();
-      }
-      paramString = new File(localFile, paramString + paramInt + ".zip");
+      paramString = new File(getHippyFileByType("zip"), paramString + paramInt + ".zip");
       return paramString;
     }
     finally {}
@@ -338,7 +353,7 @@ public class HippyQQFileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQFileUtil
  * JD-Core Version:    0.7.0.1
  */

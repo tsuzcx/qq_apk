@@ -147,6 +147,74 @@ public class TVKLiveInfoRequest
     return 0;
   }
   
+  private int getPlatform()
+  {
+    int j = TVideoMgr.getVinfoPlatform();
+    int i = j;
+    if (this.mLiveInfoParams != null)
+    {
+      i = j;
+      if (this.mLiveInfoParams.getVideoInfo() != null) {
+        i = this.mLiveInfoParams.getVideoInfo().getPlatform();
+      }
+    }
+    return i;
+  }
+  
+  private void innerParseJsonFormats(TVKLiveVideoInfo paramTVKLiveVideoInfo, JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optJSONArray("formats");
+    if (paramJSONObject != null)
+    {
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        if (paramJSONObject.getJSONObject(i) != null)
+        {
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+          TVKNetVideoInfo.DefnInfo localDefnInfo = new TVKNetVideoInfo.DefnInfo();
+          localDefnInfo.setDefn(localJSONObject.optString("fn"));
+          localDefnInfo.setDefnShowName(localJSONObject.optString("fnname"));
+          localDefnInfo.setVip(localJSONObject.optInt("vip"));
+          localDefnInfo.setDefnId(localJSONObject.optInt("id"));
+          localDefnInfo.setDefnName(localJSONObject.optString("defnname"));
+          localDefnInfo.setDefnRate(localJSONObject.optString("defnrate"));
+          if ((paramTVKLiveVideoInfo.getCurDefinition() != null) && (paramTVKLiveVideoInfo.getCurDefinition().getDefn() != null) && (paramTVKLiveVideoInfo.getCurDefinition().getDefn().equalsIgnoreCase(localDefnInfo.getDefn())))
+          {
+            paramTVKLiveVideoInfo.getCurDefinition().setDefnName(localDefnInfo.getDefnName());
+            paramTVKLiveVideoInfo.getCurDefinition().setVip(localDefnInfo.isVip());
+            paramTVKLiveVideoInfo.getCurDefinition().setDefnShowName(localDefnInfo.getDefnShowName());
+            paramTVKLiveVideoInfo.getCurDefinition().setDefnRate(localDefnInfo.getDefnRate());
+          }
+          paramTVKLiveVideoInfo.addDefinition(localDefnInfo);
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private void innerParseJsonLive360Info(TVKLiveVideoInfo paramTVKLiveVideoInfo, JSONObject paramJSONObject)
+  {
+    int i;
+    if (paramJSONObject.has("live360_info"))
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("live360_info");
+      if ((paramJSONObject != null) && (paramJSONObject.has("lens_direction")))
+      {
+        i = paramJSONObject.optInt("lens_direction");
+        if (1 != i) {
+          break label51;
+        }
+        paramTVKLiveVideoInfo.setLensDirection(1);
+      }
+    }
+    label51:
+    while (2 != i) {
+      return;
+    }
+    paramTVKLiveVideoInfo.setLensDirection(2);
+  }
+  
   private int optInt(JSONObject paramJSONObject, String paramString, int paramInt)
   {
     if (paramJSONObject.has(paramString)) {
@@ -173,7 +241,6 @@ public class TVKLiveInfoRequest
   
   private TVKLiveVideoInfo parseJson(String paramString)
   {
-    int j = 0;
     TVKLiveVideoInfo localTVKLiveVideoInfo = new TVKLiveVideoInfo();
     localTVKLiveVideoInfo.setXml(paramString);
     paramString = new JSONObject(paramString);
@@ -184,27 +251,26 @@ public class TVKLiveInfoRequest
     localTVKLiveVideoInfo.setSubErrType(optInt(paramString, "type", 0));
     if (paramString.has("playurl"))
     {
-      localObject1 = paramString.optString("playurl");
-      localTVKLiveVideoInfo.setPlayUrl((String)localObject1);
-      localTVKLiveVideoInfo.setOriginalPlayUrl((String)localObject1);
+      localObject = paramString.optString("playurl");
+      localTVKLiveVideoInfo.setPlayUrl((String)localObject);
+      localTVKLiveVideoInfo.setOriginalPlayUrl((String)localObject);
     }
     if (this.mLiveInfoParams != null)
     {
       localTVKLiveVideoInfo.setGetDlnaUrl(this.mLiveInfoParams.isGetDlnaUrl());
       localTVKLiveVideoInfo.setGetPreviewInfo(this.mLiveInfoParams.getPreviewInfo());
     }
-    Object localObject1 = paramString.optJSONArray("backurl_list");
-    Object localObject2;
-    if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+    Object localObject = paramString.optJSONArray("backurl_list");
+    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
     {
-      localObject2 = new String[((JSONArray)localObject1).length()];
+      String[] arrayOfString = new String[((JSONArray)localObject).length()];
       i = 0;
-      while (i < ((JSONArray)localObject1).length())
+      while (i < ((JSONArray)localObject).length())
       {
-        localObject2[i] = ((JSONArray)localObject1).getJSONObject(i).getString("url");
+        arrayOfString[i] = ((JSONArray)localObject).getJSONObject(i).getString("url");
         i += 1;
       }
-      localTVKLiveVideoInfo.setBackPlayUrl((String[])localObject2);
+      localTVKLiveVideoInfo.setBackPlayUrl(arrayOfString);
     }
     localTVKLiveVideoInfo.setCdnId(optInt(paramString, "cdnid", 0));
     localTVKLiveVideoInfo.setPlayTime(optInt(paramString, "playtime", 0));
@@ -229,91 +295,43 @@ public class TVKLiveInfoRequest
     localTVKLiveVideoInfo.setQueueSessionKey(optString(paramString, "queue_session_key", null));
     localTVKLiveVideoInfo.setIretDetailCode(optInt(paramString, "iretdetailcode", 0));
     localTVKLiveVideoInfo.setLive360(optInt(paramString, "live360", 0));
-    localTVKLiveVideoInfo.setaCode(optInt(paramString, "acode", 0));
-    localTVKLiveVideoInfo.setvCode(optInt(paramString, "vcode", 0));
+    localTVKLiveVideoInfo.setAcode(optInt(paramString, "acode", 0));
+    localTVKLiveVideoInfo.setVcode(optInt(paramString, "vcode", 0));
     i = paramString.optInt("acode");
-    int k = paramString.optInt("vcode");
-    if (k == 2) {
+    int j = paramString.optInt("vcode");
+    if (j == 2) {
       localTVKLiveVideoInfo.setIsHevc(true);
     }
     for (;;)
     {
       if (paramString.has("defn"))
       {
-        localObject1 = new TVKNetVideoInfo.DefnInfo();
-        ((TVKNetVideoInfo.DefnInfo)localObject1).setVideoCodec(k);
-        ((TVKNetVideoInfo.DefnInfo)localObject1).setAudioCodec(i);
-        ((TVKNetVideoInfo.DefnInfo)localObject1).setDefn(paramString.optString("defn"));
-        ((TVKNetVideoInfo.DefnInfo)localObject1).setDefnName(TVKDefinitionUtils.getDefShowName(paramString.optString("defn")));
-        localTVKLiveVideoInfo.setCurDefinition((TVKNetVideoInfo.DefnInfo)localObject1);
+        localObject = new TVKNetVideoInfo.DefnInfo();
+        ((TVKNetVideoInfo.DefnInfo)localObject).setVideoCodec(j);
+        ((TVKNetVideoInfo.DefnInfo)localObject).setAudioCodec(i);
+        ((TVKNetVideoInfo.DefnInfo)localObject).setDefn(paramString.optString("defn"));
+        ((TVKNetVideoInfo.DefnInfo)localObject).setDefnName(TVKDefinitionUtils.getDefShowName(paramString.optString("defn")));
+        localTVKLiveVideoInfo.setCurDefinition((TVKNetVideoInfo.DefnInfo)localObject);
       }
       if ((paramString.has("playback")) && (!TextUtils.isEmpty(paramString.getString("playback")))) {}
       try
       {
-        localObject1 = new JSONObject(paramString.getString("playback"));
-        localTVKLiveVideoInfo.setPlayBackStart(((JSONObject)localObject1).optLong("playbackstart"));
-        localTVKLiveVideoInfo.setPlayBackTime(((JSONObject)localObject1).optInt("playbacktime"));
-        localTVKLiveVideoInfo.setSvrTick(((JSONObject)localObject1).optInt("svrtick"));
-        label757:
-        localObject1 = paramString.optJSONArray("formats");
-        if (localObject1 != null)
-        {
-          i = j;
-          for (;;)
-          {
-            if (i < ((JSONArray)localObject1).length())
-            {
-              if (((JSONArray)localObject1).getJSONObject(i) != null)
-              {
-                localObject2 = ((JSONArray)localObject1).getJSONObject(i);
-                TVKNetVideoInfo.DefnInfo localDefnInfo = new TVKNetVideoInfo.DefnInfo();
-                localDefnInfo.setDefn(((JSONObject)localObject2).optString("fn"));
-                localDefnInfo.setDefnShowName(((JSONObject)localObject2).optString("fnname"));
-                localDefnInfo.setVip(((JSONObject)localObject2).optInt("vip"));
-                localDefnInfo.setDefnId(((JSONObject)localObject2).optInt("id"));
-                localDefnInfo.setDefnName(((JSONObject)localObject2).optString("defnname"));
-                localDefnInfo.setDefnRate(((JSONObject)localObject2).optString("defnrate"));
-                if ((localTVKLiveVideoInfo.getCurDefinition() != null) && (localTVKLiveVideoInfo.getCurDefinition().getDefn() != null) && (localTVKLiveVideoInfo.getCurDefinition().getDefn().equalsIgnoreCase(localDefnInfo.getDefn())))
-                {
-                  localTVKLiveVideoInfo.getCurDefinition().setDefnName(localDefnInfo.getDefnName());
-                  localTVKLiveVideoInfo.getCurDefinition().setVip(localDefnInfo.isVip());
-                  localTVKLiveVideoInfo.getCurDefinition().setDefnShowName(localDefnInfo.getDefnShowName());
-                  localTVKLiveVideoInfo.getCurDefinition().setDefnRate(localDefnInfo.getDefnRate());
-                }
-                localTVKLiveVideoInfo.addDefinition(localDefnInfo);
-              }
-              i += 1;
-              continue;
-              localTVKLiveVideoInfo.setIsHevc(false);
-              break;
-            }
-          }
-        }
-        if (paramString.has("live360_info"))
-        {
-          localObject1 = paramString.optJSONObject("live360_info");
-          if ((localObject1 != null) && (((JSONObject)localObject1).has("lens_direction")))
-          {
-            i = ((JSONObject)localObject1).optInt("lens_direction");
-            if (1 != i) {
-              break label1069;
-            }
-            localTVKLiveVideoInfo.setLensDirection(1);
-          }
-        }
-        for (;;)
-        {
-          localTVKLiveVideoInfo.setHlsp2p(paramString.optInt("hlsp2p"));
-          return localTVKLiveVideoInfo;
-          label1069:
-          if (2 == i) {
-            localTVKLiveVideoInfo.setLensDirection(2);
-          }
-        }
+        localObject = new JSONObject(paramString.getString("playback"));
+        localTVKLiveVideoInfo.setPlayBackStart(((JSONObject)localObject).optLong("playbackstart"));
+        localTVKLiveVideoInfo.setPlayBackTime(((JSONObject)localObject).optInt("playbacktime"));
+        localTVKLiveVideoInfo.setSvrTick(((JSONObject)localObject).optInt("svrtick"));
+        innerParseJsonFormats(localTVKLiveVideoInfo, paramString);
+        innerParseJsonLive360Info(localTVKLiveVideoInfo, paramString);
+        localTVKLiveVideoInfo.setHlsp2p(paramString.optInt("hlsp2p"));
+        return localTVKLiveVideoInfo;
+        localTVKLiveVideoInfo.setIsHevc(false);
       }
       catch (JSONException localJSONException)
       {
-        break label757;
+        for (;;)
+        {
+          TVKLogUtil.e("MediaPlayerMgr[TVKLiveInfoRequest.java]", "parseJson error = " + localJSONException.toString());
+        }
       }
     }
   }
@@ -408,32 +426,24 @@ public class TVKLiveInfoRequest
       localObject1 = TVideoMgr.mFreeNetFlowRequestMap;
       ((Map)localObject1).put("cnlid", this.mProgramId);
       ((Map)localObject1).put("cmd", "2");
-      i = TVideoMgr.getVinfoPlatform();
-      paramInt = i;
-      if (this.mLiveInfoParams != null)
-      {
-        paramInt = i;
-        if (this.mLiveInfoParams.getVideoInfo() != null) {
-          paramInt = this.mLiveInfoParams.getVideoInfo().getPlatform();
-        }
-      }
+      i = getPlatform();
       localObject3 = TVideoMgr.getVinfoSdtfrom();
       localObject2 = localObject3;
       if (this.mLiveInfoParams != null)
       {
         localObject2 = localObject3;
         if (this.mLiveInfoParams.getVideoInfo() != null) {
-          localObject2 = TVideoMgr.getVinfoSdtfrom(paramInt);
+          localObject2 = TVideoMgr.getVinfoSdtfrom(i);
         }
       }
-      ((Map)localObject1).put("platform", String.valueOf(paramInt));
+      ((Map)localObject1).put("platform", String.valueOf(i));
       ((Map)localObject1).put("sdtfrom", localObject2);
       if (this.mLiveInfoParams != null) {
-        break label770;
+        break label739;
       }
-      i = 2;
-      label179:
-      ((Map)localObject1).put("stream", String.valueOf(i));
+      paramInt = 2;
+      label148:
+      ((Map)localObject1).put("stream", String.valueOf(paramInt));
       ((Map)localObject1).put("appVer", TVideoMgr.getPlayerVersion());
       ((Map)localObject1).put("guid", TVideoMgr.getStaGuid());
       ((Map)localObject1).put("qq", this.mUserInfo.getUin());
@@ -458,23 +468,23 @@ public class TVKLiveInfoRequest
       }
       ((Map)localObject1).put("newnettype", String.valueOf(getNetworkType()));
       if ((TVKMediaPlayerConfig.PreFetchedParams.sServerTime != 0L) || (mLastLocalTime != 0L)) {
-        break label781;
+        break label750;
       }
     }
     for (TVKMediaPlayerConfig.PreFetchedParams.sServerTime = System.currentTimeMillis() / 1000L;; TVKMediaPlayerConfig.PreFetchedParams.sServerTime = System.currentTimeMillis() / 1000L - mLastLocalTime + mLastServerTime) {
-      label770:
-      label781:
+      label739:
+      label750:
       do
       {
         ((Map)localObject1).put("fntick", String.valueOf(TVKMediaPlayerConfig.PreFetchedParams.sServerTime));
         mLastLocalTime = System.currentTimeMillis() / 1000L;
         mLastServerTime = TVKMediaPlayerConfig.PreFetchedParams.sServerTime;
-        TVKLogUtil.i("MediaPlayerMgr[TVKLiveInfoRequest.java]", "getRequestUrl(): GenCkey version = " + TVideoMgr.getPlayerVersion() + " time=" + TVKMediaPlayerConfig.PreFetchedParams.sServerTime + " lasttime = " + mLastServerTime + " vid= " + this.mProgramId + " platform=" + paramInt + ", sdtfrom=" + (String)localObject2);
-        this.mCKey = getCkey(paramInt, (String)localObject2);
-        TVKLogUtil.i("MediaPlayerMgr[TVKLiveInfoRequest.java]", "getRequestUrl(): ckey5 = " + this.mCKey + " platform =" + paramInt + ", sdtfrom=" + (String)localObject2);
+        TVKLogUtil.i("MediaPlayerMgr[TVKLiveInfoRequest.java]", "getRequestUrl(): GenCkey version = " + TVideoMgr.getPlayerVersion() + " time=" + TVKMediaPlayerConfig.PreFetchedParams.sServerTime + " lasttime = " + mLastServerTime + " vid= " + this.mProgramId + " platform=" + i + ", sdtfrom=" + (String)localObject2);
+        this.mCKey = getCkey(i, (String)localObject2);
+        TVKLogUtil.i("MediaPlayerMgr[TVKLiveInfoRequest.java]", "getRequestUrl(): ckey5 = " + this.mCKey + " platform =" + i + ", sdtfrom=" + (String)localObject2);
         ((Map)localObject1).put("cKey", this.mCKey);
         if ((this.mLiveInfoParams == null) || (this.mLiveInfoParams.getExtraPara() == null)) {
-          break label818;
+          break label787;
         }
         localObject2 = this.mLiveInfoParams.getExtraPara().entrySet().iterator();
         while (((Iterator)localObject2).hasNext())
@@ -484,11 +494,11 @@ public class TVKLiveInfoRequest
         }
         localObject1 = new HashMap();
         break;
-        i = this.mLiveInfoParams.getStreamFormat();
-        break label179;
+        paramInt = this.mLiveInfoParams.getStreamFormat();
+        break label148;
       } while ((TVKMediaPlayerConfig.PreFetchedParams.sServerTime != 0L) || (mLastLocalTime == 0L));
     }
-    label818:
+    label787:
     if (((Boolean)TVKMediaPlayerConfig.PlayerConfig.live_dolbyvision_enable.getValue()).booleanValue()) {
       ((Map)localObject1).put("active_sp", "1");
     }
@@ -533,7 +543,7 @@ public class TVKLiveInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.live.TVKLiveInfoRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class ShareJsPlugin$7
 {
   ShareJsPlugin$7(ShareJsPlugin paramShareJsPlugin, RequestEvent paramRequestEvent, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     try
     {
@@ -31,7 +31,7 @@ class ShareJsPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ShareJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

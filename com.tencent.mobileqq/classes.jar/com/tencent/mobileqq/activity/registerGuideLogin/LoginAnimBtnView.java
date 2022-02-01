@@ -28,11 +28,11 @@ public class LoginAnimBtnView
   private LottieTask<LottieComposition> jdField_a_of_type_ComTencentMobileqqDiniflyLottieTask;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private Runnable jdField_a_of_type_JavaLangRunnable = new LoginAnimBtnView.1(this);
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int = -1446926;
-  private volatile boolean jdField_c_of_type_Boolean;
+  private volatile boolean jdField_c_of_type_Boolean = false;
   private int d = -16725252;
   private int e = 855638016;
   
@@ -159,7 +159,7 @@ public class LoginAnimBtnView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     try
     {
@@ -242,7 +242,7 @@ public class LoginAnimBtnView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView
  * JD-Core Version:    0.7.0.1
  */

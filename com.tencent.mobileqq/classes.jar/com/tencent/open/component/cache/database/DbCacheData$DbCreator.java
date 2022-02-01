@@ -4,17 +4,17 @@ import android.database.Cursor;
 
 public abstract interface DbCacheData$DbCreator<T extends DbCacheData>
 {
-  public abstract T createFromCursor(Cursor paramCursor);
+  public abstract int a();
   
-  public abstract String sortOrder();
+  public abstract T a(Cursor paramCursor);
   
-  public abstract DbCacheData.Structure[] structure();
+  public abstract String a();
   
-  public abstract int version();
+  public abstract DbCacheData.Structure[] a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.component.cache.database.DbCacheData.DbCreator
  * JD-Core Version:    0.7.0.1
  */

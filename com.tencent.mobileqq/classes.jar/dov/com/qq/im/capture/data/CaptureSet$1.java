@@ -1,11 +1,9 @@
 package dov.com.qq.im.capture.data;
 
-import bohr;
-
-public class CaptureSet$1
+class CaptureSet$1
   implements Runnable
 {
-  public CaptureSet$1(bohr parambohr) {}
+  CaptureSet$1(CaptureSet paramCaptureSet) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class CaptureSet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.data.CaptureSet.1
  * JD-Core Version:    0.7.0.1
  */

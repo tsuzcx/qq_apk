@@ -1,32 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class ChatSettingForTroop$53
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
   ChatSettingForTroop$53(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    TroopMemberInfo localTroopMemberInfo = ((TroopManager)this.this$0.app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.app.getCurrentAccountUin());
-    if (localTroopMemberInfo != null)
-    {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopColorNick = localTroopMemberInfo.troopColorNick;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopColorNickId = localTroopMemberInfo.troopColorNickId;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = localTroopMemberInfo.troopnick;
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-    }
+    ChatSettingForTroop.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.53
  * JD-Core Version:    0.7.0.1
  */

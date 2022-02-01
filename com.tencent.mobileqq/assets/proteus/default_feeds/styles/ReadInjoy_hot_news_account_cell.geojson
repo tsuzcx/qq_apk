@@ -1,0 +1,862 @@
+{
+    "ReadInjoy_hot_news_account_cell": {
+        "view_type": "UIView",
+        "view_id": "id_hot_news_cell",
+        "layout_type": "layout_linear",
+        "direction": "vertical",
+        "default_visible": "YES",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "attributes": {
+            "setAttatchInfo:": "$hot_search_url",
+            "setBackgroundColorString:": "#ffffff"
+        },
+        "event_type": "cmd_url_click_card_report",
+        "data_attributes": {
+            "setLocalInfo:": {
+                "click_area":"18",
+                "feeds_type":"1068"
+            },
+            "setRemoteInfo:": {
+                "trending_rank":"$trending_rank",
+                "trending_topic":"$trending_topic"
+            }
+        },
+        "subviews": [
+            {
+                "$includeComponet": "componet/social_header_partner.geojson"
+            },
+            {
+                "view_type": "container",
+                "view_id": "id_content_container",
+                "visible_depend_on_children": "YES",
+                "layout_type": "layout_relative",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "margin_top": "12",
+                "data_attributes": {
+                    "setLocalInfo:": {
+                        "click_area":"17"
+                    }
+                },
+                "subviews": [
+                    {
+                        "view_type": "container",
+                        "view_id": "id_first_row_container",
+                        "direction":"horizontal",
+                        "default_visible": "YES",
+                        "align_parent_left": "YES",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_first_item_container",
+                                "layout_type":"layout_relative",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "187.5"
+                                },
+                                "event_type": "cmd_url_click_card_report",
+                                "data_attributes": {
+                                    "setLocalInfo:": {
+                                        "click_area":"17"
+                                    }
+                                },
+                                "attributes": {
+                                    "setAttatchInfo:": "$news_jump_url_1"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_first_idex_title",
+                                        "margin_left": "32",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "20"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$hot_news_title_1",
+                                            "setTextColorString:": "#02081A",
+                                            "setFontSizeString:": "15",
+                                            "setNumberOfLinesString:": "1",
+                                            "setMaxWidth:type:": [
+                                                "135",
+                                                "relative"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_first_idex_tail",
+                                        "layout_type": "layout_relative",
+                                        "right_of_view": "id_first_idex_title",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "4",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["$idex_tail_url_1", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_first_idex_icon",
+                                        "layout_type": "layout_relative",
+                                        "visible_depend_on_brother": "id_first_idex_title",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left" : "12",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20201123/d6fc363438014c8b910253e49891c2ff.png", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_second_item_container",
+                                "layout_type":"layout_relative",
+                                "default_visible": "YES",
+                                "align_parent_left": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "187.5"
+                                },
+                                "event_type": "cmd_url_click_card_report",
+                                "data_attributes": {
+                                    "setLocalInfo:": {
+                                        "click_area":"17"
+                                    }
+                                },
+                                "attributes": {
+                                    "setAttatchInfo:": "$news_jump_url_2"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_second_idex_title",
+                                        "margin_left": "24.5",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "20"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$hot_news_title_2",
+                                            "setTextColorString:": "#02081A",
+                                            "setFontSizeString:": "15",
+                                            "setNumberOfLinesString:": "1",
+                                            "setMaxWidth:type:": [
+                                                "135",
+                                                "relative"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_second_idex_tail",
+                                        "layout_type": "layout_relative",
+                                        "right_of_view": "id_second_idex_title",
+                                        "margin_left":"4",
+                                        "align_parent_center_vertical": "YES",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["$idex_tail_url_2", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_second_idex_icon",
+                                        "layout_type": "layout_relative",
+                                        "visible_depend_on_brother": "id_second_idex_title",
+                                        "margin_left": "4.5",
+                                        "align_parent_center_vertical": "YES",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20201124/cdf789f0cd2c4e42a9092a1477c1b3c4.png", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "view_id": "id_second_row_container",
+                        "direction":"horizontal",
+                        "below_of_view": "id_first_row_container",
+                        "visible_depend_on_children": "YES",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_third_item_container",
+                                "layout_type":"layout_relative",
+                                "visible_depend_on_children": "YES",
+                                "margin_top": "12",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "187.5"
+                                },
+                                "event_type": "cmd_url_click_card_report",
+                                "data_attributes": {
+                                    "setLocalInfo:": {
+                                        "click_area":"17"
+                                    }
+                                },
+                                "attributes": {
+                                    "setAttatchInfo:": "$news_jump_url_3"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_third_idex_title",
+                                        "margin_left": "32",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "20"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$hot_news_title_3",
+                                            "setTextColorString:": "#02081A",
+                                            "setFontSizeString:": "15",
+                                            "setNumberOfLinesString:": "1",
+                                            "setMaxWidth:type:": [
+                                                "135",
+                                                "relative"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_third_idex_tail",
+                                        "layout_type": "layout_relative",
+                                        "right_of_view": "id_third_idex_title",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "4",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["$idex_tail_url_3", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_third_idex_icon",
+                                        "layout_type": "layout_relative",
+                                        "visible_depend_on_brother": "id_third_idex_title",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left" : "12",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20201124/1a7559b625df43c8a31cee5bdf7bb89e.png", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_four_item_container",
+                                "layout_type":"layout_relative",
+                                "visible_depend_on_children": "YES",
+                                "margin_top": "12",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "187.5"
+                                },
+                                "event_type": "cmd_url_click_card_report",
+                                "data_attributes": {
+                                    "setLocalInfo:": {
+                                        "click_area":"17"
+                                    }
+                                },
+                                "attributes": {
+                                    "setAttatchInfo:": "$news_jump_url_4"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_four_idex_title",
+                                        "margin_left": "24.5",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "20"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$hot_news_title_4",
+                                            "setTextColorString:": "#02081A",
+                                            "setFontSizeString:": "15",
+                                            "setNumberOfLinesString:": "1",
+                                            "setMaxWidth:type:": [
+                                                "135",
+                                                "relative"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_four_idex_tail",
+                                        "layout_type": "layout_relative",
+                                        "align_parent_center_vertical": "YES",
+                                        "right_of_view": "id_four_idex_title",
+                                        "margin_left": "4",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["$idex_tail_url_4", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_four_idex_icon",
+                                        "layout_type": "layout_relative",
+                                        "visible_depend_on_brother": "id_four_idex_title",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "4.5",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20201124/7c3215ee33c4433698d72f95fda815b3.png", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "view_id": "id_third_row_container",
+                        "direction":"horizontal",
+                        "below_of_view": "id_second_row_container",
+                        "visible_depend_on_children": "YES",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_five_item_container",
+                                "layout_type":"layout_relative",
+                                "margin_top": "12",
+                                "visible_depend_on_children": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "187.5"
+                                },
+                                "event_type": "cmd_url_click_card_report",
+                                "data_attributes": {
+                                    "setLocalInfo:": {
+                                        "click_area":"17"
+                                    }
+                                },
+                                "attributes": {
+                                    "setAttatchInfo:": "$news_jump_url_5"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_five_idex_title",
+                                        "margin_left": "32",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "20"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$hot_news_title_5",
+                                            "setTextColorString:": "#02081A",
+                                            "setFontSizeString:": "15",
+                                            "setNumberOfLinesString:": "1",
+                                            "setMaxWidth:type:": [
+                                                "135",
+                                                "relative"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_five_idex_tail",
+                                        "layout_type": "layout_relative",
+                                        "right_of_view": "id_five_idex_title",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "4",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["$idex_tail_url_5", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_five_idex_icon",
+                                        "layout_type": "layout_relative",
+                                        "visible_depend_on_brother": "id_five_idex_title",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left" : "12",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20201124/e68ec6813ac54261b046a205850efbab.png", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_six_item_container",
+                                "layout_type":"layout_relative",
+                                "visible_depend_on_children": "YES",
+                                "margin_top": "12",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "187.5"
+                                },
+                                "event_type": "cmd_url_click_card_report",
+                                "data_attributes": {
+                                    "setLocalInfo:": {
+                                        "click_area":"17"
+                                    }
+                                },
+                                "attributes": {
+                                    "setAttatchInfo:": "$news_jump_url_6"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_six_idex_title",
+                                        "margin_left": "24.5",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "20"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$hot_news_title_6",
+                                            "setTextColorString:": "#02081A",
+                                            "setFontSizeString:": "15",
+                                            "setNumberOfLinesString:": "1",
+                                            "setMaxWidth:type:": [
+                                                "135",
+                                                "relative"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_six_idex_tail",
+                                        "layout_type": "layout_relative",
+                                        "align_parent_center_vertical": "YES",
+                                        "right_of_view": "id_six_idex_title",
+                                        "margin_left":"4",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["$idex_tail_url_6", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_six_idex_icon",
+                                        "layout_type": "layout_relative",
+                                        "visible_depend_on_brother": "id_six_idex_title",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "4.5",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20201124/b024ab7cbcef4030aee36a3d5446472f.png", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "view_id": "id_four_row_container",
+                        "direction":"horizontal",
+                        "below_of_view": "id_third_row_container",
+                        "visible_depend_on_children": "YES",
+                        "align_parent_left": "YES",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_seven_item_container",
+                                "layout_type":"layout_relative",
+                                "visible_depend_on_children": "YES",
+                                "margin_top": "12",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "187.5"
+                                },
+                                "event_type": "cmd_url_click_card_report",
+                                "data_attributes": {
+                                    "setLocalInfo:": {
+                                        "click_area":"17"
+                                    }
+                                },
+                                "attributes": {
+                                    "setAttatchInfo:": "$news_jump_url_7"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_seven_idex_title",
+                                        "margin_left": "32",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$hot_news_title_7",
+                                            "setTextColorString:": "#02081A",
+                                            "setFontSizeString:": "15",
+                                            "setNumberOfLinesString:": "1",
+                                            "setMaxWidth:type:": [
+                                                "135",
+                                                "relative"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_seven_idex_tail",
+                                        "layout_type": "layout_relative",
+                                        "right_of_view": "id_seven_idex_title",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "4",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["$idex_tail_url_7", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_seven_idex_icon",
+                                        "layout_type": "layout_relative",
+                                        "visible_depend_on_brother": "id_seven_idex_title",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left" : "12",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "16"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20201124/ea669655117245ee9d238b0c8577615a.png", "1"],
+                                            "setScaleType:": "1"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "view_type": "container",
+                "view_id": "id_container_more",
+                "default_visible": "YES",
+                "direction":"horizontal",
+                "margin_top": "-31",
+                "height": {
+                    "type": "relative",
+                    "value": "36"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "subviews": [
+                    {
+                        "view_type": "UIView",
+                        "view_id": "id_placeholder",
+                        "default_visible": "YES",
+                        "margin_top": "5",
+                        "height": {
+                            "type": "relative",
+                            "value": "36"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "187.5"
+                        }
+                    },
+                    {
+                        "view_type": "UIView",
+                        "view_id": "id_more",
+                        "layout_type":"layout_relative",
+                        "default_visible": "YES",
+                        "margin_top": "5",
+                        "height": {
+                            "type": "relative",
+                            "value": "36"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "187.5"
+                        },
+                        "attributes": {
+                            "setBackgroundColorString:": "#FFFFFF"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_more_arrow",
+                                "default_visible": "YES",
+                                "align_parent_center_vertical": "YES",
+                                "margin_left": "4.5",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "16"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "16"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "rij_hot_search_arrow"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_more_text",
+                                "right_of_view": "id_more_arrow",
+                                "default_visible": "YES",
+                                "align_parent_center_vertical":"YES",
+                                "margin_left": "4",
+                                "event_type": "cmd_url_click_card_report",
+                                "data_attributes": {
+                                    "setLocalInfo:": {
+                                        "click_area":"18"
+                                    }
+                                },
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setAttatchInfo:": "$hot_search_url",
+                                    "setText:": "查看完整热搜榜",
+                                    "setTextColorString:": "#4E525E",
+                                    "setFontSizeString:": "14",
+                                    "setNumberOfLinesString:": "1",
+                                    "setMaxWidth:type:": [
+                                        "135",
+                                        "relative"
+                                    ]
+                                }
+                            },
+                            {
+                                "view_type": "UIView",
+                                "layout_type": "layout_relative",
+                                "view_id": "id_dislike_button",
+                                "align_parent_right": "YES",
+                                "align_parent_center_vertical": "YES",
+                                "default_visible": "YES",
+                                "margin_right": "-2",
+                                "event_type": "cmd_dislike_click",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "30"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "40"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_dislike_img",
+                                        "default_visible": "YES",
+                                        "align_parent_center": "YES",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "12"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "12"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "feeds_dislike"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {"$includeComponet":"componet/separator_normal_bottom.geojson"}
+        ]
+    }
+}

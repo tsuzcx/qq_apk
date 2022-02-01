@@ -1,26 +1,26 @@
 package com.tencent.avgame.gameroom.stage.guessaction;
 
-import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.gameroom.stage.IGameStageView.SwitchTopicClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class GuessActionStageView$1
-  implements Runnable
+  implements View.OnClickListener
 {
   GuessActionStageView$1(GuessActionStageView paramGuessActionStageView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.jdField_b_of_type_JavaLangRunnable);
-    if ((this.this$0.jdField_b_of_type_AndroidViewView != null) && (this.this$0.jdField_b_of_type_AndroidViewView.getVisibility() == 8)) {
-      this.this$0.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView);
     }
-    ThreadManager.getUIHandlerV2().postDelayed(this.this$0.jdField_b_of_type_JavaLangRunnable, 1000L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guessaction.GuessActionStageView.1
  * JD-Core Version:    0.7.0.1
  */

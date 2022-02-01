@@ -9,70 +9,63 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.config.handlers.RIJXTabConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJStringUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
-import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pjr;
-import pkh;
-import pqf;
-import prg;
-import rwb;
-import rwc;
 
 public class RIJUGCAddAccountFragment
   extends ViolaLazyFragment
 {
-  static int jdField_a_of_type_Int;
+  static int jdField_a_of_type_Int = 1;
   private static String jdField_a_of_type_JavaLangString = "RIJUGCAddAccountFragment";
   private static boolean jdField_a_of_type_Boolean;
-  public static int b;
-  private static boolean b;
-  public static int c = 3;
-  private rwc jdField_a_of_type_Rwc;
-  
-  static
-  {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-  }
+  static int jdField_b_of_type_Int = 2;
+  private static boolean jdField_b_of_type_Boolean;
+  static int c = 3;
+  private RIJUGCPopupPtsLiteBuilder jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcAccountRIJUGCPopupPtsLiteBuilder;
   
   static ReadInJoyUserInfo a(long paramLong)
   {
     return ReadInJoyUserInfoModule.a(paramLong, null);
   }
   
-  public static String a()
+  static String a()
   {
-    ReadInJoyUserInfo localReadInJoyUserInfo = a(pkh.a());
+    ReadInJoyUserInfo localReadInJoyUserInfo = a(ReadInJoyUtils.a());
     String str = ReadInJoyUserInfoModule.a();
     if (localReadInJoyUserInfo == null)
     {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "RIJUGCAddAccountFragment getNickName getReadInJoyUserInfoByUin is null! ");
-      return prg.a(str);
+      return RIJStringUtils.a(str);
     }
-    return prg.a(localReadInJoyUserInfo.nick);
+    return RIJStringUtils.a(localReadInJoyUserInfo.nick);
   }
   
   static void a()
   {
     try
     {
-      JSONObject localJSONObject = pqf.a();
-      localJSONObject.put("uin", pkh.a());
-      olh.a(null, "CliOper", "", "", "0X800AD87", "0X800AD87", 0, 0, "", "", "", localJSONObject.toString(), false);
+      JSONObject localJSONObject = RIJTransMergeKanDianReport.a();
+      localJSONObject.put("uin", ReadInJoyUtils.a());
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X800AD87", "0X800AD87", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)
@@ -81,14 +74,14 @@ public class RIJUGCAddAccountFragment
     }
   }
   
-  public static void a(int paramInt)
+  static void a(int paramInt)
   {
     try
     {
-      JSONObject localJSONObject = pqf.a();
-      localJSONObject.put("uin", pkh.a());
+      JSONObject localJSONObject = RIJTransMergeKanDianReport.a();
+      localJSONObject.put("uin", ReadInJoyUtils.a());
       localJSONObject.put("click_area", paramInt);
-      olh.a(null, "CliOper", "", "", "0X800AD89", "0X800AD89", 0, 0, "", "", "", localJSONObject.toString(), false);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X800AD89", "0X800AD89", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)
@@ -97,9 +90,9 @@ public class RIJUGCAddAccountFragment
     }
   }
   
-  public static void a(Context paramContext)
+  static void a(Context paramContext)
   {
-    if (a(pkh.a()) != null) {}
+    if (a(ReadInJoyUtils.a()) != null) {}
     for (boolean bool = true;; bool = false)
     {
       jdField_a_of_type_Boolean = bool;
@@ -110,30 +103,55 @@ public class RIJUGCAddAccountFragment
   
   private void a(ViewGroup paramViewGroup)
   {
-    ViewGroup localViewGroup1 = (ViewGroup)paramViewGroup.findViewById(2131380406);
-    ViewGroup localViewGroup2 = (ViewGroup)paramViewGroup.findViewById(2131380407);
-    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)paramViewGroup.findViewById(2131369582);
-    paramViewGroup = (KandianUrlImageView)paramViewGroup.findViewById(2131369583);
-    ViewGroup.LayoutParams localLayoutParams = paramViewGroup.getLayoutParams();
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
+    ViewGroup localViewGroup1 = (ViewGroup)paramViewGroup.findViewById(2131380849);
+    ViewGroup localViewGroup2 = (ViewGroup)paramViewGroup.findViewById(2131380850);
+    KandianUrlImageView localKandianUrlImageView1 = (KandianUrlImageView)paramViewGroup.findViewById(2131369853);
+    KandianUrlImageView localKandianUrlImageView2 = (KandianUrlImageView)paramViewGroup.findViewById(2131369854);
+    paramViewGroup = localKandianUrlImageView2.getLayoutParams();
+    if ((paramViewGroup instanceof ViewGroup.MarginLayoutParams))
     {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin = (ImmersiveUtils.getStatusBarHeight(getActivity()) + (getResources().getDimensionPixelSize(2131299080) - AIOUtils.dp2px(19.5F, getResources())) / 2);
-      paramViewGroup.setLayoutParams(localLayoutParams);
+      ((ViewGroup.MarginLayoutParams)paramViewGroup).topMargin = (ImmersiveUtils.getStatusBarHeight(getActivity()) + (getResources().getDimensionPixelSize(2131299166) - AIOUtils.a(19.5F, getResources())) / 2);
+      localKandianUrlImageView2.setLayoutParams(paramViewGroup);
     }
-    try
+    paramViewGroup = (ViewGroup.MarginLayoutParams)localKandianUrlImageView1.getLayoutParams();
+    int i;
+    if (RIJXTabConfigHandler.b().a())
     {
-      pjr.a(localKandianUrlImageView, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png"), getActivity());
-      pjr.a(paramViewGroup, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png"), getActivity());
-      this.jdField_a_of_type_Rwc = new rwc(getActivity(), localViewGroup2);
-      localViewGroup1.setOnClickListener(new rwb(this));
-      return;
-    }
-    catch (MalformedURLException paramViewGroup)
-    {
-      for (;;)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "[initView] error, e = " + paramViewGroup);
+      i = paramViewGroup.leftMargin + AIOUtils.a(6.0F, getResources());
+      paramViewGroup.leftMargin = i;
+      localKandianUrlImageView1.setLayoutParams(paramViewGroup);
+      if (!RIJXTabConfigHandler.b().a()) {
+        break label245;
       }
+      i = 8;
+      label154:
+      localKandianUrlImageView2.setVisibility(i);
+    }
+    for (;;)
+    {
+      try
+      {
+        if (!RIJXTabConfigHandler.b().a()) {
+          continue;
+        }
+        paramViewGroup = "https://pub.idqqimg.com/pc/misc/files/20201030/894f73da508f4e45b4defab92dfa40c2.png";
+        ReadInJoyDisplayUtils.a(localKandianUrlImageView1, new URL(paramViewGroup), getActivity());
+        ReadInJoyDisplayUtils.a(localKandianUrlImageView2, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png"), getActivity());
+      }
+      catch (MalformedURLException paramViewGroup)
+      {
+        label245:
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "[initView] error, e = " + paramViewGroup);
+        continue;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcAccountRIJUGCPopupPtsLiteBuilder = new RIJUGCPopupPtsLiteBuilder(getActivity(), localViewGroup2);
+      localViewGroup1.setOnClickListener(new RIJUGCAddAccountFragment.1(this));
+      return;
+      i = paramViewGroup.leftMargin;
+      break;
+      i = 0;
+      break label154;
+      paramViewGroup = "https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png";
     }
   }
   
@@ -142,9 +160,9 @@ public class RIJUGCAddAccountFragment
     ThreadManager.executeOnFileThread(new RIJUGCAddAccountFragment.2());
   }
   
-  public static void b(Context paramContext)
+  static void b(Context paramContext)
   {
-    if (TextUtils.isEmpty(pkh.a()))
+    if (TextUtils.isEmpty(ReadInJoyUtils.a()))
     {
       QLog.e(jdField_a_of_type_JavaLangString, 2, "editUGCAccount , but uin is empty !");
       jdField_b_of_type_Boolean = false;
@@ -190,7 +208,7 @@ public class RIJUGCAddAccountFragment
   
   public int getContentViewId()
   {
-    return 2131560343;
+    return 2131560412;
   }
   
   public void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup)
@@ -221,12 +239,12 @@ public class RIJUGCAddAccountFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Rwc.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcAccountRIJUGCPopupPtsLiteBuilder.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment
  * JD-Core Version:    0.7.0.1
  */

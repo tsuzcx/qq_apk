@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import ykq;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 class VideoCompositeHelper$1
   implements Runnable
@@ -12,11 +12,11 @@ class VideoCompositeHelper$1
   {
     try
     {
-      ykq.d(VideoCompositeHelper.TAG, "composite thread try get lock");
+      SLog.d(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "composite thread try get lock");
       try
       {
-        ykq.c(VideoCompositeHelper.TAG, "composite thread get lock and start doComposite");
-        this.this$0.doComposite(this.val$info, this.val$outPath, this.val$isClearDoodle, this.val$isLoopAudio, this.val$compositeCallBack);
+        SLog.c(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "composite thread get lock and start doComposite");
+        this.this$0.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack);
         return;
       }
       finally {}
@@ -24,14 +24,14 @@ class VideoCompositeHelper$1
     }
     catch (Exception localException)
     {
-      ykq.c(VideoCompositeHelper.TAG, "do composite exception", localException);
-      this.val$compositeCallBack.onVideoCompositeFinish(942012, localException.getMessage(), "");
+      SLog.c(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "do composite exception", localException);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(942012, localException.getMessage(), "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.1
  * JD-Core Version:    0.7.0.1
  */

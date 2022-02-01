@@ -48,6 +48,18 @@ public abstract class TAVResource
     return null;
   }
   
+  @NonNull
+  protected TrackInfo newEmptyTrackInfo(int paramInt1, int paramInt2)
+  {
+    Object localObject = (AssetTrack)tracksForType(paramInt1).get(paramInt2);
+    TrackInfo localTrackInfo = new TrackInfo();
+    localTrackInfo.setTrack((AssetTrack)localObject);
+    localObject = new CMTime(1L, 30);
+    localTrackInfo.setSelectedTimeRange(new CMTimeRange(CMTime.CMTimeZero, (CMTime)localObject));
+    localTrackInfo.setScaleToDuration(getScaledDuration());
+    return localTrackInfo;
+  }
+  
   public void setDuration(@NonNull CMTime paramCMTime)
   {
     this.duration = paramCMTime;
@@ -71,13 +83,7 @@ public abstract class TAVResource
   @Nullable
   public TrackInfo trackInfoForType(int paramInt1, int paramInt2)
   {
-    Object localObject = (AssetTrack)tracksForType(paramInt1).get(paramInt2);
-    TrackInfo localTrackInfo = new TrackInfo();
-    localTrackInfo.setTrack((AssetTrack)localObject);
-    localObject = new CMTime(1L, 30);
-    localTrackInfo.setSelectedTimeRange(new CMTimeRange(CMTime.CMTimeZero, (CMTime)localObject));
-    localTrackInfo.setScaleToDuration(getScaledDuration());
-    return localTrackInfo;
+    return newEmptyTrackInfo(paramInt1, paramInt2);
   }
   
   public List<AssetTrack> tracksForType(int paramInt)
@@ -91,7 +97,7 @@ public abstract class TAVResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TAVResource
  * JD-Core Version:    0.7.0.1
  */

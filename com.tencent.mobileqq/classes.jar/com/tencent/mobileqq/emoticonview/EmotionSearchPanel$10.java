@@ -17,15 +17,15 @@ class EmotionSearchPanel$10
   public void onGlobalLayout()
   {
     if (this.this$0.isDestory) {}
-    Rect localRect;
+    Object localObject;
     int j;
     boolean bool;
     do
     {
       return;
-      localRect = new Rect();
-      this.this$0.decorView.getWindowVisibleDisplayFrame(localRect);
-      int i = localRect.bottom - localRect.top;
+      localObject = new Rect();
+      this.this$0.decorView.getWindowVisibleDisplayFrame((Rect)localObject);
+      int i = ((Rect)localObject).bottom - ((Rect)localObject).top;
       j = this.this$0.decorView.getHeight();
       if (i / j >= 0.8D) {
         break;
@@ -37,7 +37,7 @@ class EmotionSearchPanel$10
     } while (bool == this.this$0.isVisiableForLast);
     if (bool)
     {
-      EmotionSearchPanel.keyboardHeight = j - localRect.bottom;
+      EmotionSearchPanel.keyboardHeight = j - ((Rect)localObject).bottom;
       if (QLog.isColorLevel()) {
         QLog.d("EmotionSearchPanel", 2, "keyboardHeight=" + EmotionSearchPanel.keyboardHeight);
       }
@@ -51,11 +51,15 @@ class EmotionSearchPanel$10
       return;
       bool = false;
       break;
-      if (this.this$0.emotionPanelState == 2) {
-        this.this$0.chatPie.showEmoticonPanel(12);
+      if (this.this$0.emotionPanelState == 2)
+      {
+        localObject = (AIOEmoticonPanelHelper)this.this$0.chatPie.a(104);
+        if (localObject != null) {
+          ((AIOEmoticonPanelHelper)localObject).showEmoticonPanel(12);
+        }
       }
       this.this$0.startExitAinm();
-      if (!StringUtil.isEmpty(this.this$0.emotionInput.getText().toString())) {
+      if (!StringUtil.a(this.this$0.emotionInput.getText().toString())) {
         EmoticonUtils.report("0X800AE25", 0);
       }
     }
@@ -63,7 +67,7 @@ class EmotionSearchPanel$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionSearchPanel.10
  * JD-Core Version:    0.7.0.1
  */

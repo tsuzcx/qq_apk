@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.jsp;
 
-import avzk;
-import becb;
+import com.tencent.mobileqq.teamwork.TeamWorkHandler;
 
-public class DocxApiPlugin$4
+class DocxApiPlugin$4
   implements Runnable
 {
-  public DocxApiPlugin$4(avzk paramavzk, String paramString) {}
+  DocxApiPlugin$4(DocxApiPlugin paramDocxApiPlugin, String paramString) {}
   
   public void run()
   {
-    becb.a(this.a);
+    TeamWorkHandler.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.4
  * JD-Core Version:    0.7.0.1
  */

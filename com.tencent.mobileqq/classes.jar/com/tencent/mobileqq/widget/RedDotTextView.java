@@ -43,7 +43,7 @@ public class RedDotTextView
     if (this.jdField_a_of_type_Boolean)
     {
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850427);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850830);
       }
       String str = getText().toString();
       TextPaint localTextPaint = getPaint();
@@ -93,12 +93,12 @@ public class RedDotTextView
     return this.jdField_a_of_type_Boolean;
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
@@ -109,7 +109,7 @@ public class RedDotTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RedDotTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
@@ -18,7 +18,7 @@ public class SetAvatarNativePlugin
   
   public void onDestroy() {}
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     QLog.i("SetAvatarNativePlugin", 1, "onInvoke, param=" + paramJSONObject);
     try

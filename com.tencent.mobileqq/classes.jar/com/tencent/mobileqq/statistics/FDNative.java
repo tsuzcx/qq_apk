@@ -3,15 +3,15 @@ package com.tencent.mobileqq.statistics;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import mqq.app.MobileQQ;
 
 public class FDNative
 {
   private static FDNative jdField_a_of_type_ComTencentMobileqqStatisticsFDNative;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   private FDNative()
   {
@@ -20,7 +20,7 @@ public class FDNative
   
   public static int a()
   {
-    int i = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.sApplication.getApplicationContext()).getInt("FDHookFailTime", 0);
+    int i = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext()).getInt("FDHookFailTime", 0);
     if (QLog.isColorLevel()) {
       QLog.d("FDStats", 2, new Object[] { "getFailTime ", Integer.valueOf(i) });
     }
@@ -44,7 +44,7 @@ public class FDNative
   {
     if (a() >= 30)
     {
-      long l = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.sApplication.getApplicationContext()).getLong("FDHookLastInterval", 0L);
+      long l = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext()).getLong("FDHookLastInterval", 0L);
       if ((System.currentTimeMillis() - l > 86400000L) && (l != 0L))
       {
         a(0);
@@ -55,7 +55,7 @@ public class FDNative
   
   public static void a(int paramInt)
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.sApplication.getApplicationContext());
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext());
     localSharedPreferences.edit().putInt("FDHookFailTime", paramInt).apply();
     if (QLog.isColorLevel()) {
       QLog.d("FDStats", 2, new Object[] { "setFailTime ", Integer.valueOf(paramInt) });
@@ -69,7 +69,7 @@ public class FDNative
   
   public static void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.sApplication.getApplicationContext());
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext());
     localSharedPreferences.edit().putBoolean("FDHook", paramBoolean1).commit();
     if (!paramBoolean2) {
       localSharedPreferences.edit().putBoolean("FDHookChanged", true).commit();
@@ -81,7 +81,7 @@ public class FDNative
   
   public static boolean b()
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.sApplication.getApplicationContext());
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext());
     localSharedPreferences.getBoolean("FDHookChanged", false);
     boolean bool = localSharedPreferences.getBoolean("FDHook", true);
     if (QLog.isColorLevel()) {
@@ -124,7 +124,7 @@ public class FDNative
   {
     if (!this.b)
     {
-      this.jdField_a_of_type_Boolean = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.sApplication.getApplicationContext()).getBoolean("FDLog", false);
+      this.jdField_a_of_type_Boolean = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext()).getBoolean("FDLog", false);
       if (QLog.isColorLevel()) {
         QLog.d("FDStats", 2, new Object[] { "getEnableLog ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
       }

@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.text.TextUtils;
 import android.util.Log;
-import bdjw;
+import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
@@ -41,12 +41,12 @@ public class QZoneExceptionReport
     }
     addStackTag(paramThrowable);
     QLog.d("QZoneExceptionReport", 2, "", paramThrowable);
-    bdjw.a(paramThrowable, str);
+    CaughtExceptionReport.a(paramThrowable, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.QZoneExceptionReport
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter;
 
-import bpam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import yui;
 
 public class DoodleMagicAlgoHandler
 {
@@ -81,17 +79,17 @@ public class DoodleMagicAlgoHandler
         localRenderPoint.xList = paramArrayOfFloat1;
         localRenderPoint.yList = paramArrayOfFloat2;
         localRenderPoint.aList = paramArrayOfFloat3;
-        if (!(localVideoFilterBase instanceof yui)) {
+        if (!(localVideoFilterBase instanceof com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityFireworksFilter)) {
           break label108;
         }
-        ((yui)localVideoFilterBase).a(localRenderPoint);
+        ((com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityFireworksFilter)localVideoFilterBase).a(localRenderPoint);
       }
     }
     label108:
-    while (!(localVideoFilterBase instanceof bpam)) {
+    while (!(localVideoFilterBase instanceof dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityFireworksFilter)) {
       return;
     }
-    ((bpam)localVideoFilterBase).a(localRenderPoint);
+    ((dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityFireworksFilter)localVideoFilterBase).a(localRenderPoint);
   }
   
   public static void setFilter(VideoFilterBase paramVideoFilterBase)

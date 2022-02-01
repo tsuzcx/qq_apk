@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.ark;
 
-import apwz;
-import apxa;
-
-public class ArkAiDictUpdateMgr$1$1$1
+class ArkAiDictUpdateMgr$1$1$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$1$1$1(apxa paramapxa) {}
+  ArkAiDictUpdateMgr$1$1$1(ArkAiDictUpdateMgr.1.1 param1) {}
   
   public void run()
   {

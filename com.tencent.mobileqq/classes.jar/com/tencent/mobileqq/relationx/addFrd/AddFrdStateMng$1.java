@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.relationx.addFrd;
 
-import bbcj;
-
-public class AddFrdStateMng$1
+class AddFrdStateMng$1
   implements Runnable
 {
-  public AddFrdStateMng$1(bbcj parambbcj) {}
+  AddFrdStateMng$1(AddFrdStateMng paramAddFrdStateMng) {}
   
   public void run()
   {
-    bbcj.a(this.this$0);
+    AddFrdStateMng.a(this.this$0);
     this.this$0.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.addFrd.AddFrdStateMng.1
  * JD-Core Version:    0.7.0.1
  */

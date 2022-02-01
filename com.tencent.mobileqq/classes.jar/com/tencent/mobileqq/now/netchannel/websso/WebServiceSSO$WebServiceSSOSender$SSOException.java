@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.now.netchannel.websso;
 
-public class WebServiceSSO$WebServiceSSOSender$SSOException
+class WebServiceSSO$WebServiceSSOSender$SSOException
   extends Exception
 {
   final int errorCode;
   final String errorMessage;
   
-  public WebServiceSSO$WebServiceSSOSender$SSOException(WebServiceSSO.WebServiceSSOSender paramWebServiceSSOSender, int paramInt, String paramString)
+  WebServiceSSO$WebServiceSSOSender$SSOException(WebServiceSSO.WebServiceSSOSender paramWebServiceSSOSender, int paramInt, String paramString)
   {
     super("errorCode==" + paramInt + " errorMessage==" + paramString);
     this.errorCode = paramInt;

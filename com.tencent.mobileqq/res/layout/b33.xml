@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ij"
-  xmlns:android="http://schemas.android.com/apk/res/android">
+<com.tencent.mobileqq.widget.FormItemRelativeLayout android:background="@drawable/common_strip_setting_middle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ij" formItem:bgType="evy"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
     <ImageView android:id="@id/ey3" android:padding="12.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/evi" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     <ImageView android:id="@id/icon" android:layout_width="@dimen/ik" android:layout_height="@dimen/ik" android:layout_marginLeft="@dimen/is" android:layout_marginRight="@dimen/iu" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     <ImageView android:gravity="center_vertical" android:id="@id/dyk" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/iu" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
@@ -15,4 +15,4 @@
         <com.tencent.mobileqq.widget.StatableSpanTextView android:textSize="@dimen/j9" android:textColor="@color/skin_gray2" android:ellipsize="end" android:gravity="center|left" android:id="@id/text2" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:singleLine="true" android:includeFontPadding="false" android:drawablePadding="2.0dip" />
     </LinearLayout>
     <ImageView android:id="@id/yx" android:visibility="gone" android:duplicateParentState="true" android:layout_width="9.0dip" android:layout_height="15.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="@dimen/iu" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+</com.tencent.mobileqq.widget.FormItemRelativeLayout>

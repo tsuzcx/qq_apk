@@ -9,7 +9,7 @@ public final class RspActivity
 {
   static byte[] cache_strRspAct;
   public short shShowPos = 2;
-  public byte[] strRspAct;
+  public byte[] strRspAct = null;
   
   public RspActivity() {}
   

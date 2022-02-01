@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -11,7 +10,7 @@ public class BusinessBrowser
 {
   public BusinessBrowser()
   {
-    this.a = BusinessBrowser.BusinessBrowserFragment.class;
+    this.mFragmentClass = BusinessBrowser.BusinessBrowserFragment.class;
   }
   
   @Override
@@ -32,7 +31,7 @@ public class BusinessBrowser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser
  * JD-Core Version:    0.7.0.1
  */

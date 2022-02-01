@@ -9,27 +9,25 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import aoke;
-import aokn;
-import bheg;
-import blfw;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.avatar.api.IQQAvatarUtilApi;
+import com.tencent.mobileqq.avatar.utils.AvatarUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.ITroopUtilApi;
 import com.tencent.mobileqq.util.AsynLoadDrawable;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public abstract class FaceDrawable
   extends AsynLoadDrawable
-  implements FaceDecodeTask.DecodeCompletionListener
+  implements DecodeCompletionListener
 {
+  private static final int AVATAR_SQUARE_RADIUS = 10;
   private static final String TAG = "Q.qqhead.FaceDrawable";
   boolean isSupportMaskView = false;
-  public boolean mCancelled;
-  public FaceInfo mFaceInfo;
+  boolean mCancelled;
+  FaceInfo mFaceInfo;
   FaceDrawable.OnLoadingStateChangeListener mListener;
   Paint mMaskPaint;
   RectF tempRectF = new RectF();
@@ -48,18 +46,18 @@ public abstract class FaceDrawable
     if ((paramInt1 == 101) || (paramInt1 == 1001)) {
       paramInt3 = 3;
     }
-    this.mFaceInfo = new FaceInfo(paramInt1, paramString, false, paramByte, aoke.a((byte)paramInt3), paramBoolean1, paramInt2, paramBoolean2, paramInt4);
-    if ((paramInt1 == 4) && (!TroopUtils.hasSetTroopHead(paramString))) {
+    this.mFaceInfo = new FaceInfo(paramInt1, paramString, false, paramByte, AvatarUtil.a((byte)paramInt3), paramBoolean1, paramInt2, paramBoolean2, paramInt4);
+    if ((paramInt1 == 4) && (!((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).hasSetTroopHead(paramString))) {
       this.mFaceInfo.a = 113;
     }
-    if ((this instanceof aokn))
+    if ((this instanceof NearByFaceDrawable))
     {
       paramAppInterface = getBitmapFromCache();
       if (paramAppInterface == null) {
-        break label271;
+        break label281;
       }
       this.mCurState = 1;
-      this.mLoadedDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), paramAppInterface);
+      this.mLoadedDrawable = new BitmapDrawable(BaseApplication.getContext().getResources(), paramAppInterface);
       this.mLoadedDrawable.setVisible(isVisible(), true);
       this.mLoadedDrawable.setBounds(getBounds());
     }
@@ -70,7 +68,7 @@ public abstract class FaceDrawable
       }
       this.mMaskPaint = new Paint();
       this.mMaskPaint.setAntiAlias(true);
-      this.mMaskPaint.setColor(ThemeUtil.NIGHTMODE_MASKCOLOR);
+      this.mMaskPaint.setColor(ThemeUtil.a);
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.i("Q.qqhead.FaceDrawable", 2, "time cost FaceDrawable:" + (l2 - l1));
@@ -78,7 +76,7 @@ public abstract class FaceDrawable
       return;
       paramAppInterface = getBitmapFromCache(true);
       break;
-      label271:
+      label281:
       this.mCurState = 0;
       requestDecode();
     }
@@ -87,18 +85,18 @@ public abstract class FaceDrawable
   public static Drawable getDefaultDrawable(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 4) {
-      return bheg.c();
+      return ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDefaultTroopFaceDrawable();
     }
     if ((paramInt1 == 113) || (paramInt1 == 101) || (paramInt1 == 1001)) {
-      return bheg.e();
+      return ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDefaultDiscusionFaceDrawable();
     }
     if (paramInt1 == 115) {
-      return bheg.a(true);
+      return ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDefaultFaceDrawable(true);
     }
     if (paramInt2 == 1) {
       return new ColorDrawable(Color.parseColor("#ebe9e9"));
     }
-    return bheg.b();
+    return ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDefaultFaceDrawable(false);
   }
   
   public static FaceDrawable getFaceDrawable(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString)
@@ -126,19 +124,17 @@ public abstract class FaceDrawable
   
   public static FaceDrawable getFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, Drawable paramDrawable1, Drawable paramDrawable2, FaceDrawable.OnLoadingStateChangeListener paramOnLoadingStateChangeListener, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramAppInterface == null)) {
+    if ((TextUtils.isEmpty(paramString)) || (paramAppInterface == null))
+    {
       if (QLog.isColorLevel()) {
         QLog.i("Q.qqhead.FaceDrawable", 2, "getFaceDrawable fail, uin=" + paramString + ", type=" + paramInt1 + ",appIntf=" + paramAppInterface);
       }
-    }
-    do
-    {
       return null;
-      if ((paramAppInterface instanceof QQAppInterface)) {
-        return new FaceDrawableImpl(paramAppInterface, paramInt1, 200, paramString, (byte)0, paramInt2, 100, false, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean);
-      }
-    } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new aokn(paramAppInterface, paramInt1, 200, paramString, (byte)1, paramInt2, false, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean);
+    }
+    if ("module_nearby".equals(paramAppInterface.getModuleId())) {
+      return new NearByFaceDrawable(paramAppInterface, paramInt1, 200, paramString, (byte)1, paramInt2, false, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean);
+    }
+    return new FaceDrawableImpl(paramAppInterface, paramInt1, 200, paramString, (byte)0, paramInt2, 100, false, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean);
   }
   
   public static FaceDrawable getFaceDrawableFrom(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2)
@@ -185,40 +181,34 @@ public abstract class FaceDrawable
   
   public static FaceDrawable getStrangerFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, FaceDrawable.OnLoadingStateChangeListener paramOnLoadingStateChangeListener, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramAppInterface == null)) {
+    if ((TextUtils.isEmpty(paramString)) || (paramAppInterface == null))
+    {
       if (QLog.isColorLevel()) {
         QLog.i("Q.qqhead.FaceDrawable", 2, "getFaceDrawable fail, uin=" + paramString + ", idType=" + paramInt1 + ",appIntf=" + paramAppInterface + ",shape=" + paramInt2);
       }
-    }
-    Drawable localDrawable;
-    do
-    {
       return null;
-      localDrawable = getDefaultDrawable(32, paramInt2);
-      if ((paramAppInterface instanceof QQAppInterface)) {
-        return new FaceDrawableImpl(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, 100, true, localDrawable, localDrawable, paramOnLoadingStateChangeListener, paramBoolean);
-      }
-    } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new aokn(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, true, localDrawable, localDrawable, paramOnLoadingStateChangeListener, paramBoolean);
+    }
+    Drawable localDrawable = getDefaultDrawable(32, paramInt2);
+    if ("module_nearby".equals(paramAppInterface.getModuleId())) {
+      return new NearByFaceDrawable(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, true, localDrawable, localDrawable, paramOnLoadingStateChangeListener, paramBoolean);
+    }
+    return new FaceDrawableImpl(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, 100, true, localDrawable, localDrawable, paramOnLoadingStateChangeListener, paramBoolean);
   }
   
   public static FaceDrawable getStrangerFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramAppInterface == null)) {
+    if ((TextUtils.isEmpty(paramString)) || (paramAppInterface == null))
+    {
       if (QLog.isColorLevel()) {
         QLog.i("Q.qqhead.FaceDrawable", 2, "getFaceDrawable fail, uin=" + paramString + ", idType=" + paramInt1 + ",appIntf=" + paramAppInterface + ",shape=" + paramInt2);
       }
-    }
-    Drawable localDrawable;
-    do
-    {
       return null;
-      localDrawable = getDefaultDrawable(32, paramInt2);
-      if ((paramAppInterface instanceof QQAppInterface)) {
-        return new FaceDrawableImpl(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, 100, true, localDrawable, localDrawable, null, paramBoolean);
-      }
-    } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new aokn(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, true, localDrawable, localDrawable, null, paramBoolean);
+    }
+    Drawable localDrawable = getDefaultDrawable(32, paramInt2);
+    if ("module_nearby".equals(paramAppInterface.getModuleId())) {
+      return new NearByFaceDrawable(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, true, localDrawable, localDrawable, null, paramBoolean);
+    }
+    return new FaceDrawableImpl(paramAppInterface, 32, paramInt1, paramString, (byte)1, paramInt2, 100, true, localDrawable, localDrawable, null, paramBoolean);
   }
   
   public static FaceDrawable getStrangerFaceDrawable(AppInterface paramAppInterface, int paramInt, String paramString, boolean paramBoolean)
@@ -228,21 +218,18 @@ public abstract class FaceDrawable
   
   public static FaceDrawable getStrangerFaceDrawable(AppInterface paramAppInterface, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramAppInterface == null)) {
+    if ((TextUtils.isEmpty(paramString)) || (paramAppInterface == null))
+    {
       if (QLog.isColorLevel()) {
         QLog.i("Q.qqhead.FaceDrawable", 2, "getFaceDrawable fail, uin=" + paramString + ", idType=" + paramInt + ",appIntf=" + paramAppInterface);
       }
-    }
-    Drawable localDrawable;
-    do
-    {
       return null;
-      localDrawable = getDefaultDrawable(32, 3);
-      if ((paramAppInterface instanceof QQAppInterface)) {
-        return new FaceDrawableImpl(paramAppInterface, 32, paramInt, paramString, (byte)1, 3, 100, paramBoolean1, localDrawable, localDrawable, null, paramBoolean2);
-      }
-    } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new aokn(paramAppInterface, 32, paramInt, paramString, (byte)1, 3, paramBoolean1, localDrawable, localDrawable, null, paramBoolean2);
+    }
+    Drawable localDrawable = getDefaultDrawable(32, 3);
+    if ("module_nearby".equals(paramAppInterface.getModuleId())) {
+      return new NearByFaceDrawable(paramAppInterface, 32, paramInt, paramString, (byte)1, 3, paramBoolean1, localDrawable, localDrawable, null, paramBoolean2);
+    }
+    return new FaceDrawableImpl(paramAppInterface, 32, paramInt, paramString, (byte)1, 3, 100, paramBoolean1, localDrawable, localDrawable, null, paramBoolean2);
   }
   
   public static FaceDrawable getUserFaceDrawable(AppInterface paramAppInterface, String paramString, byte paramByte)
@@ -269,7 +256,7 @@ public abstract class FaceDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    if ((this.isSupportMaskView) && (blfw.a()))
+    if ((this.isSupportMaskView) && (ThemeUtil.a(null, false, null)))
     {
       this.tempRectF.set(getBounds());
       if ((this.mFaceInfo != null) && (this.mFaceInfo.c == 1))
@@ -305,7 +292,7 @@ public abstract class FaceDrawable
     paramFaceInfo = null;
     int j = 0;
     if (paramBitmap != null) {
-      paramFaceInfo = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), paramBitmap);
+      paramFaceInfo = new BitmapDrawable(BaseApplication.getContext().getResources(), paramBitmap);
     }
     int i;
     if (paramFaceInfo != null)
@@ -387,7 +374,7 @@ public abstract class FaceDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -8,23 +8,23 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import ascz;
-import asde;
-import asdf;
-import ashz;
-import bhdj;
-import bhnp;
-import bieo;
-import bifw;
-import bisl;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory.EmojiPayReqData;
+import com.tencent.mobileqq.emosm.DataFactory.EmojiPayRespData;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import org.json.JSONException;
@@ -36,15 +36,15 @@ public abstract class EmojiUiPlugin
 {
   public static final String tag = "Q.emoji.web.EmojiUiPlugin";
   boolean bNeedGetKey = false;
-  protected boolean closeBtnClick;
+  protected boolean closeBtnClick = false;
   EmojiUiPlugin.HomePageUrlInfo configUrl = new EmojiUiPlugin.HomePageUrlInfo(this);
   String errorUrl = "";
   String errordescription = "";
   int failcode = 0;
   EmojiUiPlugin.HomePageLoadInfo homePageUrlInfo = new EmojiUiPlugin.HomePageLoadInfo(this);
   protected int loadmode;
-  protected int mActivityType = 2;
-  ascz mEmojiKeygetOnRemoteResp = new EmojiUiPlugin.1(this);
+  int mActivityType = 2;
+  Client.OnRemoteRespObserver mEmojiKeygetOnRemoteResp = new EmojiUiPlugin.1(this);
   protected int mEmomallNewTimeFlag = -1;
   protected String mSelfUin;
   String mSid = "";
@@ -53,7 +53,7 @@ public abstract class EmojiUiPlugin
   long openToOncreateGap = -1L;
   long openTogetKeyTimeGap = -1L;
   int processStep = 1;
-  bisl progressDialog;
+  QQProgressDialog progressDialog;
   
   private void dismissProgressDialog()
   {
@@ -119,7 +119,7 @@ public abstract class EmojiUiPlugin
   
   private void showGetKeyErrorDialog()
   {
-    QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = bhdj.a(this.activity, 230).setTitle(this.activity.getString(2131691869)).setMessage(this.activity.getString(2131691868)).setLeftButton(this.activity.getString(2131694399), new EmojiUiPlugin.3(this));
+    QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.a(this.activity, 230).a(this.activity.getString(2131691994)).b(this.activity.getString(2131691993)).a(this.activity.getString(2131694615), new EmojiUiPlugin.3(this));
     localQQCustomDialogThreeBtns.setOnDismissListener(this);
     localQQCustomDialogThreeBtns.setCanceledOnTouchOutside(false);
     localQQCustomDialogThreeBtns.show();
@@ -130,7 +130,7 @@ public abstract class EmojiUiPlugin
     this.mRuntime.a().runOnUiThread(new EmojiUiPlugin.4(this));
   }
   
-  protected void OnActivityCreate()
+  void OnActivityCreate()
   {
     super.OnActivityCreate();
     this.mSelfUin = getInfoIntent().getExtras().getString("selfuin");
@@ -142,16 +142,16 @@ public abstract class EmojiUiPlugin
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.EmojiUiPlugin", 2, "emojiactivity oncreate");
     }
-    ashz.a().a(this.mEmojiKeygetOnRemoteResp);
+    WebIPCOperator.a().a(this.mEmojiKeygetOnRemoteResp);
   }
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    ashz.a().b(this.mEmojiKeygetOnRemoteResp);
+    WebIPCOperator.a().b(this.mEmojiKeygetOnRemoteResp);
   }
   
-  protected void OnActivityPause()
+  void OnActivityPause()
   {
     super.OnActivityPause();
     if (Build.VERSION.SDK_INT < 16)
@@ -199,7 +199,7 @@ public abstract class EmojiUiPlugin
       localIntent.addFlags(536870912);
       localIntent.putExtra("back_from_emojimall", true);
       localIntent.setClass(this.activity, SplashActivity.class);
-      localIntent = AIOUtils.setOpenAIOIntent(localIntent, null);
+      localIntent = AIOUtils.a(localIntent, null);
       this.activity.startActivity(localIntent);
       if (QLog.isDevelopLevel()) {
         QLog.d("Q.emoji.web.EmojiUiPlugin", 4, "emojimallbaseactivity closeAllPage to chatactivity");
@@ -249,9 +249,9 @@ public abstract class EmojiUiPlugin
   {
     if (paramInt == 6)
     {
-      this.configUrl.index = bhnp.a(this.activity, "magicPlus", "");
+      this.configUrl.index = IndividuationUrlHelper.a(this.activity, "magicPlus", "");
       if (this.configUrl.index == null) {
-        this.configUrl.index = bhnp.a(this.activity, "emoji", "");
+        this.configUrl.index = IndividuationUrlHelper.a(this.activity, "emoji", "");
       }
       this.configUrl.indexSession = VasWebviewConstants.LOCAL_URL_NEED_KEY_SWITCHER.booleanValue();
     }
@@ -267,9 +267,9 @@ public abstract class EmojiUiPlugin
     }
     if ((paramInt1 == 1) && (paramIntent != null) && (paramIntent.getExtras() != null))
     {
-      asdf localasdf = asdf.a(paramIntent.getExtras());
-      paramIntent = asde.a(paramIntent.getExtras());
-      onPayResultCallback(localasdf.jdField_a_of_type_JavaLangString, localasdf.jdField_a_of_type_Int, localasdf.b, localasdf.c, localasdf.d, localasdf.e, paramIntent.jdField_a_of_type_JavaLangString);
+      DataFactory.EmojiPayRespData localEmojiPayRespData = DataFactory.EmojiPayRespData.a(paramIntent.getExtras());
+      paramIntent = DataFactory.EmojiPayReqData.a(paramIntent.getExtras());
+      onPayResultCallback(localEmojiPayRespData.jdField_a_of_type_JavaLangString, localEmojiPayRespData.jdField_a_of_type_Int, localEmojiPayRespData.b, localEmojiPayRespData.c, localEmojiPayRespData.d, localEmojiPayRespData.e, paramIntent.jdField_a_of_type_JavaLangString);
     }
     do
     {
@@ -315,21 +315,21 @@ public abstract class EmojiUiPlugin
   
   public void uiSetCallBack()
   {
-    WebViewFragment localWebViewFragment = this.mRuntime.a();
+    WebViewFragment localWebViewFragment = (WebViewFragment)this.mRuntime.a();
     if (localWebViewFragment != null)
     {
-      localWebViewFragment.mUIStyleHandler.initTitleBar(getInfoIntent(), this.homePageUrlInfo.homePageUrl);
-      if ((localWebViewFragment.mSwiftTitleUI.leftView != null) && (this.mActivityType == 1) && ((this.mSrcFromType == 1) || (this.mSrcFromType == 6)))
+      localWebViewFragment.mUIStyleHandler.a(getInfoIntent(), this.homePageUrlInfo.homePageUrl);
+      if ((localWebViewFragment.mSwiftTitleUI.a != null) && (this.mActivityType == 1) && ((this.mSrcFromType == 1) || (this.mSrcFromType == 6)))
       {
-        localWebViewFragment.mSwiftTitleUI.leftView.setText(2131690845);
-        localWebViewFragment.mSwiftTitleUI.leftView.setOnClickListener(new EmojiUiPlugin.2(this));
+        localWebViewFragment.mSwiftTitleUI.a.setText(2131690946);
+        localWebViewFragment.mSwiftTitleUI.a.setOnClickListener(new EmojiUiPlugin.2(this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin
  * JD-Core Version:    0.7.0.1
  */

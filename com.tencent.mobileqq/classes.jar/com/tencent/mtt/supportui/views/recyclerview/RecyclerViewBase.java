@@ -105,7 +105,7 @@ public abstract class RecyclerViewBase
   final ArrayList<RecyclerViewBase.UpdateOp> mPendingUpdates = new ArrayList();
   final boolean mPostUpdatesOnAnimation;
   protected boolean mPostedAnimatorRunner = false;
-  protected RecyclerViewBase.Recycler mRecycler = new RecyclerViewBase.Recycler(this);
+  public RecyclerViewBase.Recycler mRecycler = new RecyclerViewBase.Recycler(this);
   RecyclerViewBase.OnScrollListener mScrollListener;
   protected int mScrollPointerId = -1;
   protected boolean mScrollRunnablePosted;
@@ -302,7 +302,7 @@ public abstract class RecyclerViewBase
     return paramBoolean3;
   }
   
-  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return ((paramLayoutParams instanceof RecyclerViewBase.LayoutParams)) && (this.mLayout.checkLayoutParams((RecyclerViewBase.LayoutParams)paramLayoutParams));
   }
@@ -627,7 +627,7 @@ public abstract class RecyclerViewBase
     }
   }
   
-  protected int computeHorizontalScrollExtent()
+  public int computeHorizontalScrollExtent()
   {
     if (this.mLayout.canScrollHorizontally()) {
       return this.mLayout.computeHorizontalScrollExtent(this.mState);
@@ -635,7 +635,7 @@ public abstract class RecyclerViewBase
     return 0;
   }
   
-  protected int computeHorizontalScrollOffset()
+  public int computeHorizontalScrollOffset()
   {
     if (this.mLayout.canScrollHorizontally()) {
       return this.mLayout.computeHorizontalScrollOffset(this.mState);
@@ -643,7 +643,7 @@ public abstract class RecyclerViewBase
     return 0;
   }
   
-  protected int computeHorizontalScrollRange()
+  public int computeHorizontalScrollRange()
   {
     if (this.mLayout.canScrollHorizontally()) {
       return this.mLayout.computeHorizontalScrollRange(this.mState);
@@ -651,7 +651,7 @@ public abstract class RecyclerViewBase
     return 0;
   }
   
-  protected int computeVerticalScrollExtent()
+  public int computeVerticalScrollExtent()
   {
     if (this.mLayout.canScrollVertically()) {
       return this.mLayout.computeVerticalScrollExtent(this.mState);
@@ -659,7 +659,7 @@ public abstract class RecyclerViewBase
     return 0;
   }
   
-  protected int computeVerticalScrollOffset()
+  public int computeVerticalScrollOffset()
   {
     if (this.mLayout.canScrollVertically()) {
       return this.mLayout.computeVerticalScrollOffset(this.mState);
@@ -667,7 +667,7 @@ public abstract class RecyclerViewBase
     return 0;
   }
   
-  protected int computeVerticalScrollRange()
+  public int computeVerticalScrollRange()
   {
     if (this.mLayout.canScrollVertically()) {
       return this.mLayout.computeVerticalScrollRange(this.mState);
@@ -675,7 +675,7 @@ public abstract class RecyclerViewBase
     return 0;
   }
   
-  protected void consumePendingUpdateOperations()
+  public void consumePendingUpdateOperations()
   {
     if (this.mPendingUpdates.size() > 0) {
       this.mUpdateChildViewsRunnable.run();
@@ -744,8 +744,8 @@ public abstract class RecyclerViewBase
       this.mState.mFooterCount = this.mAdapter.getFooterViewCount();
       int j;
       int i;
-      Object localObject2;
       Object localObject1;
+      Object localObject2;
       if (bool)
       {
         this.mState.mPreLayoutHolderMap.clear();
@@ -754,9 +754,9 @@ public abstract class RecyclerViewBase
         i = 0;
         while (i < j)
         {
-          localObject2 = getChildViewHolderInt(getChildAtInItem(i));
-          localObject1 = ((RecyclerViewBase.ViewHolder)localObject2).itemView;
-          this.mState.mPreLayoutHolderMap.put(localObject2, new RecyclerViewBase.ItemHolderInfo((RecyclerViewBase.ViewHolder)localObject2, ((View)localObject1).getLeft(), ((View)localObject1).getTop(), ((View)localObject1).getRight(), ((View)localObject1).getBottom(), ((RecyclerViewBase.ViewHolder)localObject2).mPosition));
+          localObject1 = getChildViewHolderInt(getChildAtInItem(i));
+          localObject2 = ((RecyclerViewBase.ViewHolder)localObject1).itemView;
+          this.mState.mPreLayoutHolderMap.put(localObject1, new RecyclerViewBase.ItemHolderInfo((RecyclerViewBase.ViewHolder)localObject1, ((View)localObject2).getLeft(), ((View)localObject2).getTop(), ((View)localObject2).getRight(), ((View)localObject2).getBottom(), ((RecyclerViewBase.ViewHolder)localObject1).mPosition));
           i += 1;
         }
       }
@@ -776,9 +776,9 @@ public abstract class RecyclerViewBase
         i = 0;
         while (i < j)
         {
-          localObject1 = getChildViewHolderInt(getChildAtInItem(i));
-          localObject2 = ((RecyclerViewBase.ViewHolder)localObject1).itemView;
-          this.mState.mPostLayoutHolderMap.put(localObject1, new RecyclerViewBase.ItemHolderInfo((RecyclerViewBase.ViewHolder)localObject1, ((View)localObject2).getLeft(), ((View)localObject2).getTop(), ((View)localObject2).getRight(), ((View)localObject2).getBottom(), ((RecyclerViewBase.ViewHolder)localObject1).mPosition));
+          localObject2 = getChildViewHolderInt(getChildAtInItem(i));
+          localObject1 = ((RecyclerViewBase.ViewHolder)localObject2).itemView;
+          this.mState.mPostLayoutHolderMap.put(localObject2, new RecyclerViewBase.ItemHolderInfo((RecyclerViewBase.ViewHolder)localObject2, ((View)localObject1).getLeft(), ((View)localObject1).getTop(), ((View)localObject1).getRight(), ((View)localObject1).getBottom(), ((RecyclerViewBase.ViewHolder)localObject2).mPosition));
           i += 1;
         }
         i = this.mState.mPreLayoutHolderMap.size() - 1;
@@ -801,20 +801,20 @@ public abstract class RecyclerViewBase
           i -= 1;
           if (i >= 0)
           {
-            localObject2 = (RecyclerViewBase.ViewHolder)this.mState.mPostLayoutHolderMap.keyAt(i);
-            localObject1 = (RecyclerViewBase.ItemHolderInfo)this.mState.mPostLayoutHolderMap.valueAt(i);
-            if ((this.mState.mPreLayoutHolderMap.isEmpty()) || (!this.mState.mPreLayoutHolderMap.containsKey(localObject2)))
+            localObject1 = (RecyclerViewBase.ViewHolder)this.mState.mPostLayoutHolderMap.keyAt(i);
+            localObject2 = (RecyclerViewBase.ItemHolderInfo)this.mState.mPostLayoutHolderMap.valueAt(i);
+            if ((this.mState.mPreLayoutHolderMap.isEmpty()) || (!this.mState.mPreLayoutHolderMap.containsKey(localObject1)))
             {
               this.mState.mPostLayoutHolderMap.removeAt(i);
               if (0 == 0) {
                 break label707;
               }
-              localObject1 = ((RecyclerViewBase.ViewHolder)localObject2).itemView;
+              localObject1 = ((RecyclerViewBase.ViewHolder)localObject1).itemView;
               throw new NullPointerException();
             }
             for (;;)
             {
-              animateAppearance((RecyclerViewBase.ViewHolder)localObject2, null, ((RecyclerViewBase.ItemHolderInfo)localObject1).left, ((RecyclerViewBase.ItemHolderInfo)localObject1).top);
+              animateAppearance((RecyclerViewBase.ViewHolder)localObject1, null, ((RecyclerViewBase.ItemHolderInfo)localObject2).left, ((RecyclerViewBase.ItemHolderInfo)localObject2).top);
               i -= 1;
               break;
             }
@@ -824,9 +824,9 @@ public abstract class RecyclerViewBase
         i = 0;
         while (i < j)
         {
-          localObject1 = (RecyclerViewBase.ViewHolder)this.mState.mPostLayoutHolderMap.keyAt(i);
-          localObject2 = (RecyclerViewBase.ItemHolderInfo)this.mState.mPostLayoutHolderMap.valueAt(i);
-          handleLayoutHolder((RecyclerViewBase.ViewHolder)localObject1, (RecyclerViewBase.ItemHolderInfo)this.mState.mPreLayoutHolderMap.get(localObject1), (RecyclerViewBase.ItemHolderInfo)localObject2);
+          localObject2 = (RecyclerViewBase.ViewHolder)this.mState.mPostLayoutHolderMap.keyAt(i);
+          localObject1 = (RecyclerViewBase.ItemHolderInfo)this.mState.mPostLayoutHolderMap.valueAt(i);
+          handleLayoutHolder((RecyclerViewBase.ViewHolder)localObject2, (RecyclerViewBase.ItemHolderInfo)this.mState.mPreLayoutHolderMap.get(localObject2), (RecyclerViewBase.ItemHolderInfo)localObject1);
           i += 1;
         }
       }
@@ -935,7 +935,7 @@ public abstract class RecyclerViewBase
     }
   }
   
-  protected void eatRequestLayout()
+  public void eatRequestLayout()
   {
     if (!this.mEatRequestLayout)
     {
@@ -1159,7 +1159,7 @@ public abstract class RecyclerViewBase
     setScrollState(0);
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     if (this.mLayout == null) {
       throw new IllegalStateException("RecyclerView has no LayoutManager");
@@ -1175,7 +1175,7 @@ public abstract class RecyclerViewBase
     return this.mLayout.generateLayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     if (this.mLayout == null) {
       throw new IllegalStateException("RecyclerView has no LayoutManager");
@@ -1405,7 +1405,7 @@ public abstract class RecyclerViewBase
   
   protected void handleRangeItemsChangedWithNoAnimation() {}
   
-  protected void handleRefreshHeadOnFlingRunEnd() {}
+  public void handleRefreshHeadOnFlingRunEnd() {}
   
   protected void handleViewRangeUpdate(RecyclerViewBase.ViewHolder paramViewHolder, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
@@ -1623,7 +1623,7 @@ public abstract class RecyclerViewBase
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.mIsAttached = true;
@@ -1640,7 +1640,7 @@ public abstract class RecyclerViewBase
   
   public void onChildDetachedFromWindow(View paramView) {}
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.mIsAttached = false;
@@ -1820,7 +1820,7 @@ public abstract class RecyclerViewBase
   
   public void onItemsFill(int paramInt) {}
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramBoolean)
     {
@@ -1840,7 +1840,7 @@ public abstract class RecyclerViewBase
     this.mStopAtTitle = false;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.mAdapterUpdateDuringMeasure)
     {
@@ -1880,7 +1880,7 @@ public abstract class RecyclerViewBase
     }
   }
   
-  protected void onRestoreInstanceState(Parcelable paramParcelable)
+  public void onRestoreInstanceState(Parcelable paramParcelable)
   {
     this.mPendingSavedState = ((RecyclerViewBase.SavedState)paramParcelable);
     super.onRestoreInstanceState(this.mPendingSavedState.getSuperState());
@@ -1889,7 +1889,7 @@ public abstract class RecyclerViewBase
     }
   }
   
-  protected Parcelable onSaveInstanceState()
+  public Parcelable onSaveInstanceState()
   {
     RecyclerViewBase.SavedState localSavedState = new RecyclerViewBase.SavedState(super.onSaveInstanceState());
     if (this.mPendingSavedState != null)
@@ -2166,7 +2166,7 @@ public abstract class RecyclerViewBase
     traversal(1991102);
   }
   
-  protected void releaseGlows(boolean paramBoolean1, boolean paramBoolean2)
+  public void releaseGlows(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (shouldStopReleaseGlows(paramBoolean1, paramBoolean2)) {
       return;
@@ -2345,7 +2345,7 @@ public abstract class RecyclerViewBase
     this.mStopAtTitle = bool;
   }
   
-  protected void resumeRequestLayout(boolean paramBoolean)
+  public void resumeRequestLayout(boolean paramBoolean)
   {
     if (this.mEatRequestLayout)
     {
@@ -2877,7 +2877,7 @@ public abstract class RecyclerViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase
  * JD-Core Version:    0.7.0.1
  */

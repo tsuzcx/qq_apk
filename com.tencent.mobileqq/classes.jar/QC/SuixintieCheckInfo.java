@@ -9,7 +9,7 @@ public final class SuixintieCheckInfo
   extends JceStruct
 {
   static ArrayList<SuixintieCheckItem> cache_vSuixintieCheckList = new ArrayList();
-  public ArrayList<SuixintieCheckItem> vSuixintieCheckList;
+  public ArrayList<SuixintieCheckItem> vSuixintieCheckList = null;
   
   static
   {

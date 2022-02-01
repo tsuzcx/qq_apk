@@ -1,26 +1,23 @@
 package com.tencent.mobileqq.ark.image;
 
 import android.os.Bundle;
-import aqba;
-import aqbg;
-import aqbh;
 import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
 import com.tencent.qphone.base.util.QLog;
 
-public class PhotoPreviewLogicArk$1$1
+class PhotoPreviewLogicArk$1$1
   implements Runnable
 {
-  public PhotoPreviewLogicArk$1$1(aqbh paramaqbh) {}
+  PhotoPreviewLogicArk$1$1(PhotoPreviewLogicArk.1 param1) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewLogicArk", 2, "ArkApp copy file to res: " + aqbg.a(this.a.a));
+      QLog.d("PhotoPreviewLogicArk", 2, "ArkApp copy file to res: " + PhotoPreviewLogicArk.a(this.a.a));
     }
-    String str = aqba.a(aqbg.e(this.a.a).selectedPhotoList, aqbg.a(this.a.a), aqbg.a(this.a.a), aqbg.b(this.a.a));
+    String str = ChooseImageIPCModule.a(PhotoPreviewLogicArk.e(this.a.a).selectedPhotoList, PhotoPreviewLogicArk.a(this.a.a), PhotoPreviewLogicArk.a(this.a.a), PhotoPreviewLogicArk.b(this.a.a));
     Bundle localBundle = new Bundle();
     localBundle.putString("bundle_key_info", str);
-    aqba.a().a("callbackArk", localBundle, null);
+    ChooseImageIPCModule.a().a("callbackArk", localBundle, null);
   }
 }
 

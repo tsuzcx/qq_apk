@@ -1,10 +1,10 @@
 package com.tencent.hippy.qq.update;
 
+import com.tencent.biz.common.offline.AsyncBack;
 import com.tencent.qphone.base.util.QLog;
-import nuw;
 
 class HippyQQLibraryManager$3$1
-  implements nuw
+  implements AsyncBack
 {
   HippyQQLibraryManager$3$1(HippyQQLibraryManager.3 param3) {}
   
@@ -24,7 +24,7 @@ class HippyQQLibraryManager$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQLibraryManager.3.1
  * JD-Core Version:    0.7.0.1
  */

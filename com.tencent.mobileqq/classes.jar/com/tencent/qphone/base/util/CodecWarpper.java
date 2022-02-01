@@ -3,7 +3,7 @@ package com.tencent.qphone.base.util;
 import android.content.Context;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public abstract class CodecWarpper
@@ -21,6 +21,7 @@ public abstract class CodecWarpper
   private static int appid;
   private static int checkedSOVersion;
   public static boolean isLoaded;
+  private static final Object mLockObj;
   public static int soLoadResultCode;
   public static String tag = "MSF.C.CodecWarpper";
   
@@ -30,6 +31,7 @@ public abstract class CodecWarpper
     appid = 0;
     isLoaded = false;
     soLoadResultCode = 0;
+    mLockObj = new Object();
     long l = SystemClock.elapsedRealtime();
     soLoadResultCode = StringUtils.msfLoadSo(tag, "codecwrapperV2");
     isLoaded = StringUtils.getLoadResult(soLoadResultCode);
@@ -80,7 +82,7 @@ public abstract class CodecWarpper
             {
               checkedSOVersion = 591;
               QLog.d(tag, 1, "set so version to " + checkedSOVersion + " with error ", localUnsatisfiedLinkError2);
-              k.a("codecwrapperV2", isLoaded, soLoadResultCode, localUnsatisfiedLinkError2.getMessage());
+              j.a("codecwrapperV2", isLoaded, soLoadResultCode, localUnsatisfiedLinkError2.getMessage());
               return;
             }
           }
@@ -204,6 +206,11 @@ public abstract class CodecWarpper
   
   public static void nativeSetAccountKey(String paramString1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, String paramString2)
   {
+    StringBuilder localStringBuilder = new StringBuilder("nativeSetAccountKey ");
+    printBytes(",A1=", paramArrayOfByte1, localStringBuilder);
+    printBytes(",A2=", paramArrayOfByte2, localStringBuilder);
+    printBytes(",D2=", paramArrayOfByte5, localStringBuilder);
+    QLog.d(tag, 1, localStringBuilder.toString());
     setAccountKey(paramString1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramString2);
   }
   
@@ -223,6 +230,17 @@ public abstract class CodecWarpper
   
   private native FromServiceMsg parseData(byte[] paramArrayOfByte);
   
+  public static void printBytes(String paramString, byte[] paramArrayOfByte, StringBuilder paramStringBuilder)
+  {
+    paramStringBuilder.append(paramString);
+    if (paramArrayOfByte == null)
+    {
+      paramStringBuilder.append("null");
+      return;
+    }
+    paramStringBuilder.append(paramArrayOfByte.length);
+  }
+  
   private static synchronized native void removeAccountKey(String paramString);
   
   private static synchronized native void setAccountKey(String paramString1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, String paramString2);
@@ -240,20 +258,30 @@ public abstract class CodecWarpper
     if (QLog.isColorLevel()) {
       QLog.i(tag, 2, "nativeClearReceData");
     }
-    try
+    synchronized (mLockObj)
     {
-      closeReceData();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      k.a("codecwrapperV2", isLoaded, soLoadResultCode, localUnsatisfiedLinkError.getMessage());
+      try
+      {
+        closeReceData();
+        return;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        for (;;)
+        {
+          j.a("codecwrapperV2", isLoaded, soLoadResultCode, localUnsatisfiedLinkError.getMessage());
+        }
+      }
     }
   }
   
   public void nativeOnReceData(byte[] paramArrayOfByte, int paramInt)
   {
-    onReceData(paramArrayOfByte, paramInt);
+    synchronized (mLockObj)
+    {
+      onReceData(paramArrayOfByte, paramInt);
+      return;
+    }
   }
   
   public FromServiceMsg nativeParseData(byte[] paramArrayOfByte)

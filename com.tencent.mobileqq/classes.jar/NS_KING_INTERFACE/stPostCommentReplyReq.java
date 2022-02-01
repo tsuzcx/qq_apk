@@ -11,7 +11,7 @@ public final class stPostCommentReplyReq
   static stMetaReply cache_reply = new stMetaReply();
   public String commentId = "";
   public String feed_id = "";
-  public stMetaReply reply;
+  public stMetaReply reply = null;
   
   public stPostCommentReplyReq() {}
   

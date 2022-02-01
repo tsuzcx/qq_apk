@@ -1,30 +1,28 @@
 package com.tencent.mobileqq.activity;
 
-import amhc;
-import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.adapter.ForwardRecentItemView;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.filemanager.fileassistant.util.DatalineDeviceChooseModel.DeviceChooseInterface;
 
 class ForwardRecentActivity$15
-  implements Runnable
+  implements DatalineDeviceChooseModel.DeviceChooseInterface
 {
-  ForwardRecentActivity$15(ForwardRecentActivity paramForwardRecentActivity) {}
+  ForwardRecentActivity$15(ForwardRecentActivity paramForwardRecentActivity, ResultRecord paramResultRecord, ForwardRecentItemView paramForwardRecentItemView) {}
   
-  public void run()
+  public void a()
   {
-    int j = ForwardRecentActivity.a(this.this$0).getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      View localView = ForwardRecentActivity.a(this.this$0).getChildAt(i);
-      if ((localView instanceof ForwardRecentItemView)) {
-        ((ForwardRecentItemView)localView).a(150L);
-      }
-      i += 1;
-    }
-    this.this$0.a.a(150L);
-    if (ForwardRecentActivity.a(this.this$0) != null) {
-      ForwardRecentActivity.a(this.this$0).a(true);
+    ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView);
+  }
+  
+  public void b()
+  {
+    ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView);
+  }
+  
+  public void c()
+  {
+    if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity) != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.finish();
     }
   }
 }

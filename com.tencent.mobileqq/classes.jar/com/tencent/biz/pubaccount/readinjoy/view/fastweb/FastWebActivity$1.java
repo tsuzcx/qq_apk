@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import aqru;
-import ten;
+import com.tencent.mobileqq.colornote.swipeback.SwipeLayoutUtils;
 
-public class FastWebActivity$1
+class FastWebActivity$1
   implements Runnable
 {
   FastWebActivity$1(FastWebActivity paramFastWebActivity) {}
   
   public void run()
   {
-    aqru.a(this.this$0, new ten(this));
+    SwipeLayoutUtils.a(this.this$0, new FastWebActivity.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.1
  * JD-Core Version:    0.7.0.1
  */

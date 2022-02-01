@@ -14,10 +14,10 @@ public abstract class PhotoListLogic<K extends AbstractPhotoListActivity, O exte
   implements MediaScanner.OnMediaScannerListener
 {
   public K mActivity;
-  public O mOtherCommonData;
+  protected O mOtherCommonData;
   public PhotoCommonBaseData<O> mPhotoCommonData;
   protected PhotoListBaseData mPhotoListData;
-  protected PhotoListLogic.IonSelectionChangeListener mSelectionListener = null;
+  PhotoListLogic.IonSelectionChangeListener mSelectionListener = null;
   
   protected PhotoListLogic(K paramK)
   {
@@ -42,9 +42,9 @@ public abstract class PhotoListLogic<K extends AbstractPhotoListActivity, O exte
     this.mPhotoCommonData.releaseCommonData();
   }
   
-  protected abstract void doOnDestroy();
+  abstract void doOnDestroy();
   
-  protected abstract void doOnResume();
+  abstract void doOnResume();
   
   protected abstract void enterAlbumListFragment(Intent paramIntent);
   
@@ -106,7 +106,7 @@ public abstract class PhotoListLogic<K extends AbstractPhotoListActivity, O exte
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListLogic
  * JD-Core Version:    0.7.0.1
  */

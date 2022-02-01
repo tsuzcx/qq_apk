@@ -6,122 +6,179 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.view.text.DeleteAsAWholeSpan;
+import com.tencent.biz.pubaccount.readinjoy.view.text.DeleteAsAWholeWatcher;
+import com.tencent.biz.pubaccount.readinjoy.view.text.ISpan;
+import com.tencent.biz.pubaccount.readinjoy.view.text.TopicSpan;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
-import owd;
-import tnq;
-import tnr;
 
 public class BiuEditText
   extends EditText
 {
-  private TextWatcher a;
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b = true;
   
   public BiuEditText(Context paramContext)
   {
     super(paramContext);
+    c();
     b();
   }
   
   public BiuEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    c();
     b();
   }
   
   private int a(int paramInt)
   {
-    ForegroundColorSpan[] arrayOfForegroundColorSpan = (ForegroundColorSpan[])getEditableText().getSpans(0, getText().length(), ForegroundColorSpan.class);
-    if (QLog.isColorLevel()) {
-      QLog.d("BiuEditText", 2, "getValidSelPosForRichText spans num : " + arrayOfForegroundColorSpan.length);
+    Editable localEditable = getEditableText();
+    int j;
+    if (localEditable == null)
+    {
+      j = 0;
+      return j;
     }
-    int k = arrayOfForegroundColorSpan.length;
-    int i = 0;
+    ISpan[] arrayOfISpan = (ISpan[])localEditable.getSpans(0, getText().length(), ISpan.class);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuEditText", 2, "getValidSelPosForRichText spans num : " + arrayOfISpan.length);
+    }
+    if ((paramInt == 0) && (!this.jdField_a_of_type_Boolean) && (arrayOfISpan.length != 0) && ((arrayOfISpan[0] instanceof TopicSpan))) {}
+    for (int i = 1; i != 0; i = 0) {
+      return localEditable.getSpanEnd(arrayOfISpan[0]);
+    }
+    int k = arrayOfISpan.length;
+    i = 0;
     for (;;)
     {
-      int j = paramInt;
-      if (i < k)
-      {
-        ForegroundColorSpan localForegroundColorSpan = arrayOfForegroundColorSpan[i];
-        int m = getText().getSpanStart(localForegroundColorSpan);
-        j = getText().getSpanEnd(localForegroundColorSpan);
-        if ((m + 1 > paramInt) || (j < paramInt)) {}
+      j = paramInt;
+      if (i >= k) {
+        break;
       }
-      else
-      {
-        return j;
+      localEditable = arrayOfISpan[i];
+      j = getText().getSpanStart(localEditable);
+      int m = getText().getSpanEnd(localEditable);
+      if ((j + 1 <= paramInt) && (m >= paramInt)) {
+        return m;
       }
       i += 1;
     }
   }
   
-  private String a(int paramInt1, int paramInt2, ForegroundColorSpan[] paramArrayOfForegroundColorSpan)
+  private String a(int paramInt1, int paramInt2, ISpan[] paramArrayOfISpan)
   {
     int i = 0;
     if (QLog.isColorLevel()) {
       QLog.d("BiuEditText", 2, "getValidSelPosForRichText startCalPos :" + paramInt1 + " endCalPos :" + paramInt2);
     }
-    ForegroundColorSpan[] arrayOfForegroundColorSpan = a(paramArrayOfForegroundColorSpan);
+    ISpan[] arrayOfISpan = a(paramArrayOfISpan);
     Editable localEditable = getEditableText();
-    paramArrayOfForegroundColorSpan = "" + localEditable.subSequence(paramInt1, localEditable.getSpanStart(arrayOfForegroundColorSpan[0]));
-    while (i < arrayOfForegroundColorSpan.length)
+    paramArrayOfISpan = "" + localEditable.subSequence(paramInt1, localEditable.getSpanStart(arrayOfISpan[0]));
+    while (i < arrayOfISpan.length)
     {
-      localObject = paramArrayOfForegroundColorSpan + localEditable.subSequence(localEditable.getSpanStart(arrayOfForegroundColorSpan[i]), localEditable.getSpanEnd(arrayOfForegroundColorSpan[i]));
-      paramInt1 = localEditable.getSpanEnd(arrayOfForegroundColorSpan[i]);
-      paramArrayOfForegroundColorSpan = (ForegroundColorSpan[])localObject;
-      if (i < arrayOfForegroundColorSpan.length - 1)
+      localObject = paramArrayOfISpan + localEditable.subSequence(localEditable.getSpanStart(arrayOfISpan[i]), localEditable.getSpanEnd(arrayOfISpan[i]));
+      paramInt1 = localEditable.getSpanEnd(arrayOfISpan[i]);
+      paramArrayOfISpan = (ISpan[])localObject;
+      if (i < arrayOfISpan.length - 1)
       {
-        paramArrayOfForegroundColorSpan = (String)localObject + localEditable.subSequence(localEditable.getSpanEnd(arrayOfForegroundColorSpan[i]), localEditable.getSpanStart(arrayOfForegroundColorSpan[(i + 1)]));
-        paramInt1 = localEditable.getSpanStart(arrayOfForegroundColorSpan[(i + 1)]);
+        paramArrayOfISpan = (String)localObject + localEditable.subSequence(localEditable.getSpanEnd(arrayOfISpan[i]), localEditable.getSpanStart(arrayOfISpan[(i + 1)]));
+        paramInt1 = localEditable.getSpanStart(arrayOfISpan[(i + 1)]);
       }
       i += 1;
     }
-    Object localObject = paramArrayOfForegroundColorSpan;
+    Object localObject = paramArrayOfISpan;
     if (paramInt1 < paramInt2) {
-      localObject = paramArrayOfForegroundColorSpan + localEditable.subSequence(paramInt1, paramInt2);
+      localObject = paramArrayOfISpan + localEditable.subSequence(paramInt1, paramInt2);
     }
     return localObject;
   }
   
   private boolean a()
   {
-    if (getSelectionStart() == getSelectionEnd()) {
+    boolean bool1 = false;
+    boolean bool2 = false;
+    Editable localEditable = getEditableText();
+    if (localEditable == null) {
+      return bool2;
+    }
+    TopicSpan[] arrayOfTopicSpan = (TopicSpan[])localEditable.getSpans(0, localEditable.length(), TopicSpan.class);
+    int j = arrayOfTopicSpan.length;
+    int i = 0;
+    for (;;)
+    {
+      bool2 = bool1;
+      if (i >= j) {
+        break;
+      }
+      TopicSpan localTopicSpan = arrayOfTopicSpan[i];
+      if (getSelectionStart() == localEditable.getSpanEnd(localTopicSpan)) {
+        bool1 = true;
+      }
+      i += 1;
+    }
+  }
+  
+  private boolean a(KeyEvent paramKeyEvent, int paramInt)
+  {
+    if ((paramInt != 67) || (paramKeyEvent.getAction() != 0)) {}
+    while ((getSelectionStart() != getSelectionEnd()) || (!a()) || (this.jdField_a_of_type_Boolean) || (this.b)) {
       return false;
     }
-    ForegroundColorSpan[] arrayOfForegroundColorSpan = (ForegroundColorSpan[])getEditableText().getSpans(getSelectionStart(), getSelectionEnd(), ForegroundColorSpan.class);
-    if (arrayOfForegroundColorSpan.length == 0) {
-      return false;
-    }
-    ((ClipboardManager)getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, a(getSelectionStart(), getSelectionEnd(), arrayOfForegroundColorSpan)));
-    setSelection(getSelectionEnd());
     return true;
   }
   
-  private ForegroundColorSpan[] a(@NotNull ForegroundColorSpan[] paramArrayOfForegroundColorSpan)
+  private ISpan[] a(@NotNull ISpan[] paramArrayOfISpan)
   {
-    ForegroundColorSpan[] arrayOfForegroundColorSpan = new ForegroundColorSpan[paramArrayOfForegroundColorSpan.length];
+    ISpan[] arrayOfISpan = new ISpan[paramArrayOfISpan.length];
     Editable localEditable = getEditableText();
-    paramArrayOfForegroundColorSpan = Arrays.asList(paramArrayOfForegroundColorSpan);
-    Collections.sort(paramArrayOfForegroundColorSpan, new owd(this, localEditable));
-    return (ForegroundColorSpan[])paramArrayOfForegroundColorSpan.toArray(arrayOfForegroundColorSpan);
+    paramArrayOfISpan = Arrays.asList(paramArrayOfISpan);
+    Collections.sort(paramArrayOfISpan, new BiuEditText.2(this, localEditable));
+    return (ISpan[])paramArrayOfISpan.toArray(arrayOfISpan);
   }
   
   private void b()
   {
-    this.a = new tnr();
-    addTextChangedListener(this.a);
+    setOnKeyListener(new BiuEditText.1(this));
+  }
+  
+  private boolean b()
+  {
+    if (getSelectionStart() == getSelectionEnd()) {
+      return false;
+    }
+    Object localObject = getEditableText();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = (ISpan[])((Editable)localObject).getSpans(getSelectionStart(), getSelectionEnd(), ISpan.class);
+    if (localObject.length == 0) {
+      return false;
+    }
+    ((ClipboardManager)getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, a(getSelectionStart(), getSelectionEnd(), (ISpan[])localObject)));
+    setSelection(getSelectionEnd());
+    return true;
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_AndroidTextTextWatcher = new DeleteAsAWholeWatcher();
+    addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
   }
   
   public void a()
   {
-    if (this.a != null) {
-      removeTextChangedListener(this.a);
+    if (this.jdField_a_of_type_AndroidTextTextWatcher != null) {
+      removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     }
   }
   
@@ -145,22 +202,25 @@ public class BiuEditText
     {
       return;
       Editable localEditable = getEditableText();
-      tnq[] arrayOftnq = (tnq[])localEditable.getSpans(paramInt1, paramInt2, tnq.class);
-      if ((arrayOftnq != null) && (arrayOftnq.length > 0))
+      if (localEditable != null)
       {
-        int i = arrayOftnq.length;
-        paramInt2 = 0;
-        while (paramInt2 < i)
+        DeleteAsAWholeSpan[] arrayOfDeleteAsAWholeSpan = (DeleteAsAWholeSpan[])localEditable.getSpans(paramInt1, paramInt2, DeleteAsAWholeSpan.class);
+        if ((arrayOfDeleteAsAWholeSpan != null) && (arrayOfDeleteAsAWholeSpan.length > 0))
         {
-          tnq localtnq = arrayOftnq[paramInt2];
-          int j = localEditable.getSpanStart(localtnq);
-          int k = localEditable.getSpanEnd(localtnq);
-          if ((j >= 0) && (k >= j) && (paramInt1 > j) && (paramInt1 < k))
+          int i = arrayOfDeleteAsAWholeSpan.length;
+          paramInt2 = 0;
+          while (paramInt2 < i)
           {
-            setSelection(k);
-            return;
+            DeleteAsAWholeSpan localDeleteAsAWholeSpan = arrayOfDeleteAsAWholeSpan[paramInt2];
+            int j = localEditable.getSpanStart(localDeleteAsAWholeSpan);
+            int k = localEditable.getSpanEnd(localDeleteAsAWholeSpan);
+            if ((j >= 0) && (k >= j) && (paramInt1 > j) && (paramInt1 < k))
+            {
+              setSelection(k);
+              return;
+            }
+            paramInt2 += 1;
           }
-          paramInt2 += 1;
         }
       }
     }
@@ -168,7 +228,7 @@ public class BiuEditText
   
   public boolean onTextContextMenuItem(int paramInt)
   {
-    if ((paramInt == 16908321) && (a())) {
+    if ((paramInt == 16908321) && (b())) {
       return true;
     }
     return super.onTextContextMenuItem(paramInt);
@@ -176,7 +236,7 @@ public class BiuEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText
  * JD-Core Version:    0.7.0.1
  */

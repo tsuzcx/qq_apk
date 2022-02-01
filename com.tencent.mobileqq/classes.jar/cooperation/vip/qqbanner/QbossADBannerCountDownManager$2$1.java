@@ -2,8 +2,6 @@ package cooperation.vip.qqbanner;
 
 import android.text.TextUtils;
 import android.widget.TextView;
-import bmob;
-import bmoc;
 import cooperation.qzone.util.QZLog;
 
 class QbossADBannerCountDownManager$2$1
@@ -13,21 +11,21 @@ class QbossADBannerCountDownManager$2$1
   
   public void run()
   {
-    if ((bmoc.c(this.a.this$0) == null) || (TextUtils.isEmpty(bmoc.c(this.a.this$0).getText()))) {}
+    if ((QbossADBannerCountDownManager.c(this.a.this$0) == null) || (TextUtils.isEmpty(QbossADBannerCountDownManager.c(this.a.this$0).getText()))) {}
     Object localObject;
     do
     {
       return;
       if (QZLog.isColorLevel()) {
-        QZLog.i("QbossADBannerManager", 2, "count down text = " + bmoc.c(this.a.this$0).getText());
+        QZLog.i("QbossADBannerManager", 2, "count down text = " + QbossADBannerCountDownManager.c(this.a.this$0).getText());
       }
-      localObject = bmoc.c(this.a.this$0).getText().toString().split(":");
+      localObject = QbossADBannerCountDownManager.c(this.a.this$0).getText().toString().split(":");
       if ((localObject != null) && (localObject.length == 2)) {
         break;
       }
-      bmoc.b(this.a.this$0);
+      QbossADBannerCountDownManager.b(this.a.this$0);
     } while (!QZLog.isColorLevel());
-    QZLog.i("QbossADBannerManager", 2, "stopTimer split error text = " + bmoc.c(this.a.this$0).getText());
+    QZLog.i("QbossADBannerManager", 2, "stopTimer split error text = " + QbossADBannerCountDownManager.c(this.a.this$0).getText());
     return;
     for (;;)
     {
@@ -47,16 +45,16 @@ class QbossADBannerCountDownManager$2$1
       }
       catch (Exception localException)
       {
-        bmoc localbmoc;
+        QbossADBannerCountDownManager localQbossADBannerCountDownManager;
         localException.printStackTrace();
         return;
       }
-      localbmoc = this.a.this$0;
-      if (bmoc.a(this.a.this$0) != null)
+      localQbossADBannerCountDownManager = this.a.this$0;
+      if (QbossADBannerCountDownManager.a(this.a.this$0) != null)
       {
-        localObject = bmoc.a(this.a.this$0).j;
-        bmoc.a(localbmoc, (String)localObject);
-        bmoc.b(this.a.this$0);
+        localObject = QbossADBannerCountDownManager.a(this.a.this$0).k;
+        QbossADBannerCountDownManager.a(localQbossADBannerCountDownManager, (String)localObject);
+        QbossADBannerCountDownManager.b(this.a.this$0);
         return;
       }
       String str = "";
@@ -64,7 +62,7 @@ class QbossADBannerCountDownManager$2$1
       label305:
       do
       {
-        bmoc.a(this.a.this$0, bmoc.a(this.a.this$0, j, i));
+        QbossADBannerCountDownManager.a(this.a.this$0, QbossADBannerCountDownManager.a(this.a.this$0, j, i));
         return;
         if (j < 0) {
           break;
@@ -75,7 +73,7 @@ class QbossADBannerCountDownManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.qqbanner.QbossADBannerCountDownManager.2.1
  * JD-Core Version:    0.7.0.1
  */

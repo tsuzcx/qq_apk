@@ -6,12 +6,12 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Process;
 import android.util.DisplayMetrics;
-import apah;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.utils.PropertiesUtils;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class FontSettingManager
 {
@@ -48,7 +48,7 @@ public class FontSettingManager
     if (paramContext == null) {
       return -1000.0F;
     }
-    float f2 = Float.valueOf(apah.a(paramContext, "key_font_level", String.valueOf(16.0F))).floatValue();
+    float f2 = Float.valueOf(PropertiesUtils.a(paramContext, "key_font_level", String.valueOf(16.0F))).floatValue();
     float f1;
     if (f2 >= 13.92F)
     {
@@ -80,8 +80,8 @@ public class FontSettingManager
   
   public static boolean isDisplayMetricNoAnswer()
   {
-    String str1 = DeviceInfoUtil.getManufactureInfo();
-    String str2 = DeviceInfoUtil.getDeviceModel();
+    String str1 = DeviceInfoUtil.h();
+    String str2 = DeviceInfoUtil.d();
     if (QLog.isColorLevel()) {
       QLog.d("FontSettingManager", 2, "current machine brandName:" + str1 + ", modelName:" + str2);
     }
@@ -95,8 +95,8 @@ public class FontSettingManager
   
   public static boolean isSupportDevice()
   {
-    Object localObject = DeviceInfoUtil.getManufactureInfo();
-    String str = DeviceInfoUtil.getDeviceModel();
+    Object localObject = DeviceInfoUtil.h();
+    String str = DeviceInfoUtil.d();
     if (QLog.isColorLevel()) {
       QLog.d("FontSettingManager", 2, "current machine brandName:" + (String)localObject + ", modelName:" + str);
     }
@@ -133,7 +133,7 @@ public class FontSettingManager
     while (i < j)
     {
       String str = arrayOfString[i];
-      killProcess(BaseApplicationImpl.getContext(), str);
+      killProcess(MobileQQ.getContext(), str);
       i += 1;
     }
   }
@@ -158,7 +158,7 @@ public class FontSettingManager
   
   private static boolean needInit(Context paramContext)
   {
-    paramContext = BaseApplicationImpl.processName;
+    paramContext = MobileQQ.processName;
     String[] arrayOfString = NONE_FONTSETTING_PROCESS_LIST;
     int j = arrayOfString.length;
     int i = 0;
@@ -233,7 +233,7 @@ public class FontSettingManager
     if (paramContext == null) {
       return;
     }
-    apah.a(paramContext, "key_font_level", String.valueOf(paramFloat));
+    PropertiesUtils.a(paramContext, "key_font_level", String.valueOf(paramFloat));
   }
   
   private static void updateSystemMetrics(DisplayMetrics paramDisplayMetrics)

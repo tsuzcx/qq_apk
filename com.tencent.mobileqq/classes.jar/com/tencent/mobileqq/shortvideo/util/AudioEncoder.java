@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import bddl;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
 import java.io.File;
 
 public class AudioEncoder
 {
-  public static int a(bddl parambddl)
+  public static int a(AudioEncoder.AudioData paramAudioData)
   {
     try
     {
-      int i = encode(parambddl.jdField_a_of_type_JavaLangString, parambddl.jdField_b_of_type_JavaLangString, parambddl.jdField_a_of_type_Int, parambddl.jdField_b_of_type_Int, parambddl.c, parambddl.d, parambddl.e);
+      int i = encode(paramAudioData.jdField_a_of_type_JavaLangString, paramAudioData.jdField_b_of_type_JavaLangString, paramAudioData.jdField_a_of_type_Int, paramAudioData.jdField_b_of_type_Int, paramAudioData.c, paramAudioData.d, paramAudioData.e);
       return i;
     }
-    catch (UnsatisfiedLinkError parambddl) {}
+    catch (UnsatisfiedLinkError paramAudioData) {}
     return -200;
   }
   
@@ -32,22 +31,22 @@ public class AudioEncoder
     return 0;
   }
   
-  public static bddl a(String paramString1, String paramString2, int paramInt)
+  public static AudioEncoder.AudioData a(String paramString1, String paramString2, int paramInt)
   {
-    bddl localbddl = new bddl();
-    localbddl.jdField_a_of_type_JavaLangString = paramString1;
-    localbddl.jdField_b_of_type_JavaLangString = paramString2;
-    localbddl.jdField_a_of_type_Int = paramInt;
-    localbddl.d = CodecParam.mAudioSampleRate;
-    localbddl.c = CodecParam.mDstAudioEncBitrate;
+    AudioEncoder.AudioData localAudioData = new AudioEncoder.AudioData();
+    localAudioData.jdField_a_of_type_JavaLangString = paramString1;
+    localAudioData.jdField_b_of_type_JavaLangString = paramString2;
+    localAudioData.jdField_a_of_type_Int = paramInt;
+    localAudioData.d = CodecParam.mAudioSampleRate;
+    localAudioData.c = CodecParam.mDstAudioEncBitrate;
     if (CodecParam.mAudioFormat == 2) {}
-    for (localbddl.jdField_b_of_type_Int = 16; CodecParam.mAudioChannel == 16; localbddl.jdField_b_of_type_Int = 8)
+    for (localAudioData.jdField_b_of_type_Int = 16; CodecParam.mAudioChannel == 16; localAudioData.jdField_b_of_type_Int = 8)
     {
-      localbddl.e = 1;
-      return localbddl;
+      localAudioData.e = 1;
+      return localAudioData;
     }
-    localbddl.e = 2;
-    return localbddl;
+    localAudioData.e = 2;
+    return localAudioData;
   }
   
   private static native int encode(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);

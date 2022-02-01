@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.qcall;
 
-import bapo;
 import com.tencent.qphone.base.util.QLog;
 
-public class QCallProxy$1
+class QCallProxy$1
   implements Runnable
 {
-  public QCallProxy$1(bapo parambapo) {}
+  QCallProxy$1(QCallProxy paramQCallProxy) {}
   
   public void run()
   {
     try
     {
-      this.this$0.d();
+      this.this$0.b();
       return;
     }
     catch (Exception localException)

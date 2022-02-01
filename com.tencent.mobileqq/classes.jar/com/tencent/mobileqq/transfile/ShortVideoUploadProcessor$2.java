@@ -1,13 +1,48 @@
 package com.tencent.mobileqq.transfile;
 
+import android.os.SystemClock;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import java.util.HashMap;
+
 class ShortVideoUploadProcessor$2
-  implements Runnable
+  implements ITransactionCallback
 {
-  ShortVideoUploadProcessor$2(ShortVideoUploadProcessor paramShortVideoUploadProcessor, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  ShortVideoUploadProcessor$2(ShortVideoUploadProcessor paramShortVideoUploadProcessor, String paramString, long paramLong) {}
   
-  public void run()
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.this$0.reportDataFlow(this.val$upFlow_Wifi, this.val$dwFlow_Wifi, this.val$upFlow_Xg, this.val$dwFlow_Xg, 3);
+    this.this$0.doOnSendFailed(paramInt, paramHashMap, this.val$startTime);
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    this.this$0.doOnSendSuccess(paramArrayOfByte, paramHashMap, this.val$combinePath, this.val$startTime);
+  }
+  
+  public void onSwitch2BackupChannel()
+  {
+    long l = SystemClock.uptimeMillis();
+    this.this$0.log("<BDH_LOG> onSwitch2BackupChannel()");
+    this.this$0.mReportInfo.put("param_switchChannel", String.valueOf(l - this.val$startTime));
+  }
+  
+  public void onTransStart()
+  {
+    this.this$0.log("<BDH_LOG> onTransStart()");
+    this.this$0.mStepTrans.startTime = 0L;
+    this.this$0.mStepTrans.logStartTime();
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    ShortVideoUploadProcessor localShortVideoUploadProcessor = this.this$0;
+    FileMsg localFileMsg = this.this$0.file;
+    long l = paramInt;
+    localFileMsg.transferedSize = l;
+    localShortVideoUploadProcessor.mTransferedSize = l;
+    if ((paramInt < this.this$0.mFileSize) && (!this.this$0.mIsCancel) && (!this.this$0.mIsPause)) {
+      this.this$0.sendProgressMessage();
+    }
   }
 }
 

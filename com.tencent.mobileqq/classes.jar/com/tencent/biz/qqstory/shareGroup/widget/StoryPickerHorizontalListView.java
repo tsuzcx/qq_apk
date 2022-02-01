@@ -6,21 +6,18 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem.FakeVideoUIItem;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import xtt;
-import xtw;
-import xtz;
-import yap;
 
 @TargetApi(9)
 public class StoryPickerHorizontalListView
   extends HorizontalListView
 {
-  int a;
-  public xtt a;
-  public xtz a;
+  int jdField_a_of_type_Int;
+  StoryPickerHorizontalListAdapter jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter;
+  StoryPickerHorizontalListView.OnHorizontalScrollListener jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener;
   int b;
   
   public StoryPickerHorizontalListView(Context paramContext)
@@ -38,22 +35,22 @@ public class StoryPickerHorizontalListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = DisplayUtil.dip2px(paramContext, 105.0F);
-    this.jdField_a_of_type_Xtt = new xtt(getContext());
-    super.setAdapter(this.jdField_a_of_type_Xtt);
-    super.setOnItemClickListener(this.jdField_a_of_type_Xtt);
-    super.setOnScrollStateChangedListener(new xtw(this));
+    this.b = DisplayUtil.a(paramContext, 105.0F);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter = new StoryPickerHorizontalListAdapter(getContext());
+    super.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter);
+    super.setOnItemClickListener(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter);
+    super.setOnScrollStateChangedListener(new StoryPickerHorizontalListView.1(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Xtt;
+    return this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter;
   }
   
-  public void setData(List<yap> paramList, String paramString)
+  public void setData(List<VideoCollectionItem.FakeVideoUIItem> paramList, String paramString)
   {
-    this.jdField_a_of_type_Xtt.a(paramList, paramString);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -63,14 +60,14 @@ public class StoryPickerHorizontalListView
     setOverScrollMode(1);
   }
   
-  public void setOnHorizontalScrollListener(xtz paramxtz)
+  public void setOnHorizontalScrollListener(StoryPickerHorizontalListView.OnHorizontalScrollListener paramOnHorizontalScrollListener)
   {
-    this.jdField_a_of_type_Xtz = paramxtz;
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener = paramOnHorizontalScrollListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

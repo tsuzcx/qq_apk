@@ -1,13 +1,11 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import botw;
-import boub;
 
-public class EditVideoPlayer$2
+class EditVideoPlayer$2
   implements Runnable
 {
-  public EditVideoPlayer$2(boub paramboub) {}
+  EditVideoPlayer$2(EditVideoPlayer paramEditVideoPlayer) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public class EditVideoPlayer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer.2
  * JD-Core Version:    0.7.0.1
  */

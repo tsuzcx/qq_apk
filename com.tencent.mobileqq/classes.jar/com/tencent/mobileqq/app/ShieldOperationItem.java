@@ -3,17 +3,16 @@ package com.tencent.mobileqq.app;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aodn;
 
 public class ShieldOperationItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<ShieldOperationItem> CREATOR = new aodn();
+  public static final Parcelable.Creator<ShieldOperationItem> CREATOR = new ShieldOperationItem.1();
   public int a;
   public long[] a;
   public int b;
-  public int c;
-  public int d;
+  public int c = 0;
+  public int d = 0;
   
   public int describeContents()
   {
@@ -45,7 +44,7 @@ public class ShieldOperationItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ShieldOperationItem
  * JD-Core Version:    0.7.0.1
  */

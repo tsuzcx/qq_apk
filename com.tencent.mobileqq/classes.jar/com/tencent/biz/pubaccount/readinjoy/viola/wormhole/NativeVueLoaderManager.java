@@ -4,9 +4,10 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bdgh;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.viola.utils.ViolaBizUtils;
+import com.tencent.mobileqq.soload.SoLoadManager;
 import com.tencent.nativevue.NativeVueEngine;
 import com.tencent.nativevue.NativeVueEngine.Builder;
 import com.tencent.nativevue.NativeVueEngine.DomResult;
@@ -17,9 +18,6 @@ import com.tencent.viola.commons.IReportDelegate;
 import com.tencent.viola.core.ViolaDomManager;
 import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.utils.ViolaUtils;
-import tzr;
-import ucu;
-import ucv;
 
 public class NativeVueLoaderManager
   implements NativeVuePreconditionAdapter
@@ -74,7 +72,7 @@ public class NativeVueLoaderManager
     {
       return;
       this.jdField_a_of_type_Boolean = true;
-      NativeVueEngine.Builder localBuilder = new NativeVueEngine.Builder().env("ViolaEnv", tzr.a()).logAdapter(new ucv(null)).preconditionAdapter(this);
+      NativeVueEngine.Builder localBuilder = new NativeVueEngine.Builder().env("ViolaEnv", ViolaBizUtils.a()).logAdapter(new NativeVueLoaderManager.NVLogAdapter(null)).preconditionAdapter(this);
       NativeVueEngine.getInstance().init(localBuilder);
     } while (!QLog.isColorLevel());
     QLog.d("NativeVueLoaderManager", 2, "init NativeVue");
@@ -118,8 +116,10 @@ public class NativeVueLoaderManager
     if (TextUtils.isEmpty(paramString2))
     {
       QLog.e("NativeVueLoaderManager", 1, "fail to get vueDom from js source");
-      if (paramDomResult != null) {
+      if (paramDomResult != null)
+      {
         paramDomResult.onResult("");
+        return;
       }
     }
     this.jdField_a_of_type_JavaLangString = paramString3;
@@ -145,12 +145,12 @@ public class NativeVueLoaderManager
   
   public void loadNativeVueSo(NativeVuePreconditionAdapter.LoadSoResult paramLoadSoResult)
   {
-    bdgh.a().a("nativevue", new ucu(this, paramLoadSoResult));
+    SoLoadManager.a().a("nativevue", new NativeVueLoaderManager.2(this, paramLoadSoResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager
  * JD-Core Version:    0.7.0.1
  */

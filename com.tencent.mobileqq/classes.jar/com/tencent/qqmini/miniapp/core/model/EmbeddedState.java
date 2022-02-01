@@ -3,12 +3,18 @@ package com.tencent.qqmini.miniapp.core.model;
 public class EmbeddedState
 {
   private boolean enableEmbeddedCanvas = false;
+  private boolean enableEmbeddedElement = false;
   private boolean enableEmbeddedLive = false;
   private boolean enableEmbeddedVideo = false;
   
   public boolean isEnableEmbeddedCanvas()
   {
     return this.enableEmbeddedCanvas;
+  }
+  
+  public boolean isEnableEmbeddedElement()
+  {
+    return this.enableEmbeddedElement;
   }
   
   public boolean isEnableEmbeddedLive()
@@ -26,6 +32,11 @@ public class EmbeddedState
     this.enableEmbeddedCanvas = paramBoolean;
   }
   
+  public void setEnableEmbeddedElement(boolean paramBoolean)
+  {
+    this.enableEmbeddedElement = paramBoolean;
+  }
+  
   public void setEnableEmbeddedLive(boolean paramBoolean)
   {
     this.enableEmbeddedLive = paramBoolean;
@@ -38,7 +49,7 @@ public class EmbeddedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.model.EmbeddedState
  * JD-Core Version:    0.7.0.1
  */

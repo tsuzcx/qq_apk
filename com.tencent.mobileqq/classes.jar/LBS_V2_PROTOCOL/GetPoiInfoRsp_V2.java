@@ -10,10 +10,10 @@ public final class GetPoiInfoRsp_V2
 {
   static ArrayList<PoiInfo_V2> cache_vPoiList = new ArrayList();
   public int iHasMore = 1;
-  public int iTotalNum;
+  public int iTotalNum = 0;
   public String request_id = "";
   public String strAttachInfo = "";
-  public ArrayList<PoiInfo_V2> vPoiList;
+  public ArrayList<PoiInfo_V2> vPoiList = null;
   
   static
   {

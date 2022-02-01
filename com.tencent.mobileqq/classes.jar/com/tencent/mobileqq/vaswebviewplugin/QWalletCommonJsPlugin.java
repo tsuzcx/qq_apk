@@ -18,13 +18,6 @@ import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.provider.ContactsContract.Contacts;
 import android.text.TextUtils;
-import anvx;
-import ascz;
-import asdd;
-import ashz;
-import bhez;
-import bifw;
-import bmhp;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -33,12 +26,19 @@ import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
 import cooperation.qwallet.plugin.QWalletPayBridge;
+import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
+import cooperation.qwallet.pluginshare.TenCookie;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
 import java.io.File;
@@ -91,7 +91,7 @@ public class QWalletCommonJsPlugin
   AppInterface app;
   private ExecutorService executorService;
   private long mAuthCodeAppId;
-  private String mCallback;
+  private String mCallback = null;
   String mContactId;
   private Context mContext;
   protected QQPermissionCallback mGetAllContactCallBack = new QWalletCommonJsPlugin.7(this);
@@ -132,7 +132,7 @@ public class QWalletCommonJsPlugin
     try
     {
       Object localObject2 = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject2).optString("title", anvx.a(2131710887));
+      paramString = ((JSONObject)localObject2).optString("title", HardCodeUtil.a(2131711402));
       int i = ((JSONObject)localObject2).optInt("type", 1);
       this.mCallback = ((JSONObject)localObject2).optString("callback");
       if ((i & 0x1) == 0) {}
@@ -1143,7 +1143,7 @@ public class QWalletCommonJsPlugin
     if (this.mContext == null) {
       return false;
     }
-    return bhez.f(this.mContext);
+    return JumpQqPimSecureUtil.f(this.mContext);
   }
   
   private void notifyViewUpdate(String paramString1, String paramString2)
@@ -1186,7 +1186,7 @@ public class QWalletCommonJsPlugin
           localObject1 = new JSONObject((String)localObject1);
           paramString1 = ((JSONObject)localObject1).optString("listid");
           localObject1 = ((JSONObject)localObject1).optString("feedsid");
-          localObject2 = bmhp.a().b(paramString1);
+          localObject2 = TenCookie.a().b(paramString1);
           paramString1 = paramString2;
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
@@ -1238,7 +1238,7 @@ public class QWalletCommonJsPlugin
           break label576;
         }
         mListid = paramString1;
-        mParamForGarpHb = bmhp.a().b(paramString1);
+        mParamForGarpHb = TenCookie.a().b(paramString1);
         if (QLog.isColorLevel()) {
           QLog.d("QWalletCommonJsPlugin", 2, "paramForGarpHb paramForGarpHb:" + mParamForGarpHb);
         }
@@ -1351,8 +1351,8 @@ public class QWalletCommonJsPlugin
   {
     Bundle localBundle = new Bundle();
     localBundle.putLong("appId", this.mAuthCodeAppId);
-    localBundle = asdd.a("qwallet_getAuthCode", this.mCallback, this.mOnRemoteResp.key, localBundle);
-    ashz.a().a(localBundle);
+    localBundle = DataFactory.a("qwallet_getAuthCode", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    WebIPCOperator.a().a(localBundle);
   }
   
   private void sendUIRefreshBroadcast(int paramInt1, int paramInt2, String paramString)
@@ -1390,6 +1390,11 @@ public class QWalletCommonJsPlugin
   protected long getPluginBusiness()
   {
     return 2415919104L;
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 2L;
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -1523,7 +1528,7 @@ public class QWalletCommonJsPlugin
     if ("qw_charge_gotoQWalletHome".equals(paramJsBridgeListener))
     {
       if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
-        QWalletHelper.gotoQWalletHome(this.mRuntime.a());
+        QWalletHelperImpl.gotoQWalletHome(this.mRuntime.a());
       }
       return true;
     }
@@ -1761,6 +1766,7 @@ public class QWalletCommonJsPlugin
       localJSONObject.put("sign", "");
       localIntent.putExtra("extra_data", localJSONObject.toString());
       localIntent.putExtra("app_info", "appid#20000001|bargainor_id#1000026901|channel#wallet");
+      localIntent.putExtra("isJumpToH5", false);
       localIntent.setClass(this.mContext, TransactionActivity.class);
       super.startActivityForResult(localIntent, REQUESTCODE_TRANSFER);
       return;
@@ -1837,7 +1843,7 @@ public class QWalletCommonJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ class AbsProfileHeaderView$2
   
   public void run()
   {
-    AbsProfileHeaderView.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, this.jdField_a_of_type_JavaLangString);
+    AbsProfileHeaderView.access$100(this.this$0, this.val$type, this.val$allinone, this.val$key);
   }
 }
 

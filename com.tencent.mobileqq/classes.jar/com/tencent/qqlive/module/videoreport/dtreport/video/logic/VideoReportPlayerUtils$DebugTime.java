@@ -5,7 +5,7 @@ import com.tencent.qqlive.module.videoreport.Log;
 public class VideoReportPlayerUtils$DebugTime
 {
   private static final String TAG = "DebugTime::";
-  private long startTime = 0L;
+  private long startTime;
   
   public VideoReportPlayerUtils$DebugTime(long paramLong)
   {

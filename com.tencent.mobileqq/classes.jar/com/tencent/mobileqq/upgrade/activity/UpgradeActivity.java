@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.upgrade.activity;
 
-import Override;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,46 +9,28 @@ import android.os.Bundle;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.view.Window;
-import anvx;
-import bdla;
-import bgvp;
-import bgvw;
-import bgvx;
-import bgwc;
-import bgwh;
-import bgwi;
-import bgwj;
-import bgwk;
-import bgwl;
-import bgwm;
-import bgwn;
-import bgwo;
-import bgwp;
-import bgwq;
-import bgwr;
-import bgws;
-import bgwt;
-import bgwu;
-import bgwv;
-import bgww;
-import bgwx;
-import bgwy;
-import bhdj;
-import bhhj;
-import bhhr;
-import bjhn;
-import bjhp;
-import bjko;
-import bjkv;
-import bjnn;
-import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.banner.BannerManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.upgrade.NewUpgradeDialog;
+import com.tencent.mobileqq.upgrade.UpgradeConstants;
+import com.tencent.mobileqq.upgrade.UpgradeController;
 import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper.NewApkInfo;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DialogUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.SPSettings;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.open.appcircle.st.AppCircleReportManager;
+import com.tencent.open.appcircle.st.STUtils;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.ToastUtil;
+import com.tencent.open.downloadnew.MyAppApi;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
 import protocol.KQQConfig.UpgradeInfo;
 
 public class UpgradeActivity
@@ -62,37 +43,34 @@ public class UpgradeActivity
   String jdField_a_of_type_JavaLangString = null;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
+  private String jdField_b_of_type_JavaLangString = null;
+  private boolean jdField_b_of_type_Boolean = false;
+  private int jdField_c_of_type_Int = 0;
+  private String jdField_c_of_type_JavaLangString = null;
+  private int jdField_d_of_type_Int = 0;
+  private String jdField_d_of_type_JavaLangString = null;
   private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
-  private String f;
-  private String g;
-  private String h;
+  private String jdField_e_of_type_JavaLangString = null;
+  private String f = null;
+  private String g = null;
+  private String h = null;
   
   private void a(boolean paramBoolean)
   {
-    if (bgvx.a().a() == 4)
+    if (UpgradeController.a().a() == 4)
     {
-      Object localObject = this.app.getHandler(Conversation.class);
-      if (localObject != null)
-      {
-        localObject = ((MqqHandler)localObject).obtainMessage(1134018);
-        ((Message)localObject).obj = this;
-        ((Message)localObject).sendToTarget();
-      }
+      Message localMessage = Message.obtain();
+      localMessage.what = 3000;
+      localMessage.obj = this;
+      BannerManager.a().b(17, localMessage);
       return;
     }
-    UpgradeDetailActivity.a(this, bgvx.a().a(), false, true, true);
+    UpgradeDetailActivity.a(this, UpgradeController.a().a(), false, true, true);
   }
   
   private void c()
   {
-    this.jdField_b_of_type_JavaLangString = anvx.a(2131715277);
+    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131715759);
     this.jdField_c_of_type_JavaLangString = "检测到你的网络环境处于2G/3G下，继续下载QQ将会产生流量。";
     showDialog(8192);
   }
@@ -100,7 +78,7 @@ public class UpgradeActivity
   private void d()
   {
     this.jdField_b_of_type_JavaLangString = "下载QQ失败";
-    this.jdField_c_of_type_JavaLangString = anvx.a(2131715280);
+    this.jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131715762);
     showDialog(16384);
   }
   
@@ -120,7 +98,7 @@ public class UpgradeActivity
     if (getIntent().hasExtra("strCancelButtonDesc")) {
       this.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("strCancelButtonDesc");
     }
-    if (bgvx.a().a() == 4) {}
+    if (UpgradeController.a().a() == 4) {}
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
@@ -167,7 +145,7 @@ public class UpgradeActivity
   
   private void g() {}
   
-  public void a()
+  void a()
   {
     finish();
     this.app.exit(false);
@@ -205,7 +183,7 @@ public class UpgradeActivity
   {
     boolean bool = false;
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper = bgvx.a().a();
+    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper = UpgradeController.a().a();
     if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper == null) || (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType <= 0))
     {
       paramBundle = new Intent();
@@ -221,7 +199,7 @@ public class UpgradeActivity
         }
       }
     }
-    getWindow().setBackgroundDrawableResource(2131167296);
+    getWindow().setBackgroundDrawableResource(2131167305);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("activity_type", 4096);
     switch (this.jdField_a_of_type_Int)
     {
@@ -242,10 +220,10 @@ public class UpgradeActivity
   public void doOnResume()
   {
     super.doOnResume();
-    if ((this.jdField_b_of_type_Boolean) && (bjnn.a().b()))
+    if ((this.jdField_b_of_type_Boolean) && (MyAppApi.a().b()))
     {
-      if (!bjnn.a().f()) {
-        bgvp.a(this);
+      if (!MyAppApi.a().f()) {
+        NewUpgradeDialog.a(this);
       }
       finish();
     }
@@ -273,50 +251,50 @@ public class UpgradeActivity
     while (localObject1 != null)
     {
       ((QQCustomDialog)localObject1).setCanceledOnTouchOutside(false);
-      ((QQCustomDialog)localObject1).setOnDismissListener(new bgwq(this));
+      ((QQCustomDialog)localObject1).setOnDismissListener(new UpgradeActivity.18(this));
       return localObject1;
-      bdla.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, bgvw.b(), String.valueOf(0), bgvx.a(), "");
-      localObject1 = bhdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
-      ((QQCustomDialog)localObject1).setPositiveButton(2131719831, new bgws(this)).setNegativeButton(2131716592, new bgwr(this)).setOnKeyListener(new bgwh(this));
+      ReportController.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "");
+      localObject1 = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+      ((QQCustomDialog)localObject1).setPositiveButton(2131720401, new UpgradeActivity.3(this)).setNegativeButton(2131717087, new UpgradeActivity.2(this)).setOnKeyListener(new UpgradeActivity.1(this));
       continue;
       if (this.jdField_d_of_type_Int == 0)
       {
-        bdla.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, bgvw.b(), String.valueOf(0), bgvx.a(), "");
-        localObject1 = bhdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+        ReportController.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "");
+        localObject1 = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
         b();
-        if (bgvx.a().a() == 4) {}
-        for (paramInt = 2131693291;; paramInt = 2131719831)
+        if (UpgradeController.a().a() == 4) {}
+        for (paramInt = 2131693442;; paramInt = 2131720401)
         {
-          ((QQCustomDialog)localObject1).setPositiveButton(paramInt, new bgwv(this)).setNegativeButton(2131719830, new bgwu(this)).setOnKeyListener(new bgwt(this));
+          ((QQCustomDialog)localObject1).setPositiveButton(paramInt, new UpgradeActivity.6(this)).setNegativeButton(2131720400, new UpgradeActivity.5(this)).setOnKeyListener(new UpgradeActivity.4(this));
           break;
         }
       }
       if (this.jdField_d_of_type_Int == 2)
       {
-        bdla.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, bgvw.b(), String.valueOf(2), bgvx.a(), "");
-        bdla.b(this.app, "CliOper", "", "", "0X800417D", "0X800417D", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, UpgradeConstants.b(), String.valueOf(2), UpgradeController.a(), "");
+        ReportController.b(this.app, "CliOper", "", "", "0X800417D", "0X800417D", 0, 0, "", "", "", "");
         try
         {
           this.jdField_c_of_type_JavaLangString = String.format(this.jdField_c_of_type_JavaLangString, new Object[0]);
-          bgww localbgww = new bgww(this);
-          bgwx localbgwx = new bgwx(this);
+          UpgradeActivity.7 local7 = new UpgradeActivity.7(this);
+          UpgradeActivity.8 local8 = new UpgradeActivity.8(this);
           if (this.jdField_a_of_type_Boolean) {
             if ((this.g == null) || ("".equals(this.g)))
             {
-              localObject1 = anvx.a(2131715281);
+              localObject1 = HardCodeUtil.a(2131715763);
               if ((this.h != null) && (!"".equals(this.h))) {
                 break label678;
               }
-              str = anvx.a(2131715274);
-              paramInt = bhhr.aP(this, this.app.getCurrentUin());
-              bhhr.af(this, this.app.getCurrentUin(), paramInt + 1);
-              bhhr.j(this, this.app.getCurrentUin(), System.currentTimeMillis());
+              str = HardCodeUtil.a(2131715756);
+              paramInt = SharedPreUtils.aQ(this, this.app.getCurrentUin());
+              SharedPreUtils.ag(this, this.app.getCurrentUin(), paramInt + 1);
+              SharedPreUtils.k(this, this.app.getCurrentUin(), System.currentTimeMillis());
               QLog.d("qqBaseActivity", 4, "UpgradeActivity:strTitle: " + this.jdField_b_of_type_JavaLangString);
               QLog.d("qqBaseActivity", 4, "UpgradeActivity:strUpgradeDesc: " + this.jdField_c_of_type_JavaLangString);
-              localObject1 = bhdj.a(this, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, (String)localObject1, str, this.f, localbgwx, localbgww);
+              localObject1 = DialogUtils.a(this, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, (String)localObject1, str, this.f, local8, local7);
               b();
               ((Dialog)localObject1).setCanceledOnTouchOutside(false);
-              ((Dialog)localObject1).setOnDismissListener(new bgwy(this));
+              ((Dialog)localObject1).setOnDismissListener(new UpgradeActivity.9(this));
               return localObject1;
             }
           }
@@ -335,28 +313,28 @@ public class UpgradeActivity
           }
           if ((this.jdField_e_of_type_JavaLangString == null) || ("".equals(this.jdField_e_of_type_JavaLangString)))
           {
-            localObject2 = anvx.a(2131715272);
+            localObject2 = HardCodeUtil.a(2131715754);
             label715:
             if ((this.jdField_d_of_type_JavaLangString != null) && (!"".equals(this.jdField_d_of_type_JavaLangString))) {
               break label795;
             }
           }
           label795:
-          for (String str = anvx.a(2131715279);; str = this.jdField_d_of_type_JavaLangString)
+          for (String str = HardCodeUtil.a(2131715761);; str = this.jdField_d_of_type_JavaLangString)
           {
-            paramInt = bhhr.aO(this, this.app.getCurrentUin());
-            bhhr.ae(this, this.app.getCurrentUin(), paramInt + 1);
-            bhhr.i(this, this.app.getCurrentUin(), System.currentTimeMillis());
+            paramInt = SharedPreUtils.aP(this, this.app.getCurrentUin());
+            SharedPreUtils.af(this, this.app.getCurrentUin(), paramInt + 1);
+            SharedPreUtils.j(this, this.app.getCurrentUin(), System.currentTimeMillis());
             break;
             localObject2 = this.jdField_e_of_type_JavaLangString;
             break label715;
           }
         }
-        Object localObject2 = bhdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
-        ((QQCustomDialog)localObject2).setPositiveButton(anvx.a(2131715278), new bgwj(this)).setNegativeButton(anvx.a(2131715283), new bgwi(this));
+        Object localObject2 = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+        ((QQCustomDialog)localObject2).setPositiveButton(HardCodeUtil.a(2131715760), new UpgradeActivity.11(this)).setNegativeButton(HardCodeUtil.a(2131715765), new UpgradeActivity.10(this));
         continue;
-        localObject2 = bhdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
-        ((QQCustomDialog)localObject2).setPositiveButton(anvx.a(2131715275), new bgwl(this)).setNegativeButton(anvx.a(2131715276), new bgwk(this));
+        localObject2 = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+        ((QQCustomDialog)localObject2).setPositiveButton(HardCodeUtil.a(2131715757), new UpgradeActivity.13(this)).setNegativeButton(HardCodeUtil.a(2131715758), new UpgradeActivity.12(this));
         continue;
         long l = System.currentTimeMillis();
         if (l - jdField_b_of_type_Long <= 1000L)
@@ -365,10 +343,10 @@ public class UpgradeActivity
           return null;
         }
         jdField_b_of_type_Long = l;
-        localObject2 = bgvx.a().a();
-        if ((localObject2 == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Bgwc == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null))
+        localObject2 = UpgradeController.a().a();
+        if ((localObject2 == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null))
         {
-          bjkv.a().a(anvx.a(2131715282));
+          ToastUtil.a().a(HardCodeUtil.a(2131715764));
           finish();
           return null;
         }
@@ -377,20 +355,20 @@ public class UpgradeActivity
         try
         {
           this.jdField_c_of_type_JavaLangString = String.format(this.jdField_c_of_type_JavaLangString, new Object[0]);
-          l = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Bgwc.jdField_a_of_type_Long;
-          bhhj.b(true);
-          paramInt = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Bgwc.jdField_a_of_type_Int;
-          bhhj.b(paramInt);
-          if (bjnn.a().b())
+          l = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Long;
+          SPSettings.b(true);
+          paramInt = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int;
+          SPSettings.b(paramInt);
+          if (MyAppApi.a().b())
           {
-            localObject2 = bhdj.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, new bgwm(this), new bgwn(this));
-            ((QQCustomDialog)localObject2).setOnDismissListener(new bgwo(this));
-            bjko.b("qqBaseActivity", bjhp.a(10010, 1, 1, 100));
-            bjko.b("qqBaseActivity", bjhp.a(10010, 1, 2, 100));
-            bjko.b("qqBaseActivity", bjhp.a(10010, 1, 3, 100));
-            bjhn.a().a(16, bjhp.a(10010, 1, 1, 100));
-            bjhn.a().a(16, bjhp.a(10010, 1, 2, 100));
-            bjhn.a().a(16, bjhp.a(10010, 1, 3, 100));
+            localObject2 = DialogUtils.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, new UpgradeActivity.14(this), new UpgradeActivity.15(this));
+            ((QQCustomDialog)localObject2).setOnDismissListener(new UpgradeActivity.16(this));
+            LogUtility.b("qqBaseActivity", STUtils.a(10010, 1, 1, 100));
+            LogUtility.b("qqBaseActivity", STUtils.a(10010, 1, 2, 100));
+            LogUtility.b("qqBaseActivity", STUtils.a(10010, 1, 3, 100));
+            AppCircleReportManager.a().a(16, STUtils.a(10010, 1, 1, 100));
+            AppCircleReportManager.a().a(16, STUtils.a(10010, 1, 2, 100));
+            AppCircleReportManager.a().a(16, STUtils.a(10010, 1, 3, 100));
             return localObject2;
           }
         }
@@ -402,9 +380,9 @@ public class UpgradeActivity
             localException2.printStackTrace();
           }
           this.jdField_b_of_type_Boolean = true;
-          bjnn.a().a(false);
-          localObject2 = bhdj.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, "");
-          ((bgvp)localObject2).a(new bgwp(this, (bgvp)localObject2, paramInt), true);
+          MyAppApi.a().a(false);
+          localObject2 = DialogUtils.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, "");
+          ((NewUpgradeDialog)localObject2).a(new UpgradeActivity.17(this, (NewUpgradeDialog)localObject2, paramInt), true);
           return localObject2;
         }
       }

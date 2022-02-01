@@ -9,16 +9,16 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
-import bgyo;
-import blcm;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentDynamicAvatarView
   extends DynamicAvatarView
-  implements blcm
+  implements IRecentImgv
 {
   private static boolean e = false;
   protected float a;
@@ -45,7 +45,14 @@ public class RecentDynamicAvatarView
     super(paramContext);
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_c_of_type_Float = -1.0F;
+    this.jdField_d_of_type_Float = 0.0F;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_c_of_type_AndroidGraphicsPaint = null;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
     this.jdField_a_of_type_Long = 5L;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   public RecentDynamicAvatarView(Context paramContext, AttributeSet paramAttributeSet)
@@ -53,7 +60,14 @@ public class RecentDynamicAvatarView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_c_of_type_Float = -1.0F;
+    this.jdField_d_of_type_Float = 0.0F;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_c_of_type_AndroidGraphicsPaint = null;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
     this.jdField_a_of_type_Long = 5L;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   public RecentDynamicAvatarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -61,7 +75,14 @@ public class RecentDynamicAvatarView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_c_of_type_Float = -1.0F;
+    this.jdField_d_of_type_Float = 0.0F;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_c_of_type_AndroidGraphicsPaint = null;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
     this.jdField_a_of_type_Long = 5L;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   protected static Bitmap a(long paramLong)
@@ -73,7 +94,7 @@ public class RecentDynamicAvatarView
     Object localObject = "";
     if (paramLong == 1L)
     {
-      i = 2130850475;
+      i = 2130850878;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
       if (i >= 0) {
         break label58;
@@ -87,23 +108,23 @@ public class RecentDynamicAvatarView
       if (paramLong != 2L) {
         break;
       }
-      i = 2130850477;
+      i = 2130850880;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
       break;
-      if (BaseApplicationImpl.sImageCache != null) {
-        localBitmap2 = (Bitmap)BaseApplicationImpl.sImageCache.get(localObject);
+      if (GlobalImageCache.a != null) {
+        localBitmap2 = (Bitmap)GlobalImageCache.a.get(localObject);
       }
       localBitmap1 = localBitmap2;
       if (localBitmap2 == null)
       {
-        localBitmap2 = bgyo.b(BaseApplicationImpl.getApplication().getResources(), i);
+        localBitmap2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), i);
         localBitmap1 = localBitmap2;
         if (localBitmap2 != null)
         {
           localBitmap1 = localBitmap2;
-          if (BaseApplicationImpl.sImageCache != null)
+          if (GlobalImageCache.a != null)
           {
-            BaseApplicationImpl.sImageCache.put(localObject, localBitmap2);
+            GlobalImageCache.a.put(localObject, localBitmap2);
             localBitmap1 = localBitmap2;
           }
         }
@@ -142,7 +163,7 @@ public class RecentDynamicAvatarView
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     int i;
@@ -195,7 +216,7 @@ public class RecentDynamicAvatarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.RecentDynamicAvatarView
  * JD-Core Version:    0.7.0.1
  */

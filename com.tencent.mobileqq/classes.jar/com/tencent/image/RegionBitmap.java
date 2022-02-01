@@ -4,8 +4,10 @@ import android.graphics.BitmapRegionDecoder;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.HandlerThread;
 import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.image.api.IThreadManager;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 
@@ -29,7 +31,7 @@ public final class RegionBitmap
   public RegionBitmap(String paramString)
   {
     if (this.mWorkHandler == null) {
-      this.mWorkHandler = new RegionBitmap.WorkHandler(this, ThreadManagerV2.getFileThreadLooper());
+      this.mWorkHandler = new RegionBitmap.WorkHandler(this, URLDrawable.depImp.mThreadManager.getFileThread().getLooper());
     }
     this.mImagePath = paramString;
   }

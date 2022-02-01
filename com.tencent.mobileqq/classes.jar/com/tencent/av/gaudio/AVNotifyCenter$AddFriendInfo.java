@@ -1,0 +1,13 @@
+package com.tencent.av.gaudio;
+
+class AVNotifyCenter$AddFriendInfo
+{
+  public int a;
+  public long a;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     com.tencent.av.gaudio.AVNotifyCenter.AddFriendInfo
+ * JD-Core Version:    0.7.0.1
+ */

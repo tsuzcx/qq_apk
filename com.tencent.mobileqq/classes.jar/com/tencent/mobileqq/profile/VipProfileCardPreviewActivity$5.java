@@ -5,7 +5,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GlobalImageCache;
 
 class VipProfileCardPreviewActivity$5
   implements Runnable
@@ -18,7 +18,7 @@ class VipProfileCardPreviewActivity$5
     if (localObject != null)
     {
       localObject = new BitmapDrawable(this.this$0.getResources(), (Bitmap)localObject);
-      BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaLangString, localObject);
+      GlobalImageCache.a.put(this.jdField_a_of_type_JavaLangString, localObject);
       localObject = this.this$0.a.obtainMessage();
       ((Message)localObject).what = 28;
       ((Message)localObject).arg1 = this.jdField_a_of_type_Int;

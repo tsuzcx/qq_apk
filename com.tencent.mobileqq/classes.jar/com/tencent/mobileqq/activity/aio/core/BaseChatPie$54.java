@@ -7,12 +7,12 @@ class BaseChatPie$54
   
   public void run()
   {
-    this.this$0.showAudioPanel(true);
+    this.this$0.o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.54
  * JD-Core Version:    0.7.0.1
  */

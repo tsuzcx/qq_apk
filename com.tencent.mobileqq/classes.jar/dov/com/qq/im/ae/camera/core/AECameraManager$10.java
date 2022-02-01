@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bdbf;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
 
 class AECameraManager$10
   implements Runnable
@@ -14,7 +14,7 @@ class AECameraManager$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraManager.10
  * JD-Core Version:    0.7.0.1
  */

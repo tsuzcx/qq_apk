@@ -12,18 +12,18 @@ class QQCustomDialogWtihInputAndChoose$2
   
   public void onClick(View paramView)
   {
-    if (paramView == this.this$0.viewSelected) {}
+    if (paramView == this.a.a) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.this$0.viewSelected != null) {
-        this.this$0.viewSelected.findViewById(2131370181).setVisibility(8);
+      if (this.a.a != null) {
+        this.a.a.findViewById(2131370453).setVisibility(8);
       }
-      TextView localTextView = (TextView)paramView.findViewById(2131370182);
-      this.this$0.setInputValue(localTextView.getText().toString());
-      paramView.findViewById(2131370181).setVisibility(0);
-      this.this$0.viewSelected = paramView;
+      TextView localTextView = (TextView)paramView.findViewById(2131370454);
+      this.a.a(localTextView.getText().toString());
+      paramView.findViewById(2131370453).setVisibility(0);
+      this.a.a = paramView;
     }
   }
 }

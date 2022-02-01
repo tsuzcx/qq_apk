@@ -13,16 +13,16 @@ import android.view.ViewParent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bmez;
-import bmfh;
-import bmgp;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.smtt.sdk.WebView;
+import cooperation.qqreader.helper.LoadingAnimationManager;
 import cooperation.qqreader.host.webview.ReaderWebView;
+import cooperation.qqreader.js.ReaderJsPlugin;
+import cooperation.qqreader.utils.ReportUtils;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,10 +34,15 @@ public abstract class ReaderBaseFragment
   protected boolean a;
   protected boolean b;
   
+  public ReaderBaseFragment()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
   private void b()
   {
-    if (this.mUIStyleHandler.mLoadingProgressBar != null) {
-      this.mUIStyleHandler.mLoadingProgressBar.setVisibility(8);
+    if (this.mUIStyleHandler.a != null) {
+      this.mUIStyleHandler.a.setVisibility(8);
     }
   }
   
@@ -95,12 +100,12 @@ public abstract class ReaderBaseFragment
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         c();
       }
-      bmez.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
+      LoadingAnimationManager.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
     }
     for (;;)
     {
       return true;
-      bmez.a().a();
+      LoadingAnimationManager.a().a();
     }
   }
   
@@ -152,7 +157,7 @@ public abstract class ReaderBaseFragment
     {
       localObject = ((ReaderBaseWebActivity)localObject).a(this.webView);
       if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-        ((bmfh)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
+        ((ReaderJsPlugin)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
       }
     }
     this.webView.getView().setVerticalScrollBarEnabled(false);
@@ -161,14 +166,14 @@ public abstract class ReaderBaseFragment
   public void onDetectedBlankScreen(String paramString, int paramInt)
   {
     super.onDetectedBlankScreen(paramString, paramInt);
-    bmgp.b(getActivity(), paramInt, paramString);
+    ReportUtils.b(getActivity(), paramInt, paramString);
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
     this.jdField_a_of_type_Boolean = false;
-    bmez.a().a();
+    LoadingAnimationManager.a().a();
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -179,25 +184,25 @@ public abstract class ReaderBaseFragment
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       c();
     }
-    bmez.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
+    LoadingAnimationManager.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    bmez.a().a();
+    LoadingAnimationManager.a().a();
   }
   
   public boolean showPreview()
   {
     this.b = true;
-    this.mUIStyleHandler.canWebViewOverScroll = false;
+    this.mUIStyleHandler.b = false;
     return super.showPreview();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderBaseFragment
  * JD-Core Version:    0.7.0.1
  */

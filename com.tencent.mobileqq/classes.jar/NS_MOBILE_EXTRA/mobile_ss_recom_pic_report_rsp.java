@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_ss_recom_pic_report_rsp
   extends JceStruct
 {
-  public int ret;
+  public int ret = 0;
   
   public mobile_ss_recom_pic_report_rsp() {}
   

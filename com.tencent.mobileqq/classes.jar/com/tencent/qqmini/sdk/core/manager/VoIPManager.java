@@ -32,7 +32,7 @@ public class VoIPManager
   private VoIPManager.EventListener mEventListener;
   private VoIPManager.JoinRoomListener mJoinRoomListener;
   private VoIPManager.MuteConfig mMuteConfig;
-  private boolean mQAvHasEnterRoom;
+  private volatile boolean mQAvHasEnterRoom;
   private boolean mQAvHasInitSDK;
   private AtomicBoolean mQAvRealEnterRoom = new AtomicBoolean(false);
   private final BroadcastReceiver mReceiver = new VoIPManager.1(this);
@@ -113,6 +113,104 @@ public class VoIPManager
       localUserModel = (VoIPManager.UserModel)this.mRoomUserModelList.get(Long.valueOf(paramLong));
     }
     return localUserModel;
+  }
+  
+  private void handleOnEnterRoom()
+  {
+    QMLog.d("VoIPManager", "onEnterRoom");
+    this.mQAvRealEnterRoom.set(true);
+    if (this.mMuteConfig != null) {
+      updateMuteConfig(this.mMuteConfig, null);
+    }
+    this.mVoIPProxy.updateRoomInfo();
+    switchAudioRoute();
+  }
+  
+  private void handleOnError(int paramInt)
+  {
+    QMLog.d("VoIPManager", String.format("onEnterRoom errorType=%s", new Object[] { Integer.valueOf(paramInt) }));
+    if ((paramInt == 2) || (paramInt == 1)) {
+      if (this.mJoinRoomListener != null)
+      {
+        this.mJoinRoomListener.onError(paramInt);
+        this.mJoinRoomListener = null;
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt != 4) {
+          break;
+        }
+      } while (this.mEventListener == null);
+      this.mEventListener.onInterrupt(4, "第三方通话中断");
+      return;
+    } while ((paramInt != 3) || (this.mEventListener == null));
+    this.mEventListener.onInterrupt(3, "网络原因中断");
+  }
+  
+  private void handleOnUserEnter(VoIPProxy.MultiUserInfo paramMultiUserInfo)
+  {
+    QMLog.d("VoIPManager", String.format("onUserEnter userInfo=%s", new Object[] { paramMultiUserInfo }));
+    if ((this.mJoinRoomListener == null) && (getUserModel(paramMultiUserInfo.mUin) == null))
+    {
+      VoIPManager.UserModel localUserModel = new VoIPManager.UserModel(this, null);
+      localUserModel.mUin = paramMultiUserInfo.mUin;
+      localUserModel.mOpenId = paramMultiUserInfo.mOpenId;
+      localUserModel.mMicStat = 1;
+      putUserModel(localUserModel);
+      if (this.mEventListener != null) {
+        this.mEventListener.onRoomMemberChange(getRoomOpenIdList());
+      }
+    }
+  }
+  
+  private void handleOnUserExit(VoIPProxy.MultiUserInfo paramMultiUserInfo)
+  {
+    QMLog.d("VoIPManager", String.format("onUserExit userInfo=%s", new Object[] { paramMultiUserInfo }));
+    if (this.mJoinRoomListener == null)
+    {
+      removeUserModel(paramMultiUserInfo.mUin);
+      if (this.mEventListener != null) {
+        this.mEventListener.onRoomMemberChange(getRoomOpenIdList());
+      }
+    }
+  }
+  
+  private void handleOnUserSpecking(VoIPProxy.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
+  {
+    QMLog.d("VoIPManager", String.format("onUserSpeaking userInfo=%s speaking=%s", new Object[] { paramMultiUserInfo, Boolean.valueOf(paramBoolean) }));
+    paramMultiUserInfo = getUserModel(paramMultiUserInfo.mUin);
+    if (paramMultiUserInfo != null)
+    {
+      paramMultiUserInfo.mSpeaking = paramBoolean;
+      if (this.mEventListener != null) {
+        this.mEventListener.onRoomMemberSpeaking(getSpeakingOpenIdList());
+      }
+      return;
+    }
+    QMLog.e("VoIPManager", "onUserSpeaking userModel==null");
+  }
+  
+  private void handleOnUserUpdate(List<VoIPProxy.MultiUserInfo> paramList)
+  {
+    if ((this.mJoinRoomListener != null) && (paramList != null))
+    {
+      JSONArray localJSONArray = new JSONArray();
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        VoIPProxy.MultiUserInfo localMultiUserInfo = (VoIPProxy.MultiUserInfo)localIterator.next();
+        if (localMultiUserInfo.mUin != 0L) {
+          localJSONArray.put(localMultiUserInfo.mOpenId);
+        }
+      }
+      this.mJoinRoomListener.onJoinRoom(localJSONArray);
+      updateUserModelList(paramList);
+      this.mJoinRoomListener = null;
+    }
   }
   
   private boolean isBluetoothOn()
@@ -340,16 +438,7 @@ public class VoIPManager
   
   public boolean isInRoom()
   {
-    try
-    {
-      boolean bool = this.mQAvHasEnterRoom;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.mQAvHasEnterRoom;
   }
   
   /* Error */
@@ -460,18 +549,18 @@ public class VoIPManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: getfield 472	com/tencent/qqmini/sdk/core/manager/VoIPManager$MuteConfig:isMuteMicrophone	Z
+    //   3: getfield 516	com/tencent/qqmini/sdk/core/manager/VoIPManager$MuteConfig:isMuteMicrophone	Z
     //   6: ifne +46 -> 52
     //   9: iconst_1
     //   10: istore 5
     //   12: aload_0
     //   13: iload 5
-    //   15: invokespecial 474	com/tencent/qqmini/sdk/core/manager/VoIPManager:qavOpMic	(Z)I
+    //   15: invokespecial 518	com/tencent/qqmini/sdk/core/manager/VoIPManager:qavOpMic	(Z)I
     //   18: istore_3
     //   19: aload_0
     //   20: aload_1
-    //   21: getfield 477	com/tencent/qqmini/sdk/core/manager/VoIPManager$MuteConfig:isMuteEarphone	Z
-    //   24: invokespecial 479	com/tencent/qqmini/sdk/core/manager/VoIPManager:qavOpMute	(Z)I
+    //   21: getfield 521	com/tencent/qqmini/sdk/core/manager/VoIPManager$MuteConfig:isMuteEarphone	Z
+    //   24: invokespecial 523	com/tencent/qqmini/sdk/core/manager/VoIPManager:qavOpMute	(Z)I
     //   27: istore 4
     //   29: iload_3
     //   30: ifne +8 -> 38
@@ -481,7 +570,7 @@ public class VoIPManager
     //   39: ifnull +10 -> 49
     //   42: aload_2
     //   43: iconst_m1
-    //   44: invokeinterface 484 2 0
+    //   44: invokeinterface 528 2 0
     //   49: aload_0
     //   50: monitorexit
     //   51: return
@@ -491,7 +580,7 @@ public class VoIPManager
     //   58: aload_2
     //   59: ifnull -10 -> 49
     //   62: aload_2
-    //   63: invokeinterface 487 1 0
+    //   63: invokeinterface 531 1 0
     //   68: goto -19 -> 49
     //   71: astore_1
     //   72: aload_0

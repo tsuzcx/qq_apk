@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class ResInfo
   extends JceStruct
 {
-  public boolean bDownload;
-  public int iResId;
-  public int iSize;
-  public int iVersion;
+  public boolean bDownload = false;
+  public int iResId = 0;
+  public int iSize = 0;
+  public int iVersion = 0;
   public String sResId = "";
   
   public void readFrom(JceInputStream paramJceInputStream)

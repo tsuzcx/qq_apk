@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_PrdData
   extends JceStruct
 {
-  public int iType;
+  public int iType = 0;
   public String strColorBegin = "";
   public String strColorEnd = "";
   public String strResUrl = "";

@@ -1,19 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsMsg;
-import aeow;
-import afmj;
-import afmy;
-import afmz;
-import afna;
-import afnb;
-import afnd;
-import afne;
-import afnf;
-import afng;
-import afnn;
-import afno;
-import afny;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -37,18 +24,21 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvx;
-import assh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.activateFriend.biz.ReminderListItemModel;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.OnRefreshListener2;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.reminder.api.IQQReminderDataService;
+import com.tencent.mobileqq.reminder.api.IQQReminderService;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -59,43 +49,43 @@ import mqq.app.AppRuntime;
 
 public class ReminderListFragment
   extends PublicBaseFragment
-  implements assh<RecyclerView>
+  implements PullToRefreshBase.OnRefreshListener2<RecyclerView>
 {
   private static final String jdField_a_of_type_JavaLangString = ReminderListFragment.class.getSimpleName();
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
-  private afnf jdField_a_of_type_Afnf;
-  private afno jdField_a_of_type_Afno;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ReminderListFragment.ReminderListAdapter jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$ReminderListAdapter;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PullToRefreshRecyclerView jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView;
-  private boolean jdField_a_of_type_Boolean;
+  private IQQReminderDataService jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private boolean c;
   private boolean d = true;
   
   private View a(Context paramContext)
   {
     FrameLayout localFrameLayout = new FrameLayout(paramContext);
-    localFrameLayout.setOnClickListener(new afmz(this));
+    localFrameLayout.setOnClickListener(new ReminderListFragment.2(this));
     localFrameLayout.setBackgroundColor(Color.parseColor("#1A000000"));
     Button localButton = new Button(paramContext);
-    localButton.setText(anvx.a(2131712842));
+    localButton.setText(HardCodeUtil.a(2131713338));
     localButton.setTextColor(Color.parseColor("#000000"));
     localButton.setTextSize(1, 16.0F);
-    localButton.setBackgroundDrawable(paramContext.getResources().getDrawable(2130844694));
-    localButton.setOnClickListener(new afna(this));
+    localButton.setBackgroundDrawable(paramContext.getResources().getDrawable(2130844855));
+    localButton.setOnClickListener(new ReminderListFragment.3(this));
     localFrameLayout.addView(localButton);
     paramContext = (FrameLayout.LayoutParams)localButton.getLayoutParams();
-    paramContext.width = AIOUtils.dp2px(80.0F, getResources());
+    paramContext.width = AIOUtils.a(80.0F, getResources());
     paramContext.height = -2;
     paramContext.gravity = 53;
     return localFrameLayout;
@@ -103,22 +93,22 @@ public class ReminderListFragment
   
   private View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560961, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131364325));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131366180));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131369278));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131689531));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131369231));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new afmy(this));
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView = ((PullToRefreshRecyclerView)paramLayoutInflater.findViewById(2131373386));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561047, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131364432));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131366351));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131369534));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131689538));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131369487));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ReminderListFragment.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView = ((PullToRefreshRecyclerView)paramLayoutInflater.findViewById(2131373699));
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView.setOnRefreshListener(this);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshExtrasPullToRefreshRecyclerView.a());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131376423);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131376816);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), 1, false));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new afng(this, null));
-    this.jdField_a_of_type_Afnf = new afnf(this, null);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Afnf);
-    this.jdField_a_of_type_Afnf.notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new ReminderListFragment.ReminderListItemDecoration(this, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$ReminderListAdapter = new ReminderListFragment.ReminderListAdapter(this, null);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$ReminderListAdapter);
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$ReminderListAdapter.notifyDataSetChanged();
     if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null) {
       this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(a(getActivity()), -1, -1);
     }
@@ -158,11 +148,16 @@ public class ReminderListFragment
     }
     if (!this.d)
     {
-      b(anvx.a(2131712843));
+      b(HardCodeUtil.a(2131713339));
       this.jdField_a_of_type_AndroidOsHandler.post(new ReminderListFragment.8(this));
-      return;
     }
-    afnn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, 10, new afne(this, paramInt));
+    IQQReminderService localIQQReminderService;
+    do
+    {
+      return;
+      localIQQReminderService = (IQQReminderService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQReminderService.class, "");
+    } while (localIQQReminderService == null);
+    localIQQReminderService.sendReminderList(paramInt, 10, new ReminderListFragment.9(this, paramInt));
   }
   
   private void a(AcsMsg paramAcsMsg)
@@ -172,11 +167,17 @@ public class ReminderListFragment
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "---deleMsg--- acsMsg is null");
       }
-      b(anvx.a(2131712835));
-      return;
+      b(HardCodeUtil.a(2131713331));
     }
-    String str = paramAcsMsg.msg_id;
-    afnn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 0L, 2, new afnb(this, paramAcsMsg, str));
+    String str;
+    IQQReminderService localIQQReminderService;
+    do
+    {
+      return;
+      str = paramAcsMsg.msg_id;
+      localIQQReminderService = (IQQReminderService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQReminderService.class, "");
+    } while (localIQQReminderService == null);
+    localIQQReminderService.sendDelReminderListById(str, 0L, 2, new ReminderListFragment.5(this, paramAcsMsg, str));
   }
   
   public static void a(Context paramContext, String paramString)
@@ -186,39 +187,39 @@ public class ReminderListFragment
     if (!(paramContext instanceof Activity)) {
       localIntent.addFlags(268435456);
     }
-    aeow.a(paramContext, localIntent, PublicFragmentActivity.class, ReminderListFragment.class);
+    PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicFragmentActivity.class, ReminderListFragment.class);
   }
   
   private void a(String paramString)
   {
-    this.jdField_a_of_type_Afno.a(paramString, new afnd(this));
+    this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService.getReminderListByday(paramString, new ReminderListFragment.6(this));
   }
   
-  private void a(ArrayList<AcsMsg> paramArrayList, ArrayList<afny> paramArrayList1, boolean paramBoolean)
+  private void a(ArrayList<AcsMsg> paramArrayList, ArrayList<ReminderListItemModel> paramArrayList1, boolean paramBoolean)
   {
     paramArrayList = paramArrayList.iterator();
     if (paramArrayList.hasNext())
     {
       AcsMsg localAcsMsg = (AcsMsg)paramArrayList.next();
-      afny localafny = new afny();
-      localafny.jdField_a_of_type_WalletAcsMsg = localAcsMsg;
+      ReminderListItemModel localReminderListItemModel = new ReminderListItemModel();
+      localReminderListItemModel.jdField_a_of_type_WalletAcsMsg = localAcsMsg;
       if (localAcsMsg.notice_time * 1000L >= this.jdField_a_of_type_Long)
       {
-        localafny.jdField_a_of_type_Int = 0;
+        localReminderListItemModel.jdField_a_of_type_Int = 0;
         if (!this.jdField_a_of_type_Boolean)
         {
-          localafny.jdField_a_of_type_JavaLangString = anvx.a(2131712841);
+          localReminderListItemModel.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713337);
           this.jdField_a_of_type_Boolean = true;
         }
       }
       for (;;)
       {
-        paramArrayList1.add(localafny);
+        paramArrayList1.add(localReminderListItemModel);
         break;
-        localafny.jdField_a_of_type_Int = 1;
+        localReminderListItemModel.jdField_a_of_type_Int = 1;
         if (!this.jdField_b_of_type_Boolean)
         {
-          localafny.jdField_a_of_type_JavaLangString = anvx.a(2131712846);
+          localReminderListItemModel.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713342);
           this.jdField_b_of_type_Boolean = true;
         }
       }
@@ -234,7 +235,7 @@ public class ReminderListFragment
     if (localIntent != null)
     {
       bool1 = bool2;
-      if (!StringUtil.isEmpty(localIntent.getStringExtra("notice_time"))) {
+      if (!StringUtil.a(localIntent.getStringExtra("notice_time"))) {
         bool1 = true;
       }
       this.c = bool1;
@@ -258,9 +259,9 @@ public class ReminderListFragment
   
   private void c()
   {
-    if (!NetworkUtil.isNetworkAvailable(getActivity()))
+    if (!NetworkUtil.g(getActivity()))
     {
-      b(anvx.a(2131712838));
+      b(HardCodeUtil.a(2131713334));
       if (this.jdField_b_of_type_Int == 0) {
         b();
       }
@@ -271,7 +272,7 @@ public class ReminderListFragment
       String str = getActivity().getIntent().getStringExtra("notice_time");
       try
       {
-        a(afmj.a(Long.parseLong(str) * 1000L, "yyyyMMdd"));
+        a(DateUtil.a(Long.parseLong(str) * 1000L, "yyyyMMdd"));
         return;
       }
       catch (Exception localException)
@@ -294,7 +295,7 @@ public class ReminderListFragment
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = a();
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_Afno = ((afno)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQ_NOTIFY_MANAGER));
+      this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService = ((IQQReminderDataService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQReminderDataService.class, ""));
       c();
     }
   }
@@ -346,7 +347,7 @@ public class ReminderListFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment
  * JD-Core Version:    0.7.0.1
  */

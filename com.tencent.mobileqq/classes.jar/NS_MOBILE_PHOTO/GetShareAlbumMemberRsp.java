@@ -13,7 +13,7 @@ public class GetShareAlbumMemberRsp
   public Album album;
   public ArrayList<ShareAlbumMemberData> member_datas;
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   static
   {

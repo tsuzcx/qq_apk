@@ -12,8 +12,8 @@ public final class s_outshare
   static s_arkshare cache_ark_sharedata = new s_arkshare();
   static Map<Integer, s_picurl> cache_photourl = new HashMap();
   public String action_url = "";
-  public s_arkshare ark_sharedata;
-  public Map<Integer, s_picurl> photourl;
+  public s_arkshare ark_sharedata = null;
+  public Map<Integer, s_picurl> photourl = null;
   public String summary = "";
   public String title = "";
   

@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import awpl;
 import com.tencent.mobileqq.activity.home.Conversation;
 
-public class LoginwelcomeHelper$2
+class LoginwelcomeHelper$2
   implements Runnable
 {
-  public LoginwelcomeHelper$2(awpl paramawpl) {}
+  LoginwelcomeHelper$2(LoginwelcomeHelper paramLoginwelcomeHelper) {}
   
   public void run()
   {
     if (this.this$0.a.a != null)
     {
-      LoginWelcomeManager localLoginWelcomeManager = LoginWelcomeManager.a(this.this$0.a.a);
+      LoginWelcomeManager localLoginWelcomeManager = LoginWelcomeManager.a(this.this$0.a.a());
       localLoginWelcomeManager.e();
       if (localLoginWelcomeManager.b) {
         localLoginWelcomeManager.h();

@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import afcm;
-import bgkf;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
 
-public class TroopGagActivity$3$1
+class TroopGagActivity$3$1
   implements Runnable
 {
-  public TroopGagActivity$3$1(afcm paramafcm, bgkf parambgkf) {}
+  TroopGagActivity$3$1(TroopGagActivity.3 param3, TroopGagMgr paramTroopGagMgr) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bgkf.a(this.jdField_a_of_type_Afcm.a.a, true);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$3.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopGagActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

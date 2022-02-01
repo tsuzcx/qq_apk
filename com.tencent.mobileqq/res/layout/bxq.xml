@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nnt" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n2z" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
-    <FrameLayout android:id="@id/msk" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <dov.com.qq.im.ae.cmshow.AECMShowLoadingView android:id="@id/mn6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="75.0dip" />
-    </FrameLayout>
-    <ImageView android:id="@id/n25" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="24.0dip" android:layout_marginTop="43.0dip" android:src="@drawable/ew5" />
-    <LinearLayout android:orientation="vertical" android:id="@id/o26" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:background="@drawable/b7m" android:layout_width="fill_parent" android:layout_height="111.0dip" />
-        <View android:background="@color/bw" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    </LinearLayout>
-    <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/o0b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/t3j" android:layout_above="@id/nzp" android:layout_centerHorizontal="true" android:alpha="0.7" />
-    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/nzp" android:background="@drawable/b45" android:layout_width="168.0dip" android:layout_height="50.0dip" android:layout_marginBottom="32.0dip" android:text="@string/vw2" android:drawablePadding="9.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <dov.com.qq.im.ae.view.AECMShowFaceScanView android:id="@id/mra" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<RelativeLayout android:id="@id/oly" android:layout_width="100.0dip" android:layout_height="105.0dip" android:layout_marginLeft="-10.0dip" android:layout_marginRight="-10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" app:qqArMapGuideRadius="3">
+        <View android:id="@id/mpz" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/o3w" android:background="@drawable/ftt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/fry" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/e16" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/frz" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
 </RelativeLayout>

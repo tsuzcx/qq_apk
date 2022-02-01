@@ -49,7 +49,7 @@ public class QQCacheModule
       }
       return;
     }
-    paramString = FileUtils.readObject("viola_cache_file_" + paramString + "_" + ((AppRuntime)localObject).getAccount());
+    paramString = FileUtils.a("viola_cache_file_" + paramString + "_" + ((AppRuntime)localObject).getAccount());
     if ((paramString instanceof String)) {}
     for (paramString = (String)paramString;; paramString = null)
     {
@@ -94,7 +94,7 @@ public class QQCacheModule
             continue;
           }
           str = localJSONArray.getString(i);
-          paramJSONObject = FileUtils.readObject("viola_cache_file_" + str + "_" + localAppRuntime.getAccount());
+          paramJSONObject = FileUtils.a("viola_cache_file_" + str + "_" + localAppRuntime.getAccount());
           if (!(paramJSONObject instanceof String)) {
             continue;
           }
@@ -125,7 +125,7 @@ public class QQCacheModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQCacheModule
  * JD-Core Version:    0.7.0.1
  */

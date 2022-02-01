@@ -12,11 +12,11 @@ public class Collector
   protected Assembler assembler = Assembler.Array;
   protected Condition condition = Condition.Always;
   protected Deliverer deliverer = Deliverer.Console;
-  protected volatile boolean flush;
+  protected volatile boolean flush = false;
   protected volatile boolean isWorking = true;
   protected List<Statistic> lastStatistics = new ArrayList();
-  protected volatile long latestWorkTime;
-  protected volatile boolean needForceDeliver;
+  protected volatile long latestWorkTime = 0L;
+  protected volatile boolean needForceDeliver = false;
   protected Sampler sampler = Sampler.All;
   protected long sleepTimespan = 3000L;
   protected StatisticFolder statisticFolder = new StatisticFolder();
@@ -236,7 +236,7 @@ public class Collector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.statistic.access.concept.Collector
  * JD-Core Version:    0.7.0.1
  */

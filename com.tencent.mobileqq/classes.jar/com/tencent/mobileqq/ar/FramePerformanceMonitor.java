@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.ar;
 
-import apgt;
-import apgu;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class FramePerformanceMonitor
 {
   private int jdField_a_of_type_Int = 1000;
-  private apgt jdField_a_of_type_Apgt;
-  private apgu jdField_a_of_type_Apgu = new apgu(100);
   private FramePerformanceMonitor.CurrentRunnable jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$CurrentRunnable;
+  private FramePerformanceMonitor.FrameRefreshListener jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$FrameRefreshListener;
+  private GapDataCollector jdField_a_of_type_ComTencentMobileqqArGapDataCollector = new GapDataCollector(100);
   
   public void a()
   {
     b();
-    if (this.jdField_a_of_type_Apgt == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$FrameRefreshListener == null) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$CurrentRunnable = new FramePerformanceMonitor.CurrentRunnable(this, null);
@@ -27,14 +25,9 @@ public class FramePerformanceMonitor
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(apgt paramapgt)
+  public void a(FramePerformanceMonitor.FrameRefreshListener paramFrameRefreshListener)
   {
-    this.jdField_a_of_type_Apgt = paramapgt;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return this.jdField_a_of_type_Apgu.a(paramLong);
+    this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$FrameRefreshListener = paramFrameRefreshListener;
   }
   
   public void b()
@@ -48,7 +41,7 @@ public class FramePerformanceMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FramePerformanceMonitor
  * JD-Core Version:    0.7.0.1
  */

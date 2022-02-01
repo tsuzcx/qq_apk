@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.apollo.cmgame;
 
-import amrf;
-import amwn;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import ankm;
-import ankv;
-import anmn;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.api.model.ApolloGameData;
+import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloGameRscVerify;
+import com.tencent.mobileqq.apollo.utils.RSAVerify;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -30,25 +29,25 @@ class CmGameStartChecker$1
     }
     if (CmGameStartChecker.a(this.this$0) != null)
     {
-      localObject = (amrf)CmGameStartChecker.a(this.this$0).get();
+      localObject = (OnGameStartCheckListener)CmGameStartChecker.a(this.this$0).get();
       if (localObject != null)
       {
         QLog.d("cmgame_process.CmGameStartChecker", 2, "gameCheckListener.onGameCheckStart startCheckParam:" + CmGameStartChecker.a(this.this$0));
-        ((amrf)localObject).onGameCheckStart(CmGameStartChecker.a(this.this$0));
+        ((OnGameStartCheckListener)localObject).b(CmGameStartChecker.a(this.this$0));
       }
     }
-    Object localObject = new anmn(ApolloUtil.b(CmGameStartChecker.a(this.this$0).gameId) + "/" + "main.js.sig", ApolloUtil.a(CmGameStartChecker.a(this.this$0).gameId));
-    boolean bool = ankv.a(CmGameStartChecker.a(this.this$0).isWhiteUsr, CmGameStartChecker.a(this.this$0).gameId);
-    amwn.a(new Object[] { "[verifyRes], isNeedGameVerify:", Boolean.valueOf(bool) });
-    if ((!bool) || (CmGameStartChecker.a(this.this$0).mGameType != 1) || (((anmn)localObject).a(0)))
+    Object localObject = new RSAVerify(ApolloUtilImpl.getApolloGameResPath(CmGameStartChecker.a(this.this$0).gameId) + "/" + "main.js.sig", ApolloUtilImpl.getApolloGameLuaPath(CmGameStartChecker.a(this.this$0).gameId));
+    boolean bool = ApolloGameRscVerify.a(CmGameStartChecker.a(this.this$0).isWhiteUsr, CmGameStartChecker.a(this.this$0).gameId);
+    CmGameUtil.a(new Object[] { "[verifyRes], isNeedGameVerify:", Boolean.valueOf(bool) });
+    if ((!bool) || (CmGameStartChecker.a(this.this$0).mGameType != 1) || (((RSAVerify)localObject).a(0)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("cmgame_process.CmGameStartChecker", 2, new Object[] { "verify pass startCheckParam:", CmGameStartChecker.a(this.this$0) });
       }
       localObject = new CmGameInitParams();
-      ((CmGameInitParams)localObject).mGamePath = ApolloUtil.a(CmGameStartChecker.a(this.this$0).gameId);
-      ((CmGameInitParams)localObject).mServerIp = ankm.a();
-      ((CmGameInitParams)localObject).mPort = ankm.a();
+      ((CmGameInitParams)localObject).mGamePath = ApolloUtilImpl.getApolloGameLuaPath(CmGameStartChecker.a(this.this$0).gameId);
+      ((CmGameInitParams)localObject).mServerIp = ApolloGameBasicEventUtil.a();
+      ((CmGameInitParams)localObject).mPort = ApolloGameBasicEventUtil.a();
       ((CmGameInitParams)localObject).mVersion = CmGameStartChecker.a(this.this$0).version;
       ((CmGameInitParams)localObject).mIsMaster = CmGameStartChecker.a(this.this$0).isCreator;
       ((CmGameInitParams)localObject).mGameMode = CmGameStartChecker.a(this.this$0).gameMode;
@@ -93,18 +92,18 @@ class CmGameStartChecker$1
       ((CmGameInitParams)localObject).transInfo = CmGameStartChecker.a(this.this$0).transInfo;
       if (CmGameStartChecker.a(this.this$0) != null)
       {
-        amrf localamrf = (amrf)CmGameStartChecker.a(this.this$0).get();
-        if (localamrf != null)
+        OnGameStartCheckListener localOnGameStartCheckListener = (OnGameStartCheckListener)CmGameStartChecker.a(this.this$0).get();
+        if (localOnGameStartCheckListener != null)
         {
           QLog.d("cmgame_process.CmGameStartChecker", 2, "gameCheckListener.onGameCheckFinish startCheckParam:" + CmGameStartChecker.a(this.this$0));
-          amwn.a(new Object[] { "[verifyRes], done" });
-          localamrf.onVerifyGameFinish(0L, CmGameStartChecker.a(this.this$0), (CmGameInitParams)localObject);
+          CmGameUtil.a(new Object[] { "[verifyRes], done" });
+          localOnGameStartCheckListener.b(0L, CmGameStartChecker.a(this.this$0), (CmGameInitParams)localObject);
         }
       }
       ApolloGameStateMachine.a().a(2, "ApolloManager.startGame");
       try
       {
-        ApolloUtil.a().edit().putLong(String.valueOf(CmGameStartChecker.a(this.this$0).gameId), NetConnInfoCenter.getServerTimeMillis()).commit();
+        ApolloUtilImpl.getGameResSp().edit().putLong(String.valueOf(CmGameStartChecker.a(this.this$0).gameId), NetConnInfoCenter.getServerTimeMillis()).commit();
         return;
       }
       catch (Exception localException)
@@ -114,13 +113,13 @@ class CmGameStartChecker$1
     }
     QLog.e("cmgame_process.CmGameStartChecker", 1, new Object[] { "verify lua fail and delete local res startCheckParam=", CmGameStartChecker.a(this.this$0) });
     CmGameStartChecker.a(this.this$0, -13L);
-    FileUtils.deleteDirectory(ApolloUtil.b(CmGameStartChecker.a(this.this$0).gameId));
-    amwn.a(ApolloUtil.a(CmGameStartChecker.a(this.this$0).gameId));
+    FileUtils.a(ApolloUtilImpl.getApolloGameResPath(CmGameStartChecker.a(this.this$0).gameId));
+    CmGameUtil.a(ApolloUtilImpl.getApolloGameLuaPath(CmGameStartChecker.a(this.this$0).gameId));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.1
  * JD-Core Version:    0.7.0.1
  */

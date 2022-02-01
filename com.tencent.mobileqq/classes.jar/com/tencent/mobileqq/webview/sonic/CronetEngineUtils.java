@@ -42,6 +42,9 @@ public class CronetEngineUtils
           String str2 = (String)paramHashMap.getValue();
           if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
           {
+            if (QLog.isColorLevel()) {
+              QLog.d("SonicSdkImpl_CronetEngineUtils", 1, "set Quic header, key: " + str1 + ", value: " + str2);
+            }
             paramString.addHeader((String)paramHashMap.getKey(), (String)paramHashMap.getValue());
             continue;
             return false;
@@ -67,7 +70,7 @@ public class CronetEngineUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.CronetEngineUtils
  * JD-Core Version:    0.7.0.1
  */

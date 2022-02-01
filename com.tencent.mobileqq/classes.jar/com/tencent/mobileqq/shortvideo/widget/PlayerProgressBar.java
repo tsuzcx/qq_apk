@@ -58,7 +58,7 @@ public class PlayerProgressBar
     return paramInt1;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (super.isInEditMode()) {}

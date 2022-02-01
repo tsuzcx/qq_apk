@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.studyroom.ui;
 
-import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,13 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import anvx;
-import bdwr;
-import bdws;
-import bdxc;
-import bisl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.studyroom.utils.PluginUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.HashMap;
@@ -28,8 +26,8 @@ import java.util.concurrent.Future;
 public class StudyRoomLoadingFragment
   extends PublicBaseFragment
 {
-  private bisl jdField_a_of_type_Bisl;
-  private Future<?> jdField_a_of_type_JavaUtilConcurrentFuture;
+  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  private Future<?> jdField_a_of_type_JavaUtilConcurrentFuture = null;
   
   public static void a(String paramString, Map<String, String> paramMap)
   {
@@ -40,26 +38,26 @@ public class StudyRoomLoadingFragment
     {
       paramMap.put("action", paramString);
       localIntent.putExtra("param", paramMap);
-      aeow.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
+      PublicFragmentActivity.Launcher.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
       return;
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bisl == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
-      this.jdField_a_of_type_Bisl = new bisl(getActivity(), 40);
-      this.jdField_a_of_type_Bisl.a(anvx.a(2131707280));
-      this.jdField_a_of_type_Bisl.setOnCancelListener(new bdwr(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), 40);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131707805));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(new StudyRoomLoadingFragment.1(this));
     }
-    this.jdField_a_of_type_Bisl.show();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bisl != null) {
-      this.jdField_a_of_type_Bisl.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
   }
   
@@ -136,7 +134,7 @@ public class StudyRoomLoadingFragment
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = bdxc.a(getActivity().getApplicationContext(), paramView, false, new bdws(this));
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = PluginUtils.a(getActivity().getApplicationContext(), paramView, false, new StudyRoomLoadingFragment.WeakCallback(this));
   }
 }
 

@@ -1,21 +1,18 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import bnoc;
-import bnok;
-
-public class AEGIFTextEditFragment$7$1
+class AEGIFTextEditFragment$7$1
   implements Runnable
 {
-  public AEGIFTextEditFragment$7$1(bnok parambnok) {}
+  AEGIFTextEditFragment$7$1(AEGIFTextEditFragment.7 param7) {}
   
   public void run()
   {
-    bnoc.a(this.a.a, false);
+    AEGIFTextEditFragment.a(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.7.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,14 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class AvGameRoomManager$CmdRoomEnterReq
   extends MessageMicro<CmdRoomEnterReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40 }, new String[] { "from", "roomid", "uin", "invitor_uin", "init_status" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, CmdRoomEnterReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64 }, new String[] { "from", "roomid", "uin", "invitor_uin", "init_status", "scene", "pk_opponent_uin", "trans_mod" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, CmdRoomEnterReq.class);
   public final PBEnumField from = PBField.initEnum(0);
   public final PBUInt32Field init_status = PBField.initUInt32(0);
   public final PBUInt64Field invitor_uin = PBField.initUInt64(0L);
+  public final PBUInt64Field pk_opponent_uin = PBField.initUInt64(0L);
   public final PBUInt64Field roomid = PBField.initUInt64(0L);
+  public final PBEnumField scene = PBField.initEnum(0);
+  public final PBUInt32Field trans_mod = PBField.initUInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
 }
 

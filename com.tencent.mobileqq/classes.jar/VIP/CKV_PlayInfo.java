@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class CKV_PlayInfo
   extends JceStruct
 {
-  public long iLstPlayTime;
+  public long iLstPlayTime = 0L;
   public String sSongId = "";
   
   public CKV_PlayInfo() {}

@@ -1,20 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
-import puk;
-
-public class DynamicChannelDataModule$3
+class DynamicChannelDataModule$3
   implements Runnable
 {
-  public DynamicChannelDataModule$3(puk parampuk, int paramInt) {}
+  DynamicChannelDataModule$3(DynamicChannelDataModule paramDynamicChannelDataModule, int paramInt) {}
   
   public void run()
   {
-    puk.a(this.this$0, this.a, 1);
+    DynamicChannelDataModule.a(this.this$0, this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DynamicChannelDataModule.3
  * JD-Core Version:    0.7.0.1
  */

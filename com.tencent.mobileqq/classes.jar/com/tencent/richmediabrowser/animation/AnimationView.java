@@ -310,7 +310,7 @@ public class AnimationView
     this.isInAnimation = false;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.freeMode)
     {
@@ -411,7 +411,7 @@ public class AnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.richmediabrowser.animation.AnimationView
  * JD-Core Version:    0.7.0.1
  */

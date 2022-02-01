@@ -3,18 +3,17 @@ package com.tencent.av.utils;
 import android.content.Context;
 import android.content.IntentFilter;
 import com.tencent.qphone.base.util.QLog;
-import muo;
 
-public final class SensorReport$2
+final class SensorReport$2
   implements Runnable
 {
-  public SensorReport$2(Context paramContext, IntentFilter paramIntentFilter) {}
+  SensorReport$2(Context paramContext, IntentFilter paramIntentFilter) {}
   
   public void run()
   {
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(muo.a(), this.jdField_a_of_type_AndroidContentIntentFilter);
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(SensorReport.a(), this.jdField_a_of_type_AndroidContentIntentFilter);
       return;
     }
     catch (Exception localException)
@@ -26,7 +25,7 @@ public final class SensorReport$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.SensorReport.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcResponseSetRoamMsg
   extends JceStruct
 {
-  public byte cReplyCode;
-  public long lUin;
+  public byte cReplyCode = 0;
+  public long lUin = 0L;
   public String strResult = "";
   
   public SvcResponseSetRoamMsg() {}

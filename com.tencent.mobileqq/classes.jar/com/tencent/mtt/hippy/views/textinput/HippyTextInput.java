@@ -185,7 +185,7 @@ public class HippyTextInput
     this.bUserSetValue = false;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if ((getRootView() != null) && (Build.VERSION.SDK_INT >= 16)) {
@@ -193,7 +193,7 @@ public class HippyTextInput
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if ((getRootView() != null) && (Build.VERSION.SDK_INT >= 16)) {
@@ -255,7 +255,7 @@ public class HippyTextInput
     ((EventDispatcher)this.mHippyContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveUIComponentEvent(getId(), "onBlur", paramView);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mReactContentSizeWatcher != null) {
@@ -475,7 +475,7 @@ public class HippyTextInput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.textinput.HippyTextInput
  * JD-Core Version:    0.7.0.1
  */

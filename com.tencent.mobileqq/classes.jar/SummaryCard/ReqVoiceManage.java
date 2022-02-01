@@ -9,9 +9,9 @@ public final class ReqVoiceManage
 {
   static int cache_eOpType;
   static VoiceInfo cache_stVoiceInfo;
-  public int eOpType;
-  public long lFriendUin;
-  public VoiceInfo stVoiceInfo;
+  public int eOpType = 0;
+  public long lFriendUin = 0L;
+  public VoiceInfo stVoiceInfo = null;
   
   public ReqVoiceManage() {}
   
@@ -41,7 +41,7 @@ public final class ReqVoiceManage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.ReqVoiceManage
  * JD-Core Version:    0.7.0.1
  */

@@ -13,11 +13,11 @@ public class ProfileCardScrollImageView
   private int jdField_a_of_type_Int = 1500;
   private long jdField_a_of_type_Long;
   private DecelerateInterpolator jdField_a_of_type_AndroidViewAnimationDecelerateInterpolator;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean = false;
+  private int jdField_c_of_type_Int = 0;
+  private boolean jdField_c_of_type_Boolean = false;
   private int d = 3;
   
   public ProfileCardScrollImageView(Context paramContext)
@@ -59,7 +59,7 @@ public class ProfileCardScrollImageView
     invalidate();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (!this.jdField_a_of_type_Boolean) {
       super.onDraw(paramCanvas);
@@ -147,7 +147,7 @@ public class ProfileCardScrollImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileCardScrollImageView
  * JD-Core Version:    0.7.0.1
  */

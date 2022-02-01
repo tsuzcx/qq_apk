@@ -1,29 +1,28 @@
 package com.tencent.av.wtogether.media;
 
-import myi;
-import mzm;
+import com.tencent.av.wtogether.callback.VideoSink;
 
-public class WatchTogetherVideoDecodeHelper$5
+class WatchTogetherVideoDecodeHelper$5
   implements Runnable
 {
-  public WatchTogetherVideoDecodeHelper$5(mzm parammzm) {}
+  WatchTogetherVideoDecodeHelper$5(WatchTogetherVideoDecodeHelper paramWatchTogetherVideoDecodeHelper) {}
   
   public void run()
   {
-    if (mzm.a(this.this$0) == null) {
+    if (WatchTogetherVideoDecodeHelper.a(this.this$0) == null) {
       return;
     }
-    if (mzm.a(this.this$0))
+    if (WatchTogetherVideoDecodeHelper.a(this.this$0))
     {
-      mzm.a(this.this$0).b();
+      WatchTogetherVideoDecodeHelper.a(this.this$0).b();
       return;
     }
-    mzm.a(this.this$0, null);
+    WatchTogetherVideoDecodeHelper.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherVideoDecodeHelper.5
  * JD-Core Version:    0.7.0.1
  */

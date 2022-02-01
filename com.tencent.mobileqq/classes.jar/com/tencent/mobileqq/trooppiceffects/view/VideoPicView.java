@@ -6,13 +6,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bglb;
-import bgtv;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import com.tencent.mobileqq.troop.utils.TroopGiftUtil;
 
 public class VideoPicView
   extends FrameLayout
-  implements bgtv
+  implements IPicView
 {
   protected ImageView a;
   protected SpriteVideoView a;
@@ -26,7 +25,7 @@ public class VideoPicView
   public VideoPicView(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = bglb.a(paramInt1);
+    this.jdField_a_of_type_JavaLangString = TroopGiftUtil.a(paramInt1);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = new SpriteVideoView(getContext(), true);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);

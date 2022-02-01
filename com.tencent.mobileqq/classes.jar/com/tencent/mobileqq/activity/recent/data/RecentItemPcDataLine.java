@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acmw;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import ansr;
-import aont;
-import auea;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.DatalineMessageManager;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.text.QQText;
 
 public class RecentItemPcDataLine
@@ -29,7 +29,7 @@ public class RecentItemPcDataLine
     super(paramRecentUser);
   }
   
-  private void a(QQMessageFacade.Message paramMessage, MsgSummary paramMsgSummary, boolean paramBoolean1, boolean paramBoolean2)
+  private void a(Message paramMessage, MsgSummary paramMsgSummary, boolean paramBoolean1, boolean paramBoolean2)
   {
     CharSequence localCharSequence = paramMessage.getMessageText();
     if (localCharSequence != null)
@@ -129,9 +129,9 @@ public class RecentItemPcDataLine
     return paramCharSequence;
   }
   
-  protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  protected void a(Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    paramContext = (ansr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    paramContext = (DataLineHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     if ((paramContext != null) && (paramContext.a(this.devType)))
     {
       this.mDisplayTime = paramContext.a(this.devType);
@@ -140,7 +140,7 @@ public class RecentItemPcDataLine
     }
     if ((paramMessage != null) && (paramMessage.msg != null))
     {
-      paramContext = paramQQAppInterface.getMessageFacade().getDatalineMessageManager(this.devType).a(paramMessage.msgId);
+      paramContext = paramQQAppInterface.getMessageFacade().a(this.devType).a(paramMessage.msgId);
       boolean bool2 = b(paramContext);
       boolean bool3 = a(paramContext);
       boolean bool1 = bool2;
@@ -167,7 +167,7 @@ public class RecentItemPcDataLine
       case -1000: 
         a(paramMessage, paramMsgSummary, bool1, bool3);
         return;
-        paramMsgSummary.strContent = a(auea.a(paramQQAppInterface, paramContext.getFirstItem()), bool1, bool3, null, paramMsgSummary);
+        paramMsgSummary.strContent = a(FileManagerUtil.a(paramQQAppInterface, paramContext.getFirstItem()), bool1, bool3, null, paramMsgSummary);
         return;
       }
       paramMsgSummary.strContent = "";
@@ -187,13 +187,13 @@ public class RecentItemPcDataLine
       if (this.mUser.getType() != 6000) {
         break;
       }
-      this.mTitle = paramContext.getString(2131693667);
-      this.msgDescreption = paramContext.getString(2131693651);
+      this.mTitle = paramContext.getString(2131693826);
+      this.msgDescreption = paramContext.getString(2131693810);
       this.devType = 0;
-      QQMessageFacade.Message localMessage = null;
+      Message localMessage = null;
       Object localObject = paramQQAppInterface.getMessageFacade();
       if (localObject != null) {
-        localMessage = ((QQMessageFacade)localObject).getLastMessage(this.mUser.uin, this.mUser.getType());
+        localMessage = ((QQMessageFacade)localObject).a(this.mUser.uin, this.mUser.getType());
       }
       if (localMessage == null) {
         break label339;
@@ -203,7 +203,7 @@ public class RecentItemPcDataLine
       if (localObject == null) {
         break label331;
       }
-      this.mUnreadNum = ((acmw)localObject).a(localMessage.frienduin, localMessage.istroop);
+      this.mUnreadNum = ((ConversationFacade)localObject).a(localMessage.frienduin, localMessage.istroop);
       if (TextUtils.isEmpty(this.mTitleName)) {
         this.mTitleName = this.mTitle;
       }
@@ -212,7 +212,7 @@ public class RecentItemPcDataLine
       a(paramQQAppInterface);
       a(paramQQAppInterface, (MsgSummary)localObject);
       a(paramQQAppInterface, paramContext, (MsgSummary)localObject);
-    } while (!AppSetting.c);
+    } while (!AppSetting.d);
     paramQQAppInterface = new StringBuilder();
     paramQQAppInterface.append(this.mTitleName).append(",");
     if (this.mUnreadNum == 0) {}
@@ -227,8 +227,8 @@ public class RecentItemPcDataLine
       if (this.mUser.getType() != 6003) {
         break;
       }
-      this.mTitle = paramContext.getString(2131693668);
-      this.msgDescreption = paramContext.getString(2131693650);
+      this.mTitle = paramContext.getString(2131693827);
+      this.msgDescreption = paramContext.getString(2131693809);
       this.devType = 1;
       break;
       label331:
@@ -250,7 +250,7 @@ public class RecentItemPcDataLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPcDataLine
  * JD-Core Version:    0.7.0.1
  */

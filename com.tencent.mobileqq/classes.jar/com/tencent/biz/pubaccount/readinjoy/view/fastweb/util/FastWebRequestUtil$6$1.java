@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import tpy;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyFeedbackPopupWindow.FeedbackCallback;
 
 class FastWebRequestUtil$6$1
   implements Runnable
@@ -9,18 +9,18 @@ class FastWebRequestUtil$6$1
   
   public void run()
   {
-    tpy localtpy = this.this$0.a;
+    ReadInJoyFeedbackPopupWindow.FeedbackCallback localFeedbackCallback = this.this$0.a;
     if (this.jdField_a_of_type_Int == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localtpy.a(bool, this.jdField_a_of_type_JavaLangString);
+      localFeedbackCallback.a(bool, this.jdField_a_of_type_JavaLangString);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.6.1
  * JD-Core Version:    0.7.0.1
  */

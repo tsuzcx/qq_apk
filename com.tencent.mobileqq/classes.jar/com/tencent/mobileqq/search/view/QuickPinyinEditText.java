@@ -11,7 +11,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -20,7 +19,7 @@ public class QuickPinyinEditText
 {
   private static String jdField_a_of_type_JavaLangString;
   public int a;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile boolean jdField_a_of_type_Boolean = false;
   private volatile String b = "";
   
   public QuickPinyinEditText(Context paramContext)
@@ -93,7 +92,7 @@ public class QuickPinyinEditText
     }
     if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (b()))
     {
-      ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).sendAppPrivateCommand(this, "com.sohu.inputmethod.sogou.search.enter", null);
+      ((InputMethodManager)BaseApplication.getContext().getSystemService("input_method")).sendAppPrivateCommand(this, "com.sohu.inputmethod.sogou.search.enter", null);
       setSelection(getText().length());
     }
   }
@@ -166,7 +165,7 @@ public class QuickPinyinEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.QuickPinyinEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class stSetSwitchRsp
   extends JceStruct
 {
   static stRspComm cache_rspComm = new stRspComm();
-  public stRspComm rspComm;
+  public stRspComm rspComm = null;
   
   public stSetSwitchRsp() {}
   

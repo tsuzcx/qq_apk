@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.persistence.manager;
 
-import opx;
-
-public class PublicAccountEntityHelper$1
+class PublicAccountEntityHelper$1
   implements Runnable
 {
-  public PublicAccountEntityHelper$1(opx paramopx, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
+  PublicAccountEntityHelper$1(PublicAccountEntityHelper paramPublicAccountEntityHelper, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
   
   public void run()
   {
@@ -19,7 +17,7 @@ public class PublicAccountEntityHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper.1
  * JD-Core Version:    0.7.0.1
  */

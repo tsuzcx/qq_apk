@@ -50,14 +50,14 @@ class AVGamePKPosterView$1$1
     //   69: aload_0
     //   70: getfield 13	com/tencent/avgame/ui/AVGamePKPosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView$1	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
     //   73: getfield 41	com/tencent/avgame/ui/AVGamePKPosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePKPosterView;
-    //   76: invokestatic 74	com/tencent/avgame/ui/AVGamePKPosterView:a	(Lcom/tencent/avgame/ui/AVGamePKPosterView;)Lnpz;
+    //   76: invokestatic 74	com/tencent/avgame/ui/AVGamePKPosterView:a	(Lcom/tencent/avgame/ui/AVGamePKPosterView;)Lcom/tencent/avgame/ui/IGamePosterView;
     //   79: ifnull +21 -> 100
     //   82: aload_2
     //   83: astore_1
     //   84: aload_0
     //   85: getfield 13	com/tencent/avgame/ui/AVGamePKPosterView$1$1:jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView$1	Lcom/tencent/avgame/ui/AVGamePKPosterView$1;
     //   88: getfield 41	com/tencent/avgame/ui/AVGamePKPosterView$1:this$0	Lcom/tencent/avgame/ui/AVGamePKPosterView;
-    //   91: invokestatic 74	com/tencent/avgame/ui/AVGamePKPosterView:a	(Lcom/tencent/avgame/ui/AVGamePKPosterView;)Lnpz;
+    //   91: invokestatic 74	com/tencent/avgame/ui/AVGamePKPosterView:a	(Lcom/tencent/avgame/ui/AVGamePKPosterView;)Lcom/tencent/avgame/ui/IGamePosterView;
     //   94: aload_3
     //   95: invokeinterface 79 2 0
     //   100: aload_2
@@ -171,7 +171,7 @@ class AVGamePKPosterView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGamePKPosterView.1.1
  * JD-Core Version:    0.7.0.1
  */

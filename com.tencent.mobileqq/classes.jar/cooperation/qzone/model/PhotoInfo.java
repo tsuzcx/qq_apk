@@ -1,12 +1,12 @@
 package cooperation.qzone.model;
 
 import NS_FASHION_FEEDS_TAG_PROTO.TagInfo;
-import aawa;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.common.galleryactivity.GalleryImage;
 import cooperation.qzone.util.PanoramaUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,21 +14,21 @@ import java.util.Map;
 import mqq.util.WeakReference;
 
 public class PhotoInfo
-  extends aawa
+  extends GalleryImage
   implements Parcelable
 {
   public static final Parcelable.Creator<PhotoInfo> CREATOR = new PhotoInfo.1();
   public static final int IMAGE_RESOLUTION_BIG = 1;
   public static final int IMAGE_RESOLUTION_ORIGINAL = 2;
   public static int SHOW_GIF;
-  public static int SHOW_NEITHER_GIF_NOR_PLAY = 1;
-  public static int SHOW_STATIC_PHOTO;
+  public static int SHOW_NEITHER_GIF_NOR_PLAY;
+  public static int SHOW_STATIC_PHOTO = 0;
   public String albumId = "";
   public String albumName;
   public int albumPriv;
-  public int allow_share;
+  public int allow_share = 0;
   public String appAdSchema = "";
-  public boolean appAdShow;
+  public boolean appAdShow = false;
   public String appAdText = "";
   public int appid;
   public String bigUrl = "";
@@ -39,37 +39,37 @@ public class PhotoInfo
   public String currentUrl = "";
   public long date;
   public String desc = "";
-  public long fileSize;
-  public int flag;
+  public long fileSize = 0L;
+  public int flag = 0;
   public GpsInfo4LocalImage gpsInfo;
-  public boolean hasCheckFace;
+  public boolean hasCheckFace = false;
   public boolean hasLoaded;
-  public Boolean hasLocalOrgFile;
-  public boolean hasPraise;
-  public boolean hasPreDownload;
-  public Boolean hasQQCode;
-  public Boolean hasQRCode;
+  public Boolean hasLocalOrgFile = null;
+  public boolean hasPraise = false;
+  public boolean hasPreDownload = false;
+  public Boolean hasQQCode = null;
+  public Boolean hasQRCode = null;
   public boolean hasShowHighScaleTips;
-  public boolean hasVisited;
-  public float heightWeightProportion;
+  public boolean hasVisited = false;
+  public float heightWeightProportion = 0.0F;
   private WeakReference<Drawable> imageDrawable;
-  public int imageResolution;
-  public boolean isFakeFeed;
+  public int imageResolution = 0;
+  public boolean isFakeFeed = false;
   public int isIndependentUgc = -1;
   public boolean isSelected;
   public float lastScale;
   public String lloc = "";
-  public ArrayList<FaceData> mFaceList;
+  public ArrayList<FaceData> mFaceList = null;
   public int mNeedEncodeGifDelay;
   public ArrayList<String> mNeedEncodeGifPics = new ArrayList();
-  public boolean needShowFaceIcon;
-  public int opMask;
+  public boolean needShowFaceIcon = false;
+  public int opMask = 0;
   public int opsynflag;
   public String orgUrl = "";
-  public long originSize;
+  public long originSize = 0L;
   public int photoOpmask;
   public int photoType = 1;
-  public boolean picInfoOpen;
+  public boolean picInfoOpen = false;
   public ArrayList<TagInfo> picTaginfoList;
   public int praiseCount;
   public int progress;
@@ -81,7 +81,7 @@ public class PhotoInfo
   public String pssOrgLikeKey = "";
   public int pssSubId;
   public String pssUgcKey = "";
-  public boolean quanLoaded;
+  public boolean quanLoaded = false;
   public int shareAlbumRight;
   public String sharePhotoUrl = "";
   public String shareQqUrl = "";
@@ -96,12 +96,13 @@ public class PhotoInfo
   public String unikey = "";
   public String uploadOwner = "";
   public int uploadtime;
-  public long uploaduin;
-  public VideoInfo videodata;
-  public int videoflag;
+  public long uploaduin = 0L;
+  public VideoInfo videodata = null;
+  public int videoflag = 0;
   
   static
   {
+    SHOW_NEITHER_GIF_NOR_PLAY = 1;
     SHOW_GIF = 2;
   }
   
@@ -324,7 +325,7 @@ public class PhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.PhotoInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alzp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class TroopMemberListInnerFrame$7$1
+class TroopMemberListInnerFrame$7$1
   implements Runnable
 {
-  public TroopMemberListInnerFrame$7$1(alzp paramalzp, List paramList) {}
+  TroopMemberListInnerFrame$7$1(TroopMemberListInnerFrame.7 param7, List paramList) {}
   
   public void run()
   {
@@ -28,8 +27,8 @@ public class TroopMemberListInnerFrame$7$1
       for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
       {
         QLog.d("TroopMemberListInnerFrame", 2, i);
-        this.jdField_a_of_type_Alzp.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_Alzp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.jdField_a_of_type_Alzp.a.b, System.currentTimeMillis()).commit();
-        TroopMemberListInnerFrame.a(this.jdField_a_of_type_Alzp.a, this.jdField_a_of_type_Alzp.a.b, this.jdField_a_of_type_JavaUtilList);
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame$7.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame$7.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame$7.a.b, System.currentTimeMillis()).commit();
+        TroopMemberListInnerFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame$7.a, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame$7.a.b, this.jdField_a_of_type_JavaUtilList);
         return;
       }
       return;
@@ -44,7 +43,7 @@ public class TroopMemberListInnerFrame$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1
  * JD-Core Version:    0.7.0.1
  */

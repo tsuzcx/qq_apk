@@ -22,7 +22,7 @@ public final class b
   
   private String a(String paramString)
   {
-    if (StringUtil.isEmpty(paramString)) {}
+    if (StringUtil.a(paramString)) {}
     int i;
     do
     {
@@ -62,7 +62,7 @@ public final class b
   
   public void a(File paramFile)
   {
-    if ((paramFile != null) && (!StringUtil.isEmpty(paramFile.toString())))
+    if ((paramFile != null) && (!StringUtil.a(paramFile.toString())))
     {
       File localFile = new File(com.tencent.mobileqq.microapp.appbrand.b.b.a().a(""));
       if (!localFile.exists()) {

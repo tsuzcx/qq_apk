@@ -7,7 +7,7 @@ import android.text.style.SuperscriptSpan;
 public class TopAlignSuperscriptSpan
   extends SuperscriptSpan
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 2;
   
   public TopAlignSuperscriptSpan() {}
@@ -38,7 +38,7 @@ public class TopAlignSuperscriptSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.TopAlignSuperscriptSpan
  * JD-Core Version:    0.7.0.1
  */

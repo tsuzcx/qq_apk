@@ -9,11 +9,11 @@ public final class SkinInfo
 {
   static PopDialog cache_pop_dialog = new PopDialog();
   public String blessing = "";
-  public int is_hide_title;
-  public PopDialog pop_dialog;
-  public int skin_id;
+  public int is_hide_title = 0;
+  public PopDialog pop_dialog = null;
+  public int skin_id = 0;
   public String skin_name = "";
-  public long skin_permission_state;
+  public long skin_permission_state = 0L;
   
   public SkinInfo() {}
   

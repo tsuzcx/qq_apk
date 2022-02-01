@@ -15,7 +15,7 @@ import com.tencent.ttpic.model.ParticleParam;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.RedPacketPosition;
 import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
 import java.util.ArrayList;
 import java.util.List;
@@ -135,7 +135,7 @@ public class ParticleFilter
             {
               PointF localPointF3 = (PointF)paramList.get(i);
               localPointF2 = new PointF((localPointF2.x + localPointF3.x) / 2.0F, (localPointF2.y + localPointF3.y) / 2.0F);
-              if (VideoMaterialUtil.isFaceItem(this.item))
+              if (VideoMaterial.isFaceItem(this.item))
               {
                 localPointF2.x = ((float)(localPointF2.x / this.mFaceDetScale));
                 localPointF2.y = ((float)(localPointF2.y / this.mFaceDetScale));
@@ -143,13 +143,13 @@ public class ParticleFilter
               localPointF1.x = localPointF2.x;
               localPointF1.y = localPointF2.y;
               localPointF2 = new PointF(((PointF)paramList.get(this.item.scalePivots[0])).x, ((PointF)paramList.get(this.item.scalePivots[0])).y);
-              if (VideoMaterialUtil.isFaceItem(this.item))
+              if (VideoMaterial.isFaceItem(this.item))
               {
                 localPointF2.x = ((float)(localPointF2.x / this.mFaceDetScale));
                 localPointF2.y = ((float)(localPointF2.y / this.mFaceDetScale));
               }
               paramList = new PointF(((PointF)paramList.get(this.item.scalePivots[1])).x, ((PointF)paramList.get(this.item.scalePivots[1])).y);
-              if (VideoMaterialUtil.isFaceItem(this.item))
+              if (VideoMaterial.isFaceItem(this.item))
               {
                 paramList.x = ((float)(paramList.x / this.mFaceDetScale));
                 paramList.y = ((float)(paramList.y / this.mFaceDetScale));
@@ -344,7 +344,7 @@ public class ParticleFilter
     {
       i = 1;
       addParam(new UniformParam.IntParam("u_opacityModifyRGB", i));
-      if ((VideoMaterialUtil.isBodyDetectItem(this.item)) || (VideoMaterialUtil.isStarItem(this.item)))
+      if ((VideoMaterial.isBodyDetectItem(this.item)) || (VideoMaterial.isStarItem(this.item)))
       {
         if (this.particleParam == null) {
           this.particleParam = new ParticleParam();
@@ -469,14 +469,14 @@ public class ParticleFilter
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      if (VideoMaterialUtil.isBodyDetectItem(this.item)) {
+      if (VideoMaterial.isBodyDetectItem(this.item)) {
         avoidBodyPointsShake(paramObject);
       }
       this.phoneAngles = paramObject.phoneAngle;
       this.frameInedx = paramObject.frameIndex;
       this.audioScaleFactor = paramObject.audioScaleFactor;
       updateHotArea(paramObject.redPacketPositions);
-      if (!VideoMaterialUtil.isGestureItem(this.item)) {
+      if (!VideoMaterial.isGestureItem(this.item)) {
         break label82;
       }
       update(paramObject.handPoints, paramObject.faceAngles);
@@ -485,14 +485,14 @@ public class ParticleFilter
     do
     {
       return;
-      if (!VideoMaterialUtil.isBodyDetectItem(this.item)) {
+      if (!VideoMaterial.isBodyDetectItem(this.item)) {
         break;
       }
       update(paramObject.bodyPoints, paramObject.faceAngles);
     } while (this.mHasBodyDetected);
     paramObject.bodyPoints = null;
     return;
-    if (VideoMaterialUtil.isStarItem(this.item))
+    if (VideoMaterial.isStarItem(this.item))
     {
       update(paramObject.starPoints, paramObject.faceAngles);
       return;
@@ -511,7 +511,7 @@ public class ParticleFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.particle.ParticleFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class Redpacket
   extends JceStruct
 {
-  public int dwConfType;
+  public int dwConfType = 0;
   public String sName = "";
   
   public Redpacket() {}

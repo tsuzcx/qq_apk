@@ -1,18 +1,15 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.PlatformInfor;
-import cooperation.qzone.QUA;
-import cooperation.qzone.util.NetworkState;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
@@ -25,10 +22,10 @@ public class LpReportInfo_pf00064
   public String domain_type = "2";
   public String extraInfo = "";
   public String info = "";
-  public boolean isTemp;
+  public boolean isTemp = false;
   private Map<String, String> mapReportInfo;
-  public int mergenum;
-  public int networkType = NetworkState.getNetworkType();
+  public int mergenum = 0;
+  public int networkType = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getnetworkType();
   public String pushstatkey = "";
   public String readSource = "0";
   public String referId = "";
@@ -48,10 +45,10 @@ public class LpReportInfo_pf00064
   public String sourceTo = "";
   public String sourceType = "";
   public int subactionType;
-  public int tabletype;
-  public long time = System.currentTimeMillis();
-  public long toUin;
-  private boolean useMapMode;
+  public int tabletype = 0;
+  public long time = 0L;
+  public long toUin = 0L;
+  private boolean useMapMode = false;
   
   public LpReportInfo_pf00064() {}
   
@@ -321,10 +318,10 @@ public class LpReportInfo_pf00064
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", QUA.getQUA3());
-    localHashMap.put("device_info", PlatformInfor.g().getDeviceInfor());
-    if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null)) {
-      localHashMap.put("uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    localHashMap.put("device_info", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getDeviceInfor());
+    if (!TextUtils.isEmpty(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount())) {
+      localHashMap.put("uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
     }
     Object localObject1;
     Object localObject2;
@@ -337,7 +334,7 @@ public class LpReportInfo_pf00064
         break;
       }
       if ((this.mapReportInfo == null) || (this.mapReportInfo.isEmpty())) {
-        break label628;
+        break label654;
       }
       localObject1 = this.mapReportInfo.entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
@@ -382,7 +379,7 @@ public class LpReportInfo_pf00064
         i += 1;
       }
     }
-    label628:
+    label654:
     LpReportUtils.safePut(localHashMap, "read_source", this.readSource);
     localHashMap.put("time", String.valueOf(this.time));
     LpReportUtils.safePut(localHashMap, "info", this.info);
@@ -421,7 +418,7 @@ public class LpReportInfo_pf00064
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_pf00064
  * JD-Core Version:    0.7.0.1
  */

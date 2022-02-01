@@ -1,0 +1,34 @@
+package com.tencent.mobileqq.widget;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.utils.TroopLinkManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ProfileNameView$1
+  implements View.OnClickListener
+{
+  ProfileNameView$1(ProfileNameView paramProfileNameView, ProfileCardInfo paramProfileCardInfo) {}
+  
+  public void onClick(View paramView)
+  {
+    String str = TroopLinkManager.a().a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", str);
+    paramView.getContext().startActivity(localIntent);
+    ReportController.b(null, "dc00898", "", "", "0X800A708", "0X800A708", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.mobileqq.widget.ProfileNameView.1
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/muk" android:background="@drawable/env" android:layout_width="110.0dip" android:layout_height="88.0dip">
-        <TextView android:textSize="12.0sp" android:textColor="#ff03081a" android:id="@id/title" android:paddingTop="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/xua" />
-        <TextView android:textSize="10.0sp" android:textColor="#ff878b99" android:id="@id/bgt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/xua" android:layout_below="@id/title" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginBottom="12.0dip" android:layout_alignParentBottom="true">
-            <TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:id="@id/fc0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="17,355" />
-            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:id="@id/nu0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginBottom="2.0dip" android:text="@string/xuc" />
-        </LinearLayout>
-    </RelativeLayout>
-</RelativeLayout>
+<android.support.v7.widget.RecyclerView android:id="@id/ms7" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

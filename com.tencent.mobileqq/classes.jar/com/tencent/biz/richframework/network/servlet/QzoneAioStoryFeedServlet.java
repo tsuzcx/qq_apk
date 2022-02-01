@@ -3,13 +3,13 @@ package com.tencent.biz.richframework.network.servlet;
 import NS_COMM.COMM.StCommonExt;
 import android.content.Intent;
 import android.os.Bundle;
-import ayrb;
-import bhjl;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.request.QzoneAioStoryFeedRequest;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.observer.QZoneObserver;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -47,20 +47,20 @@ public class QzoneAioStoryFeedServlet
         if (paramFromServiceMsg.isSuccess())
         {
           localBundle.putParcelable("KEY_FOR_AIO_STORY_FEED_DATA", paramFromServiceMsg);
-          notifyObserver(paramIntent, 1010, true, localBundle, ayrb.class);
+          notifyObserver(paramIntent, 1010, true, localBundle, QZoneObserver.class);
           return;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("QzoneAioStoryFeedServlet", 2, new Object[] { "inform QzoneAioStoryFeedServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
+        if (RFLog.isColorLevel()) {
+          RFLog.d("QzoneAioStoryFeedServlet", RFLog.CLR, new Object[] { "inform QzoneAioStoryFeedServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
         }
-        notifyObserver(paramIntent, 1010, false, localBundle, ayrb.class);
+        notifyObserver(paramIntent, 1010, false, localBundle, QZoneObserver.class);
         return;
       }
     }
     catch (Throwable paramIntent)
     {
-      QLog.e("QzoneAioStoryFeedServlet", 1, paramIntent + "onReceive error");
-      notifyObserver(null, 1010, false, null, ayrb.class);
+      RFLog.e("QzoneAioStoryFeedServlet", RFLog.USR, paramIntent + "onReceive error");
+      notifyObserver(null, 1010, false, null, QZoneObserver.class);
     }
   }
   
@@ -82,7 +82,7 @@ public class QzoneAioStoryFeedServlet
         localObject = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.qq_story_client.GetUserNewestStory");
-      paramPacket.putSendData(bhjl.a((byte[])localObject));
+      paramPacket.putSendData(WupUtil.a((byte[])localObject));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       return;
     }
@@ -90,8 +90,8 @@ public class QzoneAioStoryFeedServlet
     {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("QzoneAioStoryFeedServlet", 2, "onSend. mergeFrom exception!");
+        if (RFLog.isColorLevel()) {
+          RFLog.e("QzoneAioStoryFeedServlet", RFLog.CLR, "onSend. mergeFrom exception!");
         }
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
@@ -100,7 +100,7 @@ public class QzoneAioStoryFeedServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.servlet.QzoneAioStoryFeedServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,48 @@
 package com.tencent.mobileqq.dating;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
+import com.tencent.mobileqq.tianshu.observer.RedpointObserver;
+import com.tencent.mobileqq.widget.TabBarView;
 import com.tencent.qphone.base.util.QLog;
-import ntq;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import java.util.ArrayList;
 
 class BaseMsgBoxActivity$8
-  implements Runnable
+  extends RedpointObserver
 {
-  BaseMsgBoxActivity$8(BaseMsgBoxActivity paramBaseMsgBoxActivity, RedDotTextView paramRedDotTextView) {}
+  BaseMsgBoxActivity$8(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    oidb_0x791.RedDotInfo localRedDotInfo = ((ntq)this.this$0.app.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(70);
-    String str;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("mRedpointObserver.onDataChange(): redDotInfo=");
-      if (localRedDotInfo == null)
-      {
-        str = "is null";
-        QLog.d("Q.msg_box", 2, str);
-      }
+    super.a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg_box", 2, "mRedpointObserver.onDataChange(): isSucc=" + paramBoolean);
     }
-    else
+    if ((!this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView == null) || (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {}
+    label141:
+    for (;;)
     {
-      if ((localRedDotInfo == null) || (!localRedDotInfo.bool_display_reddot.get())) {
-        break label149;
-      }
-    }
-    label149:
-    for (boolean bool = true;; bool = false)
-    {
-      this.a.a(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg_box", 2, "mRedpointObserver.onDataChange(): showRedDot=" + bool);
-      }
       return;
-      str = " num=" + localRedDotInfo.uint32_number.get();
-      break;
+      int i = 0;
+      if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).tabType != 7) {}
+      }
+      for (;;)
+      {
+        if (i < 0) {
+          break label141;
+        }
+        BaseMsgBoxActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(i));
+        return;
+        i += 1;
+        break;
+        i = -1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.8
  * JD-Core Version:    0.7.0.1
  */

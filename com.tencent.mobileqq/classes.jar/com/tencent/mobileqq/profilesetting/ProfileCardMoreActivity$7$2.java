@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.profilesetting;
 
-import bagk;
-
-public class ProfileCardMoreActivity$7$2
+class ProfileCardMoreActivity$7$2
   implements Runnable
 {
-  public ProfileCardMoreActivity$7$2(bagk parambagk, boolean paramBoolean1, boolean paramBoolean2) {}
+  ProfileCardMoreActivity$7$2(ProfileCardMoreActivity.7 param7, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bagk.a.a(this.jdField_a_of_type_Boolean, this.b);
+    this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity$7.a.a(this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

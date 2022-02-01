@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bf3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/xb"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.widget.OverScrollRecyclerView android:id="@id/i4m" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView android:id="@id/n5x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ucrop.OverlayView android:id="@id/olg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

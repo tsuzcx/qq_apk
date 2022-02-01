@@ -2,19 +2,18 @@ package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import bpec;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public abstract class DecodeRunnable
+abstract class DecodeRunnable
   implements Runnable
 {
   protected double a;
   protected int a;
   protected long a;
   protected String a;
-  protected WeakReference<bpec> a;
+  protected WeakReference<DecodeRunnable.DecodeRunnableListener> a;
   protected boolean a;
   protected int b;
   protected long b;
@@ -23,9 +22,9 @@ public abstract class DecodeRunnable
   protected int d;
   protected int e = -1;
   
-  public DecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bpec parambpec)
+  public DecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, DecodeRunnable.DecodeRunnableListener paramDecodeRunnableListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambpec);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDecodeRunnableListener);
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Long = (1000L * paramLong1);
     this.jdField_c_of_type_Long = (1000L * paramLong2);
@@ -97,9 +96,9 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bpec localbpec = (bpec)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbpec != null) {
-        localbpec.a(paramInt);
+      DecodeRunnable.DecodeRunnableListener localDecodeRunnableListener = (DecodeRunnable.DecodeRunnableListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localDecodeRunnableListener != null) {
+        localDecodeRunnableListener.a(paramInt);
       }
     }
   }
@@ -108,9 +107,9 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bpec localbpec = (bpec)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbpec != null) {
-        localbpec.a(paramInt, paramLong, paramBitmap);
+      DecodeRunnable.DecodeRunnableListener localDecodeRunnableListener = (DecodeRunnable.DecodeRunnableListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localDecodeRunnableListener != null) {
+        localDecodeRunnableListener.a(paramInt, paramLong, paramBitmap);
       }
     }
   }
@@ -118,25 +117,25 @@ public abstract class DecodeRunnable
   protected void a(List<Long> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {}
-    bpec localbpec;
+    DecodeRunnable.DecodeRunnableListener localDecodeRunnableListener;
     do
     {
       do
       {
         return;
       } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localbpec = (bpec)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbpec == null);
-    localbpec.a(paramList);
+      localDecodeRunnableListener = (DecodeRunnable.DecodeRunnableListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localDecodeRunnableListener == null);
+    localDecodeRunnableListener.a(paramList);
   }
   
   protected void a(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bpec localbpec = (bpec)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbpec != null) {
-        localbpec.a(paramBoolean);
+      DecodeRunnable.DecodeRunnableListener localDecodeRunnableListener = (DecodeRunnable.DecodeRunnableListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localDecodeRunnableListener != null) {
+        localDecodeRunnableListener.a(paramBoolean);
       }
     }
   }
@@ -150,16 +149,16 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bpec localbpec = (bpec)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbpec != null) {
-        localbpec.a();
+      DecodeRunnable.DecodeRunnableListener localDecodeRunnableListener = (DecodeRunnable.DecodeRunnableListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localDecodeRunnableListener != null) {
+        localDecodeRunnableListener.a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

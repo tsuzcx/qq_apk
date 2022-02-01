@@ -3,7 +3,6 @@ package com.tencent.mobileqq.secspy;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bcpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class SecSpyFileManager$2$1
@@ -26,12 +25,12 @@ class SecSpyFileManager$2$1
       this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a(l, 0, new Object[0]);
       return;
     }
-    bcpl.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a.getCurrentAccountUin(), l, this.b);
+    SecSpyFileManager.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a.getCurrentAccountUin(), l, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.secspy.SecSpyFileManager.2.1
  * JD-Core Version:    0.7.0.1
  */

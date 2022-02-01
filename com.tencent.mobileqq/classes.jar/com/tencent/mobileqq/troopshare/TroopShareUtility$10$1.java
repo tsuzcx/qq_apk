@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.troopshare;
 
-import bgui;
-
 class TroopShareUtility$10$1
   implements Runnable
 {

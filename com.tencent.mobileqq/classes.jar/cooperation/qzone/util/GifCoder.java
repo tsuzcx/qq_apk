@@ -26,20 +26,23 @@ import org.json.JSONArray;
 public class GifCoder
 {
   private static final String TAG = "GifCoder";
-  private static boolean mNativeLibLoaded;
+  private static boolean mNativeLibLoaded = false;
   private int GIFPicSize = gifCoderWnsConfig.getCurrentDeviceGifSize();
   private final int HORIZONAL = 2;
   private final int NONE = 0;
   private final int VERTICAL = 1;
   private GifCoder.OnEncodeGifFinishedListener callBack;
-  private long instance;
+  private long instance = 0L;
   private GifCoder.EncodingType mEncodingType = GifCoder.EncodingType.ENCODING_TYPE_SIMPLE_FAST;
   private boolean mIsSetDither = true;
   private int mLastPicOrientation = 0;
-  private boolean mPicSizeForLongEdge;
-  private boolean mUserOrignalBitmap;
+  private boolean mPicSizeForLongEdge = false;
+  private boolean mUserOrignalBitmap = false;
   
-  static {}
+  static
+  {
+    tryToLoadGifLib();
+  }
   
   private Bitmap bitMapIsSameOrientation(Bitmap paramBitmap)
   {
@@ -734,7 +737,7 @@ public class GifCoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.GifCoder
  * JD-Core Version:    0.7.0.1
  */

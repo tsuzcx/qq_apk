@@ -1,45 +1,44 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Activity;
-import bouq;
 import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
 import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
 import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class EditWebVideoPartManager$2
+class EditWebVideoPartManager$2
   implements Runnable
 {
-  public EditWebVideoPartManager$2(bouq parambouq, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
+  EditWebVideoPartManager$2(EditWebVideoPartManager paramEditWebVideoPartManager, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
   
   public void run()
   {
-    bouq.a(this.this$0, null);
+    EditWebVideoPartManager.a(this.this$0, null);
     this.this$0.c = 0;
-    bouq.a(this.this$0, this.this$0.a.a("extra_bless_latitude", 0.0D));
-    bouq.b(this.this$0, this.this$0.a.a("extra_bless_longitude", 0.0D));
+    EditWebVideoPartManager.a(this.this$0, this.this$0.a.a("extra_bless_latitude", 0.0D));
+    EditWebVideoPartManager.b(this.this$0, this.this$0.a.a("extra_bless_longitude", 0.0D));
     boolean bool;
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
     {
-      bouq.a(this.this$0);
+      EditWebVideoPartManager.a(this.this$0);
       bool = false;
     }
     for (;;)
     {
-      EncodeVideoTask localEncodeVideoTask = new EncodeVideoTask(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam.b, bool, bouq.a(this.this$0), true);
-      localEncodeVideoTask.setResultListener(bouq.a(this.this$0));
+      EncodeVideoTask localEncodeVideoTask = new EncodeVideoTask(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam.b, bool, EditWebVideoPartManager.a(this.this$0), true);
+      localEncodeVideoTask.a(EditWebVideoPartManager.a(this.this$0));
       localEncodeVideoTask.execute(new Void[0]);
       return;
       if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
       {
-        int i = bouq.a(this.this$0, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam);
+        int i = EditWebVideoPartManager.a(this.this$0, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam);
         if (i != 0) {
-          bouq.a(this.this$0).onError(i);
+          EditWebVideoPartManager.a(this.this$0).a(i);
         }
         bool = true;
       }
       else
       {
-        bouq.a(this.this$0).onError(-13);
+        EditWebVideoPartManager.a(this.this$0).a(-13);
         bool = false;
       }
     }
@@ -47,7 +46,7 @@ public class EditWebVideoPartManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager.2
  * JD-Core Version:    0.7.0.1
  */

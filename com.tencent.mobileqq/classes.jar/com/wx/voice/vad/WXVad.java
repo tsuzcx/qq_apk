@@ -3,7 +3,7 @@ package com.wx.voice.vad;
 public class WXVad
 {
   private WXVadNative gmmvad_inst = new WXVadNative();
-  private long handle;
+  private long handle = 0L;
   
   public WXVadData GetOnlineProcessDataSize()
   {
@@ -74,7 +74,7 @@ public class WXVad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.wx.voice.vad.WXVad
  * JD-Core Version:    0.7.0.1
  */

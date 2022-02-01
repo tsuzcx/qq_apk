@@ -1,17 +1,30 @@
 package com.tencent.mobileqq.ark;
 
-import apzg;
-
-public class ArkMediaPlayer$3
+class ArkMediaPlayer$3
   implements Runnable
 {
-  public ArkMediaPlayer$3(apzg paramapzg) {}
+  ArkMediaPlayer$3(ArkMediaPlayer paramArkMediaPlayer) {}
   
   public void run()
   {
-    apzg.a(this.this$0, false);
-    if (this.this$0.Pause()) {
-      apzg.a(this.this$0, apzg.d(this.this$0));
+    if (ArkMediaPlayer.a(this.this$0)) {
+      return;
+    }
+    ArkMediaPlayer.a(this.this$0, true);
+    if (ArkMediaPlayer.a(this.this$0) == 1) {
+      this.this$0.Play();
+    }
+    for (;;)
+    {
+      ArkMediaPlayer.a(this.this$0, 0);
+      return;
+      if (ArkMediaPlayer.a(this.this$0) == 2) {
+        this.this$0.Stop();
+      } else if (ArkMediaPlayer.a(this.this$0) == 4) {
+        this.this$0.Resume();
+      } else if (ArkMediaPlayer.a(this.this$0) == 3) {
+        this.this$0.Pause();
+      }
     }
   }
 }

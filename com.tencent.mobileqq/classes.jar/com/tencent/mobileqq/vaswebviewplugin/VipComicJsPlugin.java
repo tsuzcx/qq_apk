@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import ascz;
-import asdd;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -36,7 +36,7 @@ public class VipComicJsPlugin
         {
           paramString2 = new Bundle();
           paramString2.putString("processId", paramString1.optString("processId"));
-          sendRemoteReq(asdd.a("ipc_preload_plugin_process", paramJsBridgeListener, this.mOnRemoteResp.key, paramString2), false, false);
+          sendRemoteReq(DataFactory.a("ipc_preload_plugin_process", paramJsBridgeListener, this.mOnRemoteResp.key, paramString2), false, false);
           return true;
         }
         catch (Exception paramString1)
@@ -101,7 +101,7 @@ public class VipComicJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VipComicJsPlugin
  * JD-Core Version:    0.7.0.1
  */

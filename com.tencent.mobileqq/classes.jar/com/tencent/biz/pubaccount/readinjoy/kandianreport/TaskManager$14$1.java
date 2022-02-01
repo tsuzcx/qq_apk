@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
 
 class TaskManager$14$1
-  implements INetEngine.INetEngineListener
+  implements INetEngineListener
 {
   TaskManager$14$1(TaskManager.14 param14, String paramString, JSContext paramJSContext) {}
   
@@ -19,7 +19,7 @@ class TaskManager$14$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager.14.1
  * JD-Core Version:    0.7.0.1
  */

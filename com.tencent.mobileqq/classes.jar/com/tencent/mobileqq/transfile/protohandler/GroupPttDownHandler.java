@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -12,11 +12,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.mobileqq.transfile.RichMediaUtil;
 import com.tencent.mobileqq.transfile.ServerAddr;
+import com.tencent.mobileqq.transfile.TransFileUtil;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -59,7 +59,7 @@ public class GroupPttDownHandler
     for (;;)
     {
       ((PBUInt32Field)localObject).set(paramInt);
-      localGetPttUrlReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(RichMediaUtil.getVersionCode()));
+      localGetPttUrlReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(TransFileUtil.getVersionCode()));
       localGetPttUrlReq.uint32_codec.set(paramReqCommon.voiceType);
       if (paramReqCommon.groupFileKey != null) {}
       try
@@ -135,7 +135,7 @@ public class GroupPttDownHandler
     }
   }
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     FromServiceMsg localFromServiceMsg = paramProtoResp.resp;
     if (localFromServiceMsg == null) {
@@ -144,7 +144,7 @@ public class GroupPttDownHandler
     byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    anza localanza = paramProtoResp.statisInfo;
+    StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
     int i;
     if (localFromServiceMsg.getResultCode() != 1000)
     {
@@ -157,7 +157,7 @@ public class GroupPttDownHandler
         if (paramProtoReq == null) {
           paramProtoResp = "";
         }
-        setResult(-1, 9311, (String)localObject1, paramProtoResp, localanza, localRichProtoResp.resps);
+        setResult(-1, 9311, (String)localObject1, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
       }
     }
     for (;;)
@@ -170,7 +170,7 @@ public class GroupPttDownHandler
       if (paramProtoReq == null) {
         paramProtoResp = "";
       }
-      setResult(-1, 9044, (String)localObject1, paramProtoResp, localanza, localRichProtoResp.resps);
+      setResult(-1, 9044, (String)localObject1, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
       continue;
       try
       {
@@ -182,7 +182,7 @@ public class GroupPttDownHandler
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localStatictisInfo, localRichProtoResp.resps);
       }
       continue;
       label272:
@@ -219,7 +219,7 @@ public class GroupPttDownHandler
           if (localObject1 != null)
           {
             if (paramProtoResp.uint32_transfer_type.get() != 1) {
-              break label873;
+              break label875;
             }
             bool = true;
             ((RichProto.RichProtoResp.GroupPttDownResp)localObject1).mIsHttps = bool;
@@ -258,12 +258,12 @@ public class GroupPttDownHandler
           if (paramProtoResp.rpt_str_domain.has()) {
             ((RichProto.RichProtoResp.GroupPttDownResp)localObject1).domainV4V6 = paramProtoResp.rpt_str_domain.get();
           }
-          setResult(0, 0, "", "", localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
+          setResult(0, 0, "", "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
         }
         catch (Exception paramProtoResp) {}
         if (localObject1 != null)
         {
-          setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
+          setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
           continue;
           if (paramProtoResp.uint32_allow_retry.get() == 1)
           {
@@ -281,7 +281,7 @@ public class GroupPttDownHandler
               return;
             }
           }
-          setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
+          setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject1);
         }
       }
     }
@@ -291,7 +291,7 @@ public class GroupPttDownHandler
   {
     if ((paramRichProtoReq != null) && (paramRichProtoReq.reqs != null) && (paramRichProtoReq.protoReqMgr != null))
     {
-      ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
+      ProtoReqManagerImpl.ProtoReq localProtoReq = new ProtoReqManagerImpl.ProtoReq();
       localProtoReq.ssoCmd = "PttStore.GroupPttDown";
       localProtoReq.reqBody = constructReqBody(paramRichProtoReq.reqs);
       localProtoReq.busiData = paramRichProtoReq;

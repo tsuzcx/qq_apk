@@ -1,26 +1,23 @@
 package com.tencent.mobileqq.onlinestatus.view;
 
-import ayzg;
-import azfo;
-import azft;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke", "com/tencent/mobileqq/onlinestatus/view/ConstellationView$bindView$4$1$2"}, k=3, mv={1, 1, 16})
-public final class ConstellationView$bindView$$inlined$apply$lambda$1$2
+final class ConstellationView$bindView$$inlined$apply$lambda$1$2
   extends Lambda
   implements Function0<Unit>
 {
-  public ConstellationView$bindView$$inlined$apply$lambda$1$2(azft paramazft)
+  ConstellationView$bindView$$inlined$apply$lambda$1$2(ConstellationView.bindView..inlined.apply.lambda.1 param1)
   {
     super(0);
   }
   
   public final void invoke()
   {
-    this.this$0.a.a().a(1040);
+    this.this$0.a.a.a(1040);
   }
 }
 

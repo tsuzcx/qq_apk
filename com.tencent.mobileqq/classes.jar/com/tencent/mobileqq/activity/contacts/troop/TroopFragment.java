@@ -1,24 +1,19 @@
 package com.tencent.mobileqq.activity.contacts.troop;
 
-import ajod;
-import ajoe;
-import ajof;
-import ajog;
-import ajoh;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import anqj;
-import anrc;
-import aoep;
-import bdlf;
-import bgqj;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
+import com.tencent.mobileqq.app.AutomatorObserver;
+import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.troop.widget.TroopUsingTimeReport;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.SwipPinnedHeaderExpandableListView;
@@ -27,21 +22,23 @@ public class TroopFragment
   extends ContactsBaseFragment
   implements View.OnClickListener
 {
-  protected ajof a;
-  protected ajog a;
-  protected ajoh a;
-  private anqj a;
-  protected anrc a;
-  protected bgqj a;
-  public ContactsTroopAdapter a;
+  protected ContactsTroopAdapter a;
+  protected TroopFragment.MyAvatarObserver a;
+  protected TroopFragment.MyFriendListObserver a;
+  protected TroopFragment.MyMessageObserver a;
+  protected TroopFragment.MyTroopBusinessObserver a;
+  protected TroopFragment.MyTroopObserver a;
+  private AutomatorObserver a;
+  protected BizTroopObserver a;
+  protected TroopUsingTimeReport a;
   protected SwipPinnedHeaderExpandableListView a;
-  public boolean c;
   protected boolean d;
+  protected boolean e;
   
   public TroopFragment()
   {
-    this.jdField_a_of_type_Anrc = new ajod(this);
-    this.jdField_a_of_type_Anqj = new ajoe(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new TroopFragment.2(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new TroopFragment.3(this);
   }
   
   private void i()
@@ -49,7 +46,7 @@ public class TroopFragment
     if (this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView != null)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.c();
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.b();
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter = new ContactsTroopAdapter(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter);
@@ -70,12 +67,12 @@ public class TroopFragment
     if (this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView == null)
     {
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView = new TroopFragment.ContactsPinnedHeaderExpandableListView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setId(2131374003);
-      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setSelector(2131167296);
+      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setId(2131374317);
+      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setSelector(2131167305);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setNeedCheckSpringback(true);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setGroupIndicator(null);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setDivider(null);
-      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setPadding(0, 0, 0, AIOUtils.dp2px(54.0F, getResources()));
+      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setPadding(0, 0, 0, AIOUtils.a(54.0F, getResources()));
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setClipToPadding(false);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setScrollBarStyle(33554432);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.mForContacts = true;
@@ -83,7 +80,7 @@ public class TroopFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bgqj = new bgqj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, "Grp_time", "Grp_contactlist", "visit_time");
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport = new TroopUsingTimeReport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, "Grp_time", "Grp_contactlist", "visit_time");
       return this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView;
       paramLayoutInflater = this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.getParent();
       if ((paramLayoutInflater != null) && ((paramLayoutInflater instanceof ViewGroup))) {
@@ -98,11 +95,11 @@ public class TroopFragment
       QLog.d("contacts.fragment.TroopFragment", 2, "doOnDestroy");
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.c();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.b();
     }
     e();
-    if (this.jdField_a_of_type_Bgqj != null) {
-      this.jdField_a_of_type_Bgqj.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport.b();
     }
   }
   
@@ -121,15 +118,15 @@ public class TroopFragment
       i();
     }
     this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.postDelayed(new TroopFragment.1(this), 200L);
-    this.d = true;
-    this.jdField_a_of_type_Bgqj.a();
-    new bdlf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("exp").a();
+    this.e = true;
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport.a();
+    new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("exp").a();
   }
   
-  public void ah_()
+  public void ag_()
   {
-    ((aoep)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).b();
-    this.c = true;
+    ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).b();
+    this.d = true;
   }
   
   public void b(boolean paramBoolean)
@@ -138,7 +135,7 @@ public class TroopFragment
       QLog.d("contacts.fragment.TroopFragment", 2, "onPause");
     }
     if (this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView != null) {
-      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.b();
+      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.hideCurShowingRightView();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.a();
@@ -146,8 +143,8 @@ public class TroopFragment
     if (paramBoolean) {
       e();
     }
-    if (this.d) {
-      this.jdField_a_of_type_Bgqj.b();
+    if (this.e) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport.b();
     }
   }
   
@@ -160,9 +157,9 @@ public class TroopFragment
     if ((this.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter != null)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.notifyDataSetChanged();
     }
-    this.jdField_a_of_type_Bgqj = new bgqj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, "Grp_time", "Grp_contactlist", "visit_time");
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport = new TroopUsingTimeReport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, "Grp_time", "Grp_contactlist", "visit_time");
     if (isResumed()) {
-      this.jdField_a_of_type_Bgqj.a();
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport.a();
     }
   }
   
@@ -170,37 +167,47 @@ public class TroopFragment
   {
     if (this.b)
     {
-      if (this.jdField_a_of_type_Ajof == null) {
-        this.jdField_a_of_type_Ajof = new ajof(this);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyFriendListObserver == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyFriendListObserver = new TroopFragment.MyFriendListObserver(this);
       }
-      if (this.jdField_a_of_type_Ajoh == null) {
-        this.jdField_a_of_type_Ajoh = new ajoh(this);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyAvatarObserver == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyAvatarObserver = new TroopFragment.MyAvatarObserver(this);
       }
-      if (this.jdField_a_of_type_Ajog == null) {
-        this.jdField_a_of_type_Ajog = new ajog(this);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyTroopObserver == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyTroopObserver = new TroopFragment.MyTroopObserver(this);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajof);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajoh);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajog);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anrc);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anqj);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyTroopBusinessObserver == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyTroopBusinessObserver = new TroopFragment.MyTroopBusinessObserver(this);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyMessageObserver == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyMessageObserver = new TroopFragment.MyMessageObserver(this);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyFriendListObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyAvatarObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyTroopObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyTroopBusinessObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyMessageObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver);
     }
   }
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajof);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajoh);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajog);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anrc);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anqj);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyFriendListObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyAvatarObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyTroopObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyTroopBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopTroopFragment$MyMessageObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver);
   }
   
   public void f()
   {
     if ((this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.f();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.e();
       if (this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.getFirstVisiblePosition() > 0) {
         this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setSelection(0);
       }
@@ -212,13 +219,13 @@ public class TroopFragment
     if ((this.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter != null)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.a();
     }
-    if (this.jdField_a_of_type_Bgqj != null) {
-      this.jdField_a_of_type_Bgqj.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport.b();
     }
     super.g();
   }
   
-  public void h()
+  void h()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.notifyDataSetChanged();
@@ -233,7 +240,7 @@ public class TroopFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.TroopFragment
  * JD-Core Version:    0.7.0.1
  */

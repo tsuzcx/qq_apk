@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.canvas.download.AdDownloadConstants;
-import com.tencent.ad.tangram.canvas.download.AdDownloader;
+import com.tencent.ad.tangram.downloader.AdDownloadConstants;
+import com.tencent.ad.tangram.downloader.AdDownloader;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.statistics.b;
 import com.tencent.ad.tangram.thread.AdThreadManager;
@@ -346,7 +346,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.e
  * JD-Core Version:    0.7.0.1
  */

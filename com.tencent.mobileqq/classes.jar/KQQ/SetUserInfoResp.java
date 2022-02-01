@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class SetUserInfoResp
   extends JceStruct
 {
-  public long dwToUin;
-  public byte result;
+  public long dwToUin = 0L;
+  public byte result = 0;
   
   public SetUserInfoResp() {}
   

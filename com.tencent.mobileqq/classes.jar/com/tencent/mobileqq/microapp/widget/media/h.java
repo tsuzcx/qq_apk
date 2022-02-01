@@ -30,7 +30,7 @@ final class h
           return;
         }
         MiniAppCamera.a(localBitmap, (File)localObject, "");
-        if (StringUtil.isEmpty(MiniAppCamera.g()))
+        if (StringUtil.a(MiniAppCamera.g()))
         {
           MiniAppCamera.a(this.d, this.a, this.b, this.c);
           return;

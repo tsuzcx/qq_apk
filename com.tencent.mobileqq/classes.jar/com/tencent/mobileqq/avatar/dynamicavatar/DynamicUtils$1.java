@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import aqfc;
 import com.tencent.common.app.AppInterface;
 
-public final class DynamicUtils$1
+final class DynamicUtils$1
   implements Runnable
 {
-  public DynamicUtils$1(AppInterface paramAppInterface, String paramString, int paramInt) {}
+  DynamicUtils$1(AppInterface paramAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {
-    aqfc.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    DynamicUtils.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

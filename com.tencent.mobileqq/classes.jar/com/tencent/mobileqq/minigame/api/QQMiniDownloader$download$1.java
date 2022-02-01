@@ -6,7 +6,7 @@ import com.tencent.mobileqq.triton.utils.Downloader.Listener;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/minigame/api/QQMiniDownloader$download$1", "Lcom/tencent/component/network/downloader/Downloader$DownloadListener;", "onDownloadCanceled", "", "p0", "", "onDownloadFailed", "p1", "Lcom/tencent/component/network/downloader/DownloadResult;", "onDownloadProgress", "all", "", "percent", "", "onDownloadSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/minigame/api/QQMiniDownloader$download$1", "Lcom/tencent/component/network/downloader/Downloader$DownloadListener;", "onDownloadCanceled", "", "p0", "", "onDownloadFailed", "p1", "Lcom/tencent/component/network/downloader/DownloadResult;", "onDownloadProgress", "all", "", "percent", "", "onDownloadSucceed", "qqmini_impl_release"}, k=1, mv={1, 1, 16})
 public final class QQMiniDownloader$download$1
   implements Downloader.DownloadListener
 {

@@ -16,7 +16,7 @@ class FastWebActivity$31
     if (i < j)
     {
       BaseData localBaseData = (BaseData)FastWebActivity.a(this.this$0).get(i);
-      if (((localBaseData.r == 10) || (localBaseData.r == 17) || (localBaseData.r == 22) || (localBaseData.r == 9)) && (localBaseData == this.a)) {
+      if (((localBaseData.s == 10) || (localBaseData.s == 17) || (localBaseData.s == 22) || (localBaseData.s == 9)) && (localBaseData == this.a)) {
         FastWebActivity.a(this.this$0).remove(i);
       }
     }
@@ -35,7 +35,7 @@ class FastWebActivity$31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.31
  * JD-Core Version:    0.7.0.1
  */

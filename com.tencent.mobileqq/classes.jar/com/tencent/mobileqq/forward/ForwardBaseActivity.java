@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.forward;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import auqk;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ForwardBaseActivity
   extends IphoneTitleBarActivity
-  implements auqk
+  implements ForwardConstants
 {
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)

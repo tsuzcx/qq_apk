@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ted;
-
-public class SlideActiveAnimController$4$1
+class SlideActiveAnimController$4$1
   implements Runnable
 {
-  public SlideActiveAnimController$4$1(ted paramted) {}
+  SlideActiveAnimController$4$1(SlideActiveAnimController.4 param4) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public class SlideActiveAnimController$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController.4.1
  * JD-Core Version:    0.7.0.1
  */

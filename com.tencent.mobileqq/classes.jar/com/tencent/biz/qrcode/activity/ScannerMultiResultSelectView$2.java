@@ -3,7 +3,6 @@ package com.tencent.biz.qrcode.activity;
 import com.tencent.qbar.QBarResult;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import zmi;
 
 class ScannerMultiResultSelectView$2
   implements Runnable
@@ -40,7 +39,7 @@ class ScannerMultiResultSelectView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.ScannerMultiResultSelectView.2
  * JD-Core Version:    0.7.0.1
  */

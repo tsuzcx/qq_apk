@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import arbv;
-import arbw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.business.MiniAppConfBean;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -79,9 +79,9 @@ public class MiniAppLocalSearchManager
       return null;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    arbv localarbv = arbw.a();
-    if (localarbv != null) {}
-    for (boolean bool = localarbv.b();; bool = false)
+    MiniAppConfBean localMiniAppConfBean = MiniAppConfProcessor.a();
+    if (localMiniAppConfBean != null) {}
+    for (boolean bool = localMiniAppConfBean.b();; bool = false)
     {
       if (!bool)
       {

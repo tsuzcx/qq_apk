@@ -1,22 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJStringUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.player.wrapper.IPlayer;
 import java.util.Properties;
-import prg;
-import spn;
-import stn;
 
-public class VideoPlayerWrapper$1
+class VideoPlayerWrapper$1
   implements Runnable
 {
-  public VideoPlayerWrapper$1(spn paramspn, stn paramstn) {}
+  VideoPlayerWrapper$1(VideoPlayerWrapper paramVideoPlayerWrapper, IPlayer paramIPlayer) {}
   
   public void run()
   {
     Object localObject = this.a.a();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = prg.a((String)localObject);
+      localObject = RIJStringUtils.a((String)localObject);
       if (localObject == null) {
         break label52;
       }
@@ -33,7 +32,7 @@ public class VideoPlayerWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper.1
  * JD-Core Version:    0.7.0.1
  */

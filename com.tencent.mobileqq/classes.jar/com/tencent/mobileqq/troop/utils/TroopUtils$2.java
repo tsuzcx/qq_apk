@@ -12,8 +12,8 @@ final class TroopUtils$2
   
   public void run()
   {
-    if (this.val$app != null) {
-      ((TroopManager)this.val$app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.val$mTroopInfo);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
     }
   }
 }

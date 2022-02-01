@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;

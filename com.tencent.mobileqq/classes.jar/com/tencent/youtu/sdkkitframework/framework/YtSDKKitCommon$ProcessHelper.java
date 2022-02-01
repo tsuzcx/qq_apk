@@ -4,7 +4,7 @@ import com.tencent.youtu.sdkkitframework.common.YtLogger;
 
 public class YtSDKKitCommon$ProcessHelper
 {
-  public static float calcEyeScore(float[] paramArrayOfFloat)
+  public static float[] calcEyeScore(float[] paramArrayOfFloat)
   {
     float f1 = paramArrayOfFloat[32] - paramArrayOfFloat[40];
     float f2 = paramArrayOfFloat[33] - paramArrayOfFloat[41];
@@ -23,20 +23,20 @@ public class YtSDKKitCommon$ProcessHelper
     f3 = paramArrayOfFloat[57] - paramArrayOfFloat[49];
     f4 = (float)Math.sqrt(f2 * f2 + f3 * f3);
     f9 = paramArrayOfFloat[60];
-    f10 = paramArrayOfFloat[56];
+    f10 = paramArrayOfFloat[48];
     f11 = paramArrayOfFloat[61];
-    float f12 = paramArrayOfFloat[57];
+    float f12 = paramArrayOfFloat[49];
     f5 = paramArrayOfFloat[52];
-    f6 = paramArrayOfFloat[56];
+    f6 = paramArrayOfFloat[48];
     f7 = paramArrayOfFloat[53];
-    f8 = paramArrayOfFloat[57];
+    f8 = paramArrayOfFloat[49];
     f9 = Math.abs(crossProduct(f2, f3, f9 - f10, f11 - f12));
-    return f1 + (Math.abs(crossProduct(f2, f3, f5 - f6, f7 - f8)) + f9) / (f4 * f4);
+    return new float[] { f1, (Math.abs(crossProduct(f2, f3, f5 - f6, f7 - f8)) + f9) / (f4 * f4) };
   }
   
   public static float calcMouthScore(float[] paramArrayOfFloat)
   {
-    return Math.abs(paramArrayOfFloat[91] - paramArrayOfFloat[103]) / Math.abs(paramArrayOfFloat[118] - paramArrayOfFloat['']);
+    return Math.abs((paramArrayOfFloat[''] + paramArrayOfFloat[109]) / 2.0F - (paramArrayOfFloat[119] + paramArrayOfFloat[97]) / 2.0F) / Math.abs(paramArrayOfFloat[90] - paramArrayOfFloat[102]);
   }
   
   public static float[] convert90PTo5P(float[] paramArrayOfFloat)
@@ -69,13 +69,13 @@ public class YtSDKKitCommon$ProcessHelper
     f3 = paramArrayOfFloat[57] - paramArrayOfFloat[49];
     f4 = (float)Math.sqrt(f2 * f2 + f3 * f3);
     f9 = paramArrayOfFloat[60];
-    f10 = paramArrayOfFloat[56];
+    f10 = paramArrayOfFloat[48];
     f11 = paramArrayOfFloat[61];
-    float f12 = paramArrayOfFloat[57];
+    float f12 = paramArrayOfFloat[49];
     f5 = paramArrayOfFloat[52];
-    f6 = paramArrayOfFloat[56];
+    f6 = paramArrayOfFloat[48];
     f7 = paramArrayOfFloat[53];
-    f8 = paramArrayOfFloat[57];
+    f8 = paramArrayOfFloat[49];
     f9 = Math.abs(crossProduct(f2, f3, f9 - f10, f11 - f12));
     f2 = (Math.abs(crossProduct(f2, f3, f5 - f6, f7 - f8)) + f9) / (f4 * f4);
     if (f1 > f2) {
@@ -86,7 +86,7 @@ public class YtSDKKitCommon$ProcessHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.ProcessHelper
  * JD-Core Version:    0.7.0.1
  */

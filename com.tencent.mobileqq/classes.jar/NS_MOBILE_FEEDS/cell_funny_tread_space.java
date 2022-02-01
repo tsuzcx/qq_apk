@@ -12,8 +12,8 @@ public final class cell_funny_tread_space
 {
   static ArrayList<String> cache_actions = new ArrayList();
   static Map<String, String> cache_extendInfo;
-  public ArrayList<String> actions;
-  public Map<String, String> extendInfo;
+  public ArrayList<String> actions = null;
+  public Map<String, String> extendInfo = null;
   
   static
   {

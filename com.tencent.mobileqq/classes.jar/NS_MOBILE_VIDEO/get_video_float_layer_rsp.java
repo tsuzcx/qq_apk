@@ -19,16 +19,16 @@ public final class get_video_float_layer_rsp
   static Map<String, String> cache_extend_info;
   static QzoneWeisiReqcommendRsp cache_qzone_weisi_rsp;
   static video_floating_layer_search_bar cache_search_bar;
-  public WeishiAggregatePageRsp aggregate_page_rsp;
-  public ArrayList<single_feed> all_after_paster_adv;
-  public ArrayList<single_feed> all_videolist_data;
+  public WeishiAggregatePageRsp aggregate_page_rsp = null;
+  public ArrayList<single_feed> all_after_paster_adv = null;
+  public ArrayList<single_feed> all_videolist_data = null;
   public String attach_info = "";
-  public byte[] busi_binary_data;
-  public Map<Integer, String> busi_param;
-  public Map<String, String> extend_info;
-  public int hasmore;
-  public QzoneWeisiReqcommendRsp qzone_weisi_rsp;
-  public video_floating_layer_search_bar search_bar;
+  public byte[] busi_binary_data = null;
+  public Map<Integer, String> busi_param = null;
+  public Map<String, String> extend_info = null;
+  public int hasmore = 0;
+  public QzoneWeisiReqcommendRsp qzone_weisi_rsp = null;
+  public video_floating_layer_search_bar search_bar = null;
   
   static
   {

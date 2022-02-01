@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class PubAcctInfo
   extends JceStruct
 {
-  public int cert_level;
-  public int iDistance;
-  public long lUin;
+  public int cert_level = 0;
+  public int iDistance = 0;
+  public long lUin = 0L;
   public String strIntro = "";
   public String strLocation = "";
   public String strName = "";

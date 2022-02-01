@@ -11,26 +11,26 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.QuestionCardProteusItem;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmall;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.ShareWebPageInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.text.UserSpan;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
-import qfw;
-import qqe;
-import rbo;
-import rbx;
-import rrp;
-import rrq;
-import toa;
 
 public class PgcSmallView
   extends RelativeLayout
-  implements rbo
+  implements ComponentView
 {
   int jdField_a_of_type_Int;
   ComponentContentSmall jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall;
@@ -63,16 +63,16 @@ public class PgcSmallView
     }
     for (;;)
     {
-      int i = AIOUtils.dp2px(12.0F, paramContext.getResources());
+      int i = AIOUtils.a(12.0F, paramContext.getResources());
       if (localLayoutParams != null) {
         localLayoutParams.setMargins(i, 0, i, 0);
       }
       return localLayoutParams;
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.dp2px(67.0F, paramContext.getResources()));
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.a(67.0F, paramContext.getResources()));
       continue;
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.dp2px(67.0F, paramContext.getResources()));
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.a(67.0F, paramContext.getResources()));
       continue;
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.dp2px(67.0F, paramContext.getResources()));
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.a(67.0F, paramContext.getResources()));
     }
   }
   
@@ -102,61 +102,21 @@ public class PgcSmallView
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView);
   }
   
-  public void a(Object paramObject)
+  public void a(IReadInJoyModel paramIReadInJoyModel, SpannableStringBuilder paramSpannableStringBuilder)
   {
-    qfw localqfw;
-    if ((paramObject instanceof qfw))
-    {
-      localqfw = (qfw)paramObject;
-      if ((localqfw.a() != 20) && (localqfw.a() != 12) && (localqfw.a() != 86) && (localqfw.a() != 95))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.a(paramObject);
-        if ((this.jdField_a_of_type_Int != 74) && (this.jdField_a_of_type_Int != 75)) {
-          break label223;
-        }
-        paramObject = qqe.a(((qfw)paramObject).a());
-        if ((paramObject == null) || (!((Boolean)paramObject.first).booleanValue())) {
-          break label205;
-        }
-        int i = AIOUtils.dp2px(50.0F, getContext().getResources());
-        paramObject = new RelativeLayout.LayoutParams(i, i);
-        paramObject.setMargins(0, 0, AIOUtils.dp2px(12.0F, getContext().getResources()), 0);
-        paramObject.addRule(15);
-        i = AIOUtils.dp2px(12.0F, getContext().getResources());
-        paramObject.setMargins(i, 0, i, 0);
-        paramObject.addRule(11);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.setLayoutParams(paramObject);
-      }
-    }
-    while (localqfw.a() == null)
-    {
-      return;
-      label205:
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.setLayoutParams(b(getContext()));
-      continue;
-      label223:
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.setLayoutParams(b(getContext()));
-    }
-    paramObject = new SpannableStringBuilder();
-    a(localqfw, paramObject);
-    b(localqfw, paramObject);
-  }
-  
-  public void a(qfw paramqfw, SpannableStringBuilder paramSpannableStringBuilder)
-  {
-    if ((paramqfw == null) || (paramqfw.a() == null)) {}
+    if ((paramIReadInJoyModel == null) || (paramIReadInJoyModel.a() == null)) {}
     do
     {
       return;
-      if ((paramqfw.a() == 10) || (paramqfw.a() == 12))
+      if ((paramIReadInJoyModel.a() == 10) || (paramIReadInJoyModel.a() == 12))
       {
         paramSpannableStringBuilder.append("@");
-        String str = paramqfw.a().mSubscribeName;
-        if (paramqfw.a().mAccountLess == 0)
+        String str = paramIReadInJoyModel.a().mSubscribeName;
+        if (paramIReadInJoyModel.a().mAccountLess == 0)
         {
-          long l = a(paramqfw.a());
+          long l = a(paramIReadInJoyModel.a());
           paramSpannableStringBuilder.append(str);
-          paramSpannableStringBuilder.setSpan(new toa(l, "2", paramqfw.a()), 0, paramSpannableStringBuilder.length(), 33);
+          paramSpannableStringBuilder.setSpan(new UserSpan(l, "2", paramIReadInJoyModel.a()), 0, paramSpannableStringBuilder.length(), 33);
         }
         for (;;)
         {
@@ -166,14 +126,54 @@ public class PgcSmallView
           paramSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.rgb(96, 96, 96)), 0, paramSpannableStringBuilder.length(), 33);
         }
       }
-    } while ((paramqfw.a() != 94) && (paramqfw.a() != 95));
+    } while ((paramIReadInJoyModel.a() != 94) && (paramIReadInJoyModel.a() != 95));
     paramSpannableStringBuilder.append("@");
-    paramSpannableStringBuilder.append(paramqfw.a().mSocialFeedInfo.jdField_a_of_type_Rrp.d);
+    paramSpannableStringBuilder.append(paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$ShareWebPageInfo.d);
     paramSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.rgb(96, 96, 96)), 0, paramSpannableStringBuilder.length(), 33);
     paramSpannableStringBuilder.append(": ");
   }
   
-  public void a(rbx paramrbx) {}
+  public void a(FeedItemCell.CellListener paramCellListener) {}
+  
+  public void a(Object paramObject)
+  {
+    IReadInJoyModel localIReadInJoyModel;
+    if ((paramObject instanceof IReadInJoyModel))
+    {
+      localIReadInJoyModel = (IReadInJoyModel)paramObject;
+      if ((localIReadInJoyModel.a() != 20) && (localIReadInJoyModel.a() != 12) && (localIReadInJoyModel.a() != 86) && (localIReadInJoyModel.a() != 95))
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.a(paramObject);
+        if ((this.jdField_a_of_type_Int != 74) && (this.jdField_a_of_type_Int != 75)) {
+          break label223;
+        }
+        paramObject = QuestionCardProteusItem.a(((IReadInJoyModel)paramObject).a());
+        if ((paramObject == null) || (!((Boolean)paramObject.first).booleanValue())) {
+          break label205;
+        }
+        int i = AIOUtils.a(50.0F, getContext().getResources());
+        paramObject = new RelativeLayout.LayoutParams(i, i);
+        paramObject.setMargins(0, 0, AIOUtils.a(12.0F, getContext().getResources()), 0);
+        paramObject.addRule(15);
+        i = AIOUtils.a(12.0F, getContext().getResources());
+        paramObject.setMargins(i, 0, i, 0);
+        paramObject.addRule(11);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.setLayoutParams(paramObject);
+      }
+    }
+    while (localIReadInJoyModel.a() == null)
+    {
+      return;
+      label205:
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.setLayoutParams(b(getContext()));
+      continue;
+      label223:
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.setLayoutParams(b(getContext()));
+    }
+    paramObject = new SpannableStringBuilder();
+    a(localIReadInJoyModel, paramObject);
+    b(localIReadInJoyModel, paramObject);
+  }
   
   public RelativeLayout.LayoutParams b(Context paramContext)
   {
@@ -189,16 +189,16 @@ public class PgcSmallView
         paramContext.addRule(11);
       }
       return paramContext;
-      int i = AIOUtils.dp2px(67.0F, paramContext.getResources());
-      paramContext = new RelativeLayout.LayoutParams(AIOUtils.dp2px(96.0F, paramContext.getResources()), i);
+      int i = AIOUtils.a(67.0F, paramContext.getResources());
+      paramContext = new RelativeLayout.LayoutParams(AIOUtils.a(96.0F, paramContext.getResources()), i);
       continue;
-      i = AIOUtils.dp2px(67.0F, paramContext.getResources());
-      paramContext = new RelativeLayout.LayoutParams(AIOUtils.dp2px(96.0F, paramContext.getResources()), i);
+      i = AIOUtils.a(67.0F, paramContext.getResources());
+      paramContext = new RelativeLayout.LayoutParams(AIOUtils.a(96.0F, paramContext.getResources()), i);
       continue;
-      i = AIOUtils.dp2px(67.0F, paramContext.getResources());
+      i = AIOUtils.a(67.0F, paramContext.getResources());
       paramContext = new RelativeLayout.LayoutParams(i, i);
       continue;
-      i = AIOUtils.dp2px(67.0F, paramContext.getResources());
+      i = AIOUtils.a(67.0F, paramContext.getResources());
       paramContext = new RelativeLayout.LayoutParams(i, i);
     }
   }
@@ -212,44 +212,44 @@ public class PgcSmallView
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setTextSize(0, Utils.dp2px(16.0D));
       return;
-      setBackgroundResource(2130842929);
+      setBackgroundResource(2130843084);
       continue;
-      setBackgroundResource(2130842929);
+      setBackgroundResource(2130843084);
       continue;
-      setBackgroundResource(2130842929);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.a().setImageResource(2130845894);
+      setBackgroundResource(2130843084);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.a().setImageResource(2130846215);
       continue;
-      setBackgroundResource(2130842929);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.a().setImageResource(2130845894);
+      setBackgroundResource(2130843084);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentSmall.a().setImageResource(2130846215);
     }
   }
   
-  public void b(qfw paramqfw, SpannableStringBuilder paramSpannableStringBuilder)
+  public void b(IReadInJoyModel paramIReadInJoyModel, SpannableStringBuilder paramSpannableStringBuilder)
   {
-    if ((paramqfw == null) || (paramqfw.a() == null)) {
+    if ((paramIReadInJoyModel == null) || (paramIReadInJoyModel.a() == null)) {
       return;
     }
     int i = paramSpannableStringBuilder.length() - 2;
     Object localObject;
     if (i >= 0)
     {
-      localObject = paramqfw.a().mTitle;
-      if ((paramqfw.a() != 94) && (paramqfw.a() != 95)) {
+      localObject = paramIReadInJoyModel.a().mTitle;
+      if ((paramIReadInJoyModel.a() != 94) && (paramIReadInJoyModel.a() != 95)) {
         break label189;
       }
-      localObject = paramqfw.a().mSocialFeedInfo.jdField_a_of_type_Rrp.b;
+      localObject = paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$ShareWebPageInfo.b;
       label75:
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         paramSpannableStringBuilder.append((CharSequence)localObject);
       }
       localObject = new ForegroundColorSpan(Color.parseColor("#000000"));
-      switch (paramqfw.a())
+      switch (paramIReadInJoyModel.a())
       {
       }
     }
-    for (paramqfw = (qfw)localObject;; paramqfw = new ForegroundColorSpan(Color.parseColor("#606060")))
+    for (paramIReadInJoyModel = (IReadInJoyModel)localObject;; paramIReadInJoyModel = new ForegroundColorSpan(Color.parseColor("#606060")))
     {
-      paramSpannableStringBuilder.setSpan(paramqfw, i, paramSpannableStringBuilder.length(), 34);
+      paramSpannableStringBuilder.setSpan(paramIReadInJoyModel, i, paramSpannableStringBuilder.length(), 34);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setTextColor(Color.parseColor("#FFCCCCCC"));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(paramSpannableStringBuilder);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setGravity(16);
@@ -258,10 +258,10 @@ public class PgcSmallView
       i = 0;
       break;
       label189:
-      if ((paramqfw.a() != 74) && (paramqfw.a() != 75)) {
+      if ((paramIReadInJoyModel.a() != 74) && (paramIReadInJoyModel.a() != 75)) {
         break label75;
       }
-      localObject = paramqfw.a().mSocialFeedInfo.jdField_a_of_type_Rrq.a;
+      localObject = paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.a;
       break label75;
     }
   }
@@ -281,10 +281,10 @@ public class PgcSmallView
     case 83: 
     case 86: 
     case 132: 
-      localLayoutParams.setMargins(AIOUtils.dp2px(12.0F, paramContext.getResources()), 0, AIOUtils.dp2px(12.0F, paramContext.getResources()), 0);
+      localLayoutParams.setMargins(AIOUtils.a(12.0F, paramContext.getResources()), 0, AIOUtils.a(12.0F, paramContext.getResources()), 0);
       return localLayoutParams;
     }
-    localLayoutParams.setMargins(AIOUtils.dp2px(12.0F, paramContext.getResources()), 0, AIOUtils.dp2px(12.0F, paramContext.getResources()), 0);
+    localLayoutParams.setMargins(AIOUtils.a(12.0F, paramContext.getResources()), 0, AIOUtils.a(12.0F, paramContext.getResources()), 0);
     return localLayoutParams;
   }
   
@@ -310,7 +310,7 @@ public class PgcSmallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.PgcSmallView
  * JD-Core Version:    0.7.0.1
  */

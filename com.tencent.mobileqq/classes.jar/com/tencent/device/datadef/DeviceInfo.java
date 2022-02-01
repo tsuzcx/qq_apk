@@ -1,6 +1,5 @@
 package com.tencent.device.datadef;
 
-import abge;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,29 +7,29 @@ import android.os.Parcelable.Creator;
 public class DeviceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DeviceInfo> CREATOR = new abge();
+  public static final Parcelable.Creator<DeviceInfo> CREATOR = new DeviceInfo.1();
   public static final double MULTIVIDEOVER = 1.4D;
-  public int SSOBid_Platform;
+  public int SSOBid_Platform = 0;
   public String SSOBid_Version = "";
   public String appSecret = "";
-  public long din;
+  public long din = 0L;
   public String displayName = "";
-  public int isAdmin;
+  public int isAdmin = 0;
   public String name = "";
   public String netAPN = "";
   public String netAddress = "";
   public String netDetail = "";
-  public int netType;
+  public int netType = 0;
   public String osPlatform = "";
   public String osVersion = "";
-  public int productId;
-  public int productType;
-  public int productVer;
+  public int productId = 0;
+  public int productType = 0;
+  public int productVer = 0;
   public String remark = "";
   public String serialNum = "";
-  public short status;
+  public short status = 0;
   public String type = "";
-  public short userStatus;
+  public short userStatus = 0;
   
   public DeviceInfo() {}
   
@@ -115,7 +114,7 @@ public class DeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.datadef.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

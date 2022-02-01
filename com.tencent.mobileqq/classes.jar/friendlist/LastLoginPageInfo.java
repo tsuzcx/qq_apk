@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class LastLoginPageInfo
   extends JceStruct
 {
-  public long dwCurrentReqIndex;
-  public long dwCurrentReqUin;
-  public long dwTotalReqTimes;
+  public long dwCurrentReqIndex = 0L;
+  public long dwCurrentReqUin = 0L;
+  public long dwTotalReqTimes = 0L;
   
   public LastLoginPageInfo() {}
   
@@ -36,7 +36,7 @@ public final class LastLoginPageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.LastLoginPageInfo
  * JD-Core Version:    0.7.0.1
  */

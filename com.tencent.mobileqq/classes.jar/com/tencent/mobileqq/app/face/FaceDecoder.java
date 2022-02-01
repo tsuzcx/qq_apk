@@ -3,22 +3,15 @@ package com.tencent.mobileqq.app.face;
 import AvatarInfo.QQHeadInfo;
 import android.content.Context;
 import android.graphics.Bitmap;
-import aokp;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.util.HeadRequest;
 import java.util.ArrayList;
 
 public class FaceDecoder
+  implements IFaceDecoder
 {
-  public static final int FROM_AIO = 6;
-  public static final int FROM_DIS_MEMBER = 5;
-  public static final int FROM_DIS_MEMBER_LIST = 1;
-  public static final int FROM_TROOP_CHAT_SETTING = 3;
-  public static final int FROM_TROOP_CHAT_SETTING_UPDATE = 4;
-  public static final int FROM_TROOP_MEMBER = 2;
   FaceDecoderBase mDecoder;
   
   public FaceDecoder(Context paramContext, AppInterface paramAppInterface)
@@ -28,15 +21,9 @@ public class FaceDecoder
   
   public FaceDecoder(AppInterface paramAppInterface)
   {
-    if ((paramAppInterface instanceof QQAppInterface)) {
-      this.mDecoder = new FaceDecoderImpl((QQAppInterface)paramAppInterface);
-    }
-    while (this.mDecoder == null)
-    {
+    if ("module_nearby".equals(paramAppInterface.getModuleId())) {}
+    for (this.mDecoder = new NearbyFaceDecoder(paramAppInterface); this.mDecoder == null; this.mDecoder = new FaceDecoderImpl(paramAppInterface)) {
       throw new NullPointerException("can not Instantiation FaceDecoder");
-      if ((paramAppInterface instanceof NearbyAppInterface)) {
-        this.mDecoder = new aokp((NearbyAppInterface)paramAppInterface);
-      }
     }
   }
   
@@ -49,12 +36,12 @@ public class FaceDecoder
     return b;
   }
   
-  protected static void requestDownloadFace(QQAppInterface paramQQAppInterface, FaceInfo paramFaceInfo)
+  protected static void requestDownloadFace(AppInterface paramAppInterface, FaceInfo paramFaceInfo)
   {
-    if ((paramQQAppInterface == null) || (paramFaceInfo == null)) {
+    if ((paramAppInterface == null) || (paramFaceInfo == null)) {
       return;
     }
-    ThreadManager.post(new FaceDecoder.1(paramFaceInfo, paramQQAppInterface), 10, null, true);
+    ThreadManager.post(new FaceDecoder.1(paramAppInterface, paramFaceInfo), 10, null, true);
   }
   
   public void cancelPendingRequests()
@@ -174,7 +161,7 @@ public class FaceDecoder
     this.mDecoder.setAppRuntime(paramAppInterface);
   }
   
-  public void setDecodeTaskCompletionListener(FaceDecoder.DecodeTaskCompletionListener paramDecodeTaskCompletionListener)
+  public void setDecodeTaskCompletionListener(DecodeTaskCompletionListener paramDecodeTaskCompletionListener)
   {
     this.mDecoder.setDecodeTaskCompletionListener(paramDecodeTaskCompletionListener);
   }
@@ -191,7 +178,7 @@ public class FaceDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoder
  * JD-Core Version:    0.7.0.1
  */

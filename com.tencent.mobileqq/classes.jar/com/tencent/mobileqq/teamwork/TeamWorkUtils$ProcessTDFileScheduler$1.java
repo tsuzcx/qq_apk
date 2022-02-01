@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.teamwork;
 
-import becr;
-import becs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class TeamWorkUtils$ProcessTDFileScheduler$1
+class TeamWorkUtils$ProcessTDFileScheduler$1
   implements Runnable
 {
-  public TeamWorkUtils$ProcessTDFileScheduler$1(becs parambecs, QQAppInterface paramQQAppInterface) {}
+  TeamWorkUtils$ProcessTDFileScheduler$1(TeamWorkUtils.ProcessTDFileScheduler paramProcessTDFileScheduler, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Iterator localIterator = becs.a(this.this$0).iterator();
+    Iterator localIterator = TeamWorkUtils.ProcessTDFileScheduler.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
-      becr.a((MessageRecord)localIterator.next(), this.a);
+      TeamWorkUtils.a((MessageRecord)localIterator.next(), this.a);
       localIterator.remove();
     }
   }

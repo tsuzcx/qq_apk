@@ -1,12 +1,11 @@
 package com.tencent.common.galleryactivity;
 
-import aawc;
 import android.widget.TextView;
 
-public class GalleryPageView$3
+class GalleryPageView$3
   implements Runnable
 {
-  public GalleryPageView$3(aawc paramaawc) {}
+  GalleryPageView$3(GalleryPageView paramGalleryPageView) {}
   
   public void run()
   {

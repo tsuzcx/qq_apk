@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atll;
-import auea;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class FileManagerRSWorker$7
+class FileManagerRSWorker$7
   implements Runnable
 {
-  public FileManagerRSWorker$7(atll paramatll) {}
+  FileManagerRSWorker$7(FileManagerRSWorker paramFileManagerRSWorker) {}
   
   public void run()
   {
@@ -33,9 +32,9 @@ public class FileManagerRSWorker$7
       if (this.this$0.jdField_a_of_type_JavaIoOutputStream != null) {
         this.this$0.jdField_a_of_type_JavaIoOutputStream.flush();
       }
-      this.this$0.jdField_a_of_type_Long = auea.a(this.this$0.d);
+      this.this$0.jdField_a_of_type_Long = FileManagerUtil.a(this.this$0.d);
       QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.this$0.c + "]retry request Httpmsg,rd[" + String.valueOf(this.this$0.jdField_a_of_type_Long) + "]");
-      atll.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.i);
+      FileManagerRSWorker.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.i);
       return;
     }
     catch (IOException localIOException)
@@ -49,7 +48,7 @@ public class FileManagerRSWorker$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.7
  * JD-Core Version:    0.7.0.1
  */

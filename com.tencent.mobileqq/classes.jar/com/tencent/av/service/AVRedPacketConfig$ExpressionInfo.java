@@ -4,19 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.io.Serializable;
-import lwj;
 
 public class AVRedPacketConfig$ExpressionInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ExpressionInfo> CREATOR = new lwj();
+  public static final Parcelable.Creator<ExpressionInfo> CREATOR = new AVRedPacketConfig.ExpressionInfo.1();
   public int coolValue;
   public int id;
   public int perfectValue;
   
   public AVRedPacketConfig$ExpressionInfo() {}
   
-  public AVRedPacketConfig$ExpressionInfo(Parcel paramParcel)
+  protected AVRedPacketConfig$ExpressionInfo(Parcel paramParcel)
   {
     this.id = paramParcel.readInt();
     this.coolValue = paramParcel.readInt();
@@ -42,7 +41,7 @@ public class AVRedPacketConfig$ExpressionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.service.AVRedPacketConfig.ExpressionInfo
  * JD-Core Version:    0.7.0.1
  */

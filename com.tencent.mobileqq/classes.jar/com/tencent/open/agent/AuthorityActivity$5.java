@@ -2,10 +2,9 @@ package com.tencent.open.agent;
 
 import android.content.res.Resources;
 import android.widget.Button;
-import bjaq;
-import bjhh;
+import com.tencent.open.agent.util.AuthorityUtil;
 
-public class AuthorityActivity$5
+class AuthorityActivity$5
   implements Runnable
 {
   AuthorityActivity$5(AuthorityActivity paramAuthorityActivity) {}
@@ -13,16 +12,16 @@ public class AuthorityActivity$5
   public void run()
   {
     this.this$0.j();
-    this.this$0.jdField_a_of_type_AndroidWidgetButton.setText(2131694457);
+    this.this$0.jdField_a_of_type_AndroidWidgetButton.setText(2131694674);
     if (this.this$0.jdField_a_of_type_Int == 0)
     {
-      String str = this.this$0.getResources().getString(2131694453);
+      String str = this.this$0.getResources().getString(2131694670);
       this.this$0.jdField_a_of_type_AndroidWidgetButton.setTag(str);
     }
     for (;;)
     {
       this.this$0.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      bjhh.a(this.this$0, this.this$0.getResources().getString(2131694461), new bjaq(this));
+      AuthorityUtil.a(this.this$0, this.this$0.getResources().getString(2131694678), new AuthorityActivity.5.1(this));
       return;
       this.this$0.jdField_a_of_type_AndroidWidgetButton.setTag(this.this$0.c);
     }
@@ -30,7 +29,7 @@ public class AuthorityActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityActivity.5
  * JD-Core Version:    0.7.0.1
  */

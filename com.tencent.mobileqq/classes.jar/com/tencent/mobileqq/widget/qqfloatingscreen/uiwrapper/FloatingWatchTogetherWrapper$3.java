@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
-import biwy;
-
-public class FloatingWatchTogetherWrapper$3
+class FloatingWatchTogetherWrapper$3
   implements Runnable
 {
-  public FloatingWatchTogetherWrapper$3(biwy parambiwy, int paramInt) {}
+  FloatingWatchTogetherWrapper$3(FloatingWatchTogetherWrapper paramFloatingWatchTogetherWrapper, int paramInt) {}
   
   public void run()
   {
-    biwy.a(this.this$0, this.a);
+    FloatingWatchTogetherWrapper.a(this.this$0, this.a);
     this.this$0.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingWatchTogetherWrapper.3
  * JD-Core Version:    0.7.0.1
  */

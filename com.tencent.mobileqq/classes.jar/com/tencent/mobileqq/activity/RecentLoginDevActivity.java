@@ -1,12 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import QQService.DeviceItemDes;
 import QQService.SvcDevLoginInfo;
-import aetb;
-import aetc;
-import aetd;
-import aete;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -22,28 +17,28 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvi;
-import asll;
-import bhid;
-import bisl;
-import bkzi;
-import bkzz;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecentLoginDevActivity
   extends IphoneTitleBarActivity
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new aetb(this);
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private anvi jdField_a_of_type_Anvi = new aete(this);
-  private bisl jdField_a_of_type_Bisl;
-  private bkzi jdField_a_of_type_Bkzi;
+  private Handler jdField_a_of_type_AndroidOsHandler = new RecentLoginDevActivity.1(this);
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new RecentLoginDevActivity.4(this);
+  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
   private String jdField_a_of_type_JavaLangString = "";
-  private List<SvcDevLoginInfo> jdField_a_of_type_JavaUtilList;
+  private List<SvcDevLoginInfo> jdField_a_of_type_JavaUtilList = null;
   
   private void a()
   {
@@ -54,15 +49,15 @@ public class RecentLoginDevActivity
   {
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = getResources().getString(2131694210);
+      str = getResources().getString(2131694414);
     }
-    this.jdField_a_of_type_Bkzi = ((bkzi)bkzz.a(this, null));
-    paramString1 = getString(2131694203, new Object[] { str });
-    this.jdField_a_of_type_Bkzi.a(paramString1);
-    this.jdField_a_of_type_Bkzi.a(getResources().getString(2131694202), 3);
-    this.jdField_a_of_type_Bkzi.c(2131690697);
-    this.jdField_a_of_type_Bkzi.a(new aetd(this, paramString2, paramArrayList, paramInt));
-    this.jdField_a_of_type_Bkzi.show();
+    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
+    paramString1 = getString(2131694407, new Object[] { str });
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setMainTitle(paramString1);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(getResources().getString(2131694406), 3);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(new RecentLoginDevActivity.3(this, paramString2, paramArrayList, paramInt));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
   }
   
   private void a(List<SvcDevLoginInfo> paramList)
@@ -90,28 +85,28 @@ public class RecentLoginDevActivity
       }
     }
     label76:
-    View localView = getLayoutInflater().inflate(2131559380, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131369110);
-    ((ImageView)localView.findViewById(2131368524)).setVisibility(0);
+    View localView = getLayoutInflater().inflate(2131559447, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131369361);
+    ((ImageView)localView.findViewById(2131368754)).setVisibility(0);
     label130:
     Object localObject;
     TextView localTextView;
     if (j == 1)
     {
-      localRelativeLayout.setBackgroundResource(2130839496);
-      ((TextView)localView.findViewById(2131369723)).setVisibility(8);
-      localObject = (TextView)localView.findViewById(2131371803);
-      localTextView = (TextView)localView.findViewById(2131368819);
+      localRelativeLayout.setBackgroundResource(2130839575);
+      ((TextView)localView.findViewById(2131369992)).setVisibility(8);
+      localObject = (TextView)localView.findViewById(2131372115);
+      localTextView = (TextView)localView.findViewById(2131369051);
       if (!TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceName)) {
         break label386;
       }
-      ((TextView)localObject).setText(2131694210);
+      ((TextView)localObject).setText(2131694414);
     }
     for (;;)
     {
       localObject = new StringBuffer();
       if (localSvcDevLoginInfo.iLoginTime > 0L) {
-        ((StringBuffer)localObject).append(bhid.a(localSvcDevLoginInfo.iLoginTime * 1000L, "MM-dd  HH:mm"));
+        ((StringBuffer)localObject).append(TimeFormatterUtils.a(localSvcDevLoginInfo.iLoginTime * 1000L, "MM-dd  HH:mm"));
       }
       if (!TextUtils.isEmpty(localSvcDevLoginInfo.strLoginLocation))
       {
@@ -128,20 +123,20 @@ public class RecentLoginDevActivity
       }
       localRelativeLayout.setClickable(true);
       localRelativeLayout.setTag(localSvcDevLoginInfo);
-      localRelativeLayout.setOnClickListener(new aetc(this, localRelativeLayout, i));
+      localRelativeLayout.setOnClickListener(new RecentLoginDevActivity.2(this, localRelativeLayout, i));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       break;
       if (i == 0)
       {
-        localRelativeLayout.setBackgroundResource(2130839512);
+        localRelativeLayout.setBackgroundResource(2130839591);
         break label130;
       }
       if (i == j - 1)
       {
-        localRelativeLayout.setBackgroundResource(2130839503);
+        localRelativeLayout.setBackgroundResource(2130839582);
         break label130;
       }
-      localRelativeLayout.setBackgroundResource(2130839506);
+      localRelativeLayout.setBackgroundResource(2130839585);
       break label130;
       label386:
       ((TextView)localObject).setText(localSvcDevLoginInfo.strDeviceName);
@@ -172,20 +167,20 @@ public class RecentLoginDevActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131561102);
-    setTitle(2131694209);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368222));
+    super.setContentView(2131561190);
+    setTitle(2131694413);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368442));
     try
     {
       this.jdField_a_of_type_JavaLangString = getPackageManager().getPackageInfo(getPackageName(), 0).packageName;
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.RecentLoginDevActivity", 2, "packName = " + this.jdField_a_of_type_JavaLangString);
       }
-      addObserver(this.jdField_a_of_type_Anvi);
+      addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onCreate begin to getRecentLoginDevList");
       }
-      bool = asll.a().b(this.app, this.jdField_a_of_type_JavaLangString, 0L);
+      bool = EquipmentLockImpl.a().b(this.app, this.jdField_a_of_type_JavaLangString, 0L);
       if (bool)
       {
         a();
@@ -210,12 +205,12 @@ public class RecentLoginDevActivity
   {
     super.onDestroy();
     b();
-    removeObserver(this.jdField_a_of_type_Anvi);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RecentLoginDevActivity
  * JD-Core Version:    0.7.0.1
  */

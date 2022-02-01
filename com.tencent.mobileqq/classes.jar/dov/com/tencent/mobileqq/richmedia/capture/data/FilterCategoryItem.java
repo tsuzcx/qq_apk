@@ -3,13 +3,12 @@ package dov.com.tencent.mobileqq.richmedia.capture.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bpnf;
 import java.util.ArrayList;
 
 public class FilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new bpnf();
+  public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new FilterCategoryItem.1();
   public int a;
   public String a;
   public ArrayList<String> a;
@@ -38,7 +37,7 @@ public class FilterCategoryItem
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public FilterCategoryItem(Parcel paramParcel)
+  protected FilterCategoryItem(Parcel paramParcel)
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -161,7 +160,7 @@ public class FilterCategoryItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem
  * JD-Core Version:    0.7.0.1
  */

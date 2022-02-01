@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.microapp.appbrand.page;
 
-import bisl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.g.a;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
 
 class AppBrandPageContainer$1
   implements g.a
 {
-  AppBrandPageContainer$1(AppBrandPageContainer paramAppBrandPageContainer, WeakReference paramWeakReference, String paramString1, String paramString2, bisl parambisl) {}
+  AppBrandPageContainer$1(AppBrandPageContainer paramAppBrandPageContainer, WeakReference paramWeakReference, String paramString1, String paramString2, QQProgressDialog paramQQProgressDialog) {}
   
   public void onInitApkgInfo$76ec3a73(int paramInt, c paramc)
   {

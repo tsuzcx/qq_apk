@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import android.os.SystemClock;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.qphone.base.util.QLog;
-import ykv;
 
 public class FFmpegUtils$ExecuteFhlipResponseCallback
   implements FFmpegExecuteResponseCallback
@@ -37,7 +37,7 @@ public class FFmpegUtils$ExecuteFhlipResponseCallback
   public void onSuccess(String paramString)
   {
     paramString = String.valueOf(SystemClock.uptimeMillis() - this.mStartTime);
-    ykv.a("play_video", "down_watermark_hfliptime", 0, 0, new String[] { paramString });
+    StoryReportor.a("play_video", "down_watermark_hfliptime", 0, 0, new String[] { paramString });
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video down_watermark_hfliptime:" + paramString);
     }
@@ -45,7 +45,7 @@ public class FFmpegUtils$ExecuteFhlipResponseCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils.ExecuteFhlipResponseCallback
  * JD-Core Version:    0.7.0.1
  */

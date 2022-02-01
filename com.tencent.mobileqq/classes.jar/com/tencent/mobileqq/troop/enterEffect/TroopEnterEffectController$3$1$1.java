@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import bdxz;
-import bdzf;
-import bfkl;
-import bfko;
+import com.tencent.mobileqq.surfaceviewaction.ILayer;
+import com.tencent.mobileqq.surfaceviewaction.gl.Node;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
-public class TroopEnterEffectController$3$1$1
+class TroopEnterEffectController$3$1$1
   implements Runnable
 {
-  public TroopEnterEffectController$3$1$1(bfko parambfko, bdxz parambdxz) {}
+  TroopEnterEffectController$3$1$1(TroopEnterEffectController.3.1 param1, ILayer paramILayer) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bfko.a.this$0.a != null) {
-      this.jdField_a_of_type_Bfko.a.this$0.a.a((bdzf)this.jdField_a_of_type_Bdxz);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$3$1.a.this$0.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$3$1.a.this$0.a.a((Node)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer);
     }
   }
 }

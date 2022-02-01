@@ -9,9 +9,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import ykq;
-import ysy;
-import yvk;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory;
 
 @TargetApi(14)
 public class ElasticImageView
@@ -49,6 +48,7 @@ public class ElasticImageView
     this.jdField_c_of_type_Float = 1.0F;
     this.jdField_a_of_type_Long = 200L;
     this.jdField_d_of_type_Float = this.jdField_b_of_type_Float;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_e_of_type_Float = 1.0F;
     this.jdField_f_of_type_Float = 1.0F;
     this.jdField_c_of_type_Boolean = true;
@@ -63,6 +63,7 @@ public class ElasticImageView
     this.jdField_c_of_type_Float = 1.0F;
     this.jdField_a_of_type_Long = 200L;
     this.jdField_d_of_type_Float = this.jdField_b_of_type_Float;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_e_of_type_Float = 1.0F;
     this.jdField_f_of_type_Float = 1.0F;
     this.jdField_c_of_type_Boolean = true;
@@ -71,7 +72,7 @@ public class ElasticImageView
   
   private ValueAnimator a(float paramFloat1, float paramFloat2, long paramLong)
   {
-    return ysy.a(paramLong, paramFloat1, paramFloat2, new yvk(this));
+    return AnimatorFactory.a(paramLong, paramFloat1, paramFloat2, new ElasticImageView.1(this));
   }
   
   private void a()
@@ -98,7 +99,7 @@ public class ElasticImageView
     if (paramFloat <= 0.0F) {
       return;
     }
-    ykq.b("ElasticImageView", "updateMatrix:" + paramFloat);
+    SLog.b("ElasticImageView", "updateMatrix:" + paramFloat);
     this.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_b_of_type_AndroidGraphicsMatrix);
     this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.g, this.h);
     this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_e_of_type_Float, this.jdField_f_of_type_Float, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
@@ -159,7 +160,7 @@ public class ElasticImageView
     label388:
     for (;;)
     {
-      ykq.b("ElasticImageView", "drawableWidth:" + k + ",drawableHeight:" + j + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int + ",scaleValue:" + f1);
+      SLog.b("ElasticImageView", "drawableWidth:" + k + ",drawableHeight:" + j + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int + ",scaleValue:" + f1);
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float * 1.1F);
       this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 1.5F);
@@ -211,7 +212,7 @@ public class ElasticImageView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_Int = paramInt1;
@@ -221,7 +222,7 @@ public class ElasticImageView
     this.i = (this.jdField_f_of_type_Int * 2);
     this.jdField_c_of_type_Int = (this.jdField_e_of_type_Int * 2);
     this.jdField_d_of_type_Int = (this.jdField_f_of_type_Int * 2);
-    ykq.b("ElasticImageView", "ImageViewWidth:" + this.jdField_a_of_type_Int + ",ImageViewHeight:" + this.jdField_b_of_type_Int + ",centerX:" + this.jdField_e_of_type_Int + ",centerY:" + this.jdField_f_of_type_Int + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int);
+    SLog.b("ElasticImageView", "ImageViewWidth:" + this.jdField_a_of_type_Int + ",ImageViewHeight:" + this.jdField_b_of_type_Int + ",centerX:" + this.jdField_e_of_type_Int + ",centerY:" + this.jdField_f_of_type_Int + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int);
     d();
     this.jdField_d_of_type_Float = this.jdField_a_of_type_Float;
     b(this.jdField_d_of_type_Float);
@@ -275,7 +276,7 @@ public class ElasticImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView
  * JD-Core Version:    0.7.0.1
  */

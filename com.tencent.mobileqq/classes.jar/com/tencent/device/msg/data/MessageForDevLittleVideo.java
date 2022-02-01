@@ -1,9 +1,9 @@
 package com.tencent.device.msg.data;
 
-import anvx;
-import apab;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.utils.ContactUtils;
 
@@ -19,7 +19,7 @@ public class MessageForDevLittleVideo
   {
     try
     {
-      MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)apab.a(this.msgData);
+      MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)MessagePkgUtils.a(this.msgData);
       if (localDevLittleVideoMsgSerial != null)
       {
         this.thumbFileKey = localDevLittleVideoMsgSerial.thumbFileKey;
@@ -69,9 +69,9 @@ public class MessageForDevLittleVideo
     {
       localObject = (QQAppInterface)localObject;
       if (isSendFromLocal()) {
-        return anvx.a(2131706052);
+        return HardCodeUtil.a(2131706592);
       }
-      return ContactUtils.getBuddyName((QQAppInterface)localObject, this.senderuin, true) + anvx.a(2131706056);
+      return ContactUtils.c((QQAppInterface)localObject, this.senderuin, true) + HardCodeUtil.a(2131706596);
     }
     return null;
   }
@@ -108,7 +108,7 @@ public class MessageForDevLittleVideo
     localDevLittleVideoMsgSerial.senderuin = this.senderuin;
     try
     {
-      this.msgData = apab.a(localDevLittleVideoMsgSerial);
+      this.msgData = MessagePkgUtils.a(localDevLittleVideoMsgSerial);
       return;
     }
     catch (Exception localException)
@@ -119,7 +119,7 @@ public class MessageForDevLittleVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevLittleVideo
  * JD-Core Version:    0.7.0.1
  */

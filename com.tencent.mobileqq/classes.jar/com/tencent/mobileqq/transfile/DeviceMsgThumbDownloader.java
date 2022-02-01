@@ -9,13 +9,13 @@ import android.os.Build.VERSION;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Video.Thumbnails;
 import android.text.TextUtils;
-import auea;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -91,14 +91,14 @@ public class DeviceMsgThumbDownloader
     do
     {
       return null;
-      if (FileUtils.fileExistsAndNotEmpty(paramFile.path)) {
+      if (FileUtils.b(paramFile.path)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.d("DeviceMsgThumbDownloader", 2, "decodeFile file not exits. just return");
     return null;
     paramURLDrawableHandler = BaseApplicationImpl.getContext();
-    if (auea.a(paramFile.path) == 2) {}
+    if (FileManagerUtil.a(paramFile.path) == 2) {}
     for (paramFile = new DeviceMsgThumbDownloader.DeviceVideoBitmapDecoder(this);; paramFile = new DeviceMsgThumbDownloader.DeviceImgBitmapDecoder(this)) {
       return AlbumThumbManager.getInstance(paramURLDrawableHandler).getThumb(paramDownloadParams.url, paramFile);
     }

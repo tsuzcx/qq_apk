@@ -14,6 +14,7 @@ public class WeishiFeedInfo
   public WeishiBasicInfo basicInfo;
   public WeishiBottomButton bottomButton;
   public WeishiFeedCommInfo feedCommInfo;
+  public int feedFakeType = 2;
   public WeishiInterestInfo interestInfo;
   public KingCardInfo kingCardInfo;
   public boolean mIsFrdLikeMiniAppVideo;
@@ -41,6 +42,7 @@ public class WeishiFeedInfo
     for (boolean bool = true;; bool = false)
     {
       this.mIsFrdLikeMiniAppVideo = bool;
+      this.feedFakeType = paramParcel.readInt();
       return;
     }
   }
@@ -66,13 +68,14 @@ public class WeishiFeedInfo
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
+      paramParcel.writeInt(this.feedFakeType);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.WeishiFeedInfo
  * JD-Core Version:    0.7.0.1
  */

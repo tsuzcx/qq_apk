@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flashchat;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.io.Serializable;
 
 public class FlashChatItem
@@ -11,7 +11,7 @@ public class FlashChatItem
   public static final int FREETYPE_VIP = 4;
   public static final int ID_NORMAL = -100001;
   public static final int ID_RANDOM = -100000;
-  public static FlashChatItem sDefaultItem = new FlashChatItem(-100000, anvx.a(2131704094));
+  public static FlashChatItem sDefaultItem = new FlashChatItem(-100000, HardCodeUtil.a(2131704642));
   public String appName;
   public String color = "#02A7E3";
   public int feedType;
@@ -37,7 +37,7 @@ public class FlashChatItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatItem
  * JD-Core Version:    0.7.0.1
  */

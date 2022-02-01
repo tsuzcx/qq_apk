@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 public class KanDianUrlRoundCornerImageView
   extends KandianUrlImageView
 {
-  private int a;
+  private int a = 0;
   
   public KanDianUrlRoundCornerImageView(Context paramContext)
   {
@@ -61,7 +61,7 @@ public class KanDianUrlRoundCornerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -14,16 +14,16 @@ public final class cell_recomm_header
   static s_picurl cache_rightBgPic = new s_picurl();
   public String action_type = "";
   public String action_url = "";
-  public byte btn_type;
+  public byte btn_type = 0;
   public String custom_icon = "";
   public String desc = "";
-  public int icon_height;
-  public int icon_width;
+  public int icon_height = 0;
+  public int icon_width = 0;
   public String left_title = "";
-  public s_button left_top_button;
-  public Map<String, s_picurl> mapCoverUrl;
-  public long recomm_uin;
-  public s_picurl rightBgPic;
+  public s_button left_top_button = null;
+  public Map<String, s_picurl> mapCoverUrl = null;
+  public long recomm_uin = 0L;
+  public s_picurl rightBgPic = null;
   public String right_title = "";
   
   static

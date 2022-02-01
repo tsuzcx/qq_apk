@@ -4,7 +4,7 @@ import android.os.Vibrator;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public final class MultiAIOStarter$3
+final class MultiAIOStarter$3
   implements Runnable
 {
   public void run()

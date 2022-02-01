@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import altg;
-import altr;
-
-public class RMVideoInitState$3
+class RMVideoInitState$3
   implements Runnable
 {
-  public RMVideoInitState$3(altg paramaltg) {}
+  RMVideoInitState$3(RMVideoInitState paramRMVideoInitState) {}
   
   public void run()
   {
@@ -18,7 +15,7 @@ public class RMVideoInitState$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.3
  * JD-Core Version:    0.7.0.1
  */

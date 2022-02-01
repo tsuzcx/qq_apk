@@ -39,10 +39,10 @@ public class HippyTKDRefreshHeader
   public static final int BALL_COLOR_YELLOW = 2;
   static final int BALL_COUNT = 3;
   public static final int BALL_MARGING_WITH_TEXT;
-  public static final int BALL_MARGIN_H = ImmersiveUtils.a(12.0F);
-  public static final int BALL_MARING_V = ImmersiveUtils.a(18.0F);
-  public static final int CONTENT_HEIGHT = ImmersiveUtils.a(42.0F);
-  public static final int REFRESH_HEADER_TOP_PADDING = ImmersiveUtils.a(0.0F);
+  public static final int BALL_MARGIN_H = ImmersiveUtils.dpToPx(12.0F);
+  public static final int BALL_MARING_V = ImmersiveUtils.dpToPx(18.0F);
+  public static final int CONTENT_HEIGHT = ImmersiveUtils.dpToPx(42.0F);
+  public static final int REFRESH_HEADER_TOP_PADDING = ImmersiveUtils.dpToPx(0.0F);
   public static final int REFRESH_RESULT_FAILED = 3;
   public static final int REFRESH_RESULT_NOTCARE = 1;
   public static final int REFRESH_RESULT_SUCCESSS = 2;
@@ -69,7 +69,7 @@ public class HippyTKDRefreshHeader
   HippyTKDRefreshAnimation mCustomAnimation = null;
   String mCustomCompleteText;
   private View mCustomHippyRefreshView;
-  private HippyTKDCustomRefreshHeader mCustomRefreshHeaderView;
+  private HippyTKDCustomRefreshHeader mCustomRefreshHeaderView = null;
   private View.OnLayoutChangeListener mCustomRefreshViewLayoutChangeListener;
   int mCustomTipBackgroundColorID = 0;
   int mCustomTipBgBeginColor = 0;
@@ -78,26 +78,26 @@ public class HippyTKDRefreshHeader
   int mCustomTipTextSize = 0;
   String mDescriptionText;
   int mDescriptionTextColor;
-  int mDescriptionTextFontSize = ImmersiveUtils.a(12.0F);
-  private boolean mEnableCustomRefreshHeaderView;
+  int mDescriptionTextFontSize = ImmersiveUtils.dpToPx(12.0F);
+  private boolean mEnableCustomRefreshHeaderView = false;
   private IHippyTKDRefreshHeaderEventExtension[] mEventExtensions;
-  private int mHideIndex;
-  private View mHostView;
-  private String mIconUrl;
+  private int mHideIndex = 0;
+  private View mHostView = null;
+  private String mIconUrl = null;
   private int mInitLayerType = 0;
   HippyTKDRefreshHeader.InternalStageCallback mInternalStageCallback = null;
   Paint mPaint = new Paint();
-  private HippyTKDRefreshHeader.PendingComplete mPendingCompleteObject;
+  private HippyTKDRefreshHeader.PendingComplete mPendingCompleteObject = null;
   Promise mPromise;
   public BitmapDrawable mPullDownToRefreshDesIcon;
   public int mPullDownToRefreshDesIconHeigth;
   public int mPullDownToRefreshDesIconWidth;
-  public int mPullDownToRefreshDistanceBetweenIconText = ImmersiveUtils.a(8.0F);
+  public int mPullDownToRefreshDistanceBetweenIconText = ImmersiveUtils.dpToPx(8.0F);
   public Drawable mPullDownToRefreshFailIcon;
   public Drawable mPullDownToRefreshSucIcon;
-  public String mPullDownToRefreshTextFail = ResourceUtil.getString(2131718010);
+  public String mPullDownToRefreshTextFail = ResourceUtil.getString(2131718501);
   public HippyTKDUISize mPullDownToRefreshTextFailTextSize = new HippyTKDUISize();
-  public String mPullDownToRefreshTextSuc = ResourceUtil.getString(2131718011);
+  public String mPullDownToRefreshTextSuc = ResourceUtil.getString(2131718502);
   public HippyTKDUISize mPullDownToRefreshTextSucTextSize = new HippyTKDUISize();
   public Drawable mRefreshDrawable;
   public int mRefreshOffset = CONTENT_HEIGHT + REFRESH_HEADER_TOP_PADDING;
@@ -120,8 +120,8 @@ public class HippyTKDRefreshHeader
   
   static
   {
-    BALL_MARGING_WITH_TEXT = ImmersiveUtils.a(26.0F);
-    TEXT_MARGING_WITH_BALL = ImmersiveUtils.a(6.0F);
+    BALL_MARGING_WITH_TEXT = ImmersiveUtils.dpToPx(26.0F);
+    TEXT_MARGING_WITH_BALL = ImmersiveUtils.dpToPx(6.0F);
   }
   
   public HippyTKDRefreshHeader(HippyTKDRefreshHeader.RefreshableCallback paramRefreshableCallback)
@@ -136,7 +136,7 @@ public class HippyTKDRefreshHeader
   {
     this.mCb = paramRefreshableCallback;
     this.gm = new UIGdiMeasure();
-    this.gm.setFontSize(ImmersiveUtils.a(12.0F));
+    this.gm.setFontSize(ImmersiveUtils.dpToPx(12.0F));
     this.gm.getStringWidthHeight(this.mPullDownToRefreshTextSuc, this.mPullDownToRefreshTextSucTextSize);
     this.gm.getStringWidthHeight(this.mPullDownToRefreshTextFail, this.mPullDownToRefreshTextFailTextSize);
     this.mBalls = new AnimatingBall[3];
@@ -161,7 +161,7 @@ public class HippyTKDRefreshHeader
     this.hideAnimator.setEvaluator(new FloatEvaluator());
     this.hideAnimator.setInterpolator(new CurvedInterpolator(3));
     this.mCustomRefreshViewLayoutChangeListener = new HippyTKDRefreshHeader.2(this);
-    this.mDescriptionTextColor = ResourceUtil.getColor(2131167264);
+    this.mDescriptionTextColor = ResourceUtil.getColor(2131167273);
   }
   
   private String getStateStr(int paramInt)
@@ -301,7 +301,7 @@ public class HippyTKDRefreshHeader
         return;
         this.offsetHolderShow.setFloatValues(new float[] { -this.mContentheight, 0.0F });
         break;
-        paramInt1 = ImmersiveUtils.a(12.0F);
+        paramInt1 = ImmersiveUtils.dpToPx(12.0F);
       }
     }
     if (this.mPendingCompleteObject == null) {
@@ -348,7 +348,7 @@ public class HippyTKDRefreshHeader
       paramString1.postDelayedDelegate(paramString2, paramLong);
       this.mCb.scrollToShowHeaderSmooth(this.mContentheight);
       return;
-      paramInt2 = ImmersiveUtils.a(12.0F);
+      paramInt2 = ImmersiveUtils.dpToPx(12.0F);
       break;
       label574:
       if (paramInt1 == 3)
@@ -397,7 +397,7 @@ public class HippyTKDRefreshHeader
         for (;;)
         {
           return;
-          paramInt = ImmersiveUtils.a(12.0F);
+          paramInt = ImmersiveUtils.dpToPx(12.0F);
         }
       }
       if (this.mPendingCompleteObject == null) {
@@ -445,7 +445,7 @@ public class HippyTKDRefreshHeader
     {
       paramString.postDelayedDelegate(localRunnable, paramLong);
       return;
-      i = ImmersiveUtils.a(12.0F);
+      i = ImmersiveUtils.dpToPx(12.0F);
       break;
       label363:
       if (paramInt == 3)
@@ -613,7 +613,7 @@ public class HippyTKDRefreshHeader
         try
         {
           m = (this.mCb.getWidth() - this.mPullDownToRefreshDesIconWidth) / 2;
-          n = -this.mCb.getOffsetY() - this.mContentheight - this.mPullDownToRefreshDesIconHeigth - ImmersiveUtils.a(0.0F);
+          n = -this.mCb.getOffsetY() - this.mContentheight - this.mPullDownToRefreshDesIconHeigth - ImmersiveUtils.dpToPx(0.0F);
           if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
             this.mPullDownToRefreshDesIcon.setColorFilter(-2147483648, PorterDuff.Mode.SRC_ATOP);
           }
@@ -732,7 +732,7 @@ public class HippyTKDRefreshHeader
         }
         if (this.mPullDownToRefreshSucIcon == null)
         {
-          localObject2 = ResourceUtil.getBitmap(2130850677);
+          localObject2 = ResourceUtil.getBitmap(2130851103);
           if (this.mCustomTipTextColor == 0) {
             break label1745;
           }
@@ -749,7 +749,7 @@ public class HippyTKDRefreshHeader
           }
           i = -2147483648;
           label1169:
-          localDrawable = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130850675), i);
+          localDrawable = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130851101), i);
         }
         n = this.mCb.getWidth();
         int i3 = ((Drawable)localObject2).getIntrinsicWidth();
@@ -810,7 +810,7 @@ public class HippyTKDRefreshHeader
       m = UIUtilBase.getTextHeight(this.mPaint, this.mDescriptionTextFontSize);
       n = (this.mCb.getWidth() - n) / 2;
       this.mPaint.setAlpha(k);
-      UIStringUtils.drawText(paramCanvas, this.mPaint, n, -this.mCb.getOffsetY() - this.mContentheight - m - ImmersiveUtils.a(0.0F), this.mDescriptionText);
+      UIStringUtils.drawText(paramCanvas, this.mPaint, n, -this.mCb.getOffsetY() - this.mContentheight - m - ImmersiveUtils.dpToPx(0.0F), this.mDescriptionText);
       break;
       j = this.mTipsBgColor;
       break label752;
@@ -829,7 +829,7 @@ public class HippyTKDRefreshHeader
       m = this.mPullDownToRefreshTextSucTextSize.mHeight;
       break label1002;
       label1726:
-      f1 = ImmersiveUtils.a(12.0F);
+      f1 = ImmersiveUtils.dpToPx(12.0F);
       break label1021;
       label1736:
       n = this.mColor;
@@ -840,7 +840,7 @@ public class HippyTKDRefreshHeader
       label1754:
       if (this.mPullDownToRefreshFailIcon == null)
       {
-        localObject2 = ResourceUtil.getBitmap(2130850676);
+        localObject2 = ResourceUtil.getBitmap(2130851102);
         if (this.mCustomTipTextColor == 0) {
           break label1802;
         }
@@ -1001,13 +1001,13 @@ public class HippyTKDRefreshHeader
     this.mColorType = 3;
     if (paramInt2 == 0)
     {
-      this.refreshBgColor = ResourceUtil.getColor(2131167271);
+      this.refreshBgColor = ResourceUtil.getColor(2131167280);
       if (paramInt3 != 0) {
         break label73;
       }
     }
     label73:
-    for (this.mTipsBgColor = ResourceUtil.getColor(2131167265);; this.mTipsBgColor = paramInt3)
+    for (this.mTipsBgColor = ResourceUtil.getColor(2131167274);; this.mTipsBgColor = paramInt3)
     {
       this.mColor = paramInt1;
       paramInt1 = 0;
@@ -1036,8 +1036,8 @@ public class HippyTKDRefreshHeader
   public void setRefreshBallColor(int paramInt)
   {
     this.mColorType = paramInt;
-    this.refreshBgColor = ResourceUtil.getColor(2131167271);
-    this.mTipsBgColor = ResourceUtil.getColor(2131167265);
+    this.refreshBgColor = ResourceUtil.getColor(2131167280);
+    this.mTipsBgColor = ResourceUtil.getColor(2131167274);
     switch (this.mColorType)
     {
     }
@@ -1049,15 +1049,15 @@ public class HippyTKDRefreshHeader
         this.mBalls[paramInt].setInitialColor(this.mColor);
         paramInt += 1;
       }
-      this.mColor = ResourceUtil.getColor(2131167268);
-      this.refreshBgColor = ResourceUtil.getColor(2131167272);
-      this.mTipsBgColor = ResourceUtil.getColor(2131167265);
+      this.mColor = ResourceUtil.getColor(2131167277);
+      this.refreshBgColor = ResourceUtil.getColor(2131167281);
+      this.mTipsBgColor = ResourceUtil.getColor(2131167274);
       continue;
-      this.mColor = ResourceUtil.getColor(2131167269);
+      this.mColor = ResourceUtil.getColor(2131167278);
       continue;
-      this.mColor = ResourceUtil.getColor(2131167266);
+      this.mColor = ResourceUtil.getColor(2131167275);
       continue;
-      this.mColor = ResourceUtil.getColor(2131167270);
+      this.mColor = ResourceUtil.getColor(2131167279);
     }
     this.mPullDownToRefreshSucIcon = null;
     this.mPullDownToRefreshFailIcon = null;
@@ -1327,7 +1327,7 @@ public class HippyTKDRefreshHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDRefreshHeader
  * JD-Core Version:    0.7.0.1
  */

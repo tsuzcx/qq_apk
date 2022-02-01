@@ -10,10 +10,10 @@ public final class RichMsg
 {
   static ArrayList<MsgItem> cache_VecMsg;
   static UserInfo cache_stSender;
-  public ArrayList<MsgItem> VecMsg;
-  public int iActionID;
+  public ArrayList<MsgItem> VecMsg = null;
+  public int iActionID = 0;
   public String sAction = "";
-  public UserInfo stSender;
+  public UserInfo stSender = null;
   
   public RichMsg() {}
   

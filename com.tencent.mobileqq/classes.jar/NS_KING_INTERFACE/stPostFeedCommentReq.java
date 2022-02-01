@@ -15,10 +15,10 @@ public final class stPostFeedCommentReq
 {
   static stMetaComment cache_comment;
   static ArrayList<stMetaReportDataItem> cache_data;
-  public stMetaComment comment;
-  public ArrayList<stMetaReportDataItem> data;
+  public stMetaComment comment = null;
+  public ArrayList<stMetaReportDataItem> data = null;
   public String feed_id = "";
-  public int hadMancheked;
+  public int hadMancheked = 0;
   
   static
   {

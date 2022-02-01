@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.profilecard.vas.view;
 
 import android.widget.ImageView;
-import anvk;
-import azrb;
-import bhcs;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
 import mqq.os.MqqHandler;
 
 class VasProfileQVipDiyView$1
   implements Runnable
 {
-  VasProfileQVipDiyView$1(VasProfileQVipDiyView paramVasProfileQVipDiyView, azrb paramazrb, ImageView paramImageView, boolean paramBoolean) {}
+  VasProfileQVipDiyView$1(VasProfileQVipDiyView paramVasProfileQVipDiyView, ProfileCardInfo paramProfileCardInfo, ImageView paramImageView, boolean paramBoolean) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((anvk)VasProfileQVipDiyView.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_Azrb.a.a);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)VasProfileQVipDiyView.access$000(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.val$cardInfo.a.a);
     VasProfileQVipDiyView.1.1 local1 = new VasProfileQVipDiyView.1.1(this, localExtensionInfo);
     ThreadManager.getUIHandler().post(local1);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bhcs.b(localExtensionInfo.pendantId)))
+    if ((this.val$isInit) && (localExtensionInfo != null) && (AvatarPendantUtil.b(localExtensionInfo.pendantId)))
     {
-      VasProfileQVipDiyView.c(this.this$0).addObserver(VasProfileQVipDiyView.a(this.this$0));
-      bhcs.a(VasProfileQVipDiyView.d(this.this$0), this.jdField_a_of_type_Azrb.a.a);
+      VasProfileQVipDiyView.access$900(this.this$0).addObserver(VasProfileQVipDiyView.access$800(this.this$0));
+      AvatarPendantUtil.a(VasProfileQVipDiyView.access$1000(this.this$0), this.val$cardInfo.a.a);
     }
   }
 }

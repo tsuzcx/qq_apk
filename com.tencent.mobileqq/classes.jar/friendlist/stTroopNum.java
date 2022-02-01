@@ -7,48 +7,55 @@ import com.qq.taf.jce.JceStruct;
 public final class stTroopNum
   extends JceStruct
 {
-  public long GroupCode;
-  public long GroupUin;
-  public byte cFlag;
-  public byte cIsConfGroup;
-  public byte cIsModifyConfGroupFace;
-  public byte cIsModifyConfGroupName;
-  public long dwAdditionalFlag;
-  public long dwAppPrivilegeFlag;
-  public long dwAppealDeadline;
-  public long dwCertificationType;
-  public long dwCmdUinGroupMask;
-  public long dwCmdUinUinFlag;
-  public long dwCmduinJoinTime;
-  public long dwGroupClassExt;
-  public long dwGroupFlag;
-  public long dwGroupFlagExt;
-  public long dwGroupFlagExt3;
-  public long dwGroupFlagExt4;
-  public long dwGroupInfoSeq;
-  public long dwGroupOwnerUin;
-  public long dwGroupRankSeq;
-  public long dwGroupSecType;
-  public long dwGroupSecTypeInfo;
-  public long dwGroupTypeFlag;
-  public long dwMaxGroupMemberNum;
-  public long dwMemberCardSeq;
-  public long dwMemberNum;
-  public long dwMemberNumSeq;
-  public long dwMyShutupTimestamp;
-  public long dwShutupTimestamp;
-  public long dwSubscriptionUin;
+  static byte[] cache_vecGroupRemark = (byte[])new byte[1];
+  public long GroupCode = 0L;
+  public long GroupUin = 0L;
+  public byte cFlag = 0;
+  public byte cIsConfGroup = 0;
+  public byte cIsModifyConfGroupFace = 0;
+  public byte cIsModifyConfGroupName = 0;
+  public long dwAdditionalFlag = 0L;
+  public long dwAppPrivilegeFlag = 0L;
+  public long dwAppealDeadline = 0L;
+  public long dwCertificationType = 0L;
+  public long dwCmdUinGroupMask = 0L;
+  public long dwCmdUinUinFlag = 0L;
+  public long dwCmduinJoinTime = 0L;
+  public long dwGroupClassExt = 0L;
+  public long dwGroupFlag = 0L;
+  public long dwGroupFlagExt = 0L;
+  public long dwGroupFlagExt3 = 0L;
+  public long dwGroupFlagExt4 = 0L;
+  public long dwGroupInfoSeq = 0L;
+  public long dwGroupOwnerUin = 0L;
+  public long dwGroupRankSeq = 0L;
+  public long dwGroupSecType = 0L;
+  public long dwGroupSecTypeInfo = 0L;
+  public long dwGroupTypeFlag = 0L;
+  public long dwMaxGroupMemberNum = 0L;
+  public long dwMemberCardSeq = 0L;
+  public long dwMemberNum = 0L;
+  public long dwMemberNumSeq = 0L;
+  public long dwMyShutupTimestamp = 0L;
+  public long dwShutupTimestamp = 0L;
+  public long dwSubscriptionUin = 0L;
   public String strGroupMemo = "";
   public String strGroupName = "";
-  public long udwCmdUinFlagEx2;
-  public long udwCmdUinRingtoneID;
-  public long udwHLGuildAppid;
-  public long udwHLGuildSubType;
-  public long ulCompanyId;
+  public long udwCmdUinFlagEx2 = 0L;
+  public long udwCmdUinRingtoneID = 0L;
+  public long udwHLGuildAppid = 0L;
+  public long udwHLGuildSubType = 0L;
+  public long ulCompanyId = 0L;
+  public byte[] vecGroupRemark = null;
+  
+  static
+  {
+    ((byte[])cache_vecGroupRemark)[0] = 0;
+  }
   
   public stTroopNum() {}
   
-  public stTroopNum(long paramLong1, long paramLong2, byte paramByte1, long paramLong3, String paramString1, String paramString2, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, long paramLong15, long paramLong16, long paramLong17, long paramLong18, long paramLong19, long paramLong20, long paramLong21, byte paramByte2, byte paramByte3, byte paramByte4, long paramLong22, long paramLong23, long paramLong24, long paramLong25, long paramLong26, long paramLong27, long paramLong28, long paramLong29)
+  public stTroopNum(long paramLong1, long paramLong2, byte paramByte1, long paramLong3, String paramString1, String paramString2, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, long paramLong15, long paramLong16, long paramLong17, long paramLong18, long paramLong19, long paramLong20, long paramLong21, byte paramByte2, byte paramByte3, byte paramByte4, long paramLong22, long paramLong23, long paramLong24, long paramLong25, long paramLong26, long paramLong27, long paramLong28, long paramLong29, long paramLong30, long paramLong31, long paramLong32, byte[] paramArrayOfByte)
   {
     this.GroupUin = paramLong1;
     this.GroupCode = paramLong2;
@@ -85,9 +92,10 @@ public final class stTroopNum
     this.udwHLGuildSubType = paramLong27;
     this.udwCmdUinRingtoneID = paramLong28;
     this.udwCmdUinFlagEx2 = paramLong29;
-    this.dwGroupFlagExt4 = this.dwGroupFlagExt4;
-    this.dwAppealDeadline = this.dwAppealDeadline;
-    this.dwGroupFlag = this.dwGroupFlag;
+    this.dwGroupFlagExt4 = paramLong30;
+    this.dwAppealDeadline = paramLong31;
+    this.dwGroupFlag = paramLong32;
+    this.vecGroupRemark = paramArrayOfByte;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -130,6 +138,7 @@ public final class stTroopNum
     this.dwGroupFlagExt4 = paramJceInputStream.read(this.dwGroupFlagExt4, 35, false);
     this.dwAppealDeadline = paramJceInputStream.read(this.dwAppealDeadline, 36, false);
     this.dwGroupFlag = paramJceInputStream.read(this.dwGroupFlag, 37, false);
+    this.vecGroupRemark = ((byte[])paramJceInputStream.read(cache_vecGroupRemark, 38, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -176,11 +185,14 @@ public final class stTroopNum
     paramJceOutputStream.write(this.dwGroupFlagExt4, 35);
     paramJceOutputStream.write(this.dwAppealDeadline, 36);
     paramJceOutputStream.write(this.dwGroupFlag, 37);
+    if (this.vecGroupRemark != null) {
+      paramJceOutputStream.write(this.vecGroupRemark, 38);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.stTroopNum
  * JD-Core Version:    0.7.0.1
  */

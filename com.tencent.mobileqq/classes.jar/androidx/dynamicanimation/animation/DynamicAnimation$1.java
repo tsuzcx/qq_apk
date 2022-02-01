@@ -1,0 +1,28 @@
+package androidx.dynamicanimation.animation;
+
+import android.view.View;
+
+final class DynamicAnimation$1
+  extends DynamicAnimation.ViewProperty
+{
+  DynamicAnimation$1(String paramString)
+  {
+    super(paramString, null);
+  }
+  
+  public float a(View paramView)
+  {
+    return paramView.getTranslationX();
+  }
+  
+  public void a(View paramView, float paramFloat)
+  {
+    paramView.setTranslationX(paramFloat);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     androidx.dynamicanimation.animation.DynamicAnimation.1
+ * JD-Core Version:    0.7.0.1
+ */

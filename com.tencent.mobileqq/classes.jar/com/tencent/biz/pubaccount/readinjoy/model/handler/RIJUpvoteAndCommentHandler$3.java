@@ -1,5 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model.handler;
 
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJArticleInfoRepo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -12,16 +14,13 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import mqq.os.MqqHandler;
-import qep;
-import qga;
-import qjf;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 
-public class RIJUpvoteAndCommentHandler$3
+class RIJUpvoteAndCommentHandler$3
   implements Runnable
 {
-  public RIJUpvoteAndCommentHandler$3(qjf paramqjf, List paramList, ConcurrentHashMap paramConcurrentHashMap) {}
+  RIJUpvoteAndCommentHandler$3(RIJUpvoteAndCommentHandler paramRIJUpvoteAndCommentHandler, List paramList, ConcurrentHashMap paramConcurrentHashMap) {}
   
   public void run()
   {
@@ -43,9 +42,9 @@ public class RIJUpvoteAndCommentHandler$3
         for (;;)
         {
           localObject = this.this$0.a.a().c(0);
-          qjf.a(this.this$0, (ConcurrentMap)localObject, l, i, localArrayList2);
+          RIJUpvoteAndCommentHandler.a(this.this$0, (ConcurrentMap)localObject, l, i, localArrayList2);
           localObject = this.this$0.a.a().c(70);
-          qjf.b(this.this$0, (ConcurrentMap)localObject, l, i, localArrayList2);
+          RIJUpvoteAndCommentHandler.b(this.this$0, (ConcurrentMap)localObject, l, i, localArrayList2);
           break;
           QLog.d("RIJUpvoteAndCommentHandler", 1, "remove artileinfo cache is null while feedid = " + l + "feedtype" + i);
         }
@@ -58,7 +57,7 @@ public class RIJUpvoteAndCommentHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.handler.RIJUpvoteAndCommentHandler.3
  * JD-Core Version:    0.7.0.1
  */

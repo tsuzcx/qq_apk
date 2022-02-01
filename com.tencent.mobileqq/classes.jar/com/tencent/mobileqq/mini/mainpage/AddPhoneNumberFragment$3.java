@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AddPhoneNumberFragment$3
   implements View.OnClickListener
@@ -20,7 +19,6 @@ class AddPhoneNumberFragment$3
       AddPhoneNumberFragment.access$300(this.this$0).requestFocus();
       ((InputMethodManager)AddPhoneNumberFragment.access$300(this.this$0).getContext().getSystemService("input_method")).showSoftInput(AddPhoneNumberFragment.access$300(this.this$0), 0);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,19 +1,20 @@
 package com.tencent.widget;
 
 import android.widget.TextView;
-import bkzk;
 
-public class ActionSheet$2$1
+class ActionSheet$2$1
   implements Runnable
 {
+  ActionSheet$2$1(ActionSheet.2 param2, CharSequence paramCharSequence) {}
+  
   public void run()
   {
-    this.jdField_a_of_type_Bkzk.a.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    this.this$1.val$text.setText(this.val$newContent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ActionSheet.2.1
  * JD-Core Version:    0.7.0.1
  */

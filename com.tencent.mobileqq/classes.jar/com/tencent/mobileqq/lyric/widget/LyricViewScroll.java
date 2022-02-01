@@ -7,7 +7,6 @@ import android.view.MotionEvent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ScrollView;
 import android.widget.Scroller;
-import awqu;
 import java.util.Timer;
 
 public class LyricViewScroll
@@ -15,7 +14,7 @@ public class LyricViewScroll
 {
   protected volatile int a;
   protected Scroller a;
-  private awqu a;
+  private LyricViewScroll.LyricViewScrollListener a;
   protected Timer a;
   protected volatile boolean a;
   private volatile boolean b = true;
@@ -24,6 +23,7 @@ public class LyricViewScroll
   public LyricViewScroll(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new AccelerateDecelerateInterpolator());
   }
   
@@ -71,9 +71,9 @@ public class LyricViewScroll
         this.jdField_a_of_type_Boolean = false;
         continue;
         this.c = true;
-        if (this.jdField_a_of_type_Awqu != null)
+        if (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener != null)
         {
-          this.jdField_a_of_type_Awqu.a(getScrollY());
+          this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener.a(getScrollY());
           continue;
           Log.v("LyricViewScroll", "onTouchEvent -> ACTION_UP");
           if (!this.jdField_a_of_type_Boolean)
@@ -84,7 +84,7 @@ public class LyricViewScroll
             continue;
             Log.v("LyricViewScroll", "onTouchEvent -> ACTION_CANCEL");
             this.jdField_a_of_type_Int = getScrollY();
-            this.jdField_a_of_type_Awqu.b(this.jdField_a_of_type_Int);
+            this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener.b(this.jdField_a_of_type_Int);
             this.c = false;
             if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilTimer != null))
             {
@@ -128,9 +128,9 @@ public class LyricViewScroll
     this.b = paramBoolean;
   }
   
-  public void setScrollListener(awqu paramawqu)
+  public void setScrollListener(LyricViewScroll.LyricViewScrollListener paramLyricViewScrollListener)
   {
-    this.jdField_a_of_type_Awqu = paramawqu;
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener = paramLyricViewScrollListener;
   }
 }
 

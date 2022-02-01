@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import albs;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.activity.qwallet.utils.H5HbUtil;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.qphone.base.util.QLog;
 
 public class TenpayPlugin$QWalletPayJsPluginResultReceiver
   extends ResultReceiver
 {
   private AppInterface mApp;
-  protected NativePlugin.JSContext mJsPlugin;
+  protected JSContext mJsPlugin;
   
-  public TenpayPlugin$QWalletPayJsPluginResultReceiver(NativePlugin.JSContext paramJSContext, Handler paramHandler, AppInterface paramAppInterface)
+  public TenpayPlugin$QWalletPayJsPluginResultReceiver(JSContext paramJSContext, Handler paramHandler, AppInterface paramAppInterface)
   {
     super(paramHandler);
     this.mJsPlugin = paramJSContext;
@@ -31,7 +31,7 @@ public class TenpayPlugin$QWalletPayJsPluginResultReceiver
     do
     {
       return;
-      paramBundle = albs.a(paramInt, paramBundle, this.mJsPlugin.getActivity());
+      paramBundle = H5HbUtil.a(paramInt, paramBundle, this.mJsPlugin.getActivity());
     } while (paramBundle == null);
     this.mJsPlugin.evaluateCallback(true, paramBundle, "");
   }

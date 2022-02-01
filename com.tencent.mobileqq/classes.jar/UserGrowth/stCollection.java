@@ -9,15 +9,17 @@ public final class stCollection
 {
   static stSchema cache_schema = new stSchema();
   public String cid = "";
-  public int click_action;
+  public int click_action = 0;
+  public String cover = "";
   public String desc = "";
-  public int feed_count;
+  public int feed_count = 0;
   public String name = "";
-  public stSchema schema;
+  public stSchema schema = null;
+  public String subTitle = "";
   
   public stCollection() {}
   
-  public stCollection(String paramString1, String paramString2, String paramString3, int paramInt1, stSchema paramstSchema, int paramInt2)
+  public stCollection(String paramString1, String paramString2, String paramString3, int paramInt1, stSchema paramstSchema, int paramInt2, String paramString4, String paramString5)
   {
     this.cid = paramString1;
     this.name = paramString2;
@@ -25,6 +27,8 @@ public final class stCollection
     this.click_action = paramInt1;
     this.schema = paramstSchema;
     this.feed_count = paramInt2;
+    this.cover = paramString4;
+    this.subTitle = paramString5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -35,6 +39,8 @@ public final class stCollection
     this.click_action = paramJceInputStream.read(this.click_action, 3, false);
     this.schema = ((stSchema)paramJceInputStream.read(cache_schema, 4, false));
     this.feed_count = paramJceInputStream.read(this.feed_count, 5, false);
+    this.cover = paramJceInputStream.readString(6, false);
+    this.subTitle = paramJceInputStream.readString(7, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -53,6 +59,12 @@ public final class stCollection
       paramJceOutputStream.write(this.schema, 4);
     }
     paramJceOutputStream.write(this.feed_count, 5);
+    if (this.cover != null) {
+      paramJceOutputStream.write(this.cover, 6);
+    }
+    if (this.subTitle != null) {
+      paramJceOutputStream.write(this.subTitle, 7);
+    }
   }
 }
 

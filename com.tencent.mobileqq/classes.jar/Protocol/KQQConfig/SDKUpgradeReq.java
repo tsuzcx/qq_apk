@@ -10,14 +10,14 @@ public final class SDKUpgradeReq
 {
   static ArrayList<Integer> cache_vAppid;
   static ArrayList<String> cache_vUin;
-  public byte bJailbreak;
+  public byte bJailbreak = 0;
   public boolean bSdkUpdateFlag = true;
-  public byte cProtocolVer;
-  public int iActionType;
-  public int iHeight;
-  public int iWidth;
-  public ArrayList<Integer> vAppid;
-  public ArrayList<String> vUin;
+  public byte cProtocolVer = 0;
+  public int iActionType = 0;
+  public int iHeight = 0;
+  public int iWidth = 0;
+  public ArrayList<Integer> vAppid = null;
+  public ArrayList<String> vUin = null;
   
   public SDKUpgradeReq() {}
   
@@ -71,7 +71,7 @@ public final class SDKUpgradeReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     protocol.KQQConfig.SDKUpgradeReq
  * JD-Core Version:    0.7.0.1
  */

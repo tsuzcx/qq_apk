@@ -1,8 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import pvm;
-import qfw;
-import rfw;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 
 class ComponentLastRead$2
   implements Runnable
@@ -12,17 +11,17 @@ class ComponentLastRead$2
   public void run()
   {
     if (this.this$0.a.a.i()) {
-      pvm.a().a(this.this$0);
+      ReadInJoyLogicEngineEventDispatcher.a().a(this.this$0);
     }
     while (this.this$0.a.a.e() != 0) {
       return;
     }
-    pvm.a().a(this.this$0);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead.2
  * JD-Core Version:    0.7.0.1
  */

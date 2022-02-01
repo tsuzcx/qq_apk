@@ -8,16 +8,20 @@ import com.tencent.biz.qcircleshadow.lib.delegate.IPluginInfoDelegate;
 import com.tencent.biz.qcircleshadow.lib.delegate.IToastDelegate;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class QCircleInitInject
 {
   private static QCircleInitInject mInstance;
   private IApplicationDelegate mApp;
+  private final HashMap<String, Class> mDelegateClassSet = new HashMap();
   private IDaTongReportDelegate mIDaTongReportDelegate;
   private IToastDelegate mIToastDelegate;
+  private List<WeakReference<ILoadPluginDelegate>> mList = new ArrayList();
   private ILogDelegate mLogDelegate;
-  private List<WeakReference<ILoadPluginDelegate>> mPluginCallbacks = new ArrayList();
+  private List<WeakReference<ILoadPluginDelegate>> mPluginCallbacks = Collections.synchronizedList(this.mList);
   private IPluginInfoDelegate mPluginInfoDelegate;
   
   public static QCircleInitInject g()
@@ -103,7 +107,7 @@ public class QCircleInitInject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleInitInject
  * JD-Core Version:    0.7.0.1
  */

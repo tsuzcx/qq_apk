@@ -1,6 +1,8 @@
 package cooperation.qqcircle.picload.avatar;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.qcircle.tempapi.avatar.IAvatarListener;
+import com.tencent.mobileqq.qcircle.tempapi.avatar.QCircleAvatarInfo;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,7 +16,7 @@ class QCircleAvatarLoader$QCircleAvatarCheckTask$1
   {
     if (paramBoolean)
     {
-      QLog.d("QCircleAvatar", 1, "seq = " + QCircleAvatarLoader.QCircleAvatarCheckTask.access$300(this.this$1).getSeq() + "  from server success, info:" + paramQCircleAvatarInfo.toString());
+      RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + QCircleAvatarLoader.QCircleAvatarCheckTask.access$300(this.this$1).getSeq() + "  from server success, info:" + paramQCircleAvatarInfo.toString());
       QCircleAvatarLoader.QCircleAvatarCheckTask.access$400(this.this$1, paramQCircleAvatarInfo);
       QCircleAvatarLoader.QCircleAvatarCheckTask.access$500(this.this$1, this.val$option, paramQCircleAvatarInfo);
       if (QCircleAvatarLoader.access$200(this.this$1.this$0).containsKey(this.val$option.getUin()))
@@ -30,16 +32,16 @@ class QCircleAvatarLoader$QCircleAvatarCheckTask$1
     }
     else
     {
-      QLog.d("QCircleAvatar", 1, "seq = " + QCircleAvatarLoader.QCircleAvatarCheckTask.access$300(this.this$1).getSeq() + "  from server failed, retCode:" + paramInt);
+      RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + QCircleAvatarLoader.QCircleAvatarCheckTask.access$300(this.this$1).getSeq() + "  from server failed, retCode:" + paramInt);
       QCircleAvatarLoader.QCircleAvatarCheckTask.access$600(this.this$1, this.val$option.getUin(), this.val$option);
     }
-    QLog.d("QCircleAvatar", 1, "seq = " + QCircleAvatarLoader.QCircleAvatarCheckTask.access$300(this.this$1).getSeq() + "  request cost times:" + (System.currentTimeMillis() - this.val$option.mStartTime.longValue()));
+    RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + QCircleAvatarLoader.QCircleAvatarCheckTask.access$300(this.this$1).getSeq() + "  request cost times:" + (System.currentTimeMillis() - this.val$option.mStartTime.longValue()));
     QCircleAvatarLoader.access$100(this.this$1.this$0).remove(this.val$option.getUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.picload.avatar.QCircleAvatarLoader.QCircleAvatarCheckTask.1
  * JD-Core Version:    0.7.0.1
  */

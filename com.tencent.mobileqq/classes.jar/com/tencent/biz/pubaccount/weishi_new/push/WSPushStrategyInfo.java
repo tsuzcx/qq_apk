@@ -3,14 +3,12 @@ package com.tencent.biz.pubaccount.weishi_new.push;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import viv;
-import vja;
 
 public class WSPushStrategyInfo
-  extends viv
+  extends WSBaseStrategyInfo
   implements IWSPushStrategy
 {
-  public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new vja();
+  public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new WSPushStrategyInfo.1();
   public String mScheme;
   public WSPushGloryKingModel mWSPushGloryKingModel;
   public WSPushOpModel mWSPushModel;
@@ -18,7 +16,7 @@ public class WSPushStrategyInfo
   public WSPushPreloadModel mWSPushPreloadModel;
   public WSPushVideoModel mWSPushVideoModel;
   
-  public WSPushStrategyInfo(Parcel paramParcel)
+  protected WSPushStrategyInfo(Parcel paramParcel)
   {
     super(paramParcel);
     this.mScheme = paramParcel.readString();
@@ -61,7 +59,7 @@ public class WSPushStrategyInfo
     return this.mType;
   }
   
-  public void parseJson(JSONObject paramJSONObject)
+  protected void parseJson(JSONObject paramJSONObject)
   {
     super.parseJson(paramJSONObject);
     this.mScheme = paramJSONObject.optString("scheme");
@@ -89,7 +87,7 @@ public class WSPushStrategyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo
  * JD-Core Version:    0.7.0.1
  */

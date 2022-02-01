@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.theme.diy;
 
-import awzc;
-import beik;
-import beiw;
+import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.mobileqq.vas.theme.api.ThemeLocator;
 import org.json.JSONObject;
 
 class ThemeDiyModule$1
-  implements awzc<beik>
+  implements QueryCallback<ThemeLocator>
 {
   ThemeDiyModule$1(ThemeDiyModule paramThemeDiyModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(beik parambeik)
+  public void postQuery(ThemeLocator paramThemeLocator)
   {
-    if ((parambeik != null) && (parambeik.b())) {
+    if ((paramThemeLocator != null) && (paramThemeLocator.b())) {
       if (ThemeDiyModule.access$000(this.this$0) != null) {
         ThemeDiyModule.access$000(this.this$0).diyThemeSetup(this.val$styleObj, this.val$callbackId);
       }

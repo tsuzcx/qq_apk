@@ -5,9 +5,9 @@ import android.text.TextUtils;
 import com.tencent.superplayer.api.ISPBandwidthPredictor;
 import com.tencent.superplayer.api.ISPBufferRangeController;
 import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.utils.CommonUtil;
 import com.tencent.superplayer.utils.LogUtil;
 import com.tencent.superplayer.utils.ThreadUtil;
-import com.tencent.superplayer.utils.Utils;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -166,12 +166,12 @@ public class SPBufferRangeController
   
   public void setupBufferRange(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong)
   {
-    ThreadUtil.runOnUiThread(new SPBufferRangeController.1(this, paramISuperPlayer, computeBufferange(paramInt, paramLong), Utils.parseStr2Int((String)this.configMap.get("emergency_time_for_preplay"), 3)));
+    ThreadUtil.runOnUiThread(new SPBufferRangeController.1(this, paramISuperPlayer, computeBufferange(paramInt, paramLong), CommonUtil.a((String)this.configMap.get("emergency_time_for_preplay"), 3)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.SPBufferRangeController
  * JD-Core Version:    0.7.0.1
  */

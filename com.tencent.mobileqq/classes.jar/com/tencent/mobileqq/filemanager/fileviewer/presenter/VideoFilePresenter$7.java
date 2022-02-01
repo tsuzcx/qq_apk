@@ -2,25 +2,24 @@ package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.os.Handler;
 import android.os.PowerManager.WakeLock;
-import atxa;
-import auaa;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
 import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VideoFilePresenter$7
+class VideoFilePresenter$7
   implements Runnable
 {
-  public VideoFilePresenter$7(auaa paramauaa) {}
+  VideoFilePresenter$7(VideoFilePresenter paramVideoFilePresenter) {}
   
   public void run()
   {
     int i;
-    if (auaa.a(this.this$0) != null)
+    if (VideoFilePresenter.a(this.this$0) != null)
     {
       i = 1;
-      if (auaa.a(this.this$0) != null) {
+      if (VideoFilePresenter.a(this.this$0) != null) {
         break label63;
       }
       if (i == 0) {
@@ -37,29 +36,29 @@ public class VideoFilePresenter$7
         return;
         i = 0;
         break;
-      } while (this.this$0.jdField_a_of_type_Atxa.d() != 1);
+      } while (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d() != 1);
       QLog.e("FileBrowserPresenter<FileAssistant>", 1, "playVideo online video, but mediaplay null!");
       return;
-      auaa.a(this.this$0).acquire();
+      VideoFilePresenter.a(this.this$0).acquire();
       this.this$0.c();
-      if (auaa.a(this.this$0))
+      if (VideoFilePresenter.a(this.this$0))
       {
-        auaa.b(this.this$0, false);
-        auaa.a(this.this$0).removeCallbacks(this.this$0.jdField_a_of_type_JavaLangRunnable);
+        VideoFilePresenter.b(this.this$0, false);
+        VideoFilePresenter.a(this.this$0).removeCallbacks(this.this$0.jdField_a_of_type_JavaLangRunnable);
         new HashMap().put("shouq_bus_type", "bus_type_video_file");
       }
-      auaa.a(this.this$0).play();
+      VideoFilePresenter.a(this.this$0).play();
       if (i != 0) {
-        auaa.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 1000L);
+        VideoFilePresenter.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 1000L);
       }
-      auaa.e(this.this$0);
+      VideoFilePresenter.e(this.this$0);
     } while ((i == 0) || (!QLog.isDevelopLevel()));
-    QLog.d("#@#@", 1, "userPos[" + auaa.a(this.this$0) + "]");
+    QLog.d("#@#@", 1, "userPos[" + VideoFilePresenter.a(this.this$0) + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.7
  * JD-Core Version:    0.7.0.1
  */

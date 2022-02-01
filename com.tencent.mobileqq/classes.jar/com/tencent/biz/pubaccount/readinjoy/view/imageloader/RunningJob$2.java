@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 
-import tls;
-
 class RunningJob$2
   implements Runnable
 {
-  RunningJob$2(RunningJob paramRunningJob, tls paramtls) {}
+  RunningJob$2(RunningJob paramRunningJob, CloseableBitmap paramCloseableBitmap) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ class RunningJob$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob.2
  * JD-Core Version:    0.7.0.1
  */

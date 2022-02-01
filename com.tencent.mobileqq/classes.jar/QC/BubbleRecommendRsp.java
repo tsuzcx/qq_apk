@@ -10,8 +10,8 @@ public final class BubbleRecommendRsp
 {
   static CommonRsp cache_stRet = new CommonRsp();
   static ArrayList<BubbleInfo> cache_vItems = new ArrayList();
-  public CommonRsp stRet;
-  public ArrayList<BubbleInfo> vItems;
+  public CommonRsp stRet = null;
+  public ArrayList<BubbleInfo> vItems = null;
   
   static
   {

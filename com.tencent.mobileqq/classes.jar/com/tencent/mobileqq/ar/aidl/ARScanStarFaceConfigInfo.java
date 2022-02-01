@@ -4,9 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Xml;
-import aphx;
-import aqcn;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.armap.ArMapUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -17,7 +16,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARScanStarFaceConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new aphx();
+  public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new ARScanStarFaceConfigInfo.1();
   static boolean a;
   static String b;
   public String a;
@@ -26,11 +25,12 @@ public class ARScanStarFaceConfigInfo
   static
   {
     jdField_b_of_type_JavaLangString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n<!--扫明星脸活动-->\n<ScanStarConfig>\n\t<!--普通人脸描述wording-->\n\t<normalFaceDescription>发现一个很酷的人，去扫明星有惊喜！</normalFaceDescription>\n\t<Activity>\n\t\t<actID>11</actID>\n\t\t<starName>杨洋</starName>\n\t\t<starUin>12345</starUin>\n\t\t<!--活动标题-->\n\t\t<actTitle>杨洋代言空间</actTitle>\n\t\t<!--活动描述wording-->\n\t\t<actDescription>杨洋活动简介</actDescription>\n\t\t<!--活动跳转Web的地址-->\n\t\t<starWebUrl>https://qq.com/starweburl.html</starWebUrl>\n\t\t<!--广告图片url-->\n\t\t<adImgUrl>https://qq.com/adimgurl.html</adImgUrl>\n\t\t<!--活动开始时间-->\n\t\t<beginTime>2017-05-07 00:00</beginTime>\n\t\t<!--活动结束时间-->\n\t\t<endTime>2017-07-31 23:59</endTime>\n\t</Activity>\n\t\n\t<Activity>\n\t\t<actID>12</actID>\n\t\t<starName>杨颖</starName>\n\t\t<starUin>12346</starUin>\n\t\t<!--活动标题-->\n\t\t<actTitle>杨颖代言XX</actTitle>\n\t\t<!--活动描述wording-->\n\t\t<actDescription>杨颖活动简介</actDescription>\n\t\t<!--活动跳转Web的地址-->\n\t\t<starWebUrl>https://qq.com/starweburl2.html</starWebUrl>\n\t\t<!--广告图片url-->\n\t\t<adImgUrl>https://qq.com/adimgurl2.html</adImgUrl>\n\t\t<!--活动开始时间-->\n\t\t<beginTime>2017-06-07 00:00</beginTime>\n\t\t<!--活动结束时间-->\n\t\t<endTime>2017-08-31 23:59</endTime>\n\t</Activity>\n</ScanStarConfig>\n\n\n\n\n";
+    jdField_a_of_type_Boolean = false;
   }
   
   public ARScanStarFaceConfigInfo() {}
   
-  public ARScanStarFaceConfigInfo(Parcel paramParcel)
+  protected ARScanStarFaceConfigInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_ArrayOfComTencentMobileqqArAidlARScanStarFaceActInfo = ((ARScanStarFaceActInfo[])paramParcel.createTypedArray(ARScanStarFaceActInfo.CREATOR));
@@ -55,24 +55,24 @@ public class ARScanStarFaceConfigInfo
     //   1: astore 6
     //   3: aconst_null
     //   4: astore_3
-    //   5: invokestatic 55	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   8: ifeq +37 -> 45
-    //   11: ldc 57
+    //   11: ldc 59
     //   13: iconst_2
-    //   14: new 59	java/lang/StringBuilder
+    //   14: new 61	java/lang/StringBuilder
     //   17: dup
-    //   18: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   21: ldc 99
-    //   23: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   21: ldc 101
+    //   23: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: aload_0
-    //   27: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: ldc 101
-    //   32: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: ldc 103
+    //   32: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload_1
-    //   36: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   45: getstatic 103	com/tencent/mobileqq/ar/aidl/ARScanStarFaceConfigInfo:jdField_a_of_type_Boolean	Z
+    //   36: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   45: getstatic 29	com/tencent/mobileqq/ar/aidl/ARScanStarFaceConfigInfo:jdField_a_of_type_Boolean	Z
     //   48: ifeq +12 -> 60
     //   51: getstatic 27	com/tencent/mobileqq/ar/aidl/ARScanStarFaceConfigInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   54: invokestatic 105	com/tencent/mobileqq/ar/aidl/ARScanStarFaceConfigInfo:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/ar/aidl/ARScanStarFaceConfigInfo;
@@ -99,7 +99,7 @@ public class ARScanStarFaceConfigInfo
     //   86: ldc 107
     //   88: invokevirtual 113	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   91: ifne -33 -> 58
-    //   94: new 85	java/io/File
+    //   94: new 87	java/io/File
     //   97: dup
     //   98: aload_0
     //   99: aload_1
@@ -163,19 +163,19 @@ public class ARScanStarFaceConfigInfo
     //   201: astore_1
     //   202: aload_1
     //   203: astore_2
-    //   204: invokestatic 55	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   204: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   207: ifeq -149 -> 58
-    //   210: ldc 57
+    //   210: ldc 59
     //   212: iconst_2
-    //   213: new 59	java/lang/StringBuilder
+    //   213: new 61	java/lang/StringBuilder
     //   216: dup
-    //   217: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   217: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   220: ldc 148
-    //   222: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   225: aload_1
     //   226: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   229: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   232: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   229: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   232: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   235: aload_1
     //   236: areturn
     //   237: astore_1
@@ -204,22 +204,22 @@ public class ARScanStarFaceConfigInfo
     //   272: astore_2
     //   273: aload_0
     //   274: astore_1
-    //   275: invokestatic 55	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   275: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   278: ifeq +33 -> 311
     //   281: aload_3
     //   282: astore_2
     //   283: aload_0
     //   284: astore_1
-    //   285: ldc 57
+    //   285: ldc 59
     //   287: iconst_2
-    //   288: new 59	java/lang/StringBuilder
+    //   288: new 61	java/lang/StringBuilder
     //   291: dup
-    //   292: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   292: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   295: ldc 159
-    //   297: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   300: aload 4
     //   302: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   305: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   305: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   308: invokestatic 162	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   311: aload_0
     //   312: ifnull +7 -> 319
@@ -370,23 +370,23 @@ public class ARScanStarFaceConfigInfo
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: invokestatic 55	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   6: ifeq +37 -> 43
-    //   9: ldc 57
+    //   9: ldc 59
     //   11: iconst_2
-    //   12: new 59	java/lang/StringBuilder
+    //   12: new 61	java/lang/StringBuilder
     //   15: dup
-    //   16: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   16: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   19: ldc 179
-    //   21: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   24: aload_1
-    //   25: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: ldc 101
-    //   30: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: ldc 103
+    //   30: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: aload_2
-    //   34: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   34: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   43: aload_0
     //   44: ifnull +29 -> 73
     //   47: aload_1
@@ -405,23 +405,23 @@ public class ARScanStarFaceConfigInfo
     //   74: istore_3
     //   75: iload_3
     //   76: ireturn
-    //   77: new 85	java/io/File
+    //   77: new 87	java/io/File
     //   80: dup
     //   81: aload_1
     //   82: aload_2
     //   83: invokespecial 116	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   86: astore 6
-    //   88: new 85	java/io/File
+    //   88: new 87	java/io/File
     //   91: dup
     //   92: aload_1
-    //   93: new 59	java/lang/StringBuilder
+    //   93: new 61	java/lang/StringBuilder
     //   96: dup
-    //   97: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   97: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   100: aload_2
-    //   101: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: ldc 181
-    //   106: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   106: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   112: invokespecial 116	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   115: astore 7
     //   117: iconst_0
@@ -463,18 +463,18 @@ public class ARScanStarFaceConfigInfo
     //   185: invokevirtual 206	java/io/BufferedOutputStream:flush	()V
     //   188: aload 7
     //   190: aload 6
-    //   192: invokestatic 212	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   192: invokestatic 211	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
     //   195: istore 4
     //   197: aload_1
     //   198: ifnull +7 -> 205
     //   201: aload_1
-    //   202: invokevirtual 213	java/io/BufferedOutputStream:close	()V
+    //   202: invokevirtual 212	java/io/BufferedOutputStream:close	()V
     //   205: iload 4
     //   207: istore_3
     //   208: aload_2
     //   209: ifnull -134 -> 75
     //   212: aload_2
-    //   213: invokevirtual 214	java/io/FileOutputStream:close	()V
+    //   213: invokevirtual 213	java/io/FileOutputStream:close	()V
     //   216: iload 4
     //   218: ireturn
     //   219: astore_0
@@ -484,7 +484,7 @@ public class ARScanStarFaceConfigInfo
     //   226: ireturn
     //   227: astore_0
     //   228: aload_0
-    //   229: invokevirtual 215	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   229: invokevirtual 214	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   232: aload_1
     //   233: astore_0
     //   234: goto -106 -> 128
@@ -502,11 +502,11 @@ public class ARScanStarFaceConfigInfo
     //   255: aload_1
     //   256: ifnull +7 -> 263
     //   259: aload_1
-    //   260: invokevirtual 213	java/io/BufferedOutputStream:close	()V
+    //   260: invokevirtual 212	java/io/BufferedOutputStream:close	()V
     //   263: aload_0
     //   264: ifnull +7 -> 271
     //   267: aload_0
-    //   268: invokevirtual 214	java/io/FileOutputStream:close	()V
+    //   268: invokevirtual 213	java/io/FileOutputStream:close	()V
     //   271: iconst_0
     //   272: ireturn
     //   273: astore_1
@@ -525,11 +525,11 @@ public class ARScanStarFaceConfigInfo
     //   294: aload_1
     //   295: ifnull +7 -> 302
     //   298: aload_1
-    //   299: invokevirtual 213	java/io/BufferedOutputStream:close	()V
+    //   299: invokevirtual 212	java/io/BufferedOutputStream:close	()V
     //   302: aload_2
     //   303: ifnull +7 -> 310
     //   306: aload_2
-    //   307: invokevirtual 214	java/io/FileOutputStream:close	()V
+    //   307: invokevirtual 213	java/io/FileOutputStream:close	()V
     //   310: aload_0
     //   311: athrow
     //   312: astore_1
@@ -656,9 +656,9 @@ public class ARScanStarFaceConfigInfo
             } else if (localNumberFormatException.equalsIgnoreCase("adImgUrl")) {
               ((ARScanStarFaceActInfo)localObject).f = localException.nextText();
             } else if (localNumberFormatException.equalsIgnoreCase("beginTime")) {
-              ((ARScanStarFaceActInfo)localObject).jdField_a_of_type_Long = aqcn.a(localException.nextText());
+              ((ARScanStarFaceActInfo)localObject).jdField_a_of_type_Long = ArMapUtil.a(localException.nextText());
             } else if (localNumberFormatException.equalsIgnoreCase("endTime")) {
-              ((ARScanStarFaceActInfo)localObject).jdField_b_of_type_Long = aqcn.a(localException.nextText());
+              ((ARScanStarFaceActInfo)localObject).jdField_b_of_type_Long = ArMapUtil.a(localException.nextText());
             }
           }
           else if ((i == 3) && (localException.getName().equalsIgnoreCase("Activity")))

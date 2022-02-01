@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import anjv;
 import com.tencent.qphone.base.util.QLog;
 
-public final class ApolloConfigDataReport$4
+final class ApolloConfigDataReport$4
   implements Runnable
 {
   public void run()
@@ -11,12 +10,12 @@ public final class ApolloConfigDataReport$4
     if (QLog.isColorLevel()) {
       QLog.d("ApolloConfigDataReport", 2, "interceptReport other app init opNameSet");
     }
-    anjv.c(anjv.a(anjv.a()));
+    ApolloConfigDataReport.c(ApolloConfigDataReport.a(ApolloConfigDataReport.a()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.4
  * JD-Core Version:    0.7.0.1
  */

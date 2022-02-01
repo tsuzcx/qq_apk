@@ -1,20 +1,45 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import ucq;
+import android.support.v4.app.Fragment;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.viola.core.ViolaInstance;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ViolaBaseView$14
-  implements Runnable
+  implements View.OnLayoutChangeListener
 {
-  ViolaBaseView$14(ViolaBaseView paramViolaBaseView, int paramInt) {}
+  ViolaBaseView$14(ViolaBaseView paramViolaBaseView) {}
   
-  public void run()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    ViolaBaseView.a(this.this$0).b(this.a);
+    if (ViolaBaseView.a(this.a) != null) {
+      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
+    }
+    if ((ViolaBaseView.a(this.a) != null) && (ViolaBaseView.a(this.a).getActivity() != null) && (this.a.a.contains("v_check_nav=1"))) {
+      paramView = new JSONObject();
+    }
+    try
+    {
+      paramView.put("navigationBarHeight", ViewUtils.c(CommonSuspensionGestureLayout.a(ViolaBaseView.a(this.a).getActivity())));
+      ViolaBaseView.a(this.a).updateInstance(paramView.toString());
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.14
  * JD-Core Version:    0.7.0.1
  */

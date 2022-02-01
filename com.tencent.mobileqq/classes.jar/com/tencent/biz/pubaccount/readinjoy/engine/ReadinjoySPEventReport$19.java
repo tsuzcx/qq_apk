@@ -1,17 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import uuc;
 
-public final class ReadinjoySPEventReport$19
+final class ReadinjoySPEventReport$19
   implements Runnable
 {
-  public ReadinjoySPEventReport$19(int paramInt1, Map paramMap, int paramInt2) {}
+  ReadinjoySPEventReport$19(int paramInt1, Map paramMap, int paramInt2) {}
   
   public void run()
   {
@@ -27,7 +28,7 @@ public final class ReadinjoySPEventReport$19
       localAttributeList.att_id.set(2);
       localAttributeList.att_name.set("subscribe_folderstatus");
       if (!this.jdField_a_of_type_JavaUtilMap.containsKey("folder_status")) {
-        break label385;
+        break label395;
       }
       localAttributeList.att_value.set((String)this.jdField_a_of_type_JavaUtilMap.get("folder_status"));
     }
@@ -57,16 +58,16 @@ public final class ReadinjoySPEventReport$19
         localAttributeList.att_value.set(this.b + "");
         localArrayList.add(localAttributeList);
       }
-      uuc.a(70, localArrayList);
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPushEffectEvent(70, localArrayList);
       return;
-      label385:
+      label395:
       localAttributeList.att_value.set("1");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.19
  * JD-Core Version:    0.7.0.1
  */

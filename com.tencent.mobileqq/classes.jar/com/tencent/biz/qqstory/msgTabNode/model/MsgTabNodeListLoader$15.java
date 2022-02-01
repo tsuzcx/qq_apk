@@ -1,12 +1,11 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import wcx;
-import wmd;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.StoryVideoPublishStatusEvent;
 
-public class MsgTabNodeListLoader$15
+class MsgTabNodeListLoader$15
   implements Runnable
 {
-  public MsgTabNodeListLoader$15(wmd paramwmd, wcx paramwcx) {}
+  MsgTabNodeListLoader$15(MsgTabNodeListLoader paramMsgTabNodeListLoader, StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class MsgTabNodeListLoader$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.15
  * JD-Core Version:    0.7.0.1
  */

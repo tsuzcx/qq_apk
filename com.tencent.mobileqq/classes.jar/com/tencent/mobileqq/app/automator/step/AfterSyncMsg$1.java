@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bdgy;
+import com.tencent.qqperf.opt.suspendthread.DeviceOptSwitch;
 
 class AfterSyncMsg$1
   implements Runnable

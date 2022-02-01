@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import bczl;
-import bdbf;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Support;
 
-public class CameraProxy$1
+class CameraProxy$1
   implements Runnable
 {
-  public CameraProxy$1(bdbf parambdbf) {}
+  CameraProxy$1(CameraProxy paramCameraProxy) {}
   
   public void run() {}
 }

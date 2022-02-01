@@ -275,13 +275,13 @@ public class QzoneSoundPlayerHelper
     //   17: invokespecial 49	android/media/MediaPlayer:<init>	()V
     //   20: putfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
     //   23: aconst_null
-    //   24: astore 7
+    //   24: astore 6
     //   26: aconst_null
     //   27: astore 8
     //   29: aconst_null
     //   30: astore 9
     //   32: aconst_null
-    //   33: astore 6
+    //   33: astore 7
     //   35: aload 9
     //   37: astore 5
     //   39: aload_0
@@ -377,7 +377,7 @@ public class QzoneSoundPlayerHelper
     //   199: istore_3
     //   200: goto -108 -> 92
     //   203: astore_2
-    //   204: aload 6
+    //   204: aload 7
     //   206: astore_1
     //   207: aload_1
     //   208: astore 5
@@ -397,7 +397,7 @@ public class QzoneSoundPlayerHelper
     //   234: istore_3
     //   235: goto -143 -> 92
     //   238: astore_2
-    //   239: aload 7
+    //   239: aload 6
     //   241: astore_1
     //   242: aload_1
     //   243: astore 5
@@ -438,46 +438,46 @@ public class QzoneSoundPlayerHelper
     //   305: goto -213 -> 92
     //   308: astore_1
     //   309: aload 5
-    //   311: astore_2
-    //   312: aload_2
-    //   313: ifnull +7 -> 320
-    //   316: aload_2
-    //   317: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   320: aload_1
-    //   321: athrow
-    //   322: astore_1
-    //   323: iload 4
-    //   325: istore_3
-    //   326: goto -234 -> 92
-    //   329: astore_1
-    //   330: goto -167 -> 163
-    //   333: astore_2
-    //   334: goto -14 -> 320
-    //   337: astore_1
-    //   338: goto -26 -> 312
-    //   341: astore_2
-    //   342: goto -65 -> 277
-    //   345: astore_2
-    //   346: goto -104 -> 242
-    //   349: astore_2
-    //   350: goto -143 -> 207
-    //   353: astore 5
-    //   355: goto -183 -> 172
+    //   311: ifnull +8 -> 319
+    //   314: aload 5
+    //   316: invokevirtual 102	java/io/FileInputStream:close	()V
+    //   319: aload_1
+    //   320: athrow
+    //   321: astore_1
+    //   322: iload 4
+    //   324: istore_3
+    //   325: goto -233 -> 92
+    //   328: astore_1
+    //   329: goto -166 -> 163
+    //   332: astore_2
+    //   333: goto -14 -> 319
+    //   336: astore_1
+    //   337: aload_2
+    //   338: astore 5
+    //   340: goto -31 -> 309
+    //   343: astore_2
+    //   344: goto -67 -> 277
+    //   347: astore_2
+    //   348: goto -106 -> 242
+    //   351: astore_2
+    //   352: goto -145 -> 207
+    //   355: astore 5
+    //   357: goto -185 -> 172
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	358	0	this	QzoneSoundPlayerHelper
-    //   0	358	1	paramContext	Context
-    //   0	358	2	paramString	java.lang.String
-    //   72	254	3	bool1	boolean
-    //   1	323	4	bool2	boolean
+    //   0	360	0	this	QzoneSoundPlayerHelper
+    //   0	360	1	paramContext	Context
+    //   0	360	2	paramString	java.lang.String
+    //   72	253	3	bool1	boolean
+    //   1	322	4	bool2	boolean
     //   37	77	5	localObject1	Object
     //   168	7	5	localIllegalStateException1	IllegalStateException
-    //   208	102	5	localContext	Context
-    //   353	1	5	localIllegalStateException2	IllegalStateException
-    //   33	172	6	localObject2	Object
-    //   24	216	7	localObject3	Object
-    //   27	248	8	localObject4	Object
-    //   30	82	9	localObject5	Object
+    //   208	131	5	localObject2	Object
+    //   355	1	5	localIllegalStateException2	IllegalStateException
+    //   24	216	6	localObject3	Object
+    //   33	172	7	localObject4	Object
+    //   27	248	8	localObject5	Object
+    //   30	82	9	localObject6	Object
     // Exception table:
     //   from	to	target	type
     //   5	23	106	finally
@@ -488,8 +488,8 @@ public class QzoneSoundPlayerHelper
     //   221	225	106	finally
     //   256	260	106	finally
     //   291	295	106	finally
-    //   316	320	106	finally
-    //   320	322	106	finally
+    //   314	319	106	finally
+    //   319	321	106	finally
     //   39	47	168	java/lang/IllegalStateException
     //   51	64	168	java/lang/IllegalStateException
     //   68	73	168	java/lang/IllegalStateException
@@ -517,25 +517,25 @@ public class QzoneSoundPlayerHelper
     //   210	214	308	finally
     //   245	249	308	finally
     //   280	284	308	finally
-    //   84	92	322	java/io/IOException
-    //   159	163	329	java/io/IOException
-    //   316	320	333	java/io/IOException
-    //   129	140	337	finally
-    //   142	149	337	finally
-    //   151	155	337	finally
-    //   174	179	337	finally
-    //   129	140	341	java/lang/SecurityException
-    //   142	149	341	java/lang/SecurityException
-    //   151	155	341	java/lang/SecurityException
-    //   129	140	345	java/lang/IllegalArgumentException
-    //   142	149	345	java/lang/IllegalArgumentException
-    //   151	155	345	java/lang/IllegalArgumentException
-    //   129	140	349	java/io/IOException
-    //   142	149	349	java/io/IOException
-    //   151	155	349	java/io/IOException
-    //   129	140	353	java/lang/IllegalStateException
-    //   142	149	353	java/lang/IllegalStateException
-    //   151	155	353	java/lang/IllegalStateException
+    //   84	92	321	java/io/IOException
+    //   159	163	328	java/io/IOException
+    //   314	319	332	java/io/IOException
+    //   129	140	336	finally
+    //   142	149	336	finally
+    //   151	155	336	finally
+    //   174	179	336	finally
+    //   129	140	343	java/lang/SecurityException
+    //   142	149	343	java/lang/SecurityException
+    //   151	155	343	java/lang/SecurityException
+    //   129	140	347	java/lang/IllegalArgumentException
+    //   142	149	347	java/lang/IllegalArgumentException
+    //   151	155	347	java/lang/IllegalArgumentException
+    //   129	140	351	java/io/IOException
+    //   142	149	351	java/io/IOException
+    //   151	155	351	java/io/IOException
+    //   129	140	355	java/lang/IllegalStateException
+    //   142	149	355	java/lang/IllegalStateException
+    //   151	155	355	java/lang/IllegalStateException
   }
   
   /* Error */
@@ -985,7 +985,7 @@ public class QzoneSoundPlayerHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.sound.QzoneSoundPlayerHelper
  * JD-Core Version:    0.7.0.1
  */

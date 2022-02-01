@@ -1,36 +1,59 @@
 package com.tencent.mobileqq.activity;
 
-import bisl;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
 
 class LoginVerifyCodeActivity$5
   implements Runnable
 {
+  LoginVerifyCodeActivity$5(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  
   public void run()
   {
-    try
+    int m = 1;
+    int k = 0;
+    QLog.d("LoginVerifyCodeActivity", 1, "start input code auto");
+    String str = Utils.b(LoginVerifyCodeActivity.b(this.this$0), LoginVerifyCodeActivity.c(this.this$0));
+    if ((str != null) && (str.length() == 6) && (LoginVerifyCodeActivity.a(this.this$0) != null))
     {
-      if ((LoginVerifyCodeActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
+      QLog.d("LoginVerifyCodeActivity", 1, new Object[] { "getCode, code : ", str });
+      if (!str.equals(LoginVerifyCodeActivity.d(this.this$0)))
       {
-        LoginVerifyCodeActivity.a(this.this$0, new bisl(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        LoginVerifyCodeActivity.a(this.this$0).c(2131694477);
-      }
-      if ((LoginVerifyCodeActivity.a(this.this$0) != null) && (!LoginVerifyCodeActivity.a(this.this$0).isShowing())) {
-        LoginVerifyCodeActivity.a(this.this$0).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
+        LoginVerifyCodeActivity.a(this.this$0, str);
+        int i = 0;
+        for (;;)
+        {
+          int j = m;
+          if (i < 6)
+          {
+            Editable localEditable = LoginVerifyCodeActivity.a(this.this$0)[i].getText();
+            if ((localEditable != null) && (localEditable.toString().length() > 0)) {
+              j = 0;
+            }
+          }
+          else
+          {
+            if (j == 0) {
+              break;
+            }
+            i = k;
+            while (i < 6)
+            {
+              LoginVerifyCodeActivity.a(this.this$0)[i].setText(str.substring(i, i + 1));
+              i += 1;
+            }
+          }
+          i += 1;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginVerifyCodeActivity.5
  * JD-Core Version:    0.7.0.1
  */

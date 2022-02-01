@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import aeov;
-import aeow;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -21,18 +18,21 @@ import android.view.View;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QzonePluginProxyActivity;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 
+@Deprecated
 public class PublicFragmentActivity
   extends FragmentActivity
 {
-  private static ArrayMap<String, aeov> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
+  private static ArrayMap<String, PublicFragmentActivity.IViewCreator> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
   private PublicBaseFragment jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+  private ClassLoader jdField_a_of_type_JavaLangClassLoader = null;
   
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    aeow.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+    PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
   }
   
   public static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, int paramInt)
@@ -42,15 +42,13 @@ public class PublicFragmentActivity
   
   public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    aeow.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
+    PublicFragmentActivity.Launcher.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
   }
   
   public static void a(Context paramContext, Class<? extends PublicBaseFragment> paramClass)
   {
     a(paramContext, null, paramClass);
   }
-  
-  private static void a(Context paramContext, String paramString) {}
   
   private void a(Bundle paramBundle)
   {
@@ -100,18 +98,22 @@ public class PublicFragmentActivity
   
   public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    aeow.a(paramFragment, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+    PublicFragmentActivity.Launcher.a(paramFragment, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
   }
   
-  public static void a(String paramString, aeov paramaeov)
+  public static void a(Fragment paramFragment, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString, paramaeov);
+    a(paramFragment, null, paramClass, paramInt);
+  }
+  
+  public static void a(String paramString, PublicFragmentActivity.IViewCreator paramIViewCreator)
+  {
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString, paramIViewCreator);
   }
   
   private PublicBaseFragment b()
   {
     Object localObject = getIntent().getStringExtra("public_fragment_class");
-    a(this, (String)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("PublicFragmentActivity", 2, new Object[] { "creating fragment ", localObject });
     }
@@ -123,7 +125,7 @@ public class PublicFragmentActivity
     }
     catch (Exception localException)
     {
-      com.tencent.common.app.BaseApplicationImpl.sPublicFragmentEscapedMsg = Log.getStackTraceString(localException);
+      CrashReportConstant.a = Log.getStackTraceString(localException);
       QLog.e("PublicFragmentActivity", 1, "create fragment error", localException);
     }
     return null;
@@ -171,14 +173,14 @@ public class PublicFragmentActivity
       a(paramBundle);
     }
     super.doOnCreate(paramBundle);
-    setContentView(2131558458);
+    setContentView(2131558459);
     if (this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment == null)
     {
       finish();
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131367244, this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment);
+    paramBundle.replace(2131367430, this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment);
     paramBundle.commit();
     this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.initSideFling(this, this.mFlingHandler);
     return true;
@@ -213,6 +215,22 @@ public class PublicFragmentActivity
       return this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.getCIOPageName();
     }
     return super.getCIOPageName();
+  }
+  
+  public ClassLoader getClassLoader()
+  {
+    ClassLoader localClassLoader3 = super.getClassLoader();
+    ClassLoader localClassLoader2 = this.jdField_a_of_type_JavaLangClassLoader;
+    ClassLoader localClassLoader1 = localClassLoader2;
+    if (localClassLoader2 == null) {
+      localClassLoader1 = QzonePluginProxyActivity.getQZonePluginClassLoaderInUI();
+    }
+    if (localClassLoader1 != null)
+    {
+      this.jdField_a_of_type_JavaLangClassLoader = localClassLoader1;
+      return localClassLoader1;
+    }
+    return localClassLoader3;
   }
   
   public boolean isSupportScreenShot()
@@ -255,7 +273,7 @@ public class PublicFragmentActivity
   {
     if (jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramString))
     {
-      View localView = ((aeov)jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString)).onCreateView(paramString, paramContext, paramAttributeSet);
+      View localView = ((PublicFragmentActivity.IViewCreator)jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString)).onCreateView(paramString, paramContext, paramAttributeSet);
       if (localView != null) {
         return localView;
       }
@@ -335,7 +353,7 @@ public class PublicFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

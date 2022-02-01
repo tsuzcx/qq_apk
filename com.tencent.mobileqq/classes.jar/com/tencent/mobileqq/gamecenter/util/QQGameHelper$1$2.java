@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.gamecenter.util;
 
-import avet;
 import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
 import com.tencent.qphone.base.util.QLog;
 
-public class QQGameHelper$1$2
+class QQGameHelper$1$2
   implements Runnable
 {
-  public QQGameHelper$1$2(avet paramavet, QQGamePubWebView paramQQGamePubWebView) {}
+  QQGameHelper$1$2(QQGameHelper.1 param1, QQGamePubWebView paramQQGamePubWebView) {}
   
   public void run()
   {
@@ -27,7 +26,7 @@ public class QQGameHelper$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.util.QQGameHelper.1.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.gamecenter.activities;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -81,7 +80,7 @@ public class SingleTaskQQBrowser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gamecenter.activities.SingleTaskQQBrowser
  * JD-Core Version:    0.7.0.1
  */

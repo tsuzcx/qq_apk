@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import admu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ChatActivityUtils$14$1
+class ChatActivityUtils$14$1
   implements Runnable
 {
-  public ChatActivityUtils$14$1(admu paramadmu) {}
+  ChatActivityUtils$14$1(ChatActivityUtils.14 param14) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class ChatActivityUtils$14$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.14.1
  * JD-Core Version:    0.7.0.1
  */

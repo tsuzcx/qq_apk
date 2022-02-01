@@ -1,57 +1,45 @@
 package com.tencent.qqprotect.qsec;
 
 import android.os.Handler;
-import bkst;
-import bkta;
-import bktf;
-import bktr;
-import bkuk;
-import bkup;
-import bkuq;
-import bkur;
-import bkus;
-import bkut;
-import bkuu;
-import bkuv;
-import bkve;
-import bkvh;
-import bkvj;
-import bkvy;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqprotect.common.QPDirUtils;
+import com.tencent.qqprotect.singleupdate.VerifyFileUtil;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class QSecFramework
 {
   private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper());
-  private static volatile QSecFramework jdField_a_of_type_ComTencentQqprotectQsecQSecFramework;
-  private static ConcurrentHashMap<Long, bkuu> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private static boolean jdField_a_of_type_Boolean;
+  private static volatile QSecFramework jdField_a_of_type_ComTencentQqprotectQsecQSecFramework = null;
+  private static ConcurrentHashMap<Long, QSecFramework.IGoingUpHandler> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private static boolean jdField_a_of_type_Boolean = false;
   private int jdField_a_of_type_Int = -1;
-  private bkuk jdField_a_of_type_Bkuk;
-  private bkuv jdField_a_of_type_Bkuv;
-  private bkve jdField_a_of_type_Bkve;
-  private bkvh jdField_a_of_type_Bkvh = new bkvh();
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private QSecCbMgr jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr = null;
+  private QSecLibMgr jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr = null;
+  private QSecPushServiceMgr jdField_a_of_type_ComTencentQqprotectQsecQSecPushServiceMgr = null;
+  private QSecRuntimeImpl jdField_a_of_type_ComTencentQqprotectQsecQSecRuntimeImpl = null;
+  private Handler jdField_b_of_type_AndroidOsHandler = null;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = false;
   
   static
   {
-    new bktr("QSec", 86400000L).a(new bkup());
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    jdField_a_of_type_AndroidOsHandler = null;
+    new CrashProtector("QSec", 86400000L).a(new QSecFramework.1());
   }
   
   private QSecFramework()
   {
-    this.jdField_a_of_type_Bkvh.a(bktf.a());
-    this.jdField_a_of_type_Bkvh.a(bkvj.a());
-    this.jdField_a_of_type_Bkvh.a(bkta.a());
-    new bktr("QSec", 86400000L).a(new bkuq(this));
-    this.jdField_a_of_type_Bkuk = new bkuk();
-    this.jdField_a_of_type_Bkuv = new bkuv(this.jdField_a_of_type_Bkuk);
-    this.jdField_a_of_type_Bkve = new bkve(this.jdField_a_of_type_Bkuv, this.jdField_a_of_type_Bkuk);
-    this.jdField_b_of_type_AndroidOsHandler = new bkur(this, ThreadManager.getFileThreadLooper());
-    a(2L, new bkus(this));
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecRuntimeImpl.a(CloudAVEngineImpl.a());
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecRuntimeImpl.a(RptImpl.a());
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecRuntimeImpl.a(CSProcessorImpl.a());
+    new CrashProtector("QSec", 86400000L).a(new QSecFramework.2(this));
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr = new QSecCbMgr();
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr = new QSecLibMgr(this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr);
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecPushServiceMgr = new QSecPushServiceMgr(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr, this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr);
+    this.jdField_b_of_type_AndroidOsHandler = new QSecFramework.3(this, ThreadManager.getFileThreadLooper());
+    a(2L, new QSecFramework.4(this));
   }
   
   public static int a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
@@ -89,10 +77,10 @@ public final class QSecFramework
     finally {}
   }
   
-  public static void a(long paramLong, bkuu parambkuu)
+  public static void a(long paramLong, QSecFramework.IGoingUpHandler paramIGoingUpHandler)
   {
-    if (parambkuu != null) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong), parambkuu);
+    if (paramIGoingUpHandler != null) {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong), paramIGoingUpHandler);
     }
   }
   
@@ -101,9 +89,9 @@ public final class QSecFramework
     if (jdField_a_of_type_Boolean) {
       return true;
     }
-    String str = bkst.b() + File.separator + "libQSec.so";
+    String str = QPDirUtils.b() + File.separator + "libQSec.so";
     File localFile = new File(str);
-    if ((localFile.exists()) && (bkvy.a(localFile, null))) {
+    if ((localFile.exists()) && (VerifyFileUtil.a(localFile, null))) {
       try
       {
         System.load(str);
@@ -121,9 +109,9 @@ public final class QSecFramework
   
   private static int goingUp(long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    bkuu localbkuu = (bkuu)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong1));
-    if (localbkuu != null) {
-      return localbkuu.a(paramLong2, paramLong3, paramLong4, paramObject1, paramObject2, paramArrayOfObject1, paramArrayOfObject2);
+    QSecFramework.IGoingUpHandler localIGoingUpHandler = (QSecFramework.IGoingUpHandler)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong1));
+    if (localIGoingUpHandler != null) {
+      return localIGoingUpHandler.a(paramLong2, paramLong3, paramLong4, paramObject1, paramObject2, paramArrayOfObject1, paramArrayOfObject2);
     }
     return 30;
   }
@@ -135,14 +123,14 @@ public final class QSecFramework
   
   public int a(int paramInt1, int paramInt2, int paramInt3, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    return this.jdField_a_of_type_Bkuv.a(paramInt1, paramInt2, paramInt3, paramArrayOfObject1, paramArrayOfObject2);
+    return this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a(paramInt1, paramInt2, paramInt3, paramArrayOfObject1, paramArrayOfObject2);
   }
   
   public Boolean a(int paramInt)
   {
     Byte localByte = Byte.valueOf();
-    if (this.jdField_a_of_type_Bkuk != null) {
-      localByte = Byte.valueOf(this.jdField_a_of_type_Bkuk.a(paramInt));
+    if (this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr != null) {
+      localByte = Byte.valueOf(this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr.a(paramInt));
     }
     if (1 == localByte.byteValue()) {}
     for (boolean bool = true;; bool = false) {
@@ -155,25 +143,25 @@ public final class QSecFramework
     if (!this.c) {
       this.c = true;
     }
-    this.jdField_a_of_type_Bkuk.a(false);
-    this.jdField_a_of_type_Bkuv.a(new bkut(this));
-    this.jdField_a_of_type_Bkuv.b();
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr.a(false);
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a(new QSecFramework.5(this));
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.b();
     jdField_a_of_type_AndroidOsHandler.postDelayed(new QSecFramework.6(this), 0L);
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Bkve.a(paramArrayOfByte);
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecPushServiceMgr.a(paramArrayOfByte);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Bkuv.a();
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecFramework
  * JD-Core Version:    0.7.0.1
  */

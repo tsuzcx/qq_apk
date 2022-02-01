@@ -10,13 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import bmxa;
-import bnke;
-import bnqc;
-import bnqm;
-import bnqq;
-import bnrh;
 import com.tencent.mobileqq.utils.ViewUtils;
+import dov.com.qq.im.ae.AEPituCameraUnit;
+import dov.com.qq.im.ae.data.AEMaterialMetaData;
+import dov.com.qq.im.ae.part.VideoStoryCapturePartManager;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.report.AEBaseReportParam;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.util.List;
 
 public class AEPlayShowPageView
@@ -26,36 +26,36 @@ public class AEPlayShowPageView
   private static final String TAG = "AEPlayShowPageView";
   private static final AEPlayShowGridAdapter.SizeInfo TWO_COLUMN_SIZE = calcSizeInfo(2);
   private GridLayoutManager gridLayoutManager;
-  private List<bnke> mInfoWrappers;
+  private List<AEMaterialMetaData> mInfoWrappers;
   private int mLayoutType = 2;
-  private bnqc mPartManger;
+  private VideoStoryCapturePartManager mPartManger;
   private AEPlayShowGridAdapter mPlayShowGridAdapter;
   private RecyclerView mPlayShowGridView;
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, @NonNull bnqc parambnqc, int paramInt2, @NonNull List<bnke> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, @NonNull VideoStoryCapturePartManager paramVideoStoryCapturePartManager, int paramInt2, @NonNull List<AEMaterialMetaData> paramList)
   {
     super(paramContext, paramAttributeSet, paramInt1);
-    initConfig(parambnqc, paramInt2, paramList);
+    initConfig(paramVideoStoryCapturePartManager, paramInt2, paramList);
     initViews(paramContext);
   }
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull bnqc parambnqc, int paramInt, @NonNull List<bnke> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull VideoStoryCapturePartManager paramVideoStoryCapturePartManager, int paramInt, @NonNull List<AEMaterialMetaData> paramList)
   {
-    this(paramContext, paramAttributeSet, 0, parambnqc, paramInt, paramList);
+    this(paramContext, paramAttributeSet, 0, paramVideoStoryCapturePartManager, paramInt, paramList);
   }
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @NonNull bnqc parambnqc, int paramInt, @NonNull List<bnke> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @NonNull VideoStoryCapturePartManager paramVideoStoryCapturePartManager, int paramInt, @NonNull List<AEMaterialMetaData> paramList)
   {
-    this(paramContext, null, parambnqc, paramInt, paramList);
+    this(paramContext, null, paramVideoStoryCapturePartManager, paramInt, paramList);
   }
   
   private static AEPlayShowGridAdapter.SizeInfo calcSizeInfo(int paramInt)
   {
-    int j = ViewUtils.dip2px(10.0F);
-    int k = ViewUtils.dip2px(4.0F);
+    int j = ViewUtils.a(10.0F);
+    int k = ViewUtils.a(4.0F);
     int m = (int)(k * 0.96F);
     if (paramInt == 1) {}
-    for (int i = ViewUtils.getScreenWidth() - j * 2 - k * 2;; i = (ViewUtils.getScreenWidth() - j * 2 - k * 4) / 2)
+    for (int i = ViewUtils.a() - j * 2 - k * 2;; i = (ViewUtils.a() - j * 2 - k * 4) / 2)
     {
       int n = (int)(i * 0.96F * 59.0F / 34.0F);
       AEPlayShowGridAdapter.SizeInfo localSizeInfo = new AEPlayShowGridAdapter.SizeInfo();
@@ -80,25 +80,25 @@ public class AEPlayShowPageView
       {
         return;
         localObject = this.mPartManger.a(65537, new Object[0]);
-      } while (!(localObject instanceof bmxa));
-      localObject = (bmxa)localObject;
-    } while ((((bmxa)localObject).a() == null) || (((bmxa)localObject).a().getIntent() == null));
-    ((bmxa)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
-    ((bmxa)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
+      } while (!(localObject instanceof AEPituCameraUnit));
+      localObject = (AEPituCameraUnit)localObject;
+    } while ((((AEPituCameraUnit)localObject).a() == null) || (((AEPituCameraUnit)localObject).a().getIntent() == null));
+    ((AEPituCameraUnit)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
+    ((AEPituCameraUnit)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
   }
   
-  private void initConfig(@NonNull bnqc parambnqc, int paramInt, @NonNull List<bnke> paramList)
+  private void initConfig(@NonNull VideoStoryCapturePartManager paramVideoStoryCapturePartManager, int paramInt, @NonNull List<AEMaterialMetaData> paramList)
   {
-    this.mPartManger = parambnqc;
+    this.mPartManger = paramVideoStoryCapturePartManager;
     this.mLayoutType = paramInt;
     this.mInfoWrappers = paramList;
   }
   
   private void initViews(@NonNull Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131558548, this, true);
-    this.mPlayShowGridView = ((RecyclerView)findViewById(2131362282));
-    bnrh.a("AEPlayShowPart", "rv toString " + this.mPlayShowGridView.toString());
+    LayoutInflater.from(paramContext).inflate(2131558560, this, true);
+    this.mPlayShowGridView = ((RecyclerView)findViewById(2131362308));
+    AEQLog.a("AEPlayShowPart", "rv toString " + this.mPlayShowGridView.toString());
     this.mPlayShowGridView.addOnScrollListener(new AEPlayShowPageView.1(this));
     if (this.mLayoutType == 1)
     {
@@ -154,10 +154,10 @@ public class AEPlayShowPageView
       return;
       while ((i < this.mInfoWrappers.size()) && (i <= j))
       {
-        bnke localbnke = (bnke)this.mInfoWrappers.get(i);
-        bnqq.a().d(localbnke.g);
-        bnqq.a().c(i + 1);
-        bnqm.a().g(localbnke.a);
+        AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)this.mInfoWrappers.get(i);
+        AEBaseReportParam.a().d(localAEMaterialMetaData.g);
+        AEBaseReportParam.a().c(i + 1);
+        AEBaseDataReporter.a().g(localAEMaterialMetaData.a);
         i += 1;
       }
     }
@@ -177,7 +177,7 @@ public class AEPlayShowPageView
       if (this.gridLayoutManager != null) {
         this.gridLayoutManager.scrollToPositionWithOffset(paramInt, 0);
       }
-      bnrh.a("AEPlayShowPart", "out........" + this.mPlayShowGridView.toString());
+      AEQLog.a("AEPlayShowPart", "out........" + this.mPlayShowGridView.toString());
       this.mPlayShowGridView.post(new AEPlayShowPageView.3(this, paramInt));
     }
   }
@@ -187,7 +187,7 @@ public class AEPlayShowPageView
     this.mPlayShowGridAdapter.setCurTabId(paramString);
   }
   
-  public void updateData(@NonNull List<bnke> paramList)
+  public void updateData(@NonNull List<AEMaterialMetaData> paramList)
   {
     if (this.mPlayShowGridAdapter != null) {
       this.mPlayShowGridAdapter.putData(paramList);
@@ -196,7 +196,7 @@ public class AEPlayShowPageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEPlayShowPageView
  * JD-Core Version:    0.7.0.1
  */

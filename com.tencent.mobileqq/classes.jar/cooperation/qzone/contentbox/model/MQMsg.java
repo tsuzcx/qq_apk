@@ -2,6 +2,7 @@ package cooperation.qzone.contentbox.model;
 
 import NS_MOBILE_FEEDS.single_feed;
 import NS_QZONE_MQMSG.NewMQMsg;
+import NS_QZONE_MQMSG.PostBar;
 import cooperation.qzone.util.QZLog;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,18 +16,22 @@ public class MQMsg
   implements Serializable
 {
   public static final String TAG = "QZoneMsgManager.MQMsg";
-  public MQBottomCell bottomCell;
+  public MQBottomCell bottomCell = null;
   public String capTime;
+  public String content = "";
   public String eventTitle;
-  public Map<String, String> expand;
+  public Map<String, String> expand = null;
   public List<single_feed> feeds;
+  public int isNewStyle = 0;
   public String jumpUrlToDetail = "";
   public MQUserPersonalData mqUserPersonalData;
-  public MQMsgBody msgBody;
-  public MQMsgInteractData msgInteractData;
-  public int msgType;
+  public MQMsgBody msgBody = null;
+  public MQMsgInteractData msgInteractData = null;
+  public long msgSize = 0L;
+  public int msgType = 0;
+  public PostBar postGuide;
   public String promot = "";
-  public long pushTime;
+  public long pushTime = 0L;
   public String reportValue;
   public String title = "";
   public String uniKey;
@@ -80,6 +85,9 @@ public class MQMsg
       localMQMsg.eventTitle = paramJSONObject.optString("eventTitle");
       localMQMsg.capTime = paramJSONObject.optString("capTime");
       localMQMsg.reportValue = paramJSONObject.optString("reportValue");
+      localMQMsg.content = paramJSONObject.optString("content");
+      localMQMsg.msgSize = paramJSONObject.optInt("msgSize");
+      localMQMsg.isNewStyle = paramJSONObject.optInt("isNewStyle");
       return localMQMsg;
     }
     catch (Exception paramJSONObject)
@@ -106,6 +114,10 @@ public class MQMsg
     localMQMsg.mqUserPersonalData = MQUserPersonalData.readFrom(paramNewMQMsg.userPersonalData);
     localMQMsg.feeds = paramNewMQMsg.all_feeds_data;
     localMQMsg.reportValue = paramNewMQMsg.reportValue;
+    localMQMsg.content = paramNewMQMsg.content;
+    localMQMsg.msgSize = paramNewMQMsg.msgSize;
+    localMQMsg.isNewStyle = paramNewMQMsg.isNewStyle;
+    localMQMsg.postGuide = paramNewMQMsg.postGuide;
     return localMQMsg;
   }
   
@@ -150,6 +162,9 @@ public class MQMsg
         localJSONObject.put("eventTitle", this.eventTitle);
         localJSONObject.put("capTime", this.capTime);
         localJSONObject.put("reportValue", this.reportValue);
+        localJSONObject.put("content", this.content);
+        localJSONObject.put("msgSize", this.msgSize);
+        localJSONObject.put("isNewStyle", this.isNewStyle);
         return localJSONObject;
       }
       return localJSONObject;
@@ -159,10 +174,36 @@ public class MQMsg
       QZLog.e("QZoneMsgManager.MQMsg", "convertToJson error", localException);
     }
   }
+  
+  public String getReportRev6()
+  {
+    if (this.isNewStyle < 2) {
+      return "1";
+    }
+    if (this.msgSize == 0L) {
+      return "3";
+    }
+    return "2";
+  }
+  
+  public boolean isNewSmallCard()
+  {
+    return (this.isNewStyle >= 2) && (this.msgSize == 0L);
+  }
+  
+  public boolean isNewStyleCard()
+  {
+    return this.isNewStyle >= 2;
+  }
+  
+  public boolean isRecommGuideCard()
+  {
+    return this.msgType == 13;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQMsg
  * JD-Core Version:    0.7.0.1
  */

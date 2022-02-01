@@ -8,10 +8,10 @@ public final class NumberInfo
   extends JceStruct
 {
   static LocationInfo cache_stLocationInfo = new LocationInfo();
-  public LocationInfo stLocationInfo;
+  public LocationInfo stLocationInfo = null;
   public String strFontColor = "";
   public String strNumber = "";
-  public long uiFontSize;
+  public long uiFontSize = 0L;
   
   public NumberInfo() {}
   

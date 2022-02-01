@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
 import java.util.Iterator;
 import java.util.List;
-import qga;
 
-public class RIJArticleInfoRepo$3
+class RIJArticleInfoRepo$3
   implements Runnable
 {
-  public RIJArticleInfoRepo$3(qga paramqga, List paramList) {}
+  RIJArticleInfoRepo$3(RIJArticleInfoRepo paramRIJArticleInfoRepo, List paramList) {}
   
   public void run()
   {
@@ -18,14 +17,14 @@ public class RIJArticleInfoRepo$3
       while (localIterator.hasNext())
       {
         ChannelTopCookie localChannelTopCookie = (ChannelTopCookie)localIterator.next();
-        qga.a(this.this$0, localChannelTopCookie);
+        RIJArticleInfoRepo.a(this.this$0, localChannelTopCookie);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.RIJArticleInfoRepo.3
  * JD-Core Version:    0.7.0.1
  */

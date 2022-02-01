@@ -1,0 +1,25 @@
+package dov.com.tencent.biz.qqstory.takevideo;
+
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+
+class EditPicActivity$1
+  extends PtvTemplateManager.DoodleInfoLoadObserver
+{
+  EditPicActivity$1(EditPicActivity paramEditPicActivity) {}
+  
+  public void a()
+  {
+    SLog.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.a.a.a(EditDoodleExport.class);
+    if (localEditDoodleExport != null) {
+      localEditDoodleExport.b();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+ * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditPicActivity.1
+ * JD-Core Version:    0.7.0.1
+ */

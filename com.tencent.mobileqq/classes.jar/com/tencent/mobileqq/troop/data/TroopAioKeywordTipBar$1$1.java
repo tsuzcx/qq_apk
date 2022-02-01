@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.troop.data;
 
-import bffw;
-import bffx;
-
-public class TroopAioKeywordTipBar$1$1
+class TroopAioKeywordTipBar$1$1
   implements Runnable
 {
-  public TroopAioKeywordTipBar$1$1(bffx parambffx) {}
+  TroopAioKeywordTipBar$1$1(TroopAioKeywordTipBar.1 param1) {}
   
   public void run()
   {
-    bffw.a(this.a.a, false);
+    TroopAioKeywordTipBar.a(this.a.a, false);
   }
 }
 

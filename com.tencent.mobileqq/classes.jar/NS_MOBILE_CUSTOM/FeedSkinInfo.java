@@ -11,16 +11,16 @@ public final class FeedSkinInfo
 {
   static Map<String, String> cache_mapExtInfo = new HashMap();
   public String desc = "";
-  public int iExpireTime;
-  public int iHasNewFlag;
-  public int iPrice;
-  public int iVipPrize;
-  public long lTime;
-  public long lUin;
-  public Map<String, String> mapExtInfo;
+  public int iExpireTime = 0;
+  public int iHasNewFlag = 0;
+  public int iPrice = 0;
+  public int iVipPrize = 0;
+  public long lTime = 0L;
+  public long lUin = 0L;
+  public Map<String, String> mapExtInfo = null;
   public String sPicUrl = "";
   public String sSkinId = "";
-  public int sSkinType;
+  public int sSkinType = 0;
   public String strBgColor = "";
   public String strDesignerInfo = "";
   public String strGradientColorBegin = "";
@@ -30,8 +30,8 @@ public final class FeedSkinInfo
   public String strThumbUrl = "";
   public String strTraceInfo = "";
   public String title = "";
-  public long uiSettleTime;
-  public int vip_property;
+  public long uiSettleTime = 0L;
+  public int vip_property = 0;
   
   static
   {

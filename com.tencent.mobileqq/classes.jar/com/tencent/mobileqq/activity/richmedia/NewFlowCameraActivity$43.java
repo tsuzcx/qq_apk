@@ -1,53 +1,28 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import yei;
-import ykq;
-import zdr;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 
 class NewFlowCameraActivity$43
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  NewFlowCameraActivity$43(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
+  NewFlowCameraActivity$43(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = AIOUtils.dp2px(47.0F, this.this$0.getResources());
-    int j = AIOUtils.dp2px(75.0F, this.this$0.getResources());
-    Bitmap localBitmap1 = zdr.a(this.a, i, j, false);
-    if (localBitmap1 == null) {
-      ykq.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
+    if (NewFlowCameraActivity.b(this.a) != null) {
+      NewFlowCameraActivity.b(this.a).setVisibility(4);
     }
-    Bitmap localBitmap2;
-    do
-    {
-      return;
-      localBitmap2 = new yei(AIOUtils.dp2px(3.0F, this.this$0.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
-      if (localBitmap2 == null)
-      {
-        ykq.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
-        return;
-      }
-      i = this.a.getWidth();
-      j = this.a.getHeight();
-      float f1 = ScreenUtil.SCREEN_WIDTH;
-      float f2 = ScreenUtil.getInstantScreenHeight(this.this$0.getApplicationContext());
-      if (i / j > f1 / f2) {}
-      for (localBitmap1 = zdr.a(this.a, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = zdr.a(this.a, i, (int)(f2 / f1 * i), true))
-      {
-        ykq.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
-        return;
-      }
-    } while (this.this$0.a == null);
-    this.this$0.a.post(new NewFlowCameraActivity.RunnableUpdateThumb(this.this$0, localBitmap1, localBitmap2));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.43
  * JD-Core Version:    0.7.0.1
  */

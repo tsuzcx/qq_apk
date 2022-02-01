@@ -19,7 +19,7 @@ class StickerGestureDetector$StickerAnimationListener
     {
       this.this$0.mRootView.post(new StickerGestureDetector.StickerAnimationListener.1(this));
       this.this$0.removeStickerMaskLayout();
-      this.this$0.mBaseChatPie.removeStickerExpandView();
+      this.this$0.mBaseChatPie.aS();
       this.this$0.scale = 1.0D;
       this.this$0.angle = 0.0D;
       if (this.this$0.lastIntersectView != null)
@@ -42,7 +42,7 @@ class StickerGestureDetector$StickerAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.StickerGestureDetector.StickerAnimationListener
  * JD-Core Version:    0.7.0.1
  */

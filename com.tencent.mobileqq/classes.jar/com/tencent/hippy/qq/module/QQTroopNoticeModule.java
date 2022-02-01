@@ -5,10 +5,10 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import bfxp;
-import bhcu;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.PublicAccountShowPictureReport;
+import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -120,7 +120,7 @@ public class QQTroopNoticeModule
             ((PublicAccountShowPictureReport)localObject1).parse((JSONObject)localObject5);
           }
           bool2 = ((JSONObject)localObject5).optBoolean("isNotShowIndex", true);
-          if ((localObject2 == null) || (((JSONArray)localObject2).length() == 0) || (localBaseActivity.getAppInterface() == null)) {
+          if ((localObject2 == null) || (((JSONArray)localObject2).length() == 0) || (getAppInterface() == null)) {
             break;
           }
           localArrayList = new ArrayList();
@@ -162,7 +162,7 @@ public class QQTroopNoticeModule
             }
           }
           boolean bool3 = ((JSONObject)localObject5).optBoolean("showTitle", false);
-          localObject4 = bhcu.encodeToString(((JSONObject)localObject5).optString("title", "").getBytes(), 0);
+          localObject4 = Base64Util.encodeToString(((JSONObject)localObject5).optString("title", "").getBytes(), 0);
           localObject5 = ((JSONObject)localObject5).optString("articleUrl", "");
           if (QLog.isColorLevel()) {
             QLog.d("QQTroopNoticeModule", 2, new Object[] { "KANDIAN Grid Image title: ", localObject4, ", articleUrl: ", localObject5, ", showTitle: ", Boolean.valueOf(bool3) });
@@ -198,18 +198,18 @@ public class QQTroopNoticeModule
             }
             if ((bool3) && (!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty((CharSequence)localObject5)))
             {
-              bfxp.a(localBaseActivity, j, localArrayList, (boolean[])localObject9, (ArrayList)localObject7, bool1, bool2, (String)localObject8, 100, (PublicAccountShowPictureReport)localObject1, (String)localObject5, (String)localObject4, null, paramString);
+              TroopNoticeJsHandler.a(localBaseActivity, j, localArrayList, (boolean[])localObject9, (ArrayList)localObject7, bool1, bool2, (String)localObject8, 100, (PublicAccountShowPictureReport)localObject1, (String)localObject5, (String)localObject4, null, paramString);
               return;
             }
-            bfxp.a(localBaseActivity, j, localArrayList, (boolean[])localObject9, (ArrayList)localObject7, bool1, bool2, (String)localObject8, 100, (PublicAccountShowPictureReport)localObject1, null, (ArrayList)localObject2, (ArrayList)localObject3, paramString, true);
+            TroopNoticeJsHandler.a(localBaseActivity, j, localArrayList, (boolean[])localObject9, (ArrayList)localObject7, bool1, bool2, (String)localObject8, 100, (PublicAccountShowPictureReport)localObject1, null, (ArrayList)localObject2, (ArrayList)localObject3, paramString, true);
             return;
           }
           if ((bool3) && (!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty((CharSequence)localObject5)))
           {
-            bfxp.a(localBaseActivity, j, localArrayList, null, null, false, bool2, (String)localObject8, 100, (PublicAccountShowPictureReport)localObject1, (String)localObject5, (String)localObject4, null, paramString);
+            TroopNoticeJsHandler.a(localBaseActivity, j, localArrayList, null, null, false, bool2, (String)localObject8, 100, (PublicAccountShowPictureReport)localObject1, (String)localObject5, (String)localObject4, null, paramString);
             return;
           }
-          bfxp.a(localBaseActivity, j, localArrayList, null, null, false, bool2, (String)localObject8, 100, (PublicAccountShowPictureReport)localObject1, null, paramString);
+          TroopNoticeJsHandler.a(localBaseActivity, j, localArrayList, null, null, false, bool2, (String)localObject8, 100, (PublicAccountShowPictureReport)localObject1, null, paramString);
           return;
           localObject2 = null;
         }
@@ -221,7 +221,7 @@ public class QQTroopNoticeModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQTroopNoticeModule
  * JD-Core Version:    0.7.0.1
  */

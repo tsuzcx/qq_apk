@@ -1,6 +1,5 @@
 package cooperation.groupvideo;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
@@ -37,7 +36,7 @@ public class GVideoSmallScreenDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.groupvideo.GVideoSmallScreenDialog
  * JD-Core Version:    0.7.0.1
  */

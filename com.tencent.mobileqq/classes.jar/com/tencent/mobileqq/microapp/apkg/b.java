@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import albw;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 
 final class b
   implements Runnable
@@ -11,7 +11,7 @@ final class b
   {
     synchronized (a.a(this.a))
     {
-      albw.a(this.a, a.b(this.a));
+      QWalletTools.a(this.a, a.b(this.a));
       return;
     }
   }

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.microapp.appbrand.ui;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import bcnh;
 import com.tencent.mobileqq.microapp.app.b;
+import com.tencent.mobileqq.search.util.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 
 final class a
-  implements bcnh
+  implements SoftKeyboardStateHelper.SoftKeyboardStateListener
 {
   a(AppBrandUI paramAppBrandUI) {}
   

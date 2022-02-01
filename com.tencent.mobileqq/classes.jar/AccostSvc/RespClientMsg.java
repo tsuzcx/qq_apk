@@ -9,8 +9,8 @@ public final class RespClientMsg
 {
   static RespHeader cache_stHeader;
   static Msg cache_stMsg;
-  public RespHeader stHeader;
-  public Msg stMsg;
+  public RespHeader stHeader = null;
+  public Msg stMsg = null;
   
   public RespClientMsg() {}
   

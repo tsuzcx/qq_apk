@@ -9,7 +9,7 @@ public final class DomainIpChannel
   extends JceStruct
 {
   static ArrayList<DomainIpList> cache_vDomain_iplists;
-  public ArrayList<DomainIpList> vDomain_iplists;
+  public ArrayList<DomainIpList> vDomain_iplists = null;
   
   public DomainIpChannel() {}
   

@@ -6,7 +6,6 @@ import NS_MINI_INTERFACE.INTERFACE.StBatchGetUserInfoRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhjl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -14,6 +13,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -40,7 +40,7 @@ public class BatchGetUserInfoServlet
         if (paramFromServiceMsg.isSuccess())
         {
           Object localObject1 = new PROTOCAL.StQWebRsp();
-          ((PROTOCAL.StQWebRsp)localObject1).mergeFrom(bhjl.b(paramFromServiceMsg.getWupBuffer()));
+          ((PROTOCAL.StQWebRsp)localObject1).mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
           localBundle.putInt("key_index", (int)((PROTOCAL.StQWebRsp)localObject1).Seq.get());
           if (((PROTOCAL.StQWebRsp)localObject1).retCode.get() == 0L)
           {
@@ -109,7 +109,7 @@ public class BatchGetUserInfoServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_user_info.BatchGetUserInfo");
-    paramPacket.putSendData(bhjl.a(arrayOfByte1));
+    paramPacket.putSendData(WupUtil.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

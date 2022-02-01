@@ -12,9 +12,9 @@ public final class mobile_ranking_feeds_req
   static Map<String, String> cache_mapEx = new HashMap();
   static Map<Integer, byte[]> cache_stMapRanking;
   public int iOperaType = 1;
-  public Map<String, String> mapEx;
-  public Map<Integer, byte[]> stMapRanking;
-  public long uin;
+  public Map<String, String> mapEx = null;
+  public Map<Integer, byte[]> stMapRanking = null;
+  public long uin = 0L;
   
   static
   {

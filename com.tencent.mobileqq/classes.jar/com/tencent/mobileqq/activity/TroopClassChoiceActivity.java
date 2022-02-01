@@ -1,20 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import afca;
-import afcb;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
-import bgss;
-import bgst;
-import bizw;
-import bjmj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.component.cache.CacheManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
@@ -25,41 +22,41 @@ public class TroopClassChoiceActivity
   extends IphoneTitleBarActivity
   implements AdapterView.OnItemClickListener
 {
-  private afcb jdField_a_of_type_Afcb;
-  public bgss a;
+  private TroopClassChoiceActivity.TroopClassChoiceAdapter jdField_a_of_type_ComTencentMobileqqActivityTroopClassChoiceActivity$TroopClassChoiceAdapter;
+  GroupCatalogBean jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList<bgss> a;
+  ArrayList<GroupCatalogBean> jdField_a_of_type_JavaUtilArrayList;
   private String b;
   
   private void b()
   {
     Object localObject = getIntent();
     this.b = String.valueOf(((Intent)localObject).getStringExtra("troopGroupClassExt"));
-    bgss localbgss = bgst.a(this).a();
-    if ((localbgss != null) && (this.b.equals(localbgss.b)))
+    GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a(this).a();
+    if ((localGroupCatalogBean != null) && (this.b.equals(localGroupCatalogBean.b)))
     {
-      this.jdField_a_of_type_Bgss = localbgss;
+      this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean = localGroupCatalogBean;
       this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("id");
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break label113;
       }
-      this.jdField_a_of_type_JavaUtilArrayList = bgst.a(this).a();
+      this.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this).a();
     }
     for (;;)
     {
-      bjmj.a(bizw.a().a());
+      CacheManager.a(CommonDataAdapter.a().a());
       a();
       return;
-      this.jdField_a_of_type_Bgss = bgst.a(this).a(this, this.b);
+      this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean = GroupCatalogTool.a(this).a(this, this.b);
       break;
       label113:
-      this.jdField_a_of_type_JavaUtilArrayList = bgst.a(this).a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this).a(this.jdField_a_of_type_JavaLangString);
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        localObject = (bgss)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (((bgss)localObject).jdField_a_of_type_Bgss != null) {
-          setTitle(((bgss)localObject).jdField_a_of_type_Bgss.jdField_a_of_type_JavaLangString);
+        localObject = (GroupCatalogBean)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        if (((GroupCatalogBean)localObject).jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) {
+          setTitle(((GroupCatalogBean)localObject).jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.jdField_a_of_type_JavaLangString);
         }
       }
     }
@@ -67,16 +64,16 @@ public class TroopClassChoiceActivity
   
   private void c()
   {
-    setContentBackgroundResource(2130838911);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379379));
+    setContentBackgroundResource(2130838979);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379802));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Afcb = new afcb(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Afcb);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopClassChoiceActivity$TroopClassChoiceAdapter = new TroopClassChoiceActivity.TroopClassChoiceAdapter(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityTroopClassChoiceActivity$TroopClassChoiceAdapter);
   }
   
   public void a()
   {
-    bgst.a(BaseApplicationImpl.getContext()).a(this.b, new afca(this));
+    GroupCatalogTool.a(BaseApplicationImpl.getContext()).a(this.b, new TroopClassChoiceActivity.GetClassChoiceCallBack(this));
   }
   
   @Override
@@ -107,15 +104,15 @@ public class TroopClassChoiceActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131562978);
-    setTitle(2131719507);
+    super.setContentView(2131563132);
+    setTitle(2131720071);
     b();
     c();
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (bgss)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramAdapterView = (GroupCatalogBean)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     if ((paramAdapterView.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdapterView.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (!paramAdapterView.b.equals("10015")) && (!paramAdapterView.b.equals("10017")))
     {
       paramView = new Intent(this, TroopClassChoiceActivity.class);
@@ -124,7 +121,7 @@ public class TroopClassChoiceActivity
       startActivityForResult(paramView, 11);
       return;
     }
-    bgst.a(this).a(paramAdapterView);
+    GroupCatalogTool.a(this).a(paramAdapterView);
     paramView = new Intent();
     paramView.putExtra("id", paramAdapterView.b);
     setResult(-1, paramView);
@@ -133,7 +130,7 @@ public class TroopClassChoiceActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopClassChoiceActivity
  * JD-Core Version:    0.7.0.1
  */

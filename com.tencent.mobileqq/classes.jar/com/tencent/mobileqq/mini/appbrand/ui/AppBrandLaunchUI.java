@@ -1,29 +1,25 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import Override;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Parcelable;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import android.view.MotionEvent;
-import bheh;
-import bhey;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.launch.MiniAppStartUtils;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppRuntime;
 
 public class AppBrandLaunchUI
@@ -68,11 +64,11 @@ public class AppBrandLaunchUI
     {
       localObject1 = ((Intent)localObject3).getStringExtra("scheme");
       localObject2 = (ResultReceiver)((Intent)localObject3).getParcelableExtra("result_receiver");
-      localObject3 = bhey.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this, (String)localObject1);
+      localObject3 = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this, (String)localObject1);
       localObject4 = new Bundle();
       if (localObject3 != null)
       {
-        boolean bool = ((bheh)localObject3).a();
+        boolean bool = ((JumpAction)localObject3).a();
         if (bool)
         {
           i = 1;
@@ -96,9 +92,9 @@ public class AppBrandLaunchUI
     }
     if (!BaseApplicationImpl.getApplication().getRuntime().isLogin())
     {
-      localObject1 = new Intent(this, LoginActivity.class);
+      localObject1 = new Intent();
       ((Intent)localObject1).putExtra("MINI_SHORTCUT_JUMP_KEY", (Parcelable)localObject3);
-      startActivity((Intent)localObject1);
+      RouteUtils.a(this, (Intent)localObject1, "/base/login");
       finish();
       return;
     }
@@ -144,15 +140,6 @@ public class AppBrandLaunchUI
   private boolean isMiniAppInfoValid(MiniAppConfig paramMiniAppConfig)
   {
     return (paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)) && (!TextUtils.isEmpty(paramMiniAppConfig.config.downloadUrl));
-  }
-  
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -213,13 +200,6 @@ public class AppBrandLaunchUI
   {
     QLog.i("miniapp-start_AppBrandLaunchUI", 1, "doOnStop");
     super.doOnStop();
-  }
-  
-  @Override
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    super.onConfigurationChanged(paramConfiguration);
-    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void requestWindowFeature(Intent paramIntent)

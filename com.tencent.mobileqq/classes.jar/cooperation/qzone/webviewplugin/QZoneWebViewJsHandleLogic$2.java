@@ -2,14 +2,14 @@ package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import bifw;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import cooperation.qzone.share.WXShareFromQZHelper;
 import java.util.Map;
 
 final class QZoneWebViewJsHandleLogic$2
   implements Runnable
 {
-  QZoneWebViewJsHandleLogic$2(bifw parambifw, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  QZoneWebViewJsHandleLogic$2(WebViewPlugin.PluginRuntime paramPluginRuntime, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ final class QZoneWebViewJsHandleLogic$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic.2
  * JD-Core Version:    0.7.0.1
  */

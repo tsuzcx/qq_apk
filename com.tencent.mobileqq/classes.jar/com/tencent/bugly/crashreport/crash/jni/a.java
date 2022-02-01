@@ -197,7 +197,7 @@ public final class a
     localCrashDetailBean.b = 1;
     localCrashDetailBean.e = this.c.g();
     localCrashDetailBean.f = this.c.m;
-    localCrashDetailBean.g = this.c.v();
+    localCrashDetailBean.g = this.c.u();
     localCrashDetailBean.m = this.c.f();
     localCrashDetailBean.n = paramString3;
     if (paramBoolean2)
@@ -214,9 +214,9 @@ public final class a
       localCrashDetailBean.u = z.b(localCrashDetailBean.q.getBytes());
       localCrashDetailBean.A = paramString1;
       localCrashDetailBean.B = paramString2;
-      localCrashDetailBean.I = this.c.x();
-      localCrashDetailBean.h = this.c.u();
-      localCrashDetailBean.i = this.c.I();
+      localCrashDetailBean.I = this.c.w();
+      localCrashDetailBean.h = this.c.t();
+      localCrashDetailBean.i = this.c.H();
       localCrashDetailBean.v = paramString8;
       paramString2 = null;
       paramString3 = NativeCrashHandler.getInstance();
@@ -233,9 +233,9 @@ public final class a
       localCrashDetailBean.J = paramString7;
       localCrashDetailBean.K = paramString6;
       localCrashDetailBean.L = paramString11;
-      localCrashDetailBean.F = this.c.o();
-      localCrashDetailBean.G = this.c.n();
-      localCrashDetailBean.H = this.c.p();
+      localCrashDetailBean.F = this.c.n();
+      localCrashDetailBean.G = this.c.m();
+      localCrashDetailBean.H = this.c.o();
       if (!paramBoolean1) {
         break label729;
       }
@@ -274,10 +274,10 @@ public final class a
         localCrashDetailBean.A = this.c.d;
       }
       this.b.d(localCrashDetailBean);
-      localCrashDetailBean.Q = this.c.G();
-      localCrashDetailBean.R = this.c.H();
-      localCrashDetailBean.S = this.c.A();
-      localCrashDetailBean.T = this.c.F();
+      localCrashDetailBean.Q = this.c.F();
+      localCrashDetailBean.R = this.c.G();
+      localCrashDetailBean.S = this.c.z();
+      localCrashDetailBean.T = this.c.E();
     }
     label729:
     do
@@ -295,7 +295,7 @@ public final class a
       localCrashDetailBean.Q = -1;
       localCrashDetailBean.R = -1;
       localCrashDetailBean.S = paramMap;
-      localCrashDetailBean.T = this.c.F();
+      localCrashDetailBean.T = this.c.E();
       localCrashDetailBean.z = null;
       if (paramString1 == null) {
         localCrashDetailBean.A = "unknown(record)";

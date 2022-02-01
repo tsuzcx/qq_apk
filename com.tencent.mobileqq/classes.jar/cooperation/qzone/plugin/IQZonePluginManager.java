@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.Toast;
-import bdkt;
-import bitc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -15,6 +13,8 @@ import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
+import com.tencent.mobileqq.statistics.PluginStatisticsCollector;
+import com.tencent.mobileqq.widget.QzoneProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.AppRuntime;
@@ -30,7 +30,7 @@ public abstract class IQZonePluginManager
       paramPluginParams.mIntent.putExtra("qzone_uin", paramPluginParams.mUin);
     }
     paramPluginParams.mIntent.putExtra("pluginsdk_selfuin", paramPluginParams.mUin);
-    paramPluginParams.mIntent.putExtra("clsUploader", bdkt.class.getName());
+    paramPluginParams.mIntent.putExtra("clsUploader", PluginStatisticsCollector.class.getName());
     Object localObject = paramPluginParams.mPluginID;
     localObject = new File(QZonePluginUtils.getPluginInstallDir(paramContext), (String)localObject);
     try
@@ -53,7 +53,7 @@ public abstract class IQZonePluginManager
       paramPluginParams.mIntent.putExtra("qzone_uin", paramPluginParams.mUin);
     }
     paramPluginParams.mIntent.putExtra("pluginsdk_selfuin", paramPluginParams.mUin);
-    paramPluginParams.mIntent.putExtra("clsUploader", bdkt.class.getName());
+    paramPluginParams.mIntent.putExtra("clsUploader", PluginStatisticsCollector.class.getName());
     Object localObject = paramPluginParams.mPluginID;
     localObject = new File(QZonePluginUtils.getPluginInstallDir(paramContext), (String)localObject);
     try
@@ -88,14 +88,14 @@ public abstract class IQZonePluginManager
         paramPluginParams.mIntent.putExtra("qzone_uin", paramPluginParams.mUin);
       }
       paramPluginParams.mIntent.putExtra("pluginsdk_selfuin", paramPluginParams.mUin);
-      paramPluginParams.mIntent.putExtra("clsUploader", bdkt.class.getName());
+      paramPluginParams.mIntent.putExtra("clsUploader", PluginStatisticsCollector.class.getName());
       try
       {
         File localFile = new File(QZonePluginUtils.getPluginInstallDir(paramActivity), paramPluginParams.mPluginID);
         PluginProxyActivity.openActivityForResult(paramActivity, paramPluginParams.mPluginName, paramPluginParams.mPluginID, localFile.getCanonicalPath(), paramPluginParams.mConponentName, paramPluginParams.mIntent, paramPluginParams.mRequestCode);
-        if ((paramPluginParams.mDialog != null) && ((paramPluginParams.mDialog instanceof bitc)) && (paramActivity != null))
+        if ((paramPluginParams.mDialog != null) && ((paramPluginParams.mDialog instanceof QzoneProgressDialog)) && (paramActivity != null))
         {
-          paramActivity.overridePendingTransition(2130772106, 2130772106);
+          paramActivity.overridePendingTransition(2130772121, 2130772121);
           return;
         }
       }
@@ -178,7 +178,7 @@ public abstract class IQZonePluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.plugin.IQZonePluginManager
  * JD-Core Version:    0.7.0.1
  */

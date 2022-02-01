@@ -10,7 +10,7 @@ public final class category_face_confirm_info
   static int cache_op = 0;
   public String label = "";
   public int op = 0;
-  public long uin;
+  public long uin = 0L;
   
   public category_face_confirm_info() {}
   

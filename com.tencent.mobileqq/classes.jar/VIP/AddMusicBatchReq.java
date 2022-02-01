@@ -10,9 +10,9 @@ public final class AddMusicBatchReq
 {
   static SourceInfo cache_stSource = new SourceInfo();
   static ArrayList<MusicInfo> cache_vMusicList = new ArrayList();
-  public long iUin;
-  public SourceInfo stSource;
-  public ArrayList<MusicInfo> vMusicList;
+  public long iUin = 0L;
+  public SourceInfo stSource = null;
+  public ArrayList<MusicInfo> vMusicList = null;
   
   static
   {

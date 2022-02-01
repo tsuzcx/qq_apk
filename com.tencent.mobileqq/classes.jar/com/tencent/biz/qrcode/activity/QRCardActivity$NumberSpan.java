@@ -26,7 +26,7 @@ class QRCardActivity$NumberSpan
       QRCardActivity.a(this.a, paramView.getContext(), 3, str, null);
     }
     label42:
-    while (!Pattern.compile(QRCardActivity.o).matcher(str).matches()) {
+    while (!Pattern.compile(QRCardActivity.p).matcher(str).matches()) {
       return;
     }
     this.a.a(str);
@@ -39,7 +39,7 @@ class QRCardActivity$NumberSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRCardActivity.NumberSpan
  * JD-Core Version:    0.7.0.1
  */

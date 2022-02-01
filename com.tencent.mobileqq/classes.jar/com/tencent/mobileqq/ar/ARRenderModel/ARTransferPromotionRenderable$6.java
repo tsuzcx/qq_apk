@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apca;
-import apem;
+import com.tencent.mobileqq.ar.ARPromotion.ARPromotionSoundPlayer;
 
-public class ARTransferPromotionRenderable$6
+class ARTransferPromotionRenderable$6
   implements Runnable
 {
-  public ARTransferPromotionRenderable$6(apem paramapem) {}
+  ARTransferPromotionRenderable$6(ARTransferPromotionRenderable paramARTransferPromotionRenderable) {}
   
   public void run()
   {
-    if (apem.a(this.this$0) != null)
+    if (ARTransferPromotionRenderable.a(this.this$0) != null)
     {
-      apem.a(this.this$0).a();
-      apem.a(this.this$0, null);
+      ARTransferPromotionRenderable.a(this.this$0).a();
+      ARTransferPromotionRenderable.a(this.this$0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.6
  * JD-Core Version:    0.7.0.1
  */

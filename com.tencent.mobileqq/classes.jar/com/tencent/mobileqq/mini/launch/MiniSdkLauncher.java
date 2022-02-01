@@ -5,18 +5,18 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import arbw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.tissue.TissueEnvImpl;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.MiniSDK;
 import com.tencent.qqmini.sdk.launcher.dynamic.MiniDynamicManager;
 import com.tencent.qqmini.sdk.launcher.model.ResourcePreCacheInfo;
+import com.tencent.qqperf.tools.DeviceInfoUtils;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,8 +27,8 @@ import org.json.JSONObject;
 public class MiniSdkLauncher
 {
   private static final String TAG = "MiniSdkLauncher";
-  private static volatile boolean sIsMiniAppCheckinPreLaunched;
-  private static volatile boolean sSdkInited;
+  private static volatile boolean sIsMiniAppCheckinPreLaunched = false;
+  private static volatile boolean sSdkInited = false;
   
   public static com.tencent.mobileqq.mini.apkg.MiniAppInfo convert(com.tencent.qqmini.sdk.launcher.model.MiniAppInfo paramMiniAppInfo)
   {
@@ -407,9 +407,9 @@ public class MiniSdkLauncher
     localMiniAppInfo.enableLoadingAd = paramMiniAppInfo.enableLoadingAd;
     localMiniAppInfo.friendMessageQuery = paramMiniAppInfo.friendMessageQuery;
     localMiniAppInfo.apngUrl = paramMiniAppInfo.apngUrl;
-    localMiniAppInfo.ide_scene = paramMiniAppInfo.ide_scene;
-    localMiniAppInfo.ide_extraAppid = paramMiniAppInfo.ide_extraAppid;
-    localMiniAppInfo.ide_extraData = paramMiniAppInfo.ide_extraData;
+    localMiniAppInfo.ideScene = paramMiniAppInfo.ide_scene;
+    localMiniAppInfo.ideExtraAppid = paramMiniAppInfo.ide_extraAppid;
+    localMiniAppInfo.ideExtraData = paramMiniAppInfo.ide_extraData;
     localMiniAppInfo.tianshuAdId = paramMiniAppInfo.tianshuAdId;
     localMiniAppInfo.deviceOrientation = paramMiniAppInfo.deviceOrientation;
     localMiniAppInfo.showStatusBar = paramMiniAppInfo.showStatusBar;
@@ -471,7 +471,7 @@ public class MiniSdkLauncher
         String str1 = paramString.optString("ver");
         String str2 = paramString.optString("minjs");
         if (!TextUtils.isEmpty(str1)) {
-          paramString.putOpt("app_version", "8.4.10.4875");
+          paramString.putOpt("app_version", "8.5.5.5105");
         }
         MiniDynamicManager.g().updateDexConfig(paramString.toString());
         if (!TextUtils.isEmpty(str2))
@@ -498,7 +498,7 @@ public class MiniSdkLauncher
       {
         try
         {
-          if (arbw.a("mini_sdk_prelaunch_enable", 1) == 1)
+          if (MiniAppConfProcessor.a("mini_sdk_prelaunch_enable", 1) == 1)
           {
             i = 1;
             if (i != 0) {
@@ -631,7 +631,7 @@ public class MiniSdkLauncher
   
   private static boolean shouldForbidLowPerf()
   {
-    int i = DeviceInfoUtil.getPerfLevel();
+    int i = DeviceInfoUtils.a();
     QLog.d("MiniSdkLauncher", 1, "shouldForbidLowPerf " + i);
     return i == 3;
   }

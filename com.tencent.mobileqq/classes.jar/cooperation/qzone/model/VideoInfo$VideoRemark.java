@@ -9,11 +9,11 @@ public class VideoInfo$VideoRemark
   implements Parcelable
 {
   public static final Parcelable.Creator<VideoRemark> CREATOR = new VideoInfo.VideoRemark.1();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
   public String icondesc = "";
   public String iconurl = "";
-  public int orgwebsite;
+  public int orgwebsite = 0;
   public String remark = "";
   
   public int describeContents()
@@ -41,7 +41,7 @@ public class VideoInfo$VideoRemark
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.VideoInfo.VideoRemark
  * JD-Core Version:    0.7.0.1
  */

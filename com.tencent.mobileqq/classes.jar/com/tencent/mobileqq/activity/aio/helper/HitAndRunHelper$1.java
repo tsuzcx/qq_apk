@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afyb;
-import agik;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager;
 
-public class HitAndRunHelper$1
+class HitAndRunHelper$1
   implements Runnable
 {
-  public HitAndRunHelper$1(agik paramagik) {}
+  HitAndRunHelper$1(HitAndRunHelper paramHitAndRunHelper) {}
   
   public void run()
   {
-    agik.a(this.this$0);
-    afyb.a().b();
+    HitAndRunHelper.a(this.this$0);
+    AudioTransitionAnimManager.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.HitAndRunHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,8 @@ public final class ResUpdate
 {
   static Map<String, String> cache_AttrMap;
   static int cache_OpType;
-  public Map<String, String> AttrMap;
-  public int OpType;
+  public Map<String, String> AttrMap = null;
+  public int OpType = 0;
   public String Path = "";
   public String ResURL = "";
   

@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.System;
 import android.text.TextUtils;
-import bksu;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -13,6 +12,7 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqprotect.common.QPMiscUtils;
 import com.tencent.qqprotect.qsec.QSecFramework;
 import mqq.app.MobileQQ;
 
@@ -24,8 +24,8 @@ public class d
   public static final int TYPE_PUSH = 2;
   public static final int TYPE_QUERY = 3;
   public static final int TYPE_WORK = 4;
-  private static Object[] ectx;
-  private static byte[] edata;
+  private static Object[] ectx = null;
+  private static byte[] edata = null;
   private static int etype = -1;
   
   public static void e(int paramInt, Object[] paramArrayOfObject, byte[] paramArrayOfByte)
@@ -72,7 +72,7 @@ public class d
     }
     for (;;)
     {
-      String str2 = bksu.b(2);
+      String str2 = QPMiscUtils.b(2);
       if (str2 == null) {
         str2 = "";
       }
@@ -90,12 +90,12 @@ public class d
           if (localObject1 != null) {}
           for (localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();; localObject1 = "")
           {
-            Object localObject3 = bksu.b(1);
+            Object localObject3 = QPMiscUtils.b(1);
             Object localObject2 = localObject3;
             if (localObject3 == null) {
               localObject2 = "";
             }
-            Object localObject4 = bksu.b(3);
+            Object localObject4 = QPMiscUtils.b(3);
             localObject3 = localObject4;
             if (localObject4 == null) {
               localObject3 = "";
@@ -126,7 +126,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mqp.app.sec.d
  * JD-Core Version:    0.7.0.1
  */

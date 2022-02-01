@@ -1,12 +1,11 @@
 package com.tencent.av.utils;
 
 import android.media.MediaPlayer.OnCompletionListener;
-import mvg;
 
-public class TraeHelper$TraeAudioCallback$1
+class TraeHelper$TraeAudioCallback$1
   implements Runnable
 {
-  public TraeHelper$TraeAudioCallback$1(mvg parammvg, MediaPlayer.OnCompletionListener paramOnCompletionListener) {}
+  TraeHelper$TraeAudioCallback$1(TraeHelper.TraeAudioCallback paramTraeAudioCallback, MediaPlayer.OnCompletionListener paramOnCompletionListener) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class TraeHelper$TraeAudioCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.TraeHelper.TraeAudioCallback.1
  * JD-Core Version:    0.7.0.1
  */

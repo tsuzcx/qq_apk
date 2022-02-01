@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import abuf;
-import amwn;
+import com.tencent.gamecenter.appointment.GameCenterUtils;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,16 +13,16 @@ class QQGameFeedWebFragment$13
   public void run()
   {
     QQGameFeedWebFragment.a(this.this$0, false, 0);
-    this.this$0.c();
+    this.this$0.b();
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(24), "1");
     localHashMap.put(Integer.valueOf(4), "20");
-    abuf.a(amwn.a(), "769", "205036", "", "76901", "1", "160", localHashMap);
+    GameCenterUtils.a(CmGameUtil.a(), "769", "205036", "", "76901", "1", "160", localHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.13
  * JD-Core Version:    0.7.0.1
  */

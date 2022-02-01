@@ -33,7 +33,7 @@ public abstract class PttThemeBaseView
   protected int d;
   protected Bitmap d;
   protected int e = 1;
-  protected int f;
+  protected int f = 0;
   protected int g = -1;
   protected int h = -1;
   protected int i = 8;
@@ -41,16 +41,19 @@ public abstract class PttThemeBaseView
   public PttThemeBaseView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public PttThemeBaseView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public PttThemeBaseView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   private Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -104,7 +107,7 @@ public abstract class PttThemeBaseView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
     this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP);
     this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-    this.i = AIOUtils.dp2px(paramInt, getContext().getResources());
+    this.i = AIOUtils.a(paramInt, getContext().getResources());
   }
   
   protected abstract void a(Canvas paramCanvas);
@@ -134,7 +137,7 @@ public abstract class PttThemeBaseView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((this.jdField_a_of_type_AndroidGraphicsRectF == null) || (this.jdField_a_of_type_Boolean)) {
@@ -153,7 +156,7 @@ public abstract class PttThemeBaseView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (QLog.isColorLevel()) {
@@ -197,7 +200,7 @@ public abstract class PttThemeBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttThemeBaseView
  * JD-Core Version:    0.7.0.1
  */

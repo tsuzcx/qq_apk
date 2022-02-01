@@ -2,23 +2,21 @@ package com.tencent.biz.qqstory.storyHome.model;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.database.FeedEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
+import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
+import com.tencent.biz.qqstory.model.item.IFeedOwner;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import vzk;
-import wkv;
-import wkw;
-import yck;
-import ydz;
-import ykq;
-import zdl;
 
-public abstract class FeedItem<T extends ydz, E extends wkw>
+public abstract class FeedItem<T extends StoryHomeFeed, E extends IFeedOwner>
   extends BaseUIItem
-  implements vzk
+  implements Copyable
 {
   public static final int BANNER_FEED_ITEM = 5;
   public static final String FAKE_START = "fake-";
@@ -31,7 +29,7 @@ public abstract class FeedItem<T extends ydz, E extends wkw>
   public String date;
   public long dateTimeMillis;
   public String feedId;
-  public int feedSourceTagType;
+  public int feedSourceTagType = 0;
   @Deprecated
   public String ownerId;
   public final int type = assignType();
@@ -42,7 +40,7 @@ public abstract class FeedItem<T extends ydz, E extends wkw>
     {
     case 4: 
     default: 
-      ykq.e("Q.qqstory", "It can not create the illegal type:%s feed!", new Object[] { Integer.valueOf(paramInt) });
+      SLog.e("Q.qqstory", "It can not create the illegal type:%s feed!", new Object[] { Integer.valueOf(paramInt) });
       return null;
     case 1: 
       return new GeneralFeedItem();
@@ -63,9 +61,9 @@ public abstract class FeedItem<T extends ydz, E extends wkw>
     return (paramString != null) && (paramString.startsWith("fake-"));
   }
   
-  public abstract int assignType();
+  protected abstract int assignType();
   
-  public abstract void convertFromFeedFeature(wkv paramwkv);
+  public abstract void convertFromFeedFeature(FeedFeatureItem paramFeedFeatureItem);
   
   public void copy(Object paramObject)
   {
@@ -86,7 +84,7 @@ public abstract class FeedItem<T extends ydz, E extends wkw>
     }
     for (;;)
     {
-      zdl.a(bool, "type类型不对应");
+      AssertUtils.a(bool, "type类型不对应");
       this.feedId = paramFeedEntry.feedId;
       setDate(paramFeedEntry.date);
       this.ownerId = paramFeedEntry.ownerId;
@@ -103,7 +101,7 @@ public abstract class FeedItem<T extends ydz, E extends wkw>
       {
         for (;;)
         {
-          ykq.b("Q.qqstory", "invalid pb", localInvalidProtocolBufferMicroException);
+          SLog.b("Q.qqstory", "invalid pb", localInvalidProtocolBufferMicroException);
         }
       }
     }
@@ -143,9 +141,9 @@ public abstract class FeedItem<T extends ydz, E extends wkw>
   
   public T generateAndPackageHomeFeedFromDB()
   {
-    ydz localydz = generateHomeFeed();
-    localydz.b();
-    return localydz;
+    StoryHomeFeed localStoryHomeFeed = generateHomeFeed();
+    localStoryHomeFeed.b();
+    return localStoryHomeFeed;
   }
   
   @NonNull
@@ -178,17 +176,17 @@ public abstract class FeedItem<T extends ydz, E extends wkw>
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = yck.a().format(new Date());
+      str = FeedManager.a().format(new Date());
     }
     this.date = str;
     try
     {
-      this.dateTimeMillis = yck.a().parse(str).getTime();
+      this.dateTimeMillis = FeedManager.a().parse(str).getTime();
       return;
     }
     catch (ParseException paramString)
     {
-      ykq.c("Q.qqstory.home", "parse date", paramString);
+      SLog.c("Q.qqstory.home", "parse date", paramString);
     }
   }
   
@@ -201,7 +199,7 @@ public abstract class FeedItem<T extends ydz, E extends wkw>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedItem
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ public class QzoneQunFeedJsPlugin$LoadingDialog
 {
   QzoneQunFeedJsPlugin$LoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131755682);
-    setContentView(2131562264);
+    super(paramContext, 2131755693);
+    setContentView(2131562402);
     getWindow().setFlags(1024, 2048);
   }
   
@@ -44,7 +44,7 @@ public class QzoneQunFeedJsPlugin$LoadingDialog
   
   public void setTitle(String paramString)
   {
-    ((TextView)findViewById(2131379001)).setText(paramString);
+    ((TextView)findViewById(2131379432)).setText(paramString);
   }
   
   public void show()
@@ -63,7 +63,7 @@ public class QzoneQunFeedJsPlugin$LoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.LoadingDialog
  * JD-Core Version:    0.7.0.1
  */

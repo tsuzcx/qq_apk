@@ -1,18 +1,20 @@
 package dov.com.qq.im.ae.play;
 
+import com.tencent.mobileqq.widget.QQToast;
+
 class EditTextViewer$1
-  implements EditTextDialog.OnConfirmClickLister
+  implements Runnable
 {
-  EditTextViewer$1(EditTextViewer paramEditTextViewer) {}
+  EditTextViewer$1(EditTextViewer paramEditTextViewer, int paramInt) {}
   
-  public void onConfirmClick(String paramString)
+  public void run()
   {
-    this.this$0.renderAndSaveTexture(paramString);
+    QQToast.a(this.this$0.getContext(), this.val$stringRes, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.EditTextViewer.1
  * JD-Core Version:    0.7.0.1
  */

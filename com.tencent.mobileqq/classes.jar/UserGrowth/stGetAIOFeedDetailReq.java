@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stGetAIOFeedDetailReq
   extends JceStruct
 {
-  public int reserve;
+  public int reserve = 0;
   
   public stGetAIOFeedDetailReq() {}
   

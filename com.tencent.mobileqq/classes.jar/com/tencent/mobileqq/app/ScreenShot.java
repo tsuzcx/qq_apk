@@ -20,12 +20,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
-import anvx;
-import aodd;
-import bdla;
-import bhkk;
-import bhkn;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenPermission;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.util.NativeUtil;
@@ -34,24 +32,24 @@ public class ScreenShot
   implements Handler.Callback, View.OnClickListener
 {
   public static final String a;
-  public final Context a;
-  public Bitmap a;
-  public Drawable a;
+  final Context jdField_a_of_type_AndroidContentContext;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private final Handler jdField_a_of_type_AndroidOsHandler;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public Window a;
-  public Button a;
-  final aodd jdField_a_of_type_Aodd;
+  Window jdField_a_of_type_AndroidViewWindow;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  final ScreenShot.ScreenView jdField_a_of_type_ComTencentMobileqqAppScreenShot$ScreenView;
   public Object a;
-  private boolean jdField_a_of_type_Boolean;
-  public Bitmap b;
-  public Drawable b;
-  private final Handler b;
-  public Button b;
-  public Bitmap c;
-  public Button c;
+  private boolean jdField_a_of_type_Boolean = false;
+  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private final Handler jdField_b_of_type_AndroidOsHandler;
+  Button jdField_b_of_type_AndroidWidgetButton;
+  Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
+  Button jdField_c_of_type_AndroidWidgetButton;
   public Bitmap d;
-  public Button d;
+  Button d;
   
   static
   {
@@ -65,13 +63,13 @@ public class ScreenShot
     {
       for (paramWindow = (Activity)this.jdField_a_of_type_AndroidContentContext; paramWindow.getParent() != null; paramWindow = paramWindow.getParent()) {}
       this.jdField_a_of_type_AndroidViewWindow = paramWindow.getWindow();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130849622);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130849621);
-      this.jdField_a_of_type_Aodd = new aodd(this, this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130850017);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130850016);
+      this.jdField_a_of_type_ComTencentMobileqqAppScreenShot$ScreenView = new ScreenShot.ScreenView(this, this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
       this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper(), this);
       if (Looper.getMainLooper() == Looper.myLooper()) {
-        break label165;
+        break label170;
       }
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
     }
@@ -82,7 +80,7 @@ public class ScreenShot
       return;
       this.jdField_a_of_type_AndroidViewWindow = paramWindow;
       break;
-      label165:
+      label170:
       b();
     }
   }
@@ -149,12 +147,12 @@ public class ScreenShot
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131562800, null));
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Aodd, 0);
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377121));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367455));
-    this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364250));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365711));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131562947, null));
+    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqAppScreenShot$ScreenView, 0);
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377541));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367642));
+    this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364357));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365874));
     this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -191,7 +189,7 @@ public class ScreenShot
           label87:
           localLayoutParams.type = 2038;
           break;
-          FloatingScreenPermission.enterPermissionRequestDialogCustom(this.jdField_a_of_type_AndroidContentContext, 2131718924, 2131718923);
+          FloatingScreenPermission.enterPermissionRequestDialogCustom(this.jdField_a_of_type_AndroidContentContext, 2131719451, 2131719450);
         }
       }
       catch (Throwable localThrowable)
@@ -228,7 +226,7 @@ public class ScreenShot
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity.ScreenShot", 2, "current phone Build.Model is " + Build.MODEL);
     }
-    return (!e()) && (!Build.MODEL.contains("Lenovo S810t")) && (!Build.MODEL.contains("OPPO R7005")) && (!Build.MODEL.contains(anvx.a(2131713043))) && (!Build.MODEL.contains("vivo X5L")) && (!Build.MODEL.contains("OPPO N3")) && (!Build.MODEL.contains("OPPO R7")) && (!f());
+    return (!e()) && (!Build.MODEL.contains("Lenovo S810t")) && (!Build.MODEL.contains("OPPO R7005")) && (!Build.MODEL.contains(HardCodeUtil.a(2131713539))) && (!Build.MODEL.contains("vivo X5L")) && (!Build.MODEL.contains("OPPO N3")) && (!Build.MODEL.contains("OPPO R7")) && (!f());
   }
   
   private boolean e()
@@ -260,7 +258,7 @@ public class ScreenShot
   {
     a("disactivate");
     d();
-    bdla.b(null, "CliOper", "", "", "0X8005008", "0X8005008", 0, 0, "0", "", "", "");
+    ReportController.b(null, "CliOper", "", "", "0X8005008", "0X8005008", 0, 0, "0", "", "", "");
   }
   
   public boolean a()
@@ -275,8 +273,8 @@ public class ScreenShot
   
   public boolean c()
   {
-    this.jdField_a_of_type_Aodd.f = 0;
-    this.jdField_a_of_type_Aodd.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
+    this.jdField_a_of_type_ComTencentMobileqqAppScreenShot$ScreenView.f = 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppScreenShot$ScreenView.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
     this.jdField_b_of_type_AndroidGraphicsBitmap = null;
     a(false);
     if (d()) {}
@@ -310,7 +308,7 @@ public class ScreenShot
     }
     for (String str = "1";; str = "0")
     {
-      bdla.b(null, "CliOper", "", "", "0X8005006", "0X8005006", 0, 0, str, "", "", "");
+      ReportController.b(null, "CliOper", "", "", "0X8005006", "0X8005006", 0, 0, str, "", "", "");
       return true;
     }
   }
@@ -326,7 +324,7 @@ public class ScreenShot
     //   7: tableswitch	default:+29 -> 36, 1:+43->50, 2:+150->157, 3:+37->44, 4:+31->38
     //   37: ireturn
     //   38: aload_0
-    //   39: invokespecial 122	com/tencent/mobileqq/app/ScreenShot:b	()V
+    //   39: invokespecial 124	com/tencent/mobileqq/app/ScreenShot:b	()V
     //   42: iconst_1
     //   43: ireturn
     //   44: aload_0
@@ -339,32 +337,32 @@ public class ScreenShot
     //   55: if_icmpne +83 -> 138
     //   58: aload_1
     //   59: getfield 444	android/os/Message:obj	Ljava/lang/Object;
-    //   62: checkcast 84	aodd
+    //   62: checkcast 86	com/tencent/mobileqq/app/ScreenShot$ScreenView
     //   65: astore_1
     //   66: aload_1
     //   67: ldc_w 445
-    //   70: putfield 397	aodd:f	I
+    //   70: putfield 397	com/tencent/mobileqq/app/ScreenShot$ScreenView:f	I
     //   73: aload_0
     //   74: iconst_0
-    //   75: invokespecial 130	com/tencent/mobileqq/app/ScreenShot:a	(Z)V
+    //   75: invokespecial 132	com/tencent/mobileqq/app/ScreenShot:a	(Z)V
     //   78: aload_1
-    //   79: invokevirtual 448	aodd:invalidate	()V
+    //   79: invokevirtual 448	com/tencent/mobileqq/app/ScreenShot$ScreenView:invalidate	()V
     //   82: aload_1
     //   83: aconst_null
     //   84: new 450	com/tencent/mobileqq/app/ScreenShot$1
     //   87: dup
     //   88: aload_0
     //   89: aload_1
-    //   90: invokespecial 453	com/tencent/mobileqq/app/ScreenShot$1:<init>	(Lcom/tencent/mobileqq/app/ScreenShot;Laodd;)V
+    //   90: invokespecial 453	com/tencent/mobileqq/app/ScreenShot$1:<init>	(Lcom/tencent/mobileqq/app/ScreenShot;Lcom/tencent/mobileqq/app/ScreenShot$ScreenView;)V
     //   93: invokestatic 459	android/os/SystemClock:uptimeMillis	()J
     //   96: ldc2_w 460
     //   99: ladd
-    //   100: invokevirtual 465	aodd:scheduleDrawable	(Landroid/graphics/drawable/Drawable;Ljava/lang/Runnable;J)V
+    //   100: invokevirtual 465	com/tencent/mobileqq/app/ScreenShot$ScreenView:scheduleDrawable	(Landroid/graphics/drawable/Drawable;Ljava/lang/Runnable;J)V
     //   103: aload_0
-    //   104: getfield 52	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   104: getfield 54	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   107: invokevirtual 469	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   110: aload_0
-    //   111: getfield 52	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   111: getfield 54	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   114: ldc_w 470
     //   117: invokevirtual 473	android/content/Context:getString	(I)Ljava/lang/String;
     //   120: ldc_w 475
@@ -376,7 +374,7 @@ public class ScreenShot
     //   136: iconst_1
     //   137: ireturn
     //   138: aload_0
-    //   139: getfield 52	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   139: getfield 54	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   142: invokevirtual 469	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   145: ldc_w 489
     //   148: iconst_1
@@ -386,7 +384,7 @@ public class ScreenShot
     //   156: ireturn
     //   157: aload_1
     //   158: getfield 444	android/os/Message:obj	Ljava/lang/Object;
-    //   161: checkcast 84	aodd
+    //   161: checkcast 86	com/tencent/mobileqq/app/ScreenShot$ScreenView
     //   164: astore 6
     //   166: new 494	java/io/File
     //   169: dup
@@ -421,7 +419,7 @@ public class ScreenShot
     //   237: invokespecial 517	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   240: astore_1
     //   241: aload 6
-    //   243: getfield 518	aodd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   243: getfield 518	com/tencent/mobileqq/app/ScreenShot$ScreenView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   246: getstatic 524	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   249: bipush 80
     //   251: aload_1
@@ -429,13 +427,13 @@ public class ScreenShot
     //   255: istore_3
     //   256: aload 6
     //   258: aconst_null
-    //   259: putfield 518	aodd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   259: putfield 518	com/tencent/mobileqq/app/ScreenShot$ScreenView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   262: aload_1
     //   263: ifnull +167 -> 430
     //   266: aload_1
     //   267: invokevirtual 531	java/io/FileOutputStream:close	()V
     //   270: aload_0
-    //   271: getfield 52	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   271: getfield 54	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   274: invokestatic 537	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
     //   277: invokeinterface 543 1 0
     //   282: astore_1
@@ -450,7 +448,7 @@ public class ScreenShot
     //   302: invokeinterface 561 1 0
     //   307: pop
     //   308: aload_0
-    //   309: getfield 52	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   309: getfield 54	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   312: new 563	android/content/Intent
     //   315: dup
     //   316: ldc_w 565
@@ -459,7 +457,7 @@ public class ScreenShot
     //   324: invokespecial 568	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
     //   327: invokevirtual 572	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
     //   330: aload_0
-    //   331: getfield 102	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   331: getfield 104	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   334: astore_1
     //   335: iload_3
     //   336: ifeq +63 -> 399
@@ -476,7 +474,7 @@ public class ScreenShot
     //   354: ireturn
     //   355: aload 6
     //   357: aconst_null
-    //   358: putfield 518	aodd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   358: putfield 518	com/tencent/mobileqq/app/ScreenShot$ScreenView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   361: aload_1
     //   362: ifnull +63 -> 425
     //   365: aload_1
@@ -491,7 +489,7 @@ public class ScreenShot
     //   380: astore_1
     //   381: aload 6
     //   383: aconst_null
-    //   384: putfield 518	aodd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   384: putfield 518	com/tencent/mobileqq/app/ScreenShot$ScreenView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   387: aload 4
     //   389: ifnull +8 -> 397
     //   392: aload 4
@@ -536,7 +534,7 @@ public class ScreenShot
     //   420	1	4	localFileNotFoundException	java.io.FileNotFoundException
     //   224	96	5	localFile	java.io.File
     //   409	6	5	localObject2	Object
-    //   164	218	6	localaodd	aodd
+    //   164	218	6	localScreenView	ScreenShot.ScreenView
     // Exception table:
     //   from	to	target	type
     //   365	369	374	java/io/IOException
@@ -568,28 +566,28 @@ public class ScreenShot
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_Aodd.a(true);
-      if ((!bhkn.g) && (Build.VERSION.SDK_INT < 11))
+      this.jdField_a_of_type_ComTencentMobileqqAppScreenShot$ScreenView.a(true);
+      if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11))
       {
-        bhkk.a().b(this.jdField_a_of_type_AndroidViewWindow);
+        KapalaiAdapterUtil.a().b(this.jdField_a_of_type_AndroidViewWindow);
         continue;
-        this.jdField_a_of_type_Aodd.a(false);
-        if ((!bhkn.g) && (Build.VERSION.SDK_INT < 11))
+        this.jdField_a_of_type_ComTencentMobileqqAppScreenShot$ScreenView.a(false);
+        if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11))
         {
-          bhkk.a().b(this.jdField_a_of_type_AndroidViewWindow);
+          KapalaiAdapterUtil.a().b(this.jdField_a_of_type_AndroidViewWindow);
           continue;
           a("click disable");
           d();
-          bdla.b(null, "CliOper", "", "", "0X8005008", "0X8005008", 0, 0, "1", "", "", "");
-          if ((!bhkn.g) && (Build.VERSION.SDK_INT < 11))
+          ReportController.b(null, "CliOper", "", "", "0X8005008", "0X8005008", 0, 0, "1", "", "", "");
+          if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11))
           {
-            bhkk.a().b(this.jdField_a_of_type_AndroidViewWindow);
+            KapalaiAdapterUtil.a().b(this.jdField_a_of_type_AndroidViewWindow);
             continue;
             a("click cancel");
             d();
-            bdla.b(null, "CliOper", "", "", "0X8005008", "0X8005008", 0, 0, "2", "", "", "");
-            if ((!bhkn.g) && (Build.VERSION.SDK_INT < 11)) {
-              bhkk.a().b(this.jdField_a_of_type_AndroidViewWindow);
+            ReportController.b(null, "CliOper", "", "", "0X8005008", "0X8005008", 0, 0, "2", "", "", "");
+            if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
+              KapalaiAdapterUtil.a().b(this.jdField_a_of_type_AndroidViewWindow);
             }
           }
         }

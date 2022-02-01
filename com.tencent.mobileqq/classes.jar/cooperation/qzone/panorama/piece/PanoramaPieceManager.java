@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Matrix;
 import android.graphics.Rect;
-import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qqperf.monitor.memory.MemoryManager;
 import cooperation.qzone.panorama.callback.PanoramaTouchListener;
 import cooperation.qzone.panorama.model.ShapeModel;
 import cooperation.qzone.panorama.util.PanoramaConfig.Builder;
@@ -269,9 +269,9 @@ public class PanoramaPieceManager
       this.orgHeight = this.bitmapRegionDecoder.getHeight();
       QZLog.i("PanoramaPieceManager", 4, new Object[] { "orgWidth = ", Integer.valueOf(this.orgWidth), " orgHeight = " + this.orgHeight });
     }
-    this.screenWidth = ViewUtils.getScreenWidth();
-    this.screenHeight = ViewUtils.getScreenHeight();
-    this.maxSize = (MemoryManager.getAvailClassSize() / 8L);
+    this.screenWidth = ViewUtils.a();
+    this.screenHeight = ViewUtils.b();
+    this.maxSize = (MemoryManager.a() / 8L);
     if (this.cachePieceDataList == null) {
       this.cachePieceDataList = new PieceCacheList(this.maxSize);
     }
@@ -604,7 +604,7 @@ public class PanoramaPieceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.panorama.piece.PanoramaPieceManager
  * JD-Core Version:    0.7.0.1
  */

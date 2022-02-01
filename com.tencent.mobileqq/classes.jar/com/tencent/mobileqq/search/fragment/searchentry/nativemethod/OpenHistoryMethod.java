@@ -3,14 +3,14 @@ package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 import android.content.Context;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import aodf;
-import bcmz;
-import bcnc;
-import bkyp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SearchWordHistoryManager;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
+import com.tencent.mobileqq.search.util.SearchConfigUtils;
+import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
+import com.tencent.util.URLUtil;
 import java.util.Iterator;
 import java.util.List;
 import org.jetbrains.annotations.Nullable;
@@ -26,7 +26,7 @@ class OpenHistoryMethod
   @Nullable
   private TKDSearchHistoryBean getTargetHistoryBean(@NonNull HippyMap paramHippyMap)
   {
-    Object localObject = aodf.a().a();
+    Object localObject = SearchWordHistoryManager.a().a();
     int i = paramHippyMap.getInt("id");
     int j = paramHippyMap.getInt("fromWhere");
     paramHippyMap = ((List)localObject).iterator();
@@ -52,14 +52,14 @@ class OpenHistoryMethod
     if (!TextUtils.isEmpty(str2))
     {
       str1 = str2;
-      if (bkyp.a(str2)) {}
+      if (URLUtil.a(str2)) {}
     }
     else
     {
-      str1 = bcmz.b(10);
-      str1 = bcmz.a(paramTKDSearchHistoryBean.getTitle(), 5, str1);
+      str1 = SearchConfigUtils.b(10);
+      str1 = SearchConfigUtils.a(paramTKDSearchHistoryBean.getTitle(), 5, str1);
     }
-    bcnc.a(this.app, this.context, str1);
+    SearchUtils.a(this.app, this.context, str1);
   }
   
   public String getFuncName()
@@ -76,13 +76,13 @@ class OpenHistoryMethod
       return;
     }
     openHistory(paramHippyMap);
-    aodf.a().a(paramHippyMap);
+    SearchWordHistoryManager.a().a(paramHippyMap);
     paramPromise.resolve("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.OpenHistoryMethod
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import bfxp;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-public class TroopNoticeJsHandler$5
+class TroopNoticeJsHandler$5
   implements Runnable
 {
-  public TroopNoticeJsHandler$5(bfxp parambfxp, String paramString) {}
+  TroopNoticeJsHandler$5(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
   
   public void run()
   {

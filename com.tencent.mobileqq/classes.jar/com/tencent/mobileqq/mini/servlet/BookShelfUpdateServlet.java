@@ -4,10 +4,10 @@ import NS_MINI_BOOK_SHELF.MiniBookShelf.Information;
 import NS_MINI_BOOK_SHELF.MiniBookShelf.StUpdateBookShelfReadTimeRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhjl;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
 import org.json.JSONObject;
@@ -72,7 +72,7 @@ public class BookShelfUpdateServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_book_shelf.UpdateBookShelfReadTime");
-    paramPacket.putSendData(bhjl.a((byte[])localObject1));
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

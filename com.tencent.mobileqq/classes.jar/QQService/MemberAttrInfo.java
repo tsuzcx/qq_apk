@@ -8,7 +8,7 @@ public final class MemberAttrInfo
   extends JceStruct
 {
   public String StrValue = "";
-  public int Value;
+  public int Value = 0;
   
   public MemberAttrInfo() {}
   

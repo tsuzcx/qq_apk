@@ -17,33 +17,33 @@ class FileJsPlugin$8
     long l = System.currentTimeMillis();
     if ((TextUtils.isEmpty(this.val$dirPath)) || (this.val$reqParamObj.isNull("dirPath")))
     {
-      FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
-      return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "invalid path");
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
+      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "invalid path");
     }
-    if (((MiniAppFileManager)FileJsPlugin.access$4100(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$dirPath) == 2)
+    if (((MiniAppFileManager)FileJsPlugin.access$3900(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$dirPath) == 2)
     {
-      String str = ((MiniAppFileManager)FileJsPlugin.access$4200(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$dirPath);
+      String str = ((MiniAppFileManager)FileJsPlugin.access$4000(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$dirPath);
       if (!TextUtils.isEmpty(str))
       {
-        FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l, str);
-        return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "file already exists " + this.val$dirPath);
+        FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, str);
+        return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "file already exists " + this.val$dirPath);
       }
-      str = ((MiniAppFileManager)FileJsPlugin.access$4300(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$dirPath);
+      str = ((MiniAppFileManager)FileJsPlugin.access$4100(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$dirPath);
       if ((!TextUtils.isEmpty(str)) && (new File(str).mkdirs()))
       {
-        FileJsPlugin.access$1100(this.this$0, this.val$req.event, true, this.val$startMS, l, str);
-        return FileJsPlugin.access$1300(this.this$0, this.val$req, null);
+        FileJsPlugin.access$900(this.this$0, this.val$req.event, true, this.val$startMS, l, str);
+        return FileJsPlugin.access$1100(this.this$0, this.val$req, null);
       }
-      FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
-      return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
+      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
     }
-    FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
-    return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
+    FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
+    return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "permission denied, open " + this.val$dirPath);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

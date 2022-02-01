@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bgqk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +18,7 @@ public class UsingTimeReportManager
 {
   private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private List<bgqk> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<UsingTimeReportManager.IStateChangeCallBack> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public UsingTimeReportManager(AppInterface paramAppInterface)
   {
@@ -51,7 +50,7 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((bgqk)((Iterator)localObject1).next()).c();
+        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).c();
       }
     }
     finally {}
@@ -65,7 +64,7 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((bgqk)((Iterator)localObject1).next()).d();
+        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).d();
       }
     }
     finally {}
@@ -79,41 +78,41 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((bgqk)((Iterator)localObject1).next()).e();
+        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).e();
       }
     }
     finally {}
   }
   
-  public void a(bgqk parambgqk)
+  public void a(UsingTimeReportManager.IStateChangeCallBack paramIStateChangeCallBack)
   {
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(parambgqk)) {
-        this.jdField_a_of_type_JavaUtilList.add(parambgqk);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramIStateChangeCallBack)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramIStateChangeCallBack);
       }
       return;
     }
     finally
     {
-      parambgqk = finally;
-      throw parambgqk;
+      paramIStateChangeCallBack = finally;
+      throw paramIStateChangeCallBack;
     }
   }
   
-  public void b(bgqk parambgqk)
+  public void b(UsingTimeReportManager.IStateChangeCallBack paramIStateChangeCallBack)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList.contains(parambgqk)) {
-        this.jdField_a_of_type_JavaUtilList.remove(parambgqk);
+      if (this.jdField_a_of_type_JavaUtilList.contains(paramIStateChangeCallBack)) {
+        this.jdField_a_of_type_JavaUtilList.remove(paramIStateChangeCallBack);
       }
       return;
     }
     finally
     {
-      parambgqk = finally;
-      throw parambgqk;
+      paramIStateChangeCallBack = finally;
+      throw paramIStateChangeCallBack;
     }
   }
   

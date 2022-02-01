@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import android.widget.TextView;
-import auea;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class FileManagerUtil$8
-  implements Runnable
+final class FileManagerUtil$8
+  implements ActionSheet.OnButtonClickListener
 {
-  public FileManagerUtil$8(TextView paramTextView, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    auea.b(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.8
  * JD-Core Version:    0.7.0.1
  */

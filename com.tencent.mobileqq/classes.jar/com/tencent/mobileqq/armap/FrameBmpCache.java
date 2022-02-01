@@ -8,11 +8,10 @@ import android.graphics.BitmapFactory.Options;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import aqcw;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.memory.MemoryManager;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,8 +22,8 @@ public class FrameBmpCache
   Resources jdField_a_of_type_AndroidContentResResources;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public MQLruCache<String, Object> a;
-  private aqcw jdField_a_of_type_Aqcw;
   volatile FrameBmpCache.CancelAbleRunnable jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable;
+  private FrameBmpCache.EndListener jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener;
   Object jdField_a_of_type_JavaLangObject = new Object();
   LinkedList<FrameBmpCache.CancelAbleRunnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   public List<String> a;
@@ -33,19 +32,21 @@ public class FrameBmpCache
   private long b;
   public boolean b;
   private int jdField_c_of_type_Int = -1;
-  private volatile boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private volatile boolean jdField_d_of_type_Boolean;
+  private volatile boolean jdField_c_of_type_Boolean = false;
+  private int jdField_d_of_type_Int = 0;
+  private volatile boolean jdField_d_of_type_Boolean = false;
   private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
+  private boolean jdField_e_of_type_Boolean = false;
   private int jdField_f_of_type_Int;
   private boolean jdField_f_of_type_Boolean = true;
   
   public FrameBmpCache(Resources paramResources)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = BaseApplicationImpl.sImageCache;
+    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
     this.jdField_a_of_type_Int = 10;
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentResResources = paramResources;
   }
   
@@ -214,8 +215,8 @@ public class FrameBmpCache
       }
       this.jdField_c_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
       this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Aqcw != null) {
-        this.jdField_a_of_type_Aqcw.a(null);
+      if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener.a(null);
       }
     } while (!this.jdField_d_of_type_Boolean);
     return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
@@ -299,9 +300,9 @@ public class FrameBmpCache
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
   }
   
-  public void a(aqcw paramaqcw)
+  public void a(FrameBmpCache.EndListener paramEndListener)
   {
-    this.jdField_a_of_type_Aqcw = paramaqcw;
+    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener = paramEndListener;
   }
   
   public void a(List<String> paramList)
@@ -309,7 +310,7 @@ public class FrameBmpCache
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_f_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = false;
-    if (MemoryManager.getAvailClassSize() <= 37748736L) {
+    if (MemoryManager.a() <= 37748736L) {
       this.jdField_f_of_type_Boolean = false;
     }
     QLog.d("FrameBmpCache", 1, "mUseHighQuality=" + this.jdField_f_of_type_Boolean);

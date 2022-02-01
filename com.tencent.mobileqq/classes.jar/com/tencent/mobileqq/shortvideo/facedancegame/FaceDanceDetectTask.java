@@ -3,7 +3,6 @@ package com.tencent.mobileqq.shortvideo.facedancegame;
 import android.annotation.SuppressLint;
 import android.graphics.PointF;
 import android.os.SystemClock;
-import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy;
 import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
 import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.DancePosture;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.TreeSet;
 
 @SuppressLint({"NewApi"})
 public class FaceDanceDetectTask
@@ -379,25 +377,6 @@ public class FaceDanceDetectTask
     this.mTaskStatus = 0;
   }
   
-  public void postTask(byte[] paramArrayOfByte, Frame paramFrame, int paramInt1, int paramInt2, TreeSet<GLLittleBoy> paramTreeSet)
-  {
-    if ((this.mqqFilterRenderManager == null) || (paramArrayOfByte == null) || (paramFrame == null) || (paramTreeSet == null) || (paramTreeSet.size() == 0)) {
-      return;
-    }
-    this.mTaskStatus = 1;
-    ResetTask();
-    this.mTaskBeginTime = SystemClock.elapsedRealtimeNanos();
-    paramTreeSet = paramTreeSet.iterator();
-    while (paramTreeSet.hasNext())
-    {
-      GLLittleBoy localGLLittleBoy = (GLLittleBoy)paramTreeSet.next();
-      this.littleBoyReferenceList.add(new WeakReference(localGLLittleBoy));
-    }
-    this.mTaskStatus = 2;
-    this.mqqFilterRenderManager.doAEDetectWithCallBack(paramFrame, paramInt1, paramInt2, this);
-    GestureDetectManager.getInstance().doGestureDetectWithCallBack(paramArrayOfByte, paramInt1, paramInt2, this);
-  }
-  
   public void setQQFilterRenderManager(QQFilterRenderManager paramQQFilterRenderManager)
   {
     this.mqqFilterRenderManager = paramQQFilterRenderManager;
@@ -421,7 +400,7 @@ public class FaceDanceDetectTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask
  * JD-Core Version:    0.7.0.1
  */

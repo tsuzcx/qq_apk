@@ -9,6 +9,9 @@ import java.util.List;
 
 public class YoutuPointsUtil
 {
+  private static final int LEN_83 = 166;
+  private static final int LEN_90 = 180;
+  
   private static void adjustEyeFeatureFloat(float[] paramArrayOfFloat)
   {
     paramArrayOfFloat[40] = ((float)(paramArrayOfFloat[38] + (paramArrayOfFloat[40] - paramArrayOfFloat[38]) * 0.98D));
@@ -94,6 +97,12 @@ public class YoutuPointsUtil
     }
   }
   
+  private static void calculatePoints(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramArrayOfFloat1[(paramInt1 * 2)] = (getFacePointX(paramArrayOfFloat2, paramInt2) + (getFacePointX(paramArrayOfFloat2, paramInt3) - getFacePointX(paramArrayOfFloat2, paramInt2)) / 2.0F);
+    paramArrayOfFloat1[(paramInt1 * 2 + 1)] = (getFacePointY(paramArrayOfFloat2, paramInt2) + (getFacePointY(paramArrayOfFloat2, paramInt3) - getFacePointY(paramArrayOfFloat2, paramInt2)) / 2.0F);
+  }
+  
   private static float getArrayMiddleFloat(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
     Float localFloat = Float.valueOf(0.0F);
@@ -119,6 +128,22 @@ public class YoutuPointsUtil
     localPointF.x /= (paramInt2 - paramInt1 + 1);
     localPointF.y /= (paramInt2 - paramInt1 + 1);
     return localPointF;
+  }
+  
+  private static float getFacePointX(float[] paramArrayOfFloat, int paramInt)
+  {
+    if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length > paramInt * 2)) {
+      return paramArrayOfFloat[(paramInt * 2)];
+    }
+    return 0.0F;
+  }
+  
+  public static float getFacePointY(float[] paramArrayOfFloat, int paramInt)
+  {
+    if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length > paramInt * 2 + 1)) {
+      return paramArrayOfFloat[(paramInt * 2 + 1)];
+    }
+    return 0.0F;
   }
   
   public static List<PointF> getIris3Points(List<List<PointF>> paramList1, List<List<PointF>> paramList2)
@@ -244,6 +269,44 @@ public class YoutuPointsUtil
         }
       }
     }
+  }
+  
+  public static float[] transform83PointsTo90(float[] paramArrayOfFloat)
+  {
+    float[] arrayOfFloat = new float['´'];
+    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 166)) {
+      return arrayOfFloat;
+    }
+    int j = 0;
+    int i = 0;
+    while (i < 83)
+    {
+      arrayOfFloat[(i * 2)] = paramArrayOfFloat[(i * 2)];
+      arrayOfFloat[(i * 2 + 1)] = paramArrayOfFloat[(i * 2 + 1)];
+      j += 1;
+      i += 1;
+    }
+    arrayOfFloat[(j * 2)] = (getFacePointX(paramArrayOfFloat, 55) + (getFacePointX(paramArrayOfFloat, 63) - getFacePointX(paramArrayOfFloat, 55)) / 2.0F);
+    arrayOfFloat[(j * 2 + 1)] = (getFacePointY(paramArrayOfFloat, 55) + (getFacePointY(paramArrayOfFloat, 63) - getFacePointY(paramArrayOfFloat, 55)) / 2.0F);
+    i = j + 1;
+    arrayOfFloat[(i * 2)] = (getFacePointX(paramArrayOfFloat, 23) + (getFacePointX(paramArrayOfFloat, 31) - getFacePointX(paramArrayOfFloat, 23)) / 2.0F);
+    arrayOfFloat[(i * 2 + 1)] = (getFacePointY(paramArrayOfFloat, 23) + (getFacePointY(paramArrayOfFloat, 31) - getFacePointY(paramArrayOfFloat, 23)) / 2.0F);
+    i += 1;
+    arrayOfFloat[(i * 2)] = (getFacePointX(paramArrayOfFloat, 59) + (getFacePointX(paramArrayOfFloat, 77) - getFacePointX(paramArrayOfFloat, 59)) / 2.0F);
+    arrayOfFloat[(i * 2 + 1)] = (getFacePointY(paramArrayOfFloat, 59) + (getFacePointY(paramArrayOfFloat, 77) - getFacePointY(paramArrayOfFloat, 59)) / 2.0F);
+    i += 1;
+    arrayOfFloat[(i * 2)] = (getFacePointX(paramArrayOfFloat, 35) + (getFacePointX(paramArrayOfFloat, 35) - getFacePointX(paramArrayOfFloat, 6)));
+    arrayOfFloat[(i * 2 + 1)] = (getFacePointY(paramArrayOfFloat, 35) + (getFacePointY(paramArrayOfFloat, 35) - getFacePointY(paramArrayOfFloat, 6)));
+    i += 1;
+    arrayOfFloat[(i * 2)] = (getFacePointX(paramArrayOfFloat, 64) + (getFacePointX(paramArrayOfFloat, 64) - getFacePointX(paramArrayOfFloat, 9)) * 1.4F);
+    arrayOfFloat[(i * 2 + 1)] = (getFacePointY(paramArrayOfFloat, 64) + (getFacePointY(paramArrayOfFloat, 64) - getFacePointY(paramArrayOfFloat, 9)) * 1.4F);
+    i += 1;
+    arrayOfFloat[(i * 2)] = (getFacePointX(paramArrayOfFloat, 45) + (getFacePointX(paramArrayOfFloat, 45) - getFacePointX(paramArrayOfFloat, 12)));
+    arrayOfFloat[(i * 2 + 1)] = (getFacePointY(paramArrayOfFloat, 45) + (getFacePointY(paramArrayOfFloat, 45) - getFacePointY(paramArrayOfFloat, 12)));
+    i += 1;
+    arrayOfFloat[(i * 2)] = (getFacePointX(arrayOfFloat, 83) + (getFacePointX(arrayOfFloat, 83) - getFacePointX(arrayOfFloat, 59)));
+    arrayOfFloat[(i * 2 + 1)] = (getFacePointY(arrayOfFloat, 83) + (getFacePointY(arrayOfFloat, 83) - getFacePointY(arrayOfFloat, 59)));
+    return arrayOfFloat;
   }
   
   public static List<PointF> transform90PointsTo83(float[] paramArrayOfFloat)
@@ -452,7 +515,7 @@ public class YoutuPointsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.YoutuPointsUtil
  * JD-Core Version:    0.7.0.1
  */

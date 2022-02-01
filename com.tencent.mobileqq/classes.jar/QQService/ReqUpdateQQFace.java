@@ -9,9 +9,9 @@ public final class ReqUpdateQQFace
 {
   static FaceInfo cache_stFaceInfo;
   static ReqHead cache_stHeader;
-  public int bPicType;
-  public FaceInfo stFaceInfo;
-  public ReqHead stHeader;
+  public int bPicType = 0;
+  public FaceInfo stFaceInfo = null;
+  public ReqHead stHeader = null;
   
   public ReqUpdateQQFace() {}
   

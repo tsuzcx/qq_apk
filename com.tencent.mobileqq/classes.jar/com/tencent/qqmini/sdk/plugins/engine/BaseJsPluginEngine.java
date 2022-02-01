@@ -87,14 +87,15 @@ public abstract class BaseJsPluginEngine
   public static final String SETTING_APP_MSG_SUBSCRIBED = "setting.appMsgSubscribed";
   public static final String SETTING_APP_ONCE_MSG_SUBSCRIBED = "setting.onceMsgSubscribed";
   public static final String SETTING_SYS_MSG_SUBSCRIBED = "setting.sysMsgSubscribed";
+  private static final int SUBSCRIBE_CODE_FAIL_OTHER = -2;
+  private static final int SUBSCRIBE_CODE_REJECT = -1;
+  private static final int SUBSCRIBE_CODE_REJECT_FIRST = 0;
+  private static final int SUBSCRIBE_CODE_SUC = 1;
   private static final String TAG = "JsPluginEngine[AuthGuard]";
   private static final int WHAT_NOTIFY_SCOPE_PERMISSION_QUEUE = 1;
   private static final int WHAT_SHOW_AUTH_DIALOG = 2;
-  private final int SUBSCRIBE_CODE_FAIL_OTHER = -2;
-  private final int SUBSCRIBE_CODE_REJECT = -1;
-  private final int SUBSCRIBE_CODE_REJECT_FIRST = 0;
-  private final int SUBSCRIBE_CODE_SUC = 1;
   AuthDialog authDialog;
+  private RequestEvent curScopeEvent;
   private DialogInterface.OnDismissListener dismissListener = new BaseJsPluginEngine.3(this);
   private boolean isFirstTimeRequestAuth;
   private Handler mHandler = new Handler(Looper.getMainLooper(), new BaseJsPluginEngine.4(this));
@@ -111,8 +112,6 @@ public abstract class BaseJsPluginEngine
   
   private String checkRequestScopePermission(RequestEvent paramRequestEvent)
   {
-    boolean bool4 = false;
-    boolean bool3 = true;
     String str1 = paramRequestEvent.event;
     String str2 = paramRequestEvent.jsonParams;
     if ("subscribeAppMsg".equals(str1)) {
@@ -131,65 +130,55 @@ public abstract class BaseJsPluginEngine
     String str3 = getAppId();
     AuthState localAuthState = MiniAppEnv.g().getAuthSate(str3);
     String str4 = getRequestScopePermission(str1, str2);
-    if (((AuthFilterList.apiAuthoritySilent(this.mMiniAppContext.getMiniAppInfo())) || (AuthFilterList.isAppInWhiteList(str3))) && (localAuthState.getAuthFlag(str4) == 1)) {
-      setScopePermissionAuthState(str4, true);
-    }
-    for (boolean bool2 = true;; bool2 = false)
+    if (isGrantedAuthorize(str1, str2, str3, localAuthState, str4))
     {
-      boolean bool1 = bool2;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        if (isOpenDataEvent(str1, str2)) {
-          bool1 = true;
-        }
+      if ("authorize".equals(paramRequestEvent.event)) {
+        return handleAuthorizeEvent(paramRequestEvent);
       }
-      bool2 = bool1;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        if (str4 == null) {
-          bool2 = true;
-        }
-      }
-      bool1 = bool2;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        if (getScopePermissionAuthFlag(str4, str2) == 2) {
-          bool1 = true;
-        }
-      }
-      if ((bool1) && (shouldAskEveryTime(str4))) {
-        bool1 = bool4;
-      }
-      for (;;)
-      {
-        if ((!bool1) && (isMakeReuqestFirstEvent(str1))) {
-          bool1 = bool3;
-        }
-        for (;;)
-        {
-          if (!bool1) {
-            QMLog.e("JsPluginEngine[AuthGuard]", "checkRequestScopePermission granted=" + bool1 + ",eventName=" + str1);
-          }
-          if (bool1)
-          {
-            if ("authorize".equals(paramRequestEvent.event)) {
-              return handleAuthorizeEvent(paramRequestEvent);
-            }
-            return dispatchRequestEvent(paramRequestEvent);
-          }
-          showRequestPermissionDialog(paramRequestEvent, str4);
-          return "";
-        }
-      }
+      return dispatchRequestEvent(paramRequestEvent);
     }
+    showRequestPermissionDialog(paramRequestEvent, str4);
+    return "";
   }
   
   private RequestEvent createRequestEvent(String paramString1, String paramString2, IJsService paramIJsService, int paramInt)
   {
     return new RequestEvent.Builder().setEvent(paramString1).setJsonParams(paramString2).setJsService(paramIJsService).setCallbackId(paramInt).build();
+  }
+  
+  private void doShowAuthDialog(String paramString1, String paramString2)
+  {
+    Object localObject = PermissionManager.g().getScopePermission(paramString2);
+    String str1 = "";
+    String str2 = "";
+    String str4 = "";
+    String str3 = "";
+    if (localObject != null)
+    {
+      str1 = ((PermissionInfo)localObject).name;
+      str2 = ((PermissionInfo)localObject).description;
+      str4 = ((PermissionInfo)localObject).rejectDescription;
+      str3 = ((PermissionInfo)localObject).reportSubAction;
+    }
+    localObject = this.mMiniAppContext.getContext();
+    ApkgInfo localApkgInfo = getApkgInfo();
+    ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    String str5;
+    String str6;
+    if (localApkgInfo != null)
+    {
+      str5 = localApkgInfo.iconUrl;
+      str6 = localApkgInfo.apkgName;
+      if ("scope.userInfo".equals(paramString2)) {
+        showScopeUserInfoAuthDialog(str1, str2, str3, (Context)localObject, localApkgInfo, localChannelProxy, localMiniAppProxy, str5, str6);
+      }
+    }
+    else
+    {
+      return;
+    }
+    showDefaultAuthDialog(paramString1, str1, str2, str4, str3, (Context)localObject, localMiniAppProxy, str5, str6);
   }
   
   private static String extractApiNameInJsonParams(String paramString)
@@ -237,6 +226,22 @@ public abstract class BaseJsPluginEngine
     }
     label39:
     return paramString;
+  }
+  
+  private int getAuthDialogType(String paramString)
+  {
+    int i = 1;
+    if ("getPhoneNumber".equals(paramString)) {
+      i = 2;
+    }
+    do
+    {
+      return i;
+      if ("subscribeOnceAppMsg".equals(paramString)) {
+        return 3;
+      }
+    } while (!"requestSubscribeSystemMessage".equals(paramString));
+    return 4;
   }
   
   private static String getRequestScopePermission(String paramString1, String paramString2)
@@ -319,6 +324,35 @@ public abstract class BaseJsPluginEngine
     return new BaseJsPluginEngine.2(this, paramBoolean1, paramList1, paramList2, paramList3, paramBoolean2);
   }
   
+  private void grantSubscribePermissionSilent(AuthState paramAuthState, String paramString, RequestEvent paramRequestEvent)
+  {
+    paramAuthState.setAuthState(paramString, true, new BaseJsPluginEngine.8(this, paramRequestEvent));
+  }
+  
+  private void handleAuthRefuse(Message paramMessage, Iterator<RequestEvent> paramIterator)
+  {
+    paramMessage = (String)paramMessage.obj;
+    QMLog.e("JsPluginEngine[AuthGuard]", "handleAuthRefuse, scopeName:" + paramMessage);
+    if ((!TextUtils.isEmpty(paramMessage)) && (!paramMessage.equals("setting.appMsgSubscribed")))
+    {
+      if (paramMessage.equals("scope.camera")) {
+        this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain("onCameraNeedAuthCancel", null, 0));
+      }
+      if ((this.curScopeEvent != null) && (paramMessage.equals(getRequestScopePermission(this.curScopeEvent.event, this.curScopeEvent.jsonParams)))) {
+        this.curScopeEvent.fail("auth deny");
+      }
+      while (paramIterator.hasNext())
+      {
+        RequestEvent localRequestEvent = (RequestEvent)paramIterator.next();
+        if (paramMessage.equals(getRequestScopePermission(localRequestEvent.event, localRequestEvent.jsonParams)))
+        {
+          paramIterator.remove();
+          localRequestEvent.fail("auth deny");
+        }
+      }
+    }
+  }
+  
   private String handleAuthorizeEvent(RequestEvent paramRequestEvent)
   {
     for (;;)
@@ -361,6 +395,17 @@ public abstract class BaseJsPluginEngine
         continue;
       }
       paramRequestEvent.ok();
+    }
+  }
+  
+  private void handleNextScopeReq()
+  {
+    this.curScopeEvent = null;
+    RequestEvent localRequestEvent = (RequestEvent)this.scopePermissionQueue.poll();
+    if (localRequestEvent != null)
+    {
+      QMLog.e("JsPluginEngine[AuthGuard]", "handleNextScopeReq, event : " + localRequestEvent.event + "; jsonParams : " + localRequestEvent.jsonParams);
+      sendShowAuthDialogMessage(localRequestEvent);
     }
   }
   
@@ -410,34 +455,29 @@ public abstract class BaseJsPluginEngine
       if (((INTERFACE.StSubscribeMessage)localObject3).authState.get() == 2)
       {
         localArrayList3.add(localObject3);
-        break label367;
+        break label341;
         label219:
         localObject3 = MiniAppEnv.g().getAuthSate(getAppId());
-        if ((localArrayList2.size() > 0) || (localArrayList3.size() > 0))
+        recordIfNeedMaintain(localThrowable, localArrayList2, localArrayList3, (AuthState)localObject3);
+        if ((localArrayList1.size() > 0) && (localArrayList1.size() <= 3))
         {
-          if (!"setting.sysMsgSubscribed".equals(localThrowable)) {
-            break label298;
+          if (AuthFilterList.apiAuthoritySilent(this.mMiniAppContext.getMiniAppInfo()))
+          {
+            grantOnceSubscribeApiPermissionSilent(localThrowable, paramRequestEvent, (byte[])localObject1);
+            return;
           }
-          ((AuthState)localObject3).updateIsSysSubMsgMaintain(true);
-        }
-        while ((localArrayList1.size() > 0) && (localArrayList1.size() <= 3))
-        {
           showOnceSubMsgReqDialog(localThrowable, paramRequestEvent, (byte[])localObject1);
           return;
-          label298:
-          if ("setting.onceMsgSubscribed".equals(localThrowable)) {
-            ((AuthState)localObject3).updateIsOnceSubMsgMaintain(true);
-          }
         }
         if (("setting.onceMsgSubscribed".equals(localThrowable)) && (localArrayList2.size() > 0))
         {
-          ((AuthState)localObject3).updateOnceSubMsgSetting(localThrowable, true, localArrayList2, new BaseJsPluginEngine.9(this, paramRequestEvent, (List)localObject2));
+          updateOnceMsgSubscribedItem(paramRequestEvent, localThrowable, (List)localObject2, localArrayList2, (AuthState)localObject3);
           return;
         }
         onceSubMsgCallbackSuc(paramRequestEvent, (List)localObject2);
         return;
       }
-      label367:
+      label341:
       i += 1;
     }
   }
@@ -474,6 +514,12 @@ public abstract class BaseJsPluginEngine
       QMLog.e("JsPluginEngine[AuthGuard]", "handleOperateWXDataScopeName " + paramString1.getMessage(), paramString1);
     }
     return paramString2;
+  }
+  
+  private void handleRequestSystemPermission(RequestEvent paramRequestEvent, String paramString1, String paramString2, String paramString3, Activity paramActivity)
+  {
+    ActivityResultManager.g().addRequestPermissionResultListener(new BaseJsPluginEngine.5(this, paramString3, paramString1, paramString2, paramRequestEvent));
+    paramActivity.requestPermissions(new String[] { paramString3 }, 9527);
   }
   
   private void handleSubMsgAuthListData(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, List<INTERFACE.StSubscribeMessage> paramList1, List<INTERFACE.StSubscribeMessage> paramList2)
@@ -584,9 +630,85 @@ public abstract class BaseJsPluginEngine
     ((AsyncResult)localObject1).onReceiveResult(true, null);
   }
   
+  private void initAuthDialog(Bundle paramBundle, Activity paramActivity, int paramInt)
+  {
+    if ((this.authDialog == null) || (this.authDialog.getAuthDialogType() != paramInt))
+    {
+      this.authDialog = new AuthDialog(paramActivity, paramInt);
+      if ((paramInt != 3) && (paramInt != 4)) {
+        break label61;
+      }
+      this.authDialog.setOnDismissListener(this.onceSubDismissListener);
+    }
+    for (;;)
+    {
+      this.authDialog.bindData(paramBundle);
+      return;
+      label61:
+      this.authDialog.setOnDismissListener(this.dismissListener);
+    }
+  }
+  
+  private boolean isGrantedAuthorize(String paramString1, String paramString2, String paramString3, AuthState paramAuthState, String paramString4)
+  {
+    boolean bool4 = false;
+    boolean bool3 = true;
+    if (((AuthFilterList.apiAuthoritySilent(this.mMiniAppContext.getMiniAppInfo())) || (AuthFilterList.isAppInWhiteList(paramString3))) && (paramAuthState.getAuthFlag(paramString4) == 1)) {
+      setScopePermissionAuthState(paramString4, true);
+    }
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      boolean bool1 = bool2;
+      if (!bool2)
+      {
+        bool1 = bool2;
+        if (isOpenDataEvent(paramString1, paramString2)) {
+          bool1 = true;
+        }
+      }
+      bool2 = bool1;
+      if (!bool1)
+      {
+        bool2 = bool1;
+        if (paramString4 == null) {
+          bool2 = true;
+        }
+      }
+      bool1 = bool2;
+      if (!bool2)
+      {
+        bool1 = bool2;
+        if (getScopePermissionAuthFlag(paramString4, paramString2) == 2) {
+          bool1 = true;
+        }
+      }
+      if ((bool1) && (shouldAskEveryTime(paramString4))) {
+        bool1 = bool4;
+      }
+      for (;;)
+      {
+        if ((!bool1) && (isMakeReuqestFirstEvent(paramString1))) {
+          bool1 = bool3;
+        }
+        for (;;)
+        {
+          if (!bool1) {
+            QMLog.e("JsPluginEngine[AuthGuard]", "checkRequestScopePermission granted=" + bool1 + ",eventName=" + paramString1);
+          }
+          return bool1;
+        }
+      }
+    }
+  }
+  
   private boolean isMakeReuqestFirstEvent(String paramString)
   {
     return "getPhoneNumber".equals(paramString);
+  }
+  
+  private static boolean isOpenDataApi(String paramString)
+  {
+    return ("webapi_getuserinfo_opendata".equals(paramString)) || ("webapi_getadvert".equals(paramString)) || ("webapi_getwerunstep_history".equals(paramString)) || ("advert_tap".equals(paramString)) || ("getBlockAd".equals(paramString)) || ("webapi_getnavigatewxaappinfo".equals(paramString)) || ("webapi_plugin_setauth".equals(paramString));
   }
   
   private static boolean isOpenDataEvent(String paramString1, String paramString2)
@@ -596,10 +718,7 @@ public abstract class BaseJsPluginEngine
     {
       paramString2 = new JSONObject(paramString2).optJSONObject("data");
       paramString1 = paramString2.optString("api_name");
-      if (("webapi_getuserinfo_opendata".equals(paramString1)) || ("webapi_getadvert".equals(paramString1)) || ("webapi_getwerunstep_history".equals(paramString1)) || ("advert_tap".equals(paramString1)) || ("getBlockAd".equals(paramString1)) || ("webapi_getnavigatewxaappinfo".equals(paramString1))) {
-        break label174;
-      }
-      if ("webapi_plugin_setauth".equals(paramString1)) {
+      if (isOpenDataApi(paramString1)) {
         return true;
       }
       if (("webapi_plugin_login".equals(paramString1)) || ("webapi_plugin_getuserinfo".equals(paramString1)))
@@ -611,18 +730,18 @@ public abstract class BaseJsPluginEngine
         {
           boolean bool = str.equals(getScopePluginSetauthName(paramString1, paramString2));
           if (bool) {
-            break label174;
+            break label111;
           }
         }
       }
     }
     catch (Throwable paramString1)
     {
-      label168:
-      break label168;
+      label105:
+      break label105;
     }
     return false;
-    label174:
+    label111:
     return true;
   }
   
@@ -653,47 +772,83 @@ public abstract class BaseJsPluginEngine
     }
   }
   
-  private void notifyScopePermissionQueue(Message paramMessage)
+  private boolean needShowAuthDialog(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    Object localObject = this.scopePermissionQueue.iterator();
-    if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 2))
+    if ((!paramBoolean) || (shouldAskEveryTime(paramString1))) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      String str = (String)paramMessage.obj;
-      if ((!TextUtils.isEmpty(str)) && (!str.equals("setting.appMsgSubscribed")))
+      try
       {
-        if (str.equals("scope.camera")) {
-          this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain("onCameraNeedAuthCancel", null, 0));
-        }
-        while (((Iterator)localObject).hasNext())
+        if ("operateWXData".equals(paramString2))
         {
-          RequestEvent localRequestEvent = (RequestEvent)((Iterator)localObject).next();
-          if (str.equals(getRequestScopePermission(localRequestEvent.event, localRequestEvent.jsonParams)))
+          paramString1 = new JSONObject(paramString3).optJSONObject("data");
+          paramString2 = paramString1.optString("api_name");
+          if (("webapi_getuserinfo".equals(paramString2)) || ("getSubjectalterInfo".equals(paramString2)) || ("webapi_wxa_subscribe_biz".endsWith(paramString2))) {
+            return paramString1.optBoolean("from_component");
+          }
+          if ((!"webapi_plugin_login".equals(paramString2)) && (!"webapi_plugin_getuserinfo".equals(paramString2)))
           {
-            ((Iterator)localObject).remove();
-            localRequestEvent.fail("auth deny");
+            boolean bool = "webapi_plugin_setauth".equals(paramString2);
+            if (!bool) {}
+          }
+          else
+          {
+            return false;
           }
         }
       }
-    }
-    localObject = (RequestEvent)this.scopePermissionQueue.peek();
-    if (localObject != null)
-    {
-      if (("authorize".equals(((RequestEvent)localObject).event)) && (paramMessage.arg1 == 1))
+      catch (Throwable paramString1)
       {
-        this.scopePermissionQueue.remove(localObject);
-        ((RequestEvent)localObject).ok();
+        QMLog.e("JsPluginEngine[AuthGuard]", Log.getStackTraceString(paramString1));
+      }
+      return paramBoolean;
+    }
+  }
+  
+  private void notifyScopePermissionQueue(Message paramMessage)
+  {
+    Iterator localIterator = this.scopePermissionQueue.iterator();
+    if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 2))
+    {
+      QMLog.e("JsPluginEngine[AuthGuard]", "notifyScopePermissionQueue AUTH_FLAG_CANCEL / AUTH_FLAG_REFUSE");
+      handleAuthRefuse(paramMessage, localIterator);
+      if ((this.curScopeEvent == null) || (!"subscribeAppMsg".equals(this.curScopeEvent.event))) {
+        break label125;
+      }
+      reqGrantSubscribeApiPermission(this.curScopeEvent);
+    }
+    for (;;)
+    {
+      handleNextScopeReq();
+      return;
+      if ((this.curScopeEvent == null) || (!"authorize".equals(this.curScopeEvent.event)) || (paramMessage.arg1 != 1)) {
+        break;
+      }
+      this.curScopeEvent.ok();
+      QMLog.e("JsPluginEngine[AuthGuard]", "notifyScopePermissionQueue AUTH_FLAG_GRANT && EVENT_AUTHORIZE");
+      handleNextScopeReq();
+      return;
+      label125:
+      if (this.curScopeEvent != null) {
+        dispatchRequestEvent(this.curScopeEvent);
       }
     }
-    else {
-      return;
-    }
-    this.scopePermissionQueue.remove(localObject);
-    if ("subscribeAppMsg".equals(((RequestEvent)localObject).event))
+  }
+  
+  private void recordIfNeedMaintain(String paramString, List<INTERFACE.StSubscribeMessage> paramList1, List<INTERFACE.StSubscribeMessage> paramList2, AuthState paramAuthState)
+  {
+    if ((paramList1.size() > 0) || (paramList2.size() > 0))
     {
-      reqGrantSubscribeApiPermission((RequestEvent)localObject);
+      if (!"setting.sysMsgSubscribed".equals(paramString)) {
+        break label34;
+      }
+      paramAuthState.updateIsSysSubMsgMaintain(true);
+    }
+    label34:
+    while (!"setting.onceMsgSubscribed".equals(paramString)) {
       return;
     }
-    dispatchRequestEvent((RequestEvent)localObject);
+    paramAuthState.updateIsOnceSubMsgMaintain(true);
   }
   
   private void removeAllMessage()
@@ -735,7 +890,7 @@ public abstract class BaseJsPluginEngine
       localArrayList.add(localJSONArray.getString(i));
       i += 1;
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserSetting(getAppId(), "", "setting.onceMsgSubscribed", localArrayList, new BaseJsPluginEngine.8(this, paramRequestEvent));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserSetting(getAppId(), "", "setting.onceMsgSubscribed", localArrayList, new BaseJsPluginEngine.9(this, paramRequestEvent));
     return;
     label159:
     QMLog.e("JsPluginEngine[AuthGuard]", "reqGrantOnceSubscribeApiPermission: tmplIdJsonArr is null!");
@@ -756,10 +911,14 @@ public abstract class BaseJsPluginEngine
       paramRequestEvent.fail("Invalid SDK host, no permission");
       return "";
     }
+    if (AuthFilterList.apiAuthoritySilent(this.mMiniAppContext.getMiniAppInfo()))
+    {
+      grantSubscribePermissionSilent((AuthState)localObject2, (String)localObject1, paramRequestEvent);
+      return "";
+    }
     if (((AuthState)localObject2).getAuthFlag((String)localObject1) == 1)
     {
       this.isFirstTimeRequestAuth = true;
-      this.scopePermissionQueue.offer(paramRequestEvent);
       if ((this.authDialog == null) || (!this.authDialog.isShowing()))
       {
         localObject2 = this.mHandler.obtainMessage(2);
@@ -778,7 +937,6 @@ public abstract class BaseJsPluginEngine
       if (((AuthState)localObject2).isPermissionGranted((String)localObject1))
       {
         this.isFirstTimeRequestAuth = false;
-        ((AuthState)localObject2).setAuthState((String)localObject1, true);
         localObject1 = new JSONObject();
         try
         {
@@ -850,6 +1008,11 @@ public abstract class BaseJsPluginEngine
     ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserSetting(getAppId(), "", "setting.sysMsgSubscribed", localArrayList, new BaseJsPluginEngine.7(this, paramRequestEvent));
   }
   
+  private void sendShowAuthDialogMessage(RequestEvent paramRequestEvent)
+  {
+    sendShowAuthDialogMessage(paramRequestEvent, extractScopeNameInJsonParams(paramRequestEvent.jsonParams), true);
+  }
+  
   private void sendShowAuthDialogMessage(RequestEvent paramRequestEvent, String paramString)
   {
     sendShowAuthDialogMessage(paramRequestEvent, paramString, true);
@@ -857,22 +1020,26 @@ public abstract class BaseJsPluginEngine
   
   private void sendShowAuthDialogMessage(RequestEvent paramRequestEvent, String paramString, boolean paramBoolean)
   {
-    QMLog.d("JsPluginEngine[AuthGuard]", "sendShowAuthDialogMessage addScopePermissionQueue : " + paramBoolean + "; event : " + paramRequestEvent.event);
-    if (paramBoolean) {
-      this.scopePermissionQueue.offer(paramRequestEvent);
-    }
-    if ((this.authDialog == null) || (!this.authDialog.isShowing()))
+    if (((this.authDialog == null) || (!this.authDialog.isShowing())) && (this.curScopeEvent == null))
     {
-      Message localMessage = this.mHandler.obtainMessage(2);
-      Bundle localBundle = new Bundle();
+      this.curScopeEvent = paramRequestEvent;
+      localBundle = new Bundle();
       localBundle.putString("key_event_name", paramRequestEvent.event);
       localBundle.putString("key_params", paramRequestEvent.jsonParams);
       localBundle.putString("key_scope_name", paramString);
       localBundle.putInt("key_callback_id", paramRequestEvent.callbackId);
       localBundle.putString("key_appid", getAppId());
-      localMessage.setData(localBundle);
-      localMessage.sendToTarget();
+      paramRequestEvent = this.mHandler.obtainMessage(2);
+      paramRequestEvent.setData(localBundle);
+      paramRequestEvent.sendToTarget();
     }
+    while ((!paramBoolean) || (paramRequestEvent == null))
+    {
+      Bundle localBundle;
+      return;
+    }
+    QMLog.d("JsPluginEngine[AuthGuard]", "sendShowAuthDialogMessage scopePermissionQueue.offer, event : " + paramRequestEvent.event + "; jsonParams : " + paramRequestEvent.jsonParams);
+    this.scopePermissionQueue.offer(paramRequestEvent);
   }
   
   private void setScopePermissionAuthState(String paramString, boolean paramBoolean)
@@ -889,110 +1056,55 @@ public abstract class BaseJsPluginEngine
   
   private void showAuthDialog(Bundle paramBundle)
   {
-    Object localObject1 = this.mMiniAppContext.getAttachedActivity();
-    if ((localObject1 == null) || (((Activity)localObject1).isFinishing())) {
+    Activity localActivity = this.mMiniAppContext.getAttachedActivity();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
       QMLog.w("JsPluginEngine[AuthGuard]", "showAuthDialog(). Do nothing, activity is null or finishing");
     }
-    Object localObject2;
-    int i;
-    label65:
-    label106:
-    Object localObject4;
+    String str1;
     do
     {
       return;
-      str1 = paramBundle.getString("key_event_name", "");
-      localObject2 = paramBundle.getString("key_params", "");
-      i = 1;
-      if (!"getPhoneNumber".equals(str1)) {
-        break;
-      }
-      i = 2;
-      if (this.authDialog == null)
-      {
-        this.authDialog = new AuthDialog((Activity)localObject1, i);
-        if ((i != 3) && (i != 4)) {
-          break label318;
-        }
-        this.authDialog.setOnDismissListener(this.onceSubDismissListener);
-      }
-      this.authDialog.bindData(paramBundle);
-      localObject4 = paramBundle.getString("key_scope_name", "");
-    } while (localObject4 == null);
-    Object localObject5 = PermissionManager.g().getScopePermission((String)localObject4);
-    localObject1 = "";
-    String str1 = "";
-    String str2 = "";
-    if (localObject5 != null)
-    {
-      localObject1 = ((PermissionInfo)localObject5).name;
-      str1 = ((PermissionInfo)localObject5).description;
-      paramBundle = ((PermissionInfo)localObject5).rejectDescription;
-      str2 = ((PermissionInfo)localObject5).reportSubAction;
+      String str2 = paramBundle.getString("key_event_name", "");
+      str1 = paramBundle.getString("key_params", "");
+      QMLog.d("JsPluginEngine[AuthGuard]", "showAuthDialog, event: " + str2 + ";params : " + str1);
+      initAuthDialog(paramBundle, localActivity, getAuthDialogType(str2));
+      paramBundle = paramBundle.getString("key_scope_name", "");
+    } while (paramBundle == null);
+    doShowAuthDialog(str1, paramBundle);
+  }
+  
+  private void showDefaultAuthDialog(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Context paramContext, MiniAppProxy paramMiniAppProxy, String paramString6, String paramString7)
+  {
+    if (this.authDialog != null) {
+      localAuthDialogResBuilder = null;
     }
-    for (;;)
+    try
     {
-      localObject5 = this.mMiniAppContext.getContext();
-      Object localObject6 = getApkgInfo();
-      ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      if (localObject6 == null) {
-        break;
-      }
-      String str3 = ((ApkgInfo)localObject6).iconUrl;
-      String str4 = ((ApkgInfo)localObject6).apkgName;
-      if ("scope.userInfo".equals(localObject4))
+      JSONObject localJSONObject = new JSONObject(paramString1).optJSONObject("getPhoneNumber");
+      paramString1 = localAuthDialogResBuilder;
+      if (localJSONObject != null)
       {
-        localChannelProxy.getUserInfo(((ApkgInfo)localObject6).appId, false, "en", new BaseJsPluginEngine.10(this, localMiniAppProxy, (Context)localObject5, str3, str4, (String)localObject1, str1, str2));
-        return;
-        if ("subscribeOnceAppMsg".equals(str1))
-        {
-          i = 3;
-          break label65;
-        }
-        if (!"requestSubscribeSystemMessage".equals(str1)) {
-          break label65;
-        }
-        i = 4;
-        break label65;
-        label318:
-        this.authDialog.setOnDismissListener(this.dismissListener);
-        break label106;
-      }
-      if (this.authDialog == null) {
-        break;
-      }
-      localObject4 = null;
-      try
-      {
-        localObject6 = new JSONObject((String)localObject2).optJSONObject("getPhoneNumber");
-        localObject2 = localObject4;
-        if (localObject6 != null)
-        {
-          localObject2 = localObject4;
-          if (((JSONObject)localObject6).has("phoneLists")) {
-            localObject2 = ((JSONObject)localObject6).optJSONArray("phoneLists");
-          }
+        paramString1 = localAuthDialogResBuilder;
+        if (localJSONObject.has("phoneLists")) {
+          paramString1 = localJSONObject.optJSONArray("phoneLists");
         }
       }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QMLog.e("JsPluginEngine[AuthGuard]", "get phoneNumberList error,", localThrowable);
-          Object localObject3 = localObject4;
-        }
-      }
-      localObject4 = new AuthDialog.AuthDialogResBuilder();
-      ((AuthDialog.AuthDialogResBuilder)localObject4).setMiniAppIconUrl(localMiniAppProxy.getDrawable((Context)localObject5, str3, 0, 0, null)).setMiniAppName(str4).setAuthTitle((String)localObject1).setAuthDesc(str1).setReportSubAction(str2).setMiniAppInfo(this.mMiniAppContext.getMiniAppInfo()).setLeftBtnText(paramBundle).setLeftBtnClickListener(new BaseJsPluginEngine.12(this)).setRightBtnText("允许").setRightBtnClickListener(new BaseJsPluginEngine.11(this));
-      if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
-        ((AuthDialog.AuthDialogResBuilder)localObject4).setPhoneNumberList((JSONArray)localObject2);
-      }
-      this.authDialog.setCanceledOnTouchOutside(false);
-      this.authDialog.show((AuthDialog.AuthDialogResBuilder)localObject4);
-      return;
-      paramBundle = "";
     }
+    catch (Throwable paramString1)
+    {
+      for (;;)
+      {
+        QMLog.e("JsPluginEngine[AuthGuard]", "get phoneNumberList error,", paramString1);
+        paramString1 = null;
+      }
+    }
+    AuthDialog.AuthDialogResBuilder localAuthDialogResBuilder = new AuthDialog.AuthDialogResBuilder();
+    localAuthDialogResBuilder.setMiniAppIconUrl(paramMiniAppProxy.getDrawable(paramContext, paramString6, 0, 0, null)).setMiniAppName(paramString7).setAuthTitle(paramString2).setAuthDesc(paramString3).setReportSubAction(paramString5).setMiniAppInfo(this.mMiniAppContext.getMiniAppInfo()).setLeftBtnText(paramString4).setLeftBtnClickListener(new BaseJsPluginEngine.12(this)).setRightBtnText("允许").setRightBtnClickListener(new BaseJsPluginEngine.11(this));
+    if ((paramString1 != null) && (paramString1.length() > 0)) {
+      localAuthDialogResBuilder.setPhoneNumberList(paramString1);
+    }
+    this.authDialog.setCanceledOnTouchOutside(false);
+    this.authDialog.show(localAuthDialogResBuilder);
   }
   
   private void showOnceSubMsgReqDialog(String paramString, RequestEvent paramRequestEvent, byte[] paramArrayOfByte)
@@ -1019,70 +1131,36 @@ public abstract class BaseJsPluginEngine
   
   private void showRequestPermissionDialog(RequestEvent paramRequestEvent, String paramString, boolean paramBoolean)
   {
-    Object localObject = paramRequestEvent.event;
-    String str = paramRequestEvent.jsonParams;
-    boolean bool1;
-    label76:
-    boolean bool2;
-    if (!isOpenDataEvent((String)localObject, str)) {
-      if (getScopePermissionAuthFlag(paramString) == 4)
-      {
+    boolean bool2 = false;
+    String str1 = paramRequestEvent.event;
+    String str2 = paramRequestEvent.jsonParams;
+    boolean bool1 = bool2;
+    if (!isOpenDataEvent(str1, str2))
+    {
+      bool1 = bool2;
+      if (getScopePermissionAuthFlag(paramString) == 4) {
         bool1 = true;
-        QMLog.d("JsPluginEngine[AuthGuard]", "handleNativeRequest hasRefused=" + bool1);
-        if ((bool1) && (!shouldAskEveryTime(paramString))) {
-          break label185;
-        }
-        bool1 = true;
-        bool2 = bool1;
       }
     }
-    for (;;)
+    QMLog.d("JsPluginEngine[AuthGuard]", "handleNativeRequest hasRefused=" + bool1);
+    if (needShowAuthDialog(paramString, str1, str2, bool1))
     {
-      try
-      {
-        if ("operateWXData".equals(localObject))
-        {
-          localObject = new JSONObject(str).optJSONObject("data");
-          str = ((JSONObject)localObject).optString("api_name");
-          if ((!"webapi_getuserinfo".equals(str)) && (!"getSubjectalterInfo".equals(str)) && (!"webapi_wxa_subscribe_biz".endsWith(str))) {
-            continue;
-          }
-          bool2 = ((JSONObject)localObject).optBoolean("from_component");
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        label185:
-        boolean bool3;
-        QMLog.e("JsPluginEngine[AuthGuard]", Log.getStackTraceString(localThrowable));
-        bool2 = bool1;
-        continue;
-        QMLog.d("JsPluginEngine[AuthGuard]", "handleNativeRequest callbackJsEventFail");
-        paramRequestEvent.fail("auth deny");
-        this.mHandler.obtainMessage(1).sendToTarget();
-      }
-      if (!bool2) {
-        continue;
-      }
       sendShowAuthDialogMessage(paramRequestEvent, paramString, paramBoolean);
       return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label76;
-      if ((!"webapi_plugin_login".equals(str)) && (!"webapi_plugin_getuserinfo".equals(str)))
-      {
-        bool3 = "webapi_plugin_setauth".equals(str);
-        bool2 = bool1;
-        if (!bool3) {}
-      }
-      else
-      {
-        bool2 = false;
-      }
     }
+    QMLog.d("JsPluginEngine[AuthGuard]", "handleNativeRequest callbackJsEventFail");
+    paramRequestEvent.fail("auth deny");
+    this.mHandler.obtainMessage(1).sendToTarget();
+  }
+  
+  private void showScopeUserInfoAuthDialog(String paramString1, String paramString2, String paramString3, Context paramContext, ApkgInfo paramApkgInfo, ChannelProxy paramChannelProxy, MiniAppProxy paramMiniAppProxy, String paramString4, String paramString5)
+  {
+    paramChannelProxy.getUserInfo(paramApkgInfo.appId, false, "en", new BaseJsPluginEngine.13(this, paramMiniAppProxy, paramContext, paramString4, paramString5, paramString1, paramString2, paramString3));
+  }
+  
+  private void updateOnceMsgSubscribedItem(RequestEvent paramRequestEvent, String paramString, List<INTERFACE.StSubscribeMessage> paramList1, List<INTERFACE.StSubscribeMessage> paramList2, AuthState paramAuthState)
+  {
+    paramAuthState.updateOnceSubMsgSetting(paramString, true, paramList2, new BaseJsPluginEngine.10(this, paramRequestEvent, paramList1));
   }
   
   public String checkAuthorization(RequestEvent paramRequestEvent)
@@ -1121,8 +1199,7 @@ public abstract class BaseJsPluginEngine
         if (localActivity.checkSelfPermission(str1) == 0) {}
         for (int i = 1; i == 0; i = 0)
         {
-          ActivityResultManager.g().addRequestPermissionResultListener(new BaseJsPluginEngine.5(this, str1, str2, str3, paramRequestEvent));
-          localActivity.requestPermissions(new String[] { str1 }, 9527);
+          handleRequestSystemPermission(paramRequestEvent, str2, str3, str1, localActivity);
           return "";
         }
         return checkRequestScopePermission(paramRequestEvent);
@@ -1148,6 +1225,25 @@ public abstract class BaseJsPluginEngine
       return getApkgInfo().appId;
     }
     return null;
+  }
+  
+  protected void grantOnceSubscribeApiPermissionSilent(String paramString, RequestEvent paramRequestEvent, byte[] paramArrayOfByte)
+  {
+    paramRequestEvent = new INTERFACE.StGetUserSettingRsp();
+    if (paramArrayOfByte != null) {}
+    try
+    {
+      paramRequestEvent.mergeFrom(paramArrayOfByte);
+      handleSubMsgDialogDismiss(paramString, false, true, true, true, true, false, paramRequestEvent);
+      return;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      for (;;)
+      {
+        QMLog.e("JsPluginEngine[AuthGuard]", "onceSubDismissListner - rsp.mergeFrom(onceSubRspByteArr) get a Throwable", paramArrayOfByte);
+      }
+    }
   }
   
   public String handleNativeRequest(String paramString1, String paramString2, IJsService paramIJsService, int paramInt)
@@ -1203,6 +1299,7 @@ public abstract class BaseJsPluginEngine
     if ((this.authDialog != null) && (this.authDialog.isShowing())) {
       return;
     }
+    QMLog.i("JsPluginEngine[AuthGuard]", "onResume - WHAT_NOTIFY_SCOPE_PERMISSION_QUEUE");
     this.mHandler.obtainMessage(1).sendToTarget();
   }
   
@@ -1340,21 +1437,6 @@ public abstract class BaseJsPluginEngine
     }
   }
   
-  public void requestAuthorize(RequestEvent paramRequestEvent)
-  {
-    this.scopePermissionQueue.offer(paramRequestEvent);
-    if ((this.authDialog == null) || (!this.authDialog.isShowing()))
-    {
-      Message localMessage = this.mHandler.obtainMessage(2);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("key_event_name", paramRequestEvent.event);
-      localBundle.putString("key_params", paramRequestEvent.jsonParams);
-      localBundle.putString("key_appid", getAppId());
-      localMessage.setData(localBundle);
-      localMessage.sendToTarget();
-    }
-  }
-  
   public void showRequestPermissionDialog(RequestEvent paramRequestEvent, PhoneNumberAction.PhoneNumberActionCallback paramPhoneNumberActionCallback)
   {
     this.mPhoneNumberActionCallbackMap.put(Integer.valueOf(paramRequestEvent.callbackId), paramPhoneNumberActionCallback);
@@ -1363,7 +1445,7 @@ public abstract class BaseJsPluginEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.BaseJsPluginEngine
  * JD-Core Version:    0.7.0.1
  */

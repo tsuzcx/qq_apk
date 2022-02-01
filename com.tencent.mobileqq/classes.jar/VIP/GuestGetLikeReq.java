@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GuestGetLikeReq
   extends JceStruct
 {
-  public long fromUin;
-  public long toUin;
+  public long fromUin = 0L;
+  public long toUin = 0L;
   
   public GuestGetLikeReq() {}
   

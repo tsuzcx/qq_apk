@@ -8,19 +8,19 @@ public final class ReportHeader
   extends JceStruct
   implements Cloneable
 {
-  public long createTime;
+  public long createTime = 0L;
   public String guid = "";
-  public int iNetType;
+  public int iNetType = 0;
   public String imei = "";
   public String platform = "";
-  public int result;
+  public int result = 0;
   public String sAction = "";
   public String sKey = "";
   public String sModule = "";
-  public long seqno;
-  public long startTime;
+  public long seqno = 0L;
+  public long startTime = 0L;
   public long totalTime = -1L;
-  public long uin;
+  public long uin = 0L;
   public String version = "";
   
   public void readFrom(JceInputStream paramJceInputStream)

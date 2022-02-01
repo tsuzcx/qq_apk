@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.gameparty;
 
-import avhf;
-import avhj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedReader;
@@ -13,14 +11,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import mqq.manager.TicketManager;
 
-public class GamePartyManager$4
+class GamePartyManager$4
   implements Runnable
 {
-  public GamePartyManager$4(avhf paramavhf, String paramString, avhj paramavhj) {}
+  GamePartyManager$4(GamePartyManager paramGamePartyManager, String paramString, GamePartyManager.AsyncRequestCallback paramAsyncRequestCallback) {}
   
   public void run()
   {
-    Object localObject3 = (QQAppInterface)avhf.a(this.this$0).get();
+    Object localObject3 = (QQAppInterface)GamePartyManager.a(this.this$0).get();
     if (localObject3 == null) {}
     label308:
     do
@@ -65,9 +63,9 @@ public class GamePartyManager$4
               if (QLog.isColorLevel()) {
                 QLog.d("GamePartyManager", 2, "http request succeeded, url = " + this.jdField_a_of_type_JavaLangString);
               }
-              if (this.jdField_a_of_type_Avhj != null)
+              if (this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyManager$AsyncRequestCallback != null)
               {
-                this.jdField_a_of_type_Avhj.a(((StringBuffer)localObject2).toString());
+                this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyManager$AsyncRequestCallback.a(((StringBuffer)localObject2).toString());
                 return;
               }
             }
@@ -83,7 +81,7 @@ public class GamePartyManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gameparty.GamePartyManager.4
  * JD-Core Version:    0.7.0.1
  */

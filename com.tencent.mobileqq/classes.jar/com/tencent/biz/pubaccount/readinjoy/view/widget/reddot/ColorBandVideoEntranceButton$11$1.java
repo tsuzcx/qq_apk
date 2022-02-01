@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget.reddot;
 
-import tsg;
-
-public class ColorBandVideoEntranceButton$11$1
+class ColorBandVideoEntranceButton$11$1
   implements Runnable
 {
-  public ColorBandVideoEntranceButton$11$1(tsg paramtsg) {}
+  ColorBandVideoEntranceButton$11$1(ColorBandVideoEntranceButton.11 param11) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ColorBandVideoEntranceButton$11$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton.11.1
  * JD-Core Version:    0.7.0.1
  */

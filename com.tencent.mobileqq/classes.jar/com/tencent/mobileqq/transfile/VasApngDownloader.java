@@ -2,17 +2,17 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhrg;
-import bhrj;
-import bhyo;
-import bhyq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.gldrawable.GLDrawableProxy.GLDrawableLoader;
+import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.OutputStream;
@@ -39,8 +39,8 @@ public class VasApngDownloader
       if (((Bundle)localObject2).getBoolean("key_use_gldrawable", false))
       {
         boolean bool = ((Bundle)localObject2).getBoolean("key_use_cache", false);
-        bhrj.a().a(null);
-        localObject2 = bhrj.a().a(paramFile, bool);
+        GLDrawableWraper.a().a(null);
+        localObject2 = GLDrawableWraper.a().a(paramFile, bool);
         if (localObject2 != null) {
           paramURLDrawableHandler = (URLDrawableHandler)localObject2;
         }
@@ -113,7 +113,7 @@ public class VasApngDownloader
       }
       if (i != 0)
       {
-        VasQuickUpdateManager.getFileFromLocal(BaseApplicationImpl.sApplication.getRuntime(), l, paramOutputStream, null, true, null);
+        VasUpdateUtil.a(BaseApplicationImpl.sApplication.getRuntime(), l, paramOutputStream, null, true, null);
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -138,9 +138,9 @@ public class VasApngDownloader
         QLog.e("vasapngdownloader", 2, "downloadImage url has no http err, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
         return null;
       }
-      paramDownloadParams = new bhyo(paramOutputStream, localFile);
+      paramDownloadParams = new DownloadTask(paramOutputStream, localFile);
       paramDownloadParams.h = true;
-      i = bhyq.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
+      i = DownloaderFactory.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (localFile.exists()) {

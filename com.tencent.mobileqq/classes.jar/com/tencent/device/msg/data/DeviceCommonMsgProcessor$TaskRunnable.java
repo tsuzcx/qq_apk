@@ -1,7 +1,5 @@
 package com.tencent.device.msg.data;
 
-import abkt;
-import abkw;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -57,7 +55,7 @@ class DeviceCommonMsgProcessor$TaskRunnable
           localDataPoint = new DataPoint(((JSONObject)localObject2).optString("apiName"), ((JSONObject)localObject2).optInt("id"), ((JSONObject)localObject2).optString("type"), ((JSONObject)localObject2).optString("value"));
           localDataPoint.mSeq = ((JSONObject)localObject2).optString("seq", "0");
           localDataPoint.mDin = ((JSONObject)localObject2).optLong("din");
-          if ((abkw.d.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (abkw.e.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (abkw.h.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)))
+          if ((DeviceMsgHandle.d.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (DeviceMsgHandle.e.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (DeviceMsgHandle.h.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)))
           {
             boolean bool = TextUtils.isEmpty(localDataPoint.mValue);
             if (!bool) {
@@ -73,7 +71,7 @@ class DeviceCommonMsgProcessor$TaskRunnable
             DataPoint localDataPoint;
             Object localObject1;
             Object localObject3;
-            abkt localabkt;
+            DeviceCommonMsgProcessor.KeyValue localKeyValue;
             localException2.printStackTrace();
             continue;
             String str = "1";
@@ -87,18 +85,18 @@ class DeviceCommonMsgProcessor$TaskRunnable
         localException1.printStackTrace();
         localObject1 = null;
         continue;
-        localObject3 = new abkt();
-        ((abkt)localObject3).a = "path";
-        ((abkt)localObject3).b = localDataPoint.mValue;
-        localabkt = new abkt();
-        localabkt.a = "ret";
+        localObject3 = new DeviceCommonMsgProcessor.KeyValue();
+        ((DeviceCommonMsgProcessor.KeyValue)localObject3).a = "path";
+        ((DeviceCommonMsgProcessor.KeyValue)localObject3).b = localDataPoint.mValue;
+        localKeyValue = new DeviceCommonMsgProcessor.KeyValue();
+        localKeyValue.a = "ret";
         if (!this.jdField_a_of_type_Boolean) {
           break label370;
         }
       }
       localObject2 = "0";
-      localabkt.b = ((String)localObject2);
-      localDataPoint.mValue = DeviceCommonMsgProcessor.a((abkt)localObject3, localabkt);
+      localKeyValue.b = ((String)localObject2);
+      localDataPoint.mValue = DeviceCommonMsgProcessor.a((DeviceCommonMsgProcessor.KeyValue)localObject3, localKeyValue);
       localObject2 = new Intent();
       ((Intent)localObject2).setAction("SmartDevice_receiveDPMsg");
       localObject3 = new Bundle();
@@ -110,7 +108,7 @@ class DeviceCommonMsgProcessor$TaskRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceCommonMsgProcessor.TaskRunnable
  * JD-Core Version:    0.7.0.1
  */

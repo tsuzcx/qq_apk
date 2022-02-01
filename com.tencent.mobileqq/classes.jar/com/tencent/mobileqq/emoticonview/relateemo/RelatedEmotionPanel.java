@@ -21,7 +21,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
@@ -30,6 +29,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForMarketFace;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -50,9 +50,9 @@ public class RelatedEmotionPanel
   private static final String TAG = "RelatedEmotionPanel";
   private QQAppInterface mApp;
   private EmoticonCallback mCallBack;
-  private ChatMessage mChatMessage;
+  private ChatMessage mChatMessage = null;
   protected String mCurFriendUin = "";
-  private int mCurType;
+  private int mCurType = 0;
   private RelatedEmotionPanel.IAIORelatedEmotionExpandHelper mEmotionExpandHelper;
   private RelatedEmoticonListAdapter mEmotionSearchAdapter;
   protected View mFooterView;
@@ -60,7 +60,7 @@ public class RelatedEmotionPanel
   private int mLoadingStatus = 0;
   private RecyclerView mRecyclerView;
   private RelatedEmoticonManager mRelatedEmoticonManager;
-  private boolean mReportedNoMore;
+  private boolean mReportedNoMore = false;
   private Dialog mSearchPanelDialog;
   
   public RelatedEmotionPanel(Context paramContext)
@@ -84,15 +84,15 @@ public class RelatedEmotionPanel
     LinearLayout localLinearLayout = new LinearLayout(getContext());
     localLinearLayout.setOrientation(1);
     localLinearLayout.setGravity(1);
-    Object localObject1 = new LinearLayout.LayoutParams(ViewUtils.dip2px(80.0F), ViewUtils.dip2px(80.0F));
-    ((LinearLayout.LayoutParams)localObject1).topMargin = ViewUtils.dip2px(6.0F);
+    Object localObject1 = new LinearLayout.LayoutParams(ViewUtils.a(80.0F), ViewUtils.a(80.0F));
+    ((LinearLayout.LayoutParams)localObject1).topMargin = ViewUtils.a(6.0F);
     localLinearLayout.addView(localURLImageView, (ViewGroup.LayoutParams)localObject1);
     localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
     Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(13);
     TextView localTextView = new TextView(getContext());
-    localTextView.setId(2131379017);
+    localTextView.setId(2131379448);
     localTextView.setTextSize(12.0F);
     View localView1;
     View localView2;
@@ -100,7 +100,7 @@ public class RelatedEmotionPanel
     {
       localObject1 = "#8D8D93";
       localTextView.setTextColor(Color.parseColor((String)localObject1));
-      localTextView.setText(getContext().getResources().getString(2131718023));
+      localTextView.setText(getContext().getResources().getString(2131718515));
       localTextView.setGravity(17);
       localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       localObject2 = new RelativeLayout(getContext());
@@ -113,30 +113,30 @@ public class RelatedEmotionPanel
     label621:
     for (localObject1 = "#3D3D41";; localObject1 = "#EBEDF5")
     {
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.dip2px(0.5F));
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.a(0.5F));
       localLayoutParams.addRule(9);
       localLayoutParams.addRule(15);
-      localLayoutParams.addRule(0, 2131379017);
-      localLayoutParams.leftMargin = ViewUtils.dip2px(14.0F);
-      localLayoutParams.rightMargin = ViewUtils.dip2px(12.0F);
+      localLayoutParams.addRule(0, 2131379448);
+      localLayoutParams.leftMargin = ViewUtils.a(14.0F);
+      localLayoutParams.rightMargin = ViewUtils.a(12.0F);
       localView1.setBackgroundColor(Color.parseColor((String)localObject1));
       localView1.setLayoutParams(localLayoutParams);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.dip2px(0.5F));
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.a(0.5F));
       localLayoutParams.addRule(11);
       localLayoutParams.addRule(15);
-      localLayoutParams.addRule(1, 2131379017);
-      localLayoutParams.leftMargin = ViewUtils.dip2px(12.0F);
-      localLayoutParams.rightMargin = ViewUtils.dip2px(14.0F);
+      localLayoutParams.addRule(1, 2131379448);
+      localLayoutParams.leftMargin = ViewUtils.a(12.0F);
+      localLayoutParams.rightMargin = ViewUtils.a(14.0F);
       localView2.setBackgroundColor(Color.parseColor((String)localObject1));
       localView2.setLayoutParams(localLayoutParams);
       ((RelativeLayout)localObject2).addView(localTextView);
       ((RelativeLayout)localObject2).addView(localView1);
       ((RelativeLayout)localObject2).addView(localView2);
       localObject1 = new LinearLayout.LayoutParams(-1, -2);
-      ((LinearLayout.LayoutParams)localObject1).bottomMargin = ViewUtils.dip2px(16.0F);
-      ((LinearLayout.LayoutParams)localObject1).topMargin = ViewUtils.dip2px(20.0F);
+      ((LinearLayout.LayoutParams)localObject1).bottomMargin = ViewUtils.a(16.0F);
+      ((LinearLayout.LayoutParams)localObject1).topMargin = ViewUtils.a(20.0F);
       localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
-      this.mRecyclerView = ((RecyclerView)findViewById(2131376423));
+      this.mRecyclerView = ((RecyclerView)findViewById(2131376816));
       localURLImageView.setImageDrawable(paramURLDrawable);
       this.mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), 1, false));
       this.mRecyclerView.setVerticalScrollBarEnabled(false);
@@ -161,14 +161,14 @@ public class RelatedEmotionPanel
     if (QLog.isColorLevel()) {
       QLog.d("RelatedEmotionPanel", 2, "notifyFooterViewChange.");
     }
-    TextView localTextView1 = (TextView)this.mFooterView.findViewById(2131368345);
+    TextView localTextView1 = (TextView)this.mFooterView.findViewById(2131368563);
     localTextView1.setTextSize(14.0F);
-    View localView = this.mFooterView.findViewById(2131368344);
-    TextView localTextView2 = (TextView)this.mFooterView.findViewById(2131370474);
+    View localView = this.mFooterView.findViewById(2131368562);
+    TextView localTextView2 = (TextView)this.mFooterView.findViewById(2131370757);
     localTextView2.setTextSize(14.0F);
     localTextView1.setOnClickListener(this);
     ViewGroup.LayoutParams localLayoutParams = this.mFooterView.getLayoutParams();
-    int i = ViewUtils.dip2px(74.0F);
+    int i = ViewUtils.a(74.0F);
     if (localLayoutParams.height != i)
     {
       localLayoutParams.height = i;
@@ -177,22 +177,22 @@ public class RelatedEmotionPanel
     if (this.mLoadingStatus == 0)
     {
       localView.setVisibility(0);
-      localTextView2.setText(2131689898);
+      localTextView2.setText(2131689939);
       localTextView1.setVisibility(4);
       return;
     }
     if (this.mLoadingStatus == 2)
     {
       localTextView1.setVisibility(0);
-      localTextView1.setText(2131689903);
+      localTextView1.setText(2131689944);
       localView.setVisibility(4);
-      bdla.b(this.mApp, "dc00898", "", this.mCurFriendUin, "0X800B11B", "0X800B11B", 0, 0, "", "", "", "");
+      ReportController.b(this.mApp, "dc00898", "", this.mCurFriendUin, "0X800B11B", "0X800B11B", 0, 0, "", "", "", "");
       return;
     }
     if (this.mLoadingStatus == 1)
     {
       localTextView1.setVisibility(0);
-      localTextView1.setText(2131718025);
+      localTextView1.setText(2131718517);
       localTextView1.setClickable(false);
       localView.setVisibility(4);
       return;
@@ -200,7 +200,7 @@ public class RelatedEmotionPanel
     if (this.mLoadingStatus == 3)
     {
       localTextView1.setVisibility(0);
-      localTextView1.setText(2131718024);
+      localTextView1.setText(2131718516);
       localTextView1.setClickable(false);
       localView.setVisibility(4);
       return;
@@ -222,9 +222,9 @@ public class RelatedEmotionPanel
   {
     if (this.mFooterView == null)
     {
-      this.mFooterView = View.inflate(getContext(), 2131558628, null);
+      this.mFooterView = View.inflate(getContext(), 2131558652, null);
       this.mFooterView.setBackgroundColor(0);
-      this.mFooterView.setLayoutParams(new RecyclerView.LayoutParams(-1, ViewUtils.dip2px(74.0F)));
+      this.mFooterView.setLayoutParams(new RecyclerView.LayoutParams(-1, ViewUtils.a(74.0F)));
     }
     notifyFooterViewChange();
     return this.mFooterView;
@@ -244,14 +244,14 @@ public class RelatedEmotionPanel
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368345)
+    if (paramView.getId() == 2131368563)
     {
       this.mLoadingStatus = 0;
       notifyFooterViewChange();
       if (this.mRelatedEmoticonManager != null) {
         this.mRelatedEmoticonManager.searchRelatedEmoticon(this.mChatMessage, this.mCurType);
       }
-      bdla.b(this.mApp, "dc00898", "", this.mCurFriendUin, "0X800B11C", "0X800B11C", 0, 0, "", "", "", "");
+      ReportController.b(this.mApp, "dc00898", "", this.mCurFriendUin, "0X800B11C", "0X800B11C", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -337,7 +337,7 @@ public class RelatedEmotionPanel
     paramChatMessage.setContentView(this);
     paramChatMessage.setCallback(new RelatedEmotionPanel.1(this));
     if (this.mSearchPanelDialog == null) {
-      this.mSearchPanelDialog = new ReportDialog(getContext(), 2131755174);
+      this.mSearchPanelDialog = new ReportDialog(getContext(), 2131755176);
     }
     this.mSearchPanelDialog.setContentView(paramChatMessage);
     this.mSearchPanelDialog.setOnDismissListener(this);
@@ -345,7 +345,7 @@ public class RelatedEmotionPanel
     paramURLDrawable = this.mSearchPanelDialog.getWindow();
     if (paramURLDrawable != null)
     {
-      int i = ViewUtils.getScreenHeight() - ViewUtils.getStatusBarHeight(getContext());
+      int i = ViewUtils.b() - ViewUtils.a(getContext());
       paramInt = i;
       if (i == 0) {
         paramInt = -1;
@@ -361,7 +361,7 @@ public class RelatedEmotionPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel
  * JD-Core Version:    0.7.0.1
  */

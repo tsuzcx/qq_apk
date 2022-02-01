@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
-import auyv;
 import com.tencent.mobileqq.fragment.BaseFragment;
+import com.tencent.mobileqq.freshnews.QQInputView.IQQInputCallback;
 
 public class TroopPublishFragment
   extends BaseFragment
-  implements auyv
+  implements QQInputView.IQQInputCallback
 {
   public String a()
   {
@@ -16,7 +16,7 @@ public class TroopPublishFragment
   
   public void a(String paramString) {}
   
-  public void aB_() {}
+  public void aD_() {}
   
   public String b()
   {

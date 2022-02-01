@@ -2,19 +2,18 @@ package com.tencent.biz.pubaccount.NativeAd.module;
 
 import android.content.Context;
 import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import ohj;
 
-public class AdModuleBase$9
+class AdModuleBase$9
   implements Runnable
 {
-  public AdModuleBase$9(ohj paramohj) {}
+  AdModuleBase$9(AdModuleBase paramAdModuleBase) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130839368);
-      this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.this$0.jdField_a_of_type_AndroidContentContext.getText(2131717786));
+      this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130839445);
+      this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.this$0.jdField_a_of_type_AndroidContentContext.getText(2131718289));
       this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-1);
       this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(0);
       this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(true);
@@ -24,7 +23,7 @@ public class AdModuleBase$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase.9
  * JD-Core Version:    0.7.0.1
  */

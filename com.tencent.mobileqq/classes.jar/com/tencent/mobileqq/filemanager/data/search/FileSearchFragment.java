@@ -5,21 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import atqm;
-import atqq;
-import bcbc;
-import bcfj;
-import bclw;
+import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.search.model.ISearchResultModel;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.List;
 
 public class FileSearchFragment
-  extends BaseSearchFragment<bcfj>
+  extends BaseSearchFragment<ISearchResultModel>
 {
   protected boolean a;
   public String b;
-  public List<bcfj> b;
+  public List<ISearchResultModel> b;
   int c = -1;
   
   public FileSearchFragment()
@@ -27,19 +25,19 @@ public class FileSearchFragment
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public bcbc a()
+  public BaseMvpAdapter a()
   {
-    return new atqm(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new FileSearchFragment.FileSearchAdapter(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public bclw a()
+  public ISearchEngine a()
   {
     return new FileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
   }
   
   public String a()
   {
-    return atqq.jdField_b_of_type_JavaLangString;
+    return GroupSearchModelFileEntity.jdField_b_of_type_JavaLangString;
   }
   
   public void b(boolean paramBoolean)
@@ -50,7 +48,7 @@ public class FileSearchFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368115);
+    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368336);
     if (!this.jdField_a_of_type_Boolean) {
       paramViewGroup.setVisibility(8);
     }
@@ -64,7 +62,7 @@ public class FileSearchFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchFragment
  * JD-Core Version:    0.7.0.1
  */

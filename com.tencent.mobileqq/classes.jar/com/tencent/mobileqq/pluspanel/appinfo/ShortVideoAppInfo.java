@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
-import anvx;
-import azmo;
-import bhdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.core.BaseChatpieHelper;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.activity.aio.rebuild.BaseChatpieHelper;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -18,7 +17,7 @@ public class ShortVideoAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130839227;
+    return 2130839296;
   }
   
   public int getAppID()
@@ -31,19 +30,19 @@ public class ShortVideoAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719449);
+    return BaseApplicationImpl.getContext().getString(2131720013);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramahvi = paramBaseChatPie.app;
-    if (!VideoEnvironment.supportShortVideoRecord(paramahvi)) {
-      bhdj.a(paramBaseChatPie.getActivity(), 230).setMessage(anvx.a(2131707760)).setPositiveButton(2131694399, new azmo(this)).show();
+    paramPlusPanelViewModel = paramBaseChatPie.a;
+    if (!VideoEnvironment.supportShortVideoRecordAndPlay()) {
+      DialogUtil.a(paramBaseChatPie.a(), 230).setMessage(HardCodeUtil.a(2131708287)).setPositiveButton(2131694615, new ShortVideoAppInfo.1(this)).show();
     }
-    while (!BaseChatpieHelper.a(paramahvi)) {
+    while (!BaseChatpieHelper.a(paramPlusPanelViewModel)) {
       return;
     }
-    paramBaseChatPie.showCameraPanel(2);
+    paramBaseChatPie.t(2);
   }
 }
 

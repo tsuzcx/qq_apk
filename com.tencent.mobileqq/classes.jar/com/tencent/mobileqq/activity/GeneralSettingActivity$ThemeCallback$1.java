@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import aecq;
-import aexr;
 import android.view.View;
-import bdfk;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 
-public class GeneralSettingActivity$ThemeCallback$1
+class GeneralSettingActivity$ThemeCallback$1
   implements Runnable
 {
-  public GeneralSettingActivity$ThemeCallback$1(aecq paramaecq, aexr paramaexr, View paramView) {}
+  GeneralSettingActivity$ThemeCallback$1(GeneralSettingActivity.ThemeCallback paramThemeCallback, SimpleUIChoiceView paramSimpleUIChoiceView, View paramView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aexr.a(bdfk.c(), false);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView.a(SimpleUIUtil.f(), false);
     this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1
  * JD-Core Version:    0.7.0.1
  */

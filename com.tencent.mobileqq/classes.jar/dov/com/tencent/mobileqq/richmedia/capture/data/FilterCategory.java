@@ -3,18 +3,17 @@ package dov.com.tencent.mobileqq.richmedia.capture.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bpne;
 import java.util.List;
 
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator<FilterCategory> CREATOR = new bpne();
+  public static final Parcelable.Creator<FilterCategory> CREATOR = new FilterCategory.1();
   public int a;
   public String a;
   public List<FilterCategoryItem> a;
   
-  public FilterCategory(Parcel paramParcel)
+  protected FilterCategory(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -35,7 +34,7 @@ public class FilterCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory
  * JD-Core Version:    0.7.0.1
  */

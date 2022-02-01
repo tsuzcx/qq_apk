@@ -3,13 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import java.util.ArrayList;
 import java.util.List;
-import tgj;
 
 public class RelatedSearchData
   extends BaseData
 {
   public String a;
-  public List<tgj> a;
+  public List<RelatedSearchData.SearchWord> a;
   
   public RelatedSearchData(FastWebArticleInfo paramFastWebArticleInfo)
   {
@@ -20,7 +19,7 @@ public class RelatedSearchData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RelatedSearchData
  * JD-Core Version:    0.7.0.1
  */

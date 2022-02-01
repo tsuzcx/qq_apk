@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class QzoneMsgPagerAdapter
   extends PagerAdapter
 {
-  private static final int IMAGE_HEIGHT = ViewUtils.dpToPx(230.0F);
-  private static final int IMAGE_WIDTH = ViewUtils.getScreenWidth() - ViewUtils.dpToPx(24.0F);
+  private static final int IMAGE_HEIGHT = ViewUtils.b(230.0F);
+  private static final int IMAGE_WIDTH = ViewUtils.a() - ViewUtils.b(24.0F);
   private ArrayList<String> urls;
   private ArrayList<AnyScaleTypeImageView> views;
   
@@ -88,7 +88,7 @@ public class QzoneMsgPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.QzoneMsgPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,6 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bixk;
-import bixl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QUSDragFloatingScreenView
@@ -30,8 +28,8 @@ public class QUSDragFloatingScreenView
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
-  private bixk jdField_a_of_type_Bixk;
-  private boolean jdField_a_of_type_Boolean;
+  private QUSDragFloatController jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController;
+  private boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = a(60);
   private int c;
@@ -55,7 +53,7 @@ public class QUSDragFloatingScreenView
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     paramContext.topMargin = a(60);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130839491);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130839570);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     paramInt = a(36);
@@ -66,17 +64,17 @@ public class QUSDragFloatingScreenView
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     paramContext = new FrameLayout.LayoutParams(paramInt, paramInt);
     paramContext.gravity = 17;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849680);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850075);
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramContext);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    setOnClickListener(new bixl(this));
+    setOnClickListener(new QUSDragFloatingScreenView.1(this));
   }
   
   private int a()
   {
     int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Bixk == null) {}
-    for (int i = this.jdField_a_of_type_Int;; i = this.jdField_a_of_type_Bixk.a()) {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController == null) {}
+    for (int i = this.jdField_a_of_type_Int;; i = this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController.a()) {
       return Math.max(j, Math.min(i, this.c - this.jdField_b_of_type_Int));
     }
   }
@@ -196,10 +194,10 @@ public class QUSDragFloatingScreenView
       QLog.d("QUSDragFloatingScreenView", 2, "showTotal");
     }
     this.e = 2;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849681);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850076);
     a(this.jdField_b_of_type_Int);
-    if (this.jdField_a_of_type_Bixk != null) {
-      this.jdField_a_of_type_Bixk.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController.a();
     }
   }
   
@@ -211,10 +209,10 @@ public class QUSDragFloatingScreenView
     if (this.c - a() > this.jdField_b_of_type_Int)
     {
       this.e = 1;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849680);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850075);
       a(this.c - a());
-      if (this.jdField_a_of_type_Bixk != null) {
-        this.jdField_a_of_type_Bixk.b();
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController.b();
       }
     }
   }
@@ -225,10 +223,10 @@ public class QUSDragFloatingScreenView
       QLog.d("QUSDragFloatingScreenView", 2, "showMinHeight");
     }
     this.e = 0;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849680);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850075);
     a(this.c - this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Bixk != null) {
-      this.jdField_a_of_type_Bixk.c();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController.c();
     }
   }
   
@@ -271,14 +269,14 @@ public class QUSDragFloatingScreenView
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.c <= 0)
     {
       this.c = getMeasuredHeight();
-      if ((this.jdField_a_of_type_Bixk != null) && (this.jdField_a_of_type_Bixk.b() > 0)) {
-        this.jdField_b_of_type_Int = Math.max(this.jdField_b_of_type_Int, this.c - this.jdField_a_of_type_Bixk.b());
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController.b() > 0)) {
+        this.jdField_b_of_type_Int = Math.max(this.jdField_b_of_type_Int, this.c - this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController.b());
       }
       paramInt2 = this.c;
       if (this.d == 0) {}
@@ -297,13 +295,13 @@ public class QUSDragFloatingScreenView
     }
   }
   
-  public void setQUSDragFloatController(bixk parambixk)
+  public void setQUSDragFloatController(QUSDragFloatController paramQUSDragFloatController)
   {
     int j = 0;
-    this.jdField_a_of_type_Bixk = parambixk;
-    if (parambixk != null)
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSDragFloatController = paramQUSDragFloatController;
+    if (paramQUSDragFloatController != null)
     {
-      View localView = parambixk.a();
+      View localView = paramQUSDragFloatController.a();
       if (localView != null)
       {
         if (localView.getParent() != null) {
@@ -311,13 +309,13 @@ public class QUSDragFloatingScreenView
         }
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       }
-      this.d = parambixk.d();
+      this.d = paramQUSDragFloatController.d();
       if (this.d != 0) {
         break label107;
       }
     }
     label107:
-    for (int i = Math.max(this.jdField_a_of_type_Int, parambixk.c());; i = 0)
+    for (int i = Math.max(this.jdField_a_of_type_Int, paramQUSDragFloatController.c());; i = 0)
     {
       this.jdField_a_of_type_Int = i;
       i = j;
@@ -331,7 +329,7 @@ public class QUSDragFloatingScreenView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView
  * JD-Core Version:    0.7.0.1
  */

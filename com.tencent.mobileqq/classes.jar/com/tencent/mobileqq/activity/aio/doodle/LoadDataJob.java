@@ -1,21 +1,9 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import agcb;
-import agch;
-import agcu;
-import agcw;
-import agdc;
-import agdd;
-import agdg;
-import agdh;
-import agdi;
-import agdl;
-import agdm;
-import agdp;
 import android.graphics.Rect;
 import android.text.TextUtils;
-import bbxw;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.scribble.ScribbleMsgUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -27,27 +15,27 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class LoadDataJob
+class LoadDataJob
   implements Runnable
 {
-  private static final String jdField_b_of_type_JavaLangString = bbxw.a() + "pclcache" + File.separator;
+  private static final String jdField_b_of_type_JavaLangString = ScribbleMsgUtils.a() + "pclcache" + File.separator;
   final int jdField_a_of_type_Int = 3;
   public String a;
-  private WeakReference<agdc> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<LoadDataJob.LoadDataJobListener> jdField_a_of_type_JavaLangRefWeakReference;
   private int jdField_b_of_type_Int;
   private int c;
-  private int d;
+  private int d = 0;
   
-  public LoadDataJob(String paramString, int paramInt1, int paramInt2, agdc paramagdc)
+  public LoadDataJob(String paramString, int paramInt1, int paramInt2, LoadDataJob.LoadDataJobListener paramLoadDataJobListener)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramagdc);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramLoadDataJobListener);
     this.jdField_b_of_type_Int = paramInt1;
     this.c = paramInt2;
   }
   
   /* Error */
-  private agcu a(String paramString)
+  private DoodleParam a(String paramString)
   {
     // Byte code:
     //   0: iconst_1
@@ -90,7 +78,7 @@ public class LoadDataJob
     //   72: if_icmpne +867 -> 939
     //   75: aload 4
     //   77: iconst_0
-    //   78: invokestatic 105	agch:a	([BI)I
+    //   78: invokestatic 105	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgTranslator:a	([BI)I
     //   81: istore_3
     //   82: iload_3
     //   83: ifle +9 -> 92
@@ -137,7 +125,7 @@ public class LoadDataJob
     //   175: ldc 134
     //   177: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   180: aload_1
-    //   181: invokestatic 140	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   181: invokestatic 139	com/tencent/mobileqq/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   184: pop
     //   185: aload 4
     //   187: astore 5
@@ -150,7 +138,7 @@ public class LoadDataJob
     //   199: aload 4
     //   201: iconst_0
     //   202: iload_3
-    //   203: invokevirtual 143	java/io/InputStream:read	([BII)I
+    //   203: invokevirtual 142	java/io/InputStream:read	([BII)I
     //   206: iload_3
     //   207: if_icmpeq +37 -> 244
     //   210: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -160,7 +148,7 @@ public class LoadDataJob
     //   219: new 18	java/lang/StringBuilder
     //   222: dup
     //   223: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   226: ldc 145
+    //   226: ldc 144
     //   228: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   231: iload_3
     //   232: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -169,19 +157,19 @@ public class LoadDataJob
     //   241: goto +713 -> 954
     //   244: aload_0
     //   245: aload 4
-    //   247: invokevirtual 148	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	([B)Lagdg;
+    //   247: invokevirtual 147	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	([B)Lcom/tencent/mobileqq/activity/aio/doodle/MyParcel;
     //   250: astore 4
     //   252: aload 4
     //   254: ifnull +685 -> 939
-    //   257: getstatic 153	agcu:a	Lagdj;
+    //   257: getstatic 152	com/tencent/mobileqq/activity/aio/doodle/DoodleParam:a	Lcom/tencent/mobileqq/activity/aio/doodle/MyParcelable$Creator;
     //   260: aload 4
-    //   262: invokeinterface 158 2 0
-    //   267: checkcast 150	agcu
+    //   262: invokeinterface 157 2 0
+    //   267: checkcast 149	com/tencent/mobileqq/activity/aio/doodle/DoodleParam
     //   270: astore 4
     //   272: goto -144 -> 128
     //   275: astore 6
     //   277: aload 6
-    //   279: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   279: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   282: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   285: ifeq -147 -> 138
     //   288: ldc 114
@@ -189,16 +177,16 @@ public class LoadDataJob
     //   291: new 18	java/lang/StringBuilder
     //   294: dup
     //   295: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   298: ldc 163
+    //   298: ldc 162
     //   300: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   303: aload 6
-    //   305: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   305: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   308: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   311: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   311: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   314: goto -176 -> 138
     //   317: astore 6
     //   319: aload 6
-    //   321: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   321: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   324: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   327: ifeq -179 -> 148
     //   330: ldc 114
@@ -206,16 +194,16 @@ public class LoadDataJob
     //   333: new 18	java/lang/StringBuilder
     //   336: dup
     //   337: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   340: ldc 163
+    //   340: ldc 162
     //   342: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   345: aload 6
-    //   347: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   347: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   350: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   353: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   353: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   356: goto -208 -> 148
     //   359: astore 5
     //   361: aload 5
-    //   363: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   363: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   366: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   369: ifeq -211 -> 158
     //   372: ldc 114
@@ -223,12 +211,12 @@ public class LoadDataJob
     //   375: new 18	java/lang/StringBuilder
     //   378: dup
     //   379: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   382: ldc 163
+    //   382: ldc 162
     //   384: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   387: aload 5
-    //   389: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   389: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   392: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   395: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   395: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   398: goto -240 -> 158
     //   401: astore 7
     //   403: aconst_null
@@ -238,7 +226,7 @@ public class LoadDataJob
     //   409: aconst_null
     //   410: astore 4
     //   412: aload 7
-    //   414: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   414: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   417: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   420: ifeq +29 -> 449
     //   423: ldc 114
@@ -246,12 +234,12 @@ public class LoadDataJob
     //   426: new 18	java/lang/StringBuilder
     //   429: dup
     //   430: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   433: ldc 170
+    //   433: ldc 169
     //   435: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   438: aload 7
-    //   440: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   440: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   443: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   446: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   446: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   449: aload 6
     //   451: ifnull +8 -> 459
     //   454: aload 6
@@ -271,14 +259,14 @@ public class LoadDataJob
     //   488: ldc 134
     //   490: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   493: aload_1
-    //   494: invokestatic 140	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   494: invokestatic 139	com/tencent/mobileqq/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   497: pop
     //   498: aconst_null
     //   499: astore 5
     //   501: goto -312 -> 189
     //   504: astore 6
     //   506: aload 6
-    //   508: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   508: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   511: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   514: ifeq -55 -> 459
     //   517: ldc 114
@@ -286,16 +274,16 @@ public class LoadDataJob
     //   520: new 18	java/lang/StringBuilder
     //   523: dup
     //   524: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   527: ldc 163
+    //   527: ldc 162
     //   529: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   532: aload 6
-    //   534: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   534: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   537: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   540: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   540: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   543: goto -84 -> 459
     //   546: astore 5
     //   548: aload 5
-    //   550: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   550: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   553: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   556: ifeq -87 -> 469
     //   559: ldc 114
@@ -303,16 +291,16 @@ public class LoadDataJob
     //   562: new 18	java/lang/StringBuilder
     //   565: dup
     //   566: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   569: ldc 163
+    //   569: ldc 162
     //   571: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   574: aload 5
-    //   576: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   576: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   579: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   582: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   582: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   585: goto -116 -> 469
     //   588: astore 4
     //   590: aload 4
-    //   592: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   592: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   595: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   598: ifeq -119 -> 479
     //   601: ldc 114
@@ -320,12 +308,12 @@ public class LoadDataJob
     //   604: new 18	java/lang/StringBuilder
     //   607: dup
     //   608: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   611: ldc 163
+    //   611: ldc 162
     //   613: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   616: aload 4
-    //   618: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   618: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   621: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   624: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   624: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   627: goto -148 -> 479
     //   630: astore 4
     //   632: iconst_1
@@ -355,13 +343,13 @@ public class LoadDataJob
     //   683: ldc 134
     //   685: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   688: aload_1
-    //   689: invokestatic 140	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   689: invokestatic 139	com/tencent/mobileqq/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   692: pop
     //   693: aload 4
     //   695: athrow
     //   696: astore 6
     //   698: aload 6
-    //   700: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   700: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   703: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   706: ifeq -56 -> 650
     //   709: ldc 114
@@ -369,16 +357,16 @@ public class LoadDataJob
     //   712: new 18	java/lang/StringBuilder
     //   715: dup
     //   716: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   719: ldc 163
+    //   719: ldc 162
     //   721: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   724: aload 6
-    //   726: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   726: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   729: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   732: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   732: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   735: goto -85 -> 650
     //   738: astore 6
     //   740: aload 6
-    //   742: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   742: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   745: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   748: ifeq -88 -> 660
     //   751: ldc 114
@@ -386,16 +374,16 @@ public class LoadDataJob
     //   754: new 18	java/lang/StringBuilder
     //   757: dup
     //   758: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   761: ldc 163
+    //   761: ldc 162
     //   763: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   766: aload 6
-    //   768: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   768: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   771: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   774: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   774: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   777: goto -117 -> 660
     //   780: astore 5
     //   782: aload 5
-    //   784: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   784: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   787: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   790: ifeq -120 -> 670
     //   793: ldc 114
@@ -403,12 +391,12 @@ public class LoadDataJob
     //   796: new 18	java/lang/StringBuilder
     //   799: dup
     //   800: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   803: ldc 163
+    //   803: ldc 162
     //   805: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   808: aload 5
-    //   810: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   810: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   813: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   816: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   816: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   819: goto -149 -> 670
     //   822: astore 4
     //   824: iconst_1
@@ -563,7 +551,7 @@ public class LoadDataJob
         paramString = jdField_b_of_type_JavaLangString + paramString.substring(paramString.lastIndexOf(File.separator) + 1, paramString.lastIndexOf('_')) + "_dwr";
         if (paramBoolean)
         {
-          paramBoolean = FileUtils.fileExists(paramString);
+          paramBoolean = FileUtils.a(paramString);
           if (paramBoolean) {
             return paramString;
           }
@@ -579,12 +567,12 @@ public class LoadDataJob
   }
   
   /* Error */
-  private List<agdp> a(String paramString, agdc paramagdc)
+  private List<PathDrawer> a(String paramString, LoadDataJob.LoadDataJobListener paramLoadDataJobListener)
   {
     // Byte code:
-    //   0: new 197	java/util/ArrayList
+    //   0: new 195	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 198	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 196	java/util/ArrayList:<init>	()V
     //   7: astore 14
     //   9: aload_1
     //   10: invokestatic 72	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -597,13 +585,13 @@ public class LoadDataJob
     //   23: istore 7
     //   25: iconst_0
     //   26: istore 6
-    //   28: new 200	java/util/HashMap
+    //   28: new 198	java/util/HashMap
     //   31: dup
-    //   32: invokespecial 201	java/util/HashMap:<init>	()V
+    //   32: invokespecial 199	java/util/HashMap:<init>	()V
     //   35: astore 15
     //   37: aload_0
     //   38: iconst_1
-    //   39: putfield 63	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
+    //   39: putfield 47	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
     //   42: new 74	java/io/FileInputStream
     //   45: dup
     //   46: aload_1
@@ -659,7 +647,7 @@ public class LoadDataJob
     //   147: istore 5
     //   149: aload 16
     //   151: iconst_0
-    //   152: invokestatic 105	agch:a	([BI)I
+    //   152: invokestatic 105	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgTranslator:a	([BI)I
     //   155: istore 4
     //   157: iload 4
     //   159: ifle +10 -> 169
@@ -689,7 +677,7 @@ public class LoadDataJob
     //   210: new 18	java/lang/StringBuilder
     //   213: dup
     //   214: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   217: ldc 203
+    //   217: ldc 201
     //   219: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   222: iload 4
     //   224: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -705,10 +693,10 @@ public class LoadDataJob
     //   244: monitorenter
     //   245: aload_0
     //   246: aload_0
-    //   247: getfield 63	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
+    //   247: getfield 47	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
     //   250: iconst_1
     //   251: isub
-    //   252: putfield 63	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
+    //   252: putfield 47	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
     //   255: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   258: ifeq +66 -> 324
     //   261: ldc 114
@@ -716,31 +704,31 @@ public class LoadDataJob
     //   264: new 18	java/lang/StringBuilder
     //   267: dup
     //   268: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   271: ldc 205
+    //   271: ldc 203
     //   273: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   276: aload_0
-    //   277: getfield 63	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
+    //   277: getfield 47	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
     //   280: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   283: ldc 207
+    //   283: ldc 205
     //   285: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   288: aload 14
-    //   290: invokeinterface 213 1 0
+    //   290: invokeinterface 211 1 0
     //   295: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   298: ldc 215
+    //   298: ldc 213
     //   300: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   303: iload 6
-    //   305: invokevirtual 218	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   308: ldc 220
+    //   305: invokevirtual 216	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   308: ldc 218
     //   310: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   313: iload 5
-    //   315: invokevirtual 218	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   315: invokevirtual 216	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   318: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   321: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   321: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   324: aload_0
-    //   325: getfield 63	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
+    //   325: getfield 47	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
     //   328: istore_3
     //   329: aload 14
-    //   331: invokeinterface 213 1 0
+    //   331: invokeinterface 211 1 0
     //   336: istore 4
     //   338: iload_3
     //   339: iload 4
@@ -748,25 +736,25 @@ public class LoadDataJob
     //   344: iload 6
     //   346: ifeq +11 -> 357
     //   349: aload 14
-    //   351: ldc2_w 221
-    //   354: invokevirtual 226	java/lang/Object:wait	(J)V
+    //   351: ldc2_w 219
+    //   354: invokevirtual 224	java/lang/Object:wait	(J)V
     //   357: aload 14
-    //   359: invokeinterface 213 1 0
+    //   359: invokeinterface 211 1 0
     //   364: ifle +16 -> 380
     //   367: aload 14
-    //   369: new 228	agdd
+    //   369: new 226	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$SortComparator
     //   372: dup
     //   373: aload_0
-    //   374: invokespecial 231	agdd:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;)V
-    //   377: invokestatic 237	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   374: invokespecial 229	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$SortComparator:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;)V
+    //   377: invokestatic 235	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   380: aload 14
     //   382: monitorexit
     //   383: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   386: ifeq +11 -> 397
     //   389: ldc 114
     //   391: iconst_2
-    //   392: ldc 239
-    //   394: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   392: ldc 237
+    //   394: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   397: aload 9
     //   399: ifnull +8 -> 407
     //   402: aload 9
@@ -787,13 +775,13 @@ public class LoadDataJob
     //   437: ifeq +11 -> 448
     //   440: ldc 114
     //   442: iconst_2
-    //   443: ldc 241
-    //   445: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   443: ldc 239
+    //   445: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   448: aload_1
-    //   449: invokestatic 140	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   449: invokestatic 139	com/tencent/mobileqq/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   452: pop
     //   453: aload 14
-    //   455: invokeinterface 244 1 0
+    //   455: invokeinterface 242 1 0
     //   460: iload 5
     //   462: istore 7
     //   464: iload 7
@@ -802,8 +790,8 @@ public class LoadDataJob
     //   472: ifeq +11 -> 483
     //   475: ldc 114
     //   477: iconst_2
-    //   478: ldc 246
-    //   480: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   478: ldc 244
+    //   480: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   483: aconst_null
     //   484: areturn
     //   485: aload 9
@@ -829,7 +817,7 @@ public class LoadDataJob
     //   525: aload 17
     //   527: iconst_0
     //   528: iload 4
-    //   530: invokevirtual 143	java/io/InputStream:read	([BII)I
+    //   530: invokevirtual 142	java/io/InputStream:read	([BII)I
     //   533: iload 4
     //   535: if_icmpeq +70 -> 605
     //   538: aload 9
@@ -855,7 +843,7 @@ public class LoadDataJob
     //   579: new 18	java/lang/StringBuilder
     //   582: dup
     //   583: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   586: ldc 248
+    //   586: ldc 246
     //   588: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   591: iload 4
     //   593: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -870,18 +858,18 @@ public class LoadDataJob
     //   615: astore 13
     //   617: iload 7
     //   619: istore 5
-    //   621: new 250	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$UnmarshallJob
+    //   621: new 248	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$UnmarshallJob
     //   624: dup
     //   625: aload_0
     //   626: iload_3
     //   627: aload 17
-    //   629: new 252	agdb
+    //   629: new 250	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$2
     //   632: dup
     //   633: aload_0
     //   634: aload 15
     //   636: aload 14
-    //   638: invokespecial 255	agdb:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;Ljava/util/Map;Ljava/util/List;)V
-    //   641: invokespecial 258	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$UnmarshallJob:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;I[BLagde;)V
+    //   638: invokespecial 253	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$2:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;Ljava/util/Map;Ljava/util/List;)V
+    //   641: invokespecial 256	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$UnmarshallJob:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;I[BLcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob$UnmarshallJobListener;)V
     //   644: astore 17
     //   646: aload 9
     //   648: astore 11
@@ -894,7 +882,7 @@ public class LoadDataJob
     //   662: aload 15
     //   664: monitorenter
     //   665: aload 15
-    //   667: invokeinterface 261 1 0
+    //   667: invokeinterface 259 1 0
     //   672: istore 4
     //   674: iload 4
     //   676: iconst_3
@@ -906,16 +894,16 @@ public class LoadDataJob
     //   689: new 18	java/lang/StringBuilder
     //   692: dup
     //   693: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   696: ldc_w 263
+    //   696: ldc_w 261
     //   699: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   702: aload 15
-    //   704: invokeinterface 261 1 0
+    //   704: invokeinterface 259 1 0
     //   709: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   712: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   715: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   715: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   718: aload 15
-    //   720: ldc2_w 264
-    //   723: invokevirtual 226	java/lang/Object:wait	(J)V
+    //   720: ldc2_w 262
+    //   723: invokevirtual 224	java/lang/Object:wait	(J)V
     //   726: aload 15
     //   728: monitorexit
     //   729: aload 9
@@ -928,8 +916,8 @@ public class LoadDataJob
     //   743: istore 5
     //   745: aload_2
     //   746: aload_0
-    //   747: getfield 49	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   750: invokeinterface 269 2 0
+    //   747: getfield 51	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   750: invokeinterface 266 2 0
     //   755: ifne +682 -> 1437
     //   758: aload 9
     //   760: astore 11
@@ -951,8 +939,8 @@ public class LoadDataJob
     //   794: istore 5
     //   796: ldc 114
     //   798: iconst_2
-    //   799: ldc_w 271
-    //   802: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   799: ldc_w 268
+    //   802: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   805: iconst_0
     //   806: istore_3
     //   807: aload 9
@@ -966,17 +954,17 @@ public class LoadDataJob
     //   823: aload 15
     //   825: monitorenter
     //   826: aload 15
-    //   828: invokeinterface 275 1 0
-    //   833: invokeinterface 281 1 0
+    //   828: invokeinterface 272 1 0
+    //   833: invokeinterface 278 1 0
     //   838: astore_2
     //   839: aload_2
-    //   840: invokeinterface 286 1 0
+    //   840: invokeinterface 283 1 0
     //   845: ifeq +203 -> 1048
     //   848: aload_2
-    //   849: invokeinterface 290 1 0
-    //   854: checkcast 250	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$UnmarshallJob
+    //   849: invokeinterface 287 1 0
+    //   854: checkcast 248	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob$UnmarshallJob
     //   857: bipush 16
-    //   859: invokestatic 296	com/tencent/mobileqq/app/ThreadManager:removeJobFromThreadPool	(Ljava/lang/Runnable;I)Z
+    //   859: invokestatic 293	com/tencent/mobileqq/app/ThreadManager:removeJobFromThreadPool	(Ljava/lang/Runnable;I)Z
     //   862: istore 5
     //   864: iload 5
     //   866: ifeq +1521 -> 2387
@@ -993,12 +981,12 @@ public class LoadDataJob
     //   887: new 18	java/lang/StringBuilder
     //   890: dup
     //   891: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   894: ldc_w 298
+    //   894: ldc_w 295
     //   897: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   900: aload 11
-    //   902: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   902: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   905: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   908: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   908: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   911: goto -185 -> 726
     //   914: astore_2
     //   915: aload 15
@@ -1029,13 +1017,13 @@ public class LoadDataJob
     //   960: new 18	java/lang/StringBuilder
     //   963: dup
     //   964: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   967: ldc_w 300
+    //   967: ldc_w 297
     //   970: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   973: aload 9
-    //   975: invokevirtual 301	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
+    //   975: invokevirtual 298	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
     //   978: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   981: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   984: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   984: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   987: aload_2
     //   988: ifnull +7 -> 995
     //   991: aload_2
@@ -1052,18 +1040,18 @@ public class LoadDataJob
     //   1018: ifeq +11 -> 1029
     //   1021: ldc 114
     //   1023: iconst_2
-    //   1024: ldc 241
-    //   1026: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1024: ldc 239
+    //   1026: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1029: aload_1
-    //   1030: invokestatic 140	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   1030: invokestatic 139	com/tencent/mobileqq/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   1033: pop
     //   1034: aload 14
-    //   1036: invokeinterface 244 1 0
+    //   1036: invokeinterface 242 1 0
     //   1041: iload 5
     //   1043: istore 7
     //   1045: goto -581 -> 464
     //   1048: aload 15
-    //   1050: invokeinterface 302 1 0
+    //   1050: invokeinterface 299 1 0
     //   1055: aload 15
     //   1057: monitorexit
     //   1058: aload 9
@@ -1089,12 +1077,12 @@ public class LoadDataJob
     //   1099: new 18	java/lang/StringBuilder
     //   1102: dup
     //   1103: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1106: ldc_w 304
+    //   1106: ldc_w 301
     //   1109: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1112: iload_3
     //   1113: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1116: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1119: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1119: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1122: iload_3
     //   1123: ifle +1252 -> 2375
     //   1126: aload 9
@@ -1109,10 +1097,10 @@ public class LoadDataJob
     //   1144: monitorenter
     //   1145: aload_0
     //   1146: aload_0
-    //   1147: getfield 63	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
+    //   1147: getfield 47	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
     //   1150: iload_3
     //   1151: isub
-    //   1152: putfield 63	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
+    //   1152: putfield 47	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
     //   1155: aload 14
     //   1157: monitorexit
     //   1158: aload 9
@@ -1138,13 +1126,13 @@ public class LoadDataJob
     //   1199: new 18	java/lang/StringBuilder
     //   1202: dup
     //   1203: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1206: ldc_w 306
+    //   1206: ldc_w 303
     //   1209: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1212: aload_0
-    //   1213: getfield 63	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
+    //   1213: getfield 47	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
     //   1216: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1219: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1222: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1222: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1225: iconst_1
     //   1226: istore 5
     //   1228: aload 10
@@ -1192,7 +1180,7 @@ public class LoadDataJob
     //   1300: iconst_1
     //   1301: istore 5
     //   1303: aload_2
-    //   1304: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   1304: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   1307: iconst_0
     //   1308: istore 7
     //   1310: aload 9
@@ -1218,12 +1206,12 @@ public class LoadDataJob
     //   1351: new 18	java/lang/StringBuilder
     //   1354: dup
     //   1355: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1358: ldc_w 308
+    //   1358: ldc_w 305
     //   1361: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1364: aload_2
-    //   1365: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1365: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1368: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1371: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1371: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1374: aload 9
     //   1376: ifnull +8 -> 1384
     //   1379: aload 9
@@ -1240,13 +1228,13 @@ public class LoadDataJob
     //   1407: ifeq +11 -> 1418
     //   1410: ldc 114
     //   1412: iconst_2
-    //   1413: ldc 241
-    //   1415: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1413: ldc 239
+    //   1415: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1418: aload_1
-    //   1419: invokestatic 140	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   1419: invokestatic 139	com/tencent/mobileqq/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   1422: pop
     //   1423: aload 14
-    //   1425: invokeinterface 244 1 0
+    //   1425: invokeinterface 242 1 0
     //   1430: iload 6
     //   1432: istore 7
     //   1434: goto -970 -> 464
@@ -1267,17 +1255,17 @@ public class LoadDataJob
     //   1465: new 18	java/lang/StringBuilder
     //   1468: dup
     //   1469: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1472: ldc_w 310
+    //   1472: ldc_w 307
     //   1475: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1478: iload_3
     //   1479: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1482: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1485: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1485: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1488: aload 15
     //   1490: iload_3
-    //   1491: invokestatic 316	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1491: invokestatic 313	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1494: aload 17
-    //   1496: invokeinterface 320 3 0
+    //   1496: invokeinterface 317 3 0
     //   1501: pop
     //   1502: aload 15
     //   1504: monitorexit
@@ -1293,10 +1281,10 @@ public class LoadDataJob
     //   1523: monitorenter
     //   1524: aload_0
     //   1525: aload_0
-    //   1526: getfield 63	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
+    //   1526: getfield 47	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
     //   1529: iconst_1
     //   1530: iadd
-    //   1531: putfield 63	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
+    //   1531: putfield 47	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:d	I
     //   1534: aload 14
     //   1536: monitorexit
     //   1537: aload 9
@@ -1311,7 +1299,7 @@ public class LoadDataJob
     //   1555: bipush 16
     //   1557: aconst_null
     //   1558: iconst_1
-    //   1559: invokestatic 324	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1559: invokestatic 321	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   1562: iload_3
     //   1563: iconst_1
     //   1564: iadd
@@ -1372,13 +1360,13 @@ public class LoadDataJob
     //   1671: ifeq +11 -> 1682
     //   1674: ldc 114
     //   1676: iconst_2
-    //   1677: ldc 241
-    //   1679: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1677: ldc 239
+    //   1679: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1682: aload_1
-    //   1683: invokestatic 140	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   1683: invokestatic 139	com/tencent/mobileqq/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   1686: pop
     //   1687: aload 14
-    //   1689: invokeinterface 244 1 0
+    //   1689: invokeinterface 242 1 0
     //   1694: aload_2
     //   1695: athrow
     //   1696: astore 10
@@ -1389,12 +1377,12 @@ public class LoadDataJob
     //   1707: new 18	java/lang/StringBuilder
     //   1710: dup
     //   1711: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1714: ldc_w 326
+    //   1714: ldc_w 323
     //   1717: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1720: aload 10
-    //   1722: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1722: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1725: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1728: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1728: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1731: goto -1374 -> 357
     //   1734: astore 10
     //   1736: aload 14
@@ -1417,12 +1405,12 @@ public class LoadDataJob
     //   1768: new 18	java/lang/StringBuilder
     //   1771: dup
     //   1772: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1775: ldc 163
+    //   1775: ldc 162
     //   1777: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1780: aload 9
-    //   1782: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1782: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1785: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1788: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1788: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1791: goto -1384 -> 407
     //   1794: astore 8
     //   1796: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1432,12 +1420,12 @@ public class LoadDataJob
     //   1805: new 18	java/lang/StringBuilder
     //   1808: dup
     //   1809: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1812: ldc 163
+    //   1812: ldc 162
     //   1814: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1817: aload 8
-    //   1819: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1819: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1822: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1825: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1825: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1828: goto -1411 -> 417
     //   1831: astore_2
     //   1832: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1447,12 +1435,12 @@ public class LoadDataJob
     //   1841: new 18	java/lang/StringBuilder
     //   1844: dup
     //   1845: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1848: ldc 163
+    //   1848: ldc 162
     //   1850: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1853: aload_2
-    //   1854: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1854: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1857: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1860: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1860: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1863: goto -1438 -> 425
     //   1866: astore_2
     //   1867: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1462,12 +1450,12 @@ public class LoadDataJob
     //   1876: new 18	java/lang/StringBuilder
     //   1879: dup
     //   1880: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1883: ldc 163
+    //   1883: ldc 162
     //   1885: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1888: aload_2
-    //   1889: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1889: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1892: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1895: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1895: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1898: goto -903 -> 995
     //   1901: astore_2
     //   1902: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1477,12 +1465,12 @@ public class LoadDataJob
     //   1911: new 18	java/lang/StringBuilder
     //   1914: dup
     //   1915: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1918: ldc 163
+    //   1918: ldc 162
     //   1920: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1923: aload_2
-    //   1924: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1924: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1927: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1930: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1930: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1933: goto -928 -> 1005
     //   1936: astore_2
     //   1937: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1492,12 +1480,12 @@ public class LoadDataJob
     //   1946: new 18	java/lang/StringBuilder
     //   1949: dup
     //   1950: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1953: ldc 163
+    //   1953: ldc 162
     //   1955: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1958: aload_2
-    //   1959: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1959: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1962: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1965: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1965: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1968: goto -953 -> 1015
     //   1971: astore_2
     //   1972: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1507,12 +1495,12 @@ public class LoadDataJob
     //   1981: new 18	java/lang/StringBuilder
     //   1984: dup
     //   1985: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   1988: ldc 163
+    //   1988: ldc 162
     //   1990: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1993: aload_2
-    //   1994: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1994: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1997: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2000: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2000: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2003: goto -619 -> 1384
     //   2006: astore_2
     //   2007: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1522,12 +1510,12 @@ public class LoadDataJob
     //   2016: new 18	java/lang/StringBuilder
     //   2019: dup
     //   2020: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   2023: ldc 163
+    //   2023: ldc 162
     //   2025: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2028: aload_2
-    //   2029: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2029: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   2032: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2035: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2035: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2038: goto -644 -> 1394
     //   2041: astore_2
     //   2042: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1537,12 +1525,12 @@ public class LoadDataJob
     //   2051: new 18	java/lang/StringBuilder
     //   2054: dup
     //   2055: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   2058: ldc 163
+    //   2058: ldc 162
     //   2060: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2063: aload_2
-    //   2064: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2064: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   2067: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2070: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2070: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2073: goto -669 -> 1404
     //   2076: astore 9
     //   2078: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1552,12 +1540,12 @@ public class LoadDataJob
     //   2087: new 18	java/lang/StringBuilder
     //   2090: dup
     //   2091: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   2094: ldc 163
+    //   2094: ldc 162
     //   2096: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2099: aload 9
-    //   2101: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2101: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   2104: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2107: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2107: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2110: goto -467 -> 1643
     //   2113: astore 8
     //   2115: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1567,12 +1555,12 @@ public class LoadDataJob
     //   2124: new 18	java/lang/StringBuilder
     //   2127: dup
     //   2128: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   2131: ldc 163
+    //   2131: ldc 162
     //   2133: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2136: aload 8
-    //   2138: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2138: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   2141: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2144: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2144: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2147: goto -494 -> 1653
     //   2150: astore 8
     //   2152: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1582,12 +1570,12 @@ public class LoadDataJob
     //   2161: new 18	java/lang/StringBuilder
     //   2164: dup
     //   2165: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   2168: ldc 163
+    //   2168: ldc 162
     //   2170: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2173: aload 8
-    //   2175: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2175: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   2178: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2181: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2181: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2184: goto -521 -> 1663
     //   2187: aload 14
     //   2189: areturn
@@ -1724,7 +1712,7 @@ public class LoadDataJob
     //   start	length	slot	name	signature
     //   0	2413	0	this	LoadDataJob
     //   0	2413	1	paramString	String
-    //   0	2413	2	paramagdc	agdc
+    //   0	2413	2	paramLoadDataJobListener	LoadDataJob.LoadDataJobListener
     //   105	1461	3	i	int
     //   155	523	4	j	int
     //   20	2383	5	bool1	boolean
@@ -1738,14 +1726,14 @@ public class LoadDataJob
     //   65	1688	9	localObject3	Object
     //   1757	24	9	localException4	Exception
     //   2076	24	9	localException5	Exception
-    //   2192	84	9	localagdc1	agdc
+    //   2192	84	9	localLoadDataJobListener1	LoadDataJob.LoadDataJobListener
     //   2316	1	9	localOutOfMemoryError1	java.lang.OutOfMemoryError
     //   2332	19	9	localOutOfMemoryError2	java.lang.OutOfMemoryError
     //   2358	1	9	localObject4	Object
     //   81	1578	10	localObject5	Object
     //   1696	25	10	localException6	Exception
     //   1734	6	10	localObject6	Object
-    //   1745	660	10	localagdc2	agdc
+    //   1745	660	10	localLoadDataJobListener2	LoadDataJob.LoadDataJobListener
     //   85	725	11	localObject7	Object
     //   876	25	11	localException7	Exception
     //   920	1	11	localObject8	Object
@@ -1913,18 +1901,18 @@ public class LoadDataJob
     //   72	83	2345	java/lang/OutOfMemoryError
   }
   
-  private List<agdp> a(List<agdl> paramList, Rect paramRect)
+  private List<PathDrawer> a(List<PathData> paramList, Rect paramRect)
   {
     Object localObject1 = paramList.iterator();
     long l = 0L;
     Object localObject2;
     if (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (agdl)((Iterator)localObject1).next();
-      if (((agdl)localObject2).b() == null) {
+      localObject2 = (PathData)((Iterator)localObject1).next();
+      if (((PathData)localObject2).b() == null) {
         break label251;
       }
-      l = ((agdl)localObject2).b().a() + l;
+      l = ((PathData)localObject2).b().a() + l;
     }
     label251:
     for (;;)
@@ -1946,7 +1934,7 @@ public class LoadDataJob
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
-          localObject2 = new agdp((agdl)paramList.next(), paramRect.width(), paramRect.height(), this.jdField_b_of_type_Int, this.c, i, j, 1.0F);
+          localObject2 = new PathDrawer((PathData)paramList.next(), paramRect.width(), paramRect.height(), this.jdField_b_of_type_Int, this.c, i, j, 1.0F);
           if (localObject2 != null) {
             ((ArrayList)localObject1).add(localObject2);
           }
@@ -1962,12 +1950,12 @@ public class LoadDataJob
           j = 45;
         }
       }
-      Collections.sort((List)localObject1, new agdd(this));
+      Collections.sort((List)localObject1, new LoadDataJob.SortComparator(this));
       return localObject1;
     }
   }
   
-  private Map<Integer, Integer> a(List<agdp> paramList)
+  private Map<Integer, Integer> a(List<PathDrawer> paramList)
   {
     HashMap localHashMap = new HashMap();
     if (paramList == null) {
@@ -1976,9 +1964,9 @@ public class LoadDataJob
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      int i = ((agdp)paramList.next()).a();
+      int i = ((PathDrawer)paramList.next()).a();
       if (i > 0) {
-        if (!agcw.a().b(0, i)) {
+        if (!DoodleResHelper.a().b(0, i)) {
           localHashMap.put(Integer.valueOf(i), Integer.valueOf(4));
         } else {
           localHashMap.put(Integer.valueOf(i), Integer.valueOf(0));
@@ -1999,7 +1987,7 @@ public class LoadDataJob
         paramString = jdField_b_of_type_JavaLangString + paramString.substring(paramString.lastIndexOf(File.separator) + 1, paramString.lastIndexOf('_')) + "_prm";
         if (paramBoolean)
         {
-          paramBoolean = FileUtils.fileExists(paramString);
+          paramBoolean = FileUtils.a(paramString);
           if (paramBoolean) {
             return paramString;
           }
@@ -2014,22 +2002,22 @@ public class LoadDataJob
     return null;
   }
   
-  public agdg a(byte[] paramArrayOfByte)
+  public MyParcel.DataElement a(MyParcelable paramMyParcelable)
   {
-    agdg localagdg = new agdg(0);
-    localagdg.a(paramArrayOfByte, 0, paramArrayOfByte.length);
-    return localagdg;
+    MyParcel localMyParcel = new MyParcel(102400);
+    paramMyParcelable.a(localMyParcel, 0);
+    return localMyParcel.a();
   }
   
-  public agdh a(agdi paramagdi)
+  public MyParcel a(byte[] paramArrayOfByte)
   {
-    agdg localagdg = new agdg(102400);
-    paramagdi.a(localagdg, 0);
-    return localagdg.a();
+    MyParcel localMyParcel = new MyParcel(0);
+    localMyParcel.a(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return localMyParcel;
   }
   
   /* Error */
-  public void a(agcu paramagcu, String paramString)
+  public void a(DoodleParam paramDoodleParam, String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -2051,21 +2039,21 @@ public class LoadDataJob
     //   25: ifeq +4 -> 29
     //   28: return
     //   29: aload_2
-    //   30: invokestatic 192	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   30: invokestatic 190	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
     //   33: ifne -5 -> 28
     //   36: new 18	java/lang/StringBuilder
     //   39: dup
     //   40: invokespecial 21	java/lang/StringBuilder:<init>	()V
     //   43: aload_2
     //   44: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: ldc_w 410
+    //   47: ldc_w 407
     //   50: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   56: astore 10
-    //   58: new 412	java/io/FileOutputStream
+    //   58: new 409	java/io/FileOutputStream
     //   61: dup
     //   62: aload 10
-    //   64: invokespecial 413	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   64: invokespecial 410	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   67: astore 5
     //   69: aload 4
     //   71: astore_3
@@ -2076,8 +2064,8 @@ public class LoadDataJob
     //   80: aload 8
     //   82: astore 7
     //   84: aload 5
-    //   86: invokevirtual 414	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   89: invokevirtual 417	java/nio/channels/FileChannel:tryLock	()Ljava/nio/channels/FileLock;
+    //   86: invokevirtual 411	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   89: invokevirtual 414	java/nio/channels/FileChannel:tryLock	()Ljava/nio/channels/FileLock;
     //   92: astore 8
     //   94: aload 8
     //   96: ifnull +105 -> 201
@@ -2090,9 +2078,9 @@ public class LoadDataJob
     //   110: aload 8
     //   112: astore 7
     //   114: aload 5
-    //   116: invokevirtual 414	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   116: invokevirtual 411	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   119: lconst_0
-    //   120: invokevirtual 421	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
+    //   120: invokevirtual 418	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
     //   123: pop
     //   124: aload 8
     //   126: astore_3
@@ -2104,7 +2092,7 @@ public class LoadDataJob
     //   137: astore 7
     //   139: aload_0
     //   140: aload_1
-    //   141: invokevirtual 423	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Lagdi;)Lagdh;
+    //   141: invokevirtual 420	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Lcom/tencent/mobileqq/activity/aio/doodle/MyParcelable;)Lcom/tencent/mobileqq/activity/aio/doodle/MyParcel$DataElement;
     //   144: astore_1
     //   145: aload 8
     //   147: astore_3
@@ -2116,9 +2104,9 @@ public class LoadDataJob
     //   158: astore 7
     //   160: aload 5
     //   162: aload_1
-    //   163: getfield 426	agdh:jdField_a_of_type_Int	I
-    //   166: invokestatic 429	agch:a	(I)[B
-    //   169: invokevirtual 433	java/io/FileOutputStream:write	([B)V
+    //   163: getfield 423	com/tencent/mobileqq/activity/aio/doodle/MyParcel$DataElement:jdField_a_of_type_Int	I
+    //   166: invokestatic 426	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgTranslator:a	(I)[B
+    //   169: invokevirtual 430	java/io/FileOutputStream:write	([B)V
     //   172: aload 8
     //   174: astore_3
     //   175: aload 5
@@ -2129,11 +2117,11 @@ public class LoadDataJob
     //   185: astore 7
     //   187: aload 5
     //   189: aload_1
-    //   190: getfield 436	agdh:jdField_a_of_type_ArrayOfByte	[B
+    //   190: getfield 433	com/tencent/mobileqq/activity/aio/doodle/MyParcel$DataElement:jdField_a_of_type_ArrayOfByte	[B
     //   193: iconst_0
     //   194: aload_1
-    //   195: getfield 426	agdh:jdField_a_of_type_Int	I
-    //   198: invokevirtual 438	java/io/FileOutputStream:write	([BII)V
+    //   195: getfield 423	com/tencent/mobileqq/activity/aio/doodle/MyParcel$DataElement:jdField_a_of_type_Int	I
+    //   198: invokevirtual 435	java/io/FileOutputStream:write	([BII)V
     //   201: aload 8
     //   203: ifnull +8 -> 211
     //   206: aload 8
@@ -2141,10 +2129,10 @@ public class LoadDataJob
     //   211: aload 5
     //   213: ifnull +8 -> 221
     //   216: aload 5
-    //   218: invokevirtual 439	java/io/FileOutputStream:close	()V
+    //   218: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   221: aload 10
     //   223: aload_2
-    //   224: invokestatic 443	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   224: invokestatic 439	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   227: pop
     //   228: return
     //   229: astore_1
@@ -2155,10 +2143,10 @@ public class LoadDataJob
     //   239: new 18	java/lang/StringBuilder
     //   242: dup
     //   243: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   246: ldc_w 445
+    //   246: ldc_w 441
     //   249: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   252: aload_1
-    //   253: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   253: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   256: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   259: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   262: goto -51 -> 211
@@ -2170,10 +2158,10 @@ public class LoadDataJob
     //   275: new 18	java/lang/StringBuilder
     //   278: dup
     //   279: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   282: ldc_w 445
+    //   282: ldc_w 441
     //   285: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   288: aload_1
-    //   289: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   289: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   292: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   295: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   298: goto -77 -> 221
@@ -2195,12 +2183,12 @@ public class LoadDataJob
     //   328: new 18	java/lang/StringBuilder
     //   331: dup
     //   332: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   335: ldc_w 447
+    //   335: ldc_w 443
     //   338: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   341: aload_1
-    //   342: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   342: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   345: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   348: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   348: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   351: aload 7
     //   353: ifnull +8 -> 361
     //   356: aload 7
@@ -2208,10 +2196,10 @@ public class LoadDataJob
     //   361: aload 5
     //   363: ifnull +8 -> 371
     //   366: aload 5
-    //   368: invokevirtual 439	java/io/FileOutputStream:close	()V
+    //   368: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   371: aload 10
     //   373: aload_2
-    //   374: invokestatic 443	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   374: invokestatic 439	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   377: pop
     //   378: return
     //   379: astore_1
@@ -2222,10 +2210,10 @@ public class LoadDataJob
     //   389: new 18	java/lang/StringBuilder
     //   392: dup
     //   393: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   396: ldc_w 445
+    //   396: ldc_w 441
     //   399: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   402: aload_1
-    //   403: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   403: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   406: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   409: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   412: goto -51 -> 361
@@ -2237,10 +2225,10 @@ public class LoadDataJob
     //   425: new 18	java/lang/StringBuilder
     //   428: dup
     //   429: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   432: ldc_w 445
+    //   432: ldc_w 441
     //   435: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   438: aload_1
-    //   439: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   439: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   442: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   445: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   448: goto -77 -> 371
@@ -2262,10 +2250,10 @@ public class LoadDataJob
     //   478: new 18	java/lang/StringBuilder
     //   481: dup
     //   482: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   485: ldc_w 449
+    //   485: ldc_w 445
     //   488: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   491: aload_1
-    //   492: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   492: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   495: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   498: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   501: aload 6
@@ -2275,12 +2263,12 @@ public class LoadDataJob
     //   511: aload 5
     //   513: ifnull +8 -> 521
     //   516: aload 5
-    //   518: invokevirtual 439	java/io/FileOutputStream:close	()V
+    //   518: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   521: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   524: ifeq -496 -> 28
     //   527: ldc 114
     //   529: iconst_2
-    //   530: ldc_w 451
+    //   530: ldc_w 447
     //   533: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   536: return
     //   537: astore_1
@@ -2291,10 +2279,10 @@ public class LoadDataJob
     //   547: new 18	java/lang/StringBuilder
     //   550: dup
     //   551: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   554: ldc_w 445
+    //   554: ldc_w 441
     //   557: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   560: aload_1
-    //   561: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   561: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   564: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   567: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   570: goto -59 -> 511
@@ -2306,10 +2294,10 @@ public class LoadDataJob
     //   583: new 18	java/lang/StringBuilder
     //   586: dup
     //   587: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   590: ldc_w 445
+    //   590: ldc_w 441
     //   593: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   596: aload_1
-    //   597: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   597: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   600: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   603: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   606: goto -85 -> 521
@@ -2323,10 +2311,10 @@ public class LoadDataJob
     //   621: aload 4
     //   623: ifnull +8 -> 631
     //   626: aload 4
-    //   628: invokevirtual 439	java/io/FileOutputStream:close	()V
+    //   628: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   631: aload 10
     //   633: aload_2
-    //   634: invokestatic 443	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   634: invokestatic 439	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   637: pop
     //   638: aload_1
     //   639: athrow
@@ -2338,10 +2326,10 @@ public class LoadDataJob
     //   650: new 18	java/lang/StringBuilder
     //   653: dup
     //   654: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   657: ldc_w 445
+    //   657: ldc_w 441
     //   660: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   663: aload_3
-    //   664: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   664: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   667: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   670: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   673: goto -52 -> 621
@@ -2353,10 +2341,10 @@ public class LoadDataJob
     //   686: new 18	java/lang/StringBuilder
     //   689: dup
     //   690: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   693: ldc_w 445
+    //   693: ldc_w 441
     //   696: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   699: aload_3
-    //   700: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   700: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   703: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   706: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   709: goto -78 -> 631
@@ -2369,7 +2357,7 @@ public class LoadDataJob
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	724	0	this	LoadDataJob
-    //   0	724	1	paramagcu	agcu
+    //   0	724	1	paramDoodleParam	DoodleParam
     //   0	724	2	paramString	String
     //   4	614	3	localObject1	Object
     //   640	24	3	localException1	Exception
@@ -2416,7 +2404,7 @@ public class LoadDataJob
   }
   
   /* Error */
-  public boolean a(List<agdp> paramList, String paramString)
+  public boolean a(List<PathDrawer> paramList, String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -2432,7 +2420,7 @@ public class LoadDataJob
     //   15: aload_1
     //   16: ifnull +19 -> 35
     //   19: aload_1
-    //   20: invokeinterface 213 1 0
+    //   20: invokeinterface 211 1 0
     //   25: ifeq +10 -> 35
     //   28: aload_2
     //   29: invokestatic 72	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -2440,22 +2428,22 @@ public class LoadDataJob
     //   35: iconst_0
     //   36: ireturn
     //   37: aload_2
-    //   38: invokestatic 192	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   38: invokestatic 190	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
     //   41: ifne -6 -> 35
     //   44: new 18	java/lang/StringBuilder
     //   47: dup
     //   48: invokespecial 21	java/lang/StringBuilder:<init>	()V
     //   51: aload_2
     //   52: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: ldc_w 410
+    //   55: ldc_w 407
     //   58: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   64: astore 11
-    //   66: new 412	java/io/FileOutputStream
+    //   66: new 409	java/io/FileOutputStream
     //   69: dup
     //   70: aload 11
     //   72: iconst_0
-    //   73: invokespecial 455	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
+    //   73: invokespecial 451	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
     //   76: astore 4
     //   78: aload 9
     //   80: astore 5
@@ -2464,7 +2452,7 @@ public class LoadDataJob
     //   86: aload 10
     //   88: astore 8
     //   90: aload 4
-    //   92: invokevirtual 414	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   92: invokevirtual 411	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   95: astore 12
     //   97: aload 9
     //   99: astore 5
@@ -2473,7 +2461,7 @@ public class LoadDataJob
     //   105: aload 10
     //   107: astore 8
     //   109: aload 12
-    //   111: invokevirtual 417	java/nio/channels/FileChannel:tryLock	()Ljava/nio/channels/FileLock;
+    //   111: invokevirtual 414	java/nio/channels/FileChannel:tryLock	()Ljava/nio/channels/FileLock;
     //   114: astore 6
     //   116: aload 6
     //   118: ifnull +220 -> 338
@@ -2485,7 +2473,7 @@ public class LoadDataJob
     //   131: astore 8
     //   133: aload 12
     //   135: lconst_0
-    //   136: invokevirtual 421	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
+    //   136: invokevirtual 418	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
     //   139: pop
     //   140: aload 6
     //   142: astore 5
@@ -2494,7 +2482,7 @@ public class LoadDataJob
     //   148: aload 6
     //   150: astore 8
     //   152: aload_1
-    //   153: invokeinterface 330 1 0
+    //   153: invokeinterface 327 1 0
     //   158: astore_1
     //   159: aload 6
     //   161: astore 5
@@ -2503,7 +2491,7 @@ public class LoadDataJob
     //   167: aload 6
     //   169: astore 8
     //   171: aload_1
-    //   172: invokeinterface 286 1 0
+    //   172: invokeinterface 283 1 0
     //   177: ifeq +161 -> 338
     //   180: aload 6
     //   182: astore 5
@@ -2513,9 +2501,9 @@ public class LoadDataJob
     //   190: astore 8
     //   192: aload_0
     //   193: aload_1
-    //   194: invokeinterface 290 1 0
-    //   199: checkcast 353	agdp
-    //   202: invokevirtual 423	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Lagdi;)Lagdh;
+    //   194: invokeinterface 287 1 0
+    //   199: checkcast 350	com/tencent/mobileqq/activity/aio/doodle/PathDrawer
+    //   202: invokevirtual 420	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Lcom/tencent/mobileqq/activity/aio/doodle/MyParcelable;)Lcom/tencent/mobileqq/activity/aio/doodle/MyParcel$DataElement;
     //   205: astore 9
     //   207: aload 6
     //   209: astore 5
@@ -2525,9 +2513,9 @@ public class LoadDataJob
     //   217: astore 8
     //   219: aload 4
     //   221: aload 9
-    //   223: getfield 426	agdh:jdField_a_of_type_Int	I
-    //   226: invokestatic 429	agch:a	(I)[B
-    //   229: invokevirtual 433	java/io/FileOutputStream:write	([B)V
+    //   223: getfield 423	com/tencent/mobileqq/activity/aio/doodle/MyParcel$DataElement:jdField_a_of_type_Int	I
+    //   226: invokestatic 426	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgTranslator:a	(I)[B
+    //   229: invokevirtual 430	java/io/FileOutputStream:write	([B)V
     //   232: aload 6
     //   234: astore 5
     //   236: aload 4
@@ -2536,11 +2524,11 @@ public class LoadDataJob
     //   242: astore 8
     //   244: aload 4
     //   246: aload 9
-    //   248: getfield 436	agdh:jdField_a_of_type_ArrayOfByte	[B
+    //   248: getfield 433	com/tencent/mobileqq/activity/aio/doodle/MyParcel$DataElement:jdField_a_of_type_ArrayOfByte	[B
     //   251: iconst_0
     //   252: aload 9
-    //   254: getfield 426	agdh:jdField_a_of_type_Int	I
-    //   257: invokevirtual 438	java/io/FileOutputStream:write	([BII)V
+    //   254: getfield 423	com/tencent/mobileqq/activity/aio/doodle/MyParcel$DataElement:jdField_a_of_type_Int	I
+    //   257: invokevirtual 435	java/io/FileOutputStream:write	([BII)V
     //   260: goto -101 -> 159
     //   263: astore 5
     //   265: aload 6
@@ -2552,12 +2540,12 @@ public class LoadDataJob
     //   277: new 18	java/lang/StringBuilder
     //   280: dup
     //   281: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   284: ldc_w 457
+    //   284: ldc_w 453
     //   287: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   290: aload 5
-    //   292: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   292: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   295: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   298: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   298: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   301: aload_1
     //   302: ifnull +7 -> 309
     //   305: aload_1
@@ -2565,12 +2553,12 @@ public class LoadDataJob
     //   309: aload 4
     //   311: ifnull +8 -> 319
     //   314: aload 4
-    //   316: invokevirtual 439	java/io/FileOutputStream:close	()V
+    //   316: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   319: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   322: ifeq +506 -> 828
     //   325: ldc 114
     //   327: iconst_2
-    //   328: ldc_w 459
+    //   328: ldc_w 455
     //   331: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   334: iconst_0
     //   335: istore_3
@@ -2583,10 +2571,10 @@ public class LoadDataJob
     //   348: aload 4
     //   350: ifnull +8 -> 358
     //   353: aload 4
-    //   355: invokevirtual 439	java/io/FileOutputStream:close	()V
+    //   355: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   358: aload 11
     //   360: aload_2
-    //   361: invokestatic 443	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   361: invokestatic 439	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   364: pop
     //   365: iconst_1
     //   366: istore_3
@@ -2599,10 +2587,10 @@ public class LoadDataJob
     //   380: new 18	java/lang/StringBuilder
     //   383: dup
     //   384: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   387: ldc_w 461
+    //   387: ldc_w 457
     //   390: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   393: aload_1
-    //   394: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   394: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   397: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   400: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   403: goto -55 -> 348
@@ -2614,10 +2602,10 @@ public class LoadDataJob
     //   416: new 18	java/lang/StringBuilder
     //   419: dup
     //   420: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   423: ldc_w 461
+    //   423: ldc_w 457
     //   426: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   429: aload_1
-    //   430: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   430: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   433: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   436: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   439: goto -81 -> 358
@@ -2629,10 +2617,10 @@ public class LoadDataJob
     //   452: new 18	java/lang/StringBuilder
     //   455: dup
     //   456: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   459: ldc_w 461
+    //   459: ldc_w 457
     //   462: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   465: aload_1
-    //   466: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   466: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   469: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   472: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   475: goto -166 -> 309
@@ -2644,10 +2632,10 @@ public class LoadDataJob
     //   488: new 18	java/lang/StringBuilder
     //   491: dup
     //   492: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   495: ldc_w 461
+    //   495: ldc_w 457
     //   498: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   501: aload_1
-    //   502: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   502: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   505: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   508: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   511: goto -192 -> 319
@@ -2669,10 +2657,10 @@ public class LoadDataJob
     //   543: new 18	java/lang/StringBuilder
     //   546: dup
     //   547: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   550: ldc_w 463
+    //   550: ldc_w 459
     //   553: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   556: aload_1
-    //   557: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   557: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   560: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   563: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   566: aload 8
@@ -2682,12 +2670,12 @@ public class LoadDataJob
     //   576: aload 4
     //   578: ifnull +8 -> 586
     //   581: aload 4
-    //   583: invokevirtual 439	java/io/FileOutputStream:close	()V
+    //   583: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   586: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   589: ifeq +239 -> 828
     //   592: ldc 114
     //   594: iconst_2
-    //   595: ldc_w 459
+    //   595: ldc_w 455
     //   598: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   601: iconst_0
     //   602: istore_3
@@ -2700,10 +2688,10 @@ public class LoadDataJob
     //   616: new 18	java/lang/StringBuilder
     //   619: dup
     //   620: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   623: ldc_w 461
+    //   623: ldc_w 457
     //   626: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   629: aload_1
-    //   630: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   630: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   633: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   636: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   639: goto -63 -> 576
@@ -2715,10 +2703,10 @@ public class LoadDataJob
     //   652: new 18	java/lang/StringBuilder
     //   655: dup
     //   656: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   659: ldc_w 461
+    //   659: ldc_w 457
     //   662: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   665: aload_1
-    //   666: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   666: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   669: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   672: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   675: goto -89 -> 586
@@ -2732,10 +2720,10 @@ public class LoadDataJob
     //   692: aload 7
     //   694: ifnull +8 -> 702
     //   697: aload 7
-    //   699: invokevirtual 439	java/io/FileOutputStream:close	()V
+    //   699: invokevirtual 436	java/io/FileOutputStream:close	()V
     //   702: aload 11
     //   704: aload_2
-    //   705: invokestatic 443	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   705: invokestatic 439	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   708: pop
     //   709: aload_1
     //   710: athrow
@@ -2747,10 +2735,10 @@ public class LoadDataJob
     //   722: new 18	java/lang/StringBuilder
     //   725: dup
     //   726: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   729: ldc_w 461
+    //   729: ldc_w 457
     //   732: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   735: aload 4
-    //   737: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   737: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   740: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   743: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   746: goto -54 -> 692
@@ -2762,10 +2750,10 @@ public class LoadDataJob
     //   760: new 18	java/lang/StringBuilder
     //   763: dup
     //   764: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   767: ldc_w 461
+    //   767: ldc_w 457
     //   770: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   773: aload 4
-    //   775: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   775: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   778: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   781: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   784: goto -82 -> 702
@@ -2797,7 +2785,7 @@ public class LoadDataJob
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	833	0	this	LoadDataJob
-    //   0	833	1	paramList	List<agdp>
+    //   0	833	1	paramList	List<PathDrawer>
     //   0	833	2	paramString	String
     //   335	495	3	bool	boolean
     //   76	506	4	localFileOutputStream	java.io.FileOutputStream
@@ -2813,7 +2801,7 @@ public class LoadDataJob
     //   791	24	6	localObject4	Object
     //   84	718	7	localObject5	Object
     //   1	571	8	localObject6	Object
-    //   7	246	9	localagdh	agdh
+    //   7	246	9	localDataElement	MyParcel.DataElement
     //   10	96	10	localObject7	Object
     //   64	639	11	str	String
     //   95	39	12	localFileChannel	java.nio.channels.FileChannel
@@ -2869,9 +2857,9 @@ public class LoadDataJob
       ((File)localObject1).mkdirs();
     }
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (agdc localagdc = (agdc)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localagdc = null)
+    for (LoadDataJob.LoadDataJobListener localLoadDataJobListener = (LoadDataJob.LoadDataJobListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localLoadDataJobListener = null)
     {
-      if (localagdc == null) {
+      if (localLoadDataJobListener == null) {
         QLog.d("LoadDataJob", 2, "mListener == null");
       }
       label669:
@@ -2883,10 +2871,10 @@ public class LoadDataJob
           if (QLog.isColorLevel()) {
             QLog.d("LoadDataJob", 2, "file == null");
           }
-          localagdc.a(null, 4, null, null, null);
+          localLoadDataJobListener.a(null, 4, null, null, null);
           return;
         }
-        if (!localagdc.a(this.jdField_a_of_type_JavaLangString))
+        if (!localLoadDataJobListener.a(this.jdField_a_of_type_JavaLangString))
         {
           if (QLog.isColorLevel()) {
             QLog.d("LoadDataJob", 2, "onCheck  false");
@@ -2896,18 +2884,18 @@ public class LoadDataJob
         {
           Object localObject3 = a(this.jdField_a_of_type_JavaLangString, true);
           Object localObject2 = b(this.jdField_a_of_type_JavaLangString, true);
-          if (localagdc.a(this.jdField_a_of_type_JavaLangString))
+          if (localLoadDataJobListener.a(this.jdField_a_of_type_JavaLangString))
           {
             Object localObject4;
             label250:
-            agdp localagdp;
+            PathDrawer localPathDrawer;
             if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("LoadDataJob", 2, "run  read parcel begin");
               }
-              localObject1 = a((String)localObject3, localagdc);
-              if ((!localagdc.a(this.jdField_a_of_type_JavaLangString)) || (localObject1 == null)) {
+              localObject1 = a((String)localObject3, localLoadDataJobListener);
+              if ((!localLoadDataJobListener.a(this.jdField_a_of_type_JavaLangString)) || (localObject1 == null)) {
                 continue;
               }
               if (localObject1 != null)
@@ -2915,10 +2903,10 @@ public class LoadDataJob
                 localObject4 = ((List)localObject1).iterator();
                 if (((Iterator)localObject4).hasNext())
                 {
-                  localagdp = (agdp)((Iterator)localObject4).next();
-                  if ((localagdp == null) || (!localagdp.a()))
+                  localPathDrawer = (PathDrawer)((Iterator)localObject4).next();
+                  if ((localPathDrawer == null) || (!localPathDrawer.a()))
                   {
-                    FileUtils.deleteFile((String)localObject3);
+                    FileUtils.e((String)localObject3);
                     localObject1 = null;
                     label294:
                     localObject2 = a((String)localObject2);
@@ -2931,7 +2919,7 @@ public class LoadDataJob
             }
             for (;;)
             {
-              if (!localagdc.a(this.jdField_a_of_type_JavaLangString)) {
+              if (!localLoadDataJobListener.a(this.jdField_a_of_type_JavaLangString)) {
                 break label669;
               }
               if ((localObject1 != null) && (localObject2 != null))
@@ -2945,24 +2933,24 @@ public class LoadDataJob
                   QLog.d("LoadDataJob", 2, "run load file begin:");
                 }
                 long l1 = System.currentTimeMillis();
-                localObject2 = agch.a(this.jdField_a_of_type_JavaLangString);
+                localObject2 = DoodleMsgTranslator.a(this.jdField_a_of_type_JavaLangString);
                 if (localObject2 == null)
                 {
-                  localagdc.a(this.jdField_a_of_type_JavaLangString, 4, null, null, null);
+                  localLoadDataJobListener.a(this.jdField_a_of_type_JavaLangString, 4, null, null, null);
                   return;
-                  localagdp.a(0, 0, this.jdField_b_of_type_Int, this.c);
+                  localPathDrawer.a(0, 0, this.jdField_b_of_type_Int, this.c);
                   break label250;
                 }
-                localObject1 = ((agcb)localObject2).a();
-                if (!localagdc.a(this.jdField_a_of_type_JavaLangString)) {
+                localObject1 = ((DoodleItem)localObject2).a();
+                if (!localLoadDataJobListener.a(this.jdField_a_of_type_JavaLangString)) {
                   break;
                 }
                 if (QLog.isColorLevel()) {
                   QLog.d("LoadDataJob", 2, "run setpathdata ");
                 }
-                localObject4 = a(((agcb)localObject2).a(), ((agcb)localObject2).a().a());
+                localObject4 = a(((DoodleItem)localObject2).a(), ((DoodleItem)localObject2).a().a());
                 long l2 = System.currentTimeMillis();
-                if (!localagdc.a(this.jdField_a_of_type_JavaLangString)) {
+                if (!localLoadDataJobListener.a(this.jdField_a_of_type_JavaLangString)) {
                   break;
                 }
                 if (QLog.isColorLevel()) {
@@ -2973,7 +2961,7 @@ public class LoadDataJob
                   if (QLog.isColorLevel()) {
                     QLog.d("LoadDataJob", 2, "need cache:");
                   }
-                  ThreadManager.post(new LoadDataJob.1(this, (agcu)localObject1, (List)localObject4), 5, null, false);
+                  ThreadManager.post(new LoadDataJob.1(this, (DoodleParam)localObject1, (List)localObject4), 5, null, false);
                 }
                 localObject2 = localObject1;
                 localObject3 = localObject4;
@@ -2984,11 +2972,11 @@ public class LoadDataJob
                   localObject2 = localObject1;
                 }
               }
-              if (!localagdc.a(this.jdField_a_of_type_JavaLangString)) {
+              if (!localLoadDataJobListener.a(this.jdField_a_of_type_JavaLangString)) {
                 break;
               }
               localObject1 = a((List)localObject3);
-              localagdc.a(this.jdField_a_of_type_JavaLangString, 0, (agcu)localObject2, (List)localObject3, (Map)localObject1);
+              localLoadDataJobListener.a(this.jdField_a_of_type_JavaLangString, 0, (DoodleParam)localObject2, (List)localObject3, (Map)localObject1);
               if (!QLog.isColorLevel()) {
                 break;
               }
@@ -3006,7 +2994,7 @@ public class LoadDataJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LoadDataJob
  * JD-Core Version:    0.7.0.1
  */

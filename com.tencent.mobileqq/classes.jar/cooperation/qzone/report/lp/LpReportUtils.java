@@ -3,9 +3,10 @@ package cooperation.qzone.report.lp;
 import android.os.Build;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anvx;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import common.config.service.QzoneConfig;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -13,18 +14,24 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TimeZone;
-import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class LpReportUtils
 {
-  public static final String ALL_REPORT = anvx.a(2131705871);
-  public static final String CLICK_MESSAGE = anvx.a(2131705873);
-  public static final String NOT_HIT = anvx.a(2131705870);
-  public static final String SAMPLE_REPORT = anvx.a(2131705872);
+  public static final String ALL_REPORT = HardCodeUtil.a(2131706411);
+  public static final String CLICK_MESSAGE;
+  public static final String NOT_HIT = HardCodeUtil.a(2131706410);
+  public static final String SAMPLE_REPORT;
   private static final String TAG = "LpReport.LpReportUtils";
-  private static boolean isSampled;
-  private static long sampleValidEndTime;
-  private static long sampleValidStartTime;
+  private static boolean isSampled = false;
+  private static long sampleValidEndTime = 0L;
+  private static long sampleValidStartTime = 0L;
+  
+  static
+  {
+    CLICK_MESSAGE = HardCodeUtil.a(2131706413);
+    SAMPLE_REPORT = HardCodeUtil.a(2131706412);
+  }
   
   public static long getBeijingTimeInMillis(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -72,18 +79,13 @@ public class LpReportUtils
   
   public static boolean meetCondition(LpReportInfos paramLpReportInfos, long paramLong)
   {
-    if ((BaseApplicationImpl.sProcessId == 1) && (BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (BaseApplicationImpl.getApplication().getRuntime().isBackgroundPause)) {}
-    long l;
-    int i;
-    int j;
-    do
-    {
+    if ((MobileQQ.sProcessId == 1) && (((ILpReportUtils)QRoute.api(ILpReportUtils.class)).isBackgroundPause())) {
       return true;
-      l = SystemClock.uptimeMillis();
-      i = QzoneConfig.getInstance().getConfig("ClientReport", "TraceReportInterval", 600);
-      j = QzoneConfig.getInstance().getConfig("ClientReport", "TraceReportCount", 50);
-    } while ((paramLpReportInfos.size() >= j) || ((l - paramLong >= i * 1000) && (paramLpReportInfos.size() > 0)));
-    return false;
+    }
+    long l = SystemClock.uptimeMillis();
+    int i = QzoneConfig.getInstance().getConfig("ClientReport", "TraceReportInterval", 600);
+    int j = QzoneConfig.getInstance().getConfig("ClientReport", "TraceReportCount", 50);
+    return (paramLpReportInfos.size() >= j) || ((l - paramLong >= i * 1000) && (paramLpReportInfos.size() > 0));
   }
   
   public static void safePut(Map<String, String> paramMap, String paramString, int paramInt)
@@ -140,13 +142,12 @@ public class LpReportUtils
   
   private static void userSample()
   {
-    boolean bool = true;
     int i = QzoneConfig.getInstance().getConfig("ClientReport", "TraceReportSamples", 100);
     long l2 = getDaysSince1970();
     long l1;
     try
     {
-      l1 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+      l1 = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin();
       if (l1 == 0L) {
         return;
       }
@@ -168,7 +169,7 @@ public class LpReportUtils
     }
     int j = (int)(l2 % i);
     if (j == l1 % i) {}
-    for (;;)
+    for (boolean bool = true;; bool = false)
     {
       isSampled = bool;
       if (!QLog.isDevelopLevel()) {
@@ -176,13 +177,12 @@ public class LpReportUtils
       }
       QLog.d("LpReport.LpReportUtils", 4, "抽中的尾数： " + j);
       break;
-      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,6 @@ import com.tencent.viola.utils.ViolaUtils;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
-import tuy;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/components/VideoAnimationComponent;", "Lcom/tencent/viola/ui/baseComponent/VComponent;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/components/VideoAnimationView;", "instance", "Lcom/tencent/viola/core/ViolaInstance;", "dom", "Lcom/tencent/viola/ui/dom/DomObject;", "parent", "Lcom/tencent/viola/ui/baseComponent/VComponentContainer;", "(Lcom/tencent/viola/core/ViolaInstance;Lcom/tencent/viola/ui/dom/DomObject;Lcom/tencent/viola/ui/baseComponent/VComponentContainer;)V", "destroy", "", "initComponentHostView", "context", "Landroid/content/Context;", "initHostView", "hostView", "isReuse", "", "onActivityDestroy", "onActivityPause", "onActivityResume", "pause", "play", "removedByDiff", "removedByJs", "resume", "stop", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class VideoAnimationComponent
@@ -19,7 +18,7 @@ public final class VideoAnimationComponent
 {
   @NotNull
   public static final String AUTO_PLAY = "isAutoPlay";
-  public static final tuy Companion = new tuy(null);
+  public static final VideoAnimationComponent.Companion Companion = new VideoAnimationComponent.Companion(null);
   
   public VideoAnimationComponent(@NotNull ViolaInstance paramViolaInstance, @NotNull DomObject paramDomObject, @NotNull VComponentContainer<?> paramVComponentContainer)
   {
@@ -147,7 +146,7 @@ public final class VideoAnimationComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.components.VideoAnimationComponent
  * JD-Core Version:    0.7.0.1
  */

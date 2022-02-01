@@ -11,18 +11,18 @@ import android.os.Build.VERSION;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.widget.RemoteViews;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import mqq.app.MobileQQ;
 
 public class CoreService
   extends Service
 {
+  public static final String KEY_START_MODE = "k_start_mode";
   static final int NOTIFICATION_ID = ;
-  private static final String S_VIVO_FILE_PATH = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "enableKernelServiceInVivo";
+  private static final String S_VIVO_FILE_PATH = MobileQQ.getContext().getFilesDir() + File.separator + "enableKernelServiceInVivo";
   private static final String TAG = "GuardManager";
   static CoreService sCore = null;
   static boolean sDisableForeground;
@@ -33,15 +33,15 @@ public class CoreService
     if (paramBoolean)
     {
       localObject = new Notification();
-      ((Notification)localObject).icon = 2130840422;
-      ((Notification)localObject).contentView = new RemoteViews(BaseApplicationImpl.sApplication.getPackageName(), 2131559696);
+      ((Notification)localObject).icon = 2130840535;
+      ((Notification)localObject).contentView = new RemoteViews(MobileQQ.getMobileQQ().getPackageName(), 2131559772);
       return localObject;
     }
-    Object localObject = new Intent(BaseApplicationImpl.sApplication, SplashActivity.class);
+    Object localObject = new Intent("com.tencent.mobileqq.action.MAINACTIVITY");
     ((Intent)localObject).addFlags(67108864);
-    localObject = PendingIntent.getActivity(BaseApplicationImpl.sApplication, 0, (Intent)localObject, 402653184);
-    NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(BaseApplicationImpl.sApplication);
-    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130840422);
+    localObject = PendingIntent.getActivity(MobileQQ.getMobileQQ(), 0, (Intent)localObject, 402653184);
+    NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(MobileQQ.getMobileQQ());
+    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130840535);
     localBuilder.setContentIntent((PendingIntent)localObject);
     return localBuilder.build();
   }
@@ -61,31 +61,31 @@ public class CoreService
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 91	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   3: invokestatic 94	mqq/app/MobileQQ:getMobileQQ	()Lmqq/app/MobileQQ;
     //   6: astore_1
-    //   7: new 104	android/content/Intent
+    //   7: new 107	android/content/Intent
     //   10: dup
     //   11: aload_1
     //   12: ldc 2
-    //   14: invokespecial 109	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   14: invokespecial 196	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   17: astore_2
     //   18: iload_0
-    //   19: putstatic 194	com/tencent/mobileqq/app/CoreService:sDisableForeground	Z
+    //   19: putstatic 198	com/tencent/mobileqq/app/CoreService:sDisableForeground	Z
     //   22: aload_1
     //   23: aload_2
-    //   24: invokevirtual 200	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
+    //   24: invokevirtual 204	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
     //   27: pop
     //   28: ldc 2
     //   30: monitorexit
     //   31: return
     //   32: astore_1
-    //   33: invokestatic 205	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   33: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   36: ifeq -8 -> 28
-    //   39: ldc 11
+    //   39: ldc 14
     //   41: iconst_2
-    //   42: ldc 207
+    //   42: ldc 211
     //   44: aload_1
-    //   45: invokestatic 211	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   45: invokestatic 215	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   48: goto -20 -> 28
     //   51: astore_1
     //   52: ldc 2
@@ -95,7 +95,7 @@ public class CoreService
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	57	0	paramBoolean	boolean
-    //   6	17	1	localBaseApplicationImpl	BaseApplicationImpl
+    //   6	17	1	localMobileQQ	MobileQQ
     //   32	13	1	localThrowable	Throwable
     //   51	5	1	localObject	Object
     //   17	7	2	localIntent	Intent
@@ -116,10 +116,10 @@ public class CoreService
       {
         return;
       } while (isVivoPhoneAndSDK22());
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication, CoreService.KernelService.class);
+      Intent localIntent = new Intent(MobileQQ.getMobileQQ(), CoreService.KernelService.class);
       try
       {
-        BaseApplicationImpl.getContext().startService(localIntent);
+        MobileQQ.getContext().startService(localIntent);
         return;
       }
       catch (Throwable localThrowable) {}
@@ -133,27 +133,27 @@ public class CoreService
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: new 104	android/content/Intent
+    //   3: new 107	android/content/Intent
     //   6: dup
-    //   7: getstatic 91	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   7: invokestatic 94	mqq/app/MobileQQ:getMobileQQ	()Lmqq/app/MobileQQ;
     //   10: ldc 2
-    //   12: invokespecial 109	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   12: invokespecial 196	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   15: astore_0
-    //   16: invokestatic 39	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   16: invokestatic 42	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   19: aload_0
-    //   20: invokevirtual 222	com/tencent/qphone/base/util/BaseApplication:stopService	(Landroid/content/Intent;)Z
+    //   20: invokevirtual 226	com/tencent/qphone/base/util/BaseApplication:stopService	(Landroid/content/Intent;)Z
     //   23: pop
     //   24: ldc 2
     //   26: monitorexit
     //   27: return
     //   28: astore_0
-    //   29: invokestatic 205	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   29: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   32: ifeq -8 -> 24
-    //   35: ldc 11
+    //   35: ldc 14
     //   37: iconst_2
-    //   38: ldc 207
+    //   38: ldc 211
     //   40: aload_0
-    //   41: invokestatic 211	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   41: invokestatic 215	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   44: goto -20 -> 24
     //   47: astore_0
     //   48: ldc 2
@@ -182,10 +182,10 @@ public class CoreService
       {
         return;
       } while (isVivoPhoneAndSDK22());
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication, CoreService.KernelService.class);
+      Intent localIntent = new Intent(MobileQQ.getMobileQQ(), CoreService.KernelService.class);
       try
       {
-        BaseApplicationImpl.getContext().stopService(localIntent);
+        BaseApplication.getContext().stopService(localIntent);
         return;
       }
       catch (Throwable localThrowable) {}
@@ -205,7 +205,7 @@ public class CoreService
       QLog.d("GuardManager", 2, "CoreService.onCreate " + Build.VERSION.SDK_INT);
     }
     super.onCreate();
-    BaseApplicationImpl.sApplication.onActivityCreate(this, null);
+    MobileQQ.getMobileQQ().onActivityCreate(this, null);
     stopTempService();
     if (!sDisableForeground)
     {
@@ -240,7 +240,7 @@ public class CoreService
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("crashcontrol", 0);
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("crashcontrol", 0);
     if (localSharedPreferences.getBoolean("crashFrequentLast", false))
     {
       QLog.d("GuardManager", 1, "crashFrequentLast,return START_NOT_STICKY");

@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.alphabet;
 
-import ajik;
 import android.content.Context;
 import android.util.AttributeSet;
-import birb;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
+import com.tencent.mobileqq.widget.PinnedDividerListView.DividerAdapter;
 
 public class AlphabetPinnedHeaderListView
   extends PinnedDividerListView
@@ -28,16 +27,16 @@ public class AlphabetPinnedHeaderListView
   
   public void setChildViewCanAction(boolean paramBoolean)
   {
-    birb localbirb = a();
-    if ((localbirb instanceof ajik)) {
-      ((ajik)localbirb).a(paramBoolean);
+    PinnedDividerListView.DividerAdapter localDividerAdapter = a();
+    if ((localDividerAdapter instanceof AlphabetFriendAdapter)) {
+      ((AlphabetFriendAdapter)localDividerAdapter).a(paramBoolean);
     }
     this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetPinnedHeaderListView
  * JD-Core Version:    0.7.0.1
  */

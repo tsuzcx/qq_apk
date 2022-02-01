@@ -15,15 +15,15 @@ public final class mobile_detail_rsp
   static single_feed cache_ugc_detail_adv = new single_feed();
   public String attach_info = "";
   public String attach_info_essence = "";
-  public single_detail detail_data;
-  public Map<String, String> extend_info;
-  public int hasmore;
-  public int hasmore_essence;
-  public s_life_moment life_moment_info;
-  public int refresh_type;
-  public int type_info;
-  public single_feed ugc_detail_adv;
-  public int wait_time;
+  public single_detail detail_data = null;
+  public Map<String, String> extend_info = null;
+  public int hasmore = 0;
+  public int hasmore_essence = 0;
+  public s_life_moment life_moment_info = null;
+  public int refresh_type = 0;
+  public int type_info = 0;
+  public single_feed ugc_detail_adv = null;
+  public int wait_time = 0;
   
   static
   {

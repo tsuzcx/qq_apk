@@ -12,7 +12,7 @@ public class AppBrandMainService$AppBrandMainServiceBinder
   extends IAppBrandService.Stub
 {
   private static final byte[] INSTANCE_LOCK = new byte[0];
-  private static volatile AppBrandMainServiceBinder mInstance;
+  private static volatile AppBrandMainServiceBinder mInstance = null;
   private Context mContext;
   public String mProcessName;
   

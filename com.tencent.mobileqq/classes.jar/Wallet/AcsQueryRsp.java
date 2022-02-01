@@ -8,8 +8,8 @@ public final class AcsQueryRsp
   extends JceStruct
 {
   public String err_str = "";
-  public int ret_code;
-  public int subscribed;
+  public int ret_code = 0;
+  public int subscribed = 0;
   
   public AcsQueryRsp() {}
   

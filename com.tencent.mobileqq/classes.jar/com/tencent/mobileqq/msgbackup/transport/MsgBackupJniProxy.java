@@ -2,12 +2,11 @@ package com.tencent.mobileqq.msgbackup.transport;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import awzs;
-import axck;
-import axcq;
-import axct;
-import axcw;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.msgbackup.controller.MsgBackupManager;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupReportData;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupReporter;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -435,17 +434,17 @@ public class MsgBackupJniProxy
     }
     if ((paramBoolean1) && (paramBoolean2))
     {
-      axct.a();
-      awzs.a().a.add(Long.valueOf(paramLong2));
-      axcq localaxcq = axct.a;
-      localaxcq.j += 1L;
+      MsgBackupReporter.a();
+      MsgBackupManager.a().a.add(Long.valueOf(paramLong2));
+      MsgBackupReportData localMsgBackupReportData = MsgBackupReporter.a;
+      localMsgBackupReportData.j += 1L;
     }
     recvFile(paramLong1, paramLong2, paramString1, paramString2, paramBoolean1, paramLong3, 0L);
   }
   
   public void a(long paramLong, String paramString)
   {
-    setEncryptKey(paramLong, paramString, axcw.b);
+    setEncryptKey(paramLong, paramString, MsgBackupUtil.b);
   }
   
   public void b(long paramLong1, long paramLong2, long paramLong3, String paramString)
@@ -470,7 +469,7 @@ public class MsgBackupJniProxy
   
   public native byte[] getRecvBuffer(long paramLong1, long paramLong2);
   
-  public native int getVersoEndpoint(long paramLong, axck paramaxck);
+  public native int getVersoEndpoint(long paramLong, MsgBackupEndPoint6 paramMsgBackupEndPoint6);
   
   public native int queryReachability(long paramLong, MsgBackupNetState paramMsgBackupNetState);
   

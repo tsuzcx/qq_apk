@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.qwallet.utils;
 
-import akyj;
-import akyl;
-import albw;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager.ShowInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.troop.widget.RedDotImageView;
 import java.lang.ref.WeakReference;
 
-public final class QWalletTools$3
+final class QWalletTools$3
   implements Runnable
 {
-  public QWalletTools$3(WeakReference paramWeakReference1, WeakReference paramWeakReference2, int paramInt) {}
+  QWalletTools$3(WeakReference paramWeakReference1, WeakReference paramWeakReference2, int paramInt) {}
   
   public void run()
   {
@@ -19,11 +18,11 @@ public final class QWalletTools$3
     RedDotImageView localRedDotImageView = (RedDotImageView)this.b.get();
     if ((localObject != null) && (localRedDotImageView != null))
     {
-      localObject = (akyj)((QQAppInterface)localObject).getManager(QQManagerFactory.QWALLET_RED_MANAGER);
-      akyl localakyl = ((akyj)localObject).a("2001");
-      if ((localakyl.a) && (albw.a(localakyl.b, this.jdField_a_of_type_Int)))
+      localObject = (QWalletRedManager)((QQAppInterface)localObject).getManager(QQManagerFactory.QWALLET_RED_MANAGER);
+      QWalletRedManager.ShowInfo localShowInfo = ((QWalletRedManager)localObject).a("2001");
+      if ((localShowInfo.a) && (QWalletTools.a(localShowInfo.b, this.jdField_a_of_type_Int)))
       {
-        ((akyj)localObject).b("2001");
+        ((QWalletRedManager)localObject).b("2001");
         localRedDotImageView.post(new QWalletTools.3.1(this));
       }
     }
@@ -31,7 +30,7 @@ public final class QWalletTools$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.3
  * JD-Core Version:    0.7.0.1
  */

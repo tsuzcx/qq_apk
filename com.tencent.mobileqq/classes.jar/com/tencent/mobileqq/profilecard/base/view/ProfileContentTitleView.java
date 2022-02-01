@@ -17,15 +17,16 @@ import com.tencent.qphone.base.util.QLog;
 public class ProfileContentTitleView
   extends FrameLayout
 {
-  public Context a;
-  protected ViewGroup a;
-  public FrameLayout a;
-  public ImageView a;
-  public TextView a;
-  public ViewGroup b;
-  public ImageView b;
-  public ViewGroup c;
-  public ViewGroup d;
+  private static final String TAG = "ProfileContentTitleView";
+  public FrameLayout mContentContainer;
+  public Context mContext;
+  protected ViewGroup mRoot;
+  public ImageView mTitleArrow;
+  public ViewGroup mTitleContainer;
+  public ViewGroup mTitleExtContainer;
+  public ImageView mTitleIcon;
+  public TextView mTitleText;
+  public ViewGroup mTitleTextBg;
   
   public ProfileContentTitleView(Context paramContext)
   {
@@ -35,59 +36,59 @@ public class ProfileContentTitleView
   public ProfileContentTitleView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    this.mContext = paramContext;
+    init();
   }
   
-  public View a()
+  public void addContentView(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-      return this.jdField_a_of_type_AndroidWidgetFrameLayout.getChildAt(0);
-    }
-    return null;
-  }
-  
-  protected void a()
-  {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559627, this, true);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376957));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131379040));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379046));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379093));
-    this.c = ((ViewGroup)findViewById(2131379094));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379018));
-    this.d = ((RelativeLayout)findViewById(2131379045));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131365167));
-    setIconEnable(false);
-  }
-  
-  public void a(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
+    if (this.mContentContainer != null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getChildCount() > 0) {
+      if (this.mContentContainer.getChildCount() > 0) {
         QLog.e("ProfileContentTitleView", 1, "addContentView add fail, already exit.");
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramView);
+    this.mContentContainer.addView(paramView);
   }
   
-  public void c()
+  public View getContentView()
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+    if (this.mContentContainer != null) {
+      return this.mContentContainer.getChildAt(0);
+    }
+    return null;
+  }
+  
+  protected void init()
+  {
+    LayoutInflater.from(this.mContext).inflate(2131559703, this, true);
+    this.mRoot = ((ViewGroup)findViewById(2131377366));
+    this.mTitleContainer = ((ViewGroup)findViewById(2131379471));
+    this.mTitleIcon = ((ImageView)findViewById(2131379477));
+    this.mTitleText = ((TextView)findViewById(2131379527));
+    this.mTitleTextBg = ((ViewGroup)findViewById(2131379528));
+    this.mTitleArrow = ((ImageView)findViewById(2131379449));
+    this.mTitleExtContainer = ((RelativeLayout)findViewById(2131379476));
+    this.mContentContainer = ((FrameLayout)findViewById(2131365304));
+    setIconEnable(false);
+  }
+  
+  public void removeContentViews()
+  {
+    if (this.mContentContainer != null) {
+      this.mContentContainer.removeAllViews();
     }
   }
   
   public void setArrowEnable(boolean paramBoolean)
   {
     ImageView localImageView;
-    if (this.jdField_b_of_type_AndroidWidgetImageView != null)
+    if (this.mTitleArrow != null)
     {
-      localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+      localImageView = this.mTitleArrow;
       if (!paramBoolean) {
         break label24;
       }
@@ -102,17 +103,17 @@ public class ProfileContentTitleView
   
   public void setIcon(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramDrawable);
+    if (this.mTitleIcon != null) {
+      this.mTitleIcon.setBackgroundDrawable(paramDrawable);
     }
   }
   
   public void setIconEnable(boolean paramBoolean)
   {
     ImageView localImageView;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.mTitleIcon != null)
     {
-      localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      localImageView = this.mTitleIcon;
       if (!paramBoolean) {
         break label24;
       }
@@ -127,19 +128,19 @@ public class ProfileContentTitleView
   
   public void setMarginBottomEnable(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+    if (this.mRoot != null) {
       if (!paramBoolean) {
         break label50;
       }
     }
     label50:
-    for (int i = getResources().getDimensionPixelSize(2131297534);; i = 0)
+    for (int i = getResources().getDimensionPixelSize(2131297601);; i = 0)
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mRoot.getLayoutParams();
       if (localLayoutParams != null)
       {
         localLayoutParams.bottomMargin = i;
-        this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+        this.mRoot.setLayoutParams(localLayoutParams);
       }
       return;
     }
@@ -147,15 +148,15 @@ public class ProfileContentTitleView
   
   public void setTitle(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if (this.mTitleText != null) {
+      this.mTitleText.setText(paramString);
     }
   }
   
   public void setTitleBackground(Drawable paramDrawable)
   {
-    if (this.jdField_b_of_type_AndroidViewViewGroup != null) {
-      this.jdField_b_of_type_AndroidViewViewGroup.setBackgroundDrawable(paramDrawable);
+    if (this.mTitleContainer != null) {
+      this.mTitleContainer.setBackgroundDrawable(paramDrawable);
     }
   }
 }

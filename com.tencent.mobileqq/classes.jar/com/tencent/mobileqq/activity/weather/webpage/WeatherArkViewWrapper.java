@@ -1,12 +1,5 @@
 package com.tencent.mobileqq.activity.weather.webpage;
 
-import amed;
-import ameq;
-import amer;
-import amex;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelStoreOwner;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.SystemClock;
@@ -23,14 +16,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import aqbi;
-import axne;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.ark.open.ArkAppInfo.Size;
 import com.tencent.ark.open.ArkView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.weather.WeatherDCReportHelper;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.ark.ArkAppCenterUtil;
+import com.tencent.mobileqq.ark.multiproc.ArkMultiProcUtil;
+import com.tencent.mobileqq.mvvm.LifeCycleExtKt;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import kotlin.Lazy;
@@ -42,21 +39,21 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleRes", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "arkHeight", "getArkHeight", "()I", "setArkHeight", "(I)V", "arkLoadCallback", "Lcom/tencent/ark/ArkViewImplement$LoadCallback;", "arkView", "Lcom/tencent/ark/open/ArkView;", "getArkView", "()Lcom/tencent/ark/open/ArkView;", "downInArk", "", "hasMakeUpForTheLossDownEvent", "hasMove", "isArkLoaded", "()Z", "setArkLoaded", "(Z)V", "mSlideStartDir", "", "mStartTime", "", "mStartX", "", "mStartY", "scaledTouchSlop", "getScaledTouchSlop", "scaledTouchSlop$delegate", "Lkotlin/Lazy;", "topPadding", "getTopPadding", "topPadding$delegate", "touchEventData", "Landroid/arch/lifecycle/MutableLiveData;", "Landroid/view/MotionEvent;", "getTouchEventData", "()Landroid/arch/lifecycle/MutableLiveData;", "viewModel", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "createLoadFailView", "Landroid/view/View;", "dispatchTouchEvent", "event", "initArkView", "", "appName", "", "appView", "appVersion", "appMeta", "initViewModel", "store", "Landroid/arch/lifecycle/ViewModelStoreOwner;", "makeUpForLossDownEvent", "isForArk", "onLoadFailed", "onLoadSuccess", "onLoading", "setArkFixScaleDensity", "swipeDirectionJudge", "curX", "curY", "touchInArk", "y", "translateYToArkY", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleRes", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "arkHeight", "getArkHeight", "()I", "setArkHeight", "(I)V", "arkLoadCallback", "Lcom/tencent/ark/ArkViewImplement$LoadCallback;", "arkView", "Lcom/tencent/ark/open/ArkView;", "getArkView", "()Lcom/tencent/ark/open/ArkView;", "downInArk", "", "hasMakeUpForTheLossDownEvent", "hasMove", "isArkLoaded", "()Z", "setArkLoaded", "(Z)V", "mSlideStartDir", "", "mStartTime", "", "mStartX", "", "mStartY", "scaledTouchSlop", "getScaledTouchSlop", "scaledTouchSlop$delegate", "Lkotlin/Lazy;", "topPadding", "getTopPadding", "topPadding$delegate", "touchEventData", "Landroidx/lifecycle/MutableLiveData;", "Landroid/view/MotionEvent;", "getTouchEventData", "()Landroidx/lifecycle/MutableLiveData;", "viewModel", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "createLoadFailView", "Landroid/view/View;", "dispatchTouchEvent", "event", "initArkView", "", "appName", "", "appView", "appVersion", "appMeta", "initViewModel", "store", "Landroidx/lifecycle/ViewModelStoreOwner;", "makeUpForLossDownEvent", "isForArk", "onLoadFailed", "onLoadSuccess", "onLoading", "setArkFixScaleDensity", "swipeDirectionJudge", "curX", "curY", "touchInArk", "y", "translateYToArkY", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class WeatherArkViewWrapper
   extends FrameLayout
 {
-  public static final ameq a;
+  public static final WeatherArkViewWrapper.Companion a;
   private byte jdField_a_of_type_Byte;
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private amex jdField_a_of_type_Amex;
   @NotNull
-  private final MutableLiveData<MotionEvent> jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  private final MutableLiveData<MotionEvent> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
   private ArkViewImplement.LoadCallback jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback;
   @NotNull
   private final ArkView jdField_a_of_type_ComTencentArkOpenArkView;
+  private WeatherWebArkViewModel jdField_a_of_type_ComTencentMobileqqActivityWeatherWebpageWeatherWebArkViewModel;
   private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new WeatherArkViewWrapper.topPadding.2(this));
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -67,9 +64,9 @@ public final class WeatherArkViewWrapper
   
   static
   {
-    jdField_a_of_type_Ameq = new ameq(null);
-    aqbi.a(true);
-    aqbi.a();
+    jdField_a_of_type_ComTencentMobileqqActivityWeatherWebpageWeatherArkViewWrapper$Companion = new WeatherArkViewWrapper.Companion(null);
+    ArkMultiProcUtil.a(true);
+    ArkMultiProcUtil.a();
   }
   
   public WeatherArkViewWrapper(@NotNull Context paramContext)
@@ -93,7 +90,7 @@ public final class WeatherArkViewWrapper
     this.jdField_a_of_type_ComTencentArkOpenArkView.setSize(paramContext, paramContext, paramContext);
     this.jdField_a_of_type_ComTencentArkOpenArkView.setBorderType(0);
     addView((View)this.jdField_a_of_type_ComTencentArkOpenArkView);
-    setArkHeight(AIOUtils.dp2px(310, getResources()));
+    setArkHeight(AIOUtils.a(310, getResources()));
   }
   
   private final float a(float paramFloat)
@@ -115,14 +112,14 @@ public final class WeatherArkViewWrapper
     Object localObject = new FrameLayout.LayoutParams(-1, this.jdField_a_of_type_Int);
     ((FrameLayout.LayoutParams)localObject).gravity = 1;
     LinearLayout localLinearLayout = new LinearLayout(getContext());
-    localLinearLayout.setId(2131381371);
+    localLinearLayout.setId(2131381832);
     localLinearLayout.setOrientation(1);
     localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localLinearLayout.setBackgroundColor(-1);
     localObject = new ImageView(getContext());
-    ((ImageView)localObject).setImageResource(2130839540);
+    ((ImageView)localObject).setImageResource(2130839619);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    int j = AIOUtils.dp2px(170.0F, getResources()) - a();
+    int j = AIOUtils.a(170.0F, getResources()) - a();
     int i = j;
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       i = j + ImmersiveUtils.getStatusBarHeight(getContext());
@@ -131,11 +128,11 @@ public final class WeatherArkViewWrapper
     localLayoutParams.gravity = 1;
     localLinearLayout.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
     localObject = new TextView(getContext());
-    ((TextView)localObject).setText(2131720065);
+    ((TextView)localObject).setText(2131720641);
     ((TextView)localObject).setTextSize(1, 15.0F);
     ((TextView)localObject).setTextColor(-16777216);
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.topMargin = AIOUtils.dp2px(20.0F, getResources());
+    localLayoutParams.topMargin = AIOUtils.a(20.0F, getResources());
     localLayoutParams.gravity = 1;
     localLinearLayout.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
     return (View)localLinearLayout;
@@ -143,11 +140,11 @@ public final class WeatherArkViewWrapper
   
   private final void a()
   {
-    amex localamex = this.jdField_a_of_type_Amex;
-    if (localamex != null) {
-      localamex.a(1);
+    WeatherWebArkViewModel localWeatherWebArkViewModel = this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWebpageWeatherWebArkViewModel;
+    if (localWeatherWebArkViewModel != null) {
+      localWeatherWebArkViewModel.a(1);
     }
-    amed.a().a(null, "new_ark_callup_success");
+    WeatherDCReportHelper.a().a(null, "new_ark_callup_success");
   }
   
   private final void a(float paramFloat1, float paramFloat2)
@@ -190,7 +187,7 @@ public final class WeatherArkViewWrapper
       localMotionEvent.recycle();
       return;
       label82:
-      MutableLiveData localMutableLiveData = this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+      MutableLiveData localMutableLiveData = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
       if (localMotionEvent != null) {
         localMutableLiveData.setValue(localMotionEvent);
       }
@@ -215,27 +212,27 @@ public final class WeatherArkViewWrapper
   
   private final void b()
   {
-    amex localamex = this.jdField_a_of_type_Amex;
-    if (localamex != null) {
-      localamex.a(0);
+    WeatherWebArkViewModel localWeatherWebArkViewModel = this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWebpageWeatherWebArkViewModel;
+    if (localWeatherWebArkViewModel != null) {
+      localWeatherWebArkViewModel.a(0);
     }
   }
   
   private final void c()
   {
-    Object localObject = this.jdField_a_of_type_Amex;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWebpageWeatherWebArkViewModel;
     if (localObject != null) {
-      ((amex)localObject).a(-1);
+      ((WeatherWebArkViewModel)localObject).a(-1);
     }
-    setArkHeight(AIOUtils.dp2px(310, getResources()));
-    localObject = findViewById(2131381371);
+    setArkHeight(AIOUtils.a(310, getResources()));
+    localObject = findViewById(2131381832);
     if (localObject == null) {
       localObject = a();
     }
     for (;;)
     {
       addView((View)localObject);
-      amed.a().a(null, "new_ark_callup_fail");
+      WeatherDCReportHelper.a().a(null, "new_ark_callup_fail");
       return;
       if ((((View)localObject).getParent() instanceof ViewGroup))
       {
@@ -251,7 +248,7 @@ public final class WeatherArkViewWrapper
   @NotNull
   public final MutableLiveData<MotionEvent> a()
   {
-    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
   }
   
   @NotNull
@@ -263,7 +260,7 @@ public final class WeatherArkViewWrapper
   public final void a(@NotNull ViewModelStoreOwner paramViewModelStoreOwner)
   {
     Intrinsics.checkParameterIsNotNull(paramViewModelStoreOwner, "store");
-    this.jdField_a_of_type_Amex = ((amex)axne.a(paramViewModelStoreOwner).get(amex.class));
+    this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWebpageWeatherWebArkViewModel = ((WeatherWebArkViewModel)LifeCycleExtKt.a(paramViewModelStoreOwner).get(WeatherWebArkViewModel.class));
   }
   
   public final void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4)
@@ -272,11 +269,11 @@ public final class WeatherArkViewWrapper
     Intrinsics.checkParameterIsNotNull(paramString2, "appView");
     Intrinsics.checkParameterIsNotNull(paramString3, "appVersion");
     Intrinsics.checkParameterIsNotNull(paramString4, "appMeta");
-    String str = ArkAppCenterUtil.getCurrentAppConfig();
+    String str = ArkAppCenterUtil.a();
     if (QLog.isColorLevel()) {
       QLog.d("WeatherWebArkWrapper", 2, "initArkView appName: " + paramString1 + ", appView: " + paramString2 + ", appVersion: " + paramString3 + ", appMeta: " + paramString4 + ", appConfig: " + str);
     }
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback = ((ArkViewImplement.LoadCallback)new amer(this));
+    this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback = ((ArkViewImplement.LoadCallback)new WeatherArkViewWrapper.initArkView.1(this));
     this.jdField_a_of_type_ComTencentArkOpenArkView.load(paramString1, paramString2, paramString3, paramString4, str, this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback);
   }
   
@@ -362,7 +359,7 @@ public final class WeatherArkViewWrapper
           i = j;
           break;
           a(false);
-          localObject = this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+          localObject = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
           if (paramMotionEvent != null) {
             ((MutableLiveData)localObject).setValue(paramMotionEvent);
           }
@@ -397,7 +394,7 @@ public final class WeatherArkViewWrapper
       break label329;
       label467:
       a(false);
-      localObject = this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+      localObject = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
       if (paramMotionEvent != null) {
         ((MutableLiveData)localObject).setValue(paramMotionEvent);
       }
@@ -434,7 +431,7 @@ public final class WeatherArkViewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.webpage.WeatherArkViewWrapper
  * JD-Core Version:    0.7.0.1
  */

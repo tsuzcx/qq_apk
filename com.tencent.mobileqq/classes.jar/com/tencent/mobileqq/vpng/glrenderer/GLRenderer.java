@@ -12,8 +12,8 @@ import javax.microedition.khronos.egl.EGLSurface;
 
 public abstract class GLRenderer
 {
-  protected int a;
-  protected SurfaceTexture a;
+  int jdField_a_of_type_Int;
+  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
   private GLRenderer.RenderThreadThread jdField_a_of_type_ComTencentMobileqqVpngGlrendererGLRenderer$RenderThreadThread;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private Runnable jdField_a_of_type_JavaLangRunnable;
@@ -23,10 +23,11 @@ public abstract class GLRenderer
   private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = EGL10.EGL_NO_DISPLAY;
   private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = EGL10.EGL_NO_SURFACE;
   protected boolean a;
-  protected int b;
+  int b;
   
-  protected GLRenderer(int paramInt1, int paramInt2)
+  GLRenderer(int paramInt1, int paramInt2)
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
   }
@@ -137,7 +138,7 @@ public abstract class GLRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.glrenderer.GLRenderer
  * JD-Core Version:    0.7.0.1
  */

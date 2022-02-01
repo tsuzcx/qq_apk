@@ -7,15 +7,15 @@ import com.qq.taf.jce.JceStruct;
 public final class custom_list_switch_set_req
   extends JceStruct
 {
-  public int iAvatar;
-  public int iCover;
-  public int iCustomNavi;
-  public int iCustomVip;
-  public int iFacade;
-  public int iFeedSkin;
-  public int iFloat;
-  public int iSetItemBits;
-  public int iVisitorSkin;
+  public int iAvatar = 0;
+  public int iCover = 0;
+  public int iCustomNavi = 0;
+  public int iCustomVip = 0;
+  public int iFacade = 0;
+  public int iFeedSkin = 0;
+  public int iFloat = 0;
+  public int iSetItemBits = 0;
+  public int iVisitorSkin = 0;
   public String strTraceInfo = "";
   
   public custom_list_switch_set_req() {}

@@ -3,23 +3,23 @@ package com.tencent.avgame.ipc;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.avgame.qav.AVGameBusinessCtrl;
+import com.tencent.avgame.session.AVGameSession;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.Foreground;
-import nnm;
-import nof;
 
 public class ProcessMonitor
 {
-  private static ProcessMonitor jdField_a_of_type_ComTencentAvgameIpcProcessMonitor;
+  private static ProcessMonitor jdField_a_of_type_ComTencentAvgameIpcProcessMonitor = null;
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "AVGameActivity_doOnCreate", "AVGameActivity_doOnNewIntent", "ACTION_MAIN_TO_AV_GAME_ENTERING" };
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private long b;
+  private boolean jdField_a_of_type_Boolean = false;
+  private long b = 0L;
   
   static float a()
   {
@@ -148,8 +148,8 @@ public class ProcessMonitor
   
   boolean a()
   {
-    nof localnof = nnm.b().a();
-    if ((localnof != null) && (!localnof.a())) {
+    AVGameSession localAVGameSession = AVGameBusinessCtrl.b().a();
+    if ((localAVGameSession != null) && (!localAVGameSession.a())) {
       if (QLog.isColorLevel()) {
         QLog.i("ProcessMonitor", 2, "checkAndExitAVGame, in game now.");
       }
@@ -161,11 +161,11 @@ public class ProcessMonitor
       do
       {
         return false;
-        if (Foreground.sCountActivity <= 0) {
+        if (Foreground.getActivityCount() <= 0) {
           break;
         }
       } while (!QLog.isColorLevel());
-      QLog.i("ProcessMonitor", 2, "checkAndExitAVGame, foreground[" + Foreground.sCountActivity + "]");
+      QLog.i("ProcessMonitor", 2, "checkAndExitAVGame, foreground[" + Foreground.getActivityCount() + "]");
       return false;
       l2 = SystemClock.elapsedRealtime();
       l1 = Math.abs(l2 - this.b);
@@ -192,7 +192,7 @@ public class ProcessMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ipc.ProcessMonitor
  * JD-Core Version:    0.7.0.1
  */

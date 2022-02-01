@@ -8,8 +8,8 @@ public final class NeighborAd
   extends JceStruct
 {
   public String ad_item = "";
-  public int ad_postion;
-  public int ad_source;
+  public int ad_postion = 0;
+  public int ad_source = 0;
   
   public NeighborAd() {}
   

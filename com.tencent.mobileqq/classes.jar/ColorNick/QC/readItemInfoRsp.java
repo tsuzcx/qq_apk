@@ -10,10 +10,10 @@ public final class readItemInfoRsp
 {
   static ArrayList<GroupNickEmoji> cache_emojilist = new ArrayList();
   static ArrayList<GroupNickItem> cache_itemlist;
-  public ArrayList<GroupNickEmoji> emojilist;
-  public int index;
-  public ArrayList<GroupNickItem> itemlist;
-  public int left;
+  public ArrayList<GroupNickEmoji> emojilist = null;
+  public int index = 0;
+  public ArrayList<GroupNickItem> itemlist = null;
+  public int left = 0;
   public String urlprefix = "";
   
   static

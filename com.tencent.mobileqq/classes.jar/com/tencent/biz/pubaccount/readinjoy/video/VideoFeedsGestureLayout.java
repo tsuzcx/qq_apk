@@ -12,48 +12,41 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import olh;
-import omx;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sgi;
-import sin;
-import sio;
-import sip;
-import siq;
-import spg;
-import spk;
-import sqp;
 
 public class VideoFeedsGestureLayout
   extends RelativeLayout
 {
   private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
+  private VideoBrightnessController jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoBrightnessController;
+  private VideoFeedsGestureLayout.CustomClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$CustomClickListener;
+  private VideoFeedsGestureLayout.IVideoPlayManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$IVideoPlayManager;
+  private VideoFeedsGestureUIManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureUIManager;
   private VideoFeedsPlayManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager;
+  private VideoPlayManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  private sgi jdField_a_of_type_Sgi;
-  private sin jdField_a_of_type_Sin;
-  private sio jdField_a_of_type_Sio;
-  private siq jdField_a_of_type_Siq;
-  private spg jdField_a_of_type_Spg;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  private long jdField_b_of_type_Long = 0L;
+  private boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int = 0;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
+  private long jdField_c_of_type_Long = 0L;
+  private boolean jdField_c_of_type_Boolean = false;
   private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
+  private boolean jdField_d_of_type_Boolean = false;
   private int e;
   private int f = -1;
   private int g;
@@ -78,10 +71,10 @@ public class VideoFeedsGestureLayout
   {
     long l2;
     long l1;
-    if ((this.jdField_a_of_type_Spg != null) && (this.jdField_a_of_type_Spg.a() != null))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a() != null))
     {
-      l2 = this.jdField_a_of_type_Spg.a().jdField_b_of_type_Int * 1000;
-      l1 = this.jdField_a_of_type_Spg.a();
+      l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a().jdField_b_of_type_Int * 1000;
+      l1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a();
     }
     for (;;)
     {
@@ -96,19 +89,19 @@ public class VideoFeedsGestureLayout
       for (;;)
       {
         this.h = ((int)(f1 * (float)l2));
-        this.jdField_a_of_type_Siq.a(3, paramFloat, this.h, l2);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureUIManager.a(3, paramFloat, this.h, l2);
         return;
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager != null)
         {
-          l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.c();
+          l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.d();
           l1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.a();
           break;
         }
-        if (this.jdField_a_of_type_Sio == null) {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$IVideoPlayManager == null) {
           break label183;
         }
-        l2 = this.jdField_a_of_type_Sio.a();
-        l1 = this.jdField_a_of_type_Sio.b();
+        l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$IVideoPlayManager.a();
+        l1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$IVideoPlayManager.b();
         break;
         f1 = f2;
         if (f2 < 0.0F) {
@@ -163,23 +156,23 @@ public class VideoFeedsGestureLayout
   {
     if (this.jdField_c_of_type_Int == 3)
     {
-      if (this.jdField_a_of_type_Spg == null) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager == null) {
         break label60;
       }
-      this.jdField_a_of_type_Spg.c(this.h);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c(this.h);
       if (this.jdField_a_of_type_AndroidWidgetSeekBar != null) {
         this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.h / 1000);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Siq.a(0, 0.0F, 0L, 0L);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureUIManager.a(0, 0.0F, 0L, 0L);
       return;
       label60:
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager != null) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.a(this.h, true);
-      } else if (this.jdField_a_of_type_Sio != null) {
-        this.jdField_a_of_type_Sio.a(this.h);
+      } else if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$IVideoPlayManager != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$IVideoPlayManager.a(this.h);
       }
     }
   }
@@ -187,12 +180,12 @@ public class VideoFeedsGestureLayout
   private void b(float paramFloat)
   {
     int i = 255;
-    if (this.jdField_a_of_type_Sgi == null) {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoBrightnessController == null) {
       return;
     }
     if (this.jdField_c_of_type_Int == 0)
     {
-      if (this.jdField_a_of_type_Sgi.a()) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoBrightnessController.a()) {
         this.jdField_b_of_type_Boolean = true;
       }
       if (this.f != -1) {
@@ -210,12 +203,12 @@ public class VideoFeedsGestureLayout
     if (j > 255) {}
     for (;;)
     {
-      this.jdField_a_of_type_Sgi.a(i / 255.0F);
-      this.jdField_a_of_type_Siq.a(2, i / 255.0F, 0L, 0L);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoBrightnessController.a(i / 255.0F);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureUIManager.a(2, i / 255.0F, 0L, 0L);
       this.f = i;
       return;
       label140:
-      this.e = this.jdField_a_of_type_Sgi.a();
+      this.e = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoBrightnessController.a();
       break;
       label154:
       this.e = this.f;
@@ -246,12 +239,12 @@ public class VideoFeedsGestureLayout
       if (i != 0) {
         break label119;
       }
-      sqp.a().a(true, "user_gesture", j);
+      VideoVolumeControl.a().a(true, "user_gesture", j);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidMediaAudioManager.setStreamVolume(3, i, 0);
-      this.jdField_a_of_type_Siq.a(1, i / this.g, 0L, 0L);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureUIManager.a(1, i / this.g, 0L, 0L);
       return;
       i = k;
       if (k >= 0) {
@@ -263,14 +256,14 @@ public class VideoFeedsGestureLayout
       j = 1;
       break label58;
       label119:
-      sqp.a().a(false, "user_gesture", j);
+      VideoVolumeControl.a().a(false, "user_gesture", j);
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Siq != null) {
-      this.jdField_a_of_type_Siq.a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureUIManager != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureUIManager.a();
     }
     this.jdField_c_of_type_Int = 0;
   }
@@ -283,8 +276,8 @@ public class VideoFeedsGestureLayout
     if (paramInt == 0)
     {
       this.jdField_d_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Sin != null) {
-        this.jdField_a_of_type_Sin.a(this, 1);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$CustomClickListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$CustomClickListener.a(this, 1);
       }
       if (this.jdField_a_of_type_AndroidMediaAudioManager == null)
       {
@@ -303,10 +296,10 @@ public class VideoFeedsGestureLayout
         break;
       }
       this.jdField_d_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Sin == null) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$CustomClickListener == null) {
         break;
       }
-      this.jdField_a_of_type_Sin.a(this, 2);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$CustomClickListener.a(this, 2);
       break;
       c(paramFloat);
       continue;
@@ -324,11 +317,11 @@ public class VideoFeedsGestureLayout
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (this.jdField_a_of_type_AndroidViewGestureDetector == null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new sip(this));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new VideoFeedsGestureLayout.MyGestureListener(this));
     }
   }
   
@@ -360,11 +353,11 @@ public class VideoFeedsGestureLayout
       {
         localJSONException.printStackTrace();
         continue;
-        olh.b(null, null, "0X8008A42", "0X8008A42", 0, 0, "", "", "", omx.a(localJSONObject), false);
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).videoDataReportWithFansInfoInR5(null, null, "0X8008A42", "0X8008A42", 0, 0, "", "", "", VideoReporter.a(localJSONObject), false);
         continue;
-        olh.b(null, null, "0X8008A43", "0X8008A43", 0, 0, "", "", "", omx.a(localJSONObject), false);
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).videoDataReportWithFansInfoInR5(null, null, "0X8008A43", "0X8008A43", 0, 0, "", "", "", VideoReporter.a(localJSONObject), false);
         continue;
-        olh.b(null, null, "0X8008A41", "0X8008A41", 0, 0, "", "", "", omx.a(localJSONObject), false);
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).videoDataReportWithFansInfoInR5(null, null, "0X8008A41", "0X8008A41", 0, 0, "", "", "", VideoReporter.a(localJSONObject), false);
       }
     }
   }
@@ -383,11 +376,11 @@ public class VideoFeedsGestureLayout
   {
     this.jdField_c_of_type_Boolean = paramBoolean;
     if ((this.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Siq = new siq();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureUIManager = new VideoFeedsGestureUIManager();
     }
     try
     {
-      this.jdField_a_of_type_Siq.a(this.jdField_a_of_type_AndroidAppActivity, this);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureUIManager.a(this.jdField_a_of_type_AndroidAppActivity, this);
       this.jdField_a_of_type_Boolean = true;
       if (this.jdField_c_of_type_Boolean)
       {
@@ -406,8 +399,8 @@ public class VideoFeedsGestureLayout
           }
         }
         a(true);
-      } while (this.jdField_a_of_type_Sgi == null);
-      this.jdField_a_of_type_Sgi.a();
+      } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoBrightnessController == null);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoBrightnessController.a();
       this.f = -1;
     }
   }
@@ -418,9 +411,9 @@ public class VideoFeedsGestureLayout
     super.setOnClickListener(paramOnClickListener);
   }
   
-  public void setOnCustomClickListener(sin paramsin)
+  public void setOnCustomClickListener(VideoFeedsGestureLayout.CustomClickListener paramCustomClickListener)
   {
-    this.jdField_a_of_type_Sin = paramsin;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$CustomClickListener = paramCustomClickListener;
   }
   
   public void setSeekBar(SeekBar paramSeekBar)
@@ -428,9 +421,14 @@ public class VideoFeedsGestureLayout
     this.jdField_a_of_type_AndroidWidgetSeekBar = paramSeekBar;
   }
   
-  public void setVideoBrightnessController(sgi paramsgi)
+  public void setVideoBrightnessController(VideoBrightnessController paramVideoBrightnessController)
   {
-    this.jdField_a_of_type_Sgi = paramsgi;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoBrightnessController = paramVideoBrightnessController;
+  }
+  
+  public void setVideoPlayManager(VideoFeedsGestureLayout.IVideoPlayManager paramIVideoPlayManager)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$IVideoPlayManager = paramIVideoPlayManager;
   }
   
   public void setVideoPlayManager(VideoFeedsPlayManager paramVideoFeedsPlayManager)
@@ -439,20 +437,15 @@ public class VideoFeedsGestureLayout
     this.jdField_a_of_type_Int = 2;
   }
   
-  public void setVideoPlayManager(sio paramsio)
+  public void setVideoPlayManager(VideoPlayManager paramVideoPlayManager)
   {
-    this.jdField_a_of_type_Sio = paramsio;
-  }
-  
-  public void setVideoPlayManager(spg paramspg)
-  {
-    this.jdField_a_of_type_Spg = paramspg;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager = paramVideoPlayManager;
     this.jdField_a_of_type_Int = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout
  * JD-Core Version:    0.7.0.1
  */

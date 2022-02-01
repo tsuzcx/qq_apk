@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.view;
 
-import apjq;
+import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
 import com.tencent.mobileqq.ar.model.ArLBSActivity;
 
 class ARScanEntryView$31
   implements Runnable
 {
-  ARScanEntryView$31(ARScanEntryView paramARScanEntryView, apjq paramapjq, ArLBSActivity paramArLBSActivity) {}
+  ARScanEntryView$31(ARScanEntryView paramARScanEntryView, ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult, ArLBSActivity paramArLBSActivity) {}
   
   public void run()
   {
-    ARScanEntryView.a(this.this$0, this.jdField_a_of_type_Apjq, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+    ARScanEntryView.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
   }
 }
 

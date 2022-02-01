@@ -132,12 +132,12 @@ public class QEffectView
     return this.mIQEffect;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.mOptions.clear();
@@ -279,7 +279,7 @@ public class QEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qq.effect.QEffectView
  * JD-Core Version:    0.7.0.1
  */

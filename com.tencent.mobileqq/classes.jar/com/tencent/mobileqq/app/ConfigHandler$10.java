@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-public class ConfigHandler$10
+class ConfigHandler$10
   implements Runnable
 {
   /* Error */
@@ -14,42 +14,42 @@ public class ConfigHandler$10
     //   8: invokespecial 23	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore_1
     //   12: aload_0
-    //   13: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lansg;
-    //   16: getfield 31	ansg:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   19: new 33	java/net/URL
+    //   13: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lcom/tencent/mobileqq/app/ConfigHandler;
+    //   16: getfield 30	com/tencent/mobileqq/app/ConfigHandler:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   19: new 32	java/net/URL
     //   22: dup
     //   23: aload_0
-    //   24: getfield 35	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
-    //   27: invokespecial 36	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   24: getfield 34	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
+    //   27: invokespecial 35	java/net/URL:<init>	(Ljava/lang/String;)V
     //   30: aload_1
-    //   31: invokestatic 42	com/tencent/mobileqq/utils/HttpDownloadUtil:download	(Lcom/tencent/common/app/AppInterface;Ljava/net/URL;Ljava/io/File;)Z
+    //   31: invokestatic 41	com/tencent/mobileqq/utils/HttpDownloadUtil:download	(Lmqq/app/AppRuntime;Ljava/net/URL;Ljava/io/File;)Z
     //   34: ifeq +16 -> 50
     //   37: aload_0
-    //   38: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lansg;
+    //   38: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lcom/tencent/mobileqq/app/ConfigHandler;
     //   41: iconst_3
     //   42: iconst_1
     //   43: aload_0
     //   44: getfield 19	com/tencent/mobileqq/app/ConfigHandler$10:a	Ljava/lang/String;
-    //   47: invokevirtual 46	ansg:notifyUI	(IZLjava/lang/Object;)V
+    //   47: invokevirtual 45	com/tencent/mobileqq/app/ConfigHandler:notifyUI	(IZLjava/lang/Object;)V
     //   50: aload_0
-    //   51: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lansg;
+    //   51: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lcom/tencent/mobileqq/app/ConfigHandler;
     //   54: aload_0
-    //   55: getfield 35	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
-    //   58: invokestatic 49	ansg:a	(Lansg;Ljava/lang/String;)V
+    //   55: getfield 34	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
+    //   58: invokestatic 48	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
     //   61: return
     //   62: astore_1
     //   63: aload_0
-    //   64: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lansg;
+    //   64: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lcom/tencent/mobileqq/app/ConfigHandler;
     //   67: aload_0
-    //   68: getfield 35	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
-    //   71: invokestatic 49	ansg:a	(Lansg;Ljava/lang/String;)V
+    //   68: getfield 34	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
+    //   71: invokestatic 48	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
     //   74: return
     //   75: astore_1
     //   76: aload_0
-    //   77: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lansg;
+    //   77: getfield 25	com/tencent/mobileqq/app/ConfigHandler$10:this$0	Lcom/tencent/mobileqq/app/ConfigHandler;
     //   80: aload_0
-    //   81: getfield 35	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
-    //   84: invokestatic 49	ansg:a	(Lansg;Ljava/lang/String;)V
+    //   81: getfield 34	com/tencent/mobileqq/app/ConfigHandler$10:b	Ljava/lang/String;
+    //   84: invokestatic 48	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
     //   87: aload_1
     //   88: athrow
     // Local variable table:
@@ -66,7 +66,7 @@ public class ConfigHandler$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.10
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.tencent.mobileqq.mini.api.data.SimpleMiniAppConfig.SimpleLaunchParam;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 public class LaunchParam
@@ -169,26 +170,7 @@ public class LaunchParam
   
   private static String standardEntryPath(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    String str = "";
-    int i = paramString.indexOf("?");
-    Object localObject = paramString;
-    if (i != -1)
-    {
-      localObject = paramString.substring(0, i);
-      str = paramString.substring(i + 1, paramString.length());
-    }
-    paramString = (String)localObject;
-    if (!((String)localObject).toLowerCase().endsWith(".html")) {
-      paramString = (String)localObject + ".html";
-    }
-    localObject = new StringBuilder().append(paramString);
-    if (TextUtils.isEmpty(str)) {}
-    for (paramString = "";; paramString = "?" + str) {
-      return paramString;
-    }
+    return SimpleMiniAppConfig.SimpleLaunchParam.standardEntryPath(paramString);
   }
   
   public int describeContents()

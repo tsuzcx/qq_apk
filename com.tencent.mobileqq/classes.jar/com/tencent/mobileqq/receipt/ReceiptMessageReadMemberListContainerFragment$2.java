@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.receipt;
 
 import android.content.SharedPreferences;
-import aoep;
-import bbat;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -25,7 +24,7 @@ class ReceiptMessageReadMemberListContainerFragment$2
       ReceiptMessageReadMemberListContainerFragment.a(this.this$0).sendEmptyMessage(4);
       return;
     }
-    aoep localaoep = (aoep)ReceiptMessageReadMemberListContainerFragment.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+    TroopHandler localTroopHandler = (TroopHandler)ReceiptMessageReadMemberListContainerFragment.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
     TroopInfo localTroopInfo = ((TroopManager)ReceiptMessageReadMemberListContainerFragment.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER)).b(Long.toString(ReceiptMessageReadMemberListContainerFragment.a(this.this$0)));
     if (localTroopInfo == null)
     {
@@ -33,12 +32,12 @@ class ReceiptMessageReadMemberListContainerFragment$2
       return;
     }
     ReceiptMessageReadMemberListContainerFragment.a(this.this$0).addObserver(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), true);
-    localaoep.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 10);
+    localTroopHandler.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,9 @@ package com.tencent.mobileqq.utils.confighandler;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bhjn;
-import bibh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vipav.VipFunCallManager;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.TreeMap;
@@ -14,7 +13,7 @@ import java.util.TreeMap;
 public class QAVFunCallHandler
   extends NormalConfigHandler<QAVFunCallConfig>
 {
-  NormalConfigHandler.GetConfigListen<QAVFunCallConfig> mGetConfigListen = new bhjn(this);
+  NormalConfigHandler.GetConfigListen<QAVFunCallConfig> mGetConfigListen = new QAVFunCallHandler.1(this);
   
   public QAVFunCallHandler(String paramString)
   {
@@ -46,7 +45,7 @@ public class QAVFunCallHandler
     return 382;
   }
   
-  public void onGetConfig(AppInterface paramAppInterface)
+  void onGetConfig(AppInterface paramAppInterface)
   {
     QAVFunCallConfig localQAVFunCallConfig = (QAVFunCallConfig)getConfig();
     if (localQAVFunCallConfig == null) {}
@@ -62,7 +61,7 @@ public class QAVFunCallHandler
           int i = localFCItem.fcid;
           if ((i != 0) && (!TextUtils.isEmpty(localFCItem.media)))
           {
-            Object localObject = bibh.a(paramAppInterface, 0, String.valueOf(i));
+            Object localObject = VipFunCallManager.a(paramAppInterface, 0, String.valueOf(i));
             if ((localObject != null) && ((((SharedPreferences)localObject).getLong("local_version", 0L) != localQAVFunCallConfig.serverVer) || (TextUtils.isEmpty(((SharedPreferences)localObject).getString("_6", null)))))
             {
               localObject = ((SharedPreferences)localObject).edit();

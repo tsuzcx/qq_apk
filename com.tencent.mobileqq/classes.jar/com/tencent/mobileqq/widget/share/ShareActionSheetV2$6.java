@@ -10,15 +10,15 @@ class ShareActionSheetV2$6
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    ShareActionSheetV2.access$400(this.this$0);
-    if (ShareActionSheetV2.access$900(this.this$0) != null) {
-      ShareActionSheetV2.access$900(this.this$0).onCancel(paramDialogInterface);
+    ShareActionSheetV2.b(this.a);
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onCancel(paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.6
  * JD-Core Version:    0.7.0.1
  */

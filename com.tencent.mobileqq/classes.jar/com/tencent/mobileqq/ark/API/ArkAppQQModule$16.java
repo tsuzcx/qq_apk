@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.ark.API;
 
-import agnx;
-import apsl;
-import aptb;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
 import java.lang.ref.WeakReference;
 
-public class ArkAppQQModule$16
+class ArkAppQQModule$16
   implements Runnable
 {
-  public ArkAppQQModule$16(aptb paramaptb, long paramLong) {}
+  ArkAppQQModule$16(ArkAppQQModule paramArkAppQQModule, long paramLong) {}
   
   public void run()
   {
@@ -25,14 +23,14 @@ public class ArkAppQQModule$16
         do
         {
           return;
-          localObject1 = apsl.a();
+          localObject1 = ArkAppModuleBase.a();
         } while (!(localObject1 instanceof ArkFullScreenAppActivity));
         localObject1 = (ArkFullScreenAppActivity)localObject1;
-        localObject2 = agnx.a((ark.Container)localObject2);
+        localObject2 = ArkAppContainer.a((ark.Container)localObject2);
       } while (localObject2 == null);
-      localObject2 = (agnx)((WeakReference)localObject2).get();
+      localObject2 = (ArkAppContainer)((WeakReference)localObject2).get();
     } while (localObject2 == null);
-    ((ArkFullScreenAppActivity)localObject1).a((agnx)localObject2, false);
+    ((ArkFullScreenAppActivity)localObject1).a((ArkAppContainer)localObject2, false);
   }
 }
 

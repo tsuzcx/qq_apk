@@ -24,35 +24,28 @@ public class c
   private static int f = 4;
   private static int g = 5;
   private static c h;
-  private Context i;
-  private long j = 60000L;
-  private long k = 86400000L;
-  private boolean l = false;
-  private DexLoader m;
+  private long i = 60000L;
+  private long j = 86400000L;
+  private boolean k = false;
   
-  private c(Context paramContext)
-  {
-    this.i = paramContext;
-  }
-  
-  public static c a(Context paramContext)
+  public static c a()
   {
     try
     {
       if (h == null) {
-        h = new c(paramContext);
+        h = new c();
       }
-      paramContext = h;
-      return paramContext;
+      c localc = h;
+      return localc;
     }
     finally {}
   }
   
-  private void a(int paramInt, List<com.tencent.smtt.sdk.a.b> paramList)
+  private void a(Context paramContext, int paramInt, List<com.tencent.smtt.sdk.a.b> paramList)
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     g localg = g.a();
-    Object localObject = localg.a(this.i, "emergence_ids");
+    Object localObject = localg.a(paramContext, "emergence_ids");
     HashSet localHashSet = new HashSet();
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
@@ -69,27 +62,26 @@ public class c
     while (paramList.hasNext())
     {
       localObject = (com.tencent.smtt.sdk.a.b)paramList.next();
-      int n = ((com.tencent.smtt.sdk.a.b)localObject).b();
-      int i1 = ((com.tencent.smtt.sdk.a.b)localObject).a();
-      if ((!localHashSet.contains(Integer.valueOf(i1))) && (!((com.tencent.smtt.sdk.a.b)localObject).e()))
+      int m = ((com.tencent.smtt.sdk.a.b)localObject).b();
+      int n = ((com.tencent.smtt.sdk.a.b)localObject).a();
+      if ((!localHashSet.contains(Integer.valueOf(n))) && (!((com.tencent.smtt.sdk.a.b)localObject).e()))
       {
-        localLinkedHashMap.put(Integer.valueOf(n), ((com.tencent.smtt.sdk.a.b)localObject).c());
-        localObject = g.a(new String[] { String.valueOf(i1), String.valueOf(((com.tencent.smtt.sdk.a.b)localObject).d()) });
-        localg.a(this.i, "emergence_ids", (String)localObject);
+        localLinkedHashMap.put(Integer.valueOf(m), ((com.tencent.smtt.sdk.a.b)localObject).c());
+        localg.a(paramContext, "emergence_ids", g.a(new String[] { String.valueOf(n), String.valueOf(((com.tencent.smtt.sdk.a.b)localObject).d()) }));
       }
     }
     e.a().a(paramInt, localLinkedHashMap);
-    a(Integer.valueOf(paramInt), localLinkedHashMap);
+    a(paramContext, Integer.valueOf(paramInt), localLinkedHashMap);
   }
   
-  private void e()
+  private void b(Context paramContext)
   {
     com.tencent.smtt.sdk.a.c localc = new com.tencent.smtt.sdk.a.c();
-    localc.a(com.tencent.smtt.utils.b.a(this.i));
-    localc.b(com.tencent.smtt.utils.b.c(this.i));
-    localc.a(Integer.valueOf(com.tencent.smtt.utils.b.b(this.i)));
+    localc.a(com.tencent.smtt.utils.b.a(paramContext));
+    localc.b(com.tencent.smtt.utils.b.c(paramContext));
+    localc.a(Integer.valueOf(com.tencent.smtt.utils.b.b(paramContext)));
     localc.c(com.tencent.smtt.utils.b.a());
-    Iterator localIterator = g.a().a(this.i, "emergence_ids").iterator();
+    Iterator localIterator = g.a().a(paramContext, "emergence_ids").iterator();
     ArrayList localArrayList = new ArrayList();
     while (localIterator.hasNext()) {
       try
@@ -100,10 +92,10 @@ public class c
           localObject = g.a((String)localObject);
           if ((localObject != null) && (localObject.length == 2))
           {
-            int n = Integer.parseInt(localObject[0]);
-            long l1 = Long.parseLong(localObject[1]);
-            if (System.currentTimeMillis() < l1) {
-              localArrayList.add(Integer.valueOf(n));
+            int m = Integer.parseInt(localObject[0]);
+            long l = Long.parseLong(localObject[1]);
+            if (System.currentTimeMillis() < l) {
+              localArrayList.add(Integer.valueOf(m));
             }
           }
         }
@@ -114,41 +106,41 @@ public class c
       }
     }
     localc.a(localArrayList);
-    new com.tencent.smtt.sdk.a.e(this.i, m.a(this.i).g(), localc.a()).a(new c.1(this));
+    new com.tencent.smtt.sdk.a.e(paramContext, m.a(paramContext).g(), localc.a()).a(new c.1(this, paramContext));
   }
   
-  public void a()
+  public void a(Context paramContext)
   {
-    if (!this.l)
+    if (!this.k)
     {
-      this.l = true;
+      this.k = true;
       g localg = g.a();
       if (!localg.b()) {
-        localg.a(this.i);
+        localg.a(paramContext);
       }
     }
     else
     {
       try
       {
-        long l1 = g.a().b(this.i, "emergence_timestamp");
-        long l2 = g.a().b(this.i, "emergence_req_interval");
+        long l1 = g.a().b(paramContext, "emergence_timestamp");
+        long l2 = g.a().b(paramContext, "emergence_req_interval");
         long l3 = System.currentTimeMillis();
-        if (l3 - l1 > Math.min(Math.max(this.j, l2), this.k))
+        if (l3 - l1 > Math.min(Math.max(this.i, l2), this.j))
         {
-          g.a().a(this.i, "emergence_timestamp", l3);
-          e();
+          g.a().a(paramContext, "emergence_timestamp", l3);
+          b(paramContext);
         }
         for (;;)
         {
           return;
-          a(c, new ArrayList());
+          a(paramContext, c, new ArrayList());
         }
-        a(f, new ArrayList());
+        a(paramContext, f, new ArrayList());
       }
       catch (Exception localException)
       {
-        a(g, new ArrayList());
+        a(paramContext, g, new ArrayList());
         return;
       }
       finally
@@ -158,30 +150,30 @@ public class c
     }
   }
   
-  public void a(DexLoader paramDexLoader)
+  public void a(Context paramContext, Integer paramInteger, Map<Integer, String> paramMap)
   {
-    this.m = paramDexLoader;
-  }
-  
-  public void a(Integer paramInteger, Map<Integer, String> paramMap)
-  {
-    if (this.m != null)
+    TbsLog.e(a, "Dispatch emergency commands on tbs extension");
+    QbSdk.a(paramContext, paramInteger, paramMap);
+    paramContext = f.a(true);
+    if (paramContext == null) {}
+    do
+    {
+      return;
+      paramContext = paramContext.a();
+    } while (paramContext == null);
+    paramContext = paramContext.b();
+    if (paramContext != null)
     {
       TbsLog.e(a, "Dispatch emergency commands on tbs shell");
-      this.m.invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "dispatchEmergencyCommand", new Class[] { Integer.class, Map.class }, new Object[] { paramInteger, paramMap });
-    }
-    for (;;)
-    {
-      TbsLog.e(a, "Dispatch emergency commands on tbs extension");
-      QbSdk.a(this.i, paramInteger, paramMap);
+      paramContext.invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "dispatchEmergencyCommand", new Class[] { Integer.class, Map.class }, new Object[] { paramInteger, paramMap });
       return;
-      TbsLog.e(a, "Dex loader is null, cancel commands dispatching of tbs shell");
     }
+    TbsLog.e(a, "Dex loader is null, cancel commands dispatching of tbs shell");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.c
  * JD-Core Version:    0.7.0.1
  */

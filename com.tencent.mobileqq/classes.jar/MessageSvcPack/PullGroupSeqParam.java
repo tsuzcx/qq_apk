@@ -10,8 +10,8 @@ public final class PullGroupSeqParam
   extends JceStruct
   implements Cloneable
 {
-  public long lGroupCode;
-  public long lLastSeqId;
+  public long lGroupCode = 0L;
+  public long lLastSeqId = 0L;
   
   static
   {

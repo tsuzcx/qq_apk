@@ -10,10 +10,10 @@ public final class GetServerListReq
 {
   static ArrayList<String> cache_vUin;
   public byte bLinkType = 1;
-  public int iLastTime;
-  public int netType;
+  public int iLastTime = 0;
+  public int netType = 0;
   public String sImsi = "46000";
-  public ArrayList<String> vUin;
+  public ArrayList<String> vUin = null;
   
   public GetServerListReq() {}
   
@@ -53,7 +53,7 @@ public final class GetServerListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     protocol.KQQConfig.GetServerListReq
  * JD-Core Version:    0.7.0.1
  */

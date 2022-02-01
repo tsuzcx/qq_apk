@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import besz;
-
-public class TribeVideoListPlayerFragment$23$1
+class TribeVideoListPlayerFragment$23$1
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$23$1(besz parambesz) {}
+  TribeVideoListPlayerFragment$23$1(TribeVideoListPlayerFragment.23 param23) {}
   
   public void run()
   {

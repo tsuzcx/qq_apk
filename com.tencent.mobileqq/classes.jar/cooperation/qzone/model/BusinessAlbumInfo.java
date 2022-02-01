@@ -174,17 +174,17 @@ public class BusinessAlbumInfo
     while (i == 0)
     {
       return null;
-      i = 2131717208;
+      i = 2131717703;
       continue;
-      i = 2131717209;
+      i = 2131717704;
       continue;
-      i = 2131716954;
+      i = 2131717449;
       continue;
-      i = 2131716952;
+      i = 2131717447;
       continue;
-      i = 2131716957;
+      i = 2131717452;
       continue;
-      i = 2131716953;
+      i = 2131717448;
     }
     return BaseApplication.getContext().getResources().getString(i);
   }
@@ -269,7 +269,7 @@ public class BusinessAlbumInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.BusinessAlbumInfo
  * JD-Core Version:    0.7.0.1
  */

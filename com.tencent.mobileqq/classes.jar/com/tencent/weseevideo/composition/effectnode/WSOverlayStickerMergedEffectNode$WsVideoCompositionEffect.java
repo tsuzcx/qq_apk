@@ -110,7 +110,7 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
         this.stickerContext.setRenderSize(paramCIImage.getSize());
         localCMSampleBuffer = this.stickerContext.renderSticker(paramRenderInfo.getTime().getTimeUs() / 1000L, null, paramTAVVideoEffect.getRenderContext().eglContext());
         paramTAVVideoEffect.getRenderContext().makeCurrent();
-        WSOverLayBlurManager.getInstance().updateSourceCIImage(paramCIImage, paramRenderInfo);
+        WSOverLayBlurManager.updateSourceCIImage(paramTAVStickerRenderContext, paramCIImage, paramRenderInfo);
       } while (noStickerRender(paramRenderInfo.getTime(), paramTAVStickerRenderContext.getStickers()));
       this.applyEffectStartTime = System.currentTimeMillis();
     } while (localCMSampleBuffer == null);
@@ -181,7 +181,7 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
     Object localObject2 = ((IBlurStickerRenderContext)this.stickerContext).getBlurStickers();
     Object localObject1 = extractTextureInfoFromCIImage(paramCIImage1, paramRenderInfo);
     int i = ((TextureInfo)localObject1).preferRotation;
-    localObject1 = new CIImage(WSOverLayBlurManager.getInstance().getBlurredTextureInfo((TextureInfo)localObject1, paramRenderInfo, i, 10, 0.25F, this.horizontalBlurFilter, this.verticalBlurFilter, this.scaleSmallTextureFilter, this.scaleBigTextureFilter));
+    localObject1 = new CIImage(WSOverLayBlurManager.getBlurredTextureInfo((TextureInfo)localObject1, paramRenderInfo, i, 10, 0.25F, this.horizontalBlurFilter, this.verticalBlurFilter, this.scaleSmallTextureFilter, this.scaleBigTextureFilter));
     ((CIImage)localObject1).applyPreferRotation(0);
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
@@ -335,7 +335,7 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSOverlayStickerMergedEffectNode.WsVideoCompositionEffect
  * JD-Core Version:    0.7.0.1
  */

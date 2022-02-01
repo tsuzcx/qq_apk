@@ -8,14 +8,12 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class QQCustomDialogWtihInput$1
   implements View.OnClickListener
 {
-  QQCustomDialogWtihInput$1(QQCustomDialogWtihInput paramQQCustomDialogWtihInput, DialogInterface.OnClickListener paramOnClickListener) {}
-  
   public void onClick(View paramView)
   {
-    if (this.val$nl != null) {
-      this.val$nl.onClick(this.this$0, 1);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput, 1);
     }
-    this.this$0.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

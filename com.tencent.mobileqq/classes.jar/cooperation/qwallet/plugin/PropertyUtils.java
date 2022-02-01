@@ -3,23 +3,19 @@ package cooperation.qwallet.plugin;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Rect;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
-import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
-import bhdz;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class PropertyUtils
 {
   private static String mNetworkType;
-  private static int mScreenWidth;
-  private static int mStatusBarHeight = -1;
-  private static int mTitleBarHeight;
-  private static int mToastOffset;
+  private static int mScreenWidth = 0;
+  private static int mTitleBarHeight = 0;
+  private static int mToastOffset = 0;
   
   public static String getNetworkType(Context paramContext)
   {
@@ -29,7 +25,7 @@ public class PropertyUtils
     if (!TextUtils.isEmpty(mNetworkType)) {
       return mNetworkType;
     }
-    int i = NetworkUtil.getSystemNetwork(paramContext.getApplicationContext());
+    int i = NetworkUtil.a(paramContext.getApplicationContext());
     if (i == 1) {
       mNetworkType = "WIFI";
     }
@@ -59,28 +55,12 @@ public class PropertyUtils
     return mScreenWidth;
   }
   
-  public static int getStatusBarHeight(Activity paramActivity)
-  {
-    if (mStatusBarHeight >= 0) {
-      return mStatusBarHeight;
-    }
-    Rect localRect;
-    if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null))
-    {
-      localRect = new Rect();
-      paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    }
-    for (mStatusBarHeight = localRect.top;; mStatusBarHeight = 0) {
-      return mStatusBarHeight;
-    }
-  }
-  
   public static int getTitleBarHeight(Activity paramActivity)
   {
     if (mTitleBarHeight > 0) {
       return mTitleBarHeight;
     }
-    mTitleBarHeight = paramActivity.getResources().getDimensionPixelSize(2131299080);
+    mTitleBarHeight = paramActivity.getResources().getDimensionPixelSize(2131299166);
     return mTitleBarHeight;
   }
   
@@ -89,13 +69,13 @@ public class PropertyUtils
     if (mToastOffset > 0) {
       return mToastOffset;
     }
-    mToastOffset = paramContext.getResources().getDimensionPixelSize(2131299080) - (int)bhdz.a(paramContext, 5.0F);
+    mToastOffset = paramContext.getResources().getDimensionPixelSize(2131299166) - (int)DisplayUtils.a(paramContext, 5.0F);
     return mToastOffset;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.PropertyUtils
  * JD-Core Version:    0.7.0.1
  */

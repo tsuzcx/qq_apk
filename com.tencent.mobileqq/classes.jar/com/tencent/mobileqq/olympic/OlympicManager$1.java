@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic;
 
-import apbb;
+import com.tencent.mobileqq.ar.ARDeviceController;
 
 class OlympicManager$1
   implements Runnable
@@ -9,7 +9,7 @@ class OlympicManager$1
   
   public void run()
   {
-    apbb.a();
+    ARDeviceController.a();
     this.this$0.a();
     this.this$0.a();
     this.this$0.a();

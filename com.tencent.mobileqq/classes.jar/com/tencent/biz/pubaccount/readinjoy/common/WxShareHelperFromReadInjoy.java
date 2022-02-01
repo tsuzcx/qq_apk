@@ -1,18 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Matrix;
 import android.net.Uri;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram.Req;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXImageObject;
@@ -25,6 +32,7 @@ import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -35,25 +43,22 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import mqq.util.WeakReference;
-import nwh;
-import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pkq;
-import pkr;
-import znl;
 
 public class WxShareHelperFromReadInjoy
   extends BroadcastReceiver
   implements IWXAPIEventHandler
 {
-  private static WxShareHelperFromReadInjoy jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy;
+  private static WxShareHelperFromReadInjoy jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy = null;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private int jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI();
   private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxeaef4303c20f3dea", true);
+  private Boolean jdField_a_of_type_JavaLangBoolean;
   private Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
   private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<pkr> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
+  private ArrayList<WxShareHelperFromReadInjoy.WXShareHelperFromReadInjoyListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference = null;
   
   private WxShareHelperFromReadInjoy()
   {
@@ -94,7 +99,7 @@ public class WxShareHelperFromReadInjoy
     {
       localJSONObject.put("from_source", paramString);
       localJSONObject.put("from_rowkey", localObject);
-      olh.a(null, "CliOper", "", "", "0X800A7BF", "0X800A7BF", 0, 0, "", "", "", localJSONObject.toString(), false);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X800A7BF", "0X800A7BF", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException paramString)
@@ -105,8 +110,8 @@ public class WxShareHelperFromReadInjoy
   
   private boolean a(SendMessageToWX.Req paramReq)
   {
-    pkq localpkq = new pkq(this);
-    WXShareHelper.a().a(localpkq);
+    WxShareHelperFromReadInjoy.3 local3 = new WxShareHelperFromReadInjoy.3(this);
+    WXShareHelper.a().a(local3);
     return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramReq);
   }
   
@@ -124,7 +129,7 @@ public class WxShareHelperFromReadInjoy
     if (paramBoolean2)
     {
       Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, 100, 100);
-      localObject1 = nwh.a(localBitmap);
+      localObject1 = ImageUtil.a(localBitmap);
       localBitmap.recycle();
     }
     for (;;)
@@ -136,7 +141,25 @@ public class WxShareHelperFromReadInjoy
       }
       paramBitmap.recycle();
       return localObject1;
-      localObject1 = nwh.a((Bitmap)localObject2);
+      localObject1 = ImageUtil.a((Bitmap)localObject2);
+    }
+  }
+  
+  private void b()
+  {
+    try
+    {
+      Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+      if (QLog.isColorLevel()) {
+        QLog.i("WxShareHelperFromReadInjoy", 2, "launchWXUsingPendingIntent");
+      }
+      PendingIntent.getActivity(localContext, 1, localContext.getPackageManager().getLaunchIntentForPackage("com.tencent.mm"), 134217728).send(localContext, 1, null, new WxShareHelperFromReadInjoy.2(this), null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("WxShareHelperFromReadInjoy", 1, "launchWXUsingPendingIntent pendingIntent send failed: " + localException.getMessage());
+      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.openWXApp();
     }
   }
   
@@ -180,11 +203,22 @@ public class WxShareHelperFromReadInjoy
     }
   }
   
+  public void a(WxShareHelperFromReadInjoy.WXShareHelperFromReadInjoyListener paramWXShareHelperFromReadInjoyListener)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramWXShareHelperFromReadInjoyListener)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramWXShareHelperFromReadInjoyListener);
+      }
+      return;
+    }
+  }
+  
   public void a(String paramString, Bitmap paramBitmap, int paramInt, boolean paramBoolean)
   {
     if (TextUtils.isEmpty(paramString))
     {
-      znl.a(1, 2131696208);
+      QRUtils.a(1, 2131696460);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -240,13 +274,34 @@ public class WxShareHelperFromReadInjoy
     }
   }
   
-  public void a(pkr parampkr)
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaLangBoolean == null) {
+      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled());
+    }
+    return this.jdField_a_of_type_JavaLangBoolean.booleanValue();
+  }
+  
+  public boolean a(String paramString1, String paramString2, int paramInt)
+  {
+    if ((!a()) || (!b())) {
+      return false;
+    }
+    if (Build.VERSION.SDK_INT >= 29) {
+      b();
+    }
+    WXLaunchMiniProgram.Req localReq = new WXLaunchMiniProgram.Req();
+    localReq.userName = paramString1;
+    localReq.path = paramString2;
+    localReq.miniprogramType = paramInt;
+    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(localReq);
+  }
+  
+  public void b(WxShareHelperFromReadInjoy.WXShareHelperFromReadInjoyListener paramWXShareHelperFromReadInjoyListener)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parampkr)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(parampkr);
-      }
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramWXShareHelperFromReadInjoyListener);
       return;
     }
   }
@@ -285,13 +340,9 @@ public class WxShareHelperFromReadInjoy
     c(paramString1, paramString2, paramBitmap, paramString3, paramString4, "/pages/index/index?share=1&share_type=1&channel_id=10&rowkey=" + paramString5);
   }
   
-  public void b(pkr parampkr)
+  public boolean b()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(parampkr);
-      return;
-    }
+    return this.jdField_a_of_type_Int >= 620757000;
   }
   
   public void c(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4, String paramString5)
@@ -359,7 +410,7 @@ public class WxShareHelperFromReadInjoy
         int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
         while (i >= 0)
         {
-          ((pkr)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
+          ((WxShareHelperFromReadInjoy.WXShareHelperFromReadInjoyListener)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
           i -= 1;
         }
         return;
@@ -374,7 +425,7 @@ public class WxShareHelperFromReadInjoy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy
  * JD-Core Version:    0.7.0.1
  */

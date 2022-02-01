@@ -5,8 +5,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
-import bazu;
-import bazv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -59,8 +57,8 @@ public class ParticleExplodeView
     int j = 0;
     if (j < paramInt1)
     {
-      bazv localbazv = new bazv();
-      localbazv.jdField_a_of_type_AndroidGraphicsBitmap = a(paramBitmap1, paramBitmap2, paramBitmap3);
+      ParticleObject localParticleObject = new ParticleObject();
+      localParticleObject.jdField_a_of_type_AndroidGraphicsBitmap = a(paramBitmap1, paramBitmap2, paramBitmap3);
       int i = 0;
       if (paramInt3 == 0) {
         i = a(0, 360);
@@ -68,10 +66,10 @@ public class ParticleExplodeView
       for (;;)
       {
         double[] arrayOfDouble = a(paramInt2, i);
-        localbazv.jdField_a_of_type_Float = ((float)(this.jdField_a_of_type_Int / 2 + arrayOfDouble[0]));
-        localbazv.b = ((float)(this.b / 2 + arrayOfDouble[1]));
-        localbazv.c = a(0, 360);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localbazv);
+        localParticleObject.jdField_a_of_type_Float = ((float)(this.jdField_a_of_type_Int / 2 + arrayOfDouble[0]));
+        localParticleObject.b = ((float)(this.b / 2 + arrayOfDouble[1]));
+        localParticleObject.c = a(0, 360);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localParticleObject);
         j += 1;
         break;
         if (paramInt3 == 1) {
@@ -104,18 +102,18 @@ public class ParticleExplodeView
         if (!localIterator.hasNext()) {
           break;
         }
-        bazv localbazv = (bazv)localIterator.next();
-        if (localbazv == null) {
+        ParticleObject localParticleObject = (ParticleObject)localIterator.next();
+        if (localParticleObject == null) {
           continue;
         }
-        f2 = a(localbazv.jdField_a_of_type_Float);
+        f2 = a(localParticleObject.jdField_a_of_type_Float);
         if ((f2 > 0.0F) && (f2 < 5.0F))
         {
           f1 = 5.0F;
-          localbazv.b = a(localbazv.jdField_a_of_type_Float, localbazv.b, f1);
-          localbazv.jdField_a_of_type_Float = (f1 + localbazv.jdField_a_of_type_Float);
-          localbazv.c += 15.0F;
-          if ((localbazv.jdField_a_of_type_Float >= 0.0F) && (localbazv.jdField_a_of_type_Float <= this.jdField_a_of_type_Int) && (localbazv.jdField_a_of_type_Float != this.jdField_a_of_type_Int / 2)) {
+          localParticleObject.b = a(localParticleObject.jdField_a_of_type_Float, localParticleObject.b, f1);
+          localParticleObject.jdField_a_of_type_Float = (f1 + localParticleObject.jdField_a_of_type_Float);
+          localParticleObject.c += 15.0F;
+          if ((localParticleObject.jdField_a_of_type_Float >= 0.0F) && (localParticleObject.jdField_a_of_type_Float <= this.jdField_a_of_type_Int) && (localParticleObject.jdField_a_of_type_Float != this.jdField_a_of_type_Int / 2)) {
             continue;
           }
           localIterator.remove();
@@ -168,7 +166,7 @@ public class ParticleExplodeView
   
   protected Bitmap[] a()
   {
-    return new Bitmap[] { BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130848137), BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130848138), BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130848139) };
+    return new Bitmap[] { BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130848494), BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130848495), BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130848496) };
   }
   
   public void c()
@@ -176,7 +174,7 @@ public class ParticleExplodeView
     this.jdField_a_of_type_Boolean = true;
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F });
     localObjectAnimator.setDuration(500L);
-    localObjectAnimator.addListener(new bazu(this));
+    localObjectAnimator.addListener(new ParticleExplodeView.1(this));
     localObjectAnimator.start();
   }
 }

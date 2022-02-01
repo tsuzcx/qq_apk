@@ -3,12 +3,11 @@ package com.tencent.mobileqq.apollo.sdk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import andu;
 
 public class IPCSpriteContext
   implements Parcelable
 {
-  public static final Parcelable.Creator<IPCSpriteContext> CREATOR = new andu();
+  public static final Parcelable.Creator<IPCSpriteContext> CREATOR = new IPCSpriteContext.1();
   public float a;
   public int a;
   public String a;
@@ -28,7 +27,7 @@ public class IPCSpriteContext
     this.jdField_c_of_type_Float = -2.147484E+009F;
   }
   
-  public IPCSpriteContext(Parcel paramParcel)
+  protected IPCSpriteContext(Parcel paramParcel)
   {
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Float = 1.0F;
@@ -72,7 +71,7 @@ public class IPCSpriteContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.IPCSpriteContext
  * JD-Core Version:    0.7.0.1
  */

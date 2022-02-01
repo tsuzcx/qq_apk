@@ -18,7 +18,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/utils/PluginLogger;", "", "()V", "gApiCount", "", "gUniKeyPrev", "mBlackList", "", "", "", "mCallbackID2EventMap", "Ljava/util/HashMap;", "mCallbackID2StartTimeMap", "", "mFailAPIList", "", "", "kotlin.jvm.PlatformType", "mWhiteList", "changeCallbackId", "callbackId", "cutString", "str", "extractState", "data", "getKey", "contextType", "Lcom/tencent/mobileqq/triton/script/ScriptContextType;", "eventName", "jsonParams", "isApiFailed", "", "result", "isEnableLog", "printEndLog", "", "printFailedApi", "printStartLog", "recordApiIfFailed", "detail", "setConfig", "whiteList", "blackList", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/utils/PluginLogger;", "", "()V", "gApiCount", "", "gUniKeyPrev", "mBlackList", "", "", "", "mCallbackID2EventMap", "Ljava/util/HashMap;", "mCallbackID2StartTimeMap", "", "mFailAPIList", "", "", "kotlin.jvm.PlatformType", "mWhiteList", "changeCallbackId", "callbackId", "cutString", "str", "extractState", "data", "getKey", "contextType", "Lcom/tencent/mobileqq/triton/script/ScriptContextType;", "eventName", "jsonParams", "isApiFailed", "", "result", "isEnableLog", "printEndLog", "", "printFailedApi", "printStartLog", "recordApiIfFailed", "detail", "setConfig", "whiteList", "blackList", "Companion", "qqmini_impl_release"}, k=1, mv={1, 1, 16})
 public final class PluginLogger
 {
   public static final PluginLogger.Companion Companion = new PluginLogger.Companion(null);

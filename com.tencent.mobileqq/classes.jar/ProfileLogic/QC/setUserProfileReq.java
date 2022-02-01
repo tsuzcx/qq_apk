@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class setUserProfileReq
   extends JceStruct
 {
-  public int implat;
-  public int itemid;
+  public int implat = 0;
+  public int itemid = 0;
   public String qqver = "";
   
   public setUserProfileReq() {}

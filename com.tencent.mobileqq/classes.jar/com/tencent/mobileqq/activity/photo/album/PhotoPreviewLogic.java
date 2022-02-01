@@ -12,7 +12,7 @@ public abstract class PhotoPreviewLogic<K extends AbstractPhotoPreviewActivity, 
 {
   public K mActivity;
   PhotoPreviewLogic.IimageAdapterCallback mImageAdapterCallback = null;
-  protected PhotoPreviewLogic.IonCheckedChangedCallback mOnCheckedChangedCallback = null;
+  PhotoPreviewLogic.IonCheckedChangedCallback mOnCheckedChangedCallback = null;
   protected O mOtherCommonData;
   public PhotoCommonBaseData<O> mPhotoCommonData;
   protected PhotoPreviewBaseData mPhotoPreviewData;
@@ -38,9 +38,9 @@ public abstract class PhotoPreviewLogic<K extends AbstractPhotoPreviewActivity, 
     this.mPhotoCommonData.releaseCommonData();
   }
   
-  protected abstract void doOnDestroy();
+  abstract void doOnDestroy();
   
-  protected abstract void doOnResume();
+  abstract void doOnResume();
   
   protected OtherCommonData getOtherData()
   {
@@ -52,7 +52,7 @@ public abstract class PhotoPreviewLogic<K extends AbstractPhotoPreviewActivity, 
     return this.mPhotoPreviewData;
   }
   
-  protected abstract BasePreviewAdapter getPreviewAdapter();
+  abstract BasePreviewAdapter getPreviewAdapter();
   
   protected abstract void initData(Intent paramIntent);
   
@@ -76,7 +76,7 @@ public abstract class PhotoPreviewLogic<K extends AbstractPhotoPreviewActivity, 
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogic
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="false" android:color="@color/skin_black" />
-    <item android:state_selected="true" android:color="@color/al3" />
-</selector>
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <corners android:radius="38.0dip" />
+            <solid android:color="#7f7a8690" />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <corners android:radius="38.0dip" />
+                <solid android:color="#ff12b7f5" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

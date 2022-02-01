@@ -16,7 +16,7 @@ public class JsSdkInfoHandler
   
   private int getSdkVersion()
   {
-    return 1840;
+    return 1808;
   }
   
   public void handle(String paramString, JSONObject paramJSONObject)

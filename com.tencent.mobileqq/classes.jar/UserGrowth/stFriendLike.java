@@ -9,7 +9,7 @@ public final class stFriendLike
 {
   static stSchema cache_schema = new stSchema();
   public String nick = "";
-  public stSchema schema;
+  public stSchema schema = null;
   
   public stFriendLike() {}
   

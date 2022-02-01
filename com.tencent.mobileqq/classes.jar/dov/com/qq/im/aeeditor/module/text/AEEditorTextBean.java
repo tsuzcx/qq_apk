@@ -4,12 +4,12 @@ import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import boaf;
 import com.tencent.mobileqq.utils.StringUtil;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig.FrameConfig;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig.StyleConfig;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerInfo;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorResourceManager;
 import java.io.Serializable;
 import org.libpag.PAGFile;
 import org.libpag.PAGText;
@@ -25,18 +25,22 @@ public class AEEditorTextBean
   public float angle = 0.0F;
   @ColorInt
   public int backgroundColor;
+  public String badgeURL = "";
   public String blurTextPath;
   public String blurTexturePath;
   public String content;
   @ColorInt
   public int defaultColor;
   public String fontId;
+  public String hashTag = "";
   public String id;
-  public boolean isDownloading;
+  public String interactive = "0";
+  public boolean isDownloading = false;
   public float maxScale = 1.0F;
   public float minScale = 0.18F;
   public String pagFilePath;
   public String pagThumbFilePath;
+  public String parentId = "";
   public int progress = -1;
   public float scale = 0.53F;
   @ColorInt
@@ -46,28 +50,32 @@ public class AEEditorTextBean
   public String thumbPath;
   public String thumbUrl;
   public int type;
-  public boolean usable;
+  public boolean usable = false;
   
   public static AEEditorTextBean createTextBeanByStickerInfo(@NonNull AEEditorPagStickerInfo paramAEEditorPagStickerInfo)
   {
     AEEditorTextBean localAEEditorTextBean = new AEEditorTextBean();
     localAEEditorTextBean.id = paramAEEditorPagStickerInfo.stickerId;
     localAEEditorTextBean.thumbUrl = paramAEEditorPagStickerInfo.thumbUrl;
-    localAEEditorTextBean.pagFilePath = boaf.a().e(paramAEEditorPagStickerInfo.stickerId);
+    localAEEditorTextBean.pagFilePath = AEEditorResourceManager.a().e(paramAEEditorPagStickerInfo.stickerId);
     if (paramAEEditorPagStickerInfo.backgroundColorAdjustable == 1)
     {
       localAEEditorTextBean.type = 1;
-      localAEEditorTextBean.pagThumbFilePath = boaf.a().h(paramAEEditorPagStickerInfo.stickerId);
+      localAEEditorTextBean.pagThumbFilePath = AEEditorResourceManager.a().h(paramAEEditorPagStickerInfo.stickerId);
     }
     for (;;)
     {
       localAEEditorTextBean.fontId = paramAEEditorPagStickerInfo.fontId;
+      localAEEditorTextBean.parentId = paramAEEditorPagStickerInfo.parentId;
+      localAEEditorTextBean.interactive = paramAEEditorPagStickerInfo.interactive;
+      localAEEditorTextBean.hashTag = paramAEEditorPagStickerInfo.hashTag;
+      localAEEditorTextBean.badgeURL = paramAEEditorPagStickerInfo.badgeURL;
       return localAEEditorTextBean;
       if ("blur".equals(paramAEEditorPagStickerInfo.stickerId))
       {
         localAEEditorTextBean.type = 3;
-        localAEEditorTextBean.blurTextPath = boaf.a().f(paramAEEditorPagStickerInfo.stickerId);
-        localAEEditorTextBean.blurTexturePath = boaf.a().g(paramAEEditorPagStickerInfo.stickerId);
+        localAEEditorTextBean.blurTextPath = AEEditorResourceManager.a().f(paramAEEditorPagStickerInfo.stickerId);
+        localAEEditorTextBean.blurTexturePath = AEEditorResourceManager.a().g(paramAEEditorPagStickerInfo.stickerId);
       }
       else
       {
@@ -78,7 +86,7 @@ public class AEEditorTextBean
   
   public static int stickerConfigType2TextBeanType(AEEditorPagStickerConfig paramAEEditorPagStickerConfig)
   {
-    if ((paramAEEditorPagStickerConfig == null) || (StringUtil.isEmpty(paramAEEditorPagStickerConfig.type))) {
+    if ((paramAEEditorPagStickerConfig == null) || (StringUtil.a(paramAEEditorPagStickerConfig.type))) {
       return -1;
     }
     if (paramAEEditorPagStickerConfig.type.equals("plain_text")) {
@@ -158,7 +166,7 @@ public class AEEditorTextBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.text.AEEditorTextBean
  * JD-Core Version:    0.7.0.1
  */

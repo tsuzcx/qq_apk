@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import akxe;
-import akzp;
-import akzq;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
 import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.qwallet.preload.IPreloadServiceAbs;
+import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public final class DrawClassifier$1
+final class DrawClassifier$1
   implements Runnable
 {
-  public DrawClassifier$1(MessageForQQWalletMsg paramMessageForQQWalletMsg) {}
+  DrawClassifier$1(MessageForQQWalletMsg paramMessageForQQWalletMsg) {}
   
   public void run()
   {
@@ -31,17 +29,17 @@ public final class DrawClassifier$1
         localObject3 = BaseHbFragment.getHbPannelConfig(10);
         String str1 = "";
         if (localObject3 == null) {
-          break label199;
+          break label201;
         }
         if (!TextUtils.isEmpty(str2))
         {
           localObject2 = ((JSONObject)localObject3).optString("aModelPrefix", "https://i.gtimg.cn/drawrp/aModel_");
-          localObject3 = akzp.a((JSONObject)localObject3, str2);
+          localObject3 = DrawClassifier.a((JSONObject)localObject3, str2);
           if (localObject3 == null) {
-            break label211;
+            break label213;
           }
           str1 = ((JSONObject)localObject3).optString("aMd5");
-          break label211;
+          break label213;
           if (!TextUtils.isEmpty(str2))
           {
             if (TextUtils.isEmpty(((String)localObject2).trim()))
@@ -57,7 +55,7 @@ public final class DrawClassifier$1
             ((DownloadParam)localObject2).url = str1;
             ((DownloadParam)localObject2).md5 = ((String)localObject3);
             ((DownloadParam)localObject2).useQWalletConfig = true;
-            PreloadManager.a().a((DownloadParam)localObject2, new akzq(this));
+            PreloadStaticApi.a().getResPath((DownloadParam)localObject2, new DrawClassifier.1.1(this));
           }
         }
         else
@@ -75,12 +73,12 @@ public final class DrawClassifier$1
         return;
       }
       continue;
-      label199:
+      label201:
       Object localObject2 = "";
       Object localObject3 = "";
       Object localObject1 = "";
       continue;
-      label211:
+      label213:
       localObject3 = localObject1;
       localObject1 = "";
     }
@@ -88,7 +86,7 @@ public final class DrawClassifier$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawClassifier.1
  * JD-Core Version:    0.7.0.1
  */

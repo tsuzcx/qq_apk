@@ -7,6 +7,7 @@ import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
 import com.tencent.ttpic.openapi.model.NodeItemJava;
+import com.tencent.ttpic.openapi.model.NumberRollEffectParams;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.model.StickerItem.TriggerArea;
 import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
@@ -105,6 +106,18 @@ public class TriggerConfig
     this.activateTriggerTotalCount = paramNodeItemJava.activateTriggerTotalCount;
     this.playCount = paramNodeItemJava.playCount;
     this.externalTriggerWords = paramNodeItemJava.externalTriggerWords;
+  }
+  
+  public TriggerConfig(NumberRollEffectParams paramNumberRollEffectParams)
+  {
+    this.triggerType = paramNumberRollEffectParams.getTriggerTypeString();
+    this.preTriggerType = paramNumberRollEffectParams.getTriggerTypeInt();
+    this.alwaysTriggered = paramNumberRollEffectParams.alwaysTriggered;
+    this.countTriggerType = paramNumberRollEffectParams.countTriggerType;
+    this.activateTriggerCount = paramNumberRollEffectParams.activateTriggerCount;
+    this.activateTriggerTotalCount = paramNumberRollEffectParams.activateTriggerTotalCount;
+    this.activateTriggerType = paramNumberRollEffectParams.activateTriggerType;
+    this.playCount = paramNumberRollEffectParams.playCount;
   }
   
   public TriggerConfig(StickerItem paramStickerItem)
@@ -267,7 +280,7 @@ public class TriggerConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.trigger.TriggerConfig
  * JD-Core Version:    0.7.0.1
  */

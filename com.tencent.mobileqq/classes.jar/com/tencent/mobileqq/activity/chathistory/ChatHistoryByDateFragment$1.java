@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.chathistory;
 
 import android.os.SystemClock;
-import bgmd;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
 import com.tencent.mobileqq.widget.datepicker.CalendarDay;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ class ChatHistoryByDateFragment$1
         ThreadManager.getUIHandler().post(new ChatHistoryByDateFragment.1.1(this, localArrayList));
       }
       l = SystemClock.elapsedRealtime() - l;
-      bgmd.a("chat_history", "query_month_cost", String.valueOf(l), String.valueOf(j), String.valueOf(i), "");
+      TroopTechReportUtils.a("chat_history", "query_month_cost", String.valueOf(l), String.valueOf(j), String.valueOf(i), "");
       if (QLog.isColorLevel()) {
         QLog.i(ChatHistoryByDateFragment.a(), 2, String.format("queryDB count: %d | message count: %d | cost time %d ", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(l) }));
       }
@@ -55,7 +55,7 @@ class ChatHistoryByDateFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.ChatHistoryByDateFragment.1
  * JD-Core Version:    0.7.0.1
  */

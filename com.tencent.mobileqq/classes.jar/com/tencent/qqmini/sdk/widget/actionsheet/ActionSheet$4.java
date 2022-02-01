@@ -11,7 +11,7 @@ class ActionSheet$4
   public void run()
   {
     if (ActionSheet.access$800(this.this$0) != null) {
-      ActionSheet.access$800(this.this$0).onPreShow();
+      ActionSheet.access$800(this.this$0).a();
     }
     ActionSheet.access$902(this.this$0, new TranslateAnimation(0.0F, 0.0F, ActionSheet.access$1000(this.this$0).getHeight(), 0.0F));
     ActionSheet.access$900(this.this$0).setFillEnabled(true);
@@ -23,7 +23,7 @@ class ActionSheet$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.actionsheet.ActionSheet.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/n_q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:contentDescription="@string/whk" />
+</LinearLayout>

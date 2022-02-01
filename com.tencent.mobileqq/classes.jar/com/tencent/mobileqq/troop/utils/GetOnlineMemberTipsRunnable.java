@@ -2,11 +2,11 @@ package com.tencent.mobileqq.troop.utils;
 
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import aoep;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -29,16 +29,16 @@ public class GetOnlineMemberTipsRunnable
       do
       {
         return;
-      } while ((localTroopChatPie.mActivity == null) || (localTroopChatPie.mActivity.isFinishing()) || (localTroopChatPie.app == null) || (localTroopChatPie.getSessionInfo() == null));
-      aoep localaoep = (aoep)localTroopChatPie.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-      String str = localTroopChatPie.getSessionInfo().curFriendUin;
+      } while ((localTroopChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (localTroopChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) || (localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localTroopChatPie.a() == null));
+      TroopHandler localTroopHandler = (TroopHandler)localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+      String str = localTroopChatPie.a().a;
       if (!TextUtils.isEmpty(str))
       {
-        localaoep.t(str);
+        localTroopHandler.r(str);
         return;
       }
     } while (!QLog.isColorLevel());
-    QLog.i(localTroopChatPie.tag, 2, "mGetOnlineMemberTipsRunnable, getSessionInfo().curFriendUin == null");
+    QLog.i(localTroopChatPie.b, 2, "mGetOnlineMemberTipsRunnable, getSessionInfo().curFriendUin == null");
   }
 }
 

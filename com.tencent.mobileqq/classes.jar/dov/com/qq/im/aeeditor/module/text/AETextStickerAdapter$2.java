@@ -1,17 +1,16 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import boct;
 import java.util.List;
 
-public class AETextStickerAdapter$2
+class AETextStickerAdapter$2
   implements Runnable
 {
-  public AETextStickerAdapter$2(boct paramboct, AEEditorTextBean paramAEEditorTextBean, int paramInt) {}
+  AETextStickerAdapter$2(AETextStickerAdapter paramAETextStickerAdapter, AEEditorTextBean paramAEEditorTextBean, int paramInt) {}
   
   public void run()
   {
     this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.progress = this.jdField_a_of_type_Int;
-    int i = boct.a(this.this$0).indexOf(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
+    int i = AETextStickerAdapter.a(this.this$0).indexOf(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
     if (i >= 0) {
       this.this$0.notifyItemChanged(i, Integer.valueOf(1));
     }
@@ -19,7 +18,7 @@ public class AETextStickerAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.text.AETextStickerAdapter.2
  * JD-Core Version:    0.7.0.1
  */

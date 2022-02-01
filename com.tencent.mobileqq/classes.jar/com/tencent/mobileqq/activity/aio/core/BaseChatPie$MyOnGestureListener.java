@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import agiy;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
-import aqiq;
+import com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper;
 import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.bubble.LeftSwipeReplyHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$MyOnGestureListener
@@ -15,7 +15,7 @@ class BaseChatPie$MyOnGestureListener
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.this$0.onDoubleTap(paramMotionEvent);
+    this.a.a(paramMotionEvent);
     return super.onDoubleTap(paramMotionEvent);
   }
   
@@ -27,56 +27,56 @@ class BaseChatPie$MyOnGestureListener
   public void onLongPress(MotionEvent paramMotionEvent)
   {
     super.onLongPress(paramMotionEvent);
-    ((agiy)this.this$0.getHelper(26)).a();
+    ((MultiWindowAIOHelper)this.a.a(26)).a();
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((BaseChatPie.access$1000() == 1) && (!BaseChatPie.access$1100(this.this$0).booleanValue())) {
-      if (this.this$0.listView.getCount() != 0) {}
+    if ((BaseChatPie.j() == 1) && (!BaseChatPie.a(this.a).booleanValue())) {
+      if (this.a.a.getCount() != 0) {}
     }
     do
     {
       return false;
-      if ((this.this$0.listView != null) && (this.this$0.listView.getLastVisiblePosition() >= this.this$0.listView.getCount() - 1))
+      if ((this.a.a != null) && (this.a.a.getLastVisiblePosition() >= this.a.a.getCount() - 1))
       {
         paramMotionEvent1 = new int[2];
-        this.this$0.listView.getChildAt(this.this$0.listView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
+        this.a.a.getChildAt(this.a.a.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
         int i = paramMotionEvent1[1];
-        if (BaseChatPie.access$3600(this.this$0) == i)
+        if (BaseChatPie.g(this.a) == i)
         {
-          this.this$0.setVivoSetting(1);
-          BaseChatPie.access$1102(this.this$0, Boolean.valueOf(true));
-          BaseChatPie.access$3602(this.this$0, -1);
+          this.a.s(1);
+          BaseChatPie.a(this.a, Boolean.valueOf(true));
+          BaseChatPie.e(this.a, -1);
         }
-        BaseChatPie.access$3602(this.this$0, i);
+        BaseChatPie.e(this.a, i);
       }
-      if (BaseChatPie.access$3700(this.this$0)) {
-        this.this$0.hideAllPanels(true);
+      if (BaseChatPie.a(this.a)) {
+        this.a.g(true);
       }
     } while (paramFloat2 >= 0.0F);
-    this.this$0.isOverScrollTarget = false;
+    this.a.C = false;
     return false;
   }
   
   public void onShowPress(MotionEvent paramMotionEvent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.tag, 2, "onShowPress");
+      QLog.d(this.a.b, 2, "onShowPress");
     }
-    this.this$0.hideTroopFCView(false);
-    this.this$0.hideAllPanels(true);
+    this.a.h(false);
+    this.a.g(true);
     super.onShowPress(paramMotionEvent);
   }
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    paramMotionEvent = (aqiq)this.this$0.getHelper(50);
+    paramMotionEvent = (LeftSwipeReplyHelper)this.a.a(50);
     if (paramMotionEvent != null) {
       paramMotionEvent.a(true);
     }
-    this.this$0.hideTroopFCView(false);
-    this.this$0.hideAllPanels(true);
+    this.a.h(false);
+    this.a.g(true);
     if (paramMotionEvent != null) {
       paramMotionEvent.a(false);
     }
@@ -85,7 +85,7 @@ class BaseChatPie$MyOnGestureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.MyOnGestureListener
  * JD-Core Version:    0.7.0.1
  */

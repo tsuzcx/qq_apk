@@ -6,14 +6,13 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.MobileQQ;
-import ntq;
 import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
-public class TroopRedTouchManager$3
+class TroopRedTouchManager$3
   implements Runnable
 {
-  public TroopRedTouchManager$3(ntq paramntq, oidb_0x791.GetRedDotRes paramGetRedDotRes) {}
+  TroopRedTouchManager$3(TroopRedTouchManager paramTroopRedTouchManager, oidb_0x791.GetRedDotRes paramGetRedDotRes) {}
   
   public void run()
   {
@@ -23,11 +22,11 @@ public class TroopRedTouchManager$3
     {
       try
       {
-        FileUtils.pushData2File((String)localObject1, this.a.toByteArray(), false);
+        FileUtils.a((String)localObject1, this.a.toByteArray(), false);
         localObject1 = new StringBuilder("saveLocalFile==>");
         while (i < this.a.rpt_msg_reddot_info.size())
         {
-          ((StringBuilder)localObject1).append(ntq.a((oidb_0x791.RedDotInfo)this.a.rpt_msg_reddot_info.get(i)));
+          ((StringBuilder)localObject1).append(TroopRedTouchManager.a((oidb_0x791.RedDotInfo)this.a.rpt_msg_reddot_info.get(i)));
           i += 1;
         }
       }
@@ -46,7 +45,7 @@ public class TroopRedTouchManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchManager.3
  * JD-Core Version:    0.7.0.1
  */

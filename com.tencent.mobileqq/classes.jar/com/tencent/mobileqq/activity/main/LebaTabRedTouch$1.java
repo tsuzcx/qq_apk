@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.main;
 
-import akai;
-import akal;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
+import com.tencent.biz.now.NowLiveManager;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -9,16 +9,14 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
-import ntq;
-import nyv;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
-public class LebaTabRedTouch$1
+class LebaTabRedTouch$1
   implements Runnable
 {
-  public LebaTabRedTouch$1(akai paramakai, akal paramakal) {}
+  LebaTabRedTouch$1(LebaTabRedTouch paramLebaTabRedTouch, LebaTabRedTouch.RefreshCallback paramRefreshCallback) {}
   
   public void run()
   {
@@ -50,8 +48,8 @@ public class LebaTabRedTouch$1
       }
       this.a.a();
     }
-    localObject1 = (ntq)this.this$0.a.app.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
-    localRedDotInfo = ((ntq)localObject1).a();
+    localObject1 = (TroopRedTouchManager)this.this$0.a.app.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
+    localRedDotInfo = ((TroopRedTouchManager)localObject1).a();
     i = -1;
     if (localRedDotInfo != null) {
       i = localRedDotInfo.uint32_appid.get();
@@ -72,13 +70,13 @@ public class LebaTabRedTouch$1
       }
       this.a.a();
       return;
-      localObject1 = akai.a(this.this$0, (ntq)localObject1, null, localRedDotInfo);
+      localObject1 = LebaTabRedTouch.a(this.this$0, (TroopRedTouchManager)localObject1, null, localRedDotInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.LebaTabRedTouch.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ public final class JudgeDownloadRsp
   public static final int STATUS_NULL = -1;
   public static final int STATUS_WAIT_TO_REQ = 0;
   static ArrayList<ResInfo> cache_vecDownloadRes = new ArrayList();
-  public int iDownloadStatus;
+  public int iDownloadStatus = 0;
   public int iFailedRetryMax = 3;
-  public int iSegTime;
-  public ArrayList<ResInfo> vecDownloadRes;
+  public int iSegTime = 0;
+  public ArrayList<ResInfo> vecDownloadRes = null;
   
   static
   {

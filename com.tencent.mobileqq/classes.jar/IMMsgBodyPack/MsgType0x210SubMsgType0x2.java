@@ -12,22 +12,22 @@ public final class MsgType0x210SubMsgType0x2
   static byte[] cache_strFileMd5;
   static byte[] cache_strFileName;
   static byte[] cache_strOriginfile_md5;
-  public long lFileLen;
-  public long lSessionId;
-  public byte[] strFileIndex;
-  public byte[] strFileKey;
-  public byte[] strFileMd5;
-  public byte[] strFileName;
-  public byte[] strOriginfile_md5;
-  public long uDstAppId;
-  public long uDstInstId;
-  public long uDstUin;
-  public long uOriginfiletype;
-  public long uSeq;
-  public long uServerIp;
-  public long uServerPort;
-  public long uSrcAppId;
-  public long uSrcInstId;
+  public long lFileLen = 0L;
+  public long lSessionId = 0L;
+  public byte[] strFileIndex = null;
+  public byte[] strFileKey = null;
+  public byte[] strFileMd5 = null;
+  public byte[] strFileName = null;
+  public byte[] strOriginfile_md5 = null;
+  public long uDstAppId = 0L;
+  public long uDstInstId = 0L;
+  public long uDstUin = 0L;
+  public long uOriginfiletype = 0L;
+  public long uSeq = 0L;
+  public long uServerIp = 0L;
+  public long uServerPort = 0L;
+  public long uSrcAppId = 0L;
+  public long uSrcInstId = 0L;
   
   public MsgType0x210SubMsgType0x2() {}
   

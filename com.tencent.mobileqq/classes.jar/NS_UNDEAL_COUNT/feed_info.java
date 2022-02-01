@@ -8,9 +8,9 @@ public final class feed_info
   extends JceStruct
 {
   public String strText = "";
-  public long uFeedCTime;
-  public long uOrgFeedTime;
-  public long uOrgFeedUin;
+  public long uFeedCTime = 0L;
+  public long uOrgFeedTime = 0L;
+  public long uOrgFeedUin = 0L;
   
   public feed_info() {}
   

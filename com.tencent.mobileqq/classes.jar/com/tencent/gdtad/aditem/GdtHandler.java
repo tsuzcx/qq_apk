@@ -1,10 +1,5 @@
 package com.tencent.gdtad.aditem;
 
-import achn;
-import acho;
-import acic;
-import acim;
-import acin;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
@@ -16,6 +11,11 @@ import com.tencent.ad.tangram.statistics.AdReporterForClick;
 import com.tencent.ad.tangram.util.AdClickUtil;
 import com.tencent.ad.tangram.util.AdClickUtil.Params;
 import com.tencent.ad.tangram.util.AdClickUtil.Result;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.statistics.GdtReportForAntiSpam;
+import com.tencent.gdtad.util.GdtManager;
+import com.tencent.gdtad.util.GdtManager.Params;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -51,7 +51,7 @@ public class GdtHandler
     localParams.extrasForIntent.putString("big_brother_source_key", "biz_src_ads");
     if (paramParams.jdField_a_of_type_AndroidOsBundle != null)
     {
-      acho.b("GdtHandler", "toParams pass refId " + paramParams.jdField_a_of_type_AndroidOsBundle);
+      GdtLog.b("GdtHandler", "toParams pass refId " + paramParams.jdField_a_of_type_AndroidOsBundle);
       localParams.extrasForIntent.putAll(paramParams.jdField_a_of_type_AndroidOsBundle);
     }
     for (;;)
@@ -60,26 +60,26 @@ public class GdtHandler
       localParams.halfScreenPageEnabled = paramParams.g;
       localParams.antiSpamParams = paramParams.jdField_a_of_type_JavaLangString;
       return localParams;
-      acho.b("GdtHandler", "toParams not pass refId \n" + QLog.getStackTraceString(new IllegalArgumentException()));
+      GdtLog.b("GdtHandler", "toParams not pass refId \n" + QLog.getStackTraceString(new IllegalArgumentException()));
     }
   }
   
   public static void a(GdtHandler.Params paramParams)
   {
     Object localObject2 = null;
-    acho.b("GdtHandler", "handle");
+    GdtLog.b("GdtHandler", "handle");
     ThreadManager.getSubThreadHandler().post(new GdtHandler.1(paramParams));
-    acim localacim = acim.a();
+    GdtManager localGdtManager = GdtManager.a();
     if ((paramParams != null) && (paramParams.a())) {}
     for (Object localObject1 = (Activity)paramParams.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject1 = null)
     {
-      localacim.a((Context)localObject1, new acin());
+      localGdtManager.a((Context)localObject1, new GdtManager.Params());
       b(paramParams);
       localObject1 = localObject2;
       if (paramParams != null) {
         localObject1 = paramParams.jdField_a_of_type_OrgJsonJSONObject;
       }
-      acic.a((JSONObject)localObject1);
+      GdtReportForAntiSpam.a((JSONObject)localObject1);
       return;
     }
   }
@@ -92,7 +92,7 @@ public class GdtHandler
     try
     {
       JSONObject localJSONObject1 = new JSONObject(paramString);
-      acho.b("GdtHandler", String.format("fromJSON %s", new Object[] { paramString }));
+      GdtLog.b("GdtHandler", String.format("fromJSON %s", new Object[] { paramString }));
       paramString = localJSONObject1.getJSONObject("options");
       boolean bool1 = paramString.getBoolean("reportForClick");
       boolean bool2 = paramString.getBoolean("appAutoDownload");
@@ -121,13 +121,13 @@ public class GdtHandler
       paramOptions.f = paramString.optBoolean("videoPlayForced");
       paramOptions.g = paramString.optBoolean("halfScreenPageEnabled");
       if (localJSONObject1.has("adInfo")) {
-        paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
+        paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
       }
       return true;
     }
     catch (Throwable paramOptions)
     {
-      acho.d("GdtHandler", "handleJsCallRequest error", paramOptions);
+      GdtLog.d("GdtHandler", "handleJsCallRequest error", paramOptions);
     }
     return false;
   }
@@ -157,12 +157,12 @@ public class GdtHandler
     if (paramParams != null) {
       i = paramParams.getErrorCode();
     }
-    acho.b("GdtHandler", String.format("handle errorCode:%d", new Object[] { Integer.valueOf(i) }));
+    GdtLog.b("GdtHandler", String.format("handle errorCode:%d", new Object[] { Integer.valueOf(i) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtHandler
  * JD-Core Version:    0.7.0.1
  */

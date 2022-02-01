@@ -30,21 +30,21 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anvx;
-import bdla;
-import bisl;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import znl;
 
 @TargetApi(11)
 public class RedPacketShareFragment
@@ -53,13 +53,13 @@ public class RedPacketShareFragment
 {
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
-  private bisl jdField_a_of_type_Bisl;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean = true;
   private String jdField_b_of_type_JavaLangString;
   boolean jdField_b_of_type_Boolean;
-  private String c;
+  private String c = null;
   
   private Bitmap a(View paramView)
   {
@@ -82,7 +82,7 @@ public class RedPacketShareFragment
       try
       {
         String str = "temp_qav_redpacket_share_" + System.currentTimeMillis() + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin() + ".png";
-        str = znl.a(getActivity(), str, this.jdField_a_of_type_AndroidGraphicsBitmap);
+        str = QRUtils.a(getActivity(), str, this.jdField_a_of_type_AndroidGraphicsBitmap);
         return str;
       }
       catch (OutOfMemoryError localOutOfMemoryError) {}
@@ -129,30 +129,30 @@ public class RedPacketShareFragment
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      QQToast.a(BaseApplication.getContext(), 2131698725, 0).a();
+      QQToast.a(BaseApplication.getContext(), 2131699028, 0).a();
       return;
     }
     int i;
     if ((paramInt == 2) || (paramInt == 3)) {
       if (!WXShareHelper.a().a()) {
-        i = 2131720175;
+        i = 2131720753;
       }
     }
     for (;;)
     {
       if (i != -1)
       {
-        znl.a(1, i);
+        QRUtils.a(1, i);
         return;
         if (!WXShareHelper.a().b()) {
-          i = 2131720176;
+          i = 2131720754;
         }
       }
       else
       {
         if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
         {
-          znl.a(1, 2131698726);
+          QRUtils.a(1, 2131699029);
           return;
         }
         a(true);
@@ -181,22 +181,22 @@ public class RedPacketShareFragment
   
   private void a(View paramView)
   {
-    Object localObject1 = (Button)paramView.findViewById(2131363793);
-    Object localObject2 = (Button)paramView.findViewById(2131363794);
-    Button localButton1 = (Button)paramView.findViewById(2131363795);
-    Button localButton2 = (Button)paramView.findViewById(2131363796);
-    View localView = paramView.findViewById(2131377023);
-    paramView = paramView.findViewById(2131364699);
+    Object localObject1 = (Button)paramView.findViewById(2131363892);
+    Object localObject2 = (Button)paramView.findViewById(2131363893);
+    Button localButton1 = (Button)paramView.findViewById(2131363894);
+    Button localButton2 = (Button)paramView.findViewById(2131363895);
+    View localView = paramView.findViewById(2131377435);
+    paramView = paramView.findViewById(2131364815);
     ((Button)localObject1).setOnClickListener(this);
     ((Button)localObject2).setOnClickListener(this);
     localButton1.setOnClickListener(this);
     localButton2.setOnClickListener(this);
     localView.setOnClickListener(this);
     paramView.setOnClickListener(this);
-    a((Button)localObject1, 2130839146);
-    a((Button)localObject2, 2130839147);
-    a(localButton1, 2130839150);
-    a(localButton2, 2130839144);
+    a((Button)localObject1, 2130839214);
+    a((Button)localObject2, 2130839215);
+    a(localButton1, 2130839218);
+    a(localButton2, 2130839212);
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
       localObject2 = (AVRedPacketManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(6);
@@ -274,7 +274,7 @@ public class RedPacketShareFragment
   public static void a(String paramString, int paramInt)
   {
     QLog.d("RedPacketShareFragment", 1, "WL_DEBUG reportClickEvent actionName = " + paramString + ", fromType = " + paramInt);
-    bdla.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
   }
   
   @TargetApi(12)
@@ -287,29 +287,29 @@ public class RedPacketShareFragment
       {
         Object localObject3 = ((AVRedPacketManager)localObject2).a();
         ((AVRedPacketManager)localObject2).a(null);
-        Object localObject1 = (ViewGroup)getActivity().getLayoutInflater().inflate(2131559807, null);
-        ((ViewGroup)localObject1).findViewById(2131376947).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject3));
+        Object localObject1 = (ViewGroup)getActivity().getLayoutInflater().inflate(2131559883, null);
+        ((ViewGroup)localObject1).findViewById(2131377356).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject3));
         localObject3 = ((AVRedPacketManager)localObject2).a("qav_redpacket_share_preview_background.png");
         if (localObject3 != null) {
-          ((ViewGroup)localObject1).findViewById(2131363339).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject3));
+          ((ViewGroup)localObject1).findViewById(2131363419).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject3));
         }
         localObject3 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
         Object localObject4 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0, (String)localObject3, null, true, true);
         if (localObject4 != null) {
-          ((ViewGroup)localObject1).findViewById(2131368063).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject4));
+          ((ViewGroup)localObject1).findViewById(2131368281).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject4));
         }
         if (getArguments().getBoolean("isGoodScore"))
         {
           localObject4 = ((AVRedPacketManager)localObject2).a("qav_redpacket_result_bqd.png");
           if (localObject4 != null) {
-            ((ViewGroup)localObject1).findViewById(2131363765).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject4));
+            ((ViewGroup)localObject1).findViewById(2131363864).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject4));
           }
         }
-        localObject4 = (TextView)((ViewGroup)localObject1).findViewById(2131377094);
+        localObject4 = (TextView)((ViewGroup)localObject1).findViewById(2131377508);
         this.jdField_a_of_type_JavaLangString = Integer.toString(getArguments().getInt("score"));
         ((TextView)localObject4).setText(this.jdField_a_of_type_JavaLangString);
-        localObject4 = (TextView)((ViewGroup)localObject1).findViewById(2131378661);
-        Object localObject5 = getString(2131695547);
+        localObject4 = (TextView)((ViewGroup)localObject1).findViewById(2131379094);
+        Object localObject5 = getString(2131695788);
         this.jdField_b_of_type_JavaLangString = a(getArguments().getInt("count"));
         String str = this.jdField_b_of_type_JavaLangString;
         Object localObject6 = String.format((String)localObject5, new Object[] { str });
@@ -317,17 +317,17 @@ public class RedPacketShareFragment
         localObject6 = new SpannableString((CharSequence)localObject6);
         ((SpannableString)localObject6).setSpan(localObject5, 3, str.length() + 3, 17);
         ((TextView)localObject4).setText((CharSequence)localObject6);
-        ((TextView)((ViewGroup)localObject1).findViewById(2131378662)).setText(String.format(getString(2131695548), new Object[] { this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(0, (String)localObject3, null) }));
+        ((TextView)((ViewGroup)localObject1).findViewById(2131379095)).setText(String.format(getString(2131695789), new Object[] { this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0, (String)localObject3, null) }));
         localObject2 = ((AVRedPacketManager)localObject2).a("qav_redpacket_share_preview_qrcode.png", false);
         if (localObject2 != null) {
-          ((ViewGroup)localObject1).findViewById(2131374788).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject2));
+          ((ViewGroup)localObject1).findViewById(2131375159).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject2));
         }
-        ((ViewGroup)localObject1).measure(View.MeasureSpec.makeMeasureSpec(AIOUtils.dp2px(375.0F, getResources()), 1073741824), View.MeasureSpec.makeMeasureSpec(AIOUtils.dp2px(667.0F, getResources()), 1073741824));
+        ((ViewGroup)localObject1).measure(View.MeasureSpec.makeMeasureSpec(AIOUtils.a(375.0F, getResources()), 1073741824), View.MeasureSpec.makeMeasureSpec(AIOUtils.a(667.0F, getResources()), 1073741824));
         ((ViewGroup)localObject1).layout(0, 0, ((ViewGroup)localObject1).getMeasuredWidth(), ((ViewGroup)localObject1).getMeasuredHeight());
         this.jdField_a_of_type_AndroidGraphicsBitmap = a((View)localObject1);
-        paramView = (ImageView)paramView.findViewById(2131373128);
+        paramView = (ImageView)paramView.findViewById(2131373454);
         localObject1 = RoundedBitmapDrawableFactory.create(getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
-        ((RoundedBitmapDrawable)localObject1).setCornerRadius(AIOUtils.dp2px(10.0F, getResources()));
+        ((RoundedBitmapDrawable)localObject1).setCornerRadius(AIOUtils.a(10.0F, getResources()));
         paramView.setImageDrawable((Drawable)localObject1);
       }
     }
@@ -339,19 +339,19 @@ public class RedPacketShareFragment
     if (QLog.isColorLevel()) {
       QLog.d("RedPacketShareFragment", 2, "showWaitingDialog");
     }
-    if ((getActivity() == null) || (getActivity().isFinishing()) || ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())))
+    if ((getActivity() == null) || (getActivity().isFinishing()) || ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())))
     {
       if (QLog.isColorLevel()) {
         QLog.d("RedPacketShareFragment", 2, "showWaitingDialog, activity is finishing or dlg showing");
       }
       return;
     }
-    if (this.jdField_a_of_type_Bisl == null) {
-      this.jdField_a_of_type_Bisl = new bisl(getActivity(), getResources().getDimensionPixelSize(2131299080));
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), getResources().getDimensionPixelSize(2131299166));
     }
-    this.jdField_a_of_type_Bisl.a(getActivity().getString(2131695544));
-    this.jdField_a_of_type_Bisl.c(true);
-    this.jdField_a_of_type_Bisl.show();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getActivity().getString(2131695785));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
   
   private void d()
@@ -359,14 +359,14 @@ public class RedPacketShareFragment
     if (QLog.isColorLevel()) {
       QLog.d("RedPacketShareFragment", 2, "dismissWaittingDialog");
     }
-    if ((getActivity() != null) && (this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing()) && (!getActivity().isFinishing())) {
-      this.jdField_a_of_type_Bisl.dismiss();
+    if ((getActivity() != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (!getActivity().isFinishing())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
   }
   
   protected int a()
   {
-    return 2131559806;
+    return 2131559882;
   }
   
   void a()
@@ -468,7 +468,7 @@ public class RedPacketShareFragment
       if (this.jdField_a_of_type_Boolean) {
         if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
         {
-          QQToast.a(BaseApplication.getContext(), 1, 2131698726, 0).a();
+          QQToast.a(BaseApplication.getContext(), 1, 2131699029, 0).a();
         }
         else if (!this.jdField_b_of_type_Boolean)
         {
@@ -476,7 +476,7 @@ public class RedPacketShareFragment
         }
         else
         {
-          QQToast.a(BaseApplication.getContext(), 0, anvx.a(2131712762), 0).a();
+          QQToast.a(BaseApplication.getContext(), 0, HardCodeUtil.a(2131713258), 0).a();
           continue;
           getActivity().onBackPressed();
         }
@@ -514,7 +514,7 @@ public class RedPacketShareFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketShareFragment
  * JD-Core Version:    0.7.0.1
  */

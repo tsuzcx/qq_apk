@@ -8,10 +8,10 @@ public final class GetLikeListReq
   extends JceStruct
 {
   static SourceInfo cache_stSource = new SourceInfo();
-  public long iNum;
-  public long iUin;
+  public long iNum = 0L;
+  public long iUin = 0L;
   public String sCookie = "";
-  public SourceInfo stSource;
+  public SourceInfo stSource = null;
   
   public GetLikeListReq() {}
   

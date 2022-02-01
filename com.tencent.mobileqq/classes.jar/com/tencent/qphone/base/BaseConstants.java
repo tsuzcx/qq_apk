@@ -23,6 +23,17 @@ public class BaseConstants
   public static final String ATTRIBUT_TIMEOUT_ISCONN = "_attr_timeout_isconn";
   public static final String ATTRIBUT_TIMEOUT_NETSTATE = "_attr_timeout_netstate";
   public static final String ATTRIBUT_TIMEOUT_SOCKET_CONN_TIME = "_attr_timeout_socket_conn_time";
+  public static final String ATTR_KET_BUSINESS_SQE = "key_business_seq";
+  public static final String ATTR_KET_BUSINESS_TYPE = "businessType";
+  public static final String ATTR_KET_ERR_MSG = "errMsg";
+  public static final String ATTR_KET_EXTRA_MAP = "extraMap";
+  public static final String ATTR_KET_PHONE_TOKEN = "phoneToken";
+  public static final String ATTR_KET_RET = "ret";
+  public static final String ATTR_KET_SIF_SESSION = "sigSession";
+  public static final String ATTR_KET_SSO_SEQ = "key_sso_seq";
+  public static final String ATTR_KET_TO_SERVICE_MSG = "key_to_service_msg";
+  public static final String ATTR_KET_UIN = "uin";
+  public static final String ATTR_KET_USER_SIG_INFO = "userSigInfo";
   public static final String Attribute_DEVICEGUID = "_attr_deviceGUID";
   public static final String Attribute_RESP_APP_TIMEOUT = "_attr_app_timeout";
   public static final String Attribute_SERVERTIME = "_attr_server";
@@ -231,6 +242,7 @@ public class BaseConstants
   public static final String FLOW_XG_CHAT_KEY = "param_XGChatFlow";
   public static final String FLOW_XG_KEY = "param_XGFlow";
   public static final String FLOW_XG_RDM_KEY = "param_XGRdmFlow";
+  public static final boolean IS_RELEASE_SUPPORT_SWITCH_TO_TEST_ENV = false;
   public static int MAXSENDCOUNT_INMINUTE = 0;
   public static final String MINI_SDK = "";
   public static final String NETEXCEPTION_ATTRIBUTE_EXCEPTYPE = "NetExceptionType";
@@ -243,7 +255,9 @@ public class BaseConstants
   public static final long OPEN_SDK_BUFLAG_B1 = 1600001540L;
   public static String RDM_NoChangeFailCode;
   public static final int REGUIN_CAPTCHA = 4;
+  public static final int REGUIN_FACE = 59;
   public static final int REGUIN_GUARANTEE = 8;
+  public static final int REGUIN_IFRAME = 9;
   public static final int REGUIN_JUMPURL = 3;
   public static final int REGUIN_QUERYSMS = 4;
   public static final int REGUIN_REJECT = 7;
@@ -251,9 +265,6 @@ public class BaseConstants
   public static final int REGUIN_SUCC = 0;
   public static final int REGUIN_UPSMS = 2;
   public static final int REGUIN_WAITSMS = 1;
-  public static int REPORTLOGMAXPACKAGECOUNT = 0;
-  public static long REPORTLOGONCEMAXSIZE = 20971520L;
-  public static int REPORTLOG_WIFI_MAXPACKAGECOUNT = 0;
   public static final int RET_USER_CANCEL = -20160326;
   public static final int ROUTING_ID = 62;
   public static final int SERVERPUSH_TYPE_MEDIASERVERLIST = 1;
@@ -282,22 +293,18 @@ public class BaseConstants
   public static int USEWAKELOCK_MINFAILEDCOUNT = 0;
   public static String[] WiFiloginMergeTSAddress;
   public static String[] XGloginMergeTSAddress;
-  public static int checkExpiresLogScreenOffCount = 0;
+  public static int checkExpiresLogScreenOffCount = 2;
   public static final boolean isGrayVersion = false;
   public static final boolean isPublicVersion = true;
   public static final boolean isReleaseVersion = true;
   public static final boolean isSwitchToTestEnv = false;
   public static boolean isUseDebugSso = false;
-  public static long reSendIntrevTime = 0L;
-  public static final String revision = "b8c39faf";
+  public static long reSendIntrevTime = 5000L;
+  public static final String revision = "de12fadd";
   public static final String testServerAddress = "socket://183.3.233.202:14000";
   
   static
   {
-    REPORTLOGMAXPACKAGECOUNT = 3;
-    REPORTLOG_WIFI_MAXPACKAGECOUNT = 10;
-    checkExpiresLogScreenOffCount = 2;
-    reSendIntrevTime = 5000L;
     RDM_NoChangeFailCode = "rdm_NCF";
     isUseDebugSso = false;
     XGloginMergeTSAddress = null;

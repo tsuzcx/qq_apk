@@ -3,18 +3,17 @@ package com.tencent.qqmini.proxyimpl;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bknj;
 import com.tencent.qphone.base.util.QLog;
 
 public class AdProxyImpl$AdResultReceiver
   extends ResultReceiver
 {
-  private bknj a;
+  private AdProxyImpl.SDKRewardedVideoAdView a;
   
-  public AdProxyImpl$AdResultReceiver(Handler paramHandler, bknj parambknj)
+  public AdProxyImpl$AdResultReceiver(Handler paramHandler, AdProxyImpl.SDKRewardedVideoAdView paramSDKRewardedVideoAdView)
   {
     super(paramHandler);
-    this.a = parambknj;
+    this.a = paramSDKRewardedVideoAdView;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)

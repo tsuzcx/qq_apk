@@ -8,8 +8,8 @@ public final class MsgItem
   extends JceStruct
 {
   static byte[] cache_MsgContent;
-  public byte[] MsgContent;
-  public byte cType;
+  public byte[] MsgContent = null;
+  public byte cType = 0;
   
   public MsgItem() {}
   

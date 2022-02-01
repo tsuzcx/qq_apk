@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.apollo;
 
-import ampx;
-import anhu;
+import com.tencent.mobileqq.apollo.task.OnDressDoneListener;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
 class ApolloRenderDriver$5
   extends IApolloRunnableTask
 {
-  ApolloRenderDriver$5(ApolloRenderDriver paramApolloRenderDriver, String[] paramArrayOfString, anhu paramanhu) {}
+  ApolloRenderDriver$5(ApolloRenderDriver paramApolloRenderDriver, String[] paramArrayOfString, OnDressDoneListener paramOnDressDoneListener) {}
   
   public String a()
   {
@@ -27,11 +26,11 @@ class ApolloRenderDriver$5
         i += 1;
       }
       this.this$0.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      if (this.jdField_a_of_type_Anhu != null) {
-        this.jdField_a_of_type_Anhu.d();
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloTaskOnDressDoneListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloTaskOnDressDoneListener.d();
       }
-      if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_Ampx != null)) {
-        this.this$0.jdField_a_of_type_Ampx.onRender();
+      if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null)) {
+        this.this$0.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
       }
       return;
     }
@@ -43,7 +42,7 @@ class ApolloRenderDriver$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRenderDriver.5
  * JD-Core Version:    0.7.0.1
  */

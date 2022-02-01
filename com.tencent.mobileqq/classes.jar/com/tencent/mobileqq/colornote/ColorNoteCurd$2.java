@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.colornote;
 
-import aqns;
-
-public class ColorNoteCurd$2
+class ColorNoteCurd$2
   implements Runnable
 {
-  public ColorNoteCurd$2(aqns paramaqns, int paramInt1, String paramString, int paramInt2) {}
+  ColorNoteCurd$2(ColorNoteCurd paramColorNoteCurd, int paramInt1, String paramString, int paramInt2) {}
   
   public void run()
   {

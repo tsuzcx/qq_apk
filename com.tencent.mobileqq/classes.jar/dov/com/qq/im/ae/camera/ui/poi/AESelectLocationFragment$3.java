@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.camera.ui.poi;
 
-import anvx;
-import bjkv;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.open.base.ToastUtil;
 
 class AESelectLocationFragment$3
   implements Runnable
@@ -10,12 +10,12 @@ class AESelectLocationFragment$3
   
   public void run()
   {
-    bjkv.a().a(anvx.a(2131715761));
+    ToastUtil.a().a(HardCodeUtil.a(2131716227));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.poi.AESelectLocationFragment.3
  * JD-Core Version:    0.7.0.1
  */

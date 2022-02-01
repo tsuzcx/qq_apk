@@ -1,13 +1,5 @@
 package com.tencent.mobileqq.activity.aio.intimate.view;
 
-import agll;
-import agmf;
-import agmg;
-import agmr;
-import agms;
-import agmt;
-import agmu;
-import amfb;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,19 +9,24 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
-import anvk;
-import arau;
-import arav;
-import azch;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import com.tencent.mobileqq.activity.aio.intimate.BaseIntimateView;
+import com.tencent.mobileqq.activity.aio.intimate.info.NewDnaInfo;
+import com.tencent.mobileqq.activity.aio.intimate.info.NewDnaInfo.DnaDetail;
+import com.tencent.mobileqq.activity.weather.webpage.WeatherWebPageHelperKt;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.config.business.FriendIntimateRelationshipBean;
+import com.tencent.mobileqq.config.business.FriendIntimateRelationshipConfProcessor;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.IntimateInfo;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -40,10 +37,10 @@ import java.util.List;
 public class IntimateContentItemNewDnaView
   extends IntimateContentItemBaseView
 {
-  private agmt jdField_a_of_type_Agmt;
-  private agmu jdField_a_of_type_Agmu = new agmr(this);
   private RecyclerView jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView;
-  private boolean d;
+  private IntimateContentItemNewDnaView.FriendDnaRvAdapter jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView$FriendDnaRvAdapter;
+  private IntimateContentItemNewDnaView.FriendDnaRvItemListener jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView$FriendDnaRvItemListener = new IntimateContentItemNewDnaView.1(this);
+  private boolean d = false;
   
   public IntimateContentItemNewDnaView(Context paramContext)
   {
@@ -60,35 +57,35 @@ public class IntimateContentItemNewDnaView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void a(agmf paramagmf)
+  private void a(NewDnaInfo paramNewDnaInfo)
   {
-    bdla.b(null, "dc00898", "", "", "0X800B569", "0X800B569", paramagmf.jdField_a_of_type_Int, 0, "", "", "", "");
-    MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramagmf.d, 2064, null);
+    ReportController.b(null, "dc00898", "", "", "0X800B569", "0X800B569", paramNewDnaInfo.jdField_a_of_type_Int, 0, "", "", "", "");
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramNewDnaInfo.d, 2064, null);
   }
   
-  private void a(Friends paramFriends, List<agmf> paramList, agmf paramagmf)
+  private void a(Friends paramFriends, List<NewDnaInfo> paramList, NewDnaInfo paramNewDnaInfo)
   {
-    agmg localagmg1 = new agmg();
-    localagmg1.jdField_a_of_type_JavaLangString = (paramFriends.temper + "°" + paramFriends.weatherType);
-    localagmg1.jdField_a_of_type_Int = 0;
-    localagmg1.b = localagmg1.jdField_a_of_type_JavaLangString.getBytes().length;
-    agmg localagmg2 = new agmg();
-    localagmg2.jdField_a_of_type_JavaLangString = (paramFriends.city + paramFriends.area);
-    localagmg2.jdField_a_of_type_Int = 0;
-    localagmg2.b = localagmg2.jdField_a_of_type_JavaLangString.getBytes().length;
+    NewDnaInfo.DnaDetail localDnaDetail1 = new NewDnaInfo.DnaDetail();
+    localDnaDetail1.jdField_a_of_type_JavaLangString = (paramFriends.temper + "°" + paramFriends.weatherType);
+    localDnaDetail1.jdField_a_of_type_Int = 0;
+    localDnaDetail1.b = localDnaDetail1.jdField_a_of_type_JavaLangString.getBytes().length;
+    NewDnaInfo.DnaDetail localDnaDetail2 = new NewDnaInfo.DnaDetail();
+    localDnaDetail2.jdField_a_of_type_JavaLangString = (paramFriends.city + paramFriends.area);
+    localDnaDetail2.jdField_a_of_type_Int = 0;
+    localDnaDetail2.b = localDnaDetail2.jdField_a_of_type_JavaLangString.getBytes().length;
     paramFriends = new ArrayList();
-    paramFriends.add(localagmg1);
-    paramFriends.add(localagmg2);
-    if (paramagmf.jdField_a_of_type_JavaUtilArrayList != null)
+    paramFriends.add(localDnaDetail1);
+    paramFriends.add(localDnaDetail2);
+    if (paramNewDnaInfo.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      paramagmf.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramagmf.jdField_a_of_type_JavaUtilArrayList.addAll(paramFriends);
+      paramNewDnaInfo.jdField_a_of_type_JavaUtilArrayList.clear();
+      paramNewDnaInfo.jdField_a_of_type_JavaUtilArrayList.addAll(paramFriends);
     }
     for (;;)
     {
-      paramList.add(paramagmf);
+      paramList.add(paramNewDnaInfo);
       return;
-      paramagmf.jdField_a_of_type_JavaUtilArrayList = paramFriends;
+      paramNewDnaInfo.jdField_a_of_type_JavaUtilArrayList = paramFriends;
     }
   }
   
@@ -99,102 +96,104 @@ public class IntimateContentItemNewDnaView
     }
   }
   
-  private void a(List<agmf> paramList)
+  private void a(List<NewDnaInfo> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      Friends localFriends = ((anvk)this.jdField_a_of_type_Agll.a().getManager(QQManagerFactory.FRIENDS_MANAGER)).d(this.jdField_a_of_type_Agll.a());
+      Friends localFriends = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().getManager(QQManagerFactory.FRIENDS_MANAGER)).d(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a());
       ArrayList localArrayList = new ArrayList();
       SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0);
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        agmf localagmf = (agmf)paramList.next();
-        if (localagmf.jdField_a_of_type_Int == 23)
+        NewDnaInfo localNewDnaInfo = (NewDnaInfo)paramList.next();
+        if (localNewDnaInfo.jdField_a_of_type_Int == 23)
         {
           String str1 = localSharedPreferences.getString("drawer_cur_temp", null);
           String str2 = localSharedPreferences.getString("drawer_cur_city", null);
           int i = localSharedPreferences.getInt("drawer_cur_adcode", 0);
           String str3 = localSharedPreferences.getString("drawer_cur_desc", null);
-          if ((localFriends != null) && (azch.a(localFriends)) && (!TextUtils.isEmpty(localFriends.adCode)) && (!TextUtils.isEmpty(localFriends.area)) && (!TextUtils.isEmpty(localFriends.city)) && (!TextUtils.isEmpty(localFriends.temper)) && (!TextUtils.isEmpty(localFriends.weatherType))) {
-            a(localFriends, localArrayList, localagmf);
+          if ((localFriends != null) && (OnlineStatusUtil.a(localFriends)) && (!TextUtils.isEmpty(localFriends.adCode)) && (!TextUtils.isEmpty(localFriends.area)) && (!TextUtils.isEmpty(localFriends.city)) && (!TextUtils.isEmpty(localFriends.temper)) && (!TextUtils.isEmpty(localFriends.weatherType))) {
+            a(localFriends, localArrayList, localNewDnaInfo);
           } else if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (i != 0) && (!TextUtils.isEmpty(str3))) {
-            a(localArrayList, localagmf, str1, str2, str3);
+            a(localArrayList, localNewDnaInfo, str1, str2, str3);
           }
         }
         else
         {
-          localArrayList.add(localagmf);
+          localArrayList.add(localNewDnaInfo);
         }
       }
-      this.jdField_a_of_type_Agmt.a(localArrayList);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView$FriendDnaRvAdapter != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView$FriendDnaRvAdapter.a(localArrayList);
+      }
     }
   }
   
-  private void a(List<agmf> paramList, agmf paramagmf, String paramString1, String paramString2, String paramString3)
+  private void a(List<NewDnaInfo> paramList, NewDnaInfo paramNewDnaInfo, String paramString1, String paramString2, String paramString3)
   {
-    agmg localagmg = new agmg();
-    localagmg.jdField_a_of_type_JavaLangString = (paramString1 + "°" + paramString3);
-    localagmg.jdField_a_of_type_Int = 0;
-    localagmg.b = localagmg.jdField_a_of_type_JavaLangString.getBytes().length;
+    NewDnaInfo.DnaDetail localDnaDetail = new NewDnaInfo.DnaDetail();
+    localDnaDetail.jdField_a_of_type_JavaLangString = (paramString1 + "°" + paramString3);
+    localDnaDetail.jdField_a_of_type_Int = 0;
+    localDnaDetail.b = localDnaDetail.jdField_a_of_type_JavaLangString.getBytes().length;
     paramString1 = paramString2.split("-");
     if (paramString1.length == 2) {
       paramString2 = paramString1[0] + paramString1[1];
     }
-    paramString1 = new agmg();
+    paramString1 = new NewDnaInfo.DnaDetail();
     paramString1.jdField_a_of_type_JavaLangString = paramString2;
     paramString1.jdField_a_of_type_Int = 0;
     paramString1.b = paramString1.jdField_a_of_type_JavaLangString.getBytes().length;
     paramString2 = new ArrayList();
-    paramString2.add(localagmg);
+    paramString2.add(localDnaDetail);
     paramString2.add(paramString1);
-    if (paramagmf.jdField_a_of_type_JavaUtilArrayList != null)
+    if (paramNewDnaInfo.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      paramagmf.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramagmf.jdField_a_of_type_JavaUtilArrayList.addAll(paramString2);
+      paramNewDnaInfo.jdField_a_of_type_JavaUtilArrayList.clear();
+      paramNewDnaInfo.jdField_a_of_type_JavaUtilArrayList.addAll(paramString2);
     }
     for (;;)
     {
-      paramList.add(paramagmf);
+      paramList.add(paramNewDnaInfo);
       return;
-      paramagmf.jdField_a_of_type_JavaUtilArrayList = paramString2;
+      paramNewDnaInfo.jdField_a_of_type_JavaUtilArrayList = paramString2;
     }
   }
   
-  private void b(agmf paramagmf)
+  private void b(NewDnaInfo paramNewDnaInfo)
   {
-    if (QQBrowserActivity.a(1000L))
+    if (QQBrowserActivity.checkNotFrequentlyThenEnter(1000L))
     {
-      bdla.b(null, "dc00898", "", "", "0X800B569", "0X800B569", paramagmf.jdField_a_of_type_Int, 0, "", "", "", "");
-      Friends localFriends = ((anvk)this.jdField_a_of_type_Agll.a().getManager(QQManagerFactory.FRIENDS_MANAGER)).d(this.jdField_a_of_type_Agll.a());
+      ReportController.b(null, "dc00898", "", "", "0X800B569", "0X800B569", paramNewDnaInfo.jdField_a_of_type_Int, 0, "", "", "", "");
+      Friends localFriends = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().getManager(QQManagerFactory.FRIENDS_MANAGER)).d(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a());
       int i = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).getInt("drawer_cur_adcode", 0);
-      paramagmf = "";
+      paramNewDnaInfo = "";
       if (i != 0) {
-        paramagmf = String.valueOf(i);
+        paramNewDnaInfo = String.valueOf(i);
       }
       if ((localFriends != null) && (!TextUtils.isEmpty(localFriends.adCode))) {
-        amfb.a(this.jdField_a_of_type_Agll.a(), this.jdField_a_of_type_Agll.a(), false, "", false, localFriends.adCode);
+        WeatherWebPageHelperKt.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), false, "", false, localFriends.adCode);
       }
     }
     else
     {
       return;
     }
-    if (!TextUtils.isEmpty(paramagmf))
+    if (!TextUtils.isEmpty(paramNewDnaInfo))
     {
-      amfb.a(this.jdField_a_of_type_Agll.a(), this.jdField_a_of_type_Agll.a(), false, "", false, paramagmf);
+      WeatherWebPageHelperKt.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), false, "", false, paramNewDnaInfo);
       return;
     }
-    a(this.jdField_a_of_type_AndroidContentContext.getString(2131693329));
+    a(this.jdField_a_of_type_AndroidContentContext.getString(2131693481));
   }
   
-  private void c(agmf paramagmf)
+  private void c(NewDnaInfo paramNewDnaInfo)
   {
-    if (QQBrowserActivity.a(1000L))
+    if (QQBrowserActivity.checkNotFrequentlyThenEnter(1000L))
     {
-      bdla.b(null, "dc00898", "", "", "0X800B569", "0X800B569", paramagmf.jdField_a_of_type_Int, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B569", "0X800B569", paramNewDnaInfo.jdField_a_of_type_Int, 0, "", "", "", "");
       Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQTranslucentBrowserActivity.class);
-      localIntent.putExtra("url", paramagmf.b);
+      localIntent.putExtra("url", paramNewDnaInfo.b);
       localIntent.putExtra("flag_show_loading_dialog", true);
       localIntent.putExtra("flag_hide_float_bar", true);
       localIntent.putExtra("hide_left_button", true);
@@ -205,11 +204,11 @@ public class IntimateContentItemNewDnaView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559319, this, true).findViewById(2131367360));
-    this.jdField_a_of_type_Agmt = new agmt(this, null);
-    agms localagms = new agms(this, this.jdField_a_of_type_Agll.a(), 2);
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setLayoutManager(localagms);
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setAdapter(this.jdField_a_of_type_Agmt);
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559384, this, true).findViewById(2131367547));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView$FriendDnaRvAdapter = new IntimateContentItemNewDnaView.FriendDnaRvAdapter(this, null);
+    IntimateContentItemNewDnaView.2 local2 = new IntimateContentItemNewDnaView.2(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), 2);
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setLayoutManager(local2);
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView$FriendDnaRvAdapter);
     this.d = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
   }
   
@@ -228,7 +227,7 @@ public class IntimateContentItemNewDnaView
   
   protected boolean a()
   {
-    boolean bool = arav.a().d;
+    boolean bool = FriendIntimateRelationshipConfProcessor.a().d;
     if ((this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.newDnaInfos != null) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.newDnaInfos.size() > 0)) {}
     for (int i = 1; (bool) && (i != 0); i = 0) {
       return true;
@@ -240,15 +239,19 @@ public class IntimateContentItemNewDnaView
   {
     if (this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView != null)
     {
+      this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setLayoutManager(null);
+      this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.removeAllViews();
       this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setAdapter(null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView$FriendDnaRvAdapter = null;
       this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = null;
+      removeAllViews();
     }
     super.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemNewDnaView
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ public final class DestQQHeadInfo
   extends JceStruct
   implements Cloneable
 {
-  public long dstUin;
-  public long dwTimestamp;
+  public long dstUin = 0L;
+  public long dwTimestamp = 0L;
   public String phoneNum = "";
   
   public DestQQHeadInfo() {}

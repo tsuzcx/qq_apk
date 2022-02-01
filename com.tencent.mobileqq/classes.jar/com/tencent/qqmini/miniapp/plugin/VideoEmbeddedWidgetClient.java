@@ -121,33 +121,33 @@ public class VideoEmbeddedWidgetClient
   
   private IMediaPlayer.OnBufferingUpdateListener getOnBufferingUpdateListener()
   {
-    return new VideoEmbeddedWidgetClient.3(this);
+    return new VideoEmbeddedWidgetClient.5(this);
   }
   
   private IMediaPlayer.OnCompletionListener getOnCompletionListener()
   {
-    return new VideoEmbeddedWidgetClient.6(this);
+    return new VideoEmbeddedWidgetClient.8(this);
   }
   
   private IMediaPlayer.OnInfoListener getOnInfoListener()
   {
-    return new VideoEmbeddedWidgetClient.4(this);
+    return new VideoEmbeddedWidgetClient.6(this);
   }
   
   private IMediaPlayer.OnPreparedListener getOnPreparedListener()
   {
-    return new VideoEmbeddedWidgetClient.5(this);
+    return new VideoEmbeddedWidgetClient.7(this);
   }
   
   private IMediaPlayer.OnVideoSizeChangedListener getOnVideoSizeChangedListener()
   {
-    return new VideoEmbeddedWidgetClient.2(this);
+    return new VideoEmbeddedWidgetClient.4(this);
   }
   
   private void handleIsHLS()
   {
     QMLog.d("miniapp-embedded", "MSG_IS_HLS");
-    ThreadManager.getSubThreadHandler().post(new VideoEmbeddedWidgetClient.7(this));
+    ThreadManager.getSubThreadHandler().post(new VideoEmbeddedWidgetClient.9(this));
   }
   
   private void handlePauseEvent(int paramInt)
@@ -346,6 +346,8 @@ public class VideoEmbeddedWidgetClient
     this.mMediaPlayer.setOnBufferingUpdateListener(getOnBufferingUpdateListener());
     this.mMediaPlayer.setOnVideoSizeChangedListener(getOnVideoSizeChangedListener());
     this.mMediaPlayer.setOnLoopStartListener(new VideoEmbeddedWidgetClient.1(this));
+    this.mMediaPlayer.setOnSeekCompleteListener(new VideoEmbeddedWidgetClient.2(this));
+    this.mMediaPlayer.setOnErrorListener(new VideoEmbeddedWidgetClient.3(this));
   }
   
   private void initStateConfig()
@@ -534,6 +536,11 @@ public class VideoEmbeddedWidgetClient
   public IMiniAppContext getMiniAppContext()
   {
     return this.mMiniAppContext;
+  }
+  
+  public int getViewId()
+  {
+    return this.viewId;
   }
   
   public void handleInsertXWebVideo(JSONObject paramJSONObject, IJsService paramIJsService)
@@ -935,9 +942,9 @@ public class VideoEmbeddedWidgetClient
     QMLog.i("miniapp-embedded", "VideoEmbeddedWidgetClient.onVisibilityChanged ： " + paramBoolean);
   }
   
-  public void webViewDestory()
+  public void webViewDestroy()
   {
-    QMLog.i("miniapp-embedded", "VideoEmbeddedWidgetClient.webviewDestory " + this);
+    QMLog.i("miniapp-embedded", "VideoEmbeddedWidgetClient.webViewDestroy " + this);
     this.isPaused = true;
     try
     {
@@ -1021,7 +1028,7 @@ public class VideoEmbeddedWidgetClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.VideoEmbeddedWidgetClient
  * JD-Core Version:    0.7.0.1
  */

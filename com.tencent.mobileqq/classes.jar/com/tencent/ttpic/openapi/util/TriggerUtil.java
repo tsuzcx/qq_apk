@@ -6,7 +6,6 @@ import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.PTHandAttr;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.model.StickerItem.TriggerArea;
@@ -14,6 +13,7 @@ import com.tencent.ttpic.util.youtu.bodydetector.BodyDetectResult;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.light.device.LightDeviceUtils;
 
 public class TriggerUtil
 {
@@ -176,7 +176,7 @@ public class TriggerUtil
           return isFingerTriggerd(paramInt3, paramPTHandAttr);
         }
       }
-    } while (((200 > paramInt1) || (paramInt1 > 212) || (paramPTHandAttr.getHandType() != paramInt1)) && ((paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() == 0) || (paramInt1 != 200)) && (paramInt1 != PTFaceAttr.PTExpression.ALWAYS.value));
+    } while (((200 > paramInt1) || (paramInt1 > 214) || (paramPTHandAttr.getHandType() != paramInt1)) && ((paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() == 0) || (paramInt1 != 200)) && (paramInt1 != PTFaceAttr.PTExpression.ALWAYS.value));
     return true;
   }
   
@@ -253,8 +253,8 @@ public class TriggerUtil
     if (AEModule.getContext() == null) {
       return false;
     }
-    DeviceUtils.getScreenWidth(AEModule.getContext());
-    DeviceUtils.getScreenHeight(AEModule.getContext());
+    LightDeviceUtils.getScreenWidth(AEModule.getContext());
+    LightDeviceUtils.getScreenHeight(AEModule.getContext());
     Object localObject1 = null;
     Object localObject2;
     PTFaceAttr localPTFaceAttr;
@@ -580,7 +580,7 @@ public class TriggerUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.TriggerUtil
  * JD-Core Version:    0.7.0.1
  */

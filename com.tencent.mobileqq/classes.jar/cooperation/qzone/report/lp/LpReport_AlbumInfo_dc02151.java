@@ -1,12 +1,11 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.QUA;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReport_AlbumInfo_dc02151
   implements LpReportInfo
@@ -33,14 +32,14 @@ public class LpReport_AlbumInfo_dc02151
     HashMap localHashMap = new HashMap();
     if (this.uin <= 1000L)
     {
-      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
       localHashMap.put("uin", str);
-      LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
+      LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
       if (!TextUtils.isEmpty(this.client_time)) {
-        break label202;
+        break label216;
       }
       str = String.valueOf(System.currentTimeMillis());
-      label65:
+      label79:
       localHashMap.put("client_time", str);
       LpReportUtils.safePut(localHashMap, "longitude", this.longitude);
       LpReportUtils.safePut(localHashMap, "latitude", this.latitude);
@@ -50,19 +49,19 @@ public class LpReport_AlbumInfo_dc02151
       localHashMap.put("recommend_index", String.valueOf(this.recommend_index));
       localHashMap.put("recommend_id", String.valueOf(this.recommend_id));
       if (!TextUtils.isEmpty(this.version)) {
-        break label210;
+        break label224;
       }
     }
-    label202:
-    label210:
-    for (String str = "8.4.10";; str = this.version)
+    label216:
+    label224:
+    for (String str = "8.5.5";; str = this.version)
     {
       LpReportUtils.safePut(localHashMap, "version", str);
       return localHashMap;
       str = String.valueOf(this.uin);
       break;
       str = this.client_time;
-      break label65;
+      break label79;
     }
   }
   
@@ -98,7 +97,7 @@ public class LpReport_AlbumInfo_dc02151
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_AlbumInfo_dc02151
  * JD-Core Version:    0.7.0.1
  */

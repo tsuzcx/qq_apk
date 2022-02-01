@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.ar.model;
 
-import apkw;
-import apos;
+import com.tencent.mobileqq.ar.arengine.ARLocalControl;
 
-public class QQARSession$29
+class QQARSession$29
   implements Runnable
 {
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Int != 2) || (!apos.a(this.this$0))) {
+    if ((this.this$0.jdField_a_of_type_Int != 2) || (!QQARSession.a(this.this$0))) {
       return;
     }
-    if (this.this$0.jdField_a_of_type_Apkw != null) {
-      this.this$0.jdField_a_of_type_Apkw.a(false, apos.a(this.this$0), apos.b(this.this$0));
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl != null) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(false, QQARSession.a(this.this$0), QQARSession.b(this.this$0));
     }
-    apos.a(this.this$0, 0);
+    QQARSession.a(this.this$0, 0);
     this.this$0.c = false;
   }
 }

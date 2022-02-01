@@ -1,14 +1,12 @@
 package dov.com.qq.im.aeeditor.lyric.common;
 
-import bnsz;
-import bnta;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 public class TimerTaskManager
 {
-  private Map<String, bnta> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, TimerTaskManager.InternalTaskEntry> jdField_a_of_type_JavaUtilMap = new HashMap();
   private ScheduledThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
   
   public TimerTaskManager()
@@ -21,7 +19,7 @@ public class TimerTaskManager
     try
     {
       if (this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor = new bnsz(this, 1);
+        this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor = new TimerTaskManager.1(this, 1);
       }
       return;
     }
@@ -42,7 +40,7 @@ public class TimerTaskManager
     //   3: getfield 17	dov/com/qq/im/aeeditor/lyric/common/TimerTaskManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   6: aload_1
     //   7: invokeinterface 34 2 0
-    //   12: checkcast 36	bnta
+    //   12: checkcast 36	dov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry
     //   15: astore_3
     //   16: aload_3
     //   17: ifnull +128 -> 145
@@ -58,17 +56,17 @@ public class TimerTaskManager
     //   35: invokestatic 52	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
     //   38: pop
     //   39: aload_3
-    //   40: invokestatic 55	bnta:a	(Lbnta;)Ljava/util/concurrent/ScheduledFuture;
+    //   40: invokestatic 55	dov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry:a	(Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry;)Ljava/util/concurrent/ScheduledFuture;
     //   43: ifnull +14 -> 57
     //   46: aload_3
-    //   47: invokestatic 55	bnta:a	(Lbnta;)Ljava/util/concurrent/ScheduledFuture;
+    //   47: invokestatic 55	dov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry:a	(Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry;)Ljava/util/concurrent/ScheduledFuture;
     //   50: iconst_1
     //   51: invokeinterface 61 2 0
     //   56: pop
     //   57: aload_0
     //   58: getfield 22	dov/com/qq/im/aeeditor/lyric/common/TimerTaskManager:jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor	Ljava/util/concurrent/ScheduledThreadPoolExecutor;
     //   61: aload_3
-    //   62: invokestatic 64	bnta:a	(Lbnta;)Ljava/lang/Runnable;
+    //   62: invokestatic 64	dov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry:a	(Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry;)Ljava/lang/Runnable;
     //   65: invokevirtual 70	java/util/concurrent/ScheduledThreadPoolExecutor:remove	(Ljava/lang/Runnable;)Z
     //   68: istore_2
     //   69: aload_0
@@ -92,13 +90,13 @@ public class TimerTaskManager
     //   112: invokestatic 95	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   115: pop
     //   116: aload_3
-    //   117: invokestatic 98	bnta:a	(Lbnta;)Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$TimerTaskRunnable;
+    //   117: invokestatic 98	dov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry:a	(Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry;)Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$TimerTaskRunnable;
     //   120: iconst_0
     //   121: invokestatic 103	dov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$TimerTaskRunnable:a	(Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$TimerTaskRunnable;Z)Z
     //   124: pop
     //   125: aload_3
     //   126: aconst_null
-    //   127: invokestatic 106	bnta:a	(Lbnta;Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$TimerTaskRunnable;)Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$TimerTaskRunnable;
+    //   127: invokestatic 106	dov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry:a	(Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$InternalTaskEntry;Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$TimerTaskRunnable;)Ldov/com/qq/im/aeeditor/lyric/common/TimerTaskManager$TimerTaskRunnable;
     //   130: pop
     //   131: aload_0
     //   132: getfield 17	dov/com/qq/im/aeeditor/lyric/common/TimerTaskManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
@@ -130,7 +128,7 @@ public class TimerTaskManager
     //   0	172	0	this	TimerTaskManager
     //   0	172	1	paramString	String
     //   68	23	2	bool	boolean
-    //   15	111	3	localbnta	bnta
+    //   15	111	3	localInternalTaskEntry	TimerTaskManager.InternalTaskEntry
     // Exception table:
     //   from	to	target	type
     //   2	16	167	finally
@@ -141,7 +139,7 @@ public class TimerTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager
  * JD-Core Version:    0.7.0.1
  */

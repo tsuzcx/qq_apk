@@ -5,10 +5,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public final class MiniScanReport$6
+final class MiniScanReport$6
   implements Runnable
 {
-  public MiniScanReport$6(int paramInt) {}
+  MiniScanReport$6(int paramInt) {}
   
   public void run()
   {

@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import bdcn;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 class Game3DNativeEvent
-  implements bdcn
+  implements GameEvent.GestureEventListener
 {
   public void a(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {

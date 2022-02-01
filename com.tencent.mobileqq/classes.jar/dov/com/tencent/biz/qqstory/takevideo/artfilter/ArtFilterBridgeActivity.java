@@ -1,14 +1,13 @@
 package dov.com.tencent.biz.qqstory.takevideo.artfilter;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MotionEvent;
-import anvx;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -43,16 +42,18 @@ public class ArtFilterBridgeActivity
       if (localBundle == null) {
         localBundle = new Bundle();
       }
-      label613:
+      label619:
       for (;;)
       {
-        localBundle.putAll(getIntent().getExtras());
+        if (i != 3) {
+          localBundle.putAll(getIntent().getExtras());
+        }
         localBundle.putString("mCurrentTemplatePath", localIntent.getStringExtra("mCurrentTemplatePath"));
         localBundle.putInt("entrance_type", m);
         localBundle.putInt("pic_entrance_type", localIntent.getIntExtra("pic_entrance_type", 0));
         boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
         if (bool2) {
-          localBundle.putString("extra_publish_text", anvx.a(2131700253));
+          localBundle.putString("extra_publish_text", HardCodeUtil.a(2131700831));
         }
         if (localIntent.hasExtra("troop_uin")) {
           localBundle.putString("troop_uin", localIntent.getStringExtra("troop_uin"));
@@ -83,7 +84,7 @@ public class ArtFilterBridgeActivity
             }
           }
           if (localObject1 != null) {
-            break label613;
+            break label619;
           }
           localObject1 = new LocalMediaInfo();
         }
@@ -162,7 +163,7 @@ public class ArtFilterBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

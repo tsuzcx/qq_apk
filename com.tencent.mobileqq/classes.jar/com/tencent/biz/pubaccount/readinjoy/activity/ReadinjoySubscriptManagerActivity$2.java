@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ovn;
-import uqx;
-import uuc;
 
 class ReadinjoySubscriptManagerActivity$2
   implements Runnable
@@ -19,7 +19,7 @@ class ReadinjoySubscriptManagerActivity$2
   
   public void run()
   {
-    Object localObject = uqx.a().c(this.this$0.app);
+    Object localObject = TroopBarAssistantManager.a().c(this.this$0.app);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     if (localObject != null)
@@ -28,14 +28,14 @@ class ReadinjoySubscriptManagerActivity$2
       while (((Iterator)localObject).hasNext())
       {
         PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((Iterator)localObject).next();
-        ovn localovn = new ovn(this.this$0, null);
-        ovn.a(localovn, localPublicAccountInfo.getUin());
-        ovn.b(localovn, localPublicAccountInfo.name);
-        ovn.c(localovn, ChnToSpell.a(ovn.b(localovn), 2));
-        if (uuc.b(this.this$0.app, localPublicAccountInfo.getUin())) {
-          localArrayList2.add(localovn);
+        ReadinjoySubscriptManagerActivity.SubscribeFeedData localSubscribeFeedData = new ReadinjoySubscriptManagerActivity.SubscribeFeedData(this.this$0, null);
+        ReadinjoySubscriptManagerActivity.SubscribeFeedData.a(localSubscribeFeedData, localPublicAccountInfo.getUin());
+        ReadinjoySubscriptManagerActivity.SubscribeFeedData.b(localSubscribeFeedData, localPublicAccountInfo.name);
+        ReadinjoySubscriptManagerActivity.SubscribeFeedData.c(localSubscribeFeedData, ChnToSpell.a(ReadinjoySubscriptManagerActivity.SubscribeFeedData.b(localSubscribeFeedData), 2));
+        if (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isInterestAccount(this.this$0.app, localPublicAccountInfo.getUin())) {
+          localArrayList2.add(localSubscribeFeedData);
         } else {
-          localArrayList1.add(localovn);
+          localArrayList1.add(localSubscribeFeedData);
         }
       }
     }
@@ -47,7 +47,7 @@ class ReadinjoySubscriptManagerActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity.2
  * JD-Core Version:    0.7.0.1
  */

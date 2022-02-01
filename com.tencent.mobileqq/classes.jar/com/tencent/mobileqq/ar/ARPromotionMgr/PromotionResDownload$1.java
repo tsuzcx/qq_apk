@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.ar.ARPromotionMgr;
 
-import anvx;
-import apco;
-import apcu;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class PromotionResDownload$1
+class PromotionResDownload$1
   implements Runnable
 {
-  public PromotionResDownload$1(apcu paramapcu, boolean paramBoolean, AppInterface paramAppInterface, apco paramapco) {}
+  PromotionResDownload$1(PromotionResDownload paramPromotionResDownload, boolean paramBoolean, AppInterface paramAppInterface, PromotionConfigInfo.ZipItem paramZipItem) {}
   
   public void run()
   {
-    apcu.a(this.this$0, anvx.a(2131707973), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Apco.e, this.jdField_a_of_type_Apco.a, this.jdField_a_of_type_Apco);
+    PromotionResDownload.a(this.this$0, HardCodeUtil.a(2131708500), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$ZipItem.e, this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$ZipItem.a, this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$ZipItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionResDownload.1
  * JD-Core Version:    0.7.0.1
  */

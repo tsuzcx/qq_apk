@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.location.net;
 
 import android.app.Activity;
-import awit;
-import awiz;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.location.data.LocationRoom.RoomKey;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;
 
-public class LocationHandler$3
+class LocationHandler$3
   implements Runnable
 {
-  public LocationHandler$3(awiz paramawiz, SoftReference paramSoftReference) {}
+  LocationHandler$3(LocationHandler paramLocationHandler, SoftReference paramSoftReference) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("LocationHandler", 2, "[LocationManager] startLocationUpdate: invoked. call over time runnable");
     }
-    if (awiz.a(this.this$0) != null)
+    if (LocationHandler.a(this.this$0) != null)
     {
-      this.this$0.a(awiz.a(this.this$0).a(), awiz.a(this.this$0).a(), awiz.a(this.this$0), 4);
-      this.this$0.a(awiz.a(this.this$0), true);
+      this.this$0.a(LocationHandler.a(this.this$0).a(), LocationHandler.a(this.this$0).a(), LocationHandler.a(this.this$0), 4);
+      this.this$0.a(LocationHandler.a(this.this$0), true);
     }
-    QQToast.a(BaseApplicationImpl.context, "位置获取失败，请稍后再试", 0).a();
+    QQToast.a(BaseApplication.getContext(), "位置获取失败，请稍后再试", 0).a();
     Activity localActivity = (Activity)this.a.get();
     if ((localActivity != null) && (!localActivity.isFinishing()))
     {

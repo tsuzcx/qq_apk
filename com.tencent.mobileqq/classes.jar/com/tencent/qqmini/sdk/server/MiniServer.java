@@ -107,7 +107,7 @@ public class MiniServer
           QMLog.e("MiniServer", "Failed to init MiniServer. context is null");
           continue;
         }
-        QMLog.i("MiniServer", "Init MiniServer. MiniSdkVersion:1.9.0_75_e0f9b31 QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
+        QMLog.i("MiniServer", "Init MiniServer. MiniSdkVersion:1.12.1_153_3c46116 QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
       }
       finally {}
       this.mContext = paramContext;
@@ -143,7 +143,7 @@ public class MiniServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.MiniServer
  * JD-Core Version:    0.7.0.1
  */

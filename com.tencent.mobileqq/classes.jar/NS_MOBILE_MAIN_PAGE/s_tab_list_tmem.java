@@ -9,7 +9,7 @@ public final class s_tab_list_tmem
   extends JceStruct
 {
   static ArrayList<Integer> cache_user_list = new ArrayList();
-  public ArrayList<Integer> user_list;
+  public ArrayList<Integer> user_list = null;
   
   static
   {

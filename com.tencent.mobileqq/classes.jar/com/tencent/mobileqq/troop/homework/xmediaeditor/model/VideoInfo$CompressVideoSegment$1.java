@@ -1,35 +1,33 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import bfun;
-import bfvc;
-import bfvd;
-import bfvp;
-import bfvx;
-import bfwh;
-import bfwk;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
 
-public class VideoInfo$CompressVideoSegment$1
+class VideoInfo$CompressVideoSegment$1
   implements Runnable
 {
-  public VideoInfo$CompressVideoSegment$1(bfvd parambfvd, bfvc parambfvc, XMediaEditor paramXMediaEditor) {}
+  VideoInfo$CompressVideoSegment$1(VideoInfo.CompressVideoSegment paramCompressVideoSegment, VideoInfo paramVideoInfo, XMediaEditor paramXMediaEditor) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bfvc.e = 10;
-    this.jdField_a_of_type_Bfvc.g = -2147483647;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Bfvc.c);
-    if ((localObject instanceof bfwk))
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.e = 10;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.g = -2147483647;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.c);
+    if ((localObject instanceof VideoItem.VideoViewHolder))
     {
-      localObject = (bfwk)localObject;
-      if (this.jdField_a_of_type_Bfvc.d.equals(((bfwk)localObject).a.getTag()))
+      localObject = (VideoItem.VideoViewHolder)localObject;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject).a.getTag()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideo before notify. vh hash=", Integer.valueOf(localObject.hashCode()) });
         }
-        ((bfwh)((bfun)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((bfvx)localObject, this.jdField_a_of_type_Bfvc, 0);
+        ((VideoItem)((XMediaEditorAdapter)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo, 0);
       }
     }
   }

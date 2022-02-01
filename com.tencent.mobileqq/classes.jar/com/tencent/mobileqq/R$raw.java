@@ -29,25 +29,31 @@ public final class R$raw
   public static final int qq_aio_record_end = 2131230744;
   public static final int qq_aio_record_start = 2131230745;
   public static final int qq_bless_countdown = 2131230746;
-  public static final int qq_hb_hit = 2131230747;
-  public static final int qq_register_login = 2131230748;
-  public static final int qq_richmedia_maxvideo_videoplayer_fp = 2131230749;
-  public static final int qq_richmedia_maxvideo_videoplayer_vp = 2131230750;
-  public static final int qq_shortvideo_fragment_shader_brightness = 2131230751;
-  public static final int qq_shortvideo_fragment_shader_gray = 2131230752;
-  public static final int qq_shortvideo_fragment_shader_lordkelvin = 2131230753;
-  public static final int qq_shortvideo_fragment_shader_nashville = 2131230754;
-  public static final int qq_shortvideo_fragment_shader_part_base = 2131230755;
-  public static final int qq_shortvideo_fragment_shader_pixelation = 2131230756;
-  public static final int qrcode_beep = 2131230757;
-  public static final int qvip_special_care_default_sound = 2131230758;
-  public static final int system = 2131230759;
-  public static final int trim_process_pic = 2131230760;
-  public static final int trim_process_pie = 2131230761;
+  public static final int qq_hb_color_egg = 2131230747;
+  public static final int qq_hb_combo = 2131230748;
+  public static final int qq_hb_countdown = 2131230749;
+  public static final int qq_hb_hit = 2131230750;
+  public static final int qq_hb_ring = 2131230751;
+  public static final int qq_register_login = 2131230752;
+  public static final int qq_richmedia_maxvideo_videoplayer_fp = 2131230753;
+  public static final int qq_richmedia_maxvideo_videoplayer_vp = 2131230754;
+  public static final int qq_shortvideo_fragment_shader_brightness = 2131230755;
+  public static final int qq_shortvideo_fragment_shader_gray = 2131230756;
+  public static final int qq_shortvideo_fragment_shader_lordkelvin = 2131230757;
+  public static final int qq_shortvideo_fragment_shader_nashville = 2131230758;
+  public static final int qq_shortvideo_fragment_shader_part_base = 2131230759;
+  public static final int qq_shortvideo_fragment_shader_pixelation = 2131230760;
+  public static final int qrcode_beep = 2131230761;
+  public static final int qvip_special_care_default_sound = 2131230762;
+  public static final int rectangle = 2131230763;
+  public static final int sphere = 2131230764;
+  public static final int system = 2131230765;
+  public static final int trim_process_pic = 2131230766;
+  public static final int trim_process_pie = 2131230767;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.R.raw
  * JD-Core Version:    0.7.0.1
  */

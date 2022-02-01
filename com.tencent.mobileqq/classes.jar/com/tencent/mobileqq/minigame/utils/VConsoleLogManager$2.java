@@ -2,7 +2,6 @@ package com.tencent.mobileqq.minigame.utils;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class VConsoleLogManager$2
   implements View.OnClickListener
@@ -12,7 +11,6 @@ class VConsoleLogManager$2
   public void onClick(View paramView)
   {
     VConsoleLogManager.access$100(this.this$0);
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

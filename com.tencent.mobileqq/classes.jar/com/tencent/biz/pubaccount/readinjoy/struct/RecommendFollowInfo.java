@@ -9,7 +9,6 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
-import rqb;
 import tencent.im.oidb.articlesummary.articlesummary.RecommendAccountInfo;
 import tencent.im.oidb.oidb_0xc2f.RecommendAccountInfo;
 
@@ -17,7 +16,7 @@ public class RecommendFollowInfo
   extends Entity
   implements Parcelable
 {
-  public static Parcelable.Creator<RecommendFollowInfo> CREATOR = new rqb();
+  public static Parcelable.Creator<RecommendFollowInfo> CREATOR = new RecommendFollowInfo.1();
   public long algorithmId;
   public String className;
   public boolean hasReport;
@@ -252,7 +251,7 @@ public class RecommendFollowInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo
  * JD-Core Version:    0.7.0.1
  */

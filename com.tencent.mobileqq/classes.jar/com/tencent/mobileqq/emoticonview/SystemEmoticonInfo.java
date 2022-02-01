@@ -2,14 +2,16 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.text.Editable;
 import android.widget.EditText;
-import bdla;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
+import com.tencent.mobileqq.emoticonview.api.IEmoticonInfoService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.text.EmotcationConstants;
-import com.tencent.mobileqq.text.TextUtils;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,8 +23,10 @@ import org.json.JSONObject;
 
 public class SystemEmoticonInfo
   extends EmoticonInfo
+  implements Parcelable
 {
   public static final int[] APOLLO_EMOTICON_ORDER;
+  public static final Parcelable.Creator<SystemEmoticonInfo> CREATOR = new SystemEmoticonInfo.1();
   public static final String KEY_STATIC_DRAWABLE_ID = "KEY_STATIC_DRAWABLE_ID";
   private static int[] SYS_EMOTION_ORDER = { 23, 40, 19, 43, 21, 9, 20, 106, 35, 10, 25, 24, 1, 0, 33, 32, 12, 27, 13, 22, 3, 18, 30, 31, 81, 82, 26, 2, 37, 50, 42, 83, 34, 11, 49, 84, 39, 78, 5, 4, 6, 85, 86, 87, 46, 88, 44, 89, 48, 14, 90, 41, 36, 91, 51, 164, 174, 171, 165, 166, 161, 167, 170, 169, 172, 173, 168, 175, 17, 60, 61, 92, 93, 163, 66, 58, 7, 8, 57, 29, 28, 74, 59, 80, 16, 70, 77, 62, 15, 68, 75, 76, 45, 52, 53, 54, 55, 56, 63, 73, 72, 65, 94, 64, 38, 47, 95, 71, 96, 97, 98, 99, 100, 79, 101, 102, 103, 104, 105, 108, 109, 110, 112, 116, 118, 119, 120, 123, 130, 140, 141, 180, 184, 176, 177, 182, 179, 185, 143, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 159, 160, 214, 215, 216, 187, 209, 198, 186, 189, 212, 188, 190, 201, 210, 191, 197, 203, 205, 193, 194, 211, 204, 192, 207, 213, 202, 196, 208, 200, 206, 195, 199 };
   private static final String TAG = "SystemEmoticonInfo";
@@ -40,6 +44,15 @@ public class SystemEmoticonInfo
     localArrayList.add(Integer.valueOf(215));
     localArrayList.add(Integer.valueOf(216));
     sNewApolloEmoticonMap.put("8.0.0", localArrayList);
+    sortedOrderList = null;
+  }
+  
+  public SystemEmoticonInfo() {}
+  
+  protected SystemEmoticonInfo(Parcel paramParcel)
+  {
+    super(paramParcel);
+    this.code = paramParcel.readInt();
   }
   
   public static List<EmoticonInfo> getEmoticonList(int[] paramArrayOfInt)
@@ -81,10 +94,11 @@ public class SystemEmoticonInfo
   
   public static boolean parseWhiteList(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
+    int i = 0;
     if ((!paramBoolean) && (parsed)) {
       return true;
     }
-    paramAppRuntime = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "emoji.systemEmojiWhiteList.json", true, null);
+    paramAppRuntime = ((IEmoticonInfoService)QRoute.api(IEmoticonInfoService.class)).getJSONFromLocal(paramAppRuntime, true);
     if (paramAppRuntime != null) {}
     for (;;)
     {
@@ -95,17 +109,16 @@ public class SystemEmoticonInfo
         paramAppRuntime = new int[((JSONArray)localObject).length()];
         int m = ((JSONArray)localObject).length();
         j = 0;
-        int i = 0;
         if (j < m)
         {
           int n = ((JSONArray)localObject).optInt(j, -1);
           if ((n < 0) || (n >= EmotcationConstants.VALID_SYS_EMOTCATION_COUNT)) {
-            break label218;
+            break label225;
           }
           int k = i + 1;
           paramAppRuntime[i] = n;
           i = k;
-          break label218;
+          break label225;
         }
         if (i == 0)
         {
@@ -132,43 +145,54 @@ public class SystemEmoticonInfo
       {
         QLog.d("SystemEmoticonInfo", 2, "parseWhiteList: local file not exist.");
         continue;
-        label218:
+        label225:
         j += 1;
       }
     }
   }
   
+  public int describeContents()
+  {
+    return 0;
+  }
+  
   public Drawable getBigDrawable(Context paramContext, float paramFloat)
   {
-    return TextUtils.getSysEmotcationDrawable(this.code, true);
+    return QQSysFaceUtil.getFaceGifDrawable(this.code);
   }
   
   public Drawable getDrawable(Context paramContext, float paramFloat)
   {
-    return TextUtils.getSysEmotcationDrawable(this.code, false);
+    return QQSysFaceUtil.getFaceDrawable(this.code);
   }
   
-  public void send(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  public void send(AppRuntime paramAppRuntime, Context paramContext, EditText paramEditText, Parcelable paramParcelable)
   {
     if (this.src_type == 1) {
-      bdla.b(null, "CliOper", "", "", "0X8005507", "0X8005507", 0, 0, "", "", "", "");
+      ReportController.b(null, "CliOper", "", "", "0X8005507", "0X8005507", 0, 0, "", "", "", "");
     }
     for (;;)
     {
       int i = paramEditText.getSelectionStart();
       int j = paramEditText.getSelectionEnd();
-      paramEditText.getEditableText().replace(i, j, TextUtils.getSysEmotcationString(this.code));
+      paramEditText.getEditableText().replace(i, j, QQSysFaceUtil.getFaceString(this.code));
       paramEditText.requestFocus();
       return;
       if (this.src_type == 2) {
-        bdla.b(null, "CliOper", "", "", "0X8005508", "0X8005508", 0, 0, "", "", "", "");
+        ReportController.b(null, "CliOper", "", "", "0X8005508", "0X8005508", 0, 0, "", "", "", "");
       }
     }
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    super.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeInt(this.code);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

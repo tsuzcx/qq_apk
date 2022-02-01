@@ -11,8 +11,8 @@ public final class sweet_comm_cfg_get_req
 {
   static sweet_req_comm cache_req_comm = new sweet_req_comm();
   static ArrayList<Integer> cache_vec_cfg = new ArrayList();
-  public sweet_req_comm req_comm;
-  public ArrayList<Integer> vec_cfg;
+  public sweet_req_comm req_comm = null;
+  public ArrayList<Integer> vec_cfg = null;
   
   static
   {

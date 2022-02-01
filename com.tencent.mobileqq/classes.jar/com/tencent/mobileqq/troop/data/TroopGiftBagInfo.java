@@ -2,7 +2,6 @@ package com.tencent.mobileqq.troop.data;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import bfjv;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -34,10 +33,10 @@ public class TroopGiftBagInfo
   public long giftOwner;
   public String giftUnit;
   @notColumn
-  public bfjv myGrabResult;
+  public TroopGiftBagPlayer myGrabResult;
   public String myGrabResultData;
   @notColumn
-  public List<bfjv> players;
+  public List<TroopGiftBagPlayer> players;
   public String playersData;
   public int remainAmount;
   public int remainCount;
@@ -59,8 +58,8 @@ public class TroopGiftBagInfo
     int i = 0;
     while (i < localList.size())
     {
-      bfjv localbfjv = new bfjv((oidb_0x6c2.Player)localList.get(i));
-      this.players.add(localbfjv);
+      TroopGiftBagPlayer localTroopGiftBagPlayer = new TroopGiftBagPlayer((oidb_0x6c2.Player)localList.get(i));
+      this.players.add(localTroopGiftBagPlayer);
       i += 1;
     }
     this.endFlag = paramGiftBagInfo.int32_end.get();
@@ -74,11 +73,11 @@ public class TroopGiftBagInfo
     this.giftUnit = paramGiftBagInfo.bytes_gift_unit.get().toStringUtf8();
     this.ext = paramGiftBagInfo.bytes_ext.get().toStringUtf8();
     if (paramPlayer != null) {
-      this.myGrabResult = new bfjv(paramPlayer);
+      this.myGrabResult = new TroopGiftBagPlayer(paramPlayer);
     }
   }
   
-  private List<bfjv> decodeBagPlayerList(String paramString)
+  private List<TroopGiftBagPlayer> decodeBagPlayerList(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       paramString = null;
@@ -99,9 +98,9 @@ public class TroopGiftBagInfo
             break;
           }
           paramString = localJSONArray.get(i);
-          bfjv localbfjv = new bfjv();
-          localbfjv.a(paramString.toString());
-          localArrayList.add(localbfjv);
+          TroopGiftBagPlayer localTroopGiftBagPlayer = new TroopGiftBagPlayer();
+          localTroopGiftBagPlayer.a(paramString.toString());
+          localArrayList.add(localTroopGiftBagPlayer);
           i += 1;
         }
         return localArrayList;
@@ -131,7 +130,7 @@ public class TroopGiftBagInfo
     this.giftName = paramCursor.getString(paramCursor.getColumnIndex("giftName"));
     this.giftUnit = paramCursor.getString(paramCursor.getColumnIndex("giftUnit"));
     this.ext = paramCursor.getString(paramCursor.getColumnIndex("ext"));
-    this.myGrabResult = new bfjv();
+    this.myGrabResult = new TroopGiftBagPlayer();
     String str = paramCursor.getString(paramCursor.getColumnIndex("myGrabResultData"));
     if (!TextUtils.isEmpty(str)) {
       this.myGrabResult.a(str);
@@ -151,7 +150,7 @@ public class TroopGiftBagInfo
     int i = 0;
     while (i < this.players.size())
     {
-      localJSONArray.put(((bfjv)this.players.get(i)).a());
+      localJSONArray.put(((TroopGiftBagPlayer)this.players.get(i)).a());
       i += 1;
     }
     this.playersData = localJSONArray.toString();

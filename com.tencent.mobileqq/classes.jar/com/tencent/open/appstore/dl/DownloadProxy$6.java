@@ -1,21 +1,18 @@
 package com.tencent.open.appstore.dl;
 
-import bjjq;
-import bjju;
-
-public class DownloadProxy$6
+class DownloadProxy$6
   implements Runnable
 {
-  public DownloadProxy$6(bjju parambjju, String paramString, boolean paramBoolean) {}
+  DownloadProxy$6(DownloadProxy paramDownloadProxy, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    bjjq.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    DownloadManagerV2.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadProxy.6
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
+import com.tencent.mobileqq.widget.FormResHelper;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.widget.MultiImageTextView;
 
@@ -20,7 +21,7 @@ public class GameRankFormItem
     super(paramContext);
   }
   
-  public void a()
+  public void b()
   {
     if (this.jdField_a_of_type_ComTencentWidgetMultiImageTextView == null) {}
     label282:
@@ -31,7 +32,7 @@ public class GameRankFormItem
       do
       {
         return;
-        b();
+        a();
         if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
           this.jdField_d_of_type_AndroidWidgetTextView.setMaxWidth(this.o);
         }
@@ -45,7 +46,7 @@ public class GameRankFormItem
         if (this.jdField_a_of_type_Int >= 4)
         {
           this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setText(this.jdField_d_of_type_JavaLangCharSequence + String.valueOf(this.jdField_a_of_type_Int));
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextColor(b(getResources(), this.m));
+          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextColor(FormResHelper.a(getResources(), this.m));
           this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setContentDescription(this.jdField_d_of_type_JavaLangCharSequence + String.valueOf(this.jdField_a_of_type_Int));
           this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setMaxWidth(this.n);
           if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (!this.jdField_a_of_type_Boolean)) {
@@ -72,7 +73,7 @@ public class GameRankFormItem
           int k;
           if (this.jdField_a_of_type_Int == 1)
           {
-            i = 2130843816;
+            i = 2130843987;
             localObject = ((Resources)localObject).getDrawable(i);
             localCharSequence = this.jdField_d_of_type_JavaLangCharSequence;
             localTextPaint = this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.getPaint();
@@ -93,10 +94,10 @@ public class GameRankFormItem
             break;
             if (this.jdField_a_of_type_Int == 2)
             {
-              i = 2130843817;
+              i = 2130843988;
               break label282;
             }
-            i = 2130843818;
+            i = 2130843989;
             break label282;
             i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
             break label319;

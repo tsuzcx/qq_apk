@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcResponseSetConfMsgRead
   extends JceStruct
 {
-  public byte cReplyCode;
-  public long lConfMsgSeq;
-  public long lConfUin;
-  public long lMemberMsgSeq;
+  public byte cReplyCode = 0;
+  public long lConfMsgSeq = 0L;
+  public long lConfUin = 0L;
+  public long lMemberMsgSeq = 0L;
   public String strResult = "";
   
   public SvcResponseSetConfMsgRead() {}

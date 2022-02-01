@@ -9,15 +9,18 @@ public final class QzoneMessageBoxRsp
   extends JceStruct
 {
   static ArrayList<BottomContentItem> cache_bottomVec;
+  static UnReadSummaryInfo cache_unread_info = new UnReadSummaryInfo();
   static ArrayList<NewMQMsg> cache_vecNews = new ArrayList();
-  public ArrayList<BottomContentItem> bottomVec;
+  public ArrayList<BottomContentItem> bottomVec = null;
   public boolean hasMore = true;
+  public int isNewStyle = 0;
   public String more_url = "";
-  public long qzone_level;
-  public long registered_days;
+  public long qzone_level = 0L;
+  public long registered_days = 0L;
   public String sTraceInfo = "";
-  public ArrayList<NewMQMsg> vecNews;
-  public long visitor_count;
+  public UnReadSummaryInfo unread_info = null;
+  public ArrayList<NewMQMsg> vecNews = null;
+  public long visitor_count = 0L;
   
   static
   {
@@ -30,7 +33,7 @@ public final class QzoneMessageBoxRsp
   
   public QzoneMessageBoxRsp() {}
   
-  public QzoneMessageBoxRsp(ArrayList<NewMQMsg> paramArrayList, String paramString1, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, String paramString2, ArrayList<BottomContentItem> paramArrayList1)
+  public QzoneMessageBoxRsp(ArrayList<NewMQMsg> paramArrayList, String paramString1, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, String paramString2, ArrayList<BottomContentItem> paramArrayList1, int paramInt, UnReadSummaryInfo paramUnReadSummaryInfo)
   {
     this.vecNews = paramArrayList;
     this.sTraceInfo = paramString1;
@@ -40,6 +43,8 @@ public final class QzoneMessageBoxRsp
     this.visitor_count = paramLong3;
     this.more_url = paramString2;
     this.bottomVec = paramArrayList1;
+    this.isNewStyle = paramInt;
+    this.unread_info = paramUnReadSummaryInfo;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -52,6 +57,8 @@ public final class QzoneMessageBoxRsp
     this.visitor_count = paramJceInputStream.read(this.visitor_count, 5, false);
     this.more_url = paramJceInputStream.readString(6, false);
     this.bottomVec = ((ArrayList)paramJceInputStream.read(cache_bottomVec, 7, false));
+    this.isNewStyle = paramJceInputStream.read(this.isNewStyle, 8, false);
+    this.unread_info = ((UnReadSummaryInfo)paramJceInputStream.read(cache_unread_info, 9, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -71,6 +78,10 @@ public final class QzoneMessageBoxRsp
     }
     if (this.bottomVec != null) {
       paramJceOutputStream.write(this.bottomVec, 7);
+    }
+    paramJceOutputStream.write(this.isNewStyle, 8);
+    if (this.unread_info != null) {
+      paramJceOutputStream.write(this.unread_info, 9);
     }
   }
 }

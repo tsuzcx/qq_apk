@@ -1,112 +1,103 @@
 package com.tencent.biz.richframework.network.observer;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import bhjl;
+import com.tencent.biz.richframework.delegate.impl.RFApplication;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.biz.richframework.delegate.impl.RFThreadManager;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.network.request.BaseRequest;
+import com.tencent.biz.richframework.network.util.StringUtils;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import ykq;
 
 public class VSDispatchObserver
-  implements BusinessObserver
 {
   private static final int CALL_BACK_REMOVED_CODE = -100004;
   private static final int FINAL_RSP_NULL_CODE = -100003;
   private static final int FROM_MSG_NULL_CODE = -100002;
+  private static final String NETWORK_ERROR_HINT = "网络错误";
   public static final int TIMEOUT_CODE = -100001;
-  private final String NETWORK_ERROR_HINT = "网络错误";
   private final ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, VSDispatchObserver.onVSRspCallBack>> mCallBackCollectMap = new ConcurrentHashMap();
   private Handler mMainHandler;
   
-  private void doOnReceiveCallBack(VSBaseRequest paramVSBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack, long paramLong, String paramString, boolean paramBoolean, MessageMicro paramMessageMicro)
+  private void doOnReceiveCallBack(BaseRequest paramBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack, long paramLong, String paramString, boolean paramBoolean, Object paramObject)
   {
-    if (((!paramBoolean) || (paramLong != 0L)) && (paramVSBaseRequest.isNeedRetry(paramLong)) && (paramVSBaseRequest.getRetryCount() > 0))
+    if (((!paramBoolean) || (paramLong != 0L)) && (paramBaseRequest.isNeedRetry(paramLong)) && (paramBaseRequest.getRetryCount() > 0))
     {
-      paramVSBaseRequest.setEnableCache(false);
-      paramVSBaseRequest.setRetryCount(paramVSBaseRequest.getRetryCount() - 1);
-      VSNetworkHelper.getInstance().sendRequest(paramVSBaseRequest, paramonVSRspCallBack);
-      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: Start Retry Request: CmdName:" + paramVSBaseRequest.getCmdName() + " | ReTry TraceId:" + paramVSBaseRequest.getTraceId() + " | ReTry SeqId:" + paramVSBaseRequest.getCurrentSeq());
+      paramBaseRequest.setEnableCache(false);
+      paramBaseRequest.setRetryCount(paramBaseRequest.getRetryCount() - 1);
+      VSNetworkHelper.getInstance().sendRequest(paramBaseRequest, paramonVSRspCallBack);
+      RFLog.e("VSNetworkHelper", RFLog.USR, "VSDispatchObserver: Start Retry Request: CmdName:" + paramBaseRequest.getCmdName() + " | ReTry TraceId:" + paramBaseRequest.getTraceId() + " | ReTry SeqId:" + paramBaseRequest.getCurrentSeq());
       return;
     }
-    paramonVSRspCallBack.onReceive(paramVSBaseRequest, paramBoolean, paramLong, paramString, paramMessageMicro);
+    paramonVSRspCallBack.onReceive(paramBaseRequest, paramBoolean, paramLong, paramString, paramObject);
   }
   
-  private void parseResponse(int paramInt, Bundle paramBundle, boolean paramBoolean)
+  private void parseResponse(int paramInt, boolean paramBoolean, BaseRequest paramBaseRequest, byte[] paramArrayOfByte)
   {
-    Object localObject2 = (ConcurrentHashMap)this.mCallBackCollectMap.get(Integer.valueOf(paramInt));
-    if (localObject2 == null)
+    Object localObject1 = (ConcurrentHashMap)this.mCallBackCollectMap.get(Integer.valueOf(paramInt));
+    if (localObject1 == null)
     {
-      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: cmdCallback has All Removed");
+      RFLog.e("VSNetworkHelper", RFLog.USR, "VSDispatchObserver: onReceive: cmdCallback has All Removed");
       return;
     }
-    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramBundle.getSerializable("key_request_data");
-    if (localVSBaseRequest == null)
+    if (paramBaseRequest == null)
     {
-      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: request is null");
+      RFLog.e("VSNetworkHelper", RFLog.USR, "VSDispatchObserver: onReceive: request is null");
       return;
     }
-    paramBundle.getLong("key_network_time_cost");
-    if (((ConcurrentHashMap)localObject2).get(Integer.valueOf(localVSBaseRequest.getCurrentSeq())) == null)
+    if (((ConcurrentHashMap)localObject1).get(Integer.valueOf(paramBaseRequest.getCurrentSeq())) == null)
     {
-      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | cmdCallback SeqId:" + localVSBaseRequest.getCurrentSeq() + " is Null or has Removed");
+      RFLog.e("VSNetworkHelper", RFLog.USR, "VSDispatchObserver: onReceive: CmdName:" + paramBaseRequest.getCmdName() + " | TraceId:" + paramBaseRequest.getTraceId() + " | cmdCallback SeqId:" + paramBaseRequest.getCurrentSeq() + " is Null or has Removed");
       return;
     }
-    Object localObject1 = (FromServiceMsg)paramBundle.getParcelable("key_response_msg");
-    long l1 = paramBundle.getLong("key_send_timestamp");
-    paramBundle = (VSDispatchObserver.onVSRspCallBack)((ConcurrentHashMap)localObject2).remove(Integer.valueOf(localVSBaseRequest.getCurrentSeq()));
-    if (paramBundle == null)
+    long l1 = System.currentTimeMillis();
+    localObject1 = (VSDispatchObserver.onVSRspCallBack)((ConcurrentHashMap)localObject1).remove(Integer.valueOf(paramBaseRequest.getCurrentSeq()));
+    if (localObject1 == null)
     {
-      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | cmdCallback SeqId:" + localVSBaseRequest.getCurrentSeq() + " onVSRspCallBack is Null or removed");
+      RFLog.e("VSNetworkHelper", RFLog.USR, "VSDispatchObserver: onReceive: CmdName:" + paramBaseRequest.getCmdName() + " | TraceId:" + paramBaseRequest.getTraceId() + " | cmdCallback SeqId:" + paramBaseRequest.getCurrentSeq() + " onVSRspCallBack is Null or removed");
       return;
     }
-    if (localObject1 != null)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
+      Object localObject2;
       long l2;
-      MessageMicro localMessageMicro;
+      Object localObject3;
       try
       {
-        localObject2 = localVSBaseRequest.parseResponseWrapper(bhjl.b(((FromServiceMsg)localObject1).getWupBuffer()));
+        localObject2 = paramBaseRequest.parseResponseHeadInfo(paramArrayOfByte);
         l2 = ((Long)localObject2[0]).longValue();
-        localObject1 = (String)localObject2[1];
-        localObject2 = ((ByteStringMicro)localObject2[2]).toByteArray();
-        localMessageMicro = localVSBaseRequest.decode((byte[])localObject2);
-        if (localMessageMicro == null)
+        paramArrayOfByte = (String)localObject2[1];
+        localObject2 = (byte[])localObject2[2];
+        localObject3 = paramBaseRequest.decode((byte[])localObject2);
+        if (localObject3 == null)
         {
-          getMainThreadHandler().post(new VSDispatchObserver.2(this, localVSBaseRequest, paramBundle, l2, (String)localObject1, l1));
+          getMainThreadHandler().post(new VSDispatchObserver.2(this, paramBaseRequest, (VSDispatchObserver.onVSRspCallBack)localObject1, l2, paramArrayOfByte, l1));
           return;
         }
       }
-      catch (Exception localException)
+      catch (Exception paramArrayOfByte)
       {
-        getMainThreadHandler().post(new VSDispatchObserver.4(this, localVSBaseRequest, paramBundle, l1, localException));
+        getMainThreadHandler().post(new VSDispatchObserver.4(this, paramBaseRequest, (VSDispatchObserver.onVSRspCallBack)localObject1, l1, paramArrayOfByte));
         return;
       }
-      getMainThreadHandler().post(new VSDispatchObserver.3(this, paramBoolean, l2, localVSBaseRequest, (byte[])localObject2, paramBundle, localException, localMessageMicro, l1));
+      getMainThreadHandler().post(new VSDispatchObserver.3(this, paramBoolean, paramBaseRequest, l2, (byte[])localObject2, (VSDispatchObserver.onVSRspCallBack)localObject1, paramArrayOfByte, localObject3, l1));
       return;
     }
-    getMainThreadHandler().post(new VSDispatchObserver.5(this, localVSBaseRequest, paramBundle, l1));
+    getMainThreadHandler().post(new VSDispatchObserver.5(this, paramBaseRequest, (VSDispatchObserver.onVSRspCallBack)localObject1, l1));
   }
   
-  private void saveCache(VSBaseRequest paramVSBaseRequest, byte[] paramArrayOfByte)
+  private void saveCache(BaseRequest paramBaseRequest, byte[] paramArrayOfByte)
   {
-    if (StringUtil.isEmpty(paramVSBaseRequest.getRequestKey()))
+    if (StringUtils.isEmpty(paramBaseRequest.getRequestKey()))
     {
-      ykq.d("VSNetworkHelper| Protocol Cache", "requestKey is empty");
+      RFLog.w("VSNetworkHelper| Protocol Cache", RFLog.USR, "requestKey is empty");
       return;
     }
-    ThreadManagerV2.executeOnSubThread(new VSDispatchObserver.6(this, paramVSBaseRequest, paramArrayOfByte));
+    RFThreadManager.execute(new VSDispatchObserver.6(this, paramBaseRequest, paramArrayOfByte), RFThreadManager.Normal);
   }
   
   public void cancelAllRequest(Context paramContext)
@@ -124,15 +115,15 @@ public class VSDispatchObserver
     if ((localConcurrentHashMap != null) && (paramInt == -1))
     {
       localConcurrentHashMap.clear();
-      QLog.i("VSNetworkHelper", 1, String.format("cancel Request Context Success contextHashcode:%d, seq:%d", new Object[] { Integer.valueOf(paramContext.hashCode()), Integer.valueOf(paramInt) }));
+      RFLog.i("VSNetworkHelper", RFLog.USR, String.format("cancel Request Context Success contextHashcode:%d, seq:%d", new Object[] { Integer.valueOf(paramContext.hashCode()), Integer.valueOf(paramInt) }));
       return;
     }
     if ((localConcurrentHashMap != null) && (localConcurrentHashMap.remove(Integer.valueOf(paramInt)) != null))
     {
-      QLog.i("VSNetworkHelper", 1, String.format("cancel Request Seq Success contextHashcode:%d, seq:%d", new Object[] { Integer.valueOf(paramContext.hashCode()), Integer.valueOf(paramInt) }));
+      RFLog.i("VSNetworkHelper", RFLog.USR, String.format("cancel Request Seq Success contextHashcode:%d, seq:%d", new Object[] { Integer.valueOf(paramContext.hashCode()), Integer.valueOf(paramInt) }));
       return;
     }
-    QLog.w("VSNetworkHelper", 1, String.format("cancel Request failed not found request callback contextHashcode:%d, seq:%d", new Object[] { Integer.valueOf(paramContext.hashCode()), Integer.valueOf(paramInt) }));
+    RFLog.w("VSNetworkHelper", RFLog.USR, String.format("cancel Request failed not found request callback contextHashcode:%d, seq:%d", new Object[] { Integer.valueOf(paramContext.hashCode()), Integer.valueOf(paramInt) }));
   }
   
   public Handler getMainThreadHandler()
@@ -143,9 +134,12 @@ public class VSDispatchObserver
     return this.mMainHandler;
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, BaseRequest paramBaseRequest, byte[] paramArrayOfByte)
   {
-    ThreadManagerV2.excute(new VSDispatchObserver.1(this, paramInt, paramBundle, paramBoolean), 16, null, false);
+    if (VSNetworkHelper.isValidLog(paramBaseRequest.getCmdName())) {
+      RFLog.i("VSNetworkHelper", RFLog.CLR, "onReceive Info:CmdName:" + paramBaseRequest.getCmdName() + " | TraceId:" + paramBaseRequest.getTraceId() + " | seqNum:" + paramBaseRequest.getCurrentSeq() + " | network cost:" + (System.currentTimeMillis() - paramBaseRequest.getSendTimeStamp()));
+    }
+    RFThreadManager.execute(new VSDispatchObserver.1(this, paramInt, paramBoolean, paramBaseRequest, paramArrayOfByte), RFThreadManager.Normal);
   }
   
   public void release()
@@ -165,35 +159,38 @@ public class VSDispatchObserver
     finally {}
   }
   
-  public void sendCacheToTargetCallBack(VSBaseRequest paramVSBaseRequest, MessageMicro paramMessageMicro)
+  public void sendCacheToTargetCallBack(BaseRequest paramBaseRequest, Object paramObject)
   {
-    getMainThreadHandler().post(new VSDispatchObserver.7(this, paramVSBaseRequest, paramMessageMicro));
+    getMainThreadHandler().post(new VSDispatchObserver.7(this, paramBaseRequest, paramObject));
   }
   
-  public void setCallBack(VSBaseRequest paramVSBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack)
+  public void setCallBack(BaseRequest paramBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack)
   {
-    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.mCallBackCollectMap.get(Integer.valueOf(paramVSBaseRequest.getContextHashCode()));
+    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.mCallBackCollectMap.get(Integer.valueOf(paramBaseRequest.getContextHashCode()));
     ConcurrentHashMap localConcurrentHashMap1 = localConcurrentHashMap2;
     if (localConcurrentHashMap2 == null)
     {
       localConcurrentHashMap1 = new ConcurrentHashMap();
-      this.mCallBackCollectMap.put(Integer.valueOf(paramVSBaseRequest.getContextHashCode()), localConcurrentHashMap1);
+      this.mCallBackCollectMap.put(Integer.valueOf(paramBaseRequest.getContextHashCode()), localConcurrentHashMap1);
     }
     try
     {
-      localConcurrentHashMap1.put(Integer.valueOf(paramVSBaseRequest.getNewSeq()), paramonVSRspCallBack);
+      localConcurrentHashMap1.put(Integer.valueOf(paramBaseRequest.getNewSeq()), paramonVSRspCallBack);
       return;
     }
-    catch (Exception paramVSBaseRequest)
+    catch (Exception paramBaseRequest)
     {
-      paramVSBaseRequest.printStackTrace();
-      QLog.e("VSNetworkHelper", 1, "setCallBack exception occur!" + paramVSBaseRequest.toString());
+      paramBaseRequest.printStackTrace();
+      if (RFApplication.isDebug()) {
+        throw new RuntimeException(paramBaseRequest);
+      }
+      RFLog.e("VSNetworkHelper", RFLog.USR, "setCallBack exception occur!" + paramBaseRequest.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.observer.VSDispatchObserver
  * JD-Core Version:    0.7.0.1
  */

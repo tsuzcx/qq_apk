@@ -10,9 +10,9 @@ public final class FriendGroup
 {
   static ArrayList<Long> cache_vNewGroupID;
   static ArrayList<Long> cache_vOldGroupID;
-  public long dwFuin;
-  public ArrayList<Long> vNewGroupID;
-  public ArrayList<Long> vOldGroupID;
+  public long dwFuin = 0L;
+  public ArrayList<Long> vNewGroupID = null;
+  public ArrayList<Long> vOldGroupID = null;
   
   public FriendGroup() {}
   

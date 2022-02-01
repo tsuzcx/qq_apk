@@ -33,7 +33,7 @@ public final class ScalingFrameLayout
     setWillNotDraw(false);
   }
   
-  protected void onDraw(@NotNull Canvas paramCanvas)
+  public void onDraw(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
     paramCanvas.scale(this.a, this.a, getWidth() / 2, getHeight() / 2);
@@ -48,7 +48,7 @@ public final class ScalingFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.widgets.ScalingFrameLayout
  * JD-Core Version:    0.7.0.1
  */

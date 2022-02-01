@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import acnf;
-import acnh;
-import airl;
-import airm;
-import aooh;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.BaseMsgProxy;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MultiMsgProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,7 +37,7 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
         if (QLog.isColorLevel()) {
           QLog.d("TroopAIOImageGeter", 2, "[IncreasinglyLoadTask] start");
         }
-        if ((this.this$0.jdField_a_of_type_Airl == null) && (this.this$0.jdField_a_of_type_Airm == null))
+        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataCallBack == null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataListener == null))
         {
           this.this$0.jdField_a_of_type_Boolean = false;
           this.this$0.a();
@@ -83,7 +81,7 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
         localObject1 = localObject6;
         if (((List)localObject6).size() < 1)
         {
-          localObject1 = ((QQAppInterface)localObject7).getMessageFacade().getAllMessages(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_b_of_type_Int, (int[])localObject8, 1);
+          localObject1 = ((QQAppInterface)localObject7).getMessageFacade().a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_b_of_type_Int, (int[])localObject8, 1);
           this.this$0.jdField_a_of_type_Int = ((List)localObject1).size();
         }
       }
@@ -98,7 +96,7 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
         }
         QLog.d("TroopAIOImageGeter", 2, "no appRuntime");
         return;
-        localObject2 = ((QQAppInterface)localObject7).getMessageFacade().getMessagesFromDB(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_b_of_type_Int, this.this$0.jdField_c_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_d_of_type_Long, (int[])localObject8, 1);
+        localObject2 = ((QQAppInterface)localObject7).getMessageFacade().a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_b_of_type_Int, this.this$0.jdField_c_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_d_of_type_Long, (int[])localObject8, 1);
         continue;
         if ((((QQAppInterface)localObject7).getMultiMessageProxy() != null) && (!this.this$0.jdField_c_of_type_Boolean)) {
           continue;
@@ -153,7 +151,7 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
         if (localArrayList1.size() <= 0) {
           break label1111;
         }
-        localObject6 = this.this$0.jdField_a_of_type_Airl;
+        localObject6 = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataCallBack;
         if (localObject6 != null)
         {
           localObject7 = new ArrayList();
@@ -169,15 +167,15 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
           }
           localObject1 = (AIORichMediaData[])((List)localObject1).toArray(new AIORichMediaData[((List)localObject1).size()]);
           if (localObject1.length > 0) {
-            ((airl)localObject6).a((AIORichMediaData[])localObject1, -1);
+            ((TroopAIOImageGeter.LoadMediaDataCallBack)localObject6).a((AIORichMediaData[])localObject1, -1);
           }
         }
-        localObject1 = this.this$0.jdField_a_of_type_Airm;
+        localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataListener;
         if (localObject1 != null)
         {
           localObject6 = (AIORichMediaData[])localArrayList1.toArray(new AIORichMediaData[localArrayList1.size()]);
           if (localObject6.length > 0) {
-            ((airm)localObject1).a((AIORichMediaData[])localObject6, -1);
+            ((TroopAIOImageGeter.LoadMediaDataListener)localObject1).a((AIORichMediaData[])localObject6, -1);
           }
         }
         if (QLog.isColorLevel()) {
@@ -185,12 +183,12 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
         }
         this.this$0.jdField_a_of_type_Boolean = false;
         return;
-        if (!acnh.a(this.this$0.jdField_b_of_type_Int)) {
+        if (!UinTypeUtil.g(this.this$0.jdField_b_of_type_Int)) {
           continue;
         }
         localObject1 = this.this$0;
         ((TroopAIOImageGeter)localObject1).jdField_b_of_type_Long -= 1L;
-        localObject1 = ((QQAppInterface)localObject7).getMessageFacade().getMessagesFromDB(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_b_of_type_Int, this.this$0.jdField_c_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_b_of_type_Long, (int[])localObject8, 1);
+        localObject1 = ((QQAppInterface)localObject7).getMessageFacade().a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_b_of_type_Int, this.this$0.jdField_c_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_b_of_type_Long, (int[])localObject8, 1);
         this.this$0.jdField_a_of_type_Int = ((List)localObject1).size();
         localObject6 = this.this$0;
         ((TroopAIOImageGeter)localObject6).jdField_d_of_type_Int += 1;
@@ -218,7 +216,7 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOImageGeter.IncreasinglyLoadMediaTask
  * JD-Core Version:    0.7.0.1
  */

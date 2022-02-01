@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.multimsg;
 
-import axio;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -11,24 +10,24 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-public class MultiMsgManager$5
+class MultiMsgManager$5
   implements Runnable
 {
-  public MultiMsgManager$5(axio paramaxio, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
+  MultiMsgManager$5(MultiMsgManager paramMultiMsgManager, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgItemByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
     int j;
     int k;
     StringBuilder localStringBuilder;
     if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)localObject).structingMsg.mMsgAction)))
     {
-      localObject = axio.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      localObject = MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
       if (localObject != null)
       {
         j = ((List)localObject).size();
-        k = axio.a().a((Collection)localObject);
+        k = MultiMsgManager.a().a((Collection)localObject);
         localObject = new HashMap();
         localStringBuilder = new StringBuilder();
         if (!this.jdField_a_of_type_Boolean) {

@@ -3,10 +3,10 @@ package com.tencent.mobileqq.apollo.process;
 import android.os.Bundle;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
-public final class CmGameClientQIPCModule$1
+final class CmGameClientQIPCModule$1
   implements Runnable
 {
-  public CmGameClientQIPCModule$1(int paramInt) {}
+  CmGameClientQIPCModule$1(int paramInt) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public final class CmGameClientQIPCModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.CmGameClientQIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

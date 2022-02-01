@@ -1,53 +1,21 @@
 package cooperation.comic;
 
-import blqp;
-import blsg;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.common.app.AppInterface;
 
 final class VipComicJumpActivity$1
-  extends VipComicJumpActivity.PluginCheckJob
+  implements Runnable
 {
-  VipComicJumpActivity$1(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  VipComicJumpActivity$1(AppInterface paramAppInterface, Activity paramActivity, VipComicJumpActivity.ComicParam paramComicParam) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!blsg.a(localQQAppInterface)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QQComicDebug", 2, "plugin is installed.");
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("QQComicDebug", 2, "wait for plugin installation...");
-        }
-        blqp.a(2, localQQAppInterface);
-        if (blsg.a(localQQAppInterface, true, null)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQComicDebug", 2, "plugin install failed.");
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("QQComicDebug", 2, "plugin is installed now.");
+    VipComicJumpActivity.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationComicVipComicJumpActivity$ComicParam);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.comic.VipComicJumpActivity.1
  * JD-Core Version:    0.7.0.1
  */

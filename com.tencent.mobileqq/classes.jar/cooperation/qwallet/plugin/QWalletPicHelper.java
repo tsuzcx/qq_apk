@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 
@@ -74,7 +74,7 @@ public class QWalletPicHelper
       boolean bool = localBundle.getBoolean("key_play_apng", true);
       paramArrayOfInt = paramString1;
       if (TextUtils.isEmpty(paramString1)) {
-        paramArrayOfInt = PreloadManager.g(paramString2);
+        paramArrayOfInt = PreloadStaticApi.b(paramString2);
       }
       paramString1 = new URL("qwallet_downloader", paramArrayOfInt, paramString2);
       paramBundle = URLDrawable.URLDrawableOptions.obtain();
@@ -99,7 +99,7 @@ public class QWalletPicHelper
   
   public static Drawable getNetDrawableForAIO(String paramString, Drawable paramDrawable)
   {
-    String str = PreloadManager.g(paramString);
+    String str = PreloadStaticApi.b(paramString);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("key_use_file_loop", true);
     return getDrawableInner(str, paramString, paramDrawable, paramDrawable, new int[] { 0 }, localBundle);
@@ -112,14 +112,14 @@ public class QWalletPicHelper
   
   public static URLDrawable getNetDrawableForQWallet(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, Bundle paramBundle)
   {
-    paramString = getDrawableInner(PreloadManager.g(paramString), paramString, paramDrawable1, paramDrawable2, new int[] { 26 }, paramBundle);
+    paramString = getDrawableInner(PreloadStaticApi.b(paramString), paramString, paramDrawable1, paramDrawable2, new int[] { 26 }, paramBundle);
     ApngImage.playByTag(26);
     return paramString;
   }
   
   public static URLDrawable getNetDrawableForQWallet(String paramString1, Drawable paramDrawable1, Drawable paramDrawable2, String paramString2)
   {
-    String str = PreloadManager.g(paramString1);
+    String str = PreloadStaticApi.b(paramString1);
     Bundle localBundle = new Bundle();
     if (!TextUtils.isEmpty(paramString2)) {
       localBundle.putString("qwallet_config_md5", paramString2);
@@ -131,7 +131,7 @@ public class QWalletPicHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPicHelper
  * JD-Core Version:    0.7.0.1
  */

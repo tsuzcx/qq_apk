@@ -10,14 +10,14 @@ public final class material_cate_get_req
   extends JceStruct
 {
   static Map<String, String> cache_mapExtInfo = new HashMap();
-  public int iAppid;
-  public long lUin;
-  public Map<String, String> mapExtInfo;
+  public int iAppid = 0;
+  public long lUin = 0L;
+  public Map<String, String> mapExtInfo = null;
   public String strAttachInfo = "";
   public String strCateId = "";
   public String strQua = "";
   public String strTraceInfo = "";
-  public long uiSettleTime;
+  public long uiSettleTime = 0L;
   
   static
   {

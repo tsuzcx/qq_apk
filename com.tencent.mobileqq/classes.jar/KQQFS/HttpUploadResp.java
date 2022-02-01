@@ -10,16 +10,16 @@ public final class HttpUploadResp
   static VerifyCode cache_stVerifyCode;
   static byte[] cache_vFileKey;
   static byte[] cache_vSig;
-  public int iReplyCode;
-  public long lFromMID;
-  public long lToMID;
-  public int sessionID;
-  public VerifyCode stVerifyCode;
+  public int iReplyCode = 0;
+  public long lFromMID = 0L;
+  public long lToMID = 0L;
+  public int sessionID = 0;
+  public VerifyCode stVerifyCode = null;
   public String strResult = "";
-  public int uFromPos;
-  public int uSeq;
-  public byte[] vFileKey;
-  public byte[] vSig;
+  public int uFromPos = 0;
+  public int uSeq = 0;
+  public byte[] vFileKey = null;
+  public byte[] vSig = null;
   
   public HttpUploadResp() {}
   

@@ -23,14 +23,14 @@ final class ABTestApi$3
   {
     try
     {
-      paramJSONObject = paramJSONObject.getJSONObject("data");
+      paramJSONObject = paramJSONObject.optJSONObject("data");
       Iterator localIterator = paramJSONObject.keys();
       this.val$expEntities.clear();
       ABTestLog.debug("get all the data successfully from network", new Object[0]);
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        JSONObject localJSONObject = paramJSONObject.getJSONObject(str);
+        JSONObject localJSONObject = paramJSONObject.optJSONObject(str);
         RomaExpEntity localRomaExpEntity = new RomaExpEntity("");
         localRomaExpEntity.readJson(localJSONObject);
         localRomaExpEntity.setLayerCode(str);
@@ -48,7 +48,7 @@ final class ABTestApi$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.ABTestApi.3
  * JD-Core Version:    0.7.0.1
  */

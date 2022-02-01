@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import bnki;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import dov.com.qq.im.ae.data.AEWatermarkMaterialManager;
 import java.util.List;
 import mqq.os.MqqHandler;
 
@@ -13,7 +13,7 @@ class AEWaterMarkPanel$6
   
   public void run()
   {
-    List localList = bnki.a().a();
+    List localList = AEWatermarkMaterialManager.a().a();
     if (CollectionUtils.isEmpty(localList)) {
       return;
     }
@@ -22,7 +22,7 @@ class AEWaterMarkPanel$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.panel.AEWaterMarkPanel.6
  * JD-Core Version:    0.7.0.1
  */

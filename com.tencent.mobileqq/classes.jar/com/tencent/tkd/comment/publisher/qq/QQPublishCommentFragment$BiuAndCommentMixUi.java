@@ -38,13 +38,13 @@ class QQPublishCommentFragment$BiuAndCommentMixUi
   
   QQPublishCommentFragment$BiuAndCommentMixUi(QQPublishCommentFragment paramQQPublishCommentFragment, Dialog paramDialog)
   {
-    this.vBiuAndCommentMixDeliverLayout = ((RelativeLayout)paramDialog.findViewById(2131363624));
-    this.vBiuAndCommentMixWordingLayout = ((RelativeLayout)paramDialog.findViewById(2131363627));
-    this.vBiuAndCommentMixCheckBoxLayout = ((LinearLayout)paramDialog.findViewById(2131363621));
-    this.vBiuAndCommentMixWordingText = ((TextView)paramDialog.findViewById(2131363628));
-    this.vBiuAndCommentMixSelectToFriendImg = ((ImageView)paramDialog.findViewById(2131363623));
-    this.vBiuAndCommentMixDeliverButton = ((Button)paramDialog.findViewById(2131363622));
-    this.vBiuAndCommentMixCheckBoxText = ((TextView)paramDialog.findViewById(2131363625));
+    this.vBiuAndCommentMixDeliverLayout = ((RelativeLayout)paramDialog.findViewById(2131363715));
+    this.vBiuAndCommentMixWordingLayout = ((RelativeLayout)paramDialog.findViewById(2131363718));
+    this.vBiuAndCommentMixCheckBoxLayout = ((LinearLayout)paramDialog.findViewById(2131363712));
+    this.vBiuAndCommentMixWordingText = ((TextView)paramDialog.findViewById(2131363719));
+    this.vBiuAndCommentMixSelectToFriendImg = ((ImageView)paramDialog.findViewById(2131363714));
+    this.vBiuAndCommentMixDeliverButton = ((Button)paramDialog.findViewById(2131363713));
+    this.vBiuAndCommentMixCheckBoxText = ((TextView)paramDialog.findViewById(2131363716));
   }
   
   private void biuAndCommentDeliver()
@@ -362,7 +362,7 @@ class QQPublishCommentFragment$BiuAndCommentMixUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.BiuAndCommentMixUi
  * JD-Core Version:    0.7.0.1
  */

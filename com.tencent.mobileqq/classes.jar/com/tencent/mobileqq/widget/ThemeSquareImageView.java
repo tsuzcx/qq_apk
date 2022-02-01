@@ -9,14 +9,9 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 public class ThemeSquareImageView
   extends SquareImageView
 {
-  public static String a;
+  public static String b = "1000";
   Paint jdField_a_of_type_AndroidGraphicsPaint;
   boolean jdField_a_of_type_Boolean = true;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "1000";
-  }
   
   public ThemeSquareImageView(Context paramContext)
   {
@@ -45,10 +40,10 @@ public class ThemeSquareImageView
   
   public static void setCurThemeId(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    b = paramString;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if ((this.jdField_a_of_type_Boolean) && (ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId)))
     {
@@ -67,7 +62,7 @@ public class ThemeSquareImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ThemeSquareImageView
  * JD-Core Version:    0.7.0.1
  */

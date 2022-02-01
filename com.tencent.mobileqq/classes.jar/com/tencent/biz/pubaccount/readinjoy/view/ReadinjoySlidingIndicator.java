@@ -23,17 +23,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.qphone.base.util.QLog;
-import ors;
-import tcp;
-import tcq;
-import tcr;
-import tcs;
 
 @TargetApi(14)
 public class ReadinjoySlidingIndicator
@@ -45,12 +41,12 @@ public class ReadinjoySlidingIndicator
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private tcs jdField_a_of_type_Tcs;
+  private ReadinjoySlidingIndicator.OnIndicatorChangeListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoySlidingIndicator$OnIndicatorChangeListener;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 0;
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
   private int[] jdField_b_of_type_ArrayOfInt;
-  private int c;
+  private int c = 0;
   private int d = -16777216;
   private int e = -7829368;
   private int f = 18;
@@ -90,7 +86,7 @@ public class ReadinjoySlidingIndicator
     b();
     a(paramContext);
     if (Build.VERSION.SDK_INT >= 14) {
-      setAccessibilityDelegate(new tcp(this));
+      setAccessibilityDelegate(new ReadinjoySlidingIndicator.1(this));
     }
   }
   
@@ -102,7 +98,7 @@ public class ReadinjoySlidingIndicator
   
   private void a(int paramInt1, String paramString, int paramInt2)
   {
-    int k = ors.d;
+    int k = ReadInJoyNaviController.d;
     TextView localTextView = new TextView(getContext());
     localTextView.setGravity(17);
     localTextView.setMaxLines(1);
@@ -186,7 +182,7 @@ public class ReadinjoySlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new tcq(this));
+        ((ValueAnimator)localObject).addUpdateListener(new ReadinjoySlidingIndicator.2(this));
         ((ValueAnimator)localObject).start();
       }
       return;
@@ -201,10 +197,10 @@ public class ReadinjoySlidingIndicator
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
       d();
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849534);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(AIOUtils.dp2px(7.0F, getResources()), AIOUtils.dp2px(7.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849913);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(AIOUtils.a(7.0F, getResources()), AIOUtils.a(7.0F, getResources()));
       localLayoutParams.gravity = 16;
-      localLayoutParams.leftMargin = (-AIOUtils.dp2px(11.0F, getResources()));
+      localLayoutParams.leftMargin = (-AIOUtils.a(11.0F, getResources()));
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
     return this.jdField_a_of_type_AndroidWidgetImageView;
@@ -225,7 +221,7 @@ public class ReadinjoySlidingIndicator
       a(k, this.jdField_a_of_type_ArrayOfJavaLangString[k], this.jdField_b_of_type_ArrayOfInt[k]);
       k += 1;
     }
-    getViewTreeObserver().addOnGlobalLayoutListener(new tcr(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new ReadinjoySlidingIndicator.3(this));
   }
   
   public void a(int paramInt)
@@ -262,8 +258,8 @@ public class ReadinjoySlidingIndicator
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Tcs != null) {
-        this.jdField_a_of_type_Tcs.a(this.c, this.jdField_b_of_type_Int, paramBoolean2);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoySlidingIndicator$OnIndicatorChangeListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoySlidingIndicator$OnIndicatorChangeListener.a(this.c, this.jdField_b_of_type_Int, paramBoolean2);
       }
       return;
       label87:
@@ -272,13 +268,7 @@ public class ReadinjoySlidingIndicator
     }
   }
   
-  public boolean a(int paramInt)
-  {
-    RedTouch localRedTouch = (RedTouch)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(this.jdField_b_of_type_ArrayOfInt[paramInt]);
-    return (localRedTouch != null) && (localRedTouch.c());
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((isInEditMode()) || (this.jdField_a_of_type_Int == 0)) {
@@ -290,7 +280,7 @@ public class ReadinjoySlidingIndicator
   
   public void setAccessibilityMsg()
   {
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       int k = 0;
       while (k < this.jdField_a_of_type_Int)
@@ -298,10 +288,10 @@ public class ReadinjoySlidingIndicator
         View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k);
         if (localView != null)
         {
-          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[k] + anvx.a(2131712433);
+          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[k] + HardCodeUtil.a(2131712938);
           String str1 = str2;
           if (k == this.jdField_b_of_type_Int) {
-            str1 = str2 + anvx.a(2131712579);
+            str1 = str2 + HardCodeUtil.a(2131713076);
           }
           localView.setContentDescription(str1);
         }
@@ -315,9 +305,9 @@ public class ReadinjoySlidingIndicator
     a(paramInt, paramBoolean, false);
   }
   
-  public void setOnIndicatorChangeListener(tcs paramtcs)
+  public void setOnIndicatorChangeListener(ReadinjoySlidingIndicator.OnIndicatorChangeListener paramOnIndicatorChangeListener)
   {
-    this.jdField_a_of_type_Tcs = paramtcs;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoySlidingIndicator$OnIndicatorChangeListener = paramOnIndicatorChangeListener;
   }
   
   public void setOverScrollMode(int paramInt)
@@ -337,7 +327,7 @@ public class ReadinjoySlidingIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator
  * JD-Core Version:    0.7.0.1
  */

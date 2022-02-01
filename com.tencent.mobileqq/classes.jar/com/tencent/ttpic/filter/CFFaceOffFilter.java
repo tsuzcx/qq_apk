@@ -15,10 +15,10 @@ import com.tencent.ttpic.model.FaceFeature;
 import com.tencent.ttpic.openapi.model.ChangedFaceParam;
 import com.tencent.ttpic.openapi.model.CosFunParam;
 import com.tencent.ttpic.openapi.model.FaceImageLayer;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.FaceDetectUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.YoutuPointsUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
@@ -89,7 +89,7 @@ public class CFFaceOffFilter
       FaceDetectUtil.facePointf83to90((List)localObject);
       FaceOffUtil.getFullCoords((List)localObject, 2.0F);
       FaceOffUtil.getCropNormalFaceFeature((List)localObject);
-      localList = VideoMaterialUtil.copyList(paramList);
+      localList = VideoMaterial.copyList(paramList);
       j = 0;
       if (j < ((List)localObject).size())
       {
@@ -122,13 +122,13 @@ public class CFFaceOffFilter
           paramList.y = ((((PointF)localList.get(j)).y - ((PointF)localList.get(64)).y) * f1 + f2);
         }
       }
-      paramList = VideoMaterialUtil.copyList(localList);
+      paramList = VideoMaterial.copyList(localList);
     }
   }
   
   private List<PointF> getVertexCoords(List<PointF> paramList1, List<PointF> paramList2, int paramInt1, int paramInt2, float paramFloat, FaceImageLayer paramFaceImageLayer)
   {
-    Object localObject1 = VideoMaterialUtil.copyList(paramList1);
+    Object localObject1 = VideoMaterial.copyList(paramList1);
     YoutuPointsUtil.normalizePoints((List)localObject1);
     FaceDetectUtil.facePointf83to90((List)localObject1);
     Object localObject2 = FaceOffUtil.getFullCoords((List)localObject1, 2.0F);
@@ -282,7 +282,7 @@ public class CFFaceOffFilter
     FaceDetectUtil.facePointf83to90(localList);
     localList = FaceOffUtil.getFullCoords(localList, 2.0F);
     FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(localList, this.width, this.height, this.materialTexVertices, paramInt3);
-    paramList = VideoMaterialUtil.copyList(paramList);
+    paramList = VideoMaterial.copyList(paramList);
     FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(paramList, paramInt1, paramInt2, this.userTexVertices, paramInt3);
     this.mMergedFacePoints = getVertexCoords(localList, paramList, paramInt1, paramInt2, (float)this.mFaceLayer.distortionAlpha, this.mFaceLayer);
     FaceOffUtil.initFacePositionsFaceAverage(this.mMergedFacePoints, this.width, this.height, this.positions, paramInt3);
@@ -323,7 +323,7 @@ public class CFFaceOffFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.CFFaceOffFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -6,18 +6,18 @@ import android.support.annotation.NonNull;
 public abstract interface EditVideoParams$EditSource
   extends Parcelable
 {
-  public abstract String checkParam();
-  
-  public abstract int getHeight();
+  public abstract int a();
   
   @NonNull
-  public abstract String getSourcePath();
+  public abstract String a();
   
-  public abstract int getWidth();
+  public abstract int b();
+  
+  public abstract String b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource
  * JD-Core Version:    0.7.0.1
  */

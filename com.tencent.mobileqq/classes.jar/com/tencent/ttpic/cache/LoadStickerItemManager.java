@@ -8,9 +8,9 @@ import android.util.Log;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.cache.BitmapLoadCache;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.model.VideoMaterial.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.util.VideoFilterUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -95,13 +95,13 @@ public class LoadStickerItemManager
     if (this.mPreLoader != null) {
       this.mPreLoader.updateIndex(paramInt);
     }
-    String str = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + paramInt + ".png";
+    String str = VideoMaterial.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + paramInt + ".png";
     return (Bitmap)this.mCache.get(str);
   }
   
   public Bitmap loadImage(String paramString)
   {
-    paramString = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + paramString;
+    paramString = VideoMaterial.getMaterialId(this.dataPath) + File.separator + paramString;
     return (Bitmap)this.mCache.get(paramString);
   }
   
@@ -110,7 +110,7 @@ public class LoadStickerItemManager
     int i = 0;
     int k = 0;
     if (this.loadType == LoadItemManager.LOAD_TYPE.LOAD_ALL) {
-      if (this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
+      if (this.item.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.IMAGE)
       {
         HashSet localHashSet = new HashSet();
         ArrayList localArrayList = new ArrayList(this.item.frames);
@@ -147,7 +147,7 @@ public class LoadStickerItemManager
         localArrayList.addAll(localHashSet);
         Collections.sort(localArrayList, mPngComperator);
         Log.i(this.TAG, "ALL LOAD:Load name:" + this.item.id + ",nums:" + localHashSet.size());
-        this.mImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath + File.separator + this.item.subFolder, VideoMaterialUtil.getMaterialId(this.dataPath), this.sampleSize);
+        this.mImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath + File.separator + this.item.subFolder, VideoMaterial.getMaterialId(this.dataPath), this.sampleSize);
       }
     }
     do
@@ -168,11 +168,11 @@ public class LoadStickerItemManager
           break;
         }
         Log.i(this.TAG, "LOAD_LAZY:Load name:" + this.item.id);
-      } while (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE);
+      } while (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE);
       this.mBitmapLazyLoad = new BitmapLoadCache(this.item.frames, this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_", 2);
       this.mBitmapLazyLoad.preLoadImages();
       return;
-    } while (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE);
+    } while (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE);
     this.mPreLoader = new ImagePreLoader(this.mCache, this.dataPath, this.item, 2);
     this.mPreLoader.prepare();
   }
@@ -213,7 +213,7 @@ public class LoadStickerItemManager
       this.mPreLoader.reset();
     }
     if (this.loadType == LoadItemManager.LOAD_TYPE.LOAD_ALL) {
-      if (this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
+      if (this.item.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.IMAGE)
       {
         HashSet localHashSet = new HashSet();
         ArrayList localArrayList = new ArrayList(this.item.frames);
@@ -250,7 +250,7 @@ public class LoadStickerItemManager
         localArrayList.addAll(localHashSet);
         Collections.sort(localArrayList, mPngComperator);
         Log.i(this.TAG, "updateCache ALL LOAD:Load name:" + this.item.id + ",nums:" + localHashSet.size());
-        this.mImageTask = new LoadImageTask(this.mCache, localArrayList, paramString + File.separator + this.item.subFolder, VideoMaterialUtil.getMaterialId(this.dataPath), this.sampleSize);
+        this.mImageTask = new LoadImageTask(this.mCache, localArrayList, paramString + File.separator + this.item.subFolder, VideoMaterial.getMaterialId(this.dataPath), this.sampleSize);
       }
     }
     do
@@ -271,19 +271,19 @@ public class LoadStickerItemManager
           break;
         }
         Log.i(this.TAG, "updateCache LOAD_LAZY:Load name:" + this.item.id);
-      } while (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE);
+      } while (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE);
       this.mBitmapLazyLoad = new BitmapLoadCache(this.item.frames, paramString + File.separator + this.item.subFolder + File.separator + this.item.id + "_", 2);
       this.mBitmapLazyLoad.preLoadImages();
       return;
-    } while (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE);
+    } while (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE);
     this.mPreLoader = new ImagePreLoader(this.mCache, paramString, this.item, 2);
-    ((ImagePreLoader)this.mPreLoader).setDIYMaterialId(VideoMaterialUtil.getMaterialId(this.dataPath));
+    ((ImagePreLoader)this.mPreLoader).setDIYMaterialId(VideoMaterial.getMaterialId(this.dataPath));
     this.mPreLoader.prepare();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadStickerItemManager
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.IThreadManager;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -54,8 +55,8 @@ public class NativeGifIndex8
     this.mCacheFirstFrame = paramBoolean1;
     if (!paramFile.exists())
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("NativeGifIndex8", 2, this.mSrcGifFile + " doesn't exist");
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.e("NativeGifIndex8", 2, this.mSrcGifFile + " doesn't exist");
       }
       return;
     }
@@ -199,16 +200,16 @@ public class NativeGifIndex8
       if (localObject != null) {
         localObject.edit().putBoolean("gif_so_is_update", false).commit();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeGifIndex8", 2, "libkIndexGif.so is loaded. gifIsUpdate:" + bool1);
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d("NativeGifIndex8", 2, "libkIndexGif.so is loaded. gifIsUpdate:" + bool1);
       }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("NativeGifIndex8", 2, "loadLibrary(): " + localUnsatisfiedLinkError.getMessage());
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.e("NativeGifIndex8", 2, "loadLibrary(): " + localUnsatisfiedLinkError.getMessage());
         }
       }
     }
@@ -216,8 +217,8 @@ public class NativeGifIndex8
     {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("NativeGifIndex8", 2, "loadLibrary(): " + localException.getMessage());
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.e("NativeGifIndex8", 2, "loadLibrary(): " + localException.getMessage());
         }
       }
     }
@@ -285,8 +286,8 @@ public class NativeGifIndex8
       {
         for (;;)
         {
-          if (QLog.isColorLevel()) {
-            QLog.w("NativeGifIndex8", 2, paramCanvas.getMessage());
+          if (URLDrawable.depImp.mLog.isColorLevel()) {
+            URLDrawable.depImp.mLog.w("NativeGifIndex8", 2, paramCanvas.getMessage());
           }
           URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
         }
@@ -308,21 +309,21 @@ public class NativeGifIndex8
     }
     try
     {
-      ThreadManagerV2.excute(new NativeGifIndex8.NativeDecodeFrameTask(this, l1 + l2), 64, null, true);
+      URLDrawable.depImp.mThreadManager.executeOnFileThreadExcutor(new NativeGifIndex8.NativeDecodeFrameTask(this, l1 + l2), null, true);
       return;
     }
     catch (RejectedExecutionException localRejectedExecutionException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("URLDrawable_", 2, "executeNewTask->" + localRejectedExecutionException.getMessage());
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.e("URLDrawable_", 2, "executeNewTask->" + localRejectedExecutionException.getMessage());
       }
       URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
       return;
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("URLDrawable_", 2, "executeNewTask->" + localException.getMessage());
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.e("URLDrawable_", 2, "executeNewTask->" + localException.getMessage());
       }
       URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
     }
@@ -383,153 +384,173 @@ public class NativeGifIndex8
     //   2: getstatic 35	com/tencent/image/NativeGifIndex8:mIsGIFEngineAvaliable	Z
     //   5: istore_2
     //   6: iload_2
-    //   7: ifeq +117 -> 124
+    //   7: ifeq +149 -> 156
     //   10: aload_0
     //   11: aload_0
-    //   12: getfield 98	com/tencent/image/NativeGifIndex8:mExtData	[I
+    //   12: getfield 110	com/tencent/image/NativeGifIndex8:mExtData	[I
     //   15: aload_0
-    //   16: getfield 47	com/tencent/image/NativeGifIndex8:mGifHandler	I
-    //   19: invokestatic 373	com/tencent/image/NativeGifIndex8:nativeDecodeNext	([II)Landroid/graphics/Bitmap;
-    //   22: putfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   16: getfield 49	com/tencent/image/NativeGifIndex8:mGifHandler	I
+    //   19: invokestatic 387	com/tencent/image/NativeGifIndex8:nativeDecodeNext	([II)Landroid/graphics/Bitmap;
+    //   22: putfield 203	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
     //   25: aload_0
-    //   26: getfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   26: getfield 203	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
     //   29: ifnull +12 -> 41
     //   32: aload_0
-    //   33: getfield 98	com/tencent/image/NativeGifIndex8:mExtData	[I
+    //   33: getfield 110	com/tencent/image/NativeGifIndex8:mExtData	[I
     //   36: iconst_1
     //   37: iaload
     //   38: ifeq +38 -> 76
-    //   41: getstatic 214	com/tencent/image/URLDrawable:mApplicationContext	Landroid/content/Context;
-    //   44: ldc 216
+    //   41: getstatic 224	com/tencent/image/URLDrawable:mApplicationContext	Landroid/content/Context;
+    //   44: ldc 226
     //   46: iconst_4
-    //   47: invokevirtual 220	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   47: invokevirtual 230	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   50: astore_3
     //   51: aload_3
     //   52: ifnull +24 -> 76
     //   55: aload_3
-    //   56: invokeinterface 241 1 0
-    //   61: ldc_w 291
+    //   56: invokeinterface 251 1 0
+    //   61: ldc_w 301
     //   64: iconst_0
-    //   65: invokeinterface 247 3 0
-    //   70: invokeinterface 250 1 0
+    //   65: invokeinterface 257 3 0
+    //   70: invokeinterface 260 1 0
     //   75: pop
     //   76: aload_0
     //   77: monitorexit
     //   78: return
     //   79: astore_3
-    //   80: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   83: ifeq -58 -> 25
-    //   86: ldc 13
-    //   88: iconst_2
-    //   89: aload_3
-    //   90: invokevirtual 374	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   93: invokestatic 306	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   96: goto -71 -> 25
-    //   99: astore_3
-    //   100: aload_0
-    //   101: monitorexit
-    //   102: aload_3
-    //   103: athrow
-    //   104: astore_3
-    //   105: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   108: ifeq -83 -> 25
-    //   111: ldc 13
-    //   113: iconst_2
-    //   114: aload_3
-    //   115: invokevirtual 375	java/lang/IllegalArgumentException:getMessage	()Ljava/lang/String;
-    //   118: invokestatic 306	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   121: goto -96 -> 25
-    //   124: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   127: ifeq +12 -> 139
-    //   130: ldc 13
-    //   132: iconst_2
-    //   133: ldc_w 377
-    //   136: invokestatic 306	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   139: aload_0
-    //   140: getfield 110	com/tencent/image/NativeGifIndex8:mReqHeight	I
-    //   143: ifle -67 -> 76
-    //   146: aload_0
-    //   147: getfield 108	com/tencent/image/NativeGifIndex8:mReqWidth	I
-    //   150: istore_1
-    //   151: iload_1
-    //   152: ifle -76 -> 76
-    //   155: aload_0
-    //   156: aload_0
-    //   157: getfield 71	com/tencent/image/NativeGifIndex8:mSrcGifFile	Ljava/lang/String;
-    //   160: invokestatic 380	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   163: putfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   166: aload_0
-    //   167: aload_0
-    //   168: getfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   171: aload_0
-    //   172: getfield 108	com/tencent/image/NativeGifIndex8:mReqWidth	I
-    //   175: aload_0
-    //   176: getfield 110	com/tencent/image/NativeGifIndex8:mReqHeight	I
-    //   179: iconst_1
-    //   180: invokestatic 384	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   183: putfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   186: goto -110 -> 76
-    //   189: astore_3
-    //   190: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   193: ifeq -117 -> 76
-    //   196: ldc 13
-    //   198: iconst_2
-    //   199: new 82	java/lang/StringBuilder
-    //   202: dup
-    //   203: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   206: ldc_w 386
-    //   209: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: aload_3
-    //   213: invokevirtual 374	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   216: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   222: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   225: goto -149 -> 76
-    //   228: astore_3
-    //   229: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   232: ifeq -156 -> 76
-    //   235: ldc 13
-    //   237: iconst_2
-    //   238: new 82	java/lang/StringBuilder
-    //   241: dup
-    //   242: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   245: ldc_w 388
-    //   248: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   251: aload_3
-    //   252: invokevirtual 303	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   255: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   258: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   261: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   264: goto -188 -> 76
+    //   80: getstatic 81	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   83: getfield 87	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   86: invokeinterface 92 1 0
+    //   91: ifeq -66 -> 25
+    //   94: getstatic 81	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   97: getfield 87	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   100: ldc 13
+    //   102: iconst_2
+    //   103: aload_3
+    //   104: invokevirtual 388	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   107: invokeinterface 316 4 0
+    //   112: goto -87 -> 25
+    //   115: astore_3
+    //   116: aload_0
+    //   117: monitorexit
+    //   118: aload_3
+    //   119: athrow
+    //   120: astore_3
+    //   121: getstatic 81	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   124: getfield 87	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   127: invokeinterface 92 1 0
+    //   132: ifeq -107 -> 25
+    //   135: getstatic 81	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   138: getfield 87	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   141: ldc 13
+    //   143: iconst_2
+    //   144: aload_3
+    //   145: invokevirtual 389	java/lang/IllegalArgumentException:getMessage	()Ljava/lang/String;
+    //   148: invokeinterface 316 4 0
+    //   153: goto -128 -> 25
+    //   156: getstatic 81	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   159: getfield 87	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   162: invokeinterface 92 1 0
+    //   167: ifeq +20 -> 187
+    //   170: getstatic 81	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   173: getfield 87	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   176: ldc 13
+    //   178: iconst_2
+    //   179: ldc_w 391
+    //   182: invokeinterface 316 4 0
+    //   187: aload_0
+    //   188: getfield 122	com/tencent/image/NativeGifIndex8:mReqHeight	I
+    //   191: ifle -115 -> 76
+    //   194: aload_0
+    //   195: getfield 120	com/tencent/image/NativeGifIndex8:mReqWidth	I
+    //   198: istore_1
+    //   199: iload_1
+    //   200: ifle -124 -> 76
+    //   203: aload_0
+    //   204: aload_0
+    //   205: getfield 71	com/tencent/image/NativeGifIndex8:mSrcGifFile	Ljava/lang/String;
+    //   208: invokestatic 394	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   211: putfield 203	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   214: aload_0
+    //   215: aload_0
+    //   216: getfield 203	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   219: aload_0
+    //   220: getfield 120	com/tencent/image/NativeGifIndex8:mReqWidth	I
+    //   223: aload_0
+    //   224: getfield 122	com/tencent/image/NativeGifIndex8:mReqHeight	I
+    //   227: iconst_1
+    //   228: invokestatic 398	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   231: putfield 203	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   234: goto -158 -> 76
+    //   237: astore_3
+    //   238: getstatic 81	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   241: getfield 87	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   244: invokeinterface 92 1 0
+    //   249: ifeq -173 -> 76
+    //   252: getstatic 81	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   255: getfield 87	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   258: ldc 13
+    //   260: iconst_2
+    //   261: new 94	java/lang/StringBuilder
+    //   264: dup
+    //   265: invokespecial 95	java/lang/StringBuilder:<init>	()V
+    //   268: ldc_w 400
+    //   271: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   274: aload_3
+    //   275: invokevirtual 388	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   278: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   284: invokeinterface 108 4 0
+    //   289: goto -213 -> 76
+    //   292: astore_3
+    //   293: getstatic 81	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   296: getfield 87	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   299: invokeinterface 92 1 0
+    //   304: ifeq -228 -> 76
+    //   307: getstatic 81	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   310: getfield 87	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   313: ldc 13
+    //   315: iconst_2
+    //   316: new 94	java/lang/StringBuilder
+    //   319: dup
+    //   320: invokespecial 95	java/lang/StringBuilder:<init>	()V
+    //   323: ldc_w 402
+    //   326: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: aload_3
+    //   330: invokevirtual 313	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   333: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   336: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   339: invokeinterface 108 4 0
+    //   344: goto -268 -> 76
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	267	0	this	NativeGifIndex8
-    //   150	2	1	i	int
+    //   0	347	0	this	NativeGifIndex8
+    //   198	2	1	i	int
     //   5	2	2	bool	boolean
     //   50	6	3	localSharedPreferences	SharedPreferences
-    //   79	11	3	localOutOfMemoryError1	OutOfMemoryError
-    //   99	4	3	localObject	Object
-    //   104	11	3	localIllegalArgumentException	java.lang.IllegalArgumentException
-    //   189	24	3	localOutOfMemoryError2	OutOfMemoryError
-    //   228	24	3	localThrowable	Throwable
+    //   79	25	3	localOutOfMemoryError1	OutOfMemoryError
+    //   115	4	3	localObject	Object
+    //   120	25	3	localIllegalArgumentException	java.lang.IllegalArgumentException
+    //   237	38	3	localOutOfMemoryError2	OutOfMemoryError
+    //   292	38	3	localThrowable	Throwable
     // Exception table:
     //   from	to	target	type
     //   10	25	79	java/lang/OutOfMemoryError
-    //   2	6	99	finally
-    //   10	25	99	finally
-    //   25	41	99	finally
-    //   41	51	99	finally
-    //   55	76	99	finally
-    //   80	96	99	finally
-    //   105	121	99	finally
-    //   124	139	99	finally
-    //   139	151	99	finally
-    //   155	186	99	finally
-    //   190	225	99	finally
-    //   229	264	99	finally
-    //   10	25	104	java/lang/IllegalArgumentException
-    //   155	186	189	java/lang/OutOfMemoryError
-    //   155	186	228	java/lang/Throwable
+    //   2	6	115	finally
+    //   10	25	115	finally
+    //   25	41	115	finally
+    //   41	51	115	finally
+    //   55	76	115	finally
+    //   80	112	115	finally
+    //   121	153	115	finally
+    //   156	187	115	finally
+    //   187	199	115	finally
+    //   203	234	115	finally
+    //   238	289	115	finally
+    //   293	344	115	finally
+    //   10	25	120	java/lang/IllegalArgumentException
+    //   203	234	237	java/lang/OutOfMemoryError
+    //   203	234	292	java/lang/Throwable
   }
   
   public int getWidth()

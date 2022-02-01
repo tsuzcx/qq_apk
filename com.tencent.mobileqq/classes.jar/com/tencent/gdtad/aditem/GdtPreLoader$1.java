@@ -1,37 +1,36 @@
 package com.tencent.gdtad.aditem;
 
-import acam;
-import acan;
-import acho;
 import android.text.TextUtils;
-import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class GdtPreLoader$1
+class GdtPreLoader$1
   implements Runnable
 {
-  public GdtPreLoader$1(acam paramacam, GdtAd paramGdtAd) {}
+  GdtPreLoader$1(GdtPreLoader paramGdtPreLoader, GdtAd paramGdtAd) {}
   
   public void run()
   {
     if ((this.a == null) || (!this.a.isValid())) {
-      acho.d("GdtPreLoader", "preLoadAfterAdLoaded error");
+      GdtLog.d("GdtPreLoader", "preLoadAfterAdLoaded error");
     }
     do
     {
       do
       {
         return;
-        acho.b("GdtPreLoader", "preLoadAfterAdLoaded");
+        GdtLog.b("GdtPreLoader", "preLoadAfterAdLoaded");
       } while (!this.a.isQQMINIProgram());
-      acho.b("GdtPreLoader", String.format("canPreloadForQQMINIProgram %b", new Object[] { Boolean.valueOf(this.a.canPreloadForQQMINIProgram()) }));
+      GdtLog.b("GdtPreLoader", String.format("canPreloadForQQMINIProgram %b", new Object[] { Boolean.valueOf(this.a.canPreloadForQQMINIProgram()) }));
     } while ((!this.a.canPreloadForQQMINIProgram()) || (TextUtils.isEmpty(this.a.getUrlForLandingPage())));
-    acho.b("GdtPreLoader", "MiniAppPrePullManager.getInstance().prePullAppinfoByLink start");
-    MiniAppPrePullManager.getInstance().prePullAppinfoByLink(this.a.getUrlForLandingPage(), false, new acan(this));
+    GdtLog.b("GdtPreLoader", "MiniAppPrePullManager.getInstance().prePullAppinfoByLink start");
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).prePullAppinfoByLink(this.a.getUrlForLandingPage(), false, new GdtPreLoader.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtPreLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ public final class EventItem
   extends JceStruct
 {
   static byte[] cache_eventData;
-  public byte[] eventData;
-  public int eventType;
+  public byte[] eventData = null;
+  public int eventType = 0;
   
   public EventItem() {}
   

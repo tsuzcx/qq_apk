@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pvm;
-import qfb;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class ChannelInfoModule$9
+class ChannelInfoModule$9
   implements Runnable
 {
-  public ChannelInfoModule$9(qfb paramqfb, int paramInt) {}
+  ChannelInfoModule$9(ChannelInfoModule paramChannelInfoModule, int paramInt) {}
   
   public void run()
   {
-    pvm.a().f(this.a);
+    ReadInJoyLogicEngineEventDispatcher.a().f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule.9
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.ac;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
 import com.tencent.msf.boot.config.NativeConfigStore;
@@ -222,7 +222,7 @@ public class b
       a(parama);
       QLog.d("MSF.C.AccountCenter", 1, Thread.currentThread().getName() + " handleLoadedAccounts setKey " + MsfSdkUtils.getShortUin(parama.d()));
       CodecWarpper.nativeSetAccountKey(parama.d(), parama.e(), parama.f(), parama.g(), parama.h(), parama.i(), parama.j(), parama.k(), parama.l(), null);
-      aj.a(parama.d(), false);
+      ac.a(parama.d(), false);
       String str = MsfStore.getNativeConfigStore().getConfig("__loginSdk_uinMapping_" + parama.d());
       if ((str != null) && (str.length() > 0)) {
         this.m.put(parama.d(), str);
@@ -517,7 +517,7 @@ public class b
     CodecWarpper.nativeSetUseSimpleHead(parama.d(), false);
     a(parama);
     m(parama.d());
-    aj.a(parama.d(), false);
+    ac.a(parama.d(), false);
   }
   
   public void b(String paramString)
@@ -789,7 +789,7 @@ public class b
     //   37: astore_2
     //   38: aload_1
     //   39: iconst_0
-    //   40: invokestatic 391	com/tencent/mobileqq/msf/core/aj:a	(Ljava/lang/String;Z)V
+    //   40: invokestatic 391	com/tencent/mobileqq/msf/core/ac:a	(Ljava/lang/String;Z)V
     //   43: aload_2
     //   44: ifnull +20 -> 64
     //   47: aload_2
@@ -869,7 +869,7 @@ public class b
     byte[] arrayOfByte5 = ((a)localObject).j();
     localObject = ((a)localObject).k();
     CodecWarpper.nativeSetAccountKey(str, new byte[0], arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5, (byte[])localObject, new byte[0], null);
-    aj.a(paramString, false);
+    ac.a(paramString, false);
   }
 }
 

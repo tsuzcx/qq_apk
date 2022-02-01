@@ -1,26 +1,25 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bksl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.smtt.sdk.QbSdk;
 
-public class X5UpdateGuard$1
+class X5UpdateGuard$1
   implements Runnable
 {
-  public X5UpdateGuard$1(bksl parambksl) {}
+  X5UpdateGuard$1(X5UpdateGuard paramX5UpdateGuard) {}
   
   public void run()
   {
-    int i = QbSdk.getTbsVersion(bksl.a(this.this$0).getContext());
-    int j = QbSdk.getTmpDirTbsVersion(bksl.a(this.this$0).getContext());
+    int i = QbSdk.getTbsVersion(X5UpdateGuard.a(this.this$0).getContext());
+    int j = QbSdk.getTmpDirTbsVersion(X5UpdateGuard.a(this.this$0).getContext());
     QLog.d("minisdk_X5UpdateGuard", 1, "timeout, getTbsVersion=" + i + " tmpDirTbsVersion=" + j);
     if ((i > 0) || (j > 0))
     {
-      bksl.a(this.this$0);
+      X5UpdateGuard.a(this.this$0);
       return;
     }
-    bksl.b(this.this$0);
+    X5UpdateGuard.b(this.this$0);
   }
 }
 

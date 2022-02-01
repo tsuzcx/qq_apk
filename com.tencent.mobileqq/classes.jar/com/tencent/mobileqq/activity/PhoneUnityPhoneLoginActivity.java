@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import aenf;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -9,11 +7,11 @@ import android.view.MotionEvent;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import aodi;
-import aodj;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SecSvcHandler;
+import com.tencent.mobileqq.app.SecSvcObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
@@ -23,7 +21,7 @@ public class PhoneUnityPhoneLoginActivity
   extends IphoneTitleBarActivity
   implements CompoundButton.OnCheckedChangeListener
 {
-  private aodj jdField_a_of_type_Aodj = new aenf(this);
+  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new PhoneUnityPhoneLoginActivity.1(this);
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
@@ -39,15 +37,15 @@ public class PhoneUnityPhoneLoginActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561331);
-    setTitle(getString(2131694551));
-    setContentBackgroundResource(2130838911);
-    this.leftView.setText(2131698836);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131372614));
+    super.setContentView(2131561437);
+    setTitle(getString(2131694770));
+    setContentBackgroundResource(2130838979);
+    this.leftView.setText(2131699149);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131372927));
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
     }
-    addObserver(this.jdField_a_of_type_Aodj);
+    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
     paramBundle = super.getIntent();
     if (paramBundle != null)
     {
@@ -61,7 +59,7 @@ public class PhoneUnityPhoneLoginActivity
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Aodj);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
     super.doOnDestroy();
   }
   
@@ -88,10 +86,10 @@ public class PhoneUnityPhoneLoginActivity
       bool = false;
       ((FormSwitchItem)localObject).setChecked(bool);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-      if (NetworkUtil.isNetSupport(this)) {
+      if (NetworkUtil.d(this)) {
         break label91;
       }
-      QQToast.a(this, getString(2131692125), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131692257), 0).b(getTitleBarHeight());
     }
     for (;;)
     {
@@ -101,12 +99,12 @@ public class PhoneUnityPhoneLoginActivity
       bool = true;
       break;
       label91:
-      localObject = (aodi)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
+      localObject = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
       if ((localObject != null) && (this.jdField_a_of_type_ArrayOfByte != null)) {
         if (paramBoolean) {
-          ((aodi)localObject).a(this.jdField_a_of_type_ArrayOfByte);
+          ((SecSvcHandler)localObject).a(this.jdField_a_of_type_ArrayOfByte);
         } else {
-          ((aodi)localObject).b(this.jdField_a_of_type_ArrayOfByte);
+          ((SecSvcHandler)localObject).b(this.jdField_a_of_type_ArrayOfByte);
         }
       }
     }
@@ -121,7 +119,7 @@ public class PhoneUnityPhoneLoginActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity
  * JD-Core Version:    0.7.0.1
  */

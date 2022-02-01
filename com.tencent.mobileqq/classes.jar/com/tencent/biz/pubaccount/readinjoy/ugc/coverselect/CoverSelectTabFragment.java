@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
@@ -21,18 +22,12 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import java.util.ArrayList;
 import java.util.List;
-import pkh;
-import rwh;
-import rwi;
-import rwj;
-import rwk;
-import rwv;
 
 public class CoverSelectTabFragment
   extends PublicBaseFragment
   implements View.OnClickListener
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { pkh.a(2131717667), pkh.a(2131717666) };
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { ReadInJoyUtils.a(2131718169), ReadInJoyUtils.a(2131718168) };
   private int jdField_a_of_type_Int;
   protected Activity a;
   private View jdField_a_of_type_AndroidViewView;
@@ -42,7 +37,7 @@ public class CoverSelectTabFragment
   private ViewPagerCompat jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat;
   private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
   private List<Fragment> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private View b;
   
   private void a()
@@ -61,7 +56,7 @@ public class CoverSelectTabFragment
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectGalleryFragment = GalleryFragment.a(i, j, (String)localObject);
     this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCaptureFragment);
     this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectGalleryFragment);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCaptureFragment.a(new rwi(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCaptureFragment.a(new CoverSelectTabFragment.2(this));
   }
   
   public static void a(Activity paramActivity, int paramInt1, int paramInt2, float paramFloat, String paramString, UgcVideo paramUgcVideo)
@@ -79,6 +74,20 @@ public class CoverSelectTabFragment
     localIntent.putExtra("ARG_VIDEO_HEIGHT", paramInt4);
     localIntent.putExtra("ARG_PLACEHOLDER_URL", paramString1);
     PublicFragmentActivity.a(paramActivity, localIntent, CoverSelectTabFragment.class, paramInt1);
+  }
+  
+  private void a(OutputPicListener paramOutputPicListener)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.getCurrentItem() == 0)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCaptureFragment.a(paramOutputPicListener);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectGalleryFragment.a(paramOutputPicListener);
   }
   
   private void a(String paramString, int paramInt)
@@ -100,32 +109,18 @@ public class CoverSelectTabFragment
     }
   }
   
-  private void a(rwv paramrwv)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.getCurrentItem() == 0)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCaptureFragment.a(paramrwv);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectGalleryFragment.a(paramrwv);
-  }
-  
   private void b()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(new rwj(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(new CoverSelectTabFragment.3(this));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabMode(1);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabGravity(1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 3.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 3.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorColor(-1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingLeft(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 32.0F));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingRight(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 32.0F));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingBottom(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 6.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingLeft(DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 32.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingRight(DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 32.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorPaddingBottom(DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 6.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabTextColors(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131165563), -1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabTextSize(DisplayUtil.sp2px(this.jdField_a_of_type_AndroidAppActivity, 16.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabTextSize(DisplayUtil.c(this.jdField_a_of_type_AndroidAppActivity, 16.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setupWithViewPager(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat, false);
   }
   
@@ -144,7 +139,7 @@ public class CoverSelectTabFragment
   {
     int i = paramView.getId();
     if (i == this.jdField_a_of_type_AndroidViewView.getId()) {
-      a(new rwk(this));
+      a(new CoverSelectTabFragment.4(this));
     }
     for (;;)
     {
@@ -158,7 +153,7 @@ public class CoverSelectTabFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = View.inflate(getActivity(), 2131560029, null);
+    paramLayoutInflater = View.inflate(getActivity(), 2131560106, null);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -166,18 +161,18 @@ public class CoverSelectTabFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131379099));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat = ((ViewPagerCompat)paramView.findViewById(2131365297));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = ((TabLayoutCompat)paramView.findViewById(2131365295));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365296);
-    this.b = paramView.findViewById(2131365294);
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.a(0);
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131379533));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat = ((ViewPagerCompat)paramView.findViewById(2131365438));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = ((TabLayoutCompat)paramView.findViewById(2131365436));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365437);
+    this.b = paramView.findViewById(2131365435);
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.resetBkColor(0);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     a();
     b();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.setScrollable(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.setAdapter(new rwh(this, getActivity().getSupportFragmentManager()));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.setAdapter(new CoverSelectTabFragment.1(this, getActivity().getSupportFragmentManager()));
     if (this.jdField_a_of_type_Int == 1)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.setCurrentItem(1);
@@ -188,7 +183,7 @@ public class CoverSelectTabFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment
  * JD-Core Version:    0.7.0.1
  */

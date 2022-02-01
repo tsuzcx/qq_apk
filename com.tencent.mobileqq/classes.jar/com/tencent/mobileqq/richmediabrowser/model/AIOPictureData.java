@@ -49,8 +49,13 @@ public class AIOPictureData
     this.jdField_a_of_type_JavaLangString = "I:N";
     this.jdField_c_of_type_JavaLangString = "I:N";
     this.jdField_d_of_type_JavaLangString = "I:N";
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
     this.jdField_e_of_type_JavaLangString = "I:N";
     this.jdField_d_of_type_Int = 0;
+    this.jdField_j_of_type_Boolean = false;
+    this.jdField_k_of_type_Boolean = false;
   }
   
   public int getType()
@@ -248,7 +253,7 @@ public class AIOPictureData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOPictureData
  * JD-Core Version:    0.7.0.1
  */

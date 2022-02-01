@@ -7,9 +7,9 @@ import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View.MeasureSpec;
-import bovj;
 import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
-import ykq;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
 
 public class TrimTextureVideoView
   extends com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView
@@ -37,7 +37,7 @@ public class TrimTextureVideoView
   
   private float a(int paramInt1, int paramInt2)
   {
-    return Math.max(1.0F / bovj.a(getResources()), Math.min(paramInt2, paramInt1) * 1.0F / Math.max(paramInt2, paramInt1));
+    return Math.max(1.0F / TakeVideoUtils.a(getResources()), Math.min(paramInt2, paramInt1) * 1.0F / Math.max(paramInt2, paramInt1));
   }
   
   private Matrix a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -74,7 +74,7 @@ public class TrimTextureVideoView
         f = a(paramInt2, paramInt3);
         setScaleX(f);
         setScaleY(f);
-        ykq.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+        SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
         return true;
       }
       DisplayMetrics localDisplayMetrics;
@@ -92,7 +92,7 @@ public class TrimTextureVideoView
           this.jdField_a_of_type_Boolean = false;
           this.jdField_a_of_type_AndroidGraphicsMatrix = a(i, j, paramInt2, paramInt3);
           setTransform(this.jdField_a_of_type_AndroidGraphicsMatrix);
-          ykq.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+          SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
           return false;
           this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
         }
@@ -103,7 +103,7 @@ public class TrimTextureVideoView
         f = a(paramInt2, paramInt3);
         setScaleX(f);
         setScaleY(f);
-        ykq.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+        SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
         return false;
       }
       if (paramInt2 == paramInt3)
@@ -119,12 +119,12 @@ public class TrimTextureVideoView
           this.jdField_a_of_type_Boolean = false;
           this.jdField_a_of_type_AndroidGraphicsMatrix = a(i, j, paramInt2, paramInt3);
           setTransform(this.jdField_a_of_type_AndroidGraphicsMatrix);
-          ykq.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+          SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
           return false;
           this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
         }
       }
-      ykq.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return false;
     }
   }
@@ -252,7 +252,7 @@ public class TrimTextureVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView
  * JD-Core Version:    0.7.0.1
  */

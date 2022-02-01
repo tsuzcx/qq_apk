@@ -10,9 +10,9 @@ public final class RespTmpChatPicDownload
   extends JceStruct
   implements Cloneable
 {
-  public int lReplyCode;
-  public long lSeq;
-  public long lUIN;
+  public int lReplyCode = 0;
+  public long lSeq = 0L;
+  public long lUIN = 0L;
   public String strDownloadURL = "";
   public String strResult = "";
   

@@ -7,72 +7,70 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelWaterFallViewController;
 import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView.IClassData;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import cooperation.readinjoy.ReadInJoyHelper;
 import mqq.app.Constants.LogoutReason;
-import oqy;
-import orh;
-import pyj;
-import pyk;
-import sye;
 
-public abstract class ReadInJoyFragmentWithSubChannel<C extends sye>
+public abstract class ReadInJoyFragmentWithSubChannel<C extends ChannelClassificationListView.IClassData>
   extends ReadInJoyBaseFragment
 {
-  public ChannelClassificationListView<C> a;
-  public orh a;
-  pyk a;
-  public boolean a;
+  ReadInJoyChannelWaterFallViewController jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController;
+  ReadInJoyFragmentWithSubChannel.ReadInjoyViewInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyFragmentWithSubChannel$ReadInjoyViewInterface;
+  protected ChannelClassificationListView<C> a;
+  boolean jdField_a_of_type_Boolean;
   
   protected abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle, ChannelClassificationListView<C> paramChannelClassificationListView);
   
-  public abstract pyk a();
+  public abstract ReadInJoyFragmentWithSubChannel.ReadInjoyViewInterface a();
   
   protected void a() {}
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (this.jdField_a_of_type_Orh != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController != null)
     {
-      this.jdField_a_of_type_Orh.a(true, 0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.a(true, 0);
       return;
     }
-    oqy.e(a());
+    ReadInJoyChannelViewPagerController.d(a());
   }
   
-  public void a(View paramView, int paramInt) {}
+  protected void a(View paramView, int paramInt) {}
   
   public void a(Constants.LogoutReason paramLogoutReason)
   {
     super.a(paramLogoutReason);
-    if ((bmhv.l()) && (this.jdField_a_of_type_Orh != null)) {
-      this.jdField_a_of_type_Orh.a(paramLogoutReason);
+    if ((ReadInJoyHelper.m()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.a(paramLogoutReason);
     }
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     super.a(paramBoolean, paramActivity, paramBundle);
-    if (this.jdField_a_of_type_Orh != null) {
-      this.jdField_a_of_type_Orh.b();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.b();
     }
   }
   
   public void e()
   {
     super.e();
-    if (this.jdField_a_of_type_Orh != null) {
-      this.jdField_a_of_type_Orh.a(true);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.a(true);
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Orh != null) {
-      this.jdField_a_of_type_Orh.a(true);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.a(true);
     }
   }
   
@@ -84,16 +82,16 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends sye>
   public void g()
   {
     super.g();
-    this.c = false;
-    if (this.jdField_a_of_type_Orh != null) {
-      this.jdField_a_of_type_Orh.l();
+    this.d = false;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.l();
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Orh != null) {
-      this.jdField_a_of_type_Orh.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -106,7 +104,7 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends sye>
   
   public final View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (bmhv.x(getActivity().getAppRuntime()) == 0) {}
+    if (ReadInJoyHelper.u(getActivity().getAppRuntime()) == 0) {}
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
@@ -116,14 +114,14 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends sye>
       if ((!f()) && (this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView = new ChannelClassificationListView(getActivity());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setOnItemClickListener(new pyj(this));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setOnItemClickListener(new ReadInJoyFragmentWithSubChannel.1(this));
       }
-      this.jdField_a_of_type_Pyk = a();
-      this.jdField_a_of_type_Orh = new orh(a(), 0, getActivity(), this.jdField_a_of_type_Pyk);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyFragmentWithSubChannel$ReadInjoyViewInterface = a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController = new ReadInJoyChannelWaterFallViewController(a(), 0, getActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyFragmentWithSubChannel$ReadInjoyViewInterface);
       paramLayoutInflater = a(paramLayoutInflater, paramViewGroup, paramBundle, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView);
-      this.jdField_a_of_type_Orh.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.a();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null) {
-        this.jdField_a_of_type_Orh.i();
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.i();
       }
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
@@ -133,34 +131,34 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends sye>
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Orh.d();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.d();
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Orh != null) {
-      this.jdField_a_of_type_Orh.g();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.g();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Orh.h();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.h();
   }
   
   public void onStop()
   {
     super.onStop();
-    if ((getActivity().isFinishing()) && (this.jdField_a_of_type_Orh != null)) {
-      this.jdField_a_of_type_Orh.c();
+    if ((getActivity().isFinishing()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelWaterFallViewController.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFragmentWithSubChannel
  * JD-Core Version:    0.7.0.1
  */

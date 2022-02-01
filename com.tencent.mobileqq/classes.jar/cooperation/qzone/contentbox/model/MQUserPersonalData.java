@@ -2,8 +2,8 @@ package cooperation.qzone.contentbox.model;
 
 import NS_QZONE_MQMSG.UserPersonalData;
 import NS_QZONE_MQMSG.UserPersonalProfile;
-import bmkb;
 import cooperation.qzone.util.QZLog;
+import cooperation.vip.JsonUtil;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -69,7 +69,7 @@ public class MQUserPersonalData
     {
       return null;
       localHashMap = new HashMap();
-      paramJSONObject = bmkb.a(paramJSONObject.toString());
+      paramJSONObject = JsonUtil.a(paramJSONObject.toString());
     } while (paramJSONObject == null);
     paramJSONObject = paramJSONObject.entrySet().iterator();
     while (paramJSONObject.hasNext())
@@ -130,7 +130,7 @@ public class MQUserPersonalData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQUserPersonalData
  * JD-Core Version:    0.7.0.1
  */

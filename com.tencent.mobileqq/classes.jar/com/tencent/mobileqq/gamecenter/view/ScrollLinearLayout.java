@@ -15,7 +15,7 @@ public class ScrollLinearLayout
   extends LinearLayout
   implements NestedScrollingParent
 {
-  private int jdField_a_of_type_Int = AIOUtils.dp2px(80.0F, getResources());
+  private int jdField_a_of_type_Int = AIOUtils.a(80.0F, getResources());
   private View jdField_a_of_type_AndroidViewView;
   private OverScroller jdField_a_of_type_AndroidWidgetOverScroller;
   private View b;
@@ -46,14 +46,14 @@ public class ScrollLinearLayout
     return 0;
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
-    this.b = findViewById(2131366722);
+    this.b = findViewById(2131366898);
     this.jdField_a_of_type_AndroidWidgetOverScroller = new OverScroller(getContext());
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if ((this.b == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
@@ -144,7 +144,7 @@ public class ScrollLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.ScrollLinearLayout
  * JD-Core Version:    0.7.0.1
  */

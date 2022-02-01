@@ -10,7 +10,7 @@ public final class SUserLabel
   extends JceStruct
 {
   static Map<Long, SLabelInfo> cache_label;
-  public Map<Long, SLabelInfo> label;
+  public Map<Long, SLabelInfo> label = null;
   
   public SUserLabel() {}
   
@@ -37,7 +37,7 @@ public final class SUserLabel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SUserLabel
  * JD-Core Version:    0.7.0.1
  */

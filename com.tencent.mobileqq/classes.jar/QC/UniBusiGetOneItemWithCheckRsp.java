@@ -9,8 +9,8 @@ public final class UniBusiGetOneItemWithCheckRsp
 {
   static UniBusiSimpleItemDetail cache_stDetail = new UniBusiSimpleItemDetail();
   public String errmsg = "";
-  public int ret;
-  public UniBusiSimpleItemDetail stDetail;
+  public int ret = 0;
+  public UniBusiSimpleItemDetail stDetail = null;
   
   public UniBusiGetOneItemWithCheckRsp() {}
   

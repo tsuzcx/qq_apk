@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akrc;
 import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class QWalletGdtAdManager$4
+class QWalletGdtAdManager$4
   implements Runnable
 {
-  public QWalletGdtAdManager$4(akrc paramakrc, String paramString) {}
+  QWalletGdtAdManager$4(QWalletGdtAdManager paramQWalletGdtAdManager, String paramString) {}
   
   public void run()
   {
@@ -36,7 +35,7 @@ public class QWalletGdtAdManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QWalletGdtAdManager.4
  * JD-Core Version:    0.7.0.1
  */

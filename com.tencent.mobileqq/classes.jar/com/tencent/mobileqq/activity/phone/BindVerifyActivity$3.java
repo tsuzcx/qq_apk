@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.phone;
 
 import android.content.Intent;
-import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class BindVerifyActivity$3
   implements Runnable
@@ -18,17 +18,17 @@ class BindVerifyActivity$3
     this.this$0.setResult(-1, localIntent);
     this.this$0.finish();
     if (BindVerifyActivity.a(this.this$0) == 15) {
-      bdla.b(this.this$0.app, "dc00898", "", "", "0X80077C7", "0X80077C7", 0, 0, "", "", "", "");
+      ReportController.b(this.this$0.app, "dc00898", "", "", "0X80077C7", "0X80077C7", 0, 0, "", "", "", "");
     }
     while (BindVerifyActivity.a(this.this$0) != 17) {
       return;
     }
-    bdla.b(this.this$0.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
+    ReportController.b(this.this$0.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindVerifyActivity.3
  * JD-Core Version:    0.7.0.1
  */

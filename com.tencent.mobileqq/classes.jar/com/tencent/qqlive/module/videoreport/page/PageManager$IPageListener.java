@@ -5,11 +5,14 @@ import java.util.Set;
 
 public abstract interface PageManager$IPageListener
 {
-  public abstract void onPageIn(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet);
+  public static final int PG_IN_FROM_IDLE = 0;
+  public static final int PG_IN_FROM_POST = 1;
+  
+  public abstract void onPageIn(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet, int paramInt);
   
   public abstract void onPageOut(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet, boolean paramBoolean);
   
-  public abstract void onPageUpdate(PageInfo paramPageInfo);
+  public abstract void onPageUpdate(PageInfo paramPageInfo, int paramInt);
 }
 
 

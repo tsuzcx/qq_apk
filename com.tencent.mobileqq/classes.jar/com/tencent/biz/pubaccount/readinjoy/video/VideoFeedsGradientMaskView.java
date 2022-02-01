@@ -16,7 +16,7 @@ public class VideoFeedsGradientMaskView
   private int jdField_a_of_type_Int = 1;
   LinearGradient jdField_a_of_type_AndroidGraphicsLinearGradient;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private int b;
+  private int b = 0;
   
   public VideoFeedsGradientMaskView(Context paramContext)
   {
@@ -37,7 +37,7 @@ public class VideoFeedsGradientMaskView
     this.jdField_a_of_type_Int = ((int)(getAlpha() * 255.0F));
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     switch (this.b)
@@ -140,7 +140,7 @@ public class VideoFeedsGradientMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView
  * JD-Core Version:    0.7.0.1
  */

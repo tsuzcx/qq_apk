@@ -1,22 +1,21 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import anvx;
-import bjkv;
-import bnda;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.open.base.ToastUtil;
 
-public class AEBottomListPart$8
+class AEBottomListPart$8
   implements Runnable
 {
-  public AEBottomListPart$8(bnda parambnda) {}
+  AEBottomListPart$8(AEBottomListPart paramAEBottomListPart) {}
   
   public void run()
   {
-    bjkv.a().a(anvx.a(2131715761));
+    ToastUtil.a().a(HardCodeUtil.a(2131716227));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.8
  * JD-Core Version:    0.7.0.1
  */

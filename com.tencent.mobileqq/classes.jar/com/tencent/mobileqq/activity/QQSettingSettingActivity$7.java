@@ -20,12 +20,12 @@ class QQSettingSettingActivity$7
       this.this$0.runOnUiThread(new QQSettingSettingActivity.7.1(this, (String)localObject));
       return;
     }
-    QQSettingSettingActivity.d(this.this$0);
+    QQSettingSettingActivity.e(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingSettingActivity.7
  * JD-Core Version:    0.7.0.1
  */

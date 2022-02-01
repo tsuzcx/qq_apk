@@ -2,14 +2,14 @@ package com.tencent.mobileqq.mini.servlet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bcvh;
-import bhjl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.servlet.LoginVerifyServlet;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -46,7 +46,7 @@ public class MiniAppSendSmsCodeServlet
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
     localOIDBSSOPkg.str_client_version.set(AppSetting.f());
-    paramArrayOfByte = new NewIntent(BaseApplicationImpl.getApplication(), bcvh.class);
+    paramArrayOfByte = new NewIntent(BaseApplicationImpl.getApplication(), LoginVerifyServlet.class);
     paramArrayOfByte.setObserver(paramBusinessObserver);
     paramArrayOfByte.putExtra("cmd", paramString);
     paramArrayOfByte.putExtra("data", localOIDBSSOPkg.toByteArray());
@@ -84,7 +84,7 @@ public class MiniAppSendSmsCodeServlet
       localObject1 = new Bundle();
     }
     if (paramFromServiceMsg.isSuccess()) {}
-    for (localObject2 = bhjl.b(paramFromServiceMsg.getWupBuffer());; localObject2 = null)
+    for (localObject2 = WupUtil.b(paramFromServiceMsg.getWupBuffer());; localObject2 = null)
     {
       ((Bundle)localObject1).putByteArray("data", (byte[])localObject2);
       notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
@@ -104,7 +104,7 @@ public class MiniAppSendSmsCodeServlet
     paramIntent = paramIntent.getStringExtra("cmd");
     QLog.i("MiniAppSendSmsCodeServlet", 1, "onSend, cmd is " + paramIntent);
     paramPacket.setSSOCommand(paramIntent);
-    paramPacket.putSendData(bhjl.a(arrayOfByte));
+    paramPacket.putSendData(WupUtil.a(arrayOfByte));
     if (QLog.isColorLevel()) {
       QLog.i("MiniAppSendSmsCodeServlet", 2, "onSend exit");
     }

@@ -4,21 +4,20 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import aojq;
 import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
-import nfc;
-import nfn;
-import nfv;
+import com.tencent.mobileqq.app.avgameshare.AVGameShareUtil;
 
-public class GameActivityCenterCtrl$ShowAwardResult
+class GameActivityCenterCtrl$ShowAwardResult
   implements Runnable
 {
   private final String a;
   
-  public GameActivityCenterCtrl$ShowAwardResult(String paramString)
+  GameActivityCenterCtrl$ShowAwardResult(String paramString)
   {
     this.a = paramString;
   }
@@ -38,12 +37,12 @@ public class GameActivityCenterCtrl$ShowAwardResult
   
   private void a(Context paramContext)
   {
-    AVGameAppInterface localAVGameAppInterface = nfc.a().a();
+    AVGameAppInterface localAVGameAppInterface = GameEngine.a().a();
     String str1 = localAVGameAppInterface.getCurrentAccountUin();
-    nfv localnfv = nfc.a().a();
-    long l = localnfv.a();
-    String str2 = localnfv.a().getNick(str1);
-    aojq.a().a(localAVGameAppInterface, l, Long.valueOf(str1).longValue(), str2, 3, "", localnfv.d(), new nfn(this, paramContext, str2));
+    EngineData localEngineData = GameEngine.a().a();
+    long l = localEngineData.a();
+    String str2 = localEngineData.a().getNick(str1);
+    AVGameShareUtil.a().a(localAVGameAppInterface, l, Long.valueOf(str1).longValue(), str2, 3, "", localEngineData.d(), new GameActivityCenterCtrl.ShowAwardResult.1(this, paramContext, str2));
   }
   
   public void run()
@@ -60,7 +59,7 @@ public class GameActivityCenterCtrl$ShowAwardResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl.ShowAwardResult
  * JD-Core Version:    0.7.0.1
  */

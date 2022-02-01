@@ -84,7 +84,6 @@
                     "view_id":"id_feeds_follow_button_container",
                     "default_visible":"YES",
                     "align_parent_center_vertical":"YES",
-                    "margin_top":"20.5",
                     "margin_right":"12",
                     "align_parent_right":"YES",
                     "height":{

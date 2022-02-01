@@ -1,32 +1,38 @@
 package com.tencent.mobileqq.apollo;
 
-import android.app.Activity;
 import android.view.View;
-import android.view.Window;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
+import org.json.JSONObject;
 
 final class ApolloRender$28
-  implements Runnable
+  implements APICallback
 {
-  ApolloRender$28(View paramView, int paramInt) {}
+  ApolloRender$28(View paramView, DoraemonAPIManager paramDoraemonAPIManager, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
-    if (this.jdField_a_of_type_Int == 1) {
-      localActivity.getWindow().addFlags(128);
-    }
-    for (;;)
-    {
-      QLog.e("sava_ApolloRender", 2, "SetKeepScreenOn :" + this.jdField_a_of_type_Int);
-      return;
-      localActivity.getWindow().clearFlags(128);
-    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
   }
+  
+  public void a(int paramInt, String paramString)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optString("city", "");
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramJSONObject, 0, "location success");
+  }
+  
+  public void b(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.28
  * JD-Core Version:    0.7.0.1
  */

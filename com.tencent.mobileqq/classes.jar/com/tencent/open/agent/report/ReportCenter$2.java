@@ -7,20 +7,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings.Secure;
-import bizw;
-import bjgx;
-import bjgz;
-import bjkj;
-import bjls;
-import bjlt;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.APNUtil;
+import com.tencent.open.business.base.MobileInfoUtil;
+import com.tencent.open.business.base.OpenConfig;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.TimeZone;
 
-public class ReportCenter$2
+class ReportCenter$2
   implements Runnable
 {
-  public ReportCenter$2(bjgx parambjgx, String paramString, boolean paramBoolean1, Bundle paramBundle, boolean paramBoolean2) {}
+  ReportCenter$2(ReportCenter paramReportCenter, String paramString, boolean paramBoolean1, Bundle paramBundle, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -60,9 +58,9 @@ public class ReportCenter$2
           ??? = "";
           label130:
           ((Bundle)localObject2).putString("position", (String)???);
-          ((Bundle)localObject2).putString("network", bjkj.a(bizw.a().a()));
-          ((Bundle)localObject2).putString("language", bjls.b());
-          ((Bundle)localObject2).putString("resolution", bjls.e());
+          ((Bundle)localObject2).putString("network", APNUtil.a(CommonDataAdapter.a().a()));
+          ((Bundle)localObject2).putString("language", MobileInfoUtil.b());
+          ((Bundle)localObject2).putString("resolution", MobileInfoUtil.e());
           if (!this.jdField_a_of_type_Boolean) {
             break label460;
           }
@@ -70,8 +68,8 @@ public class ReportCenter$2
           ((Bundle)localObject2).putString("apn", (String)???);
           ((Bundle)localObject2).putString("model_name", Build.MODEL);
           ((Bundle)localObject2).putString("timezone", TimeZone.getDefault().getID());
-          ((Bundle)localObject2).putString("qq_ver", bizw.a().c());
-          ((Bundle)localObject2).putString("qua", bizw.a().f());
+          ((Bundle)localObject2).putString("qq_ver", CommonDataAdapter.a().c());
+          ((Bundle)localObject2).putString("qua", CommonDataAdapter.a().f());
           ((Bundle)localObject2).putString("via", "2");
           ((Bundle)localObject2).putString("result", "0");
           if (this.jdField_a_of_type_AndroidOsBundle != null) {
@@ -83,8 +81,8 @@ public class ReportCenter$2
         {
           this.this$0.b.add(localObject2);
           int k = this.this$0.b.size();
-          int m = bjgz.a().a("report_via");
-          int j = bjlt.a(bizw.a().a(), null).a("Agent_ReportTimeInterval");
+          int m = ReportDatabaseHelper.a().a("report_via");
+          int j = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Agent_ReportTimeInterval");
           i = j;
           if (j == 0) {
             i = 10000;
@@ -94,21 +92,21 @@ public class ReportCenter$2
             this.this$0.a(this.jdField_a_of_type_Boolean);
             this.this$0.a.removeMessages(1001);
             return;
-            ??? = bjls.c();
+            ??? = MobileInfoUtil.c();
             continue;
-            ??? = bjls.d();
+            ??? = MobileInfoUtil.d();
             break label51;
             label425:
-            ??? = Settings.Secure.getString(bizw.a().a().getContentResolver(), "android_id");
+            ??? = Settings.Secure.getString(CommonDataAdapter.a().a().getContentResolver(), "android_id");
             break label71;
             label444:
-            ??? = bjls.a();
+            ??? = MobileInfoUtil.a();
             break label91;
             label452:
-            ??? = bjls.f();
+            ??? = MobileInfoUtil.f();
             break label130;
             label460:
-            ??? = bjkj.b(bizw.a().a());
+            ??? = APNUtil.b(CommonDataAdapter.a().a());
           }
         }
       }
@@ -134,7 +132,7 @@ public class ReportCenter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.report.ReportCenter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -17,44 +17,40 @@ import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import uar;
-import uas;
-import uba;
-import ubo;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/VBarrage;", "Lcom/tencent/viola/ui/baseComponent/VComponentContainer;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/VBarrageView;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/IBarrageControl;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageCallback;", "instance", "Lcom/tencent/viola/core/ViolaInstance;", "node", "Lcom/tencent/viola/ui/dom/DomObject;", "parent", "(Lcom/tencent/viola/core/ViolaInstance;Lcom/tencent/viola/ui/dom/DomObject;Lcom/tencent/viola/ui/baseComponent/VComponentContainer;)V", "barrageConfig", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageConfig;", "barrageController", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageController;", "destroy", "", "doWhenCompDestroy", "fetchBarrageList", "articleId", "", "rowKey", "", "puin", "fetchBarrageListFromServer", "initComponentHostView", "context", "Landroid/content/Context;", "onActivityDestroy", "onEventBarrageDidAppear", "onEventBarrageOnClick", "commentId", "parseBarrageConfig", "pause", "play", "removedByDiff", "removedByJs", "stop", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class VBarrage
   extends VComponentContainer<VBarrageView>
-  implements uar
+  implements BarrageCallback, IBarrageControl
 {
-  public static final ubo Companion = new ubo(null);
+  public static final VBarrage.Companion Companion = new VBarrage.Companion(null);
   @NotNull
   public static final String EVENT_BARRAGE_DIDAPPEAR = "barrageDidAppear";
   @NotNull
   public static final String EVENT_BARRAGE_ONCLICK = "barrageOnClick";
   private final BarrageConfig barrageConfig = parseBarrageConfig();
-  private uas barrageController;
+  private BarrageController barrageController;
   
   public VBarrage(@NotNull ViolaInstance paramViolaInstance, @NotNull DomObject paramDomObject, @NotNull VComponentContainer<?> paramVComponentContainer)
   {
     super(paramViolaInstance, paramDomObject, paramVComponentContainer);
     int i = this.barrageConfig.a();
-    int j = DisplayUtil.dip2px((Context)BaseApplicationImpl.getContext(), 24 + this.barrageConfig.b());
+    int j = DisplayUtil.b((Context)BaseApplicationImpl.getContext(), 24 + this.barrageConfig.b());
     paramViolaInstance = getDomObject();
-    if ((paramViolaInstance instanceof uba)) {
-      ((uba)paramViolaInstance).a(i * j);
+    if ((paramViolaInstance instanceof BarrageDomObject)) {
+      ((BarrageDomObject)paramViolaInstance).a(i * j);
     }
   }
   
   private final void doWhenCompDestroy()
   {
-    uas localuas = this.barrageController;
-    if (localuas != null) {
-      localuas.c();
+    BarrageController localBarrageController = this.barrageController;
+    if (localBarrageController != null) {
+      localBarrageController.c();
     }
-    localuas = this.barrageController;
-    if (localuas != null) {
-      localuas.d();
+    localBarrageController = this.barrageController;
+    if (localBarrageController != null) {
+      localBarrageController.d();
     }
   }
   
@@ -385,9 +381,9 @@ public final class VBarrage
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "rowKey");
     Intrinsics.checkParameterIsNotNull(paramString2, "puin");
-    uas localuas = this.barrageController;
-    if (localuas != null) {
-      localuas.a(paramLong, paramString1, paramString2);
+    BarrageController localBarrageController = this.barrageController;
+    if (localBarrageController != null) {
+      localBarrageController.a(paramLong, paramString1, paramString2);
     }
   }
   
@@ -396,10 +392,10 @@ public final class VBarrage
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     paramContext = new VBarrageView(paramContext, null, 0, 6, null);
-    this.barrageController = new uas((BarrageView)paramContext, this.barrageConfig);
-    uas localuas = this.barrageController;
-    if (localuas != null) {
-      localuas.a((uar)this);
+    this.barrageController = new BarrageController((BarrageView)paramContext, this.barrageConfig);
+    BarrageController localBarrageController = this.barrageController;
+    if (localBarrageController != null) {
+      localBarrageController.a((BarrageCallback)this);
     }
     fetchBarrageListFromServer();
     return paramContext;
@@ -427,18 +423,18 @@ public final class VBarrage
   @JSMethod
   public void pause()
   {
-    uas localuas = this.barrageController;
-    if (localuas != null) {
-      localuas.b();
+    BarrageController localBarrageController = this.barrageController;
+    if (localBarrageController != null) {
+      localBarrageController.b();
     }
   }
   
   @JSMethod
   public void play()
   {
-    uas localuas = this.barrageController;
-    if (localuas != null) {
-      localuas.a();
+    BarrageController localBarrageController = this.barrageController;
+    if (localBarrageController != null) {
+      localBarrageController.a();
     }
   }
   
@@ -457,15 +453,15 @@ public final class VBarrage
   @JSMethod
   public void stop()
   {
-    uas localuas = this.barrageController;
-    if (localuas != null) {
-      localuas.c();
+    BarrageController localBarrageController = this.barrageController;
+    if (localBarrageController != null) {
+      localBarrageController.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.VBarrage
  * JD-Core Version:    0.7.0.1
  */

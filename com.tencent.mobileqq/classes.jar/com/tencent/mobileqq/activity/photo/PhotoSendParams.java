@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akkg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +8,7 @@ import java.io.Serializable;
 public class PhotoSendParams
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PhotoSendParams> CREATOR = new akkg();
+  public static final Parcelable.Creator<PhotoSendParams> CREATOR = new PhotoSendParams.1();
   public static final int SEND_PIC_NORMAL = 0;
   public static final int SEND_PIC_QZONE = 1;
   public long fileSize;
@@ -78,7 +77,7 @@ public class PhotoSendParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoSendParams
  * JD-Core Version:    0.7.0.1
  */

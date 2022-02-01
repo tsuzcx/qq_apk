@@ -77,6 +77,9 @@ public final class GsonUtils
   
   public static JsonObject json2JsonObject(String paramString)
   {
+    if (paramString == null) {
+      return null;
+    }
     try
     {
       paramString = new JsonParser().parse(paramString);
@@ -577,7 +580,7 @@ public final class GsonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.util.GsonUtils
  * JD-Core Version:    0.7.0.1
  */

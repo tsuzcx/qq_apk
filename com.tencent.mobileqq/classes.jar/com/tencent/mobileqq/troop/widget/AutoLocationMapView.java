@@ -3,24 +3,24 @@ package com.tencent.mobileqq.troop.widget;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
-import bgmu;
-import bgmv;
 import com.tencent.tencentmap.mapsdk.maps.MapView;
 
 public class AutoLocationMapView
   extends MapView
 {
-  Handler a = new bgmu(this);
-  public bgmv a;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  AutoLocationMapView.AutoLocationCallback jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView$AutoLocationCallback;
   
   public AutoLocationMapView(Context paramContext)
   {
     super(paramContext);
+    this.a = new AutoLocationMapView.1(this);
   }
   
   public AutoLocationMapView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.a = new AutoLocationMapView.1(this);
   }
 }
 

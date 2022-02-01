@@ -7,7 +7,6 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import bogj;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +19,7 @@ public class FilterProviderPagerAdapter
   extends PagerAdapter
 {
   public static final int a;
-  public static final int b = AIOUtils.dp2px(0.0F, BaseApplication.getContext().getResources());
+  public static final int b = AIOUtils.a(0.0F, BaseApplication.getContext().getResources());
   private Context jdField_a_of_type_AndroidContentContext;
   public SparseArray<GridView> a;
   private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener;
@@ -29,7 +28,7 @@ public class FilterProviderPagerAdapter
   
   static
   {
-    jdField_a_of_type_Int = AIOUtils.dp2px(7.0F, BaseApplication.getContext().getResources());
+    jdField_a_of_type_Int = AIOUtils.a(7.0F, BaseApplication.getContext().getResources());
   }
   
   public FilterProviderPagerAdapter(Context paramContext, int paramInt)
@@ -74,10 +73,10 @@ public class FilterProviderPagerAdapter
       ((GridView)localObject1).setVerticalSpacing(b);
       ((GridView)localObject1).setHorizontalSpacing(b);
       ((GridView)localObject1).setClipToPadding(false);
-      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + jdField_a_of_type_Int + AIOUtils.dp2px(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + jdField_a_of_type_Int + AIOUtils.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((GridView)localObject1).setVerticalScrollBarEnabled(false);
-      localObject2 = new bogj(this.jdField_a_of_type_AndroidContentContext, this.c);
-      ((bogj)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a);
+      localObject2 = new FilterProviderGridAdapter(this.jdField_a_of_type_AndroidContentContext, this.c);
+      ((FilterProviderGridAdapter)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a);
       ((GridView)localObject1).setAdapter((ListAdapter)localObject2);
       ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
@@ -93,7 +92,7 @@ public class FilterProviderPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.adapter.FilterProviderPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

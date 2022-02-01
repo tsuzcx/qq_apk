@@ -2,9 +2,9 @@ package com.tencent.mobileqq.intervideo.audioroom.webview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 
 public abstract class BaseQQVoiceWebViewPlugin
   extends WebViewPlugin
@@ -66,7 +66,7 @@ public abstract class BaseQQVoiceWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.webview.BaseQQVoiceWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

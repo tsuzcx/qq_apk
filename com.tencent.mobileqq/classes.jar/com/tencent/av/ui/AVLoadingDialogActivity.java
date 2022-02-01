@@ -1,6 +1,5 @@
 package com.tencent.av.ui;
 
-import Override;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -17,24 +16,22 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.lang.ref.WeakReference;
-import mce;
-import mcf;
 
 public class AVLoadingDialogActivity
   extends BaseActivity
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mce(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new mcf(this.jdField_a_of_type_JavaLangString);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new AVLoadingDialogActivity.1(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new AVLoadingDialogActivity.MyHandler(this.jdField_a_of_type_JavaLangString);
   final String jdField_a_of_type_JavaLangString = "AVLoadingDialogActivity_" + AudioHelper.b();
   
   Dialog a()
   {
-    ReportDialog localReportDialog = new ReportDialog(this, 2131755829);
-    localReportDialog.setContentView(2131559607);
+    ReportDialog localReportDialog = new ReportDialog(this, 2131755842);
+    localReportDialog.setContentView(2131559683);
     localReportDialog.setCancelable(false);
-    TextView localTextView = (TextView)localReportDialog.findViewById(2131372740);
+    TextView localTextView = (TextView)localReportDialog.findViewById(2131373066);
     if (localTextView != null) {
-      localTextView.setText(2131695633);
+      localTextView.setText(2131695876);
     }
     return localReportDialog;
   }
@@ -114,7 +111,7 @@ public class AVLoadingDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.AVLoadingDialogActivity
  * JD-Core Version:    0.7.0.1
  */

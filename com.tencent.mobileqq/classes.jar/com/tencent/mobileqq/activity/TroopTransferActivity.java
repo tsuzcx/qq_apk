@@ -1,24 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import afin;
-import afio;
-import afip;
-import afiq;
-import afir;
-import afis;
-import afit;
-import afiw;
-import afix;
-import afiy;
-import afiz;
-import afja;
-import afjb;
-import afjc;
-import afjd;
-import afje;
-import afjf;
-import afjg;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -39,20 +20,22 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvi;
-import anvx;
-import aofu;
-import bdla;
-import bhbx;
-import bhdj;
-import biso;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopBusinessObserver;
+import com.tencent.mobileqq.avatar.observer.AvatarObserver;
 import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberCardInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
@@ -63,6 +46,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class TroopTransferActivity
   extends BaseActivity
@@ -70,26 +54,28 @@ public class TroopTransferActivity
 {
   protected int a;
   protected long a;
-  protected afjb a;
-  public afjf a;
-  public Dialog a;
-  public View a;
-  public EditText a;
+  protected Dialog a;
+  protected View a;
+  protected EditText a;
   protected ImageButton a;
-  public LinearLayout a;
+  protected LinearLayout a;
   protected RelativeLayout a;
   protected TextView a;
-  anvi jdField_a_of_type_Anvi = new afis(this);
-  aofu jdField_a_of_type_Aofu = new afit(this);
-  public biso a;
-  public XListView a;
+  protected TroopTransferActivity.SearchResultAdapter a;
+  protected TroopTransferActivity.TroopMemberListAdapter a;
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new TroopTransferActivity.4(this);
+  TroopBusinessObserver jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver = new TroopTransferActivity.5(this);
+  AvatarObserver jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new TroopTransferActivity.3(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new TroopTransferActivity.6(this);
+  protected QQProgressNotifier a;
+  protected XListView a;
   protected Integer a;
-  public String a;
-  protected List<afje> a;
-  public boolean a;
+  protected String a;
+  protected List<TroopTransferActivity.TroopMemberItem> a;
+  protected boolean a;
   protected View b;
   protected TextView b;
-  public XListView b;
+  protected XListView b;
   protected String b;
   protected View c;
   protected TextView c;
@@ -104,15 +90,15 @@ public class TroopTransferActivity
   
   private void c()
   {
-    Object localObject = (ViewGroup)findViewById(2131376760);
+    Object localObject = (ViewGroup)findViewById(2131377159);
     if (localObject != null) {
       IphoneTitleBarActivity.setLayerType((View)localObject);
     }
-    localObject = findViewById(2131379020);
+    localObject = findViewById(2131379451);
     if (localObject != null) {
       IphoneTitleBarActivity.setLayerType((View)localObject);
     }
-    localObject = (TextView)findViewById(2131369231);
+    localObject = (TextView)findViewById(2131369487);
     if (localObject != null) {
       IphoneTitleBarActivity.setLayerType((View)localObject);
     }
@@ -142,45 +128,45 @@ public class TroopTransferActivity
     }
   }
   
-  protected void a(afje paramafje)
+  protected void a(TroopTransferActivity.TroopMemberItem paramTroopMemberItem)
   {
     Object localObject;
     if (((this.jdField_a_of_type_Long & 0x800) != 0L) || (this.jdField_a_of_type_Int != 0))
     {
-      localObject = getString(2131691044, new Object[] { anvx.a(2131715158), anvx.a(2131715158) });
-      QQCustomDialog localQQCustomDialog = bhdj.a(this, 230);
-      String str = paramafje.jdField_a_of_type_JavaLangString;
-      localQQCustomDialog.setTitle(2131719456);
+      localObject = getString(2131691151, new Object[] { HardCodeUtil.a(2131715652), HardCodeUtil.a(2131715652) });
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
+      String str = paramTroopMemberItem.jdField_a_of_type_JavaLangString;
+      localQQCustomDialog.setTitle(2131720020);
       localQQCustomDialog.setMessage((CharSequence)localObject);
-      localQQCustomDialog.setPositiveButton(getString(2131694399), new afip(this, str, localQQCustomDialog));
-      localQQCustomDialog.setPositiveButtonContentDescription(getString(2131691211));
-      localQQCustomDialog.setNegativeButton(getString(2131690697), new afiq(this, localQQCustomDialog));
-      localQQCustomDialog.setNegativeButtonContentDescription(getString(2131691210));
+      localQQCustomDialog.setPositiveButton(getString(2131694615), new TroopTransferActivity.13(this, str, localQQCustomDialog));
+      localQQCustomDialog.setPositiveButtonContentDescription(getString(2131691318));
+      localQQCustomDialog.setNegativeButton(getString(2131690800), new TroopTransferActivity.14(this, localQQCustomDialog));
+      localQQCustomDialog.setNegativeButtonContentDescription(getString(2131691317));
       localQQCustomDialog.show();
       localObject = this.app;
-      if (paramafje.jdField_b_of_type_Int != 1) {
+      if (paramTroopMemberItem.jdField_b_of_type_Int != 1) {
         break label203;
       }
     }
     label203:
-    for (paramafje = "1";; paramafje = "0")
+    for (paramTroopMemberItem = "1";; paramTroopMemberItem = "0")
     {
-      bdla.b((QQAppInterface)localObject, "CliOper", "", "", "Grp", "Transgrp_others", 0, 0, paramafje, "", "", "");
+      ReportController.b((AppRuntime)localObject, "CliOper", "", "", "Grp", "Transgrp_others", 0, 0, paramTroopMemberItem, "", "", "");
       return;
-      localObject = String.format(getString(2131719533), new Object[] { paramafje.jdField_b_of_type_JavaLangString });
+      localObject = String.format(getString(2131720097), new Object[] { paramTroopMemberItem.jdField_b_of_type_JavaLangString });
       break;
     }
   }
   
-  public void a(afje paramafje, Friends paramFriends)
+  protected void a(TroopTransferActivity.TroopMemberItem paramTroopMemberItem, Friends paramFriends)
   {
     if (!a()) {
       return;
     }
-    ThreadManager.post(new TroopTransferActivity.15(this, paramFriends, paramafje), 5, null, true);
+    ThreadManager.post(new TroopTransferActivity.17(this, paramFriends, paramTroopMemberItem), 5, null, true);
   }
   
-  public void a(String paramString)
+  void a(String paramString)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_c_of_type_AndroidViewView.getLayoutParams().height = -1;
@@ -189,93 +175,93 @@ public class TroopTransferActivity
       this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
       this.jdField_b_of_type_ComTencentWidgetXListView.setVisibility(8);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Afjb.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$SearchResultAdapter.notifyDataSetChanged();
       return;
     }
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
     this.jdField_b_of_type_ComTencentWidgetXListView.setVisibility(0);
     paramString = paramString.toLowerCase();
-    List localList = this.jdField_a_of_type_Afjf.a();
+    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.a();
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList3 = new ArrayList();
     int i = 0;
     if (i < localList.size())
     {
-      afje localafje = (afje)localList.get(i);
-      localafje.e = "";
-      localafje.f = "";
-      if ((localafje.m.equals(paramString)) || (localafje.o.equals(paramString)) || (localafje.n.equals(paramString)))
+      TroopTransferActivity.TroopMemberItem localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)localList.get(i);
+      localTroopMemberItem.e = "";
+      localTroopMemberItem.f = "";
+      if ((localTroopMemberItem.m.equals(paramString)) || (localTroopMemberItem.o.equals(paramString)) || (localTroopMemberItem.n.equals(paramString)))
       {
-        localafje.e = localafje.m;
-        localArrayList1.add(localafje);
+        localTroopMemberItem.e = localTroopMemberItem.m;
+        localArrayList1.add(localTroopMemberItem);
       }
       for (;;)
       {
         i += 1;
         break;
-        if ((localafje.j.equals(paramString)) || (localafje.l.equals(paramString)) || (localafje.k.equals(paramString)))
+        if ((localTroopMemberItem.j.equals(paramString)) || (localTroopMemberItem.l.equals(paramString)) || (localTroopMemberItem.k.equals(paramString)))
         {
-          localafje.e = localafje.j;
-          localArrayList1.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.j;
+          localArrayList1.add(localTroopMemberItem);
         }
-        else if ((localafje.g.equals(paramString)) || (localafje.i.equals(paramString)) || (localafje.h.equals(paramString)))
+        else if ((localTroopMemberItem.g.equals(paramString)) || (localTroopMemberItem.i.equals(paramString)) || (localTroopMemberItem.h.equals(paramString)))
         {
-          localafje.e = localafje.g;
-          localArrayList1.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.g;
+          localArrayList1.add(localTroopMemberItem);
         }
-        else if (localafje.jdField_a_of_type_JavaLangString.equals(paramString))
+        else if (localTroopMemberItem.jdField_a_of_type_JavaLangString.equals(paramString))
         {
-          localafje.e = localafje.jdField_a_of_type_JavaLangString;
-          localArrayList1.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.jdField_a_of_type_JavaLangString;
+          localArrayList1.add(localTroopMemberItem);
         }
-        else if ((localafje.m.indexOf(paramString) == 0) || (localafje.o.indexOf(paramString) == 0) || (localafje.n.indexOf(paramString) == 0))
+        else if ((localTroopMemberItem.m.indexOf(paramString) == 0) || (localTroopMemberItem.o.indexOf(paramString) == 0) || (localTroopMemberItem.n.indexOf(paramString) == 0))
         {
-          localafje.e = localafje.m;
-          localafje.f = localafje.n;
-          localArrayList2.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.m;
+          localTroopMemberItem.f = localTroopMemberItem.n;
+          localArrayList2.add(localTroopMemberItem);
         }
-        else if ((localafje.j.indexOf(paramString) == 0) || (localafje.l.indexOf(paramString) == 0) || (localafje.k.indexOf(paramString) == 0))
+        else if ((localTroopMemberItem.j.indexOf(paramString) == 0) || (localTroopMemberItem.l.indexOf(paramString) == 0) || (localTroopMemberItem.k.indexOf(paramString) == 0))
         {
-          localafje.e = localafje.j;
-          localafje.f = localafje.k;
-          localArrayList2.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.j;
+          localTroopMemberItem.f = localTroopMemberItem.k;
+          localArrayList2.add(localTroopMemberItem);
         }
-        else if ((localafje.g.indexOf(paramString) == 0) || (localafje.i.indexOf(paramString) == 0) || (localafje.h.indexOf(paramString) == 0))
+        else if ((localTroopMemberItem.g.indexOf(paramString) == 0) || (localTroopMemberItem.i.indexOf(paramString) == 0) || (localTroopMemberItem.h.indexOf(paramString) == 0))
         {
-          localafje.e = localafje.g;
-          localafje.f = localafje.h;
-          localArrayList2.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.g;
+          localTroopMemberItem.f = localTroopMemberItem.h;
+          localArrayList2.add(localTroopMemberItem);
         }
-        else if (localafje.jdField_a_of_type_JavaLangString.indexOf(paramString) == 0)
+        else if (localTroopMemberItem.jdField_a_of_type_JavaLangString.indexOf(paramString) == 0)
         {
-          localafje.e = localafje.jdField_a_of_type_JavaLangString;
-          localafje.f = localafje.jdField_a_of_type_JavaLangString;
-          localArrayList2.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.jdField_a_of_type_JavaLangString;
+          localTroopMemberItem.f = localTroopMemberItem.jdField_a_of_type_JavaLangString;
+          localArrayList2.add(localTroopMemberItem);
         }
-        else if ((localafje.m.indexOf(paramString) > 0) || (localafje.o.indexOf(paramString) > 0) || (localafje.n.indexOf(paramString) > 0))
+        else if ((localTroopMemberItem.m.indexOf(paramString) > 0) || (localTroopMemberItem.o.indexOf(paramString) > 0) || (localTroopMemberItem.n.indexOf(paramString) > 0))
         {
-          localafje.e = localafje.m;
-          localArrayList3.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.m;
+          localArrayList3.add(localTroopMemberItem);
         }
-        else if ((localafje.j.indexOf(paramString) > 0) || (localafje.l.indexOf(paramString) > 0) || (localafje.k.indexOf(paramString) > 0))
+        else if ((localTroopMemberItem.j.indexOf(paramString) > 0) || (localTroopMemberItem.l.indexOf(paramString) > 0) || (localTroopMemberItem.k.indexOf(paramString) > 0))
         {
-          localafje.e = localafje.j;
-          localArrayList3.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.j;
+          localArrayList3.add(localTroopMemberItem);
         }
-        else if ((localafje.g.indexOf(paramString) > 0) || (localafje.i.indexOf(paramString) > 0) || (localafje.h.indexOf(paramString) > 0))
+        else if ((localTroopMemberItem.g.indexOf(paramString) > 0) || (localTroopMemberItem.i.indexOf(paramString) > 0) || (localTroopMemberItem.h.indexOf(paramString) > 0))
         {
-          localafje.e = localafje.g;
-          localArrayList3.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.g;
+          localArrayList3.add(localTroopMemberItem);
         }
-        else if (localafje.jdField_a_of_type_JavaLangString.indexOf(paramString) > 0)
+        else if (localTroopMemberItem.jdField_a_of_type_JavaLangString.indexOf(paramString) > 0)
         {
-          localafje.e = localafje.jdField_a_of_type_JavaLangString;
-          localArrayList3.add(localafje);
+          localTroopMemberItem.e = localTroopMemberItem.jdField_a_of_type_JavaLangString;
+          localArrayList3.add(localTroopMemberItem);
         }
       }
     }
-    Collections.sort(localArrayList2, new afjc(this, null));
+    Collections.sort(localArrayList2, new TroopTransferActivity.SearchResultComparator(this, null));
     this.jdField_a_of_type_JavaUtilList.addAll(localArrayList1);
     this.jdField_a_of_type_JavaUtilList.addAll(localArrayList2);
     this.jdField_a_of_type_JavaUtilList.addAll(localArrayList3);
@@ -284,7 +270,7 @@ public class TroopTransferActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Afjb.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$SearchResultAdapter.notifyDataSetChanged();
       return;
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
@@ -292,41 +278,41 @@ public class TroopTransferActivity
   
   protected void a(ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379618));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131380044));
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setFitsSystemWindows(true);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131379020);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369278));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369231));
-    this.d = ((TextView)findViewById(2131369233));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379451);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369534));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369487));
+    this.d = ((TextView)findViewById(2131369489));
     this.d.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369262));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369518));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131365022));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695952);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131365157));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131696200);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     String str = getIntent().getExtras().getString("leftViewText");
     Object localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = getString(2131690676);
+      localObject = getString(2131690778);
     }
     this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new afin(this));
-    localObject = (RelativeLayout)getLayoutInflater().inflate(2131562804, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new TroopTransferActivity.1(this));
+    localObject = (RelativeLayout)getLayoutInflater().inflate(2131562951, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     ((RelativeLayout)localObject).setPadding(0, 0, 0, 0);
-    ((Button)((RelativeLayout)localObject).findViewById(2131363845)).setVisibility(8);
-    ((EditText)((RelativeLayout)localObject).findViewById(2131366280)).setOnTouchListener(new afir(this));
+    ((Button)((RelativeLayout)localObject).findViewById(2131363942)).setVisibility(8);
+    ((EditText)((RelativeLayout)localObject).findViewById(2131366452)).setOnTouchListener(new TroopTransferActivity.2(this));
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView((View)localObject);
-    this.jdField_a_of_type_Afjf = new afjf(this, this, paramArrayList);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Afjf);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter = new TroopTransferActivity.TroopMemberListAdapter(this, this, paramArrayList);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
   }
   
   protected void a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      runOnUiThread(new TroopTransferActivity.13(this));
+      runOnUiThread(new TroopTransferActivity.15(this));
     }
     synchronized (this.jdField_a_of_type_JavaLangInteger)
     {
@@ -359,12 +345,12 @@ public class TroopTransferActivity
     }
   }
   
-  public void b()
+  protected void b()
   {
     int i = getTitleBarHeight();
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, -i);
     Object localObject1 = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
-    Object localObject2 = new afiw(this, localTranslateAnimation, (TranslateAnimation)localObject1, i);
+    Object localObject2 = new TroopTransferActivity.7(this, localTranslateAnimation, (TranslateAnimation)localObject1, i);
     localTranslateAnimation.setDuration(300L);
     localTranslateAnimation.setAnimationListener((Animation.AnimationListener)localObject2);
     localTranslateAnimation.setFillAfter(true);
@@ -376,7 +362,7 @@ public class TroopTransferActivity
       this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
       this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
       this.jdField_a_of_type_AndroidAppDialog.getWindow().setSoftInputMode(36);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131562813);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131562960);
       localObject2 = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
       ((WindowManager.LayoutParams)localObject2).x = 0;
       ((WindowManager.LayoutParams)localObject2).y = 0;
@@ -385,40 +371,40 @@ public class TroopTransferActivity
       ((WindowManager.LayoutParams)localObject2).windowAnimations = 16973824;
       ((WindowManager.LayoutParams)localObject2).gravity = 51;
       this.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
-      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new afix(this, i, (TranslateAnimation)localObject1));
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppDialog.findViewById(2131376947);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366280));
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new afjd(this, null));
+      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new TroopTransferActivity.8(this, i, (TranslateAnimation)localObject1));
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppDialog.findViewById(2131377356);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366452));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new TroopTransferActivity.SearchTextWatcher(this, null));
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
       this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131368378));
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new afiy(this));
-      localObject1 = (Button)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363845);
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131368600));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new TroopTransferActivity.9(this));
+      localObject1 = (Button)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363942);
       ((Button)localObject1).setVisibility(0);
-      ((Button)localObject1).setOnClickListener(new afiz(this));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372032);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131376602));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new afja(this));
-      this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131377153));
-      this.jdField_b_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838911);
+      ((Button)localObject1).setOnClickListener(new TroopTransferActivity.10(this));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372336);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131376997));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new TroopTransferActivity.11(this));
+      this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131377573));
+      this.jdField_b_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838979);
       this.jdField_b_of_type_ComTencentWidgetXListView.setDividerHeight(0);
       this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Afjb = new afjb(this, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_b_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Afjb);
-      this.jdField_b_of_type_ComTencentWidgetXListView.setOnTouchListener(new afio(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$SearchResultAdapter = new TroopTransferActivity.SearchResultAdapter(this, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_b_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$SearchResultAdapter);
+      this.jdField_b_of_type_ComTencentWidgetXListView.setOnTouchListener(new TroopTransferActivity.12(this));
       this.jdField_b_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
   }
   
-  public void b(ArrayList<TroopMemberCardInfo> paramArrayList)
+  protected void b(ArrayList<TroopMemberCardInfo> paramArrayList)
   {
     TroopMemberCardInfo localTroopMemberCardInfo = (TroopMemberCardInfo)paramArrayList.get(0);
-    if ((localTroopMemberCardInfo == null) || (!bhbx.a(localTroopMemberCardInfo.troopuin, this.jdField_a_of_type_JavaLangString))) {}
+    if ((localTroopMemberCardInfo == null) || (!Utils.a(localTroopMemberCardInfo.troopuin, this.jdField_a_of_type_JavaLangString))) {}
     while (!a()) {
       return;
     }
-    ThreadManager.post(new TroopTransferActivity.14(this, paramArrayList), 5, null, true);
+    ThreadManager.post(new TroopTransferActivity.16(this, paramArrayList), 5, null, true);
   }
   
   @Override
@@ -448,25 +434,29 @@ public class TroopTransferActivity
       QLog.i("Q.troopdisband.transfer", 2, localStringBuilder.toString());
     }
     a();
-    super.setContentView(2131561578);
+    super.setContentView(2131561695);
     a(paramBundle);
-    this.app.addObserver(this.jdField_a_of_type_Aofu);
-    this.app.addObserver(this.jdField_a_of_type_Anvi);
+    this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
     c();
     return true;
   }
   
   public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Aofu);
-    this.app.removeObserver(this.jdField_a_of_type_Anvi);
-    if (this.jdField_a_of_type_Biso != null)
+    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null)
     {
-      this.jdField_a_of_type_Biso.b();
-      this.jdField_a_of_type_Biso = null;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = null;
     }
-    if (this.jdField_a_of_type_Afjf != null) {
-      this.jdField_a_of_type_Afjf.c();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberListAdapter.c();
     }
     super.doOnDestroy();
   }
@@ -484,7 +474,7 @@ public class TroopTransferActivity
     for (;;)
     {
       return;
-      paramAdapterView = (afjg)paramView.getTag();
+      paramAdapterView = (TroopTransferActivity.ViewHolder)paramView.getTag();
       if (paramAdapterView != null) {}
       for (paramAdapterView = paramAdapterView.a; (paramAdapterView != null) && (paramAdapterView.jdField_a_of_type_Int == 1); paramAdapterView = null)
       {
@@ -501,7 +491,7 @@ public class TroopTransferActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity
  * JD-Core Version:    0.7.0.1
  */

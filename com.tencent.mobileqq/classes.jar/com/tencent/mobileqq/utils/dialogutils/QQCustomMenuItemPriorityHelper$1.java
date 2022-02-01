@@ -1,48 +1,46 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
-import bhjt;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public final class QQCustomMenuItemPriorityHelper$1
+final class QQCustomMenuItemPriorityHelper$1
   extends HashMap<String, Integer>
 {
-  public QQCustomMenuItemPriorityHelper$1()
+  QQCustomMenuItemPriorityHelper$1()
   {
-    put(BaseApplicationImpl.getContext().getString(2131693145), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131690053), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131694694), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131700444), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131694696), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131719012), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131694697), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131694693), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131693152), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131719010), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131689991), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131691263), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131691261), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131692550), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131694155), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131717583), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131691286), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131719006), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131708674), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131691861), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131690756), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131690755), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131718023), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131720148), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131719547), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131719548), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131690900), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131697441), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131713490), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131718749), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131692279), Integer.valueOf(bhjt.a()));
-    put(BaseApplicationImpl.getContext().getString(2131689979), Integer.valueOf(-2147483647));
-    put(BaseApplicationImpl.getContext().getString(2131694187), Integer.valueOf(-2147483648));
+    put(BaseApplication.getContext().getString(2131699497), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699483), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699504), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699508), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699505), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699584), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699506), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699503), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699498), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699583), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699482), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699490), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699489), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699495), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699501), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699560), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699491), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699582), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699539), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699493), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699487), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699486), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699561), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699594), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699590), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699591), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699488), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699507), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699542), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699564), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699494), Integer.valueOf(QQCustomMenuItemPriorityHelper.a()));
+    put(BaseApplication.getContext().getString(2131699481), Integer.valueOf(-2147483647));
+    put(BaseApplication.getContext().getString(2131699502), Integer.valueOf(-2147483648));
   }
 }
 

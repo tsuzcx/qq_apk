@@ -5,10 +5,10 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
-public final class BadTokenHooker$2
+final class BadTokenHooker$2
   implements Runnable
 {
-  public BadTokenHooker$2(String paramString1, String paramString2, int paramInt) {}
+  BadTokenHooker$2(String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public final class BadTokenHooker$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.BadTokenHooker.2
  * JD-Core Version:    0.7.0.1
  */

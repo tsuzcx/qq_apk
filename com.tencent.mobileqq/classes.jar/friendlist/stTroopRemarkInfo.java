@@ -8,12 +8,12 @@ public final class stTroopRemarkInfo
   extends JceStruct
 {
   static byte[] cache_vecGroupHonor = (byte[])new byte[1];
-  public long GlamourLevel;
-  public long MemberUin;
-  public long TorchbearerFlag;
+  public long GlamourLevel = 0L;
+  public long MemberUin = 0L;
+  public long TorchbearerFlag = 0L;
   public String bytes_job = "";
-  public byte cGender;
-  public byte cRichCardNameVer;
+  public byte cGender = 0;
+  public byte cRichCardNameVer = 0;
   public String sEmail = "";
   public String sMemo = "";
   public String sName = "";
@@ -22,7 +22,7 @@ public final class stTroopRemarkInfo
   public String strNick = "";
   public String strRank = "";
   public String strRemark = "";
-  public byte[] vecGroupHonor;
+  public byte[] vecGroupHonor = null;
   
   static
   {
@@ -106,7 +106,7 @@ public final class stTroopRemarkInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.stTroopRemarkInfo
  * JD-Core Version:    0.7.0.1
  */

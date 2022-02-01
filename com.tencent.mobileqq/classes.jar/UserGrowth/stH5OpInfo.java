@@ -12,14 +12,14 @@ public final class stH5OpInfo
 {
   static Map<String, String> cache_exp;
   static stMetaTag cache_tag = new stMetaTag();
-  public Map<String, String> exp;
+  public Map<String, String> exp = null;
   public String h5Url = "";
-  public int id;
+  public int id = 0;
   public String maskImgUrl = "";
   public String scheme_url = "";
-  public stMetaTag tag;
+  public stMetaTag tag = null;
   public String text = "";
-  public int type;
+  public int type = 0;
   
   static
   {

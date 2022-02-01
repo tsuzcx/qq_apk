@@ -1,22 +1,19 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import bbll;
-import bblp;
-import bblq;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import java.lang.ref.WeakReference;
 import javax.microedition.khronos.egl.EGLContext;
-import ykq;
 
 public class FlowDecodeScreenSurfaceBase
 {
   protected int a;
-  private bblp jdField_a_of_type_Bblp;
-  private bblq jdField_a_of_type_Bblq = new bbll(this);
+  private FlowDecodeScreenSurfaceBase.EglHelper.FakeGLSurfaceView jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper$FakeGLSurfaceView = new FlowDecodeScreenSurfaceBase.1(this);
+  private FlowDecodeScreenSurfaceBase.EglHelper jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper;
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   protected int b;
   private int c = 2;
   
-  protected FlowDecodeScreenSurfaceBase(EGLContext paramEGLContext, int paramInt1, int paramInt2)
+  FlowDecodeScreenSurfaceBase(EGLContext paramEGLContext, int paramInt1, int paramInt2)
   {
     if (paramEGLContext == null) {
       throw new IllegalArgumentException("eglContext should not be null");
@@ -31,22 +28,22 @@ public class FlowDecodeScreenSurfaceBase
   
   public void a()
   {
-    ykq.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
-    this.jdField_a_of_type_Bblp.b();
-    this.jdField_a_of_type_Bblp.c();
+    SLog.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper.b();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper.c();
   }
   
   public void c()
   {
-    ykq.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
-    this.jdField_a_of_type_Bblp = new bblp(new WeakReference(this.jdField_a_of_type_Bblq));
-    this.jdField_a_of_type_Bblp.a();
-    this.jdField_a_of_type_Bblp.a(this.jdField_a_of_type_Int, this.b);
+    SLog.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper = new FlowDecodeScreenSurfaceBase.EglHelper(new WeakReference(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper$FakeGLSurfaceView));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper.a();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper.a(this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase
  * JD-Core Version:    0.7.0.1
  */

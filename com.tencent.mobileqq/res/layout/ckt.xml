@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Chronometer android:textAppearance="@style/zh" android:id="@id/mmk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/mqf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ViewStub android:id="@id/mm3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/ng0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

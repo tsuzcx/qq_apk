@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import aves;
 import com.tencent.ark.open.ArkView;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class GameArkView$1
@@ -13,7 +13,7 @@ class GameArkView$1
   {
     try
     {
-      if ((aves.a(GameArkView.a(this.this$0))) && (GameArkView.a(this.this$0)) && (GameArkView.a(this.this$0) != null)) {
+      if ((QQGameHelper.a(GameArkView.a(this.this$0))) && (GameArkView.a(this.this$0)) && (GameArkView.a(this.this$0) != null)) {
         GameArkView.a(this.this$0).onPause();
       }
       return;
@@ -26,7 +26,7 @@ class GameArkView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.GameArkView.1
  * JD-Core Version:    0.7.0.1
  */

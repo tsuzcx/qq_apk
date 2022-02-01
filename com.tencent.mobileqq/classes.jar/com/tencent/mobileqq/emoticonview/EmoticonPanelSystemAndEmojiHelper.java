@@ -9,17 +9,17 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import bbbq;
-import bdla;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CommonUsedSystemEmojiManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.RedTouchManagerProxy;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
@@ -67,7 +67,7 @@ public class EmoticonPanelSystemAndEmojiHelper
   
   public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = this.mPanelController.app;
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = this.mPanelController.app;
     switch (paramView.getId())
     {
     }
@@ -79,7 +79,7 @@ public class EmoticonPanelSystemAndEmojiHelper
       if (localSystemAndEmojiAdapter != null) {
         localSystemAndEmojiAdapter.setSelectionToApolloEmoticon();
       }
-      VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "expresstab_bubble_click", 0, 0, new String[0]);
+      VipUtils.a(localQQEmoticonMainPanelApp.getQQAppInterface(), "cmshow", "Apollo", "expresstab_bubble_click", 0, 0, new String[0]);
     }
   }
   
@@ -88,9 +88,9 @@ public class EmoticonPanelSystemAndEmojiHelper
     Object localObject = this.mPanelController.app;
     if (localObject != null)
     {
-      localObject = (CommonUsedSystemEmojiManager)((QQAppInterface)localObject).getManager(QQManagerFactory.COMMONUSED_SYSTEM_EMOJI_MANAGERT);
+      localObject = (CommonUsedSystemEmojiManagerProxy)((QQEmoticonMainPanelApp)localObject).getManager(QQManagerFactory.COMMONUSED_SYSTEM_EMOJI_MANAGERT);
       if (localObject != null) {
-        ((CommonUsedSystemEmojiManager)localObject).saveSystemEmojiInfoToFile();
+        ((CommonUsedSystemEmojiManagerProxy)localObject).saveSystemEmojiInfoToFile();
       }
     }
     removePopupGuide();
@@ -99,7 +99,7 @@ public class EmoticonPanelSystemAndEmojiHelper
   public void onHide(boolean paramBoolean)
   {
     if (this.mPanelController.mBaseChatPie != null) {
-      this.mPanelController.mBaseChatPie.removeEmoticonGuideBubble();
+      this.mPanelController.mBaseChatPie.G();
     }
   }
   
@@ -122,17 +122,17 @@ public class EmoticonPanelSystemAndEmojiHelper
   
   void showEmoticonPopupGuide()
   {
-    QQAppInterface localQQAppInterface = this.mPanelController.app;
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = this.mPanelController.app;
     Context localContext = this.mPanelController.context;
-    if (localQQAppInterface == null) {}
-    while (!ApolloUtil.c()) {
+    if (localQQEmoticonMainPanelApp == null) {}
+    while (!((IApolloUtil)QRoute.api(IApolloUtil.class)).shouldShowPopupGuide()) {
       return;
     }
     if (this.mPopupGuideView == null)
     {
       this.mPopupGuideView = new ImageView(localContext);
-      this.mPopupGuideView.setId(2131362369);
-      this.mPopupGuideView.setImageResource(2130838044);
+      this.mPopupGuideView.setId(2131362399);
+      this.mPopupGuideView.setImageResource(2130838116);
     }
     this.mPopupGuideView.setClickable(true);
     this.mPopupGuideView.setOnClickListener(this);
@@ -142,11 +142,11 @@ public class EmoticonPanelSystemAndEmojiHelper
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(11);
     localLayoutParams.addRule(12);
-    localLayoutParams.bottomMargin = AIOUtils.dp2px(52.0F, localContext.getResources());
-    localLayoutParams.rightMargin = AIOUtils.dp2px(15.0F, localContext.getResources());
+    localLayoutParams.bottomMargin = AIOUtils.a(52.0F, localContext.getResources());
+    localLayoutParams.rightMargin = AIOUtils.a(15.0F, localContext.getResources());
     this.mPanelController.getPanel().addView(this.mPopupGuideView, localLayoutParams);
-    ApolloUtil.b();
-    VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "expresstab_bubble_view", 0, 0, new String[0]);
+    ((IApolloUtil)QRoute.api(IApolloUtil.class)).onPopupGuideShown();
+    VipUtils.a(localQQEmoticonMainPanelApp.getQQAppInterface(), "cmshow", "Apollo", "expresstab_bubble_view", 0, 0, new String[0]);
   }
   
   public void switchSystemEmojiTabLocationPos(int paramInt1, int paramInt2)
@@ -167,13 +167,12 @@ public class EmoticonPanelSystemAndEmojiHelper
   @TargetApi(11)
   void updateEmojiMallRedpoint()
   {
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((bbbq)this.mPanelController.app.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(String.valueOf("100610.100611"));
-    if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() != 0))
+    if (((RedTouchManagerProxy)this.mPanelController.app.getManager(QQManagerFactory.MGR_RED_TOUCH)).getAppInfoNewFlagByPath(String.valueOf("100610.100611")) != 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelSystemAndEmojiHelper", 2, "emoji mall has redpoint.");
       }
-      bdla.b(this.mPanelController.app, "CliOper", "", "", "ep_mall", "0X80057B8", 0, 0, "", "", "", "");
+      ReportController.b(this.mPanelController.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "0X80057B8", 0, 0, "", "", "", "");
       if (this.mPanelController.context.getSharedPreferences("mobileQQ", 0).getBoolean("emo_panel_mall_new_played", false)) {
         this.mPanelController.mNewFlag.setVisibility(0);
       }
@@ -195,7 +194,7 @@ public class EmoticonPanelSystemAndEmojiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelSystemAndEmojiHelper
  * JD-Core Version:    0.7.0.1
  */

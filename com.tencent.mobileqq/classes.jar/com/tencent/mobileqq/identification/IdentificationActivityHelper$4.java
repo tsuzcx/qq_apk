@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.identification;
 
-import avpw;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-public class IdentificationActivityHelper$4
+class IdentificationActivityHelper$4
   implements Runnable
 {
-  public IdentificationActivityHelper$4(avpw paramavpw, boolean paramBoolean) {}
+  IdentificationActivityHelper$4(IdentificationActivityHelper paramIdentificationActivityHelper, boolean paramBoolean) {}
   
   public void run()
   {
-    QQIdentiferActivity localQQIdentiferActivity = avpw.a(this.this$0);
+    QQIdentiferActivity localQQIdentiferActivity = IdentificationActivityHelper.a(this.this$0);
     boolean bool = this.a;
     if (this.a) {}
     for (int i = 0;; i = 207)
@@ -22,7 +21,7 @@ public class IdentificationActivityHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationActivityHelper.4
  * JD-Core Version:    0.7.0.1
  */

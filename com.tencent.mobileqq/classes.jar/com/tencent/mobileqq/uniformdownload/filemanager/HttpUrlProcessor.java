@@ -1,0 +1,190 @@
+package com.tencent.mobileqq.uniformdownload.filemanager;
+
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.manager.ProxyIpManager;
+import mqq.manager.ProxyIpManager.ProxyIp;
+
+public class HttpUrlProcessor
+{
+  private String jdField_a_of_type_JavaLangString;
+  private Iterator<String> jdField_a_of_type_JavaUtilIterator;
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private ProxyIpManager.ProxyIp jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp;
+  private boolean jdField_a_of_type_Boolean;
+  private Iterator<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilIterator;
+  private List<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilList;
+  private boolean jdField_b_of_type_Boolean = false;
+  
+  public HttpUrlProcessor(AppRuntime paramAppRuntime, String paramString)
+  {
+    int j = paramString.indexOf("://");
+    if (j == -1)
+    {
+      j = paramString.substring(i).indexOf("/") + i;
+      if ((-1 != j) || (-1 != j)) {
+        break label124;
+      }
+      paramString = null;
+    }
+    for (;;)
+    {
+      if ((localObject != null) && (paramString != null))
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        this.jdField_a_of_type_JavaLangString = paramString;
+      }
+      a(paramAppRuntime);
+      return;
+      i = j + 3;
+      break;
+      label124:
+      int k = paramString.indexOf("&bHost=");
+      if (-1 == k) {
+        localObject = str;
+      }
+      for (;;)
+      {
+        if (localObject != null) {
+          break label246;
+        }
+        localObject = paramString.substring(i, j);
+        paramString = paramString.substring(j);
+        break;
+        int m = paramString.indexOf("&bPort=", k);
+        localObject = str;
+        if (-1 != m)
+        {
+          localObject = paramString.substring("&bHost=".length() + k, m);
+          str = paramString.substring(m + "&bPort=".length());
+          localObject = (String)localObject + ":" + str;
+        }
+      }
+      label246:
+      paramString = paramString.substring(j, k);
+    }
+  }
+  
+  private void a(AppRuntime paramAppRuntime)
+  {
+    this.jdField_b_of_type_JavaUtilList = ((ProxyIpManager)paramAppRuntime.getManager(3)).getProxyIp(5);
+    if (this.jdField_b_of_type_JavaUtilList == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("HttpUrlProcessor", 4, "HttpUrlProcessor: getProxyIp return null, so new empty ProxyList");
+      }
+      this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    }
+    a();
+  }
+  
+  public String a()
+  {
+    Object localObject1 = null;
+    Object localObject2;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      localObject2 = localObject1;
+      if (QLog.isDevelopLevel())
+      {
+        QLog.d("HttpUrlProcessor", 4, "getNextUrl: no host, so return null");
+        localObject2 = localObject1;
+      }
+      return localObject2;
+    }
+    if (!this.jdField_a_of_type_JavaUtilIterator.hasNext())
+    {
+      if (this.jdField_b_of_type_JavaUtilIterator.hasNext())
+      {
+        this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
+        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      }
+    }
+    else
+    {
+      label94:
+      localObject2 = (String)this.jdField_a_of_type_JavaUtilIterator.next();
+      QLog.e("HttpUrlProcessor", 4, "waterLog- getNextUrl: host[" + (String)localObject2 + "]");
+      if (!this.jdField_a_of_type_Boolean) {
+        break label418;
+      }
+      int i = ((String)localObject2).indexOf(":");
+      if (i <= 0) {
+        break label330;
+      }
+      localObject1 = ((String)localObject2).substring(0, i);
+      String str = ((String)localObject2).substring(i + 1);
+      localObject2 = localObject1;
+      localObject1 = str;
+      label176:
+      if (!this.jdField_b_of_type_Boolean) {
+        break label349;
+      }
+      localObject1 = "https://" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip + ":" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port + this.jdField_a_of_type_JavaLangString + "&bHost=" + (String)localObject2 + "&bPort=" + (String)localObject1;
+    }
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("HttpUrlProcessor", 4, "getNextUrl: url:" + (String)localObject1);
+      return localObject1;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        break label94;
+      }
+      localObject2 = localObject1;
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("HttpUrlProcessor", 4, "getNextUrl: no proxy no host, so return null");
+      return null;
+      label330:
+      if (this.jdField_b_of_type_Boolean)
+      {
+        localObject1 = "443";
+        break label176;
+      }
+      localObject1 = "80";
+      break label176;
+      label349:
+      localObject1 = "http://" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip + ":" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port + this.jdField_a_of_type_JavaLangString + "&bHost=" + (String)localObject2 + "&bPort=" + (String)localObject1;
+      continue;
+      label418:
+      if (this.jdField_b_of_type_Boolean) {
+        localObject1 = "https://" + (String)localObject2 + this.jdField_a_of_type_JavaLangString;
+      } else {
+        localObject1 = "http://" + (String)localObject2 + this.jdField_a_of_type_JavaLangString;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_JavaUtilIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    if (this.jdField_b_of_type_JavaUtilIterator.hasNext()) {
+      this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
+    }
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    {
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      }
+      return;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.uniformdownload.filemanager.HttpUrlProcessor
+ * JD-Core Version:    0.7.0.1
+ */

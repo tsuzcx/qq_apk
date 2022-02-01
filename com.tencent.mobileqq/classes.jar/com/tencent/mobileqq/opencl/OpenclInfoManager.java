@@ -11,8 +11,8 @@ public class OpenclInfoManager
 {
   private static Object jdField_a_of_type_JavaLangObject;
   private static String jdField_a_of_type_JavaLangString = "OpenclInfoManager";
-  private static boolean jdField_a_of_type_Boolean;
-  private static String b;
+  private static boolean jdField_a_of_type_Boolean = false;
+  private static String b = null;
   
   static
   {

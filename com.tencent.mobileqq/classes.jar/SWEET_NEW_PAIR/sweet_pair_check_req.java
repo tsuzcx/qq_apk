@@ -9,10 +9,10 @@ public final class sweet_pair_check_req
   extends JceStruct
 {
   static sweet_req_comm cache_req_comm = new sweet_req_comm();
-  public boolean check_qqfriend;
-  public boolean need_check_visit_right;
-  public boolean need_get_invite_lst;
-  public sweet_req_comm req_comm;
+  public boolean check_qqfriend = false;
+  public boolean need_check_visit_right = false;
+  public boolean need_get_invite_lst = false;
+  public sweet_req_comm req_comm = null;
   
   public sweet_pair_check_req() {}
   

@@ -1,7 +1,8 @@
 package com.tencent.biz.webviewbase;
 
-import biit;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.webview.api.IWebProcessPreload;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class AbsBaseWebViewActivity$6
@@ -14,13 +15,13 @@ class AbsBaseWebViewActivity$6
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewBase", 2, "start request: " + this.a);
     }
-    WebProcessManager.a(true);
-    biit.a();
+    ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).setPreloadWebProcess(true);
+    SwiftWebViewUtils.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity.6
  * JD-Core Version:    0.7.0.1
  */

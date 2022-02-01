@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.data.fts;
 
 import android.text.TextUtils;
-import auzx;
-import avak;
 import com.tencent.mobileqq.fts.entity.FTSEntity;
+import com.tencent.mobileqq.fts.entity.notColumn;
+import com.tencent.mobileqq.fts.utils.SegmentUtils;
 
 public class TroopIndex
   extends FTSEntity
 {
-  public String content;
-  public String contentindex;
-  public String ext4;
-  public String ext5;
-  public String ext6;
-  public String ext7;
-  public String ext8;
-  public String ext9;
-  @auzx
+  public String content = null;
+  public String contentindex = null;
+  public String ext4 = null;
+  public String ext5 = null;
+  public String ext6 = null;
+  public String ext7 = null;
+  public String ext8 = null;
+  public String ext9 = null;
+  @notColumn
   public String mMemberCard;
-  @auzx
+  @notColumn
   public String mMemberName;
-  @auzx
+  @notColumn
   public String mMemberNick;
-  @auzx
+  @notColumn
   public String mMemberUin;
-  @auzx
+  @notColumn
   public String mTroopUin;
   public long oId = -1L;
   public int type = -1;
@@ -79,7 +79,7 @@ public class TroopIndex
     label139:
     label154:
     label168:
-    for (this.ext5 = "";; this.ext5 = avak.a(this.ext4))
+    for (this.ext5 = "";; this.ext5 = SegmentUtils.a(this.ext4))
     {
       this.ext6 = this.mMemberUin;
       this.ext7 = this.mMemberNick;
@@ -92,11 +92,11 @@ public class TroopIndex
       break;
       str = this.mMemberCard.replace("'", "''");
       break label38;
-      this.ext3 = avak.a(this.ext2);
+      this.ext3 = SegmentUtils.a(this.ext2);
       break label67;
     }
     label182:
-    this.ext8 = avak.a(this.ext7);
+    this.ext8 = SegmentUtils.a(this.ext7);
   }
   
   public boolean needCompress()
@@ -127,7 +127,7 @@ public class TroopIndex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.fts.TroopIndex
  * JD-Core Version:    0.7.0.1
  */

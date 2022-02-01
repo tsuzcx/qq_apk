@@ -3,24 +3,24 @@ package com.tencent.mobileqq.activity.history;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import anvk;
-import bhdf;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.util.api.ITroopDBUtilsApi;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class ChatHistoryTroopMemberFragment$2
   implements Runnable
 {
-  ChatHistoryTroopMemberFragment$2(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, Intent paramIntent, anvk paramanvk, TroopManager paramTroopManager) {}
+  ChatHistoryTroopMemberFragment$2(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, Intent paramIntent, FriendsManager paramFriendsManager, TroopManager paramTroopManager) {}
   
   public void run()
   {
     boolean bool2 = false;
-    ??? = "";
     int i;
     if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
@@ -40,11 +40,11 @@ class ChatHistoryTroopMemberFragment$2
           this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.this$0.c);
           ??? = this.this$0;
           if ((this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo == null) || (!this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isHomeworkTroop())) {
-            break label514;
+            break label517;
           }
         }
       }
-      label514:
+      label517:
       for (boolean bool1 = true;; bool1 = false) {
         for (;;)
         {
@@ -76,32 +76,33 @@ class ChatHistoryTroopMemberFragment$2
               QLog.d("Q.history.BaseFragment", 2, "onActivityResult, REQUEST_CODE_SHOW_MEMBER_CARD, admins:" + this.this$0.g + " owner:" + this.this$0.f);
             }
           }
-          if ((i != 0) && (this.this$0.jdField_a_of_type_Ajvt != null)) {
+          if ((i != 0) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter != null)) {
             this.this$0.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(9);
           }
           return;
           if ((i & 0x2) == 0) {
             break;
           }
-          Object localObject2 = bhdf.a().a(this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.c, (String)???);
-          if ((localObject2 == null) || (this.jdField_a_of_type_Anvk == null)) {
+          Object localObject2 = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.c, (String)???);
+          if ((localObject2 == null) || (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager == null)) {
             break;
           }
           this.this$0.a((String)???);
           synchronized (this.this$0)
           {
-            localObject2 = this.this$0.a((TroopMemberInfo)localObject2, this.jdField_a_of_type_Anvk);
+            localObject2 = this.this$0.a((TroopMemberInfo)localObject2, this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager);
             this.this$0.jdField_a_of_type_JavaUtilList.add(localObject2);
           }
         }
       }
+      ??? = "";
       i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.2
  * JD-Core Version:    0.7.0.1
  */

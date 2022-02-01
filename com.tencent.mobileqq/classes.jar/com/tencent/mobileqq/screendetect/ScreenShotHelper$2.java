@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.view.Window;
 import java.lang.ref.WeakReference;
 
-public final class ScreenShotHelper$2
+final class ScreenShotHelper$2
   implements Runnable
 {
-  public ScreenShotHelper$2(WeakReference paramWeakReference, View paramView, Handler paramHandler) {}
+  ScreenShotHelper$2(WeakReference paramWeakReference, View paramView, Handler paramHandler) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public final class ScreenShotHelper$2
       if (!((Activity)localObject).hasWindowFocus()) {
         break label60;
       }
-      localObject = ((ViewGroup)((Activity)localObject).getWindow().getDecorView().getRootView()).findViewById(2131377118);
+      localObject = ((ViewGroup)((Activity)localObject).getWindow().getDecorView().getRootView()).findViewById(2131377538);
       if (localObject != null) {
         ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView((View)localObject);
       }
@@ -38,7 +38,7 @@ public final class ScreenShotHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotHelper.2
  * JD-Core Version:    0.7.0.1
  */

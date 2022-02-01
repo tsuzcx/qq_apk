@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 public class ExcitingTransferDownloaderResultRp
 {
-  public int SpeedUpType;
   public boolean bIsAutoDownload;
   public boolean bIsFlashTransfer;
   public boolean bIsXTFValid;
@@ -17,6 +16,7 @@ public class ExcitingTransferDownloaderResultRp
   public int eFinalResult;
   public int eXTFInvalidReason;
   public int nLastLanUserCode;
+  public int speedUpType;
   public String strFileUrl;
   public int u32FtnTimeOutDuration;
   public int u32LifeInSecond;
@@ -46,7 +46,7 @@ public class ExcitingTransferDownloaderResultRp
     localHashMap.put("param_FinalResult", String.valueOf(this.eFinalResult));
     localHashMap.put("param_FileUrl", String.valueOf(this.strFileUrl));
     localHashMap.put("param_LifeInSecond", String.valueOf(this.u32LifeInSecond));
-    localHashMap.put("param_SpeedUpType", String.valueOf(this.SpeedUpType));
+    localHashMap.put("param_SpeedUpType", String.valueOf(this.speedUpType));
     localHashMap.put("param_StartSize", String.valueOf(this.u64StartSize));
     localHashMap.put("param_TransferSpeed", String.valueOf(this.u64TransferSpeed));
     localHashMap.put("param_TransferTime", String.valueOf(this.u64TransferTime));
@@ -79,7 +79,7 @@ public class ExcitingTransferDownloaderResultRp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloaderResultRp
  * JD-Core Version:    0.7.0.1
  */

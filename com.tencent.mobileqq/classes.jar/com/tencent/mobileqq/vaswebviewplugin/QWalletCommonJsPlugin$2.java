@@ -21,7 +21,7 @@ class QWalletCommonJsPlugin$2
       int i;
       try
       {
-        Object localObject1 = FileUtils.readFile(this.val$cacheFileName);
+        Object localObject1 = FileUtils.a(this.val$cacheFileName);
         if (localObject1 == null)
         {
           QWalletCommonJsPlugin.access$000(this.this$0);
@@ -56,7 +56,7 @@ class QWalletCommonJsPlugin$2
       }
       Object localObject2 = new JceOutputStream();
       localException.writeTo((JceOutputStream)localObject2);
-      FileUtils.writeFile(((JceOutputStream)localObject2).toByteArray(), this.val$cacheFileName);
+      FileUtils.a(((JceOutputStream)localObject2).toByteArray(), this.val$cacheFileName);
       return;
       label245:
       i += 1;
@@ -66,7 +66,7 @@ class QWalletCommonJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

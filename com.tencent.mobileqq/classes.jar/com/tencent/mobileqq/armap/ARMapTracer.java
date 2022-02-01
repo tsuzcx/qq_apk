@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.armap;
 
 import android.os.SystemClock;
-import aqck;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +11,7 @@ public class ARMapTracer
 {
   private static int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
-  private aqck jdField_a_of_type_Aqck;
+  private ARMapTracer.TraceResultListener jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private final int[] jdField_a_of_type_ArrayOfInt;
@@ -30,9 +29,9 @@ public class ARMapTracer
     float f2;
     if (jdField_a_of_type_Int == 0)
     {
-      f1 = (float)DeviceInfoUtil.getSystemTotalMemory() / 1.073742E+009F;
-      i = DeviceInfoUtil.getCpuNumber();
-      f2 = (float)DeviceInfoUtil.getCpuMaxFreq() / 1000000.0F;
+      f1 = (float)DeviceInfoUtil.a() / 1.073742E+009F;
+      i = DeviceInfoUtil.b();
+      f2 = (float)DeviceInfoUtil.c() / 1000000.0F;
       if ((i < 4) || (f2 < 2.0F) || (f1 < 2.5F)) {
         break label106;
       }
@@ -153,7 +152,7 @@ public class ARMapTracer
       arrayOfInt1[i] += 1;
       arrayOfInt1 = this.jdField_b_of_type_ArrayOfInt;
       arrayOfInt1[i] += 1;
-    } while ((this.f < 30) || (this.jdField_a_of_type_Aqck == null));
+    } while ((this.f < 30) || (this.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener == null));
     if (this.jdField_b_of_type_Int > 0) {
       this.jdField_b_of_type_Int -= 1;
     }
@@ -164,7 +163,7 @@ public class ARMapTracer
     }
     for (;;)
     {
-      if ((i != this.c) && (this.d > 2) && (this.jdField_a_of_type_Aqck.a(i)))
+      if ((i != this.c) && (this.d > 2) && (this.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener.a(i)))
       {
         this.c = i;
         this.jdField_b_of_type_Int = 3;

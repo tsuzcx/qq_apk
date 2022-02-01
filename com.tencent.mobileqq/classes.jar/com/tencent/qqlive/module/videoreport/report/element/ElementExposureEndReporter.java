@@ -20,6 +20,9 @@ public class ElementExposureEndReporter
   {
     double d = 0.0D;
     long l = 0L;
+    if (!paramExposureInfoWrapper.canReportExposureEnd) {
+      return;
+    }
     FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
     localFinalData.eventKey = "imp_end";
     localFinalData.eventParams = new ArrayMap();

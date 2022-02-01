@@ -4,11 +4,9 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
-import awoq;
-import awou;
-import bikr;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.werewolves.ReflectUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
@@ -18,10 +16,10 @@ import java.net.InetAddress;
 import java.net.URL;
 import tencent.im.login.GatewayVerify.SelfPhoneUrl;
 
-public class GateWayVerifyManager$4
+class GateWayVerifyManager$4
   implements Runnable
 {
-  public GateWayVerifyManager$4(awoq paramawoq, GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl, awou paramawou) {}
+  GateWayVerifyManager$4(GateWayVerifyManager paramGateWayVerifyManager, GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl, GatewayCallback paramGatewayCallback) {}
   
   public void run()
   {
@@ -32,8 +30,8 @@ public class GateWayVerifyManager$4
       boolean bool;
       try
       {
-        Object localObject1 = (ConnectivityManager)BaseApplicationImpl.getApplication().getSystemService("connectivity");
-        bikr.a(ConnectivityManager.class, "startUsingNetworkFeature", new Class[] { Integer.TYPE, String.class }).invoke(localObject1, new Object[] { Integer.valueOf(0), "enableHIPRI" });
+        Object localObject1 = (ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity");
+        ReflectUtils.a(ConnectivityManager.class, "startUsingNetworkFeature", new Class[] { Integer.TYPE, String.class }).invoke(localObject1, new Object[] { Integer.valueOf(0), "enableHIPRI" });
         i = 0;
         if (i < 4)
         {
@@ -48,8 +46,8 @@ public class GateWayVerifyManager$4
           if (!(localObject2 instanceof Inet4Address)) {
             break label316;
           }
-          i = awoq.a(this.this$0, ((InetAddress)localObject2).getHostAddress());
-          localObject1 = bikr.a(ConnectivityManager.class, "requestRouteToHost", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(5), Integer.valueOf(i) });
+          i = GateWayVerifyManager.a(this.this$0, ((InetAddress)localObject2).getHostAddress());
+          localObject1 = ReflectUtils.a(ConnectivityManager.class, "requestRouteToHost", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(5), Integer.valueOf(i) });
           if ((!(localObject1 instanceof Boolean)) || (!((Boolean)localObject1).booleanValue())) {
             break label375;
           }
@@ -58,7 +56,7 @@ public class GateWayVerifyManager$4
           if (!bool) {
             break label343;
           }
-          awoq.a(this.this$0, this.jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl, this.jdField_a_of_type_Awou);
+          GateWayVerifyManager.a(this.this$0, this.jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl, this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback);
           return;
         }
         localObject2 = ((NetworkInfo)localObject2).getState();
@@ -74,7 +72,7 @@ public class GateWayVerifyManager$4
       catch (Exception localException)
       {
         QLog.e("GateWayVerifyManager", 1, new Object[] { "switch network error", localException.getMessage() });
-        this.jdField_a_of_type_Awou.a(localException);
+        this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback.a(localException);
         return;
       }
       Thread.sleep(1000L);
@@ -83,11 +81,11 @@ public class GateWayVerifyManager$4
       label316:
       if ((localObject2 instanceof Inet6Address))
       {
-        i = awoq.a(this.this$0, ((InetAddress)localObject2).getHostAddress()).intValue();
+        i = GateWayVerifyManager.a(this.this$0, ((InetAddress)localObject2).getHostAddress()).intValue();
         continue;
         label343:
         QLog.e("GateWayVerifyManager", 1, "切换网络失败or无数据网络");
-        this.jdField_a_of_type_Awou.a(new Exception("change network to mobile failed or no mobile network"));
+        this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback.a(new Exception("change network to mobile failed or no mobile network"));
       }
       else
       {

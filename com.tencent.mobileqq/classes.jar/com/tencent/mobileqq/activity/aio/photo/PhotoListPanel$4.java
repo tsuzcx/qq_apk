@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.util.Pair;
 import java.util.ArrayList;
 
@@ -14,14 +14,14 @@ class PhotoListPanel$4
     if ((!((ArrayList)this.jdField_a_of_type_ComTencentUtilPair.first).isEmpty()) || (!((ArrayList)this.jdField_a_of_type_ComTencentUtilPair.second).isEmpty()))
     {
       this.this$0.a(this.jdField_a_of_type_ComTencentUtilPair, this.jdField_a_of_type_Boolean);
-      bcwz.b = System.currentTimeMillis();
+      com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.b = System.currentTimeMillis();
     }
-    bdla.b(null, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, "", "");
+    ReportController.b(null, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.4
  * JD-Core Version:    0.7.0.1
  */

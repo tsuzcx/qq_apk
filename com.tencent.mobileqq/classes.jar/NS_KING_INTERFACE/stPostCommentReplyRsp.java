@@ -9,7 +9,7 @@ public final class stPostCommentReplyRsp
   extends JceStruct
 {
   static stMetaReply cache_reply = new stMetaReply();
-  public stMetaReply reply;
+  public stMetaReply reply = null;
   
   public stPostCommentReplyRsp() {}
   

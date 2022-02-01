@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.ark.debug;
 
 import android.widget.TextView;
-import anvx;
-import aqar;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class ArkIDESettingFragment$6$1
+class ArkIDESettingFragment$6$1
   implements Runnable
 {
-  public ArkIDESettingFragment$6$1(aqar paramaqar, int paramInt, TextView paramTextView) {}
+  ArkIDESettingFragment$6$1(ArkIDESettingFragment.6 param6, int paramInt, TextView paramTextView) {}
   
   public void run()
   {
@@ -15,31 +14,31 @@ public class ArkIDESettingFragment$6$1
     switch (this.jdField_a_of_type_Int)
     {
     default: 
-      str = "js调试库状态: " + anvx.a(2131700197);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700775);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       return;
-      str = "js调试库状态: " + anvx.a(2131700192);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700770);
       continue;
-      str = "js调试库状态: " + anvx.a(2131700198);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700776);
       continue;
-      str = "js调试库状态: " + anvx.a(2131700193);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700771);
       continue;
-      str = "js调试库状态: " + anvx.a(2131700196);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700774);
       continue;
-      str = "js调试库状态: " + anvx.a(2131700191);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700769);
       continue;
-      str = "js调试库状态: " + anvx.a(2131700190);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700768);
       continue;
-      str = "js调试库状态: " + anvx.a(2131700188);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700766);
       continue;
-      str = "js调试库状态: " + anvx.a(2131700195);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700773);
       continue;
-      str = "js调试库状态: " + anvx.a(2131700189);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700767);
       continue;
-      str = "js调试库状态: " + anvx.a(2131700187);
+      str = "js调试库状态: " + HardCodeUtil.a(2131700765);
     }
   }
 }

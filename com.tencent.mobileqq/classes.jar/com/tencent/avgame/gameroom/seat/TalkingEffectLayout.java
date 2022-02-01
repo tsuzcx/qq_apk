@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
@@ -15,8 +16,8 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.avgame.util.AVGameUtils;
 import com.tencent.qphone.base.util.QLog;
-import nki;
 
 public class TalkingEffectLayout
   extends RelativeLayout
@@ -58,11 +59,27 @@ public class TalkingEffectLayout
       setLayerType(1, null);
     }
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838792));
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838800));
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
-    addView(this.jdField_b_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
+    Bitmap localBitmap = AVGameUtils.a("avgame_pk_player_talking_inner.png");
+    if (localBitmap != null)
+    {
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
+      localBitmap = AVGameUtils.a("avgame_pk_player_talking_outer.png");
+      if (localBitmap == null) {
+        break label156;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+    }
+    for (;;)
+    {
+      addView(this.jdField_a_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
+      addView(this.jdField_b_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
+      return;
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838939));
+      break;
+      label156:
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838940));
+    }
   }
   
   private void d()
@@ -80,7 +97,7 @@ public class TalkingEffectLayout
     localObjectAnimator3.setDuration(1000L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3 });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new nki(this));
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new TalkingEffectLayout.1(this));
   }
   
   public void a()
@@ -118,7 +135,7 @@ public class TalkingEffectLayout
     super.dispatchDraw(paramCanvas);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int != paramInt1))
     {
@@ -141,7 +158,7 @@ public class TalkingEffectLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.TalkingEffectLayout
  * JD-Core Version:    0.7.0.1
  */

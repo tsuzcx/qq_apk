@@ -3,7 +3,6 @@ package com.tencent.qqmini.miniapp.widget.camera;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.util.Log;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 
 class MiniAppCamera$2
   implements Camera.PictureCallback
@@ -17,7 +16,7 @@ class MiniAppCamera$2
     {
       paramCamera.reconnect();
       paramCamera.startPreview();
-      ThreadManager.executeOnDiskIOThreadPool(new MiniAppCamera.2.1(this, paramArrayOfByte));
+      MiniAppCamera.access$000(this.this$0, paramArrayOfByte, this.val$adapt, this.val$quality, this.val$callback);
       return;
     }
     catch (Exception localException)
@@ -31,7 +30,7 @@ class MiniAppCamera$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.MiniAppCamera.2
  * JD-Core Version:    0.7.0.1
  */

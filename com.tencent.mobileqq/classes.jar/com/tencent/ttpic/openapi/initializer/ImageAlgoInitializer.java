@@ -8,7 +8,7 @@ public class ImageAlgoInitializer
   extends Feature
 {
   private static final String TAG = ImageAlgoInitializer.class.getSimpleName();
-  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("opencv_world"), new SharedLibraryInfo("algo_rithm_jni") };
+  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("algo_rithm_jni") };
   
   protected boolean destroyImpl()
   {
@@ -37,7 +37,7 @@ public class ImageAlgoInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.ImageAlgoInitializer
  * JD-Core Version:    0.7.0.1
  */

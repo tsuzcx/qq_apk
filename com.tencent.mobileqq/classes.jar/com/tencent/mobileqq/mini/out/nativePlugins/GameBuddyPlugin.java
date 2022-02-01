@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -19,7 +19,7 @@ public class GameBuddyPlugin
     QLog.i("GameBuddyPlugin", 1, "[onDestroy]");
   }
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     if (paramJSContext == null) {}
     try

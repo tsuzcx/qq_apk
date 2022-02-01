@@ -20,20 +20,20 @@ import tencent.im.oidb.olympic.torch_transfer.TorcherRankInfo;
 public class TorchInfo
   implements Serializable, Cloneable
 {
-  public int business_entry_new;
-  public int business_entry_seq;
+  public int business_entry_new = 0;
+  public int business_entry_seq = 0;
   public ArrayList<TorchInfo.CityInfo> city_list = new ArrayList();
   public long cur_city_id;
   public int delay_time = -1;
   public long id;
-  public boolean isOnlyTorcher;
+  public boolean isOnlyTorcher = false;
   public long ranking;
   public long reach_next_city_num;
   public String torch_pic_md5;
   public String torch_pic_url;
   public int torch_type;
-  public long transferLimitTs;
-  public boolean transferOverLimit;
+  public long transferLimitTs = 0L;
+  public boolean transferOverLimit = false;
   public long transfer_num;
   public long uin;
   
@@ -67,7 +67,6 @@ public class TorchInfo
             this.reach_next_city_num = ((torch_transfer.LightCityInfo)localObject).uint32_next_city_num.get();
           }
         }
-        int i;
         if (paramTorchbearerInfo.msg_pic_info.has())
         {
           localObject = (torch_transfer.TorchPicInfo)paramTorchbearerInfo.msg_pic_info.get();
@@ -83,9 +82,7 @@ public class TorchInfo
           if (((torch_transfer.TorchPicInfo)localObject).rpt_city_pic_list.has())
           {
             localObject = ((torch_transfer.TorchPicInfo)localObject).rpt_city_pic_list.get();
-            if ((localObject != null) && (((List)localObject).size() > 0))
-            {
-              i = 0;
+            if ((localObject != null) && (((List)localObject).size() > 0)) {
               while (i < ((List)localObject).size())
               {
                 torch_transfer.CityBackPicInfo localCityBackPicInfo = (torch_transfer.CityBackPicInfo)((List)localObject).get(i);

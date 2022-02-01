@@ -12,8 +12,8 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anvx;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.qqui.R.styleable;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PadQQCheckBox
@@ -33,12 +33,12 @@ public class PadQQCheckBox
   public PadQQCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.PadQQCheckBox);
-    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(0, true);
-    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(1);
-    LayoutInflater.from(paramContext).inflate(2131559580, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364599));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364609));
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aa);
+    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.E, true);
+    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(R.styleable.F);
+    LayoutInflater.from(paramContext).inflate(2131559656, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364713));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364723));
     setChecked(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     paramAttributeSet.recycle();
@@ -66,7 +66,7 @@ public class PadQQCheckBox
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = anvx.a(2131707323);; str = anvx.a(2131707322))
+    for (String str = HardCodeUtil.a(2131707850);; str = HardCodeUtil.a(2131707849))
     {
       paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence + str);
       return;
@@ -77,13 +77,13 @@ public class PadQQCheckBox
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840660);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840790);
     }
     for (;;)
     {
       refreshDrawableState();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840658);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840788);
     }
   }
   
@@ -98,7 +98,7 @@ public class PadQQCheckBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PadQQCheckBox
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.together.clockin;
 
-import bekx;
-
-public class HasClockView$2
+class HasClockView$2
   implements Runnable
 {
-  public HasClockView$2(bekx parambekx) {}
+  HasClockView$2(HasClockView paramHasClockView) {}
   
   public void run()
   {
-    if (bekx.a(this.this$0)) {
-      bekx.a(this.this$0);
+    if (HasClockView.a(this.this$0)) {
+      HasClockView.a(this.this$0);
     }
   }
 }

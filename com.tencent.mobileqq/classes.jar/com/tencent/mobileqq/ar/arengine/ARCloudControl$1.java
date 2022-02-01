@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import anvx;
-import apji;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class ARCloudControl$1
+class ARCloudControl$1
   implements Runnable
 {
-  public ARCloudControl$1(apji paramapji) {}
+  ARCloudControl$1(ARCloudControl paramARCloudControl) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), anvx.a(2131700140), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131700718), 0).a();
   }
 }
 

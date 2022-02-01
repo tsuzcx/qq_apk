@@ -3,12 +3,11 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bebn;
 
 public class TeamWorkFileImportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new bebn();
+  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new TeamWorkFileImportInfo.1();
   public int a;
   public long a;
   public String a;
@@ -55,12 +54,20 @@ public class TeamWorkFileImportInfo
   public TeamWorkFileImportInfo()
   {
     this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
     this.jdField_g_of_type_JavaLangString = "";
   }
   
-  public TeamWorkFileImportInfo(Parcel paramParcel)
+  protected TeamWorkFileImportInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
     this.jdField_g_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -78,43 +85,45 @@ public class TeamWorkFileImportInfo
       this.jdField_a_of_type_Boolean = bool1;
       this.jdField_d_of_type_Int = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label377;
-      }
-      bool1 = true;
-      label128:
-      this.jdField_b_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label382;
-      }
-      bool1 = true;
-      label142:
-      this.jdField_c_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label387;
-      }
-      bool1 = true;
-      label156:
-      this.jdField_d_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label392;
-      }
-      bool1 = true;
-      label170:
-      this.jdField_e_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
         break label397;
       }
       bool1 = true;
-      label184:
-      this.jdField_f_of_type_Boolean = bool1;
+      label148:
+      this.jdField_b_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
         break label402;
       }
+      bool1 = true;
+      label162:
+      this.jdField_c_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label407;
+      }
+      bool1 = true;
+      label176:
+      this.jdField_d_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label412;
+      }
+      bool1 = true;
+      label190:
+      this.jdField_e_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label417;
+      }
+      bool1 = true;
+      label204:
+      this.jdField_f_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label422;
+      }
     }
-    label387:
-    label392:
     label397:
     label402:
+    label407:
+    label412:
+    label417:
+    label422:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_g_of_type_Boolean = bool1;
@@ -142,18 +151,16 @@ public class TeamWorkFileImportInfo
       return;
       bool1 = false;
       break;
-      label377:
       bool1 = false;
-      break label128;
-      label382:
+      break label148;
       bool1 = false;
-      break label142;
+      break label162;
       bool1 = false;
-      break label156;
+      break label176;
       bool1 = false;
-      break label170;
+      break label190;
       bool1 = false;
-      break label184;
+      break label204;
     }
   }
   

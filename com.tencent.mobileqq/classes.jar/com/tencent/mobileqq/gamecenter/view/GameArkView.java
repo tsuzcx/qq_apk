@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -8,31 +7,33 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-import avfh;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.ark.open.ArkView;
+import com.tencent.gamecenter.wadl.biz.entity.WadlReportBuilder;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
 import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mtt.hippy.uimanager.HippyViewBase;
+import com.tencent.mtt.hippy.uimanager.NativeGestureDispatcher;
 import com.tencent.qphone.base.util.QLog;
 
 public class GameArkView
   extends RelativeLayout
-  implements avfh, ArkViewImplement.LoadCallback
+  implements ArkViewImplement.LoadCallback, IHeaderView, HippyViewBase
 {
   private int jdField_a_of_type_Int = 101;
   private ArkView jdField_a_of_type_ComTencentArkOpenArkView;
+  private QQGameMsgInfo jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean = true;
+  private String b;
   
   public GameArkView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2131559252, this);
-    this.jdField_a_of_type_ComTencentArkOpenArkView = ((ArkView)findViewById(2131374514));
+    LayoutInflater.from(getContext()).inflate(2131559289, this);
+    this.jdField_a_of_type_ComTencentArkOpenArkView = ((ArkView)findViewById(2131374884));
     try
     {
       paramContext = getResources().getDisplayMetrics();
@@ -81,23 +82,12 @@ public class GameArkView
     }
   }
   
-  public void a(MessageRecord paramMessageRecord, Activity paramActivity)
+  public void a(QQGameMsgInfo paramQQGameMsgInfo, Context paramContext, int paramInt, String paramString)
   {
+    this.b = paramString;
     if (this.jdField_a_of_type_ComTencentArkOpenArkView != null)
     {
-      paramMessageRecord = (MessageForArkApp)paramMessageRecord;
-      if (paramMessageRecord != null)
-      {
-        this.jdField_a_of_type_JavaLangString = paramMessageRecord.ark_app_message.appName;
-        this.jdField_a_of_type_ComTencentArkOpenArkView.load(paramMessageRecord.ark_app_message.appName, paramMessageRecord.ark_app_message.appView, paramMessageRecord.ark_app_message.appMinVersion, paramMessageRecord.ark_app_message.metaList, paramMessageRecord.ark_app_message.config, this);
-      }
-    }
-  }
-  
-  public void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null)
-    {
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo = paramQQGameMsgInfo;
       this.jdField_a_of_type_JavaLangString = paramQQGameMsgInfo.arkAppName;
       this.jdField_a_of_type_ComTencentArkOpenArkView.load(paramQQGameMsgInfo.arkAppName, paramQQGameMsgInfo.arkAppView, paramQQGameMsgInfo.arkAppMinVersion, paramQQGameMsgInfo.arkMetaList, paramQQGameMsgInfo.arkAppConfig, this);
     }
@@ -122,27 +112,61 @@ public class GameArkView
   
   public void c()
   {
+    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GameArkView", 1, "GameArkView onDestory");
+      }
+      this.jdField_a_of_type_ComTencentArkOpenArkView.onDestroy();
+    }
+  }
+  
+  public void d()
+  {
     if (this.jdField_a_of_type_ComTencentArkOpenArkView != null) {
       this.jdField_a_of_type_ComTencentArkOpenArkView.onDestroy();
     }
   }
   
+  public NativeGestureDispatcher getGestureDispatcher()
+  {
+    return null;
+  }
+  
   public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GameArkView", 4, "onLoadFailed() called with: i = [" + paramInt1 + "], i1 = [" + paramInt2 + "], s = [" + paramString + "], b = [" + paramBoolean + "]");
+      QLog.d("GameArkView", 1, "onLoadFailed state=" + paramInt1 + "|errCode=" + paramInt2 + "|errMsg=" + paramString + "|canRetry=" + paramBoolean);
+    }
+    try
+    {
+      QQGameHelper.a(this.b).d("76918").c("207984").a(2, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.advId).b(this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId).a(18, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.arkAppName).a(19, paramInt1 + "").a(20, paramInt2 + "").a(21, paramString).a(22, paramBoolean + "").a();
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
   public void onLoadState(int paramInt)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameArkView", 1, "onLoadState state=" + paramInt);
+    }
     ThreadManagerV2.getUIHandlerV2().postDelayed(new GameArkView.1(this), 500L);
+    try
+    {
+      QQGameHelper.a(this.b).d("76918").c("207984").a(2, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.advId).b(this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId).a(18, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.arkAppName).a(29, paramInt + "").a();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
   
-  public void setCurArkState(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void setGestureDispatcher(NativeGestureDispatcher paramNativeGestureDispatcher) {}
   
   public void setPrePause(boolean paramBoolean)
   {
@@ -151,7 +175,7 @@ public class GameArkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.GameArkView
  * JD-Core Version:    0.7.0.1
  */

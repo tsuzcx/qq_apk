@@ -8,7 +8,7 @@ public class MediaItem
   private long end;
   private int height;
   private String path;
-  private int rotation;
+  private int rotation = 0;
   private long start;
   private int type;
   private int width;
@@ -120,7 +120,7 @@ public class MediaItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.model.MediaItem
  * JD-Core Version:    0.7.0.1
  */

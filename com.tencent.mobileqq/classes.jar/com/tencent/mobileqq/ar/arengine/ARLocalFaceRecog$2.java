@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apky;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class ARLocalFaceRecog$2
+class ARLocalFaceRecog$2
   implements Runnable
 {
   public void run()

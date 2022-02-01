@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import bijj;
 import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppUtils$3$1
   implements Runnable
 {
-  MiniAppUtils$3$1(MiniAppUtils.3 param3, bijj parambijj) {}
+  MiniAppUtils$3$1(MiniAppUtils.3 param3, WebSoCgiService.WebSoCgiState paramWebSoCgiState) {}
   
   public void run()
   {

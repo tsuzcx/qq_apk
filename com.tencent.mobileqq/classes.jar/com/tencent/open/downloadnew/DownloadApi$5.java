@@ -1,21 +1,18 @@
 package com.tencent.open.downloadnew;
 
-import bjko;
-import bjmu;
-import bjna;
-import bjnh;
+import com.tencent.open.base.LogUtility;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class DownloadApi$5
+final class DownloadApi$5
   implements Runnable
 {
-  public DownloadApi$5(List paramList, bjnh parambjnh) {}
+  DownloadApi$5(List paramList, DownloadQueryListener paramDownloadQueryListener) {}
   
   public void run()
   {
-    bjko.a(bjmu.a, "getQueryDownloadAction enter");
-    bjna.a().a();
+    LogUtility.a(DownloadApi.a, "getQueryDownloadAction enter");
+    DownloadManager.a().a();
     for (;;)
     {
       int i;
@@ -27,27 +24,27 @@ public final class DownloadApi$5
         if (i < j)
         {
           DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (bjna.a().a(localDownloadInfo))
+          if (DownloadManager.a().a(localDownloadInfo))
           {
-            bjko.a(bjmu.a, "refreshDownloadInfo true " + localDownloadInfo);
+            LogUtility.a(DownloadApi.a, "refreshDownloadInfo true " + localDownloadInfo);
             localArrayList.add(localDownloadInfo);
           }
         }
         else
         {
-          if (this.jdField_a_of_type_Bjnh != null) {
-            this.jdField_a_of_type_Bjnh.a(localArrayList);
+          if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
+            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(localArrayList);
           }
           return;
         }
       }
       catch (Exception localException)
       {
-        bjko.c(bjmu.a, "Exception>>>", localException);
-        if (this.jdField_a_of_type_Bjnh == null) {
+        LogUtility.c(DownloadApi.a, "Exception>>>", localException);
+        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null) {
           continue;
         }
-        this.jdField_a_of_type_Bjnh.a(-1, localException.getMessage());
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
         return;
       }
       i += 1;
@@ -56,7 +53,7 @@ public final class DownloadApi$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.5
  * JD-Core Version:    0.7.0.1
  */

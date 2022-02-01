@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import ascr;
-
 public class PokeResData
   extends XmlData
 {
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public long SoLength;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public String SoMD5 = "";
   
   public String getSharedPreferencesName()
@@ -22,7 +20,7 @@ public class PokeResData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.PokeResData
  * JD-Core Version:    0.7.0.1
  */

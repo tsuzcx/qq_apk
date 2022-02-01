@@ -1,27 +1,24 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.Context;
-import android.content.Intent;
-import bimp;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.activity.aio.stickerbubble.PEPanelHelper;
+import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$46
-  implements bimp
+  implements Runnable
 {
   BaseChatPie$46(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void run()
   {
-    paramClickableColorSpanTextView = new Intent(this.this$0.mContext, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.this$0.mContext.startActivity(paramClickableColorSpanTextView);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.this$0.b, 2, "checkPESourceDowned onShow First");
+    }
+    PEPanelHelper.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.46
  * JD-Core Version:    0.7.0.1
  */

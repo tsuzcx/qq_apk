@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class ProfIncInfoRes
   extends JceStruct
 {
-  public int uOnlineTime;
-  public int uRemainTime;
-  public short wLevel;
+  public int uOnlineTime = 0;
+  public int uRemainTime = 0;
+  public short wLevel = 0;
   
   public ProfIncInfoRes() {}
   

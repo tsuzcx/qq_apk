@@ -5,12 +5,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import olx;
 
-public class SoftAdExpoStatManager$1
+class SoftAdExpoStatManager$1
   implements Runnable
 {
-  public SoftAdExpoStatManager$1(olx paramolx, Map paramMap) {}
+  SoftAdExpoStatManager$1(SoftAdExpoStatManager paramSoftAdExpoStatManager, Map paramMap) {}
   
   public void run()
   {
@@ -21,12 +20,12 @@ public class SoftAdExpoStatManager$1
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       localStringBuilder.append((String)localEntry.getKey()).append("&&").append(localEntry.getValue()).append(",,");
     }
-    SharePreferenceUtils.set(olx.a(this.this$0), olx.a(this.this$0) + "expo_stat_key_timewindow", localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
+    SharePreferenceUtils.a(SoftAdExpoStatManager.a(this.this$0), SoftAdExpoStatManager.a(this.this$0) + "expo_stat_key_timewindow", localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.SoftAdExpoStatManager.1
  * JD-Core Version:    0.7.0.1
  */

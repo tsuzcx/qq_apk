@@ -4,12 +4,12 @@ import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.NetworkUtil;
 
-public final class ReadinjoySPEventReport$4
+final class ReadinjoySPEventReport$4
   implements Runnable
 {
   public void run()
   {
-    int i = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext());
+    int i = NetworkUtil.a(BaseApplicationImpl.getContext());
     String str;
     if ((i == 2) || (i == 3) || (i == 4)) {
       str = "WWAN";
@@ -29,7 +29,7 @@ public final class ReadinjoySPEventReport$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.4
  * JD-Core Version:    0.7.0.1
  */

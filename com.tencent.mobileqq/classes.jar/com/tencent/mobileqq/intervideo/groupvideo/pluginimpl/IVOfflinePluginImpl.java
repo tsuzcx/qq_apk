@@ -9,25 +9,25 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
+import com.tencent.biz.AuthorizeConfig;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.offline.HtmlOffline.MyWebResourceResponse;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVOfflineInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.MobileQQ;
-import nro;
-import nuz;
-import nvd;
 
 public class IVOfflinePluginImpl
   implements IVOfflineInterface
 {
   private String TAG = "IVOfflinePluginImpl";
-  private boolean ex;
+  private boolean ex = false;
   private long initTime;
-  private boolean isCheckModel;
-  private boolean isDestroy;
+  private boolean isCheckModel = false;
+  private boolean isDestroy = false;
   private Context mApplicationContext;
-  private nro mAuthConfig;
+  private AuthorizeConfig mAuthConfig;
   private String mBid;
   private String mBusinessId;
   private Handler mCheckupHandler;
@@ -38,9 +38,9 @@ public class IVOfflinePluginImpl
   public IVOfflinePluginImpl(Context paramContext, WebView paramWebView)
   {
     this.mApplicationContext = paramContext;
-    nuz.a(paramContext);
+    HtmlOffline.a(paramContext);
     this.mWebView = paramWebView;
-    this.mAuthConfig = nro.a(true);
+    this.mAuthConfig = AuthorizeConfig.a(true);
     initHandler();
     this.initTime = System.currentTimeMillis();
   }
@@ -91,7 +91,7 @@ public class IVOfflinePluginImpl
     if (QLog.isColorLevel()) {
       QLog.i(this.TAG, 2, "checkOfflineUp.");
     }
-    nuz.a(paramString, ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null), new IVOfflinePluginImpl.1(this));
+    HtmlOffline.a(paramString, ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null), new IVOfflinePluginImpl.1(this));
   }
   
   private void checkOfflineUpNotCallback(String paramString)
@@ -103,7 +103,7 @@ public class IVOfflinePluginImpl
     if (QLog.isColorLevel()) {
       QLog.i(this.TAG, 2, "checkOfflineUpNotCallback.");
     }
-    nuz.a(paramString, ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null), new IVOfflinePluginImpl.3(this));
+    HtmlOffline.a(paramString, ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null), new IVOfflinePluginImpl.3(this));
   }
   
   private String checkOfflineUrl(String paramString)
@@ -123,13 +123,13 @@ public class IVOfflinePluginImpl
         }
         if (TextUtils.isEmpty(this.mBusinessId))
         {
-          this.mBusinessId = this.mAuthConfig.b(paramString);
+          this.mBusinessId = this.mAuthConfig.a(paramString);
           if (this.mBid == null) {
             this.mBid = this.mBusinessId;
           }
           if (!TextUtils.isEmpty(this.mBusinessId))
           {
-            String str1 = nuz.a(paramString, "_bid=" + this.mBusinessId);
+            String str1 = HtmlOffline.a(paramString, "_bid=" + this.mBusinessId);
             if (checkModel()) {
               continue;
             }
@@ -166,7 +166,7 @@ public class IVOfflinePluginImpl
       String str = Uri.parse(paramString).getQueryParameter("_duck");
       localObject2 = str;
       if (TextUtils.isEmpty(str)) {
-        localObject2 = this.mAuthConfig.c(paramString);
+        localObject2 = this.mAuthConfig.b(paramString);
       }
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("1")))
       {
@@ -209,7 +209,7 @@ public class IVOfflinePluginImpl
       QLog.i(this.TAG, 2, "asyncLoadUrl...");
     }
     long l = System.currentTimeMillis();
-    if (!nuz.a(this.mApplicationContext, paramString, new IVOfflinePluginImpl.4(this, l)))
+    if (!HtmlOffline.a(this.mApplicationContext, paramString, new IVOfflinePluginImpl.4(this, l)))
     {
       this.mWebView.loadUrl(paramString);
       if (QLog.isColorLevel()) {
@@ -296,7 +296,7 @@ public class IVOfflinePluginImpl
                   if (j == 0) {
                     this.mExBusinessIdList.add(str2);
                   }
-                  if ((j != 0) || (nuz.c(str2))) {
+                  if ((j != 0) || (HtmlOffline.c(str2))) {
                     break label285;
                   }
                   if (!QLog.isColorLevel()) {
@@ -319,7 +319,7 @@ public class IVOfflinePluginImpl
               i += 1;
             }
             i = 1;
-            if (((this.mOfflineLoadMode == 3) || (i != 0)) && (!nuz.a(str2, paramString)))
+            if (((this.mOfflineLoadMode == 3) || (i != 0)) && (!HtmlOffline.a(str2, paramString)))
             {
               reloadCurrentUrl();
               if (QLog.isColorLevel())
@@ -330,7 +330,7 @@ public class IVOfflinePluginImpl
             }
             else
             {
-              paramString = nuz.a(str2, paramString);
+              paramString = HtmlOffline.a(str2, paramString);
               if (paramString == null)
               {
                 if (QLog.isColorLevel())
@@ -357,7 +357,7 @@ public class IVOfflinePluginImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVOfflinePluginImpl
  * JD-Core Version:    0.7.0.1
  */

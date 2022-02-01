@@ -18,7 +18,7 @@ public final class ilive_get_record_info_svr$RecordInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.pb.now.ilive_get_record_info_svr.RecordInfo
  * JD-Core Version:    0.7.0.1
  */

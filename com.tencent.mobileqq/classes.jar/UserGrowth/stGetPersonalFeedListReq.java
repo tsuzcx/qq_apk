@@ -10,10 +10,10 @@ public final class stGetPersonalFeedListReq
 {
   static ArrayList<String> cache_context_feedids = new ArrayList();
   public String attach_info = "";
-  public ArrayList<String> context_feedids;
+  public ArrayList<String> context_feedids = null;
   public boolean isFirst = true;
   public String personId = "";
-  public int scene;
+  public int scene = 0;
   
   static
   {

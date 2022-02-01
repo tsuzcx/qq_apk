@@ -20,13 +20,14 @@ public final class ConfigurationService$RespGetConfigByPage
   public final PBRepeatField<Integer> seed_ids = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBUInt32Field show_strategy = PBField.initUInt32(0);
   public final PBUInt32Field show_time = PBField.initUInt32(0);
+  public final PBUInt32Field stagger_version = PBField.initUInt32(0);
   public final PBUInt32Field type = PBField.initUInt32(0);
   public final PBUInt32Field wording_no = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 808, 816, 824, 832, 840 }, new String[] { "result", "type", "content", "page_info", "delay_time", "wording_no", "seed_ids", "show_time", "show_strategy" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RespGetConfigByPage.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 808, 816, 824, 832, 840, 1600 }, new String[] { "result", "type", "content", "page_info", "delay_time", "wording_no", "seed_ids", "show_time", "show_strategy", "stagger_version" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RespGetConfigByPage.class);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import aokb;
 import com.tencent.image.AbstractVideoImage;
+import com.tencent.mobileqq.app.face.DynamicFaceDrawable;
 
 class DynamicAvatarManager$8$1
   implements Runnable
@@ -10,7 +10,7 @@ class DynamicAvatarManager$8$1
   
   public void run()
   {
-    if (!aokb.b) {
+    if (!DynamicFaceDrawable.b) {
       AbstractVideoImage.resumeAll();
     }
   }

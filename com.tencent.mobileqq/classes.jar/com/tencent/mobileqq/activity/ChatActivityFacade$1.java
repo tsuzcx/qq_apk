@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import azjj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.pic.DownCallBack;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.mobileqq.transfile.TransferRequest.PttDownExtraInfo;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.qphone.base.util.QLog;
 
-public final class ChatActivityFacade$1
+final class ChatActivityFacade$1
   implements Runnable
 {
-  public ChatActivityFacade$1(MessageForPtt paramMessageForPtt, QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean, azjj paramazjj, int paramInt1, int paramInt2) {}
+  ChatActivityFacade$1(MessageForPtt paramMessageForPtt, QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean, DownCallBack paramDownCallBack, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -39,26 +39,26 @@ public final class ChatActivityFacade$1
       localTransferRequest.mDbRecVersion = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.subVersion;
       localTransferRequest.mRec = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
       if (!this.jdField_a_of_type_Boolean) {
-        break label286;
+        break label293;
       }
     }
     for (;;)
     {
       localTransferRequest.mDownMode = i;
-      localTransferRequest.mDownCallBack = this.jdField_a_of_type_Azjj;
+      localTransferRequest.mDownCallBack = this.jdField_a_of_type_ComTencentMobileqqPicDownCallBack;
       localTransferRequest.mExtraObj = new TransferRequest.PttDownExtraInfo(this.jdField_a_of_type_Int, this.b);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
+      ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
       return;
       bool = false;
       break;
-      label286:
+      label293:
       i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.1
  * JD-Core Version:    0.7.0.1
  */

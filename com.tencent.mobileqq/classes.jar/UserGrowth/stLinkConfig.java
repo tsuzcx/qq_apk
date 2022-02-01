@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class stLinkConfig
   extends JceStruct
 {
-  public int callCount;
-  public int downloadCount;
+  public int callCount = 0;
+  public int downloadCount = 0;
   public boolean isOpenVideoPage = true;
-  public boolean openCallWeishi;
-  public boolean openDownloadWeishi;
+  public boolean openCallWeishi = false;
+  public boolean openDownloadWeishi = false;
   
   public stLinkConfig() {}
   

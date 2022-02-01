@@ -1,14 +1,13 @@
 package com.tencent.av.smallscreen;
 
 import com.tencent.av.VideoController;
-import lfe;
-import lzv;
-import mcx;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.ControlUIObserver;
 
-public class SmallScreenVideoController$3
+class SmallScreenVideoController$3
   implements Runnable
 {
-  public SmallScreenVideoController$3(lzv paramlzv, long paramLong) {}
+  SmallScreenVideoController$3(SmallScreenVideoController paramSmallScreenVideoController, long paramLong) {}
   
   public void run()
   {
@@ -41,13 +40,13 @@ public class SmallScreenVideoController$3
     {
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().b(this.a, false);
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().c("SmallScreen.onResume", 0);
-      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().k) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ay) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S > 0)) {
-        lzv.a(this.this$0);
+      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().k) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aA) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S > 0)) {
+        SmallScreenVideoController.a(this.this$0);
       }
       if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int != 2) {
         break;
       }
-      this.this$0.jdField_a_of_type_Mcx.d();
+      this.this$0.jdField_a_of_type_ComTencentAvUiControlUIObserver.d();
       return;
       if (i != 2) {
         break label143;
@@ -59,7 +58,7 @@ public class SmallScreenVideoController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoController.3
  * JD-Core Version:    0.7.0.1
  */

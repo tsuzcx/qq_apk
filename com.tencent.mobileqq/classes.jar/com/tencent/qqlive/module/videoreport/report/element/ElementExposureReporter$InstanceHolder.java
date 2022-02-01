@@ -6,7 +6,7 @@ class ElementExposureReporter$InstanceHolder
   
   static
   {
-    ElementExposureReporter.access$400(INSTANCE);
+    ElementExposureReporter.access$500(INSTANCE);
   }
 }
 

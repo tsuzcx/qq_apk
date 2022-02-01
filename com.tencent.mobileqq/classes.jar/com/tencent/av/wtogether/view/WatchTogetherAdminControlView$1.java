@@ -18,13 +18,13 @@ class WatchTogetherAdminControlView$1
       QLog.d("WatchTogetherVideoPlayView", 1, "run mEnterImmersiveStatus:=" + WatchTogetherAdminControlView.a(this.this$0));
       return;
       WatchTogetherAdminControlView.a(this.this$0).removeCallbacks(WatchTogetherAdminControlView.a(this.this$0));
-      WatchTogetherAdminControlView.a(this.this$0).postDelayed(WatchTogetherAdminControlView.a(this.this$0), 12000L);
+      WatchTogetherAdminControlView.a(this.this$0).postDelayed(WatchTogetherAdminControlView.a(this.this$0), WatchTogetherAdminControlView.c(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherAdminControlView.1
  * JD-Core Version:    0.7.0.1
  */

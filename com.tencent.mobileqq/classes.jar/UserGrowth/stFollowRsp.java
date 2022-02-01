@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stFollowRsp
   extends JceStruct
 {
-  public int isFollow;
+  public int isFollow = 0;
   
   public stFollowRsp() {}
   

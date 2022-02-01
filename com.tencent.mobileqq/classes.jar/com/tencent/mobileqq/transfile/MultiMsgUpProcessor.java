@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.transfile;
 
-import acnh;
 import android.os.SystemClock;
-import azla;
-import azlb;
-import blkh;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
+import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
@@ -18,7 +15,11 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.MultiMsgUpReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
@@ -29,6 +30,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.wstt.SSCM.SSCM;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -52,26 +54,26 @@ public class MultiMsgUpProcessor
   public static ExcitingTransferHostInfo mBDHIpv4;
   public static ExcitingTransferHostInfo mBDHIpv6;
   public static boolean mIsBDHImmediately = true;
-  private static int seq;
+  private static int seq = 0;
   public boolean mIsByBDH = true;
   private String mLocalPath = this.mUiRequest.mLocalPath;
   private byte[] mMsgKey;
   private byte[] mResId;
-  private boolean mSSCMSpanned;
+  private boolean mSSCMSpanned = false;
   private byte[] mSig;
   private String mUUID;
   private int mUinType = this.mUiRequest.mUinType;
   private byte[] mUkey;
   public int multiMsgType;
   private long selfUin;
-  private blkh sscmObject = new blkh();
+  private SSCM sscmObject = new SSCM();
   private long startTime = -1L;
   private byte[] toSendData;
   private byte[] toSendPBData;
   
-  public MultiMsgUpProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public MultiMsgUpProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     this.toSendData = paramTransferRequest.toSendData;
     this.multiMsgType = paramTransferRequest.multiMsgType;
     if (this.toSendData != null) {}
@@ -81,9 +83,9 @@ public class MultiMsgUpProcessor
         this.selfUin = Long.parseLong(this.mUiRequest.mSelfUin);
         return;
       }
-      catch (Exception paramTransFileController)
+      catch (Exception paramTransFileControllerImpl)
       {
-        paramTransFileController.printStackTrace();
+        paramTransFileControllerImpl.printStackTrace();
         this.selfUin = 0L;
       }
     }
@@ -130,11 +132,11 @@ public class MultiMsgUpProcessor
     ((im_msg_head.LoginSig)localObject3).bytes_sig.set(ByteStringMicro.copyFrom(this.mSig));
     localObject1 = new String();
     int i = 0;
-    while (i < "8.4.10".length())
+    while (i < "8.5.5".length())
     {
       localObject2 = localObject1;
-      if ("8.4.10".charAt(i) != '.') {
-        localObject2 = ((String)localObject1).concat(Character.toString("8.4.10".charAt(i)));
+      if ("8.5.5".charAt(i) != '.') {
+        localObject2 = ((String)localObject1).concat(Character.toString("8.5.5".charAt(i)));
       }
       i += 1;
       localObject1 = localObject2;
@@ -216,7 +218,7 @@ public class MultiMsgUpProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "multi_msg_up";
     localRichProtoReq.reqs.add(localMultiMsgUpReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = getProtoReqManager();
     if (!isAppValid())
     {
       setError(9366, "illegal app", null, this.mStepUrl);
@@ -410,12 +412,12 @@ public class MultiMsgUpProcessor
     sendMessageToUpdate(1005);
     if (this.mUiRequest.mUpCallBack != null)
     {
-      azlb localazlb = new azlb();
-      localazlb.jdField_a_of_type_Int = -1;
-      localazlb.b = this.errCode;
-      localazlb.jdField_a_of_type_JavaLangString = this.errDesc;
-      localazlb.jdField_a_of_type_JavaLangObject = Long.valueOf(this.mUiRequest.mUniseq);
-      this.mUiRequest.mUpCallBack.onSend(localazlb);
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+      localSendResult.jdField_a_of_type_Int = -1;
+      localSendResult.b = this.errCode;
+      localSendResult.jdField_a_of_type_JavaLangString = this.errDesc;
+      localSendResult.jdField_a_of_type_JavaLangObject = Long.valueOf(this.mUiRequest.mUniseq);
+      this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
   
@@ -425,125 +427,125 @@ public class MultiMsgUpProcessor
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokespecial 795	com/tencent/mobileqq/transfile/BaseUploadProcessor:onResp	(Lcom/tencent/mobileqq/transfile/NetResp;)V
+    //   2: invokespecial 790	com/tencent/mobileqq/transfile/BaseUploadProcessor:onResp	(Lcom/tencent/mobileqq/transfile/NetResp;)V
     //   5: aload_0
-    //   6: getfield 798	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mIsCancel	Z
+    //   6: getfield 793	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mIsCancel	Z
     //   9: ifne +10 -> 19
     //   12: aload_0
-    //   13: getfield 801	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mIsPause	Z
+    //   13: getfield 796	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mIsPause	Z
     //   16: ifeq +4 -> 20
     //   19: return
     //   20: aload_0
     //   21: aconst_null
-    //   22: putfield 805	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   22: putfield 800	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
     //   25: aload_0
-    //   26: ldc_w 806
-    //   29: new 203	java/lang/StringBuilder
+    //   26: ldc_w 801
+    //   29: new 207	java/lang/StringBuilder
     //   32: dup
-    //   33: invokespecial 204	java/lang/StringBuilder:<init>	()V
-    //   36: ldc_w 808
-    //   39: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokespecial 208	java/lang/StringBuilder:<init>	()V
+    //   36: ldc_w 803
+    //   39: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: aload_1
-    //   43: getfield 813	com/tencent/mobileqq/transfile/NetResp:mResult	I
-    //   46: invokevirtual 213	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   49: ldc_w 815
-    //   52: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: getfield 808	com/tencent/mobileqq/transfile/NetResp:mResult	I
+    //   46: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   49: ldc_w 810
+    //   52: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: aload_1
-    //   56: getfield 818	com/tencent/mobileqq/transfile/NetResp:mErrCode	I
-    //   59: invokevirtual 213	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   62: ldc_w 820
-    //   65: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: getfield 813	com/tencent/mobileqq/transfile/NetResp:mErrCode	I
+    //   59: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   62: ldc_w 815
+    //   65: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: aload_1
-    //   69: getfield 823	com/tencent/mobileqq/transfile/NetResp:mErrDesc	Ljava/lang/String;
-    //   72: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokevirtual 455	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   69: getfield 818	com/tencent/mobileqq/transfile/NetResp:mErrDesc	Ljava/lang/String;
+    //   72: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokevirtual 451	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   81: aload_1
-    //   82: getfield 813	com/tencent/mobileqq/transfile/NetResp:mResult	I
+    //   82: getfield 808	com/tencent/mobileqq/transfile/NetResp:mResult	I
     //   85: ifne +209 -> 294
     //   88: aload_0
     //   89: iconst_0
-    //   90: putfield 826	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mNetworkChgRetryCount	I
+    //   90: putfield 821	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mNetworkChgRetryCount	I
     //   93: aload_1
-    //   94: getfield 829	com/tencent/mobileqq/transfile/NetResp:mRespProperties	Ljava/util/HashMap;
-    //   97: ldc_w 831
-    //   100: invokevirtual 833	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   94: getfield 824	com/tencent/mobileqq/transfile/NetResp:mRespProperties	Ljava/util/HashMap;
+    //   97: ldc_w 826
+    //   100: invokevirtual 828	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   103: astore 8
     //   105: aload 8
     //   107: ifnull +162 -> 269
     //   110: aload_1
-    //   111: getfield 829	com/tencent/mobileqq/transfile/NetResp:mRespProperties	Ljava/util/HashMap;
-    //   114: ldc_w 831
-    //   117: invokevirtual 833	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   120: checkcast 256	java/lang/String
-    //   123: invokestatic 303	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   111: getfield 824	com/tencent/mobileqq/transfile/NetResp:mRespProperties	Ljava/util/HashMap;
+    //   114: ldc_w 826
+    //   117: invokevirtual 828	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   120: checkcast 260	java/lang/String
+    //   123: invokestatic 307	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   126: istore_2
     //   127: iload_2
     //   128: ifeq +10 -> 138
     //   131: iload_2
-    //   132: ldc_w 834
+    //   132: ldc_w 829
     //   135: if_icmpne +141 -> 276
     //   138: iconst_1
     //   139: istore_3
     //   140: aload_0
     //   141: aload_0
-    //   142: getfield 488	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mStepTrans	Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;
+    //   142: getfield 484	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mStepTrans	Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;
     //   145: aload_1
     //   146: iload_3
-    //   147: invokevirtual 838	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:copyStatisInfoFromNetResp	(Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;Lcom/tencent/mobileqq/transfile/NetResp;Z)V
-    //   150: invokestatic 843	android/os/SystemClock:uptimeMillis	()J
+    //   147: invokevirtual 833	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:copyStatisInfoFromNetResp	(Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;Lcom/tencent/mobileqq/transfile/NetResp;Z)V
+    //   150: invokestatic 838	android/os/SystemClock:uptimeMillis	()J
     //   153: lstore 4
     //   155: aload_0
-    //   156: getfield 49	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:startTime	J
+    //   156: getfield 51	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:startTime	J
     //   159: lstore 6
     //   161: iload_3
     //   162: ifeq +119 -> 281
     //   165: aload_0
-    //   166: ldc_w 806
-    //   169: new 203	java/lang/StringBuilder
+    //   166: ldc_w 801
+    //   169: new 207	java/lang/StringBuilder
     //   172: dup
-    //   173: invokespecial 204	java/lang/StringBuilder:<init>	()V
-    //   176: ldc_w 845
-    //   179: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: invokespecial 208	java/lang/StringBuilder:<init>	()V
+    //   176: ldc_w 840
+    //   179: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: lload 4
     //   184: lload 6
     //   186: lsub
-    //   187: invokevirtual 569	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   190: ldc_w 847
-    //   193: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: invokevirtual 565	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   190: ldc_w 842
+    //   193: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   196: aload_0
-    //   197: getfield 686	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
-    //   200: getfield 850	com/tencent/mobileqq/transfile/FileMsg:fileSize	J
-    //   203: invokevirtual 569	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   206: ldc_w 852
-    //   209: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: getfield 682	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
+    //   200: getfield 845	com/tencent/mobileqq/transfile/FileMsg:fileSize	J
+    //   203: invokevirtual 565	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   206: ldc_w 847
+    //   209: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: iload_2
-    //   213: invokevirtual 213	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   216: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   219: invokevirtual 455	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   213: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   216: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   219: invokevirtual 451	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   222: aload_0
-    //   223: invokevirtual 855	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:onSuccess	()V
+    //   223: invokevirtual 850	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:onSuccess	()V
     //   226: return
     //   227: astore_1
     //   228: aload_0
     //   229: sipush 9343
-    //   232: new 42	java/lang/Exception
+    //   232: new 44	java/lang/Exception
     //   235: dup
-    //   236: ldc_w 857
-    //   239: invokespecial 860	java/lang/Exception:<init>	(Ljava/lang/String;)V
-    //   242: invokestatic 866	com/tencent/mobileqq/transfile/AbstractImageDownloader:getExceptionMessage	(Ljava/lang/Exception;)Ljava/lang/String;
-    //   245: ldc_w 475
+    //   236: ldc_w 852
+    //   239: invokespecial 855	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   242: invokestatic 861	com/tencent/mobileqq/transfile/BaseTransProcessor:getExceptionMessage	(Ljava/lang/Exception;)Ljava/lang/String;
+    //   245: ldc_w 471
     //   248: aload_0
-    //   249: getfield 488	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mStepTrans	Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;
-    //   252: invokevirtual 445	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:setError	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;)V
+    //   249: getfield 484	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mStepTrans	Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;
+    //   252: invokevirtual 441	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:setError	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;)V
     //   255: aload_0
-    //   256: invokevirtual 448	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:onError	()V
+    //   256: invokevirtual 444	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:onError	()V
     //   259: return
     //   260: astore 8
-    //   262: ldc_w 867
+    //   262: ldc_w 862
     //   265: istore_2
     //   266: goto -139 -> 127
-    //   269: ldc_w 834
+    //   269: ldc_w 829
     //   272: istore_2
     //   273: goto -146 -> 127
     //   276: iconst_0
@@ -551,25 +553,25 @@ public class MultiMsgUpProcessor
     //   278: goto -138 -> 140
     //   281: aload_0
     //   282: iload_2
-    //   283: ldc_w 869
-    //   286: invokevirtual 363	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:setError	(ILjava/lang/String;)V
+    //   283: ldc_w 864
+    //   286: invokevirtual 367	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:setError	(ILjava/lang/String;)V
     //   289: aload_0
-    //   290: invokevirtual 448	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:onError	()V
+    //   290: invokevirtual 444	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:onError	()V
     //   293: return
     //   294: aload_0
     //   295: aload_0
-    //   296: getfield 488	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mStepTrans	Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;
+    //   296: getfield 484	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:mStepTrans	Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;
     //   299: aload_1
     //   300: iconst_0
-    //   301: invokevirtual 838	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:copyStatisInfoFromNetResp	(Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;Lcom/tencent/mobileqq/transfile/NetResp;Z)V
+    //   301: invokevirtual 833	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:copyStatisInfoFromNetResp	(Lcom/tencent/mobileqq/transfile/BaseTransProcessor$StepInfo;Lcom/tencent/mobileqq/transfile/NetResp;Z)V
     //   304: aload_0
     //   305: aload_1
-    //   306: getfield 818	com/tencent/mobileqq/transfile/NetResp:mErrCode	I
+    //   306: getfield 813	com/tencent/mobileqq/transfile/NetResp:mErrCode	I
     //   309: aload_1
-    //   310: getfield 823	com/tencent/mobileqq/transfile/NetResp:mErrDesc	Ljava/lang/String;
-    //   313: invokevirtual 363	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:setError	(ILjava/lang/String;)V
+    //   310: getfield 818	com/tencent/mobileqq/transfile/NetResp:mErrDesc	Ljava/lang/String;
+    //   313: invokevirtual 367	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:setError	(ILjava/lang/String;)V
     //   316: aload_0
-    //   317: invokevirtual 448	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:onError	()V
+    //   317: invokevirtual 444	com/tencent/mobileqq/transfile/MultiMsgUpProcessor:onError	()V
     //   320: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -595,19 +597,19 @@ public class MultiMsgUpProcessor
   public void onSuccess()
   {
     super.onSuccess();
-    azlb localazlb;
+    UpCallBack.SendResult localSendResult;
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localazlb = new azlb();
-      localazlb.b = 0;
-      localazlb.jdField_a_of_type_Long = this.mFileSize;
-      localazlb.d = this.mMd5Str;
-      localazlb.jdField_a_of_type_JavaLangObject = Long.valueOf(this.mUiRequest.mUniseq);
+      localSendResult = new UpCallBack.SendResult();
+      localSendResult.b = 0;
+      localSendResult.jdField_a_of_type_Long = this.mFileSize;
+      localSendResult.d = this.mMd5Str;
+      localSendResult.jdField_a_of_type_JavaLangObject = Long.valueOf(this.mUiRequest.mUniseq);
     }
     try
     {
-      localazlb.c = new String(this.mResId, "UTF-8");
-      this.mUiRequest.mUpCallBack.onSend(localazlb);
+      localSendResult.c = new String(this.mResId, "UTF-8");
+      this.mUiRequest.mUpCallBack.b(localSendResult);
       sendMessageToUpdate(1003);
       return;
     }
@@ -615,9 +617,9 @@ public class MultiMsgUpProcessor
     {
       for (;;)
       {
-        localazlb.b = -1;
-        localazlb.jdField_a_of_type_JavaLangString = ("Failed. Convert ResID to UTF-8 string failed, resID = " + this.mResId.toString());
-        logRichMediaEvent("onSuccess", localazlb.jdField_a_of_type_JavaLangString);
+        localSendResult.b = -1;
+        localSendResult.jdField_a_of_type_JavaLangString = ("Failed. Convert ResID to UTF-8 string failed, resID = " + this.mResId.toString());
+        logRichMediaEvent("onSuccess", localSendResult.jdField_a_of_type_JavaLangString);
       }
     }
   }
@@ -670,7 +672,7 @@ public class MultiMsgUpProcessor
         if (localFile.exists()) {
           localFile.delete();
         }
-        FileUtils.writeFile(this.toSendPBData, (String)localObject);
+        FileUtils.a(this.toSendPBData, (String)localObject);
         this.mLocalPath = ((String)localObject);
         this.mUiRequest.mLocalPath = this.mLocalPath;
         super.getMd5();
@@ -703,7 +705,7 @@ public class MultiMsgUpProcessor
     String str;
     if ((this.mNetReq != null) && ((this.mNetReq instanceof HttpNetReq)))
     {
-      if (!acnh.d(this.mUinType)) {
+      if (!UinTypeUtil.b(this.mUinType)) {
         break label56;
       }
       str = "multimsgCu";

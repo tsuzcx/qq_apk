@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class QzoneWeisiReqcommendRsp
   extends JceStruct
 {
-  public int index;
+  public int index = 0;
   
   public QzoneWeisiReqcommendRsp() {}
   

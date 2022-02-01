@@ -10,15 +10,15 @@ public final class RequestPushStatus
   extends JceStruct
 {
   static ArrayList<InstanceInfo> cache_vecInstanceList = new ArrayList();
-  public byte cDataLine;
-  public byte cPrintable;
-  public byte cStatus;
-  public byte cViewFile;
-  public long lUin;
-  public long nClientType;
-  public long nInstanceId;
-  public long nPCVer;
-  public ArrayList<InstanceInfo> vecInstanceList;
+  public byte cDataLine = 0;
+  public byte cPrintable = 0;
+  public byte cStatus = 0;
+  public byte cViewFile = 0;
+  public long lUin = 0L;
+  public long nClientType = 0L;
+  public long nInstanceId = 0L;
+  public long nPCVer = 0L;
+  public ArrayList<InstanceInfo> vecInstanceList = null;
   
   static
   {

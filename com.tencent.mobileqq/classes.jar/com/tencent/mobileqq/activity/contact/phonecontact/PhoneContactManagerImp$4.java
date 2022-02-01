@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
 import android.content.SharedPreferences;
-import azir;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindServlet;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
 
@@ -31,7 +31,7 @@ class PhoneContactManagerImp$4
       }
     } while ((PhoneContactManagerImp.f(this.this$0)) || (!this.this$0.d()) || (Math.abs(System.currentTimeMillis() - l1) < l2));
     PhoneContactManagerImp.a(this.this$0, true);
-    Object localObject = new NewIntent(PhoneContactManagerImp.a(this.this$0).getApplication(), azir.class);
+    Object localObject = new NewIntent(PhoneContactManagerImp.a(this.this$0).getApplication(), ContactBindServlet.class);
     ((NewIntent)localObject).putExtra("req_type", 32);
     long l1 = this.this$0.a.getLong("key_login_info_timestamp", 0L);
     ((NewIntent)localObject).putExtra("next_flag", 0);
@@ -42,7 +42,7 @@ class PhoneContactManagerImp$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.4
  * JD-Core Version:    0.7.0.1
  */

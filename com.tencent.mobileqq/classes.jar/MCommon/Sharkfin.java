@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class Sharkfin
   extends JceStruct
 {
-  public long accountId;
-  public int apn;
-  public int authType;
-  public int bootType;
-  public int buildno;
+  public long accountId = 0L;
+  public int apn = 0;
+  public int authType = 0;
+  public int bootType = 0;
+  public int buildno = 0;
   public String ext1 = "";
   public String guid = "";
   public int netType = 0;

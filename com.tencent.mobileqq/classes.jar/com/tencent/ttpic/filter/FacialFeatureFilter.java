@@ -9,8 +9,8 @@ import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.filter.BaseFilter;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
+import com.tencent.ttpic.device.DeviceUtils;
 import com.tencent.ttpic.model.FaceFeatureItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
@@ -19,7 +19,7 @@ import com.tencent.ttpic.openapi.filter.TransformFilter;
 import com.tencent.ttpic.openapi.model.DistortionItem;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
 import java.util.ArrayList;
@@ -263,7 +263,7 @@ public class FacialFeatureFilter
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      this.fullPositions = FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramObject.facePoints), 2.0F);
+      this.fullPositions = FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramObject.facePoints), 2.0F);
       addAttribParam("inputTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords(this.fullPositions, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.texVertices));
       updateFacePoints(this.fullPositions, FRAME_EDGE);
       setPositions(FaceOffUtil.initFacePositions(this.fullPositions, FRAME_EDGE, FRAME_EDGE, this.faceVertices));
@@ -332,7 +332,7 @@ public class FacialFeatureFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.FacialFeatureFilter
  * JD-Core Version:    0.7.0.1
  */

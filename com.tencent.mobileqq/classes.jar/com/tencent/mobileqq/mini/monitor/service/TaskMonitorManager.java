@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.monitor.service;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anvx;
-import bgyu;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.util.FPSCalculator;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
@@ -14,22 +14,22 @@ public class TaskMonitorManager
   public static final String SCENE_TAG_HIDE = "hide";
   public static final String SCENE_TAG_SHOW = "show";
   public static final String TAG = "TaskMonitorManager";
-  public static String TASK_PERFM_SWITCH_PAGE = anvx.a(2131714112);
-  protected static TaskMonitorManager mInstance;
+  public static String TASK_PERFM_SWITCH_PAGE = HardCodeUtil.a(2131714608);
+  protected static TaskMonitorManager mInstance = null;
   protected boolean isCalcDeviceUsageOk = true;
-  protected volatile long mAppCurUsage;
-  protected volatile long mAppLastUsage;
-  protected volatile double mCurrentFps;
-  protected volatile long mDeviceCurUsage;
-  protected volatile long mDeviceLastUsage;
+  protected volatile long mAppCurUsage = 0L;
+  protected volatile long mAppLastUsage = 0L;
+  protected volatile double mCurrentFps = 0.0D;
+  protected volatile long mDeviceCurUsage = 0L;
+  protected volatile long mDeviceLastUsage = 0L;
   protected boolean mEnable = false;
   private TaskMonitorManager.FpsListener mFpsListener = new TaskMonitorManager.FpsListener(this, null);
   protected ConcurrentHashMap<String, ThreadMsgInfo> mMsgInfoList = new ConcurrentHashMap();
-  protected volatile int sTotalCpuUsage;
+  protected volatile int sTotalCpuUsage = 0;
   
   protected TaskMonitorManager()
   {
-    bgyu.a().a(this.mFpsListener);
+    FPSCalculator.a().a(this.mFpsListener);
     updateCpuInfoSync();
   }
   

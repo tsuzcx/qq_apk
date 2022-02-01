@@ -14,15 +14,15 @@ class ShareActionSheetV2$4
     if (QLog.isColorLevel()) {
       QLog.d("ShareActionSheetV2", 2, "onDismiss() called with: dialog = [" + paramDialogInterface + "] #this = " + Integer.toHexString(System.identityHashCode(this)));
     }
-    ShareActionSheetV2.access$400(this.this$0);
-    if (ShareActionSheetV2.access$500(this.this$0) != null) {
-      ShareActionSheetV2.access$500(this.this$0).onDismiss(paramDialogInterface);
+    ShareActionSheetV2.b(this.a);
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onDismiss(paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.4
  * JD-Core Version:    0.7.0.1
  */

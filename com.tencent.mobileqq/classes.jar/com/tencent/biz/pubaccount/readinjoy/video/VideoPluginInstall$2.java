@@ -1,26 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
+import com.tencent.biz.pubaccount.readinjoy.video.player.wrapper.IPlayerSDKMgr;
 import com.tencent.qphone.base.util.QLog;
-import spp;
-import sps;
-import stu;
 
-public class VideoPluginInstall$2
+class VideoPluginInstall$2
   implements Runnable
 {
-  public VideoPluginInstall$2(spp paramspp) {}
+  VideoPluginInstall$2(VideoPluginInstall paramVideoPluginInstall) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "start install video sdk in subThread");
     }
-    if (!spp.b()) {
-      spp.a(this.this$0);
+    if (!VideoPluginInstall.b()) {
+      VideoPluginInstall.a(this.this$0);
     }
     try
     {
-      spp.a(this.this$0).a(new sps(spp.a(this.this$0)));
+      VideoPluginInstall.a(this.this$0).a(new VideoPluginInstall.SDKInstallListener(VideoPluginInstall.a(this.this$0)));
       return;
     }
     catch (Exception localException)
@@ -32,7 +30,7 @@ public class VideoPluginInstall$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.2
  * JD-Core Version:    0.7.0.1
  */

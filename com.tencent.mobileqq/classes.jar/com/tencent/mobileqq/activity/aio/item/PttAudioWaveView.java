@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahdb;
-import ahdf;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -22,22 +20,21 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import bdla;
+import com.tencent.biz.qqstory.album.tools.PhotoDetection;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Random;
-import vym;
 
 public class PttAudioWaveView
   extends View
 {
   float jdField_a_of_type_Float = 0.0F;
   int jdField_a_of_type_Int = a(this.jdField_i_of_type_Int, 0.33F);
-  private ahdb jdField_a_of_type_Ahdb;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
@@ -47,6 +44,7 @@ public class PttAudioWaveView
   private Xfermode jdField_a_of_type_AndroidGraphicsXfermode;
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
+  private PttAudioWaveView.SeekProgressListener jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener;
   Runnable jdField_a_of_type_JavaLangRunnable = new PttAudioWaveView.1(this);
   boolean jdField_a_of_type_Boolean = false;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[0];
@@ -56,13 +54,13 @@ public class PttAudioWaveView
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   Canvas jdField_b_of_type_AndroidGraphicsCanvas;
   boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float;
+  private float jdField_c_of_type_Float = 0.0F;
   int jdField_c_of_type_Int;
   boolean jdField_c_of_type_Boolean = false;
-  private float jdField_d_of_type_Float;
+  private float jdField_d_of_type_Float = 0.0F;
   int jdField_d_of_type_Int;
-  public boolean d;
-  private float jdField_e_of_type_Float;
+  boolean jdField_d_of_type_Boolean = false;
+  private float jdField_e_of_type_Float = 0.0F;
   int jdField_e_of_type_Int;
   boolean jdField_e_of_type_Boolean = true;
   private float jdField_f_of_type_Float = 1.5F;
@@ -83,29 +81,26 @@ public class PttAudioWaveView
   private int p;
   private int q;
   private int r;
-  private int s;
-  private int t;
+  private int s = 0;
+  private int t = 0;
   private int u;
   private int v;
   
   public PttAudioWaveView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_d_of_type_Boolean = false;
     c();
   }
   
   public PttAudioWaveView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_d_of_type_Boolean = false;
     c();
   }
   
   public PttAudioWaveView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_d_of_type_Boolean = false;
     c();
   }
   
@@ -178,9 +173,9 @@ public class PttAudioWaveView
   
   private void a(View paramView, boolean paramBoolean)
   {
-    if ((paramView != null) && (paramView.isPressed() != paramBoolean) && ((ahdf)paramView.getTag() != null))
+    if ((paramView != null) && (paramView.isPressed() != paramBoolean) && ((PttItemBuilder.Holder)paramView.getTag() != null))
     {
-      ChatMessage localChatMessage = AIOUtils.getMessage(paramView);
+      ChatMessage localChatMessage = AIOUtils.a(paramView);
       if ((localChatMessage != null) && (localChatMessage.vipBubbleID == 0L)) {
         paramView.setPressed(paramBoolean);
       }
@@ -247,12 +242,12 @@ public class PttAudioWaveView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.j);
     this.k = (ViewConfiguration.get(getContext()).getScaledTouchSlop() * 2);
     this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
-    this.l = AIOUtils.dp2px(3.0F, getResources());
+    this.l = AIOUtils.a(3.0F, getResources());
     this.o = this.l;
-    this.q = (AIOUtils.dp2px(3.0F, getResources()) - 1);
-    this.r = AIOUtils.dp2px(1.0F, getResources());
-    this.u = AIOUtils.dp2px(174.0F, getResources());
-    this.v = AIOUtils.dp2px(5.0F, getResources());
+    this.q = (AIOUtils.a(3.0F, getResources()) - 1);
+    this.r = AIOUtils.a(1.0F, getResources());
+    this.u = AIOUtils.a(174.0F, getResources());
+    this.v = AIOUtils.a(5.0F, getResources());
   }
   
   private void d()
@@ -383,7 +378,7 @@ public class PttAudioWaveView
     this.jdField_b_of_type_AndroidGraphicsBitmap = null;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) || (this.jdField_b_of_type_AndroidGraphicsBitmap == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {
       return;
@@ -422,7 +417,7 @@ public class PttAudioWaveView
     paramCanvas.restore();
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (QLog.isColorLevel()) {
@@ -444,9 +439,9 @@ public class PttAudioWaveView
         this.jdField_g_of_type_Int = 0;
       }
       this.jdField_h_of_type_Int = (getMeasuredHeight() / 2);
-      this.m = (getMeasuredHeight() - AIOUtils.dp2px(this.jdField_f_of_type_Int, getResources()) * 2);
-      if (this.m < AIOUtils.dp2px(12.0F, getResources())) {
-        this.m = AIOUtils.dp2px(12.0F, getResources());
+      this.m = (getMeasuredHeight() - AIOUtils.a(this.jdField_f_of_type_Int, getResources()) * 2);
+      if (this.m < AIOUtils.a(12.0F, getResources())) {
+        this.m = AIOUtils.a(12.0F, getResources());
       }
       this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.u + this.jdField_b_of_type_Int + this.jdField_d_of_type_Int, getMeasuredHeight() + this.jdField_c_of_type_Int + this.jdField_e_of_type_Int);
       this.jdField_b_of_type_AndroidGraphicsBitmap = a(this.jdField_b_of_type_AndroidGraphicsBitmap, this.u + this.jdField_b_of_type_Int + this.jdField_d_of_type_Int, getMeasuredHeight() + this.jdField_c_of_type_Int + this.jdField_e_of_type_Int);
@@ -506,10 +501,10 @@ public class PttAudioWaveView
                 this.jdField_d_of_type_Float = paramMotionEvent.getX();
                 invalidate();
                 a(paramMotionEvent.getX(), this.t, this.s);
-                if ((this.jdField_a_of_type_Ahdb != null) && (!this.jdField_d_of_type_Boolean))
+                if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener != null) && (!this.jdField_d_of_type_Boolean))
                 {
                   this.jdField_d_of_type_Boolean = true;
-                  this.jdField_a_of_type_Ahdb.a(this);
+                  this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener.a(this);
                 }
               }
               getHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -546,10 +541,10 @@ public class PttAudioWaveView
         } while (this.jdField_a_of_type_Boolean);
         bool1 = bool2;
       } while (!this.jdField_c_of_type_Boolean);
-      if (this.jdField_a_of_type_Ahdb != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener != null)
       {
-        this.jdField_a_of_type_Ahdb.a(this, this.jdField_c_of_type_Float);
-        bdla.b(null, "dc00898", "", "", "0X8009D00", "0X8009D00", 3, 0, "", "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener.a(this, this.jdField_c_of_type_Float);
+        ReportController.b(null, "dc00898", "", "", "0X8009D00", "0X8009D00", 3, 0, "", "", "", "");
       }
       return true;
       boolean bool1 = bool2;
@@ -565,7 +560,7 @@ public class PttAudioWaveView
     if (QLog.isColorLevel()) {
       QLog.d("PttAudioWaveView", 2, "setAudioData mCenterHeight=" + this.jdField_h_of_type_Int + " data.length" + this.jdField_a_of_type_ArrayOfFloat.length);
     }
-    int i2 = paramInt1 / AIOUtils.dp2px(5.0F, getResources());
+    int i2 = paramInt1 / AIOUtils.a(5.0F, getResources());
     int i1 = i2;
     if (i2 > 34) {
       i1 = 34;
@@ -632,7 +627,7 @@ public class PttAudioWaveView
           paramArrayOfInt.put("waveMax", String.valueOf(i6));
           paramArrayOfInt.put("waveMin", String.valueOf(i5));
           paramArrayOfInt.put("waveAvg", String.valueOf(i7 / i2));
-          paramArrayOfInt.put("waveVar", String.valueOf(Math.sqrt(vym.a(arrayOfInt))));
+          paramArrayOfInt.put("waveVar", String.valueOf(Math.sqrt(PhotoDetection.a(arrayOfInt))));
           if (QLog.isColorLevel()) {
             QLog.d("PttAudioWaveView", 2, "real do report");
           }
@@ -685,9 +680,9 @@ public class PttAudioWaveView
     }
   }
   
-  public void setSeekListener(ahdb paramahdb)
+  public void setSeekListener(PttAudioWaveView.SeekProgressListener paramSeekProgressListener)
   {
-    this.jdField_a_of_type_Ahdb = paramahdb;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener = paramSeekProgressListener;
   }
   
   public void setShouldDisallowInterceptTouch(boolean paramBoolean)
@@ -702,7 +697,7 @@ public class PttAudioWaveView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttAudioWaveView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,5 @@
 package com.tencent.mobileqq.activity.contacts.pullrefresh;
 
-import ajmj;
-import ajmk;
-import ajml;
-import ajmm;
-import ajmn;
-import ajmp;
-import ajmr;
-import ajms;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -25,16 +17,16 @@ import com.tencent.widget.ListView;
 
 public class CommonRefreshLayout
   extends ViewGroup
-  implements ajmj
+  implements AutoScroller.ScrollerCallback
 {
   private float jdField_a_of_type_Float = 0.5F;
   private int jdField_a_of_type_Int = 200;
-  private ajml jdField_a_of_type_Ajml;
-  ajmm jdField_a_of_type_Ajmm = new ajmk(this);
-  private ajmp jdField_a_of_type_Ajmp;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private AutoScroller jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller;
+  private CommonRefreshLayout.MiniAppScrollListener jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$MiniAppScrollListener;
+  CommonRefreshLayout.RefreshCallback jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback = new CommonRefreshLayout.2(this);
+  private OnRefreshListener jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshOnRefreshListener;
   ListView jdField_a_of_type_ComTencentWidgetListView;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -125,7 +117,7 @@ public class CommonRefreshLayout
         this.j = ViewConfiguration.get(paramContext).getScaledTouchSlop();
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller = new AutoScroller(this);
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller.a(this);
-        this.l = getResources().getDimensionPixelOffset(2131298830);
+        this.l = getResources().getDimensionPixelOffset(2131298917);
         return;
       }
       label362:
@@ -174,14 +166,14 @@ public class CommonRefreshLayout
   
   private void b(float paramFloat)
   {
-    if ((ajmn.a(this.k)) && (this.jdField_a_of_type_Ajml != null) && (paramFloat > 0.0F))
+    if ((CommonRefreshLayout.STATUS.a(this.k)) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$MiniAppScrollListener != null) && (paramFloat > 0.0F))
     {
       a(3);
       if (this.jdField_a_of_type_AndroidViewViewGroup.getVisibility() != 0) {
         this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
       }
     }
-    if (ajmn.g(this.k))
+    if (CommonRefreshLayout.STATUS.g(this.k))
     {
       if (paramFloat < 0.0F)
       {
@@ -191,7 +183,7 @@ public class CommonRefreshLayout
     }
     else
     {
-      if ((ajmn.h(this.k)) || (ajmn.i(this.k)))
+      if ((CommonRefreshLayout.STATUS.h(this.k)) || (CommonRefreshLayout.STATUS.i(this.k)))
       {
         if (paramFloat >= 0.0F) {
           break label266;
@@ -200,14 +192,14 @@ public class CommonRefreshLayout
         label103:
         c(paramFloat);
       }
-      if (((ajmn.a(this.k)) || (ajmn.h(this.k))) && (paramFloat > 0.0F) && (d()))
+      if (((CommonRefreshLayout.STATUS.a(this.k)) || (CommonRefreshLayout.STATUS.h(this.k))) && (paramFloat > 0.0F) && (d()))
       {
-        this.jdField_a_of_type_Ajmm.a();
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.a();
         a(-1);
       }
-      if (ajmn.c(this.k))
+      if (CommonRefreshLayout.STATUS.c(this.k))
       {
-        if ((!ajmn.d(this.k)) && (!ajmn.e(this.k))) {
+        if ((!CommonRefreshLayout.STATUS.d(this.k)) && (!CommonRefreshLayout.STATUS.e(this.k))) {
           break label282;
         }
         if (this.i < this.jdField_b_of_type_Float) {
@@ -239,7 +231,7 @@ public class CommonRefreshLayout
       a(-1);
       continue;
       label282:
-      if ((paramFloat < 0.0F) && (this.jdField_a_of_type_Ajml != null)) {
+      if ((paramFloat < 0.0F) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$MiniAppScrollListener != null)) {
         a(2);
       }
     }
@@ -270,13 +262,13 @@ public class CommonRefreshLayout
         f1 = this.jdField_c_of_type_Float - this.i;
       }
     }
-    if (ajmn.c(this.k))
+    if (CommonRefreshLayout.STATUS.c(this.k))
     {
       int m = this.i;
       if (c()) {
         m = this.i - ((int)this.jdField_b_of_type_Float - this.l);
       }
-      this.jdField_a_of_type_Ajmm.a(m, false, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.a(m, false, false);
     }
     d(f1);
   }
@@ -287,7 +279,7 @@ public class CommonRefreshLayout
       return;
     }
     this.i = ((int)(this.i + paramFloat));
-    if ((ajmn.c(this.k)) || (ajmn.f(this.k))) {
+    if ((CommonRefreshLayout.STATUS.c(this.k)) || (CommonRefreshLayout.STATUS.f(this.k))) {
       this.h = this.i;
     }
     g();
@@ -297,7 +289,7 @@ public class CommonRefreshLayout
   
   private boolean d()
   {
-    return (this.jdField_c_of_type_Boolean) && (!ajms.a(this.jdField_a_of_type_AndroidViewView)) && (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Float > 0.0F);
+    return (this.jdField_c_of_type_Boolean) && (!ViewUtils.a(this.jdField_a_of_type_AndroidViewView)) && (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Float > 0.0F);
   }
   
   private void f()
@@ -352,7 +344,7 @@ public class CommonRefreshLayout
   
   private void h()
   {
-    if (ajmn.b(this.k))
+    if (CommonRefreshLayout.STATUS.b(this.k))
     {
       this.i = ((int)(this.jdField_b_of_type_Float + 0.5F));
       this.h = this.i;
@@ -363,7 +355,7 @@ public class CommonRefreshLayout
     do
     {
       return;
-      if (ajmn.a(this.k))
+      if (CommonRefreshLayout.STATUS.a(this.k))
       {
         this.i = 0;
         this.h = 0;
@@ -372,7 +364,7 @@ public class CommonRefreshLayout
         invalidate();
         return;
       }
-    } while (!ajmn.h(this.k));
+    } while (!CommonRefreshLayout.STATUS.h(this.k));
     this.i = ((int)(this.jdField_b_of_type_Float + 0.5F) - this.l);
     this.h = this.i;
     g();
@@ -382,7 +374,7 @@ public class CommonRefreshLayout
   
   private void i()
   {
-    if (ajmn.d(this.k)) {
+    if (CommonRefreshLayout.STATUS.d(this.k)) {
       if (c()) {
         c();
       }
@@ -392,23 +384,23 @@ public class CommonRefreshLayout
       return;
       k();
       return;
-      if (ajmn.e(this.k))
+      if (CommonRefreshLayout.STATUS.e(this.k))
       {
-        this.jdField_a_of_type_Ajmm.b();
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.b();
         l();
         return;
       }
-      if (ajmn.b(this.k))
+      if (CommonRefreshLayout.STATUS.b(this.k))
       {
         b();
         return;
       }
-      if ((ajmn.j(this.k)) || (ajmn.k(this.k)))
+      if ((CommonRefreshLayout.STATUS.j(this.k)) || (CommonRefreshLayout.STATUS.k(this.k)))
       {
         c();
         return;
       }
-    } while ((!ajmn.l(this.k)) && (!ajmn.i(this.k)));
+    } while ((!CommonRefreshLayout.STATUS.l(this.k)) && (!CommonRefreshLayout.STATUS.i(this.k)));
     d();
   }
   
@@ -440,16 +432,16 @@ public class CommonRefreshLayout
   
   public void a()
   {
-    if (ajmn.e(this.k))
+    if (CommonRefreshLayout.STATUS.e(this.k))
     {
       a(-3);
       h();
-      this.jdField_a_of_type_Ajmm.c();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.c();
     }
     do
     {
       return;
-      if (ajmn.b(this.k))
+      if (CommonRefreshLayout.STATUS.b(this.k))
       {
         if (c()) {
           a(1);
@@ -457,19 +449,19 @@ public class CommonRefreshLayout
         for (;;)
         {
           h();
-          this.jdField_a_of_type_Ajmm.d();
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.d();
           return;
           a(0);
         }
       }
-      if (ajmn.d(this.k))
+      if (CommonRefreshLayout.STATUS.d(this.k))
       {
         if (this.jdField_b_of_type_Boolean)
         {
           this.jdField_b_of_type_Boolean = false;
           a(-3);
           h();
-          this.jdField_a_of_type_Ajmm.c();
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.c();
           return;
         }
         if (c()) {
@@ -478,35 +470,35 @@ public class CommonRefreshLayout
         for (;;)
         {
           h();
-          this.jdField_a_of_type_Ajmm.d();
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.d();
           return;
           a(0);
         }
       }
-      if ((ajmn.j(this.k)) || (ajmn.k(this.k)))
+      if ((CommonRefreshLayout.STATUS.j(this.k)) || (CommonRefreshLayout.STATUS.k(this.k)))
       {
         a(1);
         h();
         return;
       }
-    } while ((!ajmn.l(this.k)) && (!ajmn.i(this.k)));
+    } while ((!CommonRefreshLayout.STATUS.l(this.k)) && (!CommonRefreshLayout.STATUS.i(this.k)));
     a(0);
     h();
   }
   
   public void a(float paramFloat)
   {
-    if (ajmn.d(this.k)) {
-      this.jdField_a_of_type_Ajmm.a(this.i, false, true);
+    if (CommonRefreshLayout.STATUS.d(this.k)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.a(this.i, false, true);
     }
     for (;;)
     {
       d(paramFloat);
       return;
-      if (ajmn.e(this.k)) {
-        this.jdField_a_of_type_Ajmm.a(this.i, false, true);
-      } else if (ajmn.b(this.k)) {
-        this.jdField_a_of_type_Ajmm.a(this.i, true, true);
+      if (CommonRefreshLayout.STATUS.e(this.k)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.a(this.i, false, true);
+      } else if (CommonRefreshLayout.STATUS.b(this.k)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.a(this.i, true, true);
       }
     }
   }
@@ -525,7 +517,7 @@ public class CommonRefreshLayout
   
   public boolean b()
   {
-    return ajmn.c(this.k);
+    return CommonRefreshLayout.STATUS.c(this.k);
   }
   
   public void c()
@@ -547,18 +539,18 @@ public class CommonRefreshLayout
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Ajml != null) {
-      this.jdField_a_of_type_Ajml.onFlingScrollHeader(this.k, -this.i);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$MiniAppScrollListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$MiniAppScrollListener.onFlingScrollHeader(this.k, -this.i);
     }
     super.dispatchDraw(paramCanvas);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Ajml != null) {
-      this.jdField_a_of_type_Ajml.onTouchMoving(this, -this.i, paramMotionEvent);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$MiniAppScrollListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$MiniAppScrollListener.onTouchMoving(this, -this.i, paramMotionEvent);
     }
     switch (paramMotionEvent.getAction())
     {
@@ -574,11 +566,11 @@ public class CommonRefreshLayout
   {
     a(0);
     h();
-    this.jdField_a_of_type_Ajmm.d();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.d();
     this.jdField_b_of_type_Float = 0.0F;
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     return new CommonRefreshLayout.LayoutParams(-1, -1);
   }
@@ -588,12 +580,12 @@ public class CommonRefreshLayout
     return new CommonRefreshLayout.LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return new CommonRefreshLayout.LayoutParams(paramLayoutParams);
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
     int m = getChildCount();
@@ -604,9 +596,9 @@ public class CommonRefreshLayout
       if ((m <= 0) || (m >= 4)) {
         break;
       }
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378333));
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131378334);
-    } while ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewViewGroup == null) || (!(this.jdField_a_of_type_AndroidViewViewGroup instanceof ajmr)));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378759));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131378760);
+    } while ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewViewGroup == null) || (!(this.jdField_a_of_type_AndroidViewViewGroup instanceof SwipeTrigger)));
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
     return;
     throw new IllegalStateException("Children num must equal or less than 3");
@@ -635,10 +627,10 @@ public class CommonRefreshLayout
         f1 = a(paramMotionEvent, this.jdField_f_of_type_Int);
         this.jdField_e_of_type_Float = f1;
         this.jdField_g_of_type_Float = f1;
-        if ((ajmn.d(this.k)) || (ajmn.e(this.k))) {
+        if ((CommonRefreshLayout.STATUS.d(this.k)) || (CommonRefreshLayout.STATUS.e(this.k))) {
           this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller.a();
         }
-        if (((ajmn.d(this.k)) || (ajmn.e(this.k))) && (m == 0))
+        if (((CommonRefreshLayout.STATUS.d(this.k)) || (CommonRefreshLayout.STATUS.e(this.k))) && (m == 0))
         {
           return true;
           if (this.jdField_f_of_type_Int == -1) {
@@ -669,10 +661,10 @@ public class CommonRefreshLayout
               break label67;
             }
             bool1 = bool2;
-            if (ajmn.b(this.k)) {
+            if (CommonRefreshLayout.STATUS.b(this.k)) {
               break label67;
             }
-            if (!ajmn.f(this.k)) {
+            if (!CommonRefreshLayout.STATUS.f(this.k)) {
               break;
             }
             return true;
@@ -683,7 +675,7 @@ public class CommonRefreshLayout
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     f();
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {}
@@ -694,7 +686,7 @@ public class CommonRefreshLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (this.jdField_a_of_type_AndroidViewViewGroup != null)
@@ -753,14 +745,14 @@ public class CommonRefreshLayout
     }
   }
   
-  public void setMiniAppScrollListener(ajml paramajml)
+  public void setMiniAppScrollListener(CommonRefreshLayout.MiniAppScrollListener paramMiniAppScrollListener)
   {
-    this.jdField_a_of_type_Ajml = paramajml;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$MiniAppScrollListener = paramMiniAppScrollListener;
   }
   
-  public void setOnRefreshListener(ajmp paramajmp)
+  public void setOnRefreshListener(OnRefreshListener paramOnRefreshListener)
   {
-    this.jdField_a_of_type_Ajmp = paramajmp;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshOnRefreshListener = paramOnRefreshListener;
   }
   
   public void setRefreshCompleteDelayDuration(int paramInt)
@@ -785,12 +777,12 @@ public class CommonRefreshLayout
         if (!paramBoolean) {
           break;
         }
-      } while (!ajmn.a(this.k));
+      } while (!CommonRefreshLayout.STATUS.a(this.k));
       a(-1);
       j();
       return;
-    } while (!ajmn.b(this.k));
-    this.jdField_a_of_type_Ajmm.d();
+    } while (!CommonRefreshLayout.STATUS.b(this.k));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout$RefreshCallback.d();
     postDelayed(new CommonRefreshLayout.1(this), this.jdField_c_of_type_Int);
   }
   
@@ -806,7 +798,7 @@ public class CommonRefreshLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,9 @@
 package com.tencent.image;
 
 import android.graphics.drawable.Drawable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ICache;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 
 public class URLDrawable$URLDrawableOptions
 {
@@ -23,7 +25,7 @@ public class URLDrawable$URLDrawableOptions
   public boolean mNeedCheckNetType = false;
   private URLDrawableOptions mNext;
   public boolean mPlayGifImage = false;
-  public byte mPriority = 1;
+  public byte mPriority = URLDrawable.depImp.mCache.getNormalPriority();
   private boolean mRecycled = false;
   public int mRequestHeight = 0;
   public int mRequestWidth = 0;
@@ -54,7 +56,7 @@ public class URLDrawable$URLDrawableOptions
     this.mRecycled = true;
     this.mExtraInfo = null;
     this.mMemoryCacheKeySuffix = null;
-    this.mPriority = 1;
+    this.mPriority = URLDrawable.depImp.mCache.getNormalPriority();
     this.mHttpDownloaderParams = null;
     this.mNeedCheckNetType = false;
     this.mKeyAddWHSuffix = true;
@@ -101,8 +103,8 @@ public class URLDrawable$URLDrawableOptions
           return;
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("URLDrawableOptions", 2, "URLDrawableOptions pool size is full");
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.i("URLDrawableOptions", 2, "URLDrawableOptions pool size is full");
       }
     }
   }

@@ -3,17 +3,16 @@ package com.tencent.mobileqq.startup.step;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.util.Log;
-import aoae;
-import bhhu;
-import bhid;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.logcathook.LogcatHook;
-import com.tencent.mobileqq.statistics.UEC;
+import com.tencent.mobileqq.utils.SoLoadReportImpl;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.Foreground;
-import mqq.app.lifecycle.MobileQQActivityLifeCycle;
+import mqq.app.lifecycle.UECActivityLifeCycle;
 import mqq.os.MqqHandler;
 
 public class OldApplication
@@ -35,35 +34,38 @@ public class OldApplication
     for (;;)
     {
       BaseApplicationImpl.sApplication.superOnCreate();
-      SoLoadUtilNew.setReport(new bhhu());
-      bhid.a();
-      BaseApplicationImpl.appnewmsgicon = 2130841445;
-      BaseApplicationImpl.appnewavmsgicon = 2130842160;
-      BaseApplicationImpl.qqlaunchicon = 2130840422;
-      BaseApplicationImpl.qqWifiLayout = 2131561882;
-      BaseApplicationImpl.qqWifiStateIconViewId = 2131381468;
-      BaseApplicationImpl.qqWifiStateTextViewId = 2131381469;
-      BaseApplicationImpl.qqWifiOperationTextViewId = 2131381460;
-      BaseApplicationImpl.qqWifiSettingViewId = 2131381467;
-      BaseApplicationImpl.qqWifiStateTextSingleLine = 2131381470;
-      BaseApplicationImpl.qqWifiTextDoubleLine = 2131381471;
-      BaseApplicationImpl.qqWifiRedTouchViewId = 2131381461;
-      BaseApplicationImpl.qqWifiConnecticon3 = 2130846948;
-      BaseApplicationImpl.qqWifiNoSignal = 2130846949;
-      BaseApplicationImpl.qqWifiUserful = 2130846954;
-      BaseApplicationImpl.qqWifiSettings = 2130846953;
-      BaseApplicationImpl.qqWifiOperation = 2130846947;
-      BaseApplicationImpl.qqwifinotifyusefulicon = 2130846952;
-      BaseApplicationImpl.qqwifinotifynoneicon = 2130846951;
-      BaseApplicationImpl.qqwifinotifyconnectedicon = 2130846950;
-      BaseApplicationImpl.qqwifinotifydivide = 2131166356;
+      SoLoadUtilNew.setReport(new SoLoadReportImpl());
+      TimeFormatterUtils.a();
+      BaseApplicationImpl.appnewmsgicon = 2130841588;
+      BaseApplicationImpl.appnewavmsgicon = 2130842303;
+      BaseApplicationImpl.qqlaunchicon = 2130840535;
+      BaseApplicationImpl.qqWifiLayout = 2131562015;
+      BaseApplicationImpl.qqWifiStateIconViewId = 2131381929;
+      BaseApplicationImpl.qqWifiStateTextViewId = 2131381930;
+      BaseApplicationImpl.qqWifiOperationTextViewId = 2131381921;
+      BaseApplicationImpl.qqWifiSettingViewId = 2131381928;
+      BaseApplicationImpl.qqWifiStateTextSingleLine = 2131381931;
+      BaseApplicationImpl.qqWifiTextDoubleLine = 2131381932;
+      BaseApplicationImpl.qqWifiRedTouchViewId = 2131381922;
+      BaseApplicationImpl.qqWifiConnecticon3 = 2130847302;
+      BaseApplicationImpl.qqWifiNoSignal = 2130847303;
+      BaseApplicationImpl.qqWifiUserful = 2130847308;
+      BaseApplicationImpl.qqWifiSettings = 2130847307;
+      BaseApplicationImpl.qqWifiOperation = 2130847301;
+      BaseApplicationImpl.qqwifinotifyusefulicon = 2130847306;
+      BaseApplicationImpl.qqwifinotifynoneicon = 2130847305;
+      BaseApplicationImpl.qqwifinotifyconnectedicon = 2130847304;
+      BaseApplicationImpl.qqwifinotifydivide = 2131166359;
       BaseApplicationImpl.defaultNotifSoundResourceId = 2131230721;
-      BaseApplicationImpl.devlockQuickloginIcon = 2130844186;
+      BaseApplicationImpl.devlockQuickloginIcon = 2130844376;
       Foreground.init(BaseApplicationImpl.sApplication, ThreadManager.getSubThreadLooper(), BaseApplicationImpl.processName);
-      if ((Build.VERSION.SDK_INT >= 15) && ("Success".equals(BaseApplicationImpl.sInjectResult)) && (aoae.a()))
+      if ((Build.VERSION.SDK_INT >= 15) && ("Success".equals(BaseApplicationImpl.sInjectResult)) && (PrivacyPolicyHelper.a())) {
+        Foreground.addActivityLifeCallback(new UECActivityLifeCycle(BaseApplicationImpl.sApplication, ThreadManager.getSubThreadLooper(), BaseApplicationImpl.processName));
+      }
+      if (!PrivacyPolicyHelper.a())
       {
-        MobileQQActivityLifeCycle localMobileQQActivityLifeCycle = new MobileQQActivityLifeCycle(BaseApplicationImpl.sApplication, ThreadManager.getSubThreadLooper(), BaseApplicationImpl.processName);
-        UEC.a().a(localMobileQQActivityLifeCycle);
+        com.tencent.beacon.upload.UploadStrategy.IS_COLLECT_MAC = false;
+        com.tencent.beacon.upload.UploadStrategy.IS_COLLECT_IMEI = false;
       }
       try
       {
@@ -75,11 +77,11 @@ public class OldApplication
         {
           for (;;)
           {
-            if ((BaseApplicationImpl.sProcessId != 9) && (!LogcatHook.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (LogcatHook.jdField_a_of_type_Boolean)) {
-              LogcatHook.a();
+            if ((!LogcatHook.sLogcatHooked.get()) && (LogcatHook.ENABEL_SYSLOG_IN_APPLICATION)) {
+              LogcatHook.startHookLogcat();
             }
             if (BaseApplicationImpl.sProcessId != 1) {
-              break label330;
+              break label331;
             }
             return true;
             if ((BaseApplicationImpl.sProcessId == 4) || (BaseApplicationImpl.sProcessId != 2)) {
@@ -103,7 +105,7 @@ public class OldApplication
         }
       }
     }
-    label330:
+    label331:
     return false;
   }
 }

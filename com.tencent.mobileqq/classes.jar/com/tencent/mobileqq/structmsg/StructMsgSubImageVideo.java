@@ -5,10 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import anvx;
-import bdnt;
-import bdnz;
-import bdpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -25,53 +22,53 @@ public class StructMsgSubImageVideo
   private StructMsgSubImageVideo.ImageItem imageItem;
   private StructMsgSubImageVideo.VideoItem videoItem;
   
-  public StructMsgSubImageVideo() {}
+  StructMsgSubImageVideo() {}
   
   StructMsgSubImageVideo(Bundle paramBundle)
   {
     super(paramBundle);
   }
   
-  public StructMsgSubImageVideo(bdpl parambdpl)
+  StructMsgSubImageVideo(StructMsgNode paramStructMsgNode)
   {
-    super(parambdpl);
-    if (parambdpl.a == null) {}
+    super(paramStructMsgNode);
+    if (paramStructMsgNode.a == null) {}
     for (;;)
     {
       return;
-      Iterator localIterator = parambdpl.a.iterator();
+      Iterator localIterator = paramStructMsgNode.a.iterator();
       while (localIterator.hasNext())
       {
-        parambdpl = (bdpl)localIterator.next();
+        paramStructMsgNode = (StructMsgNode)localIterator.next();
         Object localObject;
-        if ((parambdpl == null) || (!"item".equals(parambdpl.b)))
+        if ((paramStructMsgNode == null) || (!"item".equals(paramStructMsgNode.b)))
         {
           localObject = new StringBuilder().append("StructMsgSubImageVideo: null or wrong node ");
-          if (parambdpl == null) {}
-          for (parambdpl = "null";; parambdpl = parambdpl.b)
+          if (paramStructMsgNode == null) {}
+          for (paramStructMsgNode = "null";; paramStructMsgNode = paramStructMsgNode.b)
           {
-            Log.i("StructMsgSubImageVideo", parambdpl);
+            Log.i("StructMsgSubImageVideo", paramStructMsgNode);
             break;
           }
         }
-        if ((parambdpl.a == null) || (parambdpl.a.isEmpty()))
+        if ((paramStructMsgNode.a == null) || (paramStructMsgNode.a.isEmpty()))
         {
           Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: no child in node");
         }
         else
         {
-          localObject = parambdpl.a("apptype");
+          localObject = paramStructMsgNode.a("apptype");
           if (!"10".equals(localObject))
           {
             Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: wrong app type " + (String)localObject);
           }
           else
           {
-            localObject = parambdpl.a("type");
+            localObject = paramStructMsgNode.a("type");
             if ("0".equals(localObject)) {
-              this.videoItem = StructMsgSubImageVideo.VideoItem.access$000(parambdpl);
+              this.videoItem = StructMsgSubImageVideo.VideoItem.access$000(paramStructMsgNode);
             } else if ("1".equals(localObject)) {
-              this.imageItem = StructMsgSubImageVideo.ImageItem.access$100(parambdpl);
+              this.imageItem = StructMsgSubImageVideo.ImageItem.access$100(paramStructMsgNode);
             } else {
               Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: wrong type " + (String)localObject);
             }
@@ -117,7 +114,7 @@ public class StructMsgSubImageVideo
   
   public String getSourceName()
   {
-    return anvx.a(2131713998);
+    return HardCodeUtil.a(2131714494);
   }
   
   public View getSourceView(Context paramContext, View paramView)
@@ -160,24 +157,24 @@ public class StructMsgSubImageVideo
   
   protected void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    bdnt localbdnt = new bdnt(this, new bdnz());
+    AbsStructMsg.XmlSerializerWithFilter localXmlSerializerWithFilter = new AbsStructMsg.XmlSerializerWithFilter(this, new QQXmlSerializer());
     try
     {
-      localbdnt.setOutput(paramByteArrayOutputStream, paramString);
-      localbdnt.startDocument(paramString, Boolean.valueOf(true));
-      localbdnt.startTag(null, "msg");
-      localbdnt.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localbdnt.attribute(null, "flag", String.valueOf(this.mFlag));
-      localbdnt.attribute(null, "brief", this.mMsgBrief);
+      localXmlSerializerWithFilter.setOutput(paramByteArrayOutputStream, paramString);
+      localXmlSerializerWithFilter.startDocument(paramString, Boolean.valueOf(true));
+      localXmlSerializerWithFilter.startTag(null, "msg");
+      localXmlSerializerWithFilter.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localXmlSerializerWithFilter.attribute(null, "flag", String.valueOf(this.mFlag));
+      localXmlSerializerWithFilter.attribute(null, "brief", this.mMsgBrief);
       if (this.videoItem != null) {
-        this.videoItem.toXml(localbdnt);
+        this.videoItem.toXml(localXmlSerializerWithFilter);
       }
       if (this.imageItem != null) {
-        this.imageItem.toXml(localbdnt);
+        this.imageItem.toXml(localXmlSerializerWithFilter);
       }
-      localbdnt.endTag(null, "msg");
-      localbdnt.endDocument();
-      localbdnt.flush();
+      localXmlSerializerWithFilter.endTag(null, "msg");
+      localXmlSerializerWithFilter.endDocument();
+      localXmlSerializerWithFilter.flush();
       return;
     }
     catch (IOException paramByteArrayOutputStream)

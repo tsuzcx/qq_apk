@@ -7,179 +7,180 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import aocy;
-import aumm;
-import azrb;
-import azri;
-import azwn;
-import azwp;
-import azxt;
-import bdfk;
-import bhou;
-import bhoz;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.floatscr.ColorScreenManager;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.profilecard.base.component.AbsProfileComponent;
+import com.tencent.mobileqq.profilecard.base.component.AbsProfileHeaderComponent;
+import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
 import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
+import com.tencent.mobileqq.vas.VasExtensionManager;
+import com.tencent.mobileqq.vas.VasManager;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class ProfileColorScreenComponent
-  extends azwn<FrameLayout>
+  extends AbsProfileComponent<FrameLayout>
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private ProfileColorScreenComponent.ColorScreenLoader jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private static final String TAG = "ProfileColorScreenComponent";
+  private ProfileColorScreenComponent.ColorScreenLoader mColorScreenLoader;
+  private DiniFlyAnimationView mColorScreenView;
+  private boolean mHaveLoadedOnce;
+  private int mLastColorScreen;
+  private Handler mUIHandler;
+  private boolean mValidate = false;
   
-  public ProfileColorScreenComponent(azxt paramazxt, azrb paramazrb)
+  public ProfileColorScreenComponent(IComponentCenter paramIComponentCenter, ProfileCardInfo paramProfileCardInfo)
   {
-    super(paramazxt, paramazrb);
+    super(paramIComponentCenter, paramProfileCardInfo);
   }
   
-  private boolean b()
+  private void destroyColorScreenView()
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  private void i()
-  {
-    DiniFlyAnimationView localDiniFlyAnimationView = new DiniFlyAnimationView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-    ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(localDiniFlyAnimationView, localLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = localDiniFlyAnimationView;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.forbiddenLayer();
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setFitFullScreenXY();
-  }
-  
-  private void j()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null)
+    if (this.mColorScreenView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeView((View)this.jdField_a_of_type_JavaLangObject);
+      this.mColorScreenView.cancelAnimation();
+      ((FrameLayout)this.mViewContainer).removeView((View)this.mViewContainer);
     }
   }
   
-  private void k()
+  private void initColorScreenView()
   {
-    if (this.jdField_a_of_type_Boolean)
+    DiniFlyAnimationView localDiniFlyAnimationView = new DiniFlyAnimationView(this.mActivity);
+    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+    ((FrameLayout)this.mViewContainer).addView(localDiniFlyAnimationView, localLayoutParams);
+    this.mColorScreenView = localDiniFlyAnimationView;
+    this.mColorScreenView.forbiddenLayer();
+    this.mColorScreenView.setFitFullScreenXY();
+  }
+  
+  private boolean isValidate()
+  {
+    return this.mValidate;
+  }
+  
+  private void loadColorScreenInner()
+  {
+    if ((this.mApp == null) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))) {}
+    int i;
+    do
     {
-      Object localObject = (azwp)this.jdField_a_of_type_Azxt.a(1002);
+      return;
+      if (!ColorScreenManager.a)
+      {
+        QLog.i("ColorScreenManager", 1, "ColorScreenManager.sEnable is false, loadColorScreen fail.");
+        return;
+      }
+      if (SimpleUIUtil.a())
+      {
+        QLog.i("ColorScreenManager", 1, "loadColorScreen, SimpleUIMode is open now");
+        return;
+      }
+      this.mHaveLoadedOnce = true;
+      i = ((SVIPHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("ColorScreenManager", 2, "loadColorScreen " + i + " mLastColorScreen " + this.mLastColorScreen);
+      }
+      if ((i > 0) && (i != this.mLastColorScreen)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ColorScreenManager", 2, "loadColorScreen early return");
+    return;
+    this.mColorScreenView.cancelAnimation();
+    this.mLastColorScreen = i;
+    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(this.mApp.getCurrentAccountUin())) {}
+    for (Object localObject = "1";; localObject = "2")
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.mApp.getCurrentAccountUin(), "Bubble", "ShowEffect", (String)localObject, 1, 0, 0, null, Integer.toString(i), null);
+      localObject = ((VasExtensionManager)this.mApp.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+      this.mColorScreenLoader = new ProfileColorScreenComponent.ColorScreenLoader(this, i);
+      ((ColorScreenManager)localObject).a(i, VasManager.a(this.mColorScreenLoader));
+      return;
+    }
+  }
+  
+  private void tryLoadColorScreenOnResume()
+  {
+    if (this.mHaveLoadedOnce)
+    {
+      Object localObject = (AbsProfileHeaderComponent)this.mComponentCenter.getComponent(1002);
       if (localObject == null) {
         break label65;
       }
-      localObject = ((azwp)localObject).a();
-      if ((!(localObject instanceof VasProfileTagView)) || (!((VasProfileTagView)localObject).jdField_b_of_type_Boolean)) {
+      localObject = ((AbsProfileHeaderComponent)localObject).getHeaderView();
+      if ((!(localObject instanceof VasProfileTagView)) || (!((VasProfileTagView)localObject).isFullScreen)) {
         break label65;
       }
     }
     label65:
     for (int i = 0;; i = 1)
     {
-      this.jdField_a_of_type_Int = 0;
+      this.mLastColorScreen = 0;
       if (i != 0) {
-        l();
+        loadColorScreenInner();
       }
       return;
     }
   }
   
-  private void l()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (((azrb)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(((azrb)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))) {}
-    int i;
-    do
-    {
-      return;
-      if (!aumm.jdField_a_of_type_Boolean)
-      {
-        QLog.i("ColorScreenManager", 1, "ColorScreenManager.sEnable is false, loadColorScreen fail.");
-        return;
-      }
-      if (bdfk.b())
-      {
-        QLog.i("ColorScreenManager", 1, "loadColorScreen, SimpleUIMode is open now");
-        return;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      i = ((aocy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(((azrb)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("ColorScreenManager", 2, "loadColorScreen " + i + " mLastColorScreen " + this.jdField_a_of_type_Int);
-      }
-      if ((i > 0) && (i != this.jdField_a_of_type_Int)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ColorScreenManager", 2, "loadColorScreen early return");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
-    this.jdField_a_of_type_Int = i;
-    if (((azrb)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {}
-    for (Object localObject = "1";; localObject = "2")
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Bubble", "ShowEffect", (String)localObject, 1, 0, 0, null, Integer.toString(i), null);
-      localObject = ((bhou)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader = new ProfileColorScreenComponent.ColorScreenLoader(this, i);
-      ((aumm)localObject).a(i, bhoz.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader));
-      return;
-    }
-  }
-  
-  public int a()
-  {
-    return 1004;
-  }
-  
-  public String a()
+  public String getComponentName()
   {
     return "ProfileColorScreenComponent";
   }
   
-  public void a()
+  public int getComponentType()
   {
-    l();
+    return 1004;
   }
   
-  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public void loadColorScreen()
   {
-    super.a(paramBaseActivity, paramBundle);
-    i();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_b_of_type_Boolean = true;
+    loadColorScreenInner();
   }
   
-  public boolean a(azrb paramazrb)
+  public void onCreate(BaseActivity paramBaseActivity, Bundle paramBundle)
   {
-    boolean bool = super.a(paramazrb);
-    if ((((azrb)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqDataCard != null) && ((((azrb)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != azri.f) || (((azrb)this.jdField_b_of_type_JavaLangObject).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.f == 1))) {
-      l();
+    super.onCreate(paramBaseActivity, paramBundle);
+    initColorScreenView();
+    this.mUIHandler = new Handler(Looper.getMainLooper());
+    this.mValidate = true;
+  }
+  
+  public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
+  {
+    boolean bool = super.onDataUpdate(paramProfileCardInfo);
+    if ((((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard != null) && ((((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.f) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.f == 1))) {
+      loadColorScreenInner();
     }
     return bool;
   }
   
-  public void c()
+  public void onDestroy()
   {
-    super.c();
-    k();
+    this.mValidate = false;
+    if (this.mUIHandler != null)
+    {
+      this.mUIHandler.removeCallbacksAndMessages(null);
+      this.mUIHandler = null;
+    }
+    destroyColorScreenView();
+    super.onDestroy();
   }
   
-  public void f()
+  public void onResume()
   {
-    this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    j();
-    super.f();
+    super.onResume();
+    tryLoadColorScreenOnResume();
   }
 }
 

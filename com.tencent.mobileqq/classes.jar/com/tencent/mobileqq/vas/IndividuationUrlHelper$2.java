@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.vas;
 
-import bhnp;
-import bhnt;
 import com.tencent.common.app.BaseApplicationImpl;
 
-public final class IndividuationUrlHelper$2
+final class IndividuationUrlHelper$2
   implements Runnable
 {
-  public IndividuationUrlHelper$2(bhnt parambhnt) {}
+  IndividuationUrlHelper$2(IndividuationUrlHelper.UrlCallback paramUrlCallback) {}
   
   public void run()
   {
-    bhnp.a(BaseApplicationImpl.sApplication.getRuntime());
-    bhnp.a(true);
+    IndividuationUrlHelper.a(BaseApplicationImpl.sApplication.getRuntime());
+    IndividuationUrlHelper.a(true);
     if (this.a != null) {
       this.a.a();
     }
@@ -20,7 +18,7 @@ public final class IndividuationUrlHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividuationUrlHelper.2
  * JD-Core Version:    0.7.0.1
  */

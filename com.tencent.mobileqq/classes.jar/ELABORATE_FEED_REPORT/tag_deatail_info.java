@@ -10,10 +10,10 @@ public final class tag_deatail_info
 {
   static ArrayList<String> cache_vecReferenceTagList;
   static ArrayList<String> cache_vecTagList = new ArrayList();
-  public long uFirstClassId;
-  public long uSecondClassId;
-  public ArrayList<String> vecReferenceTagList;
-  public ArrayList<String> vecTagList;
+  public long uFirstClassId = 0L;
+  public long uSecondClassId = 0L;
+  public ArrayList<String> vecReferenceTagList = null;
+  public ArrayList<String> vecTagList = null;
   
   static
   {

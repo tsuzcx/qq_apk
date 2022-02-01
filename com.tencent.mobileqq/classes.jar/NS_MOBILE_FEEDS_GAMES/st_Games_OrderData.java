@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class st_Games_OrderData
   extends JceStruct
 {
-  public long uFrdRanking;
-  public long uWinCount;
+  public long uFrdRanking = 0L;
+  public long uWinCount = 0L;
   
   public st_Games_OrderData() {}
   

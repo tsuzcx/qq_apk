@@ -16,10 +16,10 @@ public class MQMsgBody
   public String content = "";
   public String contentIcon = "";
   public String coverPicUrl = "";
-  public int mediaType;
-  public ArrayList<MQPhotoCell> photolist;
+  public int mediaType = 0;
+  public ArrayList<MQPhotoCell> photolist = null;
   public String title = "";
-  public ArrayList<String> vecUserAvatar;
+  public ArrayList<String> vecUserAvatar = null;
   
   private static JSONArray convertAvatarToJsonArray(ArrayList<String> paramArrayList)
   {
@@ -179,7 +179,7 @@ public class MQMsgBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQMsgBody
  * JD-Core Version:    0.7.0.1
  */

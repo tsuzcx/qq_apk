@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.hiboom;
 
-import avkb;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-public class HiBoomFontDrawer$3
+class HiBoomFontDrawer$3
   implements Runnable
 {
-  public HiBoomFontDrawer$3(avkb paramavkb) {}
+  HiBoomFontDrawer$3(HiBoomFontDrawer paramHiBoomFontDrawer) {}
   
   public void run()
   {
@@ -38,7 +37,7 @@ public class HiBoomFontDrawer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomFontDrawer.3
  * JD-Core Version:    0.7.0.1
  */

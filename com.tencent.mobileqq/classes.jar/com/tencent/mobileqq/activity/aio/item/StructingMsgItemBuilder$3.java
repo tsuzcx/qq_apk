@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahin;
-import bdla;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 class StructingMsgItemBuilder$3
   implements Runnable
 {
-  StructingMsgItemBuilder$3(StructingMsgItemBuilder paramStructingMsgItemBuilder, ahin paramahin) {}
+  StructingMsgItemBuilder$3(StructingMsgItemBuilder paramStructingMsgItemBuilder, StructingMsgItemBuilder.StructingMsgViewHolder paramStructingMsgViewHolder) {}
   
   public void run()
   {
@@ -23,9 +22,9 @@ class StructingMsgItemBuilder$3
     String str2 = "";
     String str1;
     if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
       {
-        str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
+        str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
         str2 = this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
       }
     }
@@ -35,7 +34,7 @@ class StructingMsgItemBuilder$3
       if (localPortalManager != null) {}
       for (int j = localPortalManager.a();; j = -1)
       {
-        bdla.b(this.this$0.a, "CliOper", "", "", "0X8004FF9", "0X8004FF9", 0, 0, "" + j, "" + i, "" + str1, str2);
+        ReportController.b(this.this$0.a, "CliOper", "", "", "0X8004FF9", "0X8004FF9", 0, 0, "" + j, "" + i, "" + str1, str2);
         return;
         i = 2;
         break;
@@ -47,7 +46,7 @@ class StructingMsgItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

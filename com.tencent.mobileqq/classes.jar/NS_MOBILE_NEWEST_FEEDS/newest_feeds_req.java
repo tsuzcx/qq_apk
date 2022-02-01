@@ -12,13 +12,13 @@ public final class newest_feeds_req
 {
   static Map<Long, Long> cache_mapUinTimes;
   static ArrayList<Long> cache_vec_uinlist = new ArrayList();
-  public int cmd;
-  public long last_feed_time;
-  public long login_uin;
-  public Map<Long, Long> mapUinTimes;
+  public int cmd = 0;
+  public long last_feed_time = 0L;
+  public long login_uin = 0L;
+  public Map<Long, Long> mapUinTimes = null;
   public String strQua = "";
   public String str_attach = "";
-  public ArrayList<Long> vec_uinlist;
+  public ArrayList<Long> vec_uinlist = null;
   
   static
   {

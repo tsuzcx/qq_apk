@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.controller;
 
-import aimz;
-import aina;
-
-public class VoiceTextSttProcessController$1$2
+class VoiceTextSttProcessController$1$2
   implements Runnable
 {
-  public VoiceTextSttProcessController$1$2(aina paramaina) {}
+  VoiceTextSttProcessController$1$2(VoiceTextSttProcessController.1 param1) {}
   
   public void run()
   {
-    aimz.a(this.a.a);
+    VoiceTextSttProcessController.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.2
  * JD-Core Version:    0.7.0.1
  */

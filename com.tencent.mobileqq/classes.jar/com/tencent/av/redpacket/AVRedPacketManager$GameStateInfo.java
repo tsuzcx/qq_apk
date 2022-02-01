@@ -9,20 +9,20 @@ public class AVRedPacketManager$GameStateInfo
 {
   String authKey;
   public List<AVRedPacketManager.LocalEmojiInfo> configEmojiInfos;
-  public int count_OnFrameDataSend = 0;
+  int count_OnFrameDataSend = 0;
   int curCommCnt;
   int curScore;
   public AVRedPacketManager.LocalFrameSyncInfo currLocalFrameSyncInfo = new AVRedPacketManager.LocalFrameSyncInfo();
-  public int enterType;
-  public int gameMode = 0;
+  int enterType;
+  int gameMode = 0;
   long gameStartTime;
-  public int gameState = 0;
+  int gameState = 0;
   boolean hasEmojiTip;
-  public int hasScreenShotCnt;
+  public int hasScreenShotCnt = 0;
   boolean isDestroy = false;
   int kazhenTipCnt;
-  public String key;
-  public long mRedPacketComeStartTime;
+  String key;
+  long mRedPacketComeStartTime;
   String money;
   String receiveRedPacketUin;
   String sendRedPacketUin;
@@ -67,7 +67,7 @@ public class AVRedPacketManager$GameStateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo
  * JD-Core Version:    0.7.0.1
  */

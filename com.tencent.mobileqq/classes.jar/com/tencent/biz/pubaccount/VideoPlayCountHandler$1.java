@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount;
 
-import omt;
-
-public class VideoPlayCountHandler$1
+class VideoPlayCountHandler$1
   implements Runnable
 {
-  public VideoPlayCountHandler$1(omt paramomt, String paramString1, String paramString2) {}
+  VideoPlayCountHandler$1(VideoPlayCountHandler paramVideoPlayCountHandler, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class VideoPlayCountHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoPlayCountHandler.1
  * JD-Core Version:    0.7.0.1
  */

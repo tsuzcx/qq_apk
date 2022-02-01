@@ -18,32 +18,32 @@ public final class QueryADBannerUnit
   public String DynBannerJsonData = "";
   public String btnText = "";
   public String description = "";
-  public int detail_info;
-  public int duration;
-  public int eAdType;
-  public Map<String, String> extendinfo;
-  public long iAdID;
-  public long iStoreID;
-  public long iTraceID;
-  public long iUin;
-  public ArrayList<MultiBanner> multibanner;
+  public int detail_info = 0;
+  public int duration = 0;
+  public int eAdType = 0;
+  public Map<String, String> extendinfo = null;
+  public long iAdID = 0L;
+  public long iStoreID = 0L;
+  public long iTraceID = 0L;
+  public long iUin = 0L;
+  public ArrayList<MultiBanner> multibanner = null;
   public String nick = "";
-  public int noCloseButton;
-  public int pattern_id;
-  public int priority;
-  public int reopenHours;
+  public int noCloseButton = 0;
+  public int pattern_id = 0;
+  public int priority = 0;
+  public int reopenHours = 0;
   public String report_info = "";
   public String roomId = "";
-  public TimeRange sShowTimeRange;
+  public TimeRange sShowTimeRange = null;
   public String strJmpUrl = "";
   public String strPicMD5 = "";
   public String strPicUrl = "";
   public String strSchemeUrl = "";
   public String strStoreUrl = "";
   public String strTraceInfo = "";
-  public int type;
+  public int type = 0;
   public String videoUrl = "";
-  public ArrayList<VideoBanner> videobanners;
+  public ArrayList<VideoBanner> videobanners = null;
   
   static
   {

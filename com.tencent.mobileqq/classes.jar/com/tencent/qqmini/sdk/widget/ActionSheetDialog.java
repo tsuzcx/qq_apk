@@ -77,6 +77,20 @@ public class ActionSheetDialog
     this.handler = new Handler(Looper.getMainLooper());
   }
   
+  private int getBackgroundId(int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 == 0) && (paramInt1 == 1)) {
+      return R.drawable.mini_sdk_actionsheet_single;
+    }
+    if ((paramInt2 == 0) && (paramInt1 > 1)) {
+      return R.drawable.mini_sdk_actionsheet_top;
+    }
+    if ((paramInt2 == paramInt1 - 1) && (paramInt1 > 1)) {
+      return R.drawable.mini_sdk_actionsheet_bottom;
+    }
+    return R.drawable.mini_sdk_actionsheet_middle;
+  }
+  
   private void init()
   {
     this.customButtonContainer = ((LinearLayout)findViewById(R.id.customButtonContainer));
@@ -89,53 +103,37 @@ public class ActionSheetDialog
     if (!this.mNeedInitContentView) {
       return;
     }
-    int m = this.buttonsList.size();
-    int k = 0;
+    int k = this.buttonsList.size();
+    int j = 0;
     Object localObject1;
-    label68:
     Object localObject2;
-    if (k < m)
+    if (j < k)
     {
-      localObject1 = (Button)this.buttonsList.get(k);
-      int j = ((Integer)((Button)localObject1).getTag()).intValue();
-      int i = R.drawable.mini_sdk_actionsheet_single;
-      if ((k == 0) && (m == 1))
+      localObject1 = (Button)this.buttonsList.get(j);
+      int i = ((Integer)((Button)localObject1).getTag()).intValue();
+      int m = R.drawable.mini_sdk_actionsheet_single;
+      m = getBackgroundId(k, j);
+      switch (i)
       {
-        i = R.drawable.mini_sdk_actionsheet_single;
-        switch (j)
-        {
-        default: 
-          j = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_blue);
-        }
+      default: 
+        i = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_blue);
       }
       for (;;)
       {
-        ((Button)localObject1).setBackgroundResource(i);
-        ((Button)localObject1).setTextColor(j);
-        k += 1;
+        ((Button)localObject1).setBackgroundResource(m);
+        ((Button)localObject1).setTextColor(i);
+        j += 1;
         break;
-        if ((k == 0) && (m > 1))
-        {
-          i = R.drawable.mini_sdk_actionsheet_top;
-          break label68;
-        }
-        if ((k == m - 1) && (m > 1))
-        {
-          i = R.drawable.mini_sdk_actionsheet_bottom;
-          break label68;
-        }
-        i = R.drawable.mini_sdk_actionsheet_middle;
-        break label68;
-        j = -16777216;
+        i = -16777216;
         ((Button)localObject1).setTextSize(0, this.mContext.getResources().getDimension(R.dimen.mini_sdk_textSizeS3));
         ((Button)localObject1).setClickable(false);
         ((Button)localObject1).setVisibility(8);
         addTitle(((Button)localObject1).getText().toString());
         continue;
-        j = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_red);
+        i = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_red);
         continue;
         DisplayUtil.dip2px(getContext(), 8.0F);
-        j = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_blue);
+        i = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_blue);
         localObject2 = new SpannableString(((Button)localObject1).getText());
         Object localObject3 = this.mContext.getResources().getDrawable(R.drawable.mini_sdk_ys_huangzuan);
         ((Drawable)localObject3).setBounds(0, 0, ((Drawable)localObject3).getIntrinsicWidth(), ((Drawable)localObject3).getIntrinsicHeight());
@@ -393,7 +391,7 @@ public class ActionSheetDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.ActionSheetDialog
  * JD-Core Version:    0.7.0.1
  */

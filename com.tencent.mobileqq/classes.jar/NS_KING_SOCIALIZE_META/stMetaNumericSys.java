@@ -9,16 +9,16 @@ public final class stMetaNumericSys
   extends JceStruct
 {
   static ArrayList<String> cache_fri_follow_avatar = new ArrayList();
-  public int fans_num;
-  public int feed_num;
-  public int frdonly_feed_num;
-  public ArrayList<String> fri_follow_avatar;
-  public int fri_follow_num;
-  public int interest_num;
-  public int is_followed;
-  public int praise_num;
-  public int priv_feed_num;
-  public int receivepraise_num;
+  public int fans_num = 0;
+  public int feed_num = 0;
+  public int frdonly_feed_num = 0;
+  public ArrayList<String> fri_follow_avatar = null;
+  public int fri_follow_num = 0;
+  public int interest_num = 0;
+  public int is_followed = 0;
+  public int praise_num = 0;
+  public int priv_feed_num = 0;
+  public int receivepraise_num = 0;
   
   static
   {

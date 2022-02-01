@@ -10,8 +10,8 @@ public final class User_Info
   extends JceStruct
 {
   static Map<String, String> cache_extendInfo = new HashMap();
-  public int eStarState;
-  public Map<String, String> extendInfo;
+  public int eStarState = 0;
+  public Map<String, String> extendInfo = null;
   
   static
   {

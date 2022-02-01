@@ -1,23 +1,21 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acbv;
-import acbx;
-import acho;
+import com.tencent.gdtad.log.GdtLog;
 import java.lang.ref.WeakReference;
 
-public class GdtArkPreDownloadTask$3
+class GdtArkPreDownloadTask$3
   implements Runnable
 {
-  public GdtArkPreDownloadTask$3(acbv paramacbv, int paramInt1, int paramInt2) {}
+  GdtArkPreDownloadTask$3(GdtArkPreDownloadTask paramGdtArkPreDownloadTask, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     boolean bool;
-    if ((acbv.a(this.this$0) != null) && (acbv.a(this.this$0).get() != null))
+    if ((GdtArkPreDownloadTask.a(this.this$0) != null) && (GdtArkPreDownloadTask.a(this.this$0).get() != null))
     {
       bool = true;
-      acho.b("GdtArkPreDownloadTask", String.format("notifyFailed listener:%b status:%d notified:%b error:%d arkError:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(acbv.a(this.this$0)), Boolean.valueOf(acbv.b(this.this$0)), Integer.valueOf(this.a), Integer.valueOf(this.b) }));
-      if (!acbv.b(this.this$0)) {
+      GdtLog.b("GdtArkPreDownloadTask", String.format("notifyFailed listener:%b status:%d notified:%b error:%d arkError:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(GdtArkPreDownloadTask.a(this.this$0)), Boolean.valueOf(GdtArkPreDownloadTask.b(this.this$0)), Integer.valueOf(this.a), Integer.valueOf(this.b) }));
+      if (!GdtArkPreDownloadTask.b(this.this$0)) {
         break label108;
       }
     }
@@ -27,14 +25,14 @@ public class GdtArkPreDownloadTask$3
       return;
       bool = false;
       break;
-      acbv.a(this.this$0, true);
-    } while ((acbv.a(this.this$0) == null) || (acbv.a(this.this$0).get() == null));
-    ((acbx)acbv.a(this.this$0).get()).a(acbv.a(this.this$0), this.a, this.b);
+      GdtArkPreDownloadTask.a(this.this$0, true);
+    } while ((GdtArkPreDownloadTask.a(this.this$0) == null) || (GdtArkPreDownloadTask.a(this.this$0).get() == null));
+    ((GdtArkPreDownloadTask.Listener)GdtArkPreDownloadTask.a(this.this$0).get()).a(GdtArkPreDownloadTask.a(this.this$0), this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.3
  * JD-Core Version:    0.7.0.1
  */

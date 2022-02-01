@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.utils;
 
-import bhhb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -39,26 +38,26 @@ class RandomAccessFileManager$CloseThread
           }
           if (j < i)
           {
-            localbhhb2 = (bhhb)RandomAccessFileManager.a(this.this$0).get(arrayOfString[j]);
-            bhhb localbhhb1;
-            for (??? = localbhhb2.jdField_b_of_type_Bhhb;; localObject3 = localbhhb1)
+            localFileEntry2 = (RandomAccessFileManager.FileEntry)RandomAccessFileManager.a(this.this$0).get(arrayOfString[j]);
+            RandomAccessFileManager.FileEntry localFileEntry1;
+            for (??? = localFileEntry2.jdField_b_of_type_ComTencentMobileqqUtilsRandomAccessFileManager$FileEntry;; localObject3 = localFileEntry1)
             {
-              localbhhb1 = ((bhhb)???).jdField_b_of_type_Bhhb;
-              if (((bhhb)???).jdField_a_of_type_Int != 0) {
+              localFileEntry1 = ((RandomAccessFileManager.FileEntry)???).jdField_b_of_type_ComTencentMobileqqUtilsRandomAccessFileManager$FileEntry;
+              if (((RandomAccessFileManager.FileEntry)???).jdField_a_of_type_Int != 0) {
                 break;
               }
               long l1 = System.currentTimeMillis();
-              long l2 = ((bhhb)???).jdField_b_of_type_Long;
+              long l2 = ((RandomAccessFileManager.FileEntry)???).jdField_b_of_type_Long;
               if (l1 - l2 <= 1000L) {
                 break;
               }
               try
               {
-                ((bhhb)???).jdField_a_of_type_JavaIoRandomAccessFile.close();
+                ((RandomAccessFileManager.FileEntry)???).jdField_a_of_type_JavaIoRandomAccessFile.close();
                 if (QLog.isColorLevel()) {
-                  QLog.d("AppleMojiHandler", 2, "file " + arrayOfString[j] + "[" + ((bhhb)???).jdField_a_of_type_Long + "]" + " close by Thread:" + Thread.currentThread().getId());
+                  QLog.d("AppleMojiHandler", 2, new Object[] { "file ", arrayOfString[j], "[", Long.valueOf(((RandomAccessFileManager.FileEntry)???).jdField_a_of_type_Long), "]", " close by Thread:", Long.valueOf(Thread.currentThread().getId()) });
                 }
-                RandomAccessFileManager.a(this.this$0, localbhhb2, (bhhb)???, arrayOfString[j], RandomAccessFileManager.a(this.this$0));
+                RandomAccessFileManager.a(this.this$0, localFileEntry2, (RandomAccessFileManager.FileEntry)???, arrayOfString[j], RandomAccessFileManager.a(this.this$0));
               }
               catch (IOException localIOException)
               {
@@ -78,11 +77,11 @@ class RandomAccessFileManager$CloseThread
     {
       for (;;)
       {
-        bhhb localbhhb2;
+        RandomAccessFileManager.FileEntry localFileEntry2;
         continue;
         int j = 0;
         continue;
-        if (localbhhb2 == localInterruptedException) {
+        if (localFileEntry2 == localInterruptedException) {
           j += 1;
         }
       }

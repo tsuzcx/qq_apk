@@ -4,15 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bffk;
-import bosb;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.troop.data.MediaInfo;
 import java.io.File;
 
 public class EditLocalVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalVideoSource> CREATOR = new bosb();
+  public static final Parcelable.Creator<EditLocalVideoSource> CREATOR = new EditLocalVideoSource.1();
   public int a;
   @NonNull
   public final LocalMediaInfo a;
@@ -20,10 +19,10 @@ public class EditLocalVideoSource
   public final String a;
   public final int b;
   
-  public EditLocalVideoSource(Parcel paramParcel)
+  protected EditLocalVideoSource(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bffk.class.getClassLoader()));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(MediaInfo.class.getClassLoader()));
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.b = paramParcel.readInt();
   }
@@ -88,7 +87,7 @@ public class EditLocalVideoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource
  * JD-Core Version:    0.7.0.1
  */

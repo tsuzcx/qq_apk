@@ -107,7 +107,7 @@ class WebAudioManager$5$1
     //   216: pop
     //   217: aload 7
     //   219: invokestatic 103	com/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager$DecodeAsPlayStatus:access$300	(Lcom/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager$DecodeAsPlayStatus;)I
-    //   222: tableswitch	default:+169 -> 391, 0:+100->322, 1:+26->248, 2:+110->332
+    //   222: tableswitch	default:+201 -> 423, 0:+100->322, 1:+26->248, 2:+110->332
     //   249: ifeq +63 -> 312
     //   252: new 105	org/json/JSONObject
     //   255: dup
@@ -172,17 +172,29 @@ class WebAudioManager$5$1
     //   377: invokestatic 162	com/tencent/mobileqq/tritonaudio/webaudio/AudioNativeManager:setQueueBuffer	(II)V
     //   380: goto -26 -> 354
     //   383: astore_1
-    //   384: aload_1
-    //   385: invokevirtual 165	org/json/JSONException:printStackTrace	()V
-    //   388: goto -76 -> 312
-    //   391: goto -143 -> 248
+    //   384: aload_0
+    //   385: getfield 14	com/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager$5$1:this$1	Lcom/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager$5;
+    //   388: getfield 35	com/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager$5:this$0	Lcom/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager;
+    //   391: invokestatic 166	com/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager:access$500	(Lcom/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager;)Lcom/tencent/mobileqq/triton/utils/LogDelegate;
+    //   394: ifnull -82 -> 312
+    //   397: aload_0
+    //   398: getfield 14	com/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager$5$1:this$1	Lcom/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager$5;
+    //   401: getfield 35	com/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager$5:this$0	Lcom/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager;
+    //   404: invokestatic 166	com/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager:access$500	(Lcom/tencent/mobileqq/tritonaudio/webaudio/WebAudioManager;)Lcom/tencent/mobileqq/triton/utils/LogDelegate;
+    //   407: getstatic 172	com/tencent/mobileqq/triton/utils/LogDelegate$Level:ERROR	Lcom/tencent/mobileqq/triton/utils/LogDelegate$Level;
+    //   410: ldc 174
+    //   412: ldc 176
+    //   414: aload_1
+    //   415: invokeinterface 182 5 0
+    //   420: goto -108 -> 312
+    //   423: goto -175 -> 248
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	394	0	this	1
-    //   0	394	1	paramArrayOfByte	byte[]
-    //   0	394	2	paramMediaFormat	android.media.MediaFormat
-    //   0	394	3	paramBoolean1	boolean
-    //   0	394	4	paramBoolean2	boolean
+    //   0	426	0	this	1
+    //   0	426	1	paramArrayOfByte	byte[]
+    //   0	426	2	paramMediaFormat	android.media.MediaFormat
+    //   0	426	3	paramBoolean1	boolean
+    //   0	426	4	paramBoolean2	boolean
     //   180	196	5	i	int
     //   121	6	6	localArrayList	java.util.ArrayList
     //   93	240	7	localDecodeAsPlayStatus	WebAudioManager.DecodeAsPlayStatus
@@ -201,7 +213,7 @@ class WebAudioManager$5$1
     //   332	338	316	finally
     //   342	354	316	finally
     //   354	380	316	finally
-    //   384	388	316	finally
+    //   384	420	316	finally
     //   260	312	383	org/json/JSONException
   }
 }

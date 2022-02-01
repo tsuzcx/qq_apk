@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class PoiInfo
   extends JceStruct
 {
-  public int iDistance;
-  public int iDistrictCode;
-  public int iHotValue;
-  public int iLat;
-  public int iLon;
-  public int iType;
-  public long lId;
+  public int iDistance = 0;
+  public int iDistrictCode = 0;
+  public int iHotValue = 0;
+  public int iLat = 0;
+  public int iLon = 0;
+  public int iType = 0;
+  public long lId = 0L;
   public String strAddress = "";
   public String strName = "";
   public String strPhone = "";

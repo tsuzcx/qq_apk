@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.text.TextUtils;
-import bebg;
-import bece;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class TeamWorkFileExportHandler$1
+class TeamWorkFileExportHandler$1
   implements Runnable
 {
-  public TeamWorkFileExportHandler$1(bebg parambebg, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  TeamWorkFileExportHandler$1(TeamWorkFileExportHandler paramTeamWorkFileExportHandler, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
-    if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a))) {
+    if ((TeamWorkFileExportHandler.a(this.this$0) == null) || (TextUtils.isEmpty(this.a))) {
       return;
     }
-    bece.a(this.this$0.app, this.a, this.b, this.c, this.d, this.this$0.app.getCurrentAccountUin());
+    TeamWorkHttpUtils.a(TeamWorkFileExportHandler.a(this.this$0), this.a, this.b, this.c, this.d, TeamWorkFileExportHandler.a(this.this$0).getCurrentAccountUin());
   }
 }
 

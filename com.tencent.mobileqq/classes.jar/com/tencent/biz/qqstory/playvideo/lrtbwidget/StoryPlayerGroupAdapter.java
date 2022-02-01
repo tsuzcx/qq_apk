@@ -6,75 +6,67 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.FakeGroupInfo;
+import com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.GroupId;
+import com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.GroupInfo;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import xcx;
-import xcy;
-import xcz;
-import xge;
-import xgv;
-import xgz;
-import xhe;
-import xhf;
-import xhg;
-import xit;
-import ykq;
-import zdl;
 
 public class StoryPlayerGroupAdapter
   extends PagerAdapter
 {
-  private ArrayList<xcz> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public Map<Integer, StoryPlayerGroupHolder> a;
-  private xge jdField_a_of_type_Xge;
-  private xgv jdField_a_of_type_Xgv;
-  private xit jdField_a_of_type_Xit;
-  private xge b = new xgz(this);
+  private OnSuperPageChangeListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetOnSuperPageChangeListener;
+  private StoryPlayerGlobalHolder jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder;
+  private VideoViewVideoHolder.VideoViewListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoViewListener;
+  private ArrayList<IDataProvider.GroupInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  Map<Integer, StoryPlayerGroupHolder> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private OnSuperPageChangeListener b = new StoryPlayerGroupAdapter.1(this);
   
-  public StoryPlayerGroupAdapter(xgv paramxgv)
+  public StoryPlayerGroupAdapter(StoryPlayerGlobalHolder paramStoryPlayerGlobalHolder)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Xgv = paramxgv;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder = paramStoryPlayerGlobalHolder;
   }
   
   private void a(int paramInt, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
   {
-    xcz localxcz = (xcz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    IDataProvider.GroupInfo localGroupInfo = (IDataProvider.GroupInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     ArrayList localArrayList = new ArrayList();
-    if (localxcz.c()) {
-      if ((localxcz instanceof xcx)) {
-        localArrayList.add(xhf.a("LoadingGroup-" + localxcz.jdField_a_of_type_Xcy.a, null, "Fake-Loading"));
+    if (localGroupInfo.c()) {
+      if ((localGroupInfo instanceof IDataProvider.FakeGroupInfo)) {
+        localArrayList.add(StoryPlayerVideoData.a("LoadingGroup-" + localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a, null, "Fake-Loading"));
       }
     }
     for (;;)
     {
-      paramStoryPlayerGroupHolder.a(paramInt, localxcz, localArrayList);
+      paramStoryPlayerGroupHolder.a(paramInt, localGroupInfo, localArrayList);
       return;
-      localArrayList.add(xhf.a("LoadingGroup-" + localxcz.jdField_a_of_type_Xcy.a, null, ((xhg)localxcz).b));
+      localArrayList.add(StoryPlayerVideoData.a("LoadingGroup-" + localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a, null, ((UIGroupInfo)localGroupInfo).b));
       continue;
-      if (localxcz.b())
+      if (localGroupInfo.b())
       {
-        if ((localxcz instanceof xcx)) {
-          localArrayList.add(xhf.a("ErrorGroup-" + localxcz.jdField_a_of_type_Xcy.a, null, ((xcx)localxcz).a));
+        if ((localGroupInfo instanceof IDataProvider.FakeGroupInfo)) {
+          localArrayList.add(StoryPlayerVideoData.a("ErrorGroup-" + localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a, null, ((IDataProvider.FakeGroupInfo)localGroupInfo).a));
         } else {
-          localArrayList.add(xhf.a("ErrorGroup-" + localxcz.jdField_a_of_type_Xcy.a, null, ((xhg)localxcz).a));
+          localArrayList.add(StoryPlayerVideoData.a("ErrorGroup-" + localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a, null, ((UIGroupInfo)localGroupInfo).a));
         }
       }
-      else if (localxcz.jdField_a_of_type_JavaUtilList.isEmpty())
+      else if (localGroupInfo.jdField_a_of_type_JavaUtilList.isEmpty())
       {
-        localArrayList.add(xhf.a("EmptyGroup-" + localxcz.jdField_a_of_type_Xcy.a, null, new ErrorMessage(97000000, "no vid")));
+        localArrayList.add(StoryPlayerVideoData.a("EmptyGroup-" + localGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a, null, new ErrorMessage(97000000, "no vid")));
       }
       else
       {
-        Iterator localIterator = localxcz.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = localGroupInfo.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          localArrayList.add(new xhf(str, (String)localxcz.jdField_a_of_type_JavaUtilMap.get(str)));
+          localArrayList.add(new StoryPlayerVideoData(str, (String)localGroupInfo.jdField_a_of_type_JavaUtilMap.get(str)));
         }
       }
     }
@@ -84,15 +76,21 @@ public class StoryPlayerGroupAdapter
   @Nullable
   public StoryPlayerGroupHolder a(int paramInt)
   {
-    return this.jdField_a_of_type_Xgv.a(paramInt);
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder.a(paramInt);
   }
   
-  public List<xcz> a()
+  public List<IDataProvider.GroupInfo> a()
   {
     return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilArrayList);
   }
   
-  public void a(@NonNull ArrayList<xcz> paramArrayList)
+  public void a(OnSuperPageChangeListener paramOnSuperPageChangeListener, VideoViewVideoHolder.VideoViewListener paramVideoViewListener)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetOnSuperPageChangeListener = paramOnSuperPageChangeListener;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoViewListener = paramVideoViewListener;
+  }
+  
+  public void a(@NonNull ArrayList<IDataProvider.GroupInfo> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
@@ -100,19 +98,13 @@ public class StoryPlayerGroupAdapter
     notifyDataSetChanged();
   }
   
-  public void a(xge paramxge, xit paramxit)
-  {
-    this.jdField_a_of_type_Xge = paramxge;
-    this.jdField_a_of_type_Xit = paramxit;
-  }
-  
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)paramObject;
-    ykq.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "destroyItem, verticalPosition = %d, holderPosition = %d, object = %s", Integer.valueOf(paramInt), Integer.valueOf(localStoryPlayerGroupHolder.jdField_a_of_type_Int), paramObject);
+    SLog.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "destroyItem, verticalPosition = %d, holderPosition = %d, object = %s", Integer.valueOf(paramInt), Integer.valueOf(localStoryPlayerGroupHolder.jdField_a_of_type_Int), paramObject);
     localStoryPlayerGroupHolder.c();
     paramViewGroup.removeView(localStoryPlayerGroupHolder.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_Xgv.a().a(localStoryPlayerGroupHolder);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder.a().a(localStoryPlayerGroupHolder);
   }
   
   public int getCount()
@@ -126,46 +118,46 @@ public class StoryPlayerGroupAdapter
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      if (((xcz)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Xcy.equals(paramObject.jdField_a_of_type_Xcy))
+      if (((IDataProvider.GroupInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.equals(paramObject.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId))
       {
         if (i == paramObject.jdField_a_of_type_Int)
         {
-          ykq.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, old vertical position = %d => POSITION_UNCHANGED", Integer.valueOf(paramObject.jdField_a_of_type_Int));
+          SLog.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, old vertical position = %d => POSITION_UNCHANGED", Integer.valueOf(paramObject.jdField_a_of_type_Int));
           this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramObject);
           a(i, paramObject);
           return -1;
         }
-        ykq.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, old vertical position = %d => POSITION_%d", Integer.valueOf(paramObject.jdField_a_of_type_Int), Integer.valueOf(i));
+        SLog.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, old vertical position = %d => POSITION_%d", Integer.valueOf(paramObject.jdField_a_of_type_Int), Integer.valueOf(i));
         this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramObject);
         a(i, paramObject);
         return i;
       }
       i += 1;
     }
-    ykq.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, vertical position = %d , groupId = %s => POSITION_NONE", Integer.valueOf(paramObject.jdField_a_of_type_Int), paramObject.jdField_a_of_type_Xcy.a);
+    SLog.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "getItemPosition, vertical position = %d , groupId = %s => POSITION_NONE", Integer.valueOf(paramObject.jdField_a_of_type_Int), paramObject.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.a);
     return -2;
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    ykq.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "instantiateItem, verticalPosition = %d", Integer.valueOf(paramInt));
-    if ((xcz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) == null)
+    SLog.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "instantiateItem, verticalPosition = %d", Integer.valueOf(paramInt));
+    if ((IDataProvider.GroupInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) == null)
     {
-      zdl.a(false, "can not get group info by position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilArrayList.size());
+      AssertUtils.a(false, "can not get group info by position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilArrayList.size());
       return null;
     }
-    StoryPlayerGroupHolder localStoryPlayerGroupHolder2 = (StoryPlayerGroupHolder)this.jdField_a_of_type_Xgv.a().a(StoryPlayerGroupHolder.class);
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder2 = (StoryPlayerGroupHolder)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder.a().a(StoryPlayerGroupHolder.class);
     StoryPlayerGroupHolder localStoryPlayerGroupHolder1 = localStoryPlayerGroupHolder2;
     if (localStoryPlayerGroupHolder2 == null)
     {
-      localStoryPlayerGroupHolder1 = new StoryPlayerGroupHolder(paramViewGroup, this.jdField_a_of_type_Xgv);
+      localStoryPlayerGroupHolder1 = new StoryPlayerGroupHolder(paramViewGroup, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder);
       localStoryPlayerGroupHolder1.a(localStoryPlayerGroupHolder1);
-      localStoryPlayerGroupHolder1.a(this.jdField_a_of_type_Xgv);
+      localStoryPlayerGroupHolder1.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGlobalHolder);
       localStoryPlayerGroupHolder1.b();
-      localStoryPlayerGroupHolder1.a(this.b, this.jdField_a_of_type_Xit);
+      localStoryPlayerGroupHolder1.a(this.b, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoViewListener);
     }
     paramViewGroup.addView(localStoryPlayerGroupHolder1.jdField_a_of_type_AndroidViewView);
-    ykq.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "instantiateItem, verticalPosition = %d, addView = %s", Integer.valueOf(paramInt), localStoryPlayerGroupHolder1.jdField_a_of_type_AndroidViewView);
+    SLog.a("Q.qqstory.playernew.StoryPlayerGroupAdapter", "instantiateItem, verticalPosition = %d, addView = %s", Integer.valueOf(paramInt), localStoryPlayerGroupHolder1.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localStoryPlayerGroupHolder1);
     a(paramInt, localStoryPlayerGroupHolder1);
     return localStoryPlayerGroupHolder1;
@@ -187,7 +179,7 @@ public class StoryPlayerGroupAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter
  * JD-Core Version:    0.7.0.1
  */

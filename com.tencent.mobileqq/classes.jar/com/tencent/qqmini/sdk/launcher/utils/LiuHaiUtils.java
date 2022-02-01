@@ -33,7 +33,7 @@ public class LiuHaiUtils
   private static String[] LIUHAI_LIST;
   private static String[] MANUFACTURER;
   public static final int NOTCH_IN_SCREEN_VOIO = 32;
-  public static final ArrayList<String> NotchWhiteList = new ArrayList();
+  public static final ArrayList<String> NOTCH_WHITE_LIST = new ArrayList();
   public static final int ROUNDED_IN_SCREEN_VOIO = 8;
   private static final String TAG = "LiuHaiUtils";
   public static boolean hasInitHasNotch = false;
@@ -57,7 +57,7 @@ public class LiuHaiUtils
     sIsIrregularScreen = false;
     LIUHAI_LIST = new String[] { "PAAM00", "Lenovo L78011", "Pixel 3 XL", "SM-G9750" };
     MANUFACTURER = new String[] { "HUAWEI", "OPPO", "VIVO", "XIAOMI" };
-    NotchWhiteList.add("SHARP_FS8010".toLowerCase());
+    NOTCH_WHITE_LIST.add("SHARP_FS8010".toLowerCase());
   }
   
   public static void closeFullScreen(Activity paramActivity)
@@ -780,7 +780,7 @@ public class LiuHaiUtils
   public static boolean isInNotchWhiteList()
   {
     String str = (Build.MANUFACTURER + "_" + Build.MODEL).toLowerCase();
-    return NotchWhiteList.contains(str);
+    return NOTCH_WHITE_LIST.contains(str);
   }
   
   private static boolean isLiuHaiModel()
@@ -1075,7 +1075,7 @@ public class LiuHaiUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.LiuHaiUtils
  * JD-Core Version:    0.7.0.1
  */

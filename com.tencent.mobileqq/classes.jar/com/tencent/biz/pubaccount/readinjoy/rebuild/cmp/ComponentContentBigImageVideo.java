@@ -10,26 +10,26 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anvx;
-import bhyk;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJItemViewType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.preparse.RIJPreParseData;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJSmartCropUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.NewPolymericInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianRoundCornerTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vip.CUKingCardHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import pjr;
-import ppe;
-import pqa;
-import pqw;
-import pre;
-import qfw;
-import rps;
-import six;
 
 public class ComponentContentBigImageVideo
   extends ComponentContentBig
@@ -55,31 +55,31 @@ public class ComponentContentBigImageVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560158, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560236, this, true);
   }
   
-  public URL a(qfw paramqfw)
+  public URL a(IReadInJoyModel paramIReadInJoyModel)
   {
-    Object localObject1 = paramqfw.a();
+    Object localObject1 = paramIReadInJoyModel.a();
     Object localObject2;
-    if (paramqfw.a() == 51)
+    if (paramIReadInJoyModel.a() == 51)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ComponentContentBigImageVideo", 2, "PolymericArticle use first page url");
       }
-      if ((pqw.g((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mSinglePicture != null) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (!((ArticleInfo)localObject1).mNewPolymericInfo.b))
+      if ((RIJFeedsType.g((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mSinglePicture != null) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (!((ArticleInfo)localObject1).mNewPolymericInfo.b))
       {
-        paramqfw = ((ArticleInfo)localObject1).mSinglePicture.getFile();
-        localObject2 = pjr.f();
-        paramqfw = pre.a(paramqfw, ((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue());
-        ((ArticleInfo)localObject1).mSinglePicture = pqa.a(paramqfw);
+        paramIReadInJoyModel = ((ArticleInfo)localObject1).mSinglePicture.getFile();
+        localObject2 = ReadInJoyDisplayUtils.f();
+        paramIReadInJoyModel = RIJSmartCropUtils.a(paramIReadInJoyModel, ((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue());
+        ((ArticleInfo)localObject1).mSinglePicture = RIJPreParseData.a(paramIReadInJoyModel);
         ((ArticleInfo)localObject1).mNewPolymericInfo.b = true;
         if (QLog.isColorLevel()) {
-          QLog.e("ComponentContentBigImageVideo", 2, " handled url = " + paramqfw);
+          QLog.e("ComponentContentBigImageVideo", 2, " handled url = " + paramIReadInJoyModel);
         }
       }
-      paramqfw = ((ArticleInfo)localObject1).mSinglePicture;
-      return paramqfw;
+      paramIReadInJoyModel = ((ArticleInfo)localObject1).mSinglePicture;
+      return paramIReadInJoyModel;
     }
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams() != null))
     {
@@ -94,7 +94,7 @@ public class ComponentContentBigImageVideo
         if (localObject1 == null) {
           break label306;
         }
-        paramqfw = (qfw)localObject1;
+        paramIReadInJoyModel = (IReadInJoyModel)localObject1;
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -108,62 +108,62 @@ public class ComponentContentBigImageVideo
       }
     }
     label306:
-    return super.a(paramqfw);
+    return super.a(paramIReadInJoyModel);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.b = ((TextView)paramView.findViewById(2131365915));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372928));
-    this.c = ((TextView)paramView.findViewById(2131381623));
+    this.b = ((TextView)paramView.findViewById(2131366079));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373255));
+    this.c = ((TextView)paramView.findViewById(2131382092));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof qfw))
+    if ((paramObject instanceof IReadInJoyModel))
     {
-      paramObject = ((qfw)paramObject).a();
+      paramObject = ((IReadInJoyModel)paramObject).a();
       if (paramObject != null) {
-        if (((ppe.g(paramObject)) || (ppe.i(paramObject)) || (ppe.j(paramObject)) || (ppe.k(paramObject))) && ((ppe.q(paramObject)) && (!ppe.a(paramObject)) && (!ppe.d(paramObject)))) {
+        if (((RIJItemViewType.g(paramObject)) || (RIJItemViewType.i(paramObject)) || (RIJItemViewType.j(paramObject)) || (RIJItemViewType.k(paramObject))) && ((RIJItemViewType.q(paramObject)) && (!RIJItemViewType.a(paramObject)) && (!RIJItemViewType.d(paramObject)))) {
           break label118;
         }
       }
     }
-    while ((NetworkUtil.isWifiConnected(getContext())) || (Aladdin.getConfig(299).getIntegerFromString("rij_main_feeds_tips_off", 0) == 1))
+    while ((NetworkUtil.h(getContext())) || (Aladdin.getConfig(299).getIntegerFromString("rij_main_feeds_tips_off", 0) == 1))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.c.setVisibility(4);
       return;
       label118:
-      if (pqw.g(paramObject))
+      if (RIJFeedsType.g(paramObject))
       {
         this.b.setVisibility(8);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(8);
       }
       else
       {
-        this.b.setText(pjr.a(paramObject.mVideoDuration));
+        this.b.setText(ReadInJoyDisplayUtils.a(paramObject.mVideoDuration));
       }
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.c.setVisibility(0);
-    Drawable localDrawable = getContext().getResources().getDrawable(2130843226);
+    Drawable localDrawable = getContext().getResources().getDrawable(2130843379);
     this.c.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
-    this.c.setCompoundDrawablePadding(AIOUtils.dp2px(6.0F, getContext().getResources()));
+    this.c.setCompoundDrawablePadding(AIOUtils.a(6.0F, getContext().getResources()));
     this.c.setVisibility(0);
-    if (bhyk.a() == 1)
+    if (CUKingCardHelper.a() == 1)
     {
-      this.c.setText(anvx.a(2131701759));
+      this.c.setText(HardCodeUtil.a(2131702314));
       return;
     }
     if (paramObject.mXGFileSize > 0L)
     {
-      this.c.setText(six.b(paramObject.mXGFileSize) + anvx.a(2131701812));
+      this.c.setText(VideoFeedsHelper.b(paramObject.mXGFileSize) + HardCodeUtil.a(2131702367));
       return;
     }
-    this.c.setText(anvx.a(2131701844));
+    this.c.setText(HardCodeUtil.a(2131702399));
   }
   
   public void b()
@@ -173,7 +173,7 @@ public class ComponentContentBigImageVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo
  * JD-Core Version:    0.7.0.1
  */

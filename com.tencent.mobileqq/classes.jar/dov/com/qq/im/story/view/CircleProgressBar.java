@@ -17,7 +17,7 @@ public class CircleProgressBar
   private int b = -16777216;
   private int c = 0;
   private int d = 10;
-  private int e;
+  private int e = 0;
   private int f = 100;
   private int g;
   
@@ -45,7 +45,7 @@ public class CircleProgressBar
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     float f1 = this.g / 2;
@@ -63,7 +63,7 @@ public class CircleProgressBar
     paramCanvas.drawCircle(f1, f2, this.g / 2 - this.d, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.g = getMeasuredWidth();
@@ -105,7 +105,7 @@ public class CircleProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.story.view.CircleProgressBar
  * JD-Core Version:    0.7.0.1
  */

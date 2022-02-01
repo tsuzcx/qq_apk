@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.emoticonview;
 
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.IEmotionPanelDataCallback;
 import java.util.List;
 import mqq.os.MqqHandler;
 
 class EmotionPanelDataBuilder$1
   implements Runnable
 {
-  EmotionPanelDataBuilder$1(EmotionPanelDataBuilder paramEmotionPanelDataBuilder, QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, EmotionPanelDataBuilder.EmotionPanelDataCallback paramEmotionPanelDataCallback) {}
+  EmotionPanelDataBuilder$1(EmotionPanelDataBuilder paramEmotionPanelDataBuilder, IEmoticonMainPanelApp paramIEmoticonMainPanelApp, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, IEmotionPanelDataCallback paramIEmotionPanelDataCallback) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ class EmotionPanelDataBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,8 @@ public final class R$styleable
   public static final int ColorStateListItem_alpha = 2;
   public static final int ColorStateListItem_android_alpha = 1;
   public static final int ColorStateListItem_android_color = 0;
-  public static final int[] CoordinatorLayout = { 2130837645, 2130837712 };
-  public static final int[] CoordinatorLayout_Layout = { 16842931, 2130837648, 2130837649, 2130837650, 2130837651, 2130837652, 2130837653 };
-  public static final int CoordinatorLayout_Layout_android_layout_gravity = 0;
-  public static final int CoordinatorLayout_Layout_layout_anchor = 1;
-  public static final int CoordinatorLayout_Layout_layout_anchorGravity = 2;
-  public static final int CoordinatorLayout_Layout_layout_behavior = 3;
-  public static final int CoordinatorLayout_Layout_layout_dodgeInsetEdges = 4;
-  public static final int CoordinatorLayout_Layout_layout_insetEdge = 5;
-  public static final int CoordinatorLayout_Layout_layout_keyline = 6;
-  public static final int CoordinatorLayout_keylines = 0;
-  public static final int CoordinatorLayout_statusBarBackground = 1;
-  public static final int[] FontFamily = { 2130837621, 2130837622, 2130837623, 2130837624, 2130837625, 2130837626 };
-  public static final int[] FontFamilyFont = { 16844082, 16844083, 16844095, 16844143, 16844144, 2130837619, 2130837627, 2130837628, 2130837629, 2130837763 };
+  public static final int[] FontFamily = { 2130837622, 2130837623, 2130837624, 2130837625, 2130837626, 2130837627 };
+  public static final int[] FontFamilyFont = { 16844082, 16844083, 16844095, 16844143, 16844144, 2130837620, 2130837628, 2130837629, 2130837630, 2130837765 };
   public static final int FontFamilyFont_android_font = 0;
   public static final int FontFamilyFont_android_fontStyle = 2;
   public static final int FontFamilyFont_android_fontVariationSettings = 4;
@@ -54,7 +43,7 @@ public final class R$styleable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.R.styleable
  * JD-Core Version:    0.7.0.1
  */

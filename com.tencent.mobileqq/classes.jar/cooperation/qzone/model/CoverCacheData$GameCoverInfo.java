@@ -8,13 +8,13 @@ public class CoverCacheData$GameCoverInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<GameCoverInfo> CREATOR = new CoverCacheData.GameCoverInfo.1();
-  public int jmpType;
+  public int jmpType = 0;
   public String jmpUrl = "";
   public String schema = "";
-  public double xCoordLU;
-  public double xCoordRD;
-  public double yCoordLU;
-  public double yCoordRD;
+  public double xCoordLU = 0.0D;
+  public double xCoordRD = 0.0D;
+  public double yCoordLU = 0.0D;
+  public double yCoordRD = 0.0D;
   
   public int describeContents()
   {
@@ -34,7 +34,7 @@ public class CoverCacheData$GameCoverInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.CoverCacheData.GameCoverInfo
  * JD-Core Version:    0.7.0.1
  */

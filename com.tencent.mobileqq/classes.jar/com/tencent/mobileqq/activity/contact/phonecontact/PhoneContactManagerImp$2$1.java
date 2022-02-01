@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
-import ajch;
 import com.tencent.qphone.base.util.QLog;
 
-public class PhoneContactManagerImp$2$1
+class PhoneContactManagerImp$2$1
   implements Runnable
 {
-  public PhoneContactManagerImp$2$1(ajch paramajch) {}
+  PhoneContactManagerImp$2$1(PhoneContactManagerImp.2 param2) {}
   
   public void run()
   {
@@ -39,7 +38,7 @@ public class PhoneContactManagerImp$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.2.1
  * JD-Core Version:    0.7.0.1
  */

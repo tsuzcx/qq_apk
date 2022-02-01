@@ -242,6 +242,11 @@ public class TbsLog
     }
   }
   
+  public static void i(Throwable paramThrowable)
+  {
+    i("handle_throwable", Log.getStackTraceString(paramThrowable));
+  }
+  
   public static void initIfNeed(Context paramContext)
   {
     try
@@ -338,7 +343,7 @@ public class TbsLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsLog
  * JD-Core Version:    0.7.0.1
  */

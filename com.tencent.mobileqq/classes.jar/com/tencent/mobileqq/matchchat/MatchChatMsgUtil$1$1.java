@@ -2,8 +2,8 @@ package com.tencent.mobileqq.matchchat;
 
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
 
 class MatchChatMsgUtil$1$1
   implements Runnable

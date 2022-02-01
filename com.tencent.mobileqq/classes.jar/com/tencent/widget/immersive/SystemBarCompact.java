@@ -6,8 +6,7 @@ import android.app.Dialog;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.view.Window;
-import blhi;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qphone.base.util.QLog;
 
 public class SystemBarCompact
@@ -18,7 +17,7 @@ public class SystemBarCompact
   private int mPendingStatusBarColor;
   public int mStatusBarColor = 0;
   public Drawable mStatusBarDarwable;
-  private blhi mTintManager;
+  private SystemBarTintManager mTintManager;
   private Window mWindow;
   
   public SystemBarCompact(Activity paramActivity, boolean paramBoolean, int paramInt)
@@ -38,7 +37,7 @@ public class SystemBarCompact
   private void ensureTintManager()
   {
     if (this.mTintManager == null) {
-      this.mTintManager = new blhi(this.mWindow, this.mDrawStatus);
+      this.mTintManager = new SystemBarTintManager(this.mWindow, this.mDrawStatus);
     }
   }
   
@@ -54,7 +53,7 @@ public class SystemBarCompact
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       ensureTintManager();
-      this.mTintManager.a(this.mDrawStatus);
+      this.mTintManager.setStatusBarTintEnabled(this.mDrawStatus);
     }
     if (this.mStatusBarDarwable != null) {
       setStatusBarDrawable(this.mStatusBarDarwable);
@@ -73,19 +72,19 @@ public class SystemBarCompact
   {
     this.mStatusBarColor = paramInt;
     if ((this.mTintManager != null) && (ImmersiveUtils.isSupporImmersive() == 1)) {
-      this.mTintManager.a(paramInt);
+      this.mTintManager.setStatusBarTintColor(paramInt);
     }
   }
   
   @TargetApi(19)
   public void setStatusBarDarkMode(boolean paramBoolean)
   {
-    if (ImmersiveUtils.a())
+    if (ImmersiveUtils.supportStatusBarDarkMode())
     {
-      if (!ThemeUtil.isDefaultOrDIYTheme()) {
+      if (!QQTheme.b()) {
         paramBoolean = false;
       }
-      ImmersiveUtils.a(this.mWindow, paramBoolean);
+      ImmersiveUtils.setStatusBarDarkMode(this.mWindow, paramBoolean);
     }
   }
   
@@ -93,13 +92,13 @@ public class SystemBarCompact
   {
     this.mStatusBarDarwable = paramDrawable;
     if ((this.mTintManager != null) && (ImmersiveUtils.isSupporImmersive() == 1)) {
-      this.mTintManager.a(paramDrawable);
+      this.mTintManager.setStatusBarTintDrawable(paramDrawable);
     }
   }
   
   public void setStatusBarMask(ColorFilter paramColorFilter)
   {
-    this.mTintManager.a(paramColorFilter);
+    this.mTintManager.setColorFilter(paramColorFilter);
   }
   
   public void setStatusBarVisible(int paramInt1, int paramInt2)
@@ -111,7 +110,7 @@ public class SystemBarCompact
     for (this.isStatusBarVisible = true;; this.isStatusBarVisible = false)
     {
       if (this.mTintManager != null) {
-        this.mTintManager.a(paramInt1, paramInt2);
+        this.mTintManager.setStatusBarVisible(paramInt1, paramInt2);
       }
       return;
     }
@@ -134,7 +133,7 @@ public class SystemBarCompact
     }
     this.isStatusBarVisible = paramBoolean;
     if (this.mTintManager != null) {
-      this.mTintManager.a(paramBoolean, paramInt);
+      this.mTintManager.setStatusBarVisible(paramBoolean, paramInt);
     }
   }
 }

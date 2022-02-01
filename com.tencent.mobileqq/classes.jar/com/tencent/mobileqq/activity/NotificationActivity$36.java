@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bhzc;
+import com.tencent.mobileqq.vip.LhHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -11,21 +11,21 @@ class NotificationActivity$36
   
   public void run()
   {
-    int i = NotificationActivity.a(this.this$0).c();
+    int i = NotificationActivity.access$1400(this.this$0).c();
     QLog.e("LhHelper", 1, "handleLhExpire userStatus = " + i);
     if (i == 1) {
-      NotificationActivity.a(this.this$0).sendEmptyMessage(1);
+      NotificationActivity.access$1500(this.this$0).sendEmptyMessage(1);
     }
     do
     {
       return;
       if (i == 2)
       {
-        NotificationActivity.a(this.this$0).sendEmptyMessage(2);
+        NotificationActivity.access$1500(this.this$0).sendEmptyMessage(2);
         return;
       }
     } while (i != 3);
-    NotificationActivity.a(this.this$0).sendEmptyMessage(3);
+    NotificationActivity.access$1500(this.this$0).sendEmptyMessage(3);
   }
 }
 

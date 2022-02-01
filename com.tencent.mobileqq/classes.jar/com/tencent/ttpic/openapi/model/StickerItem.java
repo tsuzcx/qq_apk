@@ -10,14 +10,11 @@ import com.tencent.ttpic.model.PopularRange;
 import com.tencent.ttpic.model.Transition;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.util.FramePositionsBean;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.STICKER_ORDER_MODE;
 import com.tencent.ttpic.particle.GPUParticleConfig;
 import com.tencent.ttpic.particle.ParticleConfig;
 import com.tencent.ttpic.trigger.TriggerTimeUpdater;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class StickerItem
@@ -73,7 +70,6 @@ public class StickerItem
   public int filterOrderMode;
   public float fingerMusicClockTime;
   public boolean followPhoneAngle = false;
-  public String fragmentShaderPath;
   public double frameDuration;
   public FramePositionsBean framePositionsBean;
   public int[] frameSize;
@@ -94,7 +90,6 @@ public class StickerItem
   public int lockTriggerCountUntilFail;
   public String lutFilterName;
   public int markMode;
-  public float maskBlurStrength = 0.0F;
   public String maskLut;
   public String maskType;
   public int maxScaledWidth;
@@ -102,13 +97,13 @@ public class StickerItem
   public String name;
   public int needCrop;
   public int needHandRotation;
-  public VideoMaterialUtil.STICKER_ORDER_MODE orderMode = VideoMaterialUtil.STICKER_ORDER_MODE.AFTER_TRANSFORM;
   public boolean orienting;
   public int originalScaleFactor;
   public ParticleConfig particleConfig;
   public int personID = -1;
   public int playBPM;
   public int playCount;
+  public int playFirstSyncMode;
   public int playMode;
   public String pluginFilterPath;
   public PopularRange popularRange;
@@ -126,7 +121,7 @@ public class StickerItem
   public int scaleFactor;
   public int[] scalePivots;
   public int snapshotTime = 0;
-  public VideoMaterialUtil.ITEM_SOURCE_TYPE sourceType;
+  public VideoMaterial.ITEM_SOURCE_TYPE sourceType;
   public int stickerType;
   public float[] strokeColor;
   public double strokeGap;
@@ -137,7 +132,6 @@ public class StickerItem
   public String subFolder;
   public int support3D;
   public String textureMaterials;
-  public LinkedHashMap<String, Integer> texturesMap;
   public int transformType;
   public Transition transition;
   public int triggedTimes = 0;
@@ -154,10 +148,7 @@ public class StickerItem
   public String triggerWords;
   public int type;
   public float[] uvValues;
-  public String vertexShaderPath;
   public int width;
-  public WMGroupConfig wmGroupConfig;
-  public List<WMGroupConfig> wmGroupConfigCopies;
   public int zIndex;
   public float[] zoomFocusPoint;
   public float zoomHeight;
@@ -203,7 +194,7 @@ public class StickerItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.StickerItem
  * JD-Core Version:    0.7.0.1
  */

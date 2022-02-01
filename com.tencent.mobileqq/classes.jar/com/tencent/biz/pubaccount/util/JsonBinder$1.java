@@ -5,12 +5,10 @@ import java.util.List;
 
 class JsonBinder$1
   extends TypeToken<List<T>>
-{
-  JsonBinder$1(JsonBinder paramJsonBinder) {}
-}
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.JsonBinder.1
  * JD-Core Version:    0.7.0.1
  */

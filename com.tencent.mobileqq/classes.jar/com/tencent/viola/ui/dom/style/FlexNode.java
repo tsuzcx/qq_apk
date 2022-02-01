@@ -170,6 +170,22 @@ public class FlexNode
     return this.flexStyle.margin;
   }
   
+  public float getMarginHorizontal()
+  {
+    if (!FlexConstants.isUndefined(this.flexStyle.margin.get(8))) {
+      return ViolaUtils.getFloatSafely(this.flexStyle.margin.get(8)) * 2.0F;
+    }
+    return ViolaUtils.getFloatSafely(this.flexStyle.margin.get(0)) + ViolaUtils.getFloatSafely(this.flexStyle.margin.get(2));
+  }
+  
+  public float getMarginVertical()
+  {
+    if (!FlexConstants.isUndefined(this.flexStyle.margin.get(8))) {
+      return ViolaUtils.getFloatSafely(this.flexStyle.margin.get(8)) * 2.0F;
+    }
+    return ViolaUtils.getFloatSafely(this.flexStyle.margin.get(1)) + ViolaUtils.getFloatSafely(this.flexStyle.margin.get(3));
+  }
+  
   @NonNull
   public StyleSpace getPadding()
   {
@@ -584,7 +600,7 @@ public class FlexNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.FlexNode
  * JD-Core Version:    0.7.0.1
  */

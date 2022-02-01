@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ff1c1d1e" />
-    <corners android:topLeftRadius="0.0dip" android:topRightRadius="0.0dip" android:bottomLeftRadius="16.0dip" android:bottomRightRadius="16.0dip" />
+    <item android:state_enabled="false" android:drawable="@drawable/bx5" />
+    <item android:state_pressed="true" android:drawable="@drawable/bx5" />
+    <item android:drawable="@drawable/bx4" />
 </selector>

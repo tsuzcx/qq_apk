@@ -2,15 +2,14 @@ package com.tencent.mobileqq.troopshare;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bgua;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-public class TroopShareUtility$9
+class TroopShareUtility$9
   implements Runnable
 {
-  public TroopShareUtility$9(bgua parambgua, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent) {}
+  TroopShareUtility$9(TroopShareUtility paramTroopShareUtility, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent) {}
   
   public void run()
   {

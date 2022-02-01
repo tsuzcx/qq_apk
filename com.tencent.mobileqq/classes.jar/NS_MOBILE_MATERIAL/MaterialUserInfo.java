@@ -12,10 +12,10 @@ public final class MaterialUserInfo
   static MaterialUserItem cache_stCurrentItem = new MaterialUserItem();
   static ArrayList<MaterialUserItem> cache_vecHistoryItem;
   static ArrayList<MaterialUserItem> cache_vecUserItem = new ArrayList();
-  public int iSwitchState;
-  public MaterialUserItem stCurrentItem;
-  public ArrayList<MaterialUserItem> vecHistoryItem;
-  public ArrayList<MaterialUserItem> vecUserItem;
+  public int iSwitchState = 0;
+  public MaterialUserItem stCurrentItem = null;
+  public ArrayList<MaterialUserItem> vecHistoryItem = null;
+  public ArrayList<MaterialUserItem> vecUserItem = null;
   
   static
   {

@@ -6,13 +6,12 @@ import android.graphics.RectF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bojx;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 
 public class PasterParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator<PasterParcelData> CREATOR = new bojx();
+  public static final Parcelable.Creator<PasterParcelData> CREATOR = new PasterParcelData.1();
   public static int a;
   public static int b;
   public float a;
@@ -42,9 +41,12 @@ public class PasterParcelData
     jdField_b_of_type_Int = 2;
   }
   
-  public PasterParcelData(Parcel paramParcel)
+  protected PasterParcelData(Parcel paramParcel)
   {
     this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Float = 0.0F;
+    this.jdField_d_of_type_Float = 0.0F;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
     this.jdField_c_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_AndroidGraphicsPointF = ((PointF)paramParcel.readParcelable(PointF.class.getClassLoader()));
@@ -100,7 +102,7 @@ public class PasterParcelData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.paster.PasterParcelData
  * JD-Core Version:    0.7.0.1
  */

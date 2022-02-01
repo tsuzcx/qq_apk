@@ -1,19 +1,18 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import android.widget.ListView;
-import vaj;
-import vmp;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 
-public class WsCommentPresenter$8
+class WsCommentPresenter$8
   implements Runnable
 {
-  public WsCommentPresenter$8(vaj paramvaj) {}
+  WsCommentPresenter$8(WsCommentPresenter paramWsCommentPresenter) {}
   
   public void run()
   {
-    vaj.a(this.this$0, false);
-    vaj.d(this.this$0);
-    vmp.d("comment", "onResponse, lastPosition:" + vaj.c(this.this$0) + ",currentPosition:" + vaj.b(this.this$0));
+    WsCommentPresenter.a(this.this$0, false);
+    WsCommentPresenter.d(this.this$0);
+    WSLog.d("comment", "onResponse, lastPosition:" + WsCommentPresenter.c(this.this$0) + ",currentPosition:" + WsCommentPresenter.b(this.this$0));
     if (this.this$0.a != null) {
       this.this$0.a.setSelection(0);
     }
@@ -21,7 +20,7 @@ public class WsCommentPresenter$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentPresenter.8
  * JD-Core Version:    0.7.0.1
  */

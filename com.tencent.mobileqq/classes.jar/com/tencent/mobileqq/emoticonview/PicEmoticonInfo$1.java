@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.emoticonview;
 
-import awzc;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-class PicEmoticonInfo$1
-  implements awzc<EmoticonPackage>
+final class PicEmoticonInfo$1
+  implements Parcelable.Creator<PicEmoticonInfo>
 {
-  PicEmoticonInfo$1(PicEmoticonInfo paramPicEmoticonInfo, String paramString) {}
-  
-  public void postQuery(EmoticonPackage paramEmoticonPackage)
+  public PicEmoticonInfo createFromParcel(Parcel paramParcel)
   {
-    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
-      URLDrawable.removeMemoryCacheByUrl(this.val$key);
-    }
+    return new PicEmoticonInfo(paramParcel);
+  }
+  
+  public PicEmoticonInfo[] newArray(int paramInt)
+  {
+    return new PicEmoticonInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.PicEmoticonInfo.1
  * JD-Core Version:    0.7.0.1
  */

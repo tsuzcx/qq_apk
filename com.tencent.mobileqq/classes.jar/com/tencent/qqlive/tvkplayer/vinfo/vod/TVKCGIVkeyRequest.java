@@ -2,19 +2,24 @@ package com.tencent.qqlive.tvkplayer.vinfo.vod;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.qqlive.tvkplayer.tools.utils.ITVKHttpProcessor.HttpResponse;
 import com.tencent.qqlive.tvkplayer.tools.utils.ITVKHttpProcessor.ITVKHttpCallback;
+import com.tencent.qqlive.tvkplayer.tools.utils.ITVKHttpProcessor.InvalidResponseCodeException;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKLogUtil;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKUtils;
 import com.tencent.qqlive.tvkplayer.vinfo.apiinner.ITVKCGIVkeyResponse;
 import com.tencent.qqlive.tvkplayer.vinfo.ckey.CKeyFacade;
 import com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoConfig;
 import com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoEnum;
+import com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoErrorCodeUtil;
 import com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoHttpProcessor;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.w3c.dom.Document;
 
 public class TVKCGIVkeyRequest
 {
@@ -41,6 +46,17 @@ public class TVKCGIVkeyRequest
   {
     this.mParams = paramTVKCGIVKeyRequestParams;
     this.mCallback = paramITVKCGIVkeyResponse;
+  }
+  
+  private void checkIfRetry(int paramInt)
+  {
+    if ((this.mUseBkurl) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT))
+    {
+      paramInt = 1402000 + paramInt;
+      invokeVkeyFailureCallback(this.mRequestID, String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(paramInt) }), paramInt);
+      return;
+    }
+    executeRequest();
   }
   
   private static String genCkey(TVKCGIVKeyRequestParams paramTVKCGIVKeyRequestParams)
@@ -225,6 +241,89 @@ public class TVKCGIVkeyRequest
     }
   }
   
+  private void handleGetVkeyFailure(IOException paramIOException)
+  {
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = this.mStartRequestMS;
+    if ((paramIOException instanceof ITVKHttpProcessor.InvalidResponseCodeException)) {}
+    for (int i = ((ITVKHttpProcessor.InvalidResponseCodeException)paramIOException).responseCode;; i = TVKVideoInfoErrorCodeUtil.getErrCodeByThrowable(paramIOException.getCause()))
+    {
+      TVKLogUtil.e("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey] failed, time cost:" + (l1 - l2) + "ms error:" + paramIOException.toString());
+      if ((this.mUseBkurl) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT) && (this.mCallback != null))
+      {
+        int j = 1402000 + i;
+        this.mCallback.onVkeyFailure(this.mRequestID, String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(j) }), j);
+      }
+      if ((i >= 16) && (i <= 20)) {
+        this.mRetryWithoutHttps = true;
+      }
+      executeRequest();
+      return;
+    }
+  }
+  
+  private void handleGetVkeySuccess(ITVKHttpProcessor.HttpResponse paramHttpResponse)
+  {
+    paramHttpResponse = new String(paramHttpResponse.mData);
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = this.mStartRequestMS;
+    TVKLogUtil.i("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey] success timecost:" + (l1 - l2) + " xml:" + paramHttpResponse);
+    if (!paramHttpResponse.contains("<?xml"))
+    {
+      this.mRetryWithoutHttps = false;
+      executeRequest();
+      return;
+    }
+    if (!TextUtils.isEmpty(paramHttpResponse))
+    {
+      paramHttpResponse = new TVKCGIParser(paramHttpResponse);
+      if (paramHttpResponse.init())
+      {
+        if ((this.mCgiRetryCount <= 2) && ((paramHttpResponse.isXML85ErrorCode()) || (paramHttpResponse.isXMLHaveRetryNode())))
+        {
+          this.mCgiRetryCount += 1;
+          TVKLogUtil.e("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey] 85 error code, retry time" + this.mCgiRetryCount);
+          this.mGetUrlCount -= 1;
+          this.mCurrentHostUrlRetryCount -= 1;
+          if (this.mCgiRetryCount == 2) {
+            if (this.mUseBkurl) {
+              break label217;
+            }
+          }
+          label217:
+          for (boolean bool = true;; bool = false)
+          {
+            this.mUseBkurl = bool;
+            this.mCurrentHostUrlRetryCount = 0;
+            executeRequest();
+            return;
+          }
+        }
+        invokeVkeySucessCallback(this.mRequestID, paramHttpResponse.getXml(), paramHttpResponse.getDocument());
+        return;
+      }
+      TVKLogUtil.e("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getkey] xml parse error");
+      checkIfRetry(15);
+      return;
+    }
+    TVKLogUtil.e("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey] response not xml");
+    checkIfRetry(13);
+  }
+  
+  private void invokeVkeyFailureCallback(String paramString1, String paramString2, int paramInt)
+  {
+    if (this.mCallback != null) {
+      this.mCallback.onVkeyFailure(paramString1, paramString2, paramInt);
+    }
+  }
+  
+  private void invokeVkeySucessCallback(String paramString1, String paramString2, Document paramDocument)
+  {
+    if (this.mCallback != null) {
+      this.mCallback.onVkeySuccess(paramString1, paramString2, paramDocument);
+    }
+  }
+  
   public void cancelRequest()
   {
     this.mIsCanceled = true;
@@ -265,7 +364,7 @@ public class TVKCGIVkeyRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVkeyRequest
  * JD-Core Version:    0.7.0.1
  */

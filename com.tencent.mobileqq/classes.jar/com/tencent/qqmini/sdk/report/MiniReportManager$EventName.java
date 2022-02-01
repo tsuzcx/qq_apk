@@ -22,6 +22,7 @@ public class MiniReportManager$EventName
   public static final String APP_LOAD_START = "app_load_start";
   public static final String APP_LOAD_SUCC = "onlaunchsucc";
   public static final String APP_LOAD_TIMEOUT = "onlaunchtimeout";
+  public static final String APP_ON_WEBVIEW_READY = "app_on_webview_ready";
   public static final String APP_ROUTE_DONE = "app_route_done";
   public static final String APP_STAY_DURATION = "miniappstaytime";
   public static final String APP_UNZIP_END = "appunzipend";
@@ -54,6 +55,8 @@ public class MiniReportManager$EventName
   public static final String HTTP_REQUEST_RESULT = "http_request_result";
   public static final String HTTP_UPLOAD = "http_upload";
   public static final String JS_ERROR = "jsonerror";
+  public static final String LAUNCH_2_SERVICE_APP_START_RESULT = "launch_to_service_app_start_result";
+  public static final String LAUNCH_2_WEB_APP_START_RESULT = "launch_to_web_app_start_result";
   public static final String LAUNCH_END = "apponloaded";
   public static final String LAUNCH_RESULT = "launch_result";
   public static final String LAUNCH_START = "onlaunch";
@@ -99,13 +102,16 @@ public class MiniReportManager$EventName
   public static final String PRELOAD_PROCESS_END = "preload_process_end";
   public static final String PRELOAD_PROCESS_START = "preload_process_start";
   public static final String PRELOAD_RESULT = "preload_result";
+  public static final String SDK_EMBEDDED_LIVE_ELEMENT = "mini_sdk_embedded_element_widget";
   public static final String SDK_EMBEDDED_LIVE_PLAYER = "mini_sdk_embedded_liveplayer_widget";
   public static final String SDK_EMBEDDED_SUPPORT_RESULT = "mini_sdk_embedded_support_result";
   public static final String SDK_EMBEDDED_UPDATE_RESULT = "mini_sdk_embedded_update_result";
   public static final String SDK_EMBEDDED_VIDEO = "mini_sdk_embedded_video_widget";
   public static final String SDK_SERVICE_USE_TYPE = "mini_sdk_service_type";
   public static final String SERVICE_APP_END = "service_app_end";
+  public static final String SERVICE_APP_END_RESULT = "service_app_end_result";
   public static final String SERVICE_APP_START = "service_app_start";
+  public static final String SERVICE_APP_TO_ROUTEDONE_RESULT = "service_app_to_routedone_result";
   public static final String SERVICE_END = "service_end";
   public static final String SERVICE_JS_LOAD_END = "servicejsend";
   public static final String SERVICE_JS_LOAD_START = "servicejsstart";
@@ -137,6 +143,8 @@ public class MiniReportManager$EventName
   public static final String WEBVIEW_JS_LOAD_END = "webviewjsready";
   public static final String WEBVIEW_JS_LOAD_START = "webviewjsstart";
   public static final String WEBVIEW_START = "webview_start";
+  public static final String WEB_APP_END_RESULT = "web_app_end_result";
+  public static final String WEB_APP_TO_DOMREADY_RESULT = "web_app_to_domready_result";
   public static final String WEB_SOCKET_CLOSE = "web_socket_close";
   public static final String WEB_SOCKET_FAILURE = "web_socket_failure";
   public static final String WEB_SOCKET_OPEN = "web_socket_open";
@@ -146,7 +154,7 @@ public class MiniReportManager$EventName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniReportManager.EventName
  * JD-Core Version:    0.7.0.1
  */

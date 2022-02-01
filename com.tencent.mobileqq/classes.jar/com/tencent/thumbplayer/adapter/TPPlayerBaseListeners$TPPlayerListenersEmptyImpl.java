@@ -23,76 +23,83 @@ import com.tencent.thumbplayer.utils.TPLogUtil;
 class TPPlayerBaseListeners$TPPlayerListenersEmptyImpl
   implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnAudioProcessOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnStateChangeListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnSubtitleFrameOutListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoProcessOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener
 {
+  private String mTag;
+  
+  public TPPlayerBaseListeners$TPPlayerListenersEmptyImpl(String paramString)
+  {
+    this.mTag = paramString;
+  }
+  
   public void onAudioPcmOut(TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onAudioFrameOut");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onAudioFrameOut");
   }
   
   public TPPostProcessFrameBuffer onAudioProcessFrameOut(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onAudioProcessFrameOut");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onAudioProcessFrameOut");
     return null;
   }
   
   public void onCompletion()
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onCompletion");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onCompletion");
   }
   
   public void onError(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onError");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onError");
   }
   
   public void onInfo(int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onInfo");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onInfo");
   }
   
   public void onPrepared()
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onPrepared");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onPrepared");
   }
   
   public void onSeekComplete()
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onSeekComplete");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onSeekComplete");
   }
   
   public void onStateChange(int paramInt1, int paramInt2)
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onStateChange");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onStateChange");
   }
   
   public void onSubtitleData(TPSubtitleData paramTPSubtitleData)
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onSubtitleData");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onSubtitleData");
   }
   
   public void onSubtitleFrameOut(TPSubtitleFrameBuffer paramTPSubtitleFrameBuffer)
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , TPSubtitleFrameBuffer");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , TPSubtitleFrameBuffer");
   }
   
   public void onVideoFrameOut(TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onVideoFrameOut");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onVideoFrameOut");
   }
   
   public TPPostProcessFrameBuffer onVideoProcessFrameOut(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onVideoProcessFrameOut");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onVideoProcessFrameOut");
     return null;
   }
   
   public void onVideoSizeChanged(long paramLong1, long paramLong2)
   {
-    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onVideoSizeChanged");
+    TPLogUtil.i(this.mTag, " empty base listener , notify , onVideoSizeChanged");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlayerBaseListeners.TPPlayerListenersEmptyImpl
  * JD-Core Version:    0.7.0.1
  */

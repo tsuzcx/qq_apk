@@ -8,7 +8,7 @@ public final class PassiveProfileQzmallDeco
   extends JceStruct
 {
   static ReturnToPraise cache_stReturnToPraise = new ReturnToPraise();
-  public ReturnToPraise stReturnToPraise;
+  public ReturnToPraise stReturnToPraise = null;
   
   public PassiveProfileQzmallDeco() {}
   

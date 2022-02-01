@@ -2,47 +2,42 @@ package com.tencent.biz.flatbuffers;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.AuthorizeConfig;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.IOUtil;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.SoLoadUtil;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
 import mqq.app.AppRuntime;
-import nro;
+import mqq.app.MobileQQ;
 
 public class FlatBuffersParser
 {
   public static volatile boolean a = true;
-  public static volatile boolean b;
+  public static volatile boolean b = false;
   public static volatile boolean c;
   
   public static long a()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("flatbuffers_pref", 4).getLong("lastCrash", 0L);
+    return MobileQQ.getContext().getSharedPreferences("flatbuffers_pref", 4).getLong("lastCrash", 0L);
   }
   
   public static String a()
   {
-    return BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "FlatBuffers" + File.separator;
+    return MobileQQ.getContext().getFilesDir().getAbsolutePath() + File.separator + "FlatBuffers" + File.separator;
   }
   
   public static void a()
   {
     if (!b()) {
-      nro.a(false).b();
+      AuthorizeConfig.a(false).b();
     }
   }
   
@@ -85,7 +80,7 @@ public class FlatBuffersParser
       {
         QLog.i("FlatBuffersParser", 1, "FlatBuffers loadLibrary startLoad stl");
         QLog.flushLog();
-        if (!SoLoadUtil.a(BaseApplicationImpl.getContext(), "stlport_shared", 0, false)) {
+        if (!SoLoadUtil.a(MobileQQ.getContext(), "stlport_shared", 0, false)) {
           break label293;
         }
         QLog.i("FlatBuffersParser", 1, "FlatBuffers loadLibrary startLoad FlatBuffers");
@@ -115,7 +110,7 @@ public class FlatBuffersParser
   
   public static void a(boolean paramBoolean)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("flatbuffers_pref", 4).edit();
+    SharedPreferences.Editor localEditor = MobileQQ.getContext().getSharedPreferences("flatbuffers_pref", 4).edit();
     a = paramBoolean;
     QLog.i("FlatBuffersParser", 1, "FlatBuffersParser setEnable : " + a);
     localEditor.putBoolean("isEnabled", a);
@@ -130,7 +125,7 @@ public class FlatBuffersParser
   
   public static void b()
   {
-    a = BaseApplicationImpl.getApplication().getSharedPreferences("flatbuffers_pref", 4).getBoolean("isEnabled", true);
+    a = MobileQQ.getContext().getSharedPreferences("flatbuffers_pref", 4).getBoolean("isEnabled", true);
     QLog.i("FlatBuffersParser", 1, "FlatBuffersParser updateEnable : " + a);
   }
   
@@ -148,60 +143,14 @@ public class FlatBuffersParser
   
   public static void c()
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("flatbuffers_pref", 4).edit();
+    SharedPreferences.Editor localEditor = MobileQQ.getContext().getSharedPreferences("flatbuffers_pref", 4).edit();
     localEditor.putLong("lastCrash", System.currentTimeMillis());
     localEditor.commit();
   }
   
-  public static boolean c()
-  {
-    boolean bool1 = VideoEnvironment.isX86Platform();
-    boolean bool2 = bool1;
-    if (!bool1)
-    {
-      bool2 = bool1;
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        String[] arrayOfString = Build.SUPPORTED_ABIS;
-        int j = arrayOfString.length;
-        int i = 0;
-        for (;;)
-        {
-          bool2 = bool1;
-          if (i >= j) {
-            break;
-          }
-          String str = arrayOfString[i];
-          bool2 = bool1;
-          if (!TextUtils.isEmpty(str))
-          {
-            bool2 = bool1;
-            if (str.toLowerCase().contains("x86")) {
-              bool2 = true;
-            }
-          }
-          i += 1;
-          bool1 = bool2;
-        }
-      }
-    }
-    if (!bool2)
-    {
-      QLog.d("FlatBuffersParser", 1, "os.arch: " + System.getProperty("os.arch"));
-      QLog.d("FlatBuffersParser", 1, "DeviceInfoUtil#getCpuType: " + DeviceInfoUtil.getCpuType());
-      QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI: " + Build.CPU_ABI);
-      QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI2: " + Build.CPU_ABI2);
-      QLog.d("FlatBuffersParser", 1, "isX86: " + bool2);
-      if (Build.VERSION.SDK_INT >= 21) {
-        QLog.d("FlatBuffersParser", 1, "Build.SUPPORTED_ABIS: " + Arrays.toString(Build.SUPPORTED_ABIS));
-      }
-    }
-    return bool2;
-  }
-  
   public static void d()
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("flatbuffers_pref", 4).edit();
+    SharedPreferences.Editor localEditor = MobileQQ.getContext().getSharedPreferences("flatbuffers_pref", 4).edit();
     localEditor.remove("lastCrash");
     localEditor.commit();
   }
@@ -217,17 +166,17 @@ public class FlatBuffersParser
       QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip start, rootPath = " + str1);
       str3 = str1 + "libFlatBuffersParser.zip";
       if (!new File(str3).exists()) {
-        break label349;
+        break label338;
       }
       localObject = str1 + "unzip" + File.separator;
       QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip real start");
       try
       {
-        FileUtils.uncompressZip(str3, (String)localObject, false);
+        FileUtils.a(str3, (String)localObject, false);
         QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip success");
         localObject = new File((String)localObject + "libFlatBuffersParser.so");
         if (((File)localObject).exists()) {
-          break label189;
+          break label181;
         }
         QLog.e("FlatBuffersParser", 1, "FlatBuffersParser.unzip failed, unzipFile not exist");
       }
@@ -241,7 +190,7 @@ public class FlatBuffersParser
       return;
     }
     finally {}
-    label189:
+    label181:
     QLog.i("FlatBuffersParser", 1, "zipFileLen " + new File(str3).length() + " unzipFileLen " + ((File)localObject).length());
     File localFile = new File(str2 + "libFlatBuffersParser.so");
     if (localFile.exists())
@@ -259,7 +208,7 @@ public class FlatBuffersParser
       d();
       f();
       break;
-      label349:
+      label338:
       QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip failed no zip file found");
     }
   }
@@ -269,35 +218,29 @@ public class FlatBuffersParser
     
     if ((b()) && (!c))
     {
-      if (!c()) {
-        break label35;
+      if (DeviceInfoUtil.e())
+      {
+        QLog.d("FlatBuffersParser", 1, "is x86 cpu, not support.");
+        b(true);
       }
-      QLog.d("FlatBuffersParser", 1, "is x86 cpu, not support.");
-      b(true);
     }
-    label35:
-    File localFile;
-    AppRuntime localAppRuntime;
-    boolean bool;
-    do
-    {
+    else {
       return;
-      localFile = new File(a() + "libFlatBuffersParser.so");
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      bool = localAppRuntime instanceof QQAppInterface;
-      if (localFile.exists()) {
-        break;
-      }
-    } while (!bool);
-    QLog.i("FlatBuffersParser", 1, "loadLibrary: libFlatBuffersParser.so not exist, try to download.");
-    VasQuickUpdateManager.getFileFromLocal(localAppRuntime, 1004L, "libFlatBuffersParser", a() + "libFlatBuffersParser.zip", true, null);
-    return;
+    }
+    File localFile = new File(a() + "libFlatBuffersParser.so");
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (!localFile.exists())
+    {
+      QLog.i("FlatBuffersParser", 1, "loadLibrary: libFlatBuffersParser.so not exist, try to download.");
+      VasUpdateUtil.a(localAppRuntime, 1004L, "libFlatBuffersParser", a() + "libFlatBuffersParser.zip", true, null);
+      return;
+    }
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      a(localFile, bool);
+      a(localFile, true);
       return;
     }
-    ThreadManager.post(new FlatBuffersParser.1(localFile, bool), 5, null, false);
+    ThreadManager.post(new FlatBuffersParser.1(localFile), 5, null, false);
   }
   
   public static void g()
@@ -321,7 +264,7 @@ public class FlatBuffersParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.flatbuffers.FlatBuffersParser
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,16 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anvx;
-import asfl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.core.EmotionPanelParamsBuilder;
+import com.tencent.mobileqq.core.QQEmotionPanelManager;
+import com.tencent.mobileqq.core.SystemEmotionPanelManager;
+import com.tencent.mobileqq.emoticon.IEmotionPanelDataCallback;
+import com.tencent.mobileqq.emoticonview.api.IFavoriteEmotionService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
@@ -29,20 +30,18 @@ import java.util.List;
 
 public class FavoriteEmotionAdapter
   extends BaseEmotionAdapter
+  implements IEmotionPanelDataCallback<EmotionPanelData>
 {
   public static final int CONTENT_HEIGHT = 61;
   public static final int ERROR_ICON_HEIGHT_OFFSET = 5;
-  public static final String FUNNY_PIC_RED_PATH = "100610.100612.100613";
   public static final int IMG_HEIGHT = 56;
   public static final String TAG = "FavoriteEmotionAdapter";
-  BaseChatPie mBaseChatPie;
-  private Drawable mFavPanelFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130838061);
-  public EmoticonPanelLinearLayout.OnClickListener mInterceptListener = new FavoriteEmotionAdapter.1(this);
+  private Drawable mFavPanelFailedDrawable = null;
+  public IEmoticonPanelLinearLayoutHelper.OnClickListener mInterceptListener = new FavoriteEmotionAdapter.1(this);
   
-  public FavoriteEmotionAdapter(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonCallback paramEmoticonCallback, BaseChatPie paramBaseChatPie)
+  public FavoriteEmotionAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonCallback paramEmoticonCallback)
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonCallback);
-    this.mBaseChatPie = paramBaseChatPie;
+    super(paramIEmoticonMainPanelApp, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonCallback);
   }
   
   private int getEmoId(EmoticonInfo paramEmoticonInfo)
@@ -64,7 +63,7 @@ public class FavoriteEmotionAdapter
     RelativeLayout localRelativeLayout = new RelativeLayout(this.mContext);
     localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, (int)(61.0F * this.density)));
     Object localObject = new URLImageView(this.mContext);
-    ((URLImageView)localObject).setId(2131366078);
+    ((URLImageView)localObject).setId(2131378813);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
     localLayoutParams.addRule(13, -1);
     localLayoutParams.addRule(12, -1);
@@ -73,7 +72,7 @@ public class FavoriteEmotionAdapter
     ((URLImageView)localObject).setAdjustViewBounds(false);
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new URLImageView(this.mContext);
-    ((URLImageView)localObject).setId(2131366055);
+    ((URLImageView)localObject).setId(2131366226);
     localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
     localLayoutParams.addRule(13, -1);
     localLayoutParams.addRule(12, -1);
@@ -82,7 +81,7 @@ public class FavoriteEmotionAdapter
     ((URLImageView)localObject).setAdjustViewBounds(false);
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new URLImageView(this.mContext);
-    ((URLImageView)localObject).setId(2131366079);
+    ((URLImageView)localObject).setId(2131374857);
     localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
     localLayoutParams.addRule(13, -1);
     localLayoutParams.addRule(12, -1);
@@ -92,31 +91,31 @@ public class FavoriteEmotionAdapter
     ((URLImageView)localObject).setVisibility(8);
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new RelativeLayout(this.mContext);
-    ((RelativeLayout)localObject).setId(2131366449);
+    ((RelativeLayout)localObject).setId(2131366618);
     ((RelativeLayout)localObject).setVisibility(8);
-    ((RelativeLayout)localObject).setBackgroundResource(2130850431);
-    localLayoutParams = new RelativeLayout.LayoutParams(ScreenUtil.dip2px(10.0F), ScreenUtil.dip2px(10.0F));
-    localLayoutParams.addRule(3, 2131366078);
-    localLayoutParams.addRule(7, 2131366078);
-    localLayoutParams.addRule(6, 2131366078);
+    ((RelativeLayout)localObject).setBackgroundResource(2130850834);
+    localLayoutParams = new RelativeLayout.LayoutParams(ViewUtils.a(10.0F), ViewUtils.a(10.0F));
+    localLayoutParams.addRule(3, 2131378813);
+    localLayoutParams.addRule(7, 2131378813);
+    localLayoutParams.addRule(6, 2131378813);
     localLayoutParams.topMargin = (-(int)(4.0F * this.density));
     localLayoutParams.rightMargin = (-(int)(4.0F * this.density));
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new ImageView(this.mContext);
-    ((ImageView)localObject).setId(2131366077);
+    ((ImageView)localObject).setId(2131366249);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    ((ImageView)localObject).setBackgroundResource(2130838035);
-    localLayoutParams.addRule(7, 2131366078);
-    localLayoutParams.addRule(8, 2131366078);
+    ((ImageView)localObject).setBackgroundResource(2130846564);
+    localLayoutParams.addRule(7, 2131378813);
+    localLayoutParams.addRule(8, 2131378813);
     localLayoutParams.setMargins(0, 0, (int)(-5.0F * this.density), (int)(-5.0F * this.density));
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new ImageView(this.mContext);
-    ((ImageView)localObject).setId(2131366084);
+    ((ImageView)localObject).setId(2131374859);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(7, 2131366078);
-    localLayoutParams.addRule(8, 2131366078);
+    localLayoutParams.addRule(7, 2131378813);
+    localLayoutParams.addRule(8, 2131378813);
     localRelativeLayout.addView((View)localObject, localLayoutParams);
-    if (AppSetting.c) {
+    if (AppSetting.d) {
       localRelativeLayout.setFocusable(true);
     }
     return localRelativeLayout;
@@ -169,7 +168,7 @@ public class FavoriteEmotionAdapter
         localURLDrawable.startDownload();
       }
       if (!(paramURLImageView2.getDrawable() instanceof Animatable)) {
-        paramURLImageView2.setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130839466));
+        paramURLImageView2.setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130846582));
       }
       paramURLImageView1 = (Animatable)paramURLImageView2.getDrawable();
       if (!paramURLImageView1.isRunning()) {
@@ -205,41 +204,41 @@ public class FavoriteEmotionAdapter
       localEmoticonInfo = (EmoticonInfo)paramEmotionPanelData;
       paramView.setTag(localEmoticonInfo);
       paramView.setVisibility(0);
-      localObject1 = (RelativeLayout)paramView.findViewById(2131366449);
+      localObject1 = (RelativeLayout)paramView.findViewById(2131366618);
       if (localObject1 != null) {
         ((RelativeLayout)localObject1).setVisibility(8);
       }
-      localObject1 = (URLImageView)paramView.findViewById(2131366078);
-    } while (((URLImageView)localObject1).getTag(2131381183) == localEmoticonInfo);
-    ((URLImageView)localObject1).setTag(2131381183, paramEmotionPanelData);
-    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131366055);
-    paramEmotionPanelData = (URLImageView)paramView.findViewById(2131366079);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131366077);
+      localObject1 = (URLImageView)paramView.findViewById(2131378813);
+    } while (((URLImageView)localObject1).getTag(2131381651) == localEmoticonInfo);
+    ((URLImageView)localObject1).setTag(2131381651, paramEmotionPanelData);
+    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131366226);
+    paramEmotionPanelData = (URLImageView)paramView.findViewById(2131374857);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131366249);
     ((URLImageView)localObject1).setVisibility(0);
     ((URLImageView)localObject1).setURLDrawableDownListener(null);
     Object localObject2 = localEmoticonInfo.action;
     if ("favEdit".equals(localObject2))
     {
       ((URLImageView)localObject1).setImageDrawable(null);
-      ((URLImageView)localObject1).setImageResource(2130839699);
+      ((URLImageView)localObject1).setImageResource(2130846571);
       paramEmotionPanelData.setVisibility(8);
       localImageView.setVisibility(8);
       localURLImageView.setVisibility(8);
-      if (AppSetting.c) {
-        ((URLImageView)localObject1).setContentDescription(anvx.a(2131703859));
+      if (AppSetting.d) {
+        ((URLImageView)localObject1).setContentDescription(this.mContext.getString(2131699617));
       }
-      paramView = (ImageView)paramView.findViewById(2131366084);
+      paramView = (ImageView)paramView.findViewById(2131374859);
       if (!(localEmoticonInfo instanceof PicEmoticonInfo)) {
-        break label619;
+        break label632;
       }
       paramEmotionPanelData = (PicEmoticonInfo)localEmoticonInfo;
       if (!paramEmotionPanelData.isSound()) {
-        break label612;
+        break label625;
       }
       if (!paramEmotionPanelData.isNewSoundType()) {
-        break label602;
+        break label615;
       }
-      paramView.setImageResource(2130838335);
+      paramView.setImageResource(2130846584);
     }
     for (;;)
     {
@@ -248,20 +247,20 @@ public class FavoriteEmotionAdapter
       if ("funny_pic".equals(localObject2))
       {
         ((URLImageView)localObject1).setImageDrawable(null);
-        ((URLImageView)localObject1).setImageResource(2130847124);
+        ((URLImageView)localObject1).setImageResource(2130846572);
         paramEmotionPanelData.setVisibility(8);
         localImageView.setVisibility(8);
         localURLImageView.setVisibility(8);
-        if (!AppSetting.c) {
+        if (!AppSetting.d) {
           break;
         }
-        ((URLImageView)localObject1).setContentDescription(anvx.a(2131703851));
+        ((URLImageView)localObject1).setContentDescription(this.mContext.getString(2131699643));
         break;
       }
       localObject2 = localEmoticonInfo.getZoomDrawable(this.mContext, this.density, (int)(56.0F * this.density), (int)(56.0F * this.density));
       ((URLImageView)localObject1).setImageDrawable((Drawable)localObject2);
-      if (AppSetting.c) {
-        ((URLImageView)localObject1).setContentDescription(asfl.a(this.app).a(Integer.valueOf(localEmoticonInfo.emoId)));
+      if (AppSetting.d) {
+        ((URLImageView)localObject1).setContentDescription(((IFavoriteEmotionService)QRoute.api(IFavoriteEmotionService.class)).getAccessibilityDescription(this.app, localEmoticonInfo.emoId));
       }
       String str = getRoamingType(localEmoticonInfo);
       if (QLog.isColorLevel()) {
@@ -271,7 +270,7 @@ public class FavoriteEmotionAdapter
       {
         localURLImageView.setImageDrawable(new ColorDrawable(-419430401));
         localURLImageView.setVisibility(0);
-        localObject1 = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130839466);
+        localObject1 = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130846582);
         paramEmotionPanelData.setImageDrawable((Drawable)localObject1);
         ((Animatable)localObject1).start();
         paramEmotionPanelData.setVisibility(0);
@@ -295,14 +294,23 @@ public class FavoriteEmotionAdapter
       ((URLImageView)localObject1).setURLDrawableDownListener(new FavoriteEmotionAdapter.2(this, localEmoticonInfo, (URLImageView)localObject1, paramEmotionPanelData));
       updateEmoticonDrawable((URLImageView)localObject1, paramEmotionPanelData);
       break;
-      label602:
-      paramView.setImageResource(2130850462);
+      label615:
+      paramView.setImageResource(2130846585);
     }
-    label612:
+    label625:
     paramView.setVisibility(8);
     return;
-    label619:
+    label632:
     paramView.setVisibility(8);
+  }
+  
+  public void callbackInMainThread(List<EmotionPanelData> paramList)
+  {
+    if (paramList != null)
+    {
+      setData(paramList);
+      notifyDataSetChanged();
+    }
   }
   
   public View getEmotionView(BaseEmotionAdapter.ViewHolder paramViewHolder, int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -321,21 +329,21 @@ public class FavoriteEmotionAdapter
     {
       paramViewGroup = (FavoriteEmotionAdapter.FavoriteEmotionViewHolder)paramViewHolder;
       if (paramView != null) {
-        break label507;
+        break label512;
       }
       paramView = EmotionPanelViewPool.getInstance().getView(this.panelType);
       if (paramView != null) {
-        break label345;
+        break label350;
       }
       if (QLog.isColorLevel()) {
         QLog.d("FavoriteEmotionAdapter", 2, "getEmotionView position = " + paramInt + "; view from inflater");
       }
-      paramViewHolder = new EmoticonPanelLinearLayout(this.mContext, this.mBaseChatPie, -1);
-      paramViewHolder.setPanelType(EmoticonPanelLinearLayout.PANEL_TYPE_FAV_EMOTION);
+      paramViewHolder = new EmoticonPanelLinearLayout(this.mContext, SystemEmotionPanelManager.a().a(this.mContext, true), -1);
+      paramViewHolder.setPanelType(3);
       paramViewHolder.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
       paramViewHolder.setOrientation(0);
       if (paramInt != 0) {
-        break label243;
+        break label248;
       }
       paramViewHolder.setPadding(0, (int)(16.0F * this.density), 0, 0);
     }
@@ -353,10 +361,10 @@ public class FavoriteEmotionAdapter
       }
       paramViewGroup = paramView.getClass().toString();
       break;
-      label243:
+      label248:
       paramViewHolder.setPadding(0, (int)(14.0F * this.density), 0, 0);
     }
-    paramViewHolder.mClickListener = this.mInterceptListener;
+    paramViewHolder.setInterceptListener(this.mInterceptListener);
     for (;;)
     {
       ((EmoticonPanelLinearLayout)paramViewHolder).setCallBack(this.callback);
@@ -369,7 +377,7 @@ public class FavoriteEmotionAdapter
         paramViewGroup.contentViews[i] = ((RelativeLayout)paramView.getChildAt(i));
         i += 1;
       }
-      label345:
+      label350:
       paramViewHolder = paramView;
       if (QLog.isColorLevel())
       {
@@ -398,7 +406,7 @@ public class FavoriteEmotionAdapter
       }
       if (QLog.isColorLevel()) {}
       return paramViewHolder;
-      label507:
+      label512:
       paramViewHolder = paramView;
       i = j;
     }
@@ -414,26 +422,18 @@ public class FavoriteEmotionAdapter
     if (QLog.isColorLevel()) {
       QLog.d("FavoriteEmotionAdapter", 2, "refreshPanelData");
     }
-    EmotionPanelDataBuilder localEmotionPanelDataBuilder = EmotionPanelDataBuilder.getInstance();
-    QQAppInterface localQQAppInterface = this.app;
-    int j = this.panelType;
-    if (this.mBaseChatPie != null) {}
-    for (int i = this.mBaseChatPie.getSessionInfo().curType;; i = -1)
-    {
-      localEmotionPanelDataBuilder.AsyncGetEmotionPanelData(localQQAppInterface, j, null, -1, i, false, new FavoriteEmotionAdapter.3(this));
-      return;
-    }
+    ((IFavoriteEmotionService)QRoute.api(IFavoriteEmotionService.class)).asyncGetEmotionPanelData(this.app, this.panelType, null, -1, QQEmotionPanelManager.a().a().a, false, this);
   }
   
   public void setData(List<EmotionPanelData> paramList)
   {
     super.setData(paramList);
-    asfl.a(this.app).h();
+    ((IFavoriteEmotionService)QRoute.api(IFavoriteEmotionService.class)).cacheAccessibilityEmotionData(this.app);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

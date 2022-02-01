@@ -1,6 +1,6 @@
 package com.tencent.litetransfersdk;
 
-import audr;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 class ProtocolHelper$4
   implements Runnable
@@ -9,12 +9,12 @@ class ProtocolHelper$4
   
   public void run()
   {
-    audr.a(2131693646);
+    FMToastUtil.a(2131693805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProtocolHelper.4
  * JD-Core Version:    0.7.0.1
  */

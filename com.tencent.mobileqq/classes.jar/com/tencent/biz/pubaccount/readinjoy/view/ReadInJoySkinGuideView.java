@@ -14,16 +14,17 @@ public class ReadInJoySkinGuideView
   extends RelativeLayout
 {
   private int a;
-  public MediaPlayer a;
-  public SpriteNativeView a;
+  protected MediaPlayer a;
+  protected SpriteNativeView a;
   protected boolean a;
   
   public ReadInJoySkinGuideView(int paramInt1, Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt2, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = 2;
-    LayoutInflater.from(getContext()).inflate(2131562750, this);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131377818));
+    LayoutInflater.from(getContext()).inflate(2131562893, this);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131378230));
     setClickable(true);
     if (QQManagerFactory.READ_INJOY_SKIN_MANAGER == paramInt2) {
       this.jdField_a_of_type_Int = 1;
@@ -70,7 +71,7 @@ public class ReadInJoySkinGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView
  * JD-Core Version:    0.7.0.1
  */

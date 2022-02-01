@@ -9,13 +9,13 @@ public final class album_area_item
 {
   static stPoi cache_poi_info = new stPoi();
   public String description = "";
-  public long end_shoot_time;
-  public long is_userconfirmed;
-  public long photo_num;
-  public stPoi poi_info;
-  public long poi_photo_num;
+  public long end_shoot_time = 0L;
+  public long is_userconfirmed = 0L;
+  public long photo_num = 0L;
+  public stPoi poi_info = null;
+  public long poi_photo_num = 0L;
   public String scenery_name = "";
-  public long start_shoot_time;
+  public long start_shoot_time = 0L;
   
   public album_area_item() {}
   

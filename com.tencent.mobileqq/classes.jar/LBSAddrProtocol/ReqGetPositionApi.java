@@ -8,8 +8,8 @@ public final class ReqGetPositionApi
   extends JceStruct
 {
   static byte[] cache_vLBSKeyData;
-  public int iClientIp;
-  public byte[] vLBSKeyData;
+  public int iClientIp = 0;
+  public byte[] vLBSKeyData = null;
   
   public ReqGetPositionApi() {}
   

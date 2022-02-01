@@ -10,8 +10,8 @@ public final class s_LabelInfo
 {
   static ArrayList<String> cache_client_groupid;
   static ArrayList<String> cache_labels = new ArrayList();
-  public ArrayList<String> client_groupid;
-  public ArrayList<String> labels;
+  public ArrayList<String> client_groupid = null;
+  public ArrayList<String> labels = null;
   
   static
   {

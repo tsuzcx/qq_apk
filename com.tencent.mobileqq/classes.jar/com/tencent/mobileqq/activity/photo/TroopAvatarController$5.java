@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aklk;
-import bgio;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
 
-public class TroopAvatarController$5
+class TroopAvatarController$5
   implements Runnable
 {
-  public TroopAvatarController$5(aklk paramaklk, String paramString) {}
+  TroopAvatarController$5(TroopAvatarController paramTroopAvatarController, String paramString) {}
   
   public void run()
   {
     this.this$0.mManger.a(this.this$0.mTroopInfo.troopuin);
-    aklk.b(this.this$0, null);
+    TroopAvatarController.b(this.this$0, null);
     this.this$0.notifyDataSetChanged();
     TroopPhotoController.showToast(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.TroopAvatarController.5
  * JD-Core Version:    0.7.0.1
  */

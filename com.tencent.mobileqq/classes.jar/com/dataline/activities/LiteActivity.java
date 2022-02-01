@@ -1,22 +1,5 @@
 package com.dataline.activities;
 
-import Override;
-import abty;
-import admg;
-import afrb;
-import aftr;
-import agij;
-import ahqc;
-import ahqd;
-import ahsl;
-import ahul;
-import ahup;
-import ai;
-import aj;
-import ak;
-import al;
-import am;
-import an;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -42,7 +25,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
-import android.os.Message;
 import android.os.StatFs;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -68,132 +50,69 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ansr;
-import ansy;
-import anvk;
-import anvx;
-import ao;
-import aocn;
-import aont;
-import aoxv;
-import ap;
-import aq;
-import ar;
-import arnf;
-import arng;
-import arnv;
-import arnw;
-import aroi;
-import aroj;
-import arqp;
-import as;
-import asbf;
-import at;
-import atfq;
-import athn;
-import atlf;
-import atlh;
-import atpj;
-import atpt;
-import au;
-import audf;
-import audn;
-import audr;
-import auea;
-import aupp;
-import aupt;
-import ausc;
-import av;
-import avli;
-import aw;
-import awtg;
-import ax;
-import ay;
-import az;
-import bapk;
-import bc;
-import bcrg;
-import bd;
-import bdla;
-import bdlq;
-import bdof;
-import be;
-import becr;
-import bf;
-import bg;
-import bh;
-import bhcc;
-import bhch;
-import bhcw;
-import bhdj;
-import bheg;
-import bhfp;
-import bhjq;
-import bi;
-import bixr;
-import bj;
-import bk;
-import bkyc;
-import bkzi;
-import bkzz;
-import bl;
-import blgx;
-import blvp;
-import blzp;
-import blzq;
-import bm;
-import bmaf;
-import bn;
-import bq;
-import br;
-import bs;
-import bt;
-import bu;
-import bv;
-import bw;
-import bx;
-import by;
-import bz;
-import ca;
-import cb;
-import cc;
-import cd;
-import ce;
-import cf;
-import cg;
-import ch;
-import ci;
-import cj;
+import com.dataline.core.DirectForwarder;
+import com.dataline.util.DatalineSessionAdapter;
+import com.dataline.util.DatalineSessionAdapterUseNewFileBubble;
+import com.dataline.util.ItemHolder;
+import com.dataline.util.ItemHolder.FileItemHolder;
+import com.dataline.util.ItemHolder.ImageItemHolder;
+import com.dataline.util.ItemHolder.MutiImageItemHolder;
+import com.dataline.util.ItemHolder.NewFileItemHolder;
+import com.dataline.util.ItemHolder.TextItemHolder;
 import com.dataline.util.file.SendInfo;
+import com.tencent.av.camera.QavCameraUsage;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.devicelib.DeviceLib;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.activity.ChatActivityConstants;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.ChatBackground;
 import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.HiddenChatHelper;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout.PanelIconCallback;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout.PanelIconLongCallback;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
 import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.BottomBtnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.PhotoPanelAdapter;
+import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.DataLineObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.RegisterProxySvcPackHandler;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.DatalineMessageManager;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
 import com.tencent.mobileqq.app.utils.PermissionUtils;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocConvertConfigBean;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocConvertConfigProcessor;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocImportFileInfoBean;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocImportFileInfoProcessor;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocSelectAddDocsBean;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocSelectAddDocsProcessor;
+import com.tencent.mobileqq.copyprompt.LiteCopyPromptHelper;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
@@ -204,46 +123,76 @@ import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.drawable.ChatBackgroundDrawable;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.api.IFMConfig;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.forward.ForwardOptionBuilder;
 import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.managers.DraftTextManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticAssist;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.AlbumConstants;
 import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.utils.AppShareIDUtil;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.Patterns;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.mobileqq.widget.QQBlurView;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.ScrollerRunnable;
+import com.tencent.mobileqq.wifi.FreeWifiHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.theme.SkinEngine;
 import com.tencent.theme.SkinnableBitmapDrawable;
+import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.BubblePopupWindow;
 import com.tencent.widget.PatchedButton;
 import com.tencent.widget.XEditTextEx;
 import com.tencent.widget.XListView;
 import com.tencent.widget.XPanelContainer;
-import dc;
-import dy;
-import ee;
-import ek;
-import el;
-import en;
-import eo;
-import ep;
-import eq;
+import com.tencent.widget.XPanelContainer.PanelCallback;
+import cooperation.peak.PeakUtils;
+import cooperation.qqdataline.MpFileConstant;
+import cooperation.qqdataline.QQProxyForDataline;
+import cooperation.qqfav.QfavHelper;
 import java.io.File;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -257,13 +206,12 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import lka;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public class LiteActivity
   extends IphoneTitleBarActivity
-  implements ahqc, ahqd, ahul, Handler.Callback, View.OnClickListener, blgx, Observer
+  implements Handler.Callback, View.OnClickListener, PanelIconLinearLayout.PanelIconCallback, PanelIconLinearLayout.PanelIconLongCallback, PhotoListPanel.BottomBtnClickListener, XPanelContainer.PanelCallback, Observer
 {
   public static String a;
   protected static String c;
@@ -282,29 +230,29 @@ public class LiteActivity
   public LinearLayout a;
   protected RelativeLayout a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  ansy jdField_a_of_type_Ansy = new ay(this);
-  private arqp jdField_a_of_type_Arqp;
-  atfq jdField_a_of_type_Atfq = new bh(this);
-  aupt jdField_a_of_type_Aupt = null;
-  ch jdField_a_of_type_Ch;
+  LiteActivity.LiteJumpAction jdField_a_of_type_ComDatalineActivitiesLiteActivity$LiteJumpAction;
+  DatalineSessionAdapter jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter = null;
   private InputLinearLayout jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout;
-  public SessionInfo a;
+  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
   PanelIconLinearLayout jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
   PhotoListPanel jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel;
   protected TopGestureLayout a;
-  public DataLineMsgSetList a;
+  DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new LiteActivity.27(this);
+  private LiteCopyPromptHelper jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper;
+  DataLineMsgSetList jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList = null;
+  FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new LiteActivity.35(this);
+  ForwardBaseOption jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption = null;
   QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
   private QQBlurView jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
   ScrollerRunnable jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable;
-  public BubblePopupWindow a;
+  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
   public PatchedButton a;
-  public XEditTextEx a;
-  public XListView a;
+  XEditTextEx jdField_a_of_type_ComTencentWidgetXEditTextEx;
+  XListView jdField_a_of_type_ComTencentWidgetXListView;
   public XPanelContainer a;
-  public dy a;
   Runnable jdField_a_of_type_JavaLangRunnable = new LiteActivity.37(this);
   List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public MqqHandler a;
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int;
   public View.OnClickListener b;
@@ -312,17 +260,17 @@ public class LiteActivity
   RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   private QQCustomDialog jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  public String b;
+  protected String b;
   boolean jdField_b_of_type_Boolean = false;
   TextView c;
   protected boolean c;
-  protected boolean d;
+  protected boolean d = false;
   boolean e = false;
   boolean f = true;
   private boolean g;
   private boolean h;
-  private boolean i;
-  private boolean j;
+  private boolean i = false;
+  private boolean j = false;
   
   static
   {
@@ -331,31 +279,50 @@ public class LiteActivity
   
   public LiteActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList = null;
-    this.jdField_a_of_type_Dy = null;
-    this.jdField_a_of_type_MqqOsMqqHandler = new bkyc(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new at(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new au(this);
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new bd(this);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new be(this);
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new LiteActivity.22(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new LiteActivity.23(this);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new LiteActivity.31(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new LiteActivity.32(this);
   }
   
   private void A()
+  {
+    int k;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList != null) {
+      k = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.size();
+    }
+    while (k == 0) {
+      if (!this.e)
+      {
+        d(true);
+        return;
+        k = 0;
+      }
+      else
+      {
+        d(false);
+        return;
+      }
+    }
+    d(false);
+  }
+  
+  private void B()
   {
     if (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
       this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
   }
   
-  private void B()
+  private void C()
   {
-    if (this.jdField_a_of_type_Ch == null) {
+    if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$LiteJumpAction == null) {
       return;
     }
-    this.jdField_a_of_type_Ch.a();
+    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$LiteJumpAction.a();
   }
   
   private int a()
@@ -382,7 +349,7 @@ public class LiteActivity
         return 4;
       }
     } while (paramInt != -2005);
-    paramInt = auea.a(paramDataLineMsgRecord.filename);
+    paramInt = FileManagerUtil.a(paramDataLineMsgRecord.filename);
     if (paramInt == 0) {
       return 3;
     }
@@ -399,14 +366,14 @@ public class LiteActivity
       try
       {
         paramString = Shader.TileMode.REPEAT;
-        Drawable localDrawable = paramContext.getResources().getDrawable(2130839154);
+        Drawable localDrawable = paramContext.getResources().getDrawable(2130839222);
         if ((localDrawable instanceof BitmapDrawable))
         {
           localBitmap = ((BitmapDrawable)localDrawable).getBitmap();
           paramString = ((BitmapDrawable)localDrawable).getTileModeX();
           k = ((BitmapDrawable)localDrawable).getGravity();
           if ((localBitmap == null) || (paramString == Shader.TileMode.REPEAT) || (k != 48)) {
-            return paramContext.getResources().getDrawable(2130839154);
+            return paramContext.getResources().getDrawable(2130839222);
           }
         }
         else
@@ -419,7 +386,7 @@ public class LiteActivity
           k = ((SkinnableBitmapDrawable)localDrawable).getGravity();
           continue;
         }
-        paramString = new asbf(paramContext.getResources(), localBitmap);
+        paramString = new ChatBackgroundDrawable(paramContext.getResources(), localBitmap);
         paramString.setGravity(k);
         return paramString;
       }
@@ -428,14 +395,14 @@ public class LiteActivity
         if (QLog.isColorLevel()) {
           QLog.e("LiteActivity setAIOBackgroundBmp 1", 2, paramString.getMessage());
         }
-        return paramContext.getResources().getDrawable(2130850048);
+        return paramContext.getResources().getDrawable(2130850446);
       }
       catch (Exception paramString)
       {
         if (QLog.isColorLevel()) {
           QLog.e("LiteActivity setAIOBackgroundBmp 2", 2, paramString.getMessage());
         }
-        return paramContext.getResources().getDrawable(2130850048);
+        return paramContext.getResources().getDrawable(2130850446);
       }
       label193:
       int k = 119;
@@ -446,11 +413,11 @@ public class LiteActivity
   private View a()
   {
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel = ((PhotoListPanel)View.inflate(this, 2131560993, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel = ((PhotoListPanel)View.inflate(this, 2131561079, null));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.setCustomOnClickListener(this);
     Intent localIntent = new Intent();
     String str1 = this.app.getAccount();
-    Object localObject = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(str1);
+    Object localObject = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(str1);
     if (localObject != null) {}
     for (localObject = ((Friends)localObject).name;; localObject = null)
     {
@@ -466,7 +433,7 @@ public class LiteActivity
       localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_SIZE", 100000002432L);
       localIntent.putExtra("custom_photolist_panel_editbtn_reportActionName", "0X8005F28");
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a(this.app, this, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.setSelectLimitListener(new bm(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.setSelectLimitListener(new LiteActivity.42(this));
       if (QLog.isColorLevel()) {
         QLog.d("OpenPanel", 2, "OpenPhotolistPanel:" + (System.currentTimeMillis() - l));
       }
@@ -479,7 +446,7 @@ public class LiteActivity
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 409	com/dataline/activities/LiteActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   1: invokevirtual 426	com/dataline/activities/LiteActivity:getContentResolver	()Landroid/content/ContentResolver;
     //   4: astore 8
     //   6: aload 8
     //   8: aload_1
@@ -487,204 +454,204 @@ public class LiteActivity
     //   10: aconst_null
     //   11: aconst_null
     //   12: aconst_null
-    //   13: invokevirtual 415	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   13: invokevirtual 432	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   16: astore 6
     //   18: aload 6
     //   20: ifnonnull +35 -> 55
-    //   23: invokestatic 265	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   23: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   26: ifeq +13 -> 39
     //   29: getstatic 75	com/dataline/activities/LiteActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   32: iconst_2
-    //   33: ldc_w 417
-    //   36: invokestatic 420	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   33: ldc_w 434
+    //   36: invokestatic 437	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   39: aload 6
     //   41: ifnull +10 -> 51
     //   44: aload 6
-    //   46: invokeinterface 425 1 0
+    //   46: invokeinterface 442 1 0
     //   51: aconst_null
     //   52: astore_1
     //   53: aload_1
     //   54: areturn
     //   55: aload 6
-    //   57: ldc_w 427
-    //   60: invokeinterface 430 2 0
+    //   57: ldc_w 444
+    //   60: invokeinterface 447 2 0
     //   65: istore_2
     //   66: aload 6
-    //   68: ldc_w 432
-    //   71: invokeinterface 435 2 0
+    //   68: ldc_w 449
+    //   71: invokeinterface 452 2 0
     //   76: istore_3
     //   77: aload 6
-    //   79: invokeinterface 438 1 0
+    //   79: invokeinterface 455 1 0
     //   84: pop
     //   85: aload 6
     //   87: iload_3
-    //   88: invokeinterface 442 2 0
+    //   88: invokeinterface 459 2 0
     //   93: lstore 4
     //   95: lload 4
     //   97: l2f
-    //   98: invokestatic 448	com/tencent/mobileqq/utils/FileUtils:getAvailableExternalMemorySize	()F
+    //   98: invokestatic 464	com/tencent/mobileqq/utils/FileUtils:c	()F
     //   101: fcmpl
     //   102: ifle +27 -> 129
     //   105: aload_0
-    //   106: ldc_w 449
-    //   109: invokevirtual 453	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
-    //   112: putstatic 455	com/dataline/activities/LiteActivity:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   106: ldc_w 465
+    //   109: invokevirtual 469	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
+    //   112: putstatic 471	com/dataline/activities/LiteActivity:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   115: aload 6
     //   117: ifnull +10 -> 127
     //   120: aload 6
-    //   122: invokeinterface 425 1 0
+    //   122: invokeinterface 442 1 0
     //   127: aconst_null
     //   128: areturn
     //   129: aload 6
     //   131: iload_2
-    //   132: invokeinterface 456 2 0
+    //   132: invokeinterface 472 2 0
     //   137: astore 7
-    //   139: new 386	java/lang/StringBuilder
+    //   139: new 403	java/lang/StringBuilder
     //   142: dup
-    //   143: invokespecial 387	java/lang/StringBuilder:<init>	()V
+    //   143: invokespecial 404	java/lang/StringBuilder:<init>	()V
     //   146: aload_0
-    //   147: invokevirtual 460	com/dataline/activities/LiteActivity:getExternalCacheDir	()Ljava/io/File;
-    //   150: invokevirtual 463	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   153: ldc_w 465
-    //   156: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: ldc_w 467
-    //   162: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: ldc_w 465
-    //   168: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: invokevirtual 399	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   147: invokevirtual 476	com/dataline/activities/LiteActivity:getExternalCacheDir	()Ljava/io/File;
+    //   150: invokevirtual 479	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   153: ldc_w 481
+    //   156: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: ldc_w 483
+    //   162: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: ldc_w 481
+    //   168: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: invokevirtual 416	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   174: astore 9
     //   176: aload 9
-    //   178: invokestatic 470	com/dataline/activities/LiteActivity:e	(Ljava/lang/String;)V
-    //   181: new 386	java/lang/StringBuilder
+    //   178: invokestatic 486	com/dataline/activities/LiteActivity:e	(Ljava/lang/String;)V
+    //   181: new 403	java/lang/StringBuilder
     //   184: dup
-    //   185: invokespecial 387	java/lang/StringBuilder:<init>	()V
+    //   185: invokespecial 404	java/lang/StringBuilder:<init>	()V
     //   188: aload 9
-    //   190: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   190: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   193: aload 9
     //   195: iconst_1
-    //   196: anewarray 472	java/lang/String
+    //   196: anewarray 488	java/lang/String
     //   199: dup
     //   200: iconst_0
     //   201: aload 7
     //   203: aastore
     //   204: iconst_0
     //   205: aaload
-    //   206: invokestatic 476	com/tencent/mobileqq/utils/FileUtils:getUnitFileName	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   209: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: invokevirtual 399	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   206: invokestatic 491	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   209: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: invokevirtual 416	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   215: astore 7
-    //   217: new 478	com/tencent/mm/vfs/VFSFile
+    //   217: new 493	com/tencent/mm/vfs/VFSFile
     //   220: dup
     //   221: aload 9
-    //   223: invokespecial 480	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   223: invokespecial 495	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
     //   226: astore 9
     //   228: aload 9
-    //   230: invokevirtual 483	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   230: invokevirtual 498	com/tencent/mm/vfs/VFSFile:exists	()Z
     //   233: ifne +35 -> 268
     //   236: aload 9
-    //   238: invokevirtual 486	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
+    //   238: invokevirtual 501	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
     //   241: ifne +27 -> 268
     //   244: aload_0
-    //   245: ldc_w 487
-    //   248: invokestatic 491	anvx:a	(I)Ljava/lang/String;
-    //   251: invokespecial 493	com/dataline/activities/LiteActivity:d	(Ljava/lang/String;)V
+    //   245: ldc_w 502
+    //   248: invokestatic 506	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   251: invokespecial 508	com/dataline/activities/LiteActivity:d	(Ljava/lang/String;)V
     //   254: aload 6
     //   256: ifnull +10 -> 266
     //   259: aload 6
-    //   261: invokeinterface 425 1 0
+    //   261: invokeinterface 442 1 0
     //   266: aconst_null
     //   267: areturn
     //   268: aload 8
     //   270: aload_1
-    //   271: invokevirtual 497	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   271: invokevirtual 512	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
     //   274: astore_1
     //   275: aload_1
     //   276: ifnonnull +33 -> 309
-    //   279: invokestatic 265	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   279: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   282: ifeq +13 -> 295
     //   285: getstatic 75	com/dataline/activities/LiteActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   288: iconst_2
-    //   289: ldc_w 499
-    //   292: invokestatic 420	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   289: ldc_w 514
+    //   292: invokestatic 437	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   295: aload 6
     //   297: ifnull +10 -> 307
     //   300: aload 6
-    //   302: invokeinterface 425 1 0
+    //   302: invokeinterface 442 1 0
     //   307: aconst_null
     //   308: areturn
     //   309: lload 4
-    //   311: ldc2_w 500
+    //   311: ldc2_w 515
     //   314: lcmp
     //   315: ifle +138 -> 453
     //   318: aload_0
     //   319: iconst_1
-    //   320: putfield 503	com/dataline/activities/LiteActivity:h	Z
-    //   323: new 174	com/tencent/mobileqq/utils/QQCustomDialog
+    //   320: putfield 518	com/dataline/activities/LiteActivity:h	Z
+    //   323: new 192	com/tencent/mobileqq/utils/QQCustomDialog
     //   326: dup
     //   327: aload_0
-    //   328: ldc_w 504
-    //   331: invokespecial 507	com/tencent/mobileqq/utils/QQCustomDialog:<init>	(Landroid/content/Context;I)V
+    //   328: ldc_w 519
+    //   331: invokespecial 522	com/tencent/mobileqq/utils/QQCustomDialog:<init>	(Landroid/content/Context;I)V
     //   334: astore 8
     //   336: aload 8
-    //   338: ldc_w 508
-    //   341: invokevirtual 511	com/tencent/mobileqq/utils/QQCustomDialog:setContentView	(I)V
+    //   338: ldc_w 523
+    //   341: invokevirtual 526	com/tencent/mobileqq/utils/QQCustomDialog:setContentView	(I)V
     //   344: aload 8
     //   346: aload_0
-    //   347: ldc_w 512
-    //   350: invokevirtual 453	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
-    //   353: invokevirtual 516	com/tencent/mobileqq/utils/QQCustomDialog:setTitle	(Ljava/lang/String;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   347: ldc_w 527
+    //   350: invokevirtual 469	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
+    //   353: invokevirtual 531	com/tencent/mobileqq/utils/QQCustomDialog:setTitle	(Ljava/lang/String;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   356: pop
     //   357: aload 8
     //   359: aload_0
-    //   360: ldc_w 517
-    //   363: invokevirtual 453	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
-    //   366: invokevirtual 521	com/tencent/mobileqq/utils/QQCustomDialog:setMessage	(Ljava/lang/CharSequence;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   360: ldc_w 532
+    //   363: invokevirtual 469	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
+    //   366: invokevirtual 536	com/tencent/mobileqq/utils/QQCustomDialog:setMessage	(Ljava/lang/CharSequence;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   369: pop
     //   370: aload 8
     //   372: iconst_0
-    //   373: invokevirtual 525	com/tencent/mobileqq/utils/QQCustomDialog:setCanceledOnTouchOutside	(Z)V
+    //   373: invokevirtual 539	com/tencent/mobileqq/utils/QQCustomDialog:setCanceledOnTouchOutside	(Z)V
     //   376: aload 8
     //   378: iconst_0
-    //   379: invokevirtual 528	com/tencent/mobileqq/utils/QQCustomDialog:setCancelable	(Z)V
+    //   379: invokevirtual 542	com/tencent/mobileqq/utils/QQCustomDialog:setCancelable	(Z)V
     //   382: aload 8
     //   384: aload_0
-    //   385: ldc_w 529
-    //   388: invokevirtual 453	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
-    //   391: new 531	bo
+    //   385: ldc_w 543
+    //   388: invokevirtual 469	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
+    //   391: new 545	com/dataline/activities/LiteActivity$44
     //   394: dup
     //   395: aload_0
     //   396: aload_1
-    //   397: invokespecial 534	bo:<init>	(Lcom/dataline/activities/LiteActivity;Ljava/io/InputStream;)V
-    //   400: invokevirtual 538	com/tencent/mobileqq/utils/QQCustomDialog:setNegativeButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   397: invokespecial 548	com/dataline/activities/LiteActivity$44:<init>	(Lcom/dataline/activities/LiteActivity;Ljava/io/InputStream;)V
+    //   400: invokevirtual 552	com/tencent/mobileqq/utils/QQCustomDialog:setNegativeButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   403: pop
     //   404: aload 8
     //   406: aload_0
-    //   407: ldc_w 539
-    //   410: invokevirtual 453	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
-    //   413: new 541	bp
+    //   407: ldc_w 553
+    //   410: invokevirtual 469	com/dataline/activities/LiteActivity:getString	(I)Ljava/lang/String;
+    //   413: new 555	com/dataline/activities/LiteActivity$45
     //   416: dup
     //   417: aload_0
     //   418: aload 7
     //   420: aload_1
     //   421: lload 4
-    //   423: invokespecial 544	bp:<init>	(Lcom/dataline/activities/LiteActivity;Ljava/lang/String;Ljava/io/InputStream;J)V
-    //   426: invokevirtual 547	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   423: invokespecial 558	com/dataline/activities/LiteActivity$45:<init>	(Lcom/dataline/activities/LiteActivity;Ljava/lang/String;Ljava/io/InputStream;J)V
+    //   426: invokevirtual 561	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   429: pop
     //   430: aload 8
-    //   432: invokevirtual 550	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
+    //   432: invokevirtual 564	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
     //   435: aload 7
     //   437: astore_1
     //   438: aload 6
     //   440: ifnull -387 -> 53
     //   443: aload 6
-    //   445: invokeinterface 425 1 0
+    //   445: invokeinterface 442 1 0
     //   450: aload 7
     //   452: areturn
     //   453: aload_0
     //   454: aload 7
     //   456: aload_1
     //   457: lload 4
-    //   459: invokespecial 553	com/dataline/activities/LiteActivity:a	(Ljava/lang/String;Ljava/io/InputStream;J)V
+    //   459: invokespecial 567	com/dataline/activities/LiteActivity:a	(Ljava/lang/String;Ljava/io/InputStream;J)V
     //   462: goto -27 -> 435
     //   465: astore 7
     //   467: aload 6
@@ -693,18 +660,18 @@ public class LiteActivity
     //   472: astore 6
     //   474: aload_0
     //   475: iconst_0
-    //   476: putfield 555	com/dataline/activities/LiteActivity:g	Z
-    //   479: invokestatic 265	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   476: putfield 569	com/dataline/activities/LiteActivity:g	Z
+    //   479: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   482: ifeq +15 -> 497
     //   485: getstatic 75	com/dataline/activities/LiteActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   488: iconst_2
-    //   489: ldc_w 557
+    //   489: ldc_w 571
     //   492: aload 6
-    //   494: invokestatic 560	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   494: invokestatic 574	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   497: aload_1
     //   498: ifnull +9 -> 507
     //   501: aload_1
-    //   502: invokeinterface 425 1 0
+    //   502: invokeinterface 442 1 0
     //   507: aconst_null
     //   508: areturn
     //   509: astore_1
@@ -713,7 +680,7 @@ public class LiteActivity
     //   513: aload 6
     //   515: ifnull +10 -> 525
     //   518: aload 6
-    //   520: invokeinterface 425 1 0
+    //   520: invokeinterface 442 1 0
     //   525: aload_1
     //   526: athrow
     //   527: astore_1
@@ -765,39 +732,39 @@ public class LiteActivity
   
   private String a(String paramString)
   {
-    if (!FileUtils.fileExistsAndNotEmpty(paramString)) {
+    if (!FileUtils.b(paramString)) {
       QLog.i(jdField_a_of_type_JavaLangString, 1, "copyForwardImageFile:error. filePath[" + paramString + "]");
     }
     String str;
     do
     {
       return paramString;
-      str = auea.a(paramString);
-      long l = FileUtils.getFileSizes(paramString);
+      str = FileManagerUtil.a(paramString);
+      long l = FileUtils.a(paramString);
       if (l > 3145728L)
       {
         QLog.i(jdField_a_of_type_JavaLangString, 1, "copyForwardImageFile:error. fileSize[" + l + "]");
         return paramString;
       }
-      if ((float)l > FileUtils.getAvailableExternalMemorySize())
+      if ((float)l > FileUtils.c())
       {
         QLog.i(jdField_a_of_type_JavaLangString, 1, "copyForwardImageFile:error. file space not enough");
         return paramString;
       }
-      str = auea.b(audf.a().b() + str);
-    } while (!FileUtils.copyFile(paramString, str));
+      str = FileManagerUtil.b(FMSettings.a().b() + str);
+    } while (!FileUtils.d(paramString, str));
     return str;
   }
   
   public static void a(Context paramContext)
   {
-    ao localao = new ao();
-    bhdj.a(paramContext, 233, paramContext.getString(2131719342), paramContext.getString(2131693604), 2131693589, 2131693589, localao, null).show();
+    LiteActivity.18 local18 = new LiteActivity.18();
+    DialogUtil.a(paramContext, 233, paramContext.getString(2131719900), paramContext.getString(2131693763), 2131693747, 2131693747, local18, null).show();
   }
   
   static void a(IphoneTitleBarActivity paramIphoneTitleBarActivity)
   {
-    View localView = paramIphoneTitleBarActivity.findViewById(2131370248);
+    View localView = paramIphoneTitleBarActivity.findViewById(2131370520);
     if (ThemeUtil.isInNightMode(paramIphoneTitleBarActivity.app)) {
       if (localView != null) {
         localView.setVisibility(0);
@@ -812,7 +779,7 @@ public class LiteActivity
   public static void a(IphoneTitleBarActivity paramIphoneTitleBarActivity, ViewGroup paramViewGroup)
   {
     int k = 0;
-    SharedPreferences localSharedPreferences = afrb.a(paramIphoneTitleBarActivity, paramIphoneTitleBarActivity.app.getCurrentAccountUin(), 0);
+    SharedPreferences localSharedPreferences = ChatBackground.a(paramIphoneTitleBarActivity, paramIphoneTitleBarActivity.app.getCurrentAccountUin(), 0);
     String[] arrayOfString = new String[2];
     arrayOfString[0] = AppConstants.DATALINE_PC_UIN;
     arrayOfString[1] = "chat_uniform_bg";
@@ -852,48 +819,48 @@ public class LiteActivity
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, Context paramContext)
   {
-    a(paramString, paramContext, new ap(paramQQAppInterface, paramString));
+    a(paramString, paramContext, new LiteActivity.19(paramQQAppInterface, paramString));
   }
   
   private void a(DataLineMsgRecord paramDataLineMsgRecord, int paramInt, String paramString)
   {
-    bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_save2weiyun");
-    long l = FileUtils.getFileSizes(paramString);
-    String str = auea.a(paramString);
+    StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_save2weiyun");
+    long l = FileUtils.a(paramString);
+    String str = FileManagerUtil.a(paramString);
     FileManagerEntity localFileManagerEntity = null;
     if (paramDataLineMsgRecord.nWeiyunSessionId != 0L) {
       localFileManagerEntity = this.app.getFileManagerDataCenter().a(paramDataLineMsgRecord.nWeiyunSessionId);
     }
-    if ((auea.a()) && (l > atpj.a()))
+    if ((FileManagerUtil.a()) && (l > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
     {
-      if (bixr.a(getActivity(), 5, new bz(this, paramDataLineMsgRecord, localFileManagerEntity, str, paramString))) {
-        audn.a(getActivity(), 2131692476, 2131692479, new ca(this, paramDataLineMsgRecord, localFileManagerEntity, str, paramString));
+      if (FreeWifiHelper.a(getActivity(), 5, new LiteActivity.55(this, paramDataLineMsgRecord, localFileManagerEntity, str, paramString))) {
+        FMDialogUtil.a(getActivity(), 2131692609, 2131692612, new LiteActivity.56(this, paramDataLineMsgRecord, localFileManagerEntity, str, paramString));
       }
       if (paramInt != -2000) {
-        break label343;
+        break label354;
       }
       paramInt = 1;
     }
     for (;;)
     {
       int k = a();
-      bdla.b(this.app, "dc00898", "", "", "0X800AD60", "0X800AD60", paramInt, 0, "" + k, "", "", "");
+      ReportController.b(this.app, "dc00898", "", "", "0X800AD60", "0X800AD60", paramInt, 0, "" + k, "", "", "");
       return;
       if (localFileManagerEntity == null)
       {
         k = DataLineMsgRecord.getDevTypeBySeId(paramDataLineMsgRecord.sessionid);
-        audr.b(auea.d(str) + getString(2131692593));
+        FMToastUtil.b(FileManagerUtil.d(str) + getString(2131692731));
         paramDataLineMsgRecord.nWeiyunSessionId = this.app.getFileManagerEngine().a(paramString, null, this.app.getAccount(), 0, false).nSessionId;
-        this.app.getMessageFacade().getDatalineMessageManager(k).c(paramDataLineMsgRecord.msgId);
+        this.app.getMessageFacade().a(k).d(paramDataLineMsgRecord.msgId);
         break;
       }
-      audr.b(auea.d(str) + getString(2131692593));
+      FMToastUtil.b(FileManagerUtil.d(str) + getString(2131692731));
       this.app.getFileManagerEngine().a(paramDataLineMsgRecord.nWeiyunSessionId);
       break;
-      label343:
+      label354:
       if (paramInt == -2005)
       {
-        paramInt = auea.a(paramDataLineMsgRecord.filename);
+        paramInt = FileManagerUtil.a(paramDataLineMsgRecord.filename);
         if (paramInt == 0) {
           paramInt = 2;
         }
@@ -924,7 +891,7 @@ public class LiteActivity
     {
       if (k != 0)
       {
-        QQToast.a(getApplicationContext(), getString(2131694679), 0).b(getResources().getDimensionPixelSize(2131299080));
+        QQToast.a(getApplicationContext(), getString(2131694916), 0).b(getResources().getDimensionPixelSize(2131299166));
         return;
         ArrayList localArrayList = paramDataLineMsgSet.values();
         if ((localArrayList == null) || (localArrayList.size() == 0))
@@ -953,7 +920,7 @@ public class LiteActivity
         localMessageForPic.subVersion = 5;
         localMessageForPic.path = paramDataLineMsgSet.path;
         QLog.i(jdField_a_of_type_JavaLangString, 1, "savePicsAsCustomFace, path:" + localMessageForPic.path + " uuid:" + localMessageForPic.uuid + " size:" + localMessageForPic.size);
-        if ((FileUtils.fileExists(localMessageForPic.path)) && (paramDataLineMsgSet.md5 == null))
+        if ((FileUtils.a(localMessageForPic.path)) && (paramDataLineMsgSet.md5 == null))
         {
           QLog.i(jdField_a_of_type_JavaLangString, 1, "savePicsAsCustomFace, calc md5!");
           ThreadManager.executeOnSubThread(new LiteActivity.30(this, localMessageForPic));
@@ -975,10 +942,10 @@ public class LiteActivity
     for (;;)
     {
       paramInt = a();
-      bdla.b(this.app, "dc00898", "", "", "0X800AD61", "0X800AD61", k, 0, "" + paramInt, "", "", "");
+      ReportController.b(this.app, "dc00898", "", "", "0X800AD61", "0X800AD61", k, 0, "" + paramInt, "", "", "");
       return;
       if (paramInt == -2005) {
-        if (auea.a(paramDataLineMsgRecord.filename) == 0) {
+        if (FileManagerUtil.a(paramDataLineMsgRecord.filename) == 0) {
           k = 3;
         } else {
           k = 2;
@@ -991,13 +958,13 @@ public class LiteActivity
   {
     if (paramMessageForPic == null)
     {
-      QQToast.a(getApplicationContext(), getString(2131694679), 0).b(getResources().getDimensionPixelSize(2131299080));
+      QQToast.a(getApplicationContext(), getString(2131694916), 0).b(getResources().getDimensionPixelSize(2131299166));
       return;
     }
     QLog.i(jdField_a_of_type_JavaLangString, 1, "savePicsAsCustomFace, md5:" + paramMessageForPic.md5);
     URLDrawable localURLDrawable = URLDrawableHelper.getDrawable(URLDrawableHelper.getURL(paramMessageForPic, 1, "datalineface"), -1, -1, null, null, false);
     localURLDrawable.setTag(paramMessageForPic);
-    ahsl.a(this, this.app, localURLDrawable, paramMessageForPic.frienduin, getResources().getDimensionPixelSize(2131299080), null, paramMessageForPic.picExtraData);
+    AIOGalleryUtils.a(this, this.app, localURLDrawable, paramMessageForPic.frienduin, getResources().getDimensionPixelSize(2131299166), null, paramMessageForPic.picExtraData);
   }
   
   public static void a(ScrollerRunnable paramScrollerRunnable, XListView paramXListView)
@@ -1039,14 +1006,14 @@ public class LiteActivity
     }
   }
   
-  static void a(String paramString, Context paramContext, cf paramcf)
+  static void a(String paramString, Context paramContext, LiteActivity.CreateThumbCB paramCreateThumbCB)
   {
-    ThreadManager.executeOnSubThread(new LiteActivity.20(paramContext, paramString, paramcf));
+    ThreadManager.executeOnSubThread(new LiteActivity.20(paramContext, paramString, paramCreateThumbCB));
   }
   
-  static void a(String paramString, cg paramcg)
+  static void a(String paramString, LiteActivity.GetBackgroundCB paramGetBackgroundCB)
   {
-    ThreadManager.executeOnSubThread(new LiteActivity.15(paramString, paramcg));
+    ThreadManager.executeOnSubThread(new LiteActivity.15(paramString, paramGetBackgroundCB));
   }
   
   private void a(String paramString, InputStream paramInputStream, long paramLong)
@@ -1055,20 +1022,20 @@ public class LiteActivity
     ThreadManager.post(new LiteActivity.46(this, paramString, paramInputStream, paramLong), 5, null, true);
     if (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, getString(2131691269), anvx.a(2131705673), new bq(this));
-      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new br(this));
+      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, getString(2131691377), HardCodeUtil.a(2131706216), new LiteActivity.47(this));
+      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new LiteActivity.48(this));
     }
     this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
   static boolean a(IphoneTitleBarActivity paramIphoneTitleBarActivity, ViewGroup paramViewGroup, String paramString)
   {
-    String str = (String)paramViewGroup.getTag(2131361808);
+    String str = (String)paramViewGroup.getTag(2131361807);
     if ((paramString == null) || ("".equals(paramString)) || ("null".equals(paramString))) {
       if (!"null".equals(str))
       {
         paramViewGroup.setBackgroundDrawable(a(paramIphoneTitleBarActivity, paramString));
-        paramViewGroup.setTag(2131361808, "null");
+        paramViewGroup.setTag(2131361807, "null");
       }
     }
     for (;;)
@@ -1077,11 +1044,11 @@ public class LiteActivity
       if ("none".equals(paramString))
       {
         paramViewGroup.setBackgroundDrawable(a(paramIphoneTitleBarActivity, paramString));
-        paramViewGroup.setTag(2131361808, "null");
+        paramViewGroup.setTag(2131361807, "null");
       }
       else if (!paramString.equals(str))
       {
-        a(paramString, new al(paramIphoneTitleBarActivity, paramString, paramViewGroup));
+        a(paramString, new LiteActivity.14(paramIphoneTitleBarActivity, paramString, paramViewGroup));
       }
     }
   }
@@ -1113,8 +1080,8 @@ public class LiteActivity
   
   public static void b(Context paramContext)
   {
-    bu localbu = new bu();
-    bhdj.a(paramContext, 233, paramContext.getString(2131719342), paramContext.getString(2131693613), 2131693589, 2131693589, localbu, null).show();
+    LiteActivity.50 local50 = new LiteActivity.50();
+    DialogUtil.a(paramContext, 233, paramContext.getString(2131719900), paramContext.getString(2131693772), 2131693747, 2131693747, local50, null).show();
   }
   
   /* Error */
@@ -1127,14 +1094,14 @@ public class LiteActivity
     //   3: istore_2
     //   4: iconst_1
     //   5: istore 4
-    //   7: getstatic 1066	android/os/Build$VERSION:SDK_INT	I
+    //   7: getstatic 1077	android/os/Build$VERSION:SDK_INT	I
     //   10: bipush 23
     //   12: if_icmplt +93 -> 105
     //   15: iload_2
     //   16: istore_3
     //   17: aload_0
-    //   18: ldc_w 1068
-    //   21: invokevirtual 1071	com/dataline/activities/LiteActivity:checkSelfPermission	(Ljava/lang/String;)I
+    //   18: ldc_w 1079
+    //   21: invokevirtual 1082	com/dataline/activities/LiteActivity:checkSelfPermission	(Ljava/lang/String;)I
     //   24: istore_1
     //   25: iload_1
     //   26: ifne +81 -> 107
@@ -1143,16 +1110,16 @@ public class LiteActivity
     //   31: iload_2
     //   32: ifeq +80 -> 112
     //   35: aload_0
-    //   36: ldc_w 1073
-    //   39: invokevirtual 1071	com/dataline/activities/LiteActivity:checkSelfPermission	(Ljava/lang/String;)I
+    //   36: ldc_w 1084
+    //   39: invokevirtual 1082	com/dataline/activities/LiteActivity:checkSelfPermission	(Ljava/lang/String;)I
     //   42: ifne +70 -> 112
     //   45: iconst_1
     //   46: istore_2
     //   47: iload_2
     //   48: ifeq +69 -> 117
     //   51: aload_0
-    //   52: ldc_w 1075
-    //   55: invokevirtual 1071	com/dataline/activities/LiteActivity:checkSelfPermission	(Ljava/lang/String;)I
+    //   52: ldc_w 1086
+    //   55: invokevirtual 1082	com/dataline/activities/LiteActivity:checkSelfPermission	(Ljava/lang/String;)I
     //   58: istore_1
     //   59: iload_1
     //   60: ifne +57 -> 117
@@ -1168,20 +1135,20 @@ public class LiteActivity
     //   75: aload_0
     //   76: bipush 100
     //   78: iconst_3
-    //   79: anewarray 472	java/lang/String
+    //   79: anewarray 488	java/lang/String
     //   82: dup
     //   83: iconst_0
-    //   84: ldc_w 1068
+    //   84: ldc_w 1079
     //   87: aastore
     //   88: dup
     //   89: iconst_1
-    //   90: ldc_w 1073
+    //   90: ldc_w 1084
     //   93: aastore
     //   94: dup
     //   95: iconst_2
-    //   96: ldc_w 1075
+    //   96: ldc_w 1086
     //   99: aastore
-    //   100: invokevirtual 1079	com/dataline/activities/LiteActivity:requestPermissions	(Ljava/lang/Object;I[Ljava/lang/String;)V
+    //   100: invokevirtual 1090	com/dataline/activities/LiteActivity:requestPermissions	(Ljava/lang/Object;I[Ljava/lang/String;)V
     //   103: iload_2
     //   104: istore_3
     //   105: iload_3
@@ -1197,18 +1164,18 @@ public class LiteActivity
     //   119: goto -53 -> 66
     //   122: astore 5
     //   124: aload 5
-    //   126: invokevirtual 1082	java/lang/Exception:printStackTrace	()V
+    //   126: invokevirtual 1093	java/lang/Exception:printStackTrace	()V
     //   129: getstatic 75	com/dataline/activities/LiteActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   132: iconst_2
-    //   133: new 386	java/lang/StringBuilder
+    //   133: new 403	java/lang/StringBuilder
     //   136: dup
-    //   137: invokespecial 387	java/lang/StringBuilder:<init>	()V
-    //   140: ldc_w 1084
-    //   143: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: invokespecial 404	java/lang/StringBuilder:<init>	()V
+    //   140: ldc_w 1095
+    //   143: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   146: aload 5
-    //   148: invokevirtual 463	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   151: invokevirtual 399	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   154: invokestatic 274	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   148: invokevirtual 479	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   151: invokevirtual 416	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   154: invokestatic 291	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   157: iload_3
     //   158: ireturn
     //   159: astore 5
@@ -1234,13 +1201,13 @@ public class LiteActivity
   
   private void d(String paramString)
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this, 2131755829);
-    localQQCustomDialog.setContentView(2131559043);
-    localQQCustomDialog.setTitle(getString(2131719342));
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this, 2131755842);
+    localQQCustomDialog.setContentView(2131559084);
+    localQQCustomDialog.setTitle(getString(2131719900));
     localQQCustomDialog.setMessage(paramString);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.setNegativeButton(getString(2131690676), new bs(this));
+    localQQCustomDialog.setNegativeButton(getString(2131690778), new LiteActivity.49(this));
     localQQCustomDialog.show();
   }
   
@@ -1251,8 +1218,8 @@ public class LiteActivity
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       if (this.jdField_a_of_type_Int == 1)
       {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131691343);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839614);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131691453);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839693);
       }
       return;
     }
@@ -1281,10 +1248,10 @@ public class LiteActivity
   }
   
   @TargetApi(19)
-  private void v()
+  private void w()
   {
     this.i = ThemeUtil.isDefaultOrDIYTheme(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131380650));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131381097));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
     if (!this.i) {
       return;
@@ -1294,66 +1261,44 @@ public class LiteActivity
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(new ColorDrawable(Color.parseColor("#E5EBEDF5")));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDirtyListener(new ar(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDirtyListener(new LiteActivity.2(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new bc(this);
+    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new LiteActivity.3(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
   }
   
-  private void w()
+  private void x()
   {
     QQToast localQQToast = new QQToast(this);
     localQQToast.a(QQToast.a(1));
     localQQToast.b(1);
     localQQToast.d(2000);
-    localQQToast.c(2131693782);
+    localQQToast.c(2131693953);
     localQQToast.a();
   }
   
-  private void x()
+  private void y()
   {
     String str = this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
     if ((str != null) && (str.length() > 0))
     {
-      bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_cktxt");
+      StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_cktxt");
       a(new QQText(str, 13, 32, 6000).toString());
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
     }
   }
   
-  private void y()
+  private void z()
   {
     Intent localIntent = new Intent(getApplicationContext(), FMActivity.class);
     localIntent.putExtra("selectMode", true);
     localIntent.putExtra("targetUin", AppConstants.DATALINE_PC_UIN);
     localIntent.putExtra("max_select_count", 50);
     localIntent.putExtra("qfile_entrance_type_key", 11);
-    localIntent.putExtra("select_file_support_send_docs_file", aroj.a().a());
+    localIntent.putExtra("select_file_support_send_docs_file", TencentDocSelectAddDocsProcessor.a().a());
     startActivityForResult(localIntent, 2);
-    overridePendingTransition(2130771979, 2130771980);
-    bdla.b(this.app, "CliOper", "", "", "0X800407C", "0X800407C", 0, 0, "", "", "", "");
-  }
-  
-  private void z()
-  {
-    int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList != null) {
-      k = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.size();
-    }
-    while (k == 0) {
-      if (!this.e)
-      {
-        d(true);
-        return;
-        k = 0;
-      }
-      else
-      {
-        d(false);
-        return;
-      }
-    }
-    d(false);
+    overridePendingTransition(2130771981, 2130771982);
+    ReportController.b(this.app, "CliOper", "", "", "0X800407C", "0X800407C", 0, 0, "", "", "", "");
   }
   
   public float a()
@@ -1361,22 +1306,41 @@ public class LiteActivity
     return this.mDensity;
   }
   
-  DataLineMsgRecord a(ansr paramansr, SendInfo paramSendInfo, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public View a(int paramInt)
+  {
+    if (paramInt == 4) {
+      if (Build.VERSION.SDK_INT < 23) {
+        break label58;
+      }
+    }
+    label58:
+    for (boolean bool = PermissionUtils.isStorePermissionEnable(this);; bool = true)
+    {
+      if (!bool)
+      {
+        requestPermissions(new LiteActivity.41(this), 3, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+        return null;
+      }
+      return a();
+    }
+  }
+  
+  DataLineMsgRecord a(DataLineHandler paramDataLineHandler, SendInfo paramSendInfo, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramSendInfo == null) {
       return null;
     }
-    paramansr = new DataLineMsgRecord();
+    paramDataLineHandler = new DataLineMsgRecord();
     String str1 = paramSendInfo.a();
     String str2 = paramSendInfo.b();
-    paramansr.sessionid = paramSendInfo.a();
-    paramansr.path = str1;
-    paramansr.thumbPath = str2;
-    paramansr.msgtype = ansr.a(paramInt1);
-    paramansr.groupId = paramInt2;
-    paramansr.groupSize = paramInt3;
-    paramansr.groupIndex = paramInt4;
-    return paramansr;
+    paramDataLineHandler.sessionid = paramSendInfo.a();
+    paramDataLineHandler.path = str1;
+    paramDataLineHandler.thumbPath = str2;
+    paramDataLineHandler.msgtype = DataLineHandler.a(paramInt1);
+    paramDataLineHandler.groupId = paramInt2;
+    paramDataLineHandler.groupSize = paramInt3;
+    paramDataLineHandler.groupIndex = paramInt4;
+    return paramDataLineHandler;
   }
   
   DataLineMsgRecord a(ForwardFileInfo paramForwardFileInfo, boolean paramBoolean, int paramInt)
@@ -1387,9 +1351,9 @@ public class LiteActivity
     do
     {
       return null;
-      n = ansr.a(localFileManagerEntity);
-    } while (!ansr.c(n));
-    int m = ansr.a(paramForwardFileInfo.d(), paramBoolean);
+      n = DataLineHandler.a(localFileManagerEntity);
+    } while (!DataLineHandler.d(n));
+    int m = DataLineHandler.a(paramForwardFileInfo.d(), paramBoolean);
     int k = m;
     if (!paramBoolean)
     {
@@ -1399,8 +1363,8 @@ public class LiteActivity
       }
     }
     DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-    localDataLineMsgRecord.msgtype = ansr.a(k);
-    localDataLineMsgRecord.sessionid = ((ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(0, paramInt).longValue();
+    localDataLineMsgRecord.msgtype = DataLineHandler.a(k);
+    localDataLineMsgRecord.sessionid = ((DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(0, paramInt).longValue();
     localDataLineMsgRecord.filename = paramForwardFileInfo.d();
     localDataLineMsgRecord.filesize = paramForwardFileInfo.d();
     localDataLineMsgRecord.fileUuid = paramForwardFileInfo.b();
@@ -1426,7 +1390,7 @@ public class LiteActivity
     }
     for (int k = 6003;; k = 6000)
     {
-      return awtg.a(this.app).a(this.app, str, k);
+      return DraftTextManager.a(this.app).a(this.app, str, k);
       str = AppConstants.DATALINE_PC_UIN;
     }
   }
@@ -1435,8 +1399,8 @@ public class LiteActivity
   {
     if (((Boolean)SkinEngine.getInstances().getThemeConfig("aio_big_input_bar", Boolean.FALSE)).booleanValue())
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.findViewById(2131377820);
-      ((View)localObject).setBackgroundResource(2130839164);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.findViewById(2131378232);
+      ((View)localObject).setBackgroundResource(2130839232);
       ((View)localObject).setVisibility(0);
       localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.getBackground();
       if (localObject != null) {
@@ -1448,23 +1412,12 @@ public class LiteActivity
     if (localObject != null) {
       ((Drawable)localObject).setVisible(true, false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.findViewById(2131377820).setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.findViewById(2131378232).setVisibility(8);
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public void a(int paramInt1, int paramInt2)
   {
-    s();
-    if (paramInt2 == 0) {
-      this.e = false;
-    }
-    for (;;)
-    {
-      z();
-      return;
-      if (1 == paramInt2) {
-        this.e = true;
-      }
-    }
+    this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(14, paramInt1, paramInt2).sendToTarget();
   }
   
   void a(long paramLong, String paramString)
@@ -1477,14 +1430,14 @@ public class LiteActivity
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
     }
-    Object localObject2 = getString(2131718624);
+    Object localObject2 = getString(2131719148);
     Object localObject1 = localObject2;
     if (paramString != null) {
       localObject1 = (String)localObject2 + paramString;
     }
-    paramString = new aj(this, paramLong);
-    localObject2 = new ak(this, paramLong, this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, 232, null, this.app.getApplication().getString(2131718630), (String)localObject1, this.app.getApplication().getString(2131718625), paramString, (DialogInterface.OnClickListener)localObject2);
+    paramString = new LiteActivity.12(this, paramLong);
+    localObject2 = new LiteActivity.13(this, paramLong, this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 232, null, this.app.getApplication().getString(2131719154), (String)localObject1, this.app.getApplication().getString(2131719149), paramString, (DialogInterface.OnClickListener)localObject2);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
@@ -1496,16 +1449,74 @@ public class LiteActivity
       return;
       if ((paramIntent.getAction().equals("android.intent.action.SEND")) || (paramIntent.getAction().equals("android.intent.action.SEND_MULTIPLE")))
       {
-        this.jdField_a_of_type_Ch.a(paramIntent);
+        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$LiteJumpAction.a(paramIntent);
         return;
       }
     } while ((!paramIntent.getAction().equals("android.intent.action.MAIN")) || (!paramIntent.getBooleanExtra("system_share_multi_send", false)));
-    this.jdField_a_of_type_Ch.a(paramIntent);
+    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$LiteJumpAction.a(paramIntent);
   }
   
-  void a(QQMessageFacade.Message paramMessage)
+  void a(ItemHolder paramItemHolder)
   {
-    if ((paramMessage == null) || (paramMessage.isread) || (paramMessage.isSendFromLocal()) || (this.app.isTroopMark(paramMessage)) || (this.j) || (agij.a(paramMessage.frienduin, paramMessage.istroop, this.app))) {
+    if (!NetworkUtil.d(getActivity()))
+    {
+      FMToastUtil.a(2131694510);
+      return;
+    }
+    DataLineMsgSet localDataLineMsgSet = paramItemHolder.a();
+    Object localObject;
+    if ((FileManagerUtil.a()) && (localDataLineMsgSet.isFileType()) && (localDataLineMsgSet.getFileTotalSize() > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize())) {
+      localObject = getString(2131692614);
+    }
+    for (;;)
+    {
+      label86:
+      int k;
+      if (((String)localObject).equals(""))
+      {
+        localObject = getString(2131693815);
+        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
+        localActionSheet.setMainTitle((CharSequence)localObject);
+        localActionSheet.addButton(getResources().getString(2131692776), 1);
+        localActionSheet.addCancelButton(2131690800);
+        localActionSheet.setOnButtonClickListener(new LiteActivity.24(this, localDataLineMsgSet, paramItemHolder, localActionSheet));
+        localActionSheet.show();
+        return;
+        if (localDataLineMsgSet.getGroupType() == -1000)
+        {
+          localObject = getString(2131693816);
+          continue;
+        }
+        if ((localDataLineMsgSet.getGroupType() != -2000) || (localDataLineMsgSet.isSingle())) {
+          break label264;
+        }
+        localObject = localDataLineMsgSet.values().iterator();
+        k = 0;
+        label202:
+        if (((Iterator)localObject).hasNext())
+        {
+          if (!DataLineMsgSet.isCanReciveOrResend((DataLineMsgRecord)((Iterator)localObject).next())) {
+            break label261;
+          }
+          k += 1;
+        }
+      }
+      label261:
+      for (;;)
+      {
+        break label202;
+        localObject = String.format(getString(2131693788), new Object[] { Integer.valueOf(k) });
+        break;
+        break label86;
+      }
+      label264:
+      localObject = "";
+    }
+  }
+  
+  void a(com.tencent.imcore.message.Message paramMessage)
+  {
+    if ((paramMessage == null) || (paramMessage.isread) || (paramMessage.isSendFromLocal()) || (this.app.isTroopMark(paramMessage)) || (this.j) || (HiddenChatHelper.a(paramMessage.frienduin, paramMessage.istroop, this.app))) {
       return;
     }
     Intent localIntent = this.app.getIntentByMessage(this, paramMessage, false);
@@ -1515,95 +1526,96 @@ public class LiteActivity
     runOnUiThread(new LiteActivity.36(this, paramMessage, localIntent));
   }
   
-  public void a(ek paramek)
+  public void a(Object paramObject)
   {
-    if (!NetworkUtil.isNetSupport(getActivity()))
-    {
-      audr.a(2131694305);
+    if (this.j) {
+      b(true);
+    }
+    AIOUtils.o = true;
+    if ((paramObject == null) || (!(paramObject instanceof Integer))) {
       return;
     }
-    Object localObject2 = "";
-    DataLineMsgSet localDataLineMsgSet = paramek.a();
-    Object localObject1;
-    if ((auea.a()) && (localDataLineMsgSet.isFileType()) && (localDataLineMsgSet.getFileTotalSize() > atpj.a())) {
-      localObject1 = getString(2131692481);
-    }
-    label80:
-    int k;
-    for (;;)
+    int k = ((Integer)paramObject).intValue();
+    if (k == this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a())
     {
-      if (((String)localObject1).equals(""))
+      this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+      return;
+    }
+    switch (k)
+    {
+    default: 
+      return;
+    case 4: 
+      this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(4);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.getVisibility() == 0)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a();
+      }
+      ReportController.b(this.app, "CliOper", "", "", "0X8004079", "0X8004079", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "dc00898", "", "", "0X800AD64", "0X800AD64", 0, 0, "", "", "", "");
+      getIntent().putExtra("qq_sub_business_id", 107);
+      return;
+    case 5: 
+      StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_cktkphoto");
+      i();
+      ReportController.b(this.app, "CliOper", "", "", "0X800407A", "0X800407A", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "dc00898", "", "", "0X800AD65", "0X800AD65", 0, 0, "", "", "", "");
+      return;
+    case 16: 
+      StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_ckfile");
+      if (!CheckPermission.isHasStoragePermission(this))
       {
-        localObject1 = getString(2131693656);
-        localObject2 = (bkzi)bkzz.a(this, null);
-        ((bkzi)localObject2).a((CharSequence)localObject1);
-        ((bkzi)localObject2).a(getResources().getString(2131692638), 1);
-        ((bkzi)localObject2).c(2131690697);
-        ((bkzi)localObject2).a(new av(this, localDataLineMsgSet, paramek, (bkzi)localObject2));
-        ((bkzi)localObject2).show();
+        CheckPermission.requestSDCardPermission(this, new LiteActivity.40(this));
         return;
-        if (localDataLineMsgSet.getGroupType() == -1000)
-        {
-          localObject1 = getString(2131693657);
-        }
-        else
-        {
-          localObject1 = localObject2;
-          if (localDataLineMsgSet.getGroupType() == -2000)
-          {
-            localObject1 = localObject2;
-            if (!localDataLineMsgSet.isSingle())
-            {
-              localObject1 = localDataLineMsgSet.values().iterator();
-              k = 0;
-              label202:
-              if (((Iterator)localObject1).hasNext())
-              {
-                if (!DataLineMsgSet.isCanReciveOrResend((DataLineMsgRecord)((Iterator)localObject1).next())) {
-                  break label261;
-                }
-                k += 1;
-              }
-            }
-          }
-        }
+      }
+      z();
+      ReportController.b(this.app, "dc00898", "", "", "0X800AD66", "0X800AD66", 0, 0, "", "", "", "");
+      return;
+    }
+    if (!a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "click too fast , wait a minute.");
       }
     }
-    label261:
     for (;;)
     {
-      break label202;
-      localObject1 = String.format(getString(2131693629), new Object[] { Integer.valueOf(k) });
-      break;
-      break label80;
+      ReportController.b(this.app, "dc00898", "", "", "0X800AD67", "0X800AD67", 0, 0, "", "", "", "");
+      return;
+      f();
+      ReportController.b(null, "CliOper", "", "", MpFileConstant.i, MpFileConstant.i, 0, 0, "", "", "", "");
+      paramObject = new Bundle();
+      paramObject.putBoolean("string_from", false);
+      paramObject.putBoolean("string_uin", false);
+      paramObject.putLong("device_din", 0L);
+      paramObject.putInt("sTitleID", 0);
+      QQProxyForDataline.a(this, paramObject, "com.qqdataline.mpfile.LiteMpFileMainActivity");
     }
   }
   
-  public void a(String paramString)
+  void a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
     if (paramString.length() > 4500)
     {
-      QQToast.a(this, anvx.a(2131705670), 1).b(getTitleBarHeight());
+      QQToast.a(this, HardCodeUtil.a(2131706213), 1).b(getTitleBarHeight());
       return;
     }
     if (getIntent().getBooleanExtra("isMigSdkShare", false))
     {
-      bdla.b(this.app, "CliOper", "", "", "0X800492D", "0X800492D", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "CliOper", "", "", "0X800492D", "0X800492D", 0, 0, "", "", "", "");
       if (QLog.isColorLevel()) {
         QLog.e("qqdataline", 2, "shareFromMigSdk|report send one from sdk:0X800492D.");
       }
     }
-    ((ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramString, this.jdField_a_of_type_Int);
-    bdla.b(this.app, "dc00898", "", "", "0X800AD68", "0X800AD68", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_Dy.notifyDataSetChanged();
+    ((DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramString, this.jdField_a_of_type_Int);
+    ReportController.b(this.app, "dc00898", "", "", "0X800AD68", "0X800AD68", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
     a(this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_ComTencentWidgetXListView);
     a(this.jdField_a_of_type_ComTencentWidgetXListView);
   }
   
-  public void a(String paramString, long paramLong, int paramInt)
+  void a(String paramString, long paramLong, int paramInt)
   {
     if (!b()) {
       b(null);
@@ -1614,31 +1626,31 @@ public class LiteActivity
     {
       return;
       k = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-      localDataLineMsgRecord = this.app.getMessageFacade().getDatalineMessageManager(k).a(paramLong);
+      localDataLineMsgRecord = this.app.getMessageFacade().a(k).a(paramLong);
     } while (localDataLineMsgRecord == null);
-    ansr localansr = (ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     localDataLineMsgRecord.bIsResendOrRecvFile = true;
     switch (paramInt)
     {
     default: 
-      this.app.getMessageFacade().getDatalineMessageManager(k).a(paramLong);
+      this.app.getMessageFacade().a(k).a(paramLong);
       a(paramString);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Dy.notifyDataSetChanged();
+      this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
       return;
-      localansr.a(paramString, localDataLineMsgRecord.thumbPath, 1, paramLong, localDataLineMsgRecord.groupId, localDataLineMsgRecord.groupSize, localDataLineMsgRecord.groupIndex, true);
+      localDataLineHandler.a(paramString, localDataLineMsgRecord.thumbPath, 1, paramLong, localDataLineMsgRecord.groupId, localDataLineMsgRecord.groupSize, localDataLineMsgRecord.groupIndex, true);
       continue;
-      localansr.a(paramString, localDataLineMsgRecord.thumbPath, 2, paramLong, localDataLineMsgRecord.groupId, localDataLineMsgRecord.groupSize, localDataLineMsgRecord.groupIndex, true);
+      localDataLineHandler.a(paramString, localDataLineMsgRecord.thumbPath, 2, paramLong, localDataLineMsgRecord.groupId, localDataLineMsgRecord.groupSize, localDataLineMsgRecord.groupIndex, true);
       continue;
-      if (FileUtils.fileExists(paramString)) {
-        localansr.a(paramString, localDataLineMsgRecord.thumbPath, 0, paramLong, localDataLineMsgRecord.groupId, localDataLineMsgRecord.groupSize, localDataLineMsgRecord.groupIndex, true);
+      if (FileUtils.a(paramString)) {
+        localDataLineHandler.a(paramString, localDataLineMsgRecord.thumbPath, 0, paramLong, localDataLineMsgRecord.groupId, localDataLineMsgRecord.groupSize, localDataLineMsgRecord.groupIndex, true);
       }
       if (localDataLineMsgRecord.nOpType == 35) {
-        localansr.b(localDataLineMsgRecord);
+        localDataLineHandler.b(localDataLineMsgRecord);
       } else {
-        localansr.a().a(localDataLineMsgRecord, k, 2);
+        localDataLineHandler.a().a(localDataLineMsgRecord, k, 2);
       }
     }
   }
@@ -1658,10 +1670,10 @@ public class LiteActivity
     localIntent2.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 50);
     Intent localIntent1 = new Intent(this, NewPhotoListActivity.class);
     localIntent1.putExtra("enter_from", 40);
-    int k = aftr.a(this.app, this, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramArrayList, localIntent2, localIntent1);
+    int k = PlusPanelUtils.a(this.app, this, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramArrayList, localIntent2, localIntent1);
     localIntent1.putExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME", "");
     localIntent1.putExtra("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "");
-    localIntent1.putExtra(bhcc.h, 55);
+    localIntent1.putExtra(AlbumConstants.h, 55);
     localIntent1.putExtra("PhotoConst.SHOW_MAGIC_USE_PASTER", true);
     localIntent1.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 5);
     localIntent1.putExtra("PhotoConst.original_button", true);
@@ -1671,8 +1683,8 @@ public class LiteActivity
     for (;;)
     {
       AlbumUtil.anim(this, false, true);
-      if (blvp.a != null) {
-        blvp.a.b();
+      if (PeakUtils.a != null) {
+        PeakUtils.a.b();
       }
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel != null)
@@ -1686,7 +1698,7 @@ public class LiteActivity
     }
   }
   
-  public void a(ArrayList<String> paramArrayList, int paramInt)
+  void a(ArrayList<String> paramArrayList, int paramInt)
   {
     if (paramArrayList == null)
     {
@@ -1700,14 +1712,14 @@ public class LiteActivity
       int k = 0;
       while (k < paramArrayList.size())
       {
-        bdla.b(this.app, "CliOper", "", "", "0X800492D", "0X800492D", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X800492D", "0X800492D", 0, 0, "", "", "", "");
         if (QLog.isColorLevel()) {
           QLog.e("qqdataline", 2, "shareFromMigSdk|report send one from sdk:0X800492D.");
         }
         k += 1;
       }
     }
-    am localam = new am(this, paramArrayList);
+    LiteActivity.16 local16 = new LiteActivity.16(this, paramArrayList);
     paramArrayList = paramArrayList.iterator();
     long l = 0L;
     while (paramArrayList.hasNext())
@@ -1722,12 +1734,12 @@ public class LiteActivity
       a(this);
       return;
     }
-    if ((NetworkUtil.isNetworkAvailable(this)) && (!NetworkUtil.isWifiConnected(this)) && (l > atpj.a()))
+    if ((NetworkUtil.g(this)) && (!NetworkUtil.h(this)) && (l > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
     {
-      audn.a(this, 2131692476, 2131692481, new an(this, localam, paramInt));
+      FMDialogUtil.a(this, 2131692609, 2131692614, new LiteActivity.17(this, local16, paramInt));
       return;
     }
-    localam.execute(new Integer[] { Integer.valueOf(paramInt) });
+    local16.execute(new Integer[] { Integer.valueOf(paramInt) });
   }
   
   void a(List<String> paramList)
@@ -1743,7 +1755,7 @@ public class LiteActivity
       while (paramList.hasNext())
       {
         String str = (String)paramList.next();
-        int k = auea.a(str);
+        int k = FileManagerUtil.a(str);
         if (2 == k) {
           localArrayList1.add(str);
         } else if (k == 0) {
@@ -1754,12 +1766,12 @@ public class LiteActivity
       {
         paramList = new Bundle();
         paramList.putStringArrayList("PhotoConst.PHOTO_PATHS", localArrayList2);
-        new ci(this).execute(new Bundle[] { paramList });
+        new LiteActivity.SendPhotoAsyncTask(this).execute(new Bundle[] { paramList });
       }
     } while (localArrayList1.isEmpty());
     paramList = new Bundle();
     paramList.putStringArrayList("PhotoConst.PHOTO_PATHS", localArrayList1);
-    new cj(this).execute(new Bundle[] { paramList });
+    new LiteActivity.SendVideoAsyncTask(this).execute(new Bundle[] { paramList });
   }
   
   void a(Observable paramObservable, Object paramObject)
@@ -1774,7 +1786,7 @@ public class LiteActivity
         QLog.d("AutoTest_Xandy", 4, "SessionID:" + paramObservable.sessionid + ", Show:" + System.currentTimeMillis());
       }
       if ((DataLineMsgSet.isSingle(paramObservable)) || (localDataLineMsgSet == null) || (localDataLineMsgSet.getComeCount() <= 1)) {
-        this.jdField_a_of_type_Dy.notifyDataSetChanged();
+        this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
       }
     }
     label146:
@@ -1791,20 +1803,20 @@ public class LiteActivity
           }
         }
         return;
-        if (!this.jdField_a_of_type_Dy.a(paramObservable.sessionid, this.jdField_a_of_type_ComTencentWidgetXListView))
+        if (!this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.a(paramObservable.sessionid, this.jdField_a_of_type_ComTencentWidgetXListView))
         {
-          this.jdField_a_of_type_Dy.notifyDataSetChanged();
+          this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
           continue;
-          if ((paramObject instanceof QQMessageFacade.Message))
+          if ((paramObject instanceof com.tencent.imcore.message.Message))
           {
-            paramObservable = (QQMessageFacade.Message)paramObject;
+            paramObservable = (com.tencent.imcore.message.Message)paramObject;
             if (paramObservable.frienduin == null) {
               break;
             }
             if (!paramObservable.frienduin.endsWith(String.valueOf(AppConstants.DATALINE_PC_UIN))) {
               continue;
             }
-            this.jdField_a_of_type_Dy.notifyDataSetChanged();
+            this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
             continue;
           }
           if ((paramObject instanceof RecentUser))
@@ -1814,7 +1826,7 @@ public class LiteActivity
               break;
             }
             if (paramObservable.uin.endsWith(String.valueOf(AppConstants.DATALINE_PC_UIN))) {
-              this.jdField_a_of_type_Dy.notifyDataSetChanged();
+              this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
             }
           }
         }
@@ -1822,13 +1834,13 @@ public class LiteActivity
       paramObject = (HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
     } while ((paramObservable.isread) || (paramObject.b(paramObservable.frienduin)));
     label265:
-    a(this.app.getMessageFacade().getIncomingMsg());
+    a(this.app.getMessageFacade().a());
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Dy.notifyDataSetChanged();
-    this.app.getMessageFacade().getDatalineMessageManager(this.jdField_a_of_type_Int).e();
+    this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
+    this.app.getMessageFacade().a(this.jdField_a_of_type_Int).e();
     if (!paramBoolean)
     {
       a(this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_ComTencentWidgetXListView);
@@ -1841,8 +1853,13 @@ public class LiteActivity
     return this.f;
   }
   
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
   @TargetApi(18)
-  public boolean a(long paramLong)
+  boolean a(long paramLong)
   {
     if (!Environment.getExternalStorageState().equals("mounted"))
     {
@@ -1871,7 +1888,7 @@ public class LiteActivity
         return false;
         localFileManagerEntity = this.app.getFileManagerDataCenter().a(paramIntent.b());
       } while (localFileManagerEntity == null);
-      int k = ansr.a(localFileManagerEntity);
+      int k = DataLineHandler.a(localFileManagerEntity);
       switch (k)
       {
       case 0: 
@@ -1886,7 +1903,7 @@ public class LiteActivity
         paramIntent = a(paramIntent, bool, this.jdField_a_of_type_Int);
       }
     } while (paramIntent == null);
-    ((ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramIntent, false);
+    ((DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramIntent, false);
     for (;;)
     {
       return true;
@@ -1903,17 +1920,17 @@ public class LiteActivity
     }
   }
   
-  public boolean a(View paramView)
+  boolean a(View paramView)
   {
     if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b())) {
       return true;
     }
-    bhjq localbhjq = new bhjq();
-    ek localek = (ek)paramView.getTag();
-    if (localek == null) {
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    ItemHolder localItemHolder = (ItemHolder)paramView.getTag();
+    if (localItemHolder == null) {
       return false;
     }
-    DataLineMsgSet localDataLineMsgSet = localek.a();
+    DataLineMsgSet localDataLineMsgSet = localItemHolder.a();
     if (localDataLineMsgSet == null) {
       return false;
     }
@@ -1938,20 +1955,20 @@ public class LiteActivity
       if (localObject2 == null)
       {
         return false;
-        localObject2 = localek.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
-        localbhjq.a(2131365250, paramView.getContext().getString(2131691264), 2130838982);
-        localbhjq.a(2131367213, paramView.getContext().getString(2131692550), 2130838991);
-        localbhjq.a(2131366456, paramView.getContext().getString(2131692126), 2130838990);
+        localObject2 = localItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
+        localQQCustomMenu.a(2131365389, paramView.getContext().getString(2131691372), 2130839050);
+        localQQCustomMenu.a(2131367398, paramView.getContext().getString(2131692687), 2130839059);
+        localQQCustomMenu.a(2131366625, paramView.getContext().getString(2131692258), 2130839058);
         localObject1 = "";
         continue;
-        localObject2 = localek.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
+        localObject2 = localItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
         localObject1 = localDataLineMsgRecord.path;
-        if ((AIOUtils.getAIOMsgMenuDpcConfig(1) == 1) && (FileUtils.fileExistsAndNotEmpty(localDataLineMsgRecord.path)) && (Float.compare(localDataLineMsgRecord.progress, 1.0F) == 0))
+        if ((AIOUtils.a(1) == 1) && (FileUtils.b(localDataLineMsgRecord.path)) && (Float.compare(localDataLineMsgRecord.progress, 1.0F) == 0))
         {
-          localbhjq.a(2131362198, getString(2131693145), 2130838989);
+          localQQCustomMenu.a(2131362218, getString(2131693294), 2130839057);
           continue;
           if (localDataLineMsgRecord.bIsMoloImage) {
-            localObject1 = localek.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
+            localObject1 = localItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
           }
           for (;;)
           {
@@ -1959,10 +1976,10 @@ public class LiteActivity
             localObject2 = localObject1;
             localObject1 = localObject3;
             break;
-            localObject2 = localek.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
+            localObject2 = localItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
             localObject1 = localObject2;
             if (localObject2 == null) {
-              localObject1 = (RelativeLayout)localek.a().jdField_a_of_type_AndroidViewView;
+              localObject1 = (RelativeLayout)localItemHolder.a().jdField_a_of_type_AndroidViewView;
             }
           }
         }
@@ -1971,41 +1988,41 @@ public class LiteActivity
       {
         Context localContext = ((RelativeLayout)localObject2).getContext();
         if (localDataLineMsgRecord.canForward()) {
-          localbhjq.a(2131367213, localContext.getString(2131693614), 2130838991);
+          localQQCustomMenu.a(2131367398, localContext.getString(2131693773), 2130839059);
         }
         boolean bool;
-        if ((FileUtils.fileExistsAndNotEmpty((String)localObject1)) && (localDataLineMsgRecord.strMoloKey == null))
+        if ((FileUtils.b((String)localObject1)) && (localDataLineMsgRecord.strMoloKey == null))
         {
           if (localDataLineMsgSet.getGroupType() == -2005)
           {
-            bool = arng.a().c();
-            long l = auea.a(this.app, localDataLineMsgRecord.filename);
-            String str = arnw.a().c();
+            bool = TencentDocConvertConfigProcessor.a().c();
+            long l = FileManagerUtil.a(this.app, localDataLineMsgRecord.filename);
+            String str = TencentDocImportFileInfoProcessor.a().c();
             localObject3 = str;
             if (TextUtils.isEmpty(str)) {
-              localObject3 = becr.jdField_a_of_type_JavaLangString;
+              localObject3 = TeamWorkUtils.jdField_a_of_type_JavaLangString;
             }
-            if ((bool) && (becr.a((String)localObject1, localDataLineMsgRecord.filename, (String)localObject3)) && (localDataLineMsgRecord.filesize <= l))
+            if ((bool) && (TeamWorkUtils.a((String)localObject1, localDataLineMsgRecord.filename, (String)localObject3)) && (localDataLineMsgRecord.filesize <= l))
             {
-              bdla.b(this.app, "dc00898", "", "", "0X8009060", "0X8009060", 0, 0, "", "", "", "");
-              localbhjq.a(2131378536, paramView.getContext().getString(2131719252), 2130839003);
+              ReportController.b(this.app, "dc00898", "", "", "0X8009060", "0X8009060", 0, 0, "", "", "", "");
+              localQQCustomMenu.a(2131378967, paramView.getContext().getString(2131719807), 2130839071);
             }
           }
           if (localDataLineMsgSet.getGroupType() != -2000) {
             break label803;
           }
-          localbhjq.a(2131366456, paramView.getContext().getString(2131692126), 2130838990);
+          localQQCustomMenu.a(2131366625, paramView.getContext().getString(2131692258), 2130839058);
           if (a(this.app, localDataLineMsgRecord)) {
-            localbhjq.a(2131380563, localContext.getString(2131692279), 2130839004);
+            localQQCustomMenu.a(2131381009, localContext.getString(2131692411), 2130839072);
           }
         }
         paramView = ((RelativeLayout)localObject2).getContext();
-        localbhjq.a(2131365484, paramView.getString(2131693597), 2130838986);
+        localQQCustomMenu.a(2131365645, paramView.getString(2131693756), 2130839054);
         if ((localDataLineMsgSet.getGroupType() == -2000) || ((localDataLineMsgSet.getGroupType() == -2335) && (localDataLineMsgRecord.bIsMoloImage)))
         {
           bool = true;
           label700:
-          localObject1 = new az(this, localDataLineMsgRecord, localDataLineMsgSet, paramView, k, (String)localObject1, bool);
+          localObject1 = new LiteActivity.29(this, localDataLineMsgRecord, localDataLineMsgSet, paramView, k, (String)localObject1, bool);
           if (this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout == null) {
             break label1007;
           }
@@ -2014,25 +2031,25 @@ public class LiteActivity
         }
         for (;;)
         {
-          localObject2 = localek.jdField_a_of_type_AndroidWidgetRelativeLayout;
+          localObject2 = localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout;
           k = (int)this.jdField_a_of_type_AndroidGraphicsPointF.x;
           int m = (int)this.jdField_a_of_type_AndroidGraphicsPointF.y;
           if (paramView == null) {}
           for (paramView = null;; paramView = Integer.valueOf(paramView[1]))
           {
-            this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhcw.a((View)localObject2, k, m, localbhjq, (View.OnClickListener)localObject1, paramView);
-            this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new aq(this));
+            this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a((View)localObject2, k, m, localQQCustomMenu, (View.OnClickListener)localObject1, paramView);
+            this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new LiteActivity.1DissmissListener(this));
             return true;
             label803:
-            if ((localDataLineMsgSet.getGroupType() == -2009) && (FileUtils.fileExistsAndNotEmpty((String)localObject1)))
+            if ((localDataLineMsgSet.getGroupType() == -2009) && (FileUtils.b((String)localObject1)))
             {
-              localbhjq.a(2131366456, paramView.getContext().getString(2131692126), 2130838990);
+              localQQCustomMenu.a(2131366625, paramView.getContext().getString(2131692258), 2130839058);
               break;
             }
-            if ((localDataLineMsgSet.getGroupType() != -2005) || (!FileUtils.fileExistsAndNotEmpty((String)localObject1))) {
+            if ((localDataLineMsgSet.getGroupType() != -2005) || (!FileUtils.b((String)localObject1))) {
               break;
             }
-            localbhjq.a(2131366456, paramView.getContext().getString(2131692126), 2130838990);
+            localQQCustomMenu.a(2131366625, paramView.getContext().getString(2131692258), 2130839058);
             break;
             switch (localDataLineMsgSet.getGroupType())
             {
@@ -2046,12 +2063,12 @@ public class LiteActivity
                 break;
               }
               return false;
-              paramView = localek.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
+              paramView = localItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
               continue;
               if (localDataLineMsgRecord.bIsMoloImage) {
-                paramView = localek.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
+                paramView = localItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
               } else {
-                paramView = localek.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
+                paramView = localItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
               }
             }
             bool = false;
@@ -2074,7 +2091,7 @@ public class LiteActivity
     {
       a(localArrayList);
       paramPhotoListPanel.g();
-      bdla.b(null, "CliOper", "", "", "0X8004079", "0X8004079", 0, 0, "", "", "", "");
+      ReportController.b(null, "CliOper", "", "", "0X8004079", "0X8004079", 0, 0, "", "", "", "");
       return true;
     }
   }
@@ -2099,7 +2116,7 @@ public class LiteActivity
     {
       if (k == 0)
       {
-        requestPermissions(new bi(this), 3, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+        requestPermissions(new LiteActivity.39(this), 3, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
         return true;
         k = 0;
       }
@@ -2112,24 +2129,40 @@ public class LiteActivity
     }
   }
   
-  public String b()
+  protected String b()
   {
     if (jdField_c_of_type_JavaLangString == null) {
-      return getString(2131718770);
+      return getString(2131719295);
     }
     return jdField_c_of_type_JavaLangString;
   }
   
   void b()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131370244));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131370516));
     this.jdField_a_of_type_ComTencentWidgetXListView.setStackFromBottom(true);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dy);
-    View localView = LayoutInflater.from(this).inflate(2131558966, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter);
+    View localView = LayoutInflater.from(this).inflate(2131559007, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(localView);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(this.jdField_a_of_type_Dy.getCount());
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new bj(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new bt(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.getCount());
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new LiteActivity.4(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new LiteActivity.5(this));
+  }
+  
+  protected void b(int paramInt1, int paramInt2)
+  {
+    t();
+    if (paramInt2 == 0) {
+      this.e = false;
+    }
+    for (;;)
+    {
+      A();
+      return;
+      if (1 == paramInt2) {
+        this.e = true;
+      }
+    }
   }
   
   protected void b(Intent paramIntent)
@@ -2140,17 +2173,17 @@ public class LiteActivity
     if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.length() != 0)) {
       if (this.jdField_b_of_type_JavaLangString.equals(AppConstants.DATALINE_IPAD_UIN))
       {
-        setTitle(2131693668);
+        setTitle(2131693827);
         this.jdField_a_of_type_Int = 1;
       }
     }
     for (;;)
     {
-      paramIntent = (ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      paramIntent = (DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       paramIntent.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
       paramIntent.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
       return;
-      setTitle(2131693667);
+      setTitle(2131693826);
       this.jdField_a_of_type_Int = 0;
       continue;
       if (this.jdField_a_of_type_Int == -1)
@@ -2158,12 +2191,12 @@ public class LiteActivity
         this.jdField_a_of_type_Int = paramIntent.getIntExtra("device_type", -1);
         if (this.jdField_a_of_type_Int == 1)
         {
-          setTitle(2131693668);
+          setTitle(2131693827);
           this.jdField_b_of_type_JavaLangString = AppConstants.DATALINE_IPAD_UIN;
         }
         else
         {
-          setTitle(2131693667);
+          setTitle(2131693826);
           this.jdField_b_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
           this.jdField_a_of_type_Int = 0;
         }
@@ -2176,16 +2209,16 @@ public class LiteActivity
     }
   }
   
-  public void b(ek paramek)
+  void b(ItemHolder paramItemHolder)
   {
-    if (!NetworkUtil.isNetSupport(getActivity()))
+    if (!NetworkUtil.d(getActivity()))
     {
-      audr.a(2131694305);
+      FMToastUtil.a(2131694510);
       return;
     }
-    DataLineMsgSet localDataLineMsgSet = paramek.a();
-    if ((auea.a()) && (localDataLineMsgSet.isFileType()) && (localDataLineMsgSet.getFileTotalSize() > 3145728L)) {}
-    for (paramek = getString(2131692478);; paramek = "")
+    DataLineMsgSet localDataLineMsgSet = paramItemHolder.a();
+    if ((FileManagerUtil.a()) && (localDataLineMsgSet.isFileType()) && (localDataLineMsgSet.getFileTotalSize() > 3145728L)) {}
+    for (paramItemHolder = getString(2131692611);; paramItemHolder = "")
     {
       ArrayList localArrayList = new ArrayList();
       long l = 0L;
@@ -2203,35 +2236,35 @@ public class LiteActivity
       {
         int k = localDataLineMsgSet.getTotalCount() - localDataLineMsgSet.getComeCount();
         if ((localDataLineMsgSet.getGroupType() == -2000) || ((localDataLineMsgSet.getGroupType() == -2335) && (localDataLineMsgSet.getFirstItem().bIsMoloImage))) {}
-        for (paramek = String.format(getString(2131693626), new Object[] { Integer.valueOf(k) });; paramek = String.format(getString(2131693638), new Object[] { Integer.valueOf(k) }))
+        for (paramItemHolder = String.format(getString(2131693785), new Object[] { Integer.valueOf(k) });; paramItemHolder = String.format(getString(2131693797), new Object[] { Integer.valueOf(k) }))
         {
-          localObject = new aw(this);
-          bhdj.a(this, 230, getString(2131693616), paramek, 2131694399, 2131694399, null, (DialogInterface.OnClickListener)localObject).show();
+          localObject = new LiteActivity.25(this);
+          DialogUtil.a(this, 230, getString(2131693775), paramItemHolder, 2131694615, 2131694615, null, (DialogInterface.OnClickListener)localObject).show();
           return;
         }
       }
-      localObject = paramek;
-      if (paramek.equals(""))
+      localObject = paramItemHolder;
+      if (paramItemHolder.equals(""))
       {
-        localObject = paramek;
+        localObject = paramItemHolder;
         if (localDataLineMsgSet.getGroupType() == -2000)
         {
-          localObject = paramek;
+          localObject = paramItemHolder;
           if (!localDataLineMsgSet.isSingle()) {
-            localObject = String.format(getString(2131693628), new Object[] { Integer.valueOf(localArrayList.size()) });
+            localObject = String.format(getString(2131693787), new Object[] { Integer.valueOf(localArrayList.size()) });
           }
         }
       }
-      paramek = (ek)localObject;
+      paramItemHolder = (ItemHolder)localObject;
       if (((String)localObject).equals("")) {
-        paramek = getString(2131693654);
+        paramItemHolder = getString(2131693813);
       }
-      localObject = (bkzi)bkzz.a(this, null);
-      ((bkzi)localObject).a(paramek);
-      ((bkzi)localObject).a(getResources().getString(2131692637), 1);
-      ((bkzi)localObject).c(2131690697);
-      ((bkzi)localObject).a(new ax(this, l, localDataLineMsgSet, localArrayList, (bkzi)localObject));
-      ((bkzi)localObject).show();
+      localObject = (ActionSheet)ActionSheetHelper.a(this, null);
+      ((ActionSheet)localObject).setMainTitle(paramItemHolder);
+      ((ActionSheet)localObject).addButton(getResources().getString(2131692775), 1);
+      ((ActionSheet)localObject).addCancelButton(2131690800);
+      ((ActionSheet)localObject).setOnButtonClickListener(new LiteActivity.26(this, l, localDataLineMsgSet, localArrayList, (ActionSheet)localObject));
+      ((ActionSheet)localObject).show();
       return;
     }
   }
@@ -2239,27 +2272,27 @@ public class LiteActivity
   void b(String paramString)
   {
     DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-    localDataLineMsgRecord.time = bcrg.a();
+    localDataLineMsgRecord.time = MessageCache.a();
     localDataLineMsgRecord.msgtype = -2334;
     localDataLineMsgRecord.isread = true;
     localDataLineMsgRecord.issuc = false;
     localDataLineMsgRecord.issend = 255;
     localDataLineMsgRecord.msg = paramString;
     this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.appendToList(localDataLineMsgRecord);
-    this.jdField_a_of_type_Dy.notifyDataSetChanged();
+    this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
   }
   
   void b(ArrayList<SendInfo> paramArrayList, int paramInt)
   {
     if (paramArrayList == null) {}
-    ansr localansr;
+    DataLineHandler localDataLineHandler;
     int m;
     int k;
     Object localObject;
     for (;;)
     {
       return;
-      localansr = (ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      localDataLineHandler = (DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       m = paramArrayList.size();
       if (m > 3) {
         break;
@@ -2267,9 +2300,9 @@ public class LiteActivity
       k = 0;
       while (k < m)
       {
-        localObject = a(localansr, (SendInfo)paramArrayList.get(k), paramInt, 0, 0, 0);
+        localObject = a(localDataLineHandler, (SendInfo)paramArrayList.get(k), paramInt, 0, 0, 0);
         if (localObject != null) {
-          localansr.a((DataLineMsgRecord)localObject, false);
+          localDataLineHandler.a((DataLineMsgRecord)localObject, false);
         }
         k += 1;
       }
@@ -2279,11 +2312,11 @@ public class LiteActivity
     if ((m > 3) && (m < 50))
     {
       localObject = new ArrayList();
-      int n = localansr.a();
+      int n = localDataLineHandler.a();
       k = 0;
       if (k < m)
       {
-        localDataLineMsgRecord = a(localansr, (SendInfo)paramArrayList.get(k), paramInt, n, m, k);
+        localDataLineMsgRecord = a(localDataLineHandler, (SendInfo)paramArrayList.get(k), paramInt, n, m, k);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
@@ -2297,7 +2330,7 @@ public class LiteActivity
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localansr.a((ArrayList)localObject, false);
+          localDataLineHandler.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
@@ -2311,15 +2344,15 @@ public class LiteActivity
       if (((ArrayList)localObject).size() <= 0) {
         break;
       }
-      localansr.a((ArrayList)localObject, false);
+      localDataLineHandler.a((ArrayList)localObject, false);
       return;
       localObject = new ArrayList();
-      m = localansr.a();
+      m = localDataLineHandler.a();
       k = 0;
       label251:
       if (k < 50)
       {
-        localDataLineMsgRecord = a(localansr, (SendInfo)paramArrayList.get(k), paramInt, m, 50, k);
+        localDataLineMsgRecord = a(localDataLineHandler, (SendInfo)paramArrayList.get(k), paramInt, m, 50, k);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
@@ -2333,7 +2366,7 @@ public class LiteActivity
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localansr.a((ArrayList)localObject, false);
+          localDataLineHandler.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
@@ -2342,7 +2375,7 @@ public class LiteActivity
         k += 1;
         break label251;
         if (((ArrayList)localObject).size() > 0) {
-          localansr.a((ArrayList)localObject, false);
+          localDataLineHandler.a((ArrayList)localObject, false);
         }
         k = 0;
         while (k < 50)
@@ -2368,26 +2401,26 @@ public class LiteActivity
     this.jdField_a_of_type_AndroidViewView.getLayoutParams().height = -2;
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setPadding(0, AIOUtils.dp2px(8.0F, this.app.getApplication().getResources()), 0, 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setPadding(0, AIOUtils.a(8.0F, this.app.getApplication().getResources()), 0, 0);
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams().height = -2;
-      ((FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams()).setMargins(AIOUtils.dp2px(14.0F, this.app.getApplication().getResources()), 0, 0, 0);
+      ((FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams()).setMargins(AIOUtils.a(14.0F, this.app.getApplication().getResources()), 0, 0, 0);
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMaxLines(6);
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130849853);
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130850251);
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setGravity(16);
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setPadding(AIOUtils.dp2px(11.0F, this.app.getApplication().getResources()), AIOUtils.dp2px(6.0F, this.app.getApplication().getResources()), AIOUtils.dp2px(11.0F, this.app.getApplication().getResources()), AIOUtils.dp2px(6.0F, this.app.getApplication().getResources()));
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setPadding(AIOUtils.a(11.0F, this.app.getApplication().getResources()), AIOUtils.a(6.0F, this.app.getApplication().getResources()), AIOUtils.a(11.0F, this.app.getApplication().getResources()), AIOUtils.a(6.0F, this.app.getApplication().getResources()));
       return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getHeight(), AIOUtils.dp2px(100.0F, this.app.getApplication().getResources()) });
-    localValueAnimator.addUpdateListener(new bv(this));
-    localValueAnimator.addListener(new bw(this));
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getHeight(), AIOUtils.a(100.0F, this.app.getApplication().getResources()) });
+    localValueAnimator.addUpdateListener(new LiteActivity.51(this));
+    localValueAnimator.addListener(new LiteActivity.52(this));
     localValueAnimator.setDuration(100L).setRepeatCount(0);
     localValueAnimator.start();
   }
   
   boolean b()
   {
-    aocn localaocn = (aocn)this.app.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
-    return (localaocn.a() == 0) || (localaocn.d() != 0);
+    RegisterProxySvcPackHandler localRegisterProxySvcPackHandler = (RegisterProxySvcPackHandler)this.app.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
+    return (localRegisterProxySvcPackHandler.a() == 0) || (localRegisterProxySvcPackHandler.d() != 0);
   }
   
   public boolean b(PhotoListPanel paramPhotoListPanel)
@@ -2399,7 +2432,7 @@ public class LiteActivity
     if (((Iterator)localObject2).hasNext())
     {
       String str = (String)((Iterator)localObject2).next();
-      int k = paramPhotoListPanel.jdField_a_of_type_Ahup.a(str);
+      int k = paramPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.a(str);
       if (1 == k) {
         localArrayList.add(str);
       }
@@ -2417,32 +2450,32 @@ public class LiteActivity
       a(this);
       return true;
     }
-    if ((NetworkUtil.isNetworkAvailable(this)) && (!NetworkUtil.isWifiConnected(this)) && (l > atpj.a())) {
-      audn.a(this, 2131692476, 2131692481, new bn(this, (ArrayList)localObject1, localArrayList));
+    if ((NetworkUtil.g(this)) && (!NetworkUtil.h(this)) && (l > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize())) {
+      FMDialogUtil.a(this, 2131692609, 2131692614, new LiteActivity.43(this, (ArrayList)localObject1, localArrayList));
     }
     for (;;)
     {
       paramPhotoListPanel.g();
-      bdla.b(null, "CliOper", "", "", "0X8005A2F", "0X8005A2F", 0, 0, paramPhotoListPanel.jdField_a_of_type_JavaUtilLinkedList.size() + "", "", "", "");
+      ReportController.b(null, "CliOper", "", "", "0X8005A2F", "0X8005A2F", 0, 0, paramPhotoListPanel.jdField_a_of_type_JavaUtilLinkedList.size() + "", "", "", "");
       return true;
       if (!((ArrayList)localObject1).isEmpty())
       {
         localObject2 = new Bundle();
         ((Bundle)localObject2).putStringArrayList("PhotoConst.PHOTO_PATHS", (ArrayList)localObject1);
-        new ci(this).execute(new Bundle[] { localObject2 });
+        new LiteActivity.SendPhotoAsyncTask(this).execute(new Bundle[] { localObject2 });
       }
       if (!localArrayList.isEmpty())
       {
         localObject1 = new Bundle();
         ((Bundle)localObject1).putStringArrayList("PhotoConst.PHOTO_PATHS", localArrayList);
-        new cj(this).execute(new Bundle[] { localObject1 });
+        new LiteActivity.SendVideoAsyncTask(this).execute(new Bundle[] { localObject1 });
       }
     }
   }
   
-  public void c()
+  void c()
   {
-    this.app.getMessageFacade().getDatalineMessageManager(this.jdField_a_of_type_Int).a(15, new cb(this));
+    this.app.getMessageFacade().a(this.jdField_a_of_type_Int).a(15, new LiteActivity.6(this));
   }
   
   void c(Intent paramIntent)
@@ -2454,7 +2487,7 @@ public class LiteActivity
       this.jdField_c_of_type_Boolean = bool;
       if (this.jdField_c_of_type_Boolean)
       {
-        AIOUtils.isUserOperatedInAIO = false;
+        AIOUtils.o = false;
         this.d = false;
       }
       return;
@@ -2467,11 +2500,11 @@ public class LiteActivity
     if (paramString == null) {
       return;
     }
-    ansr localansr = (ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
     localDataLineMsgRecord.path = paramString;
     localDataLineMsgRecord.msgtype = -2009;
-    localansr.a(localDataLineMsgRecord, false);
+    localDataLineHandler.a(localDataLineMsgRecord, false);
   }
   
   public void c(boolean paramBoolean)
@@ -2500,7 +2533,7 @@ public class LiteActivity
   
   void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)findViewById(2131368909));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)findViewById(2131369141));
     if (this.jdField_a_of_type_AndroidTextTextWatcher != null) {
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     }
@@ -2510,13 +2543,13 @@ public class LiteActivity
       {
         this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
         this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setFilters(new InputFilter[] { new cd(this) });
-        abty.a(this, this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setFilters(new InputFilter[] { new LiteActivity.8(this) });
+        DeviceLib.a(this, this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
         h();
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnTouchListener(new ce(this));
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getViewTreeObserver().addOnGlobalLayoutListener(new ai(this));
+        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnTouchListener(new LiteActivity.9(this));
+        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getViewTreeObserver().addOnGlobalLayoutListener(new LiteActivity.10(this));
         return;
-        this.jdField_a_of_type_AndroidTextTextWatcher = new cc(this);
+        this.jdField_a_of_type_AndroidTextTextWatcher = new LiteActivity.7(this);
       }
     }
     catch (Exception localException)
@@ -2534,29 +2567,29 @@ public class LiteActivity
     Object localObject = PreferenceManager.getDefaultSharedPreferences(this).getString("camera_photo_path", "");
     if (!((String)localObject).equalsIgnoreCase(""))
     {
-      aftr.jdField_a_of_type_JavaLangString = (String)localObject;
+      PlusPanelUtils.jdField_a_of_type_JavaLangString = (String)localObject;
       paramIntent = Uri.fromFile(new File((String)localObject));
     }
     PreferenceManager.getDefaultSharedPreferences(this).edit().remove("camera_photo_path").commit();
     if (paramIntent == null) {
       return;
     }
-    paramIntent = bheg.b(this, paramIntent);
+    paramIntent = ImageUtil.b(this, paramIntent);
     if (paramIntent != null)
     {
-      bheg.a(this, paramIntent);
-      if (!FileUtils.isPicFile(paramIntent))
+      ImageUtil.a(this, paramIntent);
+      if (!FileUtils.f(paramIntent))
       {
-        QQToast.a(this, getString(2131692348), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131692480), 0).b(getTitleBarHeight());
         return;
       }
       if (!new VFSFile(paramIntent).exists()) {
-        QQToast.a(this, getString(2131694681), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131694918), 0).b(getTitleBarHeight());
       }
     }
     else
     {
-      QQToast.a(this, getString(2131694681), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131694918), 0).b(getTitleBarHeight());
       return;
     }
     localObject = new Intent();
@@ -2568,7 +2601,7 @@ public class LiteActivity
     ((Intent)localObject).putExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME", LiteActivity.class.getName());
     ((Intent)localObject).putExtra("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     ((Intent)localObject).putExtra("PhotoConst.HANDLE_DEST_RESULT", false);
-    ((Intent)localObject).putExtra(bhcc.h, 55);
+    ((Intent)localObject).putExtra(AlbumConstants.h, 55);
     ((Intent)localObject).putExtra("uin", AppConstants.DATALINE_PC_UIN);
     ((Intent)localObject).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
     ((Intent)localObject).putExtra("LASTFROM", this.leftView.getText().toString());
@@ -2647,10 +2680,10 @@ public class LiteActivity
         } while (paramInt2 != -1);
         a(false);
         return;
-        z();
+        A();
       } while ((paramInt2 != -1) || (paramIntent == null));
       return;
-      this.jdField_a_of_type_Dy.notifyDataSetChanged();
+      this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
       return;
     } while ((paramInt2 != -1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel == null));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a(paramInt1, paramIntent);
@@ -2660,79 +2693,80 @@ public class LiteActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawableResource(2131165443);
-    setContentView(2131559069);
+    setContentView(2131559110);
     setStatusBarBlue();
     boolean bool = ThemeUtil.isDefaultOrDIYTheme(false);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376760));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377159));
     if (bool) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130850110);
+      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130850508);
     }
     int i1;
     int i2;
     int i3;
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout = ((InputLinearLayout)findViewById(2131368910));
-      localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369605);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout = ((InputLinearLayout)findViewById(2131369142));
+      localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369878);
       if (localObject1 != null) {
         ViewCompat.setImportantForAccessibility((View)localObject1, 2);
       }
-      setTitle(2131693667);
+      setTitle(2131693826);
       getWindow().setBackgroundDrawable(null);
       b(getIntent());
       c(getIntent());
       k();
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131381434));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370247));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370246));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131381895));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370519));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370518));
       if (this.jdField_a_of_type_Int == 1)
       {
-        bdla.b(this.app, "CliOper", "", "", "0X8005D19", "0X8005D19", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X8005D19", "0X8005D19", 0, 0, "", "", "", "");
         if (QLog.isColorLevel()) {
           QLog.d(jdField_a_of_type_JavaLangString, 2, "=== dataline report event into ipad 0X8005D19 ");
         }
       }
-      this.jdField_a_of_type_Ch = new ch(this, this);
-      this.app.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_Atfq);
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$LiteJumpAction = new LiteActivity.LiteJumpAction(this, this);
+      this.app.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
       localObject1 = this.app.getMessageFacade();
       if (localObject1 != null) {
         ((QQMessageFacade)localObject1).addObserver(this);
       }
       this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList = this.app.getDataLineMsgProxy(this.jdField_a_of_type_Int).a(true);
-      this.jdField_a_of_type_Dy = new ee(this, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList, this, this.app);
+      this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter = new DatalineSessionAdapterUseNewFileBubble(this, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList, this, this.app);
       b();
       d();
-      localObject1 = (ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-      ((ansr)localObject1).jdField_a_of_type_Boolean = true;
+      localObject1 = (DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      ((DataLineHandler)localObject1).jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = new ScrollerRunnable(this.jdField_a_of_type_ComTencentWidgetXListView);
       this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364586));
-      this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)findViewById(2131376947));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364700));
+      this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)findViewById(2131377356));
       this.jdField_a_of_type_ComTencentWidgetXPanelContainer.setOnPanelChangeListener(this);
       e();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout = ((PanelIconLinearLayout)findViewById(2131372419));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout = ((PanelIconLinearLayout)findViewById(2131372729));
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setPanelIconListener(this);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setPanelIconLongListener(this);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(null);
       this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377339));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377759));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       q();
-      addObserver(this.jdField_a_of_type_Ansy);
+      addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
       p();
-      this.app.getMessageFacade().getDatalineMessageManager(this.jdField_a_of_type_Int).e();
+      this.app.getMessageFacade().a(this.jdField_a_of_type_Int).e();
       if (paramBundle == null) {
         this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new LiteActivity.1(this), 200L);
       }
       a(getIntent());
-      paramBundle = (aocn)this.app.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
+      paramBundle = (RegisterProxySvcPackHandler)this.app.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
       if ((paramBundle.a() == 0) && (!paramBundle.a()))
       {
         paramBundle.a();
         paramBundle.b(true);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.isEmpty()) {
-        break label983;
+        break label991;
       }
       paramBundle = getSharedPreferences("first_enter_dataline", 0);
       int k = paramBundle.getInt("year", -1);
@@ -2743,15 +2777,15 @@ public class LiteActivity
       i2 = ((Calendar)localObject2).get(2);
       i3 = ((Calendar)localObject2).get(5);
       if ((i1 == k) && (i2 == m) && (i3 == n)) {
-        break label983;
+        break label991;
       }
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.size() - 1);
       if (localObject2 == null) {
-        break label983;
+        break label991;
       }
       localObject2 = ((DataLineMsgSet)localObject2).getFirstItem();
       if ((localObject2 == null) || (((DataLineMsgRecord)localObject2).msgtype == -5000)) {
-        break label983;
+        break label991;
       }
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.iterator();
       while (((Iterator)localObject2).hasNext())
@@ -2773,14 +2807,14 @@ public class LiteActivity
           }
         }
       }
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130850109);
+      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130850507);
     }
-    Object localObject1 = ((ansr)localObject1).a(0, this.jdField_a_of_type_Int);
+    Object localObject1 = ((DataLineHandler)localObject1).a(0, this.jdField_a_of_type_Int);
     Object localObject2 = new DataLineMsgRecord();
     ((DataLineMsgRecord)localObject2).msgId = ((Long)localObject1).longValue();
     ((DataLineMsgRecord)localObject2).sessionid = ((Long)localObject1).longValue();
     ((DataLineMsgRecord)localObject2).msgtype = -5000;
-    ((DataLineMsgRecord)localObject2).time = bcrg.a();
+    ((DataLineMsgRecord)localObject2).time = MessageCache.a();
     ((DataLineMsgRecord)localObject2).isread = true;
     this.app.getDataLineMsgProxy(this.jdField_a_of_type_Int).a((DataLineMsgRecord)localObject2);
     paramBundle = paramBundle.edit();
@@ -2788,23 +2822,23 @@ public class LiteActivity
     paramBundle.putInt("month", i2);
     paramBundle.putInt("day", i3);
     paramBundle.commit();
-    label983:
-    v();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367464);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131367461));
-    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368203));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367477));
-    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131367462));
+    label991:
+    w();
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367651);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131367648));
+    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368426));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367664));
+    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131367649));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetPatchedButton.setOnClickListener(this);
-    if (AppSetting.jdField_c_of_type_Boolean)
+    if (AppSetting.d)
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(anvx.a(2131705668));
-      this.jdField_b_of_type_AndroidWidgetImageButton.setContentDescription(anvx.a(2131705667));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(HardCodeUtil.a(2131706211));
+      this.jdField_b_of_type_AndroidWidgetImageButton.setContentDescription(HardCodeUtil.a(2131706210));
     }
-    this.jdField_a_of_type_Arqp = new arqp(this, this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.app, this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-    this.jdField_a_of_type_Arqp.a();
+    this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper = new LiteCopyPromptHelper(this, this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.app, this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper.a();
     return true;
   }
   
@@ -2816,16 +2850,16 @@ public class LiteActivity
     }
     if (this.app.getMessageFacade() != null)
     {
-      this.app.getMessageFacade().getDatalineMessageManager(this.jdField_a_of_type_Int).e();
-      this.app.getMessageFacade().getDatalineMessageManager(this.jdField_a_of_type_Int).d();
+      this.app.getMessageFacade().a(this.jdField_a_of_type_Int).e();
+      this.app.getMessageFacade().a(this.jdField_a_of_type_Int).d();
       this.app.getMessageFacade().deleteObserver(this);
-      this.jdField_a_of_type_Dy.notifyDataSetChanged();
+      this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
     }
-    if (this.jdField_a_of_type_Ansy != null) {
-      removeObserver(this.jdField_a_of_type_Ansy);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver != null) {
+      removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
     }
-    if (this.jdField_a_of_type_Atfq != null) {
-      this.app.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_Atfq);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
+      this.app.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
@@ -2834,19 +2868,19 @@ public class LiteActivity
     }
     this.jdField_a_of_type_Int = -1;
     if (this.app.getFileManagerProxy() != null) {
-      this.app.getFileManagerProxy().e();
+      this.app.getFileManagerProxy().c();
     }
     this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(8);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.setSelectLimitListener(null);
     }
-    auea.b(this);
+    FileManagerUtil.b(this);
     if (this.i)
     {
       this.jdField_a_of_type_ComTencentWidgetXListView.getViewTreeObserver().removeGlobalOnLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
     }
-    this.jdField_a_of_type_Arqp.b();
+    this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper.b();
   }
   
   public void doOnNewIntent(Intent paramIntent)
@@ -2856,14 +2890,14 @@ public class LiteActivity
     g();
     h(paramIntent);
     e(paramIntent);
-    this.jdField_a_of_type_Dy.notifyDataSetChanged();
+    this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
     a(paramIntent);
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    ((ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).d();
+    ((DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).d();
     boolean bool = getIntent().getBooleanExtra("isMigSdkShare", false);
     if ((this.jdField_b_of_type_Boolean) && (!bool))
     {
@@ -2882,7 +2916,7 @@ public class LiteActivity
   {
     super.doOnResume();
     a(this, this.jdField_a_of_type_ComTencentWidgetXPanelContainer);
-    this.jdField_a_of_type_Dy.notifyDataSetChanged();
+    this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.getVisibility() == 0)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a();
     }
@@ -2897,30 +2931,30 @@ public class LiteActivity
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin = AppConstants.DATALINE_IPAD_UIN;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType = 6003;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_IPAD_UIN;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 6003;
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin = AppConstants.DATALINE_PC_UIN;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType = 6000;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 6000;
   }
   
   public void e(Intent paramIntent)
   {
     if (paramIntent.getBooleanExtra("MigSdkShareNotDone", false))
     {
-      this.jdField_a_of_type_Aupt = ausc.a(paramIntent, this.app, this);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption = ForwardOptionBuilder.a(paramIntent, this.app, this);
       paramIntent = new Bundle();
       paramIntent.putString("uin", String.valueOf(AppConstants.DATALINE_PC_UIN));
       paramIntent.putInt("uintype", -1);
-      this.jdField_a_of_type_Aupt.a(aupp.f.intValue(), paramIntent);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(ForwardAbility.ForwardAbilityType.f.intValue(), paramIntent);
     }
     int k;
     do
     {
       return;
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(a());
-      k = paramIntent.getIntExtra(bhcc.h, -1);
+      k = paramIntent.getIntExtra(AlbumConstants.h, -1);
       if (55 != k) {
         break label329;
       }
@@ -3006,9 +3040,9 @@ public class LiteActivity
   {
     super.finish();
     g();
-    ((ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).jdField_a_of_type_Boolean = false;
+    ((DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).jdField_a_of_type_Boolean = false;
     l();
-    if ((this.jdField_c_of_type_Boolean) && (AIOUtils.isUserOperatedInAIO) && (!this.d))
+    if ((this.jdField_c_of_type_Boolean) && (AIOUtils.o) && (!this.d))
     {
       super.sendBroadcast(new Intent("com.tencent.mobileqq.search.cancel"));
       this.d = true;
@@ -3029,19 +3063,19 @@ public class LiteActivity
         localObject1 = this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText();
       }
       localObject2 = a();
-      if ((!StringUtil.isEmpty((String)localObject2)) || (this.jdField_a_of_type_ComTencentWidgetXEditTextEx == null) || (!StringUtil.isEmpty(String.valueOf(this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText())))) {
+      if ((!StringUtil.a((String)localObject2)) || (this.jdField_a_of_type_ComTencentWidgetXEditTextEx == null) || (!StringUtil.a(String.valueOf(this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText())))) {
         break label82;
       }
     }
     label82:
-    while ((!StringUtil.isEmpty((String)localObject2)) && (this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (((String)localObject2).equals(String.valueOf(this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText()))))
+    while ((!StringUtil.a((String)localObject2)) && (this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (((String)localObject2).equals(String.valueOf(this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText()))))
     {
       return;
       str = AppConstants.DATALINE_PC_UIN;
       k = 6000;
       break;
     }
-    Object localObject2 = awtg.a(this.app);
+    Object localObject2 = DraftTextManager.a(this.app);
     if ((localObject1 != null) && (((CharSequence)localObject1).length() > 0))
     {
       DraftTextInfo localDraftTextInfo = new DraftTextInfo();
@@ -3049,20 +3083,20 @@ public class LiteActivity
       localDraftTextInfo.type = k;
       localDraftTextInfo.text = ((CharSequence)localObject1).toString();
       localDraftTextInfo.time = NetConnInfoCenter.getServerTimeMillis();
-      ((awtg)localObject2).a(this.app, localDraftTextInfo);
+      ((DraftTextManager)localObject2).a(this.app, localDraftTextInfo);
     }
     for (;;)
     {
       localObject1 = this.app.getMessageFacade();
-      localObject2 = ((awtg)localObject2).a(this.app, str, k);
+      localObject2 = ((DraftTextManager)localObject2).a(this.app, str, k);
       if (localObject2 == null) {
         break;
       }
-      ((QQMessageFacade)localObject1).notifyDraftUpdated(str, k, "", ((DraftSummaryInfo)localObject2).getSummary(), ((DraftSummaryInfo)localObject2).getTime());
+      ((QQMessageFacade)localObject1).a(str, k, "", ((DraftSummaryInfo)localObject2).getSummary(), ((DraftSummaryInfo)localObject2).getTime());
       return;
-      ((awtg)localObject2).a(this.app, str, k);
+      ((DraftTextManager)localObject2).a(this.app, str, k);
     }
-    ((QQMessageFacade)localObject1).notifyDraftUpdated(str, k, "", "", 0L);
+    ((QQMessageFacade)localObject1).a(str, k, "", "", 0L);
   }
   
   void g(Intent paramIntent)
@@ -3118,7 +3152,7 @@ public class LiteActivity
             localObject2 = null;
           }
           localObject5 = new ArrayList();
-          localObject6 = (ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+          localObject6 = (DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
           localObject2 = ((ArrayList)localObject2).iterator();
           if (((Iterator)localObject2).hasNext())
           {
@@ -3128,7 +3162,7 @@ public class LiteActivity
               {
                 ArrayList localArrayList = new ArrayList();
                 localArrayList.add(localDataLineMsgRecord);
-                ((ansr)localObject6).a(localArrayList, false);
+                ((DataLineHandler)localObject6).a(localArrayList, false);
                 k = 1;
               }
             }
@@ -3142,7 +3176,7 @@ public class LiteActivity
             break label371;
           }
         }
-        ((ansr)localObject6).a((ArrayList)localObject5, false);
+        ((DataLineHandler)localObject6).a((ArrayList)localObject5, false);
       }
       for (;;)
       {
@@ -3160,7 +3194,7 @@ public class LiteActivity
           if (l != 0L) {
             break label1513;
           }
-          paramIntent = bdof.a(paramIntent);
+          paramIntent = StructMsgFactory.a(paramIntent);
           if ((paramIntent == null) || (!(paramIntent instanceof AbsShareMsg))) {
             break label1516;
           }
@@ -3210,10 +3244,10 @@ public class LiteActivity
               switch (m)
               {
               default: 
-                bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_forwardin_other");
+                StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_forwardin_other");
                 break;
               case 101: 
-                bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_forwardin_image");
+                StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_forwardin_image");
                 localObject2 = paramIntent.getStringExtra("dataline_forward_path");
                 if (localObject2 == null)
                 {
@@ -3227,7 +3261,7 @@ public class LiteActivity
                   if (k < localObject6.length) {
                     try
                     {
-                      if (FileUtils.fileExists(localObject6[k])) {}
+                      if (FileUtils.a(localObject6[k])) {}
                       for (localObject2 = localObject6[k];; localObject2 = URLDecoder.decode(localObject6[k], "UTF-8"))
                       {
                         if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -3237,7 +3271,7 @@ public class LiteActivity
                           break label830;
                         }
                         a((String)localObject2);
-                        bdla.b(this.app, "CliOper", "", "", "0X800492E", "0X800492E", 0, 0, "", "", "", "");
+                        ReportController.b(this.app, "CliOper", "", "", "0X800492E", "0X800492E", 0, 0, "", "", "", "");
                         if (QLog.isColorLevel()) {
                           QLog.e("qqdataline", 2, "shareFromMigSdk|report send link:0X800492E.");
                         }
@@ -3279,14 +3313,14 @@ public class LiteActivity
           if (paramIntent.getBooleanExtra("isMigSdkShare", false)) {
             if (((ArrayList)localObject5).size() > 1)
             {
-              bdla.b(this.app, "CliOper", "", "", "0X8004930", "0X8004930", 0, 0, "", "", "", "");
+              ReportController.b(this.app, "CliOper", "", "", "0X8004930", "0X8004930", 0, 0, "", "", "", "");
               if (QLog.isColorLevel()) {
                 QLog.e("qqdataline", 2, "shareFromMigSdk|report send multi pic:0X8004930.");
               }
             }
             else if (((ArrayList)localObject5).size() == 1)
             {
-              bdla.b(this.app, "CliOper", "", "", "0X800492F", "0X800492F", 0, 0, "", "", "", "");
+              ReportController.b(this.app, "CliOper", "", "", "0X800492F", "0X800492F", 0, 0, "", "", "", "");
               if (QLog.isColorLevel()) {
                 QLog.e("qqdataline", 2, "shareFromMigSdk|report single pics:0X800492F.");
               }
@@ -3294,8 +3328,8 @@ public class LiteActivity
           }
         }
       }
-      bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_forwardin_file");
-      Object localObject3 = bmaf.a(paramIntent.getExtras(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+      StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_forwardin_file");
+      Object localObject3 = QfavHelper.a(paramIntent.getExtras(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       if (localObject3 != null)
       {
         paramIntent = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
@@ -3307,7 +3341,7 @@ public class LiteActivity
       {
         for (;;)
         {
-          this.app.getFileManagerEngine().a((FileManagerEntity)localObject3, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, k);
+          this.app.getFileManagerEngine().a((FileManagerEntity)localObject3, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, k);
           return;
           localObject3 = paramIntent.getStringExtra("dataline_forward_path");
           if ((localObject3 == null) || (((String)localObject3).equals("")))
@@ -3360,7 +3394,7 @@ public class LiteActivity
         if (!paramIntent.getBooleanExtra("isMigSdkShare", false)) {
           break label264;
         }
-        bdla.b(this.app, "CliOper", "", "", "0X8004932", "0X8004932", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X8004932", "0X8004932", 0, 0, "", "", "", "");
         if (!QLog.isColorLevel()) {
           break label264;
         }
@@ -3370,14 +3404,14 @@ public class LiteActivity
         if ((localObject4 == null) || (((String)localObject4).length() <= 0)) {
           break label264;
         }
-        if (bhfp.d.matcher((CharSequence)localObject4).find()) {
-          bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_forwardin_link");
+        if (Patterns.d.matcher((CharSequence)localObject4).find()) {
+          StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_forwardin_link");
         }
         for (;;)
         {
           a((String)localObject4);
           break;
-          bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_forwardin_text");
+          StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_forwardin_text");
         }
         break label362;
         paramIntent = null;
@@ -3420,22 +3454,22 @@ public class LiteActivity
         break label85;
       }
       this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList = new DataLineMsgSetList();
-      this.jdField_a_of_type_Dy.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList);
+      this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList);
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate datalineMsgEntities = new DataLineMsgSetList()");
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Dy.notifyDataSetChanged();
+      this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
       return;
       label85:
       this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList = paramIntent.a(true);
-      this.jdField_a_of_type_Dy.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList);
+      this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList);
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean handleMessage(android.os.Message paramMessage)
   {
     switch (paramMessage.what)
     {
@@ -3443,15 +3477,15 @@ public class LiteActivity
     for (;;)
     {
       return false;
-      a(paramMessage.arg1, paramMessage.arg2);
-      continue;
-      z();
+      b(paramMessage.arg1, paramMessage.arg2);
       continue;
       A();
+      continue;
+      B();
       d(b());
       continue;
-      A();
       B();
+      C();
       continue;
       QLog.i(jdField_a_of_type_JavaLangString, 2, "progress: " + paramMessage.arg1);
       this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setProgress(paramMessage.arg1);
@@ -3460,7 +3494,7 @@ public class LiteActivity
   
   void i()
   {
-    if (lka.b(BaseApplicationImpl.getContext())) {}
+    if (QavCameraUsage.b(BaseApplicationImpl.getContext())) {}
     do
     {
       return;
@@ -3468,7 +3502,7 @@ public class LiteActivity
       localObject = new File(str);
       if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
       {
-        QQToast.a(this, 2131718340, 0).a();
+        QQToast.a(this, 2131718859, 0).a();
         return;
       }
     } while (!c());
@@ -3483,10 +3517,10 @@ public class LiteActivity
   {
     setLeftViewName(paramIntent);
     String str = this.leftView.getText().toString();
-    if (str.contains(getString(2131719161)))
+    if (str.contains(getString(2131719718)))
     {
       this.jdField_a_of_type_AndroidWidgetTextView = this.leftView;
-      bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_op4recent");
+      StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_op4recent");
       j();
     }
     for (;;)
@@ -3508,7 +3542,7 @@ public class LiteActivity
       if ((paramIntent != null) && (!TextUtils.isEmpty(paramIntent.getAction())) && ((paramIntent.getAction().equals("android.intent.action.SEND")) || (paramIntent.getAction().equals("android.intent.action.SEND_MULTIPLE"))))
       {
         this.jdField_a_of_type_Boolean = true;
-        this.leftView.setText(getString(2131719161));
+        this.leftView.setText(getString(2131719718));
         this.jdField_a_of_type_AndroidWidgetTextView = this.leftView;
         j();
       }
@@ -3520,32 +3554,27 @@ public class LiteActivity
         if (!this.jdField_b_of_type_Boolean)
         {
           this.jdField_a_of_type_Boolean = true;
-          this.leftView.setText(getString(2131719161));
+          this.leftView.setText(getString(2131719718));
           this.jdField_a_of_type_AndroidWidgetTextView = this.leftView;
           j();
         }
       }
-      if (admg.jdField_a_of_type_Boolean)
+      if (ChatActivityConstants.jdField_a_of_type_Boolean)
       {
         str = this.leftView.getText().toString();
         paramIntent = str;
-        if (!getString(2131690499).equals(str)) {
-          paramIntent = anvx.a(2131705669) + str + anvx.a(2131705672);
+        if (!getString(2131690601).equals(str)) {
+          paramIntent = HardCodeUtil.a(2131706212) + str + HardCodeUtil.a(2131706215);
         }
         this.leftView.setContentDescription(paramIntent);
       }
       return;
-      if (str.contains(getString(2131693747))) {
-        bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_op4buddylist");
-      } else if (str.contains(getString(2131692298))) {
-        bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_op4dongtai");
+      if (str.contains(getString(2131693918))) {
+        StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_op4buddylist");
+      } else if (str.contains(getString(2131692430))) {
+        StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_op4dongtai");
       }
     }
-  }
-  
-  public boolean isNeedRecreatePanel(int paramInt)
-  {
-    return false;
   }
   
   void j()
@@ -3553,41 +3582,41 @@ public class LiteActivity
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
       localObject = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((localObject == null) || (((String)localObject).startsWith(getString(2131719161)))) {}
+      if ((localObject == null) || (((String)localObject).startsWith(getString(2131719718)))) {}
     }
     else
     {
       return;
     }
     int k = 0;
-    int m = bapk.a(this.app);
+    int m = QCallFacade.a(this.app);
     Object localObject = this.app.getMessageFacade();
     if (localObject != null) {
-      k = ((QQMessageFacade)localObject).getUnreadMsgsNum();
+      k = ((QQMessageFacade)localObject).b();
     }
     k += m;
     if (k > 0)
     {
       if (k > 99)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719161) + "(99+)");
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719718) + "(99+)");
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719161) + "(" + k + ")");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719718) + "(" + k + ")");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719161));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719718));
   }
   
   void k()
   {
     Object localObject = this.rightViewImg;
-    ((ImageView)localObject).setContentDescription(getResources().getText(2131693581));
+    ((ImageView)localObject).setContentDescription(getResources().getText(2131693737));
     ((ImageView)localObject).setVisibility(0);
-    ((ImageView)localObject).setImageResource(2130850149);
-    ((ImageView)localObject).setOnClickListener(new as(this));
-    if (admg.jdField_a_of_type_Boolean) {
-      this.rightViewImg.setContentDescription(anvx.a(2131705675));
+    ((ImageView)localObject).setImageResource(2130850547);
+    ((ImageView)localObject).setOnClickListener(new LiteActivity.21(this));
+    if (ChatActivityConstants.jdField_a_of_type_Boolean) {
+      this.rightViewImg.setContentDescription(HardCodeUtil.a(2131706218));
     }
     i(getIntent());
     if (ThemeUtil.isDefaultOrDIYTheme(false))
@@ -3595,7 +3624,7 @@ public class LiteActivity
       this.mLeftBackIcon.setVisibility(0);
       this.leftView.setBackgroundDrawable(null);
     }
-    for (localObject = getResources().getColorStateList(2131167024);; localObject = getResources().getColorStateList(2131167023))
+    for (localObject = getResources().getColorStateList(2131167031);; localObject = getResources().getColorStateList(2131167030))
     {
       this.centerView.setTextColor((ColorStateList)localObject);
       this.leftView.setTextColor((ColorStateList)localObject);
@@ -3610,7 +3639,7 @@ public class LiteActivity
     while (localIterator.hasNext())
     {
       Long localLong = (Long)localIterator.next();
-      this.app.getMessageFacade().getDatalineMessageManager(this.jdField_a_of_type_Int).b(localLong.longValue());
+      this.app.getMessageFacade().a(this.jdField_a_of_type_Int).c(localLong.longValue());
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "setMsgFailedWhenQuesting: session = " + localLong.longValue());
       }
@@ -3621,27 +3650,27 @@ public class LiteActivity
   void m()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130839611);
+    localQQToast.a(2130839690);
     localQQToast.d(2000);
-    localQQToast.c(2131693658);
+    localQQToast.c(2131693817);
     localQQToast.b(this.jdField_a_of_type_ComTencentWidgetXListView.getHeight() / 2);
   }
   
   void n()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130839611);
+    localQQToast.a(2130839690);
     localQQToast.d(2000);
-    localQQToast.c(2131693659);
+    localQQToast.c(2131693818);
     localQQToast.b(this.jdField_a_of_type_ComTencentWidgetXListView.getHeight() / 2);
   }
   
   void o()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130839611);
+    localQQToast.a(2130839690);
     localQQToast.d(2000);
-    localQQToast.c(2131693652);
+    localQQToast.c(2131693811);
     localQQToast.b(this.jdField_a_of_type_ComTencentWidgetXListView.getHeight() / 2);
   }
   
@@ -3663,7 +3692,7 @@ public class LiteActivity
       }
       long l = getIntent().getLongExtra("res_share_id", 0L);
       if (l > 0L) {
-        ForwardSdkShareOption.a(this, true, "shareToQQ", bhch.b(l));
+        ForwardSdkShareOption.a(this, true, "shareToQQ", AppShareIDUtil.b(l));
       }
       return super.onBackEvent();
     }
@@ -3671,7 +3700,7 @@ public class LiteActivity
     if ((this.jdField_a_of_type_Boolean) || (bool))
     {
       Intent localIntent = new Intent(this, SplashActivity.class);
-      localIntent.putExtra("tab_index", MainFragment.jdField_b_of_type_Int);
+      localIntent.putExtra("tab_index", FrameControllerUtil.jdField_a_of_type_Int);
       localIntent.putExtra("fragment_id", 1);
       localIntent.setFlags(67108864);
       startActivity(localIntent);
@@ -3681,9 +3710,9 @@ public class LiteActivity
   
   public void onClick(View paramView)
   {
-    AIOUtils.isUserOperatedInAIO = true;
+    AIOUtils.o = true;
     int k = paramView.getId();
-    bdla.b(this.app, "CliOper", "", "", "0X8004078", "0X8004078", 0, 0, "", "", "", "");
+    ReportController.b(this.app, "CliOper", "", "", "0X8004078", "0X8004078", 0, 0, "", "", "", "");
     switch (k)
     {
     }
@@ -3691,7 +3720,7 @@ public class LiteActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      x();
+      y();
       continue;
       Intent localIntent = (Intent)paramView.getTag();
       if (localIntent.getExtras().getInt("uintype") == 0)
@@ -3709,16 +3738,16 @@ public class LiteActivity
       paramView.setVisibility(8);
       finish();
       continue;
-      bdla.b(this.app, "dc00898", "", "", "0X8009F36", "0X8009F36", 4, 0, "", "", "", "");
+      ReportController.b(this.app, "dc00898", "", "", "0X8009F36", "0X8009F36", 4, 0, "", "", "", "");
       b(false);
       continue;
-      bdla.b(this.app, "dc00898", "", "", "0X8009F27", "0X8009F27", 4, 0, "", "", "", "");
-      u();
+      ReportController.b(this.app, "dc00898", "", "", "0X8009F27", "0X8009F27", 4, 0, "", "", "", "");
+      v();
       continue;
       if (this.j) {
         b(false);
       }
-      x();
+      y();
     }
   }
   
@@ -3727,100 +3756,6 @@ public class LiteActivity
   {
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
-  }
-  
-  public View onCreatePanel(int paramInt)
-  {
-    if (paramInt == 4) {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label58;
-      }
-    }
-    label58:
-    for (boolean bool = PermissionUtils.isStorePermissionEnable(this);; bool = true)
-    {
-      if (!bool)
-      {
-        requestPermissions(new bl(this), 3, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
-        return null;
-      }
-      return a();
-    }
-  }
-  
-  public void onHideAllPanel()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setAllUnSelected();
-  }
-  
-  public void onPanelChanged(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(14, paramInt1, paramInt2).sendToTarget();
-  }
-  
-  public void onPanelIconClick(Object paramObject)
-  {
-    if (this.j) {
-      b(true);
-    }
-    AIOUtils.isUserOperatedInAIO = true;
-    if ((paramObject == null) || (!(paramObject instanceof Integer))) {
-      return;
-    }
-    int k = ((Integer)paramObject).intValue();
-    if (k == this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a())
-    {
-      this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
-      return;
-    }
-    switch (k)
-    {
-    default: 
-      return;
-    case 4: 
-      this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(4);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.getVisibility() == 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a();
-      }
-      bdla.b(this.app, "CliOper", "", "", "0X8004079", "0X8004079", 0, 0, "", "", "", "");
-      bdla.b(this.app, "dc00898", "", "", "0X800AD64", "0X800AD64", 0, 0, "", "", "", "");
-      getIntent().putExtra("qq_sub_business_id", 107);
-      return;
-    case 5: 
-      bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_cktkphoto");
-      i();
-      bdla.b(this.app, "CliOper", "", "", "0X800407A", "0X800407A", 0, 0, "", "", "", "");
-      bdla.b(this.app, "dc00898", "", "", "0X800AD65", "0X800AD65", 0, 0, "", "", "", "");
-      return;
-    case 16: 
-      bdlq.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_ckfile");
-      if (!CheckPermission.isHasStoragePermission(this))
-      {
-        CheckPermission.requestSDCardPermission(this, new bk(this));
-        return;
-      }
-      y();
-      bdla.b(this.app, "dc00898", "", "", "0X800AD66", "0X800AD66", 0, 0, "", "", "", "");
-      return;
-    }
-    if (!a()) {
-      if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "click too fast , wait a minute.");
-      }
-    }
-    for (;;)
-    {
-      bdla.b(this.app, "dc00898", "", "", "0X800AD67", "0X800AD67", 0, 0, "", "", "", "");
-      return;
-      f();
-      bdla.b(null, "CliOper", "", "", blzp.i, blzp.i, 0, 0, "", "", "", "");
-      paramObject = new Bundle();
-      paramObject.putBoolean("string_from", false);
-      paramObject.putBoolean("string_uin", false);
-      paramObject.putLong("device_din", 0L);
-      paramObject.putInt("sTitleID", 0);
-      blzq.a(this, paramObject, "com.qqdataline.mpfile.LiteMpFileMainActivity");
-    }
   }
   
   public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
@@ -3837,7 +3772,7 @@ public class LiteActivity
       paramInt = 0;
       if (paramInt < paramArrayOfInt.length) {
         if (paramArrayOfInt[paramInt] != 0) {
-          bhdj.a(this, paramArrayOfString, paramArrayOfInt);
+          DialogUtil.a(this, paramArrayOfString, paramArrayOfInt);
         }
       }
       for (paramInt = k;; paramInt = 1)
@@ -3856,8 +3791,8 @@ public class LiteActivity
   void p()
   {
     Object localObject1 = new ArrayList();
-    bf localbf = new bf(this, (List)localObject1);
-    bg localbg = new bg(this);
+    LiteActivity.33 local33 = new LiteActivity.33(this, (List)localObject1);
+    LiteActivity.34 local34 = new LiteActivity.34(this);
     Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.iterator();
     int n = 0;
     int i1 = 0;
@@ -3895,15 +3830,15 @@ public class LiteActivity
       break;
       if (n >= 3)
       {
-        localObject1 = String.format(getString(2131693670), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
-        ((ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(115);
-        bhdj.a(this, 230, getString(2131693616), (String)localObject1, 2131690697, 2131693582, localbf, localbg).show();
+        localObject1 = String.format(getString(2131693829), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
+        ((DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(115);
+        DialogUtil.a(this, 230, getString(2131693775), (String)localObject1, 2131690800, 2131693738, local33, local34).show();
       }
       return;
     }
   }
   
-  public void q()
+  void q()
   {
     String str = this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
     if ((str != null) && (str.length() > 0))
@@ -3929,14 +3864,19 @@ public class LiteActivity
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel != null)
     {
       a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel);
-      bdla.b(this.app, "dc00898", "", "", "0X800AC2E", "0X800AC2E", 2, 0, "", "", "", "");
+      ReportController.b(this.app, "dc00898", "", "", "0X800AC2E", "0X800AC2E", 2, 0, "", "", "", "");
       return;
     }
     a(new ArrayList());
-    bdla.b(this.app, "dc00898", "", "", "0X800AC2E", "0X800AC2E", 1, 0, "", "", "", "");
+    ReportController.b(this.app, "dc00898", "", "", "0X800AC2E", "0X800AC2E", 1, 0, "", "", "", "");
   }
   
-  protected void s()
+  public void s()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setAllUnSelected();
+  }
+  
+  protected void t()
   {
     int k = this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
     if (k == 1)
@@ -3947,12 +3887,23 @@ public class LiteActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setSelected(k);
   }
   
-  public void t()
+  public void u()
   {
     this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(15, 0, 0).sendToTarget();
   }
   
-  public void u()
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() == localLooper.getThread())
+    {
+      a(paramObservable, paramObject);
+      return;
+    }
+    new Handler(localLooper).post(new LiteActivity.38(this, paramObservable, paramObject));
+  }
+  
+  public void v()
   {
     this.j = true;
     c(false);
@@ -3971,26 +3922,15 @@ public class LiteActivity
     this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMaxLines(100);
     this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setGravity(48);
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.getHeight(), this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.getBottom() });
-    localValueAnimator.addUpdateListener(new bx(this));
-    localValueAnimator.addListener(new by(this));
+    localValueAnimator.addUpdateListener(new LiteActivity.53(this));
+    localValueAnimator.addListener(new LiteActivity.54(this));
     localValueAnimator.setDuration(100L).setRepeatCount(0);
     localValueAnimator.start();
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() == localLooper.getThread())
-    {
-      a(paramObservable, paramObject);
-      return;
-    }
-    new Handler(localLooper).post(new LiteActivity.38(this, paramObservable, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.dataline.activities.LiteActivity
  * JD-Core Version:    0.7.0.1
  */

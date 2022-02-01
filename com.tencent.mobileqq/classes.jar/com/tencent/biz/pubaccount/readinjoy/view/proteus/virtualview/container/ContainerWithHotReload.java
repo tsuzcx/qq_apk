@@ -71,13 +71,13 @@ public class ContainerWithHotReload
     return this.mVafContext;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     ProteusParserWithHotReload.getInstance().addHotReloadChangedObserver(this);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     ProteusParserWithHotReload.getInstance().removeHotReloadChangedObserver(this);
@@ -144,7 +144,7 @@ public class ContainerWithHotReload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.ContainerWithHotReload
  * JD-Core Version:    0.7.0.1
  */

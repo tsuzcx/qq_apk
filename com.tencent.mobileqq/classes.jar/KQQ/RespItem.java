@@ -9,9 +9,9 @@ public final class RespItem
 {
   static int cache_eServiceID;
   static byte[] cache_vecUpdate;
-  public byte cResult;
-  public int eServiceID;
-  public byte[] vecUpdate;
+  public byte cResult = 0;
+  public int eServiceID = 0;
+  public byte[] vecUpdate = null;
   
   public RespItem() {}
   

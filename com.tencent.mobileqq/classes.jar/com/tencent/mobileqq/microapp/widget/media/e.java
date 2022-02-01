@@ -3,14 +3,14 @@ package com.tencent.mobileqq.microapp.widget.media;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.hardware.Camera;
-import bdaw;
-import bgyo;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.appbrand.a;
 import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
+import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -53,10 +53,10 @@ final class e
       {
         return;
       }
-      localObject1 = bgyo.a(this.a, 0, this.a.length);
+      localObject1 = BitmapManager.a(this.a, 0, this.a.length);
       localObject2 = new Matrix();
       f = 90.0F;
-      if (bdaw.d(bdaw.g)) {
+      if (CameraCompatibleList.d(CameraCompatibleList.g)) {
         f = 90.0F + 180.0F;
       }
       ((Matrix)localObject2).postRotate(f);
@@ -68,7 +68,7 @@ final class e
       localObject2 = new File(b.a().a("jpg"));
       ((File)localObject2).getParentFile().mkdirs();
       localObject1 = MiniAppCamera.a((Bitmap)localObject1, (File)localObject2, this.b.a);
-      if (StringUtil.isEmpty((String)localObject1))
+      if (StringUtil.a((String)localObject1))
       {
         localObject1 = c.b(this.b.b, null);
         if (localObject1 != null)

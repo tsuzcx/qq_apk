@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import pvm;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public final class ReadInJoyCommentUtils$2
+final class ReadInJoyCommentUtils$2
   implements Runnable
 {
   public void run()
   {
-    pvm.a().b();
+    ReadInJoyLogicEngineEventDispatcher.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.2
  * JD-Core Version:    0.7.0.1
  */

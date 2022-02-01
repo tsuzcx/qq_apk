@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import apcq;
-import apcx;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionMgr;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionUtil;
 
 public class ARPromotionConfigHandler$ARPromotionResHandler
   extends NormalConfigHandler<DefaultConfigInfo>
 {
   public ARPromotionConfigHandler$ARPromotionResHandler(String paramString)
   {
-    super(apcx.a + 364, paramString, "res_qq.android.ar_", "config", "ver");
+    super(PromotionUtil.a + 364, paramString, "res_qq.android.ar_", "config", "ver");
   }
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, DefaultConfigInfo paramDefaultConfigInfo)
   {
-    apcx.a(paramQQAppInterface).a(paramQQAppInterface, paramString, paramDefaultConfigInfo);
+    PromotionUtil.a(paramQQAppInterface).a(paramQQAppInterface, paramString, paramDefaultConfigInfo);
   }
 }
 

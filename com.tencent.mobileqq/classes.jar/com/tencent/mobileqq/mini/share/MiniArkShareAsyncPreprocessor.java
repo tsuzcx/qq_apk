@@ -3,17 +3,17 @@ package com.tencent.mobileqq.mini.share;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import aqcc;
-import aqcd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.ark.share.IArkMessagePreprocessor;
+import com.tencent.mobileqq.ark.share.IArkMessagePreprocessorCallback;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MiniArkShareAsyncPreprocessor
-  implements aqcc
+  implements IArkMessagePreprocessor
 {
   private static final String TAG = "MiniArkShareAsyncPrepro [miniappArkShare]";
   private final Bundle bundle;
@@ -23,7 +23,7 @@ public class MiniArkShareAsyncPreprocessor
     this.bundle = paramBundle;
   }
   
-  private void handleArkShareNewImageUrl(boolean paramBoolean, Bundle paramBundle, JSONObject paramJSONObject, aqcd paramaqcd, Object paramObject)
+  private void handleArkShareNewImageUrl(boolean paramBoolean, Bundle paramBundle, JSONObject paramJSONObject, IArkMessagePreprocessorCallback paramIArkMessagePreprocessorCallback, Object paramObject)
   {
     paramBundle = paramBundle.getString("imageUrl", "").replaceFirst("https*://", "");
     paramBundle = MiniProgramShareUtils.updateImagePathToArkMeta(paramJSONObject.optString("forward_ark_app_meta"), paramBundle);
@@ -31,8 +31,8 @@ public class MiniArkShareAsyncPreprocessor
     {
       paramJSONObject.put("forward_ark_app_meta", paramBundle);
       this.bundle.clear();
-      if (paramaqcd != null) {
-        paramaqcd.a(paramBoolean, paramJSONObject, paramObject);
+      if (paramIArkMessagePreprocessorCallback != null) {
+        paramIArkMessagePreprocessorCallback.a(paramBoolean, paramJSONObject, paramObject);
       }
       return;
     }
@@ -50,11 +50,11 @@ public class MiniArkShareAsyncPreprocessor
     return (paramJSONObject != null) && (!"intro".equals(paramJSONObject.optString("forward_ark_app_view")));
   }
   
-  public void process(JSONObject paramJSONObject, aqcd paramaqcd, Object paramObject)
+  public void process(JSONObject paramJSONObject, IArkMessagePreprocessorCallback paramIArkMessagePreprocessorCallback, Object paramObject)
   {
     if (paramJSONObject == null) {
-      if (paramaqcd != null) {
-        paramaqcd.a(true, paramJSONObject, paramObject);
+      if (paramIArkMessagePreprocessorCallback != null) {
+        paramIArkMessagePreprocessorCallback.a(true, paramJSONObject, paramObject);
       }
     }
     String str1;
@@ -84,16 +84,16 @@ public class MiniArkShareAsyncPreprocessor
       if (!TextUtils.isEmpty(str1)) {
         break;
       }
-    } while (paramaqcd == null);
-    paramaqcd.a(true, paramJSONObject, paramObject);
+    } while (paramIArkMessagePreprocessorCallback == null);
+    paramIArkMessagePreprocessorCallback.a(true, paramJSONObject, paramObject);
     return;
     if ((URLUtil.isHttpsUrl(str1)) || (URLUtil.isHttpUrl(str1))) {}
     for (int i = 1; i != 0; i = 0)
     {
-      MiniArkShareAsyncManager.performChangeArkShareImageUrl(str1, new MiniArkShareAsyncPreprocessor.1(this, paramJSONObject, paramaqcd, paramObject, str1));
+      MiniArkShareAsyncManager.performChangeArkShareImageUrl(str1, new MiniArkShareAsyncPreprocessor.1(this, paramJSONObject, paramIArkMessagePreprocessorCallback, paramObject, str1));
       return;
     }
-    MiniArkShareAsyncManager.performUploadArkShareImage(str1, new MiniArkShareAsyncPreprocessor.2(this, paramJSONObject, paramaqcd, paramObject, str1));
+    MiniArkShareAsyncManager.performUploadArkShareImage(str1, new MiniArkShareAsyncPreprocessor.2(this, paramJSONObject, paramIArkMessagePreprocessorCallback, paramObject, str1));
   }
 }
 

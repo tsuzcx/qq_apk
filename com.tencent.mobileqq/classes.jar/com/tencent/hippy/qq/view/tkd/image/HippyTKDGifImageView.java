@@ -15,8 +15,8 @@ public class HippyTKDGifImageView
   implements HippyTKDSkinHandler.HippyQBCommonSkin, HippyViewBase
 {
   public static final String TAG = "HippyGifImage";
-  private HippyMap mClipInfoMap;
-  private boolean mEnableNoPicMode;
+  private HippyMap mClipInfoMap = null;
+  private boolean mEnableNoPicMode = false;
   String mGIFUrl = null;
   private NativeGestureDispatcher mGestureDispatcher;
   protected HippyEngineContext mHippyEngineContext;
@@ -25,7 +25,7 @@ public class HippyTKDGifImageView
   private HippyTKDGifImageView.OnLoadStartEvent mOnLoadStartEvent;
   private HippyTKDGifImageView.OnStartPlayEvent mOnStartPlayEvent;
   private HippyTKDGifImageView.OnStopPlayEvent mOnStopPlayEvent;
-  private HippyMap mReportData;
+  private HippyMap mReportData = null;
   boolean mUserRequestPlay = false;
   
   public HippyTKDGifImageView(Context paramContext)
@@ -137,7 +137,7 @@ public class HippyTKDGifImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.image.HippyTKDGifImageView
  * JD-Core Version:    0.7.0.1
  */

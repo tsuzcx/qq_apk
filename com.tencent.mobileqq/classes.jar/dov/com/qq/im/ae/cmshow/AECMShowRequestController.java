@@ -1,25 +1,15 @@
 package dov.com.qq.im.ae.cmshow;
 
-import amlo;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Matrix;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bnis;
-import bnix;
-import bniy;
-import bniz;
-import bnja;
-import bnjb;
-import bnjc;
-import bnqm;
-import bnrh;
-import bofz;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.ApolloClientQIPCModule;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -29,9 +19,9 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
@@ -40,6 +30,9 @@ import dov.com.qq.im.ae.protobuf.AEPbData.CartoonPtaResponse;
 import dov.com.qq.im.ae.protobuf.AEPbData.DressItem;
 import dov.com.qq.im.ae.protobuf.AEPbData.FaceAttr;
 import dov.com.qq.im.ae.protobuf.AEPbData.ImageInfo;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.capture.CaptureContext;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -56,16 +49,16 @@ import mqq.os.MqqHandler;
 public class AECMShowRequestController
 {
   private int jdField_a_of_type_Int;
-  private bnjc jdField_a_of_type_Bnjc;
   private HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
+  private AECMShowRequestController.Callback jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback;
   private Runnable jdField_a_of_type_JavaLangRunnable = new AECMShowRequestController.1(this);
   private int b;
   
-  public AECMShowRequestController(int paramInt, @Nullable bnjc parambnjc)
+  public AECMShowRequestController(int paramInt, @Nullable AECMShowRequestController.Callback paramCallback)
   {
     this.jdField_a_of_type_Int = paramInt;
-    if (parambnjc != null) {
-      this.jdField_a_of_type_Bnjc = parambnjc;
+    if (paramCallback != null) {
+      this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback = paramCallback;
     }
   }
   
@@ -89,7 +82,7 @@ public class AECMShowRequestController
   
   private PeakAppInterface a()
   {
-    AppInterface localAppInterface = bofz.a();
+    AppInterface localAppInterface = CaptureContext.a();
     if ((localAppInterface instanceof PeakAppInterface)) {
       return (PeakAppInterface)localAppInterface;
     }
@@ -101,7 +94,7 @@ public class AECMShowRequestController
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (localAppRuntime == null)
     {
-      bnrh.d("AECMShowRequestController", "appRuntime is null");
+      AEQLog.d("AECMShowRequestController", "appRuntime is null");
       return "";
     }
     String str = localAppRuntime.getAccount();
@@ -144,13 +137,13 @@ public class AECMShowRequestController
   
   private void a(int paramInt, @NonNull HashMap<String, String> paramHashMap, @NonNull String paramString, @NonNull Map<String, Integer> paramMap)
   {
-    amlo.a(paramInt, new bnja(this, paramHashMap, paramMap, paramString));
+    ApolloClientQIPCModule.a(paramInt, new AECMShowRequestController.5(this, paramHashMap, paramMap, paramString));
   }
   
   private void a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mCallback = new bniy(this);
+    localHttpNetReq.mCallback = new AECMShowRequestController.3(this);
     localHttpNetReq.mReqUrl = "https://api.shadowai.qq.com/trpc.mobile_qq_http.mobile_qq_http_cgi.MobileQQHttpCgi/CartoonPta";
     localHttpNetReq.mHttpMethod = 1;
     localHttpNetReq.mExcuteTimeLimit = 30000L;
@@ -161,12 +154,12 @@ public class AECMShowRequestController
     paramBitmap = BaseApplicationImpl.getApplication().getRuntime();
     if (paramBitmap == null)
     {
-      bnrh.d("AECMShowRequestController", "appRuntime is null");
-      if (this.jdField_a_of_type_Bnjc != null) {
-        this.jdField_a_of_type_Bnjc.a(2, null);
+      AEQLog.d("AECMShowRequestController", "appRuntime is null");
+      if (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback != null) {
+        this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback.a(2, null);
       }
     }
-    label439:
+    label447:
     do
     {
       return;
@@ -176,20 +169,20 @@ public class AECMShowRequestController
       localObject = ((TicketManager)localObject).getPskey(paramBitmap, "shadowai.qq.com");
       String str2 = AEModule.getVersion();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localHttpNetReq.mReqProperties.put("Cookie", "uin=" + paramBitmap + ";pskey=" + (String)localObject + ";qqversion=" + "8.4.10" + ";aekitversion=" + str2 + ";platform=" + "Android");
+        localHttpNetReq.mReqProperties.put("Cookie", "uin=" + paramBitmap + ";pskey=" + (String)localObject + ";qqversion=" + "8.5.5" + ";aekitversion=" + str2 + ";platform=" + "Android");
       }
       for (;;)
       {
-        localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+        localHttpNetReq.mContinuErrorLimit = NetworkUtil.a(NetworkCenter.getInstance().getNetType());
         paramBitmap = a();
         if (paramBitmap == null) {
-          break label439;
+          break label447;
         }
-        paramBitmap.getNetEngine(0).sendReq(localHttpNetReq);
+        ((IHttpEngineService)paramBitmap.getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
         this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
         this.b = 1;
-        if (this.jdField_a_of_type_Bnjc != null) {
-          this.jdField_a_of_type_Bnjc.c(this.b);
+        if (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback != null) {
+          this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback.b(this.b);
         }
         if (this.jdField_a_of_type_JavaLangRunnable == null) {
           break;
@@ -198,14 +191,14 @@ public class AECMShowRequestController
         ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 150L);
         return;
         c();
-        localHttpNetReq.mReqProperties.put("Cookie", "uin=" + paramBitmap + ";skey=" + str1 + ";qqversion=" + "8.4.10" + ";aekitversion=" + str2 + ";platform=" + "Android");
+        localHttpNetReq.mReqProperties.put("Cookie", "uin=" + paramBitmap + ";skey=" + str1 + ";qqversion=" + "8.5.5" + ";aekitversion=" + str2 + ";platform=" + "Android");
       }
-      bnrh.d("AECMShowRequestController", "[sendRequest] peakAppInterface is null");
+      AEQLog.d("AECMShowRequestController", "[sendRequest] peakAppInterface is null");
       if (this.jdField_a_of_type_JavaLangRunnable != null) {
         ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       }
-    } while (this.jdField_a_of_type_Bnjc == null);
-    this.jdField_a_of_type_Bnjc.a(2, null);
+    } while (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback == null);
+    this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback.a(2, null);
   }
   
   private void a(@NonNull NetResp paramNetResp)
@@ -216,29 +209,29 @@ public class AECMShowRequestController
       localCartoonPtaResponse.mergeFrom(paramNetResp.mRespData);
       if ((localCartoonPtaResponse.code != null) && (localCartoonPtaResponse.code.get() != 1001) && (localCartoonPtaResponse.code.get() != 1005) && (localCartoonPtaResponse.dressList != null) && (!CollectionUtils.isEmpty(localCartoonPtaResponse.dressList.get())) && (localCartoonPtaResponse.faceAttr != null) && (localCartoonPtaResponse.faceAttr.get() != null) && (((AEPbData.FaceAttr)localCartoonPtaResponse.faceAttr.get()).roleID != null))
       {
-        bnrh.a("AECMShowRequestController", "[processCartonResponse] valid dressList");
+        AEQLog.a("AECMShowRequestController", "[processCartonResponse] valid dressList");
         String str = a(localCartoonPtaResponse);
         if (this.jdField_a_of_type_Int == 1) {
           a(localCartoonPtaResponse.dressList.get(), ((AEPbData.FaceAttr)localCartoonPtaResponse.faceAttr.get()).roleID.get(), str);
         }
         for (;;)
         {
-          bnqm.a().a(1000, String.valueOf(paramNetResp.reqCost), "CartoonPta", localCartoonPtaResponse.code.get());
+          AEBaseDataReporter.a().a(1000, String.valueOf(paramNetResp.reqCost), "CartoonPta", localCartoonPtaResponse.code.get());
           return;
           if (this.jdField_a_of_type_Int == 2)
           {
             if (this.jdField_a_of_type_JavaLangRunnable != null) {
               ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
             }
-            if (this.jdField_a_of_type_Bnjc != null)
+            if (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback != null)
             {
               this.b = 100;
-              this.jdField_a_of_type_Bnjc.c(this.b);
+              this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback.b(this.b);
               AECMShowRequestController.CmShowDataWrapper localCmShowDataWrapper = new AECMShowRequestController.CmShowDataWrapper();
               localCmShowDataWrapper.sceneMode = this.jdField_a_of_type_Int;
               localCmShowDataWrapper.dressidMaps = a(localCartoonPtaResponse.dressList.get());
               localCmShowDataWrapper.cmJsonString = str;
-              this.jdField_a_of_type_Bnjc.a(1, localCmShowDataWrapper);
+              this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback.a(1, localCmShowDataWrapper);
             }
           }
         }
@@ -246,15 +239,15 @@ public class AECMShowRequestController
     }
     catch (InvalidProtocolBufferMicroException paramNetResp)
     {
-      bnrh.a("AECMShowRequestController", "[processCartonResponse] e=", paramNetResp);
+      AEQLog.a("AECMShowRequestController", "[processCartonResponse] e=", paramNetResp);
       if (this.jdField_a_of_type_JavaLangRunnable != null) {
         ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       }
-      if (this.jdField_a_of_type_Bnjc != null)
+      if (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback != null)
       {
-        this.jdField_a_of_type_Bnjc.a(2, null);
+        this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback.a(2, null);
         return;
-        bnrh.a("AECMShowRequestController", "[processCartonResponse] dressList is empty");
+        AEQLog.a("AECMShowRequestController", "[processCartonResponse] dressList is empty");
         int i;
         if (localCartoonPtaResponse.code != null) {
           if (localCartoonPtaResponse.code.get() == 1001) {
@@ -266,10 +259,10 @@ public class AECMShowRequestController
           if (this.jdField_a_of_type_JavaLangRunnable != null) {
             ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
           }
-          if (this.jdField_a_of_type_Bnjc == null) {
+          if (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback == null) {
             break;
           }
-          this.jdField_a_of_type_Bnjc.a(i, null);
+          this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback.a(i, null);
           break;
           if (localCartoonPtaResponse.code.get() == 1005)
           {
@@ -278,10 +271,10 @@ public class AECMShowRequestController
             if (this.jdField_a_of_type_JavaLangRunnable != null) {
               ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
             }
-            if (this.jdField_a_of_type_Bnjc == null) {
+            if (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback == null) {
               break;
             }
-            this.jdField_a_of_type_Bnjc.a(2, null);
+            this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback.a(2, null);
             break;
           }
           i = 2;
@@ -301,16 +294,16 @@ public class AECMShowRequestController
         localHashMap.put(Integer.valueOf(localDressItem.id.get()), localDressItem.name.get());
       }
     }
-    amlo.a(new ArrayList(localHashMap.keySet()), new bniz(this, localHashMap, paramList, paramInt, paramString));
+    ApolloClientQIPCModule.a(new ArrayList(localHashMap.keySet()), new AECMShowRequestController.4(this, localHashMap, paramList, paramInt, paramString));
   }
   
   private byte[] a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     Object localObject = new ByteArrayOutputStream();
-    bnrh.b("AECMShowRequestController", "before: " + System.currentTimeMillis() + ", uploadMaxSize=" + paramInt1 + ", src bitmap size=[" + paramBitmap.getWidth() + ", " + paramBitmap.getHeight() + "]");
+    AEQLog.b("AECMShowRequestController", "before: " + System.currentTimeMillis() + ", uploadMaxSize=" + paramInt1 + ", src bitmap size=[" + paramBitmap.getWidth() + ", " + paramBitmap.getHeight() + "]");
     paramBitmap = a(paramBitmap, paramInt1);
     paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt2, (OutputStream)localObject);
-    bnrh.b("AECMShowRequestController", "after: " + System.currentTimeMillis() + ", scaled bitmap size=[" + paramBitmap.getWidth() + ", " + paramBitmap.getHeight() + "]");
+    AEQLog.b("AECMShowRequestController", "after: " + System.currentTimeMillis() + ", scaled bitmap size=[" + paramBitmap.getWidth() + ", " + paramBitmap.getHeight() + "]");
     localObject = ((ByteArrayOutputStream)localObject).toByteArray();
     AEPbData.CartoonPtaRequest localCartoonPtaRequest = new AEPbData.CartoonPtaRequest();
     localCartoonPtaRequest.img.setHasFlag(true);
@@ -326,14 +319,14 @@ public class AECMShowRequestController
   {
     if (!TextUtils.isEmpty(a()))
     {
-      bnrh.b("AECMShowRequestController", "psKey not empty.");
+      AEQLog.b("AECMShowRequestController", "psKey not empty.");
       return;
     }
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     TicketManager localTicketManager = (TicketManager)((AppRuntime)localObject).getManager(2);
     localObject = ((AppRuntime)localObject).getAccount();
-    bnjb localbnjb = new bnjb(this);
-    localTicketManager.getPskey((String)localObject, 16L, new String[] { "shadowai.qq.com" }, localbnjb);
+    AECMShowRequestController.6 local6 = new AECMShowRequestController.6(this);
+    localTicketManager.getPskey((String)localObject, 16L, new String[] { "shadowai.qq.com" }, local6);
   }
   
   public void a()
@@ -343,13 +336,13 @@ public class AECMShowRequestController
   
   public void a(Bitmap paramBitmap)
   {
-    bnis.b(new bnix(this, paramBitmap));
+    AECMShowQipcModule.b(new AECMShowRequestController.2(this, paramBitmap));
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Bnjc != null) {
-      this.jdField_a_of_type_Bnjc = null;
+    if (this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback != null) {
+      this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$Callback = null;
     }
     if (this.jdField_a_of_type_JavaLangRunnable != null) {
       ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -358,7 +351,7 @@ public class AECMShowRequestController
     {
       PeakAppInterface localPeakAppInterface = a();
       if (localPeakAppInterface != null) {
-        localPeakAppInterface.getNetEngine(0).cancelReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+        ((IHttpEngineService)localPeakAppInterface.getRuntimeService(IHttpEngineService.class, "all")).cancelReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
       }
       this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
     }
@@ -366,7 +359,7 @@ public class AECMShowRequestController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.cmshow.AECMShowRequestController
  * JD-Core Version:    0.7.0.1
  */

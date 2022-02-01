@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestRegisterAndroid
   extends JceStruct
 {
-  public long ulRequestOptional;
+  public long ulRequestOptional = 0L;
   
   public SvcRequestRegisterAndroid() {}
   

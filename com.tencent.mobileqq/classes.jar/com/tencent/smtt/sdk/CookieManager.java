@@ -406,6 +406,7 @@ public class CookieManager
     return android.webkit.CookieManager.getInstance().hasCookies();
   }
   
+  @Deprecated
   public void removeAllCookie()
   {
     if (this.a != null) {
@@ -435,6 +436,7 @@ public class CookieManager
     i.a(android.webkit.CookieManager.getInstance(), "removeAllCookies", new Class[] { android.webkit.ValueCallback.class }, new Object[] { paramValueCallback });
   }
   
+  @Deprecated
   public void removeExpiredCookie()
   {
     x localx = x.a();
@@ -446,6 +448,7 @@ public class CookieManager
     android.webkit.CookieManager.getInstance().removeExpiredCookie();
   }
   
+  @Deprecated
   public void removeSessionCookie()
   {
     x localx = x.a();
@@ -486,19 +489,19 @@ public class CookieManager
     //   18: invokevirtual 292	com/tencent/smtt/sdk/x:c	()Lcom/tencent/smtt/sdk/y;
     //   21: invokevirtual 303	com/tencent/smtt/sdk/y:b	()Lcom/tencent/smtt/export/external/DexLoader;
     //   24: ldc_w 311
-    //   27: ldc_w 378
+    //   27: ldc_w 380
     //   30: iconst_1
     //   31: anewarray 136	java/lang/Class
     //   34: dup
     //   35: iconst_0
-    //   36: getstatic 382	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   36: getstatic 384	java/lang/Boolean:TYPE	Ljava/lang/Class;
     //   39: aastore
     //   40: iconst_1
     //   41: anewarray 4	java/lang/Object
     //   44: dup
     //   45: iconst_0
     //   46: iload_1
-    //   47: invokestatic 386	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   47: invokestatic 388	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   50: aastore
     //   51: invokevirtual 319	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   54: pop
@@ -507,7 +510,7 @@ public class CookieManager
     //   57: return
     //   58: invokestatic 133	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
     //   61: iload_1
-    //   62: invokevirtual 388	android/webkit/CookieManager:setAcceptCookie	(Z)V
+    //   62: invokevirtual 390	android/webkit/CookieManager:setAcceptCookie	(Z)V
     //   65: goto -10 -> 55
     //   68: astore_2
     //   69: aload_2
@@ -551,14 +554,14 @@ public class CookieManager
     //   18: invokevirtual 292	com/tencent/smtt/sdk/x:c	()Lcom/tencent/smtt/sdk/y;
     //   21: invokevirtual 303	com/tencent/smtt/sdk/y:b	()Lcom/tencent/smtt/export/external/DexLoader;
     //   24: astore_3
-    //   25: getstatic 382	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   25: getstatic 384	java/lang/Boolean:TYPE	Ljava/lang/Class;
     //   28: astore 4
     //   30: aload_1
     //   31: invokevirtual 309	com/tencent/smtt/sdk/WebView:getView	()Landroid/view/View;
     //   34: astore_1
     //   35: aload_3
     //   36: ldc_w 311
-    //   39: ldc_w 392
+    //   39: ldc_w 394
     //   42: iconst_2
     //   43: anewarray 136	java/lang/Class
     //   46: dup
@@ -578,7 +581,7 @@ public class CookieManager
     //   64: dup
     //   65: iconst_1
     //   66: iload_2
-    //   67: invokestatic 386	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   67: invokestatic 388	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   70: aastore
     //   71: invokevirtual 319	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   74: pop
@@ -590,13 +593,13 @@ public class CookieManager
     //   83: if_icmplt -8 -> 75
     //   86: invokestatic 133	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
     //   89: astore_3
-    //   90: getstatic 382	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   90: getstatic 384	java/lang/Boolean:TYPE	Ljava/lang/Class;
     //   93: astore 4
     //   95: aload_1
     //   96: invokevirtual 309	com/tencent/smtt/sdk/WebView:getView	()Landroid/view/View;
     //   99: astore_1
     //   100: aload_3
-    //   101: ldc_w 393
+    //   101: ldc_w 395
     //   104: iconst_2
     //   105: anewarray 136	java/lang/Class
     //   108: dup
@@ -616,7 +619,7 @@ public class CookieManager
     //   127: dup
     //   128: iconst_1
     //   129: iload_2
-    //   130: invokestatic 386	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   130: invokestatic 388	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   133: aastore
     //   134: invokestatic 145	com/tencent/smtt/utils/i:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   137: pop
@@ -671,7 +674,7 @@ public class CookieManager
     //   22: invokevirtual 292	com/tencent/smtt/sdk/x:c	()Lcom/tencent/smtt/sdk/y;
     //   25: invokevirtual 303	com/tencent/smtt/sdk/y:b	()Lcom/tencent/smtt/export/external/DexLoader;
     //   28: ldc_w 311
-    //   31: ldc_w 398
+    //   31: ldc_w 400
     //   34: iconst_3
     //   35: anewarray 136	java/lang/Class
     //   38: dup
@@ -706,12 +709,12 @@ public class CookieManager
     //   74: monitorexit
     //   75: return
     //   76: invokestatic 95	com/tencent/smtt/sdk/x:a	()Lcom/tencent/smtt/sdk/x;
-    //   79: invokevirtual 399	com/tencent/smtt/sdk/x:d	()Z
+    //   79: invokevirtual 401	com/tencent/smtt/sdk/x:d	()Z
     //   82: ifne +65 -> 147
     //   85: new 112	com/tencent/smtt/sdk/CookieManager$b
     //   88: dup
     //   89: aload_0
-    //   90: invokespecial 402	com/tencent/smtt/sdk/CookieManager$b:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
+    //   90: invokespecial 404	com/tencent/smtt/sdk/CookieManager$b:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
     //   93: astore 4
     //   95: aload 4
     //   97: iconst_1
@@ -731,12 +734,12 @@ public class CookieManager
     //   126: aload_0
     //   127: new 86	java/util/concurrent/CopyOnWriteArrayList
     //   130: dup
-    //   131: invokespecial 403	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
+    //   131: invokespecial 405	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
     //   134: putfield 84	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   137: aload_0
     //   138: getfield 84	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   141: aload 4
-    //   143: invokevirtual 407	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
+    //   143: invokevirtual 409	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
     //   146: pop
     //   147: aload_0
     //   148: getfield 37	com/tencent/smtt/sdk/CookieManager:f	Z
@@ -815,7 +818,7 @@ public class CookieManager
     //   22: invokevirtual 292	com/tencent/smtt/sdk/x:c	()Lcom/tencent/smtt/sdk/y;
     //   25: invokevirtual 303	com/tencent/smtt/sdk/y:b	()Lcom/tencent/smtt/export/external/DexLoader;
     //   28: ldc_w 311
-    //   31: ldc_w 398
+    //   31: ldc_w 400
     //   34: iconst_2
     //   35: anewarray 136	java/lang/Class
     //   38: dup
@@ -851,12 +854,12 @@ public class CookieManager
     //   82: aload_2
     //   83: invokevirtual 146	android/webkit/CookieManager:setCookie	(Ljava/lang/String;Ljava/lang/String;)V
     //   86: invokestatic 95	com/tencent/smtt/sdk/x:a	()Lcom/tencent/smtt/sdk/x;
-    //   89: invokevirtual 399	com/tencent/smtt/sdk/x:d	()Z
+    //   89: invokevirtual 401	com/tencent/smtt/sdk/x:d	()Z
     //   92: ifne -28 -> 64
     //   95: new 112	com/tencent/smtt/sdk/CookieManager$b
     //   98: dup
     //   99: aload_0
-    //   100: invokespecial 402	com/tencent/smtt/sdk/CookieManager$b:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
+    //   100: invokespecial 404	com/tencent/smtt/sdk/CookieManager$b:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
     //   103: astore 4
     //   105: aload 4
     //   107: iconst_2
@@ -876,12 +879,12 @@ public class CookieManager
     //   136: aload_0
     //   137: new 86	java/util/concurrent/CopyOnWriteArrayList
     //   140: dup
-    //   141: invokespecial 403	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
+    //   141: invokespecial 405	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
     //   144: putfield 84	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   147: aload_0
     //   148: getfield 84	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   151: aload 4
-    //   153: invokevirtual 407	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
+    //   153: invokevirtual 409	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
     //   156: pop
     //   157: goto -93 -> 64
     //   160: astore_1
@@ -950,7 +953,7 @@ public class CookieManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.CookieManager
  * JD-Core Version:    0.7.0.1
  */

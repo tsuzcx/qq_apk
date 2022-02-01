@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import anjv;
 import com.tencent.qphone.base.util.QLog;
 
-public final class ApolloConfigDataReport$3
+final class ApolloConfigDataReport$3
   implements Runnable
 {
   public void run()
@@ -11,12 +10,12 @@ public final class ApolloConfigDataReport$3
     if (QLog.isColorLevel()) {
       QLog.d("ApolloConfigDataReport", 2, "getStoreStabilityWatchURLSet. mStoreStabilityWatchURLSet is null, reparse from file");
     }
-    anjv.b(anjv.a(2, anjv.a()));
+    ApolloConfigDataReport.b(ApolloConfigDataReport.a(2, ApolloConfigDataReport.a()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.3
  * JD-Core Version:    0.7.0.1
  */

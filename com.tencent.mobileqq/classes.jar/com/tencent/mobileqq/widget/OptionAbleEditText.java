@@ -21,9 +21,9 @@ public class OptionAbleEditText
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected String a()
+  protected boolean a()
   {
-    return "com.tencent.mobileqq.widget.OptionAbleEditText";
+    return true;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
@@ -33,7 +33,7 @@ public class OptionAbleEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OptionAbleEditText
  * JD-Core Version:    0.7.0.1
  */

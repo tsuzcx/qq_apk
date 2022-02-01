@@ -8,8 +8,8 @@ public final class s_CustomPraise
   extends JceStruct
 {
   static stcustomPraise cache_customPraise = new stcustomPraise();
-  public stcustomPraise customPraise;
-  public int iItemId;
+  public stcustomPraise customPraise = null;
+  public int iItemId = 0;
   public String strPraisePic = "";
   
   public s_CustomPraise() {}

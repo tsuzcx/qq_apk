@@ -16,11 +16,9 @@ import android.os.Handler;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.c.k;
-import com.tencent.mobileqq.msf.core.c.k.c;
-import com.tencent.mobileqq.msf.core.net.j;
-import com.tencent.mobileqq.msf.core.z;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.c.j.c;
+import com.tencent.mobileqq.msf.core.s;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.msf.sdk.y;
@@ -511,7 +509,7 @@ public final class a
   
   private void t()
   {
-    this.k = j.a(this.p);
+    this.k = com.tencent.mobileqq.msf.core.net.j.a(this.p);
   }
   
   /* Error */
@@ -929,10 +927,10 @@ public final class a
     {
       try
       {
-        if ((z.b == null) || (z.b.sender == null)) {
+        if ((s.b == null) || (s.b.sender == null)) {
           continue;
         }
-        String str = z.b.sender.j();
+        String str = s.b.sender.l();
         if (TextUtils.isEmpty(str)) {
           continue;
         }

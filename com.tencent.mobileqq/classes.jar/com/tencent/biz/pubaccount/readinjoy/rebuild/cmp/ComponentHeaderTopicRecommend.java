@@ -15,71 +15,61 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import bheg;
-import bkzi;
-import bkzz;
-import bmhv;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyTimeUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJItemViewType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJFrameworkReportManager;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJStringUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import olh;
-import pkg;
-import pkh;
-import ppe;
-import pqb;
-import pqf;
-import pqw;
-import prg;
-import pvj;
-import qfw;
-import qia;
-import rfw;
-import rfy;
-import rga;
-import rii;
-import rij;
-import rik;
-import ril;
-import rim;
-import rin;
-import rio;
-import rjl;
-import rqy;
-import rrq;
-import rrs;
-import rsh;
-import rsj;
-import szd;
-import tlw;
 
 public class ComponentHeaderTopicRecommend
   extends ComponentHeaderBase
   implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = anvx.a(2131701807);
-  private static final String jdField_b_of_type_JavaLangString = anvx.a(2131701830);
+  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702362);
+  private static final String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702385);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bkzi jdField_a_of_type_Bkzi;
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private TopicRecommendFeedsInfo.TopicRecommendInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo;
   private KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
   private ReadInJoyYAFolderTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView;
-  private rsj jdField_a_of_type_Rsj;
+  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   
   public ComponentHeaderTopicRecommend(Context paramContext)
@@ -96,7 +86,7 @@ public class ComponentHeaderTopicRecommend
   {
     try
     {
-      localBitmap = bheg.b(paramBitmap, AIOUtils.dp2px(3.0F, getResources()), paramBitmap.getWidth(), paramBitmap.getHeight());
+      localBitmap = ImageUtil.b(paramBitmap, AIOUtils.a(3.0F, getResources()), paramBitmap.getWidth(), paramBitmap.getHeight());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setImageBitmap(localBitmap);
       return;
     }
@@ -116,41 +106,41 @@ public class ComponentHeaderTopicRecommend
   
   private void a(boolean paramBoolean)
   {
-    Object localObject = pkh.a();
-    if (this.jdField_a_of_type_Rsj != null)
+    Object localObject = ReadInJoyUtils.a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo != null)
     {
       localObject = ((AppRuntime)localObject).getAccount();
       if (paramBoolean) {
-        pvj.a().a().a((String)localObject, Long.toString(this.jdField_a_of_type_Rsj.jdField_a_of_type_Int), true, "", new ril(this), 3);
+        ReadInJoyLogicEngine.a().a().a((String)localObject, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.jdField_a_of_type_Int), true, "", new ComponentHeaderTopicRecommend.4(this), 3);
       }
     }
     else
     {
       return;
     }
-    pvj.a().a().a((String)localObject, Long.toString(this.jdField_a_of_type_Rsj.jdField_a_of_type_Int), false, "", new rim(this), 3);
+    ReadInJoyLogicEngine.a().a().a((String)localObject, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.jdField_a_of_type_Int), false, "", new ComponentHeaderTopicRecommend.5(this), 3);
   }
   
   private boolean b()
   {
-    return (this.jdField_a_of_type_Rfw.a != null) && (this.jdField_a_of_type_Rfw.a.a() != null) && (this.jdField_a_of_type_Rfw.a.a().mTopicRecommendFeedsInfo != null) && (this.jdField_a_of_type_Rfw.a.a().mTopicRecommendFeedsInfo.a.size() > 0);
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().mTopicRecommendFeedsInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().mTopicRecommendFeedsInfo.a.size() > 0);
   }
   
   private void e()
   {
     if (b())
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_Rfw.a.a();
-      this.jdField_a_of_type_Rsj = ((rsj)this.jdField_a_of_type_Rfw.a.a().mTopicRecommendFeedsInfo.a.get(0));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo = ((TopicRecommendFeedsInfo.TopicRecommendInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().mTopicRecommendFeedsInfo.a.get(0));
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_Rfw.a.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
       return;
     }
     h();
     i();
     j();
-    if (ppe.j(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+    if (RIJItemViewType.j(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
     {
       g();
       return;
@@ -166,64 +156,64 @@ public class ComponentHeaderTopicRecommend
       QLog.d("ComponentHeaderTopicRecommend", 2, "less =" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAccountLess + " title = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTitle);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAccountLess == 0) {
-      localSpannableStringBuilder.setSpan(new rio(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, -3355444), 0, localSpannableStringBuilder.length(), 33);
+      localSpannableStringBuilder.setSpan(new ComponentHeaderTopicRecommend.SubscribeClickSpan(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, -3355444), 0, localSpannableStringBuilder.length(), 33);
     }
     localSpannableStringBuilder.append(": ");
     localSpannableStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSummary);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 9))
     {
-      String str = anvx.a(2131701753);
+      String str = HardCodeUtil.a(2131702308);
       localSpannableStringBuilder.append(" ");
       localSpannableStringBuilder.append(str);
-      rga localrga = new rga(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, -3355444, getContext(), getResources(), this.jdField_a_of_type_Rfw);
-      localrga.jdField_a_of_type_Int = 17;
-      localSpannableStringBuilder.setSpan(localrga, localSpannableStringBuilder.length() - str.length(), localSpannableStringBuilder.length(), 33);
+      ComponentAccountSummary.ReadArticleSpan localReadArticleSpan = new ComponentAccountSummary.ReadArticleSpan(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, -3355444, getContext(), getResources(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt);
+      localReadArticleSpan.jdField_a_of_type_Int = 17;
+      localSpannableStringBuilder.setSpan(localReadArticleSpan, localSpannableStringBuilder.length() - str.length(), localSpannableStringBuilder.length(), 33);
       localSpannableStringBuilder.append(" ");
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(anvx.a(2131701790));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new rin(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, -3355444));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(HardCodeUtil.a(2131702345));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new ComponentHeaderTopicRecommend.MoreSpan(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, -3355444));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(localSpannableStringBuilder);
   }
   
   private void g()
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rqy == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq == null))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo == null))
     {
       QLog.d("ComponentHeaderTopicRecommend", 1, new Object[] { "Some ugc info is null. ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo });
       return;
     }
-    long l = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rqy.a;
-    localSpannableStringBuilder.append(prg.a(ContactUtils.getBuddyName((QQAppInterface)pkh.a(), String.valueOf(l), true)));
-    localSpannableStringBuilder.setSpan(new rfy(l, -3355444, this.jdField_a_of_type_Rfw), 0, localSpannableStringBuilder.length(), 33);
+    long l = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.a;
+    localSpannableStringBuilder.append(RIJStringUtils.a(ContactUtils.c((QQAppInterface)ReadInJoyUtils.a(), String.valueOf(l), true)));
+    localSpannableStringBuilder.setSpan(new CommonBasicComponent.UserSpan(l, -3355444, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt), 0, localSpannableStringBuilder.length(), 33);
     localSpannableStringBuilder.append(": ");
-    if ((rfw.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) && (!ppe.q(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
+    if ((CmpCtxt.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) && (!RIJItemViewType.q(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
     {
-      localSpannableStringBuilder.append(((rrs)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.get(0)).e);
+      localSpannableStringBuilder.append(((SocializeFeedsInfo.UGCVideoInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b.get(0)).e);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(localSpannableStringBuilder);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(anvx.a(2131701756));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new rin(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, -3355444));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(HardCodeUtil.a(2131702311));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new ComponentHeaderTopicRecommend.MoreSpan(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, -3355444));
       return;
-      rjl.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView, this.jdField_a_of_type_Rfw, localSpannableStringBuilder);
+      UtilsForComponent.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt, localSpannableStringBuilder);
     }
   }
   
   private void h()
   {
     if (!b()) {}
-    while ((this.jdField_a_of_type_Rfw.a == null) || (this.jdField_a_of_type_Rfw.a.a() == null)) {
+    while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a() == null)) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    if ((pqw.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (pqw.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
+    if ((RIJFeedsType.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (RIJFeedsType.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
     {
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTime > 0L) {
-        localStringBuilder.append(pkg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRecommendTime, true));
+        localStringBuilder.append(ReadInJoyTimeUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRecommendTime, true));
       }
     }
     else if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo != null)
@@ -242,7 +232,7 @@ public class ComponentHeaderTopicRecommend
       break;
       label158:
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.get(0) != null) {
-        localStringBuilder.append(bmhv.a(((rsj)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).b) + jdField_b_of_type_JavaLangString);
+        localStringBuilder.append(ReadInJoyHelper.a(((TopicRecommendFeedsInfo.TopicRecommendInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).b) + jdField_b_of_type_JavaLangString);
       }
     }
   }
@@ -255,14 +245,14 @@ public class ComponentHeaderTopicRecommend
       localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessName;
       String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessNamePrefix;
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str + (String)localObject);
-      localObject = new tlw();
+      localObject = new ImageRequest();
     }
     try
     {
-      ((tlw)localObject).jdField_a_of_type_JavaNetURL = new URL(this.jdField_a_of_type_Rsj.d);
-      ((tlw)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.getWidth();
-      ((tlw)localObject).b = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.getHeight();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setImageForImageCollection((tlw)localObject, new rii(this));
+      ((ImageRequest)localObject).jdField_a_of_type_JavaNetURL = new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.d);
+      ((ImageRequest)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.getWidth();
+      ((ImageRequest)localObject).b = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.getHeight();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setImageForImageCollection((ImageRequest)localObject, new ComponentHeaderTopicRecommend.1(this));
       return;
     }
     catch (MalformedURLException localMalformedURLException)
@@ -273,22 +263,22 @@ public class ComponentHeaderTopicRecommend
   
   private void j()
   {
-    if (this.jdField_a_of_type_Rsj != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo != null)
     {
-      if ((!pqw.c(this.jdField_a_of_type_Rfw.a.a())) && (!pqw.f(this.jdField_a_of_type_Rfw.a.a()))) {
+      if ((!RIJFeedsType.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a())) && (!RIJFeedsType.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a()))) {
         break label153;
       }
-      if (this.jdField_a_of_type_Rsj.c != 1) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.c != 1) {
         break label108;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setText(anvx.a(2131701772));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131702327));
       this.jdField_a_of_type_AndroidWidgetButton.setBackgroundColor(-1);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#bbbbbb"));
       this.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
     }
     label108:
-    while ((!pqw.d(this.jdField_a_of_type_Rfw.a.a())) && (!pqw.g(this.jdField_a_of_type_Rfw.a.a()))) {
+    while ((!RIJFeedsType.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a())) && (!RIJFeedsType.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a()))) {
       for (;;)
       {
         return;
@@ -307,39 +297,39 @@ public class ComponentHeaderTopicRecommend
     if (QLog.isColorLevel()) {
       QLog.d("ComponentHeaderTopicRecommend", 2, "business url is " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl);
     }
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_Rsj == null)) {
-      QLog.d("ComponentHeaderTopicRecommend", 1, new Object[] { "articleInfo is null or topicRecommendInfo is null, articleInfo: ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, " topicRecommendInfo: ", this.jdField_a_of_type_Rsj });
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo == null)) {
+      QLog.d("ComponentHeaderTopicRecommend", 1, new Object[] { "articleInfo is null or topicRecommendInfo is null, articleInfo: ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, " topicRecommendInfo: ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo });
     }
     while (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl)) {
       return;
     }
-    Object localObject = new Intent(getContext(), PublicAccountBrowser.class);
+    Object localObject = new Intent(getContext(), PublicAccountBrowserImpl.class);
     ((Intent)localObject).putExtra("url", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl);
     getContext().startActivity((Intent)localObject);
-    localObject = pqw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    String str = pqf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_Rsj.jdField_a_of_type_Int + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    olh.a(null, (String)localObject, "0X8008A63", "0X8008A63", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), str, false);
-    pqb.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Rfw.a.e());
-    pqb.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Szd.a());
+    localObject = RIJFeedsType.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    String str = RIJTransMergeKanDianReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.jdField_a_of_type_Int + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, (String)localObject, "0X8008A63", "0X8008A63", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), str, false);
+    RIJFrameworkReportManager.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.e());
+    RIJFrameworkReportManager.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a());
   }
   
   private void l()
   {
-    if (this.jdField_a_of_type_AndroidWidgetButton.getText().equals(anvx.a(2131701811)))
+    if (this.jdField_a_of_type_AndroidWidgetButton.getText().equals(HardCodeUtil.a(2131702366)))
     {
       d();
       return;
     }
     a(true);
-    String str1 = pqw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    String str2 = pqf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID, pqw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), this.jdField_a_of_type_Rfw.a.e(), NetworkUtil.isWifiConnected(getContext()), str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessId + "");
-    olh.a(null, str1, "0X8008A61", "0X8008A61", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID), str2, false);
-    pqb.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Rfw.a.e());
+    String str1 = RIJFeedsType.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    String str2 = RIJTransMergeKanDianReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID, RIJFeedsType.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.e(), NetworkUtil.h(getContext()), str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessId + "");
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, str1, "0X8008A61", "0X8008A61", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID), str2, false);
+    RIJFrameworkReportManager.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.e());
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560183, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560261, this, true);
   }
   
   public void a()
@@ -350,15 +340,15 @@ public class ComponentHeaderTopicRecommend
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)paramView.findViewById(2131379280));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(AIOUtils.dp2px(3.0F, getResources()));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363913));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)paramView.findViewById(2131379709));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(AIOUtils.a(3.0F, getResources()));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364011));
     this.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379282));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379711));
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)paramView.findViewById(2131379279));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379281));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379283));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)paramView.findViewById(2131379708));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379710));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379712));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
@@ -366,7 +356,7 @@ public class ComponentHeaderTopicRecommend
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof qfw)) {
+    if ((paramObject instanceof IReadInJoyModel)) {
       e();
     }
   }
@@ -381,26 +371,26 @@ public class ComponentHeaderTopicRecommend
       if (!a()) {
         break label62;
       }
-      localLayoutParams.setMargins(ViewUtils.dip2px(12.0F), 0, ViewUtils.dip2px(15.0F), 0);
+      localLayoutParams.setMargins(ViewUtils.a(12.0F), 0, ViewUtils.a(15.0F), 0);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
       return;
       label62:
-      localLayoutParams.setMargins(ViewUtils.dip2px(12.0F), 0, ViewUtils.dip2px(2.25F), 0);
+      localLayoutParams.setMargins(ViewUtils.a(12.0F), 0, ViewUtils.a(2.25F), 0);
     }
   }
   
   protected void d()
   {
-    this.jdField_a_of_type_Bkzi = ((bkzi)bkzz.a(getContext(), null));
-    this.jdField_a_of_type_Bkzi.a(2131695029, 3);
-    this.jdField_a_of_type_Bkzi.c(2131690697);
-    this.jdField_a_of_type_Bkzi.setOnDismissListener(new rij(this));
-    this.jdField_a_of_type_Bkzi.a(new rik(this));
-    if (!this.jdField_a_of_type_Bkzi.isShowing()) {
-      this.jdField_a_of_type_Bkzi.show();
+    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(getContext(), null));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131695268, 3);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new ComponentHeaderTopicRecommend.2(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(new ComponentHeaderTopicRecommend.3(this));
+    if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
     }
   }
   
@@ -421,7 +411,7 @@ public class ComponentHeaderTopicRecommend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend
  * JD-Core Version:    0.7.0.1
  */

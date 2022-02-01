@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class UiExtraGameInfo
   extends JceStruct
 {
-  public long gameappid;
+  public long gameappid = 0L;
   public String gameappname = "";
   public String gamepkgname = "";
   public String gamevia = "";

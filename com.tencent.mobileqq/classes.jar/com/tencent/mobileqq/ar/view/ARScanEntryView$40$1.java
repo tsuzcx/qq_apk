@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.ar.view;
 
-import apov;
-import appw;
-import ayyc;
+import com.tencent.mobileqq.ar.model.ScanEntryResourceDelegate;
+import com.tencent.mobileqq.olympic.activity.PromotionRes;
 
-public class ARScanEntryView$40$1
+class ARScanEntryView$40$1
   implements Runnable
 {
-  public ARScanEntryView$40$1(appw paramappw) {}
+  ARScanEntryView$40$1(ARScanEntryView.40 param40) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Apov.e();
-    if ((ARScanEntryView.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView)) && (this.a.jdField_a_of_type_Ayyc != null)) {
-      this.a.jdField_a_of_type_Ayyc.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate.e();
+    if ((ARScanEntryView.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView)) && (this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.a);
     }
   }
 }

@@ -9,8 +9,8 @@ public class StartSecurityScan
 {
   public int a()
   {
-    if (this.a.app.isNeedSecurityScan()) {
-      this.a.app.startSecurityScan();
+    if (this.a.a.isNeedSecurityScan()) {
+      this.a.a.startSecurityScan();
     }
     return 7;
   }

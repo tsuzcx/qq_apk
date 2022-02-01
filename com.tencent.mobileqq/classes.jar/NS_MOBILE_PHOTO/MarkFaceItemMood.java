@@ -10,7 +10,7 @@ public final class MarkFaceItemMood
 {
   static stFaceItem cache_faceinfo = new stFaceItem();
   static int cache_op = 0;
-  public stFaceItem faceinfo;
+  public stFaceItem faceinfo = null;
   public int op = 0;
   public String photo_url = "";
   public String shuoshuo_id = "";

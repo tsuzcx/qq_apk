@@ -39,7 +39,7 @@ public class SystemAndEmojiUniversalPanel
   private ImageButton mDeleteButton;
   private SystemAndEmojiUniversalPanel.DispatchKeyEventListener mDispatchKeyEventListener;
   private EmotionPanelListView mEmotionPanelListView;
-  private boolean mFilterSysFaceBeyond255Enable;
+  private boolean mFilterSysFaceBeyond255Enable = false;
   private EditText mInputEdit;
   private EmotionPanelInfo mPanelInfo;
   private SystemAndEmojiAdapter mSystemAndEmojiAdapter;
@@ -48,7 +48,7 @@ public class SystemAndEmojiUniversalPanel
   private int minAlphaTop;
   private boolean multiWindowMode;
   private int[] point = new int[2];
-  private boolean showCommonUsedSystemEmoji;
+  private boolean showCommonUsedSystemEmoji = false;
   private int spacing;
   private TextWatcher textWatcher = new SystemAndEmojiUniversalPanel.3(this);
   
@@ -230,16 +230,16 @@ public class SystemAndEmojiUniversalPanel
   
   protected int getLayoutId()
   {
-    return 2131559177;
+    return 2131563076;
   }
   
-  public void init()
+  public void init(IEmoticonMainPanelApp paramIEmoticonMainPanelApp)
   {
-    setBackgroundColor(getResources().getColor(2131165637));
+    setBackgroundColor(getResources().getColor(2131167231));
     this.density = getResources().getDisplayMetrics().density;
-    this.spacing = ViewUtils.dip2px(5.0F);
+    this.spacing = ViewUtils.a(5.0F);
     this.mPanelInfo = new EmotionPanelInfo(7, 7, null);
-    this.mDeleteButton = ((ImageButton)findViewById(2131365495));
+    this.mDeleteButton = ((ImageButton)findViewById(2131365656));
     ImageButton localImageButton;
     if (this.mInputEdit != null)
     {
@@ -247,20 +247,20 @@ public class SystemAndEmojiUniversalPanel
       Editable localEditable = this.mInputEdit.getText();
       localImageButton = this.mDeleteButton;
       if (TextUtils.isEmpty(localEditable)) {
-        break label257;
+        break label258;
       }
     }
-    label257:
+    label258:
     for (boolean bool = true;; bool = false)
     {
       localImageButton.setEnabled(bool);
       this.mDeleteButton.setOnClickListener(this);
-      this.mEmotionPanelListView = ((EmotionPanelListView)findViewById(2131366129));
+      this.mEmotionPanelListView = ((EmotionPanelListView)findViewById(2131366301));
       this.mEmotionPanelListView.setDivider(null);
       this.mEmotionPanelListView.setEdgeEffectEnabled(false);
-      this.mEmotionPanelListView.setSelector(2130850739);
+      this.mEmotionPanelListView.setSelector(2130850952);
       int i = getColumnNum();
-      this.mSystemAndEmojiAdapter = new SystemAndEmojiAdapter(null, getContext(), i, 1, this.mPanelInfo.type, this.mCallback, null, 0);
+      this.mSystemAndEmojiAdapter = new SystemAndEmojiAdapter(paramIEmoticonMainPanelApp, getContext(), i, 1, this.mPanelInfo.type, this.mCallback, 0);
       this.mSystemAndEmojiAdapter.setLastItemAddPaddingBottom(getLastItemAddPaddingBottom());
       this.mSystemAndEmojiAdapter.widthPixels = this.mainPanelWidth;
       this.mSystemAndEmojiAdapter.curPanelInfo = this.mPanelInfo;
@@ -271,7 +271,7 @@ public class SystemAndEmojiUniversalPanel
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (this.mInputEdit != null) {
@@ -281,7 +281,7 @@ public class SystemAndEmojiUniversalPanel
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131365495) && (this.mCallback != null)) {
+    if ((paramView.getId() == 2131365656) && (this.mCallback != null)) {
       this.mCallback.delete();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -289,7 +289,7 @@ public class SystemAndEmojiUniversalPanel
   
   public void onDestory() {}
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.mInputEdit != null) {
@@ -322,7 +322,7 @@ public class SystemAndEmojiUniversalPanel
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
@@ -378,7 +378,7 @@ public class SystemAndEmojiUniversalPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel
  * JD-Core Version:    0.7.0.1
  */

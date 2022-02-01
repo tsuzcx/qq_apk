@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ocr.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ayub;
 
 public class TranslateResult$Record
   implements Parcelable
 {
-  public static final Parcelable.Creator<Record> CREATOR = new ayub();
+  public static final Parcelable.Creator<Record> CREATOR = new TranslateResult.Record.1();
   public int a;
   public String a;
   public int b;
@@ -19,7 +18,7 @@ public class TranslateResult$Record
   
   public TranslateResult$Record() {}
   
-  public TranslateResult$Record(Parcel paramParcel)
+  protected TranslateResult$Record(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();

@@ -1,6 +1,5 @@
 package com.tencent.av.wtogether.fragment;
 
-import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -21,13 +20,16 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdla;
+import com.tencent.av.utils.AVUtil;
 import com.tencent.av.utils.PopupDialog;
+import com.tencent.av.wtogether.adapter.QGroupExpandableListAdapter.UIEvent;
+import com.tencent.av.wtogether.adapter.QVideoC2CFileExpandableListAdapter.UIEvent;
 import com.tencent.av.wtogether.data.ChooseFileInfo;
 import com.tencent.av.wtogether.view.QBaseContentView;
 import com.tencent.av.wtogether.view.QGroupListContentView;
 import com.tencent.av.wtogether.view.QRecentC2CAVFileListContentView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,6 +37,7 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.search.activity.ContactSearchActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQBlurView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -43,15 +46,10 @@ import com.tencent.widget.ListView;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import mrr;
-import mxv;
-import mya;
-import mzd;
-import mze;
 
 public class AVRecentFileSelectFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, mxv, mya
+  implements View.OnClickListener, QGroupExpandableListAdapter.UIEvent, QVideoC2CFileExpandableListAdapter.UIEvent
 {
   private int jdField_a_of_type_Int = 0;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
@@ -121,20 +119,20 @@ public class AVRecentFileSelectFragment
   {
     paramString = a(paramInt1, paramInt2, paramString);
     paramString.putExtra("public_fragment_window_feature", 1);
-    aeow.a(paramActivity, paramString, PublicFragmentActivity.class, AVRecentFileSelectFragment.class, paramInt3);
+    PublicFragmentActivity.Launcher.a(paramActivity, paramString, PublicFragmentActivity.class, AVRecentFileSelectFragment.class, paramInt3);
   }
   
   private void a(ListView paramListView)
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    localRelativeLayout.addView(new View(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity), new RelativeLayout.LayoutParams(-1, AIOUtils.dp2px(50.0F, getResources())));
+    localRelativeLayout.addView(new View(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity), new RelativeLayout.LayoutParams(-1, AIOUtils.a(50.0F, getResources())));
     paramListView.addFooterView(localRelativeLayout);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380650));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381097));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(paramListView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
@@ -145,7 +143,7 @@ public class AVRecentFileSelectFragment
     for (boolean bool = true;; bool = false)
     {
       paramListView.setEnableBlur(bool);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDisableBlurDrawableRes(2130850103);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDisableBlurDrawableRes(2130850501);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8);
@@ -185,13 +183,13 @@ public class AVRecentFileSelectFragment
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131376274));
-    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131367888));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377292));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378486));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378485));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370192));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131381340));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131376669));
+    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131368096));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377713));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378917));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378916));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370464));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131381801));
   }
   
   private void d()
@@ -227,9 +225,10 @@ public class AVRecentFileSelectFragment
   
   public void a(ChooseFileInfo paramChooseFileInfo)
   {
+    paramChooseFileInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
     if (!AppNetConnInfo.isWifiConn())
     {
-      PopupDialog.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, null, getString(2131695724), 2131690697, 2131691568, new mzd(this, paramChooseFileInfo), new mze(this));
+      PopupDialog.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230, null, getString(2131695967), 2131690800, 2131691684, new AVRecentFileSelectFragment.1(this, paramChooseFileInfo), new AVRecentFileSelectFragment.2(this));
       return;
     }
     QLog.d("AVRecentFileSelectFragment", 1, "enter video[" + paramChooseFileInfo + "]");
@@ -245,13 +244,13 @@ public class AVRecentFileSelectFragment
   {
     if (paramFileManagerEntity != null)
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_a_of_type_Long = mrr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_a_of_type_Long = AVUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_b_of_type_Long = 0L;
-      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_b_of_type_Int = 3;
+      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_c_of_type_Int = 3;
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_a_of_type_JavaLangString = "/";
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_b_of_type_JavaLangString = paramFileManagerEntity.Uuid;
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_c_of_type_JavaLangString = paramFileManagerEntity.strFileMd5;
-      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_c_of_type_Long = mrr.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_c_of_type_Long = AVUtil.a(this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_d_of_type_Long = paramFileManagerEntity.fileSize;
       this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_d_of_type_JavaLangString = paramFileManagerEntity.fileName;
     }
@@ -266,7 +265,7 @@ public class AVRecentFileSelectFragment
   
   public void a(String paramString1, String paramString2)
   {
-    AVGroupFileSelectFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, mrr.a(paramString1), paramString2, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, 2020);
+    AVGroupFileSelectFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, AVUtil.a(paramString1), paramString2, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, 2020);
   }
   
   public void a(boolean paramBoolean)
@@ -303,7 +302,7 @@ public class AVRecentFileSelectFragment
       b();
       continue;
       a(this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
-      bdla.b(null, "dc00898", "", "", "0X800B627", "0X800B627", 0, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B627", "0X800B627", 0, 0, "", "", "", "");
     }
   }
   
@@ -325,12 +324,12 @@ public class AVRecentFileSelectFragment
       this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("watch_together_uin");
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getAppInterface());
     } while (this.jdField_a_of_type_Int == 0);
-    bdla.b(null, "dc00898", "", "", "0X800B622", "0X800B622", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800B622", "0X800B622", this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559843, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559919, null);
     c();
     d();
     e();
@@ -388,7 +387,7 @@ public class AVRecentFileSelectFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.fragment.AVRecentFileSelectFragment
  * JD-Core Version:    0.7.0.1
  */

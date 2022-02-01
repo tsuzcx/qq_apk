@@ -10,6 +10,7 @@ public abstract interface TbsReaderView$ReaderCallback
   public static final int NOTIFY_CANDISPLAY = 12;
   public static final int NOTIFY_ERRORCODE = 19;
   public static final int READER_CUSTOM_QQ_EVENT = 6001;
+  public static final int READER_GET_TITLE_BAR_HEIGHT = 5045;
   public static final int READER_OPEN_QQ_FILE_LIST = 5031;
   public static final int READER_PDF_LIST = 5008;
   public static final int READER_PLUGIN_ACTIVITY_PAUSE = 5032;
@@ -43,6 +44,7 @@ public abstract interface TbsReaderView$ReaderCallback
   public static final int READER_TOAST = 5005;
   public static final int READER_TXT_READING_MODEL = 5010;
   public static final int SEARCH_SELECT_TEXT = 5004;
+  public static final int SET_EXTRA_INFO = 58;
   public static final int SHOW_BAR = 5002;
   public static final int SHOW_DIALOG = 5006;
   
@@ -50,7 +52,7 @@ public abstract interface TbsReaderView$ReaderCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tbs.reader.TbsReaderView.ReaderCallback
  * JD-Core Version:    0.7.0.1
  */

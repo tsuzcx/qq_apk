@@ -9,8 +9,8 @@ public final class AuthCodeRsp
   extends JceStruct
 {
   static ArrayList<AuthCodeItem> cache_items = new ArrayList();
-  public long iNextReqTime;
-  public ArrayList<AuthCodeItem> items;
+  public long iNextReqTime = 0L;
+  public ArrayList<AuthCodeItem> items = null;
   
   static
   {

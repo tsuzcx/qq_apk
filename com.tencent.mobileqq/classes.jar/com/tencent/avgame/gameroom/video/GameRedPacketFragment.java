@@ -16,12 +16,11 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import nmt;
 
 public class GameRedPacketFragment
   extends WebViewFragment
 {
-  public BroadcastReceiver a = new nmt(this);
+  public BroadcastReceiver a = new GameRedPacketFragment.1(this);
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
   {
@@ -31,10 +30,10 @@ public class GameRedPacketFragment
       return i;
     }
     getActivity().getWindow().setFlags(1024, 1024);
-    this.mUIStyleHandler.mLoadingProgressBar.setVisibility(8);
-    this.mUIStyle.isFullScreen = true;
+    this.mUIStyleHandler.a.setVisibility(8);
+    this.mUIStyle.a = true;
     hideVirtualNavBar();
-    doShowTitleBar(false);
+    showTitleBar(false);
     return i;
   }
   
@@ -42,12 +41,12 @@ public class GameRedPacketFragment
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167296);
-    if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
-      ((RefreshView)this.mUIStyleHandler.webviewWrapper).a(false);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167305);
+    if ((this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
+      ((RefreshView)this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).a(false);
     }
-    if (this.mUIStyleHandler.mBrowserTips != null) {
-      this.mUIStyleHandler.mBrowserTips.setVisibility(8);
+    if (this.mUIStyleHandler.jdField_c_of_type_AndroidViewView != null) {
+      this.mUIStyleHandler.jdField_c_of_type_AndroidViewView.setVisibility(8);
     }
     if (this.webView.getX5WebViewExtension() != null) {}
     for (;;)
@@ -78,7 +77,7 @@ public class GameRedPacketFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.GameRedPacketFragment
  * JD-Core Version:    0.7.0.1
  */

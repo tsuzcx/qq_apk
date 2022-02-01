@@ -8,11 +8,11 @@ public final class SearchInfo
   extends JceStruct
 {
   static int cache_eSource;
-  public byte bInContact;
-  public byte bIsEnterpriseQQ;
-  public byte bIsFriend;
-  public int eSource;
-  public long lUIN;
+  public byte bInContact = 0;
+  public byte bIsEnterpriseQQ = 0;
+  public byte bIsFriend = 0;
+  public int eSource = 0;
+  public long lUIN = 0L;
   public String strMobile = "";
   public String strNick = "";
   
@@ -57,7 +57,7 @@ public final class SearchInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.SearchInfo
  * JD-Core Version:    0.7.0.1
  */

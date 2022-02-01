@@ -3,15 +3,13 @@ package com.tencent.sharp.jni;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
 import android.text.TextUtils;
-import bkwq;
-import bkwu;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class TraeAudioManager$BluetoothHeadsetCheck$1
+class TraeAudioManager$BluetoothHeadsetCheck$1
   implements Runnable
 {
-  public TraeAudioManager$BluetoothHeadsetCheck$1(bkwq parambkwq) {}
+  TraeAudioManager$BluetoothHeadsetCheck$1(TraeAudioManager.BluetoothHeadsetCheck paramBluetoothHeadsetCheck) {}
   
   public void run()
   {
@@ -34,7 +32,7 @@ public class TraeAudioManager$BluetoothHeadsetCheck$1
         BluetoothDevice localBluetoothDevice = (BluetoothDevice)localList.get(i);
         int j = this.a.jdField_a_of_type_AndroidBluetoothBluetoothProfile.getConnectionState(localBluetoothDevice);
         if (j == 2) {
-          this.a.jdField_a_of_type_Bkwu.a(localBluetoothDevice.getName());
+          this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a(localBluetoothDevice.getName());
         }
         if (QLog.isColorLevel()) {
           QLog.w("BluetoothHeadsetCheck", 2, "   " + i + " " + localBluetoothDevice.getName() + " ConnectionState:" + j);
@@ -50,33 +48,33 @@ public class TraeAudioManager$BluetoothHeadsetCheck$1
         }
       }
     }
-    if (this.a.jdField_a_of_type_Bkwu != null) {
-      if (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Bkwu == null) {
+    if (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager != null) {
+      if (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager == null) {
         break label346;
       }
     }
     label346:
-    for (String str = this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Bkwu.a();; str = null)
+    for (String str = this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a();; str = null)
     {
       if (TextUtils.isEmpty(str))
       {
-        this.a.jdField_a_of_type_Bkwu.a("DEVICE_BLUETOOTHHEADSET", false);
+        this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", false);
         return;
       }
       if (this.a.a())
       {
-        this.a.jdField_a_of_type_Bkwu.a("DEVICE_BLUETOOTHHEADSET", true);
+        this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", true);
         this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a("DEVICE_BLUETOOTHHEADSET", true);
         return;
       }
-      this.a.jdField_a_of_type_Bkwu.a("DEVICE_BLUETOOTHHEADSET", false);
+      this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioManager.BluetoothHeadsetCheck.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.qqmini.miniapp.plugin;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.Surface;
 import com.tencent.qqmini.miniapp.core.page.BrandPageWebview;
@@ -15,10 +16,13 @@ import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.action.ServiceSubscribeEvent;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
 import com.tencent.qqmini.sdk.launcher.core.utils.ApiUtil;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
+import com.tencent.qqmini.sdk.launcher.utils.FileUtils;
 import com.tencent.smtt.export.external.embeddedwidget.interfaces.IEmbeddedWidget;
+import java.io.File;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -56,6 +60,73 @@ public class LivePusherEmbeddedWidgetClient
     this.mMiniAppContext = paramIMiniAppContext;
   }
   
+  private File copyFile(String paramString1, String paramString2)
+  {
+    File localFile1 = new File(paramString2);
+    Object localObject2 = localFile1;
+    if (!localFile1.exists())
+    {
+      localObject2 = localFile1;
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        QMLog.e("miniapp-embedded-live-pusher", "file no exists, try to copy again.");
+        Object localObject1 = localFile1;
+        try
+        {
+          File localFile2 = new File(paramString1);
+          localObject1 = localFile1;
+          localObject2 = localFile1;
+          if (localFile2.exists())
+          {
+            localObject1 = localFile1;
+            localObject2 = localFile1;
+            if (localFile2.isFile())
+            {
+              localObject1 = localFile1;
+              localObject2 = localFile1;
+              if (localFile2.length() > 0L)
+              {
+                localObject1 = localFile1;
+                QMLog.w("miniapp-embedded-live-pusher", "download Succeed but target file not exists, try copy from download tmp file:" + paramString1 + ", length:" + localFile2.length() + ", to:" + paramString2);
+                localObject1 = localFile1;
+                paramString2 = FileUtils.createFile(paramString2);
+                localObject1 = paramString2;
+                if (FileUtils.copyFile(localFile2, paramString2))
+                {
+                  localObject1 = paramString2;
+                  if (paramString2.exists())
+                  {
+                    localObject1 = paramString2;
+                    if (paramString2.length() == localFile2.length())
+                    {
+                      localObject1 = paramString2;
+                      QMLog.d("miniapp-embedded-live-pusher", "copy from download tmp file:" + paramString1 + " success");
+                      return paramString2;
+                    }
+                  }
+                }
+                localObject1 = paramString2;
+                localObject2 = paramString2;
+                if (paramString2.exists())
+                {
+                  localObject1 = paramString2;
+                  paramString2.delete();
+                  return paramString2;
+                }
+              }
+            }
+          }
+        }
+        catch (Throwable paramString2)
+        {
+          QMLog.e("miniapp-embedded-live-pusher", "try copy from download tmp file exception! tmp file:" + paramString1, paramString2);
+          localObject2 = localObject1;
+        }
+      }
+    }
+    return localObject2;
+  }
+  
   private void evaluateCallbackJs(int paramInt, String paramString)
   {
     if (this.callBackWebview != null) {
@@ -69,8 +140,65 @@ public class LivePusherEmbeddedWidgetClient
       this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain(paramString1, paramString2, paramInt));
     }
     if (this.callBackWebview != null) {
-      this.callBackWebview.evaluateSubscribeJS(paramString1, paramString2, this.curPageWebviewId);
+      this.callBackWebview.evaluateSubscribeJS(paramString1, paramString2, paramInt);
     }
+  }
+  
+  private DownloaderProxy.DownloadListener getBGMDownloadListener(JSONObject paramJSONObject, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, DownloaderProxy paramDownloaderProxy)
+  {
+    return new LivePusherEmbeddedWidgetClient.4(this, paramString2, paramString3, paramInt, paramString4, paramJSONObject, paramString1, paramDownloaderProxy);
+  }
+  
+  private void handleBGMDownloadFailed(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    this.downloadMap.remove(paramString2, paramString3);
+    QMLog.e("miniapp-embedded-live-pusher", "playBGM - download onDownloadFailed failed:" + paramString1);
+    paramString2 = new JSONObject();
+    try
+    {
+      paramString2.put("viewId", paramInt);
+      paramString2.put("errMsg", paramString1);
+      paramString2.put("errCode", 10003);
+      evaluateSubscribeJS("onXWebLivePusherError", paramString2.toString(), this.curPageWebviewId);
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  private void handleBGMDownloadSuc(int paramInt, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject, String paramString4)
+  {
+    try
+    {
+      QMLog.e("miniapp-embedded-live-pusher", "playBGM - download onDownloadSucceed statusCode:" + paramInt);
+      if (this.needToStopDownloadBGM)
+      {
+        QMLog.e("miniapp-embedded-live-pusher", "playBGM - download onDownloadSucceed but needToStopDownloadBGM");
+        return;
+      }
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      File localFile = copyFile(paramString1, paramString2);
+      this.downloadMap.remove(paramString3);
+      if ((localFile.exists()) && (localFile.canRead()))
+      {
+        if (QMLog.isColorLevel()) {
+          QMLog.d("miniapp-embedded-live-pusher", "download success bgmFilePath:" + paramString2);
+        }
+        paramJSONObject.put("BGMFilePath", paramString2);
+        this.livePusherJSAdapter.operateLivePusher(paramString4, paramJSONObject);
+        return;
+      }
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+      return;
+    }
+    QMLog.d("miniapp-embedded-live-pusher", "download failed, filepath not exists, tmpFile:" + paramString1);
   }
   
   private void handlePlayBGMEvent(JSONObject paramJSONObject, int paramInt1, int paramInt2, String paramString)
@@ -81,7 +209,7 @@ public class LivePusherEmbeddedWidgetClient
     this.downloadMap.put(str1, str2);
     String str3 = MiniAppFileManager.getInstance().getTmpPathByUrl(str2);
     DownloaderProxy localDownloaderProxy = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
-    localDownloaderProxy.download(str2, null, str3, 60, new LivePusherEmbeddedWidgetClient.4(this, str1, str2, paramInt2, str3, paramJSONObject, paramString, localDownloaderProxy));
+    localDownloaderProxy.download(str2, null, str3, 60, getBGMDownloadListener(paramJSONObject, paramInt2, paramString, str1, str2, str3, localDownloaderProxy));
     evaluateCallbackJs(paramInt1, ApiUtil.wrapCallbackOk("operateXWebLivePusher", null).toString());
   }
   
@@ -154,13 +282,13 @@ public class LivePusherEmbeddedWidgetClient
         }
         catch (JSONException localJSONException1)
         {
-          break label207;
+          break label208;
         }
         localJSONException2 = localJSONException2;
         paramJSONObject = (JSONObject)localObject;
         localObject = localJSONException2;
       }
-      label207:
+      label208:
       continue;
       if (i == -1)
       {
@@ -214,31 +342,31 @@ public class LivePusherEmbeddedWidgetClient
   }
   
   /* Error */
-  private static void saveJpeg(android.graphics.Bitmap paramBitmap, java.io.File paramFile)
+  private static void saveJpeg(android.graphics.Bitmap paramBitmap, File paramFile)
   {
     // Byte code:
-    //   0: new 345	java/io/BufferedOutputStream
+    //   0: new 453	java/io/BufferedOutputStream
     //   3: dup
-    //   4: new 347	java/io/FileOutputStream
+    //   4: new 455	java/io/FileOutputStream
     //   7: dup
     //   8: aload_1
-    //   9: invokespecial 350	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 353	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   9: invokespecial 458	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 461	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   15: astore_1
     //   16: aload_0
-    //   17: getstatic 359	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   17: getstatic 467	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   20: bipush 100
     //   22: bipush 100
-    //   24: invokestatic 365	java/lang/Math:min	(II)I
+    //   24: invokestatic 473	java/lang/Math:min	(II)I
     //   27: aload_1
-    //   28: invokevirtual 371	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   28: invokevirtual 479	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   31: pop
     //   32: aload_1
-    //   33: invokevirtual 374	java/io/BufferedOutputStream:flush	()V
+    //   33: invokevirtual 482	java/io/BufferedOutputStream:flush	()V
     //   36: aload_1
     //   37: ifnull +7 -> 44
     //   40: aload_1
-    //   41: invokevirtual 377	java/io/BufferedOutputStream:close	()V
+    //   41: invokevirtual 485	java/io/BufferedOutputStream:close	()V
     //   44: return
     //   45: astore_0
     //   46: aconst_null
@@ -246,7 +374,7 @@ public class LivePusherEmbeddedWidgetClient
     //   48: aload_1
     //   49: ifnull +7 -> 56
     //   52: aload_1
-    //   53: invokevirtual 377	java/io/BufferedOutputStream:close	()V
+    //   53: invokevirtual 485	java/io/BufferedOutputStream:close	()V
     //   56: aload_0
     //   57: athrow
     //   58: astore_0
@@ -258,7 +386,7 @@ public class LivePusherEmbeddedWidgetClient
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	68	0	paramBitmap	android.graphics.Bitmap
-    //   0	68	1	paramFile	java.io.File
+    //   0	68	1	paramFile	File
     // Exception table:
     //   from	to	target	type
     //   0	16	45	finally
@@ -292,6 +420,11 @@ public class LivePusherEmbeddedWidgetClient
   public IMiniAppContext getMiniAppContext()
   {
     return this.mMiniAppContext;
+  }
+  
+  public int getViewId()
+  {
+    return this.viewId;
   }
   
   public void handleInsertXWebLivePusher(JSONObject paramJSONObject, IJsService paramIJsService)
@@ -496,9 +629,9 @@ public class LivePusherEmbeddedWidgetClient
     this.livePusherJSAdapter.takePhoto(paramBoolean, new LivePusherEmbeddedWidgetClient.5(this, paramString, paramInt));
   }
   
-  public void webViewDestory()
+  public void webViewDestroy()
   {
-    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.webviewDestory " + this);
+    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.webViewDestroy " + this);
     release();
   }
   
@@ -516,7 +649,7 @@ public class LivePusherEmbeddedWidgetClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePusherEmbeddedWidgetClient
  * JD-Core Version:    0.7.0.1
  */

@@ -3,23 +3,22 @@ package com.tencent.mobileqq.together.clockin;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import beld;
-import bheg;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.StackBlur;
 import mqq.os.MqqHandler;
 
-public class NoClockInView$1
+class NoClockInView$1
   implements Runnable
 {
-  public NoClockInView$1(beld parambeld, Drawable paramDrawable) {}
+  NoClockInView$1(NoClockInView paramNoClockInView, Drawable paramDrawable) {}
   
   public void run()
   {
-    Bitmap localBitmap = bheg.a(this.a);
+    Bitmap localBitmap = ImageUtil.a(this.a);
     try
     {
-      StackBlur.fastblur(localBitmap, 5);
+      StackBlur.a(localBitmap, 5);
       BitmapDrawable localBitmapDrawable = new BitmapDrawable(localBitmap);
       ThreadManager.getUIHandler().post(new NoClockInView.1.1(this, localBitmapDrawable));
       return;

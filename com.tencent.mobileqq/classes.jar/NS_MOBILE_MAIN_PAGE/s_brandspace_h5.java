@@ -8,7 +8,7 @@ public final class s_brandspace_h5
   extends JceStruct
 {
   public String frdfans_nick = "";
-  public long frdfans_num;
+  public long frdfans_num = 0L;
   public String url = "";
   
   public s_brandspace_h5() {}

@@ -9,17 +9,17 @@ public final class SvcDevLoginInfo
 {
   static DeviceItemDes cache_stDeviceItemDes = new DeviceItemDes();
   static byte[] cache_vecGuid = (byte[])new byte[1];
-  public long iAppId;
-  public long iCanBeKicked;
-  public long iLoginPlatform;
-  public long iLoginTime;
-  public long iProductType;
-  public long iTerType;
-  public DeviceItemDes stDeviceItemDes;
+  public long iAppId = 0L;
+  public long iCanBeKicked = 0L;
+  public long iLoginPlatform = 0L;
+  public long iLoginTime = 0L;
+  public long iProductType = 0L;
+  public long iTerType = 0L;
+  public DeviceItemDes stDeviceItemDes = null;
   public String strDeviceName = "";
   public String strDeviceTypeInfo = "";
   public String strLoginLocation = "";
-  public byte[] vecGuid;
+  public byte[] vecGuid = null;
   
   static
   {

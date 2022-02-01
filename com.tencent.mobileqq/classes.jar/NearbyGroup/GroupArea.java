@@ -9,14 +9,14 @@ public final class GroupArea
   extends JceStruct
 {
   static ArrayList<GroupInfo> cache_vGroupInfo;
-  public long dwDistance;
-  public long dwGroupStartIdx;
-  public long dwGroupTotalCnt;
-  public int iLat;
-  public int iLon;
+  public long dwDistance = 0L;
+  public long dwGroupStartIdx = 0L;
+  public long dwGroupTotalCnt = 0L;
+  public int iLat = 0;
+  public int iLon = 0;
   public String strAreaName = "";
   public String strStreet = "";
-  public ArrayList<GroupInfo> vGroupInfo;
+  public ArrayList<GroupInfo> vGroupInfo = null;
   
   public GroupArea() {}
   

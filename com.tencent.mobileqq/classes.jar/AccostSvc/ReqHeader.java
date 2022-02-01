@@ -9,12 +9,12 @@ public final class ReqHeader
 {
   static int cache_eBusiType;
   static int cache_eMqqSysType;
-  public byte bNeedAck;
+  public byte bNeedAck = 0;
   public int eBusiType = BusinessType.BusinessType_MQQ.value();
   public int eMqqSysType = MqqSysType.MqqSysType_default.value();
-  public long iAppID;
-  public long lMID;
-  public short shVersion;
+  public long iAppID = 0L;
+  public long lMID = 0L;
+  public short shVersion = 0;
   
   public ReqHeader() {}
   

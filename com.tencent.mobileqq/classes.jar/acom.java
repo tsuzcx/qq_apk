@@ -1,9 +1,0 @@
-public abstract interface acom
-  extends acnw<acol>
-{}
-
-
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
- * Qualified Name:     acom
- * JD-Core Version:    0.7.0.1
- */

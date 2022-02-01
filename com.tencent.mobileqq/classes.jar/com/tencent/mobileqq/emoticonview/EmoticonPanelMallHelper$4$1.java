@@ -78,13 +78,13 @@ class EmoticonPanelMallHelper$4$1
       break label291;
       if (this.val$resultCode == 11000)
       {
-        QQToast.a(this.this$1.this$0.mPanelController.context, this.this$1.this$0.mPanelController.context.getString(2131689938), 1).b(this.this$1.this$0.mPanelController.toastOffset);
+        QQToast.a(this.this$1.this$0.mPanelController.context, this.this$1.this$0.mPanelController.context.getString(2131689980), 1).b(this.this$1.this$0.mPanelController.toastOffset);
         return;
       }
       if (this.val$resultCode != 11001) {
         break;
       }
-      QQToast.a(this.this$1.this$0.mPanelController.context, this.this$1.this$0.mPanelController.context.getString(2131689939), 1).b(this.this$1.this$0.mPanelController.toastOffset);
+      QQToast.a(this.this$1.this$0.mPanelController.context, this.this$1.this$0.mPanelController.context.getString(2131689981), 1).b(this.this$1.this$0.mPanelController.toastOffset);
       return;
       j = 0;
     }
@@ -92,7 +92,7 @@ class EmoticonPanelMallHelper$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.4.1
  * JD-Core Version:    0.7.0.1
  */

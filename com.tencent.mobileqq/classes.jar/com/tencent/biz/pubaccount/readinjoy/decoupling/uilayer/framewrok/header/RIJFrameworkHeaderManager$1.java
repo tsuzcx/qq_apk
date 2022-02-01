@@ -4,16 +4,15 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 import com.tencent.qphone.base.util.QLog;
-import ppx;
 
-public class RIJFrameworkHeaderManager$1
+class RIJFrameworkHeaderManager$1
   implements Runnable
 {
-  public RIJFrameworkHeaderManager$1(ppx paramppx, View paramView1, int paramInt, View paramView2, ReadInJoyXListView paramReadInJoyXListView) {}
+  RIJFrameworkHeaderManager$1(RIJFrameworkHeaderManager paramRIJFrameworkHeaderManager, View paramView1, int paramInt, View paramView2, ReadInJoyXListView paramReadInJoyXListView) {}
   
   public void run()
   {
-    ppx.a(this.this$0).i();
+    RIJFrameworkHeaderManager.a(this.this$0).i();
     int i = this.jdField_a_of_type_AndroidViewView.getHeight();
     if ((i != this.jdField_a_of_type_Int) && (QLog.isColorLevel())) {
       QLog.d("RIJFrameworkReportManager", 2, "initUI 看点 mListView.setPadding error: statusLineHeight not equal heightDef;statusLineHeight=" + i + ",h = " + this.jdField_a_of_type_Int);
@@ -30,7 +29,7 @@ public class RIJFrameworkHeaderManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.header.RIJFrameworkHeaderManager.1
  * JD-Core Version:    0.7.0.1
  */

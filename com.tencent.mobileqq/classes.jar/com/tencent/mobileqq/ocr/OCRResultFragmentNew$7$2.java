@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.ocr;
 
-import anvx;
-import aysr;
-import ayvn;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.ocr.view.TDProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class OCRResultFragmentNew$7$2
+class OCRResultFragmentNew$7$2
   implements Runnable
 {
-  public OCRResultFragmentNew$7$2(aysr paramaysr, String paramString) {}
+  OCRResultFragmentNew$7$2(OCRResultFragmentNew.7 param7, String paramString) {}
   
   public void run()
   {
     try
     {
-      OCRResultFragmentNew.a(this.jdField_a_of_type_Aysr.a).dismiss();
-      OCRResultFragmentNew.a(this.jdField_a_of_type_Aysr.a).a(0);
-      OCRResultFragmentNew.a(this.jdField_a_of_type_Aysr.a, true);
-      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_Aysr.a), 2, anvx.a(2131707276), 1).a();
+      OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a).dismiss();
+      OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a).a(0);
+      OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a, true);
+      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a), 2, HardCodeUtil.a(2131707801), 1).a();
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
       {
-        this.jdField_a_of_type_Aysr.a.a(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a.a(this.jdField_a_of_type_JavaLangString);
         return;
       }
-      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_Aysr.a), 1, anvx.a(2131707270), 0).a();
+      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a), 1, HardCodeUtil.a(2131707795), 0).a();
       return;
     }
     catch (Exception localException)

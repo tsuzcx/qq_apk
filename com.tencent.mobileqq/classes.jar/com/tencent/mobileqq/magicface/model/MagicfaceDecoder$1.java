@@ -1,25 +1,22 @@
 package com.tencent.mobileqq.magicface.model;
 
-import awrx;
-import awry;
-
-public class MagicfaceDecoder$1
+class MagicfaceDecoder$1
   implements Runnable
 {
-  public MagicfaceDecoder$1(awrx paramawrx) {}
+  MagicfaceDecoder$1(MagicfaceDecoder paramMagicfaceDecoder) {}
   
   public void run()
   {
     int i = Thread.currentThread().getPriority();
     Thread.currentThread().setPriority(10);
     this.this$0.jdField_a_of_type_Boolean = true;
-    if (this.this$0.jdField_a_of_type_Awry != null) {
-      this.this$0.jdField_a_of_type_Awry.a();
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.a();
     }
     this.this$0.a();
     this.this$0.jdField_a_of_type_Boolean = false;
-    if (this.this$0.jdField_a_of_type_Awry != null) {
-      this.this$0.jdField_a_of_type_Awry.b();
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.b();
     }
     Thread.currentThread().setPriority(i);
   }

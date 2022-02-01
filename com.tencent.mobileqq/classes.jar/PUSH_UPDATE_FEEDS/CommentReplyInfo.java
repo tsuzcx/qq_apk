@@ -12,10 +12,10 @@ public final class CommentReplyInfo
 {
   static ArrayList<SimpleComment> cache_all_commont_list = new ArrayList();
   static s_commment cache_cur_comment_reply = new s_commment();
-  public ArrayList<SimpleComment> all_commont_list;
-  public s_commment cur_comment_reply;
-  public int real_num;
-  public int total_num;
+  public ArrayList<SimpleComment> all_commont_list = null;
+  public s_commment cur_comment_reply = null;
+  public int real_num = 0;
+  public int total_num = 0;
   
   static
   {

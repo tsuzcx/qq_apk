@@ -31,7 +31,7 @@ class QQPublishCommentFragment$MyTextWatcher
       QQPublishCommentFragment.access$600(this.this$0).setText(String.valueOf(QQPublishCommentFragment.access$500(this.this$0) - i));
       break;
       label100:
-      QQPublishCommentFragment.access$600(this.this$0).setTextColor(this.this$0.getResources().getColor(2131167259));
+      QQPublishCommentFragment.access$600(this.this$0).setTextColor(this.this$0.getResources().getColor(2131167268));
       QQPublishCommentFragment.access$702(this.this$0, false);
     }
   }
@@ -42,7 +42,7 @@ class QQPublishCommentFragment$MyTextWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.MyTextWatcher
  * JD-Core Version:    0.7.0.1
  */

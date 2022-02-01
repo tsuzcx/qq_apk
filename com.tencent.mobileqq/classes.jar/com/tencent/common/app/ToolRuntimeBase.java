@@ -1,17 +1,17 @@
 package com.tencent.common.app;
 
-import aauw;
 import android.annotation.TargetApi;
 import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.util.MQLruCache;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClient;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
-import rlc;
 
 public class ToolRuntimeBase
   extends PluginRuntime
@@ -36,7 +36,7 @@ public class ToolRuntimeBase
       if (QLog.isColorLevel()) {
         QLog.d("ToolRuntimeBase", 2, "clearCache, " + paramInt);
       }
-      localMQLruCache = BaseApplicationImpl.sImageCache;
+      localMQLruCache = GlobalImageCache.a;
     } while (localMQLruCache == null);
     switch (paramInt)
     {
@@ -80,7 +80,7 @@ public class ToolRuntimeBase
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    rlc.a().a(getApplication());
+    RIJAidlClient.a().a(getApplication());
   }
   
   @TargetApi(14)
@@ -122,7 +122,7 @@ public class ToolRuntimeBase
     {
       if (this.componentCallbacks == null)
       {
-        this.componentCallbacks = new aauw(this);
+        this.componentCallbacks = new ToolRuntimeBase.1(this);
         BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.componentCallbacks);
       }
       return;

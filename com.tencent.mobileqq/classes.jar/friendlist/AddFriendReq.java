@@ -9,6 +9,7 @@ public final class AddFriendReq
 {
   static int cache_adduinsetting = 0;
   static byte[] cache_friend_src_desc;
+  static MacQQInfo cache_macqqInfo = new MacQQInfo();
   static byte[] cache_name;
   static byte[] cache_name1;
   static byte[] cache_remark;
@@ -18,27 +19,29 @@ public final class AddFriendReq
   static byte[] cache_src_description;
   static byte[] cache_token;
   static byte[] cache_verify;
-  public long adduin;
-  public int adduinsetting;
+  public long adduin = 0L;
+  public int adduinsetting = 0;
   public byte autoSend = 1;
-  public boolean contact_bothway_friend;
-  public byte[] friend_src_desc;
+  public boolean bSupportSecureTips = false;
+  public boolean contact_bothway_friend = false;
+  public byte[] friend_src_desc = null;
+  public MacQQInfo macqqInfo = null;
   public String msg = "";
-  public byte msgLen;
-  public byte myAllowFlag;
-  public byte myfriendgroupid;
-  public byte[] name;
-  public byte[] name1;
-  public byte[] remark;
-  public byte showMyCard;
-  public byte[] sig;
+  public byte msgLen = 0;
+  public byte myAllowFlag = 0;
+  public byte myfriendgroupid = 0;
+  public byte[] name = null;
+  public byte[] name1 = null;
+  public byte[] remark = null;
+  public byte showMyCard = 0;
+  public byte[] sig = null;
   public int sourceID = 3999;
   public int sourceSubID = 0;
-  public byte srcFlag;
-  public byte[] src_description;
-  public byte[] token;
-  public long uin;
-  public byte[] verify;
+  public byte srcFlag = 0;
+  public byte[] src_description = null;
+  public byte[] token = null;
+  public long uin = 0L;
+  public byte[] verify = null;
   
   static
   {
@@ -63,7 +66,7 @@ public final class AddFriendReq
   
   public AddFriendReq() {}
   
-  public AddFriendReq(long paramLong1, long paramLong2, int paramInt1, byte paramByte1, byte paramByte2, byte paramByte3, String paramString, byte paramByte4, byte paramByte5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, boolean paramBoolean, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte paramByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8)
+  public AddFriendReq(long paramLong1, long paramLong2, int paramInt1, byte paramByte1, byte paramByte2, byte paramByte3, String paramString, byte paramByte4, byte paramByte5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, boolean paramBoolean1, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte paramByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, MacQQInfo paramMacQQInfo, boolean paramBoolean2)
   {
     this.uin = paramLong1;
     this.adduin = paramLong2;
@@ -80,12 +83,14 @@ public final class AddFriendReq
     this.name = paramArrayOfByte2;
     this.src_description = paramArrayOfByte3;
     this.friend_src_desc = paramArrayOfByte4;
-    this.contact_bothway_friend = paramBoolean;
+    this.contact_bothway_friend = paramBoolean1;
     this.remark = paramArrayOfByte5;
     this.name1 = paramArrayOfByte6;
     this.showMyCard = paramByte6;
     this.token = paramArrayOfByte7;
     this.verify = paramArrayOfByte8;
+    this.macqqInfo = paramMacQQInfo;
+    this.bSupportSecureTips = paramBoolean2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -111,6 +116,8 @@ public final class AddFriendReq
     this.showMyCard = paramJceInputStream.read(this.showMyCard, 18, false);
     this.token = ((byte[])paramJceInputStream.read(cache_token, 19, false));
     this.verify = ((byte[])paramJceInputStream.read(cache_verify, 20, false));
+    this.macqqInfo = ((MacQQInfo)paramJceInputStream.read(cache_macqqInfo, 21, false));
+    this.bSupportSecureTips = paramJceInputStream.read(this.bSupportSecureTips, 22, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -154,11 +161,15 @@ public final class AddFriendReq
     if (this.verify != null) {
       paramJceOutputStream.write(this.verify, 20);
     }
+    if (this.macqqInfo != null) {
+      paramJceOutputStream.write(this.macqqInfo, 21);
+    }
+    paramJceOutputStream.write(this.bSupportSecureTips, 22);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.AddFriendReq
  * JD-Core Version:    0.7.0.1
  */

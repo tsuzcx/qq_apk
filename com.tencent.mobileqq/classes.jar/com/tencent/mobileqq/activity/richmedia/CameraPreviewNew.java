@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alod;
-import alps;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
@@ -11,12 +9,12 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import anvx;
-import bczq;
-import bdav;
-import bdax;
-import bdba;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.shortvideo.common.Observable;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraAbility;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl.CustomSize;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
 import com.tencent.qphone.base.util.QLog;
 
@@ -25,7 +23,7 @@ public class CameraPreviewNew
   implements Camera.PreviewCallback, SurfaceHolder.Callback
 {
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder = getHolder();
-  private bczq jdField_a_of_type_Bczq = new alod(this);
+  private Observable jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable = new CameraPreviewNew.CameraPreviewObservable(this);
   private boolean jdField_a_of_type_Boolean;
   
   public CameraPreviewNew(Context paramContext)
@@ -58,55 +56,55 @@ public class CameraPreviewNew
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
     if (Build.VERSION.SDK_INT <= 10) {
-      bdax.a().b();
+      CameraControl.a().b();
     }
-    if (!bdax.a().e())
+    if (!CameraControl.a().e())
     {
-      this.jdField_a_of_type_Bczq.a(2, new Object[] { "set preview format failed" });
-      a(2002, anvx.a(2131700820), false);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(2, new Object[] { "set preview format failed" });
+      a(2002, HardCodeUtil.a(2131701395), false);
     }
     do
     {
       return;
-      paramSurfaceHolder = bdax.a().c(CodecParam.DST_VIDEO_WIDTH, CodecParam.DST_VIDEO_HEIGHT, paramInt2, paramInt3, false);
-      if ((paramSurfaceHolder == null) || (!bdax.a().a(paramSurfaceHolder)))
+      paramSurfaceHolder = CameraControl.a().c(CodecParam.DST_VIDEO_WIDTH, CodecParam.DST_VIDEO_HEIGHT, paramInt2, paramInt3, false);
+      if ((paramSurfaceHolder == null) || (!CameraControl.a().a(paramSurfaceHolder)))
       {
-        this.jdField_a_of_type_Bczq.a(2, new Object[] { "set preview size failed" });
-        a(2002, anvx.a(2131700823), false);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(2, new Object[] { "set preview size failed" });
+        a(2002, HardCodeUtil.a(2131701398), false);
         return;
       }
-      if (!bdax.a().a(CodecParam.VIDEO_FPS))
+      if (!CameraControl.a().a(CodecParam.VIDEO_FPS))
       {
-        this.jdField_a_of_type_Bczq.a(2, new Object[] { "set preview fps failed" });
-        a(2002, anvx.a(2131700830), false);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(2, new Object[] { "set preview fps failed" });
+        a(2002, HardCodeUtil.a(2131701405), false);
         return;
       }
-      if (!bdax.a().c())
+      if (!CameraControl.a().c())
       {
-        this.jdField_a_of_type_Bczq.a(2, new Object[] { "set display orientation failed" });
-        a(2002, anvx.a(2131700829), false);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(2, new Object[] { "set display orientation failed" });
+        a(2002, HardCodeUtil.a(2131701404), false);
         return;
       }
-      paramSurfaceHolder = bdax.a().a();
-      paramInt1 = bdax.a().a();
-      bdba localbdba = bdax.a().a();
-      this.jdField_a_of_type_Bczq.a(2, new Object[] { localbdba, Integer.valueOf(paramInt1), paramSurfaceHolder });
-    } while (bdax.a().a(this, this.jdField_a_of_type_AndroidViewSurfaceHolder));
+      paramSurfaceHolder = CameraControl.a().a();
+      paramInt1 = CameraControl.a().a();
+      CameraControl.CustomSize localCustomSize = CameraControl.a().a();
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(2, new Object[] { localCustomSize, Integer.valueOf(paramInt1), paramSurfaceHolder });
+    } while (CameraControl.a().a(this, this.jdField_a_of_type_AndroidViewSurfaceHolder));
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreviewNew", 2, "surfaceChanged");
     }
-    a(2002, anvx.a(2131700824), false);
-    this.jdField_a_of_type_Bczq.a(3, new Object[] { "start preview failed" });
+    a(2002, HardCodeUtil.a(2131701399), false);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(3, new Object[] { "start preview failed" });
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    int i = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).getInt("camera", alps.a);
+    int i = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).getInt("camera", FlowCameraConstant.a);
     if (this.jdField_a_of_type_Boolean) {
       i = 1;
     }
     int j = i;
-    if (!bdav.c())
+    if (!CameraAbility.c())
     {
       j = i;
       if (i == 1) {
@@ -116,23 +114,23 @@ public class CameraPreviewNew
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreviewNew", 2, "surfaceCreated sCurrentCamera=" + j);
     }
-    if (bdax.a().a(j) != 0)
+    if (CameraControl.a().a(j) != 0)
     {
-      this.jdField_a_of_type_Bczq.a(1, new Object[] { "open camera failed" });
-      a(2002, anvx.a(2131700822), false);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(1, new Object[] { "open camera failed" });
+      a(2002, HardCodeUtil.a(2131701397), false);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreviewNew", 2, "surfaceCreated");
     }
-    this.jdField_a_of_type_Bczq.a(1, new Object[] { Boolean.valueOf(true) });
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable.a(1, new Object[] { Boolean.valueOf(true) });
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
     paramSurfaceHolder.removeCallback(this);
-    bdax.a().b();
-    bdax.a().b();
+    CameraControl.a().b();
+    CameraControl.a().b();
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreviewNew", 2, "surfaceDestroyed");
     }
@@ -140,7 +138,7 @@ public class CameraPreviewNew
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.CameraPreviewNew
  * JD-Core Version:    0.7.0.1
  */

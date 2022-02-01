@@ -70,7 +70,7 @@ public class MobileLogUploadTask
     buildEnv();
     this.mModel = UploadModel.MODEL_NORMAL;
     this.mStEnv = UploadGlobalConfig.getEnv();
-    localObject = new FileControlRequest(this.iUin + "", this.mAppid, (AuthToken)localObject, this.mChecksum, this.mCheckType, this.mDataLength, this.mStEnv, this.mModel, this.mSessionId, this.mNeedIpRedirect, true, this.iSync, null);
+    localObject = new FileControlRequest(this.iUin + "", this.mAppid, (AuthToken)localObject, this.mChecksum, this.mCheckType, this.mDataLength, this.mStEnv, this.mModel, this.mSessionId, this.mNeedIpRedirect, true, this.iSync, null, this.mExtend_info);
     ((FileControlRequest)localObject).setExtraParam(buildExtra());
     return localObject;
   }
@@ -129,7 +129,7 @@ public class MobileLogUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.MobileLogUploadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,12 @@ package com.tencent.mobileqq.troop.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bgnh;
 import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
 public class ExtendInputMethodRelativeLayout
   extends InputMethodRelativeLayout
 {
-  private bgnh a;
+  private ExtendInputMethodRelativeLayout.OnDownListener a;
   
   public ExtendInputMethodRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,9 +35,9 @@ public class ExtendInputMethodRelativeLayout
     return true;
   }
   
-  public void setOnDownListener(bgnh parambgnh)
+  public void setOnDownListener(ExtendInputMethodRelativeLayout.OnDownListener paramOnDownListener)
   {
-    this.a = parambgnh;
+    this.a = paramOnDownListener;
   }
 }
 

@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 class MiniAppProfileCardView$HorzionAdapter
@@ -37,36 +36,29 @@ class MiniAppProfileCardView$HorzionAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
     if ((this.miniAppInfoItems == null) || (this.miniAppInfoItems.size() < 1))
     {
-      localObject = paramView;
-      localView = paramView;
-      paramView = (View)localObject;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
+      paramViewGroup = paramView;
+      return paramViewGroup;
     }
-    Object localObject = (MiniAppInfo)this.miniAppInfoItems.get(paramInt);
+    paramViewGroup = (MiniAppInfo)this.miniAppInfoItems.get(paramInt);
     if (paramView == null) {
       paramView = new MiniAppProfileCardItemView(MiniAppProfileCardView.access$000(this.this$0), null);
     }
     for (;;)
     {
-      ((MiniAppProfileCardItemView)paramView).setData((MiniAppInfo)localObject, paramInt);
-      if (MiniAppProfileCardView.access$100(this.this$0))
-      {
-        if (MiniAppProfileCardView.access$200(this.this$0) == null) {
-          break label127;
-        }
-        ((MiniAppProfileCardItemView)paramView).setTextColor(MiniAppProfileCardView.access$200(this.this$0));
-      }
-      for (;;)
-      {
-        localView = paramView;
+      ((MiniAppProfileCardItemView)paramView).setData(paramViewGroup, paramInt);
+      paramViewGroup = paramView;
+      if (!MiniAppProfileCardView.access$100(this.this$0)) {
         break;
-        label127:
-        ((MiniAppProfileCardItemView)paramView).setTextColor(MiniAppProfileCardView.access$300(this.this$0));
       }
+      if (MiniAppProfileCardView.access$200(this.this$0) != null)
+      {
+        ((MiniAppProfileCardItemView)paramView).setTextColor(MiniAppProfileCardView.access$200(this.this$0));
+        return paramView;
+      }
+      ((MiniAppProfileCardItemView)paramView).setTextColor(MiniAppProfileCardView.access$300(this.this$0));
+      return paramView;
     }
   }
   

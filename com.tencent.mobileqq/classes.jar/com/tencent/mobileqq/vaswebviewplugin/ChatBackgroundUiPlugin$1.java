@@ -3,15 +3,15 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import ascz;
-import bifw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 
 class ChatBackgroundUiPlugin$1
-  extends ascz
+  extends Client.OnRemoteRespObserver
 {
   ChatBackgroundUiPlugin$1(ChatBackgroundUiPlugin paramChatBackgroundUiPlugin) {}
   
@@ -39,7 +39,7 @@ class ChatBackgroundUiPlugin$1
           }
           Intent localIntent = new Intent();
           localIntent.setClass(BaseApplicationImpl.getApplication(), SplashActivity.class);
-          localIntent.putExtra("tab_index", MainFragment.b);
+          localIntent.putExtra("tab_index", FrameControllerUtil.a);
           localIntent.addFlags(67108864);
           paramBundle.startActivity(localIntent);
         }
@@ -49,7 +49,7 @@ class ChatBackgroundUiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatBackgroundUiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

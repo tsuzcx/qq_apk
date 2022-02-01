@@ -1,19 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.app.Dialog;
-import six;
 
-public final class VideoFeedsHelper$11
+final class VideoFeedsHelper$11
   implements Runnable
 {
   public void run()
   {
     try
     {
-      if (six.a != null)
+      if (VideoFeedsHelper.a != null)
       {
-        six.a.dismiss();
-        six.a = null;
+        VideoFeedsHelper.a.dismiss();
+        VideoFeedsHelper.a = null;
       }
       return;
     }
@@ -22,7 +21,7 @@ public final class VideoFeedsHelper$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper.11
  * JD-Core Version:    0.7.0.1
  */

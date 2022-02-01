@@ -22,12 +22,12 @@ class ViewCompat$UnhandledKeyEventManager
   
   static UnhandledKeyEventManager at(View paramView)
   {
-    UnhandledKeyEventManager localUnhandledKeyEventManager2 = (UnhandledKeyEventManager)paramView.getTag(2131378493);
+    UnhandledKeyEventManager localUnhandledKeyEventManager2 = (UnhandledKeyEventManager)paramView.getTag(2131378924);
     UnhandledKeyEventManager localUnhandledKeyEventManager1 = localUnhandledKeyEventManager2;
     if (localUnhandledKeyEventManager2 == null)
     {
       localUnhandledKeyEventManager1 = new UnhandledKeyEventManager();
-      paramView.setTag(2131378493, localUnhandledKeyEventManager1);
+      paramView.setTag(2131378924, localUnhandledKeyEventManager1);
     }
     return localUnhandledKeyEventManager1;
   }
@@ -70,7 +70,7 @@ class ViewCompat$UnhandledKeyEventManager
   
   private boolean onUnhandledKeyEvent(@NonNull View paramView, @NonNull KeyEvent paramKeyEvent)
   {
-    ArrayList localArrayList = (ArrayList)paramView.getTag(2131378494);
+    ArrayList localArrayList = (ArrayList)paramView.getTag(2131378925);
     if (localArrayList != null)
     {
       int i = localArrayList.size() - 1;
@@ -220,7 +220,7 @@ class ViewCompat$UnhandledKeyEventManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.view.ViewCompat.UnhandledKeyEventManager
  * JD-Core Version:    0.7.0.1
  */

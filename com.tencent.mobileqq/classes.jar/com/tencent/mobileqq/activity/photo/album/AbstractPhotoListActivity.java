@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import Override;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -35,7 +34,7 @@ import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.photo.PeakFragmentActivity;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.queryMedia.MediaQueryHelper;
+import com.tencent.mobileqq.activity.photo.album.querymedia.MediaQueryHelper;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 import com.tencent.mobileqq.widget.NumberCheckBox;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -69,7 +68,7 @@ public abstract class AbstractPhotoListActivity
   public int mImageHeight;
   public int mImageWidth;
   int mItemPadding;
-  PhotoGridView.OnSelectListener mOnSelectChangeListener = new AbstractPhotoListActivity.1(this);
+  PhotoGridView.OnSelectListener mOnSelectChangeListener = new AbstractPhotoListActivity.MyOnSelectListener(this, null);
   public PhotoListBaseData mPhotoListData;
   public PhotoListLogicBase mPhotoListLogic;
   public int mTitleBarHeight;
@@ -84,6 +83,11 @@ public abstract class AbstractPhotoListActivity
   public LinearLayout titleLayout;
   public TextView titleLeftBtn;
   public TextView titleText;
+  
+  private boolean checkRemindCondition(boolean paramBoolean, int paramInt)
+  {
+    return ((paramInt == this.mPhotoListLogic.mPhotoCommonData.maxSelectNum) && (!paramBoolean)) || ((paramInt == this.mPhotoListLogic.mPhotoCommonData.maxSelectNum - 1) && (paramBoolean));
+  }
   
   public static String formatTimeToString(long paramLong)
   {
@@ -106,6 +110,61 @@ public abstract class AbstractPhotoListActivity
       return localStringBuilder.toString();
       str1 = "0" + String.valueOf(i);
       break;
+    }
+  }
+  
+  private void realUpdateCheckbox(int paramInt1, ArrayList<String> paramArrayList, int paramInt2, View paramView, LocalMediaInfo paramLocalMediaInfo)
+  {
+    if (paramInt1 != paramInt2)
+    {
+      paramInt1 = paramArrayList.indexOf(paramLocalMediaInfo.path);
+      if (paramInt1 >= 0)
+      {
+        paramArrayList = (AbstractPhotoListActivity.Holder)paramView.getTag();
+        if ((paramArrayList != null) && (paramArrayList.mCheckBox != null)) {
+          paramArrayList.mCheckBox.setCheckedNumber(paramInt1 + 1);
+        }
+      }
+    }
+    for (;;)
+    {
+      return;
+      paramInt1 = QAlbumUtil.getMediaType(paramLocalMediaInfo);
+      if ((paramInt1 == 0) || (paramInt1 == 1))
+      {
+        AbstractPhotoListActivity.Holder localHolder = (AbstractPhotoListActivity.Holder)paramView.getTag();
+        int i = paramLocalMediaInfo.selectStatus;
+        if (i == 1)
+        {
+          if (localHolder.mCheckBox != null) {
+            localHolder.mCheckBox.setCheckedNumber(paramArrayList.indexOf(paramLocalMediaInfo.path) + 1);
+          }
+          if (paramView.getBackground() != null) {
+            paramView.setBackgroundDrawable(null);
+          }
+        }
+        while ((AppSetting.d) && (localHolder.mCheckBox != null))
+        {
+          paramArrayList = QAlbumUtil.createContentDescriptionWithCheckBox(paramInt1, paramLocalMediaInfo, paramInt2, localHolder.mCheckBox.isChecked());
+          localHolder.mCheckBox.setContentDescription(paramArrayList);
+          return;
+          if (i == 3)
+          {
+            if (localHolder.mCheckBox != null) {
+              localHolder.mCheckBox.setChecked(false);
+            }
+          }
+          else
+          {
+            if (localHolder.mCheckBox != null) {
+              localHolder.mCheckBox.setChecked(false);
+            }
+            if (paramView.getBackground() != null) {
+              paramView.setBackgroundDrawable(null);
+            }
+          }
+        }
+      }
     }
   }
   
@@ -200,14 +259,14 @@ public abstract class AbstractPhotoListActivity
     super.adjustStatusBar();
     try
     {
-      super.setContentView(2131561336);
+      super.setContentView(2131561442);
       getWindow().setBackgroundDrawable(null);
       this.mPhotoListLogic = ((PhotoListLogicBase)generateLogic());
       this.mPhotoListData = this.mPhotoListLogic.mPhotoListData;
       this.pref = BaseApplication.getContext().getSharedPreferences("share", 4);
       Resources localResources = getResources();
       int i = localResources.getDisplayMetrics().widthPixels;
-      this.mEdgePadding = localResources.getDimensionPixelSize(2131297430);
+      this.mEdgePadding = localResources.getDimensionPixelSize(2131297498);
       this.mImageWidth = ((i - this.mEdgePadding * 2) / 3);
       this.mImageHeight = this.mImageWidth;
       this.mPhotoListLogic.initData(paramBundle);
@@ -305,11 +364,11 @@ public abstract class AbstractPhotoListActivity
   
   protected void initUI()
   {
-    this.albumListContainer = ((FrameLayout)findViewById(2131362588));
-    this.titleLeftBtn = ((TextView)findViewById(2131369231));
+    this.albumListContainer = ((FrameLayout)findViewById(2131362620));
+    this.titleLeftBtn = ((TextView)findViewById(2131369487));
     this.titleLeftBtn.setVisibility(0);
     this.titleLeftBtn.setOnClickListener(this);
-    this.titleText = ((TextView)findViewById(2131369278));
+    this.titleText = ((TextView)findViewById(2131369534));
     String str;
     if (this.mPhotoListLogic.mPhotoCommonData.albumName != null) {
       str = this.mPhotoListLogic.mPhotoCommonData.albumName;
@@ -317,21 +376,21 @@ public abstract class AbstractPhotoListActivity
     for (;;)
     {
       setTitle(str);
-      this.titleImage = ((TriangleView)findViewById(2131369274));
+      this.titleImage = ((TriangleView)findViewById(2131369530));
       this.titleImage.setColor(this.titleText.getCurrentTextColor());
-      this.titleLayout = ((LinearLayout)findViewById(2131369225));
+      this.titleLayout = ((LinearLayout)findViewById(2131369481));
       this.titleLayout.setOnClickListener(this);
-      this.previewBtn = ((Button)findViewById(2131373132));
-      this.sendBtn = ((Button)findViewById(2131377349));
-      this.bottomBar = findViewById(2131379207);
-      this.mGridView = ((PhotoGridView)findViewById(2131372696));
+      this.previewBtn = ((Button)findViewById(2131373458));
+      this.sendBtn = ((Button)findViewById(2131377769));
+      this.bottomBar = findViewById(2131379641);
+      this.mGridView = ((PhotoGridView)findViewById(2131373016));
       this.mGridView.setScrollBarStyle(0);
       this.gridLayoutManager = new GridLayoutManager(this, 3);
       this.mGridView.setLayoutManager(this.gridLayoutManager);
       this.photoListAdapter = new AbstractPhotoListActivity.PhotoListAdapter(this);
       this.mGridView.setAdapter(this.photoListAdapter);
       this.mGridView.setOnIndexChangedListener(this.mOnSelectChangeListener);
-      this.mGridView.addOnScrollListener(new AbstractPhotoListActivity.2(this));
+      this.mGridView.addOnScrollListener(new AbstractPhotoListActivity.1(this));
       this.mPhotoListLogic.postInitUI();
       return;
       if (this.mPhotoListLogic.mPhotoCommonData.showMediaType == 2) {
@@ -365,7 +424,7 @@ public abstract class AbstractPhotoListActivity
       setTitle(paramQQAlbumInfo);
       this.mPhotoListData.firstResume = true;
       this.mPhotoListLogic.mPhotoCommonData.createMediaQueryHelper(this);
-      runOnUiThread(new AbstractPhotoListActivity.3(this));
+      runOnUiThread(new AbstractPhotoListActivity.2(this));
       transAlbumList(false);
       return;
     }
@@ -384,7 +443,7 @@ public abstract class AbstractPhotoListActivity
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton.getId() == 2131374832) {
+    if (paramCompoundButton.getId() == 2131375209) {
       this.mPhotoListLogic.onQualityBtnClick(paramCompoundButton, paramBoolean);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -394,7 +453,7 @@ public abstract class AbstractPhotoListActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131369231) {
+    if (i == 2131369487) {
       this.mPhotoListLogic.onTitleBtnCancelClick(paramView);
     }
     do
@@ -403,19 +462,19 @@ public abstract class AbstractPhotoListActivity
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
-        if (i == 2131373132)
+        if (i == 2131373458)
         {
           this.mPhotoListLogic.onPreviewBtnClick(paramView);
         }
         else
         {
-          if (i != 2131377349) {
+          if (i != 2131377769) {
             break;
           }
           this.mPhotoListLogic.onSendBtnClick(paramView);
         }
       }
-    } while (i != 2131369225);
+    } while (i != 2131369481);
     if ((this.albumListFragment == null) || (!this.albumListFragment.isAdded()) || (this.albumListFragment.isHidden())) {}
     for (boolean bool = true;; bool = false)
     {
@@ -464,53 +523,41 @@ public abstract class AbstractPhotoListActivity
   
   public void selectLimitRemind(boolean paramBoolean)
   {
-    int i = this.mPhotoListLogic.mPhotoCommonData.selectedPhotoList.size();
-    int j;
-    if (((i == this.mPhotoListLogic.mPhotoCommonData.maxSelectNum) && (!paramBoolean)) || ((i == this.mPhotoListLogic.mPhotoCommonData.maxSelectNum - 1) && (paramBoolean)))
+    if (checkRemindCondition(paramBoolean, this.mPhotoListLogic.mPhotoCommonData.selectedPhotoList.size()))
     {
-      i = 1;
-      if (i == 0) {
-        return;
-      }
-      j = this.gridLayoutManager.findFirstVisibleItemPosition();
+      int j = this.gridLayoutManager.findFirstVisibleItemPosition();
       int k = this.gridLayoutManager.findLastVisibleItemPosition();
-      i = j;
-      label77:
-      if (i > k) {
-        return;
-      }
-      if (this.photoListAdapter.getItemViewType(i) != 2) {
-        break label107;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label77;
-      i = 0;
-      break;
-      label107:
-      Object localObject = this.mGridView.getChildAt(i - j);
-      LocalMediaInfo localLocalMediaInfo = this.photoListAdapter.getItem(i);
-      if (localObject == null)
+      int i = j;
+      if (i <= k)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhotoListActivity", 2, "updateCheckbox view = null at " + i);
-        }
-      }
-      else if (localLocalMediaInfo == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhotoListActivity", 2, "updateCheckbox info = null at " + i);
-        }
-      }
-      else
-      {
-        localObject = (AbstractPhotoListActivity.Holder)((View)localObject).getTag();
-        if ((paramBoolean) || (localLocalMediaInfo.selectStatus == 1)) {
-          ((AbstractPhotoListActivity.Holder)localObject).mImageView.setAlpha(1.0F);
-        } else {
-          ((AbstractPhotoListActivity.Holder)localObject).mImageView.setAlpha(0.3F);
+        if (this.photoListAdapter.getItemViewType(i) == 2) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          Object localObject = this.mGridView.getChildAt(i - j);
+          LocalMediaInfo localLocalMediaInfo = this.photoListAdapter.getItem(i);
+          if (localObject == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PhotoListActivity", 2, "updateCheckbox view = null at " + i);
+            }
+          }
+          else if (localLocalMediaInfo == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PhotoListActivity", 2, "updateCheckbox info = null at " + i);
+            }
+          }
+          else
+          {
+            localObject = (AbstractPhotoListActivity.Holder)((View)localObject).getTag();
+            if ((paramBoolean) || (localLocalMediaInfo.selectStatus == 1)) {
+              ((AbstractPhotoListActivity.Holder)localObject).mImageView.setAlpha(1.0F);
+            } else {
+              ((AbstractPhotoListActivity.Holder)localObject).mImageView.setAlpha(0.3F);
+            }
+          }
         }
       }
     }
@@ -576,7 +623,7 @@ public abstract class AbstractPhotoListActivity
     {
       try
       {
-        localFragmentTransaction.add(2131362588, this.albumListFragment, this.albumListFragment.toString());
+        localFragmentTransaction.add(2131362620, this.albumListFragment, this.albumListFragment.toString());
         localFragmentTransaction.commit();
         localObjectAnimator.setDuration(300L);
         localObjectAnimator.setEvaluator(new ArgbEvaluator());
@@ -609,14 +656,13 @@ public abstract class AbstractPhotoListActivity
     if (i <= k)
     {
       if ((paramBoolean) && (paramInt != i)) {}
-      label404:
       for (;;)
       {
         i += 1;
         break;
-        Object localObject = this.mGridView.getChildAt(i - j);
+        View localView = this.mGridView.getChildAt(i - j);
         LocalMediaInfo localLocalMediaInfo = this.photoListAdapter.getItem(i);
-        if (localObject == null)
+        if (localView == null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("PhotoListActivity", 2, "updateCheckbox view = null at " + i);
@@ -628,69 +674,14 @@ public abstract class AbstractPhotoListActivity
             QLog.d("PhotoListActivity", 2, "updateCheckbox info = null at " + i);
           }
         }
-        else
-        {
-          int m;
-          AbstractPhotoListActivity.Holder localHolder;
-          if (paramInt != i)
-          {
-            m = localArrayList.indexOf(localLocalMediaInfo.path);
-            if (m >= 0)
-            {
-              localHolder = (AbstractPhotoListActivity.Holder)((View)localObject).getTag();
-              if ((localHolder != null) && (localHolder.mCheckBox != null)) {
-                localHolder.mCheckBox.setCheckedNumber(m + 1);
-              }
-            }
-          }
-          else
-          {
-            m = QAlbumUtil.getMediaType(localLocalMediaInfo);
-            if ((m == 0) || (m == 1))
-            {
-              localHolder = (AbstractPhotoListActivity.Holder)((View)localObject).getTag();
-              int n = localLocalMediaInfo.selectStatus;
-              if (n == 1)
-              {
-                if (localHolder.mCheckBox != null) {
-                  localHolder.mCheckBox.setCheckedNumber(localArrayList.indexOf(localLocalMediaInfo.path) + 1);
-                }
-                if (((View)localObject).getBackground() != null) {
-                  ((View)localObject).setBackgroundDrawable(null);
-                }
-              }
-              for (;;)
-              {
-                if ((!AppSetting.c) || (localHolder.mCheckBox == null)) {
-                  break label404;
-                }
-                localObject = QAlbumUtil.createContentDescriptionWithCheckBox(m, localLocalMediaInfo, i, localHolder.mCheckBox.isChecked());
-                localHolder.mCheckBox.setContentDescription((CharSequence)localObject);
-                break;
-                if (n == 3)
-                {
-                  if (localHolder.mCheckBox != null) {
-                    localHolder.mCheckBox.setChecked(false);
-                  }
-                }
-                else
-                {
-                  if (localHolder.mCheckBox != null) {
-                    localHolder.mCheckBox.setChecked(false);
-                  }
-                  if (((View)localObject).getBackground() != null) {
-                    ((View)localObject).setBackgroundDrawable(null);
-                  }
-                }
-              }
-            }
-          }
+        else {
+          realUpdateCheckbox(paramInt, localArrayList, i, localView, localLocalMediaInfo);
         }
       }
     }
   }
   
-  public void updateCheckboxForDelete()
+  protected void updateCheckboxForDelete()
   {
     int j = this.gridLayoutManager.findFirstVisibleItemPosition();
     int k = this.gridLayoutManager.findLastVisibleItemPosition();
@@ -731,7 +722,7 @@ public abstract class AbstractPhotoListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity
  * JD-Core Version:    0.7.0.1
  */

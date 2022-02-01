@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.persistence.fts;
 
 import android.text.TextUtils;
-import bhkf;
+import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
 
 public abstract class FTSEntity
 {
@@ -19,25 +19,25 @@ public abstract class FTSEntity
   public static final int MAX_LIMIT = 2000;
   public static final int MAX_PROXIMITY = 65535;
   public static final int MIN_PROXIMITY = 0;
-  public String mContent;
-  protected String mContentIndex;
-  public String mExt1;
-  public String mExt2;
-  public String mExt3;
-  public String mExt4;
-  public String mExt5;
-  public String mExt6;
-  public String mExt7;
-  public String mExt8;
-  public String mExt9;
-  public byte[] mExts;
+  public String mContent = null;
+  protected String mContentIndex = null;
+  public String mExt1 = null;
+  public String mExt2 = null;
+  public String mExt3 = null;
+  public String mExt4 = null;
+  public String mExt5 = null;
+  public String mExt6 = null;
+  public String mExt7 = null;
+  public String mExt8 = null;
+  public String mExt9 = null;
+  public byte[] mExts = null;
   public long mOId = -1L;
   public int mOpt = 0;
   public int mProximity = 65535;
   public int mProximityEnd = -1;
   public int mProximityStart = -1;
   public int mSearchScene;
-  public int mSegmentCount;
+  public int mSegmentCount = 0;
   public int mType = -1;
   
   public FTSEntity() {}
@@ -127,8 +127,8 @@ public abstract class FTSEntity
     {
       doSerialize();
       return;
-      this.mContentIndex = bhkf.a(this.mContent);
-      this.mSegmentCount += bhkf.a(this.mContentIndex);
+      this.mContentIndex = SQLiteFTSUtils.a(this.mContent);
+      this.mSegmentCount += SQLiteFTSUtils.a(this.mContentIndex);
     }
   }
   
@@ -139,8 +139,8 @@ public abstract class FTSEntity
       this.mContentIndex = null;
       return;
     }
-    this.mContentIndex = bhkf.a(this.mContent);
-    this.mSegmentCount += bhkf.a(this.mContentIndex);
+    this.mContentIndex = SQLiteFTSUtils.a(this.mContent);
+    this.mSegmentCount += SQLiteFTSUtils.a(this.mContentIndex);
   }
   
   public void preWriteTwo()

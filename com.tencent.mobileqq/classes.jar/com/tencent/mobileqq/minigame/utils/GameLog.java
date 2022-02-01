@@ -22,7 +22,7 @@ public class GameLog
   private static final String[] VCONSOLE_LOG_ARRAY = { "log", "info", "warn", "error" };
   public static final int VCONSOLE_LOG_DEBUG = 100;
   private static String mPreLogInfo = "init log";
-  private static long mRepeatLogInfoNumber;
+  private static long mRepeatLogInfoNumber = 0L;
   private static GameLog sInstance;
   
   public static String cutString(String paramString)

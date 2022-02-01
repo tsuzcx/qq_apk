@@ -1,21 +1,18 @@
 package com.tencent.av.ui;
 
-import meg;
-import mes;
-
-public class GAudioMembersCtrlActivity$7$3
+class GAudioMembersCtrlActivity$7$3
   implements Runnable
 {
-  public GAudioMembersCtrlActivity$7$3(mes parammes, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  GAudioMembersCtrlActivity$7$3(GAudioMembersCtrlActivity.7 param7, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mes.a.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.GAudioMembersCtrlActivity.7.3
  * JD-Core Version:    0.7.0.1
  */

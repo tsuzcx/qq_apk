@@ -4,23 +4,20 @@ import android.graphics.PointF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bolc;
-import bomd;
-import bomv;
-import bowf;
-import bowh;
-import bowi;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerParams;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 
 public class TextParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator<TextParcelData> CREATOR = new bomv();
+  public static final Parcelable.Creator<TextParcelData> CREATOR = new TextParcelData.1();
   private float jdField_a_of_type_Float;
-  private bowh jdField_a_of_type_Bowh;
   public SegmentKeeper a;
   private DynamicTextItem jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
+  private TextLayer.LayerParams jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams;
   private float b;
   private float c;
   private float d;
@@ -30,24 +27,24 @@ public class TextParcelData
   private float h;
   private float i;
   
-  public TextParcelData(Parcel paramParcel)
+  protected TextParcelData(Parcel paramParcel)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    Object localObject = new bolc();
+    Object localObject = new DynamicTextBuilder();
     int j = paramParcel.readInt();
     DynamicTextItem.TextMap localTextMap = (DynamicTextItem.TextMap)paramParcel.readParcelable(DynamicTextItem.TextMap.class.getClassLoader());
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = ((bolc)localObject).a(j, localTextMap.a());
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = ((DynamicTextBuilder)localObject).a(j, localTextMap.a());
     if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem == null)
     {
       QLog.e("TextParcelData", 1, "read mDynamicTextItem from Parcel return null, use normal text instead");
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = new bomd(j, localTextMap.a());
+      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = new NormalTextItem(j, localTextMap.a());
     }
     localObject = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
     if (paramParcel.readInt() == 1) {}
     for (boolean bool = true;; bool = false)
     {
       ((DynamicTextItem)localObject).a(bool);
-      this.jdField_a_of_type_Bowh = new bowh(paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat());
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams = new TextLayer.LayerParams(paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat());
       this.jdField_a_of_type_Float = paramParcel.readFloat();
       this.b = paramParcel.readFloat();
       this.c = paramParcel.readFloat();
@@ -62,24 +59,24 @@ public class TextParcelData
     }
   }
   
-  public bowi a(bowf parambowf)
+  public TextLayer.TextItem a(TextLayer paramTextLayer)
   {
-    parambowf.getClass();
-    parambowf = new bowi(parambowf, this.jdField_a_of_type_Bowh);
-    parambowf.q = this.jdField_a_of_type_Bowh.jdField_a_of_type_Float;
-    parambowf.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
-    parambowf.u = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a();
-    parambowf.v = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
-    parambowf.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    parambowf.b = this.b;
-    parambowf.c = this.c;
-    parambowf.d = this.d;
-    parambowf.e = this.e;
-    parambowf.f = this.f;
-    parambowf.g = this.g;
-    parambowf.h = this.h;
-    parambowf.i = this.i;
-    return parambowf;
+    paramTextLayer.getClass();
+    paramTextLayer = new TextLayer.TextItem(paramTextLayer, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams);
+    paramTextLayer.q = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.jdField_a_of_type_Float;
+    paramTextLayer.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
+    paramTextLayer.u = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a();
+    paramTextLayer.v = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
+    paramTextLayer.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    paramTextLayer.b = this.b;
+    paramTextLayer.c = this.c;
+    paramTextLayer.d = this.d;
+    paramTextLayer.e = this.e;
+    paramTextLayer.f = this.f;
+    paramTextLayer.g = this.g;
+    paramTextLayer.h = this.h;
+    paramTextLayer.i = this.i;
+    return paramTextLayer;
   }
   
   public int describeContents()
@@ -95,14 +92,14 @@ public class TextParcelData
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.jdField_a_of_type_AndroidGraphicsPointF.x);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.jdField_a_of_type_AndroidGraphicsPointF.y);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.jdField_a_of_type_Float);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.b);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.c);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.d);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.e);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.f);
+      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.jdField_a_of_type_AndroidGraphicsPointF.x);
+      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.jdField_a_of_type_AndroidGraphicsPointF.y);
+      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.jdField_a_of_type_Float);
+      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.b);
+      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.c);
+      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.d);
+      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.e);
+      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.f);
       paramParcel.writeFloat(this.jdField_a_of_type_Float);
       paramParcel.writeFloat(this.b);
       paramParcel.writeFloat(this.c);
@@ -119,7 +116,7 @@ public class TextParcelData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.text.TextParcelData
  * JD-Core Version:    0.7.0.1
  */

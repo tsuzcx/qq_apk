@@ -1,6 +1,5 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Matrix;
@@ -13,16 +12,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZBitmapDrawable;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.MalformedURLException;
 import java.net.URL;
-import tls;
-import tlv;
-import tlw;
-import tme;
-import vth;
 
 public class PublicAccountImageCollectionActivity
   extends BaseActivity
@@ -34,7 +32,7 @@ public class PublicAccountImageCollectionActivity
   
   public PublicAccountImageCollectionActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new vth(this);
+    this.jdField_a_of_type_AndroidOsHandler = new PublicAccountImageCollectionActivity.1(this);
   }
   
   private Drawable a(String paramString, int paramInt1, int paramInt2)
@@ -43,14 +41,14 @@ public class PublicAccountImageCollectionActivity
     try
     {
       paramString = new URL(paramString);
-      Object localObject2 = new tlw();
-      ((tlw)localObject2).jdField_a_of_type_JavaNetURL = paramString;
-      ((tlw)localObject2).jdField_a_of_type_Int = paramInt1;
-      ((tlw)localObject2).b = paramInt2;
-      localObject2 = tlv.a().a((tlw)localObject2);
+      Object localObject2 = new ImageRequest();
+      ((ImageRequest)localObject2).jdField_a_of_type_JavaNetURL = paramString;
+      ((ImageRequest)localObject2).jdField_a_of_type_Int = paramInt1;
+      ((ImageRequest)localObject2).b = paramInt2;
+      localObject2 = ImageManager.a().a((ImageRequest)localObject2);
       paramString = localObject1;
       if (localObject2 != null) {
-        paramString = new tme(((tls)localObject2).a());
+        paramString = new ZBitmapDrawable(((CloseableBitmap)localObject2).a());
       }
       return paramString;
     }
@@ -89,7 +87,7 @@ public class PublicAccountImageCollectionActivity
     requestWindowFeature(1);
     getWindow().setFlags(1024, 1024);
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559653);
+    super.setContentView(2131559729);
     int i = getWindowManager().getDefaultDisplay().getHeight();
     int j = getWindowManager().getDefaultDisplay().getWidth();
     Object localObject = getIntent();
@@ -104,7 +102,7 @@ public class PublicAccountImageCollectionActivity
       ((Matrix)localObject).setValues(arrayOfFloat);
     }
     this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView = new PublicAccountImageView(this, this.jdField_a_of_type_AndroidOsHandler, (Matrix)localObject, this.jdField_a_of_type_Int, n, i1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373333));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373657));
     paramBundle = a(paramBundle, k, m);
     this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setImageDrawable(paramBundle);
     ((Matrix)localObject).postScale(3.0F, 3.0F, n / 2, i1 / 2);
@@ -141,7 +139,7 @@ public class PublicAccountImageCollectionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionActivity
  * JD-Core Version:    0.7.0.1
  */

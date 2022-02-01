@@ -2,6 +2,7 @@ package NS_MINI_INTERFACE;
 
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -10,7 +11,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StModuleInfo
   extends MessageMicro<StModuleInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 66, 74, 80, 90, 98, 106, 112, 122 }, new String[] { "title", "userAppList", "moduleType", "useOld", "jumpMoreApp", "isFinished", "appTotalNum", "desc", "ranks", "freshInternal", "titleIcon", "backgroundPic", "dittoDsl", "subTypes", "jumpLink" }, new Object[] { "", null, Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), "", null, Integer.valueOf(0), "", "", "", Integer.valueOf(0), "" }, StModuleInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 66, 74, 80, 90, 98, 106, 112, 122, 128 }, new String[] { "title", "userAppList", "moduleType", "useOld", "jumpMoreApp", "isFinished", "appTotalNum", "desc", "ranks", "freshInternal", "titleIcon", "backgroundPic", "dittoDsl", "subTypes", "jumpLink", "PopupType" }, new Object[] { "", null, Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), "", null, Integer.valueOf(0), "", "", "", Integer.valueOf(0), "", Integer.valueOf(0) }, StModuleInfo.class);
+  public final PBEnumField PopupType = PBField.initEnum(0);
   public final PBInt32Field appTotalNum = PBField.initInt32(0);
   public final PBStringField backgroundPic = PBField.initString("");
   public final PBStringField desc = PBField.initString("");

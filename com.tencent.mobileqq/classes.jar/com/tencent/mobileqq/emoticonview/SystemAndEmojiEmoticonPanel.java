@@ -16,8 +16,8 @@ public class SystemAndEmojiEmoticonPanel
   
   protected void initUI(Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
-    this.pageRadioGroup = ((EmoticonPagerRadioGroup)this.root.findViewById(2131376072));
-    this.viewPager = ((ViewPager)this.root.findViewById(2131381118));
+    this.pageRadioGroup = ((EmoticonPagerRadioGroup)this.root.findViewById(2131376453));
+    this.viewPager = ((ViewPager)this.root.findViewById(2131381588));
     this.pageAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);
     paramContext = new ClassicEmoticonPanelViewBinder(paramContext, paramEmoticonCallback, 9);
@@ -31,7 +31,7 @@ public class SystemAndEmojiEmoticonPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel
  * JD-Core Version:    0.7.0.1
  */

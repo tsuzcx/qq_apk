@@ -8,10 +8,10 @@ public final class OneKeyWordItemClient
   extends JceStruct
 {
   public String sKeyWordContent = "";
-  public long uGroupNum;
-  public long uWordExpiredFlag;
-  public long uWordId;
-  public long uWordStatus;
+  public long uGroupNum = 0L;
+  public long uWordExpiredFlag = 0L;
+  public long uWordId = 0L;
+  public long uWordStatus = 0L;
   
   public OneKeyWordItemClient() {}
   

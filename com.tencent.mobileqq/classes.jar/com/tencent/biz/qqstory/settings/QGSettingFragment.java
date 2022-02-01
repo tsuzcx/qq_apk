@@ -10,9 +10,6 @@ import android.view.ViewGroup;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import xqd;
-import xqe;
-import xqf;
 
 public class QGSettingFragment
   extends IphoneTitleBarFragment
@@ -20,9 +17,17 @@ public class QGSettingFragment
   private static boolean a;
   private static boolean b;
   private static boolean c;
+  private static boolean d = false;
   protected FormSwitchItem a;
   protected FormSwitchItem b;
   protected FormSwitchItem c;
+  
+  static
+  {
+    jdField_a_of_type_Boolean = false;
+    jdField_b_of_type_Boolean = false;
+    jdField_c_of_type_Boolean = false;
+  }
   
   public static void a(boolean paramBoolean)
   {
@@ -66,20 +71,20 @@ public class QGSettingFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131377151));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131370070));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369620));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131377571));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131370343));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369893));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(b());
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xqd(this));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new QGSettingFragment.1(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(a());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xqe(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new QGSettingFragment.2(this));
     this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(c());
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new xqf(this));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new QGSettingFragment.3(this));
   }
   
   public int getContentLayoutId()
   {
-    return 2131561776;
+    return 2131561908;
   }
   
   public View onCreateCenterView()
@@ -91,7 +96,7 @@ public class QGSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QGSettingFragment
  * JD-Core Version:    0.7.0.1
  */

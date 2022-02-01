@@ -1,24 +1,23 @@
 package com.tencent.biz.webviewplugin;
 
-import aaqo;
 import android.os.Bundle;
-import bisl;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 
-public final class NewReportPlugin$4
+final class NewReportPlugin$4
   implements Runnable
 {
-  public NewReportPlugin$4(int paramInt, BaseActivity paramBaseActivity, String paramString1, String paramString2, Bundle paramBundle, String paramString3, String paramString4, String paramString5, String paramString6, bisl parambisl) {}
+  NewReportPlugin$4(int paramInt, BaseActivity paramBaseActivity, String paramString1, String paramString2, Bundle paramBundle, String paramString3, String paramString4, String paramString5, String paramString6, QQProgressDialog paramQQProgressDialog) {}
   
   public void run()
   {
     try
     {
-      Object localObject = aaqo.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle);
-      localObject = aaqo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.c, this.d, this.b, "", this.e, this.jdField_a_of_type_Int, aaqo.a(this.jdField_a_of_type_Int), this.f, "", "", "", "", "", "", "", (Bundle)localObject);
+      Object localObject = NewReportPlugin.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle);
+      localObject = NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.c, this.d, this.b, "", this.e, this.jdField_a_of_type_Int, NewReportPlugin.a(this.jdField_a_of_type_Int), this.f, "", "", "", "", "", "", "", (Bundle)localObject);
       if (QLog.isColorLevel()) {
-        QLog.d("NewReportPlugin", 1, "safetyNewReport postData=" + (String)localObject);
+        QLog.d("NewReportPlugin", 2, "safetyNewReport postData=" + (String)localObject);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new NewReportPlugin.4.1(this, (String)localObject));
       return;
@@ -31,7 +30,7 @@ public final class NewReportPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.4
  * JD-Core Version:    0.7.0.1
  */

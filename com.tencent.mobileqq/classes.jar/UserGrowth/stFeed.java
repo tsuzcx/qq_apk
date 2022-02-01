@@ -12,11 +12,11 @@ public final class stFeed
   static stFriendFeed cache_friendFeed = new stFriendFeed();
   static ArrayList<stSimpleMetaPerson> cache_person_meta = new ArrayList();
   static stSplitBlock cache_recommend_splitter;
-  public stSimpleMetaFeed feed;
-  public int feed_type;
-  public stFriendFeed friendFeed;
-  public ArrayList<stSimpleMetaPerson> person_meta;
-  public stSplitBlock recommend_splitter;
+  public stSimpleMetaFeed feed = null;
+  public int feed_type = 0;
+  public stFriendFeed friendFeed = null;
+  public ArrayList<stSimpleMetaPerson> person_meta = null;
+  public stSplitBlock recommend_splitter = null;
   
   static
   {

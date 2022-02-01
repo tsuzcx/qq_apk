@@ -1,18 +1,17 @@
 package com.etrump.mixlayout;
 
 import android.os.Handler;
-import fk;
 
-public class AnimatedImageSpan$1
+class AnimatedImageSpan$1
   implements Runnable
 {
-  public AnimatedImageSpan$1(fk paramfk, Handler paramHandler) {}
+  AnimatedImageSpan$1(AnimatedImageSpan paramAnimatedImageSpan, Handler paramHandler) {}
   
   public void run()
   {
-    if ((fk.access$000(this.this$0) != null) && ((fk.access$000(this.this$0) instanceof AnimatedImageDrawable)))
+    if ((AnimatedImageSpan.a(this.this$0) != null) && ((AnimatedImageSpan.a(this.this$0) instanceof AnimatedImageDrawable)))
     {
-      AnimatedImageDrawable localAnimatedImageDrawable = (AnimatedImageDrawable)fk.access$000(this.this$0);
+      AnimatedImageDrawable localAnimatedImageDrawable = (AnimatedImageDrawable)AnimatedImageSpan.a(this.this$0);
       localAnimatedImageDrawable.a();
       this.a.postDelayed(this, localAnimatedImageDrawable.a());
     }
@@ -20,7 +19,7 @@ public class AnimatedImageSpan$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.etrump.mixlayout.AnimatedImageSpan.1
  * JD-Core Version:    0.7.0.1
  */

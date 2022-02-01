@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import android.app.Activity;
 import android.content.Intent;
-import pqq;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.ugc.RIJUGCDianDian;
 
-public final class RIJUgcUtils$8
+final class RIJUgcUtils$8
   implements Runnable
 {
-  public RIJUgcUtils$8(Activity paramActivity) {}
+  RIJUgcUtils$8(Activity paramActivity) {}
   
   public void run()
   {
@@ -15,12 +15,12 @@ public final class RIJUgcUtils$8
     localIntent.putExtra("is_from_kan_dian", true);
     localIntent.putExtra("support_topic", true);
     this.a.startActivity(localIntent);
-    pqq.a("1", "1");
+    RIJUGCDianDian.a("1", "1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.RIJUgcUtils.8
  * JD-Core Version:    0.7.0.1
  */

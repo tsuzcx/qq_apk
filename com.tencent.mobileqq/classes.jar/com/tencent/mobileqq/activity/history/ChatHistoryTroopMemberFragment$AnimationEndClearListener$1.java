@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajvs;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 
-public class ChatHistoryTroopMemberFragment$AnimationEndClearListener$1
+class ChatHistoryTroopMemberFragment$AnimationEndClearListener$1
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$AnimationEndClearListener$1(ajvs paramajvs) {}
+  ChatHistoryTroopMemberFragment$AnimationEndClearListener$1(ChatHistoryTroopMemberFragment.AnimationEndClearListener paramAnimationEndClearListener) {}
   
   public void run()
   {
@@ -35,9 +34,9 @@ public class ChatHistoryTroopMemberFragment$AnimationEndClearListener$1
       this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       this.a.jdField_a_of_type_AndroidViewView.setTag("left");
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849684);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130850080);
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849683);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130850079);
       continue;
       this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
       continue;
@@ -47,7 +46,7 @@ public class ChatHistoryTroopMemberFragment$AnimationEndClearListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.AnimationEndClearListener.1
  * JD-Core Version:    0.7.0.1
  */

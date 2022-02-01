@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.tavkit.ciimage.CIImage;
+import com.tencent.tavkit.composition.video.BaseVideoEffect;
 import com.tencent.tavkit.composition.video.RenderInfo;
 import com.tencent.tavkit.composition.video.TAVVideoEffect;
 import com.tencent.tavkit.composition.video.TAVVideoEffect.Filter;
@@ -51,8 +52,16 @@ class VideoEffectProxy$FilterProxy
     }
   }
   
+  private TAVVideoEffect.Filter createFilter(TAVVideoEffect paramTAVVideoEffect, RenderInfo paramRenderInfo)
+  {
+    if ((paramTAVVideoEffect instanceof BaseVideoEffect)) {
+      return ((BaseVideoEffect)paramTAVVideoEffect).a(paramRenderInfo);
+    }
+    return paramTAVVideoEffect.createFilter();
+  }
+  
   @Nullable
-  private TAVVideoEffect.Filter getCacheFilter(TAVVideoEffect paramTAVVideoEffect)
+  private TAVVideoEffect.Filter getCacheFilter(TAVVideoEffect paramTAVVideoEffect, RenderInfo paramRenderInfo)
   {
     if ((paramTAVVideoEffect == null) || (TextUtils.isEmpty(paramTAVVideoEffect.effectId()))) {
       return null;
@@ -61,7 +70,7 @@ class VideoEffectProxy$FilterProxy
     if (this.filterMap.containsKey(str)) {
       return (TAVVideoEffect.Filter)this.filterMap.get(str);
     }
-    paramTAVVideoEffect = paramTAVVideoEffect.createFilter();
+    paramTAVVideoEffect = createFilter(paramTAVVideoEffect, paramRenderInfo);
     this.filterMap.put(str, paramTAVVideoEffect);
     return paramTAVVideoEffect;
   }
@@ -85,7 +94,7 @@ class VideoEffectProxy$FilterProxy
         break;
       }
       localObject = (TAVVideoEffect)localIterator.next();
-      TAVVideoEffect.Filter localFilter = getCacheFilter((TAVVideoEffect)localObject);
+      TAVVideoEffect.Filter localFilter = getCacheFilter((TAVVideoEffect)localObject, paramRenderInfo);
       if (localFilter != null)
       {
         paramTAVVideoEffect = null;
@@ -130,7 +139,7 @@ class VideoEffectProxy$FilterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.component.effectchain.VideoEffectProxy.FilterProxy
  * JD-Core Version:    0.7.0.1
  */

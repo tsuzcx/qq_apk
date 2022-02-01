@@ -1,7 +1,7 @@
 package com.tencent.hippy.qq.module;
 
 import android.app.Activity;
-import com.tencent.hippy.qq.utils.HippyAccessHelper;
+import com.tencent.hippy.qq.utils.HippyAccessHelper.OpenHippyInfo;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -37,7 +37,7 @@ public class QQNavigatorModule
       return;
       paramHippyMap.finish();
       if (bool) {
-        paramHippyMap.overridePendingTransition(0, 2130772012);
+        paramHippyMap.overridePendingTransition(0, 2130772015);
       }
       localHippyMap.pushInt("retCode", 0);
     }
@@ -50,7 +50,7 @@ public class QQNavigatorModule
       QLog.i("QQNavigatorModule", 2, "push:" + paramHippyMap);
     }
     HippyMap localHippyMap = new HippyMap();
-    if (HippyAccessHelper.startHippyPage(getActivity(), paramHippyMap)) {
+    if (new HippyAccessHelper.OpenHippyInfo(paramHippyMap).openHippy(getActivity())) {
       localHippyMap.pushInt("retCode", 0);
     }
     for (;;)
@@ -64,7 +64,7 @@ public class QQNavigatorModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQNavigatorModule
  * JD-Core Version:    0.7.0.1
  */

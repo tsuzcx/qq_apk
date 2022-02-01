@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.startup.step;
 
 import android.os.Build.VERSION;
-import arvo;
-import bhhr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerInitialler;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 public class OpenThreadCreateHook
   extends Step
@@ -14,9 +14,9 @@ public class OpenThreadCreateHook
     if (BaseApplicationImpl.sProcessId == 1)
     {
       com.tencent.mobileqq.app.ThreadManager.sThreadWrapContext = new ThreadManagerInitialler();
-      arvo.a();
-      if ((Build.VERSION.SDK_INT <= 27) || (System.currentTimeMillis() % 10000L < bhhr.z(BaseApplicationImpl.getApplication()))) {
-        arvo.b();
+      NativeMonitorConfigHelper.a();
+      if ((Build.VERSION.SDK_INT <= 27) || (System.currentTimeMillis() % 10000L < SharedPreUtils.A(BaseApplicationImpl.getApplication()))) {
+        NativeMonitorConfigHelper.b();
       }
     }
     return true;

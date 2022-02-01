@@ -1,0 +1,166 @@
+package com.tencent.mobileqq.activity.photo.album;
+
+import android.os.Handler;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PhotoGridView.OnSelectListener;
+
+class AbstractPhotoListActivity$MyOnSelectListener
+  implements PhotoGridView.OnSelectListener
+{
+  Handler handler = new Handler();
+  boolean mIsSelected;
+  int mMaxIndex;
+  int mMinIndex;
+  
+  private AbstractPhotoListActivity$MyOnSelectListener(AbstractPhotoListActivity paramAbstractPhotoListActivity) {}
+  
+  private boolean update(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < paramInt1)
+    {
+      paramInt1 = this.mMinIndex;
+      this.mMinIndex = Math.min(paramInt2, this.mMinIndex);
+      if (paramInt2 >= paramInt1) {
+        break label259;
+      }
+      if ((!this.mIsSelected) || (!this.this$0.mPhotoListData.hasShownMaxSelectToast)) {}
+    }
+    do
+    {
+      return true;
+      paramInt1 -= 1;
+      while (paramInt1 >= paramInt2)
+      {
+        this.this$0.mPhotoListLogic.addAndRemovePhotoByGesture(this.this$0.photoListAdapter.getItem(paramInt1), this.mIsSelected);
+        if ((this.mIsSelected) && (this.this$0.mPhotoListData.hasShownMaxSelectToast))
+        {
+          this.this$0.mPhotoListLogic.updateButton();
+          this.this$0.photoListAdapter.notifyDataSetChanged();
+          return true;
+        }
+        paramInt1 -= 1;
+      }
+      paramInt1 = this.mMaxIndex;
+      this.mMaxIndex = Math.max(paramInt2, this.mMaxIndex);
+      if (paramInt2 <= paramInt1) {
+        break;
+      }
+    } while ((this.mIsSelected) && (this.this$0.mPhotoListData.hasShownMaxSelectToast));
+    paramInt1 += 1;
+    while (paramInt1 <= paramInt2)
+    {
+      this.this$0.mPhotoListLogic.addAndRemovePhotoByGesture(this.this$0.photoListAdapter.getItem(paramInt1), this.mIsSelected);
+      if ((this.mIsSelected) && (this.this$0.mPhotoListData.hasShownMaxSelectToast))
+      {
+        this.this$0.mPhotoListLogic.updateButton();
+        this.this$0.photoListAdapter.notifyDataSetChanged();
+        return true;
+      }
+      paramInt1 += 1;
+    }
+    label259:
+    return false;
+  }
+  
+  public void onSelectBegin(int paramInt)
+  {
+    boolean bool = false;
+    if (this.this$0.mPhotoListData.isSingleMode) {}
+    LocalMediaInfo localLocalMediaInfo;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("OnSelectListener", 2, "onSelectBegin beginIndex:" + paramInt);
+      }
+      this.this$0.mPhotoListData.hasShownMaxSelectToast = false;
+      this.mIsSelected = false;
+      this.mMinIndex = paramInt;
+      this.mMaxIndex = paramInt;
+      localLocalMediaInfo = this.this$0.photoListAdapter.getItem(paramInt);
+      if (localLocalMediaInfo.selectStatus == 2) {
+        bool = true;
+      }
+      this.mIsSelected = bool;
+    } while (!this.this$0.mPhotoListLogic.addAndRemovePhotoByGesture(localLocalMediaInfo, this.mIsSelected));
+    this.this$0.mPhotoListLogic.updateButton();
+    this.this$0.photoListAdapter.notifyItemChanged(paramInt);
+  }
+  
+  public void onSelectChanged(int paramInt1, int paramInt2)
+  {
+    if (this.this$0.mPhotoListData.isSingleMode) {}
+    int j;
+    int k;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("OnSelectListener", 2, "onSelectChanged beginIndex:" + paramInt1 + " selectIndex:" + paramInt2);
+      }
+      j = Math.min(paramInt1, paramInt2);
+      k = Math.max(paramInt1, paramInt2);
+    } while (update(paramInt1, paramInt2));
+    int i = this.mMinIndex;
+    PhotoListLogicBase localPhotoListLogicBase;
+    LocalMediaInfo localLocalMediaInfo;
+    boolean bool;
+    if (i < j)
+    {
+      localPhotoListLogicBase = this.this$0.mPhotoListLogic;
+      localLocalMediaInfo = this.this$0.photoListAdapter.getItem(i);
+      if (!this.mIsSelected) {}
+      for (bool = true;; bool = false)
+      {
+        localPhotoListLogicBase.addAndRemovePhotoByGesture(localLocalMediaInfo, bool);
+        i += 1;
+        break;
+      }
+    }
+    i = k + 1;
+    if (i <= this.mMaxIndex)
+    {
+      localPhotoListLogicBase = this.this$0.mPhotoListLogic;
+      localLocalMediaInfo = this.this$0.photoListAdapter.getItem(i);
+      if (!this.mIsSelected) {}
+      for (bool = true;; bool = false)
+      {
+        localPhotoListLogicBase.addAndRemovePhotoByGesture(localLocalMediaInfo, bool);
+        i += 1;
+        break;
+      }
+    }
+    if (paramInt2 < paramInt1)
+    {
+      this.mMinIndex = paramInt2;
+      if (this.mMaxIndex > paramInt1) {
+        this.mMaxIndex = paramInt1;
+      }
+    }
+    for (;;)
+    {
+      this.this$0.mPhotoListLogic.updateButton();
+      this.handler.post(new AbstractPhotoListActivity.MyOnSelectListener.1(this));
+      return;
+      this.mMaxIndex = paramInt2;
+      if (this.mMinIndex < paramInt1) {
+        this.mMinIndex = paramInt1;
+      }
+    }
+  }
+  
+  public void onSelectEnd()
+  {
+    this.this$0.mPhotoListLogic.onGestureSelectEnd(this.mIsSelected, this.mMaxIndex, this.mMinIndex);
+    if (QLog.isColorLevel()) {
+      QLog.d("OnSelectListener", 2, "onSelectEnd");
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.MyOnSelectListener
+ * JD-Core Version:    0.7.0.1
+ */

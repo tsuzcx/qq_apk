@@ -15,9 +15,9 @@ import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.model.RedPacketPosition;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.model.VideoMaterial.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.recorder.ActVideoDecoder;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import com.tencent.ttpic.util.PersonParam;
@@ -80,7 +80,7 @@ public abstract class FastSticker
   
   private int getNextFrame(int paramInt)
   {
-    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (this.mVideoDecoder != null))
+    if ((this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.PAG) && (this.mVideoDecoder != null))
     {
       this.mVideoDecoder.decodeFrame(paramInt);
       this.mVideoDecoder.updateFrame();
@@ -92,7 +92,7 @@ public abstract class FastSticker
     {
       return this.tex[0];
       if (this.tex[0] != 0) {
-        if ((this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
+        if ((this.item.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
         {
           if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0) {
             this.isImageReady = true;
@@ -199,7 +199,7 @@ public abstract class FastSticker
   public void ApplyGLSLFilter()
   {
     GLES20.glGenTextures(this.tex.length, this.tex, 0);
-    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG)) {
+    if ((this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.PAG)) {
       this.mVideoDecoder = new ActVideoDecoder(this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + ".mp4", this.tex[0]);
     }
   }
@@ -344,7 +344,7 @@ public abstract class FastSticker
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      if (VideoMaterialUtil.isBodyDetectItem(this.item)) {
+      if (VideoMaterial.isBodyDetectItem(this.item)) {
         avoidBodyPointsShake(paramObject);
       }
       if (this.triggerCtrlItem == null) {
@@ -364,16 +364,16 @@ public abstract class FastSticker
         updateTextureParam(0);
         return;
       }
-      if (VideoMaterialUtil.isFaceItem(this.item)) {
+      if (VideoMaterial.isFaceItem(this.item)) {
         updatePositions(paramObject.facePoints, paramObject.faceAngles);
       }
       for (;;)
       {
         updateTextureParam(i);
         return;
-        if (VideoMaterialUtil.isBodyDetectItem(this.item))
+        if (VideoMaterial.isBodyDetectItem(this.item))
         {
-          if (VideoMaterialUtil.isBody4AnchorItem(this.item)) {
+          if (VideoMaterial.isBody4AnchorItem(this.item)) {
             updatePositionsForMultiAnchor(paramObject.bodyPoints, 4);
           }
           for (;;)
@@ -383,7 +383,7 @@ public abstract class FastSticker
             }
             paramObject.bodyPoints = null;
             break;
-            if (VideoMaterialUtil.isBody2AnchorItem(this.item)) {
+            if (VideoMaterial.isBody2AnchorItem(this.item)) {
               updatePositionsForMultiAnchor(paramObject.bodyPoints, 2);
             } else {
               updatePositions(paramObject.bodyPoints);
@@ -393,7 +393,7 @@ public abstract class FastSticker
         else
         {
           label202:
-          if (VideoMaterialUtil.isGestureItem(this.item)) {
+          if (VideoMaterial.isGestureItem(this.item)) {
             updatePositions(paramObject.handPoints, 0);
           }
         }
@@ -437,7 +437,7 @@ public abstract class FastSticker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.model.FastSticker
  * JD-Core Version:    0.7.0.1
  */

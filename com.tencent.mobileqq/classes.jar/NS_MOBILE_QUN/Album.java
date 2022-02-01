@@ -8,15 +8,15 @@ public final class Album
   extends JceStruct
 {
   public String albumid = "";
-  public long createUin;
-  public int createtime;
+  public long createUin = 0L;
+  public int createtime = 0;
   public String desc = "";
-  public int lastuploadtime;
-  public int moditytime;
+  public int lastuploadtime = 0;
+  public int moditytime = 0;
   public String name = "";
-  public int priv;
+  public int priv = 0;
   public String qunid = "";
-  public int total;
+  public int total = 0;
   
   public Album() {}
   

@@ -1,68 +1,33 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
 import UserGrowth.stSimpleGetFeedListRsp;
-import java.util.ArrayList;
-import pws;
-import uyy;
-import uzf;
-import vfk;
-import vmp;
-import vnd;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiBusinessLooper;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 
-public class WeiShiCacheManager$1
+class WeiShiCacheManager$1
   implements Runnable
 {
-  public WeiShiCacheManager$1(uzf paramuzf, uyy paramuyy) {}
+  WeiShiCacheManager$1(WeiShiCacheManager paramWeiShiCacheManager, IWeiShiCacheCallback paramIWeiShiCacheCallback) {}
   
   public void run()
   {
-    vmp.b("CacheResponseLog", "getCachedRecommendData startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
-    if (!this.this$0.b()) {
+    WSLog.b("CacheResponseLog", "getCachedRecommendData startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
+    if (!this.this$0.a()) {
       return;
     }
-    boolean bool = false;
-    Object localObject = vnd.a();
-    if (localObject != null) {
-      bool = vnd.a((pws)localObject);
-    }
-    vmp.b("WeiShiCacheManager", "isRedDotMsg = " + bool);
-    if (bool) {
-      if ((this.this$0.a()) && (this.this$0.a() >= 8))
-      {
-        vmp.b("WeiShiCacheManager", "仅读取红点缓存");
-        localObject = uzf.a(this.this$0, 2);
-      }
-    }
-    for (;;)
+    if (WeishiUtils.a(8)) {}
+    for (stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = WeiShiCacheManager.a(this.this$0);; localstSimpleGetFeedListRsp = WeiShiCacheManager.b(this.this$0))
     {
-      vfk.a().a(new WeiShiCacheManager.1.1(this, (stSimpleGetFeedListRsp)localObject));
+      this.this$0.a(8);
+      WeishiBusinessLooper.a().a(new WeiShiCacheManager.1.1(this, localstSimpleGetFeedListRsp));
       return;
-      vmp.b("WeiShiCacheManager", "读取红点缓存和瀑布流缓存");
-      localObject = uzf.a(this.this$0, 2);
-      stSimpleGetFeedListRsp localstSimpleGetFeedListRsp2 = uzf.a(this.this$0, 1);
-      stSimpleGetFeedListRsp localstSimpleGetFeedListRsp1 = new stSimpleGetFeedListRsp();
-      localstSimpleGetFeedListRsp1.feeds = new ArrayList();
-      if (localObject != null)
-      {
-        vmp.b("WeiShiCacheManager", "红点缓存数量 = " + ((stSimpleGetFeedListRsp)localObject).feeds.size());
-        localstSimpleGetFeedListRsp1.feeds.addAll(((stSimpleGetFeedListRsp)localObject).feeds);
-      }
-      localObject = localstSimpleGetFeedListRsp1;
-      if (localstSimpleGetFeedListRsp2 != null)
-      {
-        vmp.b("WeiShiCacheManager", "瀑布流缓存数量 = " + localstSimpleGetFeedListRsp2.feeds.size());
-        localstSimpleGetFeedListRsp1.feeds.addAll(localstSimpleGetFeedListRsp2.feeds);
-        localObject = localstSimpleGetFeedListRsp1;
-        continue;
-        vmp.b("WeiShiCacheManager", "读取瀑布流缓存数据");
-        localObject = uzf.a(this.this$0, 1);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.1
  * JD-Core Version:    0.7.0.1
  */

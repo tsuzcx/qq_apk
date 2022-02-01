@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.vashealth;
 
-import alpu;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import bhxj;
-import bisl;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.richmedia.FlowComponentInterface;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.mediadevice.EncodeThread;
 import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import mqq.app.AppRuntime;
 import mqq.app.BaseActivity;
 
 public class VideoCallBack
-  implements alpu
+  implements FlowComponentInterface
 {
   private String a;
   
@@ -79,6 +78,8 @@ public class VideoCallBack
       str1 = "";
     }
     localIntent.putExtra("PhotoConst.MY_UIN", str1);
+    localIntent.putExtra("from_health", true);
+    localIntent.putExtra("enter_from", 46);
     localIntent.putExtras(paramActivity.getIntent().getExtras());
     paramActivity.startActivityForResult(localIntent, 4097);
     AlbumUtil.anim(paramActivity, false, true);
@@ -104,9 +105,9 @@ public class VideoCallBack
     }
     String str = paramIntent.getStringExtra("file_video_source_dir");
     Object localObject = paramIntent.getStringExtra("thumbfile_send_path");
-    bisl localbisl = new bisl(paramActivity);
-    localObject = new bhxj(this, localbisl, (String)localObject, paramActivity);
-    paramActivity.runOnUiThread(new VideoCallBack.2(this, localbisl));
+    QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramActivity);
+    localObject = new VideoCallBack.1(this, localQQProgressDialog, (String)localObject, paramActivity);
+    paramActivity.runOnUiThread(new VideoCallBack.2(this, localQQProgressDialog));
     a(paramIntent);
     paramActivity = new EncodeThread(paramActivity, (Handler)localObject, str, null, null);
     paramActivity.setEnableHardEncode(false);
@@ -120,7 +121,7 @@ public class VideoCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.VideoCallBack
  * JD-Core Version:    0.7.0.1
  */

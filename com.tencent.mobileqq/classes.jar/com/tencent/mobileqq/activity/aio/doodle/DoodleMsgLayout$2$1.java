@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity.aio.doodle;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.widget.ImageView;
-import biqx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.widget.PhotoProgressDrawable;
 
 class DoodleMsgLayout$2$1
   implements Runnable
@@ -15,16 +15,16 @@ class DoodleMsgLayout$2$1
   {
     if (DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0) != null)
     {
-      biqx localbiqx = new biqx(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
-      localbiqx.setBounds(new Rect(0, 0, AIOUtils.dp2px(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources()), AIOUtils.dp2px(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources())));
-      DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0).setImageDrawable(localbiqx);
+      PhotoProgressDrawable localPhotoProgressDrawable = new PhotoProgressDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
+      localPhotoProgressDrawable.setBounds(new Rect(0, 0, AIOUtils.a(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources()), AIOUtils.a(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources())));
+      DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0).setImageDrawable(localPhotoProgressDrawable);
     }
     DoodleMsgLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout.2.1
  * JD-Core Version:    0.7.0.1
  */

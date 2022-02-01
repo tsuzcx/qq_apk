@@ -2,10 +2,10 @@ package com.tencent.mobileqq.businessCard.utilities;
 
 import com.tencent.image.URLDrawable;
 
-public final class BusinessCardUtils$2
+final class BusinessCardUtils$2
   implements Runnable
 {
-  public BusinessCardUtils$2(URLDrawable paramURLDrawable) {}
+  BusinessCardUtils$2(URLDrawable paramURLDrawable) {}
   
   public void run()
   {

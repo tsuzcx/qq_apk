@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_feeds_tab_info
   extends JceStruct
 {
-  public int iTabSwitch;
+  public int iTabSwitch = 0;
   public String strTabActionUrl = "";
   public String strTabName = "";
   

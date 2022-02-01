@@ -72,6 +72,11 @@ public final class JSONMethodCodec
     return JSONMessageCodec.INSTANCE.encodeMessage(new JSONArray().put(paramString1).put(JSONUtil.wrap(paramString2)).put(JSONUtil.wrap(paramObject)));
   }
   
+  public ByteBuffer encodeErrorEnvelopeWithStacktrace(String paramString1, String paramString2, Object paramObject, String paramString3)
+  {
+    return JSONMessageCodec.INSTANCE.encodeMessage(new JSONArray().put(paramString1).put(JSONUtil.wrap(paramString2)).put(JSONUtil.wrap(paramObject)).put(JSONUtil.wrap(paramString3)));
+  }
+  
   public ByteBuffer encodeMethodCall(MethodCall paramMethodCall)
   {
     try
@@ -104,7 +109,7 @@ public final class JSONMethodCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.plugin.common.JSONMethodCodec
  * JD-Core Version:    0.7.0.1
  */

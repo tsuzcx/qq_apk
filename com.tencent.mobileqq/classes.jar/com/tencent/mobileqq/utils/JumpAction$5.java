@@ -1,15 +1,30 @@
 package com.tencent.mobileqq.utils;
 
-import bheh;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.webview.api.IWebProcessPreload;
 
-public class JumpAction$5
+class JumpAction$5
   implements Runnable
 {
-  public JumpAction$5(bheh parambheh) {}
+  JumpAction$5(JumpAction paramJumpAction) {}
   
   public void run()
   {
-    bheh.b(this.this$0);
+    if (this.this$0.a == null) {}
+    String str;
+    IWebProcessPreload localIWebProcessPreload;
+    do
+    {
+      do
+      {
+        return;
+        str = this.this$0.a.getCurrentAccountUin();
+      } while (TextUtils.isEmpty(str));
+      localIWebProcessPreload = (IWebProcessPreload)QRoute.api(IWebProcessPreload.class);
+    } while (localIWebProcessPreload == null);
+    localIWebProcessPreload.setBusinessClickTimeMills(str, "health");
   }
 }
 

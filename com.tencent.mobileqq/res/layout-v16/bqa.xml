@@ -14,10 +14,9 @@
             </RelativeLayout>
         </HorizontalScrollView>
     </RelativeLayout>
-    <RelativeLayout android:id="@id/nvi" android:layout_width="fill_parent" android:layout_height="48.0dip">
+    <RelativeLayout android:id="@id/o_k" android:layout_width="fill_parent" android:layout_height="48.0dip">
         <ImageView android:id="@id/ius" android:padding="11.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_face_click" android:layout_centerVertical="true" android:contentDescription="@string/gq9" />
-        <com.qzone.widget.RedDotImageView android:id="@id/hrn" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/dg0" android:scaleType="fitXY" android:layout_toRightOf="@id/ius" android:layout_centerVertical="true" android:contentDescription="@string/gq5" />
-        <ImageView android:id="@id/hrt" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/bwu" android:layout_toRightOf="@id/hrn" android:layout_centerVertical="true" android:contentDescription="@string/gh1" />
+        <ImageView android:id="@id/hrt" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/bwu" android:layout_toRightOf="@id/ius" android:layout_centerVertical="true" android:contentDescription="@string/gh1" />
         <ImageView android:id="@id/hrp" android:padding="11.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_at_click" android:layout_toRightOf="@id/hrt" android:layout_centerVertical="true" android:contentDescription="@string/gqa" />
         <ImageView android:id="@id/hrq" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_dongganyingji_click" android:layout_toRightOf="@id/hrp" android:layout_centerVertical="true" android:contentDescription="@string/gqh" />
         <com.qzone.widget.RedDotImageView android:id="@id/hro" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_font_click" android:layout_toRightOf="@id/hrq" android:layout_centerVertical="true" android:contentDescription="@string/gq6" />

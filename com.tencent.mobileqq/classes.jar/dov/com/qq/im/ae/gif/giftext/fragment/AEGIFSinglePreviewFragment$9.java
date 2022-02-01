@@ -3,29 +3,28 @@ package dov.com.qq.im.ae.gif.giftext.fragment;
 import android.app.Activity;
 import android.app.Dialog;
 import android.view.View;
-import bnnu;
 
-public class AEGIFSinglePreviewFragment$9
+class AEGIFSinglePreviewFragment$9
   implements Runnable
 {
-  public AEGIFSinglePreviewFragment$9(bnnu parambnnu) {}
+  AEGIFSinglePreviewFragment$9(AEGIFSinglePreviewFragment paramAEGIFSinglePreviewFragment) {}
   
   public void run()
   {
-    if (!bnnu.a(this.this$0).isFinishing())
+    if (!AEGIFSinglePreviewFragment.a(this.this$0).isFinishing())
     {
-      if ((bnnu.a(this.this$0) != null) && (bnnu.a(this.this$0).isShowing())) {
-        bnnu.a(this.this$0).dismiss();
+      if ((AEGIFSinglePreviewFragment.a(this.this$0) != null) && (AEGIFSinglePreviewFragment.a(this.this$0).isShowing())) {
+        AEGIFSinglePreviewFragment.a(this.this$0).dismiss();
       }
-      if (bnnu.a(this.this$0) != null) {
-        bnnu.a(this.this$0).setVisibility(8);
+      if (AEGIFSinglePreviewFragment.a(this.this$0) != null) {
+        AEGIFSinglePreviewFragment.a(this.this$0).setVisibility(8);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.giftext.fragment.AEGIFSinglePreviewFragment.9
  * JD-Core Version:    0.7.0.1
  */

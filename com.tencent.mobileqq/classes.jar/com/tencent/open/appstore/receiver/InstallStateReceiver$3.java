@@ -1,8 +1,8 @@
 package com.tencent.open.appstore.receiver;
 
 import android.content.Intent;
-import bjkf;
-import bjko;
+import com.tencent.open.appstore.report.AppCenterReporter;
+import com.tencent.open.base.LogUtility;
 
 class InstallStateReceiver$3
   implements Runnable
@@ -14,11 +14,11 @@ class InstallStateReceiver$3
     if (this.jdField_a_of_type_AndroidContentIntent.hasExtra("android.intent.extra.REPLACING")) {}
     for (boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("android.intent.extra.REPLACING", false);; bool = false)
     {
-      bjko.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_ADDED >> " + this.jdField_a_of_type_JavaLangString + ",isReplacing:" + bool);
+      LogUtility.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_ADDED >> " + this.jdField_a_of_type_JavaLangString + ",isReplacing:" + bool);
       if (bool) {
         return;
       }
-      bjkf.a(this.b, false);
+      AppCenterReporter.a(this.b, false);
       InstallStateReceiver.a(this.this$0, this.b, 1);
       return;
     }
@@ -26,7 +26,7 @@ class InstallStateReceiver$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appstore.receiver.InstallStateReceiver.3
  * JD-Core Version:    0.7.0.1
  */

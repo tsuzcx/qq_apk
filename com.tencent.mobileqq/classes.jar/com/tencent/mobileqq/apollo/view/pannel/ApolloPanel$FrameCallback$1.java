@@ -1,29 +1,27 @@
 package com.tencent.mobileqq.apollo.view.pannel;
 
-import anph;
-import anpk;
-import anqh;
+import com.tencent.mobileqq.apollo.view.pannel.viewbinder.ApolloViewBinder;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 
-public class ApolloPanel$FrameCallback$1
+class ApolloPanel$FrameCallback$1
   implements Runnable
 {
-  public ApolloPanel$FrameCallback$1(anph paramanph) {}
+  ApolloPanel$FrameCallback$1(ApolloPanel.FrameCallback paramFrameCallback) {}
   
   public void run()
   {
-    if ((anph.a(this.this$0) != null) && (anph.a(this.this$0).size() > 0))
+    if ((ApolloPanel.FrameCallback.a(this.this$0) != null) && (ApolloPanel.FrameCallback.a(this.this$0).size() > 0))
     {
-      Iterator localIterator = anph.a(this.this$0).iterator();
+      Iterator localIterator = ApolloPanel.FrameCallback.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        anqh localanqh = (anqh)localIterator.next();
-        if ((localanqh != null) && ((localanqh.d == 9) || (localanqh.d == 8)) && (localanqh.a() != null))
+        ApolloViewBinder localApolloViewBinder = (ApolloViewBinder)localIterator.next();
+        if ((localApolloViewBinder != null) && ((localApolloViewBinder.d == 9) || (localApolloViewBinder.d == 8)) && (localApolloViewBinder.a() != null))
         {
           QLog.d("ApolloPanel", 1, "ApolloPanel handleCMSPlayerGetFrame notifyDataSetChanged");
-          localanqh.a().notifyDataSetChanged();
+          localApolloViewBinder.a().notifyDataSetChanged();
         }
       }
     }
@@ -31,7 +29,7 @@ public class ApolloPanel$FrameCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.pannel.ApolloPanel.FrameCallback.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import blfa;
 
 public class ReboundLayout
   extends LinearLayout
@@ -50,7 +49,7 @@ public class ReboundLayout
     return 0;
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
     this.c = getChildAt(0);
@@ -62,7 +61,7 @@ public class ReboundLayout
     scrollBy(400, 0);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.c.getLayoutParams().width = getMeasuredWidth();
@@ -137,7 +136,7 @@ public class ReboundLayout
   
   public void onStopNestedScroll(View paramView)
   {
-    startAnimation(new blfa(this, null));
+    startAnimation(new ReboundLayout.ProgressAnimation(this, null));
   }
   
   public void scrollTo(int paramInt1, int paramInt2)
@@ -159,7 +158,7 @@ public class ReboundLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ReboundLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aiin;
-import anvk;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
-public class StickerRecManager$5
+class StickerRecManager$5
   implements Runnable
 {
-  public StickerRecManager$5(aiin paramaiin) {}
+  StickerRecManager$5(StickerRecManager paramStickerRecManager) {}
   
   public void run()
   {
@@ -19,12 +18,12 @@ public class StickerRecManager$5
       QLog.d("StickerRecManager", 2, "start pull words");
     }
     int m = 255;
-    Object localObject = (anvk)aiin.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject = (FriendsManager)StickerRecManager.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
     int j = k;
     int i = m;
     if (localObject != null)
     {
-      localObject = ((anvk)localObject).b(aiin.a(this.this$0).getCurrentAccountUin());
+      localObject = ((FriendsManager)localObject).a(StickerRecManager.a(this.this$0).getCurrentAccountUin());
       j = k;
       i = m;
       if (localObject != null)
@@ -38,7 +37,7 @@ public class StickerRecManager$5
     for (;;)
     {
       j = ((Card)localObject).age;
-      this.this$0.a(aiin.a(this.this$0).getCurrentUin(), 3, i, j);
+      this.this$0.a(StickerRecManager.a(this.this$0).getCurrentUin(), 3, i, j);
       return;
       label114:
       if (((Card)localObject).shGender == 0) {
@@ -51,7 +50,7 @@ public class StickerRecManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager.5
  * JD-Core Version:    0.7.0.1
  */

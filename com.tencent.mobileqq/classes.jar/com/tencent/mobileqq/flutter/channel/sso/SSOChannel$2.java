@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.flutter.channel.sso;
 
-import aunm;
 import com.tencent.mobileqq.flutter.channel.model.ResponsePacket;
 import com.tencent.qphone.base.util.QLog;
 import io.flutter.plugin.common.MethodChannel.Result;
 import java.util.Map;
 
-public class SSOChannel$2
+class SSOChannel$2
   implements Runnable
 {
-  public SSOChannel$2(aunm paramaunm, ResponsePacket paramResponsePacket, String paramString, MethodChannel.Result paramResult) {}
+  SSOChannel$2(SSOChannel paramSSOChannel, ResponsePacket paramResponsePacket, String paramString, MethodChannel.Result paramResult) {}
   
   public void run()
   {
@@ -34,7 +33,7 @@ public class SSOChannel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.sso.SSOChannel.2
  * JD-Core Version:    0.7.0.1
  */

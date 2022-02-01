@@ -11,12 +11,12 @@ public final class cell_upper_banner
 {
   static Map<String, String> cache_extendInfo;
   static s_picdata cache_picdata = new s_picdata();
-  public int actionType;
+  public int actionType = 0;
   public String action_url = "";
-  public int banner_type;
+  public int banner_type = 0;
   public String button_title = "";
-  public Map<String, String> extendInfo;
-  public s_picdata picdata;
+  public Map<String, String> extendInfo = null;
+  public s_picdata picdata = null;
   public String summary = "";
   public String title = "";
   

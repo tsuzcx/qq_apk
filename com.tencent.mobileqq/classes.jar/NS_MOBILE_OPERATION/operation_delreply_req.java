@@ -11,14 +11,14 @@ public final class operation_delreply_req
 {
   static Map<String, String> cache_bypass_param;
   static Map<Integer, String> cache_mapBusiParam = new HashMap();
-  public Map<String, String> bypass_param;
+  public Map<String, String> bypass_param = null;
   public String ciphertext = "";
-  public long iAppID;
-  public long iCommentUin;
-  public int iDelSource;
-  public long iReplyUin;
-  public long iSrcUin;
-  public Map<Integer, String> mapBusiParam;
+  public long iAppID = 0L;
+  public long iCommentUin = 0L;
+  public int iDelSource = 0;
+  public long iReplyUin = 0L;
+  public long iSrcUin = 0L;
+  public Map<Integer, String> mapBusiParam = null;
   public String strCommentID = "";
   public String strCommentUinOpenid = "";
   public String strReplyID = "";

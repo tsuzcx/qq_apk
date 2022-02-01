@@ -88,7 +88,7 @@ public class DataBuilderWithFormatter
       return null;
     }
     paramPathData = DataRWProxy.getPageId(localObject);
-    localObject = PageUtils.getPageInfo(localObject);
+    localObject = PageUtils.getPageInfo(localObject.hashCode());
     localReportData.setId(paramPathData);
     localReportData.setParams((Map)localObject);
     return localReportData;

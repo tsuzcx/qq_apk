@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.widget.TextView;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import mvk;
+import com.tencent.av.utils.UITools;
 
 class SmallScreenVideoControlUI$TimmerRunnable
   implements Runnable
@@ -18,10 +18,10 @@ class SmallScreenVideoControlUI$TimmerRunnable
       long l = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
       if ((this.this$0.jdField_b_of_type_JavaLangString == null) || (l != 0L))
       {
-        this.this$0.jdField_b_of_type_JavaLangString = mvk.a(l);
+        this.this$0.jdField_b_of_type_JavaLangString = UITools.a(l);
         if ((this.this$0.jdField_a_of_type_AndroidWidgetTextView != null) && (!this.this$0.c))
         {
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(mvk.a(this.this$0.jdField_b_of_type_JavaLangString));
+          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(UITools.a(this.this$0.jdField_b_of_type_JavaLangString));
           this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_b_of_type_JavaLangString);
         }
       }
@@ -31,7 +31,7 @@ class SmallScreenVideoControlUI$TimmerRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoControlUI.TimmerRunnable
  * JD-Core Version:    0.7.0.1
  */

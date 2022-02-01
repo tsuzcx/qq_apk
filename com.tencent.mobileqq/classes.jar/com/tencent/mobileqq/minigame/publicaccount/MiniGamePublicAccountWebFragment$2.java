@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
+import com.tencent.mobileqq.minigame.publicaccount.adapter.BaseHeaderAdapter;
+
 class MiniGamePublicAccountWebFragment$2
   implements MiniGamePublicAccountViewPagerIndicator.OnPageSelectedListener
 {
@@ -7,8 +9,8 @@ class MiniGamePublicAccountWebFragment$2
   
   public void onPageSelected(int paramInt)
   {
-    MiniGamePublicAccountWebFragment.access$1100(this.this$0, paramInt);
-    MiniGamePublicAccountWebFragment.access$900(this.this$0, paramInt, false);
+    this.this$0.pagerAdapter.initArk(paramInt);
+    MiniGamePublicAccountWebFragment.access$400(this.this$0, paramInt, false);
   }
 }
 

@@ -51,6 +51,42 @@ public class RewardedVideoAdPlugin
     AppBrandTask.runTaskOnUiThread(new RewardedVideoAdPlugin.1(this, paramContext, paramString3, paramString1, paramRequestEvent, paramString2, paramBundle));
   }
   
+  private void doCreateRewardVideoAdView(RequestEvent paramRequestEvent, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    if (this.mMiniAppContext.getAttachedActivity() != null) {}
+    for (Object localObject = this.mMiniAppContext.getAttachedActivity(); localObject != null; localObject = MiniAppEnv.g().getContext())
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString(AdProxy.KEY_ACCOUNT, paramString3);
+      localBundle.putInt(AdProxy.KEY_AD_TYPE, paramInt2);
+      localBundle.putInt(AdProxy.KEY_ORIENTATION, paramInt1);
+      localBundle.putString(AdProxy.KEY_GDT_COOKIE, paramString5);
+      localBundle.putString(AdProxy.KEY_ENTRY_PATH, paramString6);
+      localBundle.putString(AdProxy.KEY_REPORT_DATA, paramString7);
+      localBundle.putString(AdProxy.KEY_REFER, paramString8);
+      localBundle.putString(AdProxy.KEY_VIA, paramString9);
+      createRewardVideoAdView(paramRequestEvent, paramString1, paramString2, paramString4, (Context)localObject, localBundle);
+      return;
+    }
+    QMLog.e("RewardedVideoAdPlugin", "context is null");
+  }
+  
+  private int getAdType(int paramInt)
+  {
+    if (paramInt == 0) {
+      return 3;
+    }
+    return 1;
+  }
+  
+  private int getMiniType()
+  {
+    if (this.mMiniAppInfo.isEngineTypeMiniApp()) {
+      return 0;
+    }
+    return 1;
+  }
+  
   private void handleErrorAndInformJs(RequestEvent paramRequestEvent, int paramInt, String paramString)
   {
     String str = (String)errCodeMsgMap.get(Integer.valueOf(paramInt));
@@ -95,7 +131,7 @@ public class RewardedVideoAdPlugin
       {
         localJSONObject.put("state", "load");
         if (TextUtils.isEmpty(paramString)) {
-          break label93;
+          break label97;
         }
         localJSONObject.put("compId", paramString);
       }
@@ -109,7 +145,7 @@ public class RewardedVideoAdPlugin
       return;
       paramString = "error";
       continue;
-      label93:
+      label97:
       if (paramBoolean) {
         paramString = "ok";
       }
@@ -129,97 +165,64 @@ public class RewardedVideoAdPlugin
   
   private void initAdParam(RequestEvent paramRequestEvent, String paramString1, String paramString2)
   {
-    int j = 0;
-    int k = 1;
     this.mRewardedVideoAd = null;
-    String str3 = LoginManager.getInstance().getAccount();
-    String str4 = this.mApkgInfo.appId;
+    String str6 = LoginManager.getInstance().getAccount();
+    String str7 = this.mApkgInfo.appId;
     if (this.mIsOrientationLandscape) {}
     for (int i = 90;; i = 0)
     {
-      QMLog.i("RewardedVideoAdPlugin", "handle initAdParam appId = " + str4 + "， deviceOrient = " + i);
-      if ((!TextUtils.isEmpty(str4)) && (!TextUtils.isEmpty(paramString1))) {
+      QMLog.i("RewardedVideoAdPlugin", "handle initAdParam appId = " + str7 + "， deviceOrient = " + i);
+      if ((!TextUtils.isEmpty(str7)) && (!TextUtils.isEmpty(paramString1))) {
         break;
       }
       QMLog.e("RewardedVideoAdPlugin", "appid or pos_id is empty");
       handleGetAdFailed(paramRequestEvent, 1003, paramString2);
       return;
     }
-    String str5;
-    Object localObject3;
-    label185:
-    String str1;
-    label203:
-    String str2;
-    Object localObject2;
-    if (this.mMiniAppInfo.isEngineTypeMiniApp())
+    int j = getMiniType();
+    this.mIsRequestingAd = true;
+    j = getAdType(j);
+    String str8 = AdUtil.getSpAdGdtCookie(j);
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    String str3 = "";
+    String str4 = "";
+    String str5 = "";
+    Object localObject = str3;
+    String str2 = str4;
+    String str1 = str5;
+    if (localMiniAppInfo != null)
     {
-      this.mIsRequestingAd = true;
-      if (j == 0) {
-        k = 3;
+      localObject = str3;
+      str2 = str4;
+      str1 = str5;
+      if (localMiniAppInfo.launchParam != null)
+      {
+        if (localMiniAppInfo.launchParam.entryPath == null) {
+          break label332;
+        }
+        str1 = localMiniAppInfo.launchParam.entryPath;
+        if (localMiniAppInfo.launchParam == null) {
+          break label339;
+        }
+        str2 = localMiniAppInfo.launchParam.reportData;
+        label229:
+        str3 = String.valueOf(localMiniAppInfo.launchParam.scene);
+        localObject = str1;
+        str1 = str3;
       }
-      str5 = AdUtil.getSpAdGdtCookie(k);
-      localObject3 = this.mMiniAppInfo;
-      if ((localObject3 == null) || (((MiniAppInfo)localObject3).launchParam == null)) {
-        break label462;
-      }
-      if (((MiniAppInfo)localObject3).launchParam.entryPath == null) {
-        break label421;
-      }
-      localObject1 = ((MiniAppInfo)localObject3).launchParam.entryPath;
-      if (((MiniAppInfo)localObject3).launchParam == null) {
-        break label428;
-      }
-      str1 = ((MiniAppInfo)localObject3).launchParam.reportData;
-      j = ((MiniAppInfo)localObject3).launchParam.scene;
-      str2 = String.valueOf(j);
-      localObject2 = localObject1;
     }
-    for (Object localObject1 = str2;; localObject1 = "")
+    if ((localMiniAppInfo != null) && (localMiniAppInfo.via != null)) {}
+    for (str3 = localMiniAppInfo.via;; str3 = "")
     {
-      if ((localObject3 != null) && (((MiniAppInfo)localObject3).via != null))
-      {
-        str2 = ((MiniAppInfo)localObject3).via;
-        label248:
-        QMLog.i("RewardedVideoAdPlugin", "getRewardedVideoADInfo account= " + str3 + " pos_id=" + paramString1);
-        if (this.mMiniAppContext.getAttachedActivity() == null) {
-          break label442;
-        }
-      }
-      label421:
-      label428:
-      label442:
-      for (localObject3 = this.mMiniAppContext.getAttachedActivity();; localObject3 = MiniAppEnv.g().getContext())
-      {
-        if (localObject3 == null) {
-          break label453;
-        }
-        Bundle localBundle = new Bundle();
-        localBundle.putString(AdProxy.KEY_ACCOUNT, str3);
-        localBundle.putInt(AdProxy.KEY_AD_TYPE, k);
-        localBundle.putInt(AdProxy.KEY_ORIENTATION, i);
-        localBundle.putString(AdProxy.KEY_GDT_COOKIE, str5);
-        localBundle.putString(AdProxy.KEY_ENTRY_PATH, (String)localObject2);
-        localBundle.putString(AdProxy.KEY_REPORT_DATA, str1);
-        localBundle.putString(AdProxy.KEY_REFER, (String)localObject1);
-        localBundle.putString(AdProxy.KEY_VIA, str2);
-        createRewardVideoAdView(paramRequestEvent, paramString1, paramString2, str4, (Context)localObject3, localBundle);
-        return;
-        j = 1;
-        break;
-        localObject1 = "";
-        break label185;
-        str1 = "";
-        break label203;
-        str2 = "";
-        break label248;
-      }
-      label453:
-      QMLog.e("RewardedVideoAdPlugin", "context is null");
+      QMLog.i("RewardedVideoAdPlugin", "getRewardedVideoADInfo account= " + str6 + " pos_id=" + paramString1);
+      doCreateRewardVideoAdView(paramRequestEvent, paramString1, paramString2, str6, str7, i, j, str8, (String)localObject, str2, str1, str3);
       return;
-      label462:
+      label332:
       str1 = "";
-      localObject2 = "";
+      break;
+      label339:
+      str2 = "";
+      break label229;
     }
   }
   
@@ -267,7 +270,7 @@ public class RewardedVideoAdPlugin
           handleErrorAndInformJs(paramRequestEvent, 1002, str2);
           JSONObject localJSONObject = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null);
           if (localJSONObject == null) {
-            break label205;
+            break label206;
           }
           localObject1 = localJSONObject.toString();
           paramRequestEvent.fail(localJSONObject.toString());
@@ -296,7 +299,7 @@ public class RewardedVideoAdPlugin
       }
       bool = false;
       break;
-      label205:
+      label206:
       str1 = "";
     }
   }
@@ -334,7 +337,7 @@ public class RewardedVideoAdPlugin
             return;
           }
           if (this.mIsRequestingAd) {
-            break label241;
+            break label243;
           }
           initAdParam(paramRequestEvent, this.mPosID, (String)localObject);
           return;
@@ -350,19 +353,19 @@ public class RewardedVideoAdPlugin
       if ("show".equals(localJSONException))
       {
         if ((this.mIsRequestingAd) || (this.mRewardedVideoAd == null) || (!this.mHasClosedAd)) {
-          break label247;
+          break label249;
         }
-        label177:
+        label179:
         if (i != 0) {
           if (this.mMiniAppContext == null) {
-            break label252;
+            break label254;
           }
         }
       }
     }
-    label241:
-    label247:
-    label252:
+    label243:
+    label249:
+    label254:
     for (Activity localActivity = this.mMiniAppContext.getAttachedActivity();; localActivity = null)
     {
       this.mRewardedVideoAd.showAD(localActivity, (String)localObject);
@@ -376,13 +379,13 @@ public class RewardedVideoAdPlugin
       bool = false;
       break;
       i = 0;
-      break label177;
+      break label179;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RewardedVideoAdPlugin
  * JD-Core Version:    0.7.0.1
  */

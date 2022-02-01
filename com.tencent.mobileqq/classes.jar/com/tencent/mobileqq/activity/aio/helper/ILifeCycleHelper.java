@@ -1,0 +1,13 @@
+package com.tencent.mobileqq.activity.aio.helper;
+
+import com.tencent.mobileqq.activity.aio.ILifeCycle;
+
+public abstract interface ILifeCycleHelper
+  extends ILifeCycle, IHelper
+{}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.ILifeCycleHelper
+ * JD-Core Version:    0.7.0.1
+ */

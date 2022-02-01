@@ -2,6 +2,7 @@ package trpc.qq_vgame.pk_manager;
 
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -11,8 +12,11 @@ import trpc.qq_vgame.common.AvGameCommon.UinWrap;
 public final class AvGamePkManager$GetPKInfoRsp
   extends MessageMicro<GetPKInfoRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "res", "interval", "user_total_num", "user_in_pk" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), null }, GetPKInfoRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48, 56 }, new String[] { "res", "interval", "user_total_num", "user_in_pk", "change_pool_id", "real_pool_id", "fresh_at_midfield" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), null, Boolean.valueOf(false), Integer.valueOf(0), Boolean.valueOf(false) }, GetPKInfoRsp.class);
+  public final PBBoolField change_pool_id = PBField.initBool(false);
+  public final PBBoolField fresh_at_midfield = PBField.initBool(false);
   public final PBUInt32Field interval = PBField.initUInt32(0);
+  public final PBUInt32Field real_pool_id = PBField.initUInt32(0);
   public AvGameCommon.Result res = new AvGameCommon.Result();
   public final PBRepeatMessageField<AvGameCommon.UinWrap> user_in_pk = PBField.initRepeatMessage(AvGameCommon.UinWrap.class);
   public final PBUInt32Field user_total_num = PBField.initUInt32(0);

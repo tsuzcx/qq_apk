@@ -8,7 +8,7 @@ public final class ShuoShuoUgcDeco
   extends JceStruct
 {
   static FeedSkin cache_stFeedSkin = new FeedSkin();
-  public FeedSkin stFeedSkin;
+  public FeedSkin stFeedSkin = null;
   
   public ShuoShuoUgcDeco() {}
   

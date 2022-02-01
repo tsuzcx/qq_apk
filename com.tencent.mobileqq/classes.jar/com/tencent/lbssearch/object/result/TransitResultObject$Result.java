@@ -8,7 +8,7 @@ public final class TransitResultObject$Result
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.lbssearch.object.result.TransitResultObject.Result
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ public final class SvcReqMSFLoginNotify
   extends JceStruct
 {
   static ArrayList<InstanceInfo> cache_vecInstanceList = new ArrayList();
-  public byte cStatus;
-  public byte cTablet;
-  public long iAppId;
-  public long iClientType;
-  public long iPlatform;
-  public long iProductType;
+  public byte cStatus = 0;
+  public byte cTablet = 0;
+  public long iAppId = 0L;
+  public long iClientType = 0L;
+  public long iPlatform = 0L;
+  public long iProductType = 0L;
   public String strInfo = "";
   public String strTitle = "";
-  public ArrayList<InstanceInfo> vecInstanceList;
+  public ArrayList<InstanceInfo> vecInstanceList = null;
   
   static
   {

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.servlet;
 
-import bcvm;
-
 class LoginVerifyServlet$4$2
   implements Runnable
 {
@@ -19,7 +17,7 @@ class LoginVerifyServlet$4$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.LoginVerifyServlet.4.2
  * JD-Core Version:    0.7.0.1
  */

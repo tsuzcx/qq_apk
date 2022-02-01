@@ -24,7 +24,6 @@ public class StandardMessageCodec
   private static final byte DOUBLE = 6;
   private static final byte DOUBLE_ARRAY = 11;
   private static final byte FALSE = 2;
-  private static final byte FlutterStandardFieldJSValue = 16;
   public static final StandardMessageCodec INSTANCE = new StandardMessageCodec();
   private static final byte INT = 3;
   private static final byte INT_ARRAY = 9;
@@ -421,12 +420,6 @@ public class StandardMessageCodec
         }
       }
     }
-    if ((paramObject instanceof FlutterStandardFieldJSValueWrapper))
-    {
-      paramByteArrayOutputStream.write(16);
-      writeLong(paramByteArrayOutputStream, ((FlutterStandardFieldJSValueWrapper)paramObject).getAddress());
-      return;
-    }
     paramByteArrayOutputStream = new StringBuilder();
     paramByteArrayOutputStream.append("Unsupported value: ");
     paramByteArrayOutputStream.append(paramObject);
@@ -435,7 +428,7 @@ public class StandardMessageCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.plugin.common.StandardMessageCodec
  * JD-Core Version:    0.7.0.1
  */

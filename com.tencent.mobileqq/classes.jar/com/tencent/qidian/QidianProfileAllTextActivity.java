@@ -1,6 +1,5 @@
 package com.tencent.qidian;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -27,9 +26,9 @@ public class QidianProfileAllTextActivity
     super.doOnCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("content");
-    super.setContentView(2131560886);
-    ((TextView)this.mContentView.findViewById(2131379001)).setText(paramBundle);
-    ((TextView)this.mContentView.findViewById(2131365157)).setText(str);
+    super.setContentView(2131560977);
+    ((TextView)this.mContentView.findViewById(2131379432)).setText(paramBundle);
+    ((TextView)this.mContentView.findViewById(2131365294)).setText(str);
     return true;
   }
   
@@ -42,7 +41,7 @@ public class QidianProfileAllTextActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileAllTextActivity
  * JD-Core Version:    0.7.0.1
  */

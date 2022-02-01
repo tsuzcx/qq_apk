@@ -18,10 +18,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import sjx;
-import sjy;
-import sjz;
-import ska;
 
 public class VideoFeedsLikeAnimate$LikeExplosionView
   extends View
@@ -30,7 +26,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
   private long jdField_a_of_type_Long = 500L;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private List<ska> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<VideoFeedsLikeAnimate.LikeExplosionView.LikeExplosion> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Random jdField_a_of_type_JavaUtilRandom;
   
   public VideoFeedsLikeAnimate$LikeExplosionView(VideoFeedsLikeAnimate paramVideoFeedsLikeAnimate, Context paramContext, Random paramRandom)
@@ -51,19 +47,19 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator2, localObjectAnimator1 });
     localAnimatorSet.setStartDelay(250L);
-    localAnimatorSet.addListener(new sjx(this));
+    localAnimatorSet.addListener(new VideoFeedsLikeAnimate.LikeExplosionView.1(this));
     localAnimatorSet.setDuration(this.jdField_a_of_type_Long);
     localAnimatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
     localAnimatorSet.start();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((ska)localIterator.next()).a(paramCanvas);
+        ((VideoFeedsLikeAnimate.LikeExplosionView.LikeExplosion)localIterator.next()).a(paramCanvas);
       }
     }
   }
@@ -90,7 +86,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
               if (QLog.isColorLevel()) {
                 QLog.d("VideoFeedsLikeAnimate", 2, "setIconExplosionEachDirection, angele: " + m);
               }
-              this.jdField_a_of_type_JavaUtilList.add(new sjy(this, m));
+              this.jdField_a_of_type_JavaUtilList.add(new VideoFeedsLikeAnimate.LikeExplosionView.CircleLikeExplosion(this, m));
               j += 1;
             }
             catch (Exception localException) {}
@@ -107,7 +103,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
     this.jdField_a_of_type_Float = paramFloat;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((ska)localIterator.next()).a(paramFloat);
+      ((VideoFeedsLikeAnimate.LikeExplosionView.LikeExplosion)localIterator.next()).a(paramFloat);
     }
     invalidate();
   }
@@ -117,7 +113,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
     int i = 0;
     while (i < paramInt)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new sjy(this));
+      this.jdField_a_of_type_JavaUtilList.add(new VideoFeedsLikeAnimate.LikeExplosionView.CircleLikeExplosion(this));
       i += 1;
     }
   }
@@ -142,7 +138,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
         {
           int j = this.jdField_a_of_type_JavaUtilRandom.nextInt(paramArrayOfDrawable.length);
           int k = this.jdField_a_of_type_JavaUtilRandom.nextInt(arrayOfInt.length);
-          this.jdField_a_of_type_JavaUtilList.add(new sjz(this, paramArrayOfDrawable[j], paramInt2, arrayOfInt[k]));
+          this.jdField_a_of_type_JavaUtilList.add(new VideoFeedsLikeAnimate.LikeExplosionView.IconLikeExplosion(this, paramArrayOfDrawable[j], paramInt2, arrayOfInt[k]));
           i += 1;
         }
         catch (Exception paramArrayOfDrawable) {}
@@ -183,7 +179,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
         if (QLog.isColorLevel()) {
           QLog.d("VideoFeedsLikeAnimate", 2, "angele: " + i1);
         }
-        this.jdField_a_of_type_JavaUtilList.add(new sjz(this, paramArrayOfDrawable[m], paramInt2, arrayOfInt[n], i1));
+        this.jdField_a_of_type_JavaUtilList.add(new VideoFeedsLikeAnimate.LikeExplosionView.IconLikeExplosion(this, paramArrayOfDrawable[m], paramInt2, arrayOfInt[n], i1));
         j += 1;
       }
       else
@@ -207,7 +203,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView
  * JD-Core Version:    0.7.0.1
  */

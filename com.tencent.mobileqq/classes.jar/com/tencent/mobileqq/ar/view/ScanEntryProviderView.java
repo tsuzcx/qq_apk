@@ -6,33 +6,32 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import apog;
-import apqp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.model.AbstractSession;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import com.tencent.mobileqq.utils.AlbumUtil;
 
 public abstract class ScanEntryProviderView
   extends FrameLayout
 {
-  public Context a;
-  public apog a;
-  public apqp a;
-  public AppInterface a;
+  protected Context a;
+  protected AppInterface a;
+  protected AbstractSession a;
+  protected ScanEntryContainerViewListener a;
   private boolean a;
   protected View b;
-  public boolean k;
-  protected boolean l;
-  public boolean m;
+  public boolean k = false;
+  protected boolean l = false;
+  protected boolean m = false;
   
-  public ScanEntryProviderView(Context paramContext, apqp paramapqp)
+  public ScanEntryProviderView(Context paramContext, ScanEntryContainerViewListener paramScanEntryContainerViewListener)
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Apqp = paramapqp;
+    this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryContainerViewListener = paramScanEntryContainerViewListener;
   }
   
   public abstract void a(Bundle paramBundle);
@@ -48,8 +47,8 @@ public abstract class ScanEntryProviderView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Apog != null) {
-      this.jdField_a_of_type_Apog.g();
+    if (this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession.g();
     }
   }
   
@@ -62,15 +61,15 @@ public abstract class ScanEntryProviderView
   
   public void d()
   {
-    if (this.jdField_a_of_type_Apog != null) {
-      this.jdField_a_of_type_Apog.h();
+    if (this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession.h();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Apog != null) {
-      this.jdField_a_of_type_Apog.j();
+    if (this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession.j();
     }
   }
   
@@ -78,8 +77,8 @@ public abstract class ScanEntryProviderView
   {
     this.m = true;
     this.l = false;
-    if (this.jdField_a_of_type_Apog != null) {
-      this.jdField_a_of_type_Apog.g();
+    if (this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession.g();
     }
   }
   
@@ -88,8 +87,8 @@ public abstract class ScanEntryProviderView
     if (this.jdField_a_of_type_Boolean != paramBoolean)
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Apqp != null) {
-        this.jdField_a_of_type_Apqp.a(paramBoolean);
+      if (this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryContainerViewListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryContainerViewListener.a(paramBoolean);
       }
     }
   }
@@ -98,8 +97,8 @@ public abstract class ScanEntryProviderView
   {
     this.m = false;
     this.l = true;
-    if (this.jdField_a_of_type_Apog != null) {
-      this.jdField_a_of_type_Apog.h();
+    if (this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession.h();
     }
   }
   

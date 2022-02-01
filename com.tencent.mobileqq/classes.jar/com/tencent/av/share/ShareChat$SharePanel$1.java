@@ -5,12 +5,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import lyx;
 
-public class ShareChat$SharePanel$1
+class ShareChat$SharePanel$1
   implements Runnable
 {
-  public ShareChat$SharePanel$1(lyx paramlyx, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent, Context paramContext, int paramInt) {}
+  ShareChat$SharePanel$1(ShareChat.SharePanel paramSharePanel, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent, Context paramContext, int paramInt) {}
   
   public void run()
   {
@@ -32,7 +31,7 @@ public class ShareChat$SharePanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.1
  * JD-Core Version:    0.7.0.1
  */

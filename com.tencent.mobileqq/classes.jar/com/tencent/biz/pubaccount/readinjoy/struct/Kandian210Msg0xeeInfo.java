@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJSPUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import prd;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.AccountInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.ContextInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.ControlInfo;
@@ -341,7 +341,7 @@ public class Kandian210Msg0xeeInfo
   
   public static Kandian210Msg0xeeInfo getKandian210Msg0xeeInfoFromSp(QQAppInterface paramQQAppInterface)
   {
-    return (Kandian210Msg0xeeInfo)prd.a(paramQQAppInterface, "kandian_push_0x210_ee", true);
+    return (Kandian210Msg0xeeInfo)RIJSPUtils.a(paramQQAppInterface, "kandian_push_0x210_ee", true);
   }
   
   private static void h(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
@@ -368,12 +368,12 @@ public class Kandian210Msg0xeeInfo
   
   public static void removeKandian210Msg0xeeInfoFromSp()
   {
-    prd.a("kandian_push_0x210_ee", true);
+    RIJSPUtils.a("kandian_push_0x210_ee", true);
   }
   
   public static void writeToSpAsync(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo)
   {
-    prd.a("kandian_push_0x210_ee", paramKandian210Msg0xeeInfo, true);
+    RIJSPUtils.a("kandian_push_0x210_ee", paramKandian210Msg0xeeInfo, true);
   }
   
   public boolean isArticleAppInPush()
@@ -393,7 +393,7 @@ public class Kandian210Msg0xeeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo
  * JD-Core Version:    0.7.0.1
  */

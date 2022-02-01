@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import anza;
-import bdkj;
-import bdlg;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.GeneralConfigUtils;
+import com.tencent.mobileqq.statistics.RichMediaBugReport;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
 import com.tencent.mobileqq.transfile.ServerAddr;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -38,7 +38,7 @@ public class C2CPicDownHandler
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    if (bdkj.a())
+    if (GeneralConfigUtils.a())
     {
       localObject1 = paramGetImgUrlRsp.bytes_big_thumb_down_para.get();
       localObject2 = paramGetImgUrlRsp.bytes_original_down_para.get();
@@ -233,7 +233,7 @@ public class C2CPicDownHandler
     //   209: iload_1
     //   210: ldc 42
     //   212: if_icmpne +137 -> 349
-    //   215: invokestatic 17	bdkj:a	()Z
+    //   215: invokestatic 17	com/tencent/mobileqq/statistics/GeneralConfigUtils:a	()Z
     //   218: ifeq +123 -> 341
     //   221: bipush 16
     //   223: istore_1
@@ -249,7 +249,7 @@ public class C2CPicDownHandler
     //   243: invokevirtual 221	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   246: aload 9
     //   248: getfield 298	tencent/im/cs/cmd0x352/cmd0x352$GetImgUrlReq:bytes_build_ver	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   251: invokestatic 303	com/tencent/mobileqq/transfile/RichMediaUtil:getVersionCode	()Ljava/lang/String;
+    //   251: invokestatic 303	com/tencent/mobileqq/transfile/TransFileUtil:getVersionCode	()Ljava/lang/String;
     //   254: invokestatic 307	com/tencent/mobileqq/pb/ByteStringMicro:copyFromUtf8	(Ljava/lang/String;)Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   257: invokevirtual 258	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
     //   260: aload 9
@@ -369,24 +369,24 @@ public class C2CPicDownHandler
     }
   }
   
-  protected void handleSucResponse(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, anza paramanza)
+  protected boolean handleSucResponse(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, StatictisInfo paramStatictisInfo)
   {
     try
     {
       paramProtoResp = ((cmd0x352.RspBody)new cmd0x352.RspBody().mergeFrom(paramArrayOfByte)).rpt_msg_getimg_url_rsp.get();
       if ((paramProtoResp != null) && (paramProtoResp.size() != 0)) {
-        break label103;
+        break label104;
       }
       throw new Exception("resps null");
     }
     catch (Exception paramProtoResp)
     {
-      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, paramRichProtoResp.resps);
+      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramStatictisInfo, paramRichProtoResp.resps);
     }
-    return;
-    label103:
+    return true;
+    label104:
     Iterator localIterator = paramProtoResp.iterator();
-    label111:
+    label112:
     while (localIterator.hasNext())
     {
       paramProtoResp = (cmd0x352.GetImgUrlRsp)localIterator.next();
@@ -404,10 +404,10 @@ public class C2CPicDownHandler
           }
           i = paramProtoResp.uint32_result.get();
           if (i != 0) {
-            break label307;
+            break label308;
           }
           handleResponse(localC2CPicDownReq, paramProtoResp, localPicDownResp);
-          setResult(0, 0, "", "", paramanza, localPicDownResp);
+          setResult(0, 0, "", "", paramStatictisInfo, localPicDownResp);
         }
         catch (Exception paramProtoResp) {}
       }
@@ -422,7 +422,7 @@ public class C2CPicDownHandler
       }
       if (localPicDownResp != null)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, localPicDownResp);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramStatictisInfo, localPicDownResp);
         continue;
         if (C2CPicUpHandler.shouldRetryByRetCode(i))
         {
@@ -430,22 +430,22 @@ public class C2CPicDownHandler
           if (this.mReqUrlCount < 2)
           {
             paramRichProtoReq.protoReqMgr.sendProtoReq(paramProtoReq);
-            return;
+            return false;
           }
         }
         if ((i == 201) && (QLog.isColorLevel())) {
-          break label384;
+          break label388;
         }
       }
     }
     for (;;)
     {
-      label307:
-      setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), BaseTransProcessor.getUrlReason(i), paramanza, localPicDownResp);
-      break label111;
+      label308:
+      setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), BaseTransProcessor.getUrlReason(i), paramStatictisInfo, localPicDownResp);
+      break label112;
       break;
-      label384:
-      bdlg.a("Download_C2C_Pic_Request_Error_Param_Check", localC2CPicDownReq.uuid);
+      label388:
+      RichMediaBugReport.a("Download_C2C_Pic_Request_Error_Param_Check", localC2CPicDownReq.uuid);
     }
   }
   
@@ -466,7 +466,7 @@ public class C2CPicDownHandler
   {
     if ((paramRichProtoReq != null) && (paramRichProtoReq.reqs != null) && (paramRichProtoReq.protoReqMgr != null))
     {
-      ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
+      ProtoReqManagerImpl.ProtoReq localProtoReq = new ProtoReqManagerImpl.ProtoReq();
       localProtoReq.ssoCmd = "LongConn.OffPicDown";
       localProtoReq.reqBody = constructReqBody(paramRichProtoReq.reqs);
       localProtoReq.busiData = paramRichProtoReq;

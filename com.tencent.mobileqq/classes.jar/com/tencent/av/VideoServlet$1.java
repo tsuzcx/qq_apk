@@ -1,21 +1,20 @@
 package com.tencent.av;
 
-import ldc;
-import lfw;
+import com.tencent.av.business.config.MediaCodecChipConfigManager;
 
-public class VideoServlet$1
+class VideoServlet$1
   implements Runnable
 {
-  public VideoServlet$1(ldc paramldc, HardWareCodecSSO.ConfigRsp paramConfigRsp) {}
+  VideoServlet$1(VideoServlet paramVideoServlet, HardWareCodecSSO.ConfigRsp paramConfigRsp) {}
   
   public void run()
   {
-    lfw.a().a(this.a);
+    MediaCodecChipConfigManager.a().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.VideoServlet.1
  * JD-Core Version:    0.7.0.1
  */

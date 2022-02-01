@@ -1,8 +1,8 @@
 package com.tencent.tavcut.session;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.Looper;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
@@ -38,6 +38,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executor;
 import java.util.concurrent.Semaphore;
 
 public abstract class TAVCutSession
@@ -46,7 +47,6 @@ public abstract class TAVCutSession
   private static final String TAG = TAVCutImageSession.class.getSimpleName();
   protected Context context;
   protected int currentIndex = 0;
-  protected Handler handler;
   protected String initMediaModelsMD5 = "";
   protected List<MediaModel> mediaModels;
   protected final SparseArray<VideoRenderChainManager> renderChainManagers = new SparseArray();
@@ -103,11 +103,14 @@ public abstract class TAVCutSession
   
   protected void applyCurrentSticker(StickerController paramStickerController)
   {
-    TAVSticker localTAVSticker = paramStickerController.getCurrentSticker();
-    if (localTAVSticker != null)
+    if (paramStickerController != null)
     {
-      paramStickerController.resignCurrentSticker();
-      onStickerResign(localTAVSticker);
+      TAVSticker localTAVSticker = paramStickerController.getCurrentSticker();
+      if (localTAVSticker != null)
+      {
+        paramStickerController.resignCurrentSticker();
+        onStickerResign(localTAVSticker);
+      }
     }
   }
   
@@ -225,7 +228,7 @@ public abstract class TAVCutSession
       if (i < this.stickerControllers.size())
       {
         int j = this.stickerControllers.keyAt(i);
-        if (((StickerController)this.stickerControllers.get(j)).getCurrentSticker() != null) {
+        if ((this.stickerControllers.get(j) != null) && (((StickerController)this.stickerControllers.get(j)).getCurrentSticker() != null)) {
           bool1 = true;
         }
       }
@@ -484,13 +487,7 @@ public abstract class TAVCutSession
   {
     if (this.runAsync)
     {
-      if (this.handler == null)
-      {
-        HandlerThread localHandlerThread = new HandlerThread("TAVCutSessionHT");
-        localHandlerThread.start();
-        this.handler = new Handler(localHandlerThread.getLooper());
-      }
-      this.handler.post(paramRunnable);
+      AsyncTask.SERIAL_EXECUTOR.execute(paramRunnable);
       return;
     }
     paramRunnable.run();
@@ -599,7 +596,7 @@ public abstract class TAVCutSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutSession
  * JD-Core Version:    0.7.0.1
  */

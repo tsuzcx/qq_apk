@@ -54,158 +54,161 @@ public class YellowTipsLayout
     //   13: new 51	java/lang/StringBuilder
     //   16: dup
     //   17: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   20: getstatic 57	alcc:c	Ljava/lang/String;
-    //   23: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: aload_1
-    //   27: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: ldc 63
-    //   32: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokespecial 70	java/io/File:<init>	(Ljava/lang/String;)V
-    //   41: astore_0
-    //   42: aload_0
-    //   43: invokevirtual 74	java/io/File:exists	()Z
-    //   46: ifeq +168 -> 214
-    //   49: new 76	java/io/FileInputStream
-    //   52: dup
-    //   53: aload_0
-    //   54: invokespecial 79	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   57: astore_1
-    //   58: aload_1
-    //   59: astore_0
-    //   60: sipush 1024
-    //   63: newarray byte
-    //   65: astore_3
-    //   66: aload_1
-    //   67: astore_0
-    //   68: new 51	java/lang/StringBuilder
-    //   71: dup
-    //   72: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   75: astore 5
-    //   77: aload_1
-    //   78: astore_0
-    //   79: aload_1
-    //   80: aload_3
-    //   81: invokevirtual 83	java/io/FileInputStream:read	([B)I
-    //   84: istore_2
-    //   85: iload_2
-    //   86: ifle +44 -> 130
+    //   20: ldc 54
+    //   22: invokestatic 60	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   25: checkcast 54	cooperation/qwallet/plugin/IQWalletHelper
+    //   28: invokeinterface 64 1 0
+    //   33: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: aload_1
+    //   37: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: ldc 70
+    //   42: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
+    //   51: astore_0
+    //   52: aload_0
+    //   53: invokevirtual 80	java/io/File:exists	()Z
+    //   56: ifeq +168 -> 224
+    //   59: new 82	java/io/FileInputStream
+    //   62: dup
+    //   63: aload_0
+    //   64: invokespecial 85	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   67: astore_1
+    //   68: aload_1
+    //   69: astore_0
+    //   70: sipush 1024
+    //   73: newarray byte
+    //   75: astore_3
+    //   76: aload_1
+    //   77: astore_0
+    //   78: new 51	java/lang/StringBuilder
+    //   81: dup
+    //   82: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   85: astore 5
+    //   87: aload_1
+    //   88: astore_0
     //   89: aload_1
-    //   90: astore_0
-    //   91: aload 5
-    //   93: new 85	java/lang/String
-    //   96: dup
-    //   97: aload_3
-    //   98: iconst_0
-    //   99: iload_2
-    //   100: invokespecial 88	java/lang/String:<init>	([BII)V
-    //   103: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: pop
-    //   107: goto -30 -> 77
-    //   110: astore_3
-    //   111: aload_1
-    //   112: astore_0
-    //   113: aload_3
-    //   114: invokevirtual 91	java/lang/Exception:printStackTrace	()V
-    //   117: aload_1
-    //   118: ifnull +96 -> 214
+    //   90: aload_3
+    //   91: invokevirtual 89	java/io/FileInputStream:read	([B)I
+    //   94: istore_2
+    //   95: iload_2
+    //   96: ifle +44 -> 140
+    //   99: aload_1
+    //   100: astore_0
+    //   101: aload 5
+    //   103: new 91	java/lang/String
+    //   106: dup
+    //   107: aload_3
+    //   108: iconst_0
+    //   109: iload_2
+    //   110: invokespecial 94	java/lang/String:<init>	([BII)V
+    //   113: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: pop
+    //   117: goto -30 -> 87
+    //   120: astore_3
     //   121: aload_1
-    //   122: invokevirtual 94	java/io/FileInputStream:close	()V
-    //   125: aload 4
-    //   127: astore_0
-    //   128: aload_0
-    //   129: areturn
-    //   130: aload_1
-    //   131: astore_0
-    //   132: new 44	org/json/JSONObject
-    //   135: dup
-    //   136: new 85	java/lang/String
-    //   139: dup
-    //   140: aload 5
-    //   142: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   145: iconst_0
-    //   146: invokestatic 100	android/util/Base64:decode	(Ljava/lang/String;I)[B
-    //   149: invokespecial 103	java/lang/String:<init>	([B)V
-    //   152: invokespecial 104	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   155: astore_3
-    //   156: aload_3
-    //   157: astore_0
-    //   158: aload_1
-    //   159: ifnull -31 -> 128
-    //   162: aload_1
-    //   163: invokevirtual 94	java/io/FileInputStream:close	()V
+    //   122: astore_0
+    //   123: aload_3
+    //   124: invokevirtual 97	java/lang/Exception:printStackTrace	()V
+    //   127: aload_1
+    //   128: ifnull +96 -> 224
+    //   131: aload_1
+    //   132: invokevirtual 100	java/io/FileInputStream:close	()V
+    //   135: aload 4
+    //   137: astore_0
+    //   138: aload_0
+    //   139: areturn
+    //   140: aload_1
+    //   141: astore_0
+    //   142: new 44	org/json/JSONObject
+    //   145: dup
+    //   146: new 91	java/lang/String
+    //   149: dup
+    //   150: aload 5
+    //   152: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   155: iconst_0
+    //   156: invokestatic 106	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   159: invokespecial 109	java/lang/String:<init>	([B)V
+    //   162: invokespecial 110	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   165: astore_3
     //   166: aload_3
-    //   167: areturn
-    //   168: astore_0
-    //   169: aload_0
-    //   170: invokevirtual 105	java/io/IOException:printStackTrace	()V
-    //   173: aload_3
-    //   174: areturn
-    //   175: astore_0
-    //   176: aload_0
-    //   177: invokevirtual 105	java/io/IOException:printStackTrace	()V
-    //   180: aload 4
-    //   182: areturn
-    //   183: astore_1
-    //   184: aconst_null
+    //   167: astore_0
+    //   168: aload_1
+    //   169: ifnull -31 -> 138
+    //   172: aload_1
+    //   173: invokevirtual 100	java/io/FileInputStream:close	()V
+    //   176: aload_3
+    //   177: areturn
+    //   178: astore_0
+    //   179: aload_0
+    //   180: invokevirtual 111	java/io/IOException:printStackTrace	()V
+    //   183: aload_3
+    //   184: areturn
     //   185: astore_0
     //   186: aload_0
-    //   187: ifnull +7 -> 194
-    //   190: aload_0
-    //   191: invokevirtual 94	java/io/FileInputStream:close	()V
-    //   194: aload_1
-    //   195: athrow
-    //   196: astore_0
-    //   197: aload_0
-    //   198: invokevirtual 105	java/io/IOException:printStackTrace	()V
-    //   201: goto -7 -> 194
-    //   204: astore_1
-    //   205: goto -19 -> 186
-    //   208: astore_3
-    //   209: aconst_null
-    //   210: astore_1
-    //   211: goto -100 -> 111
-    //   214: aload 4
-    //   216: areturn
+    //   187: invokevirtual 111	java/io/IOException:printStackTrace	()V
+    //   190: aload 4
+    //   192: areturn
+    //   193: astore_1
+    //   194: aconst_null
+    //   195: astore_0
+    //   196: aload_0
+    //   197: ifnull +7 -> 204
+    //   200: aload_0
+    //   201: invokevirtual 100	java/io/FileInputStream:close	()V
+    //   204: aload_1
+    //   205: athrow
+    //   206: astore_0
+    //   207: aload_0
+    //   208: invokevirtual 111	java/io/IOException:printStackTrace	()V
+    //   211: goto -7 -> 204
+    //   214: astore_1
+    //   215: goto -19 -> 196
+    //   218: astore_3
+    //   219: aconst_null
+    //   220: astore_1
+    //   221: goto -100 -> 121
+    //   224: aload 4
+    //   226: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	217	0	paramContext	Context
-    //   0	217	1	paramString	String
-    //   84	16	2	i	int
-    //   65	33	3	arrayOfByte	byte[]
-    //   110	4	3	localException1	Exception
-    //   155	19	3	localJSONObject1	JSONObject
-    //   208	1	3	localException2	Exception
-    //   7	208	4	localJSONObject2	JSONObject
-    //   75	66	5	localStringBuilder	java.lang.StringBuilder
+    //   0	227	0	paramContext	Context
+    //   0	227	1	paramString	String
+    //   94	16	2	i	int
+    //   75	33	3	arrayOfByte	byte[]
+    //   120	4	3	localException1	Exception
+    //   165	19	3	localJSONObject1	JSONObject
+    //   218	1	3	localException2	Exception
+    //   7	218	4	localJSONObject2	JSONObject
+    //   85	66	5	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   60	66	110	java/lang/Exception
-    //   68	77	110	java/lang/Exception
-    //   79	85	110	java/lang/Exception
-    //   91	107	110	java/lang/Exception
-    //   132	156	110	java/lang/Exception
-    //   162	166	168	java/io/IOException
-    //   121	125	175	java/io/IOException
-    //   49	58	183	finally
-    //   190	194	196	java/io/IOException
-    //   60	66	204	finally
-    //   68	77	204	finally
-    //   79	85	204	finally
-    //   91	107	204	finally
-    //   113	117	204	finally
-    //   132	156	204	finally
-    //   49	58	208	java/lang/Exception
+    //   70	76	120	java/lang/Exception
+    //   78	87	120	java/lang/Exception
+    //   89	95	120	java/lang/Exception
+    //   101	117	120	java/lang/Exception
+    //   142	166	120	java/lang/Exception
+    //   172	176	178	java/io/IOException
+    //   131	135	185	java/io/IOException
+    //   59	68	193	finally
+    //   200	204	206	java/io/IOException
+    //   70	76	214	finally
+    //   78	87	214	finally
+    //   89	95	214	finally
+    //   101	117	214	finally
+    //   123	127	214	finally
+    //   142	166	214	finally
+    //   59	68	218	java/lang/Exception
   }
   
   private void init(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560618, this, true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560708, this, true);
     paramContext.setClickable(true);
     paramContext.setOnClickListener(this);
-    this.mWariningView = ((ImageView)findViewById(2131368486));
-    this.mText = ((TextView)findViewById(2131368485));
-    this.mArrowView = ((ImageView)findViewById(2131368483));
+    this.mWariningView = ((ImageView)findViewById(2131368710));
+    this.mText = ((TextView)findViewById(2131368709));
+    this.mArrowView = ((ImageView)findViewById(2131368707));
   }
   
   public void onClick(View paramView)
@@ -326,7 +329,7 @@ public class YellowTipsLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.YellowTipsLayout
  * JD-Core Version:    0.7.0.1
  */

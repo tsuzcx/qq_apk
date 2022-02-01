@@ -1,29 +1,27 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.text.TextUtils;
-import apua;
-import apub;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-public class ArkAppYYBDownloadModule$1$1
+class ArkAppYYBDownloadModule$1$1
   implements Runnable
 {
-  public ArkAppYYBDownloadModule$1$1(apub paramapub, String paramString) {}
+  ArkAppYYBDownloadModule$1$1(ArkAppYYBDownloadModule.1 param1, String paramString) {}
   
   public void run()
   {
     int i;
-    if ((apua.a(this.jdField_a_of_type_Apub.a) != null) && (apua.a(this.jdField_a_of_type_Apub.a).size() > 0)) {
+    if ((ArkAppYYBDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppYYBDownloadModule$1.a) != null) && (ArkAppYYBDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppYYBDownloadModule$1.a).size() > 0)) {
       i = 0;
     }
     for (;;)
     {
       ark.VariantWrapper localVariantWrapper1;
-      if (i < apua.a(this.jdField_a_of_type_Apub.a).size())
+      if (i < ArkAppYYBDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppYYBDownloadModule$1.a).size())
       {
-        localVariantWrapper1 = this.jdField_a_of_type_Apub.a.b(((Long)apua.a(this.jdField_a_of_type_Apub.a).get(i)).longValue());
+        localVariantWrapper1 = this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppYYBDownloadModule$1.a.b(((Long)ArkAppYYBDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppYYBDownloadModule$1.a).get(i)).longValue());
         if ((localVariantWrapper1 == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
           QLog.d("ArkApp.downloadyyb.module", 1, "onDownloadState Callback is null");
         }

@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.hotpic;
 
-import avnl;
-import avnm;
-import avnn;
 import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.ShortVideoDownReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
@@ -32,17 +30,17 @@ public class HotVideoData
   public long videoLength;
   public String videoSource;
   
-  private void GetURLByTypeAsync(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, avnm paramavnm)
+  private void GetURLByTypeAsync(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, HotVideoData.HotVideoGetUrlCallBack paramHotVideoGetUrlCallBack)
   {
-    if (paramavnm == null) {
+    if (paramHotVideoGetUrlCallBack == null) {
       return;
     }
     for (;;)
     {
       try
       {
-        avnn localavnn = new avnn();
-        localavnn.a = paramInt2;
+        HotVideoData.HotVideoGetUrlResult localHotVideoGetUrlResult = new HotVideoData.HotVideoGetUrlResult();
+        localHotVideoGetUrlResult.a = paramInt2;
         if (paramInt2 == 1)
         {
           str1 = this.mPreviewUUID;
@@ -50,7 +48,7 @@ public class HotVideoData
             break label92;
           }
           str2 = this.md5;
-          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new avnl(this, localavnn, paramavnm));
+          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new HotVideoData.1(this, localHotVideoGetUrlResult, paramHotVideoGetUrlCallBack));
           break;
         }
       }
@@ -84,10 +82,10 @@ public class HotVideoData
     {
       localShortVideoDownReq.chatType = 0;
       if ((localShortVideoDownReq.uinType != 0) && (1008 != localShortVideoDownReq.uinType)) {
-        break label281;
+        break label288;
       }
     }
-    label281:
+    label288:
     for (localShortVideoDownReq.troopUin = null;; localShortVideoDownReq.troopUin = localShortVideoDownReq.peerUin)
     {
       localShortVideoDownReq.clientType = 2;
@@ -101,7 +99,7 @@ public class HotVideoData
       localRichProtoReq.callback = paramRichProtoCallback;
       localRichProtoReq.protoKey = "short_video_dw";
       localRichProtoReq.reqs.add(localShortVideoDownReq);
-      localRichProtoReq.protoReqMgr = paramQQAppInterface.getProtoReqManager();
+      localRichProtoReq.protoReqMgr = ((IProtoReqManager)paramQQAppInterface.getRuntimeService(IProtoReqManager.class, ""));
       RichProtoProc.procRichProtoReq(localRichProtoReq);
       return;
       if (1 == localShortVideoDownReq.uinType)
@@ -124,14 +122,14 @@ public class HotVideoData
     return this.width / this.height + 0.1F < 1.777778F;
   }
   
-  public void GetPreviewURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, avnm paramavnm)
+  public void GetPreviewURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, HotVideoData.HotVideoGetUrlCallBack paramHotVideoGetUrlCallBack)
   {
-    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 1, paramavnm);
+    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 1, paramHotVideoGetUrlCallBack);
   }
   
-  public void GetVideoURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, avnm paramavnm)
+  public void GetVideoURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, HotVideoData.HotVideoGetUrlCallBack paramHotVideoGetUrlCallBack)
   {
-    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 2, paramavnm);
+    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 2, paramHotVideoGetUrlCallBack);
   }
   
   public void SetPreviewDownloadListener(URLDrawable.DownloadListener paramDownloadListener)
@@ -213,7 +211,7 @@ public class HotVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoData
  * JD-Core Version:    0.7.0.1
  */

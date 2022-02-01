@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ndj" android:paddingTop="13.5dip" android:paddingBottom="13.5dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="#7fffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/nyg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:lines="1" android:drawableLeft="@drawable/dqo" android:drawablePadding="2.0dip" android:layout_toLeftOf="@id/n20" android:layout_alignParentLeft="true" />
-    <ImageView android:id="@id/n20" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/i4i" android:scaleType="centerInside" android:layout_alignParentRight="true" />
+<RelativeLayout android:orientation="vertical" android:layout_width="56.0dip" android:layout_height="wrap_content" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:gravity="center" android:layout_gravity="center" android:background="@drawable/gtm" android:layout_width="56.0dip" android:layout_height="56.0dip" android:layout_centerHorizontal="true">
+        <com.tencent.mobileqq.now.widget.CircleImageView android:layout_gravity="center" android:id="@id/mz5" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/account_panel_add_icon" />
+    </FrameLayout>
+    <FrameLayout android:background="@drawable/gu0" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="44.0dip" android:layout_centerHorizontal="true">
+        <com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView android:layout_gravity="center" android:id="@id/mz7" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@color/agv" android:ellipsize="end" android:id="@id/mz6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="69.0dip" android:text="Evelyn" android:maxEms="3" android:singleLine="true" android:layout_centerHorizontal="true" />
 </RelativeLayout>

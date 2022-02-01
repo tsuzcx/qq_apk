@@ -4,32 +4,33 @@ import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bnrh;
-import bolh;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.device.DeviceUtils;
 import com.tencent.ttpic.filter.CFFaceOffFilter;
 import com.tencent.ttpic.filter.CFSkinCropFilter;
 import com.tencent.ttpic.filter.CFSkinCropFilterV2;
 import com.tencent.ttpic.model.SizeI;
 import com.tencent.ttpic.openapi.PTFaceAttr;
-import com.tencent.ttpic.openapi.PTFaceDetector;
 import com.tencent.ttpic.openapi.filter.SimpleGLThread;
 import com.tencent.ttpic.openapi.model.CosFunParam;
 import com.tencent.ttpic.openapi.model.CrazyFaceDataTemplate;
 import com.tencent.ttpic.openapi.model.FaceImageLayer;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.util.AEStaticDetector;
 import com.tencent.ttpic.openapi.util.CfTemplateParser;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.CosFunUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.view.RendererUtils;
+import dov.com.qq.im.ae.download.AEResUtil;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -65,7 +66,7 @@ public final class FaceChangeUtils
   {
     if ((paramBitmap == null) || (paramString == null))
     {
-      bnrh.d("FaceChangeUtils", "changeFaceInternal---null parameters: userFace, materialDir");
+      AEQLog.d("FaceChangeUtils", "changeFaceInternal---null parameters: userFace, materialDir");
       return FaceChangeUtils.ChangeFaceResult.access$000(-1, "null parameters, material=" + paramString);
     }
     Object localObject1 = paramString.split("/");
@@ -73,19 +74,19 @@ public final class FaceChangeUtils
     Object localObject2 = CfTemplateParser.parseCrazyFace(FileUtils.getRealPath(paramString), (String)localObject1);
     if (localObject2 == null)
     {
-      bnrh.d("FaceChangeUtils", "changeFaceInternal---failed to parse CrazyFace: " + paramString);
+      AEQLog.d("FaceChangeUtils", "changeFaceInternal---failed to parse CrazyFace: " + paramString);
       return FaceChangeUtils.ChangeFaceResult.access$000(-2, "failed to parse material, material=" + paramString);
     }
     localObject1 = detectFace(paramBitmap);
     if ((localObject1 == null) || (((PTFaceAttr)localObject1).getAllFacePoints() == null) || (((PTFaceAttr)localObject1).getAllFacePoints().isEmpty()))
     {
-      bnrh.d("FaceChangeUtils", "changeFaceInternal---failed to detect face");
+      AEQLog.d("FaceChangeUtils", "changeFaceInternal---failed to detect face");
       return FaceChangeUtils.ChangeFaceResult.access$000(-3, "failed to detect face");
     }
     Object localObject3 = getMaxFacePoints(((PTFaceAttr)localObject1).getAllFacePoints(), ((PTFaceAttr)localObject1).getFaceDetectScale());
     if (((List)localObject3).isEmpty())
     {
-      bnrh.d("FaceChangeUtils", "changeFaceInternal---userFacePointsList is empty");
+      AEQLog.d("FaceChangeUtils", "changeFaceInternal---userFacePointsList is empty");
       return FaceChangeUtils.ChangeFaceResult.access$000(-4, "no face points");
     }
     localObject1 = ((CrazyFaceDataTemplate)localObject2).faceLayers;
@@ -96,7 +97,7 @@ public final class FaceChangeUtils
     while (i < ((List)localObject1).size())
     {
       localObject4 = (FaceImageLayer)((List)localObject1).get(i);
-      localArrayList.add(processUserBitmap(j, paramBitmap.getWidth(), paramBitmap.getHeight(), VideoMaterialUtil.copyList((List)localObject3), (FaceImageLayer)localObject4, (CrazyFaceDataTemplate)localObject2));
+      localArrayList.add(processUserBitmap(j, paramBitmap.getWidth(), paramBitmap.getHeight(), VideoMaterial.copyList((List)localObject3), (FaceImageLayer)localObject4, (CrazyFaceDataTemplate)localObject2));
       i += 1;
     }
     paramBitmap = initMaxLength();
@@ -147,7 +148,7 @@ public final class FaceChangeUtils
       RendererUtils.clearTexture(((CosFunParam)localArrayList.get(i)).mFaceTexture);
       i += 1;
     }
-    bnrh.b("FaceChangeUtils", "success : + result");
+    AEQLog.b("FaceChangeUtils", "success : + result");
     return FaceChangeUtils.ChangeFaceResult.access$200(paramString);
   }
   
@@ -209,12 +210,12 @@ public final class FaceChangeUtils
     paramCropFaceCallback.onSuccess((Bitmap)localObject2);
   }
   
-  public static bolh<Integer, List<PointF>> detectBiggestFaceInGLThread(Bitmap paramBitmap)
+  public static DynamicTextItem.Pair<Integer, List<PointF>> detectBiggestFaceInGLThread(Bitmap paramBitmap)
   {
     PTFaceAttr[] arrayOfPTFaceAttr = new PTFaceAttr[1];
-    bolh localbolh = new bolh(Integer.valueOf(0), null);
-    runInGLThread(new FaceChangeUtils.4(arrayOfPTFaceAttr, paramBitmap, localbolh), true, "GLThread-checkHasFaceInPic");
-    return localbolh;
+    DynamicTextItem.Pair localPair = new DynamicTextItem.Pair(Integer.valueOf(0), null);
+    runInGLThread(new FaceChangeUtils.4(arrayOfPTFaceAttr, paramBitmap, localPair), true, "GLThread-checkHasFaceInPic");
+    return localPair;
   }
   
   public static PTFaceAttr detectFace(Bitmap paramBitmap)
@@ -224,15 +225,8 @@ public final class FaceChangeUtils
   
   public static PTFaceAttr detectFace(Bitmap paramBitmap, double paramDouble)
   {
-    int i = RendererUtils.createTexture(paramBitmap);
-    paramBitmap = new Frame(0, i, paramBitmap.getWidth(), paramBitmap.getHeight());
-    PTFaceDetector localPTFaceDetector = new PTFaceDetector();
-    localPTFaceDetector.init(true);
-    PTFaceAttr localPTFaceAttr = localPTFaceDetector.detectFrame(paramBitmap, System.currentTimeMillis(), 0, paramDouble, 0.0F, true, false, null);
-    paramBitmap.clear();
-    RendererUtils.clearTexture(i);
-    localPTFaceDetector.destroy();
-    return localPTFaceAttr;
+    AEStaticDetector.initDetector(AEResUtil.g());
+    return AEStaticDetector.detectFace(paramBitmap);
   }
   
   public static PTFaceAttr detectFaceOrigin(Bitmap paramBitmap)
@@ -405,7 +399,7 @@ public final class FaceChangeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.FaceChangeUtils
  * JD-Core Version:    0.7.0.1
  */

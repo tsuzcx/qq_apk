@@ -1,31 +1,30 @@
 package cooperation.readinjoy;
 
 import android.text.TextUtils;
-import bmhv;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.DailyCbaReportInfos;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import opy;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import pqw;
 
-public final class ReadInJoyHelper$6
+final class ReadInJoyHelper$6
   implements Runnable
 {
-  public ReadInJoyHelper$6(BaseArticleInfo paramBaseArticleInfo) {}
+  ReadInJoyHelper$6(BaseArticleInfo paramBaseArticleInfo) {}
   
   public void run()
   {
-    boolean bool = pqw.v(this.a);
+    boolean bool = RIJFeedsType.v(this.a);
     ArrayList localArrayList;
     try
     {
-      Object localObject1 = bmhv.a("daily_cba_report_key");
+      Object localObject1 = ReadInJoyHelper.a("daily_cba_report_key");
       localArrayList = new ArrayList();
       if ((localObject1 != null) && (!TextUtils.isEmpty(localObject1.toString()))) {
         localObject1 = new JSONArray(localObject1.toString());
@@ -53,7 +52,7 @@ public final class ReadInJoyHelper$6
       ((JSONObject)localObject2).put("isVideo", i);
       ((JSONObject)localObject2).put("algoid", this.a.mAlgorithmID);
       localArrayList.add(localObject2);
-      Collections.sort(localArrayList, new opy("click_time"));
+      Collections.sort(localArrayList, new DailyCbaReportInfos("click_time"));
       int j = Aladdin.getConfig(227).getIntegerFromString("request_article_nums", 10);
       localObject2 = new JSONArray();
       i = 0;
@@ -61,7 +60,7 @@ public final class ReadInJoyHelper$6
       {
         if ((i >= localArrayList.size()) || (i >= j))
         {
-          bmhv.a("daily_cba_report_key", ((JSONArray)localObject2).toString());
+          ReadInJoyHelper.a("daily_cba_report_key", ((JSONArray)localObject2).toString());
           return;
         }
         ((JSONArray)localObject2).put(localArrayList.get(i));
@@ -74,7 +73,7 @@ public final class ReadInJoyHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.readinjoy.ReadInJoyHelper.6
  * JD-Core Version:    0.7.0.1
  */

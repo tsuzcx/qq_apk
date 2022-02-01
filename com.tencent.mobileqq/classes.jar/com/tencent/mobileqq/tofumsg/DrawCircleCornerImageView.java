@@ -30,7 +30,7 @@ public class DrawCircleCornerImageView
   }
   
   /* Error */
-  public void b(android.graphics.Canvas paramCanvas)
+  public void a(android.graphics.Canvas paramCanvas)
   {
     // Byte code:
     //   0: aload_0

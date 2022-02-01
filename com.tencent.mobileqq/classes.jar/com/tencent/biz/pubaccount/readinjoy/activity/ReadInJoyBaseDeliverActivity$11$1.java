@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import osq;
-
-public class ReadInJoyBaseDeliverActivity$11$1
+class ReadInJoyBaseDeliverActivity$11$1
   implements Runnable
 {
-  public ReadInJoyBaseDeliverActivity$11$1(osq paramosq) {}
+  ReadInJoyBaseDeliverActivity$11$1(ReadInJoyBaseDeliverActivity.11 param11) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ReadInJoyBaseDeliverActivity$11$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.11.1
  * JD-Core Version:    0.7.0.1
  */

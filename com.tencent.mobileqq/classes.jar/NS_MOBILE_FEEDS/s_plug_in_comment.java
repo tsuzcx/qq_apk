@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_plug_in_comment
   extends JceStruct
 {
-  public int action_type;
+  public int action_type = 0;
   public String action_url = "";
   public int insert_index = -1;
   public String title = "";

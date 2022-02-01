@@ -9,7 +9,7 @@ public final class NewCommonConchArgs
   extends JceStruct
 {
   static ArrayList<String> cache_newParam = new ArrayList();
-  public ArrayList<String> newParam;
+  public ArrayList<String> newParam = null;
   
   static
   {

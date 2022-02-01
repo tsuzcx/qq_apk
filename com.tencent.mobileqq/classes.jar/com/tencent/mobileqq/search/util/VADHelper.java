@@ -2,11 +2,10 @@ package com.tencent.mobileqq.search.util;
 
 import android.content.Context;
 import android.os.SystemClock;
-import anvx;
-import bcnj;
-import bhdj;
-import bhhd;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.RecordParams;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,14 +18,15 @@ public class VADHelper
   public static boolean a;
   private static ConcurrentHashMap<String, Long[]> b;
   public static boolean b;
-  public static boolean c;
+  public static boolean c = false;
   
   static
   {
-    jdField_a_of_type_Int = bhhd.b;
+    jdField_a_of_type_Int = RecordParams.b;
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
     jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap());
     jdField_a_of_type_Boolean = false;
+    jdField_b_of_type_Boolean = false;
   }
   
   public static float a(String paramString)
@@ -104,7 +104,7 @@ public class VADHelper
     QLog.i(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
     if ((jdField_b_of_type_Boolean) && (!c))
     {
-      bhdj.a(paramContext, 230, anvx.a(2131715396), localStringBuilder.toString(), "", "ok", new bcnj(), null).show();
+      DialogUtil.a(paramContext, 230, HardCodeUtil.a(2131715862), localStringBuilder.toString(), "", "ok", new VADHelper.1(), null).show();
       c = true;
     }
     a();
@@ -167,7 +167,7 @@ public class VADHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.VADHelper
  * JD-Core Version:    0.7.0.1
  */

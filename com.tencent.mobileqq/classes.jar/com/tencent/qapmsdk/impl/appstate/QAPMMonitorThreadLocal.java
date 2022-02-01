@@ -69,8 +69,8 @@ public class QAPMMonitorThreadLocal
         if (localj == null) {
           return;
         }
-        if ((b.e.get()) || (b.a.contains(localj.h)) || (b.b.contains(localj.h))) {
-          break label148;
+        if ((b.e.get()) || (b.a.contains(localj.g)) || (b.b.contains(localj.h)) || (localj.h.startsWith(localj.g))) {
+          break label162;
         }
         a.a().a(0L, localj);
       }
@@ -79,7 +79,7 @@ public class QAPMMonitorThreadLocal
     {
       super.a();
       return;
-      label148:
+      label162:
       if (("QAPM_APPLAUNCH".equals(localj.g)) && (!b.d())) {
         break;
       }
@@ -100,7 +100,7 @@ public class QAPMMonitorThreadLocal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.appstate.QAPMMonitorThreadLocal
  * JD-Core Version:    0.7.0.1
  */

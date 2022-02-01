@@ -9,19 +9,23 @@ class SingleLineTextView$Drawables
   int mDrawableHeightLeft;
   int mDrawableHeightRight;
   int mDrawableHeightRight2;
+  int mDrawableHeightRightExt;
   Drawable mDrawableLeft;
   int mDrawablePadding;
   Drawable mDrawableRight;
   Drawable mDrawableRight2;
+  int[] mDrawableRight2ExtPosition = new int[2];
   int[] mDrawableRight2Position = new int[2];
+  Drawable mDrawableRightExt;
   int[] mDrawableRightPosition = new int[2];
   int mDrawableSizeLeft;
   int mDrawableSizeRight;
   int mDrawableSizeRight2;
+  int mDrawableSizeRightExt;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.SingleLineTextView.Drawables
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.av.ui;
 
-import mcb;
-
-public class AVActivity$MyVideoObserver$2
+class AVActivity$MyVideoObserver$2
   implements Runnable
 {
-  public AVActivity$MyVideoObserver$2(mcb parammcb) {}
+  AVActivity$MyVideoObserver$2(AVActivity.MyVideoObserver paramMyVideoObserver) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public class AVActivity$MyVideoObserver$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.MyVideoObserver.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ public final class UserCmShowQzoneTrack
 {
   static ArrayList<CmShowQzoneTrack> cache_vecQzoneTrack = new ArrayList();
   static ArrayList<CmShowQzoneTrack> cache_vecQzoneTrack3D;
-  public ArrayList<CmShowQzoneTrack> vecQzoneTrack;
-  public ArrayList<CmShowQzoneTrack> vecQzoneTrack3D;
+  public ArrayList<CmShowQzoneTrack> vecQzoneTrack = null;
+  public ArrayList<CmShowQzoneTrack> vecQzoneTrack3D = null;
   
   static
   {

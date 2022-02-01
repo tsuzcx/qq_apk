@@ -36,6 +36,7 @@ public class NetworkState
   
   static
   {
+    providerName = null;
     observers = new ArrayList();
     netEventHandler = new NetworkState.1();
     mApnMap.put("unknown", Integer.valueOf(0));
@@ -215,6 +216,29 @@ public class NetworkState
       return 4;
     }
     return 5;
+  }
+  
+  public static String getNetworkTypeString()
+  {
+    String str = "unknown";
+    if (AppNetConnInfo.isWifiConn()) {
+      str = "wifi";
+    }
+    while (!AppNetConnInfo.isMobileConn()) {
+      return str;
+    }
+    switch (AppNetConnInfo.getMobileInfo())
+    {
+    default: 
+      return "unknown";
+    case 1: 
+      return "2G";
+    case 2: 
+      return "3G";
+    case 3: 
+      return "4G";
+    }
+    return "5G";
   }
   
   public static String getProviderName()

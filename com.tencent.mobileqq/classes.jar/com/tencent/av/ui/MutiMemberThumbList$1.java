@@ -2,12 +2,12 @@ package com.tencent.av.ui;
 
 import android.graphics.Bitmap;
 import com.tencent.av.VideoController;
+import com.tencent.av.VideoController.GAudioFriends;
+import com.tencent.av.utils.UITools;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import lcu;
 import mqq.os.MqqHandler;
-import mvk;
 
 class MutiMemberThumbList$1
   implements Runnable
@@ -28,7 +28,7 @@ class MutiMemberThumbList$1
     {
       if ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < MutiMemberThumbList.a(this.this$0).length))
       {
-        localObject = (lcu)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject = (VideoController.GAudioFriends)this.jdField_a_of_type_JavaUtilArrayList.get(i);
         if ((!bool) || (i != MutiMemberThumbList.a(this.this$0).length - 1)) {}
       }
       else
@@ -41,10 +41,10 @@ class MutiMemberThumbList$1
         bool = false;
         break;
       }
-      Bitmap localBitmap = MutiMemberThumbList.a(this.this$0).a(String.valueOf(((lcu)localObject).a), String.valueOf(MutiMemberThumbList.a(this.this$0)), MutiMemberThumbList.a(this.this$0), true, true);
+      Bitmap localBitmap = MutiMemberThumbList.a(this.this$0).a(String.valueOf(((VideoController.GAudioFriends)localObject).a), String.valueOf(MutiMemberThumbList.a(this.this$0)), MutiMemberThumbList.a(this.this$0), true, true);
       Object localObject = localBitmap;
       if (MutiMemberThumbList.a(this.this$0)) {
-        localObject = mvk.a(localBitmap, "#4C000000", true);
+        localObject = UITools.a(localBitmap, "#4C000000", true);
       }
       localArrayList.add(localObject);
       i += 1;
@@ -55,7 +55,7 @@ class MutiMemberThumbList$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MutiMemberThumbList.1
  * JD-Core Version:    0.7.0.1
  */

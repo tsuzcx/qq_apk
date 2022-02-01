@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import albs;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.utils.H5HbUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 import org.json.JSONObject;
@@ -41,7 +41,7 @@ public class QWalletPayJsPlugin$QWalletPayJsPluginResultReceiver
         break;
       }
       QLog.d("QWalletPayJsHandler", 4, "activity.isFinishing():" + localActivity.isFinishing());
-      paramBundle = albs.a(paramInt, paramBundle, localActivity);
+      paramBundle = H5HbUtil.a(paramInt, paramBundle, localActivity);
     } while (paramBundle == null);
     QWalletPayJsPlugin.access$100(localQWalletPayJsPlugin, paramBundle.toString());
     return;
@@ -56,7 +56,7 @@ public class QWalletPayJsPlugin$QWalletPayJsPluginResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin.QWalletPayJsPluginResultReceiver
  * JD-Core Version:    0.7.0.1
  */

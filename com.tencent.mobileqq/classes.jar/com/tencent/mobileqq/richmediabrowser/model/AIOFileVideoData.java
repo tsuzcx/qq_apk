@@ -33,7 +33,21 @@ public class AIOFileVideoData
   public boolean h;
   public String i;
   public boolean i;
-  public boolean j;
+  public boolean j = false;
+  
+  public AIOFileVideoData()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_h_of_type_Boolean = false;
+    this.jdField_i_of_type_Boolean = false;
+    this.jdField_g_of_type_Int = 0;
+    this.jdField_g_of_type_Long = 0L;
+  }
   
   public String a()
   {
@@ -69,16 +83,16 @@ public class AIOFileVideoData
   {
     super.readFromParcel(paramParcel);
     this.b = paramParcel.readString();
-    this.a = paramParcel.readString();
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
     this.jdField_e_of_type_Long = paramParcel.readLong();
     this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.d = paramParcel.readInt();
-    this.g = paramParcel.readString();
+    this.jdField_d_of_type_Int = paramParcel.readInt();
+    this.jdField_g_of_type_JavaLangString = paramParcel.readString();
     this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.f = paramParcel.readInt();
-    this.h = paramParcel.readString();
-    this.i = paramParcel.readString();
+    this.jdField_f_of_type_Int = paramParcel.readInt();
+    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_i_of_type_JavaLangString = paramParcel.readString();
   }
   
   public void updateProgress(int paramInt)
@@ -95,21 +109,21 @@ public class AIOFileVideoData
   {
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.b);
-    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
     paramParcel.writeLong(this.jdField_e_of_type_Long);
     paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.d);
-    paramParcel.writeString(this.g);
+    paramParcel.writeInt(this.jdField_d_of_type_Int);
+    paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeInt(this.f);
-    paramParcel.writeString(this.h);
-    paramParcel.writeString(this.i);
+    paramParcel.writeInt(this.jdField_f_of_type_Int);
+    paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_i_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData
  * JD-Core Version:    0.7.0.1
  */

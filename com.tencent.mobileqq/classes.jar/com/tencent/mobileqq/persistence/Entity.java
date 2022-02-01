@@ -11,9 +11,9 @@ public abstract class Entity
   public static final int NEW = 1000;
   public static final int REMOVED = 1003;
   @notColumn
-  public long _id = -1L;
+  long _id = -1L;
   @notColumn
-  public int _status = 1000;
+  int _status = 1000;
   
   public Entity deepCopyByReflect()
   {
@@ -72,7 +72,7 @@ public abstract class Entity
     return getClass().getSimpleName();
   }
   
-  public void postRead() {}
+  protected void postRead() {}
   
   protected void postwrite() {}
   

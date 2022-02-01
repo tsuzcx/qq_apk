@@ -1,23 +1,26 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkpm;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class MiniAppProxyImpl$6$1
+class MiniAppProxyImpl$6$1
   implements Runnable
 {
-  public MiniAppProxyImpl$6$1(bkpm parambkpm) {}
+  MiniAppProxyImpl$6$1(MiniAppProxyImpl.6 param6) {}
   
   public void run()
   {
-    if (this.a.a.topType == 1)
+    if (this.a.a != null) {
+      this.a.a.topType = 0;
+    }
+    if (MiniAppConfProcessor.c())
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2131718622, 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131701424) + MiniAppConfProcessor.a() + HardCodeUtil.a(2131701423), 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), 2131718623, 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), "最多仅支持置顶10个小程序", 0).a();
   }
 }
 

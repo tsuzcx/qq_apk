@@ -32,7 +32,7 @@ public class PoiMapActivity$TabView
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(paramPoiMapActivity.g);
     paramString = new RelativeLayout.LayoutParams(-2, (int)(3.0F * paramPoiMapActivity.jdField_a_of_type_Float));
     paramString.addRule(12, -1);
-    paramInt = paramContext.getResources().getDimensionPixelSize(2131297510);
+    paramInt = paramContext.getResources().getDimensionPixelSize(2131297577);
     paramString.rightMargin = paramInt;
     paramString.leftMargin = paramInt;
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
@@ -66,7 +66,7 @@ public class PoiMapActivity$TabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.TabView
  * JD-Core Version:    0.7.0.1
  */

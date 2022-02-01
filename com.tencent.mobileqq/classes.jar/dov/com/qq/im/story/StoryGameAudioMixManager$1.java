@@ -1,9 +1,8 @@
 package dov.com.qq.im.story;
 
-import bork;
 import com.tencent.qphone.base.util.QLog;
 
-public class StoryGameAudioMixManager$1
+class StoryGameAudioMixManager$1
   implements Runnable
 {
   public void run()
@@ -12,7 +11,7 @@ public class StoryGameAudioMixManager$1
     if (QLog.isColorLevel()) {
       QLog.d("StoryGameAudioMixManager", 2, "bgmBytes start");
     }
-    if (bork.a(this.a, this.b))
+    if (QIMAudioUtil.a(this.a, this.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("StoryGameAudioMixManager", 2, "conver succeed");
@@ -26,7 +25,7 @@ public class StoryGameAudioMixManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.story.StoryGameAudioMixManager.1
  * JD-Core Version:    0.7.0.1
  */

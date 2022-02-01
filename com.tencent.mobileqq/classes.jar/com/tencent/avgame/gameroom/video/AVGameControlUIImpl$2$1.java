@@ -1,24 +1,23 @@
 package com.tencent.avgame.gameroom.video;
 
-import leu;
-import nfc;
-import nmb;
-import nnm;
-import nnw;
+import com.tencent.av.app.MSFNetInfoMonitor;
+import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.qav.AVGameBusinessCtrl;
+import com.tencent.avgame.qav.AVGameMediaPlayerCtrl;
 
-public class AVGameControlUIImpl$2$1
+class AVGameControlUIImpl$2$1
   implements Runnable
 {
-  public AVGameControlUIImpl$2$1(nmb paramnmb) {}
+  AVGameControlUIImpl$2$1(AVGameControlUIImpl.2 param2) {}
   
   public void run()
   {
     if (this.a.a.a()) {
       return;
     }
-    nnw localnnw = nnm.b().a();
-    if (localnnw != null) {
-      localnnw.a(this.a.a.jdField_a_of_type_Nmq);
+    AVGameMediaPlayerCtrl localAVGameMediaPlayerCtrl = AVGameBusinessCtrl.b().a();
+    if (localAVGameMediaPlayerCtrl != null) {
+      localAVGameMediaPlayerCtrl.a(this.a.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer);
     }
     if (this.a.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager != null) {
       this.a.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager.a();
@@ -26,11 +25,11 @@ public class AVGameControlUIImpl$2$1
     AVGameControlUIImpl.a(this.a.a);
     AVGameControlUIImpl.b(this.a.a);
     AVGameControlUIImpl.c(this.a.a);
-    if (leu.b() == 1) {}
+    if (MSFNetInfoMonitor.b() == 1) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      boolean bool2 = nfc.a().a();
-      int i = nnm.b().a();
+      boolean bool2 = GameEngine.a().a();
+      int i = AVGameBusinessCtrl.b().a();
       if ((!bool2) || (i != 1)) {
         break;
       }
@@ -41,7 +40,7 @@ public class AVGameControlUIImpl$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.1
  * JD-Core Version:    0.7.0.1
  */

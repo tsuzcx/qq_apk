@@ -1,12 +1,11 @@
 package com.tencent.util.notification;
 
-import bkyy;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 
-public class NotifyIdManager$2
+class NotifyIdManager$2
   implements Runnable
 {
-  public NotifyIdManager$2(bkyy parambkyy, QQNotificationManager paramQQNotificationManager) {}
+  NotifyIdManager$2(NotifyIdManager paramNotifyIdManager, QQNotificationManager paramQQNotificationManager) {}
   
   public void run()
   {

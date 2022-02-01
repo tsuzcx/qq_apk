@@ -1,37 +1,37 @@
 package com.tencent.thumbplayer.api;
 
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapPropertyId;
+
 public class TPPropertyID
 {
-  public static int LONG_AUDIO_BIT_RATE;
-  public static int LONG_AUDIO_CHANNEL_NUM;
-  public static int LONG_AUDIO_CODEC_ID;
-  public static int LONG_AUDIO_PROFILE;
-  public static int LONG_PLAYER_ADDRESS = 207;
-  public static int LONG_VIDEO_BIT_RATE;
-  public static int LONG_VIDEO_CODEC_ID;
-  public static int LONG_VIDEO_FRAME_RATE;
-  public static int LONG_VIDEO_LEVEL;
-  public static int LONG_VIDEO_PROFILE;
-  public static int LONG_VIDEO_ROTATION;
-  public static int STRING_MEDIA_INFO = 0;
-  
-  static
-  {
-    LONG_AUDIO_CODEC_ID = 100;
-    LONG_AUDIO_BIT_RATE = 101;
-    LONG_AUDIO_PROFILE = 102;
-    LONG_AUDIO_CHANNEL_NUM = 103;
-    LONG_VIDEO_CODEC_ID = 201;
-    LONG_VIDEO_BIT_RATE = 202;
-    LONG_VIDEO_PROFILE = 203;
-    LONG_VIDEO_LEVEL = 204;
-    LONG_VIDEO_ROTATION = 205;
-    LONG_VIDEO_FRAME_RATE = 206;
-  }
+  @TPNativeKeyMap.MapPropertyId(101)
+  public static final int LONG_AUDIO_BIT_RATE = 101;
+  @TPNativeKeyMap.MapPropertyId(103)
+  public static final int LONG_AUDIO_CHANNEL_NUM = 103;
+  @TPNativeKeyMap.MapPropertyId(100)
+  public static final int LONG_AUDIO_CODEC_ID = 100;
+  @TPNativeKeyMap.MapPropertyId(102)
+  public static final int LONG_AUDIO_PROFILE = 102;
+  @TPNativeKeyMap.MapPropertyId(1)
+  public static final int LONG_PLAYER_ADDRESS = 207;
+  @TPNativeKeyMap.MapPropertyId(202)
+  public static final int LONG_VIDEO_BIT_RATE = 202;
+  @TPNativeKeyMap.MapPropertyId(201)
+  public static final int LONG_VIDEO_CODEC_ID = 201;
+  @TPNativeKeyMap.MapPropertyId(206)
+  public static final int LONG_VIDEO_FRAME_RATE = 206;
+  @TPNativeKeyMap.MapPropertyId(204)
+  public static final int LONG_VIDEO_LEVEL = 204;
+  @TPNativeKeyMap.MapPropertyId(203)
+  public static final int LONG_VIDEO_PROFILE = 203;
+  @TPNativeKeyMap.MapPropertyId(205)
+  public static final int LONG_VIDEO_ROTATION = 205;
+  @TPNativeKeyMap.MapPropertyId(0)
+  public static final int STRING_MEDIA_INFO = 0;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPropertyID
  * JD-Core Version:    0.7.0.1
  */

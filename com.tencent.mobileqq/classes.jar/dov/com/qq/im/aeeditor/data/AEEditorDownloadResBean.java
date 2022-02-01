@@ -7,10 +7,16 @@ public class AEEditorDownloadResBean
 {
   public static final int PRE_DOWNLOAD_FALSE = 0;
   public static final int PRE_DOWNLOAD_TRUE = 1;
+  private String fontFamily;
   private String id;
   private String md5;
   private int preDownload;
   private String url;
+  
+  public String getFontFamily()
+  {
+    return this.fontFamily;
+  }
   
   public String getId()
   {
@@ -30,6 +36,11 @@ public class AEEditorDownloadResBean
   public String getUrl()
   {
     return this.url;
+  }
+  
+  public void setFontFamily(String paramString)
+  {
+    this.fontFamily = paramString;
   }
   
   public void setId(String paramString)
@@ -54,7 +65,7 @@ public class AEEditorDownloadResBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean
  * JD-Core Version:    0.7.0.1
  */

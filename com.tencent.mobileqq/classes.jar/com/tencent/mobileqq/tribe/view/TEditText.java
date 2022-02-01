@@ -3,12 +3,11 @@ package com.tencent.mobileqq.tribe.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import beui;
 
 public class TEditText
   extends EditText
 {
-  private beui a;
+  private TEditText.OnSelectionChangedListener a;
   
   public TEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,9 +22,9 @@ public class TEditText
     }
   }
   
-  public void setOnSelectionChangedListener(beui parambeui)
+  public void setOnSelectionChangedListener(TEditText.OnSelectionChangedListener paramOnSelectionChangedListener)
   {
-    this.a = parambeui;
+    this.a = paramOnSelectionChangedListener;
   }
 }
 

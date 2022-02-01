@@ -1,14 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSReport;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import qza;
-import rag;
 
-public class PTSEngineLoader$5
+class PTSEngineLoader$5
   implements Runnable
 {
-  public PTSEngineLoader$5(qza paramqza) {}
+  PTSEngineLoader$5(PTSEngineLoader paramPTSEngineLoader) {}
   
   public void run()
   {
@@ -17,23 +16,23 @@ public class PTSEngineLoader$5
       QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], has loaded, do not load again.");
       return;
     }
-    String str = qza.b(this.this$0) + "/" + "libpts.so";
+    String str = PTSEngineLoader.b(this.this$0) + "/" + "libpts.so";
     QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], soFullPath = " + str);
     try
     {
-      if (FileUtils.fileExists(str))
+      if (FileUtils.a(str))
       {
         System.load(str);
-        qza.a(this.this$0, true);
+        PTSEngineLoader.a(this.this$0, true);
         QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], load so success.");
-        rag.b("[loadPTSEngineImpl] pts succeed.", "2");
+        PTSReport.b("[loadPTSEngineImpl] pts succeed.", "2");
         return;
       }
     }
     catch (Throwable localThrowable)
     {
       QLog.e("PTSEngineLoader", 1, "[loadPTSEngineImpl] error, t = " + localThrowable);
-      rag.a(localThrowable.toString(), "2");
+      PTSReport.a(localThrowable.toString(), "2");
       return;
     }
     QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], pts so does not exists.");
@@ -41,7 +40,7 @@ public class PTSEngineLoader$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.adapter;
 
-import amfu;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
-public class AvatarPendantAdapter$2$1
+class AvatarPendantAdapter$2$1
   implements Runnable
 {
-  public AvatarPendantAdapter$2$1(amfu paramamfu, TextView paramTextView, int paramInt) {}
+  AvatarPendantAdapter$2$1(AvatarPendantAdapter.2 param2, TextView paramTextView, int paramInt) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class AvatarPendantAdapter$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AvatarPendantAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

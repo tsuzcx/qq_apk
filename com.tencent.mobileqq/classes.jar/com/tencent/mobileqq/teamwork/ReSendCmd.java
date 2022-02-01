@@ -3,32 +3,27 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import beat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReSendCmd
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReSendCmd> CREATOR = new beat();
-  public int a;
-  public String a;
-  List<String> a;
+  public static final Parcelable.Creator<ReSendCmd> CREATOR = new ReSendCmd.1();
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString = "";
+  List<String> jdField_a_of_type_JavaUtilList;
   int jdField_b_of_type_Int;
   String jdField_b_of_type_JavaLangString = "";
   int c;
-  public int d;
+  int d;
   int e;
   int f = 0;
   
-  public ReSendCmd()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public ReSendCmd() {}
   
   public ReSendCmd(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_b_of_type_Int = paramParcel.readInt();
     this.c = paramParcel.readInt();

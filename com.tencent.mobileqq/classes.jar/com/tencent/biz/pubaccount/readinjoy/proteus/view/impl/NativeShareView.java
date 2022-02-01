@@ -11,8 +11,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
-import anvx;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.widget.AdapterView.OnItemClickListener;
@@ -20,10 +21,6 @@ import com.tencent.widget.GridView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import qwe;
-import qwf;
-import qwg;
-import uwi;
 
 public class NativeShareView
   extends LinearLayout
@@ -36,25 +33,25 @@ public class NativeShareView
   public NativeShareView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new qwf(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new NativeShareView.2(this);
     a(paramContext);
   }
   
   public NativeShareView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new qwf(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new NativeShareView.2(this);
     a(paramContext);
   }
   
   public NativeShareView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new qwf(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new NativeShareView.2(this);
     a(paramContext);
   }
   
-  public static String a(String paramString, int paramInt)
+  protected static String a(String paramString, int paramInt)
   {
     String str = paramString;
     if (paramString != null)
@@ -70,12 +67,12 @@ public class NativeShareView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    Object localObject1 = inflate(getContext(), 2131560206, this);
-    int j = ViewUtils.dpToPx(44.0F);
-    localObject1 = (GridView)((View)localObject1).findViewById(2131367851);
+    Object localObject1 = inflate(getContext(), 2131560283, this);
+    int j = ViewUtils.b(44.0F);
+    localObject1 = (GridView)((View)localObject1).findViewById(2131368059);
     List localList = a(paramContext)[0];
     Object localObject2 = new TextPaint();
-    ((TextPaint)localObject2).setTextSize(paramContext.getResources().getDimensionPixelSize(2131299008));
+    ((TextPaint)localObject2).setTextSize(paramContext.getResources().getDimensionPixelSize(2131299096));
     new StaticLayout(a(a(localList), 6), (TextPaint)localObject2, j, Layout.Alignment.ALIGN_CENTER, 1.0F, 0, true);
     localObject2 = localList.iterator();
     int i = 0;
@@ -90,7 +87,7 @@ public class NativeShareView
     for (;;)
     {
       break;
-      int k = ViewUtils.dpToPx(14.0F);
+      int k = ViewUtils.b(14.0F);
       j = k + (k + j);
       ((GridView)localObject1).setColumnWidth(j);
       ((GridView)localObject1).setNumColumns(i);
@@ -98,11 +95,11 @@ public class NativeShareView
       ((GridView)localObject1).setPadding(16, ((GridView)localObject1).getPaddingTop(), 16, ((GridView)localObject1).getPaddingBottom());
       ((ViewGroup.LayoutParams)localObject2).width = (j * i + 0 + 0);
       ((GridView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((GridView)localObject1).setAdapter(new qwg(paramContext, localList));
+      ((GridView)localObject1).setAdapter(new NativeShareView.ActionSheetItemAdapter(paramContext, localList));
       ((GridView)localObject1).setSelector(new ColorDrawable(0));
       ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
-      ((GridView)localObject1).setOnTouchListener(new qwe(this));
-      uwi.a();
+      ((GridView)localObject1).setOnTouchListener(new NativeShareView.1(this));
+      ShareImageUtils.a();
       return;
     }
   }
@@ -132,36 +129,36 @@ public class NativeShareView
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = anvx.a(2131706546);
-    localActionSheetItem.icon = 2130842872;
+    localActionSheetItem.label = HardCodeUtil.a(2131707087);
+    localActionSheetItem.icon = 2130843027;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 47;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696130);
-    localActionSheetItem.icon = 2130842874;
+    localActionSheetItem.label = paramContext.getString(2131696380);
+    localActionSheetItem.icon = 2130843029;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696143);
-    localActionSheetItem.icon = 2130842875;
+    localActionSheetItem.label = paramContext.getString(2131696394);
+    localActionSheetItem.icon = 2130843030;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696150);
-    localActionSheetItem.icon = 2130842876;
+    localActionSheetItem.label = paramContext.getString(2131696401);
+    localActionSheetItem.icon = 2130843031;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696133);
-    localActionSheetItem.icon = 2130842873;
+    localActionSheetItem.label = paramContext.getString(2131696383);
+    localActionSheetItem.icon = 2130843028;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
@@ -199,15 +196,15 @@ public class NativeShareView
     measure(paramInt1, paramInt2);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    uwi.b();
+    ShareImageUtils.b();
   }
   
   public void setCurrentPath(String paramString)
   {
-    uwi.a(paramString);
+    ShareImageUtils.a(paramString);
   }
   
   public void setInitRunnable(Runnable paramRunnable)
@@ -217,12 +214,12 @@ public class NativeShareView
   
   public void setScreenBitmap(Bitmap paramBitmap)
   {
-    uwi.a(paramBitmap);
+    ShareImageUtils.a(paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView
  * JD-Core Version:    0.7.0.1
  */

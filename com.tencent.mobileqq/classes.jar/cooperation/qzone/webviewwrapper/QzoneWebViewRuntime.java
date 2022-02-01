@@ -5,6 +5,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -59,7 +60,7 @@ public class QzoneWebViewRuntime
     {
       if (this.emFactory == null)
       {
-        paramString = new QQEntityManagerFactory(paramString);
+        paramString = QQEntityManagerFactoryProxy.a(paramString, super.getEntityManagerFactory());
         paramString.verifyAuthentication();
         this.emFactory = paramString;
       }
@@ -94,7 +95,7 @@ public class QzoneWebViewRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewwrapper.QzoneWebViewRuntime
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,10 @@ package cooperation.qzone.webviewplugin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bifw;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.model.PublishEventTag;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
@@ -70,7 +70,7 @@ public class QZoneEventTagJsPlugin
     }
   }
   
-  private void openAddFriendActivity(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
+  private void openAddFriendActivity(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
     try
     {
@@ -78,7 +78,7 @@ public class QZoneEventTagJsPlugin
       long l = paramWebViewPlugin.getLong("uin");
       int i = paramWebViewPlugin.optInt("sourceId", 3011);
       int j = paramWebViewPlugin.optInt("subSourceId", 21);
-      paramWebViewPlugin = parambifw.a();
+      paramWebViewPlugin = paramPluginRuntime.a();
       paramWebViewPlugin.startActivity(AddFriendLogicActivity.a(paramWebViewPlugin, 1, String.valueOf(l), "", i, j, null, null, null, null, null));
       return;
     }
@@ -244,7 +244,7 @@ public class QZoneEventTagJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneEventTagJsPlugin
  * JD-Core Version:    0.7.0.1
  */

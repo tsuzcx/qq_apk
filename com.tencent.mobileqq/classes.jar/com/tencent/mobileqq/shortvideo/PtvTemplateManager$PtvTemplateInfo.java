@@ -3,8 +3,8 @@ package com.tencent.mobileqq.shortvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bgzr;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.util.JSONUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,7 +47,7 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean bigHeadModelUsable;
   public String bigHeadName = "";
   public String bigHeadUrl = "";
-  public int businessID;
+  public int businessID = 0;
   public String buttonbgcolor;
   public int category = 0;
   public int categoryId;
@@ -64,20 +64,20 @@ public class PtvTemplateManager$PtvTemplateInfo
   public ArrayList<PtvTemplateManager.DoodleInfo> doodleInfos;
   public boolean downloading;
   public String filtername;
-  public int funcType;
+  public int funcType = 0;
   public String gestureType = "";
   public String gestureWording = "";
   public String iconurl;
   public String id;
   public boolean isAdvertise;
-  public boolean isSelected;
+  public boolean isSelected = false;
   public boolean isshow = true;
   public int kind = 0;
   public String md5;
   public String name;
   public boolean needRedDot;
   public String openurl;
-  public int platform;
+  public int platform = 0;
   public boolean popup = true;
   public String popupbtn;
   public String popupbtn2;
@@ -87,10 +87,10 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean predownload;
   public boolean renderfirst = true;
   public String resurl;
-  public double sizeFree;
+  public double sizeFree = 0.0D;
   long startDownloadTime;
   public String storeurl;
-  public int templateStyle;
+  public int templateStyle = 0;
   public long totalLen;
   public int type;
   public boolean usable;
@@ -132,7 +132,7 @@ public class PtvTemplateManager$PtvTemplateInfo
         if (i >= j) {
           break label188;
         }
-        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)bgzr.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
+        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)JSONUtils.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
         if (localPtvTemplateInfo == null) {
           break label193;
         }
@@ -231,7 +231,7 @@ public class PtvTemplateManager$PtvTemplateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.face;
 
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.avatar.handler.AvatarHandler;
+import com.tencent.mobileqq.avatar.utils.AvatarUtil;
 
 class QQHeadDownloadHandler$HeadCostStatRunnable
   implements Runnable
@@ -33,14 +33,14 @@ class QQHeadDownloadHandler$HeadCostStatRunnable
   
   public void run()
   {
-    QQHeadDownloadHandler.access$000(this.this$0).statGetQQHeadCostTime(this.resultCode, this.id, this.dstUsrType, 4, this.downloadSize, this.downloadUrl, this.errCode, this.time);
-    String str = QQAppInterface.getFaceDownKey(this.dstUsrType, this.id, this.idType, this.sizeType);
-    QQHeadDownloadHandler.access$000(this.this$0).markDownloadedQQHead(str, true);
+    QQHeadDownloadHandler.access$000(this.this$0).a(this.resultCode, this.id, this.dstUsrType, 4, this.downloadSize, this.downloadUrl, this.errCode, this.time);
+    String str = AvatarUtil.a(this.dstUsrType, this.id, this.idType, this.sizeType);
+    QQHeadDownloadHandler.access$000(this.this$0).a(str, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.QQHeadDownloadHandler.HeadCostStatRunnable
  * JD-Core Version:    0.7.0.1
  */

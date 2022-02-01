@@ -1,16 +1,5 @@
 package com.tencent.biz.tribe;
 
-import aadf;
-import aadg;
-import aadh;
-import aadi;
-import aadj;
-import aadk;
-import aadl;
-import aadm;
-import aadn;
-import aado;
-import aeow;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -34,21 +23,23 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bapt;
-import bdla;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
 import com.tencent.superplayer.api.SuperPlayerFactory;
@@ -62,28 +53,27 @@ import java.util.Set;
 import java.util.Timer;
 import org.json.JSONException;
 import org.json.JSONObject;
-import six;
 
 public class TribeVideoPlugin
   extends WebViewPlugin
 {
   private float jdField_a_of_type_Float = -1.0F;
   private int jdField_a_of_type_Int;
-  private aadl jdField_a_of_type_Aadl;
   private Context jdField_a_of_type_AndroidContentContext;
   private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private TribeVideoPlugin.UIHandler jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler;
   private RefreshView jdField_a_of_type_ComTencentBizUiRefreshView;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, aado> jdField_a_of_type_JavaUtilHashMap;
+  private String jdField_a_of_type_JavaLangString = null;
+  private HashMap<String, TribeVideoPlugin.VideoWrapper> jdField_a_of_type_JavaUtilHashMap;
   private Queue<String> jdField_a_of_type_JavaUtilQueue;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = -1;
   private Point jdField_b_of_type_AndroidGraphicsPoint = new Point();
   private boolean jdField_b_of_type_Boolean = true;
-  private int c;
-  private int d;
+  private int c = 0;
+  private int d = 0;
   private int e = -1;
   private int f = -1;
   
@@ -117,19 +107,19 @@ public class TribeVideoPlugin
     return 0;
   }
   
-  private int a(aado paramaado, int paramInt1, int paramInt2)
+  private int a(TribeVideoPlugin.VideoWrapper paramVideoWrapper, int paramInt1, int paramInt2)
   {
     int i = 0;
-    if ((paramInt1 == 1) && (aado.a(paramaado)))
+    if ((paramInt1 == 1) && (TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper)))
     {
-      int j = aado.a(paramaado).getTop();
+      int j = TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).getTop();
       int k = this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-      int m = aado.a(paramaado).getBottom();
+      int m = TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).getBottom();
       int n = this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-      if ((j - k < aado.a(paramaado)) || (m - n > aado.b(paramaado)))
+      if ((j - k < TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper)) || (m - n > TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper)))
       {
         if (QLog.isColorLevel()) {
-          QLog.e("TribeVideoPlugin", 2, "realHandlePlayControl returned due to started not in show area videoWrapper.mPlayerID = " + aado.a(paramaado));
+          QLog.e("TribeVideoPlugin", 2, "realHandlePlayControl returned due to started not in show area videoWrapper.mPlayerID = " + TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper));
         }
         paramInt2 = -1;
       }
@@ -137,17 +127,17 @@ public class TribeVideoPlugin
     do
     {
       return paramInt2;
-      FrameLayout localFrameLayout = aado.a(paramaado);
+      FrameLayout localFrameLayout = TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper);
       if (paramInt2 == 1) {
         localFrameLayout.setVisibility(0);
       }
       while (paramInt1 == 1)
       {
-        if (aado.a(paramaado).isPausing()) {
-          a(aado.a(paramaado), 1);
+        if (TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).isPausing()) {
+          a(TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper), 1);
         }
-        aado.b(paramaado, false);
-        aado.a(paramaado).start();
+        TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper, false);
+        TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).start();
         return 0;
         if (paramInt2 == 0) {
           localFrameLayout.setVisibility(4);
@@ -155,9 +145,9 @@ public class TribeVideoPlugin
       }
       paramInt2 = i;
     } while (paramInt1 != 0);
-    a(aado.a(paramaado), 3);
-    aado.b(paramaado, true);
-    aado.a(paramaado).pause();
+    a(TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper), 3);
+    TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper, true);
+    TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).pause();
     return 0;
   }
   
@@ -174,14 +164,14 @@ public class TribeVideoPlugin
       while (paramString.hasNext())
       {
         localObject = (String)paramString.next();
-        a(aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)));
-        FrameLayout localFrameLayout = aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(localObject));
+        a(TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)));
+        FrameLayout localFrameLayout = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(localObject));
         ((ViewGroup)localFrameLayout.getParent()).removeView(localFrameLayout);
         a((String)localObject, 2);
-        aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).stop();
-        aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).release();
-        aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(localObject), null);
-        this.jdField_a_of_type_Aadl.removeCallbacksAndMessages(null);
+        TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).stop();
+        TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).release();
+        TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(localObject), null);
+        this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.removeCallbacksAndMessages(null);
       }
       this.jdField_a_of_type_JavaUtilHashMap.clear();
       i = 0;
@@ -197,62 +187,62 @@ public class TribeVideoPlugin
     } while (!QLog.isColorLevel());
     QLog.e("TribeVideoPlugin", 2, "realPluckVideo no such playID playerID = " + paramString);
     return -1;
-    a(aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)));
-    Object localObject = aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+    a(TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)));
+    Object localObject = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
     ((ViewGroup)((FrameLayout)localObject).getParent()).removeView((View)localObject);
     a(paramString, 2);
-    aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).stop();
-    aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).release();
-    aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString), null);
+    TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).stop();
+    TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).release();
+    TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString), null);
     this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-    this.jdField_a_of_type_Aadl.removeMessages(2, paramString);
-    this.jdField_a_of_type_Aadl.removeMessages(1, paramString);
-    this.jdField_a_of_type_Aadl.removeMessages(4, paramString);
-    this.jdField_a_of_type_Aadl.removeMessages(5, paramString);
-    this.jdField_a_of_type_Aadl.removeMessages(6, paramString);
-    this.jdField_a_of_type_Aadl.removeMessages(7, paramString);
-    this.jdField_a_of_type_Aadl.removeMessages(8, paramString);
+    this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.removeMessages(2, paramString);
+    this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.removeMessages(1, paramString);
+    this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.removeMessages(4, paramString);
+    this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.removeMessages(5, paramString);
+    this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.removeMessages(6, paramString);
+    this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.removeMessages(7, paramString);
+    this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.removeMessages(8, paramString);
     return 0;
   }
   
   private int a(JSONObject paramJSONObject)
   {
-    aado localaado = a(paramJSONObject);
-    if (localaado == null)
+    TribeVideoPlugin.VideoWrapper localVideoWrapper = a(paramJSONObject);
+    if (localVideoWrapper == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("TribeVideoPlugin", 1, "pin Video json 参数错误 jsonObject = " + paramJSONObject);
       }
       return -1;
     }
-    if (TextUtils.isEmpty(aado.a(localaado)))
+    if (TextUtils.isEmpty(TribeVideoPlugin.VideoWrapper.a(localVideoWrapper)))
     {
       if (QLog.isColorLevel()) {
         QLog.e("TribeVideoPlugin", 1, "pin Video mPlayerID = null");
       }
       return -1;
     }
-    if ((TextUtils.isEmpty(aado.b(localaado))) && (TextUtils.isEmpty(aado.c(localaado))))
+    if ((TextUtils.isEmpty(TribeVideoPlugin.VideoWrapper.b(localVideoWrapper))) && (TextUtils.isEmpty(TribeVideoPlugin.VideoWrapper.c(localVideoWrapper))))
     {
       if (QLog.isColorLevel()) {
         QLog.e("TribeVideoPlugin", 1, "pin Video mVid = null && mVideoPath = null");
       }
       return -1;
     }
-    if (!TextUtils.isEmpty(aado.c(localaado))) {
-      paramJSONObject = aado.c(localaado);
+    if (!TextUtils.isEmpty(TribeVideoPlugin.VideoWrapper.c(localVideoWrapper))) {
+      paramJSONObject = TribeVideoPlugin.VideoWrapper.c(localVideoWrapper);
     }
-    for (int i = 1; (aado.c(localaado) == 0.0D) || (aado.d(localaado) == 0.0D); i = 0)
+    for (int i = 1; (TribeVideoPlugin.VideoWrapper.c(localVideoWrapper) == 0.0D) || (TribeVideoPlugin.VideoWrapper.d(localVideoWrapper) == 0.0D); i = 0)
     {
       if (QLog.isColorLevel()) {
         QLog.e("TribeVideoPlugin", 1, "width or height error");
       }
       return -1;
-      paramJSONObject = aado.b(localaado);
+      paramJSONObject = TribeVideoPlugin.VideoWrapper.b(localVideoWrapper);
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(aado.a(localaado)))
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(TribeVideoPlugin.VideoWrapper.a(localVideoWrapper)))
     {
-      if (!aado.c((aado)this.jdField_a_of_type_JavaUtilHashMap.get(aado.a(localaado))))
+      if (!TribeVideoPlugin.VideoWrapper.c((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(TribeVideoPlugin.VideoWrapper.a(localVideoWrapper))))
       {
         if (QLog.isColorLevel()) {
           QLog.e("TribeVideoPlugin", 1, "mVideoPlayerManager already contain playerID, the same player is preparing");
@@ -262,7 +252,7 @@ public class TribeVideoPlugin
       if (QLog.isColorLevel()) {
         QLog.d("TribeVideoPlugin", 1, "mVideoPlayerManager already contain playerID, the same player is prepared, so pluck it");
       }
-      a(aado.a(localaado));
+      a(TribeVideoPlugin.VideoWrapper.a(localVideoWrapper));
     }
     ISPlayerVideoView localISPlayerVideoView = a();
     ThreadManager.post(new TribeVideoPlugin.TechReportRunnable(this, false), 5, null, true);
@@ -274,16 +264,16 @@ public class TribeVideoPlugin
     ISuperPlayer localISuperPlayer;
     if (this.jdField_b_of_type_Int == -1)
     {
-      this.jdField_b_of_type_Int = aado.a(localaado);
-      if (aado.a(localaado) == 1) {
+      this.jdField_b_of_type_Int = TribeVideoPlugin.VideoWrapper.a(localVideoWrapper);
+      if (TribeVideoPlugin.VideoWrapper.a(localVideoWrapper) == 1) {
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(0);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoPlugin", 2, "efficient pinview playmode playMode = " + aado.a(localaado) + " mPlayMode = " + this.jdField_b_of_type_Int);
+        QLog.d("TribeVideoPlugin", 2, "efficient pinview playmode playMode = " + TribeVideoPlugin.VideoWrapper.a(localVideoWrapper) + " mPlayMode = " + this.jdField_b_of_type_Int);
       }
-      localISuperPlayer = a(localISPlayerVideoView, paramJSONObject, i, localaado);
-      aado.a(localaado, localISuperPlayer);
-      if (aado.b(localaado) != 2) {
+      localISuperPlayer = a(localISPlayerVideoView, paramJSONObject, i, localVideoWrapper);
+      TribeVideoPlugin.VideoWrapper.a(localVideoWrapper, localISuperPlayer);
+      if (TribeVideoPlugin.VideoWrapper.b(localVideoWrapper) != 2) {
         break label553;
       }
       paramJSONObject = null;
@@ -291,12 +281,12 @@ public class TribeVideoPlugin
     for (;;)
     {
       label394:
-      a(paramJSONObject, localISuperPlayer, localaado);
-      a(localISPlayerVideoView, paramJSONObject, localaado);
-      if (aado.b(localaado) == 2) {
-        this.mRuntime.a().setOnTouchListener(new aadn(this, aado.a(localaado)));
+      a(paramJSONObject, localISuperPlayer, localVideoWrapper);
+      a(localISPlayerVideoView, paramJSONObject, localVideoWrapper);
+      if (TribeVideoPlugin.VideoWrapper.b(localVideoWrapper) == 2) {
+        this.mRuntime.a().setOnTouchListener(new TribeVideoPlugin.VideoTouchListener(this, TribeVideoPlugin.VideoWrapper.a(localVideoWrapper)));
       }
-      this.jdField_a_of_type_JavaUtilQueue.add(aado.a(localaado));
+      this.jdField_a_of_type_JavaUtilQueue.add(TribeVideoPlugin.VideoWrapper.a(localVideoWrapper));
       for (;;)
       {
         if (this.jdField_a_of_type_JavaUtilQueue.size() > 1)
@@ -309,24 +299,24 @@ public class TribeVideoPlugin
             if (!QLog.isColorLevel()) {
               break;
             }
-            QLog.d("TribeVideoPlugin", 2, "inefficient pinview playmode playMode = " + aado.a(localaado) + " mPlayMode = " + this.jdField_b_of_type_Int);
+            QLog.d("TribeVideoPlugin", 2, "inefficient pinview playmode playMode = " + TribeVideoPlugin.VideoWrapper.a(localVideoWrapper) + " mPlayMode = " + this.jdField_b_of_type_Int);
             break;
             label553:
-            if (aado.b(localaado) == 1)
+            if (TribeVideoPlugin.VideoWrapper.b(localVideoWrapper) == 1)
             {
-              paramJSONObject = (FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560440, null);
+              paramJSONObject = (FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560518, null);
               break label394;
             }
-            if (aado.b(localaado) != 0) {
+            if (TribeVideoPlugin.VideoWrapper.b(localVideoWrapper) != 0) {
               break label638;
             }
-            paramJSONObject = (FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560441, null);
+            paramJSONObject = (FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560519, null);
             break label394;
           }
         }
       }
-      aado.a(localaado, System.currentTimeMillis());
-      this.jdField_a_of_type_JavaUtilHashMap.put(aado.a(localaado), localaado);
+      TribeVideoPlugin.VideoWrapper.a(localVideoWrapper, System.currentTimeMillis());
+      this.jdField_a_of_type_JavaUtilHashMap.put(TribeVideoPlugin.VideoWrapper.a(localVideoWrapper), localVideoWrapper);
       this.jdField_a_of_type_Boolean = false;
       return 0;
       label638:
@@ -361,7 +351,7 @@ public class TribeVideoPlugin
         }
         return -1;
       }
-      paramJSONObject1 = aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramJSONObject1));
+      paramJSONObject1 = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramJSONObject1));
     }
     for (;;)
     {
@@ -395,221 +385,221 @@ public class TribeVideoPlugin
     }
   }
   
-  private aadm a(FrameLayout paramFrameLayout, ISuperPlayer paramISuperPlayer, aado paramaado)
+  private TribeVideoPlugin.VideoLayoutHolder a(FrameLayout paramFrameLayout, ISuperPlayer paramISuperPlayer, TribeVideoPlugin.VideoWrapper paramVideoWrapper)
   {
-    if ((aado.b(paramaado) != 2) && (aado.b(paramaado) != 1) && (aado.b(paramaado) != 0)) {
+    if ((TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper) != 2) && (TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper) != 1) && (TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper) != 0)) {
       return null;
     }
-    aadm localaadm = new aadm(null);
-    aadm.a(localaadm, aado.b(paramaado));
-    if (aado.b(paramaado) == 2)
+    TribeVideoPlugin.VideoLayoutHolder localVideoLayoutHolder = new TribeVideoPlugin.VideoLayoutHolder(null);
+    TribeVideoPlugin.VideoLayoutHolder.a(localVideoLayoutHolder, TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper));
+    if (TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper) == 2)
     {
-      if (aado.e(paramaado) != 0) {
+      if (TribeVideoPlugin.VideoWrapper.e(paramVideoWrapper) != 0) {
         break label161;
       }
       paramISuperPlayer.setOutputMute(false);
     }
     for (;;)
     {
-      a(paramaado);
-      aadm.a(localaadm).setVisibility(8);
-      aado.a(paramaado, localaadm);
-      return localaadm;
-      if (aado.b(paramaado) == 1)
+      a(paramVideoWrapper);
+      TribeVideoPlugin.VideoLayoutHolder.a(localVideoLayoutHolder).setVisibility(8);
+      TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper, localVideoLayoutHolder);
+      return localVideoLayoutHolder;
+      if (TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper) == 1)
       {
-        aadm.a(localaadm, (ProgressBar)paramFrameLayout.findViewById(2131377616));
-        aadm.b(localaadm, (ProgressBar)paramFrameLayout.findViewById(2131377617));
+        TribeVideoPlugin.VideoLayoutHolder.a(localVideoLayoutHolder, (ProgressBar)paramFrameLayout.findViewById(2131378027));
+        TribeVideoPlugin.VideoLayoutHolder.b(localVideoLayoutHolder, (ProgressBar)paramFrameLayout.findViewById(2131378028));
         break;
       }
-      if (aado.b(paramaado) != 0) {
+      if (TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper) != 0) {
         break;
       }
-      aadm.a(localaadm, (ProgressBar)paramFrameLayout.findViewById(2131372039));
+      TribeVideoPlugin.VideoLayoutHolder.a(localVideoLayoutHolder, (ProgressBar)paramFrameLayout.findViewById(2131372343));
       break;
       label161:
-      if (aado.e(paramaado) == 1) {
+      if (TribeVideoPlugin.VideoWrapper.e(paramVideoWrapper) == 1) {
         paramISuperPlayer.setOutputMute(true);
       }
     }
   }
   
   /* Error */
-  private aado a(JSONObject paramJSONObject)
+  private TribeVideoPlugin.VideoWrapper a(JSONObject paramJSONObject)
   {
     // Byte code:
-    //   0: new 116	aado
+    //   0: new 124	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper
     //   3: dup
     //   4: aconst_null
-    //   5: invokespecial 485	aado:<init>	(Laadf;)V
+    //   5: invokespecial 494	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:<init>	(Lcom/tencent/biz/tribe/TribeVideoPlugin$1;)V
     //   8: astore 4
     //   10: aload 4
     //   12: aload_1
-    //   13: ldc_w 487
-    //   16: invokevirtual 490	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   19: invokestatic 493	aado:a	(Laado;Ljava/lang/String;)Ljava/lang/String;
+    //   13: ldc_w 496
+    //   16: invokevirtual 499	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: invokestatic 502	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:a	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;Ljava/lang/String;)Ljava/lang/String;
     //   22: pop
     //   23: aload 4
     //   25: aload_1
-    //   26: ldc_w 495
-    //   29: invokevirtual 490	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   32: invokestatic 497	aado:b	(Laado;Ljava/lang/String;)Ljava/lang/String;
+    //   26: ldc_w 504
+    //   29: invokevirtual 499	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: invokestatic 506	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:b	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;Ljava/lang/String;)Ljava/lang/String;
     //   35: pop
     //   36: aload 4
     //   38: aload_1
-    //   39: ldc_w 410
-    //   42: invokevirtual 490	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   45: invokestatic 499	aado:c	(Laado;Ljava/lang/String;)Ljava/lang/String;
+    //   39: ldc_w 416
+    //   42: invokevirtual 499	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: invokestatic 508	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:c	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;Ljava/lang/String;)Ljava/lang/String;
     //   48: pop
     //   49: aload 4
     //   51: aload_1
-    //   52: ldc_w 501
+    //   52: ldc_w 510
     //   55: dconst_0
-    //   56: invokevirtual 505	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   59: invokestatic 508	aado:a	(Laado;D)D
+    //   56: invokevirtual 514	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   59: invokestatic 517	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:a	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;D)D
     //   62: pop2
     //   63: aload 4
     //   65: aload_1
-    //   66: ldc_w 510
+    //   66: ldc_w 519
     //   69: dconst_0
-    //   70: invokevirtual 505	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   73: invokestatic 512	aado:b	(Laado;D)D
+    //   70: invokevirtual 514	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   73: invokestatic 521	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:b	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;D)D
     //   76: pop2
     //   77: aload 4
     //   79: aload_1
-    //   80: ldc_w 514
+    //   80: ldc_w 523
     //   83: dconst_0
-    //   84: invokevirtual 505	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   87: invokestatic 516	aado:c	(Laado;D)D
+    //   84: invokevirtual 514	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   87: invokestatic 525	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:c	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;D)D
     //   90: pop2
     //   91: aload 4
     //   93: aload_1
-    //   94: ldc_w 518
+    //   94: ldc_w 527
     //   97: dconst_0
-    //   98: invokevirtual 505	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   101: invokestatic 520	aado:d	(Laado;D)D
+    //   98: invokevirtual 514	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   101: invokestatic 529	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:d	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;D)D
     //   104: pop2
     //   105: aload 4
     //   107: aload_1
-    //   108: ldc_w 522
+    //   108: ldc_w 531
     //   111: iconst_0
-    //   112: invokevirtual 526	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   115: invokestatic 529	aado:a	(Laado;I)I
+    //   112: invokevirtual 535	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   115: invokestatic 538	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:a	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;I)I
     //   118: pop
     //   119: aload 4
     //   121: aload_1
-    //   122: ldc_w 531
+    //   122: ldc_w 540
     //   125: iconst_1
-    //   126: invokevirtual 526	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   129: invokestatic 533	aado:b	(Laado;I)I
+    //   126: invokevirtual 535	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   129: invokestatic 542	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:b	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;I)I
     //   132: pop
     //   133: aload 4
     //   135: aload_1
-    //   136: ldc_w 535
+    //   136: ldc_w 544
     //   139: iconst_0
-    //   140: invokevirtual 526	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   143: invokestatic 537	aado:c	(Laado;I)I
+    //   140: invokevirtual 535	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   143: invokestatic 546	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:c	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;I)I
     //   146: pop
     //   147: aload 4
     //   149: aload_1
-    //   150: ldc_w 539
+    //   150: ldc_w 548
     //   153: iconst_0
-    //   154: invokevirtual 526	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   157: invokestatic 541	aado:d	(Laado;I)I
+    //   154: invokevirtual 535	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   157: invokestatic 550	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:d	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;I)I
     //   160: pop
     //   161: aload 4
-    //   163: invokestatic 341	aado:b	(Laado;)I
+    //   163: invokestatic 349	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:b	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;)I
     //   166: iconst_2
     //   167: if_icmpne +10 -> 177
     //   170: aload 4
     //   172: iconst_0
-    //   173: invokestatic 541	aado:d	(Laado;I)I
+    //   173: invokestatic 550	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:d	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;I)I
     //   176: pop
     //   177: aload 4
     //   179: aload_1
-    //   180: ldc_w 543
+    //   180: ldc_w 552
     //   183: iconst_1
-    //   184: invokevirtual 526	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   187: invokestatic 545	aado:e	(Laado;I)I
+    //   184: invokevirtual 535	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   187: invokestatic 554	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:e	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;I)I
     //   190: pop
     //   191: aload 4
     //   193: aload_1
-    //   194: ldc_w 547
+    //   194: ldc_w 556
     //   197: iconst_0
-    //   198: invokevirtual 526	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   201: invokestatic 549	aado:f	(Laado;I)I
+    //   198: invokevirtual 535	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   201: invokestatic 558	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:f	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;I)I
     //   204: pop
     //   205: aload 4
     //   207: aload_1
-    //   208: ldc_w 551
+    //   208: ldc_w 560
     //   211: iconst_0
-    //   212: invokevirtual 526	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   215: invokestatic 554	aado:g	(Laado;I)I
+    //   212: invokevirtual 535	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   215: invokestatic 563	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:g	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;I)I
     //   218: pop
     //   219: aload_1
-    //   220: ldc_w 556
+    //   220: ldc_w 565
     //   223: iconst_0
-    //   224: invokevirtual 526	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   224: invokevirtual 535	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   227: istore_2
     //   228: iload_2
     //   229: iconst_1
     //   230: if_icmpne +77 -> 307
     //   233: aload 4
     //   235: iconst_1
-    //   236: invokestatic 558	aado:c	(Laado;Z)Z
+    //   236: invokestatic 567	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:c	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;Z)Z
     //   239: pop
     //   240: aload 4
     //   242: aload_1
-    //   243: ldc_w 560
+    //   243: ldc_w 569
     //   246: dconst_0
-    //   247: invokevirtual 505	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   250: invokestatic 562	aado:e	(Laado;D)D
+    //   247: invokevirtual 514	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   250: invokestatic 571	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:e	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;D)D
     //   253: pop2
     //   254: aload 4
     //   256: aload_1
-    //   257: ldc_w 564
+    //   257: ldc_w 573
     //   260: dconst_0
-    //   261: invokevirtual 505	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   264: invokestatic 566	aado:f	(Laado;D)D
+    //   261: invokevirtual 514	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   264: invokestatic 575	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:f	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;D)D
     //   267: pop2
     //   268: aload 4
     //   270: aload_1
-    //   271: ldc_w 568
+    //   271: ldc_w 577
     //   274: iconst_0
-    //   275: invokevirtual 526	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   278: invokestatic 571	aado:h	(Laado;I)I
+    //   275: invokevirtual 535	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   278: invokestatic 580	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:h	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;I)I
     //   281: pop
     //   282: aload 4
     //   284: astore_3
     //   285: aload_0
-    //   286: getfield 41	com/tencent/biz/tribe/TribeVideoPlugin:e	I
+    //   286: getfield 49	com/tencent/biz/tribe/TribeVideoPlugin:e	I
     //   289: ifgt +61 -> 350
     //   292: aload_0
     //   293: aload_1
-    //   294: ldc_w 573
+    //   294: ldc_w 582
     //   297: iconst_m1
-    //   298: invokevirtual 526	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   301: putfield 41	com/tencent/biz/tribe/TribeVideoPlugin:e	I
+    //   298: invokevirtual 535	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   301: putfield 49	com/tencent/biz/tribe/TribeVideoPlugin:e	I
     //   304: aload 4
     //   306: areturn
     //   307: iload_2
     //   308: ifne -68 -> 240
     //   311: aload 4
     //   313: iconst_0
-    //   314: invokestatic 558	aado:c	(Laado;Z)Z
+    //   314: invokestatic 567	com/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper:c	(Lcom/tencent/biz/tribe/TribeVideoPlugin$VideoWrapper;Z)Z
     //   317: pop
     //   318: goto -78 -> 240
     //   321: astore_3
-    //   322: ldc 147
+    //   322: ldc 155
     //   324: iconst_1
-    //   325: new 149	java/lang/StringBuilder
+    //   325: new 157	java/lang/StringBuilder
     //   328: dup
-    //   329: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   332: ldc_w 575
-    //   335: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   332: ldc_w 584
+    //   335: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   338: aload_1
-    //   339: invokevirtual 272	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   342: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   345: invokestatic 166	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   339: invokevirtual 280	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   342: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   345: invokestatic 174	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   348: aconst_null
     //   349: astore_3
     //   350: aload_3
@@ -619,10 +609,10 @@ public class TribeVideoPlugin
     //   0	352	0	this	TribeVideoPlugin
     //   0	352	1	paramJSONObject	JSONObject
     //   227	81	2	i	int
-    //   284	1	3	localaado1	aado
+    //   284	1	3	localVideoWrapper1	TribeVideoPlugin.VideoWrapper
     //   321	1	3	localException	Exception
-    //   349	2	3	localaado2	aado
-    //   8	304	4	localaado3	aado
+    //   349	2	3	localVideoWrapper2	TribeVideoPlugin.VideoWrapper
+    //   8	304	4	localVideoWrapper3	TribeVideoPlugin.VideoWrapper
     // Exception table:
     //   from	to	target	type
     //   10	177	321	java/lang/Exception
@@ -633,7 +623,7 @@ public class TribeVideoPlugin
     //   311	318	321	java/lang/Exception
   }
   
-  private VideoLayout a(ISPlayerVideoView paramISPlayerVideoView, FrameLayout paramFrameLayout, aado paramaado)
+  private VideoLayout a(ISPlayerVideoView paramISPlayerVideoView, FrameLayout paramFrameLayout, TribeVideoPlugin.VideoWrapper paramVideoWrapper)
   {
     VideoLayout localVideoLayout = new VideoLayout(this.jdField_a_of_type_AndroidContentContext);
     localVideoLayout.addView((View)paramISPlayerVideoView);
@@ -641,25 +631,25 @@ public class TribeVideoPlugin
       localVideoLayout.addView(paramFrameLayout);
     }
     localVideoLayout.setBackgroundColor(-16777216);
-    if (aado.f(paramaado) == 1) {
-      localVideoLayout.setOnTouchListener(new aadk(this));
+    if (TribeVideoPlugin.VideoWrapper.f(paramVideoWrapper) == 1) {
+      localVideoLayout.setOnTouchListener(new TribeVideoPlugin.6(this));
     }
     if ((this.f > 0) && (this.e > 0)) {}
     for (float f1 = this.f / this.e;; f1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density)
     {
-      paramISPlayerVideoView = new FrameLayout.LayoutParams((int)(aado.c(paramaado) * f1), (int)(aado.d(paramaado) * f1));
-      paramISPlayerVideoView.topMargin = ((int)(aado.e(paramaado) * f1));
-      paramISPlayerVideoView.leftMargin = ((int)(aado.f(paramaado) * f1));
-      aado.e(paramaado, aado.a(paramaado) * f1);
-      aado.f(paramaado, this.c - aado.b(paramaado) * f1);
-      if (aado.g(paramaado) > 0) {
-        localVideoLayout.setRoundCorner((int)(aado.g(paramaado) * f1));
+      paramISPlayerVideoView = new FrameLayout.LayoutParams((int)(TribeVideoPlugin.VideoWrapper.c(paramVideoWrapper) * f1), (int)(TribeVideoPlugin.VideoWrapper.d(paramVideoWrapper) * f1));
+      paramISPlayerVideoView.topMargin = ((int)(TribeVideoPlugin.VideoWrapper.e(paramVideoWrapper) * f1));
+      paramISPlayerVideoView.leftMargin = ((int)(TribeVideoPlugin.VideoWrapper.f(paramVideoWrapper) * f1));
+      TribeVideoPlugin.VideoWrapper.e(paramVideoWrapper, TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper) * f1);
+      TribeVideoPlugin.VideoWrapper.f(paramVideoWrapper, this.c - TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper) * f1);
+      if (TribeVideoPlugin.VideoWrapper.g(paramVideoWrapper) > 0) {
+        localVideoLayout.setRoundCorner((int)(TribeVideoPlugin.VideoWrapper.g(paramVideoWrapper) * f1));
       }
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localVideoLayout, paramISPlayerVideoView);
       if (QLog.isColorLevel()) {
         QLog.d("TribeVideoPlugin", 2, "sDensity:" + f1);
       }
-      aado.a(paramaado, localVideoLayout);
+      TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper, localVideoLayout);
       return localVideoLayout;
     }
   }
@@ -688,22 +678,22 @@ public class TribeVideoPlugin
     return null;
   }
   
-  private ISuperPlayer a(ISPlayerVideoView paramISPlayerVideoView, String paramString, int paramInt, aado paramaado)
+  private ISuperPlayer a(ISPlayerVideoView paramISPlayerVideoView, String paramString, int paramInt, TribeVideoPlugin.VideoWrapper paramVideoWrapper)
   {
     paramISPlayerVideoView = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 111, paramISPlayerVideoView);
     paramISPlayerVideoView.setXYaxis(2);
-    if (aado.c(paramaado) == 0) {
+    if (TribeVideoPlugin.VideoWrapper.c(paramVideoWrapper) == 0) {
       paramISPlayerVideoView.setLoopback(true);
     }
-    a(paramISPlayerVideoView, paramaado);
-    a(aado.d(paramaado), paramString, paramInt, paramISPlayerVideoView, paramaado);
+    a(paramISPlayerVideoView, paramVideoWrapper);
+    a(TribeVideoPlugin.VideoWrapper.d(paramVideoWrapper), paramString, paramInt, paramISPlayerVideoView, paramVideoWrapper);
     return paramISPlayerVideoView;
   }
   
   private ISPlayerVideoView a()
   {
     ISPlayerVideoView localISPlayerVideoView = SuperPlayerFactory.createPlayerVideoView(this.jdField_a_of_type_AndroidContentContext);
-    localISPlayerVideoView.addViewCallBack(new aadj(this));
+    localISPlayerVideoView.addViewCallBack(new TribeVideoPlugin.5(this));
     return localISPlayerVideoView;
   }
   
@@ -713,45 +703,45 @@ public class TribeVideoPlugin
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (aado)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      if (aado.a((aado)localObject))
+      localObject = (TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      if (TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject))
       {
-        int i = aado.a((aado)localObject).getTop() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-        int j = aado.a((aado)localObject).getBottom() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-        if ((i < aado.a((aado)localObject)) || (j > aado.b((aado)localObject)))
+        int i = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject).getTop() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
+        int j = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject).getBottom() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
+        if ((i < TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject)) || (j > TribeVideoPlugin.VideoWrapper.b((TribeVideoPlugin.VideoWrapper)localObject)))
         {
-          if (aado.a((aado)localObject).isPlaying())
+          if (TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject).isPlaying())
           {
-            aado.a((aado)localObject).pause();
-            aado.a((aado)localObject).setVisibility(8);
-            aado.a((aado)localObject, true);
-            a(aado.a((aado)localObject), 3);
+            TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject).pause();
+            TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject).setVisibility(8);
+            TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject, true);
+            a(TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject), 3);
             if (QLog.isColorLevel()) {
-              QLog.d("TribeVideoPlugin", 2, "handleCheckPlayerShowArea not in show area videoWrapper.mPlayerID = " + aado.a((aado)localObject) + " mVideoInnerLayout.getTop = " + aado.a((aado)localObject).getTop() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " top = " + i + " mVideoInnerLayout.getBottom = " + aado.a((aado)localObject).getBottom() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " bottom = " + j);
+              QLog.d("TribeVideoPlugin", 2, "handleCheckPlayerShowArea not in show area videoWrapper.mPlayerID = " + TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject) + " mVideoInnerLayout.getTop = " + TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject).getTop() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " top = " + i + " mVideoInnerLayout.getBottom = " + TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject).getBottom() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " bottom = " + j);
             }
           }
         }
-        else if (aado.b((aado)localObject))
+        else if (TribeVideoPlugin.VideoWrapper.b((TribeVideoPlugin.VideoWrapper)localObject))
         {
-          aado.b((aado)localObject, false);
-          aado.a((aado)localObject).start();
-          aado.a((aado)localObject).setVisibility(0);
-          aado.a((aado)localObject, false);
-          if ((aado.a((aado)localObject) == 0) && (!this.jdField_b_of_type_Boolean))
+          TribeVideoPlugin.VideoWrapper.b((TribeVideoPlugin.VideoWrapper)localObject, false);
+          TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject).start();
+          TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject).setVisibility(0);
+          TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject, false);
+          if ((TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject) == 0) && (!this.jdField_b_of_type_Boolean))
           {
-            Message localMessage = this.jdField_a_of_type_Aadl.obtainMessage();
-            localMessage.obj = aado.a((aado)localObject);
+            Message localMessage = this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.obtainMessage();
+            localMessage.obj = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject);
             localMessage.what = 4;
-            this.jdField_a_of_type_Aadl.sendMessageDelayed(localMessage, 200L);
+            this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.sendMessageDelayed(localMessage, 200L);
             if (QLog.isColorLevel()) {
-              QLog.d("TribeVideoPlugin", 1, "handleCheckPlayerShowArea delay start playerID = " + aado.a((aado)localObject));
+              QLog.d("TribeVideoPlugin", 1, "handleCheckPlayerShowArea delay start playerID = " + TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject));
             }
           }
           else
           {
-            a(aado.a((aado)localObject), 1);
+            a(TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject), 1);
             if (QLog.isColorLevel()) {
-              QLog.d("TribeVideoPlugin", 1, "handleCheckPlayerShowArea start playerID = " + aado.a((aado)localObject));
+              QLog.d("TribeVideoPlugin", 1, "handleCheckPlayerShowArea start playerID = " + TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)localObject));
             }
           }
         }
@@ -759,7 +749,7 @@ public class TribeVideoPlugin
     }
   }
   
-  private void a(int paramInt1, String paramString, int paramInt2, ISuperPlayer paramISuperPlayer, aado paramaado)
+  private void a(int paramInt1, String paramString, int paramInt2, ISuperPlayer paramISuperPlayer, TribeVideoPlugin.VideoWrapper paramVideoWrapper)
   {
     Object localObject = null;
     if ((!TextUtils.isEmpty(paramString)) && (paramInt2 == 1)) {
@@ -772,32 +762,32 @@ public class TribeVideoPlugin
       return;
       paramString = localObject;
       if (paramInt2 == 0) {
-        paramString = SuperPlayerFactory.createVideoInfoForTVideo(4080303, aado.b(paramaado));
+        paramString = SuperPlayerFactory.createVideoInfoForTVideo(4080303, TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper));
       }
     }
   }
   
-  private void a(aado paramaado)
+  private void a(TribeVideoPlugin.VideoWrapper paramVideoWrapper)
   {
     Timer localTimer = new Timer();
-    localTimer.schedule(new TribeVideoPlugin.TimeCountTask(this, aado.a(paramaado)), 0L, 30L);
-    aado.a(paramaado, localTimer);
+    localTimer.schedule(new TribeVideoPlugin.TimeCountTask(this, TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper)), 0L, 30L);
+    TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper, localTimer);
   }
   
-  private void a(ISuperPlayer paramISuperPlayer, aado paramaado)
+  private void a(ISuperPlayer paramISuperPlayer, TribeVideoPlugin.VideoWrapper paramVideoWrapper)
   {
-    paramISuperPlayer.setOnVideoPreparedListener(new aadg(this, paramaado));
-    paramISuperPlayer.setOnCompletionListener(new aadh(this, paramaado));
-    paramISuperPlayer.setOnErrorListener(new aadi(this, paramaado));
+    paramISuperPlayer.setOnVideoPreparedListener(new TribeVideoPlugin.2(this, paramVideoWrapper));
+    paramISuperPlayer.setOnCompletionListener(new TribeVideoPlugin.3(this, paramVideoWrapper));
+    paramISuperPlayer.setOnErrorListener(new TribeVideoPlugin.4(this, paramVideoWrapper));
   }
   
   private void a(String paramString)
   {
     if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))
     {
-      paramString = aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+      paramString = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
       if (paramString != null) {
-        aadm.a(paramString).setVisibility(8);
+        TribeVideoPlugin.VideoLayoutHolder.a(paramString).setVisibility(8);
       }
     }
   }
@@ -807,8 +797,8 @@ public class TribeVideoPlugin
     if (QLog.isColorLevel()) {
       QLog.d("TribeVideoPlugin", 1, "reportPlayerStatus playerID = " + paramString + " type = " + paramInt);
     }
-    aado localaado = (aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((localaado == null) || (this.jdField_a_of_type_JavaLangString == null)) {
+    TribeVideoPlugin.VideoWrapper localVideoWrapper = (TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localVideoWrapper == null) || (this.jdField_a_of_type_JavaLangString == null)) {
       return;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -818,8 +808,8 @@ public class TribeVideoPlugin
       localJSONObject.put("state", paramInt);
       if (paramInt != 5)
       {
-        localJSONObject.put("currentPosition", aado.a(localaado).getCurrentPositionMs());
-        localJSONObject.put("duration", aado.a(localaado).getDurationMs());
+        localJSONObject.put("currentPosition", TribeVideoPlugin.VideoWrapper.a(localVideoWrapper).getCurrentPositionMs());
+        localJSONObject.put("duration", TribeVideoPlugin.VideoWrapper.a(localVideoWrapper).getDurationMs());
       }
     }
     catch (JSONException paramString)
@@ -846,26 +836,26 @@ public class TribeVideoPlugin
       {
         return;
       } while (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString));
-      localObject = aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
-      paramString = aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+      localObject = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+      paramString = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
       if ((paramString != null) && (localObject != null)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.e("TribeVideoPlugin", 2, "setPlayerControllerStatus player = " + paramString + " videoInnerLayoutTemp = " + localObject);
     return;
-    SeekBar localSeekBar = (SeekBar)((FrameLayout)localObject).findViewById(2131377267);
-    TextView localTextView1 = (TextView)((FrameLayout)localObject).findViewById(2131374458);
-    TextView localTextView2 = (TextView)((FrameLayout)localObject).findViewById(2131374457);
-    ImageView localImageView1 = (ImageView)((FrameLayout)localObject).findViewById(2131374456);
-    ImageView localImageView2 = (ImageView)((FrameLayout)localObject).findViewById(2131374455);
-    TextView localTextView3 = (TextView)((FrameLayout)localObject).findViewById(2131374454);
-    Object localObject = (ImageView)((FrameLayout)localObject).findViewById(2131374453);
+    SeekBar localSeekBar = (SeekBar)((FrameLayout)localObject).findViewById(2131377688);
+    TextView localTextView1 = (TextView)((FrameLayout)localObject).findViewById(2131374814);
+    TextView localTextView2 = (TextView)((FrameLayout)localObject).findViewById(2131374813);
+    ImageView localImageView1 = (ImageView)((FrameLayout)localObject).findViewById(2131374812);
+    ImageView localImageView2 = (ImageView)((FrameLayout)localObject).findViewById(2131374811);
+    TextView localTextView3 = (TextView)((FrameLayout)localObject).findViewById(2131374810);
+    Object localObject = (ImageView)((FrameLayout)localObject).findViewById(2131374809);
     if (paramBoolean)
     {
       if (paramString.isPlaying())
       {
-        i = 2130848634;
+        i = 2130849014;
         localImageView1.setImageResource(i);
       }
     }
@@ -923,7 +913,7 @@ public class TribeVideoPlugin
       localTextView3.setVisibility(i);
       this.jdField_a_of_type_Boolean = paramBoolean;
       return;
-      i = 2130849183;
+      i = 2130849563;
       break;
       i = 4;
       break label258;
@@ -972,57 +962,57 @@ public class TribeVideoPlugin
     return a(paramJSONObject);
   }
   
-  private void b(aado paramaado)
+  private void b(TribeVideoPlugin.VideoWrapper paramVideoWrapper)
   {
-    aado.d(paramaado, true);
+    TribeVideoPlugin.VideoWrapper.d(paramVideoWrapper, true);
     if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "first onVideoPrepared mPlayerID=" + aado.a(paramaado) + " mIsPaused=" + aado.d(paramaado) + " isPlaying=" + aado.a(paramaado).isPlaying());
+      QLog.d("TribeVideoPlugin", 2, "first onVideoPrepared mPlayerID=" + TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper) + " mIsPaused=" + TribeVideoPlugin.VideoWrapper.d(paramVideoWrapper) + " isPlaying=" + TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).isPlaying());
     }
-    if (aado.d(paramaado)) {}
+    if (TribeVideoPlugin.VideoWrapper.d(paramVideoWrapper)) {}
     for (;;)
     {
       return;
-      if (aado.a(paramaado).isPlaying()) {
+      if (TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).isPlaying()) {
         continue;
       }
-      if (aado.a(paramaado))
+      if (TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper))
       {
-        int i = aado.a(paramaado).getTop() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-        int j = aado.a(paramaado).getBottom() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-        if ((i < aado.a(paramaado)) || (j > aado.b(paramaado)))
+        int i = TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).getTop() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
+        int j = TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).getBottom() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
+        if ((i < TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper)) || (j > TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper)))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("TribeVideoPlugin", 2, "onVideoPrepared returned due to prepared not in show area videoWrapper.mPlayerID = " + aado.a(paramaado) + " mVideoInnerLayout.getTop = " + aado.a(paramaado).getTop() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " top = " + i + " mVideoInnerLayout.getBottom = " + aado.a(paramaado).getBottom() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " bottom = " + j);
+            QLog.d("TribeVideoPlugin", 2, "onVideoPrepared returned due to prepared not in show area videoWrapper.mPlayerID = " + TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper) + " mVideoInnerLayout.getTop = " + TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).getTop() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " top = " + i + " mVideoInnerLayout.getBottom = " + TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).getBottom() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " bottom = " + j);
           }
-          a(aado.a(paramaado), 3);
-          aado.a(paramaado, true);
+          a(TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper), 3);
+          TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper, true);
           return;
         }
       }
-      a(aado.a(paramaado));
+      a(TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper));
       try
       {
-        aado.a(paramaado).start();
-        aado.b(paramaado, aado.a(paramaado).getDurationMs());
-        aado.e(paramaado, true);
-        Message localMessage = this.jdField_a_of_type_Aadl.obtainMessage();
-        localMessage.obj = aado.a(paramaado);
+        TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).start();
+        TribeVideoPlugin.VideoWrapper.b(paramVideoWrapper, TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).getDurationMs());
+        TribeVideoPlugin.VideoWrapper.e(paramVideoWrapper, true);
+        Message localMessage = this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.obtainMessage();
+        localMessage.obj = TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper);
         localMessage.what = 4;
-        this.jdField_a_of_type_Aadl.sendMessageDelayed(localMessage, 200L);
+        this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.sendMessageDelayed(localMessage, 200L);
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d("TribeVideoPlugin", 2, "onVideoPrepared really start videoWrapper.mPlayerID = " + aado.a(paramaado));
+        QLog.d("TribeVideoPlugin", 2, "onVideoPrepared really start videoWrapper.mPlayerID = " + TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper));
         return;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          a(aado.a(paramaado));
-          a(aado.a(paramaado), 5);
-          bdla.b(null, "dc00899", "BizTechReport", ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getCurrentAccountUin(), "tribe_video", "play", 0, 0, Integer.toString(2), Integer.toString(NetworkUtil.getNetworkType(this.jdField_a_of_type_AndroidContentContext)), "", "");
-          QLog.e("TribeVideoPlugin", 2, "onVideoPrepared start exception videoWrapper.mPlayerID = " + aado.a(paramaado));
+          a(TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper));
+          a(TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper), 5);
+          ReportController.b(null, "dc00899", "BizTechReport", ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getCurrentAccountUin(), "tribe_video", "play", 0, 0, Integer.toString(2), Integer.toString(NetworkUtil.b(this.jdField_a_of_type_AndroidContentContext)), "", "");
+          QLog.e("TribeVideoPlugin", 2, "onVideoPrepared start exception videoWrapper.mPlayerID = " + TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper));
         }
       }
     }
@@ -1030,8 +1020,8 @@ public class TribeVideoPlugin
   
   private void b(String paramString)
   {
-    aado localaado = (aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (localaado == null) {
+    TribeVideoPlugin.VideoWrapper localVideoWrapper = (TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localVideoWrapper == null) {
       if (QLog.isColorLevel()) {
         QLog.d("TribeVideoPlugin", 2, "videoWrapper == null");
       }
@@ -1043,8 +1033,8 @@ public class TribeVideoPlugin
       do
       {
         return;
-        localObject2 = aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
-        localObject1 = aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+        localObject2 = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+        localObject1 = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
         if ((localObject2 != null) && (localObject1 != null)) {
           break;
         }
@@ -1090,30 +1080,30 @@ public class TribeVideoPlugin
           TextView localTextView2;
           QLog.e("TribeVideoPlugin", 1, "setProgressBar error");
           continue;
-          if (aadm.a((aadm)localObject1) == 1) {
-            aadm.b((aadm)localObject1).setProgress((int)((float)l1 * 100.0F / (float)l2 + 0.5D));
+          if (TribeVideoPlugin.VideoLayoutHolder.a((TribeVideoPlugin.VideoLayoutHolder)localObject1) == 1) {
+            TribeVideoPlugin.VideoLayoutHolder.b((TribeVideoPlugin.VideoLayoutHolder)localObject1).setProgress((int)((float)l1 * 100.0F / (float)l2 + 0.5D));
           }
         }
       }
-      if (aadm.a((aadm)localObject1) != 2) {
+      if (TribeVideoPlugin.VideoLayoutHolder.a((TribeVideoPlugin.VideoLayoutHolder)localObject1) != 2) {
         break;
       }
-      Object localObject2 = aadm.a((aadm)localObject1);
-      localTextView1 = aadm.a((aadm)localObject1);
-      localTextView2 = aadm.b((aadm)localObject1);
-      localObject1 = aadm.c((aadm)localObject1);
-      six.a(localTextView1, l2 - l1);
-      six.a(localTextView2, l1);
-      six.a((TextView)localObject1, l2);
+      Object localObject2 = TribeVideoPlugin.VideoLayoutHolder.a((TribeVideoPlugin.VideoLayoutHolder)localObject1);
+      localTextView1 = TribeVideoPlugin.VideoLayoutHolder.a((TribeVideoPlugin.VideoLayoutHolder)localObject1);
+      localTextView2 = TribeVideoPlugin.VideoLayoutHolder.b((TribeVideoPlugin.VideoLayoutHolder)localObject1);
+      localObject1 = TribeVideoPlugin.VideoLayoutHolder.c((TribeVideoPlugin.VideoLayoutHolder)localObject1);
+      VideoFeedsHelper.a(localTextView1, l2 - l1);
+      VideoFeedsHelper.a(localTextView2, l1);
+      VideoFeedsHelper.a((TextView)localObject1, l2);
       ((SeekBar)localObject2).setProgress((int)((float)l1 * 100.0F / (float)l2 + 0.5D));
-      if ((l1 <= 100L) && (!aado.e(localaado)) && (bool1))
+      if ((l1 <= 100L) && (!TribeVideoPlugin.VideoWrapper.e(localVideoWrapper)) && (bool1))
       {
         a(paramString, 1);
-        aado.e(localaado, true);
+        TribeVideoPlugin.VideoWrapper.e(localVideoWrapper, true);
       }
-    } while ((aado.b(localaado) - l1 > 100L) || (!aado.e(localaado)) || (!bool1));
+    } while ((TribeVideoPlugin.VideoWrapper.b(localVideoWrapper) - l1 > 100L) || (!TribeVideoPlugin.VideoWrapper.e(localVideoWrapper)) || (!bool1));
     a(paramString, 2);
-    aado.e(localaado, false);
+    TribeVideoPlugin.VideoWrapper.e(localVideoWrapper, false);
   }
   
   private int c(JSONObject paramJSONObject)
@@ -1135,7 +1125,7 @@ public class TribeVideoPlugin
         paramJSONObject = (JSONObject)localObject;
         i = 0;
       }
-      localObject = aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(paramJSONObject));
+      localObject = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(paramJSONObject));
       if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramJSONObject)) && (localObject != null)) {
         break label147;
       }
@@ -1170,12 +1160,12 @@ public class TribeVideoPlugin
     }
   }
   
-  private void c(aado paramaado)
+  private void c(TribeVideoPlugin.VideoWrapper paramVideoWrapper)
   {
-    if (aado.c(paramaado) == 1)
+    if (TribeVideoPlugin.VideoWrapper.c(paramVideoWrapper) == 1)
     {
-      aado.a(paramaado).seekTo(0);
-      a(aado.a(paramaado), 2);
+      TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper).seekTo(0);
+      a(TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper), 2);
     }
     if (QLog.isColorLevel()) {
       QLog.d("TribeVideoPlugin", 2, "Completion video");
@@ -1236,7 +1226,7 @@ public class TribeVideoPlugin
         while (paramJSONObject.hasNext())
         {
           str = (String)paramJSONObject.next();
-          a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(str), i, j);
+          a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(str), i, j);
         }
         return 0;
       }
@@ -1246,12 +1236,12 @@ public class TribeVideoPlugin
     } while (!QLog.isColorLevel());
     QLog.d("TribeVideoPlugin", 2, "handlePlayControl no such playID playerID = " + str);
     return -1;
-    return a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(str), i, j);
+    return a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(str), i, j);
   }
   
-  private void d(aado paramaado)
+  private void d(TribeVideoPlugin.VideoWrapper paramVideoWrapper)
   {
-    a(aado.a(paramaado), 5);
+    a(TribeVideoPlugin.VideoWrapper.a(paramVideoWrapper), 5);
   }
   
   private int e(JSONObject paramJSONObject)
@@ -1283,7 +1273,7 @@ public class TribeVideoPlugin
       } while (!QLog.isColorLevel());
       QLog.e("TribeVideoPlugin", 2, "seekToPlay no such playID playerID = " + (String)localObject2);
       return -1;
-      paramJSONObject = aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2));
+      paramJSONObject = TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2));
       l2 = paramJSONObject.getDurationMs();
       if (l1 >= 0L) {
         break label182;
@@ -1356,8 +1346,8 @@ public class TribeVideoPlugin
       localIntent.putExtra("source_type", paramJSONObject.optInt("source_type"));
       localIntent.putExtra("recommend_by_bid", paramJSONObject.optInt("recommend_by_bid"));
       TribeVideoListPlayerFragment.a(this);
-      aeow.a(this.jdField_a_of_type_AndroidContentContext, localIntent, PublicFragmentActivityForTool.class, TribeVideoListPlayerFragment.class);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130772328, 2130772329);
+      PublicFragmentActivity.Launcher.a(this.jdField_a_of_type_AndroidContentContext, localIntent, PublicFragmentActivityForTool.class, TribeVideoListPlayerFragment.class);
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130772343, 2130772344);
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("TribeVideoPlugin", 2, "openTribeVideo: time = " + (l2 - l1) + " jsonObject = " + paramJSONObject + " source_type" + paramJSONObject.optInt("source_type"));
@@ -1476,12 +1466,12 @@ public class TribeVideoPlugin
   public void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_Aadl = new aadl(this);
+    this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler = new TribeVideoPlugin.UIHandler(this);
     this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a();
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    if (!bapt.a()) {
-      bapt.a(BaseApplicationImpl.getApplication(), null);
+    if (!QQVideoPlaySDKManager.a()) {
+      QQVideoPlaySDKManager.a(BaseApplicationImpl.getApplication(), null);
     }
   }
   
@@ -1489,15 +1479,15 @@ public class TribeVideoPlugin
   {
     super.onDestroy();
     this.jdField_a_of_type_ComTencentBizUiRefreshView.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    this.jdField_a_of_type_Aadl.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin$UIHandler.removeCallbacksAndMessages(null);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      a(aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(str)));
-      aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(str)).stop();
-      aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(str)).release();
-      aado.a((aado)this.jdField_a_of_type_JavaUtilHashMap.get(str), null);
+      a(TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(str)));
+      TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(str)).stop();
+      TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(str)).release();
+      TribeVideoPlugin.VideoWrapper.a((TribeVideoPlugin.VideoWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(str), null);
     }
     this.jdField_a_of_type_JavaUtilHashMap.clear();
     QLog.d("TribeVideoPlugin", 1, "onDestroy");
@@ -1509,7 +1499,7 @@ public class TribeVideoPlugin
     paramCustomWebView = new FrameLayout.LayoutParams(-1, -1);
     paramCustomWebView.topMargin = 0;
     paramCustomWebView.leftMargin = 0;
-    this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131381412));
+    this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131381873));
     if (this.jdField_a_of_type_ComTencentBizUiRefreshView.findViewWithTag("tribeVideoTag") == null)
     {
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.mRuntime.a());
@@ -1532,13 +1522,13 @@ public class TribeVideoPlugin
       }
       this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((TouchWebView)this.mRuntime.a());
       this.jdField_a_of_type_AndroidWidgetFrameLayout.scrollBy(0, this.jdField_a_of_type_ComTencentBizUiTouchWebView.mTotalYoffset);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListenerForBiz(new aadf(this));
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListenerForBiz(new TribeVideoPlugin.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.tribe.TribeVideoPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import aqhg;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class BubbleDiyFetcher$2
+class BubbleDiyFetcher$2
   implements Runnable
 {
-  public BubbleDiyFetcher$2(aqhg paramaqhg, QQAppInterface paramQQAppInterface) {}
+  BubbleDiyFetcher$2(BubbleDiyFetcher paramBubbleDiyFetcher, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

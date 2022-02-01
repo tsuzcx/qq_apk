@@ -14,23 +14,23 @@ public class NetResp
   public static final int RESULT_FAIL = 1;
   public static final int RESULT_NOT_SET = 2;
   public static final int RESULT_OK = 0;
-  public long inQueueCost;
-  public long mConsumeTime;
+  public long inQueueCost = 0L;
+  public long mConsumeTime = 0L;
   public int mErrCode;
   public String mErrDesc;
   public int mHttpCode;
-  long mLastReqStartTime;
-  public int mRedirectCount;
-  public long mRedirectTime;
+  public long mLastReqStartTime;
+  public int mRedirectCount = 0;
+  public long mRedirectTime = 0L;
   public NetReq mReq;
   public byte[] mRespData;
   public HashMap<String, String> mRespProperties = new HashMap();
   public int mResult = 2;
-  public long mTotalBlockLen;
-  public long mTotalFileLen;
-  public int mTryTime;
-  public long mWrittenBlockLen;
-  public long reqCost;
+  public long mTotalBlockLen = 0L;
+  public long mTotalFileLen = 0L;
+  public int mTryTime = 0;
+  public long mWrittenBlockLen = 0L;
+  public long reqCost = 0L;
   
   public NetResp(NetReq paramNetReq)
   {

@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqSetDiscussFlag
   extends JceStruct
 {
-  public long DiscussUin;
-  public byte Flag;
+  public long DiscussUin = 0L;
+  public byte Flag = 0;
   
   public ReqSetDiscussFlag() {}
   

@@ -2,13 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.biu;
 
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import owt;
-import owv;
 
-public class ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$2
+class ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$2
   implements Runnable
 {
-  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$2(owv paramowv) {}
+  ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$2(ReadInjoyFriendsBiuComponentFragment.ViewHolder.2 param2) {}
   
   public void run()
   {
@@ -17,7 +15,7 @@ public class ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.2.2
  * JD-Core Version:    0.7.0.1
  */

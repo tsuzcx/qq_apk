@@ -1,12 +1,11 @@
 package com.tencent.open.agent;
 
-import bjbo;
 import java.util.List;
 
-public class BindGroupAdapter$1
+class BindGroupAdapter$1
   implements Runnable
 {
-  public BindGroupAdapter$1(bjbo parambjbo, List paramList) {}
+  BindGroupAdapter$1(BindGroupAdapter paramBindGroupAdapter, List paramList) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class BindGroupAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupAdapter.1
  * JD-Core Version:    0.7.0.1
  */

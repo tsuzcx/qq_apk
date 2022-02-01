@@ -5,18 +5,17 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
-import azvz;
 import com.tencent.qphone.base.util.QLog;
 
 public class SoftInputDetectView
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private azvz jdField_a_of_type_Azvz;
+  private SoftInputDetectView.OnImStateChangedListener jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView$OnImStateChangedListener = null;
   private boolean jdField_a_of_type_Boolean = true;
-  private int b;
-  private int c;
+  private int b = 0;
+  private int c = 0;
   private int d = -1;
   
   public SoftInputDetectView(Context paramContext)
@@ -29,7 +28,7 @@ public class SoftInputDetectView
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
     int i = this.c;
@@ -66,8 +65,8 @@ public class SoftInputDetectView
       if (QLog.isColorLevel()) {
         QLog.d("SoftInputDetectView", 2, "Detected layout change. Input Method is showing? " + bool + " Input Method Height is " + this.jdField_a_of_type_Int);
       }
-      if (this.jdField_a_of_type_Azvz != null) {
-        this.jdField_a_of_type_Azvz.a(bool, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView$OnImStateChangedListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView$OnImStateChangedListener.a(bool, this.jdField_a_of_type_Int);
       }
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.b, 1073741824));
       return;
@@ -81,9 +80,9 @@ public class SoftInputDetectView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnImStateChangedListener(azvz paramazvz)
+  public void setOnImStateChangedListener(SoftInputDetectView.OnImStateChangedListener paramOnImStateChangedListener)
   {
-    this.jdField_a_of_type_Azvz = paramazvz;
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView$OnImStateChangedListener = paramOnImStateChangedListener;
   }
 }
 

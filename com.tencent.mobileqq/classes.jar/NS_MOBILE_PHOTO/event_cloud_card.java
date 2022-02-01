@@ -14,9 +14,9 @@ public final class event_cloud_card
   static ArrayList<event_cloud_photo> cache_photos = new ArrayList();
   static int cache_type;
   public String desc = "";
-  public Map<String, String> ext;
-  public ArrayList<event_cloud_photo> photos;
-  public int type;
+  public Map<String, String> ext = null;
+  public ArrayList<event_cloud_photo> photos = null;
+  public int type = 0;
   
   static
   {

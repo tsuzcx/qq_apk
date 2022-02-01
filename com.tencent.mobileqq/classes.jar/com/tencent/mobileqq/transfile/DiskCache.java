@@ -4,6 +4,7 @@ import java.io.File;
 
 public class DiskCache
 {
+  private static final String TAG = "DiskCache";
   File directory;
   
   public DiskCache(File paramFile)
@@ -22,6 +23,11 @@ public class DiskCache
       this.directory.mkdirs();
     }
     return new File(this.directory, paramString);
+  }
+  
+  public File getDirectory()
+  {
+    return this.directory;
   }
 }
 

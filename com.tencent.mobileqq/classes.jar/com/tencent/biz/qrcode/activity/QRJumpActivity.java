@@ -1,27 +1,24 @@
 package com.tencent.biz.qrcode.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bisl;
+import com.tencent.biz.qrcode.QRCodeServlet;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URLDecoder;
 import mqq.app.NewIntent;
-import zju;
-import zlh;
-import zli;
 
 public class QRJumpActivity
   extends BaseActivity
 {
-  protected bisl a;
+  protected QQProgressDialog a;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -46,9 +43,9 @@ public class QRJumpActivity
     if (isFinishing()) {
       return false;
     }
-    this.a = new bisl(this, super.getTitleBarHeight());
-    this.a.c(2131716568);
-    this.a.setOnCancelListener(new zlh(this));
+    this.a = new QQProgressDialog(this, super.getTitleBarHeight());
+    this.a.c(2131717063);
+    this.a.setOnCancelListener(new QRJumpActivity.1(this));
     this.a.show();
     String str1;
     try
@@ -118,8 +115,8 @@ public class QRJumpActivity
       if (QLog.isColorLevel()) {
         QLog.i("QRJumpActivity", 2, String.format("JumpUrl authSig=%s oriUrl=%s", new Object[] { paramBundle, str3 }));
       }
-      paramBundle = new zli(this, (String)localObject1, paramBundle, this, str1);
-      localObject1 = new NewIntent(this, zju.class);
+      paramBundle = new QRJumpActivity.2(this, (String)localObject1, paramBundle, this, str1);
+      localObject1 = new NewIntent(this, QRCodeServlet.class);
       ((NewIntent)localObject1).putExtra("d", str1);
       ((NewIntent)localObject1).putExtra("cmd", "QRCodeSvc.decode");
       ((NewIntent)localObject1).putExtra("bqq", "1");
@@ -157,7 +154,7 @@ public class QRJumpActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRJumpActivity
  * JD-Core Version:    0.7.0.1
  */

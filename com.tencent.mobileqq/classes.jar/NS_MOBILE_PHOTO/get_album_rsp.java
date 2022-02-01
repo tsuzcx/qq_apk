@@ -14,22 +14,22 @@ public final class get_album_rsp
   static PublicShareData cache_public_share_data = new PublicShareData();
   static Map<Long, wx_user_info> cache_sharer_wx_info;
   static int cache_sort_type = 0;
-  public Album album;
-  public int albumCommentNum;
-  public int albumFaceNum;
-  public int albumLikeNum;
+  public Album album = null;
+  public int albumCommentNum = 0;
+  public int albumFaceNum = 0;
+  public int albumLikeNum = 0;
   public String albumLikekey = "";
-  public int albumVisitNum;
+  public int albumVisitNum = 0;
   public String invite_key = "";
-  public boolean isCoverUserSet;
-  public boolean isMyLiked;
-  public boolean isOwner;
-  public int largeCoverHeight;
+  public boolean isCoverUserSet = false;
+  public boolean isMyLiked = false;
+  public boolean isOwner = false;
+  public int largeCoverHeight = 0;
   public String largeCoverUrl = "";
-  public int largeCoverWidth;
-  public PublicShareData public_share_data;
+  public int largeCoverWidth = 0;
+  public PublicShareData public_share_data = null;
   public String share_url = "";
-  public Map<Long, wx_user_info> sharer_wx_info;
+  public Map<Long, wx_user_info> sharer_wx_info = null;
   public int sort_type = 3;
   
   static

@@ -5,25 +5,24 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View.OnLongClickListener;
-import bhqp;
-import biqb;
-import biqc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.MosaicEffect;
+import com.tencent.mobileqq.widget.MosaicEffect.IMosaicEffect;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.URLThemeImageView;
 
 public class VasAvatar
   extends URLThemeImageView
-  implements biqc
+  implements MosaicEffect.IMosaicEffect
 {
   public Drawable a;
   private View.OnLongClickListener a;
-  public bhqp a;
-  protected biqb a;
   protected AvatarLayout a;
+  public VasAvatarLoader a;
+  protected MosaicEffect a;
   protected String a;
   
   public VasAvatar(Context paramContext)
@@ -78,21 +77,11 @@ public class VasAvatar
     return this.jdField_a_of_type_AndroidViewView$OnLongClickListener != null;
   }
   
-  public void b(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
-  }
-  
-  public void c(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-  }
-  
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Biqb != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null)
     {
-      this.jdField_a_of_type_Biqb.a(paramCanvas);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -100,9 +89,9 @@ public class VasAvatar
   
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Biqb != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null)
     {
-      this.jdField_a_of_type_Biqb.b(paramCanvas);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -121,28 +110,39 @@ public class VasAvatar
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_Bhqp = null;
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader = null;
   }
   
-  public void setLoader(AvatarLayout paramAvatarLayout, bhqp parambhqp)
+  public void setLoader(AvatarLayout paramAvatarLayout, VasAvatarLoader paramVasAvatarLoader)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambhqp.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    parambhqp.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramVasAvatarLoader.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramVasAvatarLoader.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = paramAvatarLayout;
-    this.jdField_a_of_type_Bhqp = parambhqp;
-    this.jdField_a_of_type_JavaLangString = parambhqp.jdField_a_of_type_JavaLangString;
-    parambhqp.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader = paramVasAvatarLoader;
+    this.jdField_a_of_type_JavaLangString = paramVasAvatarLoader.jdField_a_of_type_JavaLangString;
+    paramVasAvatarLoader.a(this);
   }
   
-  public void setMosaicEffect(biqb parambiqb)
+  public void setLoaderForCmshow(AvatarLayout paramAvatarLayout, VasAvatarLoader paramVasAvatarLoader, int paramInt)
   {
-    if (this.jdField_a_of_type_Biqb != null) {
-      this.jdField_a_of_type_Biqb.a(null);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramVasAvatarLoader.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramVasAvatarLoader.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = paramAvatarLayout;
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader = paramVasAvatarLoader;
+    this.jdField_a_of_type_JavaLangString = paramVasAvatarLoader.jdField_a_of_type_JavaLangString;
+    paramVasAvatarLoader.a(this, paramInt);
+  }
+  
+  public void setMosaicEffect(MosaicEffect paramMosaicEffect)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.a(null);
     }
-    this.jdField_a_of_type_Biqb = parambiqb;
-    if (this.jdField_a_of_type_Biqb != null) {
-      this.jdField_a_of_type_Biqb.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect = paramMosaicEffect;
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect.a(this);
     }
     invalidate();
   }
@@ -152,10 +152,20 @@ public class VasAvatar
     super.setOnLongClickListener(paramOnLongClickListener);
     this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
   }
+  
+  public void superDrawMosaic(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+  }
+  
+  public void superOnDrawMosaic(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasAvatar
  * JD-Core Version:    0.7.0.1
  */

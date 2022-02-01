@@ -14,18 +14,18 @@ public final class get_video_float_layer_req
   static byte[] cache_layer_user_session_action;
   static QzoneWeisiReqcommendReq cache_qzone_weisi_req;
   static int cache_req_type;
-  public int appid;
+  public int appid = 0;
   public String attach_info = "";
-  public Map<Integer, String> busi_param;
-  public Map<String, String> extend_info;
-  public int get_type;
-  public byte[] layer_user_session_action;
-  public QzoneWeisiReqcommendReq qzone_weisi_req;
+  public Map<Integer, String> busi_param = null;
+  public Map<String, String> extend_info = null;
+  public int get_type = 0;
+  public byte[] layer_user_session_action = null;
+  public QzoneWeisiReqcommendReq qzone_weisi_req = null;
   public int req_type = 1;
   public String rooftop_id = "";
-  public int scene;
+  public int scene = 0;
   public String ugckey = "";
-  public long uin;
+  public long uin = 0L;
   public String video_url = "";
   
   static

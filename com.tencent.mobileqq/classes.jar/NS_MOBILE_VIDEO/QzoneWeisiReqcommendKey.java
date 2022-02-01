@@ -9,7 +9,7 @@ public final class QzoneWeisiReqcommendKey
 {
   public String feed_id = "";
   public String ugckey = "";
-  public long uin;
+  public long uin = 0L;
   
   public QzoneWeisiReqcommendKey() {}
   

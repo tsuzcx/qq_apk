@@ -9,8 +9,11 @@ public class TkdQQArgument
   public boolean biuEditorDefaultStatus;
   public String biuEditorGuideWording;
   public String commentId;
+  public String defaultInput;
   public String defaultTxt;
   public boolean editorDefaultEnableRemember;
+  public String firstCommentId;
+  public String innerUniqueID;
   public boolean isNativeCommentComponet;
   public boolean isNewCommentComponentType;
   public boolean isSecondCommentReply;
@@ -25,6 +28,7 @@ public class TkdQQArgument
   public int mSourceType;
   public int maxCharCount;
   public String placeHolder;
+  public String recreateDraft;
   public boolean selectBiu;
   public boolean showBiu;
   public boolean showGif;
@@ -32,7 +36,7 @@ public class TkdQQArgument
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.model.TkdQQArgument
  * JD-Core Version:    0.7.0.1
  */

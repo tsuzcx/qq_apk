@@ -14,21 +14,21 @@ public final class stFaceItem
   public String faceUrl = "";
   public String faceid = "";
   public String groupid = "";
-  public long h;
-  public boolean is_recommend;
-  public long opertime;
+  public long h = 0L;
+  public boolean is_recommend = false;
+  public long opertime = 0L;
   public String photo_id = "";
   public String quanid = "";
-  public int quanstate;
-  public ArrayList<FaceRecommendInfo> recommend_infos;
+  public int quanstate = 0;
+  public ArrayList<FaceRecommendInfo> recommend_infos = null;
   public String target_groupid = "";
   public String targetnick = "";
-  public long targetuin;
-  public long w;
+  public long targetuin = 0L;
+  public long w = 0L;
   public String writernick = "";
-  public long writeruin;
-  public long x;
-  public long y;
+  public long writeruin = 0L;
+  public long x = 0L;
+  public long y = 0L;
   
   static
   {

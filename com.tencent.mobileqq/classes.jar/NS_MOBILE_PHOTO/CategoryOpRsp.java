@@ -11,8 +11,8 @@ public final class CategoryOpRsp
 {
   static Map<String, String> cache_oldkey_2_newkey = new HashMap();
   public String msg = "";
-  public Map<String, String> oldkey_2_newkey;
-  public int ret;
+  public Map<String, String> oldkey_2_newkey = null;
+  public int ret = 0;
   
   static
   {

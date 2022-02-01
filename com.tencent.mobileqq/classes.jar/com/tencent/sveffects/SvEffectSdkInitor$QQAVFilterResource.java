@@ -1,7 +1,5 @@
 package com.tencent.sveffects;
 
-import bbgq;
-import bpnd;
 import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
 
 public class SvEffectSdkInitor$QQAVFilterResource
@@ -9,15 +7,15 @@ public class SvEffectSdkInitor$QQAVFilterResource
 {
   public String getFilterResPath()
   {
-    if (SvEffectSdkInitor.isDovCapture) {
-      return bpnd.b;
+    if (SvEffectSdkInitor.a) {
+      return dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.b;
     }
-    return bbgq.b;
+    return com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.sveffects.SvEffectSdkInitor.QQAVFilterResource
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bfoj;
-
-public class TroopFileUploadMgr$FileUploadMgrObserver$1
+class TroopFileUploadMgr$FileUploadMgrObserver$1
   implements Runnable
 {
-  public TroopFileUploadMgr$FileUploadMgrObserver$1(bfoj parambfoj, Object paramObject) {}
+  TroopFileUploadMgr$FileUploadMgrObserver$1(TroopFileUploadMgr.FileUploadMgrObserver paramFileUploadMgrObserver, Object paramObject) {}
   
   public void run()
   {
-    bfoj.a(this.this$0, this.a);
+    TroopFileUploadMgr.FileUploadMgrObserver.a(this.this$0, this.a);
   }
 }
 

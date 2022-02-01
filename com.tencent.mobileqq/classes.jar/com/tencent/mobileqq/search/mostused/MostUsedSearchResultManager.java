@@ -1,0 +1,95 @@
+package com.tencent.mobileqq.search.mostused;
+
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
+
+public class MostUsedSearchResultManager
+  implements Manager
+{
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MostUsedCache jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache = new MostUsedCache("Cahce_");
+  
+  public MostUsedSearchResultManager(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public ArrayList<MostUsedCache.MostUsedSearchItemModel> a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache != null)
+    {
+      paramString = this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+      if ((paramString != null) && (paramString.size() > 10))
+      {
+        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
+        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
+        return localArrayList;
+      }
+      return paramString;
+    }
+    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      QLog.d("MostUsedSearchResultManager", 2, "init");
+      return;
+    }
+    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
+      return;
+    }
+    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
+    for (String str = paramString2;; str = paramString1)
+    {
+      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
+      int i = MostUseConstants.a(paramInt);
+      if (!a(i)) {
+        break;
+      }
+      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
+      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
+      return;
+      paramString2 = "";
+    }
+  }
+  
+  boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache.a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    b();
+    this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache = null;
+    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager
+ * JD-Core Version:    0.7.0.1
+ */

@@ -3,19 +3,18 @@ package com.tencent.open.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjpr;
 
 public class VirtualInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VirtualInfo> CREATOR = new bjpr();
+  public static final Parcelable.Creator<VirtualInfo> CREATOR = new VirtualInfo.1();
   public long a;
   public String a;
   public String b;
   
   public VirtualInfo() {}
   
-  public VirtualInfo(Parcel paramParcel)
+  protected VirtualInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -45,7 +44,7 @@ public class VirtualInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.model.VirtualInfo
  * JD-Core Version:    0.7.0.1
  */

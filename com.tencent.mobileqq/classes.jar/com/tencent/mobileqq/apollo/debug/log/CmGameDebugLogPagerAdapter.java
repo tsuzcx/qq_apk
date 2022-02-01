@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.debug.log;
 
-import amrw;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +9,10 @@ import java.util.List;
 public class CmGameDebugLogPagerAdapter
   extends PagerAdapter
 {
-  List<amrw> a = new ArrayList();
+  List<CmGameDebugLogView> a = new ArrayList();
   List<String> b = new ArrayList();
   
-  public CmGameDebugLogPagerAdapter(List<amrw> paramList, List<String> paramList1)
+  public CmGameDebugLogPagerAdapter(List<CmGameDebugLogView> paramList, List<String> paramList1)
   {
     this.a = paramList;
     this.b = paramList1;
@@ -36,7 +35,7 @@ public class CmGameDebugLogPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = ((amrw)this.a.get(paramInt)).a();
+    View localView = ((CmGameDebugLogView)this.a.get(paramInt)).a();
     paramViewGroup.addView(localView);
     return localView;
   }
@@ -48,7 +47,7 @@ public class CmGameDebugLogPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.debug.log.CmGameDebugLogPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

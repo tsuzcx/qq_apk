@@ -5,33 +5,27 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.accessibility.AccessibilityManager;
-import anzf;
-import anzv;
-import aoqj;
-import azhs;
-import azik;
-import bbfs;
-import bbov;
-import bbow;
-import bcpx;
-import bcuz;
-import bdcw;
-import bnjo;
-import bnjs;
-import bnrh;
-import bnst;
-import boha;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
+import com.tencent.biz.qqstory.takevideo.slideshow.TransitionHandler;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseToolAppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.message.messageclean.MessageCleanManager;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.MessageRecordEntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.persistence.qslowtable.QSlowTableEntityManagerFactory;
 import com.tencent.mobileqq.pic.PresendPicMgr;
+import com.tencent.mobileqq.richmedia.RichmediaClient;
+import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
+import com.tencent.mobileqq.richmedia.server.PeakMsfServletProxy;
+import com.tencent.mobileqq.service.PeakJceService;
+import com.tencent.mobileqq.servlet.AudioTransServlet;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 import com.tencent.mobileqq.startup.step.DtSdkInitStep;
 import com.tencent.mobileqq.startup.step.InitMemoryCache;
 import com.tencent.mobileqq.startup.step.InitUrlDrawable;
-import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.NetEngineFactory;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -39,40 +33,50 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.util.QZLog;
-import java.util.List;
-import java.util.Vector;
+import dov.com.qq.im.ae.config.CameraPeakServiceHandler;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.aeeditor.AEEditorProcessManager;
+import dov.com.qq.im.aeeditor.manage.AEEditorDataServiceHandler;
+import dov.com.qq.im.capture.control.CaptureAsyncControl;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.IToolProcEventListener;
+import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import zag;
 
 public class PeakAppInterface
-  extends AppInterface
+  extends BaseToolAppInterface
   implements IToolProcEventListener
 {
-  public static boha a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new anzv(this);
-  private azhs jdField_a_of_type_Azhs;
-  private bbow jdField_a_of_type_Bbow;
-  private bcpx jdField_a_of_type_Bcpx;
+  public static CaptureAsyncControl a;
+  public static final String a;
+  public static final String b;
+  public static final String c = MiniCodePeakHandler.class.getName();
+  public static final String d = CameraPeakServiceHandler.class.getName();
+  public static final String e = AEEditorDataServiceHandler.class.getName();
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new PeakAppInterface.1(this);
   private QQStoryContext jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
-  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<BusinessObserver> jdField_a_of_type_JavaUtilList;
+  private MessageRecordEntityManager jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager;
+  private PeakMsfServletProxy jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy;
+  private PeakJceService jdField_a_of_type_ComTencentMobileqqServicePeakJceService;
+  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
   private ConcurrentHashMap<Integer, Manager> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
   public boolean a;
-  private BusinessHandler[] jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler = new BusinessHandler[5];
   private boolean b;
+  private String f = "";
   
   static
   {
-    jdField_a_of_type_Boha = new boha();
+    jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncControl = new CaptureAsyncControl();
+    jdField_a_of_type_JavaLangString = PeakAudioTransHandler.class.getName();
+    jdField_b_of_type_JavaLangString = TransitionHandler.class.getName();
   }
   
   public PeakAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
   
   private boolean a()
@@ -85,44 +89,15 @@ public class PeakAppInterface
   
   private boolean a(BaseApplication paramBaseApplication, Intent paramIntent)
   {
-    bnrh.d("PeakAppInterface", "exitPeakRunTime");
+    AEQLog.d("PeakAppInterface", "exitPeakRunTime");
     paramBaseApplication = paramIntent.getAction();
     if (paramBaseApplication == null) {}
     while (!paramBaseApplication.equals("com.tencent.process.exit")) {
       return false;
     }
-    boolean bool = bnst.a().a();
-    bnrh.d("PeakAppInterface", "isGenerateWorking" + bool);
+    boolean bool = AEEditorProcessManager.a().a();
+    AEQLog.d("PeakAppInterface", "isGenerateWorking" + bool);
     return bool;
-  }
-  
-  private BusinessHandler b(int paramInt)
-  {
-    System.currentTimeMillis();
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 0: 
-      return new bbov(this);
-    case 1: 
-      return new zag(this);
-    case 2: 
-      return new anzf(this);
-    case 3: 
-      return new bnjs(this);
-    }
-    return new bnjo(this);
-  }
-  
-  public azhs a()
-  {
-    if (this.jdField_a_of_type_Azhs == null)
-    {
-      String str = getCurrentAccountUin();
-      this.jdField_a_of_type_Azhs = new azhs(((QQEntityManagerFactory)getEntityManagerFactory(str)).build(str), str);
-    }
-    return this.jdField_a_of_type_Azhs;
   }
   
   public QQStoryContext a()
@@ -130,38 +105,24 @@ public class PeakAppInterface
     return this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext;
   }
   
-  public BusinessHandler a(int paramInt)
-  {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler[paramInt];
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    synchronized (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler)
-    {
-      BusinessHandler localBusinessHandler = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler[paramInt];
-      localObject1 = localBusinessHandler;
-      if (localBusinessHandler == null)
-      {
-        localBusinessHandler = b(paramInt);
-        localObject1 = localBusinessHandler;
-        if (localBusinessHandler != null)
-        {
-          this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler[paramInt] = localBusinessHandler;
-          localObject1 = localBusinessHandler;
-        }
-      }
-      return localObject1;
-    }
-  }
-  
   public SQLiteDatabase a()
   {
     Object localObject = getCurrentAccountUin();
-    localObject = ((QQEntityManagerFactory)getEntityManagerFactory((String)localObject)).build((String)localObject);
+    localObject = new QSlowTableEntityManagerFactory((String)localObject).build((String)localObject);
     if (localObject != null) {
       return ((SQLiteOpenHelper)localObject).getReadableDatabase();
     }
     return null;
+  }
+  
+  public MessageRecordEntityManager a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager == null)
+    {
+      String str = getCurrentAccountUin();
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager = new MessageRecordEntityManager(((QQEntityManagerFactory)getEntityManagerFactory(str)).build(str), str);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager;
   }
   
   public void a()
@@ -170,41 +131,9 @@ public class PeakAppInterface
     this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext.a();
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")))
-    {
-      this.jdField_a_of_type_Bcpx.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg);
-      return;
-    }
-    this.jdField_a_of_type_Bbow.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
-  }
-  
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void addObserver(BusinessObserver paramBusinessObserver)
-  {
-    addObserver(paramBusinessObserver, false);
-  }
-  
-  public void addObserver(BusinessObserver paramBusinessObserver, boolean paramBoolean)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramBusinessObserver);
-    }
-  }
-  
-  public SQLiteDatabase b()
-  {
-    Object localObject = getCurrentAccountUin();
-    localObject = new azik((String)localObject).build((String)localObject);
-    if (localObject != null) {
-      return ((SQLiteOpenHelper)localObject).getReadableDatabase();
-    }
-    return null;
+    this.f = paramString;
   }
   
   public void b()
@@ -217,7 +146,7 @@ public class PeakAppInterface
       if ((bool1) && (bool2)) {}
       for (bool1 = true;; bool1 = false)
       {
-        AppSetting.c = bool1;
+        AppSetting.d = bool1;
         return;
       }
       return;
@@ -235,14 +164,6 @@ public class PeakAppInterface
     return AppSetting.a();
   }
   
-  public List<BusinessObserver> getBusinessObserver(int paramInt)
-  {
-    if (paramInt == 0) {
-      return this.jdField_a_of_type_JavaUtilList;
-    }
-    return null;
-  }
-  
   public String getCurrentAccountUin()
   {
     return getAccount();
@@ -250,13 +171,13 @@ public class PeakAppInterface
   
   public String getCurrentNickname()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.f;
   }
   
   public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = new QQEntityManagerFactory(getAccount());
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
     }
     return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   }
@@ -282,7 +203,7 @@ public class PeakAppInterface
         localObject2 = super.getManager(paramInt);
       }
       return localObject2;
-      localObject2 = new aoqj();
+      localObject2 = new MessageCleanManager();
       break;
       localObject1 = localObject2;
       if (localObject2 != null)
@@ -298,18 +219,20 @@ public class PeakAppInterface
     return "peak";
   }
   
-  public INetEngine getNetEngine(int paramInt)
+  public SQLiteDatabase getReadableDatabase()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = new NetEngineFactory();
+    Object localObject = getCurrentAccountUin();
+    localObject = ((QQEntityManagerFactory)getEntityManagerFactory((String)localObject)).build((String)localObject);
+    if (localObject != null) {
+      return ((SQLiteOpenHelper)localObject).getReadableDatabase();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.getEngineInstance(this, paramInt);
+    return null;
   }
   
   public void onBeforeExitProc()
   {
-    bnrh.d("PeakAppInterface", "onBeforeExitProc");
-    bnst.a().b();
+    AEQLog.d("PeakAppInterface", "onBeforeExitProc");
+    AEEditorProcessManager.a().b();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -321,82 +244,58 @@ public class PeakAppInterface
     new InitMemoryCache().step();
     new InitUrlDrawable().step();
     a();
-    this.jdField_a_of_type_JavaUtilList = new Vector();
-    this.b = a();
-    this.jdField_a_of_type_Bbow = new bbow(this);
-    this.jdField_a_of_type_Bcpx = new bcpx(this);
-    jdField_a_of_type_Boha.a("{1000,1002}");
+    this.jdField_b_of_type_Boolean = a();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy = new PeakMsfServletProxy(this);
+    this.jdField_a_of_type_ComTencentMobileqqServicePeakJceService = new PeakJceService(this);
+    jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncControl.a("{1000,1002}");
     DtSdkInitStep.initDTSDK(0);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    bbfs.a().b(BaseApplicationImpl.sApplication);
-    ??? = PresendPicMgr.a(null);
-    if (??? != null) {
-      ((PresendPicMgr)???).b();
+    RichmediaClient.a().b(BaseApplicationImpl.sApplication);
+    PresendPicMgr localPresendPicMgr = PresendPicMgr.a(null);
+    if (localPresendPicMgr != null) {
+      localPresendPicMgr.b();
     }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory != null) {}
+    try
     {
-      int i;
-      synchronized (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler)
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.onDestroy();
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
+      if (this.jdField_b_of_type_Boolean)
       {
-        BusinessHandler[] arrayOfBusinessHandler = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler;
-        int j = arrayOfBusinessHandler.length;
-        i = 0;
-        if (i < j)
-        {
-          BusinessHandler localBusinessHandler = arrayOfBusinessHandler[i];
-          if (localBusinessHandler == null) {
-            break label168;
-          }
-          localBusinessHandler.onDestroy();
-          break label168;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory == null) {}
+        this.app.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        this.jdField_b_of_type_Boolean = false;
       }
-      try
+      if (this.jdField_a_of_type_Boolean) {
+        RedBagVideoManager.a(this).a(this);
+      }
+      jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncControl.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("PeakAppInterface", 2, "onDestroy");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
         this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.onDestroy();
-        this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
-        if (this.b)
-        {
-          this.app.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-          this.b = false;
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          bdcw.a(this).a(this);
-        }
-        jdField_a_of_type_Boha.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("PeakAppInterface", 2, "onDestroy");
-        }
-        return;
-        localObject2 = finally;
-        throw localObject2;
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.onDestroy();
-        }
-      }
-      label168:
-      i += 1;
     }
   }
   
   public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
   {
-    bnrh.b("PeakAppInterface", "onReceiveAccountAction");
+    AEQLog.b("PeakAppInterface", "onReceiveAccountAction");
     return false;
   }
   
   public boolean onReceiveLegalExitProcAction(Intent paramIntent)
   {
-    bnrh.d("PeakAppInterface", "onReceiveAccountAction");
+    AEQLog.d("PeakAppInterface", "onReceiveAccountAction");
     return a(BaseApplicationImpl.getContext(), paramIntent);
   }
   
@@ -415,24 +314,29 @@ public class PeakAppInterface
     ThreadManager.executeOnFileThread(new PeakAppInterface.2(this));
   }
   
-  public void removeObserver(BusinessObserver paramBusinessObserver)
+  public void receiveToService(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
+    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterialV2")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBigShowRecommend")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCircleCatMatTree")))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqServicePeakJceService.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")))
+    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterialV2")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBigShowRecommend")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCircleCatMatTree")))
     {
-      this.jdField_a_of_type_Bcpx.a(paramToServiceMsg);
+      this.jdField_a_of_type_ComTencentMobileqqServicePeakJceService.a(paramToServiceMsg);
       return;
     }
-    this.jdField_a_of_type_Bbow.a(paramToServiceMsg, null, bcuz.class);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy.a(paramToServiceMsg, AudioTransServlet.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PeakAppInterface
  * JD-Core Version:    0.7.0.1
  */

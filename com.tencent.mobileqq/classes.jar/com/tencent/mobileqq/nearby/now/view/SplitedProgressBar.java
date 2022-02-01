@@ -39,7 +39,7 @@ public class SplitedProgressBar
     this.jdField_a_of_type_Int = 50;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int k = super.getWidth();

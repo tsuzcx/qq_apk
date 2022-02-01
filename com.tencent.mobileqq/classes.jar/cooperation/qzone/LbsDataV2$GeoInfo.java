@@ -11,7 +11,7 @@ public class LbsDataV2$GeoInfo
   public static final Parcelable.Creator<GeoInfo> CREATOR = new LbsDataV2.GeoInfo.1();
   public String address;
   public LbsDataV2.GpsInfo gpsInfo;
-  public int iDistrictCode;
+  public int iDistrictCode = 0;
   public int iRange = -1;
   public String strCity = "";
   public String strCountry = "";
@@ -86,7 +86,7 @@ public class LbsDataV2$GeoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.GeoInfo
  * JD-Core Version:    0.7.0.1
  */

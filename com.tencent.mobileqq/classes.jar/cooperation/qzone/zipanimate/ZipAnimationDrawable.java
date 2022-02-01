@@ -23,14 +23,14 @@ public class ZipAnimationDrawable
   static final int MSG_LOAD_NEXT_FRAME = 1000;
   private static final String TAG = "zip_drawable";
   private ZipAnimationDrawable.ZipAnimationState mAnimationState;
-  private boolean mIsPagePause;
-  private boolean mIsShowFirstFrame;
+  private boolean mIsPagePause = false;
+  private boolean mIsShowFirstFrame = false;
   private Lifecycle mLifecycle;
   ZipAnimationDrawable.OnAnimationListener mListener;
-  private boolean mRepeatAnimation;
+  private boolean mRepeatAnimation = false;
   private volatile boolean mRunning;
   private float mScale = 1.0F;
-  private boolean mShowLastFrameWhenStop;
+  private boolean mShowLastFrameWhenStop = false;
   long startTime;
   Handler uiHandler = new ZipAnimationDrawable.2(this, Looper.getMainLooper());
   
@@ -351,7 +351,7 @@ public class ZipAnimationDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.zipanimate.ZipAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ public class ShareAlbumMemberData
   static ArrayList<s_picdata> cache_photos = new ArrayList();
   public String nick = "";
   public comm_page_info page;
-  public long photo_cnt;
+  public long photo_cnt = 0L;
   public ArrayList<s_picdata> photos;
-  public long uin;
-  public long video_cnt;
+  public long uin = 0L;
+  public long video_cnt = 0L;
   
   static
   {

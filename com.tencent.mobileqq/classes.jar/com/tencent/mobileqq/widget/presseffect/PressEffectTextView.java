@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import bivv;
 
 public class PressEffectTextView
   extends TextView
@@ -26,16 +25,16 @@ public class PressEffectTextView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bivv.a(this);
+      PressEffectHelper.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bivv.b(this);
+      PressEffectHelper.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.presseffect.PressEffectTextView
  * JD-Core Version:    0.7.0.1
  */

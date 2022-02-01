@@ -1,17 +1,14 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgje;
-import bgjt;
-
-public class TroopFileTransferManager$4$1
+class TroopFileTransferManager$4$1
   implements Runnable
 {
-  public TroopFileTransferManager$4$1(bgjt parambgjt, TroopFileTransferManager.Item paramItem) {}
+  TroopFileTransferManager$4$1(TroopFileTransferManager.4 param4, TroopFileTransferManager.Item paramItem) {}
   
   public void run()
   {
-    bgje localbgje = new bgje(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Bgjt.a.e, 3, 210);
-    this.jdField_a_of_type_Bgjt.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localbgje);
+    TroopFileError.SimpleErrorInfo localSimpleErrorInfo = new TroopFileError.SimpleErrorInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$4.a.e, 3, 210);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$4.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localSimpleErrorInfo);
   }
 }
 

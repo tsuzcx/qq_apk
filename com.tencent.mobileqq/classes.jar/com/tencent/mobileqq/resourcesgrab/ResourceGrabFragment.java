@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.resourcesgrab;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-import axne;
-import bbfb;
-import bbfe;
+import androidx.lifecycle.ViewModelProvider;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mvvm.LifeCycleExtKt;
 import com.tencent.mobileqq.mvvm.LifeCycleFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -20,9 +18,9 @@ import org.jetbrains.annotations.Nullable;
 public class ResourceGrabFragment
   extends LifeCycleFragment
 {
-  private bbfe jdField_a_of_type_Bbfe;
+  private ResourceGrabViewModel jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabViewModel;
   private WeakReference<ResourceGrabView> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   
   private void e()
   {
@@ -30,7 +28,7 @@ public class ResourceGrabFragment
       QLog.d("ResourceGrabFragment", 2, "doGrabResourceName");
     }
     View localView = getActivity().getWindow().getDecorView();
-    this.jdField_a_of_type_Bbfe.a(localView, true);
+    this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabViewModel.a(localView, true);
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -39,15 +37,15 @@ public class ResourceGrabFragment
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramResourceGrabView);
   }
   
-  public void a(List<bbfb> paramList)
+  void a(List<ResourceGrabSkinData> paramList)
   {
     ResourceGrabView localResourceGrabView = (ResourceGrabView)this.jdField_a_of_type_MqqUtilWeakReference.get();
     if (localResourceGrabView != null) {
-      localResourceGrabView.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bbfe.a(paramList));
+      localResourceGrabView.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabViewModel.a(paramList));
     }
   }
   
-  public boolean a()
+  boolean a()
   {
     ResourceGrabView localResourceGrabView = (ResourceGrabView)this.jdField_a_of_type_MqqUtilWeakReference.get();
     return (localResourceGrabView != null) && (localResourceGrabView.jdField_a_of_type_Boolean);
@@ -66,24 +64,23 @@ public class ResourceGrabFragment
   void c()
   {
     Object localObject = getActivity().getWindow().getDecorView();
-    this.jdField_a_of_type_Bbfe.a((View)localObject, false);
+    this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabViewModel.a((View)localObject, false);
     localObject = (ResourceGrabView)this.jdField_a_of_type_MqqUtilWeakReference.get();
     if (localObject != null) {
       ((ResourceGrabView)localObject).b();
     }
   }
   
-  public void d()
+  void d()
   {
     View localView = getActivity().getWindow().getDecorView();
-    this.jdField_a_of_type_Bbfe.a(localView, false);
+    this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabViewModel.a(localView, false);
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Bbfe = ((bbfe)axne.a(this).get(bbfe.class));
-    this.jdField_a_of_type_Bbfe.a();
+    this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabViewModel = ((ResourceGrabViewModel)LifeCycleExtKt.a(this, ResourceGrabViewModel.a).get(ResourceGrabViewModel.class));
   }
   
   public void onDestroy()
@@ -97,7 +94,7 @@ public class ResourceGrabFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabFragment
  * JD-Core Version:    0.7.0.1
  */

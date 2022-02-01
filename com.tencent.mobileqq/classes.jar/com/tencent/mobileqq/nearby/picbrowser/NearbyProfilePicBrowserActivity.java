@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import aycr;
-import aycs;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class NearbyProfilePicBrowserActivity
@@ -32,7 +29,7 @@ public class NearbyProfilePicBrowserActivity
   {
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("intent_param_show_del_pic_and_set_head", false);
     if (this.jdField_a_of_type_Boolean) {}
-    for (this.jdField_a_of_type_Aawb = new aycs(this);; this.jdField_a_of_type_Aawb = new aycr(this)) {
+    for (this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new NearbyProfilePicBrowserActivity.CustomGalleryManager(this);; this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new NearbyProfilePicBrowserActivity.1(this)) {
       return super.doOnCreate(paramBundle);
     }
   }

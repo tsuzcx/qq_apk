@@ -7,12 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class MOBILE_LIST_ITEM
   extends JceStruct
 {
-  public int _accountAbi;
-  public long _bind_uin;
-  public int _commFrdCount;
-  public int _flag;
+  public int _accountAbi = 0;
+  public long _bind_uin = 0L;
+  public int _commFrdCount = 0;
+  public int _flag = 0;
   public long _isFriend = 0L;
-  public long _isRecommend;
+  public long _isRecommend = 0L;
   public String _mobile = "";
   public String _mobileCode = "";
   public String _mobileInDCache = "";
@@ -20,9 +20,9 @@ public final class MOBILE_LIST_ITEM
   public String _nameInDCache = "";
   public String _nationCode = "";
   public String _nick_name = "";
-  public long _originBinder;
-  public long _recommendDate;
-  public int _rmdScore;
+  public long _originBinder = 0L;
+  public long _recommendDate = 0L;
+  public int _rmdScore = 0;
   public String _value = "";
   
   public MOBILE_LIST_ITEM() {}

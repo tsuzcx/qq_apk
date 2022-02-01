@@ -480,6 +480,34 @@ public class NativeViewContainer
     }
   }
   
+  private void setWebviewCookie(String paramString)
+  {
+    if ((this.mWebviewContainer.getMiniAppContext() != null) && (this.mWebviewContainer.getMiniAppContext().getMiniAppInfo() != null)) {}
+    for (Object localObject = this.mWebviewContainer.getMiniAppContext().getMiniAppInfo();; localObject = null)
+    {
+      if ((localObject != null) && (needCookieAppIdList != null) && (needCookieAppIdList.contains(((MiniAppInfo)localObject).appId)))
+      {
+        localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+        if (localObject != null) {
+          ((ChannelProxy)localObject).setWebviewCookie(this.mWebviewContainer.getAttachActivity(), paramString);
+        }
+      }
+      if (needCookieHostList == null) {
+        break;
+      }
+      paramString = needCookieHostList.iterator();
+      while (paramString.hasNext())
+      {
+        localObject = (String)paramString.next();
+        QMLog.i("NativeViewContainer", "setCookie : " + (String)localObject);
+        ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+        if (localChannelProxy != null) {
+          localChannelProxy.setWebviewCookie(this.mWebviewContainer.getAttachActivity(), (String)localObject);
+        }
+      }
+    }
+  }
+  
   private void showErrorPage(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, NativeViewRequestEvent paramNativeViewRequestEvent)
   {
     String str2 = WnsConfig.getConfig("qqminiapp", "https://m.q.qq.com/webview/error?url={url}&appid={appid}", "https://m.q.qq.com/webview/error?url={url}&appid={appid}");
@@ -619,9 +647,7 @@ public class NativeViewContainer
   
   public boolean doUpdateHTMLWebView(int paramInt, String paramString)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("NativeViewContainer", "updateHTMLWebView htmlId=" + paramInt + ",innerWebView=" + this.innerWebView + ",src=" + paramString);
-    }
+    QMLog.d("NativeViewContainer", "updateHTMLWebView htmlId=" + paramInt + ",innerWebView=" + this.innerWebView + ",src=" + paramString);
     if ((this.innerWebView == null) || (this.innerWebView.htmlId != paramInt) || (TextUtils.isEmpty(paramString))) {
       return false;
     }
@@ -630,46 +656,19 @@ public class NativeViewContainer
       QMLog.d("NativeViewContainer", "container is null");
       return false;
     }
-    if ((this.mWebviewContainer.getMiniAppContext() != null) && (this.mWebviewContainer.getMiniAppContext().getMiniAppInfo() != null)) {}
-    for (Object localObject = this.mWebviewContainer.getMiniAppContext().getMiniAppInfo();; localObject = null)
-    {
-      if ((localObject != null) && (needCookieAppIdList != null) && (needCookieAppIdList.contains(((MiniAppInfo)localObject).appId)))
-      {
-        localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-        if (localObject != null) {
-          ((ChannelProxy)localObject).setWebviewCookie(this.mWebviewContainer.getAttachActivity(), paramString);
-        }
-      }
-      if (needCookieHostList == null) {
-        break;
-      }
-      localObject = needCookieHostList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        QMLog.i("NativeViewContainer", "setCookie : " + str);
-        ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-        if (localChannelProxy != null) {
-          localChannelProxy.setWebviewCookie(this.mWebviewContainer.getAttachActivity(), str);
-        }
-      }
-    }
+    setWebviewCookie(paramString);
     this.innerWebView.init(this.mWebviewContainer.getMiniAppContext());
     this.innerWebView.setVisibility(0);
-    if (QMLog.isColorLevel())
-    {
-      localObject = CookieManager.getInstance().getCookie(paramString);
-      QMLog.e("NativeViewContainer", "cookie : " + (String)localObject);
-    }
+    String str = CookieManager.getInstance().getCookie(paramString);
+    QMLog.e("NativeViewContainer", "cookie : " + str);
     this.innerWebView.loadUrl(paramString);
     try
     {
-      if (QMLog.isColorLevel()) {
-        QMLog.e("NativeViewContainer", "innerWebView.hasFocus() : " + this.innerWebView.hasFocus());
-      }
+      QMLog.e("NativeViewContainer", "innerWebView.hasFocus() : " + this.innerWebView.hasFocus());
       if (!this.innerWebView.hasFocus()) {
         this.innerWebView.requestFocus();
       }
+      return true;
     }
     catch (Throwable paramString)
     {
@@ -678,7 +677,6 @@ public class NativeViewContainer
         QMLog.e("NativeViewContainer", "innerWebView requestFocuserror,", paramString);
       }
     }
-    return true;
   }
   
   public boolean doUpdateHTMLWebView(int paramInt, JSONObject paramJSONObject)
@@ -1306,7 +1304,7 @@ public class NativeViewContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.NativeViewContainer
  * JD-Core Version:    0.7.0.1
  */

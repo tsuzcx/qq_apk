@@ -9,9 +9,9 @@ public class Task
 {
   public static int STATUS_ACCEPT;
   public static int STATUS_FAIL;
-  public static int STATUS_INIT = 1;
+  public static int STATUS_INIT;
   public static int STATUS_QUIT;
-  public static int STATUS_READY;
+  public static int STATUS_READY = 0;
   public static int STATUS_STOP;
   public static int TYPE_CHECK = 4;
   public static int TYPE_DISTRIBUTION;
@@ -30,10 +30,12 @@ public class Task
   
   static
   {
+    STATUS_INIT = 1;
     STATUS_ACCEPT = 2;
     STATUS_STOP = 3;
     STATUS_QUIT = 4;
     STATUS_FAIL = 5;
+    TYPE_FILTER = 0;
     TYPE_EXTRACTION = 1;
     TYPE_PROCESS = 2;
     TYPE_DISTRIBUTION = 3;
@@ -46,7 +48,7 @@ public class Task
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.Task
  * JD-Core Version:    0.7.0.1
  */

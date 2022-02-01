@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class RespondQueryIPwdStat
   extends JceStruct
 {
-  public long uIsSetPwd;
+  public long uIsSetPwd = 0L;
   
   public RespondQueryIPwdStat() {}
   

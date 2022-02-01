@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.profilecard.bussiness.qzone;
 
-import baca;
-
-public class ProfileQZoneComponent$7
+class ProfileQZoneComponent$7
   implements Runnable
 {
-  public ProfileQZoneComponent$7(baca parambaca) {}
+  ProfileQZoneComponent$7(ProfileQZoneComponent paramProfileQZoneComponent) {}
   
   public void run()
   {
-    this.this$0.a();
+    this.this$0.onBackPressed();
   }
 }
 

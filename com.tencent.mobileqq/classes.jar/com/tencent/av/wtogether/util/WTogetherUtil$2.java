@@ -1,19 +1,19 @@
 package com.tencent.av.wtogether.util;
 
-import aaqo;
 import android.app.Activity;
+import com.tencent.biz.webviewplugin.NewReportPlugin;
 import com.tencent.qphone.base.util.QLog;
 
-public final class WTogetherUtil$2
+final class WTogetherUtil$2
   implements Runnable
 {
-  public WTogetherUtil$2(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
+  WTogetherUtil$2(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
   
   public void run()
   {
     try
     {
-      String str = aaqo.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, null, null, this.b, this.c, this.d, this.jdField_a_of_type_Int, aaqo.a(this.jdField_a_of_type_Int), "avreport", "", "", "", "", "", "", "", null);
+      String str = NewReportPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, null, null, this.b, this.c, this.d, this.jdField_a_of_type_Int, NewReportPlugin.a(this.jdField_a_of_type_Int), "avreport", "", "", "", "", "", "", "", null);
       if (QLog.isColorLevel()) {
         QLog.d("WTogether", 1, "safetyNewReport postData=" + str);
       }
@@ -28,7 +28,7 @@ public final class WTogetherUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.util.WTogetherUtil.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,17 @@ import android.graphics.Shader.TileMode;
 import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-import aynj;
 import com.tencent.mobileqq.R.styleable;
 
 public class GradientAnimTextView
   extends TextView
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private LinearGradient jdField_a_of_type_AndroidGraphicsLinearGradient;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int b;
+  private int b = 0;
   private int c = -1;
   private int d = -1;
   
@@ -40,7 +39,7 @@ public class GradientAnimTextView
     paramContext.recycle();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
@@ -48,7 +47,7 @@ public class GradientAnimTextView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
@@ -57,7 +56,7 @@ public class GradientAnimTextView
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1500L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aynj(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new GradientAnimTextView.1(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
     if (this.jdField_a_of_type_AndroidGraphicsMatrix != null)
@@ -67,7 +66,7 @@ public class GradientAnimTextView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((this.c == -1) || (this.d == -2)) {}

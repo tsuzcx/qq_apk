@@ -3,7 +3,6 @@ package com.tencent.ttpic.openapi.util;
 import android.opengl.Matrix;
 import android.util.Log;
 import java.util.Arrays;
-import java.util.List;
 
 public class MatrixUtil
 {
@@ -22,21 +21,6 @@ public class MatrixUtil
     mIdentityMatrix = new float[16];
     TRANSLATE_IDENTITY = new float[] { 0.0F, 0.0F, 0.0F };
     SCALE_IDENTITY = new float[] { 1.0F, 1.0F, 1.0F };
-  }
-  
-  public static float[] compose(List<Float> paramList1, List<Float> paramList2, List<Float> paramList3)
-  {
-    float[] arrayOfFloat1 = new float[16];
-    float[] arrayOfFloat2 = new float[16];
-    float[] arrayOfFloat3 = new float[16];
-    float[] arrayOfFloat4 = new float[16];
-    Matrix.setIdentityM(arrayOfFloat1, 0);
-    Matrix.translateM(arrayOfFloat1, 0, ((Float)paramList1.get(0)).floatValue(), ((Float)paramList1.get(1)).floatValue(), ((Float)paramList1.get(2)).floatValue());
-    Matrix.scaleM(arrayOfFloat1, 0, ((Float)paramList2.get(0)).floatValue(), ((Float)paramList2.get(1)).floatValue(), ((Float)paramList2.get(2)).floatValue());
-    Matrix.rotateM(arrayOfFloat4, 0, arrayOfFloat1, 0, ((Float)paramList3.get(2)).floatValue(), 0.0F, 0.0F, 1.0F);
-    Matrix.rotateM(arrayOfFloat3, 0, arrayOfFloat4, 0, ((Float)paramList3.get(1)).floatValue(), 0.0F, 1.0F, 0.0F);
-    Matrix.rotateM(arrayOfFloat2, 0, arrayOfFloat3, 0, ((Float)paramList3.get(0)).floatValue(), 1.0F, 0.0F, 0.0F);
-    return arrayOfFloat2;
   }
   
   public static float[] compose(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3)
@@ -371,7 +355,7 @@ public class MatrixUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.MatrixUtil
  * JD-Core Version:    0.7.0.1
  */

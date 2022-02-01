@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import java.lang.ref.WeakReference;
 
-public class ChatHistoryTroopMemberFragment$SearchDialogDismissRunnable
+class ChatHistoryTroopMemberFragment$SearchDialogDismissRunnable
   implements Runnable
 {
   private WeakReference<ChatHistoryTroopMemberFragment> a;
@@ -35,7 +35,7 @@ public class ChatHistoryTroopMemberFragment$SearchDialogDismissRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable
  * JD-Core Version:    0.7.0.1
  */

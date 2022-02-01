@@ -18,7 +18,7 @@ class BaselibVersionCheckTask$1
   {
     if (paramBoolean)
     {
-      paramBundle = StorageUtil.getPreference().getString("version", "1.19.0.00043");
+      paramBundle = StorageUtil.getPreference().getString("version", "1.22.0.00008");
       QMLog.i("BaselibVersionCheckTask", "updateBaseLib succ. version=" + paramBundle);
       if ((this.val$miniAppInfo != null) && ((TextUtils.isEmpty(paramBundle)) || (BaseLibInfo.needUpdateVersion(this.val$miniAppInfo.baselibMiniVersion, paramBundle))))
       {
@@ -34,7 +34,7 @@ class BaselibVersionCheckTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.BaselibVersionCheckTask.1
  * JD-Core Version:    0.7.0.1
  */

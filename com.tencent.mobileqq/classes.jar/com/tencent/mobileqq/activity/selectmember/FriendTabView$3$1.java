@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alxn;
 import android.view.View;
 
-public class FriendTabView$3$1
+class FriendTabView$3$1
   implements Runnable
 {
-  public FriendTabView$3$1(alxn paramalxn, View paramView) {}
+  FriendTabView$3$1(FriendTabView.3 param3, View paramView) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class FriendTabView$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.FriendTabView.3.1
  * JD-Core Version:    0.7.0.1
  */

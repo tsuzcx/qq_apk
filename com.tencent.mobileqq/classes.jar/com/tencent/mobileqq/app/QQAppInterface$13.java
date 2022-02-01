@@ -1,37 +1,33 @@
 package com.tencent.mobileqq.app;
 
-import android.net.Uri;
-import android.text.TextUtils;
-import bhcl;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.SkinEngine;
-import java.io.File;
+import com.tencent.securemodule.impl.AppInfo;
+import com.tencent.securemodule.service.CloudScanListener;
+import java.util.List;
 
 class QQAppInterface$13
-  implements Runnable
+  implements CloudScanListener
 {
-  QQAppInterface$13(QQAppInterface paramQQAppInterface, int paramInt) {}
+  QQAppInterface$13(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onFinish(int paramInt)
   {
-    boolean bool1 = this.this$0.isVideoChatting();
-    boolean bool2 = this.this$0.canPlayThemeSound();
-    if ((!this.this$0.isRingerSilent()) && (bool2) && (!bool1) && (!this.this$0.isRingerVibrate()) && (!this.this$0.isRingEqualsZero()) && (this.this$0.isCallIdle()) && (this.this$0.recordingPttStopped()))
-    {
-      Object localObject = SkinEngine.getInstances().getSkinRootPath();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = new StringBuilder((String)localObject);
-        ((StringBuilder)localObject).append(File.separatorChar).append("voice").append(File.separatorChar).append("tab").append(this.val$tabIndex).append(".mp3");
-        File localFile = new File(((StringBuilder)localObject).toString());
-        if (QLog.isColorLevel()) {
-          QLog.d("playThemeVoice", 2, "Uri:" + ((StringBuilder)localObject).toString());
-        }
-        if (localFile.exists()) {
-          bhcl.a(Uri.fromFile(localFile), false, false);
-        }
-      }
+    if (paramInt == 0) {
+      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.access$2200(this.this$0)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
     }
+  }
+  
+  public void onRiskFoud(List<AppInfo> paramList) {}
+  
+  public void onRiskFound()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("security_scan", 2, "Find Risk");
+    }
+    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.access$2100(this.this$0)).edit().putBoolean("security_scan_last_result", true).commit();
   }
 }
 

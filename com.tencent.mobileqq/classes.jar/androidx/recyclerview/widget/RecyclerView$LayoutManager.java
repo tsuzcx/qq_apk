@@ -22,7 +22,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.CollectionInfoCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.CollectionItemInfoCompat;
-import f;
+import androidx.recyclerview.R.styleable;
 import java.util.ArrayList;
 
 public abstract class RecyclerView$LayoutManager
@@ -279,11 +279,11 @@ public abstract class RecyclerView$LayoutManager
   public static RecyclerView.LayoutManager.Properties getProperties(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
     RecyclerView.LayoutManager.Properties localProperties = new RecyclerView.LayoutManager.Properties();
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, f.f, paramInt1, paramInt2);
-    localProperties.orientation = paramContext.getInt(f.a, 1);
-    localProperties.spanCount = paramContext.getInt(f.k, 1);
-    localProperties.reverseLayout = paramContext.getBoolean(f.j, false);
-    localProperties.stackFromEnd = paramContext.getBoolean(f.l, false);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.f, paramInt1, paramInt2);
+    localProperties.orientation = paramContext.getInt(R.styleable.a, 1);
+    localProperties.spanCount = paramContext.getInt(R.styleable.k, 1);
+    localProperties.reverseLayout = paramContext.getBoolean(R.styleable.j, false);
+    localProperties.stackFromEnd = paramContext.getBoolean(R.styleable.l, false);
     paramContext.recycle();
     return localProperties;
   }
@@ -1574,7 +1574,7 @@ public abstract class RecyclerView$LayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.LayoutManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo;
 
-import ampx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
@@ -30,8 +29,8 @@ class ApolloRenderDriver$4
         i += 1;
       }
       this.this$0.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_Ampx != null)) {
-        this.this$0.jdField_a_of_type_Ampx.onRender();
+      if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null)) {
+        this.this$0.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
       }
       return;
     }
@@ -43,7 +42,7 @@ class ApolloRenderDriver$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRenderDriver.4
  * JD-Core Version:    0.7.0.1
  */

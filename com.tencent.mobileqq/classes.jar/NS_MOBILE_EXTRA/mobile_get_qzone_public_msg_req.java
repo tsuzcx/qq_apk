@@ -10,8 +10,8 @@ public final class mobile_get_qzone_public_msg_req
   extends JceStruct
 {
   static Map<String, String> cache_map_ext = new HashMap();
-  public Map<String, String> map_ext;
-  public long uin;
+  public Map<String, String> map_ext = null;
+  public long uin = 0L;
   
   static
   {

@@ -2,14 +2,14 @@ package cooperation.qqcircle.report.outbox;
 
 import android.content.ContentValues;
 import android.os.Parcel;
-import com.tencent.component.app.common.ParcelableWrapper;
-import com.tencent.open.component.cache.database.DbCacheData;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
+import com.tencent.mobileqq.qcircle.api.db.DbCacheData;
+import com.tencent.mobileqq.qcircle.api.db.IDBCacheDataWrapper.DbCreator;
+import com.tencent.mobileqq.qcircle.api.db.util.ParcelableWrapper;
 
 public class QCircleReportOutboxTaskCacheData
   extends DbCacheData
 {
-  public static final DbCacheData.DbCreator<QCircleReportOutboxTaskCacheData> DB_CREATOR = new QCircleReportOutboxTaskCacheData.1();
+  public static final IDBCacheDataWrapper.DbCreator<QCircleReportOutboxTaskCacheData> DB_CREATOR = new QCircleReportOutboxTaskCacheData.1();
   private static final int VERSION = 1;
   private QCircleReportOutboxTask mTask;
   
@@ -44,7 +44,7 @@ public class QCircleReportOutboxTaskCacheData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskCacheData
  * JD-Core Version:    0.7.0.1
  */

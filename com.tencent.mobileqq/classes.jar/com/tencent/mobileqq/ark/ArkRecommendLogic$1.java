@@ -1,15 +1,12 @@
 package com.tencent.mobileqq.ark;
 
-import apww;
-import apzi;
-
 final class ArkRecommendLogic$1
   implements Runnable
 {
   public void run()
   {
-    apww.a(null);
-    apzi.a();
+    ArkAiDictMgr.a(null);
+    ArkMessageServerLogic.a();
   }
 }
 

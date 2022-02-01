@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.text.TextPaint;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -13,8 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import com.tencent.ttpic.baseutils.string.StringUtils;
-import com.tencent.ttpic.openapi.model.TextWMElement;
 
 public class EditTextDialog
   extends ReportDialog
@@ -32,7 +29,7 @@ public class EditTextDialog
   
   public EditTextDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755359);
+    super(paramContext, 2131755365);
     initView(paramContext);
     paramContext = getWindow();
     if (paramContext != null) {
@@ -50,39 +47,17 @@ public class EditTextDialog
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131558510, null);
-    this.mEditText = ((EditText)paramContext.findViewById(2131365959));
-    this.mEditTip = ((TextView)paramContext.findViewById(2131365962));
-    this.mCancelView = ((TextView)paramContext.findViewById(2131364250));
-    this.mConfirmView = ((Button)paramContext.findViewById(2131365067));
-    this.mCleanTextView = ((ImageView)paramContext.findViewById(2131364070));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131558518, null);
+    this.mEditText = ((EditText)paramContext.findViewById(2131366124));
+    this.mEditTip = ((TextView)paramContext.findViewById(2131366127));
+    this.mCancelView = ((TextView)paramContext.findViewById(2131364357));
+    this.mConfirmView = ((Button)paramContext.findViewById(2131365202));
+    this.mCleanTextView = ((ImageView)paramContext.findViewById(2131364175));
     this.mEditText.addTextChangedListener(new EditTextDialog.1(this));
     this.mConfirmView.setOnClickListener(new EditTextDialog.2(this));
     this.mCancelView.setOnClickListener(new EditTextDialog.3(this));
     this.mCleanTextView.setOnClickListener(new EditTextDialog.4(this));
     setContentView(paramContext);
-  }
-  
-  public void setDefaultEditText(TextWMElement paramTextWMElement, boolean paramBoolean)
-  {
-    String str1 = paramTextWMElement.userValue;
-    String str2 = paramTextWMElement.color;
-    initTextPaint();
-    if ((TextUtils.isEmpty(str1)) && (paramBoolean)) {
-      if (!TextUtils.isEmpty(paramTextWMElement.fmtstr))
-      {
-        this.mEditText.setText(paramTextWMElement.fmtstr);
-        this.mEditText.setSelection(paramTextWMElement.fmtstr.length());
-      }
-    }
-    for (;;)
-    {
-      this.mEditText.selectAll();
-      return;
-      paramTextWMElement = StringUtils.removeUTF8Emoji(str1);
-      this.mEditText.setText(paramTextWMElement);
-      this.mEditText.setSelection(paramTextWMElement.length());
-    }
   }
   
   public void setEditMaxLength(int paramInt)
@@ -97,7 +72,7 @@ public class EditTextDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.EditTextDialog
  * JD-Core Version:    0.7.0.1
  */

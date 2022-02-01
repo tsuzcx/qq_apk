@@ -137,7 +137,8 @@ public class EnginePackageManager
   
   public static MiniEnginePackage getEnginePackage()
   {
-    return new MiniEnginePackage(new File(getJsPath()), getTritonVersion(), new File(getTritonPath()), getTritonDexPath(getTritonPath()), GameWnsUtils.getGlobalConfig());
+    String str = getJsPath();
+    return new MiniEnginePackage(getJsVersionByPath(str), new File(str), getTritonVersion(), new File(getTritonPath()), getTritonDexPath(getTritonPath()), GameWnsUtils.getGlobalConfig());
   }
   
   private static String getInnerJsPath()
@@ -149,14 +150,14 @@ public class EnginePackageManager
   private static String getJsPath()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", "mini");
-    String str2 = StorageUtil.getPreference().getString("version", "1.19.0.00043");
+    String str2 = StorageUtil.getPreference().getString("version", "1.22.0.00008");
     str1 = BaseLibManager.g().getBaseLibDir(str1, str2);
     str2 = getInnerJsPath();
     str1 = getNewestBaseLib(getTritonPath(), getNewestBaseLib(str1, str2));
     if (str1 != null) {
       return str1;
     }
-    return BaseLibManager.g().getBaseLibDir("mini", "1.19.0.00043");
+    return BaseLibManager.g().getBaseLibDir("mini", "1.22.0.00008");
   }
   
   private static Version getJsVersionByPath(String paramString)
@@ -198,7 +199,7 @@ public class EnginePackageManager
   
   private static Version getLocalTritonVersion()
   {
-    Version localVersion = getTritonVersionFromJSONStr("{\n    \"triton_info\": {\n        \"version\": \"1.8.0.66.3735de7\",\n        \"timestamp\": 1600749448814\n    }\n}");
+    Version localVersion = getTritonVersionFromJSONStr("{\n    \"triton_info\": {\n        \"version\": \"1.8.0.74.062e92e\",\n        \"timestamp\": 1609833458180\n    }\n}");
     GameLog.getInstance().i("GameEnvManager[MiniEng]", "getLocalTritonVersion:" + localVersion);
     return localVersion;
   }
@@ -288,7 +289,7 @@ public class EnginePackageManager
     //   0: ldc 2
     //   2: monitorenter
     //   3: getstatic 424	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
-    //   6: invokestatic 345	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: invokestatic 347	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   9: ifne +12 -> 21
     //   12: getstatic 424	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
     //   15: astore_0
@@ -407,6 +408,50 @@ public class EnginePackageManager
     return paramString;
   }
   
+  private static boolean isVerifyListValid(File paramFile, boolean paramBoolean, JSONArray paramJSONArray)
+  {
+    int i = 0;
+    if (i < paramJSONArray.length())
+    {
+      if (paramJSONArray.get(i) == null) {
+        GameLog.getInstance().e("GameEnvManager[MiniEng]", "配置文件格式异常！！请使用json工具检测");
+      }
+      Object localObject2;
+      String str;
+      Object localObject1;
+      do
+      {
+        do
+        {
+          do
+          {
+            i += 1;
+            break;
+            localObject2 = (JSONObject)paramJSONArray.get(i);
+            str = ((JSONObject)localObject2).optString("name");
+          } while (TextUtils.isEmpty(str));
+          localObject1 = new File(paramFile, str);
+          if ((!((File)localObject1).exists()) || (!((File)localObject1).isFile()))
+          {
+            GameLog.getInstance().w("GameEnvManager[MiniEng]", "verifyEngine file " + str + " not found");
+            return false;
+          }
+          int j = ((JSONObject)localObject2).optInt("length");
+          if ((j > 0) && (((File)localObject1).length() != j))
+          {
+            GameLog.getInstance().w("GameEnvManager[MiniEng]", "verifyEngine file " + str + " length fail, config_length:" + j + ", local_length:" + ((File)localObject1).length());
+            return false;
+          }
+          localObject2 = ((JSONObject)localObject2).optString("md5");
+        } while (TextUtils.isEmpty((CharSequence)localObject2));
+        localObject1 = calcMD5(((File)localObject1).getAbsolutePath());
+      } while ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject2).equalsIgnoreCase((String)localObject1)));
+      GameLog.getInstance().w("GameEnvManager[MiniEng]", "verifyEngine file " + str + " md5 fail, config_md5:" + (String)localObject2 + ", local_md5:" + (String)localObject1);
+      return false;
+    }
+    return paramBoolean;
+  }
+  
   private static void onDownloadLatestTritonEngineSuccess(Version paramVersion, String paramString)
   {
     for (;;)
@@ -469,97 +514,49 @@ public class EnginePackageManager
   
   private static boolean verifyEngine(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    if (TextUtils.isEmpty(paramString)) {}
+    File localFile;
+    do
+    {
       return false;
-    }
-    File localFile = new File(paramString);
-    if ((!localFile.exists()) || (localFile.isFile())) {
-      return false;
-    }
-    boolean bool;
+      localFile = new File(paramString);
+    } while ((!localFile.exists()) || (localFile.isFile()));
     try
     {
-      localObject1 = new File(localFile, "verify.json");
-      if ((((File)localObject1).exists()) && (((File)localObject1).isFile())) {
-        break label122;
+      Object localObject = new File(localFile, "verify.json");
+      if ((!((File)localObject).exists()) || (!((File)localObject).isFile()))
+      {
+        GameLog.getInstance().i("GameEnvManager[MiniEng]", "verifyEngine " + paramString + " has no verify.json, skip!");
+        return true;
       }
-      GameLog.getInstance().i("GameEnvManager[MiniEng]", "verifyEngine " + paramString + " has no verify.json, skip!");
-      return true;
+      localObject = FileUtils.readFileToString((File)localObject);
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        GameLog.getInstance().i("GameEnvManager[MiniEng]", "verifyEngine " + paramString + " verify.json has no content, skip!");
+        return true;
+      }
+      if (QMLog.isColorLevel()) {
+        GameLog.getInstance().d("GameEnvManager[MiniEng]", "verifyEngine " + paramString + " content:" + (String)localObject);
+      }
+      localObject = new JSONObject((String)localObject);
+      if (!((JSONObject)localObject).has("verify_list"))
+      {
+        GameLog.getInstance().i("GameEnvManager[MiniEng]", "verifyEngine " + paramString + " verify.json has no verify_list, skip!");
+        return true;
+      }
+      boolean bool = isVerifyListValid(localFile, true, ((JSONObject)localObject).getJSONArray("verify_list"));
+      return bool;
     }
     catch (Throwable paramString)
     {
       GameLog.getInstance().e("GameEnvManager[MiniEng]", "verifyEngine exception.", paramString);
-      bool = false;
     }
-    return bool;
-    label122:
-    Object localObject1 = FileUtils.readFileToString((File)localObject1);
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      GameLog.getInstance().i("GameEnvManager[MiniEng]", "verifyEngine " + paramString + " verify.json has no content, skip!");
-      return true;
-    }
-    if (QMLog.isColorLevel()) {
-      GameLog.getInstance().d("GameEnvManager[MiniEng]", "verifyEngine " + paramString + " content:" + (String)localObject1);
-    }
-    localObject1 = new JSONObject((String)localObject1);
-    if (!((JSONObject)localObject1).has("verify_list"))
-    {
-      GameLog.getInstance().i("GameEnvManager[MiniEng]", "verifyEngine " + paramString + " verify.json has no verify_list, skip!");
-      return true;
-    }
-    paramString = ((JSONObject)localObject1).getJSONArray("verify_list");
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramString.length())
-      {
-        if (paramString.get(i) == null)
-        {
-          GameLog.getInstance().e("GameEnvManager[MiniEng]", "配置文件格式异常！！请使用json工具检测");
-          break label610;
-        }
-        Object localObject3 = (JSONObject)paramString.get(i);
-        localObject1 = ((JSONObject)localObject3).optString("name");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label610;
-        }
-        Object localObject2 = new File(localFile, (String)localObject1);
-        if ((!((File)localObject2).exists()) || (!((File)localObject2).isFile()))
-        {
-          GameLog.getInstance().w("GameEnvManager[MiniEng]", "verifyEngine file " + (String)localObject1 + " not found");
-          bool = false;
-          break;
-        }
-        int j = ((JSONObject)localObject3).optInt("length");
-        if ((j > 0) && (((File)localObject2).length() != j))
-        {
-          GameLog.getInstance().w("GameEnvManager[MiniEng]", "verifyEngine file " + (String)localObject1 + " length fail, config_length:" + j + ", local_length:" + ((File)localObject2).length());
-          bool = false;
-          break;
-        }
-        localObject3 = ((JSONObject)localObject3).optString("md5");
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label610;
-        }
-        localObject2 = calcMD5(((File)localObject2).getAbsolutePath());
-        if ((TextUtils.isEmpty((CharSequence)localObject2)) || (((String)localObject3).equalsIgnoreCase((String)localObject2))) {
-          break label610;
-        }
-        GameLog.getInstance().w("GameEnvManager[MiniEng]", "verifyEngine file " + (String)localObject1 + " md5 fail, config_md5:" + (String)localObject3 + ", local_md5:" + (String)localObject2);
-        bool = false;
-        break;
-      }
-      bool = true;
-      break;
-      label610:
-      i += 1;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.EnginePackageManager
  * JD-Core Version:    0.7.0.1
  */

@@ -15,18 +15,18 @@ public final class cell_live
   static ArrayList<SpecialMsg> cache_vctCommentList;
   static ArrayList<liveUser> cache_vctLiveUserList;
   public String exception_tips = "";
-  public Map<String, String> extendInfo;
-  public int giftNum;
-  public int likeNum;
-  public int liveType;
-  public int livetime;
-  public Map<Integer, String> mapExtendInfo;
+  public Map<String, String> extendInfo = null;
+  public int giftNum = 0;
+  public int likeNum = 0;
+  public int liveType = 0;
+  public int livetime = 0;
+  public Map<Integer, String> mapExtendInfo = null;
   public String roomid = "";
-  public int roomstat;
+  public int roomstat = 0;
   public String tipsMessage = "";
-  public int usercount;
-  public ArrayList<SpecialMsg> vctCommentList;
-  public ArrayList<liveUser> vctLiveUserList;
+  public int usercount = 0;
+  public ArrayList<SpecialMsg> vctCommentList = null;
+  public ArrayList<liveUser> vctLiveUserList = null;
   
   static
   {

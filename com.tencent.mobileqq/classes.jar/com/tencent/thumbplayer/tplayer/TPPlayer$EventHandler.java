@@ -11,7 +11,7 @@ import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 import com.tencent.thumbplayer.datatransport.ITPPlayManager;
-import com.tencent.thumbplayer.utils.TPLogUtil;
+import com.tencent.thumbplayer.log.TPBaseLogger;
 
 @SuppressLint({"HandlerLeak"})
 class TPPlayer$EventHandler
@@ -32,7 +32,7 @@ class TPPlayer$EventHandler
   
   public void handleMessage(Message paramMessage)
   {
-    TPLogUtil.d(TPPlayer.access$700(this.this$0), "mTransformHandler msg : " + paramMessage.what);
+    TPPlayer.access$700(this.this$0).debug("mTransformHandler msg : " + paramMessage.what);
     TPPlayerListeners localTPPlayerListeners = TPPlayer.access$1000(this.this$0);
     if (localTPPlayerListeners == null) {}
     do
@@ -50,7 +50,7 @@ class TPPlayer$EventHandler
           default: 
             return;
           case 257: 
-            TPLogUtil.i(TPPlayer.access$700(this.this$0), "onPrepared");
+            TPPlayer.access$700(this.this$0).info("onPrepared");
             localTPPlayerListeners.onPrepared(this.mPlayer);
             return;
           case 260: 
@@ -96,6 +96,8 @@ class TPPlayer$EventHandler
     return;
     localTPPlayerListeners.onInfo(this.mPlayer, 1004, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
     return;
+    localTPPlayerListeners.onInfo(this.mPlayer, 2100, 0L, 0L, paramMessage.obj);
+    return;
     localTPPlayerListeners.onInfo(this.mPlayer, 1005, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
     return;
     localTPPlayerListeners.onInfo(this.mPlayer, 1006, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
@@ -116,7 +118,7 @@ class TPPlayer$EventHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer.EventHandler
  * JD-Core Version:    0.7.0.1
  */

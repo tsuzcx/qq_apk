@@ -3,7 +3,6 @@ package com.tencent.mobileqq.theme.diy;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import beix;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,7 +25,7 @@ public class ThemeDiyStyleLogic
   static final String BUNDLE_OPERATE_BACK_CODE = "operateBackCode";
   static final String BUNDLE_OPERATE_NEXT = "nextOperate";
   static final String BUNDLE_OPERATE_NOW = "nowOperate";
-  private static String DIR_DIY;
+  private static String DIR_DIY = null;
   public static final int OPERATE_CODE_GO_ERROR = 8;
   public static final int OPERATE_CODE_GO_OFF = 6;
   public static final int OPERATE_CODE_GO_ON = 4;
@@ -44,7 +43,7 @@ public class ThemeDiyStyleLogic
   QQAppInterface app;
   Context mContext;
   public HashMap<Integer, String> reportMap = new HashMap();
-  public beix saveDealCallBack;
+  public ThemeDiyStyleLogic.StyleCallBack saveDealCallBack;
   public int styleState;
   
   public ThemeDiyStyleLogic(QQAppInterface paramQQAppInterface, Context paramContext)

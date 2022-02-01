@@ -6,12 +6,12 @@ import android.os.Parcelable.Creator;
 final class ResultRecord$1
   implements Parcelable.Creator<ResultRecord>
 {
-  public ResultRecord createFromParcel(Parcel paramParcel)
+  public ResultRecord a(Parcel paramParcel)
   {
     return new ResultRecord(paramParcel, null);
   }
   
-  public ResultRecord[] newArray(int paramInt)
+  public ResultRecord[] a(int paramInt)
   {
     return new ResultRecord[paramInt];
   }

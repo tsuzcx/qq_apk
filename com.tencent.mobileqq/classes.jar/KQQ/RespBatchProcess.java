@@ -9,7 +9,7 @@ public final class RespBatchProcess
   extends JceStruct
 {
   static ArrayList<BatchResponse> cache_batch_response_list;
-  public ArrayList<BatchResponse> batch_response_list;
+  public ArrayList<BatchResponse> batch_response_list = null;
   
   public RespBatchProcess() {}
   
@@ -38,7 +38,7 @@ public final class RespBatchProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.RespBatchProcess
  * JD-Core Version:    0.7.0.1
  */

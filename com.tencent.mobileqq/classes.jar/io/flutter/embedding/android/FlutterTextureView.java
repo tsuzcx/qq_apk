@@ -20,6 +20,8 @@ public class FlutterTextureView
   private FlutterRenderer flutterRenderer;
   private boolean isAttachedToFlutterRenderer = false;
   private boolean isSurfaceAvailableForRendering = false;
+  @Nullable
+  private Surface renderSurface;
   private final TextureView.SurfaceTextureListener surfaceTextureListener = new FlutterTextureView.1(this);
   
   public FlutterTextureView(@NonNull Context paramContext)
@@ -53,7 +55,8 @@ public class FlutterTextureView
   {
     if ((this.flutterRenderer != null) && (getSurfaceTexture() != null))
     {
-      this.flutterRenderer.startRenderingToSurface(new Surface(getSurfaceTexture()));
+      this.renderSurface = new Surface(getSurfaceTexture());
+      this.flutterRenderer.startRenderingToSurface(this.renderSurface);
       return;
     }
     throw new IllegalStateException("connectSurfaceToRenderer() should only be called when flutterRenderer and getSurfaceTexture() are non-null.");
@@ -64,6 +67,11 @@ public class FlutterTextureView
     if (this.flutterRenderer != null)
     {
       this.flutterRenderer.stopRenderingToSurface();
+      if (this.renderSurface != null)
+      {
+        this.renderSurface.release();
+        this.renderSurface = null;
+      }
       return;
     }
     throw new IllegalStateException("disconnectSurfaceFromRenderer() should only be called when flutterRenderer is non-null.");
@@ -112,10 +120,21 @@ public class FlutterTextureView
   {
     return this.flutterRenderer;
   }
+  
+  public void pause()
+  {
+    if (this.flutterRenderer != null)
+    {
+      this.flutterRenderer = null;
+      this.isAttachedToFlutterRenderer = false;
+      return;
+    }
+    Log.w("FlutterTextureView", "pause() invoked when no FlutterRenderer was attached.");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterTextureView
  * JD-Core Version:    0.7.0.1
  */

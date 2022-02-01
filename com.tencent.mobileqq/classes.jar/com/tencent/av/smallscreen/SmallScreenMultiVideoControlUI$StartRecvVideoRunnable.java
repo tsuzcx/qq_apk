@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 class SmallScreenMultiVideoControlUI$StartRecvVideoRunnable
   implements Runnable
 {
-  public String a;
+  public String a = null;
   
   SmallScreenMultiVideoControlUI$StartRecvVideoRunnable(SmallScreenMultiVideoControlUI paramSmallScreenMultiVideoControlUI) {}
   
@@ -19,7 +19,7 @@ class SmallScreenMultiVideoControlUI$StartRecvVideoRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI.StartRecvVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

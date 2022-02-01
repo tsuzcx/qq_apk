@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bece;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.teamwork.TeamWorkHttpUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +24,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8
       }
       ((JSONObject)localObject).put("prvurl", this.a);
       String str = String.format("https://%s.docs.qq.com/preview/imp/save_to_mylist", new Object[] { this.this$0.mApp.getCurrentAccountUin() });
-      localObject = bece.b((JSONObject)localObject, this.this$0.mApp.getCurrentAccountUin(), str, "docs.qq.com");
+      localObject = TeamWorkHttpUtils.b((JSONObject)localObject, this.this$0.mApp.getCurrentAccountUin(), str, "docs.qq.com");
       this.this$0.c((String)localObject);
       return;
     }
@@ -36,7 +36,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.8
  * JD-Core Version:    0.7.0.1
  */

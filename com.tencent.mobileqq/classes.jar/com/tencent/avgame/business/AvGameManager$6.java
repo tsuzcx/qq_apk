@@ -1,22 +1,21 @@
 package com.tencent.avgame.business;
 
-import aojq;
+import com.tencent.avgame.util.AvGameEntranceUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.avgameshare.AVGameShareUtil;
 import com.tencent.qphone.base.util.QLog;
-import ncz;
-import nqi;
 
-public class AvGameManager$6
+class AvGameManager$6
   implements Runnable
 {
-  public AvGameManager$6(ncz paramncz, String paramString1, String paramString2) {}
+  AvGameManager$6(AvGameManager paramAvGameManager, String paramString1, String paramString2) {}
   
   public void run()
   {
     try
     {
-      String str = ncz.a(this.this$0).getCurrentNickname();
-      aojq.a().a(ncz.a(this.this$0), 0, this.a, nqi.a(this.b), ncz.a(this.this$0).getLongAccountUin(), str, 1, "", 1);
+      String str = AvGameManager.a(this.this$0).getCurrentNickname();
+      AVGameShareUtil.a().a(AvGameManager.a(this.this$0), 0, this.a, AvGameEntranceUtil.a(this.b), AvGameManager.a(this.this$0).getLongAccountUin(), str, 1, "", 1);
       return;
     }
     catch (Exception localException)
@@ -27,7 +26,7 @@ public class AvGameManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.business.AvGameManager.6
  * JD-Core Version:    0.7.0.1
  */

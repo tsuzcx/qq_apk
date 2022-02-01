@@ -8,7 +8,7 @@ public final class GetItemWatchWordRsp
   extends JceStruct
 {
   public String errmsg = "";
-  public int ret;
+  public int ret = 0;
   public String sharemsg = "";
   
   public GetItemWatchWordRsp() {}

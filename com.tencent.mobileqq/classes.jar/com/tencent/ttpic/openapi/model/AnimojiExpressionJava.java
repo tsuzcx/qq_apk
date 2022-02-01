@@ -5,13 +5,12 @@ import com.tencent.ttpic.gameplaysdk.model.Range;
 public class AnimojiExpressionJava
 {
   public String controlledName;
-  public Range controlledRange = new Range();
   public String shapeName;
   public Range shapeRange = new Range();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.AnimojiExpressionJava
  * JD-Core Version:    0.7.0.1
  */

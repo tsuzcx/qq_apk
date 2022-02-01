@@ -1,36 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import tto;
-import ucf;
+import android.graphics.Canvas;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
-public class ViolaBaseView$2
-  implements Runnable
+class ViolaBaseView$2
+  implements Function1<Canvas, Unit>
 {
-  ViolaBaseView$2(ViolaBaseView paramViolaBaseView, QQAppInterface paramQQAppInterface) {}
+  ViolaBaseView$2(ViolaBaseView paramViolaBaseView) {}
   
-  public void run()
+  public Unit a(Canvas paramCanvas)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(ViolaBaseView.a(), 2, "ThreadManager 执行");
-      }
-      long l = System.currentTimeMillis();
-      tto.a(this.a, ViolaBaseView.a(this.this$0), ViolaBaseView.a(this.this$0), new ucf(this, l));
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(ViolaBaseView.a(), 2, "SDKInitialize Exception:" + localException.getMessage());
-    }
+    ViolaBaseView.a(this.a, paramCanvas);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.2
  * JD-Core Version:    0.7.0.1
  */

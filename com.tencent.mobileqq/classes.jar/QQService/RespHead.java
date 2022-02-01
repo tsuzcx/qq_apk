@@ -10,10 +10,10 @@ public final class RespHead
   extends JceStruct
   implements Cloneable
 {
-  public int iReplyCode;
-  public int iSeq;
-  public long lUIN;
-  public short shVersion;
+  public int iReplyCode = 0;
+  public int iSeq = 0;
+  public long lUIN = 0L;
+  public short shVersion = 0;
   public String strResult = "";
   
   static

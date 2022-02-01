@@ -4,12 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bnsd;
 
 public class AETouchNotifyRelativeLayout
   extends RelativeLayout
 {
-  private bnsd a;
+  private AETouchNotifyRelativeLayout.IAETouchNotify a;
   
   public AETouchNotifyRelativeLayout(Context paramContext)
   {
@@ -39,14 +38,14 @@ public class AETouchNotifyRelativeLayout
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setIaeTouchNotify(bnsd parambnsd)
+  public void setIaeTouchNotify(AETouchNotifyRelativeLayout.IAETouchNotify paramIAETouchNotify)
   {
-    this.a = parambnsd;
+    this.a = paramIAETouchNotify;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.view.AETouchNotifyRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

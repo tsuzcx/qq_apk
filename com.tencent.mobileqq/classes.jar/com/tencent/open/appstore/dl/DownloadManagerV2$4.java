@@ -1,27 +1,26 @@
 package com.tencent.open.appstore.dl;
 
-import bjjq;
-import bjnn;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public class DownloadManagerV2$4
+class DownloadManagerV2$4
   implements Runnable
 {
-  public DownloadManagerV2$4(bjjq parambjjq) {}
+  DownloadManagerV2$4(DownloadManagerV2 paramDownloadManagerV2) {}
   
   public void run()
   {
-    if (!bjjq.a(this.this$0))
+    if (!DownloadManagerV2.a(this.this$0))
     {
-      if (!bjnn.a().b()) {
+      if (!MyAppApi.a().b()) {
         this.this$0.a(true);
       }
-      bjjq.a(this.this$0, true);
+      DownloadManagerV2.a(this.this$0, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.4
  * JD-Core Version:    0.7.0.1
  */

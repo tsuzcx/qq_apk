@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.apollo;
 
-import amol;
-import anjv;
+import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport;
 
-public class ApolloStoreStabilityReportManager$1
+class ApolloStoreStabilityReportManager$1
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$1(amol paramamol) {}
+  ApolloStoreStabilityReportManager$1(ApolloStoreStabilityReportManager paramApolloStoreStabilityReportManager) {}
   
   public void run()
   {
-    anjv.a(null);
-    amol.a(this.this$0, System.currentTimeMillis());
+    ApolloConfigDataReport.a(null);
+    ApolloStoreStabilityReportManager.a(this.this$0, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.1
  * JD-Core Version:    0.7.0.1
  */

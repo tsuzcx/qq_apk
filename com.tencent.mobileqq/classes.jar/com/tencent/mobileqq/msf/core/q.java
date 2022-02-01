@@ -1,103 +1,98 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.HandlerThread;
 
 public class q
 {
-  private static final String a = "MSFConfigManager";
-  private static final String b = "msf_config";
-  private static final String c = "manager_config";
-  private static final String d = "isIPCDivideToTransportEnable";
-  private static final String e = "isSleepThreadWhenIPCBlockEnable";
-  private static final String f = "isSendQuickHBByDeepSleepEnable";
-  private static final String g = "isMultiChannelReportEnable";
-  private AtomicBoolean h = new AtomicBoolean(a("isIPCDivideToTransportEnable", false));
-  private AtomicBoolean i = new AtomicBoolean(a("isSleepThreadWhenIPCBlockEnable", false));
-  private AtomicBoolean j = new AtomicBoolean(a("isSendQuickHBByDeepSleepEnable", true));
-  private AtomicBoolean k = new AtomicBoolean(a("isMultiChannelReportEnable", true));
+  public static final String a = "MsfCoreMsgSender";
+  public static final String b = "MsfCoreSocketReaderNew";
+  public static final String c = "LightSender";
+  public static final String d = "LightTcpSenderThread";
+  public static final String e = "MSFSubHandlerThread";
+  private static HandlerThread f = null;
+  private static Handler g = null;
+  private static HandlerThread h = null;
+  private static Handler i = null;
+  private static HandlerThread j = null;
+  private static Handler k = null;
   
-  public static q a()
+  public static HandlerThread a()
   {
-    return q.a.a();
-  }
-  
-  private void a(String paramString1, JSONObject paramJSONObject, AtomicBoolean paramAtomicBoolean, String paramString2)
-  {
-    if (paramString1.contains(paramString2))
-    {
-      boolean bool = paramJSONObject.optBoolean(paramString2, paramAtomicBoolean.get());
-      paramAtomicBoolean.set(bool);
-      b(paramString2, bool);
-    }
-  }
-  
-  private boolean a(String paramString, boolean paramBoolean)
-  {
-    return BaseApplication.getContext().getSharedPreferences("msf_config", 4).getBoolean(paramString, paramBoolean);
-  }
-  
-  private void b(String paramString, boolean paramBoolean)
-  {
-    BaseApplication.getContext().getSharedPreferences("msf_config", 4).edit().putBoolean(paramString, paramBoolean).apply();
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    Object localObject = paramToServiceMsg.getAttributes().get("manager_config");
-    if ((localObject instanceof String)) {}
+    if (f == null) {}
     try
     {
-      paramToServiceMsg = (String)localObject;
-      QLog.d("MSFConfigManager", 1, "updateManagerConfig, common config = " + paramToServiceMsg);
-      localObject = new JSONObject((String)localObject);
-      a(paramToServiceMsg, (JSONObject)localObject, this.h, "isIPCDivideToTransportEnable");
-      a(paramToServiceMsg, (JSONObject)localObject, this.i, "isSleepThreadWhenIPCBlockEnable");
-      a(paramToServiceMsg, (JSONObject)localObject, this.j, "isSendQuickHBByDeepSleepEnable");
-      a(paramToServiceMsg, (JSONObject)localObject, this.k, "isMultiChannelReportEnable");
-      QLog.d("MSFConfigManager", 1, "after updateManagerConfig, res =" + toString());
-      return;
+      HandlerThread localHandlerThread = new HandlerThread("MSF_StatReportThread");
+      localHandlerThread.start();
+      f = localHandlerThread;
+      return f;
     }
-    catch (Exception paramToServiceMsg)
+    finally {}
+  }
+  
+  public static Handler b()
+  {
+    if (g == null) {}
+    try
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSFConfigManager", 2, "updateManagerConfig throw e", paramToServiceMsg);
-        }
+      if (g == null) {
+        g = new Handler(a().getLooper());
       }
+      return g;
     }
+    finally {}
   }
   
-  public boolean b()
+  public static HandlerThread c()
   {
-    return this.h.get();
+    if (j == null) {}
+    try
+    {
+      HandlerThread localHandlerThread = new HandlerThread("MSFNetHandlerThread");
+      localHandlerThread.start();
+      j = localHandlerThread;
+      return j;
+    }
+    finally {}
   }
   
-  public boolean c()
+  public static Handler d()
   {
-    return this.i.get();
+    if (k == null) {}
+    try
+    {
+      if (k == null) {
+        k = new Handler(c().getLooper());
+      }
+      return k;
+    }
+    finally {}
   }
   
-  public boolean d()
+  public static HandlerThread e()
   {
-    return this.j.get();
+    if (h == null) {}
+    try
+    {
+      HandlerThread localHandlerThread = new HandlerThread("MSFSubHandlerThread");
+      localHandlerThread.start();
+      h = localHandlerThread;
+      return h;
+    }
+    finally {}
   }
   
-  public boolean e()
+  public static Handler f()
   {
-    return this.k.get();
-  }
-  
-  public String toString()
-  {
-    return "MSFConfigManager{isIPCDivideToTransportEnable=" + this.h + ", isSleepThreadWhenIPCBlockEnable=" + this.i + ", isSendQuickHBByDeepSleepEnable=" + this.j + ", isMultiChannelReportEnable=" + this.k + '}';
+    if (i == null) {}
+    try
+    {
+      if (i == null) {
+        i = new Handler(e().getLooper());
+      }
+      return i;
+    }
+    finally {}
   }
 }
 

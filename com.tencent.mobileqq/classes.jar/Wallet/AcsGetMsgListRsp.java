@@ -9,10 +9,10 @@ public final class AcsGetMsgListRsp
   extends JceStruct
 {
   static ArrayList<AcsMsg> cache_data_list = new ArrayList();
-  public ArrayList<AcsMsg> data_list;
+  public ArrayList<AcsMsg> data_list = null;
   public String err_str = "";
-  public int ret_code;
-  public int total;
+  public int ret_code = 0;
+  public int total = 0;
   
   static
   {

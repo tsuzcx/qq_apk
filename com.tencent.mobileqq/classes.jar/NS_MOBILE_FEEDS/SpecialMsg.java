@@ -8,8 +8,8 @@ public final class SpecialMsg
   extends JceStruct
 {
   static byte[] cache_msg = (byte[])new byte[1];
-  public byte[] msg;
-  public int type;
+  public byte[] msg = null;
+  public int type = 0;
   
   static
   {

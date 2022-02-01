@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.HashMap;
-import nng;
 
 public class MapParcelable
   implements Parcelable
 {
-  public static final Parcelable.Creator<MapParcelable> CREATOR = new nng();
+  public static final Parcelable.Creator<MapParcelable> CREATOR = new MapParcelable.1();
   public HashMap<String, String> a = new HashMap();
   
   public int describeContents()
@@ -24,7 +23,7 @@ public class MapParcelable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ipc.MapParcelable
  * JD-Core Version:    0.7.0.1
  */

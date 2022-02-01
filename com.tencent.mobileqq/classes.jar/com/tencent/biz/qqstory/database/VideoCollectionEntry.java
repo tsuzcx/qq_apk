@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.database;
 
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
-import ykq;
 
 public class VideoCollectionEntry
   extends Entity
@@ -34,7 +34,7 @@ public class VideoCollectionEntry
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      ykq.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
+      SLog.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
     }
     return -1;
   }
@@ -66,7 +66,7 @@ public class VideoCollectionEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.VideoCollectionEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -5,18 +5,16 @@ import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 final class SDKMiniProgramLpReportDC04239$12
   implements Runnable
 {
-  SDKMiniProgramLpReportDC04239$12(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2) {}
+  SDKMiniProgramLpReportDC04239$12(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
   public void run()
   {
-    String str = SDKMiniProgramLpReportDC04239.getAppType(this.val$miniAppConfig);
-    SDKMiniProgramLpReportDC04239.access$300(this.val$miniAppConfig, str, null, "drop_down", this.val$subActionType, this.val$reserves);
-    MiniProgramReporter.getInstance().flush();
+    SDKMiniProgramLpReportDC04239.report(this.val$miniAppConfig, this.val$appType, this.val$path, this.val$actionType, this.val$subActionType, this.val$reserves, this.val$reserves2, null, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.12
  * JD-Core Version:    0.7.0.1
  */

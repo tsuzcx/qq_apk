@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
-import lfe;
+import com.tencent.av.app.SessionInfo;
 
 class DoubleVideoMeetingCtrlUI$7
   implements Runnable
@@ -11,7 +11,7 @@ class DoubleVideoMeetingCtrlUI$7
   public void run()
   {
     if (this.this$0.a == null) {}
-    while (!this.this$0.a.a().aG) {
+    while (!this.this$0.a.a().aJ) {
       return;
     }
     this.this$0.a.a(this.a, 4, false, false);
@@ -21,7 +21,7 @@ class DoubleVideoMeetingCtrlUI$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoMeetingCtrlUI.7
  * JD-Core Version:    0.7.0.1
  */

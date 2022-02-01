@@ -2,11 +2,10 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.os.Message;
-import bbbq;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class QQSettingMe$12
@@ -16,8 +15,8 @@ class QQSettingMe$12
   
   public void run()
   {
-    Object localObject = (bbbq)this.this$0.a.getManager(QQManagerFactory.MGR_RED_TOUCH);
-    this.this$0.j = ((bbbq)localObject).a(String.valueOf(100460));
+    Object localObject = (IRedTouchManager)this.this$0.a.getRuntimeService(IRedTouchManager.class, "");
+    this.this$0.j = ((IRedTouchManager)localObject).getAppInfoByPath(String.valueOf(100460));
     if ((this.this$0.j != null) && (this.this$0.j.iNewFlag.has()) && (this.this$0.j.iNewFlag.get() == 1)) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -36,7 +35,7 @@ class QQSettingMe$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.12
  * JD-Core Version:    0.7.0.1
  */

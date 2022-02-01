@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.service;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.j;
 import java.util.HashMap;
 
 public class h

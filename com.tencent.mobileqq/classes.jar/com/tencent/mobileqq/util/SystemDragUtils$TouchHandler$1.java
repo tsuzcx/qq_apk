@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.util;
 
-import afqr;
 import android.content.Context;
-import bhbl;
-import bhbq;
-import bkyq;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.util.UiThreadUtil;
 import java.lang.ref.WeakReference;
 
-public class SystemDragUtils$TouchHandler$1
+class SystemDragUtils$TouchHandler$1
   implements Runnable
 {
-  public SystemDragUtils$TouchHandler$1(bhbq parambhbq, afqr paramafqr) {}
+  SystemDragUtils$TouchHandler$1(SystemDragUtils.TouchHandler paramTouchHandler, BaseBubbleBuilder.ViewHolder paramViewHolder) {}
   
   public void run()
   {
-    bkyq.a(new SystemDragUtils.TouchHandler.1.1(this, bhbl.a((Context)this.this$0.a.get(), this.a)));
+    UiThreadUtil.a(new SystemDragUtils.TouchHandler.1.1(this, SystemDragUtils.a((Context)this.this$0.a.get(), this.a)));
   }
 }
 

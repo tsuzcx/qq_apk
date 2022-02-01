@@ -1,15 +1,14 @@
 package com.tencent.open.appstore.dl;
 
 import android.text.TextUtils;
-import bjjq;
-import bjko;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
-public class DownloadManagerV2$9
+class DownloadManagerV2$9
   implements Runnable
 {
-  public DownloadManagerV2$9(bjjq parambjjq, DownloadInfo paramDownloadInfo) {}
+  DownloadManagerV2$9(DownloadManagerV2 paramDownloadManagerV2, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class DownloadManagerV2$9
       TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.a(this.a.d);
       if (localTMAssistantDownloadTaskInfo != null)
       {
-        bjko.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo=" + localTMAssistantDownloadTaskInfo + ",writeCodeState=" + this.a.j);
+        LogUtility.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo=" + localTMAssistantDownloadTaskInfo + ",writeCodeState=" + this.a.j);
         this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
         this.a.jdField_c_of_type_Long = localTMAssistantDownloadTaskInfo.mTotalDataLen;
         this.this$0.c(this.a);
@@ -38,20 +37,20 @@ public class DownloadManagerV2$9
       for (;;)
       {
         label182:
-        bjko.c("DownloadManagerV2", "[doGeneraWriteCodeTask]>>>", localException);
+        LogUtility.c("DownloadManagerV2", "[doGeneraWriteCodeTask]>>>", localException);
       }
     }
     if (this.a.a) {
       this.this$0.a(this.a, false);
     }
     return;
-    bjko.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo == null");
-    bjjq.b(this.this$0, this.a);
+    LogUtility.b("DownloadManagerV2", "[doGeneraWriteCodeTask] taskInfo == null");
+    DownloadManagerV2.b(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.9
  * JD-Core Version:    0.7.0.1
  */

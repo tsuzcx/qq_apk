@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.medalwall;
 
-import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class MedalGuideView$3
   implements Runnable
@@ -10,7 +10,7 @@ class MedalGuideView$3
   
   public void run()
   {
-    bdla.b(this.a, "dc00898", "", "", "0X80088E9", "0X80088E9", this.this$0.e, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X80088E9", "0X80088E9", this.this$0.e, 0, "", "", "", "");
   }
 }
 

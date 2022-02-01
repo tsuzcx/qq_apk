@@ -8,7 +8,7 @@ public final class StateByPass
   extends JceStruct
 {
   static stRishState cache_oRishState;
-  public stRishState oRishState;
+  public stRishState oRishState = null;
   
   public StateByPass() {}
   

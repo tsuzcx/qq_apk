@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.structmsg;
 
-import ahin;
-import bdla;
-import bdom;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
-public class StructMsgForGeneralShare$5$2
+class StructMsgForGeneralShare$5$2
   implements Runnable
 {
-  public StructMsgForGeneralShare$5$2(bdom parambdom, ahin paramahin, QQAppInterface paramQQAppInterface) {}
+  StructMsgForGeneralShare$5$2(StructMsgForGeneralShare.5 param5, StructingMsgItemBuilder.StructingMsgViewHolder paramStructingMsgViewHolder, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -23,11 +22,11 @@ public class StructMsgForGeneralShare$5$2
     }
     String str2 = "";
     String str1;
-    if ((this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
-      if (this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
       {
-        str1 = this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
-        str2 = this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
+        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+        str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
       }
     }
     for (;;)
@@ -36,7 +35,7 @@ public class StructMsgForGeneralShare$5$2
       if (localPortalManager != null) {}
       for (int j = localPortalManager.a();; j = -1)
       {
-        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004FFA", "0X8004FFA", 0, 0, "" + j, "" + i, "" + str1, str2);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004FFA", "0X8004FFA", 0, 0, "" + j, "" + i, "" + str1, str2);
         return;
         i = 2;
         break;

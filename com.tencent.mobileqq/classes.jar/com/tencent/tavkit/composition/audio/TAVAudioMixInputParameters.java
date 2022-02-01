@@ -15,13 +15,23 @@ import java.util.List;
 public class TAVAudioMixInputParameters
   extends MutableAudioMixInputParameters
 {
-  private static final String TAG = "TAVAudioMixInputParameters";
+  private final String TAG = "TAVAudioMixInputParamet@" + Integer.toHexString(hashCode());
   @NonNull
   private List<TAVAudioConfigurationSegment> audioConfigurationSegmentList = new ArrayList();
+  private int reportCount = 0;
   
   public TAVAudioMixInputParameters(AssetTrack paramAssetTrack)
   {
     super(paramAssetTrack);
+  }
+  
+  private void errorReport(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (this.reportCount < 1)
+    {
+      Logger.e(paramString1, paramString2, paramThrowable);
+      this.reportCount += 1;
+    }
   }
   
   public void addAudioConfiguration(@NonNull CMTimeRange paramCMTimeRange, @NonNull TAVAudioConfiguration paramTAVAudioConfiguration)
@@ -51,7 +61,7 @@ public class TAVAudioMixInputParameters
         return localTAVAudioConfigurationSegment.audioConfiguration.getVolume(paramCMTime);
       }
     }
-    Logger.e("TAVAudioMixInputParameters", "没有设置正确audioConfiguration，走到了非预想的分支");
+    errorReport(this.TAG, "没有设置正确audioConfiguration，走到了非预想的分支", null);
     return super.getVolumeAtTime(paramCMTime);
   }
   
@@ -63,7 +73,7 @@ public class TAVAudioMixInputParameters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.composition.audio.TAVAudioMixInputParameters
  * JD-Core Version:    0.7.0.1
  */

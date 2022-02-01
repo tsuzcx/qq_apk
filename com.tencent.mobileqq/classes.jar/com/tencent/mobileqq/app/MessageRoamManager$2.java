@@ -3,21 +3,20 @@ package com.tencent.mobileqq.app;
 import android.database.SQLException;
 import android.os.SystemClock;
 import android.util.Pair;
-import anzc;
-import azhs;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.MessageRecordEntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class MessageRoamManager$2
+class MessageRoamManager$2
   implements Runnable
 {
-  public MessageRoamManager$2(anzc paramanzc, String paramString1, String paramString2, String paramString3, Pair paramPair, long paramLong) {}
+  MessageRoamManager$2(MessageRoamManager paramMessageRoamManager, String paramString1, String paramString2, String paramString3, Pair paramPair, long paramLong) {}
   
   public void run()
   {
@@ -42,7 +41,7 @@ public class MessageRoamManager$2
       {
         for (;;)
         {
-          List localList2 = ((azhs)this.this$0.a.getEntityManagerFactory().createMessageRecordEntityManager()).query(MessageRecord.class, this.jdField_a_of_type_JavaLangString, false, this.c, null, null, null, null, null);
+          List localList2 = ((MessageRecordEntityManager)this.this$0.a.getEntityManagerFactory().a()).query(MessageRecord.class, this.jdField_a_of_type_JavaLangString, false, this.c, null, null, null, null, null);
         }
       }
       catch (Exception localException)
@@ -83,7 +82,7 @@ public class MessageRoamManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.2
  * JD-Core Version:    0.7.0.1
  */

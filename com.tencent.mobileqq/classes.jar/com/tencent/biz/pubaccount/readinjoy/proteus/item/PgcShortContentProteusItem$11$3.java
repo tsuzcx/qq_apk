@@ -2,12 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import qpk;
 
-public class PgcShortContentProteusItem$11$3
+class PgcShortContentProteusItem$11$3
   implements Runnable
 {
-  public PgcShortContentProteusItem$11$3(qpk paramqpk) {}
+  PgcShortContentProteusItem$11$3(PgcShortContentProteusItem.11 param11) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class PgcShortContentProteusItem$11$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.item.PgcShortContentProteusItem.11.3
  * JD-Core Version:    0.7.0.1
  */

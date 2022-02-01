@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import anvx;
-import besn;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class TribeVideoListPlayerFragment$11$1$1
@@ -11,7 +10,7 @@ class TribeVideoListPlayerFragment$11$1$1
   
   public void run()
   {
-    QQToast.a(this.a.a.a.getActivity(), 2, anvx.a(2131714480), 1).a();
+    QQToast.a(this.a.a.a.getActivity(), 2, HardCodeUtil.a(2131714975), 1).a();
   }
 }
 

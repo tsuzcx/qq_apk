@@ -1,6 +1,7 @@
 package com.tencent.qqmini.sdk.manager;
 
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.core.ReportConst;
@@ -8,8 +9,10 @@ import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.FileUtils;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
+import com.tencent.qqmini.sdk.core.utils.ZipUtil;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.MiniSDKConst;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
@@ -43,6 +46,25 @@ public class BaseLibManager
   private List<BaseLibManager.UpdateListener> mListeners = new ArrayList();
   private List<String> miniAppBaseLibFiles = Arrays.asList(new String[] { "QView.js", "QLogic.js", "QVConsole.js", "QRemoteDebug.js", "QWebview.js" });
   private List<String> miniGameBaseLibFiles = Arrays.asList(new String[] { "QGame.js", "QGameOpenDataContext.js", "QGameWorkerContext.js" });
+  
+  private void deleteOldVersion(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if ((!TextUtils.isEmpty(paramString4)) && (!TextUtils.isEmpty(paramString5)) && (!TextUtils.equals(paramString4, paramString2)) && (!TextUtils.equals(paramString5, paramString3)))
+    {
+      QMLog.i("miniapp-process_BaseLibManager", "delete last path.");
+      paramString2 = getBaseLibDir(paramString4, paramString5);
+      if (!paramString2.equals(paramString1))
+      {
+        QMLog.i("miniapp-start", "delete last path. oldUrl : " + paramString4 + "; version : " + paramString3);
+        FileUtils.delete(paramString2, false);
+      }
+    }
+  }
+  
+  private boolean doUpdateBaseLib(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, String paramString3)
+  {
+    return ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib(paramString3, paramBoolean2, paramBoolean1, new BaseLibManager.3(this, paramString2, paramString1));
+  }
   
   public static BaseLibManager g()
   {
@@ -117,7 +139,7 @@ public class BaseLibManager
     if (paramBaseLibInfo == null) {
       return Boolean.valueOf(false);
     }
-    String str = StorageUtil.getPreference().getString("version", "1.19.0.00043");
+    String str = StorageUtil.getPreference().getString("version", "1.22.0.00008");
     return Boolean.valueOf(BaseLibInfo.needUpdateVersion(paramBaseLibInfo.baseLibVersion, str));
   }
   
@@ -136,13 +158,52 @@ public class BaseLibManager
     finally {}
   }
   
+  private void unZipFolder(String paramString1, File paramFile, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, BaseLibManager.UpdateListener paramUpdateListener)
+  {
+    if (paramFile.exists()) {
+      FileUtils.delete(paramString1, false);
+    }
+    paramFile.mkdir();
+    int i = ZipUtil.unZipFolder(paramString2, paramString1);
+    if (i == 0) {}
+    for (boolean bool = verifyBaselib(paramFile);; bool = true)
+    {
+      MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 7, null, null, null, 0);
+      if ((i == 0) && (bool))
+      {
+        QMLog.i("miniapp-process_BaseLibManager", "unZipFolder succeed.url:" + paramString3 + ",version:" + paramString4);
+        StorageUtil.getPreference().edit().putString("downloadUrl", paramString3).apply();
+        StorageUtil.getPreference().edit().putString("version", paramString4).apply();
+        deleteOldVersion(paramString1, paramString3, paramString4, paramString5, paramString6);
+        if (paramUpdateListener != null)
+        {
+          paramUpdateListener.onUpdateResult(0);
+          return;
+        }
+        notifyUpdateResult(0);
+        return;
+      }
+      QMLog.e("miniapp-process_BaseLibManager", "unZipFolder failed, read last path.");
+      FileUtils.delete(paramString1, false);
+      if (paramUpdateListener != null) {
+        paramUpdateListener.onUpdateResult(1102);
+      }
+      for (;;)
+      {
+        MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 618, null, null, null, 1102);
+        return;
+        notifyUpdateResult(1102);
+      }
+    }
+  }
+  
   public static boolean verifyBaselib(File paramFile)
   {
     boolean bool = true;
     if ((paramFile == null) || (!paramFile.exists()) || (paramFile.isFile())) {
       bool = false;
     }
-    label74:
+    label77:
     do
     {
       return bool;
@@ -150,7 +211,7 @@ public class BaseLibManager
       {
         localObject1 = new File(paramFile, "verify.json");
         if ((((File)localObject1).exists()) && (((File)localObject1).isFile())) {
-          break label74;
+          break label77;
         }
         QMLog.w("miniapp-start", "BaselibManager--verifyBaselib verify.json is not exist!");
         return true;
@@ -172,7 +233,7 @@ public class BaseLibManager
         if (((JSONArray)localObject1).get(i) == null)
         {
           QMLog.e("miniapp-start", "配置文件格式异常！！请使用json工具检测");
-          break label273;
+          break label276;
         }
         Object localObject2 = (JSONObject)((JSONArray)localObject1).get(i);
         String str = ((JSONObject)localObject2).getString("name");
@@ -183,7 +244,7 @@ public class BaseLibManager
         {
           long l = ((File)localObject2).length();
           if (l == j) {
-            break label273;
+            break label276;
           }
         }
         bool = false;
@@ -191,7 +252,7 @@ public class BaseLibManager
       }
       bool = true;
       break;
-      label273:
+      label276:
       i += 1;
     }
   }
@@ -201,14 +262,14 @@ public class BaseLibManager
     QMLog.i("miniapp-process_BaseLibManager", "doDownloadBaselib url=" + paramString1 + " version=" + paramString2 + " oldUrl=" + paramString3 + " oldVersion=" + paramString4);
     MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), 4, null, null, null, 0);
     String str = getBaseLibZipPath(paramString1, paramString2);
-    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString1, null, str, 60, new BaseLibManager.3(this, paramUpdateListener, paramString1, paramString2, paramString4, str, paramString3));
+    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString1, null, str, 60, new BaseLibManager.4(this, paramUpdateListener, paramString1, paramString2, paramString4, str, paramString3));
   }
   
   public void forceUpdateBaseLib(BaseLibManager.UpdateListener paramUpdateListener)
   {
     try
     {
-      ThreadManager.getSubThreadHandler().post(new BaseLibManager.1(this, paramUpdateListener));
+      ThreadManager.getSubThreadHandler().post(new BaseLibManager.2(this, paramUpdateListener));
       return;
     }
     finally
@@ -227,7 +288,7 @@ public class BaseLibManager
   {
     BaseLibInfo localBaseLibInfo = new BaseLibInfo();
     String str = StorageUtil.getPreference().getString("downloadUrl", null);
-    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.19.0.00043");
+    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.22.0.00008");
     localBaseLibInfo.baseLibUrl = str;
     return localBaseLibInfo;
   }
@@ -246,14 +307,14 @@ public class BaseLibManager
     {
       try
       {
-        String str = g().getBaseLibDir("mini", "1.19.0.00043");
+        String str = g().getBaseLibDir("mini", "1.22.0.00008");
         if (g().isBaseLibDirValid4MiniGame(str))
         {
-          QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, inner baseLib already installed, version:1.19.0.00043");
+          QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, inner baseLib already installed, version:1.22.0.00008");
           return str;
         }
         int j = WnsConfig.getConfig("qqminiapp", "mini_app_inner_baselib_retry_count", MINI_APP_INNER_BASELIB_RETRY_COUNT_DEFAULT);
-        QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, version:1.19.0.00043, totalCount:" + j);
+        QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, version:1.22.0.00008, totalCount:" + j);
         int i = 0;
         boolean bool;
         if (i < j)
@@ -384,19 +445,19 @@ public class BaseLibManager
     //   2: aload_0
     //   3: getfield 50	com/tencent/qqmini/sdk/manager/BaseLibManager:mListeners	Ljava/util/List;
     //   6: aload_3
-    //   7: invokeinterface 484 2 0
+    //   7: invokeinterface 555 2 0
     //   12: pop
     //   13: ldc 22
-    //   15: new 124	java/lang/StringBuilder
+    //   15: new 142	java/lang/StringBuilder
     //   18: dup
-    //   19: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   22: ldc_w 486
-    //   25: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   19: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   22: ldc_w 557
+    //   25: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: aload_0
     //   29: getfield 52	com/tencent/qqmini/sdk/manager/BaseLibManager:isUpdatingBaseLib	Z
-    //   32: invokevirtual 437	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   35: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokestatic 141	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: invokevirtual 510	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokestatic 131	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   41: aload_0
     //   42: getfield 52	com/tencent/qqmini/sdk/manager/BaseLibManager:isUpdatingBaseLib	Z
     //   45: istore 4
@@ -408,15 +469,15 @@ public class BaseLibManager
     //   55: aload_0
     //   56: iconst_1
     //   57: putfield 52	com/tencent/qqmini/sdk/manager/BaseLibManager:isUpdatingBaseLib	Z
-    //   60: invokestatic 357	com/tencent/qqmini/sdk/core/manager/ThreadManager:getSubThreadHandler	()Landroid/os/Handler;
-    //   63: new 488	com/tencent/qqmini/sdk/manager/BaseLibManager$2
+    //   60: invokestatic 435	com/tencent/qqmini/sdk/core/manager/ThreadManager:getSubThreadHandler	()Landroid/os/Handler;
+    //   63: new 559	com/tencent/qqmini/sdk/manager/BaseLibManager$1
     //   66: dup
     //   67: aload_0
     //   68: iload_2
     //   69: aload_1
     //   70: aload_3
-    //   71: invokespecial 491	com/tencent/qqmini/sdk/manager/BaseLibManager$2:<init>	(Lcom/tencent/qqmini/sdk/manager/BaseLibManager;ZLjava/lang/String;Lcom/tencent/qqmini/sdk/manager/BaseLibManager$UpdateListener;)V
-    //   74: invokevirtual 368	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   71: invokespecial 562	com/tencent/qqmini/sdk/manager/BaseLibManager$1:<init>	(Lcom/tencent/qqmini/sdk/manager/BaseLibManager;ZLjava/lang/String;Lcom/tencent/qqmini/sdk/manager/BaseLibManager$UpdateListener;)V
+    //   74: invokevirtual 446	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   77: pop
     //   78: goto -26 -> 52
     //   81: astore_1
@@ -439,7 +500,7 @@ public class BaseLibManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BaseLibManager
  * JD-Core Version:    0.7.0.1
  */

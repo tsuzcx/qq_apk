@@ -4,7 +4,14 @@ import org.json.JSONObject;
 
 public abstract interface QQConfigAbilityInterface
 {
+  public static final int STUDY_ROOM_FUNCTION_PIC_UPLOAD = 1;
+  public static final int STUDY_ROOM_FUNCTION_PIC_UPLOAD_CANCEL = 2;
+  
+  public abstract boolean callMethod(int paramInt, JSONObject paramJSONObject, QQConfigAbilityInterface.Callback<JSONObject> paramCallback);
+  
   public abstract JSONObject getConfigFromQQ();
+  
+  public abstract void printQLog(int paramInt, String paramString1, String paramString2);
   
   public abstract void requestConfigFromQQ(QQConfigAbilityInterface.Callback<JSONObject> paramCallback);
 }

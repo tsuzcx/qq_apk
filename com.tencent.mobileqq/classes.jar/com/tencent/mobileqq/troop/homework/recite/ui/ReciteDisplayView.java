@@ -22,16 +22,25 @@ public class ReciteDisplayView
   public ReciteDisplayView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo = null;
   }
   
   public ReciteDisplayView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo = null;
   }
   
   public ReciteDisplayView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo = null;
   }
   
   public int a(int paramInt)

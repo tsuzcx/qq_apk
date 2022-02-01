@@ -2,10 +2,10 @@ package com.tencent.open.appstore.report;
 
 import com.tencent.replacemonitor.replace.ReplaceMonitor;
 
-public final class AppCenterReporter$6
+final class AppCenterReporter$6
   implements Runnable
 {
-  public AppCenterReporter$6(String paramString, boolean paramBoolean) {}
+  AppCenterReporter$6(String paramString, boolean paramBoolean) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public final class AppCenterReporter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appstore.report.AppCenterReporter.6
  * JD-Core Version:    0.7.0.1
  */

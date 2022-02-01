@@ -13,7 +13,7 @@ class KidModeVerifyFragment$2
   {
     if (KidModeVerifyFragment.a <= 1)
     {
-      KidModeVerifyFragment.a(this.this$0).setText(2131693450);
+      KidModeVerifyFragment.a(this.this$0).setText(2131693603);
       KidModeVerifyFragment.a(this.this$0).setEnabled(true);
       KidModeVerifyFragment.a(this.this$0).setClickable(true);
     }

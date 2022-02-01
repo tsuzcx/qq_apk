@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.troopgame;
 
-import bgfy;
+import com.tencent.mobileqq.troop.troopgame.api.ITroopGameCardService.CallbackInMainThread;
 
 class TroopGameCardManager$1$1
   implements Runnable

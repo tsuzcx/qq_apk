@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-public class ApolloTextureView$1
+class ApolloTextureView$1
   implements Runnable
 {
   ApolloTextureView$1(ApolloTextureView paramApolloTextureView) {}
@@ -20,7 +20,7 @@ public class ApolloTextureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloTextureView.1
  * JD-Core Version:    0.7.0.1
  */

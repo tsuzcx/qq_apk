@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/dq8" android:background="@drawable/common_strip_setting_middle" android:layout_width="fill_parent" android:layout_height="@dimen/b8z" formItem:bgType="evy"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b90" android:layout_marginTop="@dimen/b93" android:layout_marginBottom="@dimen/b93" android:layout_centerVertical="true" android:layout_marginVertical="@dimen/b93">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/bfn" android:visibility="gone" android:layout_width="@dimen/b6d" android:layout_height="@dimen/b6d" android:layout_marginRight="@dimen/b90" android:src="@drawable/f7x" android:contentDescription="@string/aa0" />
+        <com.tencent.widget.ThemeImageView android:layout_gravity="center_vertical" android:id="@id/icon" android:focusable="false" android:clickable="false" android:layout_width="@dimen/b_d" android:layout_height="@dimen/b_d" />
+        <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/f5h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b94">
+            <TextView android:textSize="@dimen/b_a" android:textColor="@color/skin_black" android:ellipsize="end" android:layout_gravity="bottom" android:id="@id/f5e" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+            <TextView android:textSize="@dimen/b_c" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:id="@id/account" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/b_b" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@id/check" android:visibility="gone" android:duplicateParentState="true" android:layout_width="@dimen/b6_" android:layout_height="@dimen/b6_" android:layout_marginRight="@dimen/b90" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <Button android:textSize="@dimen/b6b" android:textColor="@color/skin_color_button_red" android:id="@id/bex" android:background="@drawable/ery" android:layout_width="@dimen/b6c" android:layout_height="fill_parent" android:layout_marginRight="@dimen/b6a" android:text="@string/ak3" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</com.tencent.mobileqq.widget.FormItemRelativeLayout>

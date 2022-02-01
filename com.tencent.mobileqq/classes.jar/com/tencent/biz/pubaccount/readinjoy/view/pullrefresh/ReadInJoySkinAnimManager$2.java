@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.pullrefresh;
 
 import java.util.ArrayList;
-import tnk;
 
 class ReadInJoySkinAnimManager$2
   implements Runnable
@@ -21,7 +20,7 @@ class ReadInJoySkinAnimManager$2
       ArrayList localArrayList = ReadInJoySkinAnimManager.a(this.this$0);
       int i = this.a;
       this.a = (i + 1);
-      ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager, ((tnk)localArrayList.get(i)).a);
+      ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager, ((ReadInJoySkinAnimManager.PngWrapper)localArrayList.get(i)).a);
       ((SkinPullRefreshHeader)this.this$0.a).requestLayout();
       ((SkinPullRefreshHeader)this.this$0.a).postDelayed(this, 50L);
     }
@@ -29,7 +28,7 @@ class ReadInJoySkinAnimManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager.2
  * JD-Core Version:    0.7.0.1
  */

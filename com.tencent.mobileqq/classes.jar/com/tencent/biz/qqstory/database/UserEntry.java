@@ -13,8 +13,8 @@ public class UserEntry
   public int gradeSpeed = -2147483648;
   public long groupIdInGroup;
   public String headUrl;
-  public String iconJumpUrl;
-  public String iconUrl;
+  public String iconJumpUrl = null;
+  public String iconUrl = null;
   public int isSubscribe = -1;
   public boolean isVip;
   public int medalLevel = -2147483648;
@@ -29,7 +29,7 @@ public class UserEntry
   @unique
   public String unionId;
   public int videoCount;
-  public String wsSchema;
+  public String wsSchema = null;
   
   public static String getUserSelectionByQQ()
   {
@@ -43,7 +43,7 @@ public class UserEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.UserEntry
  * JD-Core Version:    0.7.0.1
  */

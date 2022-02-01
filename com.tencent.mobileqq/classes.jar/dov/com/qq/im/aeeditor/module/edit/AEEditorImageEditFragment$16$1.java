@@ -1,23 +1,24 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bnwd;
-import bnxq;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
-public class AEEditorImageEditFragment$16$1
+class AEEditorImageEditFragment$16$1
   implements Runnable
 {
-  public AEEditorImageEditFragment$16$1(bnxq parambnxq, bnwd parambnwd) {}
+  AEEditorImageEditFragment$16$1(AEEditorImageEditFragment.16 param16) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bnxq.a.a(this.jdField_a_of_type_Bnwd);
-    this.jdField_a_of_type_Bnxq.a.a.setShowResult(true);
+    this.a.a.a.a();
+    QQToast.a(this.a.a.getActivity(), this.a.a.getActivity().getResources().getString(2131720330), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.16.1
  * JD-Core Version:    0.7.0.1
  */

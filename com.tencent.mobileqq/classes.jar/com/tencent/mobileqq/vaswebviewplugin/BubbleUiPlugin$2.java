@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import ascz;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class BubbleUiPlugin$2
-  extends ascz
+  extends Client.OnRemoteRespObserver
 {
   BubbleUiPlugin$2(BubbleUiPlugin paramBubbleUiPlugin) {}
   
@@ -29,7 +29,7 @@ class BubbleUiPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.BubbleUiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

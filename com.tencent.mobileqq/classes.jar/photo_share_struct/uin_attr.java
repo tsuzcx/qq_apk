@@ -8,7 +8,7 @@ public final class uin_attr
   extends JceStruct
 {
   static int cache_status = 0;
-  public long add_time;
+  public long add_time = 0L;
   public String nick = "";
   public byte priv = 3;
   public String share_albumid = "";
@@ -49,7 +49,7 @@ public final class uin_attr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     photo_share_struct.uin_attr
  * JD-Core Version:    0.7.0.1
  */

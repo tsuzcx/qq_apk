@@ -9,8 +9,8 @@ public final class mobile_tablist_set_req
 {
   static s_tab_list cache_tab_lst = new s_tab_list();
   public boolean is_mq = true;
-  public s_tab_list tab_lst;
-  public long uin;
+  public s_tab_list tab_lst = null;
+  public long uin = 0L;
   
   public mobile_tablist_set_req() {}
   

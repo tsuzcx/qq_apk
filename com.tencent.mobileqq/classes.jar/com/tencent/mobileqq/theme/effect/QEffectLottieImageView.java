@@ -5,9 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import beja;
-import bejb;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
@@ -27,10 +25,11 @@ public class QEffectLottieImageView
   extends DiniFlyAnimationView
   implements IQEffect<QEffectData, Drawable>, GravitySensor.GravitySensorListener
 {
-  private OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new beja(this);
+  private OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new QEffectLottieImageView.1(this);
   private QEffectData jdField_a_of_type_ComTencentQqEffectEngineQEffectData;
   protected SensorParams a;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public QEffectLottieImageView(Context paramContext)
   {
@@ -79,8 +78,8 @@ public class QEffectLottieImageView
       paramQEffectView = new Bundle();
       paramQEffectView.putString("key", paramQEffectData.images + paramQEffectData.effectId);
       paramQEffectView.putString("path", paramQEffectData.images);
-      LottieComposition.Factory.fromInputStreamWithCacheBitmap(getContext(), paramContext, getLottieDrawable(), this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener, paramQEffectView, BaseApplicationImpl.sImageCache);
-      setImageAssetDelegate(new bejb());
+      LottieComposition.Factory.fromInputStreamWithCacheBitmap(getContext(), paramContext, getLottieDrawable(), this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener, paramQEffectView, GlobalImageCache.a);
+      setImageAssetDelegate(new QEffectLottieImageView.QEffectImageAssetDelegate());
       return;
     }
     catch (FileNotFoundException paramContext)
@@ -99,7 +98,7 @@ public class QEffectLottieImageView
   
   public void play()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
   public void resume()
@@ -109,10 +108,10 @@ public class QEffectLottieImageView
   
   public void stop()
   {
-    if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_Boolean)) {
+    if ((QLog.isColorLevel()) && (!this.b)) {
       QLog.i("QEffectLottieImageView", 1, "lottie stop");
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     endAnimation();
   }
   

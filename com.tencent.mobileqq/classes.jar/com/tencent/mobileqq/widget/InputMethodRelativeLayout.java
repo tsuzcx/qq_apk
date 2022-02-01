@@ -6,16 +6,14 @@ import android.util.AttributeSet;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.RelativeLayout;
-import bipt;
-import bipu;
 
 public class InputMethodRelativeLayout
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new bipt(this);
-  public bipu a;
-  private boolean jdField_a_of_type_Boolean;
+  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new InputMethodRelativeLayout.1(this);
+  protected InputMethodRelativeLayout.onSizeChangedListenner a;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public InputMethodRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,14 +34,14 @@ public class InputMethodRelativeLayout
     return localRect.bottom - localRect.top;
   }
   
-  public void setOnSizeChangedListenner(bipu parambipu)
+  public void setOnSizeChangedListenner(InputMethodRelativeLayout.onSizeChangedListenner paramonSizeChangedListenner)
   {
-    this.jdField_a_of_type_Bipu = parambipu;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout$onSizeChangedListenner = paramonSizeChangedListenner;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.InputMethodRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

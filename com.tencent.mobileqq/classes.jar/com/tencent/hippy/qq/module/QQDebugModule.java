@@ -3,8 +3,8 @@ package com.tencent.hippy.qq.module;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.common.app.AppInterface;
 import com.tencent.hippy.qq.fragment.BaseHippyFragment;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
@@ -33,6 +33,12 @@ public class QQDebugModule
   @HippyMethod(name="detailLog")
   public void detailLog(String paramString)
   {
+    AppInterface localAppInterface = getAppInterface();
+    if (localAppInterface == null)
+    {
+      QLog.e("QQDebugModule", 1, "appInterface is null");
+      return;
+    }
     Object localObject = getFragment();
     if (localObject == null)
     {
@@ -40,16 +46,14 @@ public class QQDebugModule
       return;
     }
     localObject = ((Fragment)localObject).getActivity();
-    if (!(localObject instanceof BaseActivity))
+    if (localObject == null)
     {
-      QLog.e("QQDebugModule", 1, "detailLog activity isvnot BaseActivity");
+      QLog.e("QQDebugModule", 1, "detailLog activity is null");
       return;
     }
-    localObject = (BaseActivity)localObject;
     try
     {
-      paramString = new JSONObject(paramString);
-      VasCommonJsPlugin.webLog(((BaseActivity)localObject).getAppInterface(), (Activity)localObject, paramString);
+      VasCommonJsPlugin.webLog(localAppInterface, (Activity)localObject, new JSONObject(paramString));
       return;
     }
     catch (JSONException paramString)
@@ -100,7 +104,7 @@ public class QQDebugModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQDebugModule
  * JD-Core Version:    0.7.0.1
  */

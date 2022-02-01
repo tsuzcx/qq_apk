@@ -2,9 +2,9 @@ package cooperation.qzone.statistic;
 
 import android.os.Build;
 import android.os.Build.VERSION;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.PlatformInfor;
-import cooperation.qzone.QUA;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import cooperation.qzone.statistic.access.WnsCollector;
 import cooperation.qzone.statistic.access.concept.Statistic;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -42,7 +42,7 @@ public class StatisticCollector
       return;
     }
     WnsCollector.Instance().init(BaseApplication.getContext());
-    WnsCollector.Instance().setPublicShareInfo(getDevice(), getSDKVersion(), PlatformInfor.g().getDeviceInfor());
+    WnsCollector.Instance().setPublicShareInfo(getDevice(), getSDKVersion(), ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getDeviceInfor());
     WnsCollector.Instance().startWork();
     this.inited.set(true);
   }
@@ -59,7 +59,7 @@ public class StatisticCollector
   
   public String getReleaseVersion()
   {
-    return QUA.getVersionForHabo();
+    return ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getVersionForHabo();
   }
   
   public Statistic getStatistic()
@@ -80,7 +80,7 @@ public class StatisticCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.statistic.StatisticCollector
  * JD-Core Version:    0.7.0.1
  */

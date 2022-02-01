@@ -8,11 +8,11 @@ public final class ReqGetAreaList
   extends JceStruct
 {
   static byte[] cache_vClientVersion = (byte[])new byte[1];
-  public int iLat;
-  public int iLon;
-  public int iRadius;
-  public long uiClientType;
-  public byte[] vClientVersion;
+  public int iLat = 0;
+  public int iLon = 0;
+  public int iRadius = 0;
+  public long uiClientType = 0L;
+  public byte[] vClientVersion = null;
   
   static
   {

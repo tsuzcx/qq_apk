@@ -6,22 +6,20 @@ import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer.OnSeekCompleteListener;
 import android.os.Build;
 import android.util.AttributeSet;
-import xkm;
-import xkn;
-import xlu;
-import xma;
-import ykq;
-import ypx;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
 
 public class TrimTextureVideoView
   extends TextureVideoView
-  implements MediaPlayer.OnSeekCompleteListener, xma
+  implements MediaPlayer.OnSeekCompleteListener, IMediaPlayer.OnSeekCompleteListener
 {
   public static int h;
+  private TrimTextureVideoView.OnPlayRecycleListener a;
   protected Runnable a;
-  private xkn a;
+  private IMediaPlayer.OnSeekCompleteListener b;
   protected Runnable b;
-  private xma b;
   protected boolean h;
   public int i;
   protected boolean i;
@@ -29,16 +27,26 @@ public class TrimTextureVideoView
   protected boolean j;
   protected int k;
   protected boolean k;
-  protected int l;
-  protected int m;
-  protected int n;
-  protected int o;
-  protected int p;
-  protected int q;
+  protected int l = 0;
+  protected int m = 0;
+  protected int n = 0;
+  protected int o = 0;
+  protected int p = 0;
+  protected int q = 0;
+  
+  static
+  {
+    jdField_h_of_type_Int = 0;
+  }
   
   public TrimTextureVideoView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_i_of_type_Int = 0;
+    this.jdField_j_of_type_Int = 0;
+    this.jdField_k_of_type_Int = 0;
+    this.jdField_h_of_type_Boolean = false;
+    this.jdField_i_of_type_Boolean = false;
     this.jdField_j_of_type_Boolean = true;
     this.jdField_k_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangRunnable = new TrimTextureVideoView.1(this);
@@ -49,6 +57,11 @@ public class TrimTextureVideoView
   public TrimTextureVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_i_of_type_Int = 0;
+    this.jdField_j_of_type_Int = 0;
+    this.jdField_k_of_type_Int = 0;
+    this.jdField_h_of_type_Boolean = false;
+    this.jdField_i_of_type_Boolean = false;
     this.jdField_j_of_type_Boolean = true;
     this.jdField_k_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangRunnable = new TrimTextureVideoView.1(this);
@@ -59,6 +72,11 @@ public class TrimTextureVideoView
   public TrimTextureVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_i_of_type_Int = 0;
+    this.jdField_j_of_type_Int = 0;
+    this.jdField_k_of_type_Int = 0;
+    this.jdField_h_of_type_Boolean = false;
+    this.jdField_i_of_type_Boolean = false;
     this.jdField_j_of_type_Boolean = true;
     this.jdField_k_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangRunnable = new TrimTextureVideoView.1(this);
@@ -71,7 +89,7 @@ public class TrimTextureVideoView
     int i1 = jdField_h_of_type_Int + 1;
     jdField_h_of_type_Int = i1;
     this.jdField_i_of_type_Int = i1;
-    setOnErrorListener(new xkm(this));
+    setOnErrorListener(new TrimTextureVideoView.3(this));
     f();
     super.setOnSeekCompleteListener(this);
   }
@@ -88,7 +106,7 @@ public class TrimTextureVideoView
     return this.jdField_k_of_type_Int;
   }
   
-  protected xlu a()
+  protected IMediaPlayer a()
   {
     if (this.jdField_k_of_type_Boolean) {
       return new com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer();
@@ -98,11 +116,11 @@ public class TrimTextureVideoView
   
   public void a()
   {
-    ykq.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlayback()", Integer.valueOf(this.jdField_i_of_type_Int));
+    SLog.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlayback()", Integer.valueOf(this.jdField_i_of_type_Int));
     super.a();
   }
   
-  public void a(xlu paramxlu)
+  public void a(IMediaPlayer paramIMediaPlayer)
   {
     this.jdField_j_of_type_Boolean = true;
     if ((this.jdField_j_of_type_Int != 0) && (this.l != 0))
@@ -110,26 +128,26 @@ public class TrimTextureVideoView
       int i1 = super.getCurrentPosition();
       if (i1 < this.l)
       {
-        ykq.a(this.jdField_a_of_type_JavaLangString, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.jdField_j_of_type_Int), Integer.valueOf(i1));
+        SLog.a(this.jdField_a_of_type_JavaLangString, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.jdField_j_of_type_Int), Integer.valueOf(i1));
         this.jdField_k_of_type_Int = i1;
       }
     }
-    if (this.jdField_b_of_type_Xma != null) {
-      this.jdField_b_of_type_Xma.a(paramxlu);
+    if (this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener != null) {
+      this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener.a(paramIMediaPlayer);
     }
     d();
   }
   
   public void a(boolean paramBoolean)
   {
-    ykq.a(this.jdField_a_of_type_JavaLangString, "[%d]resumePlay(%b)", Integer.valueOf(this.jdField_i_of_type_Int), Boolean.valueOf(paramBoolean));
+    SLog.a(this.jdField_a_of_type_JavaLangString, "[%d]resumePlay(%b)", Integer.valueOf(this.jdField_i_of_type_Int), Boolean.valueOf(paramBoolean));
     if ((paramBoolean) || (!super.isPlaying()))
     {
       this.m = this.jdField_j_of_type_Int;
       super.seekTo(this.m);
       this.jdField_j_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Xkn != null) {
-        this.jdField_a_of_type_Xkn.b();
+      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView$OnPlayRecycleListener != null) {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView$OnPlayRecycleListener.b();
       }
     }
     super.start();
@@ -146,24 +164,24 @@ public class TrimTextureVideoView
       if (((paramInt1 % 180 > 0) && (paramInt2 < paramInt3)) || ((paramInt1 % 180 == 0) && (paramInt2 > paramInt3)))
       {
         setRotation(i1 + 90);
-        f1 = 1.0F / ypx.a(getResources());
+        f1 = 1.0F / TakeVideoUtils.a(getResources());
         f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
         setScaleX(Math.max(f1, f2));
         setScaleY(Math.max(f1, f2));
-        ykq.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+        SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
         return true;
       }
       if (i1 != 0)
       {
         setRotation(i1);
-        f1 = 1.0F / ypx.a(getResources());
+        f1 = 1.0F / TakeVideoUtils.a(getResources());
         f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
         setScaleX(Math.max(f1, f2));
         setScaleY(Math.max(f1, f2));
-        ykq.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+        SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
         return false;
       }
-      ykq.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return false;
     }
   }
@@ -178,21 +196,21 @@ public class TrimTextureVideoView
     this.jdField_i_of_type_Boolean = false;
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    ykq.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlay! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
+    SLog.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlay! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
   }
   
   public void b(boolean paramBoolean)
   {
     this.jdField_h_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Xlu == null) {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer == null) {
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Xlu.a(0.0F, 0.0F);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(0.0F, 0.0F);
       return;
     }
-    this.jdField_a_of_type_Xlu.a(1.0F, 1.0F);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(1.0F, 1.0F);
   }
   
   public int c()
@@ -203,7 +221,7 @@ public class TrimTextureVideoView
   @TargetApi(14)
   public void c()
   {
-    ykq.a(this.jdField_a_of_type_JavaLangString, "[%d]pausePlay()", Integer.valueOf(this.jdField_i_of_type_Int));
+    SLog.a(this.jdField_a_of_type_JavaLangString, "[%d]pausePlay()", Integer.valueOf(this.jdField_i_of_type_Int));
     this.m = super.getCurrentPosition();
     removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
     super.pause();
@@ -220,20 +238,20 @@ public class TrimTextureVideoView
   }
   
   @TargetApi(14)
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_i_of_type_Boolean = true;
-    ykq.a(this.jdField_a_of_type_JavaLangString, "[%d]onAttachedToWindow! schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
+    SLog.a(this.jdField_a_of_type_JavaLangString, "[%d]onAttachedToWindow! schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
     post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
   @TargetApi(14)
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_i_of_type_Boolean = false;
-    ykq.a(this.jdField_a_of_type_JavaLangString, "[%d]onDetachedFromWindow! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
+    SLog.a(this.jdField_a_of_type_JavaLangString, "[%d]onDetachedFromWindow! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -245,16 +263,16 @@ public class TrimTextureVideoView
       int i1 = super.getCurrentPosition();
       if (i1 < this.l)
       {
-        ykq.a(this.jdField_a_of_type_JavaLangString, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.jdField_j_of_type_Int), Integer.valueOf(i1));
+        SLog.a(this.jdField_a_of_type_JavaLangString, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.jdField_j_of_type_Int), Integer.valueOf(i1));
         this.jdField_k_of_type_Int = i1;
       }
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    ykq.a(this.jdField_a_of_type_JavaLangString, "onSizeChanged(%d, %d, %d, %d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
+    SLog.a(this.jdField_a_of_type_JavaLangString, "onSizeChanged(%d, %d, %d, %d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
@@ -263,14 +281,14 @@ public class TrimTextureVideoView
     b(this.jdField_h_of_type_Boolean);
   }
   
-  public void setOnRecyclePlayListener(xkn paramxkn)
+  public void setOnRecyclePlayListener(TrimTextureVideoView.OnPlayRecycleListener paramOnPlayRecycleListener)
   {
-    this.jdField_a_of_type_Xkn = paramxkn;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView$OnPlayRecycleListener = paramOnPlayRecycleListener;
   }
   
-  public void setOnSeekCompleteListener(xma paramxma)
+  public void setOnSeekCompleteListener(IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    this.jdField_b_of_type_Xma = paramxma;
+    this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener = paramOnSeekCompleteListener;
   }
   
   public void setPlayRange(int paramInt1, int paramInt2)
@@ -284,7 +302,7 @@ public class TrimTextureVideoView
       i1 = i2 - i3;
       paramInt1 = i2;
     }
-    ykq.a(this.jdField_a_of_type_JavaLangString, "[%d]setPlayRange(%d, %d)", Integer.valueOf(this.jdField_i_of_type_Int), Integer.valueOf(i1), Integer.valueOf(paramInt1));
+    SLog.a(this.jdField_a_of_type_JavaLangString, "[%d]setPlayRange(%d, %d)", Integer.valueOf(this.jdField_i_of_type_Int), Integer.valueOf(i1), Integer.valueOf(paramInt1));
     if ((isPlaying()) && ((i1 != this.jdField_j_of_type_Int) || (paramInt1 != this.l)))
     {
       super.seekTo(this.jdField_j_of_type_Int);
@@ -297,7 +315,7 @@ public class TrimTextureVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView
  * JD-Core Version:    0.7.0.1
  */

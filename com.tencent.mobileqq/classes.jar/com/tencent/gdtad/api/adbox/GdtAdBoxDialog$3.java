@@ -1,11 +1,9 @@
 package com.tencent.gdtad.api.adbox;
 
-import acav;
-
-public class GdtAdBoxDialog$3
+class GdtAdBoxDialog$3
   implements Runnable
 {
-  public GdtAdBoxDialog$3(acav paramacav) {}
+  GdtAdBoxDialog$3(GdtAdBoxDialog paramGdtAdBoxDialog) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class GdtAdBoxDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.adbox.GdtAdBoxDialog.3
  * JD-Core Version:    0.7.0.1
  */

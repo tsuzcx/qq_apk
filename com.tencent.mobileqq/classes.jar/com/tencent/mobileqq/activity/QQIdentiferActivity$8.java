@@ -15,9 +15,9 @@ class QQIdentiferActivity$8
   {
     int i = QQIdentiferActivity.a(this.this$0).getTop();
     int j = QQIdentiferActivity.a(this.this$0).getTop();
-    View localView = this.this$0.findViewById(2131379036);
+    View localView = this.this$0.findViewById(2131379467);
     int k = localView.getHeight();
-    int m = AIOUtils.dp2px(15.0F, this.this$0.getResources());
+    int m = AIOUtils.a(15.0F, this.this$0.getResources());
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
     localLayoutParams.topMargin = (i + j - k - m);
     localView.setLayoutParams(localLayoutParams);
@@ -26,7 +26,7 @@ class QQIdentiferActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.8
  * JD-Core Version:    0.7.0.1
  */

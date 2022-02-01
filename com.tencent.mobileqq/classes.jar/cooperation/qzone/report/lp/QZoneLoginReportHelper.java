@@ -2,7 +2,9 @@ package cooperation.qzone.report.lp;
 
 import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 
 public class QZoneLoginReportHelper
 {
@@ -100,11 +102,13 @@ public class QZoneLoginReportHelper
   
   public static boolean needAddLoginFromQunAlbum(Intent paramIntent, int paramInt)
   {
-    if (paramIntent == null) {}
-    while (paramInt != 7) {
+    if (paramIntent == null) {
       return false;
     }
-    return true;
+    if (paramInt == ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getChatSettingForTroopQZONEPHOTOCode()) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
   
   public static void reportLoginFromActivateFriend()
@@ -179,6 +183,8 @@ public class QZoneLoginReportHelper
     LpReportManager.getInstance().reportToPF00034(localLpReportInfo_pf00034);
   }
   
+  public static void reportLoginFromQZoneMsgFeed() {}
+  
   public static void reportLoginFromQunAlbum()
   {
     LpReportInfo_pf00034 localLpReportInfo_pf00034 = new LpReportInfo_pf00034(14);
@@ -228,7 +234,7 @@ public class QZoneLoginReportHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.QZoneLoginReportHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -26,85 +26,92 @@ import com.tencent.thumbplayer.utils.TPLogUtil;
 class TPPlayerListeners$TPPlayerListenersEmptyImpl
   implements ITPPlayerListener.IOnAudioFrameOutputListener, ITPPlayerListener.IOnAudioProcessFrameOutputListener, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnSeekCompleteListener, ITPPlayerListener.IOnStateChangeListener, ITPPlayerListener.IOnStopAsyncCompleteListener, ITPPlayerListener.IOnSubtitleDataListener, ITPPlayerListener.IOnSubtitleFrameOutListener, ITPPlayerListener.IOnVideoFrameOutListener, ITPPlayerListener.IOnVideoProcessFrameOutputListener, ITPPlayerListener.IOnVideoSizeChangedListener
 {
+  private String mTag;
+  
+  public TPPlayerListeners$TPPlayerListenersEmptyImpl(String paramString)
+  {
+    this.mTag = paramString;
+  }
+  
   public void onAudioFrameOut(ITPPlayer paramITPPlayer, TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onAudioFrameOut");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onAudioFrameOut");
   }
   
   public TPPostProcessFrameBuffer onAudioProcessFrameOut(ITPPlayer paramITPPlayer, TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
   {
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onPostProcessFrameOut");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onPostProcessFrameOut");
     return null;
   }
   
   public void onCompletion(ITPPlayer paramITPPlayer)
   {
     ReportThumbPlayer.getInstance().onCompletion(paramITPPlayer);
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onCompletion");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onCompletion");
   }
   
   public void onError(ITPPlayer paramITPPlayer, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
     ReportThumbPlayer.getInstance().onError(paramITPPlayer, paramInt1, paramInt2);
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onError");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onError");
   }
   
   public void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
     ReportThumbPlayer.getInstance().onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2);
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onInfo");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onInfo");
   }
   
   public void onPrepared(ITPPlayer paramITPPlayer)
   {
     ReportThumbPlayer.getInstance().onPrepared(paramITPPlayer);
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onPrepared");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onPrepared");
   }
   
   public void onSeekComplete(ITPPlayer paramITPPlayer)
   {
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onSeekComplete");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onSeekComplete");
   }
   
   public void onStateChange(int paramInt1, int paramInt2)
   {
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onStateChange");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onStateChange");
   }
   
   public void onStopAsyncComplete(ITPPlayer paramITPPlayer)
   {
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onStopAsyncComplete");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onStopAsyncComplete");
   }
   
   public void onSubtitleData(ITPPlayer paramITPPlayer, TPSubtitleData paramTPSubtitleData)
   {
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onSubtitleData");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onSubtitleData");
   }
   
   public void onSubtitleFrameOut(ITPPlayer paramITPPlayer, TPSubtitleFrameBuffer paramTPSubtitleFrameBuffer)
   {
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onSubtitleFrameOut");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onSubtitleFrameOut");
   }
   
   public void onVideoFrameOut(ITPPlayer paramITPPlayer, TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onVideoFrameOut");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onVideoFrameOut");
   }
   
   public TPPostProcessFrameBuffer onVideoProcessFrameOut(ITPPlayer paramITPPlayer, TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
   {
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onPostProcessFrameOut");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onPostProcessFrameOut");
     return null;
   }
   
   public void onVideoSizeChanged(ITPPlayer paramITPPlayer, long paramLong1, long paramLong2)
   {
-    TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onVideoSizeChanged");
+    TPLogUtil.i(this.mTag, " empty player listener , notify , onVideoSizeChanged");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayerListeners.TPPlayerListenersEmptyImpl
  * JD-Core Version:    0.7.0.1
  */

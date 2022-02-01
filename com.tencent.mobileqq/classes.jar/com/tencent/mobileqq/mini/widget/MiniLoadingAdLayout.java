@@ -17,9 +17,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -34,14 +34,16 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
 import com.tencent.qqmini.sdk.launcher.model.EntryModel;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
+import com.tencent.util.LiuHaiUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.List;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 
 public class MiniLoadingAdLayout
@@ -71,8 +73,11 @@ public class MiniLoadingAdLayout
   private ImageView mGameLogoView;
   private TextView mGameNameView;
   private GdtAppReceiver mGdtAppReceiver;
+  private RelativeLayout mLoadingAdBar;
+  private RelativeLayout mLoadingAdBarLayout;
   private ImageView mLoadingAdImgView;
   private TextView mLoadingAdSkipBtn;
+  private TextView mLoadingAdTextView;
   private MiniAppConfig mMiniAppConfig;
   private RelativeLayout mRightContainer;
   private Handler mUiHandler;
@@ -128,10 +133,9 @@ public class MiniLoadingAdLayout
   
   private void adjustUI(boolean paramBoolean1, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean2, AdProxy.ILoadingAdListener paramILoadingAdListener)
   {
-    int j = 0;
     Object localObject = paramString3;
     if (TextUtils.isEmpty(paramString3)) {
-      localObject = anvx.a(2131693963);
+      localObject = HardCodeUtil.a(2131694165);
     }
     this.isGame = paramBoolean1;
     this.mLoadingAdImgView.setImageDrawable(Drawable.createFromPath(paramString4));
@@ -142,27 +146,28 @@ public class MiniLoadingAdLayout
       i = 0;
       paramString3.setVisibility(i);
       paramString3 = this.mAppLayout;
-      i = j;
-      if (paramBoolean1) {
-        i = 8;
+      if (!paramBoolean1) {
+        break label333;
       }
+      i = 8;
+      label70:
       paramString3.setVisibility(i);
       this.mCountdownTextView.setText(this.countdownTime + "秒");
       paramString3 = (String)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramString3 = anvx.a(2131693963);
+        paramString3 = HardCodeUtil.a(2131694165);
       }
-      this.mDeveloperDescView.setText(anvx.a(2131704487) + paramString3 + anvx.a(2131704486));
+      this.mDeveloperDescView.setText(HardCodeUtil.a(2131705035) + paramString3 + HardCodeUtil.a(2131705034));
       localObject = (RelativeLayout.LayoutParams)this.mCountdownContainer.getLayoutParams();
       paramString3 = (RelativeLayout.LayoutParams)this.mRightContainer.getLayoutParams();
       if (!paramBoolean1) {
-        break label337;
+        break label353;
       }
       if (!LiuHaiUtils.b()) {
-        break label323;
+        break label339;
       }
       i = ImmersiveUtils.getStatusBarHeight(getContext()) + DisplayUtil.dip2px(getContext(), 10.0F);
-      label223:
+      label216:
       ((RelativeLayout.LayoutParams)localObject).topMargin = i;
       this.mRightContainer.setVisibility(8);
       paramString4 = this.mGameNameView;
@@ -172,17 +177,21 @@ public class MiniLoadingAdLayout
       this.mCountdownContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
       paramString4.setText(paramString1);
       paramString3.setImageDrawable(MiniAppUtils.getIcon(getContext(), paramString2, true, 10));
-      this.mLoadingAdImgView.setOnClickListener(new MiniLoadingAdLayout.1(this, paramBoolean2, paramILoadingAdListener));
+      this.mLoadingAdImgView.setOnClickListener(new MiniLoadingAdLayout.LoadingAdOnClickListener(this, 0, paramILoadingAdListener));
+      this.mLoadingAdBarLayout.setOnClickListener(new MiniLoadingAdLayout.LoadingAdOnClickListener(this, 1, paramILoadingAdListener));
       if (paramBoolean2) {
         this.mRightContainer.setVisibility(8);
       }
       return;
       i = 8;
       break;
-      label323:
+      label333:
+      i = 0;
+      break label70;
+      label339:
       i = DisplayUtil.dip2px(getContext(), 10.0F);
-      break label223;
-      label337:
+      break label216;
+      label353:
       ((RelativeLayout.LayoutParams)localObject).topMargin = (ImmersiveUtils.getStatusBarHeight(getContext()) + DisplayUtil.dip2px(getContext(), 10.0F));
       paramString3.topMargin = (ImmersiveUtils.getStatusBarHeight(getContext()) + DisplayUtil.dip2px(getContext(), 10.0F));
       paramString4 = this.mAppNameView;
@@ -195,54 +204,54 @@ public class MiniLoadingAdLayout
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokespecial 276	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:createLoadingAntiParamForExpoCGI	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lorg/json/JSONObject;
+    //   2: invokespecial 280	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:createLoadingAntiParamForExpoCGI	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lorg/json/JSONObject;
     //   5: astore_1
     //   6: aload_1
     //   7: ifnonnull +92 -> 99
-    //   10: new 278	org/json/JSONObject
+    //   10: new 282	org/json/JSONObject
     //   13: dup
-    //   14: invokespecial 279	org/json/JSONObject:<init>	()V
+    //   14: invokespecial 283	org/json/JSONObject:<init>	()V
     //   17: astore_2
     //   18: aload_2
     //   19: astore_1
     //   20: aload_1
-    //   21: ldc_w 281
+    //   21: ldc_w 285
     //   24: aload_0
-    //   25: getfield 283	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchDownX	I
-    //   28: invokevirtual 287	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   25: getfield 287	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchDownX	I
+    //   28: invokevirtual 291	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   31: pop
     //   32: aload_1
-    //   33: ldc_w 289
+    //   33: ldc_w 293
     //   36: aload_0
-    //   37: getfield 291	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchDownY	I
-    //   40: invokevirtual 287	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   37: getfield 295	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchDownY	I
+    //   40: invokevirtual 291	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   43: pop
     //   44: aload_1
-    //   45: ldc_w 293
+    //   45: ldc_w 297
     //   48: aload_0
-    //   49: getfield 295	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchUpX	I
-    //   52: invokevirtual 287	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   49: getfield 299	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchUpX	I
+    //   52: invokevirtual 291	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   55: pop
     //   56: aload_1
-    //   57: ldc_w 297
+    //   57: ldc_w 301
     //   60: aload_0
-    //   61: getfield 299	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchUpY	I
-    //   64: invokevirtual 287	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   61: getfield 303	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:lastTouchUpY	I
+    //   64: invokevirtual 291	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   67: pop
     //   68: aload_1
-    //   69: ldc_w 301
+    //   69: ldc_w 305
     //   72: aload_0
-    //   73: getfield 303	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:pressInterval	J
-    //   76: invokevirtual 306	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   73: getfield 307	com/tencent/mobileqq/mini/widget/MiniLoadingAdLayout:pressInterval	J
+    //   76: invokevirtual 310	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   79: pop
     //   80: aload_1
     //   81: areturn
     //   82: astore_2
     //   83: ldc 14
     //   85: iconst_1
-    //   86: ldc_w 308
+    //   86: ldc_w 312
     //   89: aload_2
-    //   90: invokestatic 314	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   90: invokestatic 318	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   93: aload_1
     //   94: areturn
     //   95: astore_2
@@ -338,7 +347,7 @@ public class MiniLoadingAdLayout
       {
         localBundle.putLong("st", l);
         localBundle.putString("viewid", parseViewId(paramString));
-        localBundle.putString("wlv", StorageUtil.getPreference().getString("version", "1.19.0.00043"));
+        localBundle.putString("wlv", StorageUtil.getPreference().getString("version", "1.22.0.00008"));
         return localBundle;
       }
       return localBundle;
@@ -365,7 +374,7 @@ public class MiniLoadingAdLayout
   
   private int getNetworkType()
   {
-    int j = NetworkUtil.getSystemNetwork(BaseApplication.getContext().getApplicationContext());
+    int j = NetworkUtil.a(BaseApplication.getContext().getApplicationContext());
     int i;
     if (j == 5) {
       i = 0;
@@ -380,20 +389,23 @@ public class MiniLoadingAdLayout
   
   private void initUI()
   {
-    LayoutInflater.from(getContext()).inflate(2131559465, this, true);
-    this.mAppLayout = ((RelativeLayout)findViewById(2131371357));
-    this.mGameLayout = ((RelativeLayout)findViewById(2131371363));
-    this.mRightContainer = ((RelativeLayout)findViewById(2131365153));
-    this.mCloseBtn = ((ImageView)findViewById(2131363866));
-    this.mCountdownContainer = ((RelativeLayout)findViewById(2131371359));
-    this.mCountdownTextView = ((TextView)findViewById(2131370451));
-    this.mLoadingAdSkipBtn = ((TextView)findViewById(2131371365));
-    this.mDeveloperDescView = ((TextView)findViewById(2131365582));
-    this.mAppNameView = ((TextView)findViewById(2131371358));
-    this.mGameNameView = ((TextView)findViewById(2131371364));
-    this.mAppLogoView = ((ImageView)findViewById(2131371356));
-    this.mGameLogoView = ((ImageView)findViewById(2131371361));
-    this.mLoadingAdImgView = ((ImageView)findViewById(2131370452));
+    LayoutInflater.from(getContext()).inflate(2131559532, this, true);
+    this.mAppLayout = ((RelativeLayout)findViewById(2131371637));
+    this.mGameLayout = ((RelativeLayout)findViewById(2131371647));
+    this.mRightContainer = ((RelativeLayout)findViewById(2131365290));
+    this.mCloseBtn = ((ImageView)findViewById(2131363963));
+    this.mCountdownContainer = ((RelativeLayout)findViewById(2131371643));
+    this.mCountdownTextView = ((TextView)findViewById(2131370728));
+    this.mLoadingAdSkipBtn = ((TextView)findViewById(2131371649));
+    this.mDeveloperDescView = ((TextView)findViewById(2131365743));
+    this.mAppNameView = ((TextView)findViewById(2131371638));
+    this.mGameNameView = ((TextView)findViewById(2131371648));
+    this.mAppLogoView = ((ImageView)findViewById(2131371636));
+    this.mGameLogoView = ((ImageView)findViewById(2131371645));
+    this.mLoadingAdImgView = ((ImageView)findViewById(2131370729));
+    this.mLoadingAdBarLayout = ((RelativeLayout)findViewById(2131371642));
+    this.mLoadingAdBar = ((RelativeLayout)findViewById(2131371640));
+    this.mLoadingAdTextView = ((TextView)findViewById(2131371639));
     this.densityDpi = DisplayHelper.getDensity(getContext());
   }
   
@@ -430,6 +442,20 @@ public class MiniLoadingAdLayout
       return;
     }
     ThreadManager.executeOnNetWorkThread(new MiniLoadingAdLayout.4(this, paramString));
+  }
+  
+  private void startAdBarAnimation()
+  {
+    if ((this.mAdInfo != null) && (this.mAdInfo.info != null) && (this.mAdInfo.info.display_info != null) && (this.mAdInfo.info.display_info.basic_info != null) && (this.mAdInfo.info.display_info.basic_info.txt != null))
+    {
+      String str = this.mAdInfo.info.display_info.basic_info.txt.get();
+      if ((!TextUtils.isEmpty(str)) && (this.mLoadingAdTextView != null) && (this.mLoadingAdBarLayout != null) && (this.mUiHandler != null))
+      {
+        this.mLoadingAdTextView.setText(str);
+        int i = QzoneConfig.getInstance().getConfig("qqminiapp", "loading_ad_bar_show_time", 1000);
+        this.mUiHandler.postDelayed(new MiniLoadingAdLayout.2(this), i);
+      }
+    }
   }
   
   private void startCountDown(MiniLoadingAdLayout.OnDismissListener paramOnDismissListener)
@@ -521,6 +547,7 @@ public class MiniLoadingAdLayout
     setVisibility(0);
     this.showAdStamp = System.currentTimeMillis();
     startCountDown(paramOnDismissListener);
+    startAdBarAnimation();
     JSONObject localJSONObject;
     Bundle localBundle;
     if ((this.mAdInfo != null) && (this.mAdInfo.info != null) && (this.mAdInfo.info.report_info != null) && (this.mAdInfo.info.report_info.exposure_url != null))
@@ -533,7 +560,7 @@ public class MiniLoadingAdLayout
       QLog.i("MiniLoadingAdLayout", 1, "report expo antiSpamParams=" + localJSONObject.toString());
       reportToGdt(this.mAdInfo.info.report_info.exposure_url.get() + "&s=" + URLEncoder.encode(localJSONObject.toString(), "utf-8"), this.showAdStamp);
       report(localBundle);
-      this.mLoadingAdSkipBtn.setOnClickListener(new MiniLoadingAdLayout.2(this, paramOnDismissListener));
+      this.mLoadingAdSkipBtn.setOnClickListener(new MiniLoadingAdLayout.1(this, paramOnDismissListener));
       return;
     }
     catch (Exception localException)

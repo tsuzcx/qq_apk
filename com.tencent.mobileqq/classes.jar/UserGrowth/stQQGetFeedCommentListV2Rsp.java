@@ -11,9 +11,9 @@ public final class stQQGetFeedCommentListV2Rsp
 {
   static ArrayList<stCommentJumpText> cache_comment_text;
   static stGetFeedCommentListV2Rsp cache_rsp = new stGetFeedCommentListV2Rsp();
-  public ArrayList<stCommentJumpText> comment_text;
-  public int link;
-  public stGetFeedCommentListV2Rsp rsp;
+  public ArrayList<stCommentJumpText> comment_text = null;
+  public int link = 0;
+  public stGetFeedCommentListV2Rsp rsp = null;
   
   static
   {

@@ -14,28 +14,28 @@ class QQCustomDialogWtihInputAndChoose$8
   
   public void onClick(View paramView)
   {
-    String str = this.this$0.getInputValue();
+    String str = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.getInputValue();
     if (TextUtils.isEmpty(str)) {}
     for (;;)
     {
-      if (this.val$nl != null)
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
       {
-        this.val$nl.onClick(this.this$0, 1);
-        this.this$0.hideChooseList();
+        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 1);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
       }
       try
       {
-        if (this.this$0.isShowing()) {
-          this.this$0.dismiss();
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
         }
         label60:
         EventCollector.getInstance().onViewClicked(paramView);
         return;
-        if ((this.this$0.chooseList == null) || (this.this$0.chooseList.size() <= 0)) {
+        if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a == null) || (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size() <= 0)) {
           continue;
         }
         int i = 0;
-        while ((i < this.this$0.chooseList.size()) && (!str.equals(this.this$0.chooseList.get(i)))) {
+        while ((i < this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size()) && (!str.equals(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.get(i)))) {
           i += 1;
         }
       }

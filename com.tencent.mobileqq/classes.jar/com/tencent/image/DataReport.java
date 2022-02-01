@@ -1,7 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.beacon.event.UserAction;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -31,12 +31,10 @@ public class DataReport
         i += 1;
       }
       i = (int)(j / k);
-      paramLinkedList = new HashMap();
-      paramLinkedList.put("param_framDelayTime", String.valueOf(i));
-      UserAction.onUserAction("ShortVideo.Play", true, -1L, -1L, paramLinkedList, false);
+      new HashMap().put("param_framDelayTime", String.valueOf(i));
       l2 = System.currentTimeMillis();
-    } while (!QLog.isColorLevel());
-    QLog.d("URLDrawable_DataReport", 2, "doReport(), cost:" + (l2 - l1) + "ms, averageTime=" + i);
+    } while (!URLDrawable.depImp.mLog.isColorLevel());
+    URLDrawable.depImp.mLog.d("URLDrawable_DataReport", 2, "doReport(), cost:" + (l2 - l1) + "ms, averageTime=" + i);
   }
   
   public void onVideoFrameDroped(boolean paramBoolean, int paramInt)

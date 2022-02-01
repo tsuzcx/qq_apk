@@ -16,17 +16,17 @@ class WtloginHelper$HelperThread$9
     }
     if (this.this$1.mReqContext.is_register_req())
     {
-      WtloginHelper.access$1600(this.this$1.mHelper, this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mRole, this.this$1.mReqContext, this.this$1.mUserSigInfo, this.val$ret);
+      WtloginHelper.access$1700(this.this$1.mHelper, this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mRole, this.this$1.mReqContext, this.this$1.mUserSigInfo, this.val$ret);
       return;
     }
     if (this.this$1.mReqContext.is_code2d_func_req())
     {
-      WtloginHelper.access$1700(this.this$1.mHelper, this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mRole, this.this$1.mReqContext, this.this$1.mUserSigInfo, this.val$ret);
+      WtloginHelper.access$1800(this.this$1.mHelper, this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mRole, this.this$1.mReqContext, this.this$1.mUserSigInfo, this.val$ret);
       return;
     }
     if (this.this$1.mReqContext.is_devlock_req())
     {
-      WtloginHelper.access$1800(this.this$1.mHelper, this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mRole, this.this$1.mReqContext, this.this$1.mUserSigInfo, this.val$ret);
+      WtloginHelper.access$1900(this.this$1.mHelper, this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mRole, this.this$1.mReqContext, this.this$1.mUserSigInfo, this.val$ret);
       return;
     }
     WtloginHelper.access$100(this.this$1.mHelper).OnRequestTransport(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mRole, this.this$1.mReqContext, this.this$1.mUserSigInfo, this.val$ret);

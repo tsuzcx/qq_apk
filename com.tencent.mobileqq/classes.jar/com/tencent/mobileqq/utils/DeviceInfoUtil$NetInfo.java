@@ -2,9 +2,9 @@ package com.tencent.mobileqq.utils;
 
 public class DeviceInfoUtil$NetInfo
 {
-  public String mobileType = "";
-  public String networkType = "";
-  public String operatorName = "";
+  public String a = "";
+  public String b = "";
+  public String c = "";
 }
 
 

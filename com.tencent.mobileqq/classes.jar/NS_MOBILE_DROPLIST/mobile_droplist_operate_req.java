@@ -10,10 +10,10 @@ public final class mobile_droplist_operate_req
   extends JceStruct
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
-  public Map<Integer, String> busi_param;
-  public int feedback_id;
-  public long login_uin;
-  public long owner_uin;
+  public Map<Integer, String> busi_param = null;
+  public int feedback_id = 0;
+  public long login_uin = 0L;
+  public long owner_uin = 0L;
   
   static
   {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
-import awza;
+import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -17,7 +17,7 @@ class PhoneContactManagerImp$9
       {
         Iterator localIterator = PhoneContactManagerImp.a(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((awza)localIterator.next()).a(this.this$0.a);
+          ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.this$0.a);
         }
         localObject = finally;
       }
@@ -31,7 +31,7 @@ class PhoneContactManagerImp$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.9
  * JD-Core Version:    0.7.0.1
  */

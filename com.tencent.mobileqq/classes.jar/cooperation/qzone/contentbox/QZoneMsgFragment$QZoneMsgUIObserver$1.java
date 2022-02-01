@@ -18,6 +18,12 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1
   
   public void run()
   {
+    if (QZoneMsgFragment.access$1000(this.this$1.this$0, this.val$rsp.ArkNes_vec))
+    {
+      this.this$1.this$0.adapter.setMQMsgs(this.val$rsp.ArkNes_vec, 0);
+      QZoneMsgFragment.access$900(this.this$1.this$0, this.val$isSuc);
+      return;
+    }
     MQMsg localMQMsg;
     Object localObject;
     if ((this.val$rsp.ArkNes_vec != null) && (this.val$rsp.ArkNes_vec.size() != 0))
@@ -26,19 +32,19 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1
       if (localMQMsg.msgType == 9)
       {
         localObject = LocalPhotoGroupData.getLocalPhotoGroupDataFromSp(localMQMsg.pushTime);
-        if (QZoneMsgFragment.access$1000(this.this$1.this$0) != null) {
+        if (QZoneMsgFragment.access$1100(this.this$1.this$0) != null) {
           if (localObject == null) {
-            QZoneMsgFragment.access$1000(this.this$1.this$0).saveSp(localMQMsg.pushTime);
+            QZoneMsgFragment.access$1100(this.this$1.this$0).saveSp(localMQMsg.pushTime);
           }
         }
         for (;;)
         {
-          if (QZoneMsgFragment.access$1000(this.this$1.this$0) == null) {
-            break label436;
+          if (QZoneMsgFragment.access$1100(this.this$1.this$0) == null) {
+            break label492;
           }
-          localMQMsg.uniKey = QZoneMsgFragment.access$1000(this.this$1.this$0).unikey;
-          localMQMsg.eventTitle = QZoneMsgFragment.access$1000(this.this$1.this$0).title;
-          localMQMsg.capTime = QZoneMsgFragment.access$1000(this.this$1.this$0).capTime;
+          localMQMsg.uniKey = QZoneMsgFragment.access$1100(this.this$1.this$0).unikey;
+          localMQMsg.eventTitle = QZoneMsgFragment.access$1100(this.this$1.this$0).title;
+          localMQMsg.capTime = QZoneMsgFragment.access$1100(this.this$1.this$0).capTime;
           if (localMQMsg.msgBody == null) {
             localMQMsg.msgBody = new MQMsgBody();
           }
@@ -46,20 +52,20 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1
             localMQMsg.msgBody.photolist = new ArrayList();
           }
           localMQMsg.msgBody.photolist.clear();
-          if (QZoneMsgFragment.access$1000(this.this$1.this$0).pathList == null) {
-            break label444;
+          if (QZoneMsgFragment.access$1100(this.this$1.this$0).pathList == null) {
+            break label500;
           }
           int i = 0;
-          while (i < QZoneMsgFragment.access$1000(this.this$1.this$0).pathList.size())
+          while (i < QZoneMsgFragment.access$1100(this.this$1.this$0).pathList.size())
           {
             localObject = new MQPhotoCell();
-            ((MQPhotoCell)localObject).coverUrl = ((String)QZoneMsgFragment.access$1000(this.this$1.this$0).pathList.get(i));
+            ((MQPhotoCell)localObject).coverUrl = ((String)QZoneMsgFragment.access$1100(this.this$1.this$0).pathList.get(i));
             localMQMsg.msgBody.photolist.add(localObject);
             i += 1;
           }
-          QZoneMsgFragment.access$1002(this.this$1.this$0, (LocalPhotoGroupData)localObject);
+          QZoneMsgFragment.access$1102(this.this$1.this$0, (LocalPhotoGroupData)localObject);
           continue;
-          QZoneMsgFragment.access$1002(this.this$1.this$0, (LocalPhotoGroupData)localObject);
+          QZoneMsgFragment.access$1102(this.this$1.this$0, (LocalPhotoGroupData)localObject);
         }
       }
     }
@@ -68,12 +74,12 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1
       if (localMQMsg == null)
       {
         QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "rsp.ArkNes_vec.get(0) == null");
-        label336:
+        label392:
         if ((!QZoneMsgFragment.access$200(this.this$1.this$0)) || (localMQMsg == null)) {
-          break label681;
+          break label737;
         }
-        if ((localMQMsg.msgType != 9) || (QZoneMsgFragment.access$1000(this.this$1.this$0) != null)) {
-          break label653;
+        if ((localMQMsg.msgType != 9) || (QZoneMsgFragment.access$1100(this.this$1.this$0) != null)) {
+          break label709;
         }
         this.this$1.this$0.adapter.setMQMsgs(new ArrayList(), 0);
       }
@@ -82,12 +88,12 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1
         QZoneMsgFragment.access$400(this.this$1.this$0).postDelayed(new QZoneMsgFragment.QZoneMsgUIObserver.1.1(this), 500L);
         QZoneMsgFragment.access$900(this.this$1.this$0, this.val$isSuc);
         return;
-        label436:
+        label492:
         QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "mLocalPhotoGroupData == null");
-        label444:
+        label500:
         break;
         if (!QLog.isColorLevel()) {
-          break label336;
+          break label392;
         }
         QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsgs: MQMsg{\nmsgType='" + localMQMsg.msgType + '\'' + '\n' + ", title=" + localMQMsg.title + '\'' + '\n' + ", eventTitle='" + localMQMsg.eventTitle + '\'' + '\n' + ", uniKey='" + localMQMsg.uniKey + '\'' + '\n' + '}');
         if ((localMQMsg.msgBody != null) && (localMQMsg.msgBody.photolist != null))
@@ -98,14 +104,14 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1
             MQPhotoCell localMQPhotoCell = (MQPhotoCell)((Iterator)localObject).next();
             QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsg: cell.coverUrl=" + localMQPhotoCell.coverUrl);
           }
-          break label336;
+          break label392;
         }
         QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsg: mqMsg.msgBody.photolist==null");
-        break label336;
-        label653:
+        break label392;
+        label709:
         this.this$1.this$0.adapter.setMQMsgs(new ArrayList(Collections.singletonList(localMQMsg)), 0);
         continue;
-        label681:
+        label737:
         this.this$1.this$0.adapter.updateMQMsgs(localMQMsg);
       }
       localMQMsg = null;
@@ -114,7 +120,7 @@ class QZoneMsgFragment$QZoneMsgUIObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.QZoneMsgUIObserver.1
  * JD-Core Version:    0.7.0.1
  */

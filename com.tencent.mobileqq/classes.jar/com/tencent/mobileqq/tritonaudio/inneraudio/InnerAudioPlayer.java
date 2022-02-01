@@ -318,6 +318,8 @@ public final class InnerAudioPlayer
         LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject1, LogDelegate.Level.WARN, TAG, "play error on empty audio path, audioId=" + getAudioId() + " path=" + getAudioPath(), null, 8, null);
       }
     }
+    Object localObject2;
+    label293:
     do
     {
       do
@@ -355,11 +357,15 @@ public final class InnerAudioPlayer
                 if (localLogDelegate != null) {
                   localLogDelegate.printLog(LogDelegate.Level.ERROR, TAG, "play error on setDataSource and prepareAsync." + " audioId=" + getAudioId() + " path=" + getAudioPath(), localThrowable1);
                 }
+                localObject2 = getStateChangeListener();
+                if (localObject2 != null) {
+                  ((IAudioStateChangeListener)localObject2).onError(10003);
+                }
               }
             }
           }
           if (this.mMediaPlayer != null) {
-            break;
+            break label293;
           }
           localObject1 = this.logger;
         } while (localObject1 == null);
@@ -409,7 +415,6 @@ public final class InnerAudioPlayer
       {
         for (;;)
         {
-          Object localObject2;
           localLogDelegate = this.logger;
           if (localLogDelegate != null) {
             localLogDelegate.printLog(LogDelegate.Level.ERROR, TAG, "play error. audioId=" + getAudioId() + " path=" + getAudioPath(), localThrowable2);
@@ -431,7 +436,7 @@ public final class InnerAudioPlayer
     //   3: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
     //   6: ifnull +58 -> 64
     //   9: aload_0
-    //   10: invokevirtual 430	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:isPlaying	()Z
+    //   10: invokevirtual 434	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:isPlaying	()Z
     //   13: ifeq +19 -> 32
     //   16: aload_0
     //   17: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
@@ -440,7 +445,7 @@ public final class InnerAudioPlayer
     //   22: ifnonnull +6 -> 28
     //   25: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
     //   28: aload_1
-    //   29: invokevirtual 462	android/media/MediaPlayer:stop	()V
+    //   29: invokevirtual 465	android/media/MediaPlayer:stop	()V
     //   32: aload_0
     //   33: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
     //   36: astore_1
@@ -448,7 +453,7 @@ public final class InnerAudioPlayer
     //   38: ifnonnull +6 -> 44
     //   41: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
     //   44: aload_1
-    //   45: invokevirtual 464	android/media/MediaPlayer:reset	()V
+    //   45: invokevirtual 467	android/media/MediaPlayer:reset	()V
     //   48: aload_0
     //   49: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
     //   52: astore_1
@@ -456,13 +461,13 @@ public final class InnerAudioPlayer
     //   54: ifnonnull +6 -> 60
     //   57: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
     //   60: aload_1
-    //   61: invokevirtual 466	android/media/MediaPlayer:release	()V
+    //   61: invokevirtual 469	android/media/MediaPlayer:release	()V
     //   64: aload_0
     //   65: iconst_0
     //   66: putfield 312	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioId	I
     //   69: aload_0
     //   70: aconst_null
-    //   71: checkcast 468	java/lang/String
+    //   71: checkcast 471	java/lang/String
     //   74: putfield 314	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioPath	Ljava/lang/String;
     //   77: aload_0
     //   78: iconst_0
@@ -474,7 +479,7 @@ public final class InnerAudioPlayer
     //   88: iconst_0
     //   89: putfield 368	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mStartTime	I
     //   92: aload_0
-    //   93: ldc_w 469
+    //   93: ldc_w 472
     //   96: putfield 138	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mVolume	F
     //   99: aload_0
     //   100: iconst_0
@@ -507,7 +512,7 @@ public final class InnerAudioPlayer
     //   151: new 332	java/lang/StringBuilder
     //   154: dup
     //   155: invokespecial 333	java/lang/StringBuilder:<init>	()V
-    //   158: ldc_w 471
+    //   158: ldc_w 474
     //   161: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: aload_0
     //   165: invokevirtual 341	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:getAudioId	()I
@@ -525,7 +530,7 @@ public final class InnerAudioPlayer
     //   195: putfield 312	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioId	I
     //   198: aload_0
     //   199: aconst_null
-    //   200: checkcast 468	java/lang/String
+    //   200: checkcast 471	java/lang/String
     //   203: putfield 314	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioPath	Ljava/lang/String;
     //   206: aload_0
     //   207: iconst_0
@@ -537,7 +542,7 @@ public final class InnerAudioPlayer
     //   217: iconst_0
     //   218: putfield 368	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mStartTime	I
     //   221: aload_0
-    //   222: ldc_w 469
+    //   222: ldc_w 472
     //   225: putfield 138	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mVolume	F
     //   228: aload_0
     //   229: iconst_0
@@ -567,7 +572,7 @@ public final class InnerAudioPlayer
     //   271: putfield 312	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioId	I
     //   274: aload_0
     //   275: aconst_null
-    //   276: checkcast 468	java/lang/String
+    //   276: checkcast 471	java/lang/String
     //   279: putfield 314	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioPath	Ljava/lang/String;
     //   282: aload_0
     //   283: iconst_0
@@ -579,7 +584,7 @@ public final class InnerAudioPlayer
     //   293: iconst_0
     //   294: putfield 368	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mStartTime	I
     //   297: aload_0
-    //   298: ldc_w 469
+    //   298: ldc_w 472
     //   301: putfield 138	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mVolume	F
     //   304: aload_0
     //   305: iconst_0

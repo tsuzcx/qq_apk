@@ -32,6 +32,7 @@ public class PagerSnapHelper
   private boolean isQuickPageChanged;
   private boolean isSnapping;
   private LinearLayoutManager layoutManager;
+  private int minFlingVelocity = -1;
   private PagerSnapHelper.OnLayoutChangedListenerImpl onLayoutChangedListener;
   private PagerSnapHelper.OnLayoutSizeChangedListener onLayoutSizeChangedListener;
   private int placeHeaderCount;
@@ -134,12 +135,12 @@ public class PagerSnapHelper
       if ((localViewHolder != null) && (i != -1) && ((i != this.centerPosition) || (paramBoolean)))
       {
         if (!checkIsPositionOutOfBound(i, this.layoutManager)) {
-          break label126;
+          break label127;
         }
         ViolaLogUtils.e("PagerSnapHelper", "dispatchPagerChanged , position out of bound");
       }
     }
-    label126:
+    label127:
     do
     {
       return;
@@ -579,6 +580,11 @@ public class PagerSnapHelper
     this.isHorizontalReverseLayout = paramBoolean;
   }
   
+  public void setMinFlingVelocity(int paramInt)
+  {
+    this.minFlingVelocity = paramInt;
+  }
+  
   public void setQuickPageChanged(boolean paramBoolean)
   {
     this.isQuickPageChanged = paramBoolean;
@@ -708,7 +714,7 @@ public class PagerSnapHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.PagerSnapHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -25,8 +25,8 @@ class SearchRecommendAdapter$LiveViewHolder
   public SearchRecommendAdapter$LiveViewHolder(View paramView)
   {
     super(paramView);
-    this.title = ((TextView)paramView.findViewById(2131371314));
-    this.sequenceNumberTextView = ((TextView)paramView.findViewById(2131371313));
+    this.title = ((TextView)paramView.findViewById(2131371594));
+    this.sequenceNumberTextView = ((TextView)paramView.findViewById(2131371593));
   }
   
   public void update(LiveInfo paramLiveInfo, int paramInt)
@@ -36,7 +36,7 @@ class SearchRecommendAdapter$LiveViewHolder
     this.sequenceNumberTextView.setText(String.valueOf(paramInt + 1));
     if (paramInt == 0)
     {
-      this.sequenceNumberTextView.setBackgroundResource(2130841051);
+      this.sequenceNumberTextView.setBackgroundResource(2130841184);
       this.sequenceNumberTextView.setTextColor(-1);
     }
     for (;;)
@@ -78,19 +78,19 @@ class SearchRecommendAdapter$LiveViewHolder
       return;
       if (paramInt == 1)
       {
-        this.sequenceNumberTextView.setBackgroundResource(2130841049);
+        this.sequenceNumberTextView.setBackgroundResource(2130841182);
         this.sequenceNumberTextView.setTextColor(-1);
       }
       else if (paramInt == 2)
       {
-        this.sequenceNumberTextView.setBackgroundResource(2130841050);
+        this.sequenceNumberTextView.setBackgroundResource(2130841183);
         this.sequenceNumberTextView.setTextColor(-1);
       }
       else
       {
         this.sequenceNumberTextView.setBackgroundDrawable(null);
-        this.sequenceNumberTextView.setPadding(ViewUtils.dpToPx(5.0F), 0, 0, 0);
-        this.sequenceNumberTextView.setTextColor(this.itemView.getContext().getResources().getColor(2131167110));
+        this.sequenceNumberTextView.setPadding(ViewUtils.b(5.0F), 0, 0, 0);
+        this.sequenceNumberTextView.setTextColor(this.itemView.getContext().getResources().getColor(2131167117));
       }
     }
   }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anvk;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ class PermisionPrivacyActivity$6
   
   public void run()
   {
-    ArrayList localArrayList = ((anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a();
+    ArrayList localArrayList = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a();
     if ((localArrayList == null) || (localArrayList.isEmpty())) {}
     for (int i = 0;; i = localArrayList.size())
     {
@@ -24,7 +24,7 @@ class PermisionPrivacyActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.6
  * JD-Core Version:    0.7.0.1
  */

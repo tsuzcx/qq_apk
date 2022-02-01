@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.app.Activity;
-import bifw;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import java.util.HashMap;
 
 class RedTouchWebviewHandler$2
@@ -23,7 +23,7 @@ class RedTouchWebviewHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchWebviewHandler.2
  * JD-Core Version:    0.7.0.1
  */

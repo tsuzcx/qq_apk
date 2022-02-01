@@ -1,22 +1,19 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.app.Dialog;
-import anvx;
-import avmn;
-import avmo;
-import avmv;
-import bhdj;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
-public class HotPicPageView$4$2
+class HotPicPageView$4$2
   implements Runnable
 {
-  public HotPicPageView$4$2(avmn paramavmn) {}
+  HotPicPageView$4$2(HotPicPageView.4 param4) {}
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = bhdj.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a, 232, null, anvx.a(2131705084), new avmo(this), null);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a, 232, null, HardCodeUtil.a(2131705627), new HotPicPageView.4.2.1(this), null);
     try
     {
       localQQCustomDialog.show();
@@ -27,8 +24,8 @@ public class HotPicPageView$4$2
       if (QLog.isColorLevel()) {
         QLog.d("HotPicManagerHotPicPageView", 2, "show dialog fail");
       }
-      if (this.a.jdField_a_of_type_Avmv.a == 1) {
-        this.a.jdField_a_of_type_Avmv.a(0);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a == 1) {
+        this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(0);
       }
       this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
     }
@@ -36,7 +33,7 @@ public class HotPicPageView$4$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.4.2
  * JD-Core Version:    0.7.0.1
  */

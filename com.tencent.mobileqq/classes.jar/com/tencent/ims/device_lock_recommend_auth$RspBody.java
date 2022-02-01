@@ -18,7 +18,7 @@ public final class device_lock_recommend_auth$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ims.device_lock_recommend_auth.RspBody
  * JD-Core Version:    0.7.0.1
  */

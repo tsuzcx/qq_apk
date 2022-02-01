@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.entry;
 
-import alcz;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -16,19 +15,19 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import arbw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.activity.recent.AppletsFolderManager;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.ARMapHongBaoListView;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +60,7 @@ public class MiniAppEntryLayout
   private int[] mStoryBarLocation = new int[2];
   private ImageView mThemeBackgroudView;
   private int mTouchSlop;
-  private boolean result;
+  private boolean result = false;
   
   public MiniAppEntryLayout(@NonNull Context paramContext, ARMapHongBaoListView paramARMapHongBaoListView, int paramInt)
   {
@@ -70,31 +69,31 @@ public class MiniAppEntryLayout
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.mRefer = paramInt;
     this.mListView = paramARMapHongBaoListView;
-    inflate(paramContext, 2131562405, this);
-    this.mParent = ((ViewGroup)findViewById(2131371439));
-    this.mRecyclerView = ((RecyclerView)findViewById(2131370931));
+    inflate(paramContext, 2131562543, this);
+    this.mParent = ((ViewGroup)findViewById(2131371741));
+    this.mRecyclerView = ((RecyclerView)findViewById(2131371209));
     this.mRecyclerView.setItemAnimator(null);
     this.mAdapter = new MiniAppEntryAdapter((Activity)paramContext, paramInt);
-    if (arbw.h())
+    if (MiniAppConfProcessor.h())
     {
-      boolean bool = ((alcz)this.mContext.app.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).a();
+      boolean bool = ((AppletsFolderManager)this.mContext.app.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).a();
       paramARMapHongBaoListView = this.mAdapter;
       if (!bool) {
-        break label295;
+        break label300;
       }
     }
-    label295:
+    label300:
     for (paramInt = 1;; paramInt = 0)
     {
       paramARMapHongBaoListView.setRedDotSwitchState(paramInt);
       this.mRecyclerView.setAdapter(this.mAdapter);
       this.mRecyclerView.addOnScrollListener(new MiniAppEntryLayout.1(this));
-      this.mThemeBackgroudView = ((ImageView)findViewById(2131371201));
-      this.mNormalStateView = ((ViewGroup)findViewById(2131371242));
-      this.mDefaultStateView = ((ViewGroup)findViewById(2131371181));
-      this.mAppStoreEntryText = ((TextView)findViewById(2131371340));
+      this.mThemeBackgroudView = ((ImageView)findViewById(2131371480));
+      this.mNormalStateView = ((ViewGroup)findViewById(2131371521));
+      this.mDefaultStateView = ((ViewGroup)findViewById(2131371460));
+      this.mAppStoreEntryText = ((TextView)findViewById(2131371620));
       this.mAppStoreEntryText.setOnClickListener(this);
-      this.mDotView = ((MiniAppDotAnimationView)findViewById(2131371437));
+      this.mDotView = ((MiniAppDotAnimationView)findViewById(2131371739));
       this.mLinearLayoutManager = new MiniAppEntryLayout.MiniAppLinearLayoutManager(paramContext, 0, false);
       this.mLinearLayoutManager.setAutoMeasureEnabled(false);
       this.mRecyclerView.setLayoutManager(this.mLinearLayoutManager);
@@ -207,7 +206,7 @@ public class MiniAppEntryLayout
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     updateHongBaoRes();
@@ -236,7 +235,6 @@ public class MiniAppEntryLayout
   public void onClick(View paramView)
   {
     MiniAppUtils.handleMiniAppMoreClick(this.mContext);
-    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onPostThemeChanged()
@@ -384,7 +382,7 @@ public class MiniAppEntryLayout
         return;
         label36:
         this.mThemeBackgroudView.setVisibility(0);
-        this.mThemeBackgroudView.setImageResource(2130838912);
+        this.mThemeBackgroudView.setImageResource(2130838980);
       }
       return;
     }

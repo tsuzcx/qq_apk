@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import aeow;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,11 +13,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anvx;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -45,17 +45,17 @@ public class QQNotifySettingFragment
     localIntent.putExtra("key_busid", URLDecoder.decode(paramString2));
     localIntent.putExtra("key_schema", URLDecoder.decode(paramString3));
     localIntent.putExtra("key_domain", URLDecoder.decode(paramString4));
-    aeow.a(paramContext, localIntent, PublicTransFragmentActivity.class, QQNotifySettingFragment.class);
+    PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicTransFragmentActivity.class, QQNotifySettingFragment.class);
   }
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131560966, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131561052, paramViewGroup, false);
   }
   
   public void a()
   {
-    QQToast.a(getActivity(), anvx.a(2131710034), 0).a();
+    QQToast.a(getActivity(), HardCodeUtil.a(2131710550), 0).a();
   }
   
   public void b(int paramInt, String paramString)
@@ -65,15 +65,15 @@ public class QQNotifySettingFragment
     {
       bool = true;
       this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = paramInt;
+      this.b = paramInt;
       this.jdField_a_of_type_JavaLangString = paramString;
       if (!this.jdField_a_of_type_Boolean) {
         break label136;
       }
       this.jdField_a_of_type_AndroidWidgetButton.setTag("1");
-      this.jdField_a_of_type_AndroidWidgetButton.setText(anvx.a(2131710030));
-      this.c.setText(anvx.a(2131710036));
-      this.d.setText(anvx.a(2131710032));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131710546));
+      this.c.setText(HardCodeUtil.a(2131710552));
+      this.d.setText(HardCodeUtil.a(2131710548));
       paramString = URLDrawable.URLDrawableOptions.obtain();
       paramString.mRequestHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
       paramString.mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
@@ -87,19 +87,19 @@ public class QQNotifySettingFragment
       }
     }
     label136:
-    while (this.jdField_a_of_type_Int == 2)
+    while (this.b == 2)
     {
       return;
       bool = false;
       break;
     }
-    a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    a(this.b, this.jdField_a_of_type_JavaLangString);
   }
   
   public void c(int paramInt, String paramString)
   {
     paramString = getArguments().getString("key_schema");
-    paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString + "://?retcode=" + this.jdField_a_of_type_Int + "&retmsg=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString)));
+    paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString + "://?retcode=" + this.b + "&retmsg=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString)));
     paramString.putExtra("big_brother_source_key", "biz_src_zf_qianbao");
     try
     {
@@ -115,8 +115,8 @@ public class QQNotifySettingFragment
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    if (paramView.getId() == 2131379812) {
-      a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if (paramView.getId() == 2131380241) {
+      a(this.b, this.jdField_a_of_type_JavaLangString);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -124,18 +124,18 @@ public class QQNotifySettingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369421));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369680));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369419));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369678));
     paramLayoutInflater = URLDrawable.URLDrawableOptions.obtain();
-    paramLayoutInflater.mRequestHeight = UIUtils.dip2px(getActivity(), 106.0F);
-    paramLayoutInflater.mRequestWidth = UIUtils.dip2px(getActivity(), 195.0F);
+    paramLayoutInflater.mRequestHeight = UIUtils.a(getActivity(), 106.0F);
+    paramLayoutInflater.mRequestWidth = UIUtils.a(getActivity(), 195.0F);
     paramLayoutInflater = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201907/upload_a69bf0fc5262c4bc452dd03f6b95a9c0.png", paramLayoutInflater);
     if (paramLayoutInflater != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramLayoutInflater);
     }
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369420));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379812));
+    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369679));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380241));
     this.c.setOnClickListener(this);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -144,7 +144,7 @@ public class QQNotifySettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifySettingFragment
  * JD-Core Version:    0.7.0.1
  */

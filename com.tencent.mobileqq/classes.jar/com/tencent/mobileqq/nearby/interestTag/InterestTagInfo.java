@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import appoint.define.appoint_define.InterestItem;
-import axui;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -18,7 +17,7 @@ public class InterestTagInfo
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<InterestTagInfo> CREATOR = new axui();
+  public static final Parcelable.Creator<InterestTagInfo> CREATOR = new InterestTagInfo.1();
   public long bid;
   public String tagBgColor;
   public String tagIconUrl;

@@ -9,7 +9,7 @@ class QQCustomArkDialogForAio$3
   
   public void run()
   {
-    QQCustomArkDialogForAio.access$100(this.this$0, this.val$bundle);
+    QQCustomArkDialogForAio.a(this.this$0, this.a);
   }
 }
 

@@ -5,14 +5,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import usk;
 
 class PreloadManager$FeedslistDownlaodImageThread
   implements Runnable
 {
   PreloadManager$FeedslistDownlaodImageThread(PreloadManager paramPreloadManager) {}
   
-  usk a()
+  PreloadManager.ImgStruct a()
   {
     Object localObject1 = this.this$0.a;
     int i = 3;
@@ -20,7 +19,7 @@ class PreloadManager$FeedslistDownlaodImageThread
     {
       try
       {
-        usk localusk;
+        PreloadManager.ImgStruct localImgStruct;
         do
         {
           Iterator localIterator = PreloadManager.a(this.this$0).values().iterator();
@@ -36,12 +35,12 @@ class PreloadManager$FeedslistDownlaodImageThread
             }
             localObject3 = ((ArrayList)localObject3).iterator();
           }
-          localusk = (usk)((Iterator)localObject3).next();
-          if (localusk == null) {
+          localImgStruct = (PreloadManager.ImgStruct)((Iterator)localObject3).next();
+          if (localImgStruct == null) {
             return null;
           }
-        } while ((PreloadManager.a(localusk.jdField_a_of_type_JavaLangString) != 0) || (localusk.jdField_a_of_type_Int != i));
-        return localusk;
+        } while ((PreloadManager.a(localImgStruct.jdField_a_of_type_JavaLangString) != 0) || (localImgStruct.jdField_a_of_type_Int != i));
+        return localImgStruct;
       }
       finally {}
       i -= 1;
@@ -54,21 +53,21 @@ class PreloadManager$FeedslistDownlaodImageThread
     this.this$0.b = true;
     for (;;)
     {
-      usk localusk = a();
-      if (localusk == null) {
+      PreloadManager.ImgStruct localImgStruct = a();
+      if (localImgStruct == null) {
         break;
       }
       if (NetworkState.getNetworkType() != 1) {
         return;
       }
-      this.this$0.b(localusk.jdField_a_of_type_JavaLangString);
+      this.this$0.b(localImgStruct.jdField_a_of_type_JavaLangString);
     }
     this.this$0.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PreloadManager.FeedslistDownlaodImageThread
  * JD-Core Version:    0.7.0.1
  */

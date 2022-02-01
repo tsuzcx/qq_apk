@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atpf;
-import atpg;
-
-public class ThumbHttpDownloader$1
+class ThumbHttpDownloader$1
   implements Runnable
 {
-  public ThumbHttpDownloader$1(atpf paramatpf, atpg paramatpg) {}
+  ThumbHttpDownloader$1(ThumbHttpDownloader paramThumbHttpDownloader, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
   
   public void run()
   {
-    atpf.a(this.this$0, this.a);
+    ThumbHttpDownloader.a(this.this$0, this.a);
   }
 }
 

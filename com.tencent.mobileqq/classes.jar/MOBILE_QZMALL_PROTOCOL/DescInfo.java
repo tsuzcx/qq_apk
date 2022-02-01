@@ -8,10 +8,10 @@ public final class DescInfo
   extends JceStruct
 {
   static LocationInfo cache_stLocationInfo = new LocationInfo();
-  public LocationInfo stLocationInfo;
+  public LocationInfo stLocationInfo = null;
   public String strDesc = "";
   public String strFontColor = "";
-  public long uiFontSize;
+  public long uiFontSize = 0L;
   
   public DescInfo() {}
   

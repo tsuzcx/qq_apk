@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.play;
 
-import bnju;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.config.CameraPeakServiceObserver;
 import mqq.os.MqqHandler;
 
 class AETakeFacePhotoPreviewFragment$2
-  extends bnju
+  extends CameraPeakServiceObserver
 {
   AETakeFacePhotoPreviewFragment$2(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   
@@ -18,7 +18,7 @@ class AETakeFacePhotoPreviewFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment.2
  * JD-Core Version:    0.7.0.1
  */

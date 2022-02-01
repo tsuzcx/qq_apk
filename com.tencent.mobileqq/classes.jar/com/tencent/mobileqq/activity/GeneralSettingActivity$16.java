@@ -1,35 +1,58 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.CompoundButton;
-import bdfe;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
+import com.tencent.mobileqq.theme.DarkModeManager;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
 
 class GeneralSettingActivity$16
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  GeneralSettingActivity$16(GeneralSettingActivity paramGeneralSettingActivity, boolean paramBoolean1, int paramInt, CompoundButton paramCompoundButton, boolean paramBoolean2) {}
+  GeneralSettingActivity$16(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!((bdfe)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.SIMPLE_UI_HANDLER)).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, true))
+    boolean bool1 = this.a.a.a().isChecked();
+    boolean bool2 = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
+    int j = SimpleUIUtil.f();
+    int i;
+    if ((bool1) && (bool2))
     {
-      this.this$0.e(2131718614, 0);
-      GeneralSettingActivity localGeneralSettingActivity = this.this$0;
-      CompoundButton localCompoundButton = this.jdField_a_of_type_AndroidWidgetCompoundButton;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localGeneralSettingActivity.a(localCompoundButton, bool);
-        return;
+      i = SimpleUIUtil.c;
+      if (!paramBoolean) {
+        break label140;
+      }
+      String str = SimpleUIUtil.a(i);
+      if (!DarkModeManager.a(this.a, str, new GeneralSettingActivity.16.1(this, paramCompoundButton, bool1, i))) {
+        GeneralSettingActivity.a(this.a, paramCompoundButton, true, bool1, i);
       }
     }
-    GeneralSettingActivity.a(this.this$0, true, this.this$0.a);
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = j;
+      if (!bool1) {
+        break;
+      }
+      i = j;
+      if (!ThemeUtil.isNowThemeIsNight(this.a.app, false, SimpleUIUtil.a(j))) {
+        break;
+      }
+      i = SimpleUIUtil.g();
+      break;
+      label140:
+      GeneralSettingActivity.a(this.a, paramCompoundButton, false, bool1, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.16
  * JD-Core Version:    0.7.0.1
  */

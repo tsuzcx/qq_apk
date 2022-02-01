@@ -3,10 +3,10 @@ package com.tencent.mobileqq.utils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class QQUtils$1
+final class QQUtils$1
   implements Runnable
 {
-  public QQUtils$1(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  QQUtils$1(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {

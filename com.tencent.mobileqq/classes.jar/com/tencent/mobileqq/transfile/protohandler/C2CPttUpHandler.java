@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -12,9 +12,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
 import com.tencent.mobileqq.transfile.ServerAddr;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 public class C2CPttUpHandler
   extends BaseHandler
 {
-  private static int s0x346Seq;
+  private static int s0x346Seq = 0;
   
   byte[] constructReqBody(List<RichProto.RichProtoReq.ReqCommon> paramList)
   {
@@ -149,7 +149,7 @@ public class C2CPttUpHandler
     }
   }
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     Object localObject2 = paramProtoResp.resp;
     if (localObject2 == null) {
@@ -158,7 +158,7 @@ public class C2CPttUpHandler
     Object localObject1 = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    anza localanza = paramProtoResp.statisInfo;
+    StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
     int i;
     if (((FromServiceMsg)localObject2).getResultCode() != 1000)
     {
@@ -171,7 +171,7 @@ public class C2CPttUpHandler
         if (paramProtoReq == null) {
           paramProtoResp = "";
         }
-        setResult(-1, 9311, (String)localObject1, paramProtoResp, localanza, localRichProtoResp.resps);
+        setResult(-1, 9311, (String)localObject1, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
       }
     }
     cmd0x346.ApplyUploadRsp localApplyUploadRsp;
@@ -186,7 +186,7 @@ public class C2CPttUpHandler
       if (paramProtoReq == null) {
         paramProtoResp = "";
       }
-      setResult(-1, 9044, (String)localObject1, paramProtoResp, localanza, localRichProtoResp.resps);
+      setResult(-1, 9044, (String)localObject1, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
       continue;
       try
       {
@@ -215,7 +215,7 @@ public class C2CPttUpHandler
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr((byte[])localObject1), localanza, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr((byte[])localObject1), localStatictisInfo, localRichProtoResp.resps);
       }
     }
     if (localApplyUploadRsp.uint32_pack_size.has()) {
@@ -247,9 +247,9 @@ public class C2CPttUpHandler
             localC2CPttUpResp.ipList.add(localObject2);
           }
         }
-        setResult(0, 0, "", "", localanza, localC2CPttUpResp);
+        setResult(0, 0, "", "", localStatictisInfo, localC2CPttUpResp);
         break;
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localanza, localC2CPttUpResp);
+        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localStatictisInfo, localC2CPttUpResp);
         break;
         if (localObject2 == null) {
           break label482;
@@ -262,7 +262,7 @@ public class C2CPttUpHandler
   {
     if ((paramRichProtoReq != null) && (paramRichProtoReq.reqs != null) && (paramRichProtoReq.protoReqMgr != null))
     {
-      ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
+      ProtoReqManagerImpl.ProtoReq localProtoReq = new ProtoReqManagerImpl.ProtoReq();
       localProtoReq.ssoCmd = "PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500";
       localProtoReq.reqBody = constructReqBody(paramRichProtoReq.reqs);
       localProtoReq.busiData = paramRichProtoReq;

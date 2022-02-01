@@ -9,8 +9,8 @@ public final class operation_play_on_wifi_req
 {
   public boolean isSetPlayOnWifi = true;
   public String strFeedUgcKey = "";
-  public long uFeedsUin;
-  public long uTime;
+  public long uFeedsUin = 0L;
+  public long uTime = 0L;
   
   public operation_play_on_wifi_req() {}
   

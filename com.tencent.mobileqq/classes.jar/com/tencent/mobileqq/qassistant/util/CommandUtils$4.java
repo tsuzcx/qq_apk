@@ -3,10 +3,10 @@ package com.tencent.mobileqq.qassistant.util;
 import android.text.format.Time;
 import com.tencent.mobileqq.testassister.ShareAppLogHelper;
 
-public final class CommandUtils$4
+final class CommandUtils$4
   implements Runnable
 {
-  public CommandUtils$4(ShareAppLogHelper paramShareAppLogHelper, Time paramTime1, Time paramTime2) {}
+  CommandUtils$4(ShareAppLogHelper paramShareAppLogHelper, Time paramTime1, Time paramTime2) {}
   
   public void run()
   {

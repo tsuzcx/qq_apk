@@ -1,7 +1,7 @@
 package com.tencent.open.adapter;
 
-import bjom;
-import bjoq;
+import com.tencent.open.downloadnew.common.AppNotificationManager;
+import com.tencent.open.downloadnew.common.IntentFactory;
 import com.tencent.open.downloadnew.common.NoticeParam;
 
 final class OpenAppClient$1
@@ -17,13 +17,13 @@ final class OpenAppClient$1
     localNoticeParam.c = "";
     localNoticeParam.e = this.e;
     localNoticeParam.jdField_b_of_type_Int = 4;
-    localNoticeParam.jdField_a_of_type_AndroidContentIntent = bjoq.a(this.f, this.g, this.jdField_a_of_type_Int);
-    bjom.a().a(localNoticeParam);
+    localNoticeParam.jdField_a_of_type_AndroidContentIntent = IntentFactory.a(this.f, this.g, this.jdField_a_of_type_Int);
+    AppNotificationManager.a().a(localNoticeParam);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.adapter.OpenAppClient.1
  * JD-Core Version:    0.7.0.1
  */

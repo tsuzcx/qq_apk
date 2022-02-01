@@ -8,13 +8,13 @@ public final class stPublisherRsp
   extends JceStruct
 {
   static stPublisherGuide cache_guide = new stPublisherGuide();
-  public boolean enable;
-  public stPublisherGuide guide;
+  public boolean enable = false;
+  public stPublisherGuide guide = null;
   public String h5Url = "";
   public String miniAppSchema = "";
-  public boolean newUser;
+  public boolean newUser = false;
   public String newsUserText = "";
-  public int noInstallAction;
+  public int noInstallAction = 0;
   public String weishiSchema = "";
   
   public stPublisherRsp() {}

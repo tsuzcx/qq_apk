@@ -3,7 +3,7 @@ package com.tencent.mobileqq.search.ftsmsg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class FTSMessageSearchEngine$5
+class FTSMessageSearchEngine$5
   implements Runnable
 {
   public void run()
@@ -13,7 +13,7 @@ public class FTSMessageSearchEngine$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.5
  * JD-Core Version:    0.7.0.1
  */

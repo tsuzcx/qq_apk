@@ -174,7 +174,7 @@ public class NativeCrashHandler
           localObject3 = this.f;
           str2 = com.tencent.bugly.crashreport.common.info.b.a(this.b, false);
           com.tencent.bugly.crashreport.common.info.a.b();
-          i1 = com.tencent.bugly.crashreport.common.info.a.J();
+          i1 = com.tencent.bugly.crashreport.common.info.a.I();
           localObject2 = (String)z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "registNativeExceptionHandler", null, new Class[] { String.class, String.class, localObject2 }, new Object[] { localObject3, str2, Integer.valueOf(i1) });
         }
         if (localObject2 == null) {
@@ -622,24 +622,24 @@ public class NativeCrashHandler
     //   4: aload_1
     //   5: ifnull +35 -> 40
     //   8: aload_1
-    //   9: getfield 382	com/tencent/bugly/crashreport/common/strategy/StrategyBean:f	Z
+    //   9: getfield 383	com/tencent/bugly/crashreport/common/strategy/StrategyBean:f	Z
     //   12: aload_0
     //   13: getfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
     //   16: if_icmpeq +24 -> 40
-    //   19: ldc_w 384
+    //   19: ldc_w 385
     //   22: iconst_1
     //   23: anewarray 4	java/lang/Object
     //   26: dup
     //   27: iconst_0
     //   28: aload_1
-    //   29: getfield 382	com/tencent/bugly/crashreport/common/strategy/StrategyBean:f	Z
+    //   29: getfield 383	com/tencent/bugly/crashreport/common/strategy/StrategyBean:f	Z
     //   32: invokestatic 250	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   35: aastore
     //   36: invokestatic 134	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   39: pop
     //   40: invokestatic 82	com/tencent/bugly/crashreport/common/strategy/a:a	()Lcom/tencent/bugly/crashreport/common/strategy/a;
-    //   43: invokevirtual 387	com/tencent/bugly/crashreport/common/strategy/a:c	()Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
-    //   46: getfield 382	com/tencent/bugly/crashreport/common/strategy/StrategyBean:f	Z
+    //   43: invokevirtual 388	com/tencent/bugly/crashreport/common/strategy/a:c	()Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
+    //   46: getfield 383	com/tencent/bugly/crashreport/common/strategy/StrategyBean:f	Z
     //   49: ifeq +44 -> 93
     //   52: aload_0
     //   53: getfield 55	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:k	Z
@@ -648,7 +648,7 @@ public class NativeCrashHandler
     //   60: aload_0
     //   61: getfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
     //   64: if_icmpeq +26 -> 90
-    //   67: ldc_w 389
+    //   67: ldc_w 390
     //   70: iconst_1
     //   71: anewarray 4	java/lang/Object
     //   74: dup
@@ -660,7 +660,7 @@ public class NativeCrashHandler
     //   84: pop
     //   85: aload_0
     //   86: iload_2
-    //   87: invokespecial 391	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:b	(Z)V
+    //   87: invokespecial 392	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:b	(Z)V
     //   90: aload_0
     //   91: monitorexit
     //   92: return

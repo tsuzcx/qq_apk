@@ -3,7 +3,6 @@ package mqq.app;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import mqq.manager.VerifyDevLockManager.NotifyType;
 import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import oicq.wlogin_sdk.tools.ErrMsg;
@@ -25,8 +24,8 @@ class VerifyDevLockManagerImpl$1
     case 0: 
       paramMessage = (Object[])paramMessage.obj;
       VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)paramMessage[0];
-      localVerifyDevLockObserver.onRecvNotice((VerifyDevLockManager.NotifyType)paramMessage[1], ((Integer)paramMessage[2]).intValue(), (String)paramMessage[3], ((Integer)paramMessage[4]).intValue(), (ErrMsg)paramMessage[5], (DevlockInfo)paramMessage[6]);
-      localVerifyDevLockObserver.onReceive((VerifyDevLockManager.NotifyType)paramMessage[1], ((Integer)paramMessage[4]).intValue(), paramMessage[7]);
+      localVerifyDevLockObserver.onRecvNotice(((Integer)paramMessage[1]).intValue(), ((Integer)paramMessage[2]).intValue(), (String)paramMessage[3], ((Integer)paramMessage[4]).intValue(), (ErrMsg)paramMessage[5], (DevlockInfo)paramMessage[6]);
+      localVerifyDevLockObserver.onReceive(((Integer)paramMessage[1]).intValue(), ((Integer)paramMessage[4]).intValue(), paramMessage[7]);
       return;
     }
     paramMessage = (Object[])paramMessage.obj;

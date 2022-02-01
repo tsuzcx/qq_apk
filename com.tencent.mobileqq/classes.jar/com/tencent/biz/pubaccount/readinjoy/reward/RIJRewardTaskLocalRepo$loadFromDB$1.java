@@ -8,13 +8,12 @@ import java.util.List;
 import kotlin.Metadata;
 import kotlin.collections.CollectionsKt;
 import mqq.os.MqqHandler;
-import rjz;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
-public final class RIJRewardTaskLocalRepo$loadFromDB$1
+final class RIJRewardTaskLocalRepo$loadFromDB$1
   implements Runnable
 {
-  public RIJRewardTaskLocalRepo$loadFromDB$1(rjz paramrjz) {}
+  RIJRewardTaskLocalRepo$loadFromDB$1(RIJRewardTaskLocalRepo paramRIJRewardTaskLocalRepo) {}
   
   public final void run()
   {
@@ -22,7 +21,7 @@ public final class RIJRewardTaskLocalRepo$loadFromDB$1
     {
       try
       {
-        List localList2 = rjz.a(this.this$0).createEntityManager().query(RedPacketTaskData.class, true, null, null, null, null, "insertTime desc", "500");
+        List localList2 = RIJRewardTaskLocalRepo.a(this.this$0).createEntityManager().query(RedPacketTaskData.class, true, null, null, null, null, "insertTime desc", "500");
         localList1 = localList2;
         if ((localList2 instanceof List)) {
           break label81;
@@ -46,7 +45,7 @@ public final class RIJRewardTaskLocalRepo$loadFromDB$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTaskLocalRepo.loadFromDB.1
  * JD-Core Version:    0.7.0.1
  */

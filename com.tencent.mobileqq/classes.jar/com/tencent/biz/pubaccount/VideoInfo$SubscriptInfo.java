@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import omp;
 
 public class VideoInfo$SubscriptInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SubscriptInfo> CREATOR = new omp();
+  public static final Parcelable.Creator<SubscriptInfo> CREATOR = new VideoInfo.SubscriptInfo.1();
   public int a;
   public String a;
   public int b;
@@ -16,7 +15,7 @@ public class VideoInfo$SubscriptInfo
   
   public VideoInfo$SubscriptInfo() {}
   
-  public VideoInfo$SubscriptInfo(Parcel paramParcel)
+  protected VideoInfo$SubscriptInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -44,7 +43,7 @@ public class VideoInfo$SubscriptInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.SubscriptInfo
  * JD-Core Version:    0.7.0.1
  */

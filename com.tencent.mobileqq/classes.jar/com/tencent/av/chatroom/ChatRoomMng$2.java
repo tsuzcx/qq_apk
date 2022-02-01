@@ -1,22 +1,21 @@
 package com.tencent.av.chatroom;
 
 import android.os.Handler;
-import lkf;
 
-public class ChatRoomMng$2
+class ChatRoomMng$2
   implements Runnable
 {
-  public ChatRoomMng$2(lkf paramlkf, ChatRoomInfo paramChatRoomInfo) {}
+  ChatRoomMng$2(ChatRoomMng paramChatRoomMng, ChatRoomInfo paramChatRoomInfo) {}
   
   public void run()
   {
-    lkf.a(this.this$0).removeMessages(3, this.a);
+    ChatRoomMng.a(this.this$0).removeMessages(3, this.a);
     this.this$0.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.chatroom.ChatRoomMng.2
  * JD-Core Version:    0.7.0.1
  */

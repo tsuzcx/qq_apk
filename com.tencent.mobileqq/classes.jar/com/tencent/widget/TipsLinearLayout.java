@@ -6,16 +6,16 @@ import android.graphics.Canvas;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import blfy;
 import com.tencent.qphone.base.util.QLog;
 
 public class TipsLinearLayout
   extends LinearLayout
 {
+  private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private blfy jdField_a_of_type_Blfy;
-  private boolean jdField_a_of_type_Boolean;
+  private TipsLinearLayout.TipsLayoutAnimListener jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 0;
   private boolean jdField_b_of_type_Boolean = true;
   
@@ -69,7 +69,7 @@ public class TipsLinearLayout
   
   private void c()
   {
-    if (this.jdField_a_of_type_Blfy == null) {
+    if (this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener == null) {
       return;
     }
     if (this.jdField_b_of_type_Int == 1)
@@ -77,13 +77,13 @@ public class TipsLinearLayout
       if (QLog.isColorLevel()) {
         QLog.d("TipsLinearLayout", 2, "ANIM_IN end.");
       }
-      this.jdField_a_of_type_Blfy.a();
+      this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener.a();
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("TipsLinearLayout", 2, "ANIM_OUT end.");
     }
-    this.jdField_a_of_type_Blfy.b();
+    this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener.b();
   }
   
   public void a()
@@ -140,19 +140,19 @@ public class TipsLinearLayout
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
   
-  public void setmTipsLayoutAnimListener(blfy paramblfy)
+  public void setmTipsLayoutAnimListener(TipsLinearLayout.TipsLayoutAnimListener paramTipsLayoutAnimListener)
   {
-    this.jdField_a_of_type_Blfy = paramblfy;
+    this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener = paramTipsLayoutAnimListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.TipsLinearLayout
  * JD-Core Version:    0.7.0.1
  */

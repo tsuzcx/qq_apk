@@ -9,9 +9,9 @@ public final class ConchTask
   extends JceStruct
 {
   static ArrayList<Conch> cache_conchList = new ArrayList();
-  public ArrayList<Conch> conchList;
-  public long taskId;
-  public long taskSeqno;
+  public ArrayList<Conch> conchList = null;
+  public long taskId = 0L;
+  public long taskSeqno = 0L;
   
   static
   {

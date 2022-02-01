@@ -1,10 +1,10 @@
 package dov.com.qq.im.ae.play;
 
 import android.text.TextUtils;
-import bnlb;
-import bnrh;
-import bove;
 import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
+import dov.com.qq.im.ae.entry.AECameraEntry;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.tencent.biz.qqstory.takevideo.ShortVideoForwardManager;
 import java.io.File;
 import java.util.Timer;
 
@@ -24,7 +24,7 @@ class AEVideoShelfPreviewFragment$5
         if (localFile.exists())
         {
           localFile.delete();
-          bnrh.b(AEVideoShelfPreviewFragment.access$200(), "onCompletion---delete temp silent file because user cancel generation: " + (String)localObject);
+          AEQLog.b(AEVideoShelfPreviewFragment.access$200(), "onCompletion---delete temp silent file because user cancel generation: " + (String)localObject);
         }
       }
       if (!TextUtils.isEmpty(AEVideoShelfPreviewFragment.access$500(this.this$0)))
@@ -33,7 +33,7 @@ class AEVideoShelfPreviewFragment$5
         if (((File)localObject).exists())
         {
           ((File)localObject).delete();
-          bnrh.b(AEVideoShelfPreviewFragment.access$200(), "onCompletion---delete final file because user cancel generation: " + AEVideoShelfPreviewFragment.access$500(this.this$0));
+          AEQLog.b(AEVideoShelfPreviewFragment.access$200(), "onCompletion---delete final file because user cancel generation: " + AEVideoShelfPreviewFragment.access$500(this.this$0));
         }
       }
       AEVideoShelfPreviewFragment.access$602(this.this$0, false);
@@ -53,7 +53,7 @@ class AEVideoShelfPreviewFragment$5
         AEVideoShelfPreviewFragment.access$1102(this.this$0, false);
         AEVideoShelfPreviewFragment.keepScreenOn(this.this$0.getActivity(), false);
       }
-      bove.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.access$500(this.this$0), this.this$0.getThumbPath(), bnlb.b(this.this$0.getActivity()), "caller_aecamera");
+      ShortVideoForwardManager.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.access$500(this.this$0), this.this$0.getThumbPath(), AECameraEntry.b(this.this$0.getActivity()), "caller_aecamera");
       return;
       AEVideoShelfPreviewFragment.access$900(this.this$0);
     }
@@ -61,7 +61,7 @@ class AEVideoShelfPreviewFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment.5
  * JD-Core Version:    0.7.0.1
  */

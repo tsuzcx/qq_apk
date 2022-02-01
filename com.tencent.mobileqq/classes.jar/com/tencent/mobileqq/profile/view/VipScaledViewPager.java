@@ -23,7 +23,7 @@ public class VipScaledViewPager
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
   private HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private boolean jdField_a_of_type_Boolean;
@@ -192,7 +192,7 @@ public class VipScaledViewPager
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
+  public boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
     if (QLog.isColorLevel()) {
       QLog.d("VipScaledViewPager", 2, "getChildStaticTransformation child = " + paramView.hashCode() + ", mIsScroll = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean + ", mInvalidateMap = " + this.jdField_a_of_type_JavaUtilHashMap);

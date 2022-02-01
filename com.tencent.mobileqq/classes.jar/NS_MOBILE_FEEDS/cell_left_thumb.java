@@ -13,18 +13,18 @@ public final class cell_left_thumb
   static s_picdata cache_picdata = new s_picdata();
   static s_user cache_user = new s_user();
   public String actionturl = "";
-  public int actiontype;
-  public Map<String, String> mapExt;
-  public int mediatype;
+  public int actiontype = 0;
+  public Map<String, String> mapExt = null;
+  public int mediatype = 0;
   public int pic_actiontype = -1;
   public String pic_actionurl = "";
-  public s_picdata picdata;
+  public s_picdata picdata = null;
   public String postparams = "";
   public String remark = "";
   public String summary = "";
   public String title = "";
-  public byte usepost;
-  public s_user user;
+  public byte usepost = 0;
+  public s_user user = null;
   public int user_actiontype = 5;
   public String user_actionurl = "";
   

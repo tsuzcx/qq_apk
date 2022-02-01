@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.nearby.report;
 
-import axny;
-import bdlf;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
+import com.tencent.mobileqq.statistics.ReportTask;
 
 public class NearbyReportRunnable
   implements Runnable
 {
   private final int jdField_a_of_type_Int;
-  private axny jdField_a_of_type_Axny;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private NearbyCardManager jdField_a_of_type_ComTencentMobileqqNearbyNearbyCardManager;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
   public NearbyReportRunnable(QQAppInterface paramQQAppInterface, int paramInt)
@@ -20,22 +20,22 @@ public class NearbyReportRunnable
   
   private void a()
   {
-    int i = this.jdField_a_of_type_Axny.b();
-    new bdlf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("exp").a(new String[] { "", String.valueOf(i), "", "" }).a();
+    int i = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyCardManager.b();
+    new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("exp").a(new String[] { "", String.valueOf(i), "", "" }).a();
   }
   
   private void b()
   {
-    int i = this.jdField_a_of_type_Axny.b();
+    int i = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyCardManager.b();
     if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0)) {
       this.jdField_a_of_type_ArrayOfJavaLangString[1] = String.valueOf(i);
     }
-    new bdlf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("clk_red").a(this.jdField_a_of_type_ArrayOfJavaLangString).a();
+    new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("clk_red").a(this.jdField_a_of_type_ArrayOfJavaLangString).a();
   }
   
-  public void a(axny paramaxny)
+  public void a(NearbyCardManager paramNearbyCardManager)
   {
-    this.jdField_a_of_type_Axny = paramaxny;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyCardManager = paramNearbyCardManager;
   }
   
   public void a(String[] paramArrayOfString)

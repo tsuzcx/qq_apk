@@ -36,16 +36,16 @@ public class MiniAppEntityManager
         {
           File localFile = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile db : " + localFile.getPath());
-          FileUtils.deleteFile(localFile.getPath());
+          FileUtils.e(localFile.getPath());
           localFile = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db-journal");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile dbJournal : " + localFile.getPath());
-          FileUtils.deleteFile(localFile.getPath());
+          FileUtils.e(localFile.getPath());
           localFile = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db-wal");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile dbWal : " + localFile.getPath());
-          FileUtils.deleteFile(localFile.getPath());
+          FileUtils.e(localFile.getPath());
           localObject = BaseApplicationImpl.getContext().getDatabasePath("miniapp_" + (String)localObject + ".db-shm");
           QLog.e("MiniAppEntityManager", 1, "deleteDbFile dbShm : " + ((File)localObject).getPath());
-          FileUtils.deleteFile(((File)localObject).getPath());
+          FileUtils.e(((File)localObject).getPath());
         }
       }
       return;
@@ -83,121 +83,121 @@ public class MiniAppEntityManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 168
+    //   2: ldc 167
     //   4: iconst_1
-    //   5: ldc 169
-    //   7: invokestatic 172	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   10: invokestatic 178	java/lang/System:currentTimeMillis	()J
+    //   5: ldc 168
+    //   7: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   10: invokestatic 177	java/lang/System:currentTimeMillis	()J
     //   13: getstatic 37	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:APPINFO_DELETE_TIME	J
     //   16: lsub
     //   17: lstore_1
-    //   18: invokestatic 178	java/lang/System:currentTimeMillis	()J
+    //   18: invokestatic 177	java/lang/System:currentTimeMillis	()J
     //   21: lstore_3
     //   22: getstatic 43	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:OTHER_DELETE_TIME	J
     //   25: lstore 5
     //   27: aload_0
-    //   28: ldc 180
+    //   28: ldc 179
     //   30: iconst_2
     //   31: anewarray 4	java/lang/Object
     //   34: dup
     //   35: iconst_0
-    //   36: ldc 182
-    //   38: invokevirtual 187	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   36: ldc 181
+    //   38: invokevirtual 186	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   41: aastore
     //   42: dup
     //   43: iconst_1
     //   44: lload_1
-    //   45: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   45: invokestatic 192	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   48: aastore
-    //   49: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   52: invokevirtual 202	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   49: invokestatic 198	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   52: invokevirtual 201	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
     //   55: pop
     //   56: aload_0
-    //   57: ldc 180
+    //   57: ldc 179
     //   59: iconst_2
     //   60: anewarray 4	java/lang/Object
     //   63: dup
     //   64: iconst_0
-    //   65: ldc 204
-    //   67: invokevirtual 187	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   65: ldc 203
+    //   67: invokevirtual 186	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   70: aastore
     //   71: dup
     //   72: iconst_1
     //   73: lload_1
-    //   74: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   74: invokestatic 192	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   77: aastore
-    //   78: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   81: invokevirtual 202	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   78: invokestatic 198	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   81: invokevirtual 201	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
     //   84: pop
     //   85: aload_0
-    //   86: ldc 180
+    //   86: ldc 179
     //   88: iconst_2
     //   89: anewarray 4	java/lang/Object
     //   92: dup
     //   93: iconst_0
-    //   94: ldc 206
-    //   96: invokevirtual 187	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   94: ldc 205
+    //   96: invokevirtual 186	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   99: aastore
     //   100: dup
     //   101: iconst_1
     //   102: lload_1
-    //   103: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   103: invokestatic 192	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   106: aastore
-    //   107: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   110: invokevirtual 202	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   107: invokestatic 198	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   110: invokevirtual 201	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
     //   113: pop
     //   114: aload_0
-    //   115: ldc 180
+    //   115: ldc 179
     //   117: iconst_2
     //   118: anewarray 4	java/lang/Object
     //   121: dup
     //   122: iconst_0
-    //   123: ldc 208
-    //   125: invokevirtual 187	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   123: ldc 207
+    //   125: invokevirtual 186	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   128: aastore
     //   129: dup
     //   130: iconst_1
     //   131: lload_3
     //   132: lload 5
     //   134: lsub
-    //   135: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   135: invokestatic 192	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   138: aastore
-    //   139: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   142: invokevirtual 202	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   139: invokestatic 198	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   142: invokevirtual 201	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
     //   145: pop
     //   146: aload_0
-    //   147: ldc 180
+    //   147: ldc 179
     //   149: iconst_2
     //   150: anewarray 4	java/lang/Object
     //   153: dup
     //   154: iconst_0
-    //   155: ldc 210
-    //   157: invokevirtual 187	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   155: ldc 209
+    //   157: invokevirtual 186	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   160: aastore
     //   161: dup
     //   162: iconst_1
     //   163: lload_1
-    //   164: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   164: invokestatic 192	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   167: aastore
-    //   168: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   171: invokevirtual 202	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   168: invokestatic 198	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   171: invokevirtual 201	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
     //   174: pop
     //   175: aload_0
-    //   176: ldc 180
+    //   176: ldc 179
     //   178: iconst_2
     //   179: anewarray 4	java/lang/Object
     //   182: dup
     //   183: iconst_0
-    //   184: ldc 212
-    //   186: invokevirtual 187	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   184: ldc 211
+    //   186: invokevirtual 186	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   189: aastore
     //   190: dup
     //   191: iconst_1
     //   192: lload_1
-    //   193: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   193: invokestatic 192	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   196: aastore
-    //   197: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   200: invokevirtual 202	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
+    //   197: invokestatic 198	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   200: invokevirtual 201	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:execSQL	(Ljava/lang/String;)Z
     //   203: pop
     //   204: aload_0
     //   205: monitorexit
@@ -205,18 +205,18 @@ public class MiniAppEntityManager
     //   207: astore 7
     //   209: ldc 13
     //   211: iconst_1
-    //   212: ldc 214
+    //   212: ldc 213
     //   214: aload 7
-    //   216: invokestatic 147	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   216: invokestatic 146	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   219: aload 7
-    //   221: instanceof 216
+    //   221: instanceof 215
     //   224: ifeq -20 -> 204
     //   227: ldc 13
     //   229: iconst_1
-    //   230: ldc 218
+    //   230: ldc 217
     //   232: invokestatic 124	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   235: aload_0
-    //   236: invokespecial 220	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:deleteDbFile	()V
+    //   236: invokespecial 219	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:deleteDbFile	()V
     //   239: goto -35 -> 204
     //   242: astore 7
     //   244: aload_0
@@ -261,12 +261,12 @@ public class MiniAppEntityManager
     //   21: new 93	java/lang/StringBuilder
     //   24: dup
     //   25: invokespecial 94	java/lang/StringBuilder:<init>	()V
-    //   28: ldc 223
+    //   28: ldc 222
     //   30: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: aload_1
     //   34: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokevirtual 226	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
+    //   40: invokevirtual 225	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
     //   43: istore_2
     //   44: goto -31 -> 13
     //   47: astore_1
@@ -306,7 +306,7 @@ public class MiniAppEntityManager
     //   17: aload_0
     //   18: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   21: aload_1
-    //   22: invokevirtual 226	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
+    //   22: invokevirtual 225	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
     //   25: istore_2
     //   26: goto -13 -> 13
     //   29: astore_1
@@ -352,15 +352,15 @@ public class MiniAppEntityManager
     //   27: aconst_null
     //   28: aconst_null
     //   29: aconst_null
-    //   30: ldc 230
-    //   32: invokevirtual 234	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   30: ldc 229
+    //   32: invokevirtual 233	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
     //   35: astore_1
     //   36: aload_1
     //   37: ifnull +17 -> 54
     //   40: aload_1
     //   41: iconst_0
-    //   42: invokeinterface 240 2 0
-    //   47: checkcast 242	com/tencent/mobileqq/persistence/Entity
+    //   42: invokeinterface 239 2 0
+    //   47: checkcast 241	com/tencent/mobileqq/persistence/Entity
     //   50: astore_1
     //   51: goto -36 -> 15
     //   54: aconst_null
@@ -411,32 +411,32 @@ public class MiniAppEntityManager
     //   15: iload_2
     //   16: ireturn
     //   17: aload_1
-    //   18: invokevirtual 254	com/tencent/mobileqq/persistence/Entity:getStatus	()I
+    //   18: invokevirtual 253	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   21: sipush 1000
     //   24: if_icmpne +26 -> 50
     //   27: aload_0
     //   28: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   31: aload_1
-    //   32: invokevirtual 258	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   32: invokevirtual 257	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   35: aload_1
-    //   36: invokevirtual 254	com/tencent/mobileqq/persistence/Entity:getStatus	()I
+    //   36: invokevirtual 253	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   39: sipush 1001
     //   42: if_icmpne -29 -> 13
     //   45: iconst_1
     //   46: istore_2
     //   47: goto -34 -> 13
     //   50: aload_1
-    //   51: invokevirtual 254	com/tencent/mobileqq/persistence/Entity:getStatus	()I
+    //   51: invokevirtual 253	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   54: sipush 1001
     //   57: if_icmpeq +13 -> 70
     //   60: aload_1
-    //   61: invokevirtual 254	com/tencent/mobileqq/persistence/Entity:getStatus	()I
+    //   61: invokevirtual 253	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   64: sipush 1002
     //   67: if_icmpne -54 -> 13
     //   70: aload_0
     //   71: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   74: aload_1
-    //   75: invokevirtual 261	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   75: invokevirtual 260	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   78: istore_2
     //   79: goto -66 -> 13
     //   82: astore_1
@@ -497,7 +497,7 @@ public class MiniAppEntityManager
     //   30: aload 6
     //   32: aload 7
     //   34: aload 8
-    //   36: invokevirtual 234	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   36: invokevirtual 233	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
     //   39: astore_1
     //   40: goto -25 -> 15
     //   43: astore_1
@@ -545,7 +545,7 @@ public class MiniAppEntityManager
     //   21: aload_0
     //   22: getfield 62	com/tencent/mobileqq/mini/apkgEntity/MiniAppEntityManager:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   25: aload_1
-    //   26: invokevirtual 272	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   26: invokevirtual 271	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   29: istore_2
     //   30: goto -17 -> 13
     //   33: astore_1

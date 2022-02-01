@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import bldq;
 import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.OverScroller;
 
 public class ImgsHorizontalListView
   extends HorizontalListView
@@ -70,7 +70,7 @@ public class ImgsHorizontalListView
       if (this.mDisplayOffset <= -(k / 2 + 0.5D)) {
         i = j + k;
       }
-    } while (!this.mScroller.a(this.mNextX + getScrollX(), 0, i, i, 0, 0));
+    } while (!this.mScroller.springBack(this.mNextX + getScrollX(), 0, i, i, 0, 0));
     invalidate();
     return true;
   }

@@ -13,7 +13,7 @@ class HippyModalHostView$4
     super(paramContext);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     if ((HippyModalHostView.access$300(this.this$0)) && (HippyModalHostView.mStatusBarHeight != -1) && (Build.VERSION.SDK_INT >= 19) && (Build.VERSION.SDK_INT < 23))
@@ -27,7 +27,7 @@ class HippyModalHostView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.modal.HippyModalHostView.4
  * JD-Core Version:    0.7.0.1
  */

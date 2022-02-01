@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.factory;
 
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleConfigHelper;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleConfigHelper.Config;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleConfigHelper.TemplateFactoryWrapper;
 import com.tencent.commonsdk.cache.QQHashMap;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import tmk;
-import tml;
-import tmm;
 
 public class TemplateFactoryCache
-  extends QQHashMap<String, tmm>
+  extends QQHashMap<String, StyleConfigHelper.TemplateFactoryWrapper>
 {
-  private volatile tmk mStyleConfigHelper = new tmk();
+  private volatile StyleConfigHelper mStyleConfigHelper = new StyleConfigHelper();
   
   public TemplateFactoryCache()
   {
@@ -39,16 +39,16 @@ public class TemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bmhv.s()) {
+    if (!ReadInJoyHelper.t()) {
       clear();
     }
   }
   
-  public tmm get(String paramString)
+  public StyleConfigHelper.TemplateFactoryWrapper get(String paramString)
   {
     try
     {
-      paramString = (tmm)super.get(paramString);
+      paramString = (StyleConfigHelper.TemplateFactoryWrapper)super.get(paramString);
       return paramString;
     }
     finally
@@ -59,43 +59,43 @@ public class TemplateFactoryCache
   }
   
   /* Error */
-  public tmh getAutoCreate(android.content.Context paramContext, String paramString)
+  public TemplateFactory getAutoCreate(android.content.Context paramContext, String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_2
-    //   4: invokevirtual 42	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactoryCache:get	(Ljava/lang/String;)Ltmm;
+    //   4: invokevirtual 42	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactoryCache:get	(Ljava/lang/String;)Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper;
     //   7: astore 5
     //   9: aload 5
     //   11: ifnull +83 -> 94
     //   14: aload 5
-    //   16: getfield 46	tmm:a	Ltmh;
+    //   16: getfield 46	com/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper:a	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory;
     //   19: ifnull +75 -> 94
     //   22: aload_0
-    //   23: getfield 19	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactoryCache:mStyleConfigHelper	Ltmk;
+    //   23: getfield 19	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactoryCache:mStyleConfigHelper	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper;
     //   26: aload_1
     //   27: aload_2
-    //   28: invokevirtual 49	tmk:a	(Landroid/content/Context;Ljava/lang/String;)Ltmm;
-    //   31: invokevirtual 52	tmm:a	()Ljava/lang/String;
-    //   34: invokestatic 57	tmz:a	(Ljava/lang/String;)Ltmh;
+    //   28: invokevirtual 49	com/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper:a	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper;
+    //   31: invokevirtual 52	com/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper:a	()Ljava/lang/String;
+    //   34: invokestatic 57	com/tencent/biz/pubaccount/readinjoy/view/proteus/utils/OfflineUtils:a	(Ljava/lang/String;)Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory;
     //   37: astore_1
     //   38: aload_1
     //   39: ifnull +46 -> 85
     //   42: aload 5
-    //   44: getfield 46	tmm:a	Ltmh;
-    //   47: invokevirtual 60	tmh:a	()Ljava/lang/String;
+    //   44: getfield 46	com/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper:a	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory;
+    //   47: invokevirtual 60	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory:a	()Ljava/lang/String;
     //   50: aload_1
-    //   51: invokevirtual 60	tmh:a	()Ljava/lang/String;
+    //   51: invokevirtual 60	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory:a	()Ljava/lang/String;
     //   54: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   57: ifeq +28 -> 85
     //   60: aload 5
-    //   62: getfield 46	tmm:a	Ltmh;
-    //   65: invokevirtual 70	tmh:getTemplateId	()I
+    //   62: getfield 46	com/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper:a	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory;
+    //   65: invokevirtual 70	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory:getTemplateId	()I
     //   68: istore_3
     //   69: aload_1
-    //   70: invokevirtual 70	tmh:getTemplateId	()I
+    //   70: invokevirtual 70	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory:getTemplateId	()I
     //   73: istore 4
     //   75: iload_3
     //   76: iload 4
@@ -105,31 +105,31 @@ public class TemplateFactoryCache
     //   83: aload_1
     //   84: areturn
     //   85: aload 5
-    //   87: getfield 46	tmm:a	Ltmh;
+    //   87: getfield 46	com/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper:a	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory;
     //   90: astore_1
     //   91: goto -10 -> 81
     //   94: aload_0
-    //   95: getfield 19	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactoryCache:mStyleConfigHelper	Ltmk;
+    //   95: getfield 19	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactoryCache:mStyleConfigHelper	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper;
     //   98: aload_1
     //   99: aload_2
-    //   100: invokevirtual 49	tmk:a	(Landroid/content/Context;Ljava/lang/String;)Ltmm;
+    //   100: invokevirtual 49	com/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper:a	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper;
     //   103: astore_1
     //   104: aload_1
     //   105: ifnull +33 -> 138
     //   108: aload_1
-    //   109: getfield 46	tmm:a	Ltmh;
+    //   109: getfield 46	com/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper:a	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory;
     //   112: ifnull +26 -> 138
     //   115: aload_1
-    //   116: getfield 46	tmm:a	Ltmh;
+    //   116: getfield 46	com/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper:a	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory;
     //   119: aload_2
-    //   120: invokevirtual 74	tmh:b	(Ljava/lang/String;)V
+    //   120: invokevirtual 74	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory:b	(Ljava/lang/String;)V
     //   123: aload_0
     //   124: aload_2
     //   125: aload_1
-    //   126: invokevirtual 78	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactoryCache:put	(Ljava/lang/String;Ltmm;)Ltmm;
+    //   126: invokevirtual 78	com/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactoryCache:put	(Ljava/lang/String;Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper;)Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper;
     //   129: pop
     //   130: aload_1
-    //   131: getfield 46	tmm:a	Ltmh;
+    //   131: getfield 46	com/tencent/biz/pubaccount/readinjoy/view/proteus/loaders/StyleConfigHelper$TemplateFactoryWrapper:a	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/factory/TemplateFactory;
     //   134: astore_1
     //   135: goto -54 -> 81
     //   138: aconst_null
@@ -147,7 +147,7 @@ public class TemplateFactoryCache
     //   0	148	2	paramString	String
     //   68	11	3	i	int
     //   73	6	4	j	int
-    //   7	79	5	localtmm	tmm
+    //   7	79	5	localTemplateFactoryWrapper	StyleConfigHelper.TemplateFactoryWrapper
     // Exception table:
     //   from	to	target	type
     //   2	9	143	finally
@@ -158,11 +158,11 @@ public class TemplateFactoryCache
     //   108	135	143	finally
   }
   
-  public tmm put(String paramString, tmm paramtmm)
+  public StyleConfigHelper.TemplateFactoryWrapper put(String paramString, StyleConfigHelper.TemplateFactoryWrapper paramTemplateFactoryWrapper)
   {
     try
     {
-      paramString = (tmm)super.put(paramString, paramtmm);
+      paramString = (StyleConfigHelper.TemplateFactoryWrapper)super.put(paramString, paramTemplateFactoryWrapper);
       return paramString;
     }
     finally
@@ -172,11 +172,11 @@ public class TemplateFactoryCache
     }
   }
   
-  public tmm remove(String paramString)
+  public StyleConfigHelper.TemplateFactoryWrapper remove(String paramString)
   {
     try
     {
-      paramString = (tmm)super.remove(paramString);
+      paramString = (StyleConfigHelper.TemplateFactoryWrapper)super.remove(paramString);
       return paramString;
     }
     finally
@@ -189,14 +189,14 @@ public class TemplateFactoryCache
   public void reset()
   {
     Object localObject1 = this.mStyleConfigHelper;
-    tmk localtmk = new tmk();
-    Object localObject2 = ((tmk)localObject1).a();
+    StyleConfigHelper localStyleConfigHelper = new StyleConfigHelper();
+    Object localObject2 = ((StyleConfigHelper)localObject1).a();
     localObject1 = new ArrayList();
     localObject2 = ((Map)localObject2).entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-      if (!((tml)localEntry.getValue()).equals(localtmk.a((String)localEntry.getKey()))) {
+      if (!((StyleConfigHelper.Config)localEntry.getValue()).equals(localStyleConfigHelper.a((String)localEntry.getKey()))) {
         ((List)localObject1).add(localEntry.getKey());
       }
     }
@@ -204,13 +204,13 @@ public class TemplateFactoryCache
     while (((Iterator)localObject1).hasNext()) {
       remove((String)((Iterator)localObject1).next());
     }
-    QLog.d("TemplateFactory", 2, "reset: " + localtmk);
-    this.mStyleConfigHelper = localtmk;
+    QLog.d("TemplateFactory", 2, "reset: " + localStyleConfigHelper);
+    this.mStyleConfigHelper = localStyleConfigHelper;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.TemplateFactoryCache
  * JD-Core Version:    0.7.0.1
  */

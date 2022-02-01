@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import auzx;
-import bbds;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fts.entity.notColumn;
+import com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -12,10 +12,10 @@ public class MessageForAutoReply
 {
   public static final String ROOT_TAG = "[AutoReply] ";
   private static final String TAG = "[AutoReply] MessageForAutoReply";
-  @auzx
+  @notColumn
   public boolean needClickAction = true;
-  @auzx
-  public boolean needShowTail;
+  @notColumn
+  public boolean needShowTail = false;
   
   public MessageForAutoReply()
   {
@@ -28,7 +28,7 @@ public class MessageForAutoReply
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface))
     {
-      boolean bool = bbds.a((QQAppInterface)localAppRuntime, this.istroop, this.frienduin);
+      boolean bool = OneWayFriendHelper.a((QQAppInterface)localAppRuntime, this.istroop, this.frienduin);
       if (QLog.isColorLevel()) {
         QLog.d("[AutoReply] MessageForAutoReply", 2, new Object[] { "[message] doParse: invoked. ", " oneWayFriend: ", Boolean.valueOf(bool), " istroop: ", Integer.valueOf(this.istroop), " frienduin: ", this.frienduin, " senderuin: ", this.senderuin });
       }
@@ -46,7 +46,7 @@ public class MessageForAutoReply
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForAutoReply
  * JD-Core Version:    0.7.0.1
  */

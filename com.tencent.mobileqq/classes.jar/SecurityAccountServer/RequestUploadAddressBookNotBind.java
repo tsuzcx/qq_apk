@@ -10,10 +10,10 @@ public final class RequestUploadAddressBookNotBind
 {
   static ArrayList<AddressBookItem> cache_AddressBookList;
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public ArrayList<AddressBookItem> AddressBookList;
+  public ArrayList<AddressBookItem> AddressBookList = null;
   public String MobileUniqueNo = "";
-  public long nextFlag;
-  public byte[] sessionSid;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
   
   static
   {

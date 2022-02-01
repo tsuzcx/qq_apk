@@ -138,6 +138,29 @@ public class BaseBrowserFragment
     this.mBrowerEngin.bindFragment(this);
   }
   
+  private boolean isSchemeUrl(String paramString)
+  {
+    return (paramString.startsWith("mqqapi://")) || (paramString.startsWith("weixin://")) || (paramString.startsWith("sms://"));
+  }
+  
+  private boolean isUrlBlank(String paramString)
+  {
+    return (TextUtils.isEmpty(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString));
+  }
+  
+  private void processCoreDumpData(int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    if (this.mCoreDumpData == null) {
+      this.mCoreDumpData = new ArrayMap(4);
+    }
+    this.mCoreDumpData.put("errorCode", Integer.valueOf(paramInt));
+    this.mCoreDumpData.put("errorMsg", paramString1);
+    this.mCoreDumpData.put("requestUrl", paramString2);
+    if ((this.mBrowerEngin != null) && (paramInt >= 400)) {
+      this.mBrowerEngin.handleEvent(paramString3, 1L, this.mCoreDumpData);
+    }
+  }
+  
   protected boolean needWebViewTranslucent()
   {
     return false;
@@ -204,7 +227,7 @@ public class BaseBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.BaseBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

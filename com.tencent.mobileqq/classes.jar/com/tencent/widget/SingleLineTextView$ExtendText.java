@@ -6,20 +6,17 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Typeface;
-import android.os.SystemClock;
 import android.text.Layout;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import bdjw;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableColorStateList;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 class SingleLineTextView$ExtendText
 {
-  private static boolean mColorStateListErrorReported;
+  private static boolean mColorStateListErrorReported = false;
   int mCurTextColor;
   int mDesiredTextHeight;
   int mDesiredTextWidth;
@@ -132,77 +129,48 @@ class SingleLineTextView$ExtendText
   public boolean updateTextColors(int[] paramArrayOfInt)
   {
     int j = this.mTextColor.getColorForState(paramArrayOfInt, 0);
-    int i;
-    if (j == 0) {
-      if (this.mGetColorStateListMethod == null)
-      {
-        try
-        {
-          this.mGetColorStateListMethod = SkinnableColorStateList.class.getMethod("getColorForState", new Class[] { [I.class, Integer.TYPE });
-          i = 0;
-        }
-        catch (NoSuchMethodException localNoSuchMethodException)
-        {
-          for (;;)
-          {
-            label94:
-            String str;
-            localNoSuchMethodException.printStackTrace();
-            i = 1;
-          }
-        }
-        try
-        {
-          k = ((Integer)this.mGetColorStateListMethod.invoke(this.mTextColor, new Object[] { paramArrayOfInt, Integer.valueOf(0) })).intValue();
-          j = k;
-          k = i;
-          i = j;
-          j = k;
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          k = 1;
-          i = j;
-          j = k;
-          break label94;
-        }
-        k = i;
-        if (!mColorStateListErrorReported)
-        {
-          k = i;
-          if (j != 0)
-          {
-            str = "get color from state list fail, state is " + Arrays.toString(paramArrayOfInt) + " but the state list is " + this.mTextColor + " curTs: " + SystemClock.uptimeMillis();
-            str = str + " colorFromReflect: " + i;
-            QLog.e("SingleLineTextView", 1, str);
-            bdjw.a(new IllegalStateException(str), str);
-            mColorStateListErrorReported = true;
-          }
-        }
-      }
-    }
-    for (int k = i;; k = j)
+    int i = j;
+    if ((j != 0) || (this.mGetColorStateListMethod == null)) {}
+    try
     {
-      if ((this.mTextColor instanceof SkinnableColorStateList)) {
-        ((SkinnableColorStateList)this.mTextColor).reset();
-      }
-      if (k != this.mCurTextColor)
-      {
-        this.mCurTextColor = k;
-        this.mTextPaint.setColor(this.mCurTextColor);
-        this.mTextPaint.drawableState = paramArrayOfInt;
-        return true;
-      }
-      return false;
-      i = 0;
-      break;
+      this.mGetColorStateListMethod = SkinnableColorStateList.class.getMethod("getColorForState", new Class[] { [I.class, Integer.TYPE });
     }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      try
+      {
+        for (;;)
+        {
+          i = ((Integer)this.mGetColorStateListMethod.invoke(this.mTextColor, new Object[] { paramArrayOfInt, Integer.valueOf(0) })).intValue();
+          if ((this.mTextColor instanceof SkinnableColorStateList)) {
+            ((SkinnableColorStateList)this.mTextColor).reset();
+          }
+          if (i == this.mCurTextColor) {
+            break;
+          }
+          this.mCurTextColor = i;
+          this.mTextPaint.setColor(this.mCurTextColor);
+          this.mTextPaint.drawableState = paramArrayOfInt;
+          return true;
+          localNoSuchMethodException = localNoSuchMethodException;
+          localNoSuchMethodException.printStackTrace();
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("SingleLineTextView", 1, localException, new Object[0]);
+          i = j;
+        }
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.SingleLineTextView.ExtendText
  * JD-Core Version:    0.7.0.1
  */

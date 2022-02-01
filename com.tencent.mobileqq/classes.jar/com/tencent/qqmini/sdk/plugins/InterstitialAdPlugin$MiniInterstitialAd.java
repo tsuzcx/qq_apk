@@ -98,42 +98,29 @@ class InterstitialAdPlugin$MiniInterstitialAd
     int i;
     label55:
     int j;
-    label117:
-    label126:
     Object localObject3;
     Object localObject1;
-    label169:
+    label143:
     String str1;
-    label187:
     String str2;
     Object localObject2;
     if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation == 2)
     {
       i = 1;
       if (i == 0) {
-        break label433;
+        break label399;
       }
       i = 90;
       QMLog.i("SDK_MiniInterstitialAd", "handle initAdParam appId = " + this.appId + "， deviceOrient = " + i);
-      if ((InterstitialAdPlugin.access$400(this.this$0) == null) || (!InterstitialAdPlugin.access$500(this.this$0).isEngineTypeMiniApp())) {
-        break label438;
-      }
-      j = 0;
-      if (j != 0) {
-        break label444;
-      }
-      j = 10;
-      localObject3 = InterstitialAdPlugin.access$600(this.this$0);
+      j = InterstitialAdPlugin.access$400(this.this$0);
+      localObject3 = InterstitialAdPlugin.access$500(this.this$0);
       if ((localObject3 == null) || (((MiniAppInfo)localObject3).launchParam == null)) {
-        break label481;
+        break label426;
       }
       if (((MiniAppInfo)localObject3).launchParam.entryPath == null) {
-        break label451;
+        break label404;
       }
       localObject1 = ((MiniAppInfo)localObject3).launchParam.entryPath;
-      if (((MiniAppInfo)localObject3).launchParam == null) {
-        break label459;
-      }
       str1 = ((MiniAppInfo)localObject3).launchParam.reportData;
       str2 = String.valueOf(((MiniAppInfo)localObject3).launchParam.scene);
       localObject2 = localObject1;
@@ -141,7 +128,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
     }
     for (;;)
     {
-      label228:
+      label194:
       String str4;
       if ((localObject3 != null) && (((MiniAppInfo)localObject3).via != null))
       {
@@ -149,19 +136,16 @@ class InterstitialAdPlugin$MiniInterstitialAd
         str4 = AdUtil.getSpAdGdtCookie(j);
         WnsConfig.getConfig("QZoneSetting", "MiniGameShareRate", 53);
         if (this.mActivity == null) {
-          break label475;
+          break label420;
         }
       }
-      label433:
-      label438:
-      label444:
-      label451:
-      label459:
-      label475:
+      label399:
+      label404:
+      label420:
       for (localObject3 = (Activity)this.mActivity.get();; localObject3 = null)
       {
         if (localObject3 == null) {
-          break label479;
+          break label424;
         }
         Bundle localBundle = new Bundle();
         localBundle.putString(AdProxy.KEY_ACCOUNT, str3);
@@ -173,7 +157,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
         localBundle.putString(AdProxy.KEY_REFER, (String)localObject1);
         localBundle.putString(AdProxy.KEY_VIA, str2);
         this.mListener = new InterstitialAdPlugin.MiniInterstitialAd.2(this, paramInt1, paramInt2);
-        this.adInterstitial = ((AdProxy)ProxyManager.get(AdProxy.class)).createInterstitialAdView((Activity)localObject3, this.appId, this.adUnitId, this.mListener, localBundle, InterstitialAdPlugin.access$1000(this.this$0));
+        this.adInterstitial = ((AdProxy)ProxyManager.get(AdProxy.class)).createInterstitialAdView((Activity)localObject3, this.appId, this.adUnitId, this.mListener, localBundle, InterstitialAdPlugin.access$900(this.this$0));
         if (this.adInterstitial != null) {
           this.adInterstitial.loadAD();
         }
@@ -182,20 +166,14 @@ class InterstitialAdPlugin$MiniInterstitialAd
         break;
         i = 0;
         break label55;
-        j = 1;
-        break label117;
-        j = 11;
-        break label126;
         localObject1 = "";
-        break label169;
-        str1 = "";
-        break label187;
+        break label143;
         str2 = "";
-        break label228;
+        break label194;
       }
-      label479:
+      label424:
       break;
-      label481:
+      label426:
       localObject1 = "";
       str1 = "";
       localObject2 = "";
@@ -245,7 +223,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InterstitialAdPlugin.MiniInterstitialAd
  * JD-Core Version:    0.7.0.1
  */

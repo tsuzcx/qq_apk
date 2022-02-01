@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import java.util.List;
 
 class UsedAppListManager$1

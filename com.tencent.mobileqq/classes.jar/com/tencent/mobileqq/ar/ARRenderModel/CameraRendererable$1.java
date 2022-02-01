@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apef;
-import apeq;
 import com.tencent.qphone.base.util.QLog;
 
-public class CameraRendererable$1
+class CameraRendererable$1
   implements Runnable
 {
-  public CameraRendererable$1(apeq paramapeq) {}
+  CameraRendererable$1(CameraRendererable paramCameraRendererable) {}
   
   public void run()
   {
-    if (apeq.a(this.this$0) != null) {}
+    if (CameraRendererable.a(this.this$0) != null) {}
     try
     {
-      apeq.a(this.this$0).a();
+      CameraRendererable.a(this.this$0).a();
       return;
     }
     catch (Exception localException)
@@ -23,13 +21,13 @@ public class CameraRendererable$1
       {
         localException.printStackTrace();
       } while (!QLog.isColorLevel());
-      QLog.d(apeq.a(), 2, "requestRender", localException);
+      QLog.d(CameraRendererable.a(), 2, "requestRender", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.CameraRendererable.1
  * JD-Core Version:    0.7.0.1
  */

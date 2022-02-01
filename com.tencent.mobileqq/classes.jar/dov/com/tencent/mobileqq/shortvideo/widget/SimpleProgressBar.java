@@ -7,8 +7,8 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
-import bptp;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class SimpleProgressBar
   extends View
@@ -18,10 +18,10 @@ public class SimpleProgressBar
   public int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  public int b;
-  private int e;
+  public int b = 0;
+  private int e = 0;
   private final int f = -1;
-  private final int g = bptp.a(3.0F);
+  private final int g = ScreenUtil.a(3.0F);
   private int h = c;
   
   public SimpleProgressBar(Context paramContext, AttributeSet paramAttributeSet)
@@ -95,7 +95,7 @@ public class SimpleProgressBar
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (super.isInEditMode()) {
@@ -133,7 +133,7 @@ public class SimpleProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.widget.SimpleProgressBar
  * JD-Core Version:    0.7.0.1
  */

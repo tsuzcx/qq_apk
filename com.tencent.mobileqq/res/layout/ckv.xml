@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.navbar.NavBarAIO android:gravity="center_vertical" android:id="@id/nd1" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignTop="@id/root" />
-    <FrameLayout android:id="@id/b8q" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <android.support.v7.widget.RecyclerView android:id="@id/i4m" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
-    </FrameLayout>
-</LinearLayout>
+<ImageView android:layout_gravity="center" android:id="@id/mnh" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/goi" android:scaleType="fitXY"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

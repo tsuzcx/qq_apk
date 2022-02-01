@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contacts.phone;
 
-import ajlx;
 import com.tencent.mobileqq.activity.phone.PhoneContactStatusCheckView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
@@ -20,19 +19,19 @@ class PhoneContactFragment$2
     }
     if (this.this$0.jdField_a_of_type_ComTencentWidgetXListView != null)
     {
-      if (this.this$0.jdField_a_of_type_Ajlx == null)
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter == null)
       {
-        this.this$0.jdField_a_of_type_Ajlx = new ajlx(PhoneContactFragment.a(this.this$0), PhoneContactFragment.d(this.this$0), this.this$0.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.this$0);
-        this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.this$0.jdField_a_of_type_Ajlx);
+        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter = new PhoneContactAdapter(PhoneContactFragment.a(this.this$0), PhoneContactFragment.d(this.this$0), this.this$0.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.this$0);
+        this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter);
       }
-      this.this$0.jdField_a_of_type_Ajlx.a(PhoneContactFragment.e(this.this$0));
-      this.this$0.jdField_a_of_type_Ajlx.notifyDataSetChanged();
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter.a(PhoneContactFragment.e(this.this$0));
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment.2
  * JD-Core Version:    0.7.0.1
  */

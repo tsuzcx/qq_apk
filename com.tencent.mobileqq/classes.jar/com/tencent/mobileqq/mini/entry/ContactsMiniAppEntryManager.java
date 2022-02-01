@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ajml;
-import alfs;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -12,31 +10,35 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
 import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout.MiniAppScrollListener;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import com.tencent.mobileqq.activity.recent.DrawerFrame.StoryTouchEventInterceptor;
 import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.api.entry.BaseContactsMiniAppEntryManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 import mqq.observer.BusinessObserver;
 
 public class ContactsMiniAppEntryManager
-  implements ajml, alfs, BusinessObserver
+  implements CommonRefreshLayout.MiniAppScrollListener, DrawerFrame.StoryTouchEventInterceptor, BaseContactsMiniAppEntryManager, BusinessObserver
 {
   public static final int MODE_IDLE = 1;
   public static final int MODE_REFRESH = 2;
   public static final int MODE_SHOW_NODE = 3;
-  private static final int OFFSET_NODE_OPEN = ViewUtils.dip2px(-50.0F);
-  private static final int OFFSET_NODE_SCROLL = ViewUtils.dip2px(-50.0F);
-  private static final int OFFSET_NODE_SCROLL_FAST = ViewUtils.dip2px(-100.0F);
+  private static final int OFFSET_NODE_OPEN = ViewUtils.a(-50.0F);
+  private static final int OFFSET_NODE_SCROLL = ViewUtils.a(-50.0F);
+  private static final int OFFSET_NODE_SCROLL_FAST = ViewUtils.a(-100.0F);
   private static final float SPEED_2 = 1.5F;
-  private static final int STORY_TRANSLATE = ViewUtils.dip2px(-70.0F);
+  private static final int STORY_TRANSLATE = ViewUtils.a(-70.0F);
   public static final String TAG = "ContactsMiniAppEntryManager";
-  public static long sScrollTimestamp;
+  public static long sScrollTimestamp = 0L;
   private int OFFSET_SCROLL_OVER;
   boolean flag = false;
   private QQAppInterface mApp;
@@ -85,7 +87,7 @@ public class ContactsMiniAppEntryManager
     }
     for (;;)
     {
-      if (paramFloat <= ViewUtils.dpToPx(-70.0F)) {
+      if (paramFloat <= ViewUtils.b(-70.0F)) {
         break label299;
       }
       this.mContentView.setDotViewTranslationY((this.mContentView.getDotViewHeight() + paramFloat) / 2.0F);
@@ -150,7 +152,7 @@ public class ContactsMiniAppEntryManager
   
   private void setRefreshLayoutVisible(boolean paramBoolean)
   {
-    View localView = this.mPullRefreshHeader.findViewById(2131376455);
+    View localView = this.mPullRefreshHeader.findViewById(2131376848);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -173,6 +175,13 @@ public class ContactsMiniAppEntryManager
     paramQQAppInterface.registObserver(this);
     this.mApp = paramQQAppInterface;
     QLog.d("ContactsMiniAppEntryManager", 1, "[MiniAppUserAppInfoListManager].onAccountChanged");
+  }
+  
+  public void onAccountChanged(AppRuntime paramAppRuntime)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      onAccountChanged((QQAppInterface)paramAppRuntime);
+    }
   }
   
   public void onFlingScrollHeader(int paramInt1, int paramInt2)
@@ -248,7 +257,7 @@ public class ContactsMiniAppEntryManager
             if ((this.preMode == 1) && (this.mode == 3))
             {
               this.mContentView.recordExposureItem();
-              if (this.mCurrentTab != MainFragment.d) {
+              if (this.mCurrentTab != FrameControllerUtil.c) {
                 break label504;
               }
               MiniProgramLpReportDC04239.reportPageView("expo_page", "pulldown_mini_contact");
@@ -265,8 +274,8 @@ public class ContactsMiniAppEntryManager
             {
               if (paramInt <= -paramCommonRefreshLayout.a())
               {
-                paramMotionEvent = (TextView)this.mPullRefreshHeader.findViewById(2131376460);
-                if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(anvx.a(2131702066)))) {}
+                paramMotionEvent = (TextView)this.mPullRefreshHeader.findViewById(2131376853);
+                if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(HardCodeUtil.a(2131702614)))) {}
                 for (this.mode = 3;; this.mode = 2)
                 {
                   paramCommonRefreshLayout.setShowMiniAppPanel(true);
@@ -310,7 +319,7 @@ public class ContactsMiniAppEntryManager
             paramCommonRefreshLayout.setShowMiniAppPanel(false);
             break;
             label504:
-            if (this.mCurrentTab == MainFragment.e) {
+            if (this.mCurrentTab == FrameControllerUtil.d) {
               MiniProgramLpReportDC04239.reportPageView("expo_page", "pulldown_mini_more");
             }
           }
@@ -363,11 +372,18 @@ public class ContactsMiniAppEntryManager
     if ((this.mPullRefreshHeader != null) && (this.mPullRefreshHeader.indexOfChild(this.mContentView) < 0))
     {
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(3, 2131376455);
+      localLayoutParams.addRule(3, 2131376848);
       this.mPullRefreshHeader.addView(this.mContentView, localLayoutParams);
       this.mode = 1;
       this.mContentView.setVisibility(8);
       setDrawerFrameEvent(paramInt);
+    }
+  }
+  
+  public void shutdownMiniAppPullDownEntry(ViewGroup paramViewGroup, int paramInt)
+  {
+    if ((paramViewGroup instanceof CommonRefreshLayout)) {
+      shutdownMiniAppPullDownEntry((CommonRefreshLayout)paramViewGroup, paramInt);
     }
   }
   

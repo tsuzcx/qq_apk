@@ -1,20 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild;
 
 import android.content.Context;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import rca;
-import szd;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/FeedItemCellTypeBigImageVideo;", "context", "Landroid/content/Context;", "faceDecoder", "Lcom/tencent/mobileqq/app/face/FaceDecoder;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "invoke"}, k=3, mv={1, 1, 16})
-public final class CellFactory$defaultFeedItemCellMap$15
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/FeedItemCellTypeBigImageVideo;", "context", "Landroid/content/Context;", "faceDecoder", "Lcom/tencent/mobileqq/app/face/IFaceDecoder;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "invoke"}, k=3, mv={1, 1, 16})
+final class CellFactory$defaultFeedItemCellMap$15
   extends Lambda
-  implements Function3<Context, FaceDecoder, szd, rca>
+  implements Function3<Context, IFaceDecoder, ReadInJoyBaseAdapter, FeedItemCellTypeBigImageVideo>
 {
   public static final 15 INSTANCE = new 15();
   
@@ -24,15 +23,15 @@ public final class CellFactory$defaultFeedItemCellMap$15
   }
   
   @NotNull
-  public final rca invoke(@NotNull Context paramContext, @Nullable FaceDecoder paramFaceDecoder, @Nullable szd paramszd)
+  public final FeedItemCellTypeBigImageVideo invoke(@NotNull Context paramContext, @Nullable IFaceDecoder paramIFaceDecoder, @Nullable ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return new rca(paramContext, paramFaceDecoder, paramszd);
+    return new FeedItemCellTypeBigImageVideo(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.CellFactory.defaultFeedItemCellMap.15
  * JD-Core Version:    0.7.0.1
  */

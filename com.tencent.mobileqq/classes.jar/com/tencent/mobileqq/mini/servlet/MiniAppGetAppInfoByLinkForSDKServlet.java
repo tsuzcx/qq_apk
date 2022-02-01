@@ -4,10 +4,10 @@ import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhjl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import mqq.app.Packet;
@@ -60,7 +60,7 @@ public class MiniAppGetAppInfoByLinkForSDKServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetAppInfoByLink");
-    paramPacket.putSendData(bhjl.a((byte[])localObject));
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

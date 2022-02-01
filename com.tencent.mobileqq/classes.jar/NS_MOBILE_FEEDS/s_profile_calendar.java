@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_profile_calendar
   extends JceStruct
 {
-  public int month;
+  public int month = 0;
   
   public s_profile_calendar() {}
   

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import azla;
-import azlb;
 import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -32,7 +32,7 @@ public class ForwardSdkShareProcessor$SendMsgByServerStep
       doCancel();
       return;
     }
-    if (!NetworkUtil.isNetworkAvailable(this.this$0.mAppContext))
+    if (!NetworkUtil.a(this.this$0.mAppContext))
     {
       QLog.w("Q.share.ForwardSdkShareProcessor", 1, "SendMsgByServerStep|no network");
       if ((ForwardSdkShareProcessor.access$000(this.this$0) > 0) || (!ForwardSdkShareProcessor.access$1000(this.this$0).get()) || (!this.this$0.mIsAllUrlShort.get()) || (this.this$0.mAppInfo.status != 1))
@@ -44,16 +44,16 @@ public class ForwardSdkShareProcessor$SendMsgByServerStep
     }
     if ((this.this$0.mUiRequest != null) && (this.this$0.mUiRequest.mUpCallBack != null))
     {
-      azlb localazlb = new azlb();
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
       String str2 = (String)this.this$0.mUrlMap.get("audioUrl");
       String str3 = this.this$0.mRemoteImgUrl;
       String str1 = str2;
       if (TextUtils.isEmpty(str2)) {
         str1 = this.this$0.mAudioUrl;
       }
-      localazlb.jdField_a_of_type_JavaLangObject = new String[] { str3, str1 };
-      localazlb.jdField_a_of_type_Int = 0;
-      this.this$0.mUiRequest.mUpCallBack.onSend(localazlb);
+      localSendResult.jdField_a_of_type_JavaLangObject = new String[] { str3, str1 };
+      localSendResult.jdField_a_of_type_Int = 0;
+      this.this$0.mUiRequest.mUpCallBack.b(localSendResult);
     }
     this.isFinished = true;
     doNextStep();

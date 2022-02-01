@@ -15,18 +15,20 @@ public class ADViewIndividuation
   public ADViewIndividuation(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Int = 0;
     this.i = 8;
     this.j = 18;
-    this.g = 2130847037;
+    this.g = 2130847391;
     this.h = this.g;
   }
   
   public ADViewIndividuation(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 0;
     this.i = 4;
     this.j = 8;
-    this.g = 2130847037;
+    this.g = 2130847391;
     this.h = this.g;
   }
   
@@ -77,7 +79,7 @@ public class ADViewIndividuation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ADViewIndividuation
  * JD-Core Version:    0.7.0.1
  */

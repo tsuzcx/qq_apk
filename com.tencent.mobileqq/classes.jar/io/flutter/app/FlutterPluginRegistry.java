@@ -58,13 +58,13 @@ public class FlutterPluginRegistry
   
   public void destroy()
   {
-    this.mPlatformViewsController.onFlutterViewDestroyed();
+    this.mPlatformViewsController.onDetachedFromJNI();
   }
   
   public void detach()
   {
     this.mPlatformViewsController.detach();
-    this.mPlatformViewsController.onFlutterViewDestroyed();
+    this.mPlatformViewsController.onDetachedFromJNI();
     this.mFlutterView = null;
     this.mActivity = null;
   }
@@ -158,7 +158,7 @@ public class FlutterPluginRegistry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.app.FlutterPluginRegistry
  * JD-Core Version:    0.7.0.1
  */

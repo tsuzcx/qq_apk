@@ -4,25 +4,25 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import anvx;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDailySettingAdapter;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
 import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDailySettingModel;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
-import pjn;
-import ptj;
-import qhc;
 
 public class ReadInJoyDailySettingFragment
   extends IphoneTitleBarFragment
 {
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private List<qhc> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private pjn jdField_a_of_type_Pjn;
-  private List<qhc> b;
+  private ReadInJoyDailySettingAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyDailySettingAdapter;
+  private List<ReadInJoyDailySettingModel> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<ReadInJoyDailySettingModel> b;
   
   public ReadInJoyDailySettingFragment()
   {
@@ -33,42 +33,42 @@ public class ReadInJoyDailySettingFragment
   {
     if (this.mContentView != null)
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131369654));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131369927));
       LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getActivity());
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-      this.jdField_a_of_type_Pjn = new pjn(getActivity(), this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Pjn);
-      setTitle(anvx.a(2131712561));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyDailySettingAdapter = new ReadInJoyDailySettingAdapter(getActivity(), this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyDailySettingAdapter);
+      setTitle(HardCodeUtil.a(2131713059));
       d();
     }
   }
   
   private void b()
   {
-    qhc localqhc = new qhc();
-    localqhc.jdField_b_of_type_JavaLangString = anvx.a(2131712517);
-    localqhc.jdField_a_of_type_JavaLangString = "open_reason";
-    localqhc.c = ((String)bmhv.a("readinjoy_show_recommend_reason_in_title_b", ""));
-    String str = (String)bmhv.a("readinjoy_show_recommend_reason_in_title_b", "");
+    ReadInJoyDailySettingModel localReadInJoyDailySettingModel = new ReadInJoyDailySettingModel();
+    localReadInJoyDailySettingModel.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713019);
+    localReadInJoyDailySettingModel.jdField_a_of_type_JavaLangString = "open_reason";
+    localReadInJoyDailySettingModel.c = ((String)ReadInJoyHelper.a("readinjoy_show_recommend_reason_in_title_b", ""));
+    String str = (String)ReadInJoyHelper.a("readinjoy_show_recommend_reason_in_title_b", "");
     if ("1".equals(str)) {
-      localqhc.d = anvx.a(2131712257);
+      localReadInJoyDailySettingModel.d = HardCodeUtil.a(2131712769);
     }
     for (;;)
     {
-      localqhc.jdField_b_of_type_JavaUtilList = new ArrayList();
-      localqhc.jdField_b_of_type_JavaUtilList.add("");
-      localqhc.jdField_b_of_type_JavaUtilList.add(anvx.a(2131712176));
-      localqhc.jdField_b_of_type_JavaUtilList.add(anvx.a(2131712194));
-      localqhc.jdField_a_of_type_JavaUtilList = new ArrayList();
-      localqhc.jdField_a_of_type_JavaUtilList.add("");
-      localqhc.jdField_a_of_type_JavaUtilList.add("1");
-      localqhc.jdField_a_of_type_JavaUtilList.add("0");
-      this.jdField_b_of_type_JavaUtilList.add(localqhc);
+      localReadInJoyDailySettingModel.jdField_b_of_type_JavaUtilList = new ArrayList();
+      localReadInJoyDailySettingModel.jdField_b_of_type_JavaUtilList.add("");
+      localReadInJoyDailySettingModel.jdField_b_of_type_JavaUtilList.add(HardCodeUtil.a(2131712689));
+      localReadInJoyDailySettingModel.jdField_b_of_type_JavaUtilList.add(HardCodeUtil.a(2131712707));
+      localReadInJoyDailySettingModel.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localReadInJoyDailySettingModel.jdField_a_of_type_JavaUtilList.add("");
+      localReadInJoyDailySettingModel.jdField_a_of_type_JavaUtilList.add("1");
+      localReadInJoyDailySettingModel.jdField_a_of_type_JavaUtilList.add("0");
+      this.jdField_b_of_type_JavaUtilList.add(localReadInJoyDailySettingModel);
       return;
       if ("0".equals(str)) {
-        localqhc.d = anvx.a(2131712566);
+        localReadInJoyDailySettingModel.d = HardCodeUtil.a(2131713063);
       } else {
-        localqhc.d = "";
+        localReadInJoyDailySettingModel.d = "";
       }
     }
   }
@@ -85,8 +85,8 @@ public class ReadInJoyDailySettingFragment
           int i = 0;
           while (i < ((JSONArray)localObject).length())
           {
-            qhc localqhc = qhc.a(((JSONArray)localObject).optJSONObject(i));
-            this.jdField_a_of_type_JavaUtilList.add(localqhc);
+            ReadInJoyDailySettingModel localReadInJoyDailySettingModel = ReadInJoyDailySettingModel.a(((JSONArray)localObject).optJSONObject(i));
+            this.jdField_a_of_type_JavaUtilList.add(localReadInJoyDailySettingModel);
             i += 1;
           }
         }
@@ -103,12 +103,12 @@ public class ReadInJoyDailySettingFragment
   {
     b();
     c();
-    this.jdField_a_of_type_Pjn.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyDailySettingAdapter.notifyDataSetChanged();
   }
   
   public int getContentLayoutId()
   {
-    return 2131560204;
+    return 2131560281;
   }
   
   public void onDestroy()
@@ -122,10 +122,10 @@ public class ReadInJoyDailySettingFragment
       i = 0;
       while (i < this.jdField_b_of_type_JavaUtilList.size())
       {
-        localJSONArray.put(((qhc)this.jdField_b_of_type_JavaUtilList.get(i)).a());
+        localJSONArray.put(((ReadInJoyDailySettingModel)this.jdField_b_of_type_JavaUtilList.get(i)).a());
         i += 1;
       }
-      bmhv.a("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", localJSONArray.toString());
+      ReadInJoyHelper.a("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", localJSONArray.toString());
     }
     if (this.jdField_a_of_type_JavaUtilList.size() > 0)
     {
@@ -133,12 +133,12 @@ public class ReadInJoyDailySettingFragment
       i = j;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        localJSONArray.put(((qhc)this.jdField_a_of_type_JavaUtilList.get(i)).a());
+        localJSONArray.put(((ReadInJoyDailySettingModel)this.jdField_a_of_type_JavaUtilList.get(i)).a());
         i += 1;
       }
       ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", localJSONArray.toString());
     }
-    qhc.a();
+    ReadInJoyDailySettingModel.a();
     super.onDestroy();
   }
   
@@ -146,12 +146,12 @@ public class ReadInJoyDailySettingFragment
   {
     super.onViewCreated(paramView, paramBundle);
     a();
-    ptj.a.a(getActivity());
+    RIJDtReportHelper.a.a(getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailySettingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class QRDisplayActivity$7
     LinearLayout.LayoutParams localLayoutParams;
     if (j < i)
     {
-      localView = this.this$0.findViewById(2131374791);
+      localView = this.this$0.findViewById(2131375162);
       localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
       if (this.this$0.jdField_c_of_type_Int != 2) {
         break label96;
@@ -47,7 +47,7 @@ class QRDisplayActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.7
  * JD-Core Version:    0.7.0.1
  */

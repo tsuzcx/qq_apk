@@ -2,20 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.net.URL;
 import org.json.JSONObject;
-import sfq;
 
-public class ReadInJoyWebDataManager$3
+class ReadInJoyWebDataManager$3
   implements Runnable
 {
-  public ReadInJoyWebDataManager$3(sfq paramsfq, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  ReadInJoyWebDataManager$3(ReadInJoyWebDataManager paramReadInJoyWebDataManager, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    long l = sfq.a();
+    long l = ReadInJoyWebDataManager.a();
     try
     {
-      sfq.a(l);
-      if (sfq.b() > 52428800L) {
+      ReadInJoyWebDataManager.a(l);
+      if (ReadInJoyWebDataManager.b() > 52428800L) {
         return;
       }
     }
@@ -25,7 +24,7 @@ public class ReadInJoyWebDataManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.3
  * JD-Core Version:    0.7.0.1
  */

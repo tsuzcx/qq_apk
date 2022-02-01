@@ -1,16 +1,15 @@
 package com.tencent.biz.subscribe.comment;
 
 import android.widget.ListView;
-import zux;
 
-public class CommentPresenter$13
+class CommentPresenter$13
   implements Runnable
 {
-  public CommentPresenter$13(zux paramzux) {}
+  CommentPresenter$13(CommentPresenter paramCommentPresenter) {}
   
   public void run()
   {
-    zux.b(this.this$0);
+    CommentPresenter.b(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.setSelection(0);
     }
@@ -18,7 +17,7 @@ public class CommentPresenter$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentPresenter.13
  * JD-Core Version:    0.7.0.1
  */

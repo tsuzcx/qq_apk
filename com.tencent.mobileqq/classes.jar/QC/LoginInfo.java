@@ -8,8 +8,8 @@ public final class LoginInfo
   extends JceStruct
 {
   public int iKeyType = 1;
-  public int iOpplat;
-  public long lUin;
+  public int iOpplat = 0;
+  public long lUin = 0L;
   public String sClientIp = "";
   public String sClientVer = "";
   public String sSKey = "";

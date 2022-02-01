@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multiaio.presenter;
 
-import axeh;
+import com.tencent.mobileqq.multiaio.MultiAIOStarter;
 
 class MultiAioContext$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class MultiAioContext$1$1
   
   public void run()
   {
-    axeh.a(20);
+    MultiAIOStarter.a(20);
   }
 }
 

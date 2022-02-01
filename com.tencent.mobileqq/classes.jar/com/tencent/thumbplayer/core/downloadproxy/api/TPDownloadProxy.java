@@ -6,6 +6,7 @@ import android.content.IntentFilter;
 import android.text.TextUtils;
 import com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager;
 import com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative;
+import com.tencent.thumbplayer.core.downloadproxy.net.NetworkChangeNotifier;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLFileSystem;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyLog;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyUtils;
@@ -122,6 +123,7 @@ public class TPDownloadProxy
           TPDLProxyLog.i("TPDownloadProxy", 0, "tpdlnative", "download already init");
           return i;
         }
+        TPDownloadProxyNative.getInstance().setAppContext(paramContext);
         boolean bool = TPDownloadProxyNative.getInstance().isNativeLoaded();
         String str2;
         if (bool) {
@@ -170,6 +172,7 @@ public class TPDownloadProxy
         if ((TextUtils.isEmpty(paramTPDLProxyInitParam.getDataDir())) && (!TextUtils.isEmpty(this.mCurrentStoragePath)))
         {
           j = TPDownloadProxyNative.getInstance().initService(this.mServiceType, (String)localObject, this.mCurrentStoragePath, paramTPDLProxyInitParam.getConfigStr());
+          NetworkChangeNotifier.registerToReceiveNotificationsAlways();
           paramTPDLProxyInitParam = new IntentFilter();
           paramTPDLProxyInitParam.addAction("android.intent.action.SCREEN_OFF");
           paramTPDLProxyInitParam.addAction("android.intent.action.SCREEN_ON");
@@ -189,12 +192,12 @@ public class TPDownloadProxy
           continue;
         }
         if (TextUtils.isEmpty(paramTPDLProxyInitParam.getDataDir())) {
-          break label366;
+          break label376;
         }
       }
       finally {}
       this.mCurrentStoragePath = paramTPDLProxyInitParam.getDataDir();
-      label366:
+      label376:
       int j = TPDownloadProxyNative.getInstance().initService(this.mServiceType, str1, paramTPDLProxyInitParam.getDataDir(), paramTPDLProxyInitParam.getConfigStr());
     }
   }
@@ -636,7 +639,7 @@ public class TPDownloadProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxy
  * JD-Core Version:    0.7.0.1
  */

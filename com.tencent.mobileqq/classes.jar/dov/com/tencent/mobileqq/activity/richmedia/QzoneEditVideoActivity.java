@@ -1,9 +1,5 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import Override;
-import alpu;
-import alqe;
-import alqf;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,34 +8,35 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
-import anvx;
-import bogd;
-import bohj;
-import bouo;
-import bpik;
-import bpja;
+import com.tencent.biz.qqstory.takevideo.slideshow.QzoneSlideShowPhotoListManager;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.mobileqq.activity.richmedia.FlowComponentInterface;
+import com.tencent.mobileqq.activity.richmedia.MediaCodecSendTask;
+import com.tencent.mobileqq.activity.richmedia.MediaCodecSendTask.VideoSendPublicParam;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.data.CaptureComboManager;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 import java.io.File;
 import java.util.ArrayList;
-import yzm;
-import yzz;
 
 public class QzoneEditVideoActivity
   extends EditVideoActivity
 {
   private static final String jdField_a_of_type_JavaLangString = QzoneEditVideoActivity.class.getSimpleName();
-  private bpik jdField_a_of_type_Bpik;
   private QzoneVerticalVideoTopicInfo jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
-  private boolean jdField_a_of_type_Boolean;
+  private QzEditVideoPartManager jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager;
+  private boolean jdField_a_of_type_Boolean = false;
   
-  private void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, alpu paramalpu, String paramString5, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean1, int paramInt4, int paramInt5, String paramString6, int paramInt6, String paramString7, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  private void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, FlowComponentInterface paramFlowComponentInterface, String paramString5, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean1, int paramInt4, int paramInt5, String paramString6, int paramInt6, String paramString7, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
     if (TextUtils.isEmpty(paramString2)) {
       return;
@@ -48,36 +45,36 @@ public class QzoneEditVideoActivity
     if (!TextUtils.isEmpty(paramString4)) {
       PtvFilterUtils.a(str, paramString4);
     }
-    alqf localalqf = new alqf();
-    localalqf.jdField_a_of_type_AndroidAppActivity = this;
-    localalqf.jdField_a_of_type_JavaLangString = str;
-    localalqf.jdField_b_of_type_JavaLangString = paramString1;
-    localalqf.jdField_a_of_type_Int = paramInt1;
-    localalqf.jdField_c_of_type_JavaLangString = paramString2;
-    localalqf.jdField_f_of_type_JavaLangString = paramString3;
-    localalqf.jdField_c_of_type_Int = 0;
-    localalqf.jdField_d_of_type_Int = 0;
-    localalqf.jdField_k_of_type_JavaLangString = paramString4;
-    localalqf.j = paramInt2;
-    localalqf.jdField_a_of_type_Alpu = paramalpu;
-    localalqf.jdField_g_of_type_JavaLangString = paramString5;
-    localalqf.jdField_e_of_type_Int = paramInt3;
-    localalqf.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    localalqf.jdField_b_of_type_Boolean = paramBoolean1;
-    localalqf.jdField_f_of_type_Int = paramInt4;
-    localalqf.jdField_g_of_type_Int = paramInt5;
-    localalqf.jdField_h_of_type_JavaLangString = paramString6;
-    localalqf.jdField_h_of_type_Int = paramInt6;
-    localalqf.i = paramString7;
-    localalqf.jdField_e_of_type_Boolean = paramBoolean2;
-    localalqf.jdField_f_of_type_Boolean = paramBoolean3;
-    localalqf.jdField_g_of_type_Boolean = paramBoolean4;
-    localalqf.jdField_h_of_type_Boolean = paramBoolean5;
-    localalqf.jdField_k_of_type_Int = 3;
-    localalqf.jdField_d_of_type_JavaLangString = "";
-    localalqf.jdField_b_of_type_Int = 0;
-    localalqf.jdField_e_of_type_JavaLangString = "";
-    new alqe(localalqf).execute(new Void[0]);
+    MediaCodecSendTask.VideoSendPublicParam localVideoSendPublicParam = new MediaCodecSendTask.VideoSendPublicParam();
+    localVideoSendPublicParam.jdField_a_of_type_AndroidAppActivity = this;
+    localVideoSendPublicParam.jdField_a_of_type_JavaLangString = str;
+    localVideoSendPublicParam.jdField_b_of_type_JavaLangString = paramString1;
+    localVideoSendPublicParam.jdField_a_of_type_Int = paramInt1;
+    localVideoSendPublicParam.jdField_c_of_type_JavaLangString = paramString2;
+    localVideoSendPublicParam.jdField_f_of_type_JavaLangString = paramString3;
+    localVideoSendPublicParam.jdField_c_of_type_Int = 0;
+    localVideoSendPublicParam.jdField_d_of_type_Int = 0;
+    localVideoSendPublicParam.jdField_k_of_type_JavaLangString = paramString4;
+    localVideoSendPublicParam.j = paramInt2;
+    localVideoSendPublicParam.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowComponentInterface = paramFlowComponentInterface;
+    localVideoSendPublicParam.jdField_g_of_type_JavaLangString = paramString5;
+    localVideoSendPublicParam.jdField_e_of_type_Int = paramInt3;
+    localVideoSendPublicParam.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    localVideoSendPublicParam.jdField_b_of_type_Boolean = paramBoolean1;
+    localVideoSendPublicParam.jdField_f_of_type_Int = paramInt4;
+    localVideoSendPublicParam.jdField_g_of_type_Int = paramInt5;
+    localVideoSendPublicParam.jdField_h_of_type_JavaLangString = paramString6;
+    localVideoSendPublicParam.jdField_h_of_type_Int = paramInt6;
+    localVideoSendPublicParam.i = paramString7;
+    localVideoSendPublicParam.jdField_e_of_type_Boolean = paramBoolean2;
+    localVideoSendPublicParam.jdField_f_of_type_Boolean = paramBoolean3;
+    localVideoSendPublicParam.jdField_g_of_type_Boolean = paramBoolean4;
+    localVideoSendPublicParam.jdField_h_of_type_Boolean = paramBoolean5;
+    localVideoSendPublicParam.jdField_k_of_type_Int = 3;
+    localVideoSendPublicParam.jdField_d_of_type_JavaLangString = "";
+    localVideoSendPublicParam.jdField_b_of_type_Int = 0;
+    localVideoSendPublicParam.jdField_e_of_type_JavaLangString = "";
+    new MediaCodecSendTask(localVideoSendPublicParam).execute(new Void[0]);
   }
   
   private boolean a()
@@ -152,21 +149,21 @@ public class QzoneEditVideoActivity
   
   private void b(@Nullable Intent paramIntent)
   {
-    if ((paramIntent != null) && (this.jdField_a_of_type_Bpik != null))
+    if ((paramIntent != null) && (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager != null))
     {
-      paramIntent.putExtra("key_content", this.jdField_a_of_type_Bpik.jdField_c_of_type_JavaLangString);
-      paramIntent.putExtra("key_topic_sync_qzone", this.jdField_a_of_type_Bpik.jdField_f_of_type_Boolean);
-      paramIntent.putExtra("key_priv", this.jdField_a_of_type_Bpik.jdField_c_of_type_Int);
-      paramIntent.putExtra("key_priv_uin_list", this.jdField_a_of_type_Bpik.jdField_a_of_type_JavaUtilArrayList);
-      paramIntent.putExtra("key_font_id", this.jdField_a_of_type_Bpik.jdField_d_of_type_Int);
-      paramIntent.putExtra("key_font_format_type", this.jdField_a_of_type_Bpik.jdField_e_of_type_Int);
-      paramIntent.putExtra("key_font_url", this.jdField_a_of_type_Bpik.jdField_d_of_type_JavaLangString);
-      paramIntent.putExtra("key_super_font_id", this.jdField_a_of_type_Bpik.jdField_f_of_type_Int);
-      paramIntent.putExtra("key_super_font_info", this.jdField_a_of_type_Bpik.jdField_e_of_type_JavaLangString);
-      paramIntent.putExtra("key_timer_delete", this.jdField_a_of_type_Bpik.p);
-      paramIntent.putExtra("key_sync_to_qqstory", this.jdField_a_of_type_Bpik.n);
-      paramIntent.putExtra("param.isUploadOrigin", this.jdField_a_of_type_Bpik.o);
-      if ((yzm.a().a() == 14) || (yzm.a().a() == 19)) {
+      paramIntent.putExtra("key_content", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_c_of_type_JavaLangString);
+      paramIntent.putExtra("key_topic_sync_qzone", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_f_of_type_Boolean);
+      paramIntent.putExtra("key_priv", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_c_of_type_Int);
+      paramIntent.putExtra("key_priv_uin_list", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_a_of_type_JavaUtilArrayList);
+      paramIntent.putExtra("key_font_id", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_d_of_type_Int);
+      paramIntent.putExtra("key_font_format_type", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_e_of_type_Int);
+      paramIntent.putExtra("key_font_url", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_d_of_type_JavaLangString);
+      paramIntent.putExtra("key_super_font_id", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_f_of_type_Int);
+      paramIntent.putExtra("key_super_font_info", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_e_of_type_JavaLangString);
+      paramIntent.putExtra("key_timer_delete", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.p);
+      paramIntent.putExtra("key_sync_to_qqstory", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.n);
+      paramIntent.putExtra("param.isUploadOrigin", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.o);
+      if ((QzoneSlideShowPhotoListManager.a().a() == 14) || (QzoneSlideShowPhotoListManager.a().a() == 19)) {
         a(paramIntent);
       }
       QLog.i(jdField_a_of_type_JavaLangString, 2, "QzoneEditVideoActivity " + paramIntent.getExtras());
@@ -175,34 +172,34 @@ public class QzoneEditVideoActivity
   
   private void e()
   {
-    this.jdField_a_of_type_Bpik.m = a();
-    this.jdField_a_of_type_Bpik.jdField_e_of_type_Boolean = getIntent().getBooleanExtra("mIsQzoneVip", false);
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.m = a();
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_e_of_type_Boolean = getIntent().getBooleanExtra("mIsQzoneVip", false);
   }
   
   private void f()
   {
     boolean bool = getIntent().getBooleanExtra("enable_input_text", true);
-    this.jdField_a_of_type_Bpik.jdField_h_of_type_Boolean = bool;
-    this.jdField_a_of_type_Bpik.i = getIntent().getBooleanExtra("enable_sync_qzone", false);
-    this.jdField_a_of_type_Bpik.j = getIntent().getBooleanExtra("enable_priv_list", true);
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_h_of_type_Boolean = bool;
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.i = getIntent().getBooleanExtra("enable_sync_qzone", false);
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.j = getIntent().getBooleanExtra("enable_priv_list", true);
     if (!TextUtils.isEmpty(getIntent().getStringExtra("topic_id"))) {
-      this.jdField_a_of_type_Bpik.jdField_g_of_type_Boolean = true;
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_g_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_Bpik.jdField_d_of_type_Int = getIntent().getIntExtra("key_font_id", -1);
-    this.jdField_a_of_type_Bpik.jdField_f_of_type_Int = getIntent().getIntExtra("key_super_font_id", -1);
-    this.jdField_a_of_type_Bpik.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("key_super_font_info");
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_d_of_type_Int = getIntent().getIntExtra("key_font_id", -1);
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_f_of_type_Int = getIntent().getIntExtra("key_super_font_id", -1);
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("key_super_font_info");
   }
   
   private void g()
   {
     this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = ((QzoneVerticalVideoTopicInfo)getIntent().getParcelableExtra("key_qzone_topic"));
-    this.jdField_a_of_type_Bpik.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Bpik = new bpik(this);
-    this.jdField_a_of_type_Botw = this.jdField_a_of_type_Bpik;
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager = new QzEditVideoPartManager(this);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager;
     f();
     e();
     g();
@@ -210,7 +207,7 @@ public class QzoneEditVideoActivity
   
   public void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Bpik.r)
+    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.r)
     {
       b(paramInt1, paramIntent, paramInt2, paramInt3, false);
       return;
@@ -239,7 +236,7 @@ public class QzoneEditVideoActivity
     label80:
     for (Object localObject = ((EditVideoParams)localObject).a(); !TextUtils.isEmpty((CharSequence)localObject); localObject = "can not find EditVideoParams")
     {
-      QQToast.a(this, anvx.a(2131711191) + (String)localObject, 0).a();
+      QQToast.a(this, HardCodeUtil.a(2131711706) + (String)localObject, 0).a();
       finish();
       return;
     }
@@ -249,7 +246,7 @@ public class QzoneEditVideoActivity
     setIntent(paramIntent);
     doOnCreate(null);
     doOnResume();
-    this.jdField_a_of_type_Bpik.jdField_a_of_type_Bouo.b();
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.b();
   }
   
   @Override
@@ -266,17 +263,17 @@ public class QzoneEditVideoActivity
     if ((paramInt2 == -1) && (paramInt1 == 666) && (paramIntent != null) && (paramIntent.getBooleanExtra("key_is_qzone_slide_show_edited", false)))
     {
       paramIntent = paramIntent.getParcelableArrayListExtra("qzone_slide_show_matters");
-      yzm.a().b(paramIntent);
-      yzm.a().a(paramIntent);
+      QzoneSlideShowPhotoListManager.a().b(paramIntent);
+      QzoneSlideShowPhotoListManager.a().a(paramIntent);
       getIntent().putExtra("from_qzone_slideshow", true);
       getIntent().putExtra("edit_video_type", 10001);
       getIntent().putExtra("qq_sub_business_id", 3);
       getIntent().putExtra("qzone_slide_enable_mask", 99195L);
-      this.jdField_a_of_type_Bpik.jdField_a_of_type_Bouo.a(anvx.a(2131711187), false, 500L);
-      this.jdField_a_of_type_Bpik.b();
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(HardCodeUtil.a(2131711702), false, 500L);
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.b();
       this.jdField_a_of_type_Boolean = true;
-      ((bohj)bogd.a(5)).a(this);
-      yzm.a().a(this, new bpja(this), 2);
+      ((CaptureComboManager)QIMManager.a(5)).a(this);
+      QzoneSlideShowPhotoListManager.a().a(this, new QzoneEditVideoActivity.1(this), 2);
       return;
     }
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
@@ -284,8 +281,8 @@ public class QzoneEditVideoActivity
   
   public void doOnBackPressed()
   {
-    if (this.jdField_a_of_type_Bpik != null) {
-      this.jdField_a_of_type_Bpik.r = true;
+    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager != null) {
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.r = true;
     }
     super.doOnBackPressed();
   }
@@ -293,18 +290,18 @@ public class QzoneEditVideoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    findViewById(2131374124).setVisibility(8);
+    findViewById(2131374441).setVisibility(8);
     return bool;
   }
   
   public void doOnDestroy()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (yzm.a().b() == 22))
+    if ((!this.jdField_a_of_type_Boolean) && (QzoneSlideShowPhotoListManager.a().b() == 22))
     {
-      if (yzm.a().a() != 19) {
+      if (QzoneSlideShowPhotoListManager.a().a() != 19) {
         break label54;
       }
-      yzm.a().b(14);
+      QzoneSlideShowPhotoListManager.a().b(14);
     }
     for (;;)
     {
@@ -314,10 +311,10 @@ public class QzoneEditVideoActivity
       super.doOnDestroy();
       return;
       label54:
-      if (yzm.a().a() == 14)
+      if (QzoneSlideShowPhotoListManager.a().a() == 14)
       {
-        yzm.a().c(20);
-        yzm.a().b(99);
+        QzoneSlideShowPhotoListManager.a().c(20);
+        QzoneSlideShowPhotoListManager.a().b(99);
       }
     }
   }
@@ -331,7 +328,7 @@ public class QzoneEditVideoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.QzoneEditVideoActivity
  * JD-Core Version:    0.7.0.1
  */

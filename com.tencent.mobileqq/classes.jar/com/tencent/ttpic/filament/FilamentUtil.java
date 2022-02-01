@@ -13,9 +13,9 @@ import com.google.android.filament.Material.Builder;
 import com.google.android.filament.RenderableManager;
 import com.google.android.filament.gltfio.FilamentAsset;
 import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.io.IOUtils;
+import com.tencent.ttpic.device.DeviceUtils;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.gameplaysdk.model.Range;
 import com.tencent.ttpic.openapi.model.AnimojiExpressionJava;
@@ -45,7 +45,6 @@ public class FilamentUtil
   private static Set<String> debugExpression;
   private static Map<String, Range> defaultExpressionList;
   private static Map<String, Integer> expName2Index;
-  private static String[] kapuOrderExpress;
   private static Set<String> smoothExpression;
   private static final Handler uiHandler = new Handler(Looper.getMainLooper());
   private static final Map<String, Float> valueMap = new HashMap();
@@ -57,7 +56,6 @@ public class FilamentUtil
     debugExpression = new HashSet();
     smoothExpression = new HashSet();
     defaultExpressionList = new HashMap();
-    kapuOrderExpress = new String[] { "eyeBlinkLeft", "eyeBlinkRight", "eyeSquintLeft", "eyeSquintRight", "eyeLookDownLeft", "eyeLookDownRight", "eyeLookInLeft", "eyeLookInRight", "eyeWideLeft", "eyeWideRight", "eyeLookOutLeft", "eyeLookOutRight", "eyeLookUpLeft", "eyeLookUpRight", "browDownLeft", "browDownRight", "browInnerUp", "browOuterUpLeft", "browOuterUpRight", "jawForward", "jawLeft", "jawOpen", "jawRight", "mouthLeft", "mouthRight", "mouthFrownLeft", "mouthFrownRight", "mouthSmileLeft", "mouthSmileRight", "mouthPressLeft", "mouthPressRight", "mouthDimpleLeft", "mouthDimpleRight", "mouthRollLower", "mouthRollUpper", "mouthUpperUp", "mouthLowerDown", "mouthClose", "mouthFunnel", "mouthPucker", "mouthShrugLower", "mouthShrugUpper", "noseSneer", "cheekPuff", "cheekSquintLeft", "cheekSquintRight" };
     expName2Index.put("browDownLeft", Integer.valueOf(0));
     expName2Index.put("browDownRight", Integer.valueOf(1));
     expName2Index.put("browInnerUp", Integer.valueOf(2));
@@ -202,20 +200,6 @@ public class FilamentUtil
       paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkLeft")).intValue()] = 0.0F;
       paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkRight")).intValue()] = 0.0F;
     }
-  }
-  
-  private static float adjustValue(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
-  {
-    if (paramFloat1 <= paramFloat2) {
-      return paramFloat4;
-    }
-    if (paramFloat1 >= paramFloat3) {
-      return paramFloat5;
-    }
-    if (paramFloat3 > paramFloat2) {
-      return paramFloat4 + (paramFloat1 - paramFloat2) / (paramFloat3 - paramFloat2) * (paramFloat5 - paramFloat4);
-    }
-    return 0.0F;
   }
   
   private static void adjustValue(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2)
@@ -683,14 +667,6 @@ public class FilamentUtil
     return ByteBuffer.wrap(FileUtils.readBytes(paramInputStream, 4)).getInt();
   }
   
-  public static String getKapuExpNameByIndex(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < kapuOrderExpress.length)) {
-      return kapuOrderExpress[paramInt];
-    }
-    return null;
-  }
-  
   public static int getProcessWidth()
   {
     valueMap.clear();
@@ -1012,57 +988,6 @@ public class FilamentUtil
     paramFilamentAsset.setMorphWeights(paramNodeItemJava.name, arrayOfFloat);
   }
   
-  public static void setMorphWeightsKapu(FilamentJNI paramFilamentJNI, float[] paramArrayOfFloat, int paramInt, List<AnimojiExpressionJava> paramList)
-  {
-    if ((paramArrayOfFloat == null) || (paramList == null))
-    {
-      paramFilamentJNI.setKapuWeights(paramInt, new String[0], new float[0]);
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    Object localObject1 = kapuOrderExpress;
-    int j = localObject1.length;
-    int i = 0;
-    Object localObject2;
-    while (i < j)
-    {
-      localObject2 = localObject1[i];
-      if (expName2Index.containsKey(localObject2)) {
-        localHashMap.put(localObject2, Float.valueOf(paramArrayOfFloat[((Integer)expName2Index.get(localObject2)).intValue()]));
-      }
-      i += 1;
-    }
-    paramArrayOfFloat = paramList.iterator();
-    float f;
-    while (paramArrayOfFloat.hasNext())
-    {
-      paramList = (AnimojiExpressionJava)paramArrayOfFloat.next();
-      if (localHashMap.containsKey(paramList.controlledName))
-      {
-        f = adjustValue(((Float)localHashMap.get(paramList.controlledName)).floatValue(), paramList.shapeRange.min, paramList.shapeRange.max, paramList.controlledRange.min, paramList.controlledRange.max);
-        localHashMap.put(paramList.controlledName, Float.valueOf(f));
-      }
-    }
-    paramArrayOfFloat = new String[localHashMap.size()];
-    paramList = new float[localHashMap.size()];
-    localObject1 = localHashMap.keySet().iterator();
-    i = 0;
-    if (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (String)((Iterator)localObject1).next();
-      paramArrayOfFloat[i] = localObject2;
-      localObject2 = (Float)localHashMap.get(localObject2);
-      if (localObject2 != null) {}
-      for (f = ((Float)localObject2).floatValue();; f = 0.0F)
-      {
-        paramList[i] = f;
-        i += 1;
-        break;
-      }
-    }
-    paramFilamentJNI.setKapuWeights(paramInt, paramArrayOfFloat, paramList);
-  }
-  
   private static void threeaxisrot(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float[] paramArrayOfFloat)
   {
     paramArrayOfFloat[0] = ((float)Math.atan2(paramFloat4, paramFloat5));
@@ -1148,7 +1073,7 @@ public class FilamentUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filament.FilamentUtil
  * JD-Core Version:    0.7.0.1
  */

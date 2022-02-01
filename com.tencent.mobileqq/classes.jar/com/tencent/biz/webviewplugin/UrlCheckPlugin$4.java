@@ -1,11 +1,9 @@
 package com.tencent.biz.webviewplugin;
 
-import aatc;
-
-public class UrlCheckPlugin$4
+class UrlCheckPlugin$4
   implements Runnable
 {
-  public UrlCheckPlugin$4(aatc paramaatc) {}
+  UrlCheckPlugin$4(UrlCheckPlugin paramUrlCheckPlugin) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class UrlCheckPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.UrlCheckPlugin.4
  * JD-Core Version:    0.7.0.1
  */

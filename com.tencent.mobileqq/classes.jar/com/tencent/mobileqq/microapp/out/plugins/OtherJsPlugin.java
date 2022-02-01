@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.microapp.out.plugins;
 
-import alhp;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
 import com.tencent.mobileqq.microapp.R.string;
@@ -111,7 +111,7 @@ public class OtherJsPlugin
   
   public void enterQRCode(BaseActivity paramBaseActivity)
   {
-    if (!alhp.a(paramBaseActivity)) {
+    if (!RecentOptPopBar.a(paramBaseActivity)) {
       return;
     }
     Intent localIntent = new Intent(paramBaseActivity, ScannerActivity.class);

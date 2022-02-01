@@ -29,7 +29,7 @@ public abstract class ApkgBaseInfo
   public static final int DOMIAN_TYPE_WEBVIEW = 4;
   public static boolean isRdmBuild = QUA.getQUA3().toLowerCase().contains("rdm");
   private static String mCurWhiteListConfig;
-  private static ArrayList<String> sDominWhiteList;
+  private static ArrayList<String> sDominWhiteList = null;
   public String apkgFolderPath;
   public String apkgName;
   public MiniAppConfig appConfig;

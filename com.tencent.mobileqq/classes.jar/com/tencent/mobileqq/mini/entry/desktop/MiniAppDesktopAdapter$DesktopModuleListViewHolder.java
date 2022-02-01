@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import asvq;
+import com.tencent.mobileqq.extendfriend.wiget.WrapContentLinearLayoutManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppGroupInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopItemInfo;
@@ -22,7 +22,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder
   public MiniAppDesktopAdapter$DesktopModuleListViewHolder(MiniAppDesktopAdapter paramMiniAppDesktopAdapter, View paramView, Context paramContext, DragRecyclerView.DragDeleteListener paramDragDeleteListener)
   {
     super(paramView);
-    this.mRecycleView = ((DragRecyclerView)paramView.findViewById(2131376423));
+    this.mRecycleView = ((DragRecyclerView)paramView.findViewById(2131376816));
     MiniAppDesktopAdapter.access$3100(paramMiniAppDesktopAdapter).addChildDragRecycleView(this.mRecycleView);
     this.mAdapter = new MiniAppDesktopAdapter.DesktopModuleListViewHolder.MiniAppAdapter(this, paramContext, this.mRecycleView);
     this.mAdapter.setParentRecyclerView(MiniAppDesktopAdapter.access$3200(paramMiniAppDesktopAdapter));
@@ -31,7 +31,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder
     this.mRecycleView.setDragDeleteListener(paramDragDeleteListener);
     this.mAdapter.setDragMirrorView(MiniAppDesktopAdapter.access$3300(paramMiniAppDesktopAdapter));
     this.mAdapter.registerAdapterDataObserver(new MiniAppDesktopAdapter.DesktopModuleListViewHolder.1(this, paramMiniAppDesktopAdapter));
-    paramView = new asvq(MiniAppDesktopAdapter.access$3500(paramMiniAppDesktopAdapter), 0, false);
+    paramView = new WrapContentLinearLayoutManager(MiniAppDesktopAdapter.access$3500(paramMiniAppDesktopAdapter), 0, false);
     paramView.setAutoMeasureEnabled(true);
     this.mRecycleView.setLayoutManager(paramView);
     this.mRecycleView.addOnScrollListener(new MiniAppDesktopAdapter.DesktopModuleListViewHolder.2(this, paramMiniAppDesktopAdapter));

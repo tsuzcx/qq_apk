@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.apollo.debug.page;
 
-import amro;
-import amrw;
-import amwn;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,7 +11,10 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugManager;
 import com.tencent.mobileqq.apollo.debug.log.CmGameDebugLogPagerAdapter;
+import com.tencent.mobileqq.apollo.debug.log.CmGameDebugLogView;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -29,17 +29,17 @@ public class CmGameDebugLogFragment
   TabLayoutCompat jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat;
   ViewPagerCompat jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat;
   private CmGameDebugLogPagerAdapter jdField_a_of_type_ComTencentMobileqqApolloDebugLogCmGameDebugLogPagerAdapter;
-  private List<amrw> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<CmGameDebugLogView> jdField_a_of_type_JavaUtilList = new ArrayList();
   TextView b;
   
-  private amrw a(int paramInt)
+  private CmGameDebugLogView a(int paramInt)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      amrw localamrw = (amrw)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localamrw.a() == paramInt) {
-        return localamrw;
+      CmGameDebugLogView localCmGameDebugLogView = (CmGameDebugLogView)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localCmGameDebugLogView.a() == paramInt) {
+        return localCmGameDebugLogView;
       }
       i += 1;
     }
@@ -50,20 +50,20 @@ public class CmGameDebugLogFragment
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < amro.b.length)
+    while (i < CmGameDebugManager.b.length)
     {
-      amrw localamrw = a(getActivity(), i);
-      this.jdField_a_of_type_JavaUtilList.add(localamrw);
-      localArrayList.add(amro.b[i]);
+      CmGameDebugLogView localCmGameDebugLogView = a(getActivity(), i);
+      this.jdField_a_of_type_JavaUtilList.add(localCmGameDebugLogView);
+      localArrayList.add(CmGameDebugManager.b[i]);
       i += 1;
     }
     this.jdField_a_of_type_ComTencentMobileqqApolloDebugLogCmGameDebugLogPagerAdapter = new CmGameDebugLogPagerAdapter(this.jdField_a_of_type_JavaUtilList, localArrayList);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.setAdapter(this.jdField_a_of_type_ComTencentMobileqqApolloDebugLogCmGameDebugLogPagerAdapter);
   }
   
-  public amrw a(Context paramContext, int paramInt)
+  public CmGameDebugLogView a(Context paramContext, int paramInt)
   {
-    return new amrw(paramContext, paramInt);
+    return new CmGameDebugLogView(paramContext, paramInt);
   }
   
   public void a(int paramInt)
@@ -73,17 +73,17 @@ public class CmGameDebugLogFragment
       paramInt = 0;
       while (paramInt < this.jdField_a_of_type_JavaUtilList.size())
       {
-        ((amrw)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(true);
+        ((CmGameDebugLogView)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(true);
         paramInt += 1;
       }
     }
-    amrw localamrw = a(paramInt);
-    if (localamrw != null) {
-      localamrw.a(false);
+    CmGameDebugLogView localCmGameDebugLogView = a(paramInt);
+    if (localCmGameDebugLogView != null) {
+      localCmGameDebugLogView.a(false);
     }
-    localamrw = a(0);
-    if (localamrw != null) {
-      localamrw.a(false);
+    localCmGameDebugLogView = a(0);
+    if (localCmGameDebugLogView != null) {
+      localCmGameDebugLogView.a(false);
     }
   }
   
@@ -96,10 +96,10 @@ public class CmGameDebugLogFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      amro localamro = amwn.a();
-      if (localamro != null)
+      CmGameDebugManager localCmGameDebugManager = CmGameUtil.a();
+      if (localCmGameDebugManager != null)
       {
-        localamro.a(true);
+        localCmGameDebugManager.a(true);
         continue;
         a();
       }
@@ -113,15 +113,15 @@ public class CmGameDebugLogFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558935, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = ((TabLayoutCompat)paramLayoutInflater.findViewById(2131364757));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat = ((ViewPagerCompat)paramLayoutInflater.findViewById(2131364758));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364753));
-    this.b = ((TextView)paramLayoutInflater.findViewById(2131364754));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558976, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = ((TabLayoutCompat)paramLayoutInflater.findViewById(2131364875));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat = ((ViewPagerCompat)paramLayoutInflater.findViewById(2131364876));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364871));
+    this.b = ((TextView)paramLayoutInflater.findViewById(2131364872));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabTextColors(-16777216, -16777216);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(DisplayUtil.dip2px(BaseApplicationImpl.getApplication(), 1.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(DisplayUtil.a(BaseApplicationImpl.getApplication(), 1.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorColor(Color.parseColor("#6090e3"));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setupWithViewPager(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat);
     b();
@@ -137,7 +137,7 @@ public class CmGameDebugLogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.debug.page.CmGameDebugLogFragment
  * JD-Core Version:    0.7.0.1
  */

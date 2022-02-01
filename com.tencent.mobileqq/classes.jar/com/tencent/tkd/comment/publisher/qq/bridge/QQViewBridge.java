@@ -14,6 +14,8 @@ public abstract interface QQViewBridge
   
   public abstract void bindInput(EditText paramEditText);
   
+  public abstract void bindTopic(View paramView);
+  
   public abstract void deleteGif();
   
   public abstract Editable.Factory getEditFactory();
@@ -40,7 +42,7 @@ public abstract interface QQViewBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.bridge.QQViewBridge
  * JD-Core Version:    0.7.0.1
  */

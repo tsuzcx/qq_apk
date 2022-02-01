@@ -31,10 +31,10 @@ public class ItemCountView
   
   private void a(Context paramContext)
   {
-    paramContext = View.inflate(paramContext, 2131559374, this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramContext.findViewById(2131363486));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramContext.findViewById(2131376434));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131371803));
+    paramContext = View.inflate(paramContext, 2131559440, this);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramContext.findViewById(2131363573));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramContext.findViewById(2131376827));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372115));
   }
   
   public void setBg(Drawable paramDrawable)
@@ -75,7 +75,7 @@ public class ItemCountView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shopping.ItemCountView
  * JD-Core Version:    0.7.0.1
  */

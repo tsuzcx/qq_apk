@@ -1,9 +1,9 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qflutter.utils.FLog;
 import com.tencent.smtt.sdk.WebView;
 import cooperation.qzone.util.QZLog;
@@ -133,7 +133,7 @@ public class AdvFloatVideoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.AdvFloatVideoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

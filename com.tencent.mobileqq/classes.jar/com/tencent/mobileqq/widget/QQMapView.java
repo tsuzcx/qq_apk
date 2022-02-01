@@ -5,9 +5,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bisi;
-import bisj;
-import bisk;
 import com.tencent.map.lib.basemap.data.GeoPoint;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.MapView;
@@ -21,23 +18,25 @@ import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 public class QQMapView
   extends MapView
 {
-  public bisk a;
   GeoPoint jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint;
+  QQMapView.QQMapViewObserver jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver;
   private TencentMap.OnCameraChangeListener jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener;
-  public boolean a;
+  protected boolean a;
   boolean b = false;
   
   public QQMapView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new bisj(this);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new QQMapView.2(this);
     getMap().setOnCameraChangeListener(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener);
   }
   
   public QQMapView(Context paramContext, AttributeSet paramAttributeSet, TencentMapOptions paramTencentMapOptions)
   {
     super(paramContext, paramTencentMapOptions);
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new bisi(this);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new QQMapView.1(this);
     getMap().setOnCameraChangeListener(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener);
   }
   
@@ -61,14 +60,14 @@ public class QQMapView
       j = Math.abs(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() - paramCameraPosition.getLongitudeE6());
       QLog.d("QQMapView", 2, "dealMapScroll() latScroll =" + i + " lngScroll =" + j);
     } while ((i == 0) || (j == 0));
-    this.jdField_a_of_type_Bisk.onMapScrollEnd(paramCameraPosition);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver.onMapScrollEnd(paramCameraPosition);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramCameraPosition;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Bisk = null;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver = null;
     this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = null;
   }
   
@@ -88,14 +87,14 @@ public class QQMapView
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setObserver(bisk parambisk)
+  public void setObserver(QQMapView.QQMapViewObserver paramQQMapViewObserver)
   {
-    this.jdField_a_of_type_Bisk = parambisk;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver = paramQQMapViewObserver;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQMapView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,6 @@
 package com.tencent.hippy.qq.fragment;
 
-import albp;
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,41 +11,84 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.view.Window;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import biur;
+import com.tencent.biz.subscribe.SubscribeUtils;
 import com.tencent.hippy.qq.app.HippyQQPreloadEngine;
+import com.tencent.hippy.qq.utils.HippyAccessHelper;
 import com.tencent.hippy.qq.utils.HippyReporter;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.widget.WebViewProgressBar;
+import com.tencent.hippy.qq.utils.SerializableMap;
+import com.tencent.mobileqq.activity.qwallet.utils.FlymeOSStatusBarFontUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import zqn;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class CommonHippyFragment
   extends BaseHippyFragment
   implements Handler.Callback
 {
-  private static final int LOAD_HIPPY_TIME_OUT_TIME = 5000;
+  private static final int LOAD_HIPPY_TIME_OUT_TIME = 9000;
   private static final int MSG_TIME_OUT = 1;
-  private FrameLayout mErrorOrLoadingFrameLayout;
-  private int mErrorViewColor = -1;
+  private HippyErrorViewWrapper mErrorViewWrapper = new HippyErrorViewWrapper();
   private Handler mHandler;
   private ViewGroup mHippyContainer;
   private LayoutInflater mLayoutInflater;
-  private ImageView mNetworkErrorIcon;
-  private TextView mNetworkErrorText;
-  private View mNetworkErrorView;
-  private WebViewProgressBar mProgressBar;
-  private biur mProgressBarController;
-  private ViewGroup mRootView;
+  private HippyProgressBarWrapper mProgressBarWrapper = new HippyProgressBarWrapper();
+  protected ViewGroup mRootView;
+  
+  private void reportTimeOut()
+  {
+    boolean bool = false;
+    if (this.mHippyQQEngine == null) {
+      return;
+    }
+    HashMap localHashMap1 = generateStepCosts();
+    HashMap localHashMap2 = new HashMap();
+    localHashMap2.put("ret", Integer.valueOf(0));
+    localHashMap2.put("errMsg", getLastStepName());
+    if (this.mHippyQQEngine != null) {
+      bool = this.mHippyQQEngine.isPreloaded();
+    }
+    localHashMap2.put("isPreload", Boolean.valueOf(bool));
+    localHashMap2.put("from", getParameters().getString("from"));
+    HippyReporter.getInstance().reportHippyLoadResult(6, this.mHippyQQEngine.getModuleName(), this.mHippyQQEngine.getModuleVersion(), localHashMap2, localHashMap1);
+  }
+  
+  protected JSONObject doBussinessInitData(JSONObject paramJSONObject)
+  {
+    try
+    {
+      Object localObject2 = getParameters();
+      Object localObject1 = paramJSONObject;
+      if (localObject2 != null)
+      {
+        localObject2 = (SerializableMap)((Bundle)localObject2).getSerializable("js_param_map");
+        localObject1 = paramJSONObject;
+        if (localObject2 != null)
+        {
+          localObject2 = HippyAccessHelper.wrapHashMap(paramJSONObject, ((SerializableMap)localObject2).getMap());
+          localObject1 = paramJSONObject;
+          if (localObject2 != null) {
+            localObject1 = localObject2;
+          }
+        }
+      }
+      return localObject1;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("BaseHippyFragment", 1, "doBussinessInitData:" + localThrowable);
+    }
+    return paramJSONObject;
+  }
+  
+  protected int getLayoutResId()
+  {
+    return 2131558452;
+  }
   
   public boolean handleMessage(Message paramMessage)
   {
@@ -66,71 +106,31 @@ public class CommonHippyFragment
         gotoErrorUrl();
       }
     } while (this.mHippyQQEngine == null);
-    HippyReporter.getInstance().reportOper(this.mHippyQQEngine.getModuleName(), this.mHippyQQEngine.getModuleVersion(), 6);
+    reportTimeOut();
     return true;
-  }
-  
-  protected void hideNetworkErrorView()
-  {
-    if (this.mNetworkErrorView != null) {
-      this.mNetworkErrorView.setVisibility(8);
-    }
-  }
-  
-  public void hideProgressBar()
-  {
-    if ((this.mProgressBarController != null) && (this.mProgressBarController.b() != 2)) {
-      this.mProgressBarController.a((byte)2);
-    }
   }
   
   protected void initNetworkErrorView(ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
   {
-    this.mErrorOrLoadingFrameLayout = ((FrameLayout)paramViewGroup.findViewById(2131381218));
-    if (this.mErrorOrLoadingFrameLayout.getVisibility() != 0) {
-      this.mErrorOrLoadingFrameLayout.setVisibility(0);
+    paramViewGroup = (FrameLayout)paramViewGroup.findViewById(2131366416);
+    if (paramViewGroup.getVisibility() != 0) {
+      paramViewGroup.setVisibility(0);
     }
-    if (this.mNetworkErrorView == null)
-    {
-      this.mNetworkErrorView = ((ViewStub)paramViewGroup.findViewById(2131381219)).inflate();
-      if (this.mErrorViewColor != -1) {
-        this.mNetworkErrorView.setBackgroundColor(this.mErrorViewColor);
-      }
-      this.mNetworkErrorText = ((TextView)this.mNetworkErrorView.findViewById(2131376163));
-      this.mNetworkErrorIcon = ((ImageView)this.mNetworkErrorView.findViewById(2131376162));
-    }
-    this.mNetworkErrorText.setText(paramViewGroup.getResources().getString(2131717844));
-    this.mNetworkErrorView.setOnClickListener(paramOnClickListener);
-    this.mNetworkErrorView.setVisibility(0);
-    if (this.mErrorViewColor == -1) {
-      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839341));
-    }
-    for (;;)
-    {
-      this.mNetworkErrorText.setTextColor(paramViewGroup.getResources().getColor(2131166906));
-      paramOnClickListener = (LinearLayout.LayoutParams)this.mNetworkErrorText.getLayoutParams();
-      paramOnClickListener.topMargin = AIOUtils.dp2px(10.0F, paramViewGroup.getResources());
-      this.mNetworkErrorText.setLayoutParams(paramOnClickListener);
-      return;
-      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839544));
-    }
+    this.mErrorViewWrapper.initNetworkErrorView(paramViewGroup, paramOnClickListener);
   }
   
-  public void initProgressBar(ViewGroup paramViewGroup)
+  protected void initProgressBar(ViewGroup paramViewGroup)
   {
-    if ((this.mHippyQQEngine != null) && (this.mHippyQQEngine.isReady())) {
+    if ((this.mHippyQQEngine != null) && (!this.mHippyQQEngine.isNeedShowLoading())) {
       return;
     }
-    this.mProgressBar = new WebViewProgressBar(paramViewGroup.getContext());
-    this.mProgressBar.setId(2131373229);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.dp2px(3.0F, paramViewGroup.getContext().getResources()));
-    localLayoutParams.addRule(10, -1);
-    this.mProgressBar.setLayoutParams(localLayoutParams);
-    paramViewGroup.addView(this.mProgressBar);
-    this.mProgressBarController = new biur();
-    this.mProgressBarController.a(this.mProgressBar);
-    this.mProgressBar.setController(this.mProgressBarController);
-    startProgressBar();
+    this.mProgressBarWrapper.initProgressBar(paramViewGroup);
+    this.mProgressBarWrapper.startProgressBar();
+  }
+  
+  protected void initViews()
+  {
+    this.mHippyContainer = ((ViewGroup)this.mRootView.findViewById(2131368438));
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -144,47 +144,65 @@ public class CommonHippyFragment
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    if (zqn.a()) {
-      zqn.a(getActivity());
+    if (SubscribeUtils.a()) {
+      SubscribeUtils.a(getActivity());
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if (Build.VERSION.SDK_INT >= 11) {
-      setWindowFlag(getActivity(), 16777216);
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 11) {
+        setWindowFlag(getActivity(), 16777216);
+      }
+      this.mHandler = new Handler(this);
+      this.mLayoutInflater = paramLayoutInflater;
+      this.mRootView = ((ViewGroup)this.mLayoutInflater.inflate(getLayoutResId(), null, false));
+      initViews();
+      loadHippy(this.mHippyContainer);
+      setStatusBarImmersive();
+      initProgressBar(this.mRootView);
+      if ((this.mHippyQQEngine != null) && (!this.mHippyQQEngine.isPredraw())) {
+        this.mHandler.sendEmptyMessageDelayed(1, 9000L);
+      }
+      paramLayoutInflater = this.mRootView;
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
     }
-    this.mHandler = new Handler(this);
-    this.mLayoutInflater = paramLayoutInflater;
-    this.mRootView = ((ViewGroup)this.mLayoutInflater.inflate(2131558452, null, false));
-    this.mHippyContainer = ((ViewGroup)this.mRootView.findViewById(2131368215));
-    loadHippy(this.mHippyContainer);
-    setStatusBarImmersive();
-    initProgressBar(this.mRootView);
-    this.mHandler.sendEmptyMessageDelayed(1, 5000L);
-    paramLayoutInflater = this.mRootView;
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-    return paramLayoutInflater;
+    catch (Throwable paramViewGroup)
+    {
+      for (;;)
+      {
+        QLog.e("BaseHippyFragment", 1, "onCreateView setWindowFlag e:" + paramViewGroup);
+      }
+    }
   }
   
   public void onDestroy()
   {
-    this.mHandler.removeCallbacksAndMessages(null);
+    if (this.mHandler != null) {
+      this.mHandler.removeCallbacksAndMessages(null);
+    }
     super.onDestroy();
   }
   
   protected void onLoadHippyError(int paramInt, String paramString)
   {
-    this.mHandler.removeMessages(1);
-    hideProgressBar();
+    if (this.mHandler != null) {
+      this.mHandler.removeMessages(1);
+    }
+    this.mProgressBarWrapper.hideProgressBar();
     initNetworkErrorView(this.mRootView, new CommonHippyFragment.1(this));
   }
   
   protected void onLoadHippySuccess()
   {
-    this.mHandler.removeMessages(1);
-    hideProgressBar();
+    if (this.mHandler != null) {
+      this.mHandler.removeMessages(1);
+    }
+    this.mProgressBarWrapper.hideProgressBar();
   }
   
   public void onResume()
@@ -193,7 +211,7 @@ public class CommonHippyFragment
     if (getUserVisibleHint())
     {
       boolean bool = getParameters().getBoolean("isStatusBarDarkFont");
-      albp.a(getActivity(), bool);
+      FlymeOSStatusBarFontUtils.a(getActivity(), bool);
     }
   }
   
@@ -219,17 +237,10 @@ public class CommonHippyFragment
       paramActivity.getWindow().setFlags(paramInt, paramInt);
     }
   }
-  
-  public void startProgressBar()
-  {
-    if ((this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
-      this.mProgressBarController.a((byte)0);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.fragment.CommonHippyFragment
  * JD-Core Version:    0.7.0.1
  */

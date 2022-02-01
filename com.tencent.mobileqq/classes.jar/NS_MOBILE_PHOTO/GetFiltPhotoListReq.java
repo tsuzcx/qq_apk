@@ -9,9 +9,9 @@ public final class GetFiltPhotoListReq
 {
   public String albumid = "";
   public String attach_info = "";
-  public long batchid;
-  public long filt_richflag;
-  public long uin;
+  public long batchid = 0L;
+  public long filt_richflag = 0L;
+  public long uin = 0L;
   
   public GetFiltPhotoListReq() {}
   

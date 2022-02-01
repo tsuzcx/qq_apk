@@ -4,12 +4,13 @@ import BOSSStrategyCenter.tAdvDesc;
 import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
 import android.os.Bundle;
 import android.text.TextUtils;
-import ayrb;
-import bcvz;
-import bkyz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.mobileqq.servlet.QzoneGetQbossServlet;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.pm.PackageUtil;
+import cooperation.qzone.util.QZLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,11 +23,11 @@ import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 
 public class QzoneQbossHelper
-  extends ayrb
+  extends QZoneObserver
 {
   public static final String TAG = "QzoneQbossHelper";
-  private static QzoneQbossHelper sInstance;
-  private WeakReference<IQbossCallback> mQbossCallback;
+  private static QzoneQbossHelper sInstance = null;
+  private WeakReference<IQbossCallback> mQbossCallback = null;
   
   public static void filterQbossAdvRsp(MobileQbossAdvRsp paramMobileQbossAdvRsp)
   {
@@ -58,31 +59,51 @@ public class QzoneQbossHelper
   
   public static Boolean findPkgInstalled(String paramString)
   {
-    return Boolean.valueOf(bkyz.a(BaseApplicationImpl.getContext(), paramString));
+    boolean bool = PackageUtil.a(BaseApplicationImpl.getContext(), paramString);
+    StringBuilder localStringBuilder;
+    if (QZLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder().append("QBoss filter : ");
+      if (!bool) {
+        break label62;
+      }
+    }
+    label62:
+    for (String str = "";; str = "not ")
+    {
+      QZLog.d("QzoneQbossHelper", 4, str + "install PkgName = " + paramString);
+      return Boolean.valueOf(bool);
+    }
   }
   
   public static String findPkgNameInJson(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
+    Object localObject = null;
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = Pattern.compile("\"download_app_package_name\":\"[^\"]*").matcher(paramString);
-      localObject1 = localObject2;
       if (paramString.find())
       {
-        paramString = paramString.group(0).split("\"");
-        localObject1 = localObject2;
-        if (paramString.length == 4)
+        String[] arrayOfString = paramString.group(0).split("\"");
+        if (arrayOfString.length == 4)
         {
-          localObject1 = localObject2;
-          if (paramString[3].length() > 0) {
-            localObject1 = paramString[3];
+          if (QZLog.isDevelopLevel()) {
+            QZLog.d("QzoneQbossHelper", 4, "QBoss filter : find PkgName in json");
+          }
+          paramString = localObject;
+          if (arrayOfString[3].length() > 0) {
+            paramString = arrayOfString[3];
           }
         }
       }
     }
-    return localObject1;
+    do
+    {
+      return paramString;
+      paramString = localObject;
+    } while (!QZLog.isDevelopLevel());
+    QZLog.d("QzoneQbossHelper", 4, "QBoss filter : not find PkgName in json");
+    return null;
   }
   
   public static QzoneQbossHelper getInstance()
@@ -107,7 +128,7 @@ public class QzoneQbossHelper
   {
     this.mQbossCallback = new WeakReference(paramIQbossCallback);
     paramIQbossCallback = BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bcvz.class);
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), QzoneGetQbossServlet.class);
     localNewIntent.putExtra("selfuin", Long.parseLong(paramIQbossCallback.getAccount()));
     localNewIntent.putIntegerArrayListExtra("appid", paramArrayList);
     localNewIntent.putExtra("requestType", paramString);
@@ -145,7 +166,7 @@ public class QzoneQbossHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.qboss.QzoneQbossHelper
  * JD-Core Version:    0.7.0.1
  */

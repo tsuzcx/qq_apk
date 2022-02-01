@@ -8,7 +8,7 @@ public final class mobile_sub_addfriend_type_rsp
   extends JceStruct
 {
   public String errorstring = "";
-  public int ret;
+  public int ret = 0;
   
   public mobile_sub_addfriend_type_rsp() {}
   

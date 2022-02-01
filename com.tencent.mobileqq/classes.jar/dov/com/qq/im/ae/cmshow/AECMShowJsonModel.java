@@ -2,7 +2,6 @@ package dov.com.qq.im.ae.cmshow;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bnio;
 import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -23,7 +22,7 @@ import java.util.List;
 public class AECMShowJsonModel
   implements Serializable
 {
-  private static final Type a = new bnio().getType();
+  private static final Type a = new AECMShowJsonModel.1().getType();
   public HashMap<String, Float> blendshape;
   public HashMap<String, AECMShowJsonModel.HSV> deltaHSV;
   public LinkedList<AECMShowJsonModel.Skeleton> skeleton;
@@ -101,7 +100,7 @@ public class AECMShowJsonModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.cmshow.AECMShowJsonModel
  * JD-Core Version:    0.7.0.1
  */

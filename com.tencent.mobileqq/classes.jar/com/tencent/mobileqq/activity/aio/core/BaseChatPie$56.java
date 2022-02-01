@@ -1,42 +1,51 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import admh;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.helper.AIOJubaoDialogHelper;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$56
-  implements Runnable
+  extends CardObserver
 {
   BaseChatPie$56(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
   {
-    admh.c(this.this$0.app, this.this$0.sessionInfo, false);
-    try
+    if (paramBoolean1)
     {
-      this.this$0.mContext.getResources().getDrawable(2130847121);
-      this.this$0.mContext.getResources().getDrawable(2130847122);
-      this.this$0.mContext.getResources().getDrawable(2130838057);
-      SystemAndEmojiEmoticonInfo.preload(this.this$0.app);
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      this.a.aL();
+    }
+  }
+  
+  public void onImpeach(boolean paramBoolean, String paramString)
+  {
+    ((AIOJubaoDialogHelper)this.a.a(70)).a();
+    if (paramBoolean)
+    {
+      this.a.a.showDialog(232);
       return;
     }
-    catch (Exception localException)
+    this.a.a.showDialog(233);
+  }
+  
+  public void onSetCalReactiveDays(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(this.this$0.tag, 2, "emo qvip_emoji_aio_face_new_default_fail, e=" + localException.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e(this.this$0.tag, 1, "emo qvip_emoji_aio_face oom, e= " + localOutOfMemoryError);
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
+      }
+      this.a.aL();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.56
  * JD-Core Version:    0.7.0.1
  */

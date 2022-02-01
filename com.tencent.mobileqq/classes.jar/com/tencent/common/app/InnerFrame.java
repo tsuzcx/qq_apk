@@ -14,9 +14,9 @@ import com.tencent.qphone.base.util.QLog;
 public class InnerFrame
   extends FrameLayout
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private InnerFrameManager jdField_a_of_type_ComTencentCommonAppInnerFrameManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Activity jdField_a_of_type_AndroidAppActivity = null;
+  private InnerFrameManager jdField_a_of_type_ComTencentCommonAppInnerFrameManager = null;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   
   public InnerFrame(Context paramContext)
   {

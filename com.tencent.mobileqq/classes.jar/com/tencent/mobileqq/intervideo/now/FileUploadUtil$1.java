@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.intervideo.now;
 
 import android.util.Log;
-import avum;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public final class FileUploadUtil$1
+final class FileUploadUtil$1
   implements Runnable
 {
-  public FileUploadUtil$1(String paramString1, String paramString2) {}
+  FileUploadUtil$1(String paramString1, String paramString2) {}
   
   public void run()
   {
-    avum.a(avum.a());
+    FileUploadUtil.a(FileUploadUtil.a());
     HashMap localHashMap = new HashMap();
     String str = "qiqi" + UUID.randomUUID().toString().replace("-", "");
     Log.i("upload", str);
@@ -24,7 +23,7 @@ public final class FileUploadUtil$1
     localHashMap.put("taskTargetId", this.a);
     try
     {
-      avum.a("https://upload.huayang.qq.com/cgi-bin/uploadfile", localHashMap, new File(this.b));
+      FileUploadUtil.a("https://upload.huayang.qq.com/cgi-bin/uploadfile", localHashMap, new File(this.b));
       return;
     }
     catch (Exception localException)
@@ -35,7 +34,7 @@ public final class FileUploadUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.FileUploadUtil.1
  * JD-Core Version:    0.7.0.1
  */

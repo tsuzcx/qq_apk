@@ -17,56 +17,46 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
-import anvx;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo.Builder;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ReadInJoyTopicListAdapter;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import pkh;
-import ptj;
-import pvj;
-import pvm;
-import pvq;
-import rsg;
-import rtg;
-import rvc;
-import rvd;
-import rve;
-import rvf;
-import rvg;
-import rvh;
-import rvi;
-import rvj;
-import rvy;
-import rxy;
 
 public class ReadInJoyUgcSearchTopicFragment
   extends PublicBaseFragment
   implements AdapterView.OnItemClickListener
 {
-  private static final String jdField_b_of_type_JavaLangString = anvx.a(2131712435);
+  private static final String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131712940);
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new rve(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ReadInJoyUgcSearchTopicFragment.3(this);
   private View jdField_a_of_type_AndroidViewView;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ListView jdField_a_of_type_AndroidWidgetListView;
+  private ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new ReadInJoyUgcSearchTopicFragment.1(this);
+  private ReadInJoyTopicListAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingReadInJoyTopicListAdapter;
   private String jdField_a_of_type_JavaLangString;
   private List<Map<String, CharSequence>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private pvq jdField_a_of_type_Pvq = new rvc(this);
-  private rxy jdField_a_of_type_Rxy;
   private boolean jdField_a_of_type_Boolean;
   private View jdField_b_of_type_AndroidViewView;
+  private ReadInJoyObserver jdField_b_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new ReadInJoyUgcSearchTopicFragment.2(this);
   private List<TopicInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private pvq jdField_b_of_type_Pvq = new rvd(this);
   
   private static List<Map<String, CharSequence>> a(List<TopicInfo> paramList)
   {
@@ -103,7 +93,7 @@ public class ReadInJoyUgcSearchTopicFragment
   
   private void a(View paramView)
   {
-    paramView.setOnClickListener(new rvf(this));
+    paramView.setOnClickListener(new ReadInJoyUgcSearchTopicFragment.4(this));
   }
   
   private void a(TopicInfo paramTopicInfo)
@@ -125,8 +115,8 @@ public class ReadInJoyUgcSearchTopicFragment
       this.jdField_b_of_type_JavaUtilList.addAll(paramList1);
       this.jdField_a_of_type_JavaUtilList.clear();
       this.jdField_a_of_type_JavaUtilList.addAll(a(paramList1));
-      this.jdField_a_of_type_Rxy.notifyDataSetChanged();
-      pkh.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilList, "0");
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingReadInJoyTopicListAdapter.notifyDataSetChanged();
+      ReadInJoyUtils.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilList, "0");
     }
     while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
@@ -134,13 +124,13 @@ public class ReadInJoyUgcSearchTopicFragment
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_b_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.clear();
-    if (bmhv.o())
+    if (ReadInJoyHelper.p())
     {
       this.jdField_b_of_type_JavaUtilList.add(TopicInfo.a().a(true).b(this.jdField_a_of_type_Long).c("https://sqimg.qq.com/qq_product_operations/kan/images/topic-cover-default.jpg").d("https://sqimg.qq.com/qq_product_operations/kan/images/topic-head-default.jpg").b(jdField_b_of_type_JavaLangString).a(this.jdField_a_of_type_JavaLangString).a());
       this.jdField_a_of_type_JavaUtilList.add(a());
     }
-    this.jdField_a_of_type_Rxy.notifyDataSetChanged();
-    pkh.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilList, "1");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingReadInJoyTopicListAdapter.notifyDataSetChanged();
+    ReadInJoyUtils.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilList, "1");
   }
   
   private void b()
@@ -150,36 +140,36 @@ public class ReadInJoyUgcSearchTopicFragment
   
   private void b(View paramView)
   {
-    paramView.findViewById(2131364141).setOnClickListener(new rvg(this));
+    paramView.findViewById(2131364248).setOnClickListener(new ReadInJoyUgcSearchTopicFragment.5(this));
   }
   
   private void c(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)paramView.findViewById(2131370241));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)paramView.findViewById(2131370513));
     this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams().height = -1;
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370223);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131366179);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370495);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131366350);
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnTouchListener(new rvh(this));
-    this.jdField_a_of_type_Rxy = new rxy(getActivity(), this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Rxy.setViewBinder(new rvi(this));
-    paramView = LayoutInflater.from(getActivity()).inflate(2131560341, this.jdField_a_of_type_AndroidWidgetListView, false);
+    this.jdField_a_of_type_AndroidWidgetListView.setOnTouchListener(new ReadInJoyUgcSearchTopicFragment.6(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingReadInJoyTopicListAdapter = new ReadInJoyTopicListAdapter(getActivity(), this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingReadInJoyTopicListAdapter.setViewBinder(new ReadInJoyUgcSearchTopicFragment.7(this));
+    paramView = LayoutInflater.from(getActivity()).inflate(2131560410, this.jdField_a_of_type_AndroidWidgetListView, false);
     this.jdField_a_of_type_AndroidWidgetListView.addFooterView(paramView, null, false);
     this.jdField_a_of_type_AndroidWidgetListView.setDivider(null);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Rxy);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingReadInJoyTopicListAdapter);
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private void d(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131378485));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131717853);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new rvj(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131378916));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131718354);
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new ReadInJoyUgcSearchTopicFragment.8(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
   
-  public void a(int paramInt, CharSequence paramCharSequence)
+  protected void a(int paramInt, CharSequence paramCharSequence)
   {
     ThreadManager.getUIHandler().post(new ReadInJoyUgcSearchTopicFragment.9(this, paramInt, paramCharSequence));
   }
@@ -189,7 +179,7 @@ public class ReadInJoyUgcSearchTopicFragment
     paramActivity.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     paramActivity.getWindow().requestFeature(1);
     paramActivity.getWindow().setSoftInputMode(4);
-    paramActivity.overridePendingTransition(2130772039, 0);
+    paramActivity.overridePendingTransition(2130772043, 0);
   }
   
   public boolean isWrapContent()
@@ -199,10 +189,10 @@ public class ReadInJoyUgcSearchTopicFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = pkh.a();
-    pvm.a().a(this.jdField_a_of_type_Pvq);
-    pvm.a().a(this.jdField_b_of_type_Pvq);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560346, paramViewGroup, false);
+    this.jdField_a_of_type_Long = ReadInJoyUtils.a();
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560416, paramViewGroup, false);
     d(paramLayoutInflater);
     c(paramLayoutInflater);
     b(paramLayoutInflater);
@@ -211,21 +201,21 @@ public class ReadInJoyUgcSearchTopicFragment
     if (paramViewGroup != null) {
       this.jdField_a_of_type_Int = paramViewGroup.getInt("searchTopicFrom");
     }
-    ptj.a.a(getActivity());
+    RIJDtReportHelper.a.a(getActivity());
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroyView()
   {
-    pvm.a().b(this.jdField_a_of_type_Pvq);
-    pvm.a().b(this.jdField_b_of_type_Pvq);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
     super.onDestroyView();
   }
   
   public void onFinish()
   {
-    getActivity().overridePendingTransition(0, 2130772042);
+    getActivity().overridePendingTransition(0, 2130772046);
     super.onFinish();
   }
   
@@ -243,7 +233,7 @@ public class ReadInJoyUgcSearchTopicFragment
       if ((localTopicInfo1 != null) && (localTopicInfo1.a()))
       {
         this.jdField_a_of_type_Boolean = true;
-        pvj.a().a(localTopicInfo1);
+        ReadInJoyLogicEngine.a().a(localTopicInfo1);
         break;
       }
       a((TopicInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt));
@@ -251,8 +241,8 @@ public class ReadInJoyUgcSearchTopicFragment
       if (localTopicInfo1 != null) {}
       for (long l = localTopicInfo2.a();; l = -1L)
       {
-        pkh.a("0X800980A", this.jdField_a_of_type_Int, l, "0");
-        rtg.a(String.valueOf(l), "1");
+        ReadInJoyUtils.a("0X800980A", this.jdField_a_of_type_Int, l, "0");
+        RIJDeliverUGCReportUtil.a(String.valueOf(l), "1");
         break;
       }
     }
@@ -261,12 +251,12 @@ public class ReadInJoyUgcSearchTopicFragment
   public void onResume()
   {
     super.onResume();
-    rvy.a(this);
+    Utils.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment
  * JD-Core Version:    0.7.0.1
  */

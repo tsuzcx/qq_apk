@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk;
 
 public final class R$xml
 {
-  public static final int mini_sdk_permissions = 2131886085;
+  public static final int mini_sdk_permissions = 2131886087;
 }
 
 

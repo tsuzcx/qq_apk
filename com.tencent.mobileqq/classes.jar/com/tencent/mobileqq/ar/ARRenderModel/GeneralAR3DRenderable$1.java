@@ -1,30 +1,28 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apbp;
-import apef;
-import apes;
+import com.tencent.mobileqq.ar.ARMusicController;
 
-public class GeneralAR3DRenderable$1
+class GeneralAR3DRenderable$1
   implements Runnable
 {
-  public GeneralAR3DRenderable$1(apes paramapes) {}
+  GeneralAR3DRenderable$1(GeneralAR3DRenderable paramGeneralAR3DRenderable) {}
   
   public void run()
   {
-    if (apes.a(this.this$0) != 9) {}
+    if (GeneralAR3DRenderable.a(this.this$0) != 9) {}
     do
     {
       return;
-      if (apes.a(this.this$0) != null) {
-        apes.a(this.this$0).b(0, 1);
+      if (GeneralAR3DRenderable.a(this.this$0) != null) {
+        GeneralAR3DRenderable.a(this.this$0).b(0, 1);
       }
-    } while (apes.a(this.this$0) == null);
-    apes.a(this.this$0).a();
+    } while (GeneralAR3DRenderable.a(this.this$0) == null);
+    GeneralAR3DRenderable.a(this.this$0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.GeneralAR3DRenderable.1
  * JD-Core Version:    0.7.0.1
  */

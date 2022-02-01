@@ -1,22 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui;
 
-import android.view.View;
-import android.view.Window;
-import boxn;
-
-public class EditTextDialog$10
+class EditTextDialog$10
   implements Runnable
 {
-  public EditTextDialog$10(boxn paramboxn) {}
+  EditTextDialog$10(EditTextDialog paramEditTextDialog, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.this$0.getWindow().getDecorView().setSystemUiVisibility(4);
+    this.this$0.a.b(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.10
  * JD-Core Version:    0.7.0.1
  */

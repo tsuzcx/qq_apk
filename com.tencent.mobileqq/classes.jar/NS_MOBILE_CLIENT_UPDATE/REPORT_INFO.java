@@ -11,8 +11,8 @@ public final class REPORT_INFO
   extends JceStruct
 {
   static ArrayList<Map<String, String>> cache_info = new ArrayList();
-  public ArrayList<Map<String, String>> info;
-  public int subtable;
+  public ArrayList<Map<String, String>> info = null;
+  public int subtable = 0;
   
   static
   {

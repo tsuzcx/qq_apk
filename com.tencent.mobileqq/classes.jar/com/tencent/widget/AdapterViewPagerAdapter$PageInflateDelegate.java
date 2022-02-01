@@ -6,9 +6,9 @@ import android.widget.AdapterView;
 
 public abstract interface AdapterViewPagerAdapter$PageInflateDelegate
 {
-  public abstract void deflate(ViewGroup paramViewGroup, View paramView, int paramInt);
+  public abstract View a(ViewGroup paramViewGroup, AdapterView paramAdapterView, int paramInt);
   
-  public abstract View inflate(ViewGroup paramViewGroup, AdapterView paramAdapterView, int paramInt);
+  public abstract void a(ViewGroup paramViewGroup, View paramView, int paramInt);
 }
 
 

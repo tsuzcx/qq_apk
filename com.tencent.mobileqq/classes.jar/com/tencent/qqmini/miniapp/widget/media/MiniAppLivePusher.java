@@ -2,7 +2,6 @@ package com.tencent.qqmini.miniapp.widget.media;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
@@ -18,6 +17,7 @@ import com.tencent.qqmini.miniapp.R.layout;
 import com.tencent.qqmini.miniapp.widget.media.live.TXLivePusherJSAdapter;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.utils.FileUtils;
 import com.tencent.qqmini.sdk.core.utils.ScreenOffOnListener;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -27,9 +27,9 @@ import com.tencent.qqmini.sdk.launcher.core.utils.ApiUtil;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.utils.JarReflectUtil;
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
@@ -76,50 +76,6 @@ public class MiniAppLivePusher
     super(paramIMiniAppContext.getContext(), paramAttributeSet);
     this.mMiniAppContext = paramIMiniAppContext;
     setUpView(paramIMiniAppContext.getContext());
-  }
-  
-  private Bundle adaptJsonToBundle(JSONObject paramJSONObject)
-  {
-    Bundle localBundle = new Bundle();
-    if (paramJSONObject == null) {
-      return localBundle;
-    }
-    if (this.pusherKeyList == null)
-    {
-      QMLog.e("MiniAppLivePusher", "adaptJsonToBundle - pusherKeyList is null");
-      return localBundle;
-    }
-    Iterator localIterator = this.pusherKeyList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (isJsonForStringType(str)) {
-        try
-        {
-          localBundle.putString(str, paramJSONObject.getString(str));
-        }
-        catch (JSONException localJSONException1) {}
-      } else if (isJsonForIntType(localJSONException1)) {
-        try
-        {
-          localBundle.putInt(localJSONException1, paramJSONObject.getInt(localJSONException1));
-        }
-        catch (JSONException localJSONException2) {}
-      } else if (isJsonForBooleanType(localJSONException2)) {
-        try
-        {
-          localBundle.putBoolean(localJSONException2, paramJSONObject.getBoolean(localJSONException2));
-        }
-        catch (JSONException localJSONException3) {}
-      } else if (isJsonForDoubleType(localJSONException3)) {
-        try
-        {
-          localBundle.putDouble(localJSONException3, paramJSONObject.getDouble(localJSONException3));
-        }
-        catch (JSONException localJSONException4) {}
-      }
-    }
-    return localBundle;
   }
   
   private void doPlayBGM(String paramString, RequestEvent paramRequestEvent, JSONObject paramJSONObject)
@@ -209,13 +165,13 @@ public class MiniAppLivePusher
         }
         catch (JSONException localJSONException1)
         {
-          break label240;
+          break label239;
         }
         localJSONException2 = localJSONException2;
         paramJSONObject = (JSONObject)localObject;
         localObject = localJSONException2;
       }
-      label240:
+      label239:
       continue;
       if (i == -1)
       {
@@ -287,8 +243,8 @@ public class MiniAppLivePusher
     initPusherKeyList();
     this.livePusherJSAdapter = new TXLivePusherJSAdapter(getContext());
     this.livePusherJSAdapter.initLivePusher(this.tXCloudVideoView, paramJSONObject);
-    this.livePusherJSAdapter.setBGMNotifyListener(new MiniAppLivePusher.2(this, paramRequestEvent));
-    this.livePusherJSAdapter.setPushListener(new MiniAppLivePusher.3(this, paramRequestEvent));
+    setBGMNotifyListener(paramRequestEvent);
+    setPushListener(paramRequestEvent);
   }
   
   private void initPusherKeyList()
@@ -353,52 +309,127 @@ public class MiniAppLivePusher
     new FrameLayout.LayoutParams(DisplayUtil.dip2px(this.context, 100.0F), DisplayUtil.dip2px(this.context, 100.0F)).gravity = 17;
   }
   
-  private boolean isJsonForBooleanType(String paramString)
+  private void onDownloadSucceed(String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject, String paramString5)
   {
-    return (paramString.equalsIgnoreCase("hide")) || (paramString.equalsIgnoreCase("autopush")) || (paramString.equalsIgnoreCase("muted")) || (paramString.equalsIgnoreCase("enableCamera")) || (paramString.equalsIgnoreCase("enableMic")) || (paramString.equalsIgnoreCase("enableAGC")) || (paramString.equalsIgnoreCase("enableANS")) || (paramString.equalsIgnoreCase("backgroundMute")) || (paramString.equalsIgnoreCase("zoom")) || (paramString.equalsIgnoreCase("needEvent")) || (paramString.equalsIgnoreCase("needBGMEvent")) || (paramString.equalsIgnoreCase("debug")) || (paramString.equalsIgnoreCase("mirror")) || (paramString.equalsIgnoreCase("remoteMirror")) || (paramString.equalsIgnoreCase("enableEarMonitor"));
+    label334:
+    for (;;)
+    {
+      try
+      {
+        QMLog.e("MiniAppLivePusher", "playBGM - download onDownloadSucceed:" + paramString2);
+        if (this.needToStopDownloadBGM)
+        {
+          QMLog.e("MiniAppLivePusher", "playBGM - download onDownloadSucceed but needToStopDownloadBGM");
+          return;
+        }
+        if (TextUtils.isEmpty(paramString3)) {
+          break;
+        }
+        paramString2 = new File(paramString3);
+        if ((paramString2.exists()) || (TextUtils.isEmpty(paramString1))) {
+          break label334;
+        }
+        QMLog.e("MiniAppLivePusher", "file no exists, try to copy again.");
+      }
+      catch (JSONException paramString1)
+      {
+        File localFile;
+        label248:
+        paramString1.printStackTrace();
+        return;
+      }
+      for (;;)
+      {
+        try
+        {
+          localFile = new File(paramString1);
+          localObject = paramString2;
+          if (localFile.exists())
+          {
+            localObject = paramString2;
+            if (localFile.isFile())
+            {
+              localObject = paramString2;
+              if (localFile.length() > 0L)
+              {
+                QMLog.w("MiniAppLivePusher", "download Succeed but target file not exists, try copy from download tmp file:" + paramString1 + ", length:" + localFile.length() + ", to:" + paramString3);
+                localObject = FileUtils.createFile(paramString3);
+                paramString2 = (String)localObject;
+              }
+            }
+          }
+        }
+        catch (Throwable localThrowable2)
+        {
+          continue;
+        }
+        try
+        {
+          if ((!FileUtils.copyFile(localFile, paramString2)) || (!paramString2.exists()) || (paramString2.length() != localFile.length())) {
+            continue;
+          }
+          QMLog.i("MiniAppLivePusher", "copy from download tmp file:" + paramString1 + " success");
+          localObject = paramString2;
+          paramString2 = (String)localObject;
+        }
+        catch (Throwable localThrowable1)
+        {
+          QMLog.e("MiniAppLivePusher", "try copy from download tmp file exception! tmp file:" + paramString1, localThrowable1);
+          break label248;
+        }
+      }
+      this.downloadMap.remove(paramString4);
+      operateLivePusher(paramString1, paramString3, paramJSONObject, paramString5, paramString2);
+      return;
+      Object localObject = paramString2;
+      if (paramString2.exists())
+      {
+        paramString2.delete();
+        localObject = paramString2;
+      }
+    }
   }
   
-  private boolean isJsonForDoubleType(String paramString)
+  private void operateLivePusher(String paramString1, String paramString2, JSONObject paramJSONObject, String paramString3, File paramFile)
   {
-    return (paramString.equalsIgnoreCase("watermarkLeft")) || (paramString.equalsIgnoreCase("watermarkTop")) || (paramString.equalsIgnoreCase("watermarkWidth"));
-  }
-  
-  private boolean isJsonForIntType(String paramString)
-  {
-    return (paramString.equalsIgnoreCase("mode")) || (paramString.equalsIgnoreCase("focusMode")) || (paramString.equalsIgnoreCase("beauty")) || (paramString.equalsIgnoreCase("whiteness")) || (paramString.equalsIgnoreCase("aspect")) || (paramString.equalsIgnoreCase("videoWidth")) || (paramString.equalsIgnoreCase("videoHeight")) || (paramString.equalsIgnoreCase("audioReverbType")) || (paramString.equalsIgnoreCase("minBitrate")) || (paramString.equalsIgnoreCase("maxBitrate"));
-  }
-  
-  private boolean isJsonForStringType(String paramString)
-  {
-    return (paramString.equalsIgnoreCase("pushUrl")) || (paramString.equalsIgnoreCase("orientation")) || (paramString.equalsIgnoreCase("backgroundImage")) || (paramString.equalsIgnoreCase("audioQuality")) || (paramString.equalsIgnoreCase("watermarkImage")) || (paramString.equalsIgnoreCase("audioVolumeType")) || (paramString.equalsIgnoreCase("localMirror")) || (paramString.equalsIgnoreCase("devicePosition"));
+    if ((paramFile.exists()) && (paramFile.canRead()))
+    {
+      if (QMLog.isColorLevel()) {
+        QMLog.d("MiniAppLivePusher", "download success BGMFilePath:" + paramString2);
+      }
+      paramJSONObject.put("BGMFilePath", paramString2);
+      this.livePusherJSAdapter.operateLivePusher(paramString3, paramJSONObject);
+      return;
+    }
+    QMLog.d("MiniAppLivePusher", "download failed, filepath not exists, tmpFile:" + paramString1);
   }
   
   /* Error */
-  private static void saveJpeg(android.graphics.Bitmap paramBitmap, java.io.File paramFile)
+  private static void saveJpeg(android.graphics.Bitmap paramBitmap, File paramFile)
   {
     // Byte code:
-    //   0: new 582	java/io/BufferedOutputStream
+    //   0: new 597	java/io/BufferedOutputStream
     //   3: dup
-    //   4: new 584	java/io/FileOutputStream
+    //   4: new 599	java/io/FileOutputStream
     //   7: dup
     //   8: aload_1
-    //   9: invokespecial 587	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 590	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   9: invokespecial 602	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 605	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   15: astore_1
     //   16: aload_0
-    //   17: getstatic 596	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   17: getstatic 611	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   20: bipush 100
     //   22: bipush 100
-    //   24: invokestatic 602	java/lang/Math:min	(II)I
+    //   24: invokestatic 617	java/lang/Math:min	(II)I
     //   27: aload_1
-    //   28: invokevirtual 608	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   28: invokevirtual 623	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   31: pop
     //   32: aload_1
-    //   33: invokevirtual 611	java/io/BufferedOutputStream:flush	()V
+    //   33: invokevirtual 626	java/io/BufferedOutputStream:flush	()V
     //   36: aload_1
     //   37: ifnull +7 -> 44
     //   40: aload_1
-    //   41: invokevirtual 614	java/io/BufferedOutputStream:close	()V
+    //   41: invokevirtual 629	java/io/BufferedOutputStream:close	()V
     //   44: return
     //   45: astore_0
     //   46: aconst_null
@@ -406,7 +437,7 @@ public class MiniAppLivePusher
     //   48: aload_1
     //   49: ifnull +7 -> 56
     //   52: aload_1
-    //   53: invokevirtual 614	java/io/BufferedOutputStream:close	()V
+    //   53: invokevirtual 629	java/io/BufferedOutputStream:close	()V
     //   56: aload_0
     //   57: athrow
     //   58: astore_0
@@ -418,13 +449,23 @@ public class MiniAppLivePusher
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	68	0	paramBitmap	android.graphics.Bitmap
-    //   0	68	1	paramFile	java.io.File
+    //   0	68	1	paramFile	File
     // Exception table:
     //   from	to	target	type
     //   0	16	45	finally
     //   40	44	58	java/lang/Exception
     //   52	56	60	java/lang/Exception
     //   16	36	64	finally
+  }
+  
+  private void setBGMNotifyListener(RequestEvent paramRequestEvent)
+  {
+    this.livePusherJSAdapter.setBGMNotifyListener(new MiniAppLivePusher.3(this, paramRequestEvent));
+  }
+  
+  private void setPushListener(RequestEvent paramRequestEvent)
+  {
+    this.livePusherJSAdapter.setPushListener(new MiniAppLivePusher.2(this, paramRequestEvent));
   }
   
   private void setUpView(Context paramContext)
@@ -547,7 +588,7 @@ public class MiniAppLivePusher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppLivePusher
  * JD-Core Version:    0.7.0.1
  */

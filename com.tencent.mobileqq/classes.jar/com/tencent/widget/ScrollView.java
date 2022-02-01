@@ -27,10 +27,6 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import blbm;
-import bldq;
-import blfb;
-import blfc;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
@@ -50,17 +46,17 @@ public class ScrollView
   public static final int SCROLL_FLAG_DEFAULT = 0;
   public static final int SCROLL_FLAG_DISABLE_SCROLL_TOP = 1;
   private int mActivePointerId = -1;
-  private View mChildToScrollTo;
+  private View mChildToScrollTo = null;
   private Drawable mContentBackgroundDrawable;
   int mCurScrollState = 0;
-  private boolean mEdgeEffectEnabled;
-  private blbm mEdgeGlowBottom;
-  private blbm mEdgeGlowTop;
+  private boolean mEdgeEffectEnabled = false;
+  private EdgeEffect mEdgeGlowBottom;
+  private EdgeEffect mEdgeGlowTop;
   @ViewDebug.ExportedProperty(category="layout")
   private boolean mFillViewport;
-  private Object mFlingStrictSpan;
+  private Object mFlingStrictSpan = null;
   private Drawable mForeground;
-  private boolean mIsBeingDragged;
+  private boolean mIsBeingDragged = false;
   private boolean mIsLayoutDirty = true;
   boolean mLastIsFromCompute;
   private float mLastMotionY;
@@ -71,11 +67,11 @@ public class ScrollView
   private int mOverScrollMode;
   protected int mOverflingDistance;
   protected int mOverscrollDistance;
-  blfb mScrollChangeCompatListener;
+  ScrollView.OnScrollChangeListenerCompat mScrollChangeCompatListener;
   public int mScrollFlag = 0;
-  blfc mScrollListener;
-  private Object mScrollStrictSpan;
-  public bldq mScroller;
+  ScrollView.OnScrollStateChangedListener mScrollListener;
+  private Object mScrollStrictSpan = null;
+  public OverScroller mScroller;
   private boolean mSmoothScrollingEnabled = true;
   private final Rect mTempRect = new Rect();
   private int mTouchSlop;
@@ -151,13 +147,13 @@ public class ScrollView
     recycleVelocityTracker();
     if (this.mEdgeGlowTop != null)
     {
-      this.mEdgeGlowTop.b();
-      this.mEdgeGlowBottom.b();
+      this.mEdgeGlowTop.onRelease();
+      this.mEdgeGlowBottom.onRelease();
     }
     if (this.mScrollStrictSpan != null) {
       finishSpan(this.mScrollStrictSpan);
     }
-    if (this.mScroller.a())
+    if (this.mScroller.isFinished())
     {
       updateScrollState(0);
       return;
@@ -175,7 +171,7 @@ public class ScrollView
     }
     try
     {
-      if (VersionUtils.isGingerBread()) {
+      if (VersionUtils.c()) {
         localObject1 = StrictMode.class.getMethod("enterCriticalSpan", new Class[] { String.class }).invoke(null, new Object[] { paramString });
       }
       return localObject1;
@@ -348,7 +344,7 @@ public class ScrollView
   
   private void initScrollView()
   {
-    this.mScroller = new bldq(getContext());
+    this.mScroller = new OverScroller(getContext());
     setFocusable(true);
     setDescendantFocusability(262144);
     setWillNotDraw(false);
@@ -360,7 +356,7 @@ public class ScrollView
     this.mOverflingDistance = i;
     this.mOverscrollDistance = i;
     setOverScrollMode(2);
-    this.mScroller.a(0.005F);
+    this.mScroller.setFriction(0.005F);
   }
   
   private void initVelocityTrackerIfNotExists()
@@ -597,12 +593,12 @@ public class ScrollView
   
   public void computeScroll()
   {
-    if (this.mScroller.b())
+    if (this.mScroller.computeScrollOffset())
     {
       int j = this.mScrollX;
       int k = this.mScrollY;
-      int m = this.mScroller.a();
-      int n = this.mScroller.b();
+      int m = this.mScroller.getCurrX();
+      int n = this.mScroller.getCurrY();
       int i1;
       int i;
       if ((j != m) || (k != n))
@@ -624,7 +620,7 @@ public class ScrollView
           if ((this.mEdgeGlowTop == null) || (n >= 0) || (k < 0)) {
             break label188;
           }
-          this.mEdgeGlowTop.a((int)this.mScroller.a());
+          this.mEdgeGlowTop.onAbsorb((int)this.mScroller.getCurrVelocity());
         }
       }
       for (;;)
@@ -640,7 +636,7 @@ public class ScrollView
         break label113;
         label188:
         if ((this.mEdgeGlowTop != null) && (n > i1) && (k <= i1)) {
-          this.mEdgeGlowBottom.a((int)this.mScroller.a());
+          this.mEdgeGlowBottom.onAbsorb((int)this.mScroller.getCurrVelocity());
         }
       }
     }
@@ -692,12 +688,12 @@ public class ScrollView
     }
   }
   
-  protected int computeVerticalScrollOffset()
+  public int computeVerticalScrollOffset()
   {
     return Math.max(0, super.computeVerticalScrollOffset());
   }
   
-  protected int computeVerticalScrollRange()
+  public int computeVerticalScrollRange()
   {
     int j = getChildCount();
     int i = getHeight() - this.mPaddingBottom - this.mPaddingTop;
@@ -718,7 +714,7 @@ public class ScrollView
     return j + (k - m);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     Drawable localDrawable;
     int k;
@@ -784,28 +780,28 @@ public class ScrollView
       int j;
       int k;
       int m;
-      if (!this.mEdgeGlowTop.a())
+      if (!this.mEdgeGlowTop.isFinished())
       {
         j = paramCanvas.save();
         k = getWidth();
         m = this.mPaddingLeft;
         int n = this.mPaddingRight;
         paramCanvas.translate(this.mPaddingLeft, Math.min(0, i));
-        this.mEdgeGlowTop.a(k - m - n, getHeight());
-        if (this.mEdgeGlowTop.a(paramCanvas)) {
+        this.mEdgeGlowTop.setSize(k - m - n, getHeight());
+        if (this.mEdgeGlowTop.draw(paramCanvas)) {
           invalidate();
         }
         paramCanvas.restoreToCount(j);
       }
-      if (!this.mEdgeGlowBottom.a())
+      if (!this.mEdgeGlowBottom.isFinished())
       {
         j = paramCanvas.save();
         k = getWidth() - this.mPaddingLeft - this.mPaddingRight;
         m = getHeight();
         paramCanvas.translate(-k + this.mPaddingLeft, Math.max(getScrollRange(), i) + m);
         paramCanvas.rotate(180.0F, k, 0.0F);
-        this.mEdgeGlowBottom.a(k, m);
-        if (this.mEdgeGlowBottom.a(paramCanvas)) {
+        this.mEdgeGlowBottom.setSize(k, m);
+        if (this.mEdgeGlowBottom.draw(paramCanvas)) {
           invalidate();
         }
         paramCanvas.restoreToCount(j);
@@ -880,7 +876,7 @@ public class ScrollView
     {
       int i = getHeight() - this.mPaddingBottom - this.mPaddingTop;
       int j = getChildAt(0).getHeight();
-      this.mScroller.a(this.mScrollX, this.mScrollY, 0, paramInt, 0, 0, 0, Math.max(0, j - i), 0, i / 4);
+      this.mScroller.fling(this.mScrollX, this.mScrollY, 0, paramInt, 0, 0, 0, Math.max(0, j - i), 0, i / 4);
       if ((paramInt <= 0) || (this.mFlingStrictSpan == null)) {
         this.mFlingStrictSpan = enterCriticalSpan("ScrollView-fling");
       }
@@ -910,7 +906,7 @@ public class ScrollView
     }
   }
   
-  protected float getBottomFadingEdgeStrength()
+  public float getBottomFadingEdgeStrength()
   {
     return 0.0F;
   }
@@ -925,12 +921,12 @@ public class ScrollView
     return this.mOverScrollMode;
   }
   
-  public bldq getOverScroller()
+  public OverScroller getOverScroller()
   {
     return this.mScroller;
   }
   
-  protected float getTopFadingEdgeStrength()
+  public float getTopFadingEdgeStrength()
   {
     return 0.0F;
   }
@@ -938,7 +934,7 @@ public class ScrollView
   @TargetApi(11)
   protected void invalidateParentIfNeeded()
   {
-    if ((VersionUtils.isHoneycomb()) && (isHardwareAccelerated()) && ((this.mParent instanceof View))) {
+    if ((VersionUtils.e()) && (isHardwareAccelerated()) && ((this.mParent instanceof View))) {
       ((View)this.mParent).invalidate();
     }
   }
@@ -951,7 +947,7 @@ public class ScrollView
   public boolean isScrollFinished()
   {
     if (this.mScroller != null) {
-      return this.mScroller.a();
+      return this.mScroller.isFinished();
     }
     return true;
   }
@@ -961,13 +957,13 @@ public class ScrollView
     return this.mSmoothScrollingEnabled;
   }
   
-  protected void measureChild(View paramView, int paramInt1, int paramInt2)
+  public void measureChild(View paramView, int paramInt1, int paramInt2)
   {
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
     paramView.measure(getChildMeasureSpec(paramInt1, this.mPaddingLeft + this.mPaddingRight, localLayoutParams.width), View.MeasureSpec.makeMeasureSpec(0, 0));
   }
   
-  protected void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
     paramInt1 = getChildMeasureSpec(paramInt1, this.mPaddingLeft + this.mPaddingRight + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin + paramInt2, localMarginLayoutParams.width);
@@ -975,7 +971,7 @@ public class ScrollView
     paramView.measure(paramInt1, View.MeasureSpec.makeMeasureSpec(localMarginLayoutParams.bottomMargin + paramInt2, 0));
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.mScrollStrictSpan != null) {
@@ -1105,7 +1101,7 @@ public class ScrollView
               this.mActivePointerId = paramMotionEvent.getPointerId(0);
               initOrResetVelocityTracker();
               this.mVelocityTracker.addMovement(paramMotionEvent);
-              if (!this.mScroller.a()) {
+              if (!this.mScroller.isFinished()) {
                 bool = true;
               }
               this.mIsBeingDragged = bool;
@@ -1116,7 +1112,7 @@ public class ScrollView
                 this.mIsBeingDragged = false;
                 this.mActivePointerId = -1;
                 recycleVelocityTracker();
-                if (this.mScroller.a(this.mScrollX, this.mScrollY, 0, 0, 0, getScrollRange()))
+                if (this.mScroller.springBack(this.mScrollX, this.mScrollY, 0, 0, 0, getScrollRange()))
                 {
                   invalidate();
                   continue;
@@ -1130,7 +1126,7 @@ public class ScrollView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.mIsLayoutDirty = false;
@@ -1141,7 +1137,7 @@ public class ScrollView
     scrollTo(this.mScrollX, this.mScrollY);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (!this.mFillViewport) {}
@@ -1159,13 +1155,13 @@ public class ScrollView
     localView.measure(getChildMeasureSpec(paramInt1, this.mPaddingLeft + this.mPaddingRight, localLayoutParams.width), View.MeasureSpec.makeMeasureSpec(paramInt2 - this.mPaddingTop - this.mPaddingBottom, 1073741824));
   }
   
-  protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super.scrollTo(paramInt1, paramInt2);
     awakenScrollBars();
   }
   
-  protected boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
+  public boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
   {
     int i;
     if (paramInt == 2) {
@@ -1201,15 +1197,15 @@ public class ScrollView
     }
   }
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mScrollChangeCompatListener != null) {
-      this.mScrollChangeCompatListener.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+      this.mScrollChangeCompatListener.onScrollChange(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     View localView = findFocus();
@@ -1250,7 +1246,7 @@ public class ScrollView
           {
             return bool;
           } while (getChildCount() == 0);
-          if (!this.mScroller.a()) {}
+          if (!this.mScroller.isFinished()) {}
           for (bool = true;; bool = false)
           {
             this.mIsBeingDragged = bool;
@@ -1261,9 +1257,9 @@ public class ScrollView
                 localViewParent.requestDisallowInterceptTouchEvent(true);
               }
             }
-            if (!this.mScroller.a())
+            if (!this.mScroller.isFinished())
             {
-              this.mScroller.a();
+              this.mScroller.abortAnimation();
               if (this.mFlingStrictSpan != null) {
                 finishSpan(this.mFlingStrictSpan);
               }
@@ -1328,12 +1324,12 @@ public class ScrollView
         if (j >= 0) {
           break label524;
         }
-        this.mEdgeGlowTop.a(i / getHeight());
-        if (!this.mEdgeGlowBottom.a()) {
-          this.mEdgeGlowBottom.b();
+        this.mEdgeGlowTop.onPull(i / getHeight());
+        if (!this.mEdgeGlowBottom.isFinished()) {
+          this.mEdgeGlowBottom.onRelease();
         }
       }
-      while ((this.mEdgeGlowTop != null) && ((!this.mEdgeGlowTop.a()) || (!this.mEdgeGlowBottom.a())))
+      while ((this.mEdgeGlowTop != null) && ((!this.mEdgeGlowTop.isFinished()) || (!this.mEdgeGlowBottom.isFinished())))
       {
         invalidate();
         break;
@@ -1345,9 +1341,9 @@ public class ScrollView
         break label387;
         if (j > k)
         {
-          this.mEdgeGlowBottom.a(i / getHeight());
-          if (!this.mEdgeGlowTop.a()) {
-            this.mEdgeGlowTop.b();
+          this.mEdgeGlowBottom.onPull(i / getHeight());
+          if (!this.mEdgeGlowTop.isFinished()) {
+            this.mEdgeGlowTop.onRelease();
           }
         }
       }
@@ -1356,7 +1352,7 @@ public class ScrollView
       }
       paramMotionEvent = this.mVelocityTracker;
       paramMotionEvent.computeCurrentVelocity(1000, this.mMaximumVelocity);
-      if (VersionUtils.isrFroyo())
+      if (VersionUtils.b())
       {
         f = paramMotionEvent.getYVelocity(this.mActivePointerId);
         label605:
@@ -1376,14 +1372,14 @@ public class ScrollView
         break;
         f = paramMotionEvent.getYVelocity();
         break label605;
-        if (this.mScroller.a(this.mScrollX, this.mScrollY, 0, 0, 0, getScrollRange())) {
+        if (this.mScroller.springBack(this.mScrollX, this.mScrollY, 0, 0, 0, getScrollRange())) {
           invalidate();
         }
       }
       if ((!this.mIsBeingDragged) || (getChildCount() <= 0)) {
         break;
       }
-      if (this.mScroller.a(this.mScrollX, this.mScrollY, 0, 0, 0, this.mOverscrollDistance)) {
+      if (this.mScroller.springBack(this.mScrollX, this.mScrollY, 0, 0, 0, this.mOverscrollDistance)) {
         invalidate();
       }
       this.mActivePointerId = -1;
@@ -1408,7 +1404,7 @@ public class ScrollView
     }
   }
   
-  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     int k = this.mOverScrollMode;
     int i;
@@ -1604,7 +1600,7 @@ public class ScrollView
       return;
     }
     this.mContentBackgroundDrawable = paramDrawable;
-    this.mOverScrollHeaderShadow = getResources().getDrawable(2130840603);
+    this.mOverScrollHeaderShadow = getResources().getDrawable(2130840734);
   }
   
   public void setEdgeEffectEnabled(boolean paramBoolean)
@@ -1618,10 +1614,10 @@ public class ScrollView
       if ((this.mOverScrollMode != 2) && (this.mEdgeGlowTop == null))
       {
         localContext = getContext();
-        this.mEdgeGlowTop = new blbm(localContext);
+        this.mEdgeGlowTop = new EdgeEffect(localContext);
       }
     }
-    for (this.mEdgeGlowBottom = new blbm(localContext);; this.mEdgeGlowBottom = null)
+    for (this.mEdgeGlowBottom = new EdgeEffect(localContext);; this.mEdgeGlowBottom = null)
     {
       this.mEdgeEffectEnabled = paramBoolean;
       return;
@@ -1668,14 +1664,14 @@ public class ScrollView
     }
   }
   
-  public void setOnScrollChangeListenerCompat(blfb paramblfb)
+  public void setOnScrollChangeListenerCompat(ScrollView.OnScrollChangeListenerCompat paramOnScrollChangeListenerCompat)
   {
-    this.mScrollChangeCompatListener = paramblfb;
+    this.mScrollChangeCompatListener = paramOnScrollChangeListenerCompat;
   }
   
-  public void setOnScrollStateChangedListener(blfc paramblfc)
+  public void setOnScrollStateChangedListener(ScrollView.OnScrollStateChangedListener paramOnScrollStateChangedListener)
   {
-    this.mScrollListener = paramblfc;
+    this.mScrollListener = paramOnScrollStateChangedListener;
   }
   
   public void setOverScrollMode(int paramInt)
@@ -1691,8 +1687,8 @@ public class ScrollView
     }
     try
     {
-      this.mEdgeGlowTop = new blbm(localContext);
-      this.mEdgeGlowBottom = new blbm(localContext);
+      this.mEdgeGlowTop = new EdgeEffect(localContext);
+      this.mEdgeGlowBottom = new EdgeEffect(localContext);
       label90:
       this.mOverflingDistance = 2147483647;
       this.mOverscrollDistance = 2147483647;
@@ -1733,16 +1729,16 @@ public class ScrollView
       i = Math.max(0, getChildAt(0).getHeight() - (paramInt1 - i - j));
       paramInt1 = this.mScrollY;
       paramInt2 = Math.max(0, Math.min(paramInt1 + paramInt2, i));
-      this.mScroller.a(this.mScrollX, paramInt1, 0, paramInt2 - paramInt1);
+      this.mScroller.startScroll(this.mScrollX, paramInt1, 0, paramInt2 - paramInt1);
       invalidate();
     }
     for (;;)
     {
       this.mLastScroll = AnimationUtils.currentAnimationTimeMillis();
       return;
-      if (!this.mScroller.a())
+      if (!this.mScroller.isFinished())
       {
-        this.mScroller.a();
+        this.mScroller.abortAnimation();
         if (this.mFlingStrictSpan != null) {
           finishSpan(this.mFlingStrictSpan);
         }
@@ -1770,12 +1766,12 @@ public class ScrollView
       this.mLastIsFromCompute = paramBoolean;
       this.mCurScrollState = paramInt;
     } while (this.mScrollListener == null);
-    this.mScrollListener.a(this, this.mCurScrollState, paramBoolean);
+    this.mScrollListener.onScrollStateChanged(this, this.mCurScrollState, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import adnm;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 
 class SelectMemberActivity$11
-  implements adnm
+  implements ChatActivityUtils.StartVideoListener
 {
   SelectMemberActivity$11(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onAfterStartActivity()
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c()
   {
-    this.this$0.mExitAnimation = 2;
-    this.this$0.finish();
+    this.a.e = 2;
+    this.a.finish();
   }
-  
-  public void onBeforeStartActivity() {}
-  
-  public void onCancel() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.11
  * JD-Core Version:    0.7.0.1
  */

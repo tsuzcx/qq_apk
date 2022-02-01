@@ -26,6 +26,10 @@ import com.tencent.qqmini.sdk.launcher.core.utils.ApiUtil;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.manager.MiniGameStorageExceedManager;
+import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC05115;
+import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC05116;
+import com.tencent.qqmini.sdk.report.MiniReportManager;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
 import com.tencent.qqmini.sdk.utils.DomainUtil;
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +41,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -70,6 +75,24 @@ public class FileJsPlugin
   private MiniAppFileManager fileManager;
   private ConcurrentHashMap<Integer, String> uploadMap = new ConcurrentHashMap();
   
+  private void callbackDownloadFailed(String paramString, RequestEvent paramRequestEvent, Exception paramException)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      this.downloadMap.remove(paramString);
+      localJSONObject.put("downloadTaskId", paramString);
+      localJSONObject.put("state", "fail");
+      localJSONObject.put("errMsg", "Download Failed.");
+      paramRequestEvent.jsService.evaluateSubscribeJS("onDownloadTaskStateChange", localJSONObject.toString(), 0);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QMLog.e("FileJsPlugin", "download onDownloadSucceed callback fail exception.", paramException);
+    }
+  }
+  
   private void checkUsrFileSize(int paramInt)
   {
     if (!((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).isFolderCanWrite(2, paramInt, this.mIsMiniGame, this.mMiniAppInfo, this.mMiniAppContext.getAttachedActivity())) {
@@ -97,6 +120,22 @@ public class FileJsPlugin
     }
   }
   
+  private int doUpload(RequestEvent paramRequestEvent, long paramLong, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3, String paramString4, File paramFile)
+  {
+    int i = paramRequestEvent.callbackId;
+    Object localObject = paramJSONObject.optJSONObject("header");
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("formData");
+    if (TextUtils.isEmpty(paramString2)) {}
+    for (paramJSONObject = "";; paramJSONObject = paramString2.replace("wxfile://", ""))
+    {
+      paramString2 = StringUtil.json2map((JSONObject)localObject);
+      paramString2.put("Referer", getRequestReferer());
+      localObject = StringUtil.json2map(localJSONObject);
+      ((UploaderProxy)ProxyManager.get(UploaderProxy.class)).upload(paramString1, paramString2, paramString4, paramString3, paramJSONObject, (Map)localObject, 60, new FileJsPlugin.3(this, i, paramRequestEvent, paramLong, paramFile));
+      return i;
+    }
+  }
+  
   private String execFileTask(String paramString, FileJsPlugin.FileTask paramFileTask)
   {
     if (paramString.endsWith("Sync")) {
@@ -108,72 +147,36 @@ public class FileJsPlugin
   
   public static String getOutFilePath(DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult, String paramString)
   {
-    for (;;)
+    try
     {
-      try
+      String str = MimeTypeMap.getFileExtensionFromUrl(paramString);
+      if (TextUtils.isEmpty(str))
       {
-        String str = MimeTypeMap.getFileExtensionFromUrl(paramString);
-        if (!TextUtils.isEmpty(str)) {
-          break label251;
-        }
         paramDownloadResult = (List)paramDownloadResult.headers.get("Content-Type");
-        if ((paramDownloadResult == null) || (paramDownloadResult.size() <= 0)) {
-          break label253;
-        }
-        paramDownloadResult = (String)paramDownloadResult.get(0);
-        if (TextUtils.isEmpty(paramDownloadResult)) {
-          break label251;
-        }
-        paramDownloadResult = paramDownloadResult.trim().split("/");
-        if ((paramDownloadResult.length <= 1) || (!"image".equalsIgnoreCase(paramDownloadResult[0]))) {
-          break label251;
-        }
-        paramDownloadResult = paramDownloadResult[1];
-        if ("jpeg".equalsIgnoreCase(paramDownloadResult))
+        if ((paramDownloadResult != null) && (paramDownloadResult.size() > 0)) {}
+        for (paramDownloadResult = (String)paramDownloadResult.get(0); !TextUtils.isEmpty(paramDownloadResult); paramDownloadResult = "")
         {
-          paramDownloadResult = "jpg";
+          paramDownloadResult = paramDownloadResult.trim().split("/");
+          if ((paramDownloadResult.length <= 1) || (!"image".equalsIgnoreCase(paramDownloadResult[0]))) {
+            break;
+          }
+          paramDownloadResult = getString(str, paramDownloadResult[1]);
           if (TextUtils.isEmpty(paramDownloadResult)) {
-            break label251;
+            break;
           }
           paramDownloadResult = paramString + "." + paramDownloadResult;
           if (!FileUtils.copyFile(paramString, paramDownloadResult)) {
-            break label251;
+            break;
           }
           FileUtils.deleteFile(paramString);
           return paramDownloadResult;
         }
-        if ("png".equalsIgnoreCase(paramDownloadResult))
-        {
-          paramDownloadResult = "png";
-          continue;
-        }
-        if ("gif".equalsIgnoreCase(paramDownloadResult))
-        {
-          paramDownloadResult = "gif";
-          continue;
-        }
-        if ("svg+xml".equalsIgnoreCase(paramDownloadResult))
-        {
-          paramDownloadResult = "svg";
-          continue;
-        }
-        if ("webp".equalsIgnoreCase(paramDownloadResult))
-        {
-          paramDownloadResult = "webp";
-          continue;
-        }
-        paramDownloadResult = str;
       }
-      catch (Throwable paramDownloadResult)
-      {
-        QMLog.e("FileJsPlugin", "create file extension failed! " + paramDownloadResult);
-        return paramString;
-      }
-      continue;
-      label251:
       return paramString;
-      label253:
-      paramDownloadResult = "";
+    }
+    catch (Throwable paramDownloadResult)
+    {
+      QMLog.e("FileJsPlugin", "create file extension failed! " + paramDownloadResult);
     }
   }
   
@@ -198,6 +201,27 @@ public class FileJsPlugin
       str2 = "invalidVersion";
     }
     return "https://appservice.qq.com/" + (String)localObject + "/" + str2 + "/page-frame.html";
+  }
+  
+  private static String getString(String paramString1, String paramString2)
+  {
+    if ("jpeg".equalsIgnoreCase(paramString2)) {
+      paramString1 = "jpg";
+    }
+    do
+    {
+      return paramString1;
+      if ("png".equalsIgnoreCase(paramString2)) {
+        return "png";
+      }
+      if ("gif".equalsIgnoreCase(paramString2)) {
+        return "gif";
+      }
+      if ("svg+xml".equalsIgnoreCase(paramString2)) {
+        return "svg";
+      }
+    } while (!"webp".equalsIgnoreCase(paramString2));
+    return "webp";
   }
   
   private String handleCallbackFail(RequestEvent paramRequestEvent, JSONObject paramJSONObject, String paramString)
@@ -235,6 +259,74 @@ public class FileJsPlugin
       QMLog.e("FileJsPlugin", "isEncodingSupport exception,e:" + paramString.getMessage(), paramString);
     }
     return false;
+  }
+  
+  private void onDownloadSucceed(int paramInt1, String paramString1, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult, String paramString2, MiniAppFileManager paramMiniAppFileManager, int paramInt2, String paramString3, RequestEvent paramRequestEvent, JSONObject paramJSONObject, String paramString4, long paramLong, String paramString5)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          paramString1 = retryCopyFile(paramString1, paramString2, new File(paramString2));
+          if ((!paramString1.exists()) || (!paramString1.canRead())) {
+            continue;
+          }
+          paramString2 = getOutFilePath(paramDownloadResult, paramString2);
+          paramMiniAppFileManager.updateFolderSize(paramInt2, paramString1.length());
+          paramString4 = new JSONObject();
+          paramString4.put("downloadTaskId", paramString3);
+          paramString4.put("progress", 100);
+          paramString4.put("totalBytesWritten", paramString1.length());
+          paramString4.put("totalBytesExpectedToWrite", paramString1.length());
+          paramString4.put("state", "progressUpdate");
+          paramRequestEvent.jsService.evaluateSubscribeJS("onDownloadTaskStateChange", paramString4.toString(), 0);
+          QMLog.d("FileJsPlugin", "download success.");
+          paramString1 = new JSONObject();
+        }
+      }
+      catch (Exception paramString1)
+      {
+        QMLog.e("FileJsPlugin", "download onDownloadSucceed exception.", paramString1);
+        callbackDownloadFailed(paramString3, paramRequestEvent, paramString1);
+        continue;
+        QMLog.d("FileJsPlugin", "download failed, filepath not exists, tmpFile:" + paramString4);
+        this.downloadMap.remove(paramString3);
+        paramString1 = new JSONObject();
+        paramString1.put("downloadTaskId", paramString3);
+        paramString1.put("state", "fail");
+        paramString1.put("errMsg", "Download Failed: file not exists or can not read.");
+        paramRequestEvent.jsService.evaluateSubscribeJS("onDownloadTaskStateChange", paramString1.toString(), 0);
+        continue;
+      }
+      try
+      {
+        paramDownloadResult = JSONUtil.headerToJson(paramDownloadResult.headers);
+        paramString1 = paramDownloadResult;
+      }
+      catch (Exception paramDownloadResult)
+      {
+        QMLog.e("FileJsPlugin", "onDownloadSucceed headerJson error." + paramDownloadResult);
+        continue;
+        paramDownloadResult.put("filePath", paramJSONObject.optString("filePath"));
+      }
+    }
+    this.downloadMap.remove(paramString3);
+    paramDownloadResult = new JSONObject();
+    paramDownloadResult.put("statusCode", 200);
+    paramDownloadResult.put("downloadTaskId", paramString3);
+    if ((paramJSONObject.isNull("filePath")) || (TextUtils.isEmpty(paramJSONObject.optString("filePath"))))
+    {
+      paramDownloadResult.put("tempFilePath", paramMiniAppFileManager.getWxFilePath(paramString2));
+      paramDownloadResult.put("header", paramString1);
+      paramDownloadResult.put("state", "success");
+      paramRequestEvent.jsService.evaluateSubscribeJS("onDownloadTaskStateChange", paramDownloadResult.toString(), 0);
+      reportDownloadFileResult(System.currentTimeMillis() - paramLong, paramInt1);
+      MiniProgramLpReportDC05115.reportDownloadResult(this.mMiniAppInfo, 0, System.currentTimeMillis() - paramLong, false);
+      MiniProgramLpReportDC05116.reportOneHttpOrDownloadRequest(this.mMiniAppInfo, paramString5, System.currentTimeMillis() - paramLong, paramInt1, 0);
+      return;
+    }
   }
   
   private void onEventFinish(String paramString1, boolean paramBoolean, long paramLong1, long paramLong2, String paramString2)
@@ -296,6 +388,124 @@ public class FileJsPlugin
       QMLog.e("FileJsPlugin", "read file err", paramString1);
     }
     return null;
+  }
+  
+  private void reportDownloadFileResult(long paramLong, int paramInt)
+  {
+    if (this.mIsMiniGame) {}
+    for (String str = "1";; str = "0")
+    {
+      MiniReportManager.reportEventType(this.mMiniAppInfo, 640, null, null, null, paramInt, str, paramLong, null);
+      return;
+    }
+  }
+  
+  @NotNull
+  private File retryCopyFile(String paramString1, String paramString2, File paramFile)
+  {
+    Object localObject2 = paramFile;
+    if (!paramFile.exists())
+    {
+      localObject2 = paramFile;
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        Object localObject1 = paramFile;
+        try
+        {
+          File localFile = new File(paramString1);
+          localObject1 = paramFile;
+          localObject2 = paramFile;
+          if (localFile.exists())
+          {
+            localObject1 = paramFile;
+            localObject2 = paramFile;
+            if (localFile.isFile())
+            {
+              localObject1 = paramFile;
+              localObject2 = paramFile;
+              if (localFile.length() > 0L)
+              {
+                localObject1 = paramFile;
+                QMLog.w("FileJsPlugin", "download Succeed but target file not exists, try copy from download tmp file:" + paramString1 + ", length:" + localFile.length() + ", to:" + paramString2);
+                localObject1 = paramFile;
+                paramString2 = FileUtils.createFile(paramString2);
+                localObject1 = paramString2;
+                if (FileUtils.copyFile(localFile, paramString2))
+                {
+                  localObject1 = paramString2;
+                  if (paramString2.exists())
+                  {
+                    localObject1 = paramString2;
+                    if (paramString2.length() == localFile.length())
+                    {
+                      localObject1 = paramString2;
+                      QMLog.i("FileJsPlugin", "copy from download tmp file:" + paramString1 + " success");
+                      return paramString2;
+                    }
+                  }
+                }
+                localObject1 = paramString2;
+                localObject2 = paramString2;
+                if (paramString2.exists())
+                {
+                  localObject1 = paramString2;
+                  paramString2.delete();
+                  return paramString2;
+                }
+              }
+            }
+          }
+        }
+        catch (Throwable paramString2)
+        {
+          QMLog.e("FileJsPlugin", "try copy from download tmp file exception! tmp file:" + paramString1, paramString2);
+          localObject2 = localObject1;
+        }
+      }
+    }
+    return localObject2;
+  }
+  
+  private String writeUsrFile(long paramLong1, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, RequestEvent paramRequestEvent, long paramLong2)
+  {
+    String str = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getUsrPath(paramString1);
+    if (!TextUtils.isEmpty(str)) {}
+    for (;;)
+    {
+      try
+      {
+        if (writeUsrFile(paramArrayOfByte, paramString2, paramString3, str, false)) {
+          break label239;
+        }
+        paramString3 = new StringBuilder().append("writeFile failed! path:").append(str).append(",encoding:").append(paramString3).append(",nativeBufferBytes:");
+        if (paramArrayOfByte == null) {
+          break label262;
+        }
+        paramString1 = Integer.valueOf(paramArrayOfByte.length);
+        paramArrayOfByte = paramString3.append(paramString1).append(",data:");
+        if (paramString2 != null)
+        {
+          paramString1 = Integer.valueOf(paramString2.length());
+          QMLog.e("FileJsPlugin", paramString1);
+          onEventFinish(paramRequestEvent.event, false, paramLong2, paramLong1, str);
+          return handleCallbackFail(paramRequestEvent, null, "failed to  write file" + str);
+        }
+        paramString1 = "null";
+        continue;
+        onEventFinish(paramRequestEvent.event, false, paramLong2, paramLong1, str);
+      }
+      catch (IOException paramString1)
+      {
+        onEventFinish(paramRequestEvent.event, false, paramLong2, paramLong1, str);
+        return handleCallbackFail(paramRequestEvent, null, paramString1.getMessage());
+      }
+      return handleCallbackFail(paramRequestEvent, null, "the maximum size of the file storage is exceeded");
+      label239:
+      onEventFinish(paramRequestEvent.event, true, paramLong2, paramLong1, str);
+      return handleCallbackOK(paramRequestEvent, null);
+      label262:
+      paramString1 = "0";
+    }
   }
   
   private boolean writeUsrFile(byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
@@ -504,60 +714,50 @@ public class FileJsPlugin
     long l = System.currentTimeMillis();
     try
     {
-      Object localObject3 = new JSONObject(paramRequestEvent.jsonParams);
-      ((RequestStrategyProxy)ProxyManager.get(RequestStrategyProxy.class)).addHttpForwardingInfo((JSONObject)localObject3);
-      str2 = ((JSONObject)localObject3).optString("url");
-      if (((JSONObject)localObject3).has("origin_url"))
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      ((RequestStrategyProxy)ProxyManager.get(RequestStrategyProxy.class)).addHttpForwardingInfo(localJSONObject);
+      str2 = localJSONObject.optString("url");
+      if (localJSONObject.has("origin_url"))
       {
-        Object localObject1 = ((JSONObject)localObject3).optString("origin_url");
-        boolean bool = ((JSONObject)localObject3).optBoolean("__skipDomainCheck__", false);
-        String str5 = ((JSONObject)localObject3).optString("filePath");
-        String str3 = ((JSONObject)localObject3).optString("name");
-        String str4 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str5);
-        File localFile = new File(str4);
+        Object localObject = localJSONObject.optString("origin_url");
+        boolean bool = localJSONObject.optBoolean("__skipDomainCheck__", false);
+        String str3 = localJSONObject.optString("filePath");
+        String str4 = localJSONObject.optString("name");
+        String str5 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str3);
+        File localFile = new File(str5);
         if (TextUtils.isEmpty(str2))
         {
           QMLog.w("FileJsPlugin", "upload url is empty.");
           return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, ":upload url is empty : " + str2).toString();
         }
-        if (!DomainUtil.isDomainValid(this.mMiniAppInfo, bool, (String)localObject1, 3))
+        if (!DomainUtil.isDomainValid(this.mMiniAppInfo, bool, (String)localObject, 3))
         {
           QMLog.w("FileJsPlugin", "check upload DomainValid fail, callbackFail, event:" + paramRequestEvent.event + ", callbackId:" + paramRequestEvent.callbackId + ", url:" + str2);
           return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "url not in domain list, 请求域名不合法").toString();
         }
-        if (TextUtils.isEmpty(str4))
+        if (TextUtils.isEmpty(str5))
         {
-          QMLog.w("FileJsPlugin", "upload file error. " + str4);
+          QMLog.w("FileJsPlugin", "upload file error. " + str5);
           return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, ":file doesn't exist").toString();
         }
-        if (TextUtils.isEmpty(str3))
+        if (TextUtils.isEmpty(str4))
         {
-          QMLog.w("FileJsPlugin", "upload file name error. " + str3);
+          QMLog.w("FileJsPlugin", "upload file name error. " + str4);
           return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, ":file name is error").toString();
         }
-        int i = paramRequestEvent.callbackId;
-        Object localObject2 = ((JSONObject)localObject3).optJSONObject("header");
-        localObject3 = ((JSONObject)localObject3).optJSONObject("formData");
-        if (TextUtils.isEmpty(str5)) {}
-        for (localObject1 = "";; localObject1 = str5.replace("wxfile://", ""))
+        int i = doUpload(paramRequestEvent, l, localJSONObject, str2, str3, str4, str5, localFile);
+        this.uploadMap.put(Integer.valueOf(i), str2);
+        try
         {
-          localObject2 = StringUtil.json2map((JSONObject)localObject2);
-          ((Map)localObject2).put("Referer", getRequestReferer());
-          localObject3 = StringUtil.json2map((JSONObject)localObject3);
-          ((UploaderProxy)ProxyManager.get(UploaderProxy.class)).upload(str2, (Map)localObject2, str4, str3, (String)localObject1, (Map)localObject3, 60, new FileJsPlugin.3(this, i, paramRequestEvent, l, localFile));
-          this.uploadMap.put(Integer.valueOf(i), str2);
-          try
-          {
-            localObject1 = new JSONObject();
-            ((JSONObject)localObject1).put("uploadTaskId", i);
-            localObject1 = ApiUtil.wrapCallbackOk(paramRequestEvent.event, (JSONObject)localObject1).toString();
-            return localObject1;
-          }
-          catch (Throwable localThrowable)
-          {
-            localThrowable.printStackTrace();
-            QMLog.e("FileJsPlugin", paramRequestEvent.event + " return error.", localThrowable);
-          }
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("uploadTaskId", i);
+          localObject = ApiUtil.wrapCallbackOk(paramRequestEvent.event, (JSONObject)localObject).toString();
+          return localObject;
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+          QMLog.e("FileJsPlugin", paramRequestEvent.event + " return error.", localThrowable);
         }
         return "";
       }
@@ -604,171 +804,171 @@ public class FileJsPlugin
   public void getFileInfo(RequestEvent paramRequestEvent)
   {
     // Byte code:
-    //   0: invokestatic 496	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 625	java/lang/System:currentTimeMillis	()J
     //   3: lstore_3
-    //   4: new 253	org/json/JSONObject
+    //   4: new 245	org/json/JSONObject
     //   7: dup
     //   8: aload_1
-    //   9: getfield 645	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
-    //   12: invokespecial 681	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   9: getfield 843	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
+    //   12: invokespecial 873	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   15: astore 5
     //   17: aload 5
-    //   19: ldc_w 648
-    //   22: invokevirtual 651	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: ldc_w 607
+    //   22: invokevirtual 613	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   25: astore 6
     //   27: aload 5
-    //   29: ldc_w 873
-    //   32: ldc_w 875
-    //   35: invokevirtual 658	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   29: ldc_w 1008
+    //   32: ldc_w 1010
+    //   35: invokevirtual 850	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   38: astore 5
     //   40: aload_0
-    //   41: getfield 115	com/tencent/qqmini/sdk/plugins/FileJsPlugin:mMiniAppContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   44: ldc 230
-    //   46: invokeinterface 236 2 0
-    //   51: checkcast 230	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
-    //   54: aload 6
-    //   56: invokevirtual 782	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   59: astore 6
-    //   61: ldc_w 875
-    //   64: aload 5
-    //   66: invokevirtual 541	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   69: ifne +220 -> 289
-    //   72: ldc_w 877
-    //   75: aload 5
-    //   77: invokevirtual 541	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   80: ifeq +214 -> 294
-    //   83: goto +206 -> 289
-    //   86: aload 6
-    //   88: invokestatic 358	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   91: ifne +175 -> 266
-    //   94: iload_2
-    //   95: ifeq +171 -> 266
-    //   98: new 531	java/io/File
-    //   101: dup
-    //   102: aload 6
-    //   104: invokespecial 532	java/io/File:<init>	(Ljava/lang/String;)V
-    //   107: astore 7
-    //   109: new 253	org/json/JSONObject
-    //   112: dup
-    //   113: invokespecial 254	org/json/JSONObject:<init>	()V
-    //   116: astore 8
-    //   118: ldc_w 877
-    //   121: aload 5
-    //   123: invokevirtual 541	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   126: ifeq +68 -> 194
-    //   129: aload 6
-    //   131: invokestatic 882	com/tencent/qqmini/sdk/core/utils/SecurityUtil:getFileSHA1	(Ljava/lang/String;)Ljava/lang/String;
-    //   134: astore 5
-    //   136: aload 5
-    //   138: ifnull +66 -> 204
-    //   141: aload 5
-    //   143: invokevirtual 885	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   146: astore 5
-    //   148: aload 8
-    //   150: ldc_w 887
-    //   153: aload 5
-    //   155: invokevirtual 265	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   158: pop
-    //   159: aload 8
-    //   161: ldc_w 888
-    //   164: aload 7
-    //   166: invokevirtual 890	java/io/File:length	()J
-    //   169: invokevirtual 893	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   172: pop
-    //   173: aload_0
-    //   174: aload_1
-    //   175: getfield 453	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
-    //   178: iconst_1
-    //   179: lload_3
+    //   41: getfield 133	com/tencent/qqmini/sdk/plugins/FileJsPlugin:mMiniAppContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   44: ldc_w 292
+    //   47: invokeinterface 298 2 0
+    //   52: checkcast 292	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
+    //   55: aload 6
+    //   57: invokevirtual 948	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   60: astore 6
+    //   62: ldc_w 1010
+    //   65: aload 5
+    //   67: invokevirtual 684	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   70: ifne +220 -> 290
+    //   73: ldc_w 1012
+    //   76: aload 5
+    //   78: invokevirtual 684	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   81: ifeq +214 -> 295
+    //   84: goto +206 -> 290
+    //   87: aload 6
+    //   89: invokestatic 363	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   92: ifne +175 -> 267
+    //   95: iload_2
+    //   96: ifeq +171 -> 267
+    //   99: new 567	java/io/File
+    //   102: dup
+    //   103: aload 6
+    //   105: invokespecial 568	java/io/File:<init>	(Ljava/lang/String;)V
+    //   108: astore 7
+    //   110: new 245	org/json/JSONObject
+    //   113: dup
+    //   114: invokespecial 246	org/json/JSONObject:<init>	()V
+    //   117: astore 8
+    //   119: ldc_w 1012
+    //   122: aload 5
+    //   124: invokevirtual 684	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   127: ifeq +68 -> 195
+    //   130: aload 6
+    //   132: invokestatic 1017	com/tencent/qqmini/sdk/core/utils/SecurityUtil:getFileSHA1	(Ljava/lang/String;)Ljava/lang/String;
+    //   135: astore 5
+    //   137: aload 5
+    //   139: ifnull +66 -> 205
+    //   142: aload 5
+    //   144: invokevirtual 1020	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   147: astore 5
+    //   149: aload 8
+    //   151: ldc_w 1022
+    //   154: aload 5
+    //   156: invokevirtual 255	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   159: pop
+    //   160: aload 8
+    //   162: ldc_w 1023
+    //   165: aload 7
+    //   167: invokevirtual 585	java/io/File:length	()J
+    //   170: invokevirtual 596	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   173: pop
+    //   174: aload_0
+    //   175: aload_1
+    //   176: getfield 532	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   179: iconst_1
     //   180: lload_3
-    //   181: aload 6
-    //   183: invokespecial 121	com/tencent/qqmini/sdk/plugins/FileJsPlugin:onEventFinish	(Ljava/lang/String;ZJJLjava/lang/String;)V
-    //   186: aload_1
-    //   187: aload 8
-    //   189: invokevirtual 467	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:ok	(Lorg/json/JSONObject;)Ljava/lang/String;
-    //   192: pop
-    //   193: return
-    //   194: aload 6
-    //   196: invokestatic 898	com/tencent/qqmini/sdk/launcher/utils/MD5Utils:encodeFileHexStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   199: astore 5
-    //   201: goto -65 -> 136
-    //   204: aconst_null
-    //   205: astore 5
-    //   207: goto -59 -> 148
-    //   210: astore 5
-    //   212: ldc 57
-    //   214: new 296	java/lang/StringBuilder
-    //   217: dup
-    //   218: invokespecial 297	java/lang/StringBuilder:<init>	()V
-    //   221: ldc_w 900
-    //   224: invokevirtual 303	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: aload 5
-    //   229: invokevirtual 487	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   232: invokevirtual 303	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   235: invokevirtual 307	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   238: invokestatic 313	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   241: aload_0
-    //   242: aload_1
-    //   243: getfield 453	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
-    //   246: iconst_0
-    //   247: lload_3
+    //   181: lload_3
+    //   182: aload 6
+    //   184: invokespecial 239	com/tencent/qqmini/sdk/plugins/FileJsPlugin:onEventFinish	(Ljava/lang/String;ZJJLjava/lang/String;)V
+    //   187: aload_1
+    //   188: aload 8
+    //   190: invokevirtual 545	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:ok	(Lorg/json/JSONObject;)Ljava/lang/String;
+    //   193: pop
+    //   194: return
+    //   195: aload 6
+    //   197: invokestatic 1028	com/tencent/qqmini/sdk/launcher/utils/MD5Utils:encodeFileHexStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   200: astore 5
+    //   202: goto -65 -> 137
+    //   205: aconst_null
+    //   206: astore 5
+    //   208: goto -59 -> 149
+    //   211: astore 5
+    //   213: ldc 57
+    //   215: new 330	java/lang/StringBuilder
+    //   218: dup
+    //   219: invokespecial 331	java/lang/StringBuilder:<init>	()V
+    //   222: ldc_w 1030
+    //   225: invokevirtual 337	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: aload 5
+    //   230: invokevirtual 565	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   233: invokevirtual 337	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   239: invokestatic 344	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   242: aload_0
+    //   243: aload_1
+    //   244: getfield 532	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   247: iconst_0
     //   248: lload_3
-    //   249: aload 6
-    //   251: invokespecial 121	com/tencent/qqmini/sdk/plugins/FileJsPlugin:onEventFinish	(Ljava/lang/String;ZJJLjava/lang/String;)V
-    //   254: aload_1
-    //   255: invokevirtual 902	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
-    //   258: pop
-    //   259: return
-    //   260: astore_1
-    //   261: aload_1
-    //   262: invokevirtual 676	org/json/JSONException:printStackTrace	()V
-    //   265: return
-    //   266: aload_0
-    //   267: aload_1
-    //   268: getfield 453	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
-    //   271: iconst_0
-    //   272: lload_3
+    //   249: lload_3
+    //   250: aload 6
+    //   252: invokespecial 239	com/tencent/qqmini/sdk/plugins/FileJsPlugin:onEventFinish	(Ljava/lang/String;ZJJLjava/lang/String;)V
+    //   255: aload_1
+    //   256: invokevirtual 1032	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
+    //   259: pop
+    //   260: return
+    //   261: astore_1
+    //   262: aload_1
+    //   263: invokevirtual 868	org/json/JSONException:printStackTrace	()V
+    //   266: return
+    //   267: aload_0
+    //   268: aload_1
+    //   269: getfield 532	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   272: iconst_0
     //   273: lload_3
-    //   274: aload 6
-    //   276: invokespecial 121	com/tencent/qqmini/sdk/plugins/FileJsPlugin:onEventFinish	(Ljava/lang/String;ZJJLjava/lang/String;)V
-    //   279: aload_1
-    //   280: aconst_null
-    //   281: ldc_w 904
-    //   284: invokevirtual 457	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	(Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
-    //   287: pop
-    //   288: return
-    //   289: iconst_1
-    //   290: istore_2
-    //   291: goto -205 -> 86
-    //   294: iconst_0
-    //   295: istore_2
-    //   296: goto -210 -> 86
+    //   274: lload_3
+    //   275: aload 6
+    //   277: invokespecial 239	com/tencent/qqmini/sdk/plugins/FileJsPlugin:onEventFinish	(Ljava/lang/String;ZJJLjava/lang/String;)V
+    //   280: aload_1
+    //   281: aconst_null
+    //   282: ldc_w 1034
+    //   285: invokevirtual 535	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	(Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
+    //   288: pop
+    //   289: return
+    //   290: iconst_1
+    //   291: istore_2
+    //   292: goto -205 -> 87
+    //   295: iconst_0
+    //   296: istore_2
+    //   297: goto -210 -> 87
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	299	0	this	FileJsPlugin
-    //   0	299	1	paramRequestEvent	RequestEvent
-    //   94	202	2	i	int
-    //   3	271	3	l	long
-    //   15	191	5	localObject	Object
-    //   210	18	5	localThrowable	Throwable
-    //   25	250	6	str	String
-    //   107	58	7	localFile	File
-    //   116	72	8	localJSONObject	JSONObject
+    //   0	300	0	this	FileJsPlugin
+    //   0	300	1	paramRequestEvent	RequestEvent
+    //   95	202	2	i	int
+    //   3	272	3	l	long
+    //   15	192	5	localObject	Object
+    //   211	18	5	localThrowable	Throwable
+    //   25	251	6	str	String
+    //   108	58	7	localFile	File
+    //   117	72	8	localJSONObject	JSONObject
     // Exception table:
     //   from	to	target	type
-    //   118	136	210	java/lang/Throwable
-    //   141	148	210	java/lang/Throwable
-    //   148	193	210	java/lang/Throwable
-    //   194	201	210	java/lang/Throwable
-    //   4	83	260	org/json/JSONException
-    //   86	94	260	org/json/JSONException
-    //   98	118	260	org/json/JSONException
-    //   118	136	260	org/json/JSONException
-    //   141	148	260	org/json/JSONException
-    //   148	193	260	org/json/JSONException
-    //   194	201	260	org/json/JSONException
-    //   212	259	260	org/json/JSONException
-    //   266	288	260	org/json/JSONException
+    //   119	137	211	java/lang/Throwable
+    //   142	149	211	java/lang/Throwable
+    //   149	194	211	java/lang/Throwable
+    //   195	202	211	java/lang/Throwable
+    //   4	84	261	org/json/JSONException
+    //   87	95	261	org/json/JSONException
+    //   99	119	261	org/json/JSONException
+    //   119	137	261	org/json/JSONException
+    //   142	149	261	org/json/JSONException
+    //   149	194	261	org/json/JSONException
+    //   195	202	261	org/json/JSONException
+    //   213	260	261	org/json/JSONException
+    //   267	289	261	org/json/JSONException
   }
   
   @JsEvent({"getSavedFileInfo"})
@@ -830,7 +1030,7 @@ public class FileJsPlugin
     {
       localJSONArray = new JSONArray();
       if (localObject1 == null) {
-        break label159;
+        break label161;
       }
       j = localObject1.length;
       i = 0;
@@ -844,7 +1044,7 @@ public class FileJsPlugin
         int i;
         Object localObject2;
         JSONObject localJSONObject;
-        label159:
+        label161:
         localThrowable.printStackTrace();
         paramRequestEvent.fail();
         continue;
@@ -898,6 +1098,7 @@ public class FileJsPlugin
     {
       this.fileManager = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class));
       this.fileManager.setStorageLimit(this.mMiniAppInfo.usrFileSizeLimit);
+      SDKMiniProgramLpReportDC04239.reportMiniAppEvent(this.mMiniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.mMiniAppInfo), null, "buffer_space", "", "", this.mMiniAppInfo.usrFileSizeLimit + "");
     }
   }
   
@@ -931,7 +1132,7 @@ public class FileJsPlugin
       }
       catch (Throwable paramRequestEvent)
       {
-        break label106;
+        break label104;
       }
       paramRequestEvent = paramRequestEvent;
       paramRequestEvent.printStackTrace();
@@ -1184,7 +1385,7 @@ public class FileJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin
  * JD-Core Version:    0.7.0.1
  */

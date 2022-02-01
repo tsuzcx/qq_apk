@@ -9,8 +9,8 @@ public final class SimpleComment
   extends JceStruct
 {
   static ArrayList<Long> cache_reply_ids = new ArrayList();
-  public long id;
-  public ArrayList<Long> reply_ids;
+  public long id = 0L;
+  public ArrayList<Long> reply_ids = null;
   
   static
   {

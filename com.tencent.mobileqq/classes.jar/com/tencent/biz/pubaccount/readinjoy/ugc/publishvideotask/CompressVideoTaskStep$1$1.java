@@ -1,17 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask;
 
 import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.videoconverter.VideoMediaInfo;
+import com.tencent.biz.pubaccount.util.MD5Utils;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import rzy;
-import swc;
-import urv;
 
-public class CompressVideoTaskStep$1$1
+class CompressVideoTaskStep$1$1
   implements Runnable
 {
-  public CompressVideoTaskStep$1$1(rzy paramrzy, int paramInt, String paramString, swc paramswc) {}
+  CompressVideoTaskStep$1$1(CompressVideoTaskStep.1 param1, int paramInt, String paramString, VideoMediaInfo paramVideoMediaInfo) {}
   
   public void run()
   {
@@ -22,7 +21,7 @@ public class CompressVideoTaskStep$1$1
     {
       str1 = str2;
       if (!this.jdField_a_of_type_JavaLangString.isEmpty()) {
-        str1 = urv.a(new File(this.jdField_a_of_type_JavaLangString));
+        str1 = MD5Utils.a(new File(this.jdField_a_of_type_JavaLangString));
       }
     }
     QLog.i("RIJUGC.CompressVideoTaskStep", 1, "get Md5, md5=" + str1);
@@ -31,7 +30,7 @@ public class CompressVideoTaskStep$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.CompressVideoTaskStep.1.1
  * JD-Core Version:    0.7.0.1
  */

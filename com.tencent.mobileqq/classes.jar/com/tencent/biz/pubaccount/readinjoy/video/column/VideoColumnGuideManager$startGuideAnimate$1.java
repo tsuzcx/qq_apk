@@ -3,31 +3,29 @@ package com.tencent.biz.pubaccount.readinjoy.video.column;
 import android.animation.Animator.AnimatorListener;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import kotlin.Metadata;
-import srv;
-import ssc;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
-public final class VideoColumnGuideManager$startGuideAnimate$1
+final class VideoColumnGuideManager$startGuideAnimate$1
   implements Runnable
 {
-  public VideoColumnGuideManager$startGuideAnimate$1(srv paramsrv) {}
+  VideoColumnGuideManager$startGuideAnimate$1(VideoColumnGuideManager paramVideoColumnGuideManager) {}
   
   public final void run()
   {
-    DiniFlyAnimationView localDiniFlyAnimationView = srv.a(this.this$0);
+    DiniFlyAnimationView localDiniFlyAnimationView = VideoColumnGuideManager.a(this.this$0);
     if (localDiniFlyAnimationView != null) {
-      localDiniFlyAnimationView.addAnimatorListener((Animator.AnimatorListener)new ssc(this));
+      localDiniFlyAnimationView.addAnimatorListener((Animator.AnimatorListener)new VideoColumnGuideManager.startGuideAnimate.1.1(this));
     }
-    localDiniFlyAnimationView = srv.a(this.this$0);
+    localDiniFlyAnimationView = VideoColumnGuideManager.a(this.this$0);
     if (localDiniFlyAnimationView != null) {
       localDiniFlyAnimationView.resumeAnimation();
     }
-    srv.d(this.this$0);
+    VideoColumnGuideManager.d(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.column.VideoColumnGuideManager.startGuideAnimate.1
  * JD-Core Version:    0.7.0.1
  */

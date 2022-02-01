@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import aeow;
-import aeox;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,11 +14,11 @@ import java.util.Iterator;
 public class PublicFragmentActivityForPeak
   extends PublicFragmentActivity
 {
-  private ArrayList<WeakReference<aeox>> a;
+  private ArrayList<WeakReference<PublicFragmentActivityCallBackInterface>> a;
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    aeow.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
+    PublicFragmentActivity.Launcher.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
   }
   
   @Override
@@ -36,12 +33,12 @@ public class PublicFragmentActivityForPeak
   public void doOnBackPressed()
   {
     Object localObject1 = super.a();
-    if ((localObject1 instanceof aeox))
+    if ((localObject1 instanceof PublicFragmentActivityCallBackInterface))
     {
       if (this.a == null) {
         this.a = new ArrayList(2);
       }
-      this.a.add(new WeakReference((aeox)localObject1));
+      this.a.add(new WeakReference((PublicFragmentActivityCallBackInterface)localObject1));
     }
     if (this.a != null)
     {
@@ -51,9 +48,9 @@ public class PublicFragmentActivityForPeak
         Object localObject2 = (WeakReference)((Iterator)localObject1).next();
         if (localObject2 != null)
         {
-          localObject2 = (aeox)((WeakReference)localObject2).get();
+          localObject2 = (PublicFragmentActivityCallBackInterface)((WeakReference)localObject2).get();
           if (localObject2 != null) {
-            ((aeox)localObject2).onBackPressed();
+            ((PublicFragmentActivityCallBackInterface)localObject2).onBackPressed();
           }
         }
       }
@@ -75,7 +72,7 @@ public class PublicFragmentActivityForPeak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivityForPeak
  * JD-Core Version:    0.7.0.1
  */

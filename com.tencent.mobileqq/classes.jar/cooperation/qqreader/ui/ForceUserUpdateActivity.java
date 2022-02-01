@@ -1,6 +1,5 @@
 package cooperation.qqreader.ui;
 
-import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,24 +9,19 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.TextView;
-import bmey;
-import bmfq;
-import bmgb;
-import bmgc;
-import bmgd;
-import bmge;
-import bmgf;
-import bmgk;
-import bmgm;
-import bmha;
-import bmhd;
-import bmhe;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.helper.GrayUpdateManager;
 import cooperation.qqreader.net.BusinessTask;
+import cooperation.qqreader.net.ReaderCgiListener;
+import cooperation.qqreader.utils.Config.UserConfig;
+import cooperation.qqreader.utils.Log;
 import cooperation.qqreader.view.FrameLoading;
 import cooperation.qqreader.view.LoadingImageView;
+import cooperation.qqreader.view.SimpleStyledDialog;
+import cooperation.qqreader.view.SimpleStyledDialog.Builder;
+import cooperation.qqreader.zzconfig.ZzConfigDataUtil;
 import mqq.os.MqqHandler;
 
 public class ForceUserUpdateActivity
@@ -36,12 +30,12 @@ public class ForceUserUpdateActivity
   private long jdField_a_of_type_Long = -1L;
   private Context jdField_a_of_type_AndroidContentContext;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bmfq jdField_a_of_type_Bmfq = new bmgb(this);
-  private bmha jdField_a_of_type_Bmha;
+  private ReaderCgiListener jdField_a_of_type_CooperationQqreaderNetReaderCgiListener = new ForceUserUpdateActivity.3(this);
   private LoadingImageView jdField_a_of_type_CooperationQqreaderViewLoadingImageView;
+  private SimpleStyledDialog jdField_a_of_type_CooperationQqreaderViewSimpleStyledDialog;
   private boolean jdField_a_of_type_Boolean;
-  private bmfq b = new bmgc(this);
-  private bmfq c = new bmgd(this);
+  private ReaderCgiListener b = new ForceUserUpdateActivity.4(this);
+  private ReaderCgiListener c = new ForceUserUpdateActivity.5(this);
   
   private void a()
   {
@@ -58,38 +52,38 @@ public class ForceUserUpdateActivity
   
   private void a(String paramString)
   {
-    bmgm.a("ForceUserUpdateActivity", paramString);
+    Log.a("ForceUserUpdateActivity", paramString);
     b("哎呀，升级出了点问题，再试试看吧~");
   }
   
   private void b()
   {
-    if (!NetworkUtil.isNetworkAvailable()) {
+    if (!NetworkUtil.a()) {
       b("网络连接异常，请检查网络后重试");
     }
     do
     {
       return;
-      if (!bmey.a()) {
+      if (!GrayUpdateManager.a()) {
         c();
       }
-    } while (bmgk.d(this));
+    } while (Config.UserConfig.d(this));
     e();
   }
   
   private void b(String paramString)
   {
     if ((isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (isDestroyed()))) {
-      bmgm.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
+      Log.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
     }
     do
     {
       return;
-      if (this.jdField_a_of_type_Bmha == null) {
-        this.jdField_a_of_type_Bmha = new bmhd(this).a(paramString).a("退出", new bmgf(this)).b("重试", new bmge(this)).a();
+      if (this.jdField_a_of_type_CooperationQqreaderViewSimpleStyledDialog == null) {
+        this.jdField_a_of_type_CooperationQqreaderViewSimpleStyledDialog = new SimpleStyledDialog.Builder(this).a(paramString).a("退出", new ForceUserUpdateActivity.7(this)).b("重试", new ForceUserUpdateActivity.6(this)).a();
       }
-    } while (this.jdField_a_of_type_Bmha.isShowing());
-    this.jdField_a_of_type_Bmha.show();
+    } while (this.jdField_a_of_type_CooperationQqreaderViewSimpleStyledDialog.isShowing());
+    this.jdField_a_of_type_CooperationQqreaderViewSimpleStyledDialog.show();
   }
   
   private void c()
@@ -108,12 +102,12 @@ public class ForceUserUpdateActivity
   
   private void e()
   {
-    bmhe.a(bmhe.a, this.jdField_a_of_type_Bmfq);
+    ZzConfigDataUtil.a(ZzConfigDataUtil.a, this.jdField_a_of_type_CooperationQqreaderNetReaderCgiListener);
   }
   
   private void f()
   {
-    bmgk.b(this.jdField_a_of_type_AndroidContentContext, 1);
+    Config.UserConfig.b(this.jdField_a_of_type_AndroidContentContext, 1);
     g();
   }
   
@@ -121,7 +115,7 @@ public class ForceUserUpdateActivity
   {
     long l2 = 1000L;
     long l1;
-    if ((!this.jdField_a_of_type_Boolean) && (bmey.a()) && (bmgk.d(this.jdField_a_of_type_AndroidContentContext)))
+    if ((!this.jdField_a_of_type_Boolean) && (GrayUpdateManager.a()) && (Config.UserConfig.d(this.jdField_a_of_type_AndroidContentContext)))
     {
       if (this.jdField_a_of_type_Long <= 0L) {
         break label74;
@@ -173,22 +167,22 @@ public class ForceUserUpdateActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setText("正在升级到新书城，请稍等...");
     a();
     b();
-    bmgm.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
+    Log.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_Bmha != null) && (this.jdField_a_of_type_Bmha.isShowing()))
+    if ((this.jdField_a_of_type_CooperationQqreaderViewSimpleStyledDialog != null) && (this.jdField_a_of_type_CooperationQqreaderViewSimpleStyledDialog.isShowing()))
     {
-      this.jdField_a_of_type_Bmha.dismiss();
-      this.jdField_a_of_type_Bmha = null;
+      this.jdField_a_of_type_CooperationQqreaderViewSimpleStyledDialog.dismiss();
+      this.jdField_a_of_type_CooperationQqreaderViewSimpleStyledDialog = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.ui.ForceUserUpdateActivity
  * JD-Core Version:    0.7.0.1
  */

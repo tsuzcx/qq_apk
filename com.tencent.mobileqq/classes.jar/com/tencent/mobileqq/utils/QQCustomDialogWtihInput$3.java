@@ -12,7 +12,7 @@ class QQCustomDialogWtihInput$3
   
   public void run()
   {
-    Context localContext = (Context)QQCustomDialogWtihInput.access$300(this.this$0).get();
+    Context localContext = (Context)QQCustomDialogWtihInput.a(this.this$0).get();
     if (localContext != null) {
       ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
     }

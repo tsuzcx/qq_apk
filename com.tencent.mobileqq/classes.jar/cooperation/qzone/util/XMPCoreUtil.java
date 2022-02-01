@@ -18,11 +18,16 @@ public class XMPCoreUtil
   public static final String PROPERTY_NAME_IS_PANORAMA = "GPano:UsePanoramaViewer";
   public static final String SCHEMA_PANORAMA = "http://ns.google.com/photos/1.0/panorama/";
   private static final String TAG = "XMPCoreUtil";
-  private static XMPCoreUtil instance;
-  private static String mXMPCoreJarMD5 = QzoneConfig.getInstance().getConfig("QZoneSetting", "XMPcoreJarMD5", "a0c5ac44fc2d0e35187f0c1479db48b2");
+  private static XMPCoreUtil instance = null;
+  private static String mXMPCoreJarMD5;
   private static String mXMPCoreJarUrl = QzoneConfig.getInstance().getConfig("QZoneSetting", "xmpcoreUrl", "https://d3g.qq.com/sngapp/app/update/20171220130606_8640/xmpcore.jar");
-  private boolean isModuleLoadSuccess;
+  private boolean isModuleLoadSuccess = false;
   private ConcurrentHashMap<String, Boolean> panoramaHashMap = new ConcurrentHashMap();
+  
+  static
+  {
+    mXMPCoreJarMD5 = QzoneConfig.getInstance().getConfig("QZoneSetting", "XMPcoreJarMD5", "a0c5ac44fc2d0e35187f0c1479db48b2");
+  }
   
   public static XMPCoreUtil getInstance()
   {
@@ -178,7 +183,7 @@ public class XMPCoreUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.XMPCoreUtil
  * JD-Core Version:    0.7.0.1
  */

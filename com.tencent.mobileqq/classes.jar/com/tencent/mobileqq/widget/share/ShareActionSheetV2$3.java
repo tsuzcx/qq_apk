@@ -13,10 +13,10 @@ class ShareActionSheetV2$3
   
   public void onActivityDestroyed(Activity paramActivity)
   {
-    if (paramActivity == this.this$0.mOutAct)
+    if (paramActivity == this.a.a)
     {
-      ShareActionSheetV2.access$300(this.this$0);
-      ShareActionSheetV2.access$400(this.this$0);
+      ShareActionSheetV2.a(this.a);
+      ShareActionSheetV2.b(this.a);
     }
   }
   
@@ -32,7 +32,7 @@ class ShareActionSheetV2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.3
  * JD-Core Version:    0.7.0.1
  */

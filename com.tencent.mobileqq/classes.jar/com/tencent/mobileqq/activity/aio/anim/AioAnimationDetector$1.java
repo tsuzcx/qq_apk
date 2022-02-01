@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import afuu;
 import android.graphics.drawable.Drawable;
 
-public class AioAnimationDetector$1
+class AioAnimationDetector$1
   implements Runnable
 {
-  public AioAnimationDetector$1(afuu paramafuu, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
+  AioAnimationDetector$1(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class AioAnimationDetector$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector.1
  * JD-Core Version:    0.7.0.1
  */

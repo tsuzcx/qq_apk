@@ -3,10 +3,10 @@ package com.tencent.open.agent.util;
 import android.app.Activity;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class AuthorityUtil$1
+final class AuthorityUtil$1
   implements Runnable
 {
-  public AuthorityUtil$1(Activity paramActivity, boolean paramBoolean, String paramString) {}
+  AuthorityUtil$1(Activity paramActivity, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public final class AuthorityUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.util.AuthorityUtil.1
  * JD-Core Version:    0.7.0.1
  */

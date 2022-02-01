@@ -5,14 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
-import bnrh;
+import dov.com.qq.im.ae.util.AEQLog;
 
 public class AEEditorGenerateBroadcastReceiver
   extends BroadcastReceiver
 {
   private static final String TAG = "AEEditorGenerateBroadcastReceiver";
   private AEEditorGenerateBroadcastReceiver.AEEditorGenerateListener mAETavSessionStatusListener;
-  private boolean mReceiverActive;
+  private boolean mReceiverActive = false;
   
   public AEEditorGenerateBroadcastReceiver(AEEditorGenerateBroadcastReceiver.AEEditorGenerateListener paramAEEditorGenerateListener)
   {
@@ -32,7 +32,7 @@ public class AEEditorGenerateBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
-      bnrh.d("AEEditorGenerateBroadcastReceiver", "[onReceive] : action is null");
+      AEQLog.d("AEEditorGenerateBroadcastReceiver", "[onReceive] : action is null");
     }
     String str1;
     String str2;
@@ -42,9 +42,16 @@ public class AEEditorGenerateBroadcastReceiver
     String str5;
     String str6;
     String str7;
+    String str8;
+    String str9;
+    float f2;
+    float f3;
+    float f4;
+    float f5;
+    float f6;
     do
     {
-      float f;
+      float f1;
       int j;
       do
       {
@@ -57,15 +64,22 @@ public class AEEditorGenerateBroadcastReceiver
         str5 = paramIntent.getStringExtra("generate_mission");
         str6 = paramIntent.getStringExtra("generate_path");
         str7 = paramIntent.getStringExtra("generate_thumb_ptah");
-        f = paramIntent.getFloatExtra("generate_progress", 0.0F);
+        f1 = paramIntent.getFloatExtra("generate_progress", 0.0F);
         j = paramIntent.getIntExtra("generate_errorcode", 0);
-        paramIntent = paramIntent.getStringExtra("generate_source_path");
-        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] action :" + paramContext);
-        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] mission :" + str5);
-        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] path :" + str6);
-        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] thumbPath :" + str7);
-        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] progress :" + f);
-        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] errorcode :" + j);
+        str8 = paramIntent.getStringExtra("generate_source_path");
+        str9 = paramIntent.getStringExtra("generate_KuolieId");
+        f2 = paramIntent.getFloatExtra("generate_centerX", 0.0F);
+        f3 = paramIntent.getFloatExtra("generate_centerY", 0.0F);
+        f4 = paramIntent.getFloatExtra("generate_widthScale", 0.0F);
+        f5 = paramIntent.getFloatExtra("generate_HeightScale", 0.0F);
+        f6 = paramIntent.getFloatExtra("generate_rotate", 0.0F);
+        AEQLog.b("AEEditorGenerateBroadcastReceiver", "[onReceive] action :" + paramContext);
+        AEQLog.b("AEEditorGenerateBroadcastReceiver", "[onReceive] mission :" + str5);
+        AEQLog.b("AEEditorGenerateBroadcastReceiver", "[onReceive] path :" + str6);
+        AEQLog.b("AEEditorGenerateBroadcastReceiver", "[onReceive] thumbPath :" + str7);
+        AEQLog.b("AEEditorGenerateBroadcastReceiver", "[onReceive] progress :" + f1);
+        AEQLog.b("AEEditorGenerateBroadcastReceiver", "[onReceive] errorcode :" + j);
+        AEQLog.b("AEEditorGenerateBroadcastReceiver", "[onReceive] kuolieId :" + str9 + " kuolieCenterX:" + f2 + " kuolieCenterY:" + f3 + " kuolieWidthScale:" + f4 + " kuolieHeightScale:" + f5 + " kuolieRotate:" + f6);
       } while (this.mAETavSessionStatusListener == null);
       if ("AEEDITOR_GENERATE_STATUS_ERROR".equals(paramContext))
       {
@@ -74,11 +88,11 @@ public class AEEditorGenerateBroadcastReceiver
       }
       if ("AEEDITOR_GENERATE_STATUS_DOWNLOADING".equals(paramContext))
       {
-        this.mAETavSessionStatusListener.onAETavSessionExporting(str5, f);
+        this.mAETavSessionStatusListener.onAETavSessionExporting(str5, f1);
         return;
       }
     } while (!"AEEDITOR_GENERATE_STATUS_READY".equals(paramContext));
-    this.mAETavSessionStatusListener.onAETavSessionExportCompleted(paramIntent, str1, str2, str3, str4, i, str5, str6, str7);
+    this.mAETavSessionStatusListener.onAETavSessionExportCompleted(str8, str1, str2, str3, str4, i, str5, str6, str7, str9, f2, f3, f4, f5, f6);
   }
   
   public void registerSelf(@NonNull Context paramContext)
@@ -101,7 +115,7 @@ public class AEEditorGenerateBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AEEditorGenerateBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

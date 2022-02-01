@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afpr;
-import afpz;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,16 +19,16 @@ import mqq.util.WeakReference;
 
 public class AudioDeviceManager
   extends BroadcastReceiver
-  implements afpz, Manager
+  implements AudioSenorManager.IAudioSenorListener, Manager
 {
   private AudioSenorManager jdField_a_of_type_ComTencentMobileqqActivityAioAudioSenorManager;
-  private List<afpr> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<AudioDeviceManager.IAudioDeviceListener> jdField_a_of_type_JavaUtilList = new ArrayList();
   private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
-  private boolean e;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
+  private boolean c = false;
+  private boolean d = false;
+  private boolean e = false;
   
   public AudioDeviceManager(QQAppInterface paramQQAppInterface)
   {
@@ -71,11 +69,11 @@ public class AudioDeviceManager
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      afpr localafpr = (afpr)localIterator.next();
-      if ((localafpr.a() & paramInt) == paramInt)
+      AudioDeviceManager.IAudioDeviceListener localIAudioDeviceListener = (AudioDeviceManager.IAudioDeviceListener)localIterator.next();
+      if ((localIAudioDeviceListener.a() & paramInt) == paramInt)
       {
-        QLog.d("AudioDeviceManager", 2, "notifyAllDeviceStatusChanged: audioDeviceListener=" + localafpr.getClass());
-        localafpr.a(paramInt, paramBoolean);
+        QLog.d("AudioDeviceManager", 2, "notifyAllDeviceStatusChanged: audioDeviceListener=" + localIAudioDeviceListener.getClass());
+        localIAudioDeviceListener.a(paramInt, paramBoolean);
       }
     }
   }
@@ -133,31 +131,31 @@ public class AudioDeviceManager
     }
   }
   
-  public void a(afpr paramafpr)
+  public void a(AudioDeviceManager.IAudioDeviceListener paramIAudioDeviceListener)
   {
-    if (paramafpr == null)
+    if (paramIAudioDeviceListener == null)
     {
       QLog.e("AudioDeviceManager", 2, "registerAudioDeviceListener listener is null");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramafpr))
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramIAudioDeviceListener))
     {
       QLog.e("AudioDeviceManager", 2, "registerAudioDeviceListener listener is contains");
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramafpr);
+    this.jdField_a_of_type_JavaUtilList.add(paramIAudioDeviceListener);
   }
   
-  public void b(afpr paramafpr)
+  public void b(AudioDeviceManager.IAudioDeviceListener paramIAudioDeviceListener)
   {
-    if (paramafpr == null)
+    if (paramIAudioDeviceListener == null)
     {
       QLog.e("AudioDeviceManager", 2, "unRegisterAudioDeviceListener listener is null");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramafpr))
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramIAudioDeviceListener))
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramafpr);
+      this.jdField_a_of_type_JavaUtilList.remove(paramIAudioDeviceListener);
       return;
     }
     QLog.e("AudioDeviceManager", 2, "unRegisterAudioDeviceListener listener is not contains");
@@ -192,7 +190,7 @@ public class AudioDeviceManager
     }
     label73:
     int i;
-    label375:
+    label376:
     do
     {
       do
@@ -248,7 +246,7 @@ public class AudioDeviceManager
             }
           }
           if (!"android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED".equals(str)) {
-            break label375;
+            break label376;
           }
           i = paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", 0);
         } while ((i != 2) && (i != 0));
@@ -264,7 +262,7 @@ public class AudioDeviceManager
             break;
           }
           bool1 = ((AudioManager)paramContext.getSystemService("audio")).isBluetoothA2dpOn();
-          bool2 = AudioHelper.d();
+          bool2 = AudioHelper.c();
           if (!QLog.isColorLevel()) {
             break;
           }
@@ -287,7 +285,7 @@ public class AudioDeviceManager
         break;
       }
       bool1 = ((AudioManager)paramContext.getSystemService("audio")).isBluetoothA2dpOn();
-      bool2 = AudioHelper.d();
+      bool2 = AudioHelper.c();
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -298,7 +296,7 @@ public class AudioDeviceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AudioDeviceManager
  * JD-Core Version:    0.7.0.1
  */

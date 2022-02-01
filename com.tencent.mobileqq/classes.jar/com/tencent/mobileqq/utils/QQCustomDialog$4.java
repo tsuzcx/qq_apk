@@ -12,8 +12,8 @@ class QQCustomDialog$4
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    DialogInterface.OnClickListener localOnClickListener = this.val$pl;
-    QQCustomDialog localQQCustomDialog = this.this$0;
+    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {

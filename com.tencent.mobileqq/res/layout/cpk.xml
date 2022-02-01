@@ -1,46 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/hkh" android:background="@color/akh" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqq" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.qzone.widget.ExtendScrollView android:id="@id/l57" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
-        <RelativeLayout android:orientation="vertical" android:paddingBottom="@dimen/avv" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-            <LinearLayout android:orientation="vertical" android:id="@id/mq1" android:background="@drawable/gud" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
-                <EditText android:textSize="16.0sp" android:textColor="@color/a6r" android:textColorHint="#ffb0b3bf" android:ellipsize="end" android:gravity="top" android:id="@id/mai" android:background="@color/ajr" android:paddingLeft="@dimen/a1f" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="11.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/ka9" android:maxLines="2" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/awc" qzone:clearFocusOnBack="true" />
-                <RelativeLayout android:layout_width="fill_parent" android:layout_height="166.25dip">
-                    <com.qzone.widget.ExtendEditText android:textSize="16.0sp" android:textColor="@color/a6r" android:textColorHint="#ff7a7a8d" android:gravity="top" android:id="@id/led" android:background="@color/ajr" android:paddingLeft="7.0dip" android:paddingTop="5.0dip" android:paddingRight="3.0dip" android:paddingBottom="7.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="166.25dip" android:hint="说点什么吧，让大家看到你的故事..." android:maxLines="8" android:minLines="1" android:inputType="textMultiLine" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/awc" qzone:clearFocusOnBack="true" />
-                </RelativeLayout>
-                <RelativeLayout android:id="@id/fpg" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <com.tencent.qcircle.QCircleDynamicGridView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:gravity="center" android:id="@id/fpf" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:scrollingCache="false" android:stretchMode="columnWidth" android:layout_alignParentTop="true" android:layout_alignParentRight="true" qzone:stretchable="false" />
-                </RelativeLayout>
-            </LinearLayout>
-            <FrameLayout android:orientation="vertical" android:id="@id/nhf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/mq1">
-                <RelativeLayout android:layout_gravity="top" android:id="@id/nhd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip">
-                    <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/nhg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="发布到" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                    <ImageView android:id="@id/nhe" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/guh" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-                </RelativeLayout>
-                <FrameLayout android:id="@id/nhx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="42.0dip">
-                    <com.tencent.widget.HorizontalListView android:id="@id/nhy" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-                    <ImageView android:layout_gravity="right" android:layout_width="38.0dip" android:layout_height="fill_parent" android:src="@drawable/gui" android:scaleType="fitXY" />
-                </FrameLayout>
-            </FrameLayout>
-            <RelativeLayout android:id="@id/nhn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="27.0dip" android:layout_below="@id/nhf">
-                <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center" android:id="@id/nho" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/gk2" android:maxEms="15" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <ImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/guh" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            </RelativeLayout>
-            <FrameLayout android:id="@id/nhz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/nhn">
-                <com.tencent.widget.HorizontalListView android:id="@id/ni0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-                <ImageView android:layout_gravity="right" android:layout_width="38.0dip" android:layout_height="fill_parent" android:src="@drawable/gui" android:scaleType="fitXY" />
-            </FrameLayout>
-            <RelativeLayout android:id="@id/ni3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="27.0dip" android:layout_below="@id/nhz">
-                <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/ni6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="同步到" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <LinearLayout android:gravity="center" android:id="@id/ni5" android:descendantFocusability="blocksDescendants" android:layout_width="53.0dip" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-                    <com.qzone.widget.QZoneCheckBox android:id="@id/ni4" android:focusable="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:contentDescription="@string/xl1" />
-                </LinearLayout>
-            </RelativeLayout>
-            <RelativeLayout android:id="@id/nhm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="27.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/ni3">
-                <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/ni2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="保存到手机" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-                <ImageView android:id="@id/ni1" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="8.0dip" android:layout_toLeftOf="@id/ni2" android:layout_centerVertical="true" />
-            </RelativeLayout>
-        </RelativeLayout>
-    </com.qzone.widget.ExtendScrollView>
-</RelativeLayout>
+<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:paddingBottom="13.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView android:textSize="@dimen/aym" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/ohe" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:lineSpacingExtra="3.0dip" />
+    <TextView android:textSize="@dimen/aym" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ohf" android:paddingTop="10.0dip" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:drawableLeft="@drawable/ig_" android:drawablePadding="4.0dip" />
+</LinearLayout>

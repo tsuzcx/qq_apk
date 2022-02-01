@@ -10,16 +10,16 @@ public final class stGroupRankInfo
 {
   static ArrayList<stLevelRankPair> cache_vecRankMap = new ArrayList();
   static ArrayList<stLevelRankPair> cache_vecRankMapNew;
-  public byte cGroupRankSysFlag;
-  public byte cGroupRankUserFlag;
-  public byte cGroupRankUserFlagNew;
-  public long dwGroupCode;
-  public long dwGroupRankSeq;
-  public long dwOfficeMode;
+  public byte cGroupRankSysFlag = 0;
+  public byte cGroupRankUserFlag = 0;
+  public byte cGroupRankUserFlagNew = 0;
+  public long dwGroupCode = 0L;
+  public long dwGroupRankSeq = 0L;
+  public long dwOfficeMode = 0L;
   public String strAdminName = "";
   public String strOwnerName = "";
-  public ArrayList<stLevelRankPair> vecRankMap;
-  public ArrayList<stLevelRankPair> vecRankMapNew;
+  public ArrayList<stLevelRankPair> vecRankMap = null;
+  public ArrayList<stLevelRankPair> vecRankMapNew = null;
   
   static
   {
@@ -84,7 +84,7 @@ public final class stGroupRankInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.stGroupRankInfo
  * JD-Core Version:    0.7.0.1
  */

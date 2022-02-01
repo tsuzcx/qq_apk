@@ -11,9 +11,9 @@ public final class cell_universe
 {
   static Map<Integer, byte[]> cache_BgReqData = new HashMap();
   static Map<String, String> cache_extendInfo;
-  public Map<Integer, byte[]> BgReqData;
-  public Map<String, String> extendInfo;
-  public int iUniverseType;
+  public Map<Integer, byte[]> BgReqData = null;
+  public Map<String, String> extendInfo = null;
+  public int iUniverseType = 0;
   public String strTraceId = "";
   public String strUIJson = "";
   

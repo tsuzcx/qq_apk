@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class LocationInfo
   extends JceStruct
 {
-  public int iBottom;
-  public int iLeft;
-  public int iRight;
-  public int iTop;
+  public int iBottom = 0;
+  public int iLeft = 0;
+  public int iRight = 0;
+  public int iTop = 0;
   
   public LocationInfo() {}
   

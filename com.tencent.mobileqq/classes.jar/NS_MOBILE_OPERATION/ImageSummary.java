@@ -9,7 +9,7 @@ public final class ImageSummary
 {
   public String bubbleUrl = "";
   public String imageId = "";
-  public int source_id;
+  public int source_id = 0;
   public String url = "";
   
   public ImageSummary() {}

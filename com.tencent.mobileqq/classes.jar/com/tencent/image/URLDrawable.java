@@ -17,19 +17,22 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.support.v4.util.LruCache;
-import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
+import android.util.LruCache;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ICache;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.IReport;
+import com.tencent.image.api.IThreadManager;
+import com.tencent.image.api.ITool;
+import com.tencent.image.api.IVersion;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLStreamHandlerFactory;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -48,7 +51,7 @@ public class URLDrawable
 {
   static final int ANIMATION_DURATION = 600;
   public static final int CANCLED = 3;
-  private static final int CORE_POOL_SIZE = CPU_COUNT + 1;
+  private static final int CORE_POOL_SIZE;
   private static final int CPU_COUNT;
   public static boolean DEBUG = false;
   public static final int DECODE_FAIL_COMMON = 1;
@@ -58,22 +61,19 @@ public class URLDrawable
   public static final int FILE_DOWNLOADED = 4;
   private static final int KEEP_ALIVE = 1;
   public static final int LOADING = 0;
-  private static final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
+  private static final int MAXIMUM_POOL_SIZE;
   private static final int PENDING_ACTION_CAPACITY = 100;
   public static final int SUCCESSED = 1;
   public static final String TAG = "URLDrawable_";
   public static final String THREAD_SUB_TAG = "Thread";
-  public static boolean isPublicVersion = false;
+  public static URLDrawableDepWrap depImp;
   static Context mApplicationContext;
-  static URLDrawable.DebuggableCallback sDebugCallback;
   static URLDrawableParams sDefaultDrawableParms;
-  static MQLruCache<String, Object> sMemoryCache;
   static boolean sPause = false;
   static Object sPauseLock = new Object();
   private static final LruCache<URLDrawable, LruCache> sPendingActions = new LruCache(100);
-  private static final BlockingQueue<Runnable> sPoolWorkQueue = new LinkedBlockingQueue(128);
-  private static URLStreamHandlerFactory sStreamHandler = new URLDrawable.1();
-  private static final ThreadFactory sThreadFactory = new URLDrawable.2();
+  private static final BlockingQueue<Runnable> sPoolWorkQueue;
+  private static final ThreadFactory sThreadFactory;
   public boolean individualPause = false;
   private int individualPauseCount = 0;
   private int mAlpha = 255;
@@ -110,6 +110,10 @@ public class URLDrawable
   static
   {
     CPU_COUNT = Runtime.getRuntime().availableProcessors();
+    CORE_POOL_SIZE = CPU_COUNT + 1;
+    MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
+    sPoolWorkQueue = new LinkedBlockingQueue(128);
+    sThreadFactory = new URLDrawable.1();
   }
   
   URLDrawable(URLState paramURLState, Resources paramResources)
@@ -152,7 +156,7 @@ public class URLDrawable
   
   private void checkBitmapSize()
   {
-    if ((sDebugCallback == null) || ((!DEBUG) && (!sDebugCallback.isNeedSample()))) {}
+    if ((depImp.mVersion.isPublicVersion()) || (!DEBUG)) {}
     int i;
     int j;
     int k;
@@ -185,7 +189,7 @@ public class URLDrawable
       String str2 = "(" + j + "," + i + ")";
       String str3 = getURL().toString();
       Exception localException = this.mCallStack;
-      sDebugCallback.onDebug(1, new Object[] { localObject2, str1, str3, localObject1, localException, str2 });
+      depImp.mReport.debug(1, new Object[] { localObject2, str1, str3, localObject1, localException, str2 });
       return;
     }
   }
@@ -199,13 +203,13 @@ public class URLDrawable
   
   public static void clearMemoryCache()
   {
-    sMemoryCache.evictAll();
+    depImp.mCache.evictAll();
   }
   
   private static URLDrawable doIllegalURL(String paramString)
   {
-    QLog.d("URLDrawable_", 1, "doIllegalURL :" + paramString + " isPublicVersion:" + isPublicVersion);
-    if (!isPublicVersion) {
+    depImp.mLog.d("URLDrawable_", 1, "doIllegalURL :" + paramString + " isPublicVersion:" + depImp.mVersion.isPublicVersion());
+    if (!depImp.mVersion.isPublicVersion()) {
       throw new IllegalArgumentException("illegal url format: " + paramString);
     }
     try
@@ -228,8 +232,8 @@ public class URLDrawable
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: invokevirtual 425	java/io/File:toURI	()Ljava/net/URI;
-    //   6: invokevirtual 430	java/net/URI:toURL	()Ljava/net/URL;
+    //   3: invokevirtual 430	java/io/File:toURI	()Ljava/net/URI;
+    //   6: invokevirtual 435	java/net/URI:toURL	()Ljava/net/URL;
     //   9: astore_3
     //   10: aload_2
     //   11: astore_0
@@ -237,7 +241,7 @@ public class URLDrawable
     //   13: ifnull +9 -> 22
     //   16: aload_3
     //   17: aload_1
-    //   18: invokestatic 433	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   18: invokestatic 438	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
     //   21: astore_0
     //   22: aload_0
     //   23: areturn
@@ -248,14 +252,14 @@ public class URLDrawable
     //   28: ifeq -6 -> 22
     //   31: aconst_null
     //   32: aload_1
-    //   33: invokestatic 433	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   33: invokestatic 438	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
     //   36: areturn
     //   37: astore_0
     //   38: iconst_0
     //   39: ifeq +9 -> 48
     //   42: aconst_null
     //   43: aload_1
-    //   44: invokestatic 433	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   44: invokestatic 438	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
     //   47: areturn
     //   48: aload_0
     //   49: athrow
@@ -408,7 +412,7 @@ public class URLDrawable
           }
           localObject = URLState.getConstants(paramURL.toString(), localURLDrawableOptions);
           if (localObject == null) {
-            break label596;
+            break label612;
           }
           paramURLDrawableOptions = (URLDrawable)((URLState)localObject).newDrawable(null);
           if (((URLState)localObject).mParams.mAutoScaleByDensity)
@@ -477,8 +481,8 @@ public class URLDrawable
     CustomError localCustomError = ((URLState)localObject).mCustomError;
     if (i == 2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("URLDrawable_", 2, "getDrawable from cache url= " + paramURL.toString() + ",isLoadingStarted" + ((URLState)localObject).mIsLoadingStarted);
+      if (depImp.mLog.isColorLevel()) {
+        depImp.mLog.d("URLDrawable_", 2, "getDrawable from cache url= " + paramURL.toString() + ",isLoadingStarted" + ((URLState)localObject).mIsLoadingStarted);
       }
       if (localCustomError != null) {
         paramURLDrawableOptions.mFailedDrawable = localCustomError.getFailedDrawable();
@@ -509,7 +513,7 @@ public class URLDrawable
       }
       break;
     }
-    label596:
+    label612:
     paramURLDrawableOptions = new URLDrawable(paramURL, localURLDrawableOptions);
     paramURLDrawableOptions.mUseGifAnimation = localURLDrawableOptions.mPlayGifImage;
     paramURLDrawableOptions.mUseApngImage = localURLDrawableOptions.mUseApngImage;
@@ -588,31 +592,24 @@ public class URLDrawable
   
   private void httpdownloadError()
   {
-    if (sDebugCallback == null) {
-      return;
-    }
     String str = getURL().toString();
     Exception localException = this.mCallStack;
-    sDebugCallback.onDebug(2, new Object[] { str, localException });
+    depImp.mReport.debug(2, new Object[] { str, localException });
   }
   
-  public static void init(Context paramContext, URLDrawableParams paramURLDrawableParams)
+  public static void init(URLDrawableDepWrap paramURLDrawableDepWrap, URLDrawableParams paramURLDrawableParams)
   {
-    URL.setURLStreamHandlerFactory(sStreamHandler);
+    paramURLDrawableDepWrap.mTool.initURLStreamHandlerFactory();
     if (sDefaultDrawableParms != null) {
       throw new IllegalArgumentException("please don't call setURLDrawableParams twice");
     }
+    depImp = paramURLDrawableDepWrap;
     if (paramURLDrawableParams.mSubHandler == null) {
-      paramURLDrawableParams.mSubHandler = new Handler(((HandlerThread)ThreadManagerV2.getSubThread()).getLooper());
+      paramURLDrawableParams.mSubHandler = new Handler(depImp.mThreadManager.getSubThread().getLooper());
     }
     sDefaultDrawableParms = paramURLDrawableParams;
-    if (paramURLDrawableParams.mMemoryCache == null) {}
-    for (sMemoryCache = new URLDrawable.3(paramURLDrawableParams.mMemoryCacheSize);; sMemoryCache = paramURLDrawableParams.mMemoryCache)
-    {
-      mApplicationContext = paramContext;
-      paramURLDrawableParams.mSubHandler.post(new URLDrawable.4());
-      return;
-    }
+    mApplicationContext = paramURLDrawableDepWrap.mTool.getContext();
+    paramURLDrawableParams.mSubHandler.post(new URLDrawable.2());
   }
   
   private boolean isBitmapOversize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -637,8 +634,8 @@ public class URLDrawable
   
   public static void pause()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("URLDrawable_pause", 2, "pause load image ");
+    if (depImp.mLog.isColorLevel()) {
+      depImp.mLog.d("URLDrawable_pause", 2, "pause load image ");
     }
     synchronized (sPauseLock)
     {
@@ -650,34 +647,27 @@ public class URLDrawable
   @Deprecated
   public static void removeMemoryCacheByUrl(String paramString)
   {
-    sMemoryCache.remove(paramString);
+    depImp.mCache.remove(paramString);
   }
   
   public static void removeMemoryCacheByUrl(String paramString, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
     paramString = URLState.getMemoryCacheKey(paramString, paramURLDrawableOptions);
-    sMemoryCache.remove(paramString);
-  }
-  
-  public static void reportLoadingDrawableError()
-  {
-    if ((sDebugCallback != null) && (sDebugCallback.isNeedSample())) {
-      sDebugCallback.onReportLoadingDrawableError();
-    }
+    depImp.mCache.remove(paramString);
   }
   
   public static void resume()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("URLDrawable_resume", 2, "resume load image " + new java.lang.RuntimeException("getStack").getStackTrace()[1].toString());
+    if (depImp.mLog.isColorLevel()) {
+      depImp.mLog.d("URLDrawable_resume", 2, "resume load image " + new java.lang.RuntimeException("getStack").getStackTrace()[1].toString());
     }
     synchronized (sPauseLock)
     {
       sPause = false;
       sPauseLock.notifyAll();
       Object localObject2 = sPendingActions.snapshot();
-      if (QLog.isColorLevel()) {
-        QLog.d("URLDrawable_resume", 2, "resume sPendingActions size= " + sPendingActions.size());
+      if (depImp.mLog.isColorLevel()) {
+        depImp.mLog.d("URLDrawable_resume", 2, "resume sPendingActions size= " + sPendingActions.size());
       }
       localObject2 = ((Map)localObject2).keySet().iterator();
       if (((Iterator)localObject2).hasNext())
@@ -687,14 +677,6 @@ public class URLDrawable
         sPendingActions.remove(localURLDrawable);
       }
     }
-  }
-  
-  public static void setDebuggableCallback(URLDrawable.DebuggableCallback paramDebuggableCallback)
-  {
-    if ((DEBUG) && (sDebugCallback != null)) {
-      throw new IllegalArgumentException("please don't call setDebuggableCallback twice");
-    }
-    sDebugCallback = paramDebuggableCallback;
   }
   
   public void addCookies(String paramString1, String paramString2)
@@ -725,16 +707,16 @@ public class URLDrawable
   
   public void cancelDownload(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("URLDrawable_", 2, "[cancelDownload]" + getURL());
+    if (depImp.mLog.isColorLevel()) {
+      depImp.mLog.i("URLDrawable_", 2, "[cancelDownload]" + getURL());
     }
     if (this.mDrawableContainerState.mTask != null) {
       this.mDrawableContainerState.mTask.mDownloadRunnable.cancel();
     }
-    while (!QLog.isColorLevel()) {
+    while (!depImp.mLog.isColorLevel()) {
       return;
     }
-    QLog.i("URLDrawable_", 2, "[cancelDownload]task is null, cancel failed..." + getURL());
+    depImp.mLog.i("URLDrawable_", 2, "[cancelDownload]task is null, cancel failed..." + getURL());
   }
   
   public void downloadImediatly()
@@ -819,8 +801,8 @@ public class URLDrawable
       this.mFadeInAnimationStarted = false;
     }
     label446:
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawable_pause", 4, "addToPending:" + getURL());
+    if (depImp.mLog.isColorLevel()) {
+      depImp.mLog.d("URLDrawable_pause", 4, "addToPending:" + getURL());
     }
     sPendingActions.put(this, sPendingActions);
   }
@@ -1335,8 +1317,8 @@ public class URLDrawable
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("URLDrawable_resume", 2, "startDownload from run : " + this.mDrawableContainerState.mUrlStr);
+    if (depImp.mLog.isColorLevel()) {
+      depImp.mLog.d("URLDrawable_resume", 2, "startDownload from run : " + this.mDrawableContainerState.mUrlStr);
     }
     startDownload();
   }

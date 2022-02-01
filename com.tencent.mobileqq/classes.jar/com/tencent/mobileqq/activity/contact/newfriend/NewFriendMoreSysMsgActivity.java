@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import Override;
-import aizi;
-import aizr;
-import amik;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -23,7 +20,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class NewFriendMoreSysMsgActivity
   extends BaseActivity
 {
-  private amik a;
+  private NewFriendMoreSysMsgAdapter a;
   
   public static void a(Activity paramActivity, int paramInt1, int paramInt2)
   {
@@ -46,36 +43,36 @@ public class NewFriendMoreSysMsgActivity
   {
     super.doOnCreate(paramBundle);
     int i = getIntent().getIntExtra("first_visible_index", 0);
-    setContentView(2131561300);
-    paramBundle = (LinearLayout)findViewById(2131376947);
+    setContentView(2131561405);
+    paramBundle = (LinearLayout)findViewById(2131377356);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    paramBundle = (SwipListView)findViewById(2131378382);
-    View localView = findViewById(2131372003);
-    TextView localTextView = (TextView)findViewById(2131369278);
+    paramBundle = (SwipListView)findViewById(2131378808);
+    View localView = findViewById(2131372311);
+    TextView localTextView = (TextView)findViewById(2131369534);
     localTextView.setVisibility(0);
-    localTextView.setText(2131694275);
-    setTitle(getString(2131694275));
-    localTextView = (TextView)findViewById(2131369231);
+    localTextView.setText(2131694479);
+    setTitle(getString(2131694479));
+    localTextView = (TextView)findViewById(2131369487);
     localTextView.setVisibility(0);
     localTextView.setText("");
-    localTextView.setOnClickListener(new aizr(this));
-    localTextView = (TextView)findViewById(2131369262);
+    localTextView.setOnClickListener(new NewFriendMoreSysMsgActivity.1(this));
+    localTextView = (TextView)findViewById(2131369518);
     localTextView.setVisibility(0);
-    localTextView.setText(2131698931);
-    this.a = new amik(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
+    localTextView.setText(2131699273);
+    this.a = new NewFriendMoreSysMsgAdapter(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    aizi localaizi = (aizi)this.app.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
-    localaizi.g();
-    localaizi.k();
+    NewFriendManager localNewFriendManager = (NewFriendManager)this.app.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
+    localNewFriendManager.g();
+    localNewFriendManager.k();
     this.a.a();
   }
   
@@ -93,7 +90,7 @@ public class NewFriendMoreSysMsgActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity
  * JD-Core Version:    0.7.0.1
  */

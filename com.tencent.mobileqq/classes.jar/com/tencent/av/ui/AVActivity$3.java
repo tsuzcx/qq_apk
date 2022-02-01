@@ -23,7 +23,7 @@ class AVActivity$3
       return;
       l = AudioHelper.b();
       localView = this.this$0.a(l);
-      localRelativeLayout = (RelativeLayout)this.this$0.findViewById(2131373556);
+      localRelativeLayout = (RelativeLayout)this.this$0.findViewById(2131373870);
     } while ((localView == null) || (localRelativeLayout.getVisibility() == 0));
     QLog.w(this.this$0.b, 1, "qav_UserGuide_for_more, 计划显示, seq[" + l + "]");
     localView.setAlpha(0.01F);
@@ -36,7 +36,7 @@ class AVActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.3
  * JD-Core Version:    0.7.0.1
  */

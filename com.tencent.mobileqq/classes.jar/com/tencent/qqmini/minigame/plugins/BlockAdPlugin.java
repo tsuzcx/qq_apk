@@ -24,6 +24,7 @@ import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
@@ -64,7 +65,35 @@ public class BlockAdPlugin
   
   private void blockErrorStateCallbackDelay(RequestEvent paramRequestEvent, int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.7(this, paramInt2, paramString, paramInt1, paramRequestEvent), paramInt3);
+    AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.8(this, paramInt2, paramString, paramInt1, paramRequestEvent), paramInt3);
+  }
+  
+  private void callbackUpdateSuccess(RequestEvent paramRequestEvent, int paramInt, BlockAdInfo paramBlockAdInfo)
+  {
+    AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.6(this, paramInt, paramBlockAdInfo, paramRequestEvent), 0L);
+  }
+  
+  private void createAdBlockView(BlockAdInfo paramBlockAdInfo, String paramString, RequestEvent paramRequestEvent, Bundle paramBundle)
+  {
+    if (((AdProxy)ProxyManager.get(AdProxy.class) == null) || (paramBlockAdInfo == null)) {
+      QMLog.i("BlockAdPlugin", "start create, null");
+    }
+    do
+    {
+      return;
+      paramString = ((AdProxy)ProxyManager.get(AdProxy.class)).createBlockAdView(this.mMiniAppContext.getAttachedActivity(), paramString, paramBlockAdInfo.getAdUnitId(), paramBlockAdInfo.getLeft(), paramBlockAdInfo.getTop(), paramBlockAdInfo.getSize(), paramBlockAdInfo.getOri(), paramBlockAdInfo.getCompId(), new BlockAdPlugin.2(this, paramRequestEvent, paramBlockAdInfo), paramBundle);
+    } while (paramString == null);
+    try
+    {
+      paramString.loadAD();
+      this.mBlockAdViewMap.put(Integer.valueOf(paramBlockAdInfo.getCompId()), paramString);
+      this.mBlockAdInfoMap.put(Integer.valueOf(paramBlockAdInfo.getCompId()), paramBlockAdInfo);
+      return;
+    }
+    catch (Throwable paramBlockAdInfo)
+    {
+      QMLog.i("BlockAdPlugin", "loadAd error", paramBlockAdInfo);
+    }
   }
   
   private void destroyBlockAd(int paramInt)
@@ -107,6 +136,36 @@ public class BlockAdPlugin
     return Math.round(this.mGameDensity * paramFloat);
   }
   
+  private boolean handleBlockAdType(int paramInt1, int paramInt2, BlockAdInfo paramBlockAdInfo, boolean paramBoolean)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return paramBoolean;
+    case 1: 
+      if (paramBlockAdInfo.getLeft() != paramInt2) {}
+      for (bool = true;; bool = false)
+      {
+        paramBoolean = bool;
+        if (!bool) {
+          break;
+        }
+        paramBlockAdInfo.setLeft(paramInt2);
+        return bool;
+      }
+    }
+    if (paramBlockAdInfo.getTop() != paramInt2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramBoolean = bool;
+      if (!bool) {
+        break;
+      }
+      paramBlockAdInfo.setTop(paramInt2);
+      return bool;
+    }
+  }
+  
   private void informJs(RequestEvent paramRequestEvent, JSONObject paramJSONObject, String paramString)
   {
     paramRequestEvent.jsService.evaluateSubscribeJS(paramString, paramJSONObject.toString(), 0);
@@ -127,7 +186,7 @@ public class BlockAdPlugin
         int k;
         int j;
         int i;
-        label96:
+        label103:
         Object localObject1;
         try
         {
@@ -203,8 +262,8 @@ public class BlockAdPlugin
             i = -1;
             localObject2 = localObject1;
             localObject1 = localException5;
-            break label189;
-            break label96;
+            break label198;
+            break label103;
           }
           try
           {
@@ -219,14 +278,14 @@ public class BlockAdPlugin
           {
             localObject2 = localObject1;
             localObject1 = localException6;
-            break label189;
+            break label198;
             i = -1;
           }
         }
       }
       bool = "vertical".equals(str2);
       if (!bool) {
-        break label311;
+        break label320;
       }
       i = 0;
     }
@@ -238,7 +297,7 @@ public class BlockAdPlugin
     if ((TextUtils.isEmpty(paramString)) || (!URLUtil.isNetworkUrl(paramString))) {
       return;
     }
-    ThreadManager.executeOnNetworkIOThreadPool(new BlockAdPlugin.6(this, paramString));
+    ThreadManager.executeOnNetworkIOThreadPool(new BlockAdPlugin.7(this, paramString));
   }
   
   private boolean showBlockAd(int paramInt)
@@ -391,7 +450,7 @@ public class BlockAdPlugin
       }
       localObject3 = this.mMiniAppInfo;
       if (localObject3 == null) {
-        break label414;
+        break label421;
       }
     }
     BlockAdInfo localBlockAdInfo = parseBlockAdInfoFromJson(paramRequestEvent.jsonParams);
@@ -402,7 +461,7 @@ public class BlockAdPlugin
     }
     Object localObject3;
     String str1;
-    label162:
+    label165:
     String str2;
     Object localObject2;
     if (((MiniAppInfo)localObject3).launchParam != null) {
@@ -410,7 +469,7 @@ public class BlockAdPlugin
       {
         localObject1 = ((MiniAppInfo)localObject3).launchParam.entryPath;
         if (((MiniAppInfo)localObject3).launchParam == null) {
-          break label395;
+          break label400;
         }
         str1 = ((MiniAppInfo)localObject3).launchParam.reportData;
         str2 = String.valueOf(((MiniAppInfo)localObject3).launchParam.scene);
@@ -419,7 +478,7 @@ public class BlockAdPlugin
     }
     for (Object localObject1 = str2;; localObject1 = "")
     {
-      label203:
+      label206:
       Object localObject4;
       String str3;
       Bundle localBundle;
@@ -441,11 +500,11 @@ public class BlockAdPlugin
         localBundle.putInt(AdProxy.KEY_AD_TYPE, 13);
         str3 = AdProxy.KEY_ORIENTATION;
         if (i != 2) {
-          break label409;
+          break label416;
         }
       }
-      label395:
-      label409:
+      label400:
+      label416:
       for (i = 90;; i = 0)
       {
         localBundle.putInt(str3, i);
@@ -459,11 +518,11 @@ public class BlockAdPlugin
         localObject1 = "";
         break;
         str1 = "";
-        break label162;
+        break label165;
         str2 = "";
-        break label203;
+        break label206;
       }
-      label414:
+      label421:
       str1 = "";
       localObject2 = "";
     }
@@ -481,20 +540,20 @@ public class BlockAdPlugin
     //   9: aload_0
     //   10: getfield 57	com/tencent/qqmini/minigame/plugins/BlockAdPlugin:mBlockAdViewMap	Ljava/util/HashMap;
     //   13: iload_1
-    //   14: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   17: invokevirtual 122	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   14: invokestatic 186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   17: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   20: ifnull +23 -> 43
     //   23: aload_0
     //   24: getfield 57	com/tencent/qqmini/minigame/plugins/BlockAdPlugin:mBlockAdViewMap	Ljava/util/HashMap;
     //   27: iload_1
-    //   28: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   31: invokevirtual 122	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   34: checkcast 124	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView
-    //   37: invokevirtual 128	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:getView	()Landroid/view/View;
+    //   28: invokestatic 186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   31: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   34: checkcast 177	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView
+    //   37: invokevirtual 202	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:getView	()Landroid/view/View;
     //   40: ifnonnull +16 -> 56
     //   43: ldc 33
-    //   45: ldc 130
-    //   47: invokestatic 136	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   45: ldc 204
+    //   47: invokestatic 207	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   50: iconst_0
     //   51: istore_2
     //   52: aload_0
@@ -507,24 +566,24 @@ public class BlockAdPlugin
     //   63: aload_0
     //   64: getfield 59	com/tencent/qqmini/minigame/plugins/BlockAdPlugin:mBlockAdInfoMap	Ljava/util/HashMap;
     //   67: iload_1
-    //   68: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   71: invokevirtual 122	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   68: invokestatic 186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   71: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   74: ifnonnull +15 -> 89
     //   77: ldc 33
-    //   79: ldc 138
-    //   81: invokestatic 136	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: ldc 209
+    //   81: invokestatic 207	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   84: iconst_0
     //   85: istore_2
     //   86: goto -34 -> 52
     //   89: aload_0
     //   90: getfield 57	com/tencent/qqmini/minigame/plugins/BlockAdPlugin:mBlockAdViewMap	Ljava/util/HashMap;
     //   93: iload_1
-    //   94: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   97: invokevirtual 122	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   100: checkcast 124	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView
+    //   94: invokestatic 186	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   97: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   100: checkcast 177	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView
     //   103: astore_3
     //   104: aload_3
-    //   105: invokevirtual 128	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:getView	()Landroid/view/View;
+    //   105: invokevirtual 202	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:getView	()Landroid/view/View;
     //   108: astore 4
     //   110: aload 4
     //   112: ifnonnull +8 -> 120
@@ -533,10 +592,10 @@ public class BlockAdPlugin
     //   117: goto -65 -> 52
     //   120: aload 4
     //   122: bipush 8
-    //   124: invokevirtual 296	android/view/View:setVisibility	(I)V
+    //   124: invokevirtual 360	android/view/View:setVisibility	(I)V
     //   127: aload_3
     //   128: aload_3
-    //   129: invokevirtual 170	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:clearBlockAdAnimation	(Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView;)V
+    //   129: invokevirtual 235	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView:clearBlockAdAnimation	(Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBlockAdView;)V
     //   132: iconst_1
     //   133: istore_2
     //   134: goto -82 -> 52
@@ -592,7 +651,7 @@ public class BlockAdPlugin
       i = localJSONObject.getInt("compId");
       QMLog.i("BlockAdPlugin", "handle operateBlockAd type = " + str);
       if ("show".equals(str)) {
-        AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.2(this, i, paramRequestEvent), 300L);
+        AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.3(this, i, paramRequestEvent), 300L);
       }
       for (;;)
       {
@@ -600,7 +659,7 @@ public class BlockAdPlugin
         if (!"hide".equals(str)) {
           break;
         }
-        AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.3(this, i), 300L);
+        AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.4(this, i), 300L);
       }
     }
     catch (JSONException paramRequestEvent)
@@ -612,7 +671,7 @@ public class BlockAdPlugin
         QMLog.i("BlockAdPlugin", "handle operateBlockAd parse json error", paramRequestEvent);
         continue;
         if ("destroy".equals(str)) {
-          AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.4(this, i), 300L);
+          AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.5(this, i), 300L);
         } else {
           QMLog.i("BlockAdPlugin", "handle operateBlockAd not define type = " + str);
         }
@@ -623,99 +682,54 @@ public class BlockAdPlugin
   @JsEvent({"updateBlockAdSize"})
   public String updateBlockAdSize(RequestEvent paramRequestEvent)
   {
-    int m = 1;
-    int n = 1;
-    int k = 1;
     QMLog.i("BlockAdPlugin", "receive updateBlockAdSize event");
-    Object localObject;
-    int i1;
-    int i;
-    int j;
     for (;;)
     {
       try
       {
         localObject = new JSONObject(paramRequestEvent.jsonParams);
-        i1 = ((JSONObject)localObject).getInt("compId");
-        if (((JSONObject)localObject).has("left"))
-        {
-          i = ((JSONObject)localObject).getInt("left");
-          j = 1;
-          if (j == -1) {
-            break label195;
-          }
-          localObject = (BlockAdInfo)this.mBlockAdInfoMap.get(Integer.valueOf(i1));
-          if (localObject == null) {
-            break label195;
-          }
-        }
-        switch (j)
-        {
-        case 1: 
-          label108:
-          if (j != 0) {
-            break label237;
-          }
-          if (!QMLog.isColorLevel()) {
-            break label270;
-          }
-          QMLog.i("BlockAdPlugin", "updateBlockAd no need to resize");
-          break label270;
-          if (!((JSONObject)localObject).has("top")) {
-            break label257;
-          }
-          i = ((JSONObject)localObject).getInt("top");
-          j = 2;
+        k = ((JSONObject)localObject).getInt("compId");
+        if (!((JSONObject)localObject).has("left")) {
           continue;
-          if (((BlockAdInfo)localObject).getLeft() != i)
-          {
-            k = m;
-            j = k;
-            if (k == 0) {
-              continue;
-            }
-            ((BlockAdInfo)localObject).setLeft(i);
-            j = k;
-            continue;
-            return "";
-          }
-          break;
         }
+        i = ((JSONObject)localObject).getInt("left");
+        j = 1;
       }
       catch (JSONException paramRequestEvent)
       {
+        Object localObject;
+        int k;
         QMLog.i("BlockAdPlugin", "handle updateBlockAdSize parse json error", paramRequestEvent);
+        continue;
+        int i = -1;
+        int j = -1;
+        continue;
       }
-      label195:
-      k = 0;
-    }
-    if (((BlockAdInfo)localObject).getTop() != i) {}
-    for (k = n;; k = 0)
-    {
-      j = k;
-      if (k == 0) {
-        break label108;
+      if (j == -1) {
+        continue;
       }
-      ((BlockAdInfo)localObject).setTop(i);
-      j = k;
-      break label108;
-      label237:
-      AppBrandTask.runTaskOnUiThreadDelay(new BlockAdPlugin.5(this, i1, (BlockAdInfo)localObject, paramRequestEvent), 0L);
-      break label195;
-      label257:
-      i = -1;
-      j = -1;
-      break;
-      j = k;
-      break label108;
-      label270:
+      localObject = (BlockAdInfo)this.mBlockAdInfoMap.get(Integer.valueOf(k));
+      if (localObject == null) {
+        continue;
+      }
+      if (handleBlockAdType(j, i, (BlockAdInfo)localObject, true)) {
+        continue;
+      }
+      QMLog.e("BlockAdPlugin", "updateBlockAd no need to resize");
       return "";
+      if (!((JSONObject)localObject).has("top")) {
+        continue;
+      }
+      i = ((JSONObject)localObject).getInt("top");
+      j = 2;
     }
+    callbackUpdateSuccess(paramRequestEvent, k, (BlockAdInfo)localObject);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.BlockAdPlugin
  * JD-Core Version:    0.7.0.1
  */

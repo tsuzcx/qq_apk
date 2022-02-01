@@ -3,9 +3,9 @@ package cooperation.qzone.webviewplugin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.WebEventListener;
@@ -25,7 +25,7 @@ public class QzoneUploadPlugin
   private static final int SAVE_TOLOCAL_ERROR = 103;
   private static final String TAG = "js-upload: QzoneUploadPlugin";
   private byte REQUEST_PICK_PHOTO = 115;
-  private boolean inited;
+  private boolean inited = false;
   public int mFrom = 4;
   public int mSource = 0;
   private Map<String, Integer> pathMap = new HashMap();
@@ -147,18 +147,18 @@ public class QzoneUploadPlugin
     //   2: iconst_1
     //   3: ldc_w 262
     //   6: invokestatic 203	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   9: new 90	org/json/JSONObject
+    //   9: new 92	org/json/JSONObject
     //   12: dup
     //   13: aload_1
     //   14: iconst_0
     //   15: aaload
     //   16: invokespecial 206	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   19: astore_2
-    //   20: new 57	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task
+    //   20: new 59	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task
     //   23: dup
     //   24: aload_0
     //   25: aload_2
-    //   26: ldc 101
+    //   26: ldc 103
     //   28: invokevirtual 266	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   31: invokespecial 269	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task:<init>	(Lcooperation/qzone/webviewplugin/QzoneUploadPlugin;I)V
     //   34: astore_1
@@ -166,26 +166,26 @@ public class QzoneUploadPlugin
     //   36: aload_2
     //   37: ldc_w 270
     //   40: invokevirtual 214	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   43: putfield 60	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task:base64	Ljava/lang/String;
+    //   43: putfield 62	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task:base64	Ljava/lang/String;
     //   46: aload_1
     //   47: aload_2
     //   48: ldc_w 271
     //   51: invokevirtual 214	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   54: putfield 177	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task:bid	Ljava/lang/String;
+    //   54: putfield 179	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task:bid	Ljava/lang/String;
     //   57: aload_1
     //   58: aload_2
     //   59: ldc 210
     //   61: invokevirtual 214	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   64: putfield 121	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task:jsCallback	Ljava/lang/String;
+    //   64: putfield 123	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task:jsCallback	Ljava/lang/String;
     //   67: aload_1
     //   68: ifnull +26 -> 94
     //   71: aload_0
-    //   72: getfield 48	cooperation/qzone/webviewplugin/QzoneUploadPlugin:taskMap	Ljava/util/Map;
+    //   72: getfield 50	cooperation/qzone/webviewplugin/QzoneUploadPlugin:taskMap	Ljava/util/Map;
     //   75: aload_1
-    //   76: getfield 103	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task:id	I
-    //   79: invokestatic 169	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   76: getfield 105	cooperation/qzone/webviewplugin/QzoneUploadPlugin$Task:id	I
+    //   79: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   82: aload_1
-    //   83: invokeinterface 174 3 0
+    //   83: invokeinterface 176 3 0
     //   88: pop
     //   89: aload_0
     //   90: aload_1
@@ -196,9 +196,9 @@ public class QzoneUploadPlugin
     //   97: astore_1
     //   98: ldc 20
     //   100: iconst_1
-    //   101: ldc 132
+    //   101: ldc 134
     //   103: aload_2
-    //   104: invokestatic 135	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   104: invokestatic 137	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   107: goto -40 -> 67
     //   110: astore_2
     //   111: aconst_null
@@ -207,7 +207,7 @@ public class QzoneUploadPlugin
     //   115: iconst_1
     //   116: ldc_w 275
     //   119: aload_2
-    //   120: invokestatic 135	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   120: invokestatic 137	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   123: goto -56 -> 67
     //   126: astore_2
     //   127: goto -14 -> 113
@@ -315,7 +315,7 @@ public class QzoneUploadPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneUploadPlugin
  * JD-Core Version:    0.7.0.1
  */

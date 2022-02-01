@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.listentogether;
 
-import awgx;
+import com.tencent.mobileqq.listentogether.lyrics.LyricsController;
 
 class ListenTogetherManager$13
   implements Runnable

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
+import android.os.Build.VERSION;
 import android.os.Looper;
 import android.view.Surface;
 import androidx.annotation.Keep;
@@ -13,12 +14,19 @@ import androidx.annotation.UiThread;
 import androidx.annotation.VisibleForTesting;
 import io.flutter.Log;
 import io.flutter.embedding.engine.dart.PlatformMessageHandler;
+import io.flutter.embedding.engine.mutatorsstack.FlutterMutatorsStack;
 import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 import io.flutter.plugin.common.StandardMessageCodec;
+import io.flutter.plugin.localization.LocalizationPlugin;
+import io.flutter.plugin.platform.PlatformViewsController;
 import io.flutter.view.AccessibilityBridge.Action;
 import io.flutter.view.FlutterCallbackInformation;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Locale.Builder;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -37,12 +45,16 @@ public class FlutterJNI
   private final Set<FlutterEngine.EngineLifecycleListener> engineLifecycleListeners = new CopyOnWriteArraySet();
   @NonNull
   private final Set<FlutterUiDisplayListener> flutterUiDisplayListeners = new CopyOnWriteArraySet();
+  @Nullable
+  private LocalizationPlugin localizationPlugin;
   @NonNull
   private final Looper mainLooper = Looper.getMainLooper();
   @Nullable
   private Long nativePlatformViewId;
   @Nullable
   private PlatformMessageHandler platformMessageHandler;
+  @Nullable
+  private PlatformViewsController platformViewsController;
   
   private static void asyncWaitForVsync(long paramLong)
   {
@@ -87,13 +99,6 @@ public class FlutterJNI
     return observatoryUri;
   }
   
-  private void handlePlatformMessage(@NonNull String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    if (this.platformMessageHandler != null) {
-      this.platformMessageHandler.handleMessageFromDart(paramString, paramArrayOfByte, paramInt);
-    }
-  }
-  
   private void handlePlatformMessageResponse(int paramInt, byte[] paramArrayOfByte)
   {
     if (this.platformMessageHandler != null) {
@@ -101,7 +106,7 @@ public class FlutterJNI
     }
   }
   
-  private native long nativeAttach(@NonNull FlutterJNI paramFlutterJNI, boolean paramBoolean);
+  private native long nativeAttach(@NonNull FlutterJNI paramFlutterJNI, boolean paramBoolean, String[] paramArrayOfString);
   
   private native void nativeDestroy(long paramLong);
   
@@ -115,7 +120,9 @@ public class FlutterJNI
   
   private native Bitmap nativeGetBitmap(long paramLong);
   
-  public static native void nativeInit(@NonNull Context paramContext, @NonNull String[] paramArrayOfString, @Nullable String paramString1, @NonNull String paramString2, @NonNull String paramString3);
+  private native boolean nativeGetIsSoftwareRenderingEnabled();
+  
+  public static native void nativeInit(@NonNull Context paramContext, @NonNull String[] paramArrayOfString, @Nullable String paramString1, @NonNull String paramString2, @NonNull String paramString3, long paramLong);
   
   private native void nativeInvokePlatformMessageEmptyResponseCallback(long paramLong, int paramInt);
   
@@ -126,9 +133,11 @@ public class FlutterJNI
   
   private native void nativeMarkTextureFrameAvailable(long paramLong1, long paramLong2);
   
+  private native void nativeNotifyLowMemoryWarning(long paramLong);
+  
   public static native void nativeOnVsync(long paramLong1, long paramLong2, long paramLong3);
   
-  public static native void nativeRecordStartTimestamp(long paramLong);
+  public static native void nativePrefetchDefaultFontManager();
   
   private native void nativeRegisterTexture(long paramLong1, long paramLong2, @NonNull SurfaceTexture paramSurfaceTexture);
   
@@ -145,6 +154,8 @@ public class FlutterJNI
   private native void nativeSurfaceCreated(long paramLong, @NonNull Surface paramSurface);
   
   private native void nativeSurfaceDestroyed(long paramLong);
+  
+  private native void nativeSurfaceWindowChanged(long paramLong, @NonNull Surface paramSurface);
   
   private native void nativeUnregisterTexture(long paramLong1, long paramLong2);
   
@@ -201,9 +212,87 @@ public class FlutterJNI
   @UiThread
   public void attachToNative(boolean paramBoolean)
   {
+    attachToNative(paramBoolean, new String[0]);
+  }
+  
+  @UiThread
+  public void attachToNative(boolean paramBoolean, String[] paramArrayOfString)
+  {
     ensureRunningOnMainThread();
     ensureNotAttachedToNative();
-    this.nativePlatformViewId = Long.valueOf(nativeAttach(this, paramBoolean));
+    this.nativePlatformViewId = Long.valueOf(performNativeAttach(this, paramBoolean, paramArrayOfString));
+  }
+  
+  @VisibleForTesting
+  String[] computePlatformResolvedLocale(@NonNull String[] paramArrayOfString)
+  {
+    if (this.localizationPlugin == null) {
+      return new String[0];
+    }
+    Object localObject = new ArrayList();
+    int i = 0;
+    if (i < paramArrayOfString.length)
+    {
+      String str1 = paramArrayOfString[(i + 0)];
+      String str2 = paramArrayOfString[(i + 1)];
+      String str3 = paramArrayOfString[(i + 2)];
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        Locale.Builder localBuilder = new Locale.Builder();
+        if (!str1.isEmpty()) {
+          localBuilder.setLanguage(str1);
+        }
+        if (!str2.isEmpty()) {
+          localBuilder.setRegion(str2);
+        }
+        if (!str3.isEmpty()) {
+          localBuilder.setScript(str3);
+        }
+        ((List)localObject).add(localBuilder.build());
+      }
+      for (;;)
+      {
+        i += 3;
+        break;
+        ((List)localObject).add(new Locale(str1, str2));
+      }
+    }
+    paramArrayOfString = this.localizationPlugin.resolveNativeLocale((List)localObject);
+    if (paramArrayOfString == null) {
+      return new String[0];
+    }
+    localObject = new String[3];
+    localObject[0] = paramArrayOfString.getLanguage();
+    localObject[1] = paramArrayOfString.getCountry();
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      localObject[2] = paramArrayOfString.getScript();
+      return localObject;
+    }
+    localObject[2] = "";
+    return localObject;
+  }
+  
+  @UiThread
+  public FlutterOverlaySurface createOverlaySurface()
+  {
+    ensureRunningOnMainThread();
+    if (this.platformViewsController != null) {
+      return this.platformViewsController.createOverlaySurface();
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to position an overlay surface");
+  }
+  
+  @UiThread
+  public void destroyOverlaySurfaces()
+  {
+    ensureRunningOnMainThread();
+    if (this.platformViewsController != null)
+    {
+      this.platformViewsController.destroyOverlaySurfaces();
+      return;
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to destroy an overlay surface");
   }
   
   @UiThread
@@ -293,6 +382,20 @@ public class FlutterJNI
   }
   
   @UiThread
+  public boolean getIsSoftwareRenderingEnabled()
+  {
+    return nativeGetIsSoftwareRenderingEnabled();
+  }
+  
+  @VisibleForTesting
+  public void handlePlatformMessage(@NonNull String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    if (this.platformMessageHandler != null) {
+      this.platformMessageHandler.handleMessageFromDart(paramString, paramArrayOfByte, paramInt);
+    }
+  }
+  
+  @UiThread
   public void invokePlatformMessageEmptyResponseCallback(int paramInt)
   {
     ensureRunningOnMainThread();
@@ -335,12 +438,75 @@ public class FlutterJNI
     nativeMarkTextureFrameAvailable(this.nativePlatformViewId.longValue(), paramLong);
   }
   
+  public native boolean nativeFlutterTextUtilsIsEmoji(int paramInt);
+  
+  public native boolean nativeFlutterTextUtilsIsEmojiModifier(int paramInt);
+  
+  public native boolean nativeFlutterTextUtilsIsEmojiModifierBase(int paramInt);
+  
+  public native boolean nativeFlutterTextUtilsIsRegionalIndicator(int paramInt);
+  
+  public native boolean nativeFlutterTextUtilsIsVariationSelector(int paramInt);
+  
   @UiThread
-  public native boolean nativeGetIsSoftwareRenderingEnabled();
+  public void notifyLowMemoryWarning()
+  {
+    ensureRunningOnMainThread();
+    ensureAttachedToNative();
+    nativeNotifyLowMemoryWarning(this.nativePlatformViewId.longValue());
+  }
+  
+  @UiThread
+  public void onBeginFrame()
+  {
+    ensureRunningOnMainThread();
+    if (this.platformViewsController != null)
+    {
+      this.platformViewsController.onBeginFrame();
+      return;
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to begin the frame");
+  }
+  
+  @UiThread
+  public void onDisplayOverlaySurface(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    ensureRunningOnMainThread();
+    if (this.platformViewsController != null)
+    {
+      this.platformViewsController.onDisplayOverlaySurface(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+      return;
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to position an overlay surface");
+  }
+  
+  @UiThread
+  public void onDisplayPlatformView(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, FlutterMutatorsStack paramFlutterMutatorsStack)
+  {
+    ensureRunningOnMainThread();
+    if (this.platformViewsController != null)
+    {
+      this.platformViewsController.onDisplayPlatformView(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramFlutterMutatorsStack);
+      return;
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to position a platform view");
+  }
+  
+  @UiThread
+  public void onEndFrame()
+  {
+    ensureRunningOnMainThread();
+    if (this.platformViewsController != null)
+    {
+      this.platformViewsController.onEndFrame();
+      return;
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to end the frame");
+  }
   
   @UiThread
   @VisibleForTesting
-  void onFirstFrame()
+  public void onFirstFrame()
   {
     ensureRunningOnMainThread();
     Iterator localIterator = this.flutterUiDisplayListeners.iterator();
@@ -383,6 +549,26 @@ public class FlutterJNI
     ensureAttachedToNative();
     onRenderingStopped();
     nativeSurfaceDestroyed(this.nativePlatformViewId.longValue());
+  }
+  
+  @UiThread
+  public void onSurfaceWindowChanged(@NonNull Surface paramSurface)
+  {
+    ensureRunningOnMainThread();
+    ensureAttachedToNative();
+    nativeSurfaceWindowChanged(this.nativePlatformViewId.longValue(), paramSurface);
+  }
+  
+  @VisibleForTesting
+  public long performNativeAttach(@NonNull FlutterJNI paramFlutterJNI, boolean paramBoolean)
+  {
+    return performNativeAttach(this, paramBoolean, new String[0]);
+  }
+  
+  @VisibleForTesting
+  public long performNativeAttach(@NonNull FlutterJNI paramFlutterJNI, boolean paramBoolean, String[] paramArrayOfString)
+  {
+    return nativeAttach(this, paramBoolean, paramArrayOfString);
   }
   
   @UiThread
@@ -431,10 +617,24 @@ public class FlutterJNI
   }
   
   @UiThread
+  public void setLocalizationPlugin(@Nullable LocalizationPlugin paramLocalizationPlugin)
+  {
+    ensureRunningOnMainThread();
+    this.localizationPlugin = paramLocalizationPlugin;
+  }
+  
+  @UiThread
   public void setPlatformMessageHandler(@Nullable PlatformMessageHandler paramPlatformMessageHandler)
   {
     ensureRunningOnMainThread();
     this.platformMessageHandler = paramPlatformMessageHandler;
+  }
+  
+  @UiThread
+  public void setPlatformViewsController(@NonNull PlatformViewsController paramPlatformViewsController)
+  {
+    ensureRunningOnMainThread();
+    this.platformViewsController = paramPlatformViewsController;
   }
   
   @UiThread
@@ -463,7 +663,7 @@ public class FlutterJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterJNI
  * JD-Core Version:    0.7.0.1
  */

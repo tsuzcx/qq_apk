@@ -2,7 +2,6 @@ package com.tencent.mobileqq.receipt;
 
 import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
-import bbbc;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,10 +13,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ReceiptMsgManager$2
+class ReceiptMsgManager$2
   implements Runnable
 {
-  public ReceiptMsgManager$2(bbbc parambbbc, ArrayList paramArrayList, Bundle paramBundle, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  ReceiptMsgManager$2(ReceiptMsgManager paramReceiptMsgManager, ArrayList paramArrayList, Bundle paramBundle, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
@@ -29,15 +28,15 @@ public class ReceiptMsgManager$2
       {
         MessageForPic localMessageForPic = (MessageForPic)localChatMessage;
         int i = this.jdField_a_of_type_AndroidOsBundle.getInt("ReceiptMsgManager.EXTRA_KEY_PHOTO_SIZE_SPEC", 0);
-        bbbc.a(this.this$0, localMessageForPic, i);
-        localMessageForPic.md5 = bbbc.a(this.this$0, localMessageForPic.path);
+        ReceiptMsgManager.a(this.this$0, localMessageForPic, i);
+        localMessageForPic.md5 = ReceiptMsgManager.a(this.this$0, localMessageForPic.path);
         BitmapFactory.Options localOptions = new BitmapFactory.Options();
         localOptions.inJustDecodeBounds = true;
         localOptions.inSampleSize = 1;
         SafeBitmapFactory.decodeFile(localMessageForPic.path, localOptions);
         localMessageForPic.width = localOptions.outWidth;
         localMessageForPic.height = localOptions.outHeight;
-        bbbc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localChatMessage, Integer.toString(i));
+        ReceiptMsgManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localChatMessage, Integer.toString(i));
         if (RichMediaUtil.isPicLandscape(localMessageForPic.path))
         {
           localMessageForPic.width = localOptions.outHeight;
@@ -48,12 +47,12 @@ public class ReceiptMsgManager$2
         }
       }
     }
-    bbbc.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin, bbbc.a(this.this$0, 2), false, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidOsBundle);
+    ReceiptMsgManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, ReceiptMsgManager.a(this.this$0, 2), false, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMsgManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,11 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oxi;
 
 public class ReadInJoyUgcVideoReportItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReadInJoyUgcVideoReportItem> CREATOR = new oxi();
+  public static final Parcelable.Creator<ReadInJoyUgcVideoReportItem> CREATOR = new ReadInJoyUgcVideoReportItem.1();
   public double a;
   public int a;
   public long a;
@@ -25,7 +24,7 @@ public class ReadInJoyUgcVideoReportItem
   
   public ReadInJoyUgcVideoReportItem() {}
   
-  public ReadInJoyUgcVideoReportItem(Parcel paramParcel)
+  protected ReadInJoyUgcVideoReportItem(Parcel paramParcel)
   {
     this.jdField_a_of_type_Double = paramParcel.readDouble();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -83,7 +82,7 @@ public class ReadInJoyUgcVideoReportItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem
  * JD-Core Version:    0.7.0.1
  */

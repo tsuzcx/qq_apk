@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.trooppiceffects.view;
 
-import bgtx;
-
-public class ShakePicView$1$1
+class ShakePicView$1$1
   implements Runnable
 {
-  public ShakePicView$1$1(bgtx parambgtx) {}
+  ShakePicView$1$1(ShakePicView.1 param1) {}
   
   public void run()
   {

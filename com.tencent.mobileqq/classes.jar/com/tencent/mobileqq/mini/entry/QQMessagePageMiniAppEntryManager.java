@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.mini.entry;
 
-import alfs;
-import almq;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,47 +16,50 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import arbv;
-import arbw;
-import bkzc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import com.tencent.mobileqq.activity.recent.DrawerFrame.StoryTouchEventInterceptor;
+import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.business.MiniAppConfBean;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ARMapHongBaoListView;
+import com.tencent.widget.ARMapHongBaoListView.QQStoryListViewListener;
 import com.tencent.widget.ListView;
+import mqq.app.AppRuntime;
 import mqq.observer.BusinessObserver;
 
 public class QQMessagePageMiniAppEntryManager
-  implements alfs, bkzc, MiniAppPullInterface, BusinessObserver
+  implements DrawerFrame.StoryTouchEventInterceptor, MiniAppPullInterface, ARMapHongBaoListView.QQStoryListViewListener, BusinessObserver
 {
   public static final long APP_STORE_TIME_THRESHOLD = 86400000L;
   public static final int MODE_IDLE = 1;
   public static final int MODE_REFRESH = 2;
   public static final int MODE_SHOW_NODE = 3;
-  private static final int OFFSET_NODE_OPEN = ViewUtils.dip2px(-50.0F);
-  private static final int OFFSET_NODE_SCROLL = ViewUtils.dip2px(-50.0F);
-  private static final int OFFSET_NODE_SCROLL_FAST = ViewUtils.dip2px(-100.0F);
+  private static final int OFFSET_NODE_OPEN = ViewUtils.a(-50.0F);
+  private static final int OFFSET_NODE_SCROLL = ViewUtils.a(-50.0F);
+  private static final int OFFSET_NODE_SCROLL_FAST = ViewUtils.a(-100.0F);
   private static final int OVER_FLING_DISTANCE = 70;
   private static final float SPEED_2 = 1.5F;
-  private static final int STORY_TRANSLATE = ViewUtils.dip2px(-70.0F);
+  private static final int STORY_TRANSLATE = ViewUtils.a(-70.0F);
   public static final String TAG = "QQMessagePageMicroAppEntryManager";
   private int OFFSET_SCROLL_OVER;
   private final int OVER_FLING_DISTANCE_DEFAULT = 30;
   QQMessagePageMiniAppEntryManager.RedDotAppletsObserver appletsObserver = new QQMessagePageMiniAppEntryManager.RedDotAppletsObserver(this);
   boolean flag = false;
-  private boolean isFirstOpenMiniAppEntry;
+  private boolean isFirstOpenMiniAppEntry = false;
   private QQAppInterface mApp;
-  private final almq mCareNotificationBar;
+  private final CareNotificationBar mCareNotificationBar;
   private PullRefreshHeader mChatTopRefresh;
   private MiniAppEntryLayout mContentView;
   private Context mContext;
@@ -72,11 +73,11 @@ public class QQMessagePageMiniAppEntryManager
   public QQMessagePageMiniAppEntryManager(Context paramContext, Conversation paramConversation, ListView paramListView, PullRefreshHeader paramPullRefreshHeader, DrawerFrame paramDrawerFrame)
   {
     this.mContext = paramContext;
-    this.mApp = paramConversation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.mApp = paramConversation.a();
     this.mDrawer = paramDrawerFrame;
     this.mListView = ((ARMapHongBaoListView)paramListView);
     this.mChatTopRefresh = paramPullRefreshHeader;
-    this.mCareNotificationBar = paramConversation.jdField_a_of_type_Almq;
+    this.mCareNotificationBar = paramConversation.a;
   }
   
   private void doOnScroll(float paramFloat, boolean paramBoolean)
@@ -103,7 +104,7 @@ public class QQMessagePageMiniAppEntryManager
         f1 = this.mMiniAppListLayout.getTranslationY() - f2;
         setMicroAppEntryPanelAlpha(1.0F - this.mMiniAppListLayout.getTranslationY() / STORY_TRANSLATE + 0.8F);
         label226:
-        if (paramFloat <= ViewUtils.dpToPx(-70.0F)) {
+        if (paramFloat <= ViewUtils.b(-70.0F)) {
           break label342;
         }
         this.mContentView.setDotViewTranslationY((this.mContentView.getDotViewHeight() + paramFloat) / 2.0F);
@@ -206,11 +207,11 @@ public class QQMessagePageMiniAppEntryManager
     try
     {
       this.mListView.setOverscrollHeader(new ColorDrawable(Color.parseColor("#000000")));
-      int i = this.mContext.getResources().getColor(2131167131);
+      int i = this.mContext.getResources().getColor(2131167138);
       if (this.mChatTopRefresh != null)
       {
         this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-        TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131376460);
+        TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131376853);
         if (localTextView != null) {
           localTextView.setTextColor(i);
         }
@@ -227,12 +228,12 @@ public class QQMessagePageMiniAppEntryManager
   {
     try
     {
-      this.mListView.setOverscrollHeader(this.mContext.getResources().getDrawable(2130850973));
-      int i = this.mContext.getResources().getColor(2131167092);
+      this.mListView.setOverscrollHeader(this.mContext.getResources().getDrawable(2130851407));
+      int i = this.mContext.getResources().getColor(2131167099);
       if (this.mChatTopRefresh != null)
       {
         this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-        TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131376460);
+        TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131376853);
         if (localTextView != null) {
           localTextView.setTextColor(i);
         }
@@ -247,7 +248,7 @@ public class QQMessagePageMiniAppEntryManager
   
   private void setRefreshLayoutVisible(boolean paramBoolean)
   {
-    View localView = this.mChatTopRefresh.findViewById(2131376455);
+    View localView = this.mChatTopRefresh.findViewById(2131376848);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -296,7 +297,7 @@ public class QQMessagePageMiniAppEntryManager
         this.mListView.mForStory = false;
         this.mode = 1;
         if (this.mDrawer != null) {
-          this.mDrawer.a(MainFragment.b);
+          this.mDrawer.a(FrameControllerUtil.a);
         }
       }
       return;
@@ -313,7 +314,7 @@ public class QQMessagePageMiniAppEntryManager
     {
       if (this.refreshProgressBar != null)
       {
-        Drawable localDrawable = this.mContext.getResources().getDrawable(2130839470);
+        Drawable localDrawable = this.mContext.getResources().getDrawable(2130839549);
         this.refreshProgressBar.setIndeterminateDrawable(localDrawable);
       }
       if (this.mChatTopRefresh != null) {
@@ -389,14 +390,21 @@ public class QQMessagePageMiniAppEntryManager
     }
   }
   
-  public void initLater(DrawerFrame paramDrawerFrame)
+  public void initLater(ViewGroup paramViewGroup)
+  {
+    if ((paramViewGroup instanceof DrawerFrame)) {
+      initLaterDrawerFrame((DrawerFrame)paramViewGroup);
+    }
+  }
+  
+  public void initLaterDrawerFrame(DrawerFrame paramDrawerFrame)
   {
     if (QLog.isColorLevel()) {
       QLog.i("QQMessagePageMicroAppEntryManager", 2, paramDrawerFrame + " initLater " + this.mListView.mEnableStory);
     }
     this.mDrawer = paramDrawerFrame;
     if (this.mDrawer != null) {
-      this.mDrawer.setMiniAppTouchEventInterceptor(MainFragment.b, this);
+      this.mDrawer.setMiniAppTouchEventInterceptor(FrameControllerUtil.a, this);
     }
   }
   
@@ -413,9 +421,9 @@ public class QQMessagePageMiniAppEntryManager
       if (this.mChatTopRefresh.indexOfChild(this.mContentView) < 0)
       {
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-        localLayoutParams.addRule(3, 2131376455);
+        localLayoutParams.addRule(3, 2131376848);
         this.mChatTopRefresh.addView(this.mContentView, localLayoutParams);
-        this.refreshProgressBar = ((ProgressBar)this.mChatTopRefresh.findViewById(2131376461));
+        this.refreshProgressBar = ((ProgressBar)this.mChatTopRefresh.findViewById(2131376854));
         updateRefreshTheme();
         this.mListView.setMaxOverScrollTopDistance(70);
         this.mListView.setQQStoryListViewListener(this);
@@ -423,7 +431,7 @@ public class QQMessagePageMiniAppEntryManager
         this.mListView.mForStory = false;
         this.mode = 1;
         if (this.mDrawer != null) {
-          this.mDrawer.setMiniAppTouchEventInterceptor(MainFragment.b, this);
+          this.mDrawer.setMiniAppTouchEventInterceptor(FrameControllerUtil.a, this);
         }
         this.mListView.setScrollY(0);
         setMicroAppEntryCompleteVisible(false);
@@ -454,15 +462,22 @@ public class QQMessagePageMiniAppEntryManager
     return false;
   }
   
-  public void onAccountChanged(QQAppInterface paramQQAppInterface)
+  public void onAccountChanged(AppRuntime paramAppRuntime)
+  {
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      onAccountChangedInternal((QQAppInterface)paramAppRuntime);
+    }
+  }
+  
+  public void onAccountChangedInternal(QQAppInterface paramQQAppInterface)
   {
     this.mApp.unRegistObserver(this);
     this.mApp.removeObserver(this.appletsObserver);
     this.mApp = paramQQAppInterface;
     boolean bool = false;
-    Object localObject = arbw.a();
+    Object localObject = MiniAppConfProcessor.a();
     if (localObject != null) {
-      bool = ((arbv)localObject).a();
+      bool = ((MiniAppConfBean)localObject).a();
     }
     QLog.d("QQMessagePageMicroAppEntryManager", 1, "[MiniAppUserAppInfoListManager].onAccountChanged: " + bool);
     if ((!bool) && (this.mChatTopRefresh != null) && (this.mContentView != null))
@@ -482,9 +497,14 @@ public class QQMessagePageMiniAppEntryManager
   
   public void onChangeRedDotSwitch(int paramInt, boolean paramBoolean)
   {
-    if ((this.mContentView != null) && (arbw.h())) {
+    if ((this.mContentView != null) && (MiniAppConfProcessor.h())) {
       this.mContentView.onChangeRedDotSwitch(paramInt, paramBoolean);
     }
+  }
+  
+  public void onDestroy()
+  {
+    QLog.d("QQMessagePageMicroAppEntryManager", 1, "onDestroy");
   }
   
   public void onFlingScrollHeader(int paramInt1, int paramInt2)
@@ -620,8 +640,8 @@ public class QQMessagePageMiniAppEntryManager
       {
         if (f <= -paramARMapHongBaoListView.getOverScrollHeight())
         {
-          paramMotionEvent = (TextView)this.mChatTopRefresh.findViewById(2131376460);
-          if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(anvx.a(2131709914)))) {}
+          paramMotionEvent = (TextView)this.mChatTopRefresh.findViewById(2131376853);
+          if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(HardCodeUtil.a(2131710430)))) {}
           for (this.mode = 3;; this.mode = 2)
           {
             paramARMapHongBaoListView.mForStory = true;

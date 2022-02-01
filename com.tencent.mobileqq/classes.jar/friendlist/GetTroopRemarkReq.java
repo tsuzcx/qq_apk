@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class GetTroopRemarkReq
   extends JceStruct
 {
-  public long GroupCode;
-  public long GroupUin;
-  public long NextUin;
-  public long Seq;
-  public long uin;
+  public long GroupCode = 0L;
+  public long GroupUin = 0L;
+  public long NextUin = 0L;
+  public long Seq = 0L;
+  public long uin = 0L;
   
   public GetTroopRemarkReq() {}
   
@@ -44,7 +44,7 @@ public final class GetTroopRemarkReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.GetTroopRemarkReq
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.readinjoy.pts.ui;
 
 import android.graphics.Canvas;
 import android.widget.ImageView.ScaleType;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.DrawableController;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
 import com.tencent.pts.ui.PTSNodeInfo;
 import com.tencent.pts.ui.view.IView;
 import com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
-import pjr;
-import tlt;
-import tlw;
 
 public class PTSImageView
   extends KandianUrlImageView
@@ -40,8 +40,8 @@ public class PTSImageView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    tlw localtlw = this.mController.a();
-    if ((localtlw == null) || (localtlw.a)) {
+    ImageRequest localImageRequest = this.mController.a();
+    if ((localImageRequest == null) || (localImageRequest.a)) {
       setImageSrc(this.mPath);
     }
   }
@@ -54,8 +54,8 @@ public class PTSImageView
   public void onFinishTemporaryDetach()
   {
     super.onFinishTemporaryDetach();
-    tlw localtlw = this.mController.a();
-    if ((localtlw == null) || (localtlw.a)) {
+    ImageRequest localImageRequest = this.mController.a();
+    if ((localImageRequest == null) || (localImageRequest.a)) {
       setImageSrc(this.mPath);
     }
   }
@@ -73,7 +73,7 @@ public class PTSImageView
       for (;;)
       {
         QLog.d("PTSImageView", 2, "[setImageSrc], mPathUrl = " + this.mPathUrl);
-        pjr.a(this, this.mPathUrl, getContext());
+        ReadInJoyDisplayUtils.a(this, this.mPathUrl, getContext());
         return;
         QLog.d("PTSImageView", 2, "[setImageSrc], current path unchanged ");
       }
@@ -87,7 +87,7 @@ public class PTSImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSImageView
  * JD-Core Version:    0.7.0.1
  */

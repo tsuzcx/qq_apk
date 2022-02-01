@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ARScanEntryView$26
@@ -10,7 +10,7 @@ class ARScanEntryView$26
   
   public void run()
   {
-    QQToast.a(this.this$0.a, anvx.a(2131700246), 1).b(this.this$0.a());
+    QQToast.a(this.this$0.a, HardCodeUtil.a(2131700824), 1).b(this.this$0.a());
   }
 }
 

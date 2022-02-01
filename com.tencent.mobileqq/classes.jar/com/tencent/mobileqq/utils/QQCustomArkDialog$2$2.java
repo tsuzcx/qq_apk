@@ -11,10 +11,10 @@ class QQCustomArkDialog$2$2
   
   public void run()
   {
-    if (QQCustomArkDialog.access$400(this.this$1.this$0) != null) {}
-    for (Activity localActivity = (Activity)QQCustomArkDialog.access$400(this.this$1.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
+    if (QQCustomArkDialog.a(this.a.a) != null) {}
+    for (Activity localActivity = (Activity)QQCustomArkDialog.a(this.a.a).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
     {
-      this.this$1.this$0.show();
+      this.a.a.show();
       return;
     }
     QLog.d("QQCustomArkDialog", 1, "overtime,show dialog onloadcallback activity is null or finished");

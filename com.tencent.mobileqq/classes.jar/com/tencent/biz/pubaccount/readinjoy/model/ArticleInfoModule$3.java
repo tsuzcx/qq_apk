@@ -1,5 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJAppSetting;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.log.ReadInJoyLogHelper;
+import com.tencent.biz.pubaccount.readinjoy.model.handler.RIJRefreshTopicInfoHandler;
+import com.tencent.biz.pubaccount.readinjoy.qnreading.PreLoader;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,18 +14,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import pqu;
-import pqw;
-import qdw;
-import qep;
-import qga;
-import qjb;
-import rbg;
 
-public class ArticleInfoModule$3
+class ArticleInfoModule$3
   implements Runnable
 {
-  public ArticleInfoModule$3(qep paramqep, long paramLong1, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, List paramList1, boolean paramBoolean2, long paramLong2, List paramList2, ToServiceMsg paramToServiceMsg) {}
+  ArticleInfoModule$3(ArticleInfoModule paramArticleInfoModule, long paramLong1, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, List paramList1, boolean paramBoolean2, long paramLong2, List paramList2, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
@@ -30,12 +28,12 @@ public class ArticleInfoModule$3
     if (this.jdField_a_of_type_Long == -1L)
     {
       bool1 = true;
-      qep.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ArrayOfByte);
-      qep.a(this.this$0).a(this.jdField_a_of_type_Int);
+      ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ArrayOfByte);
+      ArticleInfoModule.a(this.this$0).a(this.jdField_a_of_type_Int);
       if (!this.jdField_a_of_type_Boolean) {
         break label711;
       }
-      localObject = qep.a(this.this$0).a(this.jdField_a_of_type_Int);
+      localObject = ArticleInfoModule.a(this.this$0).a(this.jdField_a_of_type_Int);
       if (localObject != null) {
         break label829;
       }
@@ -53,7 +51,7 @@ public class ArticleInfoModule$3
         if (localIterator.hasNext())
         {
           ArticleInfo localArticleInfo = (ArticleInfo)localIterator.next();
-          localStringBuilder.append("article【" + i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + pqu.a(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " rowkey : " + localArticleInfo.innerUniqueID + ", mFeedType : " + localArticleInfo.mFeedType + " feeedCookie : " + localArticleInfo.mFeedCookie + ", mFeedID : " + localArticleInfo.mFeedId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName + " commentShareUrl : " + localArticleInfo.commentShareUrl);
+          localStringBuilder.append("article【" + i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + RIJAppSetting.a(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " rowkey : " + localArticleInfo.innerUniqueID + ", mFeedType : " + localArticleInfo.mFeedType + " feeedCookie : " + localArticleInfo.mFeedCookie + ", mFeedID : " + localArticleInfo.mFeedId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName + " commentShareUrl : " + localArticleInfo.commentShareUrl);
           SocializeFeedsInfo localSocializeFeedsInfo;
           if (localArticleInfo.mSocialFeedInfo != null)
           {
@@ -66,7 +64,7 @@ public class ArticleInfoModule$3
           }
           for (;;)
           {
-            if ((pqw.o(localArticleInfo)) && (!((ConcurrentMap)localObject).containsKey(Long.valueOf(localArticleInfo.mRecommendSeq)))) {
+            if ((RIJFeedsType.o(localArticleInfo)) && (!((ConcurrentMap)localObject).containsKey(Long.valueOf(localArticleInfo.mRecommendSeq)))) {
               ((ConcurrentMap)localObject).put(Long.valueOf(localArticleInfo.mRecommendSeq), Boolean.valueOf(false));
             }
             i += 1;
@@ -80,7 +78,7 @@ public class ArticleInfoModule$3
           }
         }
         if (((ConcurrentMap)localObject).size() > 0) {
-          qep.a(this.this$0).a(this.jdField_a_of_type_Int, (ConcurrentMap)localObject);
+          ArticleInfoModule.a(this.this$0).a(this.jdField_a_of_type_Int, (ConcurrentMap)localObject);
         }
       }
       localObject = new StringBuilder().append("handleRefreshChannel success=").append(this.jdField_a_of_type_Boolean).append(" channelId=").append(this.jdField_a_of_type_Int).append(" noMoreData=").append(this.jdField_b_of_type_Boolean).append(" beginRecommendSeq=").append(this.jdField_a_of_type_Long).append(" endRecommendSeq=").append(this.jdField_b_of_type_Long).append(" isInMsgTab : ");
@@ -93,24 +91,24 @@ public class ArticleInfoModule$3
         }
       }
       QLog.i("ArticleInfoModule", 1, bool2 + " isRefresh : " + bool1 + ", " + localStringBuilder.toString());
-      qdw.a(this.jdField_a_of_type_JavaUtilList);
+      ReadInJoyLogHelper.a(this.jdField_a_of_type_JavaUtilList);
       label711:
-      rbg.a().a(this.jdField_a_of_type_JavaUtilList);
-      qep.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+      PreLoader.a().a(this.jdField_a_of_type_JavaUtilList);
+      ArticleInfoModule.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
       if (bool1)
       {
-        qep.a(this.this$0).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
-        qep.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
+        ArticleInfoModule.a(this.this$0).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+        ArticleInfoModule.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
         return;
       }
-      qep.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+      ArticleInfoModule.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.3
  * JD-Core Version:    0.7.0.1
  */

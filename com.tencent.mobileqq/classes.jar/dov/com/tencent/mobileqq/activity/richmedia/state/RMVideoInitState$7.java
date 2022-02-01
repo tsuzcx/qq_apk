@@ -1,21 +1,20 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import anvx;
-import bpke;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class RMVideoInitState$7
+class RMVideoInitState$7
   implements Runnable
 {
-  public RMVideoInitState$7(bpke parambpke) {}
+  RMVideoInitState$7(RMVideoInitState paramRMVideoInitState) {}
   
   public void run()
   {
-    RMVideoStateMgr.a().b(0, anvx.a(2131712927), false);
+    RMVideoStateMgr.a().b(0, HardCodeUtil.a(2131713423), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,5 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acaf;
-import acah;
-import acal;
-import acat;
-import acau;
-import acdl;
-import acdm;
-import aced;
-import acee;
-import achn;
-import acho;
-import aeow;
-import amwn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,31 +19,36 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-import anvx;
-import anxo;
-import awcz;
-import bkyp;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.AdSettings;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAdLoader;
+import com.tencent.gdtad.aditem.GdtAdLoader.Session;
 import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.aditem.GdtImageData;
+import com.tencent.gdtad.api.adbox.GdtAdBox;
+import com.tencent.gdtad.api.adbox.GdtAdBoxBuilder;
 import com.tencent.gdtad.api.adbox.GdtAdBoxData;
 import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
 import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.statistics.GdtC2SReporter;
 import com.tencent.gdtad.views.video.GdtVideoData;
 import com.tencent.gdtad.views.videoceiling.GdtBaseVideoCeilingFragment;
 import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData;
 import com.tencent.gdtad.views.videoimax.GdtImaxData;
 import com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment;
 import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForQzone;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -64,15 +56,16 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.util.URLUtil;
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet;
@@ -98,7 +91,7 @@ public class GdtDemoMvFragment
   implements View.OnClickListener
 {
   private static int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   private Button jdField_a_of_type_AndroidWidgetButton;
   CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
@@ -127,7 +120,7 @@ public class GdtDemoMvFragment
     if ((paramGdtAd == null) || (!paramGdtAd.isLoaded()) || (paramGdtAd.isInvalidated()) || (!(paramGdtAd instanceof com.tencent.gdtad.api.GdtAd)))
     {
       QLog.i("GdtDemoMvFragment", 1, String.format("mockMVPageData null %d", new Object[] { Integer.valueOf(paramInt1) }) + paramInt2);
-      QQToast.a(getActivity(), anvx.a(2131704644), 0).a();
+      QQToast.a(getActivity(), HardCodeUtil.a(2131705194), 0).a();
       return null;
     }
     com.tencent.gdtad.aditem.GdtAd localGdtAd = paramGdtAd.getAd();
@@ -143,7 +136,7 @@ public class GdtDemoMvFragment
       localGdtMotiveVideoPageData.adId = localGdtAd.getAdvertiserId();
       localGdtMotiveVideoPageData.vid = localGdtAd.getTencent_video_id();
       localGdtMotiveVideoPageData.url = localGdtAd.getVideoUrl();
-      acho.d("GdtDemoMvFragment", "VideoUrl " + localGdtMotiveVideoPageData.url);
+      GdtLog.d("GdtDemoMvFragment", "VideoUrl " + localGdtMotiveVideoPageData.url);
       Object localObject1;
       if (localGdtAd.getImageData() == null)
       {
@@ -167,11 +160,11 @@ public class GdtDemoMvFragment
         if (localObject1 != null)
         {
           paramGdtAd = localObject2;
-          if (((acaf)localObject1).a() != null)
+          if (((GdtAdLoader)localObject1).a() != null)
           {
             paramGdtAd = localObject2;
-            if (((acaf)localObject1).a().a != null) {
-              paramGdtAd = achn.a((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)((acaf)localObject1).a().a.pos_ads_info.get(0)).ads_info.get(0));
+            if (((GdtAdLoader)localObject1).a().a != null) {
+              paramGdtAd = GdtJsonPbUtil.a((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)((GdtAdLoader)localObject1).a().a.pos_ads_info.get(0)).ads_info.get(0));
             }
           }
         }
@@ -194,7 +187,7 @@ public class GdtDemoMvFragment
   
   private String a(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
-    paramAdInfo = achn.a(paramAdInfo);
+    paramAdInfo = GdtJsonPbUtil.a(paramAdInfo);
     if ((paramAdInfo == null) || (JSONObject.NULL.equals(paramAdInfo))) {
       return "";
     }
@@ -223,7 +216,7 @@ public class GdtDemoMvFragment
     if (localObject1 != null) {
       try
       {
-        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(((GdtMotiveVideoPageData)localObject1).adsContent)));
+        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(((GdtMotiveVideoPageData)localObject1).adsContent)));
         Object localObject2 = this.jdField_a_of_type_ComTencentGdtadApiGdtAd.getAd();
         if ((localObject2 != null) && (localObject1 != null))
         {
@@ -267,15 +260,15 @@ public class GdtDemoMvFragment
         paramGdtMotiveVideoPageData.adsContent = paramGdtMotiveVideoPageData.adsContent.replace("video_volume", "video_volume_error");
       }
       if (this.jdField_c_of_type_AndroidWidgetCheckBox.isChecked()) {
-        paramGdtMotiveVideoPageData.endcardUrl = bkyp.b("https://test-h5.gdt.qq.com/union/res/union_site/page/xqMiniGameVideoEndCard/xqMiniGameVideoEndCard.html?debug=mock", "trace_id", new aced(paramGdtMotiveVideoPageData).a().getTraceId());
+        paramGdtMotiveVideoPageData.endcardUrl = URLUtil.b("https://test-h5.gdt.qq.com/union/res/union_site/page/xqMiniGameVideoEndCard/xqMiniGameVideoEndCard.html?debug=mock", "trace_id", new GdtMotiveVideoModel(paramGdtMotiveVideoPageData).a().getTraceId());
       }
       if (this.d.isChecked()) {
-        paramGdtMotiveVideoPageData.endcardUrl = bkyp.b("https://h5.gdt.qq.com/xjviewer/nemo/1001751?_wv=1&gdt_ad_id=945580&aidx=50726321&gdt_product_id=1101072624&gdt_media_id=60005012352827&gdt_subordinate_product_id=&via=YYBH5.STORE.COMMONDETAIL.FEED.ADVERTISE.yez3lkudc7rhk01NETLOGvdyib4p5ctmuq&versionCode=2987&packageName=com.achievo.vipshop&qz_gdt=yez3lkudc7rhk01&no_yyb=1&clklpp=__CLICK_LPP__&ist=1&click_ext=eyJkaWQiOiJiZWY3ZDBmMTI5MThlZGNhM2IxMzYwMGIyMWJkZjY1MCIsIm9zX3R5cGUiOjEsInNka19kb3dubG9hZCI6MSwic2hvcnRfcG9zX2lkIjozMDA2NDZ9&_wwv=4&xj_scene=5", "trace_id", new aced(paramGdtMotiveVideoPageData).a().getTraceId());
+        paramGdtMotiveVideoPageData.endcardUrl = URLUtil.b("https://h5.gdt.qq.com/xjviewer/nemo/1001751?_wv=1&gdt_ad_id=945580&aidx=50726321&gdt_product_id=1101072624&gdt_media_id=60005012352827&gdt_subordinate_product_id=&via=YYBH5.STORE.COMMONDETAIL.FEED.ADVERTISE.yez3lkudc7rhk01NETLOGvdyib4p5ctmuq&versionCode=2987&packageName=com.achievo.vipshop&qz_gdt=yez3lkudc7rhk01&no_yyb=1&clklpp=__CLICK_LPP__&ist=1&click_ext=eyJkaWQiOiJiZWY3ZDBmMTI5MThlZGNhM2IxMzYwMGIyMWJkZjY1MCIsIm9zX3R5cGUiOjEsInNka19kb3dubG9hZCI6MSwic2hvcnRfcG9zX2lkIjozMDA2NDZ9&_wwv=4&xj_scene=5", "trace_id", new GdtMotiveVideoModel(paramGdtMotiveVideoPageData).a().getTraceId());
       }
       if (this.e.isChecked()) {}
       try
       {
-        qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent)));
+        qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent)));
         if (!localAdInfo.exp_info.has()) {
           break label323;
         }
@@ -288,13 +281,13 @@ public class GdtDemoMvFragment
         for (;;)
         {
           qq_ad_get.QQAdGetRsp.AdInfo.ExpInfo localExpInfo;
-          acho.d("GdtDemoMvFragment", "setPageDataUIParams", localThrowable);
+          GdtLog.d("GdtDemoMvFragment", "setPageDataUIParams", localThrowable);
         }
       }
       if (this.f.isChecked()) {
-        paramGdtMotiveVideoPageData.bottomCardUrl = a("http://test-h5.gdt.qq.com//union/res/union_site/page/xqMiniGameVideoPlay/xqMiniGameVideoPlay.html", new aced(paramGdtMotiveVideoPageData).a().getTraceId());
+        paramGdtMotiveVideoPageData.bottomCardUrl = a("https://test-h5.gdt.qq.com//union/res/union_site/page/xqMiniGameVideoPlay/xqMiniGameVideoPlay.html", new GdtMotiveVideoModel(paramGdtMotiveVideoPageData).a().getTraceId());
       }
-      if ((paramInt != 2131378685) && (paramInt != 2131378709)) {
+      if ((paramInt != 2131379118) && (paramInt != 2131379141)) {
         paramGdtMotiveVideoPageData.url = "https://vgdt.gtimg.cn/14636/EAAAE95AUAALQAAHsqVBZYyEwBJdEPRsQ.mp4?ck=ea3d79d3dd265628a3002ba3885fcb6c";
       }
       paramGdtMotiveVideoPageData.antiSpamParams = "{\"lt\":2,\"ig\":0}";
@@ -316,7 +309,7 @@ public class GdtDemoMvFragment
   {
     try
     {
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent)));
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent)));
       if (localAdInfo.dest_info.has()) {}
       for (qq_ad_get.QQAdGetRsp.AdInfo.DestInfo localDestInfo = (qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localAdInfo.dest_info.get();; localDestInfo = new qq_ad_get.QQAdGetRsp.AdInfo.DestInfo())
       {
@@ -330,7 +323,7 @@ public class GdtDemoMvFragment
     }
     catch (Throwable paramGdtMotiveVideoPageData)
     {
-      acho.d("GdtDemoMvFragment", "mockToCellingStyle", paramGdtMotiveVideoPageData);
+      GdtLog.d("GdtDemoMvFragment", "mockToCellingStyle", paramGdtMotiveVideoPageData);
     }
   }
   
@@ -341,7 +334,7 @@ public class GdtDemoMvFragment
     }
     try
     {
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent)));
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent)));
       Object localObject = new qq_ad_get.QQAdGetRsp.AdInfo.Ext();
       ArrayList localArrayList = new ArrayList();
       qq_ad_get.QQAdGetRsp.AdInfo.ExpParam localExpParam = new qq_ad_get.QQAdGetRsp.AdInfo.ExpParam();
@@ -365,11 +358,11 @@ public class GdtDemoMvFragment
     }
     catch (Throwable paramGdtMotiveVideoPageData)
     {
-      acho.d("GdtDemoMvFragment", "mockToCellingStyle", paramGdtMotiveVideoPageData);
+      GdtLog.d("GdtDemoMvFragment", "mockToCellingStyle", paramGdtMotiveVideoPageData);
     }
   }
   
-  private void d()
+  private void c()
   {
     if (this.jdField_a_of_type_ComTencentGdtadApiGdtAd == null) {
       return;
@@ -383,7 +376,7 @@ public class GdtDemoMvFragment
       localArrayList.add(this.jdField_a_of_type_ComTencentGdtadApiGdtAd.getAd());
       i += 1;
     }
-    acat.a(getActivity()).a(new GdtAdBoxData(localArrayList)).a(new acdl(this)).a().a();
+    GdtAdBox.a(getActivity()).a(new GdtAdBoxData(localArrayList)).a(new GdtDemoMvFragment.2(this)).a().a();
   }
   
   public String a()
@@ -398,7 +391,7 @@ public class GdtDemoMvFragment
   
   public String a(String paramString1, String paramString2)
   {
-    paramString1 = bkyp.b(paramString1, "trace_id", paramString2);
+    paramString1 = URLUtil.b(paramString1, "trace_id", paramString2);
     QLog.d("GdtDemoMvFragment", 1, "encoded Url :" + paramString1);
     return paramString1;
   }
@@ -410,11 +403,11 @@ public class GdtDemoMvFragment
     }
     try
     {
-      Object localObject = new acee();
-      ((acee)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = a(Long.parseLong(amwn.a().getCurrentAccountUin()), a());
-      ((acee)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = a(true, getActivity());
-      localObject = new GdtDemoMvFragment.TestGdtAd(this, (acee)localObject);
-      ((GdtDemoMvFragment.TestGdtAd)localObject).setListener(new WeakReference(new acdm(this, getActivity())));
+      Object localObject = new GdtMotiveVideoParams();
+      ((GdtMotiveVideoParams)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = a(Long.parseLong(CmGameUtil.a().getCurrentAccountUin()), a());
+      ((GdtMotiveVideoParams)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = a(true, getActivity());
+      localObject = new GdtDemoMvFragment.TestGdtAd(this, (GdtMotiveVideoParams)localObject);
+      ((GdtDemoMvFragment.TestGdtAd)localObject).setListener(new WeakReference(new GdtDemoMvFragment.DemoGdtAdListener(this, getActivity())));
       ((GdtDemoMvFragment.TestGdtAd)localObject).load(getActivity());
       return;
     }
@@ -473,14 +466,6 @@ public class GdtDemoMvFragment
     GdtHandler.a((GdtHandler.Params)localObject);
   }
   
-  public void c()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    ((awcz)((QQAppInterface)localAppRuntime).getBusinessHandler(BusinessHandlerFactory.COMMPLGUGIN_HANDLER)).a(false);
-    anxo.b((QQAppInterface)localAppRuntime, 0);
-    QQToast.a(getActivity(), "clearFlag success", 0).a();
-  }
-  
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     super.initWindowStyleAndAnimation(paramActivity);
@@ -508,7 +493,7 @@ public class GdtDemoMvFragment
       Bundle localBundle = paramIntent.getExtras();
       if (localBundle == null)
       {
-        acho.d("GdtDemoMvFragment", "onActivityResult b==null ");
+        GdtLog.d("GdtDemoMvFragment", "onActivityResult b==null ");
         return;
       }
       long l1 = localBundle.getLong("duration_time");
@@ -537,16 +522,16 @@ public class GdtDemoMvFragment
       {
       default: 
         break;
-      case 2131362035: 
-        c();
+      case 2131362054: 
+        GdtC2SReporter.a(1, 1, a());
         break;
-      case 2131378658: 
+      case 2131379091: 
         a();
         break;
-      case 2131363815: 
-        d();
+      case 2131363914: 
+        c();
         break;
-      case 2131378659: 
+      case 2131379092: 
         localObject1 = a(185, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 1, false);
         if (localObject1 != null)
         {
@@ -554,7 +539,7 @@ public class GdtDemoMvFragment
           GdtMotiveVideoFragment.b(getActivity(), GdtMotiveVideoFragment.class, (GdtMotiveVideoPageData)localObject1);
         }
         break;
-      case 2131363961: 
+      case 2131364058: 
         localObject1 = a(185, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 1, false);
         if (localObject1 != null)
         {
@@ -563,7 +548,7 @@ public class GdtDemoMvFragment
           GdtMotiveVideoFragment.a(getActivity(), GdtMotiveVideoFragment.class, (GdtMotiveVideoPageData)localObject1);
         }
         break;
-      case 2131363962: 
+      case 2131364059: 
         localObject1 = a(585, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 1, false);
         if (localObject1 != null)
         {
@@ -573,7 +558,7 @@ public class GdtDemoMvFragment
           GdtMotiveVideoFragment.a(getActivity(), GdtMotiveVideoFragment.class, (GdtMotiveVideoPageData)localObject1);
         }
         break;
-      case 2131371587: 
+      case 2131371897: 
         localObject3 = a(65, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 1, false);
         if (localObject3 != null)
         {
@@ -586,19 +571,19 @@ public class GdtDemoMvFragment
           ((Intent)localObject1).putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
           ((Intent)localObject1).putExtras((Bundle)localObject4);
           if (TextUtils.isEmpty(((Intent)localObject1).getStringExtra("big_brother_ref_source_key"))) {
-            acho.d("GdtDemoMvFragment", "start gdt empty refId");
+            GdtLog.d("GdtDemoMvFragment", "start gdt empty refId");
           }
-          localObject3 = new aced((GdtMotiveVideoPageData)localObject3);
+          localObject3 = new GdtMotiveVideoModel((GdtMotiveVideoPageData)localObject3);
           ((Intent)localObject1).setClass(getActivity(), QQBrowserActivity.class);
           ((Intent)localObject1).putExtra("fragment_class", GdtMotiveBrowsingFragment.class.getCanonicalName());
           ((Intent)localObject1).putExtra("url", "https://h5.gdt.qq.com/xjviewer/nemo/1001751?_wv=1&gdt_ad_id=945580&aidx=50726321&gdt_product_id=1101072624&gdt_media_id=60005012352827&gdt_subordinate_product_id=&via=YYBH5.STORE.COMMONDETAIL.FEED.ADVERTISE.yez3lkudc7rhk01NETLOGvdyib4p5ctmuq&versionCode=2987&packageName=com.achievo.vipshop&qz_gdt=yez3lkudc7rhk01&no_yyb=1&clklpp=__CLICK_LPP__&ist=1&click_ext=eyJleHBfcGFyYW0iOiJhbmltYXRpb246Ym91bmNlIiwic2NlbmNlc190eXBlIjoxfQ==");
           ((Intent)localObject1).putExtra("isTransparentTitle", true);
-          ((Intent)localObject1).putExtra("GdtWebReportQQ_TRACE_ID", ((aced)localObject3).a().getTraceId());
-          ((Intent)localObject1).putExtra("GdtWebReportQQ_ACTION_URL", ((aced)localObject3).a().getUrlForAction());
+          ((Intent)localObject1).putExtra("GdtWebReportQQ_TRACE_ID", ((GdtMotiveVideoModel)localObject3).a().getTraceId());
+          ((Intent)localObject1).putExtra("GdtWebReportQQ_ACTION_URL", ((GdtMotiveVideoModel)localObject3).a().getUrlForAction());
           getActivity().startActivity((Intent)localObject1);
         }
         break;
-      case 2131371588: 
+      case 2131371898: 
         localObject1 = a(65, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 1, false);
         if (localObject1 != null)
         {
@@ -608,10 +593,10 @@ public class GdtDemoMvFragment
           GdtMotiveVideoFragment.a(getActivity(), GdtMotiveVideoFragment.class, (GdtMotiveVideoPageData)localObject1);
         }
         break;
-      case 2131378656: 
+      case 2131379088: 
         b(getActivity());
         break;
-      case 2131378661: 
+      case 2131379094: 
         localObject1 = a(185, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 0, false);
         if (localObject1 != null)
         {
@@ -619,7 +604,7 @@ public class GdtDemoMvFragment
           GdtMotiveVideoFragment.a(getActivity(), GdtMotiveVideoFragment.class, (GdtMotiveVideoPageData)localObject1);
         }
         break;
-      case 2131378663: 
+      case 2131379096: 
         localObject1 = a(185, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 8, false);
         if (localObject1 != null)
         {
@@ -627,7 +612,7 @@ public class GdtDemoMvFragment
           GdtMotiveVideoFragment.a(getActivity(), GdtMotiveVideoFragment.class, (GdtMotiveVideoPageData)localObject1);
         }
         break;
-      case 2131378662: 
+      case 2131379095: 
         localObject1 = a(585, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 1, false);
         if (localObject1 != null)
         {
@@ -635,7 +620,7 @@ public class GdtDemoMvFragment
           GdtMotiveVideoFragment.a(getActivity(), GdtMotiveVideoFragment.class, (GdtMotiveVideoPageData)localObject1);
         }
         break;
-      case 2131378664: 
+      case 2131379097: 
         localObject1 = a(185, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 1, false);
         if (localObject1 != null)
         {
@@ -645,7 +630,7 @@ public class GdtDemoMvFragment
           GdtMotiveVideoFragment.a(getActivity(), GdtMotiveVideoFragment.class, (GdtMotiveVideoPageData)localObject1, (ResultReceiver)localObject3);
         }
         break;
-      case 2131378709: 
+      case 2131379141: 
         localObject1 = a(0, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 1, true);
         if (localObject1 != null)
         {
@@ -653,7 +638,7 @@ public class GdtDemoMvFragment
           GdtMotiveVideoFragment.a(getActivity(), GdtMotiveVideoFragment.class, (GdtMotiveVideoPageData)localObject1);
         }
         break;
-      case 2131378685: 
+      case 2131379118: 
         localObject1 = a(0, this.jdField_a_of_type_ComTencentGdtadApiGdtAd, 0, true);
         if (localObject1 != null)
         {
@@ -661,13 +646,13 @@ public class GdtDemoMvFragment
           GdtMotiveVideoFragment.a(getActivity(), GdtMotiveVideoFragment.class, (GdtMotiveVideoPageData)localObject1);
         }
         break;
-      case 2131362061: 
+      case 2131362082: 
         a(getActivity());
         break;
-      case 2131362104: 
+      case 2131362125: 
         b();
         break;
-      case 2131381370: 
+      case 2131381831: 
         try
         {
           localObject1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
@@ -675,7 +660,7 @@ public class GdtDemoMvFragment
           {
             long l = Long.parseLong((String)localObject1);
             localObject1 = "mqqapi://miniapp/open?_atype=0&_mappid=1108323226&_mvid=&_path=pages%2Findex%2Findex&_vt=1&referer=2066&_sig=da2a4472ac1a98a2d4f5cc0d86428bc1fc05b69a936b919303c45fcd37947008&areaId=" + l;
-            MiniAppLauncher.startMiniApp(getActivity(), (String)localObject1, 2066, null);
+            ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(getActivity(), (String)localObject1, 2066, null);
           }
         }
         catch (Exception localException)
@@ -683,7 +668,7 @@ public class GdtDemoMvFragment
           localException.printStackTrace();
         }
         break;
-      case 2131364004: 
+      case 2131364102: 
         if (this.jdField_a_of_type_ComTencentGdtadApiGdtAd != null)
         {
           localObject2 = this.jdField_a_of_type_ComTencentGdtadApiGdtAd.getAd();
@@ -704,7 +689,7 @@ public class GdtDemoMvFragment
             ((GdtImaxData)localObject4).setVideoData(localGdtVideoData);
             ((GdtImaxData)localObject4).setWebUrl(((com.tencent.gdtad.aditem.GdtAd)localObject2).getUrlForLandingPage());
             ((Intent)localObject3).putExtra("data", (Serializable)localObject4);
-            aeow.a(getActivity(), (Intent)localObject3, PublicFragmentActivityForQzone.class, GdtMotiveVideoMockQzoneImaxFeedsFragment.class, 1);
+            PublicFragmentActivity.Launcher.a(getActivity(), (Intent)localObject3, PublicFragmentActivityForQzone.class, GdtMotiveVideoMockQzoneImaxFeedsFragment.class, 1);
           }
         }
         break;
@@ -712,55 +697,55 @@ public class GdtDemoMvFragment
     }
     if (!AdSettings.isTestMode())
     {
-      label1218:
+      label1234:
       AdSettings.setTestMode(bool);
       localObject2 = this.jdField_a_of_type_AndroidWidgetButton;
       if (!AdSettings.isTestMode()) {
-        break label1252;
+        break label1268;
       }
     }
-    label1252:
-    for (i = 2131692755;; i = 2131692754)
+    label1268:
+    for (i = 2131692899;; i = 2131692898)
     {
       ((Button)localObject2).setText(i);
       break;
       bool = false;
-      break label1218;
+      break label1234;
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559274, paramViewGroup, false);
-    paramLayoutInflater.findViewById(2131363815).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131364004).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131378658).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131378659).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131378661).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131378662).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131378663).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131378664).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131378709).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131378685).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131362035).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131362104).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131381370).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131362061).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131363961).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131363962).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131371587).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131371588).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131378656).setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)paramLayoutInflater.findViewById(2131366266));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramLayoutInflater.findViewById(2131366257));
-    this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)paramLayoutInflater.findViewById(2131366278));
-    this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)paramLayoutInflater.findViewById(2131364388));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramLayoutInflater.findViewById(2131364385));
-    this.jdField_c_of_type_AndroidWidgetCheckBox = ((CheckBox)paramLayoutInflater.findViewById(2131364382));
-    this.d = ((CheckBox)paramLayoutInflater.findViewById(2131364383));
-    this.e = ((CheckBox)paramLayoutInflater.findViewById(2131364386));
-    this.f = ((CheckBox)paramLayoutInflater.findViewById(2131364387));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131364057));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559315, paramViewGroup, false);
+    paramLayoutInflater.findViewById(2131363914).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131364102).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131379091).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131379092).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131379094).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131379095).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131379096).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131379097).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131379141).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131379118).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131362054).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131362125).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131381831).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131362082).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131364058).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131364059).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131371897).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131371898).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131379088).setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)paramLayoutInflater.findViewById(2131366438));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramLayoutInflater.findViewById(2131366431));
+    this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)paramLayoutInflater.findViewById(2131366450));
+    this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)paramLayoutInflater.findViewById(2131364495));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramLayoutInflater.findViewById(2131364492));
+    this.jdField_c_of_type_AndroidWidgetCheckBox = ((CheckBox)paramLayoutInflater.findViewById(2131364489));
+    this.d = ((CheckBox)paramLayoutInflater.findViewById(2131364490));
+    this.e = ((CheckBox)paramLayoutInflater.findViewById(2131364493));
+    this.f = ((CheckBox)paramLayoutInflater.findViewById(2131364494));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131364158));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     AdSettings.setTestMode(true);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -775,7 +760,7 @@ public class GdtDemoMvFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class EctFragmentation
   extends JceStruct
 {
-  public int iSelfIndex;
-  public int iTotalNum;
+  public int iSelfIndex = 0;
+  public int iTotalNum = 0;
   
   public EctFragmentation() {}
   

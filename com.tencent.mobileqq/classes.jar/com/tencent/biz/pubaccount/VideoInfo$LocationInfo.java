@@ -3,18 +3,17 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import omm;
 
 public class VideoInfo$LocationInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<LocationInfo> CREATOR = new omm();
+  public static final Parcelable.Creator<LocationInfo> CREATOR = new VideoInfo.LocationInfo.1();
   public String a;
   public boolean a;
   
   public VideoInfo$LocationInfo() {}
   
-  public VideoInfo$LocationInfo(Parcel paramParcel)
+  protected VideoInfo$LocationInfo(Parcel paramParcel)
   {
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
@@ -48,7 +47,7 @@ public class VideoInfo$LocationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.LocationInfo
  * JD-Core Version:    0.7.0.1
  */

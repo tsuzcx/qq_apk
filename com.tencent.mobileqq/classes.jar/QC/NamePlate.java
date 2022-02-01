@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class NamePlate
   extends JceStruct
 {
-  public int isgray;
-  public int issetpendant;
-  public int pendantid;
-  public int viptypeid;
+  public int isgray = 0;
+  public int issetpendant = 0;
+  public int pendantid = 0;
+  public int viptypeid = 0;
   
   public NamePlate() {}
   

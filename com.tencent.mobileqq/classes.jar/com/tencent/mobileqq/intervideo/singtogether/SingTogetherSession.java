@@ -4,18 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import avww;
-import bekh;
-import beki;
-import blfw;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.together.TogetherSession;
+import com.tencent.mobileqq.together.TogetherUtils;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ThemeImageWrapper;
 
 public class SingTogetherSession
-  extends bekh
+  extends TogetherSession
   implements Parcelable
 {
-  public static final Parcelable.Creator<SingTogetherSession> CREATOR = new avww();
+  public static final Parcelable.Creator<SingTogetherSession> CREATOR = new SingTogetherSession.1();
   public int a;
   public long a;
   public String a;
@@ -51,13 +50,13 @@ public class SingTogetherSession
   private String c(QQAppInterface paramQQAppInterface)
   {
     if (this.a == 1) {
-      return paramQQAppInterface.getApp().getString(2131698975);
+      return paramQQAppInterface.getApp().getString(2131699321);
     }
     if (this.a == 3) {
-      return paramQQAppInterface.getApp().getString(2131698983);
+      return paramQQAppInterface.getApp().getString(2131699329);
     }
     if (this.a == 2) {
-      return paramQQAppInterface.getApp().getString(2131698981);
+      return paramQQAppInterface.getApp().getString(2131699327);
     }
     return d(paramQQAppInterface);
   }
@@ -69,21 +68,21 @@ public class SingTogetherSession
     {
       str = a(paramQQAppInterface, this.jdField_f_of_type_JavaLangString);
       if (!TextUtils.isEmpty(str)) {
-        str = beki.a(16, str);
+        str = TogetherUtils.a(16, str);
       }
     }
     for (;;)
     {
-      return str + paramQQAppInterface.getApp().getString(2131698972);
-      str = paramQQAppInterface.getApp().getString(2131698971);
+      return str + paramQQAppInterface.getApp().getString(2131699318);
+      str = paramQQAppInterface.getApp().getString(2131699317);
       continue;
-      str = paramQQAppInterface.getApp().getString(2131698971);
+      str = paramQQAppInterface.getApp().getString(2131699317);
     }
   }
   
   public int a()
   {
-    return blfw.a;
+    return ThemeImageWrapper.MODE_CIRCLE;
   }
   
   public String a()
@@ -97,7 +96,7 @@ public class SingTogetherSession
   public String a(QQAppInterface paramQQAppInterface)
   {
     if (this.h == 4) {
-      return paramQQAppInterface.getApp().getString(2131698976);
+      return paramQQAppInterface.getApp().getString(2131699322);
     }
     String str2 = "";
     String str1;
@@ -108,14 +107,14 @@ public class SingTogetherSession
       }
       str1 = str2;
       if (TextUtils.isEmpty(str2)) {
-        str1 = paramQQAppInterface.getApp().getString(2131698971);
+        str1 = paramQQAppInterface.getApp().getString(2131699317);
       }
       if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
         break label197;
       }
     }
     label197:
-    for (paramQQAppInterface = paramQQAppInterface.getApp().getString(2131698982);; paramQQAppInterface = String.format(paramQQAppInterface.getApp().getString(2131698979), new Object[] { this.jdField_d_of_type_JavaLangString }))
+    for (paramQQAppInterface = paramQQAppInterface.getApp().getString(2131699328);; paramQQAppInterface = String.format(paramQQAppInterface.getApp().getString(2131699325), new Object[] { this.jdField_d_of_type_JavaLangString }))
     {
       return str1 + paramQQAppInterface;
       str1 = str2;
@@ -129,7 +128,7 @@ public class SingTogetherSession
       if (!TextUtils.isEmpty(str2)) {
         break;
       }
-      str1 = paramQQAppInterface.getApp().getString(2131698999);
+      str1 = paramQQAppInterface.getApp().getString(2131699345);
       break;
     }
   }
@@ -138,7 +137,7 @@ public class SingTogetherSession
   {
     Object localObject;
     if (paramBoolean) {
-      localObject = paramQQAppInterface.getApp().getString(2131698985);
+      localObject = paramQQAppInterface.getApp().getString(2131699331);
     }
     do
     {
@@ -154,12 +153,12 @@ public class SingTogetherSession
       }
       localObject = str;
     } while (this.jdField_f_of_type_Int != 1);
-    return a(paramQQAppInterface, 2131698978, 2131698974, 2131698972);
+    return a(paramQQAppInterface, 2131699324, 2131699320, 2131699318);
   }
   
   public int b()
   {
-    return 2130838334;
+    return 2130838403;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
@@ -172,7 +171,7 @@ public class SingTogetherSession
         return c(paramQQAppInterface);
       }
     } while (this.jdField_f_of_type_Int != 1);
-    return a(paramQQAppInterface, 2131698977, 2131698973);
+    return a(paramQQAppInterface, 2131699323, 2131699319);
   }
   
   public int describeContents()
@@ -203,7 +202,7 @@ public class SingTogetherSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession
  * JD-Core Version:    0.7.0.1
  */

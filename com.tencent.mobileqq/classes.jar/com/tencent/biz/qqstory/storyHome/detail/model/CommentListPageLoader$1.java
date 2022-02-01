@@ -1,42 +1,40 @@
 package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.CommentManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.List;
-import wip;
-import wjs;
-import xvi;
-import xvl;
-import ycb;
-import ykq;
 
-public class CommentListPageLoader$1
+class CommentListPageLoader$1
   implements Runnable
 {
   public void run()
   {
-    ??? = ((wip)wjs.a(17)).a(xvi.a(this.this$0).jdField_a_of_type_JavaLangString, xvi.a(this.this$0).a());
-    xvl localxvl = new xvl(new ErrorMessage(), xvi.a(this.this$0).jdField_a_of_type_JavaLangString, xvi.a(this.this$0).jdField_a_of_type_Int);
-    localxvl.d = false;
-    localxvl.jdField_b_of_type_Boolean = true;
-    localxvl.jdField_a_of_type_JavaUtilList = ((List)???);
-    localxvl.jdField_b_of_type_Int = -1;
-    localxvl.jdField_a_of_type_Boolean = true;
-    localxvl.jdField_a_of_type_Int = xvi.a(this.this$0).jdField_b_of_type_Int;
+    ??? = ((CommentManager)SuperManager.a(17)).a(CommentListPageLoader.a(this.this$0).jdField_a_of_type_JavaLangString, CommentListPageLoader.a(this.this$0).a());
+    CommentListPageLoader.GetFeedCommentEvent localGetFeedCommentEvent = new CommentListPageLoader.GetFeedCommentEvent(new ErrorMessage(), CommentListPageLoader.a(this.this$0).jdField_a_of_type_JavaLangString, CommentListPageLoader.a(this.this$0).jdField_a_of_type_Int);
+    localGetFeedCommentEvent.d = false;
+    localGetFeedCommentEvent.jdField_b_of_type_Boolean = true;
+    localGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = ((List)???);
+    localGetFeedCommentEvent.jdField_b_of_type_Int = -1;
+    localGetFeedCommentEvent.jdField_a_of_type_Boolean = true;
+    localGetFeedCommentEvent.jdField_a_of_type_Int = CommentListPageLoader.a(this.this$0).jdField_b_of_type_Int;
     synchronized (this.this$0)
     {
       if (!this.this$0.jdField_b_of_type_Boolean)
       {
-        xvi.a(this.this$0, localxvl);
-        ykq.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from cache: %s", localxvl);
+        CommentListPageLoader.a(this.this$0, localGetFeedCommentEvent);
+        SLog.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from cache: %s", localGetFeedCommentEvent);
         return;
       }
-      ykq.d("Q.qqstory.detail:CommentListPageLoader", "load cache data later than load from network");
+      SLog.d("Q.qqstory.detail:CommentListPageLoader", "load cache data later than load from network");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.1
  * JD-Core Version:    0.7.0.1
  */

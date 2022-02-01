@@ -16,6 +16,7 @@ public class MessageForQCircleFeed
   public static final String MSG_QCIRCLE_FEED_KEY_APPID = "appid";
   public static final String MSG_QCIRCLE_FEED_KEY_COMMENT_NUMS = "commentNums";
   public static final String MSG_QCIRCLE_FEED_KEY_CONTENT = "content";
+  public static final String MSG_QCIRCLE_FEED_KEY_CONTENT_JUMP_URL = "contentJumpUrl";
   public static final String MSG_QCIRCLE_FEED_KEY_COVER_URL = "coverImageUrl";
   public static final String MSG_QCIRCLE_FEED_KEY_FEEDID = "feedid";
   public static final String MSG_QCIRCLE_FEED_KEY_FROM_UIN = "fromuin";
@@ -38,6 +39,7 @@ public class MessageForQCircleFeed
   public String actionUrl;
   public int appId;
   public String content;
+  public String contentJumpUrl;
   public String coverImageUrl;
   public String feedId;
   public JSONObject feedMsg;
@@ -45,8 +47,8 @@ public class MessageForQCircleFeed
   public long fromUin;
   public boolean hasExposed;
   public int imageCount;
-  public boolean isFirstMsgWithNewFriend;
-  public boolean isOldStructMsg;
+  public boolean isFirstMsgWithNewFriend = false;
+  public boolean isOldStructMsg = false;
   public String lbsInfo;
   public int likeCount;
   public HashMap<String, String> mapExt;
@@ -120,6 +122,7 @@ public class MessageForQCircleFeed
       this.isFirstMsgWithNewFriend = this.feedMsg.optBoolean("isFirstMsgWithNewFriend");
       this.type = this.feedMsg.optInt("type");
       this.version = this.feedMsg.optInt("version");
+      this.contentJumpUrl = this.feedMsg.optString("contentJumpUrl");
       if (this.version < 2) {
         this.isOldStructMsg = true;
       }
@@ -165,7 +168,7 @@ public class MessageForQCircleFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQCircleFeed
  * JD-Core Version:    0.7.0.1
  */

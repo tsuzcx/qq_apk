@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.av.smallscreen.SmallScreenRelativeLayout android:id="@id/now" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/mn3" android:background="@drawable/gnu" android:visibility="visible" android:layout_width="68.0dip" android:layout_height="68.0dip" />
-</com.tencent.av.smallscreen.SmallScreenRelativeLayout>
+    <FrameLayout android:id="@id/msx" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_centerHorizontal="true">
+        <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/a7v" android:layout_width="32.0dip" android:layout_height="32.0dip" />
+        <com.tencent.mobileqq.activity.recent.cur.DragTextView android:layout_gravity="center|right|top" android:id="@id/nzy" android:background="@drawable/skin_tips_newmessage" android:visibility="gone" android:duplicateParentState="true" style="@style/cg" />
+    </FrameLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/skin_black_theme_version2" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_below="@id/msx" android:layout_centerHorizontal="true" />
+</RelativeLayout>

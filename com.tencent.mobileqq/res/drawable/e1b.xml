@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#f2ffffff" />
-    <corners android:radius="16.0dip" />
-</shape>
+    <item android:state_selected="true" android:state_pressed="true">
+        <bitmap android:src="@drawable/gwi" android:alpha="0.5" />
+    </item>
+    <item android:state_enabled="false" android:drawable="@drawable/gwh" />
+    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/gwi" />
+    <item android:state_selected="false" android:state_pressed="true">
+        <bitmap android:src="@drawable/gwh" android:alpha="0.5" />
+    </item>
+    <item android:state_selected="false" android:drawable="@drawable/gwh" />
+    <item android:drawable="@drawable/gwi" />
+</selector>

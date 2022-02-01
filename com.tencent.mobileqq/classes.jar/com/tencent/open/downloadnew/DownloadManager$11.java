@@ -1,22 +1,21 @@
 package com.tencent.open.downloadnew;
 
 import android.text.TextUtils;
-import bjjp;
-import bjko;
-import bjna;
+import com.tencent.open.appstore.dl.DownloadInfoReport;
+import com.tencent.open.base.LogUtility;
 import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 import java.util.Map;
 
-public class DownloadManager$11
+class DownloadManager$11
   implements Runnable
 {
-  public DownloadManager$11(bjna parambjna, String paramString, Map paramMap, int paramInt, DownloadInfo paramDownloadInfo1, DownloadInfo paramDownloadInfo2, DownloadInfo paramDownloadInfo3) {}
+  DownloadManager$11(DownloadManager paramDownloadManager, String paramString, Map paramMap, int paramInt, DownloadInfo paramDownloadInfo1, DownloadInfo paramDownloadInfo2, DownloadInfo paramDownloadInfo3) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      bjko.a("DownloadManager_", "startDownload download file, url = " + this.jdField_a_of_type_JavaLangString + "params = " + this.jdField_a_of_type_JavaUtilMap);
+      LogUtility.a("DownloadManager_", "startDownload download file, url = " + this.jdField_a_of_type_JavaLangString + "params = " + this.jdField_a_of_type_JavaUtilMap);
     }
     for (;;)
     {
@@ -25,12 +24,12 @@ public class DownloadManager$11
         if (this.jdField_a_of_type_Int == 0)
         {
           i = this.this$0.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, "application/vnd.android.package-archive", this.jdField_a_of_type_JavaUtilMap);
-          bjko.a("DownloadManager_", "startDownloadTask downloadSDKClient result=" + i + " url=" + this.jdField_a_of_type_JavaLangString);
+          LogUtility.a("DownloadManager_", "startDownloadTask downloadSDKClient result=" + i + " url=" + this.jdField_a_of_type_JavaLangString);
           if (i == 0) {
             break label282;
           }
           this.this$0.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, i, "");
-          bjjp.a(1, this.jdField_a_of_type_JavaLangString, i, this.c);
+          DownloadInfoReport.a(1, this.jdField_a_of_type_JavaLangString, i, this.c);
           return;
         }
         if (this.jdField_a_of_type_Int == 1)
@@ -39,14 +38,14 @@ public class DownloadManager$11
           i = this.this$0.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, "application/tm.android.apkdiff", this.jdField_a_of_type_JavaUtilMap);
           continue;
         }
-        bjko.a("DownloadManager_", "startDownload download unapk file, url = " + this.jdField_a_of_type_JavaLangString + ",filename = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_e_of_type_JavaLangString);
+        LogUtility.a("DownloadManager_", "startDownload download unapk file, url = " + this.jdField_a_of_type_JavaLangString + ",filename = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_e_of_type_JavaLangString);
         int i = this.this$0.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, 0, "resource/tm.android.unknown", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f, this.jdField_a_of_type_JavaUtilMap);
         continue;
         i = 3;
       }
       catch (Exception localException)
       {
-        bjko.c("DownloadManager_", "downloadSDKClient>>>", localException);
+        LogUtility.c("DownloadManager_", "downloadSDKClient>>>", localException);
       }
       continue;
       label282:
@@ -58,7 +57,7 @@ public class DownloadManager$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.11
  * JD-Core Version:    0.7.0.1
  */

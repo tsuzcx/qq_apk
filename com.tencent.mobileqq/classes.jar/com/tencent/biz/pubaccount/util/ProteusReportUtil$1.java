@@ -7,10 +7,10 @@ import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-public final class ProteusReportUtil$1
+final class ProteusReportUtil$1
   implements Runnable
 {
-  public ProteusReportUtil$1(JSONArray paramJSONArray) {}
+  ProteusReportUtil$1(JSONArray paramJSONArray) {}
   
   public void run()
   {
@@ -53,7 +53,7 @@ public final class ProteusReportUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ProteusReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

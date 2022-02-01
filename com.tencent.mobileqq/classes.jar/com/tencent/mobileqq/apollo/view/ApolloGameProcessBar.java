@@ -2,13 +2,11 @@ package com.tencent.mobileqq.apollo.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.qphone.base.util.QLog;
 
 public class ApolloGameProcessBar
   extends View
@@ -16,33 +14,10 @@ public class ApolloGameProcessBar
   private int jdField_a_of_type_Int;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private String jdField_a_of_type_JavaLangString = "ApolloGameProcessBar";
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private int c;
-  
-  public ApolloGameProcessBar(Context paramContext, int paramInt1, int paramInt2)
-  {
-    super(paramContext);
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), paramInt1);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), paramInt2);
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      return;
-    }
-    catch (OutOfMemoryError paramContext)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "out of memory");
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-    }
-  }
+  private int c = 0;
   
   public ApolloGameProcessBar(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -69,7 +44,7 @@ public class ApolloGameProcessBar
     return Math.min(paramInt2, i);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap == null)) {
       return;
@@ -100,7 +75,7 @@ public class ApolloGameProcessBar
     localBitmap2.recycle();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_Int = a(paramInt1, this.jdField_a_of_type_Int);
     this.jdField_b_of_type_Int = a(paramInt2, this.jdField_b_of_type_Int);
@@ -127,7 +102,7 @@ public class ApolloGameProcessBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloGameProcessBar
  * JD-Core Version:    0.7.0.1
  */

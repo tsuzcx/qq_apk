@@ -8,7 +8,7 @@ public final class RespUpdateIntro
   extends JceStruct
 {
   static RespHead cache_stHeader;
-  public RespHead stHeader;
+  public RespHead stHeader = null;
   
   public RespUpdateIntro() {}
   

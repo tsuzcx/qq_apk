@@ -1,49 +1,39 @@
 package com.tencent.mobileqq.model;
 
-import awyr;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonTab;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-public class EmoticonManager$17
+class EmoticonManager$17
   implements Runnable
 {
-  public EmoticonManager$17(awyr paramawyr) {}
+  EmoticonManager$17(EmoticonManager paramEmoticonManager, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    String str;
-    synchronized (this.this$0)
+    EmoticonTab localEmoticonTab = (EmoticonTab)this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(EmoticonTab.class, this.jdField_a_of_type_JavaLangString);
+    if (localEmoticonTab != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(EmoticonTab.class.getSimpleName());
-      EntityTransaction localEntityTransaction = this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-      try
-      {
-        localEntityTransaction.begin();
-        Iterator localIterator1 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator1.hasNext())
-        {
-          str = (String)localIterator1.next();
-          awyr.a(this.this$0, str, true, false);
-          continue;
-          localObject1 = finally;
-        }
+      if (this.jdField_a_of_type_Boolean) {
+        localEmoticonTab.aioHave = false;
       }
-      finally
-      {
-        localEntityTransaction.end();
+      if (this.b) {
+        localEmoticonTab.kandianHave = false;
       }
+      if ((localEmoticonTab.aioHave) || (localEmoticonTab.kandianHave)) {
+        break label112;
+      }
+      this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localEmoticonTab);
     }
-    Iterator localIterator2 = this.this$0.b.iterator();
-    while (localIterator2.hasNext())
+    for (;;)
     {
-      str = (String)localIterator2.next();
-      awyr.a(this.this$0, str, false, true);
+      this.this$0.b(this.jdField_a_of_type_JavaLangString);
+      SharedPreUtils.m(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), System.currentTimeMillis());
+      return;
+      label112:
+      EmoticonManager.a(this.this$0, localEmoticonTab);
     }
-    localObject1.commit();
-    localObject1.end();
   }
 }
 

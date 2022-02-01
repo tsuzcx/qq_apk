@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmac;
 import com.dataline.mpfile.MpfileTaskRecord;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -12,7 +11,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class MessageRecordParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator<MessageRecordParcel> CREATOR = new bmac();
+  public static final Parcelable.Creator<MessageRecordParcel> CREATOR = new MessageRecordParcel.1();
   private MessageRecord a;
   
   public MessageRecordParcel(MessageRecord paramMessageRecord)
@@ -285,7 +284,7 @@ public class MessageRecordParcel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqdataline.ipc.MessageRecordParcel
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ public final class UsrInfo
 {
   static byte[] cache_otherID;
   static byte[] cache_vKey;
-  public byte cNetType;
-  public byte cPicType;
-  public byte encryAbi;
-  public long lAppID;
-  public long lFromMID;
-  public long lToMID;
-  public byte[] otherID;
-  public int sessionID;
-  public short shBuisType;
-  public short shKeyType;
-  public short shType;
-  public int uSeq;
-  public byte[] vKey;
+  public byte cNetType = 0;
+  public byte cPicType = 0;
+  public byte encryAbi = 0;
+  public long lAppID = 0L;
+  public long lFromMID = 0L;
+  public long lToMID = 0L;
+  public byte[] otherID = null;
+  public int sessionID = 0;
+  public short shBuisType = 0;
+  public short shKeyType = 0;
+  public short shType = 0;
+  public int uSeq = 0;
+  public byte[] vKey = null;
   
   public UsrInfo() {}
   

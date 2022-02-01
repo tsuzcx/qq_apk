@@ -1,5 +1,8 @@
 package com.tencent.qqlive.module.videoreport;
 
+import com.tencent.qqlive.module.videoreport.constants.ClickPolicy;
+import com.tencent.qqlive.module.videoreport.constants.EndExposurePolicy;
+import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.utils.IFormatter;
@@ -13,14 +16,18 @@ public class Configuration$Builder
   private long mClickReportInterval = 500L;
   private boolean mDefaultDataCollectEnable = true;
   private boolean mDefaultReportEnable = true;
+  private ClickPolicy mElementClickPolicy = ClickPolicy.REPORT_ALL;
+  private EndExposurePolicy mElementEndExposePolicy = EndExposurePolicy.REPORT_NONE;
+  private ExposurePolicy mElementExposePolicy = ExposurePolicy.REPORT_FIRST;
   private double mElementExposureMinRate = 0.01D;
   private long mElementExposureMinTime = 200L;
+  @Deprecated
   private ReportPolicy mElementReportPolicy = ReportPolicy.REPORT_POLICY_ALL;
   private boolean mEnablePageLink = false;
   private IFormatter mFormatter;
   private boolean mIndependentPageOut = false;
   private int mLazyInitType = 0;
-  private ILogger mLogger = Configuration.access$1800();
+  private ILogger mLogger = Configuration.access$2100();
   private double mPageExposureMinRate = 0.4D;
   private long mPageExposureMinTime = 200L;
   private long mVisitBackgroundTime = 900000L;
@@ -76,6 +83,24 @@ public class Configuration$Builder
     return this;
   }
   
+  public Builder elementClickPolicy(ClickPolicy paramClickPolicy)
+  {
+    this.mElementClickPolicy = paramClickPolicy;
+    return this;
+  }
+  
+  public Builder elementEndExposePolicy(EndExposurePolicy paramEndExposurePolicy)
+  {
+    this.mElementEndExposePolicy = paramEndExposurePolicy;
+    return this;
+  }
+  
+  public Builder elementExposePolicy(ExposurePolicy paramExposurePolicy)
+  {
+    this.mElementExposePolicy = paramExposurePolicy;
+    return this;
+  }
+  
   public Builder elementExposureMinRate(double paramDouble)
   {
     if (paramDouble > 1.0D)
@@ -103,10 +128,35 @@ public class Configuration$Builder
     return this;
   }
   
+  @Deprecated
   public Builder elementReportPolicy(ReportPolicy paramReportPolicy)
   {
-    this.mElementReportPolicy = paramReportPolicy;
-    return this;
+    if (paramReportPolicy.reportClick)
+    {
+      localObject = ClickPolicy.REPORT_ALL;
+      elementClickPolicy((ClickPolicy)localObject);
+      if (!paramReportPolicy.reportExposure) {
+        break label65;
+      }
+      localObject = ExposurePolicy.REPORT_ALL;
+      label28:
+      elementExposePolicy((ExposurePolicy)localObject);
+      if (!paramReportPolicy.reportExposure) {
+        break label72;
+      }
+    }
+    label65:
+    label72:
+    for (Object localObject = EndExposurePolicy.REPORT_ALL;; localObject = EndExposurePolicy.REPORT_NONE)
+    {
+      elementEndExposePolicy((EndExposurePolicy)localObject);
+      this.mElementReportPolicy = paramReportPolicy;
+      return this;
+      localObject = ClickPolicy.REPORT_NONE;
+      break;
+      localObject = ExposurePolicy.REPORT_NONE;
+      break label28;
+    }
   }
   
   public Builder enablePageLink(boolean paramBoolean)

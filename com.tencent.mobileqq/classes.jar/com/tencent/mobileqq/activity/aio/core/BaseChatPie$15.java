@@ -1,22 +1,26 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper;
+import com.tencent.mobileqq.activity.aio.helper.HelperProvider;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.widget.XEditTextEx;
 
 class BaseChatPie$15
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   BaseChatPie$15(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.this$0.mApolloGameDialog.dismiss();
+    if (ZhituManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText())) {
+      this.this$0.y();
+    }
+    ((FullScreenInputHelper)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioHelperHelperProvider.a(24)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.15
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ public final class UnifyRecomStruct
   static Map<Integer, String> cache_newReportInfoList;
   static ExposStuctInfo cache_stuExposInfo;
   static byte[] cache_vctBusiData = (byte[])new byte[1];
-  public Map<String, String> compassInfoList;
-  public int iPos;
-  public Map<Integer, String> newReportInfoList;
-  public ExposStuctInfo stuExposInfo;
+  public Map<String, String> compassInfoList = null;
+  public int iPos = 0;
+  public Map<Integer, String> newReportInfoList = null;
+  public ExposStuctInfo stuExposInfo = null;
   public String ugckey = "";
-  public byte[] vctBusiData;
+  public byte[] vctBusiData = null;
   
   static
   {

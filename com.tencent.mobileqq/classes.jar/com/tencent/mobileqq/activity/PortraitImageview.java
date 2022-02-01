@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import aenh;
-import aeni;
-import aenj;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -26,29 +23,29 @@ public class PortraitImageview
   extends View
 {
   private static int i = 20;
-  private double jdField_a_of_type_Double;
+  private double jdField_a_of_type_Double = 0.0D;
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
-  public aeni a;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  public ScaleGestureDetector a;
+  ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
+  PortraitImageview.OnImageTouchedListener jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview$OnImageTouchedListener;
   RegionView jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView;
-  public Runnable a;
+  Runnable jdField_a_of_type_JavaLangRunnable = null;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[9];
   float jdField_b_of_type_Float;
   int jdField_b_of_type_Int;
   private Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
   RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private Runnable jdField_b_of_type_JavaLangRunnable;
+  private Runnable jdField_b_of_type_JavaLangRunnable = null;
   private float jdField_c_of_type_Float;
   int jdField_c_of_type_Int;
   private Matrix jdField_c_of_type_AndroidGraphicsMatrix = new Matrix();
   RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-  private Runnable jdField_c_of_type_JavaLangRunnable;
+  private Runnable jdField_c_of_type_JavaLangRunnable = null;
   private float jdField_d_of_type_Float;
   int jdField_d_of_type_Int;
   private Matrix jdField_d_of_type_AndroidGraphicsMatrix = new Matrix();
@@ -76,7 +73,6 @@ public class PortraitImageview
   public PortraitImageview(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangRunnable = null;
     a(paramContext);
   }
   
@@ -108,8 +104,8 @@ public class PortraitImageview
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_JavaLangRunnable = new PortraitImageview.1(this);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new aenj(this));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aenh(this, null));
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new PortraitImageview.ScaleListener(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new PortraitImageview.MyGestureListener(this, null));
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(2, null);
     }
@@ -200,7 +196,7 @@ public class PortraitImageview
     a(paramFloat, f1 / 2.0F, f2 / 2.0F);
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  protected void a(float paramFloat1, float paramFloat2)
   {
     this.jdField_e_of_type_AndroidGraphicsMatrix.set(this.jdField_b_of_type_AndroidGraphicsMatrix);
     this.jdField_e_of_type_AndroidGraphicsMatrix.postTranslate(paramFloat1, paramFloat2);
@@ -231,7 +227,7 @@ public class PortraitImageview
     post(new PortraitImageview.3(this, paramFloat4, System.currentTimeMillis(), f1, paramFloat1, paramFloat2, paramFloat3));
   }
   
-  public float b()
+  protected float b()
   {
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
       return 1.0F;
@@ -293,7 +289,7 @@ public class PortraitImageview
     return Math.max(Math.min(this.jdField_g_of_type_Int / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.h / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()), 1.0F);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int k = paramCanvas.save();
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
@@ -322,7 +318,7 @@ public class PortraitImageview
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_g_of_type_Int = (paramInt3 - paramInt1);
@@ -451,9 +447,9 @@ public class PortraitImageview
     }
   }
   
-  public void setOnImageTouchedListener(aeni paramaeni)
+  public void setOnImageTouchedListener(PortraitImageview.OnImageTouchedListener paramOnImageTouchedListener)
   {
-    this.jdField_a_of_type_Aeni = paramaeni;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview$OnImageTouchedListener = paramOnImageTouchedListener;
   }
   
   public void setRegionView(RegionView paramRegionView)
@@ -485,7 +481,7 @@ public class PortraitImageview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PortraitImageview
  * JD-Core Version:    0.7.0.1
  */

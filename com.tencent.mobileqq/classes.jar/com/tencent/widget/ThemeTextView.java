@@ -49,7 +49,7 @@ public class ThemeTextView
     jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if ((this.jdField_a_of_type_Boolean) && (ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId)))
     {
@@ -68,7 +68,7 @@ public class ThemeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ThemeTextView
  * JD-Core Version:    0.7.0.1
  */

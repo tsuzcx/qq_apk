@@ -9,12 +9,12 @@ class SelectMemberActivity$2$1
   
   public void run()
   {
-    this.this$1.this$0.mLeftBackBtn.sendAccessibilityEvent(4);
+    this.a.a.c.sendAccessibilityEvent(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class QQCustomDialog$6
   
   public void onClick(View paramView)
   {
-    if (this.val$nl != null) {
-      this.val$nl.onClick(this.this$0, 1);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
     }
     try
     {
-      if (this.this$0.isShowing()) {
-        this.this$0.dismiss();
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       }
       label38:
       EventCollector.getInstance().onViewClicked(paramView);

@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class InnerReqHeader
   extends JceStruct
 {
-  public long iClientIp;
-  public int iSeq;
-  public long lUIN;
-  public int nAppid;
-  public short shVersion;
+  public long iClientIp = 0L;
+  public int iSeq = 0;
+  public long lUIN = 0L;
+  public int nAppid = 0;
+  public short shVersion = 0;
   public String strA2 = "";
   public String strImei = "";
-  public long uClientPort;
+  public long uClientPort = 0L;
   
   public InnerReqHeader() {}
   

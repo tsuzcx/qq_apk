@@ -2,15 +2,14 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import auuv;
-import bjgx;
-import bjkq;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.open.agent.report.ReportCenter;
+import com.tencent.open.base.ShareProcessorUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -42,9 +41,9 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
       ((Bundle)localObject).putString("intext_3", "0");
       ((Bundle)localObject).putString("stringext_1", this.this$1.this$0.mTargetUrl);
       ((Bundle)localObject).putString("intext_4", "" + i);
-      bjgx.a().a((Bundle)localObject, "", str, false, this.this$1.this$0.isSdkShare());
+      ReportCenter.a().a((Bundle)localObject, "", str, false, this.this$1.this$0.isSdkShare());
       l = System.currentTimeMillis();
-      auuv.a("batch_url_exchange");
+      ForwardStatisticsReporter.a("batch_url_exchange");
       localObject = new Bundle();
       HashMap localHashMap = HttpUtil.batchUrlExchange(this.this$1.this$0.mAppContext, str, ForwardSdkShareProcessor.access$200(this.this$1.this$0), 1, this.this$1.this$0.mUrlMap, (Bundle)localObject);
       l = System.currentTimeMillis() - l;
@@ -53,7 +52,7 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
       ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1).set(i);
       localObject = new HashMap();
       ((HashMap)localObject).put("param_ret_code", Integer.toString(i));
-      auuv.a("batch_url_exchange", str, (HashMap)localObject, bool);
+      ForwardStatisticsReporter.a("batch_url_exchange", str, (HashMap)localObject, bool);
       this.this$1.qlog("UrlExchangeStep|run,suc=" + bool + ",ret=" + ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1) + ",cost=" + l);
       Bundle localBundle = new Bundle();
       localBundle.putString("report_type", "102");
@@ -70,7 +69,7 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
       if (!bool) {
         localBundle.putString("stringext_1", this.this$1.this$0.mTargetUrl);
       }
-      bjgx.a().a(localBundle, "", str, false, this.this$1.this$0.isSdkShare());
+      ReportCenter.a().a(localBundle, "", str, false, this.this$1.this$0.isSdkShare());
       if (!bool) {
         break label1127;
       }
@@ -80,9 +79,9 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
       localObject = (String)this.this$1.this$0.mUrlMap.get("imageUrl");
       if (localObject != null)
       {
-        auuv.a("reuse_image_for_aio");
-        bjkq.a(false, this.this$1.this$0.mRemoteImgUrl, this.this$1.this$0.mRemoteImgUrl, (String)localObject);
-        auuv.a("reuse_image_for_aio", str, true);
+        ForwardStatisticsReporter.a("reuse_image_for_aio");
+        ShareProcessorUtil.a(false, this.this$1.this$0.mRemoteImgUrl, this.this$1.this$0.mRemoteImgUrl, (String)localObject);
+        ForwardStatisticsReporter.a("reuse_image_for_aio", str, true);
       }
     }
     label1119:
@@ -92,7 +91,7 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
       if (!bool) {
         QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|ret=" + ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1) + ",cost=" + l + ",url=" + this.this$1.this$0.mUrlMap.toString());
       }
-      localObject = this.this$1.this$0.app.getMessageFacade().queryMsgItemByUniseq(this.this$1.this$0.mUiRequest.mPeerUin, this.this$1.this$0.mUiRequest.mUinType, this.this$1.this$0.mUiRequest.mUniseq);
+      localObject = this.this$1.this$0.app.getMessageFacade().b(this.this$1.this$0.mUiRequest.mPeerUin, this.this$1.this$0.mUiRequest.mUinType, this.this$1.this$0.mUiRequest.mUniseq);
       if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ((((MessageForStructing)localObject).structingMsg instanceof AbsShareMsg)))
       {
         localObject = (AbsShareMsg)((MessageForStructing)localObject).structingMsg;
@@ -121,7 +120,7 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
         if (this.this$1.this$0.mIsAllUrlShort.get()) {
           ((AbsShareMsg)localObject).shareData.shortUrlStatus = 1;
         }
-        this.this$1.this$0.app.getMessageFacade().updateMsgContentByUniseq(this.this$1.this$0.mUiRequest.mPeerUin, this.this$1.this$0.mUiRequest.mUinType, this.this$1.this$0.mUiRequest.mUniseq, ((AbsShareMsg)localObject).getBytes());
+        this.this$1.this$0.app.getMessageFacade().a(this.this$1.this$0.mUiRequest.mPeerUin, this.this$1.this$0.mUiRequest.mUinType, this.this$1.this$0.mUiRequest.mUniseq, ((AbsShareMsg)localObject).getBytes());
       }
       this.this$1.doNextStep();
       return;
@@ -138,7 +137,7 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
         return;
       }
     } while ((ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1).get() != -1) || (ForwardSdkShareProcessor.UrlExchangeStep.access$1400(this.this$1).getAndIncrement() >= 2));
-    ThreadManager.post(this, 8, null, true);
+    run();
   }
 }
 

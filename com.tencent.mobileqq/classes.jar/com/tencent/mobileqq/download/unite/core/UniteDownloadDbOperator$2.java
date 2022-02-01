@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.download.unite.core;
 
-import asaz;
-
-public class UniteDownloadDbOperator$2
+class UniteDownloadDbOperator$2
   implements Runnable
 {
-  public UniteDownloadDbOperator$2(asaz paramasaz, String paramString) {}
+  UniteDownloadDbOperator$2(UniteDownloadDbOperator paramUniteDownloadDbOperator, String paramString) {}
   
   public void run()
   {
-    asaz.a(this.this$0, this.a);
+    UniteDownloadDbOperator.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.UniteDownloadDbOperator.2
  * JD-Core Version:    0.7.0.1
  */

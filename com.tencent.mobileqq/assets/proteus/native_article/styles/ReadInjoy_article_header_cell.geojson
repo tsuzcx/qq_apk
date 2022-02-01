@@ -40,7 +40,18 @@
                         "attributes":{
                             "setRingUrl:": "$ringUrl",
                             "setLiveStatusUrl:": "$liveStatusUrl",
-                            "loadAvatarByUin:": "$avatar_uin"
+                            "loadAvatarByUin:": "$avatar_uin",
+                            "setDTElementID:withParams:": [
+                                "puin_button",
+                                {
+                                    "rowkey": "$dt_rowkey",
+                                    "content_type": "5",
+                                    "dt_pgid": "1",
+                                    "eid":"puin_button",
+                                    "actionid":"click_puin",
+                                    "click_type": "single"
+                                }
+                            ]
                         }
                     },
                     {
@@ -73,7 +84,18 @@
                                     "setText:": "$nickname_text",
                                     "setTextColorString:": "#262626",
                                     "setFontSizeString:": "16",
-                                    "setNumberOfLinesString:": "1"
+                                    "setNumberOfLinesString:": "1",
+                                    "setDTElementID:withParams:": [
+                                        "puin_button",
+                                        {
+                                            "rowkey": "$dt_rowkey",
+                                            "content_type": "5",
+                                            "dt_pgid": "1",
+                                            "eid":"puin_button",
+                                            "actionid":"click_puin",
+                                            "click_type": "single"
+                                        }
+                                    ]
                                 }
                             },
                             {
@@ -144,6 +166,18 @@
                                     "0",
                                     "4"
                                 ]
+                            ],
+                            "setDTElementID:withParams:": [
+                                "follow_button",
+                                {
+                                    "rowkey": "$dt_rowkey",
+                                    "content_type": "5",
+                                    "dt_pgid": "1",
+                                    "eid":"follow_button",
+                                    "actionid":"click_follow",
+                                    "puin":"$dt_puin",
+                                    "click_type": "single"
+                                }
                             ]
                         }
                     }

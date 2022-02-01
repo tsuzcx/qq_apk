@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aihw;
-import aihz;
 import java.util.List;
 
-public class StickerRecBarAdapter$ImgUpdateListener$1
+class StickerRecBarAdapter$ImgUpdateListener$1
   implements Runnable
 {
-  public StickerRecBarAdapter$ImgUpdateListener$1(aihz paramaihz, int paramInt, String paramString1, String paramString2, List paramList, String paramString3) {}
+  StickerRecBarAdapter$ImgUpdateListener$1(StickerRecBarAdapter.ImgUpdateListener paramImgUpdateListener, int paramInt, String paramString1, String paramString2, List paramList, String paramString3) {}
   
   public void run()
   {
@@ -20,7 +18,7 @@ public class StickerRecBarAdapter$ImgUpdateListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1
  * JD-Core Version:    0.7.0.1
  */

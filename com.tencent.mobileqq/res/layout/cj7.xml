@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:id="@id/e6w" android:background="@drawable/jm" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="52.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:id="@id/cnj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="24.0dip" android:text="@string/byr" />
-    <LinearLayout android:orientation="vertical" android:id="@id/cni" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="4.0dip" android:layout_below="@id/cnj" android:layout_alignLeft="@id/cnj" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/bt7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="16.0dip" android:layout_below="@id/cni" android:layout_alignLeft="@id/cnj">
-        <TextView android:textSize="12.0dip" android:textColor="#ff4d94ff" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/byq" />
-    </LinearLayout>
-</merge>
+    <com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/ifh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/ibc" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mobileqq.widget.RoundRelativeLayout>
+    <com.tencent.widget.ThemeImageView android:id="@id/letsIcon" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="20.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/ibo" android:layout_width="28.0dip" android:layout_height="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/yx" android:duplicateParentState="true" android:layout_width="7.0dip" android:layout_height="11.5dip" android:src="@drawable/qq_leba_icon_personal_icon" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black_theme_version2" android:gravity="center_vertical" android:id="@id/n54" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:singleLine="true" android:layout_toRightOf="@id/letsIcon" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/i54" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginRight="37.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

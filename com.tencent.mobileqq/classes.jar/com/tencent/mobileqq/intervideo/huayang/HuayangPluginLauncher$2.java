@@ -2,44 +2,43 @@ package com.tencent.mobileqq.intervideo.huayang;
 
 import android.os.Handler;
 import android.os.Message;
-import anvx;
-import avty;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class HuayangPluginLauncher$2
+class HuayangPluginLauncher$2
   implements Runnable
 {
-  public HuayangPluginLauncher$2(avty paramavty, boolean paramBoolean) {}
+  HuayangPluginLauncher$2(HuayangPluginLauncher paramHuayangPluginLauncher, boolean paramBoolean) {}
   
   public void run()
   {
     long l;
-    if (avty.a(this.this$0) == null)
+    if (HuayangPluginLauncher.a(this.this$0) == null)
     {
-      avty.a(this.this$0, avty.b(this.this$0));
+      HuayangPluginLauncher.a(this.this$0, HuayangPluginLauncher.b(this.this$0));
       if (this.a)
       {
-        l = 1000L - (System.currentTimeMillis() - avty.a(this.this$0));
+        l = 1000L - (System.currentTimeMillis() - HuayangPluginLauncher.a(this.this$0));
         if (l > 0L) {
-          avty.a(this.this$0, "HuayangPluginLauncher", anvx.a(2131705131) + l);
+          HuayangPluginLauncher.a(this.this$0, "HuayangPluginLauncher", HardCodeUtil.a(2131705674) + l);
         }
       }
     }
     try
     {
       Thread.sleep(l);
-      if ((avty.a(this.this$0) != null) && (avty.a(this.this$0)))
+      if ((HuayangPluginLauncher.a(this.this$0) != null) && (HuayangPluginLauncher.a(this.this$0)))
       {
         if (this.a)
         {
-          Message localMessage = Message.obtain(avty.a(this.this$0), 2);
-          avty.a(this.this$0).sendMessage(localMessage);
-          avty.a(this.this$0, avty.a(this.this$0));
+          Message localMessage = Message.obtain(HuayangPluginLauncher.a(this.this$0), 2);
+          HuayangPluginLauncher.a(this.this$0).sendMessage(localMessage);
+          HuayangPluginLauncher.a(this.this$0, HuayangPluginLauncher.a(this.this$0));
           this.this$0.a = true;
         }
       }
       else
       {
-        avty.a(this.this$0, false);
+        HuayangPluginLauncher.a(this.this$0, false);
         return;
       }
     }
@@ -49,14 +48,14 @@ public class HuayangPluginLauncher$2
       {
         localInterruptedException.printStackTrace();
         continue;
-        avty.b(this.this$0, avty.a(this.this$0));
+        HuayangPluginLauncher.b(this.this$0, HuayangPluginLauncher.a(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.2
  * JD-Core Version:    0.7.0.1
  */

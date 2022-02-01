@@ -1,24 +1,33 @@
 package com.tencent.mobileqq.app;
 
-import aoep;
-import bfft;
-import bfge;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.AioKeyword;
+import android.os.SystemClock;
+import com.tencent.mobileqq.soso.location.LbsManagerServiceOnLocationChangeListener;
+import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class TroopHandler$4
-  implements Runnable
+class TroopHandler$4
+  extends LbsManagerServiceOnLocationChangeListener
 {
-  public TroopHandler$4(aoep paramaoep, oidb_0x496.AioKeyword paramAioKeyword) {}
-  
-  public void run()
+  TroopHandler$4(TroopHandler paramTroopHandler, String paramString1, long paramLong, String paramString2)
   {
-    ((bfge)this.this$0.app.getManager(QQManagerFactory.TROOP_AIO_KEYWORD_TIP_MANAGER)).a(bfft.a(this.a), bfft.b(this.a));
-    bfft.a(this.this$0.app, this.a);
+    super(paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopHandler", 2, "onLocationFinish, time=" + (l - this.jdField_a_of_type_Long) + "ms");
+    }
+    if (paramInt != 0) {
+      QLog.i("TroopHandler", 1, "getDetailOnlineMemberList, startLocation, errorCode=" + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopHandler.4
  * JD-Core Version:    0.7.0.1
  */

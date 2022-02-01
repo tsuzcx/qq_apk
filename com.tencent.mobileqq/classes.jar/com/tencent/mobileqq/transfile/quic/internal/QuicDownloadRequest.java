@@ -14,7 +14,7 @@ public class QuicDownloadRequest
   protected Map<String, String> headers = new LinkedHashMap();
   protected String host;
   public String ip;
-  protected boolean isFinish;
+  protected boolean isFinish = false;
   protected String method = "GET";
   protected String path;
   protected int port = 443;

@@ -58,7 +58,7 @@ public class BubbleImageView
   Path jdField_c_of_type_AndroidGraphicsPath;
   RectF jdField_c_of_type_AndroidGraphicsRectF;
   private boolean jdField_c_of_type_Boolean = true;
-  private float jdField_d_of_type_Float;
+  private float jdField_d_of_type_Float = 0.0F;
   private Paint jdField_d_of_type_AndroidGraphicsPaint;
   private Path jdField_d_of_type_AndroidGraphicsPath;
   public boolean d;
@@ -70,9 +70,9 @@ public class BubbleImageView
   private float h;
   protected boolean h;
   private float jdField_i_of_type_Float = 16.0F;
-  private boolean jdField_i_of_type_Boolean;
+  private boolean jdField_i_of_type_Boolean = false;
   private float jdField_j_of_type_Float = 1.0F;
-  private boolean jdField_j_of_type_Boolean;
+  private boolean jdField_j_of_type_Boolean = false;
   private float k = 14.0F;
   private float l;
   
@@ -96,6 +96,7 @@ public class BubbleImageView
     this.jdField_g_of_type_Float = 10.0F;
     this.jdField_h_of_type_Float = 10.0F;
     this.jdField_a_of_type_Float = Math.abs(this.jdField_d_of_type_Float - this.jdField_h_of_type_Float);
+    this.jdField_g_of_type_Boolean = false;
     b();
   }
   
@@ -107,6 +108,7 @@ public class BubbleImageView
     this.jdField_g_of_type_Float = 10.0F;
     this.jdField_h_of_type_Float = 10.0F;
     this.jdField_a_of_type_Float = Math.abs(this.jdField_d_of_type_Float - this.jdField_h_of_type_Float);
+    this.jdField_g_of_type_Boolean = false;
     b();
   }
   
@@ -118,6 +120,7 @@ public class BubbleImageView
     this.jdField_g_of_type_Float = 10.0F;
     this.jdField_h_of_type_Float = 10.0F;
     this.jdField_a_of_type_Float = Math.abs(this.jdField_d_of_type_Float - this.jdField_h_of_type_Float);
+    this.jdField_g_of_type_Boolean = false;
     b();
   }
   
@@ -511,7 +514,7 @@ public class BubbleImageView
   protected void b()
   {
     this.jdField_e_of_type_Boolean = jdField_f_of_type_Boolean;
-    if (VersionUtils.isHoneycomb())
+    if (VersionUtils.e())
     {
       this.jdField_a_of_type_Int = 1;
       a();
@@ -586,7 +589,7 @@ public class BubbleImageView
     {
       l1 = System.currentTimeMillis() - l1;
       boolean bool = false;
-      if (VersionUtils.isHoneycomb()) {
+      if (VersionUtils.e()) {
         bool = paramCanvas.isHardwareAccelerated();
       }
       if ((QLog.isColorLevel()) && (l1 > 10L)) {
@@ -609,28 +612,28 @@ public class BubbleImageView
   }
   
   @TargetApi(11)
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (this.jdField_e_of_type_Boolean) {
       setLayerType(1, null);
     }
-    while ((this.jdField_a_of_type_Int != 1) || (!VersionUtils.isHoneycomb())) {
+    while ((this.jdField_a_of_type_Int != 1) || (!VersionUtils.e())) {
       return;
     }
     setLayerType(2, null);
   }
   
   @TargetApi(11)
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.jdField_a_of_type_Int == 1) && (VersionUtils.isHoneycomb())) {
+    if ((this.jdField_a_of_type_Int == 1) && (VersionUtils.e())) {
       setLayerType(0, null);
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramBoolean) && (this.jdField_a_of_type_Int == 1)) {
@@ -710,7 +713,7 @@ public class BubbleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BubbleImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import android.os.Build.VERSION;
-import aqru;
-import tfd;
-import tfe;
+import com.tencent.mobileqq.colornote.swipeback.SwipeLayoutUtils;
 
-public class FastWebActivity$26$1
+class FastWebActivity$26$1
   implements Runnable
 {
-  public FastWebActivity$26$1(tfd paramtfd) {}
+  FastWebActivity$26$1(FastWebActivity.26 param26) {}
   
   public void run()
   {
     if ((Build.VERSION.SDK_INT > 26) && (FastWebActivity.a(this.a.a) == null))
     {
-      aqru.a(this.a.a, new tfe(this));
+      SwipeLayoutUtils.a(this.a.a, new FastWebActivity.26.1.1(this));
       return;
     }
     this.a.a.finish();
@@ -22,7 +20,7 @@ public class FastWebActivity$26$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.26.1
  * JD-Core Version:    0.7.0.1
  */

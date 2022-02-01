@@ -4,14 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bnrh;
+import dov.com.qq.im.ae.util.AEQLog;
 
 public class AEEditorOrderBroadcastReceiver
   extends BroadcastReceiver
 {
   private static final String TAG = "AEEditorOrderBroadcastReceiver";
   private AEEditorOrderBroadcastReceiver.AEEditorOrderListener mAEEditorOrderListener;
-  private boolean mReceiverActive;
+  private boolean mReceiverActive = false;
   
   public AEEditorOrderBroadcastReceiver(AEEditorOrderBroadcastReceiver.AEEditorOrderListener paramAEEditorOrderListener)
   {
@@ -31,8 +31,8 @@ public class AEEditorOrderBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("generate_mission");
-    bnrh.b("AEEditorOrderBroadcastReceiver", "[onReceive] action :" + paramContext);
-    bnrh.b("AEEditorOrderBroadcastReceiver", "[onReceive] mission :" + paramIntent);
+    AEQLog.b("AEEditorOrderBroadcastReceiver", "[onReceive] action :" + paramContext);
+    AEQLog.b("AEEditorOrderBroadcastReceiver", "[onReceive] mission :" + paramIntent);
     if ("AEEDITOR_ORDER_CANCEL".equals(paramContext)) {
       this.mAEEditorOrderListener.onAEEditorCancel(paramIntent);
     }
@@ -62,7 +62,7 @@ public class AEEditorOrderBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AEEditorOrderBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

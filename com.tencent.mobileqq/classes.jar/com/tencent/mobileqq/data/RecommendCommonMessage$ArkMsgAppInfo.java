@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import agnw;
+import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -10,9 +10,9 @@ public class RecommendCommonMessage$ArkMsgAppInfo
   public String appPath = "";
   public String appVer = "0.0.0.1";
   public String appView = "";
-  public boolean equalInputText;
+  public boolean equalInputText = false;
   public String keyword = "";
-  public agnw mArkContainer;
+  public ArkAioContainerWrapper mArkContainer;
   public LinkedList<ArkMsgAppInfo> mOpenCardAppInfoList = new LinkedList();
   public String meta = "";
   
@@ -51,7 +51,7 @@ public class RecommendCommonMessage$ArkMsgAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo
  * JD-Core Version:    0.7.0.1
  */

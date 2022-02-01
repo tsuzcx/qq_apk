@@ -17,11 +17,11 @@ import java.util.ArrayList;
 public class AccountDetailBannerIndicator
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private final String jdField_a_of_type_JavaLangString = "#FFFFFFFF";
   private ArrayList<ImageView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 0;
   private final String jdField_b_of_type_JavaLangString = "#33FFFFFF";
   
   public AccountDetailBannerIndicator(Context paramContext, int paramInt)
@@ -34,8 +34,8 @@ public class AccountDetailBannerIndicator
   
   private void a()
   {
-    int j = AIOUtils.dp2px(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int k = AIOUtils.dp2px(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = AIOUtils.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {
@@ -45,7 +45,7 @@ public class AccountDetailBannerIndicator
         ((LinearLayout.LayoutParams)localObject).setMargins(k, 0, 0, 0);
       }
       localBubbleViewLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localBubbleViewLayout.showSharpCorner(false);
+      localBubbleViewLayout.a(false);
       localBubbleViewLayout.setRadius(3.0F);
       addView(localBubbleViewLayout);
       localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
@@ -87,7 +87,7 @@ public class AccountDetailBannerIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerIndicator
  * JD-Core Version:    0.7.0.1
  */

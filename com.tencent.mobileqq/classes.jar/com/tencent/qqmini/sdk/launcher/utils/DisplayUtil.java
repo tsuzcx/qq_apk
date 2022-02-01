@@ -664,19 +664,26 @@ public class DisplayUtil
   
   public static void setSystemUIVisible(Activity paramActivity, boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      WindowManager.LayoutParams localLayoutParams = paramActivity.getWindow().getAttributes();
-      localLayoutParams.flags &= 0xFFFFFBFF;
-      paramActivity.getWindow().setAttributes(localLayoutParams);
-      paramActivity.getWindow().clearFlags(512);
-      return;
+    if (paramBoolean) {
+      try
+      {
+        WindowManager.LayoutParams localLayoutParams = paramActivity.getWindow().getAttributes();
+        localLayoutParams.flags &= 0xFFFFFBFF;
+        paramActivity.getWindow().setAttributes(localLayoutParams);
+        paramActivity.getWindow().clearFlags(512);
+        return;
+      }
+      catch (Exception paramActivity)
+      {
+        QMLog.e("DisplayUtil", "void setSystemUIVisible", paramActivity);
+        return;
+      }
     }
     LiuHaiUtils.initLiuHaiProperty(paramActivity);
     if (LiuHaiUtils.isLiuHaiUseValid())
     {
       if ((!Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) || ((Build.VERSION.SDK_INT != 26) && (Build.VERSION.SDK_INT != 27))) {
-        break label100;
+        break label111;
       }
       enableXiaoMiNotch(paramActivity);
     }
@@ -684,7 +691,7 @@ public class DisplayUtil
     {
       paramActivity.getWindow().setFlags(1024, 1024);
       return;
-      label100:
+      label111:
       LiuHaiUtils.enableNotch(paramActivity);
     }
   }
@@ -729,7 +736,7 @@ public class DisplayUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.DisplayUtil
  * JD-Core Version:    0.7.0.1
  */

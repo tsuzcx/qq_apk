@@ -2,28 +2,24 @@ package com.tencent.biz.qqstory.playvideo;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArraySet;
-import xbu;
-import xbw;
-import xca;
-import xcb;
 
-public class TVKPreloader$2$2
+class TVKPreloader$2$2
   implements Runnable
 {
-  public TVKPreloader$2$2(xbw paramxbw, xca paramxca, String paramString1, int paramInt, String paramString2) {}
+  TVKPreloader$2$2(TVKPreloader.2 param2, TVKPreloader.PreloadItem paramPreloadItem, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    Iterator localIterator = xbu.a().iterator();
+    Iterator localIterator = TVKPreloader.a().iterator();
     while (localIterator.hasNext()) {
-      ((xcb)localIterator.next()).a(this.jdField_a_of_type_Xca, new Throwable(this.jdField_a_of_type_JavaLangString + "|" + String.valueOf(this.jdField_a_of_type_Int) + "|" + this.b));
+      ((TVKPreloader.PreloadListener)localIterator.next()).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem, new Throwable(this.jdField_a_of_type_JavaLangString + "|" + String.valueOf(this.jdField_a_of_type_Int) + "|" + this.b));
     }
-    xbu.a(true);
+    TVKPreloader.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,54 +6,54 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem.FakeVideoUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.view.adapter.MemoriesInnerListAdapter;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import yap;
-import yaq;
-import yar;
-import yas;
 
 @TargetApi(9)
 public class MemoriesInnerListView
   extends HorizontalListView
 {
   protected int a;
-  public yar a;
-  private yas a;
+  public MemoriesInnerListView.OnInnerListRefreshListener a;
+  private MemoriesInnerListAdapter a;
   protected int b;
   
   public MemoriesInnerListView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewMemoriesInnerListView$OnInnerListRefreshListener = null;
     a(paramContext);
   }
   
   public MemoriesInnerListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewMemoriesInnerListView$OnInnerListRefreshListener = null;
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = DisplayUtil.dip2px(paramContext, 82.0F);
-    this.jdField_a_of_type_Yas = new yas(getContext());
-    super.setAdapter(this.jdField_a_of_type_Yas);
-    super.setOnItemClickListener(this.jdField_a_of_type_Yas);
-    super.setOnScrollStateChangedListener(new yaq(this));
+    this.b = DisplayUtil.a(paramContext, 82.0F);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter = new MemoriesInnerListAdapter(getContext());
+    super.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter);
+    super.setOnItemClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter);
+    super.setOnScrollStateChangedListener(new MemoriesInnerListView.1(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Yas;
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter;
   }
   
-  public void setDate(List<yap> paramList, String paramString)
+  public void setDate(List<VideoCollectionItem.FakeVideoUIItem> paramList, String paramString)
   {
-    this.jdField_a_of_type_Yas.a(paramList, paramString);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -65,7 +65,7 @@ public class MemoriesInnerListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView
  * JD-Core Version:    0.7.0.1
  */

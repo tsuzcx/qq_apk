@@ -15,6 +15,8 @@ public final class AvGameCommon$RoomUserInfo
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField cli_ver = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field enter_time = PBField.initUInt32(0);
+  public final PBUInt32Field game_view = PBField.initUInt32(0);
+  public final PBEnumField match_tag = PBField.initEnum(0);
   public final PBUInt32Field role = PBField.initUInt32(0);
   public final PBEnumField status = PBField.initEnum(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
@@ -22,7 +24,7 @@ public final class AvGameCommon$RoomUserInfo
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "uin", "role", "status", "enter_time", "cli_ver" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, RoomUserInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56 }, new String[] { "uin", "role", "status", "enter_time", "cli_ver", "match_tag", "game_view" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, RoomUserInfo.class);
   }
 }
 

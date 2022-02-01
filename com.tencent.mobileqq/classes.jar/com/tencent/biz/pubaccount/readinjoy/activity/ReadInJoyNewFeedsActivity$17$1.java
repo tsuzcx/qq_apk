@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import otu;
 
-public class ReadInJoyNewFeedsActivity$17$1
+class ReadInJoyNewFeedsActivity$17$1
   implements Runnable
 {
-  public ReadInJoyNewFeedsActivity$17$1(otu paramotu) {}
+  ReadInJoyNewFeedsActivity$17$1(ReadInJoyNewFeedsActivity.17 param17) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class ReadInJoyNewFeedsActivity$17$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.17.1
  * JD-Core Version:    0.7.0.1
  */

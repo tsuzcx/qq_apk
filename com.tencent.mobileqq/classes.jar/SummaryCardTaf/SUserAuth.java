@@ -9,7 +9,7 @@ public final class SUserAuth
 {
   static int cache_keytype;
   public String keystr = "";
-  public int keytype;
+  public int keytype = 0;
   
   public SUserAuth() {}
   
@@ -33,7 +33,7 @@ public final class SUserAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SUserAuth
  * JD-Core Version:    0.7.0.1
  */

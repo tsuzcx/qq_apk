@@ -8,7 +8,7 @@ public final class mobile_sub_concern_push_rsp
   extends JceStruct
 {
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public mobile_sub_concern_push_rsp() {}
   

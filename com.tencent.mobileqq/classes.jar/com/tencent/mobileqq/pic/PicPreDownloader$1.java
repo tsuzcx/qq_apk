@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.pic;
 
-import azkq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class PicPreDownloader$1

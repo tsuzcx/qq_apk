@@ -11,13 +11,12 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJSmartCropUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
-import pjr;
-import pre;
-import teh;
 
 public class SquareCornerTextImageView
   extends FrameLayout
@@ -48,32 +47,32 @@ public class SquareCornerTextImageView
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localLayoutParams);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560175, null);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380073));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560253, null);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380511));
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_AndroidViewView, paramContext);
   }
   
-  private void b(@NonNull teh paramteh)
+  private void b(@NonNull SquareCornerTextImageView.PicInfo paramPicInfo)
   {
-    float f = 1.0F * teh.a(paramteh) / teh.b(paramteh);
-    if ((teh.a(paramteh)) && ((f < 0.455D) || (f > 2.2D)))
+    float f = 1.0F * SquareCornerTextImageView.PicInfo.a(paramPicInfo) / SquareCornerTextImageView.PicInfo.b(paramPicInfo);
+    if ((SquareCornerTextImageView.PicInfo.a(paramPicInfo)) && ((f < 0.455D) || (f > 2.2D)))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131717914));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718406));
     }
     for (;;)
     {
-      if (teh.b(paramteh))
+      if (SquareCornerTextImageView.PicInfo.b(paramPicInfo))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131717913));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718405));
       }
-      if ((!teh.c(paramteh)) || (TextUtils.isEmpty(teh.a(paramteh)))) {
+      if ((!SquareCornerTextImageView.PicInfo.c(paramPicInfo)) || (TextUtils.isEmpty(SquareCornerTextImageView.PicInfo.a(paramPicInfo)))) {
         break;
       }
-      this.b.setText(teh.a(paramteh));
+      this.b.setText(SquareCornerTextImageView.PicInfo.a(paramPicInfo));
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
@@ -81,28 +80,28 @@ public class SquareCornerTextImageView
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public void a(@NonNull teh paramteh)
+  public void a(@NonNull SquareCornerTextImageView.PicInfo paramPicInfo)
   {
-    pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, teh.a(paramteh), getContext());
-    b(paramteh);
+    ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, SquareCornerTextImageView.PicInfo.a(paramPicInfo), getContext());
+    b(paramPicInfo);
   }
   
-  public void a(@NonNull teh paramteh, String paramString, int paramInt1, int paramInt2)
+  public void a(@NonNull SquareCornerTextImageView.PicInfo paramPicInfo, String paramString, int paramInt1, int paramInt2)
   {
-    if (!pre.a(paramString))
+    if (!RIJSmartCropUtils.a(paramString))
     {
-      a(paramteh);
+      a(paramPicInfo);
       return;
     }
-    String str = pre.a(paramString, paramInt1, paramInt2);
+    String str = RIJSmartCropUtils.a(paramString, paramInt1, paramInt2);
     if (QLog.isDebugVersion()) {
       QLog.i("SquareCornerTextImageView", 2, "[configSmartSizeImage], url = " + paramString + "\n, smartUrl = " + str + "\n, width = " + paramInt1 + ", height = " + paramInt2);
     }
     try
     {
       paramString = new URL(str);
-      pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramString, getContext());
-      b(paramteh);
+      ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramString, getContext());
+      b(paramPicInfo);
       return;
     }
     catch (MalformedURLException paramString)
@@ -110,12 +109,12 @@ public class SquareCornerTextImageView
       for (;;)
       {
         QLog.e("SquareCornerTextImageView", 1, "[configSmartSizeImage], e = " + paramString);
-        pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, teh.a(paramteh), getContext());
+        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, SquareCornerTextImageView.PicInfo.a(paramPicInfo), getContext());
       }
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.jdField_a_of_type_Boolean)
     {
@@ -127,7 +126,7 @@ public class SquareCornerTextImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView
  * JD-Core Version:    0.7.0.1
  */

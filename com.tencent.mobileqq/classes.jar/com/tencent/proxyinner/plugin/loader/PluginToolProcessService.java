@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.SystemClock;
-import avux;
+import com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.shadow.dynamic.host.MultiLoaderPluginProcessService;
 import com.tencent.shadow.dynamic.host.MultiLoaderPpsController;
@@ -13,7 +13,7 @@ import com.tencent.shadow.dynamic.host.MultiLoaderPpsController;
 public class PluginToolProcessService
   extends MultiLoaderPluginProcessService
 {
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   private MultiLoaderPpsController jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController;
   
   public IBinder onBind(Intent paramIntent)
@@ -27,7 +27,7 @@ public class PluginToolProcessService
   {
     super.onCreate();
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    avux.d();
+    DynamicNowManager.d();
   }
   
   public void onDestroy()
@@ -74,7 +74,7 @@ public class PluginToolProcessService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.proxyinner.plugin.loader.PluginToolProcessService
  * JD-Core Version:    0.7.0.1
  */

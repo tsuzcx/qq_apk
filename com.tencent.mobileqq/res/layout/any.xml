@@ -6,7 +6,7 @@
         <LinearLayout android:orientation="vertical" android:id="@id/bg4" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <View android:id="@id/jmz" android:layout_width="fill_parent" android:layout_height="10.0dip" />
             <FrameLayout android:id="@id/e3y" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:layout_gravity="center_horizontal" android:id="@id/ba4" android:layout_width="45.0dip" android:layout_height="16.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/a4w" android:scaleType="centerCrop" />
+                <ImageView android:layout_gravity="center_horizontal" android:id="@id/ba4" android:layout_width="45.0dip" android:layout_height="16.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/a4w" android:scaleType="centerCrop" android:contentDescription="收起" />
             </FrameLayout>
             <android.support.v7.widget.RecyclerView android:id="@id/ec1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
         </LinearLayout>

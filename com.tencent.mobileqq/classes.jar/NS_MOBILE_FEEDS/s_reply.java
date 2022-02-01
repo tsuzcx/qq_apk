@@ -16,21 +16,21 @@ public final class s_reply
   static ArrayList<s_picdata> cache_replypic;
   static s_user cache_target;
   static s_user cache_user = new s_user();
-  public s_audio audio;
+  public s_audio audio = null;
   public String content = "";
-  public int date;
-  public int displayflag;
-  public Map<String, String> extendInfo;
-  public boolean isDeleted;
-  public int isliked;
-  public int likeNum;
-  public ArrayList<s_likeman> likemans;
+  public int date = 0;
+  public int displayflag = 0;
+  public Map<String, String> extendInfo = null;
+  public boolean isDeleted = false;
+  public int isliked = 0;
+  public int likeNum = 0;
+  public ArrayList<s_likeman> likemans = null;
   public String refer = "";
   public String replyLikeKey = "";
   public String replyid = "";
-  public ArrayList<s_picdata> replypic;
-  public s_user target;
-  public s_user user;
+  public ArrayList<s_picdata> replypic = null;
+  public s_user target = null;
+  public s_user user = null;
   
   static
   {

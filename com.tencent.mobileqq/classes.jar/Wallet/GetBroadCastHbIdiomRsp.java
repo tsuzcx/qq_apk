@@ -10,7 +10,7 @@ public final class GetBroadCastHbIdiomRsp
   extends JceStruct
 {
   static Map<String, BroadCastInfo> cache_sendlistIdiomInfoDict = new HashMap();
-  public Map<String, BroadCastInfo> sendlistIdiomInfoDict;
+  public Map<String, BroadCastInfo> sendlistIdiomInfoDict = null;
   
   static
   {

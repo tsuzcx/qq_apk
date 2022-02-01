@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import auuv;
-import bjkq;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.open.base.ShareProcessorUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.io.File;
@@ -79,25 +78,26 @@ class ForwardSdkShareProcessor$ImageUploadStep$1
           {
             for (;;)
             {
+              label290:
               QLog.d("Q.share.ForwardSdkShareProcessor", 1, "srcPath to URL err:" + localMalformedURLException.getMessage());
             }
           }
-          auuv.a("reuse_image_for_aio");
-          bjkq.a(true, (String)localObject1, this.this$1.this$0.mLocalImgUrl, this.this$1.this$0.mRemoteImgUrl);
-          auuv.a("reuse_image_for_aio", str, true);
+          ForwardStatisticsReporter.a("reuse_image_for_aio");
+          ShareProcessorUtil.a(true, (String)localObject1, this.this$1.this$0.mLocalImgUrl, this.this$1.this$0.mRemoteImgUrl);
+          ForwardStatisticsReporter.a("reuse_image_for_aio", str, true);
           b = 1;
         }
       }
     }
     for (;;)
     {
-      localObject1 = this.this$1.this$0.app.getMessageFacade().queryMsgItemByUniseq(this.this$1.this$0.mUiRequest.mPeerUin, this.this$1.this$0.mUiRequest.mUinType, this.this$1.this$0.mUiRequest.mUniseq);
+      localObject1 = this.this$1.this$0.app.getMessageFacade().b(this.this$1.this$0.mUiRequest.mPeerUin, this.this$1.this$0.mUiRequest.mUinType, this.this$1.this$0.mUiRequest.mUniseq);
       if (((localObject1 instanceof MessageForStructing)) && ((((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
       {
         localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
         ((AbsShareMsg)localObject1).updateCover(this.this$1.this$0.mRemoteImgUrl);
         ((AbsShareMsg)localObject1).shareData.imageUrlStatus = b;
-        this.this$1.this$0.app.getMessageFacade().updateMsgContentByUniseq(this.this$1.this$0.mUiRequest.mPeerUin, this.this$1.this$0.mUiRequest.mUinType, this.this$1.this$0.mUiRequest.mUniseq, ((AbsShareMsg)localObject1).getBytes());
+        this.this$1.this$0.app.getMessageFacade().a(this.this$1.this$0.mUiRequest.mPeerUin, this.this$1.this$0.mUiRequest.mUinType, this.this$1.this$0.mUiRequest.mUniseq, ((AbsShareMsg)localObject1).getBytes());
       }
       ForwardSdkShareProcessor.access$1000(this.this$1.this$0).set(true);
       this.this$1.doNextStep();
@@ -121,12 +121,15 @@ class ForwardSdkShareProcessor$ImageUploadStep$1
       }
       if (ForwardSdkShareProcessor.ImageUploadStep.access$1108(this.this$1) < 2)
       {
-        ThreadManager.post(this, 8, null, true);
+        run();
         return;
       }
-      this.this$1.this$0.setError(9402, "upload share thumbnail fail");
-      this.this$1.doError();
-      return;
+      this.this$1.this$0.mRemoteImgUrl = this.this$1.this$0.mAppInfo.sourceIconBig;
+      if (TextUtils.isEmpty(this.this$1.this$0.mRemoteImgUrl)) {
+        this.this$1.this$0.mRemoteImgUrl = "https://pub.idqqimg.com/pc/misc/files/20191015/32ed5b691a1138ac452a59e42f3f83b5.png";
+      }
+      QLog.e("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep.process: upload image fail, use default remoteImageUrl instead: " + this.this$1.this$0.mRemoteImgUrl);
+      break label290;
       QLog.d("Q.share.ForwardSdkShareProcessor", 1, "skip ImageUploadStep change remote url : " + this.this$1.this$0.mRemoteImgUrl);
     }
   }

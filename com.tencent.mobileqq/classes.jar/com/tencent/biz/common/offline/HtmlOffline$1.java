@@ -1,27 +1,24 @@
 package com.tencent.biz.common.offline;
 
 import android.content.Context;
-import nux;
-import nuz;
-import nve;
-import nvm;
+import com.tencent.biz.common.offline.util.ILog;
 
-public final class HtmlOffline$1
+final class HtmlOffline$1
   implements Runnable
 {
-  public HtmlOffline$1(Context paramContext, String paramString, nux paramnux) {}
+  HtmlOffline$1(Context paramContext, String paramString, AsyncCallBack paramAsyncCallBack) {}
   
   public void run()
   {
-    if (nuz.a.a()) {
-      nuz.a.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
+    if (HtmlOffline.a.a()) {
+      HtmlOffline.a.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
     }
-    new nve(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nux).a();
+    new HtmlOffline.TransUrl(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncCallBack).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.HtmlOffline.1
  * JD-Core Version:    0.7.0.1
  */

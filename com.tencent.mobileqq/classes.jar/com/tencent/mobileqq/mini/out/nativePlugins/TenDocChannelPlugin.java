@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import beay;
-import bebf;
-import beeg;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.teamwork.TeamWorkConstants;
+import com.tencent.mobileqq.teamwork.TeamWorkExportUtil;
+import com.tencent.mobileqq.teamwork.tencentdocreport.TenDocLogReportHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.WebView;
@@ -73,8 +73,8 @@ public class TenDocChannelPlugin
     {
       paramString = new JSONObject(paramString).optString("fileName");
       new Bundle().putString("fileName", paramString);
-      bebf.a(paramActivity, paramString, true);
-      beeg.a(null, "0X800A4B2");
+      TeamWorkExportUtil.a(paramActivity, paramString, true);
+      TenDocLogReportHelper.a(null, "0X800A4B2");
       return;
     }
     catch (Exception paramActivity)
@@ -93,7 +93,7 @@ public class TenDocChannelPlugin
     {
       paramString = new JSONObject(paramString).optString("folderId");
       Intent localIntent = new Intent(paramActivity, FMActivity.class);
-      localIntent.putExtra(beay.f, true);
+      localIntent.putExtra(TeamWorkConstants.f, true);
       localIntent.addFlags(536870912);
       localIntent.putExtra("selectMode", true);
       localIntent.putExtra("busiType", 9);
@@ -101,7 +101,7 @@ public class TenDocChannelPlugin
       localIntent.putExtra("enterfrom", 9);
       localIntent.putExtra("tab_tab_type", 7);
       localIntent.putExtra("only_show_local_tab", true);
-      localIntent.putExtra(beay.g, paramString);
+      localIntent.putExtra(TeamWorkConstants.g, paramString);
       localIntent.putExtra("smart_device_support_flag", 8);
       paramActivity.startActivity(localIntent);
       return;
@@ -118,7 +118,7 @@ public class TenDocChannelPlugin
   
   public void onDestroy() {}
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     paramJSONObject = paramJSONObject.optString("data");
     Object localObject;

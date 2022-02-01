@@ -17,6 +17,7 @@ import com.tencent.ad.tangram.loader.AdLoaderWithJSON;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 import com.tencent.ad.tangram.net.AdNet;
+import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.protocol.gdt_analysis_event;
 import com.tencent.ad.tangram.util.AdAppUtil;
 import com.tencent.ad.tangram.util.AdClickUtil.Params;
@@ -84,6 +85,17 @@ public final class AdReporterForAnalysis
     localgdt_analysis_event.errorCode1 = paramInt2;
     localgdt_analysis_event.duration = paramLong;
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
+  }
+  
+  public static gdt_analysis_event createEventForAppPreOrder(Context paramContext, int paramInt, String paramString)
+  {
+    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
+    AdAnalysisUtil.initEvent(paramContext, paramInt, localgdt_analysis_event);
+    localgdt_analysis_event.aid = paramString;
+    localgdt_analysis_event.carrierCode = AdCarrier.getCode(paramContext);
+    localgdt_analysis_event.netType = AdNet.getTypeWith5G(paramContext);
+    localgdt_analysis_event.networkType = AdNet.getNetworkType(paramContext);
+    return localgdt_analysis_event;
   }
   
   public static AdAnalysisEvent createEventForDeviceIdentifier(Context paramContext, int paramInt1, int paramInt2, long paramLong, int paramInt3)
@@ -305,6 +317,194 @@ public final class AdReporterForAnalysis
       return;
       localActivity = null;
       break;
+    }
+  }
+  
+  public static void reportForAppPreOrderBackgroundTimeMillis(Context paramContext, long paramLong)
+  {
+    gdt_analysis_event localgdt_analysis_event = createEventForAppPreOrder(paramContext, 1207, null);
+    localgdt_analysis_event.duration = paramLong;
+    localgdt_analysis_event.androidCurrentProcessName = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
+    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
+  }
+  
+  public static void reportForAppPreOrderCanStartDownload(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, String paramString)
+  {
+    int j = 1;
+    paramString = createEventForAppPreOrder(paramContext, 1206, paramString);
+    int i;
+    if (paramBoolean1)
+    {
+      i = 1;
+      paramString.status1 = i;
+      if (!paramBoolean2) {
+        break label94;
+      }
+      i = 1;
+      label35:
+      paramString.status2 = i;
+      paramString.status3 = paramInt;
+      if (!paramBoolean3) {
+        break label100;
+      }
+    }
+    label94:
+    label100:
+    for (paramInt = j;; paramInt = 0)
+    {
+      paramString.status4 = paramInt;
+      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramString, 103));
+      return;
+      i = 0;
+      break;
+      i = 0;
+      break label35;
+    }
+  }
+  
+  public static void reportForAppPreOrderClicked(Context paramContext, String paramString, AdClickUtil.Result paramResult)
+  {
+    int j = 1;
+    paramString = createEventForAppPreOrder(paramContext, 1205, paramString);
+    if (paramResult != null)
+    {
+      i = paramResult.getErrorCode();
+      paramString.internalErrorCode = i;
+      if (paramResult == null) {
+        break label103;
+      }
+      i = paramResult.action;
+      label35:
+      paramString.actionId = i;
+      if ((paramResult == null) || (!paramResult.errorHandled)) {
+        break label108;
+      }
+      i = j;
+      label54:
+      paramString.errorHandled = i;
+      if (paramResult == null) {
+        break label113;
+      }
+    }
+    label103:
+    label108:
+    label113:
+    for (int i = paramResult.urlType;; i = -2147483648)
+    {
+      paramString.urlType = i;
+      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramString, 103));
+      return;
+      i = 1;
+      break;
+      i = 0;
+      break label35;
+      i = 0;
+      break label54;
+    }
+  }
+  
+  public static void reportForAppPreOrderTaskReportStageStatusChanged(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, String paramString)
+  {
+    int i = 1;
+    paramString = createEventForAppPreOrder(paramContext, 1204, paramString);
+    paramString.status1 = paramInt2;
+    paramString.status2 = paramInt1;
+    if (paramBoolean4)
+    {
+      paramInt1 = 1;
+      paramString.status3 = paramInt1;
+      if (!paramBoolean5) {
+        break label122;
+      }
+      paramInt1 = 1;
+      label46:
+      paramString.status4 = paramInt1;
+      if (!paramBoolean1) {
+        break label127;
+      }
+      paramInt1 = 1;
+      label58:
+      paramString.errorCode1 = paramInt1;
+      if (!paramBoolean2) {
+        break label132;
+      }
+      paramInt1 = 1;
+      label71:
+      paramString.errorCode2 = paramInt1;
+      if (!paramBoolean3) {
+        break label137;
+      }
+    }
+    label132:
+    label137:
+    for (paramInt1 = i;; paramInt1 = 0)
+    {
+      paramString.httpErrorCode = paramInt1;
+      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramString, 103));
+      return;
+      paramInt1 = 0;
+      break;
+      label122:
+      paramInt1 = 0;
+      break label46;
+      label127:
+      paramInt1 = 0;
+      break label58;
+      paramInt1 = 0;
+      break label71;
+    }
+  }
+  
+  public static void reportForAppPreOrderTaskStatusChanged(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, String paramString, int paramInt3)
+  {
+    int i = 1;
+    paramString = createEventForAppPreOrder(paramContext, 1203, paramString);
+    paramString.internalErrorCode = paramInt3;
+    paramString.status1 = paramInt2;
+    paramString.status2 = paramInt1;
+    if (paramBoolean4)
+    {
+      paramInt1 = 1;
+      paramString.status3 = paramInt1;
+      if (!paramBoolean5) {
+        break label129;
+      }
+      paramInt1 = 1;
+      label53:
+      paramString.status4 = paramInt1;
+      if (!paramBoolean1) {
+        break label134;
+      }
+      paramInt1 = 1;
+      label65:
+      paramString.errorCode1 = paramInt1;
+      if (!paramBoolean2) {
+        break label139;
+      }
+      paramInt1 = 1;
+      label78:
+      paramString.errorCode2 = paramInt1;
+      if (!paramBoolean3) {
+        break label144;
+      }
+    }
+    label129:
+    label134:
+    label139:
+    label144:
+    for (paramInt1 = i;; paramInt1 = 0)
+    {
+      paramString.httpErrorCode = paramInt1;
+      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramString, 103));
+      return;
+      paramInt1 = 0;
+      break;
+      paramInt1 = 0;
+      break label53;
+      paramInt1 = 0;
+      break label65;
+      paramInt1 = 0;
+      break label78;
     }
   }
   
@@ -915,7 +1115,7 @@ public final class AdReporterForAnalysis
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.statistics.AdReporterForAnalysis
  * JD-Core Version:    0.7.0.1
  */

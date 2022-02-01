@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.troop.navigatebar;
 
-import bfyo;
-
-public class TroopAioMsgNavigateBar$3
+class TroopAioMsgNavigateBar$3
   implements Runnable
 {
-  public TroopAioMsgNavigateBar$3(bfyo parambfyo) {}
+  TroopAioMsgNavigateBar$3(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar) {}
   
   public void run()
   {
-    bfyo.a(this.this$0, -1);
+    TroopAioMsgNavigateBar.a(this.this$0, -1);
   }
 }
 

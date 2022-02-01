@@ -11,7 +11,7 @@ public class MicroPhoneClipImageView
   public static final int[] a;
   private ClipDrawable jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
   private boolean jdField_a_of_type_Boolean;
-  private int[] b;
+  private int[] b = null;
   
   static
   {
@@ -91,7 +91,7 @@ public class MicroPhoneClipImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MicroPhoneClipImageView
  * JD-Core Version:    0.7.0.1
  */

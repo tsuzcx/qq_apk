@@ -10,14 +10,14 @@ class ApolloPanel$16
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.mContext != null)) {
-      QQToast.a(this.this$0.a.mContext, 2, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Int);
+    if ((this.this$0.a != null) && (this.this$0.a.a != null)) {
+      QQToast.a(this.this$0.a.a, 2, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.pannel.ApolloPanel.16
  * JD-Core Version:    0.7.0.1
  */

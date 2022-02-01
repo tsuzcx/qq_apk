@@ -11,11 +11,11 @@ public final class s_outshare
   extends JceStruct
 {
   static Map<Integer, s_picurl> cache_photourl = new HashMap();
-  public int album_right;
+  public int album_right = 0;
   public String md5 = "";
-  public Map<Integer, s_picurl> photourl;
+  public Map<Integer, s_picurl> photourl = null;
   public String qq_url = "";
-  public int space_right;
+  public int space_right = 0;
   public String summary = "";
   public String title = "";
   public String weixin_url = "";

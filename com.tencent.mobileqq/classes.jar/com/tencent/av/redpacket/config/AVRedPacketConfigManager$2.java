@@ -4,21 +4,20 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.RemoteException;
+import com.tencent.av.service.IAVRedPacketCallback;
+import com.tencent.av.ui.funchat.record.QavRecordDpc;
+import com.tencent.av.ui.funchat.record.QavRecordReporter;
+import com.tencent.av.ui.funchat.record.QavRecordUtils;
+import com.tencent.av.ui.redbag.RedBagUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import lui;
-import lwm;
-import moo;
-import mor;
-import mos;
-import mqx;
 
-public class AVRedPacketConfigManager$2
+class AVRedPacketConfigManager$2
   implements Runnable
 {
-  public AVRedPacketConfigManager$2(lui paramlui, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3) {}
+  AVRedPacketConfigManager$2(AVRedPacketConfigManager paramAVRedPacketConfigManager, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3) {}
   
   public void run()
   {
@@ -41,17 +40,17 @@ public class AVRedPacketConfigManager$2
         }
         if ((this.jdField_b_of_type_Int == 2) && (l1 != l2))
         {
-          moo localmoo = moo.a();
-          if ((localmoo == null) || (localmoo.g != 1) || (!mos.a(this.jdField_b_of_type_JavaLangString))) {
+          QavRecordDpc localQavRecordDpc = QavRecordDpc.a();
+          if ((localQavRecordDpc == null) || (localQavRecordDpc.g != 1) || (!QavRecordUtils.a(this.jdField_b_of_type_JavaLangString))) {
             break label689;
           }
-          lui.a(this.this$0).removeMessages(100);
-          lui.a(this.this$0).sendEmptyMessageDelayed(100, 60000L);
+          AVRedPacketConfigManager.a(this.this$0).removeMessages(100);
+          AVRedPacketConfigManager.a(this.this$0).sendEmptyMessageDelayed(100, 60000L);
           l2 = System.currentTimeMillis();
-          mos.a(this.jdField_a_of_type_JavaLangString);
+          QavRecordUtils.a(this.jdField_a_of_type_JavaLangString);
           long l3 = System.currentTimeMillis();
-          lui.a(this.this$0).removeMessages(100);
-          mor.a(l3 - l2);
+          AVRedPacketConfigManager.a(this.this$0).removeMessages(100);
+          QavRecordReporter.a(l3 - l2);
         }
         label264:
         l2 = ((File)localObject).lastModified();
@@ -60,28 +59,28 @@ public class AVRedPacketConfigManager$2
           QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + this.c + ",md5 = " + this.jdField_b_of_type_JavaLangString + ",errCode = " + this.jdField_a_of_type_Int + ",path = " + this.jdField_a_of_type_JavaLangString + ",modifyTime = " + l2 + ", spModifiedTime=" + l1);
         }
       }
-      if (this.this$0.jdField_b_of_type_Lwm != null)
+      if (this.this$0.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback != null)
       {
         if (this.jdField_b_of_type_Int != 1) {
           break label700;
         }
-        this.this$0.jdField_b_of_type_Boolean = true;
+        this.this$0.c = true;
         this.this$0.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + this.c + ",md5 = " + this.jdField_b_of_type_JavaLangString + ",errCode = " + this.jdField_a_of_type_Int + ",path = " + this.jdField_a_of_type_JavaLangString + ",downloadBgMusicFinish = " + this.this$0.c + ",downloadResFinish = " + this.this$0.jdField_b_of_type_Boolean + ",downloadCallBack = " + this.this$0.jdField_b_of_type_Lwm);
+        QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + this.c + ",md5 = " + this.jdField_b_of_type_JavaLangString + ",errCode = " + this.jdField_a_of_type_Int + ",path = " + this.jdField_a_of_type_JavaLangString + ",downloadBgMusicFinish = " + this.this$0.d + ",downloadResFinish = " + this.this$0.c + ",downloadCallBack = " + this.this$0.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback);
       }
-      if ((this.this$0.jdField_b_of_type_Boolean) && (this.this$0.c)) {}
+      if ((this.this$0.c) && (this.this$0.d)) {}
       for (;;)
       {
         try
         {
-          mqx.a(this.this$0.jdField_a_of_type_JavaLangString);
-          localObject = mqx.b();
-          if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_JavaLangString)) {
+          RedBagUtil.a(this.this$0.jdField_a_of_type_JavaLangString);
+          localObject = RedBagUtil.b();
+          if (FileUtils.b(this.jdField_a_of_type_JavaLangString)) {
             continue;
           }
           QLog.w("AVRedPacketConfigManger", 1, "onDownloadFinish, !exist, mp4[" + (String)localObject + "]");
@@ -95,11 +94,11 @@ public class AVRedPacketConfigManager$2
         }
         try
         {
-          this.this$0.jdField_b_of_type_Lwm.a(bool1, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_b_of_type_JavaLangString);
+          this.this$0.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback.a(bool1, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_b_of_type_JavaLangString);
           if (bool1) {
             localSharedPreferences.edit().putBoolean("res_exist", true).commit();
           }
-          this.this$0.jdField_b_of_type_Lwm = null;
+          this.this$0.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback = null;
           this.this$0.a("onDownloadFinish");
           return;
         }
@@ -113,7 +112,7 @@ public class AVRedPacketConfigManager$2
       label700:
       if (this.jdField_b_of_type_Int == 2)
       {
-        this.this$0.c = true;
+        this.this$0.d = true;
         this.this$0.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
       }
     }
@@ -121,7 +120,7 @@ public class AVRedPacketConfigManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.redpacket.config.AVRedPacketConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

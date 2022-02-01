@@ -22,7 +22,7 @@ public final class YtLogger
   private static DateFormat dateFormat;
   private static File localFile;
   private static String localLogName;
-  private static YtLogger.IYtLoggerListener loggerListener;
+  private static YtLogger.IYtLoggerListener loggerListener = null;
   private static ExecutorService mExecutorService = Executors.newSingleThreadExecutor();
   private static boolean needLogFile = false;
   
@@ -159,7 +159,7 @@ public final class YtLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtLogger
  * JD-Core Version:    0.7.0.1
  */

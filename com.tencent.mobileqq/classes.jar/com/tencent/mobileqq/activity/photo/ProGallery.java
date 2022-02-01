@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akkh;
-import akki;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
-import avao;
 import com.tencent.image.RegionDrawableData;
+import com.tencent.mobileqq.gallery.listener.IGalleryScaleListener;
 import com.tencent.widget.Gallery;
 
 public class ProGallery
   extends Gallery
 {
   private int jdField_a_of_type_Int = 1;
-  private akkh jdField_a_of_type_Akkh;
-  private akki jdField_a_of_type_Akki;
-  private avao jdField_a_of_type_Avao;
+  private ProGallery.OnProGalleryGestureListener jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryGestureListener;
+  private ProGallery.OnProGalleryListener jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener;
+  private IGalleryScaleListener jdField_a_of_type_ComTencentMobileqqGalleryListenerIGalleryScaleListener;
   
   public ProGallery(Context paramContext)
   {
@@ -37,23 +35,23 @@ public class ProGallery
   
   public void a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Akki != null) {
-      this.jdField_a_of_type_Akki.onscaleBegin(paramInt, paramView, paramViewGroup);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener.onscaleBegin(paramInt, paramView, paramViewGroup);
     }
   }
   
   public void a(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Akki != null) {
-      this.jdField_a_of_type_Akki.onViewDetached(paramInt, paramView, paramViewGroup, paramBoolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener.onViewDetached(paramInt, paramView, paramViewGroup, paramBoolean);
     }
   }
   
   public void a(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
   {
     super.a(paramInt, paramView, paramRegionDrawableData);
-    if (this.jdField_a_of_type_Akki != null) {
-      this.jdField_a_of_type_Akki.onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener.onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
     }
   }
   
@@ -61,7 +59,7 @@ public class ProGallery
   {
     int k = 0;
     int n = this.jdField_a_of_type_Int;
-    if ((n == 0) || (this.jdField_a_of_type_Akki == null)) {}
+    if ((n == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener == null)) {}
     int m;
     label34:
     do
@@ -99,40 +97,40 @@ public class ProGallery
           if (paramInt < 0) {
             break;
           }
-          this.jdField_a_of_type_Akki.onDestroyView(paramInt, null, paramViewGroup);
+          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener.onDestroyView(paramInt, null, paramViewGroup);
           return;
-          this.jdField_a_of_type_Akki.onCreateView(j, null, paramViewGroup);
+          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener.onCreateView(j, null, paramViewGroup);
           i += 1;
           break label34;
         }
-        this.jdField_a_of_type_Akki.onCreateView(j, null, paramViewGroup);
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener.onCreateView(j, null, paramViewGroup);
         i += 1;
       }
       paramInt = paramInt + n + 1;
     } while (paramInt >= m);
     label158:
-    this.jdField_a_of_type_Akki.onDestroyView(paramInt, null, paramViewGroup);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener.onDestroyView(paramInt, null, paramViewGroup);
   }
   
   public void b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Akki != null) {
-      this.jdField_a_of_type_Akki.onSlot(paramInt, paramView, paramViewGroup);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener.onSlot(paramInt, paramView, paramViewGroup);
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Avao != null) {
-      this.jdField_a_of_type_Avao.a(paramMotionEvent);
+    if (this.jdField_a_of_type_ComTencentMobileqqGalleryListenerIGalleryScaleListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqGalleryListenerIGalleryScaleListener.a(paramMotionEvent);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Avao != null) {
-      this.jdField_a_of_type_Avao.a(paramScaleGestureDetector);
+    if (this.jdField_a_of_type_ComTencentMobileqqGalleryListenerIGalleryScaleListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqGalleryListenerIGalleryScaleListener.a(paramScaleGestureDetector);
     }
     return super.onScale(paramScaleGestureDetector);
   }
@@ -140,26 +138,26 @@ public class ProGallery
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     boolean bool = super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    if (this.jdField_a_of_type_Akkh != null) {
-      this.jdField_a_of_type_Akkh.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryGestureListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryGestureListener.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
     return bool;
   }
   
-  public void setGalleryScaleListener(avao paramavao)
+  public void setGalleryScaleListener(IGalleryScaleListener paramIGalleryScaleListener)
   {
-    this.jdField_a_of_type_Avao = paramavao;
+    this.jdField_a_of_type_ComTencentMobileqqGalleryListenerIGalleryScaleListener = paramIGalleryScaleListener;
   }
   
-  public void setGestureListener(akkh paramakkh)
+  public void setGestureListener(ProGallery.OnProGalleryGestureListener paramOnProGalleryGestureListener)
   {
-    this.jdField_a_of_type_Akkh = paramakkh;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryGestureListener = paramOnProGalleryGestureListener;
   }
   
-  public void setOnNoBlankListener(akki paramakki)
+  public void setOnNoBlankListener(ProGallery.OnProGalleryListener paramOnProGalleryListener)
   {
-    if (paramakki != this.jdField_a_of_type_Akki) {
-      this.jdField_a_of_type_Akki = paramakki;
+    if (paramOnProGalleryListener != this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener = paramOnProGalleryListener;
     }
   }
   
@@ -168,7 +166,7 @@ public class ProGallery
     int m = 0;
     super.setSelection(paramInt);
     int n = this.jdField_a_of_type_Int;
-    if ((n == 0) || (this.jdField_a_of_type_Akki == null)) {}
+    if ((n == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener == null)) {}
     label193:
     for (;;)
     {
@@ -207,7 +205,7 @@ public class ProGallery
         }
         while (paramInt <= i)
         {
-          this.jdField_a_of_type_Akki.onDestroyView(paramInt, null, this);
+          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery$OnProGalleryListener.onDestroyView(paramInt, null, this);
           paramInt += 1;
         }
         break;
@@ -233,7 +231,7 @@ public class ProGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.ProGallery
  * JD-Core Version:    0.7.0.1
  */

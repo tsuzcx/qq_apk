@@ -26,6 +26,9 @@ public class TroopBarPublishUtils$AudioUploadTask
   
   public TroopBarPublishUtils$AudioUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, String paramString1, String paramString2)
   {
+    this.jdField_a_of_type_MqqUtilWeakReference = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_AndroidOsHandler = null;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
@@ -50,7 +53,7 @@ public class TroopBarPublishUtils$AudioUploadTask
       this.jdField_a_of_type_Int = 0;
       return;
     }
-    if (!FileUtil.isFileExists(this.b))
+    if (!FileUtil.a(this.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopBarPublishUtils", 2, "Audio is null! mAudioPath=" + this.b);

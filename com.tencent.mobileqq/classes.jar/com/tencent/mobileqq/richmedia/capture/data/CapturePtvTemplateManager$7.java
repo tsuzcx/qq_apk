@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import bbgg;
 import com.tencent.qphone.base.util.QLog;
 
-public class CapturePtvTemplateManager$7
+class CapturePtvTemplateManager$7
   implements Runnable
 {
-  public CapturePtvTemplateManager$7(bbgg parambbgg) {}
+  CapturePtvTemplateManager$7(CapturePtvTemplateManager paramCapturePtvTemplateManager) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class CapturePtvTemplateManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.7
  * JD-Core Version:    0.7.0.1
  */

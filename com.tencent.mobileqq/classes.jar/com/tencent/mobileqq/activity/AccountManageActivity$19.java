@@ -1,37 +1,53 @@
 package com.tencent.mobileqq.activity;
 
-import aoxx;
-import awtj;
-import bhdf;
-import bizp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class AccountManageActivity$19
-  implements Runnable
+  implements View.OnClickListener
 {
-  AccountManageActivity$19(AccountManageActivity paramAccountManageActivity, String paramString, boolean paramBoolean, int paramInt) {}
+  AccountManageActivity$19(AccountManageActivity paramAccountManageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    bizp.a().b(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "add account");
+    }
+    if (!AccountManageActivity.b(this.a)) {}
+    for (;;)
     {
-      ProxyManager localProxyManager = this.this$0.app.getProxyManager();
-      if (localProxyManager != null)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
       {
-        localProxyManager.transSaveToDatabase();
-        aoxx.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, true);
-        new awtj().a(this.jdField_a_of_type_JavaLangString);
-        bhdf.a().a(this.this$0.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
+        QQToast.a(this.a, 2131693892, 0).a();
+      }
+      else
+      {
+        AccountManageActivity.b(this.a, SubAccountControll.a(this.a.app));
+        Intent localIntent = new Intent();
+        localIntent.setPackage(this.a.getPackageName());
+        localIntent.setClass(this.a, AddAccountActivity.class);
+        this.a.startActivityForResult(localIntent, 1000);
+        this.a.overridePendingTransition(2130771999, 2130771992);
+        SubAccountAssistantForward.b(this.a.app, this.a);
+        ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
+        ReportController.a(this.a.app, "0X800B837");
       }
     }
-    this.this$0.runOnUiThread(new AccountManageActivity.19.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.19
  * JD-Core Version:    0.7.0.1
  */

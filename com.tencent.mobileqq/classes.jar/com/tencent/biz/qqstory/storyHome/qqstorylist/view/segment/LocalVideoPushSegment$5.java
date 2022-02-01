@@ -8,18 +8,16 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.provider.MediaStore.Images.Thumbnails;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransformation;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import yei;
-import yis;
-import yiy;
-import ykq;
 
-public class LocalVideoPushSegment$5
+class LocalVideoPushSegment$5
   implements Runnable
 {
-  public LocalVideoPushSegment$5(yis paramyis, LocalMediaInfo paramLocalMediaInfo, yiy paramyiy) {}
+  LocalVideoPushSegment$5(LocalVideoPushSegment paramLocalVideoPushSegment, LocalMediaInfo paramLocalMediaInfo, LocalVideoPushSegment.OnLoadThumbBitmapListener paramOnLoadThumbBitmapListener) {}
   
   public void run()
   {
@@ -27,7 +25,7 @@ public class LocalVideoPushSegment$5
     long l = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo._id;
     Object localObject2 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject2).inMutable = true;
-    localObject2 = MediaStore.Images.Thumbnails.getThumbnail(yis.b(this.this$0).getContentResolver(), l, 1, (BitmapFactory.Options)localObject2);
+    localObject2 = MediaStore.Images.Thumbnails.getThumbnail(LocalVideoPushSegment.b(this.this$0).getContentResolver(), l, 1, (BitmapFactory.Options)localObject2);
     if (localObject2 != null) {}
     try
     {
@@ -42,7 +40,7 @@ public class LocalVideoPushSegment$5
         localCanvas.save();
         localCanvas.restore();
         ((Bitmap)localObject2).recycle();
-        localObject1 = new BitmapDrawable(yis.c(this.this$0).getResources(), this.this$0.a.a((Bitmap)localObject1));
+        localObject1 = new BitmapDrawable(LocalVideoPushSegment.c(this.this$0).getResources(), this.this$0.a.a((Bitmap)localObject1));
         ThreadManager.getUIHandler().post(new LocalVideoPushSegment.5.1(this, (BitmapDrawable)localObject1));
         return;
       }
@@ -51,17 +49,17 @@ public class LocalVideoPushSegment$5
     {
       for (;;)
       {
-        ykq.c("Q.qqstory.home.LocalVideoPushSegment", "create new bitmap error:%s", localException);
+        SLog.c("Q.qqstory.home.LocalVideoPushSegment", "create new bitmap error:%s", localException);
         BitmapDrawable localBitmapDrawable = null;
         continue;
-        localBitmapDrawable = new BitmapDrawable(yis.d(this.this$0).getResources(), (Bitmap)localObject2);
+        localBitmapDrawable = new BitmapDrawable(LocalVideoPushSegment.d(this.this$0).getResources(), (Bitmap)localObject2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment.5
  * JD-Core Version:    0.7.0.1
  */

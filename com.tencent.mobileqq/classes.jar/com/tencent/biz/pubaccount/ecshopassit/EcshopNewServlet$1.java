@@ -2,12 +2,11 @@ package com.tencent.biz.pubaccount.ecshopassit;
 
 import android.os.Bundle;
 import mqq.observer.BusinessObserver;
-import ooj;
 
-public class EcshopNewServlet$1
+class EcshopNewServlet$1
   implements Runnable
 {
-  public EcshopNewServlet$1(ooj paramooj, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  EcshopNewServlet$1(EcshopNewServlet paramEcshopNewServlet, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class EcshopNewServlet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopNewServlet.1
  * JD-Core Version:    0.7.0.1
  */

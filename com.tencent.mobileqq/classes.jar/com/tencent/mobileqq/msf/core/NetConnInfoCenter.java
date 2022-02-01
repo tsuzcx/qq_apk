@@ -60,7 +60,7 @@ public class NetConnInfoCenter
         }
         ((Intent)localObject).putExtra("uin", paramString);
         ((Intent)localObject).putExtra("istatus", i);
-        ((Intent)localObject).putExtra("gatewayip", aj.o());
+        ((Intent)localObject).putExtra("gatewayip", ac.q());
         ((Intent)localObject).setPackage(BaseApplication.getContext().getPackageName());
         if (l > 0L)
         {
@@ -87,72 +87,72 @@ public class NetConnInfoCenter
   
   public static void checkConnInfo()
   {
-    z.a().a(BaseApplication.getContext(), null, false);
+    s.a().a(BaseApplication.getContext(), null, false);
   }
   
   public static void checkConnInfo(Context paramContext, NetworkInfo paramNetworkInfo, boolean paramBoolean)
   {
-    z.a().a(paramContext, paramNetworkInfo, paramBoolean);
+    s.a().a(paramContext, paramNetworkInfo, paramBoolean);
   }
   
   public static void checkConnInfo(Context paramContext, boolean paramBoolean)
   {
-    z.a().a(paramContext, null, paramBoolean);
+    s.a().a(paramContext, null, paramBoolean);
   }
   
   public static void checkRecordTime()
   {
-    z.a().z();
+    s.a().z();
   }
   
   public static int getActiveNetIpFamily(boolean paramBoolean)
   {
-    return z.a().c(paramBoolean);
+    return s.a().c(paramBoolean);
   }
   
   public static int getActiveNetworkType()
   {
-    return z.a().x();
+    return s.a().x();
   }
   
   public static int getCdmaStrength()
   {
-    return z.a().B();
+    return s.a().B();
   }
   
   public static String getCurrentAPN()
   {
-    return z.a().u();
+    return s.a().u();
   }
   
   public static String getCurrentAPN(boolean paramBoolean)
   {
-    return z.a().b(paramBoolean);
+    return s.a().b(paramBoolean);
   }
   
   public static String getCurrentSSID()
   {
-    return z.a().q();
+    return s.a().q();
   }
   
   public static String getCurrentSSID(boolean paramBoolean)
   {
-    return z.a().a(paramBoolean);
+    return s.a().a(paramBoolean);
   }
   
   public static int getGsmStrength()
   {
-    return z.a().C();
+    return s.a().C();
   }
   
   public static String getLastWifiSSID()
   {
-    return z.a().r();
+    return s.a().r();
   }
   
   public static int getMobileNetworkType()
   {
-    return z.a().t();
+    return s.a().t();
   }
   
   public static long getServerTime()
@@ -172,7 +172,7 @@ public class NetConnInfoCenter
   
   public static int getSystemNetState()
   {
-    return z.a().k();
+    return s.a().k();
   }
   
   public static String getSystemNetStateString()
@@ -182,23 +182,23 @@ public class NetConnInfoCenter
   
   public static int getSystemNetworkType()
   {
-    return z.a().w();
+    return s.a().w();
   }
   
   public static int getWifiStrength()
   {
-    return z.a().A();
+    return s.a().A();
   }
   
   public static void handleGetServerTimeResp(long paramLong)
   {
-    z.a().a(paramLong);
+    s.a().a(paramLong);
   }
   
   public static void init(MsfCore paramMsfCore)
   {
     msfCore = paramMsfCore;
-    z.a().a(paramMsfCore);
+    s.a().a(paramMsfCore);
     if (Build.VERSION.SDK_INT >= 24)
     {
       int i = BaseApplication.getContext().getApplicationInfo().targetSdkVersion;
@@ -234,7 +234,7 @@ public class NetConnInfoCenter
   
   public static boolean isMobileConn()
   {
-    return z.a().o();
+    return s.a().o();
   }
   
   public static boolean isMobileNetworkInfo(NetworkInfo paramNetworkInfo)
@@ -254,37 +254,37 @@ public class NetConnInfoCenter
   
   public static boolean isWifiConn()
   {
-    return z.a().n();
+    return s.a().n();
   }
   
   public static boolean isWifiOrMobileConn()
   {
-    return z.a().m();
+    return s.a().m();
   }
   
   public static void onConnClosed(com.tencent.qphone.base.a parama)
   {
-    z.a().a(parama);
+    s.a().a(parama);
   }
   
   public static void onConnOpened(String paramString1, String paramString2)
   {
-    z.a().c(paramString1, paramString2);
+    s.a().c(paramString1, paramString2);
   }
   
   public static void onOepnConnAllFailed()
   {
-    z.a().p();
+    s.a().p();
   }
   
   public static void onRecvFirstResp()
   {
-    z.a().s();
+    s.a().s();
   }
   
   public static void setLastConnSuccWithoutNet()
   {
-    z.a().j();
+    s.a().j();
   }
   
   public static void setNeedWifiAuth(boolean paramBoolean)
@@ -312,7 +312,7 @@ public class NetConnInfoCenter
       QLog.d("NetConnInfoCenter", 1, "init msf startService exception:", localException);
       try
       {
-        BaseApplication.getContext().bindService(paramIntent, new y(), 1);
+        BaseApplication.getContext().bindService(paramIntent, new r(), 1);
         return;
       }
       catch (Exception paramIntent)
@@ -406,7 +406,7 @@ public class NetConnInfoCenter
               localIntent.putExtra("networkInfo", paramIntent);
               paramContext.sendBroadcast(localIntent);
               checkConnInfo(paramContext, paramIntent, true);
-              ab.a().d();
+              u.a().d();
               return;
             }
             catch (Exception paramContext) {}
@@ -418,14 +418,14 @@ public class NetConnInfoCenter
             if (QLog.isColorLevel()) {
               QLog.d("NetConnInfoCenter", 2, "recv broadcast " + paramIntent.getAction());
             }
-            z.a().y();
+            s.a().y();
             return;
           }
           if (!bool1) {
             break;
           }
           com.tencent.mobileqq.msf.core.a.a.a(true);
-          com.tencent.mobileqq.msf.core.c.k.S = true;
+          com.tencent.mobileqq.msf.core.c.j.S = true;
         } while (!QLog.isColorLevel());
         QLog.d("NetConnInfoCenter", 2, "set StatReporter.needReportBooting true");
         return;
@@ -439,7 +439,7 @@ public class NetConnInfoCenter
     if (QLog.isColorLevel()) {
       QLog.i("NetConnInfoCenter", 2, "receive WIFI_STATE_CHANGED_ACTION");
     }
-    ab.a().a(paramIntent);
+    u.a().a(paramIntent);
   }
 }
 

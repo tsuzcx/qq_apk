@@ -8,6 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyDropFrameHelper;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener;
+import com.tencent.biz.pubaccount.readinjoy.config.handlers.DailyModeConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJAppSetting;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtParamBuilder;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSReport;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSReport.R5Builder;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.pts.bridge.PTSJSBridgeManager;
 import com.tencent.pts.core.PTSAppInstance;
@@ -17,25 +24,14 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import orn;
-import orp;
-import plm;
-import pqu;
-import pti;
-import qya;
-import qyb;
-import qyc;
-import qyd;
-import rag;
-import rah;
 
 public class PTSFragment
   extends PublicBaseFragment
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
+  ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyDropFrameHelper$OnFeedsFluencyResultListener = new PTSFragment.5(this);
   private PTSAppInstance jdField_a_of_type_ComTencentPtsCorePTSAppInstance;
   private String jdField_a_of_type_JavaLangString;
-  orp jdField_a_of_type_Orp = new qyc(this);
   private String b;
   private String c;
   private String d;
@@ -57,8 +53,8 @@ public class PTSFragment
   
   private void a(View paramView)
   {
-    orn.a().a(9999, this.jdField_a_of_type_Orp);
-    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.addOnRecyclerViewScrollListener(new qyd(this));
+    ReadInJoyDropFrameHelper.a().a(9999, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyDropFrameHelper$OnFeedsFluencyResultListener);
+    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.addOnRecyclerViewScrollListener(new PTSFragment.6(this));
   }
   
   private void a(ViewGroup paramViewGroup)
@@ -67,31 +63,31 @@ public class PTSFragment
     while (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "daily_feeds")) {
       return;
     }
-    paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560207, paramViewGroup);
-    View localView1 = paramViewGroup.findViewById(2131370603);
-    View localView2 = paramViewGroup.findViewById(2131370611);
-    ((TextView)paramViewGroup.findViewById(2131380223)).setVisibility(8);
-    localView1.setOnClickListener(new qya(this));
-    localView2.setOnClickListener(new qyb(this));
+    paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560284, paramViewGroup);
+    View localView1 = paramViewGroup.findViewById(2131370890);
+    View localView2 = paramViewGroup.findViewById(2131370895);
+    ((TextView)paramViewGroup.findViewById(2131380663)).setVisibility(8);
+    localView1.setOnClickListener(new PTSFragment.3(this));
+    localView2.setOnClickListener(new PTSFragment.4(this));
   }
   
   private void b()
   {
-    rag.a("0X800A7C7", "", "", "", new rah().a("page_name", this.jdField_a_of_type_JavaLangString).a());
+    PTSReport.a("0X800A7C7", "", "", "", new PTSReport.R5Builder().a("page_name", this.jdField_a_of_type_JavaLangString).a());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidAppActivity = getActivity();
     a();
-    paramViewGroup = paramLayoutInflater.inflate(2131560301, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131560373, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
       paramViewGroup.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramLayoutInflater.getContext()), 0, 0);
     }
-    paramLayoutInflater = (ViewGroup)paramViewGroup.findViewById(2131365174);
-    a((ViewGroup)paramViewGroup.findViewById(2131379024));
+    paramLayoutInflater = (ViewGroup)paramViewGroup.findViewById(2131365312);
+    a((ViewGroup)paramViewGroup.findViewById(2131379455));
     paramBundle = PTSJSBridgeManager.getInstance().getJSBridge(this.jdField_a_of_type_AndroidAppActivity, this.d, this.e);
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance = new PTSAppInstance.Builder().withContext(this.jdField_a_of_type_AndroidAppActivity).withRootView(paramLayoutInflater).withRootNodeType(0).withPTSJSBridge(paramBundle).withPageName(this.jdField_a_of_type_JavaLangString).withFrameTreeJson(this.b).withPageJs(this.c).build();
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.onCreate();
@@ -99,7 +95,7 @@ public class PTSFragment
     b();
     VideoReport.addToDetectionWhitelist(getActivity());
     VideoReport.setPageId(paramViewGroup, "14");
-    VideoReport.setPageParams(paramViewGroup, new pti().a(Integer.valueOf(plm.b())).a());
+    VideoReport.setPageParams(paramViewGroup, new RIJDtParamBuilder().a(Integer.valueOf(DailyModeConfigHandler.b())).a());
     V4FragmentCollector.onV4FragmentViewCreated(this, paramViewGroup);
     return paramViewGroup;
   }
@@ -109,7 +105,7 @@ public class PTSFragment
     QLog.i("PTSFragment", 1, "[onDestroy]");
     super.onDestroy();
     PTSThreadUtil.runOnSubThread(new PTSFragment.1(this, this.jdField_a_of_type_AndroidAppActivity));
-    orn.a().b(9999, this.jdField_a_of_type_Orp);
+    ReadInJoyDropFrameHelper.a().b(9999, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyDropFrameHelper$OnFeedsFluencyResultListener);
   }
   
   public void onFinish()
@@ -128,13 +124,13 @@ public class PTSFragment
   public void onResume()
   {
     super.onResume();
-    pqu.a(this.jdField_a_of_type_AndroidAppActivity, true, pqu.a(this.jdField_a_of_type_AndroidAppActivity));
+    RIJAppSetting.a(this.jdField_a_of_type_AndroidAppActivity, true, RIJAppSetting.a(this.jdField_a_of_type_AndroidAppActivity));
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.onResume();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment
  * JD-Core Version:    0.7.0.1
  */

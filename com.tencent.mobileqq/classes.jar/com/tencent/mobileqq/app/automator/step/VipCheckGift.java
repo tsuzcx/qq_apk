@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bcwf;
-import bibt;
-import bibu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.servlet.VipGifServlet;
+import com.tencent.mobileqq.vipgift.VipGiftDownloadInfo;
+import com.tencent.mobileqq.vipgift.VipGiftManager;
 import mqq.app.NewIntent;
 
 public class VipCheckGift
@@ -14,26 +14,26 @@ public class VipCheckGift
 {
   public int a()
   {
-    Object localObject = (bibu)this.a.app.getManager(QQManagerFactory.VIP_GIF_MANAGER);
-    bibt localbibt = ((bibu)localObject).a();
-    if (localbibt != null)
+    Object localObject = (VipGiftManager)this.a.a.getManager(QQManagerFactory.VIP_GIF_MANAGER);
+    VipGiftDownloadInfo localVipGiftDownloadInfo = ((VipGiftManager)localObject).a();
+    if (localVipGiftDownloadInfo != null)
     {
-      if ((localbibt.d != 0L) || (localbibt.a == 0L)) {
+      if ((localVipGiftDownloadInfo.d != 0L) || (localVipGiftDownloadInfo.a == 0L)) {
         break label55;
       }
-      ((bibu)localObject).a(localbibt.a);
+      ((VipGiftManager)localObject).a(localVipGiftDownloadInfo.a);
     }
     for (;;)
     {
       return 7;
       label55:
-      if (localbibt.d == 2L)
+      if (localVipGiftDownloadInfo.d == 2L)
       {
-        localObject = new NewIntent(this.a.app.getApplication(), bcwf.class);
+        localObject = new NewIntent(this.a.a.getApplication(), VipGifServlet.class);
         ((NewIntent)localObject).setAction("gif_ui_show");
         ((NewIntent)localObject).putExtra("gif_ui_show_bid", 0);
-        ((NewIntent)localObject).putExtra("gif_ui_show_seq", localbibt.a);
-        this.a.app.startServlet((NewIntent)localObject);
+        ((NewIntent)localObject).putExtra("gif_ui_show_seq", localVipGiftDownloadInfo.a);
+        this.a.a.startServlet((NewIntent)localObject);
       }
     }
   }

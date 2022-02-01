@@ -2,13 +2,11 @@ package com.tencent.biz.qqstory.msgTabNode.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import wmd;
-import wmk;
 
-public class MsgTabNodeListLoader$13
+class MsgTabNodeListLoader$13
   implements Runnable
 {
-  public MsgTabNodeListLoader$13(wmd paramwmd) {}
+  MsgTabNodeListLoader$13(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
   
   public void run()
   {
@@ -16,14 +14,14 @@ public class MsgTabNodeListLoader$13
     {
       Iterator localIterator = this.this$0.d.iterator();
       if (localIterator.hasNext()) {
-        ((wmk)localIterator.next()).a();
+        ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.13
  * JD-Core Version:    0.7.0.1
  */

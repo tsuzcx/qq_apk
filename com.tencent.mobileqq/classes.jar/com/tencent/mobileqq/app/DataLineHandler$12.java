@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.app;
 
-import ansr;
 import com.tencent.litetransfersdk.Session;
 
-public class DataLineHandler$12
+class DataLineHandler$12
   implements Runnable
 {
-  public DataLineHandler$12(ansr paramansr, long paramLong) {}
+  DataLineHandler$12(DataLineHandler paramDataLineHandler, long paramLong) {}
   
   public void run()
   {
     Session localSession = this.this$0.a(this.a);
-    ansr.a(this.this$0, localSession, null, null, true);
+    DataLineHandler.a(this.this$0, localSession, null, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.12
  * JD-Core Version:    0.7.0.1
  */

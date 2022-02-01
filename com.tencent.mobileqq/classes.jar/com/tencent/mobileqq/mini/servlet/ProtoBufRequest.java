@@ -1,16 +1,21 @@
 package com.tencent.mobileqq.mini.servlet;
 
+import NS_COMM.COMM.Entry;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.PlatformInfor;
 import cooperation.qzone.QUA;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class ProtoBufRequest
@@ -56,6 +61,15 @@ public abstract class ProtoBufRequest
     }
     if (paramIntent != null) {
       paramIntent.putExtra("traceid", paramString);
+    }
+    if (StudyModeManager.a())
+    {
+      paramIntent = new COMM.Entry();
+      paramIntent.key.set("teenager");
+      paramIntent.value.set(String.valueOf(1));
+      paramString = new ArrayList();
+      paramString.add(paramIntent);
+      localStQWebReq.Extinfo.set(paramString);
     }
     return localStQWebReq.toByteArray();
   }

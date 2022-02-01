@@ -1,14 +1,20 @@
 package com.rookery.translate;
 
-import ahjf;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.util.Pair;
+import com.rookery.asyncHttpClient.AsyncHttpClient;
+import com.rookery.translate.google.GoogleInfo;
+import com.rookery.translate.google.GoogleTranslator;
+import com.rookery.translate.microsoft.MicrosoftInfo;
+import com.rookery.translate.microsoft.MicrosoftTranslator;
 import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateCallback;
 import com.rookery.translate.type.TranslateError;
+import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder.Holder;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,24 +24,13 @@ import java.util.List;
 import java.util.List<Lcom.rookery.translate.type.Language;>;
 import java.util.Map.Entry;
 import java.util.Set;
-import kzc;
-import kzn;
-import kzo;
-import kzp;
-import kzr;
-import kzu;
-import kzw;
-import kzy;
-import laa;
-import lac;
-import lan;
 
 public class AITranslator
 {
   private static AITranslator jdField_a_of_type_ComRookeryTranslateAITranslator;
+  private GoogleInfo jdField_a_of_type_ComRookeryTranslateGoogleGoogleInfo = new GoogleInfo();
+  private MicrosoftInfo jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftInfo = new MicrosoftInfo();
   private List<String> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private kzw jdField_a_of_type_Kzw = new kzw();
-  private laa jdField_a_of_type_Laa = new laa();
   private boolean jdField_a_of_type_Boolean = true;
   
   private long a(long paramLong, AITranslator.TranslatorType paramTranslatorType)
@@ -44,7 +39,7 @@ public class AITranslator
     do
     {
       return 9223372036854775807L;
-      switch (kzq.a[paramTranslatorType.ordinal()])
+      switch (AITranslator.4.a[paramTranslatorType.ordinal()])
       {
       }
     } while (!QLog.isColorLevel());
@@ -56,7 +51,7 @@ public class AITranslator
   
   private long a(Context paramContext, AITranslator.TranslatorType paramTranslatorType)
   {
-    switch (kzq.a[paramTranslatorType.ordinal()])
+    switch (AITranslator.4.a[paramTranslatorType.ordinal()])
     {
     default: 
       if (QLog.isColorLevel()) {
@@ -180,7 +175,7 @@ public class AITranslator
     return localArrayList;
   }
   
-  private void a(long paramLong, Context paramContext, ahjf paramahjf, String paramString, Language paramLanguage, lan paramlan, int paramInt, AITranslator.TranslatorType paramTranslatorType, List<Language> paramList, List<String> paramList1, List<Pair<String, String>> paramList2, Long paramLong1)
+  private void a(long paramLong, Context paramContext, TextTranslationItemBuilder.Holder paramHolder, String paramString, Language paramLanguage, TranslateCallback paramTranslateCallback, int paramInt, AITranslator.TranslatorType paramTranslatorType, List<Language> paramList, List<String> paramList1, List<Pair<String, String>> paramList2, Long paramLong1)
   {
     ArrayList localArrayList = new ArrayList();
     paramLanguage = paramList2.iterator();
@@ -208,14 +203,33 @@ public class AITranslator
       paramLong1 = (String)paramList2.next();
       paramLanguage = paramLanguage + paramLong1;
     }
-    paramlan.a(paramLong, paramString, a(paramList), paramLanguage, paramahjf);
+    paramTranslateCallback.a(paramLong, paramString, a(paramList), paramLanguage, paramHolder);
     if (QLog.isColorLevel()) {
       QLog.d("Translator", 2, "onSuccess Translator type: " + paramTranslatorType.toString() + "\tTime: " + paramList1 + "\t recursion time:" + paramInt);
     }
     a(paramContext, paramTranslatorType, a(paramList1.longValue(), paramTranslatorType));
   }
   
-  private void a(long paramLong, Context paramContext, ahjf paramahjf, String paramString, List<Pair<String, String>> paramList, List<String> paramList1, Language paramLanguage, Long arg9, lan paramlan, int paramInt)
+  private void a(long paramLong, Context paramContext, TextTranslationItemBuilder.Holder paramHolder, String paramString, List<Pair<String, String>> paramList, List<String> paramList1, Language paramLanguage, TranslateCallback paramTranslateCallback, int paramInt, AITranslator.TranslatorType paramTranslatorType, TranslateError paramTranslateError, Long paramLong1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("Translator", 2, "AI[onFailed:] recursion_time:" + paramInt + "\tException:" + paramTranslateError);
+    }
+    if (paramInt >= AITranslator.TranslatorType.values().length - 1) {
+      paramTranslateCallback.a(paramLong, paramString, paramTranslateError, paramHolder);
+    }
+    paramTranslateError = Long.valueOf(9223372036854775807L);
+    if (QLog.isColorLevel()) {
+      QLog.e("Translator", 2, "onFailed Translator type: " + paramTranslatorType.toString() + "\tTime: " + paramTranslateError);
+    }
+    paramTranslateError = Long.valueOf(a(paramTranslateError.longValue(), paramTranslatorType));
+    a(paramContext, paramTranslatorType, paramTranslateError.longValue());
+    if (paramTranslateError.longValue() == 9223372036854775807L) {
+      a(paramLong, paramContext, paramHolder, paramString, paramList, paramList1, paramLanguage, paramTranslateError, paramTranslateCallback, paramInt + 1);
+    }
+  }
+  
+  private void a(long paramLong, Context paramContext, TextTranslationItemBuilder.Holder paramHolder, String paramString, List<Pair<String, String>> paramList, List<String> paramList1, Language paramLanguage, Long arg9, TranslateCallback paramTranslateCallback, int paramInt)
   {
     if (paramInt >= AITranslator.TranslatorType.values().length) {
       return;
@@ -226,7 +240,7 @@ public class AITranslator
     {
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        switch (kzq.a[localTranslatorType.ordinal()])
+        switch (AITranslator.4.a[localTranslatorType.ordinal()])
         {
         case 1: 
           return;
@@ -236,34 +250,15 @@ public class AITranslator
       if (!this.jdField_a_of_type_JavaUtilList.contains(str))
       {
         this.jdField_a_of_type_JavaUtilList.add(str);
-        kzy.a().a(paramContext, paramList1, paramLanguage, this.jdField_a_of_type_Kzw.a(), localLong, new kzn(this, str, paramLong, paramContext, paramahjf, paramString, paramLanguage, paramlan, paramList, paramList1, paramInt, localTranslatorType));
+        GoogleTranslator.a().a(paramContext, paramList1, paramLanguage, this.jdField_a_of_type_ComRookeryTranslateGoogleGoogleInfo.a(), localLong, new AITranslator.1(this, str, paramLong, paramContext, paramHolder, paramString, paramLanguage, paramTranslateCallback, paramList, paramList1, paramInt, localTranslatorType));
         continue;
         str = paramString + paramLanguage.toString() + "M";
         if (!this.jdField_a_of_type_JavaUtilList.contains(str))
         {
           this.jdField_a_of_type_JavaUtilList.add(str);
-          lac.a().a(paramContext, paramList1, paramLanguage, localLong, this.jdField_a_of_type_Laa.a(), this.jdField_a_of_type_Laa.b(), new kzo(this, str, paramLong, paramContext, paramahjf, paramString, paramLanguage, paramlan, paramList, paramList1, paramInt, localTranslatorType));
+          MicrosoftTranslator.a().a(paramContext, paramList1, paramLanguage, localLong, this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftInfo.a(), this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftInfo.b(), new AITranslator.2(this, str, paramLong, paramContext, paramHolder, paramString, paramLanguage, paramTranslateCallback, paramList, paramList1, paramInt, localTranslatorType));
         }
       }
-    }
-  }
-  
-  private void a(long paramLong, Context paramContext, ahjf paramahjf, String paramString, List<Pair<String, String>> paramList, List<String> paramList1, Language paramLanguage, lan paramlan, int paramInt, AITranslator.TranslatorType paramTranslatorType, TranslateError paramTranslateError, Long paramLong1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "AI[onFailed:] recursion_time:" + paramInt + "\tException:" + paramTranslateError);
-    }
-    if (paramInt >= AITranslator.TranslatorType.values().length - 1) {
-      paramlan.a(paramLong, paramString, paramTranslateError, paramahjf);
-    }
-    paramTranslateError = Long.valueOf(9223372036854775807L);
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "onFailed Translator type: " + paramTranslatorType.toString() + "\tTime: " + paramTranslateError);
-    }
-    paramTranslateError = Long.valueOf(a(paramTranslateError.longValue(), paramTranslatorType));
-    a(paramContext, paramTranslatorType, paramTranslateError.longValue());
-    if (paramTranslateError.longValue() == 9223372036854775807L) {
-      a(paramLong, paramContext, paramahjf, paramString, paramList, paramList1, paramLanguage, paramTranslateError, paramlan, paramInt + 1);
     }
   }
   
@@ -275,7 +270,7 @@ public class AITranslator
       if (Build.VERSION.SDK_INT >= 9)
       {
         paramContext.getSharedPreferences("[Translate]pref", 0).edit().putLong("pref_policy_update_time", System.currentTimeMillis()).apply();
-        kzr.a(paramContext, new kzp(this, paramContext));
+        PolicyClient.a(paramContext, new AITranslator.3(this, paramContext));
       }
     }
     while (!QLog.isColorLevel()) {
@@ -291,7 +286,7 @@ public class AITranslator
   @TargetApi(9)
   private void a(Context paramContext, AITranslator.TranslatorType paramTranslatorType, long paramLong)
   {
-    switch (kzq.a[paramTranslatorType.ordinal()])
+    switch (AITranslator.4.a[paramTranslatorType.ordinal()])
     {
     default: 
       if (QLog.isColorLevel()) {
@@ -347,14 +342,14 @@ public class AITranslator
     return Boolean.valueOf(true);
   }
   
-  public Boolean a(Context paramContext, ahjf paramahjf, String paramString, Language paramLanguage, lan paramlan)
+  public Boolean a(Context paramContext, TextTranslationItemBuilder.Holder paramHolder, String paramString, Language paramLanguage, TranslateCallback paramTranslateCallback)
   {
     if (!a(paramContext).booleanValue()) {
       return Boolean.valueOf(false);
     }
     long l1 = System.currentTimeMillis();
     List localList = a(paramString + " ");
-    long l2 = paramahjf.b;
+    long l2 = paramHolder.b;
     if (this.jdField_a_of_type_Boolean == true)
     {
       a(paramContext);
@@ -378,7 +373,7 @@ public class AITranslator
       break;
       if ((localArrayList.size() > 0) && (i > 0))
       {
-        a(l2, paramContext, paramahjf, paramString, localList, localArrayList, paramLanguage, Long.valueOf(l1), paramlan, 0);
+        a(l2, paramContext, paramHolder, paramString, localList, localArrayList, paramLanguage, Long.valueOf(l1), paramTranslateCallback, 0);
         return Boolean.valueOf(true);
       }
       return Boolean.valueOf(false);
@@ -387,8 +382,8 @@ public class AITranslator
   
   public void a(Context paramContext, boolean paramBoolean)
   {
-    if (kzu.a()) {
-      kzu.a().a(paramContext, paramBoolean);
+    if (TranslateClient.a()) {
+      TranslateClient.a().a(paramContext, paramBoolean);
     }
     if (this.jdField_a_of_type_JavaUtilList != null) {
       this.jdField_a_of_type_JavaUtilList.clear();
@@ -397,7 +392,7 @@ public class AITranslator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.rookery.translate.AITranslator
  * JD-Core Version:    0.7.0.1
  */

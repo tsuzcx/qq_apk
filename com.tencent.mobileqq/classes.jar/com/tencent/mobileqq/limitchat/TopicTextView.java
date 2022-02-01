@@ -88,7 +88,7 @@ public class TopicTextView
     return localStringBuilder.toString();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (this.jdField_a_of_type_Boolean)

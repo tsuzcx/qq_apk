@@ -5,14 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import uem;
-import uer;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.callback.FeedBackClickListener;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.IUIDelegate;
 
 public class CommonAdBar
   extends FrameLayout
-  implements uem
+  implements FeedBackClickListener
 {
-  private uer a;
+  private IUIDelegate a;
   
   public CommonAdBar(@NonNull Context paramContext)
   {
@@ -29,7 +29,7 @@ public class CommonAdBar
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public uer a()
+  public IUIDelegate a()
   {
     return this.a;
   }
@@ -39,14 +39,14 @@ public class CommonAdBar
     removeAllViews();
   }
   
-  public void a(uer paramuer)
+  public void a(IUIDelegate paramIUIDelegate)
   {
     if (this.a != null) {
       this.a.c();
     }
-    this.a = paramuer;
+    this.a = paramIUIDelegate;
     this.a.a(this);
-    addView(paramuer.a());
+    addView(paramIUIDelegate.a());
   }
   
   public void b()
@@ -56,7 +56,7 @@ public class CommonAdBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.CommonAdBar
  * JD-Core Version:    0.7.0.1
  */

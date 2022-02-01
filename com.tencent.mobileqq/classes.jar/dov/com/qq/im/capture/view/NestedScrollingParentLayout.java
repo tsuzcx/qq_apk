@@ -8,24 +8,21 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import bony;
-import booi;
-import booj;
 import com.tencent.qphone.base.util.QLog;
 
 public class NestedScrollingParentLayout
   extends FrameLayout
 {
-  private double jdField_a_of_type_Double;
+  private double jdField_a_of_type_Double = 0.0D;
   private int jdField_a_of_type_Int = -1;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new booi(this);
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new NestedScrollingParentLayout.1(this);
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private bony jdField_a_of_type_Bony;
-  private boolean jdField_a_of_type_Boolean;
+  private CustomSnapHelper jdField_a_of_type_DovComQqImCaptureViewCustomSnapHelper;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = -1;
-  private RecyclerView.OnScrollListener jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new booj(this);
+  private RecyclerView.OnScrollListener jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new NestedScrollingParentLayout.2(this);
   private RecyclerView jdField_b_of_type_AndroidSupportV7WidgetRecyclerView;
-  private bony jdField_b_of_type_Bony;
+  private CustomSnapHelper jdField_b_of_type_DovComQqImCaptureViewCustomSnapHelper;
   private RecyclerView c;
   
   public NestedScrollingParentLayout(Context paramContext)
@@ -112,19 +109,19 @@ public class NestedScrollingParentLayout
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setTwoRecyclerView(RecyclerView paramRecyclerView1, RecyclerView paramRecyclerView2, bony parambony1, bony parambony2)
+  public void setTwoRecyclerView(RecyclerView paramRecyclerView1, RecyclerView paramRecyclerView2, CustomSnapHelper paramCustomSnapHelper1, CustomSnapHelper paramCustomSnapHelper2)
   {
     this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView1;
     this.c = paramRecyclerView2;
-    this.jdField_a_of_type_Bony = parambony1;
-    this.jdField_b_of_type_Bony = parambony2;
+    this.jdField_a_of_type_DovComQqImCaptureViewCustomSnapHelper = paramCustomSnapHelper1;
+    this.jdField_b_of_type_DovComQqImCaptureViewCustomSnapHelper = paramCustomSnapHelper2;
     this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
     this.c.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.view.NestedScrollingParentLayout
  * JD-Core Version:    0.7.0.1
  */

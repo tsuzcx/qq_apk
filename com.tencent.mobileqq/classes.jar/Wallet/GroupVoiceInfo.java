@@ -8,9 +8,9 @@ public final class GroupVoiceInfo
   extends JceStruct
 {
   static byte[] cache_fileMd5 = (byte[])new byte[1];
-  public long fileId;
-  public byte[] fileMd5;
-  public long groupCode;
+  public long fileId = 0L;
+  public byte[] fileMd5 = null;
+  public long groupCode = 0L;
   
   static
   {

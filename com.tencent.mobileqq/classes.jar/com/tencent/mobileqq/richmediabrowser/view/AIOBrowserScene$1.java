@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import bbqz;
-
-public class AIOBrowserScene$1
+class AIOBrowserScene$1
   implements Runnable
 {
-  public AIOBrowserScene$1(bbqz parambbqz) {}
+  AIOBrowserScene$1(AIOBrowserScene paramAIOBrowserScene) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class AIOBrowserScene$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOBrowserScene.1
  * JD-Core Version:    0.7.0.1
  */

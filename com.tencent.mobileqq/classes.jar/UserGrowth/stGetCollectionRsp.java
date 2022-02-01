@@ -10,7 +10,7 @@ public final class stGetCollectionRsp
 {
   static ArrayList<stSimpleMetaFeed> cache_feedList = new ArrayList();
   public String attachInfo = "";
-  public ArrayList<stSimpleMetaFeed> feedList;
+  public ArrayList<stSimpleMetaFeed> feedList = null;
   public boolean isFinished = true;
   
   static

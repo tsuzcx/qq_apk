@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avrw;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,7 +13,7 @@ import org.json.JSONObject;
 public class IVPluginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<IVPluginInfo> CREATOR = new avrw();
+  public static final Parcelable.Creator<IVPluginInfo> CREATOR = new IVPluginInfo.1();
   public int a;
   public long a;
   public Bundle a;
@@ -35,11 +34,15 @@ public class IVPluginInfo
   public IVPluginInfo()
   {
     this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidOsBundle = null;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public IVPluginInfo(Parcel paramParcel)
+  protected IVPluginInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidOsBundle = null;
+    this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
@@ -149,7 +152,7 @@ public class IVPluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.IVPluginInfo
  * JD-Core Version:    0.7.0.1
  */

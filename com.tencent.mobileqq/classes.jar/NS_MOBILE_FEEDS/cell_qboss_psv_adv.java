@@ -13,17 +13,17 @@ public final class cell_qboss_psv_adv
   static Map<String, String> cache_extendinfo;
   static s_picdata cache_float_picdata = new s_picdata();
   static s_picdata cache_picdata = new s_picdata();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public s_picdata backgd_picdata;
+  public s_picdata backgd_picdata = null;
   public String btnText = "";
-  public long countDownTime;
-  public Map<String, String> extendinfo;
-  public s_picdata float_picdata;
-  public int markType;
-  public int mediatype;
-  public s_picdata picdata;
-  public int psvAdvType;
+  public long countDownTime = 0L;
+  public Map<String, String> extendinfo = null;
+  public s_picdata float_picdata = null;
+  public int markType = 0;
+  public int mediatype = 0;
+  public s_picdata picdata = null;
+  public int psvAdvType = 0;
   public String summary = "";
   public String title = "";
   

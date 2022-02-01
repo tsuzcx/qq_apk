@@ -1,46 +1,39 @@
 package com.tencent.mobileqq.msf.core.c;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
-public final class c
-  extends JceStruct
+public class c
+  extends SQLiteOpenHelper
 {
-  static Map d;
-  public Map a = null;
-  public long b = 0L;
-  public long c = 0L;
+  private static final String a = "monitor.db";
+  private static int b = 6;
+  private static String c = "create table dataflow(_id INTEGER PRIMARY KEY,processName CHAR(50),uin CHAR(20) NOT NULL,ip CHAR(20) NOT NULL,refer CHAR(50),port INTEGER NOT NULL,flag INTEGER NOT NULL,buffersize LONG NOT NULL,networktype INTEGER NOT NULL,mType CHAR NOT NULL,curtime LONG NOT NULL,status Byte NOT NULL)";
+  private static String d = "create table dataflow_rdm(_id INTEGER PRIMARY KEY,uin CHAR(20) NOT NULL,flag INTEGER NOT NULL,buffersize LONG NOT NULL,networktype INTEGER NOT NULL,mType CHAR NOT NULL,data CHAR NOT NULL)";
   
-  public c() {}
-  
-  public c(Map paramMap, long paramLong1, long paramLong2)
+  public c(Context paramContext)
   {
-    this.a = paramMap;
-    this.b = paramLong1;
-    this.c = paramLong2;
+    super(paramContext, "monitor.db", null, b);
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public static final c a()
   {
-    if (d == null)
-    {
-      d = new HashMap();
-      o localo = new o();
-      d.put("", localo);
-    }
-    this.a = ((Map)paramJceInputStream.read(d, 1, true));
-    this.b = paramJceInputStream.read(this.b, 2, true);
-    this.c = paramJceInputStream.read(this.c, 3, true);
+    return c.a.a();
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
-    paramJceOutputStream.write(this.a, 1);
-    paramJceOutputStream.write(this.b, 2);
-    paramJceOutputStream.write(this.c, 3);
+    paramSQLiteDatabase.execSQL(c);
+    paramSQLiteDatabase.execSQL(d);
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("drop table dataflow");
+    paramSQLiteDatabase.execSQL("drop table dataflow_rdm");
+    paramSQLiteDatabase.execSQL(c);
+    paramSQLiteDatabase.execSQL(d);
   }
 }
 

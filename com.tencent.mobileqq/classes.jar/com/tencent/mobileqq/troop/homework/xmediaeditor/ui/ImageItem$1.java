@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import bfur;
-import bfuw;
-import bfvt;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
 
-public class ImageItem$1
+class ImageItem$1
   implements Runnable
 {
-  public ImageItem$1(bfvt parambfvt, bfur parambfur) {}
+  ImageItem$1(ImageItem paramImageItem, EditItemInfoBase paramEditItemInfoBase) {}
   
   public void run()
   {
-    bfvt.a(this.this$0, (bfuw)this.a, true);
+    ImageItem.a(this.this$0, (ImageInfo)this.a, true);
   }
 }
 

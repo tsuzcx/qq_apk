@@ -1,7 +1,7 @@
 package com.tencent.avgame.gameroom.seat;
 
+import com.tencent.avgame.gameroom.GameRoomViewLayoutParamsDef;
 import com.tencent.avgame.gameroom.seat.background.SurvivalSeatBgView;
-import nin;
 
 class PkSeatView$3
   implements Runnable
@@ -10,13 +10,13 @@ class PkSeatView$3
   
   public void run()
   {
-    nin.a(this.this$0);
+    GameRoomViewLayoutParamsDef.a(this.this$0);
     PkSeatView.a(this.this$0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.PkSeatView.3
  * JD-Core Version:    0.7.0.1
  */

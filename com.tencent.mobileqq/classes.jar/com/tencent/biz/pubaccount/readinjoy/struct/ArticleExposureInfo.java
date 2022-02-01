@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.Entity;
-import pqw;
 
 public class ArticleExposureInfo
   extends Entity
@@ -27,7 +27,7 @@ public class ArticleExposureInfo
     localArticleExposureInfo.algorithmID = paramBaseArticleInfo.mAlgorithmID;
     localArticleExposureInfo.articleID = paramBaseArticleInfo.mArticleID;
     localArticleExposureInfo.exposureTime = NetConnInfoCenter.getServerTimeMillis();
-    localArticleExposureInfo.feedsType = pqw.a(paramBaseArticleInfo);
+    localArticleExposureInfo.feedsType = RIJFeedsType.a(paramBaseArticleInfo);
     localArticleExposureInfo.channelID = paramBaseArticleInfo.mChannelID;
     localArticleExposureInfo.title = paramBaseArticleInfo.mTitle;
     return localArticleExposureInfo;
@@ -53,7 +53,7 @@ public class ArticleExposureInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ArticleExposureInfo
  * JD-Core Version:    0.7.0.1
  */

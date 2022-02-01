@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adoa;
 import android.app.Dialog;
 import com.tencent.qphone.base.util.QLog;
 
-public class ChatHistory$17$1
+class ChatHistory$17$1
   implements Runnable
 {
-  public ChatHistory$17$1(adoa paramadoa) {}
+  ChatHistory$17$1(ChatHistory.17 param17) {}
   
   public void run()
   {
@@ -38,7 +37,7 @@ public class ChatHistory$17$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.17.1
  * JD-Core Version:    0.7.0.1
  */

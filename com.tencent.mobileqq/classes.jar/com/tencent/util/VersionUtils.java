@@ -4,74 +4,69 @@ import android.os.Build.VERSION;
 
 public final class VersionUtils
 {
-  public static boolean isECLAIR_MR1()
+  public static boolean a()
   {
     return Build.VERSION.SDK_INT >= 7;
   }
   
-  public static boolean isGingerBread()
+  public static boolean b()
+  {
+    return Build.VERSION.SDK_INT >= 8;
+  }
+  
+  public static boolean c()
   {
     return Build.VERSION.SDK_INT >= 9;
   }
   
-  public static boolean isHoneycomb()
-  {
-    return Build.VERSION.SDK_INT >= 11;
-  }
-  
-  public static boolean isHoneycombMR2()
-  {
-    return Build.VERSION.SDK_INT >= 13;
-  }
-  
-  public static boolean isIceScreamSandwich()
+  public static boolean d()
   {
     return Build.VERSION.SDK_INT >= 14;
   }
   
-  public static boolean isJellyBean()
+  public static boolean e()
+  {
+    return Build.VERSION.SDK_INT >= 11;
+  }
+  
+  public static boolean f()
+  {
+    return Build.VERSION.SDK_INT >= 13;
+  }
+  
+  public static boolean g()
   {
     return Build.VERSION.SDK_INT >= 16;
   }
   
-  public static boolean isJellyBeanM1()
-  {
-    return Build.VERSION.SDK_INT >= 17;
-  }
-  
-  public static boolean isJellyBeanMA2()
+  public static boolean h()
   {
     return Build.VERSION.SDK_INT >= 18;
   }
   
-  public static boolean isKITKAT()
+  public static boolean i()
   {
     return Build.VERSION.SDK_INT >= 19;
   }
   
-  public static boolean isLOLLIPOP()
+  public static boolean j()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
   
-  public static boolean isM()
+  public static boolean k()
   {
     return Build.VERSION.SDK_INT >= 23;
   }
   
-  public static boolean isNougat()
+  public static boolean l()
   {
     return Build.VERSION.SDK_INT >= 24;
   }
   
-  public static boolean isOreo()
+  public static boolean m()
   {
     return Build.VERSION.SDK_INT >= 26;
-  }
-  
-  public static boolean isrFroyo()
-  {
-    return Build.VERSION.SDK_INT >= 8;
   }
 }
 

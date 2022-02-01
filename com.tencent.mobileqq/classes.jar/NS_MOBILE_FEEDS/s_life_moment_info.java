@@ -10,12 +10,12 @@ public final class s_life_moment_info
   static s_picurl cache_moment_feed_night_pic = new s_picurl();
   static s_picurl cache_moment_feed_pic;
   static s_picurl cache_moment_pic = new s_picurl();
-  public s_picurl moment_feed_night_pic;
-  public s_picurl moment_feed_pic;
+  public s_picurl moment_feed_night_pic = null;
+  public s_picurl moment_feed_pic = null;
   public String moment_id = "";
   public String moment_name = "";
-  public s_picurl moment_pic;
-  public int type;
+  public s_picurl moment_pic = null;
+  public int type = 0;
   
   static
   {

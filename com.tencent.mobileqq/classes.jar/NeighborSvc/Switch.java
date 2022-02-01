@@ -8,8 +8,8 @@ public final class Switch
   extends JceStruct
 {
   static int cache_type;
-  public byte is_open;
-  public int type;
+  public byte is_open = 0;
+  public int type = 0;
   
   public Switch() {}
   

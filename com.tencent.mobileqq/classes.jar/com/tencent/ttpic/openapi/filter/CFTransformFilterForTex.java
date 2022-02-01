@@ -9,7 +9,7 @@ import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.model.FaceFeature;
 import com.tencent.ttpic.model.FaceFeatureTex;
 import com.tencent.ttpic.openapi.PTFaceAttr;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.CosFunUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FrameUtil;
@@ -175,7 +175,7 @@ public class CFTransformFilterForTex
   
   private void getPointsWithFeature(FaceFeature paramFaceFeature, float[][] paramArrayOfFloat1, float[][] paramArrayOfFloat2, int paramInt)
   {
-    float[][] arrayOfFloat = VideoMaterialUtil.listToFloatArray(paramFaceFeature.points);
+    float[][] arrayOfFloat = VideoMaterial.listToFloatArray(paramFaceFeature.points);
     if (this.procMethod == 2) {
       CosFunUtil.getExtFaceFeature(arrayOfFloat);
     }
@@ -390,7 +390,7 @@ public class CFTransformFilterForTex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.CFTransformFilterForTex
  * JD-Core Version:    0.7.0.1
  */

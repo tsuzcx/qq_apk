@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class Signature
   extends JceStruct
 {
-  public int fontid;
+  public int fontid = 0;
   
   public Signature() {}
   

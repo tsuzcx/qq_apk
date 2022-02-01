@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import aqeq;
 import com.tencent.mobileqq.app.ThreadManager;
 
-public class DynamicAvatarManager$4
+class DynamicAvatarManager$4
   implements Runnable
 {
-  public DynamicAvatarManager$4(aqeq paramaqeq, Runnable paramRunnable) {}
+  DynamicAvatarManager$4(DynamicAvatarManager paramDynamicAvatarManager, Runnable paramRunnable) {}
   
   public void run()
   {

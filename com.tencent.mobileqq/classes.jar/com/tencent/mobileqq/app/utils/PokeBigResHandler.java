@@ -2,9 +2,6 @@ package com.tencent.mobileqq.app.utils;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import apag;
-import bkvq;
-import bpqb;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BusinessHandler;
@@ -17,6 +14,8 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.singleupdate.MD5FileUtil;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
 import java.io.File;
 
 public class PokeBigResHandler
@@ -27,7 +26,7 @@ public class PokeBigResHandler
   private static final int[] jdField_a_of_type_ArrayOfInt = { 57, 57, 67, 6, 0, 50, 20 };
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString;
   public static final String b;
-  private static boolean jdField_b_of_type_Boolean;
+  private static boolean jdField_b_of_type_Boolean = false;
   private static final int[] jdField_b_of_type_ArrayOfInt = { 2, 10, 37, 55 };
   private static final String[] jdField_b_of_type_ArrayOfJavaLangString;
   public static final String c;
@@ -35,7 +34,8 @@ public class PokeBigResHandler
   private static String e = "";
   private static String f = "";
   private static final String g = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "bigPoke");
-  private apag jdField_a_of_type_Apag = new apag();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private PokeBigResHandler.NetEngine jdField_a_of_type_ComTencentMobileqqAppUtilsPokeBigResHandler$NetEngine = new PokeBigResHandler.NetEngine();
   
   static
   {
@@ -43,6 +43,7 @@ public class PokeBigResHandler
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/poke_egg";
     c = jdField_a_of_type_JavaLangString + "/poke_normal";
     d = c + "/dazhao/dazhao_move.png";
+    jdField_a_of_type_Boolean = false;
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "/666receive_motion", "/666send_motion", "/bixin_motion", "/chuo_motion", "/dazhao", "/xinsui_motion", "/zan_motion" };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "/666_caidan", "/chuo_caidan", "/dazhao_caidan", "/xinsui_caidan" };
   }
@@ -50,6 +51,7 @@ public class PokeBigResHandler
   public PokeBigResHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
   private static void a(String paramString)
@@ -66,12 +68,12 @@ public class PokeBigResHandler
       {
         if (!TextUtils.isEmpty(VFSAssistantUtils.getSDKPrivatePath(g)))
         {
-          FileUtils.delete(VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
-          bpqb.a(g);
-          FileUtils.uncompressZip(paramString, VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
-          bpqb.a(jdField_a_of_type_JavaLangString);
+          FileUtils.a(VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
+          MediaUtil.a(g);
+          FileUtils.a(paramString, VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
+          MediaUtil.a(jdField_a_of_type_JavaLangString);
         }
-        FileUtils.delete(paramString, false);
+        FileUtils.a(paramString, false);
         long l2 = System.currentTimeMillis();
         if (!QLog.isColorLevel()) {
           continue;
@@ -169,7 +171,7 @@ public class PokeBigResHandler
     File localFile = new File(str);
     if ((localFile.exists()) && (localFile.list() != null))
     {
-      bpqb.a(str);
+      MediaUtil.a(str);
       return true;
     }
     return false;
@@ -263,7 +265,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = bkvq.a(localFile);
+            paramString = MD5FileUtil.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -287,7 +289,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = bkvq.a(localFile);
+            paramString = MD5FileUtil.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -339,7 +341,7 @@ public class PokeBigResHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.PokeBigResHandler
  * JD-Core Version:    0.7.0.1
  */

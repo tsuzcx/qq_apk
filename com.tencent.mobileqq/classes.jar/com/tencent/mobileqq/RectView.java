@@ -18,7 +18,7 @@ public class RectView
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.mPaint.setColor(Color.parseColor("#00a5e0"));

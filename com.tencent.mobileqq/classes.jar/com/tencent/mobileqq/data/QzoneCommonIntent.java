@@ -2,8 +2,6 @@ package com.tencent.mobileqq.data;
 
 import android.content.Context;
 import android.text.TextUtils;
-import arvh;
-import arvi;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.QUA;
 import cooperation.qzone.QZoneCommonRequest;
@@ -18,8 +16,8 @@ import mqq.app.Servlet;
 public class QzoneCommonIntent
   extends NewIntent
 {
-  static arvi defaultProcessor = new arvh();
-  private arvi processor;
+  static RespProcessor defaultProcessor = new QzoneCommonIntent.1();
+  private RespProcessor processor;
   private QZoneCommonRequest request;
   
   public QzoneCommonIntent(Context paramContext, Class<? extends Servlet> paramClass)
@@ -38,7 +36,7 @@ public class QzoneCommonIntent
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt));
     localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()));
     localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
-    localStatistic.setValue(WnsKeys.Build, "4875");
+    localStatistic.setValue(WnsKeys.Build, "5105");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);
@@ -55,7 +53,7 @@ public class QzoneCommonIntent
     return (paramInt == 0) || ((Math.abs(paramInt) <= 19999) && (Math.abs(paramInt) >= 19000));
   }
   
-  public arvi getProcessor()
+  public RespProcessor getProcessor()
   {
     if (this.processor == null) {
       return defaultProcessor;
@@ -75,7 +73,7 @@ public class QzoneCommonIntent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QzoneCommonIntent
  * JD-Core Version:    0.7.0.1
  */

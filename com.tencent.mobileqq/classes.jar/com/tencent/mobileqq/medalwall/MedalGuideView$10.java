@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.medalwall;
 
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 final class MedalGuideView$10
   implements Runnable
@@ -15,7 +15,7 @@ final class MedalGuideView$10
     if (localQQAppInterface == null) {
       return;
     }
-    bdla.b(localQQAppInterface, "dc00898", "", "", "0X80088EA", "0X80088EA", this.a, 0, "", "", "", "");
+    ReportController.b(localQQAppInterface, "dc00898", "", "", "0X80088EA", "0X80088EA", this.a, 0, "", "", "", "");
   }
 }
 

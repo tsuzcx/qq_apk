@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import bbjp;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
-public class ShareActionSheet$2
+class ShareActionSheet$2
   implements Runnable
 {
-  public ShareActionSheet$2(bbjp parambbjp) {}
-  
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.this$0.jdField_a_of_type_Int) {
       this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
     }
-    while (this.this$0.b.getWidth() < bbjp.a(this.this$0))
+    while (this.this$0.b.getWidth() < ShareActionSheet.a(this.this$0))
     {
       this.this$0.b.setMove(true);
       return;
@@ -24,7 +21,7 @@ public class ShareActionSheet$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet.2
  * JD-Core Version:    0.7.0.1
  */

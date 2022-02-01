@@ -1,27 +1,26 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.viola.RIJViolaUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.viola.core.ViolaSDKManager;
-import pqw;
-import psv;
-import qdi;
 
-public class ViolaHandler$1
+class ViolaHandler$1
   implements Runnable
 {
-  public ViolaHandler$1(qdi paramqdi, BaseArticleInfo paramBaseArticleInfo) {}
+  ViolaHandler$1(ViolaHandler paramViolaHandler, BaseArticleInfo paramBaseArticleInfo) {}
   
   public void run()
   {
-    Object localObject2 = pqw.a(this.a);
+    Object localObject2 = RIJFeedsType.a(this.a);
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = psv.a(this.a);
+      localObject1 = RIJViolaUtils.a(this.a);
     }
     localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = psv.b(this.a);
+      localObject2 = RIJViolaUtils.b(this.a);
     }
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       ViolaSDKManager.getInstance().postOnUiThread(new ViolaHandler.1.1(this, (String)localObject2));
@@ -30,7 +29,7 @@ public class ViolaHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.handlers.ViolaHandler.1
  * JD-Core Version:    0.7.0.1
  */

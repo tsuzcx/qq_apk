@@ -21,9 +21,12 @@ public class DragImageView
   extends ImageView
 {
   public static final int MOVE_DELTA = 10;
+  public static final int MOVE_FLOATAD = 0;
+  public static final int MOVE_PENDANTAD = 1;
   public static final String TAG = "DragImageView";
   private float mDownPosX;
   private float mDownPosY;
+  private int mDraggableMode = 0;
   private boolean mHasMove;
   private boolean mHasScale;
   private int mLastAction;
@@ -48,6 +51,12 @@ public class DragImageView
   public DragImageView(Context paramContext)
   {
     this(paramContext, null);
+  }
+  
+  public DragImageView(Context paramContext, int paramInt)
+  {
+    this(paramContext, null);
+    this.mDraggableMode = paramInt;
   }
   
   public DragImageView(Context paramContext, @android.support.annotation.Nullable @androidx.annotation.Nullable AttributeSet paramAttributeSet)
@@ -159,28 +168,35 @@ public class DragImageView
   
   private boolean handleActionMove(MotionEvent paramMotionEvent)
   {
-    float f1 = paramMotionEvent.getRawX();
-    float f2 = paramMotionEvent.getRawY();
-    float f3 = getLimitY(getY() + f2 - this.mLastPosY);
-    this.mLastPosY = f2;
-    float f4 = getLimitX(getX() + f1 - this.mLastPosX);
-    this.mLastPosX = f1;
-    setX(f4);
-    setY(f3);
-    this.mHasMove = isMovingOrNot(this.mDownPosX, this.mDownPosY, f1, f2);
-    if (this.mHasMove)
-    {
-      resetColorFilter();
-      scaleView();
+    if (this.mDraggableMode == 1) {
+      moveX(paramMotionEvent);
     }
-    bringToFront();
-    return true;
+    for (;;)
+    {
+      this.mHasMove = isMovingOrNot(this.mDownPosX, this.mDownPosY, paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
+      if (this.mHasMove)
+      {
+        resetColorFilter();
+        if (this.mDraggableMode == 0) {
+          scaleView();
+        }
+      }
+      bringToFront();
+      return true;
+      if (this.mDraggableMode == 0)
+      {
+        moveX(paramMotionEvent);
+        moveY(paramMotionEvent);
+      }
+    }
   }
   
   private boolean handleActionUp()
   {
     resetColorFilter();
-    restoreScale();
+    if (this.mDraggableMode == 0) {
+      restoreScale();
+    }
     if (this.mLastAction == 0) {
       performClick();
     }
@@ -191,7 +207,9 @@ public class DragImageView
       if (!this.mHasMove) {
         performClick();
       }
-      landSide();
+      if (this.mDraggableMode == 0) {
+        landSide();
+      }
     }
   }
   
@@ -208,6 +226,22 @@ public class DragImageView
       animate().setInterpolator(new DecelerateInterpolator()).x(getLimitX(i)).setDuration(300L).start();
       return;
     }
+  }
+  
+  private void moveX(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getRawX();
+    float f2 = getLimitX(getX() + f1 - this.mLastPosX);
+    this.mLastPosX = f1;
+    setX(f2);
+  }
+  
+  private void moveY(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getRawY();
+    float f2 = getLimitY(getY() + f1 - this.mLastPosY);
+    this.mLastPosY = f1;
+    setY(f2);
   }
   
   private void resetColorFilter()
@@ -272,19 +306,19 @@ public class DragImageView
     setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
   }
   
-  protected void onConfigurationChanged(Configuration paramConfiguration)
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
     getScreenConfig();
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     resetMargin();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.mOnTouch) {
       setMeasuredDimension((int)this.mScaleWidth, (int)this.mScaleHeight);

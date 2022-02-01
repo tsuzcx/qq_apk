@@ -1,6 +1,5 @@
 package io.flutter.embedding.android;
 
-import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -28,8 +27,8 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.FlutterShellArgs;
+import io.flutter.embedding.engine.plugins.util.GeneratedPluginRegister;
 import io.flutter.plugin.platform.PlatformPlugin;
-import io.flutter.view.FlutterMain;
 
 public class FlutterActivity
   extends Activity
@@ -54,10 +53,8 @@ public class FlutterActivity
   
   private void configureWindowForTransparency()
   {
-    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.transparent)
-    {
+    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.transparent) {
       getWindow().setBackgroundDrawable(new ColorDrawable(0));
-      getWindow().setFlags(512, 512);
     }
   }
   
@@ -120,7 +117,7 @@ public class FlutterActivity
       }
       else
       {
-        Log.d("FlutterActivity", "Using the launch theme as normal theme.");
+        Log.v("FlutterActivity", "Using the launch theme as normal theme.");
         return;
       }
     }
@@ -143,7 +140,10 @@ public class FlutterActivity
   
   public void cleanUpFlutterEngine(@NonNull FlutterEngine paramFlutterEngine) {}
   
-  public void configureFlutterEngine(@NonNull FlutterEngine paramFlutterEngine) {}
+  public void configureFlutterEngine(@NonNull FlutterEngine paramFlutterEngine)
+  {
+    GeneratedPluginRegister.registerGeneratedPlugins(paramFlutterEngine);
+  }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -170,7 +170,7 @@ public class FlutterActivity
         return str;
       }
     }
-    return FlutterMain.findAppBundlePath();
+    return null;
   }
   
   @NonNull
@@ -226,8 +226,8 @@ public class FlutterActivity
   public String getInitialRoute()
   {
     Object localObject2;
-    if (getIntent().hasExtra("initial_route")) {
-      localObject2 = getIntent().getStringExtra("initial_route");
+    if (getIntent().hasExtra("route")) {
+      localObject2 = getIntent().getStringExtra("route");
     }
     for (;;)
     {
@@ -257,21 +257,21 @@ public class FlutterActivity
   }
   
   @NonNull
-  public FlutterView.RenderMode getRenderMode()
+  public RenderMode getRenderMode()
   {
     if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.opaque) {
-      return FlutterView.RenderMode.surface;
+      return RenderMode.surface;
     }
-    return FlutterView.RenderMode.texture;
+    return RenderMode.texture;
   }
   
   @NonNull
-  public FlutterView.TransparencyMode getTransparencyMode()
+  public TransparencyMode getTransparencyMode()
   {
     if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.opaque) {
-      return FlutterView.TransparencyMode.opaque;
+      return TransparencyMode.opaque;
     }
-    return FlutterView.TransparencyMode.transparent;
+    return TransparencyMode.transparent;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -311,6 +311,10 @@ public class FlutterActivity
     this.delegate.onDetach();
     this.lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
   }
+  
+  public void onFlutterSurfaceViewCreated(@NonNull FlutterSurfaceView paramFlutterSurfaceView) {}
+  
+  public void onFlutterTextureViewCreated(@NonNull FlutterTextureView paramFlutterTextureView) {}
   
   public void onFlutterUiDisplayed()
   {
@@ -427,10 +431,22 @@ public class FlutterActivity
     }
     return getIntent().getBooleanExtra("destroy_engine_with_activity", true);
   }
+  
+  public boolean shouldRestoreAndSaveState()
+  {
+    boolean bool = false;
+    if (getIntent().hasExtra("enable_state_restoration")) {
+      bool = getIntent().getBooleanExtra("enable_state_restoration", false);
+    }
+    while (getCachedEngineId() != null) {
+      return bool;
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
 import android.app.Activity;
-import bjnn;
+import com.tencent.open.downloadnew.MyAppApi;
 
 class WebViewFragment$4
   implements Runnable
@@ -10,14 +10,14 @@ class WebViewFragment$4
   
   public void run()
   {
-    if (bjnn.d()) {
-      bjnn.a().a(this.a);
+    if (MyAppApi.d()) {
+      MyAppApi.a().a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment.4
  * JD-Core Version:    0.7.0.1
  */

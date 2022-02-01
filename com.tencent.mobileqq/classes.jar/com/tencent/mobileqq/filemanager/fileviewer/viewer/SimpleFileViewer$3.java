@@ -5,15 +5,14 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aubc;
-import aukn;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanageraux.util.TencentDocConvertABTestUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public class SimpleFileViewer$3
+class SimpleFileViewer$3
   implements Runnable
 {
   SimpleFileViewer$3(SimpleFileViewer paramSimpleFileViewer, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
@@ -33,18 +32,18 @@ public class SimpleFileViewer$3
       localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
       localObject = (LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater");
     } while (localObject == null);
-    SimpleFileViewer.a(this.this$0, ((LayoutInflater)localObject).inflate(2131560859, SimpleFileViewer.a(this.this$0), false));
-    Object localObject = new RelativeLayout.LayoutParams(-1, aukn.a(localQQAppInterface));
+    SimpleFileViewer.a(this.this$0, ((LayoutInflater)localObject).inflate(2131560951, SimpleFileViewer.a(this.this$0), false));
+    Object localObject = new RelativeLayout.LayoutParams(-1, TencentDocConvertABTestUtil.a(localQQAppInterface));
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
     SimpleFileViewer.a(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
     SimpleFileViewer.a(this.this$0).addView(SimpleFileViewer.a(this.this$0));
-    bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009064", "0X8009064", 0, 0, "", "", "", "");
-    aukn.a(localQQAppInterface, this.this$0.a, SimpleFileViewer.a(this.this$0), this.a, new aubc(this, localQQAppInterface));
+    ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009064", "0X8009064", 0, 0, "", "", "", "");
+    TencentDocConvertABTestUtil.a(localQQAppInterface, this.this$0.a, SimpleFileViewer.a(this.this$0), this.a, new SimpleFileViewer.3.1(this, localQQAppInterface));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 
 class NativeVideoImage$2
   implements Runnable
@@ -13,8 +14,8 @@ class NativeVideoImage$2
     {
       this.this$0.mPlayOnceListener.onFinish();
       this.this$0.mPlayOnceListener = null;
-      if (QLog.isColorLevel()) {
-        QLog.e(NativeVideoImage.TAG, 2, "getNextFrame(), mPlayOnceListener.onFinish()");
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.e(NativeVideoImage.TAG, 2, "getNextFrame(), mPlayOnceListener.onFinish()");
       }
     }
   }

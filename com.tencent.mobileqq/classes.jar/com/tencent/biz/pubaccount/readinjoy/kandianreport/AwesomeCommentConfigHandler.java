@@ -1,26 +1,27 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import bmhv;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinParseUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AwesomeCommentInfo;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import pku;
-import roq;
 
 public class AwesomeCommentConfigHandler
-  implements AladdinConfigHandler
+  extends SimpleConfigHandler
 {
   private static final String TAG = "AwesomeCommentConfigHandler";
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
     QLog.d("AwesomeCommentConfigHandler", 2, "[onReceiveConfig] " + paramInt1 + " " + paramString);
-    Map localMap = pku.a(paramString);
+    Map localMap = AladdinParseUtils.a(paramString);
     Iterator localIterator = localMap.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -34,7 +35,7 @@ public class AwesomeCommentConfigHandler
         }
         for (;;)
         {
-          bmhv.a(roq.h, Integer.valueOf(paramInt2));
+          ReadInJoyHelper.a(AwesomeCommentInfo.h, Integer.valueOf(paramInt2));
           break;
           if (TextUtils.equals(str2, "2")) {
             paramInt2 = 2;
@@ -46,7 +47,7 @@ public class AwesomeCommentConfigHandler
       if (TextUtils.equals(str1, "awesome_comment_line_number")) {
         try
         {
-          bmhv.a(roq.i, Integer.valueOf(str2));
+          ReadInJoyHelper.a(AwesomeCommentInfo.i, Integer.valueOf(str2));
           Aladdin.getConfig(paramInt1).update(paramString);
         }
         catch (NumberFormatException localNumberFormatException)
@@ -59,11 +60,14 @@ public class AwesomeCommentConfigHandler
     return true;
   }
   
-  public void onWipeConfig(int paramInt) {}
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.AwesomeCommentConfigHandler
  * JD-Core Version:    0.7.0.1
  */

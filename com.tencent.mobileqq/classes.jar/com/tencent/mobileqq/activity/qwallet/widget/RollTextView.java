@@ -18,12 +18,12 @@ public class RollTextView
   protected Bitmap bitmap;
   private boolean isRool = true;
   protected boolean mAcitive = true;
-  private Context mContext;
-  private int mFactor;
+  private Context mContext = null;
+  private int mFactor = 0;
   private int mFrom;
   private RollTextView.RollViewHandler mHandler = new RollTextView.RollViewHandler(this);
   private int mInDuring = 200;
-  private RollTextView.OnRollTextChangeListener mListener;
+  private RollTextView.OnRollTextChangeListener mListener = null;
   private int mOutDuring = 200;
   private int mTextColor;
   private int mTextSize = 50;
@@ -85,10 +85,10 @@ public class RollTextView
     this.isRool = paramBoolean;
     if (paramBoolean)
     {
-      Animation localAnimation = AnimationUtils.loadAnimation(this.mContext, 2130772216);
+      Animation localAnimation = AnimationUtils.loadAnimation(this.mContext, 2130772231);
       localAnimation.setFillAfter(true);
       setInAnimation(localAnimation);
-      localAnimation = AnimationUtils.loadAnimation(this.mContext, 2130772217);
+      localAnimation = AnimationUtils.loadAnimation(this.mContext, 2130772232);
       localAnimation.setFillAfter(true);
       setOutAnimation(localAnimation);
       return;
@@ -149,7 +149,7 @@ public class RollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.RollTextView
  * JD-Core Version:    0.7.0.1
  */

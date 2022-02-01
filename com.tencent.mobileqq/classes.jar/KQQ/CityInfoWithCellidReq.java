@@ -13,11 +13,11 @@ public final class CityInfoWithCellidReq
   static GPSPoint cache_coords;
   static int cache_type;
   static ArrayList<Long> cache_vMacs;
-  public GSMCell cell;
-  public ClientInfo clientInfo;
-  public GPSPoint coords;
+  public GSMCell cell = null;
+  public ClientInfo clientInfo = null;
+  public GPSPoint coords = null;
   public int type = QUERYTYPE.GPS_CELL_V1.value();
-  public ArrayList<Long> vMacs;
+  public ArrayList<Long> vMacs = null;
   
   public CityInfoWithCellidReq() {}
   

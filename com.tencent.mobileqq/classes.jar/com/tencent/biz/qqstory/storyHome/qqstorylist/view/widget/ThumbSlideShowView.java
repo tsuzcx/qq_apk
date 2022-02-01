@@ -20,22 +20,22 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransformation;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
-import yei;
-import zdl;
 
 public class ThumbSlideShowView
   extends ImageSwitcher
   implements Handler.Callback, ViewSwitcher.ViewFactory
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long = 0L;
   private Handler jdField_a_of_type_AndroidOsHandler;
+  private RoundedTransformation jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation;
   private ArrayList<LocalMediaInfo> jdField_a_of_type_JavaUtilArrayList;
-  private yei jdField_a_of_type_Yei;
   private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
   private Handler b;
   
@@ -54,10 +54,10 @@ public class ThumbSlideShowView
   private Bitmap a(Context paramContext, LocalMediaInfo paramLocalMediaInfo, int paramInt, BitmapFactory.Options paramOptions)
   {
     Bitmap localBitmap = null;
-    zdl.b();
+    AssertUtils.b();
     if (paramContext == null)
     {
-      zdl.a("Need the context to get thumbnail!", new Object[0]);
+      AssertUtils.a("Need the context to get thumbnail!", new Object[0]);
       paramContext = localBitmap;
     }
     do
@@ -65,7 +65,7 @@ public class ThumbSlideShowView
       return paramContext;
       if ((paramInt != 1) && (paramInt != 3))
       {
-        zdl.a("kind is illegal", new Object[0]);
+        AssertUtils.a("kind is illegal", new Object[0]);
         return null;
       }
       long l = paramLocalMediaInfo._id;
@@ -78,8 +78,8 @@ public class ThumbSlideShowView
   private void b()
   {
     super.setFactory(this);
-    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2130772039);
-    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2130772041);
+    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2130772043);
+    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2130772045);
     localAnimation1.setDuration(800L);
     localAnimation2.setDuration(800L);
     super.setInAnimation(localAnimation1);
@@ -87,7 +87,7 @@ public class ThumbSlideShowView
     super.setAnimateFirstView(true);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.b = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_Yei = new yei(UIUtils.dip2pxWithoutFontScale(getContext(), 8.0F), 0, 1.418182F, null, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation = new RoundedTransformation(UIUtils.b(getContext(), 8.0F), 0, 1.418182F, null, null);
   }
   
   public void a()
@@ -170,7 +170,7 @@ public class ThumbSlideShowView
         }
         if (paramMessage != null)
         {
-          this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable[i] = new BitmapDrawable(getContext().getResources(), this.jdField_a_of_type_Yei.a(paramMessage));
+          this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable[i] = new BitmapDrawable(getContext().getResources(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation.a(paramMessage));
           paramMessage.recycle();
         }
       }
@@ -186,7 +186,7 @@ public class ThumbSlideShowView
     return localImageView;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     a();
@@ -194,7 +194,7 @@ public class ThumbSlideShowView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.ThumbSlideShowView
  * JD-Core Version:    0.7.0.1
  */

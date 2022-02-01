@@ -1,24 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.text.TextUtils;
-import asco;
-import ascp;
 import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.earlydownload.handler.ViolaBizLibHandler;
+import com.tencent.mobileqq.earlydownload.handler.ViolaLibHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import pvu;
-import pvw;
-import pwa;
 
-public final class ReadInjoyWebRenderSoLoader$1
+final class ReadInjoyWebRenderSoLoader$1
   implements Runnable
 {
-  public ReadInjoyWebRenderSoLoader$1(pvw parampvw) {}
+  ReadInjoyWebRenderSoLoader$1(ReadInJoyWebRenderEngine.LoadLibCallback paramLoadLibCallback) {}
   
   public void run()
   {
-    Object localObject = pwa.b();
+    Object localObject = ReadInjoyWebRenderSoLoader.b();
     int j;
     int i;
     label124:
@@ -33,8 +30,8 @@ public final class ReadInjoyWebRenderSoLoader$1
         }
         if (TextUtils.isEmpty(str))
         {
-          pwa.a();
-          pvu.a("viola.ReadInjoyWebRenderSoLoader", this.a);
+          ReadInjoyWebRenderSoLoader.a();
+          ReadInJoyWebRenderEngine.a("viola.ReadInjoyWebRenderSoLoader", this.a);
           return;
         }
         localObject = new JSONObject(str);
@@ -50,13 +47,13 @@ public final class ReadInjoyWebRenderSoLoader$1
       catch (Exception localException)
       {
         label183:
-        pwa.a();
-        pwa.b();
+        ReadInjoyWebRenderSoLoader.a();
+        ReadInjoyWebRenderSoLoader.b();
         return;
       }
-      if (j < ascp.a.length)
+      if (j < ViolaLibHandler.a.length)
       {
-        if ((!bool) || (!pwa.b(ascp.a[j]))) {
+        if ((!bool) || (!ReadInjoyWebRenderSoLoader.b(ViolaLibHandler.a[j]))) {
           break label296;
         }
         bool = true;
@@ -65,14 +62,14 @@ public final class ReadInjoyWebRenderSoLoader$1
       if (QLog.isColorLevel()) {
         QLog.e("viola.ReadInjoyWebRenderSoLoader", 2, "checkReinstallSoDel delJSC : " + bool);
       }
-      pwa.a();
+      ReadInjoyWebRenderSoLoader.a();
       if (i != 0)
       {
         i = 0;
         bool = true;
-        if (i < asco.a.length)
+        if (i < ViolaBizLibHandler.a.length)
         {
-          if ((!bool) || (!pwa.b(asco.a[i]))) {
+          if ((!bool) || (!ReadInjoyWebRenderSoLoader.b(ViolaBizLibHandler.a[i]))) {
             break label308;
           }
           bool = true;
@@ -82,7 +79,7 @@ public final class ReadInjoyWebRenderSoLoader$1
           QLog.e("viola.ReadInjoyWebRenderSoLoader", 2, "checkReinstallSoDel delBiz : " + bool);
         }
       }
-      pwa.b();
+      ReadInjoyWebRenderSoLoader.b();
       continue;
       label268:
       if (j == 0) {
@@ -118,7 +115,7 @@ public final class ReadInjoyWebRenderSoLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadInjoyWebRenderSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

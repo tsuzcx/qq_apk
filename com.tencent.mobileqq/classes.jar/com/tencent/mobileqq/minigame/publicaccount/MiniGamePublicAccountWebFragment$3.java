@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import akxc;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.qwallet.preload.IPreloadService.OnGetPathListener;
+import com.tencent.mobileqq.qwallet.preload.IPreloadService.PathResult;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniGamePublicAccountWebFragment$3
-  implements akxc
+  implements IPreloadService.OnGetPathListener
 {
   MiniGamePublicAccountWebFragment$3(MiniGamePublicAccountWebFragment paramMiniGamePublicAccountWebFragment) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onResult(int paramInt, IPreloadService.PathResult paramPathResult)
   {
     if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath))) {
       QLog.d("MiniGamePublicAccountWebFragment", 1, "loading apng download succ!");

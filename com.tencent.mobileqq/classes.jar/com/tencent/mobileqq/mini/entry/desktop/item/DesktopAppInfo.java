@@ -5,8 +5,8 @@ import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 public class DesktopAppInfo
   extends DesktopItemInfo
 {
-  public int fromBackup;
-  private boolean fromCache;
+  public int fromBackup = 0;
+  private boolean fromCache = false;
   public MiniAppInfo mMiniAppInfo;
   
   public DesktopAppInfo(int paramInt, MiniAppInfo paramMiniAppInfo)

@@ -14,46 +14,14 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import yvo;
-import yvp;
 
 @TargetApi(14)
 public class DisplayUtil
 {
-  public static final String TAG = "DisplayUtil";
-  public static int sWindowHeight;
-  public static int sWindowWidth;
+  public static int a;
+  public static int b;
   
-  public static int dip2px(Context paramContext, float paramFloat)
-  {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-  }
-  
-  public static void drawEditRect(Canvas paramCanvas, yvo paramyvo, yvp paramyvp, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramInt1 = getStickerButtonSize();
-    paramCanvas.concat(paramyvo.b(paramyvp));
-    int i = (int)(paramyvp.n * paramyvp.j * paramyvp.p) + paramyvp.e * 2;
-    int j = (int)(paramyvp.o * paramyvp.j * paramyvp.p) + paramyvp.e * 2;
-    paramCanvas.translate(-i * 1.0F / 2.0F, -j * 1.0F / 2.0F);
-    paramyvo = new Paint();
-    paramyvo.setStyle(Paint.Style.STROKE);
-    paramyvo.setColor(BaseApplicationImpl.getApplication().getResources().getColor(2131167376));
-    paramyvo.setStrokeWidth(dip2px(BaseApplicationImpl.getApplication().getBaseContext(), 1.0F));
-    int k = dip2px(BaseApplicationImpl.getApplication().getBaseContext(), 3.0F);
-    paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, i, j), k, k, paramyvo);
-    paramCanvas.translate(-paramInt1 / 2, -paramInt1 / 2);
-    paramCanvas.translate(i, j);
-    paramyvo = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt3);
-    paramyvo.setBounds(0, 0, paramInt1, paramInt1);
-    paramyvo.draw(paramCanvas);
-    paramCanvas.translate(0.0F, -j);
-    paramyvo = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt2);
-    paramyvo.setBounds(0, 0, paramInt1, paramInt1);
-    paramyvo.draw(paramCanvas);
-  }
-  
-  public static float getFitScaleValue(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static float a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramInt2 < paramInt4) {
       return 1.0F;
@@ -61,21 +29,15 @@ public class DisplayUtil
     return paramInt4 / paramInt2;
   }
   
-  public static int getStatusbarHeight(Context paramContext)
+  public static int a()
   {
-    int i = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    return paramContext.getResources().getDimensionPixelSize(i);
+    return b(BaseApplicationImpl.getApplication().getBaseContext(), 24.0F);
   }
   
-  public static int getStickerButtonSize()
+  public static int a(Context paramContext)
   {
-    return dip2px(BaseApplicationImpl.getApplication().getBaseContext(), 24.0F);
-  }
-  
-  public static int getWindowScreenHeight(Context paramContext)
-  {
-    if (sWindowHeight > 0) {
-      return sWindowHeight;
+    if (a > 0) {
+      return a;
     }
     paramContext = (WindowManager)paramContext.getSystemService("window");
     Point localPoint;
@@ -84,41 +46,65 @@ public class DisplayUtil
       localPoint = new Point();
       paramContext.getDefaultDisplay().getSize(localPoint);
     }
-    for (sWindowHeight = localPoint.y;; sWindowHeight = paramContext.getDefaultDisplay().getHeight()) {
-      return sWindowHeight;
+    for (a = localPoint.x;; a = paramContext.getDefaultDisplay().getWidth()) {
+      return a;
     }
   }
   
-  public static int getWindowScreenWidth(Context paramContext)
-  {
-    if (sWindowWidth > 0) {
-      return sWindowWidth;
-    }
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    Point localPoint;
-    if (Build.VERSION.SDK_INT >= 13)
-    {
-      localPoint = new Point();
-      paramContext.getDefaultDisplay().getSize(localPoint);
-    }
-    for (sWindowWidth = localPoint.x;; sWindowWidth = paramContext.getDefaultDisplay().getWidth()) {
-      return sWindowWidth;
-    }
-  }
-  
-  public static int px2dip(Context paramContext, float paramFloat)
+  public static int a(Context paramContext, float paramFloat)
   {
     return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
-  public static int px2sp(Context paramContext, float paramFloat)
+  public static void a(Canvas paramCanvas, GestureHelper paramGestureHelper, GestureHelper.ZoomItem paramZoomItem, int paramInt1, int paramInt2, int paramInt3)
   {
-    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().scaledDensity + 0.5F);
+    paramInt1 = a();
+    paramCanvas.concat(paramGestureHelper.b(paramZoomItem));
+    int i = (int)(paramZoomItem.n * paramZoomItem.j * paramZoomItem.p) + paramZoomItem.e * 2;
+    int j = (int)(paramZoomItem.o * paramZoomItem.j * paramZoomItem.p) + paramZoomItem.e * 2;
+    paramCanvas.translate(-i * 1.0F / 2.0F, -j * 1.0F / 2.0F);
+    paramGestureHelper = new Paint();
+    paramGestureHelper.setStyle(Paint.Style.STROKE);
+    paramGestureHelper.setColor(BaseApplicationImpl.getApplication().getResources().getColor(2131167388));
+    paramGestureHelper.setStrokeWidth(b(BaseApplicationImpl.getApplication().getBaseContext(), 1.0F));
+    int k = b(BaseApplicationImpl.getApplication().getBaseContext(), 3.0F);
+    paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, i, j), k, k, paramGestureHelper);
+    paramCanvas.translate(-paramInt1 / 2, -paramInt1 / 2);
+    paramCanvas.translate(i, j);
+    paramGestureHelper = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt3);
+    paramGestureHelper.setBounds(0, 0, paramInt1, paramInt1);
+    paramGestureHelper.draw(paramCanvas);
+    paramCanvas.translate(0.0F, -j);
+    paramGestureHelper = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt2);
+    paramGestureHelper.setBounds(0, 0, paramInt1, paramInt1);
+    paramGestureHelper.draw(paramCanvas);
   }
   
-  public static int sp2px(Context paramContext, float paramFloat)
+  public static int b(Context paramContext)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+    if (b > 0) {
+      return b;
+    }
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    Point localPoint;
+    if (Build.VERSION.SDK_INT >= 13)
+    {
+      localPoint = new Point();
+      paramContext.getDefaultDisplay().getSize(localPoint);
+    }
+    for (b = localPoint.y;; b = paramContext.getDefaultDisplay().getHeight()) {
+      return b;
+    }
+  }
+  
+  public static int b(Context paramContext, float paramFloat)
+  {
+    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+  }
+  
+  public static int c(Context paramContext, float paramFloat)
+  {
+    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().scaledDensity + 0.5F);
   }
 }
 

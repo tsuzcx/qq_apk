@@ -12,8 +12,8 @@ public final class stPostFeedCommentRsp
   implements Cloneable
 {
   static stMetaComment cache_comment;
-  public stMetaComment comment;
-  public int prompt;
+  public stMetaComment comment = null;
+  public int prompt = 0;
   
   static
   {

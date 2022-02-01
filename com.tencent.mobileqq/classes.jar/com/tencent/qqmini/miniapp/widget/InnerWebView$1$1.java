@@ -9,7 +9,7 @@ class InnerWebView$1$1
 {
   InnerWebView$1$1(InnerWebView.1 param1, ActionSheet paramActionSheet, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     this.val$actionSheet.dismiss();
     paramView = this.val$actionSheet.getContent(paramInt);
@@ -24,7 +24,7 @@ class InnerWebView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.InnerWebView.1.1
  * JD-Core Version:    0.7.0.1
  */

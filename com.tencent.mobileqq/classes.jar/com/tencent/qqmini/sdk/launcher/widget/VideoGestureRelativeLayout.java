@@ -16,7 +16,7 @@ public class VideoGestureRelativeLayout
   private boolean enablePageGesture = false;
   private boolean enablePlayGesture = false;
   private boolean enableProgressGesture = true;
-  private boolean hasFF_REW = false;
+  private boolean hasFFREW = false;
   private GestureDetector mGestureDetector;
   private VideoGestureRelativeLayout.VideoPlayerOnGestureListener mOnGestureListener;
   private int mScrollMode = 0;
@@ -65,7 +65,7 @@ public class VideoGestureRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.widget.VideoGestureRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

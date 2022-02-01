@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import bcrg;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 
 class MessageHandler$3
@@ -11,10 +11,10 @@ class MessageHandler$3
   
   public void run()
   {
-    if (this.this$0.app.getMsgCache().b(this.a))
+    if (this.this$0.a.getMsgCache().b(this.a))
     {
       if (QLog.isDevelopLevel()) {
-        QLog.d("MsgSend", 4, "delay notify: " + MessageHandler.e);
+        QLog.d("MsgSend", 4, "delay notify: " + MessageCache.a);
       }
       this.this$0.notifyUI(8022, true, new String[] { this.a.frienduin });
     }
@@ -22,7 +22,7 @@ class MessageHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.3
  * JD-Core Version:    0.7.0.1
  */

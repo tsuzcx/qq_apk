@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cg_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/aau" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+    <RelativeLayout android:id="@id/cga" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/aas" android:layout_below="@id/aau">
+        <dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView android:id="@id/aog" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/dum" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="21.0dip" android:layout_marginTop="41.0dip" android:src="@drawable/fl0" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/n_1" android:layout_width="41.0dip" android:layout_height="41.0dip" android:layout_marginLeft="24.0dip" android:layout_marginBottom="38.0dip" android:src="@drawable/fgx" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:layout_alignParentStart="true" />
+        <Button android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/mmq" android:background="@drawable/b7q" android:layout_width="168.0dip" android:layout_height="50.0dip" android:layout_marginBottom="34.0dip" android:text="@string/wnz" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/aas" android:background="@color/bp" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
+    <dov.com.qq.im.ae.view.AECMShowFaceScanView android:id="@id/mwt" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <dov.com.qq.im.ae.cmshow.AECMShowLoadingView android:id="@id/mqz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" />
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/al3" android:gravity="center" android:id="@id/kbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="114.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.troop.luckycharacter;
 
 import java.util.HashSet;
 
-public final class TroopLuckyCharacterUtil$1
+final class TroopLuckyCharacterUtil$1
   extends HashSet<Long>
 {
-  public TroopLuckyCharacterUtil$1()
+  TroopLuckyCharacterUtil$1()
   {
     add(Long.valueOf(1069L));
     add(Long.valueOf(1070L));

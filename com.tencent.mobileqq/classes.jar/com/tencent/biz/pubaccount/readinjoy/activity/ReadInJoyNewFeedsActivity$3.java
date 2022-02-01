@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import tlx;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
 
 class ReadInJoyNewFeedsActivity$3
   implements Runnable
@@ -9,12 +9,12 @@ class ReadInJoyNewFeedsActivity$3
   
   public void run()
   {
-    tlx.a().b(this.this$0.app, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
+    ReadInJoyGlobalReporter.a().b(this.this$0.app, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.3
  * JD-Core Version:    0.7.0.1
  */

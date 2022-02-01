@@ -2,14 +2,15 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import android.os.Bundle;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.parcelUtils.annotation.ParcelAnnotation.NotParcel;
-import com.tencent.mobileqq.data.BaseRecentUser;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
 import com.tencent.mobileqq.imcore.message.QQMessageFacadeStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.ContactUtilsProxy;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.ConversationFacadeProxy;
+import com.tencent.mobileqq.imcore.proxy.msg.ConversationFacadeProxy;
+import com.tencent.mobileqq.imcore.proxy.utils.ContactUtilsProxy;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
 
 public class RecentItemChatMsgBaseData
   extends RecentUserBaseData
@@ -18,50 +19,44 @@ public class RecentItemChatMsgBaseData
   @ParcelAnnotation.NotParcel
   protected IMCoreMessageStub mLastMessage;
   
-  public RecentItemChatMsgBaseData(BaseRecentUser paramBaseRecentUser)
+  public RecentItemChatMsgBaseData(RecentUser paramRecentUser)
   {
-    super(paramBaseRecentUser);
+    super(paramRecentUser);
   }
   
-  private void handleCommonUpdateInner(IMCoreAppRuntime paramIMCoreAppRuntime)
+  private void a(BaseQQAppInterface paramBaseQQAppInterface)
   {
     this.mLastMessage = null;
-    QQMessageFacadeStub localQQMessageFacadeStub = paramIMCoreAppRuntime.getMessageFacade();
-    if (localQQMessageFacadeStub != null) {
-      this.mLastMessage = localQQMessageFacadeStub.getLastMessage(this.mUser.uin, this.mUser.getType());
+    Object localObject = (IMessageFacade)paramBaseQQAppInterface.getRuntimeService(IMessageFacade.class, "");
+    if ((localObject == null) || (!(((IMessageFacade)localObject).getQQMessageFacadeStub() instanceof QQMessageFacadeStub))) {
+      return;
+    }
+    localObject = (QQMessageFacadeStub)((IMessageFacade)localObject).getQQMessageFacadeStub();
+    if (localObject != null) {
+      this.mLastMessage = ((QQMessageFacadeStub)localObject).getLastMessage(this.mUser.uin, this.mUser.getType());
     }
     if (this.mLastMessage != null) {}
-    for (this.mUnreadNum = RecentRoute.ConversationFacadeProxy.getUnreadCount(this.mLastMessage, paramIMCoreAppRuntime);; this.mUnreadNum = 0)
+    for (this.mUnreadNum = ConversationFacadeProxy.a(this.mLastMessage, paramBaseQQAppInterface);; this.mUnreadNum = 0)
     {
       this.msgSummary = getMsgSummaryTemp();
       return;
     }
   }
   
-  public final void buildMessageBody(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext, MsgSummary paramMsgSummary)
+  protected final void a()
   {
-    super.buildMessageBody(paramIMCoreMessageStub, paramInt, paramIMCoreAppRuntime, paramContext, paramMsgSummary);
+    if ((this.mLastMessage != null) && (this.mLastMessage.getTime() != 0L))
+    {
+      this.mDisplayTime = this.mLastMessage.getTime();
+      if (this.mDisplayTime == 0L) {
+        this.mDisplayTime = this.mUser.opTime;
+      }
+      return;
+    }
+    this.mDisplayTime = this.mUser.opTime;
   }
   
-  public final void dealDraft(IMCoreAppRuntime paramIMCoreAppRuntime, MsgSummary paramMsgSummary)
-  {
-    super.dealDraft(paramIMCoreAppRuntime, paramMsgSummary);
-  }
-  
-  public final void dealStatus(IMCoreAppRuntime paramIMCoreAppRuntime)
-  {
-    super.dealStatus(paramIMCoreAppRuntime);
-  }
-  
-  public void extraUpdate(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext, MsgSummary paramMsgSummary)
-  {
-    dealStatus(paramIMCoreAppRuntime);
-    dealDraft(paramIMCoreAppRuntime, paramMsgSummary);
-    updateMsgUnreadStateMenu();
-    super.extraUpdate(paramIMCoreAppRuntime, paramContext, paramMsgSummary);
-  }
-  
-  public boolean isEnableUnreadState()
+  public boolean a()
   {
     boolean bool2 = false;
     boolean bool1;
@@ -81,28 +76,38 @@ public class RecentItemChatMsgBaseData
     return bool1;
   }
   
-  protected final void processC2CDisplayTimeInner()
+  public final void buildMessageBody(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    if ((this.mLastMessage != null) && (this.mLastMessage.getTime() != 0L))
-    {
-      this.mDisplayTime = this.mLastMessage.getTime();
-      if (this.mDisplayTime == 0L) {
-        this.mDisplayTime = this.mUser.opTime;
-      }
-      return;
-    }
-    this.mDisplayTime = this.mUser.opTime;
+    super.buildMessageBody(paramIMCoreMessageStub, paramInt, paramBaseQQAppInterface, paramContext, paramMsgSummary);
   }
   
-  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  public final void dealDraft(BaseQQAppInterface paramBaseQQAppInterface, MsgSummary paramMsgSummary)
   {
-    super.update(paramIMCoreAppRuntime, paramContext);
-    handleCommonUpdateInner(paramIMCoreAppRuntime);
+    super.dealDraft(paramBaseQQAppInterface, paramMsgSummary);
+  }
+  
+  public final void dealStatus(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    super.dealStatus(paramBaseQQAppInterface);
+  }
+  
+  public void extraUpdate(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  {
+    dealStatus(paramBaseQQAppInterface);
+    dealDraft(paramBaseQQAppInterface, paramMsgSummary);
+    b();
+    super.extraUpdate(paramBaseQQAppInterface, paramContext, paramMsgSummary);
+  }
+  
+  public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
+  {
+    super.update(paramBaseQQAppInterface, paramContext);
+    a(paramBaseQQAppInterface);
     if (this.mUser.getType() == 0)
     {
-      processC2CDisplayTimeInner();
-      this.mTitleName = RecentRoute.ContactUtilsProxy.getBuddyName(paramIMCoreAppRuntime, this.mUser.uin, true);
-      buildMessageBody(this.mLastMessage, this.mUser.getType(), paramIMCoreAppRuntime, paramContext, this.msgSummary);
+      a();
+      this.mTitleName = ContactUtilsProxy.a(paramBaseQQAppInterface, this.mUser.uin, true);
+      buildMessageBody(this.mLastMessage, this.mUser.getType(), paramBaseQQAppInterface, paramContext, this.msgSummary);
     }
   }
 }

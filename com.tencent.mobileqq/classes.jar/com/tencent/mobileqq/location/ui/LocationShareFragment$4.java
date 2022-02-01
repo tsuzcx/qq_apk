@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.location.ui;
 
-import awiz;
-import awlt;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.net.LocationHandler;
 
 class LocationShareFragment$4
   implements Runnable
 {
-  LocationShareFragment$4(LocationShareFragment paramLocationShareFragment, BaseActivity paramBaseActivity) {}
+  LocationShareFragment$4(LocationShareFragment paramLocationShareFragment) {}
   
   public void run()
   {
-    awiz.a(this.a.app).c();
+    LocationHandler.a().c();
     if (LocationShareFragment.a(this.this$0) != null)
     {
       LocationShareFragment.a(this.this$0).onStop();

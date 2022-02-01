@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aooh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.message.MultiMsgProxy;
 
 class CheckMsgCount$1
   implements Runnable
@@ -11,7 +11,7 @@ class CheckMsgCount$1
   
   public void run()
   {
-    this.this$0.a.app.getMultiMessageProxy().c();
+    this.this$0.a.a.getMultiMessageProxy().a();
   }
 }
 

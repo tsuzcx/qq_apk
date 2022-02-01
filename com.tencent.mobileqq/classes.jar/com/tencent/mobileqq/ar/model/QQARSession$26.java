@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.ar.model;
 
-import apku;
-import apos;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
 
-public class QQARSession$26
+class QQARSession$26
   implements Runnable
 {
-  public QQARSession$26(apos paramapos, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject) {}
+  QQARSession$26(QQARSession paramQQARSession, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class QQARSession$26
       switch (this.jdField_a_of_type_Int)
       {
       default: 
-        apos.a(this.this$0).a(null, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
+        QQARSession.a(this.this$0).a(null, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
       }
     }
   }

@@ -3,6 +3,7 @@ package com.tencent.biz.richframework.network.request;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageReq;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
 import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
 
@@ -24,7 +25,15 @@ public class SubscribePersonalDetailRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CertifiedAccountRead.StGetMainPageRsp localStGetMainPageRsp = new CertifiedAccountRead.StGetMainPageRsp();
-    localStGetMainPageRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStGetMainPageRsp.mergeFrom(paramArrayOfByte);
+      return localStGetMainPageRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStGetMainPageRsp;
   }
   
@@ -40,7 +49,7 @@ public class SubscribePersonalDetailRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.SubscribePersonalDetailRequest
  * JD-Core Version:    0.7.0.1
  */

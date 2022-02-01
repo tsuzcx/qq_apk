@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.lyric.common;
 
-import awpw;
-
-public class TimerTaskManager$InternalTaskEntry$1
+class TimerTaskManager$InternalTaskEntry$1
   implements Runnable
 {
-  public TimerTaskManager$InternalTaskEntry$1(awpw paramawpw) {}
+  TimerTaskManager$InternalTaskEntry$1(TimerTaskManager.InternalTaskEntry paramInternalTaskEntry) {}
   
   public void run()
   {
-    if (awpw.a(this.this$0) != null) {
-      awpw.a(this.this$0).run();
+    if (TimerTaskManager.InternalTaskEntry.a(this.this$0) != null) {
+      TimerTaskManager.InternalTaskEntry.a(this.this$0).run();
     }
   }
 }

@@ -1,11 +1,5 @@
 package cooperation.qqreader.host.advertisement;
 
-import acaf;
-import acah;
-import acal;
-import achn;
-import acho;
-import achy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -15,15 +9,19 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
-import bmgm;
-import bmgn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtAdLoader;
+import com.tencent.gdtad.aditem.GdtAdLoader.Session;
 import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.aditem.GdtImageData;
 import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
 import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.statistics.GdtImpressionPolicy;
 import com.tencent.mobileqq.fragment.ReaderAdVideoCeilingFragment;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -33,6 +31,8 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import cooperation.qqreader.utils.Log;
+import cooperation.qqreader.utils.ReaderContextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Map;
@@ -51,17 +51,17 @@ public class ReaderGdtSdk
   {
     if (paramReportListener != null)
     {
-      paramView.setTag(2131381181, ReaderGdtSdk.ReportListener.a(paramReportListener).a());
-      paramView.setTag(2131381180, paramReportListener);
+      paramView.setTag(2131381649, ReaderGdtSdk.ReportListener.a(paramReportListener).a());
+      paramView.setTag(2131381648, paramReportListener);
       return;
     }
-    paramView.setTag(2131381181, null);
-    paramView.setTag(2131381180, null);
+    paramView.setTag(2131381649, null);
+    paramView.setTag(2131381648, null);
   }
   
   public static void cleanImpressionCountingMap()
   {
-    achy.a().a();
+    GdtImpressionPolicy.a().a();
   }
   
   public static void handleClick(@Nullable ContextWrapper paramContextWrapper, @NonNull ReaderAdWrapper paramReaderAdWrapper, ReaderGdtSdk.GdtAppReceiverWrapper paramGdtAppReceiverWrapper)
@@ -71,10 +71,10 @@ public class ReaderGdtSdk
   
   public static void handleClick(@Nullable ContextWrapper paramContextWrapper, @NonNull ReaderAdWrapper paramReaderAdWrapper, ReaderGdtSdk.GdtAppReceiverWrapper paramGdtAppReceiverWrapper, int paramInt)
   {
-    paramContextWrapper = bmgn.a(paramContextWrapper);
+    paramContextWrapper = ReaderContextUtils.a(paramContextWrapper);
     if (paramContextWrapper == null)
     {
-      bmgm.a("ReaderGdtSdkProvider", "handleClick: act == null");
+      Log.a("ReaderGdtSdkProvider", "handleClick: act == null");
       return;
     }
     GdtHandler.Params localParams = new GdtHandler.Params();
@@ -125,7 +125,7 @@ public class ReaderGdtSdk
   
   public static void jumpToMotiveVideoPage(ContextWrapper paramContextWrapper, ReaderAdWrapper paramReaderAdWrapper)
   {
-    Activity localActivity = bmgn.a(paramContextWrapper);
+    Activity localActivity = ReaderContextUtils.a(paramContextWrapper);
     GdtAd localGdtAd;
     if ((localActivity != null) && (paramReaderAdWrapper.a() != null))
     {
@@ -137,7 +137,7 @@ public class ReaderGdtSdk
       paramReaderAdWrapper.adId = localGdtAd.getAdvertiserId();
       paramReaderAdWrapper.vid = localGdtAd.getTencent_video_id();
       paramReaderAdWrapper.url = localGdtAd.getVideoUrl();
-      acho.d("ReaderGdtSdkProvider", "VideoUrl " + paramReaderAdWrapper.url);
+      GdtLog.d("ReaderGdtSdkProvider", "VideoUrl " + paramReaderAdWrapper.url);
       if ((!TextUtils.isEmpty(paramReaderAdWrapper.url)) && (paramReaderAdWrapper.url.startsWith("https://"))) {
         paramReaderAdWrapper.url = paramReaderAdWrapper.url.replaceFirst("https://", "http://");
       }
@@ -157,7 +157,7 @@ public class ReaderGdtSdk
       paramReaderAdWrapper.endcardLoadTime = localGdtAd.getEndcardLoadTime();
       paramReaderAdWrapper.bottomCardUrl = localGdtAd.getBottomCardUrl();
       paramReaderAdWrapper.bottomCardLoadTime = localGdtAd.getBottomCardLoadTime();
-      paramContextWrapper = achn.a(localGdtAd.info);
+      paramContextWrapper = GdtJsonPbUtil.a(localGdtAd.info);
       if (paramContextWrapper != null) {
         break label301;
       }
@@ -178,7 +178,7 @@ public class ReaderGdtSdk
   
   public static void reportImpression(View paramView)
   {
-    achy.a().a(paramView);
+    GdtImpressionPolicy.a().a(paramView);
   }
   
   public static void requestAdData(Context paramContext, Map<String, Integer> paramMap, String paramString1, String paramString2, ReaderGdtSdk.RequestListener paramRequestListener)
@@ -206,14 +206,14 @@ public class ReaderGdtSdk
     localQQAdGet.support_https.set(true, true);
     localQQAdGet.external_exp_info.exp_id.add(paramString2);
     localQQAdGet.external_exp_info.traffic_type.set(8);
-    paramMap = new acah();
+    paramMap = new GdtAdLoader.Session();
     paramMap.a = localQQAdGet;
-    new acaf(paramMap, new WeakReference(paramRequestListener)).a(new WeakReference(paramContext));
+    new GdtAdLoader(paramMap, new WeakReference(paramRequestListener)).a(new WeakReference(paramContext));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderGdtSdk
  * JD-Core Version:    0.7.0.1
  */

@@ -41,10 +41,14 @@ abstract interface FlutterActivityAndFragmentDelegate$Host
   public abstract Lifecycle getLifecycle();
   
   @NonNull
-  public abstract FlutterView.RenderMode getRenderMode();
+  public abstract RenderMode getRenderMode();
   
   @NonNull
-  public abstract FlutterView.TransparencyMode getTransparencyMode();
+  public abstract TransparencyMode getTransparencyMode();
+  
+  public abstract void onFlutterSurfaceViewCreated(@NonNull FlutterSurfaceView paramFlutterSurfaceView);
+  
+  public abstract void onFlutterTextureViewCreated(@NonNull FlutterTextureView paramFlutterTextureView);
   
   public abstract void onFlutterUiDisplayed();
   
@@ -62,10 +66,12 @@ abstract interface FlutterActivityAndFragmentDelegate$Host
   public abstract boolean shouldAttachEngineToActivity();
   
   public abstract boolean shouldDestroyEngineWithHost();
+  
+  public abstract boolean shouldRestoreAndSaveState();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterActivityAndFragmentDelegate.Host
  * JD-Core Version:    0.7.0.1
  */

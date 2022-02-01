@@ -24,7 +24,6 @@ public class FakeSdkReceiver
     try
     {
       MiniSDK.init(paramContext.getApplicationContext());
-      FakeSdkBrandUI.initOKHttpClient();
       ThreadManager.executeOnSubThread(new FakeSdkReceiver.1(this));
       localObject = AppLoaderFactory.g().getMiniAppEnv().getReceiverProxy();
       if (localObject != null) {

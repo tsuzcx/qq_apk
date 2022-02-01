@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bmoi;
+import cooperation.vip.reward.VasProfitableCallback;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 public final class VasAdvGdtImpl$showMotiveAd$browsingAdReceiver$1
   extends BroadcastReceiver
 {
-  public VasAdvGdtImpl$showMotiveAd$browsingAdReceiver$1(Activity paramActivity, bmoi parambmoi) {}
+  VasAdvGdtImpl$showMotiveAd$browsingAdReceiver$1(Activity paramActivity, VasProfitableCallback paramVasProfitableCallback) {}
   
   public void onReceive(@Nullable Context paramContext, @Nullable Intent paramIntent)
   {
@@ -26,7 +26,7 @@ public final class VasAdvGdtImpl$showMotiveAd$browsingAdReceiver$1
     }
     for (boolean bool = false;; bool = paramIntent.getBooleanExtra("profitable_flag", false))
     {
-      this.jdField_a_of_type_Bmoi.a(bool);
+      this.jdField_a_of_type_CooperationVipRewardVasProfitableCallback.a(bool);
       return;
       paramContext = null;
       break;
@@ -45,7 +45,7 @@ public final class VasAdvGdtImpl$showMotiveAd$browsingAdReceiver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.impl.VasAdvGdtImpl.showMotiveAd.browsingAdReceiver.1
  * JD-Core Version:    0.7.0.1
  */

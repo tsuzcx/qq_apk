@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acmw;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -25,7 +25,7 @@ public class RecentYanZhiItem
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    Object localObject1 = paramQQAppInterface.getMessageFacade().getLastMsgForMsgTab(this.mData.senderuin, this.mData.istroop);
+    Object localObject1 = paramQQAppInterface.getMessageFacade().b(this.mData.senderuin, this.mData.istroop);
     if ((localObject1 instanceof MessageForYanZhi)) {}
     for (localObject1 = (MessageForYanZhi)localObject1;; localObject1 = null)
     {
@@ -38,11 +38,11 @@ public class RecentYanZhiItem
         return;
       }
       ((MessageForYanZhi)localObject1).parse();
-      this.mTitleName = paramContext.getString(2131694135);
+      this.mTitleName = paramContext.getString(2131694337);
       Object localObject2 = paramQQAppInterface.getConversationFacade();
       if (localObject2 != null)
       {
-        this.mUnreadNum = ((acmw)localObject2).a(((MessageForYanZhi)localObject1).frienduin, ((MessageForYanZhi)localObject1).istroop);
+        this.mUnreadNum = ((ConversationFacade)localObject2).a(((MessageForYanZhi)localObject1).frienduin, ((MessageForYanZhi)localObject1).istroop);
         if (this.mUnreadNum <= 1) {}
       }
       for (this.mUnreadNum = 1;; this.mUnreadNum = 0)
@@ -50,9 +50,9 @@ public class RecentYanZhiItem
         this.mUnreadFlag = 1;
         this.mDisplayTime = ((MessageForYanZhi)localObject1).time;
         localObject2 = getMsgSummaryTemp();
-        ((MsgSummary)localObject2).strContent = (((MessageForYanZhi)localObject1).likeCount + paramContext.getString(2131694136));
+        ((MsgSummary)localObject2).strContent = (((MessageForYanZhi)localObject1).likeCount + paramContext.getString(2131694338));
         extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-        if (!AppSetting.c) {
+        if (!AppSetting.d) {
           break;
         }
         paramQQAppInterface = new StringBuilder(24);
@@ -69,7 +69,7 @@ public class RecentYanZhiItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentYanZhiItem
  * JD-Core Version:    0.7.0.1
  */

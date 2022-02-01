@@ -9,8 +9,8 @@ public final class UserData
 {
   public int iLat = 900000000;
   public int iLon = 900000000;
-  public long lNextMid;
-  public int lTime;
+  public long lNextMid = 0L;
+  public int lTime = 0;
   public String strProvince = "";
   
   public UserData() {}

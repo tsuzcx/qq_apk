@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class NearbyPeopleProfileActivity$2$1
@@ -11,7 +11,7 @@ class NearbyPeopleProfileActivity$2$1
   public void run()
   {
     this.a.this$0.b();
-    QQToast.a(this.a.this$0, 1, anvx.a(2131706712), 0).a();
+    QQToast.a(this.a.this$0, 1, HardCodeUtil.a(2131707251), 0).a();
   }
 }
 

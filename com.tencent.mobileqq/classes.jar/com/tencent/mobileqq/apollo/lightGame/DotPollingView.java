@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import mvk;
+import com.tencent.av.utils.UITools;
 
 public class DotPollingView
   extends View
@@ -26,7 +26,7 @@ public class DotPollingView
   private int e;
   private int f;
   private int g;
-  private int h;
+  private int h = 0;
   
   public DotPollingView(Context paramContext)
   {
@@ -53,9 +53,9 @@ public class DotPollingView
   {
     this.jdField_b_of_type_Int = -16777216;
     this.c = -16777216;
-    this.e = ((int)mvk.a(this.jdField_a_of_type_AndroidContentContext, 2.5F));
-    this.f = ((int)mvk.a(this.jdField_a_of_type_AndroidContentContext, 4.5F));
-    this.g = ((int)mvk.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));
+    this.e = ((int)UITools.a(this.jdField_a_of_type_AndroidContentContext, 2.5F));
+    this.f = ((int)UITools.a(this.jdField_a_of_type_AndroidContentContext, 4.5F));
+    this.g = ((int)UITools.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));
     this.d = 3;
     this.jdField_b_of_type_Float = 0.3F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
@@ -66,7 +66,7 @@ public class DotPollingView
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.jdField_a_of_type_Float += this.jdField_b_of_type_Float;
@@ -100,7 +100,7 @@ public class DotPollingView
     invalidate();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int m = View.MeasureSpec.getMode(paramInt1);
     int i = View.MeasureSpec.getSize(paramInt1);
@@ -142,7 +142,7 @@ public class DotPollingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.lightGame.DotPollingView
  * JD-Core Version:    0.7.0.1
  */

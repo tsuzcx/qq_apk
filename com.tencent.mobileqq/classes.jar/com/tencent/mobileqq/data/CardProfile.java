@@ -2,12 +2,11 @@ package com.tencent.mobileqq.data;
 
 import QQService.UserProfile;
 import QQService.VipBaseInfo;
-import bhid;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="lEctID,type")
 public class CardProfile
@@ -19,7 +18,7 @@ public class CardProfile
   public byte bAage;
   public long bAvailableCnt;
   public byte bCloseNeighborVote;
-  public byte bConstellation;
+  public byte bConstellation = 0;
   public byte bFavorite;
   public byte bFavoritedMe;
   public short bIsLastVoteCharged;
@@ -35,18 +34,17 @@ public class CardProfile
   public int lTime;
   public int nFaceNum;
   public short payVoteCount;
-  private transient RichStatus rs;
   public short shIntroType;
-  public VipBaseInfo stVipInfo;
+  public VipBaseInfo stVipInfo = null;
   public String strNick;
   @notColumn
   public String strTime = "";
   public int type = 1;
   public long uSource;
-  public byte[] vC2CSign;
+  public byte[] vC2CSign = null;
   public byte[] vFaceID;
   public byte[] vIntroContent;
-  public byte[] vRichSign;
+  public byte[] vRichSign = null;
   public short wFace;
   
   public static String tableName()
@@ -86,17 +84,9 @@ public class CardProfile
     localCardProfile.bIsLastVoteCharged = this.bIsLastVoteCharged;
     localCardProfile.vRichSign = this.vRichSign;
     if (this.lTime > 0) {
-      localCardProfile.strTime = bhid.a(this.lTime * 1000L, true, "yyyy-MM-dd");
+      localCardProfile.strTime = TimeFormatterUtils.a(this.lTime * 1000L, true, "yyyy-MM-dd");
     }
     return localCardProfile;
-  }
-  
-  public RichStatus getRichStatus()
-  {
-    if ((this.rs == null) && (this.vRichSign != null)) {
-      this.rs = RichStatus.parseStatus(this.vRichSign);
-    }
-    return this.rs;
   }
   
   public String getSimpleZanInfo()
@@ -145,7 +135,7 @@ public class CardProfile
     this.bAvailableCnt = paramUserProfile.bAvailableCnt;
     this.bTodayVotedCnt = paramUserProfile.bTodayVotedCnt;
     if (this.lTime > 0) {
-      this.strTime = bhid.a(this.lTime * 1000L, true, "yyyy-MM-dd");
+      this.strTime = TimeFormatterUtils.a(this.lTime * 1000L, true, "yyyy-MM-dd");
     }
     this.uSource = paramUserProfile.uSource;
     this.bCloseNeighborVote = ((byte)paramUserProfile.bCloseNeighborVote);
@@ -173,12 +163,12 @@ public class CardProfile
   public void updateTime(long paramLong)
   {
     this.lTime = ((int)paramLong);
-    this.strTime = bhid.a(1000L * paramLong, true, "yyyy-MM-dd");
+    this.strTime = TimeFormatterUtils.a(1000L * paramLong, true, "yyyy-MM-dd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.CardProfile
  * JD-Core Version:    0.7.0.1
  */

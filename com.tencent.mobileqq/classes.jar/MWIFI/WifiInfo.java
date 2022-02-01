@@ -9,7 +9,7 @@ public final class WifiInfo
 {
   public String bssid = "";
   public int hasPwd = 1;
-  public boolean haveLocalConf;
+  public boolean haveLocalConf = false;
   public int safeType = 0;
   public String ssid = "";
   

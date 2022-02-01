@@ -1,7 +1,7 @@
 package cooperation.ilive.manager;
 
-import blul;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.IlivePluginDownloadManager;
 
 class IlivePreDownloadManager$1
   implements Runnable
@@ -10,9 +10,9 @@ class IlivePreDownloadManager$1
   
   public void run()
   {
-    blul.a().b();
-    blul.a().a(this.this$0);
-    if (blul.a().b())
+    IlivePluginDownloadManager.a().b();
+    IlivePluginDownloadManager.a().a(this.this$0);
+    if (IlivePluginDownloadManager.a().b())
     {
       QLog.e("IlivePreDownloadManager", 1, "preloadPluginConfig plugin exist stop preload");
       return;
@@ -22,7 +22,7 @@ class IlivePreDownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.manager.IlivePreDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

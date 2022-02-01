@@ -1,8 +1,7 @@
 package common.config.service;
 
-import aave;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 class QzoneConfig$2$1
   implements Runnable
@@ -11,11 +10,11 @@ class QzoneConfig$2$1
   
   public void run()
   {
-    String str = aave.b();
+    String str = QzoneConfig.getLastUpdate();
     if (QLog.isColorLevel()) {
-      QLog.d("QzoneConfig", 2, "QZoneConfigService onChange from:" + str + " ,processName:" + BaseApplicationImpl.processName + " ,selfChange:" + this.val$selfChange);
+      QLog.d("QzoneConfig", 2, "QZoneConfigService onChange from:" + str + " ,processName:" + MobileQQ.processName + " ,selfChange:" + this.val$selfChange);
     }
-    if ((str != null) && (!str.equals(BaseApplicationImpl.processName)))
+    if ((str != null) && (!str.equals(MobileQQ.processName)))
     {
       QzoneConfig.getInstance().clearConfigs();
       QzoneConfig.getInstance().loadAllConfigs();
@@ -26,7 +25,7 @@ class QzoneConfig$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     common.config.service.QzoneConfig.2.1
  * JD-Core Version:    0.7.0.1
  */

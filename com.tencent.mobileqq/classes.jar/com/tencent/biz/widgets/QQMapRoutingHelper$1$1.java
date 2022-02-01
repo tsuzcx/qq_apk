@@ -1,23 +1,21 @@
 package com.tencent.biz.widgets;
 
-import aato;
-import aatp;
 import android.os.Bundle;
 import org.json.JSONObject;
 
-public class QQMapRoutingHelper$1$1
+class QQMapRoutingHelper$1$1
   implements Runnable
 {
-  public QQMapRoutingHelper$1$1(aatp paramaatp, JSONObject paramJSONObject, Bundle paramBundle) {}
+  QQMapRoutingHelper$1$1(QQMapRoutingHelper.1 param1, JSONObject paramJSONObject, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aatp.a.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle.getInt("routeMode"));
+    this.jdField_a_of_type_ComTencentBizWidgetsQQMapRoutingHelper$1.a.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle.getInt("routeMode"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.widgets.QQMapRoutingHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ public final class RespGetSameStateList
   static BusiRespHead cache_oHead;
   static byte[] cache_vCookie;
   static ArrayList<UserProfile> cache_vUserInfos;
-  public BusiRespHead oHead;
-  public byte[] vCookie;
-  public ArrayList<UserProfile> vUserInfos;
+  public BusiRespHead oHead = null;
+  public byte[] vCookie = null;
+  public ArrayList<UserProfile> vUserInfos = null;
   
   public RespGetSameStateList() {}
   

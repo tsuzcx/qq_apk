@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.ark.API;
 
-import apua;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class ArkAppYYBDownloadModule$2
+class ArkAppYYBDownloadModule$2
   implements Runnable
 {
-  public ArkAppYYBDownloadModule$2(apua paramapua, String paramString) {}
+  ArkAppYYBDownloadModule$2(ArkAppYYBDownloadModule paramArkAppYYBDownloadModule, String paramString) {}
   
   public void run()
   {

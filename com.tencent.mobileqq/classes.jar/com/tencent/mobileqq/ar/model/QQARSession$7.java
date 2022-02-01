@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.ar.model;
 
-import apjq;
-import apos;
+import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
 
-public class QQARSession$7
+class QQARSession$7
   implements Runnable
 {
-  public QQARSession$7(apos paramapos, apjq paramapjq, ArLBSActivity paramArLBSActivity) {}
+  QQARSession$7(QQARSession paramQQARSession, ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult, ArLBSActivity paramArLBSActivity) {}
   
   public void run()
   {
-    apos.a(this.this$0, this.jdField_a_of_type_Apjq, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+    QQARSession.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
   }
 }
 

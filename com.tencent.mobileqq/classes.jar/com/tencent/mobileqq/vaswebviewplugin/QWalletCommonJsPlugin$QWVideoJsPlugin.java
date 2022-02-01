@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import akxf;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,12 +16,13 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bifw;
-import bkys;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.qwallet.preload.IPreloadServiceProxy;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,21 +62,21 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
   static final String TAG = "QWalletCommonJsPlugin";
   final HashMap<String, HashMap<String, String>> mCallbacks = new HashMap();
   private Context mContext;
-  private long mDelayMillis;
+  private long mDelayMillis = 0L;
   WebViewPlugin mExtPlugin;
   private Handler mHandler;
   private String mVid;
   final HashMap<String, QWalletCommonJsPlugin.QWVideoJsPlugin.MyVideoView> mVideoViews = new HashMap();
-  private akxf preloadManager;
+  private IPreloadServiceProxy preloadManager;
   private ViewGroup videoLayout;
   private ViewGroup videoParent;
   
   public QWalletCommonJsPlugin$QWVideoJsPlugin(QWalletCommonJsPlugin paramQWalletCommonJsPlugin, Context paramContext, WebViewPlugin paramWebViewPlugin, AppInterface paramAppInterface)
   {
     this.mContext = paramContext;
-    this.mHandler = new bkys(this);
+    this.mHandler = new WeakReferenceHandler(this);
     this.mExtPlugin = paramWebViewPlugin;
-    this.preloadManager = akxf.a(paramAppInterface);
+    this.preloadManager = ((IPreloadServiceProxy)paramAppInterface.getRuntimeService(IPreloadServiceProxy.class, "multi"));
   }
   
   private void callbackJs(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -125,7 +125,7 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
   
   private String getInnerVideoPath(String paramString)
   {
-    return this.preloadManager.e(paramString);
+    return this.preloadManager.getVideoResPathByID(paramString);
   }
   
   private void js_download(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -135,7 +135,7 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
     if (paramJSONObject != null) {
       paramString2 = paramJSONObject.optString("videoConfig");
     }
-    this.preloadManager.a(paramString1, paramString2, new QWalletCommonJsPlugin.QWVideoJsPlugin.1(this, paramString1));
+    this.preloadManager.downloadModule(paramString1, paramString2, new QWalletCommonJsPlugin.QWVideoJsPlugin.1(this, paramString1));
   }
   
   private void js_init(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -748,15 +748,15 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
     }
   }
   
-  protected void onWebViewCreated(bifw parambifw)
+  protected void onWebViewCreated(WebViewPlugin.PluginRuntime paramPluginRuntime)
   {
-    this.videoParent = ((ViewGroup)parambifw.a().findViewById(2131381412));
+    this.videoParent = ((ViewGroup)paramPluginRuntime.a().findViewById(2131381873));
     if (this.videoParent != null)
     {
       this.videoLayout = new FrameLayout(this.mContext);
-      parambifw = new FrameLayout.LayoutParams(this.mContext.getResources().getDisplayMetrics().widthPixels, this.mContext.getResources().getDisplayMetrics().heightPixels);
-      parambifw.setMargins(0, 0, 0, 0);
-      this.videoParent.addView(this.videoLayout, parambifw);
+      paramPluginRuntime = new FrameLayout.LayoutParams(this.mContext.getResources().getDisplayMetrics().widthPixels, this.mContext.getResources().getDisplayMetrics().heightPixels);
+      paramPluginRuntime.setMargins(0, 0, 0, 0);
+      this.videoParent.addView(this.videoLayout, paramPluginRuntime);
       this.videoLayout.setBackgroundColor(0);
       this.videoLayout.setVisibility(4);
     }
@@ -801,7 +801,7 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.QWVideoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

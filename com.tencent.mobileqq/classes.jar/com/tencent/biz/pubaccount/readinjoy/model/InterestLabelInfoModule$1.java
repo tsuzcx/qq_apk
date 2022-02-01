@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
-import qfx;
 
-public class InterestLabelInfoModule$1
+class InterestLabelInfoModule$1
   implements Runnable
 {
-  public InterestLabelInfoModule$1(qfx paramqfx) {}
+  InterestLabelInfoModule$1(InterestLabelInfoModule paramInterestLabelInfoModule) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class InterestLabelInfoModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.1
  * JD-Core Version:    0.7.0.1
  */

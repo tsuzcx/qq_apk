@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import bfmd;
-import bfmf;
-import bfmz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
 
-public class TroopFileDownloadMgr$1
+class TroopFileDownloadMgr$1
   implements Runnable
 {
-  public TroopFileDownloadMgr$1(bfmz parambfmz) {}
+  TroopFileDownloadMgr$1(TroopFileDownloadMgr paramTroopFileDownloadMgr) {}
   
   public void run()
   {
     if (this.this$0.a) {
       return;
     }
-    QQAppInterface localQQAppInterface = bfmd.a();
+    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
     if (localQQAppInterface != null)
     {
       AppNetConnInfo.registerConnectionChangeReceiver(localQQAppInterface.getApplication(), this.this$0);
       this.this$0.a = true;
       return;
     }
-    bfmf.a("TroopFileDownloadMgr", bfmf.a, "init registerConnectionChangeReceiver fail");
+    TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "init registerConnectionChangeReceiver fail");
   }
 }
 

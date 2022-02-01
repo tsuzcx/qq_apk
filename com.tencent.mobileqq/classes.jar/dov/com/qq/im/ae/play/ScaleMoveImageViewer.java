@@ -17,11 +17,11 @@ import android.view.View.OnTouchListener;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bnqm;
-import bnrj;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.ttpic.videoshelf.ImagePositonManager;
 import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.util.PicChooseJumpUtil;
 import java.lang.reflect.Field;
 
 public class ScaleMoveImageViewer
@@ -35,18 +35,18 @@ public class ScaleMoveImageViewer
   private float currentX;
   private float currentY;
   private Matrix initMatrix = new Matrix();
-  private boolean isAnimationPlaying;
-  private boolean isImageSelected;
+  private boolean isAnimationPlaying = false;
+  private boolean isImageSelected = false;
   private ScaleMoveImageViewer.OnSaveScrollInfoListener listener;
   private Activity mActivity;
   private LayerDrawable mAnimationDrawable;
   private Drawable mAnimationSolidDrawable;
-  private float mBaseDistance;
+  private float mBaseDistance = 0.0F;
   private Matrix mCurrentMatrix = new Matrix();
-  private boolean mIsSelecting;
+  private boolean mIsSelecting = false;
   private Matrix mLastGestureMatrix = new Matrix();
   private Drawable mMaskCoverImage;
-  private boolean mMovable;
+  private boolean mMovable = false;
   private NodeItem mNodeItem = new NodeItem();
   private boolean mSigleDown = true;
   private ValueAnimator mValueAnimator;
@@ -71,9 +71,9 @@ public class ScaleMoveImageViewer
     this.mActivity = ((Activity)paramContext);
     setOnClickListener(this);
     clearSeclected();
-    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837676));
-    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368579);
-    this.mMaskCoverImage = getResources().getDrawable(2130837684);
+    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837680));
+    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368809);
+    this.mMaskCoverImage = getResources().getDrawable(2130837689);
   }
   
   private void drawAnimationIfNeed(Canvas paramCanvas)
@@ -171,12 +171,12 @@ public class ScaleMoveImageViewer
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       activeSelected();
-      bnqm.a().h();
-      bnrj.b(this.mActivity, this.mNodeItem.nodeID);
+      AEBaseDataReporter.a().h();
+      PicChooseJumpUtil.b(this.mActivity, this.mNodeItem.nodeID);
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.mNodeItem.once) {
       updateMatrix(getWidth(), getHeight());
@@ -449,7 +449,7 @@ public class ScaleMoveImageViewer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.ScaleMoveImageViewer
  * JD-Core Version:    0.7.0.1
  */

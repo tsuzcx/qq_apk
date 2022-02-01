@@ -9,14 +9,14 @@ public final class RecParam
 {
   static PayParam cache_payParam;
   public String buttonText = "";
-  public int canOpen;
-  public int h5Pay;
-  public int is_svip;
-  public int is_vip;
-  public int is_year;
-  public int openMode;
-  public int openMonth;
-  public PayParam payParam;
+  public int canOpen = 0;
+  public int h5Pay = 0;
+  public int is_svip = 0;
+  public int is_vip = 0;
+  public int is_year = 0;
+  public int openMode = 0;
+  public int openMonth = 0;
+  public PayParam payParam = null;
   public String type = "";
   
   public RecParam() {}

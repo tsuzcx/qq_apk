@@ -11,7 +11,7 @@ class SubscribePermissionSettingFragment$8$1
   {
     boolean bool = false;
     if (this.val$finalErrCode == -101510007L) {
-      QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693974), 0).a();
+      QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694176), 0).a();
     }
     for (;;)
     {
@@ -22,7 +22,7 @@ class SubscribePermissionSettingFragment$8$1
       }
       SubscribePermissionSettingFragment.access$100(localSubscribePermissionSettingFragment, i, bool, this.this$1.val$clickItem);
       return;
-      QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693992), 0).a();
+      QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694194), 0).a();
     }
   }
 }

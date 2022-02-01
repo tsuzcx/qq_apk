@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.nearby.widget;
 
 import android.os.Handler;
-import aynk;
-import aynl;
 import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
 
-public class NearbyActivityDialog$2$1
+class NearbyActivityDialog$2$1
   implements Runnable
 {
-  public NearbyActivityDialog$2$1(aynl paramaynl) {}
+  NearbyActivityDialog$2$1(NearbyActivityDialog.2 param2) {}
   
   public void run()
   {

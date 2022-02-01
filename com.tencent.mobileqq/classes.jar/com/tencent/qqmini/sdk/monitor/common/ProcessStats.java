@@ -564,7 +564,7 @@ public class ProcessStats
     //   5: bipush 110
     //   7: imul
     //   8: invokespecial 169	java/lang/StringBuilder:<init>	(I)V
-    //   11: astore_3
+    //   11: astore_2
     //   12: ldc 11
     //   14: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
     //   17: iconst_0
@@ -605,14 +605,14 @@ public class ProcessStats
     //   103: invokevirtual 222	java/lang/Process:getInputStream	()Ljava/io/InputStream;
     //   106: invokespecial 225	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   109: invokespecial 228	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   112: astore_2
-    //   113: aload_2
+    //   112: astore_1
+    //   113: aload_1
     //   114: invokevirtual 231	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   117: astore_1
-    //   118: aload_1
+    //   117: astore_3
+    //   118: aload_3
     //   119: ifnull +46 -> 165
-    //   122: aload_3
-    //   123: aload_1
+    //   122: aload_2
+    //   123: aload_3
     //   124: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: ldc 233
     //   129: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -656,7 +656,7 @@ public class ProcessStats
     //   211: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   214: invokestatic 195	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   217: pop
-    //   218: aload_3
+    //   218: aload_2
     //   219: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   222: astore_1
     //   223: iconst_0
@@ -704,18 +704,18 @@ public class ProcessStats
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	299	0	paramInt	int
-    //   117	7	1	str1	String
+    //   112	2	1	localBufferedReader	java.io.BufferedReader
     //   136	1	1	localException1	Exception
-    //   222	29	1	str2	String
+    //   222	29	1	str1	String
     //   252	26	1	localObject1	Object
     //   283	1	1	localException2	Exception
     //   287	1	1	localException3	Exception
-    //   112	125	2	localObject2	Object
+    //   11	226	2	localObject2	Object
     //   249	1	2	localException4	Exception
     //   279	1	2	localException5	Exception
     //   291	1	2	localException6	Exception
     //   295	1	2	localException7	Exception
-    //   11	208	3	localStringBuilder	StringBuilder
+    //   117	7	3	str2	String
     // Exception table:
     //   from	to	target	type
     //   0	113	136	java/lang/Exception
@@ -970,7 +970,7 @@ public class ProcessStats
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.common.ProcessStats
  * JD-Core Version:    0.7.0.1
  */

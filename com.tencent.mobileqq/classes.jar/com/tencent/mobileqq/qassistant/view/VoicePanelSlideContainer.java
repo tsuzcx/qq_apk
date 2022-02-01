@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import android.view.ViewConfiguration;
 import android.widget.RelativeLayout;
-import baln;
-import balp;
-import bamy;
-import bamz;
+import com.tencent.mobileqq.qassistant.listener.IPanelDragListener;
+import com.tencent.mobileqq.qassistant.listener.IPanelSlideListener;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class VoicePanelSlideContainer
@@ -21,9 +19,9 @@ public class VoicePanelSlideContainer
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 20;
   private Context jdField_a_of_type_AndroidContentContext;
-  private baln jdField_a_of_type_Baln;
-  private balp jdField_a_of_type_Balp;
-  private boolean jdField_a_of_type_Boolean;
+  private IPanelDragListener jdField_a_of_type_ComTencentMobileqqQassistantListenerIPanelDragListener;
+  private IPanelSlideListener jdField_a_of_type_ComTencentMobileqqQassistantListenerIPanelSlideListener;
+  private boolean jdField_a_of_type_Boolean = false;
   private int b;
   private int c;
   
@@ -55,7 +53,7 @@ public class VoicePanelSlideContainer
     {
       localObjectAnimator = ObjectAnimator.ofFloat(this, "y", new float[] { i, this.c });
       localObjectAnimator.setDuration(250L);
-      localObjectAnimator.addListener(new bamy(this));
+      localObjectAnimator.addListener(new VoicePanelSlideContainer.1(this));
       localObjectAnimator.start();
     }
     do
@@ -65,7 +63,7 @@ public class VoicePanelSlideContainer
       {
         localObjectAnimator = ObjectAnimator.ofFloat(this, "y", new float[] { i, this.b });
         localObjectAnimator.setDuration(250L);
-        localObjectAnimator.addListener(new bamz(this));
+        localObjectAnimator.addListener(new VoicePanelSlideContainer.2(this));
         localObjectAnimator.start();
         return;
       }
@@ -86,15 +84,15 @@ public class VoicePanelSlideContainer
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Baln != null) {
-      this.jdField_a_of_type_Baln.b(paramBoolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIPanelDragListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIPanelDragListener.b(paramBoolean);
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Balp != null) {
-      this.jdField_a_of_type_Balp.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIPanelSlideListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIPanelSlideListener.b();
     }
   }
   
@@ -163,14 +161,14 @@ public class VoicePanelSlideContainer
     }
   }
   
-  public void setPanelDragListener(baln parambaln)
+  public void setPanelDragListener(IPanelDragListener paramIPanelDragListener)
   {
-    this.jdField_a_of_type_Baln = parambaln;
+    this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIPanelDragListener = paramIPanelDragListener;
   }
   
-  public void setPanelSlideListener(balp parambalp)
+  public void setPanelSlideListener(IPanelSlideListener paramIPanelSlideListener)
   {
-    this.jdField_a_of_type_Balp = parambalp;
+    this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIPanelSlideListener = paramIPanelSlideListener;
   }
 }
 

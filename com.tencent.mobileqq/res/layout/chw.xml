@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/npp" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <LinearLayout android:orientation="vertical" android:background="@drawable/bln" android:layout_width="296.0dip" android:layout_height="364.0dip">
-            <ImageView android:id="@id/n1y" android:background="@drawable/fwl" android:layout_width="296.0dip" android:layout_height="170.0dip" />
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="30.0dip" android:paddingTop="19.0dip" android:paddingRight="30.0dip" android:paddingBottom="25.0dip" android:layout_width="296.0dip" android:layout_height="194.0dip">
-                <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="#ff03081a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xsg" />
-                <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginTop="12.0dip" android:text="@string/xsf" android:layout_weight="1.0" />
-                <Button android:textSize="17.0dip" android:textColor="#ffffffff" android:id="@id/mkt" android:background="@drawable/blm" android:layout_width="236.0dip" android:layout_height="41.0dip" android:text="@string/xse" />
-            </LinearLayout>
-        </LinearLayout>
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/dum" android:background="@drawable/fw3" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" />
-    </LinearLayout>
+    <com.tencent.mobileqq.widget.RoundedCornerImageViewNoPadding android:id="@id/npo" android:layout_width="125.0dip" android:layout_height="125.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
 </RelativeLayout>

@@ -1,6 +1,5 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acdv;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.ResultReceiver;
@@ -15,10 +14,10 @@ final class GdtMotiveVideoFragment$1
   {
     try
     {
-      acdv localacdv = new acdv(this.jdField_a_of_type_AndroidAppActivity);
-      localacdv.a(this.jdField_a_of_type_AndroidContentIntent);
-      localacdv.a(this.jdField_a_of_type_AndroidOsResultReceiver);
-      localacdv.show();
+      GdtMotiveVideoDialog localGdtMotiveVideoDialog = new GdtMotiveVideoDialog(this.jdField_a_of_type_AndroidAppActivity);
+      localGdtMotiveVideoDialog.a(this.jdField_a_of_type_AndroidContentIntent);
+      localGdtMotiveVideoDialog.a(this.jdField_a_of_type_AndroidOsResultReceiver);
+      localGdtMotiveVideoDialog.show();
       return;
     }
     catch (Exception localException)
@@ -30,7 +29,7 @@ final class GdtMotiveVideoFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -125,6 +125,12 @@ public class InnerShareData$Builder
     }
   }
   
+  public Builder setSubScene(int paramInt)
+  {
+    this.shareData.subScene = paramInt;
+    return this;
+  }
+  
   public Builder setSummary(String paramString)
   {
     this.shareData.summary = paramString;
@@ -169,7 +175,7 @@ public class InnerShareData$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.InnerShareData.Builder
  * JD-Core Version:    0.7.0.1
  */

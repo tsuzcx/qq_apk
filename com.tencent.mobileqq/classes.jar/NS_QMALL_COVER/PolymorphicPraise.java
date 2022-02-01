@@ -10,10 +10,10 @@ public final class PolymorphicPraise
 {
   static EmotionPraise cache_stOperationPraise = new EmotionPraise();
   static ArrayList<EmotionPraise> cache_vecEmotionPraise = new ArrayList();
-  public int iGuideToUse;
+  public int iGuideToUse = 0;
   public int iItemId = -1;
-  public EmotionPraise stOperationPraise;
-  public ArrayList<EmotionPraise> vecEmotionPraise;
+  public EmotionPraise stOperationPraise = null;
+  public ArrayList<EmotionPraise> vecEmotionPraise = null;
   
   static
   {

@@ -20,7 +20,7 @@ public final class QqAdGetProtos$QQAdGet$UserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     common.QqAdGetProtos.QQAdGet.UserInfo
  * JD-Core Version:    0.7.0.1
  */

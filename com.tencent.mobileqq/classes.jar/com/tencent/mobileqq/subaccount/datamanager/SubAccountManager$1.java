@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.subaccount.datamanager;
 
-import bdxs;
 import com.tencent.mobileqq.data.SubAccountInfo;
 
-public class SubAccountManager$1
+class SubAccountManager$1
   implements Runnable
 {
-  public SubAccountManager$1(bdxs parambdxs, SubAccountInfo paramSubAccountInfo) {}
+  SubAccountManager$1(SubAccountManager paramSubAccountManager, SubAccountInfo paramSubAccountInfo) {}
   
   public void run()
   {

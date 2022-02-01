@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class CKV_LikeInfo
   extends JceStruct
 {
-  public long iTotal;
+  public long iTotal = 0L;
   
   public CKV_LikeInfo() {}
   

@@ -3,15 +3,13 @@ package com.tencent.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import blfw;
-import blfx;
 import com.tencent.image.URLImageView;
 
 public class URLThemeImageView
   extends URLImageView
-  implements blfx
+  implements ThemeImageWrapper.DrawInterface
 {
-  public blfw a;
+  public ThemeImageWrapper themeImageWrapper;
   
   public URLThemeImageView(Context paramContext)
   {
@@ -26,24 +24,19 @@ public class URLThemeImageView
   public URLThemeImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    b();
+    init();
   }
   
-  public void a(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-  }
-  
-  protected void b()
+  protected void init()
   {
     setSupportMaskView(true);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    if (this.themeImageWrapper != null)
     {
-      this.a.a(paramCanvas, this);
+      this.themeImageWrapper.onDraw(paramCanvas, this);
       return;
     }
     super.onDraw(paramCanvas);
@@ -53,20 +46,25 @@ public class URLThemeImageView
   {
     if (paramBoolean)
     {
-      if (this.a == null) {
-        this.a = new blfw();
+      if (this.themeImageWrapper == null) {
+        this.themeImageWrapper = new ThemeImageWrapper();
       }
-      this.a.a(true);
+      this.themeImageWrapper.setSupportMaskView(true);
     }
-    while (this.a == null) {
+    while (this.themeImageWrapper == null) {
       return;
     }
-    this.a.a(false);
+    this.themeImageWrapper.setSupportMaskView(false);
+  }
+  
+  public void superOnDraw(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.URLThemeImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,19 @@
 package dov.com.qq.im.ae;
 
 import android.os.Process;
-import bmxa;
-import bnrh;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.util.concurrent.CountDownLatch;
 
-public class AEPituCameraUnit$8
+class AEPituCameraUnit$8
   implements Runnable
 {
-  public AEPituCameraUnit$8(bmxa parambmxa) {}
+  AEPituCameraUnit$8(AEPituCameraUnit paramAEPituCameraUnit) {}
   
   public void run()
   {
     try
     {
-      bnrh.b(this.this$0.a, "[AEPituCameraUnit] unit init ENTER");
+      AEQLog.b(this.this$0.b, "[AEPituCameraUnit] unit init ENTER");
       Process.setThreadPriority(-2);
     }
     catch (Exception localException)
@@ -23,24 +22,24 @@ public class AEPituCameraUnit$8
       {
         try
         {
-          bnrh.b(this.this$0.a, "[AEPituCameraUnit] unit init BEGIN");
-          bmxa.b(this.this$0);
-          bnrh.b(this.this$0.a, "[AEPituCameraUnit] initAEKitReport-end");
+          AEQLog.b(this.this$0.b, "[AEPituCameraUnit] unit init BEGIN");
+          AEPituCameraUnit.b(this.this$0);
+          AEQLog.b(this.this$0.b, "[AEPituCameraUnit] initAEKitReport-end");
           return;
         }
         finally
         {
-          bmxa.a(this.this$0).countDown();
+          AEPituCameraUnit.a(this.this$0).countDown();
         }
         localException = localException;
-        bnrh.d(this.this$0.a, "[UnitAsyncInit] setThreadPriority exception: " + localException.getMessage());
+        AEQLog.d(this.this$0.b, "[UnitAsyncInit] setThreadPriority exception: " + localException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.8
  * JD-Core Version:    0.7.0.1
  */

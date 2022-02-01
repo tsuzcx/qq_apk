@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import Override;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -18,13 +17,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import anvx;
-import biwn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -64,35 +64,35 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   private String mCurrentUin;
   private ViewGroup mDownloadRoot;
   private ProgressBar mDownloadingBar;
-  protected boolean mDownloadingSo;
-  private boolean mEnterScreenRecord;
+  protected boolean mDownloadingSo = false;
+  private boolean mEnterScreenRecord = false;
   private String mFeedsType;
   private String mGamePackgeName;
   protected Handler mHandler = new QZoneLiveVideoBaseDownLoadActivty.1(this);
   private long mHostUin;
-  protected boolean mInstalling;
+  protected boolean mInstalling = false;
   private String mInvited_uin;
-  protected volatile boolean mIsCanceled;
-  protected boolean mIsDownloadSoTimeout;
+  protected volatile boolean mIsCanceled = false;
+  protected boolean mIsDownloadSoTimeout = false;
   private boolean mIsFromGame;
-  protected boolean mIsInstallTimeout;
+  protected boolean mIsInstallTimeout = false;
   private AtomicBoolean mIsUIInited = new AtomicBoolean(false);
   private boolean mIsVertical;
   protected long mLaunchTime;
   private ImageView mLiveVideoImgIv;
   protected int mMode;
   private String mRealFrom;
-  protected BroadcastReceiver mReceiver;
+  protected BroadcastReceiver mReceiver = null;
   private String mRepostUin;
   private String mRoomId;
   private String mShuoId;
-  private boolean mStopLive;
+  private boolean mStopLive = false;
   private TextView mTxtPluginSize;
   private URLDrawable mURLDrawable;
   private String mVideoPlayScene;
   private String mVideoSourceType;
   private View mWaitingView;
-  private int progress;
+  private int progress = 0;
   protected int retryDownloadNum;
   protected int retryDownloadSoNum;
   
@@ -110,7 +110,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if (localIntent == null)
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "intent is null");
-      Toast.makeText(getApplicationContext(), anvx.a(2131711405), 1).show();
+      Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131711920), 1).show();
       QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "6", null);
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", 0.0D, 3, "0");
       finish();
@@ -121,16 +121,16 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if ((3 != this.mMode) && (1 != this.mMode))
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "mode invalid, mMode=" + this.mMode);
-      Toast.makeText(getApplicationContext(), anvx.a(2131711407) + this.mMode, 1).show();
+      Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131711922) + this.mMode, 1).show();
       QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "6", null);
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", (System.currentTimeMillis() - this.mLaunchTime) / 1000.0D, 3, this.mMode + "");
       finish();
       return false;
     }
-    if (!NetworkUtil.isNetworkAvailable(getApplicationContext()))
+    if (!NetworkUtil.g(getApplicationContext()))
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onCreate, no network available");
-      QQToast.a(this, anvx.a(2131711411), 0).a();
+      QQToast.a(this, HardCodeUtil.a(2131711926), 0).a();
       if (this.mMode == 1) {
         QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "2", null);
       }
@@ -141,7 +141,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     AppRuntime localAppRuntime = getAppRuntime();
     if ((localAppRuntime != null) && (((QQAppInterface)localAppRuntime).isVideoChatting()))
     {
-      QQToast.a(this, anvx.a(2131711415), 0).a();
+      QQToast.a(this, HardCodeUtil.a(2131711930), 0).a();
       if (this.mMode == 1) {
         QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "7", null);
       }
@@ -257,11 +257,11 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   {
     this.mWaitingView.setVisibility(8);
     this.mDownloadRoot.setVisibility(0);
-    this.mTxtPluginSize = ((TextView)findViewById(2131372970));
-    this.mDownloadingBar = ((ProgressBar)findViewById(2131365849));
-    this.mBtnAction = ((TextView)findViewById(2131363813));
-    this.mBtnClose = ((ImageView)findViewById(2131363866));
-    this.mLiveVideoImgIv = ((ImageView)findViewById(2131375624));
+    this.mTxtPluginSize = ((TextView)findViewById(2131373296));
+    this.mDownloadingBar = ((ProgressBar)findViewById(2131366016));
+    this.mBtnAction = ((TextView)findViewById(2131363912));
+    this.mBtnClose = ((ImageView)findViewById(2131363963));
+    this.mLiveVideoImgIv = ((ImageView)findViewById(2131376001));
     Boolean localBoolean = Boolean.valueOf(false);
     if (getIntent() != null) {
       localBoolean = Boolean.valueOf(getIntent().getBooleanExtra("isEcLive", false));
@@ -273,7 +273,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       if (paramInt != 0) {
         break label239;
       }
-      this.mBtnAction.setText(anvx.a(2131711402));
+      this.mBtnAction.setText(HardCodeUtil.a(2131711917));
     }
     for (;;)
     {
@@ -298,7 +298,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       }
       break;
       label239:
-      this.mBtnAction.setText(anvx.a(2131711409));
+      this.mBtnAction.setText(HardCodeUtil.a(2131711924));
     }
   }
   
@@ -344,7 +344,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       if (!TextUtils.isEmpty(str1)) {
         break;
       }
-      QQToast.a(this, anvx.a(2131711395), 0).a();
+      QQToast.a(this, HardCodeUtil.a(2131711910), 0).a();
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", (System.currentTimeMillis() - this.mLaunchTime) / 1000.0D, 6, this.mMode + "");
       doFinish();
       return;
@@ -381,7 +381,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       if (localBoolean.booleanValue())
       {
         if (!versionEnable()) {
-          break label704;
+          break label715;
         }
         localIntent.putExtra("ec_uin", getIntent().getStringExtra("ec_uin"));
         localIntent.putExtra("ec_room_type", getIntent().getIntExtra("ec_room_type", 0));
@@ -399,10 +399,10 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     for (str2 = "com.qzone.adapter.livevideo.ECLiveVideoActivity";; str2 = str3)
     {
       QzoneLiveVideoPluginProxyActivity.launchPluginActivityForResult(this, str1, localIntent, -1, str2);
-      biwn.a(BaseApplicationImpl.getContext(), false, 5);
+      ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplicationImpl.getContext(), false, 5);
       return;
-      label704:
-      QQToast.a(this, anvx.a(2131711393), 0).a();
+      label715:
+      QQToast.a(this, HardCodeUtil.a(2131711908), 0).a();
       doFinish();
     }
   }
@@ -430,9 +430,9 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if (this.mSystemBarComp != null) {
       this.mSystemBarComp.mDrawStatus = false;
     }
-    setContentView(2131562389);
-    this.mDownloadRoot = ((ViewGroup)findViewById(2131365860));
-    this.mWaitingView = findViewById(2131381329);
+    setContentView(2131562527);
+    this.mDownloadRoot = ((ViewGroup)findViewById(2131366027));
+    this.mWaitingView = findViewById(2131381792);
   }
   
   public void onDestroy()
@@ -548,12 +548,12 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     }
     if (paramBoolean1)
     {
-      this.mBtnAction.setText(anvx.a(2131711401));
+      this.mBtnAction.setText(HardCodeUtil.a(2131711916));
       return;
     }
     if (paramBoolean2)
     {
-      this.mBtnAction.setText(anvx.a(2131711412));
+      this.mBtnAction.setText(HardCodeUtil.a(2131711927));
       return;
     }
     this.progress %= 3;
@@ -564,11 +564,11 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     {
       this.progress += 1;
       return;
-      this.mBtnAction.setText(anvx.a(2131711394));
+      this.mBtnAction.setText(HardCodeUtil.a(2131711909));
       continue;
-      this.mBtnAction.setText(anvx.a(2131711403));
+      this.mBtnAction.setText(HardCodeUtil.a(2131711918));
       continue;
-      this.mBtnAction.setText(anvx.a(2131711406));
+      this.mBtnAction.setText(HardCodeUtil.a(2131711921));
     }
   }
   
@@ -579,7 +579,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty
  * JD-Core Version:    0.7.0.1
  */

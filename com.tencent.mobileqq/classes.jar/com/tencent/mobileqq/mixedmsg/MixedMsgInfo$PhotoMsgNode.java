@@ -11,7 +11,7 @@ public class MixedMsgInfo$PhotoMsgNode
     this.photoItem = paramPhotoItem;
   }
   
-  public MixedMsgInfo.PhotoItem getPhotoItem()
+  MixedMsgInfo.PhotoItem getPhotoItem()
   {
     return this.photoItem;
   }

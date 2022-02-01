@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bhmx;
+import com.tencent.mobileqq.vas.CustomOnlineStatusManager;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ class PermisionPrivacyActivity$4
   
   public void run()
   {
-    this.a.setRightText(bhmx.a().a());
+    this.a.setRightText(CustomOnlineStatusManager.a().a());
     if (QLog.isDevelopLevel()) {
       QLog.d("CustomOnlineStatusManager", 4, "permision activity -> updateCustomOnlineStatus text");
     }
@@ -19,7 +19,7 @@ class PermisionPrivacyActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.4
  * JD-Core Version:    0.7.0.1
  */

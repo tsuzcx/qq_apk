@@ -18,11 +18,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bgtv;
 
 public class PhantomPicView
   extends FrameLayout
-  implements bgtv
+  implements IPicView
 {
   protected Handler a;
   protected FrameLayout a;
@@ -71,7 +70,7 @@ public class PhantomPicView
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  public void c()
+  protected void c()
   {
     if (this.jdField_a_of_type_Boolean) {
       return;

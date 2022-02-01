@@ -43,17 +43,17 @@ public class HorizontalLabelLayout
     return new FrameLayout.LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return paramLayoutParams instanceof FrameLayout.LayoutParams;
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return new FrameLayout.LayoutParams(paramLayoutParams);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i6 = getChildCount();
     int i7 = paramInt3 - paramInt1 - getPaddingLeft() - getPaddingRight();
@@ -301,7 +301,7 @@ public class HorizontalLabelLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i8 = getChildCount();
     int i9 = View.MeasureSpec.getSize(paramInt1) - getPaddingLeft() - getPaddingRight();
@@ -421,7 +421,7 @@ public class HorizontalLabelLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.HorizontalLabelLayout
  * JD-Core Version:    0.7.0.1
  */

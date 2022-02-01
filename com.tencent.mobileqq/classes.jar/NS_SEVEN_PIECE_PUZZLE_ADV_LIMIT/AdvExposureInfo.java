@@ -8,7 +8,7 @@ public final class AdvExposureInfo
   extends JceStruct
 {
   static int cache_iAuditResult = 0;
-  public int iAuditResult;
+  public int iAuditResult = 0;
   public String strAdvId = "";
   public String strName = "";
   

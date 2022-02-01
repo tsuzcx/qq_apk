@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aeiz;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.QFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class NewAuthDevUgFragment$1$1
+class NewAuthDevUgFragment$1$1
   implements Runnable
 {
-  public NewAuthDevUgFragment$1$1(aeiz paramaeiz) {}
+  NewAuthDevUgFragment$1$1(NewAuthDevUgFragment.1 param1) {}
   
   public void run()
   {
@@ -21,7 +20,7 @@ public class NewAuthDevUgFragment$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NewAuthDevUgFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ public final class mobile_group_count_req
   implements Cloneable
 {
   static Map<String, String> cache_extendinfo;
-  public Map<String, String> extendinfo;
-  public long uGroupid;
+  public Map<String, String> extendinfo = null;
+  public long uGroupid = 0L;
   
   static
   {

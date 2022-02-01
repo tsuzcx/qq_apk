@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.facetoface;
 
 import android.text.TextUtils;
-import anxi;
-import anzl;
-import aswv;
+import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.app.NearFieldTroopHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Face2FaceAddFriendActivity$1
   implements Runnable
 {
-  Face2FaceAddFriendActivity$1(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, anzl paramanzl) {}
+  Face2FaceAddFriendActivity$1(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, NearFieldTroopHandler paramNearFieldTroopHandler) {}
   
   public void run()
   {
@@ -48,7 +47,7 @@ class Face2FaceAddFriendActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.1
  * JD-Core Version:    0.7.0.1
  */

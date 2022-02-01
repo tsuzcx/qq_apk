@@ -49,7 +49,7 @@ public class CodecParam
   public static int mCodecId;
   public static int mDstAudioEncBitrate;
   public static int mDstVideoEncBitrate;
-  private static int mEnableBaseLineMp4;
+  private static int mEnableBaseLineMp4 = 0;
   public static int mEnableTimestampFix;
   public static int mEnableTotalTimeAdjust;
   public static int mGopSize;
@@ -68,6 +68,7 @@ public class CodecParam
   
   static
   {
+    mCodecId = 0;
     RECORD_MAX_TIME = 8000;
     RECORD_MIN_TIME = 2000;
     SEGMENT_RECORD_MAX_TIME = 20000;
@@ -96,13 +97,17 @@ public class CodecParam
     mIFrameInterval = 10;
     mCRFValue = 23;
     mAdjustSpecialSpeed = 1;
+    mEnableTotalTimeAdjust = 0;
+    mEnableTimestampFix = 0;
+    mAudioTimestampLow = 0;
+    mAudioTimestampHigh = 0;
     mAudioTimeRatio = 65537;
     mSaveMode = 0;
   }
   
   public static int[] getConfigParam()
   {
-    if (VideoEnvironment.getAVCodecSurpportFeature(5)) {
+    if (VideoEnvironment.getAVCodecSupportFeature(5)) {
       return new int[] { mMaxrate, mMinrate, mQmax, mQmin, mMaxQdiff, mRefframe, mIsSmooth, mRecordTime, mRecordFrames, mEnableTotalTimeAdjust, mEnableTimestampFix, mAudioTimestampLow, mAudioTimestampHigh, mAudioTimeRatio, mEnableBaseLineMp4, mSaveMode, mBitrateMode, mGopSize, mCRFValue, mAdjustSpecialSpeed };
     }
     return new int[] { mMaxrate, mMinrate, mQmax, mQmin, mMaxQdiff, mRefframe, mIsSmooth, mRecordTime, mRecordFrames };

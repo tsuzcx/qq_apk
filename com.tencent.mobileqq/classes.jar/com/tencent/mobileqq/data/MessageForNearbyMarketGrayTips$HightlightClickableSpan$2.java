@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import arut;
-import axny;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$2
+class MessageForNearbyMarketGrayTips$HightlightClickableSpan$2
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$2(arut paramarut, QQAppInterface paramQQAppInterface) {}
+  MessageForNearbyMarketGrayTips$HightlightClickableSpan$2(MessageForNearbyMarketGrayTips.HightlightClickableSpan paramHightlightClickableSpan, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Object localObject = (axny)this.a.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
-    arut.a(this.this$0, ((axny)localObject).b());
-    String str = this.this$0.a(arut.a(this.this$0), false);
+    Object localObject = (NearbyCardManager)this.a.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
+    MessageForNearbyMarketGrayTips.HightlightClickableSpan.a(this.this$0, ((NearbyCardManager)localObject).b());
+    String str = this.this$0.a(MessageForNearbyMarketGrayTips.HightlightClickableSpan.a(this.this$0), false);
     localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = this.this$0.a(arut.a(this.this$0), true);
+      localObject = this.this$0.a(MessageForNearbyMarketGrayTips.HightlightClickableSpan.a(this.this$0), true);
     }
     this.this$0.c((String)localObject);
     if (QLog.isColorLevel()) {
@@ -29,7 +28,7 @@ public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.2
  * JD-Core Version:    0.7.0.1
  */

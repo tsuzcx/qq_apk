@@ -8,8 +8,8 @@ public final class SearchClientShowInfoRsp
   extends JceStruct
 {
   static UserClientShowInfo cache_stUserClientShowInfo = new UserClientShowInfo();
-  public int iCode;
-  public UserClientShowInfo stUserClientShowInfo;
+  public int iCode = 0;
+  public UserClientShowInfo stUserClientShowInfo = null;
   
   public SearchClientShowInfoRsp() {}
   

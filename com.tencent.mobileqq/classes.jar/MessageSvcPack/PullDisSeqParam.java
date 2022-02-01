@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class PullDisSeqParam
   extends JceStruct
 {
-  public long lDisCode;
-  public long lLastSeqId;
+  public long lDisCode = 0L;
+  public long lLastSeqId = 0L;
   
   public PullDisSeqParam() {}
   

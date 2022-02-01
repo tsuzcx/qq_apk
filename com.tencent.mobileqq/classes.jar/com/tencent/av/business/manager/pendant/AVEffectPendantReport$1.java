@@ -1,38 +1,37 @@
 package com.tencent.av.business.manager.pendant;
 
+import com.tencent.av.AVLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lbd;
-import lhx;
 
-public final class AVEffectPendantReport$1
+final class AVEffectPendantReport$1
   implements Runnable
 {
   public void run()
   {
-    if ((lhx.a() == null) || (lhx.a().isEmpty()))
+    if ((AVEffectPendantReport.a() == null) || (AVEffectPendantReport.a().isEmpty()))
     {
-      lhx.d();
+      AVEffectPendantReport.d();
       return;
     }
-    lhx.a(0);
-    lhx.b(0);
-    Iterator localIterator = lhx.a().iterator();
+    AVEffectPendantReport.a(0);
+    AVEffectPendantReport.b(0);
+    Iterator localIterator = AVEffectPendantReport.a().iterator();
     while (localIterator.hasNext())
     {
       PendantItem localPendantItem = (PendantItem)localIterator.next();
-      lhx.a();
-      if (lhx.a(localPendantItem)) {
-        lhx.b();
+      AVEffectPendantReport.a();
+      if (AVEffectPendantReport.a(localPendantItem)) {
+        AVEffectPendantReport.b();
       }
     }
-    lbd.f("AVEffectPendantReport", "refleshAndSetDownloadInfo()  mTotalCount = " + lhx.c() + "  mDownloadCount = " + lhx.d());
-    lhx.a();
+    AVLog.printColorLog("AVEffectPendantReport", "refleshAndSetDownloadInfo()  mTotalCount = " + AVEffectPendantReport.c() + "  mDownloadCount = " + AVEffectPendantReport.d());
+    AVEffectPendantReport.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.AVEffectPendantReport.1
  * JD-Core Version:    0.7.0.1
  */

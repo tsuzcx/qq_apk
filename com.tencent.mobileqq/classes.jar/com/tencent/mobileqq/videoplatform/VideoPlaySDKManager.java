@@ -4,6 +4,7 @@ import android.content.Context;
 import com.tencent.mobileqq.videoplatform.util.LogUtil;
 import com.tencent.superplayer.api.SuperPlayerSDKMgr;
 import com.tencent.superplayer.api.SuperPlayerSDKMgr.ILogListener;
+import com.tencent.superplayer.api.SuperPlayerSdkOption;
 import com.tencent.thumbplayer.api.ITPModuleLoader;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -43,7 +44,7 @@ public class VideoPlaySDKManager
     finally {}
   }
   
-  private void initSDK(Context paramContext)
+  private void initSDK(Context paramContext, SuperPlayerSdkOption paramSuperPlayerSdkOption)
   {
     if (paramContext == null) {
       return;
@@ -51,7 +52,7 @@ public class VideoPlaySDKManager
     try
     {
       SuperPlayerSDKMgr.setLibLoader(buildLoader());
-      SuperPlayerSDKMgr.initSDK(paramContext, 170303, paramContext.getApplicationContext().getExternalCacheDir() + "/superplayer");
+      SuperPlayerSDKMgr.initSDK(paramContext, 170303, paramContext.getApplicationContext().getExternalCacheDir() + "/superplayer", paramSuperPlayerSdkOption);
       SuperPlayerSDKMgr.setOnLogListener(buildLogListener());
       return;
     }
@@ -71,71 +72,87 @@ public class VideoPlaySDKManager
     }
   }
   
-  /* Error */
   public void initSDKAsync(Context paramContext, SDKInitListener paramSDKInitListener)
+  {
+    try
+    {
+      initSDKAsync(paramContext, SuperPlayerSdkOption.option(), paramSDKInitListener);
+      return;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  /* Error */
+  public void initSDKAsync(Context paramContext, SuperPlayerSdkOption paramSuperPlayerSdkOption, SDKInitListener paramSDKInitListener)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: aload_2
-    //   4: invokevirtual 137	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:addSDKInstalledListener	(Lcom/tencent/mobileqq/videoplatform/SDKInitListener;)V
+    //   3: aload_3
+    //   4: invokevirtual 146	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:addSDKInstalledListener	(Lcom/tencent/mobileqq/videoplatform/SDKInitListener;)V
     //   7: aload_0
     //   8: getfield 37	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:mState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   11: invokevirtual 141	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   11: invokevirtual 150	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   14: iconst_1
     //   15: if_icmpeq +14 -> 29
     //   18: aload_0
     //   19: getfield 37	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:mState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   22: invokevirtual 141	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   22: invokevirtual 150	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   25: iconst_2
     //   26: if_icmpne +48 -> 74
-    //   29: invokestatic 145	com/tencent/mobileqq/videoplatform/util/LogUtil:isColorLevel	()Z
+    //   29: invokestatic 154	com/tencent/mobileqq/videoplatform/util/LogUtil:isColorLevel	()Z
     //   32: ifeq +39 -> 71
     //   35: ldc 17
     //   37: iconst_2
     //   38: new 86	java/lang/StringBuilder
     //   41: dup
     //   42: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   45: ldc 147
+    //   45: ldc 156
     //   47: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: aload_0
     //   51: getfield 37	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:mState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   54: invokevirtual 141	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   57: invokevirtual 150	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   60: ldc 152
+    //   54: invokevirtual 150	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   57: invokevirtual 159	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   60: ldc 161
     //   62: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   68: invokestatic 156	com/tencent/mobileqq/videoplatform/util/LogUtil:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   68: invokestatic 165	com/tencent/mobileqq/videoplatform/util/LogUtil:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   71: aload_0
     //   72: monitorexit
     //   73: return
     //   74: aload_0
     //   75: getfield 37	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:mState	Ljava/util/concurrent/atomic/AtomicInteger;
     //   78: iconst_1
-    //   79: invokevirtual 159	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   82: new 161	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager$1
+    //   79: invokevirtual 168	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   82: new 170	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager$1
     //   85: dup
     //   86: aload_0
     //   87: aload_1
-    //   88: invokespecial 163	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager$1:<init>	(Lcom/tencent/mobileqq/videoplatform/VideoPlaySDKManager;Landroid/content/Context;)V
-    //   91: invokestatic 169	com/tencent/mobileqq/videoplatform/util/LoadSoUtil:loadSo	(Lcom/tencent/mobileqq/videoplatform/api/LoadSoCallback;)V
-    //   94: goto -23 -> 71
-    //   97: astore_1
-    //   98: aload_0
-    //   99: monitorexit
-    //   100: aload_1
-    //   101: athrow
+    //   88: aload_2
+    //   89: invokespecial 172	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager$1:<init>	(Lcom/tencent/mobileqq/videoplatform/VideoPlaySDKManager;Landroid/content/Context;Lcom/tencent/superplayer/api/SuperPlayerSdkOption;)V
+    //   92: invokestatic 178	com/tencent/mobileqq/videoplatform/util/LoadSoUtil:loadSo	(Lcom/tencent/mobileqq/videoplatform/api/LoadSoCallback;)V
+    //   95: goto -24 -> 71
+    //   98: astore_1
+    //   99: aload_0
+    //   100: monitorexit
+    //   101: aload_1
+    //   102: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	102	0	this	VideoPlaySDKManager
-    //   0	102	1	paramContext	Context
-    //   0	102	2	paramSDKInitListener	SDKInitListener
+    //   0	103	0	this	VideoPlaySDKManager
+    //   0	103	1	paramContext	Context
+    //   0	103	2	paramSuperPlayerSdkOption	SuperPlayerSdkOption
+    //   0	103	3	paramSDKInitListener	SDKInitListener
     // Exception table:
     //   from	to	target	type
-    //   2	29	97	finally
-    //   29	71	97	finally
-    //   74	94	97	finally
+    //   2	29	98	finally
+    //   29	71	98	finally
+    //   74	95	98	finally
   }
   
   /* Error */
@@ -146,7 +163,7 @@ public class VideoPlaySDKManager
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 37	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:mState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   6: invokevirtual 141	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   6: invokevirtual 150	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   9: istore_1
     //   10: iload_1
     //   11: iconst_2
@@ -188,7 +205,7 @@ public class VideoPlaySDKManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlaySDKManager
  * JD-Core Version:    0.7.0.1
  */

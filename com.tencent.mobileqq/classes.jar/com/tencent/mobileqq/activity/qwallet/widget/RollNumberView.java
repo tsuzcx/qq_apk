@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Random;
 
@@ -19,14 +19,14 @@ public class RollNumberView
 {
   private static final String TAG = "RollNumberView";
   private int count;
-  private int index;
+  private int index = 0;
   private boolean isRool = true;
-  private Context mContext;
+  private Context mContext = null;
   private int mFactor;
   private RollNumberView.OnRollListener mListener;
   private int mTextColor;
   private int mTextSize;
-  private int mViewRolledCount;
+  private int mViewRolledCount = 0;
   private int max;
   
   public RollNumberView(Context paramContext)
@@ -108,7 +108,7 @@ public class RollNumberView
       init(0);
     }
     localTextView.setText(".");
-    localTextView.setContentDescription(anvx.a(2131712954));
+    localTextView.setContentDescription(HardCodeUtil.a(2131713450));
     addView(localTextView, 0);
     i = init(i);
     if (i > this.max) {}
@@ -193,7 +193,7 @@ public class RollNumberView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.RollNumberView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 package cooperation.qzone.statistic.access;
 
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import cooperation.qzone.statistic.access.concept.Global;
-import cooperation.qzone.util.NetworkState;
 
 public class WapProxyHttpDeliverer
   extends HttpDeliverer
@@ -22,7 +23,7 @@ public class WapProxyHttpDeliverer
     if (Global.getContext() == null) {
       return false;
     }
-    return NetworkState.isWap();
+    return ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).isWap();
   }
   
   public int deliver(String paramString, int paramInt)
@@ -58,7 +59,7 @@ public class WapProxyHttpDeliverer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.statistic.access.WapProxyHttpDeliverer
  * JD-Core Version:    0.7.0.1
  */

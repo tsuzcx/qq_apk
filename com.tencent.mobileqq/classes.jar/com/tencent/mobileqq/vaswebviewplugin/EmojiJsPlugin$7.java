@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
-import bifw;
 import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +24,7 @@ class EmojiJsPlugin$7
       try
       {
         paramDialogInterface.put("result", 2);
-        paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131691877));
+        paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131692002));
         if (QLog.isColorLevel()) {
           QLog.i(EmojiJsPlugin.TAG, 2, "startDownloadEmoji resp to js:" + paramDialogInterface.toString());
         }
@@ -44,7 +44,7 @@ class EmojiJsPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

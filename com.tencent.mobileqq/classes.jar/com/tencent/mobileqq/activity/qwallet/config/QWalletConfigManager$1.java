@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.activity.qwallet.config;
 
-import aktz;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
-public class QWalletConfigManager$1
+class QWalletConfigManager$1
   implements Runnable
 {
-  public QWalletConfigManager$1(aktz paramaktz, WeakReference paramWeakReference) {}
+  QWalletConfigManager$1(QWalletConfigManager paramQWalletConfigManager, WeakReference paramWeakReference) {}
   
   public void run()
   {
-    aktz localaktz = (aktz)this.a.get();
-    if (localaktz != null)
+    QWalletConfigManager localQWalletConfigManager = (QWalletConfigManager)this.a.get();
+    if (localQWalletConfigManager != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QWalletConfigManager", 2, "getAllConfigAgain");
       }
-      localaktz.a(aktz.a(this.this$0));
+      localQWalletConfigManager.a(QWalletConfigManager.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,12 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aple;
-import aplf;
-import apli;
 import com.tencent.qphone.base.util.QLog;
 
 class ARLocalGestureCircleRecog$ProcessWorker
   extends Thread
 {
   private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   byte[] jdField_a_of_type_ArrayOfByte = new byte[ARLocalGestureCircleRecog.a(this.this$0) * ARLocalGestureCircleRecog.b(this.this$0) * 3 / 2];
   private boolean b = true;
   
@@ -88,10 +85,10 @@ class ARLocalGestureCircleRecog$ProcessWorker
         ARLocalGestureCircleRecog.a(this.this$0, true);
         try
         {
-          aplf localaplf = this.this$0.a(this.jdField_a_of_type_ArrayOfByte, ARLocalGestureCircleRecog.a(this.this$0), ARLocalGestureCircleRecog.b(this.this$0), 17);
-          QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecog. recogResult = " + localaplf + ",mRecogResult.gestureResult.mode = " + ARLocalGestureCircleRecog.a(this.this$0).a.d);
+          ARLocalGestureCircleRecogResult localARLocalGestureCircleRecogResult = this.this$0.a(this.jdField_a_of_type_ArrayOfByte, ARLocalGestureCircleRecog.a(this.this$0), ARLocalGestureCircleRecog.b(this.this$0), 17);
+          QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecog. recogResult = " + localARLocalGestureCircleRecogResult + ",mRecogResult.gestureResult.mode = " + ARLocalGestureCircleRecog.a(this.this$0).a.d);
           if ((ARLocalGestureCircleRecog.a(this.this$0)) && (!ARLocalGestureCircleRecog.b(this.this$0)) && (ARLocalGestureCircleRecog.a(this.this$0) != null) && (ARLocalGestureCircleRecog.a(this.this$0).a.d == 0)) {
-            ARLocalGestureCircleRecog.a(this.this$0).a(localaplf);
+            ARLocalGestureCircleRecog.a(this.this$0).a(localARLocalGestureCircleRecogResult);
           }
           ARLocalGestureCircleRecog.a(this.this$0, false);
           yield();

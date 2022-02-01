@@ -31,9 +31,9 @@ public class MsgFootTips
   private ProgressBar commentTipsProgressBar;
   private TextView commentTipsText;
   private LinearLayout commentTipsView;
-  private int currentState;
+  private int currentState = 0;
   private MsgFootTips instance = this;
-  public boolean isLoadMoreUpHeader;
+  public boolean isLoadMoreUpHeader = false;
   private boolean isNoMoreDataVisibility;
   private String loadMoreManualText = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "TextViewLookUp", "查看更多");
   private String loadingDataText = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "TextViewLoadingComment", "正在加载评论...");
@@ -59,14 +59,14 @@ public class MsgFootTips
   
   private void initView()
   {
-    this.commentTipsView = ((LinearLayout)LayoutInflater.from(this.mContext).inflate(2131562311, null));
+    this.commentTipsView = ((LinearLayout)LayoutInflater.from(this.mContext).inflate(2131562449, null));
     try
     {
-      this.commentTipsView.setBackgroundResource(2130838911);
+      this.commentTipsView.setBackgroundResource(2130838979);
       addView(this.commentTipsView);
-      this.commentTipsProgressBar = ((ProgressBar)this.commentTipsView.findViewById(2131364912));
-      this.commentTipsText = ((TextView)this.commentTipsView.findViewById(2131364913));
-      this.commentTipsDivider = this.commentTipsView.findViewById(2131364909);
+      this.commentTipsProgressBar = ((ProgressBar)this.commentTipsView.findViewById(2131365049));
+      this.commentTipsText = ((TextView)this.commentTipsView.findViewById(2131365050));
+      this.commentTipsDivider = this.commentTipsView.findViewById(2131365046);
       return;
     }
     catch (Throwable localThrowable)
@@ -214,7 +214,7 @@ public class MsgFootTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgFootTips
  * JD-Core Version:    0.7.0.1
  */

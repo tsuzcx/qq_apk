@@ -1,14 +1,13 @@
 package dov.com.qq.im.aeeditor.manage;
 
-import bnuu;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
-public class AEEditorResourceDownloader$1
+class AEEditorResourceDownloader$1
   implements Runnable
 {
-  public AEEditorResourceDownloader$1(bnuu parambnuu) {}
+  AEEditorResourceDownloader$1(AEEditorResourceDownloader paramAEEditorResourceDownloader) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class AEEditorResourceDownloader$1
     if (!new File(str).exists()) {}
     try
     {
-      FileUtils.createFile(str);
+      FileUtils.a(str);
       return;
     }
     catch (IOException localIOException)
@@ -29,7 +28,7 @@ public class AEEditorResourceDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.manage.AEEditorResourceDownloader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.data;
 
 import android.text.TextUtils;
-import axcw;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 
@@ -28,7 +28,7 @@ public class MsgBackupMsgEntity
   public void postRead()
   {
     super.postRead();
-    axcw.a(this);
+    MsgBackupUtil.a(this);
     try
     {
       if (this.extraData != null) {
@@ -38,7 +38,7 @@ public class MsgBackupMsgEntity
     }
     catch (Exception localException)
     {
-      axcw.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
+      MsgBackupUtil.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
       this.extraDataStr = "";
     }
   }
@@ -49,7 +49,7 @@ public class MsgBackupMsgEntity
     if (!TextUtils.isEmpty(this.extraDataStr)) {
       this.extraData = this.extraDataStr.getBytes();
     }
-    axcw.b(this);
+    MsgBackupUtil.b(this);
   }
 }
 

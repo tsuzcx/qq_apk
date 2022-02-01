@@ -16,12 +16,12 @@ public final class RespSearch
   static byte[] cache_vSecureSig;
   static ArrayList<byte[]> cache_vvRespServices;
   static byte[] cache_weiguang;
-  public int eEimKeyType;
-  public int result;
-  public ArrayList<SearchInfo> vRecords;
-  public byte[] vSecureSig;
-  public ArrayList<byte[]> vvRespServices;
-  public byte[] weiguang;
+  public int eEimKeyType = 0;
+  public int result = 0;
+  public ArrayList<SearchInfo> vRecords = null;
+  public byte[] vSecureSig = null;
+  public ArrayList<byte[]> vvRespServices = null;
+  public byte[] weiguang = null;
   
   static
   {
@@ -217,7 +217,7 @@ public final class RespSearch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.RespSearch
  * JD-Core Version:    0.7.0.1
  */

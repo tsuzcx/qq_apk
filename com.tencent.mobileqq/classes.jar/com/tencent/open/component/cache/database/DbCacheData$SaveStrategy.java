@@ -1,13 +1,9 @@
 package com.tencent.open.component.cache.database;
 
-public final class DbCacheData$SaveStrategy
-{
-  public static final int APPEND = 1;
-  public static final int CLEAR = 2;
-}
+public final class DbCacheData$SaveStrategy {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.component.cache.database.DbCacheData.SaveStrategy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.util;
 
-import bhbl;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,7 +10,7 @@ class SystemDragUtils$2$1
   
   public void run()
   {
-    bhbl.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    SystemDragUtils.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

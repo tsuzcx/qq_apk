@@ -1,13 +1,12 @@
 package com.tencent.open.agent;
 
 import android.support.v4.app.FragmentActivity;
-import bjea;
 import com.tencent.qphone.base.util.QLog;
 
-public class OpenAuthorityFragment$8$6
+class OpenAuthorityFragment$8$6
   implements Runnable
 {
-  public OpenAuthorityFragment$8$6(bjea parambjea) {}
+  OpenAuthorityFragment$8$6(OpenAuthorityFragment.8 param8) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class OpenAuthorityFragment$8$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.OpenAuthorityFragment.8.6
  * JD-Core Version:    0.7.0.1
  */

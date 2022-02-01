@@ -1,24 +1,22 @@
 package dov.com.qq.im.ae.gif;
 
 import android.arch.lifecycle.MutableLiveData;
-import bnkn;
-import bnmb;
-import bnmc;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import dov.com.qq.im.ae.download.AEDownloadStateWrapper;
 
-public class AEVideoStoryGIFTplViewModel$1$2
+class AEVideoStoryGIFTplViewModel$1$2
   implements Runnable
 {
-  public AEVideoStoryGIFTplViewModel$1$2(bnmc parambnmc, MetaMaterial paramMetaMaterial) {}
+  AEVideoStoryGIFTplViewModel$1$2(AEVideoStoryGIFTplViewModel.1 param1, MetaMaterial paramMetaMaterial) {}
   
   public void run()
   {
-    bnmb.a(this.jdField_a_of_type_Bnmc.a).setValue(new bnkn(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 0, 0));
+    AEVideoStoryGIFTplViewModel.a(this.jdField_a_of_type_DovComQqImAeGifAEVideoStoryGIFTplViewModel$1.a).setValue(new AEDownloadStateWrapper(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 0, 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.1.2
  * JD-Core Version:    0.7.0.1
  */

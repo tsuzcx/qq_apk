@@ -15,14 +15,14 @@ public final class ReqSetCard
   static ArrayList<TagInfo> cache_vDelTags;
   static byte[] cache_vReqSetTemplate;
   static ArrayList<TagInfo> cache_vTagsID;
-  public byte bIsSingle;
+  public byte bIsSingle = 0;
   public int eSubCmd = CARDSETTYPE.TYPE_SET_DEFAUT.value();
-  public ReqHead stHeader;
-  public ArrayList<TagInfo> vAddTags;
-  public byte[] vBackground;
-  public ArrayList<TagInfo> vDelTags;
-  public byte[] vReqSetTemplate;
-  public ArrayList<TagInfo> vTagsID;
+  public ReqHead stHeader = null;
+  public ArrayList<TagInfo> vAddTags = null;
+  public byte[] vBackground = null;
+  public ArrayList<TagInfo> vDelTags = null;
+  public byte[] vReqSetTemplate = null;
+  public ArrayList<TagInfo> vTagsID = null;
   
   public ReqSetCard() {}
   

@@ -10,7 +10,7 @@ public final class PhotoInfos
 {
   static ArrayList<Float> cache_feature;
   static int cache_mode = 0;
-  public ArrayList<Float> feature;
+  public ArrayList<Float> feature = null;
   public String img = "";
   public int mode = 0;
   

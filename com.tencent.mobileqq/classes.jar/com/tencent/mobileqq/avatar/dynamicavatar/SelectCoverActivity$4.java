@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import anvx;
-import aoks;
-import aqeq;
-import aqfc;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.util.FaceUtil;
 import java.io.File;
 
 final class SelectCoverActivity$4
@@ -18,11 +16,11 @@ final class SelectCoverActivity$4
     File localFile = new File(str);
     if ((localFile != null) && (localFile.exists()))
     {
-      aqfc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 38, this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.e, 100);
-      aoks.a(str);
+      DynamicUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 38, this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.e, 100);
+      FaceUtil.a(str);
       return;
     }
-    SelectCoverActivity.a(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity, 2, anvx.a(2131713165), 0);
+    SelectCoverActivity.a(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity, 2, HardCodeUtil.a(2131713661), 0);
   }
 }
 

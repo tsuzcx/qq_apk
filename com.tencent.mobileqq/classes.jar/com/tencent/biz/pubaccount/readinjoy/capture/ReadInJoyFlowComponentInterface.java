@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.capture;
 
-import alpu;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.richmedia.FlowComponentInterface;
 
 public class ReadInJoyFlowComponentInterface
-  implements alpu
+  implements FlowComponentInterface
 {
   public static final String a = ReadInJoyFlowComponentInterface.class.getName();
   
@@ -42,7 +42,7 @@ public class ReadInJoyFlowComponentInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyFlowComponentInterface
  * JD-Core Version:    0.7.0.1
  */

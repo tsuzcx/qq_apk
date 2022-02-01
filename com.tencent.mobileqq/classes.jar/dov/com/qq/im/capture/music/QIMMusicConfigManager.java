@@ -6,15 +6,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import boha;
-import bohc;
-import bohd;
-import boia;
-import boiu;
-import boja;
-import bojb;
-import bojc;
-import bonn;
+import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.request.BatchGetMusicInfoRequest;
 import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
@@ -28,11 +20,16 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.control.CaptureAsyncControl;
 import dov.com.qq.im.capture.control.GetSingleFullMusicInfoTask;
+import dov.com.qq.im.capture.control.GetSingleFullMusicInfoTask.GetMusicInfoCallback;
+import dov.com.qq.im.capture.control.QIMAsyncManager;
+import dov.com.qq.im.capture.data.DoodleMusicCategoryItem;
+import dov.com.qq.im.capture.util.QIMFileUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,29 +41,28 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zeb;
 
 public class QIMMusicConfigManager
-  extends bohd
+  extends QIMAsyncManager
 {
   public static final File a;
   private int jdField_a_of_type_Int = 3;
   protected BroadcastReceiver a;
-  public boia a;
   public EntityManager a;
   public MusicItemInfo a;
-  public INetEngine a;
+  public IHttpEngineService a;
+  public DoodleMusicCategoryItem a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
-  private ArrayList<boia> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<DoodleMusicCategoryItem> jdField_a_of_type_JavaUtilArrayList;
   private List<FlowMusic> jdField_a_of_type_JavaUtilList = new ArrayList();
   public AtomicBoolean a;
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 0;
-  private boia jdField_b_of_type_Boia;
+  private DoodleMusicCategoryItem jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem;
   public String b;
-  private ArrayList<boia> jdField_b_of_type_JavaUtilArrayList;
-  private List<bojc> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private ArrayList<DoodleMusicCategoryItem> jdField_b_of_type_JavaUtilArrayList;
+  private List<QIMMusicConfigManager.LoadMusicStepListener> jdField_b_of_type_JavaUtilList = new ArrayList();
   private int jdField_c_of_type_Int = 0;
   private String jdField_c_of_type_JavaLangString;
   private int jdField_d_of_type_Int = 0;
@@ -75,22 +71,22 @@ public class QIMMusicConfigManager
   
   static
   {
-    jdField_a_of_type_JavaIoFile = new File(bonn.a(), "dov_doodle_music");
+    jdField_a_of_type_JavaIoFile = new File(QIMFileUtils.a(), "dov_doodle_music");
   }
   
   public QIMMusicConfigManager()
   {
     this.jdField_a_of_type_JavaLangString = null;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bojb(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QIMMusicConfigManager.3(this);
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = getApp().getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = getApp().getNetEngine(0);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = ((IHttpEngineService)getApp().getRuntimeService(IHttpEngineService.class, "all"));
   }
   
   private int a(MusicItemInfo paramMusicItemInfo)
   {
     int j;
-    if (this.jdField_b_of_type_Boia == null)
+    if (this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QIMMusicConfigManager", 2, "findMusicInfoFromMyTab myTabCategory is null");
@@ -98,7 +94,7 @@ public class QIMMusicConfigManager
       j = -1;
       return j;
     }
-    if (this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList == null)
+    if (this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QIMMusicConfigManager", 2, "findMusicInfoFromMyTab myTabCategory.templateGroups is null");
@@ -108,10 +104,10 @@ public class QIMMusicConfigManager
     int i = 0;
     for (;;)
     {
-      if (i >= this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList.size()) {
+      if (i >= this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.size()) {
         break label156;
       }
-      MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList.get(i);
+      MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.get(i);
       j = i;
       if (localMusicItemInfo.mItemId == paramMusicItemInfo.mItemId) {
         break;
@@ -127,45 +123,6 @@ public class QIMMusicConfigManager
     }
     label156:
     return -1;
-  }
-  
-  private boia a(MusicItemInfo paramMusicItemInfo1, MusicItemInfo paramMusicItemInfo2, MusicItemInfo paramMusicItemInfo3)
-  {
-    this.jdField_b_of_type_Boia = new boia();
-    this.jdField_b_of_type_Boia.jdField_a_of_type_Int = 999;
-    this.jdField_b_of_type_Boia.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    MusicItemInfo localMusicItemInfo = new MusicItemInfo();
-    localMusicItemInfo.mType = 4;
-    localMusicItemInfo.mItemId = -3;
-    this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList.add(paramMusicItemInfo1);
-    this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList.add(paramMusicItemInfo2);
-    this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList.add(localMusicItemInfo);
-    if (this.jdField_d_of_type_Int == 1)
-    {
-      this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList.add(paramMusicItemInfo3);
-      paramMusicItemInfo3.jumpWs = this.jdField_c_of_type_JavaLangString;
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramMusicItemInfo1 = (FlowMusic)this.jdField_a_of_type_JavaUtilList.get(i);
-      paramMusicItemInfo2 = new MusicItemInfo();
-      paramMusicItemInfo2.mType = 5;
-      paramMusicItemInfo2.mMusicName = paramMusicItemInfo1.songName;
-      paramMusicItemInfo2.setPath(paramMusicItemInfo1.path);
-      paramMusicItemInfo2.mUrl = paramMusicItemInfo1.url;
-      paramMusicItemInfo2.mSingername = paramMusicItemInfo1.singerName;
-      paramMusicItemInfo2.mItemId = paramMusicItemInfo1.songId;
-      paramMusicItemInfo2.mSongMid = paramMusicItemInfo1.songMid;
-      paramMusicItemInfo2.musicStart = paramMusicItemInfo1.tryBegin;
-      paramMusicItemInfo2.musicEnd = paramMusicItemInfo1.tryEnd;
-      paramMusicItemInfo2.musicDuration = paramMusicItemInfo1.duration;
-      paramMusicItemInfo2.mAlbumUrl = paramMusicItemInfo1.albumUrl;
-      this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList.add(paramMusicItemInfo2);
-      i += 1;
-    }
-    return this.jdField_b_of_type_Boia;
   }
   
   private FlowMusic a(int paramInt)
@@ -210,28 +167,43 @@ public class QIMMusicConfigManager
     return localMusicItemInfo;
   }
   
-  private void a(boia paramboia, MusicItemInfo paramMusicItemInfo)
+  private DoodleMusicCategoryItem a(MusicItemInfo paramMusicItemInfo1, MusicItemInfo paramMusicItemInfo2, MusicItemInfo paramMusicItemInfo3)
   {
-    if ((paramboia.jdField_a_of_type_Int == 999) || (paramMusicItemInfo.mType != 5)) {}
-    MusicItemInfo localMusicItemInfo;
-    do
+    this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem = new DoodleMusicCategoryItem();
+    this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_Int = 999;
+    this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    MusicItemInfo localMusicItemInfo = new MusicItemInfo();
+    localMusicItemInfo.mType = 4;
+    localMusicItemInfo.mItemId = -3;
+    this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.add(paramMusicItemInfo1);
+    this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.add(paramMusicItemInfo2);
+    this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.add(localMusicItemInfo);
+    if (this.jdField_d_of_type_Int == 1)
     {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = paramboia.jdField_a_of_type_JavaUtilList.iterator();
-      }
-      localMusicItemInfo = (MusicItemInfo)localIterator.next();
-      if (localMusicItemInfo.mType == 5)
-      {
-        i = paramboia.jdField_a_of_type_JavaUtilList.indexOf(localMusicItemInfo);
-        paramboia.jdField_a_of_type_JavaUtilList.remove(i);
-        paramboia.jdField_a_of_type_JavaUtilList.add(i, paramMusicItemInfo);
-        return;
-      }
-    } while (localMusicItemInfo.mType != 1);
-    int i = paramboia.jdField_a_of_type_JavaUtilList.indexOf(localMusicItemInfo);
-    paramboia.jdField_a_of_type_JavaUtilList.add(i, paramMusicItemInfo);
+      this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.add(paramMusicItemInfo3);
+      paramMusicItemInfo3.jumpWs = this.jdField_c_of_type_JavaLangString;
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramMusicItemInfo1 = (FlowMusic)this.jdField_a_of_type_JavaUtilList.get(i);
+      paramMusicItemInfo2 = new MusicItemInfo();
+      paramMusicItemInfo2.mType = 5;
+      paramMusicItemInfo2.mMusicName = paramMusicItemInfo1.songName;
+      paramMusicItemInfo2.setPath(paramMusicItemInfo1.path);
+      paramMusicItemInfo2.mUrl = paramMusicItemInfo1.url;
+      paramMusicItemInfo2.mSingername = paramMusicItemInfo1.singerName;
+      paramMusicItemInfo2.mItemId = paramMusicItemInfo1.songId;
+      paramMusicItemInfo2.mSongMid = paramMusicItemInfo1.songMid;
+      paramMusicItemInfo2.musicStart = paramMusicItemInfo1.tryBegin;
+      paramMusicItemInfo2.musicEnd = paramMusicItemInfo1.tryEnd;
+      paramMusicItemInfo2.musicDuration = paramMusicItemInfo1.duration;
+      paramMusicItemInfo2.mAlbumUrl = paramMusicItemInfo1.albumUrl;
+      this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.add(paramMusicItemInfo2);
+      i += 1;
+    }
+    return this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem;
   }
   
   private void a(FlowMusic paramFlowMusic, long paramLong)
@@ -290,6 +262,30 @@ public class QIMMusicConfigManager
     }
   }
   
+  private void a(DoodleMusicCategoryItem paramDoodleMusicCategoryItem, MusicItemInfo paramMusicItemInfo)
+  {
+    if ((paramDoodleMusicCategoryItem.jdField_a_of_type_Int == 999) || (paramMusicItemInfo.mType != 5)) {}
+    MusicItemInfo localMusicItemInfo;
+    do
+    {
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = paramDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.iterator();
+      }
+      localMusicItemInfo = (MusicItemInfo)localIterator.next();
+      if (localMusicItemInfo.mType == 5)
+      {
+        i = paramDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.indexOf(localMusicItemInfo);
+        paramDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.remove(i);
+        paramDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.add(i, paramMusicItemInfo);
+        return;
+      }
+    } while (localMusicItemInfo.mType != 1);
+    int i = paramDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.indexOf(localMusicItemInfo);
+    paramDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.add(i, paramMusicItemInfo);
+  }
+  
   private void a(boolean paramBoolean)
   {
     if (paramBoolean) {
@@ -316,7 +312,7 @@ public class QIMMusicConfigManager
   public MusicItemInfo a(int paramInt)
   {
     Object localObject;
-    if (this.jdField_b_of_type_Boia == null)
+    if (this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QIMMusicConfigManager", 2, "findMusicInfoFromMyTab myTabCategory is null");
@@ -324,7 +320,7 @@ public class QIMMusicConfigManager
       localObject = null;
       return localObject;
     }
-    if (this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList == null)
+    if (this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QIMMusicConfigManager", 2, "findMusicInfoFromMyTab myTabCategory.templateGroups is null");
@@ -334,10 +330,10 @@ public class QIMMusicConfigManager
     int i = 0;
     for (;;)
     {
-      if (i >= this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList.size()) {
+      if (i >= this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.size()) {
         break label106;
       }
-      MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList.get(i);
+      MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.get(i);
       localObject = localMusicItemInfo;
       if (localMusicItemInfo.mItemId == paramInt) {
         break;
@@ -355,38 +351,38 @@ public class QIMMusicConfigManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 435	dov/com/qq/im/capture/music/QIMMusicConfigManager:a	()Ljava/util/ArrayList;
+    //   3: invokevirtual 439	dov/com/qq/im/capture/music/QIMMusicConfigManager:a	()Ljava/util/ArrayList;
     //   6: astore_3
     //   7: aload_3
     //   8: ifnull +63 -> 71
     //   11: aload_3
-    //   12: invokevirtual 436	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   12: invokevirtual 440	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   15: astore_3
     //   16: aload_3
-    //   17: invokeinterface 283 1 0
+    //   17: invokeinterface 302 1 0
     //   22: ifeq +49 -> 71
     //   25: aload_3
-    //   26: invokeinterface 287 1 0
-    //   31: checkcast 131	boia
+    //   26: invokeinterface 306 1 0
+    //   31: checkcast 135	dov/com/qq/im/capture/data/DoodleMusicCategoryItem
     //   34: astore 4
     //   36: iload_1
     //   37: iconst_m1
     //   38: if_icmpne +14 -> 52
     //   41: aload 4
     //   43: iload_2
-    //   44: invokevirtual 438	boia:a	(I)Lcom/tencent/mobileqq/richmedia/capture/data/MusicItemInfo;
+    //   44: invokevirtual 442	dov/com/qq/im/capture/data/DoodleMusicCategoryItem:a	(I)Lcom/tencent/mobileqq/richmedia/capture/data/MusicItemInfo;
     //   47: astore_3
     //   48: aload_0
     //   49: monitorexit
     //   50: aload_3
     //   51: areturn
     //   52: aload 4
-    //   54: getfield 172	boia:jdField_a_of_type_Int	I
+    //   54: getfield 221	dov/com/qq/im/capture/data/DoodleMusicCategoryItem:jdField_a_of_type_Int	I
     //   57: iload_1
     //   58: if_icmpne -42 -> 16
     //   61: aload 4
     //   63: iload_2
-    //   64: invokevirtual 438	boia:a	(I)Lcom/tencent/mobileqq/richmedia/capture/data/MusicItemInfo;
+    //   64: invokevirtual 442	dov/com/qq/im/capture/data/DoodleMusicCategoryItem:a	(I)Lcom/tencent/mobileqq/richmedia/capture/data/MusicItemInfo;
     //   67: astore_3
     //   68: goto -20 -> 48
     //   71: aconst_null
@@ -404,7 +400,7 @@ public class QIMMusicConfigManager
     //   0	81	2	paramInt2	int
     //   6	67	3	localObject1	Object
     //   76	4	3	localObject2	Object
-    //   34	28	4	localboia	boia
+    //   34	28	4	localDoodleMusicCategoryItem	DoodleMusicCategoryItem
     // Exception table:
     //   from	to	target	type
     //   2	7	76	finally
@@ -415,7 +411,7 @@ public class QIMMusicConfigManager
   }
   
   /* Error */
-  public ArrayList<boia> a()
+  public ArrayList<DoodleMusicCategoryItem> a()
   {
     // Byte code:
     //   0: aload_0
@@ -424,7 +420,7 @@ public class QIMMusicConfigManager
     //   3: getfield 80	dov/com/qq/im/capture/music/QIMMusicConfigManager:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   6: iconst_1
     //   7: iconst_1
-    //   8: invokevirtual 442	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   8: invokevirtual 446	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
     //   11: istore_1
     //   12: iload_1
     //   13: ifeq +9 -> 22
@@ -436,7 +432,7 @@ public class QIMMusicConfigManager
     //   21: areturn
     //   22: aload_0
     //   23: iconst_0
-    //   24: invokevirtual 445	dov/com/qq/im/capture/music/QIMMusicConfigManager:a	(Z)Ljava/util/ArrayList;
+    //   24: invokevirtual 449	dov/com/qq/im/capture/music/QIMMusicConfigManager:a	(Z)Ljava/util/ArrayList;
     //   27: astore_2
     //   28: goto -10 -> 18
     //   31: astore_2
@@ -456,7 +452,7 @@ public class QIMMusicConfigManager
     //   22	28	31	finally
   }
   
-  public ArrayList<boia> a(String paramString)
+  public ArrayList<DoodleMusicCategoryItem> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList(4);
     try
@@ -492,7 +488,7 @@ public class QIMMusicConfigManager
         if (i >= localJSONArray.length()) {
           break;
         }
-        localArrayList.add(new boia(localJSONArray.getJSONObject(i)));
+        localArrayList.add(new DoodleMusicCategoryItem(localJSONArray.getJSONObject(i)));
         i += 1;
       }
       return paramString;
@@ -506,7 +502,7 @@ public class QIMMusicConfigManager
     }
   }
   
-  public ArrayList<boia> a(boolean paramBoolean)
+  public ArrayList<DoodleMusicCategoryItem> a(boolean paramBoolean)
   {
     int j = 0;
     for (;;)
@@ -520,7 +516,7 @@ public class QIMMusicConfigManager
           this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
           if (this.jdField_a_of_type_JavaUtilArrayList == null)
           {
-            localObject3 = bonn.a(jdField_a_of_type_JavaIoFile, "doodle_music_config.cfg");
+            localObject3 = QIMFileUtils.a(jdField_a_of_type_JavaIoFile, "doodle_music_config.cfg");
             if (localObject3 != null)
             {
               this.jdField_a_of_type_JavaUtilArrayList = a((String)localObject3);
@@ -536,7 +532,7 @@ public class QIMMusicConfigManager
             }
             if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
             {
-              this.jdField_a_of_type_JavaUtilArrayList = a(bonn.a("doodle_music.cfg"));
+              this.jdField_a_of_type_JavaUtilArrayList = a(QIMFileUtils.a("doodle_music.cfg"));
               if (QLog.isColorLevel())
               {
                 localObject3 = new StringBuilder().append("initStickerConfigFromAssets, result:");
@@ -548,7 +544,7 @@ public class QIMMusicConfigManager
               }
             }
           }
-          if ((this.jdField_b_of_type_Boia == null) || (this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList.size() == this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_Int)) {
+          if ((this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem == null) || (this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList.size() == this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_Int)) {
             break label638;
           }
           i = 1;
@@ -576,24 +572,24 @@ public class QIMMusicConfigManager
           if (!localIterator.hasNext()) {
             break label559;
           }
-          boia localboia1 = (boia)localIterator.next();
-          if ((localboia1.jdField_a_of_type_JavaUtilList == null) || (localboia1.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+          DoodleMusicCategoryItem localDoodleMusicCategoryItem1 = (DoodleMusicCategoryItem)localIterator.next();
+          if ((localDoodleMusicCategoryItem1.jdField_a_of_type_JavaUtilList == null) || (localDoodleMusicCategoryItem1.jdField_a_of_type_JavaUtilList.size() <= 0)) {
             continue;
           }
-          boia localboia2 = localboia1.a();
+          DoodleMusicCategoryItem localDoodleMusicCategoryItem2 = localDoodleMusicCategoryItem1.a();
           ArrayList localArrayList = new ArrayList();
           localArrayList.add(localObject3);
           localArrayList.add(localMusicItemInfo2);
           this.jdField_a_of_type_Int = 3;
-          if ((this.jdField_a_of_type_Boia != null) && (this.jdField_a_of_type_Boia.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Boia.jdField_a_of_type_Int == localboia1.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)) {
-            a(localboia1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+          if ((this.jdField_a_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem != null) && (this.jdField_a_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_Int == localDoodleMusicCategoryItem1.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)) {
+            a(localDoodleMusicCategoryItem1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
           }
-          if ((paramBoolean) && (localboia1.jdField_a_of_type_Boolean)) {
-            Collections.shuffle(localboia1.jdField_a_of_type_JavaUtilList);
+          if ((paramBoolean) && (localDoodleMusicCategoryItem1.jdField_a_of_type_Boolean)) {
+            Collections.shuffle(localDoodleMusicCategoryItem1.jdField_a_of_type_JavaUtilList);
           }
-          localArrayList.addAll(localboia1.jdField_a_of_type_JavaUtilList);
-          localboia2.jdField_a_of_type_JavaUtilList = localArrayList;
-          this.jdField_b_of_type_JavaUtilArrayList.add(localboia2);
+          localArrayList.addAll(localDoodleMusicCategoryItem1.jdField_a_of_type_JavaUtilList);
+          localDoodleMusicCategoryItem2.jdField_a_of_type_JavaUtilList = localArrayList;
+          this.jdField_b_of_type_JavaUtilArrayList.add(localDoodleMusicCategoryItem2);
         }
         bool = false;
       }
@@ -627,7 +623,7 @@ public class QIMMusicConfigManager
     PeakAppInterface.a.a(1009);
     String str = getApp().getCurrentAccountUin();
     long l = BaseApplicationImpl.getContext().getSharedPreferences("fecth_qq_music", 4).getLong("fecth_from_qq_music_time_" + str, 0L);
-    if ((System.currentTimeMillis() - l > 86400000L) && (NetworkUtil.isWifiEnabled(BaseApplicationImpl.sApplication))) {}
+    if ((System.currentTimeMillis() - l > 86400000L) && (NetworkUtil.a(BaseApplicationImpl.sApplication))) {}
     for (int i = 1;; i = 0)
     {
       if ((l == 0L) || (i != 0))
@@ -669,25 +665,6 @@ public class QIMMusicConfigManager
     }
   }
   
-  public void a(bojc parambojc)
-  {
-    if ((parambojc == null) || (this.jdField_b_of_type_JavaUtilList == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMMusicConfigManager", 2, "addLoadMusicListener listener = null");
-      }
-    }
-    do
-    {
-      return;
-      if (!this.jdField_b_of_type_JavaUtilList.contains(parambojc)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QIMMusicConfigManager", 2, "addLoadMusicListener mListeners has listener");
-    return;
-    this.jdField_b_of_type_JavaUtilList.add(parambojc);
-  }
-  
   public void a(MusicItemInfo paramMusicItemInfo, boolean paramBoolean)
   {
     label475:
@@ -701,10 +678,10 @@ public class QIMMusicConfigManager
         if (QLog.isColorLevel()) {
           QLog.d("QIMMusicConfigManager", 2, "addOrUpdateMytabMusic, lock updateTimeStamp=" + paramBoolean);
         }
-        if ((this.jdField_b_of_type_Boia == null) || (this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList == null)) {
+        if ((this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem == null) || (this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList == null)) {
           return;
         }
-        localObject1 = this.jdField_b_of_type_Boia.jdField_a_of_type_JavaUtilList;
+        localObject1 = this.jdField_b_of_type_DovComQqImCaptureDataDoodleMusicCategoryItem.jdField_a_of_type_JavaUtilList;
         i = a(paramMusicItemInfo);
         l = System.currentTimeMillis();
         if (QLog.isColorLevel()) {
@@ -733,13 +710,13 @@ public class QIMMusicConfigManager
           if (!((Iterator)localObject1).hasNext()) {
             break label475;
           }
-          ((bojc)((Iterator)localObject1).next()).a(5, true, paramMusicItemInfo);
+          ((QIMMusicConfigManager.LoadMusicStepListener)((Iterator)localObject1).next()).a(5, true, paramMusicItemInfo);
         }
       }
       MusicItemInfo localMusicItemInfo = (MusicItemInfo)((List)localObject1).remove(((List)localObject1).size() - 1);
       if (!TextUtils.isEmpty(localMusicItemInfo.getLocalPath()))
       {
-        zeb.a(new File(localMusicItemInfo.getLocalPath()));
+        FileUtils.a(new File(localMusicItemInfo.getLocalPath()));
         if (QLog.isColorLevel()) {
           QLog.d("QIMMusicConfigManager", 2, "delete file=" + localMusicItemInfo.mMusicName);
         }
@@ -775,6 +752,25 @@ public class QIMMusicConfigManager
     }
   }
   
+  public void a(QIMMusicConfigManager.LoadMusicStepListener paramLoadMusicStepListener)
+  {
+    if ((paramLoadMusicStepListener == null) || (this.jdField_b_of_type_JavaUtilList == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMMusicConfigManager", 2, "addLoadMusicListener listener = null");
+      }
+    }
+    do
+    {
+      return;
+      if (!this.jdField_b_of_type_JavaUtilList.contains(paramLoadMusicStepListener)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QIMMusicConfigManager", 2, "addLoadMusicListener mListeners has listener");
+    return;
+    this.jdField_b_of_type_JavaUtilList.add(paramLoadMusicStepListener);
+  }
+  
   public void a(String paramString)
   {
     this.jdField_a_of_type_JavaUtilArrayList = a(paramString);
@@ -790,23 +786,23 @@ public class QIMMusicConfigManager
     for (boolean bool = true;; bool = false)
     {
       QLog.i("QIMMusicConfigManager", 2, bool);
-      bonn.a(jdField_a_of_type_JavaIoFile, "doodle_music_config.cfg", paramString);
+      QIMFileUtils.a(jdField_a_of_type_JavaIoFile, "doodle_music_config.cfg", paramString);
       PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.sApplication).edit().putInt("show_wstab", this.jdField_c_of_type_Int).commit();
       return;
     }
   }
   
-  public void a(String paramString, boolean paramBoolean, bohc parambohc)
+  public void a(String paramString, boolean paramBoolean, GetSingleFullMusicInfoTask.GetMusicInfoCallback paramGetMusicInfoCallback)
   {
     if (paramBoolean)
     {
       QLog.i("QIMMusicConfigManager", 1, "getSingleFullMusicInfo instance is VsMusicItemInfo though videoStory cmd");
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(paramString);
-      VSNetworkHelper.getInstance().sendRequest(new BatchGetMusicInfoRequest(localArrayList), new boja(this, parambohc));
+      VSNetworkHelper.getInstance().sendRequest(new BatchGetMusicInfoRequest(localArrayList), new QIMMusicConfigManager.2(this, paramGetMusicInfoCallback));
       return;
     }
-    ThreadManager.executeOnSubThread(new GetSingleFullMusicInfoTask(paramString, parambohc));
+    ThreadManager.executeOnSubThread(new GetSingleFullMusicInfoTask(paramString, paramGetMusicInfoCallback));
   }
   
   public MusicItemInfo b(int paramInt)
@@ -822,7 +818,7 @@ public class QIMMusicConfigManager
         localObject1 = localMusicItemInfo;
         while (((Iterator)localObject3).hasNext())
         {
-          localMusicItemInfo = ((boia)((Iterator)localObject3).next()).a(paramInt);
+          localMusicItemInfo = ((DoodleMusicCategoryItem)((Iterator)localObject3).next()).a(paramInt);
           localObject1 = localMusicItemInfo;
           if (localMusicItemInfo != null) {
             localObject1 = localMusicItemInfo;
@@ -834,10 +830,10 @@ public class QIMMusicConfigManager
     finally {}
   }
   
-  public void b(bojc parambojc)
+  public void b(QIMMusicConfigManager.LoadMusicStepListener paramLoadMusicStepListener)
   {
-    if (this.jdField_b_of_type_JavaUtilList.contains(parambojc)) {
-      this.jdField_b_of_type_JavaUtilList.remove(parambojc);
+    if (this.jdField_b_of_type_JavaUtilList.contains(paramLoadMusicStepListener)) {
+      this.jdField_b_of_type_JavaUtilList.remove(paramLoadMusicStepListener);
     }
   }
   
@@ -849,7 +845,7 @@ public class QIMMusicConfigManager
       IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
       localAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
       a();
-      getApp().notifyObservers(boiu.class, 1, true, null);
+      getApp().notifyObservers(CaptureConfigUpdateObserver.class, 1, true, null);
     }
     if (QLog.isDevelopLevel()) {
       QLog.d("QIMMusicConfigManager", 4, "initMusicConfig");
@@ -866,7 +862,7 @@ public class QIMMusicConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QIMMusicConfigManager
  * JD-Core Version:    0.7.0.1
  */

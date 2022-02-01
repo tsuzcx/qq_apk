@@ -1,59 +1,49 @@
 package com.tencent.mobileqq.app;
 
-import android.os.Bundle;
-import aoep;
-import bgth;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg.XmlSerializerWithFilter;
+import com.tencent.mobileqq.structmsg.QQXmlSerializer;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xa2a.oidb_0xa2a.ReqBody;
+import java.io.ByteArrayOutputStream;
 
-public class TroopHandler$7
-  implements Runnable
+final class TroopHandler$7
+  extends StructMsgForGeneralShare
 {
-  public TroopHandler$7(aoep paramaoep, String paramString) {}
-  
-  public void run()
+  public void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    Object localObject = (bgth)this.this$0.app.getManager(QQManagerFactory.TROOP_ONLINE_MEMBER_MANAGER);
-    if (NetConnInfoCenter.getServerTime() < ((bgth)localObject).d(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopHandler", 2, "getAllGameOnlineMemberList, too frequency");
-      }
-      localObject = ((bgth)localObject).c(this.a);
-      this.this$0.notifyUI(102, true, new Object[] { this.a, localObject });
-      return;
-    }
+    AbsStructMsg.XmlSerializerWithFilter localXmlSerializerWithFilter = new AbsStructMsg.XmlSerializerWithFilter(this, new QQXmlSerializer());
     try
     {
-      localObject = new oidb_0xa2a.ReqBody();
-      ((oidb_0xa2a.ReqBody)localObject).group_id.set(Long.valueOf(this.a).longValue());
-      ((oidb_0xa2a.ReqBody)localObject).is_private.set(TroopInfo.isQidianPrivateTroop(this.this$0.app, this.a));
-      TroopInfo localTroopInfo = ((TroopManager)this.this$0.app.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.a);
-      if (localTroopInfo != null)
+      localXmlSerializerWithFilter.setOutput(paramByteArrayOutputStream, paramString);
+      localXmlSerializerWithFilter.startDocument(paramString, null);
+      localXmlSerializerWithFilter.startTag(null, "msg");
+      localXmlSerializerWithFilter.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localXmlSerializerWithFilter.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
+      if (this.mMsgBrief == null) {}
+      for (paramByteArrayOutputStream = "";; paramByteArrayOutputStream = this.mMsgBrief)
       {
-        ((oidb_0xa2a.ReqBody)localObject).hok_appid.set((int)localTroopInfo.hlGuildAppid);
-        ((oidb_0xa2a.ReqBody)localObject).hok_type.set((int)localTroopInfo.hlGuildSubType);
+        localXmlSerializerWithFilter.attribute(null, "brief", paramByteArrayOutputStream);
+        toContentXml(localXmlSerializerWithFilter);
+        localXmlSerializerWithFilter.startTag(null, "source");
+        localXmlSerializerWithFilter.endTag(null, "source");
+        localXmlSerializerWithFilter.endTag(null, "msg");
+        localXmlSerializerWithFilter.endDocument();
+        localXmlSerializerWithFilter.flush();
+        return;
       }
-      localObject = this.this$0.makeOIDBPkg("OidbSvc.0xa2a_6", 2602, 6, ((oidb_0xa2a.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).extraData.putString("troopUin", this.a);
-      this.this$0.sendPbReq((ToServiceMsg)localObject);
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramByteArrayOutputStream)
     {
-      QLog.i("TroopHandler", 1, "getAllGameOnlineMemberList, e=" + localException.toString());
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopHandler", 2, paramByteArrayOutputStream.getMessage(), paramByteArrayOutputStream);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopHandler.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,21 @@
 package com.tencent.mobileqq.app;
 
-import aoep;
-import aofb;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.RspBody;
-import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.ToastInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class TroopManager$1
-  implements Runnable
+final class TroopManager$1
+  implements DialogInterface.OnClickListener
 {
-  TroopManager$1(TroopManager paramTroopManager) {}
+  TroopManager$1(TroopManager paramTroopManager, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = this.this$0.jdField_a_of_type_JavaUtilMap.values();
-    long l = NetConnInfoCenter.getServerTime();
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-    {
-      QLog.e(".troop.survey", 1, "Error: check survey list expire, app is null!");
-      return;
-    }
-    aoep localaoep = (aoep)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-    if (localaoep == null)
-    {
-      QLog.e(".troop.survey", 1, "Error: check survey list expire, troop handler is null!");
-      return;
-    }
-    localObject = ((Collection)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      oidb_cmd0xb36.RspBody localRspBody = (oidb_cmd0xb36.RspBody)((Iterator)localObject).next();
-      if ((localRspBody.toast.expired.has()) && (localRspBody.toast.expired.get() < l))
-      {
-        String str = String.valueOf(localRspBody.group_id.get());
-        if (QLog.isColorLevel()) {
-          QLog.d(".troop.survey", 2, new Object[] { "group id ", str, "request survey toast, expiredTime: ", Integer.valueOf(localRspBody.toast.expired.get()) });
-        }
-        aofb.a(localaoep, str, 0);
-      }
-    }
-    this.this$0.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.1
  * JD-Core Version:    0.7.0.1
  */

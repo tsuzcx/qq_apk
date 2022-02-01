@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.ui;
 
-import aind;
-import ainl;
-import ainm;
-import aioe;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -18,6 +14,8 @@ import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.listeners.VoiceTextScrollerListener;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.utils.ReportUtils;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.widget.XPanelContainer;
 
@@ -26,19 +24,19 @@ public class VoiceTextEditScrollerView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private aind jdField_a_of_type_Aind;
   private Context jdField_a_of_type_AndroidContentContext;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private boolean jdField_a_of_type_Boolean;
+  private VoiceTextScrollerListener jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener;
+  private boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private float jdField_c_of_type_Float;
   private int jdField_c_of_type_Int = -1;
   private boolean jdField_c_of_type_Boolean = true;
   private float jdField_d_of_type_Float;
   private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean;
+  private boolean jdField_d_of_type_Boolean = false;
   private float jdField_e_of_type_Float;
   private int jdField_e_of_type_Int = -1;
   private float f;
@@ -84,8 +82,8 @@ public class VoiceTextEditScrollerView
     int i = XPanelContainer.jdField_a_of_type_Int;
     int j = getHeight();
     int k = getHeight();
-    if (this.jdField_a_of_type_Aind != null) {
-      this.jdField_a_of_type_Aind.a(this.jdField_b_of_type_Int - i - paramInt, j - i, k);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener.a(this.jdField_b_of_type_Int - i - paramInt, j - i, k);
     }
     b();
   }
@@ -108,8 +106,8 @@ public class VoiceTextEditScrollerView
     this.f = -1.0F;
     this.jdField_b_of_type_Boolean = false;
     d(paramMotionEvent);
-    if (this.jdField_a_of_type_Aind != null) {
-      this.jdField_a_of_type_Aind.a(this.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener.a(this.jdField_b_of_type_Int);
     }
   }
   
@@ -126,13 +124,13 @@ public class VoiceTextEditScrollerView
       if (this.jdField_d_of_type_Boolean)
       {
         this.jdField_d_of_type_Boolean = false;
-        aioe.a("0X800A8A0", 3, 0);
+        ReportUtils.a("0X800A8A0", 3, 0);
         return;
       }
-      aioe.a("0X800A8A0", 2, 0);
+      ReportUtils.a("0X800A8A0", 2, 0);
       return;
     }
-    aioe.a("0X800A8A0", 1, 0);
+    ReportUtils.a("0X800A8A0", 1, 0);
   }
   
   private void b(MotionEvent paramMotionEvent)
@@ -169,8 +167,8 @@ public class VoiceTextEditScrollerView
   {
     if (this.jdField_c_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Aind != null) {
-        this.jdField_a_of_type_Aind.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener.a();
       }
       this.jdField_c_of_type_Boolean = false;
     }
@@ -178,7 +176,7 @@ public class VoiceTextEditScrollerView
   
   private void c(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Aind != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener != null)
     {
       c();
       if (a(paramMotionEvent.getRawY())) {
@@ -191,7 +189,7 @@ public class VoiceTextEditScrollerView
     }
     int i = this.jdField_d_of_type_Int;
     int j = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_Aind.a(i - j, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener.a(i - j, this.jdField_c_of_type_Int);
   }
   
   private void d(MotionEvent paramMotionEvent)
@@ -203,9 +201,9 @@ public class VoiceTextEditScrollerView
   {
     ValueAnimator localValueAnimator = ObjectAnimator.ofFloat(new float[] { paramInt1, paramInt2 }).setDuration(paramInt6);
     localValueAnimator.setInterpolator(new DecelerateInterpolator());
-    localValueAnimator.addUpdateListener(new ainl(this, paramInt4, paramInt3, paramView));
+    localValueAnimator.addUpdateListener(new VoiceTextEditScrollerView.1(this, paramInt4, paramInt3, paramView));
     localValueAnimator.start();
-    localValueAnimator.addListener(new ainm(this, paramInt5));
+    localValueAnimator.addListener(new VoiceTextEditScrollerView.2(this, paramInt5));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -239,9 +237,9 @@ public class VoiceTextEditScrollerView
     }
   }
   
-  public void setListener(aind paramaind)
+  public void setListener(VoiceTextScrollerListener paramVoiceTextScrollerListener)
   {
-    this.jdField_a_of_type_Aind = paramaind;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener = paramVoiceTextScrollerListener;
   }
   
   public void setMaskClick(boolean paramBoolean)
@@ -268,7 +266,7 @@ public class VoiceTextEditScrollerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextEditScrollerView
  * JD-Core Version:    0.7.0.1
  */

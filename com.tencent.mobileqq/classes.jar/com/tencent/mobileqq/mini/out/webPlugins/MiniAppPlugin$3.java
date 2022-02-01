@@ -2,11 +2,11 @@ package com.tencent.mobileqq.mini.out.webPlugins;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import ascz;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppPlugin$3
-  extends ascz
+  extends Client.OnRemoteRespObserver
 {
   MiniAppPlugin$3(MiniAppPlugin paramMiniAppPlugin) {}
   

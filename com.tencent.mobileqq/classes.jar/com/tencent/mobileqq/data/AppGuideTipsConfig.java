@@ -14,7 +14,7 @@ public class AppGuideTipsConfig
   public static final String TAIL_ID = "app_tail_id";
   public static final String TAIL_QIM_ID = "app_qim_tail_id";
   public static final String TIPS_TYPE_TIM = "1";
-  public int addCount;
+  public int addCount = 0;
   @notColumn
   public String aioTypeStr;
   @notColumn
@@ -23,7 +23,7 @@ public class AppGuideTipsConfig
   public boolean allow;
   public long duration;
   public long lastAddTime;
-  public int maxCount;
+  public int maxCount = 0;
   @notColumn
   public Map<Integer, Boolean> msgTypeMap = new HashMap();
   public String msgTypeStr;
@@ -37,7 +37,7 @@ public class AppGuideTipsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.AppGuideTipsConfig
  * JD-Core Version:    0.7.0.1
  */

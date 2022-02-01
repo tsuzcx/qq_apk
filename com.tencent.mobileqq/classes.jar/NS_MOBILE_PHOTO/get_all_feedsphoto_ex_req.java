@@ -11,16 +11,16 @@ public final class get_all_feedsphoto_ex_req
 {
   static Map<String, String> cache_mapEx = new HashMap();
   static int cache_req_type = 0;
-  public int album_show_type;
-  public int appid;
+  public int album_show_type = 0;
+  public int appid = 0;
   public String attach_info = "";
-  public int count;
-  public int extrance_type;
-  public Map<String, String> mapEx;
-  public int refresh_type;
+  public int count = 0;
+  public int extrance_type = 0;
+  public Map<String, String> mapEx = null;
+  public int refresh_type = 0;
   public int req_type = 1;
-  public boolean timeline_on;
-  public long uin;
+  public boolean timeline_on = false;
+  public long uin = 0L;
   
   static
   {

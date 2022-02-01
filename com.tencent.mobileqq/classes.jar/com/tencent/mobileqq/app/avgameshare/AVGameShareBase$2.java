@@ -2,22 +2,21 @@ package com.tencent.mobileqq.app.avgameshare;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import aoji;
-import bdla;
-import bisl;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
-public class AVGameShareBase$2
+class AVGameShareBase$2
   implements Runnable
 {
-  public AVGameShareBase$2(aoji paramaoji, Map paramMap, int paramInt, String paramString) {}
+  AVGameShareBase$2(AVGameShareBase paramAVGameShareBase, Map paramMap, int paramInt, String paramString) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Bisl != null) && (this.this$0.jdField_a_of_type_Bisl.isShowing())) {
-      this.this$0.jdField_a_of_type_Bisl.dismiss();
+    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
     this.this$0.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
     Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
@@ -49,7 +48,7 @@ public class AVGameShareBase$2
           if (this.jdField_a_of_type_Int == 9) {}
           for (localObject1 = "3";; localObject1 = "4")
           {
-            bdla.b(null, "dc00898", "", "", "0X800B068", "0X800B068", 0, 0, (String)localObject1, "", "", "");
+            ReportController.b(null, "dc00898", "", "", "0X800B068", "0X800B068", 0, 0, (String)localObject1, "", "", "");
             return;
             localObject1 = (String)localObject1 + "的派对已开始，你在等什么";
             break;
@@ -59,7 +58,7 @@ public class AVGameShareBase$2
         if (this.jdField_a_of_type_Int == 9) {}
         for (localObject1 = "3";; localObject1 = "4")
         {
-          bdla.b(null, "dc00898", "", "", "0X800B064", "0X800B064", i, 0, (String)localObject1, "", "", "");
+          ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", i, 0, (String)localObject1, "", "", "");
           return;
         }
         Object localObject3 = localObject1;
@@ -71,7 +70,7 @@ public class AVGameShareBase$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareBase.2
  * JD-Core Version:    0.7.0.1
  */

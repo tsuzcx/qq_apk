@@ -8,13 +8,13 @@ public final class MobileContactsFriendInfo
   extends JceStruct
 {
   static byte[] cache_MobileNoMask;
-  public byte[] MobileNoMask;
+  public byte[] MobileNoMask = null;
   public String QQ = "";
   public int accountAbi = 0;
-  public long bindingDate;
+  public long bindingDate = 0L;
   public String contactsInfoEncrypt = "";
-  public long isRecommend;
-  public long originBinder;
+  public long isRecommend = 0L;
+  public long originBinder = 0L;
   
   public MobileContactsFriendInfo() {}
   

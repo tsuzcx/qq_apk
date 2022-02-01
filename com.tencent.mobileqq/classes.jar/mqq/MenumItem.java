@@ -8,10 +8,10 @@ public final class MenumItem
   extends JceStruct
 {
   public String icon = "";
-  public int item_id;
+  public int item_id = 0;
   public String jumpurl = "";
   public String title = "";
-  public int user_group;
+  public int user_group = 0;
   
   public MenumItem() {}
   

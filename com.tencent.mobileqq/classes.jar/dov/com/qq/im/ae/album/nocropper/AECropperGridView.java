@@ -25,7 +25,7 @@ public class AECropperGridView
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private Runnable jdField_a_of_type_JavaLangRunnable = new AECropperGridView.1(this);
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int b = 200;
   private int c = 3;
   
@@ -108,7 +108,7 @@ public class AECropperGridView
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int i = getContext().getResources().getConfiguration().orientation;
@@ -143,7 +143,7 @@ public class AECropperGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.nocropper.AECropperGridView
  * JD-Core Version:    0.7.0.1
  */

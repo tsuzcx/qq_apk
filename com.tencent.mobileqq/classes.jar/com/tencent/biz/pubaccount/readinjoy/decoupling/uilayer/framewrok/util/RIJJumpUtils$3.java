@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util;
 
-import pra;
-
-public final class RIJJumpUtils$3
+final class RIJJumpUtils$3
   implements Runnable
 {
-  public RIJJumpUtils$3(String paramString1, String paramString2, String paramString3, String paramString4, pra parampra) {}
+  RIJJumpUtils$3(String paramString1, String paramString2, String paramString3, String paramString4, RIJJumpUtils.NativeWebVideoCoverGetCallback paramNativeWebVideoCoverGetCallback) {}
   
   /* Error */
   public void run()
@@ -137,10 +135,10 @@ public final class RIJJumpUtils$3
     //   261: invokespecial 135	java/net/URL:<init>	(Ljava/lang/String;)V
     //   264: pop
     //   265: aload_0
-    //   266: getfield 24	com/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/framewrok/util/RIJJumpUtils$3:jdField_a_of_type_Pra	Lpra;
+    //   266: getfield 24	com/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/framewrok/util/RIJJumpUtils$3:jdField_a_of_type_ComTencentBizPubaccountReadinjoyDecouplingUilayerFramewrokUtilRIJJumpUtils$NativeWebVideoCoverGetCallback	Lcom/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/framewrok/util/RIJJumpUtils$NativeWebVideoCoverGetCallback;
     //   269: ifnull +21 -> 290
     //   272: aload_0
-    //   273: getfield 24	com/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/framewrok/util/RIJJumpUtils$3:jdField_a_of_type_Pra	Lpra;
+    //   273: getfield 24	com/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/framewrok/util/RIJJumpUtils$3:jdField_a_of_type_ComTencentBizPubaccountReadinjoyDecouplingUilayerFramewrokUtilRIJJumpUtils$NativeWebVideoCoverGetCallback	Lcom/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/framewrok/util/RIJJumpUtils$NativeWebVideoCoverGetCallback;
     //   276: iload_3
     //   277: aload_0
     //   278: getfield 22	com/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/framewrok/util/RIJJumpUtils$3:d	Ljava/lang/String;
@@ -206,7 +204,7 @@ public final class RIJJumpUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJJumpUtils.3
  * JD-Core Version:    0.7.0.1
  */

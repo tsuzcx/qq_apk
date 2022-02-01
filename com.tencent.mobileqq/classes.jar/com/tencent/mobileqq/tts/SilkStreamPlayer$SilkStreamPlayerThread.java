@@ -2,9 +2,8 @@ package com.tencent.mobileqq.tts;
 
 import android.app.Application;
 import android.media.AudioTrack;
-import bgul;
-import bhhd;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qqaudio.QQAudioUtils;
 import com.tencent.mobileqq.utils.SilkCodecWrapper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
@@ -16,23 +15,23 @@ class SilkStreamPlayer$SilkStreamPlayerThread
 {
   private int jdField_a_of_type_Int;
   private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
-  private bgul jdField_a_of_type_Bgul;
+  private SilkStreamPlayer.OnSilkStreamPlay jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay;
   private SilkCodecWrapper jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper;
   private InputStream jdField_a_of_type_JavaIoInputStream;
   private HttpsURLConnection jdField_a_of_type_JavaxNetSslHttpsURLConnection;
   private volatile boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private byte[] jdField_b_of_type_ArrayOfByte;
   private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private int d;
   
-  public SilkStreamPlayer$SilkStreamPlayerThread(SilkStreamPlayer paramSilkStreamPlayer, Application paramApplication, bgul parambgul, int paramInt1, int paramInt2)
+  public SilkStreamPlayer$SilkStreamPlayerThread(SilkStreamPlayer paramSilkStreamPlayer, Application paramApplication, SilkStreamPlayer.OnSilkStreamPlay paramOnSilkStreamPlay, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper = new SilkCodecWrapper(paramApplication, false);
-    this.jdField_a_of_type_Bgul = parambgul;
+    this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay = paramOnSilkStreamPlay;
     this.jdField_c_of_type_Int = paramInt1;
     this.d = paramInt2;
   }
@@ -42,7 +41,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     if (!this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Int = bhhd.a(paramInt);
+      this.jdField_a_of_type_Int = QQAudioUtils.a(paramInt);
       this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
       this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
     }
@@ -124,7 +123,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
         }
         QLog.d("SilkStreamPlayer", 2, paramInputStream, new Object[0]);
         return;
-        i = bhhd.a(paramArrayOfByte);
+        i = QQAudioUtils.a(paramArrayOfByte);
         if ((i >= 0) && (i <= this.jdField_a_of_type_ArrayOfByte.length)) {
           break;
         }
@@ -171,12 +170,12 @@ class SilkStreamPlayer$SilkStreamPlayerThread
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 163	bgup:a	()Lbgup;
+    //   1: invokestatic 163	com/tencent/mobileqq/tts/TtsFileCache:a	()Lcom/tencent/mobileqq/tts/TtsFileCache;
     //   4: aload_0
     //   5: getfield 24	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:this$0	Lcom/tencent/mobileqq/tts/SilkStreamPlayer;
     //   8: invokestatic 168	com/tencent/mobileqq/tts/SilkStreamPlayer:a	(Lcom/tencent/mobileqq/tts/SilkStreamPlayer;)Ljava/lang/String;
     //   11: invokestatic 174	com/tencent/commonsdk/util/MD5Coding:encodeHexStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   14: invokevirtual 177	bgup:a	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   14: invokevirtual 177	com/tencent/mobileqq/tts/TtsFileCache:a	(Ljava/lang/String;)Ljava/io/InputStream;
     //   17: putfield 179	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   20: aload_0
     //   21: getfield 179	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
@@ -186,43 +185,43 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   31: iconst_1
     //   32: istore_2
     //   33: aload_0
-    //   34: getfield 34	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
+    //   34: getfield 38	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
     //   37: ifnull +17 -> 54
     //   40: aload_0
-    //   41: getfield 34	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
+    //   41: getfield 38	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
     //   44: invokevirtual 180	com/tencent/mobileqq/utils/SilkCodecWrapper:close	()V
     //   47: aload_0
-    //   48: getfield 34	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
+    //   48: getfield 38	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
     //   51: invokevirtual 182	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
     //   54: aload_0
     //   55: iconst_1
-    //   56: putfield 70	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
+    //   56: putfield 72	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
     //   59: new 184	java/io/ByteArrayOutputStream
     //   62: dup
     //   63: invokespecial 185	java/io/ByteArrayOutputStream:<init>	()V
     //   66: astore 8
-    //   68: new 187	bguj
+    //   68: new 187	com/tencent/mobileqq/tts/ChunkedInputStream
     //   71: dup
     //   72: aload_0
     //   73: getfield 179	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   76: invokespecial 190	bguj:<init>	(Ljava/io/InputStream;)V
+    //   76: invokespecial 190	com/tencent/mobileqq/tts/ChunkedInputStream:<init>	(Ljava/io/InputStream;)V
     //   79: astore 9
-    //   81: new 192	bguk
+    //   81: new 192	com/tencent/mobileqq/tts/ChunkedOutputStream
     //   84: dup
     //   85: aload 8
-    //   87: invokespecial 195	bguk:<init>	(Ljava/io/OutputStream;)V
+    //   87: invokespecial 195	com/tencent/mobileqq/tts/ChunkedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   90: astore 10
     //   92: iconst_1
     //   93: istore_1
     //   94: aload_0
-    //   95: getfield 70	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
+    //   95: getfield 72	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
     //   98: ifeq +939 -> 1037
-    //   101: getstatic 65	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   104: invokestatic 201	com/tencent/mobileqq/utils/NetworkUtil:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   101: getstatic 67	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   104: invokestatic 201	com/tencent/mobileqq/utils/NetworkUtil:g	(Landroid/content/Context;)Z
     //   107: ifne +440 -> 547
     //   110: aload_0
     //   111: iconst_0
-    //   112: putfield 70	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
+    //   112: putfield 72	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
     //   115: invokestatic 207	com/tencent/mobileqq/app/ThreadManagerV2:getUIHandlerV2	()Landroid/os/Handler;
     //   118: new 209	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread$2
     //   121: dup
@@ -236,15 +235,15 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   133: ifne +22 -> 155
     //   136: iload_1
     //   137: ifeq +18 -> 155
-    //   140: invokestatic 163	bgup:a	()Lbgup;
+    //   140: invokestatic 163	com/tencent/mobileqq/tts/TtsFileCache:a	()Lcom/tencent/mobileqq/tts/TtsFileCache;
     //   143: aload_0
     //   144: getfield 24	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:this$0	Lcom/tencent/mobileqq/tts/SilkStreamPlayer;
     //   147: invokestatic 168	com/tencent/mobileqq/tts/SilkStreamPlayer:a	(Lcom/tencent/mobileqq/tts/SilkStreamPlayer;)Ljava/lang/String;
     //   150: aload 8
-    //   152: invokevirtual 221	bgup:a	(Ljava/lang/String;Ljava/io/ByteArrayOutputStream;)V
+    //   152: invokevirtual 221	com/tencent/mobileqq/tts/TtsFileCache:a	(Ljava/lang/String;Ljava/io/ByteArrayOutputStream;)V
     //   155: aload_0
     //   156: iconst_0
-    //   157: putfield 70	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
+    //   157: putfield 72	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
     //   160: aload_0
     //   161: getfield 91	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_AndroidMediaAudioTrack	Landroid/media/AudioTrack;
     //   164: ifnull +89 -> 253
@@ -265,13 +264,13 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   199: getfield 91	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_AndroidMediaAudioTrack	Landroid/media/AudioTrack;
     //   202: invokevirtual 227	android/media/AudioTrack:release	()V
     //   205: aload_0
-    //   206: getfield 34	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
+    //   206: getfield 38	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
     //   209: ifnull +10 -> 219
     //   212: aload_0
-    //   213: getfield 34	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
+    //   213: getfield 38	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
     //   216: invokevirtual 182	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
     //   219: aload 9
-    //   221: invokevirtual 228	bguj:close	()V
+    //   221: invokevirtual 228	com/tencent/mobileqq/tts/ChunkedInputStream:close	()V
     //   224: aload_0
     //   225: getfield 179	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   228: invokevirtual 118	java/io/InputStream:available	()I
@@ -286,22 +285,22 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   249: aconst_null
     //   250: putfield 91	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_AndroidMediaAudioTrack	Landroid/media/AudioTrack;
     //   253: aload_0
-    //   254: getfield 34	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
+    //   254: getfield 38	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
     //   257: ifnull +10 -> 267
     //   260: aload_0
-    //   261: getfield 34	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
+    //   261: getfield 38	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper	Lcom/tencent/mobileqq/utils/SilkCodecWrapper;
     //   264: invokevirtual 237	com/tencent/mobileqq/utils/SilkCodecWrapper:b	()V
     //   267: aload_0
     //   268: iconst_0
-    //   269: putfield 46	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_b_of_type_Boolean	Z
+    //   269: putfield 29	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_b_of_type_Boolean	Z
     //   272: aload_0
     //   273: iconst_0
-    //   274: putfield 83	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_c_of_type_Boolean	Z
+    //   274: putfield 31	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_c_of_type_Boolean	Z
     //   277: aload_0
-    //   278: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   278: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   281: ifnull +19 -> 300
     //   284: aload_0
-    //   285: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   285: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   288: aload_0
     //   289: getfield 24	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:this$0	Lcom/tencent/mobileqq/tts/SilkStreamPlayer;
     //   292: invokestatic 168	com/tencent/mobileqq/tts/SilkStreamPlayer:a	(Lcom/tencent/mobileqq/tts/SilkStreamPlayer;)Ljava/lang/String;
@@ -310,10 +309,10 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   301: iconst_3
     //   302: istore_1
     //   303: aload_0
-    //   304: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   304: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   307: ifnull +12 -> 319
     //   310: aload_0
-    //   311: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   311: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   314: invokeinterface 243 1 0
     //   319: aload_0
     //   320: new 245	java/net/URL
@@ -329,14 +328,14 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   343: aload_0
     //   344: getfield 230	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_JavaxNetSslHttpsURLConnection	Ljavax/net/ssl/HttpsURLConnection;
     //   347: aload_0
-    //   348: getfield 38	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_c_of_type_Int	I
+    //   348: getfield 42	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_c_of_type_Int	I
     //   351: invokestatic 256	com/tencent/mobileqq/tts/SilkStreamPlayer:a	(Lcom/tencent/mobileqq/tts/SilkStreamPlayer;Ljavax/net/ssl/HttpsURLConnection;I)Ljava/io/InputStream;
     //   354: putfield 179	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   357: aload_0
-    //   358: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   358: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   361: ifnull +19 -> 380
     //   364: aload_0
-    //   365: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   365: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   368: aload_0
     //   369: getfield 24	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:this$0	Lcom/tencent/mobileqq/tts/SilkStreamPlayer;
     //   372: invokestatic 168	com/tencent/mobileqq/tts/SilkStreamPlayer:a	(Lcom/tencent/mobileqq/tts/SilkStreamPlayer;)Ljava/lang/String;
@@ -360,7 +359,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   410: ifnonnull +632 -> 1042
     //   413: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   416: ifeq -116 -> 300
-    //   419: ldc 72
+    //   419: ldc 74
     //   421: iconst_1
     //   422: ldc_w 260
     //   425: invokestatic 134	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -374,15 +373,15 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   443: return
     //   444: astore 5
     //   446: aload_0
-    //   447: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   447: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   450: ifnull +19 -> 469
     //   453: aload_0
-    //   454: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   454: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   457: aload_0
     //   458: getfield 24	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:this$0	Lcom/tencent/mobileqq/tts/SilkStreamPlayer;
     //   461: invokestatic 168	com/tencent/mobileqq/tts/SilkStreamPlayer:a	(Lcom/tencent/mobileqq/tts/SilkStreamPlayer;)Ljava/lang/String;
     //   464: invokeinterface 258 2 0
-    //   469: ldc 72
+    //   469: ldc 74
     //   471: iconst_2
     //   472: aload 5
     //   474: iconst_0
@@ -391,15 +390,15 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   481: goto -82 -> 399
     //   484: astore 5
     //   486: aload_0
-    //   487: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   487: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   490: ifnull +19 -> 509
     //   493: aload_0
-    //   494: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   494: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   497: aload_0
     //   498: getfield 24	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:this$0	Lcom/tencent/mobileqq/tts/SilkStreamPlayer;
     //   501: invokestatic 168	com/tencent/mobileqq/tts/SilkStreamPlayer:a	(Lcom/tencent/mobileqq/tts/SilkStreamPlayer;)Ljava/lang/String;
     //   504: invokeinterface 258 2 0
-    //   509: ldc 72
+    //   509: ldc 74
     //   511: iconst_2
     //   512: aload 5
     //   514: iconst_0
@@ -409,7 +408,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   524: astore 5
     //   526: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   529: ifeq -475 -> 54
-    //   532: ldc 72
+    //   532: ldc 74
     //   534: iconst_1
     //   535: aload 5
     //   537: iconst_0
@@ -417,7 +416,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   541: invokestatic 265	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   544: goto -490 -> 54
     //   547: aload_0
-    //   548: getfield 70	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
+    //   548: getfield 72	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
     //   551: ifne +8 -> 559
     //   554: iconst_0
     //   555: istore_1
@@ -428,17 +427,17 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   564: aload 6
     //   566: astore 5
     //   568: aload_0
-    //   569: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   569: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   572: ifnull +16 -> 588
     //   575: aload 6
     //   577: astore 5
     //   579: aload_0
-    //   580: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   580: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   583: invokeinterface 243 1 0
     //   588: aload 6
     //   590: astore 5
     //   592: aload 9
-    //   594: invokevirtual 268	bguj:a	()[B
+    //   594: invokevirtual 268	com/tencent/mobileqq/tts/ChunkedInputStream:a	()[B
     //   597: astore 7
     //   599: iload_2
     //   600: ifne +23 -> 623
@@ -451,18 +450,18 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   616: iconst_0
     //   617: aload 7
     //   619: arraylength
-    //   620: invokevirtual 271	bguk:b	([BII)V
+    //   620: invokevirtual 271	com/tencent/mobileqq/tts/ChunkedOutputStream:b	([BII)V
     //   623: aload 7
     //   625: astore 6
     //   627: aload 7
     //   629: astore 5
     //   631: aload_0
-    //   632: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   632: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   635: ifnull +27 -> 662
     //   638: aload 7
     //   640: astore 5
     //   642: aload_0
-    //   643: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   643: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   646: aload_0
     //   647: getfield 24	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:this$0	Lcom/tencent/mobileqq/tts/SilkStreamPlayer;
     //   650: invokestatic 168	com/tencent/mobileqq/tts/SilkStreamPlayer:a	(Lcom/tencent/mobileqq/tts/SilkStreamPlayer;)Ljava/lang/String;
@@ -476,14 +475,14 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   670: ifne +83 -> 753
     //   673: aload_0
     //   674: iconst_0
-    //   675: putfield 70	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
+    //   675: putfield 72	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
     //   678: aload 10
-    //   680: invokevirtual 272	bguk:close	()V
+    //   680: invokevirtual 272	com/tencent/mobileqq/tts/ChunkedOutputStream:close	()V
     //   683: iconst_1
     //   684: istore_1
     //   685: goto -553 -> 132
     //   688: astore 6
-    //   690: ldc 72
+    //   690: ldc 74
     //   692: iconst_1
     //   693: ldc_w 274
     //   696: aload 6
@@ -491,10 +490,10 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   701: aload 5
     //   703: astore 6
     //   705: aload_0
-    //   706: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   706: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   709: ifnull -47 -> 662
     //   712: aload_0
-    //   713: getfield 36	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Bgul	Lbgul;
+    //   713: getfield 40	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay	Lcom/tencent/mobileqq/tts/SilkStreamPlayer$OnSilkStreamPlay;
     //   716: aload_0
     //   717: getfield 24	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:this$0	Lcom/tencent/mobileqq/tts/SilkStreamPlayer;
     //   720: invokestatic 168	com/tencent/mobileqq/tts/SilkStreamPlayer:a	(Lcom/tencent/mobileqq/tts/SilkStreamPlayer;)Ljava/lang/String;
@@ -503,7 +502,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   730: astore 6
     //   732: goto -70 -> 662
     //   735: astore 5
-    //   737: ldc 72
+    //   737: ldc 74
     //   739: iconst_1
     //   740: ldc_w 278
     //   743: aload 5
@@ -527,12 +526,12 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   780: ifne +45 -> 825
     //   783: aload_0
     //   784: iconst_0
-    //   785: putfield 70	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
+    //   785: putfield 72	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
     //   788: iconst_0
     //   789: istore_1
     //   790: goto -658 -> 132
     //   793: astore 7
-    //   795: ldc 72
+    //   795: ldc 74
     //   797: iconst_1
     //   798: new 296	java/lang/StringBuilder
     //   801: dup
@@ -551,7 +550,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   831: iload_3
     //   832: invokespecial 314	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:b	(I)V
     //   835: aload_0
-    //   836: getfield 70	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
+    //   836: getfield 72	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
     //   839: ifne +8 -> 847
     //   842: iconst_0
     //   843: istore_1
@@ -565,10 +564,10 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   864: ifgt +28 -> 892
     //   867: aload_0
     //   868: iconst_0
-    //   869: putfield 70	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
+    //   869: putfield 72	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
     //   872: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   875: ifeq +162 -> 1037
-    //   878: ldc 72
+    //   878: ldc 74
     //   880: iconst_1
     //   881: ldc_w 330
     //   884: invokestatic 155	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -582,7 +581,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   897: invokeinterface 328 1 0
     //   902: if_icmpge +109 -> 1011
     //   905: aload_0
-    //   906: getfield 70	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
+    //   906: getfield 72	com/tencent/mobileqq/tts/SilkStreamPlayer$SilkStreamPlayerThread:jdField_a_of_type_Boolean	Z
     //   909: ifeq +102 -> 1011
     //   912: aload 7
     //   914: iload_3
@@ -637,7 +636,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   1014: astore 5
     //   1016: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1019: ifeq -771 -> 248
-    //   1022: ldc 72
+    //   1022: ldc 74
     //   1024: iconst_1
     //   1025: aload 5
     //   1027: iconst_0
@@ -673,8 +672,8 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     //   793	1	7	localInvalidProtocolBufferMicroException	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
     //   855	58	7	localList	java.util.List
     //   66	85	8	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   79	514	9	localbguj	bguj
-    //   90	589	10	localbguk	bguk
+    //   79	514	9	localChunkedInputStream	ChunkedInputStream
+    //   90	589	10	localChunkedOutputStream	ChunkedOutputStream
     // Exception table:
     //   from	to	target	type
     //   0	26	444	java/io/IOException

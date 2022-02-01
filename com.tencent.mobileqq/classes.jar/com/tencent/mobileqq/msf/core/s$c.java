@@ -1,56 +1,25 @@
 package com.tencent.mobileqq.msf.core;
 
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.msf.sdk.report.a;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Properties;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
 
-public class s$c
-  implements Runnable
+class s$c
+  extends PhoneStateListener
 {
-  public static final int a = 5000;
-  private static final String b = "SocketReaderOldMonitor";
+  private s$c(s params) {}
   
-  public void run()
+  public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
   {
-    try
-    {
-      int i = MsfSdkUtils.getThreadCounts("MsfCoreSocketReaderOld");
-      Properties localProperties;
-      if ((i >= 5) && (s.e()))
-      {
-        s.a(false);
-        QLog.d("SocketReaderOldMonitor", 1, "SocketReader多线程异常 " + i);
-        localProperties = new Properties();
-        localProperties.setProperty("count", String.valueOf(i));
-        localProperties.setProperty("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
-        com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext()).reportKVEvent("msf.core.SocketReaderMultiThreadException", localProperties);
-        a.a(new com.tencent.mobileqq.msf.sdk.report.b("SocketReaderMultiThreadCatchedException"), "SocketReaderMultiThreadCatchedException", "SocketReader5多线程异常");
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("SocketReaderOldMonitor", 1, "SocketReader current " + i);
-        return;
-        if ((i >= 3) && (s.f()))
-        {
-          s.b(false);
-          QLog.d("SocketReaderOldMonitor", 1, "SocketReader多线程异常 " + i);
-          localProperties = new Properties();
-          localProperties.setProperty("count", String.valueOf(i));
-          localProperties.setProperty("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
-          com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext()).reportKVEvent("msf.core.SocketReaderMultiThreadException", localProperties);
-          a.a(new com.tencent.mobileqq.msf.sdk.report.b("SocketReaderMultiThreadCatchedException"), "SocketReaderMultiThreadCatchedException", "SocketReader3多线程异常");
-        }
-      }
-      return;
+    super.onSignalStrengthsChanged(paramSignalStrength);
+    int i = paramSignalStrength.getCdmaDbm();
+    this.a.g = i;
+    int j = paramSignalStrength.getGsmSignalStrength();
+    i = j;
+    if (j == 99) {
+      i = -3;
     }
-    catch (Exception localException)
-    {
-      s.b(false);
-      s.a(false);
-      localException.printStackTrace();
-    }
+    this.a.f = i;
+    this.a.D();
   }
 }
 

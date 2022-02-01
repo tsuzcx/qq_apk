@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
-import Override;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ public class TroopLocationModifyActivity
 {
   long jdField_a_of_type_Long = 0L;
   Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+  Dialog b;
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
@@ -32,6 +33,19 @@ public class TroopLocationModifyActivity
     localIntent.putExtra("troopUin", paramString1);
     localIntent.putExtra("troopLocation", paramString2);
     paramActivity.startActivityForResult(localIntent, paramInt);
+  }
+  
+  protected void b(String paramString)
+  {
+    if (this.jdField_a_of_type_Long == 0L) {
+      return;
+    }
+    a(getString(2131720324));
+    Intent localIntent = new Intent(this, TroopCreateLogicActivity.class);
+    localIntent.putExtra("type", 5);
+    localIntent.putExtra("troop_location", paramString);
+    localIntent.putExtra("troop_uin", this.jdField_a_of_type_Long);
+    startActivityForResult(localIntent, 41);
   }
   
   @Override
@@ -64,7 +78,7 @@ public class TroopLocationModifyActivity
     if (i == 0)
     {
       if (bool) {
-        QQToast.a(this, 2131719738, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131720316, 0).b(getTitleBarHeight());
       }
       for (;;)
       {
@@ -75,20 +89,20 @@ public class TroopLocationModifyActivity
         setResult(-1, localIntent);
         finish();
         break;
-        QQToast.a(this, 2131719743, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131720321, 0).b(getTitleBarHeight());
       }
     }
     if (i == 1002) {
-      str = getString(2131719750);
+      str = getString(2131720328);
     }
     for (;;)
     {
       QQToast.a(this, str, 0).b(getTitleBarHeight());
       break;
       if (bool) {
-        str = getString(2131719737);
+        str = getString(2131720315);
       } else {
-        str = getString(2131719742);
+        str = getString(2131720320);
       }
     }
   }
@@ -106,6 +120,17 @@ public class TroopLocationModifyActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
+  }
+  
+  protected void e()
+  {
+    if (this.b != null)
+    {
+      if (this.b.isShowing()) {
+        this.b.dismiss();
+      }
+      this.b = null;
+    }
   }
   
   @Override

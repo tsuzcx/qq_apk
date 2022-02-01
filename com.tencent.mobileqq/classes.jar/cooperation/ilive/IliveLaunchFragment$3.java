@@ -3,9 +3,8 @@ package cooperation.ilive;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import blul;
-import blvl;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.util.ElapseStat;
 
 class IliveLaunchFragment$3
   implements Runnable
@@ -14,10 +13,10 @@ class IliveLaunchFragment$3
   
   public void run()
   {
-    blvl.a("IliveLaunch executeOnSubThread");
-    blul.a().b();
-    blul.a().a(this.this$0);
-    IliveLaunchFragment.access$102(this.this$0, blul.a().b());
+    ElapseStat.a("IliveLaunch executeOnSubThread");
+    IlivePluginDownloadManager.a().b();
+    IlivePluginDownloadManager.a().a(this.this$0);
+    IliveLaunchFragment.access$102(this.this$0, IlivePluginDownloadManager.a().b());
     QLog.e("IliveLaunchActivity", 1, "onCreateView thread isPluginFileExist = " + IliveLaunchFragment.access$100(this.this$0) + " mIsSoLoadSuccess = " + IliveLaunchFragment.access$200(this.this$0));
     if ((IliveLaunchFragment.access$100(this.this$0)) && (IliveLaunchFragment.access$200(this.this$0)))
     {
@@ -42,12 +41,12 @@ class IliveLaunchFragment$3
       IliveLaunchFragment.access$300(this.this$0);
     }
     IliveLaunchFragment.access$400(this.this$0);
-    blvl.b("IliveLaunch executeOnSubThread");
+    ElapseStat.b("IliveLaunch executeOnSubThread");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -18,12 +17,14 @@ public class QQStoryTakeVideoCloseAnimationActivity
   extends QQStoryBaseActivity
 {
   public static final String a;
-  public static Bitmap b;
+  public static boolean a;
+  public static Bitmap b = null;
   protected ImageView a;
   
   static
   {
     jdField_a_of_type_JavaLangString = AppConstants.SDCARD_FILE_SAVE_TMP_PATH + "qqstory/animation_cover.jpg";
+    jdField_a_of_type_Boolean = false;
   }
   
   @Override
@@ -78,7 +79,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity
  * JD-Core Version:    0.7.0.1
  */

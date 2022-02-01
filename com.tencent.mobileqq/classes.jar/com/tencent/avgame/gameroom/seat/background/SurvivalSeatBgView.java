@@ -3,17 +3,14 @@ package com.tencent.avgame.gameroom.seat.background;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridView;
+import com.tencent.avgame.gameroom.GameRoomViewLayoutParamsDef;
 import com.tencent.qphone.base.util.QLog;
-import nin;
-import nkj;
-import nko;
-import nkp;
 
 public class SurvivalSeatBgView
   extends GridView
 {
-  private nkj jdField_a_of_type_Nkj;
-  private nko jdField_a_of_type_Nko;
+  private ISurvivalSeatBgPresenter jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter;
+  private SurvivalSeatBgGridAdapter jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter;
   
   public SurvivalSeatBgView(Context paramContext)
   {
@@ -36,26 +33,26 @@ public class SurvivalSeatBgView
     setNumColumns(12);
     setVerticalScrollBarEnabled(false);
     setClickable(false);
-    this.jdField_a_of_type_Nkj = new nkp();
-    this.jdField_a_of_type_Nko = new nko(getContext(), this.jdField_a_of_type_Nkj);
+    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter = new SurvivalSeatBgPresenterImp();
+    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter = new SurvivalSeatBgGridAdapter(getContext(), this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter);
   }
   
-  public nkj a()
+  public ISurvivalSeatBgPresenter a()
   {
-    return this.jdField_a_of_type_Nkj;
+    return this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter;
   }
   
   public void a()
   {
-    setAdapter(this.jdField_a_of_type_Nko);
+    setAdapter(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter);
     if (QLog.isDevelopLevel()) {
-      QLog.d("SurvivalSeatBgView", 4, "init SurvivalSeatBgView " + nin.y);
+      QLog.d("SurvivalSeatBgView", 4, "init SurvivalSeatBgView " + GameRoomViewLayoutParamsDef.C);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.background.SurvivalSeatBgView
  * JD-Core Version:    0.7.0.1
  */

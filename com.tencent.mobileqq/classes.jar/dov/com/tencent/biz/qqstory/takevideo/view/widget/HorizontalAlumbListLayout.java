@@ -10,27 +10,24 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bouo;
-import bphj;
-import bphk;
-import bphl;
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowViewController.SlideShowActionListener;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 import java.util.List;
-import yzz;
-import zaf;
 
 public class HorizontalAlumbListLayout
   extends RelativeLayout
-  implements View.OnClickListener, zaf
+  implements View.OnClickListener, SlideShowViewController.SlideShowActionListener
 {
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bouo a;
-  private bphl jdField_a_of_type_Bphl;
+  protected EditVideoUi a;
+  private HorizontalAlumbListLayout.SlideShowAdapter jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout$SlideShowAdapter;
   
   public HorizontalAlumbListLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,14 +44,14 @@ public class HorizontalAlumbListLayout
   private void b()
   {
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561752, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374702));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561884, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375073));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Bphl = new bphl(this, getContext(), this, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bphl);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new bphj(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374701));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bphk(this));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout$SlideShowAdapter = new HorizontalAlumbListLayout.SlideShowAdapter(this, getContext(), this, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout$SlideShowAdapter);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new HorizontalAlumbListLayout.1(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375072));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new HorizontalAlumbListLayout.2(this));
   }
   
   public void a() {}
@@ -70,24 +67,24 @@ public class HorizontalAlumbListLayout
     if (QLog.isColorLevel()) {
       QLog.d("HorizontalAlumbListLayout", 2, "updateData size=" + paramList.size());
     }
-    if ((this.jdField_a_of_type_Bphl != null) && (paramList.size() > 0)) {
-      this.jdField_a_of_type_Bphl.a(paramList);
+    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout$SlideShowAdapter != null) && (paramList.size() > 0)) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout$SlideShowAdapter.a(paramList);
     }
   }
   
   public void onClick(View paramView) {}
   
-  public void setEditVideoUI(bouo parambouo)
+  public void setEditVideoUI(EditVideoUi paramEditVideoUi)
   {
-    this.jdField_a_of_type_Bouo = parambouo;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi = paramEditVideoUi;
   }
   
   public void setTipsContent(TextView paramTextView)
   {
     this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    if (yzz.a().a() == 13)
+    if (SlideShowPhotoListManager.a().a() == 13)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getContext().getString(2131691816), new Object[] { yzz.a().a().size() + "" }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getContext().getString(2131691934), new Object[] { SlideShowPhotoListManager.a().a().size() + "" }));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -103,7 +100,7 @@ public class HorizontalAlumbListLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout
  * JD-Core Version:    0.7.0.1
  */

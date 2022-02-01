@@ -1,15 +1,42 @@
 package com.tencent.mobileqq.troop.troopgame;
 
-import bgfu;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
-public class TroopGameCardConfigProcessor$2
-  implements Runnable
+class TroopGameCardConfigProcessor$2
+  implements TroopGameCardResDownloadManager.IStatusListener
 {
-  public TroopGameCardConfigProcessor$2(bgfu parambgfu) {}
+  TroopGameCardConfigProcessor$2(TroopGameCardConfigProcessor paramTroopGameCardConfigProcessor) {}
   
-  public void run()
+  public void a()
   {
-    bgfu.a(this.this$0, -1);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopGameCardConfigProcessor", 2, "onResDownloadStart");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopGameCardConfigProcessor", 2, "onResDownloadProgress and percent is " + paramInt);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopGameCardConfigProcessor", 2, "onResDownloadReady");
+    }
+    BaseApplicationImpl.getApplication().getSharedPreferences("troop_game_card_sp", 4).edit().putString("resPath", paramString).commit();
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopGameCardConfigProcessor", 1, "onResDownloadFailed");
+    }
   }
 }
 

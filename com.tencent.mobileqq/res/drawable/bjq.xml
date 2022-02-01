@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <size android:height="2.0dip" android:width="@dimen/n5" />
-    <solid android:color="@android:color/transparent" />
-</shape>
+    <item android:state_checked="true" android:drawable="@drawable/g7n" />
+    <item android:state_selected="true" android:drawable="@drawable/g7n" />
+    <item android:drawable="@drawable/g7i" />
+</selector>

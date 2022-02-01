@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
-import bhqx;
-import bhrh;
 import java.util.List;
 
-public class GLDrawableLoaderImpl$6
+class GLDrawableLoaderImpl$6
   implements Runnable
 {
-  public GLDrawableLoaderImpl$6(bhqx parambhqx, bhrh parambhrh) {}
+  GLDrawableLoaderImpl$6(GLDrawableLoaderImpl paramGLDrawableLoaderImpl, GLDrawableProxy.LoaderCallback paramLoaderCallback) {}
   
   public void run()
   {
     if (this.a != null) {
-      synchronized (bhqx.a(this.this$0))
+      synchronized (GLDrawableLoaderImpl.a(this.this$0))
       {
-        bhqx.a(this.this$0).add(this.a);
+        GLDrawableLoaderImpl.a(this.this$0).add(this.a);
         return;
       }
     }
@@ -22,7 +20,7 @@ public class GLDrawableLoaderImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.gldrawable.GLDrawableLoaderImpl.6
  * JD-Core Version:    0.7.0.1
  */

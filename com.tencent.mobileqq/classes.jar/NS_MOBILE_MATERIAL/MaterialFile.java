@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class MaterialFile
   extends JceStruct
 {
-  public int iFileId;
-  public int iFileType;
-  public int iHeight;
-  public int iSize;
-  public int iWidth;
+  public int iFileId = 0;
+  public int iFileType = 0;
+  public int iHeight = 0;
+  public int iSize = 0;
+  public int iWidth = 0;
   public String strMd5 = "";
   public String strName = "";
   public String strUrl = "";

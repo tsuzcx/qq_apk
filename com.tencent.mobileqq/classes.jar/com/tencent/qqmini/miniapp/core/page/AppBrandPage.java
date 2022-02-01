@@ -569,11 +569,10 @@ public class AppBrandPage
     {
       i = 1;
       if ((getApkgInfo() == null) || (getApkgInfo().mMiniAppInfo == null)) {
-        break label141;
+        break label136;
       }
     }
-    label129:
-    label141:
+    label136:
     for (boolean bool1 = getApkgInfo().mMiniAppInfo.isLimitedAccessApp();; bool1 = false)
     {
       if ((i != 0) && (bool1))
@@ -582,7 +581,7 @@ public class AppBrandPage
         label57:
         setSwipeBackEnable(bool1);
         if (i == 0) {
-          break label129;
+          break label124;
         }
         setViewDragHelper(this.mRootContainer, this);
       }
@@ -593,16 +592,60 @@ public class AppBrandPage
         }
         setScrollDirection(j);
         if ((this.mPageGuestProxy != null) && (this.mMiniAppContext != null)) {
-          this.mPageGuestProxy.onLoadUrl(this.mMiniAppContext.getMiniAppInfo());
+          this.mPageGuestProxy.onLoadUrl(this.mMiniAppContext);
         }
         return;
         i = 0;
         break;
         bool1 = true;
         break label57;
+        label124:
         setViewDragHelper(this, this.mContentView);
       }
     }
+  }
+  
+  private void updateTabBar(RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2)
+  {
+    if (this.mTabBar.getNeedShow()) {
+      this.mTabBar.setVisibility(0);
+    }
+    this.mTabBar.setInfo(getApkgInfo().getAppConfigInfo().tabBarInfo);
+    if ("top".equals(getApkgInfo().getAppConfigInfo().tabBarInfo.position)) {
+      if ("default".equals(this.mNavigationStyle))
+      {
+        this.mRootView.addView(this.centerLayout);
+        this.mRootView.addView(this.mTabBar);
+        this.mRootView.addView(this.mNavigationBar);
+        paramLayoutParams1.addRule(3, this.mTabBar.getId());
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!"custom".equals(this.mNavigationStyle));
+      addView(this.centerLayout);
+      addView(this.mTabBar);
+      addView(this.mNavigationBar);
+      return;
+      if ("default".equals(this.mNavigationStyle))
+      {
+        this.mRootView.addView(this.centerLayout);
+        this.mRootView.addView(this.mTabBar);
+        this.mRootView.addView(this.mNavigationBar);
+        paramLayoutParams1.addRule(3, this.mNavigationBar.getId());
+        paramLayoutParams1.addRule(2, this.mTabBar.getId());
+        paramLayoutParams2.addRule(12, -1);
+        return;
+      }
+    } while (!"custom".equals(this.mNavigationStyle));
+    this.mRootView.addView(this.centerLayout);
+    this.mRootView.addView(this.mTabBar);
+    this.mRootView.addView(this.mNavigationBar);
+    paramLayoutParams1.addRule(2, this.mTabBar.getId());
+    paramLayoutParams2.addRule(12, -1);
   }
   
   public void cleanUp()
@@ -800,8 +843,6 @@ public class AppBrandPage
   
   public void loadUrl(String paramString1, String paramString2, PageEventListener paramPageEventListener)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     if (!isReadyLoadUrl(paramString1)) {
       QMLog.e("AppBrandPage", "loadurl not ready, return.");
     }
@@ -813,25 +854,15 @@ public class AppBrandPage
       }
     } while (!isPageWebViewReady(this.mPageUrl));
     paramPageEventListener.onWebViewReady(paramString2, this.mPageUrl, this.mRootContainer.getShowingPageWebViewId());
-    if (!"appLaunch".equals(paramString2)) {}
-    for (;;)
-    {
-      onResume(bool1);
-      return;
-      bool1 = false;
-    }
+    onResume();
+    return;
     this.mRootContainer.hideSoftInput(this);
     realLoadUrl(paramString1, paramString2, paramPageEventListener);
     updatePageStyle(paramString1);
     updateNavigationBar(paramString1);
     updateSwipeBack();
     switchTab(paramString1);
-    if (!"appLaunch".equals(paramString2)) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      onResume(bool1);
-      return;
-    }
+    onResume();
   }
   
   public void notifyChangePullDownRefreshStyle(int paramInt)
@@ -876,10 +907,10 @@ public class AppBrandPage
     }
   }
   
-  public void onResume(boolean paramBoolean)
+  public void onResume()
   {
     if (getCurrentPageWebview() != null) {
-      getCurrentPageWebview().onResume(paramBoolean);
+      getCurrentPageWebview().onResume();
     }
     if ((this.mCurPageWebviewContainer != null) && (this.mCurPageWebviewContainer.getNativeViewContainer() != null)) {
       this.mCurPageWebviewContainer.getNativeViewContainer().onResume();
@@ -939,21 +970,8 @@ public class AppBrandPage
     paramString = new RelativeLayout.LayoutParams(-1, -1);
     RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, NavigationBar.getDefaultNaviBarHeight(this.mMiniAppContext.getContext()));
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, TabBar.getDefaultTabBarHeight(this.mMiniAppContext.getContext()));
-    if ((this.mMiniAppContext != null) && (getApkgInfo() != null) && (getApkgInfo().getAppConfigInfo() != null) && (getApkgInfo().getAppConfigInfo().tabBarInfo != null) && (!getApkgInfo().getAppConfigInfo().tabBarInfo.custom))
-    {
-      if (this.mTabBar.getNeedShow()) {
-        this.mTabBar.setVisibility(0);
-      }
-      this.mTabBar.setInfo(getApkgInfo().getAppConfigInfo().tabBarInfo);
-      if ("top".equals(getApkgInfo().getAppConfigInfo().tabBarInfo.position)) {
-        if ("default".equals(this.mNavigationStyle))
-        {
-          this.mRootView.addView(this.centerLayout);
-          this.mRootView.addView(this.mTabBar);
-          this.mRootView.addView(this.mNavigationBar);
-          paramString.addRule(3, this.mTabBar.getId());
-        }
-      }
+    if ((this.mMiniAppContext != null) && (getApkgInfo() != null) && (getApkgInfo().getAppConfigInfo() != null) && (getApkgInfo().getAppConfigInfo().tabBarInfo != null) && (!getApkgInfo().getAppConfigInfo().tabBarInfo.custom)) {
+      updateTabBar(paramString, localLayoutParams2);
     }
     for (;;)
     {
@@ -963,42 +981,17 @@ public class AppBrandPage
       this.mNavigationBar.setBarStyle(this.mNavigationStyle);
       this.mNavigationBar.getCapsuleButton().setVisibility(0);
       return;
-      if ("custom".equals(this.mNavigationStyle))
+      if ("default".equals(this.mNavigationStyle))
       {
-        addView(this.centerLayout);
-        addView(this.mTabBar);
-        addView(this.mNavigationBar);
-        continue;
-        if ("default".equals(this.mNavigationStyle))
-        {
-          this.mRootView.addView(this.centerLayout);
-          this.mRootView.addView(this.mTabBar);
-          this.mRootView.addView(this.mNavigationBar);
-          paramString.addRule(3, this.mNavigationBar.getId());
-          paramString.addRule(2, this.mTabBar.getId());
-          localLayoutParams2.addRule(12, -1);
-        }
-        else if ("custom".equals(this.mNavigationStyle))
-        {
-          this.mRootView.addView(this.centerLayout);
-          this.mRootView.addView(this.mTabBar);
-          this.mRootView.addView(this.mNavigationBar);
-          paramString.addRule(2, this.mTabBar.getId());
-          localLayoutParams2.addRule(12, -1);
-          continue;
-          if ("default".equals(this.mNavigationStyle))
-          {
-            this.mRootView.addView(this.mNavigationBar);
-            this.mRootView.addView(this.centerLayout);
-            paramString.addRule(12);
-            paramString.addRule(3, this.mNavigationBar.getId());
-          }
-          else if ("custom".equals(this.mNavigationStyle))
-          {
-            this.mRootView.addView(this.centerLayout);
-            this.mRootView.addView(this.mNavigationBar);
-          }
-        }
+        this.mRootView.addView(this.mNavigationBar);
+        this.mRootView.addView(this.centerLayout);
+        paramString.addRule(12);
+        paramString.addRule(3, this.mNavigationBar.getId());
+      }
+      else if ("custom".equals(this.mNavigationStyle))
+      {
+        this.mRootView.addView(this.centerLayout);
+        this.mRootView.addView(this.mNavigationBar);
       }
     }
   }
@@ -1020,7 +1013,7 @@ public class AppBrandPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPage
  * JD-Core Version:    0.7.0.1
  */

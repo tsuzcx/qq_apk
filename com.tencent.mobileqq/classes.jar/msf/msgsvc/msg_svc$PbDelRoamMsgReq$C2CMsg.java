@@ -18,7 +18,7 @@ public final class msg_svc$PbDelRoamMsgReq$C2CMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbDelRoamMsgReq.C2CMsg
  * JD-Core Version:    0.7.0.1
  */

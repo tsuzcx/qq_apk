@@ -10,8 +10,8 @@ public final class AIOSendRes
   extends JceStruct
 {
   static Map<String, String> cache_mHighLightMap = new HashMap();
-  public int iPopGrayStip;
-  public Map<String, String> mHighLightMap;
+  public int iPopGrayStip = 0;
+  public Map<String, String> mHighLightMap = null;
   public String sGrayStipMsg = "";
   
   static

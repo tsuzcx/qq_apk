@@ -8,28 +8,27 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import bdla;
-import bkyu;
-import bkyx;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.commonsdk.util.notification.NotificationReportController;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class NotificationReportControllerImpl
   implements Handler.Callback, NotificationReportController
 {
   private static final String KEY_BEGINTIME = "key_begintime";
   private static final String KEY_TODAY_REPORTED_NOTIFY_IDS = "kay_reported_notify_ids";
-  private boolean hasInitTodayReportedNotifyIds;
-  private boolean isAfterActionB;
-  private List<bkyx> mCache = new ArrayList();
+  private boolean hasInitTodayReportedNotifyIds = false;
+  private boolean isAfterActionB = false;
+  private List<NotificationReportControllerImpl.ReportEntry> mCache = new ArrayList();
   Handler mHandler = null;
   private Set<Integer> mTodayReportedNotifyIds;
   
@@ -53,33 +52,33 @@ public class NotificationReportControllerImpl
   private void reportReal()
   {
     Object localObject;
-    if ((0 == 0) && (BaseApplicationImpl.sProcessId == 1))
+    if ((0 == 0) && (MobileQQ.sProcessId == 1))
     {
-      localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {}
+      localObject = MobileQQ.sMobileQQ.peekAppRuntime();
+      if ((localObject == null) || (!(localObject instanceof BaseQQAppInterface))) {}
     }
-    for (QQAppInterface localQQAppInterface = (QQAppInterface)localObject;; localQQAppInterface = null)
+    for (BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)localObject;; localBaseQQAppInterface = null)
     {
-      if ((localQQAppInterface != null) && (this.mCache.size() > 0))
+      if ((localBaseQQAppInterface != null) && (this.mCache.size() > 0))
       {
         Iterator localIterator = this.mCache.iterator();
         if (localIterator.hasNext())
         {
-          bkyx localbkyx = (bkyx)localIterator.next();
-          boolean bool = shouldReportNetInfo(localQQAppInterface, localbkyx.b);
+          NotificationReportControllerImpl.ReportEntry localReportEntry = (NotificationReportControllerImpl.ReportEntry)localIterator.next();
+          boolean bool = shouldReportNetInfo(localBaseQQAppInterface, localReportEntry.b);
           localObject = "";
-          switch (localbkyx.jdField_a_of_type_Int)
+          switch (localReportEntry.jdField_a_of_type_Int)
           {
           default: 
             label132:
-            if ((localbkyx.c == 7200) || (localbkyx.c == 1008) || (localbkyx.c == 7220)) {
-              bdla.a(localQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", localbkyx.jdField_a_of_type_JavaLangString, localbkyx.b + "", "" + localbkyx.c, "", "", "", "");
+            if ((localReportEntry.c == 7200) || (localReportEntry.c == 1008) || (localReportEntry.c == 7220)) {
+              ReportController.a(localBaseQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", localReportEntry.jdField_a_of_type_JavaLangString, localReportEntry.b + "", "" + localReportEntry.c, "", "", "", "");
             }
             break;
           }
           while (QLog.isDevelopLevel())
           {
-            QLog.d("NotificationReportControllerImpl", 2, "report real msgType:" + localbkyx.jdField_a_of_type_Int + "    frienduin:" + localbkyx.jdField_a_of_type_JavaLangString + "   uinType:" + localbkyx.c + "    nId:" + localbkyx.b);
+            QLog.d("NotificationReportControllerImpl", 2, "report real msgType:" + localReportEntry.jdField_a_of_type_Int + "    frienduin:" + localReportEntry.jdField_a_of_type_JavaLangString + "   uinType:" + localReportEntry.c + "    nId:" + localReportEntry.b);
             break;
             localObject = "info_arr";
             break label132;
@@ -89,7 +88,7 @@ public class NotificationReportControllerImpl
             break label132;
             localObject = "lock_clk";
             break label132;
-            bdla.a(localQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", "", localbkyx.b + "", "", "", "", "", "");
+            ReportController.a(localBaseQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", "", localReportEntry.b + "", "", "", "", "", "");
           }
         }
         this.mCache.clear();
@@ -98,14 +97,14 @@ public class NotificationReportControllerImpl
     }
   }
   
-  private boolean shouldReportNetInfo(QQAppInterface paramQQAppInterface, int paramInt)
+  private boolean shouldReportNetInfo(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
   {
     if (!this.hasInitTodayReportedNotifyIds)
     {
-      Object localObject = paramQQAppInterface.getAccount();
-      SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
+      Object localObject = paramBaseQQAppInterface.getAccount();
+      SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
       long l1 = localSharedPreferences.getLong("key_begintime_" + (String)localObject, 0L);
-      long l2 = bkyu.a().longValue();
+      long l2 = NotificationController.a().longValue();
       this.mTodayReportedNotifyIds = new HashSet();
       if (l1 == l2)
       {
@@ -132,7 +131,7 @@ public class NotificationReportControllerImpl
     if (!this.mTodayReportedNotifyIds.contains(Integer.valueOf(paramInt)))
     {
       this.mTodayReportedNotifyIds.add(Integer.valueOf(paramInt));
-      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putString("kay_reported_notify_ids_" + paramQQAppInterface.getAccount(), getTodayReportedNotifyIdsInCache()).apply();
+      PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putString("kay_reported_notify_ids_" + paramBaseQQAppInterface.getAccount(), getTodayReportedNotifyIdsInCache()).apply();
       return true;
     }
     return false;
@@ -148,7 +147,7 @@ public class NotificationReportControllerImpl
     case 2: 
     case 3: 
     case 4: 
-      paramMessage = (bkyx)paramMessage.obj;
+      paramMessage = (NotificationReportControllerImpl.ReportEntry)paramMessage.obj;
       if (this.isAfterActionB)
       {
         this.mCache.add(paramMessage);
@@ -170,7 +169,7 @@ public class NotificationReportControllerImpl
     }
     Message localMessage = Message.obtain();
     localMessage.what = paramInt1;
-    localMessage.obj = new bkyx(paramInt1, paramInt2, paramString, paramInt3);
+    localMessage.obj = new NotificationReportControllerImpl.ReportEntry(paramInt1, paramInt2, paramString, paramInt3);
     this.mHandler.sendMessage(localMessage);
   }
   

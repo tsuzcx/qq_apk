@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetShareKeyRsp
   extends JceStruct
 {
-  public int ret;
+  public int ret = 0;
   public String share_key = "";
   
   public GetShareKeyRsp() {}

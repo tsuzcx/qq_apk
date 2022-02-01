@@ -9,18 +9,15 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextSwitcher;
 import com.tencent.mobileqq.app.ThreadManager;
-import lvq;
-import lvr;
-import lvs;
 
 public class RedPacketRollTextView
   extends TextSwitcher
   implements Animation.AnimationListener
 {
   private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private lvr jdField_a_of_type_Lvr;
-  private lvs jdField_a_of_type_Lvs = new lvs(this);
+  private Context jdField_a_of_type_AndroidContentContext = null;
+  private RedPacketRollTextView.OnRollTextChangeListener jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView$OnRollTextChangeListener = null;
+  private RedPacketRollTextView.RollViewHandler jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView$RollViewHandler = new RedPacketRollTextView.RollViewHandler(this);
   protected boolean a;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean = true;
@@ -114,7 +111,7 @@ public class RedPacketRollTextView
     }
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramBoolean);
-    setFactory(new lvq(this, paramBoolean));
+    setFactory(new RedPacketRollTextView.1(this, paramBoolean));
   }
   
   public void b()
@@ -137,9 +134,9 @@ public class RedPacketRollTextView
     Log.e("RollTextView", "WL_DEBUG onAnimationStart");
   }
   
-  public void setListener(lvr paramlvr)
+  public void setListener(RedPacketRollTextView.OnRollTextChangeListener paramOnRollTextChangeListener)
   {
-    this.jdField_a_of_type_Lvr = paramlvr;
+    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView$OnRollTextChangeListener = paramOnRollTextChangeListener;
   }
   
   public void setScope(int paramInt1, int paramInt2)
@@ -154,7 +151,7 @@ public class RedPacketRollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketRollTextView
  * JD-Core Version:    0.7.0.1
  */

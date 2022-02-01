@@ -75,7 +75,7 @@ public class PluginProxyBroadcastReceiver
                 {
                   try
                   {
-                    localObject3 = PluginStatic.getOrCreateClassLoaderByPath(paramContext, str1, (String)localObject2);
+                    localObject3 = PluginStatic.getOrCreateClassLoaderByPath(paramContext, str1, (String)localObject2, true);
                     paramContext = (IPluginBroadcastReceiver)((ClassLoader)localObject3).loadClass(str2).newInstance();
                   }
                   catch (Exception localException1)

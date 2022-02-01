@@ -11,10 +11,10 @@ public final class material_set_switch_req
 {
   static int cache_iSwitchState = 0;
   static Map<String, String> cache_mapExtInfo = new HashMap();
-  public int iAppid;
-  public int iSwitchState;
-  public long lUin;
-  public Map<String, String> mapExtInfo;
+  public int iAppid = 0;
+  public int iSwitchState = 0;
+  public long lUin = 0L;
+  public Map<String, String> mapExtInfo = null;
   
   static
   {

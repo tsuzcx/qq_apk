@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model.handler;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import java.util.List;
-import pvm;
 
 class RIJGetArticleListHandler$2$1
   implements Runnable
@@ -10,12 +10,12 @@ class RIJGetArticleListHandler$2$1
   
   public void run()
   {
-    pvm.a().b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelHandlerRIJGetArticleListHandler$2.a, this.jdField_a_of_type_JavaUtilList, true);
+    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelHandlerRIJGetArticleListHandler$2.a, this.jdField_a_of_type_JavaUtilList, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.handler.RIJGetArticleListHandler.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package cooperation.qqreader.ui;
 
-import aasr;
-import adaa;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -15,24 +13,26 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bieo;
-import bigl;
-import biho;
-import bkys;
-import bmfh;
-import bmgr;
 import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.WeakReferenceHandler;
+import cooperation.qqreader.js.ReaderJsPlugin;
+import cooperation.qqreader.utils.Utility;
 import java.util.List;
 
 public class ReaderContentPageFragment
   extends ReaderBaseFragment
   implements Handler.Callback
 {
-  private bkys jdField_a_of_type_Bkys = new bkys(Looper.getMainLooper(), this);
-  private String jdField_a_of_type_JavaLangString;
+  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  private String jdField_a_of_type_JavaLangString = null;
   
   public static WebViewFragment a(Intent paramIntent)
   {
@@ -67,11 +67,11 @@ public class ReaderContentPageFragment
   
   private void b()
   {
-    if (this.mSwiftTitleUI.rightViewImg != null) {
-      this.mSwiftTitleUI.rightViewImg.setVisibility(8);
+    if (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    if (this.mSwiftTitleUI.rightViewText != null) {
-      this.mSwiftTitleUI.rightViewText.setVisibility(8);
+    if (this.mSwiftTitleUI.c != null) {
+      this.mSwiftTitleUI.c.setVisibility(8);
     }
     if (this.webView != null)
     {
@@ -82,8 +82,8 @@ public class ReaderContentPageFragment
   
   private void c()
   {
-    aasr localaasr = ensureShare();
-    localaasr.a(bmgr.a(localaasr.a()));
+    Share localShare = ensureShare();
+    localShare.a(Utility.a(localShare.a()));
   }
   
   public void a()
@@ -179,17 +179,17 @@ public class ReaderContentPageFragment
         }
         this.jdField_a_of_type_JavaLangString = paramString1.trim();
         break;
-        paramImageView.setImageResource(2130843933);
+        paramImageView.setImageResource(2130844104);
         continue;
-        paramImageView.setImageResource(2130843932);
+        paramImageView.setImageResource(2130844103);
         continue;
-        paramImageView.setImageResource(2130840365);
+        paramImageView.setImageResource(2130840478);
         continue;
-        paramImageView.setImageResource(2130846960);
+        paramImageView.setImageResource(2130847314);
         continue;
-        paramImageView.setImageResource(2130846970);
+        paramImageView.setImageResource(2130847324);
         continue;
-        paramImageView.setImageResource(2130838959);
+        paramImageView.setImageResource(2130839027);
       }
       label193:
       this.jdField_a_of_type_JavaLangString = null;
@@ -203,8 +203,8 @@ public class ReaderContentPageFragment
     if ((paramBundle instanceof ReaderBaseWebActivity))
     {
       paramBundle = ((ReaderBaseWebActivity)paramBundle).a(this.webView);
-      if ((paramBundle != null) && (this.mSwiftTitleUI.rightViewText != null)) {
-        paramBundle.a(this.mSwiftTitleUI.rightViewText);
+      if ((paramBundle != null) && (this.mSwiftTitleUI.c != null)) {
+        paramBundle.a(this.mSwiftTitleUI.c);
       }
     }
     return i;
@@ -219,7 +219,7 @@ public class ReaderContentPageFragment
   
   public void initWebView()
   {
-    a(this.jdField_a_of_type_Bkys);
+    a(this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler);
     super.initWebView();
     if (this.intent != null)
     {
@@ -232,7 +232,7 @@ public class ReaderContentPageFragment
   
   public void onClick(View paramView)
   {
-    if ((paramView == this.mSwiftTitleUI.rightViewImg) || (paramView == this.mSwiftTitleUI.rightViewText)) {
+    if ((paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.mSwiftTitleUI.c)) {
       if ((this.webView != null) && (this.jdField_a_of_type_JavaLangString != null)) {
         this.webView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
       }
@@ -241,7 +241,7 @@ public class ReaderContentPageFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView == this.mSwiftTitleUI.leftView) {
+      if (paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView) {
         a();
       } else {
         super.onClick(paramView);
@@ -261,13 +261,13 @@ public class ReaderContentPageFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Bkys.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
   }
   
-  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, adaa paramadaa)
+  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, APICallback paramAPICallback)
   {
-    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.rightViewImg != null) && (this.mSwiftTitleUI.rightViewText != null)) {
-      a(this.mSwiftTitleUI.rightViewImg, this.mSwiftTitleUI.rightViewText, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
+    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) && (this.mSwiftTitleUI.c != null)) {
+      a(this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView, this.mSwiftTitleUI.c, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
     }
   }
   
@@ -283,18 +283,18 @@ public class ReaderContentPageFragment
   
   public void showActionSheet()
   {
-    biho localbiho = (biho)this.mComponentsProvider.a(4);
-    if (localbiho != null)
+    SwiftBrowserShareMenuHandler localSwiftBrowserShareMenuHandler = (SwiftBrowserShareMenuHandler)this.mComponentsProvider.a(4);
+    if (localSwiftBrowserShareMenuHandler != null)
     {
       c();
-      a(localbiho.a);
-      localbiho.a(ensureShare(), this.mUIStyle.mRulesFromUrl);
+      a(localSwiftBrowserShareMenuHandler.a);
+      localSwiftBrowserShareMenuHandler.a(ensureShare(), this.mUIStyle.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderContentPageFragment
  * JD-Core Version:    0.7.0.1
  */

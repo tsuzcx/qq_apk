@@ -10,14 +10,14 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import bbwr;
-import bimq;
+import com.tencent.mobileqq.text.ClickableImageSpan;
+import com.tencent.mobileqq.text.ITopic;
 import java.util.ArrayList;
 
 public class StatableSpanTextView
   extends TextView
 {
-  bbwr jdField_a_of_type_Bbwr;
+  ITopic jdField_a_of_type_ComTencentMobileqqTextITopic;
   boolean jdField_a_of_type_Boolean;
   private ImageSpan[] jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
   private StatableSpanTextView.StatableForegroundColorSpan[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
@@ -37,7 +37,7 @@ public class StatableSpanTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     int j = 0;
     super.drawableStateChanged();
@@ -94,23 +94,23 @@ public class StatableSpanTextView
           int i2 = getScrollY();
           paramMotionEvent = getLayout();
           j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-          paramMotionEvent = (bbwr[])localSpannable.getSpans(j, j, bbwr.class);
+          paramMotionEvent = (ITopic[])localSpannable.getSpans(j, j, ITopic.class);
           if (paramMotionEvent.length != 0)
           {
             this.jdField_a_of_type_Boolean = false;
             paramMotionEvent = paramMotionEvent[0];
             if (i == 0)
             {
-              paramMotionEvent.a(this, true);
-              this.jdField_a_of_type_Bbwr = paramMotionEvent;
+              paramMotionEvent.setPressed(this, true);
+              this.jdField_a_of_type_ComTencentMobileqqTextITopic = paramMotionEvent;
             }
             for (;;)
             {
               return true;
-              if (this.jdField_a_of_type_Bbwr != null)
+              if (this.jdField_a_of_type_ComTencentMobileqqTextITopic != null)
               {
-                this.jdField_a_of_type_Bbwr.a(this, false);
-                this.jdField_a_of_type_Bbwr = null;
+                this.jdField_a_of_type_ComTencentMobileqqTextITopic.setPressed(this, false);
+                this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
               }
               if (i == 1) {
                 paramMotionEvent.onClick(this);
@@ -130,10 +130,10 @@ public class StatableSpanTextView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bbwr != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqTextITopic != null)
       {
-        this.jdField_a_of_type_Bbwr.a(this, false);
-        this.jdField_a_of_type_Bbwr = null;
+        this.jdField_a_of_type_ComTencentMobileqqTextITopic.setPressed(this, false);
+        this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
       }
       return false;
       label275:
@@ -161,7 +161,7 @@ public class StatableSpanTextView
         while (i < j)
         {
           ImageSpan localImageSpan = arrayOfImageSpan[i];
-          if (!(localImageSpan instanceof bimq)) {
+          if (!(localImageSpan instanceof ClickableImageSpan)) {
             localArrayList.add(localImageSpan);
           }
           i += 1;
@@ -186,7 +186,7 @@ public class StatableSpanTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.StatableSpanTextView
  * JD-Core Version:    0.7.0.1
  */

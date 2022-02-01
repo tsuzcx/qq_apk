@@ -8,13 +8,13 @@ public final class RespondHeader
   extends JceStruct
 {
   public String account = "";
-  public int cmd;
+  public int cmd = 0;
   public String ksid = "";
-  public int requestID;
-  public int result;
-  public int svrSeqNo;
+  public int requestID = 0;
+  public int result = 0;
+  public int svrSeqNo = 0;
   public String tips = "";
-  public int ver;
+  public int ver = 0;
   
   public RespondHeader() {}
   

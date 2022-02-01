@@ -17,8 +17,8 @@ public class RedDotRadioButton
 {
   private float jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
   private int jdField_a_of_type_Int = (int)(this.jdField_a_of_type_Float * 9.0F + 0.5D);
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public RedDotRadioButton(Context paramContext)
   {
@@ -39,7 +39,7 @@ public class RedDotRadioButton
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850427);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850830);
     }
     invalidate();
   }
@@ -49,7 +49,7 @@ public class RedDotRadioButton
     return this.jdField_a_of_type_Boolean;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))

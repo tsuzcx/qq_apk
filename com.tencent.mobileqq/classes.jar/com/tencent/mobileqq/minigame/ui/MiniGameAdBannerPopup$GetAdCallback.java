@@ -2,9 +2,9 @@ package com.tencent.mobileqq.minigame.ui;
 
 import android.content.Context;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.tianshu.data.TianShuGetAdvCallback;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import cooperation.vip.tianshu.TianShuGetAdvCallback;
 import mqq.util.WeakReference;
 
 class MiniGameAdBannerPopup$GetAdCallback

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.listentogether;
 
-public class ListenTogetherManager$RunnableShowForKey
+class ListenTogetherManager$RunnableShowForKey
   implements Runnable
 {
   String jdField_a_of_type_JavaLangString;
@@ -11,7 +11,7 @@ public class ListenTogetherManager$RunnableShowForKey
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(String paramString)
+  void a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
   }

@@ -6,26 +6,22 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
-import anvx;
-import bpnq;
-import bpnr;
-import bpns;
-import bpnt;
-import bptp;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class DragAnimationMgr
 {
   private int jdField_a_of_type_Int = 0;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bpns jdField_a_of_type_Bpns;
-  private bpnt jdField_a_of_type_Bpnt = new bpnt();
+  private DragAnimationMgr.AnimationChangeUI jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI;
+  private DragAnimationMgr.DragAnimationParams jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams = new DragAnimationMgr.DragAnimationParams();
   private DragAnimationMgr.DragViewIcon jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private View c;
   
   private int a()
@@ -41,7 +37,7 @@ public class DragAnimationMgr
         break;
       }
     } while (!this.jdField_a_of_type_Boolean);
-    return bptp.a(40.0F);
+    return ScreenUtil.a(40.0F);
     if (this.jdField_a_of_type_Int == 1) {
       return this.jdField_b_of_type_AndroidViewView.getHeight();
     }
@@ -81,9 +77,9 @@ public class DragAnimationMgr
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bpnt.jdField_a_of_type_Float = (Math.max(i, paramFloat) / 4.0F);
-      if (this.jdField_a_of_type_Bpnt.jdField_a_of_type_Float <= 0.0F) {
-        this.jdField_a_of_type_Bpnt.jdField_a_of_type_Float = bptp.a(1.0F);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Float = (Math.max(i, paramFloat) / 4.0F);
+      if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Float <= 0.0F) {
+        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Float = ScreenUtil.a(1.0F);
       }
       return;
       i = this.c.getWidth() / 2;
@@ -100,7 +96,7 @@ public class DragAnimationMgr
     localObjectAnimator.setStartDelay(125L);
     localObjectAnimator.setDuration(330L);
     paramDragViewIcon.jdField_b_of_type_Boolean = true;
-    localObjectAnimator.addListener(new bpnr(this, paramDragViewIcon));
+    localObjectAnimator.addListener(new DragAnimationMgr.2(this, paramDragViewIcon));
     localObjectAnimator.start();
   }
   
@@ -114,23 +110,23 @@ public class DragAnimationMgr
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (this.jdField_a_of_type_Bpns != null) {
+    if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI != null) {
       if (paramBoolean1) {
-        this.jdField_a_of_type_Bpns.h_(paramBoolean2);
+        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI.l_(paramBoolean2);
       }
     }
     while (!this.jdField_a_of_type_Boolean)
     {
       return;
-      this.jdField_a_of_type_Bpns.i_(paramBoolean2);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI.m_(paramBoolean2);
       return;
     }
     if (paramBoolean1)
     {
-      QQToast.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.getContext(), anvx.a(2131703000) + paramBoolean2, 0).a();
+      QQToast.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.getContext(), HardCodeUtil.a(2131703548) + paramBoolean2, 0).a();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.getContext(), anvx.a(2131702999) + paramBoolean2 + " max:" + paramBoolean3, 0).a();
+    QQToast.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.getContext(), HardCodeUtil.a(2131703547) + paramBoolean2 + " max:" + paramBoolean3, 0).a();
   }
   
   private boolean a()
@@ -163,7 +159,7 @@ public class DragAnimationMgr
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, i);
       localLayoutParams.addRule(15, -1);
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.setTranslationY(bptp.a(17.0F));
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.setTranslationY(ScreenUtil.a(17.0F));
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon);
       if (this.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.a(-65536);
@@ -187,8 +183,8 @@ public class DragAnimationMgr
       if (QLog.isColorLevel()) {
         QLog.i("DragAnimationMgr", 2, "upScreenAnimation: currentOffset=" + i + " mAnimationDirection=" + a(this.jdField_a_of_type_Int));
       }
-      if (this.jdField_a_of_type_Bpns != null) {
-        this.jdField_a_of_type_Bpns.a(false, false);
+      if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI != null) {
+        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI.a(false, false);
       }
     }
     boolean bool1;
@@ -208,25 +204,25 @@ public class DragAnimationMgr
         if (this.jdField_a_of_type_Int != 2) {
           break label205;
         }
-        if (this.jdField_a_of_type_Bpns == null) {
+        if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI == null) {
           break;
         }
-        this.jdField_a_of_type_Bpns.a(true, false);
+        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI.a(true, false);
         return;
       }
       if (this.jdField_a_of_type_Int != 1) {
         break;
       }
-    } while (this.jdField_a_of_type_Bpns == null);
-    this.jdField_a_of_type_Bpns.a(false, false);
+    } while (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI == null);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI.a(false, false);
     return;
     label205:
     int j = DragAnimationMgr.DragViewIcon.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon);
     float f1 = paramMotionEvent.getRawY();
-    float f2 = Math.abs(f1 - this.jdField_a_of_type_Bpnt.jdField_c_of_type_Float);
+    float f2 = Math.abs(f1 - this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_c_of_type_Float);
     int k = this.jdField_a_of_type_AndroidViewViewGroup.getHeight() / 2;
     if (QLog.isColorLevel()) {
-      QLog.i("DragAnimationMgr", 2, "upScreenAnimation: currentY=" + f1 + " startY=" + this.jdField_a_of_type_Bpnt.jdField_c_of_type_Float + " moveYOffset=" + f2 + " parentHeightHalf=" + k);
+      QLog.i("DragAnimationMgr", 2, "upScreenAnimation: currentY=" + f1 + " startY=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_c_of_type_Float + " moveYOffset=" + f2 + " parentHeightHalf=" + k);
     }
     boolean bool2 = bool3;
     if (j < this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.jdField_e_of_type_Int)
@@ -239,8 +235,8 @@ public class DragAnimationMgr
     if (QLog.isColorLevel()) {
       QLog.i("DragAnimationMgr", 2, "upScreenAnimation: leftDirection=" + bool1 + " inRegion=" + bool2);
     }
-    if (this.jdField_a_of_type_Bpns != null) {
-      this.jdField_a_of_type_Bpns.a(bool1, bool2);
+    if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI != null) {
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI.a(bool1, bool2);
     }
     if (j <= 5)
     {
@@ -248,7 +244,7 @@ public class DragAnimationMgr
       return;
     }
     j = DragAnimationMgr.DragViewIcon.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon, i);
-    a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon, i, j, new bpnq(this));
+    a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon, i, j, new DragAnimationMgr.1(this));
   }
   
   private void d()
@@ -261,7 +257,7 @@ public class DragAnimationMgr
     default: 
       if (this.jdField_a_of_type_Boolean)
       {
-        j = (int)(bptp.a(40.0F) * 3.5F);
+        j = (int)(ScreenUtil.a(40.0F) * 3.5F);
         i = j;
       }
       break;
@@ -270,7 +266,7 @@ public class DragAnimationMgr
     {
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.jdField_c_of_type_Int = j;
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.jdField_d_of_type_Int = i;
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.jdField_e_of_type_Int = ((int)this.jdField_a_of_type_Bpnt.jdField_a_of_type_Float);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.jdField_e_of_type_Int = ((int)this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Float);
       return;
       i = Math.abs(k - (this.c.getLeft() + this.c.getWidth() / 2));
       continue;
@@ -296,14 +292,14 @@ public class DragAnimationMgr
   
   protected void a()
   {
-    if (!this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean)
+    if (!this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean)
     {
-      float f = Math.abs(this.jdField_a_of_type_Bpnt.f);
+      float f = Math.abs(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.f);
       if (QLog.isColorLevel()) {
-        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: absMoveInter=" + f + " limit=" + bpnt.jdField_c_of_type_Int);
+        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: absMoveInter=" + f + " limit=" + DragAnimationMgr.DragAnimationParams.jdField_c_of_type_Int);
       }
-      if (f > bpnt.jdField_c_of_type_Int) {
-        this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean = false;
+      if (f > DragAnimationMgr.DragAnimationParams.jdField_c_of_type_Int) {
+        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean = false;
       }
     }
     int j;
@@ -312,17 +308,17 @@ public class DragAnimationMgr
     {
     default: 
       if (QLog.isColorLevel()) {
-        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: [big] mAnimationDirection=" + this.jdField_a_of_type_Int + " xDiff=" + this.jdField_a_of_type_Bpnt.f);
+        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: [big] mAnimationDirection=" + this.jdField_a_of_type_Int + " xDiff=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.f);
       }
-      if ((this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bpns != null)) {
-        this.jdField_a_of_type_Bpns.c();
+      if ((this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI != null)) {
+        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI.c();
       }
       if (QLog.isColorLevel()) {
-        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: hasMoved=" + this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean + " mAnimationDirection=" + this.jdField_a_of_type_Int);
+        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: hasMoved=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean + " mAnimationDirection=" + this.jdField_a_of_type_Int);
       }
-      if (this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean)
+      if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean)
       {
-        j = (int)(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.a() + this.jdField_a_of_type_Bpnt.f);
+        j = (int)(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.a() + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.f);
         switch (this.jdField_a_of_type_Int)
         {
         default: 
@@ -333,22 +329,22 @@ public class DragAnimationMgr
     }
     for (;;)
     {
-      if (Math.abs(i) >= bpnt.jdField_b_of_type_Int) {
+      if (Math.abs(i) >= DragAnimationMgr.DragAnimationParams.jdField_b_of_type_Int) {
         break label392;
       }
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b(0);
       return;
-      if (this.jdField_a_of_type_Bpnt.f <= 0.0F) {
+      if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.f <= 0.0F) {
         break;
       }
-      this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean = true;
       break;
-      if (this.jdField_a_of_type_Bpnt.f >= 0.0F) {
+      if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.f >= 0.0F) {
         break;
       }
-      this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean = true;
       break;
-      this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean = true;
       break;
       i = j;
       if (j < 0)
@@ -385,24 +381,24 @@ public class DragAnimationMgr
     do
     {
       return;
-      this.jdField_a_of_type_Bpnt.jdField_b_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_Bpnt.jdField_c_of_type_Float = paramMotionEvent.getRawY();
-      this.jdField_a_of_type_Bpnt.jdField_d_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_Bpnt.jdField_e_of_type_Float = paramMotionEvent.getRawY();
-      this.jdField_a_of_type_Bpnt.h = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_Bpnt.i = paramMotionEvent.getRawY();
-      this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Bpnt.jdField_d_of_type_Boolean = false;
-      this.jdField_a_of_type_Bpnt.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Bpnt.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_Bpnt.jdField_e_of_type_Int = 0;
-      a(bpnt.jdField_a_of_type_Int);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_b_of_type_Float = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_c_of_type_Float = paramMotionEvent.getRawY();
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_d_of_type_Float = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_e_of_type_Float = paramMotionEvent.getRawY();
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.h = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.i = paramMotionEvent.getRawY();
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_d_of_type_Boolean = false;
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_c_of_type_Boolean = false;
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_e_of_type_Int = 0;
+      a(DragAnimationMgr.DragAnimationParams.jdField_a_of_type_Int);
       c();
-      if (this.jdField_a_of_type_Bpns != null) {
-        this.jdField_a_of_type_Bpns.a();
+      if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI != null) {
+        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI.a();
       }
     } while (!QLog.isColorLevel());
-    QLog.i("DragAnimationMgr", 2, "longTouchDown: hasMoved=" + this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean + " startX=" + this.jdField_a_of_type_Bpnt.jdField_b_of_type_Float);
+    QLog.i("DragAnimationMgr", 2, "longTouchDown: hasMoved=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean + " startX=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_b_of_type_Float);
   }
   
   public void a(ViewGroup paramViewGroup, View paramView1, View paramView2, View paramView3)
@@ -430,9 +426,9 @@ public class DragAnimationMgr
     this.jdField_a_of_type_Int = 0;
   }
   
-  public void a(bpns parambpns)
+  public void a(DragAnimationMgr.AnimationChangeUI paramAnimationChangeUI)
   {
-    this.jdField_a_of_type_Bpns = parambpns;
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI = paramAnimationChangeUI;
   }
   
   public void a(boolean paramBoolean)
@@ -475,49 +471,49 @@ public class DragAnimationMgr
     do
     {
       return;
-      this.jdField_a_of_type_Bpnt.h = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_Bpnt.i = paramMotionEvent.getRawY();
-      this.jdField_a_of_type_Bpnt.f = (this.jdField_a_of_type_Bpnt.h - this.jdField_a_of_type_Bpnt.jdField_d_of_type_Float);
-      this.jdField_a_of_type_Bpnt.g = (this.jdField_a_of_type_Bpnt.i - this.jdField_a_of_type_Bpnt.jdField_e_of_type_Float);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.h = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.i = paramMotionEvent.getRawY();
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.f = (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.h - this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_d_of_type_Float);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.g = (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.i - this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_e_of_type_Float);
       if (QLog.isColorLevel()) {
-        QLog.i("DragAnimationMgr", 2, "longTouchDown: hasMoved=" + this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean + " startX=" + this.jdField_a_of_type_Bpnt.jdField_b_of_type_Float + "  xDiff=" + this.jdField_a_of_type_Bpnt.f + "  lastX=" + this.jdField_a_of_type_Bpnt.jdField_d_of_type_Float);
+        QLog.i("DragAnimationMgr", 2, "longTouchDown: hasMoved=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean + " startX=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_b_of_type_Float + "  xDiff=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.f + "  lastX=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_d_of_type_Float);
       }
       if (this.jdField_b_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("DragAnimationMgr", 2, "handleTouch hasCheckLong" + this.jdField_a_of_type_Bpnt.jdField_c_of_type_Boolean);
+          QLog.i("DragAnimationMgr", 2, "handleTouch hasCheckLong" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_c_of_type_Boolean);
         }
-        if (!this.jdField_a_of_type_Bpnt.jdField_c_of_type_Boolean)
+        if (!this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_c_of_type_Boolean)
         {
-          this.jdField_a_of_type_Bpnt.jdField_c_of_type_Boolean = true;
-          if (Math.abs(this.jdField_a_of_type_Bpnt.f) <= bpnt.jdField_d_of_type_Int) {
+          this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_c_of_type_Boolean = true;
+          if (Math.abs(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.f) <= DragAnimationMgr.DragAnimationParams.jdField_d_of_type_Int) {
             break label533;
           }
         }
-        for (this.jdField_a_of_type_Bpnt.jdField_b_of_type_Boolean = false;; this.jdField_a_of_type_Bpnt.jdField_b_of_type_Boolean = true)
+        for (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_b_of_type_Boolean = false;; this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_b_of_type_Boolean = true)
         {
-          if (this.jdField_a_of_type_Bpns != null) {
-            this.jdField_a_of_type_Bpns.c(this.jdField_a_of_type_Bpnt.jdField_b_of_type_Boolean);
+          if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI != null) {
+            this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$AnimationChangeUI.c(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_b_of_type_Boolean);
           }
           if (QLog.isColorLevel()) {
-            QLog.i("DragAnimationMgr", 2, "handleTouch enableMoved" + this.jdField_a_of_type_Bpnt.jdField_b_of_type_Boolean);
+            QLog.i("DragAnimationMgr", 2, "handleTouch enableMoved" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_b_of_type_Boolean);
           }
           if (QLog.isColorLevel()) {
-            QLog.i("DragAnimationMgr", 2, "handleTouch enableMoved" + this.jdField_a_of_type_Bpnt.jdField_b_of_type_Boolean);
+            QLog.i("DragAnimationMgr", 2, "handleTouch enableMoved" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_b_of_type_Boolean);
           }
-          if (this.jdField_a_of_type_Bpnt.jdField_b_of_type_Boolean)
+          if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_b_of_type_Boolean)
           {
             a();
-            if (this.jdField_a_of_type_Bpnt.jdField_a_of_type_Boolean)
+            if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_a_of_type_Boolean)
             {
-              this.jdField_a_of_type_Bpnt.jdField_d_of_type_Float = this.jdField_a_of_type_Bpnt.h;
-              this.jdField_a_of_type_Bpnt.jdField_e_of_type_Float = this.jdField_a_of_type_Bpnt.i;
+              this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_d_of_type_Float = this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.h;
+              this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.jdField_e_of_type_Float = this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.i;
             }
           }
           if (!QLog.isColorLevel()) {
             break;
           }
-          QLog.i("DragAnimationMgr", 2, "handleTouch[Adsorption] xDiff=" + this.jdField_a_of_type_Bpnt.f + " currentX=" + this.jdField_a_of_type_Bpnt.h + " yDiff=" + this.jdField_a_of_type_Bpnt.g + " currentY=" + this.jdField_a_of_type_Bpnt.i);
+          QLog.i("DragAnimationMgr", 2, "handleTouch[Adsorption] xDiff=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.f + " currentX=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.h + " yDiff=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.g + " currentY=" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragAnimationParams.i);
           return;
         }
       }
@@ -527,7 +523,7 @@ public class DragAnimationMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr
  * JD-Core Version:    0.7.0.1
  */

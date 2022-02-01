@@ -1,23 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qdc;
-import sfj;
-import szd;
+import com.tencent.biz.pubaccount.readinjoy.handlers.VideoHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
-public class NetInfoHandler$8
+class NetInfoHandler$8
   implements Runnable
 {
-  public NetInfoHandler$8(sfj paramsfj) {}
+  NetInfoHandler$8(NetInfoHandler paramNetInfoHandler) {}
   
   public void run()
   {
-    sfj.a(this.this$0).notifyDataSetChanged();
-    sfj.a(this.this$0).b(sfj.a(this.this$0).a(), 0);
+    NetInfoHandler.a(this.this$0).notifyDataSetChanged();
+    NetInfoHandler.a(this.this$0).b(NetInfoHandler.a(this.this$0).a(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.NetInfoHandler.8
  * JD-Core Version:    0.7.0.1
  */

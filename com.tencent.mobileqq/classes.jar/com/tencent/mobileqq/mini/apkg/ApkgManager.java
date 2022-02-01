@@ -3,9 +3,9 @@ package com.tencent.mobileqq.mini.apkg;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.launch.MiniSdkLauncher;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
@@ -34,13 +34,19 @@ public class ApkgManager
   public static final String MINI_GAME_PERSISTENT_SP_KEY = "persistent";
   public static final String MINI_GAME_PERSISTENT_SP_NAME = "persistent_debug_version_";
   public static final String PATH_APKG_TISSUE_ROOT = BaseApplicationImpl.getApplication().getFilesDir().getPath() + "/mini_tissue/";
-  public static final String PATH_GAMEPKG_ROOT = BaseApplicationImpl.getApplication().getFilesDir().getPath() + "/minigame/";
-  public static final String PATH_WXAPKG_ROOT = BaseApplicationImpl.getApplication().getFilesDir().getPath() + "/mini/";
+  public static final String PATH_GAMEPKG_ROOT;
+  public static final String PATH_WXAPKG_ROOT;
   public static final String SUFFIX_WXAPKG = ".qapkg";
   private static final String TAG = "ApkgManager";
-  public static volatile long downloadDuration;
+  public static volatile long downloadDuration = 0L;
   private static volatile ApkgManager sInstance;
   private String subRoot = "";
+  
+  static
+  {
+    PATH_GAMEPKG_ROOT = BaseApplicationImpl.getApplication().getFilesDir().getPath() + "/minigame/";
+    PATH_WXAPKG_ROOT = BaseApplicationImpl.getApplication().getFilesDir().getPath() + "/mini/";
+  }
   
   private void deleteOldPkg(MiniAppConfig paramMiniAppConfig, String paramString)
   {
@@ -324,7 +330,7 @@ public class ApkgManager
       paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 0, "");
       return;
     }
-    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, anvx.a(2131699788));
+    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, HardCodeUtil.a(2131700366));
   }
   
   private void onInitApkgInfo(ApkgManager.OnInitApkgListener paramOnInitApkgListener, int paramInt, ApkgInfo paramApkgInfo, String paramString)

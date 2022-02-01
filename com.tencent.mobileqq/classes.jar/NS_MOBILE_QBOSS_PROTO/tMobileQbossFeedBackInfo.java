@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class tMobileQbossFeedBackInfo
   extends JceStruct
 {
-  public int iOperSource;
+  public int iOperSource = 0;
   public int iOperTimes = 1;
-  public int iOperType;
+  public int iOperType = 0;
   public String idfa = "";
   public String sQBosstrace = "";
   public String sQua = "";
   public String sUserID = "";
-  public long uiUin;
+  public long uiUin = 0L;
   
   public tMobileQbossFeedBackInfo() {}
   

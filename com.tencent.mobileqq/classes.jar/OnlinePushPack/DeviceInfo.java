@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class DeviceInfo
   extends JceStruct
 {
-  public byte cNetType;
+  public byte cNetType = 0;
   public String strDevType = "";
   public String strIOSIdfa = "";
   public String strOSVer = "";

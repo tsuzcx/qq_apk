@@ -39,13 +39,13 @@ public class UpArrowView
     this.jdField_a_of_type_Int = Color.argb(255, 255, 255, 255);
     this.b = Color.argb(255, 241, 242, 249);
     setDuplicateParentStateEnabled(true);
-    int i = getResources().getColor(2131167086);
+    int i = getResources().getColor(2131167093);
     if (this.jdField_a_of_type_Int != i) {
       this.jdField_a_of_type_Int = i;
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((isSelected()) || (isPressed())) {

@@ -8,7 +8,7 @@ public final class stAioAction
   extends JceStruct
 {
   static int cache_landingPage = 0;
-  public int landingPage;
+  public int landingPage = 0;
   
   public stAioAction() {}
   

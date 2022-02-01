@@ -1,27 +1,23 @@
 package com.tencent.mobileqq.onlinestatus.auto.location;
 
 import android.os.Handler;
-import azcv;
-import azdf;
-import azdg;
-import azdh;
-import azdw;
+import com.tencent.mobileqq.onlinestatus.auto.Constant;
 
-public class LocationBaseStateDetector$1
+class LocationBaseStateDetector$1
   implements Runnable
 {
-  public LocationBaseStateDetector$1(azdg paramazdg) {}
+  LocationBaseStateDetector$1(LocationBaseStateDetector paramLocationBaseStateDetector) {}
   
   public void run()
   {
-    if (azcv.b) {
-      azdg.a(this.this$0).a(azdg.a(this.this$0).a(), azdg.a(this.this$0).a());
+    if (Constant.b) {
+      LocationBaseStateDetector.a(this.this$0).a(LocationBaseStateDetector.a(this.this$0).a(), LocationBaseStateDetector.a(this.this$0).a());
     }
     for (;;)
     {
-      azdg.a(this.this$0).postDelayed(this, azcv.h);
+      LocationBaseStateDetector.a(this.this$0).postDelayed(this, Constant.h);
       return;
-      azdg.a(this.this$0).a(azdg.a(this.this$0).a(), azdg.a(this.this$0).a());
+      LocationBaseStateDetector.a(this.this$0).a(LocationBaseStateDetector.a(this.this$0).a(), LocationBaseStateDetector.a(this.this$0).a());
     }
   }
 }

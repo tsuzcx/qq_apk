@@ -1,45 +1,23 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
-import android.os.Message;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.subscribe.bizdapters.RelativeLiveFeedsAdapter;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import uon;
-import uot;
 
 class FolderFollowTabFragment$6
-  implements Runnable
+  implements BusinessObserver
 {
-  FolderFollowTabFragment$6(FolderFollowTabFragment paramFolderFollowTabFragment, int paramInt) {}
+  FolderFollowTabFragment$6(FolderFollowTabFragment paramFolderFollowTabFragment, RelativeLiveFeedsAdapter paramRelativeLiveFeedsAdapter) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject = uot.a();
-    List localList = ((uot)localObject).a();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = localList.iterator();
-    while (localIterator.hasNext())
-    {
-      uon localuon = (uon)localIterator.next();
-      if (FolderFollowTabFragment.a(this.this$0, localuon.a))
-      {
-        localArrayList.add(localuon);
-        localIterator.remove();
-      }
-    }
-    ((uot)localObject).a(localList);
-    localObject = Message.obtain();
-    ((Message)localObject).arg1 = this.a;
-    ((Message)localObject).obj = localList;
-    ((Message)localObject).what = 101;
-    FolderFollowTabFragment.a(this.this$0).sendMessage((Message)localObject);
-    FolderFollowTabFragment.a(this.this$0, localArrayList);
+    ThreadManager.getUIHandler().post(new FolderFollowTabFragment.6.1(this, paramBoolean, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.6
  * JD-Core Version:    0.7.0.1
  */

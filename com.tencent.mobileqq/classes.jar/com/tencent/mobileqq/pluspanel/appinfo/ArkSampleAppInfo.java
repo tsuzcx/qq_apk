@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ArkSampleAppInfo
   extends PlusPanelAppInfo
 {
-  public ArkSampleAppInfo() {}
+  ArkSampleAppInfo() {}
   
   public ArkSampleAppInfo(int paramInt)
   {
@@ -19,7 +19,7 @@ public class ArkSampleAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130842654;
+    return 2130842800;
   }
   
   public int getAppID()
@@ -37,10 +37,10 @@ public class ArkSampleAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690786);
+    return BaseApplicationImpl.getContext().getString(2131690891);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo) {}
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo) {}
 }
 
 

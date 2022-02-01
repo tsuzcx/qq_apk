@@ -1,31 +1,29 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aceh;
-import acel;
-import acho;
 import android.view.View;
+import com.tencent.gdtad.log.GdtLog;
 
-public class GdtMvAnimation585V$1
+class GdtMvAnimation585V$1
   implements Runnable
 {
-  public GdtMvAnimation585V$1(acel paramacel) {}
+  GdtMvAnimation585V$1(GdtMvAnimation585V paramGdtMvAnimation585V) {}
   
   public void run()
   {
     if (this.this$0.a != null)
     {
-      aceh localaceh = (aceh)this.this$0.a;
-      if (localaceh.a != null)
+      GdtMvAniData585V localGdtMvAniData585V = (GdtMvAniData585V)this.this$0.a;
+      if (localGdtMvAniData585V.a != null)
       {
-        acho.b("GdtMotiveVideoAd", "585V maskRunnable run ");
-        localaceh.a.setVisibility(0);
+        GdtLog.b("GdtMotiveVideoAd", "585V maskRunnable run ");
+        localGdtMvAniData585V.a.setVisibility(0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvAnimation585V.1
  * JD-Core Version:    0.7.0.1
  */

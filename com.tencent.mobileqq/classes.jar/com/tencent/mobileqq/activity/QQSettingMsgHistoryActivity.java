@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import abug;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -17,39 +15,41 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import anri;
-import aoqd;
-import aoqi;
-import avlz;
-import avnw;
-import bbxw;
-import bcvr;
-import bhbx;
-import bhez;
-import bisl;
-import bmux;
+import com.tencent.biz.qrcode.activity.ScannerUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gamecenter.common.util.GCCommon;
+import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionHandler;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.message.messageclean.FileCleanUtils;
+import com.tencent.mobileqq.app.message.messageclean.IScanSpaceListener;
 import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager;
+import com.tencent.mobileqq.hotpic.HotPicDownLoader;
+import com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader;
+import com.tencent.mobileqq.scribble.ScribbleMsgUtils;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
 import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.VersionUtils;
+import dov.com.qq.im.QIMShortVideoUtils;
 import java.io.File;
 import java.util.Vector;
-import zmk;
 
 public class QQSettingMsgHistoryActivity
   extends IphoneTitleBarActivity
-  implements ViewTreeObserver.OnGlobalLayoutListener, aoqi
+  implements ViewTreeObserver.OnGlobalLayoutListener, IScanSpaceListener
 {
   private static volatile ScanSpaceManager jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager;
   static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir() + File.separator + "ChatHistoryEventConfig.json";
@@ -58,10 +58,11 @@ public class QQSettingMsgHistoryActivity
   private View jdField_a_of_type_AndroidViewView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bisl jdField_a_of_type_Bisl;
   private BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
+  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long = 0L;
   private View jdField_b_of_type_AndroidViewView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString = "";
@@ -89,7 +90,7 @@ public class QQSettingMsgHistoryActivity
   private void a(long paramLong)
   {
     this.jdField_a_of_type_Long -= paramLong;
-    String str = aoqd.a(this.jdField_a_of_type_Long);
+    String str = FileCleanUtils.a(this.jdField_a_of_type_Long);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
   }
   
@@ -97,356 +98,367 @@ public class QQSettingMsgHistoryActivity
   public static void a(android.app.Activity paramActivity, QQAppInterface paramQQAppInterface)
   {
     // Byte code:
-    //   0: new 99	android/content/Intent
+    //   0: new 101	android/content/Intent
     //   3: dup
-    //   4: ldc 101
-    //   6: invokespecial 104	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   4: ldc 103
+    //   6: invokespecial 106	android/content/Intent:<init>	(Ljava/lang/String;)V
     //   9: astore_2
     //   10: aload_2
-    //   11: ldc 106
+    //   11: ldc 108
     //   13: iconst_1
-    //   14: invokevirtual 110	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   14: invokevirtual 112	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   17: pop
     //   18: aload_1
-    //   19: invokevirtual 116	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   22: invokevirtual 122	mqq/app/MobileQQ:getApplicationContext	()Landroid/content/Context;
+    //   19: invokevirtual 118	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   22: invokevirtual 124	mqq/app/MobileQQ:getApplicationContext	()Landroid/content/Context;
     //   25: aload_2
-    //   26: invokevirtual 128	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
+    //   26: invokevirtual 130	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
     //   29: aload_1
     //   30: iconst_0
-    //   31: invokestatic 134	cooperation/qzone/QZoneHelper:clearCache	(Lmqq/app/AppRuntime;Z)V
+    //   31: invokestatic 136	cooperation/qzone/QZoneHelper:clearCache	(Lmqq/app/AppRuntime;Z)V
     //   34: aload_1
-    //   35: invokestatic 137	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:c	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   35: invokestatic 139	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:c	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   38: aload_1
-    //   39: invokevirtual 140	com/tencent/mobileqq/app/QQAppInterface:getCurrentUin	()Ljava/lang/String;
+    //   39: invokevirtual 142	com/tencent/mobileqq/app/QQAppInterface:getCurrentUin	()Ljava/lang/String;
     //   42: iconst_0
-    //   43: invokestatic 143	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:a	(Ljava/lang/String;Z)V
+    //   43: invokestatic 145	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:a	(Ljava/lang/String;Z)V
     //   46: aload_1
-    //   47: invokestatic 145	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   50: invokestatic 147	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:c	()V
+    //   47: invokestatic 147	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   50: invokestatic 149	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:c	()V
     //   53: aload_1
-    //   54: invokestatic 149	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   57: invokestatic 153	bhfk:a	()V
-    //   60: invokestatic 156	com/tencent/mobileqq/ark/ArkAppCenter:b	()V
-    //   63: invokestatic 159	awhy:b	()V
+    //   54: invokestatic 151	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   57: invokestatic 155	com/tencent/mobileqq/utils/MusicCacheManager:a	()V
+    //   60: invokestatic 158	com/tencent/mobileqq/ark/ArkAppCenter:b	()V
+    //   63: invokestatic 161	com/tencent/mobileqq/listentogether/predownload/ListenTogetherResDownloader:b	()V
     //   66: aload_0
     //   67: ifnull +12 -> 79
     //   70: aload_0
     //   71: aload_1
-    //   72: invokevirtual 162	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   75: invokestatic 167	bmaf:a	(Landroid/app/Activity;Ljava/lang/String;)Z
+    //   72: invokevirtual 164	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   75: invokestatic 169	cooperation/qqfav/QfavHelper:a	(Landroid/app/Activity;Ljava/lang/String;)Z
     //   78: pop
-    //   79: aload_1
-    //   80: invokestatic 173	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:deleteAllH5Data	(Lcom/tencent/common/app/AppInterface;)V
-    //   83: new 50	java/io/File
-    //   86: dup
-    //   87: new 31	java/lang/StringBuilder
-    //   90: dup
-    //   91: invokespecial 34	java/lang/StringBuilder:<init>	()V
-    //   94: getstatic 174	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   97: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: ldc 176
-    //   102: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: aload_1
-    //   106: invokevirtual 179	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   109: invokestatic 185	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
-    //   112: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   118: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   121: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   124: invokestatic 195	nvf:b	()Ljava/lang/String;
-    //   127: astore_0
-    //   128: aload_0
-    //   129: ifnull +14 -> 143
-    //   132: new 50	java/io/File
-    //   135: dup
-    //   136: aload_0
-    //   137: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   140: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   143: invokestatic 197	nvf:d	()Ljava/lang/String;
-    //   146: astore_0
-    //   147: aload_0
-    //   148: ifnull +14 -> 162
-    //   151: new 50	java/io/File
-    //   154: dup
-    //   155: aload_0
-    //   156: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   159: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   162: invokestatic 199	nvf:a	()Ljava/lang/String;
-    //   165: astore_0
-    //   166: aload_0
-    //   167: ifnull +14 -> 181
-    //   170: new 50	java/io/File
-    //   173: dup
-    //   174: aload_0
-    //   175: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   178: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   181: invokestatic 201	nvf:c	()Ljava/lang/String;
-    //   184: astore_0
-    //   185: aload_0
-    //   186: ifnull +14 -> 200
-    //   189: new 50	java/io/File
-    //   192: dup
-    //   193: aload_0
-    //   194: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   197: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   200: new 50	java/io/File
-    //   203: dup
-    //   204: new 31	java/lang/StringBuilder
-    //   207: dup
-    //   208: invokespecial 34	java/lang/StringBuilder:<init>	()V
-    //   211: invokestatic 206	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   214: invokevirtual 209	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   217: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   220: ldc 211
-    //   222: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   225: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   228: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   231: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   234: new 50	java/io/File
-    //   237: dup
-    //   238: invokestatic 214	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   241: invokevirtual 44	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   244: ldc 216
-    //   246: invokespecial 219	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   249: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   252: new 50	java/io/File
-    //   255: dup
-    //   256: invokestatic 214	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   259: invokevirtual 44	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   262: ldc 221
-    //   264: invokespecial 219	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   267: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   270: aload_1
-    //   271: invokevirtual 116	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   274: ldc 223
-    //   276: iconst_4
-    //   277: invokevirtual 227	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   280: invokeinterface 233 1 0
-    //   285: invokeinterface 238 1 0
-    //   290: invokeinterface 242 1 0
-    //   295: pop
-    //   296: aload_1
-    //   297: invokevirtual 116	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   300: ldc 244
-    //   302: iconst_4
-    //   303: invokevirtual 227	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   306: invokeinterface 233 1 0
-    //   311: invokeinterface 238 1 0
-    //   316: invokeinterface 242 1 0
-    //   321: pop
-    //   322: new 50	java/io/File
-    //   325: dup
-    //   326: getstatic 249	com/tencent/mobileqq/app/AppConstants:SDCARD_GIFT_SAVE	Ljava/lang/String;
-    //   329: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   332: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   335: invokestatic 254	com/tencent/smtt/sdk/CacheManager:getCacheFileBaseDir	()Ljava/io/File;
-    //   338: astore_0
-    //   339: aload_0
-    //   340: ifnull +7 -> 347
-    //   343: aload_0
-    //   344: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   347: invokestatic 259	com/tencent/mobileqq/shortvideo/ShortVideoUtils:deleteDownloadTempFile	()V
-    //   350: new 50	java/io/File
-    //   353: dup
-    //   354: getstatic 262	com/tencent/mobileqq/app/AppConstants:SDCARD_NEARBY_FLOWER	Ljava/lang/String;
-    //   357: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   360: astore_0
-    //   361: aload_0
-    //   362: invokevirtual 265	java/io/File:exists	()Z
-    //   365: ifeq +7 -> 372
-    //   368: aload_0
-    //   369: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   372: aload_0
-    //   373: invokevirtual 265	java/io/File:exists	()Z
-    //   376: ifne +8 -> 384
-    //   379: aload_0
-    //   380: invokevirtual 268	java/io/File:mkdirs	()Z
-    //   383: pop
-    //   384: new 50	java/io/File
-    //   387: dup
-    //   388: getstatic 271	com/tencent/mobileqq/app/AppConstants:SDCARD_HOMEWORK_ATTACH	Ljava/lang/String;
-    //   391: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   394: astore_0
-    //   395: aload_0
-    //   396: invokevirtual 265	java/io/File:exists	()Z
-    //   399: ifeq +7 -> 406
-    //   402: aload_0
-    //   403: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   406: new 50	java/io/File
-    //   409: dup
-    //   410: getstatic 274	com/tencent/mobileqq/app/AppConstants:SDCARD_TROOP_REWARD	Ljava/lang/String;
-    //   413: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   416: astore_0
-    //   417: aload_0
-    //   418: invokevirtual 265	java/io/File:exists	()Z
-    //   421: ifeq +7 -> 428
-    //   424: aload_0
-    //   425: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   428: new 50	java/io/File
-    //   431: dup
-    //   432: getstatic 277	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD	Ljava/lang/String;
-    //   435: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   438: astore_0
-    //   439: aload_0
-    //   440: invokevirtual 265	java/io/File:exists	()Z
-    //   443: ifeq +7 -> 450
-    //   446: aload_0
-    //   447: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   450: new 50	java/io/File
-    //   453: dup
-    //   454: getstatic 280	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH_READINJOY_TEMPLATE_VIDEO_PATH	Ljava/lang/String;
-    //   457: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   460: astore_0
-    //   461: aload_0
-    //   462: invokevirtual 265	java/io/File:exists	()Z
-    //   465: ifeq +7 -> 472
-    //   468: aload_0
-    //   469: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   472: new 50	java/io/File
-    //   475: dup
-    //   476: new 31	java/lang/StringBuilder
-    //   479: dup
-    //   480: invokespecial 34	java/lang/StringBuilder:<init>	()V
-    //   483: getstatic 283	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH	Ljava/lang/String;
-    //   486: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   489: ldc_w 285
-    //   492: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   495: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   498: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   501: astore_0
-    //   502: aload_0
-    //   503: invokevirtual 265	java/io/File:exists	()Z
-    //   506: ifeq +7 -> 513
-    //   509: aload_0
-    //   510: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   513: new 50	java/io/File
-    //   516: dup
-    //   517: getstatic 288	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_IMG	Ljava/lang/String;
-    //   520: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   523: astore_0
-    //   524: aload_0
-    //   525: invokevirtual 265	java/io/File:exists	()Z
-    //   528: ifeq +7 -> 535
-    //   531: aload_0
-    //   532: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   535: new 50	java/io/File
-    //   538: dup
-    //   539: getstatic 291	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_FEATURE	Ljava/lang/String;
-    //   542: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   545: astore_0
-    //   546: aload_0
-    //   547: invokevirtual 265	java/io/File:exists	()Z
-    //   550: ifeq +7 -> 557
-    //   553: aload_0
-    //   554: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   557: new 50	java/io/File
-    //   560: dup
-    //   561: getstatic 294	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_CONFIG	Ljava/lang/String;
-    //   564: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   567: astore_0
-    //   568: aload_0
-    //   569: invokevirtual 265	java/io/File:exists	()Z
-    //   572: ifeq +7 -> 579
-    //   575: aload_0
-    //   576: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   579: new 50	java/io/File
-    //   582: dup
-    //   583: getstatic 297	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_MODEL	Ljava/lang/String;
-    //   586: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   589: astore_0
-    //   590: aload_0
-    //   591: invokevirtual 265	java/io/File:exists	()Z
-    //   594: ifeq +7 -> 601
-    //   597: aload_0
-    //   598: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   601: new 50	java/io/File
-    //   604: dup
-    //   605: getstatic 300	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_RELATIONSHIP	Ljava/lang/String;
-    //   608: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   611: astore_0
-    //   612: aload_0
-    //   613: invokevirtual 265	java/io/File:exists	()Z
-    //   616: ifeq +7 -> 623
-    //   619: aload_0
-    //   620: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   623: new 50	java/io/File
-    //   626: dup
-    //   627: getstatic 303	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_TRANSFER	Ljava/lang/String;
-    //   630: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   633: astore_0
-    //   634: aload_0
-    //   635: invokevirtual 265	java/io/File:exists	()Z
-    //   638: ifeq +7 -> 645
-    //   641: aload_0
-    //   642: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   645: new 50	java/io/File
-    //   648: dup
-    //   649: getstatic 306	com/tencent/mobileqq/app/AppConstants:SDCARD_NEARBY_PROFILE_NOW_VIDEO_DIR	Ljava/lang/String;
-    //   652: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
-    //   655: astore_0
-    //   656: aload_0
-    //   657: invokevirtual 265	java/io/File:exists	()Z
-    //   660: ifeq +7 -> 667
-    //   663: aload_0
-    //   664: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   667: invokestatic 311	com/tencent/mobileqq/vas/VasQuickUpdateManager:cleanCache	()V
-    //   670: invokestatic 314	bpqv:b	()V
-    //   673: invokestatic 318	aiin:f	()V
-    //   676: return
-    //   677: astore_0
-    //   678: invokestatic 323	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   681: ifeq -5 -> 676
-    //   684: ldc_w 325
-    //   687: iconst_2
-    //   688: new 31	java/lang/StringBuilder
-    //   691: dup
-    //   692: invokespecial 34	java/lang/StringBuilder:<init>	()V
-    //   695: ldc_w 327
-    //   698: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   701: aload_0
-    //   702: invokevirtual 330	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   705: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   708: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   711: invokestatic 333	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   714: return
-    //   715: astore_0
-    //   716: goto -464 -> 252
+    //   79: ldc 171
+    //   81: invokestatic 177	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   84: checkcast 171	com/tencent/biz/pubaccount/api/IPublicAccountJavascriptInterface
+    //   87: aload_1
+    //   88: invokeinterface 181 2 0
+    //   93: new 50	java/io/File
+    //   96: dup
+    //   97: new 31	java/lang/StringBuilder
+    //   100: dup
+    //   101: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   104: ldc 171
+    //   106: invokestatic 177	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   109: checkcast 171	com/tencent/biz/pubaccount/api/IPublicAccountJavascriptInterface
+    //   112: invokeinterface 184 1 0
+    //   117: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: ldc 186
+    //   122: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: aload_1
+    //   126: invokevirtual 189	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   129: invokestatic 195	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   132: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   138: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   141: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   144: invokestatic 205	com/tencent/biz/common/offline/OfflineEnvHelper:b	()Ljava/lang/String;
+    //   147: astore_0
+    //   148: aload_0
+    //   149: ifnull +14 -> 163
+    //   152: new 50	java/io/File
+    //   155: dup
+    //   156: aload_0
+    //   157: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   160: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   163: invokestatic 207	com/tencent/biz/common/offline/OfflineEnvHelper:d	()Ljava/lang/String;
+    //   166: astore_0
+    //   167: aload_0
+    //   168: ifnull +14 -> 182
+    //   171: new 50	java/io/File
+    //   174: dup
+    //   175: aload_0
+    //   176: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   179: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   182: invokestatic 209	com/tencent/biz/common/offline/OfflineEnvHelper:a	()Ljava/lang/String;
+    //   185: astore_0
+    //   186: aload_0
+    //   187: ifnull +14 -> 201
+    //   190: new 50	java/io/File
+    //   193: dup
+    //   194: aload_0
+    //   195: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   198: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   201: invokestatic 211	com/tencent/biz/common/offline/OfflineEnvHelper:c	()Ljava/lang/String;
+    //   204: astore_0
+    //   205: aload_0
+    //   206: ifnull +14 -> 220
+    //   209: new 50	java/io/File
+    //   212: dup
+    //   213: aload_0
+    //   214: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   217: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   220: new 50	java/io/File
+    //   223: dup
+    //   224: new 31	java/lang/StringBuilder
+    //   227: dup
+    //   228: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   231: invokestatic 216	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   234: invokevirtual 219	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   237: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   240: ldc 221
+    //   242: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   248: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   251: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   254: new 50	java/io/File
+    //   257: dup
+    //   258: invokestatic 224	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   261: invokevirtual 44	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   264: ldc 226
+    //   266: invokespecial 229	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   269: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   272: new 50	java/io/File
+    //   275: dup
+    //   276: invokestatic 224	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   279: invokevirtual 44	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   282: ldc 231
+    //   284: invokespecial 229	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   287: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   290: aload_1
+    //   291: invokevirtual 118	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   294: ldc 233
+    //   296: iconst_4
+    //   297: invokevirtual 237	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   300: invokeinterface 243 1 0
+    //   305: invokeinterface 248 1 0
+    //   310: invokeinterface 252 1 0
+    //   315: pop
+    //   316: aload_1
+    //   317: invokevirtual 118	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   320: ldc 254
+    //   322: iconst_4
+    //   323: invokevirtual 237	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   326: invokeinterface 243 1 0
+    //   331: invokeinterface 248 1 0
+    //   336: invokeinterface 252 1 0
+    //   341: pop
+    //   342: new 50	java/io/File
+    //   345: dup
+    //   346: getstatic 259	com/tencent/mobileqq/app/AppConstants:SDCARD_GIFT_SAVE	Ljava/lang/String;
+    //   349: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   352: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   355: invokestatic 264	com/tencent/smtt/sdk/CacheManager:getCacheFileBaseDir	()Ljava/io/File;
+    //   358: astore_0
+    //   359: aload_0
+    //   360: ifnull +7 -> 367
+    //   363: aload_0
+    //   364: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   367: invokestatic 269	com/tencent/mobileqq/shortvideo/ShortVideoUtils:deleteDownloadTempFile	()V
+    //   370: new 50	java/io/File
+    //   373: dup
+    //   374: getstatic 272	com/tencent/mobileqq/app/AppConstants:SDCARD_NEARBY_FLOWER	Ljava/lang/String;
+    //   377: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   380: astore_0
+    //   381: aload_0
+    //   382: invokevirtual 275	java/io/File:exists	()Z
+    //   385: ifeq +7 -> 392
+    //   388: aload_0
+    //   389: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   392: aload_0
+    //   393: invokevirtual 275	java/io/File:exists	()Z
+    //   396: ifne +8 -> 404
+    //   399: aload_0
+    //   400: invokevirtual 278	java/io/File:mkdirs	()Z
+    //   403: pop
+    //   404: new 50	java/io/File
+    //   407: dup
+    //   408: getstatic 281	com/tencent/mobileqq/app/AppConstants:SDCARD_HOMEWORK_ATTACH	Ljava/lang/String;
+    //   411: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   414: astore_0
+    //   415: aload_0
+    //   416: invokevirtual 275	java/io/File:exists	()Z
+    //   419: ifeq +7 -> 426
+    //   422: aload_0
+    //   423: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   426: new 50	java/io/File
+    //   429: dup
+    //   430: getstatic 284	com/tencent/mobileqq/app/AppConstants:SDCARD_TROOP_REWARD	Ljava/lang/String;
+    //   433: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   436: astore_0
+    //   437: aload_0
+    //   438: invokevirtual 275	java/io/File:exists	()Z
+    //   441: ifeq +7 -> 448
+    //   444: aload_0
+    //   445: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   448: new 50	java/io/File
+    //   451: dup
+    //   452: getstatic 287	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD	Ljava/lang/String;
+    //   455: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   458: astore_0
+    //   459: aload_0
+    //   460: invokevirtual 275	java/io/File:exists	()Z
+    //   463: ifeq +7 -> 470
+    //   466: aload_0
+    //   467: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   470: new 50	java/io/File
+    //   473: dup
+    //   474: getstatic 290	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH_READINJOY_TEMPLATE_VIDEO_PATH	Ljava/lang/String;
+    //   477: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   480: astore_0
+    //   481: aload_0
+    //   482: invokevirtual 275	java/io/File:exists	()Z
+    //   485: ifeq +7 -> 492
+    //   488: aload_0
+    //   489: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   492: new 50	java/io/File
+    //   495: dup
+    //   496: new 31	java/lang/StringBuilder
+    //   499: dup
+    //   500: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   503: getstatic 293	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH	Ljava/lang/String;
+    //   506: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   509: ldc_w 295
+    //   512: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   515: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   518: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   521: astore_0
+    //   522: aload_0
+    //   523: invokevirtual 275	java/io/File:exists	()Z
+    //   526: ifeq +7 -> 533
+    //   529: aload_0
+    //   530: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   533: new 50	java/io/File
+    //   536: dup
+    //   537: getstatic 298	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_IMG	Ljava/lang/String;
+    //   540: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   543: astore_0
+    //   544: aload_0
+    //   545: invokevirtual 275	java/io/File:exists	()Z
+    //   548: ifeq +7 -> 555
+    //   551: aload_0
+    //   552: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   555: new 50	java/io/File
+    //   558: dup
+    //   559: getstatic 301	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_FEATURE	Ljava/lang/String;
+    //   562: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   565: astore_0
+    //   566: aload_0
+    //   567: invokevirtual 275	java/io/File:exists	()Z
+    //   570: ifeq +7 -> 577
+    //   573: aload_0
+    //   574: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   577: new 50	java/io/File
+    //   580: dup
+    //   581: getstatic 304	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_CONFIG	Ljava/lang/String;
+    //   584: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   587: astore_0
+    //   588: aload_0
+    //   589: invokevirtual 275	java/io/File:exists	()Z
+    //   592: ifeq +7 -> 599
+    //   595: aload_0
+    //   596: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   599: new 50	java/io/File
+    //   602: dup
+    //   603: getstatic 307	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_MODEL	Ljava/lang/String;
+    //   606: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   609: astore_0
+    //   610: aload_0
+    //   611: invokevirtual 275	java/io/File:exists	()Z
+    //   614: ifeq +7 -> 621
+    //   617: aload_0
+    //   618: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   621: new 50	java/io/File
+    //   624: dup
+    //   625: getstatic 310	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_RELATIONSHIP	Ljava/lang/String;
+    //   628: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   631: astore_0
+    //   632: aload_0
+    //   633: invokevirtual 275	java/io/File:exists	()Z
+    //   636: ifeq +7 -> 643
+    //   639: aload_0
+    //   640: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   643: new 50	java/io/File
+    //   646: dup
+    //   647: getstatic 313	com/tencent/mobileqq/app/AppConstants:SDCARD_AR_TRANSFER	Ljava/lang/String;
+    //   650: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   653: astore_0
+    //   654: aload_0
+    //   655: invokevirtual 275	java/io/File:exists	()Z
+    //   658: ifeq +7 -> 665
+    //   661: aload_0
+    //   662: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   665: new 50	java/io/File
+    //   668: dup
+    //   669: getstatic 316	com/tencent/mobileqq/app/AppConstants:SDCARD_NEARBY_PROFILE_NOW_VIDEO_DIR	Ljava/lang/String;
+    //   672: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   675: astore_0
+    //   676: aload_0
+    //   677: invokevirtual 275	java/io/File:exists	()Z
+    //   680: ifeq +7 -> 687
+    //   683: aload_0
+    //   684: invokestatic 201	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
+    //   687: aload_1
+    //   688: ldc_w 318
+    //   691: ldc 68
+    //   693: invokevirtual 322	com/tencent/mobileqq/app/QQAppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   696: checkcast 318	com/tencent/mobileqq/vas/updatesystem/api/IVasQuickUpdateService
+    //   699: invokeinterface 325 1 0
+    //   704: invokestatic 328	dov/com/tencent/mobileqq/shortvideo/QQStoryFollowCaptureResManager:b	()V
+    //   707: invokestatic 332	com/tencent/mobileqq/activity/aio/stickerrecommended/StickerRecManager:f	()V
+    //   710: return
+    //   711: astore_0
+    //   712: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   715: ifeq -5 -> 710
+    //   718: ldc_w 339
+    //   721: iconst_2
+    //   722: new 31	java/lang/StringBuilder
+    //   725: dup
+    //   726: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   729: ldc_w 341
+    //   732: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   735: aload_0
+    //   736: invokevirtual 344	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   739: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   742: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   745: invokestatic 347	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   748: return
+    //   749: astore_0
+    //   750: goto -478 -> 272
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	719	0	paramActivity	android.app.Activity
-    //   0	719	1	paramQQAppInterface	QQAppInterface
+    //   0	753	0	paramActivity	android.app.Activity
+    //   0	753	1	paramQQAppInterface	QQAppInterface
     //   9	17	2	localIntent	Intent
     // Exception table:
     //   from	to	target	type
-    //   0	66	677	java/lang/Exception
-    //   70	79	677	java/lang/Exception
-    //   79	128	677	java/lang/Exception
-    //   132	143	677	java/lang/Exception
-    //   143	147	677	java/lang/Exception
-    //   151	162	677	java/lang/Exception
-    //   162	166	677	java/lang/Exception
-    //   170	181	677	java/lang/Exception
-    //   181	185	677	java/lang/Exception
-    //   189	200	677	java/lang/Exception
-    //   252	339	677	java/lang/Exception
-    //   343	347	677	java/lang/Exception
-    //   347	372	677	java/lang/Exception
-    //   372	384	677	java/lang/Exception
-    //   384	406	677	java/lang/Exception
-    //   406	428	677	java/lang/Exception
-    //   428	450	677	java/lang/Exception
-    //   450	472	677	java/lang/Exception
-    //   472	513	677	java/lang/Exception
-    //   513	535	677	java/lang/Exception
-    //   535	557	677	java/lang/Exception
-    //   557	579	677	java/lang/Exception
-    //   579	601	677	java/lang/Exception
-    //   601	623	677	java/lang/Exception
-    //   623	645	677	java/lang/Exception
-    //   645	667	677	java/lang/Exception
-    //   667	676	677	java/lang/Exception
-    //   200	252	715	java/lang/Exception
+    //   0	66	711	java/lang/Exception
+    //   70	79	711	java/lang/Exception
+    //   79	148	711	java/lang/Exception
+    //   152	163	711	java/lang/Exception
+    //   163	167	711	java/lang/Exception
+    //   171	182	711	java/lang/Exception
+    //   182	186	711	java/lang/Exception
+    //   190	201	711	java/lang/Exception
+    //   201	205	711	java/lang/Exception
+    //   209	220	711	java/lang/Exception
+    //   272	359	711	java/lang/Exception
+    //   363	367	711	java/lang/Exception
+    //   367	392	711	java/lang/Exception
+    //   392	404	711	java/lang/Exception
+    //   404	426	711	java/lang/Exception
+    //   426	448	711	java/lang/Exception
+    //   448	470	711	java/lang/Exception
+    //   470	492	711	java/lang/Exception
+    //   492	533	711	java/lang/Exception
+    //   533	555	711	java/lang/Exception
+    //   555	577	711	java/lang/Exception
+    //   577	599	711	java/lang/Exception
+    //   599	621	711	java/lang/Exception
+    //   621	643	711	java/lang/Exception
+    //   643	665	711	java/lang/Exception
+    //   665	687	711	java/lang/Exception
+    //   687	710	711	java/lang/Exception
+    //   220	272	749	java/lang/Exception
   }
   
   static void a(QQAppInterface paramQQAppInterface)
@@ -455,7 +467,7 @@ public class QQSettingMsgHistoryActivity
       return;
     }
     BaseApplication.getContext().getPackageName();
-    a(bhbx.a(BaseApplication.getContext()) + "thumbnails/");
+    a(Utils.a(BaseApplication.getContext()) + "thumbnails/");
   }
   
   private static void a(String paramString)
@@ -479,22 +491,22 @@ public class QQSettingMsgHistoryActivity
   public static void a(String paramString, boolean paramBoolean)
   {
     int j = 0;
-    while (j < anri.jdField_a_of_type_JavaUtilVector.size())
+    while (j < CardHandler.jdField_a_of_type_JavaUtilVector.size())
     {
-      a(anri.jdField_a_of_type_JavaLangString + ((Integer)anri.jdField_a_of_type_JavaUtilVector.get(j)).intValue() + "/");
+      a(CardHandler.jdField_a_of_type_JavaLangString + ((Integer)CardHandler.jdField_a_of_type_JavaUtilVector.get(j)).intValue() + "/");
       j += 1;
     }
-    a(anri.jdField_a_of_type_JavaLangString + "background" + "/");
+    a(CardHandler.jdField_a_of_type_JavaLangString + "background" + "/");
     a(AppConstants.SDCARD_PATH + "temp" + "/");
-    a(anri.jdField_a_of_type_JavaLangString + "temp" + "/");
-    a(anri.jdField_a_of_type_JavaLangString + "HDAvatar" + "/");
+    a(CardHandler.jdField_a_of_type_JavaLangString + "temp" + "/");
+    a(CardHandler.jdField_a_of_type_JavaLangString + "HDAvatar" + "/");
     a(AppConstants.PATH_CARD_QZONE);
-    a(anri.jdField_a_of_type_JavaLangString + "voice" + "/");
-    a(abug.a() + "/");
+    a(CardHandler.jdField_a_of_type_JavaLangString + "voice" + "/");
+    a(GCCommon.a() + "/");
     a(AppConstants.SDCARD_PATH_PUBLIC_ACCOUNT_SCREENSHOTS);
-    a(avlz.jdField_a_of_type_JavaLangString);
-    a(avnw.jdField_a_of_type_JavaLangString);
-    a(bbxw.a());
+    a(HotPicDownLoader.jdField_a_of_type_JavaLangString);
+    a(HotVideoPreviewDownloader.jdField_a_of_type_JavaLangString);
+    a(ScribbleMsgUtils.a());
   }
   
   private void b(int paramInt)
@@ -527,8 +539,8 @@ public class QQSettingMsgHistoryActivity
     if (n < 1) {}
     for (localObject = "<1%";; localObject = n + "%")
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(getString(2131698367), new Object[] { localObject }));
-      localObject = aoqd.a(paramLong1);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(getString(2131698647), new Object[] { localObject }));
+      localObject = FileCleanUtils.a(paramLong1);
       this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_a_of_type_Long = paramLong1;
       QLog.d("QQSettingMsgHistoryActivity", 1, "showSpaceInfo qqSpaceLength: " + j + " phoneSpaceLength: " + k + " avaliableSpaceLength: " + m);
@@ -541,14 +553,8 @@ public class QQSettingMsgHistoryActivity
     if (URLDrawableHelper.diskCachePath != null)
     {
       a(URLDrawableHelper.diskCachePath.getAbsolutePath());
-      if ((paramQQAppInterface.getApp() instanceof BaseApplicationImpl))
-      {
-        BaseApplicationImpl.getApplication();
-        if (BaseApplicationImpl.sImageCache != null)
-        {
-          BaseApplicationImpl.getApplication();
-          BaseApplicationImpl.sImageCache.evictAll();
-        }
+      if (((paramQQAppInterface.getApp() instanceof BaseApplicationImpl)) && (GlobalImageCache.a != null)) {
+        GlobalImageCache.a.evictAll();
       }
     }
   }
@@ -562,28 +568,28 @@ public class QQSettingMsgHistoryActivity
   {
     paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
     if (paramQQAppInterface == null) {}
-    while (!(paramQQAppInterface instanceof bcvr)) {
+    while (!(paramQQAppInterface instanceof QZoneManagerImp)) {
       return;
     }
-    ((bcvr)paramQQAppInterface).a = null;
+    ((QZoneManagerImp)paramQQAppInterface).a = null;
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365348);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131371612);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377066));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365349));
-    this.jdField_c_of_type_JavaLangString = getResources().getString(2131690686);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365497);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131371922);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377480));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365498));
+    this.jdField_c_of_type_JavaLangString = getResources().getString(2131690788);
   }
   
   private void e()
   {
     if ((jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager != null) && (jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.a()))
     {
-      b(jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.b, jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.a(), jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.b(), jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.c());
-      bmux.a(this);
-      if (VersionUtils.isGingerBread()) {
+      b(jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.jdField_b_of_type_Long, jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.a(), jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.b(), jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.c());
+      QIMShortVideoUtils.a(this);
+      if (VersionUtils.c()) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(0);
       }
       return;
@@ -598,19 +604,19 @@ public class QQSettingMsgHistoryActivity
   
   private void f()
   {
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131364569);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131374452);
-    this.e = this.jdField_c_of_type_AndroidViewView.findViewById(2131372625);
-    this.f = this.jdField_c_of_type_AndroidViewView.findViewById(2131372594);
-    this.g = this.jdField_c_of_type_AndroidViewView.findViewById(2131374170);
-    this.h = this.jdField_c_of_type_AndroidViewView.findViewById(2131372592);
-    this.i = this.jdField_c_of_type_AndroidViewView.findViewById(2131372590);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131374451));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131365092));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131364682);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131374808);
+    this.e = this.jdField_c_of_type_AndroidViewView.findViewById(2131372945);
+    this.f = this.jdField_c_of_type_AndroidViewView.findViewById(2131372907);
+    this.g = this.jdField_c_of_type_AndroidViewView.findViewById(2131374489);
+    this.h = this.jdField_c_of_type_AndroidViewView.findViewById(2131372905);
+    this.i = this.jdField_c_of_type_AndroidViewView.findViewById(2131372903);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131374807));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131365228));
     ((GradientDrawable)this.g.getBackground()).setColor(Color.parseColor("#00CAFC"));
     ((GradientDrawable)this.h.getBackground()).setColor(Color.parseColor("#FFCC00"));
     ((GradientDrawable)this.i.getBackground()).setColor(Color.parseColor("#EBEDF5"));
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131298444);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131298532);
     this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int / 8);
     this.jdField_c_of_type_Int = getResources().getDisplayMetrics().widthPixels;
     this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int - this.jdField_a_of_type_Int * 2 - this.jdField_b_of_type_Int * 2);
@@ -630,10 +636,10 @@ public class QQSettingMsgHistoryActivity
     }
     if (j == 2)
     {
-      setTitle(2131718943);
+      setTitle(2131719470);
       return;
     }
-    setTitle(2131698821);
+    setTitle(2131699134);
   }
   
   public void a(int paramInt)
@@ -645,8 +651,8 @@ public class QQSettingMsgHistoryActivity
   {
     b(100);
     b(paramLong1, paramLong2, paramLong3, paramLong4);
-    bmux.a(this);
-    if (VersionUtils.isGingerBread()) {
+    QIMShortVideoUtils.a(this);
+    if (VersionUtils.c()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(0);
     }
   }
@@ -659,7 +665,7 @@ public class QQSettingMsgHistoryActivity
     b(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    if (VersionUtils.isGingerBread()) {
+    if (VersionUtils.c()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(2);
     }
   }
@@ -676,15 +682,15 @@ public class QQSettingMsgHistoryActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561507);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131377134));
-    setTitle(2131691444);
+    super.setContentView(2131561618);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131377554));
+    setTitle(2131691554);
     d();
     f();
     e();
     this.jdField_b_of_type_JavaLangString = this.app.getCurrentAccountUin();
     setVolumeControlStream(3);
-    if (bhez.a(this)) {
+    if (JumpQqPimSecureUtil.a(this)) {
       VipUtils.a(this.app, "Safe_SpaceClean", "SpaceClean_", "enter_MsgHistory_had_installed_secure", 0, 0, null);
     }
     for (;;)
@@ -697,12 +703,12 @@ public class QQSettingMsgHistoryActivity
   
   public void doOnDestroy()
   {
-    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
       dismissDialog(1);
     }
     super.doOnDestroy();
     a();
-    zmk.a(this);
+    ScannerUtils.a(this);
   }
   
   public void doOnPostResume()
@@ -719,7 +725,7 @@ public class QQSettingMsgHistoryActivity
   public void doOnStart()
   {
     super.doOnStart();
-    ((VasExtensionHandler)this.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(new String[] { this.app.getCurrentAccountUin() }, new int[] { 42255 });
+    ((IApolloExtensionHandler)this.app.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(new String[] { this.app.getCurrentAccountUin() }, new int[] { 42255 });
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -756,12 +762,12 @@ public class QQSettingMsgHistoryActivity
   
   public String setLastActivityName()
   {
-    return getString(2131690761);
+    return getString(2131690865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity
  * JD-Core Version:    0.7.0.1
  */

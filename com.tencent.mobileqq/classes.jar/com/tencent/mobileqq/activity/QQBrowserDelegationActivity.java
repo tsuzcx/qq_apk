@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bdla;
-import becr;
 import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import onq;
 
 public class QQBrowserDelegationActivity
   extends BaseActivity
@@ -28,7 +27,12 @@ public class QQBrowserDelegationActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = MainFragment.c;
+    jdField_a_of_type_JavaLangString = FrameControllerUtil.d;
+  }
+  
+  public QQBrowserDelegationActivity()
+  {
+    this.jdField_a_of_type_AndroidContentIntent = null;
   }
   
   void a(Intent paramIntent, QQAppInterface paramQQAppInterface)
@@ -37,20 +41,20 @@ public class QQBrowserDelegationActivity
     do
     {
       int i;
-      onq localonq;
+      EcShopAssistantManager localEcShopAssistantManager;
       do
       {
         return;
         i = 0;
-        localonq = (onq)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
-        if ("3046055438".equals(localonq.i)) {
+        localEcShopAssistantManager = (EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+        if ("3046055438".equals(localEcShopAssistantManager.i)) {
           i = 1;
         }
-        localonq.i = null;
+        localEcShopAssistantManager.i = null;
       } while (i == 0);
       paramIntent.setClass(this, BusinessBrowser.class);
       paramIntent.putExtra("jump_from", 1);
-      paramQQAppInterface = paramQQAppInterface.getMessageFacade().getLastMessage(localonq.i, 1008);
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(localEcShopAssistantManager.i, 1008);
     } while (paramQQAppInterface == null);
     paramIntent.putExtra("msg_id", paramQQAppInterface.getExtInfoFromExtStr("public_account_msg_id"));
   }
@@ -87,7 +91,7 @@ public class QQBrowserDelegationActivity
       default: 
         localIntent.setClass(this, QQBrowserActivity.class);
         str = localIntent.getStringExtra("url");
-        if (!becr.b(str)) {
+        if (!TeamWorkUtils.b(str)) {
           break label244;
         }
         paramBundle = null;
@@ -99,10 +103,10 @@ public class QQBrowserDelegationActivity
       }
       for (;;)
       {
-        if ((TextUtils.isEmpty(paramBundle)) || (!becr.a(this, str, becr.a(this.app, paramBundle, i)))) {
+        if ((TextUtils.isEmpty(paramBundle)) || (!TeamWorkUtils.a(this, str, TeamWorkUtils.a(this.app, paramBundle, i)))) {
           break label244;
         }
-        bdla.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
         finish();
         return false;
         localIntent.setClass(this, QQH5BrowserActivity.class);
@@ -115,7 +119,7 @@ public class QQBrowserDelegationActivity
         }
       }
       paramBundle = localIntent;
-      if (!becr.a(str)) {
+      if (!TeamWorkUtils.a(str)) {
         break label309;
       }
       if (!localIntent.getBooleanExtra("h5_ark_is_from_share", false)) {
@@ -166,7 +170,7 @@ public class QQBrowserDelegationActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserDelegationActivity
  * JD-Core Version:    0.7.0.1
  */

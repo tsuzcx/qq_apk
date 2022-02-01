@@ -13,8 +13,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import bhdz;
-import sxv;
+import com.tencent.mobileqq.utils.DisplayUtils;
 
 public class BezierSideBarView
   extends View
@@ -51,9 +50,9 @@ public class BezierSideBarView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_b_of_type_Float = ((int)bhdz.a(paramContext, 18.0F));
+    this.jdField_b_of_type_Float = ((int)DisplayUtils.a(paramContext, 18.0F));
     this.jdField_a_of_type_Int = -16777216;
-    this.d = ((int)bhdz.a(paramContext, 18.0F));
+    this.d = ((int)DisplayUtils.a(paramContext, 18.0F));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -62,9 +61,9 @@ public class BezierSideBarView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    paramAttributeSet = BitmapFactory.decodeResource(paramContext.getResources(), 2130843321);
+    paramAttributeSet = BitmapFactory.decodeResource(paramContext.getResources(), 2130843490);
     if (paramAttributeSet != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramAttributeSet, (int)bhdz.a(paramContext, 7.0F), (int)bhdz.a(paramContext, 12.0F), true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramAttributeSet, (int)DisplayUtils.a(paramContext, 7.0F), (int)DisplayUtils.a(paramContext, 12.0F), true);
     }
   }
   
@@ -142,7 +141,7 @@ public class BezierSideBarView
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setFloatValues(new float[] { this.jdField_a_of_type_Float, 0.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new sxv(this, paramAnimatorUpdateListener));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new BezierSideBarView.1(this, paramAnimatorUpdateListener));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -161,13 +160,13 @@ public class BezierSideBarView
     return this.c;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     a(paramCanvas);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_b_of_type_Int = getMeasuredWidth();
@@ -176,7 +175,7 @@ public class BezierSideBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView
  * JD-Core Version:    0.7.0.1
  */

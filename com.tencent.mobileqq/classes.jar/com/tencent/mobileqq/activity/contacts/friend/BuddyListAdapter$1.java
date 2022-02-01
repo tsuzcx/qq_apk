@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contacts.friend;
 
-import ajkt;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -8,10 +7,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
 
-public class BuddyListAdapter$1
+class BuddyListAdapter$1
   implements Runnable
 {
-  public BuddyListAdapter$1(ajkt paramajkt) {}
+  BuddyListAdapter$1(BuddyListAdapter paramBuddyListAdapter) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class BuddyListAdapter$1
     SparseIntArray localSparseIntArray = new SparseIntArray();
     try
     {
-      ajkt.a(this.this$0, localArrayList, localSparseArray, localSparseIntArray);
+      BuddyListAdapter.a(this.this$0, localArrayList, localSparseArray, localSparseIntArray);
       if (QLog.isColorLevel()) {
         QLog.d("BuddyListAdapter", 2, "notifyDataSetChanged in ThreadManager");
       }
@@ -38,7 +37,7 @@ public class BuddyListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.BuddyListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

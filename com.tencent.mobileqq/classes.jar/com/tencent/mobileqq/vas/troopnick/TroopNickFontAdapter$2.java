@@ -2,21 +2,20 @@ package com.tencent.mobileqq.vas.troopnick;
 
 import android.graphics.Typeface;
 import android.widget.TextView;
-import bhsz;
 
-public class TroopNickFontAdapter$2
+class TroopNickFontAdapter$2
   implements Runnable
 {
-  public TroopNickFontAdapter$2(bhsz parambhsz, Typeface paramTypeface) {}
+  TroopNickFontAdapter$2(TroopNickFontAdapter paramTroopNickFontAdapter, TextView paramTextView, Typeface paramTypeface) {}
   
   public void run()
   {
-    this.this$0.a.setTypeface(this.a);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickFontAdapter.2
  * JD-Core Version:    0.7.0.1
  */

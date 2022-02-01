@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apol;
 
 public class ArModelResource
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArModelResource> CREATOR = new apol();
+  public static final Parcelable.Creator<ArModelResource> CREATOR = new ArModelResource.1();
   public int a;
   public long a;
   public String a;
@@ -20,7 +19,7 @@ public class ArModelResource
   
   public ArModelResource() {}
   
-  public ArModelResource(Parcel paramParcel)
+  protected ArModelResource(Parcel paramParcel)
   {
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();

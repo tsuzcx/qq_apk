@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.home;
 
-import alht;
+import com.tencent.mobileqq.activity.recent.RecentParcelUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
@@ -11,12 +11,12 @@ class Conversation$2
   
   public void run()
   {
-    alht.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
+    RecentParcelUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.2
  * JD-Core Version:    0.7.0.1
  */

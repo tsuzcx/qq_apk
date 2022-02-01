@@ -1,10 +1,9 @@
 package com.tencent.open.downloadnew.common;
 
-import bjhn;
-import bjko;
-import bjna;
-import bjop;
+import com.tencent.open.appcircle.st.AppCircleReportManager;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
 class PackageInstallReceiver$3
   implements Runnable
@@ -13,26 +12,26 @@ class PackageInstallReceiver$3
   
   public void run()
   {
-    bjko.c(this.this$0.a, "ACTION_PACKAGE_ADDED >> " + this.a);
-    DownloadInfo localDownloadInfo = bjop.a().a(this.b);
+    LogUtility.c(this.this$0.a, "ACTION_PACKAGE_ADDED >> " + this.a);
+    DownloadInfo localDownloadInfo = DownloadDBHelper.a().a(this.b);
     if (localDownloadInfo != null)
     {
-      bjko.c(this.this$0.a, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.c + " " + localDownloadInfo.e);
-      bjna.a().d(localDownloadInfo);
-      bjhn.a().a(101, localDownloadInfo);
+      LogUtility.c(this.this$0.a, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.c + " " + localDownloadInfo.e);
+      DownloadManager.a().d(localDownloadInfo);
+      AppCircleReportManager.a().a(101, localDownloadInfo);
     }
     for (;;)
     {
-      bjna.a().a(6, localDownloadInfo);
+      DownloadManager.a().a(6, localDownloadInfo);
       return;
       localDownloadInfo = new DownloadInfo("", this.b);
-      bjko.c(this.this$0.a, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
+      LogUtility.c(this.this$0.a, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.PackageInstallReceiver.3
  * JD-Core Version:    0.7.0.1
  */

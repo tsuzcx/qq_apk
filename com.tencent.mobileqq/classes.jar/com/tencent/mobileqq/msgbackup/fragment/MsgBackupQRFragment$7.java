@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import awzh;
-import awzs;
+import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthProcessor;
+import com.tencent.mobileqq.msgbackup.controller.MsgBackupManager;
 
 class MsgBackupQRFragment$7
   implements Runnable
@@ -10,7 +10,7 @@ class MsgBackupQRFragment$7
   
   public void run()
   {
-    awzs.a().a().a(false);
+    MsgBackupManager.a().a().a(false);
   }
 }
 

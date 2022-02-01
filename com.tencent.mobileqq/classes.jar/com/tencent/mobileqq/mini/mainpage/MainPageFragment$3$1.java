@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import anvx;
-import arbw;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.widget.QQToast;
 
 class MainPageFragment$3$1
@@ -17,12 +17,12 @@ class MainPageFragment$3$1
       this.this$1.val$miniAppInfo.topType = 0;
       MainPageFragment.access$500(this.this$1.this$0, this.this$1.val$miniAppInfo);
     }
-    if (arbw.c())
+    if (MiniAppConfProcessor.c())
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), anvx.a(2131705904) + arbw.a() + anvx.a(2131705900), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131706444) + MiniAppConfProcessor.a() + HardCodeUtil.a(2131706440), 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), anvx.a(2131694010), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131694212), 0).a();
   }
 }
 

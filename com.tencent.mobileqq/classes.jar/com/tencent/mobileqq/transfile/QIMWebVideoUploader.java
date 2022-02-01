@@ -26,12 +26,12 @@ public class QIMWebVideoUploader
   private QIMWebVideoUploader.IQIMWebVideoUpCallback mCallback;
   private int mErrCode;
   private String mErrDesc;
-  private volatile boolean mIsCacheDiff;
-  public boolean mNotifyStory;
+  private volatile boolean mIsCacheDiff = false;
+  public boolean mNotifyStory = false;
   private HashMap<String, String> mReportInfo = new HashMap();
   public int mServiceType = 1;
   private long mStartTime;
-  private Transaction mTrans;
+  private Transaction mTrans = null;
   private String mTransInfo;
   private String mUUID;
   private String mUin;

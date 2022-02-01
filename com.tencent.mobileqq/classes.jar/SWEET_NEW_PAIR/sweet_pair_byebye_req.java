@@ -9,7 +9,7 @@ public final class sweet_pair_byebye_req
   extends JceStruct
 {
   static sweet_req_comm cache_req_comm = new sweet_req_comm();
-  public sweet_req_comm req_comm;
+  public sweet_req_comm req_comm = null;
   
   public sweet_pair_byebye_req() {}
   

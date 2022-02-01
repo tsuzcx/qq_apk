@@ -15,12 +15,12 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import bhdz;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.mobileqq.data.MayKnowRecommend.MayKnowRecommendLabel;
 import com.tencent.mobileqq.data.RecommendLabel;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class TroopLabelLayout
 {
   static final SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
   int jdField_a_of_type_Int = 5;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   Runnable jdField_a_of_type_JavaLangRunnable = new TroopLabelLayout.1(this);
   private String jdField_a_of_type_JavaLangString = "TroopLabelLayout";
@@ -119,7 +119,7 @@ public class TroopLabelLayout
             }
             n = android.graphics.Color.rgb(0, 202, 252);
           }
-          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845858);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845856))
+          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846179);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846177))
           {
             localTroopLabelTextView = new TroopLabelTextView(getContext(), n, -1, this.jdField_b_of_type_Int);
             if (j >= this.jdField_a_of_type_Int) {
@@ -166,7 +166,7 @@ public class TroopLabelLayout
               if (((m == 0) || (i != 1)) && ((m != 0) || (i != 0))) {
                 break;
               }
-              localTroopLabelTextView.setMaxWidth(ViewUtils.dip2px(150.0F));
+              localTroopLabelTextView.setMaxWidth(ViewUtils.a(150.0F));
               break;
             }
             localTroopLabelTextView.setText("");
@@ -245,11 +245,11 @@ public class TroopLabelLayout
           ((TroopLabelTextView)???).bringToFront();
           if (this.jdField_b_of_type_Int == 2)
           {
-            k = AIOUtils.dp2px(42.0F, getResources());
-            n = AIOUtils.dp2px(16.0F, getResources());
+            k = AIOUtils.a(42.0F, getResources());
+            n = AIOUtils.a(16.0F, getResources());
             ((TroopLabelTextView)???).setWidth(k);
             ((TroopLabelTextView)???).setHeight(n);
-            ((TroopLabelTextView)???).setMaskImage(2130843924);
+            ((TroopLabelTextView)???).setMaskImage(2130844095);
             if (localGroupLabel.strWording.length() < 2) {
               break label685;
             }
@@ -265,13 +265,13 @@ public class TroopLabelLayout
             if (this.jdField_b_of_type_Int != 0) {
               break label691;
             }
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130850783);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130851212);
           }
           k = (int)(((TroopLabelTextView)???).getTextSize() * 0.8D + 0.5D);
           this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, k, k);
           ((SpannableString)localObject2).setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 1), 0, "[icon]".length(), 17);
           ((TroopLabelTextView)???).setText((CharSequence)localObject2);
-          ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording + anvx.a(2131714837));
+          ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording + HardCodeUtil.a(2131715332));
         }
         for (;;)
         {
@@ -289,7 +289,7 @@ public class TroopLabelLayout
           break label357;
           k = 1;
           break label431;
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130843921);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130844092);
           break label525;
           ((TroopLabelTextView)???).setText(localGroupLabel.strWording + "");
           ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording);
@@ -333,7 +333,7 @@ public class TroopLabelLayout
             }
             m = android.graphics.Color.rgb(0, 202, 252);
           }
-          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845858);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845856))
+          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846179);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846177))
           {
             localTroopLabelTextView = new TroopLabelTextView(getContext(), m, -1, this.jdField_b_of_type_Int);
             if (i >= this.jdField_a_of_type_Int) {
@@ -379,7 +379,7 @@ public class TroopLabelLayout
               if (((k == 0) || (paramInt3 != 1)) && ((k != 0) || (paramInt3 != 0))) {
                 break;
               }
-              localTroopLabelTextView.setMaxWidth(ViewUtils.dip2px(150.0F));
+              localTroopLabelTextView.setMaxWidth(ViewUtils.a(150.0F));
               break;
             }
             localTroopLabelTextView.setText("");
@@ -402,11 +402,11 @@ public class TroopLabelLayout
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int j = getPaddingLeft();
     int k = getPaddingRight();
-    int m = (int)bhdz.a(getContext(), 2.0F);
+    int m = (int)DisplayUtils.a(getContext(), 2.0F);
     int n = getChildCount();
     paramInt2 = getPaddingLeft();
     int i1 = getPaddingTop();
@@ -437,7 +437,7 @@ public class TroopLabelLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int j = 0;
     super.onMeasure(paramInt1, paramInt2);

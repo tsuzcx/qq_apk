@@ -15,21 +15,26 @@ public class PtvFilterUtils
   private static Method jdField_a_of_type_JavaLangReflectMethod;
   public static final boolean a;
   private static int[] jdField_a_of_type_ArrayOfInt;
+  private static boolean b;
+  private static boolean c;
   
   static
   {
-    boolean bool = false;
-    if (Build.VERSION.SDK_INT >= 14) {
-      bool = a("android.graphics.SurfaceTexture", "release", new Class[0]);
-    }
-    jdField_a_of_type_Boolean = bool;
-    jdField_a_of_type_ArrayOfInt = new int[2];
-    try
+    if (Build.VERSION.SDK_INT >= 14) {}
+    for (boolean bool = a("android.graphics.SurfaceTexture", "release", new Class[0]);; bool = false)
     {
-      jdField_a_of_type_JavaLangReflectMethod = HandlerThread.class.getDeclaredMethod("quitSafely", new Class[0]);
-      return;
+      jdField_a_of_type_Boolean = bool;
+      b = false;
+      c = false;
+      jdField_a_of_type_ArrayOfInt = new int[2];
+      jdField_a_of_type_JavaLangReflectMethod = null;
+      try
+      {
+        jdField_a_of_type_JavaLangReflectMethod = HandlerThread.class.getDeclaredMethod("quitSafely", new Class[0]);
+        return;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException) {}
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
   }
   
   public static long a()
@@ -45,7 +50,7 @@ public class PtvFilterUtils
     if (QLog.isColorLevel()) {
       QLog.d("PtvFilterUtils", 2, "configure file content:" + localStringBuilder.toString());
     }
-    FileUtils.writeFile(paramString1, localStringBuilder.toString());
+    FileUtils.a(paramString1, localStringBuilder.toString());
   }
   
   public static void a(boolean paramBoolean)
@@ -103,7 +108,7 @@ public class PtvFilterUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.PtvFilterUtils
  * JD-Core Version:    0.7.0.1
  */

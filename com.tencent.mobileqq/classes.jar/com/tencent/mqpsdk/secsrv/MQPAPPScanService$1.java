@@ -1,18 +1,16 @@
 package com.tencent.mqpsdk.secsrv;
 
-import bizj;
-
-public class MQPAPPScanService$1
+class MQPAPPScanService$1
   extends Thread
 {
-  public MQPAPPScanService$1(bizj parambizj, byte[] paramArrayOfByte) {}
+  MQPAPPScanService$1(MQPAPPScanService paramMQPAPPScanService, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     try
     {
-      bizj.a += 1;
-      bizj.a(this.this$0, this.a);
+      MQPAPPScanService.a += 1;
+      MQPAPPScanService.a(this.this$0, this.a);
       return;
     }
     finally {}
@@ -20,7 +18,7 @@ public class MQPAPPScanService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mqpsdk.secsrv.MQPAPPScanService.1
  * JD-Core Version:    0.7.0.1
  */

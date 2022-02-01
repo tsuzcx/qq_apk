@@ -13,12 +13,14 @@ public final class MsgInteractData
   static PushInfo cache_pushInfo = new PushInfo();
   static ShareInfo cache_shareInfo;
   static ArrayList<ButtonInfo> cache_vecButtonInfo;
-  public CommentInfo commentInfo;
-  public LikInfo likInfo;
-  public PushInfo pushInfo;
-  public ShareInfo shareInfo;
-  public int type;
-  public ArrayList<ButtonInfo> vecButtonInfo;
+  static ViewInfo cache_viewInfo = new ViewInfo();
+  public CommentInfo commentInfo = null;
+  public LikInfo likInfo = null;
+  public PushInfo pushInfo = null;
+  public ShareInfo shareInfo = null;
+  public int type = 0;
+  public ArrayList<ButtonInfo> vecButtonInfo = null;
+  public ViewInfo viewInfo = null;
   
   static
   {
@@ -31,7 +33,7 @@ public final class MsgInteractData
   
   public MsgInteractData() {}
   
-  public MsgInteractData(int paramInt, LikInfo paramLikInfo, CommentInfo paramCommentInfo, ShareInfo paramShareInfo, ArrayList<ButtonInfo> paramArrayList, PushInfo paramPushInfo)
+  public MsgInteractData(int paramInt, LikInfo paramLikInfo, CommentInfo paramCommentInfo, ShareInfo paramShareInfo, ArrayList<ButtonInfo> paramArrayList, PushInfo paramPushInfo, ViewInfo paramViewInfo)
   {
     this.type = paramInt;
     this.likInfo = paramLikInfo;
@@ -39,6 +41,7 @@ public final class MsgInteractData
     this.shareInfo = paramShareInfo;
     this.vecButtonInfo = paramArrayList;
     this.pushInfo = paramPushInfo;
+    this.viewInfo = paramViewInfo;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -49,6 +52,7 @@ public final class MsgInteractData
     this.shareInfo = ((ShareInfo)paramJceInputStream.read(cache_shareInfo, 3, false));
     this.vecButtonInfo = ((ArrayList)paramJceInputStream.read(cache_vecButtonInfo, 4, false));
     this.pushInfo = ((PushInfo)paramJceInputStream.read(cache_pushInfo, 5, false));
+    this.viewInfo = ((ViewInfo)paramJceInputStream.read(cache_viewInfo, 6, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -68,6 +72,9 @@ public final class MsgInteractData
     }
     if (this.pushInfo != null) {
       paramJceOutputStream.write(this.pushInfo, 5);
+    }
+    if (this.viewInfo != null) {
+      paramJceOutputStream.write(this.viewInfo, 6);
     }
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
+import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.mobileqq.persistence.Entity;
-import vzk;
 
 public class TagItemEntry
   extends Entity
-  implements vzk
+  implements Copyable
 {
   public String desc;
   public long id;
@@ -29,7 +29,7 @@ public class TagItemEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.tag.TagItemEntry
  * JD-Core Version:    0.7.0.1
  */

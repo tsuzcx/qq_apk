@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import aaea;
 import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 import com.tencent.qphone.base.util.QLog;
 
 class NowLiveNativePlugin$1
-  implements aaea
+  implements TroopMemberApiClient.Callback
 {
   NowLiveNativePlugin$1(NowLiveNativePlugin paramNowLiveNativePlugin) {}
   

@@ -1,32 +1,30 @@
 package com.tencent.biz.qqstory.model;
 
+import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
-import wad;
-import wka;
-import wkc;
 
-public class TroopNickNameManager$2
+class TroopNickNameManager$2
   implements Runnable
 {
-  public TroopNickNameManager$2(wka paramwka, String paramString, QQUserUIItem paramQQUserUIItem, boolean paramBoolean1, boolean paramBoolean2) {}
+  TroopNickNameManager$2(TroopNickNameManager paramTroopNickNameManager, String paramString, QQUserUIItem paramQQUserUIItem, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
     if (this.this$0.a.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null)
     {
-      localwkc = new wkc();
+      localTroopNickNameUpdateEvent = new TroopNickNameManager.TroopNickNameUpdateEvent();
       localArrayList = new ArrayList();
       localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-      localwkc.jdField_a_of_type_JavaUtilList = localArrayList;
-      localwkc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      wad.a().dispatch(localwkc);
+      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaUtilList = localArrayList;
+      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      StoryDispatcher.a().dispatch(localTroopNickNameUpdateEvent);
     }
     while (this.jdField_a_of_type_Boolean)
     {
-      wkc localwkc;
+      TroopNickNameManager.TroopNickNameUpdateEvent localTroopNickNameUpdateEvent;
       ArrayList localArrayList;
       return;
     }
@@ -35,7 +33,7 @@ public class TroopNickNameManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager.2
  * JD-Core Version:    0.7.0.1
  */

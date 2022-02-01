@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-public final class CmShowTest$7
+final class CmShowTest$7
   implements Runnable
 {
-  public CmShowTest$7(CmShowRenderView paramCmShowRenderView) {}
+  CmShowTest$7(CmShowRenderView paramCmShowRenderView) {}
   
   public void run()
   {
@@ -12,7 +12,7 @@ public final class CmShowTest$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.CmShowTest.7
  * JD-Core Version:    0.7.0.1
  */

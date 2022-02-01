@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.colornote;
 
-import aqnr;
-import aqrz;
+import com.tencent.mobileqq.colornote.swipeback.TranslucentConvertor;
 
-public class ColorNoteController$2
+class ColorNoteController$2
   implements Runnable
 {
-  public ColorNoteController$2(aqnr paramaqnr) {}
+  ColorNoteController$2(ColorNoteController paramColorNoteController) {}
   
   public void run()
   {
-    aqnr.a(this.this$0).a();
+    ColorNoteController.a(this.this$0).a();
   }
 }
 

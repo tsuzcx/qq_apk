@@ -1,51 +1,36 @@
 package com.tencent.mobileqq.activity;
 
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class LoginInfoActivity$9
   implements Runnable
 {
-  LoginInfoActivity$9(LoginInfoActivity paramLoginInfoActivity, int paramInt) {}
+  LoginInfoActivity$9(LoginInfoActivity paramLoginInfoActivity) {}
   
   public void run()
   {
-    for (;;)
+    try
     {
-      try
+      if ((LoginInfoActivity.access$2200(this.this$0) != null) && (LoginInfoActivity.access$2200(this.this$0).isShowing()))
       {
-        if (!this.this$0.isFinishing())
-        {
-          if ((LoginInfoActivity.a(this.this$0) != null) && (LoginInfoActivity.a(this.this$0).isShowing()))
-          {
-            LoginInfoActivity.a(this.this$0).dismiss();
-            LoginInfoActivity.a(this.this$0).cancel();
-            LoginInfoActivity.a(this.this$0, null);
-          }
-          LoginInfoActivity.a(this.this$0, new bisl(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-          int i = this.a;
-          switch (i)
-          {
-          }
-        }
+        LoginInfoActivity.access$2200(this.this$0).dismiss();
+        LoginInfoActivity.access$2200(this.this$0).cancel();
       }
-      catch (Throwable localThrowable)
+      LoginInfoActivity.access$2202(this.this$0, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
         localThrowable.printStackTrace();
-        continue;
-        LoginInfoActivity.a(this.this$0).c(2131694477);
-        continue;
       }
-      if ((LoginInfoActivity.a(this.this$0) != null) && (!LoginInfoActivity.a(this.this$0).isShowing())) {
-        LoginInfoActivity.a(this.this$0).show();
-      }
-      return;
-      LoginInfoActivity.a(this.this$0).c(2131718013);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.9
  * JD-Core Version:    0.7.0.1
  */

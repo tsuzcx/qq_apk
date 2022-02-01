@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.nearpeople.NearbyRecommender;
 
 import EncounterSvc.RespEncounterInfo;
-import aynz;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
 
-public class ChatPushCarrierHelper$2
+class ChatPushCarrierHelper$2
   implements Runnable
 {
-  public ChatPushCarrierHelper$2(aynz paramaynz, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
+  ChatPushCarrierHelper$2(ChatPushCarrierHelper paramChatPushCarrierHelper, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
   
   public void run()
   {
-    FaceDecoder localFaceDecoder = this.this$0.a;
+    IFaceDecoder localIFaceDecoder = this.this$0.a;
     String str = this.jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
     for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
     {
-      localFaceDecoder.refreshFaceWithTimeStamp(32, str, 200, l, 0);
+      localIFaceDecoder.refreshFaceWithTimeStamp(32, str, 200, l, 0);
       return;
     }
   }

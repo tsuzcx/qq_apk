@@ -33,6 +33,12 @@ public class MiniProgramLpReportDC04239
   public static final String AD_RESERVES_SPEC_DOWNLOAD_SUCCESS = "spec_download_success";
   public static final String AD_RESERVES_SPEC_DOWNLOAD_TIMEOUT = "spec_download_timeout";
   public static final String AD_SUB_ACTION_LOADING_AD = "ad_loading";
+  public static final String AIO_CMGAME_ACTION = "cmgame_aio";
+  public static final String AIO_CMGAME_C2C_CM_PANEL_SUB_ACTION = "cmgame_aio_cm_c2c";
+  public static final String AIO_CMGAME_C2C_SUB_ACTION = "cmgame_aio_c2c";
+  public static final String AIO_CMGAME_CM_PANEL_ACTION = "cmgame_aio_cm";
+  public static final String AIO_CMGAME_GROUP_CM_PANEL_SUB_ACTION = "cmgame_aio_cm_qun";
+  public static final String AIO_CMGAME_GROUP_SUB_ACTION = "cmgame_aio_qun";
   public static final String APP_TYPE_MINI_APP = "0";
   public static final String APP_TYPE_MINI_GAME = "1";
   public static final String ARK_ACTION = "ark";
@@ -110,6 +116,8 @@ public class MiniProgramLpReportDC04239
   public static final String PAGE_VIEW_SUB_ACTION_CLOSE = "close";
   public static final String PAGE_VIEW_SUB_ACTION_EXPO = "expo";
   public static final String PAGE_VIEW_SUB_ACTION_FINISHSHOW = "finishshow";
+  public static final String PAGE_VIEW_SUB_ACTION_GAME_CLICK = "game_click";
+  public static final String PAGE_VIEW_SUB_ACTION_GAME_EXPO = "game_expo";
   public static final String PAGE_VIEW_SUB_ACTION_HIDE = "hide";
   public static final String PAGE_VIEW_SUB_ACTION_LOAD = "load";
   public static final String PAGE_VIEW_SUB_ACTION_LOAD_FAIL = "load_fail";
@@ -132,6 +140,7 @@ public class MiniProgramLpReportDC04239
   public static final String RETAIN_DIALOG_SUB_ACTION_EXPOSE = "popup";
   public static final String RETAIN_DIALOG_SUB_ACTION_ICON = "icon";
   public static final String RETAIN_DIALOG_SUB_ACTION_MORE = "moregame";
+  public static final String RETAIN_DIALOG_SUB_ACTION_REFRESH = "refresh";
   public static final String SCOPE_ACTION = "scope";
   public static final String SEARCH_ACTION_TYPE = "search";
   public static final String SEARCH_RESERVES_UNUSED = "unused";
@@ -333,9 +342,17 @@ public class MiniProgramLpReportDC04239
   
   public static void reportByQQ(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
+    reportByQQ(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
+  }
+  
+  public static void reportByQQ(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  {
     ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(paramString1)) {
+      localArrayList.add(MiniProgramReportHelper.newEntry("appid", paramString1));
+    }
     localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
-    localArrayList.addAll(MiniProgramReportHelper.newBaseBusinessEntries(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7));
+    localArrayList.addAll(MiniProgramReportHelper.newBaseBusinessEntries(paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8));
     localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
     paramString1 = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
     MiniProgramReporter.getInstance().addData(paramString1);

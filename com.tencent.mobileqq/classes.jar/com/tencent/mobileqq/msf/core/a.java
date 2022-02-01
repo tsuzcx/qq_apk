@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.CodecWarpper;

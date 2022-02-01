@@ -2,15 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.databinding;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import rxt;
-import rxw;
-import rxx;
 
 public class ObservableArrayList<T>
   extends ArrayList<T>
-  implements rxw<T>
+  implements ObservableList<T>
 {
-  private transient rxt a = new rxt();
+  private transient ListChangeRegistry a = new ListChangeRegistry();
   
   private void a(int paramInt1, int paramInt2)
   {
@@ -58,12 +55,12 @@ public class ObservableArrayList<T>
     return bool;
   }
   
-  public void addOnListChangedCallback(rxx paramrxx)
+  public void addOnListChangedCallback(ObservableList.OnListChangedCallback paramOnListChangedCallback)
   {
     if (this.a == null) {
-      this.a = new rxt();
+      this.a = new ListChangeRegistry();
     }
-    this.a.a(paramrxx);
+    this.a.a(paramOnListChangedCallback);
   }
   
   public void clear()
@@ -93,10 +90,10 @@ public class ObservableArrayList<T>
     return false;
   }
   
-  public void removeOnListChangedCallback(rxx paramrxx)
+  public void removeOnListChangedCallback(ObservableList.OnListChangedCallback paramOnListChangedCallback)
   {
     if (this.a != null) {
-      this.a.b(paramrxx);
+      this.a.b(paramOnListChangedCallback);
     }
   }
   
@@ -117,7 +114,7 @@ public class ObservableArrayList<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList
  * JD-Core Version:    0.7.0.1
  */

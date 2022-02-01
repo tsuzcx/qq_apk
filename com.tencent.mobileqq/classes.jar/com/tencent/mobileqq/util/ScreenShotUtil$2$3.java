@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import anvx;
-import bhat;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 class ScreenShotUtil$2$3
   implements Runnable
@@ -10,7 +9,7 @@ class ScreenShotUtil$2$3
   
   public void run()
   {
-    this.this$0.a.a(new IllegalStateException(anvx.a(2131718330)));
+    this.this$0.a.a(new IllegalStateException(HardCodeUtil.a(2131718834)));
   }
 }
 

@@ -1,19 +1,18 @@
 package com.tencent.biz.viewplugin;
 
-import aapg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bikt;
+import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import dalvik.system.DexClassLoader;
 import java.io.File;
-import nuz;
 
-public class ViewPluginLoader$1
+class ViewPluginLoader$1
   implements Runnable
 {
   public void run()
@@ -21,7 +20,7 @@ public class ViewPluginLoader$1
     String str;
     synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
     {
-      str = aapg.a(this.this$0) + this.this$0.b;
+      str = ViewPluginLoader.a(this.this$0) + this.this$0.b;
       if (!new File(str).exists())
       {
         this.a.notifyUI(3, true, Integer.valueOf(1));
@@ -38,8 +37,8 @@ public class ViewPluginLoader$1
           if (!((File)localObject3).exists()) {
             continue;
           }
-          FileUtils.deleteDirectory(((File)localObject3).getAbsolutePath());
-          this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("sp_key_version_prefix" + this.this$0.b, nuz.a(this.this$0.jdField_a_of_type_JavaLangString)).commit();
+          FileUtils.a(((File)localObject3).getAbsolutePath());
+          this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("sp_key_version_prefix" + this.this$0.b, HtmlOffline.a(this.this$0.jdField_a_of_type_JavaLangString)).commit();
           ((File)localObject3).mkdirs();
         }
         if (!((File)localObject3).exists()) {
@@ -76,7 +75,7 @@ public class ViewPluginLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginLoader.1
  * JD-Core Version:    0.7.0.1
  */

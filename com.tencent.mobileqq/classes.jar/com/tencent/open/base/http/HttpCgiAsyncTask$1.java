@@ -1,14 +1,12 @@
 package com.tencent.open.base.http;
 
-import bjlg;
-import bjlh;
 import java.util.HashMap;
 import org.json.JSONObject;
 
-public class HttpCgiAsyncTask$1
+class HttpCgiAsyncTask$1
   implements Runnable
 {
-  public HttpCgiAsyncTask$1(bjlg parambjlg, HashMap paramHashMap) {}
+  HttpCgiAsyncTask$1(HttpCgiAsyncTask paramHttpCgiAsyncTask, HashMap paramHashMap) {}
   
   public void run()
   {
@@ -26,7 +24,7 @@ public class HttpCgiAsyncTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.base.http.HttpCgiAsyncTask.1
  * JD-Core Version:    0.7.0.1
  */

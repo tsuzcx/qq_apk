@@ -4,14 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import bfrw;
-import bfrx;
 
 public class InputMethodGuard
   extends View
 {
   private int jdField_a_of_type_Int = 0;
-  private bfrw jdField_a_of_type_Bfrw = null;
+  private InputMethodGuard.InputMethodChangeListener jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard$InputMethodChangeListener = null;
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b = false;
   
@@ -28,7 +26,7 @@ public class InputMethodGuard
   public InputMethodGuard(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    getViewTreeObserver().addOnGlobalLayoutListener(new bfrx(this, null));
+    getViewTreeObserver().addOnGlobalLayoutListener(new InputMethodGuard.InputMethodListener(this, null));
   }
   
   public boolean a()
@@ -36,9 +34,9 @@ public class InputMethodGuard
     return this.b;
   }
   
-  public void setOnInputMethodChangeListener(bfrw parambfrw)
+  public void setOnInputMethodChangeListener(InputMethodGuard.InputMethodChangeListener paramInputMethodChangeListener)
   {
-    this.jdField_a_of_type_Bfrw = parambfrw;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard$InputMethodChangeListener = paramInputMethodChangeListener;
   }
 }
 

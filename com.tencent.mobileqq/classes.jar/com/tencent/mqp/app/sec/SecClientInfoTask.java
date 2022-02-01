@@ -5,8 +5,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 public class SecClientInfoTask
   implements Runnable
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static boolean jdField_a_of_type_Boolean;
+  private static String jdField_a_of_type_JavaLangString = null;
+  private static boolean jdField_a_of_type_Boolean = false;
   private int jdField_a_of_type_Int = 1;
   private long jdField_a_of_type_Long = 1L;
   private int b = 1;
@@ -30,7 +30,7 @@ public class SecClientInfoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mqp.app.sec.SecClientInfoTask
  * JD-Core Version:    0.7.0.1
  */

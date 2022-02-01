@@ -3,7 +3,6 @@ package com.tencent.mobileqq.armap;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqdc;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -13,12 +12,12 @@ import java.util.HashMap;
 public class POIInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<POIInfo> CREATOR = new aqdc();
+  public static final Parcelable.Creator<POIInfo> CREATOR = new POIInfo.1();
   public double a;
   public int a;
   public long a;
   public String a;
-  public ArrayList<Object> a;
+  public ArrayList<POITaskInfo> a;
   public HashMap<Long, Integer> a;
   public double b;
   public int b;

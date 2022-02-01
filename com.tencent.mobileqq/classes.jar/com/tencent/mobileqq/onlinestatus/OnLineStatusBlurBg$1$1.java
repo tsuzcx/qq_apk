@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import azbe;
-import azbg;
-
 class OnLineStatusBlurBg$1$1
   implements Runnable
 {
-  OnLineStatusBlurBg$1$1(OnLineStatusBlurBg.1 param1, azbg paramazbg) {}
+  OnLineStatusBlurBg$1$1(OnLineStatusBlurBg.1 param1, OnLineStatusBlurBg.OnLineStatusBlurBgListener paramOnLineStatusBlurBgListener) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Azbg.a(true, azbe.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.this$0), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.b);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$OnLineStatusBlurBgListener.a(false, null, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.b);
   }
 }
 

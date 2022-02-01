@@ -1,21 +1,20 @@
 package cooperation.troop_homework.jsp;
 
-import bmjh;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
-public class TroopHWFileDownloadManager$2
+class TroopHWFileDownloadManager$2
   implements Runnable
 {
-  public TroopHWFileDownloadManager$2(bmjh parambmjh, String paramString) {}
+  TroopHWFileDownloadManager$2(TroopHWFileDownloadManager paramTroopHWFileDownloadManager, String paramString) {}
   
   public void run()
   {
-    bmjh.a(this.this$0).pauseDownloadTask(this.a);
+    TroopHWFileDownloadManager.a(this.this$0).pauseDownloadTask(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWFileDownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

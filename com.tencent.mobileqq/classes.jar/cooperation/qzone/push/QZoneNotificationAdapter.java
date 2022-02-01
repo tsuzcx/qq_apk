@@ -58,7 +58,7 @@ public class QZoneNotificationAdapter
         localObject1 = localObject5;
         Method localMethod = Class.forName("android.app.Notification$Builder").getDeclaredMethod("setInternalApp", new Class[] { Integer.TYPE });
         if (localMethod == null) {
-          break label370;
+          break label374;
         }
         localObject1 = localObject5;
         localMethod.invoke(localBuilder, new Object[] { Integer.valueOf(1) });
@@ -74,7 +74,9 @@ public class QZoneNotificationAdapter
         {
           localObject1 = localObject5;
           paramBitmap = localBuilder.build();
-          localObject1 = paramBitmap;
+          if (paramBitmap != null) {
+            localObject1 = paramBitmap;
+          }
         }
       }
       catch (Throwable localThrowable1)
@@ -138,7 +140,7 @@ public class QZoneNotificationAdapter
           localObject1 = localObject5;
           paramBitmap = localBuilder.getNotification();
           continue;
-          label370:
+          label374:
           paramBitmap = null;
         }
       }
@@ -181,145 +183,147 @@ public class QZoneNotificationAdapter
     //   60: pop
     //   61: getstatic 149	android/os/Build$VERSION:SDK_INT	I
     //   64: bipush 16
-    //   66: if_icmplt +64 -> 130
+    //   66: if_icmplt +68 -> 134
     //   69: aload 8
     //   71: invokevirtual 150	android/app/Notification$Builder:build	()Landroid/app/Notification;
     //   74: astore_3
     //   75: aload_3
-    //   76: astore 7
-    //   78: aload_3
-    //   79: aload_0
-    //   80: getfield 16	cooperation/qzone/push/QZoneNotificationAdapter:channelId	Ljava/lang/String;
-    //   83: invokestatic 156	com/tencent/commonsdk/util/notification/QQNotificationManager:addChannelIfNeed	(Landroid/app/Notification;Ljava/lang/String;)V
-    //   86: aload_3
-    //   87: astore 7
-    //   89: aload_3
-    //   90: ifnonnull +37 -> 127
-    //   93: new 158	android/app/Notification
-    //   96: dup
-    //   97: iload 6
-    //   99: aload 5
-    //   101: invokestatic 43	java/lang/System:currentTimeMillis	()J
-    //   104: invokespecial 161	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
-    //   107: astore 7
-    //   109: aload 7
-    //   111: bipush 16
-    //   113: putfield 164	android/app/Notification:flags	I
-    //   116: aload 7
-    //   118: aload_2
-    //   119: aload 4
-    //   121: aload 5
-    //   123: aload_1
-    //   124: invokevirtual 168	android/app/Notification:setLatestEventInfo	(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
-    //   127: aload 7
-    //   129: areturn
-    //   130: getstatic 149	android/os/Build$VERSION:SDK_INT	I
-    //   133: bipush 16
-    //   135: if_icmpge +139 -> 274
-    //   138: getstatic 149	android/os/Build$VERSION:SDK_INT	I
-    //   141: bipush 11
-    //   143: if_icmplt +131 -> 274
-    //   146: aload 8
-    //   148: invokevirtual 171	android/app/Notification$Builder:getNotification	()Landroid/app/Notification;
-    //   151: astore_3
-    //   152: goto -77 -> 75
-    //   155: astore 8
-    //   157: aconst_null
-    //   158: astore_3
-    //   159: aload_3
-    //   160: astore 7
-    //   162: invokestatic 176	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   165: ifeq +18 -> 183
-    //   168: aload_3
-    //   169: astore 7
-    //   171: ldc 186
-    //   173: iconst_2
-    //   174: aload 8
-    //   176: iconst_0
-    //   177: anewarray 4	java/lang/Object
-    //   180: invokestatic 182	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   183: aload_3
-    //   184: astore 7
-    //   186: aload_3
-    //   187: ifnonnull -60 -> 127
-    //   190: new 158	android/app/Notification
-    //   193: dup
-    //   194: iload 6
-    //   196: aload 5
-    //   198: invokestatic 43	java/lang/System:currentTimeMillis	()J
-    //   201: invokespecial 161	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
-    //   204: astore_3
-    //   205: aload_3
-    //   206: bipush 16
-    //   208: putfield 164	android/app/Notification:flags	I
-    //   211: aload_3
-    //   212: aload_2
-    //   213: aload 4
-    //   215: aload 5
-    //   217: aload_1
-    //   218: invokevirtual 168	android/app/Notification:setLatestEventInfo	(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
-    //   221: aload_3
-    //   222: areturn
-    //   223: astore_3
-    //   224: aload 7
-    //   226: ifnonnull +37 -> 263
-    //   229: new 158	android/app/Notification
-    //   232: dup
-    //   233: iload 6
-    //   235: aload 5
-    //   237: invokestatic 43	java/lang/System:currentTimeMillis	()J
-    //   240: invokespecial 161	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
-    //   243: astore 7
-    //   245: aload 7
-    //   247: bipush 16
-    //   249: putfield 164	android/app/Notification:flags	I
-    //   252: aload 7
-    //   254: aload_2
-    //   255: aload 4
-    //   257: aload 5
-    //   259: aload_1
-    //   260: invokevirtual 168	android/app/Notification:setLatestEventInfo	(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
-    //   263: aload_3
-    //   264: athrow
-    //   265: astore_3
-    //   266: goto -42 -> 224
-    //   269: astore 8
-    //   271: goto -112 -> 159
-    //   274: aconst_null
-    //   275: astore_3
-    //   276: goto -201 -> 75
+    //   76: ifnull +14 -> 90
+    //   79: aload_3
+    //   80: astore 7
+    //   82: aload_3
+    //   83: aload_0
+    //   84: getfield 16	cooperation/qzone/push/QZoneNotificationAdapter:channelId	Ljava/lang/String;
+    //   87: invokestatic 156	com/tencent/commonsdk/util/notification/QQNotificationManager:addChannelIfNeed	(Landroid/app/Notification;Ljava/lang/String;)V
+    //   90: aload_3
+    //   91: astore 7
+    //   93: aload_3
+    //   94: ifnonnull +37 -> 131
+    //   97: new 158	android/app/Notification
+    //   100: dup
+    //   101: iload 6
+    //   103: aload 5
+    //   105: invokestatic 43	java/lang/System:currentTimeMillis	()J
+    //   108: invokespecial 161	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   111: astore 7
+    //   113: aload 7
+    //   115: bipush 16
+    //   117: putfield 164	android/app/Notification:flags	I
+    //   120: aload 7
+    //   122: aload_2
+    //   123: aload 4
+    //   125: aload 5
+    //   127: aload_1
+    //   128: invokevirtual 168	android/app/Notification:setLatestEventInfo	(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
+    //   131: aload 7
+    //   133: areturn
+    //   134: getstatic 149	android/os/Build$VERSION:SDK_INT	I
+    //   137: bipush 16
+    //   139: if_icmpge +139 -> 278
+    //   142: getstatic 149	android/os/Build$VERSION:SDK_INT	I
+    //   145: bipush 11
+    //   147: if_icmplt +131 -> 278
+    //   150: aload 8
+    //   152: invokevirtual 171	android/app/Notification$Builder:getNotification	()Landroid/app/Notification;
+    //   155: astore_3
+    //   156: goto -81 -> 75
+    //   159: astore 8
+    //   161: aconst_null
+    //   162: astore_3
+    //   163: aload_3
+    //   164: astore 7
+    //   166: invokestatic 176	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   169: ifeq +18 -> 187
+    //   172: aload_3
+    //   173: astore 7
+    //   175: ldc 186
+    //   177: iconst_2
+    //   178: aload 8
+    //   180: iconst_0
+    //   181: anewarray 4	java/lang/Object
+    //   184: invokestatic 182	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   187: aload_3
+    //   188: astore 7
+    //   190: aload_3
+    //   191: ifnonnull -60 -> 131
+    //   194: new 158	android/app/Notification
+    //   197: dup
+    //   198: iload 6
+    //   200: aload 5
+    //   202: invokestatic 43	java/lang/System:currentTimeMillis	()J
+    //   205: invokespecial 161	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   208: astore_3
+    //   209: aload_3
+    //   210: bipush 16
+    //   212: putfield 164	android/app/Notification:flags	I
+    //   215: aload_3
+    //   216: aload_2
+    //   217: aload 4
+    //   219: aload 5
+    //   221: aload_1
+    //   222: invokevirtual 168	android/app/Notification:setLatestEventInfo	(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
+    //   225: aload_3
+    //   226: areturn
+    //   227: astore_3
+    //   228: aload 7
+    //   230: ifnonnull +37 -> 267
+    //   233: new 158	android/app/Notification
+    //   236: dup
+    //   237: iload 6
+    //   239: aload 5
+    //   241: invokestatic 43	java/lang/System:currentTimeMillis	()J
+    //   244: invokespecial 161	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   247: astore 7
+    //   249: aload 7
+    //   251: bipush 16
+    //   253: putfield 164	android/app/Notification:flags	I
+    //   256: aload 7
+    //   258: aload_2
+    //   259: aload 4
+    //   261: aload 5
+    //   263: aload_1
+    //   264: invokevirtual 168	android/app/Notification:setLatestEventInfo	(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
+    //   267: aload_3
+    //   268: athrow
+    //   269: astore_3
+    //   270: goto -42 -> 228
+    //   273: astore 8
+    //   275: goto -112 -> 163
+    //   278: aconst_null
+    //   279: astore_3
+    //   280: goto -205 -> 75
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	279	0	this	QZoneNotificationAdapter
-    //   0	279	1	paramPendingIntent	PendingIntent
-    //   0	279	2	paramContext	Context
-    //   0	279	3	paramBitmap	Bitmap
-    //   0	279	4	paramString1	String
-    //   0	279	5	paramString2	String
-    //   0	279	6	paramInt	int
-    //   1	252	7	localObject	Object
-    //   11	136	8	localBuilder	Notification.Builder
-    //   155	20	8	localThrowable1	Throwable
-    //   269	1	8	localThrowable2	Throwable
+    //   0	283	0	this	QZoneNotificationAdapter
+    //   0	283	1	paramPendingIntent	PendingIntent
+    //   0	283	2	paramContext	Context
+    //   0	283	3	paramBitmap	Bitmap
+    //   0	283	4	paramString1	String
+    //   0	283	5	paramString2	String
+    //   0	283	6	paramInt	int
+    //   1	256	7	localObject	Object
+    //   11	140	8	localBuilder	Notification.Builder
+    //   159	20	8	localThrowable1	Throwable
+    //   273	1	8	localThrowable2	Throwable
     // Exception table:
     //   from	to	target	type
-    //   3	50	155	java/lang/Throwable
-    //   54	61	155	java/lang/Throwable
-    //   61	75	155	java/lang/Throwable
-    //   130	152	155	java/lang/Throwable
-    //   3	50	223	finally
-    //   54	61	223	finally
-    //   61	75	223	finally
-    //   130	152	223	finally
-    //   78	86	265	finally
-    //   162	168	265	finally
-    //   171	183	265	finally
-    //   78	86	269	java/lang/Throwable
+    //   3	50	159	java/lang/Throwable
+    //   54	61	159	java/lang/Throwable
+    //   61	75	159	java/lang/Throwable
+    //   134	156	159	java/lang/Throwable
+    //   3	50	227	finally
+    //   54	61	227	finally
+    //   61	75	227	finally
+    //   134	156	227	finally
+    //   82	90	269	finally
+    //   166	172	269	finally
+    //   175	187	269	finally
+    //   82	90	273	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.push.QZoneNotificationAdapter
  * JD-Core Version:    0.7.0.1
  */

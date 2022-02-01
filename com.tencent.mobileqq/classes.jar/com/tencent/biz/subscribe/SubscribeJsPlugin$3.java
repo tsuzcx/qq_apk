@@ -4,13 +4,11 @@ import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zqj;
-import zqn;
 
-public class SubscribeJsPlugin$3
+class SubscribeJsPlugin$3
   implements Runnable
 {
-  public SubscribeJsPlugin$3(zqj paramzqj, Bitmap paramBitmap, String paramString) {}
+  SubscribeJsPlugin$3(SubscribeJsPlugin paramSubscribeJsPlugin, Bitmap paramBitmap, String paramString) {}
   
   public void run()
   {
@@ -19,7 +17,7 @@ public class SubscribeJsPlugin$3
     }
     try
     {
-      String str = zqn.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      String str = SubscribeUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("uin", this.jdField_a_of_type_JavaLangString);
       localJSONObject.put("avatarData", str);
@@ -34,7 +32,7 @@ public class SubscribeJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

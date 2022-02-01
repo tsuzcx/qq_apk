@@ -24,12 +24,12 @@ public class RedDotImageView
   private boolean a;
   private float jdField_b_of_type_Float = getResources().getDisplayMetrics().density;
   protected int b;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_b_of_type_Boolean;
+  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
+  private boolean jdField_b_of_type_Boolean = false;
   private int c = 0;
   private int d = 13;
   private int e = 13;
-  private int f;
+  private int f = 0;
   
   public RedDotImageView(Context paramContext)
   {
@@ -39,11 +39,23 @@ public class RedDotImageView
   public RedDotImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
   }
   
   public RedDotImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
   }
   
   public void a(boolean paramBoolean)
@@ -52,7 +64,7 @@ public class RedDotImageView
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850427);
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850830);
       }
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent", 2, " showRedDot() : " + this.jdField_b_of_type_Int + ",isShownBorder" + this.jdField_b_of_type_Boolean + "，this = " + this);
@@ -66,7 +78,7 @@ public class RedDotImageView
     return this.jdField_a_of_type_Boolean;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((QLog.isColorLevel()) && (toString().contains("qq_aio_panel_image"))) {
@@ -183,7 +195,7 @@ public class RedDotImageView
       }
     }
     label219:
-    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845672);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849815))
+    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845990);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850213))
     {
       this.jdField_b_of_type_Int = paramInt;
       postInvalidate();

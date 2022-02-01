@@ -1,23 +1,24 @@
 package com.tencent.mobileqq.extendfriend;
 
-import aslo;
+import com.tencent.mobileqq.extendfriend.limitchat.ExpandFriendChatUtil;
 
-public class ExtendFriendManager$3
+class ExtendFriendManager$3
   implements Runnable
 {
-  public ExtendFriendManager$3(aslo paramaslo) {}
+  ExtendFriendManager$3(ExtendFriendManager paramExtendFriendManager) {}
   
   public void run()
   {
-    this.this$0.b();
-    aslo.b(this.this$0);
-    aslo.c(this.this$0);
-    aslo.d(this.this$0);
+    ExpandFriendChatUtil.a(ExtendFriendManager.a(this.this$0));
+    this.this$0.c();
+    ExtendFriendManager.b(this.this$0);
+    ExtendFriendManager.c(this.this$0);
+    ExtendFriendManager.d(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.ExtendFriendManager.3
  * JD-Core Version:    0.7.0.1
  */

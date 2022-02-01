@@ -9,9 +9,9 @@ public final class GetRecommandTextByEmotionRsp
   extends JceStruct
 {
   static ArrayList<String> cache_RecTexts = new ArrayList();
-  public int Code;
+  public int Code = 0;
   public String Emo = "";
-  public ArrayList<String> RecTexts;
+  public ArrayList<String> RecTexts = null;
   public String UiNumConfig = "";
   
   static
@@ -53,7 +53,7 @@ public final class GetRecommandTextByEmotionRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetRecommandTextByEmotionRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class SourceInfo
   extends JceStruct
 {
-  public int iSource;
+  public int iSource = 0;
   public String sVersion = "";
   
   public SourceInfo() {}

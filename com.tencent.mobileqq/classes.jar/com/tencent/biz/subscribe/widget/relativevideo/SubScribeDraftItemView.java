@@ -3,8 +3,6 @@ package com.tencent.biz.subscribe.widget.relativevideo;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import aack;
-import aacl;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -12,8 +10,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.biz.subscribe.SubImageLoader;
+import com.tencent.biz.subscribe.SubscribeUtils;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.bizdapters.SubscribeDraftAdapter;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment.BottomData;
+import com.tencent.biz.subscribe.part.block.BlockMerger.ShareData;
 import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -21,11 +24,6 @@ import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import zos;
-import zqf;
-import zqn;
-import ztj;
-import zwv;
 
 public class SubScribeDraftItemView
   extends BaseWidgetView<SubscribeDraftBean>
@@ -34,29 +32,29 @@ public class SubScribeDraftItemView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
+  private SubscribeDraftAdapter jdField_a_of_type_ComTencentBizSubscribeBizdaptersSubscribeDraftAdapter;
   private AsyncRichTextView jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView;
-  private ztj jdField_a_of_type_Ztj;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
-  private int c = ImmersiveUtils.a() / 2;
+  private int c = ImmersiveUtils.getScreenWidth() / 2;
   
-  public SubScribeDraftItemView(@NonNull Context paramContext, ztj paramztj)
+  public SubScribeDraftItemView(@NonNull Context paramContext, SubscribeDraftAdapter paramSubscribeDraftAdapter)
   {
     super(paramContext);
-    this.jdField_a_of_type_Ztj = paramztj;
+    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersSubscribeDraftAdapter = paramSubscribeDraftAdapter;
   }
   
   private boolean a()
   {
-    if (this.jdField_a_of_type_Ztj != null)
+    if (this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersSubscribeDraftAdapter != null)
     {
-      Object localObject = this.jdField_a_of_type_Ztj.a("share_key_subscribe_opus");
-      if ((localObject != null) && ((((zos)localObject).a instanceof zwv)))
+      Object localObject = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersSubscribeDraftAdapter.a("share_key_subscribe_opus");
+      if ((localObject != null) && ((((BlockMerger.ShareData)localObject).a instanceof SubscribeBaseBottomPersonalFragment.BottomData)))
       {
-        localObject = (zwv)((zos)localObject).a;
-        if ((((zwv)localObject).a != null) && (((zwv)localObject).a.user.youZhan.size() > 0)) {
-          return ((CertifiedAccountMeta.StYouZanShop)((zwv)localObject).a.user.youZhan.get(0)).type.get() > 1;
+        localObject = (SubscribeBaseBottomPersonalFragment.BottomData)((BlockMerger.ShareData)localObject).a;
+        if ((((SubscribeBaseBottomPersonalFragment.BottomData)localObject).a != null) && (((SubscribeBaseBottomPersonalFragment.BottomData)localObject).a.user.youZhan.size() > 0)) {
+          return ((CertifiedAccountMeta.StYouZanShop)((SubscribeBaseBottomPersonalFragment.BottomData)localObject).a.user.youZhan.get(0)).type.get() > 1;
         }
       }
     }
@@ -65,11 +63,11 @@ public class SubScribeDraftItemView
   
   private String b()
   {
-    if (this.jdField_a_of_type_Ztj != null)
+    if (this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersSubscribeDraftAdapter != null)
     {
-      zos localzos = this.jdField_a_of_type_Ztj.a("share_key_subscribe_opus");
-      if ((localzos != null) && ((localzos.a instanceof zwv))) {
-        return ((zwv)localzos.a).jdField_b_of_type_JavaLangString;
+      BlockMerger.ShareData localShareData = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersSubscribeDraftAdapter.a("share_key_subscribe_opus");
+      if ((localShareData != null) && ((localShareData.a instanceof SubscribeBaseBottomPersonalFragment.BottomData))) {
+        return ((SubscribeBaseBottomPersonalFragment.BottomData)localShareData.a).jdField_b_of_type_JavaLangString;
       }
     }
     return "";
@@ -77,18 +75,18 @@ public class SubScribeDraftItemView
   
   public int a()
   {
-    return 2131558801;
+    return 2131558841;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131365876));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)paramView.findViewById(2131365882));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365877));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365880));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131366043));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)paramView.findViewById(2131366049));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366044));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366047));
     this.jdField_b_of_type_JavaLangString = ((PublicFragmentActivity)paramContext).app.getCurrentUin();
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365883));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365881));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366050));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366048));
   }
   
   protected void a(SubscribeDraftBean paramSubscribeDraftBean)
@@ -113,12 +111,12 @@ public class SubScribeDraftItemView
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getLayoutParams().height = ((int)(f * this.c));
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getLayoutParams().width = this.c;
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.requestLayout();
-      if ((!TextUtils.isEmpty(paramSubscribeDraftBean.getCoverUrl())) && (FileUtil.isFileExists(paramSubscribeDraftBean.getCoverUrl()))) {
+      if ((!TextUtils.isEmpty(paramSubscribeDraftBean.getCoverUrl())) && (FileUtil.a(paramSubscribeDraftBean.getCoverUrl()))) {
         break label297;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageResource(2130841669);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageResource(2130841812);
       label128:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(zqn.a(paramSubscribeDraftBean.getDraftId()));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(SubscribeUtils.a(paramSubscribeDraftBean.getDraftId()));
       if (paramSubscribeDraftBean.getDrafTtype() != SubscribeDraftBean.TYPE_VIDEO) {
         break label319;
       }
@@ -133,8 +131,8 @@ public class SubScribeDraftItemView
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setOnClickListener(new aack(this, paramSubscribeDraftBean));
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aacl(this, paramSubscribeDraftBean));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setOnClickListener(new SubScribeDraftItemView.1(this, paramSubscribeDraftBean));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new SubScribeDraftItemView.2(this, paramSubscribeDraftBean));
       return;
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setVisibility(0);
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setText(str1);
@@ -143,7 +141,7 @@ public class SubScribeDraftItemView
       f = 1.333333F;
       break label60;
       label297:
-      zqf.a(paramSubscribeDraftBean.getCoverUrl(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, zqf.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView), true);
+      SubImageLoader.a(paramSubscribeDraftBean.getCoverUrl(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, SubImageLoader.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView), true);
       break label128;
       label319:
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -153,7 +151,7 @@ public class SubScribeDraftItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView
  * JD-Core Version:    0.7.0.1
  */

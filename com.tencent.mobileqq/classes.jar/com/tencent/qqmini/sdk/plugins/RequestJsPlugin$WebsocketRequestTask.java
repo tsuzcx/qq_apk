@@ -32,11 +32,11 @@ public class RequestJsPlugin$WebsocketRequestTask
       if (paramJSONObject.has("method")) {
         this.mMethod = paramJSONObject.optString("method");
       }
-      RequestJsPlugin.access$2200(this.mHeaders, paramJSONObject);
+      RequestJsPlugin.access$1300(this.mHeaders, paramJSONObject);
       if (paramJSONObject.has("timeout")) {
         this.mTimeout = paramJSONObject.optInt("timeout");
       }
-      this.mHeaders.put("Referer", RequestJsPlugin.access$1900(paramRequestJsPlugin));
+      this.mHeaders.put("Referer", RequestJsPlugin.access$1000(paramRequestJsPlugin));
       this.mHeaders.put("User-Agent", QUAUtil.getRequestUA());
       return;
     }
@@ -44,7 +44,7 @@ public class RequestJsPlugin$WebsocketRequestTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RequestJsPlugin.WebsocketRequestTask
  * JD-Core Version:    0.7.0.1
  */

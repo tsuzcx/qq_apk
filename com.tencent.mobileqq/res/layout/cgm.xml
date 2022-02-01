@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:background="@drawable/f_d" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/idz" android:background="@color/bp" android:visibility="visible" layout="@layout/is" />
-    <TextView android:textSize="17.0sp" android:textColor="#ff8e8e93" android:gravity="center_horizontal" android:id="@id/nz7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="124.0dip" android:text="@string/wfz" android:layout_below="@id/idz" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:gravity="center" android:id="@id/nyc" android:background="@drawable/bkl" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:visibility="invisible" android:layout_width="90.0dip" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wer" android:layout_below="@id/nz7" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/n24" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="26.0dip" android:src="@drawable/bk2" android:layout_below="@id/nyc" android:layout_centerHorizontal="true" />
-    <android.support.v7.widget.RecyclerView android:layout_gravity="center_horizontal" android:id="@id/nmd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-26.0dip" android:layout_below="@id/n24" android:layout_centerHorizontal="true" />
-    <include android:layout_width="fill_parent" android:layout_height="216.0dip" android:layout_alignParentBottom="true" layout="@layout/aoz" />
+    <FrameLayout android:id="@id/fyt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.richmediabrowser.view.GalleryUrlImageView android:id="@id/fyr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    <ImageView android:id="@id/fyq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/c0z" android:layout_centerInParent="true" />
+    <LinearLayout android:id="@id/fys" android:background="@color/br" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="vertical" android:background="@color/k8" android:layout_width="fill_parent" android:layout_height="320.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/f2q" android:layout_width="80.0dip" android:layout_height="50.0dip" />
+            <TextView android:textSize="16.0sp" android:layout_gravity="center" android:id="@id/byl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/j_3" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

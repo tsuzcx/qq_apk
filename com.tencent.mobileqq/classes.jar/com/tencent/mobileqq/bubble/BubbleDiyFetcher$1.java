@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.bubble;
 
-import aqhg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
 
-public class BubbleDiyFetcher$1
+class BubbleDiyFetcher$1
   implements Runnable
 {
-  public BubbleDiyFetcher$1(aqhg paramaqhg) {}
+  BubbleDiyFetcher$1(BubbleDiyFetcher paramBubbleDiyFetcher) {}
   
   public void run()
   {

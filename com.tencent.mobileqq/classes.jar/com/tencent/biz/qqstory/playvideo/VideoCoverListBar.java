@@ -8,34 +8,30 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ViewConfiguration;
 import android.widget.ListView;
-import asbg;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.drawable.EmptyDrawable;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import wjp;
-import wjs;
-import xcc;
-import xcd;
-import xce;
-import xch;
-import ykq;
-import ykv;
 
 public class VideoCoverListBar
   extends ListView
 {
   private int jdField_a_of_type_Int;
-  private asbg jdField_a_of_type_Asbg;
+  private StoryManager jdField_a_of_type_ComTencentBizQqstoryModelStoryManager;
+  private VideoCoverListBar.OnVideoClickListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$OnVideoClickListener;
+  private VideoCoverListBar.VideoCoverListBarAdapter jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter;
+  private VideoCoverListBar.VideoCoverListDataProvider jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListDataProvider;
+  private EmptyDrawable jdField_a_of_type_ComTencentMobileqqDrawableEmptyDrawable;
   private String jdField_a_of_type_JavaLangString;
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private wjp jdField_a_of_type_Wjp;
-  private xcd jdField_a_of_type_Xcd;
-  private xce jdField_a_of_type_Xce;
-  private xch jdField_a_of_type_Xch;
   private int jdField_b_of_type_Int;
-  private asbg jdField_b_of_type_Asbg;
+  private EmptyDrawable jdField_b_of_type_ComTencentMobileqqDrawableEmptyDrawable;
   private int c;
   private int d;
   
@@ -62,12 +58,12 @@ public class VideoCoverListBar
       if (paramList == null) {}
       for (this.jdField_a_of_type_JavaUtilList = new ArrayList();; this.jdField_a_of_type_JavaUtilList = paramList)
       {
-        this.jdField_a_of_type_Xce.notifyDataSetChanged();
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter.notifyDataSetChanged();
         if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
           break;
         }
         setVisibility(8);
-        ykq.b("Q.qqstory.player:VideoCoverListBar", "video list too small, hide");
+        SLog.b("Q.qqstory.player:VideoCoverListBar", "video list too small, hide");
         return;
       }
       setVisibility(0);
@@ -75,28 +71,28 @@ public class VideoCoverListBar
         ThreadManager.getUIHandler().postDelayed(new VideoCoverListBar.3(this, paramInt), 30L);
       }
     } while ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()));
-    ykv.a("play_video", "exp_mini", 0, 0, new String[] { "2", "", "", (String)this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+    StoryReportor.a("play_video", "exp_mini", 0, 0, new String[] { "2", "", "", (String)this.jdField_a_of_type_JavaUtilList.get(paramInt) });
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Wjp = ((wjp)wjs.a(5));
+    this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager = ((StoryManager)SuperManager.a(5));
     int i = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.jdField_a_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298973);
-    this.jdField_b_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298972);
-    this.c = getContext().getResources().getDimensionPixelOffset(2131298970);
-    this.d = UIUtils.dip2px(paramContext, 11.0F);
-    this.jdField_a_of_type_Asbg = new asbg(-2631721, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_b_of_type_Asbg = new asbg(0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Xce = new xce(this, null);
+    this.jdField_a_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131299060);
+    this.jdField_b_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131299059);
+    this.c = getContext().getResources().getDimensionPixelOffset(2131299057);
+    this.d = UIUtils.a(paramContext, 11.0F);
+    this.jdField_a_of_type_ComTencentMobileqqDrawableEmptyDrawable = new EmptyDrawable(-2631721, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_b_of_type_ComTencentMobileqqDrawableEmptyDrawable = new EmptyDrawable(0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter = new VideoCoverListBar.VideoCoverListBarAdapter(this, null);
     setOverScrollMode(2);
     setDivider(new ColorDrawable(0));
     setDividerHeight(this.d);
     setHeaderDividersEnabled(false);
     setFooterDividersEnabled(false);
     setVerticalScrollBarEnabled(false);
-    setAdapter(this.jdField_a_of_type_Xce);
-    setOnTouchListener(new xcc(this, i));
+    setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter);
+    setOnTouchListener(new VideoCoverListBar.1(this, i));
   }
   
   public void a()
@@ -104,9 +100,14 @@ public class VideoCoverListBar
     a(this.jdField_a_of_type_JavaLangString);
   }
   
+  public void a(VideoCoverListBar.VideoCoverListDataProvider paramVideoCoverListDataProvider)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListDataProvider = paramVideoCoverListDataProvider;
+  }
+  
   public void a(String paramString)
   {
-    List localList = this.jdField_a_of_type_Xch.a();
+    List localList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListDataProvider.a();
     if (localList != null)
     {
       int i = 0;
@@ -115,7 +116,7 @@ public class VideoCoverListBar
         if (TextUtils.equals((CharSequence)localList.get(i), paramString))
         {
           this.jdField_a_of_type_JavaLangString = paramString;
-          ykq.a("Q.qqstory.player:VideoCoverListBar", "notify ! vid = %s , index = %d", paramString, Integer.valueOf(i));
+          SLog.a("Q.qqstory.player:VideoCoverListBar", "notify ! vid = %s , index = %d", paramString, Integer.valueOf(i));
           a(i, localList);
           return;
         }
@@ -123,27 +124,22 @@ public class VideoCoverListBar
       }
     }
     a(-1, localList);
-    ykq.d("Q.qqstory.player:VideoCoverListBar", "vid not found ! vid = %s", new Object[] { paramString });
-  }
-  
-  public void a(xch paramxch)
-  {
-    this.jdField_a_of_type_Xch = paramxch;
+    SLog.d("Q.qqstory.player:VideoCoverListBar", "vid not found ! vid = %s", new Object[] { paramString });
   }
   
   public void b()
   {
-    a(-1, this.jdField_a_of_type_Xch.a());
+    a(-1, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListDataProvider.a());
   }
   
-  public void setOnVideoClickListener(xcd paramxcd)
+  public void setOnVideoClickListener(VideoCoverListBar.OnVideoClickListener paramOnVideoClickListener)
   {
-    this.jdField_a_of_type_Xcd = paramxcd;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$OnVideoClickListener = paramOnVideoClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverListBar
  * JD-Core Version:    0.7.0.1
  */

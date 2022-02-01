@@ -8,8 +8,8 @@ public final class UserCntlData
   extends JceStruct
 {
   static byte[] cache_strCookie;
-  public long lNextMid;
-  public byte[] strCookie;
+  public long lNextMid = 0L;
+  public byte[] strCookie = null;
   
   public UserCntlData() {}
   

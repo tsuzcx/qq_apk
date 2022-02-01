@@ -9,11 +9,11 @@ class QQCustomArkDialog$2$1
   
   public void run()
   {
-    QQCustomArkDialog localQQCustomArkDialog = (QQCustomArkDialog)this.val$weakSelf.get();
+    QQCustomArkDialog localQQCustomArkDialog = (QQCustomArkDialog)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localQQCustomArkDialog == null) {
       return;
     }
-    QQCustomArkDialog.access$000(localQQCustomArkDialog, this.val$state);
+    QQCustomArkDialog.a(localQQCustomArkDialog, this.jdField_a_of_type_Int);
   }
 }
 

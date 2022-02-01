@@ -1,11 +1,5 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import agfb;
-import alvr;
-import alwb;
-import alwl;
-import alwm;
-import alwn;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -15,19 +9,20 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout.LayoutParams;
-import anvx;
-import bdla;
-import behe;
-import behf;
-import behg;
-import bhjq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.TextPreviewActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportUtil;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.textpreview.MenuUtil;
+import com.tencent.mobileqq.textpreview.ParticipleHandler;
+import com.tencent.mobileqq.textpreview.ParticipleObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.widget.ContainerView;
 import com.tencent.mobileqq.widget.ParticipleBottomMenuView;
 import com.tencent.mobileqq.widget.ParticipleView;
@@ -38,18 +33,19 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.ScrollView;
 import java.lang.ref.WeakReference;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class TextPreviewMenu
-  extends alwb<TextPreviewActivity>
+  extends CommonSelectableMenu<TextPreviewActivity>
 {
   private int jdField_a_of_type_Int = -1;
   protected Dialog a;
-  private behg jdField_a_of_type_Behg = new alwm(this);
   protected TextPreviewMenu.ProgressView a;
+  private ParticipleObserver jdField_a_of_type_ComTencentMobileqqTextpreviewParticipleObserver = new TextPreviewMenu.2(this);
   private List<String> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private String jdField_b_of_type_JavaLangString = null;
   
   private int a(int paramInt)
   {
@@ -69,16 +65,16 @@ public class TextPreviewMenu
   
   private void a(Activity paramActivity, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    agfb.a(paramQQAppInterface, paramMessageRecord, 2);
+    ECommerceDataReportUtil.a(paramQQAppInterface, paramMessageRecord, 2);
     try
     {
-      behe.a(a(), "TextPreview");
+      MenuUtil.copy(a(), "TextPreview");
       if (paramBoolean)
       {
-        bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800A356", "0X800A356", 0, 0, "", "", "", "");
+        ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A356", "0X800A356", 0, 0, "", "", "", "");
         return;
       }
-      bdla.b(paramQQAppInterface, "dc00898", "", "", "0X8009F00", "0X8009F00", 0, 0, "", "", "", "");
+      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X8009F00", "0X8009F00", 0, 0, "", "", "", "");
       return;
     }
     catch (Exception paramActivity)
@@ -100,7 +96,7 @@ public class TextPreviewMenu
   private void a(TextPreviewActivity paramTextPreviewActivity)
   {
     paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView.a(paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView);
-    paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView.setOnMenuClickListener(new alwl(this, paramTextPreviewActivity));
+    paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView.setOnMenuClickListener(new TextPreviewMenu.1(this, paramTextPreviewActivity));
     paramTextPreviewActivity.j.setOnClickListener(this);
     paramTextPreviewActivity.k.setOnClickListener(this);
     paramTextPreviewActivity.l.setOnClickListener(this);
@@ -110,9 +106,9 @@ public class TextPreviewMenu
   private void a(TextPreviewActivity paramTextPreviewActivity, int paramInt1, int paramInt2)
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramTextPreviewActivity.jdField_a_of_type_ComTencentWidgetScrollView.getLayoutParams();
-    localLayoutParams.bottomMargin = AIOUtils.dp2px(paramInt1, paramTextPreviewActivity.getResources());
-    localLayoutParams.leftMargin = AIOUtils.dp2px(paramInt2, paramTextPreviewActivity.getResources());
-    localLayoutParams.rightMargin = AIOUtils.dp2px(paramInt2, paramTextPreviewActivity.getResources());
+    localLayoutParams.bottomMargin = AIOUtils.a(paramInt1, paramTextPreviewActivity.getResources());
+    localLayoutParams.leftMargin = AIOUtils.a(paramInt2, paramTextPreviewActivity.getResources());
+    localLayoutParams.rightMargin = AIOUtils.a(paramInt2, paramTextPreviewActivity.getResources());
     paramTextPreviewActivity.jdField_a_of_type_ComTencentWidgetScrollView.setLayoutParams(localLayoutParams);
     paramTextPreviewActivity.jdField_a_of_type_ComTencentWidgetScrollView.post(new TextPreviewMenu.3(this, paramTextPreviewActivity));
   }
@@ -134,7 +130,7 @@ public class TextPreviewMenu
       }
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131714255), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131714751), 0).a();
   }
   
   private void c()
@@ -150,13 +146,13 @@ public class TextPreviewMenu
         return;
         localTextPreviewActivity = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
       } while (localTextPreviewActivity == null);
-      if (!NetworkUtil.isNetSupport(localTextPreviewActivity))
+      if (!NetworkUtil.d(localTextPreviewActivity))
       {
-        QQToast.a(localTextPreviewActivity, anvx.a(2131714245), 0).b(localTextPreviewActivity.getResources().getDimensionPixelSize(2131299080));
+        QQToast.a(localTextPreviewActivity, HardCodeUtil.a(2131714741), 0).b(localTextPreviewActivity.getResources().getDimensionPixelSize(2131299166));
         return;
       }
     } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    ((behf)localTextPreviewActivity.app.getBusinessHandler(BusinessHandlerFactory.PARTICIPLE_HANDLER)).a(localTextPreviewActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    ((ParticipleHandler)localTextPreviewActivity.app.getBusinessHandler(BusinessHandlerFactory.PARTICIPLE_HANDLER)).a(localTextPreviewActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
     d();
   }
   
@@ -176,11 +172,11 @@ public class TextPreviewMenu
       this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
       this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
       this.jdField_a_of_type_AndroidAppDialog.setContentView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu$ProgressView);
-      this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new alwn(localActivity));
+      this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new TextPreviewMenu.CancelDialogListener(localActivity));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu$ProgressView.setProgressText(anvx.a(2131714256));
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu$ProgressView.setProgressText(HardCodeUtil.a(2131714752));
       this.jdField_a_of_type_AndroidAppDialog.show();
       return;
       label138:
@@ -210,29 +206,6 @@ public class TextPreviewMenu
     }
   }
   
-  public void a(bhjq parambhjq)
-  {
-    parambhjq.a(2131365307, anvx.a(2131714250), 2130838982);
-    parambhjq.a(2131367213, anvx.a(2131714248), 2130838991);
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      parambhjq.a(2131366456, anvx.a(2131714251), 2130838990);
-      return;
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -2))
-      {
-        parambhjq.a(2131376534, anvx.a(2131714257), 2130838997);
-        continue;
-        TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-        if ((localTextPreviewActivity != null) && (localTextPreviewActivity.app != null) && (!this.jdField_b_of_type_JavaLangString.equals(localTextPreviewActivity.app.getCurrentAccountUin()))) {
-          parambhjq.a(2131376534, anvx.a(2131714249), 2130838997);
-        }
-      }
-    }
-  }
-  
   public void a(TextPreviewActivity paramTextPreviewActivity, ContainerView paramContainerView)
   {
     super.a(paramTextPreviewActivity, paramContainerView);
@@ -241,14 +214,37 @@ public class TextPreviewMenu
     this.jdField_a_of_type_Boolean = paramTextPreviewActivity.jdField_a_of_type_Boolean;
     this.jdField_b_of_type_Int = paramTextPreviewActivity.jdField_b_of_type_Int;
     a(paramTextPreviewActivity);
-    paramTextPreviewActivity.app.addObserver(this.jdField_a_of_type_Behg);
+    paramTextPreviewActivity.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqTextpreviewParticipleObserver);
   }
   
-  public void a(ContainerView paramContainerView, View paramView)
+  protected void a(QQCustomMenu paramQQCustomMenu)
+  {
+    paramQQCustomMenu.a(2131365448, HardCodeUtil.a(2131714746), 2130839050);
+    paramQQCustomMenu.a(2131367398, HardCodeUtil.a(2131714744), 2130839059);
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      paramQQCustomMenu.a(2131366625, HardCodeUtil.a(2131714747), 2130839058);
+      return;
+      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -2))
+      {
+        paramQQCustomMenu.a(2131376927, HardCodeUtil.a(2131714753), 2130839065);
+        continue;
+        TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+        if ((localTextPreviewActivity != null) && (localTextPreviewActivity.app != null) && (!this.jdField_b_of_type_JavaLangString.equals(localTextPreviewActivity.app.getCurrentAccountUin()))) {
+          paramQQCustomMenu.a(2131376927, HardCodeUtil.a(2131714745), 2130839065);
+        }
+      }
+    }
+  }
+  
+  protected void a(ContainerView paramContainerView, View paramView)
   {
     super.a(paramContainerView, paramView);
     int i = a(this.jdField_b_of_type_Int);
-    bdla.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), "dc00898", "", "", "0X8009EFF", "0X8009EFF", i, 0, "", "", "", "");
+    ReportController.b((AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get(), "dc00898", "", "", "0X8009EFF", "0X8009EFF", i, 0, "", "", "", "");
   }
   
   public boolean a()
@@ -273,7 +269,7 @@ public class TextPreviewMenu
     super.b(paramContainerView);
     paramContainerView = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
     if ((paramContainerView != null) && (paramContainerView.app != null)) {
-      paramContainerView.app.removeObserver(this.jdField_a_of_type_Behg);
+      paramContainerView.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTextpreviewParticipleObserver);
     }
     e();
   }
@@ -294,8 +290,8 @@ public class TextPreviewMenu
     }
     for (;;)
     {
-      if ((paramView.getId() != 2131377287) && (alvr.a().c())) {
-        alvr.a().d();
+      if ((paramView.getId() != 2131377708) && (AIOSelectableDelegateImpl.a().c())) {
+        AIOSelectableDelegateImpl.a().d();
       }
       EventCollector.getInstance().onViewClicked(paramView);
       return;
@@ -304,33 +300,33 @@ public class TextPreviewMenu
       bool = true;
       a(localTextPreviewActivity, localQQAppInterface, localMessageRecord, bool);
       continue;
-      agfb.a(localQQAppInterface, localMessageRecord, 3);
-      behe.a((Activity)paramView.getContext(), a());
-      bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009F01", "0X8009F01", 0, 0, "", "", "", "");
+      ECommerceDataReportUtil.a(localQQAppInterface, localMessageRecord, 3);
+      MenuUtil.a((Activity)paramView.getContext(), a());
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009F01", "0X8009F01", 0, 0, "", "", "", "");
       continue;
-      agfb.a(localQQAppInterface, localMessageRecord, 4);
+      ECommerceDataReportUtil.a(localQQAppInterface, localMessageRecord, 4);
       if (localQQAppInterface != null) {
-        behe.a((Activity)paramView.getContext(), localQQAppInterface, a());
+        MenuUtil.a((Activity)paramView.getContext(), localQQAppInterface, a());
       }
-      bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009F02", "0X8009F02", 0, 0, "", "", "", "");
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009F02", "0X8009F02", 0, 0, "", "", "", "");
       continue;
-      alvr.a().a(null);
+      AIOSelectableDelegateImpl.a().a(null);
       continue;
       if (localTextPreviewActivity != null)
       {
         localTextPreviewActivity.setResult(14001, localTextPreviewActivity.getIntent());
         localTextPreviewActivity.finish();
-        bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A1D1", "0X800A1D1", 4, 0, "", "", "", "");
+        ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A1D1", "0X800A1D1", 4, 0, "", "", "", "");
         continue;
         if (localTextPreviewActivity != null)
         {
           localTextPreviewActivity.b(a());
-          bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A1D1", "0X800A1D1", 5, 0, "", "", "", "");
+          ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A1D1", "0X800A1D1", 5, 0, "", "", "", "");
           continue;
           c();
           if (localTextPreviewActivity != null)
           {
-            bdla.b(localTextPreviewActivity.app, "dc00898", "", "", "0X800A357", "0X800A357", 1, 0, "", "", "", "");
+            ReportController.b(localTextPreviewActivity.app, "dc00898", "", "", "0X800A357", "0X800A357", 1, 0, "", "", "", "");
           }
           else
           {
@@ -349,7 +345,7 @@ public class TextPreviewMenu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.TextPreviewMenu
  * JD-Core Version:    0.7.0.1
  */

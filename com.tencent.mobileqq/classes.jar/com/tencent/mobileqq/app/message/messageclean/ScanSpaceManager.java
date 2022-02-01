@@ -5,9 +5,8 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import aoqi;
-import audf;
-import bdne;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.statistics.storage.StorageReport;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -17,10 +16,10 @@ public class ScanSpaceManager
   public static final ArrayList<String> a;
   public long a;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private aoqi jdField_a_of_type_Aoqi;
-  private volatile boolean jdField_a_of_type_Boolean;
-  public long b;
-  public long c;
+  private IScanSpaceListener jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener;
+  private volatile boolean jdField_a_of_type_Boolean = false;
+  public long b = 0L;
+  public long c = 0L;
   
   static
   {
@@ -29,6 +28,7 @@ public class ScanSpaceManager
   
   public ScanSpaceManager()
   {
+    this.jdField_a_of_type_Long = 0L;
     c();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
@@ -46,8 +46,8 @@ public class ScanSpaceManager
   
   private void c()
   {
-    String str1 = audf.a().b();
-    String str2 = audf.a().a();
+    String str1 = FMSettings.a().b();
+    String str2 = FMSettings.a().a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (!TextUtils.isEmpty(str1))
     {
@@ -85,18 +85,18 @@ public class ScanSpaceManager
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Aoqi != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener != null)
       {
-        this.jdField_a_of_type_Aoqi.b();
-        this.jdField_a_of_type_Aoqi.a(0);
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener.b();
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener.a(0);
       }
-      bdne.a().post(new ScanSpaceManager.ScanSpaceTask(this));
+      StorageReport.a().post(new ScanSpaceManager.ScanSpaceTask(this));
     }
   }
   
-  public void a(aoqi paramaoqi)
+  public void a(IScanSpaceListener paramIScanSpaceListener)
   {
-    this.jdField_a_of_type_Aoqi = paramaoqi;
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener = paramIScanSpaceListener;
   }
   
   public boolean a()
@@ -115,14 +115,14 @@ public class ScanSpaceManager
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    bdne.a();
+    StorageReport.a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    this.jdField_a_of_type_Aoqi = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener = null;
   }
   
   public long c()
@@ -141,12 +141,12 @@ public class ScanSpaceManager
     for (;;)
     {
       return false;
-      if (this.jdField_a_of_type_Aoqi != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener != null)
       {
-        this.jdField_a_of_type_Aoqi.a(paramMessage.arg1);
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener.a(paramMessage.arg1);
         continue;
-        if (this.jdField_a_of_type_Aoqi != null) {
-          this.jdField_a_of_type_Aoqi.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
+        if (this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanIScanSpaceListener.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
         }
       }
     }
@@ -154,7 +154,7 @@ public class ScanSpaceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 public class VideoCoverImgBorder
   extends ImageView
 {
-  private final int jdField_a_of_type_Int = UIUtils.dip2px(getContext(), 1.0F);
+  private final int jdField_a_of_type_Int = UIUtils.a(getContext(), 1.0F);
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private final int jdField_b_of_type_Int = UIUtils.dip2px(getContext(), 2.0F);
+  private final int jdField_b_of_type_Int = UIUtils.a(getContext(), 2.0F);
   private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   private int c = this.jdField_b_of_type_Int;
-  private int d;
-  private int e;
+  private int d = 0;
+  private int e = 0;
   private int f = this.jdField_b_of_type_Int;
   private int g = -1;
   
@@ -100,7 +100,7 @@ public class VideoCoverImgBorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverImgBorder
  * JD-Core Version:    0.7.0.1
  */

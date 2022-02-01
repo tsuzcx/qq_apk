@@ -25,7 +25,7 @@ public class TroopAIOAppInfo
   public String iconUrl;
   public String iconYouth;
   public int identifyMask = 31;
-  public boolean isCommon;
+  public boolean isCommon = false;
   public boolean isGray;
   public String minVersion;
   public String name;

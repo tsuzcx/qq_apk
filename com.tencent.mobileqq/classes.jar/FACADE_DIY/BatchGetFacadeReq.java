@@ -12,11 +12,11 @@ public final class BatchGetFacadeReq
 {
   static Map<Long, GetFacadeReqExt> cache_ext;
   static ArrayList<Long> cache_uins = new ArrayList();
-  public Map<Long, GetFacadeReqExt> ext;
-  public long loginUin;
-  public int needElementInfo;
+  public Map<Long, GetFacadeReqExt> ext = null;
+  public long loginUin = 0L;
+  public int needElementInfo = 0;
   public String qua = "";
-  public ArrayList<Long> uins;
+  public ArrayList<Long> uins = null;
   
   static
   {

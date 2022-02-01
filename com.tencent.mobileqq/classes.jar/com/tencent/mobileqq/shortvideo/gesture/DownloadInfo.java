@@ -16,20 +16,20 @@ public class DownloadInfo
   static final String spKey_model_zip_md5 = "model_zip_md5";
   static final String spKey_so_zip_md5 = "so_zip_md5";
   public static final String spName = "config_qq.android.qavgesture";
-  public String MD5_so;
-  public String MD5_zip_gamemodel;
-  public String MD5_zip_model;
-  public String MD5_zip_so;
-  public boolean enable;
-  public boolean gameEnable;
-  public String gamemodel_fullname;
-  public String model_fullname;
+  String MD5_so;
+  String MD5_zip_gamemodel;
+  String MD5_zip_model;
+  String MD5_zip_so;
+  public boolean enable = false;
+  public boolean gameEnable = false;
+  String gamemodel_fullname;
+  String model_fullname;
   public String so_fullname;
-  public String so_name;
+  String so_name;
   double time;
-  public String url_zip_gamemodel;
-  public String url_zip_model;
-  public String url_zip_so;
+  String url_zip_gamemodel;
+  String url_zip_model;
+  String url_zip_so;
   
   public static DownloadInfo get()
   {

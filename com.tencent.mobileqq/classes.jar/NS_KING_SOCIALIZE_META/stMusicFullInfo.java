@@ -14,13 +14,13 @@ public final class stMusicFullInfo
   static stSingerInfo cache_singerInfo = new stSingerInfo();
   static stSongInfo cache_songInfo = new stSongInfo();
   static stLyricInfo cache_subtitleInfo;
-  public stAlbumInfo albumInfo;
-  public stConfInfo confInfo;
-  public stLyricInfo foreignlyric;
-  public stLyricInfo lyricInfo;
-  public stSingerInfo singerInfo;
-  public stSongInfo songInfo;
-  public stLyricInfo subtitleInfo;
+  public stAlbumInfo albumInfo = null;
+  public stConfInfo confInfo = null;
+  public stLyricInfo foreignlyric = null;
+  public stLyricInfo lyricInfo = null;
+  public stSingerInfo singerInfo = null;
+  public stSongInfo songInfo = null;
+  public stLyricInfo subtitleInfo = null;
   
   static
   {

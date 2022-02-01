@@ -9,8 +9,8 @@ public final class TimeEvent
 {
   public String content = "";
   public String copywriter = "";
-  public long time;
-  public long type;
+  public long time = 0L;
+  public long type = 0L;
   
   public TimeEvent() {}
   

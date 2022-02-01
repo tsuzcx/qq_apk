@@ -1,8 +1,8 @@
 package com.tencent.hippy.qq.module;
 
-import albp;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import com.tencent.mobileqq.activity.qwallet.utils.FlymeOSStatusBarFontUtils;
 
 class QQUiModule$1
   implements Runnable
@@ -20,14 +20,14 @@ class QQUiModule$1
         ((Bundle)localObject).putBoolean("isStatusBarDarkFont", this.val$isDarkFont);
       }
       if (localFragment.getUserVisibleHint()) {
-        albp.a(this.this$0.getActivity(), this.val$isDarkFont);
+        FlymeOSStatusBarFontUtils.a(this.this$0.getActivity(), this.val$isDarkFont);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQUiModule.1
  * JD-Core Version:    0.7.0.1
  */

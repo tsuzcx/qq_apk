@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.vip;
 
-import bhyx;
-import bhzi;
 import com.tencent.mobileqq.app.ThreadManager;
 import dualsim.common.IKingCardInterface;
 import dualsim.common.OrderCheckResult;
 import mqq.os.MqqHandler;
 import tmsdk.common.KcSdkShellManager;
 
-public class KCWraperV2$2
+class KCWraperV2$2
   implements Runnable
 {
-  public KCWraperV2$2(bhyx parambhyx, bhzi parambhzi, boolean paramBoolean) {}
+  KCWraperV2$2(KCWraperV2 paramKCWraperV2, TMSManager.Callback paramCallback, boolean paramBoolean) {}
   
   public void run()
   {
@@ -25,7 +23,7 @@ public class KCWraperV2$2
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bhzi != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqVipTMSManager$Callback != null)
       {
         if (!this.jdField_a_of_type_Boolean) {
           break;
@@ -38,14 +36,14 @@ public class KCWraperV2$2
         bool = true;
       }
       i = ((OrderCheckResult)localObject).product;
-      bhyx.a(this.this$0, (OrderCheckResult)localObject);
+      KCWraperV2.a(this.this$0, (OrderCheckResult)localObject);
     }
-    this.jdField_a_of_type_Bhzi.a(true, bool, i);
+    this.jdField_a_of_type_ComTencentMobileqqVipTMSManager$Callback.a(true, bool, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2.2
  * JD-Core Version:    0.7.0.1
  */

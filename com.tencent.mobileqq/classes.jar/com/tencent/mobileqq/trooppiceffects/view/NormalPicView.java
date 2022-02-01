@@ -5,11 +5,10 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bgtv;
 
 public class NormalPicView
   extends ImageView
-  implements bgtv
+  implements IPicView
 {
   public NormalPicView(Context paramContext)
   {

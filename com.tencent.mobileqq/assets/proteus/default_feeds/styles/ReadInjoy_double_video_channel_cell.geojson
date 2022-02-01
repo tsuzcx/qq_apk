@@ -182,21 +182,40 @@
                         }
                       },
                       {
-                        "view_type": "UILabel",
-                        "view_id":"id_left_item_comment_count",
-                        "width": {
-                          "type":"wrap_content"
-                        },
-                        "height": {
-                          "type": "wrap_content"
-                        },
-                        "align_parent_right":"YES",
-                        "attributes": {
-                          "setFontSizeString:":"12",
-                          "setTextColorString:": "#ffffff",
-                          "setNumberOfLinesString:": "1",
-                          "setText:": "$left_comment_count"
-                        }
+                          "view_type": "UIImageView",
+                          "view_id": "id_left_comment_icon",
+                          "height": {
+                              "type": "relative",
+                              "value": "12"
+                          },
+                          "width": {
+                              "type": "relative",
+                              "value": "12"
+                          },
+                          "right_of_view": "id_left_item_play_count",
+                          "margin_left": "12",
+                          "align_parent_center_vertical": "YES",
+                          "attributes": {
+                              "loadImageWithPath:": "$comment_icon"
+                          }
+                      },
+                      {
+                          "view_type": "UILabel",
+                          "view_id": "id_left_item_comment_count",
+                          "width": {
+                              "type": "wrap_content"
+                          },
+                          "height": {
+                              "type": "wrap_content"
+                          },
+                          "right_of_view": "id_left_comment_icon",
+                          "margin_left": "3",
+                          "attributes": {
+                              "setFontSizeString:":"12",
+                              "setTextColorString:": "#ffffff",
+                              "setNumberOfLinesString:": "1",
+                              "setText:": "$left_comment_count"
+                          }
                       }
                     ]
                   },
@@ -614,21 +633,40 @@
                         }
                       },
                       {
-                        "view_type": "UILabel",
-                        "view_id":"id_right_item_comment_count",
-                        "width": {
-                          "type":"wrap_content"
-                        },
-                        "height": {
-                          "type": "wrap_content"
-                        },
-                        "align_parent_right":"YES",
-                        "attributes": {
-                          "setFontSizeString:":"12",
-                          "setTextColorString:": "#ffffff",
-                          "setNumberOfLinesString:": "1",
-                          "setText:": "$right_comment_count"
-                        }
+                          "view_type": "UIImageView",
+                          "view_id": "id_right_comment_icon",
+                          "height": {
+                              "type": "relative",
+                              "value": "12"
+                          },
+                          "width": {
+                              "type": "relative",
+                              "value": "12"
+                          },
+                          "right_of_view": "id_right_item_play_count",
+                          "margin_left": "12",
+                          "align_parent_center_vertical": "YES",
+                          "attributes": {
+                              "loadImageWithPath:": "$comment_icon"
+                          }
+                      },
+                      {
+                          "view_type": "UILabel",
+                          "view_id": "id_right_item_comment_count",
+                          "width": {
+                              "type": "wrap_content"
+                          },
+                          "height": {
+                              "type": "wrap_content"
+                          },
+                          "right_of_view": "id_right_comment_icon",
+                          "margin_left": "3",
+                          "attributes": {
+                              "setFontSizeString:":"12",
+                              "setTextColorString:": "#ffffff",
+                              "setNumberOfLinesString:": "1",
+                              "setText:": "$right_comment_count"
+                          }
                       }
                     ]
                   },

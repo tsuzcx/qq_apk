@@ -3,13 +3,12 @@ package com.tencent.avgame.videorecord;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
 import android.view.View;
-import nky;
-import nrh;
+import com.tencent.avgame.gameroom.stage.IStagePresenter;
 
-public class GuessVideoGameRecordCtrl$5
+class GuessVideoGameRecordCtrl$5
   implements Runnable
 {
-  public GuessVideoGameRecordCtrl$5(nrh paramnrh, int paramInt, View paramView) {}
+  GuessVideoGameRecordCtrl$5(GuessVideoGameRecordCtrl paramGuessVideoGameRecordCtrl, int paramInt, View paramView) {}
   
   public void run()
   {
@@ -38,9 +37,9 @@ public class GuessVideoGameRecordCtrl$5
         int m = this.jdField_a_of_type_AndroidViewView.getTop();
         int j = k;
         int i = m;
-        if (nrh.a(this.this$0) != null)
+        if (GuessVideoGameRecordCtrl.a(this.this$0) != null)
         {
-          RectF localRectF = nrh.a(this.this$0).a();
+          RectF localRectF = GuessVideoGameRecordCtrl.a(this.this$0).a();
           j = k;
           i = m;
           if (localRectF != null)
@@ -63,7 +62,7 @@ public class GuessVideoGameRecordCtrl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.videorecord.GuessVideoGameRecordCtrl.5
  * JD-Core Version:    0.7.0.1
  */

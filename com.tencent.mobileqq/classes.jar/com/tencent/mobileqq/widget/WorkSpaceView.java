@@ -12,22 +12,20 @@ import android.view.ViewConfiguration;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import biuu;
-import biuv;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class WorkSpaceView
   extends FrameLayout
 {
   private float jdField_a_of_type_Float;
-  public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new biuu(this);
+  int jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler = new WorkSpaceView.1(this);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext(), new AccelerateDecelerateInterpolator());
-  private biuv jdField_a_of_type_Biuv;
+  private WorkSpaceView.OnScreenChangeListener jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener;
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 0;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -2;
   private boolean jdField_c_of_type_Boolean = true;
@@ -47,7 +45,6 @@ public class WorkSpaceView
   public WorkSpaceView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
   }
   
   private void a()
@@ -87,8 +84,8 @@ public class WorkSpaceView
       paramInt = getWidth();
       i = getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt * j - i, 0, 400);
-      if (this.jdField_a_of_type_Biuv != null) {
-        this.jdField_a_of_type_Biuv.a(j);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener.a(j);
       }
       invalidate();
       return;
@@ -112,8 +109,8 @@ public class WorkSpaceView
       paramInt = getWidth();
       int j = getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt * i - j, 0, 400);
-      if (this.jdField_a_of_type_Biuv != null) {
-        this.jdField_a_of_type_Biuv.a(i);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener.a(i);
       }
       invalidate();
       return;
@@ -151,7 +148,7 @@ public class WorkSpaceView
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     int m = 0;
     int k = 0;
@@ -306,7 +303,7 @@ public class WorkSpaceView
     return false;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt4 = getChildCount();
     paramInt1 = 0;
@@ -324,7 +321,7 @@ public class WorkSpaceView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int j = getChildCount();
@@ -454,14 +451,14 @@ public class WorkSpaceView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScreenChangeListener(biuv parambiuv)
+  public void setOnScreenChangeListener(WorkSpaceView.OnScreenChangeListener paramOnScreenChangeListener)
   {
-    this.jdField_a_of_type_Biuv = parambiuv;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener = paramOnScreenChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WorkSpaceView
  * JD-Core Version:    0.7.0.1
  */

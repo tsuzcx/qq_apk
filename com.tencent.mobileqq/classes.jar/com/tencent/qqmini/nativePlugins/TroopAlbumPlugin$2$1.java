@@ -2,29 +2,25 @@ package com.tencent.qqmini.nativePlugins;
 
 import android.app.Activity;
 import android.content.Context;
-import anvx;
-import bhdj;
-import bkll;
-import bkln;
-import bklo;
-import bklp;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 
-public class TroopAlbumPlugin$2$1
+class TroopAlbumPlugin$2$1
   implements Runnable
 {
-  public TroopAlbumPlugin$2$1(bkln parambkln) {}
+  TroopAlbumPlugin$2$1(TroopAlbumPlugin.2 param2) {}
   
   public void run()
   {
-    bkll.a(this.a.jdField_a_of_type_Bkll, this.a.jdField_a_of_type_JavaLangString);
-    Activity localActivity = bkll.e(this.a.jdField_a_of_type_Bkll).getAttachedActivity();
-    if (bkll.a(this.a.jdField_a_of_type_Bkll) == null) {
-      bkll.a(this.a.jdField_a_of_type_Bkll, bhdj.a(localActivity, 230).setTitle(anvx.a(2131714540)).setMessage(anvx.a(2131714539)).setPositiveButton(anvx.a(2131714538), new bklp(this)).setNegativeButton(localActivity.getString(2131717404), new bklo(this)));
+    TroopAlbumPlugin.a(this.a.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin, this.a.jdField_a_of_type_JavaLangString);
+    Activity localActivity = TroopAlbumPlugin.e(this.a.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin).getAttachedActivity();
+    if (TroopAlbumPlugin.a(this.a.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin) == null) {
+      TroopAlbumPlugin.a(this.a.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin, DialogUtil.a(localActivity, 230).setTitle(HardCodeUtil.a(2131715035)).setMessage(HardCodeUtil.a(2131715034)).setPositiveButton(HardCodeUtil.a(2131715033), new TroopAlbumPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131717899), new TroopAlbumPlugin.2.1.1(this)));
     }
-    if (!bkll.a(this.a.jdField_a_of_type_Bkll).isShowing()) {
-      bkll.a(this.a.jdField_a_of_type_Bkll).show();
+    if (!TroopAlbumPlugin.a(this.a.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin).isShowing()) {
+      TroopAlbumPlugin.a(this.a.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin).show();
     }
   }
 }

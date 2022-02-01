@@ -6,13 +6,12 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import bmyg;
-import bnrh;
+import dov.com.qq.im.ae.util.AEQLog;
 
 public class AEAlbumPreviewMaskLayout
   extends FrameLayout
 {
-  private bmyg a;
+  private AEAlbumPreviewMaskLayout.OnTouchCallback a;
   
   public AEAlbumPreviewMaskLayout(@NonNull Context paramContext)
   {
@@ -36,19 +35,19 @@ public class AEAlbumPreviewMaskLayout
       if (this.a != null) {
         this.a.a();
       }
-      bnrh.a("AEAlbumPreviewMaskLayout", "[onTouchEvent], action=ACTION_DOWN");
+      AEQLog.a("AEAlbumPreviewMaskLayout", "[onTouchEvent], action=ACTION_DOWN");
     }
     return true;
   }
   
-  public void setOnTouchCallback(@Nullable bmyg parambmyg)
+  public void setOnTouchCallback(@Nullable AEAlbumPreviewMaskLayout.OnTouchCallback paramOnTouchCallback)
   {
-    this.a = parambmyg;
+    this.a = paramOnTouchCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.AEAlbumPreviewMaskLayout
  * JD-Core Version:    0.7.0.1
  */

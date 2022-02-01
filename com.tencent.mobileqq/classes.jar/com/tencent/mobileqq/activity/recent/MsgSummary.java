@@ -34,64 +34,7 @@ public class MsgSummary
   public CharSequence strPrefix;
   public CharSequence suffix;
   
-  private CharSequence buildMsgWithExtraInfoAsQQText(String paramString, Drawable paramDrawable, int paramInt)
-  {
-    Object localObject1 = (AbsQQText)this.strContent;
-    Object localObject2 = (ImageSpan[])((AbsQQText)localObject1).getSpans(0, 1, ImageSpan.class);
-    if (localObject2.length > 0) {
-      ((AbsQQText)localObject1).removeSpan(localObject2[0]);
-    }
-    localObject2 = ((AbsQQText)localObject1).append(paramString, true, new int[0]);
-    if (this.nState == 2)
-    {
-      localObject1 = ((AbsQQText)localObject2).append("F ", true, new int[0]);
-      if (this.suffix == null) {
-        break label236;
-      }
-      localObject1 = ((AbsQQText)localObject1).append(this.suffix.toString(), false, new int[0]);
-    }
-    label164:
-    label219:
-    label224:
-    label236:
-    for (;;)
-    {
-      if (paramDrawable != null)
-      {
-        paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth() * 2 / 3, paramDrawable.getIntrinsicHeight() * 2 / 3);
-        ((AbsQQText)localObject1).setSpan(new ImageSpan(paramDrawable), 0, 1, 33);
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (paramInt > 0)
-        {
-          paramDrawable = new ForegroundColorSpan(paramInt);
-          if (i == 0) {
-            break label219;
-          }
-          paramInt = 1;
-          if (i == 0) {
-            break label224;
-          }
-        }
-        for (i = 2;; i = 0)
-        {
-          ((AbsQQText)localObject1).setSpan(paramDrawable, paramInt, i + paramString.length(), 33);
-          return localObject1;
-          localObject1 = localObject2;
-          if (this.nState != 1) {
-            break;
-          }
-          localObject1 = ((AbsQQText)localObject2).append("S ", true, new int[0]);
-          break;
-          paramInt = 0;
-          break label164;
-        }
-      }
-    }
-  }
-  
-  private CharSequence buildMsgWithExtraInfoAsSpannableString(String paramString, Drawable paramDrawable, int paramInt)
+  private CharSequence a(String paramString, Drawable paramDrawable, int paramInt)
   {
     int j = 2;
     int k = 1;
@@ -150,7 +93,64 @@ public class MsgSummary
     }
   }
   
-  public CharSequence parseMsg(Context paramContext)
+  private CharSequence b(String paramString, Drawable paramDrawable, int paramInt)
+  {
+    Object localObject1 = (AbsQQText)this.strContent;
+    Object localObject2 = (ImageSpan[])((AbsQQText)localObject1).getSpans(0, 1, ImageSpan.class);
+    if (localObject2.length > 0) {
+      ((AbsQQText)localObject1).removeSpan(localObject2[0]);
+    }
+    localObject2 = ((AbsQQText)localObject1).append(paramString, true, new int[0]);
+    if (this.nState == 2)
+    {
+      localObject1 = ((AbsQQText)localObject2).append("F ", true, new int[0]);
+      if (this.suffix == null) {
+        break label236;
+      }
+      localObject1 = ((AbsQQText)localObject1).append(this.suffix.toString(), false, new int[0]);
+    }
+    label164:
+    label219:
+    label224:
+    label236:
+    for (;;)
+    {
+      if (paramDrawable != null)
+      {
+        paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth() * 2 / 3, paramDrawable.getIntrinsicHeight() * 2 / 3);
+        ((AbsQQText)localObject1).setSpan(new ImageSpan(paramDrawable), 0, 1, 33);
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (paramInt > 0)
+        {
+          paramDrawable = new ForegroundColorSpan(paramInt);
+          if (i == 0) {
+            break label219;
+          }
+          paramInt = 1;
+          if (i == 0) {
+            break label224;
+          }
+        }
+        for (i = 2;; i = 0)
+        {
+          ((AbsQQText)localObject1).setSpan(paramDrawable, paramInt, i + paramString.length(), 33);
+          return localObject1;
+          localObject1 = localObject2;
+          if (this.nState != 1) {
+            break;
+          }
+          localObject1 = ((AbsQQText)localObject2).append("S ", true, new int[0]);
+          break;
+          paramInt = 0;
+          break label164;
+        }
+      }
+    }
+  }
+  
+  public CharSequence a(Context paramContext)
   {
     Object localObject2 = null;
     StringBuffer localStringBuffer = null;
@@ -182,7 +182,7 @@ public class MsgSummary
         if (this.nState != 2) {
           continue;
         }
-        paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.recent_icon_failed);
+        paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.a);
         i = j + "F ".length();
         if (paramContext != null)
         {
@@ -205,7 +205,7 @@ public class MsgSummary
       paramContext = localStringBuffer;
       if (this.nState == 1)
       {
-        paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.recent_icon_sending);
+        paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.b);
         i = "S ".length();
         i = j + i;
         continue;
@@ -240,7 +240,7 @@ public class MsgSummary
           try
           {
             if (this.nState == 2) {
-              paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.recent_icon_failed);
+              paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.a);
             }
             for (;;)
             {
@@ -261,7 +261,7 @@ public class MsgSummary
               break label374;
               paramContext = localObject2;
               if (this.nState == 1) {
-                paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.recent_icon_sending);
+                paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.b);
               }
             }
           }
@@ -289,7 +289,7 @@ public class MsgSummary
     }
   }
   
-  public CharSequence parseMsgWithExtraInfo(Context paramContext, String paramString, int paramInt)
+  public CharSequence a(Context paramContext, String paramString, int paramInt)
   {
     Object localObject2 = null;
     Object localObject1 = null;
@@ -309,20 +309,20 @@ public class MsgSummary
       {
         if (this.nState == 2)
         {
-          localObject1 = localResources.getDrawable(IMCoreResourceRoute.Resource.drawable.recent_icon_failed);
+          localObject1 = localResources.getDrawable(IMCoreResourceRoute.Resource.drawable.a);
           i = -1;
           if (paramInt > 0) {
-            i = paramContext.getResources().getColor(IMCoreResourceRoute.Resource.color.skin_orange);
+            i = paramContext.getResources().getColor(IMCoreResourceRoute.Resource.color.a);
           }
           if (!(this.strContent instanceof AbsQQText)) {
             break;
           }
-          return buildMsgWithExtraInfoAsQQText(paramString, (Drawable)localObject1, i);
+          return b(paramString, (Drawable)localObject1, i);
         }
         localObject1 = localObject2;
         if (this.nState == 1)
         {
-          localObject1 = localResources.getDrawable(IMCoreResourceRoute.Resource.drawable.recent_icon_sending);
+          localObject1 = localResources.getDrawable(IMCoreResourceRoute.Resource.drawable.b);
           continue;
           localDrawable = null;
         }
@@ -334,10 +334,10 @@ public class MsgSummary
         }
       }
     }
-    return buildMsgWithExtraInfoAsSpannableString(paramString, localDrawable, i);
+    return a(paramString, localDrawable, i);
   }
   
-  public void reset()
+  public void a()
   {
     this.strPrefix = null;
     this.nState = 0;

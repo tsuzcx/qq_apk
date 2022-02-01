@@ -1,21 +1,18 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import anvx;
-import bnxu;
-
-public class AEEditorImageEditFragment$20
+class AEEditorImageEditFragment$20
   implements Runnable
 {
   AEEditorImageEditFragment$20(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
   public void run()
   {
-    this.this$0.a(anvx.a(2131689735), true, 0L, new bnxu(this));
+    AEEditorImageEditFragment.a(this.this$0).setScrollable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.20
  * JD-Core Version:    0.7.0.1
  */

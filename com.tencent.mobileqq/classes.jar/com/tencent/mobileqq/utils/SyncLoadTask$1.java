@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.res.Resources;
-import bhhz;
-import bhia;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.os.MqqHandler;
 
-public final class SyncLoadTask$1
+final class SyncLoadTask$1
   implements Runnable
 {
-  public SyncLoadTask$1(ArrayList paramArrayList1, Resources paramResources, bhia parambhia, ArrayList paramArrayList2) {}
+  SyncLoadTask$1(ArrayList paramArrayList1, Resources paramResources, SyncLoadTask.OnSyncTaskListener paramOnSyncTaskListener, ArrayList paramArrayList2) {}
   
   public void run()
   {
@@ -20,15 +18,15 @@ public final class SyncLoadTask$1
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      bhhz localbhhz = (bhhz)localIterator.next();
-      if (localbhhz.runOnSubThread(this.jdField_a_of_type_AndroidContentResResources))
+      SyncLoadTask localSyncLoadTask = (SyncLoadTask)localIterator.next();
+      if (localSyncLoadTask.runOnSubThread(this.jdField_a_of_type_AndroidContentResResources))
       {
-        localArrayList1.add(localbhhz);
+        localArrayList1.add(localSyncLoadTask);
       }
       else
       {
-        localbhhz.clean();
-        localArrayList2.add(localbhhz);
+        localSyncLoadTask.clean();
+        localArrayList2.add(localSyncLoadTask);
       }
     }
     ThreadManager.getUIHandler().post(new SyncLoadTask.1.1(this, localArrayList1, localArrayList2));

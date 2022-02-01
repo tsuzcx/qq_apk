@@ -11,22 +11,22 @@ public final class RespHYMakeFriendsCard
   static RespHead cache_stHeader;
   static MakeFriendsCard cache_stMakeFriendsCard;
   static ArrayList<FaceInfo> cache_vFaceInfo;
-  public byte bFavorited;
-  public byte bQzoneInfo;
-  public byte bShareLBS;
-  public byte bVoted;
-  public byte bWeiboInfo;
-  public byte cSqqLevel;
+  public byte bFavorited = 0;
+  public byte bQzoneInfo = 0;
+  public byte bShareLBS = 0;
+  public byte bVoted = 0;
+  public byte bWeiboInfo = 0;
+  public byte cSqqLevel = 0;
   public int iLat = 900000000;
   public int iLon = 900000000;
-  public int nSameFriendsNum;
-  public RespHead stHeader;
-  public MakeFriendsCard stMakeFriendsCard;
+  public int nSameFriendsNum = 0;
+  public RespHead stHeader = null;
+  public MakeFriendsCard stMakeFriendsCard = null;
   public String strAddress = "";
   public String strCompany = "";
   public String strCustomTelNumber = "";
   public String strSchool = "";
-  public ArrayList<FaceInfo> vFaceInfo;
+  public ArrayList<FaceInfo> vFaceInfo = null;
   
   public RespHYMakeFriendsCard() {}
   

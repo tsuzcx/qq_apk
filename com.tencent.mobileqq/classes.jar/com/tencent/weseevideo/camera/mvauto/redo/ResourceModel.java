@@ -12,7 +12,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/weseevideo/camera/mvauto/redo/ResourceModel;", "", "selectUuid", "", "flashing", "", "data", "", "Lcom/tencent/weseevideo/camera/mvauto/redo/CutModelKt;", "backupData", "transitionData", "Ljava/util/ArrayList;", "Lcom/tencent/weseevideo/model/effect/VideoTransitionModel;", "transitionPosition", "", "smartCutType", "(Ljava/lang/String;ZLjava/util/List;Ljava/util/List;Ljava/util/ArrayList;II)V", "getBackupData", "()Ljava/util/List;", "getData", "getFlashing", "()Z", "getSelectUuid", "()Ljava/lang/String;", "getSmartCutType", "()I", "getTransitionData", "()Ljava/util/ArrayList;", "getTransitionPosition", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "other", "getAllVideoDuration", "", "getClipBackupData", "Lcom/tencent/weseevideo/model/resource/MediaClipModel;", "getMediaClipModel", "getSelectedClip", "hashCode", "toString", "libtavcut_debug"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/weseevideo/camera/mvauto/redo/ResourceModel;", "", "selectUuid", "", "flashing", "", "data", "", "Lcom/tencent/weseevideo/camera/mvauto/redo/CutModelKt;", "backupData", "transitionData", "Ljava/util/ArrayList;", "Lcom/tencent/weseevideo/model/effect/VideoTransitionModel;", "Lkotlin/collections/ArrayList;", "transitionPosition", "", "smartCutType", "(Ljava/lang/String;ZLjava/util/List;Ljava/util/List;Ljava/util/ArrayList;II)V", "getBackupData", "()Ljava/util/List;", "getData", "getFlashing", "()Z", "getSelectUuid", "()Ljava/lang/String;", "getSmartCutType", "()I", "getTransitionData", "()Ljava/util/ArrayList;", "getTransitionPosition", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "other", "getAllVideoDuration", "", "getClipBackupData", "Lcom/tencent/weseevideo/model/resource/MediaClipModel;", "getMediaClipModel", "getSelectedClip", "hashCode", "toString", "libtavcut_debug"}, k=1, mv={1, 1, 16})
 public final class ResourceModel
 {
   @Nullable
@@ -217,7 +217,7 @@ public final class ResourceModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.ResourceModel
  * JD-Core Version:    0.7.0.1
  */

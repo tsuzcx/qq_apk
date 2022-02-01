@@ -1,13 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import akza;
-import akzb;
-import akzc;
-import akzd;
-import akze;
-import akzg;
-import akzh;
-import albw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Paint;
@@ -22,7 +14,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
@@ -34,18 +27,18 @@ public class ChooseItemView
   extends FrameLayout
 {
   private int jdField_a_of_type_Int = 4;
-  public akzg a;
-  public akzh a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
+  ChooseItemView.MyRecycleViewAdapter jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView$MyRecycleViewAdapter;
+  public ChooseItemView.OnVisibilityChangeListener a;
   private String jdField_a_of_type_JavaLangString;
   private List<String> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int = 0;
   private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
   private int jdField_c_of_type_Int = 0;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new akzc(this);
+  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new ChooseItemView.4(this);
   
   public ChooseItemView(Context paramContext)
   {
@@ -55,8 +48,8 @@ public class ChooseItemView
     paramContext = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
     paramContext.width = -1;
     paramContext.height = -2;
-    setOnClickListener(new akza(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new akzb(this));
+    setOnClickListener(new ChooseItemView.1(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new ChooseItemView.2(this));
   }
   
   private Paint a()
@@ -70,7 +63,7 @@ public class ChooseItemView
     return this.jdField_a_of_type_AndroidGraphicsPaint;
   }
   
-  private List<List<akze>> a()
+  private List<List<ChooseItemView.ItemInfo>> a()
   {
     LinkedList localLinkedList2 = new LinkedList();
     int k = this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
@@ -82,20 +75,20 @@ public class ChooseItemView
       String str = (String)this.jdField_a_of_type_JavaUtilList.get(j);
       boolean bool;
       label86:
-      akze localakze;
+      ChooseItemView.ItemInfo localItemInfo;
       float f;
       if (j < this.jdField_b_of_type_Int)
       {
         bool = true;
-        localakze = new akze(str, bool, false);
+        localItemInfo = new ChooseItemView.ItemInfo(str, bool, false);
         f = a().measureText(str);
-        f = DisplayUtil.dip2px(getContext(), 26.0F) + f;
-        if (i + f + DisplayUtil.dip2px(getContext(), 12.0F) * 2 > k) {
+        f = DisplayUtil.a(getContext(), 26.0F) + f;
+        if (i + f + DisplayUtil.a(getContext(), 12.0F) * 2 > k) {
           break label187;
         }
-        localLinkedList1.add(localakze);
+        localLinkedList1.add(localItemInfo);
       }
-      for (i = (int)(i + (DisplayUtil.dip2px(getContext(), 12.0F) + f));; i = (int)f + DisplayUtil.dip2px(getContext(), 12.0F))
+      for (i = (int)(i + (DisplayUtil.a(getContext(), 12.0F) + f));; i = (int)f + DisplayUtil.a(getContext(), 12.0F))
       {
         j += 1;
         break;
@@ -104,7 +97,7 @@ public class ChooseItemView
         label187:
         localLinkedList2.add(localLinkedList1);
         localLinkedList1 = new LinkedList();
-        localLinkedList1.add(localakze);
+        localLinkedList1.add(localItemInfo);
       }
     }
     if (a(localLinkedList2.size() + 1)) {
@@ -113,11 +106,11 @@ public class ChooseItemView
     return localLinkedList2;
   }
   
-  private void a(View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, akzh paramakzh)
+  private void a(View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, ChooseItemView.OnVisibilityChangeListener paramOnVisibilityChangeListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new akzd(this, paramOnClickListener1);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ChooseItemView.5(this, paramOnClickListener1);
     this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener2;
-    this.jdField_a_of_type_Akzh = paramakzh;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView$OnVisibilityChangeListener = paramOnVisibilityChangeListener;
   }
   
   private boolean a(int paramInt)
@@ -133,12 +126,12 @@ public class ChooseItemView
   {
     QLog.i("ChooseItemView", 2, "updatePageInner....");
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(DisplayUtil.dip2px(getContext(), 8.0F), 0, this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight(), DisplayUtil.dip2px(getContext(), 10.0F));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(DisplayUtil.a(getContext(), 8.0F), 0, this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight(), DisplayUtil.a(getContext(), 10.0F));
     c();
     Object localObject = new RecyclerView(getContext());
-    this.jdField_a_of_type_Akzg = new akzg(a(), this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_Akzg.a(this.jdField_a_of_type_JavaLangString);
-    ((RecyclerView)localObject).setAdapter(this.jdField_a_of_type_Akzg);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView$MyRecycleViewAdapter = new ChooseItemView.MyRecycleViewAdapter(a(), this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView$MyRecycleViewAdapter.a(this.jdField_a_of_type_JavaLangString);
+    ((RecyclerView)localObject).setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView$MyRecycleViewAdapter);
     ((RecyclerView)localObject).setLayoutManager(new LinearLayoutManager(getContext(), 1, false));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
     localObject = (LinearLayout.LayoutParams)((RecyclerView)localObject).getLayoutParams();
@@ -156,16 +149,16 @@ public class ChooseItemView
       ((LinearLayout.LayoutParams)localObject).height = -2;
       ((LinearLayout.LayoutParams)localObject).width = -2;
       ((LinearLayout.LayoutParams)localObject).gravity = 5;
-      localObject = getContext().getResources().getDrawable(2130843506);
+      localObject = getContext().getResources().getDrawable(2130843675);
       ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
       localTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
-      localTextView.setCompoundDrawablePadding(DisplayUtil.dip2px(getContext(), 7.0F));
-      localTextView.setPadding(DisplayUtil.dip2px(getContext(), 5.0F), 0, DisplayUtil.dip2px(getContext(), 20.0F), DisplayUtil.dip2px(getContext(), 10.0F));
-      localTextView.setText(anvx.a(2131701320));
+      localTextView.setCompoundDrawablePadding(DisplayUtil.a(getContext(), 7.0F));
+      localTextView.setPadding(DisplayUtil.a(getContext(), 5.0F), 0, DisplayUtil.a(getContext(), 20.0F), DisplayUtil.a(getContext(), 10.0F));
+      localTextView.setText(HardCodeUtil.a(2131701895));
       localTextView.setTextColor(-1694379);
       localTextView.setTextSize(1, 14.0F);
       localTextView.setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
-      albw.a(localTextView, 0.6F);
+      QWalletTools.a(localTextView, 0.6F);
     }
   }
   
@@ -198,7 +191,7 @@ public class ChooseItemView
     QLog.i("ChooseItemView", 2, "show....");
   }
   
-  public void a(List<String> paramList, boolean paramBoolean, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, akzh paramakzh)
+  public void a(List<String> paramList, boolean paramBoolean, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, ChooseItemView.OnVisibilityChangeListener paramOnVisibilityChangeListener)
   {
     if ((paramList != null) && (paramList.size() > 0)) {
       try
@@ -220,7 +213,7 @@ public class ChooseItemView
         if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 1)) {
           Collections.shuffle(this.jdField_a_of_type_JavaUtilList);
         }
-        a(paramOnClickListener1, paramOnClickListener2, paramakzh);
+        a(paramOnClickListener1, paramOnClickListener2, paramOnVisibilityChangeListener);
       }
     }
   }
@@ -256,14 +249,14 @@ public class ChooseItemView
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if (this.jdField_a_of_type_Akzh != null) {
-      this.jdField_a_of_type_Akzh.a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView$OnVisibilityChangeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView$OnVisibilityChangeListener.a(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView
  * JD-Core Version:    0.7.0.1
  */

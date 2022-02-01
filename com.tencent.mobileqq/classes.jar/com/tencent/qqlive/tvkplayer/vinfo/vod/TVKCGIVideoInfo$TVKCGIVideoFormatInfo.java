@@ -108,7 +108,7 @@ public class TVKCGIVideoInfo$TVKCGIVideoFormatInfo
     return this.sname;
   }
   
-  public int getSuperNode()
+  public int getSuper()
   {
     return this.superNode;
   }
@@ -208,7 +208,7 @@ public class TVKCGIVideoInfo$TVKCGIVideoFormatInfo
     this.sname = paramString;
   }
   
-  public void setSuperNode(int paramInt)
+  public void setSuper(int paramInt)
   {
     this.superNode = paramInt;
   }
@@ -240,7 +240,7 @@ public class TVKCGIVideoInfo$TVKCGIVideoFormatInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfo.TVKCGIVideoFormatInfo
  * JD-Core Version:    0.7.0.1
  */

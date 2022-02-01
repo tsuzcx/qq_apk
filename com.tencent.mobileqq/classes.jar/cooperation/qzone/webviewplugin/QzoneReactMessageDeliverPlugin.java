@@ -1,9 +1,9 @@
 package cooperation.qzone.webviewplugin;
 
 import android.content.Intent;
-import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,9 +12,9 @@ public class QzoneReactMessageDeliverPlugin
 {
   public static final String NAMESPACE = "Qzone";
   
-  private void deliverMsg(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
+  private void deliverMsg(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (parambifw == null)) {
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (paramPluginRuntime == null)) {
       return;
     }
     QLog.i("QzoneReactMessageDeliverPlugin", 1, paramArrayOfString[0]);
@@ -35,7 +35,7 @@ public class QzoneReactMessageDeliverPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneReactMessageDeliverPlugin
  * JD-Core Version:    0.7.0.1
  */

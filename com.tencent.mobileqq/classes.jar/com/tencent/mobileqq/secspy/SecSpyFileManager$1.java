@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.secspy;
 
-import bcpl;
-import bguw;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
 
-public class SecSpyFileManager$1
+class SecSpyFileManager$1
   implements Runnable
 {
-  public SecSpyFileManager$1(bcpl parambcpl) {}
+  SecSpyFileManager$1(SecSpyFileManager paramSecSpyFileManager) {}
   
   public void run()
   {
-    bguw.a(this.this$0.a.getApplication());
+    UnifiedDebugManager.a(this.this$0.a.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.secspy.SecSpyFileManager.1
  * JD-Core Version:    0.7.0.1
  */

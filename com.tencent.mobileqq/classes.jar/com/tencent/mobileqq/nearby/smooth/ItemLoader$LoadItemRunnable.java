@@ -2,39 +2,38 @@ package com.tencent.mobileqq.nearby.smooth;
 
 import android.os.Handler;
 import android.os.Process;
-import aymv;
 import java.lang.ref.SoftReference;
 import java.util.Map;
 
 final class ItemLoader$LoadItemRunnable<Params, Result>
   implements Runnable
 {
-  private final aymv<Params, Result> jdField_a_of_type_Aymv;
+  private final ItemLoader.ItemRequest<Params, Result> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest;
   private final ItemLoader<Params, Result> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
   
-  public ItemLoader$LoadItemRunnable(ItemLoader<Params, Result> paramItemLoader, aymv<Params, Result> paramaymv)
+  public ItemLoader$LoadItemRunnable(ItemLoader<Params, Result> paramItemLoader, ItemLoader.ItemRequest<Params, Result> paramItemRequest)
   {
     this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader = paramItemLoader;
-    this.jdField_a_of_type_Aymv = paramaymv;
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest = paramItemRequest;
   }
   
-  public aymv<Params, Result> a()
+  public ItemLoader.ItemRequest<Params, Result> a()
   {
-    return this.jdField_a_of_type_Aymv;
+    return this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest;
   }
   
   public void run()
   {
     Process.setThreadPriority(10);
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.b.remove(this.jdField_a_of_type_Aymv.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Aymv)) {}
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.b.remove(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest)) {}
     do
     {
       return;
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Aymv.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aymv.jdField_a_of_type_JavaLangInteger.intValue());
-      this.jdField_a_of_type_Aymv.c = new SoftReference(localObject);
-    } while ((this.jdField_a_of_type_Aymv.b == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Aymv)));
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a.post(new ItemLoader.DisplayItemRunnable(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader, this.jdField_a_of_type_Aymv, false));
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.jdField_a_of_type_JavaLangInteger.intValue());
+      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.c = new SoftReference(localObject);
+    } while ((this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.b == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest)));
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a.post(new ItemLoader.DisplayItemRunnable(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader, this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest, false));
   }
 }
 

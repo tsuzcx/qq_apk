@@ -9,9 +9,9 @@ public final class SvcResponsePullDisMsgSeq
   extends JceStruct
 {
   static ArrayList<stConfNumInfo> cache_vConfNumInfo;
-  public byte cReplyCode;
+  public byte cReplyCode = 0;
   public String strResult = "";
-  public ArrayList<stConfNumInfo> vConfNumInfo;
+  public ArrayList<stConfNumInfo> vConfNumInfo = null;
   
   public SvcResponsePullDisMsgSeq() {}
   

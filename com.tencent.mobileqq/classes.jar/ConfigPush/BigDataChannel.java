@@ -13,11 +13,11 @@ public final class BigDataChannel
   static ArrayList<BigDataIpList> cache_vBigdata_iplists;
   static byte[] cache_vBigdata_pb_buf;
   public int iConnect_flag = 1;
-  public byte[] sBigdata_key_session;
-  public byte[] sBigdata_sig_session;
-  public long uSig_Uin;
-  public ArrayList<BigDataIpList> vBigdata_iplists;
-  public byte[] vBigdata_pb_buf;
+  public byte[] sBigdata_key_session = null;
+  public byte[] sBigdata_sig_session = null;
+  public long uSig_Uin = 0L;
+  public ArrayList<BigDataIpList> vBigdata_iplists = null;
+  public byte[] vBigdata_pb_buf = null;
   
   public BigDataChannel() {}
   

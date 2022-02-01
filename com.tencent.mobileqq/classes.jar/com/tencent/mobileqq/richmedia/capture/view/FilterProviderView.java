@@ -5,17 +5,14 @@ import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ListAdapter;
-import bbfy;
-import bbgq;
-import bbgs;
-import bbhl;
-import bbje;
-import bbjn;
-import bbjo;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.adapter.FilterProviderGridAdapter;
 import com.tencent.mobileqq.richmedia.capture.adapter.FilterProviderPagerAdapter;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.CaptureVideoFilterRefreshListener;
 import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
 import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
@@ -28,7 +25,7 @@ import mqq.os.MqqHandler;
 
 public class FilterProviderView
   extends ProviderView
-  implements ViewPager.OnPageChangeListener, bbgs, bbjn, AdapterView.OnItemClickListener
+  implements ViewPager.OnPageChangeListener, CaptureVideoFilterManager.CaptureVideoFilterRefreshListener, ISupportAdvertisement, QQSlidingTabView.IOnTabCheckListener, AdapterView.OnItemClickListener
 {
   public int a;
   FilterProviderPagerAdapter jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter;
@@ -41,7 +38,7 @@ public class FilterProviderView
   private void c()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(bbgq.a().a());
+    this.jdField_a_of_type_JavaUtilList.addAll(CaptureVideoFilterManager.a().a());
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView != null) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(a());
     }
@@ -60,21 +57,21 @@ public class FilterProviderView
     }
   }
   
-  public ArrayList<bbjo> a()
+  public ArrayList<QQSlidingTabView.TabIcon> a()
   {
-    bbgq localbbgq = bbgq.a();
+    CaptureVideoFilterManager localCaptureVideoFilterManager = CaptureVideoFilterManager.a();
     ArrayList localArrayList = new ArrayList();
-    int j = localbbgq.a();
+    int j = localCaptureVideoFilterManager.a();
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      bbjo localbbjo = new bbjo();
+      QQSlidingTabView.TabIcon localTabIcon = new QQSlidingTabView.TabIcon();
       FilterCategory localFilterCategory = (FilterCategory)this.jdField_a_of_type_JavaUtilList.get(i);
-      localbbjo.jdField_a_of_type_JavaLangString = localFilterCategory.jdField_a_of_type_JavaLangString;
-      localbbjo.jdField_a_of_type_Boolean = localbbgq.a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int, "");
-      localArrayList.add(localbbjo);
+      localTabIcon.jdField_a_of_type_JavaLangString = localFilterCategory.jdField_a_of_type_JavaLangString;
+      localTabIcon.jdField_a_of_type_Boolean = localCaptureVideoFilterManager.a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int, "");
+      localArrayList.add(localTabIcon);
       if ((j != -1) && (j == localFilterCategory.jdField_a_of_type_Int)) {
-        localbbgq.a(5, 0, null);
+        localCaptureVideoFilterManager.a(5, 0, null);
       }
       i += 1;
     }
@@ -95,21 +92,21 @@ public class FilterProviderView
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt);
     }
-    bbgq.a().a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int, "");
+    CaptureVideoFilterManager.a().a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int, "");
   }
   
   public void a(FilterCategoryItem paramFilterCategoryItem)
   {
     if ((paramFilterCategoryItem != null) && (paramFilterCategoryItem.jdField_a_of_type_Boolean))
     {
-      if (this.jdField_a_of_type_Bbje != null) {
-        this.jdField_a_of_type_Bbje.b(paramFilterCategoryItem);
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener.b(paramFilterCategoryItem);
       }
       return;
     }
-    bbgq.a().a(paramFilterCategoryItem);
-    if ((this.jdField_a_of_type_Bbje != null) && (paramFilterCategoryItem != null)) {
-      this.jdField_a_of_type_Bbje.a(paramFilterCategoryItem);
+    CaptureVideoFilterManager.a().a(paramFilterCategoryItem);
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener != null) && (paramFilterCategoryItem != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener.a(paramFilterCategoryItem);
     }
     b();
   }
@@ -126,8 +123,8 @@ public class FilterProviderView
       {
         int k = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter.a.keyAt(i);
         ListAdapter localListAdapter = ((GridView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter.a.get(k)).getAdapter();
-        if ((localListAdapter instanceof bbfy)) {
-          ((bbfy)localListAdapter).notifyDataSetChanged();
+        if ((localListAdapter instanceof FilterProviderGridAdapter)) {
+          ((FilterProviderGridAdapter)localListAdapter).notifyDataSetChanged();
         }
         i += 1;
       }
@@ -170,7 +167,7 @@ public class FilterProviderView
     }
     this.jdField_a_of_type_Int = paramInt;
     if (!this.d) {
-      bbhl.b(((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int + "");
+      CaptureReportUtil.b(((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int + "");
     }
   }
   
@@ -231,7 +228,7 @@ public class FilterProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.FilterProviderView
  * JD-Core Version:    0.7.0.1
  */

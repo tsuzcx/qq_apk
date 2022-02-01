@@ -3,10 +3,10 @@ package cooperation.qwallet.plugin.ipc;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
 
 class CorpReq$3
-  implements FaceDecoder.DecodeTaskCompletionListener
+  implements DecodeTaskCompletionListener
 {
   CorpReq$3(CorpReq paramCorpReq, QQAppInterface paramQQAppInterface, String paramString, CorpResp paramCorpResp) {}
   
@@ -21,7 +21,7 @@ class CorpReq$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.CorpReq.3
  * JD-Core Version:    0.7.0.1
  */

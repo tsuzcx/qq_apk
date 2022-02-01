@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bjmq;
 import com.tencent.open.agent.OpenSdkIMBlockFragment;
+import com.tencent.open.data.SharedPrefs;
 
 class SplashActivity$4
   implements Runnable
@@ -10,7 +10,7 @@ class SplashActivity$4
   
   public void run()
   {
-    OpenSdkIMBlockFragment.a(this.this$0, bjmq.a(), false);
+    OpenSdkIMBlockFragment.a(this.this$0, SharedPrefs.a(), false);
   }
 }
 

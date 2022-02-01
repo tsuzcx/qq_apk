@@ -22,88 +22,71 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import com.tencent.av.SessionMgr;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.VideoControlUI;
 import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.utils.AVUtil;
+import com.tencent.av.wtogether.WTogetherMng;
+import com.tencent.av.wtogether.callback.WatchTogetherMediaPlayerProxy;
+import com.tencent.av.wtogether.callback.WatchTogetherUIProxy;
 import com.tencent.av.wtogether.data.WTFileInfo;
+import com.tencent.av.wtogether.data.WTogetherRoom;
+import com.tencent.av.wtogether.data.WatchTogetherInfo;
 import com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl;
+import com.tencent.av.wtogether.util.WTogetherUtil;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import lbz;
-import lfe;
-import mrr;
-import mxd;
-import myj;
-import mym;
-import myw;
-import myx;
-import nad;
-import nav;
-import naw;
-import nax;
-import nay;
-import naz;
-import nba;
-import nbb;
-import nbc;
-import nbd;
-import nbe;
-import nbf;
-import nbg;
-import nbm;
-import nbn;
 
 public class WatchTogetherAdminControlView
   extends FrameLayout
-  implements mym, nbn
+  implements WatchTogetherUIProxy, WatchTogetherPlayRatioHelper.OnSelectRatioClickListener
 {
-  private final int jdField_a_of_type_Int = 0;
+  private float jdField_a_of_type_Float = 14.0F;
+  private int jdField_a_of_type_Int = 12000;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new naz(this);
+  private final View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new WatchTogetherAdminControlView.2(this);
   private View jdField_a_of_type_AndroidViewView;
   protected ImageView a;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   protected ProgressBar a;
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   protected TextView a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new WatchTogetherAdminControlView.1(this);
+  private WatchTogetherMediaPlayerProxy jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy;
+  private WatchTogetherPlayRatioHelper jdField_a_of_type_ComTencentAvWtogetherViewWatchTogetherPlayRatioHelper;
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new WatchTogetherAdminControlView.1(this);
   private final HashMap<View, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private myj jdField_a_of_type_Myj;
-  private nbm jdField_a_of_type_Nbm;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean = false;
+  private float jdField_b_of_type_Float = 12.0F;
+  private int jdField_b_of_type_Int = 200;
   private View jdField_b_of_type_AndroidViewView;
   protected ImageView b;
   protected TextView b;
   private boolean jdField_b_of_type_Boolean;
-  private final int jdField_c_of_type_Int = 2;
+  private int jdField_c_of_type_Int = 300;
   private View jdField_c_of_type_AndroidViewView;
   protected ImageView c;
   protected TextView c;
-  private boolean jdField_c_of_type_Boolean;
-  private final int jdField_d_of_type_Int = 3;
+  private boolean jdField_c_of_type_Boolean = false;
+  private int jdField_d_of_type_Int = 2;
   private View jdField_d_of_type_AndroidViewView;
   private ImageView jdField_d_of_type_AndroidWidgetImageView;
   private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private boolean jdField_d_of_type_Boolean;
-  private final int jdField_e_of_type_Int = 4;
+  private boolean jdField_d_of_type_Boolean = false;
+  private int jdField_e_of_type_Int = 0;
   private View jdField_e_of_type_AndroidViewView;
   private ImageView jdField_e_of_type_AndroidWidgetImageView;
   private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private final int jdField_f_of_type_Int = 1;
   private ImageView jdField_f_of_type_AndroidWidgetImageView;
   private TextView jdField_f_of_type_AndroidWidgetTextView;
-  private final int jdField_g_of_type_Int = 2;
   private ImageView jdField_g_of_type_AndroidWidgetImageView;
   private TextView jdField_g_of_type_AndroidWidgetTextView;
-  private final int h = 12000;
-  private int i = 0;
-  private int j = 2;
   
   public WatchTogetherAdminControlView(@NonNull Context paramContext)
   {
@@ -118,73 +101,17 @@ public class WatchTogetherAdminControlView
   public WatchTogetherAdminControlView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    h();
+    g();
   }
   
   private void A()
   {
-    int k = AIOUtils.dp2px(12.0F, getResources());
-    int m = AIOUtils.dp2px(62.0F, getResources());
-    Drawable localDrawable1 = getResources().getDrawable(2130842354);
-    Drawable localDrawable2 = getResources().getDrawable(2130842355);
-    if (this.jdField_d_of_type_Boolean)
-    {
-      k = AIOUtils.dp2px(16.0F, getResources());
-      m = AIOUtils.dp2px(124.0F, getResources());
-      localDrawable1 = getResources().getDrawable(2130842345);
-      localDrawable2 = getResources().getDrawable(2130842346);
-    }
-    for (float f1 = 14.0F;; f1 = 12.0F)
-    {
-      ((ViewGroup.MarginLayoutParams)this.jdField_f_of_type_AndroidWidgetTextView.getLayoutParams()).rightMargin = m;
-      this.jdField_f_of_type_AndroidWidgetTextView.setTextSize(f1);
-      this.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable1, null, null);
-      this.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(k);
-      this.jdField_g_of_type_AndroidWidgetTextView.setTextSize(f1);
-      this.jdField_g_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable2, null, null);
-      this.jdField_g_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(k);
-      return;
+    if ((this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null) && (this.jdField_e_of_type_AndroidWidgetTextView != null)) {
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a());
     }
   }
   
   private void B()
-  {
-    int m = AIOUtils.dp2px(8.0F, getResources());
-    int k = AIOUtils.dp2px(8.0F, getResources());
-    if (this.jdField_d_of_type_Boolean)
-    {
-      m = AIOUtils.dp2px(12.0F, getResources());
-      k = AIOUtils.dp2px(16.0F, getResources());
-    }
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setPadding(m, 0, m, 0);
-    nad.a(this.jdField_a_of_type_AndroidWidgetSeekBar, m, m);
-    nad.a(this.jdField_b_of_type_AndroidWidgetTextView, m, 0);
-    nad.a(this.jdField_a_of_type_AndroidWidgetTextView, 0, m);
-    nad.a(this.jdField_d_of_type_AndroidWidgetTextView, 0, k);
-  }
-  
-  private void C()
-  {
-    if (this.jdField_a_of_type_Myj == null) {}
-    while (this.jdField_b_of_type_AndroidWidgetImageView == null) {
-      return;
-    }
-    if (c())
-    {
-      this.jdField_a_of_type_Myj.a();
-      return;
-    }
-    this.jdField_a_of_type_Myj.c();
-  }
-  
-  private void D()
-  {
-    if ((this.jdField_a_of_type_Myj != null) && (this.jdField_e_of_type_AndroidWidgetTextView != null)) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Myj.a());
-    }
-  }
-  
-  private void E()
   {
     if (!b())
     {
@@ -208,16 +135,9 @@ public class WatchTogetherAdminControlView
     }
   }
   
-  private void a(boolean paramBoolean)
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      VideoController.a().a.a(new Object[] { Integer.valueOf(10006), Boolean.valueOf(paramBoolean) });
-    }
-  }
-  
   private boolean a()
   {
-    return (this.jdField_a_of_type_Myj != null) && (this.jdField_a_of_type_Myj.f());
+    return (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null) && (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.f());
   }
   
   private void b(float paramFloat)
@@ -234,71 +154,63 @@ public class WatchTogetherAdminControlView
   private void b(int paramInt)
   {
     b();
-    this.jdField_a_of_type_Nbm.b();
+    this.jdField_a_of_type_ComTencentAvWtogetherViewWatchTogetherPlayRatioHelper.b();
     this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_g_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165512);
-    if ((this.jdField_a_of_type_Myj != null) && (this.jdField_a_of_type_Myj.b()))
+    if ((this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null) && (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.b()))
     {
-      b(this.jdField_a_of_type_Myj.a());
-      if (this.jdField_a_of_type_Myj != null) {
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Myj.a());
+      b(this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a());
+      if (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null) {
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a());
       }
-      if ((this.jdField_a_of_type_Myj == null) || (!this.jdField_a_of_type_Myj.e())) {
-        break label182;
+      if ((this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy == null) || (!this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.e())) {
+        break label180;
       }
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
     }
     for (;;)
     {
-      q();
+      p();
+      c(false);
       b(false);
-      a(false);
       return;
-      if (this.jdField_a_of_type_Myj == null) {
+      if (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy == null) {
         break;
       }
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131695748);
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131695995);
       break;
-      label182:
+      label180:
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     }
   }
   
   private void b(boolean paramBoolean)
   {
-    int k = 8;
-    if ((this.jdField_a_of_type_Myj != null) && (this.jdField_a_of_type_Myj.g()))
-    {
-      ImageView localImageView = this.jdField_c_of_type_AndroidWidgetImageView;
-      if (paramBoolean) {
-        k = 0;
-      }
-      localImageView.setVisibility(k);
-      return;
+    if (this.jdField_d_of_type_Boolean) {
+      VideoController.a().a.a(new Object[] { Integer.valueOf(10006), Boolean.valueOf(paramBoolean) });
     }
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
   private boolean b()
   {
-    lfe locallfe = lbz.a().a();
-    if (locallfe == null) {
+    SessionInfo localSessionInfo = SessionMgr.a().a();
+    if (localSessionInfo == null) {
       return false;
     }
-    return locallfe.B();
+    return localSessionInfo.B();
   }
   
   private void c(int paramInt)
   {
-    int k = paramInt / 1000 / 60;
-    paramInt /= 1000;
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%02d:%02d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt % 60) }));
-    }
+    this.jdField_c_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    d(paramInt);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    b(false);
   }
   
   private void c(int paramInt1, int paramInt2)
@@ -308,40 +220,58 @@ public class WatchTogetherAdminControlView
     }
     for (;;)
     {
-      this.i = paramInt1;
+      this.jdField_e_of_type_Int = paramInt1;
       return;
-      r();
-      c(true);
+      q();
+      d(true);
       continue;
       b(paramInt2);
-      c(false);
+      d(false);
+      continue;
+      r();
+      d(false);
+      continue;
+      c(paramInt2);
+      d(false);
       continue;
       s();
-      c(false);
-      continue;
-      t();
-      c(false);
-      continue;
-      u();
-      c(false);
+      d(false);
     }
   }
   
   private void c(boolean paramBoolean)
   {
-    if (!this.jdField_d_of_type_Boolean) {}
-    lfe locallfe;
-    do
+    int i = 8;
+    if ((this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null) && (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.g()))
     {
+      ImageView localImageView = this.jdField_c_of_type_AndroidWidgetImageView;
+      if (paramBoolean) {
+        i = 0;
+      }
+      localImageView.setVisibility(i);
       return;
-      locallfe = lbz.a().a();
-    } while (locallfe == null);
-    locallfe.c(paramBoolean);
+    }
+    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
   private boolean c()
   {
-    return (this.jdField_a_of_type_Myj != null) && (this.jdField_a_of_type_Myj.a());
+    return (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null) && (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a());
+  }
+  
+  private void d(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentAvWtogetherViewWatchTogetherPlayRatioHelper.b();
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131166940);
+    if (paramInt != 3) {
+      this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    this.jdField_g_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+    a();
+    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
+    c(false);
   }
   
   private void d(int paramInt1, int paramInt2)
@@ -350,53 +280,74 @@ public class WatchTogetherAdminControlView
     this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(paramInt1);
   }
   
+  private void d(boolean paramBoolean)
+  {
+    if (!this.jdField_d_of_type_Boolean) {}
+    SessionInfo localSessionInfo;
+    do
+    {
+      return;
+      localSessionInfo = SessionMgr.a().a();
+    } while (localSessionInfo == null);
+    localSessionInfo.c(paramBoolean);
+  }
+  
+  private void e(int paramInt)
+  {
+    int i = paramInt / 1000 / 60;
+    paramInt /= 1000;
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt % 60) }));
+    }
+  }
+  
+  private void g()
+  {
+    h();
+    l();
+    v();
+  }
+  
   private void h()
   {
+    LayoutInflater.from(getContext()).inflate(2131559921, this, true);
     i();
-    m();
-    x();
+    k();
+    j();
   }
   
   private void i()
   {
-    LayoutInflater.from(getContext()).inflate(2131559845, this, true);
-    j();
-    l();
-    k();
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377322);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380700));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380651));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380652));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380566));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380699));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369668));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370580);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370686);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369866));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131369864));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380517));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377693));
+    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377694);
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380702));
+    this.jdField_a_of_type_ComTencentAvWtogetherViewWatchTogetherPlayRatioHelper = new WatchTogetherPlayRatioHelper(this.jdField_a_of_type_AndroidViewView.findViewById(2131370699));
+    this.jdField_a_of_type_ComTencentAvWtogetherViewWatchTogetherPlayRatioHelper.a(this);
   }
   
   private void j()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376914);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380257));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380210));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380211));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380127));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380256));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369410));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370311);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370412);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369594));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131369592));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380078));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377272));
-    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377273);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380259));
-    this.jdField_a_of_type_Nbm = new nbm(this.jdField_a_of_type_AndroidViewView.findViewById(2131370423));
-    this.jdField_a_of_type_Nbm.a(this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131381425));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381329));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381486));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381393));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381484));
+    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381250));
   }
   
   private void k()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380968));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380881));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381024));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380936));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381022));
-    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380802));
-  }
-  
-  private void l()
   {
     this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_c_of_type_AndroidViewView, Integer.valueOf(0));
     this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_b_of_type_AndroidWidgetImageView, Integer.valueOf(0));
@@ -407,73 +358,73 @@ public class WatchTogetherAdminControlView
     this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_b_of_type_AndroidWidgetTextView, Integer.valueOf(0));
   }
   
-  private void m()
+  private void l()
   {
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new nba(this));
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new WatchTogetherAdminControlView.3(this));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new nbb(this));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new WatchTogetherAdminControlView.4(this));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new nbc(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new WatchTogetherAdminControlView.5(this));
     this.jdField_d_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new nbd(this));
+    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new WatchTogetherAdminControlView.6(this));
     this.jdField_f_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(new nbe(this));
+    this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(new WatchTogetherAdminControlView.7(this));
     this.jdField_g_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_g_of_type_AndroidWidgetTextView.setOnClickListener(new nbf(this));
+    this.jdField_g_of_type_AndroidWidgetTextView.setOnClickListener(new WatchTogetherAdminControlView.8(this));
     this.jdField_f_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(new nbg(this));
+    this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(new WatchTogetherAdminControlView.9(this));
     this.jdField_d_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new nav(this));
+    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new WatchTogetherAdminControlView.10(this));
     this.jdField_g_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_g_of_type_AndroidWidgetImageView.setOnClickListener(new naw(this));
+    this.jdField_g_of_type_AndroidWidgetImageView.setOnClickListener(new WatchTogetherAdminControlView.11(this));
     this.jdField_c_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new nax(this));
-    int k = a(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_AndroidWidgetTextView.setMinimumWidth(k);
-    this.jdField_b_of_type_AndroidWidgetTextView.setMinimumWidth(k);
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new WatchTogetherAdminControlView.12(this));
+    int i = a(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_a_of_type_AndroidWidgetTextView.setMinimumWidth(i);
+    this.jdField_b_of_type_AndroidWidgetTextView.setMinimumWidth(i);
   }
   
-  private void n()
+  private void m()
   {
-    if (this.i == 0) {
-      c(this.i + 1, 2);
+    if (this.jdField_e_of_type_Int == 0) {
+      c(1, 2);
     }
     for (;;)
     {
-      v();
+      t();
       return;
-      if (this.i == 1) {
+      if (this.jdField_e_of_type_Int == 1) {
         c(0, 2);
-      } else if (this.i == 2) {
+      } else if (this.jdField_e_of_type_Int == 2) {
         c(1, 2);
       }
     }
   }
   
-  private void o()
+  private void n()
   {
-    if (this.jdField_a_of_type_Myj == null) {}
+    if (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy == null) {}
     for (;;)
     {
       return;
-      WTFileInfo localWTFileInfo = this.jdField_a_of_type_Myj.a();
+      WTFileInfo localWTFileInfo = this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a();
       if (localWTFileInfo != null)
       {
-        Object localObject = lbz.a().a();
+        Object localObject = SessionMgr.a().a();
         if (localObject != null)
         {
-          localObject = ((mxd)VideoController.a().a.a(15)).b((lfe)localObject);
+          localObject = ((WTogetherMng)VideoController.a().a.a(15)).b((SessionInfo)localObject);
           if (localObject == null) {}
-          for (localObject = null; localObject != null; localObject = ((myx)localObject).a)
+          for (localObject = null; localObject != null; localObject = ((WatchTogetherInfo)localObject).a)
           {
             Activity localActivity = (Activity)getContext();
-            String str1 = lbz.a().a().d;
+            String str1 = SessionMgr.a().a().d;
             String str2 = VideoController.a().a.getCurrentAccountUin();
             StringBuilder localStringBuilder = new StringBuilder(100);
-            localStringBuilder.append("roomid=").append(((myw)localObject).b).append("|");
+            localStringBuilder.append("roomid=").append(((WTogetherRoom)localObject).b).append("|");
             localStringBuilder.append("file_id=").append(localWTFileInfo.c).append("|");
             localStringBuilder.append("file_uuid=").append(localWTFileInfo.b);
-            nad.a(localActivity, str1, str2, localStringBuilder.toString());
+            WTogetherUtil.a(localActivity, str1, str2, localStringBuilder.toString());
             return;
           }
         }
@@ -481,7 +432,7 @@ public class WatchTogetherAdminControlView
     }
   }
   
-  private void p()
+  private void o()
   {
     AVActivity localAVActivity = (AVActivity)getContext();
     if (localAVActivity == null) {}
@@ -492,17 +443,17 @@ public class WatchTogetherAdminControlView
       localVideoLayerUI = localAVActivity.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
     } while (localVideoLayerUI == null);
     WatchTogetherAdminControlView.13 local13 = new WatchTogetherAdminControlView.13(this);
-    int k = localVideoLayerUI.g();
-    if ((localAVActivity.h == 0) && (k != 1))
+    int i = localVideoLayerUI.g();
+    if ((localAVActivity.h == 0) && (i != 1))
     {
       localAVActivity.setRequestedOrientation(1);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(local13, 200L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(local13, this.jdField_b_of_type_Int);
       return;
     }
     local13.run();
   }
   
-  private void q()
+  private void p()
   {
     if (a())
     {
@@ -520,11 +471,11 @@ public class WatchTogetherAdminControlView
     this.jdField_e_of_type_AndroidViewView.setVisibility(8);
   }
   
-  private void r()
+  private void q()
   {
     a();
-    this.jdField_a_of_type_Nbm.b();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131166935);
+    this.jdField_a_of_type_ComTencentAvWtogetherViewWatchTogetherPlayRatioHelper.b();
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131166940);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_g_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -532,11 +483,11 @@ public class WatchTogetherAdminControlView
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-    b(false);
-    a(true);
+    c(false);
+    b(true);
   }
   
-  private void s()
+  private void r()
   {
     a();
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -546,22 +497,13 @@ public class WatchTogetherAdminControlView
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     this.jdField_e_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165512);
-    this.jdField_a_of_type_Nbm.a();
+    this.jdField_a_of_type_ComTencentAvWtogetherViewWatchTogetherPlayRatioHelper.a();
     this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
+    c(false);
     b(false);
-    a(false);
   }
   
-  private void t()
-  {
-    this.jdField_c_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    y();
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    a(false);
-  }
-  
-  private void u()
+  private void s()
   {
     this.jdField_c_of_type_AndroidWidgetTextView.setText("");
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -569,26 +511,26 @@ public class WatchTogetherAdminControlView
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     this.jdField_e_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    c(false);
     b(false);
-    a(false);
   }
   
-  private void v()
+  private void t()
   {
     QLog.d("WatchTogetherVideoPlayView", 1, "enter");
     if (this.jdField_d_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 12000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  private void w()
+  private void u()
   {
     AVActivity localAVActivity = (AVActivity)getContext();
-    if ((localAVActivity == null) || (this.jdField_a_of_type_Myj == null)) {
+    if ((localAVActivity == null) || (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy == null)) {
       return;
     }
     if (!this.jdField_d_of_type_Boolean)
@@ -598,49 +540,94 @@ public class WatchTogetherAdminControlView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Myj.a(true);
+      this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a(true);
       return;
       localAVActivity.setRequestedOrientation(1);
       QLog.d("WatchTogetherVideoPlayView", 1, "setRequestedOrientation, displayRotation[ActivityInfo.SCREEN_ORIENTATION_PORTRAIT]");
     }
   }
   
-  private void x()
+  private void v()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  private void y()
-  {
-    this.jdField_a_of_type_Nbm.b();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131166935);
-    this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_g_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-    a();
-    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    b(false);
-  }
-  
-  private void z()
+  private void w()
   {
     if (getContext() != null) {
       ((AVActivity)getContext()).jdField_a_of_type_ComTencentAvUiVideoControlUI.D(-1L);
     }
   }
   
+  private void x()
+  {
+    int i = getResources().getDimensionPixelOffset(2131298044);
+    int j = getResources().getDimensionPixelOffset(2131298046);
+    float f1 = this.jdField_b_of_type_Float;
+    Drawable localDrawable1 = getResources().getDrawable(2130842497);
+    Drawable localDrawable2 = getResources().getDrawable(2130842498);
+    if (this.jdField_d_of_type_Boolean)
+    {
+      i = getResources().getDimensionPixelOffset(2131298043);
+      j = getResources().getDimensionPixelOffset(2131298045);
+      f1 = this.jdField_a_of_type_Float;
+      localDrawable1 = getResources().getDrawable(2130842488);
+      localDrawable2 = getResources().getDrawable(2130842489);
+    }
+    for (;;)
+    {
+      ((ViewGroup.MarginLayoutParams)this.jdField_f_of_type_AndroidWidgetTextView.getLayoutParams()).rightMargin = j;
+      this.jdField_f_of_type_AndroidWidgetTextView.setTextSize(f1);
+      this.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable1, null, null);
+      this.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(i);
+      this.jdField_g_of_type_AndroidWidgetTextView.setTextSize(f1);
+      this.jdField_g_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable2, null, null);
+      this.jdField_g_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(i);
+      return;
+    }
+  }
+  
+  private void y()
+  {
+    int j = getResources().getDimensionPixelOffset(2131298040);
+    int i = getResources().getDimensionPixelOffset(2131298040);
+    if (this.jdField_d_of_type_Boolean)
+    {
+      j = getResources().getDimensionPixelOffset(2131298041);
+      i = getResources().getDimensionPixelOffset(2131298042);
+    }
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setPadding(j, 0, j, 0);
+    WTogetherUtil.a(this.jdField_a_of_type_AndroidWidgetSeekBar, j, j);
+    WTogetherUtil.a(this.jdField_b_of_type_AndroidWidgetTextView, j, 0);
+    WTogetherUtil.a(this.jdField_a_of_type_AndroidWidgetTextView, 0, j);
+    WTogetherUtil.a(this.jdField_d_of_type_AndroidWidgetTextView, 0, i);
+  }
+  
+  private void z()
+  {
+    if (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy == null) {}
+    while (this.jdField_b_of_type_AndroidWidgetImageView == null) {
+      return;
+    }
+    if (c())
+    {
+      this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.c();
+  }
+  
   public void a()
   {
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+    if ((this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
       while (localIterator.hasNext()) {
         ((View)localIterator.next()).setVisibility(8);
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
     }
   }
   
@@ -661,6 +648,11 @@ public class WatchTogetherAdminControlView
     this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherAdminControlView.14(this));
   }
   
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherAdminControlView.24(this, paramBoolean));
+  }
+  
   public boolean a(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherAdminControlView.23(this));
@@ -675,7 +667,7 @@ public class WatchTogetherAdminControlView
   public void b()
   {
     Object localObject;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.jdField_b_of_type_Boolean)
     {
       localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
       while (((Iterator)localObject).hasNext()) {
@@ -687,20 +679,20 @@ public class WatchTogetherAdminControlView
       if (this.jdField_d_of_type_Boolean) {
         this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
       }
-      if (this.jdField_a_of_type_Myj != null)
+      if (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null)
       {
         localObject = this.jdField_b_of_type_AndroidWidgetImageView;
-        if (!this.jdField_a_of_type_Myj.a()) {
+        if (!this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a()) {
           break label133;
         }
       }
     }
     label133:
-    for (int k = 2130842349;; k = 2130842350)
+    for (int i = 2130842492;; i = 2130842493)
     {
-      ((ImageView)localObject).setImageResource(k);
-      this.jdField_a_of_type_Nbm.b();
-      this.jdField_a_of_type_Boolean = true;
+      ((ImageView)localObject).setImageResource(i);
+      this.jdField_a_of_type_ComTencentAvWtogetherViewWatchTogetherPlayRatioHelper.b();
+      this.jdField_b_of_type_Boolean = true;
       return;
     }
   }
@@ -724,11 +716,6 @@ public class WatchTogetherAdminControlView
   
   public void f()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherAdminControlView.24(this));
-  }
-  
-  public void g()
-  {
     c(1, 2);
   }
   
@@ -738,7 +725,7 @@ public class WatchTogetherAdminControlView
     setOrientationParams(paramConfiguration.orientation);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -750,8 +737,8 @@ public class WatchTogetherAdminControlView
   
   public void setImmersiveStatus(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Myj != null) && (this.jdField_a_of_type_Myj.c())) {}
-    while ((this.jdField_a_of_type_Myj != null) && (this.jdField_a_of_type_Myj.d())) {
+    if ((this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null) && (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.c())) {}
+    while ((this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null) && (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.d())) {
       return;
     }
     if (paramBoolean)
@@ -764,61 +751,57 @@ public class WatchTogetherAdminControlView
   
   public void setOrientationParams(int paramInt)
   {
-    boolean bool = false;
+    boolean bool2 = false;
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
-    int k;
     if (paramInt == 2)
     {
       this.jdField_e_of_type_AndroidWidgetTextView.setMaxEms(25);
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(this.jdField_e_of_type_AndroidWidgetTextView.getVisibility());
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842353);
-      this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842353);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842496);
+      this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842496);
       localMarginLayoutParams.topMargin = 0;
       localMarginLayoutParams.height = -1;
-      if (this.i == 1) {
+      if (this.jdField_e_of_type_Int == 1) {
         this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
       }
       this.jdField_d_of_type_Boolean = true;
-      mrr.a("0X800B636", 0, 0, "", "", "", "");
-      A();
-      B();
-      v();
-      if ((!this.jdField_d_of_type_Boolean) || (this.jdField_a_of_type_Myj == null) || (!this.jdField_a_of_type_Myj.c())) {
-        break label275;
-      }
-      k = 1;
-      label152:
-      if (k == 0) {
-        break label280;
+      AVUtil.a("0X800B636", 0, 0, "", "", "", "");
+      x();
+      y();
+      t();
+      if ((!this.jdField_d_of_type_Boolean) || (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy == null) || (!this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.c())) {
+        break label291;
       }
     }
-    for (;;)
+    label291:
+    for (int i = 1;; i = 0)
     {
-      a(bool);
+      boolean bool1 = bool2;
+      if (i == 0)
+      {
+        bool1 = bool2;
+        if (this.jdField_e_of_type_Int == 0) {
+          bool1 = true;
+        }
+      }
+      b(bool1);
       setLayoutParams(localMarginLayoutParams);
-      this.jdField_a_of_type_Nbm.a(paramInt);
+      this.jdField_a_of_type_ComTencentAvWtogetherViewWatchTogetherPlayRatioHelper.a(paramInt);
       return;
       if (paramInt != 1) {
         break;
       }
       this.jdField_e_of_type_AndroidWidgetTextView.setMaxEms(12);
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842347);
-      this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842347);
-      localMarginLayoutParams.topMargin = (AIOUtils.dp2px(64.0F, getResources()) + nad.a(getContext()));
-      localMarginLayoutParams.height = nad.a();
-      if (this.i == 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842490);
+      this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130842490);
+      localMarginLayoutParams.topMargin = (AIOUtils.a(64.0F, getResources()) + WTogetherUtil.a(getContext()));
+      localMarginLayoutParams.height = WTogetherUtil.a();
+      if (this.jdField_e_of_type_Int == 1) {
         this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
       }
       this.jdField_d_of_type_Boolean = false;
       break;
-      label275:
-      k = 0;
-      break label152;
-      label280:
-      if (this.i == 0) {
-        bool = true;
-      }
     }
   }
   
@@ -829,13 +812,13 @@ public class WatchTogetherAdminControlView
       this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(null);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new nay(this, paramOnSeekBarChangeListener));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new WatchTogetherAdminControlView.16(this, paramOnSeekBarChangeListener));
   }
   
-  public void setWatchTogetherMediaPlayerProxy(myj parammyj)
+  public void setWatchTogetherMediaPlayerProxy(WatchTogetherMediaPlayerProxy paramWatchTogetherMediaPlayerProxy)
   {
-    this.jdField_a_of_type_Myj = parammyj;
-    this.jdField_a_of_type_Nbm.a(this.jdField_a_of_type_Myj);
+    this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy = paramWatchTogetherMediaPlayerProxy;
+    this.jdField_a_of_type_ComTencentAvWtogetherViewWatchTogetherPlayRatioHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy);
   }
   
   public void setWatchTogetherParams(boolean paramBoolean1, boolean paramBoolean2)
@@ -843,16 +826,16 @@ public class WatchTogetherAdminControlView
     this.jdField_c_of_type_Boolean = paramBoolean2;
     if (paramBoolean1)
     {
-      if ((this.jdField_a_of_type_Myj != null) && (this.jdField_a_of_type_Myj.c())) {
+      if ((this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null) && (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.c())) {
         c(3, 2);
       }
       for (;;)
       {
-        v();
+        t();
         setOrientationParams(1);
         setVisibility(0);
         return;
-        if ((this.jdField_a_of_type_Myj != null) && (this.jdField_a_of_type_Myj.d())) {
+        if ((this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy != null) && (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.d())) {
           c(4, 2);
         } else if (!b()) {
           c(1, 2);
@@ -867,7 +850,7 @@ public class WatchTogetherAdminControlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherAdminControlView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class GetConciseThemeReq
   extends JceStruct
 {
   static LoginInfo cache_stLogin = new LoginInfo();
-  public LoginInfo stLogin;
+  public LoginInfo stLogin = null;
   
   public GetConciseThemeReq() {}
   

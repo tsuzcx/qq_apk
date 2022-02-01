@@ -1,31 +1,42 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bmhv;
-import com.tencent.viola.utils.ViolaUtils;
-import pkh;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 class ViolaBaseView$20
-  implements Runnable
+  implements ViolaBaseView.LoadAsyBack
 {
-  ViolaBaseView$20(ViolaBaseView paramViolaBaseView) {}
+  ViolaBaseView$20(ViolaBaseView paramViolaBaseView, boolean paramBoolean) {}
   
-  public void run()
+  public void a()
   {
-    if (System.currentTimeMillis() - ((Long)bmhv.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547" + pkh.a(), Long.valueOf(0L))).longValue() > 18000000L)
-    {
-      ViolaBaseView.d(this.this$0, false);
-      bmhv.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547" + pkh.a(), Long.valueOf(System.currentTimeMillis()));
+    if (ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView) != null) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).c();
     }
-    if ((System.currentTimeMillis() - ((Long)bmhv.a(ViolaUtils.getPageName(this.this$0.a) + pkh.a(), Long.valueOf(0L))).longValue() > 7200000L) && (!ViolaBaseView.b(this.this$0)))
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 2, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView))) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, paramString, this.jdField_a_of_type_Boolean);
+    }
+    for (;;)
     {
-      ViolaBaseView.e(this.this$0, false);
-      bmhv.a(ViolaUtils.getPageName(this.this$0.a) + pkh.a(), Long.valueOf(System.currentTimeMillis()));
+      if (QLog.isColorLevel()) {
+        ThreadManager.post(new ViolaBaseView.20.1(this, paramString), 8, null, true);
+      }
+      return;
+      if (!this.jdField_a_of_type_Boolean) {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, paramString, this.jdField_a_of_type_Boolean);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.20
  * JD-Core Version:    0.7.0.1
  */

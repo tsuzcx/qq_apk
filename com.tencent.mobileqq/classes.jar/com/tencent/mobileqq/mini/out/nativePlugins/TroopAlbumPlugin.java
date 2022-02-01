@@ -10,14 +10,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import anvx;
-import bhdj;
-import bjkv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -50,12 +50,12 @@ public class TroopAlbumPlugin
   public static String REFER = "famous";
   public static final String SHOW_GROUP_PHOTO_BROWSER = "groupAlbum_showGroupPhotoBrowser";
   public static final String TAG = "TroopAlbumPlugin";
-  private String cacheArgs;
+  private String cacheArgs = null;
   private Handler handler = new Handler();
-  private long lastClickTime;
+  private long lastClickTime = 0L;
   Dialog mDownloadingDialog;
   private QQCustomDialog openDialog;
-  private NativePlugin.JSContext troopAlbumJsContext;
+  private JSContext troopAlbumJsContext;
   private BroadcastReceiver troopAlbumReceiver = new TroopAlbumPlugin.1(this);
   
   private void alertDownloadErrorCount(Activity paramActivity, int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
@@ -71,17 +71,17 @@ public class TroopAlbumPlugin
       String str = "";
       if (paramInt1 > 0)
       {
-        str = String.format(paramActivity.getString(2131717409), new Object[] { Integer.valueOf(paramInt1) }) + "，";
-        str = str + paramString + anvx.a(2131714542);
+        str = String.format(paramActivity.getString(2131717904), new Object[] { Integer.valueOf(paramInt1) }) + "，";
+        str = str + paramString + HardCodeUtil.a(2131715037);
       }
-      paramString = str + String.format(paramActivity.getString(2131717402), new Object[] { Integer.valueOf(paramInt2) });
-      bhdj.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131717407, new TroopAlbumPlugin.5(this)).show();
+      paramString = str + String.format(paramActivity.getString(2131717897), new Object[] { Integer.valueOf(paramInt2) });
+      DialogUtil.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131717902, new TroopAlbumPlugin.5(this)).show();
       return;
     }
-    bjkv.a().a(paramActivity.getString(2131717410) + paramString + anvx.a(2131714541));
+    ToastUtil.a().a(paramActivity.getString(2131717905) + paramString + HardCodeUtil.a(2131715036));
   }
   
-  private void handleChatAio(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  private void handleChatAio(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     Object localObject = paramJSONObject.getJSONObject("data");
     paramJSONObject = ((JSONObject)localObject).optString("albumname");
@@ -90,7 +90,7 @@ public class TroopAlbumPlugin
     ChatHistoryActivity.a(paramJSContext.getActivity(), String.valueOf(i), (String)localObject, paramJSONObject);
   }
   
-  private void handleDownloadPic(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  private void handleDownloadPic(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     Intent localIntent = new Intent();
     paramJSONObject = paramJSONObject.getJSONObject("data").toString();
@@ -98,24 +98,24 @@ public class TroopAlbumPlugin
     RemoteHandleManager.getInstance().addWebEventListener(new TroopAlbumPlugin.2(this, paramJSONObject, paramJSContext));
     if (!isSdcardWorking())
     {
-      bjkv.a().a(anvx.a(2131714537));
+      ToastUtil.a().a(HardCodeUtil.a(2131715032));
       return;
     }
     if (!NetworkState.isNetSupport())
     {
-      bjkv.a().a(anvx.a(2131714536));
+      ToastUtil.a().a(HardCodeUtil.a(2131715031));
       return;
     }
     if (!NetworkState.isWifiConn())
     {
       paramJSContext = paramJSContext.getActivity();
-      bhdj.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131717406)).setMessage(paramJSContext.getString(2131717408)).setPositiveButton(paramJSContext.getString(2131717405), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131717404), new TroopAlbumPlugin.3(this)).show();
+      DialogUtil.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131717901)).setMessage(paramJSContext.getString(2131717903)).setPositiveButton(paramJSContext.getString(2131717900), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131717899), new TroopAlbumPlugin.3(this)).show();
       return;
     }
     RemoteHandleManager.getInstance().getSender().downloadTroopPhoto(paramJSONObject);
   }
   
-  private void handleJumpCategoryAlbum(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  private void handleJumpCategoryAlbum(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     paramJSONObject = paramJSONObject.getJSONObject("data");
     int i = paramJSONObject.optInt("categoryType");
@@ -126,13 +126,13 @@ public class TroopAlbumPlugin
     }
   }
   
-  private void handleJumpToPublishBox(NativePlugin.JSContext paramJSContext)
+  private void handleJumpToPublishBox(JSContext paramJSContext)
   {
     QZoneHelper.UserInfo.getInstance();
     QZoneHelper.forwardToPublishBox(paramJSContext.getActivity(), null, 0);
   }
   
-  private void handleJumpToQzone(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  private void handleJumpToQzone(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     paramJSONObject = paramJSONObject.getJSONObject("data");
     long l = paramJSONObject.optLong("uin");
@@ -146,7 +146,7 @@ public class TroopAlbumPlugin
     QzonePluginProxyActivity.launchPluingActivityForResult(paramJSContext.getActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), paramJSONObject, 0);
   }
   
-  private void handleQunDidPickAlbum(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  private void handleQunDidPickAlbum(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     try
     {
@@ -171,7 +171,7 @@ public class TroopAlbumPlugin
     }
   }
   
-  private void handleQunStartAlbum(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  private void handleQunStartAlbum(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     try
     {
@@ -193,7 +193,7 @@ public class TroopAlbumPlugin
     }
   }
   
-  private void handleShowPhotoList(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  private void handleShowPhotoList(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     if (System.currentTimeMillis() - this.lastClickTime < 2000L)
     {
@@ -250,7 +250,7 @@ public class TroopAlbumPlugin
     this.lastClickTime = System.currentTimeMillis();
   }
   
-  private void handleUploadPhoto(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  private void handleUploadPhoto(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     Object localObject = paramJSONObject.getJSONObject("data");
     paramJSONObject = ((JSONObject)localObject).optString("albumname");
@@ -278,7 +278,7 @@ public class TroopAlbumPlugin
   
   public void onDestroy() {}
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     if (paramJSContext != null) {
       try

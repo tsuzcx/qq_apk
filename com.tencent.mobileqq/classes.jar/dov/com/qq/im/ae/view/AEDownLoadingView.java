@@ -41,6 +41,7 @@ public class AEDownLoadingView
     super(paramContext);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Int - 16843176, this.jdField_b_of_type_Int - 16843176, this.jdField_a_of_type_Int + 16843176, this.jdField_b_of_type_Int + 16843176);
     this.jdField_a_of_type_Long = 100L;
+    this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_Float = a(2.0F, getContext());
     this.jdField_b_of_type_Float = a(17.5F, getContext());
     this.jdField_c_of_type_Float = a(2.5F, getContext());
@@ -54,6 +55,7 @@ public class AEDownLoadingView
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Int - 16843176, this.jdField_b_of_type_Int - 16843176, this.jdField_a_of_type_Int + 16843176, this.jdField_b_of_type_Int + 16843176);
     this.jdField_a_of_type_Long = 100L;
+    this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_Float = a(2.0F, getContext());
     this.jdField_b_of_type_Float = a(17.5F, getContext());
     this.jdField_c_of_type_Float = a(2.5F, getContext());
@@ -67,6 +69,7 @@ public class AEDownLoadingView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Int - 16843176, this.jdField_b_of_type_Int - 16843176, this.jdField_a_of_type_Int + 16843176, this.jdField_b_of_type_Int + 16843176);
     this.jdField_a_of_type_Long = 100L;
+    this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_Float = a(2.0F, getContext());
     this.jdField_b_of_type_Float = a(17.5F, getContext());
     this.jdField_c_of_type_Float = a(2.5F, getContext());
@@ -103,7 +106,7 @@ public class AEDownLoadingView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean) {
@@ -128,12 +131,12 @@ public class AEDownLoadingView
     paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 270.0F, f, false, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_c_of_type_Int = paramInt1;
@@ -195,7 +198,7 @@ public class AEDownLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.view.AEDownLoadingView
  * JD-Core Version:    0.7.0.1
  */

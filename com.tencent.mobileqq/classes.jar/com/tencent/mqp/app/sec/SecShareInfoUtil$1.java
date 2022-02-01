@@ -1,20 +1,18 @@
 package com.tencent.mqp.app.sec;
 
-import bizc;
-
-public class SecShareInfoUtil$1
+class SecShareInfoUtil$1
   implements Runnable
 {
-  public SecShareInfoUtil$1(bizc parambizc) {}
+  SecShareInfoUtil$1(SecShareInfoUtil paramSecShareInfoUtil) {}
   
   public void run()
   {
-    bizc.a(this.this$0);
+    SecShareInfoUtil.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mqp.app.sec.SecShareInfoUtil.1
  * JD-Core Version:    0.7.0.1
  */

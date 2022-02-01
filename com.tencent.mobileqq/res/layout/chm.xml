@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center_horizontal" android:focusableInTouchMode="true" android:layout_width="227.0dip" android:layout_height="128.0dip"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <FrameLayout android:layout_width="129.0dip" android:layout_height="128.0dip">
-            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/kua" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/cli" />
-        </FrameLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="98.0dip" android:layout_height="128.0dip">
-            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/kuc" android:layout_width="fill_parent" android:layout_height="64.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/cli" />
-            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/kub" android:layout_width="fill_parent" android:layout_height="64.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/cli" />
-        </LinearLayout>
-    </LinearLayout>
-    <View android:id="@id/kud" android:background="@drawable/e37" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_alignParentBottom="true" layout="@layout/chl" />
-</RelativeLayout>
+    <EditText android:id="@id/o6g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="开始时间: 秒时间戳" android:ems="10" android:inputType="numberSigned" />
+    <EditText android:id="@id/mw2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="结束时间: 秒时间戳" android:ems="10" android:inputType="numberSigned" />
+    <EditText android:id="@id/o22" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="房间号" android:ems="10" android:inputType="numberSigned" />
+    <Button android:id="@id/nbf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="jump" />
+</LinearLayout>

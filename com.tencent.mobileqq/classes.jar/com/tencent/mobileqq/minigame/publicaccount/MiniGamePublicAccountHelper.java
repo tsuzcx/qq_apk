@@ -31,6 +31,11 @@ public class MiniGamePublicAccountHelper
       bool = false;
     }
   }
+  
+  public static boolean shouldUseWebStrategy2()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePublicAccountArkMsgGray", 0) == 1;
+  }
 }
 
 

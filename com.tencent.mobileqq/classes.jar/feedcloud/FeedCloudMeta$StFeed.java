@@ -17,6 +17,7 @@ public final class FeedCloudMeta$StFeed
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField adBuffer = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBRepeatField<String> atUinList = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBBytesField busiData = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField busiReport = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBRepeatMessageField<FeedCloudCommon.BytesEntry> busiTranparent = PBField.initRepeatMessage(FeedCloudCommon.BytesEntry.class);
@@ -26,6 +27,7 @@ public final class FeedCloudMeta$StFeed
   public final PBUInt64Field createTime = PBField.initUInt64(0L);
   public FeedCloudMeta.StDittoFeed dittoFeed = new FeedCloudMeta.StDittoFeed();
   public final PBUInt32Field feedType = PBField.initUInt32(0);
+  public final PBUInt32Field from = PBField.initUInt32(0);
   public final PBStringField id = PBField.initString("");
   public final PBRepeatMessageField<FeedCloudMeta.StImage> images = PBField.initRepeatMessage(FeedCloudMeta.StImage.class);
   public final PBBoolField isRecomFd = PBField.initBool(false);
@@ -39,6 +41,7 @@ public final class FeedCloudMeta$StFeed
   public FeedCloudMeta.StRecomForward recomForward = new FeedCloudMeta.StRecomForward();
   public FeedCloudMeta.StRecomInfo recomInfo = new FeedCloudMeta.StRecomInfo();
   public final PBBytesField reportInfoForClient = PBField.initBytes(ByteStringMicro.EMPTY);
+  public FeedCloudMeta.StSameTopicGuideInfo sameTopicGuideInfo = new FeedCloudMeta.StSameTopicGuideInfo();
   public FeedCloudMeta.StShare share = new FeedCloudMeta.StShare();
   public final PBUInt32Field status = PBField.initUInt32(0);
   public final PBStringField subtitle = PBField.initString("");
@@ -56,12 +59,12 @@ public final class FeedCloudMeta$StFeed
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72, 82, 88, 98, 106, 114, 122, 128, 138, 146, 154, 160, 170, 178, 184, 194, 202, 208, 218, 224, 234, 240, 250, 256, 266 }, new String[] { "id", "title", "subtitle", "poster", "cover", "video", "content", "type", "createTime", "likeInfo", "commentCount", "vecComment", "share", "visitorInfo", "images", "status", "poiInfo", "adBuffer", "busiData", "isRecomFd", "recomForward", "tagInfos", "syncStatus", "busiReport", "dittoFeed", "feedType", "busiTranparent", "orgFeedDeleted", "recomInfo", "opMask", "reportInfoForClient", "opMask2", "opinfo" }, new Object[] { "", "", "", null, null, null, "", Integer.valueOf(0), Long.valueOf(0L), null, Integer.valueOf(0), null, null, null, null, Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), null, null, Integer.valueOf(0), localByteStringMicro3, null, Integer.valueOf(0), null, Boolean.valueOf(false), null, Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0), null }, StFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72, 82, 88, 98, 106, 114, 122, 128, 138, 146, 154, 160, 170, 178, 184, 194, 202, 208, 218, 224, 234, 240, 250, 256, 266, 274, 280, 290 }, new String[] { "id", "title", "subtitle", "poster", "cover", "video", "content", "type", "createTime", "likeInfo", "commentCount", "vecComment", "share", "visitorInfo", "images", "status", "poiInfo", "adBuffer", "busiData", "isRecomFd", "recomForward", "tagInfos", "syncStatus", "busiReport", "dittoFeed", "feedType", "busiTranparent", "orgFeedDeleted", "recomInfo", "opMask", "reportInfoForClient", "opMask2", "opinfo", "atUinList", "from", "sameTopicGuideInfo" }, new Object[] { "", "", "", null, null, null, "", Integer.valueOf(0), Long.valueOf(0L), null, Integer.valueOf(0), null, null, null, null, Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), null, null, Integer.valueOf(0), localByteStringMicro3, null, Integer.valueOf(0), null, Boolean.valueOf(false), null, Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0), null, "", Integer.valueOf(0), null }, StFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StFeed
  * JD-Core Version:    0.7.0.1
  */

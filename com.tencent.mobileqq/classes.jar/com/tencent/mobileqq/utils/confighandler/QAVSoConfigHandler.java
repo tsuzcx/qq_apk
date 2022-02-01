@@ -1,36 +1,36 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import anvx;
+import com.tencent.av.so.ResDownloadControl;
 import com.tencent.av.so.ResInfo;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
-import mai;
 
 public class QAVSoConfigHandler
   extends ConfigHandler<ResInfo>
 {
   public QAVSoConfigHandler()
   {
-    super("ResMgr", null);
+    super("AVResMgr", null);
   }
   
   public int getConfigVer()
   {
-    if (AudioHelper.e()) {
-      throw new IllegalArgumentException(this.TAG + anvx.a(2131708402));
+    if (AudioHelper.d()) {
+      throw new IllegalArgumentException(this.TAG + HardCodeUtil.a(2131708929));
     }
     return 0;
   }
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, ResInfo paramResInfo)
   {
-    mai.a().a(paramQQAppInterface, paramString, paramResInfo);
+    ResDownloadControl.a().a(paramQQAppInterface, paramString, paramResInfo);
   }
   
   public void saveConfig(String paramString, int paramInt)
   {
-    if (AudioHelper.e()) {
-      throw new IllegalArgumentException(this.TAG + anvx.a(2131708401));
+    if (AudioHelper.d()) {
+      throw new IllegalArgumentException(this.TAG + HardCodeUtil.a(2131708928));
     }
   }
 }

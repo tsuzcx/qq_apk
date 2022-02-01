@@ -10,8 +10,8 @@ class QQCustomDialogWtihEmoticonInput$5
   
   public void onGlobalLayout()
   {
-    if (this.this$0.mRootScrollView != null) {
-      this.this$0.mRootScrollView.fullScroll(130);
+    if (this.a.a != null) {
+      this.a.a.fullScroll(130);
     }
   }
 }

@@ -6,13 +6,11 @@ import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import boid;
-import boop;
-import bopr;
-import bpdg;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.data.IFaceSelectedListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,10 +20,10 @@ public class ProviderViewEditContainer
 {
   private int jdField_a_of_type_Int = 100;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private boid jdField_a_of_type_Boid;
-  private boop jdField_a_of_type_Boop;
-  private bopr jdField_a_of_type_Bopr;
+  private IFaceSelectedListener jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener;
+  private ProviderView.ProviderViewListener jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener;
   private ProviderView jdField_a_of_type_DovComQqImCaptureViewProviderView;
+  private VideoCoverPickerProviderView.PickerListener jdField_a_of_type_DovComQqImCaptureViewVideoCoverPickerProviderView$PickerListener;
   private HashMap<Integer, ProviderView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private int[] jdField_a_of_type_ArrayOfInt = { 103, 107, 109 };
   private int b = 0;
@@ -45,24 +43,6 @@ public class ProviderViewEditContainer
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private ProviderView a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 103: 
-      return new StaticStickerProviderView(getContext());
-    case 107: 
-      localObject = new MusicFragmentProviderView(getContext());
-      ((ProviderView)localObject).setNeedTabBar(false);
-      return localObject;
-    }
-    Object localObject = new VideoCoverPickerProviderView(getContext());
-    ((ProviderView)localObject).setNeedTabBar(false);
-    return localObject;
-  }
-  
   private boolean a(int paramInt, Object... paramVarArgs)
   {
     Object localObject;
@@ -75,7 +55,7 @@ public class ProviderViewEditContainer
         QLog.d("ProviderViewEditContainer", 2, new Object[] { "openContainerProviderView view not exsist, id:", Integer.valueOf(paramInt) });
       }
       return false;
-      ProviderView localProviderView = a(paramInt);
+      ProviderView localProviderView = b(paramInt);
       localObject = localProviderView;
       if (localProviderView != null)
       {
@@ -95,16 +75,16 @@ public class ProviderViewEditContainer
       if (!((StaticStickerProviderView)localObject).d())
       {
         ((StaticStickerProviderView)localObject).a(null);
-        ((StaticStickerProviderView)localObject).setOnFaceSelectedListener(this.jdField_a_of_type_Boid);
+        ((StaticStickerProviderView)localObject).setOnFaceSelectedListener(this.jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener);
       }
       ((StaticStickerProviderView)localObject).setCaptureScene(this.b);
       ((StaticStickerProviderView)localObject).i();
       ((StaticStickerProviderView)localObject).c();
       if ((paramVarArgs != null) && (paramVarArgs.length == 1)) {
-        ((StaticStickerProviderView)localObject).a((bpdg)paramVarArgs[0]);
+        ((StaticStickerProviderView)localObject).a((GestureHelper.ZoomItem)paramVarArgs[0]);
       }
       paramVarArgs = getLayoutParams();
-      paramInt = UIUtils.dip2px(getContext(), 250.0F);
+      paramInt = UIUtils.a(getContext(), 250.0F);
       if (paramVarArgs.height != paramInt)
       {
         paramVarArgs.height = paramInt;
@@ -117,8 +97,8 @@ public class ProviderViewEditContainer
       {
         ((MusicFragmentProviderView)localObject).d(250);
         ((MusicFragmentProviderView)localObject).a(null);
-        if (this.jdField_a_of_type_Boop != null) {
-          ((MusicFragmentProviderView)localObject).setProviderViewListener(this.jdField_a_of_type_Boop);
+        if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener != null) {
+          ((MusicFragmentProviderView)localObject).setProviderViewListener(this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener);
         }
       }
       ((MusicFragmentProviderView)localObject).setCaptureScene(this.b);
@@ -126,7 +106,7 @@ public class ProviderViewEditContainer
         ((MusicFragmentProviderView)localObject).setMusicProviderView((MusicItemInfo)paramVarArgs[0]);
       }
       paramVarArgs = getLayoutParams();
-      paramInt = UIUtils.dip2px(getContext(), 250.0F);
+      paramInt = UIUtils.a(getContext(), 250.0F);
       if (paramVarArgs.height != paramInt)
       {
         paramVarArgs.height = paramInt;
@@ -144,14 +124,14 @@ public class ProviderViewEditContainer
       if (!((VideoCoverPickerProviderView)localObject).d())
       {
         ((VideoCoverPickerProviderView)localObject).setCaptureScene(this.b);
-        ((VideoCoverPickerProviderView)localObject).setListener(this.jdField_a_of_type_Bopr);
+        ((VideoCoverPickerProviderView)localObject).setListener(this.jdField_a_of_type_DovComQqImCaptureViewVideoCoverPickerProviderView$PickerListener);
         ((VideoCoverPickerProviderView)localObject).a(null);
       }
       if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof Long))) {
         ((VideoCoverPickerProviderView)localObject).setCoverFrameTime(((Long)paramVarArgs[0]).longValue());
       }
       paramVarArgs = getLayoutParams();
-      int i = UIUtils.dip2px(getContext(), 185.0F);
+      int i = UIUtils.a(getContext(), 185.0F);
       paramInt = i;
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
         paramInt = i + this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
@@ -160,6 +140,32 @@ public class ProviderViewEditContainer
       setLayoutParams(paramVarArgs);
       this.jdField_a_of_type_Int = 109;
     }
+  }
+  
+  private ProviderView b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 103: 
+      return new StaticStickerProviderView(getContext());
+    case 107: 
+      localObject = new MusicFragmentProviderView(getContext());
+      ((ProviderView)localObject).setNeedTabBar(false);
+      return localObject;
+    }
+    Object localObject = new VideoCoverPickerProviderView(getContext());
+    ((ProviderView)localObject).setNeedTabBar(false);
+    return localObject;
+  }
+  
+  public ProviderView a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      return (ProviderView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    }
+    return null;
   }
   
   public void a()
@@ -225,24 +231,24 @@ public class ProviderViewEditContainer
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
   }
   
-  public void setProviderViewListener(boop paramboop)
+  public void setProviderViewListener(ProviderView.ProviderViewListener paramProviderViewListener)
   {
-    this.jdField_a_of_type_Boop = paramboop;
+    this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener = paramProviderViewListener;
   }
   
-  public void setStickerListener(boid paramboid)
+  public void setStickerListener(IFaceSelectedListener paramIFaceSelectedListener)
   {
-    this.jdField_a_of_type_Boid = paramboid;
+    this.jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener = paramIFaceSelectedListener;
   }
   
-  public void setVideoCoverPickerListener(bopr parambopr)
+  public void setVideoCoverPickerListener(VideoCoverPickerProviderView.PickerListener paramPickerListener)
   {
-    this.jdField_a_of_type_Bopr = parambopr;
+    this.jdField_a_of_type_DovComQqImCaptureViewVideoCoverPickerProviderView$PickerListener = paramPickerListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.view.ProviderViewEditContainer
  * JD-Core Version:    0.7.0.1
  */

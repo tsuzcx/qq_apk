@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.share;
 
-import algy;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -15,18 +14,18 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import asbg;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.RecentFaceDecoder;
 import com.tencent.mobileqq.activity.recent.data.RecentCallItem;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.drawable.EmptyDrawable;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.QuickSendProgressView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.RecentDynamicAvatarView;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
@@ -35,15 +34,15 @@ import java.util.Iterator;
 
 public class MiniShareQuicklySendPanelAdapter
   extends BaseAdapter
-  implements View.OnClickListener, FaceDecoder.DecodeTaskCompletionListener
+  implements View.OnClickListener, DecodeTaskCompletionListener
 {
   private static final String TAG = "MiniShareQuicklySendPanelAdapter";
   private Activity activity;
-  private MiniShareQuicklySendPanelAdapter.SendPanelViewHolder curShareViewHolder;
-  private long decodeFaceStartTime;
+  private MiniShareQuicklySendPanelAdapter.SendPanelViewHolder curShareViewHolder = null;
+  private long decodeFaceStartTime = 0L;
   private Hashtable<String, Bitmap> faceCache = new Hashtable();
   private QQAppInterface mApp;
-  protected algy mFaceDecoder;
+  protected RecentFaceDecoder mFaceDecoder;
   private XListView mListView;
   private Bundle mShareDataBundle;
   private ArrayList<MiniShareQuicklySendPanelAdapter.SendPanelData> sendPanelDataList;
@@ -55,16 +54,16 @@ public class MiniShareQuicklySendPanelAdapter
     this.mListView = paramXListView;
     this.mShareDataBundle = paramBundle;
     this.sendPanelDataList = new ArrayList();
-    this.mFaceDecoder = new algy(paramQQAppInterface, this, false);
+    this.mFaceDecoder = new RecentFaceDecoder(paramQQAppInterface, this, false);
   }
   
   public static Drawable getIconDrawable(String paramString, int paramInt1, int paramInt2)
   {
-    asbg localasbg = new asbg(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+    EmptyDrawable localEmptyDrawable = new EmptyDrawable(Color.rgb(214, 214, 214), paramInt1, paramInt2);
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localasbg, localasbg);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localEmptyDrawable, localEmptyDrawable);
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.downloadImediatly();
         }
@@ -77,7 +76,7 @@ public class MiniShareQuicklySendPanelAdapter
         }
       }
     }
-    return localasbg;
+    return localEmptyDrawable;
   }
   
   private void updateItem(MiniShareQuicklySendPanelAdapter.SendPanelViewHolder paramSendPanelViewHolder, MiniShareQuicklySendPanelAdapter.SendPanelData paramSendPanelData, Drawable paramDrawable)
@@ -159,7 +158,7 @@ public class MiniShareQuicklySendPanelAdapter
       if (QLog.isColorLevel()) {
         QLog.d("MiniShareQuicklySendPanelAdapter", 2, "bindview user:" + localSendPanelData.baseData.getRecentUserUin());
       }
-      int j = ((Integer)algy.a(this.mApp, localSendPanelData.baseData.getRecentUserType(), localSendPanelData.baseData.getRecentUserUin()).first).intValue();
+      int j = ((Integer)RecentFaceDecoder.a(this.mApp, localSendPanelData.baseData.getRecentUserType(), localSendPanelData.baseData.getRecentUserUin()).first).intValue();
       int i = j;
       if (j == 103) {
         i = 1;
@@ -225,27 +224,23 @@ public class MiniShareQuicklySendPanelAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    MiniShareQuicklySendPanelAdapter.SendPanelData localSendPanelData = (MiniShareQuicklySendPanelAdapter.SendPanelData)getItem(paramInt);
-    MiniShareQuicklySendPanelAdapter.SendPanelViewHolder localSendPanelViewHolder;
+    paramViewGroup = (MiniShareQuicklySendPanelAdapter.SendPanelData)getItem(paramInt);
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.activity).inflate(2131562870, null);
+      paramView = LayoutInflater.from(this.activity).inflate(2131563017, null);
       localSendPanelViewHolder = new MiniShareQuicklySendPanelAdapter.SendPanelViewHolder(this);
-      localSendPanelViewHolder.iconView = ((RecentDynamicAvatarView)paramView.findViewById(2131368381));
-      localSendPanelViewHolder.nameText = ((TextView)paramView.findViewById(2131371803));
-      localSendPanelViewHolder.operateView = ((QuickSendProgressView)paramView.findViewById(2131372283));
-      localSendPanelViewHolder.itemInfo = localSendPanelData;
+      localSendPanelViewHolder.iconView = ((RecentDynamicAvatarView)paramView.findViewById(2131368603));
+      localSendPanelViewHolder.nameText = ((TextView)paramView.findViewById(2131372115));
+      localSendPanelViewHolder.operateView = ((QuickSendProgressView)paramView.findViewById(2131372587));
+      localSendPanelViewHolder.itemInfo = paramViewGroup;
       bindData(localSendPanelViewHolder, null);
       paramView.setTag(localSendPanelViewHolder);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
       return paramView;
-      localSendPanelViewHolder = (MiniShareQuicklySendPanelAdapter.SendPanelViewHolder)paramView.getTag();
-      localSendPanelViewHolder.itemInfo = localSendPanelData;
-      bindData(localSendPanelViewHolder, null);
     }
+    MiniShareQuicklySendPanelAdapter.SendPanelViewHolder localSendPanelViewHolder = (MiniShareQuicklySendPanelAdapter.SendPanelViewHolder)paramView.getTag();
+    localSendPanelViewHolder.itemInfo = paramViewGroup;
+    bindData(localSendPanelViewHolder, null);
+    return paramView;
   }
   
   protected boolean needDynamic(RecentBaseData paramRecentBaseData)
@@ -284,57 +279,49 @@ public class MiniShareQuicklySendPanelAdapter
   
   public void onClick(View paramView)
   {
-    MiniShareQuicklySendPanelAdapter.SendPanelViewHolder localSendPanelViewHolder;
     if ((paramView.getTag() instanceof MiniShareQuicklySendPanelAdapter.SendPanelViewHolder))
     {
-      localSendPanelViewHolder = (MiniShareQuicklySendPanelAdapter.SendPanelViewHolder)paramView.getTag();
-      if (localSendPanelViewHolder.itemInfo != null) {
-        break label48;
+      paramView = (MiniShareQuicklySendPanelAdapter.SendPanelViewHolder)paramView.getTag();
+      if (paramView.itemInfo != null) {
+        break label41;
       }
       if (QLog.isColorLevel()) {
         QLog.d("MiniShareQuicklySendPanelAdapter", 2, "onClick itemInfo is null");
       }
     }
-    for (;;)
+    label41:
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label48:
       if (QLog.isColorLevel()) {
-        QLog.d("MiniShareQuicklySendPanelAdapter", 2, "onClick operateStatus = " + localSendPanelViewHolder.itemInfo.operateStatus);
+        QLog.d("MiniShareQuicklySendPanelAdapter", 2, "onClick operateStatus = " + paramView.itemInfo.operateStatus);
       }
-      switch (localSendPanelViewHolder.itemInfo.operateStatus)
+      switch (paramView.itemInfo.operateStatus)
       {
       case 1: 
       case 3: 
       default: 
-        break;
+        return;
       case 0: 
-        if (!NetworkUtil.isNetworkAvailable(this.activity))
+        if (!NetworkUtil.g(this.activity))
         {
-          QQToast.a(this.activity, this.activity.getString(2131718986), 0).a();
+          QQToast.a(this.activity, this.activity.getString(2131719522), 0).a();
+          return;
         }
-        else
+        MiniShareQuicklySendPanelAdapter.SendPanelData localSendPanelData = updateStatus(paramView.itemInfo.baseData.getRecentUserUin(), 1);
+        if (localSendPanelData != null)
         {
-          MiniShareQuicklySendPanelAdapter.SendPanelData localSendPanelData = updateStatus(localSendPanelViewHolder.itemInfo.baseData.getRecentUserUin(), 1);
-          if (localSendPanelData != null)
-          {
-            localSendPanelViewHolder.itemInfo = localSendPanelData;
-            updateStatusView(localSendPanelViewHolder);
-            if (this.curShareViewHolder == null) {
-              this.curShareViewHolder = localSendPanelViewHolder;
-            }
+          paramView.itemInfo = localSendPanelData;
+          updateStatusView(paramView);
+          if (this.curShareViewHolder == null) {
+            this.curShareViewHolder = paramView;
           }
-          MiniProgramShareUtils.shareToChatDirectly(this.activity, this.mShareDataBundle, localSendPanelViewHolder.itemInfo.baseData.getRecentUserType(), String.valueOf(localSendPanelViewHolder.itemInfo.baseData.getRecentUserUin()), localSendPanelViewHolder.itemInfo.baseData.getTitleName(), 678, false);
         }
-        break;
-      case 2: 
-        if (!NetworkUtil.isNetworkAvailable(this.activity)) {
-          QQToast.a(this.activity, this.activity.getString(2131718986), 0).a();
-        }
-        break;
+        MiniProgramShareUtils.shareToChatDirectly(this.activity, this.mShareDataBundle, paramView.itemInfo.baseData.getRecentUserType(), String.valueOf(paramView.itemInfo.baseData.getRecentUserUin()), paramView.itemInfo.baseData.getTitleName(), 678, false);
+        return;
       }
-    }
+    } while (NetworkUtil.g(this.activity));
+    QQToast.a(this.activity, this.activity.getString(2131719522), 0).a();
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String arg3, Bitmap paramBitmap)
@@ -401,7 +388,7 @@ public class MiniShareQuicklySendPanelAdapter
       break label466;
     }
     int i = localSendPanelData.baseData.getRecentUserType();
-    i = ((Integer)algy.a(this.mApp, i, localSendPanelData.baseData.getRecentUserUin()).first).intValue();
+    i = ((Integer)RecentFaceDecoder.a(this.mApp, i, localSendPanelData.baseData.getRecentUserUin()).first).intValue();
     if (i != -2147483648)
     {
       Object localObject = i + ":" + localSendPanelData.baseData.getRecentUserUin();

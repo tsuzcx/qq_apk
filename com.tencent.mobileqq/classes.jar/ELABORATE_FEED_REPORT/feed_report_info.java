@@ -15,11 +15,11 @@ public final class feed_report_info
   static Map<Integer, String> cache_mapParentFeedCookie;
   static ArrayList<action_flow> cache_vecActionFlow;
   public int eLayerTtype = -1;
-  public Map<Integer, String> mapFeedCookie;
-  public Map<Integer, String> mapParentFeedCookie;
-  public int uFeedIndex;
-  public long uLayerNumber;
-  public ArrayList<action_flow> vecActionFlow;
+  public Map<Integer, String> mapFeedCookie = null;
+  public Map<Integer, String> mapParentFeedCookie = null;
+  public int uFeedIndex = 0;
+  public long uLayerNumber = 0L;
+  public ArrayList<action_flow> vecActionFlow = null;
   
   static
   {

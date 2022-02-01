@@ -12,20 +12,20 @@ public final class stPopWindowsConfig
   static stAnnexation cache_annexation;
   static Map<String, String> cache_exp;
   static stPopWindowsButton cache_jp_button = new stPopWindowsButton();
-  public stAnnexation annexation;
+  public stAnnexation annexation = null;
   public String bg_img_url = "";
-  public Map<String, String> exp;
+  public Map<String, String> exp = null;
   public String h5url = "";
-  public int index;
-  public stPopWindowsButton jp_button;
+  public int index = 0;
+  public stPopWindowsButton jp_button = null;
   public String remark = "";
-  public int scene;
+  public int scene = 0;
   public String schema_url = "";
   public String text = "";
   public String title = "";
   public String trace_id = "";
-  public int type;
-  public int windowsid;
+  public int type = 0;
+  public int windowsid = 0;
   
   static
   {

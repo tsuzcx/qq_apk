@@ -61,7 +61,7 @@ public class PluginProxyService
     }
     for (;;)
     {
-      ClassLoader localClassLoader = PluginStatic.getOrCreateClassLoaderByPath(this, this.mPluginID, this.mApkFilePath);
+      ClassLoader localClassLoader = PluginStatic.getOrCreateClassLoaderByPath(this, this.mPluginID, this.mApkFilePath, true);
       Class localClass = localClassLoader.loadClass(this.mLaunchService);
       try
       {

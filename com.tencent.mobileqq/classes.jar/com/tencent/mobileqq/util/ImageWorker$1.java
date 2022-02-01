@@ -2,16 +2,14 @@ package com.tencent.mobileqq.util;
 
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import bgzn;
-import bgzp;
 
-public class ImageWorker$1
+class ImageWorker$1
   implements Runnable
 {
   public void run()
   {
-    Drawable localDrawable = this.jdField_a_of_type_Bgzp.a(new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bgzl, Boolean.valueOf(true) });
-    bgzn.a(this.this$0).post(new ImageWorker.1.1(this, localDrawable));
+    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker$BitmapWorkerTask.a(new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilImageCreator, Boolean.valueOf(true) });
+    ImageWorker.a(this.this$0).post(new ImageWorker.1.1(this, localDrawable));
   }
 }
 

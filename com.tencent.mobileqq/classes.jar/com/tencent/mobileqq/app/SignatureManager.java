@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import afqy;
-import aizi;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
@@ -10,32 +8,32 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.ListAdapter;
-import anvk;
-import aodr;
-import aoxz;
-import bbtj;
-import bdla;
-import bhhr;
-import bhoh;
-import bhoi;
-import bhoj;
-import bhok;
-import bhyq;
-import bhyt;
-import bkyc;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.BeancurdManager;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.richstatus.ExtensionRichStatus;
 import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.RichStatus.SigZanInfo;
 import com.tencent.mobileqq.richstatus.RichStatus.StickerInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.vas.SignatureTemplateConfig;
+import com.tencent.mobileqq.vas.SignatureTemplateConfig.SignatureTemplateType;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo.DynamicItem;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.sharpP.SharpPUtil;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,28 +54,29 @@ public class SignatureManager
   implements Handler.Callback, Manager
 {
   public static final String a;
-  public static ConcurrentHashMap<Integer, bhoj> a;
+  public static ConcurrentHashMap<Integer, SignatureTemplateInfo> a;
   public static ConcurrentLinkedQueue<Runnable> a;
   private static Lock jdField_a_of_type_JavaUtilConcurrentLocksLock;
   public static boolean a;
-  public static bhoi[] a;
-  private static bhoj jdField_b_of_type_Bhoj;
+  public static SignatureTemplateConfig.SignatureTemplateType[] a;
+  private static SignatureTemplateInfo jdField_b_of_type_ComTencentMobileqqVasSignatureTemplateInfo;
   public static final String b;
-  public static int c;
   public static final String c;
   public static int d;
   public static final String d;
+  public static int e;
   public int a;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aodr(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new SignatureManager.1(this);
   Handler jdField_a_of_type_AndroidOsHandler = null;
-  public bhoj a;
-  private bhyt jdField_a_of_type_Bhyt;
-  public QQAppInterface a;
+  protected QQAppInterface a;
   private PreDownloadController jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController;
+  public SignatureTemplateInfo a;
+  private DownloaderInterface jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
   MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   public int b;
-  private ConcurrentHashMap<String, RichStatus> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ConcurrentHashMap<String, RichStatus> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+  public int c;
   
   static
   {
@@ -85,9 +84,12 @@ public class SignatureManager
     jdField_b_of_type_JavaLangString = AppConstants.SDCARD_SIGNATURE_TEMPLATE_ROOT + "sign_tpl.json";
     jdField_c_of_type_JavaLangString = AppConstants.SDCARD_SIGNATURE_TEMPLATE_ROOT;
     jdField_d_of_type_JavaLangString = jdField_c_of_type_JavaLangString + "/temp";
+    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateConfig$SignatureTemplateType = null;
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-    jdField_c_of_type_Int = 1;
+    jdField_d_of_type_Int = 1;
+    e = 0;
     jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   }
   
@@ -95,10 +97,12 @@ public class SignatureManager
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bhyt = ((bhyq)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface = ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_MqqOsMqqHandler = new bkyc(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
     this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController = ((PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2));
   }
   
@@ -121,24 +125,15 @@ public class SignatureManager
     if (paramBoolean) {}
     try
     {
-      jdField_d_of_type_Int -= 1;
-      if ((jdField_d_of_type_Int < jdField_c_of_type_Int) && (!jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()))
+      e -= 1;
+      if ((e < jdField_d_of_type_Int) && (!jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()))
       {
         ThreadManagerV2.excute((Runnable)jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll(), 32, null, true);
-        jdField_d_of_type_Int += 1;
+        e += 1;
       }
       return;
     }
     finally {}
-  }
-  
-  public static boolean a(bhoj parambhoj)
-  {
-    boolean bool = false;
-    if ((!TextUtils.isEmpty(parambhoj.a[0].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambhoj.a[1].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambhoj.a[2].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambhoj.a[3].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambhoj.a[4].jdField_a_of_type_JavaLangString))) {
-      bool = true;
-    }
-    return bool;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, RichStatus paramRichStatus)
@@ -146,7 +141,7 @@ public class SignatureManager
     if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
       return false;
     }
-    if (((aizi)paramQQAppInterface.getManager(QQManagerFactory.NEW_FRIEND_MANAGER)).b(paramString)) {
+    if (((NewFriendManager)paramQQAppInterface.getManager(QQManagerFactory.NEW_FRIEND_MANAGER)).b(paramString)) {
       return false;
     }
     if (paramQQAppInterface.getCurrentAccountUin().equals(paramString)) {
@@ -156,6 +151,15 @@ public class SignatureManager
     jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramQQAppInterface);
     a(false);
     return true;
+  }
+  
+  public static boolean a(SignatureTemplateInfo paramSignatureTemplateInfo)
+  {
+    boolean bool = false;
+    if ((!TextUtils.isEmpty(paramSignatureTemplateInfo.a[0].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramSignatureTemplateInfo.a[1].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramSignatureTemplateInfo.a[2].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramSignatureTemplateInfo.a[3].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramSignatureTemplateInfo.a[4].jdField_a_of_type_JavaLangString))) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean a(String paramString)
@@ -235,8 +239,8 @@ public class SignatureManager
         if ((paramRichStatus.sigZanInfo == null) || (paramRichStatus.sigZanInfo.get(Integer.valueOf(255)) == null)) {
           break label763;
         }
-        j = ((bbtj)paramRichStatus.sigZanInfo.get(Integer.valueOf(255))).jdField_b_of_type_Int;
-        i = ((bbtj)paramRichStatus.sigZanInfo.get(Integer.valueOf(255))).jdField_c_of_type_Int;
+        j = ((RichStatus.SigZanInfo)paramRichStatus.sigZanInfo.get(Integer.valueOf(255))).jdField_b_of_type_Int;
+        i = ((RichStatus.SigZanInfo)paramRichStatus.sigZanInfo.get(Integer.valueOf(255))).jdField_c_of_type_Int;
         localJSONObject1.put("count", j);
         localJSONObject1.put("zanfalg", i);
         if ((paramRichStatus.mStickerInfos != null) && (paramRichStatus.mStickerInfos.size() > 0))
@@ -289,7 +293,7 @@ public class SignatureManager
   {
     if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramRichStatus.tplId)))
     {
-      paramQQAppInterface = bhoh.a(paramQQAppInterface, paramRichStatus.tplId);
+      paramQQAppInterface = SignatureTemplateConfig.a(paramQQAppInterface, paramRichStatus.tplId);
       if (paramQQAppInterface != null) {
         jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramRichStatus.tplId), paramQQAppInterface);
       }
@@ -299,7 +303,7 @@ public class SignatureManager
   private static void b(QQAppInterface paramQQAppInterface, RichStatus paramRichStatus, ExtensionInfo paramExtensionInfo, String paramString1, String paramString2)
   {
     long l = NetConnInfoCenter.getServerTimeMillis();
-    afqy localafqy = (afqy)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
+    BeancurdManager localBeancurdManager = (BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
     BeancurdMsg localBeancurdMsg = new BeancurdMsg();
     localBeancurdMsg.frienduin = paramString2;
     localBeancurdMsg.busiid = 1;
@@ -308,14 +312,14 @@ public class SignatureManager
     localBeancurdMsg.startTime = NetConnInfoCenter.getServerTime();
     localBeancurdMsg.validTime = 2592000L;
     localBeancurdMsg.buffer = paramString1;
-    localafqy.a(localBeancurdMsg);
-    bhhr.b(paramQQAppInterface.getCurrentUin(), paramString2, l);
+    localBeancurdManager.a(localBeancurdMsg);
+    SharedPreUtils.b(paramQQAppInterface.getCurrentUin(), paramString2, l);
     if (paramExtensionInfo != null)
     {
       paramExtensionInfo.isAdded2C2C = true;
-      ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramExtensionInfo);
+      ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramExtensionInfo);
     }
-    bdla.b(paramQQAppInterface, "CliOper", "", "", "signature", "aio_sig_show", 0, 0, String.valueOf(paramRichStatus.tplId), "", "", "");
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", "signature", "aio_sig_show", 0, 0, String.valueOf(paramRichStatus.tplId), "", "", "");
   }
   
   private static boolean b(QQAppInterface paramQQAppInterface, RichStatus paramRichStatus, String paramString)
@@ -323,22 +327,22 @@ public class SignatureManager
     boolean bool = false;
     if ((paramRichStatus.isEmpty()) || (TextUtils.isEmpty(paramRichStatus.feedsId)))
     {
-      paramRichStatus = paramQQAppInterface.getMessageFacade().getAllMessages(paramString, 0, new int[] { -1034 });
+      paramRichStatus = paramQQAppInterface.getMessageFacade().a(paramString, 0, new int[] { -1034 });
       if (paramRichStatus != null)
       {
         paramRichStatus = paramRichStatus.iterator();
         while (paramRichStatus.hasNext())
         {
           MessageRecord localMessageRecord = (MessageRecord)paramRichStatus.next();
-          paramQQAppInterface.getMessageFacade().removeMsgFromCacheByUniseq(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
-          paramQQAppInterface.getMessageFacade().removeMsgByUniseq(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+          paramQQAppInterface.getMessageFacade().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
+          paramQQAppInterface.getMessageFacade().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
         }
       }
-      ((afqy)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).b(paramString, 0, 1);
+      ((BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).b(paramString, 0, 1);
       if (QLog.isColorLevel()) {
         QLog.d("Signature", 2, "insertSignMsgIfNeeded delete signature");
       }
-      bhhr.b(paramQQAppInterface.getCurrentUin(), paramString, 0L);
+      SharedPreUtils.b(paramQQAppInterface.getCurrentUin(), paramString, 0L);
       bool = true;
     }
     return bool;
@@ -346,14 +350,15 @@ public class SignatureManager
   
   private static boolean b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if ((RecentUser)paramQQAppInterface.getProxyManager().a().findRecentUserByUin(paramString, 0) == null)
+    boolean bool = false;
+    if (paramQQAppInterface.getProxyManager().a().a(paramString, 0) == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Signature", 2, "insertSignMsgIfNeeded fail ResentUser = null ");
       }
-      return true;
+      bool = true;
     }
-    return false;
+    return bool;
   }
   
   private static boolean b(RichStatus paramRichStatus)
@@ -368,10 +373,10 @@ public class SignatureManager
   
   public static boolean b(String paramString)
   {
-    paramString = bhoh.a(paramString, "dynamic_aio");
+    paramString = SignatureTemplateConfig.a(paramString, "dynamic_aio");
     File localFile = new File(paramString);
     if ((localFile == null) || (!localFile.exists()) || (!localFile.isDirectory())) {}
-    while (FileUtils.getChildFiles(paramString).size() <= 0) {
+    while (FileUtils.a(paramString).size() <= 0) {
       return false;
     }
     return true;
@@ -388,10 +393,10 @@ public class SignatureManager
       if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
         this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
       }
-      Object localObject = ((anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      Object localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
       if (localObject != null)
       {
-        localObject = ((ExtensionInfo)localObject).getRichStatus();
+        localObject = ExtensionRichStatus.a((ExtensionInfo)localObject);
         if (localObject != null) {
           this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(((RichStatus)localObject).feedsId, localObject);
         }
@@ -451,18 +456,18 @@ public class SignatureManager
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    jdField_a_of_type_ArrayOfBhoi = null;
-    jdField_b_of_type_Bhoj = null;
+    jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateConfig$SignatureTemplateType = null;
+    jdField_b_of_type_ComTencentMobileqqVasSignatureTemplateInfo = null;
     a(null);
-    if (this.jdField_a_of_type_Bhyt != null) {
-      this.jdField_a_of_type_Bhyt.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.b();
     }
     jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SignatureManager
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class stGetAIOFeedDetailRsp
 {
   static stSimpleMetaFeed cache_feed = new stSimpleMetaFeed();
   public boolean enable = true;
-  public stSimpleMetaFeed feed;
+  public stSimpleMetaFeed feed = null;
   
   public stGetAIOFeedDetailRsp() {}
   

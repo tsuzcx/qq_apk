@@ -1,8 +1,8 @@
 package cooperation.qqreader.host.advertisement;
 
-import acal;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtImageData;
 
 public class ReaderGdtSdk$ImageData
 {
@@ -10,11 +10,11 @@ public class ReaderGdtSdk$ImageData
   public String url;
   public int width;
   
-  public ReaderGdtSdk$ImageData(@NonNull acal paramacal)
+  public ReaderGdtSdk$ImageData(@NonNull GdtImageData paramGdtImageData)
   {
-    this.url = paramacal.jdField_a_of_type_JavaLangString;
-    this.width = paramacal.jdField_a_of_type_Int;
-    this.height = paramacal.b;
+    this.url = paramGdtImageData.jdField_a_of_type_JavaLangString;
+    this.width = paramGdtImageData.jdField_a_of_type_Int;
+    this.height = paramGdtImageData.b;
   }
   
   public boolean isValid()
@@ -24,7 +24,7 @@ public class ReaderGdtSdk$ImageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderGdtSdk.ImageData
  * JD-Core Version:    0.7.0.1
  */

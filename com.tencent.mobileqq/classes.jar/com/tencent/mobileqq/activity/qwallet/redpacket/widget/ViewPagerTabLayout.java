@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.widget;
 
-import alba;
-import albb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -34,13 +32,13 @@ public class ViewPagerTabLayout
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private albb jdField_a_of_type_Albb;
   private Context jdField_a_of_type_AndroidContentContext;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private boolean jdField_a_of_type_Boolean;
+  private ViewPagerTabLayout.OnTabSelectListener jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketWidgetViewPagerTabLayout$OnTabSelectListener;
+  private boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
@@ -82,7 +80,7 @@ public class ViewPagerTabLayout
     if ((localTextView != null) && (paramString != null)) {
       localTextView.setText(paramString);
     }
-    paramView.setOnClickListener(new alba(this));
+    paramView.setOnClickListener(new ViewPagerTabLayout.1(this));
     if (this.jdField_a_of_type_Boolean) {}
     for (paramString = new LinearLayout.LayoutParams(0, -1, 1.0F);; paramString = new LinearLayout.LayoutParams(-2, -1))
     {
@@ -299,7 +297,7 @@ public class ViewPagerTabLayout
     return (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((isInEditMode()) || (this.jdField_b_of_type_Int <= 0)) {}
@@ -344,7 +342,7 @@ public class ViewPagerTabLayout
     }
   }
   
-  protected void onRestoreInstanceState(Parcelable paramParcelable)
+  public void onRestoreInstanceState(Parcelable paramParcelable)
   {
     Parcelable localParcelable = paramParcelable;
     if ((paramParcelable instanceof Bundle))
@@ -367,7 +365,7 @@ public class ViewPagerTabLayout
     super.onRestoreInstanceState(localParcelable);
   }
   
-  protected Parcelable onSaveInstanceState()
+  public Parcelable onSaveInstanceState()
   {
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("currentState", super.onSaveInstanceState());
@@ -401,9 +399,9 @@ public class ViewPagerTabLayout
     invalidate();
   }
   
-  public void setOnTabSelectListener(albb paramalbb)
+  public void setOnTabSelectListener(ViewPagerTabLayout.OnTabSelectListener paramOnTabSelectListener)
   {
-    this.jdField_a_of_type_Albb = paramalbb;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketWidgetViewPagerTabLayout$OnTabSelectListener = paramOnTabSelectListener;
   }
   
   public void setScrollOnTabClick(boolean paramBoolean)
@@ -429,7 +427,7 @@ public class ViewPagerTabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -10,24 +8,37 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import antu;
-import asiy;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.EmotionInjectionInfo;
+import com.tencent.mobileqq.EmotionPanelManager;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.core.EmotionPanelParamsBuilder;
+import com.tencent.mobileqq.core.QQEmotionPanelManager;
+import com.tencent.mobileqq.core.SystemEmotionPanelManager;
+import com.tencent.mobileqq.core.SystemEmotionPanelManager.IEmoticonPanelInject;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
+import com.tencent.mobileqq.emoticon.EmotionPanelPayBackListenerManager;
+import com.tencent.mobileqq.emoticon.IEmoticonPackageDownloadListener;
+import com.tencent.mobileqq.emoticonview.adapter.IEmotionAdapterHelper;
+import com.tencent.mobileqq.emoticonview.api.impl.AIOPanelInteractionListener;
+import com.tencent.mobileqq.emoticonview.api.impl.ApolloDependListener;
+import com.tencent.mobileqq.emoticonview.api.impl.EmotionPanelDependListener;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.emoticonview.sender.CameraEmoticonInfoSender;
+import com.tencent.mobileqq.emoticonview.sender.FavoriteEmoticonInfoSender;
+import com.tencent.mobileqq.emoticonview.sender.PicEmoticonInfoSender;
+import com.tencent.mobileqq.emoticonview.sender.SystemAndEmojiEmoticonInfoSender;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 public class EmoticonMainPanel
   extends RelativeLayout
-  implements EmotionPanelListView.PullAndFastScrollListener
+  implements SystemEmotionPanelManager.IEmoticonPanelInject, IEmoticonPackageDownloadListener, EmotionPanelListView.PullAndFastScrollListener
 {
   public static final int BTN_STATUS_DEL = 2;
   public static final int BTN_STATUS_MORE = 1;
-  public static final int CALL_BACK_TYPE_BIG_EMOTICON = 18;
-  public static final int CALL_BACK_TYPE_RECOMMENT = 17;
   public static final String FORCE_TO_RECOMMEND_PANEL_SP = "force_to_recommend_panel_sp";
   protected static final String LOG_TAG = "EmoticonMainPanel";
   public static final int MAX_REPORT_COUNT = 10;
@@ -47,16 +58,16 @@ public class EmoticonMainPanel
   public static final String SP_USER_FILE_NAME = "emoticon_panel_";
   public static long sOpenStartTime;
   @Deprecated
-  public boolean disableAutoDownload;
+  public boolean disableAutoDownload = false;
   @Deprecated
-  public boolean disableGuide;
+  public boolean disableGuide = false;
   @Deprecated
-  public boolean disableGuideOneTime;
+  public boolean disableGuideOneTime = false;
   @Deprecated
-  public boolean disableMoreEmotionButton;
+  public boolean disableMoreEmotionButton = false;
   @Deprecated
   public boolean hasBigEmotion = true;
-  public boolean isHiden;
+  public boolean isHiden = false;
   private EmoticonMainPanel.DispatchKeyEventListener mDispatchKeyEventListener;
   private EmoticonPanelController mEmoController = new EmoticonPanelController(paramContext, this);
   public HorizontalListViewEx mEmoticonTabs;
@@ -64,8 +75,8 @@ public class EmoticonMainPanel
   public int mLocalId = -1;
   public boolean mSecondTabInited;
   @Deprecated
-  public boolean onlySysAndEmoji;
-  public boolean showStickerGuide;
+  public boolean onlySysAndEmoji = false;
+  public boolean showStickerGuide = false;
   public View stickerMaskLayout;
   
   public EmoticonMainPanel(Context paramContext, AttributeSet paramAttributeSet)
@@ -73,28 +84,43 @@ public class EmoticonMainPanel
     super(paramContext, paramAttributeSet);
   }
   
-  public static void sendRecommendSSORequest(QQAppInterface paramQQAppInterface, int paramInt)
+  public void addEmoticonPackageDownloadListener(EmoticonPackageDownloadListener paramEmoticonPackageDownloadListener)
   {
-    if (paramQQAppInterface == null) {}
-    SharedPreferences localSharedPreferences;
-    long l;
-    do
-    {
-      return;
-      if (paramInt == 1)
-      {
-        ThreadManagerV2.excute(new EmoticonMainPanel.1(paramQQAppInterface), 128, null, true);
-        return;
-      }
-      localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0);
-      l = localSharedPreferences.getLong("last_get_recommendemotion_time_" + paramQQAppInterface.getCurrentUin(), 0L);
-      paramInt = localSharedPreferences.getInt("recommendSeqinterval", 7200);
-    } while (System.currentTimeMillis() - l < paramInt * 1000);
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "sendRecommendSSORequest send req to recommend");
+    EmojiListenerManager.a().a(paramEmoticonPackageDownloadListener);
+  }
+  
+  public IEmoticonPanelLinearLayoutHelper createEmoticonPanelLayoutHelper(boolean paramBoolean)
+  {
+    Context localContext = getContext();
+    if (paramBoolean) {}
+    for (BaseChatPie localBaseChatPie = this.mEmoController.mBaseChatPie;; localBaseChatPie = null) {
+      return new QQEmoticonPanelLinearLayoutHelper(localContext, localBaseChatPie);
     }
-    ((antu)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).a();
-    localSharedPreferences.edit().putLong("last_get_recommendemotion_time_" + paramQQAppInterface.getCurrentUin(), System.currentTimeMillis()).apply();
+  }
+  
+  public IEmotionAdapterHelper createEmotionAdapterHelper(int paramInt)
+  {
+    if (paramInt == 11) {
+      return new CameraEmotionAdapterHelper(this.mEmoController.app);
+    }
+    return null;
+  }
+  
+  public IEmoticonInfoSender createEmotionInfoSender(int paramInt)
+  {
+    if (paramInt == 7) {
+      return new SystemAndEmojiEmoticonInfoSender();
+    }
+    if (paramInt == 4) {
+      return new FavoriteEmoticonInfoSender();
+    }
+    if (paramInt == 11) {
+      return new CameraEmoticonInfoSender();
+    }
+    if (paramInt == 6) {
+      return new PicEmoticonInfoSender();
+    }
+    return null;
   }
   
   public void deleteEmoticonClick()
@@ -102,7 +128,7 @@ public class EmoticonMainPanel
     this.mEmoController.deleteEmoticonClick();
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     try
     {
@@ -129,7 +155,7 @@ public class EmoticonMainPanel
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonMainPanel", 2, "func doAutoDownload begins.");
     }
-    asiy.a().a(paramInt);
+    EmotionPanelPayBackListenerManager.a().a(paramInt);
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonMainPanel", 2, "func doAutoDownload ends.");
     }
@@ -138,6 +164,11 @@ public class EmoticonMainPanel
   public EmoticonPanelController getEmoController()
   {
     return this.mEmoController;
+  }
+  
+  public EmoticonMainPanel getEmoPanel()
+  {
+    return this;
   }
   
   public int getEmoticonTab(String paramString)
@@ -160,7 +191,33 @@ public class EmoticonMainPanel
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonMainPanel", 2, "init");
     }
-    new EmoticonMainPanel.EmoticonPanelBuilder(this, paramQQAppInterface, paramBaseChatPie, paramInt1).setEmoticonListProvider(paramEmoticonListProvider).setKanDianBiu(paramBoolean).setDefaultEpId(paramString).setDefaultPanelType(paramInt3).setToastOffset(paramInt2).setDisableMoreEmotionButton(this.disableMoreEmotionButton).setHasBigEmotion(this.hasBigEmotion).setOnlySysAndEmoji(this.onlySysAndEmoji).setDisableGuide(this.disableGuide).setDisableGuideOneTime(this.disableGuideOneTime).setDisableAutoDownload(this.disableAutoDownload).setFilterSysFaceBeyond255Enable(isFilterSysFaceBeyond255Enable()).show();
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = new QQEmoticonMainPanelApp(paramQQAppInterface);
+    QQEmotionPanelManager.a().a(BaseApplicationImpl.getApplication());
+    QQEmotionPanelManager.a().a(this.mEmoController);
+    QQEmotionPanelManager.a().a(this);
+    if (paramBaseChatPie != null)
+    {
+      QQEmotionPanelManager.a().a(new AIOPanelInteractionListener(paramBaseChatPie));
+      if (this.mEmoController == null) {
+        break label304;
+      }
+    }
+    label304:
+    for (paramQQAppInterface = this.mEmoController.callback;; paramQQAppInterface = null)
+    {
+      paramQQAppInterface = new EmotionInjectionInfo(15, 4, 2130838111, new CmShowEmotionPanelBuilder(localQQEmoticonMainPanelApp, paramContext, 4, 15, 15, paramQQAppInterface, paramBaseChatPie));
+      EmotionPanelManager.a().a("cmshow", paramQQAppInterface);
+      SystemEmotionPanelManager.a().a(new EmotionPanelDependListener());
+      SystemEmotionPanelManager.a().a(new ApolloDependListener());
+      SystemEmotionPanelManager.a().a(this);
+      if (paramBaseChatPie != null)
+      {
+        paramQQAppInterface = new EmotionPanelParamsBuilder().a(paramBaseChatPie.b()).a(paramBaseChatPie.b()).b(paramBaseChatPie.b()).c(paramBaseChatPie.d());
+        QQEmotionPanelManager.a().a(paramQQAppInterface);
+      }
+      new EmoticonMainPanel.EmoticonPanelBuilder(this, localQQEmoticonMainPanelApp, paramBaseChatPie, paramInt1).setEmoticonListProvider(paramEmoticonListProvider).setKanDianBiu(paramBoolean).setDefaultEpId(paramString).setDefaultPanelType(paramInt3).setToastOffset(paramInt2).setDisableMoreEmotionButton(this.disableMoreEmotionButton).setHasBigEmotion(this.hasBigEmotion).setOnlySysAndEmoji(this.onlySysAndEmoji).setDisableGuide(this.disableGuide).setDisableGuideOneTime(this.disableGuideOneTime).setDisableAutoDownload(this.disableAutoDownload).setFilterSysFaceBeyond255Enable(isFilterSysFaceBeyond255Enable()).show();
+      return;
+    }
   }
   
   public void init(QQAppInterface paramQQAppInterface, int paramInt1, Context paramContext, int paramInt2, String paramString, BaseChatPie paramBaseChatPie)
@@ -203,7 +260,7 @@ public class EmoticonMainPanel
     return this.mEmoController.isShowExtendPanel();
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.mEmoController.onAttachedToWindow();
@@ -212,9 +269,12 @@ public class EmoticonMainPanel
   public void onDestory()
   {
     this.mEmoController.onDestory();
+    QQEmotionPanelManager.a().a();
+    SystemEmotionPanelManager.a().a();
+    EmotionPanelManager.a().a();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.mEmoController.onDetachedFromWindow();
@@ -247,7 +307,7 @@ public class EmoticonMainPanel
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.mEmoController.onMeasureMainPanel();
@@ -281,6 +341,11 @@ public class EmoticonMainPanel
   public void preloadWebProcess()
   {
     this.mEmoController.preloadWebProcess();
+  }
+  
+  public void removeEmoticonPackageDownloadListener(EmoticonPackageDownloadListener paramEmoticonPackageDownloadListener)
+  {
+    EmojiListenerManager.a().b(paramEmoticonPackageDownloadListener);
   }
   
   public void removePopupGuide()
@@ -364,7 +429,7 @@ public class EmoticonMainPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonMainPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import azla;
-import azlb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PicUpReq;
@@ -69,7 +69,7 @@ public class ShareToWXUploadProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "share_pic_to_wx";
     localRichProtoReq.reqs.add(localPicUpReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = getProtoReqManager();
     return localRichProtoReq;
   }
   
@@ -140,12 +140,12 @@ public class ShareToWXUploadProcessor
     super.onSuccess();
     if (this.mUiRequest.mUpCallBack != null)
     {
-      azlb localazlb = new azlb();
-      localazlb.jdField_a_of_type_Int = 0;
-      localazlb.jdField_a_of_type_Long = this.mFileSize;
-      localazlb.d = this.mMd5Str;
-      localazlb.e = this.file.orgiDownUrl;
-      this.mUiRequest.mUpCallBack.onSend(localazlb);
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+      localSendResult.jdField_a_of_type_Int = 0;
+      localSendResult.jdField_a_of_type_Long = this.mFileSize;
+      localSendResult.d = this.mMd5Str;
+      localSendResult.e = this.file.orgiDownUrl;
+      this.mUiRequest.mUpCallBack.b(localSendResult);
     }
     for (;;)
     {
@@ -195,7 +195,7 @@ public class ShareToWXUploadProcessor
     long l = new File(str).length();
     this.file.fileSize = l;
     this.mFileSize = l;
-    str = FileUtils.estimateFileType(str);
+    str = FileUtils.b(str);
     if (!TextUtils.isEmpty(str)) {
       this.mExtName = str;
     }

@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aklo;
 import com.tencent.qphone.base.util.QLog;
 
-public class VideoPlayController$1
+class VideoPlayController$1
   implements Runnable
 {
-  public VideoPlayController$1(aklo paramaklo) {}
+  VideoPlayController$1(VideoPlayController paramVideoPlayController) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class VideoPlayController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.VideoPlayController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,10 @@ package com.tencent.mobileqq.ar.ARRecord;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class ARRecordUtils$2
+final class ARRecordUtils$2
   implements Runnable
 {
-  public ARRecordUtils$2(boolean paramBoolean, String paramString) {}
+  ARRecordUtils$2(boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public final class ARRecordUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.2
  * JD-Core Version:    0.7.0.1
  */

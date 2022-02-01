@@ -40,12 +40,12 @@ public class QzoneFeedItemTimeLocationView
   
   private void init()
   {
-    LayoutInflater.from(this.mContext).inflate(2131558891, this);
-    this.feedLocationTv = ((TextView)findViewById(2131366621));
-    this.feedCreateTimeTv = ((TextView)findViewById(2131366691));
+    LayoutInflater.from(this.mContext).inflate(2131558932, this);
+    this.feedLocationTv = ((TextView)findViewById(2131366798));
+    this.feedCreateTimeTv = ((TextView)findViewById(2131366870));
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean)
@@ -55,7 +55,7 @@ public class QzoneFeedItemTimeLocationView
         paramInt1 = this.feedCreateTimeTv.getWidth();
       }
       paramInt2 = getWidth();
-      paramInt3 = paramInt2 - (int)(this.mContext.getResources().getDimension(2131296403) + 0.5D) - (int)(this.mContext.getResources().getDimension(2131296404) + 0.5D) - (int)(this.mContext.getResources().getDimension(2131296402) + 0.5D) - paramInt1 - 1;
+      paramInt3 = paramInt2 - (int)(this.mContext.getResources().getDimension(2131296419) + 0.5D) - (int)(this.mContext.getResources().getDimension(2131296420) + 0.5D) - (int)(this.mContext.getResources().getDimension(2131296418) + 0.5D) - paramInt1 - 1;
       this.feedLocationTv.setMaxWidth(paramInt3);
       if (QLog.isColorLevel()) {
         QLog.d("QzoneFeedItemTimeLocationView", 2, "onLayout change:timeWidth:" + paramInt1 + ",feedLocationTvWidth(max):" + paramInt3 + ",feedLocationLayoutWidth:" + paramInt2);
@@ -66,7 +66,7 @@ public class QzoneFeedItemTimeLocationView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -78,7 +78,7 @@ public class QzoneFeedItemTimeLocationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneFeedItemTimeLocationView
  * JD-Core Version:    0.7.0.1
  */

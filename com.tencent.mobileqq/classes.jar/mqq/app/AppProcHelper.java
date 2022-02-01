@@ -60,7 +60,7 @@ public class AppProcHelper
   
   public static boolean isLegalBroadcast(String paramString, ArrayList<String> paramArrayList)
   {
-    if (Foreground.sCountActivity > 0) {}
+    if (Foreground.getActivityCount() > 0) {}
     while ((paramString == null) || (paramString.length() == 0) || ((!paramString.equals(getLocalVerify(paramArrayList, false))) && (!paramString.equals(getLocalVerify(paramArrayList, true))))) {
       return false;
     }

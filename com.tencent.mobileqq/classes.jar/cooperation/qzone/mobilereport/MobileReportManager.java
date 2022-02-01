@@ -5,26 +5,30 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import axln;
-import bmoq;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.musicpendant.Base64;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.utils.Tools;
 import java.net.URLEncoder;
 import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class MobileReportManager
 {
   private static final String TAG = "MobileReport.Manager";
   public static final String sTraceKey = "h5costreport=1";
-  private final MobileReportManager.ReportLiveTask mReportLiveTask = new MobileReportManager.ReportLiveTask(null);
-  private final MobileReportManager.ReportTask mReportTask = new MobileReportManager.ReportTask(null);
+  private final ReportActionInfoTask mReportActionInfoTask = new ReportActionInfoTask();
+  private final ReportLiveHeartTask mReportLiveHeartTask = new ReportLiveHeartTask();
+  private final ReportLiveTask mReportLiveTask = new ReportLiveTask();
+  private final ReportSchemaInfoTask mReportSchemaLiveTask = new ReportSchemaInfoTask();
   
   public static MobileReportManager getInstance()
   {
-    return MobileReportManager.SingletonInstance.access$200();
+    return MobileReportManager.SingletonInstance.access$000();
   }
   
   public static String getNewDefaultReportInfo(String paramString1, String paramString2)
@@ -34,7 +38,7 @@ public class MobileReportManager
     {
       localJSONObject.put("appid", paramString1);
       localJSONObject.put("page_id", paramString2);
-      paramString1 = "&trace_detail=base64-" + axln.a(localJSONObject.toString());
+      paramString1 = "&trace_detail=base64-" + Base64.a(localJSONObject.toString());
       return paramString1;
     }
     catch (Exception paramString1)
@@ -56,7 +60,7 @@ public class MobileReportManager
       {
         localJSONObject.put("appid", paramString2);
         localJSONObject.put("page_id", paramString3);
-        paramString2 = paramString1 + axln.a(localJSONObject.toString());
+        paramString2 = paramString1 + Base64.a(localJSONObject.toString());
         return paramString2;
       }
       catch (Exception paramString2)
@@ -70,7 +74,7 @@ public class MobileReportManager
   public static String getNewReportInfo(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
     if (paramAppInfo != null) {
-      return String.format("&trace_detail=base64-%s", new Object[] { axln.a(MobileReportManager.NewReportKey.build(paramAppInfo).buildTraceDetail()) });
+      return String.format("&trace_detail=base64-%s", new Object[] { Base64.a(MobileReportManager.NewReportKey.build(paramAppInfo).buildTraceDetail()) });
     }
     return null;
   }
@@ -81,9 +85,9 @@ public class MobileReportManager
     {
       paramAppInfo = MobileReportManager.NewReportKey.build(paramAppInfo);
       if (paramString.contains("?")) {
-        return String.format("&trace_detail=base64-%s", new Object[] { axln.a(paramAppInfo.buildTraceDetail()) });
+        return String.format("&trace_detail=base64-%s", new Object[] { Base64.a(paramAppInfo.buildTraceDetail()) });
       }
-      return String.format("?trace_detail=base64-%s", new Object[] { axln.a(paramAppInfo.buildTraceDetail()) });
+      return String.format("?trace_detail=base64-%s", new Object[] { Base64.a(paramAppInfo.buildTraceDetail()) });
     }
     return null;
   }
@@ -97,7 +101,7 @@ public class MobileReportManager
       localJSONObject.put("page_id", paramString2);
       localJSONObject.put("item_id", paramString3);
       localJSONObject.put("item_type", paramString4);
-      paramString1 = "&trace_detail=" + axln.a(localJSONObject.toString());
+      paramString1 = "&trace_detail=" + Base64.a(localJSONObject.toString());
       return paramString1;
     }
     catch (Exception paramString1)
@@ -129,7 +133,7 @@ public class MobileReportManager
   {
     if (paramAppInfo != null)
     {
-      paramAppInfo = MobileReportManager.ReportKey.build(paramAppInfo);
+      paramAppInfo = ReportKey.build(paramAppInfo);
       return String.format("&traceId=%s&traceNum=%s&traceDetail=%s", new Object[] { paramAppInfo.traceId, String.valueOf(paramAppInfo.traceNum), URLEncoder.encode(paramAppInfo.buildTraceDetail()) });
     }
     return null;
@@ -155,7 +159,7 @@ public class MobileReportManager
       str1 = "";
       if (paramAppInfo != null)
       {
-        paramAppInfo = MobileReportManager.ReportKey.build(paramAppInfo);
+        paramAppInfo = ReportKey.build(paramAppInfo);
         str2 = String.format("trace_id=%s&trace_num=%s&trace_detail=%s", new Object[] { paramAppInfo.traceId, String.valueOf(paramAppInfo.traceNum), URLEncoder.encode(paramAppInfo.buildTraceDetail()) });
         if (!paramString.contains("?")) {
           break label98;
@@ -183,7 +187,7 @@ public class MobileReportManager
   
   public void reportAction(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, long paramLong)
   {
-    paramString4 = new MobileReportManager.ReportKey("", 1, "", -1, paramString3, paramString4);
+    paramString4 = new ReportKey("", 1, "", -1, paramString3, paramString4);
     MobileReportManager.ItemInfoBuilder localItemInfoBuilder = new MobileReportManager.ItemInfoBuilder();
     paramString3 = paramString1;
     if (paramString1 == null) {
@@ -205,7 +209,7 @@ public class MobileReportManager
     for (;;)
     {
       QLog.d("MobileReport.Manager", 2, "report " + paramString4.toString() + " actionId = " + paramString1);
-      this.mReportTask.reportByKey(paramString4, paramString3);
+      this.mReportActionInfoTask.reportByKey(paramString4, paramString3);
       return;
       label153:
       if (101 == paramInt1) {
@@ -218,7 +222,7 @@ public class MobileReportManager
   
   public void reportAction(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, int paramInt2)
   {
-    paramString2 = new MobileReportManager.ReportKey("", 1, "", -1, paramString1, paramString2);
+    paramString2 = new ReportKey("", 1, "", -1, paramString1, paramString2);
     MobileReportManager.ItemInfoBuilder localItemInfoBuilder = new MobileReportManager.ItemInfoBuilder();
     paramString1 = paramString5;
     if (paramString5 == null) {
@@ -245,7 +249,7 @@ public class MobileReportManager
     for (;;)
     {
       QLog.d("MobileReport.Manager", 2, "report " + paramString2.toString() + " actionId = " + paramString1);
-      this.mReportTask.reportByKey(paramString2, paramString3);
+      this.mReportActionInfoTask.reportByKey(paramString2, paramString3);
       return;
       label169:
       if (101 == paramInt1) {
@@ -258,7 +262,7 @@ public class MobileReportManager
   
   public void reportActionLive(String paramString1, String paramString2, ItemInfo paramItemInfo)
   {
-    paramString1 = new MobileReportManager.ReportKey("", 1, "", -1, paramString1, paramString2);
+    paramString1 = new ReportKey("", 1, "", -1, paramString1, paramString2);
     if (QLog.isColorLevel()) {
       QLog.d("MobileReport.Manager", 2, "report " + paramString1.toString() + " actionId = " + paramItemInfo.toString());
     }
@@ -267,7 +271,7 @@ public class MobileReportManager
   
   public void reportActionLive(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, long paramLong, String paramString6)
   {
-    paramString4 = new MobileReportManager.ReportKey("", 1, "", -1, paramString3, paramString4);
+    paramString4 = new ReportKey("", 1, "", -1, paramString3, paramString4);
     MobileReportManager.ItemInfoBuilder localItemInfoBuilder = new MobileReportManager.ItemInfoBuilder();
     paramString3 = paramString1;
     if (paramString1 == null) {
@@ -300,9 +304,18 @@ public class MobileReportManager
     }
   }
   
+  public void reportActionLiveHeart(String paramString1, String paramString2, ItemInfo paramItemInfo)
+  {
+    paramString1 = new ReportKey("", 1, "", -1, paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("MobileReport.Manager", 2, "report " + paramString1.toString() + " actionId = " + paramItemInfo.toString());
+    }
+    this.mReportLiveHeartTask.reportByKey(paramString1, paramItemInfo);
+  }
+  
   public void reportActionOfNotice(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2)
   {
-    paramString2 = new MobileReportManager.ReportKey("", 1, "", -1, paramString1, paramString2);
+    paramString2 = new ReportKey("", 1, "", -1, paramString1, paramString2);
     paramString3 = new MobileReportManager.ItemInfoBuilder().setItemId(paramString4).setItemType(paramString5).setModuleId(paramString3).addActionInfo(new MobileReportManager.ActionInfoBuilder(System.currentTimeMillis(), paramInt1, paramInt2).build()).build();
     if (QLog.isColorLevel())
     {
@@ -314,7 +327,7 @@ public class MobileReportManager
     for (;;)
     {
       QLog.d("MobileReport.Manager", 2, "report of notice:    itemId=" + paramString4 + ";" + paramString2.toString() + " actionId = " + paramString1);
-      this.mReportTask.reportByKey(paramString2, paramString3);
+      this.mReportActionInfoTask.reportByKey(paramString2, paramString3);
       return;
       label139:
       if (101 == paramInt1) {
@@ -329,22 +342,22 @@ public class MobileReportManager
   
   public void reportH5DomainClick(String paramString1, String paramString2)
   {
-    MobileReportManager.ReportKey localReportKey;
+    ReportKey localReportKey;
     Object localObject;
     if ((!TextUtils.isEmpty(paramString1)) && (paramString1.contains("h5costreport=1")))
     {
-      localReportKey = new MobileReportManager.ReportKey("", 0, "", 0, "JumpUrlReport", paramString1);
+      localReportKey = new ReportKey("", 0, "", 0, "JumpUrlReport", paramString1);
       localObject = new JSONObject();
     }
     try
     {
       ((JSONObject)localObject).put("jump_url", paramString2);
-      String str = bmoq.a(paramString1).getString("adId");
+      String str = Tools.a(paramString1).getString("adId");
       localObject = new MobileReportManager.ItemInfoBuilder().setItemId(String.valueOf(str)).setBusiInfo(((JSONObject)localObject).toString()).addActionInfo(new MobileReportManager.ActionInfoBuilder(System.currentTimeMillis(), 152, 1L).build()).build();
       if (QLog.isColorLevel()) {
         QLog.d("MobileReport.Manager", 2, "report " + localReportKey.toString() + " opType = " + 152 + " url = " + paramString1 + " jumpUrl = " + paramString2);
       }
-      this.mReportTask.reportByKey(localReportKey, (ItemInfo)localObject);
+      this.mReportActionInfoTask.reportByKey(localReportKey, (ItemInfo)localObject);
       return;
     }
     catch (Exception localException)
@@ -358,11 +371,11 @@ public class MobileReportManager
   
   public void reportH5Trace(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3)
   {
-    MobileReportManager.ReportKey localReportKey;
+    ReportKey localReportKey;
     JSONObject localJSONObject;
     if ((!TextUtils.isEmpty(paramString1)) && (paramString1.contains("h5costreport=1")))
     {
-      localReportKey = new MobileReportManager.ReportKey("", 0, "", 0, "H5CostReport", paramString1);
+      localReportKey = new ReportKey("", 0, "", 0, "H5CostReport", paramString1);
       localJSONObject = new JSONObject();
     }
     try
@@ -374,7 +387,7 @@ public class MobileReportManager
       if (QLog.isColorLevel()) {
         QLog.d("MobileReport.Manager", 2, "report " + localReportKey.toString() + " opType = " + paramInt1 + " url = " + paramString1 + " timecost " + paramLong + " errorcode " + paramString2);
       }
-      this.mReportTask.reportByKey(localReportKey, paramString3);
+      this.mReportActionInfoTask.reportByKey(localReportKey, paramString3);
       return;
     }
     catch (Exception paramString3)
@@ -391,7 +404,7 @@ public class MobileReportManager
     if (paramAppInfo == null) {
       return;
     }
-    MobileReportManager.ReportKey localReportKey = MobileReportManager.ReportKey.build(paramAppInfo);
+    ReportKey localReportKey = ReportKey.build(paramAppInfo);
     ItemInfo localItemInfo = new MobileReportManager.ItemInfoBuilder().setItemId(localReportKey.adId).setBusiInfo(paramAppInfo.buffer.get()).addActionInfo(new MobileReportManager.ActionInfoBuilder(System.currentTimeMillis(), paramInt).build()).build();
     if (QLog.isColorLevel())
     {
@@ -403,7 +416,7 @@ public class MobileReportManager
     for (;;)
     {
       QLog.d("MobileReport.Manager", 2, "report " + localReportKey.toString() + " actionId = " + paramAppInfo);
-      this.mReportTask.reportByKey(localReportKey, localItemInfo);
+      this.mReportActionInfoTask.reportByKey(localReportKey, localItemInfo);
       return;
       label122:
       if (101 == paramInt) {
@@ -413,10 +426,20 @@ public class MobileReportManager
       }
     }
   }
+  
+  public void reportSchemaInfo(String paramString1, String paramString2)
+  {
+    ReportKey localReportKey = new ReportKey(paramString1, paramString2);
+    ItemInfo localItemInfo = new MobileReportManager.ItemInfoBuilder().build();
+    if (QLog.isColorLevel()) {
+      QLog.e("MobileReport.Manager", 1, "reportSchemaInfo " + paramString1 + " schemaUrl " + paramString2);
+    }
+    ThreadManager.getSubThreadHandler().post(new MobileReportManager.1(this, localReportKey, localItemInfo));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.mobilereport.MobileReportManager
  * JD-Core Version:    0.7.0.1
  */

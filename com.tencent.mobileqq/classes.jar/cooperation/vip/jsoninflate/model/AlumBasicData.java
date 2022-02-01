@@ -4,8 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bmmw;
-import bmmx;
+import com.tencent.gdtad.statistics.GdtOriginalExposureReporter;
 import com.tencent.gdtad.statistics.GdtReporter;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -37,11 +36,11 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public class AlumBasicData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AlumBasicData> CREATOR = new bmmw();
+  public static final Parcelable.Creator<AlumBasicData> CREATOR = new AlumBasicData.1();
   public int a;
   public long a;
   public String a;
-  public List<bmmx> a;
+  public List<AlumBasicData.DropData> a;
   public qq_ad_get.QQAdGetRsp.AdInfo a;
   public boolean a;
   public int b;
@@ -67,14 +66,18 @@ public class AlumBasicData
   {
     this.jdField_h_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_d_of_type_Int = 0;
     this.jdField_g_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public AlumBasicData(Parcel paramParcel)
+  protected AlumBasicData(Parcel paramParcel)
   {
     this.jdField_h_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_d_of_type_Int = 0;
     this.jdField_g_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
@@ -98,7 +101,7 @@ public class AlumBasicData
       this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.mergeFrom(arrayOfByte);
       this.jdField_h_of_type_JavaLangString = paramParcel.readString();
       this.i = paramParcel.readString();
-      paramParcel.readList(this.jdField_a_of_type_JavaUtilList, bmmx.class.getClassLoader());
+      paramParcel.readList(this.jdField_a_of_type_JavaUtilList, AlumBasicData.DropData.class.getClassLoader());
       this.jdField_d_of_type_Int = paramParcel.readInt();
       this.k = paramParcel.readString();
       this.jdField_e_of_type_Int = paramParcel.readInt();
@@ -245,7 +248,7 @@ public class AlumBasicData
         int m = 0;
         while (m < ((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.get().size())
         {
-          localAlumBasicData.jdField_a_of_type_JavaUtilList.add(bmmx.a((vac_adv_get.DropList)((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.get().get(m)));
+          localAlumBasicData.jdField_a_of_type_JavaUtilList.add(AlumBasicData.DropData.a((vac_adv_get.DropList)((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.get().get(m)));
           m += 1;
         }
       }
@@ -272,75 +275,42 @@ public class AlumBasicData
   
   private String a(AlumBasicData paramAlumBasicData, boolean paramBoolean)
   {
-    localObject1 = "";
-    Object localObject2 = localObject1;
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
     if (paramAlumBasicData != null)
     {
-      localObject2 = localObject1;
+      localObject1 = localObject2;
       if (paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo != null)
       {
-        localObject2 = localObject1;
+        localObject1 = localObject2;
         if (paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info != null)
         {
-          localObject2 = localObject1;
+          localObject1 = localObject2;
           if (paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.original_exposure_url != null)
           {
-            localObject2 = localObject1;
+            localObject1 = localObject2;
             if (TextUtils.isEmpty(paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.original_exposure_url.get())) {}
           }
         }
       }
     }
-    for (;;)
+    try
     {
-      String str;
-      try
-      {
-        str = paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.original_exposure_url.get();
-        localObject2 = str;
-        localObject1 = str;
-        if (!TextUtils.isEmpty(str))
-        {
-          localObject1 = str;
-          if (paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.product_type.get() != 12) {
-            continue;
-          }
-          localObject1 = str;
-          paramAlumBasicData = new StringBuilder();
-          if (!paramBoolean) {
-            continue;
-          }
-          m = 2;
-          localObject1 = str;
-          paramAlumBasicData = str.replace("__ACTION_TYPE__", m + "");
-          localObject1 = paramAlumBasicData;
-          paramAlumBasicData = (AlumBasicData)localObject1;
-        }
-      }
-      catch (Exception paramAlumBasicData) {}
-      try
-      {
-        localObject1 = ((String)localObject1).replace("__VIEW_PERCENT__", "1");
-        paramAlumBasicData = (AlumBasicData)localObject1;
-        localObject2 = ((String)localObject1).replace("__VIEW_TIME__", "0");
-        return localObject2;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localObject1 = paramAlumBasicData;
-          paramAlumBasicData = localException;
-        }
-      }
-      int m = 1;
-      continue;
+      String str = paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.original_exposure_url.get();
       localObject1 = str;
-      paramAlumBasicData = str.replace("__ACTION_TYPE__", "0");
-      localObject1 = paramAlumBasicData;
+      localObject2 = str;
+      if (!TextUtils.isEmpty(str))
+      {
+        localObject2 = str;
+        localObject1 = GdtOriginalExposureReporter.a(str, paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.product_type.get(), paramBoolean);
+      }
+      return localObject1;
     }
-    paramAlumBasicData.printStackTrace();
-    return localObject1;
+    catch (Exception paramAlumBasicData)
+    {
+      paramAlumBasicData.printStackTrace();
+    }
+    return localObject2;
   }
   
   private static void a(AlumBasicData paramAlumBasicData, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
@@ -519,7 +489,7 @@ public class AlumBasicData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.jsoninflate.model.AlumBasicData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,31 @@
+package com.tencent.mobileqq.flutter.container;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import androidx.lifecycle.Lifecycle;
+import io.flutter.embedding.engine.FlutterShellArgs;
+
+public abstract interface IQFlutterContainerHost
+{
+  public abstract Activity a();
+  
+  public abstract Context a();
+  
+  public abstract Bundle a();
+  
+  public abstract View a();
+  
+  public abstract FlutterShellArgs a();
+  
+  public abstract boolean a();
+  
+  public abstract Lifecycle getLifecycle();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.flutter.container.IQFlutterContainerHost
+ * JD-Core Version:    0.7.0.1
+ */

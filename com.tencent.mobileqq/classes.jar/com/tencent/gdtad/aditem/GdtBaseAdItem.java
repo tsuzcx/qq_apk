@@ -1,6 +1,5 @@
 package com.tencent.gdtad.aditem;
 
-import acaj;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,7 +11,7 @@ import org.json.JSONObject;
 public class GdtBaseAdItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new acaj();
+  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new GdtBaseAdItem.1();
   public Bundle a;
   public Class a;
   public String a;
@@ -24,10 +23,14 @@ public class GdtBaseAdItem
   public String e;
   public String f;
   
-  private GdtBaseAdItem() {}
-  
-  public GdtBaseAdItem(Parcel paramParcel)
+  private GdtBaseAdItem()
   {
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  protected GdtBaseAdItem(Parcel paramParcel)
+  {
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.c = paramParcel.readString();
@@ -39,10 +42,10 @@ public class GdtBaseAdItem
       this.jdField_a_of_type_Boolean = bool1;
       this.jdField_a_of_type_JavaLangClass = ((Class)paramParcel.readSerializable());
       if (paramParcel.readByte() == 0) {
-        break label114;
+        break label119;
       }
     }
-    label114:
+    label119:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_b_of_type_Boolean = bool1;
@@ -184,7 +187,7 @@ public class GdtBaseAdItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtBaseAdItem
  * JD-Core Version:    0.7.0.1
  */

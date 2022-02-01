@@ -1,6 +1,5 @@
 package com.tencent.viola.ui.view;
 
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -37,30 +36,27 @@ class VSmartView$RvScrollListener
     {
       do
       {
+        float f3;
         do
         {
-          float f3;
           do
           {
-            do
-            {
-              return;
-              localObject = paramRecyclerView.getTag();
-            } while ((!(localObject instanceof VSmartView.RecyclerViewWrapper)) || (((VSmartView.RecyclerViewWrapper)localObject).ignoreScrollEvent));
-            if (paramInt2 <= 0) {
-              break;
-            }
-            f3 = VSmartView.access$600(this.this$0);
-          } while (VSmartView.access$500(this.this$0).getTranslationY() <= -f3);
-          f2 = VSmartView.access$500(this.this$0).getTranslationY() + -paramInt2;
-          f1 = f2;
-          if (f2 < -f3) {
-            f1 = -f3;
+            return;
+            localObject = paramRecyclerView.getTag();
+          } while ((!(localObject instanceof VSmartView.RecyclerViewWrapper)) || (((VSmartView.RecyclerViewWrapper)localObject).ignoreScrollEvent));
+          if (paramInt2 <= 0) {
+            break;
           }
-          VSmartView.access$500(this.this$0).setTranslationY(f1);
-          scrollOtherRV(paramRecyclerView, paramInt1, paramInt2);
-          return;
-        } while (!(paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager));
+          f3 = VSmartView.access$600(this.this$0);
+        } while (VSmartView.access$500(this.this$0).getTranslationY() <= -f3);
+        f2 = VSmartView.access$500(this.this$0).getTranslationY() + -paramInt2;
+        f1 = f2;
+        if (f2 < -f3) {
+          f1 = -f3;
+        }
+        VSmartView.access$500(this.this$0).setTranslationY(f1);
+        scrollOtherRV(paramRecyclerView, paramInt1, paramInt2);
+        return;
         localObject = paramRecyclerView.findViewHolderForAdapterPosition(1);
       } while (localObject == null);
       localObject = ((RecyclerView.ViewHolder)localObject).itemView;
@@ -76,7 +72,7 @@ class VSmartView$RvScrollListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.VSmartView.RvScrollListener
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ public final class QbossGateWayReq
   static Map<String, String> cache_mapExtInfo;
   static tPullADVRequest cache_stAdvReq = new tPullADVRequest();
   static LoginInfo cache_stLoginInfo = new LoginInfo();
-  public int iAppID;
-  public Map<String, String> mapExtInfo;
-  public tPullADVRequest stAdvReq;
-  public LoginInfo stLoginInfo;
+  public int iAppID = 0;
+  public Map<String, String> mapExtInfo = null;
+  public tPullADVRequest stAdvReq = null;
+  public LoginInfo stLoginInfo = null;
   
   static
   {

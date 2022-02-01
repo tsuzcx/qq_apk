@@ -1,29 +1,26 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import albp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.OnTabRedNumsChangeListenner;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.viola.utils.ViolaBizUtils;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.activity.qwallet.utils.FlymeOSStatusBarFontUtils;
 import org.json.JSONObject;
-import pvd;
-import pvm;
-import pvq;
-import pzm;
-import tzr;
 
 public class ReadInJoySelfCenterViolaFragment
   extends ReadInJoyViolaChannelFragment
-  implements pvd
+  implements KandianMergeManager.OnTabRedNumsChangeListenner
 {
-  private pvq a;
+  private ReadInJoyObserver a;
   
   public ReadInJoySelfCenterViolaFragment()
   {
-    this.jdField_a_of_type_Pvq = new pzm(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new ReadInJoySelfCenterViolaFragment.1(this);
   }
   
   public static ReadInJoySelfCenterViolaFragment a(String paramString)
@@ -37,34 +34,36 @@ public class ReadInJoySelfCenterViolaFragment
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER));
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null)
+    if (a() != null)
     {
-      int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b(3);
+      int i = a().b(3);
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.b())) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(tzr.a(i).toString());
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(ViolaBizUtils.a(i).toString());
       }
     }
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.q();
+    if (a() != null) {
+      a().q();
     }
-  }
-  
-  public void E_()
-  {
-    a();
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     b(paramBoolean, paramActivity, paramBundle);
     a();
+  }
+  
+  public void ai_()
+  {
+    a();
+  }
+  
+  protected boolean f()
+  {
+    return false;
   }
   
   public void l()
@@ -78,34 +77,26 @@ public class ReadInJoySelfCenterViolaFragment
     Bundle localBundle = getArguments();
     if (localBundle != null)
     {
-      paramBundle = localBundle.getString("url_key");
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER));
+      String str = localBundle.getString("url_key");
+      int i = a().b(3);
+      paramBundle = str;
+      if (i > 0) {
+        paramBundle = str + "&unreadMessageCount=" + i;
       }
-      int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b(3);
-      if (i <= 0) {
-        break label145;
-      }
-      paramBundle = paramBundle + "&unreadMessageCount=" + i;
-    }
-    label145:
-    for (;;)
-    {
       paramBundle = paramBundle + "&statusBarStyle=0";
       if (!TextUtils.isEmpty(paramBundle)) {
         a(paramBundle);
       }
       this.b = localBundle.getString("channel_version_key", "");
-      pvm.a().a(this.jdField_a_of_type_Pvq);
-      albp.a(getActivity(), true);
-      return;
     }
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
+    FlymeOSStatusBarFontUtils.a(getActivity(), true);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    pvm.a().b(this.jdField_a_of_type_Pvq);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
   }
   
   public void onResume()
@@ -116,7 +107,7 @@ public class ReadInJoySelfCenterViolaFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfCenterViolaFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
 import android.widget.LinearLayout;
-import axua;
 
-public class ChooseInterestTagActivity$4$1
+class ChooseInterestTagActivity$4$1
   implements Runnable
 {
-  public ChooseInterestTagActivity$4$1(axua paramaxua) {}
+  ChooseInterestTagActivity$4$1(ChooseInterestTagActivity.4 param4) {}
   
   public void run()
   {

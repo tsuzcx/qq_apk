@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:background="@drawable/b4w" android:paddingLeft="16.0dip" android:paddingTop="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" app:round_rect_radius="12.0dip">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bmt">
-            <com.tencent.mobileqq.activity.shopping.ItemCountView android:id="@id/nvd" android:background="@drawable/aiq" android:paddingTop="12.0dip" android:paddingBottom="16.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-            <com.tencent.mobileqq.activity.shopping.ItemCountView android:id="@id/nve" android:background="@drawable/aiq" android:paddingTop="12.0dip" android:paddingBottom="16.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-            <com.tencent.mobileqq.activity.shopping.ItemCountView android:id="@id/kr9" android:background="@drawable/aiq" android:paddingTop="12.0dip" android:paddingBottom="16.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-            <com.tencent.mobileqq.activity.shopping.ItemCountView android:id="@id/kr7" android:background="@drawable/aiq" android:paddingTop="12.0dip" android:paddingBottom="16.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-        </LinearLayout>
-        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/skin_black_theme_version2" android:id="@id/n81" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="我的订单" />
-        <TextView android:textSize="12.0dip" android:textColor="#ff858585" android:id="@id/l0q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="查看全部" android:drawableRight="@drawable/g3o" android:drawablePadding="4.0dip" android:layout_alignParentRight="true" />
-        <View android:id="@id/bmt" android:background="@drawable/qq_common_divider" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="10.0dip" android:layout_below="@id/l0q" />
-    </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/jp7" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="24.0dip">
-        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/skin_gray2_theme_version2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="直播中" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="主播在线导购" />
-    </LinearLayout>
-    <RelativeLayout android:gravity="center" android:id="@id/mqq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="175.0dip">
-        <ImageView android:id="@id/mqp" android:layout_width="176.0dip" android:layout_height="95.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="50.0dip" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/mqr" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="8.0dip" android:text="当前无正在进行的直播" android:layout_below="@id/mqp" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/mxs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.fpsreport.FPSSwipListView android:id="@id/mxr" android:background="@drawable/bg_texture_theme_version2" android:visibility="gone" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" />
 </LinearLayout>

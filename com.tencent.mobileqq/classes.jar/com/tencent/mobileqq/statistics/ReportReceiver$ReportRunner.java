@@ -1,16 +1,11 @@
 package com.tencent.mobileqq.statistics;
 
 import android.content.Intent;
-import aozl;
-import bcjs;
-import bdjv;
-import bdla;
-import bmqt;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.search.report.ReportModel;
+import com.tencent.mobileqq.bridge.ReportControllerServiceHolder;
+import com.tencent.mobileqq.bridge.report.service.IReportService;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 class ReportReceiver$ReportRunner
   implements Runnable
@@ -24,76 +19,44 @@ class ReportReceiver$ReportRunner
   
   private void a()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {}
-    for (;;)
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if ((localAppRuntime == null) || (!"com.tencent.mobileqq".equals(MobileQQ.sMobileQQ.getQQProcessName()))) {}
+    Object localObject;
+    do
     {
-      return;
-      localObject = (QQAppInterface)localObject;
-      try
+      int i;
+      String str;
+      int j;
+      do
       {
-        localIntent = this.a;
-        i = localIntent.getIntExtra("is_runtime", -1);
-        if (i == 1001)
-        {
-          ((aozl)((QQAppInterface)localObject).getManager(QQManagerFactory.LBS_REPORT_MANAGER)).a(localIntent);
-          return;
-        }
-        str1 = localIntent.getStringExtra("reporting_tag");
-        str2 = localIntent.getStringExtra("reporting_detail");
-        j = localIntent.getIntExtra("reporting_count", 1);
-      }
-      catch (Exception localException)
-      {
-        try
-        {
-          Intent localIntent;
-          int i;
-          String str1;
-          String str2;
-          int j;
-          if ("dc02528".equals(str1))
-          {
-            if ((i == 0) || (i != 1)) {
-              continue;
-            }
-            bcjs.a(str1, (QQAppInterface)localObject, (ReportModel)localIntent.getSerializableExtra("reporting_detail"));
-            return;
-          }
-          if ("dc02181".equals(str1))
-          {
-            if (i == 0)
-            {
-              bdjv.b(str1, (QQAppInterface)localObject, str2);
-              return;
-            }
-            if (i != 1) {
-              continue;
-            }
-            bdjv.a(str1, (QQAppInterface)localObject, str2);
-            return;
-          }
-          if ("dc_qqgame".equals(str1))
-          {
-            bmqt.a().a((AppRuntime)localObject, str1, str2);
-            return;
-          }
-          if (i == 0)
-          {
-            bdla.b((QQAppInterface)localObject, str1, str2, j);
-            return;
-          }
-          if (i != 1) {
-            continue;
-          }
-          bdla.a((QQAppInterface)localObject, str1, str2, j);
-          return;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError) {}
-        localException = localException;
         return;
-      }
+        i = this.a.getIntExtra("is_runtime", -1);
+        localObject = this.a.getStringExtra("reporting_tag");
+        if (!a(i, (String)localObject)) {
+          break;
+        }
+        str = this.a.getStringExtra("reporting_detail");
+        j = this.a.getIntExtra("reporting_count", 1);
+        if (i == 0)
+        {
+          ReportController.b(localAppRuntime, (String)localObject, str, j);
+          return;
+        }
+      } while (i != 1);
+      ReportController.a(localAppRuntime, (String)localObject, str, j);
+      return;
+      localObject = ReportControllerServiceHolder.a();
+    } while (localObject == null);
+    ((IReportService)localObject).a(this.a, localAppRuntime);
+  }
+  
+  private boolean a(int paramInt, String paramString)
+  {
+    if (paramInt == 1001) {}
+    while (("dc02528".equals(paramString)) || ("dc02181".equals(paramString)) || ("dc_qqgame".equals(paramString))) {
+      return false;
     }
+    return true;
   }
   
   public void run()
@@ -103,7 +66,10 @@ class ReportReceiver$ReportRunner
       a();
       return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ReportReceiver", 1, localThrowable, new Object[0]);
+    }
   }
 }
 

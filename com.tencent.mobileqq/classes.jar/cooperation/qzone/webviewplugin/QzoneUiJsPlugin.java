@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -30,7 +30,7 @@ public class QzoneUiJsPlugin
   private static final String LOG_TAG = "QzoneUiJsPlugin";
   private BroadcastReceiver broadcastReceiver = new QzoneUiJsPlugin.4(this);
   private String getVideoCoverCallback;
-  private boolean isBroadcastReceiverRegistered;
+  private boolean isBroadcastReceiverRegistered = false;
   private String recordVideoCallback;
   private String uploadVideoCallback;
   
@@ -427,7 +427,7 @@ public class QzoneUiJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneUiJsPlugin
  * JD-Core Version:    0.7.0.1
  */

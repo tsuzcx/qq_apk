@@ -3,6 +3,7 @@ package com.tencent.hippy.qq.module;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.hippy.qq.fragment.BaseHippyFragment.HippyActivityLifecycleListener;
 import com.tencent.hippy.qq.fragment.HippyActivityLifecycleDispatcher;
 import com.tencent.hippy.qq.fragment.HippyActivityLifecycleOwner;
@@ -15,9 +16,10 @@ public class QQBaseLifecycleModule
   public QQBaseLifecycleModule(HippyEngineContext paramHippyEngineContext)
   {
     super(paramHippyEngineContext);
-    if ((getFragment() instanceof HippyActivityLifecycleOwner))
+    paramHippyEngineContext = getHippyActivityLifecycleOwner();
+    if (paramHippyEngineContext != null)
     {
-      paramHippyEngineContext = ((HippyActivityLifecycleOwner)getFragment()).getDispatcher();
+      paramHippyEngineContext = paramHippyEngineContext.getDispatcher();
       if (paramHippyEngineContext != null) {
         paramHippyEngineContext.addActivityLifecycleListener(this);
       }
@@ -27,13 +29,23 @@ public class QQBaseLifecycleModule
   public void destroy()
   {
     super.destroy();
-    if ((getFragment() instanceof HippyActivityLifecycleOwner))
+    Object localObject = getHippyActivityLifecycleOwner();
+    if (localObject != null)
     {
-      HippyActivityLifecycleDispatcher localHippyActivityLifecycleDispatcher = ((HippyActivityLifecycleOwner)getFragment()).getDispatcher();
-      if (localHippyActivityLifecycleDispatcher != null) {
-        localHippyActivityLifecycleDispatcher.removeActivityLifecycleListener(this);
+      localObject = ((HippyActivityLifecycleOwner)localObject).getDispatcher();
+      if (localObject != null) {
+        ((HippyActivityLifecycleDispatcher)localObject).removeActivityLifecycleListener(this);
       }
     }
+  }
+  
+  protected HippyActivityLifecycleOwner getHippyActivityLifecycleOwner()
+  {
+    HippyQQEngine localHippyQQEngine = getHippyQQEngine();
+    if (localHippyQQEngine == null) {
+      return null;
+    }
+    return localHippyQQEngine.getHippyActivityLifecycleOwner();
   }
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
@@ -54,7 +66,7 @@ public class QQBaseLifecycleModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQBaseLifecycleModule
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoProtoHelper;
 import com.tencent.mobileqq.pb.CodedInputStreamMicro;
 import com.tencent.mobileqq.pb.CodedOutputStreamMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -20,15 +21,12 @@ import java.util.Iterator;
 import java.util.List;
 import localpb.readinjoy.Readinjoy.ArticleSummary;
 import localpb.readinjoy.Readinjoy.VideoData;
-import rou;
-import rsp;
-import spy;
 
 public class BaseVideoArticleInfo
   extends Entity
   implements Parcelable, Cloneable, Comparable<BaseVideoArticleInfo>
 {
-  public static final Parcelable.Creator<BaseVideoArticleInfo> CREATOR = new rou();
+  public static final Parcelable.Creator<BaseVideoArticleInfo> CREATOR = new BaseVideoArticleInfo.1();
   public static final String TAG = "VideoArticleInfo";
   public int adsJumpType;
   public String adsJumpUrl;
@@ -65,7 +63,7 @@ public class BaseVideoArticleInfo
   public int uptime;
   public int videoCount;
   @notColumn
-  public rsp videoData;
+  public VideoData videoData;
   public byte[] videoDataBytes;
   @notColumn
   public Readinjoy.VideoData videoDataObj;
@@ -74,7 +72,7 @@ public class BaseVideoArticleInfo
   
   public BaseVideoArticleInfo() {}
   
-  public BaseVideoArticleInfo(Parcel paramParcel)
+  protected BaseVideoArticleInfo(Parcel paramParcel)
   {
     this.articleID = paramParcel.readLong();
     this.rowkey = paramParcel.readString();
@@ -137,7 +135,7 @@ public class BaseVideoArticleInfo
         try
         {
           localVideoData.mergeFrom(this.videoDataBytes);
-          this.videoData = spy.a(localVideoData);
+          this.videoData = VideoProtoHelper.a(localVideoData);
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
@@ -193,7 +191,7 @@ public class BaseVideoArticleInfo
     {
       this.videoDataObj.mergeFrom(this.videoDataBytes);
       if (this.videoDataObj != null) {
-        this.videoData = spy.a(this.videoDataObj);
+        this.videoData = VideoProtoHelper.a(this.videoDataObj);
       }
       if ((this.articleListBytes != null) && (this.articleListBytes.length > 0))
       {
@@ -219,7 +217,7 @@ public class BaseVideoArticleInfo
         int i = 0;
         while (i < this.articleListObj.size())
         {
-          this.articleList.add(spy.a((Readinjoy.ArticleSummary)this.articleListObj.get(i)));
+          this.articleList.add(VideoProtoHelper.a((Readinjoy.ArticleSummary)this.articleListObj.get(i)));
           i += 1;
         }
       }
@@ -238,7 +236,7 @@ public class BaseVideoArticleInfo
   {
     if (this.videoData != null)
     {
-      this.videoDataObj = spy.a(this.videoData);
+      this.videoDataObj = VideoProtoHelper.a(this.videoData);
       if (this.videoDataObj != null) {
         this.videoDataBytes = this.videoDataObj.toByteArray();
       }
@@ -253,7 +251,7 @@ public class BaseVideoArticleInfo
       {
         localObject2 = (BaseVideoArticleInfo)((Iterator)localObject1).next();
         if (localObject2 != null) {
-          this.articleListObj.add(spy.a((BaseVideoArticleInfo)localObject2));
+          this.articleListObj.add(VideoProtoHelper.a((BaseVideoArticleInfo)localObject2));
         }
       }
       if (!this.articleListObj.isEmpty())
@@ -349,7 +347,7 @@ public class BaseVideoArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo
  * JD-Core Version:    0.7.0.1
  */

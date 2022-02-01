@@ -17,8 +17,8 @@ public class LeftRedDotRadioButton
 {
   private float jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
   private int jdField_a_of_type_Int = (int)(this.jdField_a_of_type_Float * 9.0F + 0.5D);
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public LeftRedDotRadioButton(Context paramContext)
   {
@@ -39,7 +39,7 @@ public class LeftRedDotRadioButton
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850427);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850830);
     }
     invalidate();
   }
@@ -49,7 +49,7 @@ public class LeftRedDotRadioButton
     return this.jdField_a_of_type_Boolean;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
@@ -75,7 +75,7 @@ public class LeftRedDotRadioButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.LeftRedDotRadioButton
  * JD-Core Version:    0.7.0.1
  */

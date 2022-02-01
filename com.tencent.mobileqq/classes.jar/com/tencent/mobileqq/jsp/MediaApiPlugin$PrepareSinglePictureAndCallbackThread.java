@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.Activity;
-import bifw;
-import bisl;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;

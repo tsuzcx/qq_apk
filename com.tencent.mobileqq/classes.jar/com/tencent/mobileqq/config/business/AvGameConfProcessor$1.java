@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.config.business;
 
-import aqzv;
-
-public class AvGameConfProcessor$1
+class AvGameConfProcessor$1
   implements Runnable
 {
-  public AvGameConfProcessor$1(aqzv paramaqzv) {}
+  AvGameConfProcessor$1(AvGameConfProcessor paramAvGameConfProcessor) {}
   
   public void run()
   {
-    aqzv.a(this.this$0, -1);
+    AvGameConfProcessor.a(this.this$0, -1);
   }
 }
 

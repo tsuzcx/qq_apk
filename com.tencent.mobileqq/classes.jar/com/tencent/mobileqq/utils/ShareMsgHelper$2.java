@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import bhhn;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
-public final class ShareMsgHelper$2
+final class ShareMsgHelper$2
   implements Runnable
 {
-  public ShareMsgHelper$2(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, AbsStructMsg paramAbsStructMsg, BusinessObserver paramBusinessObserver) {}
+  ShareMsgHelper$2(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, AbsStructMsg paramAbsStructMsg, BusinessObserver paramBusinessObserver) {}
   
   public void run()
   {
-    bhhn.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+    ShareMsgHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
   }
 }
 

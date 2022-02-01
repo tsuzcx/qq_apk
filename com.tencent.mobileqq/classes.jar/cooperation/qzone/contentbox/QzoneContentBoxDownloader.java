@@ -2,8 +2,6 @@ package cooperation.qzone.contentbox;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhyo;
-import bhyq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -11,6 +9,8 @@ import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.OutputStream;
@@ -74,7 +74,7 @@ public class QzoneContentBoxDownloader
         QLog.e("qzonecontentboxdownloader", 2, "downloadImage url has no http err, url=" + paramDownloadParams + ", path=" + str);
         return null;
       }
-      int i = bhyq.a(new bhyo(paramDownloadParams, paramOutputStream), BaseApplicationImpl.sApplication.getRuntime());
+      int i = DownloaderFactory.a(new DownloadTask(paramDownloadParams, paramOutputStream), BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (!paramOutputStream.exists())
@@ -93,7 +93,7 @@ public class QzoneContentBoxDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.QzoneContentBoxDownloader
  * JD-Core Version:    0.7.0.1
  */

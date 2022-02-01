@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.apollo.game;
 
-import amsx;
-import amsy;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -17,13 +15,13 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ApolloGameStateMachine
   extends Observable
 {
-  public static amsy a;
+  public static ApolloGameStateMachine.HardwareInfo a;
   private static ApolloGameStateMachine jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
   public static final HashMap<Integer, List<Integer>> a;
   public static AtomicBoolean a;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private Runnable jdField_a_of_type_JavaLangRunnable = new ApolloGameStateMachine.1(this);
-  private Observer jdField_a_of_type_JavaUtilObserver = new amsx(this);
+  private Observer jdField_a_of_type_JavaUtilObserver = new ApolloGameStateMachine.2(this);
   private ConcurrentHashMap<Integer, ApolloGameStateMachine.StateTask> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
@@ -184,7 +182,7 @@ public class ApolloGameStateMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine
  * JD-Core Version:    0.7.0.1
  */

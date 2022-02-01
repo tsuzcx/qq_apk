@@ -8,33 +8,33 @@ import android.graphics.Rect;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
-import anud;
-import aziw;
-import azjq;
-import azjx;
-import azkc;
-import azkd;
-import azke;
-import azkl;
-import azkn;
-import azlg;
-import azlo;
-import bhbx;
-import bhca;
-import blvp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.RoundRectBitmap;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.FlashPicHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.ThumbWidthHeightDP;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.PicBusiManager;
+import com.tencent.mobileqq.pic.PicDownloadInfo;
+import com.tencent.mobileqq.pic.PicPreDownloadUtils;
+import com.tencent.mobileqq.pic.PicReporter;
+import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.pic.PicUiInterface;
+import com.tencent.mobileqq.pic.PicUploadInfo;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.pic.operator.AbstractPicOperator;
+import com.tencent.mobileqq.pic.operator.DownloadPicOperator;
 import com.tencent.mobileqq.transfile.chatpic.PicDownloadExplicitError;
+import com.tencent.mobileqq.utils.ActionMsgUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.peak.PeakUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -65,19 +65,19 @@ public class ChatImageDownloader
     }
     ChatImageDownloader.DownloadData localDownloadData = new ChatImageDownloader.DownloadData(this);
     localDownloadData.url = paramDownloadParams.url;
-    azjq.a("PIC_TAG", "getDownloadData", "url:" + localDownloadData.url);
+    Logger.a("PIC_TAG", "getDownloadData", "url:" + localDownloadData.url);
     localDownloadData.application = this.application;
     localDownloadData.startOffset = paramDownloadParams.downloaded;
-    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof azkl)))
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof PicUiInterface)))
     {
-      Object localObject = (azkl)paramDownloadParams.tag;
+      Object localObject = (PicUiInterface)paramDownloadParams.tag;
       if ((localObject instanceof MessageForPic))
       {
         localDownloadData.pic = ((MessageForPic)localObject);
-        localDownloadData.netWorkType = azkc.a();
-        localDownloadData.uinType = azkc.a(localDownloadData.app, localDownloadData.pic.istroop, localDownloadData.pic.frienduin);
+        localDownloadData.netWorkType = PicPreDownloadUtils.a();
+        localDownloadData.uinType = PicPreDownloadUtils.a(localDownloadData.app, localDownloadData.pic.istroop, localDownloadData.pic.frienduin);
       }
-      localDownloadData.downInfo = ((azkl)localObject).getPicDownloadInfo();
+      localDownloadData.downInfo = ((PicUiInterface)localObject).getPicDownloadInfo();
       log(localDownloadData, "getDownloadData", "uuid:" + localDownloadData.downInfo.g + ",md5：" + localDownloadData.downInfo.f);
       localDownloadData.host = getHost(localDownloadData.downInfo.jdField_b_of_type_Int);
       paramDownloadParams = paramDownloadParams.url.getProtocol();
@@ -85,10 +85,10 @@ public class ChatImageDownloader
         bool = true;
       }
       localDownloadData.fileSizeType = URLDrawableHelper.getFileSizeType(paramDownloadParams, bool);
-      if (((azkl)localObject).isSendFromLocal())
+      if (((PicUiInterface)localObject).isSendFromLocal())
       {
         localDownloadData.sendFromLoacal = true;
-        localDownloadData.upInfo = ((azkl)localObject).getPicUploadInfo();
+        localDownloadData.upInfo = ((PicUiInterface)localObject).getPicUploadInfo();
         localDownloadData.downInfo.jdField_a_of_type_Boolean = true;
         if (localDownloadData.fileSizeType != 65537) {
           break label461;
@@ -156,13 +156,13 @@ public class ChatImageDownloader
   
   private String getThumbPath(ChatImageDownloader.DownloadData paramDownloadData, String paramString)
   {
-    if (FileUtils.fileExists(paramString)) {}
-    while (!FileUtils.fileExists(paramDownloadData.upInfo.g)) {
+    if (FileUtils.a(paramString)) {}
+    while (!FileUtils.a(paramDownloadData.upInfo.g)) {
       return paramString;
     }
     paramString = new CompressInfo(paramDownloadData.upInfo.g, 0);
     paramString.jdField_a_of_type_JavaLangString = paramDownloadData.upInfo.jdField_a_of_type_JavaLangString;
-    azlg.b(paramString);
+    CompressOperator.b(paramString);
     return paramString.jdField_e_of_type_JavaLangString;
   }
   
@@ -223,7 +223,7 @@ public class ChatImageDownloader
         {
           String str2 = ((TranDbRecord.PicDbRecord)localObject).uuid;
           localObject = ((TranDbRecord.PicDbRecord)localObject).md5;
-          if ((bhca.a(paramMessageRecord.msgtype)) || (paramMessageRecord.msgtype == -3001) || (paramMessageRecord.msgtype == -30002) || (paramMessageRecord.msgtype == -30003)) {
+          if ((ActionMsgUtil.a(paramMessageRecord.msgtype)) || (paramMessageRecord.msgtype == -3001) || (paramMessageRecord.msgtype == -30002) || (paramMessageRecord.msgtype == -30003)) {
             continue;
           }
           if (i == 0)
@@ -335,7 +335,7 @@ public class ChatImageDownloader
   protected boolean decodeByGif(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     Object localObject = paramDownloadParams.tag;
-    if (((localObject instanceof MessageForPic)) && (anud.a((MessageForPic)localObject))) {
+    if (((localObject instanceof MessageForPic)) && (FlashPicHelper.a((MessageForPic)localObject))) {
       return false;
     }
     return super.decodeByGif(paramFile, paramDownloadParams, paramURLDrawableHandler);
@@ -372,8 +372,8 @@ public class ChatImageDownloader
       log(paramDownloadParams, "result", "failed could not call object.wait in Main thread ,sendpath:" + paramDownloadParams.sendPath + ",uniseq:" + paramDownloadParams.downInfo.jdField_a_of_type_Long);
       throw new FileDownloadFailedException(9365, 0L, "param error,could not call object.wait in Main thread", false, false);
     }
-    if ((bhbx.a()) && (bhbx.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + bhbx.b());
+    if ((com.tencent.mobileqq.util.Utils.a()) && (com.tencent.mobileqq.util.Utils.b() < 20971520L)) {
+      throw new IOException("SD card free space is " + com.tencent.mobileqq.util.Utils.b());
     }
     TransferResult localTransferResult = stepDownload(paramDownloadParams);
     int j;
@@ -417,7 +417,7 @@ public class ChatImageDownloader
     if (paramDownloadParams.app != null) {}
     for (paramOutputStream = paramDownloadParams.app.getCurrentAccountUin();; paramOutputStream = null)
     {
-      azkd.a(paramOutputStream, paramDownloadParams.uinType, paramDownloadParams.netWorkType, SystemClock.uptimeMillis() - l);
+      PicReporter.a(paramOutputStream, paramDownloadParams.uinType, paramDownloadParams.netWorkType, SystemClock.uptimeMillis() - l);
       break;
     }
   }
@@ -443,7 +443,7 @@ public class ChatImageDownloader
       f1 = this.application.getResources().getDisplayMetrics().density;
       i8 = this.application.getResources().getDisplayMetrics().densityDpi;
       f3 = 12.0F * f1;
-      boolean bool = blvp.a(paramDownloadParams.mImgType);
+      boolean bool = PeakUtils.a(paramDownloadParams.mImgType);
       j = CommonImgThumbHelper.getImgThumbMinPx(bool);
       i = CommonImgThumbHelper.getImgThumbMinPx(bool);
       m = CommonImgThumbHelper.getImgThumbMaxPx(bool);
@@ -451,10 +451,10 @@ public class ChatImageDownloader
       if ((paramDownloadParams.tag instanceof MessageForPic))
       {
         localObject = (MessageForPic)paramDownloadParams.tag;
-        j = AIOUtils.dp2px(((MessageForPic)localObject).getThumbWidthHeightDP(bool).mMinWidth, this.application.getResources());
-        i = AIOUtils.dp2px(((MessageForPic)localObject).getThumbWidthHeightDP(bool).mMinHeight, this.application.getResources());
-        m = AIOUtils.dp2px(((MessageForPic)localObject).getThumbWidthHeightDP(bool).mMaxWidth, this.application.getResources());
-        k = AIOUtils.dp2px(((MessageForPic)localObject).getThumbWidthHeightDP(bool).mMaxHeight, this.application.getResources());
+        j = AIOUtils.a(((MessageForPic)localObject).getThumbWidthHeightDP(bool).mMinWidth, this.application.getResources());
+        i = AIOUtils.a(((MessageForPic)localObject).getThumbWidthHeightDP(bool).mMinHeight, this.application.getResources());
+        m = AIOUtils.a(((MessageForPic)localObject).getThumbWidthHeightDP(bool).mMaxWidth, this.application.getResources());
+        k = AIOUtils.a(((MessageForPic)localObject).getThumbWidthHeightDP(bool).mMaxHeight, this.application.getResources());
       }
       i6 = paramBitmap.getWidth();
       i7 = paramBitmap.getHeight();
@@ -483,7 +483,7 @@ public class ChatImageDownloader
     }
     if (limitSizeByServer(paramDownloadParams))
     {
-      return new RoundRectBitmap(azlo.a(paramBitmap, ((MessageForPic)paramDownloadParams.tag).thumbWidthHeightDP), f3);
+      return new RoundRectBitmap(com.tencent.mobileqq.pic.compress.Utils.a(paramBitmap, ((MessageForPic)paramDownloadParams.tag).thumbWidthHeightDP), f3);
       if (i1 < n)
       {
         m = (int)(j / i1 * n + 0.5F);
@@ -570,19 +570,27 @@ public class ChatImageDownloader
         log(paramDownloadData, "stepDownload", "params.app == null ,selfuin:" + paramDownloadData.downInfo.jdField_b_of_type_JavaLangString);
         throw new FileDownloadFailedException(9302, 0L, "stepDownload,params.app == null ,selfuin:" + paramDownloadData.downInfo.jdField_b_of_type_JavaLangString, false, false);
       }
-      aziw localaziw = new aziw(paramDownloadData.app);
-      localaziw.jdField_a_of_type_Azke = new azke();
-      localaziw.jdField_a_of_type_Azke.a = paramDownloadData.pic;
-      localaziw.jdField_b_of_type_JavaLangString = "PIC_TAG";
-      localaziw.jdField_a_of_type_JavaLangString = paramDownloadData.logId;
-      paramDownloadData.downInfo.jdField_e_of_type_JavaLangString = paramDownloadData.url.getProtocol();
+      Object localObject = paramDownloadData.downInfo;
+      ((PicDownloadInfo)localObject).jdField_e_of_type_JavaLangString = paramDownloadData.url.getProtocol();
       if (paramDownloadData.pic != null)
       {
-        paramDownloadData.downInfo.d = paramDownloadData.pic.bEnableEnc;
-        paramDownloadData.downInfo.c = paramDownloadData.pic.time;
+        ((PicDownloadInfo)localObject).d = paramDownloadData.pic.bEnableEnc;
+        ((PicDownloadInfo)localObject).c = paramDownloadData.pic.time;
       }
-      azjq.a("PIC_TAG", paramDownloadData.logId, "stepDownload", "url:" + paramDownloadData.url + ",info:" + paramDownloadData.downInfo);
-      return localaziw.a(paramDownloadData.downInfo, paramDownloadData.handler, paramDownloadData.url.getProtocol());
+      PicReq localPicReq = PicBusiManager.a(5, 1280, 1);
+      localPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramDownloadData.pic;
+      localPicReq.jdField_b_of_type_JavaLangString = "PIC_TAG";
+      localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo = ((PicDownloadInfo)localObject);
+      localPicReq.jdField_a_of_type_JavaLangObject = paramDownloadData.handler;
+      localObject = PicBusiManager.a(localPicReq);
+      if ((localObject instanceof DownloadPicOperator))
+      {
+        Logger.a("PIC_TAG", paramDownloadData.logId, "stepDownload", "url:" + paramDownloadData.url + ",info:" + paramDownloadData.downInfo);
+        ((AbstractPicOperator)localObject).a();
+        return ((DownloadPicOperator)localObject).a();
+      }
+      Logger.a("PIC_TAG", paramDownloadData.logId, "stepDownload", "operator wrong");
+      return null;
     }
     catch (AccountNotMatchException localAccountNotMatchException)
     {

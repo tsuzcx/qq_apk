@@ -1,29 +1,27 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
-import biap;
-import biau;
-import biav;
+import com.tencent.mobileqq.vip.lianghao.data.LiangHaoStatusRsp;
 
-public class CheckRegisterLiangHao$2
+class CheckRegisterLiangHao$2
   implements Runnable
 {
-  public CheckRegisterLiangHao$2(biau parambiau, biav parambiav, biap parambiap) {}
+  CheckRegisterLiangHao$2(CheckRegisterLiangHao paramCheckRegisterLiangHao, CheckRegisterLiangHao.RequestCallBack paramRequestCallBack, LiangHaoStatusRsp paramLiangHaoStatusRsp) {}
   
   public void run()
   {
-    biav localbiav = this.jdField_a_of_type_Biav;
-    String str = biau.a(this.this$0);
-    if ((this.jdField_a_of_type_Biap != null) && (this.jdField_a_of_type_Biap.a)) {}
+    CheckRegisterLiangHao.RequestCallBack localRequestCallBack = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoNetCheckRegisterLiangHao$RequestCallBack;
+    String str = CheckRegisterLiangHao.a(this.this$0);
+    if ((this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoStatusRsp != null) && (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoStatusRsp.a)) {}
     for (boolean bool = true;; bool = false)
     {
-      localbiav.a(str, bool);
+      localRequestCallBack.a(str, bool);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.net.CheckRegisterLiangHao.2
  * JD-Core Version:    0.7.0.1
  */

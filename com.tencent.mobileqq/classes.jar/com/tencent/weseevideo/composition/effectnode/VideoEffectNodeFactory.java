@@ -76,36 +76,32 @@ public class VideoEffectNodeFactory
   @Nullable
   public static TAVStickerRenderContext addPagOverlayEffectNode(@NonNull VideoPagModel paramVideoPagModel, CGSize paramCGSize, TAVStickerRenderContext paramTAVStickerRenderContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface)
   {
-    Object localObject1 = paramTAVStickerRenderContext;
+    Object localObject = paramTAVStickerRenderContext;
     if (paramTAVStickerRenderContext == null) {
       if (paramIStickerContextInterface == null) {
-        break label91;
+        break label81;
       }
     }
-    label91:
-    for (localObject1 = paramIStickerContextInterface.createStickerContext();; localObject1 = new TAVStickerRenderContext())
+    label81:
+    for (localObject = paramIStickerContextInterface.createStickerContext();; localObject = new TAVStickerRenderContext())
     {
-      Object localObject2 = null;
-      paramTAVStickerRenderContext = localObject2;
-      if (paramIStickerContextInterface == null)
+      paramIStickerContextInterface = null;
+      paramTAVStickerRenderContext = paramIStickerContextInterface;
+      if (VideoEffectType.TYPE_SUBTITLE.value == paramVideoPagModel.getEffectType())
       {
-        paramTAVStickerRenderContext = localObject2;
-        if (VideoEffectType.TYPE_SUBTITLE.value == paramVideoPagModel.getEffectType())
+        paramTAVStickerRenderContext = paramIStickerContextInterface;
+        if ((paramVideoPagModel instanceof SubtitleModel))
         {
-          paramTAVStickerRenderContext = localObject2;
-          if ((paramVideoPagModel instanceof SubtitleModel))
-          {
-            paramTAVStickerRenderContext = ModelAdaptUtils.subtitleModelToTAVSticker((SubtitleModel)paramVideoPagModel, paramCGSize);
-            TAVStickerExKt.setExtraStickerType(paramTAVStickerRenderContext, "sticker_lyric");
-          }
+          paramTAVStickerRenderContext = ModelAdaptUtils.subtitleModelToTAVSticker((SubtitleModel)paramVideoPagModel, paramCGSize);
+          TAVStickerExKt.setExtraStickerType(paramTAVStickerRenderContext, "sticker_lyric");
         }
       }
       if (paramTAVStickerRenderContext != null)
       {
         paramVideoPagModel.setUniqueId(paramTAVStickerRenderContext.getStickerId());
-        loadSticker((TAVStickerRenderContext)localObject1, paramTAVStickerRenderContext);
+        loadSticker((TAVStickerRenderContext)localObject, paramTAVStickerRenderContext);
       }
-      return localObject1;
+      return localObject;
     }
   }
   
@@ -115,11 +111,11 @@ public class VideoEffectNodeFactory
     Object localObject = paramTAVStickerRenderContext;
     if (paramTAVStickerRenderContext == null) {
       if (paramIStickerContextInterface == null) {
-        break label76;
+        break label72;
       }
     }
-    label76:
-    for (localObject = paramIStickerContextInterface.createStickerContext(); paramIStickerContextInterface == null; localObject = new TAVStickerRenderContext())
+    label72:
+    for (localObject = paramIStickerContextInterface.createStickerContext();; localObject = new TAVStickerRenderContext())
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
@@ -149,10 +145,9 @@ public class VideoEffectNodeFactory
       paramTAVAutomaticRenderContext = (VideoEffectModel)paramList.next();
       if (paramTAVAutomaticRenderContext != null)
       {
-        TAVSticker localTAVSticker = ModelAdaptUtils.videoEffectModelToTAVSticker(paramTAVAutomaticRenderContext);
-        paramTAVAutomaticRenderContext.setUniqueId(localTAVSticker.getStickerId());
-        localTAVSticker.setLayerIndex(-99);
-        loadSticker(localTAVAutomaticRenderContext, localTAVSticker);
+        paramTAVAutomaticRenderContext = ModelAdaptUtils.videoEffectModelToTAVSticker(paramTAVAutomaticRenderContext);
+        paramTAVAutomaticRenderContext.setLayerIndex(-99);
+        loadSticker(localTAVAutomaticRenderContext, paramTAVAutomaticRenderContext);
       }
     }
     return localTAVAutomaticRenderContext;
@@ -202,7 +197,7 @@ public class VideoEffectNodeFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.VideoEffectNodeFactory
  * JD-Core Version:    0.7.0.1
  */

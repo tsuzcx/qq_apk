@@ -1,0 +1,24 @@
+package com.tencent.biz.subscribe.fragments;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.beans.ShareInfoBean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class SubscribeHybirdFragment$4
+  implements View.OnClickListener
+{
+  SubscribeHybirdFragment$4(SubscribeHybirdFragment paramSubscribeHybirdFragment, ShareInfoBean paramShareInfoBean) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeHybirdFragment.a(this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment.4
+ * JD-Core Version:    0.7.0.1
+ */

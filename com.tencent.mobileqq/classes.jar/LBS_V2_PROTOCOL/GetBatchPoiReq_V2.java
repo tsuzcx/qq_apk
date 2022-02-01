@@ -13,10 +13,10 @@ public final class GetBatchPoiReq_V2
   static Map<String, String> cache_map_ext;
   static ReqCommon_V2 cache_stCommon = new ReqCommon_V2();
   static ArrayList<GPS_V2> cache_vecGpsInfo = new ArrayList();
-  public Map<String, String> map_ext;
-  public int opMask;
-  public ReqCommon_V2 stCommon;
-  public ArrayList<GPS_V2> vecGpsInfo;
+  public Map<String, String> map_ext = null;
+  public int opMask = 0;
+  public ReqCommon_V2 stCommon = null;
+  public ArrayList<GPS_V2> vecGpsInfo = null;
   
   static
   {

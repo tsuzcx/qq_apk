@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class DelGroupResp
   extends JceStruct
 {
-  public byte cGroupid;
-  public long dwSequence;
-  public long dwToUin;
+  public byte cGroupid = 0;
+  public long dwSequence = 0L;
+  public long dwToUin = 0L;
   
   public DelGroupResp() {}
   
@@ -36,7 +36,7 @@ public final class DelGroupResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.DelGroupResp
  * JD-Core Version:    0.7.0.1
  */

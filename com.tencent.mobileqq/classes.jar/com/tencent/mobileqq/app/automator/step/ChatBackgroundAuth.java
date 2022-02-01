@@ -5,16 +5,15 @@ import QC.UniBusinessItem;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anvk;
-import aocy;
-import aohr;
-import bhrz;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.vas.quickupdate.VipIconCallback;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -52,15 +51,15 @@ public class ChatBackgroundAuth
     return null;
   }
   
-  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, anvk paramanvk, int paramInt1, int paramInt2)
+  private ArrayList<Hamlet> a(HashMap<String, Integer> paramHashMap1, HashMap<String, Integer> paramHashMap2, FriendsManager paramFriendsManager, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    a(paramanvk, paramHashMap1, localArrayList, paramInt1);
-    a(paramanvk, paramHashMap2, localArrayList, paramInt2);
+    a(paramFriendsManager, paramHashMap1, localArrayList, paramInt1);
+    a(paramFriendsManager, paramHashMap2, localArrayList, paramInt2);
     return localArrayList;
   }
   
-  private void a(anvk paramanvk, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
+  private void a(FriendsManager paramFriendsManager, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
   {
     Iterator localIterator = paramHashMap.keySet().iterator();
     Object localObject3;
@@ -107,7 +106,7 @@ public class ChatBackgroundAuth
       {
         ((Hamlet)localObject1).itemlist.add(localUniBusinessItem);
         break;
-        if (paramanvk.b((String)localObject1))
+        if (paramFriendsManager.b((String)localObject1))
         {
           i = 2;
           break label117;
@@ -117,7 +116,7 @@ public class ChatBackgroundAuth
         if (!"null".equals(localObject3)) {
           break label300;
         }
-        localObject1 = this.a.app.getCurrentUin();
+        localObject1 = this.a.a.getCurrentUin();
         i = 1;
         break label117;
         return;
@@ -142,21 +141,21 @@ public class ChatBackgroundAuth
   
   public int a()
   {
-    SharedPreferences localSharedPreferences = this.a.app.getApp().getSharedPreferences("mobileQQ", 0);
+    SharedPreferences localSharedPreferences = this.a.a.getApp().getSharedPreferences("mobileQQ", 0);
     long l = localSharedPreferences.getLong("lastChabgAuthTime", 0L);
     if (System.currentTimeMillis() - l > 86400000L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "doStep start auth");
       }
-      Object localObject = (ChatBackgroundManager)this.a.app.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
+      Object localObject = (ChatBackgroundManager)this.a.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
       HashMap localHashMap = ((ChatBackgroundManager)localObject).a();
       localObject = ((ChatBackgroundManager)localObject).c();
-      ((aocy)this.a.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(a(localHashMap, (HashMap)localObject, (anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER), 8, 35), new aohr(this.a.app), true);
+      ((SVIPHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(a(localHashMap, (HashMap)localObject, (FriendsManager)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER), 8, 35), new ChatBackgroundAuth.ChatBgAuthBusinessObserver(this.a.a), true);
       localSharedPreferences.edit().putLong("lastChabgAuthTime", System.currentTimeMillis()).apply();
     }
-    if (!bhrz.a.a(this.a.app, "namePlate_UrlConfig")) {
-      bhrz.a.download(null, "namePlate_UrlConfig", null, false);
+    if (!VipIconCallback.sInstance.isFileExists("namePlate_UrlConfig")) {
+      VipIconCallback.sInstance.download("namePlate_UrlConfig", null, false);
     }
     return 7;
   }

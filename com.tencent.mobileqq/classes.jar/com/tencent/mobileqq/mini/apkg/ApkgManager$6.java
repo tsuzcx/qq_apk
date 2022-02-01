@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import anvx;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
 import com.tencent.component.network.downloader.DownloadResult.Status;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
@@ -23,7 +23,7 @@ class ApkgManager$6
   {
     if (this.val$listener != null)
     {
-      this.val$listener.onGetApkgInfo(null, 4, anvx.a(2131699792));
+      this.val$listener.onGetApkgInfo(null, 4, HardCodeUtil.a(2131700370));
       QLog.d("ApkgManager", 2, "onDownloadCanceled() called with: s = [" + paramString + "]");
     }
   }
@@ -79,7 +79,7 @@ class ApkgManager$6
       i = -99999;
       break;
     }
-    this.val$listener.onGetApkgInfo(null, 1, anvx.a(2131699793));
+    this.val$listener.onGetApkgInfo(null, 1, HardCodeUtil.a(2131700371));
     QLog.d("ApkgManager", 1, "onDownloadFailed() called with: s = [" + paramString + "], downloadResult = [" + paramDownloadResult + "]");
   }
   

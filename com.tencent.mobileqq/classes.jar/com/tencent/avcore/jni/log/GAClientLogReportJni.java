@@ -1,6 +1,6 @@
 package com.tencent.avcore.jni.log;
 
-import ncl;
+import com.tencent.avcore.util.AVCoreLog;
 
 public class GAClientLogReportJni
 {
@@ -27,7 +27,7 @@ public class GAClientLogReportJni
         }
         catch (Throwable paramIClientLogReport)
         {
-          ncl.a("GAClientLogReport", "inti fail.", paramIClientLogReport);
+          AVCoreLog.e("GAClientLogReport", "inti fail.", paramIClientLogReport);
           return;
         }
         finally
@@ -35,7 +35,7 @@ public class GAClientLogReportJni
           this.mNativeInit = false;
         }
         paramIClientLogReport = paramIClientLogReport;
-        ncl.a("GAClientLogReport", "cacheMethodIds fail.", paramIClientLogReport);
+        AVCoreLog.e("GAClientLogReport", "cacheMethodIds fail.", paramIClientLogReport);
       }
     }
   }
@@ -46,7 +46,7 @@ public class GAClientLogReportJni
   {
     int i = 0;
     StringBuilder localStringBuilder;
-    if (ncl.c())
+    if (AVCoreLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("callbackSendLog, sendUin[").append(paramLong).append("], topicId[").append(paramInt).append("], log[");
       if (paramArrayOfByte != null) {
@@ -56,7 +56,7 @@ public class GAClientLogReportJni
     label96:
     for (Object localObject = "null";; localObject = Integer.valueOf(paramArrayOfByte.length))
     {
-      ncl.b("GAClientLogReport", localObject + "]");
+      AVCoreLog.i("GAClientLogReport", localObject + "]");
       if (this.mImpl != null) {
         i = this.mImpl.sendLog(paramLong, paramInt, paramArrayOfByte, false);
       }
@@ -68,7 +68,7 @@ public class GAClientLogReportJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avcore.jni.log.GAClientLogReportJni
  * JD-Core Version:    0.7.0.1
  */

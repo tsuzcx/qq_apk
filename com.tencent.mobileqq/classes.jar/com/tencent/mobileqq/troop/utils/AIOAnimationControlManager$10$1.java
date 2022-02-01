@@ -1,30 +1,14 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bggl;
-import bggm;
-import bgrg;
-
-public class AIOAnimationControlManager$10$1
+class AIOAnimationControlManager$10$1
   implements Runnable
 {
-  public AIOAnimationControlManager$10$1(bggm parambggm) {}
+  AIOAnimationControlManager$10$1(AIOAnimationControlManager.10 param10) {}
   
   public void run()
   {
-    try
-    {
-      if (this.a.jdField_a_of_type_Bggl.jdField_a_of_type_Bgrg != null) {
-        this.a.jdField_a_of_type_Bggl.jdField_a_of_type_Bgrg.b();
-      }
-      label26:
-      this.a.jdField_a_of_type_Bggl.jdField_a_of_type_Int = 1;
-      this.a.jdField_a_of_type_Bggl.a(this.a.jdField_a_of_type_Boolean);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      break label26;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.jdField_a_of_type_Boolean);
   }
 }
 

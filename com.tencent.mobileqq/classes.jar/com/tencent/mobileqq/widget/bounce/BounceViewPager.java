@@ -16,11 +16,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.view.animation.Transformation;
-import biva;
-import bivb;
-import bivc;
-import bivd;
-import bivg;
+import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -30,11 +26,11 @@ public class BounceViewPager
   extends ViewPager
 {
   private float jdField_a_of_type_Float;
-  public int a;
+  protected int a;
   private Camera jdField_a_of_type_AndroidGraphicsCamera = new Camera();
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private final bivg jdField_a_of_type_Bivg = new bivg(this);
-  private List<bivb> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final OverScrollEffect jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect = new OverScrollEffect(this);
+  private List<BounceViewPager.PageChangedObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private float jdField_c_of_type_Float;
@@ -55,14 +51,14 @@ public class BounceViewPager
   private void b()
   {
     setStaticTransformationsEnabled(true);
-    setOnPageChangeListener(new biva(this, null));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new bivc(this));
+    setOnPageChangeListener(new BounceViewPager.MyOnPageChangeListener(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new BounceViewPager.ScrollDetector(this));
     this.jdField_c_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(getContext()));
     Object localObject = new Point();
     ((WindowManager)BaseApplicationImpl.getApplication().getSystemService("window")).getDefaultDisplay().getSize((Point)localObject);
     this.jdField_c_of_type_Float = (((Point)localObject).x / 2);
-    localObject = new bivd(getContext());
-    ((bivd)localObject).a(850);
+    localObject = new FixedSpeedScroller(getContext());
+    ((FixedSpeedScroller)localObject).a(850);
     try
     {
       Field localField = ViewPager.class.getDeclaredField("mScroller");
@@ -73,7 +69,7 @@ public class BounceViewPager
     catch (Exception localException) {}
   }
   
-  public void a()
+  protected void a()
   {
     int i = 0;
     while (i < getChildCount())
@@ -83,21 +79,21 @@ public class BounceViewPager
     }
   }
   
-  public void a(bivb parambivb)
+  public void a(BounceViewPager.PageChangedObserver paramPageChangedObserver)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(parambivb)) {
-      this.jdField_a_of_type_JavaUtilList.add(parambivb);
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramPageChangedObserver)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramPageChangedObserver);
     }
   }
   
-  public void b(bivb parambivb)
+  public void b(BounceViewPager.PageChangedObserver paramPageChangedObserver)
   {
-    if (this.jdField_a_of_type_JavaUtilList.contains(parambivb)) {
-      this.jdField_a_of_type_JavaUtilList.remove(parambivb);
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramPageChangedObserver)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramPageChangedObserver);
     }
   }
   
-  protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
+  public boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
     if (paramView.getWidth() == 0) {
       return false;
@@ -109,7 +105,7 @@ public class BounceViewPager
     if ((i == 0) || (i == getAdapter().getCount() - 1))
     {
       i = 1;
-      if ((!this.jdField_a_of_type_Bivg.a()) || (i == 0)) {
+      if ((!this.jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect.a()) || (i == 0)) {
         break label197;
       }
       paramTransformation.clear();
@@ -118,13 +114,13 @@ public class BounceViewPager
       i = getHeight() / 2;
       paramTransformation.getMatrix().reset();
       f3 = this.jdField_c_of_type_Float;
-      if (this.jdField_a_of_type_Bivg.jdField_a_of_type_Float <= 0.0F) {
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect.jdField_a_of_type_Float <= 0.0F) {
         break label199;
       }
     }
     label197:
     label199:
-    for (float f1 = Math.min(this.jdField_a_of_type_Bivg.jdField_a_of_type_Float, 1.0F);; f1 = Math.max(this.jdField_a_of_type_Bivg.jdField_a_of_type_Float, -1.0F))
+    for (float f1 = Math.min(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect.jdField_a_of_type_Float, 1.0F);; f1 = Math.max(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect.jdField_a_of_type_Float, -1.0F))
     {
       this.jdField_a_of_type_AndroidGraphicsCamera.save();
       this.jdField_a_of_type_AndroidGraphicsCamera.translate(-(f1 * f3), 0.0F, 0.0F);
@@ -174,88 +170,121 @@ public class BounceViewPager
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = false;
-    switch (paramMotionEvent.getAction())
+    int i;
+    label477:
+    for (;;)
     {
-    }
-    do
-    {
-      i = 0;
-      for (;;)
+      try
       {
-        if (((this.jdField_a_of_type_Bivg.a()) && (i == 0)) || (super.onTouchEvent(paramMotionEvent))) {
-          bool = true;
+        i = paramMotionEvent.getAction();
+        switch (i)
+        {
+        case 4: 
+        default: 
+          i = 0;
+          if (((this.jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect.a()) && (i == 0)) || (super.onTouchEvent(paramMotionEvent))) {
+            bool = true;
+          }
+          return bool;
         }
-        return bool;
+      }
+      catch (Exception localException1)
+      {
+        float f1;
+        float f5;
+        int j;
+        int k;
+        int m;
+        float f4;
+        float f2;
+        i = 0;
+      }
+      try
+      {
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
         this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
         i = 1;
-        continue;
-        i = MotionEventCompat.getActionIndex(paramMotionEvent);
-        this.jdField_a_of_type_Float = MotionEventCompat.getX(paramMotionEvent, i);
-        this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, i);
-        i = 1;
-        continue;
-        if (this.jdField_b_of_type_Int != -1)
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
         {
-          float f3 = MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.jdField_b_of_type_Int));
-          float f1 = this.jdField_a_of_type_Float - f3;
-          float f5 = getScrollX();
-          i = getWidth();
-          int j = getPageMargin() + i - (getPaddingLeft() + getPaddingRight());
-          int k = getAdapter().getCount() - 1;
-          int m = getCurrentItem();
-          float f4 = Math.max(0, (m - 1) * j);
-          float f2 = Math.min(m + 1, k) * j;
-          f5 += f1;
-          if (this.jdField_b_of_type_Float == 0.0F) {
-            if (f5 < f4) {
-              if (f4 == 0.0F)
-              {
-                f2 = this.jdField_c_of_type_Int;
-                this.jdField_a_of_type_Bivg.a((f2 + f1) / i);
-              }
+          i = 1;
+        }
+        i = 0;
+      }
+      i = MotionEventCompat.getActionIndex(paramMotionEvent);
+      this.jdField_a_of_type_Float = MotionEventCompat.getX(paramMotionEvent, i);
+      this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, i);
+      i = 1;
+      continue;
+      if (this.jdField_b_of_type_Int != -1)
+      {
+        float f3 = MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.jdField_b_of_type_Int));
+        f1 = this.jdField_a_of_type_Float - f3;
+        f5 = getScrollX();
+        i = getWidth();
+        j = getPageMargin() + i - (getPaddingLeft() + getPaddingRight());
+        k = getAdapter().getCount() - 1;
+        m = getCurrentItem();
+        f4 = Math.max(0, (m - 1) * j);
+        f2 = Math.min(m + 1, k) * j;
+        f5 += f1;
+        if (this.jdField_b_of_type_Float == 0.0F)
+        {
+          if (f5 < f4)
+          {
+            if (f4 == 0.0F)
+            {
+              f2 = this.jdField_c_of_type_Int;
+              this.jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect.a((f2 + f1) / i);
             }
           }
-          for (;;)
+          else if ((f5 > f2) && (f2 == k * j))
           {
-            i = 0;
-            break;
-            if ((f5 > f2) && (f2 == k * j))
-            {
-              f1 = this.jdField_c_of_type_Int;
-              this.jdField_a_of_type_Bivg.a((f5 - f2 - f1) / i);
-              continue;
-              this.jdField_a_of_type_Float = f3;
-            }
+            f1 = this.jdField_c_of_type_Int;
+            this.jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect.a((f5 - f2 - f1) / i);
+            break label477;
+            QLog.e("BounceViewPager", 1, "onTouchEvent", localException1);
           }
         }
-        this.jdField_a_of_type_Bivg.b();
+        else {
+          this.jdField_a_of_type_Float = f3;
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect.b();
         i = 0;
         continue;
         this.jdField_b_of_type_Int = -1;
-        this.jdField_a_of_type_Bivg.b();
+        this.jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect.b();
         i = 1;
+        continue;
+        i = (paramMotionEvent.getAction() & 0xFF00) >> 8;
+        if (MotionEventCompat.getPointerId(paramMotionEvent, i) != this.jdField_b_of_type_Int) {
+          continue;
+        }
+        if (i == 0) {}
+        for (i = 1;; i = 0)
+        {
+          this.jdField_a_of_type_Float = paramMotionEvent.getX(i);
+          this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, i);
+          i = 1;
+          break;
+        }
       }
-      i = (paramMotionEvent.getAction() & 0xFF00) >> 8;
-    } while (MotionEventCompat.getPointerId(paramMotionEvent, i) != this.jdField_b_of_type_Int);
-    if (i == 0) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getX(i);
-      this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, i);
-      i = 1;
-      break;
     }
   }
   
   public void setPull(float paramFloat)
   {
-    this.jdField_a_of_type_Bivg.a(paramFloat);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceOverScrollEffect.a(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.bounce.BounceViewPager
  * JD-Core Version:    0.7.0.1
  */

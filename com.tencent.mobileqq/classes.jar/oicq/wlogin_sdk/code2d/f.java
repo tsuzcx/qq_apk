@@ -96,7 +96,7 @@ public class f
     }
     if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0))
     {
-      paramArrayOfByte5 = new byte[arrayOfByte.length + 16 + 2 + paramArrayOfInt.length + 16 + 1 + 2 + 1 + 2 + paramArrayOfByte1.length * 2 + 2 + 4 + paramArrayOfByte3.length + 4 + paramArrayOfByte4.length];
+      paramArrayOfByte5 = new byte[arrayOfByte.length + 16 + 2 + paramArrayOfInt.length + 16 + 1 + 2 + 1 + 2 + paramArrayOfByte1.length * 2 + 2 + 4 + paramArrayOfByte3.length + 4 + 4 + 4 + paramArrayOfByte4.length];
       util.int64_to_buf32(paramArrayOfByte5, 2, paramLong2);
       util.int64_to_buf(paramArrayOfByte5, 6, paramLong1);
       util.int16_to_buf(paramArrayOfByte5, 14, arrayOfByte.length);
@@ -107,7 +107,7 @@ public class f
       System.arraycopy(paramArrayOfInt, 0, paramArrayOfByte5, i, paramArrayOfInt.length);
       i += paramArrayOfInt.length;
       if ((paramArrayOfByte2 == null) || (paramArrayOfByte2.length != 16)) {
-        break label399;
+        break label407;
       }
       System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte5, i, 16);
       i += 16;
@@ -129,9 +129,9 @@ public class f
         paramInt += 2;
         i += 1;
       }
-      paramArrayOfByte5 = new byte[arrayOfByte.length + 16 + 2 + paramArrayOfInt.length + 16 + 1 + 2 + 1 + 2 + paramArrayOfByte1.length * 2 + 2 + 4 + paramArrayOfByte3.length];
+      paramArrayOfByte5 = new byte[arrayOfByte.length + 16 + 2 + paramArrayOfInt.length + 16 + 1 + 2 + 1 + 2 + paramArrayOfByte1.length * 2 + 2 + 4 + paramArrayOfByte3.length + 4 + 4];
       break;
-      label399:
+      label407:
       i += 16;
     }
     int j = 1;
@@ -150,16 +150,26 @@ public class f
     util.int16_to_buf(paramArrayOfByte5, paramInt, paramArrayOfByte3.length);
     paramInt += 2;
     System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte5, paramInt, paramArrayOfByte3.length);
-    paramInt += paramArrayOfByte3.length;
-    if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0))
+    i = paramInt + paramArrayOfByte3.length;
+    paramInt = i;
+    if (paramArrayOfByte4 != null)
     {
-      util.int16_to_buf(paramArrayOfByte5, paramInt, 12);
-      paramInt += 2;
-      util.int16_to_buf(paramArrayOfByte5, paramInt, paramArrayOfByte4.length);
-      paramInt += 2;
-      System.arraycopy(paramArrayOfByte4, 0, paramArrayOfByte5, paramInt, paramArrayOfByte4.length);
-      paramInt = paramArrayOfByte4.length;
+      paramInt = i;
+      if (paramArrayOfByte4.length > 0)
+      {
+        util.int16_to_buf(paramArrayOfByte5, i, 12);
+        paramInt = i + 2;
+        util.int16_to_buf(paramArrayOfByte5, paramInt, paramArrayOfByte4.length);
+        paramInt += 2;
+        System.arraycopy(paramArrayOfByte4, 0, paramArrayOfByte5, paramInt, paramArrayOfByte4.length);
+        paramInt += paramArrayOfByte4.length;
+      }
     }
+    util.int16_to_buf(paramArrayOfByte5, paramInt, 57);
+    paramInt += 2;
+    util.int16_to_buf(paramArrayOfByte5, paramInt, 4);
+    paramInt += 2;
+    util.int32_to_buf(paramArrayOfByte5, paramInt, 1);
     return get_request(paramLong1, paramBoolean, paramArrayOfByte5);
   }
 }

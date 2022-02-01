@@ -5,7 +5,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.ac;
 import com.tencent.mobileqq.msf.core.net.m;
 import com.tencent.mobileqq.msf.core.net.n;
 

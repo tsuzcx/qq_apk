@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.apollo.script;
 
-import anby;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-public class SpriteBackgroundManager$3
+class SpriteBackgroundManager$3
   implements Runnable
 {
-  public SpriteBackgroundManager$3(anby paramanby, ApolloTextureView paramApolloTextureView, int paramInt) {}
+  SpriteBackgroundManager$3(SpriteBackgroundManager paramSpriteBackgroundManager, ApolloTextureView paramApolloTextureView, int paramInt) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class SpriteBackgroundManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteBackgroundManager.3
  * JD-Core Version:    0.7.0.1
  */

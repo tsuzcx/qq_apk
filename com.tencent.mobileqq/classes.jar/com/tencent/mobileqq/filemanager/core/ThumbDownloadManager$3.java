@@ -1,31 +1,29 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atpc;
-import atpe;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class ThumbDownloadManager$3
+class ThumbDownloadManager$3
   implements Runnable
 {
-  public ThumbDownloadManager$3(atpc paramatpc) {}
+  ThumbDownloadManager$3(ThumbDownloadManager paramThumbDownloadManager) {}
   
   public void run()
   {
-    if (atpc.a(this.this$0).size() >= 8) {}
-    while (atpc.a(this.this$0).size() == 0) {
+    if (ThumbDownloadManager.a(this.this$0).size() >= 8) {}
+    while (ThumbDownloadManager.a(this.this$0).size() == 0) {
       return;
     }
-    atpe localatpe = (atpe)atpc.a(this.this$0).get(0);
-    if (localatpe == null)
+    ThumbDownloadManager.ThumbTask localThumbTask = (ThumbDownloadManager.ThumbTask)ThumbDownloadManager.a(this.this$0).get(0);
+    if (localThumbTask == null)
     {
-      atpc.a(this.this$0).remove(0);
-      atpc.a(this.this$0);
+      ThumbDownloadManager.a(this.this$0).remove(0);
+      ThumbDownloadManager.a(this.this$0);
       return;
     }
-    atpc.a(this.this$0).remove(localatpe);
-    atpc.a(this.this$0, localatpe);
-    atpc.b(this.this$0, localatpe);
+    ThumbDownloadManager.a(this.this$0).remove(localThumbTask);
+    ThumbDownloadManager.a(this.this$0, localThumbTask);
+    ThumbDownloadManager.b(this.this$0, localThumbTask);
   }
 }
 

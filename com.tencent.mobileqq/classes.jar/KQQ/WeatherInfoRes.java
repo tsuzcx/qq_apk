@@ -9,10 +9,10 @@ public final class WeatherInfoRes
 {
   static ThreeDayWeather cache_weatherInfo;
   public String city = "";
-  public byte citytype;
+  public byte citytype = 0;
   public String province = "";
-  public byte result;
-  public ThreeDayWeather weatherInfo;
+  public byte result = 0;
+  public ThreeDayWeather weatherInfo = null;
   
   public WeatherInfoRes() {}
   

@@ -23,13 +23,13 @@ public class WheelView
 {
   private static final int[] jdField_a_of_type_ArrayOfInt = { -15658735, 11184810, 11184810 };
   private float jdField_a_of_type_Float = -0.1F;
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Camera jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-  private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+  private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = null;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 0.8F;
   private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private GradientDrawable jdField_b_of_type_AndroidGraphicsDrawableGradientDrawable;
+  private GradientDrawable jdField_b_of_type_AndroidGraphicsDrawableGradientDrawable = null;
   private boolean jdField_b_of_type_Boolean;
   private float c = -25.0F;
   private boolean d;
@@ -227,7 +227,7 @@ public class WheelView
     this.jdField_a_of_type_Int = a();
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_Int = a();
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -280,7 +280,7 @@ public class WheelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.remind.widget.WheelView
  * JD-Core Version:    0.7.0.1
  */

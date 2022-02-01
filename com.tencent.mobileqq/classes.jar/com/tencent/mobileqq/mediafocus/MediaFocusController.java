@@ -5,10 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import awvf;
-import awvg;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -17,18 +15,18 @@ import java.util.Stack;
 public class MediaFocusController
   extends BroadcastReceiver
 {
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  private awvf jdField_a_of_type_Awvf;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+  private MediaFocusController.IMediaFocusStatusCallback jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback;
   private final Stack<MediaFocusStackItem> jdField_a_of_type_JavaUtilStack = new Stack();
   
-  public MediaFocusController(awvf paramawvf)
+  MediaFocusController(MediaFocusController.IMediaFocusStatusCallback paramIMediaFocusStatusCallback)
   {
-    this.jdField_a_of_type_Awvf = paramawvf;
-    paramawvf = new IntentFilter();
-    paramawvf.addAction("tencent.mobileqq.mediafocus.request");
-    paramawvf.addAction("tencent.mobileqq.mediafocus.abandon");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this, paramawvf);
-    awvg.a();
+    this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback = paramIMediaFocusStatusCallback;
+    paramIMediaFocusStatusCallback = new IntentFilter();
+    paramIMediaFocusStatusCallback.addAction("tencent.mobileqq.mediafocus.request");
+    paramIMediaFocusStatusCallback.addAction("tencent.mobileqq.mediafocus.abandon");
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this, paramIMediaFocusStatusCallback);
+    MediaFocusIpcClient.a();
   }
   
   private int a(MediaFocusStackItem paramMediaFocusStackItem)
@@ -67,8 +65,8 @@ public class MediaFocusController
       {
         a(paramString1, paramString2);
         a(1);
-        if (this.jdField_a_of_type_Awvf != null) {
-          this.jdField_a_of_type_Awvf.a();
+        if (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback != null) {
+          this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback.a();
         }
         return 0;
       }
@@ -92,8 +90,8 @@ public class MediaFocusController
       if (!a(localMediaFocusStackItem.b())) {
         break label64;
       }
-      if (this.jdField_a_of_type_Awvf != null) {
-        this.jdField_a_of_type_Awvf.a(paramInt, localMediaFocusStackItem.a());
+      if (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback.a(paramInt, localMediaFocusStackItem.a());
       }
     }
     return;
@@ -119,7 +117,7 @@ public class MediaFocusController
   
   private boolean a(String paramString)
   {
-    return BaseApplicationImpl.processName.equals(paramString);
+    return BaseApplication.processName.equals(paramString);
   }
   
   public int a(int paramInt, String paramString)
@@ -129,7 +127,7 @@ public class MediaFocusController
     }
     Intent localIntent = new Intent("tencent.mobileqq.mediafocus.request");
     localIntent.setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
-    paramString = new MediaFocusStackItem(paramInt, System.currentTimeMillis(), paramString, BaseApplicationImpl.processName);
+    paramString = new MediaFocusStackItem(paramInt, System.currentTimeMillis(), paramString, BaseApplication.processName);
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("focusItem", paramString);
     localIntent.putExtras(localBundle);
@@ -141,12 +139,16 @@ public class MediaFocusController
   {
     Intent localIntent = new Intent("tencent.mobileqq.mediafocus.abandon");
     localIntent.putExtra("cliendID", paramString);
-    localIntent.putExtra("processName", BaseApplicationImpl.processName);
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    localIntent.putExtra("processName", BaseApplication.processName);
+    try
     {
       localIntent.setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
       this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
       return 0;
+    }
+    catch (NullPointerException paramString)
+    {
+      QLog.d("MediaFocusController", 1, "context is null while sendMediaFocusAbandon");
     }
     return 1;
   }
@@ -156,7 +158,7 @@ public class MediaFocusController
     this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this);
     this.jdField_a_of_type_JavaUtilStack.clear();
     this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Awvf = null;
+    this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback = null;
   }
   
   public boolean a(String paramString1, String paramString2)
@@ -189,8 +191,8 @@ public class MediaFocusController
       }
       paramContext = (MediaFocusStackItem)paramIntent.getExtras().getParcelable("focusItem");
       i = a(paramContext);
-      if ((paramContext != null) && (a(paramContext.b())) && (i == 0) && (this.jdField_a_of_type_Awvf != null)) {
-        this.jdField_a_of_type_Awvf.a(1, paramContext.a());
+      if ((paramContext != null) && (a(paramContext.b())) && (i == 0) && (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback.a(1, paramContext.a());
       }
     }
     label109:

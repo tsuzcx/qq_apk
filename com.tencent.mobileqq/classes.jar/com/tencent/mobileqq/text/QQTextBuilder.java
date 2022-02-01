@@ -2,18 +2,48 @@ package com.tencent.mobileqq.text;
 
 import android.text.Editable.Factory;
 import android.text.SpannableStringBuilder;
-import asdi;
-import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
+import com.tencent.mobileqq.qroute.annotation.ConfigInject;
+import com.tencent.mobileqq.text.processor.ITextProcessor;
+import com.tencent.mobileqq.text.processor.QQEmoticonTextProcessor;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class QQTextBuilder
   extends SpannableStringBuilder
 {
   public static Editable.Factory EMOCTATION_FACORY = new QQTextBuilder.1();
   public static Editable.Factory EMOTION_INPUT_FACTORY = new QQTextBuilder.2();
+  @ConfigInject(configPath="Foundation/QQUI/src/main/resources/Inject_QQTextSpanProcessor.yml", version=1)
+  public static ArrayList<Class<? extends ITextProcessor>> ITextProcessorClassList = new ArrayList();
   public static final String TAG = "QQTextBuilder";
+  private static ArrayList<ITextProcessor> sTextProcessorList;
   private int mEmoSize;
   private int mflags;
+  
+  static
+  {
+    ITextProcessorClassList.add(QQEmoticonTextProcessor.class);
+    sTextProcessorList = new ArrayList();
+    Iterator localIterator = ITextProcessorClassList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Class)localIterator.next();
+      try
+      {
+        localObject = (ITextProcessor)((Class)localObject).newInstance();
+        sTextProcessorList.add(localObject);
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        QLog.e("QQTextBuilder", 1, "initTextProcessor error! ", localIllegalAccessException);
+      }
+      catch (InstantiationException localInstantiationException)
+      {
+        QLog.e("QQTextBuilder", 1, "initTextProcessor error! ", localInstantiationException);
+      }
+    }
+  }
   
   public QQTextBuilder(int paramInt)
   {
@@ -163,84 +193,23 @@ public class QQTextBuilder
     getChars(i, paramInt1, (char[])localObject2, 0);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append((char[])localObject2);
-    localObject2 = (QQText.EmoticonSpan[])getSpans(i, paramInt1, QQText.EmoticonSpan.class);
-    if (paramInt1 - i > 0)
-    {
-      paramInt2 = 0;
-      if (paramInt2 < localObject2.length)
-      {
-        Object localObject3 = localObject2[paramInt2];
-        int k = getSpanStart(localObject3);
-        int m = getSpanEnd(localObject3);
-        j = k;
-        if (k < i) {
-          j = i;
-        }
-        k = m;
-        if (m > paramInt1) {
-          k = paramInt1;
-        }
-        switch (localObject3.emojiType)
-        {
-        }
-        for (;;)
-        {
-          paramInt2 += 1;
-          break;
-          try
-          {
-            ((StringBuilder)localObject1).replace(j - i, k - i, TextUtils.getEmojiString(localObject3.index));
-          }
-          catch (Exception localException)
-          {
-            QLog.e("QQTextBuilder", 1, localException.getStackTrace());
-          }
-          continue;
-          Object localObject4 = (QQText.SmallEmojiSpan)localException;
-          localObject4 = asdi.a(((QQText.SmallEmojiSpan)localObject4).mEpId, ((QQText.SmallEmojiSpan)localObject4).mEId);
-          ((StringBuilder)localObject1).replace(j - i, k - i, String.valueOf(new char[] { '\024', localObject4[3], localObject4[2], localObject4[1], localObject4[0] }));
-          continue;
-          ((StringBuilder)localObject1).replace(j - i, k - i, TextUtils.getSysEmotcationString(((QQText.EmoticonSpan)localObject4).index));
-        }
-      }
+    localObject2 = sTextProcessorList.iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((ITextProcessor)((Iterator)localObject2).next()).doSubSequence(i, paramInt1, (StringBuilder)localObject1, this);
     }
     return localObject1;
   }
   
   public String toPlainText()
   {
-    int j = 0;
     int i = length();
-    Object localObject1 = new char[i];
-    getChars(0, i, (char[])localObject1, 0);
+    Object localObject = new char[i];
+    getChars(0, i, (char[])localObject, 0);
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append((char[])localObject1);
-    int k = "[emoji]".length();
-    localObject1 = (QQText.EmoticonSpan[])getSpans(0, i, QQText.EmoticonSpan.class);
-    i = 0;
-    if (j < localObject1.length)
-    {
-      Object localObject2 = localObject1[j];
-      int m = getSpanStart(localObject2);
-      int n = getSpanEnd(localObject2);
-      switch (((QQText.EmoticonSpan)localObject2).emojiType)
-      {
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        localStringBuffer.replace(m + i, n + i, "[emoji]");
-        i += k - (n - m);
-        continue;
-        localObject2 = ((QQText.EmoticonSpan)localObject2).getDescription();
-        localStringBuffer.replace(m + i, n + i, (String)localObject2);
-        i += ((String)localObject2).length() - (n - m);
-        continue;
-        localObject2 = QQSysFaceUtil.getFaceDescription(((QQText.EmoticonSpan)localObject2).index & 0x7FFFFFFF);
-        localStringBuffer.replace(m + i, n + i, (String)localObject2);
-        i += ((String)localObject2).length() - (n - m);
-      }
+    localStringBuffer.append((char[])localObject);
+    localObject = sTextProcessorList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((ITextProcessor)((Iterator)localObject).next()).doToPlain(i, localStringBuffer, this);
     }
     return localStringBuffer.toString();
   }
@@ -251,43 +220,13 @@ public class QQTextBuilder
       return super.toString();
     }
     int i = length();
-    Object localObject1 = new char[i];
-    getChars(0, i, (char[])localObject1, 0);
+    Object localObject = new char[i];
+    getChars(0, i, (char[])localObject, 0);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((char[])localObject1);
-    int j = localStringBuilder.length();
-    localObject1 = (QQText.EmoticonSpan[])getSpans(0, i, QQText.EmoticonSpan.class);
-    i = 0;
-    if (i < localObject1.length)
-    {
-      Object localObject2 = localObject1[i];
-      int k = getSpanStart(localObject2);
-      int m = getSpanEnd(localObject2);
-      if ((k < j) && (m <= j)) {
-        switch (((QQText.EmoticonSpan)localObject2).emojiType)
-        {
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.replace(k, m, TextUtils.getEmojiString(((QQText.EmoticonSpan)localObject2).index));
-        continue;
-        localObject2 = (QQText.SmallEmojiSpan)localObject2;
-        localObject2 = asdi.a(((QQText.SmallEmojiSpan)localObject2).mEpId, ((QQText.SmallEmojiSpan)localObject2).mEId);
-        localStringBuilder.replace(k, m, String.valueOf(new char[] { '\024', localObject2[3], localObject2[2], localObject2[1], localObject2[0] }));
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QQTextBuilder", 2, "start:" + k + ",end:" + m);
-          continue;
-          localStringBuilder.replace(k, m, TextUtils.getSysEmotcationString(((QQText.EmoticonSpan)localObject2).index));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e("QQText", 2, "error emo pos. start:" + k + " end: " + m + " length: " + j);
-          }
-        }
-      }
+    localStringBuilder.append((char[])localObject);
+    localObject = sTextProcessorList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((ITextProcessor)((Iterator)localObject).next()).doToString(i, localStringBuilder, this);
     }
     return localStringBuilder.toString();
   }

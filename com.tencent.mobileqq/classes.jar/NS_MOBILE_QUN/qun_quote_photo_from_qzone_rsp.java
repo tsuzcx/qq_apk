@@ -9,7 +9,7 @@ public final class qun_quote_photo_from_qzone_rsp
   extends JceStruct
 {
   static ArrayList<String> cache_url = new ArrayList();
-  public ArrayList<String> url;
+  public ArrayList<String> url = null;
   
   static
   {

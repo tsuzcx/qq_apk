@@ -8,10 +8,10 @@ public final class RequestCancelBindMobile
   extends JceStruct
 {
   static byte[] cache_encrptCancelMobileInfo = (byte[])new byte[1];
-  public byte[] encrptCancelMobileInfo;
-  public boolean isFromChangeBind;
-  public boolean isFromUni;
-  public boolean isSecNewReq;
+  public byte[] encrptCancelMobileInfo = null;
+  public boolean isFromChangeBind = false;
+  public boolean isFromUni = false;
+  public boolean isSecNewReq = false;
   public String mobileNo = "";
   public String nationCode = "";
   

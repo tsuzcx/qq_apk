@@ -12,16 +12,16 @@ public final class RespGetVoterList
   static UserCntlData cache_stUserData;
   static ArrayList<UserProfile> cache_vTodayFavoriteInfos;
   static ArrayList<UserProfile> cache_vVoterInfos = new ArrayList();
-  public long RespTime;
+  public long RespTime = 0L;
   public int iMaxFriendFavoriteCount = 50;
   public int iMaxStrangerFavoriteCount = 50;
-  public int iTodayVoteCount;
+  public int iTodayVoteCount = 0;
   public int iTodayVoteRank = -1;
-  public int iTotalVoteCount;
-  public RespHead stHeader;
-  public UserCntlData stUserData;
-  public ArrayList<UserProfile> vTodayFavoriteInfos;
-  public ArrayList<UserProfile> vVoterInfos;
+  public int iTotalVoteCount = 0;
+  public RespHead stHeader = null;
+  public UserCntlData stUserData = null;
+  public ArrayList<UserProfile> vTodayFavoriteInfos = null;
+  public ArrayList<UserProfile> vVoterInfos = null;
   
   static
   {

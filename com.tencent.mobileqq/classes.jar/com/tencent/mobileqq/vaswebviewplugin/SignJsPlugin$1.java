@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbvh;
-import bhoj;
 import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureManagerForTool;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
@@ -27,7 +27,7 @@ class SignJsPlugin$1
     JSONObject localJSONObject1 = new JSONObject();
     for (;;)
     {
-      bhoj localbhoj;
+      SignatureTemplateInfo localSignatureTemplateInfo;
       try
       {
         if ((paramEIPCResult.code != 0) || (paramEIPCResult.data == null)) {
@@ -38,8 +38,8 @@ class SignJsPlugin$1
           continue;
         }
         paramEIPCResult = (RichStatus)paramEIPCResult;
-        if (bbvh.a().a == null) {
-          bbvh.a().b(paramEIPCResult);
+        if (SignatureManagerForTool.a().a == null) {
+          SignatureManagerForTool.a().b(paramEIPCResult);
         }
         localJSONObject2 = new JSONObject();
         localJSONObject2.put("bgId", paramEIPCResult.tplId);
@@ -47,8 +47,8 @@ class SignJsPlugin$1
         localJSONObject2.put("fontType", paramEIPCResult.fontType);
         localJSONObject2.put("actionId", paramEIPCResult.actionId);
         localJSONObject2.put("actionText", paramEIPCResult.actionText);
-        localbhoj = bbvh.a().a(paramEIPCResult.tplId);
-        if (!localbhoj.a.get()) {
+        localSignatureTemplateInfo = SignatureManagerForTool.a().a(paramEIPCResult.tplId);
+        if (!localSignatureTemplateInfo.a.get()) {
           break label319;
         }
         if (paramEIPCResult.mStickerInfos == null) {
@@ -78,7 +78,7 @@ class SignJsPlugin$1
       int i = 1;
       continue;
       label319:
-      i = localbhoj.g;
+      i = localSignatureTemplateInfo.g;
       continue;
       label328:
       i = 0;
@@ -87,7 +87,7 @@ class SignJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.SignJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

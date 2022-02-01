@@ -10,43 +10,38 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bleh;
-import blek;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyDropFrameHelper;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyProteusFamilyUtil;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyProteusFamilyUtil.OnProteusFamilyDataLoaded;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJAppSetting;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.widget.PopupMenuDialog;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import orn;
-import orp;
-import pju;
-import pjy;
-import pqu;
-import pzf;
-import pzg;
-import pzh;
-import pzi;
-import pzj;
 
 public class ReadInJoyProteusFamilyFragment
   extends IphoneTitleBarFragment
-  implements orp, pjy
+  implements ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener, ReadInJoyProteusFamilyUtil.OnProteusFamilyDataLoaded
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private pzj jdField_a_of_type_Pzj;
+  private ReadInJoyProteusFamilyViewController jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController;
   
   private void a()
   {
     if (this.jdField_a_of_type_AndroidContentContext != null)
     {
-      this.jdField_a_of_type_Pzj = new pzj((Activity)this.jdField_a_of_type_AndroidContentContext);
-      ViewGroup localViewGroup = (ViewGroup)this.mContentView.findViewById(2131373263);
-      this.jdField_a_of_type_Pzj.a(localViewGroup);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController = new ReadInJoyProteusFamilyViewController((Activity)this.jdField_a_of_type_AndroidContentContext);
+      ViewGroup localViewGroup = (ViewGroup)this.mContentView.findViewById(2131373588);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController.a(localViewGroup);
       b();
     }
   }
@@ -56,7 +51,7 @@ public class ReadInJoyProteusFamilyFragment
     if (this.leftView != null)
     {
       this.leftView.setTextColor(paramInt);
-      this.leftView.setBackgroundResource(2130849537);
+      this.leftView.setBackgroundResource(2130849916);
     }
     if (this.centerView != null) {
       this.centerView.setTextColor(paramInt);
@@ -65,20 +60,20 @@ public class ReadInJoyProteusFamilyFragment
   
   private void b()
   {
-    setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131717821));
-    pqu.a(getTitleBarView());
+    setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718324));
+    RIJAppSetting.a(getTitleBarView());
     a(-16777216);
     Object localObject = this.rightViewImg;
     if (localObject != null)
     {
-      ((ImageView)localObject).setImageResource(2130842897);
+      ((ImageView)localObject).setImageResource(2130843052);
       ((ImageView)localObject).setVisibility(0);
       ((ImageView)localObject).setBackgroundResource(0);
-      ((ImageView)localObject).setOnClickListener(new pzf(this, (ImageView)localObject));
+      ((ImageView)localObject).setOnClickListener(new ReadInJoyProteusFamilyFragment.2(this, (ImageView)localObject));
     }
     localObject = getTitleBarView();
     if (localObject != null) {
-      ((View)localObject).setOnClickListener(new pzg(this));
+      ((View)localObject).setOnClickListener(new ReadInJoyProteusFamilyFragment.3(this));
     }
   }
   
@@ -93,21 +88,21 @@ public class ReadInJoyProteusFamilyFragment
     int[] tmp24_20 = tmp20_16;
     tmp24_20[2] = 2;
     tmp24_20;
-    String str1 = BaseApplicationImpl.getApplication().getString(2131717821);
-    String str2 = BaseApplicationImpl.getApplication().getString(2131717821);
-    String str3 = BaseApplicationImpl.getApplication().getString(2131717821);
+    String str1 = BaseApplicationImpl.getApplication().getString(2131718324);
+    String str2 = BaseApplicationImpl.getApplication().getString(2131718324);
+    String str3 = BaseApplicationImpl.getApplication().getString(2131718324);
     int i = 0;
     while (i < arrayOfInt.length)
     {
-      blek localblek = new blek();
-      localblek.jdField_a_of_type_Int = arrayOfInt[i];
-      localblek.jdField_a_of_type_JavaLangString = new String[] { str1, str2, str3 }[i];
-      localblek.b = new int[] { 2130842890, 2130842891, 2130842890 }[i];
-      localArrayList.add(localblek);
+      PopupMenuDialog.MenuItem localMenuItem = new PopupMenuDialog.MenuItem();
+      localMenuItem.jdField_a_of_type_Int = arrayOfInt[i];
+      localMenuItem.jdField_a_of_type_JavaLangString = new String[] { str1, str2, str3 }[i];
+      localMenuItem.b = new int[] { 2130843045, 2130843046, 2130843045 }[i];
+      localArrayList.add(localMenuItem);
       i += 1;
     }
-    i = ViewUtils.dip2px(125.0F);
-    bleh.a(paramBaseActivity, localArrayList, new pzh(this), new pzi(this), i, false, -1, 2131755031).showAsDropDown(paramView, -(i - paramView.getWidth()), 0);
+    i = ViewUtils.a(125.0F);
+    PopupMenuDialog.a(paramBaseActivity, localArrayList, new ReadInJoyProteusFamilyFragment.4(this), new ReadInJoyProteusFamilyFragment.5(this), i, false, -1, 2131755033).showAsDropDown(paramView, -(i - paramView.getWidth()), 0);
   }
   
   public void a(String paramString)
@@ -130,14 +125,14 @@ public class ReadInJoyProteusFamilyFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     a();
-    this.jdField_a_of_type_Pzj.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131366720));
-    orn.a().a(8888, this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131366896));
+    ReadInJoyDropFrameHelper.a().a(8888, this);
   }
   
   public int getContentLayoutId()
   {
-    return 2131560300;
+    return 2131560372;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -147,8 +142,8 @@ public class ReadInJoyProteusFamilyFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Pzj != null) {
-      this.jdField_a_of_type_Pzj.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -157,64 +152,64 @@ public class ReadInJoyProteusFamilyFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
-    pju.a().a(this);
-    pju.a().a();
+    ReadInJoyProteusFamilyUtil.a().a(this);
+    ReadInJoyProteusFamilyUtil.a().a();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    pju.a().b();
-    if (this.jdField_a_of_type_Pzj != null) {
-      this.jdField_a_of_type_Pzj.d();
+    ReadInJoyProteusFamilyUtil.a().b();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController.d();
     }
-    orn.a().b(8888, this);
+    ReadInJoyDropFrameHelper.a().b(8888, this);
   }
   
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Pzj != null) {
-      this.jdField_a_of_type_Pzj.c();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController.c();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Pzj != null) {
-      this.jdField_a_of_type_Pzj.g();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController.g();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Pzj != null) {
-      this.jdField_a_of_type_Pzj.h();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController.h();
     }
-    pqu.a(getActivity(), true, pqu.a(getActivity()));
+    RIJAppSetting.a(getActivity(), true, RIJAppSetting.a(getActivity()));
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Pzj != null) {
-      this.jdField_a_of_type_Pzj.e();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController.e();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Pzj != null) {
-      this.jdField_a_of_type_Pzj.f();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyViewController.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment
  * JD-Core Version:    0.7.0.1
  */

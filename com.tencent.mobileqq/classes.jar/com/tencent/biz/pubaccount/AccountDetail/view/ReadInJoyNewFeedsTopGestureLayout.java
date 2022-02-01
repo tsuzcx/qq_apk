@@ -1,8 +1,7 @@
 package com.tencent.biz.pubaccount.AccountDetail.view;
 
 import android.content.Context;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.StickerDismissGestureDetector;
-import ocy;
+import com.tencent.mobileqq.activity.fling.StickerDismissGestureDetector;
 
 public class ReadInJoyNewFeedsTopGestureLayout
   extends AccountDetailTopGestureLayout
@@ -14,14 +13,14 @@ public class ReadInJoyNewFeedsTopGestureLayout
   
   public void init(Context paramContext)
   {
-    this.gestureListener = new ocy(this, paramContext);
-    this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, paramContext, this.gestureListener);
+    this.gestureListener = new ReadInJoyNewFeedsTopGestureLayout.EdgeTopGestureDetector(this, paramContext);
+    this.mTopGestureDetector = new StickerDismissGestureDetector(this, paramContext, this.gestureListener);
     this.defaultGestureDetector = this.mTopGestureDetector;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

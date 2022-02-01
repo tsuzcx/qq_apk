@@ -2,10 +2,6 @@ package com.tencent.mobileqq.app.automator;
 
 import android.os.Process;
 import android.os.SystemClock;
-import aoho;
-import aohp;
-import bdgy;
-import blfz;
 import com.tencent.mobileqq.app.automator.step.ActiveAccount;
 import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
 import com.tencent.mobileqq.app.automator.step.GetSubAccount;
@@ -15,6 +11,8 @@ import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
 import com.tencent.mobileqq.app.automator.step.UpdateFriend;
 import com.tencent.mobileqq.app.automator.step.UpdateTroop;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.opt.suspendthread.DeviceOptSwitch;
+import com.tencent.widget.TraceUtils;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -22,15 +20,15 @@ public class AsyncStep
   implements Runnable
 {
   protected volatile int a;
-  private long jdField_a_of_type_Long;
-  public aoho a;
+  private long jdField_a_of_type_Long = 0L;
   public Automator a;
+  public IResultListener a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
   public Object[] a;
   public int b;
   protected long b;
-  protected int c;
+  protected int c = 0;
   
   public AsyncStep()
   {
@@ -85,7 +83,7 @@ public class AsyncStep
             return true;
           }
         }
-        if ((bdgy.f) && (!aohp.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
+        if ((DeviceOptSwitch.d) && (!DeviceOptSwitch.b.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
         {
           long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
           if (QLog.isColorLevel()) {
@@ -164,7 +162,7 @@ public class AsyncStep
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      blfz.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      TraceUtils.asyncTraceBegin(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " begin with " + this.jdField_a_of_type_Int);
       }
@@ -204,9 +202,9 @@ public class AsyncStep
       {
         break label653;
       }
-      blfz.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-      if (this.jdField_a_of_type_Aoho != null) {
-        this.jdField_a_of_type_Aoho.a(this, this.jdField_a_of_type_Int);
+      TraceUtils.asyncTraceEnd(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorIResultListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorIResultListener.a(this, this.jdField_a_of_type_Int);
       }
     }
     try
@@ -219,9 +217,9 @@ public class AsyncStep
     {
       break label250;
     }
-    blfz.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-    if (this.jdField_a_of_type_Aoho != null) {
-      this.jdField_a_of_type_Aoho.a(this, this.jdField_a_of_type_Int);
+    TraceUtils.asyncTraceEnd(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+    if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorIResultListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorIResultListener.a(this, this.jdField_a_of_type_Int);
     }
   }
 }

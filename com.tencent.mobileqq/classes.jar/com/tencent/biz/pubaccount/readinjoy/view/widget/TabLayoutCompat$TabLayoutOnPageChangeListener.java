@@ -2,8 +2,6 @@ package com.tencent.biz.pubaccount.readinjoy.view.widget;
 
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import java.lang.ref.WeakReference;
-import trk;
-import trn;
 
 public class TabLayoutCompat$TabLayoutOnPageChangeListener
   implements ViewPager.OnPageChangeListener
@@ -17,7 +15,7 @@ public class TabLayoutCompat$TabLayoutOnPageChangeListener
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTabLayoutCompat);
   }
   
-  public void a()
+  void a()
   {
     this.b = 0;
     this.jdField_a_of_type_Int = 0;
@@ -60,11 +58,11 @@ public class TabLayoutCompat$TabLayoutOnPageChangeListener
     label105:
     for (boolean bool = true;; bool = false)
     {
-      trk localtrk1 = TabLayoutCompat.a(localTabLayoutCompat);
+      TabLayoutCompat.Tab localTab1 = TabLayoutCompat.a(localTabLayoutCompat);
       localTabLayoutCompat.b(localTabLayoutCompat.a(paramInt), bool);
-      trk localtrk2 = localTabLayoutCompat.a(paramInt);
-      if ((TabLayoutCompat.a(localTabLayoutCompat) != null) && (localtrk2 != null)) {
-        TabLayoutCompat.a(localTabLayoutCompat).a(localtrk2, localtrk1, 0);
+      TabLayoutCompat.Tab localTab2 = localTabLayoutCompat.a(paramInt);
+      if ((TabLayoutCompat.a(localTabLayoutCompat) != null) && (localTab2 != null)) {
+        TabLayoutCompat.a(localTabLayoutCompat).a(localTab2, localTab1, 0);
       }
       return;
     }
@@ -72,7 +70,7 @@ public class TabLayoutCompat$TabLayoutOnPageChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.TabLayoutOnPageChangeListener
  * JD-Core Version:    0.7.0.1
  */

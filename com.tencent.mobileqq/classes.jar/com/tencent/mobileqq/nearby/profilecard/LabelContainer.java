@@ -12,11 +12,12 @@ public class LabelContainer
 {
   protected int a;
   protected SparseArray<ArrayList<View>> a;
-  protected int b;
+  protected int b = 0;
   
   public LabelContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
@@ -25,7 +26,7 @@ public class LabelContainer
     this(paramContext, paramAttributeSet);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
     paramInt1 = 0;
@@ -56,7 +57,7 @@ public class LabelContainer
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_AndroidUtilSparseArray.clear();

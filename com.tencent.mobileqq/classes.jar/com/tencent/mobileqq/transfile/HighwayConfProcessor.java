@@ -2,15 +2,15 @@ package com.tencent.mobileqq.transfile;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import aqwt;
-import aqxa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.IQConfigProcessor;
+import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.highway.api.HighwayConfBean;
 import com.tencent.qphone.base.util.QLog;
 
 public class HighwayConfProcessor
-  extends aqwt<HighwayConfBean>
+  extends IQConfigProcessor<HighwayConfBean>
 {
   public static final int GET_HIGHWAY_CONFIG = 15;
   public static final String TAG = "HighwayConfProcessor";
@@ -51,13 +51,13 @@ public class HighwayConfProcessor
   }
   
   @Nullable
-  public HighwayConfBean onParsed(aqxa[] paramArrayOfaqxa)
+  public HighwayConfBean onParsed(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfaqxa[0].a);
+      HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfQConfItem[0].a);
       if (QLog.isColorLevel()) {
-        QLog.d("HighwayConfProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
+        QLog.d("HighwayConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
       }
       return localHighwayConfBean;
     }

@@ -1,13 +1,9 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui;
 
-import boxn;
-import boxy;
-import boxz;
-
-public class EditTextDialog$InitialLayoutListener$2
+class EditTextDialog$InitialLayoutListener$2
   implements Runnable
 {
-  public EditTextDialog$InitialLayoutListener$2(boxz paramboxz) {}
+  EditTextDialog$InitialLayoutListener$2(EditTextDialog.InitialLayoutListener paramInitialLayoutListener) {}
   
   public void run()
   {
@@ -17,7 +13,7 @@ public class EditTextDialog$InitialLayoutListener$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.InitialLayoutListener.2
  * JD-Core Version:    0.7.0.1
  */

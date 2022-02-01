@@ -3,8 +3,8 @@ package dov.com.qq.im.ae.play;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import bopi;
 import dov.com.qq.im.capture.view.QIMSlidingTabView;
+import dov.com.qq.im.capture.view.QIMSlidingTabView.TabIcon;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class AEPlayShowTabView
   extends QIMSlidingTabView
 {
   private int curIndex;
-  private ArrayList<bopi> dataList;
+  private ArrayList<QIMSlidingTabView.TabIcon> dataList = null;
   
   public AEPlayShowTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,12 +24,12 @@ public class AEPlayShowTabView
     return this.curIndex;
   }
   
-  public ArrayList<bopi> getDataList()
+  public ArrayList<QIMSlidingTabView.TabIcon> getDataList()
   {
     return this.dataList;
   }
   
-  public void initTabItemsWithRedDot(ArrayList<bopi> paramArrayList)
+  public void initTabItemsWithRedDot(ArrayList<QIMSlidingTabView.TabIcon> paramArrayList)
   {
     this.dataList = paramArrayList;
     super.initTabItemsWithRedDot(paramArrayList);
@@ -68,7 +68,7 @@ public class AEPlayShowTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEPlayShowTabView
  * JD-Core Version:    0.7.0.1
  */

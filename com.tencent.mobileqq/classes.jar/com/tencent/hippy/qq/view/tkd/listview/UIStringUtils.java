@@ -11,7 +11,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class UIStringUtils
 {
   private static Paint.FontMetricsInt fm = new Paint.FontMetricsInt();
-  private static float mPaintOffset = ImmersiveUtils.a(1.0F);
+  private static float mPaintOffset = ImmersiveUtils.dpToPx(1.0F);
   
   public static void drawText(Canvas paramCanvas, Paint paramPaint, float paramFloat1, float paramFloat2, String paramString)
   {
@@ -42,7 +42,7 @@ public class UIStringUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.UIStringUtils
  * JD-Core Version:    0.7.0.1
  */

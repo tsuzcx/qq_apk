@@ -1,9 +1,9 @@
 package cooperation.qqcircle.eevee;
 
 import android.os.Looper;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.network.request.BaseRequest;
 import cooperation.qqcircle.report.QCircleLpReportDc010001;
 import feedcloud.FeedCloudEeveeUndealmsg.FcUndealMsgsRsp;
 import mqq.os.MqqHandler;
@@ -13,7 +13,7 @@ class QCircleEeveeMananger$2
 {
   QCircleEeveeMananger$2(QCircleEeveeMananger paramQCircleEeveeMananger, int paramInt, String paramString) {}
   
-  public void onReceive(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudEeveeUndealmsg.FcUndealMsgsRsp paramFcUndealMsgsRsp)
+  public void onReceive(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudEeveeUndealmsg.FcUndealMsgsRsp paramFcUndealMsgsRsp)
   {
     if ((paramBoolean) && (QCircleEeveeMananger.access$000() != null)) {
       if (Looper.myLooper().equals(Looper.getMainLooper())) {
@@ -25,14 +25,14 @@ class QCircleEeveeMananger$2
       return;
       QCircleEeveeMananger.access$100(this.this$0, paramFcUndealMsgsRsp, this.val$visitScene);
       return;
-      QLog.e("QCircleEeveeMananger", 1, "onReceive retCode= " + paramLong + "errMsg= " + paramString + " mInstance =" + QCircleEeveeMananger.access$000());
+      RFLog.e("QCircleEeveeMananger", RFLog.USR, "onReceive retCode= " + paramLong + "errMsg= " + paramString + " mInstance =" + QCircleEeveeMananger.access$000());
     } while (this.val$visitScene != 1000);
     QCircleLpReportDc010001.report(500, 15, 2, null, null, null, this.val$msgId, this.val$visitScene);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.eevee.QCircleEeveeMananger.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,25 @@
 package com.tencent.avgame.gameresult;
 
 import com.tencent.mobileqq.utils.FileUtils;
-import nho;
 
-public class GameResultUploadMgrForRemote$4
+class GameResultUploadMgrForRemote$4
   implements Runnable
 {
-  public GameResultUploadMgrForRemote$4(nho paramnho, String paramString1, String paramString2) {}
+  GameResultUploadMgrForRemote$4(GameResultUploadMgrForRemote paramGameResultUploadMgrForRemote, String paramString1, String paramString2) {}
   
   public void run()
   {
     if (this.a != null) {
-      FileUtils.deleteFile(this.a);
+      FileUtils.e(this.a);
     }
     if (this.b != null) {
-      FileUtils.deleteFile(this.b);
+      FileUtils.e(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameresult.GameResultUploadMgrForRemote.4
  * JD-Core Version:    0.7.0.1
  */

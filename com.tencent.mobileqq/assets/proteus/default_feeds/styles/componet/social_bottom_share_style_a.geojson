@@ -151,16 +151,46 @@
             "setDTElementID:withParams:": [
               "share_button",
               {
-                "rowkey": "$dt_rowkey",
-                "content_type": "$dt_content_type",
+                "rowkey": "$dt_rowkey_biu",
+                "content_type": "$dt_content_type_biu",
                 "dt_pgid": "14",
-                "channel_id": "$dt_channel_id",
-                "backend_info": "$dt_backend_info",
+                "channel_id": "$dt_channel_id_biu",
+                "backend_info": "$dt_backend_info_biu",
                 "area": "list",
                 "actionid": "click_share",
                 "click_type": "single"
               }
             ]
+          }
+        },
+        {
+          "view_type": "UIButton",
+          "align_parent_center_vertical": "YES",
+          "event_type": "cmd_share_click",
+          "view_id": "id_share_button_style_a",
+          "height": {
+            "type": "relative",
+            "value": "30"
+          },
+          "width": {
+            "type": "relative",
+            "value": "104"
+          },
+          "attributes": {
+            "setTitle:": "$share_count_style_a",
+            "setImages:forStates:": [
+              [
+                "share_bottom_icon"
+              ],
+              [
+                "0"
+              ]
+            ],
+            "setTitleColors:forStates:":[["#262626"],["0"]],
+            "setInnerMargin:": "8",
+            "setFontSizeString:": "12",
+            "setAlphaString:":"1",
+            "setEnableString:":"1"
           }
         },
         {

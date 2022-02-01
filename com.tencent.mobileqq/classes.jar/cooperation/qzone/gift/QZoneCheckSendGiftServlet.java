@@ -2,10 +2,10 @@ package cooperation.qzone.gift;
 
 import NS_MOBILE_TEMPLATE_GIFT.template_gift_get_send_status_rsp;
 import android.content.Intent;
-import aohe;
-import aohf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -47,11 +47,11 @@ public class QZoneCheckSendGiftServlet
       {
         long l = paramFromServiceMsg.uin;
         paramFromServiceMsg = paramFromServiceMsg.map_birth_friend_list_state;
-        aohe localaohe = (aohe)getAppRuntime().getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS);
-        if (localaohe != null) {
-          localaohe.a(l, paramFromServiceMsg, 2);
+        ActivateFriendsManager localActivateFriendsManager = (ActivateFriendsManager)getAppRuntime().getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS);
+        if (localActivateFriendsManager != null) {
+          localActivateFriendsManager.a(l, paramFromServiceMsg, 2);
         }
-        notifyObserver(paramIntent, 110, true, null, aohf.class);
+        notifyObserver(paramIntent, 110, true, null, ActivateFriendsObserver.class);
         QLog.i("QZoneCheckSendGiftServlet", 1, "onReceive success, friendMap size =" + paramFromServiceMsg.size());
         return;
       }
@@ -99,7 +99,7 @@ public class QZoneCheckSendGiftServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.gift.QZoneCheckSendGiftServlet
  * JD-Core Version:    0.7.0.1
  */

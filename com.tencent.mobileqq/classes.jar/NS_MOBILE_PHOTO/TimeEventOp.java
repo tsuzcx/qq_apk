@@ -9,8 +9,8 @@ public final class TimeEventOp
 {
   static int cache_action = 0;
   static TimeEvent cache_events = new TimeEvent();
-  public int action;
-  public TimeEvent events;
+  public int action = 0;
+  public TimeEvent events = null;
   
   public TimeEventOp() {}
   

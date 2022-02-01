@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anvk;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
@@ -13,7 +13,7 @@ class PermisionPrivacyActivity$2
   
   public void run()
   {
-    boolean bool = ((anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(this.this$0.app.getCurrentAccountUin()).medalSwitchDisable;
+    boolean bool = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.this$0.app.getCurrentAccountUin()).medalSwitchDisable;
     if (QLog.isColorLevel()) {
       QLog.d("Q.security", 2, "PermisionPrivacyActivity initUI medalSwitchDisable = " + bool);
     }
@@ -22,7 +22,7 @@ class PermisionPrivacyActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.2
  * JD-Core Version:    0.7.0.1
  */

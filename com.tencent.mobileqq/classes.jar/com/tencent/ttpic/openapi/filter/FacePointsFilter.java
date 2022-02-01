@@ -9,7 +9,7 @@ import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.util.List;
 
 public class FacePointsFilter
@@ -53,7 +53,7 @@ public class FacePointsFilter
     if (CollectionUtils.isEmpty(paramList)) {
       return;
     }
-    updatePoints(VideoMaterialUtil.toFlatArray((List)paramList.get(0)));
+    updatePoints(VideoMaterial.toFlatArray((List)paramList.get(0)));
   }
   
   public void updatePointColor(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -68,7 +68,7 @@ public class FacePointsFilter
   
   public void updatePoints(List<PointF> paramList)
   {
-    updatePoints(VideoMaterialUtil.toFlatArray(paramList));
+    updatePoints(VideoMaterial.toFlatArray(paramList));
   }
   
   public void updatePoints(float[] paramArrayOfFloat)
@@ -102,7 +102,7 @@ public class FacePointsFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FacePointsFilter
  * JD-Core Version:    0.7.0.1
  */

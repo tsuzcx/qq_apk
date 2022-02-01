@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
 import android.os.Bundle;
-import biiq;
 
-public class SwiftWebAccelerator$2
+class SwiftWebAccelerator$2
   implements Runnable
 {
-  public SwiftWebAccelerator$2(biiq parambiiq, Bundle paramBundle) {}
+  SwiftWebAccelerator$2(SwiftWebAccelerator paramSwiftWebAccelerator, Bundle paramBundle) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class SwiftWebAccelerator$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.2
  * JD-Core Version:    0.7.0.1
  */

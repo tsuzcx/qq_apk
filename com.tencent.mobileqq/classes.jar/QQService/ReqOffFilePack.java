@@ -8,8 +8,8 @@ public final class ReqOffFilePack
   extends JceStruct
 {
   static byte[] cache_vBody;
-  public long lUIN;
-  public byte[] vBody;
+  public long lUIN = 0L;
+  public byte[] vBody = null;
   
   public ReqOffFilePack() {}
   

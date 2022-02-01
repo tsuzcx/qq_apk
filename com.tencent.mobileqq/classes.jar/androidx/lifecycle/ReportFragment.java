@@ -4,31 +4,39 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.os.Build.VERSION;
 import android.os.Bundle;
+import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
 
-@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 public class ReportFragment
   extends com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment
 {
   private static final String REPORT_FRAGMENT_TAG = "androidx.lifecycle.LifecycleDispatcher.report_fragment_tag";
   private ReportFragment.ActivityInitializationListener mProcessListener;
   
-  private void dispatch(Lifecycle.Event paramEvent)
+  static void dispatch(@NonNull Activity paramActivity, @NonNull Lifecycle.Event paramEvent)
   {
-    Object localObject = getActivity();
-    if ((localObject instanceof LifecycleRegistryOwner)) {
-      ((LifecycleRegistryOwner)localObject).getLifecycle().handleLifecycleEvent(paramEvent);
+    if ((paramActivity instanceof LifecycleRegistryOwner)) {
+      ((LifecycleRegistryOwner)paramActivity).getLifecycle().handleLifecycleEvent(paramEvent);
     }
     do
     {
       do
       {
         return;
-      } while (!(localObject instanceof LifecycleOwner));
-      localObject = ((LifecycleOwner)localObject).getLifecycle();
-    } while (!(localObject instanceof LifecycleRegistry));
-    ((LifecycleRegistry)localObject).handleLifecycleEvent(paramEvent);
+      } while (!(paramActivity instanceof LifecycleOwner));
+      paramActivity = ((LifecycleOwner)paramActivity).getLifecycle();
+    } while (!(paramActivity instanceof LifecycleRegistry));
+    ((LifecycleRegistry)paramActivity).handleLifecycleEvent(paramEvent);
+  }
+  
+  private void dispatch(@NonNull Lifecycle.Event paramEvent)
+  {
+    if (Build.VERSION.SDK_INT < 29) {
+      dispatch(getActivity(), paramEvent);
+    }
   }
   
   private void dispatchCreate(ReportFragment.ActivityInitializationListener paramActivityInitializationListener)
@@ -59,6 +67,9 @@ public class ReportFragment
   
   public static void injectIfNeededIn(Activity paramActivity)
   {
+    if (Build.VERSION.SDK_INT >= 29) {
+      paramActivity.registerActivityLifecycleCallbacks(new ReportFragment.LifecycleCallbacks());
+    }
     paramActivity = paramActivity.getFragmentManager();
     if (paramActivity.findFragmentByTag("androidx.lifecycle.LifecycleDispatcher.report_fragment_tag") == null)
     {
@@ -114,7 +125,7 @@ public class ReportFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.lifecycle.ReportFragment
  * JD-Core Version:    0.7.0.1
  */

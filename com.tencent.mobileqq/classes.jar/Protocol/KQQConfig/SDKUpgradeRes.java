@@ -9,8 +9,8 @@ public final class SDKUpgradeRes
   extends JceStruct
 {
   static ArrayList<UpgradeInfo> cache_vUpgradeInfo;
-  public int iActionType;
-  public ArrayList<UpgradeInfo> vUpgradeInfo;
+  public int iActionType = 0;
+  public ArrayList<UpgradeInfo> vUpgradeInfo = null;
   
   public SDKUpgradeRes() {}
   
@@ -40,7 +40,7 @@ public final class SDKUpgradeRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     protocol.KQQConfig.SDKUpgradeRes
  * JD-Core Version:    0.7.0.1
  */

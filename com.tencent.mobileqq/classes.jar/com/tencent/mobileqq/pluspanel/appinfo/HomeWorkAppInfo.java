@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahpt;
-import ahvi;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -17,7 +17,7 @@ public class HomeWorkAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130843840;
+    return 2130844011;
   }
   
   public int getAppID()
@@ -38,18 +38,18 @@ public class HomeWorkAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690803);
+    return BaseApplicationImpl.getContext().getString(2131690908);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramahvi = new Intent(paramBaseChatPie.getActivity(), QQBrowserActivity.class);
+    paramPlusPanelViewModel = new Intent(paramBaseChatPie.a(), QQBrowserActivity.class);
     if (TextUtils.isEmpty(this.url)) {
       return;
     }
-    paramahvi.putExtra("url", this.url.replace("$GCODE$", paramSessionInfo.curFriendUin));
-    paramBaseChatPie.getActivity().startActivity(paramahvi);
-    ahpt.a(paramBaseChatPie.app, "0X8005CBA", paramSessionInfo.curType);
+    paramPlusPanelViewModel.putExtra("url", this.url.replace("$GCODE$", paramSessionInfo.jdField_a_of_type_JavaLangString));
+    paramBaseChatPie.a().startActivity(paramPlusPanelViewModel);
+    AIOPanelUtiles.a(paramBaseChatPie.a, "0X8005CBA", paramSessionInfo.jdField_a_of_type_Int);
   }
 }
 

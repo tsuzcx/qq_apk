@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ajmy;
 import android.util.SparseArray;
-import bhdc;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ConfigUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 
-public class CTEntryMng$2
+class CTEntryMng$2
   implements Runnable
 {
-  public CTEntryMng$2(ajmy paramajmy, SparseArray paramSparseArray) {}
+  CTEntryMng$2(CTEntryMng paramCTEntryMng, SparseArray paramSparseArray) {}
   
   public void run()
   {
-    String str = ajmy.a(this.this$0, this.a);
+    String str = CTEntryMng.a(this.this$0, this.a);
     if (QLog.isColorLevel()) {
       QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "saveEntryRedDot value: %s", new Object[] { str }));
     }
-    bhdc.a(ajmy.a(this.this$0).getApp(), ajmy.a(this.this$0).getCurrentUin(), "ct_entry_reddot_info", str);
+    ConfigUtil.a(CTEntryMng.a(this.this$0).getApp(), CTEntryMng.a(this.this$0).getCurrentUin(), "ct_entry_reddot_info", str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.2
  * JD-Core Version:    0.7.0.1
  */

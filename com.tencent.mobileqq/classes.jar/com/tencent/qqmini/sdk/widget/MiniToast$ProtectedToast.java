@@ -32,6 +32,25 @@ class MiniToast$ProtectedToast
     super(paramContext);
   }
   
+  private void invokeShow(Object paramObject)
+  {
+    if (TNClass == null) {
+      TNClass = Class.forName("android.widget.Toast$TN");
+    }
+    if (mNextViewField == null)
+    {
+      mNextViewField = TNClass.getDeclaredField("mNextView");
+      mNextViewField.setAccessible(true);
+    }
+    mNextViewField.set(paramObject, getView());
+    if (showMethod == null)
+    {
+      showMethod = TNClass.getDeclaredMethod("show", new Class[0]);
+      showMethod.setAccessible(true);
+    }
+    showMethod.invoke(paramObject, new Object[0]);
+  }
+  
   public void cancel()
   {
     try
@@ -82,64 +101,42 @@ class MiniToast$ProtectedToast
       mTNField = Toast.class.getDeclaredField("mTN");
       mTNField.setAccessible(true);
     }
-    Object localObject1 = mTNField.get(this);
-    Object localObject2;
+    Object localObject = mTNField.get(this);
     if (MiniToast.useIOSLikeUI())
     {
-      localObject2 = localObject1.getClass().getDeclaredField("mParams");
-      ((Field)localObject2).setAccessible(true);
-      params = (WindowManager.LayoutParams)((Field)localObject2).get(localObject1);
+      Field localField = localObject.getClass().getDeclaredField("mParams");
+      localField.setAccessible(true);
+      params = (WindowManager.LayoutParams)localField.get(localObject);
       params.flags = 40;
       params.windowAnimations = R.style.mini_sdk_custom_animation_toast;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        if (("" + Build.MANUFACTURER).equalsIgnoreCase("SAMSUNG")) {
-          params.getClass().getField("layoutInDisplayCutoutMode").setInt(params, 1);
-        }
-        localObject2 = (TextView)getView().findViewById(R.id.toast_msg);
-        if ((localObject2 != null) && (((TextView)localObject2).getText().length() < 6))
-        {
-          l = 900L;
-          ThreadManager.getUIHandler().postDelayed(this.cancelRunnable, l);
-          QMLog.d("QQToast", "show");
-          if (!MiniToast.canUseCustomToast(getView().getContext(), false))
-          {
-            super.show();
-            return;
-          }
-        }
+      if (("" + Build.MANUFACTURER).equalsIgnoreCase("SAMSUNG")) {
+        params.getClass().getField("layoutInDisplayCutoutMode").setInt(params, 1);
       }
-      catch (Exception localException)
+      long l = MiniToast.access$200((TextView)getView().findViewById(R.id.toast_msg));
+      ThreadManager.getUIHandler().postDelayed(this.cancelRunnable, l);
+      QMLog.d("QQToast", "show");
+      if (!MiniToast.canUseCustomToast(getView().getContext(), false))
       {
-        QMLog.e("QQToast", localException.getMessage(), localException);
-        continue;
-        if (TNClass == null) {
-          TNClass = Class.forName("android.widget.Toast$TN");
-        }
-        if (mNextViewField == null)
-        {
-          mNextViewField = TNClass.getDeclaredField("mNextView");
-          mNextViewField.setAccessible(true);
-        }
-        mNextViewField.set(localObject1, getView());
-        if (showMethod == null)
-        {
-          showMethod = TNClass.getDeclaredMethod("show", new Class[0]);
-          showMethod.setAccessible(true);
-        }
-        showMethod.invoke(localObject1, new Object[0]);
+        super.show();
         return;
       }
-      long l = 1900L;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QMLog.e("QQToast", localException.getMessage(), localException);
+      }
+      invokeShow(localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniToast.ProtectedToast
  * JD-Core Version:    0.7.0.1
  */

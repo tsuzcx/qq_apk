@@ -4,20 +4,21 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import avjz;
-import bhiw;
-import bhyu;
+import com.Vas.ColorFont.FastColorFontHelper;
+import com.tencent.mobileqq.hiboom.HiBoomFont;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.VasUtils;
+import com.tencent.mobileqq.vas.font.api.IFontSoLoaderAdapter;
+import com.tencent.mobileqq.vas.util.VasSoUtils;
+import com.tencent.mobileqq.vip.IPCDownloadListener;
 import com.tencent.qphone.base.util.BaseApplication;
-import gb;
-import gk;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
-import l;
 
-public class FontManager$3
+class FontManager$3
   implements Runnable
 {
-  public FontManager$3(gb paramgb, int paramInt) {}
+  FontManager$3(FontManager paramFontManager, int paramInt) {}
   
   public void run()
   {
@@ -32,13 +33,13 @@ public class FontManager$3
       localObject2 = null;
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
       {
-        if (!bhiw.a((String)localObject2, bhiw.a() + File.separator, (String)localObject1)) {
-          break label390;
+        if (!VasSoUtils.a((String)localObject2, VasSoUtils.a() + File.separator, (String)localObject1)) {
+          break label397;
         }
-        if (bhiw.a(bhiw.a(), (String)localObject1) != 0) {
-          break label377;
+        if (VasSoUtils.a(VasSoUtils.a(), (String)localObject1) != 0) {
+          break label384;
         }
-        gk.a().a(this.a, 0);
+        VasFontIPCModule.a().a(this.a, 0);
         switch (this.a)
         {
         }
@@ -47,42 +48,42 @@ public class FontManager$3
     }
     for (;;)
     {
-      bhiw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      gb.a(this.this$0);
+      VasUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      FontManager.a(this.this$0);
       return;
-      localObject2 = gb.jdField_a_of_type_JavaLangString + File.separator + "libColorFont.zip";
+      localObject2 = FontManager.jdField_a_of_type_JavaLangString + File.separator + "libColorFont.zip";
       localObject1 = "libFounderColorFont_818.so";
       break;
-      localObject2 = gb.jdField_a_of_type_JavaLangString + File.separator + "libVipFont.zip";
-      localObject1 = "libvipfont808.so";
+      localObject2 = FontManager.jdField_a_of_type_JavaLangString + File.separator + "libvipfont8417.so.zip";
+      localObject1 = "libvipfont8417.so";
       break;
-      l.a().b.set(true);
-      avjz.a().a();
+      FastColorFontHelper.a().b.set(true);
+      HiBoomFont.a().a();
       continue;
-      if ((!TextUtils.isEmpty(this.this$0.e)) && (this.this$0.jdField_a_of_type_Bhyu != null))
+      if ((!TextUtils.isEmpty(this.this$0.e)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener != null))
       {
         localObject1 = new Bundle();
         ((Bundle)localObject1).putString("callbackId", this.this$0.e);
         ((Bundle)localObject1).putInt("srcType", 9);
-        this.this$0.jdField_a_of_type_Bhyu.a(0L, 0, (Bundle)localObject1);
+        this.this$0.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener.a(0L, 0, (Bundle)localObject1);
         this.this$0.e = null;
       }
       ETEngine.isSOLoaded.set(true);
       BaseApplication.getContext().getSharedPreferences("early_qq.android.native.vipfont.v5", 0).edit().putBoolean("vip_font_so_downloaded", true).commit();
-      avjz.a().a();
-      FontSoLoader.sIsVipFontSoLoaded.set(true);
+      HiBoomFont.a().a();
+      ((IFontSoLoaderAdapter)QRoute.api(IFontSoLoaderAdapter.class)).setVipFontSoLoad(true);
       this.this$0.a(false);
     }
-    label377:
-    gk.a().a(this.a, -102);
+    label384:
+    VasFontIPCModule.a().a(this.a, -102);
     return;
-    label390:
-    gk.a().a(this.a, -102);
+    label397:
+    VasFontIPCModule.a().a(this.a, -102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class PhotoSearchBoxChosenItem
   extends JceStruct
 {
   static ArrayList<PhotoSearchBoxChosenItemElem> cache_elems = new ArrayList();
-  public ArrayList<PhotoSearchBoxChosenItemElem> elems;
+  public ArrayList<PhotoSearchBoxChosenItemElem> elems = null;
   
   static
   {

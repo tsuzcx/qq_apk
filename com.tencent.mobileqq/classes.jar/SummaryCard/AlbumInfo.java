@@ -9,7 +9,7 @@ public final class AlbumInfo
   extends JceStruct
 {
   static ArrayList<PhotoInfo> cache_vPhotos;
-  public ArrayList<PhotoInfo> vPhotos;
+  public ArrayList<PhotoInfo> vPhotos = null;
   
   public AlbumInfo() {}
   
@@ -38,7 +38,7 @@ public final class AlbumInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.AlbumInfo
  * JD-Core Version:    0.7.0.1
  */

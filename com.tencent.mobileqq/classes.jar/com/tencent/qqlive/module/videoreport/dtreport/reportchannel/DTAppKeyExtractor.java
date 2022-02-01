@@ -35,6 +35,10 @@ class DTAppKeyExtractor
           do
           {
             return paramMap;
+            localObject = getAppKeyFromMap(paramMap);
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {
+              return localObject;
+            }
             localObject = paramMap.get("udf_kv");
             paramMap = str;
           } while (!(localObject instanceof Map));

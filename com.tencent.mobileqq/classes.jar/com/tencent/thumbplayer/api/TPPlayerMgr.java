@@ -51,7 +51,7 @@ public class TPPlayerMgr
   
   public static String getThumbPlayerVersion()
   {
-    return "2.8.0.1104";
+    return "2.9.0.1112";
   }
   
   public static void initSdk(Context paramContext, String paramString, int paramInt)
@@ -136,7 +136,7 @@ public class TPPlayerMgr
   {
     TPPlayerConfig.addProxyCacheDir(paramInt, paramString1);
     TPPlayerConfig.addProxyDataDir(paramInt, paramString2);
-    TPPlayerConfig.addProxyConfigStr(paramInt, paramString3);
+    TPPlayerConfig.setProxyConfigStr(paramString3);
   }
   
   public static void setProxyEnable(boolean paramBoolean)
@@ -169,7 +169,7 @@ public class TPPlayerMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMgr
  * JD-Core Version:    0.7.0.1
  */

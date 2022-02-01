@@ -18,70 +18,71 @@ public abstract class AccountObserver
   
   private void onReceiveLoginActions(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject1;
-    label131:
-    int i;
     Object localObject2;
+    label141:
+    int i;
+    Object localObject3;
     switch (paramInt)
     {
     default: 
       return;
     case 1001: 
       paramInt = paramBundle.getInt("code");
-      str2 = paramBundle.getString("alias");
+      str1 = paramBundle.getString("alias");
       if (QLog.isColorLevel())
       {
-        localObject1 = new StringBuilder().append("onRV  action login code = ").append(paramInt).append("; alias = ");
-        if (str2 != null) {
-          break label131;
+        localObject2 = new StringBuilder().append("onRV  action login code = ").append(paramInt).append("; alias = ");
+        if (str1 != null) {
+          break label141;
         }
       }
-      for (str1 = "is null";; str1 = str2)
+      for (localObject1 = "is null";; localObject1 = str1)
       {
-        QLog.d("AccountObserver", 2, str1);
+        QLog.d("AccountObserver", 2, (String)localObject1);
         if (!paramBoolean) {
           break;
         }
-        onLoginSuccess(paramBundle.getString("uin"), str2);
+        localObject1 = paramBundle.getByteArray("tlv543In119");
+        onLoginSuccess(paramBundle.getString("uin"), str1, (byte[])localObject1);
         return;
       }
       if ((paramInt == 1002) || (paramInt == 1013))
       {
-        onLoginTimeout(str2);
+        onLoginTimeout(str1);
         return;
       }
       if (paramInt == 2006)
       {
-        onUserCancel(str2);
+        onUserCancel(str1);
         return;
       }
-      str1 = paramBundle.getString("errorurl");
+      localObject1 = paramBundle.getString("errorurl");
       paramInt = paramBundle.getInt("loginret");
-      localObject1 = paramBundle.getByteArray("lhsig");
+      localObject2 = paramBundle.getByteArray("lhsig");
       i = paramBundle.getInt("errorver");
-      localObject2 = paramBundle.getByteArray("tlverror");
-      String str3 = paramBundle.getString("title");
-      onLoginFailed(str2, paramBundle.getString("error"), str1, paramInt, (byte[])localObject1, i, (byte[])localObject2, str3);
+      localObject3 = paramBundle.getByteArray("tlverror");
+      String str2 = paramBundle.getString("title");
+      onLoginFailed(str1, paramBundle.getString("error"), (String)localObject1, paramInt, (byte[])localObject2, i, (byte[])localObject3, str2);
       return;
     case 2205: 
-      str1 = paramBundle.getString("uin");
+      localObject1 = paramBundle.getString("uin");
       paramInt = paramBundle.getInt("resultCode");
-      onVerifyPasswd(str1, paramBoolean, paramBundle.getString("errorMsg"), paramInt, paramBundle.getInt("ret"), paramBundle.getString("notice"), paramBundle.getByteArray("image"));
+      onVerifyPasswd((String)localObject1, paramBoolean, paramBundle.getString("errorMsg"), paramInt, paramBundle.getInt("ret"), paramBundle.getString("notice"), paramBundle.getByteArray("image"));
       return;
     case 2206: 
-      str1 = paramBundle.getString("uin");
+      localObject1 = paramBundle.getString("uin");
       paramInt = paramBundle.getInt("resultCode");
-      str2 = paramBundle.getString("userAccount");
-      localObject1 = paramBundle.getString("errorMsg");
+      str1 = paramBundle.getString("userAccount");
+      localObject2 = paramBundle.getString("errorMsg");
       i = paramBundle.getInt("ret");
-      localObject2 = (ErrMsg)paramBundle.getParcelable("lastError");
-      onVerifyPasswdImage(str1, paramBoolean, (String)localObject1, paramInt, str2, paramBundle.getByteArray("userInput"), i, (ErrMsg)localObject2, paramBundle.getByteArray("image"));
+      localObject3 = (ErrMsg)paramBundle.getParcelable("lastError");
+      onVerifyPasswdImage((String)localObject1, paramBoolean, (String)localObject2, paramInt, str1, paramBundle.getByteArray("userInput"), i, (ErrMsg)localObject3, paramBundle.getByteArray("image"));
       return;
     }
-    String str1 = paramBundle.getString("uin");
+    Object localObject1 = paramBundle.getString("uin");
     paramInt = paramBundle.getInt("resultCode");
-    String str2 = paramBundle.getString("userAccount");
-    onVerifyPasswdRefreshImage(str1, paramBoolean, paramBundle.getString("errorMsg"), paramInt, str2, paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("lastError"), paramBundle.getByteArray("pictureData"));
+    String str1 = paramBundle.getString("userAccount");
+    onVerifyPasswdRefreshImage((String)localObject1, paramBoolean, paramBundle.getString("errorMsg"), paramInt, str1, paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("lastError"), paramBundle.getByteArray("pictureData"));
   }
   
   private void onReceiveLoginRegisterActions(int paramInt, boolean paramBoolean, Bundle paramBundle)
@@ -171,7 +172,7 @@ public abstract class AccountObserver
   
   protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4) {}
   
-  public void onLoginSuccess(String paramString1, String paramString2) {}
+  public void onLoginSuccess(String paramString1, String paramString2, byte[] paramArrayOfByte) {}
   
   protected void onLoginTimeout(String paramString) {}
   

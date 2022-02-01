@@ -9,30 +9,30 @@ public class AVGameNodeReportUtil$ReportData
   implements Serializable
 {
   protected long createTime;
-  protected int curNode;
-  public int endCode;
-  public int endNode;
-  public boolean isAgain;
+  protected int curNode = 0;
+  public int endCode = 0;
+  public int endNode = 0;
+  public boolean isAgain = false;
   protected long n1BeginTime;
-  public long n1Cost;
+  public long n1Cost = 0L;
   protected long n1EndTime;
   public int n1EnterGameRoomRetCode;
-  public long n2AvEnterCost;
+  public long n2AvEnterCost = 0L;
   protected long n2BeginTime;
-  public long n2Cost;
+  public long n2Cost = 0L;
   protected long n2EndTime;
   protected long n2EnterAvBeginTime;
   protected long n2EnterAvEndTime;
   protected long n3BeginTime;
-  public long n3Cost;
+  public long n3Cost = 0L;
   protected long n3EndTime;
-  public int n3GameType;
-  public int n3MemberCount;
+  public int n3GameType = 0;
+  public int n3MemberCount = 0;
   protected long n4BeginTime;
-  public long n4Cost;
+  public long n4Cost = 0L;
   protected long n4EndTime;
   protected long n5BeginTime;
-  public long n5Cost;
+  public long n5Cost = 0L;
   protected long n5EndTime;
   public String roomId = "";
   
@@ -197,7 +197,7 @@ public class AVGameNodeReportUtil$ReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.util.AVGameNodeReportUtil.ReportData
  * JD-Core Version:    0.7.0.1
  */

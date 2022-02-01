@@ -1,37 +1,46 @@
 package com.tencent.mobileqq.forward;
 
-import aasr;
 import android.content.Intent;
 import android.os.Bundle;
-import autq;
-import bdla;
-import bdof;
+import com.tencent.biz.webviewplugin.Share;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ForwardQZoneRichImageOption
   extends ForwardSdkBaseOption
 {
-  private boolean n;
+  private boolean o;
   
   public ForwardQZoneRichImageOption(Intent paramIntent)
   {
     super(paramIntent);
   }
   
+  protected void a()
+  {
+    if (this.d)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005793", "0X8005793", 0, 0, "", "", "", "");
+      this.d = false;
+    }
+    super.a();
+  }
+  
   public boolean a()
   {
     super.a();
     this.b = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
-    this.n = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("is_ec_live_share", false);
-    if ((this.b > 0L) && (!this.n)) {
-      aasr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.b, 0L, this.jdField_a_of_type_MqqObserverBusinessObserver);
+    this.o = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("is_ec_live_share", false);
+    if ((this.b > 0L) && (!this.o)) {
+      Share.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.b, 0L, this.jdField_a_of_type_MqqObserverBusinessObserver);
     }
     I();
     Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
     ((Bundle)localObject).putInt("req_type", 1);
-    localObject = bdof.a((Bundle)localObject);
+    localObject = StructMsgFactory.a((Bundle)localObject);
     if ((localObject != null) && ((localObject instanceof AbsShareMsg))) {
       this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localObject);
     }
@@ -39,47 +48,37 @@ public class ForwardQZoneRichImageOption
     return true;
   }
   
-  public boolean a(QQCustomDialog paramQQCustomDialog)
+  protected boolean a(QQCustomDialog paramQQCustomDialog)
   {
-    if (this.n)
+    if (this.o)
     {
       this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("struct_share_key_source_name");
       this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceIcon = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("struct_share_key_source_icon");
     }
     if ((paramQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null))
     {
-      this.jdField_a_of_type_Autq = new autq(this, this.jdField_a_of_type_AndroidAppActivity);
-      paramQQCustomDialog.addView(this.jdField_a_of_type_Autq.a());
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption$PreStructViewHolder = new ForwardSdkBaseOption.PreStructViewHolder(this, this.jdField_a_of_type_AndroidAppActivity);
+      paramQQCustomDialog.addView(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption$PreStructViewHolder.a());
       paramQQCustomDialog.adjustMessageTopBottomMargin(0.0F, 10.0F);
       a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName, paramQQCustomDialog);
     }
     return false;
   }
   
-  public void b()
+  protected void c()
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage("");
   }
   
-  public boolean c()
+  protected boolean c()
   {
     K();
     return true;
   }
-  
-  public void d()
-  {
-    if (this.d)
-    {
-      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005793", "0X8005793", 0, 0, "", "", "", "");
-      this.d = false;
-    }
-    super.d();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardQZoneRichImageOption
  * JD-Core Version:    0.7.0.1
  */

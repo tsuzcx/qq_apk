@@ -5,11 +5,11 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.util.AttributeSet;
+import com.etrump.mixlayout.ETLayout;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
 import cooperation.qzone.widget.QzoneEmotionUtils;
-import fn;
 
 public class ExtendFriendGradientTextView
   extends ETTextView
@@ -25,16 +25,25 @@ public class ExtendFriendGradientTextView
   public ExtendFriendGradientTextView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public ExtendFriendGradientTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public ExtendFriendGradientTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -109,7 +118,7 @@ public class ExtendFriendGradientTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendGradientTextView
  * JD-Core Version:    0.7.0.1
  */

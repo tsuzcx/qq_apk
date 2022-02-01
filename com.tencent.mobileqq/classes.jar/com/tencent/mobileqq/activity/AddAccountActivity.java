@@ -1,15 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import adey;
-import adez;
-import adfa;
-import adfb;
-import adfc;
-import adfd;
-import adfg;
-import adfh;
-import adfi;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -33,39 +23,42 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import arpl;
-import azit;
-import bdkp;
-import bdla;
-import bhhr;
-import binc;
-import bisl;
-import bizp;
-import bkxz;
-import bkzi;
-import bkzz;
-import blhg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.kingkong.Common;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.LoginFailedHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.splashlogo.KandianConfigServlet;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
+import com.tencent.mobileqq.loginregister.LoginProgressClazz;
+import com.tencent.mobileqq.loginregister.LoginStaticField;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.mqsafeedit.libsafeedit;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.widget.ConfigClearableEditText.OnTextClearedListener;
 import com.tencent.mobileqq.widget.DropdownView;
 import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.OpenProxy;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.InputMethodUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SoftInputResizeLayout;
 import com.tencent.widget.immersive.SystemBarCompact;
 import cooperation.qwallet.plugin.PatternLockUtils;
 import java.util.ArrayList;
@@ -79,43 +72,44 @@ import mqq.os.MqqHandler;
 
 public class AddAccountActivity
   extends BaseActivity
-  implements Handler.Callback, View.OnClickListener, binc
+  implements Handler.Callback, View.OnClickListener, ConfigClearableEditText.OnTextClearedListener
 {
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   public BroadcastReceiver a;
-  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new adfg(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adfi(this);
-  private View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new adey(this);
+  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new AddAccountActivity.7(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new AddAccountActivity.9(this);
+  private View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new AddAccountActivity.1(this);
   View jdField_a_of_type_AndroidViewView;
   private InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
-  public AutoCompleteTextView a;
+  AutoCompleteTextView jdField_a_of_type_AndroidWidgetAutoCompleteTextView;
   Button jdField_a_of_type_AndroidWidgetButton;
-  public ImageView a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bkzi jdField_a_of_type_Bkzi;
+  private LoginFailedHelper jdField_a_of_type_ComTencentMobileqqAppLoginFailedHelper = new LoginFailedHelper();
   DropdownView jdField_a_of_type_ComTencentMobileqqWidgetDropdownView;
-  public PastablePwdEditText a;
-  public SimpleAccount a;
-  private String jdField_a_of_type_JavaLangString;
-  public List<SimpleAccount> a;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new adfd(this);
+  PastablePwdEditText jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText;
+  SimpleAccount jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount;
+  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
+  private String jdField_a_of_type_JavaLangString = null;
+  List<SimpleAccount> jdField_a_of_type_JavaUtilList;
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new AddAccountActivity.4(this);
   MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this);
   private boolean jdField_a_of_type_Boolean = true;
-  TextWatcher jdField_b_of_type_AndroidTextTextWatcher = new adfh(this);
+  TextWatcher jdField_b_of_type_AndroidTextTextWatcher = new AddAccountActivity.8(this);
   View jdField_b_of_type_AndroidViewView;
   private Button jdField_b_of_type_AndroidWidgetButton;
-  private boolean jdField_b_of_type_Boolean;
-  TextWatcher jdField_c_of_type_AndroidTextTextWatcher = new adez(this);
+  private boolean jdField_b_of_type_Boolean = false;
+  TextWatcher jdField_c_of_type_AndroidTextTextWatcher = new AddAccountActivity.10(this);
   View jdField_c_of_type_AndroidViewView;
   private Button jdField_c_of_type_AndroidWidgetButton;
   private boolean jdField_c_of_type_Boolean;
-  private View jdField_d_of_type_AndroidViewView;
-  private boolean jdField_d_of_type_Boolean;
+  private View jdField_d_of_type_AndroidViewView = null;
+  private boolean jdField_d_of_type_Boolean = false;
   
   public AddAccountActivity()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adfc(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new AddAccountActivity.2(this);
   }
   
   private void a(View paramView)
@@ -127,7 +121,7 @@ public class AddAccountActivity
     byte[] arrayOfByte = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
     if ((paramView == null) || (paramView.length() == 0) || (paramView.trim().length() == 0))
     {
-      QQToast.a(this, 2131694366, 0).a();
+      QQToast.a(this, 2131694582, 0).a();
       this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.requestFocus();
       this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.showSoftInput(this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView, 2);
       return;
@@ -135,7 +129,7 @@ public class AddAccountActivity
     String str = this.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().toString();
     if ((str == null) || (str.length() < 1))
     {
-      QQToast.a(this, 2131694507, 0).a();
+      QQToast.a(this, 2131694725, 0).a();
       this.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.requestFocus();
       this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.showSoftInput(this.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText, 2);
       return;
@@ -160,15 +154,15 @@ public class AddAccountActivity
     }
     if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
     {
-      BaseApplicationImpl.isFirstLogin = false;
+      com.tencent.mobileqq.util.LoginSetting.jdField_a_of_type_Boolean = false;
       showDialog(0);
       this.app.login(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount);
     }
     for (;;)
     {
-      AlbumUtil.clearLastAlbumInfo();
+      AlbumUtil.b();
       return;
-      BaseApplicationImpl.isFirstLogin = true;
+      com.tencent.mobileqq.util.LoginSetting.jdField_a_of_type_Boolean = true;
       try
       {
         showDialog(0);
@@ -192,10 +186,10 @@ public class AddAccountActivity
     AppRuntime localAppRuntime = getAppRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)) && (((QQAppInterface)localAppRuntime).isNeedSecurityScan()))
     {
-      paramButton.setText(getString(2131718439));
+      paramButton.setText(getString(2131718962));
       return;
     }
-    paramButton.setText(getString(2131693719));
+    paramButton.setText(getString(2131693888));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -205,11 +199,10 @@ public class AddAccountActivity
     {
       StatisticCollector.getInstance(BaseApplicationImpl.sApplication).setContact(paramString);
       Common.OnLogin(BaseApplicationImpl.sApplication, paramString);
-      bdkp.a(BaseApplicationImpl.sApplication).a(paramString);
       if (QLog.isColorLevel()) {
         QLog.d("AddAccountActivity", 2, "loginSuccess set CURRENT_ACCOUNT: " + paramString);
       }
-      bhhr.a(BaseApplicationImpl.sApplication, paramString, true);
+      SharedPreUtils.a(BaseApplicationImpl.sApplication, paramString, true);
       BaseApplicationImpl.sApplication.refreAccountList();
       return;
     }
@@ -263,7 +256,7 @@ public class AddAccountActivity
   
   private void a(String paramString)
   {
-    bizp.a().a(paramString);
+    OpenProxy.a().a(paramString);
     setResult(-1);
     finish();
   }
@@ -292,30 +285,30 @@ public class AddAccountActivity
   
   private void c()
   {
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131376890);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView = ((DropdownView)findViewById(2131370735));
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131377297);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView = ((DropdownView)findViewById(2131371016));
     this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView = this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.a();
     this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setDropDownBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setContentDescription(getString(2131719174));
+    this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setContentDescription(getString(2131699698));
     Object localObject = this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getInputExtras(true);
     if (localObject != null) {
       ((Bundle)localObject).putInt("INPUT_TYPE_ON_START", 1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText = ((PastablePwdEditText)findViewById(2131372456));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setContentDescription(getString(2131719196));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370534));
-    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131719188));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText = ((PastablePwdEditText)findViewById(2131372766));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setContentDescription(getString(2131699700));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370817));
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131699699));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     a(this.jdField_a_of_type_AndroidWidgetButton);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131376471));
-    this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131719200));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131376864));
+    this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131719755));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362150));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131377133);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369859);
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131366811));
-    this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131692549));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369231));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362170));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131377553);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370130);
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131366994));
+    this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131692686));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369487));
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)getSystemService("input_method"));
     this.jdField_a_of_type_AndroidWidgetImageView = this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.a();
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -337,7 +330,7 @@ public class AddAccountActivity
       if ((this.mSystemBarComp != null) && (ImmersiveUtils.isSupporImmersive() == 1)) {
         this.mSystemBarComp.init();
       }
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131370536);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131370819);
       this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
       this.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.clearFocus();
       this.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setClearButtonVisible(false);
@@ -347,7 +340,7 @@ public class AddAccountActivity
       localObject = (RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidViewView.getLayoutParams();
       this.jdField_d_of_type_AndroidViewView.setVisibility(0);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(3, 2131376890);
+      localLayoutParams.addRule(3, 2131377297);
       this.jdField_c_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       ((LinearLayout)this.jdField_c_of_type_AndroidViewView).setOrientation(1);
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
@@ -357,15 +350,15 @@ public class AddAccountActivity
         this.mSystemBarComp.setgetStatusBarVisible(true, 0);
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      localObject = (TextView)findViewById(2131369262);
+      localObject = (TextView)findViewById(2131369518);
       ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(anvx.a(2131699323));
+      ((TextView)localObject).setText(HardCodeUtil.a(2131699901));
       ((TextView)localObject).setOnClickListener(this);
-      findViewById(2131369278).setVisibility(0);
-      localObject = (TextView)findViewById(2131369278);
-      ((TextView)localObject).setText(2131689551);
-      ((TextView)localObject).setContentDescription(getString(2131689551));
-      setTitle(getString(2131689551));
+      findViewById(2131369534).setVisibility(0);
+      localObject = (TextView)findViewById(2131369534);
+      ((TextView)localObject).setText(2131689558);
+      ((TextView)localObject).setContentDescription(getString(2131689558));
+      setTitle(getString(2131689558));
       this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.b().setVisibility(8);
       return;
       this.jdField_a_of_type_JavaUtilList.clear();
@@ -374,11 +367,11 @@ public class AddAccountActivity
   
   private void d()
   {
-    View localView = findViewById(2131376760);
+    View localView = findViewById(2131377159);
     if (localView != null) {
       IphoneTitleBarActivity.setLayerType(localView);
     }
-    localView = findViewById(2131376890);
+    localView = findViewById(2131377297);
     if (localView != null) {
       IphoneTitleBarActivity.setLayerType(localView);
     }
@@ -389,7 +382,7 @@ public class AddAccountActivity
     if (QLog.isColorLevel()) {
       QLog.d("AddAccountActivity", 2, "only kandian tab switch, addAccount login delayTime:" + (NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long));
     }
-    if (azit.a().a()) {
+    if (PhoneNumLoginImpl.a().a()) {
       return;
     }
     ThreadManager.postImmediately(new AddAccountActivity.6(this), null, false);
@@ -438,7 +431,7 @@ public class AddAccountActivity
         break;
       }
       this.app.updateSubAccountLogin(localSimpleAccount.getUin(), false);
-      bizp.a().b((String)localObject);
+      OpenProxy.a().b((String)localObject);
       BaseApplicationImpl.sApplication.refreAccountList();
       localObject = BaseApplicationImpl.sApplication.getAllAccounts();
     } while ((localObject == null) || (this.jdField_a_of_type_JavaUtilList == null));
@@ -448,20 +441,20 @@ public class AddAccountActivity
   
   protected void b()
   {
-    if (this.jdField_a_of_type_Bkzi == null)
+    if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
-      this.jdField_a_of_type_Bkzi = ((bkzi)bkzz.a(this, null));
-      this.jdField_a_of_type_Bkzi.b(2131692399);
-      this.jdField_a_of_type_Bkzi.b(2131718921);
-      this.jdField_a_of_type_Bkzi.c(2131690697);
-      this.jdField_a_of_type_Bkzi.setOnDismissListener(new adfa(this));
-      this.jdField_a_of_type_Bkzi.a(new adfb(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131692531);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131719448);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new AddAccountActivity.11(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(new AddAccountActivity.12(this));
     }
-    if (!this.jdField_a_of_type_Bkzi.isShowing())
+    if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
     {
-      bkxz.b(this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView);
+      InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView);
       this.jdField_d_of_type_Boolean = false;
-      this.jdField_a_of_type_Bkzi.show();
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
     }
   }
   
@@ -486,15 +479,15 @@ public class AddAccountActivity
     super.doOnCreate(paramBundle);
     try
     {
-      getWindow().setBackgroundDrawableResource(2130838911);
-      setTitle(getString(2131694457));
-      super.setContentView(2131559343);
+      getWindow().setBackgroundDrawableResource(2130838979);
+      setTitle(getString(2131694674));
+      super.setContentView(2131559408);
       if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
-        blhg.a(this);
+        SoftInputResizeLayout.assistActivity(this);
       }
       if (this.app != null)
       {
-        this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
+        this.app.setHandler(LoginProgressClazz.class, this.jdField_a_of_type_MqqOsMqqHandler);
         this.app.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
         c();
         if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
@@ -503,10 +496,10 @@ public class AddAccountActivity
           paramBundle.addAction("com.tencent.mobileqq.InvitationWebViewPlugin");
           registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
         }
-        bdla.b(this.app, "CliOper", "", "", "0X800664D", "0X800664D", 0, 0, "", "", "", "");
-        bdla.b(this.app, "dc00898", "", "", "0X800735D", "0X800735D", 0, 0, "", "", "", "");
-        bdla.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
-        bdla.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 3, 0, "", "", "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X800664D", "0X800664D", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "dc00898", "", "", "0X800735D", "0X800735D", 0, 0, "", "", "", "");
+        ReportController.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
+        ReportController.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 3, 0, "", "", "", "");
         return true;
       }
     }
@@ -520,7 +513,7 @@ public class AddAccountActivity
         if ((paramBundle != null) && ((paramBundle instanceof QQAppInterface)))
         {
           this.app = ((QQAppInterface)paramBundle);
-          this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
+          this.app.setHandler(LoginProgressClazz.class, this.jdField_a_of_type_MqqOsMqqHandler);
           this.app.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
         }
       }
@@ -533,7 +526,7 @@ public class AddAccountActivity
     if (this.app != null)
     {
       this.app.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-      this.app.removeHandler(getClass());
+      this.app.removeHandler(LoginProgressClazz.class);
     }
     if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(20140326);
@@ -581,7 +574,7 @@ public class AddAccountActivity
     if (this.app != null) {
       this.app.cancelSyncOnlineFriend(-1L);
     }
-    azit.a().a(false);
+    PhoneNumLoginImpl.a().a(false);
     if (this.jdField_b_of_type_Boolean)
     {
       QLog.d("AddAccountActivity", 1, "mShouldAutoLogin: true, then login");
@@ -651,17 +644,17 @@ public class AddAccountActivity
     QLog.d("AddAccountActivity", 1, "onAccountChanged");
     this.app.removeHandler(getClass());
     this.app = ((QQAppInterface)getAppRuntime());
-    this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
+    this.app.setHandler(LoginProgressClazz.class, this.jdField_a_of_type_MqqOsMqqHandler);
     Message localMessage = Message.obtain();
     localMessage.what = 20140326;
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, 800L);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (!arpl.a(getAppRuntime(), getClass(), this.jdField_a_of_type_Long))
+    if (!KandianConfigServlet.a(getAppRuntime(), getClass(), this.jdField_a_of_type_Long))
     {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(20140326);
       e();
     }
-    MiniAppSecurityUtil.doClearAfterLoginSuccess(false);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).doClearAfterLoginSuccess(false);
   }
   
   public void onAccoutChangeFailed()
@@ -671,9 +664,9 @@ public class AddAccountActivity
   
   public boolean onBackEvent()
   {
-    MiniAppSecurityUtil.doClearAfterLoginSuccess(false);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).doClearAfterLoginSuccess(false);
     finish();
-    overridePendingTransition(2130771990, 2130772001);
+    overridePendingTransition(2130771979, 2130772003);
     return true;
   }
   
@@ -687,22 +680,22 @@ public class AddAccountActivity
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       a(paramView);
-      AuthDevUgActivity.a(3);
-      bdla.a(this.app, "dc00898", "", "", "0X8007366", "0X8007366", 0, 0, "", "", "", "");
+      LoginStaticField.a(3);
+      ReportController.a(this.app, "dc00898", "", "", "0X8007366", "0X8007366", 0, 0, "", "", "", "");
       continue;
       if (this.jdField_a_of_type_Boolean)
       {
-        bdla.a(this.app, "dc00898", "", "", "0X80072E9", "0X80072E9", 0, 0, "", "", "", "");
-        bdla.b(this.app, "CliOper", "", "", "0X800664F", "0X800664F", 0, 0, "", "", "", "");
-        if (!NetworkUtil.isNetSupport(BaseApplicationImpl.sApplication))
+        ReportController.a(this.app, "dc00898", "", "", "0X80072E9", "0X80072E9", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X800664F", "0X800664F", 0, 0, "", "", "", "");
+        if (!NetworkUtil.d(BaseApplicationImpl.sApplication))
         {
-          QQToast.a(this, 2131692125, 0).a();
+          QQToast.a(this, 2131692257, 0).a();
         }
         else
         {
           try
           {
-            ((AccountManager)this.app.getManager(0)).checkQuickRegisterAccount(this.app.getAccount(), this.app.getAppid(), "8.4.10", null);
+            ((AccountManager)this.app.getManager(0)).checkQuickRegisterAccount(this.app.getAccount(), this.app.getAppid(), "8.5.5", null);
             showDialog(1);
             this.jdField_a_of_type_Boolean = false;
             new Handler().postDelayed(new AddAccountActivity.3(this), 1000L);
@@ -714,8 +707,8 @@ public class AddAccountActivity
               localException.printStackTrace();
             }
           }
-          bdla.a(this.app, "dc00898", "", "", "0X80072EA", "0X80072EA", 0, 0, "", "", "", "");
-          bdla.b(this.app, "CliOper", "", "", "0X800664E", "0X800664E", 0, 0, "", "", "", "");
+          ReportController.a(this.app, "dc00898", "", "", "0X80072EA", "0X80072EA", 0, 0, "", "", "", "");
+          ReportController.b(this.app, "CliOper", "", "", "0X800664E", "0X800664E", 0, 0, "", "", "", "");
           b();
           continue;
           onBackEvent();
@@ -738,14 +731,14 @@ public class AddAccountActivity
     default: 
       return null;
     case 0: 
-      localbisl = new bisl(this, getTitleBarHeight());
-      localbisl.a(getString(2131693727));
-      return localbisl;
+      localQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
+      localQQProgressDialog.a(getString(2131699693));
+      return localQQProgressDialog;
     }
-    bisl localbisl = new bisl(this, getTitleBarHeight());
-    localbisl.a(anvx.a(2131699324));
-    localbisl.setCancelable(false);
-    return localbisl;
+    QQProgressDialog localQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
+    localQQProgressDialog.a(HardCodeUtil.a(2131699902));
+    localQQProgressDialog.setCancelable(false);
+    return localQQProgressDialog;
   }
   
   public void onLogout(Constants.LogoutReason paramLogoutReason) {}
@@ -773,7 +766,7 @@ public class AddAccountActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity
  * JD-Core Version:    0.7.0.1
  */

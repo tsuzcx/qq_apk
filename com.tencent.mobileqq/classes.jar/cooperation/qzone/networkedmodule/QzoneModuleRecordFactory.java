@@ -1,7 +1,7 @@
 package cooperation.qzone.networkedmodule;
 
-import blpl;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneAlphaConfig;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.QUA;
 import java.lang.reflect.Method;
@@ -148,6 +148,53 @@ public class QzoneModuleRecordFactory
     return localQzoneModuleRecordBuilder.build();
   }
   
+  @QzoneModuleId("libminigame_lamemp3.so")
+  public QzoneModuleConfigManager.QzoneModuleRecord createRecordForMiniGameLameMp3So()
+  {
+    localObject3 = QzoneConfig.getInstance().getConfig("qqminiapp", "minigame_lamemp3_so_info", "{\"url\":\"https://d3g.qq.com/sngapp/app/update/20201105204646_864/libminigame_lamemp3.so\",\"md5\":\"23e9ed55e3d3acd0b93c0f55cc11bdb7\",\"length\":165396}");
+    String str = "https://d3g.qq.com/sngapp/app/update/20201105204646_864/libminigame_lamemp3.so";
+    long l1 = 165396L;
+    QzoneModuleConfigManager.QzoneModuleRecordBuilder localQzoneModuleRecordBuilder = new QzoneModuleConfigManager.QzoneModuleRecordBuilder();
+    localObject1 = str;
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject((String)localObject3);
+        localObject1 = str;
+        str = localJSONObject.getString("url");
+        localObject1 = str;
+        localObject3 = localJSONObject.getString("md5");
+        localObject1 = localObject3;
+        long l2;
+        QLog.w("QzoneModuleRecordFactory", 1, "createRecordForLameMp3So catch an exception:", localJSONException1);
+      }
+      catch (JSONException localJSONException1)
+      {
+        try
+        {
+          l2 = localJSONObject.getLong("length");
+          l1 = l2;
+          localObject3 = localObject1;
+          localQzoneModuleRecordBuilder.setModuleId("libminigame_lamemp3.so").setUrl(str).setMD5((String)localObject3).setModuleFileLength(l1);
+          return localQzoneModuleRecordBuilder.build();
+        }
+        catch (JSONException localJSONException2)
+        {
+          for (;;)
+          {
+            localObject3 = localObject1;
+            localObject1 = localObject2;
+            Object localObject2 = localJSONException2;
+          }
+        }
+        localJSONException1 = localJSONException1;
+        localObject3 = "23e9ed55e3d3acd0b93c0f55cc11bdb7";
+      }
+      localObject2 = localObject1;
+    }
+  }
+  
   @QzoneModuleId("osk_exoplayer2_bundle.jar")
   public QzoneModuleConfigManager.QzoneModuleRecord createRecordForOskPlayer()
   {
@@ -203,8 +250,8 @@ public class QzoneModuleRecordFactory
   @QzoneModuleId("libsuperresolution.jar")
   public QzoneModuleConfigManager.QzoneModuleRecord createRecordForSuperResolutionSo()
   {
-    String str1 = blpl.a().a("QZoneSetting", "libSuperResolutionJarUrl", "https://d3g.qq.com/sngapp/app/update/20181204152623_3844/libsuperresolution.jar");
-    String str2 = blpl.a().a("QZoneSetting", "libSuperResolutionJarMD5", "6dc8f2f6f95d50ef6daef91c0f1595ec");
+    String str1 = QzoneAlphaConfig.a().a("QZoneSetting", "libSuperResolutionJarUrl", "https://d3g.qq.com/sngapp/app/update/20181204152623_3844/libsuperresolution.jar");
+    String str2 = QzoneAlphaConfig.a().a("QZoneSetting", "libSuperResolutionJarMD5", "6dc8f2f6f95d50ef6daef91c0f1595ec");
     QzoneModuleConfigManager.QzoneModuleRecordBuilder localQzoneModuleRecordBuilder = new QzoneModuleConfigManager.QzoneModuleRecordBuilder();
     localQzoneModuleRecordBuilder.setModuleId("libsuperresolution.jar").setUrl(str1).setMD5(str2).setVersion("1").setMainVersion(QUA.getQUA3());
     return localQzoneModuleRecordBuilder.build();
@@ -360,7 +407,7 @@ public class QzoneModuleRecordFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleRecordFactory
  * JD-Core Version:    0.7.0.1
  */

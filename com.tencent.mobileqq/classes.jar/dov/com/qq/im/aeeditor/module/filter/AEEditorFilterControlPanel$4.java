@@ -13,7 +13,7 @@ class AEEditorFilterControlPanel$4
     Object localObject = new File(this.jdField_a_of_type_JavaLangString);
     if (((File)localObject).exists())
     {
-      localObject = FileUtils.readFileContent((File)localObject);
+      localObject = FileUtils.a((File)localObject);
       localObject = AEEditorFilterControlPanel.a(this.this$0, (String)localObject);
       if (localObject != null)
       {
@@ -25,7 +25,7 @@ class AEEditorFilterControlPanel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel.4
  * JD-Core Version:    0.7.0.1
  */

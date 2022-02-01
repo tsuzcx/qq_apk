@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.ar.model;
 
-import apki;
-import apos;
+import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
 import com.tencent.qphone.base.util.QLog;
 
-public class QQARSession$8
+class QQARSession$8
   implements Runnable
 {
-  public QQARSession$8(apos paramapos, apki paramapki) {}
+  QQARSession$8(QQARSession paramQQARSession, ARCloudRecogResult paramARCloudRecogResult) {}
   
   public void run()
   {

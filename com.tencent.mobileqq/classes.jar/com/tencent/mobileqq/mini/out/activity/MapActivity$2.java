@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.out.activity;
 
 import android.graphics.Color;
-import anvx;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.soso.location.SosoInterfaceOnLocationListener;
+import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
+import com.tencent.mobileqq.soso.location.data.SosoLocation;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
@@ -12,14 +12,14 @@ import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 class MapActivity$2
-  extends SosoInterface.OnLocationListener
+  extends SosoInterfaceOnLocationListener
 {
   MapActivity$2(MapActivity paramMapActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, boolean paramBoolean5)
   {
     super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
     if (QLog.isColorLevel()) {
       QLog.d("MapActivity", 2, "onLocationFinish errCode=" + paramInt);
@@ -40,7 +40,7 @@ class MapActivity$2
       }
       return;
     }
-    this.this$0.dialog.setTitle(anvx.a(2131705922)).setMessage(anvx.a(2131705918)).setPositiveButton(anvx.a(2131705920), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(anvx.a(2131705919), Color.parseColor("#000000"), new MapActivity.2.1(this));
+    this.this$0.dialog.setTitle(HardCodeUtil.a(2131706462)).setMessage(HardCodeUtil.a(2131706458)).setPositiveButton(HardCodeUtil.a(2131706460), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(HardCodeUtil.a(2131706459), Color.parseColor("#000000"), new MapActivity.2.1(this));
     this.this$0.dialog.show();
   }
 }

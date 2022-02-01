@@ -2,7 +2,8 @@ package com.tencent.image;
 
 import android.media.AudioTrack;
 import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import com.tencent.video.decode.AVideoException;
 import com.tencent.video.decode.AbstractAVDecode;
 
@@ -30,8 +31,8 @@ class NativeVideoImage$PlayAudioThread
         if (this.this$0.mAudioTrack != null) {
           continue;
         }
-        if (QLog.isColorLevel()) {
-          QLog.e(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread id=" + getId() + "mAudioTrack == null, return.. ");
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.e(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread id=" + getId() + "mAudioTrack == null, return.. ");
         }
         if (this.this$0.mAudioTrack == null) {}
       }
@@ -44,7 +45,7 @@ class NativeVideoImage$PlayAudioThread
         }
         catch (IllegalStateException localIllegalStateException4)
         {
-          QLog.e(NativeVideoImage.TAG_AUDIO, 1, "PlayAudioThread run ", localIllegalStateException4);
+          URLDrawable.depImp.mLog.e(NativeVideoImage.TAG_AUDIO, 1, "PlayAudioThread run ", localIllegalStateException4);
           if (this.this$0.mAudioTrack == null) {
             continue;
           }
@@ -65,10 +66,10 @@ class NativeVideoImage$PlayAudioThread
         }
         AudioUtils.abandonAudioFoucus();
         NativeVideoImage.access$302(this.this$0, true);
-        if (!QLog.isColorLevel()) {
+        if (!URLDrawable.depImp.mLog.isColorLevel()) {
           continue;
         }
-        QLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread run over");
+        URLDrawable.depImp.mLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread run over");
         return;
         localObject12 = finally;
         throw localObject12;
@@ -85,7 +86,7 @@ class NativeVideoImage$PlayAudioThread
         }
         catch (IllegalStateException localIllegalStateException5)
         {
-          QLog.e(NativeVideoImage.TAG_AUDIO, 1, "PlayAudioThread run ", localIllegalStateException5);
+          URLDrawable.depImp.mLog.e(NativeVideoImage.TAG_AUDIO, 1, "PlayAudioThread run ", localIllegalStateException5);
           if (this.this$0.mAudioTrack == null) {
             continue;
           }
@@ -106,10 +107,10 @@ class NativeVideoImage$PlayAudioThread
         }
         AudioUtils.abandonAudioFoucus();
         NativeVideoImage.access$302(this.this$0, true);
-        if (!QLog.isColorLevel()) {
+        if (!URLDrawable.depImp.mLog.isColorLevel()) {
           continue;
         }
-        QLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread run over");
+        URLDrawable.depImp.mLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread run over");
         throw localObject5;
         i = 0;
         continue;
@@ -129,14 +130,14 @@ class NativeVideoImage$PlayAudioThread
         {
           if (!NativeVideoImage.access$800(this.this$0))
           {
-            if (QLog.isColorLevel()) {
-              QLog.e(NativeVideoImage.TAG_AUDIO, 2, "AudioDecode begin to wait....");
+            if (URLDrawable.depImp.mLog.isColorLevel()) {
+              URLDrawable.depImp.mLog.e(NativeVideoImage.TAG_AUDIO, 2, "AudioDecode begin to wait....");
             }
             NativeVideoImage.access$700(this.this$0).wait();
-            if (!QLog.isColorLevel()) {
+            if (!URLDrawable.depImp.mLog.isColorLevel()) {
               continue;
             }
-            QLog.e(NativeVideoImage.TAG_AUDIO, 2, "AudioDecode finish wait....");
+            URLDrawable.depImp.mLog.e(NativeVideoImage.TAG_AUDIO, 2, "AudioDecode finish wait....");
           }
         }
         continue;
@@ -157,7 +158,7 @@ class NativeVideoImage$PlayAudioThread
       }
       catch (IllegalStateException localIllegalStateException1)
       {
-        QLog.e(NativeVideoImage.TAG_AUDIO, 1, "PlayAudioThread run ", localIllegalStateException1);
+        URLDrawable.depImp.mLog.e(NativeVideoImage.TAG_AUDIO, 1, "PlayAudioThread run ", localIllegalStateException1);
         if (this.this$0.mAudioTrack == null) {
           continue;
         }
@@ -177,8 +178,8 @@ class NativeVideoImage$PlayAudioThread
       AudioUtils.abandonAudioFoucus();
     }
     NativeVideoImage.access$302(this.this$0, true);
-    if (QLog.isColorLevel()) {
-      QLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread run over");
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread run over");
     }
     do
     {
@@ -198,15 +199,15 @@ class NativeVideoImage$PlayAudioThread
               }
               try
               {
-                if (QLog.isColorLevel()) {
-                  QLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread id=" + getId() + "begin wait ===> ");
+                if (URLDrawable.depImp.mLog.isColorLevel()) {
+                  URLDrawable.depImp.mLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread id=" + getId() + "begin wait ===> ");
                 }
                 if (this.this$0.mRequireAudioFocus) {
                   AudioUtils.abandonAudioFoucus();
                 }
                 AbstractVideoImage.sPauseLock.wait();
-                if (QLog.isColorLevel()) {
-                  QLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread id=" + getId() + " wait end <=== ");
+                if (URLDrawable.depImp.mLog.isColorLevel()) {
+                  URLDrawable.depImp.mLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread id=" + getId() + " wait end <=== ");
                 }
                 if (this.this$0.mRequireAudioFocus) {
                   AudioUtils.requesetAudioFoucus();
@@ -215,10 +216,10 @@ class NativeVideoImage$PlayAudioThread
               catch (Exception localException2) {}
             }
             if (this.this$0.mPlayAudioFrame) {
-              break label763;
+              break label915;
             }
-            if (QLog.isColorLevel()) {
-              QLog.i(NativeVideoImage.TAG_AUDIO, 2, "mPlayAudioFrame is false, so quit audio decode... ");
+            if (URLDrawable.depImp.mLog.isColorLevel()) {
+              URLDrawable.depImp.mLog.i(NativeVideoImage.TAG_AUDIO, 2, "mPlayAudioFrame is false, so quit audio decode... ");
             }
             if (this.this$0.mAudioTrack != null) {}
             try
@@ -232,7 +233,7 @@ class NativeVideoImage$PlayAudioThread
                 int i;
                 AbstractAVDecode localAbstractAVDecode;
                 Object localObject1;
-                QLog.e(NativeVideoImage.TAG_AUDIO, 1, "PlayAudioThread run ", localIllegalStateException3);
+                URLDrawable.depImp.mLog.e(NativeVideoImage.TAG_AUDIO, 1, "PlayAudioThread run ", localIllegalStateException3);
                 if (this.this$0.mAudioTrack != null)
                 {
                   this.this$0.mAudioTrack.release();
@@ -243,7 +244,7 @@ class NativeVideoImage$PlayAudioThread
             finally
             {
               if (this.this$0.mAudioTrack == null) {
-                break label1457;
+                break label1740;
               }
               this.this$0.mAudioTrack.release();
               this.this$0.mAudioTrack = null;
@@ -252,10 +253,10 @@ class NativeVideoImage$PlayAudioThread
               AudioUtils.abandonAudioFoucus();
             }
             NativeVideoImage.access$302(this.this$0, true);
-            if (!QLog.isColorLevel()) {
+            if (!URLDrawable.depImp.mLog.isColorLevel()) {
               continue;
             }
-            QLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread run over");
+            URLDrawable.depImp.mLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread run over");
             return;
           }
           l1 = l2;
@@ -264,28 +265,28 @@ class NativeVideoImage$PlayAudioThread
         {
           l2 = System.currentTimeMillis();
           if (l1 - l2 <= 300000L) {
-            break label1614;
+            break label1913;
           }
         }
       }
-      if (QLog.isColorLevel())
+      if (URLDrawable.depImp.mLog.isColorLevel())
       {
         l1 = l2;
         if (this.this$0.debug)
         {
-          QLog.i(NativeVideoImage.TAG_AUDIO, 2, "seekToNextAudioFrame ", localAVideoException);
+          URLDrawable.depImp.mLog.i(NativeVideoImage.TAG_AUDIO, 2, "seekToNextAudioFrame ", localAVideoException);
           l1 = l2;
         }
       }
       i = localAVideoException.mErrCode;
       if ((i != -116) && (i != -110)) {
-        break label1380;
+        break label1655;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(NativeVideoImage.TAG_AUDIO, 2, "seekToNextAudioFrame, AudioDecode end...");
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d(NativeVideoImage.TAG_AUDIO, 2, "seekToNextAudioFrame, AudioDecode end...");
       }
       if (this.this$0.mPlayAudioOnceFinished) {
-        break label1302;
+        break label1545;
       }
       this.this$0.mPlayAudioOnceFinished = true;
       ??? = this.this$0.mVideoParams;
@@ -302,7 +303,7 @@ class NativeVideoImage$PlayAudioThread
       {
         for (;;)
         {
-          QLog.e(NativeVideoImage.TAG_AUDIO, 1, "PlayAudioThread run ", localIllegalStateException2);
+          URLDrawable.depImp.mLog.e(NativeVideoImage.TAG_AUDIO, 1, "PlayAudioThread run ", localIllegalStateException2);
           if (this.this$0.mAudioTrack != null)
           {
             this.this$0.mAudioTrack.release();
@@ -313,7 +314,7 @@ class NativeVideoImage$PlayAudioThread
       finally
       {
         if (this.this$0.mAudioTrack == null) {
-          break label1299;
+          break label1542;
         }
         this.this$0.mAudioTrack.release();
         this.this$0.mAudioTrack = null;
@@ -322,12 +323,12 @@ class NativeVideoImage$PlayAudioThread
         AudioUtils.abandonAudioFoucus();
       }
       NativeVideoImage.access$302(this.this$0, true);
-    } while (!QLog.isColorLevel());
-    QLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread run over");
+    } while (!URLDrawable.depImp.mLog.isColorLevel());
+    URLDrawable.depImp.mLog.d(NativeVideoImage.TAG_AUDIO, 2, "PlayAudioThread run over");
     return;
-    label763:
-    if (QLog.isColorLevel()) {
-      QLog.i(NativeVideoImage.TAG_AUDIO, 2, "seekToNextAudioFrame: before <<<=== ");
+    label915:
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.i(NativeVideoImage.TAG_AUDIO, 2, "seekToNextAudioFrame: before <<<=== ");
     }
     l4 = System.currentTimeMillis();
   }

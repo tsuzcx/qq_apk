@@ -44,7 +44,7 @@ class CommonUsedSystemEmojiManager$3
             }
             QLog.d("CommonUsedSystemEmojiManager", 2, localStringBuilder.toString());
           }
-          FileUtils.pushData2File(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
+          FileUtils.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
           return;
         }
       }
@@ -53,7 +53,7 @@ class CommonUsedSystemEmojiManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager.3
  * JD-Core Version:    0.7.0.1
  */

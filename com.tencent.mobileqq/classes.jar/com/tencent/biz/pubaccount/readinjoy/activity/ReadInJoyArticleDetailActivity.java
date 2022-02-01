@@ -1,7 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import Override;
-import aady;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,15 +11,22 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import aqnr;
-import bdla;
-import bmad;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport.ReportR5Builder;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJJumpUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
 import com.tencent.biz.pubaccount.util.PreloadManager;
+import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
+import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.colornote.ColorNoteController;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -29,48 +34,80 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
+import cooperation.qqfav.QfavBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import olh;
-import osi;
-import osj;
-import pkh;
-import pqf;
-import pqx;
-import uvs;
 
 public class ReadInJoyArticleDetailActivity
   extends QQBrowserActivity
 {
   protected int a;
   protected long a;
-  aady jdField_a_of_type_Aady = null;
+  TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
   public volatile AppInterface a;
   public BrowserAppInterface a;
   public Object a;
-  public String a;
+  protected String a;
   boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private byte[] jdField_a_of_type_ArrayOfByte = null;
   private int jdField_b_of_type_Int;
   protected long b;
   protected String b;
   private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long = 0L;
   protected String c;
   private boolean jdField_c_of_type_Boolean = true;
+  private long jdField_d_of_type_Long = 0L;
   protected String d;
+  private boolean jdField_d_of_type_Boolean = false;
   private long e;
   protected String e;
-  private int jdField_f_of_type_Int;
-  private long jdField_f_of_type_Long;
   
   public ReadInJoyArticleDetailActivity()
   {
+    this.jdField_a_of_type_JavaLangString = null;
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaLangClass = ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.class;
+    this.mFragmentClass = ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.class;
+  }
+  
+  private RIJTransMergeKanDianReport.ReportR5Builder a(long paramLong1, int paramInt1, long paramLong2, String paramString, int paramInt2)
+  {
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.a();
+    localReportR5Builder.b("algorithm_id", "" + paramLong1);
+    localReportR5Builder.b("strategy_id", "" + paramInt1);
+    localReportR5Builder.b("feeds_channel_entrance", "1");
+    localReportR5Builder.b("mp_article_id", "" + paramLong2);
+    localReportR5Builder.b("rowkey", paramString);
+    localReportR5Builder.b("channel_id", paramInt2);
+    localReportR5Builder.b("is_wechat", "1");
+    return localReportR5Builder;
+  }
+  
+  private void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  {
+    if (!paramBoolean) {
+      return;
+    }
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = a(this.jdField_e_of_type_Long, this.jdField_c_of_type_Int, this.jdField_b_of_type_Long, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    localReportR5Builder.b("read_duration", "" + (paramLong2 - paramLong1) / 1000L);
+    localReportR5Builder.b("read_begin_timestamp", "" + paramLong1 / 1000L);
+    localReportR5Builder.b("read_end_timestamp", "" + paramLong2 / 1000L);
+    QLog.i("ReadInJoyArticleDetail", 1, "[reportReadArticleDuration], r5 = " + localReportR5Builder.a());
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8009781", "0X8009781", 0, 0, "" + this.jdField_b_of_type_Long, "", "", localReportR5Builder.a(), false);
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return;
+    }
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = a(this.jdField_e_of_type_Long, this.jdField_c_of_type_Int, this.jdField_b_of_type_Long, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    QLog.i("ReadInJoyArticleDetail", 1, "[reportArticleExposure], r5 = " + localReportR5Builder);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8005899", "0X8005899", 0, 0, "" + this.jdField_b_of_type_Long, "", "", localReportR5Builder.a(), false);
   }
   
   private void d()
@@ -79,17 +116,17 @@ public class ReadInJoyArticleDetailActivity
       return;
     }
     getMainLooper();
-    Looper.myQueue().addIdleHandler(new osj(this));
+    Looper.myQueue().addIdleHandler(new ReadInJoyArticleDetailActivity.5(this));
   }
   
-  private void i() {}
+  private void e() {}
   
   public void a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyArticleDetail", 2, "请求开始时间" + System.currentTimeMillis());
     }
-    this.jdField_a_of_type_Aady.b(this.jdField_a_of_type_JavaLangString, new osi(this));
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(this.jdField_a_of_type_JavaLangString, new ReadInJoyArticleDetailActivity.4(this));
   }
   
   @TargetApi(23)
@@ -144,7 +181,7 @@ public class ReadInJoyArticleDetailActivity
   @TargetApi(14)
   public void b()
   {
-    WebViewFragment localWebViewFragment = a();
+    WebViewFragment localWebViewFragment = getCurrentWebViewFragment();
     if ((localWebViewFragment instanceof ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment))
     {
       ((ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment)localWebViewFragment).a();
@@ -158,15 +195,15 @@ public class ReadInJoyArticleDetailActivity
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       super.getWindow().addFlags(67108864);
-      ImmersiveUtils.a(getWindow(), this.isClearCoverLayer);
+      ImmersiveUtils.clearCoverForStatus(getWindow(), this.isClearCoverLayer);
       if (this.mSystemBarComp == null) {
         this.mSystemBarComp = new SystemBarCompact(this, true, -1);
       }
       this.mSystemBarComp.init();
       if (!ThemeUtil.isInNightMode(this.app)) {
-        break label105;
+        break label108;
       }
-      if ((!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme())) {
+      if ((!SystemUtil.b()) && (!SystemUtil.d())) {
         this.mSystemBarComp.setStatusBarColor(-7829368);
       }
     }
@@ -177,14 +214,14 @@ public class ReadInJoyArticleDetailActivity
     this.mSystemBarComp.setStatusBarColor(-7829368);
     this.mSystemBarComp.setStatusBarDarkMode(true);
     return;
-    label105:
-    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme()))
+    label108:
+    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
     {
       a(true);
       this.mSystemBarComp.setStatusBarColor(-1);
       return;
     }
-    if (!SystemUtil.isFlyme())
+    if (!SystemUtil.d())
     {
       this.mSystemBarComp.setStatusBarColor(-2368549);
       return;
@@ -213,8 +250,8 @@ public class ReadInJoyArticleDetailActivity
     {
       super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
       return;
-      bdla.b(null, "CliOper", "", "", "0X8005438", "0X8005438", 0, 0, "", "", "", "");
-      bmad.a(this, paramIntent);
+      ReportController.b(null, "CliOper", "", "", "0X8005438", "0X8005438", 0, 0, "", "", "", "");
+      QfavBuilder.a(this, paramIntent);
       return;
     }
   }
@@ -234,45 +271,46 @@ public class ReadInJoyArticleDetailActivity
   {
     super.doOnDestroy();
     ThreadManager.getSubThreadHandler().post(new ReadInJoyArticleDetailActivity.3(this));
-    if (this.jdField_a_of_type_Aady != null) {
-      this.jdField_a_of_type_Aady.b();
+    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null) {
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_e_of_type_Long = System.currentTimeMillis();
-    long l = this.jdField_e_of_type_Long - this.jdField_c_of_type_Long;
+    this.jdField_d_of_type_Long = System.currentTimeMillis();
+    long l = this.jdField_d_of_type_Long - this.jdField_c_of_type_Long;
     if ((l > 0L) && (this.jdField_b_of_type_Long > 0L))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleDetail", 2, "start to report article read info:" + pqf.a(this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_Long, 0));
+        QLog.d("ReadInJoyArticleDetail", 2, "start to report article read info:" + RIJTransMergeKanDianReport.a(this.jdField_e_of_type_JavaLangString, this.jdField_e_of_type_Long, 0));
       }
-      if (!uvs.a(this.jdField_a_of_type_Int)) {
-        break label281;
+      if (!ReadinjoyReportUtils.a(this.jdField_a_of_type_Int)) {
+        break label304;
       }
     }
-    label281:
+    label304:
     for (Object localObject = "0X8009359";; localObject = "0X80066FB")
     {
-      olh.a(null, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, Long.toString(l / 1000L), Long.toString(this.jdField_b_of_type_Long), Integer.toString(this.jdField_f_of_type_Int), pqf.a(this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_Long, 0), false);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, Long.toString(l / 1000L), Long.toString(this.jdField_b_of_type_Long), Integer.toString(this.jdField_c_of_type_Int), RIJTransMergeKanDianReport.a(this.jdField_e_of_type_JavaLangString, this.jdField_e_of_type_Long, 0), false);
       localObject = new ArrayList();
       ReportInfo localReportInfo = new ReportInfo();
-      localReportInfo.mUin = pkh.a();
+      localReportInfo.mUin = ReadInJoyUtils.a();
       localReportInfo.mSource = 0;
       localReportInfo.mSourceArticleId = this.jdField_b_of_type_Long;
       localReportInfo.mChannelId = this.jdField_a_of_type_Int;
-      localReportInfo.mAlgorithmId = ((int)this.jdField_f_of_type_Long);
-      localReportInfo.mStrategyId = this.jdField_f_of_type_Int;
+      localReportInfo.mAlgorithmId = ((int)this.jdField_e_of_type_Long);
+      localReportInfo.mStrategyId = this.jdField_c_of_type_Int;
       localReportInfo.mOperation = 9;
       localReportInfo.mReadTimeLength = ((int)(l / 1000L));
       localReportInfo.mInnerId = this.jdField_e_of_type_JavaLangString;
       ((List)localObject).add(localReportInfo);
       ThreadManager.getSubThreadHandler().post(new ReadInJoyArticleDetailActivity.2(this, (List)localObject));
-      if (this.jdField_a_of_type_Aady != null) {
-        this.jdField_a_of_type_Aady.i();
+      if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null) {
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.i();
       }
+      a(this.jdField_d_of_type_Boolean, this.jdField_c_of_type_Long, this.jdField_d_of_type_Long);
       return;
     }
   }
@@ -283,7 +321,7 @@ public class ReadInJoyArticleDetailActivity
     this.jdField_c_of_type_Long = System.currentTimeMillis();
     c();
     d();
-    i();
+    e();
   }
   
   @Override
@@ -312,10 +350,10 @@ public class ReadInJoyArticleDetailActivity
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_c_of_type_Boolean = false;
     }
-    if (this.jdField_a_of_type_Aady == null)
+    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null)
     {
-      this.jdField_a_of_type_Aady = aady.a();
-      this.jdField_a_of_type_Aady.a();
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
     }
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(str)) && (str.equals(this.jdField_a_of_type_JavaLangString)))
     {
@@ -330,9 +368,9 @@ public class ReadInJoyArticleDetailActivity
       QLog.d("ReadInJoyArticleDetail", 2, "initModel url empty");
       return;
     }
-    this.d = localBundle.getString("subscribename");
-    if (this.d == null) {
-      this.d = "";
+    this.jdField_d_of_type_JavaLangString = localBundle.getString("subscribename");
+    if (this.jdField_d_of_type_JavaLangString == null) {
+      this.jdField_d_of_type_JavaLangString = "";
     }
     paramBundle = String.valueOf(53);
     str = localBundle.getString("from");
@@ -343,26 +381,32 @@ public class ReadInJoyArticleDetailActivity
       this.jdField_b_of_type_Long = localBundle.getLong("articleid", -1L);
       this.jdField_e_of_type_JavaLangString = localBundle.getString("row_key", "");
       this.jdField_a_of_type_Int = localBundle.getInt("channelid", -1);
-      this.jdField_f_of_type_Int = localBundle.getInt("strategyid", -1);
-      this.jdField_f_of_type_Long = localBundle.getLong("algorithmid", -1L);
+      this.jdField_c_of_type_Int = localBundle.getInt("strategyid", -1);
+      this.jdField_e_of_type_Long = localBundle.getLong("algorithmid", -1L);
       this.jdField_a_of_type_Long = localBundle.getLong("recommendSeq", -1L);
-      if (!localIntent.hasExtra("big_brother_source_key")) {
-        localIntent.putExtra("big_brother_source_key", pqx.a(this.jdField_a_of_type_Int));
+      if (localBundle.getInt("article_source", 0) == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.jdField_d_of_type_Boolean = bool;
+        if (!localIntent.hasExtra("big_brother_source_key")) {
+          localIntent.putExtra("big_brother_source_key", RIJJumpUtils.a(this.jdField_a_of_type_Int));
+        }
+        paramBundle = super.getColorNoteController();
+        if (paramBundle != null)
+        {
+          paramBundle.j();
+          paramBundle.d(false);
+        }
+        b(this.jdField_d_of_type_Boolean);
+        return;
       }
-      paramBundle = super.a();
-      if (paramBundle == null) {
-        break;
-      }
-      paramBundle.j();
-      paramBundle.d(false);
-      return;
       paramBundle = str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity
  * JD-Core Version:    0.7.0.1
  */

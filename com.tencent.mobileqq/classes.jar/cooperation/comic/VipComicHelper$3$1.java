@@ -1,12 +1,11 @@
 package cooperation.comic;
 
-import blqr;
 import com.tencent.webbundle.sdk.WebBundleManager;
 
-public class VipComicHelper$3$1
+class VipComicHelper$3$1
   implements Runnable
 {
-  public VipComicHelper$3$1(blqr paramblqr) {}
+  VipComicHelper$3$1(VipComicHelper.3 param3) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class VipComicHelper$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.comic.VipComicHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

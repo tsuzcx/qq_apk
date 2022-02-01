@@ -9,7 +9,7 @@ import android.widget.ScrollView;
 public class DispatchActionMoveScrollView
   extends ScrollView
 {
-  public boolean dispatchActionMove;
+  public boolean a = false;
   
   public DispatchActionMoveScrollView(Context paramContext)
   {
@@ -28,7 +28,7 @@ public class DispatchActionMoveScrollView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.dispatchActionMove) {
+    if (this.a) {
       return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -42,7 +42,7 @@ public class DispatchActionMoveScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DispatchActionMoveScrollView
  * JD-Core Version:    0.7.0.1
  */

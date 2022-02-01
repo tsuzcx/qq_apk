@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 
-public final class MethodChannel
+public class MethodChannel
 {
   private static final String TAG = "MethodChannel#";
   private final MethodCodec codec;
@@ -30,7 +30,7 @@ public final class MethodChannel
   }
   
   @UiThread
-  public void invokeMethod(String paramString, @Nullable Object paramObject, MethodChannel.Result paramResult)
+  public void invokeMethod(String paramString, @Nullable Object paramObject, @Nullable MethodChannel.Result paramResult)
   {
     BinaryMessenger localBinaryMessenger = this.messenger;
     String str = this.name;
@@ -63,7 +63,7 @@ public final class MethodChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.plugin.common.MethodChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.biz.troop.feeds;
 
-import aagb;
-
 class TroopNewGuidePopWindow$4$1
   implements Runnable
 {
@@ -9,12 +7,12 @@ class TroopNewGuidePopWindow$4$1
   
   public void run()
   {
-    aagb.a(this.a.this$0, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.jdField_a_of_type_Int);
+    TroopNewGuidePopWindow.a(this.a.this$0, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.troop.feeds.TroopNewGuidePopWindow.4.1
  * JD-Core Version:    0.7.0.1
  */

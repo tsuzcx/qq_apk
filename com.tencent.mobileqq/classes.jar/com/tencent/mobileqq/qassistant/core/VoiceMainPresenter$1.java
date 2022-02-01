@@ -1,47 +1,44 @@
 package com.tencent.mobileqq.qassistant.core;
 
 import android.text.TextUtils;
-import bakx;
-import bakz;
-import balb;
-import balf;
-import ball;
-import bamr;
-import bamu;
-import bana;
+import com.tencent.mobileqq.qassistant.data.VoiceDataUtils;
+import com.tencent.mobileqq.qassistant.util.CommandUtils;
+import com.tencent.mobileqq.qassistant.util.VoiceTextUtils;
+import com.tencent.mobileqq.qassistant.view.VoiceView;
 
-public class VoiceMainPresenter$1
+class VoiceMainPresenter$1
   implements Runnable
 {
-  public VoiceMainPresenter$1(bakz parambakz, String paramString) {}
+  VoiceMainPresenter$1(VoiceMainPresenter paramVoiceMainPresenter, String paramString) {}
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(this.a)) && (bakz.a(this.this$0) != null) && (bakz.a(this.this$0) != null)) {
-      switch (bakz.a(this.this$0).a())
-      {
-      }
-    }
-    do
+    if ((!TextUtils.isEmpty(this.a)) && (VoiceMainPresenter.a(this.this$0) != null) && (VoiceMainPresenter.a(this.this$0) != null)) {}
+    switch (VoiceMainPresenter.a(this.this$0).a())
     {
+    case 3: 
+    default: 
       return;
-      if (bamu.a(this.a))
+    case 2: 
+      if (VoiceTextUtils.a(this.a))
       {
-        bakz.a(this.this$0).a(true, false);
+        VoiceMainPresenter.a(this.this$0).a(true, false);
         return;
       }
-      if ((bakz.a(this.this$0).a() != null) && (bakz.a(this.this$0).a().a != null) && (bakz.a(this.this$0).a().a.a == 115))
+      if (VoiceTextUtils.b(this.a))
       {
-        bakz.a(this.this$0).e();
+        this.this$0.p(CommandUtils.a(VoiceDataUtils.a(1), false));
         return;
       }
-      if (bamu.b(this.a))
+      if (VoiceTextUtils.c(this.a))
       {
-        this.this$0.p(bamr.a(ball.a(1), false));
+        VoiceMainPresenter.a(this.this$0).d();
         return;
       }
-    } while (!bamu.c(this.a));
-    bakz.a(this.this$0).d();
+      VoiceMainPresenter.a(this.this$0, this.a);
+      return;
+    }
+    VoiceMainPresenter.a(this.this$0, this.a);
   }
 }
 

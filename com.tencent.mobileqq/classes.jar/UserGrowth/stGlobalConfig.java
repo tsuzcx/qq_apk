@@ -21,25 +21,25 @@ public final class stGlobalConfig
   static stPopWindowsConfig cache_red_dot_window;
   static stUserAuth cache_user_auth;
   static ArrayList<stPopWindowsConfig> cache_windows_config = new ArrayList();
-  public stAioAction aioAction;
-  public int cache_size;
-  public stCallInfo callinfo;
-  public stCommentConfig commentConfig;
-  public downloadConfig download;
+  public stAioAction aioAction = null;
+  public int cache_size = 0;
+  public stCallInfo callinfo = null;
+  public stCommentConfig commentConfig = null;
+  public downloadConfig download = null;
   public String encrypted_deviceid = "";
-  public boolean isHalfAppStoreScreen;
-  public byte is_call_weishi;
-  public byte is_direct_open;
-  public stJumpInfo jumpinfo;
-  public stLinkConfig linkConfig;
-  public int link_strategy_type;
-  public Map<String, String> mapExt;
-  public int open_4g_autodownload;
-  public pendantConfig pendant;
-  public int playerType;
-  public stPopWindowsConfig red_dot_window;
-  public stUserAuth user_auth;
-  public ArrayList<stPopWindowsConfig> windows_config;
+  public boolean isHalfAppStoreScreen = false;
+  public byte is_call_weishi = 0;
+  public byte is_direct_open = 0;
+  public stJumpInfo jumpinfo = null;
+  public stLinkConfig linkConfig = null;
+  public int link_strategy_type = 0;
+  public Map<String, String> mapExt = null;
+  public int open_4g_autodownload = 0;
+  public pendantConfig pendant = null;
+  public int playerType = 0;
+  public stPopWindowsConfig red_dot_window = null;
+  public stUserAuth user_auth = null;
+  public ArrayList<stPopWindowsConfig> windows_config = null;
   
   static
   {

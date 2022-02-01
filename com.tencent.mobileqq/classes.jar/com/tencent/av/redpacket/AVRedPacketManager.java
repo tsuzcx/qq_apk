@@ -9,9 +9,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.handler.AVC2CDataHandler;
+import com.tencent.av.business.handler.BusinessHandlerFactory;
+import com.tencent.av.business.manager.BusinessManager;
+import com.tencent.av.opengl.effects.EffectsRenderController;
 import com.tencent.av.redpacket.ui.RedPacketShareFragment;
 import com.tencent.av.service.AVRedPacketConfig;
 import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
+import com.tencent.av.ui.funchat.record.QavRecordDpc;
+import com.tencent.av.ui.funchat.record.QavRecordUtils;
+import com.tencent.av.ui.redbag.AVRedBagConfig.Info;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.av.ui.redbag.GameSink;
+import com.tencent.av.ui.redbag.RedBagUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -27,29 +38,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import lfx;
-import lgp;
-import lph;
-import ltp;
-import ltq;
-import ltr;
-import lts;
-import ltu;
-import ltx;
-import ltz;
-import lua;
-import lub;
-import lud;
-import moo;
-import mos;
-import mqa;
-import mqb;
-import mqh;
-import mqj;
-import mqx;
 
 public class AVRedPacketManager
-  extends lgp
+  extends BusinessManager
   implements Handler.Callback
 {
   public static int a;
@@ -68,19 +59,19 @@ public class AVRedPacketManager
   public static long g;
   public Bitmap a;
   public Handler a;
+  public AVActUtil.AVExpressionItem a;
+  public AVRedPacketHandler a;
   public AVRedPacketManager.GameStateInfo a;
+  public AVRedPacketManager.RedPacketGameShower a;
+  AVRedPacketManager.ResPreLoadObserver jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$ResPreLoadObserver = new AVRedPacketManager.1(this);
+  public AVRedPacketMusicPlayer a;
+  ImgUploader jdField_a_of_type_ComTencentAvRedpacketImgUploader = new ImgUploader();
   Object jdField_a_of_type_JavaLangObject = new Object();
   private WeakReference<RedPacketShareFragment> jdField_a_of_type_JavaLangRefWeakReference;
-  public List<ltq> a;
-  public ltq a;
-  public ltu a;
-  public ltz a;
-  public lua a;
-  public lub a;
-  lud jdField_a_of_type_Lud = new lud();
+  public List<AVActUtil.AVExpressionItem> a;
   public boolean a;
   public Handler b;
-  public ltq b;
+  public AVActUtil.AVExpressionItem b;
   boolean jdField_b_of_type_Boolean = false;
   final String c;
   public volatile boolean c;
@@ -110,16 +101,18 @@ public class AVRedPacketManager
   public AVRedPacketManager(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_Lua = new ltx(this);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     this.jdField_c_of_type_JavaLangString = "https://task.qq.com/index.php/opapi/reportCollectData";
+    this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    paramVideoAppInterface = moo.a();
+    paramVideoAppInterface = QavRecordDpc.a();
     VideoAppInterface localVideoAppInterface = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-    if ((paramVideoAppInterface.jdField_g_of_type_Int == 1) && (!mos.a())) {}
+    if ((paramVideoAppInterface.jdField_g_of_type_Int == 1) && (!QavRecordUtils.a())) {}
     for (;;)
     {
-      this.jdField_a_of_type_Lub = new lub(localVideoAppInterface, bool);
-      this.jdField_a_of_type_Lub.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a());
+      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketMusicPlayer = new AVRedPacketMusicPlayer(localVideoAppInterface, bool);
+      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketMusicPlayer.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a());
       return;
       bool = false;
     }
@@ -207,7 +200,7 @@ public class AVRedPacketManager
         QLog.d("AVRedPacketManager", 2, "__debug__ updateHitInfo, id=" + paramInt1 + ",hitType=" + paramInt3 + ",hasHit=" + bool);
       }
     } while (bool);
-    lts.a(paramInt1, paramInt2, paramInt3, paramFloat, this.h, this.i);
+    AVRedPacketDataCollector.a(paramInt1, paramInt2, paramInt3, paramFloat, this.h, this.i);
     paramInt2 = 0;
     localLocalHitInfo.emojiId = paramInt1;
     if (paramInt3 == 3)
@@ -275,7 +268,7 @@ public class AVRedPacketManager
       QLog.d("AVRedPacketManager", 2, "onGameStartSuccFromServer");
     }
     if (!a(true)) {}
-    mqa localmqa;
+    AVRedBagConfig.Info localInfo;
     int m;
     do
     {
@@ -286,11 +279,11 @@ public class AVRedPacketManager
         localGameStateInfo = new AVRedPacketManager.GameStateInfo(paramGameInfoFromBusiServer.key, 2, paramGameInfoFromBusiServer.sendRedPacketUin, paramGameInfoFromBusiServer.receiveRedPacketUin);
         localGameStateInfo.authKey = paramGameInfoFromBusiServer.authKey;
         paramGameInfoFromBusiServer = new ArrayList();
-        localmqa = mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
-      } while ((localmqa == null) || (localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null));
-      ArrayList localArrayList = a(localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionIDList, localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionCount);
+        localInfo = RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
+      } while ((localInfo == null) || (localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null));
+      ArrayList localArrayList = a(localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionIDList, localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionCount);
       m = localArrayList.size();
-      if (m == localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionCount)
+      if (m == localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionCount)
       {
         int k = 0;
         while (k < m)
@@ -299,7 +292,7 @@ public class AVRedPacketManager
           localLocalEmojiInfo.emojiId = k;
           localLocalEmojiInfo.emojiType = ((Integer)localArrayList.get(k)).intValue();
           localLocalEmojiInfo.isBigEmoji = false;
-          localLocalEmojiInfo.fallDownDuration = ((Integer)localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionDurationList.get(k)).intValue();
+          localLocalEmojiInfo.fallDownDuration = ((Integer)localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionDurationList.get(k)).intValue();
           if (k == m - 1) {
             localLocalEmojiInfo.isBigEmoji = true;
           }
@@ -310,7 +303,7 @@ public class AVRedPacketManager
         return;
       }
     } while (!QLog.isColorLevel());
-    QLog.d("AVRedPacketManager", 2, "onGameStartSuccFromServer size is not equal, size = " + m + ",ExpressionCount=" + localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionCount);
+    QLog.d("AVRedPacketManager", 2, "onGameStartSuccFromServer size is not equal, size = " + m + ",ExpressionCount=" + localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionCount);
   }
   
   private void a(AVRedPacketManager.GameStateInfo paramGameStateInfo)
@@ -321,12 +314,12 @@ public class AVRedPacketManager
     a(false);
     if (a(paramGameStateInfo))
     {
-      this.jdField_a_of_type_Ltu.a();
+      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketHandler.a();
       this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.money = paramGameStateInfo.money;
       this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.enterType = paramGameStateInfo.enterType;
       this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.updateGameState(1);
       l();
-      mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.sendRedPacketUin, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.receiveRedPacketUin, paramGameStateInfo.enterType);
+      RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.sendRedPacketUin, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.receiveRedPacketUin, paramGameStateInfo.enterType);
       e(1);
     }
   }
@@ -360,13 +353,13 @@ public class AVRedPacketManager
     if (QLog.isColorLevel()) {
       QLog.d("AVRedPacketManager", 2, "deleteLocalExpressionImg");
     }
-    FileUtils.deleteDirectory(jdField_b_of_type_JavaLangString);
+    FileUtils.a(jdField_b_of_type_JavaLangString);
   }
   
   private boolean e()
   {
     boolean bool = true;
-    if (lfx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface) == null) {
+    if (AVC2CDataHandler.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface) == null) {
       bool = false;
     }
     if (QLog.isColorLevel()) {
@@ -380,15 +373,15 @@ public class AVRedPacketManager
     if (QLog.isColorLevel()) {
       QLog.d("AVRedPacketManager", 2, "initMusicPlayer ,bgMusicIndex = " + paramInt);
     }
-    mqa localmqa = mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
-    if (!localmqa.jdField_c_of_type_Boolean)
+    AVRedBagConfig.Info localInfo = RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
+    if (!localInfo.jdField_c_of_type_Boolean)
     {
       if (QLog.isColorLevel()) {
         QLog.d("AVRedPacketManager", 2, "initMusicPlayer failed,config not ready");
       }
       return;
     }
-    this.jdField_a_of_type_Lub.a(paramInt, localmqa);
+    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketMusicPlayer.a(paramInt, localInfo);
   }
   
   private void h()
@@ -422,14 +415,14 @@ public class AVRedPacketManager
   
   private void k()
   {
-    mqa localmqa = mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
-    if ((localmqa != null) && (localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig != null))
+    AVRedBagConfig.Info localInfo = RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
+    if ((localInfo != null) && (localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig != null))
     {
-      jdField_b_of_type_Long = localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.game321MaxTimeOut;
-      jdField_a_of_type_Long = localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameSendRedBagMaxTimeOut;
-      jdField_e_of_type_Int = localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameMaxScore;
-      jdField_f_of_type_Int = localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionCount;
-      jdField_g_of_type_Long = localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.tipsTimeout;
+      jdField_b_of_type_Long = localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.game321MaxTimeOut;
+      jdField_a_of_type_Long = localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameSendRedBagMaxTimeOut;
+      jdField_e_of_type_Int = localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameMaxScore;
+      jdField_f_of_type_Int = localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.gameExpressionCount;
+      jdField_g_of_type_Long = localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.tipsTimeout;
     }
     QLog.d("AVRedPacketManager", 1, "initConfigValue, MAX_GAME_TIMEOUT=" + jdField_b_of_type_Long + ",COUNTDOWN_TIMEOUT=" + jdField_a_of_type_Long + ",MAX_GAME_SCORE=" + jdField_e_of_type_Int + ",MAX_EMOJI_CNT=" + jdField_f_of_type_Int + ",MAX_EMOJI_TIPS_TIME=" + jdField_g_of_type_Long + ",saveSwitch = " + false);
   }
@@ -458,11 +451,11 @@ public class AVRedPacketManager
   public int a()
   {
     int m = -1;
-    Object localObject = mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
+    Object localObject = RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
     int k = m;
-    if (((mqa)localObject).jdField_c_of_type_Boolean)
+    if (((AVRedBagConfig.Info)localObject).jdField_c_of_type_Boolean)
     {
-      localObject = new File(((mqa)localObject).jdField_b_of_type_JavaLangString).listFiles();
+      localObject = new File(((AVRedBagConfig.Info)localObject).jdField_b_of_type_JavaLangString).listFiles();
       k = m;
       if (localObject != null)
       {
@@ -497,12 +490,12 @@ public class AVRedPacketManager
   
   public Bitmap a(String paramString)
   {
-    return mqx.a(paramString, true);
+    return RedBagUtil.a(paramString, true);
   }
   
   public Bitmap a(String paramString, boolean paramBoolean)
   {
-    return mqx.a(paramString, paramBoolean);
+    return RedBagUtil.a(paramString, paramBoolean);
   }
   
   public AVRedPacketManager.GameStateInfo a()
@@ -554,7 +547,7 @@ public class AVRedPacketManager
   
   public void a()
   {
-    this.jdField_a_of_type_Ltu = ((ltu)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2));
+    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketHandler = ((AVRedPacketHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_c_of_type_JavaLangString));
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
     this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     b();
@@ -602,7 +595,7 @@ public class AVRedPacketManager
   public void a(int paramInt, Bundle paramBundle)
   {
     QLog.d("AVRedPacketManager", 1, "sendC2CMsgGameInfo, subType: " + paramInt + ",bundle:" + paramBundle);
-    this.jdField_a_of_type_Ltu.b(paramInt, paramBundle);
+    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketHandler.b(paramInt, paramBundle);
   }
   
   public void a(int paramInt, AVRedPacketManager.LocalEmojiInfo paramLocalEmojiInfo)
@@ -635,12 +628,12 @@ public class AVRedPacketManager
     localBundle.putString("toUin", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
     localBundle.putInt("currScores", paramInt2);
     localBundle.putString("totalMoney", paramString3);
-    this.jdField_a_of_type_Ltu.a(paramInt1, localBundle);
+    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketHandler.a(paramInt1, localBundle);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Lub.a(paramInt, paramBoolean);
+    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketMusicPlayer.a(paramInt, paramBoolean);
   }
   
   public void a(Bitmap paramBitmap)
@@ -723,6 +716,12 @@ public class AVRedPacketManager
     }
   }
   
+  public void a(AVRedPacketManager.RedPacketGameShower paramRedPacketGameShower)
+  {
+    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower = paramRedPacketGameShower;
+    if (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null) {}
+  }
+  
   public void a(RedPacketShareFragment paramRedPacketShareFragment)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramRedPacketShareFragment);
@@ -759,9 +758,9 @@ public class AVRedPacketManager
     if ((!a(false)) || (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.currLocalFrameSyncInfo == null)) {}
     Object localObject;
     int k;
-    ltr localltr;
+    AVActUtil.SimilarityResult localSimilarityResult;
     float f1;
-    mqa localmqa;
+    AVRedBagConfig.Info localInfo;
     do
     {
       do
@@ -779,47 +778,47 @@ public class AVRedPacketManager
         QLog.d("AVRedPacketManager", 2, "detectFaceExpression, emojiInfo is null, focusId=" + k);
         return;
         if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-          this.jdField_a_of_type_Ltq = ((ltq)this.jdField_a_of_type_JavaUtilList.get(a(((AVRedPacketManager.LocalEmojiInfo)localObject).emojiType)));
+          this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem = ((AVActUtil.AVExpressionItem)this.jdField_a_of_type_JavaUtilList.get(a(((AVRedPacketManager.LocalEmojiInfo)localObject).emojiType)));
         }
         if (QLog.isColorLevel()) {
-          QLog.d("AVRedPacketManager", 2, "detectFaceExpression, targetExpression=" + this.jdField_a_of_type_Ltq.expressionID + ",emojiType=" + ((AVRedPacketManager.LocalEmojiInfo)localObject).emojiType);
+          QLog.d("AVRedPacketManager", 2, "detectFaceExpression, targetExpression=" + this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem.expressionID + ",emojiType=" + ((AVRedPacketManager.LocalEmojiInfo)localObject).emojiType);
         }
-      } while ((paramList == null) || (paramArrayOfFloat == null) || (this.jdField_a_of_type_Ltq == null) || (this.jdField_a_of_type_Ltq.expressionFeat == null) || (this.jdField_a_of_type_Ltq.expressionAngle == null) || (this.jdField_a_of_type_Ltq.expressionWeight == null));
-      localltr = ltp.a(this.jdField_a_of_type_Ltq, paramList, ltp.b(paramArrayOfFloat));
-      f1 = localltr.a;
-      localmqa = mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
-      if ((a(false)) && (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 1) && (localmqa != null)) {
+      } while ((paramList == null) || (paramArrayOfFloat == null) || (this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem == null) || (this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem.expressionFeat == null) || (this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem.expressionAngle == null) || (this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem.expressionWeight == null));
+      localSimilarityResult = AVActUtil.a(this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem, paramList, AVActUtil.b(paramArrayOfFloat));
+      f1 = localSimilarityResult.a;
+      localInfo = RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
+      if ((a(false)) && (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 1) && (localInfo != null)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.d("AVRedPacketManager", 2, "detectFaceExpression, invalid parame");
     return;
-    AVRedPacketConfig.ExpressionInfo localExpressionInfo = (AVRedPacketConfig.ExpressionInfo)localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.expressionInfoList.get(((AVRedPacketManager.LocalEmojiInfo)localObject).emojiType);
-    if ((f1 > localExpressionInfo.coolValue) && (this.jdField_b_of_type_Ltq != null)) {
-      if ((localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.checkEyeOpenClose) && (this.jdField_a_of_type_Ltq.expressionWeight[0] > 0.0D) && (this.jdField_a_of_type_Ltq.expressionWeight[1] > 0.0D) && (!ltp.a(localltr)))
+    AVRedPacketConfig.ExpressionInfo localExpressionInfo = (AVRedPacketConfig.ExpressionInfo)localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.expressionInfoList.get(((AVRedPacketManager.LocalEmojiInfo)localObject).emojiType);
+    if ((f1 > localExpressionInfo.coolValue) && (this.jdField_b_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem != null)) {
+      if ((localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.checkEyeOpenClose) && (this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem.expressionWeight[0] > 0.0D) && (this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem.expressionWeight[1] > 0.0D) && (!AVActUtil.a(localSimilarityResult)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("AVRedPacketManager", 2, "detectFaceExpression, invalid EyeOpenClose,reset score");
         }
-        lts.a(1);
+        AVRedPacketDataCollector.a(1);
         f1 = 0.0F;
         f2 = f1;
-        if (localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.checkNormalFaceExpression)
+        if (localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.checkNormalFaceExpression)
         {
           f2 = f1;
-          if (ltp.a(localltr.a, this.jdField_a_of_type_Ltq.expressionWeight, this.jdField_a_of_type_Ltq.a, this.jdField_b_of_type_Ltq, paramList, ltp.b(paramArrayOfFloat)))
+          if (AVActUtil.a(localSimilarityResult.a, this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem.expressionWeight, this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem.a, this.jdField_b_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem, paramList, AVActUtil.b(paramArrayOfFloat)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("AVRedPacketManager", 2, "detectFaceExpression, is normalFaceExpression,reset score");
             }
-            lts.a(2);
+            AVRedPacketDataCollector.a(2);
           }
         }
       }
     }
     for (float f2 = 0.0F;; f2 = f1)
     {
-      int m = localmqa.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.continuousHitCount;
+      int m = localInfo.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.continuousHitCount;
       k = m;
       if (m < 1) {
         k = 1;
@@ -828,12 +827,6 @@ public class AVRedPacketManager
       return;
       break;
     }
-  }
-  
-  public void a(ltz paramltz)
-  {
-    this.jdField_a_of_type_Ltz = paramltz;
-    if (this.jdField_a_of_type_Ltz == null) {}
   }
   
   public void a(boolean paramBoolean)
@@ -854,13 +847,13 @@ public class AVRedPacketManager
       this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.updateGameState(4);
       l();
       this.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_Ltu.b();
+      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketHandler.b();
       i();
     }
     try
     {
-      this.jdField_a_of_type_Lub.a(7);
-      this.jdField_a_of_type_Lub.a();
+      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketMusicPlayer.a(7);
+      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketMusicPlayer.a();
       return;
     }
     catch (Exception localException)
@@ -869,7 +862,7 @@ public class AVRedPacketManager
     }
   }
   
-  public void a(boolean paramBoolean, int paramInt, long paramLong, Object paramObject)
+  void a(boolean paramBoolean, int paramInt, long paramLong, Object paramObject)
   {
     if (!this.jdField_a_of_type_Boolean) {
       try
@@ -910,7 +903,7 @@ public class AVRedPacketManager
       {
         return;
       } while ((paramInt != 3) || (!a(true)));
-      mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(paramGameInfoFromBusiServer.sendRedPacketUin, paramGameInfoFromBusiServer.receiveRedPacketUin, paramGameInfoFromBusiServer.key, paramGameInfoFromBusiServer.authKey, paramGameInfoFromBusiServer.currScores, jdField_e_of_type_Int, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.currLocalFrameSyncInfo.hasHitedEmojiIds.size(), jdField_f_of_type_Int, String.valueOf(paramGameInfoFromBusiServer.winMoney), "0", "", true, 0);
+      RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(paramGameInfoFromBusiServer.sendRedPacketUin, paramGameInfoFromBusiServer.receiveRedPacketUin, paramGameInfoFromBusiServer.key, paramGameInfoFromBusiServer.authKey, paramGameInfoFromBusiServer.currScores, jdField_e_of_type_Int, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.currLocalFrameSyncInfo.hasHitedEmojiIds.size(), jdField_f_of_type_Int, String.valueOf(paramGameInfoFromBusiServer.winMoney), "0", "", true, 0);
       a(false);
       return;
       if (paramInt == 1)
@@ -965,7 +958,7 @@ public class AVRedPacketManager
         f();
         return;
       } while ((k != 5) || (m != 2) || (!a(true)));
-      mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), str3, "", "", i2, jdField_e_of_type_Int, 0, 0, str1 + "", "" + n, str4, true, 0);
+      RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), str3, "", "", i2, jdField_e_of_type_Int, 0, 0, str1 + "", "" + n, str4, true, 0);
       a(false);
       return;
       if ((k == 1) || (k == 2))
@@ -1011,12 +1004,12 @@ public class AVRedPacketManager
       a(false);
       if (e())
       {
-        paramString = new AVRedPacketManager.GameStateInfo(paramString, 1, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), mqx.a());
+        paramString = new AVRedPacketManager.GameStateInfo(paramString, 1, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), RedBagUtil.a());
         if (a(paramString))
         {
           this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.updateGameState(1);
           this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.enterType = paramInt;
-          mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.sendRedPacketUin, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.receiveRedPacketUin, paramInt);
+          RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.sendRedPacketUin, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.receiveRedPacketUin, paramInt);
           a(true, 1008, 0L, paramString);
           this.jdField_g_of_type_Int = a();
           a(true, 1020, 0L, null);
@@ -1125,7 +1118,7 @@ public class AVRedPacketManager
     } while ((this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 1) || ((this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState != 2) && (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState != 3)));
     try
     {
-      this.jdField_a_of_type_Lub.a(7);
+      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketMusicPlayer.a(7);
       a(true, 1019, 0L, new Object[] { Boolean.valueOf(true), Boolean.valueOf(true) });
       return;
     }
@@ -1159,8 +1152,8 @@ public class AVRedPacketManager
       bool2 = false;
       return bool2;
     }
-    Object localObject = mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
-    if ((localObject != null) && (((mqa)localObject).jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig != null) && (((mqa)localObject).jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.shareExpressionIDList != null) && (((mqa)localObject).jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.shareExpressionIDList.contains(Integer.valueOf(paramInt)))) {
+    Object localObject = RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
+    if ((localObject != null) && (((AVRedBagConfig.Info)localObject).jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig != null) && (((AVRedBagConfig.Info)localObject).jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.shareExpressionIDList != null) && (((AVRedBagConfig.Info)localObject).jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.shareExpressionIDList.contains(Integer.valueOf(paramInt)))) {
       this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.hasScreenShotCnt = 2;
     }
     for (;;)
@@ -1200,7 +1193,7 @@ public class AVRedPacketManager
     if ((!a(true)) || (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 1)) {
       return;
     }
-    mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.sendRedPacketUin, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.receiveRedPacketUin, "", "", 0, 0, 0, jdField_e_of_type_Int, "0", "0", "", false, paramInt);
+    RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.sendRedPacketUin, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.receiveRedPacketUin, "", "", 0, 0, 0, jdField_e_of_type_Int, "0", "0", "", false, paramInt);
     a(false);
   }
   
@@ -1225,7 +1218,7 @@ public class AVRedPacketManager
     if (!a(true)) {
       return;
     }
-    mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     a(true, 1027, 0L, null);
   }
   
@@ -1307,8 +1300,8 @@ public class AVRedPacketManager
   
   public boolean d()
   {
-    mqb localmqb = mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    return (localmqb.a != null) && (localmqb.a.jdField_a_of_type_Boolean);
+    AVRedBagMgr localAVRedBagMgr = RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    return (localAVRedBagMgr.a != null) && (localAVRedBagMgr.a.jdField_a_of_type_Boolean);
   }
   
   public void e()
@@ -1330,7 +1323,7 @@ public class AVRedPacketManager
       return;
       if (paramInt == 1)
       {
-        if (mqx.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface))
+        if (RedBagUtil.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface))
         {
           e(2);
           return;
@@ -1342,7 +1335,7 @@ public class AVRedPacketManager
         return;
       }
     } while (paramInt != 2);
-    if (mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
+    if (RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
       a(1, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.key, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.sendRedPacketUin, 0, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.money);
     }
     for (;;)
@@ -1372,7 +1365,7 @@ public class AVRedPacketManager
       ((Bundle)localObject1).putInt("maxScore", jdField_e_of_type_Int);
       ((Bundle)localObject1).putInt("totalEmojiNum", jdField_f_of_type_Int);
       a(1, (Bundle)localObject1);
-      boolean bool = lph.g();
+      boolean bool = EffectsRenderController.g();
       if (QLog.isColorLevel()) {
         QLog.d("AVRedPacketManager", 2, "startGame, isSoReady = " + bool);
       }
@@ -1380,29 +1373,29 @@ public class AVRedPacketManager
     }
     this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.updateGameState(2);
     l();
-    Object localObject1 = mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
+    Object localObject1 = RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("AVRedPacketManager", 2, "startGame, init expressionList");
       }
-      if (((mqa)localObject1).jdField_c_of_type_Boolean)
+      if (((AVRedBagConfig.Info)localObject1).jdField_c_of_type_Boolean)
       {
-        Object localObject2 = ((mqa)localObject1).jdField_a_of_type_JavaLangString;
+        Object localObject2 = ((AVRedBagConfig.Info)localObject1).jdField_a_of_type_JavaLangString;
         localObject1 = localObject2;
         if (((String)localObject2).endsWith("/")) {
           localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
         }
-        this.jdField_a_of_type_JavaUtilList = ltp.a((String)localObject1, "params");
+        this.jdField_a_of_type_JavaUtilList = AVActUtil.a((String)localObject1, "params");
         if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
         {
-          this.jdField_a_of_type_Ltq = ((ltq)this.jdField_a_of_type_JavaUtilList.get(0));
+          this.jdField_a_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem = ((AVActUtil.AVExpressionItem)this.jdField_a_of_type_JavaUtilList.get(0));
           localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
           while (((Iterator)localObject1).hasNext())
           {
-            localObject2 = (ltq)((Iterator)localObject1).next();
-            if (((ltq)localObject2).expressionID.equals("99")) {
-              this.jdField_b_of_type_Ltq = ((ltq)localObject2);
+            localObject2 = (AVActUtil.AVExpressionItem)((Iterator)localObject1).next();
+            if (((AVActUtil.AVExpressionItem)localObject2).expressionID.equals("99")) {
+              this.jdField_b_of_type_ComTencentAvRedpacketAVActUtil$AVExpressionItem = ((AVActUtil.AVExpressionItem)localObject2);
             }
           }
         }
@@ -1437,7 +1430,7 @@ public class AVRedPacketManager
     {
       if (bool2)
       {
-        mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(((AVRedPacketManager.GameStateInfo)localObject).sendRedPacketUin, ((AVRedPacketManager.GameStateInfo)localObject).receiveRedPacketUin, "", "", 0, jdField_e_of_type_Int, 0, jdField_f_of_type_Int, "0", "0", "", false, k);
+        RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a().a(((AVRedPacketManager.GameStateInfo)localObject).sendRedPacketUin, ((AVRedPacketManager.GameStateInfo)localObject).receiveRedPacketUin, "", "", 0, jdField_e_of_type_Int, 0, jdField_f_of_type_Int, "0", "0", "", false, k);
         if (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode == 2)
         {
           localObject = new HashMap();
@@ -1688,43 +1681,43 @@ public class AVRedPacketManager
                               do
                               {
                                 return false;
-                              } while ((this.jdField_a_of_type_Ltz == null) || (!a(false)));
-                              this.jdField_a_of_type_Ltz.a((AVRedPacketManager.LocalFrameSyncInfo)paramMessage.obj);
+                              } while ((this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null) || (!a(false)));
+                              this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.a((AVRedPacketManager.LocalFrameSyncInfo)paramMessage.obj);
                               return false;
-                            } while (this.jdField_a_of_type_Ltz == null);
-                            this.jdField_a_of_type_Ltz.d();
+                            } while (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null);
+                            this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.d();
                             return false;
-                          } while (this.jdField_a_of_type_Ltz == null);
-                          this.jdField_a_of_type_Ltz.e();
+                          } while (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null);
+                          this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.e();
                           return false;
-                          if (this.jdField_a_of_type_Ltz != null)
+                          if (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower != null)
                           {
                             paramMessage = (Object[])paramMessage.obj;
                             k = ((Integer)paramMessage[0]).intValue();
                             paramMessage = (List)paramMessage[1];
-                            this.jdField_a_of_type_Ltz.a(k, paramMessage);
+                            this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.a(k, paramMessage);
                           }
                         } while ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
                         ((RedPacketShareFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
                         return false;
-                      } while (this.jdField_a_of_type_Ltz == null);
-                      this.jdField_a_of_type_Ltz.a(((Integer)paramMessage.obj).intValue());
+                      } while (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null);
+                      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.a(((Integer)paramMessage.obj).intValue());
                       return false;
-                    } while (this.jdField_a_of_type_Ltz == null);
-                    this.jdField_a_of_type_Ltz.a();
+                    } while (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null);
+                    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.a();
                     return false;
-                  } while ((this.jdField_a_of_type_Ltz == null) || (!a(false)));
-                  this.jdField_a_of_type_Ltz.b((AVRedPacketManager.LocalFrameSyncInfo)paramMessage.obj);
+                  } while ((this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null) || (!a(false)));
+                  this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.b((AVRedPacketManager.LocalFrameSyncInfo)paramMessage.obj);
                   return false;
-                } while (this.jdField_a_of_type_Ltz == null);
-                this.jdField_a_of_type_Ltz.b();
+                } while (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null);
+                this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.b();
                 return false;
                 paramMessage = (Object[])paramMessage.obj;
                 k = ((Integer)paramMessage[0]).intValue();
                 bool = ((Boolean)paramMessage[1]).booleanValue();
                 ((Integer)paramMessage[2]).intValue();
-              } while (this.jdField_a_of_type_Ltz == null);
-              this.jdField_a_of_type_Ltz.a(k, bool);
+              } while (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null);
+              this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.a(k, bool);
               return false;
               f(1);
               return false;
@@ -1742,8 +1735,8 @@ public class AVRedPacketManager
               }
               a(k, paramMessage);
               return false;
-            } while (this.jdField_a_of_type_Ltz == null);
-            this.jdField_a_of_type_Ltz.a(((Boolean)paramMessage.obj).booleanValue());
+            } while (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null);
+            this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.a(((Boolean)paramMessage.obj).booleanValue());
             return false;
             f(8);
             return false;
@@ -1758,8 +1751,8 @@ public class AVRedPacketManager
           }
           this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(517), paramMessage[0], paramMessage[1] });
           return false;
-        } while (this.jdField_a_of_type_Ltz == null);
-        this.jdField_a_of_type_Ltz.a();
+        } while (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null);
+        this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.a();
         h();
         return false;
         f(11);
@@ -1770,8 +1763,8 @@ public class AVRedPacketManager
         return false;
         f();
         return false;
-      } while (this.jdField_a_of_type_Ltz == null);
-      this.jdField_a_of_type_Ltz.f();
+      } while (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower == null);
+      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.f();
       return false;
     }
     d();
@@ -1780,7 +1773,7 @@ public class AVRedPacketManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.redpacket.AVRedPacketManager
  * JD-Core Version:    0.7.0.1
  */

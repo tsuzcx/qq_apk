@@ -8,13 +8,13 @@ public final class GetRandomHbIdiomReq
   extends JceStruct
 {
   static int cache_subchannel = 0;
-  public long appid;
-  public int fromType;
-  public long makeUin;
-  public int platform;
+  public long appid = 0L;
+  public int fromType = 0;
+  public long makeUin = 0L;
+  public int platform = 0;
   public String qqVersion = "";
   public String sKey = "";
-  public int subchannel;
+  public int subchannel = 0;
   
   public GetRandomHbIdiomReq() {}
   

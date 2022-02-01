@@ -5,7 +5,7 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public class ARReport$15
+class ARReport$15
   implements Runnable
 {
   public void run()

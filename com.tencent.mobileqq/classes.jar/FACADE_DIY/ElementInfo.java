@@ -8,11 +8,11 @@ public final class ElementInfo
   extends JceStruct
 {
   static int cache_elementType = 0;
-  public int appid;
+  public int appid = 0;
   public String data = "";
-  public int elementId;
-  public int elementType;
-  public int itemId;
+  public int elementId = 0;
+  public int elementType = 0;
+  public int itemId = 0;
   
   public ElementInfo() {}
   

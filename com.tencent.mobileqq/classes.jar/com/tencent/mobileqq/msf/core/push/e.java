@@ -14,8 +14,8 @@ import android.os.SystemClock;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.core.net.utils.MsfPullConfigUtil;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
@@ -491,7 +491,7 @@ public class e
       this.g = false;
     }
     long l7 = System.currentTimeMillis() - l6;
-    long l8 = k.a(paramToServiceMsg, paramFromServiceMsg);
+    long l8 = j.a(paramToServiceMsg, paramFromServiceMsg);
     Object localObject2 = null;
     i4 = -1;
     l1 = -1L;
@@ -591,7 +591,7 @@ public class e
               continue;
             }
             bool = true;
-            ((k)localObject2).a(true, l7, i2, l8, bool, (String)localObject1);
+            ((j)localObject2).a(true, l7, i2, l8, bool, (String)localObject1);
           }
           return;
           if ((paramFromServiceMsg.getWupBuffer() == null) || (paramFromServiceMsg.getWupBuffer().length < 5)) {
@@ -607,8 +607,8 @@ public class e
           {
             try
             {
-              aj.c(((SvcRespRegister)localObject1).strClientIP);
-              aj.d(((SvcRespRegister)localObject1).iClientPort);
+              ac.c(((SvcRespRegister)localObject1).strClientIP);
+              ac.d(((SvcRespRegister)localObject1).iClientPort);
               i4 = ((SvcRespRegister)localObject1).bUpdateFlag;
               l3 = l1;
             }
@@ -725,7 +725,7 @@ public class e
     if (paramToServiceMsg.getMsfCommand() == MsfCommand._msf_UnRegPush) {}
     for (bool = true;; bool = false)
     {
-      ((k)localObject4).a(false, l7, i2, l8, bool, (String)localObject1);
+      ((j)localObject4).a(false, l7, i2, l8, bool, (String)localObject1);
       this.f.a(this.f.e());
       localThrowable1.printStackTrace();
       return;
@@ -752,7 +752,7 @@ public class e
       this.f.c.addRespToQuque(null, paramFromServiceMsg);
       break label569;
       label1529:
-      k localk;
+      j localj;
       if ((l6 > this.h) && (!this.g))
       {
         g.u = false;
@@ -770,7 +770,7 @@ public class e
         if (this.f.c.getStatReporter() == null) {
           break label1671;
         }
-        localk = this.f.c.getStatReporter();
+        localj = this.f.c.getStatReporter();
         i2 = paramFromServiceMsg.getBusinessFailCode();
         if (paramToServiceMsg.getMsfCommand() != MsfCommand._msf_UnRegPush) {
           break label1673;
@@ -780,7 +780,7 @@ public class e
       label1673:
       for (bool = true;; bool = false)
       {
-        localk.a(false, l7, i2, l8, bool, (String)localObject1);
+        localj.a(false, l7, i2, l8, bool, (String)localObject1);
         return;
         if (QLog.isColorLevel()) {
           QLog.d("MSF.C.PushManager:PushCoder", 2, "register push register error, retry count " + this.i + ",set retry at " + g.h.format(Long.valueOf(60000L + System.currentTimeMillis())));
@@ -870,7 +870,7 @@ public class e
     {
       long l1 = System.currentTimeMillis();
       long l2 = ((Long)paramToServiceMsg.getAttribute("__timestamp_app2msf")).longValue();
-      long l3 = k.a(paramToServiceMsg, paramFromServiceMsg);
+      long l3 = j.a(paramToServiceMsg, paramFromServiceMsg);
       try
       {
         if (paramFromServiceMsg.isSuccess())
@@ -885,7 +885,7 @@ public class e
             this.f.C = (paramFromServiceMsg.uint32_hello_interval.get() * 1000);
           }
           this.f.a(this.f.e());
-          aj.c(paramFromServiceMsg.str_clientip.get());
+          ac.c(paramFromServiceMsg.str_clientip.get());
           return;
         }
         if (this.f.c.getStatReporter() != null) {

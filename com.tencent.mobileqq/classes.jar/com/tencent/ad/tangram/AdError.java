@@ -6,7 +6,10 @@ import android.support.annotation.Keep;
 public final class AdError
 {
   public static final int ERROR_ABI_UNSUPPORTED = 9;
+  public static final int ERROR_APP_INSTALLED = 19;
   public static final int ERROR_APP_NOT_INSTLLED = 12;
+  public static final int ERROR_APP_PREORDER_QQREMINDER_RESCHEDULE_TOO_FREQUENTLY = 221;
+  public static final int ERROR_APP_PREORDER_QQREMINDER_SWITCH_ON_TOO_FREQUENTLY = 220;
   public static final int ERROR_ARK_INVALID_VIEW = 207;
   public static final int ERROR_ARK_NOT_PUBLISHED = 209;
   public static final int ERROR_ARK_UPDATE = 208;
@@ -30,6 +33,7 @@ public final class AdError
   public static final int ERROR_NO_FILL = 101;
   public static final int ERROR_NO_OFFLINE = 105;
   public static final int ERROR_NO_SETTINGS = 106;
+  public static final int ERROR_PROCESS = 20;
   public static final int ERROR_QQ_MINI_PROGRAM_UNSUPPORTED = 304;
   public static final int ERROR_RESOLVE_ACTIVITY = 204;
   public static final int ERROR_SERVER = 5;
@@ -70,7 +74,7 @@ public final class AdError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.AdError
  * JD-Core Version:    0.7.0.1
  */

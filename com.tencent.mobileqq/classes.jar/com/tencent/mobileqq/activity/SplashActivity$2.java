@@ -9,7 +9,7 @@ class SplashActivity$2
   
   public void run()
   {
-    if (ImmersiveUtils.a(this.this$0.getWindow())) {
+    if (ImmersiveUtils.correctStatusBarHeight(this.this$0.getWindow())) {
       this.this$0.recreate();
     }
   }

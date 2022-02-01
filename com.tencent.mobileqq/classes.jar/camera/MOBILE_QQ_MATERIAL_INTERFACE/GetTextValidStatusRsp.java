@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GetTextValidStatusRsp
   extends JceStruct
 {
-  public int Code;
-  public int ValidStatus;
+  public int Code = 0;
+  public int ValidStatus = 0;
   
   public GetTextValidStatusRsp() {}
   
@@ -32,7 +32,7 @@ public final class GetTextValidStatusRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetTextValidStatusRsp
  * JD-Core Version:    0.7.0.1
  */

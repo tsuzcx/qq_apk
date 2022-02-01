@@ -12,19 +12,19 @@ public final class stSimpleMetaPerson
   static stLive cache_live = new stLive();
   static stMetaNumericSys cache_nueric = new stMetaNumericSys();
   public String avatar = "";
-  public stSchema avatarSchema;
-  public int createtime;
-  public int followStatus;
+  public stSchema avatarSchema = null;
+  public int createtime = 0;
+  public int followStatus = 0;
   public String id = "";
-  public stLive live;
-  public int medal;
+  public stLive live = null;
+  public int medal = 0;
   public String nick = "";
-  public stMetaNumericSys nueric;
+  public stMetaNumericSys nueric = null;
   public String recommendReason = "";
-  public int relation_type;
+  public int relation_type = 0;
   public String schema_url = "";
-  public int sex;
-  public int type;
+  public int sex = 0;
+  public int type = 0;
   public String uid = "";
   
   public stSimpleMetaPerson() {}

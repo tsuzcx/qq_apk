@@ -9,8 +9,8 @@ public final class ItemCfgList
   extends JceStruct
 {
   static ArrayList<ItemCfgInfo> cache_itemCfgInfo = new ArrayList();
-  public long iItemCfgVer;
-  public ArrayList<ItemCfgInfo> itemCfgInfo;
+  public long iItemCfgVer = 0L;
+  public ArrayList<ItemCfgInfo> itemCfgInfo = null;
   
   static
   {

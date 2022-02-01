@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.recent;
 
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
-import uqx;
 
-public final class RecentUtil$4
+final class RecentUtil$4
   implements Runnable
 {
-  public RecentUtil$4(QQAppInterface paramQQAppInterface) {}
+  RecentUtil$4(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    List localList = uqx.a().a(this.a);
+    List localList = TroopBarAssistantManager.a().a(this.a);
     int i;
     int j;
     label19:
@@ -38,16 +38,16 @@ public final class RecentUtil$4
       i = localList.size();
       break;
       label58:
-      localObject = this.a.getMessageFacade().getLastMessage(((TroopBarData)localObject).mUin, 1008);
+      localObject = this.a.getMessageFacade().a(((TroopBarData)localObject).mUin, 1008);
       if (localObject != null) {
-        uqx.a().a(this.a, ((QQMessageFacade.Message)localObject).time);
+        TroopBarAssistantManager.a().a(this.a, ((Message)localObject).time);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.4
  * JD-Core Version:    0.7.0.1
  */

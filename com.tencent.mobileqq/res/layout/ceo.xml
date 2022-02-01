@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ebu" android:background="@drawable/bjg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/jo9"
+<RelativeLayout android:id="@id/ebu" android:background="@drawable/bk1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/jo9"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.widget.PinnedDividerSwipListView android:id="@id/k05" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
     <com.tencent.mobileqq.activity.contacts.alphabet.IndexBarTipsLayout android:id="@id/dji" android:layout_width="@dimen/tr" android:layout_height="fill_parent" android:layout_marginTop="36.0dip" android:layout_toLeftOf="@id/djh" app:sidebarBackgroundColor="@color/eb" app:sidebarTextColor="@android:color/white" app:sidebarTextSize="@dimen/tv" app:sidebarTipsDrawable="@drawable/eqd" />

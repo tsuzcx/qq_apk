@@ -8,9 +8,9 @@ public final class GetSuixintieSigFontReq
   extends JceStruct
 {
   static LoginInfo cache_stLogin = new LoginInfo();
-  public int appid;
-  public int itemid;
-  public LoginInfo stLogin;
+  public int appid = 0;
+  public int itemid = 0;
+  public LoginInfo stLogin = null;
   public String strAttachInfo = "";
   public String strSeesionID = "";
   

@@ -6,29 +6,28 @@ import java.net.ConnectException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
-import kzj;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.AbstractHttpClient;
 import org.apache.http.protocol.HttpContext;
 
-public class AsyncHttpRequest
+class AsyncHttpRequest
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private final kzj jdField_a_of_type_Kzj;
+  private final AsyncHttpResponseHandler jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler;
   private final HttpUriRequest jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest;
   private final AbstractHttpClient jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient;
   private final HttpContext jdField_a_of_type_OrgApacheHttpProtocolHttpContext;
   private boolean jdField_a_of_type_Boolean;
   
-  public AsyncHttpRequest(AbstractHttpClient paramAbstractHttpClient, HttpContext paramHttpContext, HttpUriRequest paramHttpUriRequest, kzj paramkzj)
+  public AsyncHttpRequest(AbstractHttpClient paramAbstractHttpClient, HttpContext paramHttpContext, HttpUriRequest paramHttpUriRequest, AsyncHttpResponseHandler paramAsyncHttpResponseHandler)
   {
     this.jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient = paramAbstractHttpClient;
     this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext = paramHttpContext;
     this.jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest = paramHttpUriRequest;
-    this.jdField_a_of_type_Kzj = paramkzj;
+    this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler = paramAsyncHttpResponseHandler;
   }
   
   private void a()
@@ -37,8 +36,8 @@ public class AsyncHttpRequest
     try
     {
       HttpResponse localHttpResponse = this.jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient.execute(this.jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext);
-      if ((!Thread.currentThread().isInterrupted()) && (this.jdField_a_of_type_Kzj != null)) {
-        this.jdField_a_of_type_Kzj.a(localHttpResponse);
+      if ((!Thread.currentThread().isInterrupted()) && (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler != null)) {
+        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.a(localHttpResponse);
       }
       return;
     }
@@ -68,20 +67,20 @@ public class AsyncHttpRequest
       }
       catch (UnknownHostException localUnknownHostException)
       {
-        while (this.jdField_a_of_type_Kzj == null) {}
-        this.jdField_a_of_type_Kzj.b(localUnknownHostException, "can't resolve host");
+        while (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler == null) {}
+        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.b(localUnknownHostException, "can't resolve host");
         return;
       }
       catch (SocketException localSocketException)
       {
-        while (this.jdField_a_of_type_Kzj == null) {}
-        this.jdField_a_of_type_Kzj.b(localSocketException, "can't resolve host");
+        while (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler == null) {}
+        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.b(localSocketException, "can't resolve host");
         return;
       }
       catch (SocketTimeoutException localSocketTimeoutException)
       {
-        while (this.jdField_a_of_type_Kzj == null) {}
-        this.jdField_a_of_type_Kzj.b(localSocketTimeoutException, "socket time out");
+        while (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler == null) {}
+        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.b(localSocketTimeoutException, "socket time out");
         return;
       }
       catch (IOException localIOException1)
@@ -116,31 +115,31 @@ public class AsyncHttpRequest
   {
     try
     {
-      if (this.jdField_a_of_type_Kzj != null) {
-        this.jdField_a_of_type_Kzj.c();
+      if (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler != null) {
+        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.c();
       }
       b();
-      if (this.jdField_a_of_type_Kzj != null) {
-        this.jdField_a_of_type_Kzj.d();
+      if (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler != null) {
+        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.d();
       }
       return;
     }
     catch (IOException localIOException)
     {
-      while (this.jdField_a_of_type_Kzj == null) {}
-      this.jdField_a_of_type_Kzj.d();
+      while (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler == null) {}
+      this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.d();
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Kzj.a(localIOException, (byte[])null);
+        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.a(localIOException, (byte[])null);
         return;
       }
-      this.jdField_a_of_type_Kzj.b(localIOException, (String)null);
+      this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.b(localIOException, (String)null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.rookery.asyncHttpClient.AsyncHttpRequest
  * JD-Core Version:    0.7.0.1
  */

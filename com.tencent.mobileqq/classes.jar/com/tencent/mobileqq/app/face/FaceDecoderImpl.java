@@ -3,13 +3,16 @@ package com.tencent.mobileqq.app.face;
 import AvatarInfo.QQHeadInfo;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import antl;
-import aoke;
-import axql;
+import android.util.Pair;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.avatar.api.IQQAvatarDataService;
+import com.tencent.mobileqq.avatar.api.IQQAvatarHandlerService;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.avatar.utils.AvatarUtil;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.IDiscussionHandlerService;
+import com.tencent.mobileqq.troop.api.ITroopUtilApi;
 import com.tencent.mobileqq.util.HeadRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -18,40 +21,40 @@ import java.util.LinkedList;
 
 public class FaceDecoderImpl
   extends FaceDecoderBase
-  implements FaceDecodeTask.DecodeCompletionListener
+  implements DecodeCompletionListener
 {
   private static final String TAG = "Q.qqhead.FaceDecoderImpl";
-  private QQAppInterface mAppIntf;
+  private AppInterface mAppIntf;
+  private FaceDecoderImpl.MyAvatarObserver mAvatarObserver;
   private FaceDecoderImpl.MyDiscussionObserver mDiscussObserver;
-  private FaceDecoderImpl.MyFriendListObserver mFriendListObserver;
   private FaceDecoderImpl.MyTroopHeaderObserver mTroopHeaderObserver;
   
-  public FaceDecoderImpl(QQAppInterface paramQQAppInterface)
+  public FaceDecoderImpl(AppInterface paramAppInterface)
   {
     this.maxDecodingTask = 4;
-    this.mAppIntf = paramQQAppInterface;
+    this.mAppIntf = paramAppInterface;
   }
   
   public void destory()
   {
-    QQAppInterface localQQAppInterface = this.mAppIntf;
+    AppInterface localAppInterface = this.mAppIntf;
     FaceDecoderImpl.MyDiscussionObserver localMyDiscussionObserver = this.mDiscussObserver;
-    FaceDecoderImpl.MyFriendListObserver localMyFriendListObserver = this.mFriendListObserver;
+    FaceDecoderImpl.MyAvatarObserver localMyAvatarObserver = this.mAvatarObserver;
     FaceDecoderImpl.MyTroopHeaderObserver localMyTroopHeaderObserver = this.mTroopHeaderObserver;
     this.mAppIntf = null;
     this.mDiscussObserver = null;
     this.mTroopHeaderObserver = null;
-    this.mFriendListObserver = null;
-    if (localQQAppInterface != null)
+    this.mAvatarObserver = null;
+    if (localAppInterface != null)
     {
       if (localMyDiscussionObserver != null) {
-        localQQAppInterface.removeObserver(localMyDiscussionObserver);
+        localAppInterface.removeObserver(localMyDiscussionObserver);
       }
-      if (localMyFriendListObserver != null) {
-        localQQAppInterface.removeObserver(localMyFriendListObserver);
+      if (localMyAvatarObserver != null) {
+        localAppInterface.removeObserver(localMyAvatarObserver);
       }
       if (localMyTroopHeaderObserver != null) {
-        localQQAppInterface.removeObserver(localMyTroopHeaderObserver);
+        localAppInterface.removeObserver(localMyTroopHeaderObserver);
       }
     }
     super.destory();
@@ -66,10 +69,10 @@ public class FaceDecoderImpl
       }
       return null;
     }
-    if ((paramInt1 == 1001) && (paramString != null) && (!GroupIconHelper.a(paramString))) {}
-    for (Object localObject = GroupIconHelper.a(paramString);; localObject = paramString)
+    if ((paramInt1 == 1001) && (paramString != null) && (!AvatarUtil.a(paramString))) {}
+    for (Object localObject = AvatarUtil.c(paramString);; localObject = paramString)
     {
-      if ((paramInt1 == 4) && (!TroopUtils.hasSetTroopHead(paramString))) {
+      if ((paramInt1 == 4) && (!((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).hasSetTroopHead(paramString))) {
         paramInt1 = 113;
       }
       for (;;)
@@ -77,15 +80,12 @@ public class FaceDecoderImpl
         if (paramInt1 == 113) {
           paramByte = 3;
         }
-        paramByte = aoke.a(paramByte);
-        localObject = this.mAppIntf.getFaceBitmapCacheKey(paramInt1, (String)localObject, paramByte, paramInt2, paramInt3, true);
-        localObject = this.mAppIntf.getBitmapFromCache((String)localObject);
+        paramByte = AvatarUtil.a(paramByte);
+        IQQAvatarDataService localIQQAvatarDataService = (IQQAvatarDataService)this.mAppIntf.getRuntimeService(IQQAvatarDataService.class, "");
+        localObject = localIQQAvatarDataService.getBitmapFromCache(localIQQAvatarDataService.getFaceBitmapCacheKey(paramInt1, (String)localObject, paramByte, paramInt2, paramInt3, true));
         if ((localObject != null) && (paramInt1 == 1001))
         {
-          antl localantl = (antl)this.mAppIntf.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
-          if ((localantl != null) && (localantl.a() != null)) {
-            localantl.a().f(paramString);
-          }
+          ((IDiscussionHandlerService)this.mAppIntf.getRuntimeService(IDiscussionHandlerService.class, "")).checkPstnIconInfoAndUpdate(paramString);
           if (this.mDiscussObserver == null)
           {
             this.mDiscussObserver = new FaceDecoderImpl.MyDiscussionObserver(this, null);
@@ -143,10 +143,10 @@ public class FaceDecoderImpl
       paramAppInterface = (FaceInfo)this.mInProgress.get(paramFaceInfo.b());
       if (paramAppInterface != null)
       {
-        if (this.mFriendListObserver == null)
+        if (this.mAvatarObserver == null)
         {
-          this.mFriendListObserver = new FaceDecoderImpl.MyFriendListObserver(this, null);
-          this.mAppIntf.addObserver(this.mFriendListObserver);
+          this.mAvatarObserver = new FaceDecoderImpl.MyAvatarObserver(this, null);
+          this.mAppIntf.addObserver(this.mAvatarObserver);
         }
         FaceDecoder.requestDownloadFace(this.mAppIntf, paramAppInterface);
       }
@@ -210,6 +210,29 @@ public class FaceDecoderImpl
     return false;
   }
   
+  public void refreshApolloFaceWithTimeStamp(String paramString, int paramInt, long paramLong)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {}
+    long l;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localObject = ((IQQAvatarDataService)this.mAppIntf.getRuntimeService(IQQAvatarDataService.class, "")).getQQHeadSetting(116, paramString, 200);
+        } while ((localObject == null) || (((Pair)localObject).second == null));
+        l = ((Setting)((Pair)localObject).second).headImgTimestamp;
+      } while (l == paramLong);
+      Object localObject = (IQQAvatarHandlerService)this.mAppIntf.getRuntimeService(IQQAvatarHandlerService.class, "");
+      if (localObject != null) {
+        ((IQQAvatarHandlerService)localObject).getApolloHead(paramString, (byte)1, (byte)0, paramInt);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qqhead.qaif", 2, "refreshApolloFaceWithTimeStamp id=" + paramString + ", sizeType =" + paramInt + ", timestamp=" + paramLong + ",headImgTimestamp=" + l);
+  }
+  
   public void refreshFaceWithTimeStamp(int paramInt1, String paramString, int paramInt2, long paramLong, int paramInt3)
   {
     if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L) || (this.mAppIntf == null)) {}
@@ -227,24 +250,80 @@ public class FaceDecoderImpl
         if (this.mRefreshMap.get(str) == null) {
           this.mRefreshMap.put(str, localFaceInfo);
         }
-        if (this.mFriendListObserver == null)
+        if (this.mAvatarObserver == null)
         {
-          this.mFriendListObserver = new FaceDecoderImpl.MyFriendListObserver(this, null);
-          this.mAppIntf.addObserver(this.mFriendListObserver);
+          this.mAvatarObserver = new FaceDecoderImpl.MyAvatarObserver(this, null);
+          this.mAppIntf.addObserver(this.mAvatarObserver);
         }
         if (paramInt1 != 32) {
           break;
         }
-        this.mAppIntf.refreshStrangerFaceWithTimeStamp(paramString, paramInt2, paramLong);
+        refreshStrangerFaceWithTimeStamp(paramString, paramInt2, paramLong);
         return;
       }
       if (paramInt1 == 16)
       {
-        this.mAppIntf.refreshQCallFaceWithTimeStamp(paramString, paramInt2, paramLong);
+        refreshQCallFaceWithTimeStamp(paramString, paramInt2, paramLong);
         return;
       }
     } while (paramInt1 != 116);
-    this.mAppIntf.refreshApolloFaceWithTimeStamp(paramString, paramInt3, paramLong);
+    refreshApolloFaceWithTimeStamp(paramString, paramInt3, paramLong);
+  }
+  
+  public void refreshQCallFaceWithTimeStamp(String paramString, int paramInt, long paramLong)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {}
+    label13:
+    long l;
+    do
+    {
+      do
+      {
+        do
+        {
+          break label13;
+          do
+          {
+            return;
+          } while ((paramInt != 200) && (paramInt != 204) && (paramInt != 202));
+          localObject = ((IQQAvatarDataService)this.mAppIntf.getRuntimeService(IQQAvatarDataService.class, "")).getQQHeadSetting(16, paramString, paramInt);
+        } while ((localObject == null) || (((Pair)localObject).second == null));
+        l = ((Setting)((Pair)localObject).second).headImgTimestamp;
+      } while (l == paramLong);
+      Object localObject = (IQQAvatarHandlerService)this.mAppIntf.getRuntimeService(IQQAvatarHandlerService.class, "");
+      if (localObject != null) {
+        ((IQQAvatarHandlerService)localObject).getStrangerHead(paramString, paramInt, (byte)1, (byte)0);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qqhead.qaif", 2, "refreshQCallFaceWithTimeStamp id=" + paramString + ", idtype =" + paramInt + ", timestamp=" + paramLong + ",headImgTimestamp=" + l);
+  }
+  
+  public void refreshStrangerFaceWithTimeStamp(String paramString, int paramInt, long paramLong)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {}
+    label13:
+    long l;
+    do
+    {
+      do
+      {
+        do
+        {
+          break label13;
+          do
+          {
+            return;
+          } while ((paramInt != 200) && (paramInt != 204) && (paramInt != 202));
+          localObject = ((IQQAvatarDataService)this.mAppIntf.getRuntimeService(IQQAvatarDataService.class, "")).getQQHeadSetting(32, paramString, paramInt);
+        } while ((localObject == null) || (((Pair)localObject).second == null));
+        l = ((Setting)((Pair)localObject).second).headImgTimestamp;
+      } while (l == paramLong);
+      Object localObject = (IQQAvatarHandlerService)this.mAppIntf.getRuntimeService(IQQAvatarHandlerService.class, "");
+      if (localObject != null) {
+        ((IQQAvatarHandlerService)localObject).getStrangerHead(paramString, paramInt, (byte)1, (byte)0);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qqhead.qaif", 2, "refreshStrangerFaceWithTimeStamp id=" + paramString + ", idtype =" + paramInt + ", timestamp=" + paramLong + ",headImgTimestamp=" + l);
   }
   
   public boolean requestDecodeFace(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3, int paramInt4, boolean paramBoolean3)
@@ -263,7 +342,7 @@ public class FaceDecoderImpl
     String str;
     for (b = 3;; b = (byte)paramInt3)
     {
-      paramInt3 = aoke.a(b);
+      paramInt3 = AvatarUtil.a(b);
       str = FaceInfo.a(paramInt2, paramString, paramInt1, paramInt4);
       FaceInfo localFaceInfo = (FaceInfo)this.mInProgress.get(str);
       if ((localFaceInfo == null) || (localFaceInfo.a(FaceInfo.j, 300000L))) {
@@ -296,7 +375,7 @@ public class FaceDecoderImpl
     if (this.mReadyRequests.isEmpty()) {
       QLog.i("Q.qqhead.FaceDecoderImpl", 2, " runNextTask, mReadyRequests is empty");
     }
-    label204:
+    label214:
     do
     {
       return;
@@ -313,7 +392,7 @@ public class FaceDecoderImpl
             this.mDiscussObserver = new FaceDecoderImpl.MyDiscussionObserver(this, null);
             this.mAppIntf.addObserver(this.mDiscussObserver);
           }
-          if (((((FaceInfo)localObject2).jdField_a_of_type_Int == 4) || (((FaceInfo)localObject2).jdField_a_of_type_Int == 113)) && (!TroopUtils.hasSetTroopHead(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString)))
+          if (((((FaceInfo)localObject2).jdField_a_of_type_Int == 4) || (((FaceInfo)localObject2).jdField_a_of_type_Int == 113)) && (!((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).hasSetTroopHead(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString)))
           {
             if (this.mTroopHeaderObserver == null) {
               this.mTroopHeaderObserver = new FaceDecoderImpl.MyTroopHeaderObserver(this, null);
@@ -333,13 +412,13 @@ public class FaceDecoderImpl
       catch (Throwable localThrowable1)
       {
         Object localObject2;
-        break label204;
+        break label214;
       }
       if (localObject1 != null) {
         this.iRunningRequests -= 1;
       }
     } while (!QLog.isColorLevel());
-    axql.a("Q.qqhead.FaceDecoderImpl", new Object[] { "runNextTask", localObject2, localObject1 });
+    QLog.i("Q.qqhead.FaceDecoderImpl", 2, "runNextTask exception and info is " + localObject1, (Throwable)localObject2);
   }
   
   public void setAppRuntime(AppInterface paramAppInterface)
@@ -347,15 +426,13 @@ public class FaceDecoderImpl
     if (this.mAppIntf != paramAppInterface)
     {
       destory();
-      if ((paramAppInterface instanceof QQAppInterface)) {
-        this.mAppIntf = ((QQAppInterface)paramAppInterface);
-      }
+      this.mAppIntf = paramAppInterface;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoderImpl
  * JD-Core Version:    0.7.0.1
  */

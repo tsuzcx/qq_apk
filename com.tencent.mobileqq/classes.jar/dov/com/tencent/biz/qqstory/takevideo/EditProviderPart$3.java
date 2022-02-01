@@ -2,13 +2,11 @@ package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Activity;
 import android.os.Build.VERSION;
-import bosq;
-import bouo;
 
-public class EditProviderPart$3
+class EditProviderPart$3
   implements Runnable
 {
-  public EditProviderPart$3(bosq parambosq) {}
+  EditProviderPart$3(EditProviderPart paramEditProviderPart) {}
   
   public void run()
   {
@@ -22,7 +20,7 @@ public class EditProviderPart$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditProviderPart.3
  * JD-Core Version:    0.7.0.1
  */

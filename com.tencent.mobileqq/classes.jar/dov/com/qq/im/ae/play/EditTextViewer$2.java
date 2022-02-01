@@ -1,18 +1,24 @@
 package dov.com.qq.im.ae.play;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.Drawable;
 
 class EditTextViewer$2
-  implements DialogInterface.OnDismissListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
   EditTextViewer$2(EditTextViewer paramEditTextViewer) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    EditTextViewer.access$000(this.this$0).setAlpha(i);
+    this.this$0.invalidate();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.EditTextViewer.2
  * JD-Core Version:    0.7.0.1
  */

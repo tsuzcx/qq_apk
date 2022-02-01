@@ -15,7 +15,7 @@ public final class feeds_inner_define$FaceRecordSet$FaceRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.trunk.feeds_inner_define.feeds_inner_define.FaceRecordSet.FaceRecord
  * JD-Core Version:    0.7.0.1
  */

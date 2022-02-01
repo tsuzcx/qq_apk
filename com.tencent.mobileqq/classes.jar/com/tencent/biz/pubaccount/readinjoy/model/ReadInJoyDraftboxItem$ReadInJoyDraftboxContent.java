@@ -7,12 +7,11 @@ import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuComment
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import qhh;
 
 public class ReadInJoyDraftboxItem$ReadInJoyDraftboxContent
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ReadInJoyDraftboxContent> CREATOR = new qhh();
+  public static final Parcelable.Creator<ReadInJoyDraftboxContent> CREATOR = new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent.1();
   private static final long serialVersionUID = 1L;
   public int adTag;
   public ArrayList<ReadInJoyDraftboxItem.PicData> adapterList;
@@ -79,7 +78,7 @@ public class ReadInJoyDraftboxItem$ReadInJoyDraftboxContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.ReadInJoyDraftboxContent
  * JD-Core Version:    0.7.0.1
  */

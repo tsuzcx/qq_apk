@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.colornote.data;
 
-import aqol;
 import java.util.List;
 
-public class ColorNoteProxy$3
+class ColorNoteProxy$3
   implements Runnable
 {
-  public ColorNoteProxy$3(aqol paramaqol, List paramList) {}
+  ColorNoteProxy$3(ColorNoteProxy paramColorNoteProxy, List paramList) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	com/tencent/mobileqq/colornote/data/ColorNoteProxy$3:this$0	Laqol;
-    //   4: invokestatic 28	aqol:a	(Laqol;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   1: getfield 14	com/tencent/mobileqq/colornote/data/ColorNoteProxy$3:this$0	Lcom/tencent/mobileqq/colornote/data/ColorNoteProxy;
+    //   4: invokestatic 28	com/tencent/mobileqq/colornote/data/ColorNoteProxy:a	(Lcom/tencent/mobileqq/colornote/data/ColorNoteProxy;)Lcom/tencent/mobileqq/persistence/EntityManager;
     //   7: ifnonnull +4 -> 11
     //   10: return
     //   11: aload_0
-    //   12: getfield 14	com/tencent/mobileqq/colornote/data/ColorNoteProxy$3:this$0	Laqol;
-    //   15: invokestatic 28	aqol:a	(Laqol;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   12: getfield 14	com/tencent/mobileqq/colornote/data/ColorNoteProxy$3:this$0	Lcom/tencent/mobileqq/colornote/data/ColorNoteProxy;
+    //   15: invokestatic 28	com/tencent/mobileqq/colornote/data/ColorNoteProxy:a	(Lcom/tencent/mobileqq/colornote/data/ColorNoteProxy;)Lcom/tencent/mobileqq/persistence/EntityManager;
     //   18: invokevirtual 34	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   21: astore_1
     //   22: aload_1
@@ -36,16 +35,16 @@ public class ColorNoteProxy$3
     //   51: checkcast 57	com/tencent/mobileqq/colornote/data/ColorNote
     //   54: astore_3
     //   55: aload_0
-    //   56: getfield 14	com/tencent/mobileqq/colornote/data/ColorNoteProxy$3:this$0	Laqol;
-    //   59: invokestatic 28	aqol:a	(Laqol;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   56: getfield 14	com/tencent/mobileqq/colornote/data/ColorNoteProxy$3:this$0	Lcom/tencent/mobileqq/colornote/data/ColorNoteProxy;
+    //   59: invokestatic 28	com/tencent/mobileqq/colornote/data/ColorNoteProxy:a	(Lcom/tencent/mobileqq/colornote/data/ColorNoteProxy;)Lcom/tencent/mobileqq/persistence/EntityManager;
     //   62: aload_3
     //   63: invokevirtual 61	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   66: pop
     //   67: aload_0
-    //   68: getfield 14	com/tencent/mobileqq/colornote/data/ColorNoteProxy$3:this$0	Laqol;
+    //   68: getfield 14	com/tencent/mobileqq/colornote/data/ColorNoteProxy$3:this$0	Lcom/tencent/mobileqq/colornote/data/ColorNoteProxy;
     //   71: iconst_2
     //   72: aload_3
-    //   73: invokestatic 64	aqol:a	(Laqol;ILcom/tencent/mobileqq/colornote/data/ColorNote;)V
+    //   73: invokestatic 64	com/tencent/mobileqq/colornote/data/ColorNoteProxy:a	(Lcom/tencent/mobileqq/colornote/data/ColorNoteProxy;ILcom/tencent/mobileqq/colornote/data/ColorNote;)V
     //   76: goto -40 -> 36
     //   79: astore_2
     //   80: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z

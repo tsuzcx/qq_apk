@@ -1,0 +1,32 @@
+package com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http;
+
+import com.tencent.falco.base.libapi.http.HttpInterface.HttpComponentAdapter;
+import com.tencent.falco.base.libapi.log.LogInterface;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+class CustomHttpService$4
+  implements Callback
+{
+  CustomHttpService$4(CustomHttpService paramCustomHttpService, String paramString, Callback paramCallback) {}
+  
+  public void onFailure(Call paramCall, IOException paramIOException)
+  {
+    CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog().i("HttpComponent", "url = " + this.jdField_a_of_type_JavaLangString + ", onFailure e = " + paramIOException, new Object[0]);
+    this.jdField_a_of_type_Okhttp3Callback.onFailure(paramCall, paramIOException);
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog().i("HttpComponent", "url = " + this.jdField_a_of_type_JavaLangString + ", onResponse code = " + paramResponse.code(), new Object[0]);
+    this.jdField_a_of_type_Okhttp3Callback.onResponse(paramCall, paramResponse);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CustomHttpService.4
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.qassistant.view;
 
-import bakl;
+import com.tencent.mobileqq.qassistant.core.AssistantUtils;
 
 class AssistantBackView$2
   implements Runnable
@@ -9,7 +9,7 @@ class AssistantBackView$2
   {
     if (AssistantBackView.a(this.this$0))
     {
-      bakl.a("AssistantBackView", "loadLottieAnimation isDestroyed");
+      AssistantUtils.a("AssistantBackView", "loadLottieAnimation isDestroyed");
       return;
     }
     try
@@ -24,7 +24,7 @@ class AssistantBackView$2
       {
         AssistantBackView.a(this.this$0, null);
         AssistantBackView.a(this.this$0, null);
-        bakl.a("AssistantBackView", "loadVoiceAnimation failed:" + localThrowable.getMessage());
+        AssistantUtils.a("AssistantBackView", "loadVoiceAnimation failed:" + localThrowable.getMessage());
         return;
       }
     }

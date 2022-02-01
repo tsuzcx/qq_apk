@@ -6,6 +6,7 @@ public final class enum_gray_operate
   implements Serializable
 {
   public static final int _ENUM_AUTOPLAY_IN_4G = 32768;
+  public static final int _ENUM_BIG_PIC_FEED = 1048576;
   public static final int _ENUM_COMMENT_LIKE = 256;
   public static final int _ENUM_CONTENT_BOX = 128;
   public static final int _ENUM_DETAIL_TUGOFWAR = 1024;
@@ -19,7 +20,9 @@ public final class enum_gray_operate
   public static final int _ENUM_OPEN_INFOCARD_SHOOT = 16384;
   public static final int _ENUM_PIC_SHOW_UI_OPER = 2;
   public static final int _ENUM_POLY_PRAISE_STYLE = 16;
+  public static final int _ENUM_QZONE_GROUP_PROFILE_UNDEAL = 2097152;
   public static final int _ENUM_REPLY_LIKE = 2048;
+  public static final int _ENUM_STICKY_NOTE_FREELY_PRE_LOAD = 524288;
   public static final int _ENUM_VIDEO_FORWARD_SHARE = 8;
   public static final int _ENUM_VIDEO_PRELOAD_OPER = 4;
   public static final int _ENUM_VIDEO_REWARD = 32;

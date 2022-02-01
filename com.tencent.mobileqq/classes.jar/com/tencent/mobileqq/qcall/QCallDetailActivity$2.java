@@ -1,0 +1,75 @@
+package com.tencent.mobileqq.qcall;
+
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.qphone.base.util.QLog;
+import friendlist.GetOnlineInfoResp;
+import java.util.Map;
+
+class QCallDetailActivity$2
+  extends FriendListObserver
+{
+  QCallDetailActivity$2(QCallDetailActivity paramQCallDetailActivity) {}
+  
+  public void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  {
+    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a))))
+    {
+      QCallDetailActivity.a(this.a);
+      this.a.runOnUiThread(new QCallDetailActivity.2.1(this));
+    }
+  }
+  
+  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    Object localObject;
+    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
+    {
+      localObject = (DiscussionManager)this.a.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      if (localObject != null) {
+        break label53;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QCallDetailActivity", 2, " === onUpdateFriendInfo dm is null  ====");
+      }
+    }
+    label53:
+    do
+    {
+      DiscussionInfo localDiscussionInfo;
+      do
+      {
+        return;
+        localDiscussionInfo = ((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a));
+        if (localDiscussionInfo == null)
+        {
+          QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
+          return;
+        }
+        if (TextUtils.isEmpty(paramString))
+        {
+          QLog.i("QCallDetailActivity", 1, " === onUpdateFriendInfo uin is null ====");
+          return;
+        }
+      } while (localDiscussionInfo.hasRenamed());
+      localObject = ((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a));
+    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
+    this.a.a(QCallDetailActivity.a(this.a));
+  }
+  
+  public void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    QCallDetailActivity.a(this.a);
+    this.a.runOnUiThread(new QCallDetailActivity.2.2(this));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.2
+ * JD-Core Version:    0.7.0.1
+ */

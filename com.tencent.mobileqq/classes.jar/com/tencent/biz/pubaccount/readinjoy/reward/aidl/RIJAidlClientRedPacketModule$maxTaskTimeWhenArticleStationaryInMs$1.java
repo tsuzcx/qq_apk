@@ -3,11 +3,9 @@ package com.tencent.biz.pubaccount.readinjoy.reward.aidl;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
-import rkw;
-import rle;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
-public final class RIJAidlClientRedPacketModule$maxTaskTimeWhenArticleStationaryInMs$1
+final class RIJAidlClientRedPacketModule$maxTaskTimeWhenArticleStationaryInMs$1
   extends Lambda
   implements Function0<Integer>
 {
@@ -20,16 +18,16 @@ public final class RIJAidlClientRedPacketModule$maxTaskTimeWhenArticleStationary
   
   public final int invoke()
   {
-    rkw localrkw = rle.a(rle.a);
-    if (localrkw != null) {
-      return localrkw.f();
+    IRIJAidlInterfaceForRewardTask localIRIJAidlInterfaceForRewardTask = RIJAidlClientRedPacketModule.a(RIJAidlClientRedPacketModule.a);
+    if (localIRIJAidlInterfaceForRewardTask != null) {
+      return localIRIJAidlInterfaceForRewardTask.f();
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.maxTaskTimeWhenArticleStationaryInMs.1
  * JD-Core Version:    0.7.0.1
  */

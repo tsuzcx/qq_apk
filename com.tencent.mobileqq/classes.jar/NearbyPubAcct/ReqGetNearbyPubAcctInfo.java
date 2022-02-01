@@ -9,10 +9,10 @@ public final class ReqGetNearbyPubAcctInfo
 {
   static LBSInfo cache_stLBSInfo;
   static byte[] cache_vContext;
-  public int iCount;
-  public short shVersion;
-  public LBSInfo stLBSInfo;
-  public byte[] vContext;
+  public int iCount = 0;
+  public short shVersion = 0;
+  public LBSInfo stLBSInfo = null;
+  public byte[] vContext = null;
   
   public ReqGetNearbyPubAcctInfo() {}
   

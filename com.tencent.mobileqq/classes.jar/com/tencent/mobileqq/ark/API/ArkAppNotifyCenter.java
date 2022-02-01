@@ -3,10 +3,6 @@ package com.tencent.mobileqq.ark.API;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.media.AudioManager;
-import apsw;
-import apsy;
-import apsz;
-import apta;
 import com.tencent.ark.ark;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,16 +26,16 @@ public class ArkAppNotifyCenter
   public static final String TAG = "ark.ArkAppNotifyCenter";
   public static ArkAppNotifyCenter.ArkClickListener arkClickListener;
   private static int callbackId;
-  private static HashMap<String, apsy> notifyRegs = new HashMap();
-  private static apta receiver;
+  private static HashMap<String, ArkAppNotifyCenter.INotifyReg> notifyRegs = new HashMap();
+  private static ArkAppNotifyCenter.VolumeReceiver receiver;
   
   static
   {
     callbackId = -1;
-    Object localObject = new apsz();
+    Object localObject = new ArkAppNotifyCenter.TroopNotify();
     notifyRegs.put("com.tencent.troopapp", localObject);
     notifyRegs.put("com.tencent.test.troopapp", localObject);
-    localObject = new apsw();
+    localObject = new ArkAppNotifyCenter.GdtNotify();
     notifyRegs.put("com.tencent.yundong", localObject);
     notifyRegs.put("com.tencent.gdt.gouwu", localObject);
     notifyRegs.put("com.tencent.gdt.label", localObject);
@@ -57,6 +53,8 @@ public class ArkAppNotifyCenter
     notifyRegs.put("com.tencent.gwh.video", localObject);
     notifyRegs.put("com.tencent.gwh.graphic", localObject);
     notifyRegs.put("com.tencent.gwh.illustrated", localObject);
+    notifyRegs.put("com.tencent.syh.ad", localObject);
+    notifyRegs.put("com.tencent.syh.render", localObject);
   }
   
   private static void callbackMuteStatus(String paramString)
@@ -96,7 +94,7 @@ public class ArkAppNotifyCenter
   private static ChatMessage getAdArkItemIndexInAIO(List<ChatMessage> paramList, String paramString)
   {
     ChatMessage localChatMessage;
-    if ((paramList == null) || (paramList.isEmpty()) || (StringUtil.isEmpty(paramString)))
+    if ((paramList == null) || (paramList.isEmpty()) || (StringUtil.a(paramString)))
     {
       localChatMessage = null;
       return localChatMessage;
@@ -117,7 +115,7 @@ public class ArkAppNotifyCenter
             break label187;
           }
           localObject = ((ArkAppMessage)localObject).metaList;
-          if (StringUtil.isEmpty((String)localObject)) {
+          if (StringUtil.a((String)localObject)) {
             break label187;
           }
           try
@@ -152,7 +150,7 @@ public class ArkAppNotifyCenter
     }
   }
   
-  public static QQAppInterface getAppInterface()
+  protected static QQAppInterface getAppInterface()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
@@ -163,10 +161,10 @@ public class ArkAppNotifyCenter
   
   public static boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    apsy localapsy = (apsy)notifyRegs.get(paramString1);
-    if (localapsy != null)
+    ArkAppNotifyCenter.INotifyReg localINotifyReg = (ArkAppNotifyCenter.INotifyReg)notifyRegs.get(paramString1);
+    if (localINotifyReg != null)
     {
-      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localapsy, paramString1, paramString2, paramString3));
+      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localINotifyReg, paramString1, paramString2, paramString3));
       return true;
     }
     return false;
@@ -175,7 +173,7 @@ public class ArkAppNotifyCenter
   public static void registVolumnReceiver()
   {
     if (receiver == null) {
-      receiver = new apta(null);
+      receiver = new ArkAppNotifyCenter.VolumeReceiver(null);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
@@ -185,7 +183,7 @@ public class ArkAppNotifyCenter
     BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(receiver, localIntentFilter);
   }
   
-  public static void setNotify(String paramString, WeakReference<apsy> paramWeakReference)
+  public static void setNotify(String paramString, WeakReference<ArkAppNotifyCenter.INotifyReg> paramWeakReference)
   {
     if ((paramWeakReference != null) && (paramWeakReference.get() != null))
     {

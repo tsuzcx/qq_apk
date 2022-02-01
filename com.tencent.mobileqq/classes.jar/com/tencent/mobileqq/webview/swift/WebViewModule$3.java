@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bifq;
 import com.tencent.mobileqq.webview.webso.WebSoService;
 
-public class WebViewModule$3
+class WebViewModule$3
   implements Runnable
 {
-  public WebViewModule$3(bifq parambifq, String paramString) {}
+  WebViewModule$3(WebViewModule paramWebViewModule, String paramString) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class WebViewModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewModule.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,16 @@ public final class CSGUIDRegist
   public String build_brand = "";
   public String build_version_incremental = "";
   public String build_version_release = "";
-  public int buildno;
+  public int buildno = 0;
   public String channelid = "";
   public String imei = "";
   public String imsi = "";
-  public boolean isbuildin;
+  public boolean isbuildin = false;
   public String lc = "";
   public String mac = "";
   public String pkgname = "";
   public int platform = 0;
-  public int product;
+  public int product = 0;
   public int subplatform = 0;
   public String ua = "";
   

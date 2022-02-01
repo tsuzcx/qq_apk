@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apom;
 
 public class ArVideoResourceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArVideoResourceInfo> CREATOR = new apom();
+  public static final Parcelable.Creator<ArVideoResourceInfo> CREATOR = new ArVideoResourceInfo.1();
   public int a;
   public long a;
   public String a;
@@ -22,7 +21,7 @@ public class ArVideoResourceInfo
   
   public ArVideoResourceInfo() {}
   
-  public ArVideoResourceInfo(Parcel paramParcel)
+  protected ArVideoResourceInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_Long = paramParcel.readLong();

@@ -7,7 +7,7 @@ public class DownloadingUrlEntry
   extends Entity
 {
   public int bIsDownloadCompleted = 0;
-  public int compressLevel;
+  public int compressLevel = 0;
   public int fileType;
   @unique
   public String key;
@@ -22,7 +22,7 @@ public class DownloadingUrlEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.DownloadingUrlEntry
  * JD-Core Version:    0.7.0.1
  */

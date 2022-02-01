@@ -1,6 +1,5 @@
 package com.tencent.biz.videostory.capture.widgets;
 
-import aalz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -33,21 +32,21 @@ public class SquareRoundImageView
   extends ImageView
 {
   private static int jdField_a_of_type_Int = ScreenUtil.dip2px(2.0F);
-  private aalz jdField_a_of_type_Aalz;
   private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private PaintFlagsDrawFilter jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter;
   protected Path a;
+  private SquareRoundImageView.ShaderHandler jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = jdField_a_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
+  private boolean jdField_b_of_type_Boolean = false;
+  private int jdField_c_of_type_Int = 0;
   private Paint jdField_c_of_type_AndroidGraphicsPaint;
-  private int d;
-  private int e;
-  private int f;
+  private int d = 0;
+  private int e = 0;
+  private int f = 0;
   
   public SquareRoundImageView(Context paramContext)
   {
@@ -121,11 +120,11 @@ public class SquareRoundImageView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Aalz == null) {
+    if (this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler == null) {
       try
       {
-        if (this.jdField_a_of_type_Aalz == null) {
-          this.jdField_a_of_type_Aalz = new aalz(Looper.getMainLooper(), this, null);
+        if (this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler == null) {
+          this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler = new SquareRoundImageView.ShaderHandler(Looper.getMainLooper(), this, null);
         }
         return;
       }
@@ -210,8 +209,8 @@ public class SquareRoundImageView
   public void a()
   {
     b();
-    if (!this.jdField_a_of_type_Aalz.hasMessages(1)) {
-      this.jdField_a_of_type_Aalz.sendEmptyMessage(1);
+    if (!this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler.hasMessages(1)) {
+      this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler.sendEmptyMessage(1);
     }
   }
   
@@ -221,7 +220,7 @@ public class SquareRoundImageView
     a();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPath != null)
     {
@@ -260,7 +259,7 @@ public class SquareRoundImageView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != 0) && (paramInt2 != 0) && ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))) {
@@ -299,8 +298,8 @@ public class SquareRoundImageView
     if (paramDrawable == null)
     {
       b();
-      if (this.jdField_a_of_type_Aalz.hasMessages(1)) {
-        this.jdField_a_of_type_Aalz.removeMessages(1);
+      if (this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler.hasMessages(1)) {
+        this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler.removeMessages(1);
       }
       this.jdField_a_of_type_AndroidGraphicsBitmapShader = null;
       this.d = 0;
@@ -334,7 +333,7 @@ public class SquareRoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.videostory.capture.widgets.SquareRoundImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.camera;
 
-import aqmd;
-import aqmh;
-import aqmq;
-
-public class CameraManagerImpl$CameraOpenErrorCallbackForward$3
+class CameraManagerImpl$CameraOpenErrorCallbackForward$3
   implements Runnable
 {
-  public CameraManagerImpl$CameraOpenErrorCallbackForward$3(aqmq paramaqmq, aqmd paramaqmd) {}
+  CameraManagerImpl$CameraOpenErrorCallbackForward$3(CameraManagerImpl.CameraOpenErrorCallbackForward paramCameraOpenErrorCallbackForward, CameraManager paramCameraManager) {}
   
   public void run()
   {
-    aqmq.a(this.this$0).a(this.a);
+    CameraManagerImpl.CameraOpenErrorCallbackForward.a(this.this$0).a(this.a);
   }
 }
 

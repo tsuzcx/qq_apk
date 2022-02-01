@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ar.aidl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aphw;
 
 public class ARScanStarFaceActInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanStarFaceActInfo> CREATOR = new aphw();
+  public static final Parcelable.Creator<ARScanStarFaceActInfo> CREATOR = new ARScanStarFaceActInfo.1();
   public long a;
   public String a;
   public long b;
@@ -21,7 +20,7 @@ public class ARScanStarFaceActInfo
   
   public ARScanStarFaceActInfo() {}
   
-  public ARScanStarFaceActInfo(Parcel paramParcel)
+  protected ARScanStarFaceActInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();

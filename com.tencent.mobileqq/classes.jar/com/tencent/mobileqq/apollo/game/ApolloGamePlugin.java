@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.apollo.game;
 
-import aasr;
-import amsu;
-import amsw;
-import amtb;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import anvx;
-import bifw;
-import biki;
-import bisl;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.webviewplugin.Share;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.IPreCreatePluginChecker;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebShareInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import java.lang.ref.WeakReference;
@@ -30,11 +28,12 @@ import org.json.JSONObject;
 
 public class ApolloGamePlugin
   extends VasWebviewJsPlugin
+  implements IPreCreatePluginChecker
 {
   private static int jdField_a_of_type_Int;
   public static List<WeakReference<ApolloGamePlugin>> a;
-  private amtb jdField_a_of_type_Amtb;
   protected BroadcastReceiver a;
+  private ApolloJSContext jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
   private String b;
@@ -123,14 +122,14 @@ public class ApolloGamePlugin
       try
       {
         Object localObject1 = this.mRuntime.a(this.mRuntime.a());
-        if ((localObject1 != null) && ((localObject1 instanceof biki)))
+        if ((localObject1 != null) && ((localObject1 instanceof WebUiUtils.WebShareInterface)))
         {
-          localObject1 = (biki)localObject1;
+          localObject1 = (WebUiUtils.WebShareInterface)localObject1;
           if (localObject1 != null)
           {
-            localObject1 = ((biki)localObject1).getShare().a();
-            if ((localObject1 != null) && (((bisl)localObject1).isShowing())) {
-              ((bisl)localObject1).dismiss();
+            localObject1 = ((Share)((WebUiUtils.WebShareInterface)localObject1).getShare()).a();
+            if ((localObject1 != null) && (((QQProgressDialog)localObject1).isShowing())) {
+              ((QQProgressDialog)localObject1).dismiss();
             }
           }
           return;
@@ -147,8 +146,8 @@ public class ApolloGamePlugin
   
   public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Amtb != null) {
-      this.jdField_a_of_type_Amtb.a(paramInt, paramString1, paramString2);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(paramInt, paramString1, paramString2);
     }
   }
   
@@ -180,9 +179,14 @@ public class ApolloGamePlugin
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Amtb != null) {
-      this.jdField_a_of_type_Amtb.a(0, paramString1, paramString2);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(0, paramString1, paramString2);
     }
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 8L;
   }
   
   public Object handleEvent(String paramString, long paramLong)
@@ -205,16 +209,16 @@ public class ApolloGamePlugin
           }
           if (((String)localObject).trim().equals(this.jdField_a_of_type_JavaLangString))
           {
-            localObject = amsu.a().a(paramString, this.jdField_a_of_type_JavaLangString);
+            localObject = ApolloGameResManager.a().a(paramString, this.jdField_a_of_type_JavaLangString);
             if (localObject == null)
             {
-              b(anvx.a(2131699861) + paramString);
+              b(HardCodeUtil.a(2131700439) + paramString);
               if (!bool) {
                 break;
               }
               return new WebResourceResponse();
             }
-            return ((amsw)localObject).a();
+            return ((ApolloGameResManager.ApolloGameRes)localObject).a();
           }
           paramString = new WebResourceResponse();
           return paramString;
@@ -229,7 +233,7 @@ public class ApolloGamePlugin
       do
       {
         return null;
-        b(anvx.a(2131699882) + paramString);
+        b(HardCodeUtil.a(2131700460) + paramString);
         if (bool)
         {
           paramString = new WebResourceResponse();
@@ -245,13 +249,13 @@ public class ApolloGamePlugin
   {
     if (8589934593L == paramLong)
     {
-      if ((this.jdField_a_of_type_Amtb == null) && (this.mRuntime != null))
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext == null) && (this.mRuntime != null))
       {
-        this.jdField_a_of_type_Amtb = new amtb(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Amtb.a(this.mRuntime.a());
+        this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext = new ApolloJSContext(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(this.mRuntime.a());
       }
-      if (this.jdField_a_of_type_Amtb != null) {
-        this.jdField_a_of_type_Amtb.a(this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(this.jdField_a_of_type_Boolean);
       }
     }
     for (;;)
@@ -259,8 +263,8 @@ public class ApolloGamePlugin
       return super.handleEvent(paramString, paramLong, paramMap);
       if (8589934594L == paramLong)
       {
-        if (this.jdField_a_of_type_Amtb != null) {
-          this.jdField_a_of_type_Amtb.b(this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.b(this.jdField_a_of_type_Boolean);
         } else {
           QLog.e("ApolloGamePlugin", 1, "[handleEvent] jscontext is null");
         }
@@ -289,13 +293,13 @@ public class ApolloGamePlugin
           }
           if (paramString3.equals("send"))
           {
-            if (this.jdField_a_of_type_Amtb == null) {
+            if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext == null) {
               continue;
             }
             String str = ((JSONObject)localObject).optString("cmd");
             localObject = ((JSONObject)localObject).optString("dataStr");
-            if (this.jdField_a_of_type_Amtb != null) {
-              this.jdField_a_of_type_Amtb.a(str, (String)localObject);
+            if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
+              this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(str, (String)localObject);
             }
           }
         }
@@ -313,6 +317,11 @@ public class ApolloGamePlugin
     return bool;
   }
   
+  public boolean isNeedPreCreatePlugin(Intent paramIntent, String paramString1, String paramString2)
+  {
+    return paramString1.contains("apollo_bk");
+  }
+  
   public void onCreate()
   {
     super.onCreate();
@@ -321,12 +330,12 @@ public class ApolloGamePlugin
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Amtb != null) {
-      this.jdField_a_of_type_Amtb.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.b();
     }
     jdField_a_of_type_Int -= 1;
     if (jdField_a_of_type_Int == 0) {
-      amsu.a().a();
+      ApolloGameResManager.a().a();
     }
     try
     {
@@ -355,10 +364,10 @@ public class ApolloGamePlugin
       if (!TextUtils.isEmpty(str))
       {
         a(str);
-        if ((this.jdField_a_of_type_Amtb == null) && (paramCustomWebView != null))
+        if ((this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext == null) && (paramCustomWebView != null))
         {
-          this.jdField_a_of_type_Amtb = new amtb(str);
-          this.jdField_a_of_type_Amtb.a(this.mRuntime.a());
+          this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext = new ApolloJSContext(str);
+          this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(this.mRuntime.a());
           this.b = localIntent.getStringExtra("url");
           this.jdField_a_of_type_Boolean = true;
         }
@@ -370,7 +379,7 @@ public class ApolloGamePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGamePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -9,18 +9,18 @@ public final class ReqCondSearch
 {
   static byte[] cache_vCityId = (byte[])new byte[1];
   static byte[] cache_vHomeId;
-  public short cAge;
-  public byte cConstellationId;
-  public byte cGender;
+  public short cAge = 0;
+  public byte cConstellationId = 0;
+  public byte cGender = 0;
   public short cMaxAge = 120;
   public short cMinAge = 18;
-  public long dwFlag;
-  public long dwSessionID;
-  public int iOccupationId;
-  public int iPage;
+  public long dwFlag = 0L;
+  public long dwSessionID = 0L;
+  public int iOccupationId = 0;
+  public int iPage = 0;
   public String strNick = "";
-  public byte[] vCityId;
-  public byte[] vHomeId;
+  public byte[] vCityId = null;
+  public byte[] vHomeId = null;
   
   static
   {
@@ -87,7 +87,7 @@ public final class ReqCondSearch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.ReqCondSearch
  * JD-Core Version:    0.7.0.1
  */

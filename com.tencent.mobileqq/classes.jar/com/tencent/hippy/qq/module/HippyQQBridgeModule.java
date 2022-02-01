@@ -94,6 +94,17 @@ public class HippyQQBridgeModule
     }
   }
   
+  @HippyMethod(name="getAllowedStateOfOperationAction")
+  public void getAllowedStateOfOperationAction(HippyMap paramHippyMap, Promise paramPromise)
+  {
+    if (paramHippyMap != null) {}
+    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
+    {
+      this.mBridgeModule.getAllowedStateOfOperationAction(paramHippyMap, paramPromise);
+      return;
+    }
+  }
+  
   @HippyMethod(name="getCreateTopicPermission")
   public void getCreateTopicPermission(HippyMap paramHippyMap, Promise paramPromise)
   {
@@ -427,7 +438,7 @@ public class HippyQQBridgeModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.HippyQQBridgeModule
  * JD-Core Version:    0.7.0.1
  */

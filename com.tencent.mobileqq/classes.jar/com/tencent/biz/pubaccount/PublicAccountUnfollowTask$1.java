@@ -1,23 +1,22 @@
 package com.tencent.biz.pubaccount;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ols;
-import pvj;
-import qia;
 
-public class PublicAccountUnfollowTask$1
+class PublicAccountUnfollowTask$1
   implements Runnable
 {
-  public PublicAccountUnfollowTask$1(ols paramols) {}
+  PublicAccountUnfollowTask$1(PublicAccountUnfollowTask paramPublicAccountUnfollowTask) {}
   
   public void run()
   {
-    pvj.a().a().a(ols.a(this.this$0).getAccount(), ols.a(this.this$0), false, "", this.this$0, 1);
+    ReadInJoyLogicEngine.a().a().a(PublicAccountUnfollowTask.a(this.this$0).getAccount(), PublicAccountUnfollowTask.a(this.this$0), false, "", this.this$0, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountUnfollowTask.1
  * JD-Core Version:    0.7.0.1
  */

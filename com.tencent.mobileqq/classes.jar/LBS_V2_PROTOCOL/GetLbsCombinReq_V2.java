@@ -17,20 +17,20 @@ public final class GetLbsCombinReq_V2
   static Date cache_stUserDate;
   static ArrayList<Cell_V2> cache_vCellData = new ArrayList();
   static ArrayList<Wifi_V2> cache_vWifiData;
-  public int iAccuracy;
-  public int iAppID;
-  public int iLocateCostTime;
-  public int iMood;
+  public int iAccuracy = 0;
+  public int iAppID = 0;
+  public int iLocateCostTime = 0;
+  public int iMood = 0;
   public int iReqNum = 10;
-  public long iUserTime;
-  public Map<String, String> map_ext;
-  public ReqCommon_V2 stCommon;
-  public GeoInfo_V2 stGeoInfo;
-  public GPS_V2 stGps;
-  public Date stUserDate;
+  public long iUserTime = 0L;
+  public Map<String, String> map_ext = null;
+  public ReqCommon_V2 stCommon = null;
+  public GeoInfo_V2 stGeoInfo = null;
+  public GPS_V2 stGps = null;
+  public Date stUserDate = null;
   public String strClientIP = "";
-  public ArrayList<Cell_V2> vCellData;
-  public ArrayList<Wifi_V2> vWifiData;
+  public ArrayList<Cell_V2> vCellData = null;
+  public ArrayList<Wifi_V2> vWifiData = null;
   
   static
   {

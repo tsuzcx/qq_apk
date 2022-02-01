@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/an1" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="#ffaaaaaa" android:id="@id/i4b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/c26" android:layout_above="@id/i4_" android:layout_centerHorizontal="true" />
-    <dov.com.qq.im.ptv.BaseButton android:id="@id/i4_" android:layout_width="91.0dip" android:layout_height="91.0dip" android:layout_marginBottom="32.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <dov.com.qq.im.ptv.BaseButton android:id="@id/egq" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginLeft="27.0dip" android:layout_marginBottom="37.5dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-    <dov.com.qq.im.ptv.BaseButton android:id="@id/bfr" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginRight="27.0dip" android:layout_marginBottom="37.5dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>

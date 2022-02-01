@@ -9,11 +9,12 @@ public class MultiCardFragment$ReportRunnable
 {
   private int a;
   public boolean a;
-  private int b;
-  private int c;
+  private int b = 0;
+  private int c = 0;
   
   public MultiCardFragment$ReportRunnable()
   {
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
   }
   

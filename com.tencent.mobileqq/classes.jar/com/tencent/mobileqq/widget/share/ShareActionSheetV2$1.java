@@ -20,22 +20,22 @@ class ShareActionSheetV2$1
       EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
     }
-    localObject = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).sheetItem;
-    if (ShareActionSheetV2.access$000(this.this$0) != null) {
-      ShareActionSheetV2.access$000(this.this$0).onItemClick((ShareActionSheetBuilder.ActionSheetItem)localObject, this.this$0);
+    localObject = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).a;
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onItemClick((ShareActionSheetBuilder.ActionSheetItem)localObject, this.a);
     }
-    ShareActionSheetV2 localShareActionSheetV2 = this.this$0;
+    ShareActionSheetV2 localShareActionSheetV2 = this.a;
     int i;
-    if (paramAdapterView == this.this$0.grid_row_view0) {
+    if (paramAdapterView == this.a.a) {
       i = 0;
     }
     for (;;)
     {
-      ShareActionSheetV2.access$100(localShareActionSheetV2, (ShareActionSheetBuilder.ActionSheetItem)localObject, i);
+      ShareActionSheetV2.a(localShareActionSheetV2, (ShareActionSheetBuilder.ActionSheetItem)localObject, i);
       break;
-      if (paramAdapterView == this.this$0.grid_row_view1) {
+      if (paramAdapterView == this.a.b) {
         i = 1;
-      } else if (paramAdapterView == this.this$0.grid_row_view2) {
+      } else if (paramAdapterView == this.a.c) {
         i = 2;
       } else {
         i = -1;
@@ -45,7 +45,7 @@ class ShareActionSheetV2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.1
  * JD-Core Version:    0.7.0.1
  */

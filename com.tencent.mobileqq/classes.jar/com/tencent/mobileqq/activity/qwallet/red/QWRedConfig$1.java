@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.red;
 
-import albw;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 
 class QWRedConfig$1
   implements Runnable
@@ -11,14 +11,14 @@ class QWRedConfig$1
   {
     synchronized (QWRedConfig.access$000(this.this$0))
     {
-      albw.a(this.this$0, QWRedConfig.access$100(this.this$0));
+      QWalletTools.a(this.this$0, QWRedConfig.access$100(this.this$0));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.1
  * JD-Core Version:    0.7.0.1
  */

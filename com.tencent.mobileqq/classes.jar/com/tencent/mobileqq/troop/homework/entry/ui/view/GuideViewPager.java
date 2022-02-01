@@ -8,14 +8,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import bfpw;
-import bfru;
 import com.tencent.biz.troopgift.absMultiViewPager;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.config.HomeworkConfig.HomeWorkGuideInfo.PageInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class GuideViewPager
   extends absMultiViewPager
   implements View.OnClickListener, GifDrawable.OnGIFPlayOnceListener
 {
-  private bfru a;
+  private ComplexGuidViewPager.OnGuideBtnClickListener a;
   
   public GuideViewPager(Context paramContext)
   {
@@ -59,40 +58,40 @@ public class GuideViewPager
   
   public View a(int paramInt)
   {
-    bfpw localbfpw = (bfpw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561566, null);
-    Object localObject = (ImageView)localRelativeLayout.findViewById(2131367463);
-    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131363496);
-    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131367435);
+    HomeworkConfig.HomeWorkGuideInfo.PageInfo localPageInfo = (HomeworkConfig.HomeWorkGuideInfo.PageInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561683, null);
+    Object localObject = (ImageView)localRelativeLayout.findViewById(2131367650);
+    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131363583);
+    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131367622);
     ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131361948);
-    if (localbfpw.jdField_a_of_type_Boolean) {
-      if (!TextUtils.isEmpty(localbfpw.jdField_a_of_type_JavaLangString))
+    if (localPageInfo.jdField_a_of_type_Boolean) {
+      if (!TextUtils.isEmpty(localPageInfo.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath((ImageView)localObject, localbfpw.jdField_a_of_type_JavaLangString);
+        setBitmapByPath((ImageView)localObject, localPageInfo.jdField_a_of_type_JavaLangString);
         ((ImageView)localObject).setVisibility(0);
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(localbfpw.c))
+      if (!TextUtils.isEmpty(localPageInfo.c))
       {
-        localImageView2.setImageDrawable(a(localbfpw.c));
+        localImageView2.setImageDrawable(a(localPageInfo.c));
         localImageView2.setVisibility(0);
         localImageView2.setOnClickListener(this);
       }
       return localRelativeLayout;
-      if (!TextUtils.isEmpty(localbfpw.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localPageInfo.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath(localImageView3, localbfpw.jdField_a_of_type_JavaLangString);
+        setBitmapByPath(localImageView3, localPageInfo.jdField_a_of_type_JavaLangString);
         localImageView3.setVisibility(0);
       }
-      if (!TextUtils.isEmpty(localbfpw.b))
+      if (!TextUtils.isEmpty(localPageInfo.b))
       {
-        localObject = a(localbfpw.b);
+        localObject = a(localPageInfo.b);
         if ((((URLDrawable)localObject).getCurrDrawable() instanceof GifDrawable)) {
           ((GifDrawable)((URLDrawable)localObject).getCurrDrawable()).setGIFPlayOnceListener(this);
         }
-        localImageView1.setImageDrawable(a(localbfpw.b));
+        localImageView1.setImageDrawable(a(localPageInfo.b));
         localImageView1.setVisibility(0);
       }
     }
@@ -107,8 +106,8 @@ public class GuideViewPager
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Bfru != null) {
-        this.jdField_a_of_type_Bfru.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener.a();
       }
     }
   }
@@ -118,9 +117,9 @@ public class GuideViewPager
     ThreadManager.getUIHandler().post(new GuideViewPager.2(this));
   }
   
-  public void setOnActionBtnClickListener(bfru parambfru)
+  public void setOnActionBtnClickListener(ComplexGuidViewPager.OnGuideBtnClickListener paramOnGuideBtnClickListener)
   {
-    this.jdField_a_of_type_Bfru = parambfru;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener = paramOnGuideBtnClickListener;
   }
 }
 

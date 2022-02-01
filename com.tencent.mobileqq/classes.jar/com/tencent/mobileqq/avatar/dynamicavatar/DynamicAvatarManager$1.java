@@ -1,20 +1,42 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import aqeq;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResDownload;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class DynamicAvatarManager$1
+class DynamicAvatarManager$1
   implements Runnable
 {
-  public DynamicAvatarManager$1(aqeq paramaqeq) {}
+  DynamicAvatarManager$1(DynamicAvatarManager paramDynamicAvatarManager) {}
   
   public void run()
   {
-    if ((!VideoEnvironment.checkAVCodecLoadIsOK(aqeq.a(this.this$0))) && ((aqeq.a(this.this$0) instanceof QQAppInterface))) {
-      ThreadManager.getSubThreadHandler().post(new DynamicAvatarManager.1.1(this));
+    boolean bool;
+    DynamicAvatarManager localDynamicAvatarManager;
+    if (DynamicAvatarManager.a(this.this$0) != null)
+    {
+      bool = VideoEnvironment.checkAndLoadAVCodec();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.dynamicAvatar", 2, "loadVideoSo runnable has run and loaded is " + bool);
+      }
+      localDynamicAvatarManager = this.this$0;
+      if (!bool) {
+        break label108;
+      }
+    }
+    label108:
+    for (int i = 2;; i = 0)
+    {
+      localDynamicAvatarManager.b = i;
+      if ((!bool) && ((DynamicAvatarManager.a(this.this$0) instanceof QQAppInterface)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.dynamicAvatar", 2, "loadVideoSo download execute");
+        }
+        ShortVideoResDownload.a((QQAppInterface)DynamicAvatarManager.a(this.this$0), false);
+      }
+      return;
     }
   }
 }

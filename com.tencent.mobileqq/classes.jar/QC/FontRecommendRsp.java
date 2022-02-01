@@ -10,8 +10,8 @@ public final class FontRecommendRsp
 {
   static CommonRsp cache_stRet = new CommonRsp();
   static ArrayList<FontInfo> cache_vItems = new ArrayList();
-  public CommonRsp stRet;
-  public ArrayList<FontInfo> vItems;
+  public CommonRsp stRet = null;
+  public ArrayList<FontInfo> vItems = null;
   
   static
   {

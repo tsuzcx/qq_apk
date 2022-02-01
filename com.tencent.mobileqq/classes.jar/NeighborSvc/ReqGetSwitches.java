@@ -10,8 +10,8 @@ public final class ReqGetSwitches
 {
   static ReqHeader cache_stHeader;
   static ArrayList<Integer> cache_types;
-  public ReqHeader stHeader;
-  public ArrayList<Integer> types;
+  public ReqHeader stHeader = null;
+  public ArrayList<Integer> types = null;
   
   public ReqGetSwitches() {}
   

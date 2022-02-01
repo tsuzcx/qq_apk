@@ -2,6 +2,8 @@ package com.tencent.hippy.qq.module;
 
 import android.text.TextUtils;
 import android.util.Log;
+import com.tencent.biz.pubaccount.readinjoy.viola.adapter.BaseHttpAdapter;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -21,7 +23,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tum;
 
 @HippyNativeModule(name="http")
 public class HippyQQHttpModule
@@ -37,7 +38,7 @@ public class HippyQQHttpModule
   public static final String HTTP_SUCCESS = "success";
   public static final String MODULE_NAME = "http";
   public static String TAG = "HttpModule";
-  private IHttpAdapter mAdapter = new tum();
+  private IHttpAdapter mAdapter = new BaseHttpAdapter();
   
   public HippyQQHttpModule(HippyEngineContext paramHippyEngineContext)
   {
@@ -140,13 +141,13 @@ public class HippyQQHttpModule
     label162:
     if (paramJSONObject1 != null) {
       if ((!paramString1.containsKey("Content-Type")) || (TextUtils.isEmpty((CharSequence)paramString1.get("Content-Type"))) || (!((String)paramString1.get("Content-Type")).contains("application/json"))) {
-        break label248;
+        break label250;
       }
     }
-    label248:
+    label250:
     for (localHttpRequset.body = paramJSONObject1.toString();; localHttpRequset.body = ViolaUtils.splittBodyEncodeUrl(paramJSONObject1))
     {
-      this.mAdapter.sendRequest(localHttpRequset, new HippyQQHttpModule.HttpListener(this, new HippyQQHttpModule.1(this, paramPromise)), paramBoolean);
+      this.mAdapter.sendRequest(localHttpRequset, new HippyQQHttpModule.HttpListener(this, new HippyQQHttpModule.1(this, localHttpRequset, paramPromise)), paramBoolean);
       return;
     }
   }
@@ -184,6 +185,7 @@ public class HippyQQHttpModule
     }
     int i = paramHippyMap.optInt("timeout", 10000);
     boolean bool = paramHippyMap.optBoolean("forReport", false);
+    QQGameHelper.b(paramHippyMap.optString("url"), System.currentTimeMillis());
     reuqestHttp(paramHippyMap.optString("url"), paramHippyMap.optJSONObject("data"), paramHippyMap.optJSONObject("headers"), i, paramPromise, paramHippyMap.optString("method", "POST").toUpperCase(), bool);
   }
   
@@ -211,7 +213,7 @@ public class HippyQQHttpModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.HippyQQHttpModule
  * JD-Core Version:    0.7.0.1
  */

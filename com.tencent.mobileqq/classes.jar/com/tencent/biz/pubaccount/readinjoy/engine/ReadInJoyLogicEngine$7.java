@@ -1,21 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pvj;
-import pvm;
-
-public class ReadInJoyLogicEngine$7
+class ReadInJoyLogicEngine$7
   implements Runnable
 {
-  public ReadInJoyLogicEngine$7(pvj parampvj) {}
+  ReadInJoyLogicEngine$7(ReadInJoyLogicEngine paramReadInJoyLogicEngine) {}
   
   public void run()
   {
-    pvm.a().b();
+    ReadInJoyLogicEngineEventDispatcher.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine.7
  * JD-Core Version:    0.7.0.1
  */

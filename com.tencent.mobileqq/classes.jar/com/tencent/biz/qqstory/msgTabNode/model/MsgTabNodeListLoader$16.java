@@ -1,12 +1,11 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import wix;
-import wmd;
+import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
 
-public class MsgTabNodeListLoader$16
+class MsgTabNodeListLoader$16
   implements Runnable
 {
-  public MsgTabNodeListLoader$16(wmd paramwmd, wix paramwix) {}
+  MsgTabNodeListLoader$16(MsgTabNodeListLoader paramMsgTabNodeListLoader, DeleteStoryVideoEvent paramDeleteStoryVideoEvent) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class MsgTabNodeListLoader$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.16
  * JD-Core Version:    0.7.0.1
  */

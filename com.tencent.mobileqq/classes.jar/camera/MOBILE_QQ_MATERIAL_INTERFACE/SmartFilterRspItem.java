@@ -9,7 +9,7 @@ public final class SmartFilterRspItem
   extends JceStruct
 {
   static ArrayList<YoutuResultItem> cache_DisplayLabels = new ArrayList();
-  public ArrayList<YoutuResultItem> DisplayLabels;
+  public ArrayList<YoutuResultItem> DisplayLabels = null;
   public String PituLabel = "";
   
   static
@@ -44,7 +44,7 @@ public final class SmartFilterRspItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterRspItem
  * JD-Core Version:    0.7.0.1
  */

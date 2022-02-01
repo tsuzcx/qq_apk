@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
 import android.view.WindowManager.BadTokenException;
-import aqev;
-import bhdj;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
-public class DynamicAvatarRecordActivity$11
+class DynamicAvatarRecordActivity$11
   implements Runnable
 {
   DynamicAvatarRecordActivity$11(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity, String paramString, int paramInt) {}
@@ -15,9 +14,9 @@ public class DynamicAvatarRecordActivity$11
   {
     String str = this.jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_Int == 2002) {
-      str = this.this$0.getString(2131698784);
+      str = this.this$0.getString(2131699097);
     }
-    this.this$0.a = bhdj.a(this.this$0, 230).setMessage(str).setPositiveButton(this.this$0.getString(2131693764), new aqev(this));
+    this.this$0.a = DialogUtil.a(this.this$0, 230).setMessage(str).setPositiveButton(this.this$0.getString(2131693935), new DynamicAvatarRecordActivity.11.1(this));
     try
     {
       this.this$0.a.setCancelable(false);

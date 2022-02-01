@@ -4,22 +4,22 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import bjgp;
 import com.tencent.common.app.InnerFrame;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.open.agent.datamodel.FriendDataManager;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class OpenFrame
   extends InnerFrame
 {
-  public LayoutInflater a;
-  public bjgp a;
-  public InnerFrameManager a;
+  protected LayoutInflater a;
+  protected InnerFrameManager a;
   protected QQAppInterface a;
-  public FriendChooser a;
+  protected FriendChooser a;
+  protected FriendDataManager a;
   
   public OpenFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,9 +30,9 @@ public abstract class OpenFrame
   {
     ArrayList localArrayList = new ArrayList(50);
     int i = 0;
-    while (i < this.jdField_a_of_type_Bjgp.b())
+    while (i < this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.b())
     {
-      localArrayList.addAll(this.jdField_a_of_type_Bjgp.a(i));
+      localArrayList.addAll(this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(i));
       i += 1;
     }
     return localArrayList;
@@ -45,14 +45,14 @@ public abstract class OpenFrame
     this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = super.a();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = super.a();
     this.jdField_a_of_type_AndroidViewLayoutInflater = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater();
-    this.jdField_a_of_type_Bjgp = bjgp.a();
+    this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager = FriendDataManager.a();
   }
   
   public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.OpenFrame
  * JD-Core Version:    0.7.0.1
  */

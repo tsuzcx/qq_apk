@@ -15,17 +15,17 @@ public final class UserProfile
   public int iDistance = -1;
   public int iLat = 900000000;
   public int iLon = 900000000;
-  public long lEctID;
-  public long nPicNum;
-  public long nStatus;
-  public stRishState oRishState;
+  public long lEctID = 0L;
+  public long nPicNum = 0L;
+  public long nStatus = 0L;
+  public stRishState oRishState = null;
   public long richTime;
   public RichStatus rs;
   public String strDesc = "";
   public String strLocation = "";
   public String strNick = "";
-  public byte[] vSig;
-  public short wFace;
+  public byte[] vSig = null;
+  public short wFace = 0;
   
   public UserProfile() {}
   

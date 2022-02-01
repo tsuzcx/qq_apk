@@ -9,8 +9,6 @@ import android.view.ViewConfiguration;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import aynx;
-import ayny;
 import com.tencent.qphone.base.util.QLog;
 
 public class OverCoverFrameLayout
@@ -20,22 +18,26 @@ public class OverCoverFrameLayout
   protected Context a;
   protected GestureDetector a;
   protected Scroller a;
-  public ayny a;
+  protected OverCoverFrameLayout.OnActionListener a;
   protected boolean a;
   protected int b;
   protected boolean b;
   protected final int c;
   private boolean c;
-  public int d;
+  protected int d;
   private boolean d;
-  public int e;
-  protected int f;
+  protected int e;
+  protected int f = 0;
   
   public OverCoverFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 200;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
     a(paramContext);
   }
@@ -43,8 +45,12 @@ public class OverCoverFrameLayout
   public OverCoverFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 200;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
     a(paramContext);
   }
@@ -52,12 +58,12 @@ public class OverCoverFrameLayout
   protected void a()
   {
     if (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && (this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && ((this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) || (this.jdField_b_of_type_Int == 0))) {
-      if (this.jdField_a_of_type_Ayny != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener != null)
       {
         if ((!this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Int != 0)) {
           break label90;
         }
-        this.jdField_a_of_type_Ayny.a(0, 0, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener.a(0, 0, this.jdField_b_of_type_Int);
       }
     }
     for (;;)
@@ -67,7 +73,7 @@ public class OverCoverFrameLayout
       return;
       label90:
       if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int)) {
-        this.jdField_a_of_type_Ayny.a(0, 1, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener.a(0, 1, this.jdField_b_of_type_Int);
       }
     }
   }
@@ -81,7 +87,7 @@ public class OverCoverFrameLayout
     if (QLog.isColorLevel()) {
       QLog.d("OverCoverFrameLayout", 2, "init: minDis=" + this.jdField_d_of_type_Int + ", minVelocity=" + this.e);
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aynx(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new OverCoverFrameLayout.1(this));
   }
   
   public boolean a()
@@ -97,8 +103,8 @@ public class OverCoverFrameLayout
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(this.jdField_a_of_type_Int, 0, -this.jdField_a_of_type_Int, 0, 200);
-    if (this.jdField_a_of_type_Ayny != null) {
-      this.jdField_a_of_type_Ayny.a(1, 0, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener.a(1, 0, this.jdField_a_of_type_Int);
     }
     invalidate();
     this.jdField_a_of_type_Boolean = false;
@@ -118,8 +124,8 @@ public class OverCoverFrameLayout
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, 0, this.jdField_a_of_type_Int, 0, 200);
-    if (this.jdField_a_of_type_Ayny != null) {
-      this.jdField_a_of_type_Ayny.a(1, 1, 0);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener.a(1, 1, 0);
     }
     invalidate();
     this.jdField_a_of_type_Boolean = true;
@@ -198,7 +204,7 @@ public class OverCoverFrameLayout
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     View localView1 = getChildAt(0);
     View localView2 = getChildAt(1);
@@ -210,7 +216,7 @@ public class OverCoverFrameLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getChildAt(0).getMeasuredHeight();
@@ -229,9 +235,9 @@ public class OverCoverFrameLayout
     this.jdField_b_of_type_Int = 0;
   }
   
-  public void setOnActionListener(ayny paramayny)
+  public void setOnActionListener(OverCoverFrameLayout.OnActionListener paramOnActionListener)
   {
-    this.jdField_a_of_type_Ayny = paramayny;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener = paramOnActionListener;
   }
 }
 

@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import amck;
 import android.content.Context;
 import java.io.File;
 
 class QvipSpecialSoundManager$1
   implements Runnable
 {
-  QvipSpecialSoundManager$1(QvipSpecialSoundManager paramQvipSpecialSoundManager, amck paramamck) {}
+  QvipSpecialSoundManager$1(QvipSpecialSoundManager paramQvipSpecialSoundManager, QvipSpecialSoundConfig.SpecialSound paramSpecialSound) {}
   
   public void run()
   {

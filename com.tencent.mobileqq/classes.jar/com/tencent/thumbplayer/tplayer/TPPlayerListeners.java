@@ -1,5 +1,6 @@
 package com.tencent.thumbplayer.tplayer;
 
+import android.text.TextUtils;
 import com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer;
 import com.tencent.thumbplayer.api.ITPPlayer;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnAudioFrameOutputListener;
@@ -25,7 +26,7 @@ import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 public class TPPlayerListeners
   implements ITPPlayerListener.IOnAudioFrameOutputListener, ITPPlayerListener.IOnAudioProcessFrameOutputListener, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnSeekCompleteListener, ITPPlayerListener.IOnStateChangeListener, ITPPlayerListener.IOnStopAsyncCompleteListener, ITPPlayerListener.IOnSubtitleDataListener, ITPPlayerListener.IOnSubtitleFrameOutListener, ITPPlayerListener.IOnVideoFrameOutListener, ITPPlayerListener.IOnVideoProcessFrameOutputListener, ITPPlayerListener.IOnVideoSizeChangedListener
 {
-  private static String TAG = "TPPlayerListenerS";
+  private static final String TAG = "TPPlayerListenerS";
   private TPPlayerListeners.TPPlayerListenersEmptyImpl EMPTY_LISTENERS;
   private ITPPlayerListener.IOnAudioFrameOutputListener mOnAudioFrameOutListener;
   private ITPPlayerListener.IOnAudioProcessFrameOutputListener mOnAudioProcessFrameOutListener;
@@ -41,11 +42,12 @@ public class TPPlayerListeners
   private ITPPlayerListener.IOnVideoFrameOutListener mOnVideoFrameOutListener;
   private ITPPlayerListener.IOnVideoProcessFrameOutputListener mOnVideoProcessFrameOutListener;
   private ITPPlayerListener.IOnVideoSizeChangedListener mOnVideoSizeChangedListener;
+  private String mTag = "TPPlayerListenerS";
   
   TPPlayerListeners(String paramString)
   {
-    TAG = paramString;
-    this.EMPTY_LISTENERS = new TPPlayerListeners.TPPlayerListenersEmptyImpl(null);
+    updateTag(paramString);
+    this.EMPTY_LISTENERS = new TPPlayerListeners.TPPlayerListenersEmptyImpl(this.mTag);
     this.mOnPreparedListener = this.EMPTY_LISTENERS;
     this.mOnCompletionListener = this.EMPTY_LISTENERS;
     this.mOnInfoListener = this.EMPTY_LISTENERS;
@@ -276,10 +278,22 @@ public class TPPlayerListeners
     }
     this.mOnVideoSizeChangedListener = ((ITPPlayerListener.IOnVideoSizeChangedListener)localObject);
   }
+  
+  public void updateTag(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (this.mTag = "TPPlayerListenerS";; this.mTag = paramString)
+    {
+      if (this.EMPTY_LISTENERS != null) {
+        TPPlayerListeners.TPPlayerListenersEmptyImpl.access$002(this.EMPTY_LISTENERS, paramString);
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayerListeners
  * JD-Core Version:    0.7.0.1
  */

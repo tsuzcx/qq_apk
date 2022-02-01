@@ -2,11 +2,11 @@ package com.tencent.open.filedownload.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import anvx;
-import bdla;
-import bjpe;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.open.filedownload.TaskInfo;
 
 public class WhiteListDownloadButton
   extends ApkFileDownloadButton
@@ -40,7 +40,7 @@ public class WhiteListDownloadButton
     label70:
     for (paramString = "";; paramString = this.a.h)
     {
-      bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009AC6", "0X8009AC6", 0, 0, "", "", paramString, "");
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009AC6", "0X8009AC6", 0, 0, "", "", paramString, "");
       return;
     }
   }
@@ -48,14 +48,14 @@ public class WhiteListDownloadButton
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return anvx.a(2131716319);
+      return HardCodeUtil.a(2131716785);
     }
-    return anvx.a(2131716320);
+    return HardCodeUtil.a(2131716786);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.WhiteListDownloadButton
  * JD-Core Version:    0.7.0.1
  */

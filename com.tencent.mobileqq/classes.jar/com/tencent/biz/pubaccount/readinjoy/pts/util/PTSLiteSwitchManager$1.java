@@ -2,16 +2,13 @@ package com.tencent.biz.pubaccount.readinjoy.pts.util;
 
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSSoLoader;
 import com.tencent.qphone.base.util.QLog;
-import qzg;
-import qzw;
-import rad;
-import raj;
 
-public class PTSLiteSwitchManager$1
+class PTSLiteSwitchManager$1
   implements Runnable
 {
-  public PTSLiteSwitchManager$1(rad paramrad) {}
+  PTSLiteSwitchManager$1(PTSLiteSwitchManager paramPTSLiteSwitchManager) {}
   
   public void run()
   {
@@ -35,12 +32,12 @@ public class PTSLiteSwitchManager$1
         QLog.i("PTSLiteSwitchManager", 1, "[init], ptsLiteMasterSwitchTmp = " + bool2);
         if ((bool1) || (bool2))
         {
-          qzw.b();
-          qzg.a().a("ptslite");
-          raj.a().a();
+          PTSHelper.b();
+          PTSSoLoader.a().a("ptslite");
+          PTSStyleManager.a().a();
         }
-        rad.a(this.this$0, bool1);
-        rad.b(this.this$0, bool2);
+        PTSLiteSwitchManager.a(this.this$0, bool1);
+        PTSLiteSwitchManager.b(this.this$0, bool2);
         return;
         bool1 = false;
         break;
@@ -51,7 +48,7 @@ public class PTSLiteSwitchManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.util.PTSLiteSwitchManager.1
  * JD-Core Version:    0.7.0.1
  */

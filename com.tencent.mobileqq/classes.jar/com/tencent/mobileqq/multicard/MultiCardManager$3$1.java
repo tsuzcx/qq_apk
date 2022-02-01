@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.multicard;
 
-import axgx;
 import java.util.ArrayList;
 
 class MultiCardManager$3$1
@@ -10,8 +9,8 @@ class MultiCardManager$3$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Axgx != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Axgx.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$GetGroupRecommendUinListsListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$GetGroupRecommendUinListsListener.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }

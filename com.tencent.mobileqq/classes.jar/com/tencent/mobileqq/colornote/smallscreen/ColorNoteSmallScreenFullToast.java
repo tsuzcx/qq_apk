@@ -13,7 +13,6 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqqu;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,15 +26,14 @@ public class ColorNoteSmallScreenFullToast
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private aqqu jdField_a_of_type_Aqqu;
-  public boolean a;
+  private ColorNoteSmallScreenFullToast.IColorNoteSmallScreenFullToastListener jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast$IColorNoteSmallScreenFullToastListener;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public ColorNoteSmallScreenFullToast(Context paramContext, aqqu paramaqqu)
+  public ColorNoteSmallScreenFullToast(Context paramContext, ColorNoteSmallScreenFullToast.IColorNoteSmallScreenFullToastListener paramIColorNoteSmallScreenFullToastListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aqqu = paramaqqu;
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast$IColorNoteSmallScreenFullToastListener = paramIColorNoteSmallScreenFullToastListener;
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window"));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -1;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
@@ -48,10 +46,10 @@ public class ColorNoteSmallScreenFullToast
     for (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2038;; this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2002)
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getResources().getString(2131690881));
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839326);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getResources().getString(2131690982));
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839400);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(AIOUtils.dp2px(24.0F, paramContext.getResources()), AIOUtils.dp2px(24.0F, paramContext.getResources()));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(24.0F, paramContext.getResources()), AIOUtils.a(24.0F, paramContext.getResources()));
       addView(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -101,10 +99,10 @@ public class ColorNoteSmallScreenFullToast
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams != null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = (paramInt1 - AIOUtils.dp2px(12.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = (paramInt1 - AIOUtils.a(12.0F, getResources()));
       int[] arrayOfInt = new int[2];
       getLocationOnScreen(arrayOfInt);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = (paramInt2 - AIOUtils.dp2px(5.5F, getResources()) - arrayOfInt[1]);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = (paramInt2 - AIOUtils.a(5.5F, getResources()) - arrayOfInt[1]);
       this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
     }
     if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8) {
@@ -130,63 +128,63 @@ public class ColorNoteSmallScreenFullToast
     //   13: aload_0
     //   14: iconst_1
     //   15: putfield 28	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_Boolean	Z
-    //   18: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   18: invokestatic 135	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   21: ifeq +11 -> 32
-    //   24: ldc 138
+    //   24: ldc 137
     //   26: iconst_2
-    //   27: ldc 226
-    //   29: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   27: ldc 225
+    //   29: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   32: aload_0
     //   33: getfield 44	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_AndroidViewWindowManager	Landroid/view/WindowManager;
     //   36: aload_0
     //   37: aload_0
     //   38: getfield 26	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_AndroidViewWindowManager$LayoutParams	Landroid/view/WindowManager$LayoutParams;
-    //   41: invokeinterface 227 3 0
+    //   41: invokeinterface 226 3 0
     //   46: iload_2
     //   47: istore_1
-    //   48: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   48: invokestatic 135	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   51: ifeq +13 -> 64
-    //   54: ldc 138
+    //   54: ldc 137
     //   56: iconst_2
-    //   57: ldc 229
-    //   59: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   57: ldc 228
+    //   59: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   62: iload_2
     //   63: istore_1
     //   64: aload_0
-    //   65: invokevirtual 233	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   65: invokevirtual 232	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
     //   68: checkcast 21	android/view/WindowManager$LayoutParams
     //   71: ifnull +252 -> 323
     //   74: iload_1
     //   75: ifeq +248 -> 323
     //   78: aload_0
     //   79: getfield 30	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   82: invokestatic 238	aqqx:a	(Landroid/content/Context;)Z
+    //   82: invokestatic 237	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenPermissionUtil:a	(Landroid/content/Context;)Z
     //   85: istore_1
-    //   86: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   86: invokestatic 135	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   89: ifeq +56 -> 145
-    //   92: ldc 138
+    //   92: ldc 137
     //   94: iconst_2
-    //   95: new 161	java/lang/StringBuilder
+    //   95: new 160	java/lang/StringBuilder
     //   98: dup
-    //   99: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   102: ldc 240
-    //   104: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   102: ldc 239
+    //   104: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   107: aload_0
     //   108: getfield 28	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_Boolean	Z
-    //   111: invokevirtual 243	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   114: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   120: ldc 138
+    //   111: invokevirtual 242	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   114: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   117: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   120: ldc 137
     //   122: iconst_2
-    //   123: new 161	java/lang/StringBuilder
+    //   123: new 160	java/lang/StringBuilder
     //   126: dup
-    //   127: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   130: ldc 245
-    //   132: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   130: ldc 244
+    //   132: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: iload_1
-    //   136: invokevirtual 243	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   139: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   142: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   136: invokevirtual 242	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   139: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   142: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   145: aload_0
     //   146: monitorexit
     //   147: iload_1
@@ -197,22 +195,22 @@ public class ColorNoteSmallScreenFullToast
     //   154: aload_0
     //   155: aload_0
     //   156: getfield 26	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_AndroidViewWindowManager$LayoutParams	Landroid/view/WindowManager$LayoutParams;
-    //   159: invokeinterface 248 3 0
+    //   159: invokeinterface 247 3 0
     //   164: iload_2
     //   165: istore_1
-    //   166: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   166: invokestatic 135	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   169: ifeq -105 -> 64
-    //   172: ldc 138
+    //   172: ldc 137
     //   174: iconst_2
-    //   175: new 161	java/lang/StringBuilder
+    //   175: new 160	java/lang/StringBuilder
     //   178: dup
-    //   179: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   182: ldc 250
-    //   184: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   182: ldc 249
+    //   184: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   187: aload_3
-    //   188: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   191: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   194: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   188: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   191: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   194: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   197: iload_2
     //   198: istore_1
     //   199: goto -135 -> 64
@@ -225,53 +223,53 @@ public class ColorNoteSmallScreenFullToast
     //   208: aload_0
     //   209: iconst_0
     //   210: putfield 28	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_Boolean	Z
-    //   213: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   213: invokestatic 135	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   216: ifeq +110 -> 326
-    //   219: ldc 138
+    //   219: ldc 137
     //   221: iconst_2
-    //   222: new 161	java/lang/StringBuilder
+    //   222: new 160	java/lang/StringBuilder
     //   225: dup
-    //   226: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   229: ldc 250
-    //   231: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   226: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   229: ldc 249
+    //   231: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   234: aload_3
-    //   235: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   238: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   241: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   235: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   238: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   241: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   244: goto +82 -> 326
     //   247: astore_3
     //   248: aload_0
     //   249: iconst_0
     //   250: putfield 28	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_Boolean	Z
-    //   253: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   253: invokestatic 135	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   256: ifeq +75 -> 331
-    //   259: ldc 138
+    //   259: ldc 137
     //   261: iconst_2
-    //   262: new 161	java/lang/StringBuilder
+    //   262: new 160	java/lang/StringBuilder
     //   265: dup
-    //   266: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   269: ldc 250
-    //   271: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   269: ldc 249
+    //   271: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   274: aload_3
-    //   275: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   278: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   281: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   275: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   278: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   281: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   284: goto +47 -> 331
     //   287: astore_3
     //   288: aload_0
     //   289: iconst_0
     //   290: putfield 28	com/tencent/mobileqq/colornote/smallscreen/ColorNoteSmallScreenFullToast:jdField_a_of_type_Boolean	Z
-    //   293: ldc 138
+    //   293: ldc 137
     //   295: iconst_2
-    //   296: new 161	java/lang/StringBuilder
+    //   296: new 160	java/lang/StringBuilder
     //   299: dup
-    //   300: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   303: ldc 250
-    //   305: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   300: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   303: ldc 249
+    //   305: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   308: aload_3
-    //   309: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   312: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   315: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   309: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   312: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   315: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   318: iconst_0
     //   319: istore_1
     //   320: goto -256 -> 64
@@ -326,8 +324,8 @@ public class ColorNoteSmallScreenFullToast
   {
     if (paramKeyEvent.getKeyCode() == 4)
     {
-      if (this.jdField_a_of_type_Aqqu != null) {
-        this.jdField_a_of_type_Aqqu.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast$IColorNoteSmallScreenFullToastListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast$IColorNoteSmallScreenFullToastListener.a();
       }
       a();
       return true;
@@ -339,16 +337,16 @@ public class ColorNoteSmallScreenFullToast
   {
     a();
     if (paramView == this) {
-      if (this.jdField_a_of_type_Aqqu != null) {
-        this.jdField_a_of_type_Aqqu.c();
+      if (this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast$IColorNoteSmallScreenFullToastListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast$IColorNoteSmallScreenFullToastListener.c();
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((paramView == this.jdField_a_of_type_AndroidWidgetImageView) && (this.jdField_a_of_type_Aqqu != null)) {
-        this.jdField_a_of_type_Aqqu.d();
+      if ((paramView == this.jdField_a_of_type_AndroidWidgetImageView) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast$IColorNoteSmallScreenFullToastListener != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast$IColorNoteSmallScreenFullToastListener.d();
       }
     }
   }

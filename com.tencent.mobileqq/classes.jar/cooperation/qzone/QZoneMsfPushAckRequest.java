@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
 import PUSHAPI.PushRsp;
-import blpn;
 import com.qq.taf.jce.JceStruct;
+import common.config.service.WupTool;
 
 public class QZoneMsfPushAckRequest
   extends QzoneExternalRequest
@@ -12,7 +12,7 @@ public class QZoneMsfPushAckRequest
   public static final int ERR_MSF_RESP_IS_NULL = 1000000;
   public static final int ERR_NO_NET = 1000006;
   private static final String unikey = "wns.pushrsp";
-  private long flag;
+  private long flag = 0L;
   private long lastTimeStamp;
   private String mask;
   
@@ -40,7 +40,7 @@ public class QZoneMsfPushAckRequest
     localPushRsp.sUID = "<JIEHEBAN>";
     localPushRsp.flag = this.flag;
     localPushRsp.Mark = this.mask;
-    return blpn.a(localPushRsp);
+    return WupTool.encodeWup(localPushRsp);
   }
   
   public JceStruct getReq()
@@ -55,7 +55,7 @@ public class QZoneMsfPushAckRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneMsfPushAckRequest
  * JD-Core Version:    0.7.0.1
  */

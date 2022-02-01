@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import aepi;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import com.tencent.biz.pubaccount.util.ReadinjoyH5ElementManager;
 import com.tencent.biz.pubaccount.util.SwipeBackLayout;
 import com.tencent.qphone.base.util.QLog;
-import uvq;
 
 public class QQBrowserSwipeLayout
   extends SwipeBackLayout
@@ -35,7 +34,7 @@ public class QQBrowserSwipeLayout
   public QQBrowserSwipeLayout(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, paramBoolean);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aepi(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new QQBrowserSwipeLayout.QQBrowserGestureDetector(this, paramContext));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -57,7 +56,7 @@ public class QQBrowserSwipeLayout
         this.jdField_d_of_type_Int = i;
         this.jdField_b_of_type_Int = i;
         this.jdField_c_of_type_Int = ((int)paramMotionEvent.getRawY());
-        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_Uvq.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
+        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_ComTencentBizPubaccountUtilReadinjoyH5ElementManager.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
           this.jdField_d_of_type_Boolean = true;
         }
       }
@@ -112,7 +111,7 @@ public class QQBrowserSwipeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserSwipeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -6,13 +6,11 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import nro;
-import nrp;
 
-public class AuthorizeConfig$2$1$1
+class AuthorizeConfig$2$1$1
   implements Runnable
 {
-  public AuthorizeConfig$2$1$1(nrp paramnrp, mobileqq_mp.WebviewWhiteListResponse paramWebviewWhiteListResponse) {}
+  AuthorizeConfig$2$1$1(AuthorizeConfig.2.1 param1, mobileqq_mp.WebviewWhiteListResponse paramWebviewWhiteListResponse) {}
   
   public void run()
   {
@@ -39,7 +37,7 @@ public class AuthorizeConfig$2$1$1
       {
         try
         {
-          localObject2 = nro.a(localObject1);
+          localObject2 = AuthorizeConfig.a(localObject1);
           localObject1 = localObject2;
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
@@ -53,7 +51,7 @@ public class AuthorizeConfig$2$1$1
           if (TextUtils.isEmpty(localObject1)) {
             return;
           }
-          this.jdField_a_of_type_Nrp.a.this$0.a(localObject1, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.version.get(), "lastVersion");
+          this.jdField_a_of_type_ComTencentBizAuthorizeConfig$2$1.a.this$0.a(localObject1, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.version.get(), "lastVersion");
           return;
         }
         catch (Exception localException)
@@ -74,7 +72,7 @@ public class AuthorizeConfig$2$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfig.2.1.1
  * JD-Core Version:    0.7.0.1
  */

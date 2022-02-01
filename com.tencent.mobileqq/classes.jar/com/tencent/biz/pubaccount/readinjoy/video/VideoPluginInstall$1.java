@@ -1,20 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import spp;
-
-public class VideoPluginInstall$1
+class VideoPluginInstall$1
   implements Runnable
 {
-  public VideoPluginInstall$1(spp paramspp) {}
+  VideoPluginInstall$1(VideoPluginInstall paramVideoPluginInstall) {}
   
   public void run()
   {
-    spp.a(this.this$0);
+    VideoPluginInstall.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.1
  * JD-Core Version:    0.7.0.1
  */

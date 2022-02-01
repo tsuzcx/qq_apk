@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class stSoftInfo
   extends JceStruct
 {
-  public long end_time;
-  public long soft_type;
-  public long start_time;
+  public long end_time = 0L;
+  public long soft_type = 0L;
+  public long start_time = 0L;
   
   public stSoftInfo() {}
   

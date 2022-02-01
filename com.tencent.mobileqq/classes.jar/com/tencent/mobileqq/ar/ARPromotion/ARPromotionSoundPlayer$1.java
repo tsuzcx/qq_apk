@@ -1,32 +1,30 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
 import android.media.SoundPool;
-import apca;
-import apcb;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class ARPromotionSoundPlayer$1
+class ARPromotionSoundPlayer$1
   implements Runnable
 {
-  public ARPromotionSoundPlayer$1(apca paramapca) {}
+  ARPromotionSoundPlayer$1(ARPromotionSoundPlayer paramARPromotionSoundPlayer) {}
   
   public void run()
   {
     try
     {
-      Iterator localIterator = apca.a(this.this$0).entrySet().iterator();
+      Iterator localIterator = ARPromotionSoundPlayer.a(this.this$0).entrySet().iterator();
       while (localIterator.hasNext())
       {
-        apcb localapcb = (apcb)((Map.Entry)localIterator.next()).getValue();
-        if (localapcb != null) {
-          apca.a(this.this$0).stop(localapcb.a);
+        ARPromotionSoundPlayer.ARSoundModel localARSoundModel = (ARPromotionSoundPlayer.ARSoundModel)((Map.Entry)localIterator.next()).getValue();
+        if (localARSoundModel != null) {
+          ARPromotionSoundPlayer.a(this.this$0).stop(localARSoundModel.a);
         }
       }
-      apca.a(this.this$0).release();
+      ARPromotionSoundPlayer.a(this.this$0).release();
     }
     catch (Exception localException)
     {
@@ -36,12 +34,12 @@ public class ARPromotionSoundPlayer$1
       }
       return;
     }
-    apca.a(this.this$0).clear();
+    ARPromotionSoundPlayer.a(this.this$0).clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionSoundPlayer.1
  * JD-Core Version:    0.7.0.1
  */

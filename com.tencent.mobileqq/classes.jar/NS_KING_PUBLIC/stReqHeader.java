@@ -13,18 +13,18 @@ public final class stReqHeader
   static stAuth cache_authInfo = new stAuth();
   static Map<String, String> cache_mapExt = new HashMap();
   private static final long serialVersionUID = 0L;
-  public int appid;
-  public int appversion;
+  public int appid = 0;
+  public int appversion = 0;
   @Nullable
-  public stAuth authInfo;
+  public stAuth authInfo = null;
   @Nullable
   public String device_info = "";
   @Nullable
   public String h265key = "";
-  public int iAppVersion;
-  public int iChid;
+  public int iAppVersion = 0;
+  public int iChid = 0;
   @Nullable
-  public Map<String, String> mapExt;
+  public Map<String, String> mapExt = null;
   @Nullable
   public String person_id = "";
   @Nullable

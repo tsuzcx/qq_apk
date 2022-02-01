@@ -31,6 +31,7 @@ double_cell_column_bar.geojson
 friends_biu.geojson
 img_biu_bottom.geojson
 info_bar.geojson
+info_bar_miniapp.geojson
 jump_channel_bar.geojson
 label.geojson
 live_info_bottom_common_cell.geojson
@@ -50,6 +51,7 @@ separator_normal_bottom.geojson
 separator_special_bottom.geojson
 social_bottom.geojson
 social_bottom_share_style_a.geojson
+social_bottom_wechat.geojson
 social_header.geojson
 social_header_partner.geojson
 social_header_without_biu_time.geojson
@@ -59,3 +61,6 @@ super_topic_white.geojson
 topic_recommend_header.geojson
 topic_recommend_header_style2.geojson
 ugc_biu_comment_with_avatar.geojson
+video_info_for_large.geojson
+video_info_for_small.geojson
+video_info_for_triple.geojson

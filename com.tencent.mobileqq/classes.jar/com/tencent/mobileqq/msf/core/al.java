@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msf.core;
 
-public class al {}
+class al {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

@@ -1,29 +1,32 @@
 package com.tencent.mobileqq.profilesetting;
 
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardShareHelper.OnShareListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class ProfileCardMoreActivity$13
-  implements Runnable
+  implements ProfileCardShareHelper.OnShareListener
 {
   ProfileCardMoreActivity$13(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    try
-    {
-      i = this.this$0.a(this.this$0.a.a);
-      this.this$0.b = false;
-      this.this$0.app.runOnUiThread(new ProfileCardMoreActivity.13.1(this, i));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (paramInt == 0) {
+      if (ProfileActivity.AllInOne.b(this.a.a))
       {
-        int i = -1;
+        paramInt = 1;
+        ReportController.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
       }
     }
+    while (paramInt != 2) {
+      for (;;)
+      {
+        return;
+        paramInt = 2;
+      }
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
   }
 }
 

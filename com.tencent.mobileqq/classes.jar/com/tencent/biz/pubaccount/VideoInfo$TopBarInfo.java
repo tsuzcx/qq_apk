@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import omq;
 
 public class VideoInfo$TopBarInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopBarInfo> CREATOR = new omq();
+  public static final Parcelable.Creator<TopBarInfo> CREATOR = new VideoInfo.TopBarInfo.1();
   public int a;
   public UrlJumpInfo a;
   public String a;
@@ -19,7 +18,7 @@ public class VideoInfo$TopBarInfo
   
   public VideoInfo$TopBarInfo() {}
   
-  public VideoInfo$TopBarInfo(Parcel paramParcel)
+  protected VideoInfo$TopBarInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -51,7 +50,7 @@ public class VideoInfo$TopBarInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.TopBarInfo
  * JD-Core Version:    0.7.0.1
  */

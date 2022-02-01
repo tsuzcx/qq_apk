@@ -9,11 +9,6 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bdla;
-import bieg;
-import bifw;
-import blvy;
-import blwh;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -21,17 +16,22 @@ import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.qwallet.plugin.QWalletPayBridge;
+import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 import java.net.URL;
 import java.net.URLEncoder;
 import mqq.manager.TicketManager;
 import org.json.JSONObject;
 
 public class PayJsPlugin
-  extends bieg
+  extends JsWebViewPlugin
 {
   protected long a;
   Activity jdField_a_of_type_AndroidAppActivity;
@@ -39,7 +39,7 @@ public class PayJsPlugin
   protected PayJsPlugin.MyResultRecevicer a;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private final String jdField_a_of_type_JavaLangString = "pay";
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   public long b;
   private final String b;
   private final String c = "openService";
@@ -74,13 +74,13 @@ public class PayJsPlugin
           localIntent.putExtra("url", paramString);
           localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
           this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-          if (QWalletHelper.sFullWindowActivitySource == 1) {
-            bdla.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "index.layila.intopage", 0, 0, "", "", "", "");
+          if (QWalletHelperImpl.sFullWindowActivitySource == 1) {
+            ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "index.layila.intopage", 0, 0, "", "", "", "");
           }
-          if (QWalletHelper.sFullWndCurType != QWalletHelper.FULL_WND_TYPE_NORMAL) {
+          if (QWalletHelperImpl.sFullWndCurType != QWalletHelperImpl.FULL_WND_TYPE_NORMAL) {
             break label183;
           }
-          VACDReportUtil.a(QWalletHelper.sFullWndCurID + "", "qqwallet", "screenReport", null, null, 0, null);
+          VACDReportUtil.a(QWalletHelperImpl.sFullWndCurID + "", "qqwallet", "screenReport", null, null, 0, null);
         }
       }
     }
@@ -96,8 +96,8 @@ public class PayJsPlugin
           continue;
           boolean bool = false;
         }
-      } while (QWalletHelper.sFullWndCurType != QWalletHelper.FULL_WND_TYPE_PULL);
-      VACDReportUtil.a(QWalletHelper.sFullWndCurID + "", "qqwallet", "pullReport", null, null, 0, null);
+      } while (QWalletHelperImpl.sFullWndCurType != QWalletHelperImpl.FULL_WND_TYPE_PULL);
+      VACDReportUtil.a(QWalletHelperImpl.sFullWndCurID + "", "qqwallet", "pullReport", null, null, 0, null);
     }
   }
   
@@ -161,11 +161,11 @@ public class PayJsPlugin
       QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "pay requet preparePay");
     }
     if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {}
-    while (QWalletHelper.isQWalletProcessExist(this.mRuntime.a())) {
+    while (QWalletHelperImpl.isQWalletProcessExist(this.mRuntime.a())) {
       return;
     }
     Intent localIntent = new Intent("cooperation.qwallet.QWALLET_PRELOAD");
-    QQAppInterface localQQAppInterface = QWalletHelper.getAppInterface();
+    QQAppInterface localQQAppInterface = QWalletHelperImpl.getAppInterface();
     if (localQQAppInterface != null)
     {
       localObject = (TicketManager)localQQAppInterface.getManager(2);
@@ -178,12 +178,12 @@ public class PayJsPlugin
     {
       localIntent.putExtra("uin", localQQAppInterface.getCurrentAccountUin());
       localIntent.putExtra("qqskey", (String)localObject);
-      localObject = new blwh(0);
-      ((blwh)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
-      ((blwh)localObject).d = "Wallet";
-      ((blwh)localObject).e = "com.qwallet.receiver.QWallPreloadReceiver";
-      ((blwh)localObject).a = localIntent;
-      blvy.b(this.mRuntime.a(), (blwh)localObject);
+      localObject = new IPluginManager.PluginParams(0);
+      ((IPluginManager.PluginParams)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
+      ((IPluginManager.PluginParams)localObject).e = "Wallet";
+      ((IPluginManager.PluginParams)localObject).f = "com.qwallet.receiver.QWallPreloadReceiver";
+      ((IPluginManager.PluginParams)localObject).a = localIntent;
+      IPluginManager.b(this.mRuntime.a(), (IPluginManager.PluginParams)localObject);
       return;
     }
   }
@@ -209,7 +209,7 @@ public class PayJsPlugin
       ((Bundle)localObject1).putLong("payparmas_h5_start", this.jdField_a_of_type_Long);
       ((Bundle)localObject1).putLong("vacreport_key_seq", this.jdField_b_of_type_Long);
       ((Bundle)localObject1).putString("payparmas_h5_url", (String)localObject2);
-      this.jdField_a_of_type_AndroidOsBundle = PayBridgeActivity.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizWebviewpluginPayJsPlugin$MyResultRecevicer, paramInt, (Bundle)localObject1);
+      this.jdField_a_of_type_AndroidOsBundle = PayBridgeActivity.newPay(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizWebviewpluginPayJsPlugin$MyResultRecevicer, paramInt, (Bundle)localObject1);
       if (this.jdField_a_of_type_AndroidOsBundle.getInt("retCode", -1) != 0)
       {
         paramString = this.jdField_a_of_type_AndroidOsBundle.getString("retJson");
@@ -252,7 +252,7 @@ public class PayJsPlugin
       ((Bundle)localObject2).putInt("payparmas_paytype", 1);
       ((Bundle)localObject2).putLong("payparmas_h5_start", this.jdField_a_of_type_Long);
       ((Bundle)localObject2).putString("h5_common_redpacket_domain", (String)localObject1);
-      PayBridgeActivity.a(this.jdField_a_of_type_AndroidAppActivity, 5, (Bundle)localObject2);
+      PayBridgeActivity.tenpay(this.jdField_a_of_type_AndroidAppActivity, 5, (Bundle)localObject2);
       return;
     }
     catch (Exception localException)
@@ -296,7 +296,7 @@ public class PayJsPlugin
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         localObject2 = URLEncoder.encode((String)localObject1, "utf-8");
       }
-      localObject1 = QWalletHelper.getAppInfoFromHistory();
+      localObject1 = QWalletHelperImpl.getAppInfoFromHistory();
       String str = String.valueOf(paramJsBridgeListener.a());
       try
       {
@@ -317,7 +317,7 @@ public class PayJsPlugin
           paramString.recycle();
           paramJsBridgeListener.putParcelable("_qwallet_payresult_receiver", (Parcelable)localObject1);
         }
-        PayBridgeActivity.a(this.jdField_a_of_type_AndroidAppActivity, 9, paramJsBridgeListener);
+        PayBridgeActivity.tenpay(this.jdField_a_of_type_AndroidAppActivity, 9, paramJsBridgeListener);
       }
       catch (Exception paramString)
       {
@@ -365,7 +365,7 @@ public class PayJsPlugin
       if (!TextUtils.isEmpty(str)) {
         localObject = URLEncoder.encode(str, "utf-8");
       }
-      str = QWalletHelper.getAppInfoFromHistory();
+      str = QWalletHelperImpl.getAppInfoFromHistory();
       paramJsBridgeListener = String.valueOf(paramJsBridgeListener.a());
       Bundle localBundle = new Bundle();
       localBundle.putString("payparmas_callback_sn", paramJsBridgeListener);
@@ -375,7 +375,7 @@ public class PayJsPlugin
       localBundle.putString("payparmas_url_appinfo", str);
       localBundle.putLong("vacreport_key_seq", this.jdField_b_of_type_Long);
       localBundle.putString("payparmas_h5_url", (String)localObject);
-      this.jdField_a_of_type_AndroidOsBundle = PayBridgeActivity.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizWebviewpluginPayJsPlugin$MyResultRecevicer, 9, localBundle);
+      this.jdField_a_of_type_AndroidOsBundle = PayBridgeActivity.newPay(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizWebviewpluginPayJsPlugin$MyResultRecevicer, 9, localBundle);
       if (this.jdField_a_of_type_AndroidOsBundle.getInt("retCode", -1) != 0)
       {
         paramString = this.jdField_a_of_type_AndroidOsBundle.getString("retJson");
@@ -497,7 +497,7 @@ public class PayJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PayJsPlugin
  * JD-Core Version:    0.7.0.1
  */

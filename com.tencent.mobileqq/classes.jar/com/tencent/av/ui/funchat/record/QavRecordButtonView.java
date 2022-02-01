@@ -13,19 +13,17 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import mom;
-import mon;
 
 public class QavRecordButtonView
   extends View
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 1;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private mon jdField_a_of_type_Mon;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = null;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = null;
+  private QavRecordButtonView.ShowStateChangeListener jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView$ShowStateChangeListener;
   
   public QavRecordButtonView(Context paramContext)
   {
@@ -73,8 +71,8 @@ public class QavRecordButtonView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130842263);
-    super.setOnTouchListener(new mom(this));
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130842406);
+    super.setOnTouchListener(new QavRecordButtonView.1(this));
   }
   
   public int a()
@@ -111,14 +109,14 @@ public class QavRecordButtonView
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F - 360.0F * (1.0F - f1), false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
   }
   
-  public void setListener(mon parammon)
+  public void setListener(QavRecordButtonView.ShowStateChangeListener paramShowStateChangeListener)
   {
-    this.jdField_a_of_type_Mon = parammon;
+    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView$ShowStateChangeListener = paramShowStateChangeListener;
   }
   
   public void setProgress(long paramLong1, long paramLong2)
@@ -144,10 +142,10 @@ public class QavRecordButtonView
     for (;;)
     {
       invalidate();
-      if (this.jdField_a_of_type_Mon == null) {
+      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView$ShowStateChangeListener == null) {
         break;
       }
-      this.jdField_a_of_type_Mon.e(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView$ShowStateChangeListener.e(this.jdField_a_of_type_Int);
       return;
       super.setAlpha(1.0F);
       if (paramBoolean)
@@ -156,10 +154,10 @@ public class QavRecordButtonView
         continue;
         if (paramBoolean)
         {
-          super.setContentDescription(getResources().getString(2131695523));
+          super.setContentDescription(getResources().getString(2131695764));
           continue;
           if (paramBoolean) {
-            super.setContentDescription(getResources().getString(2131695524));
+            super.setContentDescription(getResources().getString(2131695765));
           }
           this.jdField_a_of_type_Float = 0.0F;
         }
@@ -169,7 +167,7 @@ public class QavRecordButtonView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavRecordButtonView
  * JD-Core Version:    0.7.0.1
  */

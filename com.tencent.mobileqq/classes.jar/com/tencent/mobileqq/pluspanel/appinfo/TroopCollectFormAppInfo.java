@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
 import android.content.Context;
 import android.text.TextUtils;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -73,43 +73,69 @@ public class TroopCollectFormAppInfo
       }
       return;
     }
-    MiniAppLauncher.startMiniApp(paramContext, paramString1, 2016, null);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, paramString1, 2016, null);
   }
   
   private void a(Context paramContext, HashMap<String, String> paramHashMap)
   {
-    LaunchParam localLaunchParam = new LaunchParam();
-    localLaunchParam.miniAppId = ((String)paramHashMap.get("appid"));
+    String str2 = (String)paramHashMap.get("appid");
     String str1 = (String)paramHashMap.get("path");
-    String str2 = (String)paramHashMap.get("extraData");
-    String str3 = (String)paramHashMap.get("envVersion");
+    String str3 = (String)paramHashMap.get("extraData");
+    Object localObject5 = (String)paramHashMap.get("envVersion");
+    Object localObject3 = "";
     try
     {
-      if (!TextUtils.isEmpty(str1)) {
-        localLaunchParam.entryPath = URLDecoder.decode(str1.replaceAll("%(?![0-9a-fA-F]{2})", "%25").replaceAll("\\+", "%2B"), "UTF-8");
-      }
-      if (!TextUtils.isEmpty(str2)) {
-        localLaunchParam.navigateExtData = URLDecoder.decode(str2, "UTF-8");
-      }
-      if (!TextUtils.isEmpty(str3)) {
-        localLaunchParam.envVersion = URLDecoder.decode(str3, "UTF-8");
+      if (!TextUtils.isEmpty(str1))
+      {
+        str1 = URLDecoder.decode(str1.replaceAll("%(?![0-9a-fA-F]{2})", "%25").replaceAll("\\+", "%2B"), "UTF-8");
+        localObject1 = localObject3;
+        localObject4 = localObject3;
       }
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
     {
       for (;;)
       {
-        com.tencent.qphone.base.util.QLog.e("TroopCollectFormAppInfo", 1, "troopFormLog openTroopFormMiniAppInTroopAIO, " + com.tencent.qphone.base.util.QLog.getStackTraceString(localUnsupportedEncodingException));
+        try
+        {
+          Object localObject1;
+          if (!TextUtils.isEmpty(str3))
+          {
+            localObject4 = localObject3;
+            localObject1 = URLDecoder.decode(str3, "UTF-8");
+          }
+          localObject3 = localObject5;
+          localObject4 = localObject1;
+          if (!TextUtils.isEmpty((CharSequence)localObject5))
+          {
+            localObject4 = localObject1;
+            localObject3 = URLDecoder.decode((String)localObject5, "UTF-8");
+          }
+          localObject5 = localObject3;
+          com.tencent.TMG.utils.QLog.i("TroopCollectFormAppInfo", 1, "troopFormLog openTroopFormMiniAppInTroopAIO:argumentMap :" + paramHashMap.toString());
+          ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById(paramContext, str2, str1, (String)localObject1, (String)localObject5, "", 2016, null);
+          return;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+        {
+          Object localObject4;
+          Object localObject2;
+          localObject3 = localObject4;
+          continue;
+        }
+        localUnsupportedEncodingException1 = localUnsupportedEncodingException1;
+        str1 = "";
+        com.tencent.qphone.base.util.QLog.e("TroopCollectFormAppInfo", 1, "troopFormLog openTroopFormMiniAppInTroopAIO, " + com.tencent.qphone.base.util.QLog.getStackTraceString(localUnsupportedEncodingException1));
+        localObject2 = localObject3;
+        continue;
+        str1 = "";
       }
     }
-    localLaunchParam.scene = 2016;
-    com.tencent.TMG.utils.QLog.i("TroopCollectFormAppInfo", 1, "troopFormLog openTroopFormMiniAppInTroopAIO:argumentMap :" + paramHashMap.toString());
-    MiniAppLauncher.launchMiniAppById(paramContext, localLaunchParam.miniAppId, localLaunchParam.entryPath, localLaunchParam.navigateExtData, localLaunchParam.envVersion, localLaunchParam.reportData, localLaunchParam.scene);
   }
   
   public int defaultDrawableID()
   {
-    return 2130844202;
+    return 2130844392;
   }
   
   public int getAppID()
@@ -130,16 +156,16 @@ public class TroopCollectFormAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690797);
+    return BaseApplicationImpl.getContext().getString(2131690902);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if (TextUtils.isEmpty(this.url)) {
       return;
     }
-    a(paramBaseChatPie.getActivity(), this.url, paramSessionInfo.troopUin, paramSessionInfo.curFriendNick);
-    bdla.b(paramBaseChatPie.app, "dc00898", "", paramSessionInfo.curFriendUin, "0X8009FCD", "0X8009FCD", 0, 0, "", "", "", "");
+    a(paramBaseChatPie.a(), this.url, paramSessionInfo.b, paramSessionInfo.d);
+    ReportController.b(paramBaseChatPie.a, "dc00898", "", paramSessionInfo.a, "0X8009FCD", "0X8009FCD", 0, 0, "", "", "", "");
   }
 }
 

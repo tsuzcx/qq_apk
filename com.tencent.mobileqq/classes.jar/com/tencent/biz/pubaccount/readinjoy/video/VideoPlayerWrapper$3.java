@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import spn;
-import stn;
+import com.tencent.biz.pubaccount.readinjoy.video.player.wrapper.IPlayer;
 
-public class VideoPlayerWrapper$3
+class VideoPlayerWrapper$3
   implements Runnable
 {
-  public VideoPlayerWrapper$3(spn paramspn, stn paramstn) {}
+  VideoPlayerWrapper$3(VideoPlayerWrapper paramVideoPlayerWrapper, IPlayer paramIPlayer) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class VideoPlayerWrapper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.QUA;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReport_ShuoshuoBehavior_dc02478
   implements LpReportInfo
@@ -60,21 +59,21 @@ public class LpReport_ShuoshuoBehavior_dc02478
     HashMap localHashMap = new HashMap();
     if (this.uin <= 1000L)
     {
-      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
       localHashMap.put("uin", str);
       if (!TextUtils.isEmpty(this.version)) {
-        break label198;
+        break label212;
       }
-      str = "8.4.10";
-      label52:
+      str = "8.5.5";
+      label56:
       LpReportUtils.safePut(localHashMap, "version", str);
-      LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
+      LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
       if (!TextUtils.isEmpty(this.client_time)) {
-        break label206;
+        break label220;
       }
     }
-    label198:
-    label206:
+    label212:
+    label220:
     for (String str = String.valueOf(System.currentTimeMillis());; str = this.client_time)
     {
       localHashMap.put("client_time", str);
@@ -91,7 +90,7 @@ public class LpReport_ShuoshuoBehavior_dc02478
       str = String.valueOf(this.uin);
       break;
       str = this.version;
-      break label52;
+      break label56;
     }
   }
   
@@ -127,7 +126,7 @@ public class LpReport_ShuoshuoBehavior_dc02478
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_ShuoshuoBehavior_dc02478
  * JD-Core Version:    0.7.0.1
  */

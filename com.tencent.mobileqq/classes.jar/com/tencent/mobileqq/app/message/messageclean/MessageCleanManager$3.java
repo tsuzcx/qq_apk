@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import aoqj;
-
-public class MessageCleanManager$3
+class MessageCleanManager$3
   implements Runnable
 {
-  public MessageCleanManager$3(aoqj paramaoqj) {}
+  MessageCleanManager$3(MessageCleanManager paramMessageCleanManager) {}
   
   public void run()
   {
-    if (!aoqj.a(this.this$0)) {
-      aoqj.c(this.this$0);
+    if (!MessageCleanManager.a(this.this$0)) {
+      MessageCleanManager.c(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.MessageCleanManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.qassistant.core;
 
 import android.widget.TextView;
 
-public class VoiceAssistantManager$3
+class VoiceAssistantManager$3
   implements Runnable
 {
   public void run()

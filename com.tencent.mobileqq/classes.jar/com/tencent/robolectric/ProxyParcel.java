@@ -2,8 +2,6 @@ package com.tencent.robolectric;
 
 import android.os.IBinder;
 import android.os.Parcelable.Creator;
-import bkwe;
-import bkwf;
 import java.io.FileDescriptor;
 import java.util.HashMap;
 
@@ -14,13 +12,13 @@ public final class ProxyParcel
   private static final ProxyParcel[] jdField_a_of_type_ArrayOfComTencentRobolectricProxyParcel;
   private static final ProxyParcel[] jdField_b_of_type_ArrayOfComTencentRobolectricProxyParcel;
   private long jdField_a_of_type_Long;
-  private bkwf jdField_a_of_type_Bkwf;
+  private ProxyParcel.ReadWriteHelper jdField_a_of_type_ComTencentRobolectricProxyParcel$ReadWriteHelper;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
   
   static
   {
-    jdField_a_of_type_AndroidOsParcelable$Creator = new bkwe();
+    jdField_a_of_type_AndroidOsParcelable$Creator = new ProxyParcel.1();
     jdField_a_of_type_ArrayOfComTencentRobolectricProxyParcel = new ProxyParcel[6];
     jdField_b_of_type_ArrayOfComTencentRobolectricProxyParcel = new ProxyParcel[6];
   }
@@ -36,7 +34,7 @@ public final class ProxyParcel
       }
       this.jdField_a_of_type_Long = 0L;
     }
-    this.jdField_a_of_type_Bkwf = null;
+    this.jdField_a_of_type_ComTencentRobolectricProxyParcel$ReadWriteHelper = null;
   }
   
   private void a(long paramLong)
@@ -129,7 +127,7 @@ public final class ProxyParcel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.robolectric.ProxyParcel
  * JD-Core Version:    0.7.0.1
  */

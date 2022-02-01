@@ -8,8 +8,8 @@ public final class AllowJoinShareAlbumData
   extends JceStruct
 {
   public String albumid = "";
-  public long joiner;
-  public long owner;
+  public long joiner = 0L;
+  public long owner = 0L;
   
   public AllowJoinShareAlbumData() {}
   

@@ -12,7 +12,6 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.LinearLayout;
-import azvw;
 import com.tencent.qphone.base.util.QLog;
 
 public class ShimmerLinearLayout
@@ -22,7 +21,7 @@ public class ShimmerLinearLayout
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   public Bitmap a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private int c;
@@ -78,7 +77,7 @@ public class ShimmerLinearLayout
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.c + this.jdField_b_of_type_Int);
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new azvw(this, i, j, k, m, null));
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ShimmerLinearLayout.UpdateListener(this, i, j, k, m, null));
           localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
           continue;
           i = -this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
@@ -191,7 +190,7 @@ public class ShimmerLinearLayout
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  void a(int paramInt1, int paramInt2)
   {
     if ((this.d == paramInt1) && (this.e == paramInt2)) {
       return;
@@ -230,7 +229,7 @@ public class ShimmerLinearLayout
     this.jdField_a_of_type_Boolean = false;
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     if ((!this.jdField_a_of_type_Boolean) || (getWidth() <= 0) || (getHeight() <= 0))
     {
@@ -240,7 +239,7 @@ public class ShimmerLinearLayout
     a(paramCanvas);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     QLog.i("ShimmerLinearLayout", 1, "ShimmerLinearLayout.onDetachedFromWindow()");

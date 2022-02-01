@@ -3,6 +3,7 @@ package com.tencent.viola.ui.view;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
@@ -79,6 +80,12 @@ public class VSmartView
   @SuppressLint({"ClickableViewAccessibility"})
   public void addRecyclerView(VRecyclerView paramVRecyclerView, boolean paramBoolean)
   {
+    addRecyclerView(paramVRecyclerView, paramBoolean, -1);
+  }
+  
+  @SuppressLint({"ClickableViewAccessibility"})
+  public void addRecyclerView(VRecyclerView paramVRecyclerView, boolean paramBoolean, int paramInt)
+  {
     if (paramVRecyclerView == null) {
       return;
     }
@@ -89,7 +96,12 @@ public class VSmartView
     paramVRecyclerView.setOnTouchListener(this);
     paramVRecyclerView.setOnScrollListener(this.scrollListener);
     paramVRecyclerView.setTag(localRecyclerViewWrapper);
-    this.recyclerViews.add(localRecyclerViewWrapper);
+    if ((paramInt < 0) || (paramInt > this.recyclerViews.size()))
+    {
+      this.recyclerViews.add(localRecyclerViewWrapper);
+      return;
+    }
+    this.recyclerViews.add(paramInt, localRecyclerViewWrapper);
   }
   
   public void destroy()
@@ -98,6 +110,11 @@ public class VSmartView
       this.viewPager.removeScrollListener(this.vPagerSliderScrollListener);
     }
     this.recyclerViews.clear();
+  }
+  
+  public ViewPager getViewPager()
+  {
+    return this.viewPager;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -143,7 +160,7 @@ public class VSmartView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.VSmartView
  * JD-Core Version:    0.7.0.1
  */

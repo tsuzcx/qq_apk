@@ -98,6 +98,7 @@ public class WebViewClient
   
   public void onScaleChanged(WebView paramWebView, float paramFloat1, float paramFloat2) {}
   
+  @Deprecated
   public void onTooManyRedirects(WebView paramWebView, Message paramMessage1, Message paramMessage2) {}
   
   public void onUnhandledKeyEvent(WebView paramWebView, KeyEvent paramKeyEvent) {}
@@ -143,7 +144,7 @@ public class WebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebViewClient
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,9 @@ public final class ReportTypeReq
   extends JceStruct
 {
   public String appid = "";
-  public int sub_type;
-  public int tt;
-  public int type;
+  public int sub_type = 0;
+  public int tt = 0;
+  public int type = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -32,7 +32,7 @@ public final class ReportTypeReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.protocol.ReportTypeReq
  * JD-Core Version:    0.7.0.1
  */

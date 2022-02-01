@@ -59,11 +59,11 @@ class ServerConfigManagerImpl
     default: 
       return null;
     case 1: 
-      return this.app.getService().msfSub.syncGetServerAppConfig();
+      return this.app.getRuntimeService().msfSub.syncGetServerAppConfig();
     case 2: 
-      return this.app.getService().msfSub.syncGetServerCommonConfig();
+      return this.app.getRuntimeService().msfSub.syncGetServerCommonConfig();
     }
-    return this.app.getService().msfSub.syncGetServerUserConfig(paramString);
+    return this.app.getRuntimeService().msfSub.syncGetServerUserConfig(paramString);
   }
   
   public void onDestroy() {}

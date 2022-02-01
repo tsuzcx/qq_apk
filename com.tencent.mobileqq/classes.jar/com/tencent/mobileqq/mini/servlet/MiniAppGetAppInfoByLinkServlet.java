@@ -4,11 +4,11 @@ import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhjl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
 
@@ -29,17 +29,18 @@ public class MiniAppGetAppInfoByLinkServlet
   
   public void onProcessData(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    Object localObject = new INTERFACE.StGetAppInfoByLinkRsp();
-    ((INTERFACE.StGetAppInfoByLinkRsp)localObject).mergeFrom(paramArrayOfByte);
-    if (((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo != null)
+    INTERFACE.StGetAppInfoByLinkRsp localStGetAppInfoByLinkRsp = new INTERFACE.StGetAppInfoByLinkRsp();
+    localStGetAppInfoByLinkRsp.mergeFrom(paramArrayOfByte);
+    if (localStGetAppInfoByLinkRsp.appInfo != null)
     {
-      if (((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo.type.get() == 3) {
-        savaMiniAppInfo(paramIntent, (INTERFACE.StGetAppInfoByLinkRsp)localObject);
+      if (localStGetAppInfoByLinkRsp.appInfo.type.get() == 3) {
+        savaMiniAppInfo(paramIntent, localStGetAppInfoByLinkRsp);
       }
-      paramArrayOfByte = MiniAppInfo.from(((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo);
-      localObject = ((INTERFACE.StGetAppInfoByLinkRsp)localObject).shareTicket.get();
+      paramArrayOfByte = MiniAppInfo.from(localStGetAppInfoByLinkRsp.appInfo);
+      String str = localStGetAppInfoByLinkRsp.shareTicket.get();
       paramBundle.putSerializable("appInfo", paramArrayOfByte);
-      paramBundle.putString("shareTicket", (String)localObject);
+      paramBundle.putSerializable("appInfo_pd", localStGetAppInfoByLinkRsp.appInfo.toByteArray());
+      paramBundle.putString("shareTicket", str);
       QLog.i("[mini] MiniAppGetAppInfoByLinkServlet", 1, "[MiniEng]" + paramArrayOfByte.downloadUrl + "," + paramArrayOfByte.fileSize);
       notifyObserver(paramIntent, this.observerId, true, paramBundle, MiniAppObserver.class);
       return;
@@ -60,7 +61,7 @@ public class MiniAppGetAppInfoByLinkServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetAppInfoByLink");
-    paramPacket.putSendData(bhjl.a((byte[])localObject));
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

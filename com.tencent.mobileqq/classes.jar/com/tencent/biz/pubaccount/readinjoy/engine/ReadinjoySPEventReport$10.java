@@ -1,12 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import uuc;
 
-public class ReadinjoySPEventReport$10
+class ReadinjoySPEventReport$10
   implements Runnable
 {
   public void run()
@@ -22,12 +23,12 @@ public class ReadinjoySPEventReport$10
     localAttributeList2.att_value.set(String.valueOf(this.jdField_a_of_type_Long / 1000L));
     localArrayList.add(localAttributeList1);
     localArrayList.add(localAttributeList2);
-    uuc.a(20, localArrayList);
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPushEffectEvent(20, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.10
  * JD-Core Version:    0.7.0.1
  */

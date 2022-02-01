@@ -1,7 +1,6 @@
 package com.tencent.av.gaudio;
 
 import java.util.TimerTask;
-import lnj;
 
 class BaseGaInvite$ToolBarTask
   extends TimerTask
@@ -15,7 +14,7 @@ class BaseGaInvite$ToolBarTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.gaudio.BaseGaInvite.ToolBarTask
  * JD-Core Version:    0.7.0.1
  */

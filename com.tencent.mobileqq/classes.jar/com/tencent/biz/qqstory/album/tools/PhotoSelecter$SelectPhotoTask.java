@@ -3,23 +3,20 @@ package com.tencent.biz.qqstory.album.tools;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import vyn;
-import vyo;
-import vyp;
-import ykq;
 
-public class PhotoSelecter$SelectPhotoTask
+class PhotoSelecter$SelectPhotoTask
   implements Runnable
 {
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   Context jdField_a_of_type_AndroidContentContext;
-  List<vyo> jdField_a_of_type_JavaUtilList;
-  vyn jdField_a_of_type_Vyn;
+  PhotoSelecter.SelectPhotoCallback jdField_a_of_type_ComTencentBizQqstoryAlbumToolsPhotoSelecter$SelectPhotoCallback;
+  List<PhotoSelecter.SelectPhotoTask.PicInfoContainer> jdField_a_of_type_JavaUtilList;
   long b;
   
   public void run()
@@ -66,7 +63,7 @@ public class PhotoSelecter$SelectPhotoTask
       localObject1 = new ArrayList();
       localObject2 = localArrayList.iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((ArrayList)localObject1).add(((vyo)((Iterator)localObject2).next()).jdField_a_of_type_Vxh);
+        ((ArrayList)localObject1).add(((PhotoSelecter.SelectPhotoTask.PicInfoContainer)((Iterator)localObject2).next()).jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum$PicInfo);
       }
     }
     Object localObject3;
@@ -75,7 +72,7 @@ public class PhotoSelecter$SelectPhotoTask
       localObject1 = PhotoSelecter.a;
       localObject3 = new StringBuilder().append("round = ");
       k = i + 1;
-      ykq.b((String)localObject1, i);
+      SLog.b((String)localObject1, i);
       j = 0;
       i = k;
     }
@@ -87,8 +84,8 @@ public class PhotoSelecter$SelectPhotoTask
         if (!((Iterator)localObject3).hasNext()) {
           break;
         }
-        localObject1 = (vyo)((Iterator)localObject3).next();
-      } while (((vyo)localObject1).jdField_a_of_type_Int != 1);
+        localObject1 = (PhotoSelecter.SelectPhotoTask.PicInfoContainer)((Iterator)localObject3).next();
+      } while (((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).jdField_a_of_type_Int != 1);
       for (;;)
       {
         if (localObject1 == null)
@@ -100,7 +97,7 @@ public class PhotoSelecter$SelectPhotoTask
         }
         if (localArrayList.size() == 0)
         {
-          ((vyo)localObject1).jdField_a_of_type_Int = 2;
+          ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).jdField_a_of_type_Int = 2;
           localArrayList.add(localObject1);
           label410:
           j += 1;
@@ -109,15 +106,15 @@ public class PhotoSelecter$SelectPhotoTask
         localObject3 = localArrayList.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          Bitmap localBitmap1 = ((vyo)((Iterator)localObject3).next()).a(this.jdField_a_of_type_AndroidContentContext);
-          Bitmap localBitmap2 = ((vyo)localObject1).a(this.jdField_a_of_type_AndroidContentContext);
+          Bitmap localBitmap1 = ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)((Iterator)localObject3).next()).a(this.jdField_a_of_type_AndroidContentContext);
+          Bitmap localBitmap2 = ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).a(this.jdField_a_of_type_AndroidContentContext);
           long l1 = System.currentTimeMillis();
-          double d = vyp.a(localBitmap1, localBitmap2);
+          double d = PhotoSimilar.a(localBitmap1, localBitmap2);
           long l2 = this.jdField_a_of_type_Long;
           this.jdField_a_of_type_Long = (System.currentTimeMillis() - l1 + l2);
           this.b += 1L;
           if (d >= 0.7D) {
-            ((vyo)localObject1).jdField_a_of_type_Int = 3;
+            ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).jdField_a_of_type_Int = 3;
           }
         }
         for (k = 1;; k = 0)
@@ -127,12 +124,12 @@ public class PhotoSelecter$SelectPhotoTask
             j += 1;
             break;
           }
-          ((vyo)localObject1).jdField_a_of_type_Int = 2;
+          ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).jdField_a_of_type_Int = 2;
           localArrayList.add(localObject1);
           break label410;
-          ykq.b(PhotoSelecter.a, "compare total time = " + this.jdField_a_of_type_Long + " compareTimes = " + this.b);
-          ykq.b(PhotoSelecter.a, "single compare time = " + this.jdField_a_of_type_Long / this.b);
-          this.jdField_a_of_type_Vyn.a((ArrayList)localObject1);
+          SLog.b(PhotoSelecter.a, "compare total time = " + this.jdField_a_of_type_Long + " compareTimes = " + this.b);
+          SLog.b(PhotoSelecter.a, "single compare time = " + this.jdField_a_of_type_Long / this.b);
+          this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsPhotoSelecter$SelectPhotoCallback.a((ArrayList)localObject1);
           return;
         }
         localObject1 = null;
@@ -142,7 +139,7 @@ public class PhotoSelecter$SelectPhotoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.PhotoSelecter.SelectPhotoTask
  * JD-Core Version:    0.7.0.1
  */

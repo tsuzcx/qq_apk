@@ -13,8 +13,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import bhdz;
-import bopj;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class QimMusicSeekView
@@ -30,49 +29,61 @@ public class QimMusicSeekView
   float a;
   protected Paint a;
   protected Rect a;
-  protected bopj a;
+  protected QimMusicSeekView.SeekListener a;
   protected boolean a;
   protected Paint b;
   protected Paint c;
   protected Paint d;
   protected int e;
   protected Paint e;
-  protected int f;
-  protected int g;
-  protected int h;
-  protected int i;
-  protected int j;
-  protected int k;
-  protected int l;
-  protected int m;
-  protected int n;
-  protected int o;
-  protected int p;
-  protected int q;
-  protected int r;
+  protected int f = 0;
+  protected int g = 0;
+  protected int h = 0;
+  protected int i = 0;
+  protected int j = 0;
+  protected int k = 0;
+  protected int l = 0;
+  protected int m = 0;
+  protected int n = 0;
+  protected int o = 0;
+  protected int p = 0;
+  protected int q = 0;
+  protected int r = 0;
   
   static
   {
     jdField_a_of_type_ArrayOfInt = new int[] { 18, 14, 9, 12, 14, 18 };
     jdField_a_of_type_Int = jdField_a_of_type_ArrayOfInt.length;
+    jdField_b_of_type_Int = 0;
     jdField_b_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
+    jdField_c_of_type_Int = 0;
+    jdField_d_of_type_Int = 0;
   }
   
   public QimMusicSeekView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_a_of_type_DovComQqImCaptureViewQimMusicSeekView$SeekListener = null;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_b_of_type_AndroidGraphicsPaint = null;
+    this.jdField_c_of_type_AndroidGraphicsPaint = null;
+    this.jdField_d_of_type_AndroidGraphicsPaint = null;
+    this.jdField_e_of_type_AndroidGraphicsPaint = null;
     this.jdField_a_of_type_Float = 0.0F;
-    this.p = ((int)bhdz.a(paramContext, 8.0F));
-    this.n = ((int)bhdz.a(paramContext, 2.0F));
-    this.o = ((int)bhdz.a(paramContext, 2.0F));
-    this.r = ((int)bhdz.a(paramContext, 3.0F));
-    jdField_b_of_type_Int = (int)bhdz.a(paramContext, 4.0F);
-    jdField_d_of_type_Int = (int)bhdz.a(paramContext, 50.0F);
-    jdField_c_of_type_Int = (int)bhdz.a(paramContext, 36.0F);
+    this.p = ((int)DisplayUtils.a(paramContext, 8.0F));
+    this.n = ((int)DisplayUtils.a(paramContext, 2.0F));
+    this.o = ((int)DisplayUtils.a(paramContext, 2.0F));
+    this.r = ((int)DisplayUtils.a(paramContext, 3.0F));
+    jdField_b_of_type_Int = (int)DisplayUtils.a(paramContext, 4.0F);
+    jdField_d_of_type_Int = (int)DisplayUtils.a(paramContext, 50.0F);
+    jdField_c_of_type_Int = (int)DisplayUtils.a(paramContext, 36.0F);
     int i1 = 0;
     while (i1 < jdField_a_of_type_Int)
     {
-      jdField_b_of_type_ArrayOfInt[i1] = ((int)bhdz.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
+      jdField_b_of_type_ArrayOfInt[i1] = ((int)DisplayUtils.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
       i1 += 1;
     }
     paramContext = paramContext.getResources();
@@ -81,10 +92,10 @@ public class QimMusicSeekView
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131165559));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166307));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166314));
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131167369));
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131167381));
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_d_of_type_AndroidGraphicsPaint = new Paint();
@@ -247,7 +258,7 @@ public class QimMusicSeekView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.l = super.getMeasuredWidth();
@@ -256,8 +267,8 @@ public class QimMusicSeekView
     this.k = ((this.l - this.g) / 2);
     paramInt1 = (this.m - jdField_d_of_type_Int) / 2;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.k, paramInt1, this.k + this.g, jdField_d_of_type_Int + paramInt1);
-    if (this.jdField_a_of_type_Bopj != null) {
-      this.jdField_a_of_type_Bopj.a(this.k, this.g);
+    if (this.jdField_a_of_type_DovComQqImCaptureViewQimMusicSeekView$SeekListener != null) {
+      this.jdField_a_of_type_DovComQqImCaptureViewQimMusicSeekView$SeekListener.a(this.k, this.g);
     }
     if (QLog.isColorLevel()) {
       QLog.d("zivonchen", 2, "onMeasure() mViewWidth: " + this.l + ", mViewHeight = " + this.m + ", mVideoViewOffsetX = " + this.k + ", mMusicMaxWidth = " + this.h);
@@ -280,10 +291,10 @@ public class QimMusicSeekView
         return bool1;
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        if (this.jdField_a_of_type_Bopj == null) {
+        if (this.jdField_a_of_type_DovComQqImCaptureViewQimMusicSeekView$SeekListener == null) {
           break;
         }
-        this.jdField_a_of_type_Bopj.a(this.h, this.g, this.i);
+        this.jdField_a_of_type_DovComQqImCaptureViewQimMusicSeekView$SeekListener.a(this.h, this.g, this.i);
         break;
         this.jdField_a_of_type_Boolean = true;
         f1 = paramMotionEvent.getX();
@@ -306,8 +317,8 @@ public class QimMusicSeekView
             this.i = (this.h - this.g);
           }
           super.invalidate();
-          if (this.jdField_a_of_type_Bopj != null) {
-            this.jdField_a_of_type_Bopj.b(this.h, this.g, this.i);
+          if (this.jdField_a_of_type_DovComQqImCaptureViewQimMusicSeekView$SeekListener != null) {
+            this.jdField_a_of_type_DovComQqImCaptureViewQimMusicSeekView$SeekListener.b(this.h, this.g, this.i);
           }
           this.jdField_a_of_type_Float = f1;
           break;
@@ -315,8 +326,8 @@ public class QimMusicSeekView
       }
       this.jdField_a_of_type_Boolean = false;
       super.invalidate();
-      if (this.jdField_a_of_type_Bopj != null) {
-        this.jdField_a_of_type_Bopj.c(this.h, this.g, this.i);
+      if (this.jdField_a_of_type_DovComQqImCaptureViewQimMusicSeekView$SeekListener != null) {
+        this.jdField_a_of_type_DovComQqImCaptureViewQimMusicSeekView$SeekListener.c(this.h, this.g, this.i);
       }
     }
   }
@@ -329,9 +340,9 @@ public class QimMusicSeekView
     this.h = (jdField_b_of_type_Int * this.f + (this.f - 1) * this.n);
   }
   
-  public void setOnSeekListener(bopj parambopj)
+  public void setOnSeekListener(QimMusicSeekView.SeekListener paramSeekListener)
   {
-    this.jdField_a_of_type_Bopj = parambopj;
+    this.jdField_a_of_type_DovComQqImCaptureViewQimMusicSeekView$SeekListener = paramSeekListener;
   }
   
   public void setPlayedPosition(int paramInt)
@@ -342,7 +353,7 @@ public class QimMusicSeekView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QimMusicSeekView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,24 @@
 package com.tencent.mobileqq.msf.core;
 
-import com.tencent.msf.boot.config.NativeConfigStore;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class p
-  extends Thread
+public class p
 {
-  public void run()
+  private static boolean a;
+  
+  public static boolean a()
   {
-    try
-    {
-      Thread.sleep(180000L);
-      MsfStore.getNativeConfigStore().removeConfig("LOGLEVEL_");
-      MsfStore.getNativeConfigStore().removeConfig("LOGLEVELTIME");
-      QLog.d(i.b, 1, "LogLevel and time has removed");
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
+    if (!a) {
+      if (Build.VERSION.SDK_INT < 23) {
+        break label44;
       }
+    }
+    label44:
+    for (a = TextUtils.equals(BaseApplication.getContext().getSharedPreferences("c_profile_sharepreference", 4).getString("privacypolicy_state", "0"), "1");; a = true) {
+      return a;
     }
   }
 }

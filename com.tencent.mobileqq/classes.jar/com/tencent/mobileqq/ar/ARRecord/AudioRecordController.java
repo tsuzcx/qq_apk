@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import apdx;
 import java.lang.ref.WeakReference;
 
 public abstract class AudioRecordController
   extends Thread
 {
-  public WeakReference<apdx> a;
+  public WeakReference<VideoRecordController> a;
   
-  public AudioRecordController(apdx paramapdx)
+  public AudioRecordController(VideoRecordController paramVideoRecordController)
   {
     super("AudioRecordThread");
-    this.a = new WeakReference(paramapdx);
+    this.a = new WeakReference(paramVideoRecordController);
   }
   
   public abstract void a();
@@ -27,7 +26,7 @@ public abstract class AudioRecordController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.AudioRecordController
  * JD-Core Version:    0.7.0.1
  */

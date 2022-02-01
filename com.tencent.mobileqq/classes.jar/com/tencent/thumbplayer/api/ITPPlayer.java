@@ -1,13 +1,18 @@
 package com.tencent.thumbplayer.api;
 
+import android.os.Looper;
 import android.os.ParcelFileDescriptor;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import androidx.annotation.NonNull;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapSeekMode;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapSwitchDefMode;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.api.report.ITPBusinessReportManager;
+import com.tencent.thumbplayer.api.resourceloader.ITPAssetResourceLoaderListener;
+import com.tencent.thumbplayer.log.TPLoggerContext;
 import com.tencent.thumbplayer.tplayer.plugins.ITPPluginBase;
 import com.tencent.thumbplayer.tplayer.plugins.ITPPluginManager;
 import java.util.Map;
@@ -18,12 +23,19 @@ public abstract interface ITPPlayer
   public static final String TP_MIMETYPE_TEXT_VTT = "text/vtt";
   public static final int TP_PLAYER_LOOPBACK_ENDPOSITION_DEFAULT = -1;
   public static final int TP_PLAYER_LOOPBACK_STARTPOSITION_DEFAULT = 0;
+  @TPNativeKeyMap.MapSeekMode(3)
   public static final int TP_PLAYER_SEEK_MODE_ACCURATE_POSITION = 3;
+  @TPNativeKeyMap.MapSeekMode(1)
   public static final int TP_PLAYER_SEEK_MODE_FREVIOUS_KFRAME = 1;
+  @TPNativeKeyMap.MapSeekMode(4)
   public static final int TP_PLAYER_SEEK_MODE_NEXT_CLIP = 4;
+  @TPNativeKeyMap.MapSeekMode(2)
   public static final int TP_PLAYER_SEEK_MODE_NEXT_KFRAME = 2;
+  @TPNativeKeyMap.MapSwitchDefMode(3)
   public static final int TP_PLAYER_SWITCH_DEF_AFTER_ALL_RESOURCE_CONSUME = 3;
+  @TPNativeKeyMap.MapSwitchDefMode(2)
   public static final int TP_PLAYER_SWITCH_DEF_FAST_WITH_KEEP_NO_BUFFERING = 2;
+  @TPNativeKeyMap.MapSwitchDefMode(1)
   public static final int TP_PLAYER_SWITCH_DEF_IMMEDIATELY = 1;
   
   public abstract void addAudioTrackSource(String paramString1, String paramString2);
@@ -40,9 +52,13 @@ public abstract interface ITPPlayer
   
   public abstract void deselectTrack(int paramInt, long paramLong);
   
+  public abstract void enableTPAssetResourceLoader(ITPAssetResourceLoaderListener paramITPAssetResourceLoaderListener, Looper paramLooper);
+  
   public abstract int getBufferPercent();
   
   public abstract long getCurrentPositionMs();
+  
+  public abstract int getCurrentState();
   
   public abstract long getDurationMs();
   
@@ -146,6 +162,8 @@ public abstract interface ITPPlayer
   
   public abstract void setSurfaceHolder(SurfaceHolder paramSurfaceHolder);
   
+  public abstract void setTPSurface(ITPSurface paramITPSurface);
+  
   public abstract void setVideoInfo(TPVideoInfo paramTPVideoInfo);
   
   public abstract void start();
@@ -161,10 +179,12 @@ public abstract interface ITPPlayer
   public abstract void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo);
   
   public abstract void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt);
+  
+  public abstract void updateLoggerContext(TPLoggerContext paramTPLoggerContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.api.ITPPlayer
  * JD-Core Version:    0.7.0.1
  */

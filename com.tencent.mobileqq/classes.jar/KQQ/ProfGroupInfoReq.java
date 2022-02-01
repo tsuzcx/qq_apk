@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class ProfGroupInfoReq
   extends JceStruct
 {
-  public byte cIfGetAuthInfo;
-  public byte cIsGetGroupAlbum;
-  public byte cStatOption;
-  public long dwTimeStamp;
-  public long uGroupCode;
-  public int wSourceID;
-  public int wSourceSubID;
+  public byte cIfGetAuthInfo = 0;
+  public byte cIsGetGroupAlbum = 0;
+  public byte cStatOption = 0;
+  public long dwTimeStamp = 0L;
+  public long uGroupCode = 0L;
+  public int wSourceID = 0;
+  public int wSourceSubID = 0;
   
   public ProfGroupInfoReq() {}
   

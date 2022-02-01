@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.troop.data.NotificationRecommendTroopItem;
 
-public final class RecommendTroopManagerImp$4
+final class RecommendTroopManagerImp$4
   implements Runnable
 {
-  public RecommendTroopManagerImp$4(AppInterface paramAppInterface, int paramInt, String paramString) {}
+  RecommendTroopManagerImp$4(AppInterface paramAppInterface, int paramInt, String paramString) {}
   
   public void run()
   {
@@ -43,7 +43,7 @@ public final class RecommendTroopManagerImp$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RecommendTroopManagerImp.4
  * JD-Core Version:    0.7.0.1
  */

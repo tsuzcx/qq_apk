@@ -1,21 +1,24 @@
 package com.tencent.mobileqq.transfile;
 
-import azjj;
-import azjk;
-import bahl;
-import bahm;
-import bahy;
-import bdla;
-import bdtt;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.pic.DownCallBack;
+import com.tencent.mobileqq.pic.DownCallBack.DownResult;
+import com.tencent.mobileqq.ptt.PttIpSaver;
+import com.tencent.mobileqq.ptt.PttOptimizeParams;
+import com.tencent.mobileqq.ptt.preop.PTTPreDownloader;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.stt.SttManager;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.GroupPttDownReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
@@ -31,15 +34,15 @@ import mqq.manager.ProxyIpManager;
 import mqq.os.MqqHandler;
 
 public class GroupPttDownloadProcessor
-  extends BaseDownloadProcessor
-  implements INetEngine.IBreakDownFix, INetEngine.NetFailedListener, Runnable
+  extends BasePttDownloaderProcessor
+  implements NetFailedListener, Runnable
 {
   public static final int DIRECT_DOWNLOAD_FAIL = 3;
   public static final int DIRECT_DOWNLOAD_NO_IP = 2;
   public static final int DIRECT_DOWNLOAD_NO_URL = 1;
   public static final int DIRECT_DOWNLOAD_OUTOFTIME = 4;
-  private String mDirectDownloadURL;
-  private TransferRequest.PttDownExtraInfo mExtraInfo;
+  String mDirectDownloadURL = null;
+  TransferRequest.PttDownExtraInfo mExtraInfo;
   String mFullLocalPath;
   long mGroupFileID;
   String mGroupFileKeyStr;
@@ -47,14 +50,14 @@ public class GroupPttDownloadProcessor
   byte[] mMsgFileMd5;
   private long mMsgRecTime;
   private long mMsgTime;
-  private MessageForPtt mPtt;
-  protected bdtt mSttManager = (bdtt)this.app.getManager(QQManagerFactory.STT_MANAGER);
+  MessageForPtt mPtt;
+  protected SttManager mSttManager = (SttManager)this.app.getManager(QQManagerFactory.STT_MANAGER);
   String mTempPath;
-  private boolean useUrlIp;
+  private boolean useUrlIp = false;
   
-  public GroupPttDownloadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public GroupPttDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     this.mProxyIpList = ((ProxyIpManager)this.app.getManager(3)).getProxyIp(4);
   }
   
@@ -165,7 +168,7 @@ public class GroupPttDownloadProcessor
     int i = 0;
     logRichMediaEvent("uiParam", this.mUiRequest.toString());
     String str = this.mUiRequest.mServerPath;
-    if ((str == null) || (str.equals("")) || (str.equals("null")) || (FileUtils.isLocalPath(str)) || (str.startsWith("http://")))
+    if ((str == null) || (str.equals("")) || (str.equals("null")) || (FileUtils.c(str)) || (str.startsWith("http://")))
     {
       setError(9302, getExpStackString(new Exception("uuid illegal " + str)));
       onError();
@@ -177,7 +180,7 @@ public class GroupPttDownloadProcessor
     this.mMsgTime = this.mPtt.msgTime;
     this.mMsgRecTime = this.mPtt.msgRecTime;
     int j = this.mPtt.voiceType;
-    if ((this.mUiRequest.mOutFilePath == null) || (!FileUtils.isLocalPath(this.mUiRequest.mLocalPath)))
+    if ((this.mUiRequest.mOutFilePath == null) || (!FileUtils.c(this.mUiRequest.mLocalPath)))
     {
       if ((this.mPtt.fullLocalPath == null) || (this.mPtt.fullLocalPath.equals("")))
       {
@@ -234,10 +237,10 @@ public class GroupPttDownloadProcessor
       this.mReportInfo.put("param_grpUin", this.mUiRequest.mPeerUin);
       this.mReportInfo.put("param_uuid", this.mUiRequest.mServerPath);
       this.mReportInfo.put("param_quickHttp", String.valueOf(this.mSendByQuickHttp));
-      this.mReportInfo.put("param_pttOpt", String.valueOf(bahm.a(this.app, this.useUrlIp)));
+      this.mReportInfo.put("param_pttOpt", String.valueOf(PttOptimizeParams.a(this.app, this.useUrlIp)));
       localHashMap = this.mReportInfo;
       if (!this.mIsHttpsDownload) {
-        break label442;
+        break label456;
       }
       localObject = "1";
       localHashMap.put("param_isHttps", localObject);
@@ -246,28 +249,29 @@ public class GroupPttDownloadProcessor
       {
         localObject = new StringBuilder().append("GroupPttDownload success: ").append(paramBoolean).append(", cost: ").append(l1).append(" directDownloadIfCan: ");
         if (this.mDirectDownloadURL == null) {
-          break label450;
+          break label464;
         }
         bool = true;
         label348:
         QLog.d("SPD", 4, bool);
       }
       if (!paramBoolean) {
-        break label456;
+        break label470;
       }
+      this.mReportInfo.put("param_isSuccess", "1");
       reportForIpv6(true, l1);
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG(), true, l1, this.mTotolLen, this.mReportInfo, "");
     }
-    label442:
-    label450:
     label456:
+    label464:
+    label470:
     do
     {
       setReportFlag();
       if (this.mPtt == null) {
         break;
       }
-      bahy.a(this.app).a(paramBoolean, this.errCode, this.mExtraInfo, this.mPtt);
+      PTTPreDownloader.a(this.app).a(paramBoolean, this.errCode, this.mExtraInfo, this.mPtt);
       return;
       i = 1;
       break label59;
@@ -282,11 +286,12 @@ public class GroupPttDownloadProcessor
       this.mReportInfo.put("param_errorDesc", this.errDesc);
       if ((this.mNetReq instanceof HttpNetReq))
       {
-        localObject = RichMediaUtil.getIpAndPortFromUrl(((HttpNetReq)this.mNetReq).mReqUrl);
+        localObject = TransFileUtil.getIpAndPortFromUrl(((HttpNetReq)this.mNetReq).mReqUrl);
         if (localObject != null) {
           this.mReportInfo.put("param_reqIp", ((ServerAddr)localObject).mIp);
         }
       }
+      this.mReportInfo.put("param_isSuccess", "0");
       reportForIpv6(false, l1);
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG(), false, l1, 0L, this.mReportInfo, "");
     } while ((this.errCode != -9527) || (this.errDesc == null));
@@ -294,18 +299,18 @@ public class GroupPttDownloadProcessor
     if (this.errDesc.equals("T_203"))
     {
       i = 1;
-      label619:
+      label647:
       if (i == 0) {
-        break label862;
+        break label890;
       }
       if (this.mMsgRecTime > this.mMsgTime) {
         if (!this.mIsGroup) {
-          break label864;
+          break label892;
         }
       }
     }
-    label862:
-    label864:
+    label890:
+    label892:
     for (Object localObject = "actGroupPTTOutOfTime";; localObject = "actDiscussionPTTOutOfTime")
     {
       localHashMap = new HashMap();
@@ -322,32 +327,15 @@ public class GroupPttDownloadProcessor
         break;
       }
       localObject = (TransferRequest.PttDownExtraInfo)this.mUiRequest.mExtraObj;
-      bdla.b(this.app, "CliOper", "", "", "0X80059B3", "0X80059B3", PttInfoCollector.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject).mFromType, ((TransferRequest.PttDownExtraInfo)localObject).mLayer), 0, "", "", "", "8.4.10");
+      ReportController.b(this.app, "CliOper", "", "", "0X80059B3", "0X80059B3", PttInfoCollector.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject).mFromType, ((TransferRequest.PttDownExtraInfo)localObject).mLayer), 0, "", "", "", "8.5.5");
       break;
       if (!this.errDesc.equals("H_400_-5103017")) {
-        break label619;
+        break label647;
       }
       i = 16;
-      break label619;
+      break label647;
       break;
     }
-  }
-  
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
-  {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-    } while (0L != paramNetReq.mEndDownOffset);
-    paramNetResp.mWrittenBlockLen = 0L;
-    paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-    paramNetReq.mReqProperties.put("Range", paramNetResp);
   }
   
   protected String getReportTAG()
@@ -403,9 +391,9 @@ public class GroupPttDownloadProcessor
     super.onError();
     if (this.mUiRequest.mDownCallBack != null)
     {
-      azjk localazjk = new azjk();
-      localazjk.a = -1;
-      this.mUiRequest.mDownCallBack.a(localazjk);
+      DownCallBack.DownResult localDownResult = new DownCallBack.DownResult();
+      localDownResult.a = -1;
+      this.mUiRequest.mDownCallBack.a(localDownResult);
       return;
     }
     sendMessageToUpdate(2005);
@@ -500,14 +488,14 @@ public class GroupPttDownloadProcessor
     this.mPtt.urlAtServer = this.mUiRequest.mServerPath;
     super.onSuccess();
     Object localObject = updateMessageDataBaseContent(this.mPtt);
-    if ((localObject != null) && (((QQMessageFacade.Message)localObject).pttUrl != null) && (((QQMessageFacade.Message)localObject).pttUrl.equals(this.mUiRequest.mServerPath))) {
-      ((QQMessageFacade.Message)localObject).pttUrl = this.mUiRequest.mOutFilePath;
+    if ((localObject != null) && (((Message)localObject).pttUrl != null) && (((Message)localObject).pttUrl.equals(this.mUiRequest.mServerPath))) {
+      ((Message)localObject).pttUrl = this.mUiRequest.mOutFilePath;
     }
     if (this.mUiRequest.mDownCallBack != null)
     {
-      localObject = new azjk();
-      ((azjk)localObject).a = 0;
-      this.mUiRequest.mDownCallBack.a((azjk)localObject);
+      localObject = new DownCallBack.DownResult();
+      ((DownCallBack.DownResult)localObject).a = 0;
+      this.mUiRequest.mDownCallBack.a((DownCallBack.DownResult)localObject);
       return;
     }
     sendMessageToUpdate(2003);
@@ -530,7 +518,7 @@ public class GroupPttDownloadProcessor
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mServerList = this.mIpList;
     localHttpNetReq.mOutPath = this.mUiRequest.mOutFilePath;
-    localHttpNetReq.mBreakDownFix = this;
+    localHttpNetReq.mSupportBreakResume = true;
     localHttpNetReq.mTempPath = this.mTempPath;
     localHttpNetReq.mMsgId = String.valueOf(this.mUiRequest.mUniseq);
     localHttpNetReq.mBusiProtoType = this.mUiRequest.mUinType;
@@ -650,7 +638,7 @@ public class GroupPttDownloadProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "grp_ptt_dw";
     localRichProtoReq.reqs.add(localGroupPttDownReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
     if (!isAppValid())
     {
       setError(9366, "illegal app", null, this.mStepUrl);
@@ -708,11 +696,11 @@ public class GroupPttDownloadProcessor
     }
   }
   
-  public QQMessageFacade.Message updateMessageDataBaseContent(MessageForPtt paramMessageForPtt)
+  public Message updateMessageDataBaseContent(MessageForPtt paramMessageForPtt)
   {
     paramMessageForPtt.serial();
-    this.app.getMessageFacade().updateMsgContentByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
-    return this.app.getMessageFacade().getLastMessage(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType);
+    this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
+    return this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType);
   }
 }
 

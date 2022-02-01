@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akqc;
-import akqe;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class PasswdRedBagManager$10
+class PasswdRedBagManager$10
   implements Runnable
 {
-  public PasswdRedBagManager$10(akqe paramakqe) {}
+  PasswdRedBagManager$10(PasswdRedBagManager paramPasswdRedBagManager) {}
   
   public void run()
   {
     try
     {
-      Object localObject = akqe.a(this.this$0).a();
+      Object localObject = PasswdRedBagManager.a(this.this$0).a();
       if (localObject != null)
       {
-        akqe.a(this.this$0, false);
+        PasswdRedBagManager.a(this.this$0, false);
         localObject = ((HashMap)localObject).entrySet().iterator();
         while (((Iterator)localObject).hasNext())
         {
@@ -35,13 +33,13 @@ public class PasswdRedBagManager$10
       if (QLog.isDevelopLevel()) {
         localThrowable.printStackTrace();
       }
-      akqe.b(this.this$0, false);
+      PasswdRedBagManager.b(this.this$0, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import com.tencent.qphone.base.util.QLog;
-import qza;
 
-public class PTSEngineLoader$1
+class PTSEngineLoader$1
   implements Runnable
 {
-  public PTSEngineLoader$1(qza paramqza) {}
+  PTSEngineLoader$1(PTSEngineLoader paramPTSEngineLoader) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class PTSEngineLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.1
  * JD-Core Version:    0.7.0.1
  */

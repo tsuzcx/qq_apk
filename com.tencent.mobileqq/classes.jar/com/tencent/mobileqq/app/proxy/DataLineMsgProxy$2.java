@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aoxv;
+import com.dataline.util.WaitEvent;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.persistence.Entity;
-import fb;
 
-public class DataLineMsgProxy$2
+class DataLineMsgProxy$2
   implements Runnable
 {
-  public DataLineMsgProxy$2(aoxv paramaoxv, Entity paramEntity, ProxyListener paramProxyListener, fb paramfb) {}
+  DataLineMsgProxy$2(DataLineMsgProxy paramDataLineMsgProxy, Entity paramEntity, ProxyListener paramProxyListener, WaitEvent paramWaitEvent) {}
   
   public void run()
   {
     DataLineMsgRecord localDataLineMsgRecord = ((DataLineMsgRecord)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).clone();
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, this.this$0.jdField_a_of_type_JavaLangString, localDataLineMsgRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
-    this.jdField_a_of_type_Fb.a();
+    this.this$0.proxyManager.addMsgQueue(String.valueOf(0), 0, this.this$0.a, localDataLineMsgRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.2
  * JD-Core Version:    0.7.0.1
  */

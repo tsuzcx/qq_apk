@@ -9,7 +9,7 @@ public final class stFeedStatus
 {
   public String feedId = "";
   public String msg = "";
-  public int status;
+  public int status = 0;
   
   public stFeedStatus() {}
   

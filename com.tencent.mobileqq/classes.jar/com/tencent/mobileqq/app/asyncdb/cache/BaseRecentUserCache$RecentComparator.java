@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.app.asyncdb.cache;
 
-import com.tencent.mobileqq.data.BaseRecentUser;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.persistence.Entity;
 import java.util.Comparator;
 
 class BaseRecentUserCache$RecentComparator
   implements Comparator<Entity>
 {
-  private boolean withShowUp;
+  private boolean a;
   
   public BaseRecentUserCache$RecentComparator(boolean paramBoolean)
   {
-    this.withShowUp = paramBoolean;
+    this.a = paramBoolean;
   }
   
-  public int compare(Entity paramEntity1, Entity paramEntity2)
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    paramEntity1 = (BaseRecentUser)paramEntity1;
-    paramEntity2 = (BaseRecentUser)paramEntity2;
+    paramEntity1 = (RecentUser)paramEntity1;
+    paramEntity2 = (RecentUser)paramEntity2;
     long l3 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
     long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
     long l1;
-    if (this.withShowUp) {
+    if (this.a) {
       if ((paramEntity1.showUpTime > 0L) && (l3 == 0L))
       {
         l1 = Math.max(paramEntity1.opTime, paramEntity1.showUpTime);
@@ -40,7 +40,7 @@ class BaseRecentUserCache$RecentComparator
         l1 = 3L;
         label117:
         l3 = l1;
-        if (!this.withShowUp) {
+        if (!this.a) {
           break label280;
         }
         l2 = l1;

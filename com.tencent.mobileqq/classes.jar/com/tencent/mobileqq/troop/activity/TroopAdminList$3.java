@@ -1,6 +1,11 @@
 package com.tencent.mobileqq.troop.activity;
 
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,14 +16,24 @@ class TroopAdminList$3
   
   public void run()
   {
-    int j = this.this$0.a.size();
     int i = 0;
+    int j = this.this$0.jdField_a_of_type_ArrayOfJavaLangString.length;
     while (i < j)
     {
-      String str = (String)((Map)this.this$0.a.get(i)).get("uin");
-      ((Map)this.this$0.a.get(i)).put("nick", ContactUtils.getFriendDisplayName(this.this$0.app, str));
+      String str = this.this$0.jdField_a_of_type_ArrayOfJavaLangString[i];
+      if (!TextUtils.isEmpty(str))
+      {
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("uin", str);
+        localHashMap.put("nick", ContactUtils.j(this.this$0.app, str));
+        this.this$0.jdField_a_of_type_JavaUtilList.add(localHashMap);
+      }
       i += 1;
     }
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
+    this.this$0.addObserver(this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.this$0.addObserver(this.this$0.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getFriendsInfo(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
     this.this$0.runOnUiThread(new TroopAdminList.3.1(this));
   }
 }

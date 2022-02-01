@@ -4,35 +4,33 @@ import android.text.Layout;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.text.QQText;
 
 class QQCustomDialog$2
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  QQCustomDialog$2(QQCustomDialog paramQQCustomDialog, int paramInt, String paramString) {}
+  QQCustomDialog$2(QQCustomDialog paramQQCustomDialog, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void onGlobalLayout()
   {
-    this.this$0.text.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     int i;
-    if (this.this$0.text.getLineCount() > this.val$i)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getLineCount() > this.jdField_a_of_type_Int)
     {
-      i = this.this$0.text.getLayout().getLineEnd(this.val$i - 1);
-      if (this.val$strText != null) {
-        break label134;
+      i = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        break label122;
       }
     }
-    label134:
-    for (String str = "";; str = this.val$strText)
+    for (;;)
     {
-      boolean bool1 = QQText.containsEmoji(str);
-      boolean bool2 = QQText.containsExpression(str);
-      if ((!bool1) && (!bool2))
+      if ((!this.jdField_a_of_type_Boolean) && (!this.b))
       {
-        str = this.this$0.text.getText().subSequence(0, i - 3) + "...";
-        this.this$0.text.setText(str);
+        str = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getText().subSequence(0, i - 3) + "...";
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.setText(str);
       }
       return;
+      label122:
+      String str = this.jdField_a_of_type_JavaLangString;
     }
   }
 }

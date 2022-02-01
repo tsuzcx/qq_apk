@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<clip android:gravity="bottom" android:drawable="@drawable/gnk" android:clipOrientation="vertical"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/bd4" />
+    <solid android:color="@android:color/white" />
+    <padding android:left="@dimen/bd2" android:top="@dimen/bd3" android:right="@dimen/bd2" android:bottom="@dimen/bd3" />
+</shape>

@@ -1,8 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import olh;
 
 class KandianReportSoLoader$1$1
   implements Runnable
@@ -15,23 +16,24 @@ class KandianReportSoLoader$1$1
     {
       try
       {
-        FileUtils.deleteDirectory(KandianReportSoLoader.access$100());
+        FileUtils.a(KandianReportSoLoader.access$100());
         boolean bool = KandianReportSoLoader.access$200();
+        IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
         if (!bool) {
           continue;
         }
         i = 1;
-        olh.a(null, "", "0X8009A1C", "0X8009A1C", 0, i, "", "", "", "copy file step", false);
+        localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X8009A1C", "0X8009A1C", 0, i, "", "", "", "copy file step", false);
         if (!bool)
         {
           QLog.d("kandianreport.KandianReportSoLoader", 1, "copy fail, delete so");
-          FileUtils.deleteDirectory(KandianReportSoLoader.access$300());
+          FileUtils.a(KandianReportSoLoader.access$300());
         }
       }
       catch (Throwable localThrowable)
       {
         int i;
-        olh.a(null, "", "0X8009A1C", "0X8009A1C", 0, 0, "", "", "", "copy file exception : " + localThrowable.toString(), false);
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009A1C", "0X8009A1C", 0, 0, "", "", "", "copy file exception : " + localThrowable.toString(), false);
         QLog.d("kandianreport.KandianReportSoLoader", 1, "jscjni downloadSoFiles read so config fail");
         continue;
       }
@@ -45,7 +47,7 @@ class KandianReportSoLoader$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.KandianReportSoLoader.1.1
  * JD-Core Version:    0.7.0.1
  */

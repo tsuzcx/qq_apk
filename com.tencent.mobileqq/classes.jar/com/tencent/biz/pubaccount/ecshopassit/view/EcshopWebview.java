@@ -12,10 +12,10 @@ public class EcshopWebview
 {
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   private static EcshopWebview b;
-  public static int c;
+  public static int c = 0;
   private EcshopWebview jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview;
   public int b;
-  private int d;
+  private int d = 0;
   
   public EcshopWebview(Context paramContext)
   {
@@ -70,7 +70,7 @@ public class EcshopWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview
  * JD-Core Version:    0.7.0.1
  */

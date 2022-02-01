@@ -1,33 +1,21 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import amme;
-import amwd;
-import ancv;
-import ancw;
-import ancx;
-import ancy;
-import ancz;
-import anda;
-import andb;
-import andc;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import andv;
-import anmb;
-import anmd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.GLTextureView;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.api.sdk.ICmShowSDKPlatform;
+import com.tencent.mobileqq.apollo.api.sdk.IRenderViewListener;
+import com.tencent.mobileqq.apollo.api.sdk.PlayActionConfig;
+import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -37,78 +25,23 @@ import mqq.util.WeakReference;
 public class CmShowRenderView
   extends ApolloTextureView
 {
-  private static int jdField_a_of_type_Int;
   private static final HashMap<String, WeakReference<CmShowRenderView>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static boolean jdField_a_of_type_Boolean;
-  private andv jdField_a_of_type_Andv;
+  private RenderViewController jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController;
   private String jdField_a_of_type_JavaLangString;
   private String b;
   
   public CmShowRenderView(Context paramContext)
   {
-    super(paramContext, null);
-    if (!a(paramContext)) {
-      throw new RuntimeException("isSdkInit is false!");
-    }
-    jdField_a_of_type_JavaUtilHashMap.put(toString(), new WeakReference(this));
+    this(paramContext, null);
   }
   
   public CmShowRenderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    if (!a(paramContext)) {
+    if (!((ICmShowSDKPlatform)QRoute.api(ICmShowSDKPlatform.class)).isSdkInit(paramContext)) {
       throw new RuntimeException("isSdkInit is false!");
     }
     jdField_a_of_type_JavaUtilHashMap.put(toString(), new WeakReference(this));
-  }
-  
-  public static void a(int paramInt, andb paramandb)
-  {
-    QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "changeApolloStatus mode:", Integer.valueOf(paramInt) });
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("mode", paramInt);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_change_mode", localBundle, new ancz(paramandb));
-  }
-  
-  public static void a(anmd paramanmd, int paramInt)
-  {
-    if (paramanmd == null)
-    {
-      QLog.e("CmShow_CmShowRenderView", 1, "initSdk cmSoLoadCompleteCallback == null");
-      return;
-    }
-    GLTextureView.checkGLVersion();
-    jdField_a_of_type_Int = paramInt;
-    amwd.a();
-    Bundle localBundle = new Bundle();
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_get_base_data", localBundle, new ancw(paramanmd));
-  }
-  
-  public static void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", paramString);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_open_store", localBundle, new ancy());
-  }
-  
-  public static void a(String paramString1, String paramString2, andc paramandc, int paramInt)
-  {
-    if (paramandc == null)
-    {
-      QLog.e("CmShow_CmShowRenderView", 1, "initSdk cmSoLoadCompleteCallback == null");
-      return;
-    }
-    amwd.a();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("selfUin", paramString1);
-    localBundle.putString("friendUin", paramString2);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_init_cmshow_data", localBundle, new ancx(paramString1, paramString2, paramandc));
-  }
-  
-  public static void a(ArrayList<String> paramArrayList, int[] paramArrayOfInt)
-  {
-    QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "preLoadRes uins:", paramArrayList });
-    andv.a(paramArrayList, paramArrayOfInt);
   }
   
   public static void a(List<String> paramList)
@@ -117,12 +50,7 @@ public class CmShowRenderView
       return;
     }
     QLog.i("CmShow_CmShowRenderView", 1, "onDressChanged uin.size:" + paramList.size());
-    ThreadManagerV2.getUIHandlerV2().post(new CmShowRenderView.3(paramList));
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return (amme.c(paramContext)) && (anmb.a()) && (jdField_a_of_type_Boolean);
+    ThreadManagerV2.getUIHandlerV2().post(new CmShowRenderView.1(paramList));
   }
   
   private void b(List<String> paramList)
@@ -132,7 +60,7 @@ public class CmShowRenderView
       break label15;
     }
     label15:
-    while (this.jdField_a_of_type_Andv == null) {
+    while (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController == null) {
       return;
     }
     Iterator localIterator = paramList.iterator();
@@ -163,46 +91,46 @@ public class CmShowRenderView
       if ((TextUtils.isEmpty(localObject2)) && (!TextUtils.isEmpty(paramList))) {
         break;
       }
-      this.jdField_a_of_type_Andv.a(localObject2, paramList);
+      this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(localObject2, paramList);
       return;
     }
   }
   
   public int a(String paramString)
   {
-    return ancv.a(paramString);
+    return CmShowDataHelper.a(paramString);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Andv != null) {
-      this.jdField_a_of_type_Andv.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.b();
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (!a(BaseApplicationImpl.getContext())) {
+    if (!((ICmShowSDKPlatform)QRoute.api(ICmShowSDKPlatform.class)).isSdkInit(BaseApplicationImpl.getContext())) {
       QLog.e("CmShow_CmShowRenderView", 1, "showBubble !isSdkInit");
     }
     do
     {
       return;
       QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "stopAction actionId:", Integer.valueOf(paramInt1), " actionSeqId:", Integer.valueOf(paramInt2) });
-    } while (this.jdField_a_of_type_Andv == null);
-    this.jdField_a_of_type_Andv.a(paramInt1, paramInt2);
+    } while (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController == null);
+    this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(paramInt1, paramInt2);
   }
   
-  public void a(anda paramanda, String paramString1, String paramString2, int paramInt)
+  public void a(IRenderViewListener paramIRenderViewListener, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Andv = new andv(this, paramInt);
-    this.jdField_a_of_type_Andv.a(paramString1);
-    this.jdField_a_of_type_Andv.a(paramanda);
+    this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController = new RenderViewController(this, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(paramIRenderViewListener);
   }
   
-  public void a(CmShowRenderView.PlayActionConfig paramPlayActionConfig)
+  public void a(PlayActionConfig paramPlayActionConfig)
   {
-    if (!a(BaseApplicationImpl.getContext()))
+    if (!((ICmShowSDKPlatform)QRoute.api(ICmShowSDKPlatform.class)).isSdkInit(BaseApplicationImpl.getContext()))
     {
       QLog.e("CmShow_CmShowRenderView", 1, "playAction !isSdkInit");
       return;
@@ -213,29 +141,42 @@ public class CmShowRenderView
       return;
     }
     QLog.i("CmShow_CmShowRenderView", 1, "playAction before");
-    this.jdField_a_of_type_Andv.a(paramPlayActionConfig);
+    this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(paramPlayActionConfig);
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "playAction playActionConfig:", paramPlayActionConfig });
+  }
+  
+  public void a(String paramString)
+  {
+    if (!((ICmShowSDKPlatform)QRoute.api(ICmShowSDKPlatform.class)).isSdkInit(BaseApplicationImpl.getContext())) {
+      QLog.e("CmShow_CmShowRenderView", 1, "showBubble !isSdkInit");
+    }
+    do
+    {
+      return;
+      QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "showBubble uin:", ((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString) });
+    } while (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController == null);
+    this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.b(paramString);
   }
   
   public void a(String paramString, int paramInt)
   {
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "changeSpriteModel mode:", Integer.valueOf(paramInt) });
-    if (this.jdField_a_of_type_Andv != null) {
-      this.jdField_a_of_type_Andv.a(paramString, paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(paramString, paramInt);
     }
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     QLog.d("CmShow_CmShowRenderView", 1, "updateAvatarParam");
-    if (this.jdField_a_of_type_Andv != null) {
-      this.jdField_a_of_type_Andv.a(paramString, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(paramString, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void a(String paramString1, String paramString2, float paramFloat, int paramInt, Bundle paramBundle)
   {
-    if (!a(BaseApplicationImpl.getContext())) {
+    if (!((ICmShowSDKPlatform)QRoute.api(ICmShowSDKPlatform.class)).isSdkInit(BaseApplicationImpl.getContext())) {
       QLog.e("CmShow_CmShowRenderView", 1, "initAvatar !isSdkInit");
     }
     do
@@ -248,64 +189,51 @@ public class CmShowRenderView
       }
       this.jdField_a_of_type_JavaLangString = paramString1;
       this.b = paramString2;
-    } while (this.jdField_a_of_type_Andv == null);
-    this.jdField_a_of_type_Andv.a(paramString1, paramString2, paramFloat, paramInt, paramBundle);
+    } while (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController == null);
+    this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(paramString1, paramString2, paramFloat, paramInt, paramBundle);
   }
   
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (!a(BaseApplicationImpl.getContext())) {
+    if (!((ICmShowSDKPlatform)QRoute.api(ICmShowSDKPlatform.class)).isSdkInit(BaseApplicationImpl.getContext())) {
       QLog.e("CmShow_CmShowRenderView", 1, "showBubble !isSdkInit");
     }
     do
     {
       return;
-      QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "showBubble uin:", ApolloUtil.d(paramString1), " bubbleText:", paramString2 });
-    } while (this.jdField_a_of_type_Andv == null);
-    this.jdField_a_of_type_Andv.a(paramString1, paramString2, paramInt1, paramInt2);
+      QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "showBubble uin:", ((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString1), " bubbleText:", paramString2 });
+    } while (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController == null);
+    this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(paramString1, paramString2, paramInt1, paramInt2);
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "hideAvatar uin", ApolloUtil.d(paramString), " show:", Boolean.valueOf(paramBoolean) });
-    if (this.jdField_a_of_type_Andv != null) {
-      this.jdField_a_of_type_Andv.a(paramString, paramBoolean);
+    QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "hideAvatar uin", ((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString), " show:", Boolean.valueOf(paramBoolean) });
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(paramString, paramBoolean);
     }
   }
   
   public void a(List<String> paramList, boolean paramBoolean)
   {
     QLog.d("CmShow_CmShowRenderView", 1, "disposeAvatar");
-    if (this.jdField_a_of_type_Andv != null) {
-      this.jdField_a_of_type_Andv.a(paramList, paramBoolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a(paramList, paramBoolean);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Andv != null) {
-      this.jdField_a_of_type_Andv.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.a();
     }
-  }
-  
-  public void b(String paramString)
-  {
-    if (!a(BaseApplicationImpl.getContext())) {
-      QLog.e("CmShow_CmShowRenderView", 1, "showBubble !isSdkInit");
-    }
-    do
-    {
-      return;
-      QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "showBubble uin:", ApolloUtil.d(paramString) });
-    } while (this.jdField_a_of_type_Andv == null);
-    this.jdField_a_of_type_Andv.b(paramString);
   }
   
   public void c()
   {
     QLog.d("CmShow_CmShowRenderView", 1, "onDestroy");
-    if (this.jdField_a_of_type_Andv != null) {
-      this.jdField_a_of_type_Andv.c();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloSdkRenderViewController.c();
     }
     jdField_a_of_type_JavaUtilHashMap.remove(toString());
   }
@@ -323,7 +251,7 @@ public class CmShowRenderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.CmShowRenderView
  * JD-Core Version:    0.7.0.1
  */

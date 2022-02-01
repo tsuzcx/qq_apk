@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import olh;
-import pkh;
-import rtl;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class RIJUgcUtils$4$1
+class RIJUgcUtils$4$1
   implements Runnable
 {
-  public RIJUgcUtils$4$1(rtl paramrtl) {}
+  RIJUgcUtils$4$1(RIJUgcUtils.4 param4) {}
   
   public void run()
   {
-    olh.a(null, "", "0X800B4C4", "0X800B4C4", 0, 0, pkh.a(), "", "", "", false);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800B4C4", "0X800B4C4", 0, 0, ReadInJoyUtils.a(), "", "", "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.RIJUgcUtils.4.1
  * JD-Core Version:    0.7.0.1
  */

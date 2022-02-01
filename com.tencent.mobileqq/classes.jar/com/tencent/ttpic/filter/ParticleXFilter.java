@@ -6,7 +6,7 @@ import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.model.RenderParam;
 import com.tencent.ttpic.model.Transition;
 import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.particlesystemx.ParticleItemX;
 import com.tencent.ttpic.particlesystemx.ParticleSystemX;
 import com.tencent.ttpic.particlesystemx.ParticleX;
@@ -139,7 +139,7 @@ public class ParticleXFilter
       {
         localObject = (PointF)paramList.get(i);
         paramArrayOfFloat = new PointF((paramArrayOfFloat.x + ((PointF)localObject).x) / 2.0F, (paramArrayOfFloat.y + ((PointF)localObject).y) / 2.0F);
-        if (VideoMaterialUtil.isFaceItem(this.item))
+        if (VideoMaterial.isFaceItem(this.item))
         {
           paramArrayOfFloat.x = ((float)(paramArrayOfFloat.x / this.mFaceDetScale));
           paramArrayOfFloat.y = ((float)(paramArrayOfFloat.y / this.mFaceDetScale));
@@ -220,7 +220,7 @@ public class ParticleXFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.ParticleXFilter
  * JD-Core Version:    0.7.0.1
  */

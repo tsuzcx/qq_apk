@@ -1,12 +1,11 @@
 package com.dataline.activities;
 
-import ay;
-import dy;
+import com.dataline.util.DatalineSessionAdapter;
 
-public class LiteActivity$27$10
+class LiteActivity$27$10
   implements Runnable
 {
-  public LiteActivity$27$10(ay paramay) {}
+  LiteActivity$27$10(LiteActivity.27 param27) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class LiteActivity$27$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.27.10
  * JD-Core Version:    0.7.0.1
  */

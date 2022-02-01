@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import mqq.app.MobileQQ;
-import olh;
 
 class AfterSyncMsg$5
   implements Runnable
@@ -15,18 +16,21 @@ class AfterSyncMsg$5
   {
     int i = 1;
     String str;
-    if (this.this$0.a.app.getApplication() != null)
+    IPublicAccountReportUtils localIPublicAccountReportUtils;
+    if (this.this$0.a.a.getApplication() != null)
     {
-      str = this.this$0.a.app.getCurrentUin();
-      if (!SettingCloneUtil.readValue(this.this$0.a.app.getApplication().getApplicationContext(), str, null, "qqsetting_lock_screen_whenexit_key", true)) {
-        break label86;
+      str = this.this$0.a.a.getCurrentUin();
+      boolean bool = SettingCloneUtil.readValue(this.this$0.a.a.getApplication().getApplicationContext(), str, null, "qqsetting_lock_screen_whenexit_key", true);
+      localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+      if (!bool) {
+        break label102;
       }
     }
     for (;;)
     {
-      olh.a(null, "CliOper", "", str, "0X80096F0", "0X80096F0", 0, 0, String.valueOf(i), "", "", "", false);
+      localIPublicAccountReportUtils.publicAccountReportClickEventForMigrate(null, "CliOper", "", str, "0X80096F0", "0X80096F0", 0, 0, String.valueOf(i), "", "", "", false);
       return;
-      label86:
+      label102:
       i = 0;
     }
   }

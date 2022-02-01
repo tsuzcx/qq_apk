@@ -1,25 +1,23 @@
 package com.tencent.avgame.gamelogic;
 
+import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.common.app.AppInterface;
-import nfb;
-import nfc;
-import nfv;
 
 public class DelayNotifyRunnable
   implements Runnable
 {
   int jdField_a_of_type_Int;
+  DelayNotifyRunnable.IOnDelayNotifyDoneListener jdField_a_of_type_ComTencentAvgameGamelogicDelayNotifyRunnable$IOnDelayNotifyDoneListener;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   Object jdField_a_of_type_JavaLangObject;
-  nfb jdField_a_of_type_Nfb;
   boolean jdField_a_of_type_Boolean = false;
   
-  public DelayNotifyRunnable(AppInterface paramAppInterface, int paramInt, nfb paramnfb, Object paramObject)
+  public DelayNotifyRunnable(AppInterface paramAppInterface, int paramInt, DelayNotifyRunnable.IOnDelayNotifyDoneListener paramIOnDelayNotifyDoneListener, Object paramObject)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Nfb = paramnfb;
+    this.jdField_a_of_type_ComTencentAvgameGamelogicDelayNotifyRunnable$IOnDelayNotifyDoneListener = paramIOnDelayNotifyDoneListener;
     this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
@@ -44,7 +42,7 @@ public class DelayNotifyRunnable
     int i = ((Integer)localObject[1]).intValue();
     localObject = (String)localObject[2];
     paramObject = (String)paramObject;
-    this.jdField_a_of_type_Nfb.a(this.jdField_a_of_type_Int, new Object[] { paramObject, Integer.valueOf(i), localObject });
+    this.jdField_a_of_type_ComTencentAvgameGamelogicDelayNotifyRunnable$IOnDelayNotifyDoneListener.a(this.jdField_a_of_type_Int, new Object[] { paramObject, Integer.valueOf(i), localObject });
   }
   
   public void run()
@@ -59,13 +57,13 @@ public class DelayNotifyRunnable
     String str = (String)localObject[0];
     int i = ((Integer)localObject[1]).intValue();
     localObject = (String)localObject[2];
-    str = nfc.a().a().a().getNick(str);
-    this.jdField_a_of_type_Nfb.a(this.jdField_a_of_type_Int, new Object[] { str, Integer.valueOf(i), localObject });
+    str = GameEngine.a().a().a().getNick(str);
+    this.jdField_a_of_type_ComTencentAvgameGamelogicDelayNotifyRunnable$IOnDelayNotifyDoneListener.a(this.jdField_a_of_type_Int, new Object[] { str, Integer.valueOf(i), localObject });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.DelayNotifyRunnable
  * JD-Core Version:    0.7.0.1
  */

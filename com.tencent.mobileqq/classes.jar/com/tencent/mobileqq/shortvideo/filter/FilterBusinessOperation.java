@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import android.text.TextUtils;
-import com.tencent.aekit.api.standard.filter.AESticker;
-import com.tencent.aekit.api.standard.filter.AESticker.STICKER_TYPE;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.mobileqq.qmcf.QmcfManager;
@@ -10,19 +7,13 @@ import com.tencent.mobileqq.richmedia.capture.data.DynamicStickerData;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.mobileqq.richmedia.capture.data.TrackerStickerParam;
-import com.tencent.mobileqq.richmedia.capture.gesture.MovieFilterGesture;
 import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.ptvfilter.GroupVideoFilterList;
 import com.tencent.mobileqq.shortvideo.ptvfilter.material.MovieMaterial;
 import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.util.FileUtil;
 import com.tencent.sveffects.SLog;
 import com.tencent.sveffects.SdkContext;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,15 +24,11 @@ public class FilterBusinessOperation
 {
   private QQFilterRenderManager mCommonOperation;
   private QQDanceEventHandler mDanceEventHandler;
-  private String mFaceDanceChainId = null;
   private List<FilterDesc> mFilterDescMap = new CopyOnWriteArrayList();
-  public boolean mHasBackFilter = false;
   private MusicItemInfo mMusicItemInfo;
   private long mOrgSamplerStamp = 0L;
-  private String mPoseDanceChainId = null;
   private long mPresentTimeStamp = 0L;
   private long mVideoStartTimeMs = 0L;
-  private MovieFilterGesture movieFilterGesture;
   private MovieMaterial movieMaterial;
   private WeakReference<QQSpecialAVFilter.MusicWaveformSupporter> musicWaveformSupporterWeakReference;
   
@@ -194,26 +181,6 @@ public class FilterBusinessOperation
     this.mFilterDescMap.add(paramFilterDesc);
   }
   
-  public void clearPtvVideoActiveFilter()
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).clearActiveFilters();
-      }
-    }
-  }
-  
-  public void destroyDanceGameFilter()
-  {
-    Iterator localIterator = this.mCommonOperation.getQQFilters(130).iterator();
-    while (localIterator.hasNext()) {
-      ((QQDanceGameFilter)localIterator.next()).onSurfaceDestroy();
-    }
-  }
-  
   public int getAVFilterFilterType()
   {
     Object localObject = this.mCommonOperation.getQQFilters(70);
@@ -286,131 +253,9 @@ public class FilterBusinessOperation
     return this.mPresentTimeStamp;
   }
   
-  public int getPtuBeautyLevel()
-  {
-    int k = 0;
-    int j = 0;
-    Object localObject = this.mCommonOperation.getQQFilters(25);
-    int i = k;
-    if (localObject != null)
-    {
-      i = k;
-      if (((List)localObject).size() > 0)
-      {
-        localObject = ((List)localObject).iterator();
-        for (i = j; ((Iterator)localObject).hasNext(); i = ((QQPtNewBeautyFilter)((Iterator)localObject).next()).getPtuBeautyLevel()) {}
-      }
-    }
-    return i;
-  }
-  
-  public int getSharpFaceLevel()
-  {
-    int j = 0;
-    List localList = this.mCommonOperation.getQQFilters(40);
-    int i = j;
-    if (localList != null)
-    {
-      i = j;
-      if (localList.size() > 0) {
-        i = ((QQPtvVideoFilter)localList.get(0)).getSharpFaceStrength();
-      }
-    }
-    return i;
-  }
-  
-  public int getShookHeadCount()
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      if (((Iterator)localObject).hasNext()) {
-        return ((QQPtvVideoFilter)((Iterator)localObject).next()).getShookHeadCount();
-      }
-    }
-    return 0;
-  }
-  
   public long getVideoStartTime()
   {
     return this.mVideoStartTimeMs;
-  }
-  
-  public void handleDanceFilterEvent()
-  {
-    Iterator localIterator;
-    if (QmcfManager.getInstance().getCurrQmcfMode() == 2)
-    {
-      localIterator = this.mCommonOperation.getQQFilters(130).iterator();
-      while (localIterator.hasNext()) {
-        ((QQDanceGameFilter)localIterator.next()).onCloseClicked();
-      }
-    }
-    if (QQFaceDanceMechineFilter.isEnableFaceDance)
-    {
-      localIterator = this.mCommonOperation.getQQFilters(140).iterator();
-      while (localIterator.hasNext()) {
-        ((QQFaceDanceMechineFilter)localIterator.next()).onCloseClicked();
-      }
-    }
-  }
-  
-  public void handleDanceFilterRestoreEvent()
-  {
-    Iterator localIterator;
-    if (QmcfManager.getInstance().getCurrQmcfMode() == 2)
-    {
-      localIterator = this.mCommonOperation.getQQFilters(130).iterator();
-      while (localIterator.hasNext()) {
-        ((QQDanceGameFilter)localIterator.next()).changeToReadyFilter();
-      }
-    }
-    if (QQFaceDanceMechineFilter.isEnableFaceDance)
-    {
-      localIterator = this.mCommonOperation.getQQFilters(140).iterator();
-      while (localIterator.hasNext()) {
-        ((QQFaceDanceMechineFilter)localIterator.next()).changeToReadyFilter();
-      }
-    }
-  }
-  
-  public void handleDanceGameAudioPause()
-  {
-    Iterator localIterator;
-    if (QmcfManager.getInstance().getCurrQmcfMode() == 2)
-    {
-      localIterator = this.mCommonOperation.getQQFilters(130).iterator();
-      while (localIterator.hasNext()) {
-        ((QQBaseFilter)localIterator.next()).onPause();
-      }
-    }
-    if (QQFaceDanceMechineFilter.isEnableFaceDance)
-    {
-      localIterator = this.mCommonOperation.getQQFilters(140).iterator();
-      while (localIterator.hasNext()) {
-        ((QQBaseFilter)localIterator.next()).onPause();
-      }
-    }
-  }
-  
-  public void handleDanceGameAudioResume()
-  {
-    Iterator localIterator;
-    if (QmcfManager.getInstance().getCurrQmcfMode() == 2)
-    {
-      localIterator = this.mCommonOperation.getQQFilters(130).iterator();
-      while (localIterator.hasNext()) {
-        ((QQBaseFilter)localIterator.next()).onResume();
-      }
-    }
-    if (QQFaceDanceMechineFilter.isEnableFaceDance)
-    {
-      localIterator = this.mCommonOperation.getQQFilters(140).iterator();
-      while (localIterator.hasNext()) {
-        ((QQBaseFilter)localIterator.next()).onResume();
-      }
-    }
   }
   
   public boolean hasAvOrSpecialEffect()
@@ -433,40 +278,6 @@ public class FilterBusinessOperation
     return bool1;
   }
   
-  public boolean isSegmentRequired()
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        QQPtvVideoFilter localQQPtvVideoFilter = (QQPtvVideoFilter)((Iterator)localObject).next();
-        if ((localQQPtvVideoFilter != null) && (localQQPtvVideoFilter.singleVideoFilterList != null) && (localQQPtvVideoFilter.singleVideoFilterList.checkStickerType(AESticker.STICKER_TYPE.SEGMENT_STICKER))) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public boolean isVoiceToTextMaterial()
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        QQPtvVideoFilter localQQPtvVideoFilter = (QQPtvVideoFilter)((Iterator)localObject).next();
-        if ((localQQPtvVideoFilter != null) && (localQQPtvVideoFilter.singleVideoFilterList != null) && (localQQPtvVideoFilter.singleVideoFilterList.checkStickerType(AESticker.STICKER_TYPE.VOICE_TO_TEXT_STICKER))) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
   public void playMovie(String paramString1, String paramString2, boolean paramBoolean, HWDecodeListener paramHWDecodeListener, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     float f1 = 0.0F;
@@ -486,18 +297,6 @@ public class FilterBusinessOperation
     }
   }
   
-  public void resetShookHeadCount()
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).resetShookHeadCount();
-      }
-    }
-  }
-  
   public void setDanceEventHandler(QQDanceEventHandler paramQQDanceEventHandler)
   {
     this.mDanceEventHandler = paramQQDanceEventHandler;
@@ -509,52 +308,6 @@ public class FilterBusinessOperation
     if ((localList != null) && (localList.size() > 0)) {
       ((QQDynamicStickersFilter)localList.get(0)).InitDynamicStickers(paramList);
     }
-  }
-  
-  public void setEffectMute(boolean paramBoolean)
-  {
-    VideoPrefsUtil.setMaterialMute(paramBoolean);
-    Object localObject = this.mCommonOperation.getQQFilters(100);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        QQMovieFilter localQQMovieFilter = (QQMovieFilter)((Iterator)localObject).next();
-        if (!paramBoolean) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localQQMovieFilter.onMusicOriginalChange(bool);
-          break;
-        }
-      }
-    }
-  }
-  
-  public void setFaceDanceFilter(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      QQFaceDanceMechineFilter.isEnableFaceDance = false;
-      ResourceManager.getInstance().setPostureType(0);
-      if (!TextUtils.isEmpty(this.mFaceDanceChainId))
-      {
-        this.mCommonOperation.popAndRelease(this.mFaceDanceChainId);
-        this.mFaceDanceChainId = null;
-      }
-    }
-    List localList;
-    do
-    {
-      return;
-      setPtvVideoFilter(null);
-      this.mFaceDanceChainId = this.mCommonOperation.pushChain(new int[] { 10, 20, 140 }, null);
-      localList = this.mCommonOperation.getQQFilters(140);
-    } while ((localList == null) || (localList.size() != 1));
-    ResourceManager.getInstance().setPostureType(1);
-    ResourceManager.getInstance().setRootDanceStagePath(paramString1);
-    ResourceManager.getInstance().setLittleBoyFilterRootPath(paramString2);
-    QQFaceDanceMechineFilter.isEnableFaceDance = true;
   }
   
   public void setFilterEffect(FilterDesc paramFilterDesc)
@@ -774,26 +527,6 @@ public class FilterBusinessOperation
     }
   }
   
-  public void setMovieMaterial(MovieMaterial paramMovieMaterial)
-  {
-    this.movieMaterial = paramMovieMaterial;
-    if ((paramMovieMaterial != null) && (paramMovieMaterial.isTouchable)) {
-      if (FileUtil.checkFileExist(paramMovieMaterial.doodleVideoPath))
-      {
-        if (this.movieFilterGesture == null) {
-          this.movieFilterGesture = new MovieFilterGesture(this.mCommonOperation, GLGestureProxy.getInstance());
-        }
-        GLGestureProxy.getInstance().removeListener(this.movieFilterGesture);
-        GLGestureProxy.getInstance().addListener(this.movieFilterGesture);
-      }
-    }
-    while (this.movieFilterGesture == null) {
-      return;
-    }
-    GLGestureProxy.getInstance().removeListener(this.movieFilterGesture);
-    this.movieFilterGesture = null;
-  }
-  
   public void setMusicWaveformSupporter(QQSpecialAVFilter.MusicWaveformSupporter paramMusicWaveformSupporter)
   {
     this.musicWaveformSupporterWeakReference = new WeakReference(paramMusicWaveformSupporter);
@@ -805,107 +538,6 @@ public class FilterBusinessOperation
     this.mMusicItemInfo = null;
   }
   
-  public void setPtuBeautyFilterRegion(boolean paramBoolean)
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(25);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtNewBeautyFilter)((Iterator)localObject).next()).setBusiSkinRegionOpen(paramBoolean);
-      }
-    }
-  }
-  
-  public void setPtvGroupVideoFilterList(GroupVideoFilterList paramGroupVideoFilterList)
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).changeGroupFilter(paramGroupVideoFilterList, this.mCommonOperation.mFilterWidth, this.mCommonOperation.mFilterHeight, this.mCommonOperation.getWindowScale());
-      }
-    }
-  }
-  
-  public void setPtvNeedFlip(boolean paramBoolean)
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).setNeedFlip(paramBoolean);
-        this.mCommonOperation.setNeedFlip(paramBoolean);
-      }
-    }
-    localObject = this.mCommonOperation.getQQFilterByType(25);
-    if ((localObject != null) && ((localObject instanceof QQPtNewBeautyFilter))) {
-      ((QQPtNewBeautyFilter)localObject).setNeedFlip(paramBoolean);
-    }
-    localObject = this.mCommonOperation.getQQFilterByType(186);
-    if ((localObject instanceof QQPtvLipFilter)) {
-      ((QQPtvLipFilter)localObject).setNeedFlip(paramBoolean);
-    }
-  }
-  
-  public void setPtvVideoFilter(AESticker paramAESticker)
-  {
-    setPtvVideoFilter(paramAESticker, null);
-  }
-  
-  public void setPtvVideoFilter(AESticker paramAESticker, VideoMaterial paramVideoMaterial)
-  {
-    Object localObject = (QQPtvLipFilter)this.mCommonOperation.getQQFilterByType(186);
-    if (localObject != null) {
-      ((QQPtvLipFilter)localObject).setVideoFilter(paramVideoMaterial);
-    }
-    localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        QQPtvVideoFilter localQQPtvVideoFilter = (QQPtvVideoFilter)((Iterator)localObject).next();
-        localQQPtvVideoFilter.changeFilter(paramAESticker, this.mCommonOperation.mFilterWidth, this.mCommonOperation.mFilterHeight, this.mCommonOperation.getWindowScale(), paramVideoMaterial);
-        if (localQQPtvVideoFilter.hasEffectFilter()) {
-          changeColorFilter(localQQPtvVideoFilter.getEffectFilter());
-        } else {
-          changeColorFilter(null);
-        }
-      }
-    }
-  }
-  
-  public void setQmcfPoseFilter(String paramString1, String paramString2, String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
-    {
-      if (QmcfManager.getInstance().getCurrQmcfMode() == 2) {
-        QmcfManager.getInstance().setCurrQmcfMode(0);
-      }
-      if (!TextUtils.isEmpty(this.mPoseDanceChainId))
-      {
-        this.mCommonOperation.popChain(this.mPoseDanceChainId);
-        this.mPoseDanceChainId = null;
-      }
-    }
-    List localList;
-    do
-    {
-      return;
-      setPtvVideoFilter(null);
-      this.mPoseDanceChainId = this.mCommonOperation.pushChain(new int[] { 10, 130 }, null);
-      localList = this.mCommonOperation.getQQFilters(130);
-    } while ((localList == null) || (localList.size() != 1));
-    ResourceManager.getInstance().setPostureType(0);
-    ResourceManager.getInstance().setRootDanceStagePath(paramString1);
-    ResourceManager.getInstance().setLittleBoyFilterRootPath(paramString2);
-    QmcfManager.getInstance().switchQmcfModel(2, paramString3);
-  }
-  
   public void setTrackerStickerParam(ArrayList<TrackerStickerParam> paramArrayList)
   {
     List localList = this.mCommonOperation.getQQFilters(110);
@@ -914,49 +546,9 @@ public class FilterBusinessOperation
     }
   }
   
-  public void setUpCosmeticsAlpha(int paramInt)
-  {
-    Object localObject = (QQPtvLipFilter)this.mCommonOperation.getQQFilterByType(186);
-    if (localObject != null) {
-      ((QQPtvLipFilter)localObject).setUpCosmeticsAlpha(paramInt);
-    }
-    localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).setCosmeticsAlpha(paramInt);
-      }
-    }
-  }
-  
   public void setVideoStartTime(long paramLong)
   {
     this.mVideoStartTimeMs = paramLong;
-  }
-  
-  public void startRecord()
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).startRecord();
-      }
-    }
-  }
-  
-  public void stopEffectsAudio()
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).stopEffectsAudio();
-      }
-    }
   }
   
   public void updateBeautyFilter(float paramFloat)
@@ -982,42 +574,10 @@ public class FilterBusinessOperation
       }
     }
   }
-  
-  public void updatePtuBeautyFilter(int paramInt)
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(25);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtNewBeautyFilter)((Iterator)localObject).next()).updateBeautyFilter(paramInt);
-      }
-    }
-  }
-  
-  public void updatePtvVideoSize(int paramInt1, int paramInt2, double paramDouble)
-  {
-    Object localObject = this.mCommonOperation.getQQFilters(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).updateVideoSize(paramInt1, paramInt2, paramDouble);
-      }
-    }
-  }
-  
-  public void updateSharpFace(int paramInt)
-  {
-    List localList = this.mCommonOperation.getQQFilters(40);
-    if ((localList != null) && (localList.size() > 0)) {
-      ((QQPtvVideoFilter)localList.get(0)).setSharpFaceStrength(paramInt);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation
  * JD-Core Version:    0.7.0.1
  */

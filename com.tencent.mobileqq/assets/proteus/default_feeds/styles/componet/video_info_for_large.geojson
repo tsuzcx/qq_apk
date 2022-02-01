@@ -1,0 +1,114 @@
+{
+    "view_type":"UIView",
+    "view_id": "id_video_bottom_bg",
+    "layout_type":"layout_relative",
+    "align_parent_bottom": "YES",
+    "visible_depend_on_children": "YES",
+    "height":{
+        "type":"relative",
+        "value":"20"
+    },
+    "width":{
+        "type":"match_parent"
+    },
+    "attributes":{
+        "setGradientWithStartAlpha:endAlpha:color:direction:": ["0", "0.5", "#000000", "1"]
+    },
+    "subviews":[
+        {
+            "view_type":"ReadInjoyAsynImageView",
+            "view_id":"id_video_bottom_play_icon",
+            "margin_left": "4",
+            "visible_depend_on_brother":"id_video_bottom_play_count",
+            "height":{
+                "type":"relative",
+                "value": "16"
+            },
+            "width":{
+                "type":"relative",
+                "value": "16"
+            },
+            "attributes":{
+                "setImageWithURLString:lineup:": [
+                    "http://pub.idqqimg.com/pc/misc/files/20190330/a0bcb3959fc545eaa79b2008cc4fd63d.png",
+                    "0"
+                ]
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_video_bottom_play_count",
+            "height":{
+                "type":"relative",
+                "value": "16"
+            },
+            "width":{
+                "type":"wrap_content"
+            },
+            "right_of_view":"id_video_bottom_play_icon",
+            "margin_left":"3",
+            "attributes":{
+                "setFontSizeString:":"12",
+                "setTextColorString:":"#ffffff",
+                "setText:":"$video_bottom_play_count"
+            }
+        },
+        {
+            "view_type":"ReadInjoyAsynImageView",
+            "view_id":"id_video_bottom_comment_icon",
+            "right_of_view":"id_video_bottom_play_count",
+            "margin_left":"3",
+            "visible_depend_on_brother":"id_video_bottom_comment_count",
+            "height":{
+                "type":"relative",
+                "value": "16"
+            },
+            "width":{
+                "type":"relative",
+                "value": "16"
+            },
+            "attributes":{
+                "setImageWithURLString:lineup:": [
+                    "http://pub.idqqimg.com/pc/misc/files/20201012/5d5fb9f0d9d44a7f9df1c3ee6b8f3a53.png",
+                    "0"
+                ]
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_video_bottom_comment_count",
+            "height":{
+                "type":"relative",
+                "value": "16"
+            },
+            "width":{
+                "type":"wrap_content"
+            },
+            "right_of_view":"id_video_bottom_comment_icon",
+            "margin_left":"3",
+            "attributes":{
+                "setFontSizeString:":"12",
+                "setTextColorString:":"#ffffff",
+                "setText:":"$video_bottom_comment_count"
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_video_bottom_duration",
+            "margin_right":"6",
+            "align_parent_right":"YES",
+            "height":{
+                "type":"relative",
+                "value": "16"
+            },
+            "width":{
+                "type":"wrap_content"
+            },
+            "attributes":{
+                "setFontSizeString:":"12",
+                "setTextColorString:":"#ffffff",
+                "setText:":"$video_bottom_duration"
+            }
+        }
+    ]
+}

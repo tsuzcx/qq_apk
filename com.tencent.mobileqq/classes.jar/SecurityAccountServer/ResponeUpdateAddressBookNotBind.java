@@ -8,8 +8,8 @@ public final class ResponeUpdateAddressBookNotBind
   extends JceStruct
 {
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public long nextFlag;
-  public byte[] sessionSid;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
   
   static
   {

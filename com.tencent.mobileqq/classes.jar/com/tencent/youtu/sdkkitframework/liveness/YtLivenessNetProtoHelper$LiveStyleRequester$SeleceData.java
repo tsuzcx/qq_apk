@@ -12,7 +12,7 @@ public class YtLivenessNetProtoHelper$LiveStyleRequester$SeleceData
   public int protocal = 1;
   public String reflect_param;
   public ArrayList<YtLivenessNetProtoHelper.SensorData> sensor_data;
-  public String version = "3.6.2";
+  public String version = "3.6.8";
   
   public YtLivenessNetProtoHelper$LiveStyleRequester$SeleceData(float paramFloat, int paramInt, String paramString1, String paramString2, String paramString3)
   {
@@ -29,7 +29,7 @@ public class YtLivenessNetProtoHelper$LiveStyleRequester$SeleceData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.YtLivenessNetProtoHelper.LiveStyleRequester.SeleceData
  * JD-Core Version:    0.7.0.1
  */

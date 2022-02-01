@@ -10,7 +10,7 @@ class BaseRecentUserCache$CacheMap
   
   public void clear()
   {
-    this.this$0.uinMap.clear();
+    this.this$0.a.clear();
     super.clear();
   }
   
@@ -21,12 +21,12 @@ class BaseRecentUserCache$CacheMap
     {
       Object localObject2 = localObject1[0];
       Object localObject3 = localObject1[1];
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.this$0.uinMap.get(localObject2);
+      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.this$0.a.get(localObject2);
       localObject1 = localConcurrentHashMap;
       if (localConcurrentHashMap == null)
       {
         localObject1 = new ConcurrentHashMap();
-        this.this$0.uinMap.put(localObject2, localObject1);
+        this.this$0.a.put(localObject2, localObject1);
       }
       ((ConcurrentHashMap)localObject1).put(localObject3, paramEntity);
     }
@@ -40,12 +40,12 @@ class BaseRecentUserCache$CacheMap
     {
       Object localObject1 = localObject2[0];
       localObject2 = localObject2[1];
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.this$0.uinMap.get(localObject1);
+      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.this$0.a.get(localObject1);
       if (localConcurrentHashMap != null)
       {
         localConcurrentHashMap.remove(localObject2);
         if (localConcurrentHashMap.isEmpty()) {
-          this.this$0.uinMap.remove(localObject1);
+          this.this$0.a.remove(localObject1);
         }
       }
     }

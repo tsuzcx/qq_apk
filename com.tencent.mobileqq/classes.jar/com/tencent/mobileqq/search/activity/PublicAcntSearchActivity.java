@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.search.activity;
 
-import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import anvx;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import usu;
 
 public class PublicAcntSearchActivity
   extends BaseSearchActivity
@@ -32,9 +32,9 @@ public class PublicAcntSearchActivity
   protected String a()
   {
     if (d == 12) {
-      return anvx.a(2131708199) + usu.a(this.app, getApplicationContext());
+      return HardCodeUtil.a(2131708726) + ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(this.app, getApplicationContext());
     }
-    return anvx.a(2131708257);
+    return HardCodeUtil.a(2131708784);
   }
   
   @Override
@@ -55,7 +55,7 @@ public class PublicAcntSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.PublicAcntSearchActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import afuu;
-import afuw;
 import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 
-public class AioAnimationDetector$3
+class AioAnimationDetector$3
   implements Runnable
 {
-  public AioAnimationDetector$3(afuu paramafuu, QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, afuw paramafuw, ChatMessage paramChatMessage) {}
+  AioAnimationDetector$3(AioAnimationDetector paramAioAnimationDetector, QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, AioAnimationRule paramAioAnimationRule, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    afuu.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Int, this.jdField_a_of_type_Afuw, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    AioAnimationDetector.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector.3
  * JD-Core Version:    0.7.0.1
  */

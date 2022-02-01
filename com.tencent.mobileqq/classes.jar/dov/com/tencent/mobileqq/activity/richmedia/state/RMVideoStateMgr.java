@@ -3,102 +3,112 @@ package dov.com.tencent.mobileqq.activity.richmedia.state;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import anvx;
-import bbna;
-import bdbl;
-import bpia;
-import bpkb;
-import bpkc;
-import bpkd;
-import bpke;
-import bpkf;
-import bpkg;
-import bpkh;
-import bpki;
-import bpkm;
-import bpkn;
-import bprm;
-import bpro;
-import bprq;
-import bpsh;
-import bptb;
-import bpty;
-import bpua;
 import com.tencent.maxvideo.common.MessageStruct;
 import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWVideoRecorder;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.video.QzoneVideoBeaconReport;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
+import dov.com.tencent.mobileqq.shortvideo.common.TCTimer.TCTimerCallback;
+import dov.com.tencent.mobileqq.shortvideo.error.ErrorCenter.ErrorHandleCallback;
 import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture.OnAudioRecordListener;
 import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import dov.com.tencent.mobileqq.shortvideo.util.AudioDataCache;
+import dov.com.tencent.mobileqq.shortvideo.util.storage.StorageManager;
+import dov.com.tencent.mobileqq.shortvideo.util.storage.StorageManager.OnSdCardChangedListener;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class RMVideoStateMgr
-  implements bpro, bprq, bpsh, bpua, AVCodec.AVCodecCallback
+  implements AVCodec.AVCodecCallback, TCTimer.TCTimerCallback, ErrorCenter.ErrorHandleCallback, AudioCapture.OnAudioRecordListener, StorageManager.OnSdCardChangedListener
 {
   private static RMVideoStateMgr jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr;
+  public static boolean a;
   private static final int[] jdField_a_of_type_ArrayOfInt = { 850, 780, 650, 480 };
-  public static boolean b;
+  public static boolean c;
   public double a;
   public int a;
   public long a;
   public Context a;
   public Handler a;
-  private bbna jdField_a_of_type_Bbna;
-  public bpkb a;
-  public bpkc a;
-  final bpkd jdField_a_of_type_Bpkd = new bpkd();
-  final bpke jdField_a_of_type_Bpke = new bpke();
-  final bpkf jdField_a_of_type_Bpkf = new bpkf();
-  final bpkg jdField_a_of_type_Bpkg = new bpkg();
-  public bpki a;
-  public final bpkm a;
-  public bpkn a;
-  public bpsh a;
-  public bptb a;
+  private HWVideoRecorder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder;
+  public RMFileEventNotify a;
+  public RMVideoClipSpec a;
+  final RMVideoIdleState jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoIdleState = new RMVideoIdleState();
+  final RMVideoInitState jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoInitState = new RMVideoInitState();
+  final RMVideoPreviewState jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoPreviewState = new RMVideoPreviewState();
+  final RMVideoRecordState jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoRecordState = new RMVideoRecordState();
+  public RMVideoStateMgr.ForceReleaseLockOnPause a;
   public final RMVideoSwitchCameraPicMgr a;
+  public final RMVideoThumbGenMgr a;
+  public RMViewSTInterface a;
+  public AudioCapture.OnAudioRecordListener a;
   public AudioCapture a;
   public PreviewContext a;
+  public AudioDataCache a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
   public AtomicBoolean a;
   public AtomicInteger a;
-  public boolean a;
-  private int jdField_b_of_type_Int = 1;
+  public int b;
   private Object jdField_b_of_type_JavaLangObject = new Object();
   public String b;
   public AtomicInteger b;
+  public boolean b;
   private int[] jdField_b_of_type_ArrayOfInt = new int[8];
-  private int c;
-  public boolean c;
+  public int c;
+  private int d;
   public boolean d;
-  public boolean e = true;
+  private int e;
+  public boolean e;
+  private int f;
   public boolean f;
-  private boolean g;
-  private volatile boolean h;
-  private boolean i;
-  private volatile boolean j;
-  private boolean k = true;
+  public boolean g = false;
+  public boolean h = false;
+  public boolean i = false;
+  private boolean j = false;
+  private boolean k = false;
+  private volatile boolean l;
+  private boolean m = false;
+  private boolean n = false;
+  private volatile boolean o = false;
+  private boolean p = true;
   
   static
   {
-    jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_Boolean = false;
+    jdField_c_of_type_Boolean = true;
   }
   
   private RMVideoStateMgr()
   {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_Bpkm = new bpkm();
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr = new RMVideoThumbGenMgr();
     this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr = new RMVideoSwitchCameraPicMgr();
-    this.jdField_a_of_type_Int = 480;
-    this.jdField_a_of_type_Bpki = new bpki();
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMFileEventNotify = null;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilAudioDataCache = null;
+    this.jdField_d_of_type_Int = 1;
+    this.jdField_b_of_type_Int = 480;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr$ForceReleaseLockOnPause = new RMVideoStateMgr.ForceReleaseLockOnPause();
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Bpkc = new bpkc();
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoClipSpec = new RMVideoClipSpec();
   }
   
   public static RMVideoStateMgr a()
@@ -140,18 +150,18 @@ public class RMVideoStateMgr
       File[] arrayOfFile = paramString1.listFiles();
       if ((arrayOfFile != null) && (arrayOfFile.length > 0))
       {
-        int m = 0;
-        if (m < arrayOfFile.length)
+        int i1 = 0;
+        if (i1 < arrayOfFile.length)
         {
-          if ((paramString2 != null) && (!"".equals(paramString2)) && (arrayOfFile[m].getAbsolutePath().equals(paramString2))) {}
+          if ((paramString2 != null) && (!"".equals(paramString2)) && (arrayOfFile[i1].getAbsolutePath().equals(paramString2))) {}
           for (;;)
           {
-            m += 1;
+            i1 += 1;
             break;
-            if (arrayOfFile[m].isDirectory()) {
-              b(arrayOfFile[m].getAbsolutePath(), paramString2, true);
+            if (arrayOfFile[i1].isDirectory()) {
+              b(arrayOfFile[i1].getAbsolutePath(), paramString2, true);
             } else {
-              arrayOfFile[m].delete();
+              arrayOfFile[i1].delete();
             }
           }
         }
@@ -166,36 +176,36 @@ public class RMVideoStateMgr
   
   private native void setVideoClipSpec(int[] paramArrayOfInt);
   
-  public int a(bpro parambpro, boolean paramBoolean, int paramInt1, int paramInt2)
+  public int a(TCTimer.TCTimerCallback paramTCTimerCallback, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    int m = -1;
-    if (parambpro == this)
+    int i1 = -1;
+    if (paramTCTimerCallback == this)
     {
-      a().a(parambpro, paramBoolean, paramInt1, paramInt2);
-      m = 0;
+      a().a(paramTCTimerCallback, paramBoolean, paramInt1, paramInt2);
+      i1 = 0;
     }
-    return m;
+    return i1;
   }
   
-  public bpkh a()
+  public RMVideoState a()
   {
-    int m = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    bpke localbpke = this.jdField_a_of_type_Bpke;
-    switch (m)
+    int i1 = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    RMVideoInitState localRMVideoInitState = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoInitState;
+    switch (i1)
     {
     default: 
-      return localbpke;
+      return localRMVideoInitState;
     case 2: 
-      return this.jdField_a_of_type_Bpkd;
+      return this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoIdleState;
     case 3: 
-      return this.jdField_a_of_type_Bpkg;
+      return this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoRecordState;
     }
-    return this.jdField_a_of_type_Bpkf;
+    return this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoPreviewState;
   }
   
   public void a()
   {
-    this.h = true;
+    this.l = true;
     if (QLog.isColorLevel()) {
       QLog.e("RMVideoStateMgr", 2, "startHwRecorder");
     }
@@ -216,9 +226,9 @@ public class RMVideoStateMgr
       a().e();
       if (paramInt == 0)
       {
-        a(0, anvx.a(2131712937), false);
-        if (1 == bpia.jdField_a_of_type_Int) {
-          QzoneVideoBeaconReport.reportVideoEvent(bprm.a + "", "qzone_video_record", "1", null);
+        a(0, HardCodeUtil.a(2131713433), false);
+        if (1 == FlowCameraMqqAction.jdField_a_of_type_Int) {
+          QzoneVideoBeaconReport.reportVideoEvent(GloableValue.jdField_a_of_type_Long + "", "qzone_video_record", "1", null);
         }
       }
       return;
@@ -231,8 +241,8 @@ public class RMVideoStateMgr
   
   public void a(int paramInt, String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bpkn != null) {
-      this.jdField_a_of_type_Bpkn.a(paramInt, paramString, paramBoolean);
+    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMViewSTInterface != null) {
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMViewSTInterface.a(paramInt, paramString, paramBoolean);
     }
   }
   
@@ -248,13 +258,13 @@ public class RMVideoStateMgr
       QLog.d("" + paramString, 2, "[@][deleteCacheFile] [RMFileEventNotify]stopWatching");
     }
     if (this.jdField_a_of_type_JavaLangString != null) {
-      FileUtils.delete(this.jdField_a_of_type_JavaLangString, false);
+      FileUtils.a(this.jdField_a_of_type_JavaLangString, false);
     }
   }
   
-  public void a(boolean paramBoolean)
+  void a(boolean paramBoolean)
   {
-    this.g = paramBoolean;
+    this.k = paramBoolean;
   }
   
   public boolean a()
@@ -265,9 +275,9 @@ public class RMVideoStateMgr
   public boolean a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("RMVideoStateMgr", 2, "mediacodec from:" + paramInt + ", isMediaCodecSupport:" + this.i);
+      QLog.i("RMVideoStateMgr", 2, "mediacodec from:" + paramInt + ", isMediaCodecSupport:" + this.n);
     }
-    return this.i;
+    return this.n;
   }
   
   public void b()
@@ -275,11 +285,11 @@ public class RMVideoStateMgr
     if (QLog.isColorLevel()) {
       QLog.e("RMVideoStateMgr", 2, "stopHwRecorder");
     }
-    this.h = false;
-    if (this.jdField_a_of_type_Bbna != null) {
-      this.jdField_a_of_type_Bbna.b();
+    this.l = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.c();
     }
-    this.jdField_c_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
   }
   
   public void b(int paramInt, String paramString, boolean paramBoolean)
@@ -289,18 +299,18 @@ public class RMVideoStateMgr
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
   boolean b()
   {
-    long l = bpty.a(bpty.a().b);
-    if (l <= bpty.a)
+    long l1 = StorageManager.a(StorageManager.a().b);
+    if (l1 <= StorageManager.jdField_a_of_type_Long)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("RMVideoStateMgr", 2, "[@] checkDiskSpaceIsOK,freeSpace <= FREESPACE_LIMIT_EXIT freeSpace=" + l + "StorageManager.FREESPACE_LIMIT_EXIT=" + bpty.a + " 手机剩余存储空间不足");
+        QLog.d("RMVideoStateMgr", 2, "[@] checkDiskSpaceIsOK,freeSpace <= FREESPACE_LIMIT_EXIT freeSpace=" + l1 + "StorageManager.FREESPACE_LIMIT_EXIT=" + StorageManager.jdField_a_of_type_Long + " 手机剩余存储空间不足");
       }
-      a(0, anvx.a(2131712936), false);
+      a(0, HardCodeUtil.a(2131713432), false);
       return false;
     }
     return true;
@@ -310,7 +320,7 @@ public class RMVideoStateMgr
   {
     synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      this.j = true;
+      this.o = true;
       this.jdField_b_of_type_JavaLangObject.notifyAll();
       return;
     }
@@ -318,10 +328,10 @@ public class RMVideoStateMgr
   
   public boolean c()
   {
-    if (!this.j) {
+    if (!this.o) {
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        boolean bool = this.j;
+        boolean bool = this.o;
         if (!bool) {}
         try
         {
@@ -341,32 +351,32 @@ public class RMVideoStateMgr
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Bpkb != null) && (this.jdField_a_of_type_Double > 0.0D)) {
-      this.jdField_a_of_type_Bpkb.startWatching();
+    if ((this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMFileEventNotify != null) && (this.jdField_a_of_type_Double > 0.0D)) {
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMFileEventNotify.startWatching();
     }
   }
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture != null) && (this.jdField_c_of_type_Boolean);
+    return (this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture != null) && (this.jdField_d_of_type_Boolean);
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Bpkb != null) {
-      this.jdField_a_of_type_Bpkb.stopWatching();
+    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMFileEventNotify != null) {
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMFileEventNotify.stopWatching();
     }
   }
   
   public boolean e()
   {
-    return this.k;
+    return this.p;
   }
   
   public void f()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RMVideoStateMgr", 2, "[@][initAudioRecord]mIsAudioReady=" + this.jdField_c_of_type_Boolean + " mAI=" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture);
+      QLog.d("RMVideoStateMgr", 2, "[@][initAudioRecord]mIsAudioReady=" + this.jdField_d_of_type_Boolean + " mAI=" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture);
     }
     if (!d())
     {
@@ -387,7 +397,7 @@ public class RMVideoStateMgr
   public void h()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RMVideoStateMgr", 2, "[@][closeAudioRecord]mIsAudioReady=" + this.jdField_c_of_type_Boolean + " mAI=" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture);
+      QLog.d("RMVideoStateMgr", 2, "[@][closeAudioRecord]mIsAudioReady=" + this.jdField_d_of_type_Boolean + " mAI=" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture);
     }
     ThreadManager.post(new RMVideoStateMgr.3(this), 10, null, false);
   }
@@ -402,7 +412,7 @@ public class RMVideoStateMgr
     do
     {
       return;
-    } while ((!bdbl.class.isInstance(paramObject)) || (this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext == null));
+    } while ((!CameraProxy.CameraPreviewObservable.class.isInstance(paramObject)) || (this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext == null));
     this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame = true;
   }
   
@@ -428,7 +438,7 @@ public class RMVideoStateMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr
  * JD-Core Version:    0.7.0.1
  */

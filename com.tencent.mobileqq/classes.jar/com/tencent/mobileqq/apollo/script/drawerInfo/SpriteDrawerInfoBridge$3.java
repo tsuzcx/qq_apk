@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.apollo.script.drawerInfo;
 
-import anbt;
-import ancc;
-import ancs;
+import com.tencent.mobileqq.apollo.script.SpriteActionScript;
+import com.tencent.mobileqq.apollo.script.SpriteContext;
 
-public class SpriteDrawerInfoBridge$3
+class SpriteDrawerInfoBridge$3
   implements Runnable
 {
-  public SpriteDrawerInfoBridge$3(ancs paramancs, anbt paramanbt, ancc paramancc) {}
+  SpriteDrawerInfoBridge$3(SpriteDrawerInfoBridge paramSpriteDrawerInfoBridge, SpriteActionScript paramSpriteActionScript, SpriteContext paramSpriteContext) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Anbt != null) && (this.jdField_a_of_type_Ancc != null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionScript != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext != null))
     {
-      this.jdField_a_of_type_Anbt.a(this.jdField_a_of_type_Ancc.b, false);
-      this.jdField_a_of_type_Anbt.a(this.jdField_a_of_type_Ancc.a, false);
+      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionScript.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.b, false);
+      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionScript.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge.3
  * JD-Core Version:    0.7.0.1
  */

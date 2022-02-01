@@ -8,32 +8,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import bdla;
+import com.tencent.avgame.business.AvGameManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.SwipListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import ncz;
-import npj;
-import npk;
-import npl;
 
 public class AVGameRoomListFragment
   extends PublicBaseFragment
 {
+  private AVGameRoomListFragment.AVGameRoomListAdapter jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   public String a;
-  private npl jdField_a_of_type_Npl;
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131363284));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131363363));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_Npl = new npl(getActivity(), getActivity().app, this.jdField_a_of_type_ComTencentWidgetSwipListView, null, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Npl);
-    ((ImageView)paramView.findViewById(2131363286)).setOnClickListener(new npj(this));
-    ((Button)paramView.findViewById(2131363198)).setOnClickListener(new npk(this));
+    this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter = new AVGameRoomListFragment.AVGameRoomListAdapter(getActivity(), getActivity().app, this.jdField_a_of_type_ComTencentWidgetSwipListView, null, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter);
+    ((ImageView)paramView.findViewById(2131363365)).setOnClickListener(new AVGameRoomListFragment.1(this));
+    ((Button)paramView.findViewById(2131363256)).setOnClickListener(new AVGameRoomListFragment.2(this));
   }
   
   public boolean needImmersive()
@@ -53,11 +50,11 @@ public class AVGameRoomListFragment
     if ((paramBundle instanceof String)) {
       this.jdField_a_of_type_JavaLangString = ((String)paramBundle);
     }
-    ncz.a(getActivity().app);
+    AvGameManager.a(getActivity().app);
     if (this.jdField_a_of_type_JavaLangString != null) {}
     for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = "")
     {
-      bdla.b(null, "dc00898", "", "", "0X800B01B", "0X800B01B", 0, 0, "", "", paramBundle, "");
+      ReportController.b(null, "dc00898", "", "", "0X800B01B", "0X800B01B", 0, 0, "", "", paramBundle, "");
       return;
     }
   }
@@ -67,7 +64,7 @@ public class AVGameRoomListFragment
     if (QLog.isColorLevel()) {
       QLog.d("AVGameRoomListFragment", 2, "onCreateView");
     }
-    paramViewGroup = paramLayoutInflater.inflate(2131558760, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131558799, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
@@ -83,8 +80,8 @@ public class AVGameRoomListFragment
     if (QLog.isColorLevel()) {
       QLog.d("AVGameRoomListFragment", 2, "onDestroy");
     }
-    if (this.jdField_a_of_type_Npl != null) {
-      this.jdField_a_of_type_Npl.c();
+    if (this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter != null) {
+      this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter.c();
     }
     super.onDestroy();
   }
@@ -92,24 +89,24 @@ public class AVGameRoomListFragment
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Npl != null) {
-      this.jdField_a_of_type_Npl.b();
+    if (this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter != null) {
+      this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Npl != null)
+    if (this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter != null)
     {
-      this.jdField_a_of_type_Npl.a();
-      this.jdField_a_of_type_Npl.d();
+      this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter.a();
+      this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameRoomListFragment
  * JD-Core Version:    0.7.0.1
  */

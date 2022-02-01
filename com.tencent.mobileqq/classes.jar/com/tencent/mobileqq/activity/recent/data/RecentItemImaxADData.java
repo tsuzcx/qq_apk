@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ public class RecentItemImaxADData
   extends RecentItemChatMsgData
 {
   private static final String TAG = "RecentItemImaxADData";
-  public String mHeaderUrl;
+  public String mHeaderUrl = null;
   
   public RecentItemImaxADData(RecentUser paramRecentUser)
   {
@@ -31,7 +31,7 @@ public class RecentItemImaxADData
       paramQQAppInterface = paramQQAppInterface.getMessageFacade();
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = paramQQAppInterface.getLastMessage(this.mUser.uin, this.mUser.getType());
+        paramQQAppInterface = paramQQAppInterface.a(this.mUser.uin, this.mUser.getType());
         if (paramQQAppInterface != null)
         {
           paramContext = paramQQAppInterface.getExtInfoFromExtStr("recent_list_advertisement_message_name");
@@ -47,7 +47,7 @@ public class RecentItemImaxADData
       if (this.mUnreadNum > 0) {
         this.mUnreadNum = 1;
       }
-      if (AppSetting.c)
+      if (AppSetting.d)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName).append(",");
@@ -63,7 +63,7 @@ public class RecentItemImaxADData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData
  * JD-Core Version:    0.7.0.1
  */

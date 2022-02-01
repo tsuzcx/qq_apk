@@ -37,7 +37,7 @@ public abstract class TAVStickerResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerResource
  * JD-Core Version:    0.7.0.1
  */

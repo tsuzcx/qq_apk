@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
+import com.tencent.mobileqq.mini.api.MiniConst.MiniGamePublicAccountWebViewJsPluginConst;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -10,12 +11,17 @@ import org.json.JSONObject;
 public class MiniGamePublicAccountWebViewJsPlugin
   extends WebViewPlugin
 {
-  public static String PLUGIN_NAMESPACE = "minigame_api";
+  public static String PLUGIN_NAMESPACE = MiniConst.MiniGamePublicAccountWebViewJsPluginConst.PLUGIN_NAMESPACE;
   private static final String TAG = "MiniGamePublicAccountWebViewJsPlugin";
   
   public MiniGamePublicAccountWebViewJsPlugin()
   {
     this.mPluginNameSpace = PLUGIN_NAMESPACE;
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 8589934624L;
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)

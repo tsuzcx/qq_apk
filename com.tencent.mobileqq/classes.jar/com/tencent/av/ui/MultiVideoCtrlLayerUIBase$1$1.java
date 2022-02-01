@@ -2,12 +2,11 @@ package com.tencent.av.ui;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mgi;
 
-public class MultiVideoCtrlLayerUIBase$1$1
+class MultiVideoCtrlLayerUIBase$1$1
   implements Runnable
 {
-  public MultiVideoCtrlLayerUIBase$1$1(mgi parammgi) {}
+  MultiVideoCtrlLayerUIBase$1$1(MultiVideoCtrlLayerUIBase.1 param1) {}
   
   public void run()
   {
@@ -21,7 +20,7 @@ public class MultiVideoCtrlLayerUIBase$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.1.1
  * JD-Core Version:    0.7.0.1
  */

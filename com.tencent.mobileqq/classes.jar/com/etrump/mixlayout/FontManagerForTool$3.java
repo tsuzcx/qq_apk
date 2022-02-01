@@ -1,20 +1,18 @@
 package com.etrump.mixlayout;
 
-import gf;
-
-public class FontManagerForTool$3
+class FontManagerForTool$3
   implements Runnable
 {
-  public FontManagerForTool$3(gf paramgf, boolean paramBoolean) {}
+  FontManagerForTool$3(FontManagerForTool paramFontManagerForTool, boolean paramBoolean) {}
   
   public void run()
   {
-    gf.a(this.this$0, this.a, true);
+    FontManagerForTool.a(this.this$0, this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.etrump.mixlayout.FontManagerForTool.3
  * JD-Core Version:    0.7.0.1
  */

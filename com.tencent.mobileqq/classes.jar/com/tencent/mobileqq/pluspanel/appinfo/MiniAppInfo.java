@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahqp;
-import ahvi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.miniapp.AioPanelMiniAppManager;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class MiniAppInfo
   extends PlusPanelAppInfo
 {
-  public MiniAppInfo() {}
+  MiniAppInfo() {}
   
   public MiniAppInfo(int paramInt)
   {
@@ -20,7 +20,7 @@ public class MiniAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839211;
+    return 2130839280;
   }
   
   public int getAppID()
@@ -49,13 +49,13 @@ public class MiniAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698200);
+    return BaseApplicationImpl.getContext().getString(2131698476);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    ahqp.a(paramBaseChatPie.app).a(paramBaseChatPie.mActivity, paramBaseChatPie);
-    paramahvi.b(paramBaseChatPie);
+    AioPanelMiniAppManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBaseChatPie);
+    paramPlusPanelViewModel.b(paramBaseChatPie);
   }
 }
 

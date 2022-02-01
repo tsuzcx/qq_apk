@@ -13,11 +13,11 @@ public final class mobile_video_layer_adv_req
   static Map<Integer, String> cache_busi_param;
   static ArrayList<feeds_context_info> cache_context_list = new ArrayList();
   static Map<String, String> cache_mapExt;
-  public Map<Integer, String> busi_param;
-  public ArrayList<feeds_context_info> context_list;
-  public Map<String, String> mapExt;
-  public int req_type;
-  public long uin;
+  public Map<Integer, String> busi_param = null;
+  public ArrayList<feeds_context_info> context_list = null;
+  public Map<String, String> mapExt = null;
+  public int req_type = 0;
+  public long uin = 0L;
   
   static
   {

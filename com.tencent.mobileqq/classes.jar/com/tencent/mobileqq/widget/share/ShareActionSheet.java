@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RelativeLayout.LayoutParams;
-import bkzi;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.widget.ActionSheet;
 import java.util.List;
 
 public abstract interface ShareActionSheet
@@ -21,7 +21,7 @@ public abstract interface ShareActionSheet
   
   public abstract View findViewById(int paramInt);
   
-  public abstract bkzi getActionSheet();
+  public abstract ActionSheet getActionSheet();
   
   public abstract int getActionSheetPanelViewHeight();
   
@@ -87,7 +87,7 @@ public abstract interface ShareActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheet
  * JD-Core Version:    0.7.0.1
  */

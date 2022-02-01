@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import anvx;
-import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class TaskManager$13$1
@@ -12,12 +12,12 @@ class TaskManager$13$1
   
   public void run()
   {
-    bhdj.a(BaseActivity.sTopActivity, 232, this.val$title, this.val$message, "OK", anvx.a(2131714111), new TaskManager.13.1.1(this), new TaskManager.13.1.2(this)).show();
+    DialogUtil.a(BaseActivity.sTopActivity, 232, this.val$title, this.val$message, "OK", HardCodeUtil.a(2131714607), new TaskManager.13.1.1(this), new TaskManager.13.1.2(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager.13.1
  * JD-Core Version:    0.7.0.1
  */

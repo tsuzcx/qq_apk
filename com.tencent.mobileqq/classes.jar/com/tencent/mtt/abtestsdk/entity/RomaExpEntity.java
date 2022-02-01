@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.tencent.mtt.abtestsdk.utils.ABTestLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RomaExpEntity
@@ -23,8 +23,8 @@ public class RomaExpEntity
   public static final String KEY_EXPERIMENTS_PERCENTAGE = "percentage";
   private String assignment = "default";
   private String bucket = "0";
-  private String endTime;
-  private String expName;
+  private String endTime = "";
+  private String expName = "";
   private String grayId = "-1";
   private String layerCode = "default";
   private Map<String, String> params = new HashMap();
@@ -117,13 +117,13 @@ public class RomaExpEntity
   {
     try
     {
-      this.grayId = paramJSONObject.getString("sGrayPolicyId");
-      this.bucket = paramJSONObject.getString("bucket");
-      this.percentage = paramJSONObject.getString("percentage");
-      this.assignment = paramJSONObject.getString("assignment");
-      this.endTime = paramJSONObject.getString("endTime");
-      this.expName = paramJSONObject.getString("expName");
-      paramJSONObject = paramJSONObject.getJSONObject("params");
+      this.grayId = paramJSONObject.optString("sGrayPolicyId");
+      this.bucket = paramJSONObject.optString("bucket");
+      this.percentage = paramJSONObject.optString("percentage");
+      this.assignment = paramJSONObject.optString("assignment");
+      this.expName = paramJSONObject.optString("expName");
+      this.endTime = paramJSONObject.optString("endTime");
+      paramJSONObject = paramJSONObject.optJSONObject("params");
       this.params.clear();
       if (paramJSONObject != null)
       {
@@ -131,13 +131,16 @@ public class RomaExpEntity
         while (localIterator.hasNext())
         {
           String str1 = (String)localIterator.next();
-          String str2 = paramJSONObject.getString(str1);
+          String str2 = paramJSONObject.optString(str1);
           this.params.put(str1, str2);
         }
       }
       return;
     }
-    catch (JSONException paramJSONObject) {}
+    catch (Exception paramJSONObject)
+    {
+      ABTestLog.error("readJson failed:" + paramJSONObject.getMessage(), new Object[0]);
+    }
   }
   
   public void setAssignment(String paramString)
@@ -199,7 +202,7 @@ public class RomaExpEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.entity.RomaExpEntity
  * JD-Core Version:    0.7.0.1
  */

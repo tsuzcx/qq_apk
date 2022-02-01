@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.statistics;
 
 import android.support.v4.app.FragmentActivity;
-import anvx;
-import bdkn;
-import bdko;
-import bhdj;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class LocalCrashCollector$3
+class LocalCrashCollector$3
   implements Runnable
 {
   LocalCrashCollector$3(LocalCrashCollector paramLocalCrashCollector) {}
@@ -18,13 +16,13 @@ public class LocalCrashCollector$3
   {
     try
     {
-      SessionInfo localSessionInfo = LocalCrashCollector.a(this.this$0).getSessionInfo();
-      FragmentActivity localFragmentActivity = LocalCrashCollector.a(this.this$0).mActivity;
+      SessionInfo localSessionInfo = LocalCrashCollector.a(this.this$0).a();
+      FragmentActivity localFragmentActivity = LocalCrashCollector.a(this.this$0).a;
       Object localObject;
       String str;
       if (LocalCrashCollector.a(this.this$0) > 0)
       {
-        localObject = anvx.a(2131705744) + localSessionInfo.curFriendNick;
+        localObject = HardCodeUtil.a(2131706287) + localSessionInfo.d;
         if (LocalCrashCollector.a(this.this$0) <= 0) {
           break label183;
         }
@@ -36,11 +34,11 @@ public class LocalCrashCollector$3
       }
       label183:
       label188:
-      for (int i = 2131690786;; i = 2131694399)
+      for (int i = 2131690891;; i = 2131694615)
       {
-        localObject = bhdj.a(localFragmentActivity, 230, (String)localObject, str, 2131690697, i, new bdkn(this, localSessionInfo), new bdko(this));
+        localObject = DialogUtil.a(localFragmentActivity, 230, (String)localObject, str, 2131690800, i, new LocalCrashCollector.3.1(this, localSessionInfo), new LocalCrashCollector.3.2(this));
         ((QQCustomDialog)localObject).adjustTitle();
-        if (LocalCrashCollector.a(this.this$0).mActivity.isFinishing()) {
+        if (LocalCrashCollector.a(this.this$0).a.isFinishing()) {
           return;
         }
         ((QQCustomDialog)localObject).show();

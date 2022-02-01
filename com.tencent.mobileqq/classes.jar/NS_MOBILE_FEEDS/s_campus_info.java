@@ -8,8 +8,8 @@ public final class s_campus_info
   extends JceStruct
 {
   static int cache_eVerfyStatus = 0;
-  public int eVerfyStatus;
-  public long iSchoolIdx;
+  public int eVerfyStatus = 0;
+  public long iSchoolIdx = 0L;
   public String strSchoolID = "";
   public String strSchoolName = "";
   

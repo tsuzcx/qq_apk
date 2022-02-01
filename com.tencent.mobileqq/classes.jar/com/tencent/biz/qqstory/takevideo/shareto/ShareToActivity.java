@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.takevideo.shareto;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -9,14 +8,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import anvx;
-import aoxz;
 import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -30,27 +31,21 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import wzk;
-import ykv;
-import yzd;
-import yze;
-import yzf;
-import yzg;
 
 public class ShareToActivity
   extends QQStoryBaseActivity
-  implements View.OnClickListener, AdapterView.OnItemClickListener, yzf
+  implements View.OnClickListener, ShareToGroupAdapter.OnSelectStateChangeListener, AdapterView.OnItemClickListener
 {
+  protected ShareToGroupAdapter a;
   protected XListView a;
-  protected yze a;
   
   private ArrayList<TroopInfo> a()
   {
-    QQAppInterface localQQAppInterface = wzk.a();
+    QQAppInterface localQQAppInterface = PlayModeUtils.a();
     Object localObject2 = (TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     Object localObject1 = ((TroopManager)localObject2).b();
     ArrayList localArrayList = new ArrayList(((ArrayList)localObject1).size());
-    Object localObject4 = localQQAppInterface.getProxyManager().a().getRecentList(false);
+    Object localObject4 = localQQAppInterface.getProxyManager().a().a(false);
     Object localObject3 = new ArrayList();
     localObject4 = ((List)localObject4).iterator();
     while (((Iterator)localObject4).hasNext())
@@ -60,7 +55,7 @@ public class ShareToActivity
         ((ArrayList)localObject3).add(localRecentUser);
       }
     }
-    Collections.sort((List)localObject3, new yzd(this));
+    Collections.sort((List)localObject3, new ShareToActivity.CommonlyUsedTroopCompator(this));
     localObject3 = ((ArrayList)localObject3).iterator();
     while (((Iterator)localObject3).hasNext())
     {
@@ -96,15 +91,15 @@ public class ShareToActivity
   {
     Object localObject = paramArrayList;
     if (paramArrayList == null) {
-      localObject = this.jdField_a_of_type_Yze.a();
+      localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSharetoShareToGroupAdapter.a();
     }
     int i = ((ArrayList)localObject).size();
     if (i > 0)
     {
-      this.rightViewText.setText(anvx.a(2131713418) + i + ")");
+      this.rightViewText.setText(HardCodeUtil.a(2131713914) + i + ")");
       return;
     }
-    this.rightViewText.setText(anvx.a(2131713419));
+    this.rightViewText.setText(HardCodeUtil.a(2131713915));
   }
   
   public void a(ArrayList<String> paramArrayList)
@@ -112,11 +107,11 @@ public class ShareToActivity
     b(paramArrayList);
   }
   
-  public boolean a(ArrayList<String> paramArrayList, yzg paramyzg)
+  public boolean a(ArrayList<String> paramArrayList, ShareToGroupAdapter.TroopInfoSelector paramTroopInfoSelector)
   {
-    if ((!paramyzg.a) && (paramArrayList.size() >= 10))
+    if ((!paramTroopInfoSelector.a) && (paramArrayList.size() >= 10))
     {
-      QQToast.a(wzk.a(), 0, "最多只能选择10个群", 0).a();
+      QQToast.a(PlayModeUtils.a(), 0, "最多只能选择10个群", 0).a();
       return false;
     }
     return true;
@@ -133,15 +128,15 @@ public class ShareToActivity
   
   public boolean onBackEvent()
   {
-    ykv.a("story_grp", "share_return", 0, 0, new String[] { "", "", "", "" });
+    StoryReportor.a("story_grp", "share_return", 0, 0, new String[] { "", "", "", "" });
     return super.onBackEvent();
   }
   
   public void onClick(View paramView)
   {
-    ykv.a("story_grp", "share_suc", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Yze.a().size()), "", "", "" });
+    StoryReportor.a("story_grp", "share_suc", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSharetoShareToGroupAdapter.a().size()), "", "", "" });
     Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("share_to_group_key", this.jdField_a_of_type_Yze.a());
+    localIntent.putStringArrayListExtra("share_to_group_key", this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSharetoShareToGroupAdapter.a());
     setResult(1, localIntent);
     finish();
     EventCollector.getInstance().onViewClicked(paramView);
@@ -157,9 +152,9 @@ public class ShareToActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131561771);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377545));
-    paramBundle = getLayoutInflater().inflate(2131561772, null);
+    setContentView(2131561903);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377956));
+    paramBundle = getLayoutInflater().inflate(2131561904, null);
     if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
     {
       paramBundle.setBackgroundColor(-16444373);
@@ -168,17 +163,17 @@ public class ShareToActivity
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(paramBundle);
     paramBundle = getIntent().getStringArrayListExtra("share_to_group_key");
     ArrayList localArrayList = a();
-    this.jdField_a_of_type_Yze = new yze(getBaseContext(), localArrayList, paramBundle);
-    this.jdField_a_of_type_Yze.a(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Yze);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSharetoShareToGroupAdapter = new ShareToGroupAdapter(getBaseContext(), localArrayList, paramBundle);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSharetoShareToGroupAdapter.a(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSharetoShareToGroupAdapter);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    super.setTitle(anvx.a(2131713420));
-    super.a(anvx.a(2131713417), this);
+    super.setTitle(HardCodeUtil.a(2131713916));
+    super.a(HardCodeUtil.a(2131713913), this);
     b(null);
     if ((localArrayList == null) || (localArrayList.isEmpty())) {}
     for (paramBundle = "2";; paramBundle = "1")
     {
-      ykv.a("story_grp", "exp_share", 0, 0, new String[] { paramBundle, "", "", "" });
+      StoryReportor.a("story_grp", "exp_share", 0, 0, new String[] { paramBundle, "", "", "" });
       return;
     }
   }
@@ -190,15 +185,15 @@ public class ShareToActivity
     {
       return;
       paramInt = (int)paramLong;
-      paramAdapterView = (yzg)this.jdField_a_of_type_Yze.getItem(paramInt);
+      paramAdapterView = (ShareToGroupAdapter.TroopInfoSelector)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSharetoShareToGroupAdapter.getItem(paramInt);
     } while (paramAdapterView == null);
-    this.jdField_a_of_type_Yze.a(paramAdapterView);
-    ykv.a("story_grp", "clk_share", 0, 0, new String[] { "", "", "", "" });
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSharetoShareToGroupAdapter.a(paramAdapterView);
+    StoryReportor.a("story_grp", "clk_share", 0, 0, new String[] { "", "", "", "" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity
  * JD-Core Version:    0.7.0.1
  */

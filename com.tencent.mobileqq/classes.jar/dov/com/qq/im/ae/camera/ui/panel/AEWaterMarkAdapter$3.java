@@ -1,20 +1,18 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import bnge;
-
-public class AEWaterMarkAdapter$3
+class AEWaterMarkAdapter$3
   implements Runnable
 {
-  public AEWaterMarkAdapter$3(bnge parambnge, int paramInt) {}
+  AEWaterMarkAdapter$3(AEWaterMarkAdapter paramAEWaterMarkAdapter, int paramInt) {}
   
   public void run()
   {
-    bnge.a(bnge.a(this.this$0), this.a, false);
+    AEWaterMarkAdapter.a(AEWaterMarkAdapter.a(this.this$0), this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.panel.AEWaterMarkAdapter.3
  * JD-Core Version:    0.7.0.1
  */

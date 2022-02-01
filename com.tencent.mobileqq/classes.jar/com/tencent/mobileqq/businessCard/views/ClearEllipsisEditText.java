@@ -6,8 +6,6 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
-import aqky;
-import aqkz;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,11 +15,11 @@ public class ClearEllipsisEditText
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString = "";
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int = 2147483647;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private int jdField_d_of_type_Int = 2;
-  private boolean jdField_d_of_type_Boolean;
+  private boolean jdField_d_of_type_Boolean = false;
   
   public ClearEllipsisEditText(Context paramContext)
   {
@@ -87,8 +85,8 @@ public class ClearEllipsisEditText
   
   private void a()
   {
-    addTextChangedListener(new aqky(this));
-    setOnTouchListener(new aqkz(this));
+    addTextChangedListener(new ClearEllipsisEditText.1(this));
+    setOnTouchListener(new ClearEllipsisEditText.2(this));
   }
   
   public String a()
@@ -116,7 +114,7 @@ public class ClearEllipsisEditText
     return;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_Int = getMeasuredHeight();

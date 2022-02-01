@@ -10,32 +10,22 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bnqm;
-import bnrh;
-import bnri;
-import bnut;
-import bnzz;
-import boaa;
-import boab;
-import boac;
-import boad;
-import boae;
-import boaf;
-import boal;
-import boam;
-import boap;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.ae.util.AEThemeUtil;
 import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
 import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean.AEEditorEffectItem;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,25 +33,27 @@ import mqq.os.MqqHandler;
 
 public class AEEditorFilterControlPanel
   extends FrameLayout
-  implements View.OnClickListener, boap
+  implements View.OnClickListener, FiltersAdapter.FilterListener
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorFilterControlPanel.class.getSimpleName();
   private int jdField_a_of_type_Int = -1;
   private Dialog jdField_a_of_type_AndroidAppDialog;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boad jdField_a_of_type_Boad;
-  private boal jdField_a_of_type_Boal;
-  private boam jdField_a_of_type_Boam;
   private AEEditorFilterBean jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean = AEEditorFilterBean.createAiFilterInstance();
+  private AEEditorFilterControlPanel.FilterControlListener jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener;
+  private FilterChangedComparator jdField_a_of_type_DovComQqImAeeditorModuleFilterFilterChangedComparator;
+  private FiltersAdapter jdField_a_of_type_DovComQqImAeeditorModuleFilterFiltersAdapter;
   private List<AEEditorFilterBean> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int;
   private AEEditorFilterBean jdField_b_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean = AEEditorFilterBean.createNonFilterInstance();
   private boolean jdField_b_of_type_Boolean = true;
-  private AEEditorFilterBean c;
+  private int jdField_c_of_type_Int = -1;
+  private AEEditorFilterBean jdField_c_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean = null;
   
   public AEEditorFilterControlPanel(@NonNull Context paramContext)
   {
@@ -85,12 +77,12 @@ public class AEEditorFilterControlPanel
   {
     try
     {
-      paramString = (AEFilterExtendBean)new Gson().fromJson(paramString, new boab(this).getType());
+      paramString = (AEFilterExtendBean)new Gson().fromJson(paramString, new AEEditorFilterControlPanel.3(this).getType());
       return paramString;
     }
     catch (JsonSyntaxException paramString)
     {
-      bnrh.d(jdField_a_of_type_JavaLangString, "parse effect json exception: " + paramString.toString());
+      AEQLog.d(jdField_a_of_type_JavaLangString, "parse effect json exception: " + paramString.toString());
     }
     return null;
   }
@@ -108,21 +100,21 @@ public class AEEditorFilterControlPanel
     String str1 = paramAEEditorFilterBean.getEffectExtendBean().getLutID();
     if (!TextUtils.isEmpty(str1))
     {
-      String str2 = boaf.a().a(paramAEEditorFilterBean);
+      String str2 = AEEditorResourceManager.a().a(paramAEEditorFilterBean);
       if ((!TextUtils.isEmpty(str2)) && (new File(str2).exists()))
       {
         b(paramInt, paramAEEditorFilterBean);
         return;
       }
-      if (!NetworkUtil.isNetworkAvailable())
+      if (!NetworkUtil.a())
       {
-        QQToast.a(getContext(), a(2131694303), 0).a();
+        QQToast.a(getContext(), a(2131694508), 0).a();
         return;
       }
       if ((paramAEEditorFilterBean.getEditorEffectItem().getPreDownload() != 0) || (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NETWORK)) {
-        b(a(2131691794));
+        b(a(2131691912));
       }
-      boaf.a().a(str1, new boac(this, paramAEEditorFilterBean, paramInt));
+      AEEditorResourceManager.a().a(str1, new AEEditorFilterControlPanel.5(this, paramAEEditorFilterBean, paramInt));
       return;
     }
     b(paramInt, paramAEEditorFilterBean);
@@ -130,14 +122,15 @@ public class AEEditorFilterControlPanel
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = bnri.a();
-    View localView = View.inflate(paramContext, 2131558558, this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)localView.findViewById(2131366807));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bnzz(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131362884));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131366806));
+    this.jdField_a_of_type_Boolean = AEThemeUtil.a();
+    View localView = View.inflate(paramContext, 2131558578, this);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131377220);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)localView.findViewById(2131366990));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new AEEditorFilterControlPanel.1(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362925));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131366989));
     paramContext = new LinearLayoutManager(paramContext, 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
   }
@@ -165,12 +158,12 @@ public class AEEditorFilterControlPanel
   
   public int a()
   {
-    return this.jdField_a_of_type_Boam.a();
+    return this.jdField_a_of_type_DovComQqImAeeditorModuleFilterFiltersAdapter.a();
   }
   
   public AEEditorFilterBean a()
   {
-    return this.c;
+    return this.jdField_c_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean;
   }
   
   public List<AEEditorFilterBean> a()
@@ -183,13 +176,15 @@ public class AEEditorFilterControlPanel
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
     this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
-    this.jdField_a_of_type_Boam = new boam(this.jdField_a_of_type_JavaUtilList, 0, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Boam);
+    this.jdField_a_of_type_DovComQqImAeeditorModuleFilterFiltersAdapter = new FiltersAdapter(this.jdField_a_of_type_JavaUtilList, 0, this);
+    this.jdField_a_of_type_DovComQqImAeeditorModuleFilterFiltersAdapter.b(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterFiltersAdapter);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Boam.a(paramInt);
+    this.jdField_a_of_type_DovComQqImAeeditorModuleFilterFiltersAdapter.a(paramInt);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void a(TextView paramTextView)
@@ -199,7 +194,7 @@ public class AEEditorFilterControlPanel
   
   public void a(String paramString)
   {
-    bnrh.b(jdField_a_of_type_JavaLangString, "selectFilter---" + paramString);
+    AEQLog.b(jdField_a_of_type_JavaLangString, "selectFilter---" + paramString);
     if (TextUtils.isEmpty(paramString)) {}
     label104:
     for (;;)
@@ -226,93 +221,113 @@ public class AEEditorFilterControlPanel
   
   public void a(boolean paramBoolean)
   {
-    Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
-    {
-      localButton.setVisibility(i);
+    if ((paramBoolean) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4)) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    while ((paramBoolean) || (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0)) {
       return;
     }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
   
   public boolean a()
   {
-    return a() == 1;
+    return this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0;
   }
   
   public boolean a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean)
   {
     boolean bool = true;
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramAEEditorFilterBean;
-    if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.AIFilter)
+    if (this.jdField_a_of_type_Int != paramInt)
     {
-      bnrh.b(jdField_a_of_type_JavaLangString, "select ai filter");
-      if (this.jdField_a_of_type_Boad != null)
+      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_c_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean = paramAEEditorFilterBean;
+      if (paramAEEditorFilterBean.type != AEEditorFilterBean.FilterID.AIFilter) {
+        break label133;
+      }
+      AEQLog.b(jdField_a_of_type_JavaLangString, "select ai filter");
+      if (this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener != null)
       {
-        this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Boad.f();
-        bnqm.a().b(paramAEEditorFilterBean.getEffectId());
+        this.jdField_b_of_type_Boolean = this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener.f();
+        AEBaseDataReporter.a().b(paramAEEditorFilterBean.getEffectId());
       }
     }
     for (;;)
     {
       if (this.jdField_b_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_Boal != null) {
-          bool = this.jdField_a_of_type_Boal.a(this.jdField_b_of_type_Int, paramInt);
+        if (this.jdField_a_of_type_DovComQqImAeeditorModuleFilterFilterChangedComparator != null) {
+          bool = this.jdField_a_of_type_DovComQqImAeeditorModuleFilterFilterChangedComparator.a(this.jdField_c_of_type_Int, paramInt);
         }
-        if ((bool) && (this.jdField_a_of_type_Boad != null)) {
-          this.jdField_a_of_type_Boad.w();
+        if ((bool) && (this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener != null)) {
+          this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener.z();
         }
-        this.jdField_b_of_type_Int = paramInt;
+        this.jdField_c_of_type_Int = paramInt;
       }
       return this.jdField_b_of_type_Boolean;
+      label133:
       if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NON)
       {
-        bnrh.b(jdField_a_of_type_JavaLangString, "select none filter");
-        if (this.jdField_a_of_type_Boad != null)
+        AEQLog.b(jdField_a_of_type_JavaLangString, "select none filter");
+        if (this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener != null)
         {
-          this.jdField_a_of_type_Boad.t();
-          bnqm.a().b(paramAEEditorFilterBean.getEffectId());
+          this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener.w();
+          AEBaseDataReporter.a().b(paramAEEditorFilterBean.getEffectId());
         }
       }
       else if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.CLIENT)
       {
-        bnrh.b(jdField_a_of_type_JavaLangString, "select color filter: " + paramAEEditorFilterBean.getEffectId());
-        String str = boaf.a().b(paramAEEditorFilterBean);
+        AEQLog.b(jdField_a_of_type_JavaLangString, "select color filter: " + paramAEEditorFilterBean.getEffectId());
+        String str = AEEditorResourceManager.a().b(paramAEEditorFilterBean);
         this.jdField_b_of_type_Boolean = false;
         if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
         {
           a(str, paramInt, paramAEEditorFilterBean);
         }
-        else if (!NetworkUtil.isNetworkAvailable())
+        else if (!NetworkUtil.a())
         {
-          QQToast.a(getContext(), a(2131694303), 0).a();
+          QQToast.a(getContext(), a(2131694508), 0).a();
         }
         else
         {
           if ((paramAEEditorFilterBean.getEditorEffectItem().getPreDownload() != 0) || (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NETWORK)) {
-            b(a(2131691794));
+            b(a(2131691912));
           }
-          AEEditorDownloadResBean localAEEditorDownloadResBean = bnut.a(paramAEEditorFilterBean);
-          boaf.a().a(localAEEditorDownloadResBean);
-          boaf.a().a(localAEEditorDownloadResBean, new boaa(this, paramAEEditorFilterBean, paramInt, str));
+          AEEditorDownloadResBean localAEEditorDownloadResBean = AEEditorEffectUtils.a(paramAEEditorFilterBean);
+          AEEditorResourceManager.a().a(localAEEditorDownloadResBean);
+          AEEditorResourceManager.a().a(localAEEditorDownloadResBean, new AEEditorFilterControlPanel.2(this, paramAEEditorFilterBean, paramInt, str));
         }
       }
       else if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NETWORK)
       {
-        bnrh.b(jdField_a_of_type_JavaLangString, "select comics filter");
-        if (this.jdField_a_of_type_Boad != null)
+        AEQLog.b(jdField_a_of_type_JavaLangString, "select comics filter");
+        if (this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener != null)
         {
-          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Boad.a(paramInt, paramAEEditorFilterBean);
-          bnqm.a().b(paramAEEditorFilterBean.getEffectId());
+          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener.a(paramInt, paramAEEditorFilterBean);
+          AEBaseDataReporter.a().b(paramAEEditorFilterBean.getEffectId());
         }
       }
     }
   }
   
   public void b(boolean paramBoolean)
+  {
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetSeekBar.getVisibility() == 0;
+  }
+  
+  public void c(boolean paramBoolean)
   {
     SeekBar localSeekBar = this.jdField_a_of_type_AndroidWidgetSeekBar;
     if (paramBoolean) {}
@@ -326,7 +341,12 @@ public class AEEditorFilterControlPanel
     }
   }
   
-  public boolean b()
+  public boolean c()
+  {
+    return a() == 1;
+  }
+  
+  public boolean d()
   {
     return a() == 0;
   }
@@ -340,20 +360,20 @@ public class AEEditorFilterControlPanel
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((this.jdField_a_of_type_AndroidWidgetButton.isEnabled()) && (this.jdField_a_of_type_Boad != null) && ((this.jdField_a_of_type_Boad instanceof boae))) {
-        ((boae)this.jdField_a_of_type_Boad).s();
+      if ((this.jdField_a_of_type_AndroidWidgetImageView.isEnabled()) && (this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener != null) && ((this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener instanceof AEEditorFilterControlPanel.ImageFilterControlListener))) {
+        ((AEEditorFilterControlPanel.ImageFilterControlListener)this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener).v();
       }
     }
   }
   
-  public void setFilterChangedComparator(boal paramboal)
+  public void setFilterChangedComparator(FilterChangedComparator paramFilterChangedComparator)
   {
-    this.jdField_a_of_type_Boal = paramboal;
+    this.jdField_a_of_type_DovComQqImAeeditorModuleFilterFilterChangedComparator = paramFilterChangedComparator;
   }
   
-  public void setFilterControlListener(boad paramboad)
+  public void setFilterControlListener(AEEditorFilterControlPanel.FilterControlListener paramFilterControlListener)
   {
-    this.jdField_a_of_type_Boad = paramboad;
+    this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener = paramFilterControlListener;
   }
   
   public void setFiltersData(List<AEEditorFilterBean> paramList)
@@ -365,9 +385,14 @@ public class AEEditorFilterControlPanel
       this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
       this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    if (this.jdField_a_of_type_Boam != null) {
-      this.jdField_a_of_type_Boam.notifyDataSetChanged();
+    if (this.jdField_a_of_type_DovComQqImAeeditorModuleFilterFiltersAdapter != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorModuleFilterFiltersAdapter.notifyDataSetChanged();
     }
+  }
+  
+  public void setPageId(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
   }
   
   public void setSeekBarValue(float paramFloat)
@@ -377,7 +402,7 @@ public class AEEditorFilterControlPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel
  * JD-Core Version:    0.7.0.1
  */

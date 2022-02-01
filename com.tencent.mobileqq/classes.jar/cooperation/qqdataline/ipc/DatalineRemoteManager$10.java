@@ -1,15 +1,13 @@
 package cooperation.qqdataline.ipc;
 
 import android.os.Bundle;
-import blzs;
-import blzz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-public class DatalineRemoteManager$10
+class DatalineRemoteManager$10
   implements Runnable
 {
-  public DatalineRemoteManager$10(blzs paramblzs) {}
+  DatalineRemoteManager$10(DatalineRemoteManager paramDatalineRemoteManager) {}
   
   public void run()
   {
@@ -32,7 +30,7 @@ public class DatalineRemoteManager$10
         if (QLog.isColorLevel()) {
           QLog.d("DatalineRemoteManager", 2, "doPostCachedMsg send success strNotifyCmd:" + str);
         }
-        this.this$0.jdField_a_of_type_Blzz.a("com.qqdataline.action.notify", localBundle);
+        this.this$0.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService.a("com.qqdataline.action.notify", localBundle);
       }
       catch (Exception localException)
       {
@@ -46,7 +44,7 @@ public class DatalineRemoteManager$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.10
  * JD-Core Version:    0.7.0.1
  */

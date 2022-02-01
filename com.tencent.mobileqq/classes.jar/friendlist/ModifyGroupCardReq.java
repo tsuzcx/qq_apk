@@ -9,10 +9,10 @@ public final class ModifyGroupCardReq
   extends JceStruct
 {
   static ArrayList<stUinInfo> cache_vecUinInfo;
-  public long dwGroupCode;
-  public long dwNewSeq;
-  public long dwZero;
-  public ArrayList<stUinInfo> vecUinInfo;
+  public long dwGroupCode = 0L;
+  public long dwNewSeq = 0L;
+  public long dwZero = 0L;
+  public ArrayList<stUinInfo> vecUinInfo = null;
   
   public ModifyGroupCardReq() {}
   
@@ -48,7 +48,7 @@ public final class ModifyGroupCardReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.ModifyGroupCardReq
  * JD-Core Version:    0.7.0.1
  */

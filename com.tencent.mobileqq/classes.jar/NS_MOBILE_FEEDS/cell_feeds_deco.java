@@ -8,7 +8,7 @@ public final class cell_feeds_deco
   extends JceStruct
 {
   static byte[] cache_decoration = (byte[])new byte[1];
-  public byte[] decoration;
+  public byte[] decoration = null;
   
   static
   {

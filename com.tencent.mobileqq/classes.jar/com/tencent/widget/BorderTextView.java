@@ -10,10 +10,10 @@ import android.util.AttributeSet;
 public class BorderTextView
   extends SimpleTextView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  private float jdField_a_of_type_Float = 0.0F;
+  private int jdField_a_of_type_Int = 0;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int b;
+  private int b = 0;
   
   public BorderTextView(Context paramContext)
   {
@@ -30,7 +30,7 @@ public class BorderTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
@@ -60,7 +60,7 @@ public class BorderTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.BorderTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import pvj;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 
 class ReadInJoyListViewGroup$2
   implements Runnable
@@ -9,12 +9,12 @@ class ReadInJoyListViewGroup$2
   
   public void run()
   {
-    pvj.a().a(this.this$0.getContext());
+    ReadInJoyLogicEngine.a().a(this.this$0.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.2
  * JD-Core Version:    0.7.0.1
  */

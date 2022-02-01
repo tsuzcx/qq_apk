@@ -1,8 +1,8 @@
 package com.tencent.gdtad.api.adbox;
 
-import achn;
-import acho;
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -36,10 +36,10 @@ public class GdtAdBoxData
     Object localObject1;
     try
     {
-      paramString = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(achn.a(new qq_ad_get.QQAdGetRsp(), new JSONObject(paramString)))).pos_ads_info.get();
+      paramString = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp(), new JSONObject(paramString)))).pos_ads_info.get();
       if ((paramString == null) || (paramString.isEmpty()))
       {
-        acho.d("GdtAdBoxData", "convertJson2GdtAds() posAdInfos.isEmpty");
+        GdtLog.d("GdtAdBoxData", "convertJson2GdtAds() posAdInfos.isEmpty");
         return;
       }
       if (this.ads != null) {
@@ -55,13 +55,13 @@ public class GdtAdBoxData
         if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
           break;
         }
-        acho.d("GdtAdBoxData", "convertJson2GdtAds() adInfos.isEmpty");
+        GdtLog.d("GdtAdBoxData", "convertJson2GdtAds() adInfos.isEmpty");
       }
       localObject1 = ((List)localObject1).iterator();
     }
     catch (Exception paramString)
     {
-      acho.d("GdtAdBoxData", "convertJson2GdtAds", paramString);
+      GdtLog.d("GdtAdBoxData", "convertJson2GdtAds", paramString);
       return;
     }
     while (((Iterator)localObject1).hasNext())
@@ -75,7 +75,7 @@ public class GdtAdBoxData
     }
     label202:
     if (this.ads != null) {
-      acho.a("GdtAdBoxData", "convertJson2GdtAds() result = [" + Arrays.toString(this.ads.toArray()) + "]");
+      GdtLog.a("GdtAdBoxData", "convertJson2GdtAds() result = [" + Arrays.toString(this.ads.toArray()) + "]");
     }
   }
   
@@ -86,7 +86,7 @@ public class GdtAdBoxData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.adbox.GdtAdBoxData
  * JD-Core Version:    0.7.0.1
  */

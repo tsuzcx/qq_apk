@@ -1,17 +1,14 @@
 package com.tencent.mobileqq.utils;
 
-import bhhv;
-import bhhx;
-
 class QQCustomDialogWtihEmoticonInput$1
-  implements bhhx
+  implements SoftKeyboardHeight.OnGetSoftHeightListener
 {
   QQCustomDialogWtihEmoticonInput$1(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  public void onShowed(int paramInt, boolean paramBoolean)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    QQCustomDialogWtihEmoticonInput.access$002(this.this$0, bhhv.a(paramInt));
-    this.this$0.mWindowParams.height = QQCustomDialogWtihEmoticonInput.access$000(this.this$0);
+    QQCustomDialogWtihEmoticonInput.a(this.a, SoftKeyboardHeight.a(paramInt));
+    this.a.a.height = QQCustomDialogWtihEmoticonInput.a(this.a);
   }
 }
 

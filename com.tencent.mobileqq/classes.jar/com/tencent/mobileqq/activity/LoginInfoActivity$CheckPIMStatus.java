@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.app.Activity;
-import bhez;
+import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.lang.ref.WeakReference;
 import mqq.app.MobileQQ;
@@ -20,17 +20,17 @@ class LoginInfoActivity$CheckPIMStatus
   
   public void run()
   {
-    boolean bool1 = bhez.a(MobileQQ.sMobileQQ);
-    boolean bool2 = bhez.b(MobileQQ.sMobileQQ);
+    boolean bool1 = JumpQqPimSecureUtil.a(MobileQQ.sMobileQQ);
+    boolean bool2 = JumpQqPimSecureUtil.b(MobileQQ.sMobileQQ);
     if (!bool1)
     {
-      i = LoginInfoActivity.a();
-      if (i == LoginInfoActivity.c()) {
+      i = LoginInfoActivity.access$3000();
+      if (i == LoginInfoActivity.access$3200()) {
         break label85;
       }
     }
     label85:
-    for (int i = 2131718432;; i = 2131718434)
+    for (int i = 2131718955;; i = 2131718957)
     {
       Activity localActivity = (Activity)this.b.get();
       if (localActivity != null) {
@@ -39,17 +39,17 @@ class LoginInfoActivity$CheckPIMStatus
       return;
       if (!bool2)
       {
-        i = LoginInfoActivity.b();
+        i = LoginInfoActivity.access$3100();
         break;
       }
-      i = LoginInfoActivity.c();
+      i = LoginInfoActivity.access$3200();
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.CheckPIMStatus
  * JD-Core Version:    0.7.0.1
  */

@@ -64,10 +64,53 @@ public class GameGrowthGuardianManager
     label90:
     for (String str = paramMiniAppInfo.via;; str = "")
     {
-      localChannelProxy.JudgeTiming(paramString2, paramInt2, paramInt3, paramInt1, l, paramInt4, paramString1, 0, str, paramMiniAppInfo.gameAdsTotalTime, previousExtInfo, paramMiniAppInfo.customInfo, paramString3, new GameGrowthGuardianManager.2(paramMiniAppInfo, paramContext, paramInt1));
+      localChannelProxy.judgeTiming(paramString2, paramInt2, paramInt3, paramInt1, l, paramInt4, paramString1, 0, str, paramMiniAppInfo.gameAdsTotalTime, previousExtInfo, paramMiniAppInfo.customInfo, paramString3, new GameGrowthGuardianManager.2(paramMiniAppInfo, paramContext, paramInt1));
       return;
       paramString1 = "";
       break;
+    }
+  }
+  
+  private static boolean enableHeartBeatAppIdWhiteList(MiniAppInfo paramMiniAppInfo)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    String[] arrayOfString;
+    int j;
+    int i;
+    if (paramMiniAppInfo != null)
+    {
+      bool1 = bool2;
+      if (paramMiniAppInfo.appId != null)
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(ENABLE_HEART_BEAT_APPID_WHITELIST))
+        {
+          arrayOfString = ENABLE_HEART_BEAT_APPID_WHITELIST.split(",");
+          bool1 = bool2;
+          if (arrayOfString != null)
+          {
+            j = arrayOfString.length;
+            i = 0;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
+      {
+        String str = arrayOfString[i];
+        if (paramMiniAppInfo.appId.equals(str)) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      i += 1;
     }
   }
   
@@ -86,101 +129,107 @@ public class GameGrowthGuardianManager
   
   private static boolean enableHeartBeatForMiniApp(MiniAppInfo paramMiniAppInfo)
   {
-    boolean bool2 = false;
-    if (paramMiniAppInfo != null) {}
-    for (;;)
+    int j = 9999;
+    String str = null;
+    int i = j;
+    if (paramMiniAppInfo != null) {
+      i = j;
+    }
+    try
     {
-      int j;
-      try
-      {
-        if (paramMiniAppInfo.launchParam == null) {
-          break label260;
-        }
+      if (paramMiniAppInfo.launchParam != null) {
         i = paramMiniAppInfo.launchParam.scene;
-        if (paramMiniAppInfo != null)
-        {
-          str1 = paramMiniAppInfo.via;
-          if ((i == 2093) || ("2016_4".equals(str1))) {
-            break label267;
-          }
-          if (!TextUtils.isEmpty(ENABLE_HEART_BEAT_SCENE_WHITELIST))
-          {
-            arrayOfString = ENABLE_HEART_BEAT_SCENE_WHITELIST.split(",");
-            if (arrayOfString != null)
-            {
-              int k = arrayOfString.length;
-              j = 0;
-              if (j < k)
-              {
-                if (i != Integer.parseInt(arrayOfString[j])) {
-                  break label273;
-                }
-                return true;
-              }
-            }
-          }
-          if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appId != null) && (!TextUtils.isEmpty(ENABLE_HEART_BEAT_APPID_WHITELIST)))
-          {
-            arrayOfString = ENABLE_HEART_BEAT_APPID_WHITELIST.split(",");
-            if (arrayOfString != null)
-            {
-              j = arrayOfString.length;
-              i = 0;
-              if (i < j)
-              {
-                String str2 = arrayOfString[i];
-                if (!paramMiniAppInfo.appId.equals(str2)) {
-                  break label280;
-                }
-                return true;
-              }
-            }
-          }
-          bool1 = bool2;
-          if (TextUtils.isEmpty(ENABLE_HEART_BEAT_VIA_WHITELIST)) {
-            break label270;
-          }
-          paramMiniAppInfo = ENABLE_HEART_BEAT_VIA_WHITELIST.split(",");
-          bool1 = bool2;
-          if (paramMiniAppInfo == null) {
-            break label270;
-          }
-          j = paramMiniAppInfo.length;
-          i = 0;
-          bool1 = bool2;
-          if (i >= j) {
-            break label270;
-          }
-          String[] arrayOfString = paramMiniAppInfo[i];
-          if (arrayOfString != null)
-          {
-            bool1 = arrayOfString.equals(str1);
-            if (bool1) {
-              return true;
-            }
-          }
-          i += 1;
-          continue;
-        }
-        String str1 = null;
       }
-      catch (Exception paramMiniAppInfo)
+      if (paramMiniAppInfo != null) {
+        str = paramMiniAppInfo.via;
+      }
+      if (isFromQQXMAN(i, str)) {
+        return true;
+      }
+      if ((enableHeartBeatSceneWhiteList(i)) || (enableHeartBeatAppIdWhiteList(paramMiniAppInfo))) {
+        break label89;
+      }
+      boolean bool = enableHeartBeatViaWhiteList(str);
+      if (bool) {
+        break label89;
+      }
+    }
+    catch (Exception paramMiniAppInfo)
+    {
+      for (;;)
       {
         QMLog.e("GameGrowthGuardianManager", "enableHeartBeatForLaunchScene", paramMiniAppInfo);
-        return false;
       }
-      continue;
-      label260:
-      int i = 9999;
-      continue;
-      label267:
-      boolean bool1 = true;
-      label270:
-      return bool1;
-      label273:
-      j += 1;
-      continue;
-      label280:
+    }
+    return false;
+    label89:
+    return true;
+  }
+  
+  private static boolean enableHeartBeatSceneWhiteList(int paramInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    String[] arrayOfString;
+    int j;
+    int i;
+    if (!TextUtils.isEmpty(ENABLE_HEART_BEAT_SCENE_WHITELIST))
+    {
+      arrayOfString = ENABLE_HEART_BEAT_SCENE_WHITELIST.split(",");
+      bool1 = bool2;
+      if (arrayOfString != null)
+      {
+        j = arrayOfString.length;
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
+      {
+        if (paramInt == Integer.parseInt(arrayOfString[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  private static boolean enableHeartBeatViaWhiteList(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    String[] arrayOfString;
+    int j;
+    int i;
+    if (!TextUtils.isEmpty(ENABLE_HEART_BEAT_VIA_WHITELIST))
+    {
+      arrayOfString = ENABLE_HEART_BEAT_VIA_WHITELIST.split(",");
+      bool1 = bool2;
+      if (arrayOfString != null)
+      {
+        j = arrayOfString.length;
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
+      {
+        String str = arrayOfString[i];
+        if ((str != null) && (str.equals(paramString))) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
       i += 1;
     }
   }
@@ -262,6 +311,11 @@ public class GameGrowthGuardianManager
     if (sOnStopCallback != null) {
       sOnStopCallback.onStop();
     }
+  }
+  
+  private static boolean isFromQQXMAN(int paramInt, String paramString)
+  {
+    return (paramInt == 2093) || ("2016_4".equals(paramString));
   }
   
   public static void registerActivityOnStopCallback(GameGrowthGuardianManager.OnStopCallback paramOnStopCallback)
@@ -363,13 +417,13 @@ public class GameGrowthGuardianManager
   
   private static INTERFACE.StJudgeTimingRsp testForRealNameAuthentication()
   {
-    INTERFACE.StJudgeTimingRsp localStJudgeTimingRsp = new INTERFACE.StJudgeTimingRsp();
     Object localObject = new INTERFACE.GuardInstruction();
     ((INTERFACE.GuardInstruction)localObject).type.set(7);
     ((INTERFACE.GuardInstruction)localObject).title.set("Real name dialog title");
     ((INTERFACE.GuardInstruction)localObject).msg.set("Real name dialog message");
     ((INTERFACE.GuardInstruction)localObject).url.set("https://www.qq.com");
     ((INTERFACE.GuardInstruction)localObject).ruleName.set("REALNAME");
+    INTERFACE.StJudgeTimingRsp localStJudgeTimingRsp = new INTERFACE.StJudgeTimingRsp();
     localStJudgeTimingRsp.loginInstructions.add((MessageMicro)localObject);
     localStJudgeTimingRsp.loginTraceId.set(UUID.randomUUID().toString());
     localStJudgeTimingRsp.nextDuration.set(120);
@@ -405,7 +459,7 @@ public class GameGrowthGuardianManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager
  * JD-Core Version:    0.7.0.1
  */

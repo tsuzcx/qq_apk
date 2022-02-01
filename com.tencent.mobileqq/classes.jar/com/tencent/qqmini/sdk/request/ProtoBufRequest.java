@@ -60,7 +60,6 @@ public abstract class ProtoBufRequest
   
   public byte[] encode()
   {
-    Object localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
     PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
     this.seqNo = sSeq.incrementAndGet();
     localStQWebReq.Seq.set(this.seqNo);
@@ -68,6 +67,7 @@ public abstract class ProtoBufRequest
     if (QUAUtil.getQUA() != null) {
       localStQWebReq.qua.set(QUAUtil.getQUA());
     }
+    Object localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
     if (((ChannelProxy)localObject).getDeviceInfo() != null) {
       localStQWebReq.deviceInfo.set(((ChannelProxy)localObject).getDeviceInfo());
     }
@@ -148,7 +148,7 @@ public abstract class ProtoBufRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.ProtoBufRequest
  * JD-Core Version:    0.7.0.1
  */

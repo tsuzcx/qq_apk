@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import rrx;
-
 public class TabChannelCoverInfo
   extends ChannelCoverInfo
 {
   public static int TYPE_CHANNEL_MY_CONFIG = 700;
   public static int TYPE_CHANNEL_RECOMMEND_CONFIG = 701;
-  public long bid;
+  public long bid = 0L;
   public int boldFont;
   public long channelConfigType;
   public int dynamicSort;
   public long endTimestamp;
   public int fontsColor;
   public int frameColor;
-  public int onlyCover;
+  public boolean isImmersive = false;
+  public boolean isXTabMode = false;
+  public int onlyCover = 0;
   public String proxy;
   public int reason;
-  public rrx redPoint;
+  public TabChannelCoverInfo.RedPoint redPoint;
   public String redPointJson;
   public long sectionId;
   public int seq;
@@ -56,7 +56,7 @@ public class TabChannelCoverInfo
     TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)super.clone();
     if (this.redPoint != null)
     {
-      localTabChannelCoverInfo.redPoint = new rrx();
+      localTabChannelCoverInfo.redPoint = new TabChannelCoverInfo.RedPoint();
       localTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean = this.redPoint.jdField_a_of_type_Boolean;
       localTabChannelCoverInfo.redPoint.jdField_b_of_type_Long = this.redPoint.jdField_b_of_type_Long;
       localTabChannelCoverInfo.redPoint.jdField_a_of_type_Long = this.redPoint.jdField_a_of_type_Long;
@@ -85,7 +85,7 @@ public class TabChannelCoverInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo
  * JD-Core Version:    0.7.0.1
  */

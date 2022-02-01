@@ -3,8 +3,8 @@ package com.tencent.mobileqq.webview.swift;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import bdla;
 import com.tencent.mobileqq.bigbrother.TeleScreenRunnable;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 class WebViewFragment$15
@@ -33,7 +33,7 @@ class WebViewFragment$15
           if (this.jdField_a_of_type_Long == -1L)
           {
             str1 = "";
-            bdla.b(null, "dc00898", "", "", "0X800A86A", "0X800A86A", 0, 0, str1, "", "", "");
+            ReportController.b(null, "dc00898", "", "", "0X800A86A", "0X800A86A", 0, 0, str1, "", "", "");
             return;
           }
           str1 = String.valueOf(this.jdField_a_of_type_Long);
@@ -45,7 +45,7 @@ class WebViewFragment$15
         if (this.jdField_a_of_type_Long == -1L)
         {
           str1 = "";
-          bdla.b(null, "dc00898", "", "", "0X800A86B", "0X800A86B", 0, 0, str1, "", "", "");
+          ReportController.b(null, "dc00898", "", "", "0X800A86B", "0X800A86B", 0, 0, str1, "", "", "");
           return;
         }
       }
@@ -61,7 +61,7 @@ class WebViewFragment$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment.15
  * JD-Core Version:    0.7.0.1
  */

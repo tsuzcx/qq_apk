@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
 import android.app.Dialog;
-import ykq;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 class AbsVideoInfoWidget$3
   implements Runnable
@@ -18,13 +18,13 @@ class AbsVideoInfoWidget$3
     }
     catch (Exception localException)
     {
-      ykq.b(this.this$0.b, "dismiss dialog error :%s", localException);
+      SLog.b(this.this$0.b, "dismiss dialog error :%s", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget.3
  * JD-Core Version:    0.7.0.1
  */

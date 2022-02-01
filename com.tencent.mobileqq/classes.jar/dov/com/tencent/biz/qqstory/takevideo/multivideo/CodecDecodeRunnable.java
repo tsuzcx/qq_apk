@@ -4,33 +4,32 @@ import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
-import bpeb;
-import bpec;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CodecDecodeRunnable
+class CodecDecodeRunnable
   extends DecodeRunnable
 {
   MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
   private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
   private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-  private bpeb jdField_a_of_type_Bpeb;
+  private CodecOutputSurface jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoCodecOutputSurface;
   private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   ByteBuffer[] jdField_b_of_type_ArrayOfJavaNioByteBuffer;
   private boolean c;
-  private long d;
+  private long d = 0L;
   private long e;
   private long f = 200000L;
   
-  public CodecDecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bpec parambpec)
+  public CodecDecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, DecodeRunnable.DecodeRunnableListener paramDecodeRunnableListener)
   {
-    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, parambpec);
+    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, paramDecodeRunnableListener);
+    this.jdField_c_of_type_Boolean = false;
     this.jdField_e_of_type_Long = -1L;
   }
   
@@ -214,8 +213,8 @@ public class CodecDecodeRunnable
         try
         {
           this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
-          this.jdField_a_of_type_Bpeb = new bpeb(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-          this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, this.jdField_a_of_type_Bpeb.a(), null, 0);
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoCodecOutputSurface = new CodecOutputSurface(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoCodecOutputSurface.a(), null, 0);
           return true;
         }
         catch (Throwable localThrowable)
@@ -336,82 +335,82 @@ public class CodecDecodeRunnable
   public void run()
   {
     // Byte code:
-    //   0: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +12 -> 15
-    //   6: ldc 53
+    //   6: ldc 59
     //   8: iconst_2
     //   9: ldc_w 315
-    //   12: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   12: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   15: aload_0
     //   16: invokevirtual 317	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:b	()V
     //   19: aload_0
     //   20: invokespecial 319	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:b	()Z
     //   23: ifne +19 -> 42
-    //   26: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   26: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   29: ifeq +12 -> 41
-    //   32: ldc 53
+    //   32: ldc 59
     //   34: iconst_2
     //   35: ldc_w 321
-    //   38: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   38: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   41: return
     //   42: aload_0
     //   43: invokespecial 323	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:c	()Z
     //   46: ifne +19 -> 65
-    //   49: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   49: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   52: ifeq -11 -> 41
-    //   55: ldc 53
+    //   55: ldc 59
     //   57: iconst_2
     //   58: ldc_w 325
-    //   61: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   61: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   64: return
     //   65: aload_0
     //   66: invokespecial 327	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:a	()I
     //   69: istore_2
     //   70: aload_0
     //   71: iconst_m1
-    //   72: putfield 96	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
+    //   72: putfield 102	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
     //   75: aload_0
     //   76: getfield 30	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
     //   79: lconst_0
     //   80: iconst_0
-    //   81: invokevirtual 74	android/media/MediaExtractor:seekTo	(JI)V
-    //   84: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   81: invokevirtual 80	android/media/MediaExtractor:seekTo	(JI)V
+    //   84: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   87: ifeq +29 -> 116
-    //   90: ldc 53
+    //   90: ldc 59
     //   92: iconst_2
-    //   93: new 119	java/lang/StringBuilder
+    //   93: new 125	java/lang/StringBuilder
     //   96: dup
-    //   97: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   97: invokespecial 126	java/lang/StringBuilder:<init>	()V
     //   100: ldc_w 329
-    //   103: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: iload_2
-    //   107: invokevirtual 129	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   110: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   116: invokestatic 222	java/lang/Thread:interrupted	()Z
+    //   107: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   110: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   113: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   116: invokestatic 228	java/lang/Thread:interrupted	()Z
     //   119: ifne +121 -> 240
     //   122: aload_0
     //   123: invokevirtual 331	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:a	()Z
     //   126: ifne +114 -> 240
     //   129: aload_0
-    //   130: getfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
+    //   130: getfield 40	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
     //   133: lconst_0
     //   134: lcmp
     //   135: ifge +15 -> 150
     //   138: aload_0
     //   139: aload_0
-    //   140: invokevirtual 98	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:a	()J
-    //   143: putfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
+    //   140: invokevirtual 104	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:a	()J
+    //   143: putfield 40	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
     //   146: iload_2
     //   147: ifne +160 -> 307
     //   150: aload_0
-    //   151: getfield 274	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_b_of_type_Boolean	Z
+    //   151: getfield 32	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_b_of_type_Boolean	Z
     //   154: ifne +8 -> 162
     //   157: aload_0
     //   158: invokespecial 333	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:d	()Z
     //   161: pop
     //   162: aload_0
-    //   163: getfield 293	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_c_of_type_Boolean	Z
+    //   163: getfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_c_of_type_Boolean	Z
     //   166: ifne +67 -> 233
     //   169: aload_0
     //   170: invokespecial 335	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:e	()Z
@@ -423,220 +422,220 @@ public class CodecDecodeRunnable
     //   180: iload_1
     //   181: ifle +10 -> 191
     //   184: aload_0
-    //   185: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bpeb	Lbpeb;
-    //   188: invokevirtual 337	bpeb:c	()V
+    //   185: getfield 211	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoCodecOutputSurface	Ldov/com/tencent/biz/qqstory/takevideo/multivideo/CodecOutputSurface;
+    //   188: invokevirtual 337	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecOutputSurface:c	()V
     //   191: aload_0
-    //   192: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bpeb	Lbpeb;
+    //   192: getfield 211	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoCodecOutputSurface	Ldov/com/tencent/biz/qqstory/takevideo/multivideo/CodecOutputSurface;
     //   195: iconst_0
-    //   196: invokevirtual 340	bpeb:a	(Z)V
+    //   196: invokevirtual 340	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecOutputSurface:a	(Z)V
     //   199: aload_0
     //   200: aload_0
-    //   201: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bpeb	Lbpeb;
-    //   204: invokevirtual 343	bpeb:a	()Landroid/graphics/Bitmap;
+    //   201: getfield 211	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoCodecOutputSurface	Ldov/com/tencent/biz/qqstory/takevideo/multivideo/CodecOutputSurface;
+    //   204: invokevirtual 343	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecOutputSurface:a	()Landroid/graphics/Bitmap;
     //   207: invokevirtual 346	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:a	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   210: astore 4
     //   212: aload_0
     //   213: aload_0
-    //   214: getfield 96	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
+    //   214: getfield 102	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
     //   217: aload_0
-    //   218: getfield 252	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo	Landroid/media/MediaCodec$BufferInfo;
+    //   218: getfield 258	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo	Landroid/media/MediaCodec$BufferInfo;
     //   221: getfield 296	android/media/MediaCodec$BufferInfo:presentationTimeUs	J
-    //   224: ldc2_w 59
+    //   224: ldc2_w 65
     //   227: ldiv
     //   228: aload 4
     //   230: invokevirtual 349	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:a	(IJLandroid/graphics/Bitmap;)V
     //   233: aload_0
-    //   234: getfield 293	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_c_of_type_Boolean	Z
+    //   234: getfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_c_of_type_Boolean	Z
     //   237: ifeq -121 -> 116
     //   240: aload_0
-    //   241: getfield 194	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   241: getfield 200	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
     //   244: invokevirtual 352	android/media/MediaCodec:stop	()V
     //   247: aload_0
-    //   248: getfield 194	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   248: getfield 200	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
     //   251: invokevirtual 355	android/media/MediaCodec:release	()V
     //   254: aload_0
     //   255: getfield 30	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
     //   258: invokevirtual 356	android/media/MediaExtractor:release	()V
     //   261: aload_0
-    //   262: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bpeb	Lbpeb;
-    //   265: invokevirtual 358	bpeb:a	()V
+    //   262: getfield 211	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoCodecOutputSurface	Ldov/com/tencent/biz/qqstory/takevideo/multivideo/CodecOutputSurface;
+    //   265: invokevirtual 358	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecOutputSurface:a	()V
     //   268: aload_0
     //   269: aconst_null
-    //   270: putfield 252	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo	Landroid/media/MediaCodec$BufferInfo;
+    //   270: putfield 258	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo	Landroid/media/MediaCodec$BufferInfo;
     //   273: aload_0
     //   274: aconst_null
-    //   275: putfield 242	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_ArrayOfJavaNioByteBuffer	[Ljava/nio/ByteBuffer;
+    //   275: putfield 248	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_ArrayOfJavaNioByteBuffer	[Ljava/nio/ByteBuffer;
     //   278: aload_0
     //   279: aconst_null
-    //   280: putfield 247	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_b_of_type_ArrayOfJavaNioByteBuffer	[Ljava/nio/ByteBuffer;
+    //   280: putfield 253	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_b_of_type_ArrayOfJavaNioByteBuffer	[Ljava/nio/ByteBuffer;
     //   283: aload_0
     //   284: aload_0
-    //   285: getfield 293	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_c_of_type_Boolean	Z
+    //   285: getfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_c_of_type_Boolean	Z
     //   288: invokevirtual 359	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:a	(Z)V
-    //   291: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   291: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   294: ifeq -253 -> 41
-    //   297: ldc 53
+    //   297: ldc 59
     //   299: iconst_2
     //   300: ldc_w 361
-    //   303: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   303: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   306: return
     //   307: iload_2
     //   308: iconst_1
     //   309: if_icmpne +151 -> 460
     //   312: aload_0
-    //   313: getfield 96	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
+    //   313: getfield 102	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
     //   316: iflt -166 -> 150
     //   319: aload_0
-    //   320: getfield 96	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
+    //   320: getfield 102	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
     //   323: aload_0
-    //   324: getfield 43	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   327: invokevirtual 81	java/util/ArrayList:size	()I
+    //   324: getfield 49	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   327: invokevirtual 87	java/util/ArrayList:size	()I
     //   330: if_icmpge -180 -> 150
     //   333: aload_0
-    //   334: getfield 43	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   334: getfield 49	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   337: aload_0
-    //   338: getfield 96	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
-    //   341: invokevirtual 102	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   344: checkcast 62	java/lang/Long
-    //   347: invokevirtual 105	java/lang/Long:longValue	()J
+    //   338: getfield 102	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
+    //   341: invokevirtual 108	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   344: checkcast 68	java/lang/Long
+    //   347: invokevirtual 111	java/lang/Long:longValue	()J
     //   350: lconst_0
     //   351: lcmp
     //   352: iflt -202 -> 150
     //   355: aload_0
     //   356: aload_0
-    //   357: getfield 43	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   357: getfield 49	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   360: aload_0
-    //   361: getfield 96	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
-    //   364: invokevirtual 102	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   367: checkcast 62	java/lang/Long
-    //   370: invokevirtual 105	java/lang/Long:longValue	()J
-    //   373: putfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
+    //   361: getfield 102	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Int	I
+    //   364: invokevirtual 108	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   367: checkcast 68	java/lang/Long
+    //   370: invokevirtual 111	java/lang/Long:longValue	()J
+    //   373: putfield 40	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
     //   376: aload_0
     //   377: getfield 30	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
     //   380: aload_0
-    //   381: getfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
+    //   381: getfield 40	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
     //   384: iconst_0
-    //   385: invokevirtual 74	android/media/MediaExtractor:seekTo	(JI)V
+    //   385: invokevirtual 80	android/media/MediaExtractor:seekTo	(JI)V
     //   388: aload_0
     //   389: aload_0
     //   390: getfield 30	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
-    //   393: invokevirtual 78	android/media/MediaExtractor:getSampleTime	()J
-    //   396: putfield 268	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:d	J
-    //   399: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   393: invokevirtual 84	android/media/MediaExtractor:getSampleTime	()J
+    //   396: putfield 36	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:d	J
+    //   399: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   402: ifeq +45 -> 447
-    //   405: ldc 53
+    //   405: ldc 59
     //   407: iconst_2
-    //   408: new 119	java/lang/StringBuilder
+    //   408: new 125	java/lang/StringBuilder
     //   411: dup
-    //   412: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   412: invokespecial 126	java/lang/StringBuilder:<init>	()V
     //   415: ldc_w 363
-    //   418: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   418: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   421: aload_0
-    //   422: getfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
+    //   422: getfield 40	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
     //   425: invokevirtual 366	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   428: ldc_w 368
-    //   431: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   431: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   434: aload_0
-    //   435: getfield 268	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:d	J
+    //   435: getfield 36	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:d	J
     //   438: invokevirtual 366	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   441: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   444: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   441: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   444: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   447: aload_0
     //   448: iconst_0
-    //   449: putfield 274	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_b_of_type_Boolean	Z
+    //   449: putfield 32	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_b_of_type_Boolean	Z
     //   452: aload_0
     //   453: iconst_0
-    //   454: putfield 293	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_c_of_type_Boolean	Z
+    //   454: putfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_c_of_type_Boolean	Z
     //   457: goto -307 -> 150
     //   460: aload_0
     //   461: getfield 30	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
     //   464: aload_0
-    //   465: getfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
+    //   465: getfield 40	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
     //   468: iconst_0
-    //   469: invokevirtual 74	android/media/MediaExtractor:seekTo	(JI)V
+    //   469: invokevirtual 80	android/media/MediaExtractor:seekTo	(JI)V
     //   472: aload_0
     //   473: aload_0
     //   474: getfield 30	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
-    //   477: invokevirtual 78	android/media/MediaExtractor:getSampleTime	()J
-    //   480: putfield 268	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:d	J
-    //   483: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   477: invokevirtual 84	android/media/MediaExtractor:getSampleTime	()J
+    //   480: putfield 36	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:d	J
+    //   483: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   486: ifeq +45 -> 531
-    //   489: ldc 53
+    //   489: ldc 59
     //   491: iconst_2
-    //   492: new 119	java/lang/StringBuilder
+    //   492: new 125	java/lang/StringBuilder
     //   495: dup
-    //   496: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   496: invokespecial 126	java/lang/StringBuilder:<init>	()V
     //   499: ldc_w 363
-    //   502: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   502: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   505: aload_0
-    //   506: getfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
+    //   506: getfield 40	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_e_of_type_Long	J
     //   509: invokevirtual 366	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   512: ldc_w 368
-    //   515: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   515: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   518: aload_0
-    //   519: getfield 268	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:d	J
+    //   519: getfield 36	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:d	J
     //   522: invokevirtual 366	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   525: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   528: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   525: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   528: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   531: aload_0
     //   532: iconst_0
-    //   533: putfield 274	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_b_of_type_Boolean	Z
+    //   533: putfield 32	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_b_of_type_Boolean	Z
     //   536: aload_0
     //   537: iconst_0
-    //   538: putfield 293	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_c_of_type_Boolean	Z
+    //   538: putfield 34	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_c_of_type_Boolean	Z
     //   541: goto -391 -> 150
     //   544: astore 4
     //   546: aload 4
     //   548: invokevirtual 369	java/lang/Exception:printStackTrace	()V
-    //   551: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   551: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   554: ifeq +30 -> 584
-    //   557: ldc 53
+    //   557: ldc 59
     //   559: iconst_2
-    //   560: new 119	java/lang/StringBuilder
+    //   560: new 125	java/lang/StringBuilder
     //   563: dup
-    //   564: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   564: invokespecial 126	java/lang/StringBuilder:<init>	()V
     //   567: ldc_w 371
-    //   570: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   570: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   573: aload 4
-    //   575: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   578: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   581: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   575: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   578: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   581: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   584: iload_1
     //   585: iconst_1
     //   586: isub
     //   587: istore_1
     //   588: goto -408 -> 180
     //   591: astore 4
-    //   593: invokestatic 222	java/lang/Thread:interrupted	()Z
+    //   593: invokestatic 228	java/lang/Thread:interrupted	()Z
     //   596: ifeq +16 -> 612
-    //   599: ldc 53
+    //   599: ldc 59
     //   601: iconst_2
-    //   602: ldc 224
+    //   602: ldc 230
     //   604: aload 4
-    //   606: invokestatic 227	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   606: invokestatic 233	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   609: goto -376 -> 233
     //   612: aload_0
     //   613: iconst_4
-    //   614: invokevirtual 217	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:a	(I)V
-    //   617: ldc 53
+    //   614: invokevirtual 223	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:a	(I)V
+    //   617: ldc 59
     //   619: iconst_2
     //   620: ldc_w 373
     //   623: aload 4
-    //   625: invokestatic 227	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   625: invokestatic 233	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   628: goto -388 -> 240
     //   631: astore 4
-    //   633: ldc 53
+    //   633: ldc 59
     //   635: iconst_2
-    //   636: new 119	java/lang/StringBuilder
+    //   636: new 125	java/lang/StringBuilder
     //   639: dup
-    //   640: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   640: invokespecial 126	java/lang/StringBuilder:<init>	()V
     //   643: ldc_w 375
-    //   646: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   646: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   649: aload 4
     //   651: invokevirtual 376	java/lang/Exception:toString	()Ljava/lang/String;
-    //   654: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   657: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   660: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   654: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   657: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   660: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   663: goto -380 -> 283
     // Local variable table:
     //   start	length	slot	name	signature
@@ -661,7 +660,7 @@ public class CodecDecodeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.CodecDecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

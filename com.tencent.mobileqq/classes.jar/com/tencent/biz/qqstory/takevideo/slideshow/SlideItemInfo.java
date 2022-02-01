@@ -4,22 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.album.model.StoryAlbum;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import java.net.URL;
-import vxg;
-import yzp;
 
 public class SlideItemInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SlideItemInfo> CREATOR = new yzp();
+  public static final Parcelable.Creator<SlideItemInfo> CREATOR = new SlideItemInfo.1();
   public int a;
   public long a;
+  public StoryAlbum a;
   public LocalMediaInfo a;
   public String a;
   public URL a;
-  public vxg a;
   public boolean a;
   public int b;
   public long b;
@@ -35,10 +34,14 @@ public class SlideItemInfo
   public String e;
   public int f;
   
-  public SlideItemInfo(Parcel paramParcel)
+  protected SlideItemInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
     this.jdField_e_of_type_JavaLangString = "LinearBlur";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(LocalMediaInfo.class.getClassLoader()));
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -59,17 +62,17 @@ public class SlideItemInfo
       this.f = paramParcel.readInt();
       this.jdField_e_of_type_JavaLangString = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
-        break label193;
+        break label213;
       }
       bool1 = true;
-      label168:
+      label188:
       this.jdField_b_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label198;
+        break label218;
       }
     }
-    label193:
-    label198:
+    label213:
+    label218:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_c_of_type_Boolean = bool1;
@@ -77,14 +80,18 @@ public class SlideItemInfo
       bool1 = false;
       break;
       bool1 = false;
-      break label168;
+      break label188;
     }
   }
   
   public SlideItemInfo(LocalMediaInfo paramLocalMediaInfo)
   {
     this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
     this.jdField_e_of_type_JavaLangString = "LinearBlur";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
@@ -202,7 +209,7 @@ public class SlideItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo
  * JD-Core Version:    0.7.0.1
  */

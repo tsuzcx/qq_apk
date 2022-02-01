@@ -4,45 +4,45 @@ import android.app.Activity;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeController;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeController.EventListener;
+import com.tencent.biz.pubaccount.readinjoy.video.player.PlayerStatusListener;
+import com.tencent.biz.pubaccount.readinjoy.video.player.ReadInjoyPlayer;
+import com.tencent.biz.pubaccount.readinjoy.video.player.ReadinjoyPlayerReporter;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoInfo;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import six;
-import sqt;
-import squ;
-import ssw;
-import ssx;
-import ssz;
-import uah;
 
 public class HVideoDelegate
-  implements HippyQQVideoView.OnVideoViewControlListener, squ, ssw
+  implements VideoVolumeController.EventListener, PlayerStatusListener, HippyQQVideoView.OnVideoViewControlListener
 {
   private static final int CODE_VIDEO_ERROR = 101;
   private static final String RESIZE_CONTAIN = "contain";
   private static final String RESIZE_COVER = "cover";
   private static final String TAG = "VVideoControlListenerImpl";
   protected Activity mActivity;
-  private boolean mCoverFrame;
-  private boolean mIsShowingFull;
+  private boolean mCoverFrame = false;
+  private boolean mIsShowingFull = false;
   private int mMaxVolume = -1;
   private int mOriginSystemUIVisibility;
-  ssx mPlayer;
+  ReadInjoyPlayer mPlayer;
   private long mStartPosition;
   @Nullable
-  private uah mVideoInfo;
+  private VideoInfo mVideoInfo;
   protected HippyQQVideoView mVideoView;
   
   public HVideoDelegate(Activity paramActivity, HippyQQVideoView paramHippyQQVideoView, int paramInt)
   {
-    this.mPlayer = new ssx(paramInt);
+    this.mPlayer = new ReadInjoyPlayer(paramInt);
     this.mVideoView = paramHippyQQVideoView;
     this.mActivity = paramActivity;
-    sqt.a().a(paramActivity);
-    sqt.a().a(this);
+    VideoVolumeController.a().a(paramActivity);
+    VideoVolumeController.a().a(this);
     this.mPlayer.a(this);
     this.mPlayer.a(paramHippyQQVideoView);
   }
@@ -120,6 +120,8 @@ public class HVideoDelegate
     this.mPlayer.g();
   }
   
+  public void beforeVideoStart() {}
+  
   public void enterFullScreen(int paramInt, HippyQQVideoView paramHippyQQVideoView, boolean paramBoolean, Promise paramPromise)
   {
     if (QLog.isColorLevel()) {
@@ -141,7 +143,7 @@ public class HVideoDelegate
         break label125;
       }
       localWindow.setFlags(1024, 1024);
-      six.c(this.mActivity);
+      VideoFeedsHelper.c(this.mActivity);
     }
     for (;;)
     {
@@ -156,7 +158,7 @@ public class HVideoDelegate
       this.mActivity.setRequestedOrientation(8);
       break;
       label125:
-      six.b(paramHippyQQVideoView);
+      VideoFeedsHelper.b(paramHippyQQVideoView);
     }
   }
   
@@ -206,21 +208,21 @@ public class HVideoDelegate
   public void onActivityDestroy()
   {
     this.mPlayer.m();
-    sqt.a().b(this.mActivity);
-    sqt.a().b(this);
+    VideoVolumeController.a().b(this.mActivity);
+    VideoVolumeController.a().b(this);
     this.mActivity = null;
   }
   
   public void onActivityPause()
   {
     this.mPlayer.k();
-    sqt.a().a(false, "viola video");
+    VideoVolumeController.a().a(false, "viola video");
   }
   
   public void onActivityResume()
   {
     this.mPlayer.l();
-    sqt.a().a(true, "viola video");
+    VideoVolumeController.a().a(true, "viola video");
   }
   
   public void onActivityStart() {}
@@ -294,7 +296,7 @@ public class HVideoDelegate
       {
         HippyMap localHippyMap = new HippyMap();
         if (this.mMaxVolume == -1) {
-          this.mMaxVolume = sqt.a().a(3);
+          this.mMaxVolume = VideoVolumeController.a().a(3);
         }
         localHippyMap.pushObject("value", Float.valueOf(paramInt / this.mMaxVolume));
         this.mVideoView.videoViewFireEvent("volumeChange", localHippyMap);
@@ -365,7 +367,7 @@ public class HVideoDelegate
       setEndWithLastFrame(paramJSONObject.optBoolean("endWithLastFrame"));
       this.mCoverFrame = paramJSONObject.optBoolean("cover_frame", false);
       this.mStartPosition = (paramJSONObject.optLong("start_position", 0L) * 1000L);
-      this.mVideoInfo = new uah(paramJSONObject.getJSONObject("video_info"));
+      this.mVideoInfo = new VideoInfo(paramJSONObject.getJSONObject("video_info"));
       this.mPlayer.e(paramJSONObject.optBoolean("muted", false));
       if (bool1)
       {
@@ -488,7 +490,7 @@ public class HVideoDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.HVideoDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bdla;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 @Deprecated
@@ -21,11 +21,14 @@ public class TroopUsageTimeReport
   public boolean a;
   private long b;
   public boolean b;
-  private long c;
+  private long jdField_c_of_type_Long;
+  private volatile boolean jdField_c_of_type_Boolean = false;
   private long d;
   
   private TroopUsageTimeReport()
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.SCREEN_OFF");
     this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
     this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.ACTION_SHUTDOWN");
@@ -46,9 +49,9 @@ public class TroopUsageTimeReport
       SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
       if (localSessionInfo != null)
       {
-        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "aio_time", 0, i, 0, localSessionInfo.curFriendUin, "", "", "");
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "aio_time", 0, i, 0, localSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
         if (QLog.isColorLevel()) {
-          QLog.d("TroopUsageTimeReport-->AioUseTime", 2, "uin=" + this.jdField_a_of_type_JavaLangString + ",mTroopUin=" + localSessionInfo.curFriendUin + ",time=" + l + "s");
+          QLog.d("TroopUsageTimeReport-->AioUseTime", 2, "uin=" + this.jdField_a_of_type_JavaLangString + ",mTroopUin=" + localSessionInfo.jdField_a_of_type_JavaLangString + ",time=" + l + "s");
         }
       }
       this.jdField_a_of_type_Boolean = false;
@@ -60,7 +63,7 @@ public class TroopUsageTimeReport
     if (this.jdField_b_of_type_Boolean)
     {
       this.d = System.currentTimeMillis();
-      long l = (this.d - this.c) / 1000L;
+      long l = (this.d - this.jdField_c_of_type_Long) / 1000L;
       int j = (int)l;
       int i = j;
       if (j <= 0) {
@@ -69,9 +72,9 @@ public class TroopUsageTimeReport
       SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
       if (localSessionInfo != null)
       {
-        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "grp_time", 0, i, 0, localSessionInfo.curFriendUin, "", "", "");
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "grp_time", 0, i, 0, localSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
         if (QLog.isColorLevel()) {
-          QLog.d("TroopUsageTimeReport-->TroopUseTime", 2, "uin=" + this.jdField_a_of_type_JavaLangString + ",mTroopUin=" + localSessionInfo.curFriendUin + ",time=" + l + "s");
+          QLog.d("TroopUsageTimeReport-->TroopUseTime", 2, "uin=" + this.jdField_a_of_type_JavaLangString + ",mTroopUin=" + localSessionInfo.jdField_a_of_type_JavaLangString + ",time=" + l + "s");
         }
       }
       this.jdField_b_of_type_Boolean = false;

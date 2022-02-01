@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.nearby.now.view;
 
 import android.text.TextUtils;
-import axny;
-import axxu;
-import bdlf;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.statistics.ReportTask;
 
 class ShortVideoCommentsView$28
   implements Runnable
 {
-  ShortVideoCommentsView$28(ShortVideoCommentsView paramShortVideoCommentsView, axny paramaxny) {}
+  ShortVideoCommentsView$28(ShortVideoCommentsView paramShortVideoCommentsView, NearbyCardManager paramNearbyCardManager) {}
   
   public void run()
   {
-    bdlf localbdlf = new bdlf(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_com_exp").e(axxu.d);
+    ReportTask localReportTask = new ReportTask(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_com_exp").e(NowVideoReporter.d);
     int i = this.a.b();
-    String str2 = axxu.a;
-    if (TextUtils.equals(axxu.a, "2")) {}
-    for (String str1 = axxu.c;; str1 = "")
+    String str2 = NowVideoReporter.a;
+    if (TextUtils.equals(NowVideoReporter.a, "2")) {}
+    for (String str1 = NowVideoReporter.c;; str1 = "")
     {
-      localbdlf.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
+      localReportTask.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

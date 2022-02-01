@@ -8,10 +8,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bjjh;
-import bjji;
-import bjjj;
-import bjjk;
 
 public class CommonTitleBar
   extends RelativeLayout
@@ -19,7 +15,7 @@ public class CommonTitleBar
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bjjk jdField_a_of_type_Bjjk;
+  private CommonTitleBar.IClick jdField_a_of_type_ComTencentOpenAppstoreComponentCommonTitleBar$IClick;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   
@@ -41,15 +37,15 @@ public class CommonTitleBar
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559700, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368495));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bjjh(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380356));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bjji(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380389));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368496));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bjjj(this));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373228));
+    LayoutInflater.from(paramContext).inflate(2131559776, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368719));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new CommonTitleBar.1(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380799));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new CommonTitleBar.2(this));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380832));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368720));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new CommonTitleBar.3(this));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373554));
   }
   
   public void a()
@@ -74,9 +70,9 @@ public class CommonTitleBar
     }
   }
   
-  public void setIClickListener(bjjk parambjjk)
+  public void setIClickListener(CommonTitleBar.IClick paramIClick)
   {
-    this.jdField_a_of_type_Bjjk = parambjjk;
+    this.jdField_a_of_type_ComTencentOpenAppstoreComponentCommonTitleBar$IClick = paramIClick;
   }
   
   public void setTitleText(String paramString)
@@ -88,7 +84,7 @@ public class CommonTitleBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appstore.component.CommonTitleBar
  * JD-Core Version:    0.7.0.1
  */

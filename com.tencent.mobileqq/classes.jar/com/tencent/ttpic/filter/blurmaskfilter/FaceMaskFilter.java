@@ -19,7 +19,7 @@ import com.tencent.ttpic.model.FaceMaskItem.FaceMaskType;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.filter.FaceLineFilter;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import com.tencent.view.RendererUtils;
@@ -327,13 +327,13 @@ public class FaceMaskFilter
   
   public void updateAndResizeFacePoints(List<PointF> paramList, float paramFloat)
   {
-    setPositions(FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramList), 3.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+    setPositions(FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramList), 3.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
     setCoordNum(690);
   }
   
   public void updateFacePoints(List<PointF> paramList)
   {
-    paramList = FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramList), 3.0F);
+    paramList = FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramList), 3.0F);
     if ((this.mMaskSizeValue > 0.9D) && (this.mMaskSizeValue < 1.1D)) {
       setPositions(FaceOffUtil.initFacePositions(paramList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
     }
@@ -364,7 +364,7 @@ public class FaceMaskFilter
       setCoordNum(4);
       return;
     }
-    paramList = VideoMaterialUtil.copyList((List)paramList.get(0));
+    paramList = VideoMaterial.copyList((List)paramList.get(0));
     FaceOffUtil.getFullCoords(paramList, 2.0F);
     setPositions(facePointInit(paramList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
     setCoordNum(23);
@@ -379,7 +379,7 @@ public class FaceMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.blurmaskfilter.FaceMaskFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -112,7 +112,7 @@ public class RoundImageView
   }
   
   @SuppressLint({"DrawAllocation"})
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     Object localObject;
     if (this.g == null)
@@ -157,12 +157,12 @@ public class RoundImageView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.e.set(0.5F, 0.5F, paramInt1 - 0.5F, paramInt2 - 0.5F);
@@ -170,7 +170,7 @@ public class RoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.widget.RoundImageView
  * JD-Core Version:    0.7.0.1
  */

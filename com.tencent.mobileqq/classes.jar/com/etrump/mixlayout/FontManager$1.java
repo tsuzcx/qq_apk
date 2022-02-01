@@ -1,36 +1,35 @@
 package com.etrump.mixlayout;
 
-import bhiw;
+import com.Vas.ColorFont.FastColorFontHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import gb;
+import com.tencent.mobileqq.utils.VasUtils;
+import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
+import com.tencent.mobileqq.vas.util.VasSoUtils;
 import java.util.concurrent.atomic.AtomicBoolean;
-import l;
 
-public class FontManager$1
+class FontManager$1
   implements Runnable
 {
-  public FontManager$1(gb paramgb) {}
+  FontManager$1(FontManager paramFontManager) {}
   
   public void run()
   {
-    switch (bhiw.a(bhiw.a(), "libFounderColorFont_818.so"))
+    switch (VasSoUtils.a(VasSoUtils.a(), "libFounderColorFont_818.so"))
     {
     default: 
       return;
     case 1: 
-      ((VasQuickUpdateManager)this.this$0.a.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).downloadItem(1004L, "libColorFont_818", "FontManager_initFZEngine");
+      ((IVasQuickUpdateService)this.this$0.a.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "libColorFont_818", "FontManager_initFZEngine");
       return;
     }
-    l.a().b.set(true);
-    bhiw.a(this.this$0.a);
-    gb.a(this.this$0);
+    FastColorFontHelper.a().b.set(true);
+    VasUtils.a(this.this$0.a);
+    FontManager.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.1
  * JD-Core Version:    0.7.0.1
  */

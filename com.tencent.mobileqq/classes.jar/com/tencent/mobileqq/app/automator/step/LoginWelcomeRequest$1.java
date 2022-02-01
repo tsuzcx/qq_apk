@@ -10,7 +10,7 @@ class LoginWelcomeRequest$1
   
   public void run()
   {
-    LoginWelcomeManager.a(this.this$0.a.app).a();
+    LoginWelcomeManager.a(this.this$0.a.a).a();
   }
 }
 

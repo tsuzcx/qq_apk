@@ -1,7 +1,6 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aanb;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -12,23 +11,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdla;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
+import com.tencent.biz.subscribe.SubscribeLaucher;
 import com.tencent.biz.subscribe.event.FollowUpdateEvent;
 import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.biz.videostory.support.VSReporter;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.widget.SquareImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import zqm;
-import zra;
-import zri;
-import zrl;
 
 public class RecommendBannerItemView
   extends RelativeLayout
@@ -37,9 +34,9 @@ public class RecommendBannerItemView
   private int jdField_a_of_type_Int;
   private CertifiedAccountMeta.StUser jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private IRecommendBannerFlowListener jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerIRecommendBannerFlowListener;
   private FollowTextView jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView;
   private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
-  private zra jdField_a_of_type_Zra;
   private boolean jdField_a_of_type_Boolean;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private boolean jdField_b_of_type_Boolean;
@@ -65,29 +62,29 @@ public class RecommendBannerItemView
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    bdla.b(null, "dc00898", "", paramString3, paramString1, paramString2, 0, 0, paramString4, paramString5, paramString6, paramString7);
+    ReportController.b(null, "dc00898", "", paramString3, paramString1, paramString2, 0, 0, paramString4, paramString5, paramString6, paramString7);
   }
   
   protected void a()
   {
     if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser != null) {
-      zqm.a(getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
+      SubscribeLaucher.a(getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
     }
   }
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131558827, this);
-    setMinimumHeight(DisplayUtil.dip2px(paramContext, 183.0F));
-    setPadding(DisplayUtil.dip2px(paramContext, 6.0F), DisplayUtil.dip2px(paramContext, 10.0F), DisplayUtil.dip2px(paramContext, 6.0F), DisplayUtil.dip2px(paramContext, 20.0F));
+    inflate(paramContext, 2131558867, this);
+    setMinimumHeight(DisplayUtil.a(paramContext, 183.0F));
+    setPadding(DisplayUtil.a(paramContext, 6.0F), DisplayUtil.a(paramContext, 10.0F), DisplayUtil.a(paramContext, 6.0F), DisplayUtil.a(paramContext, 20.0F));
     setWillNotDraw(false);
     setLayerType(1, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)findViewById(2131363145));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365512));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371966));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)findViewById(2131363196));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365673));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372273));
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView = ((FollowTextView)findViewById(2131361949));
     setOnClickListener(this);
-    setOnLongClickListener(new zri(this));
+    setOnLongClickListener(new RecommendBannerItemView.1(this));
   }
   
   public ArrayList<Class> getEventClass()
@@ -97,7 +94,7 @@ public class RecommendBannerItemView
     return localArrayList;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     SimpleEventBus.getInstance().registerReceiver(this);
     super.onAttachedToWindow();
@@ -108,7 +105,7 @@ public class RecommendBannerItemView
     a();
     if (this.c) {
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser != null) {
-        aanb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_discover", "reco_head_clk", 0, 0, new String[] { "", String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.desc.get() });
+        VSReporter.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_discover", "reco_head_clk", 0, 0, new String[] { "", String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.desc.get() });
       }
     }
     for (;;)
@@ -121,13 +118,13 @@ public class RecommendBannerItemView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     SimpleEventBus.getInstance().unRegisterReceiver(this);
     super.onDetachedFromWindow();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i = getPaddingLeft();
     int j = getPaddingTop();
@@ -143,10 +140,10 @@ public class RecommendBannerItemView
     {
       if (!this.jdField_b_of_type_Boolean)
       {
-        i2 = DisplayUtil.dip2px(getContext(), 5.0F);
-        localPaint.setShadowLayer(DisplayUtil.dip2px(getContext(), 15.0F), 0, i2, 436207616);
+        i2 = DisplayUtil.a(getContext(), 5.0F);
+        localPaint.setShadowLayer(DisplayUtil.a(getContext(), 15.0F), 0, i2, 436207616);
       }
-      int i2 = DisplayUtil.dip2px(getContext(), 6.0F);
+      int i2 = DisplayUtil.a(getContext(), 6.0F);
       paramCanvas.drawRoundRect(new RectF(i, j, k - m, n - i1), i2, i2, localPaint);
       super.onDraw(paramCanvas);
       return;
@@ -156,13 +153,13 @@ public class RecommendBannerItemView
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    zra localzra;
+    IRecommendBannerFlowListener localIRecommendBannerFlowListener;
     if (((paramSimpleBaseEvent instanceof FollowUpdateEvent)) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser != null) && (TextUtils.equals(((FollowUpdateEvent)paramSimpleBaseEvent).useId, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get())))
     {
       this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.followState.set(((FollowUpdateEvent)paramSimpleBaseEvent).followStatus);
-      if (this.jdField_a_of_type_Zra != null)
+      if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerIRecommendBannerFlowListener != null)
       {
-        localzra = this.jdField_a_of_type_Zra;
+        localIRecommendBannerFlowListener = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerIRecommendBannerFlowListener;
         if (((FollowUpdateEvent)paramSimpleBaseEvent).followStatus != 1) {
           break label91;
         }
@@ -171,7 +168,7 @@ public class RecommendBannerItemView
     label91:
     for (boolean bool = true;; bool = false)
     {
-      localzra.a(bool, this.jdField_a_of_type_Int);
+      localIRecommendBannerFlowListener.a(bool, this.jdField_a_of_type_Int);
       return;
     }
   }
@@ -190,7 +187,7 @@ public class RecommendBannerItemView
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageURL(paramStUser.icon.get());
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setUserData(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setFollowStateChangeListener(new zrl(this));
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setFollowStateChangeListener(new RecommendBannerItemView.2(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -224,14 +221,14 @@ public class RecommendBannerItemView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setRecommendBannerFolwListener(zra paramzra)
+  public void setRecommendBannerFolwListener(IRecommendBannerFlowListener paramIRecommendBannerFlowListener)
   {
-    this.jdField_a_of_type_Zra = paramzra;
+    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerIRecommendBannerFlowListener = paramIRecommendBannerFlowListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView
  * JD-Core Version:    0.7.0.1
  */

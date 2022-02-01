@@ -1,27 +1,30 @@
 package cooperation.comic;
 
-import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class VipComicProxyActivity
-  extends PluginProxyActivity
+  extends PluginProxyFragmentActivity
 {
   public static Class<? extends PluginProxyActivity> a(String paramString)
   {
     if (paramString.equals("com.qqcomic.activity.reader.VipComicLandReadingActivity")) {
       return VipComicLandReaderProxyActivity.class;
     }
-    if (paramString.equals("com.qqcomic.activity.reader.VipComicPortraitReadingActivity")) {
+    if ((paramString.equals("com.qqcomic.activity.reader.VipComicPortraitReadingActivity")) || (paramString.equals("com.qqcomic.reader.VipComicReadingActivityV2"))) {
       return VipComicPortraitReaderProxyActivity.class;
     }
     if (paramString.equals("com.qqcomic.activity.media.VipComicMediaPlayActivity")) {
       return VipComicPlayProxyActivity.class;
+    }
+    if (paramString.equals("com.qqcomic.preread.VipComicPreReadActivity")) {
+      return VipComicPreReadProxyActivity.class;
     }
     return VipComicProxyActivity.class;
   }
@@ -40,9 +43,19 @@ public class VipComicProxyActivity
     return "comic_plugin.apk";
   }
   
+  public int getPluginResType()
+  {
+    return 2;
+  }
+  
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     return a(paramString);
+  }
+  
+  public int getThemeResId()
+  {
+    return 0;
   }
   
   public boolean isWrapContent()
@@ -67,7 +80,7 @@ public class VipComicProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.comic.VipComicProxyActivity
  * JD-Core Version:    0.7.0.1
  */

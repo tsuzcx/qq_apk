@@ -9,10 +9,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class INTERFACE$StUpdatableMsgShareInfo
   extends MessageMicro<StUpdatableMsgShareInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "scene", "groupId", "chatUin" }, new Object[] { Integer.valueOf(0), "", "" }, StUpdatableMsgShareInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "scene", "groupId", "chatUin", "subScene" }, new Object[] { Integer.valueOf(0), "", "", Integer.valueOf(0) }, StUpdatableMsgShareInfo.class);
   public final PBStringField chatUin = PBField.initString("");
   public final PBStringField groupId = PBField.initString("");
   public final PBUInt32Field scene = PBField.initUInt32(0);
+  public final PBUInt32Field subScene = PBField.initUInt32(0);
 }
 
 

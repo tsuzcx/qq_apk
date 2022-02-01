@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import afuj;
-import afuk;
-import alwh;
-import alwi;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -20,10 +16,12 @@ import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bdla;
-import bind;
-import bine;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SelectCursorTouchHelper;
+import com.tencent.mobileqq.activity.aio.SelectCursorTouchHelper.SelectCursorTouchHelperListener;
+import com.tencent.mobileqq.activity.selectable.SelectableCursor;
+import com.tencent.mobileqq.activity.selectable.SelectableDelegate;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ScrollView;
@@ -32,31 +30,31 @@ import com.tencent.widget.ScrollView;
 @TargetApi(11)
 public class ContainerView
   extends LinearLayout
-  implements afuk, alwh
+  implements SelectCursorTouchHelper.SelectCursorTouchHelperListener, SelectableCursor
 {
   public static float a;
-  private static final int l = ViewUtils.dpToPx(5.0F);
-  private static final int m = ViewUtils.dpToPx(2.0F);
-  private static final int n = ViewUtils.dpToPx(28.0F);
+  private static final int l = ViewUtils.b(5.0F);
+  private static final int m = ViewUtils.b(2.0F);
+  private static final int n = ViewUtils.b(28.0F);
   public int a;
-  private alwi jdField_a_of_type_Alwi;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   protected Handler a;
+  private SelectableDelegate jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
   public AnimationTextView a;
   private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
   public boolean a;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int = -1;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean;
+  private boolean jdField_d_of_type_Boolean = false;
   private int jdField_e_of_type_Int = -1;
-  private boolean jdField_e_of_type_Boolean;
+  private boolean jdField_e_of_type_Boolean = false;
   private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
+  private boolean jdField_f_of_type_Boolean = false;
   private int g = -1;
   private int h = -1;
   private int i = -1;
@@ -66,6 +64,7 @@ public class ContainerView
   public ContainerView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
     a(paramContext);
   }
@@ -73,6 +72,7 @@ public class ContainerView
   public ContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
     a(paramContext);
   }
@@ -81,6 +81,7 @@ public class ContainerView
   public ContainerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
     a(paramContext);
   }
@@ -133,7 +134,7 @@ public class ContainerView
   
   private void a()
   {
-    if (this.jdField_a_of_type_Alwi == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate == null) {
       throw new IllegalStateException("Has no bound delegate!");
     }
   }
@@ -169,11 +170,11 @@ public class ContainerView
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setHighlightColor(1722605812);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setTextSize(1, 32.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setTextColor(-16777216);
-    int i1 = AIOUtils.dp2px(10.0F, getResources());
+    int i1 = AIOUtils.a(10.0F, getResources());
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setPadding(i1, i1, i1, i1);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     addView(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView, paramContext);
-    getViewTreeObserver().addOnGlobalLayoutListener(new bind(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new ContainerView.1(this));
   }
   
   private void c(int paramInt1, int paramInt2, int paramInt3)
@@ -183,18 +184,18 @@ public class ContainerView
     if (this.g == 1)
     {
       i2 = this.h;
-      i1 = this.jdField_a_of_type_Alwi.a(paramInt1, paramInt2);
+      i1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, paramInt2);
       if (QLog.isColorLevel()) {
         QLog.d("BaseChatItemLayout", 2, "updateCursorLocation, touchIndex=" + i1 + ", type=" + this.g);
       }
       if (paramInt3 == -1) {
-        this.jdField_a_of_type_Alwi.a(this.g, false);
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.g, false);
       }
       if (i1 != -1) {
-        break label107;
+        break label108;
       }
     }
-    label107:
+    label108:
     do
     {
       do
@@ -205,7 +206,7 @@ public class ContainerView
           i2 = this.i;
           break;
           if (i1 == i2) {
-            break label559;
+            break label560;
           }
           if (this.g == 1) {
             if (i1 < this.h)
@@ -219,15 +220,15 @@ public class ContainerView
             if (QLog.isColorLevel()) {
               QLog.d("BaseChatItemLayout", 2, "update selection, s=" + i1 + ", e=" + paramInt3);
             }
-            this.jdField_a_of_type_Alwi.a(i1, paramInt3);
-            this.jdField_a_of_type_Alwi.b(paramInt1, paramInt2);
+            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(i1, paramInt3);
+            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b(paramInt1, paramInt2);
             if (this.g != 1) {
-              break label527;
+              break label528;
             }
             if (this.j == -1) {
               break;
             }
-            this.jdField_a_of_type_Alwi.a(paramInt1, this.j, true);
+            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, this.j, true);
             return;
             if ((i1 > this.h) && (i1 < this.i))
             {
@@ -250,7 +251,7 @@ public class ContainerView
               this.h = this.i;
               this.i = i1;
               this.g = 2;
-              this.jdField_a_of_type_Alwi.a(this.g);
+              this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.g);
               paramInt3 = i1;
               i1 = i2;
               continue;
@@ -284,24 +285,24 @@ public class ContainerView
                 this.i = this.h;
                 this.h = i1;
                 this.g = 1;
-                this.jdField_a_of_type_Alwi.a(this.g);
+                this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.g);
               }
             }
           }
         } while ((this.g != 2) || (this.k == -1));
-        this.jdField_a_of_type_Alwi.a(paramInt1, this.k, true);
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, this.k, true);
         return;
         if (this.g != 1) {
-          break label591;
+          break label592;
         }
       } while (this.j == -1);
-      this.jdField_a_of_type_Alwi.a(paramInt1, this.j, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, this.j, false);
       return;
     } while ((this.g != 2) || (this.k == -1));
-    label527:
-    label559:
-    label591:
-    this.jdField_a_of_type_Alwi.a(paramInt1, this.k, false);
+    label528:
+    label560:
+    label592:
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, this.k, false);
   }
   
   public int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
@@ -309,7 +310,7 @@ public class ContainerView
     if ((!this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean)) {
       return -1;
     }
-    return new afuj(this, this.jdField_a_of_type_Alwi).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
+    return new SelectCursorTouchHelper(this, this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
   }
   
   public int a(int paramInt)
@@ -354,9 +355,9 @@ public class ContainerView
     this.i = (paramInt1 + paramInt2);
   }
   
-  public void a(alwi paramalwi)
+  public void a(SelectableDelegate paramSelectableDelegate)
   {
-    this.jdField_a_of_type_Alwi = paramalwi;
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate = paramSelectableDelegate;
   }
   
   public boolean a()
@@ -440,7 +441,7 @@ public class ContainerView
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     if (this.jdField_c_of_type_Boolean)
@@ -467,13 +468,13 @@ public class ContainerView
     return true;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     jdField_a_of_type_Float = a();
     super.onDetachedFromWindow();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_Int == 0)
     {
@@ -491,14 +492,14 @@ public class ContainerView
     if (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && (a(paramMotionEvent.getX(), paramMotionEvent.getY()) != -1))
     {
       a();
-      this.jdField_a_of_type_Alwi.c();
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.c();
       requestDisallowInterceptTouchEvent(true);
       return true;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((this.jdField_a_of_type_ComTencentWidgetScrollView != null) && (this.jdField_a_of_type_ComTencentWidgetScrollView.getHeight() > getHeight())) {
@@ -559,13 +560,13 @@ public class ContainerView
         a();
         this.jdField_e_of_type_Boolean = true;
         this.g = i1;
-        this.h = this.jdField_a_of_type_Alwi.b();
-        this.i = this.jdField_a_of_type_Alwi.c();
+        this.h = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b();
+        this.i = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.c();
         if (paramMotionEvent.getSource() != -1) {
-          this.jdField_a_of_type_Alwi.a(this.g, false);
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.g, false);
         }
-        if (this.jdField_a_of_type_Alwi.a()) {
-          this.jdField_a_of_type_Alwi.b();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a()) {
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b();
         }
       }
       do
@@ -580,13 +581,13 @@ public class ContainerView
           this.jdField_e_of_type_Boolean = false;
           this.j = -1;
           this.k = -1;
-          this.jdField_a_of_type_Alwi.a(-1, true);
-          this.jdField_a_of_type_Alwi.a();
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(-1, true);
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a();
         } while (i2 != 1);
         if (paramMotionEvent.getSource() == -1) {}
         for (;;)
         {
-          bdla.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
+          ReportController.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
           return true;
           i1 = 1;
         }
@@ -682,7 +683,7 @@ public class ContainerView
   public void setOutScrollView(ScrollView paramScrollView)
   {
     this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(new bine(this));
+    this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(new ContainerView.2(this));
   }
   
   public void setText(CharSequence paramCharSequence)
@@ -697,7 +698,7 @@ public class ContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContainerView
  * JD-Core Version:    0.7.0.1
  */

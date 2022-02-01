@@ -11,6 +11,10 @@ import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.IEmoticonMainPanelApp;
+import com.tencent.mobileqq.emoticonview.IQQMessageFacadeProxy;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.QQMessageFacadeProxy;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -58,10 +62,10 @@ public class EmojiHomeUiPlugin
     VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, null, 4L, localIntent, false, -1);
     if (paramInt == 3)
     {
-      paramActivity.overridePendingTransition(2130771992, 0);
+      paramActivity.overridePendingTransition(2130771994, 0);
       return;
     }
-    paramActivity.overridePendingTransition(2130771979, 0);
+    paramActivity.overridePendingTransition(2130771981, 0);
   }
   
   public static void openEmojiDetailPage(Activity paramActivity, String paramString1, int paramInt, String paramString2)
@@ -87,44 +91,25 @@ public class EmojiHomeUiPlugin
     while (((paramInt != 8) && (paramInt != 4) && (paramInt != 12)) || (paramActivity == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return;
     }
-    int j = paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1);
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    int i = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatType();
-    String str2 = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatUin();
-    String str1 = str2;
-    if (str2 == null)
-    {
-      str1 = paramActivity.getIntent().getStringExtra("key_emojimall_detail_chat_uin");
-      i = paramActivity.getIntent().getIntExtra("key_emojimall_detail_chat_type", -1);
-    }
-    localIntent.putExtra("key_emojimall_detail_chat_type", i);
-    localIntent.putExtra("key_emojimall_detail_chat_uin", str1);
-    localIntent.putExtra("selfuin", paramString1);
-    localIntent.putExtra("reqType", 6);
-    localIntent.putExtra("show_right_close_button", false);
-    localIntent.putExtra("emojimall_src", paramInt);
-    localIntent.putExtra("emojimall_detail_id", paramString2);
-    localIntent.putExtra("emojimall_qFace", paramBoolean1);
-    localIntent.putExtra("emomall_new_time", j);
-    localIntent.putExtra("hide_more_button", false);
-    localIntent.putExtra("is_small_emoji", paramBoolean2);
-    if (paramIntent != null)
-    {
-      localIntent.putExtras(paramIntent);
-      localIntent.putExtra("EXTRA_KEY_IS_KANDIAN_EMOTICON", paramIntent.getBooleanExtra("EXTRA_KEY_IS_KANDIAN_EMOTICON", false));
-    }
-    if (paramInt == 8) {}
-    for (paramInt = 40311;; paramInt = 40313)
-    {
-      localIntent.putExtra("individuation_url_type", paramInt);
-      VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, null, 4L, localIntent, false, -1);
-      return;
-    }
+    realOpenEmojiDetailPage(paramActivity, paramString1, paramInt, paramString2, paramBoolean1, paramIntent, paramBoolean2, paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1), new Intent(paramActivity, QQBrowserActivity.class), ((BaseActivity)paramActivity).app.getMessageFacade().a(), ((BaseActivity)paramActivity).app.getMessageFacade().a());
   }
   
   public static void openEmojiDetailPage(Activity paramActivity, String paramString1, int paramInt, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
     openEmojiDetailPage(paramActivity, paramString1, paramInt, paramString2, paramBoolean1, null, paramBoolean2);
+  }
+  
+  public static void openEmojiDetailPage(Context paramContext, IEmoticonMainPanelApp paramIEmoticonMainPanelApp, String paramString1, int paramInt, String paramString2, boolean paramBoolean1, Intent paramIntent, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {}
+    while (((paramInt != 8) && (paramInt != 4) && (paramInt != 12)) || (!(paramContext instanceof Activity)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    int i = paramContext.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1);
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    int j = paramIEmoticonMainPanelApp.getMessageFacade().getCurrChatType();
+    paramIEmoticonMainPanelApp = paramIEmoticonMainPanelApp.getMessageFacade().getCurrChatUin();
+    realOpenEmojiDetailPage((Activity)paramContext, paramString1, paramInt, paramString2, paramBoolean1, paramIntent, paramBoolean2, i, localIntent, j, paramIEmoticonMainPanelApp);
   }
   
   public static void openEmojiDetailPage2(Activity paramActivity, String paramString1, int paramInt1, String paramString2, boolean paramBoolean, int paramInt2, String paramString3)
@@ -162,40 +147,28 @@ public class EmojiHomeUiPlugin
   
   public static void openEmojiHomePage(Activity paramActivity, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
   {
+    openEmojiHomePage(paramActivity, paramString1, paramInt, paramBoolean, paramString2, false);
+  }
+  
+  public static void openEmojiHomePage(Activity paramActivity, String paramString1, int paramInt, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
+  {
     if ((paramActivity == null) || (TextUtils.isEmpty(paramString1))) {
       return;
     }
-    int i = paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1);
-    int j = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatType();
-    String str = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatUin();
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("selfuin", paramString1);
-    localIntent.putExtra("emojimall_src", paramInt);
-    localIntent.putExtra("emomall_new_time", i);
-    localIntent.putExtra("has_red_dot", paramBoolean);
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("rec_id", paramString2);
-    localIntent.putExtra("webStyle", "noBottomBar");
-    localIntent.putExtra("key_emojimall_detail_chat_type", j);
-    localIntent.putExtra("key_emojimall_detail_chat_uin", str);
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("individuation_url_type", reportSourceTypeOfEmoji(paramInt));
-    if ((paramInt != 7) && (paramInt != 3)) {
-      localIntent.putExtra("hide_left_button", true);
-    }
-    if (paramInt == 1) {
-      localIntent.putExtra("hide_left_button", false);
-    }
-    if (paramInt == 9) {
-      localIntent.putExtra("hide_left_button", false);
-    }
-    if ((paramInt == 1) || (paramInt == 3))
-    {
-      localIntent.putExtra("updateFlag", paramBoolean);
-      VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, null, 2L, localIntent, true, 4001);
+    openEmojiPage(paramActivity, paramString1, paramInt, paramBoolean1, paramString2, paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1), ((BaseActivity)paramActivity).app.getMessageFacade().a(), ((BaseActivity)paramActivity).app.getMessageFacade().a(), paramBoolean2);
+  }
+  
+  public static void openEmojiHomePage(Context paramContext, QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
+  {
+    openEmojiHomePage(paramContext, paramQQEmoticonMainPanelApp, paramString1, paramInt, paramBoolean, paramString2, false);
+  }
+  
+  public static void openEmojiHomePage(Context paramContext, QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, String paramString1, int paramInt, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
       return;
     }
-    VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, null, 2L, localIntent, false, -1);
+    openEmojiPage(paramContext, paramString1, paramInt, paramBoolean1, paramString2, paramContext.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1), paramQQEmoticonMainPanelApp.getMessageFacade().getCurrChatType(), paramQQEmoticonMainPanelApp.getMessageFacade().getCurrChatUin(), paramBoolean2);
   }
   
   public static void openEmojiHomePage2(Activity paramActivity, String paramString1, int paramInt1, String paramString2, int paramInt2)
@@ -229,20 +202,62 @@ public class EmojiHomeUiPlugin
     VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, null, 2L, localIntent, false, -1);
   }
   
-  public static void openEmosmActivity(Activity paramActivity, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
+  private static void openEmojiPage(Context paramContext, String paramString1, int paramInt1, boolean paramBoolean1, String paramString2, int paramInt2, int paramInt3, String paramString3, boolean paramBoolean2)
   {
-    if ((paramActivity == null) || (TextUtils.isEmpty(paramString1)))
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("selfuin", paramString1);
+    localIntent.putExtra("emojimall_src", paramInt1);
+    localIntent.putExtra("emomall_new_time", paramInt2);
+    localIntent.putExtra("has_red_dot", paramBoolean1);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("rec_id", paramString2);
+    localIntent.putExtra("webStyle", "noBottomBar");
+    localIntent.putExtra("key_emojimall_detail_chat_type", paramInt3);
+    localIntent.putExtra("key_emojimall_detail_chat_uin", paramString3);
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("individuation_url_type", reportSourceTypeOfEmoji(paramInt1));
+    if (paramBoolean2) {
+      localIntent.putExtra("fragmentStyle", 5);
+    }
+    if ((paramInt1 != 7) && (paramInt1 != 3)) {
+      localIntent.putExtra("hide_left_button", true);
+    }
+    if (paramInt1 == 1) {
+      localIntent.putExtra("hide_left_button", false);
+    }
+    if (paramInt1 == 9) {
+      localIntent.putExtra("hide_left_button", false);
+    }
+    if ((paramInt1 == 1) || (paramInt1 == 3))
+    {
+      localIntent.putExtra("updateFlag", paramBoolean1);
+      VasWebviewUtil.openQQBrowserWithoutAD(paramContext, null, 2L, localIntent, true, 4001);
+    }
+    for (;;)
+    {
+      if ((paramInt1 == 1) && ((paramContext instanceof Activity))) {
+        ((Activity)paramContext).overridePendingTransition(2130771999, 2130772045);
+      }
+      return;
+      VasWebviewUtil.openQQBrowserWithoutAD(paramContext, null, 2L, localIntent, false, -1);
+    }
+  }
+  
+  public static void openEmosmActivity(Context paramContext, QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)))
     {
       QLog.e("Q.emoji.web.EmojiUiPlugin.EmojiHomeUiPlugin", 1, "open EmosmActivity failed because selfUin is empty.srcFromType=" + paramInt + " ,hasRedDot=" + paramBoolean + " ,currentId=" + paramString2);
       return;
     }
-    int i = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatType();
-    paramString1 = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatUin();
-    paramString2 = new Intent(paramActivity, EmosmActivity.class);
-    paramString2.putExtra("key_emojimall_detail_chat_type", i);
-    paramString2.putExtra("key_emojimall_detail_chat_uin", paramString1);
-    paramString2.putExtra("emojimall_src", paramInt);
-    paramActivity.startActivity(paramString2);
+    paramQQEmoticonMainPanelApp = paramQQEmoticonMainPanelApp.getMessageFacade();
+    int i = paramQQEmoticonMainPanelApp.getCurrChatType();
+    paramQQEmoticonMainPanelApp = paramQQEmoticonMainPanelApp.getCurrChatUin();
+    paramString1 = new Intent(paramContext, EmosmActivity.class);
+    paramString1.putExtra("key_emojimall_detail_chat_type", i);
+    paramString1.putExtra("key_emojimall_detail_chat_uin", paramQQEmoticonMainPanelApp);
+    paramString1.putExtra("emojimall_src", paramInt);
+    paramContext.startActivity(paramString1);
   }
   
   public static void openSmallEmojiListPage(Activity paramActivity, String paramString1, int paramInt, String paramString2)
@@ -252,8 +267,8 @@ public class EmojiHomeUiPlugin
     }
     int j = paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1);
     Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    int i = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatType();
-    String str2 = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatUin();
+    int i = ((BaseActivity)paramActivity).app.getMessageFacade().a();
+    String str2 = ((BaseActivity)paramActivity).app.getMessageFacade().a();
     String str1 = str2;
     if (str2 == null)
     {
@@ -270,6 +285,39 @@ public class EmojiHomeUiPlugin
     localIntent.putExtra("hide_more_button", false);
     localIntent.putExtra("emoji_ids", paramString2);
     VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, null, 4L, localIntent, false, -1);
+  }
+  
+  private static void realOpenEmojiDetailPage(Activity paramActivity, String paramString1, int paramInt1, String paramString2, boolean paramBoolean1, Intent paramIntent1, boolean paramBoolean2, int paramInt2, Intent paramIntent2, int paramInt3, String paramString3)
+  {
+    String str = paramString3;
+    if (paramString3 == null)
+    {
+      str = paramActivity.getIntent().getStringExtra("key_emojimall_detail_chat_uin");
+      paramInt3 = paramActivity.getIntent().getIntExtra("key_emojimall_detail_chat_type", -1);
+    }
+    paramIntent2.putExtra("key_emojimall_detail_chat_type", paramInt3);
+    paramIntent2.putExtra("key_emojimall_detail_chat_uin", str);
+    paramIntent2.putExtra("selfuin", paramString1);
+    paramIntent2.putExtra("reqType", 6);
+    paramIntent2.putExtra("show_right_close_button", false);
+    paramIntent2.putExtra("emojimall_src", paramInt1);
+    paramIntent2.putExtra("emojimall_detail_id", paramString2);
+    paramIntent2.putExtra("emojimall_qFace", paramBoolean1);
+    paramIntent2.putExtra("emomall_new_time", paramInt2);
+    paramIntent2.putExtra("hide_more_button", false);
+    paramIntent2.putExtra("is_small_emoji", paramBoolean2);
+    if (paramIntent1 != null)
+    {
+      paramIntent2.putExtras(paramIntent1);
+      paramIntent2.putExtra("EXTRA_KEY_IS_KANDIAN_EMOTICON", paramIntent1.getBooleanExtra("EXTRA_KEY_IS_KANDIAN_EMOTICON", false));
+    }
+    if (paramInt1 == 8) {}
+    for (paramInt1 = 40311;; paramInt1 = 40313)
+    {
+      paramIntent2.putExtra("individuation_url_type", paramInt1);
+      VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, null, 4L, paramIntent2, false, -1);
+      return;
+    }
   }
   
   public static int reportSourceTypeOfEmoji(int paramInt)
@@ -404,10 +452,10 @@ public class EmojiHomeUiPlugin
   {
     if (this.mSrcFromType == 3)
     {
-      this.activity.overridePendingTransition(0, 2130771989);
+      this.activity.overridePendingTransition(0, 2130771991);
       return;
     }
-    this.activity.overridePendingTransition(0, 2130771978);
+    this.activity.overridePendingTransition(0, 2130771980);
   }
   
   public void doBeforeFinish()
@@ -431,10 +479,15 @@ public class EmojiHomeUiPlugin
   {
     return 2L;
   }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 3L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/mtg" android:background="#dd000000" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textSize="16.0dip" android:textColor="#ff000000" android:textColorHint="#4d000000" android:layout_gravity="center" android:id="@id/byx" android:background="@color/al3" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="40.0dip" android:hint="@string/wl6" android:maxLines="3" android:layout_alignParentBottom="true">
-        <requestFocus />
-    </EditText>
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/n6v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/byx">
-        <dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView android:id="@id/mnc" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <RelativeLayout android:id="@id/nnk" android:paddingLeft="0.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="60.0dip">
-        <ImageView android:id="@id/dum" android:padding="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/evd" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/nyt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:minWidth="85.0dip" android:text="完成" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <org.libpag.PAGView android:id="@id/ntr" android:background="@color/bp" android:layout_width="240.0dip" android:layout_height="270.0dip" android:layout_above="@id/n6v" android:layout_below="@id/nnk" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<FrameLayout android:clipToPadding="false" android:layout_width="72.0dip" android:layout_height="fill_parent" android:layout_marginRight="-8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:layout_gravity="center" android:layout_width="53.599976dip" android:layout_height="53.599976dip" app:qqArMapGuideRadius="8">
+        <ImageView android:id="@id/n_h" android:layout_width="53.599976dip" android:layout_height="53.599976dip" android:src="@drawable/big" android:scaleType="fitCenter" />
+        <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:layout_gravity="center" android:layout_width="37.0dip" android:layout_height="37.0dip" app:qqArMapGuideRadius="4">
+            <ImageView android:layout_gravity="center" android:id="@id/duw" android:layout_width="37.0dip" android:layout_height="37.0dip" android:src="@drawable/fw3" android:scaleType="centerCrop" />
+        </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+        <ImageView android:id="@id/nas" android:background="@drawable/g06" android:padding="16.799988dip" android:layout_width="53.599976dip" android:layout_height="53.599976dip" android:src="@drawable/g5m" android:scaleType="center" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+</FrameLayout>

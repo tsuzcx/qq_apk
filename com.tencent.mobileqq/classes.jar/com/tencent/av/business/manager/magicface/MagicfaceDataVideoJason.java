@@ -15,22 +15,22 @@ public class MagicfaceDataVideoJason
   public static final String VIDEO_SRC_MIRROR = "mirror";
   public static final String VIDEO_SRC_NORMAL = "normal";
   static Point emptyPoint = new Point(0, 0);
-  public String common_id;
+  String common_id;
   int exptype = 0;
-  public int fps = 8;
-  public int frame_count = 0;
-  public boolean hasMirrorRes = false;
-  public boolean hasbackground = false;
-  public int height = 0;
-  public int lastLocationIndex = -1;
-  public int location_x;
-  public int location_y;
-  public boolean persistent = false;
+  int fps = 8;
+  int frame_count = 0;
+  boolean hasMirrorRes = false;
+  boolean hasbackground = false;
+  int height = 0;
+  int lastLocationIndex = -1;
+  protected int location_x = 0;
+  protected int location_y = 0;
+  boolean persistent = false;
   public ArrayList<Point> pointArrayList = new ArrayList();
-  public int repeat_count = 1;
-  public String src_prefix;
-  public String tips;
-  public int width = 0;
+  int repeat_count = 1;
+  String src_prefix;
+  String tips;
+  int width = 0;
   boolean withdeco = false;
   
   public Point getLocation(int paramInt)
@@ -59,7 +59,7 @@ public class MagicfaceDataVideoJason
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfaceDataVideoJason
  * JD-Core Version:    0.7.0.1
  */

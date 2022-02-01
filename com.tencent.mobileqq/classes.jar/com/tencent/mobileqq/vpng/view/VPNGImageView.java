@@ -12,17 +12,17 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bicl;
-import bicm;
-import bico;
-import bicp;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vpng.glrenderer.Renderable;
+import com.tencent.mobileqq.vpng.glrenderer.VPNGRenderer;
+import com.tencent.mobileqq.vpng.glrenderer.VPNGRendererManager;
+import com.tencent.mobileqq.vpng.util.VPNGUtil;
 import cooperation.liveroom.LiveRoomGiftCallback;
 import java.io.File;
 
 public class VPNGImageView
   extends FrameLayout
-  implements TextureView.SurfaceTextureListener, bicl
+  implements TextureView.SurfaceTextureListener, Renderable
 {
   protected int mAlign = 1;
   protected LiveRoomGiftCallback mCallback;
@@ -30,10 +30,10 @@ public class VPNGImageView
   protected boolean mIsLoop;
   protected ImageView mPreImageView;
   protected TextureView mTextureView;
-  public bicm mVPNGRenderer;
+  protected VPNGRenderer mVPNGRenderer;
   protected String mVideoPath;
   protected int mWidth;
-  protected boolean playOnSubThread;
+  protected boolean playOnSubThread = false;
   
   public VPNGImageView(Context paramContext)
   {
@@ -55,16 +55,6 @@ public class VPNGImageView
     addView(this.mPreImageView, -1, -1);
   }
   
-  private void playRender()
-  {
-    if (!this.playOnSubThread)
-    {
-      this.mVPNGRenderer.h();
-      return;
-    }
-    ThreadManager.excute(new VPNGImageView.1(this), 128, null, true);
-  }
-  
   public int getRenderHeight()
   {
     return this.mHeight;
@@ -75,17 +65,17 @@ public class VPNGImageView
     return this.mWidth;
   }
   
-  public bicm getVPNGRenderer()
+  public VPNGRenderer getVPNGRenderer()
   {
     return this.mVPNGRenderer;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.mVPNGRenderer != null)
     {
-      bico.a().a(this.mVPNGRenderer);
+      VPNGRendererManager.a().a(this.mVPNGRenderer);
       this.mVPNGRenderer = null;
     }
   }
@@ -116,9 +106,9 @@ public class VPNGImageView
     }
   }
   
-  public void onSetRenderer(bicm parambicm)
+  public void onSetRenderer(VPNGRenderer paramVPNGRenderer)
   {
-    this.mVPNGRenderer = parambicm;
+    this.mVPNGRenderer = paramVPNGRenderer;
     if ((isActivated()) && (getVisibility() == 0))
     {
       this.mVPNGRenderer.a();
@@ -130,7 +120,7 @@ public class VPNGImageView
   {
     if (this.mVPNGRenderer == null)
     {
-      this.mVPNGRenderer = bico.a().a(this, this.mWidth, this.mHeight);
+      this.mVPNGRenderer = VPNGRendererManager.a().a(this, this.mWidth, this.mHeight);
       if (this.mVPNGRenderer != null)
       {
         this.mVPNGRenderer.a(this.mVideoPath, this.mAlign, this.mCallback);
@@ -162,13 +152,23 @@ public class VPNGImageView
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
   
+  protected void playRender()
+  {
+    if (!this.playOnSubThread)
+    {
+      this.mVPNGRenderer.h();
+      return;
+    }
+    ThreadManager.excute(new VPNGImageView.1(this), 128, null, true);
+  }
+  
   public void setImage(String paramString, BitmapFactory.Options paramOptions)
   {
     paramOptions = BitmapFactory.decodeFile(paramString, paramOptions).copy(Bitmap.Config.ARGB_8888, true);
     this.mWidth = paramOptions.getWidth();
     this.mHeight = paramOptions.getHeight();
     String str = paramString + ".vpng";
-    if ((!new File(str).exists()) && (bicp.a(paramString, str))) {
+    if ((!new File(str).exists()) && (VPNGUtil.a(paramString, str))) {
       setVideo(str, true);
     }
     this.mPreImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -192,7 +192,7 @@ public class VPNGImageView
     for (int i = 1;; i = 0)
     {
       if (this.mVPNGRenderer == null) {
-        this.mVPNGRenderer = bico.a().a(this, this.mWidth, this.mHeight);
+        this.mVPNGRenderer = VPNGRendererManager.a().a(this, this.mWidth, this.mHeight);
       }
       if (this.mVPNGRenderer != null)
       {
@@ -216,7 +216,7 @@ public class VPNGImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.view.VPNGImageView
  * JD-Core Version:    0.7.0.1
  */

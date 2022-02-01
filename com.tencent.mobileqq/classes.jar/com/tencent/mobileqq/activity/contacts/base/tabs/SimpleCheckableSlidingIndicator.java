@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.activity.contacts.base.tabs;
 
-import ajjy;
-import ajjz;
-import ajka;
-import ajkb;
-import ajkh;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Handler.Callback;
@@ -12,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-import bkyc;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class SimpleCheckableSlidingIndicator
   extends SimpleSlidingIndicator
@@ -20,13 +15,18 @@ public class SimpleCheckableSlidingIndicator
   public static int a;
   public static int b = 1;
   public static int c = 2;
-  public static int d = 1;
-  ajka jdField_a_of_type_Ajka;
-  private ajkb jdField_a_of_type_Ajkb;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ajjz(this);
-  private bkyc jdField_a_of_type_Bkyc;
+  static int d = 1;
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new SimpleCheckableSlidingIndicator.2(this);
+  SimpleCheckableSlidingIndicator.OnRepeatClickListener jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator$OnRepeatClickListener;
+  private SimpleCheckableSlidingIndicator.ScrollViewListener jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator$ScrollViewListener;
+  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
   private int i = -9999999;
   private int j = jdField_a_of_type_Int;
+  
+  static
+  {
+    jdField_a_of_type_Int = 0;
+  }
   
   public SimpleCheckableSlidingIndicator(Context paramContext)
   {
@@ -53,7 +53,7 @@ public class SimpleCheckableSlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new ajjy(this));
+        ((ValueAnimator)localObject).addUpdateListener(new SimpleCheckableSlidingIndicator.1(this));
         ((ValueAnimator)localObject).start();
       }
       while (localView == null) {
@@ -78,12 +78,12 @@ public class SimpleCheckableSlidingIndicator
       if (paramBoolean1)
       {
         a();
-        if ((this.jdField_a_of_type_Ajkh != null) && (paramInt >= 0)) {
-          this.jdField_a_of_type_Ajkh.a(paramInt, paramBoolean2);
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator$OnTabListener != null) && (paramInt >= 0)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator$OnTabListener.a(paramInt, paramBoolean2);
         }
       }
     }
-    while ((this.e != paramInt) || (this.jdField_a_of_type_Ajka == null) || (paramInt < 0)) {
+    while ((this.e != paramInt) || (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator$OnRepeatClickListener == null) || (paramInt < 0)) {
       for (;;)
       {
         return;
@@ -94,7 +94,7 @@ public class SimpleCheckableSlidingIndicator
         invalidate();
       }
     }
-    this.jdField_a_of_type_Ajka.a(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator$OnRepeatClickListener.a(paramInt);
   }
   
   public int[] a()
@@ -116,36 +116,36 @@ public class SimpleCheckableSlidingIndicator
     {
       return super.onTouchEvent(paramMotionEvent);
       this.j = b;
-      if (this.jdField_a_of_type_Ajkb != null) {
-        this.jdField_a_of_type_Ajkb.a(this.j);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator$ScrollViewListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator$ScrollViewListener.a(this.j);
       }
-      if (this.jdField_a_of_type_Bkyc != null)
+      if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null)
       {
-        this.jdField_a_of_type_Bkyc.removeMessages(d);
+        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(d);
         continue;
-        if (this.jdField_a_of_type_Bkyc != null) {
-          this.jdField_a_of_type_Bkyc.sendEmptyMessage(d);
+        if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null) {
+          this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(d);
         }
       }
     }
   }
   
-  public void setOnRepeatClickListener(ajka paramajka)
+  public void setOnRepeatClickListener(SimpleCheckableSlidingIndicator.OnRepeatClickListener paramOnRepeatClickListener)
   {
-    this.jdField_a_of_type_Ajka = paramajka;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator$OnRepeatClickListener = paramOnRepeatClickListener;
   }
   
-  public void setScrollViewListener(ajkb paramajkb)
+  public void setScrollViewListener(SimpleCheckableSlidingIndicator.ScrollViewListener paramScrollViewListener)
   {
-    if (this.jdField_a_of_type_Bkyc == null) {
-      this.jdField_a_of_type_Bkyc = new bkyc(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler == null) {
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this.jdField_a_of_type_AndroidOsHandler$Callback);
     }
-    this.jdField_a_of_type_Ajkb = paramajkb;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator$ScrollViewListener = paramScrollViewListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator
  * JD-Core Version:    0.7.0.1
  */

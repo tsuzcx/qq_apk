@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.view.PressDarkImageView;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import com.tencent.util.LiuHaiUtils;
 
 public class StoryGuideLineView
   extends LinearLayout
@@ -22,7 +22,7 @@ public class StoryGuideLineView
   public static int a;
   public static int b;
   public static int c;
-  public static int d;
+  public static int d = 0;
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -31,6 +31,13 @@ public class StoryGuideLineView
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
   private View jdField_c_of_type_AndroidViewView;
   private LinearLayout jdField_c_of_type_AndroidWidgetLinearLayout;
+  
+  static
+  {
+    jdField_a_of_type_Int = 0;
+    jdField_b_of_type_Int = 0;
+    jdField_c_of_type_Int = 0;
+  }
   
   public StoryGuideLineView(Context paramContext)
   {
@@ -52,15 +59,15 @@ public class StoryGuideLineView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131562892, this, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView = ((PressDarkImageView)findViewById(2131374579));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374684));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378469));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368798));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131374624));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131374625);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131374633);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131374630);
+    LayoutInflater.from(paramContext).inflate(2131563039, this, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView = ((PressDarkImageView)findViewById(2131374950));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375055));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378900));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369030));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131374995));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131374996);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131375004);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131375001);
     setViewAlpha(this.jdField_c_of_type_AndroidWidgetLinearLayout);
   }
   
@@ -119,7 +126,7 @@ public class StoryGuideLineView
     a();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     measureChild(this.jdField_c_of_type_AndroidWidgetLinearLayout, paramInt1, paramInt2);
@@ -172,7 +179,7 @@ public class StoryGuideLineView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.StoryGuideLineView
  * JD-Core Version:    0.7.0.1
  */

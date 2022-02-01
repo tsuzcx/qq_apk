@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.cache;
 
-import bkpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.MiniSdkUtil;
 import com.tencent.qqmini.sdk.MiniSDK;
 import org.json.JSONObject;
 
@@ -20,7 +20,7 @@ final class MiniCacheFreeManager$5
       QLog.i("MiniCacheFreeManager", 1, "getAppInfoById, retCode = " + l + ",errMsg = " + str);
       paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
       if (paramJSONObject != null) {
-        MiniSDK.stopMiniApp(BaseApplicationImpl.getContext(), bkpw.a(paramJSONObject));
+        MiniSDK.stopMiniApp(BaseApplicationImpl.getContext(), MiniSdkUtil.a(paramJSONObject));
       }
     }
   }

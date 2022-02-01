@@ -66,7 +66,7 @@ public class pv
     return this.b.b();
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if ((this.e) && (this.d != null)) {
@@ -87,7 +87,7 @@ public class pv
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     if (this.b != null) {
       this.b.c();
@@ -315,7 +315,7 @@ public class pv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.pv
  * JD-Core Version:    0.7.0.1
  */

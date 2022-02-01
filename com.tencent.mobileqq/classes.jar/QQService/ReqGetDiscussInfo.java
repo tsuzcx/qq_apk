@@ -10,11 +10,11 @@ public final class ReqGetDiscussInfo
   extends JceStruct
 {
   static Map<Long, Integer> cache_UinList;
-  public long DiscussUin;
-  public long InfoSeq;
+  public long DiscussUin = 0L;
+  public long InfoSeq = 0L;
   public long InteRemarkTimeStamp = -1L;
   public String Signature = "";
-  public Map<Long, Integer> UinList;
+  public Map<Long, Integer> UinList = null;
   
   public ReqGetDiscussInfo() {}
   

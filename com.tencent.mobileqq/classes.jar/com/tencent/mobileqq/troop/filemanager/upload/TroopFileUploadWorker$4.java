@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troop.filemanager.upload;
 
 import java.util.TimerTask;
 
-public class TroopFileUploadWorker$4
+class TroopFileUploadWorker$4
   extends TimerTask
 {
   public void run() {}

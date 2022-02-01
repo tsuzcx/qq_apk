@@ -5,10 +5,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public final class QQMusicPlayReport$2
+final class QQMusicPlayReport$2
   implements Runnable
 {
-  public QQMusicPlayReport$2(int paramInt1, int paramInt2) {}
+  QQMusicPlayReport$2(int paramInt1, int paramInt2) {}
   
   public void run()
   {

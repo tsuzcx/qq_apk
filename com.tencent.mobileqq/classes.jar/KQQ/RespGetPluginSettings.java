@@ -9,7 +9,7 @@ public final class RespGetPluginSettings
   extends JceStruct
 {
   static ArrayList<PluginInfo> cache_PluginInfoList;
-  public ArrayList<PluginInfo> PluginInfoList;
+  public ArrayList<PluginInfo> PluginInfoList = null;
   
   public RespGetPluginSettings() {}
   

@@ -12,13 +12,13 @@ public final class ProfFriendInfoRes
 {
   static Map<Short, byte[]> cache_mFieldsInfo;
   static ArrayList<Short> cache_vUnGetFields;
-  public byte cDataCode;
-  public byte cResult;
-  public Map<Short, byte[]> mFieldsInfo;
+  public byte cDataCode = 0;
+  public byte cResult = 0;
+  public Map<Short, byte[]> mFieldsInfo = null;
   public String sSigInfo = "";
-  public long uFriendUin;
-  public ArrayList<Short> vUnGetFields;
-  public short wLevel;
+  public long uFriendUin = 0L;
+  public ArrayList<Short> vUnGetFields = null;
+  public short wLevel = 0;
   
   public ProfFriendInfoRes() {}
   

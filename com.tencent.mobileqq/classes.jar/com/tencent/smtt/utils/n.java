@@ -272,8 +272,8 @@ public class n
     //   3: astore_1
     //   4: aload_0
     //   5: invokespecial 83	com/tencent/smtt/utils/n:d	()Ljava/io/File;
-    //   8: astore 5
-    //   10: aload 5
+    //   8: astore 4
+    //   10: aload 4
     //   12: ifnonnull +33 -> 45
     //   15: new 85	java/lang/NullPointerException
     //   18: dup
@@ -295,25 +295,25 @@ public class n
     //   48: dup
     //   49: new 91	java/io/FileInputStream
     //   52: dup
-    //   53: aload 5
+    //   53: aload 4
     //   55: invokespecial 94	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   58: invokespecial 97	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   61: astore_2
     //   62: new 99	java/util/Properties
     //   65: dup
     //   66: invokespecial 100	java/util/Properties:<init>	()V
-    //   69: astore 4
-    //   71: aload 4
+    //   69: astore 5
+    //   71: aload 5
     //   73: aload_2
     //   74: invokevirtual 103	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   77: aload 4
+    //   77: aload 5
     //   79: ldc 105
     //   81: aload_0
     //   82: getfield 29	com/tencent/smtt/utils/n:a	Z
     //   85: invokestatic 130	java/lang/Boolean:toString	(Z)Ljava/lang/String;
     //   88: invokevirtual 134	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   91: pop
-    //   92: aload 4
+    //   92: aload 5
     //   94: ldc 136
     //   96: aload_0
     //   97: getfield 31	com/tencent/smtt/utils/n:d	Z
@@ -324,11 +324,11 @@ public class n
     //   110: dup
     //   111: new 140	java/io/FileOutputStream
     //   114: dup
-    //   115: aload 5
+    //   115: aload 4
     //   117: invokespecial 141	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   120: invokespecial 144	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   123: astore_1
-    //   124: aload 4
+    //   124: aload 5
     //   126: aload_1
     //   127: aconst_null
     //   128: invokevirtual 148	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
@@ -429,10 +429,10 @@ public class n
     //   226	11	3	localObject8	Object
     //   243	1	3	localThrowable2	Throwable
     //   249	1	3	localThrowable3	Throwable
-    //   69	92	4	localProperties	java.util.Properties
+    //   8	153	4	localFile	File
     //   223	5	4	localObject9	Object
     //   233	5	4	localObject10	Object
-    //   8	108	5	localFile	File
+    //   69	56	5	localProperties	java.util.Properties
     // Exception table:
     //   from	to	target	type
     //   15	23	31	java/lang/Exception
@@ -456,7 +456,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.utils.n
  * JD-Core Version:    0.7.0.1
  */

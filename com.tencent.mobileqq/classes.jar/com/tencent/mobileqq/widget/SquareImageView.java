@@ -19,125 +19,136 @@ import com.tencent.mobileqq.R.styleable;
 public class SquareImageView
   extends URLImageView
 {
-  public static final String TAG = SquareImageView.class.getSimpleName();
-  private int mCircleBgColor = -1;
-  private Paint mCircleBgPaint = new Paint();
-  protected final Path mClipPath = new Path();
-  private int mFilterColor = -1;
-  private String mFilterText;
-  private int mFilterTextSize = 20;
-  protected int mRoundRectRadius;
-  private float mScale = 1.0F;
-  private float mScaleOffset = 0.0F;
-  protected final RectF mViewBounds = new RectF();
+  public static final String a;
+  private float jdField_a_of_type_Float = 1.0F;
+  protected int a;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  protected final Path a;
+  protected final RectF a;
+  private float jdField_b_of_type_Float = 0.0F;
+  private int jdField_b_of_type_Int = -1;
+  private String jdField_b_of_type_JavaLangString;
+  private int c = 20;
+  private int d = -1;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = SquareImageView.class.getSimpleName();
+  }
   
   public SquareImageView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
   }
   
   public SquareImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SquareImageView);
-    this.mScale = paramContext.getFloat(4, 1.0F);
-    this.mScaleOffset = paramContext.getFloat(5, 0.0F);
-    this.mFilterColor = paramContext.getColor(0, -1);
-    this.mFilterText = paramContext.getString(1);
-    this.mFilterTextSize = paramContext.getDimensionPixelSize(2, 40);
-    this.mRoundRectRadius = paramContext.getDimensionPixelSize(3, 0);
+    this.jdField_a_of_type_Float = paramContext.getFloat(4, 1.0F);
+    this.jdField_b_of_type_Float = paramContext.getFloat(5, 0.0F);
+    this.jdField_b_of_type_Int = paramContext.getColor(0, -1);
+    this.jdField_b_of_type_JavaLangString = paramContext.getString(1);
+    this.c = paramContext.getDimensionPixelSize(2, 40);
+    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(3, 0);
     paramContext.recycle();
   }
   
   public SquareImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.mRoundRectRadius != 0)
+    if (this.jdField_a_of_type_Int != 0)
     {
-      if (this.mClipPath.isEmpty()) {
-        this.mClipPath.addRoundRect(this.mViewBounds, this.mRoundRectRadius, this.mRoundRectRadius, Path.Direction.CW);
+      if (this.jdField_a_of_type_AndroidGraphicsPath.isEmpty()) {
+        this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, Path.Direction.CW);
       }
       if (Build.VERSION.SDK_INT >= 18) {
-        paramCanvas.clipPath(this.mClipPath);
+        paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
       }
     }
     super.draw(paramCanvas);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    if (this.mCircleBgColor != -1)
+    if (this.d != -1)
     {
-      this.mCircleBgPaint.setColor(this.mCircleBgColor);
-      this.mCircleBgPaint.setAntiAlias(false);
-      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, this.mCircleBgPaint);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(false);
+      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     super.onDraw(paramCanvas);
     Paint localPaint;
-    if (this.mFilterColor != -1)
+    if (this.jdField_b_of_type_Int != -1)
     {
       localPaint = new Paint();
-      localPaint.setColor(this.mFilterColor);
-      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight()), this.mRoundRectRadius, this.mRoundRectRadius, localPaint);
+      localPaint.setColor(this.jdField_b_of_type_Int);
+      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight()), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, localPaint);
     }
-    if (!TextUtils.isEmpty(this.mFilterText))
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       localPaint = new Paint(1);
-      localPaint.setTextSize(this.mFilterTextSize);
+      localPaint.setTextSize(this.c);
       localPaint.setColor(-1);
       localPaint.setTextAlign(Paint.Align.CENTER);
       Paint.FontMetricsInt localFontMetricsInt = localPaint.getFontMetricsInt();
-      paramCanvas.drawText(this.mFilterText, getMeasuredWidth() / 2, (getMeasuredHeight() - localFontMetricsInt.ascent - localFontMetricsInt.descent) / 2, localPaint);
+      paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, getMeasuredWidth() / 2, (getMeasuredHeight() - localFontMetricsInt.ascent - localFontMetricsInt.descent) / 2, localPaint);
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.mViewBounds.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt1);
     paramInt1 = getMeasuredWidth();
-    setMeasuredDimension(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec((int)(paramInt1 * 1.0F / this.mScale + (int)this.mScaleOffset), 1073741824));
+    setMeasuredDimension(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec((int)(paramInt1 * 1.0F / this.jdField_a_of_type_Float + (int)this.jdField_b_of_type_Float), 1073741824));
   }
   
   public void setCircleBgColor(int paramInt)
   {
-    this.mCircleBgColor = paramInt;
+    this.d = paramInt;
     invalidate();
   }
   
   public void setFilterColor(int paramInt)
   {
-    this.mFilterColor = paramInt;
+    this.jdField_b_of_type_Int = paramInt;
     invalidate();
   }
   
   public void setFilterText(String paramString)
   {
-    this.mFilterText = paramString;
+    this.jdField_b_of_type_JavaLangString = paramString;
     requestLayout();
   }
   
   public void setFilterTextSize(int paramInt)
   {
-    this.mFilterTextSize = paramInt;
+    this.c = paramInt;
     requestLayout();
   }
   
   public void setImageScale(float paramFloat1, float paramFloat2)
   {
     if (paramFloat1 > 0.0F) {
-      this.mScale = paramFloat1;
+      this.jdField_a_of_type_Float = paramFloat1;
     }
-    this.mScaleOffset = paramFloat2;
+    this.jdField_b_of_type_Float = paramFloat2;
     requestLayout();
   }
   
@@ -147,13 +158,13 @@ public class SquareImageView
     if (paramInt <= 0) {
       i = 0;
     }
-    this.mRoundRectRadius = i;
+    this.jdField_a_of_type_Int = i;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SquareImageView
  * JD-Core Version:    0.7.0.1
  */

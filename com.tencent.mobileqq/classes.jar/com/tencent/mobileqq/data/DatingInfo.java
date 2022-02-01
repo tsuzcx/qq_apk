@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import arxs;
-import arxw;
-import arxx;
+import com.tencent.mobileqq.dating.DatingComment;
+import com.tencent.mobileqq.dating.DatingStranger;
+import com.tencent.mobileqq.dating.DatingUtil;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -22,26 +22,26 @@ public class DatingInfo
   @notColumn
   public static final int TYPE_COMMENT = 1;
   @notColumn
-  private List<arxs> commentList = new ArrayList(20);
+  private List<DatingComment> commentList = new ArrayList(20);
   public String commentPacked;
   @unique
   public String datingId;
   public int datingSubject;
   public long datingTime;
   @notColumn
-  public boolean isInit;
+  public boolean isInit = false;
   @notColumn
   public long lastUpdateTime;
   @notColumn
-  private int nPrivateFlag;
+  private int nPrivateFlag = 0;
   public int owner;
   @notColumn
   public String strDatingTime;
   @notColumn
-  private List<arxw> strangerInfos = new ArrayList(20);
+  private List<DatingStranger> strangerInfos = new ArrayList(20);
   public String strangerInfosPacked;
   @notColumn
-  private List<arxw> visitorInfos = new ArrayList(20);
+  private List<DatingStranger> visitorInfos = new ArrayList(20);
   public String visitorInfosPacked;
   
   public boolean equals(Object paramObject)
@@ -72,13 +72,13 @@ public class DatingInfo
   public void init()
   {
     if (this.datingTime == 0L) {}
-    for (this.strDatingTime = "";; this.strDatingTime = arxx.a(this.datingTime, this.datingSubject, false))
+    for (this.strDatingTime = "";; this.strDatingTime = DatingUtil.a(this.datingTime, this.datingSubject, false))
     {
-      arxw.a(this.visitorInfos, this.visitorInfosPacked);
+      DatingStranger.a(this.visitorInfos, this.visitorInfosPacked);
       this.nPrivateFlag |= 0x2;
-      arxs.a(this.commentList, this.commentPacked);
+      DatingComment.a(this.commentList, this.commentPacked);
       this.nPrivateFlag |= 0x20;
-      arxw.a(this.strangerInfos, this.strangerInfosPacked);
+      DatingStranger.a(this.strangerInfos, this.strangerInfosPacked);
       this.nPrivateFlag |= 0x8;
       return;
     }
@@ -101,11 +101,11 @@ public class DatingInfo
       {
         if ((this.nPrivateFlag & 0x8) == 8)
         {
-          this.strangerInfosPacked = arxw.a(this.strangerInfos);
+          this.strangerInfosPacked = DatingStranger.a(this.strangerInfos);
           synchronized (this.visitorInfos)
           {
             if ((this.nPrivateFlag & 0x2) == 2) {
-              this.visitorInfosPacked = arxw.a(this.visitorInfos);
+              this.visitorInfosPacked = DatingStranger.a(this.visitorInfos);
             }
           }
         }
@@ -114,7 +114,7 @@ public class DatingInfo
       {
         if ((this.nPrivateFlag & 0x8) == 8)
         {
-          this.commentPacked = arxs.a(this.commentList);
+          this.commentPacked = DatingComment.a(this.commentList);
           return;
           this.strangerInfosPacked = "";
           continue;
@@ -132,7 +132,7 @@ public class DatingInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DatingInfo
  * JD-Core Version:    0.7.0.1
  */

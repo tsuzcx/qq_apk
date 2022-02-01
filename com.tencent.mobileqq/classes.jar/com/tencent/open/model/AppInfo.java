@@ -3,8 +3,7 @@ package com.tencent.open.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anvx;
-import bjpo;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.oidb.qqconnect.Appinfo;
@@ -12,25 +11,23 @@ import tencent.im.oidb.qqconnect.Appinfo;
 public class AppInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<AppInfo> CREATOR = new bjpo();
+  public static final Parcelable.Creator<AppInfo> CREATOR = new AppInfo.1();
   private int jdField_a_of_type_Int = -1;
   private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = -1;
   private String jdField_b_of_type_JavaLangString = "";
   
-  public AppInfo(Parcel paramParcel)
+  protected AppInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_b_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
     }
+    this.jdField_a_of_type_Boolean = bool;
   }
   
   public AppInfo(qqconnect.Appinfo paramAppinfo)
@@ -59,11 +56,11 @@ public class AppInfo
     switch (this.jdField_b_of_type_Int)
     {
     default: 
-      return anvx.a(2131700116);
+      return HardCodeUtil.a(2131700694);
     case 0: 
-      return anvx.a(2131700115);
+      return HardCodeUtil.a(2131700693);
     case 1: 
-      return anvx.a(2131700117);
+      return HardCodeUtil.a(2131700695);
     case 2: 
       return "ARK应用";
     case 3: 
@@ -135,7 +132,7 @@ public class AppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.model.AppInfo
  * JD-Core Version:    0.7.0.1
  */

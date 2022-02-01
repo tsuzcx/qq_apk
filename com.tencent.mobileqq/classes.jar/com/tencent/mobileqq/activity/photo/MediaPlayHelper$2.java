@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akjs;
-import akjt;
 import android.content.Context;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
-public class MediaPlayHelper$2
+class MediaPlayHelper$2
   implements Runnable
 {
-  public MediaPlayHelper$2(akjs paramakjs, Context paramContext) {}
+  MediaPlayHelper$2(MediaPlayHelper paramMediaPlayHelper, Context paramContext) {}
   
   public void run()
   {
-    TVK_SDKMgr.installPlugin(this.a, new akjt(this));
+    TVK_SDKMgr.installPlugin(this.a, new MediaPlayHelper.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaPlayHelper.2
  * JD-Core Version:    0.7.0.1
  */

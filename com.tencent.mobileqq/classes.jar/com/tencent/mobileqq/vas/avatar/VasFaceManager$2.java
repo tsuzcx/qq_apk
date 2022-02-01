@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas.avatar;
 
-import bhcs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class VasFaceManager$2
@@ -21,13 +21,13 @@ class VasFaceManager$2
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqhead.VasFaceManager", 2, "requestFaceId uin: " + this.a);
     }
-    bhcs.a(this.a);
-    bhcs.a(this.this$0.a);
+    AvatarPendantUtil.a(this.a);
+    AvatarPendantUtil.a(this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasFaceManager.2
  * JD-Core Version:    0.7.0.1
  */

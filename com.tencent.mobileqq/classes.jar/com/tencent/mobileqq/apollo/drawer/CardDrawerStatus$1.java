@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.apollo.drawer;
 
-import amsg;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class CardDrawerStatus$1
+class CardDrawerStatus$1
   implements Runnable
 {
-  public CardDrawerStatus$1(amsg paramamsg, QQAppInterface paramQQAppInterface) {}
+  CardDrawerStatus$1(CardDrawerStatus paramCardDrawerStatus, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class CardDrawerStatus$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.drawer.CardDrawerStatus.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,11 @@
 package com.tencent.hippy.qq.utils.tkd;
 
 import com.tencent.hippy.qq.module.tkd.TKDBiuModule.ParamsFetcher;
+import com.tencent.mtt.hippy.common.HippyMap;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/hippy/qq/utils/tkd/TKDCommentDispatcher$HippyCommentEvent;", "", "biuComment", "", "fetcher", "Lcom/tencent/hippy/qq/module/tkd/TKDBiuModule$ParamsFetcher;", "closeComment", "jScloseComment", "onClickLike", "rowKey", "", "commentId", "likeType", "seq", "onCommentViewLayout", "onCreateComment", "commentContent", "level", "parentCommentId", "onDeleteComment", "totalDeleteCount", "onFontScaleChange", "scaleFactor", "", "onSubCommentClose", "onSubCommentOpen", "openComment", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/hippy/qq/utils/tkd/TKDCommentDispatcher$HippyCommentEvent;", "", "biuComment", "", "fetcher", "Lcom/tencent/hippy/qq/module/tkd/TKDBiuModule$ParamsFetcher;", "closeComment", "jScloseComment", "onClickLike", "rowKey", "", "commentId", "likeType", "seq", "onCommentViewLayout", "onCreateComment", "commentContent", "level", "parentCommentId", "onDeleteComment", "totalDeleteCount", "onFontScaleChange", "scaleFactor", "", "onSubCommentClose", "onSubCommentOpen", "openComment", "refreshNewAndHotData", "propsMap", "Lcom/tencent/mtt/hippy/common/HippyMap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public abstract interface TKDCommentDispatcher$HippyCommentEvent
 {
   public abstract void biuComment(@NotNull TKDBiuModule.ParamsFetcher paramParamsFetcher);
@@ -28,10 +29,12 @@ public abstract interface TKDCommentDispatcher$HippyCommentEvent
   public abstract void onSubCommentOpen();
   
   public abstract void openComment();
+  
+  public abstract void refreshNewAndHotData(@NotNull HippyMap paramHippyMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.utils.tkd.TKDCommentDispatcher.HippyCommentEvent
  * JD-Core Version:    0.7.0.1
  */

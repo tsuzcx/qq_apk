@@ -68,7 +68,7 @@ public class RequestServer
       QMLog.w("RequestServer", "sendData " + paramProtoBufRequest);
       if (this.useHttpDirectly)
       {
-        HttpServer.sendData(arrayOfByte, new RequestServer.1(this, paramProtoBufRequest, paramAsyncResult));
+        sendDataByHttpServer(paramProtoBufRequest, paramAsyncResult, arrayOfByte);
         return;
       }
     }
@@ -84,16 +84,26 @@ public class RequestServer
     {
       paramProtoBufRequest.put("retCode", -1);
       paramProtoBufRequest.put("errMsg", "数据编码错误");
-      label89:
+      label82:
       paramAsyncResult.onReceiveResult(false, paramProtoBufRequest);
       return;
-      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).sendRequestByMsf(arrayOfByte, paramProtoBufRequest.getCmdString(), new RequestServer.2(this, paramProtoBufRequest, paramAsyncResult));
+      sendRequestByMsf(paramProtoBufRequest, paramAsyncResult, arrayOfByte);
       return;
     }
     catch (Throwable localThrowable)
     {
-      break label89;
+      break label82;
     }
+  }
+  
+  private void sendDataByHttpServer(ProtoBufRequest paramProtoBufRequest, AsyncResult paramAsyncResult, byte[] paramArrayOfByte)
+  {
+    HttpServer.sendData(paramArrayOfByte, new RequestServer.2(this, paramProtoBufRequest, paramAsyncResult));
+  }
+  
+  private void sendRequestByMsf(ProtoBufRequest paramProtoBufRequest, AsyncResult paramAsyncResult, byte[] paramArrayOfByte)
+  {
+    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).sendRequestByMsf(paramArrayOfByte, paramProtoBufRequest.getCmdString(), new RequestServer.1(this, paramProtoBufRequest, paramAsyncResult));
   }
   
   private void wrapResult(Boolean paramBoolean, int paramInt, String paramString, AsyncResult paramAsyncResult)

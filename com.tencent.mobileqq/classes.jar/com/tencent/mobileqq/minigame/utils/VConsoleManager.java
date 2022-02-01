@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class VConsoleManager
 {
   private static final String TAG = "VConsoleManager";
-  private static VConsoleManager instance;
+  private static VConsoleManager instance = null;
   private HashMap<Integer, VConsoleLogManager> vConsoleLogManagerMap = new HashMap();
   
   public static VConsoleManager getInstance()

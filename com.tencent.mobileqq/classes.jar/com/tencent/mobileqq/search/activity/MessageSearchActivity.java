@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.search.activity;
 
-import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,7 +26,7 @@ public class MessageSearchActivity
   
   protected String a()
   {
-    return anvx.a(2131706133);
+    return HardCodeUtil.a(2131706673);
   }
   
   @Override
@@ -48,7 +47,7 @@ public class MessageSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MessageSearchActivity
  * JD-Core Version:    0.7.0.1
  */

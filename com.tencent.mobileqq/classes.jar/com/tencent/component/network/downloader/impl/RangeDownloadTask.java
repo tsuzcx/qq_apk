@@ -1257,10 +1257,10 @@ public class RangeDownloadTask
     //   2899: aload_0
     //   2900: getfield 91	com/tencent/component/network/downloader/impl/RangeDownloadTask:mContext	Landroid/content/Context;
     //   2903: invokestatic 525	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
-    //   2906: astore 17
+    //   2906: astore 16
     //   2908: aload_0
     //   2909: getfield 198	com/tencent/component/network/downloader/impl/RangeDownloadTask:mRealUrl	Ljava/lang/String;
-    //   2912: astore 16
+    //   2912: astore 17
     //   2914: aload_0
     //   2915: getfield 359	com/tencent/component/network/downloader/impl/RangeDownloadTask:mIsHttp2	Z
     //   2918: ifeq +5474 -> 8392
@@ -1274,8 +1274,8 @@ public class RangeDownloadTask
     //   2938: ifeq +5454 -> 8392
     //   2941: iconst_1
     //   2942: istore 8
-    //   2944: aload 17
-    //   2946: aload 16
+    //   2944: aload 16
+    //   2946: aload 17
     //   2948: iload 8
     //   2950: aload_2
     //   2951: invokevirtual 106	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
@@ -4430,7 +4430,7 @@ public class RangeDownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.RangeDownloadTask
  * JD-Core Version:    0.7.0.1
  */

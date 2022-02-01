@@ -33,8 +33,8 @@ public class CircleBubbleImageView
   protected int c;
   public boolean c;
   public boolean d = true;
-  protected boolean e;
-  protected boolean f;
+  protected boolean e = false;
+  protected boolean f = false;
   
   public CircleBubbleImageView(Context paramContext)
   {
@@ -223,7 +223,7 @@ public class CircleBubbleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleBubbleImageView
  * JD-Core Version:    0.7.0.1
  */

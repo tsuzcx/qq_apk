@@ -1,12 +1,11 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bnaa;
 import mqq.util.WeakReference;
 
-public class AEPhotoListLogicDefault$8
+class AEPhotoListLogicDefault$8
   implements Runnable
 {
-  public AEPhotoListLogicDefault$8(bnaa parambnaa) {}
+  AEPhotoListLogicDefault$8(AEPhotoListLogicDefault paramAEPhotoListLogicDefault) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class AEPhotoListLogicDefault$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.logic.AEPhotoListLogicDefault.8
  * JD-Core Version:    0.7.0.1
  */

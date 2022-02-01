@@ -2,6 +2,7 @@ package com.tencent.thumbplayer.core.downloadproxy.api;
 
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyLog;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -170,56 +171,29 @@ public class TPDownloadParam
   
   public String getExtraJsonInfo()
   {
-    Object localObject1;
     if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {
-      localObject1 = "";
+      return "";
     }
-    Object localObject3;
-    do
+    try
     {
-      do
+      HashMap localHashMap = new HashMap();
+      Iterator localIterator = this.extInfoMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        return localObject1;
-        try
-        {
-          localObject1 = new JSONObject();
-          localObject3 = this.extInfoMap.entrySet().iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
-            if ((!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_is_offline")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_play_extra_info")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_play_definition")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_enable_expand_donwload_url")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_format_nodes")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_url_cookie")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_url_host"))) {
-              ((JSONObject)localObject1).put((String)localEntry.getKey(), localEntry.getValue());
-            }
-          }
-          localObject3 = localThrowable.toString();
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if ((!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_is_offline")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_play_extra_info")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_play_definition")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_enable_expand_donwload_url"))) {
+          localHashMap.put(localEntry.getKey(), localEntry.getValue());
         }
-        catch (Throwable localThrowable)
-        {
-          TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", "getExtraJsonInfo failed, error:" + localThrowable.toString());
-          return "";
-        }
-        localObject2 = localObject3;
-        if (this.extInfoMap.containsKey("dl_param_format_nodes"))
-        {
-          localObject2 = localObject3;
-          if (this.extInfoMap.get("dl_param_format_nodes") != null) {
-            localObject2 = String.format("%s,\"%s\":%s}", new Object[] { ((String)localObject3).substring(0, ((String)localObject3).length() - 1), "dl_param_format_nodes", getExtraFormatNodesJsonInfo((ArrayList)this.extInfoMap.get("dl_param_format_nodes")) });
-          }
-        }
-        localObject3 = localObject2;
-        if (this.extInfoMap.containsKey("dl_param_url_host"))
-        {
-          localObject3 = localObject2;
-          if (this.extInfoMap.get("dl_param_url_host") != null) {
-            localObject3 = String.format("%s,\"%s\":%s}", new Object[] { ((String)localObject2).substring(0, ((String)localObject2).length() - 1), "dl_param_url_host", getUrlHostNodesJsonInfo((ArrayList)this.extInfoMap.get("dl_param_url_host")) });
-          }
-        }
-        localObject2 = localObject3;
-      } while (!this.extInfoMap.containsKey("dl_param_url_cookie"));
-      localObject2 = localObject3;
-    } while (this.extInfoMap.get("dl_param_url_cookie") == null);
-    Object localObject2 = String.format("%s,\"%s\":%s}", new Object[] { ((String)localObject3).substring(0, ((String)localObject3).length() - 1), "dl_param_url_cookie", getUrlHostNodesJsonInfo((ArrayList)this.extInfoMap.get("dl_param_url_cookie")) });
-    return localObject2;
+      }
+      str = new JSONObject(localThrowable).toString();
+    }
+    catch (Throwable localThrowable)
+    {
+      TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", "getExtraJsonInfo failed, error:" + localThrowable.toString());
+      return "";
+    }
+    String str;
+    return str;
   }
   
   public String getFormat()
@@ -324,7 +298,7 @@ public class TPDownloadParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadParam
  * JD-Core Version:    0.7.0.1
  */

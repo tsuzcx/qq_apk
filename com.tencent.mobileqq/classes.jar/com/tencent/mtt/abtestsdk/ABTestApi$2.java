@@ -27,13 +27,13 @@ final class ABTestApi$2
   {
     try
     {
-      Object localObject = paramJSONObject.getJSONObject("data");
+      Object localObject = paramJSONObject.optJSONObject("data");
       Iterator localIterator = ((JSONObject)localObject).keys();
       while (localIterator.hasNext())
       {
         paramJSONObject = (String)localIterator.next();
-        JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject(paramJSONObject);
-        String str = localJSONObject.getString("expName");
+        JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject(paramJSONObject);
+        String str = localJSONObject.optString("expName");
         if (this.val$expName.equals(str))
         {
           ABTestLog.debug("expose：" + this.val$isExpose + "  get data successfully from network", new Object[0]);
@@ -65,7 +65,7 @@ final class ABTestApi$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.ABTestApi.2
  * JD-Core Version:    0.7.0.1
  */

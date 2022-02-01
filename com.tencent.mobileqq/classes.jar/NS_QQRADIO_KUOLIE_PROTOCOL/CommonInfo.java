@@ -11,9 +11,9 @@ public final class CommonInfo
 {
   static Map<String, String> cache_mapExt = new HashMap();
   public String cookie = "";
-  public byte hasMore;
-  public byte isRefresh;
-  public Map<String, String> mapExt;
+  public byte hasMore = 0;
+  public byte isRefresh = 0;
+  public Map<String, String> mapExt = null;
   
   static
   {

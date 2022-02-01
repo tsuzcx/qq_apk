@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import anud;
-import anwf;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.FlashPicHelper;
+import com.tencent.mobileqq.app.HotChatHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -28,23 +28,23 @@ class AIOImageProviderService$5
       if (localChatMessage != null)
       {
         localQQMessageFacade = localQQAppInterface.getMessageFacade();
-        if (!anwf.a(localChatMessage)) {
+        if (!HotChatHelper.a(localChatMessage)) {
           break label157;
         }
-        anwf.a(localChatMessage);
+        HotChatHelper.a(localChatMessage);
         break label180;
       }
       for (;;)
       {
-        localQQMessageFacade.updateMsgFieldByUniseq(localChatMessage.frienduin, localChatMessage.istroop, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
+        localQQMessageFacade.a(localChatMessage.frienduin, localChatMessage.istroop, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
         if (QLog.isColorLevel()) {
           QLog.d("Q.hotchat", 2, "makeFlashPicReaded,uin:" + this.this$0.b + ",type:" + localChatMessage.istroop + ",extStr" + localChatMessage.extStr);
         }
-        bdla.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
+        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
         return;
         label157:
-        anud.a(localChatMessage);
-        Iterator localIterator = localQQMessageFacade.getMsgList(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
+        FlashPicHelper.a(localChatMessage);
+        Iterator localIterator = localQQMessageFacade.b(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
         label180:
         if (localIterator.hasNext())
         {
@@ -52,7 +52,7 @@ class AIOImageProviderService$5
           if (localMessageRecord.uniseq != this.a) {
             break;
           }
-          anud.a(localMessageRecord);
+          FlashPicHelper.a(localMessageRecord);
         }
       }
       return;
@@ -65,7 +65,7 @@ class AIOImageProviderService$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.5
  * JD-Core Version:    0.7.0.1
  */

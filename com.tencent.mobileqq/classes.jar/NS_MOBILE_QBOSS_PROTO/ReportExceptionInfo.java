@@ -8,9 +8,9 @@ public final class ReportExceptionInfo
   extends JceStruct
 {
   static int cache_iCode = 0;
-  public int iAppid;
-  public int iCode;
-  public int iTaskId;
+  public int iAppid = 0;
+  public int iCode = 0;
+  public int iTaskId = 0;
   public String strMsg = "";
   
   public ReportExceptionInfo() {}

@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import avux;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
@@ -29,14 +29,14 @@ public class NowQQConnectFragment
       if (paramBundle == null) {
         QLog.e("NowQQConnectFragment", 1, "argsBundle is null");
       } else {
-        ((avux)avux.a().getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).a(paramViewGroup, paramBundle);
+        ((DynamicNowManager)DynamicNowManager.a().getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).a(paramViewGroup, paramBundle);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowQQConnectFragment
  * JD-Core Version:    0.7.0.1
  */

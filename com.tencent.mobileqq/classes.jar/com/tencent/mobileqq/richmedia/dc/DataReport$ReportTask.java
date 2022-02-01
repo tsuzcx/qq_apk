@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public class DataReport$ReportTask
+class DataReport$ReportTask
   implements Runnable
 {
   String jdField_a_of_type_JavaLangString;
@@ -37,7 +37,7 @@ public class DataReport$ReportTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask
  * JD-Core Version:    0.7.0.1
  */

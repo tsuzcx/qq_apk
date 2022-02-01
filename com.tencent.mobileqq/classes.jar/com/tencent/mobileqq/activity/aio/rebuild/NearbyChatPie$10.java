@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidd;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import ayoa;
-import bdla;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.NearbyRecommenderUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class NearbyChatPie$10
+class NearbyChatPie$10
   implements Runnable
 {
-  public NearbyChatPie$10(aidd paramaidd) {}
+  NearbyChatPie$10(NearbyChatPie paramNearbyChatPie) {}
   
   public void run()
   {
-    String[] arrayOfString = ayoa.a(this.this$0.app);
-    String str = this.this$0.mActivity.getIntent().getStringExtra("uin");
-    bdla.b(this.this$0.app, "CliOper", "", "", "0X80055FE", "0X80055FE", 0, 0, arrayOfString[0], str, "", "");
-    this.this$0.b = false;
+    String[] arrayOfString = NearbyRecommenderUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    String str = this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
+    ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055FE", "0X80055FE", 0, 0, arrayOfString[0], str, "", "");
+    this.this$0.N = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.10
  * JD-Core Version:    0.7.0.1
  */

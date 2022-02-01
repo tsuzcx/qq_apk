@@ -4,59 +4,51 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.util.RIJBlackWhiteModeHelper;
 import kotlin.Metadata;
 import kotlin.Unit;
-import kotlin.jvm.JvmOverloads;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import uur;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/RIJBlackWhiteModeLinearLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "dispatchDrawCanvas", "Lkotlin/Function1;", "Landroid/graphics/Canvas;", "", "drawCanvas", "mContext", "dispatchDraw", "canvas", "draw", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class RIJBlackWhiteModeLinearLayout
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/RIJBlackWhiteModeLinearLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "dispatchDrawCanvas", "Lkotlin/Function1;", "Landroid/graphics/Canvas;", "", "drawCanvas", "dispatchDraw", "canvas", "draw", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public class RIJBlackWhiteModeLinearLayout
   extends LinearLayout
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final Function1<Canvas, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  private final Function1<Canvas, Unit> b;
+  private final Function1<Canvas, Unit> a = (Function1)new RIJBlackWhiteModeLinearLayout.drawCanvas.1(this);
+  private final Function1<Canvas, Unit> b = (Function1)new RIJBlackWhiteModeLinearLayout.dispatchDrawCanvas.1(this);
   
-  @JvmOverloads
-  public RIJBlackWhiteModeLinearLayout(@NotNull Context paramContext)
+  public RIJBlackWhiteModeLinearLayout(@Nullable Context paramContext)
   {
-    this(paramContext, null, 0, 6, null);
+    super(paramContext);
   }
   
-  @JvmOverloads
-  public RIJBlackWhiteModeLinearLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
+  public RIJBlackWhiteModeLinearLayout(@Nullable Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 0, 4, null);
+    super(paramContext, paramAttributeSet);
   }
   
-  @JvmOverloads
-  public RIJBlackWhiteModeLinearLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
+  public RIJBlackWhiteModeLinearLayout(@Nullable Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = ((Function1)new RIJBlackWhiteModeLinearLayout.drawCanvas.1(this));
-    this.b = ((Function1)new RIJBlackWhiteModeLinearLayout.dispatchDrawCanvas.1(this));
   }
   
-  protected void dispatchDraw(@NotNull Canvas paramCanvas)
+  public void dispatchDraw(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    uur.a.a(paramCanvas, true, this.b);
+    RIJBlackWhiteModeHelper.a.a(paramCanvas, true, this.b);
   }
   
   public void draw(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    uur.a.a(paramCanvas, true, this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
+    RIJBlackWhiteModeHelper.a.a(paramCanvas, true, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RIJBlackWhiteModeLinearLayout
  * JD-Core Version:    0.7.0.1
  */

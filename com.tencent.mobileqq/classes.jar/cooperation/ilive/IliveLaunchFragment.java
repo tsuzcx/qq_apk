@@ -15,20 +15,6 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bapt;
-import bhpu;
-import bluh;
-import blui;
-import bluk;
-import blul;
-import bluo;
-import blvi;
-import blvj;
-import blvk;
-import blvl;
-import blvm;
-import blvn;
-import blvo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivityForTool;
 import com.tencent.mobileqq.activity.qwallet.utils.OSUtils;
@@ -36,6 +22,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
+import com.tencent.mobileqq.vas.VasStatisticCollector;
 import com.tencent.mobileqq.videoplatform.util.LoadSoUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -44,6 +32,13 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.ilive.plugin.IlivePluginCallback;
 import cooperation.ilive.plugin.IlivePluginManager;
 import cooperation.ilive.share.IliveShareHelper;
+import cooperation.ilive.time.TimeMonitorConfig;
+import cooperation.ilive.time.TimeMonitorData;
+import cooperation.ilive.time.TimeMonitorManager;
+import cooperation.ilive.util.ElapseStat;
+import cooperation.ilive.util.IliveEntranceUtil;
+import cooperation.ilive.util.IlivePreloadHelper;
+import cooperation.ilive.util.IlivePreloadHelper.PreloadEnd;
 import eipc.EIPCClient;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,15 +46,15 @@ import mqq.os.MqqHandler;
 
 public class IliveLaunchFragment
   extends PublicBaseFragment
-  implements bluh, blvo, IlivePluginCallback
+  implements IliveDownloadCallback, IlivePluginCallback, IlivePreloadHelper.PreloadEnd
 {
   private static final String TAG = "IliveLaunchActivity";
-  private static EnterCallback mEnterCallback = new bluk();
+  private static EnterCallback mEnterCallback = new IliveLaunchFragment.7();
   private static long mStartTimeMillis;
-  private boolean isPreloadModel;
+  private boolean isPreloadModel = false;
   private IliveShareHelper mIliveShareHelper;
-  private volatile boolean mIsPluginFileExist;
-  private volatile boolean mIsSoLoadSuccess;
+  private volatile boolean mIsPluginFileExist = false;
+  private volatile boolean mIsSoLoadSuccess = false;
   private ProgressBar mLoadingProgressBar;
   private TextView mLoadingText;
   private FrameLayout mParentLayout;
@@ -71,24 +66,24 @@ public class IliveLaunchFragment
   
   private void cancelPreload()
   {
-    if (blvn.a)
+    if (IlivePreloadHelper.a)
     {
       QLog.i("IliveLaunchActivity", 1, "preload cancle", new Throwable());
-      blvn.a = false;
-      blvn.a();
+      IlivePreloadHelper.a = false;
+      IlivePreloadHelper.a();
     }
   }
   
   private void downloadPlugin()
   {
-    blvk.a().b("PLUGIN_DOWNLOAD");
+    TimeMonitorManager.a().b("PLUGIN_DOWNLOAD");
     cancelPreDownload();
-    blul.a().c();
+    IlivePluginDownloadManager.a().c();
   }
   
   private void initData()
   {
-    blvl.a("IliveLaunch initData");
+    ElapseStat.a("IliveLaunch initData");
     if (getActivity() == null) {}
     Object localObject1;
     Object localObject2;
@@ -110,7 +105,7 @@ public class IliveLaunchFragment
       if (i != 1) {
         break label138;
       }
-      blvk.a().b("ANCHOR_ENTER_ROOM");
+      TimeMonitorManager.a().b("ANCHOR_ENTER_ROOM");
     }
     for (;;)
     {
@@ -118,12 +113,12 @@ public class IliveLaunchFragment
       localObject2 = new HashMap();
       ((HashMap)localObject2).put("source", localObject1);
       ((HashMap)localObject2).put("process_start_time", String.valueOf(l));
-      bhpu.a("launcher", (Map)localObject2, l);
-      blvl.b("IliveLaunch initData");
+      VasStatisticCollector.a("launcher", (Map)localObject2, l);
+      ElapseStat.b("IliveLaunch initData");
       return;
       label138:
       if (i == 3) {
-        blvk.a().b("WATCH_ENTER_ROOM");
+        TimeMonitorManager.a().b("WATCH_ENTER_ROOM");
       }
     }
   }
@@ -153,21 +148,21 @@ public class IliveLaunchFragment
   
   private void initVideoSDK()
   {
-    blvl.a("IliveLaunch initVideoSDK");
+    ElapseStat.a("IliveLaunch initVideoSDK");
     long l = System.currentTimeMillis();
-    this.mIsSoLoadSuccess = bapt.b();
+    this.mIsSoLoadSuccess = QQVideoPlaySDKManager.b();
     if (!this.mIsSoLoadSuccess)
     {
-      bapt.a();
-      LoadSoUtil.loadSo(new blui(this, l));
+      QQVideoPlaySDKManager.a();
+      LoadSoUtil.loadSo(new IliveLaunchFragment.5(this, l));
     }
   }
   
   private static void preloadEnd()
   {
     QLog.i("IliveLaunchActivity", 1, "preload end");
-    blvn.a = false;
-    blvn.a();
+    IlivePreloadHelper.a = false;
+    IlivePreloadHelper.a();
     long l1 = System.currentTimeMillis();
     long l2 = mStartTimeMillis;
     ThreadManager.getFileThreadHandler().post(new IliveLaunchFragment.8(l1 - l2));
@@ -195,7 +190,7 @@ public class IliveLaunchFragment
   
   public static void startSelf(Context paramContext, Intent paramIntent)
   {
-    if (!blvm.b()) {
+    if (!IliveEntranceUtil.b()) {
       ThreadManagerV2.getUIHandlerV2().post(new IliveLaunchFragment.1());
     }
     Intent localIntent;
@@ -206,13 +201,14 @@ public class IliveLaunchFragment
       if (paramIntent == null) {
         localIntent = new Intent();
       }
-    } while (!blvm.a(localIntent.getBooleanExtra("KEY_IS_START_LIVE", false)));
-    if (!blvm.a(500))
+    } while (!IliveEntranceUtil.a(localIntent.getBooleanExtra("KEY_IS_START_LIVE", false)));
+    if (!IliveEntranceUtil.a(500))
     {
       QLog.e("IliveLaunchActivity", 1, "startSelf isClickEnable = false");
       return;
     }
     localIntent.setClass(paramContext, PublicTransFragmentActivityForTool.class);
+    localIntent.putExtra("moduleId", "ilive_plugin");
     localIntent.putExtra("public_fragment_class", IliveLaunchFragment.class.getName());
     localIntent.addFlags(536870912);
     paramContext.startActivity(localIntent);
@@ -244,29 +240,28 @@ public class IliveLaunchFragment
   public void doLoading(boolean paramBoolean, Context paramContext)
   {
     int i = 0;
-    blvl.a("IliveLaunch doLoading");
+    ElapseStat.a("IliveLaunch doLoading");
     if (paramBoolean) {
       startPreloadRecord();
     }
-    IliveAppInterface.a();
     Bundle localBundle = getArguments();
     if (localBundle != null) {
       i = localBundle.getInt("source", 0);
     }
     IlivePluginManager.getInstance().refreshToken(i);
-    blvn.b = true;
+    IlivePreloadHelper.b = true;
     initVideoSDK();
     IlivePluginManager.getInstance().setIlivePluginCallback(this);
-    QLog.i("IliveLaunchActivity", 1, "doLoading isPreload = " + paramBoolean + " sPreload = " + blvn.a);
-    if ((!paramBoolean) && (blvn.a))
+    QLog.i("IliveLaunchActivity", 1, "doLoading isPreload = " + paramBoolean + " sPreload = " + IlivePreloadHelper.a);
+    if ((!paramBoolean) && (IlivePreloadHelper.a))
     {
       QLog.i("IliveLaunchActivity", 1, "wait fo preload");
-      blvn.a(this);
+      IlivePreloadHelper.a(this);
       showLoadingUI();
       return;
     }
     ThreadManagerV2.executeOnSubThread(new IliveLaunchFragment.3(this, paramContext, paramBoolean));
-    blvl.b("IliveLaunch doLoading");
+    ElapseStat.b("IliveLaunch doLoading");
   }
   
   public void enterPlugin(Context paramContext, Intent paramIntent)
@@ -285,21 +280,21 @@ public class IliveLaunchFragment
     if (paramIntent != null) {
       paramIntent.putExtra("KEY_EXTRAS", paramIntent.getBundleExtra("KEY_EXTRAS"));
     }
-    blvk.a().b("PLUGIN_LOAD");
+    TimeMonitorManager.a().b("PLUGIN_LOAD");
     paramContext = "com.tencent.ilivesdk.demo.LauncherActivity";
-    if (blvn.a)
+    if (IlivePreloadHelper.a)
     {
       QLog.i("IliveLaunchActivity", 1, "preload shadow");
       paramContext = "preload";
     }
-    bluo.a(BaseApplicationImpl.getContext(), paramIntent, paramContext, mEnterCallback);
+    IlivePluginHelper.a(BaseApplicationImpl.getContext(), paramIntent, paramContext, mEnterCallback);
   }
   
   protected void finalize()
   {
     if (this.isPreloadModel)
     {
-      blvn.a = false;
+      IlivePreloadHelper.a = false;
       QLog.e("IliveLaunchActivity", 1, "finalize and reset  sIsPrelad");
     }
     super.finalize();
@@ -309,7 +304,7 @@ public class IliveLaunchFragment
   {
     paramLayoutInflater = null;
     QLog.e("IliveLaunchActivity", 1, "onCreateView");
-    blvl.a("IliveLaunch totalLaunch");
+    ElapseStat.a("IliveLaunch totalLaunch");
     paramViewGroup = getActivity();
     if (paramViewGroup == null) {}
     for (;;)
@@ -323,7 +318,7 @@ public class IliveLaunchFragment
       }
       ThreadManagerV2.executeOnSubThread(new IliveLaunchFragment.2(this));
       initTransparentStateBar(paramViewGroup);
-      blvl.a("IliveLaunchActivity");
+      ElapseStat.a("IliveLaunchActivity");
       if (paramViewGroup.getIntent().getIntExtra("share", 0) == 1)
       {
         this.mIliveShareHelper = new IliveShareHelper(paramViewGroup, paramViewGroup.getIntent().getExtras());
@@ -331,11 +326,11 @@ public class IliveLaunchFragment
       }
       else
       {
-        blvk.a().b("PLUGIN_ENTER_TOTAL_TIME");
-        blvi.a();
+        TimeMonitorManager.a().b("PLUGIN_ENTER_TOTAL_TIME");
+        TimeMonitorConfig.a();
         this.mParentLayout = new FrameLayout(paramViewGroup);
         doLoading(false, getActivity());
-        blvl.b("IliveLaunchActivity");
+        ElapseStat.b("IliveLaunchActivity");
         paramLayoutInflater = this.mParentLayout;
       }
     }
@@ -343,9 +338,9 @@ public class IliveLaunchFragment
   
   public void onDestroyView()
   {
-    blvi.a = false;
-    blul.a().a(null);
-    blul.a().a();
+    TimeMonitorConfig.a = false;
+    IlivePluginDownloadManager.a().a(null);
+    IlivePluginDownloadManager.a().a();
     IlivePluginManager.getInstance().onDestory();
     if (this.mIliveShareHelper != null) {
       this.mIliveShareHelper.onDestroy();
@@ -363,18 +358,18 @@ public class IliveLaunchFragment
     paramString = new HashMap();
     paramString.put("status", "fail");
     paramString.put("errorCode", paramInt + str);
-    blvk.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", paramString);
+    TimeMonitorManager.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", paramString);
     QLog.e("IliveLaunchActivity", 1, "onFail code = " + paramInt + " msg = " + str);
     runOnUiThread(new IliveLaunchFragment.10(this, paramInt, str));
   }
   
   public void onPluginActivityCreate()
   {
-    blvl.b("IliveLaunch onPluginLaunch");
+    ElapseStat.b("IliveLaunch onPluginLaunch");
     QLog.e("IliveLaunchActivity", 1, "onPluginActivityCreate");
-    blvk.a().a("PLUGIN_ENTER_TOTAL_TIME").a("ilive_plugin_launch_total_time");
-    blvi.b();
-    blvl.b("IliveLaunch totalLaunch");
+    TimeMonitorManager.a().a("PLUGIN_ENTER_TOTAL_TIME").a("ilive_plugin_launch_total_time");
+    TimeMonitorConfig.b();
+    ElapseStat.b("IliveLaunch totalLaunch");
     if (getActivity() != null) {
       getActivity().finish();
     }
@@ -411,7 +406,7 @@ public class IliveLaunchFragment
   public void onPluginLoginSuccess()
   {
     QLog.e("IliveLaunchActivity", 1, "onPluginLoginSuccess login success");
-    blvl.a("IliveLaunch onPluginLaunch");
+    ElapseStat.a("IliveLaunch onPluginLaunch");
     runOnUiThread(new IliveLaunchFragment.12(this));
   }
   
@@ -432,25 +427,25 @@ public class IliveLaunchFragment
   
   public void onSuccess()
   {
-    QLog.e("IliveLaunchActivity", 1, "shadow onSuccess sPreload = " + blvn.a);
+    QLog.e("IliveLaunchActivity", 1, "shadow onSuccess sPreload = " + IlivePreloadHelper.a);
     HashMap localHashMap = new HashMap();
     localHashMap.put("status", "success");
-    blvk.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", localHashMap);
-    if (!blul.a().b())
+    TimeMonitorManager.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", localHashMap);
+    if (!IlivePluginDownloadManager.a().b())
     {
       onFail(101, "download success but local apk file is not exist");
       return;
     }
-    blvl.a("enterPlugin");
+    ElapseStat.a("enterPlugin");
     this.mIsPluginFileExist = true;
     if (getActivity() != null) {
       enterPlugin(getActivity(), getActivity().getIntent());
     }
     for (;;)
     {
-      blvl.b("enterPlugin");
+      ElapseStat.b("enterPlugin");
       return;
-      if (blvn.a) {
+      if (IlivePreloadHelper.a) {
         enterPlugin(BaseApplicationImpl.getContext(), new Intent());
       }
     }
@@ -458,7 +453,7 @@ public class IliveLaunchFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment
  * JD-Core Version:    0.7.0.1
  */

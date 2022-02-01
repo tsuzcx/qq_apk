@@ -12,12 +12,12 @@ class PublicAcntSearchFragment$1
   {
     this.this$0.c.setVisibility(0);
     this.this$0.b.setVisibility(8);
-    this.this$0.f_(false);
+    this.this$0.g_(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment.1
  * JD-Core Version:    0.7.0.1
  */

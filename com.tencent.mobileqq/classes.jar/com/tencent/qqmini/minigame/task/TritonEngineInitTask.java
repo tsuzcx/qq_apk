@@ -39,15 +39,15 @@ public class TritonEngineInitTask
   public static final int ERR_LOAD_SO = 107;
   public static final int ERR_UNKNOWN = 100;
   public static final int SUCCEED = 0;
-  public final String LOG_TAG = toString();
   private int mEngineLoadResult = -1;
   private MiniAppInfo mMiniAppInfo;
   private TritonPlatform mTritonPlatform;
+  private final String sTAG = toString();
   
   public TritonEngineInitTask(Context paramContext, BaseRuntimeLoader paramBaseRuntimeLoader)
   {
     super(paramContext, paramBaseRuntimeLoader);
-    GameLog.getInstance().i(this.LOG_TAG, "new TritonEngineInitTask");
+    GameLog.getInstance().i(this.sTAG, "new TritonEngineInitTask");
   }
   
   private boolean isGameSatisfy(@NonNull MiniEnginePackage paramMiniEnginePackage, MiniAppInfo paramMiniAppInfo)
@@ -56,21 +56,21 @@ public class TritonEngineInitTask
     boolean bool1 = true;
     if (paramMiniAppInfo == null)
     {
-      GameLog.getInstance().e(this.LOG_TAG, "[MiniEng]isGameSatisfy info == null");
+      GameLog.getInstance().e(this.sTAG, "[MiniEng]isGameSatisfy info == null");
       bool1 = false;
     }
     do
     {
       return bool1;
       paramMiniAppInfo = paramMiniAppInfo.baselibMiniVersion;
-      GameLog.getInstance().i(this.LOG_TAG, "[MiniEng]isGameSatisfy minVersion=" + paramMiniAppInfo);
+      GameLog.getInstance().i(this.sTAG, "[MiniEng]isGameSatisfy minVersion=" + paramMiniAppInfo);
     } while (TextUtils.isEmpty(paramMiniAppInfo));
     paramMiniAppInfo = new EngineVersion(paramMiniAppInfo);
     paramMiniEnginePackage = EngineVersion.fromFolderName(paramMiniEnginePackage.getBaseLibDir().getAbsolutePath());
     if ((paramMiniEnginePackage != null) && (EngineVersion.compareVersion(paramMiniEnginePackage.mMinor, paramMiniAppInfo.mMinor) >= 0)) {}
     for (bool1 = bool2;; bool1 = false)
     {
-      GameLog.getInstance().i(this.LOG_TAG, "[MiniEng]isGameSatisfy appMinVersion=" + paramMiniAppInfo + ", jsSdkVersion=" + paramMiniEnginePackage + ",ret=" + bool1);
+      GameLog.getInstance().i(this.sTAG, "[MiniEng]isGameSatisfy appMinVersion=" + paramMiniAppInfo + ", jsSdkVersion=" + paramMiniEnginePackage + ",ret=" + bool1);
       return bool1;
     }
   }
@@ -91,7 +91,7 @@ public class TritonEngineInitTask
           MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1004, "1");
         }
         long l = System.currentTimeMillis();
-        GameLog.getInstance().i(this.LOG_TAG, "[MiniEng] initEngine");
+        GameLog.getInstance().i(this.sTAG, "[MiniEng] initEngine");
         QMLog.e("[minigame][timecost] ", "[MiniEng] step[initTTEngine] cost time " + (System.currentTimeMillis() - l) + ", includes steps[load so, cache jssdk]");
         MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1015, "1");
         i = 0;
@@ -100,7 +100,7 @@ public class TritonEngineInitTask
       {
         for (;;)
         {
-          GameLog.getInstance().e(this.LOG_TAG, "[MiniEng] TTEngineBuilder create TTEngine failed with exception", localTritonInitException);
+          GameLog.getInstance().e(this.sTAG, "[MiniEng] TTEngineBuilder create TTEngine failed with exception", localTritonInitException);
           int i = 106;
         }
       }
@@ -115,7 +115,7 @@ public class TritonEngineInitTask
     {
       if (this.mEngineLoadResult != -1)
       {
-        GameLog.getInstance().w(this.LOG_TAG, "[MiniEng] engine already loaded! status=" + this.mEngineLoadResult);
+        GameLog.getInstance().w(this.sTAG, "[MiniEng] engine already loaded! status=" + this.mEngineLoadResult);
         return;
       }
       this.mEngineLoadResult = loadEnginePlatform();
@@ -132,7 +132,7 @@ public class TritonEngineInitTask
       MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 1012, "1");
       if (this.mEngineLoadResult != -1)
       {
-        GameLog.getInstance().w(this.LOG_TAG, "[MiniEng] engine already loaded! status=" + this.mEngineLoadResult);
+        GameLog.getInstance().w(this.sTAG, "[MiniEng] engine already loaded! status=" + this.mEngineLoadResult);
         return;
       }
       this.mEngineLoadResult = loadEnginePlatform();
@@ -182,7 +182,7 @@ public class TritonEngineInitTask
   {
     try
     {
-      GameLog.getInstance().i(this.LOG_TAG, "[MiniEng]" + this + " reset ");
+      GameLog.getInstance().i(this.sTAG, "[MiniEng]" + this + " reset ");
       this.mMiniAppInfo = null;
       this.mEngineLoadResult = -1;
       super.reset();
@@ -202,7 +202,7 @@ public class TritonEngineInitTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.task.TritonEngineInitTask
  * JD-Core Version:    0.7.0.1
  */

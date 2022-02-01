@@ -12,12 +12,18 @@ import org.json.JSONObject;
 
 public class QzoneStringMatcher
 {
-  private static final int QzoneStringMatcherLruMapSize = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneRegLruMapSize", 50);
+  private static final int QzoneStringMatcherLruMapSize;
   public static final String TAG = "QzoneStringMatcher";
   private static final long UPDATE_CONFIG_INTERVAL_MS = 180000L;
-  private static long gLastReadConfigTime;
-  private static LRULinkedHashMap<String, Pattern> gPatternCacheMap;
+  private static long gLastReadConfigTime = 0L;
+  private static LRULinkedHashMap<String, Pattern> gPatternCacheMap = null;
   private static String gUrlConfig;
+  
+  static
+  {
+    QzoneStringMatcherLruMapSize = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneRegLruMapSize", 50);
+    gUrlConfig = null;
+  }
   
   private static String getUrlConfig()
   {
@@ -165,7 +171,7 @@ public class QzoneStringMatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.QzoneStringMatcher
  * JD-Core Version:    0.7.0.1
  */

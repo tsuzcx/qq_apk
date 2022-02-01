@@ -14,21 +14,21 @@ public final class mobile_feeds_piece_public
   static Map<String, String> cache_stMapExtendinfo;
   static interest_list cache_uin_info = new interest_list();
   public String attach_info = "";
-  public Map<Integer, String> extendinfo;
-  public int hasmore;
-  public s_cover host_cover;
-  public long host_imbitmap;
+  public Map<Integer, String> extendinfo = null;
+  public int hasmore = 0;
+  public s_cover host_cover = null;
+  public long host_imbitmap = 0L;
   public String hostnick = "";
-  public long iFollowNum;
-  public int iYellowLevel;
-  public int iYellowType;
-  public int is_detail_report;
+  public long iFollowNum = 0L;
+  public int iYellowLevel = 0;
+  public int iYellowType = 0;
+  public int is_detail_report = 0;
   public int network_report = 1;
-  public long newcount;
-  public int no_update;
-  public long req_count;
-  public Map<String, String> stMapExtendinfo;
-  public interest_list uin_info;
+  public long newcount = 0L;
+  public int no_update = 0;
+  public long req_count = 0L;
+  public Map<String, String> stMapExtendinfo = null;
+  public interest_list uin_info = null;
   public String user_sid = "";
   
   static

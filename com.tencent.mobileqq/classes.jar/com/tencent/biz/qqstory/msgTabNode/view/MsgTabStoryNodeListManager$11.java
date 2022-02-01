@@ -2,18 +2,17 @@ package com.tencent.biz.qqstory.msgTabNode.view;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import woo;
 
-public class MsgTabStoryNodeListManager$11
+class MsgTabStoryNodeListManager$11
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$11(woo paramwoo) {}
+  MsgTabStoryNodeListManager$11(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Int == 0)
     {
-      if (woo.a(this.this$0)) {
+      if (MsgTabStoryNodeListManager.a(this.this$0)) {
         this.this$0.jdField_a_of_type_JavaLangRunnable = null;
       }
       return;
@@ -23,7 +22,7 @@ public class MsgTabStoryNodeListManager$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.11
  * JD-Core Version:    0.7.0.1
  */

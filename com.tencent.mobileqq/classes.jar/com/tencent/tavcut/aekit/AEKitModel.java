@@ -10,6 +10,7 @@ public class AEKitModel
   private boolean disable;
   private float effectStrength = 1.0F;
   private float glowAlpha = 0.0F;
+  private boolean lastState;
   private float lutAlpha = 1.0F;
   private String lutPath;
   private long mDuration = 2147483647L;
@@ -42,6 +43,11 @@ public class AEKitModel
   public float getGlowAlpha()
   {
     return this.glowAlpha;
+  }
+  
+  public boolean getLastState()
+  {
+    return this.lastState;
   }
   
   public float getLutAlpha()
@@ -91,6 +97,7 @@ public class AEKitModel
   
   public void setDisable(boolean paramBoolean)
   {
+    this.lastState = this.disable;
     this.disable = paramBoolean;
   }
   
@@ -107,6 +114,11 @@ public class AEKitModel
   public void setGlowAlpha(float paramFloat)
   {
     this.glowAlpha = paramFloat;
+  }
+  
+  public void setLastState(boolean paramBoolean)
+  {
+    this.lastState = paramBoolean;
   }
   
   public void setLutAlpha(float paramFloat)
@@ -141,7 +153,7 @@ public class AEKitModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.aekit.AEKitModel
  * JD-Core Version:    0.7.0.1
  */

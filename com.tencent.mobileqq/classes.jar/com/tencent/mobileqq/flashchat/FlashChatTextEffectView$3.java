@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.flashchat;
 
-import aumi;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 final class FlashChatTextEffectView$3
   implements Runnable
 {
-  FlashChatTextEffectView$3(aumi paramaumi) {}
+  FlashChatTextEffectView$3(FlashChatTextEffectView.MyViewHolder paramMyViewHolder) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ final class FlashChatTextEffectView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatTextEffectView.3
  * JD-Core Version:    0.7.0.1
  */

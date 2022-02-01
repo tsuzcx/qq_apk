@@ -38,10 +38,10 @@ public class HalfScreenRelativelayout
   
   private void a()
   {
-    this.a = ((int)(a(getContext()) / 2.0F) + DisplayUtil.dip2px(getContext(), 56.0F));
+    this.a = ((int)(a(getContext()) / 2.0F) + DisplayUtil.a(getContext(), 56.0F));
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int j = View.MeasureSpec.getMode(paramInt2);
     int i = paramInt2;
@@ -65,7 +65,7 @@ public class HalfScreenRelativelayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.widget.HalfScreenRelativelayout
  * JD-Core Version:    0.7.0.1
  */

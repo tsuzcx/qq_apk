@@ -108,7 +108,7 @@ public class RecyclerView
     return false;
   }
   
-  protected void onConfigurationChanged(Configuration paramConfiguration)
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
     onOrientationChanged();
@@ -254,7 +254,7 @@ public class RecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerView
  * JD-Core Version:    0.7.0.1
  */

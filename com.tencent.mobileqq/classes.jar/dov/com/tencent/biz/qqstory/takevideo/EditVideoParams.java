@@ -4,19 +4,18 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bott;
 
 public class EditVideoParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<EditVideoParams> CREATOR = new bott();
+  public static final Parcelable.Creator<EditVideoParams> CREATOR = new EditVideoParams.1();
   public int a;
   public final Bundle a;
   public EditVideoParams.EditSource a;
   public int b;
   public final int c;
-  public int d;
-  public int e;
+  public int d = 0;
+  public int e = 0;
   public int f = -1;
   
   public EditVideoParams(int paramInt1, int paramInt2, EditVideoParams.EditSource paramEditSource, Bundle paramBundle)
@@ -27,7 +26,7 @@ public class EditVideoParams
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public EditVideoParams(Parcel paramParcel)
+  protected EditVideoParams(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.c = paramParcel.readInt();
@@ -257,7 +256,7 @@ public class EditVideoParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoParams
  * JD-Core Version:    0.7.0.1
  */

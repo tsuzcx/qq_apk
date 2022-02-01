@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import azca;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,10 +15,11 @@ import mqq.os.MqqHandler;
 public class OnlineStatusPanel
   extends RelativeLayout
 {
-  private azca jdField_a_of_type_Azca;
   EmoticonPagerRadioGroup jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup;
-  public OnlineStatusPagerAdapter a;
-  public QQViewPager a;
+  OnlineStatusPagerAdapter jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter;
+  private OnlineStatusPanel.OnlineStatusPanelListener jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$OnlineStatusPanelListener;
+  private OnlineStatusPanelParams jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams;
+  QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   
   public OnlineStatusPanel(Context paramContext)
   {
@@ -38,29 +36,16 @@ public class OnlineStatusPanel
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private int a(int paramInt)
+  private int a(OnlineStatusPanelParams paramOnlineStatusPanelParams)
   {
-    int j = getResources().getDisplayMetrics().widthPixels;
-    int i = j;
-    if (paramInt == 3) {
-      i = j - AIOUtils.dp2px(26.0F, getResources());
-    }
-    return (i - AIOUtils.dp2px(14.0F, getResources()) * 2 - a(paramInt, getResources()) * 3) / 4;
+    return (paramOnlineStatusPanelParams.h - AIOUtils.a(paramOnlineStatusPanelParams.g, getResources()) * 2 - AIOUtils.a(paramOnlineStatusPanelParams.f, getResources()) * (paramOnlineStatusPanelParams.c - 1)) / paramOnlineStatusPanelParams.c;
   }
   
-  private int a(int paramInt1, int paramInt2, int paramInt3)
+  private int a(OnlineStatusPanelParams paramOnlineStatusPanelParams, int paramInt)
   {
-    int i = AIOUtils.dp2px(9.0F, getResources());
-    int j = AIOUtils.dp2px(39.0F, getResources());
-    return i + (paramInt2 * paramInt1 + a(paramInt3, getResources()) * (paramInt1 - 1)) + j;
-  }
-  
-  public static int a(int paramInt, Resources paramResources)
-  {
-    if (paramInt == 3) {}
-    for (paramInt = 5;; paramInt = 9) {
-      return AIOUtils.dp2px(paramInt, paramResources);
-    }
+    int i = AIOUtils.a(paramOnlineStatusPanelParams.d, getResources());
+    int j = AIOUtils.a(paramOnlineStatusPanelParams.e, getResources());
+    return i + (paramOnlineStatusPanelParams.b * paramInt + AIOUtils.a(paramOnlineStatusPanelParams.f, getResources()) * (paramOnlineStatusPanelParams.b - 1)) + j;
   }
   
   private void b()
@@ -83,39 +68,38 @@ public class OnlineStatusPanel
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setVisibility(8);
   }
   
-  public void a()
+  void a()
   {
     ThreadManager.getFileThreadHandler().post(new OnlineStatusPanel.1(this));
   }
   
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  public void a(OnlineStatusPanelParams paramOnlineStatusPanelParams)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131372224));
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter = new OnlineStatusPagerAdapter(BaseApplicationImpl.getContext(), paramInt1, paramInt2, paramBoolean, this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131372526));
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter = new OnlineStatusPagerAdapter(BaseApplicationImpl.getContext(), paramOnlineStatusPanelParams, this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131368404));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131368627));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams = paramOnlineStatusPanelParams;
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.getLayoutParams();
-    if (paramInt2 == 1) {
-      localLayoutParams.bottomMargin = 0;
-    }
+    localLayoutParams.bottomMargin = AIOUtils.a(paramOnlineStatusPanelParams.i, getResources());
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setLayoutParams(localLayoutParams);
     localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getLayoutParams();
-    int i = a(paramInt2);
-    localLayoutParams.height = a(paramInt1, i, paramInt2);
+    int i = a(paramOnlineStatusPanelParams);
+    localLayoutParams.height = a(paramOnlineStatusPanelParams, i);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a(i);
     a();
   }
   
-  public void a(boolean paramBoolean)
+  void a(boolean paramBoolean)
   {
     ThreadManager.getFileThreadHandler().post(new OnlineStatusPanel.2(this, paramBoolean));
   }
   
-  public void setListener(azca paramazca)
+  public void setListener(OnlineStatusPanel.OnlineStatusPanelListener paramOnlineStatusPanelListener)
   {
-    this.jdField_a_of_type_Azca = paramazca;
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$OnlineStatusPanelListener = paramOnlineStatusPanelListener;
   }
 }
 

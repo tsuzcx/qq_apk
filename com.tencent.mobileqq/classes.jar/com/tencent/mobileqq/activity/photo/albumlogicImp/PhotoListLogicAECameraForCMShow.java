@@ -1,0 +1,64 @@
+package com.tencent.mobileqq.activity.photo.albumlogicImp;
+
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.photo.album.PhotoListLogicDefault;
+import dov.com.qq.im.ae.cmshow.AECMShowPhotoPreviewFragment;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+
+public class PhotoListLogicAECameraForCMShow
+  extends PhotoListLogicDefault
+{
+  protected long a;
+  
+  PhotoListLogicAECameraForCMShow(NewPhotoListActivity paramNewPhotoListActivity)
+  {
+    super(paramNewPhotoListActivity);
+  }
+  
+  public void e(LocalMediaInfo paramLocalMediaInfo)
+  {
+    AEBaseDataReporter.a().aE();
+    super.e(paramLocalMediaInfo);
+  }
+  
+  public void onSendBtnClick(View paramView)
+  {
+    AEBaseDataReporter.a().f(System.currentTimeMillis() - this.a);
+    this.a = System.currentTimeMillis();
+    paramView = new Intent();
+    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.mPhotoCommonData.selectedPhotoList);
+    AECMShowPhotoPreviewFragment.a(this.mActivity, paramView);
+  }
+  
+  public void onTitleBtnCancelClick(View paramView)
+  {
+    AEBaseDataReporter.a().aF();
+    AEBaseDataReporter.a().f(System.currentTimeMillis() - this.a);
+    super.onTitleBtnCancelClick(paramView);
+  }
+  
+  public void postInitUI()
+  {
+    this.a = System.currentTimeMillis();
+    AEBaseDataReporter.a().aD();
+    super.postInitUI();
+    ((NewPhotoListActivity)this.mActivity).previewBtn.setVisibility(8);
+  }
+  
+  public void startPhotoPreviewActivity(Intent paramIntent)
+  {
+    AEBaseDataReporter.a().f(System.currentTimeMillis() - this.a);
+    super.startPhotoPreviewActivity(paramIntent);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListLogicAECameraForCMShow
+ * JD-Core Version:    0.7.0.1
+ */

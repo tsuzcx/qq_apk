@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import tbd;
-
-public class ReadInJoyProteusFamilyListViewGroup$6$1
+class ReadInJoyProteusFamilyListViewGroup$6$1
   implements Runnable
 {
-  public ReadInJoyProteusFamilyListViewGroup$6$1(tbd paramtbd) {}
+  ReadInJoyProteusFamilyListViewGroup$6$1(ReadInJoyProteusFamilyListViewGroup.6 param6) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ReadInJoyProteusFamilyListViewGroup$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.6.1
  * JD-Core Version:    0.7.0.1
  */

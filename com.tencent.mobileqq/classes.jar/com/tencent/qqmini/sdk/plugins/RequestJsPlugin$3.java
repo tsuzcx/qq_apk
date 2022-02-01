@@ -21,14 +21,14 @@ class RequestJsPlugin$3
       if (localJSONObject1 == null) {
         localObject = new JSONObject();
       }
-      ((JSONObject)localObject).put("Referer", RequestJsPlugin.access$1900(this.this$0));
+      ((JSONObject)localObject).put("Referer", RequestJsPlugin.access$1000(this.this$0));
       localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
       if (localObject != null)
       {
         ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.3.1(this));
         return;
       }
-      RequestJsPlugin.access$2100(this.this$0, this.val$req, null, "do not support wnsRequest");
+      RequestJsPlugin.access$1200(this.this$0, this.val$req, null, "do not support wnsRequest");
       return;
     }
     catch (Throwable localThrowable)
@@ -39,7 +39,7 @@ class RequestJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RequestJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

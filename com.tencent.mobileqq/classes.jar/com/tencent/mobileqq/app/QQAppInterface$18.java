@@ -1,40 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import baql;
-import bcvr;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.OfflineUtils;
 
 class QQAppInterface$18
-  extends BroadcastReceiver
+  implements Runnable
 {
   QQAppInterface$18(QQAppInterface paramQQAppInterface) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (this.this$0.isReleased) {
-      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
+    AdvertisementVideoPreloadManager localAdvertisementVideoPreloadManager = (AdvertisementVideoPreloadManager)this.this$0.getManager(QQManagerFactory.PUBLIC_ACCOUNT_VIDEO_PRELOAD_MANAGER);
+    if (localAdvertisementVideoPreloadManager != null) {
+      localAdvertisementVideoPreloadManager.a(1);
     }
-    do
-    {
-      int i;
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (!"com.tencent.qzone.cleanunreadcount".equals(paramContext)) {
-          break;
-        }
-        i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
-        paramContext = (bcvr)this.this$0.getManager(QQManagerFactory.QZONE_MANAGER);
-      } while ((paramContext == null) || (i == -1));
-      paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
-      return;
-    } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
-    ((baql)this.this$0.getManager(QQManagerFactory.QZONE_ALBUM_RED_TOUCH)).b();
+    this.this$0.setTalkbackSwitch();
+    QQAppInterface.access$3100(this.this$0);
+    OfflineUtils.b();
   }
 }
 

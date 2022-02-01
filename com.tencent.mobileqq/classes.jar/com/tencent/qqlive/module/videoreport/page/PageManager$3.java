@@ -5,11 +5,11 @@ import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
 class PageManager$3
   implements ListenerMgr.INotifyCallback<PageManager.IPageListener>
 {
-  PageManager$3(PageManager paramPageManager, PageInfo paramPageInfo) {}
+  PageManager$3(PageManager paramPageManager, PageInfo paramPageInfo, int paramInt) {}
   
   public void onNotify(PageManager.IPageListener paramIPageListener)
   {
-    paramIPageListener.onPageUpdate(this.val$pageInfo);
+    paramIPageListener.onPageUpdate(this.val$pageInfo, this.val$invokeFrom);
   }
 }
 

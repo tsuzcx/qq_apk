@@ -2,20 +2,17 @@ package com.tencent.mobileqq.bubble;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.MQLruCache;
-import aqhc;
-import aqhx;
-import aqie;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class BubbleNewAIOAnim$7
+class BubbleNewAIOAnim$7
   implements Runnable
 {
-  public BubbleNewAIOAnim$7(aqhx paramaqhx) {}
+  BubbleNewAIOAnim$7(BubbleNewAIOAnim paramBubbleNewAIOAnim) {}
   
   public void run()
   {
@@ -24,20 +21,20 @@ public class BubbleNewAIOAnim$7
       Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
       if (localIterator.hasNext())
       {
-        aqie localaqie = (aqie)localIterator.next();
-        File localFile = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.this$0.jdField_b_of_type_Int, false), this.this$0.jdField_a_of_type_Aqhc.a);
+        BubbleNewAnimConf localBubbleNewAnimConf = (BubbleNewAnimConf)localIterator.next();
+        File localFile = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.this$0.jdField_b_of_type_Int, false), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleAnimationConfig.a);
         int i = 0;
         label93:
         Object localObject1;
         String str;
-        if (i < localaqie.jdField_b_of_type_Int)
+        if (i < localBubbleNewAnimConf.jdField_b_of_type_Int)
         {
-          localObject1 = localFile.getAbsolutePath() + File.separatorChar + localaqie.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
-          str = localaqie.a + (String)localObject1;
+          localObject1 = localFile.getAbsolutePath() + File.separatorChar + localBubbleNewAnimConf.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
+          str = localBubbleNewAnimConf.a + (String)localObject1;
           if (this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
             break label310;
           }
-          Object localObject3 = BaseApplicationImpl.sImageCache.get(str);
+          Object localObject3 = GlobalImageCache.a.get(str);
           if ((localObject3 == null) || (!(localObject3 instanceof Bitmap))) {
             break label259;
           }
@@ -47,7 +44,7 @@ public class BubbleNewAIOAnim$7
         {
           if (localObject1 != null)
           {
-            BaseApplicationImpl.sImageCache.put(str, localObject1);
+            GlobalImageCache.a.put(str, localObject1);
             this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject1);
           }
           i += 1;

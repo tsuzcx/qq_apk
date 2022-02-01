@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class RequestPushFStatus
   extends JceStruct
 {
-  public byte cStatus;
-  public long lUin;
+  public byte cStatus = 0;
+  public long lUin = 0L;
   public int uClientType = 99;
   
   public RequestPushFStatus() {}

@@ -152,24 +152,7 @@ public class MiniAppInfo
     this.baselibMiniVersion = paramString7;
     this.desc = paramString8;
     this.timestamp = paramLong;
-    if (paramList != null)
-    {
-      this.subpkgs = new ArrayList();
-      paramString1 = paramList.iterator();
-      while (paramString1.hasNext())
-      {
-        paramString2 = (INTERFACE.StSubPkgInfo)paramString1.next();
-        if (paramString2 != null)
-        {
-          paramString3 = new SubPkgInfo();
-          paramString3.subPkgName = paramString2.subPkgName.get();
-          paramString3.downloadUrl = paramString2.dowLoadUrl.get();
-          paramString3.independent = paramString2.independent.get();
-          paramString3.fileSize = paramString2.file_size.get();
-          this.subpkgs.add(paramString3);
-        }
-      }
-    }
+    parseSubPkgInfo(paramList);
     if (paramStFirstPage != null)
     {
       this.firstPage = new FirstPageInfo();
@@ -177,12 +160,7 @@ public class MiniAppInfo
       this.firstPage.subPkgName = paramStFirstPage.subPkgName.get();
     }
     parseApiRightController(paramStApiRightController);
-    if ((paramStMDebugInfo != null) && (!TextUtils.isEmpty(paramStMDebugInfo.roomId.get())) && (!TextUtils.isEmpty(paramStMDebugInfo.wsUrl.get())))
-    {
-      this.debugInfo = new DebugInfo();
-      this.debugInfo.roomId = paramStMDebugInfo.roomId.get();
-      this.debugInfo.wsUrl = paramStMDebugInfo.wsUrl.get();
-    }
+    parseDebugInfo(paramStMDebugInfo);
     parseDomainConfig(paramStDomainConfig);
     if (paramStMainPageExtInfo != null) {
       this.fileSize = paramStMainPageExtInfo.file_size.get();
@@ -510,85 +488,15 @@ public class MiniAppInfo
   
   public static INTERFACE.StDomainConfig getDomain(JSONObject paramJSONObject)
   {
-    int j = 0;
     INTERFACE.StDomainConfig localStDomainConfig = new INTERFACE.StDomainConfig();
     if (paramJSONObject.optJSONObject("domain") != null)
     {
-      ArrayList localArrayList;
-      JSONArray localJSONArray;
-      int i;
-      if (paramJSONObject.optJSONObject("domain").optJSONArray("requestDomain") != null)
-      {
-        localArrayList = new ArrayList();
-        localJSONArray = paramJSONObject.optJSONObject("domain").optJSONArray("requestDomain");
-        i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList.add(localJSONArray.optString(i));
-          i += 1;
-        }
-        localStDomainConfig.requestDomain.set(localArrayList);
-      }
-      if (paramJSONObject.optJSONObject("domain").optJSONArray("socketDomain") != null)
-      {
-        localArrayList = new ArrayList();
-        localJSONArray = paramJSONObject.optJSONObject("domain").optJSONArray("socketDomain");
-        i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList.add(localJSONArray.optString(i));
-          i += 1;
-        }
-        localStDomainConfig.socketDomain.set(localArrayList);
-      }
-      if (paramJSONObject.optJSONObject("domain").optJSONArray("uploadFileDomain") != null)
-      {
-        localArrayList = new ArrayList();
-        localJSONArray = paramJSONObject.optJSONObject("domain").optJSONArray("uploadFileDomain");
-        i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList.add(localJSONArray.optString(i));
-          i += 1;
-        }
-        localStDomainConfig.uploadFileDomain.set(localArrayList);
-      }
-      if (paramJSONObject.optJSONObject("domain").optJSONArray("downloadFileDomain") != null)
-      {
-        localArrayList = new ArrayList();
-        localJSONArray = paramJSONObject.optJSONObject("domain").optJSONArray("downloadFileDomain");
-        i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList.add(localJSONArray.optString(i));
-          i += 1;
-        }
-        localStDomainConfig.downloadFileDomain.set(localArrayList);
-      }
-      if (paramJSONObject.optJSONObject("domain").optJSONArray("businessDomain") != null)
-      {
-        localArrayList = new ArrayList();
-        localJSONArray = paramJSONObject.optJSONObject("domain").optJSONArray("businessDomain");
-        i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList.add(localJSONArray.optString(i));
-          i += 1;
-        }
-        localStDomainConfig.businessDomain.set(localArrayList);
-      }
-      if (paramJSONObject.optJSONObject("domain").optJSONArray("udpIpList") != null)
-      {
-        localArrayList = new ArrayList();
-        paramJSONObject = paramJSONObject.optJSONObject("domain").optJSONArray("udpIpList");
-        i = j;
-        while (i < paramJSONObject.length())
-        {
-          localArrayList.add(paramJSONObject.optString(i));
-          i += 1;
-        }
-        localStDomainConfig.udpIpList.set(localArrayList);
-      }
+      setRequestDomain(paramJSONObject, localStDomainConfig);
+      setSocketDomain(paramJSONObject, localStDomainConfig);
+      setUploadFileDomain(paramJSONObject, localStDomainConfig);
+      setDownloadFileDomain(paramJSONObject, localStDomainConfig);
+      setBusinessDomain(paramJSONObject, localStDomainConfig);
+      setUdpIpList(paramJSONObject, localStDomainConfig);
     }
     return localStDomainConfig;
   }
@@ -947,6 +855,16 @@ public class MiniAppInfo
     }
   }
   
+  private void parseDebugInfo(INTERFACE.StMDebugInfo paramStMDebugInfo)
+  {
+    if ((paramStMDebugInfo != null) && (!TextUtils.isEmpty(paramStMDebugInfo.roomId.get())) && (!TextUtils.isEmpty(paramStMDebugInfo.wsUrl.get())))
+    {
+      this.debugInfo = new DebugInfo();
+      this.debugInfo.roomId = paramStMDebugInfo.roomId.get();
+      this.debugInfo.wsUrl = paramStMDebugInfo.wsUrl.get();
+    }
+  }
+  
   private void parseDomainConfig(INTERFACE.StDomainConfig paramStDomainConfig)
   {
     if (paramStDomainConfig != null)
@@ -1068,6 +986,28 @@ public class MiniAppInfo
     return new MiniGamePluginInfo(paramJSONObject.optString("pluginName"), paramJSONObject.optString("pluginId"), paramJSONObject.optString("version"), paramJSONObject.optString("url"), paramJSONObject.optInt("fileSize"));
   }
   
+  private void parseSubPkgInfo(List<INTERFACE.StSubPkgInfo> paramList)
+  {
+    if (paramList != null)
+    {
+      this.subpkgs = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        INTERFACE.StSubPkgInfo localStSubPkgInfo = (INTERFACE.StSubPkgInfo)paramList.next();
+        if (localStSubPkgInfo != null)
+        {
+          SubPkgInfo localSubPkgInfo = new SubPkgInfo();
+          localSubPkgInfo.subPkgName = localStSubPkgInfo.subPkgName.get();
+          localSubPkgInfo.downloadUrl = localStSubPkgInfo.dowLoadUrl.get();
+          localSubPkgInfo.independent = localStSubPkgInfo.independent.get();
+          localSubPkgInfo.fileSize = localStSubPkgInfo.file_size.get();
+          this.subpkgs.add(localSubPkgInfo);
+        }
+      }
+    }
+  }
+  
   private static List<SubPkgInfo> parseSubpkgs(JSONObject paramJSONObject)
   {
     ArrayList localArrayList = new ArrayList();
@@ -1174,6 +1114,102 @@ public class MiniAppInfo
   
   public static void saveMiniAppShowInfoEntity(MiniAppInfo paramMiniAppInfo) {}
   
+  private static void setBusinessDomain(JSONObject paramJSONObject, INTERFACE.StDomainConfig paramStDomainConfig)
+  {
+    if (paramJSONObject.optJSONObject("domain").optJSONArray("businessDomain") != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramJSONObject = paramJSONObject.optJSONObject("domain").optJSONArray("businessDomain");
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        localArrayList.add(paramJSONObject.optString(i));
+        i += 1;
+      }
+      paramStDomainConfig.businessDomain.set(localArrayList);
+    }
+  }
+  
+  private static void setDownloadFileDomain(JSONObject paramJSONObject, INTERFACE.StDomainConfig paramStDomainConfig)
+  {
+    if (paramJSONObject.optJSONObject("domain").optJSONArray("downloadFileDomain") != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramJSONObject = paramJSONObject.optJSONObject("domain").optJSONArray("downloadFileDomain");
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        localArrayList.add(paramJSONObject.optString(i));
+        i += 1;
+      }
+      paramStDomainConfig.downloadFileDomain.set(localArrayList);
+    }
+  }
+  
+  private static void setRequestDomain(JSONObject paramJSONObject, INTERFACE.StDomainConfig paramStDomainConfig)
+  {
+    if (paramJSONObject.optJSONObject("domain").optJSONArray("requestDomain") != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramJSONObject = paramJSONObject.optJSONObject("domain").optJSONArray("requestDomain");
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        localArrayList.add(paramJSONObject.optString(i));
+        i += 1;
+      }
+      paramStDomainConfig.requestDomain.set(localArrayList);
+    }
+  }
+  
+  private static void setSocketDomain(JSONObject paramJSONObject, INTERFACE.StDomainConfig paramStDomainConfig)
+  {
+    if (paramJSONObject.optJSONObject("domain").optJSONArray("socketDomain") != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramJSONObject = paramJSONObject.optJSONObject("domain").optJSONArray("socketDomain");
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        localArrayList.add(paramJSONObject.optString(i));
+        i += 1;
+      }
+      paramStDomainConfig.socketDomain.set(localArrayList);
+    }
+  }
+  
+  private static void setUdpIpList(JSONObject paramJSONObject, INTERFACE.StDomainConfig paramStDomainConfig)
+  {
+    if (paramJSONObject.optJSONObject("domain").optJSONArray("udpIpList") != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramJSONObject = paramJSONObject.optJSONObject("domain").optJSONArray("udpIpList");
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        localArrayList.add(paramJSONObject.optString(i));
+        i += 1;
+      }
+      paramStDomainConfig.udpIpList.set(localArrayList);
+    }
+  }
+  
+  private static void setUploadFileDomain(JSONObject paramJSONObject, INTERFACE.StDomainConfig paramStDomainConfig)
+  {
+    if (paramJSONObject.optJSONObject("domain").optJSONArray("uploadFileDomain") != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramJSONObject = paramJSONObject.optJSONObject("domain").optJSONArray("uploadFileDomain");
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        localArrayList.add(paramJSONObject.optString(i));
+        i += 1;
+      }
+      paramStDomainConfig.uploadFileDomain.set(localArrayList);
+    }
+  }
+  
   public boolean canDebug()
   {
     return (this.debugInfo != null) && (!TextUtils.isEmpty(this.debugInfo.roomId)) && (!TextUtils.isEmpty(this.debugInfo.wsUrl));
@@ -1276,6 +1312,11 @@ public class MiniAppInfo
     return isAppStoreMiniApp();
   }
   
+  public boolean isStartFromAppId()
+  {
+    return (this.launchParam.isFakeAppInfo) && (TextUtils.isEmpty(this.link)) && (!TextUtils.isEmpty(this.appId));
+  }
+  
   public void setEngineType(int paramInt)
   {
     this.engineType = paramInt;
@@ -1348,7 +1389,7 @@ public class MiniAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.MiniAppInfo
  * JD-Core Version:    0.7.0.1
  */

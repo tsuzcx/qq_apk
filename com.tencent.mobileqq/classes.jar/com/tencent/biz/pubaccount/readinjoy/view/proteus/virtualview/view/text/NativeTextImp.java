@@ -81,7 +81,7 @@ public class NativeTextImp
     measure(paramInt1, paramInt2);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.mBackgroundColor != 0)
     {
@@ -108,7 +108,7 @@ public class NativeTextImp
     }
   }
   
-  protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
+  public void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
     if (this.mEnableMarquee != null)
     {
@@ -118,11 +118,13 @@ public class NativeTextImp
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.truncateAttr != null) {
+    if (this.truncateAttr != null)
+    {
       RichTextUtils.addEllipsis2Text(this, this.truncateAttr);
+      RichTextUtils.adjustImageSpan(this, this.truncateAttr);
     }
   }
   
@@ -204,7 +206,7 @@ public class NativeTextImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp
  * JD-Core Version:    0.7.0.1
  */

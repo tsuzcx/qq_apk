@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.filemanageraux.widget;
 
-import aulr;
-import becb;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.teamwork.TeamWorkHandler;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public class DocCooperationBanner$2
+class DocCooperationBanner$2
   implements Runnable
 {
-  public DocCooperationBanner$2(aulr paramaulr, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString1, boolean paramBoolean, String paramString2) {}
+  DocCooperationBanner$2(DocCooperationBanner paramDocCooperationBanner, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
@@ -29,7 +28,7 @@ public class DocCooperationBanner$2
     label89:
     for (int i = 2;; i = 1)
     {
-      localObject = becb.a(str2, str3, i, (String)localObject, str1, this.b);
+      localObject = TeamWorkHandler.a(str2, str3, i, (String)localObject, str1, this.b);
       if (localObject != null) {
         QLog.i("DocCooperationBanner", 2, ((JSONObject)localObject).toString());
       }
@@ -41,7 +40,7 @@ public class DocCooperationBanner$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.widget.DocCooperationBanner.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,28 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import android.graphics.Bitmap;
-import bnrh;
-import bnsw;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
-import java.util.List;
+import com.microrapid.opencv.ImageMainColorData;
+import java.util.Comparator;
 
 class AEEditorImageEditFragment$13
-  implements Runnable
+  implements Comparator<ImageMainColorData>
 {
-  AEEditorImageEditFragment$13(AEEditorImageEditFragment paramAEEditorImageEditFragment, int paramInt1, int paramInt2, AEEditorFilterBean paramAEEditorFilterBean) {}
+  AEEditorImageEditFragment$13(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public void run()
+  public int a(ImageMainColorData paramImageMainColorData1, ImageMainColorData paramImageMainColorData2)
   {
-    Bitmap localBitmap = AEEditorImageEditFragment.a(this.this$0, (String)AEEditorImageEditFragment.b(this.this$0).get(this.jdField_a_of_type_Int), ((bnsw)AEEditorImageEditFragment.a(this.this$0).get(this.jdField_a_of_type_Int)).a);
-    if (localBitmap == null)
-    {
-      bnrh.d("AEEditorImageEditFragment", "bitmap null error.");
-      return;
+    int i = 0;
+    if (paramImageMainColorData1.area > paramImageMainColorData2.area) {
+      i = -1;
     }
-    AEEditorImageEditFragment.a(this.this$0, localBitmap, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
+    while (paramImageMainColorData1.area >= paramImageMainColorData2.area) {
+      return i;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.13
  * JD-Core Version:    0.7.0.1
  */

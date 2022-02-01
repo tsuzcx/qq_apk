@@ -11,10 +11,10 @@ public class FlutterFragment$NewEngineFragmentBuilder
   private String dartEntrypoint = "main";
   private final Class<? extends FlutterFragment> fragmentClass;
   private String initialRoute = "/";
-  private FlutterView.RenderMode renderMode = FlutterView.RenderMode.surface;
+  private RenderMode renderMode = RenderMode.surface;
   private FlutterShellArgs shellArgs = null;
   private boolean shouldAttachEngineToActivity = true;
-  private FlutterView.TransparencyMode transparencyMode = FlutterView.TransparencyMode.transparent;
+  private TransparencyMode transparencyMode = TransparencyMode.transparent;
   
   public FlutterFragment$NewEngineFragmentBuilder()
   {
@@ -73,19 +73,19 @@ public class FlutterFragment$NewEngineFragmentBuilder
     if (this.renderMode != null)
     {
       localObject = this.renderMode;
-      localBundle.putString("flutterview_render_mode", ((FlutterView.RenderMode)localObject).name());
+      localBundle.putString("flutterview_render_mode", ((RenderMode)localObject).name());
       if (this.transparencyMode == null) {
         break label128;
       }
     }
     label128:
-    for (Object localObject = this.transparencyMode;; localObject = FlutterView.TransparencyMode.transparent)
+    for (Object localObject = this.transparencyMode;; localObject = TransparencyMode.transparent)
     {
-      localBundle.putString("flutterview_transparency_mode", ((FlutterView.TransparencyMode)localObject).name());
+      localBundle.putString("flutterview_transparency_mode", ((TransparencyMode)localObject).name());
       localBundle.putBoolean("should_attach_engine_to_activity", this.shouldAttachEngineToActivity);
       localBundle.putBoolean("destroy_engine_with_fragment", true);
       return localBundle;
-      localObject = FlutterView.RenderMode.surface;
+      localObject = RenderMode.surface;
       break;
     }
   }
@@ -112,7 +112,7 @@ public class FlutterFragment$NewEngineFragmentBuilder
   }
   
   @NonNull
-  public NewEngineFragmentBuilder renderMode(@NonNull FlutterView.RenderMode paramRenderMode)
+  public NewEngineFragmentBuilder renderMode(@NonNull RenderMode paramRenderMode)
   {
     this.renderMode = paramRenderMode;
     return this;
@@ -126,7 +126,7 @@ public class FlutterFragment$NewEngineFragmentBuilder
   }
   
   @NonNull
-  public NewEngineFragmentBuilder transparencyMode(@NonNull FlutterView.TransparencyMode paramTransparencyMode)
+  public NewEngineFragmentBuilder transparencyMode(@NonNull TransparencyMode paramTransparencyMode)
   {
     this.transparencyMode = paramTransparencyMode;
     return this;
@@ -134,7 +134,7 @@ public class FlutterFragment$NewEngineFragmentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragment.NewEngineFragmentBuilder
  * JD-Core Version:    0.7.0.1
  */

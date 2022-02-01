@@ -1,37 +1,30 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akrq;
-import android.text.TextUtils;
-import bnkt;
-import bnky;
+import com.tencent.mobileqq.qwallet.preload.IPreloadService.PathResult;
 import com.tencent.qphone.base.util.QLog;
 
-public class RedPacketEmojiFragment$3$1
+class RedPacketEmojiFragment$3$1
   implements Runnable
 {
-  public RedPacketEmojiFragment$3$1(akrq paramakrq, boolean paramBoolean, bnkt parambnkt) {}
+  RedPacketEmojiFragment$3$1(RedPacketEmojiFragment.3 param3, int paramInt, IPreloadService.PathResult paramPathResult) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bnkt != null))
-    {
-      String str = bnky.a(this.jdField_a_of_type_Bnkt);
-      if (QLog.isColorLevel()) {
-        QLog.i("RedPacketEmojiFragment", 2, "[doLoading] onAEDownloadFinish unzipPath=" + str);
-      }
-      if (!TextUtils.isEmpty(str))
-      {
-        this.jdField_a_of_type_Akrq.a.c = str;
-        this.jdField_a_of_type_Akrq.a.a();
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("RedPacketEmojiFragment", 2, "face config doLoading result:" + this.jdField_a_of_type_Int + ",pathres=" + this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$PathResult);
     }
-    this.jdField_a_of_type_Akrq.a.b();
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketEmojiFragment$3.a.b = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$PathResult.filePath;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketEmojiFragment$3.a.a();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketEmojiFragment$3.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

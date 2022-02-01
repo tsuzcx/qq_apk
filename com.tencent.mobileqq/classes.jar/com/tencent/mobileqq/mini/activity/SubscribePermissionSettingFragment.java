@@ -4,7 +4,6 @@ import NS_MINI_INTERFACE.INTERFACE.StExampleDetail;
 import NS_MINI_INTERFACE.INTERFACE.StGetAuthListRsp;
 import NS_MINI_INTERFACE.INTERFACE.StSubscribeMessage;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import aeow;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,9 +17,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import anvx;
-import bisl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.app.AuthorizeCenter;
@@ -34,8 +33,8 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -55,8 +54,8 @@ public class SubscribePermissionSettingFragment
   private RecyclerView.LayoutManager layoutManager;
   private MiniAppInterface miniAppInterface;
   private final View.OnClickListener onClickListener = new SubscribePermissionSettingFragment.1(this);
-  private bisl qqProgressDialog;
-  private List<SubscribeItemModel> subscribeItemList;
+  private QQProgressDialog qqProgressDialog;
+  private List<SubscribeItemModel> subscribeItemList = null;
   private RecyclerView subscribeRecyclerView;
   
   private void dismissProgressDialog()
@@ -167,12 +166,12 @@ public class SubscribePermissionSettingFragment
     {
       if (((List)localObject).size() > 0)
       {
-        localArrayList1.add(getTitleSubscribeItemModel(anvx.a(2131693987)));
+        localArrayList1.add(getTitleSubscribeItemModel(HardCodeUtil.a(2131694189)));
         localArrayList1.addAll((Collection)localObject);
       }
       if (localArrayList2.size() > 0)
       {
-        localArrayList1.add(getTitleSubscribeItemModel(anvx.a(2131693985)));
+        localArrayList1.add(getTitleSubscribeItemModel(HardCodeUtil.a(2131694187)));
         localArrayList1.addAll(localArrayList2);
       }
       if (localArrayList3.size() > 0)
@@ -190,7 +189,7 @@ public class SubscribePermissionSettingFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("EXTRA_APP_ID", paramString);
-    aeow.a(paramContext, localIntent, PublicFragmentActivityForMini.class, SubscribePermissionSettingFragment.class);
+    PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicFragmentActivityForMini.class, SubscribePermissionSettingFragment.class);
   }
   
   private void onLongTermSubscribeChecked(int paramInt, boolean paramBoolean, SubscribeItemModel paramSubscribeItemModel)
@@ -241,14 +240,13 @@ public class SubscribePermissionSettingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559454, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559521, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
       paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
     }
     paramLayoutInflater.setBackgroundColor(Color.parseColor("#EFEFF4"));
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -273,12 +271,12 @@ public class SubscribePermissionSettingFragment
       getActivity().finish();
       return;
     }
-    paramBundle = (TextView)paramView.findViewById(2131369231);
-    TextView localTextView = (TextView)paramView.findViewById(2131369278);
-    paramBundle.setText(anvx.a(2131707381));
-    localTextView.setText(anvx.a(2131707395));
+    paramBundle = (TextView)paramView.findViewById(2131369487);
+    TextView localTextView = (TextView)paramView.findViewById(2131369534);
+    paramBundle.setText(HardCodeUtil.a(2131707908));
+    localTextView.setText(HardCodeUtil.a(2131707922));
     paramBundle.setOnClickListener(this.onClickListener);
-    this.subscribeRecyclerView = ((RecyclerView)paramView.findViewById(2131378258));
+    this.subscribeRecyclerView = ((RecyclerView)paramView.findViewById(2131378684));
     this.authorizeCenter = this.miniAppInterface.getAuthorizeCenter(this.appId);
     if (this.authorizeCenter == null)
     {

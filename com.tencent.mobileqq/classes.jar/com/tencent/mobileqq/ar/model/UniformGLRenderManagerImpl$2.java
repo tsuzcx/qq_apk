@@ -1,41 +1,40 @@
 package com.tencent.mobileqq.ar.model;
 
-import aped;
-import apeh;
-import apek;
-import appa;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderResourceInfo;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenerArumentManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class UniformGLRenderManagerImpl$2
+class UniformGLRenderManagerImpl$2
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$2(appa paramappa, aped paramaped, apeh paramapeh) {}
+  UniformGLRenderManagerImpl$2(UniformGLRenderManagerImpl paramUniformGLRenderManagerImpl, ARBaseRender paramARBaseRender, ARRenderResourceInfo paramARRenderResourceInfo) {}
   
   public void run()
   {
-    aped localaped = this.jdField_a_of_type_Aped;
-    appa localappa = this.this$0;
-    int i = appa.jdField_a_of_type_Int;
-    localappa = this.this$0;
-    localaped.a(i, appa.b);
-    localaped = this.this$0.jdField_a_of_type_Aped;
-    this.this$0.jdField_a_of_type_Aped = this.jdField_a_of_type_Aped;
+    ARBaseRender localARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
+    UniformGLRenderManagerImpl localUniformGLRenderManagerImpl = this.this$0;
+    int i = UniformGLRenderManagerImpl.jdField_a_of_type_Int;
+    localUniformGLRenderManagerImpl = this.this$0;
+    localARBaseRender.a(i, UniformGLRenderManagerImpl.b);
+    localARBaseRender = this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
+    this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
     if (QLog.isColorLevel()) {
       QLog.d("HSRender", 2, "onARStateChanged, queueEvent");
     }
-    if ((localaped != null) && (localaped != this.this$0.jdField_a_of_type_Aped)) {
-      localaped.f();
+    if ((localARBaseRender != null) && (localARBaseRender != this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
+      localARBaseRender.f();
     }
-    if (this.this$0.jdField_a_of_type_Aped == null) {
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender == null) {
       return;
     }
-    if ((this.jdField_a_of_type_Apeh.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_Apeh.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Apeh.jdField_a_of_type_Long == 2048L))) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2048L))) {}
     for (boolean bool = true;; bool = false)
     {
-      this.this$0.jdField_a_of_type_Apek.a();
-      this.this$0.jdField_a_of_type_Apek.a(bool, this.jdField_a_of_type_Apeh);
-      this.this$0.jdField_a_of_type_Aped.c();
-      this.this$0.jdField_a_of_type_Aped.d();
+      this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a();
+      this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a(bool, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.c();
+      this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
       return;
     }
   }

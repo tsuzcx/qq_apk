@@ -2,13 +2,12 @@ package com.tencent.mobileqq.avatar.dynamicavatar;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aqeh;
 import com.tencent.common.app.BaseApplicationImpl;
 
-public class DynamicAvatarDownloadManager$2
+class DynamicAvatarDownloadManager$2
   implements Runnable
 {
-  public DynamicAvatarDownloadManager$2(aqeh paramaqeh, long paramLong) {}
+  DynamicAvatarDownloadManager$2(DynamicAvatarDownloadManager paramDynamicAvatarDownloadManager, long paramLong) {}
   
   public void run()
   {

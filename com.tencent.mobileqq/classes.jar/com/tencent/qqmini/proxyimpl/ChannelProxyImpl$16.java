@@ -1,16 +1,15 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.graphics.drawable.Drawable;
-import bknl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
 
-public class ChannelProxyImpl$16
+class ChannelProxyImpl$16
   implements Runnable
 {
-  public ChannelProxyImpl$16(bknl parambknl, URLDrawable paramURLDrawable) {}
+  ChannelProxyImpl$16(ChannelProxyImpl paramChannelProxyImpl, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

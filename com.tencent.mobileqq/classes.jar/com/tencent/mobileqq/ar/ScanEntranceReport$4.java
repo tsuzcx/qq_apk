@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.ar;
 
-import apho;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public class ScanEntranceReport$4
+class ScanEntranceReport$4
   implements Runnable
 {
-  public ScanEntranceReport$4(apho paramapho, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4) {}
+  ScanEntranceReport$4(ScanEntranceReport paramScanEntranceReport, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4) {}
   
   public void run()
   {
@@ -23,7 +22,7 @@ public class ScanEntranceReport$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanEntranceReport.4
  * JD-Core Version:    0.7.0.1
  */

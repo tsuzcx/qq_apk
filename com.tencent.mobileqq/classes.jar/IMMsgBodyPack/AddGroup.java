@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class AddGroup
   extends JceStruct
 {
-  public long dwGroupID;
-  public long dwSortID;
+  public long dwGroupID = 0L;
+  public long dwSortID = 0L;
   public String strGroupName = "";
   
   public AddGroup() {}

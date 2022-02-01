@@ -68,7 +68,7 @@ public class AIOPhotoImageDownloader
     }
     catch (Exception paramURLDrawableHandler)
     {
-      paramDownloadParams = getExceptionMessage(paramURLDrawableHandler);
+      paramDownloadParams = BaseTransProcessor.getExceptionMessage(paramURLDrawableHandler);
       if (paramDownloadParams != null)
       {
         paramFile = paramDownloadParams;

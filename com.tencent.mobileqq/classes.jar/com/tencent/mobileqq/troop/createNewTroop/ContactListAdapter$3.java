@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import bfdm;
-
-public class ContactListAdapter$3
+class ContactListAdapter$3
   implements Runnable
 {
-  public ContactListAdapter$3(bfdm parambfdm) {}
+  ContactListAdapter$3(ContactListAdapter paramContactListAdapter) {}
   
   public void run()
   {

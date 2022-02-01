@@ -1,37 +1,123 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.viola.utils.ViolaUtils;
-import pkh;
+import com.tencent.biz.pubaccount.readinjoy.viola.adapter.ViolaReportDelegate;
+import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
+import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
+import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
+import com.tencent.open.business.base.Constants;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.core.ViolaEnvironment;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ViolaBaseView$19
-  implements Runnable
+  implements HttpCgiAsyncTask.Callback
 {
-  ViolaBaseView$19(ViolaBaseView paramViolaBaseView) {}
+  ViolaBaseView$19(ViolaBaseView paramViolaBaseView, boolean paramBoolean) {}
   
-  public void run()
+  public void a(Exception paramException)
   {
-    if (TextUtils.isEmpty(ViolaBaseView.b(this.this$0))) {
-      return;
-    }
-    Object localObject = FileUtils.readObject("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pkh.a());
-    if (localObject == null) {
-      FileUtils.writeObject("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pkh.a(), ViolaBaseView.b(this.this$0));
+    String str2;
+    String str1;
+    if ((paramException instanceof ConnectTimeoutException))
+    {
+      str2 = Constants.e;
+      str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_TIMEOUT;
     }
     for (;;)
     {
-      ViolaBaseView.c(this.this$0, null);
+      if (QLog.isColorLevel()) {
+        QLog.d(ViolaBaseView.a(), 2, "viola request cgi has error:" + str2 + ",e:" + paramException.getMessage());
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, str1);
+      }
+      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
       return;
-      if (((localObject instanceof String)) && (!localObject.equals(ViolaBaseView.b(this.this$0)))) {
-        FileUtils.writeObject("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pkh.a(), ViolaBaseView.b(this.this$0));
+      if ((paramException instanceof SocketTimeoutException))
+      {
+        str2 = Constants.f;
+        str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_TIMEOUT;
+      }
+      else if ((paramException instanceof MalformedURLException))
+      {
+        str2 = "访问url有误!";
+        str1 = ViolaEnvironment.CHANGE_ERROR_URL;
+      }
+      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
+      {
+        str2 = "Http返回码异常!";
+        str1 = ViolaEnvironment.CHANGE_ERROR_HTTP_CODE;
+      }
+      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
+      {
+        str2 = Constants.g;
+        str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_UNAVALIABLE;
+      }
+      else if ((paramException instanceof JSONException))
+      {
+        str2 = Constants.b;
+        str1 = ViolaEnvironment.CHANGE_ERROR_DATA;
+      }
+      else if ((paramException instanceof IOException))
+      {
+        str2 = Constants.a;
+        str1 = ViolaEnvironment.CHANGE_ERROR_IO;
+      }
+      else
+      {
+        str2 = Constants.d;
+        str1 = ViolaEnvironment.CHANGE_ERROR_UNKNOW;
+      }
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ViolaBaseView.a(), 2, "change cgi result:" + paramJSONObject.toString());
+    }
+    try
+    {
+      if ((paramJSONObject.getInt("retCode") == 0) && (paramJSONObject.getString("retMsg").equals("success")) && (!TextUtils.isEmpty(paramJSONObject.getJSONObject("retObj").getString("fileUrl"))))
+      {
+        ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, paramJSONObject.getJSONObject("retObj").getString("fileUrl"));
+        if (this.jdField_a_of_type_Boolean) {
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_END);
+        }
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+        ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+        return;
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_ERROR_DATA);
+      }
+      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_ERROR_UNKNOW);
+      }
+      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      if (QLog.isColorLevel()) {
+        QLog.e(ViolaBaseView.a(), 2, "change cgi exception:" + paramJSONObject.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.19
  * JD-Core Version:    0.7.0.1
  */

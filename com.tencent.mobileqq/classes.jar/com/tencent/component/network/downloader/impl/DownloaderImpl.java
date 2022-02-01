@@ -924,9 +924,9 @@ public class DownloaderImpl
     this.mPaused = true;
   }
   
-  public void preConnectHost(ArrayList<String> paramArrayList)
+  public void preConnectHost(ArrayList<String> paramArrayList, String paramString)
   {
-    PreConnectManager.connectHost(obtainHttp2Client(), paramArrayList);
+    PreConnectManager.connectHost(obtainHttp2Client(), paramArrayList, paramString);
   }
   
   public String prepareRequestUrl(String paramString)
@@ -955,7 +955,7 @@ public class DownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.DownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,14 @@ public final class mobile_host_hb_info_rsp
   extends JceStruct
 {
   static callback_info cache_hb_info = new callback_info();
-  public int auth_res;
-  public long channel;
+  public int auth_res = 0;
+  public long channel = 0L;
   public String encryp_key = "";
   public String err_msg = "";
   public String feeds_id = "";
   public boolean has_available = true;
   public String hb_id = "";
-  public callback_info hb_info;
+  public callback_info hb_info = null;
   
   public mobile_host_hb_info_rsp() {}
   

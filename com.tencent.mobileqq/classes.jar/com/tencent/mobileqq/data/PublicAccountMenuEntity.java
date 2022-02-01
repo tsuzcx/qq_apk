@@ -8,9 +8,9 @@ import com.tencent.mobileqq.persistence.unique;
 public class PublicAccountMenuEntity
   extends Entity
 {
-  public byte[] data;
-  public long savedDateTime;
-  public int seqno;
+  public byte[] data = null;
+  public long savedDateTime = 0L;
+  public int seqno = 0;
   @unique
   public String uin;
   
@@ -26,12 +26,10 @@ public class PublicAccountMenuEntity
     this.uin = paramString;
     this.data = paramGetPublicAccountMenuResponse.toByteArray();
     this.savedDateTime = paramLong;
-    if (paramGetPublicAccountMenuResponse.seqno.has()) {}
-    for (int i = paramGetPublicAccountMenuResponse.seqno.get();; i = 0)
-    {
-      this.seqno = i;
-      return;
+    if (paramGetPublicAccountMenuResponse.seqno.has()) {
+      i = paramGetPublicAccountMenuResponse.seqno.get();
     }
+    this.seqno = i;
   }
   
   public void clone(PublicAccountMenuEntity paramPublicAccountMenuEntity)
@@ -44,7 +42,7 @@ public class PublicAccountMenuEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PublicAccountMenuEntity
  * JD-Core Version:    0.7.0.1
  */

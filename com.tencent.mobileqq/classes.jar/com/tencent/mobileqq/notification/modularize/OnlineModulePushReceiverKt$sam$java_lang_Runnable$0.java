@@ -4,10 +4,10 @@ import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 
 @Metadata(bv={1, 0, 3}, k=3, mv={1, 1, 16})
-public final class OnlineModulePushReceiverKt$sam$java_lang_Runnable$0
+final class OnlineModulePushReceiverKt$sam$java_lang_Runnable$0
   implements Runnable
 {
-  public OnlineModulePushReceiverKt$sam$java_lang_Runnable$0(Function0 paramFunction0)
+  OnlineModulePushReceiverKt$sam$java_lang_Runnable$0(Function0 paramFunction0)
   {
     this.a = paramFunction0;
   }

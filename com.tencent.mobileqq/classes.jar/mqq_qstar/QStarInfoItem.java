@@ -8,11 +8,11 @@ public final class QStarInfoItem
   extends JceStruct
 {
   public String headurl = "";
-  public int level;
+  public int level = 0;
   public String levelurl = "";
   public String name = "";
-  public long starid;
-  public int totalexp;
+  public long starid = 0L;
+  public int totalexp = 0;
   
   public QStarInfoItem() {}
   
@@ -54,7 +54,7 @@ public final class QStarInfoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     mqq_qstar.QStarInfoItem
  * JD-Core Version:    0.7.0.1
  */

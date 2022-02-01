@@ -12,17 +12,14 @@ import android.view.ViewParent;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import androidx.annotation.MainThread;
-import boey;
-import boez;
-import bofa;
 
 public class TimelineView
   extends RelativeLayout
 {
   private View jdField_a_of_type_AndroidViewView;
   protected ViewGroup a;
-  private boey jdField_a_of_type_Boey;
   protected SliderView a;
+  private TimelineListener jdField_a_of_type_DovComQqImAeeditorViewTimelineTimelineListener;
   private View[] jdField_a_of_type_ArrayOfAndroidViewView;
   protected int b;
   private View b;
@@ -55,8 +52,8 @@ public class TimelineView
   private void a(boolean paramBoolean)
   {
     getParent().requestDisallowInterceptTouchEvent(false);
-    if (this.jdField_a_of_type_Boey != null) {
-      this.jdField_a_of_type_Boey.a(paramBoolean);
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimelineListener != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimelineListener.a(paramBoolean);
     }
   }
   
@@ -171,7 +168,7 @@ public class TimelineView
   {
     this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderView = a();
     this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderView.setId(f());
-    this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderView.setSliderListener(new boez(this));
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderView.setSliderListener(new TimelineView.1(this));
     addView(this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderView);
   }
   
@@ -179,7 +176,7 @@ public class TimelineView
   {
     this.jdField_b_of_type_DovComQqImAeeditorViewTimelineSliderView = b();
     this.jdField_b_of_type_DovComQqImAeeditorViewTimelineSliderView.setId(g());
-    this.jdField_b_of_type_DovComQqImAeeditorViewTimelineSliderView.setSliderListener(new bofa(this));
+    this.jdField_b_of_type_DovComQqImAeeditorViewTimelineSliderView.setSliderListener(new TimelineView.2(this));
     addView(this.jdField_b_of_type_DovComQqImAeeditorViewTimelineSliderView);
   }
   
@@ -187,7 +184,7 @@ public class TimelineView
   {
     this.jdField_a_of_type_AndroidViewView = a();
     this.jdField_a_of_type_AndroidViewView.setId(i());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130837916);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130837939);
     addView(this.jdField_a_of_type_AndroidViewView);
   }
   
@@ -195,7 +192,7 @@ public class TimelineView
   {
     this.jdField_b_of_type_AndroidViewView = b();
     this.jdField_b_of_type_AndroidViewView.setId(j());
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130837915);
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130837938);
     addView(this.jdField_b_of_type_AndroidViewView);
   }
   
@@ -214,14 +211,14 @@ public class TimelineView
   protected SliderView a()
   {
     SliderView localSliderView = new SliderView(getContext());
-    localSliderView.setImageResource(2130837904);
+    localSliderView.setImageResource(2130837923);
     return localSliderView;
   }
   
-  public void a(float paramFloat)
+  protected void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Boey != null) {
-      this.jdField_a_of_type_Boey.a(paramFloat, true);
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimelineListener != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimelineListener.a(paramFloat, true);
     }
   }
   
@@ -235,14 +232,14 @@ public class TimelineView
   protected SliderView b()
   {
     SliderView localSliderView = new SliderView(getContext());
-    localSliderView.setImageResource(2130837905);
+    localSliderView.setImageResource(2130837924);
     return localSliderView;
   }
   
-  public void b(float paramFloat)
+  protected void b(float paramFloat)
   {
-    if (this.jdField_a_of_type_Boey != null) {
-      this.jdField_a_of_type_Boey.a(paramFloat, false);
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimelineListener != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimelineListener.a(paramFloat, false);
     }
   }
   
@@ -296,59 +293,59 @@ public class TimelineView
   @IdRes
   protected int c()
   {
-    return 2131362261;
+    return 2131362284;
   }
   
-  public void c()
+  protected void c()
   {
     getParent().requestDisallowInterceptTouchEvent(true);
-    if (this.jdField_a_of_type_Boey != null) {
-      this.jdField_a_of_type_Boey.b();
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimelineListener != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimelineListener.b();
     }
   }
   
   protected int d()
   {
-    return getResources().getDimensionPixelOffset(2131296320);
+    return getResources().getDimensionPixelOffset(2131296337);
   }
   
   protected int e()
   {
-    return getResources().getDimensionPixelOffset(2131296283);
+    return getResources().getDimensionPixelOffset(2131296300);
   }
   
   @IdRes
   protected int f()
   {
-    return 2131362262;
+    return 2131362285;
   }
   
   @IdRes
   protected int g()
   {
-    return 2131362263;
+    return 2131362286;
   }
   
   protected int h()
   {
-    return getResources().getDimensionPixelOffset(2131296322);
+    return getResources().getDimensionPixelOffset(2131296339);
   }
   
   @IdRes
   protected int i()
   {
-    return 2131362264;
+    return 2131362287;
   }
   
   @IdRes
   protected int j()
   {
-    return 2131362260;
+    return 2131362283;
   }
   
   protected int k()
   {
-    return getResources().getDimensionPixelOffset(2131296284);
+    return getResources().getDimensionPixelOffset(2131296301);
   }
   
   public void setSelected(boolean paramBoolean)
@@ -362,14 +359,14 @@ public class TimelineView
     this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void setTimelineListener(boey paramboey)
+  public void setTimelineListener(TimelineListener paramTimelineListener)
   {
-    this.jdField_a_of_type_Boey = paramboey;
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimelineListener = paramTimelineListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.timeline.TimelineView
  * JD-Core Version:    0.7.0.1
  */

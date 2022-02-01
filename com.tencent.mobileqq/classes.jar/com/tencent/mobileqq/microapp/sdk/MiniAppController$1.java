@@ -34,12 +34,12 @@ final class MiniAppController$1
       localDownloadParam = new DownloadParam();
       localDownloadParam.filePos = 1;
       localDownloadParam.url = this.val$miniConfig.baseLibInfo.baseLibUrl;
-      ((PreloadManager)localObject).a(localDownloadParam, null);
+      ((PreloadManager)localObject).getResPath(localDownloadParam, null);
     } while (new File(g.a(this.val$miniConfig.config)).exists());
     DownloadParam localDownloadParam = new DownloadParam();
     localDownloadParam.headers = new LinkedList();
     localDownloadParam.url = (this.val$miniConfig.config.apkg_url + "?sign=" + URLEncoder.encode(this.val$miniConfig.config.cos_sign));
-    ((PreloadManager)localObject).a(localDownloadParam, null);
+    ((PreloadManager)localObject).getResPath(localDownloadParam, null);
   }
 }
 

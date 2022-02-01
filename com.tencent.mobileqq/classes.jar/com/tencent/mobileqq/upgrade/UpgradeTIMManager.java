@@ -7,8 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import auku;
-import bdla;
+import com.tencent.biz.common.offline.util.OfflineDownloader;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.AppConstants;
@@ -16,30 +15,32 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.uniformdownload.api.IUniformDownloadUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import nvq;
 
 public class UpgradeTIMManager
   implements INetInfoHandler, Manager
 {
   private static final String jdField_a_of_type_JavaLangString = AppConstants.SDCARD_PATH + "tim";
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private OfflineDownloader jdField_a_of_type_ComTencentBizCommonOfflineUtilOfflineDownloader;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private UpgradeTIMManager.DownloadTask jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMManager$DownloadTask;
   private UpgradeTIMWrapper jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper;
   private File jdField_a_of_type_JavaIoFile;
-  private nvq jdField_a_of_type_Nvq;
   private boolean jdField_a_of_type_Boolean;
   
   public UpgradeTIMManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Nvq = new nvq();
+    this.jdField_a_of_type_ComTencentBizCommonOfflineUtilOfflineDownloader = new OfflineDownloader();
     this.jdField_a_of_type_JavaIoFile = new File(jdField_a_of_type_JavaLangString, "tim.apk");
   }
   
@@ -94,7 +95,7 @@ public class UpgradeTIMManager
   
   private void c()
   {
-    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008A48", "0X8008A48", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008A48", "0X8008A48", 0, 0, "", "", "", "");
     if (this.jdField_a_of_type_JavaIoFile.exists())
     {
       PackageInfo localPackageInfo = BaseApplication.getContext().getPackageManager().getPackageArchiveInfo(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 64);
@@ -125,30 +126,34 @@ public class UpgradeTIMManager
   
   public void a(Context paramContext, String paramString)
   {
-    int j = 0;
-    int i = j;
-    if (a())
-    {
-      i = j;
-      if (auku.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()) == 0) {
+    int i;
+    if (a()) {
+      if (((IUniformDownloadUtil)QRoute.api(IUniformDownloadUtil.class)).openApk(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()) == 0) {
         i = 1;
       }
     }
-    if (i == 0)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeTIMManager", 2, "jumpToDownloadTIM| no existing apk file, download.");
-      }
-      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      localIntent.putExtra("hide_operation_bar", true);
-      paramContext.startActivity(localIntent);
-      if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMManager$DownloadTask != null)
+      if (i == 0)
       {
-        UpgradeTIMManager.DownloadTask.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMManager$DownloadTask);
-        this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMManager$DownloadTask = null;
+        if (QLog.isColorLevel()) {
+          QLog.d("UpgradeTIMManager", 2, "jumpToDownloadTIM| no existing apk file, download.");
+        }
+        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", paramString);
+        localIntent.putExtra("hide_operation_bar", true);
+        paramContext.startActivity(localIntent);
+        if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMManager$DownloadTask != null)
+        {
+          UpgradeTIMManager.DownloadTask.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMManager$DownloadTask);
+          this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMManager$DownloadTask = null;
+        }
+        b();
       }
-      b();
+      return;
+      i = 0;
+      continue;
+      i = 0;
     }
   }
   
@@ -167,7 +172,7 @@ public class UpgradeTIMManager
       b(paramQQAppInterface, paramUpgradeTIMWrapper);
       return;
     }
-    if (!NetworkUtil.isWifiConnected(BaseApplication.getContext()))
+    if (!NetworkUtil.h(BaseApplication.getContext()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("UpgradeTIMManager", 2, "onReceiveUpgradeInfo, wifi not connected...");
@@ -185,7 +190,7 @@ public class UpgradeTIMManager
       QLog.d("UpgradeTIMManager", 2, "onReceiveUpgradeInfo");
     }
     if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMManager$DownloadTask != null) {}
-    while ((a()) || (!NetworkUtil.isWifiConnected(BaseApplication.getContext()))) {
+    while ((a()) || (!NetworkUtil.h(BaseApplication.getContext()))) {
       return;
     }
     a(paramString, this.jdField_a_of_type_JavaIoFile.getPath());

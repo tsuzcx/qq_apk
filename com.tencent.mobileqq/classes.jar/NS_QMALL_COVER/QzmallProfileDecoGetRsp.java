@@ -8,7 +8,7 @@ public final class QzmallProfileDecoGetRsp
   extends JceStruct
 {
   static byte[] cache_vecBuff = (byte[])new byte[1];
-  public byte[] vecBuff;
+  public byte[] vecBuff = null;
   
   static
   {

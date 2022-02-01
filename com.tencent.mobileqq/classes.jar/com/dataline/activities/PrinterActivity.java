@@ -1,8 +1,5 @@
 package com.dataline.activities;
 
-import Override;
-import abgm;
-import absy;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -19,36 +16,36 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ansr;
-import ansy;
-import anvx;
-import anzy;
-import aoab;
-import bdla;
-import bhcc;
-import bjps;
+import com.dataline.data.PrinterEntity;
+import com.dataline.data.PrinterManager;
+import com.dataline.util.PrinterSessionAdapter;
 import com.dataline.util.widget.AsyncImageView;
 import com.tencent.device.datadef.DeviceInfo;
 import com.tencent.device.datadef.ProductInfo;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
+import com.tencent.device.utils.SmartDeviceReport;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.DataLineObserver;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.PrinterHandler;
+import com.tencent.mobileqq.app.PrinterStatusHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.SharePreferenceUtils;
+import com.tencent.mobileqq.utils.AlbumConstants;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.widget.ScrollerRunnable;
+import com.tencent.open.pcpush.OpenFileUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.XListView;
-import ct;
-import cu;
-import dj;
-import dk;
-import es;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -59,20 +56,20 @@ public class PrinterActivity
   implements View.OnClickListener
 {
   public static String a;
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   public ViewGroup a;
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ansr jdField_a_of_type_Ansr;
-  private ansy jdField_a_of_type_Ansy = new cu(this);
-  private AsyncImageView jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+  private TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  private AsyncImageView jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = null;
+  private DataLineHandler jdField_a_of_type_ComTencentMobileqqAppDataLineHandler = null;
+  private DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new PrinterActivity.2(this);
   public ScrollerRunnable a;
   public XListView a;
   private Button jdField_b_of_type_AndroidWidgetButton;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView = null;
   private String jdField_b_of_type_JavaLangString = "";
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private TextView jdField_c_of_type_AndroidWidgetTextView = null;
   private String jdField_c_of_type_JavaLangString = "";
   private String d = "";
   
@@ -81,12 +78,17 @@ public class PrinterActivity
     jdField_a_of_type_JavaLangString = "dataline.PrinterActivity";
   }
   
+  public PrinterActivity()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = null;
+  }
+  
   private void a()
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
       this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      SharePreferenceUtils.set(this, "hp_bind_tip_key", String.valueOf(System.currentTimeMillis()));
+      SharePreferenceUtils.a(this, "hp_bind_tip_key", String.valueOf(System.currentTimeMillis()));
     }
   }
   
@@ -94,13 +96,13 @@ public class PrinterActivity
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
     {
-      LayoutInflater.from(this).inflate(2131559088, this.jdField_a_of_type_AndroidViewViewGroup, true);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363584));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363585));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363582));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363583));
-      this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366743));
-      Drawable localDrawable = super.getResources().getDrawable(2130840398);
+      LayoutInflater.from(this).inflate(2131559130, this.jdField_a_of_type_AndroidViewViewGroup, true);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363675));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363676));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363673));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363674));
+      this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366920));
+      Drawable localDrawable = super.getResources().getDrawable(2130840511);
       this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageDrawable(localDrawable);
     }
     paramObject = (Object[])paramObject;
@@ -111,13 +113,13 @@ public class PrinterActivity
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     }
-    absy.a();
-    absy.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 1, 0, 0);
+    SmartDeviceReport.a();
+    SmartDeviceReport.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 1, 0, 0);
   }
   
   private boolean a()
   {
-    String str = SharePreferenceUtils.get(this, "hp_bind_tip_key");
+    String str = SharePreferenceUtils.a(this, "hp_bind_tip_key");
     long l;
     if (!TextUtils.isEmpty(str)) {
       l = Long.parseLong(str);
@@ -145,7 +147,7 @@ public class PrinterActivity
         localObject1 = new Intent(this, PrinterOptionActivity.class);
         ((Intent)localObject1).setClass(this, PrinterOptionActivity.class);
         ((Intent)localObject1).putParcelableArrayListExtra("sFilesSelected", paramIntent);
-        ((Intent)localObject1).putExtra(bhcc.h, paramInt1);
+        ((Intent)localObject1).putExtra(AlbumConstants.h, paramInt1);
         super.startActivityForResult((Intent)localObject1, 102);
       }
     }
@@ -174,35 +176,35 @@ public class PrinterActivity
         LiteActivity.a(this);
         return;
       }
-      localObject3 = this.jdField_a_of_type_Ansr.jdField_a_of_type_Dk.a;
+      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager.a;
       if (localObject3 == null) {
         break;
       }
-      boolean bool = ((dj)localObject3).a((List)localObject1, (String)localObject2, this.app);
+      boolean bool = ((PrinterEntity)localObject3).a((List)localObject1, (String)localObject2, this.app);
       label396:
-      if (((dj)localObject3).jdField_a_of_type_Int == 2)
+      if (((PrinterEntity)localObject3).jdField_a_of_type_Int == 2)
       {
         if (bool)
         {
-          Object localObject4 = dk.a(this.app, ((dj)localObject3).jdField_a_of_type_Long);
+          Object localObject4 = PrinterManager.a(this.app, ((PrinterEntity)localObject3).jdField_a_of_type_Long);
           if (localObject4 != null)
           {
-            localObject2 = (abgm)this.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+            localObject2 = (SmartDeviceProxyMgr)this.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
             localObject3 = new Bundle();
             ((Bundle)localObject3).putString("din", ((DeviceInfo)localObject4).din + "");
-            localObject4 = ((abgm)localObject2).a(((DeviceInfo)localObject4).productId);
+            localObject4 = ((SmartDeviceProxyMgr)localObject2).a(((DeviceInfo)localObject4).productId);
             if (localObject4 != null) {
               ((Bundle)localObject3).putString("devName", ((ProductInfo)localObject4).deviceName);
             }
             ((Bundle)localObject3).putBoolean("bFromLightApp", false);
             ((Bundle)localObject3).putInt("operType", 0);
             ((Bundle)localObject3).putInt("jumpTab", 0);
-            ((abgm)localObject2).a((Bundle)localObject3);
+            ((SmartDeviceProxyMgr)localObject2).a((Bundle)localObject3);
           }
           finish();
         }
         label363:
-        switch (paramIntent.getIntExtra(bhcc.h, 0))
+        switch (paramIntent.getIntExtra(AlbumConstants.h, 0))
         {
         default: 
           paramIntent = ((ArrayList)localObject1).iterator();
@@ -211,33 +213,33 @@ public class PrinterActivity
       while (paramIntent.hasNext())
       {
         localObject1 = (FileInfo)paramIntent.next();
-        if (bjps.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".txt" }))
+        if (OpenFileUtil.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".txt" }))
         {
-          bdla.b(this.app, "CliOper", "", "", "0X800401A", "0X800401A", 0, 0, "", "", "", "");
+          ReportController.b(this.app, "CliOper", "", "", "0X800401A", "0X800401A", 0, 0, "", "", "", "");
           continue;
-          if ((((dj)localObject3).jdField_a_of_type_Int != 1) || (!bool)) {
+          if ((((PrinterEntity)localObject3).jdField_a_of_type_Int != 1) || (!bool)) {
             break label363;
           }
           break label363;
-          bdla.b(this.app, "CliOper", "", "", "0X800405C", "0X800405C", 0, 0, "", "", "", "");
+          ReportController.b(this.app, "CliOper", "", "", "0X800405C", "0X800405C", 0, 0, "", "", "", "");
           break label396;
-          bdla.b(this.app, "CliOper", "", "", "0X800405A", "0X800405A", 0, 0, "", "", "", "");
+          ReportController.b(this.app, "CliOper", "", "", "0X800405A", "0X800405A", 0, 0, "", "", "", "");
           break label396;
-          bdla.b(this.app, "CliOper", "", "", "0X800405B", "0X800405B", 0, 0, "", "", "", "");
+          ReportController.b(this.app, "CliOper", "", "", "0X800405B", "0X800405B", 0, 0, "", "", "", "");
           break label396;
         }
-        if (bjps.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".doc", ".docx" })) {
-          bdla.b(this.app, "CliOper", "", "", "0X800401B", "0X800401B", 0, 0, "", "", "", "");
-        } else if (bjps.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".ppt", ".pptx" })) {
-          bdla.b(this.app, "CliOper", "", "", "0X800401C", "0X800401C", 0, 0, "", "", "", "");
-        } else if (bjps.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".xls", ".xlsx" })) {
-          bdla.b(this.app, "CliOper", "", "", "0X800401D", "0X800401D", 0, 0, "", "", "", "");
-        } else if (bjps.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".jpg", ".png", ".jpeg", ".bmp" })) {
-          bdla.b(this.app, "CliOper", "", "", "0X800401E", "0X800401E", 0, 0, "", "", "", "");
-        } else if (bjps.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".pdf" })) {
-          bdla.b(this.app, "CliOper", "", "", "0X800401F", "0X800401F", 0, 0, "", "", "", "");
+        if (OpenFileUtil.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".doc", ".docx" })) {
+          ReportController.b(this.app, "CliOper", "", "", "0X800401B", "0X800401B", 0, 0, "", "", "", "");
+        } else if (OpenFileUtil.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".ppt", ".pptx" })) {
+          ReportController.b(this.app, "CliOper", "", "", "0X800401C", "0X800401C", 0, 0, "", "", "", "");
+        } else if (OpenFileUtil.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".xls", ".xlsx" })) {
+          ReportController.b(this.app, "CliOper", "", "", "0X800401D", "0X800401D", 0, 0, "", "", "", "");
+        } else if (OpenFileUtil.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".jpg", ".png", ".jpeg", ".bmp" })) {
+          ReportController.b(this.app, "CliOper", "", "", "0X800401E", "0X800401E", 0, 0, "", "", "", "");
+        } else if (OpenFileUtil.a(((FileInfo)localObject1).d().toLowerCase(), new String[] { ".pdf" })) {
+          ReportController.b(this.app, "CliOper", "", "", "0X800401F", "0X800401F", 0, 0, "", "", "", "");
         } else {
-          bdla.b(this.app, "CliOper", "", "", "0X8004020", "0X8004020", 0, 0, "", "", "", "");
+          ReportController.b(this.app, "CliOper", "", "", "0X8004020", "0X8004020", 0, 0, "", "", "", "");
         }
       }
     }
@@ -247,26 +249,26 @@ public class PrinterActivity
   {
     super.doOnCreate(paramBundle);
     super.getWindow().setBackgroundDrawableResource(2131165443);
-    super.setContentView(2131559083);
-    super.setTitle(2131691340);
+    super.setContentView(2131559125);
+    super.setTitle(2131691450);
     super.getWindow().setBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)super.findViewById(2131365391));
-    this.jdField_a_of_type_AndroidViewViewGroup.setTag(2131361808, "n/a");
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131378669));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)super.findViewById(2131365552));
+    this.jdField_a_of_type_AndroidViewViewGroup.setTag(2131361807, "n/a");
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131379102));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131378670));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131379103));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_Ansr = ((ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER));
-    this.jdField_a_of_type_Ansr.jdField_a_of_type_Anzy.a = new es(this, this.jdField_a_of_type_Ansr);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131370244));
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler = ((DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER));
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a = new PrinterSessionAdapter(this, this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131370516));
     this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = new ScrollerRunnable(this.jdField_a_of_type_ComTencentWidgetXListView);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ansr.jdField_a_of_type_Anzy.a);
-    paramBundle = LayoutInflater.from(this).inflate(2131558966, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(super.getResources().getDrawable(2130844766));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a);
+    paramBundle = LayoutInflater.from(this).inflate(2131559007, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(super.getResources().getDrawable(2130844927));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new ct(this));
-    this.app.addObserver(this.jdField_a_of_type_Ansy);
-    paramBundle = (aoab)this.app.getBusinessHandler(BusinessHandlerFactory.PRINTER_STATUS_HANDLER);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new PrinterActivity.1(this));
+    this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
+    paramBundle = (PrinterStatusHandler)this.app.getBusinessHandler(BusinessHandlerFactory.PRINTER_STATUS_HANDLER);
     if (a()) {
       paramBundle.b();
     }
@@ -275,12 +277,12 @@ public class PrinterActivity
   
   public void doOnDestroy()
   {
-    this.jdField_a_of_type_Ansr.jdField_a_of_type_Anzy.a = null;
-    this.jdField_a_of_type_Ansr.jdField_a_of_type_Anzy.b();
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.b();
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.b();
     }
-    this.app.removeObserver(this.jdField_a_of_type_Ansy);
+    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     }
@@ -296,14 +298,14 @@ public class PrinterActivity
   {
     super.doOnResume();
     LiteActivity.a(this, this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_Ansr.jdField_a_of_type_Anzy.a.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a.notifyDataSetChanged();
     LiteActivity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_ComTencentWidgetXListView);
     LiteActivity.a(this.jdField_a_of_type_ComTencentWidgetXListView);
     Object localObject1 = super.getIntent();
-    int i = ((Intent)localObject1).getIntExtra(bhcc.h, -1);
+    int i = ((Intent)localObject1).getIntExtra(AlbumConstants.h, -1);
     if ((55 == i) || (i == 57))
     {
-      ((Intent)localObject1).removeExtra(bhcc.h);
+      ((Intent)localObject1).removeExtra(AlbumConstants.h);
       Object localObject2 = ((Intent)localObject1).getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
       localObject1 = new ArrayList();
       localObject2 = ((List)localObject2).iterator();
@@ -319,7 +321,7 @@ public class PrinterActivity
       if (((ArrayList)localObject1).size() > 0)
       {
         localObject2 = new Intent(this, PrinterOptionActivity.class);
-        ((Intent)localObject2).putExtra(bhcc.h, i);
+        ((Intent)localObject2).putExtra(AlbumConstants.h, i);
         ((Intent)localObject2).putParcelableArrayListExtra("sFilesSelected", (ArrayList)localObject1);
         startActivityForResult((Intent)localObject2, 102);
       }
@@ -334,7 +336,7 @@ public class PrinterActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131378669)
+    if (i == 2131379102)
     {
       localIntent = new Intent(super.getApplicationContext(), FMLocalFileActivity.class);
       localIntent.putExtra("category", 6);
@@ -347,11 +349,11 @@ public class PrinterActivity
       localIntent.putExtra("STRING_Show_Apk_Category", false);
       localIntent.putExtra("STRING_Show_Pic_Category", false);
       localIntent.putExtra("STRING_SingleSelect", true);
-      localIntent.putExtra(bhcc.h, 56);
-      localIntent.putExtra("STRING_Show_Within_Suffixs", this.jdField_a_of_type_Ansr.jdField_a_of_type_Anzy.a());
+      localIntent.putExtra(AlbumConstants.h, 56);
+      localIntent.putExtra("STRING_Show_Within_Suffixs", this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a());
       super.startActivityForResult(localIntent, 56);
       AlbumUtil.anim(this, false, true);
-      bdla.b(this.app, "CliOper", "", "", "0X8004018", "0X8004018", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "CliOper", "", "", "0X8004018", "0X8004018", 0, 0, "", "", "", "");
     }
     do
     {
@@ -359,7 +361,7 @@ public class PrinterActivity
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
-        if (i != 2131378670) {
+        if (i != 2131379103) {
           break;
         }
         localIntent = new Intent(this, NewPhotoListActivity.class);
@@ -368,43 +370,43 @@ public class PrinterActivity
         localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
         localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
         localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 50);
-        localIntent.putExtra(bhcc.h, 57);
+        localIntent.putExtra(AlbumConstants.h, 57);
         localIntent.putExtra("uin", AppConstants.DATALINE_PRINTER_UIN);
         localIntent.putExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", true);
         localIntent.putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", true);
         localIntent.getExtras().remove("forward_type");
         localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-        localIntent.putExtra("STRING_Show_Within_Suffixs", this.jdField_a_of_type_Ansr.jdField_a_of_type_Anzy.a());
+        localIntent.putExtra("STRING_Show_Within_Suffixs", this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a());
         super.startActivity(localIntent);
         AlbumUtil.anim(this, false, true);
-        bdla.b(this.app, "CliOper", "", "", "0X8004019", "0X8004019", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X8004019", "0X8004019", 0, 0, "", "", "", "");
       }
-    } while (i != 2131363584);
+    } while (i != 2131363675);
     Intent localIntent = new Intent();
     if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
     {
       localIntent.setClass(this, QQBrowserActivity.class);
       localIntent.putExtra("url", this.d);
-      localIntent.putExtra("title", anvx.a(2131707876));
+      localIntent.putExtra("title", HardCodeUtil.a(2131708403));
       localIntent.putExtra("webStyle", "noBottomBar");
       localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("selfSet_leftViewText", anvx.a(2131707877));
-      localIntent.putExtra("leftViewText", anvx.a(2131707878));
-      absy.a();
-      absy.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 3, 0, 0);
+      localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131708404));
+      localIntent.putExtra("leftViewText", HardCodeUtil.a(2131708405));
+      SmartDeviceReport.a();
+      SmartDeviceReport.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 3, 0, 0);
     }
     for (;;)
     {
       a(this, localIntent);
       a();
-      absy.a();
-      absy.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 2, 0, 0);
+      SmartDeviceReport.a();
+      SmartDeviceReport.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 2, 0, 0);
       break;
       localIntent.setClass(this, PrinterBindTipActivity.class);
       localIntent.putExtra("printer_bind_url", this.jdField_c_of_type_JavaLangString);
       localIntent.putExtra("din", this.jdField_a_of_type_Long);
-      absy.a();
-      absy.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 4, 0, 0);
+      SmartDeviceReport.a();
+      SmartDeviceReport.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 4, 0, 0);
     }
   }
   
@@ -417,7 +419,7 @@ public class PrinterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.dataline.activities.PrinterActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class MessageForTroopPobing
@@ -14,7 +14,7 @@ public class MessageForTroopPobing
   
   public static String buildCompatibleText()
   {
-    return anvx.a(2131706085);
+    return HardCodeUtil.a(2131706625);
   }
   
   public void doParse()
@@ -32,7 +32,7 @@ public class MessageForTroopPobing
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return anvx.a(2131706044);
+      return HardCodeUtil.a(2131706584);
     }
     return this.msg;
   }
@@ -51,7 +51,7 @@ public class MessageForTroopPobing
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopPobing
  * JD-Core Version:    0.7.0.1
  */

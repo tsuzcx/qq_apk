@@ -11,7 +11,7 @@ class AETemplateInfoFragment$2
   public void run()
   {
     long l = System.currentTimeMillis();
-    FileUtils.deleteDirectory(AETemplateInfoFragment.CACHE_DIR);
+    FileUtils.a(AETemplateInfoFragment.CACHE_DIR);
     if (QLog.isDebugVersion()) {
       QLog.d("AETemplateInfoFragment", 4, new Object[] { "clear temp files finish, cost=", Long.valueOf(System.currentTimeMillis() - l) });
     }
@@ -19,7 +19,7 @@ class AETemplateInfoFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AETemplateInfoFragment.2
  * JD-Core Version:    0.7.0.1
  */

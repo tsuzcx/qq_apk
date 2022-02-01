@@ -11,9 +11,9 @@ public final class stRspHeader
   extends JceStruct
 {
   static Map<String, String> cache_mapExt = new HashMap();
-  public int iRet;
+  public int iRet = 0;
   @Nullable
-  public Map<String, String> mapExt;
+  public Map<String, String> mapExt = null;
   public String sErrmsg = "";
   
   static

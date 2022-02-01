@@ -9,7 +9,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class oidb_0xeb7$StSignInStatusReq
   extends MessageMicro<StSignInStatusReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24 }, new String[] { "uid", "groupId", "scene" }, new Object[] { "", "", Integer.valueOf(0) }, StSignInStatusReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34 }, new String[] { "uid", "groupId", "scene", "clientVersion" }, new Object[] { "", "", Integer.valueOf(0), "" }, StSignInStatusReq.class);
+  public final PBStringField clientVersion = PBField.initString("");
   public final PBStringField groupId = PBField.initString("");
   public final PBEnumField scene = PBField.initEnum(0);
   public final PBStringField uid = PBField.initString("");

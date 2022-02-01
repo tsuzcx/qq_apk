@@ -12,11 +12,11 @@ public final class GetFiltPhotoListRsp
   static Album cache_albuminfo = new Album();
   static ArrayList<s_picdata> cache_photolist = new ArrayList();
   static s_outshare cache_shareinfo = new s_outshare();
-  public Album albuminfo;
+  public Album albuminfo = null;
   public String attach_info = "";
-  public boolean hasmore;
-  public ArrayList<s_picdata> photolist;
-  public s_outshare shareinfo;
+  public boolean hasmore = false;
+  public ArrayList<s_picdata> photolist = null;
+  public s_outshare shareinfo = null;
   
   static
   {

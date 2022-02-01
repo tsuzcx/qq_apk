@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoInfo.UGDownloadInfo;
 import com.tencent.open.downloadnew.DownloadInfo;
-import omr;
 
 class VideoFeedsUGView$3
   implements Runnable
@@ -13,18 +13,18 @@ class VideoFeedsUGView$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Omr != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Omr.f)) && (this.this$0.jdField_a_of_type_Omr.f.equals(this.a.d)))
+    if ((this.this$0.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$UGDownloadInfo != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$UGDownloadInfo.f)) && (this.this$0.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$UGDownloadInfo.f.equals(this.a.d)))
     {
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.this$0.b.setVisibility(8);
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_a_of_type_Omr.k + this.a.f + "%");
+      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$UGDownloadInfo.k + this.a.f + "%");
       this.this$0.jdField_a_of_type_Int = this.a.f;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView.3
  * JD-Core Version:    0.7.0.1
  */

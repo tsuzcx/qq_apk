@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_bg_music_setting
   extends JceStruct
 {
-  public byte loop_playback_flag;
-  public byte wifi_autu_play_flag;
+  public byte loop_playback_flag = 0;
+  public byte wifi_autu_play_flag = 0;
   
   public mobile_bg_music_setting() {}
   

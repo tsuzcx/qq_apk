@@ -1,44 +1,32 @@
 package com.tencent.mobileqq.apollo;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
+import android.app.Activity;
 import android.view.View;
+import android.view.Window;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
 
 final class ApolloRender$27
   implements Runnable
 {
-  ApolloRender$27(int paramInt, Intent paramIntent, View paramView) {}
+  ApolloRender$27(View paramView, int paramInt) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("sava_ApolloRender", 2, "imageselector selectimagecallback ");
+    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
+    if (this.jdField_a_of_type_Int == 1) {
+      localActivity.getWindow().addFlags(128);
     }
-    if (this.jdField_a_of_type_Int == -1)
+    for (;;)
     {
-      Object localObject = (Bitmap)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("data");
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(((Bitmap)localObject).getByteCount());
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      ((Bitmap)localObject).copyPixelsToBuffer(localByteBuffer);
-      localObject = localByteBuffer.array();
-      QLog.e("sava_ApolloRender", 2, "imageselector selectimageallback textureView  " + this.jdField_a_of_type_Int + " data: ");
-      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(ApolloRender.access$900(), 1, i, j, (byte[])localObject);
+      QLog.e("sava_ApolloRender", 2, "SetKeepScreenOn :" + this.jdField_a_of_type_Int);
       return;
+      localActivity.getWindow().clearFlags(128);
     }
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(ApolloRender.access$900(), 3, 0, 0, null);
-      return;
-    }
-    ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(ApolloRender.access$900(), 2, 0, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.27
  * JD-Core Version:    0.7.0.1
  */

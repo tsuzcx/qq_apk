@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
 import android.view.View;
-import bfwa;
 
-public class TextItem$1$1
+class TextItem$1$1
   implements Runnable
 {
-  public TextItem$1$1(bfwa parambfwa, View paramView) {}
+  TextItem$1$1(TextItem.1 param1, View paramView) {}
   
   public void run()
   {

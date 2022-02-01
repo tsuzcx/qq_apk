@@ -9,37 +9,35 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import bodu;
-import bodv;
-import bodw;
-import bodx;
-import boer;
-import boex;
-import boey;
+import dov.com.qq.im.aeeditor.view.dragdrop.IDragDropScrollListener;
+import dov.com.qq.im.aeeditor.view.dragdrop.IDragView;
+import dov.com.qq.im.aeeditor.view.dragdrop.IStateChangeListener;
+import dov.com.qq.im.aeeditor.view.dragdrop.IValueChangeListener;
+import dov.com.qq.im.aeeditor.view.timebar.scale.ScaleAdapter;
 
 public class EffectTimelineView
   extends TimelineView
-  implements bodu, bodv, boey
+  implements IDragDropScrollListener, IDragView, TimelineListener
 {
   public static long a;
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   protected int a;
   private PointF jdField_a_of_type_AndroidGraphicsPointF;
-  protected bodw a;
-  protected bodx a;
-  protected boer a;
-  protected boex a;
-  private boolean jdField_a_of_type_Boolean;
+  protected IStateChangeListener a;
+  protected IValueChangeListener a;
+  protected ScaleAdapter a;
+  protected TimeLineViewListener a;
+  private boolean jdField_a_of_type_Boolean = false;
   protected long b;
   private boolean b;
-  protected long c;
-  protected long d;
-  protected long e;
-  protected long f;
-  protected long g;
+  protected long c = 0L;
+  protected long d = 0L;
+  protected long e = 0L;
+  protected long f = 0L;
+  protected long g = 0L;
   private long h = -1L;
   private long i = -1L;
-  private long j;
+  private long j = 0L;
   
   static
   {
@@ -59,6 +57,9 @@ public class EffectTimelineView
   public EffectTimelineView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = false;
     setTimelineListener(this);
   }
   
@@ -83,37 +84,37 @@ public class EffectTimelineView
     super.a(paramFloat);
     this.jdField_b_of_type_Boolean = true;
     long l1;
-    if ((this.jdField_a_of_type_Bodx != null) && (this.jdField_a_of_type_Boer != null))
+    if ((this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener != null) && (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter != null))
     {
-      this.j = this.jdField_a_of_type_Boer.a(paramFloat);
+      this.j = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(paramFloat);
       l1 = this.d + this.j;
-      if ((paramFloat >= this.jdField_a_of_type_Float) || (!this.jdField_a_of_type_Bodx.a())) {
+      if ((paramFloat >= this.jdField_a_of_type_Float) || (!this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.a())) {
         break label189;
       }
-      this.jdField_a_of_type_Bodx.a();
+      this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.a();
       this.e = (this.c - this.j);
     }
     for (;;)
     {
       this.jdField_a_of_type_Float = paramFloat;
       Log.i("miles", "handleLeftSliderMove. moveX:" + paramFloat + ". scrollValue:" + this.j + ". raw startValue:" + l1 + ". adjusted value:" + this.jdField_b_of_type_Long);
-      if ((this.jdField_a_of_type_Boex != null) && (this.jdField_a_of_type_Boer != null)) {
-        this.jdField_a_of_type_Boex.a(this, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boer.a(paramFloat));
+      if ((this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimeLineViewListener != null) && (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter != null)) {
+        this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimeLineViewListener.a(this, this.jdField_b_of_type_Long, this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(paramFloat));
       }
       return;
       label189:
-      if ((paramFloat > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Bodx.b()))
+      if ((paramFloat > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.b()))
       {
-        this.jdField_a_of_type_Bodx.a();
+        this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.a();
         this.e = (this.c - this.j);
       }
       else
       {
-        long l2 = this.jdField_a_of_type_Bodx.a(this, l1);
+        long l2 = this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.a(this, l1);
         if (l2 >= 0L)
         {
           this.jdField_b_of_type_Long = l2;
-          this.jdField_a_of_type_Bodx.a(this);
+          this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.a(this);
         }
       }
     }
@@ -125,14 +126,14 @@ public class EffectTimelineView
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bodx != null)
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener != null)
     {
-      this.jdField_a_of_type_Bodx.a();
+      this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.a();
       this.d = (this.jdField_b_of_type_Long - this.j);
       this.e = (this.c - this.j);
     }
-    if (this.jdField_a_of_type_Boex != null) {
-      this.jdField_a_of_type_Boex.a(this, this.jdField_b_of_type_Long, this.c, this.jdField_a_of_type_Int, paramBoolean);
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimeLineViewListener != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimeLineViewListener.a(this, this.jdField_b_of_type_Long, this.c, this.jdField_a_of_type_Int, paramBoolean);
     }
     if (a()) {
       bringToFront();
@@ -166,37 +167,37 @@ public class EffectTimelineView
     super.b(paramFloat);
     this.jdField_b_of_type_Boolean = true;
     long l1;
-    if (this.jdField_a_of_type_Bodx != null)
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener != null)
     {
-      this.j = this.jdField_a_of_type_Boer.a(paramFloat);
+      this.j = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(paramFloat);
       l1 = this.e + this.j;
-      if ((paramFloat >= this.jdField_a_of_type_Float) || (!this.jdField_a_of_type_Bodx.a())) {
+      if ((paramFloat >= this.jdField_a_of_type_Float) || (!this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.a())) {
         break label175;
       }
-      this.jdField_a_of_type_Bodx.a();
+      this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.a();
       this.e = (this.c - this.j);
     }
     for (;;)
     {
       this.jdField_a_of_type_Float = paramFloat;
       Log.i("miles", "handleRightSliderMove. moveX:" + paramFloat + ". scrollValue:" + this.j + ". raw endValue:" + l1 + ". adjusted value:" + this.c);
-      if (this.jdField_a_of_type_Boex != null) {
-        this.jdField_a_of_type_Boex.b(this, this.c, this.jdField_a_of_type_Boer.a(paramFloat));
+      if (this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimeLineViewListener != null) {
+        this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimeLineViewListener.b(this, this.c, this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(paramFloat));
       }
       return;
       label175:
-      if ((paramFloat > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Bodx.b()))
+      if ((paramFloat > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.b()))
       {
-        this.jdField_a_of_type_Bodx.a();
+        this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.a();
         this.e = (this.c - this.j);
       }
       else
       {
-        long l2 = this.jdField_a_of_type_Bodx.b(this, l1);
+        long l2 = this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.b(this, l1);
         if (l2 >= 0L)
         {
           this.c = l2;
-          this.jdField_a_of_type_Bodx.a(this);
+          this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener.a(this);
         }
       }
     }
@@ -237,9 +238,9 @@ public class EffectTimelineView
     this.h = paramLong;
   }
   
-  public void setScaleModel(boer paramboer)
+  public void setScaleModel(ScaleAdapter paramScaleAdapter)
   {
-    this.jdField_a_of_type_Boer = paramboer;
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter = paramScaleAdapter;
   }
   
   public void setSelected(boolean paramBoolean)
@@ -253,11 +254,11 @@ public class EffectTimelineView
     {
       return;
       this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Bodw != null) {
-        this.jdField_a_of_type_Bodw.a(this, paramBoolean);
+      if (this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIStateChangeListener != null) {
+        this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIStateChangeListener.a(this, paramBoolean);
       }
-    } while (this.jdField_a_of_type_Boex == null);
-    this.jdField_a_of_type_Boex.a(paramBoolean, this);
+    } while (this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimeLineViewListener == null);
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimeLineViewListener.a(paramBoolean, this);
   }
   
   public void setStartValue(long paramLong)
@@ -265,14 +266,14 @@ public class EffectTimelineView
     this.jdField_b_of_type_Long = paramLong;
   }
   
-  public void setStateChangeListener(bodw parambodw)
+  public void setStateChangeListener(IStateChangeListener paramIStateChangeListener)
   {
-    this.jdField_a_of_type_Bodw = parambodw;
+    this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIStateChangeListener = paramIStateChangeListener;
   }
   
-  public void setTimeLineViewListener(boex paramboex)
+  public void setTimeLineViewListener(TimeLineViewListener paramTimeLineViewListener)
   {
-    this.jdField_a_of_type_Boex = paramboex;
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimelineTimeLineViewListener = paramTimeLineViewListener;
   }
   
   public void setTrackIndex(int paramInt)
@@ -280,14 +281,14 @@ public class EffectTimelineView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setValueChangeListener(bodx parambodx)
+  public void setValueChangeListener(IValueChangeListener paramIValueChangeListener)
   {
-    this.jdField_a_of_type_Bodx = parambodx;
+    this.jdField_a_of_type_DovComQqImAeeditorViewDragdropIValueChangeListener = paramIValueChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.timeline.EffectTimelineView
  * JD-Core Version:    0.7.0.1
  */

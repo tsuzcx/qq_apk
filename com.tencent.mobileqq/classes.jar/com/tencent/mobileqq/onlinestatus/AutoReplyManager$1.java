@@ -1,32 +1,31 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import azaz;
 import com.tencent.mobileqq.data.AutoReplyText;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AutoReplyManager$1
+class AutoReplyManager$1
   implements Runnable
 {
-  public AutoReplyManager$1(azaz paramazaz) {}
+  AutoReplyManager$1(AutoReplyManager paramAutoReplyManager) {}
   
   public void run()
   {
     for (;;)
     {
-      synchronized (azaz.a(this.this$0))
+      synchronized (AutoReplyManager.a(this.this$0))
       {
-        if (azaz.a(this.this$0) == null)
+        if (AutoReplyManager.a(this.this$0) == null)
         {
-          List localList = azaz.a(this.this$0).query(AutoReplyText.class);
+          List localList = AutoReplyManager.a(this.this$0).query(AutoReplyText.class);
           if ((localList != null) && (localList.size() > 0))
           {
-            if (azaz.a(this.this$0) == null)
+            if (AutoReplyManager.a(this.this$0) == null)
             {
-              azaz.a(this.this$0, new ArrayList());
-              azaz.a(this.this$0).addAll(localList);
+              AutoReplyManager.a(this.this$0, new ArrayList());
+              AutoReplyManager.a(this.this$0).addAll(localList);
             }
           }
           else
@@ -36,7 +35,7 @@ public class AutoReplyManager$1
             }
             return;
           }
-          azaz.a(this.this$0).clear();
+          AutoReplyManager.a(this.this$0).clear();
         }
       }
       if (QLog.isColorLevel()) {

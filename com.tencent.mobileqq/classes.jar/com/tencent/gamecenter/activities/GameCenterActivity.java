@@ -1,6 +1,5 @@
 package com.tencent.gamecenter.activities;
 
-import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,23 +16,24 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.Toast;
-import anis;
-import avdj;
-import avdu;
-import bapt;
-import bieo;
-import bihx;
 import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgIPCClient;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.apollo.api.statistics.trace.ITraceReportHelper;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoManager;
 import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.videoplatform.SDKInitListener;
 import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.CrashStepStatsEntry;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
@@ -44,7 +44,6 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
-import wyt;
 
 public class GameCenterActivity
   extends QQBrowserActivity
@@ -54,7 +53,7 @@ public class GameCenterActivity
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public Handler a;
   private TouchWebView.OnScrollChangedListener jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -62,7 +61,8 @@ public class GameCenterActivity
   
   public GameCenterActivity()
   {
-    this.jdField_a_of_type_JavaLangClass = GameCenterActivity.GameCenterFragment.class;
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.mFragmentClass = GameCenterActivity.GameCenterFragment.class;
   }
   
   public static String a(Context paramContext, String paramString1, String paramString2, String paramString3)
@@ -110,7 +110,7 @@ public class GameCenterActivity
       }
     }
     localObject = localSharedPreferences.getString("trace_url_keyword" + (String)localObject, "");
-    bihx.a = new ArrayList();
+    SwiftBrowserStatistics.CrashStepStatsEntry.a = new ArrayList();
     QLog.d("GameCenterActivity", 1, "parseTraceUrl:" + (String)localObject);
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     for (;;)
@@ -123,7 +123,7 @@ public class GameCenterActivity
         while (i < ((JSONArray)localObject).length())
         {
           str = (String)((JSONArray)localObject).opt(i);
-          bihx.a.add(str);
+          SwiftBrowserStatistics.CrashStepStatsEntry.a.add(str);
           i += 1;
         }
         return;
@@ -148,7 +148,7 @@ public class GameCenterActivity
       return;
       i = paramString.length();
     }
-    anis.a(123, paramString, 1, 1213, new Object[] { "current DetectedBlankScreen status:", Integer.valueOf(paramInt) });
+    ((ITraceReportHelper)QRoute.api(ITraceReportHelper.class)).endSpan(123, paramString, 1, 1213, new Object[] { "current DetectedBlankScreen status:", Integer.valueOf(paramInt) });
   }
   
   public static void a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -165,7 +165,7 @@ public class GameCenterActivity
     if (localObject.length >= 2)
     {
       HashMap localHashMap = new HashMap();
-      wyt.a(localObject[1], localHashMap);
+      StoryShareEncryptHelper.a(localObject[1], localHashMap);
       localObject = (String)localHashMap.get("ADTAG");
       if ("10001".equals(localObject)) {
         if (paramBoolean2)
@@ -175,7 +175,7 @@ public class GameCenterActivity
           if (("gzh".equals(localObject)) || ("fwh".equals(localObject)) || ("fuwuhao".equals(localObject)) || ("76902".equals(localObject)))
           {
             if (!paramBoolean2) {
-              break label239;
+              break label270;
             }
             i = 3;
           }
@@ -187,33 +187,35 @@ public class GameCenterActivity
       if (QLog.isColorLevel()) {
         QLog.d("GameCenterActivity", 2, new Object[] { "reportStep step:", Integer.valueOf(paramInt), ",url:", paramString, ",hasRed:", Boolean.valueOf(paramBoolean2) });
       }
+      localObject = (ITraceReportHelper)QRoute.api(ITraceReportHelper.class);
       if (paramInt == 1)
       {
-        anis.a(123, null, paramString);
-        anis.a(123, paramString, 1);
+        ((ITraceReportHelper)localObject).beginTrace(123, null, paramString);
+        ((ITraceReportHelper)localObject).beginSpan(123, paramString, 1);
       }
       if (paramInt == 13)
       {
-        anis.a(123, null, paramString, new int[] { i });
-        anis.a(123, paramString, 1, 0, new Object[0]);
-        anis.b(123, paramString);
+        ((ITraceReportHelper)localObject).addTraceData(123, null, paramString, new int[] { i });
+        ((ITraceReportHelper)localObject).endSpan(123, paramString, 1, 0, new Object[0]);
+        ((ITraceReportHelper)localObject).endTrace(123, paramString);
         return;
         i = 2;
         break label77;
-        label239:
+        label270:
         i = 4;
         continue;
       }
       if (!paramBoolean1) {
         break;
       }
-      i = -100;
       switch (paramInt)
       {
+      default: 
+        i = -100;
       }
       for (;;)
       {
-        anis.a(123, paramString, 1, i, new Object[] { "current step:", Integer.valueOf(paramInt) });
+        ((ITraceReportHelper)localObject).endSpan(123, paramString, 1, i, new Object[] { "current step:", Integer.valueOf(paramInt) });
         return;
         i = 1201;
         continue;
@@ -231,14 +233,14 @@ public class GameCenterActivity
   
   private boolean a()
   {
-    Object localObject = a();
+    Object localObject = getCurrentWebViewFragment();
     if (localObject == null) {}
     do
     {
       return false;
-      localObject = ((WebViewFragment)localObject).mSwiftTitleUI.centerView;
+      localObject = ((WebViewFragment)localObject).mSwiftTitleUI.b;
     } while ((localObject == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130839468);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130839547);
     this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = ((TextView)localObject).getCompoundDrawables();
     this.jdField_b_of_type_Int = ((TextView)localObject).getCompoundDrawablePadding();
     ((TextView)localObject).setCompoundDrawablePadding(10);
@@ -249,10 +251,10 @@ public class GameCenterActivity
   
   public static boolean a(String paramString)
   {
-    if (bihx.a == null) {
+    if (SwiftBrowserStatistics.CrashStepStatsEntry.a == null) {
       a();
     }
-    List localList = bihx.a;
+    List localList = SwiftBrowserStatistics.CrashStepStatsEntry.a;
     if ((TextUtils.isEmpty(paramString)) || (localList == null)) {}
     for (;;)
     {
@@ -277,17 +279,17 @@ public class GameCenterActivity
         QLog.d("GameCenterActivity", 2, "handlePushReport() called");
       }
       localIntent.removeExtra("game_msg_enter_from");
-      avdu.a(10004, 2);
+      GameMsgUtil.a(10004, 2);
     }
   }
   
   private boolean b()
   {
-    Object localObject = a();
+    Object localObject = getCurrentWebViewFragment();
     if (localObject == null) {
       return false;
     }
-    localObject = ((WebViewFragment)localObject).mSwiftTitleUI.centerView;
+    localObject = ((WebViewFragment)localObject).mSwiftTitleUI.b;
     if (localObject == null) {
       return false;
     }
@@ -307,14 +309,6 @@ public class GameCenterActivity
     this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener = paramOnScrollChangedListener;
   }
   
-  public void a(WebView paramWebView, String paramString)
-  {
-    super.a(paramWebView, paramString);
-    if ((paramWebView instanceof TouchWebView)) {
-      ((TouchWebView)paramWebView).setOnScrollChangedListener(this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener);
-    }
-  }
-  
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
@@ -328,7 +322,7 @@ public class GameCenterActivity
   {
     jdField_a_of_type_Int += 1;
     b();
-    bapt.a(BaseApplicationImpl.getApplication(), this);
+    QQVideoPlaySDKManager.a(BaseApplicationImpl.getApplication(), this);
     return super.doOnCreate(paramBundle);
   }
   
@@ -346,19 +340,6 @@ public class GameCenterActivity
     if (jdField_a_of_type_Int <= 0) {
       MiniMsgIPCClient.getInstance().clearBusiness(8);
     }
-  }
-  
-  public MiniMsgUserParam getMiniMsgUserParam()
-  {
-    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
-    localMiniMsgUserParam.businessName = 8;
-    localMiniMsgUserParam.accessType = 0;
-    localMiniMsgUserParam.entryType = 0;
-    localMiniMsgUserParam.positionX = -1;
-    localMiniMsgUserParam.positionY = -1;
-    localMiniMsgUserParam.colorType = 0;
-    localMiniMsgUserParam.filterMsgType = 0;
-    return localMiniMsgUserParam;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -411,7 +392,7 @@ public class GameCenterActivity
   
   public boolean onBackEvent()
   {
-    GameCenterVideoViewController localGameCenterVideoViewController = avdj.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = GameCenterVideoManager.a().a();
     if ((localGameCenterVideoViewController != null) && (localGameCenterVideoViewController.isFullScreenMode()))
     {
       localGameCenterVideoViewController.exitFullScreen();
@@ -427,6 +408,14 @@ public class GameCenterActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    if ((paramWebView instanceof TouchWebView)) {
+      ((TouchWebView)paramWebView).setOnScrollChangedListener(this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener);
+    }
+  }
+  
   public void onSDKInited(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
@@ -436,7 +425,7 @@ public class GameCenterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gamecenter.activities.GameCenterActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class stNotificationReq
   extends JceStruct
 {
   static stLinkStragegyArgs cache_linkStrategyArgs = new stLinkStragegyArgs();
-  public stLinkStragegyArgs linkStrategyArgs;
+  public stLinkStragegyArgs linkStrategyArgs = null;
   public String personid = "";
   public String push_info = "";
   

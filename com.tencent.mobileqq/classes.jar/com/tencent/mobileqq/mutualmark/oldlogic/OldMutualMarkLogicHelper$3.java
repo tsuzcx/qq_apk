@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.mutualmark.oldlogic;
 
-import anvk;
-import axmy;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public final class OldMutualMarkLogicHelper$3
+final class OldMutualMarkLogicHelper$3
   implements Runnable
 {
-  public OldMutualMarkLogicHelper$3(QQAppInterface paramQQAppInterface) {}
+  OldMutualMarkLogicHelper$3(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    anvk localanvk = (anvk)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localanvk != null)
+    FriendsManager localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localFriendsManager != null)
     {
-      HashSet localHashSet = axmy.a();
+      HashSet localHashSet = HotReactiveHelper.a();
       if ((localHashSet != null) && (localHashSet.size() > 0))
       {
-        localanvk.b(new ArrayList(localHashSet));
+        localFriendsManager.b(new ArrayList(localHashSet));
         localHashSet.clear();
       }
     }

@@ -73,6 +73,42 @@ public class QCircleFakeFeed$Builder
     return this;
   }
   
+  public Builder setKuolieCentreX(ArrayList<Float> paramArrayList)
+  {
+    QCircleFakeFeed.access$2202(this.feed, paramArrayList);
+    return this;
+  }
+  
+  public Builder setKuolieCentreY(ArrayList<Float> paramArrayList)
+  {
+    QCircleFakeFeed.access$2302(this.feed, paramArrayList);
+    return this;
+  }
+  
+  public Builder setKuolieHeightScale(ArrayList<Float> paramArrayList)
+  {
+    QCircleFakeFeed.access$2502(this.feed, paramArrayList);
+    return this;
+  }
+  
+  public Builder setKuolieId(ArrayList<String> paramArrayList)
+  {
+    QCircleFakeFeed.access$2102(this.feed, paramArrayList);
+    return this;
+  }
+  
+  public Builder setKuolieRotate(ArrayList<Float> paramArrayList)
+  {
+    QCircleFakeFeed.access$2602(this.feed, paramArrayList);
+    return this;
+  }
+  
+  public Builder setKuolieWidthScale(ArrayList<Float> paramArrayList)
+  {
+    QCircleFakeFeed.access$2402(this.feed, paramArrayList);
+    return this;
+  }
+  
   public Builder setLabelInfos(ArrayList<LabelInfo> paramArrayList)
   {
     QCircleFakeFeed.access$1402(this.feed, paramArrayList);
@@ -141,7 +177,7 @@ public class QCircleFakeFeed$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.beans.QCircleFakeFeed.Builder
  * JD-Core Version:    0.7.0.1
  */

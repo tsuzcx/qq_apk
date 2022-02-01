@@ -1,30 +1,32 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bfkf;
-import bfkh;
-import bfkw;
-import bhhr;
+import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopHandler.IRequestTroopEnterEffectInfoCallback;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig.EffectInfo;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopEnterEffectsStep
   extends AsyncStep
+  implements TroopHandler.IRequestTroopEnterEffectInfoCallback
 {
   public int a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "TroopEnterEffectsStep: doStep");
     }
-    long l = bhhr.f(this.a.app.getApplication(), this.a.app.getCurrentAccountUin());
-    bfkf localbfkf = ((bfkw)this.a.app.getManager(QQManagerFactory.TROOP_ENTER_EFFECT_MANAGER)).a();
-    if ((l == 0L) || (localbfkf.a == null) || ((System.currentTimeMillis() - l) / 1000L > localbfkf.a.a))
+    long l = SharedPreUtils.f(this.a.a.getApplication(), this.a.a.getCurrentAccountUin());
+    TroopEnterEffectConfig localTroopEnterEffectConfig = ((TroopEnterEffectManager)this.a.a.getManager(QQManagerFactory.TROOP_ENTER_EFFECT_MANAGER)).a();
+    if ((l == 0L) || (localTroopEnterEffectConfig.a == null) || ((System.currentTimeMillis() - l) / 1000L > localTroopEnterEffectConfig.a.a))
     {
-      ((VasExtensionHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(2L, 0L);
+      ((IApolloExtensionHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(2L, 0L);
       return 2;
     }
     return 7;

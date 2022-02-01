@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
 import android.widget.RelativeLayout;
-import ayhd;
-import ayif;
 
-public class NearbyProfileEditPanel$OnPicDragListener$1
+class NearbyProfileEditPanel$OnPicDragListener$1
   implements Runnable
 {
-  public NearbyProfileEditPanel$OnPicDragListener$1(ayif paramayif) {}
+  NearbyProfileEditPanel$OnPicDragListener$1(NearbyProfileEditPanel.OnPicDragListener paramOnPicDragListener) {}
   
   public void run()
   {
-    if (ayhd.a(this.a.a) != null)
+    if (NearbyProfileEditPanel.a(this.a.a) != null)
     {
-      ayhd.a(this.a.a).setVisibility(0);
-      ayhd.a(this.a.a);
-      ayhd.a(this.a.a, null);
+      NearbyProfileEditPanel.a(this.a.a).setVisibility(0);
+      NearbyProfileEditPanel.a(this.a.a);
+      NearbyProfileEditPanel.a(this.a.a, null);
     }
   }
 }

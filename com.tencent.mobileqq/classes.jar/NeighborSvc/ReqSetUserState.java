@@ -9,8 +9,8 @@ public final class ReqSetUserState
 {
   static int cache_eUserState;
   static ReqHeader cache_stHeader;
-  public int eUserState;
-  public ReqHeader stHeader;
+  public int eUserState = 0;
+  public ReqHeader stHeader = null;
   
   public ReqSetUserState() {}
   

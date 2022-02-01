@@ -2,21 +2,20 @@ package cooperation.qqdataline.ipc;
 
 import android.content.Context;
 import android.content.Intent;
-import atpm;
-import auea;
-import blzs;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import java.util.ArrayList;
 import mqq.app.MobileQQ;
 
-public class DatalineRemoteManager$8
+class DatalineRemoteManager$8
   implements Runnable
 {
-  public DatalineRemoteManager$8(blzs paramblzs, FileManagerEntity paramFileManagerEntity, ForwardFileInfo paramForwardFileInfo) {}
+  DatalineRemoteManager$8(DatalineRemoteManager paramDatalineRemoteManager, FileManagerEntity paramFileManagerEntity, ForwardFileInfo paramForwardFileInfo) {}
   
   public void run()
   {
@@ -25,7 +24,7 @@ public class DatalineRemoteManager$8
     Object localObject;
     if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 1))
     {
-      if (!auea.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
+      if (!FileManagerUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
         break label163;
       }
       localObject = new FileInfo();
@@ -34,7 +33,7 @@ public class DatalineRemoteManager$8
       ((FileInfo)localObject).e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a());
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localObject);
-      atpm.a(localArrayList);
+      FMDataCache.a(localArrayList);
       localIntent.putExtra("clicked_file_hashcode", ((FileInfo)localObject).hashCode());
     }
     for (;;)
@@ -51,7 +50,7 @@ public class DatalineRemoteManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.8
  * JD-Core Version:    0.7.0.1
  */

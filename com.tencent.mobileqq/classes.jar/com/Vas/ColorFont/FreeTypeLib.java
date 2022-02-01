@@ -8,7 +8,6 @@ import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import n;
 
 public class FreeTypeLib
 {
@@ -28,10 +27,10 @@ public class FreeTypeLib
   {
     int i = 1;
     int[] arrayOfInt = a();
-    int j = (int)DeviceInfoUtil.getCpuMaxFreq();
+    int j = (int)DeviceInfoUtil.c();
     int k = Runtime.getRuntime().availableProcessors();
-    int m = (int)(DeviceInfoUtil.getSystemTotalMemory() / 1024L);
-    n.a("FreeTypeLib", "......cpuFrequency:" + j + "   maxMemory:" + m);
+    int m = (int)(DeviceInfoUtil.a() / 1024L);
+    FastColorFontLog.a("FreeTypeLib", "......cpuFrequency:" + j + "   maxMemory:" + m);
     int n = arrayOfInt[0];
     int i1 = arrayOfInt[1];
     if (Build.VERSION.SDK_INT < 19) {}
@@ -77,7 +76,7 @@ public class FreeTypeLib
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.Vas.ColorFont.FreeTypeLib
  * JD-Core Version:    0.7.0.1
  */

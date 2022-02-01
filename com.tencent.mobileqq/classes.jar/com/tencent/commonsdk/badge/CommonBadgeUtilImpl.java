@@ -29,6 +29,7 @@ public class CommonBadgeUtilImpl
   public static final String EXTRA_UPDATE_APPLICATION_COMPONENT_NAME = "android.intent.extra.update_application_component_name";
   public static final String EXTRA_UPDATE_APPLICATION_MESSAGE_TEXT = "android.intent.extra.update_application_message_text";
   public static final String LENOVO_PACKAGE_NAME = "com.lenovo.launcher";
+  public static final String MANUFACTURER_OF_HARDWARE_HONOR = "HONOR";
   public static final String MANUFACTURER_OF_HARDWARE_HUAWEI = "huawei";
   public static final String MANUFACTURER_OF_HARDWARE_LENOVO = "lenovo";
   public static final String MANUFACTURER_OF_HARDWARE_NUBIA = "nubia";
@@ -258,116 +259,116 @@ public class CommonBadgeUtilImpl
     // Byte code:
     //   0: iconst_0
     //   1: istore_0
-    //   2: getstatic 109	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   2: getstatic 112	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
     //   5: ifne +128 -> 133
     //   8: iconst_m1
-    //   9: putstatic 109	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
-    //   12: ldc 99
+    //   9: putstatic 112	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   12: ldc 102
     //   14: astore 4
     //   16: aconst_null
     //   17: astore 5
     //   19: aconst_null
     //   20: astore_3
-    //   21: new 369	java/io/BufferedReader
+    //   21: new 372	java/io/BufferedReader
     //   24: dup
-    //   25: new 371	java/io/InputStreamReader
+    //   25: new 374	java/io/InputStreamReader
     //   28: dup
-    //   29: new 373	java/lang/ProcessBuilder
+    //   29: new 376	java/lang/ProcessBuilder
     //   32: dup
     //   33: iconst_2
-    //   34: anewarray 87	java/lang/String
+    //   34: anewarray 90	java/lang/String
     //   37: dup
     //   38: iconst_0
-    //   39: ldc_w 375
+    //   39: ldc_w 378
     //   42: aastore
     //   43: dup
     //   44: iconst_1
-    //   45: ldc_w 377
+    //   45: ldc_w 380
     //   48: aastore
-    //   49: invokespecial 380	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
-    //   52: invokevirtual 384	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
-    //   55: invokevirtual 390	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   58: invokespecial 393	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   49: invokespecial 383	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
+    //   52: invokevirtual 387	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
+    //   55: invokevirtual 393	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   58: invokespecial 396	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   61: sipush 1024
-    //   64: invokespecial 396	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   64: invokespecial 399	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   67: astore_2
     //   68: aload_2
-    //   69: invokevirtual 399	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   69: invokevirtual 402	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   72: astore_3
     //   73: aload_2
-    //   74: invokevirtual 402	java/io/BufferedReader:close	()V
+    //   74: invokevirtual 405	java/io/BufferedReader:close	()V
     //   77: aload_2
     //   78: ifnull +7 -> 85
     //   81: aload_2
-    //   82: invokevirtual 402	java/io/BufferedReader:close	()V
+    //   82: invokevirtual 405	java/io/BufferedReader:close	()V
     //   85: aload_3
-    //   86: invokestatic 308	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   86: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   89: ifne +44 -> 133
     //   92: aload_3
-    //   93: invokestatic 406	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   93: invokestatic 409	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   96: istore_0
     //   97: iload_0
     //   98: iconst_3
     //   99: if_icmple +34 -> 133
-    //   102: ldc_w 408
-    //   105: new 156	java/lang/StringBuilder
+    //   102: ldc_w 411
+    //   105: new 159	java/lang/StringBuilder
     //   108: dup
-    //   109: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   112: ldc_w 410
-    //   115: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   112: ldc_w 413
+    //   115: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: iload_0
-    //   119: invokevirtual 166	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   122: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: invokestatic 301	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   119: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 304	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   128: pop
     //   129: iconst_1
-    //   130: putstatic 109	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
-    //   133: getstatic 109	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   130: putstatic 112	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   133: getstatic 112	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
     //   136: iconst_1
     //   137: if_icmpne +238 -> 375
     //   140: iconst_1
     //   141: ireturn
     //   142: astore_2
     //   143: aload_2
-    //   144: invokevirtual 411	java/lang/NumberFormatException:printStackTrace	()V
+    //   144: invokevirtual 414	java/lang/NumberFormatException:printStackTrace	()V
     //   147: iconst_0
     //   148: istore_0
     //   149: goto -52 -> 97
     //   152: astore_2
     //   153: aconst_null
     //   154: astore_2
-    //   155: ldc 99
+    //   155: ldc 102
     //   157: astore_3
     //   158: aload_2
     //   159: ifnull +7 -> 166
     //   162: aload_2
-    //   163: invokevirtual 402	java/io/BufferedReader:close	()V
+    //   163: invokevirtual 405	java/io/BufferedReader:close	()V
     //   166: aload_3
-    //   167: invokestatic 308	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   167: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   170: ifne -37 -> 133
     //   173: aload_3
-    //   174: invokestatic 406	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   174: invokestatic 409	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   177: istore_0
     //   178: iload_0
     //   179: iconst_3
     //   180: if_icmple -47 -> 133
-    //   183: ldc_w 408
-    //   186: new 156	java/lang/StringBuilder
+    //   183: ldc_w 411
+    //   186: new 159	java/lang/StringBuilder
     //   189: dup
-    //   190: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   193: ldc_w 410
-    //   196: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   190: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   193: ldc_w 413
+    //   196: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   199: iload_0
-    //   200: invokevirtual 166	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   203: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   206: invokestatic 301	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   200: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   203: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   206: invokestatic 304	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   209: pop
     //   210: iconst_1
-    //   211: putstatic 109	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   211: putstatic 112	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
     //   214: goto -81 -> 133
     //   217: astore_2
     //   218: aload_2
-    //   219: invokevirtual 411	java/lang/NumberFormatException:printStackTrace	()V
+    //   219: invokevirtual 414	java/lang/NumberFormatException:printStackTrace	()V
     //   222: iconst_0
     //   223: istore_0
     //   224: goto -46 -> 178
@@ -377,33 +378,33 @@ public class CommonBadgeUtilImpl
     //   230: aload_2
     //   231: ifnull +7 -> 238
     //   234: aload_2
-    //   235: invokevirtual 402	java/io/BufferedReader:close	()V
+    //   235: invokevirtual 405	java/io/BufferedReader:close	()V
     //   238: aload 4
-    //   240: invokestatic 308	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   240: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   243: ifne -110 -> 133
     //   246: aload 4
-    //   248: invokestatic 406	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   248: invokestatic 409	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   251: istore_0
     //   252: iload_0
     //   253: iconst_3
     //   254: if_icmple -121 -> 133
-    //   257: ldc_w 408
-    //   260: new 156	java/lang/StringBuilder
+    //   257: ldc_w 411
+    //   260: new 159	java/lang/StringBuilder
     //   263: dup
-    //   264: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   267: ldc_w 410
-    //   270: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   264: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   267: ldc_w 413
+    //   270: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   273: iload_0
-    //   274: invokevirtual 166	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   277: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   280: invokestatic 301	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   274: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   277: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   280: invokestatic 304	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   283: pop
     //   284: iconst_1
-    //   285: putstatic 109	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   285: putstatic 112	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
     //   288: goto -155 -> 133
     //   291: astore_2
     //   292: aload_2
-    //   293: invokevirtual 411	java/lang/NumberFormatException:printStackTrace	()V
+    //   293: invokevirtual 414	java/lang/NumberFormatException:printStackTrace	()V
     //   296: iconst_0
     //   297: istore_0
     //   298: goto -46 -> 252
@@ -413,36 +414,36 @@ public class CommonBadgeUtilImpl
     //   305: aload_3
     //   306: ifnull +7 -> 313
     //   309: aload_3
-    //   310: invokevirtual 402	java/io/BufferedReader:close	()V
+    //   310: invokevirtual 405	java/io/BufferedReader:close	()V
     //   313: aload 4
-    //   315: invokestatic 308	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   315: invokestatic 311	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   318: ifne +47 -> 365
     //   321: aload 4
-    //   323: invokestatic 406	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   323: invokestatic 409	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   326: istore_1
     //   327: iload_1
     //   328: istore_0
     //   329: iload_0
     //   330: iconst_3
     //   331: if_icmple +34 -> 365
-    //   334: ldc_w 408
-    //   337: new 156	java/lang/StringBuilder
+    //   334: ldc_w 411
+    //   337: new 159	java/lang/StringBuilder
     //   340: dup
-    //   341: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   344: ldc_w 410
-    //   347: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   341: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   344: ldc_w 413
+    //   347: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   350: iload_0
-    //   351: invokevirtual 166	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   354: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   357: invokestatic 301	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   351: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   354: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   357: invokestatic 304	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   360: pop
     //   361: iconst_1
-    //   362: putstatic 109	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   362: putstatic 112	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
     //   365: aload_2
     //   366: athrow
     //   367: astore_3
     //   368: aload_3
-    //   369: invokevirtual 411	java/lang/NumberFormatException:printStackTrace	()V
+    //   369: invokevirtual 414	java/lang/NumberFormatException:printStackTrace	()V
     //   372: goto -43 -> 329
     //   375: iconst_0
     //   376: ireturn
@@ -475,7 +476,7 @@ public class CommonBadgeUtilImpl
     //   423: astore 4
     //   425: goto -195 -> 230
     //   428: astore_3
-    //   429: ldc 99
+    //   429: ldc 102
     //   431: astore_3
     //   432: goto -274 -> 158
     //   435: astore 4
@@ -577,7 +578,7 @@ public class CommonBadgeUtilImpl
         bool = true;
       }
       if (!bool) {
-        break label218;
+        break label234;
       }
     }
     for (;;)
@@ -600,6 +601,11 @@ public class CommonBadgeUtilImpl
         break;
       }
       if (Build.MANUFACTURER.equalsIgnoreCase("huawei"))
+      {
+        bool = true;
+        break;
+      }
+      if (Build.MANUFACTURER.equalsIgnoreCase("HONOR"))
       {
         bool = true;
         break;
@@ -629,7 +635,7 @@ public class CommonBadgeUtilImpl
       }
       bool = true;
       break;
-      label218:
+      label234:
       i = 2;
     }
   }
@@ -706,6 +712,11 @@ public class CommonBadgeUtilImpl
         setHuaweiBadge(paramContext, paramInt);
         return;
       }
+      if (Build.MANUFACTURER.equalsIgnoreCase("HONOR"))
+      {
+        setHuaweiBadge(paramContext, paramInt);
+        return;
+      }
       if ((Build.MANUFACTURER.equalsIgnoreCase("OPPO")) || (Build.MANUFACTURER.equalsIgnoreCase("Realme")))
       {
         changeOPPOBadge(paramContext, paramInt);
@@ -748,118 +759,118 @@ public class CommonBadgeUtilImpl
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: new 519	android/content/ContentValues
+    //   2: new 522	android/content/ContentValues
     //   5: dup
-    //   6: invokespecial 520	android/content/ContentValues:<init>	()V
+    //   6: invokespecial 523	android/content/ContentValues:<init>	()V
     //   9: astore 4
     //   11: aload_0
-    //   12: invokestatic 278	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:getLauncherClassName	(Landroid/content/Context;)Ljava/lang/String;
+    //   12: invokestatic 281	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:getLauncherClassName	(Landroid/content/Context;)Ljava/lang/String;
     //   15: astore_3
     //   16: aload_3
     //   17: ifnonnull +4 -> 21
     //   20: return
     //   21: aload 4
-    //   23: ldc_w 505
+    //   23: ldc_w 508
     //   26: aload_0
-    //   27: invokevirtual 285	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   30: invokevirtual 523	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokevirtual 288	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   30: invokevirtual 526	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: aload 4
-    //   35: ldc_w 511
+    //   35: ldc_w 514
     //   38: aload_3
-    //   39: invokevirtual 523	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   39: invokevirtual 526	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   42: aload 4
-    //   44: ldc_w 525
+    //   44: ldc_w 528
     //   47: iload_1
-    //   48: invokestatic 231	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   51: invokevirtual 528	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   48: invokestatic 234	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   51: invokevirtual 531	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
     //   54: aload 4
-    //   56: ldc_w 530
-    //   59: ldc 99
-    //   61: invokevirtual 523	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   56: ldc_w 533
+    //   59: ldc 102
+    //   61: invokevirtual 526	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   64: aload_0
-    //   65: invokevirtual 138	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   65: invokevirtual 141	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   68: astore_3
-    //   69: ldc 56
-    //   71: invokestatic 146	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   69: ldc 59
+    //   71: invokestatic 149	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   74: astore 5
     //   76: aload_0
-    //   77: invokevirtual 285	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   77: invokevirtual 288	android/content/Context:getPackageName	()Ljava/lang/String;
     //   80: astore 6
     //   82: aload_3
     //   83: aload 5
     //   85: iconst_4
-    //   86: anewarray 87	java/lang/String
+    //   86: anewarray 90	java/lang/String
     //   89: dup
     //   90: iconst_0
-    //   91: ldc_w 505
+    //   91: ldc_w 508
     //   94: aastore
     //   95: dup
     //   96: iconst_1
-    //   97: ldc_w 511
+    //   97: ldc_w 514
     //   100: aastore
     //   101: dup
     //   102: iconst_2
-    //   103: ldc_w 525
+    //   103: ldc_w 528
     //   106: aastore
     //   107: dup
     //   108: iconst_3
-    //   109: ldc_w 530
+    //   109: ldc_w 533
     //   112: aastore
-    //   113: ldc_w 532
+    //   113: ldc_w 535
     //   116: iconst_1
-    //   117: anewarray 87	java/lang/String
+    //   117: anewarray 90	java/lang/String
     //   120: dup
     //   121: iconst_0
     //   122: aload 6
     //   124: aastore
     //   125: aconst_null
-    //   126: invokevirtual 536	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   126: invokevirtual 539	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   129: astore_3
     //   130: aload_3
     //   131: astore_2
     //   132: aload_2
     //   133: ifnull +61 -> 194
     //   136: aload_2
-    //   137: invokeinterface 542 1 0
+    //   137: invokeinterface 545 1 0
     //   142: ifle +52 -> 194
     //   145: aload_2
-    //   146: invokeinterface 545 1 0
+    //   146: invokeinterface 548 1 0
     //   151: ifeq +32 -> 183
     //   154: aload_0
-    //   155: invokevirtual 138	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   158: ldc 56
-    //   160: invokestatic 146	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   155: invokevirtual 141	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   158: ldc 59
+    //   160: invokestatic 149	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   163: aload 4
-    //   165: ldc_w 532
+    //   165: ldc_w 535
     //   168: iconst_1
-    //   169: anewarray 87	java/lang/String
+    //   169: anewarray 90	java/lang/String
     //   172: dup
     //   173: iconst_0
     //   174: aload_0
-    //   175: invokevirtual 285	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   175: invokevirtual 288	android/content/Context:getPackageName	()Ljava/lang/String;
     //   178: aastore
-    //   179: invokevirtual 549	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   179: invokevirtual 552	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
     //   182: pop
     //   183: aload_2
     //   184: ifnull -164 -> 20
     //   187: aload_2
-    //   188: invokeinterface 550 1 0
+    //   188: invokeinterface 553 1 0
     //   193: return
-    //   194: ldc 29
-    //   196: ldc_w 552
-    //   199: invokestatic 301	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   194: ldc 32
+    //   196: ldc_w 555
+    //   199: invokestatic 304	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   202: pop
     //   203: aload_0
-    //   204: invokevirtual 138	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   207: ldc 56
-    //   209: invokestatic 146	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   204: invokevirtual 141	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   207: ldc 59
+    //   209: invokestatic 149	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   212: aload 4
-    //   214: invokevirtual 556	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   214: invokevirtual 559	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
     //   217: pop
     //   218: aload_2
     //   219: ifnull -199 -> 20
     //   222: aload_2
-    //   223: invokeinterface 550 1 0
+    //   223: invokeinterface 553 1 0
     //   228: return
     //   229: astore_0
     //   230: aconst_null
@@ -867,13 +878,13 @@ public class CommonBadgeUtilImpl
     //   232: aload_2
     //   233: ifnull -213 -> 20
     //   236: aload_2
-    //   237: invokeinterface 550 1 0
+    //   237: invokeinterface 553 1 0
     //   242: return
     //   243: astore_0
     //   244: aload_2
     //   245: ifnull +9 -> 254
     //   248: aload_2
-    //   249: invokeinterface 550 1 0
+    //   249: invokeinterface 553 1 0
     //   254: aload_0
     //   255: athrow
     //   256: astore_0
@@ -937,19 +948,19 @@ public class CommonBadgeUtilImpl
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: getstatic 82	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:haveprovider	Ljava/lang/Boolean;
+    //   3: getstatic 85	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:haveprovider	Ljava/lang/Boolean;
     //   6: ifnonnull +265 -> 271
-    //   9: ldc_w 572
-    //   12: invokestatic 146	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   9: ldc_w 575
+    //   12: invokestatic 149	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   15: astore_3
     //   16: aload_0
-    //   17: invokevirtual 138	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   17: invokevirtual 141	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   20: aload_3
     //   21: aconst_null
     //   22: aconst_null
     //   23: aconst_null
     //   24: aconst_null
-    //   25: invokevirtual 536	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   25: invokevirtual 539	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   28: astore_3
     //   29: aload_3
     //   30: ifnonnull +27 -> 57
@@ -958,40 +969,40 @@ public class CommonBadgeUtilImpl
     //   36: aload_3
     //   37: astore 5
     //   39: iconst_0
-    //   40: invokestatic 577	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   43: putstatic 82	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:haveprovider	Ljava/lang/Boolean;
+    //   40: invokestatic 580	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   43: putstatic 85	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:haveprovider	Ljava/lang/Boolean;
     //   46: aload_3
     //   47: ifnull +9 -> 56
     //   50: aload_3
-    //   51: invokeinterface 550 1 0
+    //   51: invokeinterface 553 1 0
     //   56: return
     //   57: aload_3
     //   58: astore 4
     //   60: aload_3
     //   61: astore 5
     //   63: iconst_1
-    //   64: invokestatic 577	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   67: putstatic 82	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:haveprovider	Ljava/lang/Boolean;
+    //   64: invokestatic 580	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   67: putstatic 85	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:haveprovider	Ljava/lang/Boolean;
     //   70: aload_3
     //   71: astore 4
     //   73: aload_3
     //   74: astore 5
-    //   76: getstatic 82	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:haveprovider	Ljava/lang/Boolean;
-    //   79: invokevirtual 580	java/lang/Boolean:booleanValue	()Z
+    //   76: getstatic 85	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:haveprovider	Ljava/lang/Boolean;
+    //   79: invokevirtual 583	java/lang/Boolean:booleanValue	()Z
     //   82: ifeq +138 -> 220
     //   85: aload_3
     //   86: astore 4
     //   88: aload_3
     //   89: astore 5
     //   91: aload_0
-    //   92: invokestatic 278	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:getLauncherClassName	(Landroid/content/Context;)Ljava/lang/String;
+    //   92: invokestatic 281	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:getLauncherClassName	(Landroid/content/Context;)Ljava/lang/String;
     //   95: astore 6
     //   97: aload 6
     //   99: ifnonnull +14 -> 113
     //   102: aload_3
     //   103: ifnull -47 -> 56
     //   106: aload_3
-    //   107: invokeinterface 550 1 0
+    //   107: invokeinterface 553 1 0
     //   112: return
     //   113: iload_1
     //   114: istore_2
@@ -1000,50 +1011,50 @@ public class CommonBadgeUtilImpl
     //   118: aload_3
     //   119: astore 5
     //   121: iload_1
-    //   122: getstatic 105	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:mLimitCount	I
+    //   122: getstatic 108	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:mLimitCount	I
     //   125: if_icmple +13 -> 138
     //   128: aload_3
     //   129: astore 4
     //   131: aload_3
     //   132: astore 5
-    //   134: getstatic 105	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:mLimitCount	I
+    //   134: getstatic 108	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:mLimitCount	I
     //   137: istore_2
     //   138: aload_3
     //   139: astore 4
     //   141: aload_3
     //   142: astore 5
-    //   144: new 254	android/content/Intent
+    //   144: new 257	android/content/Intent
     //   147: dup
-    //   148: ldc_w 582
-    //   151: invokespecial 257	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   148: ldc_w 585
+    //   151: invokespecial 260	android/content/Intent:<init>	(Ljava/lang/String;)V
     //   154: astore 7
     //   156: aload_3
     //   157: astore 4
     //   159: aload_3
     //   160: astore 5
     //   162: aload 7
-    //   164: ldc_w 584
+    //   164: ldc_w 587
     //   167: iload_2
-    //   168: invokevirtual 292	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   168: invokevirtual 295	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   171: pop
     //   172: aload_3
     //   173: astore 4
     //   175: aload_3
     //   176: astore 5
     //   178: aload 7
-    //   180: ldc_w 586
+    //   180: ldc_w 589
     //   183: aload_0
-    //   184: invokevirtual 285	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   187: invokevirtual 263	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   184: invokevirtual 288	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   187: invokevirtual 266	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   190: pop
     //   191: aload_3
     //   192: astore 4
     //   194: aload_3
     //   195: astore 5
     //   197: aload 7
-    //   199: ldc_w 588
+    //   199: ldc_w 591
     //   202: aload 6
-    //   204: invokevirtual 263	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   204: invokevirtual 266	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   207: pop
     //   208: aload_3
     //   209: astore 4
@@ -1051,11 +1062,11 @@ public class CommonBadgeUtilImpl
     //   212: astore 5
     //   214: aload_0
     //   215: aload 7
-    //   217: invokevirtual 267	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
+    //   217: invokevirtual 270	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
     //   220: aload_3
     //   221: ifnull -165 -> 56
     //   224: aload_3
-    //   225: invokeinterface 550 1 0
+    //   225: invokeinterface 553 1 0
     //   230: return
     //   231: astore_0
     //   232: aconst_null
@@ -1063,13 +1074,13 @@ public class CommonBadgeUtilImpl
     //   235: aload 5
     //   237: ifnull -181 -> 56
     //   240: aload 5
-    //   242: invokeinterface 550 1 0
+    //   242: invokeinterface 553 1 0
     //   247: return
     //   248: astore_0
     //   249: aload 4
     //   251: ifnull +10 -> 261
     //   254: aload 4
-    //   256: invokeinterface 550 1 0
+    //   256: invokeinterface 553 1 0
     //   261: aload_0
     //   262: athrow
     //   263: astore_0

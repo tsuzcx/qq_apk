@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
-import vgh;
-import vgv;
+import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSPlayer;
 
-public class WSPlayerWrapper$2
+class WSPlayerWrapper$2
   implements Runnable
 {
-  public WSPlayerWrapper$2(vgh paramvgh, vgv paramvgv) {}
+  WSPlayerWrapper$2(WSPlayerWrapper paramWSPlayerWrapper, IWSPlayer paramIWSPlayer) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class WSPlayerWrapper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerWrapper.2
  * JD-Core Version:    0.7.0.1
  */

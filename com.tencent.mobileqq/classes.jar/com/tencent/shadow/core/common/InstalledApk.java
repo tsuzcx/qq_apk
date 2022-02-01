@@ -3,18 +3,17 @@ package com.tencent.shadow.core.common;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.shadow.proguard.a;
 
 public class InstalledApk
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new a();
+  public static final Parcelable.Creator<InstalledApk> CREATOR = new InstalledApk.1();
   public final String apkFilePath;
   public final String libraryPath;
   public final String oDexPath;
   public final byte[] parcelExtras;
   
-  public InstalledApk(Parcel paramParcel)
+  protected InstalledApk(Parcel paramParcel)
   {
     this.apkFilePath = paramParcel.readString();
     this.oDexPath = paramParcel.readString();
@@ -66,7 +65,7 @@ public class InstalledApk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.shadow.core.common.InstalledApk
  * JD-Core Version:    0.7.0.1
  */

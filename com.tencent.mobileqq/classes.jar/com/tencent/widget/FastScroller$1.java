@@ -10,11 +10,11 @@ class FastScroller$1
     int k;
     int j;
     int i;
-    if (this.this$0.jdField_a_of_type_ComTencentWidgetAbsListView.mIsAttached)
+    if (this.this$0.mList.mIsAttached)
     {
-      this.this$0.f();
-      k = this.this$0.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight();
-      j = (int)this.this$0.jdField_a_of_type_Float - this.this$0.jdField_a_of_type_Int + 10;
+      this.this$0.beginDrag();
+      k = this.this$0.mList.getHeight();
+      j = (int)this.this$0.mInitialTouchY - this.this$0.mThumbH + 10;
       if (j >= 0) {
         break label100;
       }
@@ -22,14 +22,14 @@ class FastScroller$1
     }
     for (;;)
     {
-      this.this$0.c = i;
-      this.this$0.a(this.this$0.c / (k - this.this$0.jdField_a_of_type_Int));
-      this.this$0.b = false;
+      this.this$0.mThumbY = i;
+      this.this$0.scrollTo(this.this$0.mThumbY / (k - this.this$0.mThumbH));
+      this.this$0.mPendingDrag = false;
       return;
       label100:
       i = j;
-      if (this.this$0.jdField_a_of_type_Int + j > k) {
-        i = k - this.this$0.jdField_a_of_type_Int;
+      if (this.this$0.mThumbH + j > k) {
+        i = k - this.this$0.mThumbH;
       }
     }
   }

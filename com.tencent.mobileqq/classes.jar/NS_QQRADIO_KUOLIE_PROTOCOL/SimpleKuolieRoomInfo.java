@@ -13,17 +13,17 @@ public final class SimpleKuolieRoomInfo
   static BackgroundColor cache_roomColor = new BackgroundColor();
   public String backgroundPicUrl = "";
   public String coverurl = "";
-  public Map<String, String> extendInfo;
-  public long favTime;
-  public int isFav;
+  public Map<String, String> extendInfo = null;
+  public long favTime = 0L;
+  public int isFav = 0;
   public String logo = "";
   public String nickname = "";
-  public long onlineNum;
+  public long onlineNum = 0L;
   public String owner = "";
-  public BackgroundColor roomColor;
+  public BackgroundColor roomColor = null;
   public String roomID = "";
   public String roomName = "";
-  public int roomStatus;
+  public int roomStatus = 0;
   
   static
   {

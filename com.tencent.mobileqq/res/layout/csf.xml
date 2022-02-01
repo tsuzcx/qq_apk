@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="29.0dip"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/nqs" android:layout_width="wrap_content" android:layout_height="29.0dip" android:layout_marginTop="10.0dip">
-        <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/nqt" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="3.0dip" />
-        <TextView android:textSize="14.0dip" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/nqu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:text="班级投票聚餐" android:maxEms="6" android:singleLine="true" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/nqr" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/h0k" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/b8q" android:background="@drawable/ea9" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/h48" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/mdl" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:text="深圳大学" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/n_l" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/h4c" android:scaleType="centerInside" />
     </LinearLayout>
-    <View android:layout_width="8.0dip" android:layout_height="29.0dip" />
-</LinearLayout>
+</FrameLayout>

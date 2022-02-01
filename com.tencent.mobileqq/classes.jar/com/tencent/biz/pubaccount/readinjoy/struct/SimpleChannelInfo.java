@@ -3,19 +3,18 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import rqi;
 
 public class SimpleChannelInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SimpleChannelInfo> CREATOR = new rqi();
+  public static final Parcelable.Creator<SimpleChannelInfo> CREATOR = new SimpleChannelInfo.1();
   public long a;
   public String a;
   public long b;
   
   public SimpleChannelInfo() {}
   
-  public SimpleChannelInfo(Parcel paramParcel)
+  protected SimpleChannelInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Long = paramParcel.readLong();
@@ -36,7 +35,7 @@ public class SimpleChannelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.SimpleChannelInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.app.message;
 
-import acnh;
-import aont;
-import aoxv;
-import aoxz;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 import com.tencent.mobileqq.data.DataLineMsgSetList;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import java.util.Map;
 
-public class DatalineMessageManager$3
+class DatalineMessageManager$3
   implements Runnable
 {
-  public DatalineMessageManager$3(aont paramaont, DataLineMsgSet paramDataLineMsgSet) {}
+  DatalineMessageManager$3(DatalineMessageManager paramDatalineMessageManager, DataLineMsgSet paramDataLineMsgSet) {}
   
   public void run()
   {
@@ -29,13 +27,13 @@ public class DatalineMessageManager$3
     int i;
     if (this.this$0.a().a(this.a) > 0)
     {
-      localObject1 = acnh.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
-      if (!this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.containsKey(localObject1)) {
-        break label409;
+      localObject1 = UinTypeUtil.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+      if (!this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.containsKey(localObject1)) {
+        break label408;
       }
-      bool = ((QQMessageFacade.Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.get(localObject1)).hasReply;
-      i = ((QQMessageFacade.Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.get(localObject1)).counter;
-      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.remove(localObject1);
+      bool = ((Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.get(localObject1)).hasReply;
+      i = ((Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.get(localObject1)).counter;
+      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.remove(localObject1);
     }
     for (;;)
     {
@@ -58,33 +56,33 @@ public class DatalineMessageManager$3
             }
           }
         }
-        localObject2 = new QQMessageFacade.Message();
+        localObject2 = new Message();
         if (localObject1 != null)
         {
           MessageRecord.copyMessageRecordBaseField((MessageRecord)localObject2, (MessageRecord)localObject1);
-          ((QQMessageFacade.Message)localObject2).emoRecentMsg = null;
-          ((QQMessageFacade.Message)localObject2).counter = i;
-          ((QQMessageFacade.Message)localObject2).hasReply = bool;
-          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.decodeMsg((QQMessageFacade.Message)localObject2);
-          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.put(acnh.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int), localObject2);
+          ((Message)localObject2).emoRecentMsg = null;
+          ((Message)localObject2).counter = i;
+          ((Message)localObject2).hasReply = bool;
+          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a((Message)localObject2);
+          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.put(UinTypeUtil.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int), localObject2);
         }
       }
       Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
       localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject2 = (RecentUser)((aoxz)localObject2).findRecentUserByUin(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+      localObject2 = ((RecentUserProxy)localObject2).a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
       ((EntityManager)localObject1).close();
       if (localObject2 != null) {
-        this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(localObject2);
+        this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localObject2);
       }
       return;
-      label409:
+      label408:
       i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.DatalineMessageManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,10 @@ package com.tencent.superplayer.player;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer;
+import com.tencent.superplayer.api.SuperPlayerMsg;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.api.TVideoNetInfo;
 import com.tencent.superplayer.utils.LogUtil;
-import com.tencent.superplayer.utils.Utils;
 import com.tencent.thumbplayer.api.ITPPlayer;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
 import com.tencent.thumbplayer.api.TPSubtitleData;
@@ -103,7 +103,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
     if (SuperPlayerWrapper.access$700(this.this$0, paramInt, paramLong1, paramLong2, paramObject)) {
       return;
     }
-    paramInt = Utils.convertPlayerMsg(paramInt);
+    paramInt = SuperPlayerMsg.convert(paramInt);
     LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onInfo, what:" + paramInt + ", arg1:" + paramLong1 + ", arg2:" + paramLong2 + ", extraObject:" + paramObject);
     this.mWrapperCallback.onInfo(this.this$0, paramInt, paramLong1, paramLong2, paramObject);
   }
@@ -145,7 +145,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerWrapper.TPPlayerListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

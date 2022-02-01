@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ngp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/o4x" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="marquee" android:id="@id/lvg" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
-    <ImageView android:id="@id/lvi" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/gm0" android:layout_toRightOf="@id/lvg" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
-</RelativeLayout>
+    <RelativeLayout android:id="@id/m6n" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <ImageView android:id="@id/lo1" android:paddingLeft="15.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hly" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/u3" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="我的购物" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/o4y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

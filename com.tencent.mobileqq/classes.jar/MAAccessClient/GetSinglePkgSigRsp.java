@@ -8,7 +8,7 @@ public final class GetSinglePkgSigRsp
   extends JceStruct
 {
   public String pkgSig = "";
-  public int ret;
+  public int ret = 0;
   
   public GetSinglePkgSigRsp() {}
   

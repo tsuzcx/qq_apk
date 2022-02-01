@@ -3,26 +3,24 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import anvx;
-import bdla;
-import bebl;
-import bece;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public class TeamWorkFileImportHandler$10
+class TeamWorkFileImportHandler$10
   implements Runnable
 {
-  public TeamWorkFileImportHandler$10(bebl parambebl, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  TeamWorkFileImportHandler$10(TeamWorkFileImportHandler paramTeamWorkFileImportHandler, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
-    if ((this.this$0.app == null) || (this.a == null) || (TextUtils.isEmpty(this.a.c))) {
+    if ((TeamWorkFileImportHandler.a(this.this$0) == null) || (this.a == null) || (TextUtils.isEmpty(this.a.c))) {
       return;
     }
     long l1 = System.currentTimeMillis();
-    Object localObject1 = bece.c(this.a, this.this$0.app.getCurrentAccountUin());
+    Object localObject1 = TeamWorkHttpUtils.c(this.a, TeamWorkFileImportHandler.a(this.this$0).getCurrentAccountUin());
     long l2 = System.currentTimeMillis();
     Object localObject2 = "";
     if (localObject1 != null) {}
@@ -58,22 +56,22 @@ public class TeamWorkFileImportHandler$10
           }
         }
       }
-      localObject1 = anvx.a(2131714189);
+      localObject1 = HardCodeUtil.a(2131714685);
       if (this.a.e == 3)
       {
         localObject1 = "word";
-        localQQAppInterface = this.this$0.app;
+        localQQAppInterface = TeamWorkFileImportHandler.a(this.this$0);
         if (!bool) {
           continue;
         }
         i = 1;
-        bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
-        if ((bool) || (bebl.a(this.this$0) == null)) {
+        ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
+        if ((bool) || (TeamWorkFileImportHandler.a(this.this$0) == null)) {
           break;
         }
-        localObject1 = bebl.a(this.this$0).obtainMessage(8002);
+        localObject1 = TeamWorkFileImportHandler.a(this.this$0).obtainMessage(8002);
         ((Message)localObject1).obj = this.a;
-        bebl.a(this.this$0).sendMessage((Message)localObject1);
+        TeamWorkFileImportHandler.a(this.this$0).sendMessage((Message)localObject1);
         return;
       }
     }

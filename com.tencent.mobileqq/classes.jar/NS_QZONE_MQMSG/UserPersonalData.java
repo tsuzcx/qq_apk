@@ -12,7 +12,7 @@ public final class UserPersonalData
   static Map<Long, UserPersonalProfile> cache_mpUinToProfile = new HashMap();
   public String bigVipJumpUrl = "";
   public String lJumpUrl = "";
-  public Map<Long, UserPersonalProfile> mpUinToProfile;
+  public Map<Long, UserPersonalProfile> mpUinToProfile = null;
   public String yJumpUrl = "";
   
   static

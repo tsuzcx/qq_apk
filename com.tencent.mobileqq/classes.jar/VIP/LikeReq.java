@@ -8,9 +8,9 @@ public final class LikeReq
   extends JceStruct
 {
   static SourceInfo cache_stSource = new SourceInfo();
-  public long fromUin;
-  public SourceInfo stSource;
-  public long toUin;
+  public long fromUin = 0L;
+  public SourceInfo stSource = null;
+  public long toUin = 0L;
   
   public LikeReq() {}
   

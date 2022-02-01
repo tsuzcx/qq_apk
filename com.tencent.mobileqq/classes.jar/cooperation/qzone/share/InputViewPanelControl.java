@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
-import anvx;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.mobileqq.text.QzoneTextBuilder;
@@ -180,7 +180,7 @@ public class InputViewPanelControl
     {
       paramEditText = getPalinText(paramEditText);
       if (!TextUtils.isEmpty(paramEditText)) {
-        return ReplaceFormatUser(paramEditText, paramList).replaceAll(anvx.a(2131705272), anvx.a(2131705276)).replaceAll(anvx.a(2131705273), "/MM");
+        return ReplaceFormatUser(paramEditText, paramList).replaceAll(HardCodeUtil.a(2131705815), HardCodeUtil.a(2131705819)).replaceAll(HardCodeUtil.a(2131705816), "/MM");
       }
     }
     return "";
@@ -219,7 +219,7 @@ public class InputViewPanelControl
     if ((paramEditText == null) || (TextUtils.isEmpty(paramString)) || (paramInt < 0)) {
       return;
     }
-    Editable localEditable = QzoneTextBuilder.EMOCTATION_FACORY.newEditable(paramEditText.getText());
+    Editable localEditable = QzoneTextBuilder.a.newEditable(paramEditText.getText());
     localEditable.insert(paramInt, paramString);
     try
     {
@@ -311,7 +311,7 @@ public class InputViewPanelControl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.share.InputViewPanelControl
  * JD-Core Version:    0.7.0.1
  */

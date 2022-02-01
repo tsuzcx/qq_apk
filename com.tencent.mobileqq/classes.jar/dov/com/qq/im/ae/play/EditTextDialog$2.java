@@ -18,7 +18,7 @@ class EditTextDialog$2
   public void onClick(View paramView)
   {
     if (EditTextDialog.access$300(this.this$0).getText().length() > EditTextDialog.access$000(this.this$0)) {
-      QQToast.a(this.this$0.getContext(), this.this$0.getContext().getString(2131689779, new Object[] { Integer.valueOf(EditTextDialog.access$000(this.this$0)) }), 1).a();
+      QQToast.a(this.this$0.getContext(), this.this$0.getContext().getString(2131689819, new Object[] { Integer.valueOf(EditTextDialog.access$000(this.this$0)) }), 1).a();
     }
     for (;;)
     {
@@ -57,7 +57,7 @@ class EditTextDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.EditTextDialog.2
  * JD-Core Version:    0.7.0.1
  */

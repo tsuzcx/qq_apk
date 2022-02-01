@@ -1,13 +1,11 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import ynw;
-import yog;
 
-public class EditVideoPlayer$3
+class EditVideoPlayer$3
   implements Runnable
 {
-  public EditVideoPlayer$3(yog paramyog) {}
+  EditVideoPlayer$3(EditVideoPlayer paramEditVideoPlayer) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public class EditVideoPlayer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoPlayer.3
  * JD-Core Version:    0.7.0.1
  */

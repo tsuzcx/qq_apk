@@ -18,6 +18,8 @@ public class PluginBaseInfo
   public static final int STATE_INSTALLING = 3;
   public static final int STATE_NODOWNLOAD = 0;
   public static final int STATE_WAITING_INST_OR_DOWN = 5;
+  public static final int SUB_TYPE_QQ_PLUGIN = 0;
+  public static final int SUB_TYPE_SHADOW_PLUGIN = 1;
   public static final int TYPE_APP = 2;
   public static final int TYPE_COUNT = 3;
   public static final int TYPE_PART = 0;
@@ -41,6 +43,7 @@ public class PluginBaseInfo
   public String mPackageName = "";
   public String[] mProcesses = new String[0];
   public int mState;
+  public int mSubType;
   public int mType;
   public String mURL = "";
   public int mUpdateType = 1;
@@ -58,6 +61,7 @@ public class PluginBaseInfo
     this.mMD5 = paramParcel.readString();
     this.mLength = paramParcel.readLong();
     this.mType = paramParcel.readInt();
+    this.mSubType = paramParcel.readInt();
     this.mCurVersion = paramParcel.readLong();
     this.mPackageName = paramParcel.readString();
     this.mState = paramParcel.readInt();
@@ -103,6 +107,7 @@ public class PluginBaseInfo
     paramParcel.writeString(this.mMD5);
     paramParcel.writeLong(this.mLength);
     paramParcel.writeInt(this.mType);
+    paramParcel.writeInt(this.mSubType);
     paramParcel.writeLong(this.mCurVersion);
     paramParcel.writeString(this.mPackageName);
     paramParcel.writeInt(this.mState);

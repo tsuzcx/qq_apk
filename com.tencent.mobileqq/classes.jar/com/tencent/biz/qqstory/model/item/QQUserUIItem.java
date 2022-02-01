@@ -1,14 +1,21 @@
 package com.tencent.biz.qqstory.model.item;
 
 import android.text.TextUtils;
-import anvk;
 import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.database.OfficialRecommendEntry;
 import com.tencent.biz.qqstory.database.UserEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.network.handler.GetUserIconHandler;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.UsrIcon;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.WatcherExt;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.StringAppendTool;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.FeedUtils;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -18,25 +25,17 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import vzk;
-import wjs;
-import wke;
-import wkw;
-import wqw;
-import yey;
-import ykq;
-import zdz;
 
 public class QQUserUIItem
   extends BaseUIItem
-  implements vzk, wkw
+  implements Copyable, IFeedOwner
 {
   public static final int RELATION_TYPE_FOLLOWER = 1;
   public static final int RELATION_TYPE_QQ_FRIEND = 0;
   public static final int RELATION_TYPE_TROOP = 2;
   public static final String USERICON_JUMP_PREFIX = "https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031";
   public static final String USERICON_PREFIX = "https://pub.idqqimg.com/pc/misc/qqstory_icon/";
-  public String backgroundUrl;
+  public String backgroundUrl = null;
   public int fansCount = -1;
   public int fansCountExtra = -1;
   public int followCount = -1;
@@ -44,11 +43,11 @@ public class QQUserUIItem
   public long groupIdInGroup = -1L;
   public int hasLike = -1;
   public String headUrl;
-  private String iconJumpUrl;
-  private String iconUrl;
+  private String iconJumpUrl = null;
+  private String iconUrl = null;
   public long iconUrlCacheTime = -1L;
   public int isSubscribe = -1;
-  public boolean isVip;
+  public boolean isVip = false;
   public int mComparePartInt;
   public String mCompareSpell;
   public int medalLevel = -2147483648;
@@ -58,7 +57,7 @@ public class QQUserUIItem
   public int relationType = -1;
   public String remark;
   public int shareGroupCount = -1;
-  public String signature;
+  public String signature = null;
   public int sourceTagType = -2147483648;
   public String symbolUrl;
   public String uid;
@@ -162,7 +161,7 @@ public class QQUserUIItem
     int i = 1;
     this.uid = paramUserInfo.union_id.get().toStringUtf8();
     this.qq = String.valueOf(paramUserInfo.uid.get());
-    ((wke)wjs.a(2)).a(this.uid, this.qq);
+    ((UserManager)SuperManager.a(2)).a(this.uid, this.qq);
     this.nickName = paramUserInfo.nick.get().toStringUtf8();
     this.headUrl = paramUserInfo.head_url.get().toStringUtf8();
     boolean bool;
@@ -240,7 +239,7 @@ public class QQUserUIItem
     for (this.sourceTagType = paramUserInfo.video_source_tag_type.get();; this.sourceTagType = 0)
     {
       if (QLog.isColorLevel()) {
-        ykq.a("UserManager", "convert %s", this.uid);
+        SLog.a("UserManager", "convert %s", this.uid);
       }
       return;
       bool = false;
@@ -267,7 +266,7 @@ public class QQUserUIItem
       if (!TextUtils.isEmpty(paramObject.headUrl))
       {
         if ((isMe()) && (!TextUtils.isEmpty(this.headUrl)) && (!TextUtils.equals(this.headUrl, paramObject.headUrl))) {
-          ykq.b("UserManager", "urlchange: %s -> %s  hashCode = %d -> %d %s", new Object[] { this.headUrl, paramObject.headUrl, Integer.valueOf(hashCode()), Integer.valueOf(paramObject.hashCode()), zdz.a(8) });
+          SLog.b("UserManager", "urlchange: %s -> %s  hashCode = %d -> %d %s", new Object[] { this.headUrl, paramObject.headUrl, Integer.valueOf(hashCode()), Integer.valueOf(paramObject.hashCode()), FeedUtils.a(8) });
         }
         this.headUrl = paramObject.headUrl;
       }
@@ -400,8 +399,8 @@ public class QQUserUIItem
     }
     if ((this.iconUrlCacheTime == -1L) || (l - this.iconUrlCacheTime > 3600000L))
     {
-      new wqw();
-      wqw.a(this.uid);
+      new GetUserIconHandler();
+      GetUserIconHandler.a(this.uid);
     }
     return this.iconUrl;
   }
@@ -438,7 +437,7 @@ public class QQUserUIItem
       bool2 = bool1;
     } while (bool1);
     QQStoryContext.a();
-    return ((anvk)QQStoryContext.a().getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.qq);
+    return ((FriendsManager)QQStoryContext.a().getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.qq);
   }
   
   public boolean isMe()
@@ -498,12 +497,12 @@ public class QQUserUIItem
   
   public String toString()
   {
-    return yey.a(new Object[] { "QQUserUIItem{nickName=", this.nickName, ", uid=", this.uid, ", isVip=", Boolean.valueOf(this.isVip), ",qq=", this.qq, ",isSubscribe=", Integer.valueOf(this.isSubscribe), ", headUrl=", this.headUrl, ", sourceTagType=", Integer.valueOf(this.sourceTagType) });
+    return StringAppendTool.a(new Object[] { "QQUserUIItem{nickName=", this.nickName, ", uid=", this.uid, ", isVip=", Boolean.valueOf(this.isVip), ",qq=", this.qq, ",isSubscribe=", Integer.valueOf(this.isSubscribe), ", headUrl=", this.headUrl, ", sourceTagType=", Integer.valueOf(this.sourceTagType) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.QQUserUIItem
  * JD-Core Version:    0.7.0.1
  */

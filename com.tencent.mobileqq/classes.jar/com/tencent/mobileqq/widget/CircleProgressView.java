@@ -24,9 +24,9 @@ public class CircleProgressView
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private boolean jdField_b_of_type_Boolean = true;
   private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private int d = 10;
-  private int e;
+  private int e = 0;
   private int f = 40;
   private int g = 3;
   private int h = 4;
@@ -155,7 +155,7 @@ public class CircleProgressView
     paramCanvas.restore();
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_Int = paramInt1;
@@ -225,7 +225,7 @@ public class CircleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleProgressView
  * JD-Core Version:    0.7.0.1
  */

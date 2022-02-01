@@ -1,8 +1,6 @@
 package com.tencent.ttpic.util;
 
 import android.graphics.PointF;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.SHADER_TYPE;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,19 +40,10 @@ public class TransformUtil
     paramList.add(new PointF(f1, (((PointF)paramList.get(81)).y + f2) / 2.0F));
     return paramList;
   }
-  
-  public static boolean isTransformMaterial(VideoMaterial paramVideoMaterial)
-  {
-    if (paramVideoMaterial == null) {}
-    while ((paramVideoMaterial.getShaderType() != VideoMaterialUtil.SHADER_TYPE.TRANSFORM.value) && (paramVideoMaterial.getShaderType() != VideoMaterialUtil.SHADER_TYPE.FACE_OFF_TRANSFORM.value)) {
-      return false;
-    }
-    return true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.util.TransformUtil
  * JD-Core Version:    0.7.0.1
  */

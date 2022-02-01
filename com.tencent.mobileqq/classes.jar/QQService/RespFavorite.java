@@ -9,10 +9,10 @@ public final class RespFavorite
 {
   static RespHead cache_stHeader;
   static byte[] cache_vNotice;
-  public byte cOpType;
-  public long lMID;
-  public RespHead stHeader;
-  public byte[] vNotice;
+  public byte cOpType = 0;
+  public long lMID = 0L;
+  public RespHead stHeader = null;
+  public byte[] vNotice = null;
   
   public RespFavorite() {}
   

@@ -11,6 +11,7 @@ public class MiniGamePublicAccountViewPagerIndicator
   extends LinearLayout
   implements ViewPager.OnPageChangeListener
 {
+  private MiniGamePublicAccountViewPagerIndicator.IndicatorViewConfig mConfig;
   public ViewPager mViewPager;
   public MiniGamePublicAccountViewPagerIndicator.OnPageSelectedListener onPageSelectedListener;
   
@@ -106,29 +107,34 @@ public class MiniGamePublicAccountViewPagerIndicator
       j = 0;
       while (j < k)
       {
-        super.addView(new MiniGamePublicAccountViewPagerIndicator.IndicatorView(getContext()));
+        super.addView(new MiniGamePublicAccountViewPagerIndicator.IndicatorView(getContext(), this.mConfig));
         j += 1;
       }
       j = 0;
-      label110:
+      label114:
       if (j < super.getChildCount())
       {
         localObject = (MiniGamePublicAccountViewPagerIndicator.IndicatorView)super.getChildAt(j);
         if (localObject != null) {
           if (j != i) {
-            break label155;
+            break label159;
           }
         }
       }
-      label155:
+      label159:
       for (boolean bool = true;; bool = false)
       {
         ((MiniGamePublicAccountViewPagerIndicator.IndicatorView)localObject).setSelected(bool);
         j += 1;
-        break label110;
+        break label114;
         break;
       }
     }
+  }
+  
+  public void setIndicatorViewConfig(MiniGamePublicAccountViewPagerIndicator.IndicatorViewConfig paramIndicatorViewConfig)
+  {
+    this.mConfig = paramIndicatorViewConfig;
   }
   
   public void setOnPageSelectedListener(MiniGamePublicAccountViewPagerIndicator.OnPageSelectedListener paramOnPageSelectedListener)

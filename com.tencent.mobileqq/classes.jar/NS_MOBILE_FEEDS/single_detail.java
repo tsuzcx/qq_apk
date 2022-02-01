@@ -15,11 +15,11 @@ public final class single_detail
   public String feed_attach_info = "";
   public String feed_info = "";
   public String feedskey = "";
-  public ArrayList<Map<Integer, byte[]>> recomfeeds;
+  public ArrayList<Map<Integer, byte[]>> recomfeeds = null;
   public Map<Integer, byte[]> singledetail;
-  public long status;
-  public int time;
-  public long uContainerSubType;
+  public long status = 0L;
+  public int time = 0;
+  public long uContainerSubType = 0L;
   
   static
   {

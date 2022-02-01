@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.os.HandlerThread;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import aqcw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,33 +12,36 @@ import mqq.os.MqqHandler;
 
 public class SdCardImageAnimView
   extends ImageView
-  implements aqcw
+  implements FrameBmpCache.EndListener
 {
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  aqcw jdField_a_of_type_Aqcw = null;
+  FrameBmpCache.EndListener jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener = null;
   private FrameBmpCache jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache;
   private Runnable jdField_a_of_type_JavaLangRunnable = new SdCardImageAnimView.1(this);
   public boolean a;
   private Runnable jdField_b_of_type_JavaLangRunnable = new SdCardImageAnimView.2(this);
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = false;
+  private boolean d = false;
   
   public SdCardImageAnimView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
     b();
   }
   
   public SdCardImageAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
     b();
   }
   
   public SdCardImageAnimView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
     b();
   }
   
@@ -109,8 +111,8 @@ public class SdCardImageAnimView
   
   public void a(SdCardImageAnimView paramSdCardImageAnimView)
   {
-    if (this.jdField_a_of_type_Aqcw != null) {
-      this.jdField_a_of_type_Aqcw.a(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener.a(this);
     }
   }
   
@@ -152,9 +154,9 @@ public class SdCardImageAnimView
     ThreadManager.getSubThreadHandler().post(this.jdField_b_of_type_JavaLangRunnable);
   }
   
-  public void setEndListener(aqcw paramaqcw)
+  public void setEndListener(FrameBmpCache.EndListener paramEndListener)
   {
-    this.jdField_a_of_type_Aqcw = paramaqcw;
+    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener = paramEndListener;
   }
   
   public void setFPS(int paramInt)

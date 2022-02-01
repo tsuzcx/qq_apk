@@ -6,7 +6,7 @@ import android.os.Looper;
 import com.tencent.superplayer.api.SuperPlayerOption;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.player.SuperPlayerWrapper;
-import com.tencent.superplayer.utils.Utils;
+import com.tencent.superplayer.utils.CommonUtil;
 import com.tencent.superplayer.view.SPlayerVideoView;
 import java.util.Map;
 
@@ -17,7 +17,7 @@ class PreloadPlayerMgr$1
   
   public void run()
   {
-    Object localObject1 = Utils.createPlayerTag() + "-PreLoading";
+    Object localObject1 = CommonUtil.a() + "-PreLoading";
     Object localObject3 = new HandlerThread("SuperPlayer-" + (String)localObject1);
     ((HandlerThread)localObject3).start();
     localObject3 = ((HandlerThread)localObject3).getLooper();
@@ -45,7 +45,7 @@ class PreloadPlayerMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.preload.PreloadPlayerMgr.1
  * JD-Core Version:    0.7.0.1
  */

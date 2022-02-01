@@ -6,8 +6,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bdiw;
-import bisl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager;
@@ -15,6 +13,8 @@ import com.tencent.mobileqq.microapp.apkg.ApkgDebugConstants;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
 import com.tencent.mobileqq.microapp.apkg.g;
 import com.tencent.mobileqq.microapp.ext.ManagerProxy;
+import com.tencent.mobileqq.startup.step.ProcessInfoUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -31,7 +31,7 @@ public class MiniAppBridgeActivity
   public static final String TAG = "MiniAppBridgeActivity";
   private MiniAppConfig fromAppConfig;
   private LaunchParam launchParam;
-  private bisl mDialog;
+  private QQProgressDialog mDialog;
   private FakeUrl mFakeUrl;
   
   private void handleAbnormal(String paramString)
@@ -102,7 +102,7 @@ public class MiniAppBridgeActivity
       }
       if (!isFromDebugConfig(this.launchParam))
       {
-        long l = bdiw.a("com.tencent.mobileqq:miniapp");
+        long l = ProcessInfoUtil.a("com.tencent.mobileqq:miniapp");
         localWeakReference = new WeakReference(getActivity());
         localMiniAppConfig = localApkgConfigManager.getConfig(this.launchParam);
         if ((localMiniAppConfig == null) || (localMiniAppConfig.config == null) || (!new File(g.a(localMiniAppConfig.config)).exists()))
@@ -146,7 +146,7 @@ public class MiniAppBridgeActivity
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mDialog = new bisl(getActivity());
+    this.mDialog = new QQProgressDialog(getActivity());
     this.mDialog.a("正在加载中...");
     this.mDialog.setOnDismissListener(new MiniAppBridgeActivity.1(this));
     this.mDialog.show();

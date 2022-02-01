@@ -16,12 +16,12 @@ public final class ReqGetNeighbors
   static byte[] cache_strA2;
   public int eNewListType = NewListType.NewListType_Nomal.value();
   public int iListSize = -1;
-  public int iSimpleSort;
-  public byte[] nearbyGroupReq;
-  public ReqUserInfo stCheckInInfo;
-  public ReqHeader stHeader;
-  public UserData stUserData;
-  public byte[] strA2;
+  public int iSimpleSort = 0;
+  public byte[] nearbyGroupReq = null;
+  public ReqUserInfo stCheckInInfo = null;
+  public ReqHeader stHeader = null;
+  public UserData stUserData = null;
+  public byte[] strA2 = null;
   
   public ReqGetNeighbors() {}
   

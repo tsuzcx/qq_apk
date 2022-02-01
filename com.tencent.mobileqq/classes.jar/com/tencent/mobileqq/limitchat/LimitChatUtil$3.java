@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.limitchat;
 
-import aslm;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.extendfriend.network.ExtendFriendHandler;
 
-public final class LimitChatUtil$3
+final class LimitChatUtil$3
   implements Runnable
 {
-  public LimitChatUtil$3(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  LimitChatUtil$3(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    aslm localaslm = (aslm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
-    if (localaslm != null) {
-      localaslm.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    ExtendFriendHandler localExtendFriendHandler = (ExtendFriendHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
+    if (localExtendFriendHandler != null) {
+      localExtendFriendHandler.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
   }
 }

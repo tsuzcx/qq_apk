@@ -1,19 +1,24 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class QQAppInterface$20
   implements Runnable
 {
-  QQAppInterface$20(QQAppInterface paramQQAppInterface, StringBuilder paramStringBuilder) {}
+  QQAppInterface$20(QQAppInterface paramQQAppInterface, long paramLong, Intent paramIntent) {}
   
   public void run()
   {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.val$startTime;
     if (QLog.isColorLevel()) {
-      QLog.i("QQAppInterface", 2, "isCallTabShow needupdate,result=" + this.val$result);
+      QLog.i("Q.qqhead.broadcast", 2, "runNext, ThreadManager.excute, cost=" + (l1 - l2));
     }
-    SettingCloneUtil.writeValue(this.this$0.getApplication(), this.this$0.getCurrentAccountUin(), null, "qqsetting_calltab_show_key", this.val$result.toString());
+    QQAppInterface.access$3200(this.this$0, this.val$intent);
+    this.this$0.mRunningTaskNum.decrementAndGet();
+    QQAppInterface.access$3300(this.this$0);
   }
 }
 

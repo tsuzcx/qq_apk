@@ -1,10 +1,9 @@
 package androidx.lifecycle;
 
-import androidx.annotation.RestrictTo;
+import androidx.annotation.NonNull;
 
-@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class SingleGeneratedAdapterObserver
-  implements GenericLifecycleObserver
+class SingleGeneratedAdapterObserver
+  implements LifecycleEventObserver
 {
   private final GeneratedAdapter mGeneratedAdapter;
   
@@ -13,7 +12,7 @@ public class SingleGeneratedAdapterObserver
     this.mGeneratedAdapter = paramGeneratedAdapter;
   }
   
-  public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
+  public void onStateChanged(@NonNull LifecycleOwner paramLifecycleOwner, @NonNull Lifecycle.Event paramEvent)
   {
     this.mGeneratedAdapter.callMethods(paramLifecycleOwner, paramEvent, false, null);
     this.mGeneratedAdapter.callMethods(paramLifecycleOwner, paramEvent, true, null);
@@ -21,7 +20,7 @@ public class SingleGeneratedAdapterObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.lifecycle.SingleGeneratedAdapterObserver
  * JD-Core Version:    0.7.0.1
  */

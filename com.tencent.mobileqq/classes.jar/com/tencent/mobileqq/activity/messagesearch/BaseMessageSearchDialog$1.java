@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import akbr;
 import android.app.Activity;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import com.tencent.util.LiuHaiUtils;
 
-public class BaseMessageSearchDialog$1
+class BaseMessageSearchDialog$1
   implements Runnable
 {
-  public BaseMessageSearchDialog$1(akbr paramakbr, View paramView, Activity paramActivity) {}
+  BaseMessageSearchDialog$1(BaseMessageSearchDialog paramBaseMessageSearchDialog, View paramView, Activity paramActivity) {}
   
   public void run()
   {
@@ -23,12 +22,12 @@ public class BaseMessageSearchDialog$1
     if (arrayOfInt[1] < i) {
       this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), i, this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
     }
-    AIOUtils.showKeyboard(this.this$0.findViewById(2131366280));
+    AIOUtils.a(this.this$0.findViewById(2131366452));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.BaseMessageSearchDialog.1
  * JD-Core Version:    0.7.0.1
  */

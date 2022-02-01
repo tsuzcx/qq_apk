@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class IconInfo
   extends JceStruct
 {
-  public int iHigh;
-  public int iWidth;
+  public int iHigh = 0;
+  public int iWidth = 0;
   public String strUrl = "";
   
   public IconInfo() {}

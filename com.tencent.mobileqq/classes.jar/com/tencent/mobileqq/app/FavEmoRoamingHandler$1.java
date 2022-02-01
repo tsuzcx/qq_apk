@@ -3,10 +3,9 @@ package com.tencent.mobileqq.app;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anua;
-import asfi;
-import asfk;
-import awyr;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -17,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 import tencent.im.cs.faceroam_sso.faceroam_sso.RspUserInfo;
 
-public class FavEmoRoamingHandler$1
+class FavEmoRoamingHandler$1
   implements Runnable
 {
-  public FavEmoRoamingHandler$1(anua paramanua, faceroam_sso.RspUserInfo paramRspUserInfo, long paramLong) {}
+  FavEmoRoamingHandler$1(FavEmoRoamingHandler paramFavEmoRoamingHandler, faceroam_sso.RspUserInfo paramRspUserInfo, long paramLong) {}
   
   public void run()
   {
@@ -30,14 +29,14 @@ public class FavEmoRoamingHandler$1
       List localList2;
       try
       {
-        FileUtils.createFileIfNotExits(AppConstants.SDCARD_IMG_FAVORITE + ".nomedia");
+        FileUtils.c(AppConstants.SDCARD_IMG_FAVORITE + ".nomedia");
         localList1 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.filename.get();
         localList2 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.delete_file.get();
         localList3 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.uint32_emoji_type.get();
         localObject = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.bid.get();
         k = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.max_roam_size.get();
-        asfi.a = k;
-        String str = this.this$0.app.getCurrentAccountUin();
+        FavEmoConstant.a = k;
+        String str = this.this$0.a.getCurrentAccountUin();
         if (!TextUtils.isEmpty(str)) {
           BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putInt("fav_roaming_max" + str, k).apply();
         }
@@ -45,10 +44,10 @@ public class FavEmoRoamingHandler$1
           continue;
         }
         i = localList1.size();
-        if (i <= asfi.a) {
+        if (i <= FavEmoConstant.a) {
           continue;
         }
-        asfi.b = i;
+        FavEmoConstant.b = i;
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -75,25 +74,25 @@ public class FavEmoRoamingHandler$1
         QLog.e("FavEmoRoamingHandler", 1, "handleUserInfoGet oom2");
         return;
       }
-      QLog.d("FavEmoRoamingHandler", 2, "local max size:" + asfi.a + ",server max size:" + asfi.b + ",delListSize=" + j + ",fileListSize=" + i);
+      QLog.d("FavEmoRoamingHandler", 2, "local max size:" + FavEmoConstant.a + ",server max size:" + FavEmoConstant.b + ",delListSize=" + j + ",fileListSize=" + i);
       if ((QLog.isColorLevel()) && (localList1 != null) && (localList2 != null)) {
         QLog.d("FavEmoRoamingHandler", 2, "ret = " + this.jdField_a_of_type_Long + " userlist= " + localList1.toString() + " delList=" + localList2.toString() + " bid=" + (String)localObject + " local_max =" + k);
       }
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = "qq_expression";
-        anua.a(this.this$0, localList2, localList1);
-        localList1 = ((asfk)this.this$0.app.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER)).a(localList2, localList1, (String)localObject, localList3);
+        FavEmoRoamingHandler.a(this.this$0, localList2, localList1);
+        localList1 = ((FavroamingDBManager)this.this$0.a.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER)).a(localList2, localList1, (String)localObject, localList3);
         localObject = localList1;
         if (localList1 == null) {
           localObject = new ArrayList();
         }
         this.this$0.notifyUI(1, true, localObject);
-        awyr.e("0", 1);
+        EmoticonManager.e("0", 1);
         return;
-        i = asfi.a;
+        i = FavEmoConstant.a;
         continue;
-        asfi.b = asfi.a;
+        FavEmoConstant.b = FavEmoConstant.a;
       }
       else
       {
@@ -106,7 +105,7 @@ public class FavEmoRoamingHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FavEmoRoamingHandler.1
  * JD-Core Version:    0.7.0.1
  */

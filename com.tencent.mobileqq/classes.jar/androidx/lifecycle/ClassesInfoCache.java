@@ -14,10 +14,10 @@ class ClassesInfoCache
   private static final int CALL_TYPE_PROVIDER = 1;
   private static final int CALL_TYPE_PROVIDER_WITH_EVENT = 2;
   static ClassesInfoCache sInstance = new ClassesInfoCache();
-  private final Map<Class, ClassesInfoCache.CallbackInfo> mCallbackMap = new HashMap();
-  private final Map<Class, Boolean> mHasLifecycleMethods = new HashMap();
+  private final Map<Class<?>, ClassesInfoCache.CallbackInfo> mCallbackMap = new HashMap();
+  private final Map<Class<?>, Boolean> mHasLifecycleMethods = new HashMap();
   
-  private ClassesInfoCache.CallbackInfo createInfo(Class paramClass, @Nullable Method[] paramArrayOfMethod)
+  private ClassesInfoCache.CallbackInfo createInfo(Class<?> paramClass, @Nullable Method[] paramArrayOfMethod)
   {
     Object localObject1 = paramClass.getSuperclass();
     HashMap localHashMap = new HashMap();
@@ -96,7 +96,7 @@ class ClassesInfoCache
     }
   }
   
-  private Method[] getDeclaredMethods(Class paramClass)
+  private Method[] getDeclaredMethods(Class<?> paramClass)
   {
     try
     {
@@ -109,20 +109,20 @@ class ClassesInfoCache
     }
   }
   
-  private void verifyAndPutHandler(Map<ClassesInfoCache.MethodReference, Lifecycle.Event> paramMap, ClassesInfoCache.MethodReference paramMethodReference, Lifecycle.Event paramEvent, Class paramClass)
+  private void verifyAndPutHandler(Map<ClassesInfoCache.MethodReference, Lifecycle.Event> paramMap, ClassesInfoCache.MethodReference paramMethodReference, Lifecycle.Event paramEvent, Class<?> paramClass)
   {
     Lifecycle.Event localEvent = (Lifecycle.Event)paramMap.get(paramMethodReference);
     if ((localEvent != null) && (paramEvent != localEvent))
     {
       paramMap = paramMethodReference.mMethod;
-      throw new IllegalArgumentException("Method " + paramMap.getName() + " in " + paramClass.getName() + " already declared with different @OnLifecycleEvent value: previous" + " value " + localEvent + ", new value " + paramEvent);
+      throw new IllegalArgumentException("Method " + paramMap.getName() + " in " + paramClass.getName() + " already declared with different @OnLifecycleEvent value: previous value " + localEvent + ", new value " + paramEvent);
     }
     if (localEvent == null) {
       paramMap.put(paramMethodReference, paramEvent);
     }
   }
   
-  ClassesInfoCache.CallbackInfo getInfo(Class paramClass)
+  ClassesInfoCache.CallbackInfo getInfo(Class<?> paramClass)
   {
     ClassesInfoCache.CallbackInfo localCallbackInfo = (ClassesInfoCache.CallbackInfo)this.mCallbackMap.get(paramClass);
     if (localCallbackInfo != null) {
@@ -131,19 +131,20 @@ class ClassesInfoCache
     return createInfo(paramClass, null);
   }
   
-  boolean hasLifecycleMethods(Class paramClass)
+  boolean hasLifecycleMethods(Class<?> paramClass)
   {
-    if (this.mHasLifecycleMethods.containsKey(paramClass)) {
-      return ((Boolean)this.mHasLifecycleMethods.get(paramClass)).booleanValue();
+    Object localObject = (Boolean)this.mHasLifecycleMethods.get(paramClass);
+    if (localObject != null) {
+      return ((Boolean)localObject).booleanValue();
     }
-    Method[] arrayOfMethod = getDeclaredMethods(paramClass);
-    int j = arrayOfMethod.length;
+    localObject = getDeclaredMethods(paramClass);
+    int j = localObject.length;
     int i = 0;
     while (i < j)
     {
-      if ((OnLifecycleEvent)arrayOfMethod[i].getAnnotation(OnLifecycleEvent.class) != null)
+      if ((OnLifecycleEvent)localObject[i].getAnnotation(OnLifecycleEvent.class) != null)
       {
-        createInfo(paramClass, arrayOfMethod);
+        createInfo(paramClass, (Method[])localObject);
         return true;
       }
       i += 1;
@@ -154,7 +155,7 @@ class ClassesInfoCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.lifecycle.ClassesInfoCache
  * JD-Core Version:    0.7.0.1
  */

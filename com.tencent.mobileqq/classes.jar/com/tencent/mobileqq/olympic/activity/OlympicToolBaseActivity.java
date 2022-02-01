@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.olympic.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
-import anvx;
-import ayxr;
-import ayxs;
-import bisl;
-import bkys;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ar.ARScanAR;
 import com.tencent.mobileqq.nearby.NearbyFakeActivity;
@@ -25,62 +23,79 @@ import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
 import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
 import com.tencent.mobileqq.olympic.ScannerResultReceiver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.WeakReferenceHandler;
 import mqq.app.AppRuntime;
 
 public class OlympicToolBaseActivity
   extends AbsBaseWebViewActivity
 {
-  public static boolean g = true;
+  public static boolean b = true;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ayxs(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ayxr(this);
-  private bisl jdField_a_of_type_Bisl;
-  private bkys jdField_a_of_type_Bkys;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new OlympicToolBaseActivity.6(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new OlympicToolBaseActivity.5(this);
+  public ImageView a;
+  public TextView a;
+  public AppInterface a;
   public QQAppInterface a;
   public ARScanAR a;
   public OcrConfig a;
   public OlympicToolAppInterface a;
   public ScannerResultReceiver a;
+  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
   public boolean a;
-  public AppInterface b;
-  private boolean h;
-  private boolean i;
+  Drawable b;
+  public ImageView b;
+  public TextView b;
+  Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
+  public ImageView c;
+  public TextView c;
+  private boolean jdField_c_of_type_Boolean;
+  Drawable jdField_d_of_type_AndroidGraphicsDrawableDrawable;
+  private boolean jdField_d_of_type_Boolean;
   
-  private void h()
+  public OlympicToolBaseActivity()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  private void g()
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.i = NearbyFakeActivity.a();
-    this.jdField_a_of_type_Bkys.removeMessages(0);
-    if (this.i)
+    this.d = NearbyFakeActivity.a();
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(0);
+    if (this.d)
     {
-      f();
+      e();
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    i();
-    k();
-    this.jdField_a_of_type_Bkys.sendEmptyMessageDelayed(0, 5000L);
+    h();
+    j();
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(0, 5000L);
   }
   
-  private void i()
+  private void h()
   {
-    if (this.h) {}
+    if (this.c) {}
     do
     {
       return;
       try
       {
-        if (this.jdField_a_of_type_Bisl == null)
+        if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
         {
-          this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
-          this.jdField_a_of_type_Bisl.a(anvx.a(2131707290));
-          this.jdField_a_of_type_Bisl.c(false);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131707815));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
         }
-        this.h = true;
-        this.jdField_a_of_type_Bisl.show();
+        this.c = true;
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         return;
       }
       catch (Exception localException) {}
@@ -88,12 +103,12 @@ public class OlympicToolBaseActivity
     QLog.d("ScanBaseActivity", 2, "");
   }
   
-  private void j()
+  private void i()
   {
     try
     {
-      if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
-        this.jdField_a_of_type_Bisl.dismiss();
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
       return;
     }
@@ -106,7 +121,7 @@ public class OlympicToolBaseActivity
     }
   }
   
-  private void k()
+  private void j()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ScanBaseActivity", 2, "sendBroadcastToToolProc");
@@ -126,69 +141,28 @@ public class OlympicToolBaseActivity
     }
   }
   
-  public void b()
+  public void a()
   {
     if (this.jdField_a_of_type_Int != 2) {
-      e();
+      d();
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Int != 1) {
+      f();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Int != 1) {
+    if (this.jdField_a_of_type_Int != 0) {
       g();
     }
   }
   
   public void d()
-  {
-    if (this.jdField_a_of_type_Int != 0) {
-      h();
-    }
-  }
-  
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
-  }
-  
-  public boolean doOnCreate(Bundle paramBundle)
-  {
-    super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Bkys = new bkys(this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver = new ScannerResultReceiver(null);
-    return true;
-  }
-  
-  public void doOnDestroy()
-  {
-    super.doOnDestroy();
-    if (this.jdField_a_of_type_Bisl != null) {
-      this.jdField_a_of_type_Bisl.dismiss();
-    }
-  }
-  
-  public void doOnPause()
-  {
-    super.doOnPause();
-    if (this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver.a(null);
-    }
-  }
-  
-  public void doOnResume()
-  {
-    super.doOnResume();
-    if (this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver.a(this);
-    }
-  }
-  
-  public void e()
   {
     Intent localIntent = new Intent(this, ScannerActivity.class);
     localIntent.addFlags(67108864);
@@ -215,21 +189,62 @@ public class OlympicToolBaseActivity
     }
   }
   
-  public void f()
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  public boolean doOnCreate(Bundle paramBundle)
+  {
+    super.doOnCreate(paramBundle);
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver = new ScannerResultReceiver(null);
+    return true;
+  }
+  
+  public void doOnDestroy()
+  {
+    super.doOnDestroy();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+  }
+  
+  public void doOnPause()
+  {
+    super.doOnPause();
+    if (this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver.a(null);
+    }
+  }
+  
+  public void doOnResume()
+  {
+    super.doOnResume();
+    if (this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver.a(this);
+    }
+  }
+  
+  public void e()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bkys.removeMessages(0);
-    j();
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(0);
+    i();
     Intent localIntent = new Intent(this, ScanTorchActivity.class);
     localIntent.addFlags(67108864);
     localIntent.addFlags(268435456);
     localIntent.addFlags(65536);
     localIntent.putExtra("click_time", this.jdField_a_of_type_Long);
-    localIntent.putExtra("first_click", g);
-    localIntent.putExtra("proc_exist", this.i);
+    localIntent.putExtra("first_click", b);
+    localIntent.putExtra("proc_exist", this.d);
     localIntent.putExtra("software", getSharedPreferences("immerse_ar", 0).getBoolean("software", false));
-    g = false;
-    localIntent.putExtra("log_on", ScanTorchActivity.h);
+    b = false;
+    localIntent.putExtra("log_on", ScanTorchActivity.d);
     if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArARScanAR.e)) {
       localIntent.putExtra("icon_text", "QQ-AR");
     }
@@ -256,7 +271,7 @@ public class OlympicToolBaseActivity
     }
   }
   
-  public void g() {}
+  public void f() {}
   
   public String getModuleId()
   {
@@ -279,13 +294,13 @@ public class OlympicToolBaseActivity
     if ((localAppRuntime instanceof QQAppInterface))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppRuntime);
-      this.b = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     }
     while (!(localAppRuntime instanceof OlympicToolAppInterface)) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = ((OlympicToolAppInterface)localAppRuntime);
-    this.b = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
   }
 }
 

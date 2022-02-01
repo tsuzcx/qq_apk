@@ -1,12 +1,9 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import botw;
-import bous;
-import bouu;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ykq;
 
 class HWEditImportVideoPlayer$2$1
   implements Runnable
@@ -17,21 +14,21 @@ class HWEditImportVideoPlayer$2$1
   {
     if (this.a.this$0.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      bouu localbouu = (bouu)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
-      bous.a(this.a.this$0, localbouu);
+      HWEditImportVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditImportVideoPlayer.Mp4VideoFragmentInfo)this.a.this$0.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditImportVideoPlayer.a(this.a.this$0, localMp4VideoFragmentInfo);
     }
     for (;;)
     {
-      this.a.this$0.jdField_a_of_type_Botw.a(Message.obtain(null, 8));
-      bous.a(this.a.this$0).set(true);
+      this.a.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
+      HWEditImportVideoPlayer.a(this.a.this$0).set(true);
       return;
-      ykq.e("Q.qqstory.record.HWEditImportVideoPlayer", "mFragmentInfos is empty");
+      SLog.e("Q.qqstory.record.HWEditImportVideoPlayer", "mFragmentInfos is empty");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer.2.1
  * JD-Core Version:    0.7.0.1
  */

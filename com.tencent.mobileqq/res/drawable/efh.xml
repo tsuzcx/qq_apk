@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:drawable="@drawable/efg" />
-    <item android:state_pressed="true" android:drawable="@drawable/efg" />
-    <item android:state_selected="true" android:drawable="@drawable/efg" />
-    <item android:state_checked="true" android:drawable="@drawable/efg" />
-    <item android:drawable="@drawable/eff" />
-</selector>
+    <solid android:color="#e6ffffff" />
+    <size android:height="35.0dip" android:width="70.0dip" />
+    <corners android:topLeftRadius="35.0dip" android:topRightRadius="35.0dip" android:bottomLeftRadius="0.0dip" android:bottomRightRadius="0.0dip" />
+</shape>

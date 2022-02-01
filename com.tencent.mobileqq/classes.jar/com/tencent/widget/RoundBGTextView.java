@@ -11,9 +11,9 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 public class RoundBGTextView
   extends SingleLineTextView
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int b;
+  private int b = 0;
   
   public RoundBGTextView(Context paramContext)
   {
@@ -30,7 +30,7 @@ public class RoundBGTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -48,12 +48,12 @@ public class RoundBGTextView
   
   public void setRoundCornerSize(int paramInt)
   {
-    this.jdField_a_of_type_Int = AIOUtils.dp2px(paramInt, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.a(paramInt, getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.RoundBGTextView
  * JD-Core Version:    0.7.0.1
  */

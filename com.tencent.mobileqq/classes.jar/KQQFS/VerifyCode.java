@@ -8,9 +8,9 @@ public final class VerifyCode
   extends JceStruct
 {
   static byte[] cache_vVerifyCode;
-  public byte bType;
+  public byte bType = 0;
   public String strPrompt = "";
-  public byte[] vVerifyCode;
+  public byte[] vVerifyCode = null;
   
   public VerifyCode() {}
   

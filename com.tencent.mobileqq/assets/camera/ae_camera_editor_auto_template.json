@@ -1,0 +1,294 @@
+[
+  {
+    "dynamicFields": {},
+    "id": "100003",
+    "materials": [
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "vcr",
+        "packageMd5": "e63279d8de341f17dbdea56c9648a556",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ef153134-4789-11eb-a2fc-a2e63f808e5b-vcr.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 360,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f21966f2-4789-11eb-bfba-a2e63f808e5b-b987f882489e8350ab5d02f678f99d78.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "xiaomeihao",
+        "packageMd5": "d1179033fffe6cc95c43b57492337d6c",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5e76e96c-478c-11eb-ab15-a2e63f808e5b-xiaomeihao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 160,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5f9ab292-478c-11eb-ba4c-a2e63f808e5b-b557cd007bf5da59c7fa3315389b5f71.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "ying",
+        "packageMd5": "bdd2e9192a0803acfa1c2b47788a434b",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/772f1114-478c-11eb-8b79-a2e63f808e5b-ying.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 360,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/721680ea-478c-11eb-8e6a-a2e63f808e5b-0e6733422500a605db3528fbc993160b.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "luxiangji",
+        "packageMd5": "de613cdb47bd99c1b0cfdc808fb673cf",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/04788d30-478c-11eb-a34d-a2e63f808e5b-luxiangji.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 360,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fcf2371e-478b-11eb-9708-a2e63f808e5b-89f5a4d7ed760c8bb82611534c0dd06a.png",
+        "thumbWidth": 300
+      }
+    ],
+    "name": "日常",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100004",
+    "materials": [
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "zhifeiji",
+        "packageMd5": "20305c6d74ccc007c8199ce4bab6b29d",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d04b1f5c-4789-11eb-aa03-a2e63f808e5b-zhifeiji.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 360,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d44e4c46-4789-11eb-b107-a2e63f808e5b-f868d9244a683315290fc00d4bcd9c88.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "feiniaoyuyu1",
+        "packageMd5": "164b95a606f8ffb6f04fd03aa3d25b42",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/81a86c20-4774-11eb-aab0-a2e63f808e5b-feiniaoyuyu1.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 320,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/796b499c-4774-11eb-8012-a2e63f808e5b-695d25277c23a23eec0e67260fc273e5.png",
+        "thumbWidth": 240
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "wuqi1",
+        "packageMd5": "d878628536ff3a4cb5713809c0930bf3",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0e211292-4789-11eb-b83c-a2e63f808e5b-wuqi1.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 160,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/007e8e4e-4789-11eb-8601-a2e63f808e5b-daa2976a584271c05c9c9b38f8e1283b.png",
+        "thumbWidth": 120
+      }
+    ],
+    "name": "风景",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100005",
+    "materials": [
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "meishimanyou",
+        "packageMd5": "ea5a61576adc420fb5e0ae87cca7218a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/571147a6-478e-11eb-b05f-a2e63f808e5b-meishimanyou.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 160,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/48cfe94a-478e-11eb-98e0-a2e63f808e5b-a64f3adce71851792c168105145b728e.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {
+          "name": "美食至福",
+          "tag": "美食",
+          "quality": "0"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "meiweizhifu",
+        "packageMd5": "81a7332364a87d2713b357d5a1194596",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a7f81b22-478e-11eb-abb2-a2e63f808e5b-meiweizhifu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 160,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9636f746-478e-11eb-bd20-a2e63f808e5b-6082bdaaf92c19169b47f6093d0749a8.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {
+          "name": "舌尖一餐",
+          "tag": "美食",
+          "quality": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "shejian",
+        "packageMd5": "bcdd8c1c0d5d0f936816516cc9ce63e3",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/dc9d5054-478e-11eb-b3ad-a2e63f808e5b-shejian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 160,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d6f8421c-478e-11eb-ad5c-a2e63f808e5b-150a2313898bd61484878427e31a1174.png",
+        "thumbWidth": 120
+      },
+      {
+        "additionalFields": {
+          "name": "一番",
+          "tag": "美食",
+          "quality": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "yifan",
+        "packageMd5": "55a157b485950c7010bfa76c875ae0a1",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1b128606-478f-11eb-a9ab-a2e63f808e5b-yifan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.0.0"
+        },
+        "thumbHeight": 160,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1237d20c-478f-11eb-ab77-a2e63f808e5b-cf0e4659aeeb6591b62ad0fb50e673a8.png",
+        "thumbWidth": 120
+      }
+    ],
+    "name": "美食",
+    "subCategories": [],
+    "thumbUrl": ""
+  }
+]

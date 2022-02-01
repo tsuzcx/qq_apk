@@ -10,7 +10,7 @@ public final class GetAdvInfoReq
 {
   static ArrayList<String> cache_vecAdvIdList = new ArrayList();
   public String strUid = "";
-  public ArrayList<String> vecAdvIdList;
+  public ArrayList<String> vecAdvIdList = null;
   
   static
   {

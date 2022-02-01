@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import aady;
-import aaea;
 import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -14,8 +14,8 @@ public class NowLiveNativePlugin
   private static final String ACTION_PRELOAD = "preload";
   public static final String PLUGIN_NAME = "nowlive";
   private static final String TAG = "NowLiveNativePlugin";
-  private aady mApiClient;
-  final aaea mCallback = new NowLiveNativePlugin.1(this);
+  private TroopMemberApiClient mApiClient;
+  final TroopMemberApiClient.Callback mCallback = new NowLiveNativePlugin.1(this);
   private int mPluginState;
   
   private void preload()
@@ -25,7 +25,7 @@ public class NowLiveNativePlugin
     }
     if (this.mApiClient == null)
     {
-      this.mApiClient = aady.a();
+      this.mApiClient = TroopMemberApiClient.a();
       this.mApiClient.a();
       this.mApiClient.g(this.mCallback);
     }
@@ -42,7 +42,7 @@ public class NowLiveNativePlugin
     }
   }
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     if ((paramJSContext == null) || (paramJSONObject == null)) {
       if (QLog.isColorLevel()) {

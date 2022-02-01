@@ -6,14 +6,15 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbhm;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
 import com.tencent.mobileqq.shortvideo.mediacodec.ShortVideoCodec;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.utils.IQzoneHardwareRestriction;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.cache.CacheManager;
 import cooperation.qzone.util.CpuUtils;
 import cooperation.qzone.util.PerfTracer;
-import cooperation.qzone.util.QzoneHardwareRestriction;
 import mqq.app.MobileQQ;
 
 public class QZoneVideoCommonUtils
@@ -54,7 +55,7 @@ public class QZoneVideoCommonUtils
         }
         else
         {
-          paramBundle = paramActivity.getString(2131717516);
+          paramBundle = paramActivity.getString(2131718011);
         }
         if (paramonForwardVideoActivityFailedListener != null) {
           paramonForwardVideoActivityFailedListener.onFail(paramActivity, paramBundle);
@@ -96,7 +97,7 @@ public class QZoneVideoCommonUtils
         }
         else
         {
-          str = paramActivity.getString(2131717516);
+          str = paramActivity.getString(2131718011);
         }
         if (paramonForwardVideoActivityFailedListener != null) {
           paramonForwardVideoActivityFailedListener.onFail(paramActivity, str);
@@ -142,7 +143,7 @@ public class QZoneVideoCommonUtils
   
   public static long getCpuFrequency()
   {
-    return QzoneHardwareRestriction.getCpuMaxFreq() / 1024L;
+    return ((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getCpuMaxFreq() / 1024L;
   }
   
   private static long getFreeSpace()
@@ -221,11 +222,11 @@ public class QZoneVideoCommonUtils
           QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() mCpuFamily=" + mCpuFamily + " serverCpuFeatureList.length=" + localObject.length);
         }
       }
-      label440:
-      label617:
+      label441:
+      label628:
       for (;;)
       {
-        if (!QzoneHardwareRestriction.meetHardwareRestriction(0, 1))
+        if (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(0, 1))
         {
           return QZoneVideoCommonUtils.VideoSupport.HardwareLimited;
           localObject = localObject[mCpuFamily];
@@ -234,16 +235,16 @@ public class QZoneVideoCommonUtils
         for (;;)
         {
           if (i < 0) {
-            break label617;
+            break label628;
           }
           j += 1;
           if (j > 63)
           {
             if (!QLog.isColorLevel()) {
-              break label440;
+              break label441;
             }
             QLog.i("QZoneVideoCommonUtils", 2, "getRecordSupport() longValueIndex>63  serverFeature=" + (String)localObject + " mCpuFeature=" + mCpuFeature);
-            break label440;
+            break label441;
             break;
           }
           if ((((String)localObject).charAt(i) == '1') && ((mCpuFeature & 1L << j) == 0L))
@@ -272,7 +273,7 @@ public class QZoneVideoCommonUtils
       }
       return QZoneVideoCommonUtils.VideoSupport.ExternalSpaceBanned;
     }
-    if (!bbhm.a())
+    if (!CaptureUtil.a())
     {
       if (QLog.isColorLevel()) {
         QLog.i("QZoneVideoCommonUtils", 2, "CaptureUtil.supportCapture is false");
@@ -404,11 +405,11 @@ public class QZoneVideoCommonUtils
           QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() mCpuFamily=" + mCpuFamily + " serverCpuFeatureList.length=" + localObject.length);
         }
       }
-      label643:
+      label654:
       for (;;)
       {
-        label464:
-        if (!QzoneHardwareRestriction.meetHardwareRestriction(0, 1))
+        label465:
+        if (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(0, 1))
         {
           return QZoneVideoCommonUtils.VideoSupport.HardwareLimited;
           localObject = localObject[mCpuFamily];
@@ -418,16 +419,16 @@ public class QZoneVideoCommonUtils
         for (;;)
         {
           if (i < 0) {
-            break label643;
+            break label654;
           }
           j += 1;
           if (j > 63)
           {
             if (!QLog.isColorLevel()) {
-              break label464;
+              break label465;
             }
             QLog.i("QZoneVideoCommonUtils", 2, "getTrimSupport() longValueIndex>63  serverFeature=" + (String)localObject + " mCpuFeature=" + mCpuFeature);
-            break label464;
+            break label465;
             break;
           }
           if ((((String)localObject).charAt(i) == '1') && ((mCpuFeature & 1L << j) == 0L))
@@ -482,6 +483,7 @@ public class QZoneVideoCommonUtils
     localIntent.putExtra("support_trim", paramBoolean2);
     localIntent.putExtra("uin", String.valueOf(paramLong));
     localIntent.putExtra("flow_camera_capture_mode", false);
+    localIntent.putExtra("entry_source", 9);
     if (!TextUtils.isEmpty(paramString)) {
       localIntent.putExtra("video_refer", paramString);
     }
@@ -566,7 +568,7 @@ public class QZoneVideoCommonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneVideoCommonUtils
  * JD-Core Version:    0.7.0.1
  */

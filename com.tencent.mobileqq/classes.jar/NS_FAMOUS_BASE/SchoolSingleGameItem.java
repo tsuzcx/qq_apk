@@ -11,12 +11,12 @@ public final class SchoolSingleGameItem
   public String app_class2 = "";
   public String app_icon = "";
   public String app_name = "";
-  public long appid;
-  public long click_time;
-  public long create_time;
+  public long appid = 0L;
+  public long click_time = 0L;
+  public long create_time = 0L;
   public String detail_url = "";
-  public int flag;
-  public long online_time;
+  public int flag = 0;
+  public long online_time = 0L;
   
   public SchoolSingleGameItem() {}
   

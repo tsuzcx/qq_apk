@@ -2,7 +2,7 @@ package cooperation.qqcircle.report;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 
 public class QCircleLpReportDc05493
 {
@@ -43,34 +43,52 @@ public class QCircleLpReportDc05493
   
   public static void report(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt)
   {
+    report(paramString1, paramString2, paramString3, paramLong, paramInt, "", "");
+  }
+  
+  public static void report(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, String paramString4, String paramString5)
+  {
     i = 0;
     j = 0;
     l2 = 0L;
     try
     {
-      int k = Integer.parseInt(paramString2);
+      k = Integer.parseInt(paramString2);
       j = k;
     }
     catch (NumberFormatException localNumberFormatException)
     {
       try
       {
+        int k;
         l1 = Long.parseLong(paramString3);
         switch (j)
         {
         default: 
-          QLog.e("QCircleReportHelper_QCircleLpReportDc05493", 1, "QCircle launch report invalid input fromStr:!" + paramString2);
-          report(paramString1, i, j, l1, paramLong, "", "", "", "", "", "", paramInt);
+          RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", RFLog.USR, "QCircle launch report invalid input fromStr:!" + paramString2);
+          k = i;
+          if (j != 6) {
+            break label190;
+          }
+          if ((l1 == 1L) || (l1 == 2L)) {
+            break label187;
+          }
+          k = i;
+          if (l1 != 3L) {
+            break label190;
+          }
+          k = 3;
+          report(paramString1, k, j, l1, paramLong, "", "", paramString4, paramString5, "", "", paramInt);
           return;
           localNumberFormatException = localNumberFormatException;
-          QLog.e("QCircleReportHelper_QCircleLpReportDc05493", 1, "QCircle launch report invalid input fromStr:" + paramString2);
+          RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", RFLog.USR, "QCircle launch report invalid input fromStr:" + paramString2);
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          QLog.e("QCircleReportHelper_QCircleLpReportDc05493", 1, "QCircle launch report invalid input pushId:" + paramString3);
+          RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", RFLog.USR, "QCircle launch report invalid input pushId:" + paramString3);
           long l1 = l2;
           continue;
           i = 1;
@@ -91,7 +109,7 @@ public class QCircleLpReportDc05493
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05493
  * JD-Core Version:    0.7.0.1
  */

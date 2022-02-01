@@ -5,7 +5,7 @@ import android.view.View;
 
 public abstract interface PageSwitchObserver$IPageSwitchListener
 {
-  public abstract void onPageAppear(@NonNull PageInfo paramPageInfo);
+  public abstract void onPageAppear(@NonNull PageInfo paramPageInfo, int paramInt);
   
   public abstract boolean onPageDestroyed(@NonNull View paramView);
   

@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class MiniAppSearchFragment$5
   implements View.OnClickListener
@@ -23,7 +22,6 @@ class MiniAppSearchFragment$5
     this.val$searchDataManager.updateHistorySearchList(str);
     ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     MiniProgramLpReportDC04239.reportAsync("desktop", "search", "history_click", str);
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

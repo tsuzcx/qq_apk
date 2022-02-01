@@ -1,14 +1,5 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import Override;
-import aady;
-import aavk;
-import aawb;
-import ahqv;
-import ahqw;
-import ahqy;
-import ahri;
-import ahtp;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -20,58 +11,63 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import aqrl;
-import bbka;
-import bbkd;
-import biwn;
-import bofz;
+import com.tencent.av.smallscreen.SmallScreenUtils;
+import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.GalleryManager;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
 import com.tencent.image.QQLiveImage;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmedia.dc.DCAIOPreview;
+import com.tencent.mobileqq.richmedia.dc.DCAIOPreviewProgressive;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import lzr;
+import dov.com.qq.im.capture.CaptureContext;
 
 public class AIOGalleryActivity
   extends PeakActivity
 {
   int jdField_a_of_type_Int;
-  public long a;
-  private aady jdField_a_of_type_Aady;
-  aawb jdField_a_of_type_Aawb = new ahqw(this);
-  public ahtp a;
+  long jdField_a_of_type_Long = -1L;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  bbka jdField_a_of_type_Bbka;
-  bbkd jdField_a_of_type_Bbkd;
+  private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+  GalleryManager jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new AIOGalleryActivity.AIOGalleryManager(this);
+  IAIOImageProvider jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
+  DCAIOPreview jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreview;
+  DCAIOPreviewProgressive jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreviewProgressive;
   public String a;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 1;
   BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = null;
   public boolean b;
-  public boolean c = true;
-  public boolean d = false;
+  boolean c = true;
+  boolean d = false;
   
   public AIOGalleryActivity()
   {
-    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Boolean = false;
   }
   
-  public bbka a()
+  public DCAIOPreview a()
   {
-    if (this.jdField_a_of_type_Bbka == null) {
-      this.jdField_a_of_type_Bbka = new bbka(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreview == null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreview = new DCAIOPreview(this);
     }
-    return this.jdField_a_of_type_Bbka;
+    return this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreview;
   }
   
-  public bbkd a()
+  public DCAIOPreviewProgressive a()
   {
-    if (this.jdField_a_of_type_Bbkd == null) {
-      this.jdField_a_of_type_Bbkd = new bbkd(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreviewProgressive == null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreviewProgressive = new DCAIOPreviewProgressive(this);
     }
-    return this.jdField_a_of_type_Bbkd;
+    return this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreviewProgressive;
   }
   
   @Override
@@ -85,9 +81,9 @@ public class AIOGalleryActivity
   
   public void finish()
   {
-    aavk localaavk = this.jdField_a_of_type_Aawb.a();
-    if (ahri.class.isInstance(localaavk)) {
-      ((ahri)localaavk).d();
+    AbstractGalleryScene localAbstractGalleryScene = this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a();
+    if (AIOGalleryScene.class.isInstance(localAbstractGalleryScene)) {
+      ((AIOGalleryScene)localAbstractGalleryScene).d();
     }
     QQLiveImage.releaseAll(this);
     super.finish();
@@ -101,12 +97,12 @@ public class AIOGalleryActivity
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Aawb.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onBackPressed()
   {
-    if (!this.jdField_a_of_type_Aawb.b()) {
+    if (!this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.b()) {
       super.onBackPressed();
     }
     QQLiveImage.releaseAll(this);
@@ -115,7 +111,7 @@ public class AIOGalleryActivity
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    this.jdField_a_of_type_Aawb.a(paramConfiguration);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
@@ -123,19 +119,19 @@ public class AIOGalleryActivity
   {
     this.mActNeedImmersive = false;
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Aady = aady.a();
-    this.jdField_a_of_type_Aady.a();
-    ahqs.a = getResources().getDisplayMetrics().density;
-    ShortVideoUtils.loadShortVideoSo(bofz.a());
-    this.jdField_a_of_type_Bbka = new bbka(this);
-    this.jdField_a_of_type_Bbkd = new bbkd(this);
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
+    AIOConstants.a = getResources().getDisplayMetrics().density;
+    ShortVideoUtils.loadShortVideoSo(CaptureContext.a());
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreview = new DCAIOPreview(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreviewProgressive = new DCAIOPreviewProgressive(this);
     paramBundle = getIntent().getExtras();
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("extra.GROUP_UIN");
     this.jdField_b_of_type_Boolean = paramBundle.getBoolean("extra.IS_FROM_CHAT_FILE_HISTORY");
     try
     {
-      this.jdField_a_of_type_Aawb.a(this);
-      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new ahqv(this);
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a(this);
+      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new AIOGalleryActivity.1(this);
       paramBundle = new IntentFilter();
       paramBundle.addAction("tencent.av.v2q.StartVideoChat");
     }
@@ -167,12 +163,12 @@ public class AIOGalleryActivity
       QLog.d("AIOGalleryActivity", 2, "onDestroy()");
     }
     super.onDestroy();
-    this.jdField_a_of_type_Aawb.c(this);
-    if (this.jdField_a_of_type_Ahtp != null) {}
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.c(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider != null) {}
     try
     {
       if ((!this.jdField_b_of_type_Boolean) && (!getIntent().getBooleanExtra("extra.IS_STARTING_CHAT_FILE_HISTORY", false))) {
-        this.jdField_a_of_type_Ahtp.a();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a();
       }
       for (;;)
       {
@@ -182,18 +178,18 @@ public class AIOGalleryActivity
           unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
           this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
         }
-        if (this.jdField_a_of_type_Bbka != null)
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreview != null)
         {
-          this.jdField_a_of_type_Bbka.b(this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Bbka.a();
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreview.b(this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreview.a();
         }
-        if (this.jdField_a_of_type_Bbkd != null) {
-          this.jdField_a_of_type_Bbkd.a();
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreviewProgressive != null) {
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreviewProgressive.a();
         }
-        this.jdField_a_of_type_Aady.b();
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
         QQLiveImage.releaseAll(this);
         return;
-        this.jdField_a_of_type_Ahtp.c();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.c();
       }
     }
     catch (Exception localException)
@@ -204,7 +200,7 @@ public class AIOGalleryActivity
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_Aawb.a(paramInt, paramKeyEvent)) {
+    if (!this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a(paramInt, paramKeyEvent)) {
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
     return true;
@@ -212,9 +208,9 @@ public class AIOGalleryActivity
   
   public void onPause()
   {
-    lzr.a(BaseApplicationImpl.getContext(), false);
-    biwn.a(BaseApplicationImpl.getContext(), true, 52);
-    aqrl.a(BaseApplicationImpl.getContext(), 2, true);
+    SmallScreenUtils.a(BaseApplicationImpl.getContext(), false);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplicationImpl.getContext(), true, 52);
+    ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 2, true);
     AbstractGifImage.pauseAll();
     ApngImage.pauseAll();
     QQLiveImage.pauseAll(this);
@@ -223,7 +219,7 @@ public class AIOGalleryActivity
     try
     {
       unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Aawb.b();
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.b();
       return;
     }
     catch (Exception localException)
@@ -240,23 +236,23 @@ public class AIOGalleryActivity
   public void onResume()
   {
     super.onResume();
-    lzr.a(BaseApplicationImpl.getContext(), true);
-    biwn.a(BaseApplicationImpl.getContext(), false, 52);
-    aqrl.a(BaseApplicationImpl.getContext(), 2, false);
+    SmallScreenUtils.a(BaseApplicationImpl.getContext(), true);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplicationImpl.getContext(), false, 52);
+    ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 2, false);
     com.tencent.image.AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
     AbstractGifImage.resumeAll();
     ApngImage.playByTag(0);
     QQLiveImage.resumeAll(this);
     if (Build.MODEL.equals("Coolpad 5930"))
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ahqy(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new AIOGalleryActivity.ScreenBroadcastReceiver(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.USER_PRESENT");
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
-    this.jdField_a_of_type_Aawb.c();
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.c();
   }
   
   public void onStart()
@@ -279,13 +275,13 @@ public class AIOGalleryActivity
   {
     super.onWindowFocusChanged(paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_Aawb.b(this);
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity
  * JD-Core Version:    0.7.0.1
  */

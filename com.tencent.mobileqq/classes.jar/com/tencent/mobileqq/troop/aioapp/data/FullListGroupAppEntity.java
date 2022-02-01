@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.aioapp.data;
 
-import bfce;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.troop.aioapp.GroupUtil;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class FullListGroupAppEntity
   public void postRead()
   {
     super.postRead();
-    Object localObject = bfce.a(this.troopAIOAppInfosData);
+    Object localObject = GroupUtil.a(this.troopAIOAppInfosData);
     if (localObject != null) {}
     try
     {
@@ -36,7 +36,7 @@ public class FullListGroupAppEntity
   public void prewrite()
   {
     super.prewrite();
-    this.troopAIOAppInfosData = bfce.a(this.troopAIOAppInfos);
+    this.troopAIOAppInfosData = GroupUtil.a(this.troopAIOAppInfos);
   }
 }
 

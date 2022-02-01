@@ -9,14 +9,14 @@ public class AIOFakePanel
   public AIOFakePanel(Context paramContext)
   {
     super(paramContext);
-    setBackgroundResource(2130850291);
+    setBackgroundResource(2130850689);
   }
   
   public void setPanelType() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.AIOFakePanel
  * JD-Core Version:    0.7.0.1
  */

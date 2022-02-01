@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class FaceRects
   extends JceStruct
 {
-  public double H;
-  public double W;
-  public double X;
-  public double Y;
+  public double H = 0.0D;
+  public double W = 0.0D;
+  public double X = 0.0D;
+  public double Y = 0.0D;
   
   public FaceRects() {}
   
@@ -40,7 +40,7 @@ public final class FaceRects
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.FaceRects
  * JD-Core Version:    0.7.0.1
  */

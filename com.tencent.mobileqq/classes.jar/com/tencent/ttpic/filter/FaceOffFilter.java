@@ -26,9 +26,9 @@ import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.manager.FaceOffFilterManager;
 import com.tencent.ttpic.openapi.model.FaceItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
@@ -408,7 +408,7 @@ public class FaceOffFilter
   
   private void initGrayTexCoords()
   {
-    addAttribParam("inputGrayTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.getGrayCoords(this.item.featureType), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), this.grayImageWidth, this.grayImageHeight, this.grayVertices, this.item.faceExchangeImageDisableFaceCrop));
+    addAttribParam("inputGrayTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.getGrayCoords(this.item.featureType), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), this.grayImageWidth, this.grayImageHeight, this.grayVertices));
   }
   
   private boolean initIrisImage()
@@ -782,12 +782,12 @@ public class FaceOffFilter
   
   protected void initFaceTexCoords()
   {
-    setTexCords(FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(this.item.facePoints), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), this.faceImageWidth, this.faceImageHeight, this.texVertices, this.item.faceExchangeImageDisableFaceCrop));
+    setTexCords(FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(this.item.facePoints), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), this.faceImageWidth, this.faceImageHeight, this.texVertices));
   }
   
   protected void initModelTexCoords()
   {
-    addAttribParam("inputModelTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(Arrays.asList(FaceOffUtil.COSMETIC_MODEL_IMAGE_FACEPOINTS)), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), 800, 1067, this.modelVertices, this.item.faceExchangeImageDisableFaceCrop));
+    addAttribParam("inputModelTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(Arrays.asList(FaceOffUtil.COSMETIC_MODEL_IMAGE_FACEPOINTS)), 2.0F, 0.0F, this.item.faceExchangeImageDisableFaceCrop), 800, 1067, this.modelVertices));
   }
   
   public void initParams()
@@ -964,9 +964,9 @@ public class FaceOffFilter
   
   public void updatePointParams(List<PointF> paramList1, List<PointF> paramList2, float[] paramArrayOfFloat, float paramFloat)
   {
-    Object localObject = VideoMaterialUtil.copyList(paramList1);
+    Object localObject = VideoMaterial.copyList(paramList1);
     this.pointVis = FaceOffUtil.getFullPointsVisForFaceOffFilter_v2((List)localObject, paramArrayOfFloat, -paramFloat);
-    label126:
+    label119:
     PointF localPointF1;
     float f1;
     if (this.item.faceExchangeImageDisableFaceCrop)
@@ -975,14 +975,14 @@ public class FaceOffFilter
         this.opacity = new float[''];
       }
       Arrays.fill(this.opacity, 1.0F);
-      setPositions(FaceOffUtil.initFacePositions_v2(paramList2, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices, this.item.faceExchangeImageDisableFaceCrop));
+      setPositions(FaceOffUtil.initFacePositions_v2(paramList2, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
       setCoordNum(FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_V2 * 3);
       if (getShelterSwitch() != 1) {
-        break label886;
+        break label865;
       }
       paramList2 = FaceOffUtil.getFullPointsVisForFaceOffFilter_v2((List)localObject, getAllVisiblePointsVis(), -paramFloat);
-      paramList2 = FaceOffUtil.initPointVis_v2(paramList2, this.pointVisVertices, this.item.faceExchangeImageDisableFaceCrop);
-      paramArrayOfFloat = FaceOffUtil.initPointVis_v2(this.opacity, this.pointOpacity, this.item.faceExchangeImageDisableFaceCrop);
+      paramList2 = FaceOffUtil.initPointVis_v2(paramList2, this.pointVisVertices);
+      paramArrayOfFloat = FaceOffUtil.initPointVis_v2(this.opacity, this.pointOpacity);
       if (paramList2 != null) {
         addAttribParam("pointsVisValue", paramList2);
       }
@@ -1006,7 +1006,7 @@ public class FaceOffFilter
         f1 = 0.26F * AlgoUtils.getDistance((PointF)localObject, localPointF1);
         paramFloat = AlgoUtils.getDistance(localPointF2, localPointF3) * 0.26F;
         if ((AlgoUtils.getDistance(this.irisCenterL, ZERO_POINT) >= 0.001D) && (AlgoUtils.getDistance(this.irisCenterR, ZERO_POINT) >= 0.001D)) {
-          break label894;
+          break label873;
         }
         this.irisCenterL = new PointF(paramList2.x, paramList2.y);
         this.irisCenterR = new PointF(paramArrayOfFloat.x, paramArrayOfFloat.y);
@@ -1039,10 +1039,10 @@ public class FaceOffFilter
       return;
       this.opacity = FaceOffUtil.getFullOpacityForFaceOffFilter_v2(paramList1, -paramFloat);
       break;
-      label886:
+      label865:
       paramList2 = this.pointVis;
-      break label126;
-      label894:
+      break label119;
+      label873:
       f2 = (float)(Math.min(this.width, this.height) * this.mFaceDetScale);
       f3 = (float)(1.0D + 65536.0D * Math.pow((float)Math.sqrt(Math.pow(paramList2.x - this.irisCenterL.x, 2.0D) + Math.pow(paramList2.y - this.irisCenterL.y, 2.0D)) / f2, 2.0D));
       f3 = (float)(f3 / (f3 + 1.5D));
@@ -1074,7 +1074,7 @@ public class FaceOffFilter
       localPTDetectInfo = (PTDetectInfo)paramObject;
       if (!CollectionUtils.isEmpty(localPTDetectInfo.facePoints))
       {
-        localList = VideoMaterialUtil.copyList(localPTDetectInfo.facePoints);
+        localList = VideoMaterial.copyList(localPTDetectInfo.facePoints);
         this.faceIndex = paramInt2;
         if (paramInt1 == this.faceCount) {
           break label252;
@@ -1146,7 +1146,7 @@ public class FaceOffFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceOffFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,11 @@
 package com.tencent.qqmini.sdk.plugins;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
@@ -25,12 +29,16 @@ import com.tencent.qqmini.sdk.launcher.model.EntryModel;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.NetworkTimeoutInfo;
+import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC05115;
+import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC05116;
 import com.tencent.qqmini.sdk.report.MiniReportManager;
 import com.tencent.qqmini.sdk.utils.DomainUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -111,9 +119,27 @@ public class RequestJsPlugin
     callback(paramRequestEvent, paramJSONObject, "ok", null, paramString);
   }
   
+  private void connectSocket(RequestEvent paramRequestEvent, WebSocketProxy paramWebSocketProxy, int paramInt, RequestJsPlugin.WebsocketRequestTask paramWebsocketRequestTask)
+  {
+    paramWebSocketProxy.connectSocket(paramWebsocketRequestTask.mTaskId, paramWebsocketRequestTask.mUrl, paramWebsocketRequestTask.mHeaders, paramWebsocketRequestTask.mMethod, paramInt, new RequestJsPlugin.2(this, paramRequestEvent, paramWebsocketRequestTask));
+  }
+  
   private boolean doRequest(RequestEvent paramRequestEvent, RequestJsPlugin.RequestTask paramRequestTask, String paramString, RequestProxy paramRequestProxy)
   {
     return paramRequestProxy.request(paramRequestTask.mUrl, paramRequestTask.mBody, paramRequestTask.mHeaders, paramRequestTask.mMethod, 60, new RequestJsPlugin.1(this, paramString, paramRequestTask, paramRequestEvent));
+  }
+  
+  private boolean doWnsCgiRequest(RequestEvent paramRequestEvent)
+  {
+    String str = paramRequestEvent.jsonParams.replace("{groupId}", String.valueOf(this.mMiniAppInfo.launchParam.entryModel.uin));
+    ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    if (localChannelProxy != null)
+    {
+      localChannelProxy.wnsCgiRequest(new JSONObject(str), new RequestJsPlugin.5(this, paramRequestEvent));
+      return false;
+    }
+    callbackFail(paramRequestEvent, null, "do not support wnsGroupRequest");
+    return true;
   }
   
   private String getRequestReferer()
@@ -203,6 +229,124 @@ public class RequestJsPlugin
     }
   }
   
+  private void onConnectSocketError(int paramInt, String paramString, RequestJsPlugin.WebsocketRequestTask paramWebsocketRequestTask, RequestEvent paramRequestEvent)
+  {
+    Object localObject = paramString;
+    if (paramString == null) {
+      localObject = "";
+    }
+    for (;;)
+    {
+      try
+      {
+        if ((((String)localObject).equals("SSL handshake timed out")) || (((String)localObject).equals("timeout")))
+        {
+          QMLog.e("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure , timeout , send close state. socketId=" + paramWebsocketRequestTask.mTaskId);
+          paramString = new JSONObject();
+          paramString.put("socketTaskId", paramWebsocketRequestTask.mTaskId);
+          paramString.put("state", "close");
+          paramString.put("statusCode", paramInt);
+          paramRequestEvent.jsService.evaluateSubscribeJS("onSocketTaskStateChange", paramString.toString(), 0);
+          MiniReportManager.reportEventType(this.mMiniAppInfo, 634, null, null, null, 0, MiniReportManager.getAppType(this.mMiniAppInfo), 0L, getSecondLevelDomain(paramWebsocketRequestTask.mUrl));
+          return;
+        }
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("socketTaskId", paramWebsocketRequestTask.mTaskId);
+        ((JSONObject)localObject).put("state", "error");
+        paramString = ((ConnectivityManager)this.mContext.getSystemService("connectivity")).getActiveNetworkInfo();
+        if ((paramString == null) || (!paramString.isConnected()))
+        {
+          paramString = "network is down";
+          ((JSONObject)localObject).put("errMsg", "network is down");
+          QMLog.e("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure socketId=" + paramWebsocketRequestTask.mTaskId + " errMsg=" + paramString);
+          paramRequestEvent.jsService.evaluateSubscribeJS("onSocketTaskStateChange", ((JSONObject)localObject).toString(), 0);
+        }
+        else
+        {
+          paramString = "resposeCode=" + paramInt;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        QMLog.e("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure exception:", paramString);
+        return;
+      }
+    }
+  }
+  
+  private void onRequestSucceed(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap, String paramString, RequestJsPlugin.RequestTask paramRequestTask, RequestEvent paramRequestEvent)
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        localJSONObject1.put("url", paramString);
+        if (paramInt <= 0) {
+          return;
+        }
+        localJSONObject2.put("requestTaskId", paramRequestTask.mTaskId);
+        if (paramMap != null) {
+          localJSONObject2.put("header", JSONUtil.headerToJson(paramMap));
+        }
+        localJSONObject2.put("statusCode", paramInt);
+        localJSONObject2.put("state", "success");
+        localJSONObject2.put("errMsg", "ok");
+        if (paramArrayOfByte != null)
+        {
+          if (!"arraybuffer".equals(paramRequestTask.mResponseType)) {
+            continue;
+          }
+          if (!this.mIsMiniGame) {
+            continue;
+          }
+          NativeBuffer.packNativeBuffer(paramRequestEvent.jsService, paramArrayOfByte, NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject2);
+        }
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        try
+        {
+          paramMap = new JSONObject();
+          paramMap.put("state", "fail");
+          paramMap.put("statusCode", "-1");
+          paramMap.put("requestTaskId", paramRequestTask.mTaskId);
+          paramMap.put("errMsg", "exception：" + paramArrayOfByte.getMessage());
+          paramRequestEvent.jsService.evaluateSubscribeJS("onRequestTaskStateChange", paramMap.toString(), 0);
+          QMLog.e("[mini] http.RequestJsPlugin", "httpCallBack exception:", paramArrayOfByte);
+          return;
+          if (!"text".equals(paramRequestTask.mResponseType)) {
+            continue;
+          }
+          if ((paramArrayOfByte.length <= 3) || ((paramArrayOfByte[0] & 0xFF) != 239) || ((paramArrayOfByte[1] & 0xFF) != 187) || ((paramArrayOfByte[2] & 0xFF) != 191)) {
+            continue;
+          }
+          paramArrayOfByte = new String(paramArrayOfByte, 3, paramArrayOfByte.length - 3, "UTF-8");
+          localJSONObject2.put("data", paramArrayOfByte);
+          continue;
+          paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
+          continue;
+          QMLog.e("[mini] http.RequestJsPlugin", "url: " + paramRequestTask.mUrl + "--mResponseType error ---" + paramRequestTask.mResponseType);
+          paramArrayOfByte = new JSONObject();
+          paramArrayOfByte.put("state", "fail");
+          paramArrayOfByte.put("statusCode", -1);
+          paramArrayOfByte.put("requestTaskId", paramRequestTask.mTaskId);
+          paramRequestEvent.jsService.evaluateSubscribeJS("onRequestTaskStateChange", paramArrayOfByte.toString(), 0);
+          return;
+        }
+        catch (Throwable paramMap)
+        {
+          continue;
+        }
+      }
+      localJSONObject1.put("res", localJSONObject2);
+      paramRequestEvent.jsService.evaluateSubscribeJS("onRequestTaskStateChange", localJSONObject2.toString(), 0);
+      return;
+      NativeBuffer.packNativeBuffer(paramRequestEvent.jsService, paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "data", localJSONObject2);
+    }
+  }
+  
   private String operateSocketClose(RequestEvent paramRequestEvent, JSONObject paramJSONObject, int paramInt)
   {
     synchronized (this.lock)
@@ -231,68 +375,101 @@ public class RequestJsPlugin
     }
   }
   
-  private String operateSocketSend(RequestEvent paramRequestEvent, JSONObject arg2, int paramInt)
+  @NotNull
+  private String operateSocketSend(RequestEvent paramRequestEvent, int paramInt, String paramString)
   {
-    Object localObject1 = ???.optString("data", null);
-    Object localObject2;
-    if (localObject1 != null)
+    synchronized (this.lock)
     {
-      synchronized (this.lock)
+      if ((this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
       {
-        if ((this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
+        RequestJsPlugin.WebsocketRequestTask localWebsocketRequestTask = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt));
+        WebSocketProxy localWebSocketProxy = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
+        if ((localWebsocketRequestTask != null) && (localWebSocketProxy != null))
         {
-          localObject2 = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt));
-          WebSocketProxy localWebSocketProxy = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
-          if ((localObject2 != null) && (localWebSocketProxy != null))
-          {
-            localWebSocketProxy.send(paramInt, (String)localObject1);
-            if (this.mIsMiniGame) {
-              callbackOK(paramRequestEvent, null, "sendSocketMessage");
-            }
-            paramRequestEvent = ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
-            return paramRequestEvent;
-          }
-          QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " error, send msg:" + (String)localObject1 + " on null socket instance");
+          localWebSocketProxy.send(paramInt, paramString);
           if (this.mIsMiniGame) {
-            callbackFail(paramRequestEvent, null, "socket is null ", "sendSocketMessage");
+            callbackOK(paramRequestEvent, null, "sendSocketMessage");
           }
-          paramRequestEvent = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "socket is null ").toString();
+          paramRequestEvent = ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
           return paramRequestEvent;
         }
-      }
-      if (this.mIsMiniGame) {
-        callbackFail(paramRequestEvent, null, "do not have this socket ", "closeSocket");
-      }
-      paramRequestEvent = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not have this socket ").toString();
-      return paramRequestEvent;
-    }
-    if (NativeBuffer.hasNativeBuffer(???))
-    {
-      ??? = NativeBuffer.unpackNativeBuffer(paramRequestEvent.jsService, ???, "data");
-      if ((??? != null) && (???.buf != null) && (this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
-      {
-        localObject1 = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt));
-        localObject2 = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
-        if ((localObject1 != null) && (localObject2 != null))
-        {
-          ((WebSocketProxy)localObject2).send(paramInt, ???.buf);
-          if (this.mIsMiniGame) {
-            callbackOK(paramRequestEvent, null);
-          }
-          return ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
-        }
-        QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " error, send NativeBuffer on null socket instance");
+        QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " error, send msg:" + paramString + " on null socket instance");
         if (this.mIsMiniGame) {
           callbackFail(paramRequestEvent, null, "socket is null ", "sendSocketMessage");
         }
-        return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "socket is null ").toString();
+        paramRequestEvent = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "socket is null ").toString();
+        return paramRequestEvent;
       }
-      if (this.mIsMiniGame) {
-        callbackFail(paramRequestEvent, null, "do not have this socket ", "closeSocket");
-      }
-      return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not have this socket ").toString();
     }
-    return null;
+    if (this.mIsMiniGame) {
+      callbackFail(paramRequestEvent, null, "do not have this socket ", "closeSocket");
+    }
+    paramRequestEvent = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not have this socket ").toString();
+    return paramRequestEvent;
+  }
+  
+  private String operateSocketSend(RequestEvent paramRequestEvent, JSONObject paramJSONObject, int paramInt)
+  {
+    String str1 = null;
+    String str2 = paramJSONObject.optString("data", null);
+    if (str2 != null) {
+      str1 = operateSocketSend(paramRequestEvent, paramInt, str2);
+    }
+    while (!NativeBuffer.hasNativeBuffer(paramJSONObject)) {
+      return str1;
+    }
+    return operateSocketSendWithNativeBuffer(paramRequestEvent, paramJSONObject, paramInt);
+  }
+  
+  @NotNull
+  private String operateSocketSendWithNativeBuffer(RequestEvent paramRequestEvent, JSONObject paramJSONObject, int paramInt)
+  {
+    paramJSONObject = NativeBuffer.unpackNativeBuffer(paramRequestEvent.jsService, paramJSONObject, "data");
+    if ((paramJSONObject != null) && (paramJSONObject.buf != null) && (this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
+    {
+      RequestJsPlugin.WebsocketRequestTask localWebsocketRequestTask = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt));
+      WebSocketProxy localWebSocketProxy = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
+      if ((localWebsocketRequestTask != null) && (localWebSocketProxy != null))
+      {
+        localWebSocketProxy.send(paramInt, paramJSONObject.buf);
+        if (this.mIsMiniGame) {
+          callbackOK(paramRequestEvent, null);
+        }
+        return ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
+      }
+      QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " error, send NativeBuffer on null socket instance");
+      if (this.mIsMiniGame) {
+        callbackFail(paramRequestEvent, null, "socket is null ", "sendSocketMessage");
+      }
+      return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "socket is null ").toString();
+    }
+    if (this.mIsMiniGame) {
+      callbackFail(paramRequestEvent, null, "do not have this socket ", "closeSocket");
+    }
+    return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not have this socket ").toString();
+  }
+  
+  private void reportRequestResult(int paramInt1, RequestJsPlugin.RequestTask paramRequestTask1, RequestJsPlugin.RequestTask paramRequestTask2, RequestEvent paramRequestEvent, String paramString1, int paramInt2, String paramString2)
+  {
+    long l;
+    if (paramRequestTask1 != null)
+    {
+      l = SystemClock.elapsedRealtime() - paramRequestTask1.mRequestCreatedMillis;
+      QMLog.i("[mini] http.RequestJsPlugin", "[request httpCallBack][minigame timecost=" + l + "ms],[code=" + paramInt1 + "][url=" + paramRequestTask2.mUrl + "][callbackId=" + paramRequestEvent.callbackId + "][params=" + paramRequestEvent.jsonParams + "]");
+      paramRequestTask2 = getSecondLevelDomain(paramRequestTask1.mOriginUrl);
+      QMLog.d("[mini] http.RequestJsPlugin", "httpCallBack second level domain " + paramRequestTask2);
+      if (!this.mIsMiniGame) {
+        break label193;
+      }
+    }
+    label193:
+    for (paramRequestTask1 = "1";; paramRequestTask1 = "0")
+    {
+      MiniReportManager.reportEventType(this.mMiniAppInfo, 628, null, null, null, paramInt1, paramRequestTask1, l, paramRequestTask2, paramString2, null, null, null);
+      MiniProgramLpReportDC05115.reportHttpRequestResult(this.mMiniAppInfo, paramInt1, paramInt2, l);
+      MiniProgramLpReportDC05116.reportOneHttpOrDownloadRequest(this.mMiniAppInfo, paramString1, paramInt2, l, paramInt1);
+      return;
+    }
   }
   
   @JsEvent({"addGroupApp"})
@@ -405,25 +582,25 @@ public class RequestJsPlugin
   {
     try
     {
-      Object localObject3;
+      Object localObject2;
       int j;
       synchronized (this.lock)
       {
-        WebSocketProxy localWebSocketProxy = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
-        if (localWebSocketProxy == null)
+        WebSocketProxy localWebSocketProxy1 = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
+        if (localWebSocketProxy1 == null)
         {
           QMLog.w("[mini] http.RequestJsPlugin", "not support web socket right now");
           callbackFail(paramRequestEvent, null, "not support web socket right now");
           return "";
         }
-        localObject3 = new JSONObject(paramRequestEvent.jsonParams);
-        ((RequestStrategyProxy)ProxyManager.get(RequestStrategyProxy.class)).addHttpForwardingInfo((JSONObject)localObject3);
-        boolean bool = ((JSONObject)localObject3).optBoolean("__skipDomainCheck__", false);
+        localObject2 = new JSONObject(paramRequestEvent.jsonParams);
+        ((RequestStrategyProxy)ProxyManager.get(RequestStrategyProxy.class)).addHttpForwardingInfo((JSONObject)localObject2);
+        boolean bool = ((JSONObject)localObject2).optBoolean("__skipDomainCheck__", false);
         j = this.mApkgInfo.getAppConfigInfo().networkTimeoutInfo.connectSocket;
-        localObject3 = new RequestJsPlugin.WebsocketRequestTask(this, (JSONObject)localObject3);
-        if (!DomainUtil.isDomainValid(this.mMiniAppInfo, bool, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mOriginUrl, 1))
+        localObject2 = new RequestJsPlugin.WebsocketRequestTask(this, (JSONObject)localObject2);
+        if (!DomainUtil.isDomainValid(this.mMiniAppInfo, bool, ((RequestJsPlugin.WebsocketRequestTask)localObject2).mOriginUrl, 1))
         {
-          QMLog.w("[mini] http.RequestJsPlugin", "check socket DomainValid fail, callbackFail, event:" + paramRequestEvent.event + ", callbackId:" + paramRequestEvent.callbackId + ", url:" + ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl);
+          QMLog.w("[mini] http.RequestJsPlugin", "check socket DomainValid fail, callbackFail, event:" + paramRequestEvent.event + ", callbackId:" + paramRequestEvent.callbackId + ", url:" + ((RequestJsPlugin.WebsocketRequestTask)localObject2).mUrl);
           callbackFail(paramRequestEvent, null, "请求域名不合法");
           return "";
         }
@@ -434,17 +611,17 @@ public class RequestJsPlugin
         MiniReportManager.reportEventType(this.mMiniAppInfo, 632, null, null, null, 1, MiniReportManager.getAppType(this.mMiniAppInfo), 0L, getSecondLevelDomain(paramRequestEvent));
         return "";
         int i = j;
-        if (((RequestJsPlugin.WebsocketRequestTask)localObject3).mTimeout > j) {
-          i = ((RequestJsPlugin.WebsocketRequestTask)localObject3).mTimeout;
+        if (((RequestJsPlugin.WebsocketRequestTask)localObject2).mTimeout > j) {
+          i = ((RequestJsPlugin.WebsocketRequestTask)localObject2).mTimeout;
         }
-        localObject1.connectSocket(((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mHeaders, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mMethod, i, new RequestJsPlugin.2(this, paramRequestEvent, (RequestJsPlugin.WebsocketRequestTask)localObject3));
-        this.wsrequestMap.put(Integer.valueOf(((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId), localObject3);
-        Object localObject2 = new JSONObject(paramRequestEvent.jsonParams);
-        ((JSONObject)localObject2).put("socketTaskId", ((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId);
-        ((JSONObject)localObject2).put("errMsg", paramRequestEvent.event + ":ok");
-        callbackOK(paramRequestEvent, (JSONObject)localObject2);
-        localObject2 = ((JSONObject)localObject2).toString();
-        return localObject2;
+        connectSocket(paramRequestEvent, localWebSocketProxy2, i, (RequestJsPlugin.WebsocketRequestTask)localObject2);
+        this.wsrequestMap.put(Integer.valueOf(((RequestJsPlugin.WebsocketRequestTask)localObject2).mTaskId), localObject2);
+        Object localObject1 = new JSONObject(paramRequestEvent.jsonParams);
+        ((JSONObject)localObject1).put("socketTaskId", ((RequestJsPlugin.WebsocketRequestTask)localObject2).mTaskId);
+        ((JSONObject)localObject1).put("errMsg", paramRequestEvent.event + ":ok");
+        callbackOK(paramRequestEvent, (JSONObject)localObject1);
+        localObject1 = ((JSONObject)localObject1).toString();
+        return localObject1;
       }
       catch (JSONException paramRequestEvent)
       {
@@ -568,41 +745,35 @@ public class RequestJsPlugin
   @JsEvent({"wnsGroupRequest"})
   public String wnsGroupRequest(RequestEvent paramRequestEvent)
   {
-    label246:
-    for (;;)
+    try
     {
-      try
+      String str = new JSONObject(paramRequestEvent.jsonParams).optString("entryDataHash");
+      if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.launchParam != null) && (this.mMiniAppInfo.launchParam.entryModel != null) && (str != null))
       {
-        String str = new JSONObject(paramRequestEvent.jsonParams).optString("entryDataHash");
-        if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.launchParam != null) && (this.mMiniAppInfo.launchParam.entryModel != null) && (str != null))
+        if ((!str.equals(this.mMiniAppInfo.launchParam.entryModel.getEntryHash())) || (!this.mMiniAppInfo.launchParam.entryModel.isAdmin)) {
+          break label135;
+        }
+        if (paramRequestEvent.jsonParams.contains("{groupId}"))
         {
-          if ((!str.equals(this.mMiniAppInfo.launchParam.entryModel.getEntryHash())) || (!this.mMiniAppInfo.launchParam.entryModel.isAdmin)) {
-            break label246;
-          }
-          if (!paramRequestEvent.jsonParams.contains("{groupId}")) {
-            continue;
-          }
-          str = paramRequestEvent.jsonParams.replace("{groupId}", String.valueOf(this.mMiniAppInfo.launchParam.entryModel.uin));
-          ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-          if (localChannelProxy != null) {
-            localChannelProxy.wnsCgiRequest(new JSONObject(str), new RequestJsPlugin.5(this, paramRequestEvent));
+          if (doWnsCgiRequest(paramRequestEvent)) {
+            return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not support wnsGroupRequest").toString();
           }
         }
-        else
-        {
-          return "";
+        else {
+          paramRequestEvent.fail("groupId is null");
         }
-        callbackFail(paramRequestEvent, null, "do not support wnsGroupRequest");
-        return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not support wnsGroupRequest").toString();
-        paramRequestEvent.fail("groupId is null");
-        continue;
+      }
+      for (;;)
+      {
+        return "";
+        label135:
         paramRequestEvent.fail("entryDataHash is not vaild or you are not group administrator");
       }
-      catch (Throwable localThrowable)
-      {
-        QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " exception:", localThrowable);
-        return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null).toString();
-      }
+      return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null).toString();
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " exception:", localThrowable);
     }
   }
   
@@ -615,7 +786,7 @@ public class RequestJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RequestJsPlugin
  * JD-Core Version:    0.7.0.1
  */

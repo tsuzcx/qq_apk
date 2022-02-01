@@ -27,8 +27,8 @@ public class PanoramaGuideAnimate
   private float alpha = 1.0F;
   private Context context;
   private int currentOrientation = 0;
-  private float currentRotate;
-  private float currentTranslation;
+  private float currentRotate = 0.0F;
+  private float currentTranslation = 0.0F;
   private Handler handler = new PanoramaGuideAnimate.1(this);
   private ImageView imgPhone;
   private PanoramaGuideAnimate.OnAnimateListener onAnimateListener;
@@ -72,13 +72,13 @@ public class PanoramaGuideAnimate
     setOrientation(1);
     setGravity(1);
     this.imgPhone = new ImageView(this.context);
-    this.imgPhone.setImageResource(2130847626);
+    this.imgPhone.setImageResource(2130847983);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(100, 100);
     localLayoutParams.bottomMargin = 20;
     addView(this.imgPhone, localLayoutParams);
     this.tvToast = new TextView(this.context);
     if (paramInt == 1) {
-      this.tvToast.setText(this.context.getResources().getString(2131717265));
+      this.tvToast.setText(this.context.getResources().getString(2131717760));
     }
     for (;;)
     {
@@ -90,7 +90,7 @@ public class PanoramaGuideAnimate
       this.imgPhone.setTranslationX(0.0F);
       startTimer();
       return;
-      this.tvToast.setText(this.context.getResources().getString(2131717266));
+      this.tvToast.setText(this.context.getResources().getString(2131717761));
     }
   }
   
@@ -111,7 +111,7 @@ public class PanoramaGuideAnimate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaGuideAnimate
  * JD-Core Version:    0.7.0.1
  */

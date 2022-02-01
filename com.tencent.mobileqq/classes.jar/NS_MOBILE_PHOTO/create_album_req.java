@@ -13,10 +13,10 @@ public final class create_album_req
   static Album cache_album = new Album();
   static Map<Integer, String> cache_busi_param = new HashMap();
   public int action = 0;
-  public Album album;
-  public Map<Integer, String> busi_param;
+  public Album album = null;
+  public Map<Integer, String> busi_param = null;
   public String invite_key = "";
-  public boolean is_from_public_url;
+  public boolean is_from_public_url = false;
   public String itemid = "";
   
   static

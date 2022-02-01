@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.hotpic.HotPicData;
-import qhg;
 
 public class ReadInJoyDraftboxItem$PicData
   implements Parcelable
 {
-  public static final Parcelable.Creator<PicData> CREATOR = new qhg();
+  public static final Parcelable.Creator<PicData> CREATOR = new ReadInJoyDraftboxItem.PicData.1();
   public int a;
   public HotPicData a;
   public String a;
@@ -46,7 +45,7 @@ public class ReadInJoyDraftboxItem$PicData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData
  * JD-Core Version:    0.7.0.1
  */

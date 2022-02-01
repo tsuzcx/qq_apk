@@ -4,7 +4,7 @@ import com.tencent.image.URLDrawableHandler;
 import com.tencent.qphone.base.util.QLog;
 
 class HttpDownloader$2
-  implements INetEngine.INetEngineListener
+  implements INetEngineListener
 {
   HttpDownloader$2(HttpDownloader paramHttpDownloader, URLDrawableHandler paramURLDrawableHandler) {}
   

@@ -111,43 +111,44 @@ public class TelephonyJsPlugin
   
   private void parseNumber(JSONObject paramJSONObject, ArrayList<ContentValues> paramArrayList)
   {
-    Object localObject2 = paramJSONObject.optString("hostNumber");
-    Object localObject1 = paramJSONObject.optString("photoFilePath");
-    String str = paramJSONObject.optString("workFaxNumber");
-    paramJSONObject = paramJSONObject.optString("homeFaxNumber");
-    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    Object localObject = paramJSONObject.optString("hostNumber");
+    ContentValues localContentValues;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      ContentValues localContentValues = new ContentValues();
+      localContentValues = new ContentValues();
       localContentValues.put("mimetype", "vnd.android.cursor.item/phone_v2");
       localContentValues.put("data2", Integer.valueOf(0));
       localContentValues.put("data3", "手机");
-      localContentValues.put("data1", (String)localObject2);
+      localContentValues.put("data1", (String)localObject);
       paramArrayList.add(localContentValues);
     }
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    localObject = paramJSONObject.optString("photoFilePath");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject2 = new ContentValues();
-      ((ContentValues)localObject2).put("mimetype", "vnd.android.cursor.item/photo");
-      ((ContentValues)localObject2).put("data15", (String)localObject1);
-      paramArrayList.add(localObject2);
+      localContentValues = new ContentValues();
+      localContentValues.put("mimetype", "vnd.android.cursor.item/photo");
+      localContentValues.put("data15", (String)localObject);
+      paramArrayList.add(localContentValues);
     }
+    localObject = paramJSONObject.optString("homeFaxNumber");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localContentValues = new ContentValues();
+      localContentValues.put("mimetype", "vnd.android.cursor.item/phone_v2");
+      localContentValues.put("data2", Integer.valueOf(0));
+      localContentValues.put("data3", "住宅传真");
+      localContentValues.put("data1", (String)localObject);
+      paramArrayList.add(localContentValues);
+    }
+    paramJSONObject = paramJSONObject.optString("workFaxNumber");
     if (!TextUtils.isEmpty(paramJSONObject))
     {
-      localObject1 = new ContentValues();
-      ((ContentValues)localObject1).put("mimetype", "vnd.android.cursor.item/phone_v2");
-      ((ContentValues)localObject1).put("data2", Integer.valueOf(0));
-      ((ContentValues)localObject1).put("data3", "住宅传真");
-      ((ContentValues)localObject1).put("data1", paramJSONObject);
-      paramArrayList.add(localObject1);
-    }
-    if (!TextUtils.isEmpty(str))
-    {
-      paramJSONObject = new ContentValues();
-      paramJSONObject.put("mimetype", "vnd.android.cursor.item/phone_v2");
-      paramJSONObject.put("data2", Integer.valueOf(0));
-      paramJSONObject.put("data3", "单位传真");
-      paramJSONObject.put("data1", str);
-      paramArrayList.add(paramJSONObject);
+      localObject = new ContentValues();
+      ((ContentValues)localObject).put("mimetype", "vnd.android.cursor.item/phone_v2");
+      ((ContentValues)localObject).put("data2", Integer.valueOf(0));
+      ((ContentValues)localObject).put("data3", "单位传真");
+      ((ContentValues)localObject).put("data1", paramJSONObject);
+      paramArrayList.add(localObject);
     }
   }
   
@@ -292,7 +293,7 @@ public class TelephonyJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.TelephonyJsPlugin
  * JD-Core Version:    0.7.0.1
  */

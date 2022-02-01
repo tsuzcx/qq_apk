@@ -467,7 +467,7 @@ public class WloginSigInfo
       if (this.wtSessionTicket == null) {}
       for (;;)
       {
-        return String.format(localLocale, "{A1:%d,%d A2:%d pskey:%d,%d pt4token:%d wtST:%d da2:%d}", new Object[] { Integer.valueOf(j), Long.valueOf(l1), Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l2), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this._DA2.length) });
+        return String.format(localLocale, "{A1:%d,%d A2:%d pskey:%d,%d pt4token:%d wtST:%d da2:%d D2:%d,%d %d-%d}", new Object[] { Integer.valueOf(j), Long.valueOf(l1), Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l2), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this._DA2.length), Integer.valueOf(this._D2.length), Integer.valueOf(this._D2Key.length), Long.valueOf(this._D2_create_time), Long.valueOf(this._D2_expire_time) });
         i = this.wtSessionTicket.length;
       }
       return "WloginSigInfo";

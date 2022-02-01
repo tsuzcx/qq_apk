@@ -1,31 +1,21 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import bdla;
+import com.tencent.mobileqq.activity.aio.rebuild.BaseChatpieHelper;
 
 class BaseChatPie$44
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  BaseChatPie$44(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
+  BaseChatPie$44(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      bdla.b(this.this$0.app, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
-      return;
-    }
-    BaseChatPie.access$1300(this.this$0, this.val$fromFlingToR);
-    bdla.b(this.this$0.app, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    BaseChatpieHelper.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.this$0.g);
+    this.this$0.U();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.44
  * JD-Core Version:    0.7.0.1
  */

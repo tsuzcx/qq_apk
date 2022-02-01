@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.nearby.now;
 
 import android.text.TextUtils;
-import axny;
-import axxu;
-import bdlf;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.statistics.ReportTask;
 
 class StoryPlayController$7
   implements Runnable
 {
-  StoryPlayController$7(StoryPlayController paramStoryPlayController, VideoData paramVideoData, axny paramaxny) {}
+  StoryPlayController$7(StoryPlayController paramStoryPlayController, VideoData paramVideoData, NearbyCardManager paramNearbyCardManager) {}
   
   public void run()
   {
-    bdlf localbdlf = new bdlf(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_right_slide").e(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Long));
-    int i = this.jdField_a_of_type_Axny.b();
-    String str2 = axxu.jdField_a_of_type_JavaLangString;
-    if (TextUtils.equals(axxu.jdField_a_of_type_JavaLangString, "2")) {}
+    ReportTask localReportTask = new ReportTask(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_right_slide").e(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Long));
+    int i = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyCardManager.b();
+    String str2 = NowVideoReporter.jdField_a_of_type_JavaLangString;
+    if (TextUtils.equals(NowVideoReporter.jdField_a_of_type_JavaLangString, "2")) {}
     for (String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);; str1 = "")
     {
-      localbdlf.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
+      localReportTask.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

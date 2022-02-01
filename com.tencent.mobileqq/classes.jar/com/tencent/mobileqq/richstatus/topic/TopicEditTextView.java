@@ -10,10 +10,7 @@ import android.view.ActionMode.Callback;
 import android.view.ContextMenu;
 import android.view.MotionEvent;
 import android.widget.EditText;
-import bbwr;
-import bbwu;
-import bbwv;
-import bbwx;
+import com.tencent.mobileqq.text.ITopic;
 import com.tencent.qphone.base.util.QLog;
 
 public class TopicEditTextView
@@ -23,32 +20,35 @@ public class TopicEditTextView
   public static Editable.Factory a;
   int jdField_a_of_type_Int;
   private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
-  ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback = new bbwv(this);
-  bbwr jdField_a_of_type_Bbwr;
+  ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback = new TopicEditTextView.2(this);
+  ITopic jdField_a_of_type_ComTencentMobileqqTextITopic;
   boolean jdField_a_of_type_Boolean;
   int b;
   public boolean b;
   
   static
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new bbwu();
+    jdField_a_of_type_AndroidTextEditable$Factory = new TopicEditTextView.1();
   }
   
   public TopicEditTextView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_b_of_type_Boolean = false;
     a();
   }
   
   public TopicEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_b_of_type_Boolean = false;
     a();
   }
   
   public TopicEditTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_b_of_type_Boolean = false;
     a();
   }
   
@@ -66,16 +66,35 @@ public class TopicEditTextView
     if (getEditableText() == null) {
       return false;
     }
-    bbwr[] arrayOfbbwr = (bbwr[])getEditableText().getSpans(i, j, bbwr.class);
-    if ((arrayOfbbwr != null) && (arrayOfbbwr.length > 0) && ((arrayOfbbwr[0] instanceof bbwr)))
+    ITopic[] arrayOfITopic = (ITopic[])getEditableText().getSpans(i, j, ITopic.class);
+    if ((arrayOfITopic != null) && (arrayOfITopic.length > 0) && ((arrayOfITopic[0] instanceof ITopic)))
     {
-      i = getEditableText().getSpanEnd(arrayOfbbwr[0]);
-      j = getEditableText().getSpanStart(arrayOfbbwr[0]);
+      i = getEditableText().getSpanEnd(arrayOfITopic[0]);
+      j = getEditableText().getSpanStart(arrayOfITopic[0]);
       if ((j >= 0) && (i > j)) {
         return false;
       }
     }
     return true;
+  }
+  
+  public void a(Exception paramException)
+  {
+    QLog.e("TopicEditTextView", 2, "handleException", paramException);
+    try
+    {
+      if (getEditableText().length() >= 0) {}
+      for (int i = getEditableText().length();; i = 0)
+      {
+        setSelection(i);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramException)
+    {
+      QLog.e("TopicEditTextView", 2, "handleException: setSelection", paramException);
+    }
   }
   
   public void addTextChangedListener(TextWatcher paramTextWatcher)
@@ -90,12 +109,12 @@ public class TopicEditTextView
     {
       return;
       if (QLog.isColorLevel()) {
-        QLog.i("TopicEditTextView", 2, String.format("afterTextChanged [delTopic=%s] src=%s", new Object[] { this.jdField_a_of_type_Bbwr, paramEditable }));
+        QLog.i("TopicEditTextView", 2, String.format("afterTextChanged [delTopic=%s] src=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqTextITopic, paramEditable }));
       }
-      if (this.jdField_a_of_type_Bbwr != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqTextITopic != null)
       {
-        int i = paramEditable.getSpanStart(this.jdField_a_of_type_Bbwr);
-        int j = paramEditable.getSpanEnd(this.jdField_a_of_type_Bbwr);
+        int i = paramEditable.getSpanStart(this.jdField_a_of_type_ComTencentMobileqqTextITopic);
+        int j = paramEditable.getSpanEnd(this.jdField_a_of_type_ComTencentMobileqqTextITopic);
         if ((i >= 0) && (j > i))
         {
           this.jdField_b_of_type_Boolean = true;
@@ -121,17 +140,17 @@ public class TopicEditTextView
     if (this.jdField_b_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Bbwr = null;
+    this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
     if ((paramCharSequence instanceof Spannable))
     {
       Spannable localSpannable = (Spannable)paramCharSequence;
-      bbwr localbbwr = bbwx.a(localSpannable, paramInt1);
-      if (localbbwr != null)
+      ITopic localITopic = TopicUtil.a(localSpannable, paramInt1);
+      if (localITopic != null)
       {
-        int i = localSpannable.getSpanStart(localbbwr);
-        int j = localSpannable.getSpanEnd(localbbwr);
+        int i = localSpannable.getSpanStart(localITopic);
+        int j = localSpannable.getSpanEnd(localITopic);
         if ((j >= 0) && (j >= i) && (paramInt2 > paramInt3)) {
-          this.jdField_a_of_type_Bbwr = localbbwr;
+          this.jdField_a_of_type_ComTencentMobileqqTextITopic = localITopic;
         }
       }
     }
@@ -142,7 +161,7 @@ public class TopicEditTextView
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt3;
       if (QLog.isColorLevel()) {
-        QLog.i("TopicEditTextView", 2, String.format("beforeTextChanged [bAdd=%b][delTopic=%s][edit=%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Bbwr, paramCharSequence }));
+        QLog.i("TopicEditTextView", 2, String.format("beforeTextChanged [bAdd=%b][delTopic=%s][edit=%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_ComTencentMobileqqTextITopic, paramCharSequence }));
       }
       if (this.jdField_a_of_type_AndroidTextTextWatcher == null) {
         break;
@@ -152,7 +171,21 @@ public class TopicEditTextView
     }
   }
   
-  protected void onCreateContextMenu(ContextMenu paramContextMenu)
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    try
+    {
+      boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+      return bool;
+    }
+    catch (Exception paramMotionEvent)
+    {
+      a(paramMotionEvent);
+    }
+    return false;
+  }
+  
+  public void onCreateContextMenu(ContextMenu paramContextMenu)
   {
     if (a()) {
       super.onCreateContextMenu(paramContextMenu);
@@ -169,14 +202,14 @@ public class TopicEditTextView
     {
       do
       {
-        bbwr[] arrayOfbbwr;
+        ITopic[] arrayOfITopic;
         do
         {
           return;
-          arrayOfbbwr = (bbwr[])getEditableText().getSpans(paramInt1, paramInt2, bbwr.class);
-        } while ((arrayOfbbwr == null) || (arrayOfbbwr.length <= 0));
-        i = getEditableText().getSpanEnd(arrayOfbbwr[0]);
-        j = getEditableText().getSpanStart(arrayOfbbwr[0]);
+          arrayOfITopic = (ITopic[])getEditableText().getSpans(paramInt1, paramInt2, ITopic.class);
+        } while ((arrayOfITopic == null) || (arrayOfITopic.length <= 0));
+        i = getEditableText().getSpanEnd(arrayOfITopic[0]);
+        j = getEditableText().getSpanStart(arrayOfITopic[0]);
       } while ((i <= j) || (j < 0));
       if ((paramInt1 == j) && (paramInt2 == i))
       {
@@ -215,10 +248,38 @@ public class TopicEditTextView
     }
     return true;
   }
+  
+  public boolean performClick()
+  {
+    try
+    {
+      boolean bool = super.performClick();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      a(localException);
+    }
+    return false;
+  }
+  
+  public boolean performLongClick()
+  {
+    try
+    {
+      boolean bool = super.performLongClick();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      a(localException);
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.topic.TopicEditTextView
  * JD-Core Version:    0.7.0.1
  */

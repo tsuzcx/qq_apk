@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
+import com.tencent.biz.qqstory.support.logging.SLog;
 import java.io.IOException;
 import java.util.ArrayList;
-import ykq;
 
 class FFmpeg$6
   extends ExecuteBinResponseCallback
@@ -11,7 +11,7 @@ class FFmpeg$6
   
   public void onFailure(String paramString)
   {
-    ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", paramString);
+    SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", paramString);
     this.val$unitCallback.onFailure(paramString);
   }
   
@@ -29,13 +29,13 @@ class FFmpeg$6
     catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
     {
       this.val$unitCallback.onFailure(localFFmpegCommandAlreadyRunningException.getMessage());
-      ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", localFFmpegCommandAlreadyRunningException.getMessage());
+      SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", localFFmpegCommandAlreadyRunningException.getMessage());
       return;
     }
     catch (IOException localIOException)
     {
       this.val$unitCallback.onFailure(localIOException.getMessage());
-      ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", localIOException.getMessage());
+      SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", localIOException.getMessage());
     }
   }
   
@@ -56,7 +56,7 @@ class FFmpeg$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg.6
  * JD-Core Version:    0.7.0.1
  */

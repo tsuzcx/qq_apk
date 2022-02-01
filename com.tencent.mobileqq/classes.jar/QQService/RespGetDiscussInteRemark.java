@@ -11,8 +11,8 @@ public final class RespGetDiscussInteRemark
 {
   static Map<Long, InteRemarkInfo> cache_InteRemarks;
   public String DiscussName = "";
-  public long DiscussUin;
-  public Map<Long, InteRemarkInfo> InteRemarks;
+  public long DiscussUin = 0L;
+  public Map<Long, InteRemarkInfo> InteRemarks = null;
   
   public RespGetDiscussInteRemark() {}
   

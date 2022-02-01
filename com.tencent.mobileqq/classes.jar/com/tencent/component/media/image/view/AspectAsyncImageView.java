@@ -23,7 +23,7 @@ public class AspectAsyncImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     float f = 0.0F;
     int m = 0;
@@ -142,7 +142,7 @@ public class AspectAsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.component.media.image.view.AspectAsyncImageView
  * JD-Core Version:    0.7.0.1
  */

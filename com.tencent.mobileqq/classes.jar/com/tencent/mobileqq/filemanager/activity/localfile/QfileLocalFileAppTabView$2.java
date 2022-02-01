@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import audf;
-import auds;
-import augj;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView.ScanParams;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,28 +18,28 @@ class QfileLocalFileAppTabView$2
     Object localObject;
     if (this.this$0.f)
     {
-      auds.a(this.this$0.a, this.this$0);
-      auds.a(true, audf.a().b(), ".apk", "", localHashMap, this.this$0);
-      localObject = audf.a().a();
+      FileCategoryUtil.a(this.this$0.a, this.this$0);
+      FileCategoryUtil.a(true, FMSettings.a().b(), ".apk", "", localHashMap, this.this$0);
+      localObject = FMSettings.a().a();
       if (localObject != null) {
-        auds.a(true, (String)localObject, ".apk", "", localHashMap, null);
+        FileCategoryUtil.a(true, (String)localObject, ".apk", "", localHashMap, null);
       }
     }
     for (;;)
     {
-      auds.a(localHashMap);
+      FileCategoryUtil.a(localHashMap);
       QfileLocalFileAppTabView.a(this.this$0, new QfileLocalFileAppTabView.2.1(this));
       return;
       localObject = this.this$0.d.iterator();
       while (((Iterator)localObject).hasNext()) {
-        auds.a(true, ((augj)((Iterator)localObject).next()).a(), ".apk", "", localHashMap, this.this$0);
+        FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)((Iterator)localObject).next()).a(), ".apk", "", localHashMap, this.this$0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.2
  * JD-Core Version:    0.7.0.1
  */

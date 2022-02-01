@@ -10,15 +10,15 @@ public final class TimeLine
   extends JceStruct
 {
   static Map<String, TimeEvent> cache_festivals = new HashMap();
-  public long begin_time;
-  public long end_time;
-  public Map<String, TimeEvent> festivals;
-  public int show_day;
-  public int show_month;
-  public int show_time;
-  public int show_week;
-  public int show_year;
-  public int total;
+  public long begin_time = 0L;
+  public long end_time = 0L;
+  public Map<String, TimeEvent> festivals = null;
+  public int show_day = 0;
+  public int show_month = 0;
+  public int show_time = 0;
+  public int show_week = 0;
+  public int show_year = 0;
+  public int total = 0;
   
   static
   {

@@ -13,15 +13,15 @@ public final class GetUserAddFriendSettingResp
   static int cache_queryuinsetting;
   static int cache_result;
   static ArrayList<String> cache_vecStrUserQuestion;
-  public boolean contact_bothway_friend;
-  public short errorCode;
-  public byte[] name;
-  public byte[] name1;
-  public long queryuin;
-  public int queryuinsetting;
-  public int result;
-  public long uin;
-  public ArrayList<String> vecStrUserQuestion;
+  public boolean contact_bothway_friend = false;
+  public short errorCode = 0;
+  public byte[] name = null;
+  public byte[] name1 = null;
+  public long queryuin = 0L;
+  public int queryuinsetting = 0;
+  public int result = 0;
+  public long uin = 0L;
+  public ArrayList<String> vecStrUserQuestion = null;
   
   public GetUserAddFriendSettingResp() {}
   
@@ -87,7 +87,7 @@ public final class GetUserAddFriendSettingResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.GetUserAddFriendSettingResp
  * JD-Core Version:    0.7.0.1
  */

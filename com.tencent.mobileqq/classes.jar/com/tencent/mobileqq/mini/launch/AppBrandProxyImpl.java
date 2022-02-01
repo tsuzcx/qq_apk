@@ -25,12 +25,12 @@ public class AppBrandProxyImpl
   public static final int PROCESS_STATUS_STOP = 4;
   private static final String TAG = "miniapp-process_AppBrandProxy";
   private static byte[] lock = new byte[0];
-  private boolean isConnecting;
+  private boolean isConnecting = false;
   private MiniAppConfig mAppConfig;
   private ServiceConnection mConnection = new AppBrandProxyImpl.1(this);
   private Context mContext;
   private int mMiniAppStatus;
-  private boolean mNeedSyncStatus;
+  private boolean mNeedSyncStatus = false;
   private IAppBrandService mService;
   private Bundle mStartBundle;
   private List<Runnable> mTaskAfterConnected = new ArrayList();
@@ -74,7 +74,7 @@ public class AppBrandProxyImpl
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: invokespecial 122	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:isMainProcess	()Z
+    //   5: invokespecial 124	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:isMainProcess	()Z
     //   8: istore_1
     //   9: iload_1
     //   10: ifeq +9 -> 19
@@ -85,7 +85,7 @@ public class AppBrandProxyImpl
     //   17: iload_1
     //   18: ireturn
     //   19: aload_0
-    //   20: getfield 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
+    //   20: getfield 71	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
     //   23: ifnull +8 -> 31
     //   26: iconst_1
     //   27: istore_1
@@ -93,46 +93,46 @@ public class AppBrandProxyImpl
     //   31: iload_2
     //   32: istore_1
     //   33: aload_0
-    //   34: getfield 73	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:isConnecting	Z
+    //   34: getfield 47	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:isConnecting	Z
     //   37: ifne -22 -> 15
     //   40: iload_2
     //   41: istore_1
     //   42: aload_0
-    //   43: getfield 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
+    //   43: getfield 71	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
     //   46: ifnonnull -31 -> 15
     //   49: ldc 17
     //   51: iconst_1
-    //   52: ldc 124
-    //   54: invokestatic 128	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   57: new 130	android/content/Intent
+    //   52: ldc 126
+    //   54: invokestatic 130	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   57: new 132	android/content/Intent
     //   60: dup
-    //   61: invokespecial 131	android/content/Intent:<init>	()V
+    //   61: invokespecial 133	android/content/Intent:<init>	()V
     //   64: astore_3
     //   65: aload_3
-    //   66: new 133	android/content/ComponentName
+    //   66: new 135	android/content/ComponentName
     //   69: dup
     //   70: aload_0
-    //   71: getfield 59	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mContext	Landroid/content/Context;
-    //   74: ldc 135
-    //   76: invokespecial 138	android/content/ComponentName:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   79: invokevirtual 142	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
+    //   71: getfield 63	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mContext	Landroid/content/Context;
+    //   74: ldc 137
+    //   76: invokespecial 140	android/content/ComponentName:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   79: invokevirtual 144	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
     //   82: pop
     //   83: aload_3
-    //   84: ldc 144
-    //   86: invokestatic 150	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   89: invokevirtual 154	com/tencent/common/app/BaseApplicationImpl:getQQProcessName	()Ljava/lang/String;
-    //   92: invokevirtual 158	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   84: ldc 146
+    //   86: invokestatic 152	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   89: invokevirtual 156	com/tencent/common/app/BaseApplicationImpl:getQQProcessName	()Ljava/lang/String;
+    //   92: invokevirtual 160	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   95: pop
     //   96: aload_0
     //   97: iconst_1
-    //   98: putfield 73	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:isConnecting	Z
+    //   98: putfield 47	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:isConnecting	Z
     //   101: aload_0
-    //   102: getfield 59	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mContext	Landroid/content/Context;
+    //   102: getfield 63	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mContext	Landroid/content/Context;
     //   105: aload_3
     //   106: aload_0
-    //   107: getfield 57	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mConnection	Landroid/content/ServiceConnection;
+    //   107: getfield 61	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mConnection	Landroid/content/ServiceConnection;
     //   110: iconst_1
-    //   111: invokevirtual 164	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    //   111: invokevirtual 166	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
     //   114: pop
     //   115: iload_2
     //   116: istore_1
@@ -140,9 +140,9 @@ public class AppBrandProxyImpl
     //   120: astore_3
     //   121: ldc 17
     //   123: iconst_1
-    //   124: ldc 166
+    //   124: ldc 168
     //   126: aload_3
-    //   127: invokestatic 168	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   127: invokestatic 170	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   130: iload_2
     //   131: istore_1
     //   132: goto -117 -> 15
@@ -221,20 +221,20 @@ public class AppBrandProxyImpl
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
+    //   3: getfield 71	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
     //   6: ifnull +12 -> 18
     //   9: aload_0
-    //   10: getfield 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
+    //   10: getfield 71	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
     //   13: astore_1
     //   14: aload_0
     //   15: monitorexit
     //   16: aload_1
     //   17: areturn
     //   18: aload_0
-    //   19: invokespecial 63	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:ensureService	()Z
+    //   19: invokespecial 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:ensureService	()Z
     //   22: pop
     //   23: aload_0
-    //   24: getfield 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
+    //   24: getfield 71	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
     //   27: astore_1
     //   28: goto -14 -> 14
     //   31: astore_1
@@ -277,7 +277,7 @@ public class AppBrandProxyImpl
     //   28: ldc 234
     //   30: invokestatic 232	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   33: aload_0
-    //   34: getfield 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
+    //   34: getfield 71	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
     //   37: aload_1
     //   38: aload_2
     //   39: aload_3
@@ -288,7 +288,7 @@ public class AppBrandProxyImpl
     //   51: iconst_1
     //   52: ldc 236
     //   54: aload_1
-    //   55: invokestatic 117	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   55: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   58: goto -36 -> 22
     //   61: astore_1
     //   62: aload_0
@@ -328,7 +328,7 @@ public class AppBrandProxyImpl
     //   20: ifnonnull +19 -> 39
     //   23: aload_0
     //   24: iconst_1
-    //   25: putfield 178	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mNeedSyncStatus	Z
+    //   25: putfield 49	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mNeedSyncStatus	Z
     //   28: ldc 17
     //   30: iconst_1
     //   31: ldc 238
@@ -341,7 +341,7 @@ public class AppBrandProxyImpl
     //   42: ldc 240
     //   44: invokestatic 232	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   47: aload_0
-    //   48: getfield 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
+    //   48: getfield 71	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
     //   51: aload_1
     //   52: aload_2
     //   53: aload_3
@@ -352,7 +352,7 @@ public class AppBrandProxyImpl
     //   65: iconst_1
     //   66: ldc 242
     //   68: aload_1
-    //   69: invokestatic 117	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   69: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   72: goto -36 -> 36
     //   75: astore_1
     //   76: aload_0
@@ -393,7 +393,7 @@ public class AppBrandProxyImpl
     //   19: ifnonnull +24 -> 43
     //   22: aload_0
     //   23: iconst_1
-    //   24: putfield 178	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mNeedSyncStatus	Z
+    //   24: putfield 49	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mNeedSyncStatus	Z
     //   27: aload_0
     //   28: aload_3
     //   29: putfield 210	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mStartBundle	Landroid/os/Bundle;
@@ -409,7 +409,7 @@ public class AppBrandProxyImpl
     //   46: ldc 246
     //   48: invokestatic 232	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   51: aload_0
-    //   52: getfield 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
+    //   52: getfield 71	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
     //   55: aload_1
     //   56: aload_2
     //   57: aload_3
@@ -421,7 +421,7 @@ public class AppBrandProxyImpl
     //   70: ldc 248
     //   72: invokestatic 232	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   75: aload_0
-    //   76: getfield 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
+    //   76: getfield 71	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
     //   79: aload_1
     //   80: aload_2
     //   81: aload_3
@@ -432,7 +432,7 @@ public class AppBrandProxyImpl
     //   93: iconst_1
     //   94: ldc 221
     //   96: aload_1
-    //   97: invokestatic 117	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   97: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   100: goto -60 -> 40
     //   103: astore_1
     //   104: aload_0
@@ -480,7 +480,7 @@ public class AppBrandProxyImpl
     //   28: ldc 253
     //   30: invokestatic 232	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   33: aload_0
-    //   34: getfield 67	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
+    //   34: getfield 71	com/tencent/mobileqq/mini/launch/AppBrandProxyImpl:mService	Lcom/tencent/mobileqq/mini/launch/IAppBrandService;
     //   37: aload_1
     //   38: aload_2
     //   39: aload_3
@@ -493,7 +493,7 @@ public class AppBrandProxyImpl
     //   55: iconst_1
     //   56: ldc_w 260
     //   59: aload_1
-    //   60: invokestatic 117	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   60: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   63: goto -41 -> 22
     //   66: astore_1
     //   67: aload_0

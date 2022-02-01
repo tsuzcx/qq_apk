@@ -9,17 +9,17 @@ public final class RespondQueryQQBindingStat
 {
   static int cache_type;
   public String MobileUniqueNo = "";
-  public long bindingTime;
-  public boolean continueUploadNotbind;
-  public boolean isPhoneSwitched;
-  public long isRecommend;
-  public boolean isStopFindMatch;
+  public long bindingTime = 0L;
+  public boolean continueUploadNotbind = false;
+  public boolean isPhoneSwitched = false;
+  public long isRecommend = 0L;
+  public boolean isStopFindMatch = false;
   public long lastUsedFlag = 1L;
   public String mobileNo = "";
   public String nationCode = "";
-  public boolean noBindUploadContacts;
-  public boolean noBindUploadContactsLocal;
-  public long originBinder;
+  public boolean noBindUploadContacts = false;
+  public boolean noBindUploadContactsLocal = false;
+  public long originBinder = 0L;
   public int type = 0;
   
   public RespondQueryQQBindingStat() {}

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true"
+<com.tencent.av.smallscreen.SmallScreenRelativeLayout android:id="@id/o34" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/eq9" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <android.support.v7.widget.RecyclerView android:id="@id/mmg" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/n7v" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/cancel" />
-    </LinearLayout>
-</FrameLayout>
+    <com.tencent.av.wtogether.view.SmallScreenGLContentView android:id="@id/a2b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/ojo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/bp" />
+    <ImageView android:id="@id/ok1" android:background="@drawable/e4c" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</com.tencent.av.smallscreen.SmallScreenRelativeLayout>

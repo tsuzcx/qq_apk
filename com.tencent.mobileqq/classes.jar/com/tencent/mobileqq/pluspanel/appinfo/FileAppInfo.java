@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import abgm;
-import aftr;
-import ahpt;
-import ahvi;
-import audy;
-import audz;
-import azme;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.FileAssistantReportData;
 import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class FileAppInfo
   extends PlusPanelAppInfo
 {
-  public FileAppInfo() {}
+  FileAppInfo() {}
   
   public FileAppInfo(int paramInt)
   {
@@ -30,12 +29,12 @@ public class FileAppInfo
   
   private void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    localQQAppInterface = paramBaseChatPie.app;
-    localObject = (abgm)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    localQQAppInterface = paramBaseChatPie.a;
+    localObject = (SmartDeviceProxyMgr)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     l1 = 0L;
     try
     {
-      long l2 = Long.parseLong(paramSessionInfo.curFriendUin);
+      long l2 = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
       l1 = l2;
     }
     catch (Exception localException)
@@ -44,33 +43,33 @@ public class FileAppInfo
       {
         localException.printStackTrace();
         continue;
-        if ((paramSessionInfo.curType == 9501) && (localObject != null) && (((abgm)localObject).c(l1)))
+        if ((paramSessionInfo.jdField_a_of_type_Int == 9501) && (localObject != null) && (((SmartDeviceProxyMgr)localObject).c(l1)))
         {
-          aftr.c(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
+          PlusPanelUtils.c(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo);
         }
         else
         {
-          ahpt.a(localQQAppInterface, "0X800407C", paramSessionInfo.curType);
-          localObject = new audz();
-          ((audz)localObject).b = "send_file";
-          ((audz)localObject).a = 1;
-          audy.a(localQQAppInterface.getCurrentAccountUin(), (audz)localObject);
-          aftr.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
+          AIOPanelUtiles.a(localQQAppInterface, "0X800407C", paramSessionInfo.jdField_a_of_type_Int);
+          localObject = new FileManagerReporter.FileAssistantReportData();
+          ((FileManagerReporter.FileAssistantReportData)localObject).b = "send_file";
+          ((FileManagerReporter.FileAssistantReportData)localObject).jdField_a_of_type_Int = 1;
+          FileManagerReporter.a(localQQAppInterface.getCurrentAccountUin(), (FileManagerReporter.FileAssistantReportData)localObject);
+          PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo);
         }
       }
     }
-    if (paramSessionInfo.curType == 1)
+    if (paramSessionInfo.jdField_a_of_type_Int == 1)
     {
-      bdla.b(localQQAppInterface, "CliOper", "", "", "0X800407E", "0X800407E", 0, 0, "", "", "", "");
-      aftr.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
-      paramBaseChatPie.getActivity().setCanLock(false);
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X800407E", "0X800407E", 0, 0, "", "", "", "");
+      PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo);
+      paramBaseChatPie.a().setCanLock(false);
       return;
     }
   }
   
   public int defaultDrawableID()
   {
-    return 2130839222;
+    return 2130839291;
   }
   
   public int getAppID()
@@ -99,14 +98,14 @@ public class FileAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690796);
+    return BaseApplicationImpl.getContext().getString(2131690901);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (!CheckPermission.isHasStoragePermission(paramBaseChatPie.getActivity()))
+    if (!CheckPermission.isHasStoragePermission(paramBaseChatPie.a()))
     {
-      CheckPermission.requestSDCardPermission(paramBaseChatPie.getActivity(), new azme(this, paramBaseChatPie, paramSessionInfo));
+      CheckPermission.requestSDCardPermission(paramBaseChatPie.a(), new FileAppInfo.1(this, paramBaseChatPie, paramSessionInfo));
       return;
     }
     a(paramBaseChatPie, paramSessionInfo);

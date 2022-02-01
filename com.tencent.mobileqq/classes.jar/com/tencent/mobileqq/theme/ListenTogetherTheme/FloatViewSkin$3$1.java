@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
-import behx;
-import beia;
-
-public class FloatViewSkin$3$1
+class FloatViewSkin$3$1
   implements Runnable
 {
-  public FloatViewSkin$3$1(beia parambeia) {}
+  FloatViewSkin$3$1(FloatViewSkin.3 param3) {}
   
   public void run()
   {
-    this.a.a.b(behx.a(this.a.a));
+    this.a.a.b(FloatViewSkin.a(this.a.a));
   }
 }
 

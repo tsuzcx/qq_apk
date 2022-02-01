@@ -12,7 +12,7 @@ public final class DouFuInfo
   public String blessing = "";
   public String doufu_link = "";
   public String icon = "";
-  public long uin;
+  public long uin = 0L;
   
   public DouFuInfo() {}
   

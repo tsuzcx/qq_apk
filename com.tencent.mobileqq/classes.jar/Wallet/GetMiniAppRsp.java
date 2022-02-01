@@ -13,9 +13,9 @@ public final class GetMiniAppRsp
   public static final int RES_FAIL = -1;
   public static final int RES_SUCC = 0;
   static ArrayList<ApkgConfig> cache_apkg_config_list = new ArrayList();
-  public int action;
-  public ArrayList<ApkgConfig> apkg_config_list;
-  public int err_code;
+  public int action = 0;
+  public ArrayList<ApkgConfig> apkg_config_list = null;
+  public int err_code = 0;
   public String extra = "";
   
   static

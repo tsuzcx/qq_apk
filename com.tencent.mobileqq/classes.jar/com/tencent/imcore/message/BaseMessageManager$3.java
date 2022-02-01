@@ -1,10 +1,10 @@
 package com.tencent.imcore.message;
 
-import aopk;
-import bcrg;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.UncommonMessageProcessor;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
 
 class BaseMessageManager$3
   implements Runnable
@@ -13,24 +13,24 @@ class BaseMessageManager$3
   
   public void run()
   {
-    this.this$0.a.getMsgCache().f(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.this$0.a.getMsgCache().d(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     this.this$0.a();
     long l1 = System.currentTimeMillis();
     long l2 = this.jdField_a_of_type_Long;
-    if (!this.this$0.a.getMsgCache().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
+    if (!this.this$0.a.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
       this.this$0.a.getMsgHandler().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L - (l1 - l2));
     }
     for (;;)
     {
-      this.this$0.a.getMsgCache().f(null);
+      this.this$0.a.getMsgCache().d(null);
       return;
-      this.this$0.a.getMsgHandler().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, aopk.b, aopk.j);
+      this.this$0.a.getMsgHandler().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, UncommonMessageProcessor.b, UncommonMessageProcessor.j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManager.3
  * JD-Core Version:    0.7.0.1
  */

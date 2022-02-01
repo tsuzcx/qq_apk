@@ -2,7 +2,6 @@ package cooperation.qzone;
 
 import NS_MOBILE_COMM.combine_diamond_info;
 import NS_MOBILE_COMM.star_info;
-import amme;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,19 +11,19 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bdla;
-import bheh;
-import bhey;
-import blrb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.comic.VipComicReportUtils;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
@@ -35,23 +34,21 @@ public class QZoneVipInfoManager
   public static final String TAG = "QZoneVipInfoManager";
   private static Object lock = new Object();
   private static QZoneVipInfoManager mInstance;
-  private String mCustomDimanondUrl;
-  private volatile boolean mIsCurrentProcessWrite;
+  private String mCustomDimanondUrl = null;
+  private volatile boolean mIsCurrentProcessWrite = false;
   private int mOwnerBitMap = -1;
-  private String mPersonalizedYellowVipUrl;
+  private String mPersonalizedYellowVipUrl = null;
   private SharedPreferences mSharedPreference;
   
   private QZoneVipInfoManager()
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (Build.VERSION.SDK_INT >= 11) {}
-    for (int i = 4;; i = 0)
-    {
-      this.mSharedPreference = localBaseApplicationImpl.getSharedPreferences("QZONE_VIP_INFO", i);
-      if (this.mSharedPreference != null) {
-        this.mSharedPreference.registerOnSharedPreferenceChangeListener(new QZoneVipInfoManager.1(this));
-      }
-      return;
+    if (Build.VERSION.SDK_INT >= 11) {
+      i = 4;
+    }
+    this.mSharedPreference = localBaseApplicationImpl.getSharedPreferences("QZONE_VIP_INFO", i);
+    if (this.mSharedPreference != null) {
+      this.mSharedPreference.registerOnSharedPreferenceChangeListener(new QZoneVipInfoManager.1(this));
     }
   }
   
@@ -229,7 +226,7 @@ public class QZoneVipInfoManager
       if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
         break;
       }
-      paramActivity = bhey.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramActivity, str);
+      paramActivity = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramActivity, str);
       if (paramActivity != null)
       {
         paramActivity.a();
@@ -246,7 +243,7 @@ public class QZoneVipInfoManager
       return;
     }
     Intent localIntent = new Intent();
-    String str = paramActivity.getResources().getString(2131717535);
+    String str = paramActivity.getResources().getString(2131718030);
     QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", paramString2);
     localIntent.putExtra("source", paramString3);
@@ -292,11 +289,11 @@ public class QZoneVipInfoManager
     if ((localAppRuntime instanceof QQAppInterface))
     {
       localQQAppInterface = (QQAppInterface)localAppRuntime;
-      localObject1 = (amme)localQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
-      localObject2 = ((amme)localObject1).a(paramInt);
-      i = ((amme)localObject1).a((JSONObject)localObject2);
+      localObject1 = (IApolloManagerService)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
+      localObject2 = ((IApolloManagerService)localObject1).getPetInfo(paramInt);
+      i = ((IApolloManagerService)localObject1).getPetCategory((JSONObject)localObject2);
     }
-    for (Object localObject2 = ((amme)localObject1).b((JSONObject)localObject2);; localObject2 = null)
+    for (Object localObject2 = ((IApolloManagerService)localObject1).getPetBrandClickActionUrl((JSONObject)localObject2);; localObject2 = null)
     {
       int k;
       String str2;
@@ -322,7 +319,7 @@ public class QZoneVipInfoManager
       while (TextUtils.isEmpty((CharSequence)localObject1))
       {
         return false;
-        localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetNameplateHostUrl", "mqqapi://miniapp/open?_atype=1&_mappid=1110761090&_mvid=&_vt=3&referer=2200&via=2016_70&_sig=3078374443&roleId=%7BroleId%7D");
+        localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetNameplateHostUrl", "mqqapi://miniapp/open?_atype=0&_mappid=1111154994&_mvid=&_path=pages%2Findex%2Findex&_vt=3&via=2016_70&_sig=1128350863&src=10001&roleId=%7BroleId%7D");
         j = k;
         str1 = str2;
         continue;
@@ -340,7 +337,7 @@ public class QZoneVipInfoManager
             str1 = str2;
             break;
           case 1: 
-            localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetNameplateGuestUrl", "mqqapi://miniapp/open?_atype=1&_mappid=1110761090&_mvid=&_vt=3&referer=2200&via=2016_70&_sig=3078374443&roleId=%7BroleId%7D");
+            localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetNameplateGuestUrl", "mqqapi://miniapp/open?_atype=0&_mappid=1111154994&_mvid=&_path=pages%2Findex%2Findex&_vt=3&via=2016_70&_sig=1128350863&src=10001&roleId=%7BroleId%7D");
             j = k;
             str1 = str2;
           }
@@ -362,21 +359,21 @@ public class QZoneVipInfoManager
         QLog.i("QZoneVipInfoManager", 2, "onPetBrandClick petId = " + paramInt + " petCategory = " + i + " from = " + j + " reserve = " + str1 + " jumpUrl = " + (String)localObject2);
       }
       if (localQQAppInterface != null) {}
-      for (paramString = bhey.a((QQAppInterface)localAppRuntime, paramActivity, (String)localObject2);; paramString = null)
+      for (paramString = JumpParser.a((QQAppInterface)localAppRuntime, paramActivity, (String)localObject2);; paramString = null)
       {
         boolean bool;
         if (paramString != null)
         {
           bool = paramString.a();
-          bdla.b(null, "dc00898", "", "", "", "", j, 0, str1, "", "", "");
+          ReportController.b(null, "dc00898", "", "", "", "", j, 0, str1, "", "", "");
           if (!bool) {
-            break label593;
+            break label601;
           }
         }
-        label593:
+        label601:
         for (paramActivity = "0";; paramActivity = "1")
         {
-          blrb.a(localQQAppInterface, "3006", "aiopetpaiClick", String.valueOf(i), String.valueOf(paramInt), paramActivity, new String[] { String.valueOf(j) });
+          VipComicReportUtils.a(localQQAppInterface, "3006", "aiopetpaiClick", String.valueOf(i), String.valueOf(paramInt), paramActivity, new String[] { String.valueOf(j) });
           return bool;
           bool = jumpToH5(paramActivity, (String)localObject2);
           break;
@@ -397,17 +394,17 @@ public class QZoneVipInfoManager
       QLog.e("QZoneVipInfoManager", 1, "onPetClick error! activity = " + paramActivity + ", app = " + paramQQAppInterface + ", uin = " + paramString);
       return false;
     }
-    Object localObject1 = (amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
-    Object localObject2 = ((amme)localObject1).a(paramInt);
-    int j = ((amme)localObject1).a((JSONObject)localObject2);
-    localObject1 = ((amme)localObject1).a((JSONObject)localObject2);
+    Object localObject1 = (IApolloManagerService)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
+    Object localObject2 = ((IApolloManagerService)localObject1).getPetInfo(paramInt);
+    int j = ((IApolloManagerService)localObject1).getPetCategory((JSONObject)localObject2);
+    localObject1 = ((IApolloManagerService)localObject1).getPetClickActionUrl((JSONObject)localObject2);
     String str;
     int i;
     if (paramString.equals(paramQQAppInterface.getAccount()))
     {
       str = "0";
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label564;
+        break label572;
       }
       switch (j)
       {
@@ -422,7 +419,7 @@ public class QZoneVipInfoManager
       {
         QLog.e("QZoneVipInfoManager", 1, "onPetClick error! jumpUrl is null!");
         return false;
-        localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetHostUrl", "mqqapi://miniapp/open?_atype=1&_mappid=1110761090&_mvid=&_vt=3&referer=2200&via=2016_70&_sig=3078374443&roleId=%7BroleId%7D");
+        localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetHostUrl", "mqqapi://miniapp/open?_atype=0&_mappid=1111154994&_mvid=&_path=pages%2Findex%2Findex&_vt=3&via=2016_70&_sig=1128350863&src=10001&roleId=%7BroleId%7D");
         i = 0;
         continue;
         str = "1";
@@ -434,7 +431,7 @@ public class QZoneVipInfoManager
             i = 1;
             break;
           case 1: 
-            localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetGuestUrl", "mqqapi://miniapp/open?_atype=1&_mappid=1110761090&_mvid=&_vt=3&referer=2200&via=2016_70&_sig=3078374443&roleId=%7BroleId%7D");
+            localObject1 = QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOMiniGamePetGuestUrl", "mqqapi://miniapp/open?_atype=0&_mappid=1111154994&_mvid=&_path=pages%2Findex%2Findex&_vt=3&via=2016_70&_sig=1128350863&src=10001&roleId=%7BroleId%7D");
             i = 1;
             break;
           }
@@ -457,19 +454,19 @@ public class QZoneVipInfoManager
         if (QLog.isColorLevel()) {
           QLog.i("QZoneVipInfoManager", 2, "onPetClick petId = " + paramInt + " petCategory = " + j + " from = " + i + " reserve = " + str + " jumpUrl = " + (String)localObject2);
         }
-        paramString = bhey.a(paramQQAppInterface, paramActivity, (String)localObject2);
+        paramString = JumpParser.a(paramQQAppInterface, paramActivity, (String)localObject2);
         boolean bool;
         if (paramString != null)
         {
           bool = paramString.a();
           if (!bool) {
-            break label551;
+            break label559;
           }
         }
-        label551:
+        label559:
         for (paramActivity = "0";; paramActivity = "1")
         {
-          blrb.a(paramQQAppInterface, "3006", "aiopetClick", String.valueOf(j), String.valueOf(paramInt), paramActivity, new String[] { String.valueOf(i) });
+          VipComicReportUtils.a(paramQQAppInterface, "3006", "aiopetClick", String.valueOf(j), String.valueOf(paramInt), paramActivity, new String[] { String.valueOf(i) });
           return bool;
           bool = jumpToH5(paramActivity, (String)localObject2);
           break;
@@ -477,7 +474,7 @@ public class QZoneVipInfoManager
       }
       i = 1;
       continue;
-      label564:
+      label572:
       i = 0;
     }
   }
@@ -510,7 +507,7 @@ public class QZoneVipInfoManager
       if (QLog.isColorLevel()) {
         QLog.i("QZoneVipInfoManager", 2, "onSuperYellowBrandClick from = " + i + " reserve = " + str2 + " jumpUrl = " + paramString);
       }
-      bdla.b(null, "dc00898", "", "", "", "", i, 0, str2, "", "", "");
+      ReportController.b(null, "dc00898", "", "", "", "", i, 0, str2, "", "", "");
       return jumpToH5(paramActivity, paramString);
       str2 = "1";
       str1 = QzoneConfig.getInstance().getConfig("H5Url", "aioCMShowQZSVIPNameplateGuestUrl", "https://h5.qzone.qq.com/limishow/mall?_wv=131072&_fv=0&_wwv=128&_wvx=10&traceDetail=base64-eyJhcHBpZCI6Im91dHNpZGUiLCJwYWdlX2lkIjoiMjEifQ%3D%3D");
@@ -853,7 +850,7 @@ public class QZoneVipInfoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneVipInfoManager
  * JD-Core Version:    0.7.0.1
  */

@@ -465,104 +465,100 @@ public class AuthDialog
     }
   }
   
-  private void updatePhoneNumberView(JSONArray paramJSONArray)
+  private void updatePhoneNumber1(JSONArray paramJSONArray)
   {
-    String str;
+    paramJSONArray = paramJSONArray.optJSONObject(0);
     if (paramJSONArray != null)
     {
-      str = StorageUtil.getPreference().getString(this.uin + "_PhoneNumber", "");
-      QMLog.d("AuthDialog", "updatePhoneNumberView phoneNumberArray length : " + paramJSONArray.length());
-      switch (paramJSONArray.length())
-      {
-      }
+      this.mPhoneNumberLayout.setVisibility(0);
+      this.mPhoneNumberLayout1.setVisibility(0);
+      this.mPhoneNumberLayout2.setVisibility(8);
+      this.mPhoneNumberLayout3.setVisibility(8);
+      this.mPhoneNumber1.setText(paramJSONArray.optString("purePhoneNumber"));
+      this.mPhoneNumberSection1.setVisibility(0);
+      this.mPhoneNumberSection2.setVisibility(8);
+      this.mPhoneNumberSection3.setVisibility(8);
+      this.mSelectPhoneNumber = 1;
+      this.mLineView1.setVisibility(0);
+      this.mLineView2.setVisibility(0);
+      this.mLineView3.setVisibility(8);
+      this.mLineView4.setVisibility(8);
+      this.mOperateNumberBtn.setText("使用其他号码");
+      this.mOperateNumberBtn.setVisibility(0);
     }
-    JSONObject localJSONObject1;
-    label462:
-    JSONObject localJSONObject2;
-    do
+  }
+  
+  private void updatePhoneNumber2(JSONArray paramJSONArray, String paramString)
+  {
+    JSONObject localJSONObject = paramJSONArray.optJSONObject(0);
+    paramJSONArray = paramJSONArray.optJSONObject(1);
+    if ((localJSONObject != null) && (paramJSONArray != null))
     {
-      do
-      {
-        do
-        {
-          return;
-          paramJSONArray = paramJSONArray.optJSONObject(0);
-        } while (paramJSONArray == null);
-        this.mPhoneNumberLayout.setVisibility(0);
-        this.mPhoneNumberLayout1.setVisibility(0);
-        this.mPhoneNumberLayout2.setVisibility(8);
-        this.mPhoneNumberLayout3.setVisibility(8);
-        this.mPhoneNumber1.setText(paramJSONArray.optString("purePhoneNumber"));
-        this.mPhoneNumberSection1.setVisibility(0);
-        this.mPhoneNumberSection2.setVisibility(8);
-        this.mPhoneNumberSection3.setVisibility(8);
-        this.mSelectPhoneNumber = 1;
-        this.mLineView1.setVisibility(0);
-        this.mLineView2.setVisibility(0);
-        this.mLineView3.setVisibility(8);
-        this.mLineView4.setVisibility(8);
-        this.mOperateNumberBtn.setText("使用其他号码");
-        this.mOperateNumberBtn.setVisibility(0);
-        return;
-        localJSONObject1 = paramJSONArray.optJSONObject(0);
-        paramJSONArray = paramJSONArray.optJSONObject(1);
-      } while ((localJSONObject1 == null) || (paramJSONArray == null));
       this.mPhoneNumberLayout.setVisibility(0);
       this.mPhoneNumberLayout1.setVisibility(0);
       this.mPhoneNumberLayout2.setVisibility(0);
       this.mPhoneNumberLayout3.setVisibility(8);
-      this.mPhoneNumber1.setText(localJSONObject1.optString("purePhoneNumber"));
+      this.mPhoneNumber1.setText(localJSONObject.optString("purePhoneNumber"));
       this.mPhoneNumber2.setText(paramJSONArray.optString("purePhoneNumber"));
-      if (str.equals(localJSONObject1.optString("purePhoneNumber")))
-      {
-        this.mPhoneNumberSection1.setVisibility(0);
-        this.mSelectPhoneNumber = 1;
-        if (!str.equals(paramJSONArray.optString("purePhoneNumber"))) {
-          break label462;
-        }
-        this.mPhoneNumberSection2.setVisibility(0);
-        this.mSelectPhoneNumber = 2;
+      if (!paramString.equals(localJSONObject.optString("purePhoneNumber"))) {
+        break label211;
       }
-      for (;;)
-      {
-        if (TextUtils.isEmpty(str)) {
-          this.mPhoneNumberSection1.setVisibility(0);
-        }
-        this.mPhoneNumberSection3.setVisibility(8);
-        this.mLineView1.setVisibility(0);
-        this.mLineView2.setVisibility(0);
-        this.mLineView3.setVisibility(0);
-        this.mLineView4.setVisibility(8);
-        this.mOperateNumberBtn.setText("管理手机号码");
-        this.mOperateNumberBtn.setVisibility(0);
-        return;
-        this.mPhoneNumberSection1.setVisibility(8);
-        break;
-        this.mPhoneNumberSection2.setVisibility(8);
-      }
-      localJSONObject1 = paramJSONArray.optJSONObject(0);
-      localJSONObject2 = paramJSONArray.optJSONObject(1);
-      paramJSONArray = paramJSONArray.optJSONObject(2);
-    } while ((localJSONObject1 == null) || (localJSONObject2 == null) || (paramJSONArray == null));
-    this.mPhoneNumberLayout.setVisibility(0);
-    this.mPhoneNumberLayout1.setVisibility(0);
-    this.mPhoneNumberLayout2.setVisibility(0);
-    this.mPhoneNumberLayout3.setVisibility(0);
-    this.mPhoneNumber1.setText(localJSONObject1.optString("purePhoneNumber"));
-    this.mPhoneNumber2.setText(localJSONObject2.optString("purePhoneNumber"));
-    this.mPhoneNumber3.setText(paramJSONArray.optString("purePhoneNumber"));
-    if (str.equals(localJSONObject1.optString("purePhoneNumber")))
-    {
       this.mPhoneNumberSection1.setVisibility(0);
       this.mSelectPhoneNumber = 1;
-      if (!str.equals(localJSONObject2.optString("purePhoneNumber"))) {
-        break label726;
+      if (!paramString.equals(paramJSONArray.optString("purePhoneNumber"))) {
+        break label223;
       }
       this.mPhoneNumberSection2.setVisibility(0);
       this.mSelectPhoneNumber = 2;
-      label636:
-      if (!str.equals(paramJSONArray.optString("purePhoneNumber"))) {
-        break label738;
+    }
+    for (;;)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        this.mPhoneNumberSection1.setVisibility(0);
+      }
+      this.mPhoneNumberSection3.setVisibility(8);
+      this.mLineView1.setVisibility(0);
+      this.mLineView2.setVisibility(0);
+      this.mLineView3.setVisibility(0);
+      this.mLineView4.setVisibility(8);
+      this.mOperateNumberBtn.setText("管理手机号码");
+      this.mOperateNumberBtn.setVisibility(0);
+      return;
+      label211:
+      this.mPhoneNumberSection1.setVisibility(8);
+      break;
+      label223:
+      this.mPhoneNumberSection2.setVisibility(8);
+    }
+  }
+  
+  private void updatePhoneNumber3(JSONArray paramJSONArray, String paramString)
+  {
+    JSONObject localJSONObject1 = paramJSONArray.optJSONObject(0);
+    JSONObject localJSONObject2 = paramJSONArray.optJSONObject(1);
+    paramJSONArray = paramJSONArray.optJSONObject(2);
+    if ((localJSONObject1 != null) && (localJSONObject2 != null) && (paramJSONArray != null))
+    {
+      this.mPhoneNumberLayout.setVisibility(0);
+      this.mPhoneNumberLayout1.setVisibility(0);
+      this.mPhoneNumberLayout2.setVisibility(0);
+      this.mPhoneNumberLayout3.setVisibility(0);
+      this.mPhoneNumber1.setText(localJSONObject1.optString("purePhoneNumber"));
+      this.mPhoneNumber2.setText(localJSONObject2.optString("purePhoneNumber"));
+      this.mPhoneNumber3.setText(paramJSONArray.optString("purePhoneNumber"));
+      if (!paramString.equals(localJSONObject1.optString("purePhoneNumber"))) {
+        break label240;
+      }
+      this.mPhoneNumberSection1.setVisibility(0);
+      this.mSelectPhoneNumber = 1;
+      if (!paramString.equals(localJSONObject2.optString("purePhoneNumber"))) {
+        break label252;
+      }
+      this.mPhoneNumberSection2.setVisibility(0);
+      this.mSelectPhoneNumber = 2;
+      label162:
+      if (!paramString.equals(paramJSONArray.optString("purePhoneNumber"))) {
+        break label264;
       }
       this.mPhoneNumberSection3.setVisibility(0);
       this.mSelectPhoneNumber = 3;
@@ -576,14 +572,37 @@ public class AuthDialog
       this.mOperateNumberBtn.setText("管理手机号码");
       this.mOperateNumberBtn.setVisibility(0);
       return;
+      label240:
       this.mPhoneNumberSection1.setVisibility(8);
       break;
-      label726:
+      label252:
       this.mPhoneNumberSection2.setVisibility(8);
-      break label636;
-      label738:
+      break label162;
+      label264:
       this.mPhoneNumberSection3.setVisibility(8);
     }
+  }
+  
+  private void updatePhoneNumberView(JSONArray paramJSONArray)
+  {
+    String str;
+    if (paramJSONArray != null)
+    {
+      str = StorageUtil.getPreference().getString(this.uin + "_PhoneNumber", "");
+      QMLog.d("AuthDialog", "updatePhoneNumberView phoneNumberArray length : " + paramJSONArray.length());
+    }
+    switch (paramJSONArray.length())
+    {
+    default: 
+      return;
+    case 1: 
+      updatePhoneNumber1(paramJSONArray);
+      return;
+    case 2: 
+      updatePhoneNumber2(paramJSONArray, str);
+      return;
+    }
+    updatePhoneNumber3(paramJSONArray, str);
   }
   
   public void bindData(Bundle paramBundle)
@@ -592,6 +611,11 @@ public class AuthDialog
     if (paramBundle != null) {
       this.mAppId = paramBundle.getString("key_appid");
     }
+  }
+  
+  public int getAuthDialogType()
+  {
+    return this.mType;
   }
   
   public Bundle getData()
@@ -783,7 +807,7 @@ public class AuthDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.AuthDialog
  * JD-Core Version:    0.7.0.1
  */

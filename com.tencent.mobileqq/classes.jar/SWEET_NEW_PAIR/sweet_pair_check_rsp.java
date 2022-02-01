@@ -15,12 +15,12 @@ public final class sweet_pair_check_rsp
   static sweet_req_comm cache_req_comm;
   static int cache_right;
   static sweet_rsp_comm cache_rsp_comm = new sweet_rsp_comm();
-  public int host_state;
+  public int host_state = 0;
   public boolean is_qqfriend = true;
-  public ArrayList<invite_item> lst_invite;
-  public sweet_req_comm req_comm;
-  public int right;
-  public sweet_rsp_comm rsp_comm;
+  public ArrayList<invite_item> lst_invite = null;
+  public sweet_req_comm req_comm = null;
+  public int right = 0;
+  public sweet_rsp_comm rsp_comm = null;
   
   static
   {

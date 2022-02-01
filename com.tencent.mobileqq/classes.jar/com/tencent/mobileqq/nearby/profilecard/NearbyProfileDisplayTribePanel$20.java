@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ayfx;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 
-public class NearbyProfileDisplayTribePanel$20
+class NearbyProfileDisplayTribePanel$20
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$20(ayfx paramayfx) {}
+  NearbyProfileDisplayTribePanel$20(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
   public void run()
   {
     EntityManager localEntityManager = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
     if (localEntityManager != null)
     {
-      localEntityManager.update(ayfx.a(this.this$0));
+      localEntityManager.update(NearbyProfileDisplayTribePanel.a(this.this$0));
       localEntityManager.close();
     }
   }

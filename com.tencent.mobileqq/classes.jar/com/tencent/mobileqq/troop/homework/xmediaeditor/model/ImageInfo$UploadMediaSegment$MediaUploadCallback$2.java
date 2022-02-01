@@ -1,33 +1,30 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import bfuw;
-import bfuy;
-import bfuz;
-import bfvx;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import java.lang.ref.WeakReference;
 
-public class ImageInfo$UploadMediaSegment$MediaUploadCallback$2
+class ImageInfo$UploadMediaSegment$MediaUploadCallback$2
   implements Runnable
 {
-  public ImageInfo$UploadMediaSegment$MediaUploadCallback$2(bfuz parambfuz, int paramInt) {}
+  ImageInfo$UploadMediaSegment$MediaUploadCallback$2(ImageInfo.UploadMediaSegment.MediaUploadCallback paramMediaUploadCallback, int paramInt) {}
   
   public void run()
   {
-    bfuy.a(this.jdField_a_of_type_Bfuz.a).e = this.jdField_a_of_type_Int;
-    Object localObject = (XMediaEditor)bfuy.a(this.jdField_a_of_type_Bfuz.a).get();
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).e = this.jdField_a_of_type_Int;
+    Object localObject = (XMediaEditor)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).get();
     if (localObject != null)
     {
-      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(bfuy.a(this.jdField_a_of_type_Bfuz.a).c);
-      if ((localObject instanceof bfvx))
+      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).c);
+      if ((localObject instanceof ImageItem.ImageViewHolder))
       {
-        localObject = (bfvx)localObject;
-        if (bfuy.a(this.jdField_a_of_type_Bfuz.a).d.equals(((bfvx)localObject).a.getTag()))
+        localObject = (ImageItem.ImageViewHolder)localObject;
+        if (ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).d.equals(((ImageItem.ImageViewHolder)localObject).a.getTag()))
         {
-          ((bfvx)localObject).a.setVisibility(0);
-          ((bfvx)localObject).a.setDrawStatus(1);
-          ((bfvx)localObject).a.setAnimProgress(bfuy.a(this.jdField_a_of_type_Bfuz.a).e, bfuy.a(this.jdField_a_of_type_Bfuz.a).d);
+          ((ImageItem.ImageViewHolder)localObject).a.setVisibility(0);
+          ((ImageItem.ImageViewHolder)localObject).a.setDrawStatus(1);
+          ((ImageItem.ImageViewHolder)localObject).a.setAnimProgress(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).e, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).d);
         }
       }
     }

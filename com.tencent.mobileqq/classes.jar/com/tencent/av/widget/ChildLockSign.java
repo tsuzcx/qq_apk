@@ -14,13 +14,13 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bdla;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import lfe;
 
 public class ChildLockSign
   extends View
@@ -31,7 +31,7 @@ public class ChildLockSign
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   public Handler a;
-  private ChildLockSign.ChangeSignThread jdField_a_of_type_ComTencentAvWidgetChildLockSign$ChangeSignThread;
+  private ChildLockSign.ChangeSignThread jdField_a_of_type_ComTencentAvWidgetChildLockSign$ChangeSignThread = null;
   private String jdField_a_of_type_JavaLangString = "ChildLockSign";
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
@@ -65,13 +65,13 @@ public class ChildLockSign
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131373480);
+    setId(2131373794);
     paramAttributeSet = getResources();
     this.jdField_a_of_type_Boolean = true;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842110);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842111);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842253);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842254);
       if (this.jdField_a_of_type_Boolean) {}
       for (this.c = this.jdField_a_of_type_AndroidGraphicsBitmap;; this.c = this.jdField_b_of_type_AndroidGraphicsBitmap)
       {
@@ -114,7 +114,7 @@ public class ChildLockSign
       {
         paramMessage.a().y = true;
         ((DoubleVideoCtrlUI)localObject).d(true);
-        bdla.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
+        ReportController.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
       }
       for (;;)
       {
@@ -122,7 +122,7 @@ public class ChildLockSign
         return false;
         paramMessage.a().y = false;
         ((DoubleVideoCtrlUI)localObject).s();
-        bdla.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
+        ReportController.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
       }
     }
     catch (Exception paramMessage)
@@ -144,7 +144,7 @@ public class ChildLockSign
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(8.0F);
@@ -155,7 +155,7 @@ public class ChildLockSign
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_b_of_type_Int = Math.min(paramInt1, paramInt2);
     if (QLog.isDevelopLevel()) {
@@ -177,7 +177,7 @@ public class ChildLockSign
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.widget.ChildLockSign
  * JD-Core Version:    0.7.0.1
  */

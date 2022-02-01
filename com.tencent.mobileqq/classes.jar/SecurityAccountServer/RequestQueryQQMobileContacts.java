@@ -8,10 +8,10 @@ public final class RequestQueryQQMobileContacts
   extends JceStruct
 {
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public boolean Compressd;
-  public long nextFlag;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public boolean Compressd = false;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   public byte version = 0;
   
   static

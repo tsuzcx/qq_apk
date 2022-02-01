@@ -17,7 +17,7 @@ import kotlin.annotation.MustBeDocumented;
 public @interface Transient {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     kotlin.jvm.Transient
  * JD-Core Version:    0.7.0.1
  */

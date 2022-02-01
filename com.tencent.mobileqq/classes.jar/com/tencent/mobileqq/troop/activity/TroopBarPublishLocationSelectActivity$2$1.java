@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.troop.activity;
 
-import beyy;
-
-public class TroopBarPublishLocationSelectActivity$2$1
+class TroopBarPublishLocationSelectActivity$2$1
   implements Runnable
 {
-  public TroopBarPublishLocationSelectActivity$2$1(beyy parambeyy) {}
+  TroopBarPublishLocationSelectActivity$2$1(TroopBarPublishLocationSelectActivity.2 param2) {}
   
   public void run()
   {

@@ -107,6 +107,9 @@ public final class FlutterActivityDelegate
     if (paramIntent.getBooleanExtra("cache-sksl", false)) {
       localArrayList.add("--cache-sksl");
     }
+    if (paramIntent.getBooleanExtra("purge-persistent-cache", false)) {
+      localArrayList.add("--purge-persistent-cache");
+    }
     if (paramIntent.getBooleanExtra("verbose-logging", false)) {
       localArrayList.add("--verbose-logging");
     }
@@ -121,6 +124,9 @@ public final class FlutterActivityDelegate
     }
     if (paramIntent.getBooleanExtra("disable-service-auth-codes", false)) {
       localArrayList.add("--disable-service-auth-codes");
+    }
+    if (paramIntent.getBooleanExtra("endless-trace-buffer", false)) {
+      localArrayList.add("--endless-trace-buffer");
     }
     if (paramIntent.hasExtra("dart-flags"))
     {
@@ -374,7 +380,7 @@ public final class FlutterActivityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.app.FlutterActivityDelegate
  * JD-Core Version:    0.7.0.1
  */

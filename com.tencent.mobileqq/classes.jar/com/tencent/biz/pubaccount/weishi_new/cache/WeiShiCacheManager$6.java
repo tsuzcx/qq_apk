@@ -1,49 +1,20 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import UserGrowth.stSimpleGetFeedListRsp;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.ArrayList;
-import uzf;
-import vnd;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public class WeiShiCacheManager$6
+class WeiShiCacheManager$6
   implements Runnable
 {
-  public WeiShiCacheManager$6(uzf paramuzf, ArrayList paramArrayList, int paramInt) {}
+  WeiShiCacheManager$6(WeiShiCacheManager paramWeiShiCacheManager) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= uzf.b(this.this$0))
-    {
-      int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int > uzf.b(this.this$0)) {
-        i = this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int;
-      }
-      for (;;)
-      {
-        int j = i - uzf.b(this.this$0);
-        while (j < i)
-        {
-          localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(j));
-          j += 1;
-        }
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int > 0) {
-          i = uzf.b(this.this$0);
-        }
-      }
-    }
-    localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = new stSimpleGetFeedListRsp();
-    localstSimpleGetFeedListRsp.feeds = localArrayList;
-    if (uzf.a(this.this$0, localstSimpleGetFeedListRsp, uzf.b(this.this$0), localArrayList.size())) {
-      LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", vnd.c());
-    }
+    FileUtils.a(WeiShiCacheManager.b(this.this$0), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.6
  * JD-Core Version:    0.7.0.1
  */

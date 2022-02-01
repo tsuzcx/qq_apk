@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class AuthCodeItem
   extends JceStruct
 {
-  public long appid;
+  public long appid = 0L;
   public String authCode = "";
-  public long expireTime;
+  public long expireTime = 0L;
   public String urlDomain = "";
   
   public void readFrom(JceInputStream paramJceInputStream)

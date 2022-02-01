@@ -28,13 +28,13 @@ public class HippyTKDListViewAdapter
   private boolean mEnableExposureReport;
   private boolean mEnableScrollForReport;
   private HippyMap mExposureReportResultMap;
-  private boolean mHasExposureReport;
-  private boolean mHasLoadMore;
-  private boolean mHasOnFooterAppeared;
-  private boolean mHasOnRefresh;
-  private boolean mHasOnScroll;
-  private boolean mHasOnScrollForReport;
-  private boolean mHasPreload;
+  private boolean mHasExposureReport = false;
+  private boolean mHasLoadMore = false;
+  private boolean mHasOnFooterAppeared = false;
+  private boolean mHasOnRefresh = false;
+  private boolean mHasOnScroll = false;
+  private boolean mHasOnScrollForReport = false;
+  private boolean mHasPreload = false;
   private long mLastScrollEventTimeStamp = -1L;
   private long mLastScrollForReportTimeStamp = -1L;
   private HippyTKDListViewAdapter.OnFooterAppearedEvent mOnFooterAppearedEvent;
@@ -315,7 +315,7 @@ public class HippyTKDListViewAdapter
   
   public int getDefaultFooterHeight()
   {
-    return ImmersiveUtils.a(36.0F);
+    return ImmersiveUtils.dpToPx(36.0F);
   }
   
   protected HippyTKDListView.ExposureForReport getExposureForReportInner(int paramInt1, int paramInt2)
@@ -635,7 +635,7 @@ public class HippyTKDListViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

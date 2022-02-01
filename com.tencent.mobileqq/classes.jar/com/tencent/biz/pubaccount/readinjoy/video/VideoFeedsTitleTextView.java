@@ -11,13 +11,12 @@ import kotlin.Metadata;
 import kotlin.jvm.JvmOverloads;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import sos;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsTitleTextView;", "Landroid/widget/TextView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onMeasure", "", "widthMeasureSpec", "heightMeasureSpec", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class VideoFeedsTitleTextView
   extends TextView
 {
-  public static final sos a = new sos(null);
+  public static final VideoFeedsTitleTextView.Companion a = new VideoFeedsTitleTextView.Companion(null);
   
   @JvmOverloads
   public VideoFeedsTitleTextView(@NotNull Context paramContext)
@@ -37,7 +36,7 @@ public final class VideoFeedsTitleTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (QLog.isColorLevel()) {
@@ -58,7 +57,7 @@ public final class VideoFeedsTitleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTitleTextView
  * JD-Core Version:    0.7.0.1
  */

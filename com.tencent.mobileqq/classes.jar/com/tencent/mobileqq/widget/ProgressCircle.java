@@ -29,6 +29,7 @@ public class ProgressCircle
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidGraphicsPaint$Style = Paint.Style.STROKE;
     a();
   }
@@ -39,11 +40,11 @@ public class ProgressCircle
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.e = 2;
     this.f = 18;
-    this.jdField_a_of_type_Int = getResources().getColor(2131167067);
-    this.jdField_b_of_type_Int = getResources().getColor(2131167067);
+    this.jdField_a_of_type_Int = getResources().getColor(2131167074);
+    this.jdField_b_of_type_Int = getResources().getColor(2131167074);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getWidth();
@@ -109,7 +110,7 @@ public class ProgressCircle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProgressCircle
  * JD-Core Version:    0.7.0.1
  */

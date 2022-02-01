@@ -1,12 +1,9 @@
 package dov.com.qq.im.aeeditor.module.filter;
 
-import boaa;
-import boam;
-
-public class AEEditorFilterControlPanel$2$1
+class AEEditorFilterControlPanel$2$1
   implements Runnable
 {
-  public AEEditorFilterControlPanel$2$1(boaa paramboaa) {}
+  AEEditorFilterControlPanel$2$1(AEEditorFilterControlPanel.2 param2) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class AEEditorFilterControlPanel$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel.2.1
  * JD-Core Version:    0.7.0.1
  */

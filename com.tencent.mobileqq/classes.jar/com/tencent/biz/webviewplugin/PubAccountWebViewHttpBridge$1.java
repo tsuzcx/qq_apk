@@ -1,23 +1,21 @@
 package com.tencent.biz.webviewplugin;
 
-import aasc;
-
-public class PubAccountWebViewHttpBridge$1
+class PubAccountWebViewHttpBridge$1
   implements Runnable
 {
-  public PubAccountWebViewHttpBridge$1(aasc paramaasc) {}
+  PubAccountWebViewHttpBridge$1(PubAccountWebViewHttpBridge paramPubAccountWebViewHttpBridge) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    aasc.a(this.this$0);
+    PubAccountWebViewHttpBridge.a(this.this$0);
     this.this$0.a = (System.currentTimeMillis() - l);
-    aasc.b(this.this$0);
+    PubAccountWebViewHttpBridge.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountWebViewHttpBridge.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class BusinessCardEditActivity$2
   public void run()
   {
     this.a.requestFocusFromTouch();
-    AIOUtils.showKeyboard(this.a);
+    AIOUtils.a(this.a);
   }
 }
 

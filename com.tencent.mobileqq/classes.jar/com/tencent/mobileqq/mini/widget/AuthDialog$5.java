@@ -3,7 +3,6 @@ package com.tencent.mobileqq.mini.widget;
 import NS_MINI_INTERFACE.INTERFACE.StSubscribeMessage;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 class AuthDialog$5
@@ -14,7 +13,6 @@ class AuthDialog$5
   public void onClick(View paramView)
   {
     AuthDialog.access$1000(this.this$0, (INTERFACE.StSubscribeMessage)this.val$subMsgNoMaintainAuth.get(0));
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

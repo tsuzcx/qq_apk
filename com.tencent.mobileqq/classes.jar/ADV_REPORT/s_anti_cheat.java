@@ -11,11 +11,11 @@ public final class s_anti_cheat
   static s_coordinate cache_push_posi = new s_coordinate();
   public int click_interval = -999;
   public int down_delay = -999;
-  public int drag_flag;
+  public int drag_flag = 0;
   public int play_time = -999;
-  public s_coordinate pop_posi;
-  public s_coordinate push_posi;
-  public int switch_flag;
+  public s_coordinate pop_posi = null;
+  public s_coordinate push_posi = null;
+  public int switch_flag = 0;
   public int up_delay = -999;
   
   public s_anti_cheat() {}

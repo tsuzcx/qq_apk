@@ -8,17 +8,13 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Lambda;
-import rao;
-import raq;
-import rar;
-import ras;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isOpenPushNotify", "", "isDefaultOpen", "buttonId", "", "invoke"}, k=3, mv={1, 1, 16})
-public final class RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1
+final class RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1
   extends Lambda
   implements Function3<Boolean, Boolean, Integer, Unit>
 {
-  public RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1(rao paramrao, BaseActivity paramBaseActivity, String paramString, int paramInt1, raq paramraq, int paramInt2)
+  RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1(RIJPushNotifyManager paramRIJPushNotifyManager, BaseActivity paramBaseActivity, String paramString, int paramInt1, RIJPushNotifyManager.IPushNotifyDialogCallback paramIPushNotifyDialogCallback, int paramInt2)
   {
     super(3);
   }
@@ -27,13 +23,13 @@ public final class RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1
   {
     if ((paramInt != 0) && (paramInt != 3))
     {
-      rao.a(this.this$0, paramBoolean1, paramBoolean2, (Activity)this.$topActivity);
-      rar.a.a().a(paramBoolean1, paramBoolean2, this.$uniqueId, this.$bizType, (Function1)new RIJPushNotifyManager.showPushNotifyDialogForWeb.param.1.1(this, paramInt));
-      rao.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType, paramInt, paramBoolean2);
+      RIJPushNotifyManager.a(this.this$0, paramBoolean1, paramBoolean2, (Activity)this.$topActivity);
+      RIJPushNotifyModule.a.a().a(paramBoolean1, paramBoolean2, this.$uniqueId, this.$bizType, (Function1)new RIJPushNotifyManager.showPushNotifyDialogForWeb.param.1.1(this, paramInt));
+      RIJPushNotifyManager.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType, paramInt, paramBoolean2);
       return;
     }
     if (paramInt == 3) {
-      rao.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType);
+      RIJPushNotifyManager.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType);
     }
     this.$callback.a(0, -1);
     QLog.i("RIJPushNotifyManager", 1, " resultCallback buttonId: " + paramInt + " errorCode: -1");
@@ -41,7 +37,7 @@ public final class RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyManager.showPushNotifyDialogForWeb.param.1
  * JD-Core Version:    0.7.0.1
  */

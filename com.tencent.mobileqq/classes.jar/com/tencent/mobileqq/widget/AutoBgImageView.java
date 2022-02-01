@@ -30,7 +30,7 @@ public class AutoBgImageView
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     if (isPressed()) {}
@@ -49,7 +49,7 @@ public class AutoBgImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AutoBgImageView
  * JD-Core Version:    0.7.0.1
  */

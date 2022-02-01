@@ -1,6 +1,5 @@
 package com.tencent.qqmini.miniapp.core.service;
 
-import Override;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
@@ -51,7 +50,7 @@ class AppBrandWebviewService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppBrandWebviewService.1
  * JD-Core Version:    0.7.0.1
  */

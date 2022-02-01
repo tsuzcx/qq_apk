@@ -12,20 +12,20 @@ public final class NewestFeedInfo
 {
   static Map<String, String> cache_mapEx;
   static ArrayList<Media_Data> cache_mediaData = new ArrayList();
-  public Map<String, String> mapEx;
-  public ArrayList<Media_Data> mediaData;
+  public Map<String, String> mapEx = null;
+  public ArrayList<Media_Data> mediaData = null;
   public String strContent = "";
   public String strImgUrl = "";
   public String strJmpUrl = "";
   public String strLBSInfo = "";
   public String strSummary = "";
   public String strTitle = "";
-  public long uAppid;
-  public long uCommentNum;
-  public long uHostUin;
-  public long uImgCount;
-  public long uLikeNum;
-  public long uTime;
+  public long uAppid = 0L;
+  public long uCommentNum = 0L;
+  public long uHostUin = 0L;
+  public long uImgCount = 0L;
+  public long uLikeNum = 0L;
+  public long uTime = 0L;
   
   static
   {

@@ -2,17 +2,16 @@ package com.tencent.mobileqq.studyroom.ui;
 
 import android.view.View;
 import android.view.ViewGroup;
-import bdws;
 import mqq.util.WeakReference;
 
-public class StudyRoomLoadingFragment$WeakCallback$2
+class StudyRoomLoadingFragment$WeakCallback$2
   implements Runnable
 {
-  public StudyRoomLoadingFragment$WeakCallback$2(bdws parambdws, View paramView) {}
+  StudyRoomLoadingFragment$WeakCallback$2(StudyRoomLoadingFragment.WeakCallback paramWeakCallback, View paramView) {}
   
   public void run()
   {
-    StudyRoomLoadingFragment localStudyRoomLoadingFragment = (StudyRoomLoadingFragment)bdws.a(this.this$0).get();
+    StudyRoomLoadingFragment localStudyRoomLoadingFragment = (StudyRoomLoadingFragment)StudyRoomLoadingFragment.WeakCallback.a(this.this$0).get();
     if (localStudyRoomLoadingFragment != null)
     {
       View localView = localStudyRoomLoadingFragment.getView();

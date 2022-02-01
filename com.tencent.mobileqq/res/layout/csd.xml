@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/bg_texture" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.widget.OverScrollRecyclerView android:id="@id/mnq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/e1r" android:background="@drawable/e_y" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="20.0dip">
+        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/nc7" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/h4q" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+        <TextView android:textSize="13.0dip" android:textStyle="bold" android:textColor="#ff989eb4" android:gravity="center" android:id="@id/nc8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="腾讯俱乐部" android:layout_toRightOf="@id/nc7" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </FrameLayout>

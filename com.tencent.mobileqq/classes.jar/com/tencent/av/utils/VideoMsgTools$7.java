@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
-import bhgd;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ final class VideoMsgTools$7
       }
       i = paramBundle.size();
       label86:
-      bhgd.a(i, this.jdField_a_of_type_Boolean);
+      QAVGroupConfig.Report.a(i, this.jdField_a_of_type_Boolean);
       if (paramBundle != null) {
         break label109;
       }
@@ -54,7 +54,7 @@ final class VideoMsgTools$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.VideoMsgTools.7
  * JD-Core Version:    0.7.0.1
  */

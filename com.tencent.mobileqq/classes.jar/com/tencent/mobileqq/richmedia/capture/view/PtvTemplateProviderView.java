@@ -13,19 +13,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbfz;
-import bbgg;
-import bbgm;
-import bbgy;
-import bbhl;
-import bbjn;
-import bbjo;
-import bczs;
-import bdcw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter;
 import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateViewPagerAdapter;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.CapturePtvTemplateRefreshListener;
+import com.tencent.mobileqq.richmedia.capture.data.TemplateGroupItem;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
+import com.tencent.mobileqq.shortvideo.common.Observer;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
@@ -41,56 +39,57 @@ import mqq.os.MqqHandler;
 
 public class PtvTemplateProviderView
   extends ProviderView
-  implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnScrollChangedListener, bbgm, bbjn, bczs
+  implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnScrollChangedListener, CapturePtvTemplateManager.CapturePtvTemplateRefreshListener, ISupportAdvertisement, QQSlidingTabView.IOnTabCheckListener, Observer
 {
   public int a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bbgg jdField_a_of_type_Bbgg;
-  private bbgy jdField_a_of_type_Bbgy;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView = null;
+  private TextView jdField_a_of_type_AndroidWidgetTextView = null;
   PtvTemplateViewPagerAdapter jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterPtvTemplateViewPagerAdapter;
+  CapturePtvTemplateManager jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager;
+  private TemplateGroupItem jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem = null;
   QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   String jdField_a_of_type_JavaLangString = "";
-  List<bbgy> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  List<TemplateGroupItem> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   boolean jdField_a_of_type_Boolean = false;
-  private View jdField_b_of_type_AndroidViewView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private View jdField_b_of_type_AndroidViewView = null;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView = null;
   int jdField_d_of_type_Int = 1;
   boolean jdField_d_of_type_Boolean = true;
   int jdField_e_of_type_Int = -1;
   private boolean jdField_e_of_type_Boolean = true;
   private int jdField_f_of_type_Int = -1;
-  private boolean jdField_f_of_type_Boolean;
+  private boolean jdField_f_of_type_Boolean = false;
   
   public PtvTemplateProviderView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  private ArrayList<bbjo> a()
+  private ArrayList<QQSlidingTabView.TabIcon> a()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_Bbgg != null) {}
-    for (int i = this.jdField_a_of_type_Bbgg.a();; i = -1)
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager != null) {}
+    for (int i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a();; i = -1)
     {
       int j = 0;
       while (j < this.jdField_a_of_type_JavaUtilList.size())
       {
-        bbgy localbbgy = (bbgy)this.jdField_a_of_type_JavaUtilList.get(j);
-        if ((i != -1) && (i == localbbgy.jdField_a_of_type_Int))
+        TemplateGroupItem localTemplateGroupItem = (TemplateGroupItem)this.jdField_a_of_type_JavaUtilList.get(j);
+        if ((i != -1) && (i == localTemplateGroupItem.jdField_a_of_type_Int))
         {
           this.jdField_d_of_type_Int = j;
-          if (this.jdField_a_of_type_Bbgg != null) {
-            this.jdField_a_of_type_Bbgg.a(5, 0, null);
+          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager != null) {
+            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a(5, 0, null);
           }
         }
-        bbjo localbbjo = new bbjo();
-        localbbjo.jdField_a_of_type_JavaLangString = localbbgy.jdField_a_of_type_JavaLangString;
-        localbbjo.b = localbbgy.jdField_a_of_type_Boolean;
-        if (this.jdField_a_of_type_Bbgg != null) {
-          localbbjo.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bbgg.a(2, localbbgy.jdField_a_of_type_Int, "");
+        QQSlidingTabView.TabIcon localTabIcon = new QQSlidingTabView.TabIcon();
+        localTabIcon.jdField_a_of_type_JavaLangString = localTemplateGroupItem.jdField_a_of_type_JavaLangString;
+        localTabIcon.b = localTemplateGroupItem.jdField_a_of_type_Boolean;
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager != null) {
+          localTabIcon.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a(2, localTemplateGroupItem.jdField_a_of_type_Int, "");
         }
-        localArrayList.add(localbbjo);
+        localArrayList.add(localTabIcon);
         j += 1;
       }
       return localArrayList;
@@ -100,7 +99,7 @@ public class PtvTemplateProviderView
   private void e()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_Bbgg.b());
+    this.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.b());
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterPtvTemplateViewPagerAdapter != null) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterPtvTemplateViewPagerAdapter.a(this.jdField_a_of_type_JavaUtilList);
     }
@@ -152,9 +151,9 @@ public class PtvTemplateProviderView
   public void a(int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt);
-    paramInt = ((bbgy)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Bbgg != null) {
-      this.jdField_a_of_type_Bbgg.a(2, paramInt, "");
+    paramInt = ((TemplateGroupItem)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a(2, paramInt, "");
     }
   }
   
@@ -163,7 +162,7 @@ public class PtvTemplateProviderView
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {}
     for (Object localObject = BaseApplicationImpl.sApplication.getRuntime();; localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface)
     {
-      localObject = getContext().getSharedPreferences(bdcw.jdField_b_of_type_JavaLangString + ((AppRuntime)localObject).getAccount(), 4);
+      localObject = getContext().getSharedPreferences(RedBagVideoManager.jdField_b_of_type_JavaLangString + ((AppRuntime)localObject).getAccount(), 4);
       if (!((SharedPreferences)localObject).getBoolean(paramInt1 + "&" + paramInt2, false)) {
         break;
       }
@@ -199,8 +198,8 @@ public class PtvTemplateProviderView
       if (localObject != null)
       {
         localObject = ((GridView)localObject).getAdapter();
-        if ((localObject != null) && ((localObject instanceof bbfz))) {
-          ((bbfz)localObject).notifyDataSetChanged();
+        if ((localObject != null) && ((localObject instanceof PtvTemplateAdapter))) {
+          ((PtvTemplateAdapter)localObject).notifyDataSetChanged();
         }
       }
     }
@@ -216,7 +215,7 @@ public class PtvTemplateProviderView
       if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       }
-      if (this.jdField_a_of_type_Bbgy != null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem != null) {
         if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
           break label192;
         }
@@ -225,10 +224,10 @@ public class PtvTemplateProviderView
     label192:
     for (Object localObject = BaseApplicationImpl.sApplication.getRuntime();; localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface)
     {
-      String str = this.jdField_a_of_type_Bbgy.jdField_a_of_type_Int + "&" + this.jdField_a_of_type_Bbgy.jdField_b_of_type_Int;
-      localObject = getContext().getSharedPreferences(bdcw.jdField_b_of_type_JavaLangString + ((AppRuntime)localObject).getAccount(), 4).edit();
+      String str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_a_of_type_Int + "&" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_b_of_type_Int;
+      localObject = getContext().getSharedPreferences(RedBagVideoManager.jdField_b_of_type_JavaLangString + ((AppRuntime)localObject).getAccount(), 4).edit();
       ((SharedPreferences.Editor)localObject).putBoolean(str, true);
-      ((SharedPreferences.Editor)localObject).putInt(String.valueOf(this.jdField_a_of_type_Bbgy.jdField_a_of_type_Int), this.jdField_a_of_type_Bbgy.jdField_b_of_type_Int);
+      ((SharedPreferences.Editor)localObject).putInt(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_b_of_type_Int);
       ((SharedPreferences.Editor)localObject).commit();
       return;
     }
@@ -251,7 +250,7 @@ public class PtvTemplateProviderView
         break label134;
       }
       this.jdField_f_of_type_Boolean = true;
-      localObject = bbgg.a().b();
+      localObject = CapturePtvTemplateManager.a().b();
       i = 0;
     }
     catch (Exception localException)
@@ -273,10 +272,10 @@ public class PtvTemplateProviderView
         continue;
         j = 0;
         continue;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849742);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850138);
         continue;
         this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849744);
+        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130850140);
         this.jdField_a_of_type_AndroidWidgetTextView.setPadding(n, k, n, k);
         continue;
         localLayoutParams.setMargins(k, 0, i, 0);
@@ -284,8 +283,8 @@ public class PtvTemplateProviderView
     }
     if (i < ((ArrayList)localObject).size())
     {
-      this.jdField_a_of_type_Bbgy = ((bbgy)((ArrayList)localObject).get(i));
-      if ((this.jdField_a_of_type_Bbgy.jdField_b_of_type_JavaLangString != null) && (!a(this.jdField_a_of_type_Bbgy.jdField_a_of_type_Int, this.jdField_a_of_type_Bbgy.jdField_b_of_type_Int))) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem = ((TemplateGroupItem)((ArrayList)localObject).get(i));
+      if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_b_of_type_JavaLangString != null) && (!a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_b_of_type_Int))) {
         this.jdField_f_of_type_Int = i;
       }
     }
@@ -294,7 +293,7 @@ public class PtvTemplateProviderView
       if ((this.jdField_f_of_type_Int != -1) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a().size() > this.jdField_f_of_type_Int)) {
         this.jdField_b_of_type_AndroidViewView = ((View)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a().get(this.jdField_f_of_type_Int));
       }
-      if ((this.jdField_b_of_type_AndroidViewView == null) || (this.jdField_a_of_type_Bbgy == null)) {
+      if ((this.jdField_b_of_type_AndroidViewView == null) || (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem == null)) {
         break label1008;
       }
       i = this.jdField_b_of_type_AndroidViewView.getLeft();
@@ -303,10 +302,10 @@ public class PtvTemplateProviderView
       if ((i == 0) && (j == 0)) {
         break label1008;
       }
-      i2 = ViewUtils.getScreenWidth();
+      i2 = ViewUtils.a();
       i1 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.getScrollX();
       j = m / 2 + i - i1;
-      k = AIOUtils.dp2px(30.0F, getContext().getResources());
+      k = AIOUtils.a(30.0F, getContext().getResources());
       if ((j <= 0) || (j + k >= i2)) {
         break label939;
       }
@@ -318,36 +317,36 @@ public class PtvTemplateProviderView
         }
         localObject = getContext();
         this.jdField_a_of_type_AndroidWidgetImageView = new ImageView((Context)localObject);
-        this.jdField_a_of_type_AndroidWidgetImageView.setId(2131377640);
-        if (!this.jdField_a_of_type_Bbgy.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setId(2131378051);
+        if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_a_of_type_Boolean) {
           break label944;
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849743);
-        localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.dp2px(20.0F, ((Context)localObject).getResources()), AIOUtils.dp2px(10.0F, ((Context)localObject).getResources()));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850139);
+        localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(20.0F, ((Context)localObject).getResources()), AIOUtils.a(10.0F, ((Context)localObject).getResources()));
         localLayoutParams.addRule(2, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.getId());
         localLayoutParams.addRule(9);
-        localLayoutParams.leftMargin = (m / 2 + i - AIOUtils.dp2px(20.0F, ((Context)localObject).getResources()) / 2);
+        localLayoutParams.leftMargin = (m / 2 + i - AIOUtils.a(20.0F, ((Context)localObject).getResources()) / 2);
         localLayoutParams.bottomMargin = 5;
         ((RelativeLayout)this.jdField_a_of_type_AndroidViewView).addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
         this.jdField_a_of_type_AndroidWidgetTextView = new TextView((Context)localObject);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bbgy.jdField_b_of_type_JavaLangString);
-        k = AIOUtils.dp2px(5.0F, ((Context)localObject).getResources());
-        n = AIOUtils.dp2px(5.0F, ((Context)localObject).getResources());
-        if (!this.jdField_a_of_type_Bbgy.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_b_of_type_JavaLangString);
+        k = AIOUtils.a(5.0F, ((Context)localObject).getResources());
+        n = AIOUtils.a(5.0F, ((Context)localObject).getResources());
+        if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_a_of_type_Boolean) {
           break label957;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FBD49D"));
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849745);
-        this.jdField_a_of_type_AndroidWidgetTextView.setPadding(AIOUtils.dp2px(30.0F, ((Context)localObject).getResources()), k, n, k);
+        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130850141);
+        this.jdField_a_of_type_AndroidWidgetTextView.setPadding(AIOUtils.a(30.0F, ((Context)localObject).getResources()), k, n, k);
         this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
         this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
         this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
         this.jdField_a_of_type_AndroidWidgetTextView.measure(-2, -2);
         k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
-        if (!this.jdField_a_of_type_Bbgy.jdField_a_of_type_Boolean) {
+        if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_a_of_type_Boolean) {
           break label1005;
         }
-        k += AIOUtils.dp2px(17.0F, ((Context)localObject).getResources());
+        k += AIOUtils.a(17.0F, ((Context)localObject).getResources());
         m = m / 2 + i - k / 2;
         n = i2 - m - k;
         i = 16;
@@ -359,22 +358,22 @@ public class PtvTemplateProviderView
         }
         break label1009;
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.addRule(2, 2131377640);
+        localLayoutParams.addRule(2, 2131378051);
         localLayoutParams.addRule(9);
-        if (!this.jdField_a_of_type_Bbgy.jdField_a_of_type_Boolean) {
+        if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_a_of_type_Boolean) {
           break label993;
         }
-        localLayoutParams.setMargins(AIOUtils.dp2px(17.0F, ((Context)localObject).getResources()) + k, 0, i, 0);
+        localLayoutParams.setMargins(AIOUtils.a(17.0F, ((Context)localObject).getResources()) + k, 0, i, 0);
         ((RelativeLayout)this.jdField_a_of_type_AndroidViewView).addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-        if (this.jdField_a_of_type_Bbgy.jdField_a_of_type_Boolean)
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem.jdField_a_of_type_Boolean)
         {
           this.jdField_b_of_type_AndroidWidgetImageView = new ImageView((Context)localObject);
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849746);
+          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130850142);
           localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
           localLayoutParams.addRule(2, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.getId());
           localLayoutParams.addRule(9);
           localLayoutParams.leftMargin = k;
-          localLayoutParams.bottomMargin = AIOUtils.dp2px(3.0F, ((Context)localObject).getResources());
+          localLayoutParams.bottomMargin = AIOUtils.a(3.0F, ((Context)localObject).getResources());
           ((RelativeLayout)this.jdField_a_of_type_AndroidViewView).addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
         }
       }
@@ -434,7 +433,7 @@ public class PtvTemplateProviderView
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(paramInt);
     this.jdField_a_of_type_Int = paramInt;
     if (!this.jdField_e_of_type_Boolean) {
-      bbhl.a(((bbgy)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int + "");
+      CaptureReportUtil.a(((TemplateGroupItem)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int + "");
     }
     c();
   }
@@ -460,7 +459,7 @@ public class PtvTemplateProviderView
   {
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-      if (((bbgy)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int != paramInt) {}
+      if (((TemplateGroupItem)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int != paramInt) {}
     }
     for (;;)
     {
@@ -484,7 +483,7 @@ public class PtvTemplateProviderView
   {
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-      if (!((bbgy)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {}
+      if (!((TemplateGroupItem)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {}
     }
     for (;;)
     {
@@ -506,7 +505,7 @@ public class PtvTemplateProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView
  * JD-Core Version:    0.7.0.1
  */

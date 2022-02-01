@@ -6,8 +6,9 @@ import android.graphics.ColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import bhbd;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.avatar.api.IQQAvatarUtilApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public abstract class AsynLoadDrawable
   extends Drawable
@@ -16,12 +17,12 @@ public abstract class AsynLoadDrawable
   public static final int STATE_LOAD_FAILURE = 2;
   public static final int STATE_LOAD_SUCCESS = 1;
   protected int mAlpha = -1;
-  protected boolean mCancelled;
-  protected ColorFilter mColorFilter;
+  protected boolean mCancelled = false;
+  protected ColorFilter mColorFilter = null;
   protected int mCurState = 0;
-  protected Drawable mFailureDrawable;
-  protected Drawable mLoadedDrawable;
-  protected Drawable mLoadingDrawable;
+  protected Drawable mFailureDrawable = null;
+  protected Drawable mLoadedDrawable = null;
+  protected Drawable mLoadingDrawable = null;
   
   protected AsynLoadDrawable(Drawable paramDrawable1, Drawable paramDrawable2)
   {
@@ -120,7 +121,7 @@ public abstract class AsynLoadDrawable
   {
     if (this.mCurState == 1)
     {
-      this.mLoadedDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), bhbd.a(this.mLoadedDrawable));
+      this.mLoadedDrawable = new BitmapDrawable(BaseApplication.getContext().getResources(), ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDrawableBitmap(this.mLoadedDrawable));
       this.mLoadedDrawable.setBounds(paramRect);
       if (this.mAlpha != -1) {
         this.mLoadedDrawable.setAlpha(this.mAlpha);

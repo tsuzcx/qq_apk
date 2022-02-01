@@ -2,29 +2,27 @@ package com.tencent.av.wtogether.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import atab;
-import athn;
-import atht;
-import atib;
-import auea;
-import bdla;
+import com.tencent.av.wtogether.adapter.QVideoC2CFileExpandableListAdapter;
+import com.tencent.av.wtogether.adapter.QVideoC2CFileExpandableListAdapter.UIEvent;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import mxw;
-import mya;
-import nat;
-import nau;
 
 public class QRecentC2CAVFileListContentView
   extends QBaseFileListContentView
 {
-  private atib jdField_a_of_type_Atib = new nau(this);
-  private mya jdField_a_of_type_Mya;
+  private QVideoC2CFileExpandableListAdapter.UIEvent jdField_a_of_type_ComTencentAvWtogetherAdapterQVideoC2CFileExpandableListAdapter$UIEvent;
+  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new QRecentC2CAVFileListContentView.2(this);
   
   public QRecentC2CAVFileListContentView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,26 +34,26 @@ public class QRecentC2CAVFileListContentView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public QRecentC2CAVFileListContentView(Context paramContext, mya parammya)
+  public QRecentC2CAVFileListContentView(Context paramContext, QVideoC2CFileExpandableListAdapter.UIEvent paramUIEvent)
   {
     super(paramContext);
-    this.jdField_a_of_type_Mya = parammya;
+    this.jdField_a_of_type_ComTencentAvWtogetherAdapterQVideoC2CFileExpandableListAdapter$UIEvent = paramUIEvent;
   }
   
-  protected atab a()
+  protected QfileBaseExpandableListAdapter a()
   {
-    return new mxw(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_JavaUtilLinkedHashMap, this.jdField_a_of_type_Mya);
+    return new QVideoC2CFileExpandableListAdapter(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_JavaUtilLinkedHashMap, this.jdField_a_of_type_ComTencentAvWtogetherAdapterQVideoC2CFileExpandableListAdapter$UIEvent);
   }
   
   public void a()
   {
     super.a();
-    bdla.b(null, "dc00898", "", "", "0X800B624", "0X800B624", 0, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800B624", "0X800B624", 0, 0, "", "", "", "");
   }
   
-  public void a(List<OfflineFileInfo> paramList)
+  protected void a(List<OfflineFileInfo> paramList)
   {
-    Collections.sort(paramList, new nat(this));
+    Collections.sort(paramList, new QRecentC2CAVFileListContentView.1(this));
     paramList = paramList.iterator();
     label385:
     label388:
@@ -85,7 +83,7 @@ public class QRecentC2CAVFileListContentView
         if (i != 0) {
           break label388;
         }
-        localObject2 = auea.a((OfflineFileInfo)localObject1, 0);
+        localObject2 = FileManagerUtil.a((OfflineFileInfo)localObject1, 0);
         ((FileManagerEntity)localObject2).strFileMd5 = ((OfflineFileInfo)localObject1).jdField_d_of_type_JavaLangString;
         ((FileManagerEntity)localObject2).cloudType = 3;
         if (((FileManagerEntity)localObject2).nFileType == 0) {
@@ -120,13 +118,13 @@ public class QRecentC2CAVFileListContentView
   
   protected void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().b(0, 30, this.jdField_a_of_type_Atib, 3);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(0, 30, this.jdField_a_of_type_Atib, 3);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().b(0, 30, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver, 3);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(0, 30, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QRecentC2CAVFileListContentView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import AvatarInfo.QQHeadInfo;
-import AvatarInfo.QQHeadUrlReq;
-import AvatarInfo.QQHeadUrlResp;
+import GeneralSettings.Setting;
 import KQQ.CheckUpdateResp;
 import KQQ.GetRichSigRes;
 import KQQ.ResRichSigInfo;
@@ -10,110 +8,62 @@ import KQQ.RespItem;
 import QQService.BindUin;
 import QQService.DeviceItemDes;
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import admh;
-import amci;
-import amlc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.Pair;
-import anrz;
-import antp;
-import anvi;
-import anvk;
-import anyb;
-import aobu;
-import aoem;
-import aoke;
-import aokr;
-import aoks;
-import aolb;
-import aold;
-import aole;
-import aolf;
-import aolg;
-import aolh;
-import aoli;
-import aolj;
-import aolk;
-import aoll;
-import aolm;
-import aoln;
-import aolo;
-import aolp;
-import aolq;
-import aolr;
-import aols;
-import aolt;
-import aolu;
-import aolv;
-import aolw;
-import aolx;
-import aoly;
-import aolz;
-import aozr;
-import aqne;
-import asmi;
-import asmj;
-import awyz;
-import axny;
-import baps;
-import bazf;
-import bbcj;
-import bbcl;
-import bbcm;
-import bcug;
-import bhbx;
-import bhdd;
-import bhou;
-import bjxa;
-import blfz;
-import com.qq.taf.jce.JceOutputStream;
-import com.tencent.avatarinfo.MultiHeadUrl.MultiBusidUrlReq;
-import com.tencent.avatarinfo.MultiHeadUrl.MultiBusidUrlRsp;
-import com.tencent.avatarinfo.MultiHeadUrl.ReqUsrInfo;
-import com.tencent.avatarinfo.MultiHeadUrl.RspHeadInfo;
-import com.tencent.avatarinfo.MultiHeadUrl.RspUsrHeadInfo;
-import com.tencent.avatarinfo.QQHeadUrl.QQHeadUrlReq;
-import com.tencent.avatarinfo.QQHeadUrl.QQHeadUrlRsp;
-import com.tencent.avatarinfo.QQHeadUrl.ReqUsrInfo;
-import com.tencent.avatarinfo.QQHeadUrl.RspHeadInfo;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.AppInterface;
+import com.tencent.av.utils.CharacterUtil;
+import com.tencent.biz.ProtoUtils;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.ims.device_lock_confirm_auth.DeviceInfo;
 import com.tencent.ims.device_lock_confirm_auth.ReqBody;
 import com.tencent.ims.device_lock_recommend_auth.ReqBody;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
+import com.tencent.mobileqq.antiphing.DeviceLockItemInfo;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.face.FaceDownloader;
-import com.tencent.mobileqq.app.face.FaceInfo;
-import com.tencent.mobileqq.app.face.QQHeadDownloadHandler;
-import com.tencent.mobileqq.app.face.bean.QQHeadDetails;
-import com.tencent.mobileqq.app.friendlist.batchupdate.FriendInfoBatchUpdater;
-import com.tencent.mobileqq.app.friendlist.batchupdate.FriendInfoBatchUpdater.FriendListSaveCallback;
+import com.tencent.mobileqq.app.friendlist.FriendListHandlerUtil;
+import com.tencent.mobileqq.app.friendlist.receiver.BaseHandlerReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.DeviceLockAuthReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.DeviceLoginInfoReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.DongtaiPermissionReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.FriendChatReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.FriendGroupReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.FriendInfoReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.FriendListReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.FriendRecommendReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.FriendShieldReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.GeneralSettingsReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.MakeFriendReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.NetStatusReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.QueryUinFlagRecevier;
+import com.tencent.mobileqq.app.friendlist.receiver.SearchFriendReceiver;
+import com.tencent.mobileqq.app.friendlist.receiver.SuspiciousOperReceiver;
 import com.tencent.mobileqq.app.proxy.GroupActionResp;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem;
+import com.tencent.mobileqq.chat.MessageNotificationSettingManager;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.data.MayKnowExposure;
 import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.friend.api.IFriendHandlerService;
+import com.tencent.mobileqq.friend.observer.IFriendObserver;
+import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -125,30 +75,27 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager;
+import com.tencent.mobileqq.relationx.addFrd.AddFrdStateMng;
+import com.tencent.mobileqq.relationx.addFrd.AddFrdTokenHelper;
+import com.tencent.mobileqq.relationx.batchAdd.BatchAddFriendData;
+import com.tencent.mobileqq.richstatus.ExtensionRichStatus;
 import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.SystemUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.service.profile.CheckUpdateItemInterface;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.ContactConfig;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.mobileqq.vas.VasExtensionManager;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.qidian.QidianManager;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import friendlist.AddGroupResp;
 import friendlist.DelGroupResp;
-import friendlist.FriendInfo;
-import friendlist.FriendListSubSrvRspCode;
-import friendlist.GetFriendListResp;
-import friendlist.ReSortGroupResp;
-import friendlist.RenameGroupResp;
-import friendlist.SetGroupResp;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.ArrayList<Lcom.tencent.mobileqq.app.face.bean.QQHeadDetails;>;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -164,13 +111,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mqq.app.Constants.Key;
-import mqq.app.MobileQQ;
 import mqq.manager.ServerConfigManager.ConfigType;
 import mqq.os.MqqHandler;
-import mry;
-import ntb;
-import ntf;
-import nwu;
 import tencent.im.oidb.cmd0x5d1.Oidb_0x5d1.ClearFriendIdReq;
 import tencent.im.oidb.cmd0x5d1.Oidb_0x5d1.ReqBody;
 import tencent.im.oidb.cmd0x5d1.Oidb_0x5d1.SetFriendIdReq;
@@ -200,7 +142,6 @@ import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.DeleteReqBody;
 import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.GetListReqBody;
 import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.ReqBody;
 import tencent.im.oidb.cmd0xd72.oidb_cmd0xd72.ReqBody;
-import tencent.im.oidb.cmd0xedb.oidb_0xedb.ReqBody;
 import tencent.im.oidb.oidb_0xc26.ReqBody;
 import tencent.im.oidb.oidb_0xc34.ReqBody;
 import tencent.im.oidb.oidb_0xc35.ExposeItem;
@@ -211,7 +152,6 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x11e.SubMsgType0x11e.MsgBody;
 
 public class FriendListHandler
   extends BusinessHandler
-  implements FriendInfoBatchUpdater.FriendListSaveCallback
 {
   public static final String ACTION_GATHER_RESP = "action_gather_resp";
   public static final String ATTR_PACKAGE = "package";
@@ -233,7 +173,6 @@ public class FriendListHandler
   private static final int GET_FRIEND_NUM = 200;
   private static final int GET_GROUP_NUM = 100;
   private static final long INTERVAL_ONE_DAY = 86400000L;
-  private static final boolean IS_USE_NEW_QQHEAD_SERVER = true;
   public static final String KEY_IS_GATHER = "key_is_gather";
   public static final String KEY_IS_SUC = "key_is_suc";
   public static final String KEY_SAFETY_FLAG = "safety_flag";
@@ -244,7 +183,6 @@ public class FriendListHandler
   private static int MAX_COUNT_REQ_GETHER_MEMBER = 100;
   private static final int MAX_MOVE_FRI = 15;
   public static final long MIN_INTERVAL_GET_ONLINE = 15000L;
-  private static final int MSG_GET_HEAD = 0;
   public static final int NOTIFY_TYPE_GET_GATHERED_CONTACTS_LIST = 79;
   public static final int NOTIFY_TYPE_GET_RECOMM_GATHERED_CONTACTS_LIST = 80;
   public static final int NOT_ALLOWED_SEE_MY_DONGTAI = 1;
@@ -280,43 +218,36 @@ public class FriendListHandler
   public static final byte SRC_TYPE_SPECIAL_CARE = 3;
   public static final String TAG = "FriendListHandler";
   public static final String TAG_GET_TROOP_MEMBER = "get_troop_member";
-  public static final int TYPE_ADD_BATCH_PHONE_FRIEND = 110;
-  public static final int TYPE_ADD_QIMFRIENDS = 111;
-  public static final int TYPE_BATCH_ADD_TROOP_MEMBERS = 112;
+  public static final int TYPE_ADD_BATCH_PHONE_FRIEND = 109;
+  public static final int TYPE_ADD_QIMFRIENDS = 110;
+  public static final int TYPE_BATCH_ADD_TROOP_MEMBERS = 111;
   public static final int TYPE_CANCEL_MAYKNOW_RECOMMEND = 93;
   public static final int TYPE_COND_SEARCH_FRIEND = 73;
-  public static final int TYPE_CONVERSATION_RECOMMEND_TYPE_CHANGE = 123;
+  public static final int TYPE_CONVERSATION_RECOMMEND_TYPE_CHANGE = 122;
   public static final int TYPE_DEL_AUTH_DEV = 61;
   public static final int TYPE_DEL_DEVLOGININFO = 51;
   public static final int TYPE_DEL_HISTORY_DEV = 62;
   public static final int TYPE_FRIEND_LIST_ADD = 63;
-  public static final int TYPE_GET_ADD_FRIEND_SECCHECK = 120;
-  public static final int TYPE_GET_APOLLO_HEAD = 135;
-  public static final int TYPE_GET_APOLLO_HEAD_INFO = 134;
+  public static final int TYPE_GET_ADD_FRIEND_SECCHECK = 119;
   public static final int TYPE_GET_AUTH_DEV_LIST = 60;
   public static final int TYPE_GET_AUTO_INFO = 33;
   public static final int TYPE_GET_BOTH_DONGTAI_PERMISSIONS = 86;
   public static final int TYPE_GET_CIRCLE_RICH_STATUS = 64;
-  public static final int TYPE_GET_CONNECTIONS_PERSON = 132;
-  public static final int TYPE_GET_CUSTOM_HEAD = 4;
+  public static final int TYPE_GET_CONNECTIONS_PERSON = 131;
   public static final int TYPE_GET_DATENICK = 89;
   public static final int TYPE_GET_DEVLOGININFO = 50;
-  public static final int TYPE_GET_FRDS_HAS_BIND_PHONE = 121;
+  public static final int TYPE_GET_FRDS_HAS_BIND_PHONE = 120;
   public static final int TYPE_GET_FRIENDNICK_BATCH = 75;
   public static final int TYPE_GET_FRIEND_INFO = 3;
   public static final int TYPE_GET_FRIEND_INFO_FINISHED = 67;
   public static final int TYPE_GET_FRIEND_LIST = 1;
   public static final int TYPE_GET_GENERAL_SETTINGS = 35;
-  public static final int TYPE_GET_HEAD_INFO = 45;
-  public static final int TYPE_GET_HEAD_INFO_FAIL = 133;
   public static final int TYPE_GET_HISTORY_DEV_LIST = 59;
   public static final int TYPE_GET_LAST_LOGIN_INFO = 48;
   public static final int TYPE_GET_LOGIN_DEV_LIST = 58;
   public static final int TYPE_GET_MAYKNOW_RECOMMEND = 92;
-  public static final int TYPE_GET_MOBILE_QQHEAD = 39;
   public static final int TYPE_GET_NOT_ALLOWED_SEE_MYDONGTAI = 82;
   public static final int TYPE_GET_ONLINE_INFO_BY_UIN_OR_MOBILE = 68;
-  public static final int TYPE_GET_QCALL_HEAD = 6;
   public static final int TYPE_GET_RECENT_LIST = 7;
   public static final int TYPE_GET_RECOMMEND_AUTH_DEVICE_LIST = 69;
   public static final int TYPE_GET_SHIELD_HISDONGTAI = 84;
@@ -325,45 +256,42 @@ public class FriendListHandler
   public static final int TYPE_GET_SPECIAL_CARE_LIST = 99;
   public static final int TYPE_GET_SPECIAL_CARE_RECOMMEND = 95;
   public static final int TYPE_GET_STORE_FACE = 46;
-  public static final int TYPE_GET_STRANGER_HEAD = 5;
   public static final int TYPE_GET_STRANGER_INFO = 66;
   public static final int TYPE_GET_STRANGER_RICH_STATUS = 65;
-  public static final int TYPE_GET_TROOP_HEAD = 30;
   public static final int TYPE_GET_TROOP_HEAD_URL = 53;
   public static final int TYPE_GET_TROOP_NEWS = 55;
   public static final int TYPE_GET_TROOP_TAG = 57;
   public static final int TYPE_GLOBAL = 1;
-  public static final int TYPE_HIDDEN_CHAT_SWITCH = 130;
-  public static final int TYPE_HIDE_CONVERSATION_MAYKNOW_RECOMMEND = 116;
+  public static final int TYPE_HIDDEN_CHAT_SWITCH = 129;
+  public static final int TYPE_HIDE_CONVERSATION_MAYKNOW_RECOMMEND = 115;
   public static final int TYPE_INFO_OPENID = 74;
   public static final int TYPE_KICKOUT_DEV = 52;
-  public static final int TYPE_MAYKNOW_ENTRY_STATE_CHANGED = 113;
-  public static final int TYPE_MAYKNOW_LIST_PUSHED_ADD = 114;
-  public static final int TYPE_MAYKNOW_LIST_PUSHED_DEL = 115;
+  public static final int TYPE_MAYKNOW_ENTRY_STATE_CHANGED = 112;
+  public static final int TYPE_MAYKNOW_LIST_PUSHED_ADD = 113;
+  public static final int TYPE_MAYKNOW_LIST_PUSHED_DEL = 114;
   public static final int TYPE_NEW_SEARCH_FRIEND = 49;
   public static final int TYPE_NOTIFICATION_PREVIEW = 1;
   public static final int TYPE_NOTIFICATION_SOUND = 2;
   public static final int TYPE_NOTIFICATION_VIBRATE = 3;
-  public static final int TYPE_NOTIFY_ADDREQ_STATES_CHANGED = 105;
-  public static final int TYPE_NOTIFY_CHAT_HOT_DAY_UPDATE = 107;
+  public static final int TYPE_NOTIFY_ADDREQ_STATES_CHANGED = 104;
+  public static final int TYPE_NOTIFY_CHAT_HOT_DAY_UPDATE = 106;
   public static final int TYPE_NOTIFY_GROUP_INITED = 103;
-  public static final int TYPE_NOTIFY_MAYKNOW_STATE_CHANGED = 108;
-  public static final int TYPE_NOTIFY_OLYMPIC_TORCH_UPDATE = 106;
+  public static final int TYPE_NOTIFY_MAYKNOW_STATE_CHANGED = 107;
+  public static final int TYPE_NOTIFY_OLYMPIC_TORCH_UPDATE = 105;
   public static final int TYPE_NOTIFY_PULL_IPAD_STATE = 102;
-  public static final int TYPE_NOTIFY_PUSH_RECOMMEND_FRIEND = 109;
-  public static final int TYPE_NOTIFY_STRANGER_DOWNLOADURL_READY = 104;
+  public static final int TYPE_NOTIFY_PUSH_RECOMMEND_FRIEND = 108;
   public static final int TYPE_OIDB_0X476_146 = 71;
   public static final int TYPE_OIDB_0X476_147 = 72;
   public static final int TYPE_OIDB_0X88D_1 = 54;
   public static final int TYPE_QZONE = 3;
-  public static final int TYPE_RECOMMEND_TROOP_JOINED_OR_DELETED = 122;
+  public static final int TYPE_RECOMMEND_TROOP_JOINED_OR_DELETED = 121;
   public static final int TYPE_REQ_GET_SHOW_NETWORK_STATUS_TO_FRIENDS = 77;
-  public static final int TYPE_REQ_LAST_CHAT_TIME = 118;
-  public static final int TYPE_REQ_RECHECKIN_HOTREACTIVE = 117;
+  public static final int TYPE_REQ_LAST_CHAT_TIME = 117;
+  public static final int TYPE_REQ_RECHECKIN_HOTREACTIVE = 116;
   public static final int TYPE_REQ_SET_COMMENT = 27;
   public static final int TYPE_REQ_SET_SHOW_NETWORK_STATUS_TO_FRIENDS = 76;
   public static final int TYPE_REQ_SET_SIGNATURE = 28;
-  public static final int TYPE_REQ_SHIELD_FRIENDS_LIST = 119;
+  public static final int TYPE_REQ_SHIELD_FRIENDS_LIST = 118;
   public static final int TYPE_SETAS_NORMAL_CONTACTS = 91;
   public static final int TYPE_SETAS_UNCOMMONLY_USED_CONTACTS = 90;
   public static final int TYPE_SET_BOTH_DONGTAI_PERMISSIONS = 85;
@@ -378,7 +306,7 @@ public class FriendListHandler
   public static final int TYPE_SET_GROUP_DEL = 21;
   public static final int TYPE_SET_GROUP_RENAME = 19;
   public static final int TYPE_SET_GROUP_RESORT = 22;
-  public static final int TYPE_SET_MESSAGE_NOTIFICATION_SWITCH = 131;
+  public static final int TYPE_SET_MESSAGE_NOTIFICATION_SWITCH = 130;
   public static final int TYPE_SET_MESSAGE_ROAM = 101;
   public static final int TYPE_SET_NOT_ALLOWED_SEE_MYDONGTAI = 81;
   public static final int TYPE_SET_SHIELD_HISDONGTAI = 83;
@@ -388,12 +316,12 @@ public class FriendListHandler
   public static final int TYPE_SET_SPECIAL_CARE_SWITCH_QZONE = 98;
   public static final int TYPE_SET_SPECIAL_CARE_SWITCH_SPECIAL_RING = 97;
   public static final int TYPE_SPECIAL_RING = 2;
-  public static final int TYPE_SUSPICIOUS_AGREE = 129;
-  public static final int TYPE_SUSPICIOUS_CLEAR = 127;
-  public static final int TYPE_SUSPICIOUS_DELETE_UIN = 126;
-  public static final int TYPE_SUSPICIOUS_GET_LIST = 125;
-  public static final int TYPE_SUSPICIOUS_GET_UNREAD_NUM = 124;
-  public static final int TYPE_SUSPICIOUS_REPORT = 128;
+  public static final int TYPE_SUSPICIOUS_AGREE = 128;
+  public static final int TYPE_SUSPICIOUS_CLEAR = 126;
+  public static final int TYPE_SUSPICIOUS_DELETE_UIN = 125;
+  public static final int TYPE_SUSPICIOUS_GET_LIST = 124;
+  public static final int TYPE_SUSPICIOUS_GET_UNREAD_NUM = 123;
+  public static final int TYPE_SUSPICIOUS_REPORT = 127;
   public static final int TYPE_UPDATE_FRIEND_SHIELD_FLAG = 56;
   public static final int TYPE_UPDATE_SERVER_AUTH_DEVICE_LIST = 70;
   public static final int TYPR_GET_ADD_FRIEND = 11;
@@ -413,47 +341,38 @@ public class FriendListHandler
   public static final int UIN_SAFETY_SERVICE_TYPE_146 = 146;
   public static final int UIN_SAFETY_SERVICE_TYPE_147 = 147;
   public static int getSpecialRecommendStat = -1;
-  private int destQQHeadInfoCount;
-  private Hashtable<Integer, ArrayList<QQHeadDetails>> destQQHeadInfoTable = new Hashtable();
-  private Hashtable<String, Long> downloadedQQHeadTable = new Hashtable();
-  private Object downloadedQQHeadTableLock = new Object();
-  private long failedStartTime;
-  private int friendCountGeted;
+  public QQAppInterface app;
+  private long failedStartTime = 0L;
+  private int friendCountGeted = 0;
   private Hashtable<String, FriendListHandler.FriendInfoDuplicate> friendInfoDuplicateTable = new Hashtable();
-  private long getFriendGroupListTimeStamp;
-  private long getOnlineFriendLastTimeStamp;
-  private MqqHandler handler;
-  private List<aolh> handlerReceivers = new ArrayList();
+  private long getOnlineFriendLastTimeStamp = 0L;
+  private List<BaseHandlerReceiver> handlerReceivers = new ArrayList();
   public long intervalGetOnlineInfo = 15000L;
-  private boolean isDoneSaveQQHeadToStorage;
-  private boolean isImmediatelyGet;
-  private boolean isSyncingAllFriendsRichStatus;
-  private long lastFriendListUpdateTime;
-  private final bbcl mAddFrdTokenHelper = new bbcl();
-  private bbcm mBatchAddFriendData;
-  private int mFriendListFailedCount;
+  private boolean isSyncingAllFriendsRichStatus = false;
+  private long lastFriendListUpdateTime = 0L;
+  private final AddFrdTokenHelper mAddFrdTokenHelper = new AddFrdTokenHelper();
+  private BatchAddFriendData mBatchAddFriendData = null;
+  private int mFriendListFailedCount = 0;
   private HashMap<Long, String> mOfflineTips;
   private ArrayList<oidb_0x7df.FriendScore> mRecommendList = new ArrayList();
   private final Object mRecommendLock = new Object();
   private volatile int mShowPcIcon = -1;
   private int mStatusEntry = -1;
-  private QQHeadDownloadHandler qqHeadDownload;
-  private Object qqHeadDownloadLock = new Object();
-  public ArrayList<PhoneContact> requestingPhoneArr;
-  private int retryTotalCount;
+  public ArrayList<PhoneContact> requestingPhoneArr = null;
+  private int retryTotalCount = 0;
   private short shBatchSeqTypeField = 20002;
-  private Hashtable<String, aokr> statGetQQHeadTime = new Hashtable();
-  private long timeGetOnlineInfo;
-  private String[] updateSignatureList;
+  private long timeGetOnlineInfo = 0L;
+  private String[] updateSignatureList = null;
   
   protected FriendListHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
+    this.app = paramQQAppInterface;
     init();
     registerHandlerReceivers();
   }
   
-  private void addFriendInternal(String paramString1, String paramString2, int paramInt1, byte paramByte1, String paramString3, int paramInt2, int paramInt3, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString4, String paramString5, byte paramByte2, String paramString6, Bundle paramBundle)
+  private void addFriendInternal(String paramString1, String paramString2, int paramInt1, byte paramByte1, String paramString3, int paramInt2, int paramInt3, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString4, String paramString5, byte paramByte2, String paramString6, Bundle paramBundle, boolean paramBoolean3)
   {
     Object localObject2;
     StringBuilder localStringBuilder;
@@ -463,18 +382,18 @@ public class FriendListHandler
         paramBundle.getString("troop_uin");
       }
       localObject2 = new StringBuilder(300);
-      localStringBuilder = ((StringBuilder)localObject2).append("addFriendInternal, uin:").append(paramString1).append(", sourceID:").append(paramInt2).append(", subSourceId:").append(paramInt3).append(", extraUin:").append(paramString2).append(", friendSetting:").append(paramInt1).append(", groupId:").append(paramByte1).append(", msg:").append(paramString3).append(", autoSend:").append(paramBoolean1).append(", isContactBothWay:").append(paramBoolean2).append(", remark:").append(paramString4).append(", sourceName:").append(paramString5).append(", myCard:").append(paramByte2).append(", extraParam:").append(paramBundle).append(", sig:");
+      localStringBuilder = ((StringBuilder)localObject2).append("addFriendInternal, uin:").append(paramString1).append(", sourceID:").append(paramInt2).append(", subSourceId:").append(paramInt3).append(", extraUin:").append(paramString2).append(", friendSetting:").append(paramInt1).append(", groupId:").append(paramByte1).append(", msg:").append(paramString3).append(", autoSend:").append(paramBoolean1).append(", isContactBothWay:").append(paramBoolean2).append(", remark:").append(paramString4).append(", sourceName:").append(paramString5).append(", myCard:").append(paramByte2).append(", extraParam:").append(paramBundle).append(", isSupportSecurityTips:").append(paramBoolean3).append(", sig:");
       if (paramArrayOfByte != null) {
-        break label531;
+        break label552;
       }
       localObject1 = "null";
       localStringBuilder = localStringBuilder.append(localObject1).append(", ticket:");
       if (paramString6 != null) {
-        break label542;
+        break label563;
       }
     }
-    label531:
-    label542:
+    label552:
+    label563:
     for (Object localObject1 = "null";; localObject1 = Integer.valueOf(paramString6.length()))
     {
       localStringBuilder.append(localObject1);
@@ -510,6 +429,7 @@ public class FriendListHandler
         ((Bundle)localObject2).putByteArray("flc_add_frd_token", paramString1);
       }
       ((Bundle)localObject2).putString("security_ticket", paramString6);
+      ((Bundle)localObject2).putBoolean("security_ticket_support", paramBoolean3);
       send((ToServiceMsg)localObject1);
       return;
       localObject1 = Integer.valueOf(paramArrayOfByte.length);
@@ -616,141 +536,6 @@ public class FriendListHandler
     }
   }
   
-  private void deleteStrangerInfo(anvk paramanvk)
-  {
-    Object localObject = amci.a(this.app);
-    if ((paramanvk != null) && (localObject != null) && (((Set)localObject).size() > 0))
-    {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        if (!paramanvk.b(str))
-        {
-          amci.b(str, this.app);
-          if (amci.b(str, this.app)) {
-            amci.c(str, this.app);
-          }
-        }
-      }
-    }
-  }
-  
-  private void doExecuteGetQQHead()
-  {
-    for (;;)
-    {
-      label152:
-      int i;
-      Object localObject3;
-      try
-      {
-        this.handler.removeMessages(0);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqhead.flh", 2, "doExecuteGetQQHead start !!! ");
-        }
-        if (this.destQQHeadInfoCount > 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.qqhead.flh", 2, "doExecuteGetQQHead destQQHeadInfoCount = " + this.destQQHeadInfoCount);
-          }
-          localObject1 = this.app.getCurrentAccountUin();
-          if (localObject1 == null) {
-            break label587;
-          }
-        }
-        Enumeration localEnumeration;
-        try
-        {
-          l = Long.valueOf((String)localObject1).longValue();
-          if (l == -1L)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqhead.flh", 2, "doExecuteGetQQHead|myUin error: myUin=" + (String)localObject1);
-            }
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          l = -1L;
-          continue;
-          localEnumeration = this.destQQHeadInfoTable.keys();
-        }
-        if (!localEnumeration.hasMoreElements()) {
-          break label566;
-        }
-        i = ((Integer)localEnumeration.nextElement()).intValue();
-        Object localObject1 = (List)this.destQQHeadInfoTable.get(Integer.valueOf(i));
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqhead.flh", 2, "em.hasMoreElements() QQHeadDetails head_or_id = " + i);
-        }
-        if (!QLog.isColorLevel()) {
-          break label357;
-        }
-        localObject3 = new StringBuilder("doExecuteGetQQHead sendRequests for QQHeadInfo head_or_id=").append(i);
-        Iterator localIterator = ((List)localObject1).iterator();
-        if (localIterator.hasNext())
-        {
-          QQHeadDetails localQQHeadDetails = (QQHeadDetails)localIterator.next();
-          ((StringBuilder)localObject3).append(" QQheadDetail uinOrMobile=").append(StringUtil.getSimpleUinForPrint(localQQHeadDetails.jdField_a_of_type_JavaLangString)).append(",Timestamp=").append(localQQHeadDetails.jdField_a_of_type_Long).append("|");
-          continue;
-        }
-        ((StringBuilder)localObject3).append(" QQHeadDetailList length = ").append(localList.size());
-      }
-      finally {}
-      QLog.d("FriendListHandler", 2, ((StringBuilder)localObject3).toString());
-      label357:
-      if ((localList != null) && (!localList.isEmpty())) {}
-      for (Object localObject2 = aoke.a(localList, 50);; localObject2 = null)
-      {
-        if (localObject2 == null) {
-          break label585;
-        }
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = new ArrayList((List)((Iterator)localObject2).next());
-          if (i == 11)
-          {
-            realGetQQHead(l, i, (ArrayList)localObject3);
-          }
-          else if (i == 116)
-          {
-            realGetQQHead_Apollo(l, i, (ArrayList)localObject3);
-          }
-          else if (i >= 200)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqhead.flh", 2, "realGetQQHead_Stranger = " + i);
-            }
-            realGetQQHead_Stranger(i, (ArrayList)localObject3);
-          }
-          else if (i == 16)
-          {
-            realGetQQHead_QCall(i, (ArrayList)localObject3);
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqhead.flh", 2, "FaceConstant.HeadType.QQHEAD_TYPE_QCALL = " + i);
-            }
-          }
-          else
-          {
-            realGetQQHead_New(l, i, (ArrayList)localObject3);
-          }
-        }
-        break label152;
-        label566:
-        this.destQQHeadInfoCount = 0;
-        this.destQQHeadInfoTable.clear();
-        break;
-      }
-      label585:
-      continue;
-      label587:
-      long l = -1L;
-    }
-  }
-  
   private void doGetRichStatus(String[] paramArrayOfString, int paramInt1, int paramInt2, Bundle paramBundle, boolean paramBoolean)
   {
     if (paramInt1 >= paramArrayOfString.length) {
@@ -772,500 +557,6 @@ public class FriendListHandler
     send(localToServiceMsg);
   }
   
-  private void fetchRichStatusIfNeed(ArrayList<String> paramArrayList)
-  {
-    String[] arrayOfString;
-    if (!paramArrayList.isEmpty())
-    {
-      arrayOfString = new String[paramArrayList.size()];
-      paramArrayList.toArray(arrayOfString);
-      paramArrayList.clear();
-      if (this.app.mAutomator.c()) {
-        getRichStatusForFriendList(arrayOfString);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.updateSignatureList = arrayOfString;
-  }
-  
-  private void getChangedQQHeadList_New(byte paramByte1, byte paramByte2, QQHeadUrl.QQHeadUrlRsp paramQQHeadUrlRsp, ArrayList<QQHeadDetails> paramArrayList, List<QQHeadDetails> paramList, List<QQHeadInfo> paramList1)
-  {
-    List localList;
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      localList = paramQQHeadUrlRsp.dstHeadInfos.get();
-      paramArrayList = paramArrayList.iterator();
-    }
-    label60:
-    label320:
-    for (;;)
-    {
-      QQHeadDetails localQQHeadDetails;
-      Object localObject;
-      QQHeadUrl.RspHeadInfo localRspHeadInfo;
-      if (paramArrayList.hasNext())
-      {
-        localQQHeadDetails = (QQHeadDetails)paramArrayList.next();
-        localObject = localList.iterator();
-        if (!((Iterator)localObject).hasNext()) {
-          break label316;
-        }
-        localRspHeadInfo = (QQHeadUrl.RspHeadInfo)((Iterator)localObject).next();
-        if (paramByte2 == 1)
-        {
-          paramQQHeadUrlRsp = localRspHeadInfo.dstUid.get();
-          label96:
-          if (!localQQHeadDetails.jdField_a_of_type_JavaLangString.equals(paramQQHeadUrlRsp)) {
-            break label290;
-          }
-          localObject = new QQHeadInfo();
-          ((QQHeadInfo)localObject).headLevel = localQQHeadDetails.jdField_a_of_type_Byte;
-          if (paramByte2 != 1) {
-            break label292;
-          }
-          ((QQHeadInfo)localObject).phoneNum = localRspHeadInfo.dstUid.get();
-          ((QQHeadInfo)localObject).dwTimestamp = localRspHeadInfo.timestamp.get();
-          ((QQHeadInfo)localObject).cHeadType = ((byte)localRspHeadInfo.faceType.get());
-          ((QQHeadInfo)localObject).dstUsrType = paramByte1;
-          ((QQHeadInfo)localObject).dwFaceFlgas = ((byte)localRspHeadInfo.faceFlag.get());
-          ((QQHeadInfo)localObject).downLoadUrl = localRspHeadInfo.url.get();
-          ((QQHeadInfo)localObject).systemHeadID = ((short)localRspHeadInfo.sysid.get());
-          if (!localRspHeadInfo.headVerify.has()) {
-            break label308;
-          }
-          paramQQHeadUrlRsp = localRspHeadInfo.headVerify.get();
-          label240:
-          ((QQHeadInfo)localObject).headVerify = paramQQHeadUrlRsp;
-          paramList1.add(localObject);
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label320;
-        }
-        paramList.add(localQQHeadDetails);
-        break;
-        paramQQHeadUrlRsp = String.valueOf(localRspHeadInfo.dstUin.get());
-        break label96;
-        break label60;
-        ((QQHeadInfo)localObject).uin = localRspHeadInfo.dstUin.get();
-        break label145;
-        paramQQHeadUrlRsp = "";
-        break label240;
-        return;
-      }
-    }
-  }
-  
-  private void getChangedQQHeadList_QCall(int paramInt, List<MultiHeadUrl.RspUsrHeadInfo> paramList, ArrayList<QQHeadDetails> paramArrayList, List<QQHeadDetails> paramList1, List<QQHeadInfo> paramList2)
-  {
-    Iterator localIterator1 = paramArrayList.iterator();
-    QQHeadDetails localQQHeadDetails;
-    label36:
-    String str;
-    Object localObject;
-    if (localIterator1.hasNext())
-    {
-      localQQHeadDetails = (QQHeadDetails)localIterator1.next();
-      Iterator localIterator2 = paramList.iterator();
-      for (;;)
-      {
-        if (localIterator2.hasNext())
-        {
-          paramArrayList = (MultiHeadUrl.RspUsrHeadInfo)localIterator2.next();
-          str = baps.a(paramArrayList.dstUin.get());
-          if (localQQHeadDetails.jdField_a_of_type_JavaLangString.equals(str))
-          {
-            localObject = paramArrayList.dstHeadInfos.get();
-            paramArrayList = null;
-            Iterator localIterator3 = ((List)localObject).iterator();
-            label102:
-            if (localIterator3.hasNext())
-            {
-              localObject = (MultiHeadUrl.RspHeadInfo)localIterator3.next();
-              ((MultiHeadUrl.RspHeadInfo)localObject).usrType.get();
-              if (((MultiHeadUrl.RspHeadInfo)localObject).faceType.get() == 0) {
-                break label571;
-              }
-              paramArrayList = (ArrayList<QQHeadDetails>)localObject;
-            }
-          }
-        }
-      }
-    }
-    label154:
-    label442:
-    label571:
-    for (;;)
-    {
-      break label102;
-      int i;
-      if (paramArrayList != null)
-      {
-        localObject = this.app.getQQHeadSetting(16, str, paramInt);
-        if (this.app.isFaceFileExist(16, str, paramInt, 0)) {
-          break label442;
-        }
-        int j = 1;
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("Q.qqhead.", 2, "handleQQHead_QCALL file not exist.id=" + str + ",idType=" + paramInt);
-          i = j;
-        }
-        label239:
-        if (i == 0) {
-          break label561;
-        }
-        localObject = new QQHeadInfo();
-        ((QQHeadInfo)localObject).headLevel = localQQHeadDetails.jdField_a_of_type_Byte;
-        ((QQHeadInfo)localObject).idType = paramInt;
-        ((QQHeadInfo)localObject).phoneNum = str;
-        ((QQHeadInfo)localObject).dwTimestamp = paramArrayList.timestamp.get();
-        ((QQHeadInfo)localObject).cHeadType = ((byte)paramArrayList.faceType.get());
-        ((QQHeadInfo)localObject).dstUsrType = 16;
-        ((QQHeadInfo)localObject).dwFaceFlgas = ((byte)paramArrayList.faceFlag.get());
-        ((QQHeadInfo)localObject).downLoadUrl = paramArrayList.url.get();
-        ((QQHeadInfo)localObject).systemHeadID = ((short)paramArrayList.sysid.get());
-        ((QQHeadInfo)localObject).originUsrType = paramArrayList.usrType.get();
-        if (!paramArrayList.headVerify.has()) {
-          break label563;
-        }
-      }
-      for (paramArrayList = paramArrayList.headVerify.get();; paramArrayList = "")
-      {
-        ((QQHeadInfo)localObject).headVerify = paramArrayList;
-        paramList2.add(localObject);
-        break label36;
-        if (0 != 0)
-        {
-          paramArrayList = null;
-          break label154;
-        }
-        if (!QLog.isColorLevel()) {
-          break label36;
-        }
-        QLog.d("headqcall", 2, "there is no headinfo uin=" + str);
-        break label36;
-        break;
-        if (localObject != null)
-        {
-          localObject = (com.tencent.mobileqq.data.Setting)((Pair)localObject).second;
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.qqhead.", 2, "handleQQHead_QCALL setting=" + localObject + "targetInfo.timestamp=" + paramArrayList.timestamp.get());
-          }
-          if (localObject == null)
-          {
-            i = 1;
-            break label239;
-          }
-          if (((com.tencent.mobileqq.data.Setting)localObject).headImgTimestamp != paramArrayList.timestamp.get())
-          {
-            i = 1;
-            break label239;
-          }
-          paramList1.add(localQQHeadDetails);
-          i = 0;
-          break label239;
-        }
-        i = 1;
-        break label239;
-        break label36;
-      }
-      return;
-    }
-  }
-  
-  private void getChangedQQHeadList_Stranger(int paramInt1, int paramInt2, List<MultiHeadUrl.RspUsrHeadInfo> paramList, ArrayList<QQHeadDetails> paramArrayList, List<QQHeadDetails> paramList1, List<QQHeadInfo> paramList2)
-  {
-    Iterator localIterator1 = paramArrayList.iterator();
-    QQHeadDetails localQQHeadDetails;
-    label37:
-    String str;
-    label76:
-    Object localObject2;
-    Object localObject1;
-    label114:
-    int i;
-    if (localIterator1.hasNext())
-    {
-      localQQHeadDetails = (QQHeadDetails)localIterator1.next();
-      Iterator localIterator2 = paramList.iterator();
-      if (localIterator2.hasNext())
-      {
-        paramArrayList = (MultiHeadUrl.RspUsrHeadInfo)localIterator2.next();
-        if (paramInt2 == 0)
-        {
-          str = String.valueOf(paramArrayList.dstUin.get());
-          if (!localQQHeadDetails.jdField_a_of_type_JavaLangString.equals(str)) {
-            break label191;
-          }
-          localObject2 = paramArrayList.dstHeadInfos.get();
-          localObject1 = null;
-          paramArrayList = null;
-          Iterator localIterator3 = ((List)localObject2).iterator();
-          if (!localIterator3.hasNext()) {
-            break label218;
-          }
-          localObject2 = (MultiHeadUrl.RspHeadInfo)localIterator3.next();
-          i = ((MultiHeadUrl.RspHeadInfo)localObject2).usrType.get();
-          if (i != 1) {
-            break label193;
-          }
-          localObject1 = localObject2;
-        }
-      }
-    }
-    label256:
-    label544:
-    label552:
-    for (;;)
-    {
-      break label114;
-      if (paramInt2 == 1)
-      {
-        str = String.valueOf(paramArrayList.dstTid.get());
-        break label76;
-      }
-      str = paramArrayList.dstOpenid.get();
-      break label76;
-      label191:
-      break label37;
-      label193:
-      if ((i == 32) && (((MultiHeadUrl.RspHeadInfo)localObject2).faceType.get() != 0))
-      {
-        paramArrayList = (ArrayList<QQHeadDetails>)localObject2;
-        continue;
-        label218:
-        if (paramArrayList != null)
-        {
-          label223:
-          localObject1 = this.app.getQQHeadSetting(32, str, paramInt1);
-          if (this.app.isFaceFileExist(32, str, paramInt1, 0)) {
-            break label472;
-          }
-          i = 1;
-          if (i == 0) {
-            break label552;
-          }
-          localObject1 = new QQHeadInfo();
-          ((QQHeadInfo)localObject1).headLevel = localQQHeadDetails.jdField_a_of_type_Byte;
-          ((QQHeadInfo)localObject1).idType = paramInt1;
-          ((QQHeadInfo)localObject1).phoneNum = str;
-          ((QQHeadInfo)localObject1).dwTimestamp = paramArrayList.timestamp.get();
-          ((QQHeadInfo)localObject1).cHeadType = ((byte)paramArrayList.faceType.get());
-          ((QQHeadInfo)localObject1).dstUsrType = 32;
-          ((QQHeadInfo)localObject1).dwFaceFlgas = ((byte)paramArrayList.faceFlag.get());
-          ((QQHeadInfo)localObject1).downLoadUrl = paramArrayList.url.get();
-          ((QQHeadInfo)localObject1).systemHeadID = ((short)paramArrayList.sysid.get());
-          ((QQHeadInfo)localObject1).originUsrType = paramArrayList.usrType.get();
-          if (!paramArrayList.headVerify.has()) {
-            break label544;
-          }
-        }
-        for (paramArrayList = paramArrayList.headVerify.get();; paramArrayList = "")
-        {
-          ((QQHeadInfo)localObject1).headVerify = paramArrayList;
-          paramList2.add(localObject1);
-          break;
-          if (localObject1 != null)
-          {
-            paramArrayList = (ArrayList<QQHeadDetails>)localObject1;
-            break label223;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("headstranger", 2, "there is no headinfo uin=" + str);
-          break;
-          label472:
-          if (localObject1 != null)
-          {
-            localObject1 = (com.tencent.mobileqq.data.Setting)((Pair)localObject1).second;
-            if (localObject1 == null)
-            {
-              i = 1;
-              break label256;
-            }
-            if (((com.tencent.mobileqq.data.Setting)localObject1).headImgTimestamp != paramArrayList.timestamp.get())
-            {
-              i = 1;
-              break label256;
-            }
-            paramList1.add(localQQHeadDetails);
-            i = 0;
-            break label256;
-          }
-          i = 1;
-          break label256;
-        }
-        notifyUI(5, true, new Object[] { localQQHeadDetails.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt1), Boolean.valueOf(true) });
-        break label37;
-        break;
-        return;
-      }
-    }
-  }
-  
-  private void getFriendList(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, ArrayList<String> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, short paramShort)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.friend", 2, "getFriendGroupList " + paramBoolean1 + ", " + paramString + ", " + paramInt1 + ", " + paramInt2 + ", " + paramInt3 + ", " + paramInt4 + ", " + paramLong);
-    }
-    if (!paramBoolean1)
-    {
-      if (((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).c()) {
-        notifyUI(1, true, null);
-      }
-    }
-    else {
-      notifyUI(1, true, Boolean.valueOf(false));
-    }
-    paramString = createToServiceMsg("friendlist.getFriendGroupList");
-    paramString.setEnableFastResend(true);
-    paramString.extraData.putLong("timeStamp", paramLong);
-    paramString.extraData.putStringArrayList("uinList", paramArrayList);
-    paramString.extraData.putShort("friendStartIndex", (short)paramInt1);
-    paramString.extraData.putShort("friendTotalCount", paramShort);
-    paramString.extraData.putShort("friendCount", (short)paramInt2);
-    paramString.extraData.putByte("groupStartIndex", (byte)paramInt3);
-    paramString.extraData.getByte("groupCount", (byte)paramInt4);
-    paramString.extraData.putLong("startTime", System.currentTimeMillis());
-    paramString.extraData.putByte("ifShowTermType", (byte)1);
-    paramString.extraData.putBoolean("is_manual_pull_refresh", paramBoolean2);
-    send(paramString);
-  }
-  
-  private void getQQHead(int paramInt1, String paramString, int paramInt2, byte paramByte1, byte paramByte2, int paramInt3, boolean paramBoolean)
-  {
-    label102:
-    Object localObject;
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.flh", 2, "getQQHead, uin=" + paramString + ",headType=" + paramInt1 + ",idType=" + paramInt2 + ",level=" + paramByte1 + ",faceFileType=" + paramByte2);
-      }
-      if (!TextUtils.isEmpty(paramString))
-      {
-        if (paramInt1 != 1) {
-          break label102;
-        }
-        paramBoolean = Friends.isValidUin(paramString);
-        if (paramBoolean) {
-          break label102;
-        }
-      }
-      for (;;)
-      {
-        return;
-        localObject = QQAppInterface.getFaceDownKey(paramInt1, paramString, paramInt2, paramInt3);
-        if (isNeedDownloadedQQHead((String)localObject)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqhead.flh", 2, "markDownloadedQQHead, noNeedDownload= " + (String)localObject);
-        }
-      }
-      markDownloadedQQHead((String)localObject, false);
-    }
-    finally {}
-    boolean bool;
-    label195:
-    label255:
-    int i;
-    if ((this.app.mAutomator != null) && (this.app.mAutomator.b()))
-    {
-      bool = true;
-      if (!QLog.isColorLevel()) {
-        break label516;
-      }
-      QLog.d("Q.qqhead.flh", 2, "markDownloadedQQHead end keyStr = " + (String)localObject + ",isImmediatelyGet=" + this.isImmediatelyGet + ",InActionLoginB=" + bool);
-      break label516;
-      this.destQQHeadInfoCount += 1;
-      localObject = (ArrayList)this.destQQHeadInfoTable.get(Integer.valueOf(i));
-      if (localObject != null) {
-        break label507;
-      }
-      localObject = new ArrayList();
-      this.destQQHeadInfoTable.put(Integer.valueOf(i), localObject);
-      if (!QLog.isColorLevel()) {
-        break label528;
-      }
-      QLog.d("Q.qqhead.flh", 2, "FaceConstant.HeadType.QQHEAD_TYPE_QCALL destQQHeadInfoTable.put(keyType, destQQHeadInfoList); keyType = " + i + "destQQHeadInfoTable.size = " + this.destQQHeadInfoTable.size());
-      break label528;
-    }
-    for (;;)
-    {
-      paramBoolean = this.app.isFaceFileExist(paramInt1, paramString, paramInt2, paramInt3);
-      for (;;)
-      {
-        long l2 = 0L;
-        long l1 = l2;
-        if (paramBoolean)
-        {
-          Pair localPair = this.app.getQQHeadSetting(paramInt1, paramString, paramInt2);
-          l1 = l2;
-          if (localPair != null)
-          {
-            l1 = l2;
-            if (localPair.second != null) {
-              l1 = ((com.tencent.mobileqq.data.Setting)localPair.second).headImgTimestamp;
-            }
-          }
-        }
-        ((ArrayList)localObject).add(new QQHeadDetails(paramInt1, paramString, l1, paramByte1, paramInt3));
-        if ((!this.isImmediatelyGet) && (bool) && (!TextUtils.equals(paramString, this.app.getCurrentAccountUin()))) {
-          break;
-        }
-        doExecuteGetQQHead();
-        break;
-        bool = false;
-        break label195;
-        paramBoolean = true;
-        continue;
-        paramBoolean = false;
-      }
-      label507:
-      break label528;
-      label516:
-      do
-      {
-        i = paramInt1;
-        break;
-      } while (paramInt1 != 32);
-      i = paramInt2;
-      break label255;
-      label528:
-      switch (paramByte2)
-      {
-      }
-    }
-  }
-  
-  private void getQQHeadInSubThread(int paramInt1, String paramString, int paramInt2, byte paramByte1, byte paramByte2, int paramInt3, boolean paramBoolean)
-  {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      ThreadManager.post(new FriendListHandler.4(this, paramInt1, paramString, paramInt2, paramByte1, paramByte2, paramInt3, paramBoolean), 8, null, false);
-      return;
-    }
-    getQQHead(paramInt1, paramString, paramInt2, paramByte1, paramByte2, paramInt3, paramBoolean);
-  }
-  
-  private void getQQHeadInSubThread(int paramInt1, String paramString, int paramInt2, byte paramByte1, byte paramByte2, boolean paramBoolean)
-  {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      ThreadManager.post(new FriendListHandler.3(this, paramInt1, paramString, paramInt2, paramByte1, paramByte2, paramBoolean), 8, null, false);
-      return;
-    }
-    getQQHead(paramInt1, paramString, paramInt2, paramByte1, paramByte2, 0, paramBoolean);
-  }
-  
   private void handleAddBatchTroopMembers(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (this.mBatchAddFriendData == null) {
@@ -1274,24 +565,24 @@ public class FriendListHandler
     this.mBatchAddFriendData.a(this, paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
-  private boolean handleCheckUpdateItem(bcug parambcug, RespItem paramRespItem)
+  private boolean handleCheckUpdateItem(CheckUpdateItemInterface paramCheckUpdateItemInterface, RespItem paramRespItem)
   {
-    if ((parambcug == null) || (paramRespItem == null)) {
+    if ((paramCheckUpdateItemInterface == null) || (paramRespItem == null)) {
       return false;
     }
     try
     {
-      parambcug.a(paramRespItem);
+      paramCheckUpdateItemInterface.a(paramRespItem);
       return true;
     }
-    catch (OutOfMemoryError parambcug)
+    catch (OutOfMemoryError paramCheckUpdateItemInterface)
     {
-      QLog.d("ProfileService.CheckUpdateReq", 1, String.format("encounter OutOfMemoryError when handleCheckUpdateItem() sId=%d ret=%d ex=%s \n%s", new Object[] { Integer.valueOf(paramRespItem.eServiceID), Byte.valueOf(paramRespItem.cResult), parambcug.getMessage(), Log.getStackTraceString(parambcug) }));
+      QLog.d("ProfileService.CheckUpdateReq", 1, String.format("encounter OutOfMemoryError when handleCheckUpdateItem() sId=%d ret=%d ex=%s \n%s", new Object[] { Integer.valueOf(paramRespItem.eServiceID), Byte.valueOf(paramRespItem.cResult), paramCheckUpdateItemInterface.getMessage(), Log.getStackTraceString(paramCheckUpdateItemInterface) }));
       return true;
     }
-    catch (Throwable parambcug)
+    catch (Throwable paramCheckUpdateItemInterface)
     {
-      QLog.d("ProfileService.CheckUpdateReq", 1, parambcug.getMessage(), parambcug);
+      QLog.d("ProfileService.CheckUpdateReq", 1, paramCheckUpdateItemInterface.getMessage(), paramCheckUpdateItemInterface);
     }
     return true;
   }
@@ -1299,8 +590,8 @@ public class FriendListHandler
   private void handleFriendRichStatus(ToServiceMsg paramToServiceMsg, Object paramObject)
   {
     paramObject = (GetRichSigRes)paramObject;
-    anvk localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if ((paramObject == null) || (paramObject.cResult != 0) || (paramObject.vstSigInfo == null) || (paramObject.vstSigInfo.size() == 0) || (localanvk == null))
+    FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if ((paramObject == null) || (paramObject.cResult != 0) || (paramObject.vstSigInfo == null) || (paramObject.vstSigInfo.size() == 0) || (localFriendsManager == null))
     {
       if (paramToServiceMsg.extraData.getInt("reqType") == 3) {
         this.isSyncingAllFriendsRichStatus = false;
@@ -1317,7 +608,7 @@ public class FriendListHandler
       String str = Long.toString(localResRichSigInfo.lUin);
       if (localResRichSigInfo.cStatus == 1)
       {
-        ExtensionInfo localExtensionInfo = localanvk.a(str);
+        ExtensionInfo localExtensionInfo = localFriendsManager.a(str);
         paramObject = localExtensionInfo;
         if (localExtensionInfo == null)
         {
@@ -1326,8 +617,8 @@ public class FriendListHandler
         }
         if ((paramObject.richTime != localResRichSigInfo.dwTime) || (!Arrays.equals(paramObject.richBuffer, localResRichSigInfo.vbSigInfo)))
         {
-          paramObject.setRichBuffer(localResRichSigInfo.vbSigInfo, localResRichSigInfo.dwTime);
-          paramObject.isAdded2C2C = SignatureManager.a(this.app, str, paramObject.getRichStatus());
+          ExtensionRichStatus.a(paramObject, localResRichSigInfo.vbSigInfo, localResRichSigInfo.dwTime);
+          paramObject.isAdded2C2C = SignatureManager.a(this.app, str, ExtensionRichStatus.a(paramObject));
           if (QLog.isColorLevel()) {
             QLog.d("FriendListHandler", 2, "insertSignMsgIfNeeded from FriendList uin = " + str + " result = " + paramObject.isAdded2C2C);
           }
@@ -1341,7 +632,7 @@ public class FriendListHandler
       paramObject = new String[localArrayList2.size()];
       localArrayList2.toArray(paramObject);
       notifyUI(2, true, paramObject);
-      localanvk.b(localArrayList1);
+      localFriendsManager.b(localArrayList1);
     }
     if ((paramToServiceMsg.extraData.getInt("reqType") == 3) && (this.isSyncingAllFriendsRichStatus) && (paramToServiceMsg.extraData.getStringArray("totalArray").length == paramToServiceMsg.extraData.getInt("nextStartPos")))
     {
@@ -1378,7 +669,7 @@ public class FriendListHandler
         if (!bool1) {
           continue;
         }
-        paramFromServiceMsg = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        paramFromServiceMsg = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
         if (!bool4) {
           continue;
         }
@@ -1454,175 +745,6 @@ public class FriendListHandler
     }
   }
   
-  private void handleGetFriendDetailInfo(ToServiceMsg paramToServiceMsg, GetFriendListResp paramGetFriendListResp)
-  {
-    if ((paramGetFriendListResp.result == 1) || (paramGetFriendListResp.vecFriendInfo == null) || (paramGetFriendListResp.vecFriendInfo.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler", 2, "handleGetFriendDetailInfo failed");
-      }
-      return;
-    }
-    FriendInfo localFriendInfo = (FriendInfo)paramGetFriendListResp.vecFriendInfo.get(0);
-    paramToServiceMsg = new Friends();
-    aolz localaolz = new aolz(this.app, this);
-    localaolz.a(paramToServiceMsg, localFriendInfo);
-    aoly localaoly = new aoly(this.app, this);
-    localaoly.a(paramToServiceMsg, localFriendInfo, paramGetFriendListResp);
-    paramGetFriendListResp = new aolx(this.app);
-    paramGetFriendListResp.a(paramToServiceMsg, localFriendInfo);
-    localaolz.a(paramToServiceMsg);
-    localaoly.a();
-    paramGetFriendListResp.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendListHandler", 2, "$handleGetFriendDetailInfo | uin = " + paramToServiceMsg.uin + " | group = " + paramToServiceMsg.groupid);
-    }
-    if (this.getFriendGroupListTimeStamp == 0L) {
-      notifyUI(1, true, Boolean.valueOf(true));
-    }
-    paramGetFriendListResp = (awyz)this.app.getManager(QQManagerFactory.CONTACT_MANAGER);
-    if (paramGetFriendListResp != null) {
-      paramGetFriendListResp.f();
-    }
-    getRichStatus(new String[] { paramToServiceMsg.uin });
-  }
-  
-  private void handleGetFriendList(String paramString, GetFriendListResp paramGetFriendListResp, ToServiceMsg paramToServiceMsg)
-  {
-    long l = paramToServiceMsg.extraData.getLong("timeStamp");
-    ArrayList localArrayList = paramToServiceMsg.extraData.getStringArrayList("uinList");
-    boolean bool2 = paramToServiceMsg.extraData.getBoolean("is_manual_pull_refresh");
-    int m = paramGetFriendListResp.startIndex;
-    int n = paramGetFriendListResp.friend_count;
-    int k = paramGetFriendListResp.wGetExtSnsRspCode;
-    int i = 0;
-    if (paramGetFriendListResp.stSubSrvRspCode != null) {
-      i = paramGetFriendListResp.stSubSrvRspCode.wGetMutualMarkRspCode;
-    }
-    for (int j = paramGetFriendListResp.stSubSrvRspCode.wGetIntimateInfoRspCode;; j = 0)
-    {
-      QLog.i("Q.contacttab.friend", 1, "handleGetFriendList " + paramGetFriendListResp.result + ", " + paramGetFriendListResp.serverTime + ", " + m + ", " + n + " totalCount=" + paramGetFriendListResp.totoal_friend_count + " wGetExtSnsRspCode:" + k + " wGetMutualMarkRspCode:" + i + " wGetIntimateInfoRspCode:" + j);
-      if (paramGetFriendListResp.result == 1)
-      {
-        QLog.e("FriendListHandler", 1, "handleGetFriendList fail code");
-        notifyUI(1, false, Boolean.valueOf(false));
-        notifyUI(99, false, null);
-        if (paramToServiceMsg.extraData.getShort("friendTotalCount") == 0) {}
-        for (i = paramGetFriendListResp.totoal_friend_count;; i = paramToServiceMsg.extraData.getShort("friendTotalCount"))
-        {
-          reportGetFriendList(false, i, paramToServiceMsg.extraData.getShort("friendStartIndex"), 1);
-          return;
-        }
-      }
-      blfz.a("handleGetFriendList");
-      if (m == 0)
-      {
-        this.friendCountGeted = 0;
-        l = System.currentTimeMillis();
-      }
-      saveShowPcIconIfNeccessary(paramGetFriendListResp.cShowPcIcon);
-      anvk localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      aolf.a(this.app, paramGetFriendListResp);
-      aolf.a(this.app, paramGetFriendListResp, l);
-      if (m + n >= paramGetFriendListResp.totoal_friend_count) {}
-      int i1;
-      Object localObject;
-      FriendInfoBatchUpdater localFriendInfoBatchUpdater;
-      aole localaole;
-      aold localaold;
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        i1 = paramGetFriendListResp.vecFriendInfo.size();
-        this.friendCountGeted += i1;
-        localObject = new Friends[i1];
-        localFriendInfoBatchUpdater = new FriendInfoBatchUpdater(this.app, (Friends[])localObject, l, bool1, this);
-        localaole = new aole(this.app, i1, l, bool1, k, i);
-        localaold = new aold(this.app, i1);
-        k = 0;
-        while (k < i1)
-        {
-          FriendInfo localFriendInfo = (FriendInfo)paramGetFriendListResp.vecFriendInfo.get(k);
-          Friends localFriends = new Friends();
-          localFriendInfoBatchUpdater.update(localFriends, localFriendInfo);
-          localaole.a(localFriends, localFriendInfo);
-          localaold.a(localFriends, localFriendInfo);
-          localObject[k] = localFriends;
-          localArrayList.add(localFriends.uin);
-          k += 1;
-        }
-      }
-      bjxa.a(this.app, (Friends[])localObject);
-      localFriendInfoBatchUpdater.saveInBatch();
-      localaole.a();
-      localaold.a();
-      if ((i1 > 0) && (QLog.isColorLevel()))
-      {
-        localObject = (FriendInfo)paramGetFriendListResp.vecFriendInfo.get(0);
-        QLog.i("FriendListHandler", 2, "FriendListHandler handleGetFriendList uin=" + ((FriendInfo)localObject).friendUin + " | eNetwork=" + ((FriendInfo)localObject).eNetworkType + " | iTermType=" + ((FriendInfo)localObject).iTermType + " | abilityBits=" + ((FriendInfo)localObject).uAbiFlag + " | name=" + bhbx.a(((FriendInfo)localObject).nick) + " | netTypeIconId=" + ((FriendInfo)localObject).eIconType + " | detalStatusFlag=" + ((FriendInfo)localObject).detalStatusFlag + " | isMqqOnLine=" + ((FriendInfo)localObject).isMqqOnLine + " | netTypeIconIdIphoneOrWphoneNoWifi=" + ((FriendInfo)localObject).eIconType + " | hasTorch=" + ((FriendInfo)localObject).cOlympicTorch);
-      }
-      blfz.a();
-      if (!bool1)
-      {
-        getFriendList(paramString, m + n, 200, 0, 0, l, localArrayList, true, bool2, paramGetFriendListResp.totoal_friend_count);
-        notifyUI(1, true, Boolean.valueOf(false));
-        notifyUI(99, true, new Object[] { Boolean.valueOf(false), null });
-        return;
-      }
-      if (paramToServiceMsg.extraData.getShort("friendTotalCount") == 0)
-      {
-        k = paramGetFriendListResp.totoal_friend_count;
-        reportGetFriendList(true, k, paramToServiceMsg.extraData.getShort("friendStartIndex"), 0);
-        this.getFriendGroupListTimeStamp = 0L;
-        this.friendCountGeted = 0;
-        paramString = new StringBuilder().append("actual friend count is ");
-        if (this.friendCountGeted != paramGetFriendListResp.totoal_friend_count) {
-          break label1064;
-        }
-        bool1 = true;
-        label880:
-        QLog.d("FriendListHandler", 2, bool1);
-        paramString = (PhoneContactManagerImp)this.app.getManager(QQManagerFactory.CONTACT_MANAGER);
-        paramString.f();
-        if (!bool2) {
-          paramString.b();
-        }
-        this.app.notifyFriendListSynced();
-        notifyUI(1, true, Boolean.valueOf(true));
-        notifyUI(99, true, new Object[] { Boolean.valueOf(true), null });
-        fetchRichStatusIfNeed(localArrayList);
-        deleteStrangerInfo(localanvk);
-        aobu.a(this.app, "775_hot_friend_new_boat_clear_version");
-        aobu.a(this.app, "top_position_and_disturb_clear_version");
-        aobu.a(this.app, "check_message_preview_version_clear");
-        this.lastFriendListUpdateTime = paramGetFriendListResp.serverTime;
-        paramString = this.app;
-        if (i != 0) {
-          break label1070;
-        }
-        bool1 = true;
-        label1024:
-        if (j != 0) {
-          break label1076;
-        }
-      }
-      label1064:
-      label1070:
-      label1076:
-      for (bool2 = true;; bool2 = false)
-      {
-        aolf.a(paramString, bool1, bool2, paramGetFriendListResp.serverTime);
-        getGatheredContactsList(0);
-        return;
-        k = paramToServiceMsg.extraData.getShort("friendTotalCount");
-        break;
-        bool1 = false;
-        break label880;
-        bool1 = false;
-        break label1024;
-      }
-    }
-  }
-  
   private void handleGetGatheredContactsList(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (paramFromServiceMsg.getResultCode() != 1000) {
@@ -1657,7 +779,7 @@ public class FriendListHandler
           paramObject = new cmd0x7c4.RspBody();
           cmd0x7c4.GetSNFrdListRsp localGetSNFrdListRsp;
           int k;
-          anvk localanvk;
+          FriendsManager localFriendsManager;
           ArrayList localArrayList;
           for (;;)
           {
@@ -1671,10 +793,10 @@ public class FriendListHandler
               if (paramObject.rpt_msg_recommend_reason.has())
               {
                 paramToServiceMsg = paramObject.rpt_msg_recommend_reason.get();
-                ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(paramToServiceMsg);
+                ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(paramToServiceMsg);
               }
               paramToServiceMsg = localGetSNFrdListRsp.rpt_msg_one_frd_data.get();
-              localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+              localFriendsManager = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
               if (paramToServiceMsg == null) {
                 break label595;
               }
@@ -1693,7 +815,7 @@ public class FriendListHandler
                 localFriends.smartRemark = paramToServiceMsg;
                 localFriends.gender = ((byte)localOneFrdData.uint32_gender.get());
                 int m = localOneFrdData.uint32_reason_id.get();
-                localFriends.recommReason = localanvk.a(m);
+                localFriends.recommReason = localFriendsManager.a(m);
                 localArrayList.add(localFriends);
                 if (QLog.isColorLevel()) {
                   QLog.i("FriendListHandler", 2, "handleGetGatheredContactsList Gather List : " + localFriends.uin + " ; resonId = " + m + " ; f.recommReason =  " + localFriends.recommReason + " ; f.age = " + localFriends.age + " ; f.smartRemark = " + localFriends.smartRemark + " ; f.gender = " + localFriends.gender);
@@ -1710,18 +832,17 @@ public class FriendListHandler
               return;
             }
           }
-          localanvk.a(localArrayList, i);
+          localFriendsManager.a(localArrayList, i);
           label595:
           if (localGetSNFrdListRsp.uint32_recommend_frd_count.has())
           {
             i = localGetSNFrdListRsp.uint32_recommend_frd_count.get();
             paramFromServiceMsg.append("|recommend cnt=").append(i);
-            localanvk.b(i);
-            label636:
+            label629:
             boolean bool = paramObject.msg_box.has();
             this.app.getHandler(Conversation.class);
             if (!bool) {
-              break label828;
+              break label821;
             }
             if (QLog.isColorLevel()) {
               QLog.i("FriendListHandler", 2, "handleGetGatheredContactsList  has MsgBox. ");
@@ -1730,9 +851,9 @@ public class FriendListHandler
             bool = paramToServiceMsg.getBoolean("hasPulledRecomGathered", false);
             paramToServiceMsg.edit().putBoolean("hasMsgBox", true).commit();
             paramFromServiceMsg.append("|has no MsgBox hasPulled=").append(bool);
-            label741:
+            label734:
             if (k != 0) {
-              break label839;
+              break label832;
             }
             i = localGetSNFrdListRsp.uint32_next_start_idx.get();
             paramFromServiceMsg.append("|not Completed. continue to get. startIndex =").append(i);
@@ -1744,16 +865,16 @@ public class FriendListHandler
             QLog.i("FriendListHandler", 2, paramFromServiceMsg.toString());
             return;
             paramFromServiceMsg.append("|no recommend field");
-            break label636;
-            label828:
+            break label629;
+            label821:
             paramFromServiceMsg.append("|has no MsgBox");
-            break label741;
-            label839:
+            break label734;
+            label832:
             paramFromServiceMsg.append("|not Completed. continue to get. Completed.");
             this.app.getApp().getSharedPreferences(this.app.getAccount(), 0).edit().putInt("GetFrdListReq_seq", j).commit();
             notifyUI(79, true, new Object[] { Boolean.valueOf(true), Boolean.valueOf(true) });
-            if (localanvk != null) {
-              localanvk.h();
+            if (localFriendsManager != null) {
+              localFriendsManager.f();
             }
           }
         }
@@ -1765,39 +886,6 @@ public class FriendListHandler
         notifyUI(79, false, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false) });
       }
     }
-  }
-  
-  private void handleGetQQHeadError(ToServiceMsg paramToServiceMsg, int paramInt)
-  {
-    ArrayList localArrayList = paramToServiceMsg.extraData.getParcelableArrayList("uinList");
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject1 = localStringBuilder.append("handleGetQQHeadError, result=").append(paramInt).append(", uinListSize=");
-    if (localArrayList != null) {}
-    for (int i = localArrayList.size();; i = -1)
-    {
-      ((StringBuilder)localObject1).append(i);
-      if ((localArrayList != null) && (localArrayList.size() != 0)) {
-        break;
-      }
-      QLog.i("Q.qqhead.flh", 1, localStringBuilder.toString());
-      return;
-    }
-    i = 0;
-    while (i < localArrayList.size())
-    {
-      localObject1 = (QQHeadDetails)localArrayList.get(i);
-      int j = paramToServiceMsg.extraData.getInt("idType", 0);
-      Object localObject2 = QQAppInterface.getFaceDownKey(((QQHeadDetails)localObject1).jdField_a_of_type_Int, ((QQHeadDetails)localObject1).jdField_a_of_type_JavaLangString, j, 0);
-      markDownloadedQQHead((String)localObject2, true);
-      statGetQQHeadCostTime(9201, (String)localObject2, ((QQHeadDetails)localObject1).jdField_a_of_type_Int, 2, 0, null, paramInt, 0L);
-      localStringBuilder.append("; uin=").append((String)localObject2).append(", timestamp=").append(((QQHeadDetails)localObject1).jdField_a_of_type_Long);
-      localObject2 = (aozr)this.app.getManager(QQManagerFactory.CLASSIC_HEAD_ACIVITY_MANAGER);
-      if ((localObject2 != null) && (((aozr)localObject2).a())) {
-        ((aozr)localObject2).a(((QQHeadDetails)localObject1).jdField_a_of_type_JavaLangString);
-      }
-      i += 1;
-    }
-    QLog.i("Q.qqhead.flh", 1, localStringBuilder.toString());
   }
   
   private void handleGetStrangerInfo(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1844,13 +932,13 @@ public class FriendListHandler
       if (localByteBuffer.getInt() == -1)
       {
         int n = localByteBuffer.getShort();
-        anvk localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
         int j = 0;
         while (j < n)
         {
           i = 0;
-          long l = bhbx.a(localByteBuffer.getInt());
-          paramObject = localanvk.a(String.valueOf(l));
+          long l = Utils.a(localByteBuffer.getInt());
+          paramObject = localFriendsManager.a(String.valueOf(l));
           paramToServiceMsg = paramObject;
           if (paramObject == null)
           {
@@ -1870,10 +958,10 @@ public class FriendListHandler
                 break;
               }
               m = localByteBuffer.getShort();
-              boolean bool1 = aolb.a(localByteBuffer, paramToServiceMsg, m);
-              boolean bool2 = aolb.b(localByteBuffer, paramToServiceMsg, m);
-              boolean bool3 = aolb.c(localByteBuffer, paramToServiceMsg, m);
-              aolb.a(this.app, localByteBuffer, l, m);
+              boolean bool1 = FriendListHandlerUtil.a(localByteBuffer, paramToServiceMsg, m);
+              boolean bool2 = FriendListHandlerUtil.b(localByteBuffer, paramToServiceMsg, m);
+              boolean bool3 = FriendListHandlerUtil.c(localByteBuffer, paramToServiceMsg, m);
+              FriendListHandlerUtil.a(this.app, localByteBuffer, l, m);
               k += 1;
               i = bool3 | i | bool1 | bool2;
             }
@@ -1889,7 +977,7 @@ public class FriendListHandler
           }
           j += 1;
         }
-        localanvk.b(localArrayList);
+        localFriendsManager.b(localArrayList);
       }
     }
     if (paramFromServiceMsg.size() == 0) {}
@@ -1901,489 +989,6 @@ public class FriendListHandler
       }
       QLog.i("Q.stranger_info", 2, "handleGetStrangerInfo. addonId size : " + localArrayList.size());
       return;
-    }
-  }
-  
-  private void handleOnReceiveGetFriendGroupList(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, GetFriendListResp paramGetFriendListResp)
-  {
-    if (paramFromServiceMsg.isSuccess()) {
-      if (paramGetFriendListResp != null) {
-        if (paramToServiceMsg.extraData.getBoolean("getSingleFriend")) {
-          handleGetFriendDetailInfo(paramToServiceMsg, paramGetFriendListResp);
-        }
-      }
-    }
-    short s;
-    do
-    {
-      do
-      {
-        return;
-        if (paramToServiceMsg.extraData.getByte("ifShowTermType", (byte)0).byteValue() == 1)
-        {
-          handleGetFriendList(paramFromServiceMsg.getUin(), paramGetFriendListResp, paramToServiceMsg);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("FriendListHandler", 1, "handleGetFriendList unknow request!");
-      return;
-      if (!paramToServiceMsg.extraData.getBoolean("getSingleFriend"))
-      {
-        s = paramToServiceMsg.extraData.getShort("friendStartIndex");
-        i = paramToServiceMsg.extraData.getShort("friendTotalCount");
-        QLog.e("FriendListHandler", 1, "friend list unserialize error");
-        reportGetFriendList(false, i, s, paramFromServiceMsg.getResultCode());
-        this.getFriendGroupListTimeStamp = 0L;
-      }
-      notifyUI(1, false, null);
-      notifyUI(99, false, null);
-      return;
-      if ((paramFromServiceMsg.getResultCode() != 2901) || (paramToServiceMsg == null) || (paramToServiceMsg.extraData == null)) {
-        break label344;
-      }
-      int i = paramToServiceMsg.extraData.getInt("k_resend_cnt", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler", 2, "k_resend_cnt" + i);
-      }
-      if (i >= 2) {
-        break;
-      }
-      paramToServiceMsg.extraData.putInt("k_resend_cnt", i + 1);
-      send(paramToServiceMsg);
-    } while (paramToServiceMsg.extraData.getBoolean("getSingleFriend"));
-    this.retryTotalCount += 1;
-    return;
-    if (!paramToServiceMsg.extraData.getBoolean("getSingleFriend"))
-    {
-      QLog.e("FriendListHandler", 1, "getFriendList timeout");
-      s = paramToServiceMsg.extraData.getShort("friendStartIndex");
-      reportGetFriendList(false, paramToServiceMsg.extraData.getShort("friendTotalCount"), s, paramFromServiceMsg.getResultCode());
-      this.getFriendGroupListTimeStamp = 0L;
-    }
-    notifyUI(1, false, null);
-    notifyUI(99, false, null);
-    return;
-    label344:
-    if ((paramToServiceMsg != null) && (paramToServiceMsg.extraData != null) && (!paramToServiceMsg.extraData.getBoolean("getSingleFriend")))
-    {
-      QLog.e("FriendListHandler", 1, "getFriendList fail " + paramFromServiceMsg.getResultCode());
-      s = paramToServiceMsg.extraData.getShort("friendStartIndex");
-      reportGetFriendList(false, paramToServiceMsg.extraData.getShort("friendTotalCount"), s, paramFromServiceMsg.getResultCode());
-      this.getFriendGroupListTimeStamp = 0L;
-    }
-    notifyUI(1, false, null);
-    notifyUI(99, false, null);
-  }
-  
-  private void handleQQHead(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, QQHeadUrlResp paramQQHeadUrlResp)
-  {
-    int i;
-    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000) || (paramQQHeadUrlResp == null) || (paramQQHeadUrlResp.result != 0) || (paramQQHeadUrlResp.UserHeadInfoList == null))
-    {
-      i = 65535;
-      if (paramQQHeadUrlResp != null) {
-        i = paramQQHeadUrlResp.result;
-      }
-    }
-    label262:
-    do
-    {
-      for (;;)
-      {
-        handleGetQQHeadError(paramToServiceMsg, i);
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendListHandler", 2, "handleQQHead handleResp for QQHeadInfo appear error and error code =" + i);
-        }
-        return;
-        if (paramFromServiceMsg != null) {
-          i = paramFromServiceMsg.getResultCode();
-        }
-      }
-      paramFromServiceMsg = paramToServiceMsg.extraData.getParcelableArrayList("uinList");
-      Object localObject;
-      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.size() > 0))
-      {
-        paramToServiceMsg = new ArrayList();
-        paramFromServiceMsg = paramFromServiceMsg.iterator();
-        for (;;)
-        {
-          if (!paramFromServiceMsg.hasNext()) {
-            break label262;
-          }
-          localObject = (QQHeadDetails)paramFromServiceMsg.next();
-          Iterator localIterator = paramQQHeadUrlResp.UserHeadInfoList.iterator();
-          if (localIterator.hasNext())
-          {
-            QQHeadInfo localQQHeadInfo = (QQHeadInfo)localIterator.next();
-            if (((localQQHeadInfo.dstUsrType == 11) || (!((QQHeadDetails)localObject).jdField_a_of_type_JavaLangString.equals(Long.toString(localQQHeadInfo.uin)))) && ((localQQHeadInfo.dstUsrType != 11) || (!((QQHeadDetails)localObject).jdField_a_of_type_JavaLangString.equals(localQQHeadInfo.phoneNum)))) {
-              break;
-            }
-            localQQHeadInfo.headLevel = ((QQHeadDetails)localObject).jdField_a_of_type_Byte;
-            paramToServiceMsg.add(localQQHeadInfo);
-          }
-        }
-        paramQQHeadUrlResp.UserHeadInfoList = paramToServiceMsg;
-      }
-      insureInitQQHeadDownloadHandler();
-      paramToServiceMsg = new StringBuilder("handleQQHead handleResp for QQHeadInfo");
-      i = 0;
-      while (i < paramQQHeadUrlResp.UserHeadInfoList.size())
-      {
-        paramFromServiceMsg = (QQHeadInfo)paramQQHeadUrlResp.UserHeadInfoList.get(i);
-        statGetQQHeadCostTime(0, getUinOrMobile(paramFromServiceMsg.dstUsrType, paramFromServiceMsg.uin, paramFromServiceMsg.phoneNum), paramFromServiceMsg.dstUsrType, 2);
-        paramToServiceMsg.append(" qqHeadUrlResp id=").append(i).append(" QQHeadInfo.uin=").append(StringUtil.getSimpleUinForPrint(Long.toString(paramFromServiceMsg.uin))).append(" QQHeadInfo.systemId=").append(paramFromServiceMsg.systemHeadID).append("  QQHeadInfo.headtype=").append(paramFromServiceMsg.cHeadType).append("|");
-        localObject = new FaceInfo();
-        ((FaceInfo)localObject).jdField_a_of_type_AvatarInfoQQHeadInfo = paramFromServiceMsg;
-        this.qqHeadDownload.addDownloadRequest((FaceInfo)localObject);
-        i += 1;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("FriendListHandler", 2, paramToServiceMsg.toString());
-  }
-  
-  private void handleQQHeadNoChangeList(int paramInt1, int paramInt2, List<QQHeadDetails> paramList)
-  {
-    if (paramList.size() > 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler", 2, "handleQQHead_New noChangeQQHeadInfoList");
-      }
-      EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
-      EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
-      localEntityTransaction.begin();
-      int i = 0;
-      try
-      {
-        while (i < paramList.size())
-        {
-          QQHeadDetails localQQHeadDetails = (QQHeadDetails)paramList.get(i);
-          com.tencent.mobileqq.data.Setting localSetting = (com.tencent.mobileqq.data.Setting)localEntityManager.find(com.tencent.mobileqq.data.Setting.class, QQAppInterface.getFaceSettingKey(paramInt1, localQQHeadDetails.jdField_a_of_type_JavaLangString, paramInt2));
-          if (localSetting != null)
-          {
-            localSetting.updateTimestamp = System.currentTimeMillis();
-            this.app.updateSettingTableCache(localSetting);
-            localEntityManager.update(localSetting);
-          }
-          markDownloadedQQHead(QQAppInterface.getFaceDownKey(paramInt1, localQQHeadDetails.jdField_a_of_type_JavaLangString, paramInt2, localQQHeadDetails.jdField_b_of_type_Int), true);
-          i += 1;
-        }
-        return;
-      }
-      catch (Exception paramList)
-      {
-        localEntityTransaction.commit();
-        localEntityTransaction.end();
-      }
-    }
-  }
-  
-  private void handleQQHead_New(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFromServiceMsg != null) {
-      localObject1 = localObject2;
-    }
-    try
-    {
-      if (paramFromServiceMsg.getResultCode() == 1000)
-      {
-        localObject1 = localObject2;
-        if (paramObject != null)
-        {
-          localObject1 = new QQHeadUrl.QQHeadUrlRsp();
-          ((QQHeadUrl.QQHeadUrlRsp)localObject1).mergeFrom((byte[])paramObject);
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localQQHeadUrlRsp = null;
-        continue;
-        if (paramFromServiceMsg != null) {
-          i = paramFromServiceMsg.getResultCode();
-        }
-      }
-      notifyUI(133, false, new Object[] { Integer.valueOf(0), paramToServiceMsg });
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendListHandler", 2, "handleQQHead_New qqHeadUrlResp=" + localObject1 + " qqHeadUrlRespData = " + paramObject);
-    }
-    QQHeadUrl.QQHeadUrlRsp localQQHeadUrlRsp;
-    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000) || (localObject1 == null) || (((QQHeadUrl.QQHeadUrlRsp)localObject1).result.get() != 0))
-    {
-      i = 65535;
-      if (localObject1 != null)
-      {
-        i = ((QQHeadUrl.QQHeadUrlRsp)localObject1).result.get();
-        handleGetQQHeadError(paramToServiceMsg, i);
-        i = paramToServiceMsg.extraData.getInt("dstUsrType", 1);
-        if ((i != 1) && (i != 32)) {
-          break label297;
-        }
-        paramFromServiceMsg = paramToServiceMsg.extraData.getParcelableArrayList("uinList");
-        paramToServiceMsg = new ArrayList();
-        if (!(paramFromServiceMsg instanceof ArrayList)) {
-          break label274;
-        }
-        paramFromServiceMsg = ((ArrayList)paramFromServiceMsg).iterator();
-        while (paramFromServiceMsg.hasNext())
-        {
-          paramObject = paramFromServiceMsg.next();
-          if ((paramObject instanceof QQHeadDetails)) {
-            paramToServiceMsg.add(((QQHeadDetails)paramObject).jdField_a_of_type_JavaLangString);
-          }
-        }
-      }
-      label274:
-      label297:
-      return;
-    }
-    int i = localQQHeadUrlRsp.dstUsrType.get();
-    if (i == 8) {
-      i = 4;
-    }
-    for (;;)
-    {
-      byte b = (byte)localQQHeadUrlRsp.dstEncryptType.get();
-      paramObject = new ArrayList();
-      paramFromServiceMsg = new ArrayList();
-      paramToServiceMsg = paramToServiceMsg.extraData.getParcelableArrayList("uinList");
-      getChangedQQHeadList_New((byte)i, b, localQQHeadUrlRsp, paramToServiceMsg, paramFromServiceMsg, paramObject);
-      startDownloadQQHead(paramObject, false);
-      handleQQHeadNoChangeList(i, 0, paramFromServiceMsg);
-      if ((paramFromServiceMsg.size() <= 0) || ((i != 1) && (i != 32))) {
-        break;
-      }
-      paramToServiceMsg = new ArrayList(paramFromServiceMsg.size());
-      paramFromServiceMsg = paramFromServiceMsg.iterator();
-      while (paramFromServiceMsg.hasNext()) {
-        paramToServiceMsg.add(((QQHeadDetails)paramFromServiceMsg.next()).jdField_a_of_type_JavaLangString);
-      }
-      notifyUI(133, true, new Object[] { Integer.valueOf(0), paramToServiceMsg });
-      return;
-    }
-  }
-  
-  private void handleQQHead_QCall(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    ArrayList localArrayList1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.flh", 2, "handleQQHead_QCall ....");
-    }
-    if (paramFromServiceMsg != null) {}
-    for (;;)
-    {
-      try
-      {
-        if ((paramFromServiceMsg.getResultCode() != 1000) || (paramObject == null)) {
-          break label263;
-        }
-        localObject = new MultiHeadUrl.MultiBusidUrlRsp();
-        ((MultiHeadUrl.MultiBusidUrlRsp)localObject).mergeFrom((byte[])paramObject);
-        paramObject = localObject;
-      }
-      catch (Exception paramObject)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.qqhead.flh", 2, "handleQQHead_Stranger multiBusidUrlRsp mergeFrom exception..." + paramObject.getMessage());
-        paramObject.printStackTrace();
-        paramObject = localArrayList1;
-        continue;
-        if (paramFromServiceMsg == null) {
-          continue;
-        }
-        int i = paramFromServiceMsg.getResultCode();
-        continue;
-        paramFromServiceMsg = paramObject.dstUsrHeadInfos.get();
-        localArrayList1 = new ArrayList();
-        Object localObject = paramToServiceMsg.extraData.getParcelableArrayList("uinList");
-        ArrayList localArrayList2 = new ArrayList();
-        paramObject.dstUidType.get();
-        i = paramToServiceMsg.extraData.getInt("idType");
-        getChangedQQHeadList_QCall(i, paramFromServiceMsg, (ArrayList)localObject, localArrayList1, localArrayList2);
-        startDownloadQQHead(localArrayList2, true);
-        handleQQHeadNoChangeList(16, i, localArrayList1);
-        return;
-      }
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000) || (paramObject == null) || (paramObject.result.get() != 0))
-      {
-        i = 65535;
-        if (paramObject != null)
-        {
-          i = paramObject.result.get();
-          handleGetQQHeadError(paramToServiceMsg, i);
-          return;
-        }
-      }
-      label263:
-      paramObject = null;
-    }
-  }
-  
-  private void handleQQHead_Stranger(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    ArrayList localArrayList1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.flh", 2, "handleQQHead_Stranger ....");
-    }
-    if (paramFromServiceMsg != null) {}
-    for (;;)
-    {
-      try
-      {
-        if ((paramFromServiceMsg.getResultCode() != 1000) || (paramObject == null)) {
-          break label266;
-        }
-        localObject = new MultiHeadUrl.MultiBusidUrlRsp();
-        ((MultiHeadUrl.MultiBusidUrlRsp)localObject).mergeFrom((byte[])paramObject);
-        paramObject = localObject;
-      }
-      catch (Exception paramObject)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.qqhead.flh", 2, "handleQQHead_Stranger multiBusidUrlRsp mergeFrom exception..." + paramObject.getMessage());
-        paramObject.printStackTrace();
-        paramObject = localArrayList1;
-        continue;
-        if (paramFromServiceMsg == null) {
-          continue;
-        }
-        int i = paramFromServiceMsg.getResultCode();
-        continue;
-        paramFromServiceMsg = paramObject.dstUsrHeadInfos.get();
-        localArrayList1 = new ArrayList();
-        Object localObject = paramToServiceMsg.extraData.getParcelableArrayList("uinList");
-        ArrayList localArrayList2 = new ArrayList();
-        i = paramObject.dstUidType.get();
-        int j = paramToServiceMsg.extraData.getInt("idType");
-        getChangedQQHeadList_Stranger(j, i, paramFromServiceMsg, (ArrayList)localObject, localArrayList1, localArrayList2);
-        startDownloadQQHead(localArrayList2, true);
-        handleQQHeadNoChangeList(32, j, localArrayList1);
-        return;
-      }
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000) || (paramObject == null) || (paramObject.result.get() != 0))
-      {
-        i = 65535;
-        if (paramObject != null)
-        {
-          i = paramObject.result.get();
-          handleGetQQHeadError(paramToServiceMsg, i);
-          return;
-        }
-      }
-      label266:
-      paramObject = null;
-    }
-  }
-  
-  private void handleSetGroupResp(ToServiceMsg paramToServiceMsg, SetGroupResp paramSetGroupResp)
-  {
-    boolean bool;
-    int i;
-    if (paramSetGroupResp.result == 0)
-    {
-      bool = true;
-      i = paramToServiceMsg.extraData.getInt("set_type", -1);
-      if (i == paramSetGroupResp.reqtype) {
-        break label675;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler", 2, "handleSetGroupResp | unmatched reqtype, local = " + i + ", remote = " + paramSetGroupResp.reqtype);
-      }
-      bool = false;
-    }
-    label675:
-    for (;;)
-    {
-      Object localObject1 = ByteBuffer.wrap(paramSetGroupResp.vecBody);
-      anvk localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      Object localObject2;
-      switch (i)
-      {
-      default: 
-        return;
-        bool = false;
-        break;
-      case 0: 
-        localObject2 = new AddGroupResp();
-        if (bool)
-        {
-          ((AddGroupResp)localObject2).dwToUin = ((ByteBuffer)localObject1).getInt();
-          ((AddGroupResp)localObject2).dwSequence = ((ByteBuffer)localObject1).getInt();
-          ((AddGroupResp)localObject2).cGroupId = ((ByteBuffer)localObject1).get();
-          ((AddGroupResp)localObject2).cSortId = ((ByteBuffer)localObject1).get();
-          localObject1 = localanvk.a(((AddGroupResp)localObject2).cGroupId + "");
-          if (localObject1 == null) {
-            break label301;
-          }
-          ((Groups)localObject1).group_id = ((AddGroupResp)localObject2).cGroupId;
-          ((Groups)localObject1).seqid = ((AddGroupResp)localObject2).cSortId;
-          ((Groups)localObject1).group_name = paramToServiceMsg.extraData.getString("group_name");
-        }
-        for (paramToServiceMsg = (ToServiceMsg)localObject1;; paramToServiceMsg = (ToServiceMsg)localObject1)
-        {
-          localanvk.a(paramToServiceMsg);
-          notifyUI(18, bool, new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, (AddGroupResp)localObject2));
-          return;
-          localObject1 = new Groups();
-          ((Groups)localObject1).group_id = ((AddGroupResp)localObject2).cGroupId;
-          ((Groups)localObject1).seqid = ((AddGroupResp)localObject2).cSortId;
-          ((Groups)localObject1).group_name = paramToServiceMsg.extraData.getString("group_name");
-        }
-      case 1: 
-        localObject2 = new RenameGroupResp();
-        if (bool)
-        {
-          ((RenameGroupResp)localObject2).dwToUin = ((ByteBuffer)localObject1).getInt();
-          ((RenameGroupResp)localObject2).dwSequence = ((ByteBuffer)localObject1).getInt();
-          i = ((ByteBuffer)localObject1).get();
-          ((RenameGroupResp)localObject2).cLen = ((ByteBuffer)localObject1).get();
-          paramToServiceMsg = new byte[((RenameGroupResp)localObject2).cLen];
-          ((ByteBuffer)localObject1).get(paramToServiceMsg, 0, ((RenameGroupResp)localObject2).cLen);
-          ((RenameGroupResp)localObject2).sGroupName = new String(paramToServiceMsg);
-          paramToServiceMsg = localanvk.a(String.valueOf(i));
-          if (paramToServiceMsg == null) {
-            break label492;
-          }
-        }
-        for (paramToServiceMsg.group_name = ((RenameGroupResp)localObject2).sGroupName;; paramToServiceMsg.group_name = ((RenameGroupResp)localObject2).sGroupName)
-        {
-          localanvk.a(paramToServiceMsg);
-          notifyUI(19, bool, new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, (RenameGroupResp)localObject2));
-          return;
-          paramToServiceMsg = new Groups();
-          paramToServiceMsg.group_id = ((int)((RenameGroupResp)localObject2).dwSequence);
-        }
-      case 2: 
-        paramToServiceMsg = new DelGroupResp();
-        if (bool)
-        {
-          paramToServiceMsg.dwToUin = ((ByteBuffer)localObject1).getInt();
-          paramToServiceMsg.dwSequence = ((ByteBuffer)localObject1).getInt();
-          paramToServiceMsg.cGroupid = ((ByteBuffer)localObject1).get();
-        }
-        handleDelGroupResp(paramToServiceMsg, bool, new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, paramToServiceMsg));
-        return;
-      case 3: 
-        label301:
-        label492:
-        localObject2 = new ReSortGroupResp();
-        if (bool)
-        {
-          ((ReSortGroupResp)localObject2).dwToUin = ((ByteBuffer)localObject1).getInt();
-          ((ReSortGroupResp)localObject2).dwSequence = ((ByteBuffer)localObject1).getInt();
-          localanvk.a(paramToServiceMsg.extraData.getByteArray("group_id_list"), paramToServiceMsg.extraData.getByteArray("sort_id_list"));
-        }
-        notifyUI(22, bool, new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, (ReSortGroupResp)localObject2));
-        return;
-      }
     }
   }
   
@@ -2449,7 +1054,7 @@ public class FriendListHandler
     for (;;)
     {
       label281:
-      notifyUI(130, k, new Object[] { arrayOfString, arrayOfBoolean });
+      notifyUI(129, k, new Object[] { arrayOfString, arrayOfBoolean });
       return;
       int m = 0;
     }
@@ -2460,7 +1065,7 @@ public class FriendListHandler
     if (QLog.isColorLevel()) {
       QLog.d("tag_msg_notification", 2, "FriendListHandler.handleSetMessageNotificationSettingResp(). res=" + paramFromServiceMsg + ", data=" + paramObject);
     }
-    aqne localaqne = aqne.a(this.app);
+    MessageNotificationSettingManager localMessageNotificationSettingManager = MessageNotificationSettingManager.a(this.app);
     int j = paramToServiceMsg.extraData.getInt("param_type");
     String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("param_uins");
     boolean[] arrayOfBoolean = paramToServiceMsg.extraData.getBooleanArray("param_switch_state");
@@ -2495,7 +1100,7 @@ public class FriendListHandler
           i = 0;
           while (i < arrayOfString.length)
           {
-            localaqne.a(arrayOfString[i], j, arrayOfBoolean[i]);
+            localMessageNotificationSettingManager.a(arrayOfString[i], j, arrayOfBoolean[i]);
             i += 1;
           }
         }
@@ -2503,7 +1108,7 @@ public class FriendListHandler
     }
     for (;;)
     {
-      notifyUI(131, bool, new Object[] { arrayOfString, arrayOfBoolean, Integer.valueOf(j) });
+      notifyUI(130, bool, new Object[] { arrayOfString, arrayOfBoolean, Integer.valueOf(j) });
       return;
       boolean bool = false;
     }
@@ -2548,7 +1153,7 @@ public class FriendListHandler
               paramObject.qzoneSwitch = 1;
               paramObject.uin = paramFromServiceMsg;
               paramToServiceMsg.a(paramObject);
-              amci.a(paramFromServiceMsg, "1", this.app);
+              QvipSpecialCareManager.a(paramFromServiceMsg, "1", this.app);
             }
             else
             {
@@ -2568,7 +1173,7 @@ public class FriendListHandler
             if (m == 0) {
               break;
             }
-            amci.a(paramFromServiceMsg, "1", this.app);
+            QvipSpecialCareManager.a(paramFromServiceMsg, "1", this.app);
             break;
           }
           paramFromServiceMsg = paramToServiceMsg.a(paramFromServiceMsg);
@@ -2592,7 +1197,7 @@ public class FriendListHandler
         }
         if (i == 0)
         {
-          paramToServiceMsg = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+          paramToServiceMsg = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
           i = 0;
           while (i < arrayOfString.length)
           {
@@ -2671,7 +1276,7 @@ public class FriendListHandler
               paramFromServiceMsg.globalSwitch = 1;
               paramFromServiceMsg.uin = str;
               paramToServiceMsg.a(paramFromServiceMsg);
-              amci.a(str, "1", this.app);
+              QvipSpecialCareManager.a(str, "1", this.app);
             }
             else
             {
@@ -2691,7 +1296,7 @@ public class FriendListHandler
             if (m == 0) {
               break;
             }
-            amci.a(str, paramFromServiceMsg, this.app);
+            QvipSpecialCareManager.a(str, paramFromServiceMsg, this.app);
             break;
           }
           paramFromServiceMsg = paramToServiceMsg.a(str);
@@ -2715,7 +1320,7 @@ public class FriendListHandler
         }
         if (i == 0)
         {
-          paramToServiceMsg = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+          paramToServiceMsg = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
           if ((arrayOfBoolean != null) && (arrayOfInt != null) && (arrayOfString != null) && (arrayOfBoolean.length >= arrayOfInt.length) && (arrayOfString.length >= arrayOfInt.length))
           {
             j = 0;
@@ -2841,20 +1446,7 @@ public class FriendListHandler
     }
   }
   
-  private void insureInitQQHeadDownloadHandler()
-  {
-    if (this.qqHeadDownload == null) {
-      synchronized (this.qqHeadDownloadLock)
-      {
-        if (this.qqHeadDownload == null) {
-          this.qqHeadDownload = new QQHeadDownloadHandler(this.app, this);
-        }
-        return;
-      }
-    }
-  }
-  
-  private Map<String, Integer> makeGrneralPathMap(ArrayList<GeneralSettings.Setting> paramArrayList)
+  private Map<String, Integer> makeGrneralPathMap(ArrayList<Setting> paramArrayList)
   {
     HashMap localHashMap = new HashMap();
     if (paramArrayList != null)
@@ -2862,7 +1454,7 @@ public class FriendListHandler
       int i = 0;
       while (i < paramArrayList.size())
       {
-        GeneralSettings.Setting localSetting = (GeneralSettings.Setting)paramArrayList.get(i);
+        Setting localSetting = (Setting)paramArrayList.get(i);
         localHashMap.put(localSetting.Path, Integer.valueOf(Integer.parseInt(localSetting.Value)));
         i += 1;
       }
@@ -2906,268 +1498,9 @@ public class FriendListHandler
     }
   }
   
-  private void realGetQQHead(long paramLong, int paramInt, ArrayList<QQHeadDetails> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return;
-    }
-    ToServiceMsg localToServiceMsg = createToServiceMsg("AvatarInfoSvr.QQHeadUrlReq", null);
-    Object localObject = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      QQHeadDetails localQQHeadDetails = (QQHeadDetails)paramArrayList.get(i);
-      ((ArrayList)localObject).add(localQQHeadDetails.a());
-      statGetQQHeadCostTime(0, localQQHeadDetails.jdField_a_of_type_JavaLangString, localQQHeadDetails.jdField_a_of_type_Int, 1);
-      i += 1;
-    }
-    localToServiceMsg.extraData.putParcelableArrayList("uinList", paramArrayList);
-    localToServiceMsg.extraData.putLong("startTime", System.currentTimeMillis());
-    paramArrayList = new QQHeadUrlReq(paramLong, (ArrayList)localObject, (byte)paramInt);
-    localObject = new JceOutputStream();
-    ((JceOutputStream)localObject).setServerEncoding("UTF-8");
-    paramArrayList.writeTo((JceOutputStream)localObject);
-    localToServiceMsg.extraData.putByteArray("QQHeadUrlReq", ((JceOutputStream)localObject).toByteArray());
-    send(localToServiceMsg);
-  }
-  
-  private void realGetQQHead_Apollo(long paramLong, int paramInt, ArrayList<QQHeadDetails> paramArrayList)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new ArrayList();
-      if (paramArrayList != null)
-      {
-        Iterator localIterator = paramArrayList.iterator();
-        while (localIterator.hasNext()) {
-          ((List)localObject).add(((QQHeadDetails)localIterator.next()).jdField_a_of_type_JavaLangString);
-        }
-      }
-      QLog.d("FriendListHandler", 2, String.format("realGetQQHead_Apollo selfUin=%s headType=%s uinList=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), Arrays.toString(((List)localObject).toArray()) }));
-    }
-    Object localObject = aolg.a(paramArrayList);
-    if (localObject != null)
-    {
-      localObject = makeOIDBPkg("OidbSvc.0xedb", 3803, 0, ((oidb_0xedb.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).extraData.putParcelableArrayList("key_request_list", paramArrayList);
-      sendPbReq((ToServiceMsg)localObject);
-    }
-  }
-  
-  private void realGetQQHead_New(long paramLong, int paramInt, ArrayList<QQHeadDetails> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return;
-    }
-    int i = paramInt;
-    if (paramInt == 4) {
-      i = 8;
-    }
-    ToServiceMsg localToServiceMsg = createToServiceMsg("IncreaseURLSvr.QQHeadUrlReq", null);
-    QQHeadUrl.QQHeadUrlReq localQQHeadUrlReq = new QQHeadUrl.QQHeadUrlReq();
-    localQQHeadUrlReq.srcUsrType.set(1);
-    localQQHeadUrlReq.srcUin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    localQQHeadUrlReq.dstUsrType.set(i);
-    paramInt = 0;
-    while (paramInt < paramArrayList.size())
-    {
-      QQHeadDetails localQQHeadDetails = (QQHeadDetails)paramArrayList.get(paramInt);
-      QQHeadUrl.ReqUsrInfo localReqUsrInfo = new QQHeadUrl.ReqUsrInfo();
-      try
-      {
-        localReqUsrInfo.dstUin.set(Long.parseLong(localQQHeadDetails.jdField_a_of_type_JavaLangString));
-        statGetQQHeadCostTime(0, localQQHeadDetails.jdField_a_of_type_JavaLangString, localQQHeadDetails.jdField_a_of_type_Int, 1);
-        localReqUsrInfo.timestamp.set((int)localQQHeadDetails.jdField_a_of_type_Long);
-        localQQHeadUrlReq.dstUsrInfos.add(localReqUsrInfo);
-      }
-      catch (Exception localException)
-      {
-        label169:
-        break label169;
-      }
-      paramInt += 1;
-    }
-    localToServiceMsg.extraData.putParcelableArrayList("uinList", paramArrayList);
-    localToServiceMsg.extraData.putLong("startTime", System.currentTimeMillis());
-    localToServiceMsg.extraData.putInt("dstUsrType", i);
-    localToServiceMsg.putWupBuffer(localQQHeadUrlReq.toByteArray());
-    sendPbReq(localToServiceMsg);
-  }
-  
-  private void realGetQQHead_QCall(int paramInt, ArrayList<QQHeadDetails> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return;
-    }
-    MultiHeadUrl.MultiBusidUrlReq localMultiBusidUrlReq = new MultiHeadUrl.MultiBusidUrlReq();
-    localMultiBusidUrlReq.srcUidType.set(0);
-    localMultiBusidUrlReq.srcUin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    localMultiBusidUrlReq.dstUsrType.add(Integer.valueOf(16));
-    localMultiBusidUrlReq.dstUidType.set(0);
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramArrayList.size()) {
-        break label171;
-      }
-      QQHeadDetails localQQHeadDetails = (QQHeadDetails)paramArrayList.get(i);
-      MultiHeadUrl.ReqUsrInfo localReqUsrInfo = new MultiHeadUrl.ReqUsrInfo();
-      try
-      {
-        localReqUsrInfo.dstUin.set(baps.b(localQQHeadDetails.jdField_a_of_type_JavaLangString));
-        statGetQQHeadCostTime(0, localQQHeadDetails.jdField_a_of_type_JavaLangString, localQQHeadDetails.jdField_a_of_type_Int, 1);
-        localMultiBusidUrlReq.dstUsrInfos.add(localReqUsrInfo);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("ERROR", 2, localException.getMessage());
-          }
-        }
-      }
-      i += 1;
-    }
-    label171:
-    new HashMap().put("connum", String.valueOf(paramArrayList.size()));
-    ToServiceMsg localToServiceMsg = createToServiceMsg("MultibusidURLSvr.HeadUrlReq", null);
-    localToServiceMsg.extraData.putParcelableArrayList("uinList", paramArrayList);
-    localToServiceMsg.extraData.putLong("startTime", System.currentTimeMillis());
-    localToServiceMsg.extraData.putInt("idType", paramInt);
-    localToServiceMsg.extraData.putInt("qqHeadType", 16);
-    localToServiceMsg.putWupBuffer(localMultiBusidUrlReq.toByteArray());
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.flh", 2, "realGetQQHead_QCall .  idType = " + paramInt);
-    }
-    sendPbReq(localToServiceMsg);
-  }
-  
-  private void realGetQQHead_Stranger(int paramInt, ArrayList<QQHeadDetails> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return;
-    }
-    int i;
-    switch (paramInt)
-    {
-    case 203: 
-    default: 
-      i = 0;
-    }
-    MultiHeadUrl.MultiBusidUrlReq localMultiBusidUrlReq;
-    label321:
-    for (;;)
-    {
-      localMultiBusidUrlReq = new MultiHeadUrl.MultiBusidUrlReq();
-      localMultiBusidUrlReq.srcUidType.set(0);
-      localMultiBusidUrlReq.srcUin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-      localMultiBusidUrlReq.dstUsrType.add(Integer.valueOf(1));
-      localMultiBusidUrlReq.dstUsrType.add(Integer.valueOf(32));
-      localMultiBusidUrlReq.dstUidType.set(i);
-      int j = 0;
-      label115:
-      if (j < paramArrayList.size())
-      {
-        QQHeadDetails localQQHeadDetails = (QQHeadDetails)paramArrayList.get(j);
-        MultiHeadUrl.ReqUsrInfo localReqUsrInfo = new MultiHeadUrl.ReqUsrInfo();
-        if (i == 0) {}
-        try
-        {
-          localReqUsrInfo.dstUin.set(Long.parseLong(localQQHeadDetails.jdField_a_of_type_JavaLangString));
-          for (;;)
-          {
-            statGetQQHeadCostTime(0, localQQHeadDetails.jdField_a_of_type_JavaLangString, localQQHeadDetails.jdField_a_of_type_Int, 1);
-            localMultiBusidUrlReq.dstUsrInfos.add(localReqUsrInfo);
-            if (QLog.isColorLevel()) {
-              QLog.i("multiBusidUrlReq.dstUsrInfos", 2, " multiBusidUrlReq.dstUsrInfos reqUsrInfo.dstUin = " + localReqUsrInfo.dstUin + " ,reqUsrInfo.dstTid = " + localReqUsrInfo.dstTid + " ,reqUsrInfo.dstOpenid = " + localReqUsrInfo.dstOpenid);
-            }
-            j += 1;
-            break label115;
-            i = 2;
-            break;
-            i = 1;
-            break;
-            if (i != 1) {
-              break label321;
-            }
-            localReqUsrInfo.dstTid.set(Long.parseLong(localQQHeadDetails.jdField_a_of_type_JavaLangString));
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel())
-            {
-              QLog.i("ERROR", 2, localException.getMessage());
-              continue;
-              if (i == 2) {
-                localReqUsrInfo.dstOpenid.set(localException.jdField_a_of_type_JavaLangString);
-              }
-            }
-          }
-        }
-      }
-    }
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("connum", String.valueOf(paramArrayList.size()));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.app.getCurrentAccountUin(), "actNearbyHeadConNum", true, 0L, 0L, (HashMap)localObject, "");
-    localObject = createToServiceMsg("MultibusidURLSvr.HeadUrlReq", null);
-    ((ToServiceMsg)localObject).extraData.putParcelableArrayList("uinList", paramArrayList);
-    ((ToServiceMsg)localObject).extraData.putLong("startTime", System.currentTimeMillis());
-    ((ToServiceMsg)localObject).extraData.putInt("idType", paramInt);
-    ((ToServiceMsg)localObject).putWupBuffer(localMultiBusidUrlReq.toByteArray());
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.flh", 2, "realGetQQHead_Stranger .  idType = " + paramInt);
-    }
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
   private void relayGetRichStatus(ToServiceMsg paramToServiceMsg)
   {
     doGetRichStatus(paramToServiceMsg.extraData.getStringArray("totalArray"), paramToServiceMsg.extraData.getInt("nextStartPos"), paramToServiceMsg.extraData.getInt("reqType"), paramToServiceMsg.extraData.getBundle("circleBundle"), paramToServiceMsg.extraData.getBoolean("showDateNickname"));
-  }
-  
-  private void reportFailedDetails()
-  {
-    if ((this.failedStartTime != 0L) && (this.mFriendListFailedCount != 0))
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("mFriendListFailedCount", this.mFriendListFailedCount + "");
-      localHashMap.put("failedTime", System.currentTimeMillis() - this.failedStartTime + "");
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "QQFriendListReqFailedStatistics", true, 0L, 0L, localHashMap, null);
-      this.mFriendListFailedCount = 0;
-      this.failedStartTime = 0L;
-    }
-  }
-  
-  private void reportGetFriendList(boolean paramBoolean, int paramInt1, short paramShort, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("reqGetStatus", str);
-      localHashMap.put("currNetStatus", HttpUtil.getNetWorkTypeByStr());
-      localHashMap.put("friendListCount", "" + paramInt1);
-      localHashMap.put("fromIndex", "" + paramShort);
-      localHashMap.put("reqCountEveryPage", "200");
-      localHashMap.put("retryCount", "" + this.retryTotalCount);
-      localHashMap.put("totalConsume", "" + (System.currentTimeMillis() - this.getFriendGroupListTimeStamp));
-      localHashMap.put("errorCode", "" + paramInt2);
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "QQFriendListReqGetEvent", true, 0L, 0L, localHashMap, null);
-      this.retryTotalCount = 0;
-      if (paramBoolean) {
-        break;
-      }
-      this.mFriendListFailedCount += 1;
-      if (this.failedStartTime == 0L) {
-        this.failedStartTime = this.getFriendGroupListTimeStamp;
-      }
-      return;
-    }
-    reportFailedDetails();
   }
   
   private boolean shouldReqXMan(String paramString)
@@ -3180,8 +1513,8 @@ public class FriendListHandler
     if (bool1)
     {
       Context localContext = this.app.getApp().getApplicationContext();
-      Card localCard = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString);
-      l1 = bhdd.b(localContext, paramString) + 28800000L;
+      Card localCard = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
+      l1 = ContactConfig.b(localContext, paramString) + 28800000L;
       l2 = System.currentTimeMillis() + 28800000L;
       l3 = localCard.iXManScene1DelayTime * 1000;
       if ((l1 / 86400000L == l2 / 86400000L) || (Math.abs(l2 - l1) <= 28800000L) || (l2 % 86400000L < l3)) {
@@ -3214,8 +1547,8 @@ public class FriendListHandler
     if (bool1)
     {
       Context localContext = this.app.getApp().getApplicationContext();
-      Card localCard = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString);
-      l1 = bhdd.c(localContext, paramString);
+      Card localCard = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
+      l1 = ContactConfig.c(localContext, paramString);
       l2 = System.currentTimeMillis();
       l3 = localCard.iXManScene2DelayTime * 1000;
       if ((l3 < 0L) || (Math.abs(l2 - l1) <= l3)) {
@@ -3232,31 +1565,6 @@ public class FriendListHandler
         bool2 = bool1;
       }
       return bool2;
-    }
-  }
-  
-  private void startDownloadQQHead(List<QQHeadInfo> paramList, boolean paramBoolean)
-  {
-    insureInitQQHeadDownloadHandler();
-    int i = 0;
-    if (i < paramList.size())
-    {
-      QQHeadInfo localQQHeadInfo = (QQHeadInfo)paramList.get(i);
-      statGetQQHeadCostTime(0, getUinOrMobile(localQQHeadInfo.uin, localQQHeadInfo.phoneNum), localQQHeadInfo.dstUsrType, 2);
-      FaceInfo localFaceInfo = new FaceInfo();
-      if (paramBoolean) {}
-      for (String str = localQQHeadInfo.phoneNum;; str = String.valueOf(localQQHeadInfo.uin))
-      {
-        localFaceInfo.jdField_a_of_type_JavaLangString = str;
-        localFaceInfo.jdField_b_of_type_Int = localQQHeadInfo.idType;
-        localFaceInfo.jdField_a_of_type_Int = localQQHeadInfo.dstUsrType;
-        localFaceInfo.d = localQQHeadInfo.sizeType;
-        localFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo = localQQHeadInfo;
-        localFaceInfo.jdField_c_of_type_Int = asmj.b(asmj.a(localFaceInfo.d), asmj.b(localFaceInfo.d));
-        this.qqHeadDownload.addDownloadRequest(localFaceInfo);
-        i += 1;
-        break;
-      }
     }
   }
   
@@ -3353,12 +1661,12 @@ public class FriendListHandler
   
   public void addFriend(String paramString1, String paramString2, int paramInt1, byte paramByte, String paramString3, int paramInt2, int paramInt3, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString4, String paramString5)
   {
-    addFriendInternal(paramString1, paramString2, paramInt1, paramByte, paramString3, paramInt2, paramInt3, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString4, paramString5, (byte)0, "", null);
+    addFriendInternal(paramString1, paramString2, paramInt1, paramByte, paramString3, paramInt2, paramInt3, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString4, paramString5, (byte)0, "", null, false);
   }
   
-  public void addFriend(String paramString1, String paramString2, int paramInt1, byte paramByte, String paramString3, int paramInt2, int paramInt3, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString4, String paramString5, Bundle paramBundle)
+  public void addFriend(String paramString1, String paramString2, int paramInt1, byte paramByte, String paramString3, int paramInt2, int paramInt3, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString4, String paramString5, Bundle paramBundle, boolean paramBoolean3)
   {
-    addFriendInternal(paramString1, paramString2, paramInt1, paramByte, paramString3, paramInt2, paramInt3, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString4, paramString5, (byte)0, "", paramBundle);
+    addFriendInternal(paramString1, paramString2, paramInt1, paramByte, paramString3, paramInt2, paramInt3, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString4, paramString5, (byte)0, "", paramBundle, paramBoolean3);
   }
   
   public void addFriendGroup(byte paramByte, String paramString)
@@ -3366,11 +1674,7 @@ public class FriendListHandler
     if (QLog.isColorLevel()) {
       QLog.d("FriendListHandler", 2, "AddFriendGroup :" + paramString);
     }
-    ToServiceMsg localToServiceMsg = createToServiceMsg("friendlist.SetGroupReq");
-    localToServiceMsg.extraData.putInt("set_type", 0);
-    localToServiceMsg.extraData.putByte("sort_id", paramByte);
-    localToServiceMsg.extraData.putString("group_name", paramString);
-    send(localToServiceMsg);
+    ((IFriendHandlerService)this.app.getRuntimeService(IFriendHandlerService.class)).addFriendGroup(paramByte, paramString);
   }
   
   public boolean addFriendToFriendList(String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
@@ -3378,7 +1682,7 @@ public class FriendListHandler
     if (QLog.isColorLevel()) {
       QLog.d("FriendListHandler", 2, "addFriendToFriendList " + paramString1 + ", " + paramInt1 + ", " + paramInt2 + ", " + paramString2 + ", " + paramBoolean1);
     }
-    paramString2 = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    paramString2 = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     Object localObject = (PhoneContactManagerImp)this.app.getManager(QQManagerFactory.CONTACT_MANAGER);
     if (localObject != null) {
       ((PhoneContactManagerImp)localObject).b();
@@ -3389,22 +1693,22 @@ public class FriendListHandler
     }
     if (paramBoolean1)
     {
-      this.app.getMessageFacade().getMsgList(paramString1, 0);
-      if (this.getFriendGroupListTimeStamp == 0L) {
+      this.app.getMessageFacade().b(paramString1, 0);
+      if (!((IFriendHandlerService)this.app.getRuntimeService(IFriendHandlerService.class)).isRequestingFriendList()) {
         notifyUI(1, true, Boolean.valueOf(true));
       }
       notifyUI(63, true, paramString1);
-      localObject = (axny)this.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
+      localObject = (NearbyCardManager)this.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
       if (localObject != null) {
-        ((axny)localObject).d.put("" + paramString1, Integer.valueOf(1));
+        ((NearbyCardManager)localObject).d.put("" + paramString1, Integer.valueOf(1));
       }
       getFriendDetailInfo(paramString1);
       paramString2.a(paramString1, false);
-      ((bazf)this.app.getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a(Long.valueOf(paramString1).longValue());
-      if ((bjxa.b(this.app, paramString1)) || ((!nwu.b(this.app, paramString1)) && (!nwu.c(this.app, paramString1)))) {
+      ((QzoneContactsFeedManager)this.app.getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a(Long.valueOf(paramString1).longValue());
+      if ((QidianManager.b(this.app, paramString1)) || ((!CrmUtils.b(this.app, paramString1)) && (!CrmUtils.c(this.app, paramString1)))) {
         this.app.getMsgHandler().a(paramString1, paramInt2);
       }
-      aolb.a(nwu.b(this.app, paramString1), this.app);
+      FriendListHandlerUtil.a(CrmUtils.b(this.app, paramString1), this.app);
     }
     paramString2 = paramString2.a();
     if (paramString2 != null) {
@@ -3412,13 +1716,13 @@ public class FriendListHandler
     }
     paramString2 = new ArrayList();
     paramString2.add(paramString1);
-    admh.a(this.app, BaseApplication.getContext(), paramString2);
+    ChatActivityFacade.a(this.app, BaseApplication.getContext(), paramString2);
     return paramBoolean1;
   }
   
-  public void addFriendWithMyCard(String paramString1, String paramString2, int paramInt1, byte paramByte1, String paramString3, int paramInt2, int paramInt3, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString4, String paramString5, byte paramByte2, String paramString6, Bundle paramBundle)
+  public void addFriendWithMyCard(String paramString1, String paramString2, int paramInt1, byte paramByte1, String paramString3, int paramInt2, int paramInt3, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString4, String paramString5, byte paramByte2, String paramString6, Bundle paramBundle, boolean paramBoolean3)
   {
-    addFriendInternal(paramString1, paramString2, paramInt1, paramByte1, paramString3, paramInt2, paramInt3, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString4, paramString5, paramByte2, paramString6, paramBundle);
+    addFriendInternal(paramString1, paramString2, paramInt1, paramByte1, paramString3, paramInt2, paramInt3, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString4, paramString5, paramByte2, paramString6, paramBundle, paramBoolean3);
   }
   
   public void agreeSuspiciousMsg(long paramLong)
@@ -3437,7 +1741,7 @@ public class FriendListHandler
   public boolean batchAddFriendForTroopMembers(String paramString1, String paramString2, String paramString3, List<String> paramList, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     if (this.mBatchAddFriendData == null) {
-      this.mBatchAddFriendData = new bbcm();
+      this.mBatchAddFriendData = new BatchAddFriendData();
     }
     paramBoolean = this.mBatchAddFriendData.a(paramString1, paramString2, paramString3, paramList, paramBoolean, paramInt1, paramInt2);
     if (paramBoolean) {
@@ -3448,7 +1752,7 @@ public class FriendListHandler
   
   public void cancelMayKnowRecommend(String paramString)
   {
-    ThreadManager.getSubThreadHandler().post(new FriendListHandler.6(this, paramString));
+    ThreadManager.getSubThreadHandler().post(new FriendListHandler.3(this, paramString));
   }
   
   public void changeFriendShieldFlag(long paramLong, boolean paramBoolean)
@@ -3480,7 +1784,7 @@ public class FriendListHandler
       }
     }
     localReqBody.key_word.set(ByteStringMicro.copyFromUtf8(paramString));
-    localReqBody.version.set(ByteStringMicro.copyFromUtf8("8.4.10"));
+    localReqBody.version.set(ByteStringMicro.copyFromUtf8("8.5.5"));
     oidb_0x972.RootSearcherRequest localRootSearcherRequest = new oidb_0x972.RootSearcherRequest();
     localRootSearcherRequest.page_size.set(25);
     if (paramArrayOfByte != null) {
@@ -3493,15 +1797,15 @@ public class FriendListHandler
     localReqBody.constellation.set(paramInt6);
     if ((paramArrayOfString1 != null) && (paramArrayOfString1.length >= 3))
     {
-      localReqBody.country_id.set(anrz.a(paramArrayOfString1[0]));
-      localReqBody.province_id.set(anrz.a(paramArrayOfString1[1]));
-      localReqBody.city_id.set(anrz.a(paramArrayOfString1[2]));
+      localReqBody.country_id.set(ConditionSearchManager.a(paramArrayOfString1[0]));
+      localReqBody.province_id.set(ConditionSearchManager.a(paramArrayOfString1[1]));
+      localReqBody.city_id.set(ConditionSearchManager.a(paramArrayOfString1[2]));
     }
     if ((paramArrayOfString2 != null) && (paramArrayOfString2.length >= 3))
     {
-      localReqBody.h_country_id.set(anrz.a(paramArrayOfString2[0]));
-      localReqBody.h_province_id.set(anrz.a(paramArrayOfString2[1]));
-      localReqBody.h_city_id.set(anrz.a(paramArrayOfString2[2]));
+      localReqBody.h_country_id.set(ConditionSearchManager.a(paramArrayOfString2[0]));
+      localReqBody.h_province_id.set(ConditionSearchManager.a(paramArrayOfString2[1]));
+      localReqBody.h_city_id.set(ConditionSearchManager.a(paramArrayOfString2[2]));
     }
     localReqBody.career_id.set(paramInt5);
     paramArrayOfByte = makeOIDBPkg("OidbSvc.0x972_5", 2418, 5, localReqBody.toByteArray());
@@ -3522,7 +1826,7 @@ public class FriendListHandler
   public void confirmContactFriend(int paramInt, long paramLong1, long paramLong2, byte[] paramArrayOfByte, byte paramByte, String paramString, long paramLong3, long paramLong4)
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "BumpSvc.ReqComfirmContactFriend");
-    Object localObject = ((awyz)this.app.getManager(QQManagerFactory.CONTACT_MANAGER)).a();
+    Object localObject = ((PhoneContactManager)this.app.getManager(QQManagerFactory.CONTACT_MANAGER)).a();
     if (localObject != null)
     {
       String str = ((RespondQueryQQBindingStat)localObject).nationCode + ((RespondQueryQQBindingStat)localObject).mobileNo;
@@ -3580,7 +1884,7 @@ public class FriendListHandler
       ((oidb_0x5d6.SnsUpateBuffer)localObject2).uint64_uin.set(Long.parseLong(((FriendsStatusUtil.UpdateFriendStatusItem)localObject3).jdField_a_of_type_JavaLangString));
       ArrayList localArrayList = new ArrayList(1);
       oidb_0x5d6.SnsUpdateItem localSnsUpdateItem = new oidb_0x5d6.SnsUpdateItem();
-      localSnsUpdateItem.uint32_update_sns_type.set(((FriendsStatusUtil.UpdateFriendStatusItem)localObject3).jdField_b_of_type_Int);
+      localSnsUpdateItem.uint32_update_sns_type.set(((FriendsStatusUtil.UpdateFriendStatusItem)localObject3).b);
       localObject3 = ((FriendsStatusUtil.UpdateFriendStatusItem)localObject3).a();
       if (localObject3 != null) {
         localSnsUpdateItem.bytes_value.set(ByteStringMicro.copyFrom((byte[])localObject3));
@@ -3718,10 +2022,27 @@ public class FriendListHandler
     if (QLog.isColorLevel()) {
       QLog.d("FriendListHandler", 2, "DeleteFriendGroup :" + paramByte);
     }
-    ToServiceMsg localToServiceMsg = createToServiceMsg("friendlist.SetGroupReq");
-    localToServiceMsg.extraData.putInt("set_type", 2);
-    localToServiceMsg.extraData.putByte("group_id", paramByte);
-    send(localToServiceMsg);
+    ((IFriendHandlerService)this.app.getRuntimeService(IFriendHandlerService.class)).deleteFriendGroup(paramByte);
+  }
+  
+  public void deleteStrangerInfo(FriendsManager paramFriendsManager)
+  {
+    Object localObject = QvipSpecialCareManager.a(this.app);
+    if ((paramFriendsManager != null) && (localObject != null) && (((Set)localObject).size() > 0))
+    {
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        if (!paramFriendsManager.b(str))
+        {
+          QvipSpecialCareManager.b(str, this.app);
+          if (QvipSpecialCareManager.b(str, this.app)) {
+            QvipSpecialCareManager.c(str, this.app);
+          }
+        }
+      }
+    }
   }
   
   public void deleteSuspiciousMsg(long paramLong)
@@ -3740,12 +2061,23 @@ public class FriendListHandler
     sendPbReq((ToServiceMsg)localObject);
   }
   
-  public void downloadHeadDirectly(QQHeadInfo paramQQHeadInfo)
+  public void fetchRichStatusIfNeed(ArrayList<String> paramArrayList)
   {
-    if (paramQQHeadInfo == null) {
+    String[] arrayOfString;
+    if (!paramArrayList.isEmpty())
+    {
+      arrayOfString = new String[paramArrayList.size()];
+      paramArrayList.toArray(arrayOfString);
+      paramArrayList.clear();
+      if (this.app.mAutomator.c()) {
+        getRichStatusForFriendList(arrayOfString);
+      }
+    }
+    else
+    {
       return;
     }
-    insureInitQQHeadDownloadHandler();
+    this.updateSignatureList = arrayOfString;
   }
   
   public void gatherContacts(short paramShort, List<String> paramList, boolean paramBoolean)
@@ -3776,7 +2108,7 @@ public class FriendListHandler
         if (s >= paramShort) {
           break label203;
         }
-        ((ByteBuffer)localObject).putInt(bhbx.a(Long.parseLong((String)paramList.get(s))));
+        ((ByteBuffer)localObject).putInt(Utils.a(Long.parseLong((String)paramList.get(s))));
         if (paramBoolean1)
         {
           ((ByteBuffer)localObject).putShort((short)2);
@@ -3811,7 +2143,7 @@ public class FriendListHandler
     }
   }
   
-  public bbcl getAddFrdTokenHelper()
+  public AddFrdTokenHelper getAddFrdTokenHelper()
   {
     return this.mAddFrdTokenHelper;
   }
@@ -3833,22 +2165,6 @@ public class FriendListHandler
     localArrayList.add("message.vibrate.switch");
     localArrayList.add("message.ring.care");
     getGeneralSettings(localArrayList, paramInt1, paramLong, paramInt2, 100, paramBoolean);
-  }
-  
-  public void getApolloHead(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendListHandler", 2, String.format("getApolloHead(1) uin=%s", new Object[] { paramString }));
-    }
-    getQQHeadInSubThread(116, paramString, 200, (byte)1, (byte)0, asmi.jdField_a_of_type_Int, false);
-  }
-  
-  public void getApolloHead(String paramString, byte paramByte1, byte paramByte2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendListHandler", 2, String.format("getApolloHead(2) uin=%s sizeType=%d", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    }
-    getQQHeadInSubThread(116, paramString, 200, paramByte1, paramByte2, paramInt, false);
   }
   
   public void getAuthLoginDevList(long paramLong1, String paramString, long paramLong2)
@@ -3885,16 +2201,75 @@ public class FriendListHandler
     send(localToServiceMsg);
   }
   
-  public String getChoosedIP()
+  public Set<String> getCommandList()
   {
-    insureInitQQHeadDownloadHandler();
-    return this.qqHeadDownload.getChoosedIP();
-  }
-  
-  public String getChoosedStrangerGroupIP()
-  {
-    insureInitQQHeadDownloadHandler();
-    return this.qqHeadDownload.getChoosedStrangerGroupIp();
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("friendlist.getFriendGroupList");
+      this.allowCmdSet.add("friendlist.GetLastLoginInfoReq");
+      this.allowCmdSet.add("ProfileService.GetRichSig");
+      this.allowCmdSet.add("ProfileService.GetSimpleInfo");
+      this.allowCmdSet.add("OidbSvc.0xc34_0");
+      this.allowCmdSet.add("OidbSvc.0xc34_1");
+      this.allowCmdSet.add("OidbSvc.0xc83");
+      this.allowCmdSet.add("OidbSvc.0xc85");
+      this.allowCmdSet.add("StatSvc.GetDevLoginInfo");
+      this.allowCmdSet.add("StatSvc.DelDevLoginInfo");
+      this.allowCmdSet.add("StatSvc.SvcReqKikOut");
+      this.allowCmdSet.add("StatSvc.BindUin");
+      this.allowCmdSet.add("ProfileService.ReqGetSettings");
+      this.allowCmdSet.add("ProfileService.ReqSetSettings");
+      this.allowCmdSet.add("friendlist.MovGroupMemReq");
+      this.allowCmdSet.add("BumpSvc.ReqComfirmContactFriend");
+      this.allowCmdSet.add("friendlist.addFriend");
+      this.allowCmdSet.add("friendlist.getUserAddFriendSetting");
+      this.allowCmdSet.add("friendlist.GetSimpleOnlineFriendInfoReq");
+      this.allowCmdSet.add("friendlist.GetOnlineInfoReq");
+      this.allowCmdSet.add("friendlist.delFriend");
+      this.allowCmdSet.add("friendlist.SetGroupReq");
+      this.allowCmdSet.add("ProfileService.ChangeFriendName");
+      this.allowCmdSet.add("ProfileService.SetRichSig");
+      this.allowCmdSet.add("StatSvc.register");
+      this.allowCmdSet.add("friendlist.GetAutoInfoReq");
+      this.allowCmdSet.add("ProfileService.CheckUpdateReq");
+      this.allowCmdSet.add("SummaryCard.ReqSearch");
+      this.allowCmdSet.add("SummaryCard.ReqCondSearch");
+      this.allowCmdSet.add("OidbSvc.0x972_5");
+      this.allowCmdSet.add("OidbSvc.0x5d1_0");
+      this.allowCmdSet.add("OidbSvc.0x4fc_30");
+      this.allowCmdSet.add("DevLockAuthSvc.RecommendAuth");
+      this.allowCmdSet.add("DevLockAuthSvc.ConfirmAuth");
+      this.allowCmdSet.add("OidbSvc.0x476_146");
+      this.allowCmdSet.add("OidbSvc.0x476_147");
+      this.allowCmdSet.add("OidbSvc.0x490_107");
+      this.allowCmdSet.add("OidbSvc.0x491_107");
+      this.allowCmdSet.add("OidbSvc.0x5e1_8");
+      this.allowCmdSet.add("OidbSvc.0x49d_107");
+      this.allowCmdSet.add("OidbSvc.0x7c4_0");
+      this.allowCmdSet.add("OidbSvc.0x4f4_5");
+      this.allowCmdSet.add("OidbSvc.0x7c6_0");
+      this.allowCmdSet.add("OidbSvc.0x7c7_0");
+      this.allowCmdSet.add("OidbSvc.0x847_3");
+      this.allowCmdSet.add("OidbSvc.0x53b_0");
+      this.allowCmdSet.add("OidbSvc.0x6c9_0");
+      this.allowCmdSet.add("OidbSvc.0x7df_3");
+      this.allowCmdSet.add("OidbSvc.0x5d6_7");
+      this.allowCmdSet.add("OidbSvc.0x5d6_19");
+      this.allowCmdSet.add("OidbSvc.0x5d6_18");
+      this.allowCmdSet.add("OidbSvc.0x77c");
+      this.allowCmdSet.add("OidbSvc.0x829_1");
+      this.allowCmdSet.add("OidbSvc.0x777");
+      this.allowCmdSet.add("OidbSvc.0xc26_0");
+      this.allowCmdSet.add("OidbSvc.0xc36_0");
+      this.allowCmdSet.add("OidbSvc.0xc35_0");
+      this.allowCmdSet.add("OidbSvc.0xcf0_0");
+      this.allowCmdSet.add("OidbSvc.0xd69");
+      this.allowCmdSet.add("OidbSvc.0xd72");
+      this.allowCmdSet.add("OidbSvc.0x5d6_21");
+      this.allowCmdSet.add("OidbSvc.0xc26_1");
+    }
+    return this.allowCmdSet;
   }
   
   public void getConnectionsPerson(int paramInt1, int paramInt2, byte[] paramArrayOfByte, boolean paramBoolean, Bundle paramBundle)
@@ -3915,8 +2290,8 @@ public class FriendListHandler
       try
       {
         localObject = new oidb_0xc26.ReqBody();
-        anyb localanyb = (anyb)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
-        if ((localanyb == null) || (!localanyb.a())) {
+        MayknowRecommendManager localMayknowRecommendManager = (MayknowRecommendManager)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+        if ((localMayknowRecommendManager == null) || (!localMayknowRecommendManager.a())) {
           break label309;
         }
         ((oidb_0xc26.ReqBody)localObject).uint32_phone_book.set(1);
@@ -3962,16 +2337,6 @@ public class FriendListHandler
       {
       }
     }
-  }
-  
-  public void getCustomHead(String paramString)
-  {
-    getQQHeadInSubThread(1, paramString, 0, (byte)0, (byte)0, false);
-  }
-  
-  public void getCustomHead(String paramString, byte paramByte1, byte paramByte2)
-  {
-    getQQHeadInSubThread(1, paramString, 0, paramByte1, paramByte2, false);
   }
   
   public void getDongtaiPermission(String paramString, int paramInt)
@@ -4020,10 +2385,7 @@ public class FriendListHandler
   
   public void getFriendDetailInfo(String paramString)
   {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("friendlist.getFriendGroupList");
-    localToServiceMsg.extraData.putBoolean("getSingleFriend", true);
-    localToServiceMsg.extraData.putString("targetUin", paramString);
-    send(localToServiceMsg);
+    ((IFriendHandlerService)this.app.getRuntimeService(IFriendHandlerService.class)).requestFriendInfo(paramString);
   }
   
   public void getFriendGroupList(boolean paramBoolean)
@@ -4037,84 +2399,60 @@ public class FriendListHandler
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 791	java/lang/System:currentTimeMillis	()J
-    //   5: lstore_3
-    //   6: invokestatic 538	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   9: ifeq +43 -> 52
-    //   12: ldc_w 1210
-    //   15: iconst_2
-    //   16: new 548	java/lang/StringBuilder
-    //   19: dup
-    //   20: invokespecial 753	java/lang/StringBuilder:<init>	()V
-    //   23: ldc_w 1212
-    //   26: invokevirtual 557	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: lload_3
-    //   30: invokevirtual 758	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   33: ldc_w 1214
-    //   36: invokevirtual 557	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: aload_0
-    //   40: getfield 1620	com/tencent/mobileqq/app/FriendListHandler:getFriendGroupListTimeStamp	J
-    //   43: invokevirtual 758	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 602	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 606	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   52: aload_0
-    //   53: getfield 1620	com/tencent/mobileqq/app/FriendListHandler:getFriendGroupListTimeStamp	J
-    //   56: lconst_0
-    //   57: lcmp
-    //   58: ifle +23 -> 81
-    //   61: aload_0
-    //   62: getfield 1620	com/tencent/mobileqq/app/FriendListHandler:getFriendGroupListTimeStamp	J
-    //   65: lstore 5
-    //   67: lload_3
-    //   68: lload 5
-    //   70: lsub
-    //   71: ldc2_w 3458
-    //   74: lcmp
-    //   75: ifge +6 -> 81
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: return
-    //   81: aload_0
-    //   82: lload_3
-    //   83: putfield 1620	com/tencent/mobileqq/app/FriendListHandler:getFriendGroupListTimeStamp	J
-    //   86: new 474	java/util/ArrayList
-    //   89: dup
-    //   90: invokespecial 476	java/util/ArrayList:<init>	()V
-    //   93: astore 7
-    //   95: aload_0
-    //   96: aload_0
-    //   97: getfield 614	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   100: invokevirtual 619	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   103: iconst_0
-    //   104: bipush 20
-    //   106: iconst_0
-    //   107: bipush 100
-    //   109: lconst_0
-    //   110: aload 7
-    //   112: iload_1
-    //   113: iload_2
-    //   114: iconst_0
-    //   115: invokespecial 1792	com/tencent/mobileqq/app/FriendListHandler:getFriendList	(Ljava/lang/String;IIIIJLjava/util/ArrayList;ZZS)V
-    //   118: goto -40 -> 78
-    //   121: astore 7
-    //   123: aload_0
-    //   124: monitorexit
-    //   125: aload 7
-    //   127: athrow
+    //   2: invokestatic 507	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: ifeq +29 -> 34
+    //   8: ldc 157
+    //   10: iconst_2
+    //   11: new 517	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 722	java/lang/StringBuilder:<init>	()V
+    //   18: ldc_w 2439
+    //   21: invokevirtual 526	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: iload_1
+    //   25: invokevirtual 546	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   28: invokevirtual 573	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   31: invokestatic 577	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   34: iload_1
+    //   35: ifne +32 -> 67
+    //   38: aload_0
+    //   39: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   42: getstatic 919	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
+    //   45: invokevirtual 923	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   48: checkcast 925	com/tencent/mobileqq/app/FriendsManager
+    //   51: invokevirtual 2440	com/tencent/mobileqq/app/FriendsManager:c	()Z
+    //   54: ifeq +10 -> 64
+    //   57: aload_0
+    //   58: iconst_1
+    //   59: iconst_1
+    //   60: aconst_null
+    //   61: invokevirtual 1003	com/tencent/mobileqq/app/FriendListHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   64: aload_0
+    //   65: monitorexit
+    //   66: return
+    //   67: aload_0
+    //   68: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   71: ldc_w 1672
+    //   74: invokevirtual 1676	com/tencent/mobileqq/app/QQAppInterface:getRuntimeService	(Ljava/lang/Class;)Lmqq/app/api/IRuntimeService;
+    //   77: checkcast 1672	com/tencent/mobileqq/friend/api/IFriendHandlerService
+    //   80: iload_2
+    //   81: invokeinterface 2443 2 0
+    //   86: goto -22 -> 64
+    //   89: astore_3
+    //   90: aload_0
+    //   91: monitorexit
+    //   92: aload_3
+    //   93: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	128	0	this	FriendListHandler
-    //   0	128	1	paramBoolean1	boolean
-    //   0	128	2	paramBoolean2	boolean
-    //   5	78	3	l1	long
-    //   65	4	5	l2	long
-    //   93	18	7	localArrayList	ArrayList
-    //   121	5	7	localObject	Object
+    //   0	94	0	this	FriendListHandler
+    //   0	94	1	paramBoolean1	boolean
+    //   0	94	2	paramBoolean2	boolean
+    //   89	4	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	52	121	finally
-    //   52	67	121	finally
-    //   81	118	121	finally
+    //   2	34	89	finally
+    //   38	64	89	finally
+    //   67	86	89	finally
   }
   
   public void getFriendInfo(String paramString)
@@ -4215,7 +2553,7 @@ public class FriendListHandler
       if (s2 < s1) {
         try
         {
-          ((ByteBuffer)localObject).putInt(bhbx.a(Long.parseLong((String)paramArrayList.get(s2))));
+          ((ByteBuffer)localObject).putInt(Utils.a(Long.parseLong((String)paramArrayList.get(s2))));
           s2 = (short)(s2 + 1);
         }
         catch (Exception localException)
@@ -4351,7 +2689,7 @@ public class FriendListHandler
     do
     {
       return bool1;
-      bool2 = bhdd.b(this.app.getApp().getApplicationContext(), this.app.getAccount());
+      bool2 = ContactConfig.b(this.app.getApp().getApplicationContext(), this.app.getAccount());
       bool1 = bool2;
     } while (!bool2);
     getLastLoginInfo(0L, 0L, 0L);
@@ -4391,7 +2729,7 @@ public class FriendListHandler
         if (paramList1 != null) {
           ((oidb_0xc26.ReqBody)localObject).rpt_filter_uins.set(paramList1);
         }
-        paramList1 = (anyb)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+        paramList1 = (MayknowRecommendManager)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
         if ((paramList1 == null) || (!paramList1.a())) {
           break label286;
         }
@@ -4443,16 +2781,6 @@ public class FriendListHandler
       {
       }
     }
-  }
-  
-  public void getMobileQQHead(String paramString)
-  {
-    getQQHeadInSubThread(11, paramString, 0, (byte)0, (byte)0, false);
-  }
-  
-  public void getMobileQQHead(String paramString, byte paramByte)
-  {
-    getQQHeadInSubThread(11, paramString, 0, (byte)0, paramByte, false);
   }
   
   public void getMultiClientList(long paramLong, String paramString)
@@ -4531,22 +2859,8 @@ public class FriendListHandler
       send(localToServiceMsg);
       return;
       localToServiceMsg.extraData.putLong("dwReqType", 0L);
-      localToServiceMsg.extraData.putLong("dwUin", mry.a(paramString));
+      localToServiceMsg.extraData.putLong("dwUin", CharacterUtil.a(paramString));
     }
-  }
-  
-  public void getQCallHead(String paramString, int paramInt, byte paramByte1, byte paramByte2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.flh", 2, "getQCallHead FaceConstant.HeadType.QQHEAD_TYPE_QCALL uin = " + paramString + " idType = " + paramInt + ", level =  faceFileType = " + paramByte2);
-    }
-    getQQHeadInSubThread(16, paramString, paramInt, paramByte1, paramByte2, true);
-  }
-  
-  public QQHeadDownloadHandler getQQHeadDownload()
-  {
-    insureInitQQHeadDownloadHandler();
-    return this.qqHeadDownload;
   }
   
   public void getRecentLoginDevList(long paramLong1, String paramString, long paramLong2)
@@ -4629,7 +2943,7 @@ public class FriendListHandler
     {
       try
       {
-        if (!bhdd.a(this.app.getApp().getApplicationContext(), this.app.getAccount())) {
+        if (!ContactConfig.a(this.app.getApp().getApplicationContext(), this.app.getAccount())) {
           continue;
         }
         i = 1;
@@ -4691,11 +3005,6 @@ public class FriendListHandler
     }
   }
   
-  public void getStrangerHead(String paramString, int paramInt, byte paramByte1, byte paramByte2)
-  {
-    getQQHeadInSubThread(32, paramString, paramInt, paramByte1, paramByte2, true);
-  }
-  
   public void getStrangerInfo(long[] paramArrayOfLong, int[] paramArrayOfInt)
   {
     int j = 0;
@@ -4715,7 +3024,7 @@ public class FriendListHandler
     i = j;
     while (i < k)
     {
-      localByteBuffer.putInt(bhbx.a(paramArrayOfLong[i]));
+      localByteBuffer.putInt(Utils.a(paramArrayOfLong[i]));
       i += 1;
     }
     paramArrayOfLong = new oidb_sso.OIDBSSOPkg();
@@ -4802,32 +3111,6 @@ public class FriendListHandler
     }
   }
   
-  public void getTroopHead(String paramString)
-  {
-    getQQHeadInSubThread(4, paramString, 0, (byte)0, (byte)0, false);
-  }
-  
-  public void getTroopHead(String paramString, byte paramByte)
-  {
-    getQQHeadInSubThread(4, paramString, 0, (byte)0, paramByte, false);
-  }
-  
-  public String getUinOrMobile(int paramInt, long paramLong, String paramString)
-  {
-    if (paramInt == 11) {
-      return paramString;
-    }
-    return Long.toString(paramLong);
-  }
-  
-  public String getUinOrMobile(long paramLong, String paramString)
-  {
-    if ((paramString != null) && (paramString.length() > 0)) {
-      return paramString;
-    }
-    return String.valueOf(paramLong);
-  }
-  
   public void getUserAddFriendSetting(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     getUserAddFriendSetting(paramString1, paramInt1, paramInt2, paramString2, 0);
@@ -4851,7 +3134,7 @@ public class FriendListHandler
   
   public VasFaceManager getVaseFaceManager()
   {
-    return ((bhou)this.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+    return ((VasExtensionManager)this.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
   }
   
   public void getVisibilityForNetWorkStatus()
@@ -4887,7 +3170,7 @@ public class FriendListHandler
         paramFromServiceMsg.printStackTrace();
       }
       QLog.d("FriendListHandler.QIM", 2, paramFromServiceMsg.toString());
-      notifyUI(111, false, paramToServiceMsg);
+      notifyUI(110, false, paramToServiceMsg);
     }
     if ((paramToServiceMsg != null) && (paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0))
     {
@@ -4922,7 +3205,7 @@ public class FriendListHandler
       QLog.d("FriendListHandler.QIM", 2, "handleAddBatchQIMFriends false ");
     }
     label192:
-    notifyUI(111, false, null);
+    notifyUI(110, false, null);
     return;
     label220:
   }
@@ -4933,7 +3216,7 @@ public class FriendListHandler
     Object localObject2 = new StringBuilder().append("FriendListHandler, handleCheckUpdate, ");
     int i;
     label64:
-    bcug localbcug;
+    CheckUpdateItemInterface localCheckUpdateItemInterface;
     if (paramCheckUpdateResp != null)
     {
       i = paramCheckUpdateResp.result;
@@ -4953,11 +3236,11 @@ public class FriendListHandler
       if (QLog.isColorLevel()) {
         QLog.d("ProfileService.CheckUpdateReq", 2, "FriendListHandler::handleCheckUpdate item eServiceId = " + ((RespItem)localObject2).eServiceID + ",result=" + ((RespItem)localObject2).cResult);
       }
-      localbcug = this.app.mAutomator.a(((RespItem)localObject2).eServiceID);
+      localCheckUpdateItemInterface = this.app.mAutomator.a(((RespItem)localObject2).eServiceID);
       if (((RespItem)localObject2).eServiceID != 101) {
         break label191;
       }
-      localObject1 = localbcug;
+      localObject1 = localCheckUpdateItemInterface;
       paramCheckUpdateResp = (CheckUpdateResp)localObject2;
     }
     for (;;)
@@ -4969,7 +3252,7 @@ public class FriendListHandler
       i = -1;
       break;
       label191:
-      handleCheckUpdateItem(localbcug, (RespItem)localObject2);
+      handleCheckUpdateItem(localCheckUpdateItemInterface, (RespItem)localObject2);
       localObject2 = paramCheckUpdateResp;
       paramCheckUpdateResp = (CheckUpdateResp)localObject1;
       localObject1 = localObject2;
@@ -4981,9 +3264,9 @@ public class FriendListHandler
   
   public void handleDelGroupResp(DelGroupResp paramDelGroupResp, boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    anvk localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (paramBoolean) {
-      localanvk.a(paramDelGroupResp.cGroupid);
+      localFriendsManager.a(paramDelGroupResp.cGroupid);
     }
     notifyUI(21, paramBoolean, paramGroupActionResp);
   }
@@ -4993,231 +3276,231 @@ public class FriendListHandler
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 614	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: getstatic 1219	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
-    //   7: invokevirtual 1223	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   10: checkcast 860	anvk
+    //   1: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4: getstatic 919	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
+    //   7: invokevirtual 923	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   10: checkcast 925	com/tencent/mobileqq/app/FriendsManager
     //   13: astore 7
     //   15: aload 7
-    //   17: invokevirtual 3864	anvk:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   17: invokevirtual 2836	com/tencent/mobileqq/app/FriendsManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   20: astore_3
-    //   21: new 474	java/util/ArrayList
+    //   21: new 448	java/util/ArrayList
     //   24: dup
-    //   25: invokespecial 476	java/util/ArrayList:<init>	()V
+    //   25: invokespecial 450	java/util/ArrayList:<init>	()V
     //   28: astore 5
-    //   30: new 474	java/util/ArrayList
+    //   30: new 448	java/util/ArrayList
     //   33: dup
-    //   34: invokespecial 476	java/util/ArrayList:<init>	()V
+    //   34: invokespecial 450	java/util/ArrayList:<init>	()V
     //   37: astore 6
     //   39: aload_3
-    //   40: invokevirtual 2175	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   40: invokevirtual 2841	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   43: aload 4
-    //   45: invokevirtual 1050	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   45: invokevirtual 937	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   48: astore 8
     //   50: aload 8
-    //   52: invokeinterface 828 1 0
+    //   52: invokeinterface 797 1 0
     //   57: ifeq +429 -> 486
     //   60: aload 8
-    //   62: invokeinterface 832 1 0
-    //   67: checkcast 3866	KQQ/ProfSmpInfoRes
+    //   62: invokeinterface 801 1 0
+    //   67: checkcast 2843	KQQ/ProfSmpInfoRes
     //   70: astore 9
     //   72: aload 9
-    //   74: getfield 3868	KQQ/ProfSmpInfoRes:dwUin	J
-    //   77: invokestatic 728	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   74: getfield 2845	KQQ/ProfSmpInfoRes:dwUin	J
+    //   77: invokestatic 697	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   80: astore 10
     //   82: aload_2
     //   83: aload 10
-    //   85: invokevirtual 3871	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   85: invokevirtual 2848	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
     //   88: ifeq -38 -> 50
     //   91: aload 9
     //   93: aload 10
     //   95: aload_0
-    //   96: getfield 614	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   99: invokevirtual 619	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   102: invokevirtual 1063	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   96: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   99: invokevirtual 586	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   102: invokevirtual 1518	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   105: aload_0
-    //   106: getfield 614	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   106: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   109: aload 10
-    //   111: invokestatic 3874	aolb:a	(LKQQ/ProfSmpInfoRes;ZLcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)V
+    //   111: invokestatic 2851	com/tencent/mobileqq/app/friendlist/FriendListHandlerUtil:a	(LKQQ/ProfSmpInfoRes;ZLcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)V
     //   114: aload 9
-    //   116: getfield 3877	KQQ/ProfSmpInfoRes:cSpecialFlag	B
+    //   116: getfield 2854	KQQ/ProfSmpInfoRes:cSpecialFlag	B
     //   119: ifge +18 -> 137
-    //   122: ldc 162
+    //   122: ldc 157
     //   124: iconst_1
-    //   125: ldc_w 3879
-    //   128: invokestatic 761	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   125: ldc_w 2856
+    //   128: invokestatic 730	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   131: aload 9
     //   133: iconst_0
-    //   134: putfield 3877	KQQ/ProfSmpInfoRes:cSpecialFlag	B
+    //   134: putfield 2854	KQQ/ProfSmpInfoRes:cSpecialFlag	B
     //   137: aload 9
-    //   139: getfield 3877	KQQ/ProfSmpInfoRes:cSpecialFlag	B
-    //   142: invokestatic 3882	nwu:a	(I)Z
+    //   139: getfield 2854	KQQ/ProfSmpInfoRes:cSpecialFlag	B
+    //   142: invokestatic 2859	com/tencent/biz/eqq/CrmUtils:a	(I)Z
     //   145: ifne +14 -> 159
     //   148: aload 9
-    //   150: getfield 3877	KQQ/ProfSmpInfoRes:cSpecialFlag	B
-    //   153: invokestatic 3884	bjxa:b	(I)Z
+    //   150: getfield 2854	KQQ/ProfSmpInfoRes:cSpecialFlag	B
+    //   153: invokestatic 2861	com/tencent/qidian/QidianManager:b	(I)Z
     //   156: ifeq +28 -> 184
     //   159: aload 5
     //   161: aload 10
-    //   163: invokeinterface 839 2 0
+    //   163: invokeinterface 808 2 0
     //   168: pop
     //   169: aload 9
-    //   171: getfield 3877	KQQ/ProfSmpInfoRes:cSpecialFlag	B
-    //   174: invokestatic 3882	nwu:a	(I)Z
+    //   171: getfield 2854	KQQ/ProfSmpInfoRes:cSpecialFlag	B
+    //   174: invokestatic 2859	com/tencent/biz/eqq/CrmUtils:a	(I)Z
     //   177: aload_0
-    //   178: getfield 614	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   181: invokestatic 2928	aolb:a	(ZLcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   178: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   181: invokestatic 1750	com/tencent/mobileqq/app/friendlist/FriendListHandlerUtil:a	(ZLcom/tencent/mobileqq/app/QQAppInterface;)V
     //   184: aload 7
     //   186: aload 9
-    //   188: getfield 3868	KQQ/ProfSmpInfoRes:dwUin	J
-    //   191: invokestatic 728	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   188: getfield 2845	KQQ/ProfSmpInfoRes:dwUin	J
+    //   191: invokestatic 697	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   194: aload 9
-    //   196: getfield 3887	KQQ/ProfSmpInfoRes:strNick	Ljava/lang/String;
+    //   196: getfield 2864	KQQ/ProfSmpInfoRes:strNick	Ljava/lang/String;
     //   199: aload 9
-    //   201: getfield 3877	KQQ/ProfSmpInfoRes:cSpecialFlag	B
+    //   201: getfield 2854	KQQ/ProfSmpInfoRes:cSpecialFlag	B
     //   204: aload 9
-    //   206: getfield 3890	KQQ/ProfSmpInfoRes:cSex	B
+    //   206: getfield 2867	KQQ/ProfSmpInfoRes:cSex	B
     //   209: i2s
     //   210: aload 9
-    //   212: getfield 3893	KQQ/ProfSmpInfoRes:wAge	B
-    //   215: invokevirtual 3896	anvk:a	(Ljava/lang/String;Ljava/lang/String;BSB)V
+    //   212: getfield 2870	KQQ/ProfSmpInfoRes:wAge	B
+    //   215: invokevirtual 2873	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;Ljava/lang/String;BSB)V
     //   218: aload 7
     //   220: aload 10
-    //   222: invokevirtual 2722	anvk:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   222: invokevirtual 1525	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   225: astore 11
     //   227: aload_0
-    //   228: getfield 614	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   228: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   231: aload 9
     //   233: aload 11
     //   235: aload 10
     //   237: aload_2
-    //   238: invokestatic 3899	aolb:a	(Lcom/tencent/mobileqq/app/QQAppInterface;LKQQ/ProfSmpInfoRes;Lcom/tencent/mobileqq/data/Card;Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   241: invokestatic 538	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   238: invokestatic 2876	com/tencent/mobileqq/app/friendlist/FriendListHandlerUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;LKQQ/ProfSmpInfoRes;Lcom/tencent/mobileqq/data/Card;Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   241: invokestatic 507	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   244: ifeq +126 -> 370
-    //   247: new 3901	java/lang/StringBuffer
+    //   247: new 2878	java/lang/StringBuffer
     //   250: dup
     //   251: sipush 200
-    //   254: invokespecial 3902	java/lang/StringBuffer:<init>	(I)V
+    //   254: invokespecial 2879	java/lang/StringBuffer:<init>	(I)V
     //   257: astore 12
     //   259: aload 12
-    //   261: ldc_w 3904
-    //   264: invokevirtual 3907	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   261: ldc_w 2881
+    //   264: invokevirtual 2884	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   267: pop
     //   268: aload 12
     //   270: aload 9
-    //   272: getfield 3910	KQQ/ProfSmpInfoRes:isShowXMan	I
-    //   275: invokevirtual 3913	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
+    //   272: getfield 2887	KQQ/ProfSmpInfoRes:isShowXMan	I
+    //   275: invokevirtual 2890	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
     //   278: pop
     //   279: aload 12
-    //   281: ldc_w 3915
-    //   284: invokevirtual 3907	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   281: ldc_w 2892
+    //   284: invokevirtual 2884	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   287: pop
     //   288: aload 12
     //   290: aload 9
-    //   292: getfield 3918	KQQ/ProfSmpInfoRes:dwLoginDay	J
-    //   295: invokevirtual 3921	java/lang/StringBuffer:append	(J)Ljava/lang/StringBuffer;
+    //   292: getfield 2895	KQQ/ProfSmpInfoRes:dwLoginDay	J
+    //   295: invokevirtual 2898	java/lang/StringBuffer:append	(J)Ljava/lang/StringBuffer;
     //   298: pop
     //   299: aload 12
-    //   301: ldc_w 3923
-    //   304: invokevirtual 3907	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   301: ldc_w 2900
+    //   304: invokevirtual 2884	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   307: pop
     //   308: aload 12
     //   310: aload 9
-    //   312: getfield 3926	KQQ/ProfSmpInfoRes:dwPhoneQQXManDay	J
-    //   315: invokevirtual 3921	java/lang/StringBuffer:append	(J)Ljava/lang/StringBuffer;
+    //   312: getfield 2903	KQQ/ProfSmpInfoRes:dwPhoneQQXManDay	J
+    //   315: invokevirtual 2898	java/lang/StringBuffer:append	(J)Ljava/lang/StringBuffer;
     //   318: pop
     //   319: aload 12
-    //   321: ldc_w 3928
-    //   324: invokevirtual 3907	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   321: ldc_w 2905
+    //   324: invokevirtual 2884	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   327: pop
     //   328: aload 12
     //   330: aload 11
-    //   332: getfield 3931	com/tencent/mobileqq/data/Card:allowClick	Z
-    //   335: invokevirtual 3934	java/lang/StringBuffer:append	(Z)Ljava/lang/StringBuffer;
+    //   332: getfield 2908	com/tencent/mobileqq/data/Card:allowClick	Z
+    //   335: invokevirtual 2911	java/lang/StringBuffer:append	(Z)Ljava/lang/StringBuffer;
     //   338: pop
     //   339: aload 12
-    //   341: ldc_w 3936
-    //   344: invokevirtual 3907	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   341: ldc_w 2913
+    //   344: invokevirtual 2884	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   347: pop
     //   348: aload 12
     //   350: aload 11
-    //   352: getfield 3939	com/tencent/mobileqq/data/Card:allowPeopleSee	Z
-    //   355: invokevirtual 3934	java/lang/StringBuffer:append	(Z)Ljava/lang/StringBuffer;
+    //   352: getfield 2916	com/tencent/mobileqq/data/Card:allowPeopleSee	Z
+    //   355: invokevirtual 2911	java/lang/StringBuffer:append	(Z)Ljava/lang/StringBuffer;
     //   358: pop
-    //   359: ldc 162
+    //   359: ldc 157
     //   361: iconst_2
     //   362: aload 12
-    //   364: invokevirtual 3940	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   367: invokestatic 606	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   364: invokevirtual 2917	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   367: invokestatic 577	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   370: aload 7
     //   372: aload 11
-    //   374: invokevirtual 3943	anvk:a	(Lcom/tencent/mobileqq/data/Card;)Z
+    //   374: invokevirtual 2920	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
     //   377: pop
     //   378: aload_0
     //   379: aload_1
     //   380: aload 9
     //   382: aload 6
     //   384: aload 10
-    //   386: invokestatic 3946	aolb:a	(Lcom/tencent/mobileqq/app/FriendListHandler;Lcom/tencent/qphone/base/remote/ToServiceMsg;LKQQ/ProfSmpInfoRes;Ljava/util/List;Ljava/lang/String;)V
+    //   386: invokestatic 2923	com/tencent/mobileqq/app/friendlist/FriendListHandlerUtil:a	(Lcom/tencent/mobileqq/app/FriendListHandler;Lcom/tencent/qphone/base/remote/ToServiceMsg;LKQQ/ProfSmpInfoRes;Ljava/util/List;Ljava/lang/String;)V
     //   389: aload_0
-    //   390: getfield 614	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   390: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   393: aload_1
     //   394: aload 9
-    //   396: invokestatic 3949	aolb:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/qphone/base/remote/ToServiceMsg;LKQQ/ProfSmpInfoRes;)V
+    //   396: invokestatic 2926	com/tencent/mobileqq/app/friendlist/FriendListHandlerUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/qphone/base/remote/ToServiceMsg;LKQQ/ProfSmpInfoRes;)V
     //   399: aload_0
-    //   400: getfield 614	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   400: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   403: aload_1
     //   404: aload 9
-    //   406: invokestatic 3951	aolb:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/qphone/base/remote/ToServiceMsg;LKQQ/ProfSmpInfoRes;)V
+    //   406: invokestatic 2928	com/tencent/mobileqq/app/friendlist/FriendListHandlerUtil:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/qphone/base/remote/ToServiceMsg;LKQQ/ProfSmpInfoRes;)V
     //   409: aload_0
     //   410: iconst_3
     //   411: iconst_1
     //   412: aload 10
-    //   414: invokevirtual 1205	com/tencent/mobileqq/app/FriendListHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   414: invokevirtual 1003	com/tencent/mobileqq/app/FriendListHandler:notifyUI	(IZLjava/lang/Object;)V
     //   417: goto -367 -> 50
     //   420: astore_2
-    //   421: invokestatic 538	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   421: invokestatic 507	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   424: ifeq +13 -> 437
-    //   427: ldc 162
+    //   427: ldc 157
     //   429: iconst_2
-    //   430: ldc_w 3953
+    //   430: ldc_w 2930
     //   433: aload_2
-    //   434: invokestatic 3955	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   434: invokestatic 2932	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   437: aload_3
     //   438: ifnull +7 -> 445
     //   441: aload_3
-    //   442: invokevirtual 2201	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   442: invokevirtual 2935	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   445: aload_0
-    //   446: getfield 614	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   446: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   449: aload 5
-    //   451: invokestatic 3958	aolb:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)V
+    //   451: invokestatic 2938	com/tencent/mobileqq/app/friendlist/FriendListHandlerUtil:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)V
     //   454: aload_0
-    //   455: getfield 614	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   455: getfield 493	com/tencent/mobileqq/app/FriendListHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   458: aload 6
-    //   460: invokestatic 3960	aolb:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)V
+    //   460: invokestatic 2940	com/tencent/mobileqq/app/friendlist/FriendListHandlerUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)V
     //   463: aload_1
-    //   464: getfield 628	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   467: ldc_w 3507
-    //   470: invokevirtual 1637	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   464: getfield 595	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   467: ldc_w 2494
+    //   470: invokevirtual 1513	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
     //   473: ifeq +12 -> 485
     //   476: aload_0
     //   477: bipush 67
     //   479: iconst_1
     //   480: aload 4
-    //   482: invokevirtual 1205	com/tencent/mobileqq/app/FriendListHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   482: invokevirtual 1003	com/tencent/mobileqq/app/FriendListHandler:notifyUI	(IZLjava/lang/Object;)V
     //   485: return
     //   486: aload_3
-    //   487: invokevirtual 2198	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   487: invokevirtual 2942	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   490: aload_3
     //   491: ifnull -46 -> 445
     //   494: aload_3
-    //   495: invokevirtual 2201	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   495: invokevirtual 2935	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   498: goto -53 -> 445
     //   501: astore_1
     //   502: aload_3
     //   503: ifnull +7 -> 510
     //   506: aload_3
-    //   507: invokevirtual 2201	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   507: invokevirtual 2935	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   510: aload_1
     //   511: athrow
     // Local variable table:
@@ -5229,12 +3512,12 @@ public class FriendListHandler
     //   0	512	4	paramArrayList1	ArrayList<KQQ.ProfSmpInfoRes>
     //   28	422	5	localArrayList1	ArrayList
     //   37	422	6	localArrayList2	ArrayList
-    //   13	358	7	localanvk	anvk
+    //   13	358	7	localFriendsManager	FriendsManager
     //   48	13	8	localIterator	Iterator
     //   70	335	9	localProfSmpInfoRes	KQQ.ProfSmpInfoRes
     //   80	333	10	str	String
     //   225	148	11	localCard	Card
-    //   257	106	12	localStringBuffer	StringBuffer
+    //   257	106	12	localStringBuffer	java.lang.StringBuffer
     // Exception table:
     //   from	to	target	type
     //   39	50	420	java/lang/Exception
@@ -5254,40 +3537,6 @@ public class FriendListHandler
     //   486	490	501	finally
   }
   
-  public void handleGetQQHead_Apollo(boolean paramBoolean, ArrayList<QQHeadDetails> paramArrayList, ArrayList<QQHeadInfo> paramArrayList1)
-  {
-    if (paramBoolean)
-    {
-      startDownloadQQHead(paramArrayList1, false);
-      handleQQHeadNoChangeList(116, 200, paramArrayList);
-    }
-    paramArrayList = paramArrayList.iterator();
-    Object localObject;
-    String str;
-    if (paramArrayList.hasNext())
-    {
-      localObject = (QQHeadDetails)paramArrayList.next();
-      str = ((QQHeadDetails)localObject).jdField_a_of_type_JavaLangString;
-      localObject = (com.tencent.mobileqq.data.Setting)this.app.getQQHeadSetting(((QQHeadDetails)localObject).jdField_a_of_type_Int, ((QQHeadDetails)localObject).jdField_a_of_type_JavaLangString, 200).second;
-      if (localObject == null) {
-        break label180;
-      }
-    }
-    label180:
-    for (byte b = ((com.tencent.mobileqq.data.Setting)localObject).bHeadType;; b = 0)
-    {
-      notifyUI(134, paramBoolean, new Object[] { str, Byte.valueOf(b) });
-      break;
-      paramArrayList = paramArrayList1.iterator();
-      while (paramArrayList.hasNext())
-      {
-        paramArrayList1 = (QQHeadInfo)paramArrayList.next();
-        notifyUI(134, paramBoolean, new Object[] { String.valueOf(paramArrayList1.uin), Byte.valueOf(paramArrayList1.cHeadType) });
-      }
-      return;
-    }
-  }
-  
   public <T> void handleMayKnowRecommendPush(int paramInt, List<T> paramList)
   {
     if (QLog.isColorLevel()) {
@@ -5298,14 +3547,14 @@ public class FriendListHandler
     default: 
       return;
     case 0: 
-      ThreadManager.getSubThreadHandler().post(new FriendListHandler.5(this));
+      ThreadManager.getSubThreadHandler().post(new FriendListHandler.2(this));
     case 1: 
       if (QLog.isColorLevel()) {
         QLog.i("FriendListHandler", 2, "decodePush0x210_0x111, do add mayknow list");
       }
       try
       {
-        notifyUI(114, ((anyb)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).a(true, paramList), paramList);
+        notifyUI(113, ((MayknowRecommendManager)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).a(true, paramList), paramList);
         return;
       }
       catch (Throwable paramList)
@@ -5319,7 +3568,7 @@ public class FriendListHandler
     }
     try
     {
-      notifyUI(115, ((anyb)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).b(true, paramList), paramList);
+      notifyUI(114, ((MayknowRecommendManager)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).b(true, paramList), paramList);
       return;
     }
     catch (Throwable paramList)
@@ -5349,8 +3598,7 @@ public class FriendListHandler
   
   protected void init()
   {
-    this.handler = new FriendListHandler.1(this, this.app.getApp().getMainLooper());
-    ThreadManager.excute(new FriendListHandler.2(this), 16, null, false);
+    ThreadManager.excute(new FriendListHandler.1(this), 16, null, false);
   }
   
   public boolean isGetOnlineListRecently()
@@ -5360,69 +3608,6 @@ public class FriendListHandler
       QLog.i("FriendListHandler", 2, "getOnlineFriend  | intervalTime = " + l + " | sGetOnlineFriendDelay = " + QQAppInterface.sGetOnlineFriendDelay);
     }
     return (this.getOnlineFriendLastTimeStamp > 0L) && ((l < QQAppInterface.sGetOnlineFriendDelay) || (l > QQAppInterface.sNextGetOnlineFriendDelay - QQAppInterface.sGetOnlineFriendDelay));
-  }
-  
-  public boolean isNeedDownloadedQQHead(String paramString)
-  {
-    for (;;)
-    {
-      int i;
-      boolean bool1;
-      boolean bool3;
-      synchronized (this.downloadedQQHeadTableLock)
-      {
-        if (!this.downloadedQQHeadTable.containsKey(paramString)) {
-          break label273;
-        }
-        long l = ((Long)this.downloadedQQHeadTable.get(paramString)).longValue();
-        if (Math.abs(System.currentTimeMillis() - l) > 60000L)
-        {
-          this.downloadedQQHeadTable.remove(paramString);
-          statGetQQHeadCostTime(9205, paramString, -1, 4);
-          i = 0;
-          bool1 = true;
-          bool2 = bool1;
-          if (bool1)
-          {
-            bool3 = SystemUtil.isExistSDCard();
-            if (((bool3) && (SystemUtil.getSDCardAvailableSize() < 2048L)) || ((!bool3) && (SystemUtil.getSystemAvailableSize() < 102400L)))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.qqhead.flh", 2, "getQQHead|fail, storage is not enough. uinOrMobile=" + paramString + ", isExistSDCard=" + bool3);
-              }
-              bool2 = false;
-            }
-          }
-          else
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqhead.flh", 2, "markDownloadedQQHead, whatIf= " + i + ", NeedDownload=" + bool2);
-            }
-            return bool2;
-          }
-        }
-        else
-        {
-          i = 1;
-          bool1 = false;
-        }
-      }
-      boolean bool2 = bool1;
-      if (!bool3)
-      {
-        bool2 = bool1;
-        if (!this.isDoneSaveQQHeadToStorage)
-        {
-          this.isDoneSaveQQHeadToStorage = true;
-          aoks.a(this.app.getApp().getApplicationContext(), true);
-          bool2 = bool1;
-          continue;
-          label273:
-          i = -1;
-          bool1 = true;
-        }
-      }
-    }
   }
   
   public boolean isNeedSendGetFriendInfo(String paramString)
@@ -5545,57 +3730,6 @@ public class FriendListHandler
     send(localToServiceMsg);
   }
   
-  public void markDownloadedQQHead(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.flh", 2, "markDownloadedQQHead, uinOrMobile= " + paramString + ",isRemove=" + paramBoolean + "downloadSize=" + this.downloadedQQHeadTable.size());
-    }
-    if ((paramString == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    Object localObject1 = this.downloadedQQHeadTableLock;
-    if (paramBoolean) {
-      try
-      {
-        this.downloadedQQHeadTable.remove(paramString);
-        return;
-      }
-      finally {}
-    }
-    ArrayList localArrayList;
-    Object localObject2;
-    if (this.downloadedQQHeadTable.size() > 30)
-    {
-      long l = System.currentTimeMillis();
-      localArrayList = new ArrayList();
-      localObject2 = this.downloadedQQHeadTable.keys();
-      while (((Enumeration)localObject2).hasMoreElements())
-      {
-        String str = (String)((Enumeration)localObject2).nextElement();
-        if (Math.abs(l - ((Long)this.downloadedQQHeadTable.get(str)).longValue()) > 60000L) {
-          localArrayList.add(str);
-        }
-      }
-    }
-    for (;;)
-    {
-      int i;
-      if (i < localArrayList.size())
-      {
-        localObject2 = (String)localArrayList.get(i);
-        this.downloadedQQHeadTable.remove(localObject2);
-        statGetQQHeadCostTime(9205, (String)localObject2, -1, 4);
-        i += 1;
-      }
-      else
-      {
-        this.downloadedQQHeadTable.put(paramString, Long.valueOf(System.currentTimeMillis()));
-        break;
-        i = 0;
-      }
-    }
-  }
-  
   public void moveFriendToGroup(String paramString, byte paramByte1, byte paramByte2)
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "friendlist.MovGroupMemReq");
@@ -5641,90 +3775,6 @@ public class FriendListHandler
     }
   }
   
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("friendlist.getFriendGroupList");
-      this.allowCmdSet.add("friendlist.GetLastLoginInfoReq");
-      this.allowCmdSet.add("ProfileService.GetRichSig");
-      this.allowCmdSet.add("ProfileService.GetSimpleInfo");
-      this.allowCmdSet.add("AvatarInfoSvr.QQHeadUrlReq");
-      this.allowCmdSet.add("IncreaseURLSvr.QQHeadUrlReq");
-      this.allowCmdSet.add("OidbSvc.0xc34_0");
-      this.allowCmdSet.add("OidbSvc.0xc34_1");
-      this.allowCmdSet.add("OidbSvc.0xc83");
-      this.allowCmdSet.add("OidbSvc.0xc85");
-      this.allowCmdSet.add("StatSvc.GetDevLoginInfo");
-      this.allowCmdSet.add("StatSvc.DelDevLoginInfo");
-      this.allowCmdSet.add("StatSvc.SvcReqKikOut");
-      this.allowCmdSet.add("StatSvc.BindUin");
-      this.allowCmdSet.add("ProfileService.ReqGetSettings");
-      this.allowCmdSet.add("ProfileService.ReqSetSettings");
-      this.allowCmdSet.add("friendlist.MovGroupMemReq");
-      this.allowCmdSet.add("BumpSvc.ReqComfirmContactFriend");
-      this.allowCmdSet.add("friendlist.addFriend");
-      this.allowCmdSet.add("friendlist.getUserAddFriendSetting");
-      this.allowCmdSet.add("friendlist.GetSimpleOnlineFriendInfoReq");
-      this.allowCmdSet.add("friendlist.GetOnlineInfoReq");
-      this.allowCmdSet.add("friendlist.delFriend");
-      this.allowCmdSet.add("friendlist.SetGroupReq");
-      this.allowCmdSet.add("ProfileService.ChangeFriendName");
-      this.allowCmdSet.add("ProfileService.SetRichSig");
-      this.allowCmdSet.add("StatSvc.register");
-      this.allowCmdSet.add("friendlist.GetAutoInfoReq");
-      this.allowCmdSet.add("ProfileService.CheckUpdateReq");
-      this.allowCmdSet.add("SummaryCard.ReqSearch");
-      this.allowCmdSet.add("SummaryCard.ReqCondSearch");
-      this.allowCmdSet.add("OidbSvc.0x972_5");
-      this.allowCmdSet.add("OidbSvc.0x5d1_0");
-      this.allowCmdSet.add("OidbSvc.0x4fc_30");
-      this.allowCmdSet.add("DevLockAuthSvc.RecommendAuth");
-      this.allowCmdSet.add("DevLockAuthSvc.ConfirmAuth");
-      this.allowCmdSet.add("OidbSvc.0x476_146");
-      this.allowCmdSet.add("OidbSvc.0x476_147");
-      this.allowCmdSet.add("OidbSvc.0x490_107");
-      this.allowCmdSet.add("OidbSvc.0x491_107");
-      this.allowCmdSet.add("OidbSvc.0x5e1_8");
-      this.allowCmdSet.add("OidbSvc.0x49d_107");
-      this.allowCmdSet.add("MultibusidURLSvr.HeadUrlReq");
-      this.allowCmdSet.add("MultibusidURLSvr.HeadUrlReq");
-      this.allowCmdSet.add("OidbSvc.0xedb");
-      this.allowCmdSet.add("OidbSvc.0x7c4_0");
-      this.allowCmdSet.add("OidbSvc.0x4f4_5");
-      this.allowCmdSet.add("OidbSvc.0x7c6_0");
-      this.allowCmdSet.add("OidbSvc.0x7c7_0");
-      this.allowCmdSet.add("OidbSvc.0x847_3");
-      this.allowCmdSet.add("OidbSvc.0x53b_0");
-      this.allowCmdSet.add("OidbSvc.0x6c9_0");
-      this.allowCmdSet.add("OidbSvc.0x7df_3");
-      this.allowCmdSet.add("OidbSvc.0x5d6_7");
-      this.allowCmdSet.add("OidbSvc.0x5d6_19");
-      this.allowCmdSet.add("OidbSvc.0x5d6_18");
-      this.allowCmdSet.add("OidbSvc.0x77c");
-      this.allowCmdSet.add("OidbSvc.0x829_1");
-      this.allowCmdSet.add("OidbSvc.0x777");
-      this.allowCmdSet.add("OidbSvc.0xc26_0");
-      this.allowCmdSet.add("OidbSvc.0xc36_0");
-      this.allowCmdSet.add("OidbSvc.0xc35_0");
-      this.allowCmdSet.add("OidbSvc.0xcf0_0");
-      this.allowCmdSet.add("OidbSvc.0xd69");
-      this.allowCmdSet.add("OidbSvc.0xd72");
-      this.allowCmdSet.add("OidbSvc.0x5d6_21");
-      this.allowCmdSet.add("OidbSvc.0xc26_1");
-      this.allowCmdSet.add("OidbSvc.0xedb");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  public void notifySyncQQHead()
-  {
-    Message localMessage = this.handler.obtainMessage();
-    localMessage.what = 0;
-    this.handler.sendMessage(localMessage);
-  }
-  
   public void notifySyncSignature()
   {
     if (this.updateSignatureList != null)
@@ -5736,15 +3786,11 @@ public class FriendListHandler
   
   protected Class<? extends BusinessObserver> observerClass()
   {
-    return anvi.class;
+    return IFriendObserver.class;
   }
   
   public void onDestroy()
   {
-    if (this.qqHeadDownload != null) {
-      this.qqHeadDownload.close();
-    }
-    reportFailedDetails();
     super.onDestroy();
   }
   
@@ -5778,17 +3824,12 @@ public class FriendListHandler
             localObject = this.handlerReceivers.iterator();
             while (((Iterator)localObject).hasNext())
             {
-              aolh localaolh = (aolh)((Iterator)localObject).next();
-              if (localaolh.a(paramFromServiceMsg.getServiceCmd()))
+              BaseHandlerReceiver localBaseHandlerReceiver = (BaseHandlerReceiver)((Iterator)localObject).next();
+              if (localBaseHandlerReceiver.a(paramFromServiceMsg.getServiceCmd()))
               {
-                localaolh.b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+                localBaseHandlerReceiver.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
                 return;
               }
-            }
-            if (paramFromServiceMsg.getServiceCmd().equals("friendlist.getFriendGroupList"))
-            {
-              handleOnReceiveGetFriendGroupList(paramToServiceMsg, paramFromServiceMsg, (GetFriendListResp)paramObject);
-              return;
             }
             if (!paramFromServiceMsg.getServiceCmd().equals("ProfileService.GetRichSig")) {
               break;
@@ -5816,26 +3857,6 @@ public class FriendListHandler
         handleGetStrangerInfo(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
-      if ("AvatarInfoSvr.QQHeadUrlReq".equals(paramFromServiceMsg.getServiceCmd()))
-      {
-        handleQQHead(paramToServiceMsg, paramFromServiceMsg, (QQHeadUrlResp)paramObject);
-        return;
-      }
-      if ("IncreaseURLSvr.QQHeadUrlReq".equals(paramFromServiceMsg.getServiceCmd()))
-      {
-        handleQQHead_New(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("MultibusidURLSvr.HeadUrlReq".equals(paramFromServiceMsg.getServiceCmd()))
-      {
-        if (paramToServiceMsg.extraData.getInt("qqHeadType") == 16)
-        {
-          handleQQHead_QCall(paramToServiceMsg, paramFromServiceMsg, paramObject);
-          return;
-        }
-        handleQQHead_Stranger(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
       if ("OidbSvc.0x7c4_0".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
       {
         handleGetGatheredContactsList(paramToServiceMsg, paramFromServiceMsg, paramObject);
@@ -5860,11 +3881,6 @@ public class FriendListHandler
     handleAddBatchTroopMembers(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
-  public void onSaveFriendsList(Friends[] paramArrayOfFriends, long paramLong, boolean paramBoolean)
-  {
-    ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramArrayOfFriends, paramLong, paramBoolean);
-  }
-  
   public void queryUinSafetyFlag(String paramString, long paramLong, int paramInt)
   {
     if (QLog.isColorLevel()) {
@@ -5886,22 +3902,21 @@ public class FriendListHandler
   
   protected void registerHandlerReceivers()
   {
-    this.handlerReceivers.add(new aolm(this.app, this));
-    this.handlerReceivers.add(new aoln(this.app, this));
-    this.handlerReceivers.add(new aoll(this.app, this));
-    this.handlerReceivers.add(new aolo(this.app, this));
-    this.handlerReceivers.add(new aols(this.app, this));
-    this.handlerReceivers.add(new aolp(this.app, this));
-    this.handlerReceivers.add(new aoli(this.app, this));
-    this.handlerReceivers.add(new aolj(this.app, this));
-    this.handlerReceivers.add(new aolr(this.app, this));
-    this.handlerReceivers.add(new aolu(this.app, this));
-    this.handlerReceivers.add(new aolv(this.app, this));
-    this.handlerReceivers.add(new aolt(this.app, this));
-    this.handlerReceivers.add(new aolk(this.app, this));
-    this.handlerReceivers.add(new aolq(this.app, this));
-    this.handlerReceivers.add(new aolw(this.app, this));
-    this.handlerReceivers.add(new aolg(this.app, this));
+    this.handlerReceivers.add(new FriendGroupReceiver(this.app, this));
+    this.handlerReceivers.add(new FriendInfoReceiver(this.app, this));
+    this.handlerReceivers.add(new FriendChatReceiver(this.app, this));
+    this.handlerReceivers.add(new FriendListReceiver(this.app, this));
+    this.handlerReceivers.add(new MakeFriendReceiver(this.app, this));
+    this.handlerReceivers.add(new FriendRecommendReceiver(this.app, this));
+    this.handlerReceivers.add(new DeviceLockAuthReceiver(this.app, this));
+    this.handlerReceivers.add(new DeviceLoginInfoReceiver(this.app, this));
+    this.handlerReceivers.add(new GeneralSettingsReceiver(this.app, this));
+    this.handlerReceivers.add(new QueryUinFlagRecevier(this.app, this));
+    this.handlerReceivers.add(new SearchFriendReceiver(this.app, this));
+    this.handlerReceivers.add(new NetStatusReceiver(this.app, this));
+    this.handlerReceivers.add(new DongtaiPermissionReceiver(this.app, this));
+    this.handlerReceivers.add(new FriendShieldReceiver(this.app, this));
+    this.handlerReceivers.add(new SuspiciousOperReceiver(this.app, this));
   }
   
   public void renameFriendGroup(byte paramByte, String paramString)
@@ -5909,11 +3924,7 @@ public class FriendListHandler
     if (QLog.isColorLevel()) {
       QLog.d("FriendListHandler", 2, "RenameFriendGroup :" + paramByte);
     }
-    ToServiceMsg localToServiceMsg = createToServiceMsg("friendlist.SetGroupReq");
-    localToServiceMsg.extraData.putInt("set_type", 1);
-    localToServiceMsg.extraData.putByte("group_id", paramByte);
-    localToServiceMsg.extraData.putString("group_name", paramString);
-    send(localToServiceMsg);
+    ((IFriendHandlerService)this.app.getRuntimeService(IFriendHandlerService.class)).renameFriendGroup(paramByte, paramString);
   }
   
   public void reportMayknowRecommendExplosure(ConcurrentHashMap<String, MayKnowExposure> paramConcurrentHashMap)
@@ -5930,7 +3941,7 @@ public class FriendListHandler
       int i;
       try
       {
-        long l = Long.parseLong(this.mApp.getCurrentAccountUin());
+        long l = Long.parseLong(this.app.getCurrentAccountUin());
         localArrayList = new ArrayList();
         paramConcurrentHashMap = paramConcurrentHashMap.entrySet().iterator();
         i = 0;
@@ -5980,7 +3991,7 @@ public class FriendListHandler
     }
     try
     {
-      long l = Long.parseLong(this.mApp.getCurrentAccountUin());
+      long l = Long.parseLong(this.app.getCurrentAccountUin());
       oidb_0xc34.ReqBody localReqBody = new oidb_0xc34.ReqBody();
       localReqBody.uint64_uin.set(l);
       sendPbReq(makeOIDBPkg("OidbSvc.0xc34_0", 3124, 0, localReqBody.toByteArray()));
@@ -6000,7 +4011,7 @@ public class FriendListHandler
     }
     try
     {
-      long l = Long.parseLong(this.mApp.getCurrentAccountUin());
+      long l = Long.parseLong(this.app.getCurrentAccountUin());
       oidb_0xc34.ReqBody localReqBody = new oidb_0xc34.ReqBody();
       localReqBody.uint64_uin.set(l);
       sendPbReq(makeOIDBPkg("OidbSvc.0xc34_1", 3124, 1, localReqBody.toByteArray()));
@@ -6020,14 +4031,14 @@ public class FriendListHandler
     }
     try
     {
-      long l = Long.parseLong(this.mApp.getCurrentAccountUin());
+      long l = Long.parseLong(this.app.getCurrentAccountUin());
       Object localObject = new cmd0xc85.ReqBody();
       ((cmd0xc85.ReqBody)localObject).uint64_from_uin.set(l);
       ((cmd0xc85.ReqBody)localObject).uint64_to_uin.set(Long.valueOf(paramString).longValue());
       ((cmd0xc85.ReqBody)localObject).uint32_op.set(2);
       ((cmd0xc85.ReqBody)localObject).uint32_interval_days.set(paramInt);
       localObject = makeOIDBPkg("OidbSvc.0xc85", 3205, 0, ((cmd0xc85.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).extraData.putString("selfUin", this.mApp.getCurrentAccountUin());
+      ((ToServiceMsg)localObject).extraData.putString("selfUin", this.app.getCurrentAccountUin());
       ((ToServiceMsg)localObject).extraData.putString("frdUin", paramString);
       sendPbReq((ToServiceMsg)localObject);
       return;
@@ -6046,13 +4057,13 @@ public class FriendListHandler
     }
     try
     {
-      long l = Long.parseLong(this.mApp.getCurrentAccountUin());
+      long l = Long.parseLong(this.app.getCurrentAccountUin());
       Object localObject = new cmd0xc83.ReqBody();
       ((cmd0xc83.ReqBody)localObject).uint64_from_uin.set(l);
       ((cmd0xc83.ReqBody)localObject).uint64_to_uin.set(Long.valueOf(paramString).longValue());
       ((cmd0xc83.ReqBody)localObject).uint32_op.set(2);
       localObject = makeOIDBPkg("OidbSvc.0xc83", 3203, 0, ((cmd0xc83.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).extraData.putString("selfUin", this.mApp.getCurrentAccountUin());
+      ((ToServiceMsg)localObject).extraData.putString("selfUin", this.app.getCurrentAccountUin());
       ((ToServiceMsg)localObject).extraData.putString("frdUin", paramString);
       sendPbReq((ToServiceMsg)localObject);
       return;
@@ -6066,11 +4077,7 @@ public class FriendListHandler
   
   public void resortFriendGroup(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("friendlist.SetGroupReq");
-    localToServiceMsg.extraData.putInt("set_type", 3);
-    localToServiceMsg.extraData.putByteArray("group_id_list", paramArrayOfByte1);
-    localToServiceMsg.extraData.putByteArray("sort_id_list", paramArrayOfByte2);
-    send(localToServiceMsg);
+    ((IFriendHandlerService)this.app.getRuntimeService(IFriendHandlerService.class)).resortFriendGroup(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public void saveShowPcIconIfNeccessary(byte paramByte)
@@ -6094,7 +4101,7 @@ public class FriendListHandler
     for (paramByte = b;; paramByte = 0)
     {
       this.mShowPcIcon = paramByte;
-      bhdd.a(this.app.getApp().getApplicationContext(), this.app.getAccount(), bool);
+      ContactConfig.a(this.app.getApp().getApplicationContext(), this.app.getAccount(), bool);
       return;
       bool = false;
       break;
@@ -6151,16 +4158,6 @@ public class FriendListHandler
     localToServiceMsg.extraData.putInt("param_xingzuo_index", paramInt6);
     localToServiceMsg.extraData.putInt("param_search_from", paramInt7);
     send(localToServiceMsg);
-  }
-  
-  public void sendBroadCastHeadChanged(int paramInt, String paramString)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.qqhead.changed");
-    localIntent.putExtra("uin", paramString);
-    localIntent.putExtra("faceType", paramInt);
-    this.app.getApplication().sendBroadcast(localIntent);
-    QLog.d("FriendListHandler", 1, String.format("sendBroadCastHeadChanged faceType=%d uin=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
   }
   
   public void sendReadReportSuspicious()
@@ -6373,13 +4370,13 @@ public class FriendListHandler
       if (paramString2 == null) {
         localObject = "";
       }
-      paramString2 = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      Card localCard = paramString2.c(paramString1);
+      paramString2 = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      Card localCard = paramString2.b(paramString1);
       localCard.strReMark = ((String)localObject);
       paramString2.a(localCard);
       paramString2.b(paramString1, (String)localObject);
-      ((antp)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).b(paramString1, (String)localObject);
-      paramString1 = (awyz)this.app.getManager(QQManagerFactory.CONTACT_MANAGER);
+      ((DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).b(paramString1, (String)localObject);
+      paramString1 = (PhoneContactManager)this.app.getManager(QQManagerFactory.CONTACT_MANAGER);
     } while (paramString1 == null);
     paramString1.f();
   }
@@ -6393,7 +4390,7 @@ public class FriendListHandler
     int i = 0;
     while (i < paramArrayList1.size())
     {
-      localArrayList.add(new GeneralSettings.Setting((String)paramArrayList1.get(i), (String)paramArrayList2.get(i)));
+      localArrayList.add(new Setting((String)paramArrayList1.get(i), (String)paramArrayList2.get(i)));
       i += 1;
     }
     paramArrayList1 = createToServiceMsg("ProfileService.ReqSetSettings");
@@ -6474,11 +4471,6 @@ public class FriendListHandler
     sendPbReq((ToServiceMsg)localObject2);
   }
   
-  public void setImmediatelyCustomHead(boolean paramBoolean)
-  {
-    this.isImmediatelyGet = paramBoolean;
-  }
-  
   public void setMessageNotificationSetting(int paramInt, String[] paramArrayOfString, boolean[] paramArrayOfBoolean)
   {
     if (QLog.isColorLevel())
@@ -6507,13 +4499,13 @@ public class FriendListHandler
     }
     label102:
     Object localObject1 = new ArrayList();
-    Object localObject2 = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject2 = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     i = 0;
     boolean bool = false;
     while (i < paramArrayOfString.length)
     {
       String str = paramArrayOfString[i];
-      Object localObject3 = ((anvk)localObject2).a(str, false);
+      Object localObject3 = ((FriendsManager)localObject2).a(str, false);
       if (localObject3 == null)
       {
         QLog.d("FriendListHandler", 1, new Object[] { "setMessageNotificationSetting: invoked. ", " extensionInfo: ", localObject3 });
@@ -6524,7 +4516,7 @@ public class FriendListHandler
         if (QLog.isColorLevel()) {
           QLog.d("FriendListHandler", 2, new Object[] { "setMessageNotificationSetting: invoked. ", " type: ", Integer.valueOf(paramInt), " uin: ", str, " isSwitchOn: ", Boolean.valueOf(bool) });
         }
-        Object localObject5 = aqne.a((ExtensionInfo)localObject3);
+        Object localObject5 = MessageNotificationSettingManager.a((ExtensionInfo)localObject3);
         int k = paramArrayOfBoolean[i];
         Object localObject4 = new oidb_0x5d6.SnsUpdateItem();
         localObject3 = new ArrayList();
@@ -6539,7 +4531,7 @@ public class FriendListHandler
         }
         do
         {
-          localObject5 = aqne.a((ExtensionInfo)localObject5);
+          localObject5 = MessageNotificationSettingManager.a((ExtensionInfo)localObject5);
           ((oidb_0x5d6.SnsUpdateItem)localObject4).uint32_update_sns_type.set(13582);
           ((oidb_0x5d6.SnsUpdateItem)localObject4).bytes_value.set(ByteStringMicro.copyFrom((byte[])localObject5));
           ((List)localObject3).add(localObject4);
@@ -6597,7 +4589,7 @@ public class FriendListHandler
     while (((Iterator)localObject).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      paramConcurrentHashMap.add(new GeneralSettings.Setting((String)localEntry.getKey(), ((Integer)localEntry.getValue()).toString()));
+      paramConcurrentHashMap.add(new Setting((String)localEntry.getKey(), ((Integer)localEntry.getValue()).toString()));
     }
     localObject = createToServiceMsg("ProfileService.ReqSetSettings");
     ((ToServiceMsg)localObject).extraData.putSerializable("Settings", paramConcurrentHashMap);
@@ -6605,7 +4597,7 @@ public class FriendListHandler
     send((ToServiceMsg)localObject);
   }
   
-  public void setShowBigClubSwitch(QQAppInterface paramQQAppInterface, boolean paramBoolean, ntf paramntf)
+  public void setShowBigClubSwitch(QQAppInterface paramQQAppInterface, boolean paramBoolean, ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver)
   {
     for (int i = 0;; i = 1) {
       try
@@ -6620,7 +4612,7 @@ public class FriendListHandler
         if (paramBoolean)
         {
           PkgTools.Word2Byte(arrayOfByte, 11, (short)i);
-          ntb.a(paramQQAppInterface, paramntf, arrayOfByte, "OidbSvc.0x4ff_9", 1279, 9);
+          ProtoUtils.a(paramQQAppInterface, paramTroopProtocolObserver, arrayOfByte, "OidbSvc.0x4ff_9", 1279, 9);
           return;
         }
       }
@@ -6774,7 +4766,7 @@ public class FriendListHandler
     for (Object localObject1 = "null";; localObject1 = Integer.valueOf(paramArrayOfString.length))
     {
       QLog.d("set_special_care_switches_of_a_person", 2, localObject1);
-      if ((!StringUtil.isEmpty(paramString)) && (paramArrayOfInt != null) && (paramArrayOfBoolean != null) && (paramArrayOfString != null) && (paramArrayOfInt.length == paramArrayOfBoolean.length) && (paramArrayOfBoolean.length == paramArrayOfString.length)) {
+      if ((!StringUtil.a(paramString)) && (paramArrayOfInt != null) && (paramArrayOfBoolean != null) && (paramArrayOfString != null) && (paramArrayOfInt.length == paramArrayOfBoolean.length) && (paramArrayOfBoolean.length == paramArrayOfString.length)) {
         break label173;
       }
       return;
@@ -6832,7 +4824,7 @@ public class FriendListHandler
           localSnsUpdateItem.uint32_update_sns_type.set(13568);
           if (k != 0)
           {
-            if (StringUtil.isEmpty((String)localObject3)) {
+            if (StringUtil.a((String)localObject3)) {
               throw new IllegalArgumentException("special ring id can not be empty!");
             }
             localObject3 = ((String)localObject3).getBytes();
@@ -6954,7 +4946,7 @@ public class FriendListHandler
     long l;
     if (bool1)
     {
-      l = bhdd.a(this.app.getApp().getApplicationContext(), this.app.getCurrentAccountUin());
+      l = ContactConfig.a(this.app.getApp().getApplicationContext(), this.app.getCurrentAccountUin());
       if (Math.abs(System.currentTimeMillis() - l) <= 86400000L) {
         break label109;
       }
@@ -6972,131 +4964,7 @@ public class FriendListHandler
     }
   }
   
-  public void statGetQQHeadCostTime(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    statGetQQHeadCostTime(paramInt1, paramString, paramInt2, paramInt3, 0, null, 0, 0L);
-  }
-  
-  public void statGetQQHeadCostTime(int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, String paramString2, int paramInt5, long paramLong)
-  {
-    boolean bool;
-    long l1;
-    if (paramInt1 == 0)
-    {
-      bool = true;
-      l1 = paramLong;
-      if (paramLong == 0L) {
-        l1 = System.currentTimeMillis();
-      }
-      if (paramInt3 != 1) {
-        break label653;
-      }
-      if (this.statGetQQHeadTime.containsKey(paramString1)) {
-        this.statGetQQHeadTime.remove(paramString1);
-      }
-      paramString2 = new aokr();
-      paramString2.jdField_a_of_type_Long = l1;
-      paramString2.jdField_b_of_type_Int = paramInt2;
-      this.statGetQQHeadTime.put(paramString1, paramString2);
-    }
-    for (;;)
-    {
-      long l2;
-      Object localObject;
-      if (((!bool) || (paramInt3 == 4)) && (paramString2 != null))
-      {
-        l2 = paramString2.jdField_b_of_type_Long - paramString2.jdField_a_of_type_Long;
-        l1 = 0L;
-        paramLong = l1;
-        if (paramString2.c > paramString2.jdField_b_of_type_Long)
-        {
-          paramLong = l1;
-          if (paramString2.jdField_b_of_type_Long > 0L) {
-            paramLong = paramString2.c - paramString2.jdField_b_of_type_Long;
-          }
-        }
-        l1 = paramString2.d - paramString2.c;
-        if ((QLog.isColorLevel()) || ((bool) && (paramInt3 == 4) && (paramString2.e > 3000L)))
-        {
-          localObject = new StringBuffer(200);
-          ((StringBuffer)localObject).append("===QQHeadStat resultCode=").append(paramInt1);
-          ((StringBuffer)localObject).append(", uin=").append(String.format("%11s", new Object[] { paramString1 }));
-          ((StringBuffer)localObject).append(", totalTime=").append(String.format("%-5s", new Object[] { Long.valueOf(paramString2.e) }));
-          ((StringBuffer)localObject).append(", picSize=").append(String.format("%-6s", new Object[] { Integer.valueOf(paramString2.jdField_a_of_type_Int) }));
-          ((StringBuffer)localObject).append(", downInfoTime=").append(l2);
-          ((StringBuffer)localObject).append(", intervalTime=").append(paramLong);
-          ((StringBuffer)localObject).append(", downPicTime=").append(l1);
-          ((StringBuffer)localObject).append(", reasonCode=").append(paramInt5);
-          ((StringBuffer)localObject).append(", downUrl=").append(paramString2.jdField_a_of_type_JavaLangString);
-          if (!QLog.isColorLevel()) {
-            break label826;
-          }
-        }
-      }
-      label653:
-      label826:
-      for (paramInt3 = 2;; paramInt3 = 1)
-      {
-        QLog.d("QQHeadCostTime", paramInt3, ((StringBuffer)localObject).toString());
-        if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
-        {
-          localObject = new HashMap();
-          ((HashMap)localObject).put("qqhead_uin", paramString1);
-          ((HashMap)localObject).put("downInfo_time", String.valueOf(l2));
-          ((HashMap)localObject).put("interval_time", String.valueOf(paramLong));
-          ((HashMap)localObject).put("downPic_time", String.valueOf(l1));
-          ((HashMap)localObject).put("downPic_size", String.valueOf(paramString2.jdField_a_of_type_Int));
-          ((HashMap)localObject).put("download_url", paramString2.jdField_a_of_type_JavaLangString);
-          ((HashMap)localObject).put("param_FailCode", Integer.toString(paramInt1));
-          ((HashMap)localObject).put("fail_reason", Integer.toString(paramInt5));
-          ((HashMap)localObject).put("param_threadOpId", String.valueOf(aoem.a().a()));
-          paramString1 = FaceDownloader.getHeadActionTagWithNetWork(paramInt2);
-          if (!TextUtils.isEmpty(paramString1)) {
-            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.app.getCurrentAccountUin(), paramString1, bool, paramString2.e, paramString2.jdField_a_of_type_Int, (HashMap)localObject, "");
-          }
-          paramString1 = FaceDownloader.getHeadActionTag(paramInt2);
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.app.getCurrentAccountUin(), paramString1, bool, paramString2.e, paramString2.jdField_a_of_type_Int, (HashMap)localObject, "");
-        }
-        do
-        {
-          return;
-          bool = false;
-          break;
-          if (!this.statGetQQHeadTime.containsKey(paramString1)) {
-            break label832;
-          }
-          localObject = (aokr)this.statGetQQHeadTime.get(paramString1);
-        } while (localObject == null);
-        switch (paramInt3)
-        {
-        }
-        for (;;)
-        {
-          paramString2 = (String)localObject;
-          break;
-          ((aokr)localObject).jdField_b_of_type_Long = l1;
-          if (!bool) {
-            this.statGetQQHeadTime.remove(paramString1);
-          }
-          ((aokr)localObject).e = (((aokr)localObject).jdField_b_of_type_Long - ((aokr)localObject).jdField_a_of_type_Long);
-          paramString2 = (String)localObject;
-          break;
-          ((aokr)localObject).c = l1;
-          paramString2 = (String)localObject;
-          break;
-          ((aokr)localObject).d = l1;
-          ((aokr)localObject).jdField_a_of_type_Int = paramInt4;
-          ((aokr)localObject).jdField_a_of_type_JavaLangString = paramString2;
-          ((aokr)localObject).e = (((aokr)localObject).d - ((aokr)localObject).jdField_a_of_type_Long);
-          this.statGetQQHeadTime.remove(paramString1);
-        }
-      }
-      label832:
-      paramString2 = null;
-    }
-  }
-  
-  public void updateTrustDeviceList(long paramLong, int paramInt1, String paramString, int paramInt2, ArrayList<amlc> paramArrayList)
+  public void updateTrustDeviceList(long paramLong, int paramInt1, String paramString, int paramInt2, ArrayList<DeviceLockItemInfo> paramArrayList)
   {
     device_lock_confirm_auth.ReqBody localReqBody = new device_lock_confirm_auth.ReqBody();
     localReqBody.uint64_uin.set(paramLong);
@@ -7111,18 +4979,18 @@ public class FriendListHandler
     if (paramInt2 < i)
     {
       device_lock_confirm_auth.DeviceInfo localDeviceInfo = new device_lock_confirm_auth.DeviceInfo();
-      amlc localamlc = (amlc)paramArrayList.get(paramInt2);
-      if (localamlc == null) {}
+      DeviceLockItemInfo localDeviceLockItemInfo = (DeviceLockItemInfo)paramArrayList.get(paramInt2);
+      if (localDeviceLockItemInfo == null) {}
       for (;;)
       {
         paramInt2 += 1;
         break;
-        localDeviceInfo.bytes_appname.set(ByteStringMicro.copyFrom(localamlc.jdField_c_of_type_JavaLangString.getBytes()));
-        localDeviceInfo.bytes_device_name.set(ByteStringMicro.copyFrom(localamlc.jdField_a_of_type_JavaLangString.getBytes()));
-        localDeviceInfo.bytes_device_typeinfo.set(ByteStringMicro.copyFrom(localamlc.b.getBytes()));
-        localDeviceInfo.bytes_guid.set(ByteStringMicro.copyFrom(localamlc.jdField_a_of_type_ArrayOfByte));
-        localDeviceInfo.uint32_appid.set(localamlc.jdField_a_of_type_Int);
-        localDeviceInfo.uint32_auth_status.set(localamlc.jdField_c_of_type_Int);
+        localDeviceInfo.bytes_appname.set(ByteStringMicro.copyFrom(localDeviceLockItemInfo.jdField_c_of_type_JavaLangString.getBytes()));
+        localDeviceInfo.bytes_device_name.set(ByteStringMicro.copyFrom(localDeviceLockItemInfo.jdField_a_of_type_JavaLangString.getBytes()));
+        localDeviceInfo.bytes_device_typeinfo.set(ByteStringMicro.copyFrom(localDeviceLockItemInfo.b.getBytes()));
+        localDeviceInfo.bytes_guid.set(ByteStringMicro.copyFrom(localDeviceLockItemInfo.jdField_a_of_type_ArrayOfByte));
+        localDeviceInfo.uint32_appid.set(localDeviceLockItemInfo.jdField_a_of_type_Int);
+        localDeviceInfo.uint32_auth_status.set(localDeviceLockItemInfo.jdField_c_of_type_Int);
         localDeviceInfo.uint32_subappid.set(paramInt1);
         paramString.add(localDeviceInfo);
       }
@@ -7138,7 +5006,7 @@ public class FriendListHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendListHandler
  * JD-Core Version:    0.7.0.1
  */

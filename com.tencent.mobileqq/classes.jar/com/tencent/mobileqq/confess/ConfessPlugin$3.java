@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.confess;
 
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.qphone.base.util.QLog;
-import znl;
 
 class ConfessPlugin$3
   implements Runnable
@@ -12,7 +12,7 @@ class ConfessPlugin$3
   {
     try
     {
-      znl.a(this.a, this.b);
+      QRUtils.a(this.a, this.b);
       return;
     }
     catch (Exception localException)
@@ -24,7 +24,7 @@ class ConfessPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.3
  * JD-Core Version:    0.7.0.1
  */

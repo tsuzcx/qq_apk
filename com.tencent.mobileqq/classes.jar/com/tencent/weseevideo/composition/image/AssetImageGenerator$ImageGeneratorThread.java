@@ -31,10 +31,13 @@ class AssetImageGenerator$ImageGeneratorThread
     while (localIterator.hasNext())
     {
       CMTime localCMTime = (CMTime)localIterator.next();
+      this.handler.removeMessages(1);
       Message localMessage = Message.obtain();
       localMessage.what = 1;
       localMessage.obj = localCMTime;
-      this.handler.sendMessage(localMessage);
+      if ((AssetImageGenerator.access$500(this.this$0) >= AssetImageGenerator.access$600(this.this$0) - 1) && (AssetImageGenerator.access$500(this.this$0) <= AssetImageGenerator.access$600(this.this$0) + 1)) {
+        this.handler.sendMessage(localMessage);
+      }
     }
   }
   
@@ -105,7 +108,7 @@ class AssetImageGenerator$ImageGeneratorThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.composition.image.AssetImageGenerator.ImageGeneratorThread
  * JD-Core Version:    0.7.0.1
  */

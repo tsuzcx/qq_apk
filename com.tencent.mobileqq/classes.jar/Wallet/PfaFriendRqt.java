@@ -9,7 +9,7 @@ public final class PfaFriendRqt
 {
   public String mqq_version = "";
   public String pfa_msg_edition = "";
-  public int pfa_sub_type;
+  public int pfa_sub_type = 0;
   public String skey = "";
   
   public void readFrom(JceInputStream paramJceInputStream)

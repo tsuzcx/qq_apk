@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.profilecard.bussiness.qzone;
 
 import android.text.TextUtils;
-import azrb;
-import baca;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.util.QZLog;
 
-public class ProfileQZoneComponent$2
+class ProfileQZoneComponent$2
   implements Runnable
 {
-  public ProfileQZoneComponent$2(baca parambaca, azrb paramazrb) {}
+  ProfileQZoneComponent$2(ProfileQZoneComponent paramProfileQZoneComponent, ProfileCardInfo paramProfileCardInfo) {}
   
   public void run()
   {
     try
     {
-      if (!TextUtils.isEmpty(this.a.a.a))
+      if (!TextUtils.isEmpty(this.val$cardInfo.a.a))
       {
-        Object localObject = this.a.a.a;
-        if (this.a.a.a.startsWith("+")) {
-          localObject = this.a.a.a.substring(1);
+        Object localObject = this.val$cardInfo.a.a;
+        if (this.val$cardInfo.a.a.startsWith("+")) {
+          localObject = this.val$cardInfo.a.a.substring(1);
         }
         localObject = new LpReportInfo_pf00064(699, 2, Long.valueOf((String)localObject).longValue());
         LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);

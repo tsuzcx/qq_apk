@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.tofumsg;
 
 import androidx.annotation.NonNull;
-import bejf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import java.io.UnsupportedEncodingException;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="frdUin,busId")
+@KeepClassConstructor
 public class TofuItem
   extends Entity
 {
@@ -86,7 +87,7 @@ public class TofuItem
       }
       oidb_0xe61.BeancurdCubeInfo localBeancurdCubeInfo = new oidb_0xe61.BeancurdCubeInfo();
       localBeancurdCubeInfo.uint64_frd_uin.set(this.frdUin);
-      localBeancurdCubeInfo.uint64_busi_id.set(bejf.a(this.busId));
+      localBeancurdCubeInfo.uint64_busi_id.set(TofuConst.a(this.busId));
       localBeancurdCubeInfo.uint64_uin.set(l);
       localBeancurdCubeInfo.uint64_last_pull_time.set(this.lastPullTsSvr);
       return localBeancurdCubeInfo;
@@ -129,7 +130,7 @@ public class TofuItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("frdUin").append("=").append(MobileQQ.getShortUinStr(Long.toString(this.frdUin)));
-    localStringBuilder.append("|").append("busId").append("=").append(bejf.a(this.busId));
+    localStringBuilder.append("|").append("busId").append("=").append(TofuConst.a(this.busId));
     localStringBuilder.append("|").append("eventTs").append("=").append(this.eventTs);
     localStringBuilder.append("|").append("pullInterval").append("=").append(this.pullInterval);
     localStringBuilder.append("|").append("lastPullTsLocal").append("=").append(this.lastPullTsLocal);

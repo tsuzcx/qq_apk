@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Process;
 import android.text.TextUtils;
+import com.tencent.qqlive.tvkplayer.tools.utils.TVKLogUtil;
 import java.io.File;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,6 +17,7 @@ public class LocalCache
 {
   private static final int MAX_COUNT = 2147483647;
   private static final int MAX_SIZE = 50000000;
+  private static final String TAG = "MediaPlayerMgr[LocalCache.java]";
   public static final int TIME_DAY = 86400;
   public static final int TIME_HOUR = 3600;
   private static Map<String, LocalCache> mInstanceMap = new HashMap();
@@ -57,73 +59,75 @@ public class LocalCache
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: getstatic 27	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mInstanceMap	Ljava/util/Map;
-    //   6: new 75	java/lang/StringBuilder
+    //   3: getstatic 31	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mInstanceMap	Ljava/util/Map;
+    //   6: new 79	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 80	java/lang/StringBuilder:<init>	()V
     //   13: aload_0
-    //   14: invokevirtual 79	java/io/File:getAbsoluteFile	()Ljava/io/File;
-    //   17: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   20: invokestatic 87	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:myPid	()Ljava/lang/String;
-    //   23: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokeinterface 98 2 0
+    //   14: invokevirtual 83	java/io/File:getAbsoluteFile	()Ljava/io/File;
+    //   17: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   20: invokestatic 91	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:myPid	()Ljava/lang/String;
+    //   23: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   29: invokeinterface 102 2 0
     //   34: checkcast 2	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache
     //   37: astore 5
     //   39: aload 5
     //   41: astore 4
     //   43: aload 4
-    //   45: ifnonnull +78 -> 123
+    //   45: ifnonnull +82 -> 127
     //   48: new 2	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache
     //   51: dup
     //   52: aload_0
     //   53: lload_1
     //   54: iload_3
-    //   55: invokespecial 100	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:<init>	(Ljava/io/File;JI)V
+    //   55: invokespecial 104	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:<init>	(Ljava/io/File;JI)V
     //   58: astore 5
-    //   60: getstatic 27	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mInstanceMap	Ljava/util/Map;
-    //   63: new 75	java/lang/StringBuilder
+    //   60: getstatic 31	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mInstanceMap	Ljava/util/Map;
+    //   63: new 79	java/lang/StringBuilder
     //   66: dup
-    //   67: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   67: invokespecial 80	java/lang/StringBuilder:<init>	()V
     //   70: aload_0
-    //   71: invokevirtual 103	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   74: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: invokestatic 87	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:myPid	()Ljava/lang/String;
-    //   80: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: invokevirtual 107	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   74: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: invokestatic 91	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:myPid	()Ljava/lang/String;
+    //   80: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   86: aload 5
-    //   88: invokeinterface 107 3 0
+    //   88: invokeinterface 111 3 0
     //   93: pop
     //   94: aload 5
     //   96: areturn
     //   97: astore 5
-    //   99: aload 5
-    //   101: invokevirtual 110	java/lang/Exception:printStackTrace	()V
-    //   104: goto -61 -> 43
-    //   107: astore_0
-    //   108: aload_0
-    //   109: invokevirtual 111	java/lang/Throwable:printStackTrace	()V
-    //   112: aload 4
-    //   114: areturn
-    //   115: astore_0
-    //   116: aload 5
-    //   118: astore 4
-    //   120: goto -12 -> 108
-    //   123: aload 4
-    //   125: areturn
+    //   99: ldc 13
+    //   101: aload 5
+    //   103: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   106: goto -63 -> 43
+    //   109: astore_0
+    //   110: ldc 13
+    //   112: aload_0
+    //   113: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   116: aload 4
+    //   118: areturn
+    //   119: astore_0
+    //   120: aload 5
+    //   122: astore 4
+    //   124: goto -14 -> 110
+    //   127: aload 4
+    //   129: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	126	0	paramFile	File
-    //   0	126	1	paramLong	long
-    //   0	126	3	paramInt	int
-    //   1	123	4	localObject	Object
+    //   0	130	0	paramFile	File
+    //   0	130	1	paramLong	long
+    //   0	130	3	paramInt	int
+    //   1	127	4	localObject	Object
     //   37	58	5	localLocalCache	LocalCache
-    //   97	20	5	localException	Exception
+    //   97	24	5	localException	Exception
     // Exception table:
     //   from	to	target	type
     //   3	39	97	java/lang/Exception
-    //   48	60	107	java/lang/Throwable
-    //   60	94	115	java/lang/Throwable
+    //   48	60	109	java/lang/Throwable
+    //   60	94	119	java/lang/Throwable
   }
   
   private static String myPid()
@@ -157,179 +161,186 @@ public class LocalCache
     //   0: aconst_null
     //   1: astore 6
     //   3: aload_0
-    //   4: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   4: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
     //   7: ifnonnull +8 -> 15
     //   10: aload 6
     //   12: astore_3
     //   13: aload_3
     //   14: areturn
     //   15: aload_0
-    //   16: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   16: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
     //   19: aload_1
-    //   20: invokestatic 139	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$400	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
+    //   20: invokestatic 145	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$400	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
     //   23: astore_3
     //   24: aload_3
-    //   25: invokevirtual 36	java/io/File:exists	()Z
+    //   25: invokevirtual 40	java/io/File:exists	()Z
     //   28: istore_2
     //   29: iload_2
-    //   30: ifne +25 -> 55
+    //   30: ifne +27 -> 57
     //   33: aload 6
     //   35: astore_3
     //   36: iconst_0
     //   37: ifeq -24 -> 13
-    //   40: new 141	java/lang/NullPointerException
+    //   40: new 147	java/lang/NullPointerException
     //   43: dup
-    //   44: invokespecial 142	java/lang/NullPointerException:<init>	()V
+    //   44: invokespecial 148	java/lang/NullPointerException:<init>	()V
     //   47: athrow
     //   48: astore_1
-    //   49: aload_1
-    //   50: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   53: aconst_null
-    //   54: areturn
-    //   55: new 145	java/io/RandomAccessFile
-    //   58: dup
-    //   59: aload_3
-    //   60: ldc 147
-    //   62: invokespecial 148	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   65: astore 4
-    //   67: aload 4
-    //   69: astore_3
-    //   70: aload 4
-    //   72: invokevirtual 152	java/io/RandomAccessFile:length	()J
-    //   75: l2i
-    //   76: newarray byte
-    //   78: astore 5
-    //   80: aload 4
-    //   82: astore_3
-    //   83: aload 4
-    //   85: aload 5
-    //   87: invokevirtual 156	java/io/RandomAccessFile:read	([B)I
-    //   90: ifle +70 -> 160
-    //   93: aload 4
-    //   95: astore_3
-    //   96: aload 5
-    //   98: invokestatic 162	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$Utils:access$800	([B)Z
-    //   101: ifne +33 -> 134
-    //   104: aload 4
-    //   106: astore_3
-    //   107: aload 5
-    //   109: invokestatic 166	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$Utils:access$900	([B)[B
-    //   112: astore_1
-    //   113: aload_1
-    //   114: astore_3
-    //   115: aload 4
-    //   117: ifnull -104 -> 13
-    //   120: aload 4
-    //   122: invokevirtual 169	java/io/RandomAccessFile:close	()V
-    //   125: aload_1
-    //   126: areturn
-    //   127: astore_3
-    //   128: aload_3
-    //   129: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   132: aload_1
-    //   133: areturn
-    //   134: aload 4
-    //   136: ifnull +8 -> 144
-    //   139: aload 4
-    //   141: invokevirtual 169	java/io/RandomAccessFile:close	()V
-    //   144: aload_0
-    //   145: aload_1
-    //   146: invokevirtual 173	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:remove	(Ljava/lang/String;)Z
-    //   149: pop
-    //   150: aconst_null
-    //   151: areturn
-    //   152: astore_3
-    //   153: aload_3
-    //   154: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   157: goto -13 -> 144
-    //   160: aload 6
-    //   162: astore_3
-    //   163: aload 4
-    //   165: ifnull -152 -> 13
-    //   168: aload 4
-    //   170: invokevirtual 169	java/io/RandomAccessFile:close	()V
-    //   173: aconst_null
-    //   174: areturn
-    //   175: astore_1
-    //   176: aload_1
-    //   177: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   180: aconst_null
-    //   181: areturn
-    //   182: astore 5
-    //   184: aconst_null
-    //   185: astore_1
-    //   186: aload_1
-    //   187: astore_3
-    //   188: aload 5
-    //   190: invokevirtual 110	java/lang/Exception:printStackTrace	()V
-    //   193: aload 6
+    //   49: ldc 13
+    //   51: aload_1
+    //   52: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   55: aconst_null
+    //   56: areturn
+    //   57: new 150	java/io/RandomAccessFile
+    //   60: dup
+    //   61: aload_3
+    //   62: ldc 152
+    //   64: invokespecial 153	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   67: astore 4
+    //   69: aload 4
+    //   71: astore_3
+    //   72: aload 4
+    //   74: invokevirtual 157	java/io/RandomAccessFile:length	()J
+    //   77: l2i
+    //   78: newarray byte
+    //   80: astore 5
+    //   82: aload 4
+    //   84: astore_3
+    //   85: aload 4
+    //   87: aload 5
+    //   89: invokevirtual 161	java/io/RandomAccessFile:read	([B)I
+    //   92: ifle +74 -> 166
+    //   95: aload 4
+    //   97: astore_3
+    //   98: aload 5
+    //   100: invokestatic 167	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$Utils:access$800	([B)Z
+    //   103: ifne +35 -> 138
+    //   106: aload 4
+    //   108: astore_3
+    //   109: aload 5
+    //   111: invokestatic 171	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$Utils:access$900	([B)[B
+    //   114: astore_1
+    //   115: aload_1
+    //   116: astore_3
+    //   117: aload 4
+    //   119: ifnull -106 -> 13
+    //   122: aload 4
+    //   124: invokevirtual 174	java/io/RandomAccessFile:close	()V
+    //   127: aload_1
+    //   128: areturn
+    //   129: astore_3
+    //   130: ldc 13
+    //   132: aload_3
+    //   133: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   136: aload_1
+    //   137: areturn
+    //   138: aload 4
+    //   140: ifnull +8 -> 148
+    //   143: aload 4
+    //   145: invokevirtual 174	java/io/RandomAccessFile:close	()V
+    //   148: aload_0
+    //   149: aload_1
+    //   150: invokevirtual 178	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:remove	(Ljava/lang/String;)Z
+    //   153: pop
+    //   154: aconst_null
+    //   155: areturn
+    //   156: astore_3
+    //   157: ldc 13
+    //   159: aload_3
+    //   160: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   163: goto -15 -> 148
+    //   166: aload 6
+    //   168: astore_3
+    //   169: aload 4
+    //   171: ifnull -158 -> 13
+    //   174: aload 4
+    //   176: invokevirtual 174	java/io/RandomAccessFile:close	()V
+    //   179: aconst_null
+    //   180: areturn
+    //   181: astore_1
+    //   182: ldc 13
+    //   184: aload_1
+    //   185: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   188: aconst_null
+    //   189: areturn
+    //   190: astore 5
+    //   192: aconst_null
+    //   193: astore_1
+    //   194: aload_1
     //   195: astore_3
-    //   196: aload_1
-    //   197: ifnull -184 -> 13
-    //   200: aload_1
-    //   201: invokevirtual 169	java/io/RandomAccessFile:close	()V
-    //   204: aconst_null
-    //   205: areturn
-    //   206: astore_1
-    //   207: aload_1
-    //   208: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   211: aconst_null
-    //   212: areturn
-    //   213: astore_1
+    //   196: ldc 13
+    //   198: aload 5
+    //   200: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   203: aload 6
+    //   205: astore_3
+    //   206: aload_1
+    //   207: ifnull -194 -> 13
+    //   210: aload_1
+    //   211: invokevirtual 174	java/io/RandomAccessFile:close	()V
     //   214: aconst_null
-    //   215: astore_3
-    //   216: aload_3
-    //   217: ifnull +7 -> 224
-    //   220: aload_3
-    //   221: invokevirtual 169	java/io/RandomAccessFile:close	()V
-    //   224: aload_1
-    //   225: athrow
-    //   226: astore_3
-    //   227: aload_3
-    //   228: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   231: goto -7 -> 224
-    //   234: astore_1
-    //   235: goto -19 -> 216
-    //   238: astore 5
-    //   240: aload 4
-    //   242: astore_1
-    //   243: goto -57 -> 186
+    //   215: areturn
+    //   216: astore_1
+    //   217: ldc 13
+    //   219: aload_1
+    //   220: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   223: aconst_null
+    //   224: areturn
+    //   225: astore_1
+    //   226: aconst_null
+    //   227: astore_3
+    //   228: aload_3
+    //   229: ifnull +7 -> 236
+    //   232: aload_3
+    //   233: invokevirtual 174	java/io/RandomAccessFile:close	()V
+    //   236: aload_1
+    //   237: athrow
+    //   238: astore_3
+    //   239: ldc 13
+    //   241: aload_3
+    //   242: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   245: goto -9 -> 236
+    //   248: astore_1
+    //   249: goto -21 -> 228
+    //   252: astore 5
+    //   254: aload 4
+    //   256: astore_1
+    //   257: goto -63 -> 194
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	246	0	this	LocalCache
-    //   0	246	1	paramString	String
+    //   0	260	0	this	LocalCache
+    //   0	260	1	paramString	String
     //   28	2	2	bool	boolean
-    //   12	103	3	localObject1	Object
-    //   127	2	3	localIOException1	java.io.IOException
-    //   152	2	3	localIOException2	java.io.IOException
-    //   162	59	3	localObject2	Object
-    //   226	2	3	localIOException3	java.io.IOException
-    //   65	176	4	localRandomAccessFile	java.io.RandomAccessFile
-    //   78	30	5	arrayOfByte	byte[]
-    //   182	7	5	localException1	Exception
-    //   238	1	5	localException2	Exception
-    //   1	193	6	localObject3	Object
+    //   12	105	3	localObject1	Object
+    //   129	4	3	localIOException1	java.io.IOException
+    //   156	4	3	localIOException2	java.io.IOException
+    //   168	65	3	localObject2	Object
+    //   238	4	3	localIOException3	java.io.IOException
+    //   67	188	4	localRandomAccessFile	java.io.RandomAccessFile
+    //   80	30	5	arrayOfByte	byte[]
+    //   190	9	5	localException1	Exception
+    //   252	1	5	localException2	Exception
+    //   1	203	6	localObject3	Object
     // Exception table:
     //   from	to	target	type
     //   40	48	48	java/io/IOException
-    //   120	125	127	java/io/IOException
-    //   139	144	152	java/io/IOException
-    //   168	173	175	java/io/IOException
-    //   15	29	182	java/lang/Exception
-    //   55	67	182	java/lang/Exception
-    //   200	204	206	java/io/IOException
-    //   15	29	213	finally
-    //   55	67	213	finally
-    //   220	224	226	java/io/IOException
-    //   70	80	234	finally
-    //   83	93	234	finally
-    //   96	104	234	finally
-    //   107	113	234	finally
-    //   188	193	234	finally
-    //   70	80	238	java/lang/Exception
-    //   83	93	238	java/lang/Exception
-    //   96	104	238	java/lang/Exception
-    //   107	113	238	java/lang/Exception
+    //   122	127	129	java/io/IOException
+    //   143	148	156	java/io/IOException
+    //   174	179	181	java/io/IOException
+    //   15	29	190	java/lang/Exception
+    //   57	69	190	java/lang/Exception
+    //   210	214	216	java/io/IOException
+    //   15	29	225	finally
+    //   57	69	225	finally
+    //   232	236	238	java/io/IOException
+    //   72	82	248	finally
+    //   85	95	248	finally
+    //   98	106	248	finally
+    //   109	115	248	finally
+    //   196	203	248	finally
+    //   72	82	252	java/lang/Exception
+    //   85	95	252	java/lang/Exception
+    //   98	106	252	java/lang/Exception
+    //   109	115	252	java/lang/Exception
   }
   
   public Bitmap getAsBitmap(String paramString)
@@ -363,7 +374,7 @@ public class LocalCache
     }
     catch (Exception paramString)
     {
-      paramString.printStackTrace();
+      TVKLogUtil.e("MediaPlayerMgr[LocalCache.java]", paramString);
     }
     return null;
   }
@@ -383,7 +394,7 @@ public class LocalCache
     }
     catch (Exception paramString)
     {
-      paramString.printStackTrace();
+      TVKLogUtil.e("MediaPlayerMgr[LocalCache.java]", paramString);
     }
     return null;
   }
@@ -396,157 +407,164 @@ public class LocalCache
     //   1: astore 6
     //   3: aload_0
     //   4: aload_1
-    //   5: invokevirtual 177	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:getAsBinary	(Ljava/lang/String;)[B
+    //   5: invokevirtual 182	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:getAsBinary	(Ljava/lang/String;)[B
     //   8: astore_1
     //   9: aload 6
     //   11: astore_2
     //   12: aload_1
     //   13: ifnull +55 -> 68
-    //   16: new 213	java/io/ByteArrayInputStream
+    //   16: new 218	java/io/ByteArrayInputStream
     //   19: dup
     //   20: aload_1
-    //   21: invokespecial 216	java/io/ByteArrayInputStream:<init>	([B)V
+    //   21: invokespecial 221	java/io/ByteArrayInputStream:<init>	([B)V
     //   24: astore_2
-    //   25: new 218	java/io/ObjectInputStream
+    //   25: new 223	java/io/ObjectInputStream
     //   28: dup
     //   29: aload_2
-    //   30: invokespecial 221	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   30: invokespecial 226	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   33: astore_1
     //   34: aload_1
     //   35: astore 4
     //   37: aload_2
     //   38: astore_3
     //   39: aload_1
-    //   40: invokevirtual 225	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   40: invokevirtual 230	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   43: astore 5
     //   45: aload 5
     //   47: astore_3
     //   48: aload_2
     //   49: ifnull +7 -> 56
     //   52: aload_2
-    //   53: invokevirtual 226	java/io/ByteArrayInputStream:close	()V
+    //   53: invokevirtual 231	java/io/ByteArrayInputStream:close	()V
     //   56: aload_3
     //   57: astore_2
     //   58: aload_1
     //   59: ifnull +9 -> 68
     //   62: aload_1
-    //   63: invokevirtual 227	java/io/ObjectInputStream:close	()V
+    //   63: invokevirtual 232	java/io/ObjectInputStream:close	()V
     //   66: aload_3
     //   67: astore_2
     //   68: aload_2
     //   69: areturn
     //   70: astore_2
-    //   71: aload_2
-    //   72: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   75: goto -19 -> 56
-    //   78: astore_1
-    //   79: aload_1
-    //   80: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   83: aload_3
-    //   84: areturn
-    //   85: astore 5
-    //   87: aconst_null
-    //   88: astore_1
-    //   89: aconst_null
-    //   90: astore_2
-    //   91: aload_1
-    //   92: astore 4
-    //   94: aload_2
-    //   95: astore_3
-    //   96: aload 5
-    //   98: invokevirtual 110	java/lang/Exception:printStackTrace	()V
-    //   101: aload_2
-    //   102: ifnull +7 -> 109
-    //   105: aload_2
-    //   106: invokevirtual 226	java/io/ByteArrayInputStream:close	()V
-    //   109: aload 6
-    //   111: astore_2
-    //   112: aload_1
-    //   113: ifnull -45 -> 68
-    //   116: aload_1
-    //   117: invokevirtual 227	java/io/ObjectInputStream:close	()V
-    //   120: aconst_null
-    //   121: areturn
-    //   122: astore_1
-    //   123: aload_1
-    //   124: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   127: aconst_null
-    //   128: areturn
-    //   129: astore_2
-    //   130: aload_2
-    //   131: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   134: goto -25 -> 109
-    //   137: astore_1
-    //   138: aconst_null
-    //   139: astore 4
-    //   141: aconst_null
-    //   142: astore_2
-    //   143: aload_2
-    //   144: ifnull +7 -> 151
-    //   147: aload_2
-    //   148: invokevirtual 226	java/io/ByteArrayInputStream:close	()V
-    //   151: aload 4
-    //   153: ifnull +8 -> 161
-    //   156: aload 4
-    //   158: invokevirtual 227	java/io/ObjectInputStream:close	()V
-    //   161: aload_1
-    //   162: athrow
-    //   163: astore_2
-    //   164: aload_2
-    //   165: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   168: goto -17 -> 151
-    //   171: astore_2
-    //   172: aload_2
-    //   173: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   176: goto -15 -> 161
-    //   179: astore_1
-    //   180: aconst_null
-    //   181: astore 4
-    //   183: goto -40 -> 143
-    //   186: astore_1
-    //   187: aload_3
-    //   188: astore_2
-    //   189: goto -46 -> 143
-    //   192: astore 5
+    //   71: ldc 13
+    //   73: aload_2
+    //   74: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   77: goto -21 -> 56
+    //   80: astore_1
+    //   81: ldc 13
+    //   83: aload_1
+    //   84: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   87: aload_3
+    //   88: areturn
+    //   89: astore 5
+    //   91: aconst_null
+    //   92: astore_1
+    //   93: aconst_null
+    //   94: astore_2
+    //   95: aload_1
+    //   96: astore 4
+    //   98: aload_2
+    //   99: astore_3
+    //   100: ldc 13
+    //   102: aload 5
+    //   104: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   107: aload_2
+    //   108: ifnull +7 -> 115
+    //   111: aload_2
+    //   112: invokevirtual 231	java/io/ByteArrayInputStream:close	()V
+    //   115: aload 6
+    //   117: astore_2
+    //   118: aload_1
+    //   119: ifnull -51 -> 68
+    //   122: aload_1
+    //   123: invokevirtual 232	java/io/ObjectInputStream:close	()V
+    //   126: aconst_null
+    //   127: areturn
+    //   128: astore_1
+    //   129: ldc 13
+    //   131: aload_1
+    //   132: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   135: aconst_null
+    //   136: areturn
+    //   137: astore_2
+    //   138: ldc 13
+    //   140: aload_2
+    //   141: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   144: goto -29 -> 115
+    //   147: astore_1
+    //   148: aconst_null
+    //   149: astore 4
+    //   151: aconst_null
+    //   152: astore_2
+    //   153: aload_2
+    //   154: ifnull +7 -> 161
+    //   157: aload_2
+    //   158: invokevirtual 231	java/io/ByteArrayInputStream:close	()V
+    //   161: aload 4
+    //   163: ifnull +8 -> 171
+    //   166: aload 4
+    //   168: invokevirtual 232	java/io/ObjectInputStream:close	()V
+    //   171: aload_1
+    //   172: athrow
+    //   173: astore_2
+    //   174: ldc 13
+    //   176: aload_2
+    //   177: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   180: goto -19 -> 161
+    //   183: astore_2
+    //   184: ldc 13
+    //   186: aload_2
+    //   187: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   190: goto -19 -> 171
+    //   193: astore_1
     //   194: aconst_null
-    //   195: astore_1
-    //   196: goto -105 -> 91
-    //   199: astore 5
-    //   201: goto -110 -> 91
+    //   195: astore 4
+    //   197: goto -44 -> 153
+    //   200: astore_1
+    //   201: aload_3
+    //   202: astore_2
+    //   203: goto -50 -> 153
+    //   206: astore 5
+    //   208: aconst_null
+    //   209: astore_1
+    //   210: goto -115 -> 95
+    //   213: astore 5
+    //   215: goto -120 -> 95
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	204	0	this	LocalCache
-    //   0	204	1	paramString	String
+    //   0	218	0	this	LocalCache
+    //   0	218	1	paramString	String
     //   11	58	2	localObject1	Object
-    //   70	2	2	localIOException1	java.io.IOException
-    //   90	22	2	localObject2	Object
-    //   129	2	2	localIOException2	java.io.IOException
-    //   142	6	2	localObject3	Object
-    //   163	2	2	localIOException3	java.io.IOException
-    //   171	2	2	localIOException4	java.io.IOException
-    //   188	1	2	localObject4	Object
-    //   38	150	3	localObject5	Object
-    //   35	147	4	str	String
+    //   70	4	2	localIOException1	java.io.IOException
+    //   94	24	2	localObject2	Object
+    //   137	4	2	localIOException2	java.io.IOException
+    //   152	6	2	localObject3	Object
+    //   173	4	2	localIOException3	java.io.IOException
+    //   183	4	2	localIOException4	java.io.IOException
+    //   202	1	2	localObject4	Object
+    //   38	164	3	localObject5	Object
+    //   35	161	4	str	String
     //   43	3	5	localObject6	Object
-    //   85	12	5	localException1	Exception
-    //   192	1	5	localException2	Exception
-    //   199	1	5	localException3	Exception
-    //   1	109	6	localObject7	Object
+    //   89	14	5	localException1	Exception
+    //   206	1	5	localException2	Exception
+    //   213	1	5	localException3	Exception
+    //   1	115	6	localObject7	Object
     // Exception table:
     //   from	to	target	type
     //   52	56	70	java/io/IOException
-    //   62	66	78	java/io/IOException
-    //   16	25	85	java/lang/Exception
-    //   116	120	122	java/io/IOException
-    //   105	109	129	java/io/IOException
-    //   16	25	137	finally
-    //   147	151	163	java/io/IOException
-    //   156	161	171	java/io/IOException
-    //   25	34	179	finally
-    //   39	45	186	finally
-    //   96	101	186	finally
-    //   25	34	192	java/lang/Exception
-    //   39	45	199	java/lang/Exception
+    //   62	66	80	java/io/IOException
+    //   16	25	89	java/lang/Exception
+    //   122	126	128	java/io/IOException
+    //   111	115	137	java/io/IOException
+    //   16	25	147	finally
+    //   157	161	173	java/io/IOException
+    //   166	171	183	java/io/IOException
+    //   25	34	193	finally
+    //   39	45	200	finally
+    //   100	107	200	finally
+    //   25	34	206	java/lang/Exception
+    //   39	45	213	java/lang/Exception
   }
   
   /* Error */
@@ -556,159 +574,164 @@ public class LocalCache
     //   0: aconst_null
     //   1: astore 5
     //   3: aload_0
-    //   4: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   4: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
     //   7: ifnonnull +8 -> 15
     //   10: aload 5
     //   12: astore_2
     //   13: aload_2
     //   14: areturn
     //   15: aload_0
-    //   16: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   16: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
     //   19: aload_1
-    //   20: invokestatic 139	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$400	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
+    //   20: invokestatic 145	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$400	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
     //   23: astore_3
     //   24: aload 5
     //   26: astore_2
     //   27: aload_3
-    //   28: invokevirtual 36	java/io/File:exists	()Z
+    //   28: invokevirtual 40	java/io/File:exists	()Z
     //   31: ifeq -18 -> 13
-    //   34: new 229	java/io/BufferedReader
+    //   34: new 234	java/io/BufferedReader
     //   37: dup
-    //   38: new 231	java/io/FileReader
+    //   38: new 236	java/io/FileReader
     //   41: dup
     //   42: aload_3
-    //   43: invokespecial 234	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   46: invokespecial 237	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   43: invokespecial 239	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   46: invokespecial 242	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   49: astore_3
-    //   50: ldc 239
+    //   50: ldc 244
     //   52: astore 4
     //   54: aload_3
     //   55: astore_2
     //   56: aload_3
-    //   57: invokevirtual 242	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   57: invokevirtual 247	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   60: astore 6
     //   62: aload 6
     //   64: ifnull +30 -> 94
     //   67: aload_3
     //   68: astore_2
-    //   69: new 75	java/lang/StringBuilder
+    //   69: new 79	java/lang/StringBuilder
     //   72: dup
-    //   73: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   73: invokespecial 80	java/lang/StringBuilder:<init>	()V
     //   76: aload 4
-    //   78: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: aload 6
-    //   83: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   89: astore 4
     //   91: goto -37 -> 54
     //   94: aload_3
     //   95: astore_2
     //   96: aload 4
-    //   98: invokestatic 245	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$Utils:access$500	(Ljava/lang/String;)Z
-    //   101: ifne +30 -> 131
+    //   98: invokestatic 250	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$Utils:access$500	(Ljava/lang/String;)Z
+    //   101: ifne +32 -> 133
     //   104: aload_3
     //   105: astore_2
     //   106: aload 4
-    //   108: invokestatic 248	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$Utils:access$600	(Ljava/lang/String;)Ljava/lang/String;
+    //   108: invokestatic 253	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$Utils:access$600	(Ljava/lang/String;)Ljava/lang/String;
     //   111: astore_1
     //   112: aload_1
     //   113: astore_2
     //   114: aload_3
     //   115: ifnull -102 -> 13
     //   118: aload_3
-    //   119: invokevirtual 249	java/io/BufferedReader:close	()V
+    //   119: invokevirtual 254	java/io/BufferedReader:close	()V
     //   122: aload_1
     //   123: areturn
     //   124: astore_2
-    //   125: aload_2
-    //   126: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   129: aload_1
-    //   130: areturn
-    //   131: aload_3
-    //   132: ifnull +7 -> 139
-    //   135: aload_3
-    //   136: invokevirtual 249	java/io/BufferedReader:close	()V
-    //   139: aload_0
-    //   140: aload_1
-    //   141: invokevirtual 173	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:remove	(Ljava/lang/String;)Z
-    //   144: pop
-    //   145: aconst_null
-    //   146: areturn
-    //   147: astore_2
-    //   148: aload_2
-    //   149: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   152: goto -13 -> 139
-    //   155: astore 4
-    //   157: aconst_null
-    //   158: astore_1
-    //   159: aload_1
-    //   160: astore_2
-    //   161: aload 4
-    //   163: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   166: aload 5
-    //   168: astore_2
-    //   169: aload_1
-    //   170: ifnull -157 -> 13
-    //   173: aload_1
-    //   174: invokevirtual 249	java/io/BufferedReader:close	()V
-    //   177: aconst_null
-    //   178: areturn
-    //   179: astore_1
-    //   180: aload_1
-    //   181: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   184: aconst_null
-    //   185: areturn
-    //   186: astore_1
-    //   187: aconst_null
-    //   188: astore_2
-    //   189: aload_2
-    //   190: ifnull +7 -> 197
-    //   193: aload_2
-    //   194: invokevirtual 249	java/io/BufferedReader:close	()V
-    //   197: aload_1
-    //   198: athrow
-    //   199: astore_2
-    //   200: aload_2
-    //   201: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   204: goto -7 -> 197
-    //   207: astore_1
-    //   208: goto -19 -> 189
-    //   211: astore 4
-    //   213: aload_3
-    //   214: astore_1
-    //   215: goto -56 -> 159
+    //   125: ldc 13
+    //   127: aload_2
+    //   128: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   131: aload_1
+    //   132: areturn
+    //   133: aload_3
+    //   134: ifnull +7 -> 141
+    //   137: aload_3
+    //   138: invokevirtual 254	java/io/BufferedReader:close	()V
+    //   141: aload_0
+    //   142: aload_1
+    //   143: invokevirtual 178	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:remove	(Ljava/lang/String;)Z
+    //   146: pop
+    //   147: aconst_null
+    //   148: areturn
+    //   149: astore_2
+    //   150: ldc 13
+    //   152: aload_2
+    //   153: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   156: goto -15 -> 141
+    //   159: astore 4
+    //   161: aconst_null
+    //   162: astore_1
+    //   163: aload_1
+    //   164: astore_2
+    //   165: ldc 13
+    //   167: aload 4
+    //   169: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   172: aload 5
+    //   174: astore_2
+    //   175: aload_1
+    //   176: ifnull -163 -> 13
+    //   179: aload_1
+    //   180: invokevirtual 254	java/io/BufferedReader:close	()V
+    //   183: aconst_null
+    //   184: areturn
+    //   185: astore_1
+    //   186: ldc 13
+    //   188: aload_1
+    //   189: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   192: aconst_null
+    //   193: areturn
+    //   194: astore_1
+    //   195: aconst_null
+    //   196: astore_2
+    //   197: aload_2
+    //   198: ifnull +7 -> 205
+    //   201: aload_2
+    //   202: invokevirtual 254	java/io/BufferedReader:close	()V
+    //   205: aload_1
+    //   206: athrow
+    //   207: astore_2
+    //   208: ldc 13
+    //   210: aload_2
+    //   211: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   214: goto -9 -> 205
+    //   217: astore_1
+    //   218: goto -21 -> 197
+    //   221: astore 4
+    //   223: aload_3
+    //   224: astore_1
+    //   225: goto -62 -> 163
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	218	0	this	LocalCache
-    //   0	218	1	paramString	String
+    //   0	228	0	this	LocalCache
+    //   0	228	1	paramString	String
     //   12	102	2	localObject1	Object
-    //   124	2	2	localIOException1	java.io.IOException
-    //   147	2	2	localIOException2	java.io.IOException
-    //   160	34	2	localObject2	Object
-    //   199	2	2	localIOException3	java.io.IOException
-    //   23	191	3	localObject3	Object
+    //   124	4	2	localIOException1	java.io.IOException
+    //   149	4	2	localIOException2	java.io.IOException
+    //   164	38	2	localObject2	Object
+    //   207	4	2	localIOException3	java.io.IOException
+    //   23	201	3	localObject3	Object
     //   52	55	4	str1	String
-    //   155	7	4	localIOException4	java.io.IOException
-    //   211	1	4	localIOException5	java.io.IOException
-    //   1	166	5	localObject4	Object
+    //   159	9	4	localIOException4	java.io.IOException
+    //   221	1	4	localIOException5	java.io.IOException
+    //   1	172	5	localObject4	Object
     //   60	22	6	str2	String
     // Exception table:
     //   from	to	target	type
     //   118	122	124	java/io/IOException
-    //   135	139	147	java/io/IOException
-    //   34	50	155	java/io/IOException
-    //   173	177	179	java/io/IOException
-    //   34	50	186	finally
-    //   193	197	199	java/io/IOException
-    //   56	62	207	finally
-    //   69	91	207	finally
-    //   96	104	207	finally
-    //   106	112	207	finally
-    //   161	166	207	finally
-    //   56	62	211	java/io/IOException
-    //   69	91	211	java/io/IOException
-    //   96	104	211	java/io/IOException
-    //   106	112	211	java/io/IOException
+    //   137	141	149	java/io/IOException
+    //   34	50	159	java/io/IOException
+    //   179	183	185	java/io/IOException
+    //   34	50	194	finally
+    //   201	205	207	java/io/IOException
+    //   56	62	217	finally
+    //   69	91	217	finally
+    //   96	104	217	finally
+    //   106	112	217	finally
+    //   165	172	217	finally
+    //   56	62	221	java/io/IOException
+    //   69	91	221	java/io/IOException
+    //   96	104	221	java/io/IOException
+    //   106	112	221	java/io/IOException
   }
   
   public void put(String paramString, Bitmap paramBitmap)
@@ -740,24 +763,24 @@ public class LocalCache
   public void put(String paramString, Serializable paramSerializable, int paramInt)
   {
     // Byte code:
-    //   0: new 277	java/io/ByteArrayOutputStream
+    //   0: new 282	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 278	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 283	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore 6
-    //   9: new 280	java/io/ObjectOutputStream
+    //   9: new 285	java/io/ObjectOutputStream
     //   12: dup
     //   13: aload 6
-    //   15: invokespecial 283	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   15: invokespecial 288	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   18: astore 5
     //   20: aload 5
     //   22: astore 4
     //   24: aload 5
     //   26: aload_2
-    //   27: invokevirtual 287	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   27: invokevirtual 292	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   30: aload 5
     //   32: astore 4
     //   34: aload 6
-    //   36: invokevirtual 291	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   36: invokevirtual 296	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   39: astore_2
     //   40: iload_3
     //   41: iconst_m1
@@ -768,82 +791,88 @@ public class LocalCache
     //   50: aload_1
     //   51: aload_2
     //   52: iload_3
-    //   53: invokevirtual 261	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:put	(Ljava/lang/String;[BI)V
+    //   53: invokevirtual 266	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:put	(Ljava/lang/String;[BI)V
     //   56: aload 5
     //   58: ifnull +8 -> 66
     //   61: aload 5
-    //   63: invokevirtual 292	java/io/ObjectOutputStream:close	()V
+    //   63: invokevirtual 297	java/io/ObjectOutputStream:close	()V
     //   66: return
     //   67: aload 5
     //   69: astore 4
     //   71: aload_0
     //   72: aload_1
     //   73: aload_2
-    //   74: invokevirtual 257	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:put	(Ljava/lang/String;[B)V
+    //   74: invokevirtual 262	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:put	(Ljava/lang/String;[B)V
     //   77: goto -21 -> 56
     //   80: astore_1
     //   81: aload 5
     //   83: astore 4
-    //   85: aload_1
-    //   86: invokevirtual 110	java/lang/Exception:printStackTrace	()V
-    //   89: aload 5
-    //   91: ifnull -25 -> 66
-    //   94: aload 5
-    //   96: invokevirtual 292	java/io/ObjectOutputStream:close	()V
-    //   99: return
-    //   100: astore_1
-    //   101: aload_1
-    //   102: invokevirtual 111	java/lang/Throwable:printStackTrace	()V
-    //   105: return
-    //   106: astore_1
-    //   107: aload_1
-    //   108: invokevirtual 111	java/lang/Throwable:printStackTrace	()V
-    //   111: return
-    //   112: astore_1
-    //   113: aconst_null
-    //   114: astore 5
-    //   116: aload 5
-    //   118: astore 4
-    //   120: aload_1
-    //   121: invokevirtual 111	java/lang/Throwable:printStackTrace	()V
-    //   124: aload 5
-    //   126: ifnull -60 -> 66
-    //   129: aload 5
-    //   131: invokevirtual 292	java/io/ObjectOutputStream:close	()V
-    //   134: return
-    //   135: astore_1
-    //   136: aload_1
-    //   137: invokevirtual 111	java/lang/Throwable:printStackTrace	()V
-    //   140: return
-    //   141: astore_1
-    //   142: aconst_null
-    //   143: astore 4
-    //   145: aload 4
-    //   147: ifnull +8 -> 155
-    //   150: aload 4
-    //   152: invokevirtual 292	java/io/ObjectOutputStream:close	()V
-    //   155: aload_1
-    //   156: athrow
-    //   157: astore_2
-    //   158: aload_2
-    //   159: invokevirtual 111	java/lang/Throwable:printStackTrace	()V
-    //   162: goto -7 -> 155
-    //   165: astore_1
-    //   166: goto -21 -> 145
-    //   169: astore_1
-    //   170: goto -54 -> 116
-    //   173: astore_1
-    //   174: aconst_null
-    //   175: astore 5
-    //   177: goto -96 -> 81
+    //   85: ldc 13
+    //   87: aload_1
+    //   88: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   91: aload 5
+    //   93: ifnull -27 -> 66
+    //   96: aload 5
+    //   98: invokevirtual 297	java/io/ObjectOutputStream:close	()V
+    //   101: return
+    //   102: astore_1
+    //   103: ldc 13
+    //   105: aload_1
+    //   106: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   109: return
+    //   110: astore_1
+    //   111: ldc 13
+    //   113: aload_1
+    //   114: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   117: return
+    //   118: astore_1
+    //   119: aconst_null
+    //   120: astore 5
+    //   122: aload 5
+    //   124: astore 4
+    //   126: ldc 13
+    //   128: aload_1
+    //   129: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   132: aload 5
+    //   134: ifnull -68 -> 66
+    //   137: aload 5
+    //   139: invokevirtual 297	java/io/ObjectOutputStream:close	()V
+    //   142: return
+    //   143: astore_1
+    //   144: ldc 13
+    //   146: aload_1
+    //   147: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   150: return
+    //   151: astore_1
+    //   152: aconst_null
+    //   153: astore 4
+    //   155: aload 4
+    //   157: ifnull +8 -> 165
+    //   160: aload 4
+    //   162: invokevirtual 297	java/io/ObjectOutputStream:close	()V
+    //   165: aload_1
+    //   166: athrow
+    //   167: astore_2
+    //   168: ldc 13
+    //   170: aload_2
+    //   171: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   174: goto -9 -> 165
+    //   177: astore_1
+    //   178: goto -23 -> 155
+    //   181: astore_1
+    //   182: goto -60 -> 122
+    //   185: astore_1
+    //   186: aconst_null
+    //   187: astore 5
+    //   189: goto -108 -> 81
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	180	0	this	LocalCache
-    //   0	180	1	paramString	String
-    //   0	180	2	paramSerializable	Serializable
-    //   0	180	3	paramInt	int
-    //   22	129	4	localObjectOutputStream1	java.io.ObjectOutputStream
-    //   18	158	5	localObjectOutputStream2	java.io.ObjectOutputStream
+    //   0	192	0	this	LocalCache
+    //   0	192	1	paramString	String
+    //   0	192	2	paramSerializable	Serializable
+    //   0	192	3	paramInt	int
+    //   22	139	4	localObjectOutputStream1	java.io.ObjectOutputStream
+    //   18	170	5	localObjectOutputStream2	java.io.ObjectOutputStream
     //   7	28	6	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     // Exception table:
     //   from	to	target	type
@@ -851,23 +880,23 @@ public class LocalCache
     //   34	40	80	java/lang/Exception
     //   49	56	80	java/lang/Exception
     //   71	77	80	java/lang/Exception
-    //   94	99	100	java/lang/Throwable
-    //   61	66	106	java/lang/Throwable
-    //   0	20	112	java/lang/Throwable
-    //   129	134	135	java/lang/Throwable
-    //   0	20	141	finally
-    //   150	155	157	java/lang/Throwable
-    //   24	30	165	finally
-    //   34	40	165	finally
-    //   49	56	165	finally
-    //   71	77	165	finally
-    //   85	89	165	finally
-    //   120	124	165	finally
-    //   24	30	169	java/lang/Throwable
-    //   34	40	169	java/lang/Throwable
-    //   49	56	169	java/lang/Throwable
-    //   71	77	169	java/lang/Throwable
-    //   0	20	173	java/lang/Exception
+    //   96	101	102	java/lang/Throwable
+    //   61	66	110	java/lang/Throwable
+    //   0	20	118	java/lang/Throwable
+    //   137	142	143	java/lang/Throwable
+    //   0	20	151	finally
+    //   160	165	167	java/lang/Throwable
+    //   24	30	177	finally
+    //   34	40	177	finally
+    //   49	56	177	finally
+    //   71	77	177	finally
+    //   85	91	177	finally
+    //   126	132	177	finally
+    //   24	30	181	java/lang/Throwable
+    //   34	40	181	java/lang/Throwable
+    //   49	56	181	java/lang/Throwable
+    //   71	77	181	java/lang/Throwable
+    //   0	20	185	java/lang/Exception
   }
   
   /* Error */
@@ -875,135 +904,142 @@ public class LocalCache
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   1: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
     //   4: ifnonnull +4 -> 8
     //   7: return
     //   8: aload_0
-    //   9: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   9: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
     //   12: aload_1
-    //   13: invokestatic 132	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$100	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
+    //   13: invokestatic 138	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$100	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
     //   16: astore 5
     //   18: aconst_null
     //   19: astore_1
-    //   20: new 295	java/io/BufferedWriter
+    //   20: new 300	java/io/BufferedWriter
     //   23: dup
-    //   24: new 297	java/io/FileWriter
+    //   24: new 302	java/io/FileWriter
     //   27: dup
     //   28: aload 5
-    //   30: invokespecial 298	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   30: invokespecial 303	java/io/FileWriter:<init>	(Ljava/io/File;)V
     //   33: sipush 1024
-    //   36: invokespecial 301	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   36: invokespecial 306	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
     //   39: astore_3
     //   40: aload_3
     //   41: astore_1
     //   42: aload_3
     //   43: aload_2
-    //   44: invokevirtual 304	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   44: invokevirtual 309	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   47: aload_3
     //   48: ifnull +11 -> 59
     //   51: aload_3
-    //   52: invokevirtual 307	java/io/BufferedWriter:flush	()V
+    //   52: invokevirtual 312	java/io/BufferedWriter:flush	()V
     //   55: aload_3
-    //   56: invokevirtual 308	java/io/BufferedWriter:close	()V
+    //   56: invokevirtual 313	java/io/BufferedWriter:close	()V
     //   59: aload_0
-    //   60: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   60: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
     //   63: aload 5
-    //   65: invokestatic 312	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   65: invokestatic 317	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
     //   68: return
     //   69: astore_1
-    //   70: aload_1
-    //   71: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   74: goto -19 -> 55
-    //   77: astore_1
-    //   78: aload_1
-    //   79: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   82: goto -23 -> 59
-    //   85: astore 4
-    //   87: aconst_null
-    //   88: astore_2
-    //   89: aload_2
-    //   90: astore_1
-    //   91: aload 4
-    //   93: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   96: aload_2
-    //   97: ifnull +11 -> 108
-    //   100: aload_2
-    //   101: invokevirtual 307	java/io/BufferedWriter:flush	()V
-    //   104: aload_2
-    //   105: invokevirtual 308	java/io/BufferedWriter:close	()V
-    //   108: aload_0
-    //   109: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
-    //   112: aload 5
-    //   114: invokestatic 312	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
-    //   117: return
-    //   118: astore_1
-    //   119: aload_1
-    //   120: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   123: goto -19 -> 104
-    //   126: astore_1
+    //   70: ldc 13
+    //   72: aload_1
+    //   73: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   76: goto -21 -> 55
+    //   79: astore_1
+    //   80: ldc 13
+    //   82: aload_1
+    //   83: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   86: goto -27 -> 59
+    //   89: astore 4
+    //   91: aconst_null
+    //   92: astore_2
+    //   93: aload_2
+    //   94: astore_1
+    //   95: ldc 13
+    //   97: aload 4
+    //   99: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   102: aload_2
+    //   103: ifnull +11 -> 114
+    //   106: aload_2
+    //   107: invokevirtual 312	java/io/BufferedWriter:flush	()V
+    //   110: aload_2
+    //   111: invokevirtual 313	java/io/BufferedWriter:close	()V
+    //   114: aload_0
+    //   115: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   118: aload 5
+    //   120: invokestatic 317	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   123: return
+    //   124: astore_1
+    //   125: ldc 13
     //   127: aload_1
-    //   128: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   131: goto -23 -> 108
-    //   134: astore_3
-    //   135: aload_1
-    //   136: astore_2
-    //   137: aload_3
-    //   138: astore_1
-    //   139: aload_2
-    //   140: ifnull +11 -> 151
-    //   143: aload_2
-    //   144: invokevirtual 307	java/io/BufferedWriter:flush	()V
-    //   147: aload_2
-    //   148: invokevirtual 308	java/io/BufferedWriter:close	()V
-    //   151: aload_0
-    //   152: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
-    //   155: aload 5
-    //   157: invokestatic 312	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
-    //   160: aload_1
-    //   161: athrow
-    //   162: astore_3
-    //   163: aload_3
-    //   164: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   167: goto -20 -> 147
-    //   170: astore_2
-    //   171: aload_2
-    //   172: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   175: goto -24 -> 151
-    //   178: astore_3
-    //   179: aload_1
-    //   180: astore_2
-    //   181: aload_3
-    //   182: astore_1
-    //   183: goto -44 -> 139
-    //   186: astore 4
-    //   188: aload_3
-    //   189: astore_2
-    //   190: goto -101 -> 89
+    //   128: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   131: goto -21 -> 110
+    //   134: astore_1
+    //   135: ldc 13
+    //   137: aload_1
+    //   138: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   141: goto -27 -> 114
+    //   144: astore_3
+    //   145: aload_1
+    //   146: astore_2
+    //   147: aload_3
+    //   148: astore_1
+    //   149: aload_2
+    //   150: ifnull +11 -> 161
+    //   153: aload_2
+    //   154: invokevirtual 312	java/io/BufferedWriter:flush	()V
+    //   157: aload_2
+    //   158: invokevirtual 313	java/io/BufferedWriter:close	()V
+    //   161: aload_0
+    //   162: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   165: aload 5
+    //   167: invokestatic 317	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   170: aload_1
+    //   171: athrow
+    //   172: astore_3
+    //   173: ldc 13
+    //   175: aload_3
+    //   176: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   179: goto -22 -> 157
+    //   182: astore_2
+    //   183: ldc 13
+    //   185: aload_2
+    //   186: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   189: goto -28 -> 161
+    //   192: astore_3
+    //   193: aload_1
+    //   194: astore_2
+    //   195: aload_3
+    //   196: astore_1
+    //   197: goto -48 -> 149
+    //   200: astore 4
+    //   202: aload_3
+    //   203: astore_2
+    //   204: goto -111 -> 93
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	193	0	this	LocalCache
-    //   0	193	1	paramString1	String
-    //   0	193	2	paramString2	String
+    //   0	207	0	this	LocalCache
+    //   0	207	1	paramString1	String
+    //   0	207	2	paramString2	String
     //   39	17	3	localBufferedWriter	java.io.BufferedWriter
-    //   134	4	3	localObject1	Object
-    //   162	2	3	localIOException1	java.io.IOException
-    //   178	11	3	localObject2	Object
-    //   85	7	4	localIOException2	java.io.IOException
-    //   186	1	4	localIOException3	java.io.IOException
-    //   16	140	5	localFile	File
+    //   144	4	3	localObject1	Object
+    //   172	4	3	localIOException1	java.io.IOException
+    //   192	11	3	localObject2	Object
+    //   89	9	4	localIOException2	java.io.IOException
+    //   200	1	4	localIOException3	java.io.IOException
+    //   16	150	5	localFile	File
     // Exception table:
     //   from	to	target	type
     //   51	55	69	java/io/IOException
-    //   55	59	77	java/io/IOException
-    //   20	40	85	java/io/IOException
-    //   100	104	118	java/io/IOException
-    //   104	108	126	java/io/IOException
-    //   20	40	134	finally
-    //   143	147	162	java/io/IOException
-    //   147	151	170	java/io/IOException
-    //   42	47	178	finally
-    //   91	96	178	finally
-    //   42	47	186	java/io/IOException
+    //   55	59	79	java/io/IOException
+    //   20	40	89	java/io/IOException
+    //   106	110	124	java/io/IOException
+    //   110	114	134	java/io/IOException
+    //   20	40	144	finally
+    //   153	157	172	java/io/IOException
+    //   157	161	182	java/io/IOException
+    //   42	47	192	finally
+    //   95	102	192	finally
+    //   42	47	200	java/io/IOException
   }
   
   public void put(String paramString1, String paramString2, int paramInt)
@@ -1036,105 +1072,109 @@ public class LocalCache
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   1: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
     //   4: ifnonnull +4 -> 8
     //   7: return
     //   8: aload_0
-    //   9: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   9: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
     //   12: aload_1
-    //   13: invokestatic 132	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$100	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
+    //   13: invokestatic 138	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$100	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/lang/String;)Ljava/io/File;
     //   16: astore 5
-    //   18: new 329	java/io/FileOutputStream
+    //   18: new 334	java/io/FileOutputStream
     //   21: dup
     //   22: aload 5
-    //   24: invokespecial 330	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   24: invokespecial 335	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   27: astore_3
     //   28: aload_3
     //   29: astore_1
     //   30: aload_3
     //   31: aload_2
-    //   32: invokevirtual 332	java/io/FileOutputStream:write	([B)V
+    //   32: invokevirtual 337	java/io/FileOutputStream:write	([B)V
     //   35: aload_3
     //   36: ifnull +11 -> 47
     //   39: aload_3
-    //   40: invokevirtual 333	java/io/FileOutputStream:flush	()V
+    //   40: invokevirtual 338	java/io/FileOutputStream:flush	()V
     //   43: aload_3
-    //   44: invokevirtual 334	java/io/FileOutputStream:close	()V
+    //   44: invokevirtual 339	java/io/FileOutputStream:close	()V
     //   47: aload_0
-    //   48: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   48: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
     //   51: aload 5
-    //   53: invokestatic 312	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   53: invokestatic 317	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
     //   56: return
     //   57: astore_1
-    //   58: aload_1
-    //   59: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   62: goto -15 -> 47
-    //   65: astore 4
-    //   67: aconst_null
-    //   68: astore_2
-    //   69: aload_2
-    //   70: astore_1
-    //   71: aload 4
-    //   73: invokevirtual 110	java/lang/Exception:printStackTrace	()V
-    //   76: aload_2
-    //   77: ifnull +11 -> 88
+    //   58: ldc 13
+    //   60: aload_1
+    //   61: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   64: goto -17 -> 47
+    //   67: astore 4
+    //   69: aconst_null
+    //   70: astore_2
+    //   71: aload_2
+    //   72: astore_1
+    //   73: ldc 13
+    //   75: aload 4
+    //   77: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   80: aload_2
-    //   81: invokevirtual 333	java/io/FileOutputStream:flush	()V
+    //   81: ifnull +11 -> 92
     //   84: aload_2
-    //   85: invokevirtual 334	java/io/FileOutputStream:close	()V
-    //   88: aload_0
-    //   89: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
-    //   92: aload 5
-    //   94: invokestatic 312	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
-    //   97: return
-    //   98: astore_1
-    //   99: aload_1
-    //   100: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   103: goto -15 -> 88
-    //   106: astore_2
-    //   107: aconst_null
-    //   108: astore_1
-    //   109: aload_1
-    //   110: ifnull +11 -> 121
-    //   113: aload_1
-    //   114: invokevirtual 333	java/io/FileOutputStream:flush	()V
-    //   117: aload_1
-    //   118: invokevirtual 334	java/io/FileOutputStream:close	()V
-    //   121: aload_0
-    //   122: getfield 41	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
-    //   125: aload 5
-    //   127: invokestatic 312	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
-    //   130: aload_2
-    //   131: athrow
-    //   132: astore_1
-    //   133: aload_1
-    //   134: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   137: goto -16 -> 121
-    //   140: astore_2
-    //   141: goto -32 -> 109
-    //   144: astore 4
-    //   146: aload_3
-    //   147: astore_2
-    //   148: goto -79 -> 69
+    //   85: invokevirtual 338	java/io/FileOutputStream:flush	()V
+    //   88: aload_2
+    //   89: invokevirtual 339	java/io/FileOutputStream:close	()V
+    //   92: aload_0
+    //   93: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   96: aload 5
+    //   98: invokestatic 317	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   101: return
+    //   102: astore_1
+    //   103: ldc 13
+    //   105: aload_1
+    //   106: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   109: goto -17 -> 92
+    //   112: astore_2
+    //   113: aconst_null
+    //   114: astore_1
+    //   115: aload_1
+    //   116: ifnull +11 -> 127
+    //   119: aload_1
+    //   120: invokevirtual 338	java/io/FileOutputStream:flush	()V
+    //   123: aload_1
+    //   124: invokevirtual 339	java/io/FileOutputStream:close	()V
+    //   127: aload_0
+    //   128: getfield 45	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache:mCache	Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;
+    //   131: aload 5
+    //   133: invokestatic 317	com/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager:access$200	(Lcom/tencent/qqlive/tvkplayer/thirdparties/LocalCache$ACacheManager;Ljava/io/File;)V
+    //   136: aload_2
+    //   137: athrow
+    //   138: astore_1
+    //   139: ldc 13
+    //   141: aload_1
+    //   142: invokestatic 117	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   145: goto -18 -> 127
+    //   148: astore_2
+    //   149: goto -34 -> 115
+    //   152: astore 4
+    //   154: aload_3
+    //   155: astore_2
+    //   156: goto -85 -> 71
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	151	0	this	LocalCache
-    //   0	151	1	paramString	String
-    //   0	151	2	paramArrayOfByte	byte[]
-    //   27	120	3	localFileOutputStream	java.io.FileOutputStream
-    //   65	7	4	localException1	Exception
-    //   144	1	4	localException2	Exception
-    //   16	110	5	localFile	File
+    //   0	159	0	this	LocalCache
+    //   0	159	1	paramString	String
+    //   0	159	2	paramArrayOfByte	byte[]
+    //   27	128	3	localFileOutputStream	java.io.FileOutputStream
+    //   67	9	4	localException1	Exception
+    //   152	1	4	localException2	Exception
+    //   16	116	5	localFile	File
     // Exception table:
     //   from	to	target	type
     //   39	47	57	java/io/IOException
-    //   18	28	65	java/lang/Exception
-    //   80	88	98	java/io/IOException
-    //   18	28	106	finally
-    //   113	121	132	java/io/IOException
-    //   30	35	140	finally
-    //   71	76	140	finally
-    //   30	35	144	java/lang/Exception
+    //   18	28	67	java/lang/Exception
+    //   84	92	102	java/io/IOException
+    //   18	28	112	finally
+    //   119	127	138	java/io/IOException
+    //   30	35	148	finally
+    //   73	80	148	finally
+    //   30	35	152	java/lang/Exception
   }
   
   public void put(String paramString, byte[] paramArrayOfByte, int paramInt)
@@ -1152,7 +1192,7 @@ public class LocalCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.LocalCache
  * JD-Core Version:    0.7.0.1
  */

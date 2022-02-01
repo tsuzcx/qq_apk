@@ -16,9 +16,9 @@ public class FlashPicBubbleView
   extends RelativeLayout
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
+  private boolean c = false;
   
   public FlashPicBubbleView(Context paramContext)
   {
@@ -32,7 +32,7 @@ public class FlashPicBubbleView
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
@@ -44,18 +44,18 @@ public class FlashPicBubbleView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     Object localObject = getResources();
-    Drawable localDrawable1 = ((Resources)localObject).getDrawable(2130847254);
-    Drawable localDrawable2 = ((Resources)localObject).getDrawable(2130847255);
-    localDrawable1.setBounds(0, 0, getWidth(), AIOUtils.dp2px(95.0F, (Resources)localObject));
-    localDrawable2.setBounds(0, AIOUtils.dp2px(95.0F, (Resources)localObject), getWidth(), getHeight());
+    Drawable localDrawable1 = ((Resources)localObject).getDrawable(2130847611);
+    Drawable localDrawable2 = ((Resources)localObject).getDrawable(2130847612);
+    localDrawable1.setBounds(0, 0, getWidth(), AIOUtils.a(95.0F, (Resources)localObject));
+    localDrawable2.setBounds(0, AIOUtils.a(95.0F, (Resources)localObject), getWidth(), getHeight());
     LightingColorFilter localLightingColorFilter;
     if ((!this.c) && (!this.jdField_a_of_type_Boolean))
     {
-      localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166393));
+      localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166396));
       localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131165559));
     }
     for (;;)
@@ -72,18 +72,18 @@ public class FlashPicBubbleView
       return;
       if ((!this.c) && (this.jdField_a_of_type_Boolean))
       {
-        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166394));
-        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166390));
+        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166397));
+        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166393));
       }
       else if ((this.c) && (!this.jdField_a_of_type_Boolean))
       {
-        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166391));
+        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166394));
         localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131165559));
       }
       else
       {
-        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166392));
-        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166390));
+        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166395));
+        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166393));
       }
     }
     paramCanvas.save();
@@ -104,7 +104,7 @@ public class FlashPicBubbleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FlashPicBubbleView
  * JD-Core Version:    0.7.0.1
  */

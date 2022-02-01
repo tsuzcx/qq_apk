@@ -8,19 +8,19 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class QQCustomDialogThreeBtns$CustomDialogItemOnClickListener
   implements View.OnClickListener
 {
-  int i;
+  int jdField_a_of_type_Int;
   
   public QQCustomDialogThreeBtns$CustomDialogItemOnClickListener(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, int paramInt)
   {
-    this.i = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void onClick(View paramView)
   {
-    if (this.this$0.onArrayItemClick != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a != null)
     {
-      this.this$0.onArrayItemClick.onClick(this.this$0, this.this$0.customWhichToCallBack(this.i));
-      this.this$0.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

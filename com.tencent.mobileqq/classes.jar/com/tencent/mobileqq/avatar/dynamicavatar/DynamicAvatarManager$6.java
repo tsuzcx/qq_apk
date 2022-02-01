@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import aokb;
-import aqeq;
+import com.tencent.mobileqq.app.face.DynamicFaceDrawable;
 import com.tencent.mobileqq.data.DynamicAvatar;
 
-public class DynamicAvatarManager$6
+class DynamicAvatarManager$6
   implements Runnable
 {
-  public DynamicAvatarManager$6(aqeq paramaqeq, aokb paramaokb, long paramLong) {}
+  DynamicAvatarManager$6(DynamicAvatarManager paramDynamicAvatarManager, DynamicFaceDrawable paramDynamicFaceDrawable, long paramLong) {}
   
   public void run()
   {
-    DynamicAvatar localDynamicAvatar = this.this$0.a(this.jdField_a_of_type_Aokb.c, this.jdField_a_of_type_Aokb.a);
+    DynamicAvatar localDynamicAvatar = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.c, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.a);
     if (localDynamicAvatar != null)
     {
       localDynamicAvatar.playTimeStamp = this.jdField_a_of_type_Long;

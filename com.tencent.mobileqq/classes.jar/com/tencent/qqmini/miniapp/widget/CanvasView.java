@@ -2,7 +2,9 @@ package com.tencent.qqmini.miniapp.widget;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import android.graphics.BitmapRegionDecoder;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -25,6 +27,7 @@ import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,6 +35,7 @@ import com.tencent.qqmini.miniapp.core.page.NativeViewContainer;
 import com.tencent.qqmini.miniapp.core.page.PageWebviewContainer;
 import com.tencent.qqmini.sdk.action.ServiceEvaluateCallbackAction;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.utils.ImageUtil;
 import com.tencent.qqmini.sdk.core.utils.JSONUtil;
 import com.tencent.qqmini.sdk.core.utils.StringUtil;
@@ -45,6 +49,7 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.widget.CoverView;
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,6 +78,7 @@ public class CanvasView
   public static final String ACTION_ROTATE = "rotate";
   public static final String ACTION_SAVE = "save";
   public static final String ACTION_SCALE = "scale";
+  public static final String ACTION_SETGLOBALCOMPOSITEOPERATION = "setGlobalCompositeOperation";
   public static final String ACTION_SET_BASELINE = "setTextBaseline";
   public static final String ACTION_SET_FILLSTYLE = "setFillStyle";
   public static final String ACTION_SET_FONT_FAMILY = "setFontFamily";
@@ -101,6 +107,7 @@ public class CanvasView
   public static final String KEY_METHOD = "method";
   private static final double REQUEST_IMAGE_MAX_SAFE_SIZE = 8985600.0D;
   private static final String TAG = "CanvasView";
+  private HashMap<String, CanvasView.DrawAction> drawActions = new HashMap();
   private ApkgInfo mApkgInfo;
   private int mBitmapH = 0;
   private int mBitmapW = 0;
@@ -162,6 +169,50 @@ public class CanvasView
     this.mCanvasData = paramString;
     setBackgroundResource(17170445);
     super.setIgnoreTouchEventToJS(true);
+    initDrawActions();
+  }
+  
+  private RectF addPathRect(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    float f = 0.0F;
+    RectF localRectF = new RectF();
+    if (((this.mRepeatX) || (this.mRepeatY)) && ((this.mBitmapW != 0) || (this.mBitmapH != 0)))
+    {
+      if (this.mRepeatX) {
+        paramFloat1 = 0.0F;
+      }
+      localRectF.left = paramFloat1;
+      if (this.mRepeatY)
+      {
+        paramFloat1 = f;
+        localRectF.top = paramFloat1;
+        if (!this.mRepeatX) {
+          break label134;
+        }
+        paramFloat1 = localRectF.left + paramFloat3;
+        label86:
+        localRectF.right = paramFloat1;
+        if (!this.mRepeatY) {
+          break label143;
+        }
+        paramFloat1 = localRectF.top + paramFloat4;
+      }
+    }
+    label108:
+    for (localRectF.bottom = paramFloat1;; localRectF.bottom = (localRectF.top + paramFloat4))
+    {
+      this.mPath.addRect(localRectF, Path.Direction.CW);
+      return localRectF;
+      paramFloat1 = paramFloat2;
+      break;
+      paramFloat1 = this.mBitmapW;
+      break label86;
+      paramFloat1 = this.mBitmapH;
+      break label108;
+      localRectF.left = paramFloat1;
+      localRectF.top = paramFloat2;
+      localRectF.right = (localRectF.left + paramFloat3);
+    }
   }
   
   private void clearRect(Canvas paramCanvas, JSONArray paramJSONArray)
@@ -195,196 +246,339 @@ public class CanvasView
     paramCanvas.restore();
   }
   
+  /* Error */
+  private void compressAndSaveBitmap(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Bitmap paramBitmap1, JSONObject paramJSONObject, Bitmap paramBitmap2, String paramString, boolean paramBoolean, NativeViewRequestEvent paramNativeViewRequestEvent)
+  {
+    // Byte code:
+    //   0: new 524	android/graphics/Canvas
+    //   3: dup
+    //   4: aload 7
+    //   6: invokespecial 558	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   9: astore 18
+    //   11: aload 18
+    //   13: new 560	android/graphics/PaintFlagsDrawFilter
+    //   16: dup
+    //   17: iconst_0
+    //   18: iconst_3
+    //   19: invokespecial 563	android/graphics/PaintFlagsDrawFilter:<init>	(II)V
+    //   22: invokevirtual 567	android/graphics/Canvas:setDrawFilter	(Landroid/graphics/DrawFilter;)V
+    //   25: new 569	android/graphics/Rect
+    //   28: dup
+    //   29: iconst_0
+    //   30: iconst_0
+    //   31: iload 5
+    //   33: iload 6
+    //   35: invokespecial 572	android/graphics/Rect:<init>	(IIII)V
+    //   38: astore 19
+    //   40: aload_0
+    //   41: aload 8
+    //   43: ldc_w 574
+    //   46: dconst_0
+    //   47: invokevirtual 579	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   50: invokevirtual 583	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2pxInt	(D)I
+    //   53: istore 16
+    //   55: aload_0
+    //   56: aload 8
+    //   58: ldc_w 585
+    //   61: dconst_0
+    //   62: invokevirtual 579	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   65: invokevirtual 583	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2pxInt	(D)I
+    //   68: istore 17
+    //   70: aload 18
+    //   72: aload 9
+    //   74: new 569	android/graphics/Rect
+    //   77: dup
+    //   78: iload 16
+    //   80: iload 17
+    //   82: iload 16
+    //   84: iload_1
+    //   85: iadd
+    //   86: iload 17
+    //   88: iload_2
+    //   89: iadd
+    //   90: invokespecial 572	android/graphics/Rect:<init>	(IIII)V
+    //   93: aload 19
+    //   95: aconst_null
+    //   96: invokevirtual 589	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    //   99: aload_0
+    //   100: invokespecial 593	com/tencent/qqmini/miniapp/widget/CanvasView:getMiniAppContext	()Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   103: ldc_w 595
+    //   106: invokeinterface 599 2 0
+    //   111: checkcast 595	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
+    //   114: aload 10
+    //   116: invokevirtual 603	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   119: astore 18
+    //   121: aload 18
+    //   123: invokestatic 609	com/tencent/qqmini/sdk/core/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   126: astore 10
+    //   128: new 611	java/io/FileOutputStream
+    //   131: dup
+    //   132: aload 10
+    //   134: invokespecial 614	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   137: astore 10
+    //   139: iload 5
+    //   141: iload 6
+    //   143: imul
+    //   144: iload_3
+    //   145: idiv
+    //   146: iload 4
+    //   148: idiv
+    //   149: i2f
+    //   150: fstore 15
+    //   152: iload 11
+    //   154: ifeq +116 -> 270
+    //   157: aload 8
+    //   159: ldc_w 616
+    //   162: dconst_1
+    //   163: invokevirtual 579	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   166: fload 15
+    //   168: f2d
+    //   169: ddiv
+    //   170: dstore 13
+    //   172: aload 7
+    //   174: getstatic 622	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   177: dload 13
+    //   179: ldc2_w 623
+    //   182: dmul
+    //   183: d2i
+    //   184: aload 10
+    //   186: invokevirtual 630	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   189: pop
+    //   190: new 576	org/json/JSONObject
+    //   193: dup
+    //   194: invokespecial 631	org/json/JSONObject:<init>	()V
+    //   197: astore 7
+    //   199: aload 7
+    //   201: ldc_w 633
+    //   204: aload_0
+    //   205: invokespecial 593	com/tencent/qqmini/miniapp/widget/CanvasView:getMiniAppContext	()Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   208: ldc_w 595
+    //   211: invokeinterface 599 2 0
+    //   216: checkcast 595	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
+    //   219: aload 18
+    //   221: invokevirtual 636	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getWxFilePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   224: invokevirtual 640	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   227: pop
+    //   228: aload 12
+    //   230: aload 7
+    //   232: invokevirtual 646	com/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent:ok	(Lorg/json/JSONObject;)Ljava/lang/String;
+    //   235: pop
+    //   236: aload 10
+    //   238: ifnull +13 -> 251
+    //   241: aload 10
+    //   243: invokevirtual 649	java/io/FileOutputStream:flush	()V
+    //   246: aload 10
+    //   248: invokevirtual 652	java/io/FileOutputStream:close	()V
+    //   251: aload 9
+    //   253: ifnull +16 -> 269
+    //   256: aload 9
+    //   258: invokevirtual 656	android/graphics/Bitmap:isRecycled	()Z
+    //   261: ifne +8 -> 269
+    //   264: aload 9
+    //   266: invokevirtual 659	android/graphics/Bitmap:recycle	()V
+    //   269: return
+    //   270: aload 8
+    //   272: ldc_w 661
+    //   275: dconst_1
+    //   276: invokevirtual 579	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   279: fload 15
+    //   281: f2d
+    //   282: ddiv
+    //   283: dstore 13
+    //   285: aload 7
+    //   287: getstatic 664	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   290: dload 13
+    //   292: ldc2_w 623
+    //   295: dmul
+    //   296: d2i
+    //   297: aload 10
+    //   299: invokevirtual 630	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   302: pop
+    //   303: goto -113 -> 190
+    //   306: astore 7
+    //   308: aload 10
+    //   310: astore 8
+    //   312: aload 8
+    //   314: ifnull +13 -> 327
+    //   317: aload 8
+    //   319: invokevirtual 649	java/io/FileOutputStream:flush	()V
+    //   322: aload 8
+    //   324: invokevirtual 652	java/io/FileOutputStream:close	()V
+    //   327: aload 9
+    //   329: ifnull +16 -> 345
+    //   332: aload 9
+    //   334: invokevirtual 656	android/graphics/Bitmap:isRecycled	()Z
+    //   337: ifne +8 -> 345
+    //   340: aload 9
+    //   342: invokevirtual 659	android/graphics/Bitmap:recycle	()V
+    //   345: aload 7
+    //   347: athrow
+    //   348: astore 7
+    //   350: aload 7
+    //   352: invokevirtual 667	org/json/JSONException:printStackTrace	()V
+    //   355: aload 12
+    //   357: invokevirtual 671	com/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent:fail	()Ljava/lang/String;
+    //   360: pop
+    //   361: goto -125 -> 236
+    //   364: astore 7
+    //   366: aconst_null
+    //   367: astore 8
+    //   369: goto -57 -> 312
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	372	0	this	CanvasView
+    //   0	372	1	paramInt1	int
+    //   0	372	2	paramInt2	int
+    //   0	372	3	paramInt3	int
+    //   0	372	4	paramInt4	int
+    //   0	372	5	paramInt5	int
+    //   0	372	6	paramInt6	int
+    //   0	372	7	paramBitmap1	Bitmap
+    //   0	372	8	paramJSONObject	JSONObject
+    //   0	372	9	paramBitmap2	Bitmap
+    //   0	372	10	paramString	String
+    //   0	372	11	paramBoolean	boolean
+    //   0	372	12	paramNativeViewRequestEvent	NativeViewRequestEvent
+    //   170	121	13	d	double
+    //   150	130	15	f	float
+    //   53	33	16	i	int
+    //   68	22	17	j	int
+    //   9	211	18	localObject	Object
+    //   38	56	19	localRect	Rect
+    // Exception table:
+    //   from	to	target	type
+    //   139	152	306	finally
+    //   157	190	306	finally
+    //   190	236	306	finally
+    //   270	303	306	finally
+    //   350	361	306	finally
+    //   190	236	348	org/json/JSONException
+    //   128	139	364	finally
+  }
+  
+  private Bitmap decodeImage(String paramString, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, BitmapFactory.Options paramOptions, int paramInt5)
+  {
+    paramOptions.inDither = true;
+    if ((paramInt3 > 0) && (paramInt4 > 0))
+    {
+      try
+      {
+        localObject1 = BitmapRegionDecoder.newInstance(paramString, false);
+        paramString = ((BitmapRegionDecoder)localObject1).decodeRegion(getCropRect(paramInt1, paramInt2, paramInt3, paramInt4, paramOptions, paramInt5), paramOptions);
+        QMLog.e("CanvasView", "bitmapRegionDecoder newInstance exception: " + Log.getStackTraceString(paramOptions));
+      }
+      catch (Exception paramOptions)
+      {
+        try
+        {
+          ((BitmapRegionDecoder)localObject1).recycle();
+          return paramString;
+        }
+        catch (Exception paramOptions)
+        {
+          Object localObject1;
+          float f2;
+          float f1;
+          float f3;
+          break label58;
+        }
+        paramOptions = paramOptions;
+        paramString = null;
+      }
+      label58:
+      return paramString;
+    }
+    else
+    {
+      paramOptions.inJustDecodeBounds = false;
+      f2 = paramOptions.outWidth;
+      f1 = paramOptions.outHeight;
+      f3 = (float)Math.sqrt(paramFloat1 * paramFloat2 / paramOptions.outWidth / paramOptions.outHeight);
+      paramFloat2 = f1;
+      paramFloat1 = f2;
+      if (f3 < 1.0F)
+      {
+        paramFloat1 = f2 * f3;
+        paramFloat2 = f1 * f3;
+      }
+      if (ImageUtil.isPngFile(paramString))
+      {
+        paramOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        f1 = (float)Math.sqrt(8985600.0D / paramFloat1 / paramFloat2 / 4.0D);
+        if (f1 >= 1.0F) {
+          break label283;
+        }
+        paramOptions.inSampleSize = ImageUtil.calculateInSampleSize(paramOptions, paramFloat1 * f1, paramFloat2 * f1);
+      }
+      for (;;)
+      {
+        Bitmap localBitmap;
+        try
+        {
+          localObject1 = BitmapFactory.decodeFile(paramString, paramOptions);
+          return decodeImageQuarter(paramString, paramOptions, (Bitmap)localObject1);
+          paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+          f1 = (float)Math.sqrt(8985600.0D / paramFloat1 / paramFloat2 / 2.0D);
+        }
+        catch (Throwable localThrowable1)
+        {
+          QMLog.w("CanvasView", "getLocalBitmap error with inSampleSize error!try again with lower quality!");
+          localBitmap = null;
+          continue;
+        }
+        try
+        {
+          label283:
+          localBitmap = BitmapFactory.decodeFile(paramString, paramOptions);
+        }
+        catch (Throwable localThrowable2)
+        {
+          QMLog.w("CanvasView", "getLocalBitmap error! try again with lower quality!");
+          Object localObject2 = null;
+        }
+      }
+    }
+  }
+  
+  private Bitmap decodeImageQuarter(String paramString, BitmapFactory.Options paramOptions, Bitmap paramBitmap)
+  {
+    Bitmap localBitmap = paramBitmap;
+    if (paramBitmap == null) {
+      if (paramOptions.inSampleSize <= 0) {
+        break label34;
+      }
+    }
+    for (paramOptions.inSampleSize *= 2;; paramOptions.inSampleSize = 2) {
+      try
+      {
+        localBitmap = BitmapFactory.decodeFile(paramString, paramOptions);
+        return localBitmap;
+      }
+      catch (Throwable paramString)
+      {
+        label34:
+        QMLog.e("CanvasView", "getLocalBitmap 2nd time error!", paramString);
+      }
+    }
+    return null;
+  }
+  
   private void doDraw(Canvas paramCanvas, JSONArray paramJSONArray)
   {
     if (paramJSONArray == null) {
       return;
     }
     int i = 0;
-    if (i < paramJSONArray.length())
+    while (i < paramJSONArray.length())
     {
-      Object localObject2 = paramJSONArray.getJSONObject(i);
-      Object localObject3 = ((JSONObject)localObject2).optString("method");
-      Object localObject1 = ((JSONObject)localObject2).optJSONArray("data");
-      if ("drawImage".equals(localObject3)) {
-        drawImage(paramCanvas, (JSONArray)localObject1);
+      JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+      String str = localJSONObject.optString("method");
+      JSONArray localJSONArray = localJSONObject.optJSONArray("data");
+      CanvasView.DrawAction localDrawAction = (CanvasView.DrawAction)this.drawActions.get(str);
+      if (localDrawAction != null) {
+        localDrawAction.doAction(paramCanvas, localJSONObject, str, localJSONArray);
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (("setStrokeStyle".equals(localObject3)) || ("setFillStyle".equals(localObject3)))
-        {
-          setStrokeOrFillStyle((String)localObject3, (JSONArray)localObject1);
-        }
-        else if (("strokePath".equals(localObject3)) || ("fillPath".equals(localObject3)) || ("clip".equals(localObject3)))
-        {
-          setPathOrClip(paramCanvas, (String)localObject3, (JSONArray)localObject1);
-        }
-        else
-        {
-          float f1;
-          if ("setFontSize".equals(localObject3))
-          {
-            f1 = mpx2px(((JSONArray)localObject1).optDouble(0, 0.0D));
-            this.mFillPaint.setTextSize(f1);
-            this.mStrokePaint.setTextSize(f1);
-          }
-          else if ("setFontStyle".equals(localObject3))
-          {
-            setFontStyle((JSONArray)localObject1);
-          }
-          else if ("setFontWeight".equals(localObject3))
-          {
-            setFontWeight((JSONArray)localObject1);
-          }
-          else
-          {
-            if ("setFontFamily".equals(localObject3))
-            {
-              localObject1 = ((JSONArray)localObject1).optString(0);
-              localObject2 = this.mFillPaint.getTypeface();
-              if (localObject2 != null)
-              {
-                j = ((Typeface)localObject2).getStyle();
-                label260:
-                this.mFillPaint.setTypeface(Typeface.create((String)localObject1, j));
-                localObject1 = this.mStrokePaint.getTypeface();
-                if (localObject1 == null) {
-                  break label320;
-                }
-              }
-              label320:
-              for (int j = ((Typeface)localObject1).getStyle();; j = 0)
-              {
-                this.mStrokePaint.setTypeface(Typeface.create((Typeface)localObject1, j));
-                break;
-                j = 0;
-                break label260;
-              }
-            }
-            if ("setTextAlign".equals(localObject3))
-            {
-              setTextAlign((JSONArray)localObject1);
-            }
-            else if (("fillText".equals(localObject3)) || ("strokeText".equals(localObject3)))
-            {
-              setFillOrStrokeText(paramCanvas, (String)localObject3, (JSONArray)localObject1);
-            }
-            else if ("setGlobalAlpha".equals(localObject3))
-            {
-              this.mGlobalAlpha = ((JSONArray)localObject1).optInt(0, 0);
-            }
-            else if ("restore".equals(localObject3))
-            {
-              try
-              {
-                paramCanvas.restore();
-                this.mFillPaint = this.mSaveFillPaint;
-                this.mStrokePaint = this.mSaveStrokePaint;
-                this.mGlobalAlpha = this.mSaveGlobalAlpha;
-                this.mFillColorAlpha = this.mSaveFillColorAlpha;
-                this.mStrokeColorAlpha = this.mSaveStrokeColorAlpha;
-                this.mTextBaseline = this.mSaveTextBaseline;
-                this.mRepeatX = this.mSaveRepeatX;
-                this.mRepeatY = this.mSaveRepeatY;
-                this.mBitmapW = this.mSaveBitmapW;
-                this.mBitmapH = this.mSaveBitmapH;
-              }
-              catch (Exception localException)
-              {
-                for (;;)
-                {
-                  QMLog.e("CanvasView", "ACTION_RESTORE: " + Log.getStackTraceString(localException));
-                }
-              }
-            }
-            else if ("save".equals(localObject3))
-            {
-              paramCanvas.save();
-              this.mSaveFillPaint = new Paint(this.mFillPaint);
-              this.mSaveStrokePaint = new Paint(this.mStrokePaint);
-              this.mSaveGlobalAlpha = this.mGlobalAlpha;
-              this.mSaveFillColorAlpha = this.mFillColorAlpha;
-              this.mSaveStrokeColorAlpha = this.mStrokeColorAlpha;
-              this.mSaveTextBaseline = this.mTextBaseline;
-              this.mSaveRepeatX = this.mRepeatX;
-              this.mSaveRepeatY = this.mRepeatY;
-              this.mSaveBitmapW = this.mBitmapW;
-              this.mSaveBitmapH = this.mBitmapH;
-            }
-            else if ("clearRect".equals(localObject3))
-            {
-              clearRect(paramCanvas, localException);
-            }
-            else if ("setGlobalCompositeOperation".equals(localObject3))
-            {
-              setGlobalCompositeOperation(localException);
-            }
-            else if ("rotate".equals(localObject3))
-            {
-              paramCanvas.rotate((float)(localException.optDouble(0, 0.0D) * 180.0D / 3.141592653589793D));
-            }
-            else if ("scale".equals(localObject3))
-            {
-              paramCanvas.scale((float)localException.optDouble(0, 1.0D), (float)localException.optDouble(1, 1.0D));
-            }
-            else if ("translate".equals(localObject3))
-            {
-              paramCanvas.translate(mpx2px(localException.optDouble(0, 0.0D)), mpx2px(localException.optDouble(1, 0.0D)));
-            }
-            else if ("setLineWidth".equals(localObject3))
-            {
-              f1 = mpx2px(localException.optDouble(0, 0.0D));
-              this.mStrokePaint.setStrokeWidth(f1);
-            }
-            else if ("setShadow".equals(localObject3))
-            {
-              localObject2 = new CanvasView.ShadowLayer(this);
-              localObject3 = localException.optJSONArray(3);
-              f1 = mpx2px(localException.optDouble(2, 0.0D));
-              float f2 = mpx2px(localException.optDouble(0, 0.0D));
-              float f3 = mpx2px(localException.optDouble(1, 0.0D));
-              ((CanvasView.ShadowLayer)localObject2).radius = f1;
-              ((CanvasView.ShadowLayer)localObject2).dx = f2;
-              ((CanvasView.ShadowLayer)localObject2).dy = f3;
-              ((CanvasView.ShadowLayer)localObject2).color = getColor((JSONArray)localObject3);
-              this.mFillPaint.setShadowLayer(((CanvasView.ShadowLayer)localObject2).radius, ((CanvasView.ShadowLayer)localObject2).dx, ((CanvasView.ShadowLayer)localObject2).dy, ((CanvasView.ShadowLayer)localObject2).color);
-              this.mStrokePaint.setShadowLayer(((CanvasView.ShadowLayer)localObject2).radius, ((CanvasView.ShadowLayer)localObject2).dx, ((CanvasView.ShadowLayer)localObject2).dy, ((CanvasView.ShadowLayer)localObject2).color);
-            }
-            else if ("setLineCap".equals(localObject3))
-            {
-              setLineCap(localException);
-            }
-            else if ("setLineJoin".equals(localObject3))
-            {
-              setLineJoin(localException);
-            }
-            else if ("setLineDash".equals(localObject3))
-            {
-              setLineDash(localException);
-            }
-            else if ("setMiterLimit".equals(localObject3))
-            {
-              f1 = mpx2px(localException.optDouble(0, 0.0D));
-              this.mFillPaint.setStrokeMiter(f1);
-              this.mStrokePaint.setStrokeMiter(f1);
-            }
-            else if (("setTransform".equals(localObject3)) || ("transform".equals(localObject3)))
-            {
-              transform(paramCanvas, (String)localObject3, localException);
-            }
-            else if ("setTextBaseline".equals(localObject3))
-            {
-              this.mTextBaseline = localException.optString(0);
-            }
-            else if ("canvasPutImageData".equals(localObject3))
-            {
-              putImageData(paramCanvas, (String)localObject3, ((JSONObject)localObject2).optJSONObject("data"), ((JSONObject)localObject2).optInt("callbackId"));
-            }
-          }
-        }
-      }
+      i += 1;
     }
     this.mFillPaint.setShader(null);
     this.mFillPaint.setColor(-16777216);
@@ -394,452 +588,112 @@ public class CanvasView
     this.mStrokePaint.clearShadowLayer();
   }
   
-  /* Error */
+  private void doSaveBitmap(boolean paramBoolean, NativeViewRequestEvent paramNativeViewRequestEvent, JSONObject paramJSONObject, String paramString)
+  {
+    Bitmap localBitmap = getCacheBitmapFromView(this, paramBoolean);
+    ThreadManager.getSubThreadHandler().post(new CanvasView.3(this, localBitmap, paramNativeViewRequestEvent, paramJSONObject, paramBoolean, paramString));
+  }
+  
+  private void drawBitmap(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, BitmapFactory.Options paramOptions, int paramInt5)
+  {
+    if ((paramFloat3 > 0.0F) && (paramFloat4 > 0.0F))
+    {
+      paramOptions = decodeImage(paramString, paramFloat3, paramFloat4, paramInt1, paramInt2, paramInt3, paramInt4, paramOptions, paramInt5);
+      if (paramOptions != null)
+      {
+        paramString = paramOptions;
+        if (paramInt5 != 0) {
+          paramString = ImageUtil.rotaingImageView(paramInt5, paramOptions);
+        }
+        paramOptions = new RectF();
+        paramOptions.left = mpx2px(paramFloat1);
+        paramOptions.top = mpx2px(paramFloat2);
+        paramOptions.right = (paramOptions.left + mpx2px(paramFloat3));
+        paramOptions.bottom = (paramOptions.top + mpx2px(paramFloat4));
+        paramCanvas.drawBitmap(paramString, null, paramOptions, null);
+        paramString.recycle();
+      }
+    }
+  }
+  
   private void drawImage(Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    // Byte code:
-    //   0: aload_2
-    //   1: iconst_0
-    //   2: invokevirtual 425	org/json/JSONArray:optString	(I)Ljava/lang/String;
-    //   5: astore 18
-    //   7: aload 18
-    //   9: invokestatic 586	com/tencent/qqmini/sdk/core/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
-    //   12: ifne +777 -> 789
-    //   15: aload_0
-    //   16: invokespecial 311	com/tencent/qqmini/miniapp/widget/CanvasView:getMiniAppContext	()Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   19: ldc_w 588
-    //   22: invokeinterface 592 2 0
-    //   27: checkcast 588	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
-    //   30: aload 18
-    //   32: invokevirtual 595	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   35: astore 18
-    //   37: aload 18
-    //   39: invokestatic 586	com/tencent/qqmini/sdk/core/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
-    //   42: ifne +315 -> 357
-    //   45: aload_2
-    //   46: iconst_1
-    //   47: dconst_0
-    //   48: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   51: d2f
-    //   52: fstore 9
-    //   54: aload_2
-    //   55: iconst_2
-    //   56: dconst_0
-    //   57: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   60: d2f
-    //   61: fstore 10
-    //   63: aload_2
-    //   64: iconst_3
-    //   65: dconst_0
-    //   66: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   69: d2f
-    //   70: fstore 6
-    //   72: aload_2
-    //   73: iconst_4
-    //   74: dconst_0
-    //   75: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   78: d2f
-    //   79: fstore 5
-    //   81: aload_2
-    //   82: iconst_5
-    //   83: dconst_0
-    //   84: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   87: d2i
-    //   88: istore 12
-    //   90: aload_2
-    //   91: bipush 6
-    //   93: dconst_0
-    //   94: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   97: d2i
-    //   98: istore 13
-    //   100: aload_2
-    //   101: bipush 7
-    //   103: dconst_0
-    //   104: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   107: d2i
-    //   108: istore 14
-    //   110: aload_2
-    //   111: bipush 8
-    //   113: dconst_0
-    //   114: invokevirtual 342	org/json/JSONArray:optDouble	(ID)D
-    //   117: d2i
-    //   118: istore 15
-    //   120: new 597	android/graphics/BitmapFactory$Options
-    //   123: dup
-    //   124: invokespecial 598	android/graphics/BitmapFactory$Options:<init>	()V
-    //   127: astore 19
-    //   129: aload 18
-    //   131: invokestatic 603	com/tencent/qqmini/sdk/core/utils/ImageUtil:getExifOrientation	(Ljava/lang/String;)I
-    //   134: istore 16
-    //   136: fload 6
-    //   138: fstore_3
-    //   139: aload 19
-    //   141: iconst_1
-    //   142: putfield 606	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   145: fload 6
-    //   147: fstore_3
-    //   148: aload 18
-    //   150: aload 19
-    //   152: invokestatic 612	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   155: pop
-    //   156: fload 6
-    //   158: fconst_0
-    //   159: fcmpg
-    //   160: ifle +17 -> 177
-    //   163: fload 5
-    //   165: fstore_3
-    //   166: fload 6
-    //   168: fstore 4
-    //   170: fload 5
-    //   172: fconst_0
-    //   173: fcmpg
-    //   174: ifgt +22 -> 196
-    //   177: iload 14
-    //   179: ifle +179 -> 358
-    //   182: iload 15
-    //   184: ifle +174 -> 358
-    //   187: iload 14
-    //   189: i2f
-    //   190: fstore 4
-    //   192: iload 15
-    //   194: i2f
-    //   195: fstore_3
-    //   196: fload 4
-    //   198: fconst_0
-    //   199: fcmpl
-    //   200: ifle +157 -> 357
-    //   203: fload_3
-    //   204: fconst_0
-    //   205: fcmpl
-    //   206: ifle +151 -> 357
-    //   209: aload 19
-    //   211: iconst_1
-    //   212: putfield 615	android/graphics/BitmapFactory$Options:inDither	Z
-    //   215: iload 14
-    //   217: ifle +286 -> 503
-    //   220: iload 15
-    //   222: ifle +281 -> 503
-    //   225: aload 18
-    //   227: iconst_0
-    //   228: invokestatic 621	android/graphics/BitmapRegionDecoder:newInstance	(Ljava/lang/String;Z)Landroid/graphics/BitmapRegionDecoder;
-    //   231: astore 18
-    //   233: aload 18
-    //   235: aload_0
-    //   236: iload 12
-    //   238: iload 13
-    //   240: iload 14
-    //   242: iload 15
-    //   244: aload 19
-    //   246: iload 16
-    //   248: invokespecial 625	com/tencent/qqmini/miniapp/widget/CanvasView:getCropRect	(IIIILandroid/graphics/BitmapFactory$Options;I)Landroid/graphics/Rect;
-    //   251: aload 19
-    //   253: invokevirtual 629	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   256: astore_2
-    //   257: aload 18
-    //   259: invokevirtual 632	android/graphics/BitmapRegionDecoder:recycle	()V
-    //   262: aload_2
-    //   263: ifnull +94 -> 357
-    //   266: aload_2
-    //   267: astore 18
-    //   269: iload 16
-    //   271: ifeq +11 -> 282
-    //   274: iload 16
-    //   276: aload_2
-    //   277: invokestatic 636	com/tencent/qqmini/sdk/core/utils/ImageUtil:rotaingImageView	(ILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
-    //   280: astore 18
-    //   282: new 348	android/graphics/RectF
-    //   285: dup
-    //   286: invokespecial 349	android/graphics/RectF:<init>	()V
-    //   289: astore_2
-    //   290: aload_2
-    //   291: aload_0
-    //   292: fload 9
-    //   294: f2d
-    //   295: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
-    //   298: putfield 352	android/graphics/RectF:left	F
-    //   301: aload_2
-    //   302: aload_0
-    //   303: fload 10
-    //   305: f2d
-    //   306: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
-    //   309: putfield 355	android/graphics/RectF:top	F
-    //   312: aload_2
-    //   313: aload_2
-    //   314: getfield 352	android/graphics/RectF:left	F
-    //   317: aload_0
-    //   318: fload 4
-    //   320: f2d
-    //   321: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
-    //   324: fadd
-    //   325: putfield 358	android/graphics/RectF:right	F
-    //   328: aload_2
-    //   329: aload_2
-    //   330: getfield 355	android/graphics/RectF:top	F
-    //   333: aload_0
-    //   334: fload_3
-    //   335: f2d
-    //   336: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
-    //   339: fadd
-    //   340: putfield 361	android/graphics/RectF:bottom	F
-    //   343: aload_1
-    //   344: aload 18
-    //   346: aconst_null
-    //   347: aload_2
-    //   348: aconst_null
-    //   349: invokevirtual 640	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
-    //   352: aload 18
-    //   354: invokevirtual 643	android/graphics/Bitmap:recycle	()V
-    //   357: return
-    //   358: iload 16
-    //   360: bipush 90
-    //   362: if_icmpeq +11 -> 373
-    //   365: iload 16
-    //   367: sipush 270
-    //   370: if_icmpne +31 -> 401
-    //   373: fload 6
-    //   375: fstore_3
-    //   376: aload 19
-    //   378: getfield 646	android/graphics/BitmapFactory$Options:outHeight	I
-    //   381: i2f
-    //   382: fstore 4
-    //   384: fload 4
-    //   386: fstore_3
-    //   387: aload 19
-    //   389: getfield 649	android/graphics/BitmapFactory$Options:outWidth	I
-    //   392: i2f
-    //   393: fstore 6
-    //   395: fload 6
-    //   397: fstore_3
-    //   398: goto -202 -> 196
-    //   401: fload 6
-    //   403: fstore_3
-    //   404: aload 19
-    //   406: getfield 649	android/graphics/BitmapFactory$Options:outWidth	I
-    //   409: i2f
-    //   410: fstore 4
-    //   412: fload 4
-    //   414: fstore_3
-    //   415: aload 19
-    //   417: getfield 646	android/graphics/BitmapFactory$Options:outHeight	I
-    //   420: istore 17
-    //   422: iload 17
-    //   424: i2f
-    //   425: fstore_3
-    //   426: goto -230 -> 196
-    //   429: astore_2
-    //   430: fload_3
-    //   431: fstore 4
-    //   433: ldc 149
-    //   435: new 476	java/lang/StringBuilder
-    //   438: dup
-    //   439: invokespecial 477	java/lang/StringBuilder:<init>	()V
-    //   442: ldc_w 651
-    //   445: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   448: aload_2
-    //   449: invokestatic 489	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   452: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   455: invokevirtual 493	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   458: invokestatic 499	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   461: fload 5
-    //   463: fstore_3
-    //   464: goto -268 -> 196
-    //   467: astore 18
-    //   469: aconst_null
-    //   470: astore_2
-    //   471: ldc 149
-    //   473: new 476	java/lang/StringBuilder
-    //   476: dup
-    //   477: invokespecial 477	java/lang/StringBuilder:<init>	()V
-    //   480: ldc_w 653
-    //   483: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   486: aload 18
-    //   488: invokestatic 489	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   491: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   494: invokevirtual 493	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   497: invokestatic 499	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   500: goto -238 -> 262
-    //   503: aload 19
-    //   505: iconst_0
-    //   506: putfield 606	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   509: aload 19
-    //   511: getfield 649	android/graphics/BitmapFactory$Options:outWidth	I
-    //   514: i2f
-    //   515: fstore 8
-    //   517: aload 19
-    //   519: getfield 646	android/graphics/BitmapFactory$Options:outHeight	I
-    //   522: i2f
-    //   523: fstore 7
-    //   525: fload 4
-    //   527: fload_3
-    //   528: fmul
-    //   529: aload 19
-    //   531: getfield 649	android/graphics/BitmapFactory$Options:outWidth	I
-    //   534: i2f
-    //   535: fdiv
-    //   536: aload 19
-    //   538: getfield 646	android/graphics/BitmapFactory$Options:outHeight	I
-    //   541: i2f
-    //   542: fdiv
-    //   543: f2d
-    //   544: invokestatic 659	java/lang/Math:sqrt	(D)D
-    //   547: d2f
-    //   548: fstore 11
-    //   550: fload 7
-    //   552: fstore 6
-    //   554: fload 8
-    //   556: fstore 5
-    //   558: fload 11
-    //   560: fconst_1
-    //   561: fcmpg
-    //   562: ifge +17 -> 579
-    //   565: fload 8
-    //   567: fload 11
-    //   569: fmul
-    //   570: fstore 5
-    //   572: fload 7
-    //   574: fload 11
-    //   576: fmul
-    //   577: fstore 6
-    //   579: aload 18
-    //   581: invokestatic 662	com/tencent/qqmini/sdk/core/utils/ImageUtil:isPngFile	(Ljava/lang/String;)Z
-    //   584: ifeq +102 -> 686
-    //   587: aload 19
-    //   589: getstatic 668	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   592: putfield 671	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   595: ldc2_w 145
-    //   598: fload 5
-    //   600: f2d
-    //   601: ddiv
-    //   602: fload 6
-    //   604: f2d
-    //   605: ddiv
-    //   606: ldc2_w 672
-    //   609: ddiv
-    //   610: invokestatic 659	java/lang/Math:sqrt	(D)D
-    //   613: d2f
-    //   614: fstore 7
-    //   616: fload 7
-    //   618: fconst_1
-    //   619: fcmpg
-    //   620: ifge +112 -> 732
-    //   623: aload 19
-    //   625: aload 19
-    //   627: fload 5
-    //   629: fload 7
-    //   631: fmul
-    //   632: fload 6
-    //   634: fload 7
-    //   636: fmul
-    //   637: invokestatic 677	com/tencent/qqmini/sdk/core/utils/ImageUtil:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;FF)I
-    //   640: putfield 680	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   643: aload 18
-    //   645: aload 19
-    //   647: invokestatic 612	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   650: astore_2
-    //   651: aload_2
-    //   652: ifnonnull +134 -> 786
-    //   655: aload 19
-    //   657: getfield 680	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   660: ifle +97 -> 757
-    //   663: aload 19
-    //   665: aload 19
-    //   667: getfield 680	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   670: iconst_2
-    //   671: imul
-    //   672: putfield 680	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   675: aload 18
-    //   677: aload 19
-    //   679: invokestatic 612	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   682: astore_2
-    //   683: goto -421 -> 262
-    //   686: aload 19
-    //   688: getstatic 683	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   691: putfield 671	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   694: ldc2_w 145
-    //   697: fload 5
-    //   699: f2d
-    //   700: ddiv
-    //   701: fload 6
-    //   703: f2d
-    //   704: ddiv
-    //   705: ldc2_w 684
-    //   708: ddiv
-    //   709: invokestatic 659	java/lang/Math:sqrt	(D)D
-    //   712: d2f
-    //   713: fstore 7
-    //   715: goto -99 -> 616
-    //   718: astore_2
-    //   719: ldc 149
-    //   721: ldc_w 687
-    //   724: invokestatic 690	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   727: aconst_null
-    //   728: astore_2
-    //   729: goto -78 -> 651
-    //   732: aload 18
-    //   734: aload 19
-    //   736: invokestatic 612	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   739: astore_2
-    //   740: goto -89 -> 651
-    //   743: astore_2
-    //   744: ldc 149
-    //   746: ldc_w 692
-    //   749: invokestatic 690	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   752: aconst_null
-    //   753: astore_2
-    //   754: goto -103 -> 651
-    //   757: aload 19
-    //   759: iconst_2
-    //   760: putfield 680	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   763: goto -88 -> 675
-    //   766: astore_2
-    //   767: ldc 149
-    //   769: ldc_w 694
-    //   772: aload_2
-    //   773: invokestatic 697	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   776: aconst_null
-    //   777: astore_2
-    //   778: goto -516 -> 262
-    //   781: astore 18
-    //   783: goto -312 -> 471
-    //   786: goto -524 -> 262
-    //   789: goto -752 -> 37
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	792	0	this	CanvasView
-    //   0	792	1	paramCanvas	Canvas
-    //   0	792	2	paramJSONArray	JSONArray
-    //   138	390	3	f1	float
-    //   168	358	4	f2	float
-    //   79	619	5	f3	float
-    //   70	632	6	f4	float
-    //   523	191	7	f5	float
-    //   515	51	8	f6	float
-    //   52	241	9	f7	float
-    //   61	243	10	f8	float
-    //   548	27	11	f9	float
-    //   88	149	12	i	int
-    //   98	141	13	j	int
-    //   108	133	14	k	int
-    //   118	125	15	m	int
-    //   134	237	16	n	int
-    //   420	3	17	i1	int
-    //   5	348	18	localObject	Object
-    //   467	266	18	localException1	Exception
-    //   781	1	18	localException2	Exception
-    //   127	631	19	localOptions	BitmapFactory.Options
-    // Exception table:
-    //   from	to	target	type
-    //   139	145	429	java/lang/Exception
-    //   148	156	429	java/lang/Exception
-    //   376	384	429	java/lang/Exception
-    //   387	395	429	java/lang/Exception
-    //   404	412	429	java/lang/Exception
-    //   415	422	429	java/lang/Exception
-    //   225	257	467	java/lang/Exception
-    //   643	651	718	java/lang/Throwable
-    //   732	740	743	java/lang/Throwable
-    //   675	683	766	java/lang/Throwable
-    //   257	262	781	java/lang/Exception
+    String str2 = paramJSONArray.optString(0);
+    String str1 = str2;
+    if (!StringUtil.isEmpty(str2)) {
+      str1 = ((MiniAppFileManager)getMiniAppContext().getManager(MiniAppFileManager.class)).getAbsolutePath(str2);
+    }
+    float f5;
+    float f6;
+    float f4;
+    int i;
+    int j;
+    int k;
+    int m;
+    int n;
+    if (!StringUtil.isEmpty(str1))
+    {
+      f5 = (float)paramJSONArray.optDouble(1, 0.0D);
+      f6 = (float)paramJSONArray.optDouble(2, 0.0D);
+      f4 = (float)paramJSONArray.optDouble(3, 0.0D);
+      f3 = (float)paramJSONArray.optDouble(4, 0.0D);
+      i = (int)paramJSONArray.optDouble(5, 0.0D);
+      j = (int)paramJSONArray.optDouble(6, 0.0D);
+      k = (int)paramJSONArray.optDouble(7, 0.0D);
+      m = (int)paramJSONArray.optDouble(8, 0.0D);
+      paramJSONArray = new BitmapFactory.Options();
+      n = ImageUtil.getExifOrientation(str1);
+      f1 = f4;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramJSONArray.inJustDecodeBounds = true;
+        f1 = f4;
+        BitmapFactory.decodeFile(str1, paramJSONArray);
+        if (f4 > 0.0F)
+        {
+          f1 = f3;
+          f2 = f4;
+          if (f3 > 0.0F) {}
+        }
+        else
+        {
+          if ((k <= 0) || (m <= 0)) {
+            continue;
+          }
+          f2 = k;
+          f1 = m;
+        }
+      }
+      catch (Exception localException)
+      {
+        int i1;
+        QMLog.e("CanvasView", "calculate image size error! " + Log.getStackTraceString(localException));
+        float f2 = f1;
+        f1 = f3;
+        continue;
+      }
+      drawBitmap(paramCanvas, str1, f5, f6, f2, f1, i, j, k, m, paramJSONArray, n);
+      return;
+      if ((n == 90) || (n == 270))
+      {
+        f1 = f4;
+        f2 = paramJSONArray.outHeight;
+        f1 = f2;
+        f4 = paramJSONArray.outWidth;
+        f1 = f4;
+      }
+      else
+      {
+        f1 = f4;
+        f2 = paramJSONArray.outWidth;
+        f1 = f2;
+        i1 = paramJSONArray.outHeight;
+        f1 = i1;
+      }
+    }
   }
   
   private Bitmap getCacheBitmapFromView(View paramView, boolean paramBoolean)
@@ -917,6 +771,22 @@ public class CanvasView
     return 0;
   }
   
+  private float getCompressRadio(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return (float)Math.sqrt(8985600.0D / paramInt1 / paramInt2 / 2.0D);
+    }
+    return (float)Math.sqrt(8985600.0D / paramInt1 / paramInt2 / 2.0D);
+  }
+  
+  private Bitmap.Config getConfig(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return Bitmap.Config.ARGB_8888;
+    }
+    return Bitmap.Config.RGB_565;
+  }
+  
   private Rect getCropRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, BitmapFactory.Options paramOptions, int paramInt5)
   {
     Rect localRect = new Rect();
@@ -972,6 +842,38 @@ public class CanvasView
       return this.mStrokePaint;
       this.mStrokePaint.setAlpha(this.mStrokeColorAlpha);
     }
+  }
+  
+  private int getFontStyleItalic(Typeface paramTypeface)
+  {
+    if ((paramTypeface != null) && (paramTypeface.isBold())) {
+      return 3;
+    }
+    return 2;
+  }
+  
+  private int getFontStyleNormal(Typeface paramTypeface)
+  {
+    if ((paramTypeface != null) && (paramTypeface.isBold())) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  private int getFontWeightBoldStyle(Typeface paramTypeface)
+  {
+    if ((paramTypeface != null) && (paramTypeface.isItalic())) {
+      return 3;
+    }
+    return 1;
+  }
+  
+  private int getFontWeightNormalStyle(Typeface paramTypeface)
+  {
+    if ((paramTypeface != null) && (paramTypeface.isItalic())) {
+      return 2;
+    }
+    return 0;
   }
   
   private IMiniAppContext getMiniAppContext()
@@ -1083,6 +985,138 @@ public class CanvasView
     }
   }
   
+  private void initDrawActions()
+  {
+    this.drawActions.put("drawImage", new CanvasView.4(this));
+    this.drawActions.put("setStrokeStyle", new CanvasView.SetStrokeOrFillStyleAction(this));
+    this.drawActions.put("setFillStyle", new CanvasView.SetStrokeOrFillStyleAction(this));
+    this.drawActions.put("strokePath", new CanvasView.SetPathOrClipAction(this));
+    this.drawActions.put("fillPath", new CanvasView.SetPathOrClipAction(this));
+    this.drawActions.put("clip", new CanvasView.SetPathOrClipAction(this));
+    this.drawActions.put("setFontSize", new CanvasView.5(this));
+    this.drawActions.put("setFontStyle", new CanvasView.6(this));
+    this.drawActions.put("setFontWeight", new CanvasView.7(this));
+    this.drawActions.put("setFontFamily", new CanvasView.8(this));
+    this.drawActions.put("setTextAlign", new CanvasView.9(this));
+    this.drawActions.put("fillText", new CanvasView.SetFillOrStrokeTextAction(this));
+    this.drawActions.put("strokeText", new CanvasView.SetFillOrStrokeTextAction(this));
+    this.drawActions.put("setGlobalAlpha", new CanvasView.10(this));
+    this.drawActions.put("restore", new CanvasView.11(this));
+    this.drawActions.put("save", new CanvasView.12(this));
+    this.drawActions.put("clearRect", new CanvasView.13(this));
+    this.drawActions.put("setGlobalCompositeOperation", new CanvasView.14(this));
+    this.drawActions.put("rotate", new CanvasView.15(this));
+    this.drawActions.put("scale", new CanvasView.16(this));
+    this.drawActions.put("translate", new CanvasView.17(this));
+    this.drawActions.put("setLineWidth", new CanvasView.18(this));
+    this.drawActions.put("setShadow", new CanvasView.19(this));
+    this.drawActions.put("setLineCap", new CanvasView.20(this));
+    this.drawActions.put("setLineJoin", new CanvasView.21(this));
+    this.drawActions.put("setLineDash", new CanvasView.22(this));
+    this.drawActions.put("setMiterLimit", new CanvasView.23(this));
+    this.drawActions.put("setTransform", new CanvasView.TransformAction(this));
+    this.drawActions.put("transform", new CanvasView.TransformAction(this));
+    this.drawActions.put("setTextBaseline", new CanvasView.24(this));
+    this.drawActions.put("canvasPutImageData", new CanvasView.25(this));
+  }
+  
+  private void pathActionArc(JSONArray paramJSONArray1, JSONArray paramJSONArray2)
+  {
+    float f6 = mpx2px(paramJSONArray2.optDouble(0, 0.0D));
+    float f4 = mpx2px(paramJSONArray2.optDouble(1, 0.0D));
+    float f5 = mpx2px(paramJSONArray2.optDouble(2, 0.0D));
+    double d1 = paramJSONArray2.optDouble(3, 0.0D);
+    double d2 = paramJSONArray2.optDouble(4, 0.0D);
+    float f3 = (float)(d1 / 3.141592653589793D * 180.0D);
+    float f1 = (float)(d2 / 3.141592653589793D * 180.0D);
+    boolean bool = paramJSONArray1.optBoolean(5);
+    paramJSONArray1 = new RectF(f6 - f5, f4 - f5, f6 + f5, f4 + f5);
+    if (bool) {}
+    for (f1 = f3 - f1;; f1 -= f3)
+    {
+      f2 = f1 % 360.0F;
+      f1 = f2;
+      if (f2 <= 0.0F) {
+        f1 = f2 + 360.0F;
+      }
+      if (!this.mPath.isEmpty()) {
+        break;
+      }
+      this.mPath.addArc(paramJSONArray1, f3, f1);
+      return;
+    }
+    float f2 = (float)(f6 + f5 * Math.cos(d1));
+    d2 = f4;
+    f2 = (float)(f5 * Math.sin(d1) + d2);
+    if (Math.abs(Math.abs(f1) - 360.0F) < 1.0E-014D)
+    {
+      this.mPath.addArc(paramJSONArray1, f3, f1);
+      return;
+    }
+    this.mPath.arcTo(paramJSONArray1, f3, f1);
+  }
+  
+  private void pathActionBezierCurveTo(JSONArray paramJSONArray)
+  {
+    float f1 = mpx2px(paramJSONArray.optDouble(0, 0.0D));
+    float f2 = mpx2px(paramJSONArray.optDouble(1, 0.0D));
+    float f3 = mpx2px(paramJSONArray.optDouble(2, 0.0D));
+    float f4 = mpx2px(paramJSONArray.optDouble(3, 0.0D));
+    float f5 = mpx2px(paramJSONArray.optDouble(4, 0.0D));
+    float f6 = mpx2px(paramJSONArray.optDouble(5, 0.0D));
+    if (this.mPath.isEmpty()) {
+      this.mPath.moveTo(f1, f2);
+    }
+    this.mPath.cubicTo(f1, f2, f3, f4, f5, f6);
+  }
+  
+  private void pathActionLineTo(JSONArray paramJSONArray)
+  {
+    float f1 = mpx2px(paramJSONArray.optDouble(0, 0.0D));
+    float f2 = mpx2px(paramJSONArray.optDouble(1, 0.0D));
+    if (this.mPath.isEmpty())
+    {
+      this.mPath.moveTo(f1, f2);
+      return;
+    }
+    this.mPath.lineTo(f1, f2);
+  }
+  
+  private void pathActionQuadraticCurveTo(JSONArray paramJSONArray)
+  {
+    float f1 = mpx2px(paramJSONArray.optDouble(0, 0.0D));
+    float f2 = mpx2px(paramJSONArray.optDouble(1, 0.0D));
+    float f3 = mpx2px(paramJSONArray.optDouble(2, 0.0D));
+    float f4 = mpx2px(paramJSONArray.optDouble(3, 0.0D));
+    if (this.mPath.isEmpty()) {
+      this.mPath.moveTo(f1, f2);
+    }
+    this.mPath.quadTo(f1, f2, f3, f4);
+  }
+  
+  private void pathActionRect(JSONArray paramJSONArray)
+  {
+    float f4 = mpx2px(paramJSONArray.optDouble(0, 0.0D));
+    float f6 = mpx2px(paramJSONArray.optDouble(1, 0.0D));
+    float f3 = mpx2px(paramJSONArray.optDouble(2, 0.0D));
+    float f5 = mpx2px(paramJSONArray.optDouble(3, 0.0D));
+    float f2 = f3;
+    float f1 = f4;
+    if (f3 <= 0.0F)
+    {
+      f1 = f4 + f3;
+      f2 = -f3;
+    }
+    f4 = f5;
+    f3 = f6;
+    if (f5 <= 0.0F)
+    {
+      f3 = f6 + f5;
+      f4 = -f5;
+    }
+    addPathRect(f1, f3, f2, f4);
+  }
+  
   private void processDrawActionCommands()
   {
     boolean bool = this.mUseHardwareAccelerate;
@@ -1146,30 +1180,30 @@ public class CanvasView
     //   0: aconst_null
     //   1: astore 18
     //   3: aload_3
-    //   4: ldc_w 774
-    //   7: invokevirtual 567	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   4: ldc_w 574
+    //   7: invokevirtual 1176	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   10: istore 9
     //   12: aload_3
-    //   13: ldc_w 789
-    //   16: invokevirtual 567	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   13: ldc_w 585
+    //   16: invokevirtual 1176	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   19: istore 10
     //   21: aload_3
-    //   22: ldc_w 876
-    //   25: invokevirtual 567	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   22: ldc_w 1178
+    //   25: invokevirtual 1176	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   28: istore 11
     //   30: aload_3
-    //   31: ldc_w 878
-    //   34: invokevirtual 567	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   31: ldc_w 1180
+    //   34: invokevirtual 1176	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   37: istore 12
     //   39: aconst_null
     //   40: aload_3
-    //   41: ldc 139
-    //   43: invokestatic 884	com/tencent/qqmini/sdk/core/utils/NativeBuffer:unpackNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IJsService;Lorg/json/JSONObject;Ljava/lang/String;)Lcom/tencent/qqmini/sdk/core/utils/NativeBuffer;
+    //   41: ldc 142
+    //   43: invokestatic 1186	com/tencent/qqmini/sdk/core/utils/NativeBuffer:unpackNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IJsService;Lorg/json/JSONObject;Ljava/lang/String;)Lcom/tencent/qqmini/sdk/core/utils/NativeBuffer;
     //   46: astore_3
     //   47: aload_3
     //   48: ifnull +364 -> 412
     //   51: aload_3
-    //   52: getfield 888	com/tencent/qqmini/sdk/core/utils/NativeBuffer:buf	[B
+    //   52: getfield 1190	com/tencent/qqmini/sdk/core/utils/NativeBuffer:buf	[B
     //   55: astore_3
     //   56: iload 11
     //   58: iload 12
@@ -1234,7 +1268,7 @@ public class CanvasView
     //   159: iadd
     //   160: sipush 256
     //   163: irem
-    //   164: invokestatic 737	android/graphics/Color:argb	(IIII)I
+    //   164: invokestatic 907	android/graphics/Color:argb	(IIII)I
     //   167: iastore
     //   168: iload 8
     //   170: iconst_1
@@ -1243,8 +1277,8 @@ public class CanvasView
     //   174: goto -103 -> 71
     //   177: iload 11
     //   179: iload 12
-    //   181: getstatic 668	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   184: invokestatic 722	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   181: getstatic 748	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   184: invokestatic 891	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   187: astore_3
     //   188: aload_3
     //   189: aload 19
@@ -1254,85 +1288,85 @@ public class CanvasView
     //   195: iconst_0
     //   196: iload 11
     //   198: iload 12
-    //   200: invokevirtual 892	android/graphics/Bitmap:setPixels	([IIIIIII)V
-    //   203: new 259	android/graphics/Paint
+    //   200: invokevirtual 1194	android/graphics/Bitmap:setPixels	([IIIIIII)V
+    //   203: new 270	android/graphics/Paint
     //   206: dup
-    //   207: invokespecial 893	android/graphics/Paint:<init>	()V
+    //   207: invokespecial 1195	android/graphics/Paint:<init>	()V
     //   210: astore 18
     //   212: aload 18
     //   214: iconst_1
-    //   215: invokevirtual 896	android/graphics/Paint:setAntiAlias	(Z)V
+    //   215: invokevirtual 1198	android/graphics/Paint:setAntiAlias	(Z)V
     //   218: aload_0
     //   219: iload 9
     //   221: i2d
-    //   222: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
+    //   222: invokevirtual 537	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
     //   225: fstore 5
     //   227: aload_0
     //   228: iload 10
     //   230: i2d
-    //   231: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
+    //   231: invokevirtual 537	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
     //   234: fstore 6
     //   236: aload_1
     //   237: aload_3
     //   238: aconst_null
-    //   239: new 348	android/graphics/RectF
+    //   239: new 495	android/graphics/RectF
     //   242: dup
     //   243: fload 5
     //   245: fload 6
     //   247: aload_0
     //   248: iload 11
     //   250: i2d
-    //   251: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
+    //   251: invokevirtual 537	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
     //   254: fload 5
     //   256: fadd
     //   257: aload_0
     //   258: iload 12
     //   260: i2d
-    //   261: invokevirtual 346	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
+    //   261: invokevirtual 537	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2px	(D)F
     //   264: fload 6
     //   266: fadd
-    //   267: invokespecial 899	android/graphics/RectF:<init>	(FFFF)V
+    //   267: invokespecial 1111	android/graphics/RectF:<init>	(FFFF)V
     //   270: aload 18
-    //   272: invokevirtual 640	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
+    //   272: invokevirtual 846	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
     //   275: aload_0
     //   276: aload_2
     //   277: aconst_null
     //   278: iload 4
-    //   280: invokevirtual 903	com/tencent/qqmini/miniapp/widget/CanvasView:callbackJsEventOK	(Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   280: invokevirtual 1202	com/tencent/qqmini/miniapp/widget/CanvasView:callbackJsEventOK	(Ljava/lang/String;Lorg/json/JSONObject;I)V
     //   283: aload_3
     //   284: ifnull +14 -> 298
     //   287: aload_3
-    //   288: invokevirtual 907	android/graphics/Bitmap:isRecycled	()Z
+    //   288: invokevirtual 656	android/graphics/Bitmap:isRecycled	()Z
     //   291: ifne +7 -> 298
     //   294: aload_3
-    //   295: invokevirtual 643	android/graphics/Bitmap:recycle	()V
+    //   295: invokevirtual 659	android/graphics/Bitmap:recycle	()V
     //   298: return
     //   299: astore_3
     //   300: aconst_null
     //   301: astore_1
-    //   302: ldc 149
-    //   304: new 476	java/lang/StringBuilder
+    //   302: ldc 152
+    //   304: new 699	java/lang/StringBuilder
     //   307: dup
-    //   308: invokespecial 477	java/lang/StringBuilder:<init>	()V
-    //   311: ldc_w 909
-    //   314: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: invokespecial 700	java/lang/StringBuilder:<init>	()V
+    //   311: ldc_w 1204
+    //   314: invokevirtual 706	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   317: aload_3
-    //   318: invokestatic 489	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   321: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   324: invokevirtual 493	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   327: invokestatic 499	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   318: invokestatic 712	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   321: invokevirtual 706	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   324: invokevirtual 715	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   327: invokestatic 721	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   330: aload_0
     //   331: aload_2
     //   332: aconst_null
     //   333: iload 4
-    //   335: invokevirtual 912	com/tencent/qqmini/miniapp/widget/CanvasView:callbackJsEventFail	(Ljava/lang/String;Lorg/json/JSONObject;I)V
+    //   335: invokevirtual 1207	com/tencent/qqmini/miniapp/widget/CanvasView:callbackJsEventFail	(Ljava/lang/String;Lorg/json/JSONObject;I)V
     //   338: aload_1
     //   339: ifnull -41 -> 298
     //   342: aload_1
-    //   343: invokevirtual 907	android/graphics/Bitmap:isRecycled	()Z
+    //   343: invokevirtual 656	android/graphics/Bitmap:isRecycled	()Z
     //   346: ifne -48 -> 298
     //   349: aload_1
-    //   350: invokevirtual 643	android/graphics/Bitmap:recycle	()V
+    //   350: invokevirtual 659	android/graphics/Bitmap:recycle	()V
     //   353: return
     //   354: astore_1
     //   355: aload 18
@@ -1340,10 +1374,10 @@ public class CanvasView
     //   358: aload_2
     //   359: ifnull +14 -> 373
     //   362: aload_2
-    //   363: invokevirtual 907	android/graphics/Bitmap:isRecycled	()Z
+    //   363: invokevirtual 656	android/graphics/Bitmap:isRecycled	()Z
     //   366: ifne +7 -> 373
     //   369: aload_2
-    //   370: invokevirtual 643	android/graphics/Bitmap:recycle	()V
+    //   370: invokevirtual 659	android/graphics/Bitmap:recycle	()V
     //   373: aload_1
     //   374: athrow
     //   375: astore_1
@@ -1457,102 +1491,48 @@ public class CanvasView
   
   private void setFontStyle(JSONArray paramJSONArray)
   {
-    int j = 3;
-    int k = 1;
     paramJSONArray = paramJSONArray.optString(0, "normal");
     if ("normal".equals(paramJSONArray))
     {
       paramJSONArray = this.mFillPaint.getTypeface();
-      if ((paramJSONArray != null) && (paramJSONArray.isBold()))
-      {
-        i = 1;
-        this.mFillPaint.setTypeface(Typeface.create(paramJSONArray, i));
-        paramJSONArray = this.mStrokePaint.getTypeface();
-        if ((paramJSONArray == null) || (!paramJSONArray.isBold())) {
-          break label97;
-        }
-        i = k;
-        this.mStrokePaint.setTypeface(Typeface.create(paramJSONArray, i));
-      }
-    }
-    label97:
-    while ((!"italic".equals(paramJSONArray)) && (!"oblique".equals(paramJSONArray))) {
-      for (;;)
-      {
-        return;
-        i = 0;
-        continue;
-        i = 0;
-      }
-    }
-    paramJSONArray = this.mFillPaint.getTypeface();
-    if ((paramJSONArray != null) && (paramJSONArray.isBold()))
-    {
-      i = 3;
+      i = getFontStyleNormal(paramJSONArray);
       this.mFillPaint.setTypeface(Typeface.create(paramJSONArray, i));
       paramJSONArray = this.mStrokePaint.getTypeface();
-      if ((paramJSONArray == null) || (!paramJSONArray.isBold())) {
-        break label196;
-      }
-    }
-    label196:
-    for (int i = j;; i = 2)
-    {
+      i = getFontStyleNormal(paramJSONArray);
       this.mStrokePaint.setTypeface(Typeface.create(paramJSONArray, i));
-      return;
-      i = 2;
-      break;
     }
+    while ((!"italic".equals(paramJSONArray)) && (!"oblique".equals(paramJSONArray))) {
+      return;
+    }
+    paramJSONArray = this.mFillPaint.getTypeface();
+    int i = getFontStyleItalic(paramJSONArray);
+    this.mFillPaint.setTypeface(Typeface.create(paramJSONArray, i));
+    paramJSONArray = this.mStrokePaint.getTypeface();
+    i = getFontStyleItalic(paramJSONArray);
+    this.mStrokePaint.setTypeface(Typeface.create(paramJSONArray, i));
   }
   
   private void setFontWeight(JSONArray paramJSONArray)
   {
-    int j = 3;
-    int k = 2;
     paramJSONArray = paramJSONArray.optString(0);
     if ("normal".equals(paramJSONArray))
     {
       paramJSONArray = this.mFillPaint.getTypeface();
-      if ((paramJSONArray != null) && (paramJSONArray.isItalic()))
-      {
-        i = 2;
-        this.mFillPaint.setTypeface(Typeface.create(paramJSONArray, i));
-        paramJSONArray = this.mStrokePaint.getTypeface();
-        if ((paramJSONArray == null) || (!paramJSONArray.isItalic())) {
-          break label95;
-        }
-        i = k;
-        this.mStrokePaint.setTypeface(Typeface.create(paramJSONArray, i));
-      }
-    }
-    label95:
-    while (!"bold".equals(paramJSONArray)) {
-      for (;;)
-      {
-        return;
-        i = 0;
-        continue;
-        i = 0;
-      }
-    }
-    paramJSONArray = this.mFillPaint.getTypeface();
-    if ((paramJSONArray != null) && (paramJSONArray.isItalic()))
-    {
-      i = 3;
+      i = getFontWeightNormalStyle(paramJSONArray);
       this.mFillPaint.setTypeface(Typeface.create(paramJSONArray, i));
       paramJSONArray = this.mStrokePaint.getTypeface();
-      if ((paramJSONArray == null) || (!paramJSONArray.isItalic())) {
-        break label184;
-      }
-    }
-    label184:
-    for (int i = j;; i = 1)
-    {
+      i = getFontWeightNormalStyle(paramJSONArray);
       this.mStrokePaint.setTypeface(Typeface.create(paramJSONArray, i));
-      return;
-      i = 1;
-      break;
     }
+    while (!"bold".equals(paramJSONArray)) {
+      return;
+    }
+    paramJSONArray = this.mFillPaint.getTypeface();
+    int i = getFontWeightBoldStyle(paramJSONArray);
+    this.mFillPaint.setTypeface(Typeface.create(paramJSONArray, i));
+    paramJSONArray = this.mStrokePaint.getTypeface();
+    i = getFontWeightBoldStyle(paramJSONArray);
+    this.mStrokePaint.setTypeface(Typeface.create(paramJSONArray, i));
   }
   
   private void setGlobalCompositeOperation(JSONArray paramJSONArray)
@@ -1668,190 +1648,62 @@ public class CanvasView
     }
     this.mPath.reset();
     int i = 0;
-    Object localObject2;
-    Object localObject1;
-    float f2;
-    float f6;
-    float f3;
-    float f5;
     if (i < paramJSONArray.length())
     {
-      localObject2 = paramJSONArray.optJSONObject(i);
-      if (localObject2 != null)
+      Object localObject = paramJSONArray.optJSONObject(i);
+      String str;
+      if (localObject != null)
       {
-        localObject1 = ((JSONObject)localObject2).optString("method");
-        localObject2 = ((JSONObject)localObject2).optJSONArray("data");
-        if (!"rect".equals(localObject1)) {
-          break label401;
+        str = ((JSONObject)localObject).optString("method");
+        localObject = ((JSONObject)localObject).optJSONArray("data");
+        if (!"rect".equals(str)) {
+          break label93;
         }
-        f2 = mpx2px(((JSONArray)localObject2).optDouble(0, 0.0D));
-        f6 = mpx2px(((JSONArray)localObject2).optDouble(1, 0.0D));
-        f3 = mpx2px(((JSONArray)localObject2).optDouble(2, 0.0D));
-        f5 = mpx2px(((JSONArray)localObject2).optDouble(3, 0.0D));
-        if (f3 > 0.0F) {
-          break label1177;
-        }
-        f1 = -f3;
-        f2 += f3;
-        f3 = f1;
-      }
-    }
-    label272:
-    label401:
-    label1177:
-    for (float f1 = f2;; f1 = f2)
-    {
-      float f4 = f5;
-      f2 = f6;
-      if (f5 <= 0.0F)
-      {
-        f2 = f6 + f5;
-        f4 = -f5;
-      }
-      localObject1 = new RectF();
-      if (((this.mRepeatX) || (this.mRepeatY)) && ((this.mBitmapW != 0) || (this.mBitmapH != 0)))
-      {
-        if (this.mRepeatX) {
-          f1 = 0.0F;
-        }
-        ((RectF)localObject1).left = f1;
-        if (this.mRepeatY) {
-          f2 = 0.0F;
-        }
-        ((RectF)localObject1).top = f2;
-        if (this.mRepeatX)
-        {
-          f1 = ((RectF)localObject1).left + f3;
-          ((RectF)localObject1).right = f1;
-          if (!this.mRepeatY) {
-            break label348;
-          }
-          f1 = f4 + ((RectF)localObject1).top;
-          label296:
-          ((RectF)localObject1).bottom = f1;
-          label303:
-          this.mPath.addRect((RectF)localObject1, Path.Direction.CW);
-          f1 = ((RectF)localObject1).right;
-          f1 = ((RectF)localObject1).bottom;
-        }
+        pathActionRect((JSONArray)localObject);
       }
       for (;;)
       {
         i += 1;
         break;
-        f1 = this.mBitmapW;
-        break label272;
-        label348:
-        f1 = this.mBitmapH;
-        break label296;
-        ((RectF)localObject1).left = f1;
-        ((RectF)localObject1).top = f2;
-        ((RectF)localObject1).right = (((RectF)localObject1).left + f3);
-        ((RectF)localObject1).bottom = (f4 + ((RectF)localObject1).top);
-        break label303;
-        if ("moveTo".equals(localObject1))
+        label93:
+        if ("moveTo".equals(str))
         {
-          f1 = mpx2px(((JSONArray)localObject2).optDouble(0, 0.0D));
-          f2 = mpx2px(((JSONArray)localObject2).optDouble(1, 0.0D));
+          float f1 = mpx2px(((JSONArray)localObject).optDouble(0, 0.0D));
+          float f2 = mpx2px(((JSONArray)localObject).optDouble(1, 0.0D));
           this.mPath.moveTo(f1, f2);
         }
-        else if ("lineTo".equals(localObject1))
+        else if ("lineTo".equals(str))
         {
-          f1 = mpx2px(((JSONArray)localObject2).optDouble(0, 0.0D));
-          f2 = mpx2px(((JSONArray)localObject2).optDouble(1, 0.0D));
-          if (this.mPath.isEmpty()) {
-            this.mPath.moveTo(f1, f2);
-          } else {
-            this.mPath.lineTo(f1, f2);
-          }
+          pathActionLineTo((JSONArray)localObject);
         }
-        else if ("closePath".equals(localObject1))
+        else if ("closePath".equals(str))
         {
           this.mPath.close();
         }
-        else
+        else if ("arc".equals(str))
         {
-          if ("arc".equals(localObject1))
-          {
-            f5 = mpx2px(((JSONArray)localObject2).optDouble(0, 0.0D));
-            f3 = mpx2px(((JSONArray)localObject2).optDouble(1, 0.0D));
-            f4 = mpx2px(((JSONArray)localObject2).optDouble(2, 0.0D));
-            double d1 = ((JSONArray)localObject2).optDouble(3, 0.0D);
-            double d2 = ((JSONArray)localObject2).optDouble(4, 0.0D);
-            f6 = (float)(d1 / 3.141592653589793D * 180.0D);
-            f1 = (float)(d2 / 3.141592653589793D * 180.0D);
-            boolean bool = paramJSONArray.optBoolean(5);
-            localObject1 = new RectF(f5 - f4, f3 - f4, f5 + f4, f3 + f4);
-            if (bool)
-            {
-              f1 = f6 - f1;
-              label686:
-              f2 = f1 % 360.0F;
-              f1 = f2;
-              if (f2 <= 0.0F) {
-                f1 = f2 + 360.0F;
-              }
-              if (!this.mPath.isEmpty()) {
-                break label781;
-              }
-              this.mPath.addArc((RectF)localObject1, f6, f1);
-            }
-            for (;;)
-            {
-              f1 = (float)(f5 + f4 * Math.cos(d2));
-              f1 = (float)(f3 + f4 * Math.sin(d2));
-              break;
-              f1 -= f6;
-              break label686;
-              f2 = (float)(f5 + f4 * Math.cos(d1));
-              double d3 = f3;
-              double d4 = f4;
-              f2 = (float)(Math.sin(d1) * d4 + d3);
-              if (Math.abs(Math.abs(f1) - 360.0F) < 1.0E-014D) {
-                this.mPath.addArc((RectF)localObject1, f6, f1);
-              } else {
-                this.mPath.arcTo((RectF)localObject1, f6, f1);
-              }
-            }
-          }
-          if ("quadraticCurveTo".equals(localObject1))
-          {
-            f1 = mpx2px(((JSONArray)localObject2).optDouble(0, 0.0D));
-            f2 = mpx2px(((JSONArray)localObject2).optDouble(1, 0.0D));
-            f3 = mpx2px(((JSONArray)localObject2).optDouble(2, 0.0D));
-            f4 = mpx2px(((JSONArray)localObject2).optDouble(3, 0.0D));
-            if (this.mPath.isEmpty()) {
-              this.mPath.moveTo(f1, f2);
-            }
-            this.mPath.quadTo(f1, f2, f3, f4);
-          }
-          else if ("bezierCurveTo".equals(localObject1))
-          {
-            f1 = mpx2px(((JSONArray)localObject2).optDouble(0, 0.0D));
-            f2 = mpx2px(((JSONArray)localObject2).optDouble(1, 0.0D));
-            f3 = mpx2px(((JSONArray)localObject2).optDouble(2, 0.0D));
-            f4 = mpx2px(((JSONArray)localObject2).optDouble(3, 0.0D));
-            f5 = mpx2px(((JSONArray)localObject2).optDouble(4, 0.0D));
-            f6 = mpx2px(((JSONArray)localObject2).optDouble(5, 0.0D));
-            if (this.mPath.isEmpty()) {
-              this.mPath.moveTo(f1, f2);
-            }
-            this.mPath.cubicTo(f1, f2, f3, f4, f5, f6);
-          }
-          else if ("translate".equals(localObject1))
-          {
-            paramCanvas.translate(mpx2px(((JSONArray)localObject2).optDouble(0, 0.0D)), mpx2px(((JSONArray)localObject2).optDouble(1, 0.0D)));
-          }
+          pathActionArc(paramJSONArray, (JSONArray)localObject);
+        }
+        else if ("quadraticCurveTo".equals(str))
+        {
+          pathActionQuadraticCurveTo((JSONArray)localObject);
+        }
+        else if ("bezierCurveTo".equals(str))
+        {
+          pathActionBezierCurveTo((JSONArray)localObject);
+        }
+        else if ("translate".equals(str))
+        {
+          paramCanvas.translate(mpx2px(((JSONArray)localObject).optDouble(0, 0.0D)), mpx2px(((JSONArray)localObject).optDouble(1, 0.0D)));
         }
       }
-      if ("clip".equals(paramString))
-      {
-        paramCanvas.clipPath(this.mPath);
-        return;
-      }
-      paramCanvas.drawPath(this.mPath, getCurrentPaint(paramString));
+    }
+    if ("clip".equals(paramString))
+    {
+      paramCanvas.clipPath(this.mPath);
       return;
     }
+    paramCanvas.drawPath(this.mPath, getCurrentPaint(paramString));
   }
   
   private void setStrokeOrFillStyle(String paramString, JSONArray paramJSONArray)
@@ -1861,35 +1713,15 @@ public class CanvasView
     this.mBitmapW = 0;
     this.mBitmapH = 0;
     Object localObject = paramJSONArray.optString(0);
-    int i;
-    if ("normal".equals(localObject))
-    {
-      paramJSONArray = paramJSONArray.optJSONArray(1);
-      if ("setStrokeStyle".equals(paramString))
-      {
-        i = getColor(paramJSONArray);
-        this.mStrokeColorAlpha = paramJSONArray.optInt(3);
-        this.mStrokePaint.setShader(null);
-        this.mStrokePaint.setColor(i);
-      }
+    if ("normal".equals(localObject)) {
+      setStyleColorTypeNormal(paramString, paramJSONArray);
     }
-    label84:
     do
     {
       do
       {
         do
         {
-          break label84;
-          break label84;
-          do
-          {
-            return;
-          } while (!"setFillStyle".equals(paramString));
-          i = getColor(paramJSONArray);
-          this.mFillColorAlpha = paramJSONArray.optInt(3);
-          this.mFillPaint.setShader(null);
-          this.mFillPaint.setColor(i);
           return;
           if (!"radial".equals(localObject)) {
             break;
@@ -1923,73 +1755,105 @@ public class CanvasView
       } while (!"setFillStyle".equals(paramString));
       this.mFillPaint.setShader(paramJSONArray);
       return;
-    } while ((!"pattern".equals(localObject)) || (paramJSONArray.length() != 3));
-    paramString = paramJSONArray.optString(1);
-    if (!StringUtil.isEmpty(paramString)) {
-      if (paramString.startsWith("wxfile")) {
-        paramString = ((MiniAppFileManager)getMiniAppContext().getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
+    } while (!"pattern".equals(localObject));
+    setStrokeOrFillStyleForTypePatten(paramJSONArray);
+  }
+  
+  private void setStrokeOrFillStyleForTypePatten(JSONArray paramJSONArray)
+  {
+    String str;
+    if (paramJSONArray.length() == 3)
+    {
+      str = paramJSONArray.optString(1);
+      if (StringUtil.isEmpty(str)) {
+        break label131;
       }
+      if (!str.startsWith("wxfile")) {
+        break label83;
+      }
+      str = ((MiniAppFileManager)getMiniAppContext().getManager(MiniAppFileManager.class)).getAbsolutePath(str);
     }
+    label131:
     for (;;)
     {
-      label473:
       paramJSONArray = paramJSONArray.optString(2);
       if ("repeat".equals(paramJSONArray))
       {
         this.mRepeatX = true;
         this.mRepeatY = true;
-        label499:
-        if (StringUtil.isEmpty(paramString)) {
-          break label692;
+      }
+      for (;;)
+      {
+        setStylePatternBitmapShader(str);
+        return;
+        label83:
+        str = this.mApkgInfo.getChildFileAbsolutePath(str);
+        break;
+        if ("repeat-x".equals(paramJSONArray)) {
+          this.mRepeatX = true;
+        } else if ("repeat-y".equals(paramJSONArray)) {
+          this.mRepeatY = true;
         }
-        paramString = ImageUtil.getLocalBitmap(paramString);
-        if (paramString != null)
-        {
-          this.mBitmapW = paramString.getWidth();
-          this.mBitmapH = paramString.getHeight();
-        }
-        paramJSONArray = new Matrix();
-        paramJSONArray.postScale(this.mDensity, this.mDensity);
-        localObject = Bitmap.createBitmap(paramString, 0, 0, this.mBitmapW, this.mBitmapH, paramJSONArray, true);
-        if (localObject == null) {
-          break;
-        }
-        this.mBitmapW = ((Bitmap)localObject).getWidth();
-        this.mBitmapH = ((Bitmap)localObject).getHeight();
+      }
+    }
+  }
+  
+  private void setStyleColorTypeNormal(String paramString, JSONArray paramJSONArray)
+  {
+    paramJSONArray = paramJSONArray.optJSONArray(1);
+    if ("setStrokeStyle".equals(paramString))
+    {
+      i = getColor(paramJSONArray);
+      this.mStrokeColorAlpha = paramJSONArray.optInt(3);
+      this.mStrokePaint.setShader(null);
+      this.mStrokePaint.setColor(i);
+    }
+    while (!"setFillStyle".equals(paramString)) {
+      return;
+    }
+    int i = getColor(paramJSONArray);
+    this.mFillColorAlpha = paramJSONArray.optInt(3);
+    this.mFillPaint.setShader(null);
+    this.mFillPaint.setColor(i);
+  }
+  
+  private void setStylePatternBitmapShader(String paramString)
+  {
+    Bitmap localBitmap;
+    if (!StringUtil.isEmpty(paramString))
+    {
+      paramString = ImageUtil.getLocalBitmap(paramString);
+      if (paramString != null)
+      {
+        this.mBitmapW = paramString.getWidth();
+        this.mBitmapH = paramString.getHeight();
+      }
+      localObject = new Matrix();
+      ((Matrix)localObject).postScale(this.mDensity, this.mDensity);
+      localBitmap = Bitmap.createBitmap(paramString, 0, 0, this.mBitmapW, this.mBitmapH, (Matrix)localObject, true);
+      if (localBitmap != null)
+      {
+        this.mBitmapW = localBitmap.getWidth();
+        this.mBitmapH = localBitmap.getHeight();
         if (!this.mRepeatX) {
-          break label694;
+          break label142;
         }
         paramString = Shader.TileMode.REPEAT;
-        label604:
         if (!this.mRepeatY) {
-          break label701;
+          break label149;
         }
       }
-      label692:
-      label694:
-      label701:
-      for (paramJSONArray = Shader.TileMode.REPEAT;; paramJSONArray = Shader.TileMode.CLAMP)
-      {
-        paramString = new BitmapShader((Bitmap)localObject, paramString, paramJSONArray);
-        this.mFillPaint.setShader(paramString);
-        this.mStrokePaint.setShader(paramString);
-        return;
-        paramString = this.mApkgInfo.getChildFileAbsolutePath(paramString);
-        break label473;
-        if ("repeat-x".equals(paramJSONArray))
-        {
-          this.mRepeatX = true;
-          break label499;
-        }
-        if (!"repeat-y".equals(paramJSONArray)) {
-          break label499;
-        }
-        this.mRepeatY = true;
-        break label499;
-        break;
-        paramString = Shader.TileMode.CLAMP;
-        break label604;
-      }
+    }
+    label142:
+    label149:
+    for (Object localObject = Shader.TileMode.REPEAT;; localObject = Shader.TileMode.CLAMP)
+    {
+      paramString = new BitmapShader(localBitmap, paramString, (Shader.TileMode)localObject);
+      this.mFillPaint.setShader(paramString);
+      this.mStrokePaint.setShader(paramString);
+      return;
+      paramString = Shader.TileMode.CLAMP;
+      break;
     }
   }
   
@@ -2099,7 +1963,7 @@ public class CanvasView
       }
     } while (this.mPendingDrawTaskTime != 0L);
     this.mPendingDrawTaskTime = l1;
-    postDelayed(new CanvasView.3(this), 16L - l2);
+    postDelayed(new CanvasView.26(this), 16L - l2);
   }
   
   public void callbackJsEventFail(String paramString, JSONObject paramJSONObject, int paramInt)
@@ -2138,7 +2002,7 @@ public class CanvasView
     return (int)(this.mDensity * paramDouble + 0.5D);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.mIsAttachedToWindow = true;
@@ -2159,7 +2023,7 @@ public class CanvasView
     catch (Throwable localThrowable) {}
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.mIsAttachedToWindow = false;
@@ -2172,7 +2036,7 @@ public class CanvasView
     catch (Throwable localThrowable) {}
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i = 0;
     super.onDraw(paramCanvas);
@@ -2195,7 +2059,7 @@ public class CanvasView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.mOffScreenCacheRect = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
@@ -2274,7 +2138,7 @@ public class CanvasView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.CanvasView
  * JD-Core Version:    0.7.0.1
  */

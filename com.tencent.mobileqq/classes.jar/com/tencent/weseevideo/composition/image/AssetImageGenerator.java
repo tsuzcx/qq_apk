@@ -38,11 +38,13 @@ public class AssetImageGenerator
   private boolean appliesPreferredTrackTransform;
   protected Asset asset;
   protected AssetExtension assetExtension;
+  private int currentIndex;
   @NonNull
   private final AssetImageGenerator.ImageGeneratorThread generatorThread;
   private long generatorThreadId = -1L;
   @Nullable
   private CGSize maximumSize;
+  private int mineIndex;
   private ByteBuffer outBitmapReaderBuffer;
   private String outSavePath;
   private AssetImageGenerator.OutputBitmapFactory outputBitmapFactory;
@@ -324,6 +326,16 @@ public class AssetImageGenerator
     this.appliesPreferredTrackTransform = paramBoolean;
   }
   
+  public void setCurrent(int paramInt)
+  {
+    this.currentIndex = paramInt;
+  }
+  
+  public void setIndex(int paramInt)
+  {
+    this.mineIndex = paramInt;
+  }
+  
   public void setMaximumSize(CGSize paramCGSize)
   {
     this.maximumSize = paramCGSize;
@@ -378,7 +390,7 @@ public class AssetImageGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.composition.image.AssetImageGenerator
  * JD-Core Version:    0.7.0.1
  */

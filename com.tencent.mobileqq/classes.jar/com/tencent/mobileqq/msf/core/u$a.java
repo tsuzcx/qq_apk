@@ -1,32 +1,27 @@
 package com.tencent.mobileqq.msf.core;
 
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-
 class u$a
-  implements Runnable
 {
-  private int b = 0;
+  public String a = "";
+  public boolean b = false;
+  public String c = "";
+  public int d = 0;
+  public boolean e = false;
+  public boolean f = false;
+  public boolean g = false;
+  public int h = 10;
+  public long i = 30000L;
+  public long j = 60000L;
+  public long k = 86400000L;
+  public boolean l = false;
+  public int m = 0;
+  public long n = 21600000L;
+  public int o = 1;
+  public boolean p = false;
+  public String q;
+  public String r;
   
-  public u$a(u paramu, int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void run()
-  {
-    ArrayList localArrayList = (ArrayList)this.a.a.sender.e.remove(Integer.valueOf(this.b));
-    if (localArrayList != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.NetConnTag", 2, "remove merged ssoseq list: " + localArrayList.toString() + " from SSO LoginMerge " + this.b);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("MSF.C.NetConnTag", 2, "SSO LoginMerge's ssoseq " + this.b + "list has been removed by error code.");
-  }
+  private u$a(u paramu) {}
 }
 
 

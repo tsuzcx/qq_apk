@@ -17,6 +17,9 @@ class WtloginHelper$HelperThread$6
     WtloginHelper.HelperThread.access$600(this.this$1, (async_context)localObject);
     WtloginHelper.HelperThread.access$700(this.this$1, (async_context)localObject, this.val$ret);
     localObject = ((async_context)localObject)._last_err_msg;
+    if (WtloginHelper.access$1200(this.this$1.this$0, this.this$1.mUserSigInfo)) {
+      this.this$1.mUserAccount = this.this$1.mUserSigInfo.uin;
+    }
     if (this.this$1.mST == null)
     {
       WtloginHelper.access$100(this.this$1.mHelper).OnCheckSMSAndGetSt(this.this$1.mUserAccount, this.this$1.mUserInput, this.this$1.mUserSigInfo, this.val$ret, (ErrMsg)localObject);

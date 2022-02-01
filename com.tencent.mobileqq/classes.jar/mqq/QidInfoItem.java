@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class QidInfoItem
   extends JceStruct
 {
-  public int has_qid;
+  public int has_qid = 0;
   public String qid = "";
   
   public QidInfoItem() {}

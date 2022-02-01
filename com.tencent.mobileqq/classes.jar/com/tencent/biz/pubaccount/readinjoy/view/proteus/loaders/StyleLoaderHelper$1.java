@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders;
 
-import pvm;
-import tmn;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class StyleLoaderHelper$1
+class StyleLoaderHelper$1
   implements Runnable
 {
-  public StyleLoaderHelper$1(tmn paramtmn) {}
+  StyleLoaderHelper$1(StyleLoaderHelper paramStyleLoaderHelper) {}
   
   public void run()
   {
-    pvm.a().b();
+    ReadInJoyLogicEngineEventDispatcher.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleLoaderHelper.1
  * JD-Core Version:    0.7.0.1
  */

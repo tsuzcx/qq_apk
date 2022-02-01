@@ -1,34 +1,26 @@
 package com.tencent.mobileqq.activity.home;
 
-import bdla;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.wtogether.util.WTEntranceHelper;
+import common.config.service.QzoneConfig;
 
 class Conversation$54
-  implements Runnable
+  extends BroadcastReceiver
 {
-  Conversation$54(Conversation paramConversation, Object paramObject) {}
+  Conversation$54(Conversation paramConversation) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.a instanceof String)) {}
-    for (;;)
-    {
-      try
-      {
-        i = Integer.parseInt((String)this.a);
-        bdla.b(this.this$0.a, "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "1", "", "", "");
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-      }
-      int i = 0;
+    if ("0".equals(QzoneConfig.getInstance().getConfig("sweet_miniapp", "is_can_enter_aio", "0"))) {
+      WTEntranceHelper.a(this.a.a(), this.a.a(), paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.54
  * JD-Core Version:    0.7.0.1
  */

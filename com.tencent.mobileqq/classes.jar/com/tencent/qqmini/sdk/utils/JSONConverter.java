@@ -169,6 +169,10 @@ public class JSONConverter
     if ((paramJSONObject == null) || (paramClass == null)) {
       return null;
     }
+    Object localObject2;
+    Field[] arrayOfField;
+    int j;
+    int i;
     try
     {
       Object localObject1 = paramClass.newInstance();
@@ -178,101 +182,59 @@ public class JSONConverter
     }
     catch (Exception localException)
     {
-      Object localObject2;
       for (;;)
       {
         localException.printStackTrace();
         localObject2 = null;
       }
-      Field[] arrayOfField = paramClass.getDeclaredFields();
+      arrayOfField = paramClass.getDeclaredFields();
       if ((arrayOfField == null) || (arrayOfField.length == 0)) {
         return null;
       }
-      int j = arrayOfField.length;
-      int i = 0;
-      if (i < j)
+      j = arrayOfField.length;
+      i = 0;
+    }
+    Field localField;
+    if (i < j)
+    {
+      localField = arrayOfField[i];
+      if (localField != null) {}
+    }
+    label194:
+    for (;;)
+    {
+      i += 1;
+      break;
+      int k = localField.getModifiers();
+      if ((!Modifier.isStatic(k)) || (!Modifier.isFinal(k)))
       {
-        Field localField = arrayOfField[i];
-        if (localField == null) {}
+        paramClass = localField.getName();
+        Object localObject3 = (Alias)localField.getAnnotation(Alias.class);
+        if (localObject3 != null) {
+          paramClass = ((Alias)localObject3).value();
+        }
         for (;;)
         {
-          i += 1;
-          break;
-          int k = localField.getModifiers();
-          if ((!Modifier.isStatic(k)) || (!Modifier.isFinal(k)))
+          for (;;)
           {
-            paramClass = localField.getName();
-            localObject3 = (Alias)localField.getAnnotation(Alias.class);
-            if (localObject3 != null) {
-              paramClass = ((Alias)localObject3).value();
+            if ((isEmpty(paramClass)) || (!paramJSONObject.has(paramClass))) {
+              break label194;
             }
-            if ((!isEmpty(paramClass)) && (paramJSONObject.has(paramClass)))
+            try
             {
-              try
-              {
-                localObject3 = localField.getType().getSimpleName();
-                localField.setAccessible(true);
-                if ("int".equals(localObject3)) {
-                  localField.set(localObject2, Integer.valueOf(paramJSONObject.optInt(paramClass)));
-                }
-              }
-              catch (IllegalAccessException paramJSONObject)
-              {
-                paramJSONObject.printStackTrace();
-                return null;
-              }
-              if ("boolean".equals(localObject3))
-              {
-                localField.set(localObject2, Boolean.valueOf(paramJSONObject.optBoolean(paramClass)));
-              }
-              else if ("long".equals(localObject3))
-              {
-                localField.set(localObject2, Long.valueOf(paramJSONObject.optLong(paramClass)));
-              }
-              else if ("double".equals(localObject3))
-              {
-                localField.set(localObject2, Double.valueOf(paramJSONObject.optDouble(paramClass)));
-              }
-              else if ("float".equals(localObject3))
-              {
-                localField.set(localObject2, Float.valueOf((float)paramJSONObject.optDouble(paramClass)));
-              }
-              else if ("String".equals(localObject3))
-              {
-                localField.set(localObject2, paramJSONObject.optString(paramClass));
-              }
-              else
-              {
-                if (!"Object".equals(localObject3)) {
-                  break label369;
-                }
-                localField.set(localObject2, new Object());
-              }
+              localObject3 = localField.getType().getSimpleName();
+              localField.setAccessible(true);
+              setField(paramJSONObject, localObject2, localField, paramClass, (String)localObject3);
+            }
+            catch (IllegalAccessException paramJSONObject)
+            {
+              paramJSONObject.printStackTrace();
+              return null;
             }
           }
-        }
-        label369:
-        Object localObject3 = paramJSONObject.opt(paramClass);
-        if ((localObject3 instanceof JSONObject)) {
-          paramClass = convertFromJSONObject((JSONObject)localObject3, localField.getType());
-        }
-        for (;;)
-        {
-          localField.set(localObject2, paramClass);
-          break;
-          if ((localObject3 instanceof JSONArray))
-          {
-            paramClass = (ParameterizedType)localField.getGenericType();
-            paramClass = convertFromJSONArray((JSONArray)localObject3, paramClass.getActualTypeArguments()[0]);
-          }
-          else
-          {
-            printLog("convertFromJSONObject unknown field " + paramClass);
-            paramClass = null;
-          }
+          return localObject2;
         }
       }
-      return localObject2;
     }
   }
   
@@ -290,10 +252,68 @@ public class JSONConverter
   {
     QMLog.d("JSONConverter", paramString);
   }
+  
+  private static <T> void setField(JSONObject paramJSONObject, T paramT, Field paramField, String paramString1, String paramString2)
+  {
+    if ("int".equals(paramString2))
+    {
+      paramField.set(paramT, Integer.valueOf(paramJSONObject.optInt(paramString1)));
+      return;
+    }
+    if ("boolean".equals(paramString2))
+    {
+      paramField.set(paramT, Boolean.valueOf(paramJSONObject.optBoolean(paramString1)));
+      return;
+    }
+    if ("long".equals(paramString2))
+    {
+      paramField.set(paramT, Long.valueOf(paramJSONObject.optLong(paramString1)));
+      return;
+    }
+    if ("double".equals(paramString2))
+    {
+      paramField.set(paramT, Double.valueOf(paramJSONObject.optDouble(paramString1)));
+      return;
+    }
+    if ("float".equals(paramString2))
+    {
+      paramField.set(paramT, Float.valueOf((float)paramJSONObject.optDouble(paramString1)));
+      return;
+    }
+    if ("String".equals(paramString2))
+    {
+      paramField.set(paramT, paramJSONObject.optString(paramString1));
+      return;
+    }
+    if ("Object".equals(paramString2))
+    {
+      paramField.set(paramT, new Object());
+      return;
+    }
+    paramJSONObject = paramJSONObject.opt(paramString1);
+    if ((paramJSONObject instanceof JSONObject)) {
+      paramJSONObject = convertFromJSONObject((JSONObject)paramJSONObject, paramField.getType());
+    }
+    for (;;)
+    {
+      paramField.set(paramT, paramJSONObject);
+      return;
+      if ((paramJSONObject instanceof JSONArray))
+      {
+        paramString1 = (ParameterizedType)paramField.getGenericType();
+        paramJSONObject = convertFromJSONArray((JSONArray)paramJSONObject, paramString1.getActualTypeArguments()[0]);
+      }
+      else
+      {
+        printLog("convertFromJSONObject unknown field " + paramString1);
+        paramJSONObject = null;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.JSONConverter
  * JD-Core Version:    0.7.0.1
  */

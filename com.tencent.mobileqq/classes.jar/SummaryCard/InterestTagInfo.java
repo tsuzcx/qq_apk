@@ -8,8 +8,8 @@ public final class InterestTagInfo
   extends JceStruct
 {
   static byte[] cache_vGiftInfo;
-  public long uFlag;
-  public byte[] vGiftInfo;
+  public long uFlag = 0L;
+  public byte[] vGiftInfo = null;
   
   public InterestTagInfo() {}
   
@@ -40,7 +40,7 @@ public final class InterestTagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.InterestTagInfo
  * JD-Core Version:    0.7.0.1
  */

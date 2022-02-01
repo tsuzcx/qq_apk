@@ -2,7 +2,9 @@ package cooperation.qzone.util;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bjmp;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.open.component.cache.util.LocalConfig;
+import com.tencent.qzonehub.api.utils.IQzoneHardwareRestriction;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 import java.io.File;
@@ -26,6 +28,9 @@ public class AnimatedWebpLoaderUtil
     for (;;)
     {
       IS_ENABLE_ANIMATE_WEBP = bool;
+      loadSoFail = false;
+      hasCheckSupportAnimWebp = false;
+      supportAnimWebp = false;
       return;
       bool = false;
     }
@@ -52,7 +57,7 @@ public class AnimatedWebpLoaderUtil
   
   private static boolean isNeedUpdate()
   {
-    String str = bjmp.a().getString("PREFERENCE_SO_MD5_KEY", null);
+    String str = LocalConfig.a().getString("PREFERENCE_SO_MD5_KEY", null);
     if (TextUtils.isEmpty(str)) {}
     while (!str.equalsIgnoreCase(WEBP_SO_MD5)) {
       return true;
@@ -76,11 +81,11 @@ public class AnimatedWebpLoaderUtil
   public static boolean isSupportAnimWebp()
   {
     if (!hasCheckSupportAnimWebp) {
-      if ((!IS_ENABLE_ANIMATE_WEBP) || (loadSoFail) || (!QzoneHardwareRestriction.meetHardwareRestriction(2, 1))) {
-        break label40;
+      if ((!IS_ENABLE_ANIMATE_WEBP) || (loadSoFail) || (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(2, 1))) {
+        break label50;
       }
     }
-    label40:
+    label50:
     for (boolean bool = true;; bool = false)
     {
       supportAnimWebp = bool;
@@ -105,7 +110,7 @@ public class AnimatedWebpLoaderUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.AnimatedWebpLoaderUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stFollowFeedsGlobalConfig
   extends JceStruct
 {
-  public boolean showMute;
+  public boolean showMute = false;
   
   public stFollowFeedsGlobalConfig() {}
   

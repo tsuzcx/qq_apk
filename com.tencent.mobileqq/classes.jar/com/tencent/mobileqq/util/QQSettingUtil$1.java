@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.util;
 
-import bhai;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class QQSettingUtil$1
+final class QQSettingUtil$1
   implements Runnable
 {
-  public QQSettingUtil$1(QQAppInterface paramQQAppInterface) {}
+  QQSettingUtil$1(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    bhai.b(this.a);
+    QQSettingUtil.b(this.a);
   }
 }
 

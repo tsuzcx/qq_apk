@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class MetaSdkInfo
   extends JceStruct
 {
-  public int sdk;
+  public int sdk = 0;
   public String sdkVersion = "";
   
   public MetaSdkInfo() {}
@@ -34,7 +34,7 @@ public final class MetaSdkInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaSdkInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterModule;
+import com.tencent.biz.qqstory.takevideo.artfilter.FilterUploadInfo;
 import com.tencent.mobileqq.highway.api.IRequestCallback;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.ImageFilterResponse;
 import com.tencent.mobileqq.highway.segment.HwResponse;
@@ -11,8 +13,6 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import yqg;
-import yqi;
 
 class ArtFilterUploadProcessor$2
   implements IRequestCallback

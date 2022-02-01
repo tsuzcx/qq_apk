@@ -4,10 +4,10 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public final class VideoRecoveryReporter$1
+final class VideoRecoveryReporter$1
   implements Runnable
 {
-  public VideoRecoveryReporter$1(int paramInt, boolean paramBoolean, long paramLong) {}
+  VideoRecoveryReporter$1(int paramInt, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public final class VideoRecoveryReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.VideoRecoveryReporter.1
  * JD-Core Version:    0.7.0.1
  */

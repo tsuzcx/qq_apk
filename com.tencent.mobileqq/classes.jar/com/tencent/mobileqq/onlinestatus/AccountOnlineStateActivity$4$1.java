@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import ayza;
-import azac;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
-public class AccountOnlineStateActivity$4$1
+class AccountOnlineStateActivity$4$1
   implements Runnable
 {
-  public AccountOnlineStateActivity$4$1(ayza paramayza, boolean paramBoolean, List paramList) {}
+  AccountOnlineStateActivity$4$1(AccountOnlineStateActivity.4 param4, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      if (AccountOnlineStateActivity.a(this.jdField_a_of_type_Ayza.a) != null) {
-        AccountOnlineStateActivity.a(this.jdField_a_of_type_Ayza.a).a(this.jdField_a_of_type_JavaUtilList);
+      if (AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity$4.a) != null) {
+        AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity$4.a).a(this.jdField_a_of_type_JavaUtilList);
       }
     }
-    while (AccountOnlineStateActivity.a(this.jdField_a_of_type_Ayza.a) == null) {
+    while (AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity$4.a) == null) {
       return;
     }
-    QQToast.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_Ayza.a), 1, 2131690257, 1).a();
+    QQToast.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountOnlineStateActivity$4.a), 1, 2131690322, 1).a();
   }
 }
 

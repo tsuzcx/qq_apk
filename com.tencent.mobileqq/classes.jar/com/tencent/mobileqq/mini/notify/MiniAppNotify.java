@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.notify;
 
-import com.tencent.TMG.utils.QLog;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class MiniAppNotify
 {
   static final String TAG = "MiniAppNotify";
-  public static MiniAppNotify g;
+  public static MiniAppNotify g = null;
   private ConcurrentLinkedQueue<MiniAppNotify.IMiniAppNotifyListener> listenerList = new ConcurrentLinkedQueue();
   
   static

@@ -1,96 +1,167 @@
 package com.tencent.mobileqq.flutter.container;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aunz;
-import auoa;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LifecycleRegistry;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import io.flutter.embedding.engine.FlutterShellArgs;
 
 public class QFlutterContainerFragment
   extends PublicBaseFragment
-  implements aunz
+  implements LifecycleOwner, IQFlutterContainerHost
 {
-  private auoa a;
+  private LifecycleRegistry a;
+  public QFlutterContainerDelegate a;
   
-  public Activity a()
+  public QFlutterContainerFragment()
+  {
+    setArguments(new Bundle());
+    this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry(this);
+  }
+  
+  @NonNull
+  public Context a()
   {
     return getActivity();
   }
   
+  @Nullable
   public Bundle a()
   {
     return getArguments();
   }
   
-  public FragmentManager a()
+  @Nullable
+  public View a()
   {
-    return getChildFragmentManager();
+    return null;
   }
   
-  public void onCreate(Bundle paramBundle)
+  @NonNull
+  public FlutterShellArgs a()
   {
-    super.onCreate(paramBundle);
-    this.a = new auoa(this);
-    this.a.a(paramBundle);
+    String[] arrayOfString = getArguments().getStringArray("initialization_args");
+    if (arrayOfString != null) {}
+    for (;;)
+    {
+      return new FlutterShellArgs(arrayOfString);
+      arrayOfString = new String[0];
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  @NonNull
+  public Lifecycle getLifecycle()
+  {
+    return this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
+  }
+  
+  public void onActivityCreated(Bundle paramBundle)
+  {
+    super.onActivityCreated(paramBundle);
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.a(paramBundle);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void onAttach(Activity paramActivity)
+  {
+    super.onAttach(paramActivity);
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate = new QFlutterContainerDelegate(this);
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.a();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.a != null) {}
-    for (paramLayoutInflater = this.a.a();; paramLayoutInflater = null)
-    {
-      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
-    }
+    super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.a(paramLayoutInflater, paramViewGroup, paramBundle);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
-  public void onDestroy()
+  public void onDestroyView()
   {
-    super.onDestroy();
-    if (this.a != null) {
-      this.a.e();
-    }
+    super.onDestroyView();
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.f();
+  }
+  
+  public void onDetach()
+  {
+    super.onDetach();
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.g();
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.h();
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate = null;
+  }
+  
+  public void onLowMemory()
+  {
+    super.onLowMemory();
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.i();
+  }
+  
+  public void onNewIntent(Intent paramIntent)
+  {
+    super.onNewIntent(paramIntent);
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.a(paramIntent);
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.a != null) {
-      this.a.d();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.d();
   }
   
   public void onPostThemeChanged()
   {
     super.onPostThemeChanged();
-    if (this.a != null) {
-      this.a.f();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.j();
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.a != null) {
-      this.a.c();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.c();
   }
   
-  public void onViewCreated(View paramView, Bundle paramBundle)
+  public void onSaveInstanceState(Bundle paramBundle)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
+    super.onSaveInstanceState(paramBundle);
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.b(paramBundle);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.b();
+  }
+  
+  public void onStop()
+  {
+    super.onStop();
+    this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.QFlutterContainerFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class UserData
   extends JceStruct
 {
-  public byte cIfPushPic;
+  public byte cIfPushPic = 0;
   
   public UserData() {}
   

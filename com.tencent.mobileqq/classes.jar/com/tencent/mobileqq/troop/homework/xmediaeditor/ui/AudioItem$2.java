@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import bfvi;
-import bmjg;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
 
-public class AudioItem$2
+class AudioItem$2
   implements Runnable
 {
-  public AudioItem$2(bfvi parambfvi, bmjg parambmjg) {}
+  AudioItem$2(AudioItem paramAudioItem, TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
   
   public void run()
   {

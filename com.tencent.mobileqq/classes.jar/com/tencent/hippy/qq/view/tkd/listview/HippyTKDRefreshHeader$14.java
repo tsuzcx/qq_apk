@@ -1,8 +1,8 @@
 package com.tencent.hippy.qq.view.tkd.listview;
 
-import bheg;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 class HippyTKDRefreshHeader$14
   implements URLDrawable.URLDrawableListener
@@ -20,12 +20,12 @@ class HippyTKDRefreshHeader$14
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.val$listener.onRequestSuccess(bheg.b(paramURLDrawable), this.val$url);
+    this.val$listener.onRequestSuccess(ImageUtil.b(paramURLDrawable), this.val$url);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDRefreshHeader.14
  * JD-Core Version:    0.7.0.1
  */

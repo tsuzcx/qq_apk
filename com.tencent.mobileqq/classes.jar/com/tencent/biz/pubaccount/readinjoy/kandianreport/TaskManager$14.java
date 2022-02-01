@@ -6,7 +6,7 @@ import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -53,13 +53,13 @@ class TaskManager$14
       paramArrayOfObject.mSendData = str1.getBytes();
     }
     label187:
-    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getNetEngine(0).sendReq(paramArrayOfObject);
+    ((IHttpEngineService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IHttpEngineService.class, "all")).sendReq(paramArrayOfObject);
     return Integer.valueOf(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager.14
  * JD-Core Version:    0.7.0.1
  */

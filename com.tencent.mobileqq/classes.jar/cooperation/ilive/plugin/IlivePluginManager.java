@@ -1,11 +1,11 @@
 package cooperation.ilive.plugin;
 
 import android.text.TextUtils;
-import bkyl;
-import blvl;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.ThreeDes;
 import common.config.service.QzoneConfig;
 import cooperation.ilive.manager.IliveAuthManager;
+import cooperation.ilive.util.ElapseStat;
 import cooperation.qzone.LocalMultiProcConfig;
 
 public class IlivePluginManager
@@ -14,8 +14,8 @@ public class IlivePluginManager
   public static final String KEY_ILIVE_PLUGIN_TOKEN = "key_ilive_plugin_token";
   public static final String KEY_LIVE_PLUGIN_TOKEN_VALID_TIME = "key_ilive_plugin_token_valid_time";
   private static final String TAG = "IliveAuthPluginManager";
-  private static IlivePluginManager sInstance;
-  public static boolean sIsFastStart;
+  private static IlivePluginManager sInstance = null;
+  public static boolean sIsFastStart = false;
   private IlivePluginCallback mPluginCallback;
   private String mTempToken;
   
@@ -59,7 +59,7 @@ public class IlivePluginManager
       return "";
     }
     if (TextUtils.isEmpty(this.mTempToken)) {
-      this.mTempToken = bkyl.b(LocalMultiProcConfig.getString4Uin("key_ilive_plugin_token", "", IliveAuthManager.getLongUin()), IliveAuthManager.getStringUin());
+      this.mTempToken = ThreeDes.b(LocalMultiProcConfig.getString4Uin("key_ilive_plugin_token", "", IliveAuthManager.getLongUin()), IliveAuthManager.getStringUin());
     }
     return this.mTempToken;
   }
@@ -81,7 +81,7 @@ public class IlivePluginManager
   
   public void refreshToken(int paramInt)
   {
-    blvl.a("refreshToken");
+    ElapseStat.a("refreshToken");
     if (isPluginIliveTokenExpireOut())
     {
       LiveAuth.getStAuth(paramInt);
@@ -96,7 +96,7 @@ public class IlivePluginManager
       QLog.i("IliveAuthPluginManager", 2, "savePluginToken openId = " + paramString);
     }
     this.mTempToken = paramString;
-    LocalMultiProcConfig.putString4Uin("key_ilive_plugin_token", bkyl.a(paramString, IliveAuthManager.getStringUin()), IliveAuthManager.getLongUin());
+    LocalMultiProcConfig.putString4Uin("key_ilive_plugin_token", ThreeDes.a(paramString, IliveAuthManager.getStringUin()), IliveAuthManager.getLongUin());
   }
   
   public void savePluginTokenValidTime(long paramLong)
@@ -114,7 +114,7 @@ public class IlivePluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.plugin.IlivePluginManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
-import java.util.List;
-import qcw;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.utils.VideoPlayControlUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class FrameworkHandler$1
-  implements Runnable
+class FrameworkHandler$1
+  extends ReadInJoyObserver
 {
-  public FrameworkHandler$1(qcw paramqcw, List paramList) {}
+  FrameworkHandler$1(FrameworkHandler paramFrameworkHandler) {}
   
-  public void run()
+  public void a(BaseArticleInfo paramBaseArticleInfo)
   {
-    qcw.a(this.this$0, this.a);
+    VideoPlayControlUtils.a(this.a.a(), paramBaseArticleInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.handlers.FrameworkHandler.1
  * JD-Core Version:    0.7.0.1
  */

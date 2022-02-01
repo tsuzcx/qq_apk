@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_sq_mainpage_switch
   extends JceStruct
 {
-  public boolean is_show_weishi;
+  public boolean is_show_weishi = false;
   
   public s_sq_mainpage_switch() {}
   

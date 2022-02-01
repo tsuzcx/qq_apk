@@ -91,7 +91,7 @@ public class PagerTabStrip
     return this.mIndicatorColor;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getHeight();
@@ -243,7 +243,7 @@ public class PagerTabStrip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.viewpager.widget.PagerTabStrip
  * JD-Core Version:    0.7.0.1
  */

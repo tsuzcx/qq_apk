@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apon;
 
 public class ArWebInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArWebInfo> CREATOR = new apon();
+  public static final Parcelable.Creator<ArWebInfo> CREATOR = new ArWebInfo.1();
   public String a;
   public boolean a;
   public String b;
@@ -16,7 +15,7 @@ public class ArWebInfo
   
   public ArWebInfo() {}
   
-  public ArWebInfo(Parcel paramParcel)
+  protected ArWebInfo(Parcel paramParcel)
   {
     if (paramParcel.readByte() != 0)
     {

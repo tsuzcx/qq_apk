@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import aasr;
-import beau;
-import becb;
+import com.tencent.biz.webviewplugin.Share;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.SharePolicyInfo;
+import com.tencent.mobileqq.teamwork.TeamWorkHandler;
 import java.util.List;
 import mqq.os.MqqHandler;
 
@@ -41,7 +41,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
       if (this.jdField_a_of_type_Int == 3000) {
         localList3 = this.jdField_a_of_type_JavaUtilList;
       }
-      bool = becb.a(str1, str2, str3, bool, false, 1, localList1, localList2, localList3);
+      bool = TeamWorkHandler.a(str1, str2, str3, bool, false, 1, localList1, localList2, localList3);
       ThreadManager.getUIHandler().postDelayed(new TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.13.1(this, i, bool), 3000L);
       return;
       bool = false;
@@ -53,7 +53,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.13
  * JD-Core Version:    0.7.0.1
  */

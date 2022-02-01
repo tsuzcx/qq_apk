@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.alphabet;
 
-import ajik;
 import com.tencent.qphone.base.util.QLog;
 
-public class AlphabetFriendAdapter$3
+class AlphabetFriendAdapter$3
   implements Runnable
 {
-  public AlphabetFriendAdapter$3(ajik paramajik) {}
+  AlphabetFriendAdapter$3(AlphabetFriendAdapter paramAlphabetFriendAdapter) {}
   
   public void run()
   {
@@ -15,12 +14,12 @@ public class AlphabetFriendAdapter$3
     }
     this.this$0.c();
     this.this$0.d();
-    ajik.a(this.this$0);
+    AlphabetFriendAdapter.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendAdapter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -8,10 +8,10 @@ import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.ac;
 import com.tencent.mobileqq.msf.core.auth.l;
+import com.tencent.mobileqq.msf.core.o;
 import com.tencent.mobileqq.msf.core.quic.QuicWrapper;
-import com.tencent.mobileqq.msf.core.w;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.service.k;
@@ -1467,7 +1467,7 @@ public class a
   
   public static CopyOnWriteArrayList az()
   {
-    Object localObject = w.e();
+    Object localObject = o.e();
     CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
     if (localObject == null) {
       return null;
@@ -2655,7 +2655,7 @@ public class a
   {
     paramHashMap = a(paramString, paramHashMap);
     paramString = new ToServiceMsg("", "0", "CliLogSvc.UploadReq");
-    paramString.setAppId(this.A.sender.k());
+    paramString.setAppId(this.A.sender.m());
     paramString.setRequestSsoSeq(MsfCore.getNextSeq());
     paramString.setTimeout(30000L);
     paramString.setNeedCallback(false);
@@ -2797,7 +2797,7 @@ public class a
       {
         try
         {
-          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 0, str1, this.A.sender.j());
+          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 0, str1, this.A.sender.l());
         }
         catch (IOException localIOException)
         {
@@ -2837,7 +2837,7 @@ public class a
     {
       try
       {
-        MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 2, paramToServiceMsg, this.A.sender.j());
+        MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 2, paramToServiceMsg, this.A.sender.l());
       }
       catch (IOException paramToServiceMsg)
       {
@@ -2874,7 +2874,7 @@ public class a
       {
         for (;;)
         {
-          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 1, paramToServiceMsg, this.A.sender.j());
+          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 1, paramToServiceMsg, this.A.sender.l());
           MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iConfGetEspLastTimeKe", String.valueOf(paramf.e));
           if (QLog.isDevelopLevel()) {
             QLog.d("MSF.C.ConfigManager", 4, "save confReq getiConfGetEspLastTimeKey" + paramf.e);

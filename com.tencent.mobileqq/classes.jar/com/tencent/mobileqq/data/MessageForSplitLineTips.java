@@ -7,36 +7,36 @@ public class MessageForSplitLineTips
   public static final int TYPE_TROOP_HISTORY_MESSAGE_TIPS = 1;
   public static int VERSION = 1;
   public String msgContent;
-  public int subType;
+  public int subType = 0;
   
   /* Error */
   protected void doParse()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 37	com/tencent/mobileqq/data/MessageForSplitLineTips:msgData	[B
+    //   1: getfield 39	com/tencent/mobileqq/data/MessageForSplitLineTips:msgData	[B
     //   4: ifnonnull +4 -> 8
     //   7: return
-    //   8: new 39	java/io/ObjectInputStream
+    //   8: new 41	java/io/ObjectInputStream
     //   11: dup
-    //   12: new 41	java/io/ByteArrayInputStream
+    //   12: new 43	java/io/ByteArrayInputStream
     //   15: dup
     //   16: aload_0
-    //   17: getfield 37	com/tencent/mobileqq/data/MessageForSplitLineTips:msgData	[B
-    //   20: invokespecial 44	java/io/ByteArrayInputStream:<init>	([B)V
-    //   23: invokespecial 47	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   17: getfield 39	com/tencent/mobileqq/data/MessageForSplitLineTips:msgData	[B
+    //   20: invokespecial 46	java/io/ByteArrayInputStream:<init>	([B)V
+    //   23: invokespecial 49	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   26: astore_2
     //   27: aload_2
     //   28: astore_1
     //   29: aload_2
-    //   30: invokevirtual 51	java/io/ObjectInputStream:readInt	()I
+    //   30: invokevirtual 53	java/io/ObjectInputStream:readInt	()I
     //   33: pop
     //   34: aload_2
     //   35: astore_1
     //   36: aload_0
     //   37: aload_2
-    //   38: invokevirtual 51	java/io/ObjectInputStream:readInt	()I
-    //   41: putfield 53	com/tencent/mobileqq/data/MessageForSplitLineTips:subType	I
+    //   38: invokevirtual 53	java/io/ObjectInputStream:readInt	()I
+    //   41: putfield 30	com/tencent/mobileqq/data/MessageForSplitLineTips:subType	I
     //   44: aload_2
     //   45: astore_1
     //   46: aload_0
@@ -53,14 +53,14 @@ public class MessageForSplitLineTips
     //   65: ifnull +7 -> 72
     //   68: aload_2
     //   69: invokevirtual 67	java/io/ObjectInputStream:close	()V
-    //   72: new 39	java/io/ObjectInputStream
+    //   72: new 41	java/io/ObjectInputStream
     //   75: dup
-    //   76: new 41	java/io/ByteArrayInputStream
+    //   76: new 43	java/io/ByteArrayInputStream
     //   79: dup
     //   80: aload_0
-    //   81: getfield 37	com/tencent/mobileqq/data/MessageForSplitLineTips:msgData	[B
-    //   84: invokespecial 44	java/io/ByteArrayInputStream:<init>	([B)V
-    //   87: invokespecial 47	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   81: getfield 39	com/tencent/mobileqq/data/MessageForSplitLineTips:msgData	[B
+    //   84: invokespecial 46	java/io/ByteArrayInputStream:<init>	([B)V
+    //   87: invokespecial 49	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   90: pop
     //   91: return
     //   92: astore_1
@@ -186,7 +186,7 @@ public class MessageForSplitLineTips
     //   29: astore_1
     //   30: aload_2
     //   31: aload_0
-    //   32: getfield 53	com/tencent/mobileqq/data/MessageForSplitLineTips:subType	I
+    //   32: getfield 30	com/tencent/mobileqq/data/MessageForSplitLineTips:subType	I
     //   35: invokevirtual 117	java/io/ObjectOutputStream:writeInt	(I)V
     //   38: aload_2
     //   39: astore_1
@@ -209,7 +209,7 @@ public class MessageForSplitLineTips
     //   65: aload_0
     //   66: aload 4
     //   68: invokevirtual 127	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   71: putfield 37	com/tencent/mobileqq/data/MessageForSplitLineTips:msgData	[B
+    //   71: putfield 39	com/tencent/mobileqq/data/MessageForSplitLineTips:msgData	[B
     //   74: aload_2
     //   75: ifnull +7 -> 82
     //   78: aload_2
@@ -345,7 +345,7 @@ public class MessageForSplitLineTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForSplitLineTips
  * JD-Core Version:    0.7.0.1
  */

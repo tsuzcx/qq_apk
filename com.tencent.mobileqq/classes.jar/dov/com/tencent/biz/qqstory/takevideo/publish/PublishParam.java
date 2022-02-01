@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bpfd;
 
 public class PublishParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<PublishParam> CREATOR = new bpfd();
+  public static final Parcelable.Creator<PublishParam> CREATOR = new PublishParam.1();
   public static final String a;
   public final int a;
   public final long a;
@@ -47,7 +46,7 @@ public class PublishParam
     jdField_a_of_type_JavaLangString = PublishParam.class.getName();
   }
   
-  public PublishParam(Parcel paramParcel)
+  protected PublishParam(Parcel paramParcel)
   {
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
@@ -182,7 +181,7 @@ public class PublishParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bdfk;
-import bdvn;
-import blvm;
+import com.tencent.biz.subscribe.SubscribeUtils;
+import com.tencent.mobileqq.studymode.StudyModeManager;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.ilive.manager.IliveDbManager;
-import zqn;
+import cooperation.ilive.util.IliveEntranceUtil;
 
 class QQSettingMe$21
   implements Runnable
@@ -20,14 +20,14 @@ class QQSettingMe$21
     String str = "";
     Object localObject2 = "";
     Object localObject1;
-    if ((blvm.d()) && (!bdvn.a()))
+    if ((IliveEntranceUtil.d()) && (!StudyModeManager.a()))
     {
       str = IliveDbManager.getILiveEnterInfo(1);
       localObject1 = localObject2;
-      if (!zqn.a())
+      if (!SubscribeUtils.a())
       {
         localObject1 = localObject2;
-        if (!bdfk.a()) {
+        if (!QQTheme.e()) {
           localObject1 = IliveDbManager.getILiveEnterInfo(2);
         }
       }
@@ -51,7 +51,7 @@ class QQSettingMe$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.21
  * JD-Core Version:    0.7.0.1
  */

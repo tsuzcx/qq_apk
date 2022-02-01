@@ -1,20 +1,31 @@
 package dov.com.qq.im.ae.album.fragment;
 
-import bmyq;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class AEAbstractPhotoListFragment$6
-  implements Runnable
+class AEAbstractPhotoListFragment$6
+  implements View.OnClickListener
 {
-  public AEAbstractPhotoListFragment$6(bmyq parambmyq) {}
+  AEAbstractPhotoListFragment$6(AEAbstractPhotoListFragment paramAEAbstractPhotoListFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.this$0.f();
+    if (this.a.a.isPlaying()) {
+      this.a.a.pause();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.resume();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.fragment.AEAbstractPhotoListFragment.6
  * JD-Core Version:    0.7.0.1
  */

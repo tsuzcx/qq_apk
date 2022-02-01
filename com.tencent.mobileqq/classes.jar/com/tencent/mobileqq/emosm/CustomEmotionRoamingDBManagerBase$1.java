@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.emosm;
 
-import asda;
 import java.util.List;
 
-public class CustomEmotionRoamingDBManagerBase$1
+class CustomEmotionRoamingDBManagerBase$1
   implements Runnable
 {
-  public CustomEmotionRoamingDBManagerBase$1(asda paramasda, List paramList, int paramInt) {}
+  CustomEmotionRoamingDBManagerBase$1(CustomEmotionRoamingDBManagerBase paramCustomEmotionRoamingDBManagerBase, List paramList, int paramInt) {}
   
   /* Error */
   public void run()
@@ -15,15 +14,15 @@ public class CustomEmotionRoamingDBManagerBase$1
     //   0: iconst_0
     //   1: istore_1
     //   2: aload_0
-    //   3: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lasda;
-    //   6: getfield 31	asda:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lcom/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase;
+    //   6: getfield 31	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase:a	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   9: ifnonnull +4 -> 13
     //   12: return
     //   13: aload_0
-    //   14: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lasda;
-    //   17: getfield 31	asda:a	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   20: invokevirtual 37	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
-    //   23: invokevirtual 43	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   14: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lcom/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase;
+    //   17: getfield 31	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   20: invokevirtual 37	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   23: invokevirtual 43	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   26: astore 7
     //   28: aload 7
     //   30: ifnull -18 -> 12
@@ -229,7 +228,7 @@ public class CustomEmotionRoamingDBManagerBase$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.1
  * JD-Core Version:    0.7.0.1
  */

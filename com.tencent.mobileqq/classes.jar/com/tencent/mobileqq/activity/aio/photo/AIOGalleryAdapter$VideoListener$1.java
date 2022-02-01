@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahrc;
-import ahre;
-
-public class AIOGalleryAdapter$VideoListener$1
+class AIOGalleryAdapter$VideoListener$1
   implements Runnable
 {
-  public AIOGalleryAdapter$VideoListener$1(ahre paramahre) {}
+  AIOGalleryAdapter$VideoListener$1(AIOGalleryAdapter.VideoListener paramVideoListener) {}
   
   public void run()
   {
@@ -17,7 +14,7 @@ public class AIOGalleryAdapter$VideoListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.VideoListener.1
  * JD-Core Version:    0.7.0.1
  */

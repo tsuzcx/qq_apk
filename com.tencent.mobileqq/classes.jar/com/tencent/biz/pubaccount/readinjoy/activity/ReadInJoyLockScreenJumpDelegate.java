@@ -8,35 +8,34 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import ayoh;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadinjoyJumpUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJQQAppInterfaceUtil;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.push.RIJLockScreenPushReport;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.notification.modularize.PushUtil;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import osg;
-import pkh;
-import pkj;
-import pnn;
-import prq;
-import ptj;
-import tto;
 
 public class ReadInJoyLockScreenJumpDelegate
   extends IphoneTitleBarFragment
@@ -50,14 +49,14 @@ public class ReadInJoyLockScreenJumpDelegate
   public static Intent a(@NonNull Context paramContext, int paramInt1, int paramInt2)
   {
     int i = 0;
-    Object localObject = pnn.a();
+    Object localObject = RIJQQAppInterfaceUtil.a();
     if (localObject == null)
     {
       QLog.i("ReadInJoyLockScreenJump", 1, "generateIntent: app is null");
       return b(paramContext, paramInt1, paramInt2);
     }
     KandianMergeManager localKandianMergeManager = (KandianMergeManager)((QQAppInterface)localObject).getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-    String str = a(localKandianMergeManager.b());
+    String str = a(localKandianMergeManager.c());
     Log.i("ReadInJoyLockScreenJump", "generateIntent: extraInfo=" + str);
     if (TextUtils.isEmpty(str))
     {
@@ -141,19 +140,19 @@ public class ReadInJoyLockScreenJumpDelegate
   
   private static Intent a(@NonNull Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    if (bmhv.n())
+    if (ReadInJoyHelper.o())
     {
       paramContext = new Intent(paramContext, SplashActivity.class);
       paramContext.putExtra("fragment_id", 1);
       paramContext.putExtra("launch_from", 9);
-      paramContext.putExtra("tab_index", MainFragment.i);
+      paramContext.putExtra("tab_index", FrameControllerUtil.h);
       paramContext.putExtra("open_kandian_tab_fragment", true);
       paramContext.setFlags(335544320);
       paramContext.putExtra("arg_channel_cover_id", paramInt2);
       paramContext.putExtra("kan_dian_lock_screen_flag", true);
       paramContext.putExtra("kan_dian_lock_screen_param", true);
       paramContext.putExtra("return_scene", 2);
-      pkj.a(paramContext);
+      ReadinjoyJumpUtils.a(paramContext);
       try
       {
         a(new JSONObject(paramString), paramContext);
@@ -175,7 +174,7 @@ public class ReadInJoyLockScreenJumpDelegate
     paramContext.putExtra("launch_from", 9);
     paramContext.putExtra("kan_dian_lock_screen_flag", true);
     paramContext.putExtra("kan_dian_lock_screen_param", true);
-    pkj.a(paramContext);
+    ReadinjoyJumpUtils.a(paramContext);
     try
     {
       a(new JSONObject(paramString), paramContext);
@@ -206,9 +205,9 @@ public class ReadInJoyLockScreenJumpDelegate
   
   public static void a(@NonNull Activity paramActivity, @NonNull Intent paramIntent)
   {
-    prq.a((KandianRedDotInfo)paramIntent.getSerializableExtra("daily_lock_screen_report_red_info"));
+    RIJLockScreenPushReport.a((KandianRedDotInfo)paramIntent.getSerializableExtra("daily_lock_screen_report_red_info"));
     if (paramIntent.getBooleanExtra("is_from_push_component", false)) {
-      ayoh.a(paramIntent.getIntExtra("push_main_business_id", 0), paramIntent.getIntExtra("push_sub_business_id", 0), paramIntent.getIntExtra("push_id", 0));
+      PushUtil.a(paramIntent.getIntExtra("push_main_business_id", 0), paramIntent.getIntExtra("push_sub_business_id", 0), paramIntent.getIntExtra("push_id", 0), paramIntent.getStringExtra("push_trigger_info"));
     }
     int i = paramIntent.getIntExtra("jumpType", 0);
     if (a(paramActivity, paramIntent, i)) {
@@ -251,7 +250,7 @@ public class ReadInJoyLockScreenJumpDelegate
   {
     QLog.d("ReadInJoyLockScreenJump", 1, "handleLockScreenJumpViola: " + paramInt);
     if (paramIntent != null) {}
-    for (paramIntent = paramIntent.getStringExtra("push_json"); tto.a(paramInt, paramActivity, paramIntent, false); paramIntent = null)
+    for (paramIntent = paramIntent.getStringExtra("push_json"); ViolaAccessHelper.a(paramInt, paramActivity, paramIntent, false); paramIntent = null)
     {
       QLog.d("ReadInJoyLockScreenJump", 1, "jump viola url success");
       return true;
@@ -263,7 +262,7 @@ public class ReadInJoyLockScreenJumpDelegate
   public static boolean a(MessageRecord paramMessageRecord)
   {
     boolean bool1 = true;
-    if (pkh.a(paramMessageRecord))
+    if (ReadInJoyUtils.a(paramMessageRecord))
     {
       paramMessageRecord = a(paramMessageRecord);
       if (!TextUtils.isEmpty(paramMessageRecord)) {
@@ -332,11 +331,11 @@ public class ReadInJoyLockScreenJumpDelegate
     paramContext = new Intent(paramContext, SplashActivity.class);
     paramContext.putExtra("fragment_id", 1);
     paramContext.putExtra("launch_from", paramInt1);
-    paramContext.putExtra("tab_index", MainFragment.i);
+    paramContext.putExtra("tab_index", FrameControllerUtil.h);
     paramContext.putExtra("open_kandian_tab_fragment", true);
     paramContext.putExtra("arg_channel_cover_id", paramInt2);
     paramContext.setFlags(335544320);
-    pkj.a(paramContext);
+    ReadinjoyJumpUtils.a(paramContext);
     return paramContext;
   }
   
@@ -351,13 +350,13 @@ public class ReadInJoyLockScreenJumpDelegate
     if (i == 1)
     {
       QLog.i("ReadInJoyLockScreenJump", 1, "doJumpAction: openVideoFeeds, rowKey=" + paramIntent.getStringExtra("pushRowKey"));
-      osg.b(paramActivity, paramIntent);
+      ReadInJoyActivityHelper.b(paramActivity, paramIntent);
       return;
     }
     if (i == 2)
     {
       QLog.i("ReadInJoyLockScreenJump", 1, "doJumpAction: openVideoFeeds, rowKey=" + paramIntent.getStringExtra("pushRowKey"));
-      osg.a(paramActivity, paramIntent);
+      ReadInJoyActivityHelper.a(paramActivity, paramIntent);
       return;
     }
     QLog.d("ReadInJoyLockScreenJump", 1, "doJumpAction: contentType: " + i);
@@ -398,7 +397,7 @@ public class ReadInJoyLockScreenJumpDelegate
     }
     for (;;)
     {
-      osg.a(paramActivity, paramIntent, i);
+      ReadInJoyActivityHelper.a(paramActivity, paramIntent, i);
       QLog.d("ReadInJoyLockScreenJump", 1, "handle lock screen floating window   businessType=" + i);
       return;
       if (j != 2) {
@@ -426,18 +425,18 @@ public class ReadInJoyLockScreenJumpDelegate
   
   public int getContentLayoutId()
   {
-    return 2131560268;
+    return 2131560342;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    ptj.a.a(getActivity());
+    RIJDtReportHelper.a.a(getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyLockScreenJumpDelegate
  * JD-Core Version:    0.7.0.1
  */

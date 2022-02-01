@@ -8,7 +8,7 @@ public final class ReportHBGameRsp
   extends JceStruct
   implements Cloneable
 {
-  public int result;
+  public int result = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

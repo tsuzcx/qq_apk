@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.apollo.lightGame;
 
-import amum;
-import amun;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -20,7 +18,7 @@ public class QuickInputTipsBar
   extends LinearLayout
   implements View.OnClickListener
 {
-  private amum a;
+  private QuickInputTipsBar.OnTipsItemClickListener a;
   
   public QuickInputTipsBar(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -43,7 +41,7 @@ public class QuickInputTipsBar
     super.startAnimation(localAlphaAnimation);
   }
   
-  public void a(List<amun> paramList)
+  public void a(List<QuickInputTipsBar.TipsDataItem> paramList)
   {
     super.clearAnimation();
     super.removeAllViews();
@@ -52,7 +50,7 @@ public class QuickInputTipsBar
       int i = 0;
       while (i < paramList.size())
       {
-        Object localObject1 = (amun)paramList.get(i);
+        Object localObject1 = (QuickInputTipsBar.TipsDataItem)paramList.get(i);
         if (localObject1 == null)
         {
           i += 1;
@@ -60,24 +58,24 @@ public class QuickInputTipsBar
         else
         {
           Object localObject2 = new LinearLayout(getContext());
-          ((LinearLayout)localObject2).setBackgroundResource(2130838492);
+          ((LinearLayout)localObject2).setBackgroundResource(2130838566);
           ((LinearLayout)localObject2).setGravity(17);
           localObject2 = new TextView(getContext());
           ((TextView)localObject2).setGravity(17);
           ((TextView)localObject2).setTextColor(-6908266);
           ((TextView)localObject2).setTextSize(14.0F);
-          ((TextView)localObject2).setText(((amun)localObject1).a);
+          ((TextView)localObject2).setText(((QuickInputTipsBar.TipsDataItem)localObject1).a);
           ((TextView)localObject2).setTag(localObject1);
           ((TextView)localObject2).setOnClickListener(this);
-          ((TextView)localObject2).setBackgroundResource(2130838492);
-          int j = AIOUtils.dp2px(10.0F, getContext().getResources());
+          ((TextView)localObject2).setBackgroundResource(2130838566);
+          int j = AIOUtils.a(10.0F, getContext().getResources());
           ((TextView)localObject2).setPadding(j, 0, j, 0);
           localObject1 = new LinearLayout.LayoutParams(-2, -2);
           if (i == 0) {}
-          for (((LinearLayout.LayoutParams)localObject1).leftMargin = AIOUtils.dp2px(8.0F, getContext().getResources());; ((LinearLayout.LayoutParams)localObject1).leftMargin = AIOUtils.dp2px(5.0F, getContext().getResources()))
+          for (((LinearLayout.LayoutParams)localObject1).leftMargin = AIOUtils.a(8.0F, getContext().getResources());; ((LinearLayout.LayoutParams)localObject1).leftMargin = AIOUtils.a(5.0F, getContext().getResources()))
           {
-            ((LinearLayout.LayoutParams)localObject1).rightMargin = AIOUtils.dp2px(5.0F, getContext().getResources());
-            ((LinearLayout.LayoutParams)localObject1).bottomMargin = AIOUtils.dp2px(2.0F, getContext().getResources());
+            ((LinearLayout.LayoutParams)localObject1).rightMargin = AIOUtils.a(5.0F, getContext().getResources());
+            ((LinearLayout.LayoutParams)localObject1).bottomMargin = AIOUtils.a(2.0F, getContext().getResources());
             super.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
             break;
           }
@@ -89,20 +87,20 @@ public class QuickInputTipsBar
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if (((localObject instanceof amun)) && (this.a != null)) {
-      this.a.a((amun)localObject);
+    if (((localObject instanceof QuickInputTipsBar.TipsDataItem)) && (this.a != null)) {
+      this.a.a((QuickInputTipsBar.TipsDataItem)localObject);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setTipsClickListener(amum paramamum)
+  public void setTipsClickListener(QuickInputTipsBar.OnTipsItemClickListener paramOnTipsItemClickListener)
   {
-    this.a = paramamum;
+    this.a = paramOnTipsItemClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.lightGame.QuickInputTipsBar
  * JD-Core Version:    0.7.0.1
  */

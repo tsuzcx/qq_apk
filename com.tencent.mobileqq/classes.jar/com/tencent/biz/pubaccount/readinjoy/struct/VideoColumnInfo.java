@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.protocol.RIJPBFieldUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -13,14 +14,12 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
-import qxl;
-import rso;
 import tencent.im.oidb.articlesummary.articlesummary.VideoColumnInfo;
 
 public class VideoColumnInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoColumnInfo> CREATOR = new rso();
+  public static final Parcelable.Creator<VideoColumnInfo> CREATOR = new VideoColumnInfo.1();
   public static final String a;
   public int a;
   public long a;
@@ -51,7 +50,7 @@ public class VideoColumnInfo
   
   public VideoColumnInfo() {}
   
-  public VideoColumnInfo(Parcel paramParcel)
+  protected VideoColumnInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
@@ -95,8 +94,8 @@ public class VideoColumnInfo
         {
           localObject1 = new VideoColumnInfo();
           ((VideoColumnInfo)localObject1).jdField_a_of_type_Int = paramVideoColumnInfo.uint32_column_id.get();
-          ((VideoColumnInfo)localObject1).jdField_b_of_type_JavaLangString = qxl.b(paramVideoColumnInfo.bytes_column_name);
-          ((VideoColumnInfo)localObject1).jdField_c_of_type_JavaLangString = qxl.b(paramVideoColumnInfo.bytes_column_icon_url);
+          ((VideoColumnInfo)localObject1).jdField_b_of_type_JavaLangString = RIJPBFieldUtils.b(paramVideoColumnInfo.bytes_column_name);
+          ((VideoColumnInfo)localObject1).jdField_c_of_type_JavaLangString = RIJPBFieldUtils.b(paramVideoColumnInfo.bytes_column_icon_url);
           ((VideoColumnInfo)localObject1).jdField_a_of_type_Long = paramVideoColumnInfo.uint64_last_update_time.get();
           ((VideoColumnInfo)localObject1).jdField_b_of_type_Int = paramVideoColumnInfo.uint32_video_count.get();
           ((VideoColumnInfo)localObject1).jdField_c_of_type_Int = paramVideoColumnInfo.uint32_subscribe_count.get();
@@ -110,18 +109,18 @@ public class VideoColumnInfo
     for (boolean bool = true;; bool = false)
     {
       ((VideoColumnInfo)localObject1).jdField_a_of_type_Boolean = bool;
-      ((VideoColumnInfo)localObject1).jdField_d_of_type_JavaLangString = qxl.b(paramVideoColumnInfo.bytes_column_card_bg_url);
-      ((VideoColumnInfo)localObject1).jdField_e_of_type_JavaLangString = qxl.b(paramVideoColumnInfo.bytes_column_card_bg_color);
-      ((VideoColumnInfo)localObject1).jdField_f_of_type_JavaLangString = qxl.b(paramVideoColumnInfo.bytes_column_card_icon_url);
-      ((VideoColumnInfo)localObject1).g = qxl.b(paramVideoColumnInfo.bytes_app_name);
-      ((VideoColumnInfo)localObject1).h = qxl.b(paramVideoColumnInfo.bytes_app_icon_url);
+      ((VideoColumnInfo)localObject1).jdField_d_of_type_JavaLangString = RIJPBFieldUtils.b(paramVideoColumnInfo.bytes_column_card_bg_url);
+      ((VideoColumnInfo)localObject1).jdField_e_of_type_JavaLangString = RIJPBFieldUtils.b(paramVideoColumnInfo.bytes_column_card_bg_color);
+      ((VideoColumnInfo)localObject1).jdField_f_of_type_JavaLangString = RIJPBFieldUtils.b(paramVideoColumnInfo.bytes_column_card_icon_url);
+      ((VideoColumnInfo)localObject1).g = RIJPBFieldUtils.b(paramVideoColumnInfo.bytes_app_name);
+      ((VideoColumnInfo)localObject1).h = RIJPBFieldUtils.b(paramVideoColumnInfo.bytes_app_icon_url);
       ((VideoColumnInfo)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.default_jump_info);
       ((VideoColumnInfo)localObject1).jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.video_jump_info);
       ((VideoColumnInfo)localObject1).jdField_c_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.subscribe_jump_info);
       ((VideoColumnInfo)localObject1).jdField_d_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.app_jump_info);
       ((VideoColumnInfo)localObject1).jdField_d_of_type_Int = paramVideoColumnInfo.uin32_column_card_bg_style.get();
-      ((VideoColumnInfo)localObject1).i = qxl.b(paramVideoColumnInfo.bytes_from_txt);
-      ((VideoColumnInfo)localObject1).j = qxl.b(paramVideoColumnInfo.bytes_column_name_color);
+      ((VideoColumnInfo)localObject1).i = RIJPBFieldUtils.b(paramVideoColumnInfo.bytes_from_txt);
+      ((VideoColumnInfo)localObject1).j = RIJPBFieldUtils.b(paramVideoColumnInfo.bytes_column_name_color);
       return localObject1;
     }
   }
@@ -247,7 +246,7 @@ public class VideoColumnInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,16 @@
 package cooperation.qqpim;
 
-import Override;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import blvy;
-import blwh;
-import bmdk;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 
 public class QQPimPluginProxyActivity
   extends PluginProxyActivity
@@ -21,28 +19,28 @@ public class QQPimPluginProxyActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    a(paramActivity, localIntent, paramBundle.getString(bmdk.l), bmdk.i, QQPimPluginProxyActivity.class, paramDialog);
+    a(paramActivity, localIntent, paramBundle.getString(QQPimDefineList.l), QQPimDefineList.i, QQPimPluginProxyActivity.class, paramDialog);
   }
   
   private static boolean a(Activity paramActivity, Intent paramIntent, String paramString1, String paramString2, Class<? extends Activity> paramClass, Dialog paramDialog)
   {
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", true);
-    blwh localblwh = new blwh(1);
-    localblwh.jdField_b_of_type_JavaLangString = "qqpim_plugin.apk";
-    localblwh.d = "QQ同步助手插件";
-    localblwh.jdField_a_of_type_JavaLangString = paramString1;
-    localblwh.e = paramString2;
-    localblwh.jdField_a_of_type_JavaLangClass = paramClass;
-    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localblwh.jdField_b_of_type_Int = -1;
-    localblwh.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    localblwh.c = 30000;
-    localblwh.f = null;
-    localblwh.jdField_b_of_type_Boolean = false;
-    blvy.a(paramActivity, localblwh);
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
+    localPluginParams.jdField_b_of_type_JavaLangString = "qqpim_plugin.apk";
+    localPluginParams.e = "QQ同步助手插件";
+    localPluginParams.jdField_a_of_type_JavaLangString = paramString1;
+    localPluginParams.f = paramString2;
+    localPluginParams.jdField_a_of_type_JavaLangClass = paramClass;
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localPluginParams.c = -1;
+    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    localPluginParams.d = 30000;
+    localPluginParams.g = null;
+    localPluginParams.jdField_b_of_type_Boolean = false;
+    IPluginManager.a(paramActivity, localPluginParams);
     if (QLog.isColorLevel()) {
-      QLog.i(bmdk.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyActivity.openPluginActivityForResult() " + paramString2 + " IPluginManager.SUPPORT_NETWORKING " + true);
+      QLog.i(QQPimDefineList.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyActivity.openPluginActivityForResult() " + paramString2 + " IPluginManager.SUPPORT_NETWORKING " + true);
     }
     return true;
   }
@@ -51,7 +49,7 @@ public class QQPimPluginProxyActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    a(paramActivity, localIntent, paramBundle.getString(bmdk.l), bmdk.j, QQPimPluginProxyActivity.class, paramDialog);
+    a(paramActivity, localIntent, paramBundle.getString(QQPimDefineList.l), QQPimDefineList.j, QQPimPluginProxyActivity.class, paramDialog);
   }
   
   @Override
@@ -72,7 +70,7 @@ public class QQPimPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqpim.QQPimPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import tli;
-
-public class ReadInJoyTabTopSearchHeaderController$4
+class ReadInJoyTabTopSearchHeaderController$4
   implements Runnable
 {
-  public ReadInJoyTabTopSearchHeaderController$4(tli paramtli) {}
+  ReadInJoyTabTopSearchHeaderController$4(ReadInJoyTabTopSearchHeaderController paramReadInJoyTabTopSearchHeaderController) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ReadInJoyTabTopSearchHeaderController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyTabTopSearchHeaderController.4
  * JD-Core Version:    0.7.0.1
  */

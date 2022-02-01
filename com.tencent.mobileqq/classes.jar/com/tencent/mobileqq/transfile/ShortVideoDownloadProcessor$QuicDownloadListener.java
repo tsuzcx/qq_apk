@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import com.tencent.mobileqq.transfile.quic.open.QuicDownloader;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.quic.internal.QuicEngineImp;
 import com.tencent.mobileqq.transfile.quic.report.DownloadListener;
 import com.tencent.mobileqq.transfile.quic.report.QuicNetReport;
 import com.tencent.qphone.base.util.QLog;
@@ -63,7 +64,7 @@ public class ShortVideoDownloadProcessor$QuicDownloadListener
     localHttpNetReq.mCallback.onResp(paramString);
     return;
     paramQuicNetReport.isHttpRetryed = true;
-    paramQuicNetReport.stats = QuicDownloader.saveNetStats(paramQuicNetReport);
+    paramQuicNetReport.stats = QuicEngineImp.saveNetStats(paramQuicNetReport);
     paramString.mQuicNetReport = paramQuicNetReport;
     paramString.mNetEngine.sendReq(localHttpNetReq);
   }
@@ -128,7 +129,7 @@ public class ShortVideoDownloadProcessor$QuicDownloadListener
         return;
       }
     }
-    paramQuicNetReport.stats = QuicDownloader.saveNetStats(paramQuicNetReport);
+    paramQuicNetReport.stats = QuicEngineImp.saveNetStats(paramQuicNetReport);
     paramQuicNetReport.success = true;
     paramString.mQuicNetReport = paramQuicNetReport;
     paramString.quicDownloadSuc(paramQuicNetReport, localHttpNetReq);

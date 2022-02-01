@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.protocol;
 
 import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -8,14 +9,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
-import pkh;
-import qxn;
-import qxo;
 
-public class ReadInJoyMSFService$2
+class ReadInJoyMSFService$2
   implements Runnable
 {
-  public ReadInJoyMSFService$2(qxn paramqxn, ToServiceMsg paramToServiceMsg) {}
+  ReadInJoyMSFService$2(ReadInJoyMSFService paramReadInJoyMSFService, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
@@ -30,7 +28,7 @@ public class ReadInJoyMSFService$2
         if ((!this.a.extraData.getBoolean("req_pb_protocol_flag", false)) || (this.a.getWupBuffer() == null)) {
           break label441;
         }
-        if (!qxn.a(this.this$0, this.a))
+        if (!ReadInJoyMSFService.a(this.this$0, this.a))
         {
           long l = this.a.getWupBuffer().length;
           localObject = new byte[(int)l + 4];
@@ -46,7 +44,7 @@ public class ReadInJoyMSFService$2
           if (i == 0) {
             break;
           }
-          localObject = new NewIntent(pkh.a().getApplication(), qxo.class);
+          localObject = new NewIntent(ReadInJoyUtils.a().getApplication(), ReadInJoyMSFServlet.class);
           ((NewIntent)localObject).putExtra(ToServiceMsg.class.getSimpleName(), this.a);
           if (this.a.getAttributes().get("req_enable_msf_retry") != null)
           {
@@ -58,7 +56,7 @@ public class ReadInJoyMSFService$2
               ((NewIntent)localObject).putExtra("quickSendStrategy", 0);
               QLog.d("ReadInJoyMSFService", 2, "handleRequest | MSF retry enabled");
             }
-            pkh.a().startServlet((NewIntent)localObject);
+            ReadInJoyUtils.a().startServlet((NewIntent)localObject);
             l = System.currentTimeMillis();
             this.a.extraData.putLong("sendtimekey", l);
           }
@@ -99,7 +97,7 @@ public class ReadInJoyMSFService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.camera;
 
-import aqml;
-import aqmu;
-
-public class CameraManagerImpl$ShutterCallbackForward$1
+class CameraManagerImpl$ShutterCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$ShutterCallbackForward$1(aqmu paramaqmu) {}
+  CameraManagerImpl$ShutterCallbackForward$1(CameraManagerImpl.ShutterCallbackForward paramShutterCallbackForward) {}
   
   public void run()
   {
-    aqmu.a(this.this$0).a(aqmu.a(this.this$0));
+    CameraManagerImpl.ShutterCallbackForward.a(this.this$0).a(CameraManagerImpl.ShutterCallbackForward.a(this.this$0));
   }
 }
 

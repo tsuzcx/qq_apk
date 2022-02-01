@@ -1,20 +1,16 @@
 package com.tencent.image;
 
-import java.net.URLStreamHandler;
-import java.net.URLStreamHandlerFactory;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 final class URLDrawable$1
-  implements URLStreamHandlerFactory
+  implements ThreadFactory
 {
-  URLStreamHandler handler = new URLDrawable.1.1(this);
+  private final AtomicInteger mCount = new AtomicInteger(1);
   
-  public URLStreamHandler createURLStreamHandler(String paramString)
+  public Thread newThread(Runnable paramRunnable)
   {
-    if (("http".equalsIgnoreCase(paramString)) || ("https".equalsIgnoreCase(paramString)) || ("file".equalsIgnoreCase(paramString))) {}
-    while ("jar".equalsIgnoreCase(paramString)) {
-      return null;
-    }
-    return this.handler;
+    return new Thread(paramRunnable, "URLDrawable #" + this.mCount.getAndIncrement());
   }
 }
 

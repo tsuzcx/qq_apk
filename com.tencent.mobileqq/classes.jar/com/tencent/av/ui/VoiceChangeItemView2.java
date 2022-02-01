@@ -8,13 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import bgxc;
 import com.tencent.av.funchat.AVListImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import mil;
-import min;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 
 public class VoiceChangeItemView2
   extends QavListItemBase
@@ -33,36 +31,36 @@ public class VoiceChangeItemView2
   
   public void a(int paramInt1, int paramInt2)
   {
-    ((LayoutInflater)this.b.getSystemService("layout_inflater")).inflate(2131559839, this);
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131373501));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131381284));
+    ((LayoutInflater)this.b.getSystemService("layout_inflater")).inflate(2131559915, this);
+    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131373815));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131381747));
     this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setOnClickListener(this);
     setOnClickListener(this);
   }
   
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, min parammin, mil parammil)
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, QavListItemBase.ItemInfo paramItemInfo, QavListItemBase.IClickCallback paramIClickCallback)
   {
-    super.a(paramInt, parammil);
+    super.a(paramInt, paramIClickCallback);
     setId(paramInt);
-    setTag(parammin);
-    if (!TextUtils.isEmpty(parammin.jdField_b_of_type_JavaLangString))
+    setTag(paramItemInfo);
+    if (!TextUtils.isEmpty(paramItemInfo.jdField_b_of_type_JavaLangString))
     {
-      parammil = URLDrawable.URLDrawableOptions.obtain();
-      paramInt = AIOUtils.dp2px(60.0F, getResources());
+      paramIClickCallback = URLDrawable.URLDrawableOptions.obtain();
+      paramInt = AIOUtils.a(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(getResources().getColor(2131165881));
+      localGradientDrawable.setColor(getResources().getColor(2131165883));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt, paramInt);
-      parammil.mRequestWidth = paramInt;
-      parammil.mRequestHeight = paramInt;
-      parammil.mFailedDrawable = localGradientDrawable;
-      parammil.mLoadingDrawable = localGradientDrawable;
-      parammil = URLDrawable.getDrawable(parammin.jdField_b_of_type_JavaLangString, parammil);
-      parammil.setTag(bgxc.a(paramInt, paramInt));
-      parammil.setDecodeHandler(bgxc.a);
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(parammil);
+      paramIClickCallback.mRequestWidth = paramInt;
+      paramIClickCallback.mRequestHeight = paramInt;
+      paramIClickCallback.mFailedDrawable = localGradientDrawable;
+      paramIClickCallback.mLoadingDrawable = localGradientDrawable;
+      paramIClickCallback = URLDrawable.getDrawable(paramItemInfo.jdField_b_of_type_JavaLangString, paramIClickCallback);
+      paramIClickCallback.setTag(URLDrawableDecodeHandler.a(paramInt, paramInt));
+      paramIClickCallback.setDecodeHandler(URLDrawableDecodeHandler.a);
+      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(paramIClickCallback);
     }
-    switch (parammin.jdField_b_of_type_Int)
+    switch (paramItemInfo.jdField_b_of_type_Int)
     {
     default: 
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -71,25 +69,25 @@ public class VoiceChangeItemView2
     {
       setHighlight(paramBoolean1);
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842341);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842484);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842341);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842484);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842341);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842484);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    Object localObject = findViewById(2131381282);
+    Object localObject = findViewById(2131381745);
     ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
     localLayoutParams.width = paramInt1;
     localLayoutParams.height = paramInt2;
     ((View)localObject).setLayoutParams(localLayoutParams);
-    if ((this.jdField_a_of_type_ComTencentAvFunchatAVListImageView != null) && (paramInt1 < getResources().getDimensionPixelSize(2131297712)))
+    if ((this.jdField_a_of_type_ComTencentAvFunchatAVListImageView != null) && (paramInt1 < getResources().getDimensionPixelSize(2131297779)))
     {
       localObject = this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject).width = paramInt1;
@@ -105,7 +103,7 @@ public class VoiceChangeItemView2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.VoiceChangeItemView2
  * JD-Core Version:    0.7.0.1
  */

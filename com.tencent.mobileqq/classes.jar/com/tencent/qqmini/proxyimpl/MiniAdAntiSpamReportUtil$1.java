@@ -5,10 +5,10 @@ import com.tencent.TMG.utils.QLog;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 
-public final class MiniAdAntiSpamReportUtil$1
+final class MiniAdAntiSpamReportUtil$1
   implements Runnable
 {
-  public MiniAdAntiSpamReportUtil$1(Bundle paramBundle) {}
+  MiniAdAntiSpamReportUtil$1(Bundle paramBundle) {}
   
   public void run()
   {

@@ -1,17 +1,33 @@
 package io.flutter.plugin.platform;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.SparseArray;
+import android.view.MotionEvent;
 import android.view.MotionEvent.PointerCoords;
 import android.view.MotionEvent.PointerProperties;
 import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 import androidx.annotation.VisibleForTesting;
+import io.flutter.embedding.android.AndroidTouchProcessor;
+import io.flutter.embedding.android.FlutterImageView;
+import io.flutter.embedding.android.FlutterImageView.SurfaceKind;
+import io.flutter.embedding.android.FlutterView;
+import io.flutter.embedding.android.MotionEventTracker;
+import io.flutter.embedding.android.MotionEventTracker.MotionEventId;
+import io.flutter.embedding.engine.FlutterOverlaySurface;
 import io.flutter.embedding.engine.dart.DartExecutor;
+import io.flutter.embedding.engine.mutatorsstack.FlutterMutatorView;
+import io.flutter.embedding.engine.mutatorsstack.FlutterMutatorsStack;
+import io.flutter.embedding.engine.renderer.FlutterRenderer;
 import io.flutter.embedding.engine.systemchannels.PlatformViewsChannel;
+import io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewTouch;
 import io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewsHandler;
 import io.flutter.plugin.editing.TextInputPlugin;
 import io.flutter.view.AccessibilityBridge;
@@ -19,25 +35,75 @@ import io.flutter.view.TextureRegistry;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 public class PlatformViewsController
   implements PlatformViewsAccessibilityDelegate
 {
-  private static final int MINIMAL_SDK = 20;
   private static final String TAG = "PlatformViewsController";
   private final AccessibilityEventsDelegate accessibilityEventsDelegate = new AccessibilityEventsDelegate();
+  private AndroidTouchProcessor androidTouchProcessor;
   private final PlatformViewsChannel.PlatformViewsHandler channelHandler = new PlatformViewsController.1(this);
   private Context context;
   private final HashMap<Context, View> contextToPlatformView = new HashMap();
+  private HashSet<Integer> currentFrameUsedOverlayLayerIds = new HashSet();
+  private HashSet<Integer> currentFrameUsedPlatformViewIds = new HashSet();
   private View flutterView;
+  private boolean flutterViewConvertedToImageView = false;
+  private final MotionEventTracker motionEventTracker = MotionEventTracker.getInstance();
+  private int nextOverlayLayerId = 0;
+  private final SparseArray<FlutterImageView> overlayLayerViews = new SparseArray();
+  private final SparseArray<FlutterMutatorView> platformViewParent = new SparseArray();
+  private final SparseArray<PlatformView> platformViews = new SparseArray();
   private PlatformViewsChannel platformViewsChannel;
   private final PlatformViewRegistryImpl registry = new PlatformViewRegistryImpl();
   private TextInputPlugin textInputPlugin;
   private TextureRegistry textureRegistry;
   @VisibleForTesting
   final HashMap<Integer, VirtualDisplayController> vdControllers = new HashMap();
+  
+  private void finishFrame(boolean paramBoolean)
+  {
+    int i = 0;
+    int j;
+    Object localObject;
+    if (i < this.overlayLayerViews.size())
+    {
+      j = this.overlayLayerViews.keyAt(i);
+      localObject = (FlutterImageView)this.overlayLayerViews.valueAt(i);
+      if (this.currentFrameUsedOverlayLayerIds.contains(Integer.valueOf(j)))
+      {
+        ((FlutterView)this.flutterView).attachOverlaySurfaceToRender((FlutterImageView)localObject);
+        paramBoolean &= ((FlutterImageView)localObject).acquireLatestImage();
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (!this.flutterViewConvertedToImageView) {
+          ((FlutterImageView)localObject).detachFromRenderer();
+        }
+        ((FlutterImageView)localObject).setVisibility(8);
+      }
+    }
+    i = 0;
+    if (i < this.platformViewParent.size())
+    {
+      j = this.platformViewParent.keyAt(i);
+      localObject = (View)this.platformViewParent.get(j);
+      if ((paramBoolean) && (this.currentFrameUsedPlatformViewIds.contains(Integer.valueOf(j)))) {
+        ((View)localObject).setVisibility(0);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((View)localObject).setVisibility(8);
+      }
+    }
+  }
   
   private void flushAllViews()
   {
@@ -46,6 +112,23 @@ public class PlatformViewsController
       ((VirtualDisplayController)localIterator.next()).dispose();
     }
     this.vdControllers.clear();
+    while (this.platformViews.size() > 0) {
+      this.channelHandler.disposeAndroidViewForPlatformView(this.platformViews.keyAt(0));
+    }
+  }
+  
+  private float getDisplayDensity()
+  {
+    return this.context.getResources().getDisplayMetrics().density;
+  }
+  
+  private void initializeRootImageViewIfNeeded()
+  {
+    if (!this.flutterViewConvertedToImageView)
+    {
+      ((FlutterView)this.flutterView).convertToImageView();
+      this.flutterViewConvertedToImageView = true;
+    }
   }
   
   private void lockInputConnection(@NonNull VirtualDisplayController paramVirtualDisplayController)
@@ -106,7 +189,7 @@ public class PlatformViewsController
   
   private int toPhysicalPixels(double paramDouble)
   {
-    double d = this.context.getResources().getDisplayMetrics().density;
+    double d = getDisplayDensity();
     Double.isNaN(d);
     return (int)Math.round(d * paramDouble);
   }
@@ -167,6 +250,11 @@ public class PlatformViewsController
     this.textInputPlugin = paramTextInputPlugin;
   }
   
+  public void attachToFlutterRenderer(FlutterRenderer paramFlutterRenderer)
+  {
+    this.androidTouchProcessor = new AndroidTouchProcessor(paramFlutterRenderer, true);
+  }
+  
   public void attachToView(@NonNull View paramView)
   {
     this.flutterView = paramView;
@@ -176,9 +264,10 @@ public class PlatformViewsController
     }
   }
   
-  public boolean checkInputConnectionProxy(View paramView)
+  public boolean checkInputConnectionProxy(@Nullable View paramView)
   {
-    if (!this.contextToPlatformView.containsKey(paramView.getContext())) {
+    if (paramView == null) {}
+    while (!this.contextToPlatformView.containsKey(paramView.getContext())) {
       return false;
     }
     View localView = (View)this.contextToPlatformView.get(paramView.getContext());
@@ -186,6 +275,36 @@ public class PlatformViewsController
       return true;
     }
     return localView.checkInputConnectionProxy(paramView);
+  }
+  
+  @TargetApi(19)
+  public FlutterOverlaySurface createOverlaySurface()
+  {
+    return createOverlaySurface(new FlutterImageView(this.flutterView.getContext(), this.flutterView.getWidth(), this.flutterView.getHeight(), FlutterImageView.SurfaceKind.overlay));
+  }
+  
+  @TargetApi(19)
+  @VisibleForTesting
+  public FlutterOverlaySurface createOverlaySurface(@NonNull FlutterImageView paramFlutterImageView)
+  {
+    int i = this.nextOverlayLayerId;
+    this.nextOverlayLayerId = (i + 1);
+    this.overlayLayerViews.put(i, paramFlutterImageView);
+    return new FlutterOverlaySurface(i, paramFlutterImageView.getSurface());
+  }
+  
+  public void destroyOverlaySurfaces()
+  {
+    int i = 0;
+    while (i < this.overlayLayerViews.size())
+    {
+      this.overlayLayerViews.keyAt(i);
+      FlutterImageView localFlutterImageView = (FlutterImageView)this.overlayLayerViews.valueAt(i);
+      localFlutterImageView.detachFromRenderer();
+      ((FlutterView)this.flutterView).removeView(localFlutterImageView);
+      i += 1;
+    }
+    this.overlayLayerViews.clear();
   }
   
   @UiThread
@@ -218,6 +337,9 @@ public class PlatformViewsController
   
   public View getPlatformViewById(Integer paramInteger)
   {
+    if (this.platformViews.get(paramInteger.intValue()) != null) {
+      return ((PlatformView)this.platformViews.get(paramInteger.intValue())).getView();
+    }
     paramInteger = (VirtualDisplayController)this.vdControllers.get(paramInteger);
     if (paramInteger == null) {
       return null;
@@ -230,19 +352,117 @@ public class PlatformViewsController
     return this.registry;
   }
   
-  public void onFlutterViewDestroyed()
+  @VisibleForTesting
+  void initializePlatformViewIfNeeded(int paramInt)
+  {
+    PlatformView localPlatformView = (PlatformView)this.platformViews.get(paramInt);
+    if (localPlatformView != null)
+    {
+      if (this.platformViewParent.get(paramInt) != null) {
+        return;
+      }
+      if (localPlatformView.getView() != null)
+      {
+        if (localPlatformView.getView().getParent() == null)
+        {
+          FlutterMutatorView localFlutterMutatorView = new FlutterMutatorView(this.context, this.context.getResources().getDisplayMetrics().density, this.androidTouchProcessor);
+          this.platformViewParent.put(paramInt, localFlutterMutatorView);
+          localFlutterMutatorView.addView(localPlatformView.getView());
+          ((FlutterView)this.flutterView).addView(localFlutterMutatorView);
+          return;
+        }
+        throw new IllegalStateException("The Android view returned from PlatformView#getView() was already added to a parent view.");
+      }
+      throw new IllegalStateException("PlatformView#getView() returned null, but an Android view reference was expected.");
+    }
+    throw new IllegalStateException("Platform view hasn't been initialized from the platform view channel.");
+  }
+  
+  public void onAttachedToJNI() {}
+  
+  public void onBeginFrame()
+  {
+    this.currentFrameUsedOverlayLayerIds.clear();
+    this.currentFrameUsedPlatformViewIds.clear();
+  }
+  
+  public void onDetachedFromJNI()
   {
     flushAllViews();
+  }
+  
+  public void onDisplayOverlaySurface(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    initializeRootImageViewIfNeeded();
+    FlutterImageView localFlutterImageView = (FlutterImageView)this.overlayLayerViews.get(paramInt1);
+    if (localFlutterImageView.getParent() == null) {
+      ((FlutterView)this.flutterView).addView(localFlutterImageView);
+    }
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(paramInt4, paramInt5);
+    localLayoutParams.leftMargin = paramInt2;
+    localLayoutParams.topMargin = paramInt3;
+    localFlutterImageView.setLayoutParams(localLayoutParams);
+    localFlutterImageView.setVisibility(0);
+    localFlutterImageView.bringToFront();
+    this.currentFrameUsedOverlayLayerIds.add(Integer.valueOf(paramInt1));
+  }
+  
+  public void onDisplayPlatformView(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, FlutterMutatorsStack paramFlutterMutatorsStack)
+  {
+    initializeRootImageViewIfNeeded();
+    initializePlatformViewIfNeeded(paramInt1);
+    Object localObject = (FlutterMutatorView)this.platformViewParent.get(paramInt1);
+    ((FlutterMutatorView)localObject).readyToDisplay(paramFlutterMutatorsStack, paramInt2, paramInt3, paramInt4, paramInt5);
+    ((FlutterMutatorView)localObject).setVisibility(0);
+    ((FlutterMutatorView)localObject).bringToFront();
+    paramFlutterMutatorsStack = new FrameLayout.LayoutParams(paramInt6, paramInt7);
+    localObject = ((PlatformView)this.platformViews.get(paramInt1)).getView();
+    if (localObject != null)
+    {
+      ((View)localObject).setLayoutParams(paramFlutterMutatorsStack);
+      ((View)localObject).bringToFront();
+    }
+    this.currentFrameUsedPlatformViewIds.add(Integer.valueOf(paramInt1));
+  }
+  
+  public void onEndFrame()
+  {
+    FlutterView localFlutterView = (FlutterView)this.flutterView;
+    if ((this.flutterViewConvertedToImageView) && (this.currentFrameUsedPlatformViewIds.isEmpty()))
+    {
+      this.flutterViewConvertedToImageView = false;
+      localFlutterView.revertImageView(new PlatformViewsController.2(this));
+      return;
+    }
+    if ((this.flutterViewConvertedToImageView) && (localFlutterView.acquireLatestImageViewFrame())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      finishFrame(bool);
+      return;
+    }
   }
   
   public void onPreEngineRestart()
   {
     flushAllViews();
   }
+  
+  @VisibleForTesting
+  public MotionEvent toMotionEvent(float paramFloat, PlatformViewsChannel.PlatformViewTouch paramPlatformViewTouch, boolean paramBoolean)
+  {
+    Object localObject = MotionEventTracker.MotionEventId.from(paramPlatformViewTouch.motionEventId);
+    localObject = this.motionEventTracker.pop((MotionEventTracker.MotionEventId)localObject);
+    MotionEvent.PointerProperties[] arrayOfPointerProperties = (MotionEvent.PointerProperties[])parsePointerPropertiesList(paramPlatformViewTouch.rawPointerPropertiesList).toArray(new MotionEvent.PointerProperties[paramPlatformViewTouch.pointerCount]);
+    MotionEvent.PointerCoords[] arrayOfPointerCoords = (MotionEvent.PointerCoords[])parsePointerCoordsList(paramPlatformViewTouch.rawPointerCoords, paramFloat).toArray(new MotionEvent.PointerCoords[paramPlatformViewTouch.pointerCount]);
+    if ((!paramBoolean) && (localObject != null)) {
+      return MotionEvent.obtain(((MotionEvent)localObject).getDownTime(), ((MotionEvent)localObject).getEventTime(), ((MotionEvent)localObject).getAction(), paramPlatformViewTouch.pointerCount, arrayOfPointerProperties, arrayOfPointerCoords, ((MotionEvent)localObject).getMetaState(), ((MotionEvent)localObject).getButtonState(), ((MotionEvent)localObject).getXPrecision(), ((MotionEvent)localObject).getYPrecision(), ((MotionEvent)localObject).getDeviceId(), ((MotionEvent)localObject).getEdgeFlags(), ((MotionEvent)localObject).getSource(), ((MotionEvent)localObject).getFlags());
+    }
+    return MotionEvent.obtain(paramPlatformViewTouch.downTime.longValue(), paramPlatformViewTouch.eventTime.longValue(), paramPlatformViewTouch.action, paramPlatformViewTouch.pointerCount, arrayOfPointerProperties, arrayOfPointerCoords, paramPlatformViewTouch.metaState, paramPlatformViewTouch.buttonState, paramPlatformViewTouch.xPrecision, paramPlatformViewTouch.yPrecision, paramPlatformViewTouch.deviceId, paramPlatformViewTouch.edgeFlags, paramPlatformViewTouch.source, paramPlatformViewTouch.flags);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.plugin.platform.PlatformViewsController
  * JD-Core Version:    0.7.0.1
  */

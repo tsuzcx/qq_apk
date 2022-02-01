@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.utils;
 
-import bhcs;
+import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-public final class AvatarPendantUtil$1
+final class AvatarPendantUtil$1
   implements Runnable
 {
-  public AvatarPendantUtil$1(QQAppInterface paramQQAppInterface) {}
+  AvatarPendantUtil$1(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    bhcs.jdField_a_of_type_Boolean = false;
+    AvatarPendantUtil.jdField_a_of_type_Boolean = false;
     do
     {
-      synchronized (bhcs.jdField_a_of_type_JavaUtilArrayList)
+      synchronized (AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList)
       {
-        String[] arrayOfString1 = new String[bhcs.jdField_a_of_type_JavaUtilArrayList.size()];
-        bhcs.jdField_a_of_type_JavaUtilArrayList.toArray(arrayOfString1);
-        bhcs.jdField_a_of_type_JavaUtilArrayList.clear();
+        String[] arrayOfString1 = new String[AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.size()];
+        AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.toArray(arrayOfString1);
+        AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.clear();
         if (arrayOfString1.length == 0) {
           return;
         }
@@ -29,10 +28,10 @@ public final class AvatarPendantUtil$1
       if (QLog.isColorLevel()) {
         QLog.i("AvatarPendantUtil", 2, "bulkGetStrangerPendantId, getStrangerInfo, size=" + arrayOfString2.length);
       }
-      ??? = (VasExtensionHandler)this.a.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER);
+      ??? = (IApolloExtensionHandler)this.a.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
     } while (??? == null);
-    ((VasExtensionHandler)???).a(arrayOfString2, new int[] { 40530, 27025, 27201, 27235, 27238, 27254 });
-    bhcs.a(System.currentTimeMillis());
+    ((IApolloExtensionHandler)???).a(arrayOfString2, new int[] { 40530, 27025, 27201, 27235, 27238, 27254 });
+    AvatarPendantUtil.a(System.currentTimeMillis());
   }
 }
 

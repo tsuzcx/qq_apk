@@ -4,15 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bdla;
-import bijc;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public class WebStateReporter$1
+class WebStateReporter$1
   implements Runnable
 {
-  public WebStateReporter$1(bijc parambijc, boolean paramBoolean, String paramString1, Context paramContext, long paramLong, String paramString2) {}
+  WebStateReporter$1(WebStateReporter paramWebStateReporter, boolean paramBoolean, String paramString1, Context paramContext, long paramLong, String paramString2) {}
   
   public void run()
   {
@@ -52,7 +51,7 @@ public class WebStateReporter$1
           QLog.e("WebStateReporter_report", 2, "parse url got some problem!", localException1);
         }
         continue;
-        Object localObject = (Integer)bijc.jdField_a_of_type_JavaUtilHashMap.get("sample_rate");
+        Object localObject = (Integer)WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get("sample_rate");
         continue;
         int j = 0;
         continue;
@@ -69,7 +68,7 @@ public class WebStateReporter$1
             if (bool1)
             {
               i = 1;
-              bdla.b(null, "P_CliOper", "WebStatusReport", "", (String)localObject, str3, i, 1, this.this$0.jdField_b_of_type_Int, str2, Build.VERSION.RELEASE, String.valueOf(this.this$0.jdField_c_of_type_Long - this.this$0.jdField_b_of_type_Long), String.valueOf(System.currentTimeMillis() - this.this$0.jdField_b_of_type_Long));
+              ReportController.b(null, "P_CliOper", "WebStatusReport", "", (String)localObject, str3, i, 1, this.this$0.jdField_b_of_type_Int, str2, Build.VERSION.RELEASE, String.valueOf(this.this$0.jdField_c_of_type_Long - this.this$0.jdField_b_of_type_Long), String.valueOf(System.currentTimeMillis() - this.this$0.jdField_b_of_type_Long));
             }
           }
           else
@@ -101,18 +100,18 @@ public class WebStateReporter$1
         continue;
       }
     }
-    if (bijc.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+    if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty())
     {
       this.this$0.a(this.jdField_a_of_type_AndroidContentContext);
-      if (bijc.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
-        bijc.jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(10));
+      if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+        WebStateReporter.jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(10));
       }
     }
-    if (bijc.jdField_a_of_type_JavaUtilHashMap.containsKey(str1))
+    if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.containsKey(str1))
     {
-      localObject = (Integer)bijc.jdField_a_of_type_JavaUtilHashMap.get(str1);
+      localObject = (Integer)WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get(str1);
       j = ((Integer)localObject).intValue();
-      if ((1 != j) && (this.jdField_a_of_type_Long % j != bijc.jdField_c_of_type_Int)) {
+      if ((1 != j) && (this.jdField_a_of_type_Long % j != WebStateReporter.jdField_c_of_type_Int)) {
         break label315;
       }
       j = 1;
@@ -124,7 +123,7 @@ public class WebStateReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.utils.WebStateReporter.1
  * JD-Core Version:    0.7.0.1
  */

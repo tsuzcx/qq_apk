@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.artfilter;
 
-import bdee;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 
 class ArtFilterBridgeActivity$1
   implements Runnable
@@ -10,12 +10,12 @@ class ArtFilterBridgeActivity$1
   
   public void run()
   {
-    bdee.a(this.this$0.app, this.this$0.app.getApplication());
+    PtvFilterSoLoad.a(this.this$0.app, this.this$0.app.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity.1
  * JD-Core Version:    0.7.0.1
  */

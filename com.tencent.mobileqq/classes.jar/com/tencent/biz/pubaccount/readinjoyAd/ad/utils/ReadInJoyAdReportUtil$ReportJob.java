@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.utils;
 
 import android.text.TextUtils;
-import anlq;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -47,7 +47,7 @@ class ReadInJoyAdReportUtil$ReportJob
           break label180;
         }
         localObject1 = (HttpsURLConnection)((URL)localObject1).openConnection();
-        localObject2 = anlq.a();
+        localObject2 = ApolloHttpUtil.a();
         localObject3 = new StringBuilder().append(" URLConnection_Ping_Runner https sslContext is not null :");
         if (localObject2 != null) {
           break label175;
@@ -86,10 +86,10 @@ class ReadInJoyAdReportUtil$ReportJob
       ((StringBuilder)localObject3).append(this.a.get("uin").toString());
     }
     Object localObject2 = new GdtDeviceInfoHelper.Params();
-    ((GdtDeviceInfoHelper.Params)localObject2).businessIdForAidTicketAndTaidTicket = "ce2d9f";
-    localObject2 = GdtDeviceInfoHelper.create(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject2);
+    ((GdtDeviceInfoHelper.Params)localObject2).a = "ce2d9f";
+    localObject2 = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject2);
     if (localObject2 != null) {}
-    for (localObject2 = ((GdtDeviceInfoHelper.Result)localObject2).deviceInfo;; localObject2 = null)
+    for (localObject2 = ((GdtDeviceInfoHelper.Result)localObject2).a;; localObject2 = null)
     {
       if ((localObject2 != null) && (((qq_ad_get.QQAdGet.DeviceInfo)localObject2).client_ipv4.has()))
       {
@@ -124,7 +124,7 @@ class ReadInJoyAdReportUtil$ReportJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdReportUtil.ReportJob
  * JD-Core Version:    0.7.0.1
  */

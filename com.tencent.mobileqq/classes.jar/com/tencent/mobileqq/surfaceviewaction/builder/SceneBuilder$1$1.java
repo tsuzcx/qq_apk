@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.builder;
 
-import bdxz;
-import bdyn;
-import bdyw;
+import com.tencent.mobileqq.surfaceviewaction.ILayer;
 
 class SceneBuilder$1$1
   implements Runnable
@@ -11,8 +9,8 @@ class SceneBuilder$1$1
   
   public void run()
   {
-    bdxz localbdxz = bdyn.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Bdyb, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Bdyw.a(localbdxz);
+    ILayer localILayer = SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionISpriteView, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$OnBuiltListener.a(localILayer);
   }
 }
 

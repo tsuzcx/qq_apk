@@ -30,8 +30,8 @@ public class QuickSendProgressView
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private QuickSendProgressView.RefreshProgressRunnable jdField_a_of_type_ComTencentMobileqqWidgetQuickSendProgressView$RefreshProgressRunnable;
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int = 0;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private int jdField_c_of_type_Int;
@@ -252,13 +252,13 @@ public class QuickSendProgressView
     this.h = a(2.0F, getResources());
     this.jdField_g_of_type_Int = a(3.0F, getResources());
     this.i = a(1.0F, getResources());
-    this.jdField_a_of_type_JavaLangString = getResources().getString(2131692551);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846095);
+    this.jdField_a_of_type_JavaLangString = getResources().getString(2131692688);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846417);
     this.jdField_c_of_type_Int = Color.parseColor("#19BAFF");
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846097);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846419);
     this.jdField_e_of_type_Int = Color.parseColor("#3300CAFC");
     this.jdField_f_of_type_Int = Color.parseColor("#33FF596A");
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846093);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846415);
     this.jdField_d_of_type_Int = Color.parseColor("#FF596A");
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.h);
@@ -273,13 +273,13 @@ public class QuickSendProgressView
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846096);
-    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846099);
-    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846094);
-    setContentDescription(getResources().getString(2131690786));
+    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846418);
+    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846421);
+    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846416);
+    setContentDescription(getResources().getString(2131690891));
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     b();
@@ -302,7 +302,7 @@ public class QuickSendProgressView
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQuickSendProgressView$RefreshProgressRunnable != null)
@@ -317,7 +317,7 @@ public class QuickSendProgressView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQuickSendProgressView$RefreshProgressRunnable != null)
@@ -349,7 +349,7 @@ public class QuickSendProgressView
     a(paramCanvas);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int n = 1;
     int k;
@@ -441,7 +441,7 @@ public class QuickSendProgressView
     this.jdField_a_of_type_Int = paramInt;
     if (this.jdField_a_of_type_Int == 0)
     {
-      setContentDescription(getResources().getString(2131690786));
+      setContentDescription(getResources().getString(2131690891));
       label42:
       c();
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetQuickSendProgressView$RefreshProgressRunnable != null)
@@ -472,12 +472,12 @@ public class QuickSendProgressView
       return;
       if (this.jdField_a_of_type_Int == 1)
       {
-        setContentDescription(getResources().getString(2131690755));
+        setContentDescription(getResources().getString(2131690859));
         break label42;
       }
       if (this.jdField_a_of_type_Int == 2)
       {
-        setContentDescription(getResources().getString(2131718065));
+        setContentDescription(getResources().getString(2131718558));
         break label42;
       }
       if (this.jdField_a_of_type_JavaLangString == null) {
@@ -500,7 +500,7 @@ public class QuickSendProgressView
     this.h = paramInt;
   }
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public boolean verifyDrawable(Drawable paramDrawable)
   {
     boolean bool = false;
     int k;
@@ -523,7 +523,7 @@ public class QuickSendProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QuickSendProgressView
  * JD-Core Version:    0.7.0.1
  */

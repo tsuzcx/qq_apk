@@ -6,15 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.AttributeSet;
-import blja;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecyclerViewCompat
   extends RecyclerView
 {
-  private blja jdField_a_of_type_Blja;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private RecyclerViewCompat.OnFlingListener jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat$OnFlingListener;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public RecyclerViewCompat(Context paramContext)
   {
@@ -31,9 +30,9 @@ public class RecyclerViewCompat
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public blja a()
+  public RecyclerViewCompat.OnFlingListener a()
   {
-    return this.jdField_a_of_type_Blja;
+    return this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat$OnFlingListener;
   }
   
   public boolean dispatchNestedFling(float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -61,7 +60,7 @@ public class RecyclerViewCompat
     boolean bool1 = false;
     int j = paramInt1;
     int k = paramInt2;
-    if (this.jdField_a_of_type_Blja != null)
+    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat$OnFlingListener != null)
     {
       if (getLayoutManager() == null) {
         QLog.e("RecyclerViewCompat", 2, "Cannot fling without a LayoutManager set. Call setLayoutManager with a non-null argument.");
@@ -105,7 +104,7 @@ public class RecyclerViewCompat
           bool1 = true;
         }
         dispatchNestedFling(i, paramInt1, bool1);
-        if ((this.jdField_a_of_type_Blja != null) && (this.jdField_a_of_type_Blja.a(i, paramInt1))) {
+        if ((this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat$OnFlingListener != null) && (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat$OnFlingListener.a(i, paramInt1))) {
           return true;
         }
         this.jdField_a_of_type_Boolean = true;
@@ -121,14 +120,14 @@ public class RecyclerViewCompat
     super.setAdapter(paramAdapter);
   }
   
-  public void setOnFlingListener(blja paramblja)
+  public void setOnFlingListener(RecyclerViewCompat.OnFlingListener paramOnFlingListener)
   {
-    this.jdField_a_of_type_Blja = paramblja;
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat$OnFlingListener = paramOnFlingListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.RecyclerViewCompat
  * JD-Core Version:    0.7.0.1
  */

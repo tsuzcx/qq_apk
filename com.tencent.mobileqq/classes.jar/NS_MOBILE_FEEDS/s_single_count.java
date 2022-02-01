@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class s_single_count
   extends JceStruct
 {
-  public int iControl;
-  public long uCount;
+  public int iControl = 0;
+  public long uCount = 0L;
   
   public s_single_count() {}
   

@@ -11,7 +11,6 @@ import android.view.ViewGroup.LayoutParams;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ArrayBlockingQueue;
-import syx;
 
 public class LayoutInflateProcessor
 {
@@ -24,21 +23,21 @@ public class LayoutInflateProcessor
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  private void a(syx paramsyx)
+  private void a(LayoutInflateProcessor.InflateParams paramInflateParams)
   {
-    if (paramsyx == null) {
+    if (paramInflateParams == null) {
       return;
     }
-    ArrayBlockingQueue localArrayBlockingQueue2 = (ArrayBlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(syx.a(paramsyx));
+    ArrayBlockingQueue localArrayBlockingQueue2 = (ArrayBlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(LayoutInflateProcessor.InflateParams.a(paramInflateParams));
     ArrayBlockingQueue localArrayBlockingQueue1;
     if (localArrayBlockingQueue2 == null)
     {
       localArrayBlockingQueue1 = new ArrayBlockingQueue(9);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(syx.a(paramsyx), localArrayBlockingQueue1);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(LayoutInflateProcessor.InflateParams.a(paramInflateParams), localArrayBlockingQueue1);
     }
     do
     {
-      paramsyx.a = localArrayBlockingQueue1;
+      paramInflateParams.a = localArrayBlockingQueue1;
       return;
       localArrayBlockingQueue1 = localArrayBlockingQueue2;
     } while (localArrayBlockingQueue2.size() != 9);
@@ -79,21 +78,21 @@ public class LayoutInflateProcessor
   }
   
   @UiThread
-  public void a(syx[] paramArrayOfsyx)
+  public void a(LayoutInflateProcessor.InflateParams[] paramArrayOfInflateParams)
   {
-    int j = paramArrayOfsyx.length;
+    int j = paramArrayOfInflateParams.length;
     int i = 0;
     while (i < j)
     {
-      a(paramArrayOfsyx[i]);
+      a(paramArrayOfInflateParams[i]);
       i += 1;
     }
-    ThreadManager.excute(new LayoutInflateProcessor.InflateTask(paramArrayOfsyx, this.jdField_a_of_type_AndroidViewLayoutInflater), 16, null, true);
+    ThreadManager.excute(new LayoutInflateProcessor.InflateTask(paramArrayOfInflateParams, this.jdField_a_of_type_AndroidViewLayoutInflater), 16, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.LayoutInflateProcessor
  * JD-Core Version:    0.7.0.1
  */

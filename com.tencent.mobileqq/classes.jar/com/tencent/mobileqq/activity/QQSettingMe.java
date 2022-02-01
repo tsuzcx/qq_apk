@@ -3,35 +3,6 @@ package com.tencent.mobileqq.activity;
 import MQQ.MenumItem;
 import MQQ.PayRuleCfg;
 import QQService.EVIPSPEC;
-import aavb;
-import aavc;
-import aern;
-import aero;
-import aerp;
-import aerq;
-import aerr;
-import aers;
-import aert;
-import aeru;
-import aerv;
-import aerw;
-import aerx;
-import aery;
-import aesa;
-import aesb;
-import aesc;
-import aesd;
-import aese;
-import aesf;
-import aesg;
-import aesh;
-import aesi;
-import aesj;
-import aesl;
-import amed;
-import amee;
-import amef;
-import amfb;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -80,73 +51,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import androidx.annotation.RequiresApi;
-import ansg;
-import ansi;
-import anvi;
-import anvk;
-import anvx;
-import anxv;
-import anxy;
-import anya;
-import aoae;
-import aocj;
-import aodb;
-import aogw;
-import aogx;
-import aqeq;
-import aqjm;
-import aros;
-import arot;
-import arzm;
-import avli;
-import awpu;
-import aymc;
-import aymd;
-import aymo;
-import ayqy;
-import azzt;
-import baar;
-import baql;
-import bbbq;
-import bbtb;
-import bbtd;
-import bbtg;
-import bbvn;
-import bdfk;
-import bdla;
-import bdlm;
-import becr;
-import behh;
-import beid;
-import beig;
-import bgvx;
-import bgyd;
-import bhaa;
-import bhai;
-import bhbx;
-import bhcs;
-import bheg;
-import bheh;
-import bhey;
-import bhjf;
-import bhjg;
-import bhjh;
-import bhnp;
-import bhpw;
-import bhpy;
-import bhru;
-import bhze;
-import bhzf;
-import biba;
-import bibb;
-import bibe;
-import bkxu;
-import bkxw;
-import blgc;
-import bmaf;
-import bman;
-import bmar;
+import com.tencent.av.chatroom.ChatRoomUtil;
+import com.tencent.av.utils.UITools;
 import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.QQStoryManager;
 import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
@@ -159,88 +67,167 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
 import com.tencent.mobileqq.activity.recent.DrawerFrame;
 import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
-import com.tencent.mobileqq.apollo.SettingMeApolloViewController;
+import com.tencent.mobileqq.activity.weather.WeatherDCReportHelper;
+import com.tencent.mobileqq.activity.weather.WeatherManager;
+import com.tencent.mobileqq.activity.weather.WeatherManager.WeatherUpdaterListener;
+import com.tencent.mobileqq.activity.weather.webpage.WeatherWebPageHelperKt;
+import com.tencent.mobileqq.apollo.api.ISettingMeApolloViewController;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem;
-import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
 import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.ConfigObserver;
 import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.LocaleManager;
+import com.tencent.mobileqq.app.LoveZoneDynamicRedPointPathInterface;
+import com.tencent.mobileqq.app.LoveZoneInfoObserver;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.SVIPObserver;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.VipInfoHandler;
+import com.tencent.mobileqq.app.VipInfoObserver;
 import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.avatar.observer.AvatarObserver;
+import com.tencent.mobileqq.businessCard.BusinessCardManager;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocUserConfigBean;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocUserConfigProcessor;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.MedalList;
+import com.tencent.mobileqq.doc.TencentDocUtils;
 import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
 import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.loverzone.LoverZoneUtils;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.nearby.redtouch.DefaultRedPointPrePostHandler;
+import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItemExtMsg;
+import com.tencent.mobileqq.nearby.redtouch.Util;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.profilecard.bussiness.anonymous.manager.AnonymousRedPointUtils;
+import com.tencent.mobileqq.profilecard.bussiness.diamondwall.AnimatorHandler;
+import com.tencent.mobileqq.profilecard.observer.ProfileCardObserver;
+import com.tencent.mobileqq.qcircle.api.IQCircleService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
 import com.tencent.mobileqq.redtouch.RedTouchTextView;
+import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.IStatusListener;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.mobileqq.richstatus.StatusManager;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
+import com.tencent.mobileqq.soso.location.api.ISosoInterfaceApi;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils;
 import com.tencent.mobileqq.teamwork.fragment.TeamWorkDocsListFragment;
 import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.theme.DarkModeManager;
+import com.tencent.mobileqq.theme.NightModeLogic;
+import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
+import com.tencent.mobileqq.tianshu.api.IRedTouchServer;
+import com.tencent.mobileqq.tianshu.data.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
+import com.tencent.mobileqq.tianshu.data.TianShuReportData;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.transfile.URLDrawableHelper.Adapter;
+import com.tencent.mobileqq.upgrade.UpgradeController;
 import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.util.AccessibilityUtil;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.util.QQSettingUtil;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.utils.VipUtils.VipIconUtils;
+import com.tencent.mobileqq.utils.VipUtils.VipIconUtils.NamePlateVipTpye;
+import com.tencent.mobileqq.utils.VipUtils.VipIconUtils.VipIconTouchListener;
 import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper;
 import com.tencent.mobileqq.vas.PendantInfo;
 import com.tencent.mobileqq.vas.VasApngUtil;
+import com.tencent.mobileqq.vas.VipGrayConfigHelper;
+import com.tencent.mobileqq.vas.VipGrayConfigHelper.VipGrayConfigListener;
 import com.tencent.mobileqq.vas.avatar.AvatarLayout;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.mobileqq.vas.ui.VasPagView;
+import com.tencent.mobileqq.vas.qqvaluecard.QQValueInfoManage;
+import com.tencent.mobileqq.vas.qqvaluecard.bean.QQValueInfoItem;
+import com.tencent.mobileqq.vas.qqvaluecard.view.QQValuePagView;
+import com.tencent.mobileqq.vas.quickupdate.QQLevelIconCallback;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webview.sonic.SonicPreloadData;
-import com.tencent.mobileqq.webview.sonic.SonicPreloader;
+import com.tencent.mobileqq.vip.QQSettingConfigManager;
+import com.tencent.mobileqq.vip.QVipConfigManager;
+import com.tencent.mobileqq.webview.api.ISonicPreloaderService;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
+import com.tencent.mobileqq.webview.api.IWebProcessPreload;
+import com.tencent.mobileqq.webview.data.SonicParserInfo;
+import com.tencent.mobileqq.webview.data.SonicPreloadData;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.mobileqq.widget.FixedBounceScrollView;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.QVipMedalView;
 import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqperf.opt.clearmemory.MemoryClearManager;
+import com.tencent.qqperf.opt.clearmemory.MemoryClearManager.IClearMemoryListener;
+import com.tencent.qqperf.tools.SceneTracker;
+import com.tencent.util.BitmapUtil;
+import com.tencent.util.DrawerCoverUtil;
 import com.tencent.widget.ThemeLabelTextView;
+import com.tencent.widget.UpSideDownDrawable;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
 import cooperation.ilive.manager.IliveDbManager;
 import cooperation.ilive.manager.IliveRedManager;
 import cooperation.ilive.share.IliveShareHelper;
-import cooperation.qwallet.plugin.QWalletHelper;
+import cooperation.qqfav.QfavHelper;
+import cooperation.qqfav.QfavReport;
+import cooperation.qqfav.QfavUtil;
+import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 import cooperation.qzone.QZoneClickReport;
 import cooperation.qzone.QZoneClickReport.ReportInfo;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.mobilereport.MobileReportManager;
 import cooperation.qzone.report.lp.LpReportInfo_dc03950;
+import cooperation.vip.tianshu.TianShuManager;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -255,17 +242,15 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import lkj;
+import mqq.app.AppRuntime;
 import mqq.app.Constants.PropertiesKey;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import mvk;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.libpag.PAGView;
 import protocol.KQQConfig.UpgradeInfo;
 import tencent.im.oidb.redInfo.RedInfo;
-import vvh;
-import vzv;
 
 public class QQSettingMe
   implements View.OnClickListener, View.OnTouchListener
@@ -275,148 +260,157 @@ public class QQSettingMe
   private static List<String> jdField_b_of_type_JavaUtilList;
   protected long a;
   private PayRuleCfg jdField_a_of_type_MQQPayRuleCfg;
-  public aavc a;
-  private amee jdField_a_of_type_Amee;
-  private amef jdField_a_of_type_Amef;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aern(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new aesh(this, Looper.getMainLooper());
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aers(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new QQSettingMe.10(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new QQSettingMe.5(this, Looper.getMainLooper());
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new QQSettingMe.24(this);
   protected View a;
   public ViewGroup a;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   protected ImageView a;
   protected LinearLayout a;
   protected TextView a;
-  private ansi jdField_a_of_type_Ansi = new aesa(this);
-  private anvi jdField_a_of_type_Anvi = new aesc(this);
-  private anya jdField_a_of_type_Anya = new aese(this);
-  private aodb jdField_a_of_type_Aodb = new aesf(this);
-  private aogx jdField_a_of_type_Aogx = new aery(this);
-  private avli jdField_a_of_type_Avli = new avli("QQSetting_me", "com.tencent.mobileqq:tool");
-  private ayqy jdField_a_of_type_Ayqy = new aerx(this);
-  private bbtb jdField_a_of_type_Bbtb;
-  private bbtd jdField_a_of_type_Bbtd;
-  private bbtg jdField_a_of_type_Bbtg;
-  private bbvn jdField_a_of_type_Bbvn;
-  private beid jdField_a_of_type_Beid;
-  beig jdField_a_of_type_Beig = new aesd(this);
-  private bhpy jdField_a_of_type_Bhpy = new aesg(this);
-  private final bhze jdField_a_of_type_Bhze = bhze.a();
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private SettingMeApolloViewController jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController;
-  public BaseActivity a;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new aesb(this);
+  private WeatherManager.WeatherUpdaterListener jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager$WeatherUpdaterListener;
+  private WeatherManager jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager;
+  private ISettingMeApolloViewController jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController;
+  protected BaseActivity a;
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new QQSettingMe.35(this);
+  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new QQSettingMe.34(this);
   private FrameHelperActivity jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity;
-  public QQAppInterface a;
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new QQSettingMe.38(this);
+  private LoveZoneInfoObserver jdField_a_of_type_ComTencentMobileqqAppLoveZoneInfoObserver = new QQSettingMe.40(this);
+  protected QQAppInterface a;
+  private SVIPObserver jdField_a_of_type_ComTencentMobileqqAppSVIPObserver = new QQSettingMe.41(this);
+  private VipInfoObserver jdField_a_of_type_ComTencentMobileqqAppVipInfoObserver = new QQSettingMe.31(this);
   protected DynamicAvatarView a;
+  private AvatarObserver jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new QQSettingMe.37(this);
   public Card a;
   private MedalList jdField_a_of_type_ComTencentMobileqqDataMedalList;
+  private PreloadProcHitSession jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitSession = new PreloadProcHitSession("QQSetting_me", "com.tencent.mobileqq:tool");
   private LoveZoneTabRedDotView jdField_a_of_type_ComTencentMobileqqLoverzoneLoveZoneTabRedDotView;
-  protected RedTouch a;
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new QQSettingMe.30(this);
+  ProfileCardObserver jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver = new QQSettingMe.36(this);
+  private IActionListener jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener;
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener;
+  private IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener;
   private RichStatus jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
+  private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
+  NightModeLogic.NightModeCallback jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic$NightModeCallback = new QQSettingMe.39(this);
+  private NightModeLogic jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic;
+  BusinessInfoCheckUpdate.AppInfo jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
+  private BusinessInfoCheckUpdate.RedTypeInfo jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo;
+  protected RedTouch a;
   private UpgradeDetailWrapper jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper;
+  private VipGrayConfigHelper.VipGrayConfigListener jdField_a_of_type_ComTencentMobileqqVasVipGrayConfigHelper$VipGrayConfigListener = new QQSettingMe.42(this);
   protected AvatarLayout a;
-  protected VasPagView a;
+  protected QQValuePagView a;
+  private final QQSettingConfigManager jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager = QQSettingConfigManager.a();
   protected AnimationTextView a;
-  public FixedBounceScrollView a;
+  protected FixedBounceScrollView a;
   protected QVipMedalView a;
   protected RedDotTextView a;
-  BusinessInfoCheckUpdate.AppInfo jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
-  private BusinessInfoCheckUpdate.RedTypeInfo jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo;
+  public MemoryClearManager.IClearMemoryListener a;
   private String jdField_a_of_type_JavaLangString;
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
   private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private ConcurrentHashMap<String, blgc> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, UpSideDownDrawable> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private redInfo.RedInfo jdField_a_of_type_TencentImOidbRedInfo$RedInfo;
   protected boolean a;
-  int[] jdField_a_of_type_ArrayOfInt = { 2131698842, 2131698828, 2131698825, 2131698852, 2131698826, 2131698867, 2131698806, 2131698815, 2131698847, 2131698817, 2131698827, 2131698798, 2131698814, 2131698799, 2131698823 };
-  public View[] a;
-  protected RedTouch[] a;
+  int[] jdField_a_of_type_ArrayOfInt = { 2131699160, 2131699141, 2131699138, 2131699170, 2131699139, 2131699189, 2131699119, 2131699128, 2131699165, 2131699130, 2131699140, 2131699111, 2131699127, 2131699112, 2131699136 };
+  protected View[] a;
   protected RedTouchTextView[] a;
+  protected RedTouch[] a;
   protected int b;
   long jdField_b_of_type_Long = 0L;
-  public Handler b;
+  Handler jdField_b_of_type_AndroidOsHandler = new QQSettingMe.11(this, Looper.getMainLooper());
   protected View b;
   private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
   private FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
   protected ImageView b;
   protected LinearLayout b;
   protected TextView b;
+  BusinessInfoCheckUpdate.AppInfo jdField_b_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   protected RedTouch b;
-  BusinessInfoCheckUpdate.AppInfo jdField_b_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
   private String jdField_b_of_type_JavaLangString;
   protected boolean b;
   int jdField_c_of_type_Int;
   protected View c;
-  public ImageView c;
-  public LinearLayout c;
-  public TextView c;
+  protected ImageView c;
+  protected LinearLayout c;
+  protected TextView c;
+  BusinessInfoCheckUpdate.AppInfo jdField_c_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   protected RedTouch c;
-  BusinessInfoCheckUpdate.AppInfo jdField_c_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
   private String jdField_c_of_type_JavaLangString = "https://club.vip.qq.com/index?_wv=16778247&_wwv=68&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_alpha=0&pay_src=10&_wvx=10&default=1&_proxy=1";
-  public boolean c;
+  protected boolean c;
   private final int jdField_d_of_type_Int = 4;
   protected View d;
   protected ImageView d;
   protected TextView d;
+  BusinessInfoCheckUpdate.AppInfo jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   protected RedTouch d;
-  BusinessInfoCheckUpdate.AppInfo jdField_d_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
-  private String jdField_d_of_type_JavaLangString = "";
+  private String jdField_d_of_type_JavaLangString = null;
   public boolean d;
   private final int jdField_e_of_type_Int = 1;
   protected View e;
   protected ImageView e;
-  public TextView e;
+  protected TextView e;
+  BusinessInfoCheckUpdate.AppInfo jdField_e_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   protected RedTouch e;
-  BusinessInfoCheckUpdate.AppInfo jdField_e_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
-  private final String jdField_e_of_type_JavaLangString = "data_item_id";
+  private String jdField_e_of_type_JavaLangString = "";
   protected boolean e;
   private int jdField_f_of_type_Int;
   protected View f;
-  private ImageView jdField_f_of_type_AndroidWidgetImageView;
+  protected ImageView f;
   protected TextView f;
+  BusinessInfoCheckUpdate.AppInfo jdField_f_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   protected RedTouch f;
-  BusinessInfoCheckUpdate.AppInfo jdField_f_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
-  private final String jdField_f_of_type_JavaLangString = "data_enter_title";
-  private boolean jdField_f_of_type_Boolean;
+  private final String jdField_f_of_type_JavaLangString = "data_item_id";
+  protected boolean f;
   private int jdField_g_of_type_Int;
   protected View g;
   private ImageView jdField_g_of_type_AndroidWidgetImageView;
-  public TextView g;
+  protected TextView g;
+  BusinessInfoCheckUpdate.AppInfo jdField_g_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   protected RedTouch g;
-  BusinessInfoCheckUpdate.AppInfo jdField_g_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
-  private final String jdField_g_of_type_JavaLangString = "data_enter_icon";
-  private boolean jdField_g_of_type_Boolean;
-  private final int jdField_h_of_type_Int = 0;
+  private final String jdField_g_of_type_JavaLangString = "data_enter_title";
+  protected boolean g;
+  private int jdField_h_of_type_Int = -1;
   protected View h;
-  public TextView h;
+  private ImageView jdField_h_of_type_AndroidWidgetImageView;
+  protected TextView h;
+  BusinessInfoCheckUpdate.AppInfo jdField_h_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   protected RedTouch h;
-  BusinessInfoCheckUpdate.AppInfo jdField_h_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
+  private final String jdField_h_of_type_JavaLangString = "data_enter_icon";
   private boolean jdField_h_of_type_Boolean;
-  private final int jdField_i_of_type_Int = 1;
+  private final int jdField_i_of_type_Int = 0;
   protected View i;
   private TextView jdField_i_of_type_AndroidWidgetTextView;
+  BusinessInfoCheckUpdate.AppInfo jdField_i_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo = null;
   protected RedTouch i;
-  BusinessInfoCheckUpdate.AppInfo jdField_i_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo = null;
   private boolean jdField_i_of_type_Boolean;
-  private final int jdField_j_of_type_Int = 2;
+  private final int jdField_j_of_type_Int = 1;
   protected View j;
-  BusinessInfoCheckUpdate.AppInfo jdField_j_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo = null;
-  private boolean jdField_j_of_type_Boolean = true;
-  private final int jdField_k_of_type_Int = 3;
+  BusinessInfoCheckUpdate.AppInfo jdField_j_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo = null;
+  protected RedTouch j;
+  private boolean jdField_j_of_type_Boolean = false;
+  private final int jdField_k_of_type_Int = 2;
   private View jdField_k_of_type_AndroidViewView;
-  BusinessInfoCheckUpdate.AppInfo jdField_k_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
-  private boolean jdField_k_of_type_Boolean;
+  BusinessInfoCheckUpdate.AppInfo jdField_k_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
+  private boolean jdField_k_of_type_Boolean = false;
+  private final int jdField_l_of_type_Int = 3;
   private View jdField_l_of_type_AndroidViewView;
-  BusinessInfoCheckUpdate.AppInfo jdField_l_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
+  BusinessInfoCheckUpdate.AppInfo jdField_l_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
+  private boolean jdField_l_of_type_Boolean = true;
   private View jdField_m_of_type_AndroidViewView;
-  BusinessInfoCheckUpdate.AppInfo jdField_m_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
+  BusinessInfoCheckUpdate.AppInfo jdField_m_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
+  private boolean jdField_m_of_type_Boolean;
   private View jdField_n_of_type_AndroidViewView;
-  BusinessInfoCheckUpdate.AppInfo jdField_n_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
+  BusinessInfoCheckUpdate.AppInfo jdField_n_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   private View jdField_o_of_type_AndroidViewView;
-  BusinessInfoCheckUpdate.AppInfo jdField_o_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
+  BusinessInfoCheckUpdate.AppInfo jdField_o_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   BusinessInfoCheckUpdate.AppInfo p;
   BusinessInfoCheckUpdate.AppInfo q;
+  BusinessInfoCheckUpdate.AppInfo r;
   
   static
   {
@@ -446,8 +440,11 @@ public class QQSettingMe
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Int = 1;
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Aavc = new aesj(this);
-    this.jdField_b_of_type_AndroidOsHandler = new aero(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager$IClearMemoryListener = new QQSettingMe.ClearDynamicDrawable(this);
     if (QLog.isColorLevel()) {
       QLog.e("QQSettingRedesign", 2, "-->QQSettingMe construct!");
     }
@@ -455,64 +452,67 @@ public class QQSettingMe
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity = paramFrameHelperActivity;
     this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131561498, null));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368095);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131561609, null));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368315);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    if (AppSetting.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(anvx.a(2131710215));
+    if (AppSetting.jdField_d_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(HardCodeUtil.a(2131710731));
     }
     this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = ((AvatarLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368063));
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView = ((DynamicAvatarView)this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.findViewById(2131363426));
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = ((AvatarLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368281));
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView = ((DynamicAvatarView)this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.findViewById(2131363511));
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.a(0, this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView, false);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368109);
-    this.jdField_m_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377789);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368329);
+    this.jdField_m_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378200);
     paramFrameHelperActivity = paramQQAppInterface.getCurrentAccountUin();
     int i1;
     Object localObject1;
     boolean bool;
-    label1767:
+    label1893:
     int[] arrayOfInt;
-    label1795:
+    label1921:
     int i3;
     int i2;
     if ((paramFrameHelperActivity == null) || (paramFrameHelperActivity.length() == 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setImageResource(2130840348);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131371982).setOnClickListener(this);
-      i1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getBaseContext().getResources().getDimensionPixelSize(2131298438);
+      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setImageResource(2130840452);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131372289).setOnClickListener(this);
+      i1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getBaseContext().getResources().getDimensionPixelSize(2131298524);
       this.jdField_f_of_type_Int = (ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(94.0F) - i1 - ScreenUtil.dip2px(45.0F));
       this.jdField_g_of_type_Int = (ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(94.0F) - i1 - ScreenUtil.dip2px(20.0F));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371981));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372288));
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_f_of_type_Int);
       this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getApplication().getProperty(Constants.PropertiesKey.nickName.toString() + paramFrameHelperActivity);
       if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString.trim()))) {
         this.jdField_a_of_type_JavaLangString = paramFrameHelperActivity;
       }
-      this.jdField_f_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(paramBaseActivity, this.jdField_m_of_type_AndroidViewView).b(53).a();
-      this.jdField_e_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(paramBaseActivity, this.jdField_b_of_type_AndroidViewView).b(53).a();
-      T();
+      this.jdField_g_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(paramBaseActivity, this.jdField_m_of_type_AndroidViewView).b(53).a();
+      this.jdField_f_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(paramBaseActivity, this.jdField_b_of_type_AndroidViewView).b(53).a();
+      U();
       this.jdField_b_of_type_AndroidViewView.setVisibility(VasFaceManager.a(paramFrameHelperActivity, paramQQAppInterface));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372546));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372856));
       if (ThemeUtil.isInNightMode(paramQQAppInterface)) {
         this.jdField_a_of_type_ComTencentImageURLImageView.setColorFilter(1996488704);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView = ((QVipMedalView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374478));
-      this.jdField_h_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(paramBaseActivity, this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView).b(53).a(12).e(1).d(1).a();
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131374382);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131374383);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373127));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381241));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374517));
-      this.jdField_g_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(paramBaseActivity, this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView).b(53).a(12).e(0).d(1).a();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView = ((QVipMedalView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374838));
+      this.jdField_i_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(paramBaseActivity, this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView).b(53).a(12).e(1).d(1).a();
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131374724);
+      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131374725);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373453));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381702));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381710));
+      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374887));
+      this.jdField_h_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(paramBaseActivity, this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView).b(53).a(12).e(0).d(1).a();
       this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText("");
-      this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363334));
-      this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363332));
-      this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374756));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367269));
-      this.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView = ((VasPagView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372386));
-      this.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView.setOnClickListener(this);
+      this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363413));
+      this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363411));
+      this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375127));
+      this.jdField_d_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(paramBaseActivity, this.jdField_g_of_type_AndroidWidgetImageView).b(53).a(20).e(1).d(1).a();
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367456));
+      this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView = ((QQValuePagView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372696));
+      this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView.setOnClickListener(this);
       if (ImmersiveUtils.isSupporImmersive() == 0)
       {
         paramBaseActivity = (ViewGroup.MarginLayoutParams)this.jdField_b_of_type_AndroidWidgetFrameLayout.getLayoutParams();
@@ -522,14 +522,14 @@ public class QQSettingMe
         }
         this.jdField_b_of_type_AndroidWidgetFrameLayout.setLayoutParams(paramBaseActivity);
       }
+      this.jdField_h_of_type_AndroidWidgetImageView.setOnClickListener(this);
+      this.jdField_h_of_type_AndroidWidgetImageView.setOnTouchListener(this);
       this.jdField_g_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_g_of_type_AndroidWidgetImageView.setOnTouchListener(this);
-      this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_f_of_type_AndroidWidgetImageView.setOnTouchListener(this);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371788));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377760));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372100));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378171));
       if (ImmersiveUtils.isSupporImmersive() == 0)
       {
         paramBaseActivity = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
@@ -538,210 +538,210 @@ public class QQSettingMe
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377759)).b(53).a();
-      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377753);
-      this.jdField_c_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_e_of_type_AndroidViewView).c(10).b(19).a();
+      this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378170)).b(53).a();
+      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378164);
+      this.jdField_c_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_e_of_type_AndroidViewView).c(10).b(19).a();
       this.jdField_e_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_e_of_type_AndroidViewView.setOnTouchListener(mvk.a);
-      this.jdField_l_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373216);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView = ((FixedBounceScrollView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371118));
+      this.jdField_e_of_type_AndroidViewView.setOnTouchListener(UITools.a);
+      this.jdField_l_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373542);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView = ((FixedBounceScrollView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371396));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setDamping(2.0F);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setBounceDelay(600L);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setmCustomTopFadingEdgeScale(0.675F);
-      i1 = (int)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimension(2131298431);
+      i1 = (int)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimension(2131298517);
       paramBaseActivity = this.jdField_a_of_type_AndroidViewViewGroup.getResources();
       this.jdField_a_of_type_ArrayOfAndroidViewView = new View[15];
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch = new RedTouch[15];
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch = new RedTouch[15];
       this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouchTextView = new RedTouchTextView[15];
       paramFrameHelperActivity = new int[15];
-      FrameHelperActivity tmp1619_1618 = paramFrameHelperActivity;
-      tmp1619_1618[0] = 2131374484;
-      FrameHelperActivity tmp1625_1619 = tmp1619_1618;
-      tmp1625_1619[1] = 2131371802;
-      FrameHelperActivity tmp1631_1625 = tmp1625_1619;
-      tmp1631_1625[2] = 2131371799;
-      FrameHelperActivity tmp1637_1631 = tmp1631_1625;
-      tmp1637_1631[3] = 2131371790;
-      FrameHelperActivity tmp1643_1637 = tmp1637_1631;
-      tmp1643_1637[4] = 2131371793;
-      FrameHelperActivity tmp1649_1643 = tmp1643_1637;
-      tmp1649_1643[5] = 2131371798;
-      FrameHelperActivity tmp1655_1649 = tmp1649_1643;
-      tmp1655_1649[6] = 2131371765;
-      FrameHelperActivity tmp1662_1655 = tmp1655_1649;
-      tmp1662_1655[7] = 2131371794;
-      FrameHelperActivity tmp1669_1662 = tmp1662_1655;
-      tmp1669_1662[8] = 2131371800;
-      FrameHelperActivity tmp1676_1669 = tmp1669_1662;
-      tmp1676_1669[9] = 2131371801;
-      FrameHelperActivity tmp1683_1676 = tmp1676_1669;
-      tmp1683_1676[10] = 2131371795;
-      FrameHelperActivity tmp1690_1683 = tmp1683_1676;
-      tmp1690_1683[11] = 2131364221;
-      FrameHelperActivity tmp1697_1690 = tmp1690_1683;
-      tmp1697_1690[12] = 2131371766;
-      FrameHelperActivity tmp1704_1697 = tmp1697_1690;
-      tmp1704_1697[13] = 2131365343;
-      FrameHelperActivity tmp1711_1704 = tmp1704_1697;
-      tmp1711_1704[14] = 2131371764;
-      tmp1711_1704;
+      FrameHelperActivity tmp1745_1744 = paramFrameHelperActivity;
+      tmp1745_1744[0] = 2131374844;
+      FrameHelperActivity tmp1751_1745 = tmp1745_1744;
+      tmp1751_1745[1] = 2131372114;
+      FrameHelperActivity tmp1757_1751 = tmp1751_1745;
+      tmp1757_1751[2] = 2131372111;
+      FrameHelperActivity tmp1763_1757 = tmp1757_1751;
+      tmp1763_1757[3] = 2131372102;
+      FrameHelperActivity tmp1769_1763 = tmp1763_1757;
+      tmp1769_1763[4] = 2131372105;
+      FrameHelperActivity tmp1775_1769 = tmp1769_1763;
+      tmp1775_1769[5] = 2131372110;
+      FrameHelperActivity tmp1781_1775 = tmp1775_1769;
+      tmp1781_1775[6] = 2131372079;
+      FrameHelperActivity tmp1788_1781 = tmp1781_1775;
+      tmp1788_1781[7] = 2131372106;
+      FrameHelperActivity tmp1795_1788 = tmp1788_1781;
+      tmp1795_1788[8] = 2131372112;
+      FrameHelperActivity tmp1802_1795 = tmp1795_1788;
+      tmp1802_1795[9] = 2131372113;
+      FrameHelperActivity tmp1809_1802 = tmp1802_1795;
+      tmp1809_1802[10] = 2131372107;
+      FrameHelperActivity tmp1816_1809 = tmp1809_1802;
+      tmp1816_1809[11] = 2131364328;
+      FrameHelperActivity tmp1823_1816 = tmp1816_1809;
+      tmp1823_1816[12] = 2131372080;
+      FrameHelperActivity tmp1830_1823 = tmp1823_1816;
+      tmp1830_1823[13] = 2131365492;
+      FrameHelperActivity tmp1837_1830 = tmp1830_1823;
+      tmp1837_1830[14] = 2131372078;
+      tmp1837_1830;
       Object localObject2 = ThemeUtil.getCurrentThemeInfo();
       localObject1 = ((Bundle)localObject2).getString("themeId");
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!"1000".equals(localObject1)) && (!"1103".equals(localObject1))) {
-        break label2529;
+        break label2655;
       }
       bool = true;
-      this.jdField_j_of_type_Boolean = bool;
-      if (!this.jdField_j_of_type_Boolean) {
-        break label2535;
+      this.jdField_l_of_type_Boolean = bool;
+      if (!this.jdField_l_of_type_Boolean) {
+        break label2661;
       }
-      i1 = this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166474);
-      arrayOfInt = a(this.jdField_j_of_type_Boolean);
+      i1 = this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166477);
+      arrayOfInt = a(this.jdField_l_of_type_Boolean);
       if (QLog.isColorLevel()) {
         QLog.d("QQSettingRedesign", 2, "QQSettingMe_init, color=" + i1 + ",themeid = " + (String)localObject1 + ", enginePath=" + ((Bundle)localObject2).getString("themePath"));
       }
       i3 = ScreenUtil.dip2px(2.0F);
-      localObject2 = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371118);
-      this.jdField_k_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.findViewById(2131371119);
+      localObject2 = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371396);
+      this.jdField_k_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.findViewById(2131371397);
       i2 = 0;
-      label1902:
+      label2028:
       if (i2 >= 15) {
-        break label2568;
+        break label2694;
       }
       this.jdField_a_of_type_ArrayOfAndroidViewView[i2] = ((View)localObject2).findViewById(paramFrameHelperActivity[i2]);
       this.jdField_a_of_type_ArrayOfAndroidViewView[i2].setFocusable(true);
       this.jdField_a_of_type_ArrayOfAndroidViewView[i2].setVisibility(0);
-      if (paramFrameHelperActivity[i2] == 2131371800) {
+      if (paramFrameHelperActivity[i2] == 2131372112) {
         this.jdField_a_of_type_ArrayOfAndroidViewView[i2].setVisibility(8);
       }
-      if (paramFrameHelperActivity[i2] == 2131371801) {
+      if (paramFrameHelperActivity[i2] == 2131372113) {
         this.jdField_a_of_type_ArrayOfAndroidViewView[i2].setVisibility(8);
       }
-      if (paramFrameHelperActivity[i2] == 2131364221) {
+      if (paramFrameHelperActivity[i2] == 2131364328) {
         this.jdField_a_of_type_ArrayOfAndroidViewView[i2].setVisibility(8);
       }
-      if (paramFrameHelperActivity[i2] == 2131374484)
+      if (paramFrameHelperActivity[i2] == 2131374844)
       {
         QzoneConfig.getInstance();
         if (!QzoneConfig.isQQCircleShowDrawTabEntrance()) {
-          break label2553;
+          break label2679;
         }
         this.jdField_a_of_type_ArrayOfAndroidViewView[i2].setVisibility(0);
       }
     }
     for (;;)
     {
-      if (paramFrameHelperActivity[i2] == 2131371794)
+      if (paramFrameHelperActivity[i2] == 2131372106)
       {
-        this.jdField_a_of_type_ComTencentMobileqqLoverzoneLoveZoneTabRedDotView = ((LoveZoneTabRedDotView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369122));
+        this.jdField_a_of_type_ComTencentMobileqqLoverzoneLoveZoneTabRedDotView = ((LoveZoneTabRedDotView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369373));
         if (this.jdField_a_of_type_ComTencentMobileqqLoverzoneLoveZoneTabRedDotView != null) {
           this.jdField_a_of_type_ComTencentMobileqqLoverzoneLoveZoneTabRedDotView.setVisibility(8);
         }
       }
-      if (paramFrameHelperActivity[i2] == 2131371764)
+      if (paramFrameHelperActivity[i2] == 2131372078)
       {
         this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ArrayOfAndroidViewView[i2]);
         this.jdField_a_of_type_ArrayOfAndroidViewView[i2].setVisibility(8);
       }
       this.jdField_a_of_type_ArrayOfAndroidViewView[i2].setOnClickListener(this);
-      Object localObject3 = (ImageView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369113);
+      Object localObject3 = (ImageView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369364);
       ((ImageView)localObject3).setImageResource(arrayOfInt[i2]);
-      Object localObject4 = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369184);
+      Object localObject4 = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369437);
       ((TextView)localObject4).setText(this.jdField_a_of_type_ArrayOfInt[i2]);
-      if (!this.jdField_j_of_type_Boolean) {
+      if (!this.jdField_l_of_type_Boolean) {
         ((TextView)localObject4).setTextColor(i1);
       }
-      if (paramFrameHelperActivity[i2] == 2131371795) {
+      if (paramFrameHelperActivity[i2] == 2131372107) {
         a((ImageView)localObject3, (TextView)localObject4);
       }
-      if ((bdfk.b()) && ("2920".equals(ThemeUtil.getCurrentThemeId()))) {
-        ((TextView)localObject4).setTextColor(this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166473));
+      if ((SimpleUIUtil.a()) && ("2920".equals(ThemeUtil.getCurrentThemeId()))) {
+        ((TextView)localObject4).setTextColor(this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166476));
       }
-      localObject3 = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369165);
+      localObject3 = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369416);
       ((ThemeLabelTextView)localObject3).setSupportMaskView(true);
       ((TextView)localObject3).setVisibility(0);
-      bgyd.a(this.jdField_a_of_type_ArrayOfAndroidViewView[i2], paramBaseActivity.getString(this.jdField_a_of_type_ArrayOfInt[i2]), Button.class.getName());
-      localObject3 = this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369113);
+      AccessibilityUtil.a(this.jdField_a_of_type_ArrayOfAndroidViewView[i2], paramBaseActivity.getString(this.jdField_a_of_type_ArrayOfInt[i2]), Button.class.getName());
+      localObject3 = this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369364);
       ((View)localObject3).setPadding(i3, i3, i3, i3);
       localObject4 = (LinearLayout.LayoutParams)((View)localObject3).getLayoutParams();
       ((LinearLayout.LayoutParams)localObject4).leftMargin -= i3;
-      localObject4 = (RedTouchTextView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369184);
+      localObject4 = (RedTouchTextView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369437);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((RedTouchTextView)localObject4).getLayoutParams();
       localLayoutParams.leftMargin -= i3;
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch[i2] = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (View)localObject3).b(53).a();
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch[i2] = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (View)localObject3).b(53).a();
       this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouchTextView[i2] = localObject4;
-      if (paramFrameHelperActivity[i2] == 2131371764) {
-        this.jdField_b_of_type_ComTencentMobileqqRedtouchRedTouch = this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch[i2];
+      if (paramFrameHelperActivity[i2] == 2131372078) {
+        this.jdField_b_of_type_ComTencentMobileqqTianshuUiRedTouch = this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch[i2];
       }
       i2 += 1;
-      break label1902;
+      break label2028;
       localObject1 = paramQQAppInterface.getBitmapFromCache(paramQQAppInterface.getFaceBitmapCacheKey(1, paramFrameHelperActivity, (byte)3, 0, 100, true));
       if (localObject1 != null)
       {
         this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setImageBitmap((Bitmap)localObject1);
         break;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setImageResource(2130840348);
+      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setImageResource(2130840452);
       break;
-      label2529:
+      label2655:
       bool = false;
-      break label1767;
-      label2535:
-      i1 = this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166475);
-      break label1795;
-      label2553:
+      break label1893;
+      label2661:
+      i1 = this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166478);
+      break label1921;
+      label2679:
       this.jdField_a_of_type_ArrayOfAndroidViewView[i2].setVisibility(8);
     }
-    label2568:
-    aj();
+    label2694:
+    ak();
     z();
-    ab();
-    ad();
-    I();
+    ac();
     ae();
+    I();
     af();
+    ag();
     b(false);
-    this.jdField_i_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369370);
+    this.jdField_i_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369628);
     this.jdField_i_of_type_AndroidViewView.setOnClickListener(this);
     if ((TextUtils.isEmpty((CharSequence)localObject1)) || ("1000".equals(localObject1)))
     {
       this.jdField_i_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_h_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363708);
-      this.jdField_g_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377507);
+      this.jdField_h_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363801);
+      this.jdField_g_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377918);
       this.jdField_g_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_g_of_type_AndroidViewView.setOnTouchListener(this);
-      bgyd.a(this.jdField_g_of_type_AndroidViewView, anvx.a(2131710209), Button.class.getName());
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377509));
-      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374434));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView = ((RedDotTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377508));
-      this.jdField_i_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView).a();
-      this.jdField_f_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371995);
+      AccessibilityUtil.a(this.jdField_g_of_type_AndroidViewView, HardCodeUtil.a(2131710725), Button.class.getName());
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377920));
+      this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374786));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView = ((RedDotTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377919));
+      this.jdField_j_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView).a();
+      this.jdField_f_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372303);
       this.jdField_f_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_f_of_type_AndroidViewView.setOnTouchListener(this);
-      bgyd.a(this.jdField_f_of_type_AndroidViewView, anvx.a(2131710192), Button.class.getName());
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371997));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371996));
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ArrayOfAndroidViewView[6].findViewById(2131369101));
-      this.jdField_n_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370408);
-      this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380196));
+      AccessibilityUtil.a(this.jdField_f_of_type_AndroidViewView, HardCodeUtil.a(2131710708), Button.class.getName());
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372305));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372304));
+      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ArrayOfAndroidViewView[6].findViewById(2131369352));
+      this.jdField_n_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370682);
+      this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380637));
       this.jdField_n_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_n_of_type_AndroidViewView.setOnTouchListener(this);
-      this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131381374));
+      this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131381835));
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setOnTouchListener(this);
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378586));
-      this.jdField_j_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378570);
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378588));
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378587));
-      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131381369));
-      if (!bdfk.b())
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379018));
+      this.jdField_j_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379002);
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379020));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379019));
+      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131381830));
+      if (!SimpleUIUtil.a())
       {
         this.jdField_e_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
         this.jdField_f_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
         this.jdField_g_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
       }
       if (!ThemeUtil.isNowThemeIsDefault(paramQQAppInterface, false, null)) {
-        break label3248;
+        break label3385;
       }
       this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(-6709582);
       this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(-6709582);
@@ -749,14 +749,15 @@ public class QQSettingMe
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController = new SettingMeApolloViewController(this, this.jdField_a_of_type_AndroidViewViewGroup);
-      if (!this.jdField_j_of_type_Boolean)
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController = ((ISettingMeApolloViewController)QRoute.api(ISettingMeApolloViewController.class));
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.init(this, this.jdField_a_of_type_AndroidViewViewGroup);
+      if (!this.jdField_l_of_type_Boolean)
       {
         this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(i1);
         this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(i1);
         this.jdField_i_of_type_AndroidWidgetTextView.setTextColor(i1);
-        this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130846076);
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130846051);
+        this.jdField_f_of_type_AndroidWidgetImageView.setImageResource(2130846397);
+        this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130846372);
         this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(i1);
         this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(i1);
         this.jdField_g_of_type_AndroidWidgetTextView.setTextColor(i1);
@@ -765,19 +766,19 @@ public class QQSettingMe
       return;
       this.jdField_i_of_type_AndroidViewView.setVisibility(8);
       break;
-      label3248:
-      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166474));
-      this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166474));
-      this.jdField_g_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166474));
+      label3385:
+      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166477));
+      this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166477));
+      this.jdField_g_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166477));
     }
   }
   
   private void H()
   {
-    if (this.jdField_k_of_type_Boolean) {
+    if (this.jdField_m_of_type_Boolean) {
       return;
     }
-    this.jdField_k_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new aerw(this));
+    this.jdField_k_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new QQSettingMe.3(this));
   }
   
   private void I()
@@ -790,30 +791,33 @@ public class QQSettingMe
         break label211;
       }
       String str = ((SharedPreferences)localObject).getString("drawerText", "");
-      this.jdField_d_of_type_JavaLangString = ((SharedPreferences)localObject).getString("drawerTextID", "");
+      this.jdField_e_of_type_JavaLangString = ((SharedPreferences)localObject).getString("drawerTextID", "");
       localObject = ((SharedPreferences)localObject).getString("drawerUrl", "");
       if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject))) {
         break label198;
       }
       localView.setVisibility(0);
-      if ((anxv.a()) && (!this.jdField_a_of_type_Bhze.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 32)))
+      if (LocaleManager.a())
       {
-        localObject = (TextView)localView.findViewById(2131369184);
-        ((TextView)localObject).setText(str);
-        ((TextView)localObject).setContentDescription(str);
-        localObject = a(this.jdField_j_of_type_Boolean);
-        ((ImageView)localView.findViewById(2131369113)).setImageResource(localObject[13]);
-        bgyd.a(localView, str, Button.class.getName());
+        if (!this.jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 32))
+        {
+          localObject = (TextView)localView.findViewById(2131369437);
+          ((TextView)localObject).setText(str);
+          ((TextView)localObject).setContentDescription(str);
+          localObject = a(this.jdField_l_of_type_Boolean);
+          ((ImageView)localView.findViewById(2131369364)).setImageResource(localObject[13]);
+        }
+        AccessibilityUtil.a(localView, str, Button.class.getName());
       }
     }
     return;
     label198:
     localView.setVisibility(8);
-    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
     return;
     label211:
     localView.setVisibility(8);
-    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
   }
   
   private void J()
@@ -821,12 +825,12 @@ public class QQSettingMe
     View localView = this.jdField_a_of_type_ArrayOfAndroidViewView[11];
     if (localView != null)
     {
-      if (arzm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true))
+      if (TencentDocUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true))
       {
-        String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("call_tim_config_pre" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0).getString("call_tim_config_title", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131698798));
+        String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("call_tim_config_pre" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0).getString("call_tim_config_title", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131699111));
         localView.setVisibility(0);
-        ((TextView)localView.findViewById(2131369184)).setText(str);
-        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800887D", "0X800887D", 0, 0, "", "", "", "");
+        ((TextView)localView.findViewById(2131369437)).setText(str);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800887D", "0X800887D", 0, 0, "", "", "", "");
       }
     }
     else {
@@ -837,8 +841,8 @@ public class QQSettingMe
   
   private void K()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.l();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.recoverApollo();
     }
   }
   
@@ -847,9 +851,9 @@ public class QQSettingMe
     Object localObject1;
     int i2;
     int i1;
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch != null) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch.length > 0))
+    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch != null) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch.length > 0))
     {
-      localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch;
+      localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch;
       i2 = localObject1.length;
       i1 = 0;
       while (i1 < i2)
@@ -879,90 +883,115 @@ public class QQSettingMe
   
   private void M()
   {
-    this.jdField_e_of_type_AndroidWidgetImageView.post(new QQSettingMe.9(this));
+    this.jdField_f_of_type_AndroidWidgetImageView.post(new QQSettingMe.9(this));
   }
   
   private void N()
   {
+    Object localObject4 = null;
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "preloadSonicSession");
     }
-    if (!SonicPreloader.isWifiOrG3OrG4()) {}
-    long l1;
-    do
-    {
+    if (!((ISonicPreloaderService)QRoute.api(ISonicPreloaderService.class)).enablePreloadSonic()) {
       return;
-      l1 = System.currentTimeMillis();
-      Object localObject2 = SonicPreloader.getSonicPreloadDataList(this.jdField_k_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, 0);
-      SparseArray localSparseArray = SonicPreloader.getSonicPreloadDataList(this.jdField_d_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, 1000);
-      Object localObject1 = SonicPreloader.getSonicPreloadDataList(this.jdField_c_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, 1001);
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
-      ArrayList localArrayList3 = new ArrayList();
-      if ((localObject2 != null) && (((SparseArray)localObject2).size() > 0))
+    }
+    long l1 = System.currentTimeMillis();
+    if ((this.jdField_k_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo != null) && (this.jdField_k_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 0)) {}
+    for (Object localObject1 = new SonicParserInfo(this.jdField_k_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.buffer.get(), 0L, 0);; localObject1 = null)
+    {
+      if ((this.jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo != null) && (this.jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 0)) {}
+      for (Object localObject2 = new SonicParserInfo(this.jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.buffer.get(), this.jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.preload_ts.get(), 1000);; localObject2 = null)
       {
-        int i1 = 0;
-        if (i1 < ((SparseArray)localObject2).size())
+        Object localObject3 = localObject4;
+        if (this.jdField_c_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo != null)
         {
-          SonicPreloadData localSonicPreloadData = (SonicPreloadData)((SparseArray)localObject2).valueAt(i1);
-          if (1000 == localSonicPreloadData.id)
-          {
-            localSonicPreloadData.url = this.jdField_c_of_type_JavaLangString;
-            localArrayList1.add(localSonicPreloadData);
+          localObject3 = localObject4;
+          if (this.jdField_c_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 0) {
+            localObject3 = new SonicParserInfo(this.jdField_c_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.buffer.get(), this.jdField_c_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.preload_ts.get(), 1001);
           }
-          for (;;)
+        }
+        localObject4 = ((ISonicPreloaderService)QRoute.api(ISonicPreloaderService.class)).getSonicPreloadDataList((SonicParserInfo)localObject1);
+        SparseArray localSparseArray1 = ((ISonicPreloaderService)QRoute.api(ISonicPreloaderService.class)).getSonicPreloadDataList((SonicParserInfo)localObject2);
+        SparseArray localSparseArray2 = ((ISonicPreloaderService)QRoute.api(ISonicPreloaderService.class)).getSonicPreloadDataList((SonicParserInfo)localObject3);
+        localObject1 = new ArrayList();
+        localObject2 = new ArrayList();
+        localObject3 = new ArrayList();
+        if ((localObject4 != null) && (((SparseArray)localObject4).size() > 0))
+        {
+          int i1 = 0;
+          if (i1 < ((SparseArray)localObject4).size())
           {
-            i1 += 1;
-            break;
-            if (1001 == localSonicPreloadData.id)
+            SonicPreloadData localSonicPreloadData = (SonicPreloadData)((SparseArray)localObject4).valueAt(i1);
+            if (1000 == localSonicPreloadData.jdField_a_of_type_Int)
             {
-              localSonicPreloadData.url = bhnp.a("personalIndex");
-              localArrayList1.add(localSonicPreloadData);
+              localSonicPreloadData.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+              ((ArrayList)localObject1).add(localSonicPreloadData);
+            }
+            for (;;)
+            {
+              i1 += 1;
+              break;
+              if (1001 == localSonicPreloadData.jdField_a_of_type_Int)
+              {
+                localSonicPreloadData.jdField_a_of_type_JavaLangString = IndividuationUrlHelper.a("personalIndex");
+                ((ArrayList)localObject1).add(localSonicPreloadData);
+              }
             }
           }
         }
+        if ((localSparseArray1 != null) && (localSparseArray1.size() > 0))
+        {
+          localObject4 = (SonicPreloadData)localSparseArray1.valueAt(0);
+          ((SonicPreloadData)localObject4).jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+          ((ArrayList)localObject2).add(localObject4);
+        }
+        if ((localSparseArray2 != null) && (localSparseArray2.size() > 0))
+        {
+          localObject4 = (SonicPreloadData)localSparseArray2.valueAt(0);
+          ((SonicPreloadData)localObject4).jdField_a_of_type_JavaLangString = IndividuationUrlHelper.a("personalIndex");
+          ((ArrayList)localObject3).add(localObject4);
+        }
+        localObject4 = (IWebProcessManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IWebProcessManagerService.class, "");
+        if (((IWebProcessManagerService)localObject4).preloadSonicSession((ArrayList)localObject1)) {
+          ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick(String.valueOf("200010.200012"));
+        }
+        if (((IWebProcessManagerService)localObject4).preloadSonicSession((ArrayList)localObject2)) {
+          this.jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.preload_ts.set(System.currentTimeMillis());
+        }
+        if (((IWebProcessManagerService)localObject4).preloadSonicSession((ArrayList)localObject3)) {
+          this.jdField_c_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.preload_ts.set(System.currentTimeMillis());
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("QQSettingRedesign", 2, "preloadSonicSession parse cost: " + (System.currentTimeMillis() - l1));
+        return;
       }
-      if ((localSparseArray != null) && (localSparseArray.size() > 0))
-      {
-        localObject2 = (SonicPreloadData)localSparseArray.valueAt(0);
-        ((SonicPreloadData)localObject2).url = this.jdField_c_of_type_JavaLangString;
-        localArrayList2.add(localObject2);
-      }
-      if ((localObject1 != null) && (((SparseArray)localObject1).size() > 0))
-      {
-        localObject1 = (SonicPreloadData)((SparseArray)localObject1).valueAt(0);
-        ((SonicPreloadData)localObject1).url = bhnp.a("personalIndex");
-        localArrayList3.add(localObject1);
-      }
-      localObject1 = (WebProcessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
-      if (((WebProcessManager)localObject1).a(localArrayList1)) {
-        ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(String.valueOf("200010.200012"));
-      }
-      if (((WebProcessManager)localObject1).a(localArrayList2)) {
-        this.jdField_d_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.preload_ts.set(System.currentTimeMillis());
-      }
-      if (((WebProcessManager)localObject1).a(localArrayList3)) {
-        this.jdField_c_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.preload_ts.set(System.currentTimeMillis());
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQSettingRedesign", 2, "preloadSonicSession parse cost: " + (System.currentTimeMillis() - l1));
+    }
   }
   
   private void O()
   {
-    if (this.p != null) {
-      this.jdField_g_of_type_ComTencentMobileqqRedtouchRedTouch.a(this.p);
+    if (this.r != null) {
+      this.jdField_d_of_type_ComTencentMobileqqTianshuUiRedTouch.a(this.r);
     }
   }
   
   private void P()
   {
-    if (this.jdField_h_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
-      this.jdField_h_of_type_ComTencentMobileqqRedtouchRedTouch.a(this.q);
+    if (this.p != null) {
+      this.jdField_h_of_type_ComTencentMobileqqTianshuUiRedTouch.a(this.p);
     }
   }
   
   private void Q()
+  {
+    if (this.jdField_i_of_type_ComTencentMobileqqTianshuUiRedTouch != null) {
+      this.jdField_i_of_type_ComTencentMobileqqTianshuUiRedTouch.a(this.q);
+    }
+  }
+  
+  private void R()
   {
     Object localObject = this.jdField_a_of_type_ArrayOfAndroidViewView[12];
     if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {
@@ -971,12 +1000,12 @@ public class QQSettingMe
         if (this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouchTextView[12] != null) {
           this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouchTextView[12].setIsNeedRedImageAutoFix(true);
         }
-        a(12, this.jdField_o_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+        a(12, this.jdField_o_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
         QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (RedTouch.a(this.jdField_o_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo)) {}
+        if (RedTouch.a(this.jdField_o_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo)) {}
         for (localObject = "1";; localObject = "2")
         {
-          bdla.b(localQQAppInterface, "dc00898", "", "", "0X800B1F6", "0X800B1F6", 0, 0, (String)localObject, "", "", "");
+          ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800B1F6", "0X800B1F6", 0, 0, (String)localObject, "", "", "");
           return;
         }
         return;
@@ -989,25 +1018,26 @@ public class QQSettingMe
     }
   }
   
-  private void R()
+  private void S()
   {
-    a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_b_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_c_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_d_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_e_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_f_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_g_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_h_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_l_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_m_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_n_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-    a(this.jdField_o_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_b_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_c_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_e_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_f_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_g_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_h_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_l_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_m_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_n_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+    a(this.jdField_o_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
     a(this.p);
     a(this.q);
+    a(this.r);
   }
   
-  private void S()
+  private void T()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_i_of_type_AndroidWidgetTextView == null))
     {
@@ -1019,37 +1049,37 @@ public class QQSettingMe
     String str1;
     if (this.jdField_a_of_type_ComTencentMobileqqDataCard.allowPeopleSee) {
       if (this.jdField_a_of_type_ComTencentMobileqqDataCard.lLoginDays < 10000L) {
-        str1 = String.format(anvx.a(2131698832), new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCard.lLoginDays) });
+        str1 = String.format(HardCodeUtil.a(2131699145), new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCard.lLoginDays) });
       }
     }
-    for (String str2 = String.format(anvx.a(2131698865), new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCard.lLoginDays) });; str2 = anvx.a(2131698833))
+    for (String str2 = String.format(HardCodeUtil.a(2131699187), new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCard.lLoginDays) });; str2 = HardCodeUtil.a(2131699146))
     {
       this.jdField_i_of_type_AndroidWidgetTextView.setText(str1);
-      bgyd.a(this.jdField_n_of_type_AndroidViewView, str2, Button.class.getName());
+      AccessibilityUtil.a(this.jdField_n_of_type_AndroidViewView, str2, Button.class.getName());
       return;
       str1 = "9999+";
       break;
-      str1 = anvx.a(2131698864);
+      str1 = HardCodeUtil.a(2131699186);
     }
-  }
-  
-  private void T()
-  {
-    if (bdfk.b())
-    {
-      this.jdField_m_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_f_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(0);
-      this.jdField_e_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(4);
-      this.jdField_d_of_type_ComTencentMobileqqRedtouchRedTouch = this.jdField_f_of_type_ComTencentMobileqqRedtouchRedTouch;
-      return;
-    }
-    this.jdField_m_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_f_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(4);
-    this.jdField_e_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(0);
-    this.jdField_d_of_type_ComTencentMobileqqRedtouchRedTouch = this.jdField_e_of_type_ComTencentMobileqqRedtouchRedTouch;
   }
   
   private void U()
+  {
+    if (SimpleUIUtil.a())
+    {
+      this.jdField_m_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_g_of_type_ComTencentMobileqqTianshuUiRedTouch.setVisibility(0);
+      this.jdField_f_of_type_ComTencentMobileqqTianshuUiRedTouch.setVisibility(4);
+      this.jdField_e_of_type_ComTencentMobileqqTianshuUiRedTouch = this.jdField_g_of_type_ComTencentMobileqqTianshuUiRedTouch;
+      return;
+    }
+    this.jdField_m_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_g_of_type_ComTencentMobileqqTianshuUiRedTouch.setVisibility(4);
+    this.jdField_f_of_type_ComTencentMobileqqTianshuUiRedTouch.setVisibility(0);
+    this.jdField_e_of_type_ComTencentMobileqqTianshuUiRedTouch = this.jdField_f_of_type_ComTencentMobileqqTianshuUiRedTouch;
+  }
+  
+  private void V()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "jumpToProfile");
@@ -1058,36 +1088,36 @@ public class QQSettingMe
     localAllInOne.jdField_g_of_type_Int = 1;
     localAllInOne.jdField_h_of_type_Int = 8;
     ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localAllInOne, 1009);
-    azzt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    AnonymousRedPointUtils.checkToCleanSettingMeRedPointGuide(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  private void V()
+  private void W()
   {
-    Object localObject2 = IliveRedManager.parseShopRedBuffer(this.jdField_o_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+    Object localObject2 = IliveRedManager.parseShopRedBuffer(this.jdField_o_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
     String str = IliveDbManager.getIliveDrawerData("drawer_shop_jump_scheme");
-    Object localObject1 = IliveRedManager.getDrawerLiveReportStr2(this.jdField_o_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+    Object localObject1 = IliveRedManager.getDrawerLiveReportStr2(this.jdField_o_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
     IliveRedManager.sRedShoppingStr2 = (String)localObject1;
     IliveShareHelper.reportAction("qq_live", "chouti_page", "zhibo", "zhibo_button", "4", 102, IliveShareHelper.getFollowInfo("", (String)localObject1, "", "", ""));
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (RedTouch.a(this.jdField_o_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo))
+    if (RedTouch.a(this.jdField_o_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo))
     {
       localObject1 = "1";
-      bdla.b(localQQAppInterface, "dc00898", "", "", "0X800B1F7", "0X800B1F7", 0, 0, (String)localObject1, "", "", "");
-      if ((this.jdField_o_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null) && (this.jdField_o_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 0)) {
-        ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(101100, 31);
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800B1F7", "0X800B1F7", 0, 0, (String)localObject1, "", "", "");
+      if ((this.jdField_o_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo != null) && (this.jdField_o_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 0)) {
+        ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).reportLevelOneRedInfo(101100, 31);
       }
       if (QLog.isColorLevel()) {
         QLog.i("QQSettingRedesign", 2, "Ilive start jump shop , url = " + str);
       }
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        break label247;
+        break label251;
       }
     }
-    label247:
+    label251:
     for (localObject1 = str;; localObject1 = localObject2)
     {
       if (!URLUtil.isNetworkUrl((String)localObject1)) {
-        break label252;
+        break label256;
       }
       localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
       ((Intent)localObject2).putExtra("url", (String)localObject1);
@@ -1097,54 +1127,55 @@ public class QQSettingMe
       localObject1 = "2";
       break;
     }
-    label252:
-    localObject1 = bhey.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (String)localObject1);
+    label256:
+    localObject1 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (String)localObject1);
     if (localObject1 != null)
     {
-      ((bheh)localObject1).a();
+      ((JumpAction)localObject1).a();
       return;
     }
     ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, IliveDbManager.getILiveEnterInfo(1));
   }
   
-  private void W()
+  private void X()
   {
     this.jdField_f_of_type_AndroidViewView.setOnClickListener(null);
     this.jdField_f_of_type_AndroidViewView.setClickable(false);
-    this.jdField_a_of_type_Beid.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     DrawerFrame.jdField_a_of_type_Int = 0;
-    if (AppSetting.jdField_c_of_type_Boolean) {
+    if (AppSetting.jdField_d_of_type_Boolean) {
       if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-        break label66;
+        break label77;
       }
     }
-    label66:
+    label77:
     for (String str = "关闭夜间模式";; str = "夜间模式 ")
     {
-      bgyd.a(this.jdField_f_of_type_AndroidViewView, str, Button.class.getName());
+      AccessibilityUtil.a(this.jdField_f_of_type_AndroidViewView, str, Button.class.getName());
+      QCircleUtils.a().downloadSkinPackage("https://downv6.qq.com/video_story/qcircle/skin/darkmode-v85501.skin");
       return;
     }
   }
   
-  private void X()
+  private void Y()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo != null) {
-        this.jdField_d_of_type_ComTencentMobileqqRedtouchRedTouch.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo);
+      if (this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo != null) {
+        this.jdField_e_of_type_ComTencentMobileqqTianshuUiRedTouch.a(this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo);
       }
       for (;;)
       {
-        boolean bool = this.jdField_i_of_type_Boolean;
-        this.jdField_i_of_type_Boolean = this.jdField_d_of_type_ComTencentMobileqqRedtouchRedTouch.c();
+        boolean bool = this.jdField_k_of_type_Boolean;
+        this.jdField_k_of_type_Boolean = this.jdField_e_of_type_ComTencentMobileqqTianshuUiRedTouch.c();
         if (QLog.isColorLevel()) {
-          QLog.i("LocalRedTouchManager", 2, "updateHeadIcon, old:" + bool + " new:" + this.jdField_i_of_type_Boolean + ",profileRedTypeInfo = " + this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo + ",profileAppinfo = " + this.jdField_j_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+          QLog.i("LocalRedTouchManager", 2, "updateHeadIcon, old:" + bool + " new:" + this.jdField_k_of_type_Boolean + ",profileRedTypeInfo = " + this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo + ",profileAppinfo = " + this.jdField_j_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
         }
-        if (bool != this.jdField_i_of_type_Boolean) {
+        if (bool != this.jdField_k_of_type_Boolean) {
           x();
         }
         return;
-        this.jdField_d_of_type_ComTencentMobileqqRedtouchRedTouch.a(this.jdField_j_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+        this.jdField_e_of_type_ComTencentMobileqqTianshuUiRedTouch.a(this.jdField_j_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
       }
     }
     catch (Exception localException)
@@ -1156,11 +1187,11 @@ public class QQSettingMe
     }
   }
   
-  private void Y()
+  private void Z()
   {
-    Object localObject2 = (aymd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-    Object localObject1 = ((aymd)localObject2).a(-4);
-    if ((((aymd)localObject2).a((RedTouchItem)localObject1, true)) && (((RedTouchItem)localObject1).count > 0) && (this.jdField_a_of_type_TencentImOidbRedInfo$RedInfo != null))
+    Object localObject2 = (LocalRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    Object localObject1 = ((LocalRedTouchManager)localObject2).a(-4);
+    if ((((LocalRedTouchManager)localObject2).a((RedTouchItem)localObject1, true)) && (((RedTouchItem)localObject1).count > 0) && (this.jdField_a_of_type_TencentImOidbRedInfo$RedInfo != null))
     {
       QLog.d("QQSettingRedesign", 1, new Object[] { "updateProfileBubbleMsgView ", Integer.valueOf(((RedTouchItem)localObject1).count) });
       long l1;
@@ -1170,56 +1201,44 @@ public class QQSettingMe
       if (this.jdField_a_of_type_TencentImOidbRedInfo$RedInfo.uint64_from_uin.has())
       {
         l1 = this.jdField_a_of_type_TencentImOidbRedInfo$RedInfo.uint64_from_uin.get();
-        localObject2 = this.jdField_l_of_type_AndroidViewView.findViewById(2131372402);
-        localImageView = (ImageView)this.jdField_l_of_type_AndroidViewView.findViewById(2131368063);
-        localTextView = (TextView)this.jdField_l_of_type_AndroidViewView.findViewById(2131371598);
-        localView = this.jdField_l_of_type_AndroidViewView.findViewById(2131369164);
+        localObject2 = this.jdField_l_of_type_AndroidViewView.findViewById(2131372712);
+        localImageView = (ImageView)this.jdField_l_of_type_AndroidViewView.findViewById(2131368281);
+        localTextView = (TextView)this.jdField_l_of_type_AndroidViewView.findViewById(2131371908);
+        localView = this.jdField_l_of_type_AndroidViewView.findViewById(2131369415);
         if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
           break label309;
         }
-        ((View)localObject2).setBackgroundResource(2130846055);
+        ((View)localObject2).setBackgroundResource(2130846376);
       }
       for (;;)
       {
         a(l1, localImageView);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131698816, new Object[] { Integer.valueOf(((RedTouchItem)localObject1).count) });
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131699129, new Object[] { Integer.valueOf(((RedTouchItem)localObject1).count) });
         if (!((String)localObject1).equalsIgnoreCase(localTextView.getText().toString())) {
           localTextView.setText((CharSequence)localObject1);
         }
         ((View)localObject2).setContentDescription((CharSequence)localObject1);
-        ((View)localObject2).setOnTouchListener(new aerq(this, localImageView, localTextView, localView));
+        ((View)localObject2).setOnTouchListener(new QQSettingMe.20(this, localImageView, localTextView, localView));
         ((View)localObject2).setOnClickListener(this);
         this.jdField_l_of_type_AndroidViewView.setVisibility(0);
-        Z();
-        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A97E", "0X800A97E", 0, 0, "0", "0", "", "");
+        aa();
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A97E", "0X800A97E", 0, 0, "0", "0", "", "");
         return;
         l1 = 0L;
         break;
         label309:
-        ((View)localObject2).setBackgroundResource(2130846054);
+        ((View)localObject2).setBackgroundResource(2130846375);
       }
     }
     this.jdField_l_of_type_AndroidViewView.setVisibility(8);
-    ((ImageView)this.jdField_l_of_type_AndroidViewView.findViewById(2131368063)).setImageDrawable(null);
-  }
-  
-  private void Z()
-  {
-    RedTouchItem localRedTouchItem = ((aymd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER)).a(10028);
-    if ((localRedTouchItem != null) && (localRedTouchItem.count > 0) && (localRedTouchItem.unReadFlag))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "checkAndReportAnonymousAnswerMsgExpose");
-      }
-      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B47F", "0X800B47F", 0, 0, "", "", "", "");
-    }
+    ((ImageView)this.jdField_l_of_type_AndroidViewView.findViewById(2131368281)).setImageDrawable(null);
   }
   
   private String a(String paramString, int paramInt, RedTouch paramRedTouch)
   {
-    bbbq localbbbq = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
+    IRedTouchManager localIRedTouchManager = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
     if ((paramRedTouch != null) && (paramRedTouch.c())) {
-      return MobileReportManager.getNewReportInfo(paramString, localbbbq.a(String.valueOf(paramInt)));
+      return MobileReportManager.getNewReportInfo(paramString, localIRedTouchManager.getAppInfoByPath(String.valueOf(paramInt)));
     }
     return MobileReportManager.getNewDefaultReportInfo(paramString, "outside", "1");
   }
@@ -1332,7 +1351,7 @@ public class QQSettingMe
     }
     for (;;)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch[paramInt].a((BusinessInfoCheckUpdate.AppInfo)localObject1);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch[paramInt].a((BusinessInfoCheckUpdate.AppInfo)localObject1);
       this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouchTextView[paramInt].setAppInfo(paramAppInfo);
       return;
       label311:
@@ -1347,10 +1366,10 @@ public class QQSettingMe
   {
     if (paramLong == 111L)
     {
-      paramImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130845723));
+      paramImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130846041));
       return;
     }
-    Object localObject = bheg.a(true);
+    Object localObject = ImageUtil.a(true);
     localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramLong + "", 4, (Drawable)localObject, (Drawable)localObject);
     Drawable localDrawable = paramImageView.getDrawable();
     if ((localDrawable != null) && (localDrawable != localObject) && ((localDrawable instanceof FaceDrawable))) {
@@ -1359,9 +1378,21 @@ public class QQSettingMe
     paramImageView.setImageDrawable((Drawable)localObject);
   }
   
-  private void a(Context paramContext)
+  private void a(@Nonnull Context paramContext)
   {
-    bibb.a("drawer", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramContext);
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getString("sp_vip_medal_lvl_jump_url", null);
+    if (a(str2)) {
+      return;
+    }
+    String str3 = a(str2, 101400, this.jdField_h_of_type_ComTencentMobileqqTianshuUiRedTouch);
+    String str1 = str2;
+    if (!TextUtils.isEmpty(str3)) {
+      str1 = str2 + str3;
+    }
+    VipUtils.a(0, "mvip.pingtai.mobileqq.androidziliaoka.fromdrawer", "geren", str1, paramContext);
+    ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).reportLevelOneRedInfo(101400, 31);
+    int i1 = VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B179", "0X800B179", 0, 0, String.valueOf(i1), "", "", "");
   }
   
   private void a(Message paramMessage)
@@ -1375,18 +1406,18 @@ public class QQSettingMe
       i2 = paramMessage.getInt("data_item_id");
       localObject1 = paramMessage.getString("data_enter_title");
       paramMessage = paramMessage.getString("data_enter_icon");
-      localObject3 = a(this.jdField_j_of_type_Boolean);
+      localObject3 = a(this.jdField_l_of_type_Boolean);
     } while ((i2 < 0) || (i2 >= this.jdField_a_of_type_ArrayOfAndroidViewView.length) || (i2 >= localObject3.length) || (i2 >= this.jdField_a_of_type_ArrayOfInt.length));
     Object localObject2 = this.jdField_a_of_type_ArrayOfAndroidViewView[i2];
     int i1 = localObject3[i2];
     int i2 = this.jdField_a_of_type_ArrayOfInt[i2];
-    Object localObject3 = (TextView)((View)localObject2).findViewById(2131369184);
+    Object localObject3 = (TextView)((View)localObject2).findViewById(2131369437);
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      ((TextView)localObject3).setText(lkj.a((String)localObject1, 16));
+      ((TextView)localObject3).setText(ChatRoomUtil.a((String)localObject1, 16));
     }
     for (;;)
     {
-      localObject1 = (ImageView)((View)localObject2).findViewById(2131369113);
+      localObject1 = (ImageView)((View)localObject2).findViewById(2131369364);
       if (!TextUtils.isEmpty(paramMessage)) {
         break;
       }
@@ -1394,7 +1425,7 @@ public class QQSettingMe
       return;
       ((TextView)localObject3).setText(i2);
     }
-    if ((!TextUtils.isEmpty(paramMessage)) && (!bdfk.a()))
+    if ((!TextUtils.isEmpty(paramMessage)) && (!QQTheme.e()))
     {
       localObject2 = URLDrawableHelper.TRANSPARENT;
       paramMessage = VasApngUtil.getApngURLDrawable(paramMessage, new int[] { 1 }, (Drawable)localObject2, null, null);
@@ -1415,36 +1446,8 @@ public class QQSettingMe
   
   private void a(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMedalList == null) {}
-    for (Object localObject1 = null; a((String)localObject1); localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMedalList.jumpUrl) {
-      return;
-    }
-    String str = a((String)localObject1, 101500, this.jdField_h_of_type_ComTencentMobileqqRedtouchRedTouch);
-    Object localObject2 = localObject1;
-    if (!TextUtils.isEmpty(str)) {
-      localObject2 = (String)localObject1 + str;
-    }
-    localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-    ((Intent)localObject1).putExtra("url", (String)localObject2);
-    ((Intent)localObject1).putExtra("hide_operation_bar", true);
-    ((Intent)localObject1).putExtra("hide_more_button", true);
-    ((Intent)localObject1).putExtra("startOpenPageTime", System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject1);
-    ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(101500, 31);
-    int i1 = aogw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
-    if ((paramView instanceof QVipMedalView))
-    {
-      if (!baar.jdField_a_of_type_Boolean) {
-        break label231;
-      }
-      ((QVipMedalView)paramView).a("0X800B2B5", i1);
-    }
-    for (;;)
-    {
-      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qvip", "0X800A127", 0, 0, String.valueOf(i1), "", "", "");
-      return;
-      label231:
-      ((QVipMedalView)paramView).a("0X800B2B4", i1);
+    if ((paramView instanceof QQValuePagView)) {
+      ((QQValuePagView)paramView).a("setting", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     }
   }
   
@@ -1481,14 +1484,14 @@ public class QQSettingMe
       if (!this.jdField_a_of_type_JavaUtilHashSet.contains(Integer.valueOf(i1)))
       {
         this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(i1));
-        ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(i1, 30);
+        ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).reportLevelOneRedInfo(i1, 30);
       }
     }
   }
   
   private void a(String paramString1, String paramString2)
   {
-    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, "", "", "");
   }
   
   private void a(List<BusinessInfoCheckUpdate.AppInfo> paramList)
@@ -1496,19 +1499,25 @@ public class QQSettingMe
     if ((paramList != null) && (paramList.size() > 0))
     {
       int i1 = 0;
-      while (i1 < paramList.size())
+      if (i1 < paramList.size())
       {
-        List localList = ((BusinessInfoCheckUpdate.AppInfo)paramList.get(i1)).red_display_info.red_type_info.get();
-        int i2 = localList.size() - 1;
-        while (i2 >= 0)
+        Object localObject = (BusinessInfoCheckUpdate.AppInfo)paramList.get(i1);
+        if ((localObject == null) || (((BusinessInfoCheckUpdate.AppInfo)localObject).red_display_info == null) || (((BusinessInfoCheckUpdate.AppInfo)localObject).red_display_info.red_type_info == null)) {}
+        for (;;)
         {
-          BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)localList.get(i2);
-          if (localRedTypeInfo.red_type.get() == 15) {
-            VasApngUtil.getApngURLDrawable(localRedTypeInfo.red_content.get(), VasApngUtil.VIP_APNG_TAGS, URLDrawableHelper.TRANSPARENT);
+          i1 += 1;
+          break;
+          localObject = ((BusinessInfoCheckUpdate.AppInfo)localObject).red_display_info.red_type_info.get();
+          int i2 = ((List)localObject).size() - 1;
+          while (i2 >= 0)
+          {
+            BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)((List)localObject).get(i2);
+            if (localRedTypeInfo.red_type.get() == 15) {
+              VasApngUtil.getApngURLDrawable(localRedTypeInfo.red_content.get(), VasApngUtil.VIP_APNG_TAGS, URLDrawableHelper.TRANSPARENT);
+            }
+            i2 -= 1;
           }
-          i2 -= 1;
         }
-        i1 += 1;
       }
       paramList.clear();
     }
@@ -1527,7 +1536,7 @@ public class QQSettingMe
   {
     if (TextUtils.isEmpty(paramString))
     {
-      U();
+      V();
       QLog.e("QVipSettingMe.", 1, "medal list have no jump url ,so use the default");
       return true;
     }
@@ -1536,17 +1545,29 @@ public class QQSettingMe
   
   private void aa()
   {
-    RedTouchItem localRedTouchItem = ((aymd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER)).a(10028);
+    RedTouchItem localRedTouchItem = ((LocalRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER)).a(10028);
+    if ((localRedTouchItem != null) && (localRedTouchItem.count > 0) && (localRedTouchItem.unReadFlag))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "checkAndReportAnonymousAnswerMsgExpose");
+      }
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B47F", "0X800B47F", 0, 0, "", "", "", "");
+    }
+  }
+  
+  private void ab()
+  {
+    RedTouchItem localRedTouchItem = ((LocalRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER)).a(10028);
     if ((localRedTouchItem != null) && (localRedTouchItem.count > 0) && (localRedTouchItem.unReadFlag))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQSettingRedesign", 2, "checkAndReportAnonymousAnswerMsgClick");
       }
-      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B480", "0X800B480", 0, 0, "", "", "", "");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B480", "0X800B480", 0, 0, "", "", "", "");
     }
   }
   
-  private void ab()
+  private void ac()
   {
     Object localObject = this.jdField_a_of_type_ArrayOfAndroidViewView[7];
     String str = QzoneConfig.getInstance().getConfig("sweet_miniapp", "entrance", "0");
@@ -1562,27 +1583,27 @@ public class QQSettingMe
         if (((SharedPreferences)localObject).getInt("love_state_for_current_uin" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0) != 1) {
           break label111;
         }
-        an();
+        ao();
       }
     }
     return;
     label111:
-    ao();
+    ap();
     return;
     label116:
     ((View)localObject).setVisibility(8);
-    ao();
+    ap();
   }
   
-  private void ac()
+  private void ad()
   {
     Object localObject = this.jdField_a_of_type_ArrayOfAndroidViewView[7];
     if ((localObject != null) && (((View)localObject).getVisibility() == 0))
     {
-      localObject = awpu.a(this.jdField_m_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-      int i1 = awpu.a((String)localObject);
-      awpu.a("10", i1 + "", "1", LpReportInfo_dc03950.getReportUserType(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqLoverzoneLoveZoneTabRedDotView.setRedDotData(this.jdField_m_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+      localObject = LoverZoneUtils.a(this.jdField_m_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+      int i1 = LoverZoneUtils.a((String)localObject);
+      LoverZoneUtils.a("10", i1 + "", "1", LpReportInfo_dc03950.getReportUserType(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqLoverzoneLoveZoneTabRedDotView.setRedDotData(this.jdField_m_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         a("0x800AAFA", "1");
       }
@@ -1592,10 +1613,10 @@ public class QQSettingMe
       return;
     }
     a("0x800AAFA", "2");
-    a(7, this.jdField_m_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+    a(7, this.jdField_m_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
   }
   
-  private void ad()
+  private void ae()
   {
     View localView = this.jdField_a_of_type_ArrayOfAndroidViewView[10];
     if ((localView != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
@@ -1610,29 +1631,29 @@ public class QQSettingMe
     localView.setVisibility(0);
   }
   
-  private void ae()
+  private void af()
   {
     ThreadManager.getSubThreadHandler().post(new QQSettingMe.21(this));
   }
   
-  private void af()
+  private void ag()
   {
     ThreadManager.getSubThreadHandler().post(new QQSettingMe.22(this));
   }
   
-  private void ag()
+  private void ah()
   {
     int i1 = 0;
     Object localObject = this.jdField_a_of_type_ArrayOfAndroidViewView[10];
     if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {}
     try
     {
-      a(10, this.jdField_n_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+      a(10, this.jdField_n_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (RedTouch.a(this.jdField_n_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo)) {
+      if (RedTouch.a(this.jdField_n_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo)) {
         i1 = 1;
       }
-      bdla.b((QQAppInterface)localObject, "dc00898", "", "", "0X800ACDC", "0X800ACDC", 0, i1, "", "", "", "");
+      ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800ACDC", "0X800ACDC", 0, i1, "", "", "", "");
       return;
     }
     catch (Exception localException)
@@ -1641,7 +1662,7 @@ public class QQSettingMe
     }
   }
   
-  private void ah()
+  private void ai()
   {
     if ((TextUtils.isEmpty(this.jdField_a_of_type_MQQPayRuleCfg.iconText)) || (TextUtils.isEmpty(this.jdField_a_of_type_MQQPayRuleCfg.iconUrl))) {
       QLog.e("QQSettingRedesign", 1, "showPayButton: iconText or iconUrl is empty");
@@ -1650,9 +1671,9 @@ public class QQSettingMe
     do
     {
       return;
-      TextView localTextView = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[1].findViewById(2131369165);
+      TextView localTextView = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[1].findViewById(2131369416);
       localTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      aerr localaerr = new aerr(this, localTextView);
+      QQSettingMe.23 local23 = new QQSettingMe.23(this, localTextView);
       try
       {
         localObject1 = new URL(this.jdField_a_of_type_MQQPayRuleCfg.iconUrl);
@@ -1668,7 +1689,7 @@ public class QQSettingMe
         localTextView.setBackgroundDrawable((Drawable)localObject1);
         if (((URLDrawable)localObject1).getStatus() == 1)
         {
-          localaerr.onLoadSuccessed((URLDrawable)localObject1);
+          local23.onLoadSuccessed((URLDrawable)localObject1);
           return;
         }
       }
@@ -1678,16 +1699,16 @@ public class QQSettingMe
         return;
       }
       localMalformedURLException.setText("");
-      ((URLDrawable)localObject1).setURLDrawableListener(localaerr);
+      ((URLDrawable)localObject1).setURLDrawableListener(local23);
     } while (((URLDrawable)localObject1).getStatus() != 2);
     ((URLDrawable)localObject1).restartDownload();
   }
   
-  private void ai()
+  private void aj()
   {
     try
     {
-      a(13, this.jdField_l_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+      a(13, this.jdField_l_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
       return;
     }
     catch (Exception localException)
@@ -1696,21 +1717,21 @@ public class QQSettingMe
     }
   }
   
-  private void aj()
+  private void ak()
   {
-    if (this.jdField_a_of_type_Bhze.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 4)) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 4)) {}
     for (;;)
     {
       return;
       try
       {
-        String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vipTitleSpFile", 0).getString("vipTitleSpKey_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + anxv.a(), "");
+        String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vipTitleSpFile", 0).getString("vipTitleSpKey_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + LocaleManager.a(), "");
         if (QLog.isColorLevel()) {
           QLog.d("QQSettingRedesign", 2, "updateVipText sp vipText = " + str);
         }
         if (!TextUtils.isEmpty(str))
         {
-          TextView localTextView = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[1].findViewById(2131369184);
+          TextView localTextView = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[1].findViewById(2131369437);
           if (localTextView != null)
           {
             localTextView.setText(str);
@@ -1725,17 +1746,17 @@ public class QQSettingMe
     }
   }
   
-  private void ak()
+  private void al()
   {
     ThreadManager.getUIHandler().post(new QQSettingMe.32(this));
   }
   
-  private void al()
+  private void am()
   {
     this.jdField_a_of_type_AndroidWidgetTextView.post(new QQSettingMe.33(this));
   }
   
-  private void am()
+  private void an()
   {
     Object localObject1 = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0);
     String str1 = ((SharedPreferences)localObject1).getString("drawer_cur_temp", null);
@@ -1789,50 +1810,57 @@ public class QQSettingMe
     }
   }
   
-  private void an()
-  {
-    Iterator localIterator = BusinessInfoCheckUpdateItem.S_DYNAMIC_RED_POINT_PATH_LIST.iterator();
-    while (localIterator.hasNext())
-    {
-      BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface localDynamicRedPointPathInterface = (BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)localIterator.next();
-      if ((localDynamicRedPointPathInterface instanceof anxy)) {
-        ((anxy)localDynamicRedPointPathInterface).a();
-      }
-    }
-  }
-  
   private void ao()
   {
-    Iterator localIterator = BusinessInfoCheckUpdateItem.S_DYNAMIC_RED_POINT_PATH_LIST.iterator();
-    while (localIterator.hasNext())
+    Object localObject = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+    if (localObject != null)
     {
-      BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface localDynamicRedPointPathInterface = (BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)localIterator.next();
-      if ((localDynamicRedPointPathInterface instanceof anxy)) {
-        ((anxy)localDynamicRedPointPathInterface).b();
+      localObject = ((IRedTouchManager)localObject).getRegisterInterfaces().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface localDynamicRedPointPathInterface = (BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)((Iterator)localObject).next();
+        if ((localDynamicRedPointPathInterface instanceof LoveZoneDynamicRedPointPathInterface)) {
+          ((LoveZoneDynamicRedPointPathInterface)localDynamicRedPointPathInterface).a();
+        }
       }
     }
   }
   
   private void ap()
   {
-    View localView = this.jdField_a_of_type_ArrayOfAndroidViewView[12];
-    if ((localView != null) && (localView.getVisibility() == 0)) {
-      ThreadManager.getSubThreadHandler().post(new QQSettingMe.41(this));
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      Iterator localIterator = ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getRegisterInterfaces().iterator();
+      while (localIterator.hasNext())
+      {
+        BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface localDynamicRedPointPathInterface = (BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)localIterator.next();
+        if ((localDynamicRedPointPathInterface instanceof LoveZoneDynamicRedPointPathInterface)) {
+          ((LoveZoneDynamicRedPointPathInterface)localDynamicRedPointPathInterface).b();
+        }
+      }
     }
   }
   
   private void aq()
   {
-    Object localObject = (aymd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-    RedTouchItem localRedTouchItem1 = ((aymd)localObject).a(10015);
-    RedTouchItem localRedTouchItem2 = ((aymd)localObject).a(10016);
+    View localView = this.jdField_a_of_type_ArrayOfAndroidViewView[12];
+    if ((localView != null) && (localView.getVisibility() == 0)) {
+      ThreadManager.getSubThreadHandler().post(new QQSettingMe.43(this));
+    }
+  }
+  
+  private void ar()
+  {
+    Object localObject = (LocalRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    RedTouchItem localRedTouchItem1 = ((LocalRedTouchManager)localObject).a(10015);
+    RedTouchItem localRedTouchItem2 = ((LocalRedTouchManager)localObject).a(10016);
     int i1;
-    if ((aymo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && ((((aymd)localObject).a(localRedTouchItem1, false)) || (((aymd)localObject).a(localRedTouchItem2, false))))
+    if ((Util.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && ((((LocalRedTouchManager)localObject).a(localRedTouchItem1, false)) || (((LocalRedTouchManager)localObject).a(localRedTouchItem2, false))))
     {
       i1 = 1;
       if (i1 != 0)
       {
-        i1 = ((aymd)localObject).a();
+        i1 = ((LocalRedTouchManager)localObject).a();
         localObject = null;
         switch (i1)
         {
@@ -1842,7 +1870,7 @@ public class QQSettingMe
     for (;;)
     {
       if (localObject != null) {
-        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
       }
       return;
       i1 = 0;
@@ -1855,26 +1883,9 @@ public class QQSettingMe
     }
   }
   
-  private void ar()
+  private void as()
   {
-    arzm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  private void b(@Nonnull Context paramContext)
-  {
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getString("sp_vip_medal_lvl_jump_url", null);
-    if (a(str2)) {
-      return;
-    }
-    String str3 = a(str2, 101400, this.jdField_g_of_type_ComTencentMobileqqRedtouchRedTouch);
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str3)) {
-      str1 = str2 + str3;
-    }
-    VipUtils.a(0, "mvip.pingtai.mobileqq.androidziliaoka.fromdrawer", "geren", str1, paramContext);
-    ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(101400, 31);
-    int i1 = aogw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
-    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B179", "0X800B179", 0, 0, String.valueOf(i1), "", "", "");
+    TencentDocUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   private void b(Message paramMessage)
@@ -1891,16 +1902,16 @@ public class QQSettingMe
       localView.setVisibility(8);
       return;
     }
-    if (this.jdField_a_of_type_Bhze.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2))
+    if (this.jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2))
     {
       localView.setVisibility(0);
       return;
     }
-    localObject2 = (TextView)localView.findViewById(2131369184);
+    localObject2 = (TextView)localView.findViewById(2131369437);
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       ((TextView)localObject2).setText((CharSequence)localObject1);
-      localObject1 = (ImageView)localView.findViewById(2131369113);
+      localObject1 = (ImageView)localView.findViewById(2131369364);
       if (TextUtils.isEmpty(paramMessage)) {
         break label187;
       }
@@ -1915,13 +1926,48 @@ public class QQSettingMe
     {
       localView.setVisibility(0);
       return;
-      ((TextView)localObject2).setText(2131698814);
+      ((TextView)localObject2).setText(2131699127);
       break;
       label177:
-      ((ImageView)localObject1).setImageResource(2130846077);
+      ((ImageView)localObject1).setImageResource(2130846398);
       continue;
       label187:
-      ((ImageView)localObject1).setImageResource(2130846077);
+      ((ImageView)localObject1).setImageResource(2130846398);
+    }
+  }
+  
+  private void b(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMedalList == null) {}
+    for (Object localObject1 = null; a((String)localObject1); localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMedalList.jumpUrl) {
+      return;
+    }
+    String str = a((String)localObject1, 101500, this.jdField_i_of_type_ComTencentMobileqqTianshuUiRedTouch);
+    Object localObject2 = localObject1;
+    if (!TextUtils.isEmpty(str)) {
+      localObject2 = (String)localObject1 + str;
+    }
+    localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+    ((Intent)localObject1).putExtra("url", (String)localObject2);
+    ((Intent)localObject1).putExtra("hide_operation_bar", true);
+    ((Intent)localObject1).putExtra("hide_more_button", true);
+    ((Intent)localObject1).putExtra("startOpenPageTime", System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject1);
+    ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).reportLevelOneRedInfo(101500, 31);
+    int i1 = VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
+    if ((paramView instanceof QVipMedalView))
+    {
+      if (!AnimatorHandler.playing) {
+        break label235;
+      }
+      ((QVipMedalView)paramView).a("0X800B2B5", i1);
+    }
+    for (;;)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qvip", "0X800A127", 0, 0, String.valueOf(i1), "", "", "");
+      return;
+      label235:
+      ((QVipMedalView)paramView).a("0X800B2B4", i1);
     }
   }
   
@@ -1935,7 +1981,7 @@ public class QQSettingMe
       }
       return false;
     }
-    View localView = this.jdField_k_of_type_AndroidViewView.findViewById(2131365343);
+    View localView = this.jdField_k_of_type_AndroidViewView.findViewById(2131365492);
     Object localObject1 = new int[2];
     localView.getLocationOnScreen((int[])localObject1);
     localObject1 = new Rect(localObject1[0], localObject1[1], localObject1[0] + localView.getWidth(), localObject1[1] + localView.getHeight());
@@ -1945,17 +1991,17 @@ public class QQSettingMe
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "tryAdjustCuKingCard() containerBounds = " + localObject2 + ", cardBounds = " + localObject1);
     }
-    if (!((Rect)localObject2).contains((Rect)localObject1))
+    if ((!((Rect)localObject2).contains((Rect)localObject1)) || (localView.getHeight() == 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQSettingRedesign", 2, "tryAdjustCuKingCard() should adjust cuKingCard position");
       }
       localObject1 = (ViewGroup)localView.getParent();
       if (i1 >= ((ViewGroup)localObject1).getChildCount()) {
-        break label271;
+        break label278;
       }
-      if (((ViewGroup)localObject1).getChildAt(i1).getId() != 2131371794) {
-        break label264;
+      if (((ViewGroup)localObject1).getChildAt(i1).getId() != 2131372106) {
+        break label271;
       }
     }
     for (;;)
@@ -1965,12 +2011,12 @@ public class QQSettingMe
         ((ViewGroup)localObject1).removeView(localView);
         ((ViewGroup)localObject1).addView(localView, i1 + 1);
       }
-      this.jdField_k_of_type_Boolean = true;
+      this.jdField_m_of_type_Boolean = true;
       return true;
-      label264:
+      label271:
       i1 += 1;
       break;
-      label271:
+      label278:
       i1 = -1;
     }
   }
@@ -1982,20 +2028,20 @@ public class QQSettingMe
   
   private boolean c()
   {
-    aymd localaymd = (aymd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-    localaymd.a(100601, false);
-    localaymd.a(10016, false);
-    localaymd.a(10015, false);
-    if ((localaymd.a(localaymd.a(-7), true)) || (azzt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {}
+    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    localLocalRedTouchManager.a(100601, false);
+    localLocalRedTouchManager.a(10016, false);
+    localLocalRedTouchManager.a(10015, false);
+    if ((localLocalRedTouchManager.a(localLocalRedTouchManager.a(-7), true)) || (AnonymousRedPointUtils.showSettingMeRedPointGuide(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {}
     for (;;)
     {
       try
       {
-        aq();
-        this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-        this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo.red_type.set(0);
-        this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo.red_content.set("");
-        this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo.red_desc.set("");
+        ar();
+        this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+        this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo.red_type.set(0);
+        this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo.red_content.set("");
+        this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo.red_desc.set("");
         bool = true;
       }
       catch (Exception localException)
@@ -2007,21 +2053,51 @@ public class QQSettingMe
         QLog.d("QQSettingRedesign", 2, "updateProfileRedPoint needShow = " + bool);
       }
       return bool;
-      this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo = null;
+      this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo = null;
       boolean bool = false;
+    }
+  }
+  
+  private void d(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Int != 1) {}
+    while ((this.jdField_h_of_type_Int == -1) || (this.jdField_d_of_type_JavaLangString == null)) {
+      return;
+    }
+    TianShuReportData localTianShuReportData = new TianShuReportData();
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    String str = "";
+    if (localAppRuntime != null) {
+      str = localAppRuntime.getAccount();
+    }
+    long l1 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+    localTianShuReportData.jdField_b_of_type_JavaLangString = (str + "_" + l1);
+    localTianShuReportData.jdField_a_of_type_Int = 1;
+    if (paramBoolean) {}
+    for (int i1 = 102;; i1 = 101)
+    {
+      localTianShuReportData.jdField_d_of_type_Int = i1;
+      localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.103";
+      localTianShuReportData.jdField_f_of_type_JavaLangString = "tianshu.103";
+      localTianShuReportData.jdField_g_of_type_JavaLangString = String.valueOf(this.jdField_h_of_type_Int);
+      localTianShuReportData.jdField_e_of_type_Int = 1;
+      localTianShuReportData.l = this.jdField_d_of_type_JavaLangString;
+      localTianShuReportData.jdField_a_of_type_Long = l1;
+      TianShuManager.getInstance().report(localTianShuReportData);
+      return;
     }
   }
   
   private boolean d()
   {
-    bhaa.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject = (aymd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-    RedTouchItem localRedTouchItem = ((aymd)localObject).a(-4);
-    if ((((aymd)localObject).a(localRedTouchItem, true)) && (localRedTouchItem.count > 0))
+    ProfileCardUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject = (LocalRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    RedTouchItem localRedTouchItem = ((LocalRedTouchManager)localObject).a(-4);
+    if ((((LocalRedTouchManager)localObject).a(localRedTouchItem, true)) && (localRedTouchItem.count > 0))
     {
       try
       {
-        localObject = FileUtils.readObject(aymc.a(-4));
+        localObject = FileUtils.a(DefaultRedPointPrePostHandler.a(-4));
         if ((localObject instanceof RedTouchItemExtMsg))
         {
           localObject = (RedTouchItemExtMsg)localObject;
@@ -2058,8 +2134,8 @@ public class QQSettingMe
     if (!this.jdField_d_of_type_Boolean) {
       return true;
     }
-    long l1 = bhzf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "setting_me_last_request_success_time", 0L);
-    int i1 = bhzf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "setting_me_vip_sync_freq", 0);
+    long l1 = QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "setting_me_last_request_success_time", 0L);
+    int i1 = QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "setting_me_vip_sync_freq", 0);
     if (NetConnInfoCenter.getServerTime() - l1 <= i1)
     {
       QLog.e("QVipSettingMe.QQSettingRedesign", 1, "ignore the vip info request because current time=" + NetConnInfoCenter.getServerTime() + " requestTimestamp=" + l1 + " and updateFrequency=" + i1);
@@ -2091,7 +2167,7 @@ public class QQSettingMe
       ((TextView)localObject1).setTextColor(-1);
       ((TextView)localObject1).setTextSize(1, 12.0F);
       ((TextView)localObject1).setGravity(17);
-      ((TextView)localObject1).setBackgroundResource(2130844667);
+      ((TextView)localObject1).setBackgroundResource(2130844828);
       paramString = new FrameLayout.LayoutParams(-2, -2);
       this.jdField_b_of_type_AndroidViewViewGroup.addView((View)localObject1, paramString);
       this.jdField_o_of_type_AndroidViewView = ((View)localObject1);
@@ -2108,21 +2184,22 @@ public class QQSettingMe
   {
     boolean bool1;
     boolean bool2;
-    label84:
+    label91:
     int i2;
-    label97:
+    label104:
     long l1;
     int i4;
     boolean bool3;
     Object localObject;
     int i1;
     String str;
+    int i3;
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_b_of_type_AndroidWidgetImageView == null))
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_b_of_type_AndroidWidgetImageView == null) || (this.jdField_c_of_type_AndroidWidgetImageView == null))
       {
         if (!QLog.isColorLevel()) {
-          break label1587;
+          break label1672;
         }
         QLog.d("QQSettingRedesign", 2, "updateQQLevelVipView card == null");
         return;
@@ -2130,15 +2207,15 @@ public class QQSettingMe
       localSpannableStringBuilder = new SpannableStringBuilder();
       localResources = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
       if (this.jdField_a_of_type_ComTencentMobileqqDataCard.bSuperVipOpen != 1) {
-        break label987;
+        break label1049;
       }
       bool1 = true;
       if (this.jdField_a_of_type_ComTencentMobileqqDataCard.bQQVipOpen != 1) {
-        break label993;
+        break label1055;
       }
       bool2 = true;
       if (this.jdField_a_of_type_ComTencentMobileqqDataCard.bBigClubVipOpen != 1) {
-        break label999;
+        break label1061;
       }
       i2 = 1;
       l1 = this.jdField_a_of_type_ComTencentMobileqqDataCard.uCurMulType;
@@ -2147,14 +2224,23 @@ public class QQSettingMe
         QLog.d("QQSettingRedesign", 2, "updateLevelAndVip bSuperVipOpen=" + bool1 + ",bQQVipOpen=" + bool2 + ",VipLevel=" + i4 + ",QQLevel=" + this.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel + ",curMulType =" + this.jdField_a_of_type_ComTencentMobileqqDataCard.uCurMulType);
       }
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      bool3 = bhjf.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateVipType);
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      bool3 = VipUtils.VipIconUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateVipType);
       localObject = null;
       i1 = 0;
       if (!bool3) {
-        break label1588;
+        break label1673;
       }
-      localObject = bhjf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, bhjg.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateVipType), bhjf.b(this.jdField_a_of_type_ComTencentMobileqqDataCard.grayNameplateFlag));
-      i1 = bhjf.a(bhjg.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateVipType));
+      str = VipUtils.VipIconUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, VipUtils.VipIconUtils.NamePlateVipTpye.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateVipType), VipUtils.VipIconUtils.b(this.jdField_a_of_type_ComTencentMobileqqDataCard.grayNameplateFlag));
+      i3 = VipUtils.VipIconUtils.a(VipUtils.VipIconUtils.NamePlateVipTpye.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateVipType));
+      i1 = i3;
+      localObject = str;
+      if (!VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateVipType)) {
+        break label1673;
+      }
+      VipUtils.VipIconUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_c_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateExtId, 1);
+      i1 = i3;
+      localObject = str;
     }
     catch (Throwable paramString)
     {
@@ -2166,15 +2252,15 @@ public class QQSettingMe
     if (bool2)
     {
       i1 = VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, EVIPSPEC.E_SP_QQVIP);
-      paramString = bhjf.a((i1 & 0xF) << 8 | i1 >> 8, i4, this.jdField_a_of_type_ComTencentMobileqqDataCard.lSuperVipTemplateId);
-      i1 = 2130847075;
+      paramString = VipUtils.VipIconUtils.a((i1 & 0xF) << 8 | i1 >> 8, i4, this.jdField_a_of_type_ComTencentMobileqqDataCard.lSuperVipTemplateId);
+      i1 = 2130847430;
       i2 = 1;
-      localObject = str;
+      localObject = null;
     }
     for (;;)
     {
-      label345:
-      int i3 = i1;
+      label407:
+      i3 = i1;
       str = paramString;
       if (!bool3)
       {
@@ -2183,45 +2269,45 @@ public class QQSettingMe
         if (i2 == 0)
         {
           if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break label1381;
+            break label1463;
           }
           QLog.e("QQSettingRedesign", 1, (String)localObject);
-          label383:
+          label445:
           if (!bool1) {
-            break label1412;
+            break label1494;
           }
           i1 = VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, EVIPSPEC.E_SP_SUPERVIP);
-          str = bhjf.a((i1 & 0xF) << 8 | i1 >> 8, i4, this.jdField_a_of_type_ComTencentMobileqqDataCard.lSuperVipTemplateId);
-          i3 = 2130847076;
+          str = VipUtils.VipIconUtils.a((i1 & 0xF) << 8 | i1 >> 8, i4, this.jdField_a_of_type_ComTencentMobileqqDataCard.lSuperVipTemplateId);
+          i3 = 2130847431;
         }
       }
-      label437:
+      label499:
       if ((str != null) && (i3 != 0))
       {
         VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), this.jdField_b_of_type_AndroidWidgetImageView, str, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(i3));
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(anvx.a(2131716170));
+        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131716636));
         this.jdField_b_of_type_AndroidWidgetImageView.setFocusableInTouchMode(true);
-        paramString = bhjh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, "VIA_SETTINGME");
+        paramString = VipUtils.VipIconUtils.VipIconTouchListener.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, "VIA_SETTINGME");
         paramString.a();
         this.jdField_b_of_type_AndroidWidgetImageView.setOnTouchListener(paramString);
-        al();
-        if (bhpw.a().a(bool1, this.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingLoginTime)) {
-          localSpannableStringBuilder.append(bhai.a(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView, localResources, this.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingGameId, this.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingDan, this.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingDanDisplatSwitch));
+        am();
+        if (VipGrayConfigHelper.a().a(bool1, this.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingLoginTime)) {
+          localSpannableStringBuilder.append(QQSettingUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView, localResources, this.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingGameId, this.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingDan, this.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingDanDisplatSwitch));
         }
         i2 = 0;
         if ((this.jdField_a_of_type_ComTencentMobileqqDataMedalList == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMedalList.infoList.size() <= 0)) {
-          break label1509;
+          break label1591;
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView.setData(this.jdField_a_of_type_ComTencentMobileqqDataMedalList);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView.setVisibility(0);
         this.jdField_c_of_type_AndroidViewView.setVisibility(0);
         this.jdField_d_of_type_AndroidViewView.setVisibility(0);
         if (!ThemeUtil.isNowThemeIsDefault(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, null)) {
-          break label1486;
+          break label1568;
         }
         this.jdField_c_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#7bffffff"));
-        i2 = this.jdField_a_of_type_ComTencentMobileqqDataMedalList.infoList.size() * UIUtils.dip2px(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 21.0F) - UIUtils.dip2px(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 6.0F);
+        i2 = this.jdField_a_of_type_ComTencentMobileqqDataMedalList.infoList.size() * UIUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 21.0F) - UIUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 6.0F);
         if (QLog.isColorLevel()) {
           QLog.d("QVipSettingMe.", 1, "width =" + i2 + "update medal:" + this.jdField_a_of_type_ComTencentMobileqqDataMedalList.convert());
         }
@@ -2229,21 +2315,21 @@ public class QQSettingMe
         if (!this.jdField_e_of_type_Boolean)
         {
           this.jdField_e_of_type_Boolean = true;
-          i1 = aogw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qvip", "0X800A126", 0, 0, String.valueOf(i1), "", "", "");
+          i1 = VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qvip", "0X800A126", 0, 0, String.valueOf(i1), "", "", "");
           i1 = i2;
         }
-        localSpannableStringBuilder.append(bhai.a(localResources, this.jdField_a_of_type_ComTencentMobileqqDataCard.mQQLevelType, this.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel, a(i1)));
+        localSpannableStringBuilder.append(QQSettingUtil.a(localResources, this.jdField_a_of_type_ComTencentMobileqqDataCard.mQQLevelType, this.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel, a(i1)));
         this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(localSpannableStringBuilder, TextView.BufferType.SPANNABLE);
         this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setContentDescription("等级：" + this.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel);
         a(bool1, bool2, i4);
-        if (!AppSetting.jdField_c_of_type_Boolean) {
-          break label1587;
+        if (!AppSetting.jdField_d_of_type_Boolean) {
+          break label1672;
         }
         paramString = new StringBuilder();
         paramString.append(this.jdField_a_of_type_JavaLangString);
         if (!bool1) {
-          break label1559;
+          break label1641;
         }
         paramString.append("你是尊贵的超级会员");
         if (this.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel > 0) {
@@ -2251,49 +2337,52 @@ public class QQSettingMe
         }
         this.jdField_a_of_type_AndroidViewView.setContentDescription(paramString.toString());
         return;
-        label987:
         bool1 = false;
         break;
-        label993:
         bool2 = false;
-        break label84;
-        label999:
+        break label91;
         i2 = 0;
-        break label97;
+        break label104;
         str = "occur error: curMulType=" + l1 + " but bQQVipOpen is false";
         i2 = 0;
         paramString = (String)localObject;
         localObject = str;
         continue;
       }
-      label534:
-      label674:
-      label820:
-      label1078:
-      label1486:
-      label1509:
+      label1049:
+      label1055:
+      label1061:
+      label1591:
       for (;;)
       {
+        label596:
+        label736:
+        label882:
         if (bool1)
         {
           i2 = VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, EVIPSPEC.E_SP_SUPERVIP);
           if ((i2 & 0xF) != 1) {
-            break label1648;
+            break label1726;
           }
           i1 = 1;
-          paramString = bhjf.a((i2 & 0xF) << 8 | i2 >> 8, i4, this.jdField_a_of_type_ComTencentMobileqqDataCard.lSuperVipTemplateId);
+          label1140:
+          paramString = VipUtils.VipIconUtils.a((i2 & 0xF) << 8 | i2 >> 8, i4, this.jdField_a_of_type_ComTencentMobileqqDataCard.lSuperVipTemplateId);
           if (i1 == 0) {
-            break label1653;
+            break label1731;
           }
-          i1 = 2130847076;
-          break label1639;
+          i1 = 2130847431;
+          break label1718;
         }
+        label1003:
         str = "occur error: curMulType=" + l1 + " but bSuperVipOpen is false";
+        label1107:
         i2 = 0;
         paramString = (String)localObject;
         localObject = str;
-        break label345;
-        label1381:
+        break label407;
+        label1463:
+        label1494:
+        label1641:
         do
         {
           if (l1 == 6L)
@@ -2306,102 +2395,98 @@ public class QQSettingMe
                 if ((i2 & 0xF) == 1)
                 {
                   i1 = VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, EVIPSPEC.E_SP_BIGCLUB);
-                  paramString = bhjf.a((i1 & 0xF) << 8 | i1 >> 8, this.jdField_a_of_type_ComTencentMobileqqDataCard.iBigClubVipLevel, this.jdField_a_of_type_ComTencentMobileqqDataCard.lBigClubTemplateId);
-                  i1 = 2130847076;
-                  break label1660;
+                  localObject = VipUtils.VipIconUtils.a((i1 & 0xF) << 8 | i1 >> 8, this.jdField_a_of_type_ComTencentMobileqqDataCard.iBigClubVipLevel, this.jdField_a_of_type_ComTencentMobileqqDataCard.lBigClubTemplateId);
                 }
-                i1 = VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, EVIPSPEC.E_SP_BIGCLUB);
-                paramString = bhjf.a((i1 & 0xF) << 8 | i1 >> 8, this.jdField_a_of_type_ComTencentMobileqqDataCard.iBigClubVipLevel, this.jdField_a_of_type_ComTencentMobileqqDataCard.lBigClubTemplateId);
-                i1 = 2130847074;
-                break label1660;
+                for (i2 = 2130847431;; i2 = 2130847429)
+                {
+                  VipUtils.VipIconUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_c_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateExtId, 1);
+                  i1 = 1;
+                  paramString = null;
+                  break;
+                  i1 = VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, EVIPSPEC.E_SP_BIGCLUB);
+                  localObject = VipUtils.VipIconUtils.a((i1 & 0xF) << 8 | i1 >> 8, this.jdField_a_of_type_ComTencentMobileqqDataCard.iBigClubVipLevel, this.jdField_a_of_type_ComTencentMobileqqDataCard.lBigClubTemplateId);
+                }
               }
-              str = "occur error: curMulType=" + l1 + " but bBigClubVipOpen userStatus=" + i2;
+              paramString = "occur error: curMulType=" + l1 + " but bBigClubVipOpen userStatus=" + i2;
+              i3 = 0;
               i2 = i1;
-              paramString = (String)localObject;
-              localObject = str;
               i1 = i3;
-              break label1671;
+              break label1738;
             }
             str = "occur error: curMulType=" + l1 + " but bBigClubVipOpen is false";
             i2 = 0;
             paramString = (String)localObject;
             localObject = str;
-            break label345;
+            break label407;
             QLog.e("QQSettingRedesign", 1, "it have not handle curMulType=" + l1);
-            break label383;
+            break label445;
             i3 = i1;
             str = paramString;
             if (!bool2) {
-              break label437;
+              break label499;
             }
             i1 = VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, EVIPSPEC.E_SP_QQVIP);
-            str = bhjf.a((i1 & 0xF) << 8 | i1 >> 8, i4, this.jdField_a_of_type_ComTencentMobileqqDataCard.lSuperVipTemplateId);
-            i3 = 2130847075;
-            break label437;
+            str = VipUtils.VipIconUtils.a((i1 & 0xF) << 8 | i1 >> 8, i4, this.jdField_a_of_type_ComTencentMobileqqDataCard.lSuperVipTemplateId);
+            i3 = 2130847430;
+            break label499;
             this.jdField_b_of_type_AndroidWidgetImageView.setOnTouchListener(null);
-            break label534;
-            this.jdField_c_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166478));
-            break label674;
+            break label596;
+            this.jdField_c_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166481));
+            break label736;
             this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView.setVisibility(8);
             this.jdField_c_of_type_AndroidViewView.setVisibility(8);
             this.jdField_d_of_type_AndroidViewView.setVisibility(8);
             i1 = i2;
             if (!QLog.isColorLevel()) {
-              break label820;
+              break label882;
             }
             QLog.d("QVipSettingMe.", 1, "medal list is null");
             i1 = i2;
-            break label820;
+            break label882;
             if (!bool2) {
-              break label941;
+              break label1003;
             }
             paramString.append("你是尊贵的会员");
-            break label941;
+            break label1003;
           }
           do
           {
             i2 = 0;
+            str = null;
             paramString = (String)localObject;
             localObject = str;
             break;
             return;
-            i3 = 0;
-            str = null;
           } while (bool3);
           if ((l1 == 1L) || (l1 == 2L)) {
             break;
           }
           if (l1 == 3L) {
-            break label1045;
+            break label1107;
           }
         } while (l1 != 4L);
       }
       for (;;)
       {
-        label941:
-        label1587:
-        label1588:
-        label1639:
+        label1568:
+        label1718:
         i2 = 1;
-        label1045:
-        label1559:
-        localObject = str;
-        label1412:
+        label1672:
+        label1673:
+        localObject = null;
         break;
-        label1648:
+        label1726:
         i1 = 0;
-        break label1078;
-        label1653:
-        i1 = 2130847074;
+        break label1140;
+        label1731:
+        i1 = 2130847429;
       }
-      label1660:
-      localObject = null;
-      i3 = 1;
-      i2 = i1;
-      i1 = i3;
-      label1671:
+      label1738:
+      str = paramString;
+      paramString = (String)localObject;
       i3 = i1;
       i1 = i2;
+      localObject = str;
       i2 = i3;
     }
   }
@@ -2409,52 +2494,55 @@ public class QQSettingMe
   private void h(String paramString)
   {
     long l1 = System.currentTimeMillis();
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(String.valueOf(100400));
-    Object localObject;
+    IRedTouchManager localIRedTouchManager = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = localIRedTouchManager.getAppInfoByPath(String.valueOf(100400));
+    Object localObject1;
     if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() != 0) && (localAppInfo.exposure_max.get() >= 0)) {
-      localObject = localAppInfo.buffer.get();
+      localObject1 = localAppInfo.buffer.get();
     }
     for (;;)
     {
-      StringBuilder localStringBuilder;
+      Object localObject2;
       int i2;
       try
       {
-        localObject = new JSONObject((String)localObject).optString("_jump_url");
-        localStringBuilder = new StringBuilder();
-        i2 = NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          break label501;
+        localObject1 = new JSONObject((String)localObject1).optString("_jump_url");
+        localObject2 = new StringBuilder();
+        i2 = NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label479;
         }
-        localObject = this.jdField_c_of_type_JavaLangString;
+        localObject1 = this.jdField_c_of_type_JavaLangString;
         i1 = 1;
-        if (((String)localObject).contains("?")) {
-          break label455;
+        if (((String)localObject1).contains("?")) {
+          break label439;
         }
-        localStringBuilder.append((String)localObject + "?platform=1&type=20001&networkInfo=" + i2);
-        localObject = localStringBuilder.toString();
-        localObject = ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a((String)localObject, localAppInfo);
+        ((StringBuilder)localObject2).append((String)localObject1 + "?platform=1&type=20001&networkInfo=" + i2);
+        localObject2 = localIRedTouchManager.wrapperRedTouchUrl(((StringBuilder)localObject2).toString(), localAppInfo);
         if ((localAppInfo == null) || (localAppInfo.iNewFlag.get() == 0) || (localAppInfo.type.get() != 0)) {
-          break label495;
+          break label473;
         }
         bool = true;
-        if ((paramString == null) || (i1 == 0)) {
-          break label489;
+        localObject1 = localObject2;
+        if (paramString != null)
+        {
+          localObject1 = localObject2;
+          if (i1 != 0) {
+            localObject1 = (String)localObject2 + paramString;
+          }
         }
-        paramString = (String)localObject + paramString;
-        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("broadcastAction", "com.tencent.mobileqq.opencenter.vipInfo");
-        ((Intent)localObject).putExtra("startOpenPageTime", l1);
-        ((Intent)localObject).putExtra("portraitOnly", true);
-        ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((Intent)localObject).putExtra("hide_operation_bar", true);
-        ((Intent)localObject).putExtra("hide_more_button", true);
-        ((Intent)localObject).putExtra("has_red_dot", bool);
-        ((Intent)localObject).putExtra("leftBtnText", this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131689501));
-        VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, 256L, (Intent)localObject, false, -1);
-        paramString = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
+        paramString = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+        paramString.putExtra("broadcastAction", "com.tencent.mobileqq.opencenter.vipInfo");
+        paramString.putExtra("startOpenPageTime", l1);
+        paramString.putExtra("portraitOnly", true);
+        paramString.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        paramString.putExtra("hide_operation_bar", true);
+        paramString.putExtra("hide_more_button", true);
+        paramString.putExtra("has_red_dot", bool);
+        paramString.putExtra("leftBtnText", this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131689502));
+        VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (String)localObject1, 256L, paramString, false, -1);
         QLog.e("QQSettingRedesign", 1, "VipInfoHandler gotoOpenCenterBrowser");
-        paramString.a(100400, 31);
+        localIRedTouchManager.reportLevelOneRedInfo(100400, 31);
         return;
       }
       catch (Exception localException)
@@ -2463,30 +2551,27 @@ public class QQSettingMe
       }
       String str = "";
       continue;
-      label455:
-      localStringBuilder.append(str + "&platform=1&type=20001&networkInfo=" + i2);
+      label439:
+      ((StringBuilder)localObject2).append(str + "&platform=1&type=20001&networkInfo=" + i2);
       continue;
-      label489:
-      paramString = str;
-      continue;
-      label495:
+      label473:
       boolean bool = false;
       continue;
-      label501:
+      label479:
       int i1 = 0;
     }
   }
   
   private void i(String paramString)
   {
-    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
   protected void A()
   {
     try
     {
-      a(4, this.jdField_e_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+      a(4, this.jdField_e_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
       return;
     }
     catch (Exception localException)
@@ -2509,13 +2594,13 @@ public class QQSettingMe
     localObject13 = null;
     Object localObject15 = null;
     Object localObject16 = null;
-    localObject1 = anvx.a(2131710219);
+    localObject1 = HardCodeUtil.a(2131710735);
     i1 = 0;
-    int i3 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getBaseContext().getResources().getDimensionPixelSize(2131298438);
+    int i3 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getBaseContext().getResources().getDimensionPixelSize(2131298524);
     int i4 = ScreenUtil.SCREEN_WIDTH;
     int i5 = ScreenUtil.dip2px(65.0F);
     int i6 = ScreenUtil.dip2px(15.0F);
-    int i7 = this.jdField_f_of_type_AndroidWidgetImageView.getWidth();
+    int i7 = this.jdField_g_of_type_AndroidWidgetImageView.getWidth();
     localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
     l1 = localSharedPreferences.getLong("sign_in_time_stamp", 0L);
     str2 = localSharedPreferences.getString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "sign_in_info", "");
@@ -2532,8 +2617,8 @@ public class QQSettingMe
       {
         Object localObject2;
         Object localObject10;
-        label776:
-        label1048:
+        label739:
+        label1017:
         if (QLog.isColorLevel()) {
           QLog.i("DailySignIn", 2, "doUpdateDailySignInItemView JSONException, json = " + str2);
         }
@@ -2552,26 +2637,54 @@ public class QQSettingMe
           localObject3 = new JSONObject((String)localObject9);
           i1 = 0;
           continue;
+          localObject3 = null;
+          i1 = 0;
           localObject5 = localObject1;
-          localObject1 = anvx.a(2131710212);
+          localObject9 = localSharedPreferences.getString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "sign_in_operation" + "10", "");
           localObject5 = localObject1;
-          localObject3 = localSharedPreferences.getString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "sign_in_operation" + "41", "");
-          localObject5 = localObject1;
-          if (!TextUtils.isEmpty((CharSequence)localObject3))
+          localObject7 = localObject1;
+          if (!TextUtils.isEmpty((CharSequence)localObject9))
           {
             localObject5 = localObject1;
-            localObject3 = new JSONObject((String)localObject3);
+            localObject3 = new JSONObject((String)localObject9);
+            i1 = 0;
+            continue;
             localObject5 = localObject1;
-            l1 = ((JSONObject)localObject3).optInt("start_time");
+            localObject1 = HardCodeUtil.a(2131710728);
             localObject5 = localObject1;
-            l2 = ((JSONObject)localObject3).optInt("end_time");
-            i1 = 1;
+            localObject3 = localSharedPreferences.getString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "sign_in_operation" + "41", "");
             localObject5 = localObject1;
-            if (System.currentTimeMillis() > l1 * 1000L)
+            if (!TextUtils.isEmpty((CharSequence)localObject3))
             {
               localObject5 = localObject1;
-              localObject7 = localObject1;
-              if (System.currentTimeMillis() < l2 * 1000L) {}
+              localObject3 = new JSONObject((String)localObject3);
+              localObject5 = localObject1;
+              l1 = ((JSONObject)localObject3).optInt("start_time");
+              localObject5 = localObject1;
+              l2 = ((JSONObject)localObject3).optInt("end_time");
+              i1 = 1;
+              localObject5 = localObject1;
+              if (System.currentTimeMillis() > l1 * 1000L)
+              {
+                localObject5 = localObject1;
+                localObject7 = localObject1;
+                if (System.currentTimeMillis() < l2 * 1000L) {}
+              }
+              else
+              {
+                localObject3 = null;
+                i1 = 0;
+                localObject5 = localObject1;
+                localObject9 = localSharedPreferences.getString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "sign_in_operation" + "40", "");
+                localObject5 = localObject1;
+                localObject7 = localObject1;
+                if (!TextUtils.isEmpty((CharSequence)localObject9))
+                {
+                  localObject5 = localObject1;
+                  localObject3 = new JSONObject((String)localObject9);
+                  i1 = 0;
+                }
+              }
             }
             else
             {
@@ -2586,88 +2699,72 @@ public class QQSettingMe
                 localObject5 = localObject1;
                 localObject3 = new JSONObject((String)localObject9);
                 i1 = 0;
-              }
-            }
-          }
-          else
-          {
-            localObject3 = null;
-            i1 = 0;
-            localObject5 = localObject1;
-            localObject9 = localSharedPreferences.getString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "sign_in_operation" + "40", "");
-            localObject5 = localObject1;
-            localObject7 = localObject1;
-            if (!TextUtils.isEmpty((CharSequence)localObject9))
-            {
-              localObject5 = localObject1;
-              localObject3 = new JSONObject((String)localObject9);
-              i1 = 0;
-              continue;
-              localObject1 = "";
-              localObject3 = "";
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.i("DailySignIn", 2, "doUpdateDailySignInItemView JSONException, json = " + str2);
-              }
-              ((JSONException)localObject5).printStackTrace();
-              localObject5 = localObject8;
-              continue;
-              if (this.jdField_b_of_type_Int == 1)
-              {
-                localObject1 = anvx.a(2131710219);
-                localObject5 = null;
-                localObject4 = null;
                 continue;
-              }
-              if (this.jdField_b_of_type_Int == 4)
-              {
-                localObject1 = anvx.a(2131710212);
-                localObject5 = null;
-                localObject4 = null;
-                continue;
-                localObject5 = URLDrawable.getDrawable((String)localObject4, (URLDrawable.URLDrawableOptions)localObject10);
+                localObject1 = "";
+                localObject3 = "";
                 continue;
                 if (QLog.isColorLevel()) {
-                  QLog.i("DailySignIn", 2, "use default icon");
+                  QLog.i("DailySignIn", 2, "doUpdateDailySignInItemView JSONException, json = " + str2);
                 }
-                if (ThemeUtil.isNowThemeIsDefault(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, null))
+                ((JSONException)localObject5).printStackTrace();
+                localObject5 = localObject8;
+                continue;
+                if (this.jdField_b_of_type_Int == 1)
                 {
+                  localObject1 = HardCodeUtil.a(2131710735);
                   localObject5 = null;
-                  try
-                  {
-                    localObject4 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130846080);
-                    if (localObject4 == null) {
-                      break label2028;
-                    }
-                    localObject7 = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), bkxu.a((Bitmap)localObject4));
+                  localObject4 = null;
+                  continue;
+                }
+                if (this.jdField_b_of_type_Int == 4)
+                {
+                  localObject1 = HardCodeUtil.a(2131710728);
+                  localObject5 = null;
+                  localObject4 = null;
+                  continue;
+                  localObject5 = URLDrawable.getDrawable((String)localObject4, (URLDrawable.URLDrawableOptions)localObject10);
+                  continue;
+                  if (QLog.isColorLevel()) {
+                    QLog.i("DailySignIn", 2, "use default icon");
                   }
-                  catch (OutOfMemoryError localOutOfMemoryError)
+                  if (ThemeUtil.isNowThemeIsDefault(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, null))
                   {
-                    for (;;)
+                    localObject5 = null;
+                    try
                     {
-                      localObject4 = localObject5;
-                      if (QLog.isColorLevel())
+                      localObject4 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130846402);
+                      if (localObject4 == null) {
+                        break label2085;
+                      }
+                      localObject7 = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), BitmapUtil.a((Bitmap)localObject4));
+                    }
+                    catch (OutOfMemoryError localOutOfMemoryError)
+                    {
+                      for (;;)
                       {
-                        QLog.d("QQSettingRedesign", 2, localOutOfMemoryError, new Object[0]);
                         localObject4 = localObject5;
+                        if (QLog.isColorLevel())
+                        {
+                          QLog.d("QQSettingRedesign", 2, localOutOfMemoryError, new Object[0]);
+                          localObject4 = localObject5;
+                        }
                       }
                     }
+                    i("0X800ACFB");
+                    if (QLog.isColorLevel()) {
+                      QLog.i("DailySignIn", 2, "use unsigned wording");
+                    }
+                    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+                    ((TextView)localObject5).setText((CharSequence)localObject1);
+                    continue;
+                    QLog.e("QQSettingRedesign", 1, "mSignInWord===null");
+                    continue;
                   }
-                  i("0X800ACFB");
-                  if (QLog.isColorLevel()) {
-                    QLog.i("DailySignIn", 2, "use unsigned wording");
-                  }
-                  this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-                  ((TextView)localObject5).setText((CharSequence)localObject1);
-                  continue;
-                  QLog.e("QQSettingRedesign", 1, "mSignInWord===null");
-                  continue;
                 }
               }
             }
           }
         }
-        localObject1 = localJSONException4;
         continue;
         int i2 = i1;
       }
@@ -2676,11 +2773,15 @@ public class QQSettingMe
     {
       this.jdField_b_of_type_Int = 1;
       i2 = 0;
-      if (anxv.a() != 1033)
+      if (LocaleManager.a() != 1033)
       {
         localObject5 = localObject1;
         try
         {
+          this.jdField_h_of_type_Int = -1;
+          localObject5 = localObject1;
+          this.jdField_d_of_type_JavaLangString = null;
+          localObject5 = localObject1;
           if (this.jdField_b_of_type_Int == 1)
           {
             localObject5 = localObject1;
@@ -2694,36 +2795,27 @@ public class QQSettingMe
               l1 = ((JSONObject)localObject2).optInt("start_time");
               localObject5 = localObject1;
               l2 = ((JSONObject)localObject2).optInt("end_time");
-              i1 = 1;
               localObject5 = localObject1;
               if (System.currentTimeMillis() > l1 * 1000L)
               {
                 localObject5 = localObject1;
-                localObject7 = localObject1;
-                if (System.currentTimeMillis() < l2 * 1000L) {
-                  break label2040;
+                if (System.currentTimeMillis() < l2 * 1000L)
+                {
+                  localObject5 = localObject1;
+                  this.jdField_h_of_type_Int = ((JSONObject)localObject2).optInt("id", -1);
+                  localObject5 = localObject1;
+                  this.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("trace_info", null);
+                  i1 = 1;
+                  localObject9 = localObject1;
+                  localObject12 = localObject16;
+                  localObject11 = str1;
+                  if (localObject2 != null)
+                  {
+                    localObject10 = localObject1;
+                    localObject8 = localObject15;
+                    localObject7 = localObject14;
+                  }
                 }
-              }
-              localObject2 = null;
-              i1 = 0;
-              localObject5 = localObject1;
-              localObject9 = localSharedPreferences.getString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "sign_in_operation" + "10", "");
-              localObject5 = localObject1;
-              localObject7 = localObject1;
-              if (TextUtils.isEmpty((CharSequence)localObject9)) {
-                break label2040;
-              }
-              localObject5 = localObject1;
-              localObject2 = new JSONObject((String)localObject9);
-              i1 = 0;
-              localObject9 = localObject1;
-              localObject12 = localObject16;
-              localObject11 = str1;
-              if (localObject2 != null)
-              {
-                localObject10 = localObject1;
-                localObject8 = localObject15;
-                localObject7 = localObject14;
               }
             }
           }
@@ -2741,102 +2833,102 @@ public class QQSettingMe
           localObject8 = localObject13;
         }
       }
-      else
+      try
       {
-        try
+        l1 = ((JSONObject)localObject2).optInt("start_time");
+        localObject10 = localObject1;
+        localObject8 = localObject15;
+        localObject7 = localObject14;
+        l2 = ((JSONObject)localObject2).optInt("end_time");
+        localObject9 = localObject1;
+        localObject12 = localObject16;
+        localObject11 = str1;
+        localObject10 = localObject1;
+        localObject8 = localObject15;
+        localObject7 = localObject14;
+        if (System.currentTimeMillis() > l1 * 1000L)
         {
-          l1 = ((JSONObject)localObject2).optInt("start_time");
-          localObject10 = localObject1;
-          localObject8 = localObject15;
-          localObject7 = localObject14;
-          l2 = ((JSONObject)localObject2).optInt("end_time");
           localObject9 = localObject1;
           localObject12 = localObject16;
           localObject11 = str1;
           localObject10 = localObject1;
           localObject8 = localObject15;
           localObject7 = localObject14;
-          if (System.currentTimeMillis() > l1 * 1000L)
+          if (System.currentTimeMillis() < l2 * 1000L)
           {
-            localObject9 = localObject1;
-            localObject12 = localObject16;
-            localObject11 = str1;
             localObject10 = localObject1;
             localObject8 = localObject15;
             localObject7 = localObject14;
-            if (System.currentTimeMillis() < l2 * 1000L)
-            {
-              localObject10 = localObject1;
-              localObject8 = localObject15;
-              localObject7 = localObject14;
-              localObject5 = ((JSONObject)localObject2).optString("template_text");
-              localObject10 = localObject5;
-              localObject8 = localObject15;
-              localObject7 = localObject14;
-              str1 = ((JSONObject)localObject2).optString("bytes_url");
-              if (i1 == 0) {
-                break label1695;
-              }
-              localObject10 = localObject5;
-              localObject8 = localObject15;
-              localObject7 = localObject14;
-              localObject1 = ((JSONObject)localObject2).optString("bytes_icon_url");
+            localObject5 = ((JSONObject)localObject2).optString("template_text");
+            localObject10 = localObject5;
+            localObject8 = localObject15;
+            localObject7 = localObject14;
+            str1 = ((JSONObject)localObject2).optString("bytes_url");
+            if (i1 == 0) {
+              break label1752;
             }
+            localObject10 = localObject5;
+            localObject8 = localObject15;
+            localObject7 = localObject14;
+            localObject1 = ((JSONObject)localObject2).optString("bytes_icon_url");
           }
         }
-        catch (JSONException localJSONException3)
+      }
+      catch (JSONException localJSONException3)
+      {
+        for (;;)
         {
-          for (;;)
-          {
-            localObject1 = localOutOfMemoryError;
-            localObject4 = localObject7;
-          }
+          localObject1 = localOutOfMemoryError;
+          localObject4 = localObject7;
         }
-        try
+      }
+      try
+      {
+        localObject7 = ((JSONObject)localObject2).optString("bytes_icon_custom_url");
+        localObject2 = localObject1;
+        localObject1 = localObject7;
+        localObject9 = localObject5;
+        localObject12 = localObject1;
+        localObject11 = localObject2;
+        localObject10 = localObject5;
+        localObject8 = localObject1;
+        localObject7 = localObject2;
+        if (!TextUtils.isEmpty(str1))
         {
-          localObject7 = ((JSONObject)localObject2).optString("bytes_icon_custom_url");
-          localObject2 = localObject1;
-          localObject1 = localObject7;
-          localObject9 = localObject5;
-          localObject12 = localObject1;
-          localObject11 = localObject2;
           localObject10 = localObject5;
           localObject8 = localObject1;
           localObject7 = localObject2;
-          if (!TextUtils.isEmpty(str1))
-          {
-            localObject10 = localObject5;
-            localObject8 = localObject1;
-            localObject7 = localObject2;
-            localSharedPreferences.edit().putString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "sign_in_jump_url", str1).commit();
-            localObject11 = localObject2;
-            localObject12 = localObject1;
-            localObject9 = localObject5;
-          }
-          localObject5 = localObject12;
-          localObject2 = localObject11;
-          localObject1 = localObject9;
+          localSharedPreferences.edit().putString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "sign_in_jump_url", str1).commit();
+          localObject11 = localObject2;
+          localObject12 = localObject1;
+          localObject9 = localObject5;
         }
-        catch (JSONException localJSONException4)
-        {
-          localObject4 = localObject1;
-          localObject1 = localJSONException3;
-          localObject8 = localObject13;
-          Object localObject6 = localJSONException4;
-          break label1724;
-          break label1048;
-          localObject4 = null;
-          localObject6 = null;
-          break label776;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("DailySignIn", 2, "doUpdateDailySignInItemView type=" + this.jdField_b_of_type_Int + " iconUrl=" + (String)localObject2 + " wording=" + (String)localObject1 + " day=" + i2 + "covericonUrl" + (String)localObject5);
-        }
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        localObject7 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130846080);
-        localObject8 = (URLImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377758);
-        localObject9 = (ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131369113);
+        localObject5 = localObject12;
+        localObject2 = localObject11;
+        localObject1 = localObject9;
+      }
+      catch (JSONException localJSONException4)
+      {
+        localObject4 = localObject1;
+        localObject1 = localJSONException3;
+        localObject8 = localObject13;
+        Object localObject6 = localJSONException4;
+        break label1781;
+        break label1017;
+        localObject4 = null;
+        localObject6 = null;
+        break label739;
+        localObject1 = localJSONException4;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("DailySignIn", 2, "doUpdateDailySignInItemView type=" + this.jdField_b_of_type_Int + " iconUrl=" + (String)localObject2 + " wording=" + (String)localObject1 + " day=" + i2 + "covericonUrl" + (String)localObject5);
+      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      localObject7 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130846402);
+      localObject8 = (URLImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378169);
+      localObject9 = (ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131369364);
+      if (!QQTheme.e()) {
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject5)))
         {
           localObject10 = URLDrawable.URLDrawableOptions.obtain();
@@ -2844,7 +2936,7 @@ public class QQSettingMe
           ((URLDrawable.URLDrawableOptions)localObject10).mLoadingDrawable = ((Drawable)localObject7);
           ((URLDrawable.URLDrawableOptions)localObject10).mRequestHeight = 56;
           ((URLDrawable.URLDrawableOptions)localObject10).mRequestWidth = 56;
-          if ((this.jdField_a_of_type_ComTencentMobileqqDataCard != null) && ((bkxw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard)) || (!this.jdField_a_of_type_ComTencentMobileqqDataCard.isNoCover())))
+          if ((this.jdField_a_of_type_ComTencentMobileqqDataCard != null) && ((DrawerCoverUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard)) || (!this.jdField_a_of_type_ComTencentMobileqqDataCard.isNoCover())))
           {
             localObject5 = URLDrawable.getDrawable((String)localObject5, (URLDrawable.URLDrawableOptions)localObject10);
             localObject7 = localObject5;
@@ -2856,14 +2948,14 @@ public class QQSettingMe
             ThemeUtil.getCurrentThemeInfo().getString("themeId");
             ((URLImageView)localObject8).setImageDrawable((Drawable)localObject7);
             ((ImageView)localObject9).setImageDrawable((Drawable)localObject7);
-            localObject5 = (TextView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131369184);
+            localObject5 = (TextView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131369437);
             if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-              break label1981;
+              break label2038;
             }
             this.jdField_b_of_type_AndroidWidgetTextView.setMaxWidth(i4 - i3 - i5 - (i6 + i7));
             this.jdField_b_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
             if (this.jdField_b_of_type_Int != 4) {
-              break label1939;
+              break label1996;
             }
             if (QLog.isColorLevel()) {
               QLog.i("DailySignIn", 2, "use signed wording:" + (String)localObject1);
@@ -2875,8 +2967,8 @@ public class QQSettingMe
             }
             this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
             ((TextView)localObject5).setText((CharSequence)localObject2);
-            this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.d();
-            this.jdField_b_of_type_ComTencentMobileqqRedtouchRedTouch.d();
+            this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.d();
+            this.jdField_b_of_type_ComTencentMobileqqTianshuUiRedTouch.d();
             return;
           }
         }
@@ -2886,9 +2978,9 @@ public class QQSettingMe
   
   public void D()
   {
-    this.jdField_g_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.k();
+    this.jdField_i_of_type_Boolean = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.onDrawerClosed();
     }
     if ((this.jdField_o_of_type_AndroidViewView != null) && (this.jdField_o_of_type_AndroidViewView.getVisibility() == 0))
     {
@@ -2896,30 +2988,36 @@ public class QQSettingMe
       BaseApplication.getContext().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "qqsettingme_f2f_guide", 0).edit().putBoolean("qqsettingme_f2f_guide_flag", true).apply();
     }
     a(null);
+    if ((this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView != null) && ((this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView.a() instanceof PAGView))) {
+      ((PAGView)this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView.a()).stop();
+    }
   }
   
   public void E()
   {
-    this.jdField_g_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.j();
+    this.jdField_i_of_type_Boolean = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.onDrawerOpened();
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSignInInfo(0);
     a(null);
-    amed.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "drawer_weather_expose");
-    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A42B", "0X800A42B", 0, 0, "", "", "", "");
-    int i1 = aogw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
-    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B178", "0X800B178", 0, 0, String.valueOf(i1), "", "", "");
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (bhru.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqDataCard.mQQLevelType))) {
+    WeatherDCReportHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "drawer_weather_expose");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A42B", "0X800A42B", 0, 0, "", "", "", "");
+    int i1 = VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B178", "0X800B178", 0, 0, String.valueOf(i1), "", "", "");
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (QQLevelIconCallback.isQQLevelIconExists(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqDataCard.mQQLevelType))) {
       if (this.jdField_a_of_type_ComTencentMobileqqDataCard.mQQLevelType != 0) {
-        break label196;
+        break label234;
       }
     }
-    label196:
+    label234:
     for (i1 = 99999;; i1 = this.jdField_a_of_type_ComTencentMobileqqDataCard.mQQLevelType)
     {
-      bdla.b(null, "dc00898", "", "", "qq_vip", "0X800A778", i1, 0, "", "", "", "");
-      ap();
+      ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A778", i1, 0, "", "", "", "");
+      aq();
+      if ((this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView != null) && ((this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView.a() instanceof PAGView))) {
+        ((PAGView)this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView.a()).play();
+      }
       return;
     }
   }
@@ -2931,7 +3029,7 @@ public class QQSettingMe
   
   public void G()
   {
-    this.jdField_a_of_type_Avli.b();
+    this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitSession.b();
   }
   
   public int a()
@@ -2942,11 +3040,11 @@ public class QQSettingMe
       int i1 = 0;
       if (localIterator.hasNext())
       {
-        Bitmap localBitmap = ((blgc)localIterator.next()).a();
+        Bitmap localBitmap = ((UpSideDownDrawable)localIterator.next()).a();
         if (localBitmap == null) {
           break label70;
         }
-        i1 = bhbx.a(localBitmap) + i1;
+        i1 = Utils.a(localBitmap) + i1;
       }
       label70:
       for (;;)
@@ -2963,15 +3061,15 @@ public class QQSettingMe
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
     DisplayMetrics localDisplayMetrics = ((Resources)localObject).getDisplayMetrics();
-    float f2 = ((Resources)localObject).getDimension(2131298435);
-    float f3 = ((Resources)localObject).getDimension(2131298419) + ((Resources)localObject).getDimension(2131298423) + ((Resources)localObject).getDimension(2131298427) + ((Resources)localObject).getDimension(2131298430) + ((Resources)localObject).getDimension(2131298438);
-    bibe localbibe = biba.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    float f2 = ((Resources)localObject).getDimension(2131298521);
+    float f3 = ((Resources)localObject).getDimension(2131298505) + ((Resources)localObject).getDimension(2131298509) + ((Resources)localObject).getDimension(2131298513) + ((Resources)localObject).getDimension(2131298516) + ((Resources)localObject).getDimension(2131298524);
+    QQValueInfoItem localQQValueInfoItem = QQValueInfoManage.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
     float f1 = f3;
-    if (localbibe != null)
+    if (localQQValueInfoItem != null)
     {
       f1 = f3;
-      if (localbibe.jdField_d_of_type_Int == 0) {
-        f1 = f3 + AIOUtils.dp2px(42.0F, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources()) + ((Resources)localObject).getDimension(2131298437);
+      if (localQQValueInfoItem.jdField_d_of_type_Int == 0) {
+        f1 = f3 + AIOUtils.a(QQValuePagView.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources()) + ((Resources)localObject).getDimension(2131298523);
       }
     }
     f3 = localDisplayMetrics.widthPixels - f1 - paramInt;
@@ -2993,14 +3091,6 @@ public class QQSettingMe
     }
   }
   
-  public blgc a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    return (blgc)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
   public DrawerFrame a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity != null) {
@@ -3014,6 +3104,14 @@ public class QQSettingMe
     return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   }
   
+  public UpSideDownDrawable a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    return (UpSideDownDrawable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
   protected String a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "sign_in_jump_url", "https://ti.qq.com/signin/public/index.html?_wv=1090528161&_wwv=13");
@@ -3024,9 +3122,9 @@ public class QQSettingMe
     if (QLog.isColorLevel()) {
       QLog.e("QQSettingRedesign", 2, "-->onResume!");
     }
-    this.jdField_f_of_type_Boolean = false;
+    this.jdField_h_of_type_Boolean = false;
     u();
-    bdlm.a().a("QQSettingMe");
+    SceneTracker.a().a("QQSettingMe");
     if (!this.jdField_d_of_type_Boolean) {
       h();
     }
@@ -3037,15 +3135,15 @@ public class QQSettingMe
     y();
     k();
     w();
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.h();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.initApolloDrawerStatus();
     }
     try
     {
       if (((WindowManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("window")).getDefaultDisplay().getWidth() >= 480)
       {
-        am();
-        this.jdField_a_of_type_Amee.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+        an();
+        this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
       }
       for (;;)
       {
@@ -3054,91 +3152,96 @@ public class QQSettingMe
         if ((localObject1 != null) && (((String)localObject1).equals(this.jdField_a_of_type_JavaLangString))) {
           ThreadManagerV2.executeOnSubThread(new QQSettingMe.4(this));
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null)
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.a();
-          this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.e();
+          this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.updateCmshowStatus();
+          this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.refreshApolloView();
         }
         this.jdField_c_of_type_Boolean = true;
         b(true);
-        aq();
+        ar();
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          long l1 = WebProcessManager.a((String)localObject1, "key_individuation_click_time");
-          if ((l1 == -1L) || (System.currentTimeMillis() - l1 < 259200000L)) {
-            WebProcessManager.a(jdField_b_of_type_JavaUtilList, "key_individuation_dns_parse");
-          }
-          l1 = WebProcessManager.b((String)localObject1);
-          if (System.currentTimeMillis() - l1 < 604800000L) {
-            WebProcessManager.a(jdField_a_of_type_JavaUtilList, "key_vip_dns_parse");
+          localObject3 = (IWebProcessPreload)QRoute.api(IWebProcessPreload.class);
+          if (localObject3 != null)
+          {
+            long l1 = ((IWebProcessPreload)localObject3).getBusinessClickTimeMills((String)localObject1, "individuation");
+            if ((l1 == -1L) || (System.currentTimeMillis() - l1 < 259200000L)) {
+              ((IWebProcessPreload)localObject3).preParseDns(jdField_b_of_type_JavaUtilList, "key_individuation_dns_parse");
+            }
+            l1 = ((IWebProcessPreload)localObject3).getBusinessClickTimeMills((String)localObject1, "vip");
+            if (System.currentTimeMillis() - l1 < 604800000L) {
+              ((IWebProcessPreload)localObject3).preParseDns(jdField_a_of_type_JavaUtilList, "key_vip_dns_parse");
+            }
           }
         }
         localObject3 = this.jdField_a_of_type_ArrayOfAndroidViewView[9];
         if (localObject3 != null)
         {
-          localObject4 = (vzv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQSTORY_MANAGER);
-          if ((localObject4 == null) || (!((vzv)localObject4).e())) {
+          localObject4 = (QQStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQSTORY_MANAGER);
+          if ((localObject4 == null) || (!((QQStoryManager)localObject4).e())) {
             break;
           }
           ((View)localObject3).setVisibility(0);
         }
-        bibb.a(this.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView, (String)localObject1, "setting");
+        this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView.a((String)localObject1, "setting", ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
         I();
         J();
         b();
-        ab();
-        ad();
-        H();
+        ac();
         ae();
+        H();
         af();
-        if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.c()) && (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app)) && (bdfk.b())) {
-          ImmersiveUtils.a(true, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
+        ag();
+        if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()) && (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app)) && (SimpleUIUtil.a())) {
+          ImmersiveUtils.setStatusTextColor(true, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
         }
+        TianShuManager.setLastClickAdTraceInfo("", "");
         localObject4 = new int[15];
-        Object tmp454_452 = localObject4;
-        tmp454_452[0] = 2131374484;
-        Object tmp460_454 = tmp454_452;
-        tmp460_454[1] = 2131371802;
-        Object tmp466_460 = tmp460_454;
-        tmp466_460[2] = 2131371799;
-        Object tmp472_466 = tmp466_460;
-        tmp472_466[3] = 2131371790;
-        Object tmp478_472 = tmp472_466;
-        tmp478_472[4] = 2131371793;
-        Object tmp484_478 = tmp478_472;
-        tmp484_478[5] = 2131371798;
-        Object tmp490_484 = tmp484_478;
-        tmp490_484[6] = 2131371765;
-        Object tmp497_490 = tmp490_484;
-        tmp497_490[7] = 2131371794;
-        Object tmp504_497 = tmp497_490;
-        tmp504_497[8] = 2131371800;
-        Object tmp511_504 = tmp504_497;
-        tmp511_504[9] = 2131371801;
-        Object tmp518_511 = tmp511_504;
-        tmp518_511[10] = 2131371795;
-        Object tmp525_518 = tmp518_511;
-        tmp525_518[11] = 2131364221;
-        Object tmp532_525 = tmp525_518;
-        tmp532_525[12] = 2131371766;
-        Object tmp539_532 = tmp532_525;
-        tmp539_532[13] = 2131365343;
-        Object tmp546_539 = tmp539_532;
-        tmp546_539[14] = 2131371764;
-        tmp546_539;
-        i2 = aogw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
+        Object tmp509_507 = localObject4;
+        tmp509_507[0] = 2131374844;
+        Object tmp515_509 = tmp509_507;
+        tmp515_509[1] = 2131372114;
+        Object tmp521_515 = tmp515_509;
+        tmp521_515[2] = 2131372111;
+        Object tmp527_521 = tmp521_515;
+        tmp527_521[3] = 2131372102;
+        Object tmp533_527 = tmp527_521;
+        tmp533_527[4] = 2131372105;
+        Object tmp539_533 = tmp533_527;
+        tmp539_533[5] = 2131372110;
+        Object tmp545_539 = tmp539_533;
+        tmp545_539[6] = 2131372079;
+        Object tmp552_545 = tmp545_539;
+        tmp552_545[7] = 2131372106;
+        Object tmp559_552 = tmp552_545;
+        tmp559_552[8] = 2131372112;
+        Object tmp566_559 = tmp559_552;
+        tmp566_559[9] = 2131372113;
+        Object tmp573_566 = tmp566_559;
+        tmp573_566[10] = 2131372107;
+        Object tmp580_573 = tmp573_566;
+        tmp580_573[11] = 2131364328;
+        Object tmp587_580 = tmp580_573;
+        tmp587_580[12] = 2131372080;
+        Object tmp594_587 = tmp587_580;
+        tmp594_587[13] = 2131365492;
+        Object tmp601_594 = tmp594_587;
+        tmp601_594[14] = 2131372078;
+        tmp601_594;
+        i2 = VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
         i1 = 0;
         for (;;)
         {
           if (i1 >= 15) {
-            return;
+            break label1151;
           }
-          if ((localObject4[i1] != 2131371802) || (this.jdField_a_of_type_ArrayOfAndroidViewView[i1].getVisibility() != 0)) {
+          if ((localObject4[i1] != 2131372114) || (this.jdField_a_of_type_ArrayOfAndroidViewView[i1].getVisibility() != 0)) {
             break;
           }
-          localObject1 = ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(String.valueOf(100400));
-          int i3 = aogw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), RedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1));
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8C3", "0X800A8C3", i3, 0, String.valueOf(i3), "", "", "");
+          localObject1 = ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath(String.valueOf(100400));
+          int i3 = VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), RedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1));
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8C3", "0X800A8C3", i3, 0, String.valueOf(i3), "", "", "");
           MobileReportManager.getInstance().qqSetingMeReport(1, 101, String.valueOf(i3));
           i1 += 1;
         }
@@ -3163,10 +3266,10 @@ public class QQSettingMe
         ((View)localObject3).setVisibility(8);
         continue;
         Object localObject2;
-        if ((localObject4[i1] == 2131371799) && (this.jdField_a_of_type_ArrayOfAndroidViewView[i1].getVisibility() == 0))
+        if ((localObject4[i1] == 2131372111) && (this.jdField_a_of_type_ArrayOfAndroidViewView[i1].getVisibility() == 0))
         {
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8C4", "0X800A8C4", i2, 0, String.valueOf(i2), "", "", "");
-          RedTouch localRedTouch = this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch[2];
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8C4", "0X800A8C4", i2, 0, String.valueOf(i2), "", "", "");
+          RedTouch localRedTouch = this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch[2];
           localObject3 = "2";
           localObject2 = localObject3;
           if (localRedTouch != null)
@@ -3176,13 +3279,13 @@ public class QQSettingMe
               localObject2 = "1";
             }
           }
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "wallet", "wallet.entrance.show", 0, 0, (String)localObject2, NetConnInfoCenter.getServerTimeMillis() + "", "", "8.4.10");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "wallet", "wallet.entrance.show", 0, 0, (String)localObject2, NetConnInfoCenter.getServerTimeMillis() + "", "", "8.5.5");
         }
-        else if ((localObject4[i1] == 2131365343) && (this.jdField_a_of_type_ArrayOfAndroidViewView[i1].getVisibility() == 0))
+        else if ((localObject4[i1] == 2131365492) && (this.jdField_a_of_type_ArrayOfAndroidViewView[i1].getVisibility() == 0))
         {
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8C5", "0X800A8C5", i2, 0, String.valueOf(i2), this.jdField_d_of_type_JavaLangString, "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8C5", "0X800A8C5", i2, 0, String.valueOf(i2), this.jdField_e_of_type_JavaLangString, "", "");
         }
-        else if (localObject4[i1] == 2131374484)
+        else if (localObject4[i1] == 2131374844)
         {
           QzoneConfig.getInstance();
           if (QzoneConfig.isQQCircleShowDrawTabEntrance()) {
@@ -3191,9 +3294,9 @@ public class QQSettingMe
             this.jdField_a_of_type_ArrayOfAndroidViewView[i1].setVisibility(8);
           }
         }
-        else if (localObject4[i1] == 2131371765)
+        else if (localObject4[i1] == 2131372079)
         {
-          localObject3 = this.jdField_a_of_type_Bhze.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "key_svip_item_makup_");
+          localObject3 = this.jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "key_svip_item_makup_");
           localObject2 = "0";
           if (localObject3 != null) {
             localObject2 = ((MenumItem)localObject3).user_group + "";
@@ -3201,10 +3304,12 @@ public class QQSettingMe
           MobileReportManager.getInstance().qqSetingMeReport(6, 101, (String)localObject2);
         }
       }
+      label1151:
+      d(false);
     }
   }
   
-  public void a(int paramInt)
+  void a(int paramInt)
   {
     QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramInt, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
@@ -3233,12 +3338,12 @@ public class QQSettingMe
       e();
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
       f();
-      this.jdField_a_of_type_Beid.a(paramQQAppInterface);
+      this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic.a(paramQQAppInterface);
       k();
       y();
-      Y();
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.i();
+      Z();
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.destroyApollo();
       }
       return;
     }
@@ -3251,9 +3356,9 @@ public class QQSettingMe
     Object localObject3 = null;
     Object localObject2 = null;
     this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramRichStatus;
-    ImageView localImageView1 = (ImageView)this.jdField_e_of_type_AndroidViewView.findViewById(2131376648);
-    TextView localTextView = (TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131376649);
-    ImageView localImageView2 = (ImageView)this.jdField_e_of_type_AndroidViewView.findViewById(2131368398);
+    ImageView localImageView1 = (ImageView)this.jdField_e_of_type_AndroidViewView.findViewById(2131377043);
+    TextView localTextView = (TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131377044);
+    ImageView localImageView2 = (ImageView)this.jdField_e_of_type_AndroidViewView.findViewById(2131368620);
     localImageView2.setColorFilter(localTextView.getCurrentTextColor());
     StringBuilder localStringBuilder = new StringBuilder(100);
     SharedPreferences.Editor localEditor;
@@ -3267,7 +3372,7 @@ public class QQSettingMe
       if ((paramRichStatus == null) || (TextUtils.isEmpty(paramRichStatus.actionText))) {
         break label515;
       }
-      localImageView1.setImageBitmap(this.jdField_a_of_type_Bbvn.a(paramRichStatus.actionId, 200));
+      localImageView1.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(paramRichStatus.actionId, 200));
       localImageView1.setVisibility(0);
       localStringBuilder.append(paramRichStatus.actionText);
       if (!TextUtils.isEmpty(paramRichStatus.dataText)) {
@@ -3317,18 +3422,18 @@ public class QQSettingMe
       if (!TextUtils.isEmpty(paramRichStatus)) {
         break label623;
       }
-      localTextView.setText(2131698804);
+      localTextView.setText(2131699117);
       localImageView2.setVisibility(0);
     }
     for (;;)
     {
-      if (AppSetting.jdField_c_of_type_Boolean)
+      if (AppSetting.jdField_d_of_type_Boolean)
       {
         this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
         this.jdField_a_of_type_JavaLangStringBuilder.append("个性签名").append(paramRichStatus);
         this.jdField_e_of_type_AndroidViewView.setContentDescription(this.jdField_a_of_type_JavaLangStringBuilder.toString());
       }
-      if (bdfk.b()) {
+      if (SimpleUIUtil.a()) {
         localImageView1.setVisibility(8);
       }
       return;
@@ -3337,7 +3442,7 @@ public class QQSettingMe
       label515:
       localImageView1.setBackgroundResource(0);
       localImageView1.setPadding(0, 0, 0, 0);
-      localImageView1.setImageResource(2130846059);
+      localImageView1.setImageResource(2130846380);
       localImageView1.setVisibility(8);
       break label272;
       label548:
@@ -3359,7 +3464,7 @@ public class QQSettingMe
       break label419;
       label623:
       localImageView2.setVisibility(0);
-      if (DeviceInfoUtil.isRubbishPhoneLenovoA366t()) {
+      if (DeviceInfoUtil.b()) {
         localTextView.setText(new QQText(paramRichStatus + " ", 1, 16));
       } else {
         localTextView.setText(new QQText(paramRichStatus, 1, 16));
@@ -3372,17 +3477,17 @@ public class QQSettingMe
     if (ImmersiveUtils.isSupporImmersive() == 0) {
       return;
     }
-    if (this.jdField_g_of_type_Boolean)
+    if (this.jdField_i_of_type_Boolean)
     {
-      if ((bdfk.b()) && (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app)) && (ImmersiveUtils.isSupporImmersive() != 0))
+      if ((SimpleUIUtil.a()) && (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app)) && (ImmersiveUtils.isSupporImmersive() != 0))
       {
         paramBoolean = ThemeUtil.getCurrentThemeId();
-        if ((bdfk.b(paramBoolean)) && (!ThemeUtil.isSimpleColrThemeStateBarUseWhite(paramBoolean)))
+        if ((QQTheme.c(paramBoolean)) && (!QQTheme.a(paramBoolean)))
         {
-          ImmersiveUtils.a(false, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
+          ImmersiveUtils.setStatusTextColor(false, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
           return;
         }
-        ImmersiveUtils.a(true, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
+        ImmersiveUtils.setStatusTextColor(true, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
         return;
       }
       ThemeUtil.adjustThemeStatusBar(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
@@ -3393,7 +3498,7 @@ public class QQSettingMe
     {
       localBoolean = paramBoolean;
       if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null) {
-        if ((!bkxw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard)) && (this.jdField_a_of_type_ComTencentMobileqqDataCard.isNoCover())) {
+        if ((!DrawerCoverUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard)) && (this.jdField_a_of_type_ComTencentMobileqqDataCard.isNoCover())) {
           break label170;
         }
       }
@@ -3408,23 +3513,23 @@ public class QQSettingMe
       if (!localBoolean.booleanValue()) {
         break;
       }
-      ImmersiveUtils.a(false, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
+      ImmersiveUtils.setStatusTextColor(false, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
       return;
     }
-    ImmersiveUtils.a(true, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
+    ImmersiveUtils.setStatusTextColor(true, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
     return;
     label188:
     if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, null))
     {
-      ImmersiveUtils.a(false, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
+      ImmersiveUtils.setStatusTextColor(false, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
       return;
     }
     if (ThemeUtil.isGoldenTheme())
     {
-      ImmersiveUtils.a(false, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
+      ImmersiveUtils.setStatusTextColor(false, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
       return;
     }
-    ImmersiveUtils.a(ThemeUtil.isDartStatusBar(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
+    ImmersiveUtils.setStatusTextColor(ThemeUtil.isDartStatusBar(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
   }
   
   public void a(String paramString)
@@ -3432,21 +3537,21 @@ public class QQSettingMe
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "[showExploreBox] url:" + paramString);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.a(paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.showExploreBox(paramString);
     }
   }
   
-  public void a(String paramString, blgc paramblgc)
+  public void a(String paramString, UpSideDownDrawable paramUpSideDownDrawable)
   {
-    if (paramblgc == null)
+    if (paramUpSideDownDrawable == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQSettingRedesign", 2, "[storeDynamicDrawable] drawable to be stored is null");
       }
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramblgc);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramUpSideDownDrawable);
   }
   
   public void a(boolean paramBoolean)
@@ -3463,220 +3568,220 @@ public class QQSettingMe
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 322	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 351	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +50 -> 53
-    //   6: ldc_w 324
+    //   6: ldc_w 353
     //   9: iconst_2
-    //   10: new 337	java/lang/StringBuilder
+    //   10: new 366	java/lang/StringBuilder
     //   13: dup
-    //   14: invokespecial 338	java/lang/StringBuilder:<init>	()V
-    //   17: ldc_w 3260
-    //   20: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: invokespecial 367	java/lang/StringBuilder:<init>	()V
+    //   17: ldc_w 3392
+    //   20: invokevirtual 513	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: iload_1
-    //   24: invokevirtual 1411	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   27: ldc_w 3262
-    //   30: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: invokevirtual 1471	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   27: ldc_w 3394
+    //   30: invokevirtual 513	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: iload_2
-    //   34: invokevirtual 1411	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   37: ldc_w 3264
-    //   40: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 1471	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   37: ldc_w 3396
+    //   40: invokevirtual 513	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: iload_3
-    //   44: invokevirtual 632	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 486	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokestatic 1334	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   44: invokevirtual 666	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 514	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokestatic 1383	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   53: aload_0
-    //   54: getfield 333	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   57: invokevirtual 1920	com/tencent/mobileqq/app/QQAppInterface:getPreferences	()Landroid/content/SharedPreferences;
+    //   54: getfield 362	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   57: invokevirtual 1965	com/tencent/mobileqq/app/QQAppInterface:getPreferences	()Landroid/content/SharedPreferences;
     //   60: astore 6
     //   62: aload_0
-    //   63: getfield 702	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   63: getfield 735	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
     //   66: iconst_1
     //   67: aaload
-    //   68: ldc_w 787
-    //   71: invokevirtual 388	android/view/View:findViewById	(I)Landroid/view/View;
-    //   74: checkcast 463	android/widget/TextView
+    //   68: ldc_w 820
+    //   71: invokevirtual 416	android/view/View:findViewById	(I)Landroid/view/View;
+    //   74: checkcast 491	android/widget/TextView
     //   77: astore 7
     //   79: aload_0
-    //   80: getfield 702	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   80: getfield 735	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
     //   83: iconst_1
     //   84: aaload
-    //   85: ldc_w 785
-    //   88: invokevirtual 388	android/view/View:findViewById	(I)Landroid/view/View;
-    //   91: checkcast 566	android/widget/ImageView
+    //   85: ldc_w 818
+    //   88: invokevirtual 416	android/view/View:findViewById	(I)Landroid/view/View;
+    //   91: checkcast 594	android/widget/ImageView
     //   94: astore 8
     //   96: aload_0
-    //   97: getfield 331	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppBaseActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   100: invokevirtual 694	com/tencent/mobileqq/app/BaseActivity:getResources	()Landroid/content/res/Resources;
+    //   97: getfield 360	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppBaseActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   100: invokevirtual 727	com/tencent/mobileqq/app/BaseActivity:getResources	()Landroid/content/res/Resources;
     //   103: astore 9
     //   105: aload 9
-    //   107: ldc 184
-    //   109: invokevirtual 814	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   107: ldc 199
+    //   109: invokevirtual 847	android/content/res/Resources:getString	(I)Ljava/lang/String;
     //   112: astore 5
-    //   114: invokestatic 1006	anxv:a	()Z
+    //   114: invokestatic 1045	com/tencent/mobileqq/app/LocaleManager:a	()Z
     //   117: ifeq +414 -> 531
     //   120: iload_1
     //   121: ifeq +253 -> 374
-    //   124: invokestatic 2461	bhpw:a	()Lbhpw;
-    //   127: getfield 3265	bhpw:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   130: invokestatic 740	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   124: invokestatic 2563	com/tencent/mobileqq/vas/VipGrayConfigHelper:a	()Lcom/tencent/mobileqq/vas/VipGrayConfigHelper;
+    //   127: getfield 3397	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   130: invokestatic 773	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   133: ifne +224 -> 357
-    //   136: invokestatic 2461	bhpw:a	()Lbhpw;
-    //   139: getfield 3265	bhpw:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   136: invokestatic 2563	com/tencent/mobileqq/vas/VipGrayConfigHelper:a	()Lcom/tencent/mobileqq/vas/VipGrayConfigHelper;
+    //   139: getfield 3397	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   142: astore 6
     //   144: aload 6
     //   146: astore 5
     //   148: aload 5
     //   150: astore 6
     //   152: aload 5
-    //   154: invokevirtual 419	java/lang/String:length	()I
+    //   154: invokevirtual 447	java/lang/String:length	()I
     //   157: bipush 8
     //   159: if_icmple +13 -> 172
     //   162: aload 5
     //   164: iconst_0
     //   165: bipush 8
-    //   167: invokevirtual 3269	java/lang/String:substring	(II)Ljava/lang/String;
+    //   167: invokevirtual 3401	java/lang/String:substring	(II)Ljava/lang/String;
     //   170: astore 6
     //   172: aload_0
-    //   173: getfield 182	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_Bhze	Lbhze;
+    //   173: getfield 197	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager	Lcom/tencent/mobileqq/vip/QQSettingConfigManager;
     //   176: aload_0
-    //   177: getfield 333	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   177: getfield 362	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   180: iconst_4
-    //   181: invokevirtual 1009	bhze:a	(Lcom/tencent/mobileqq/app/QQAppInterface;I)Z
+    //   181: invokevirtual 1048	com/tencent/mobileqq/vip/QQSettingConfigManager:a	(Lcom/tencent/mobileqq/app/QQAppInterface;I)Z
     //   184: ifne +27 -> 211
     //   187: aload 7
     //   189: aload 6
-    //   191: invokevirtual 529	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   191: invokevirtual 557	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   194: aload_0
-    //   195: getfield 165	com/tencent/mobileqq/activity/QQSettingMe:jdField_j_of_type_Boolean	Z
+    //   195: getfield 180	com/tencent/mobileqq/activity/QQSettingMe:jdField_l_of_type_Boolean	Z
     //   198: ifeq +435 -> 633
-    //   201: ldc_w 3270
+    //   201: ldc_w 3402
     //   204: istore_3
     //   205: aload 8
     //   207: iload_3
-    //   208: invokevirtual 786	android/widget/ImageView:setImageResource	(I)V
+    //   208: invokevirtual 819	android/widget/ImageView:setImageResource	(I)V
     //   211: aload 6
-    //   213: invokestatic 740	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   213: invokestatic 773	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   216: ifne +107 -> 323
     //   219: aload_0
-    //   220: getfield 333	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   223: invokevirtual 472	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   226: ldc_w 2031
+    //   220: getfield 362	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   223: invokevirtual 500	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   226: ldc_w 2075
     //   229: iconst_0
-    //   230: invokevirtual 2032	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   233: invokeinterface 2684 1 0
-    //   238: new 337	java/lang/StringBuilder
+    //   230: invokevirtual 1774	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   233: invokeinterface 2792 1 0
+    //   238: new 366	java/lang/StringBuilder
     //   241: dup
-    //   242: invokespecial 338	java/lang/StringBuilder:<init>	()V
-    //   245: ldc_w 2034
-    //   248: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: invokespecial 367	java/lang/StringBuilder:<init>	()V
+    //   245: ldc_w 2077
+    //   248: invokevirtual 513	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: aload_0
-    //   252: getfield 333	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   255: invokevirtual 413	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   258: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   261: ldc_w 2036
-    //   264: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: invokestatic 2038	anxv:a	()I
-    //   270: invokevirtual 632	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   273: invokevirtual 486	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   252: getfield 362	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   255: invokevirtual 441	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   258: invokevirtual 513	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: ldc_w 2079
+    //   264: invokevirtual 513	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: invokestatic 2081	com/tencent/mobileqq/app/LocaleManager:a	()I
+    //   270: invokevirtual 666	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   273: invokevirtual 514	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   276: aload 6
-    //   278: invokeinterface 2691 3 0
-    //   283: invokeinterface 2694 1 0
+    //   278: invokeinterface 2799 3 0
+    //   283: invokeinterface 2802 1 0
     //   288: pop
-    //   289: invokestatic 322	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   289: invokestatic 351	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   292: ifeq +31 -> 323
-    //   295: ldc_w 324
+    //   295: ldc_w 353
     //   298: iconst_2
-    //   299: new 337	java/lang/StringBuilder
+    //   299: new 366	java/lang/StringBuilder
     //   302: dup
-    //   303: invokespecial 338	java/lang/StringBuilder:<init>	()V
-    //   306: ldc_w 3272
-    //   309: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   303: invokespecial 367	java/lang/StringBuilder:<init>	()V
+    //   306: ldc_w 3404
+    //   309: invokevirtual 513	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   312: aload 6
-    //   314: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   317: invokevirtual 486	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   320: invokestatic 634	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   314: invokevirtual 513	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   317: invokevirtual 514	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   320: invokestatic 668	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   323: aload_0
-    //   324: getfield 702	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   324: getfield 735	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
     //   327: iconst_1
     //   328: aaload
     //   329: iconst_0
-    //   330: invokevirtual 526	android/view/View:setVisibility	(I)V
-    //   333: getstatic 372	com/tencent/common/config/AppSetting:jdField_c_of_type_Boolean	Z
+    //   330: invokevirtual 554	android/view/View:setVisibility	(I)V
+    //   333: getstatic 400	com/tencent/common/config/AppSetting:jdField_d_of_type_Boolean	Z
     //   336: ifeq +20 -> 356
     //   339: aload_0
-    //   340: getfield 702	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   340: getfield 735	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
     //   343: iconst_1
     //   344: aaload
     //   345: aload 6
-    //   347: ldc_w 816
-    //   350: invokevirtual 821	java/lang/Class:getName	()Ljava/lang/String;
-    //   353: invokestatic 826	bgyd:a	(Landroid/view/View;Ljava/lang/CharSequence;Ljava/lang/String;)V
+    //   347: ldc_w 849
+    //   350: invokevirtual 854	java/lang/Class:getName	()Ljava/lang/String;
+    //   353: invokestatic 859	com/tencent/mobileqq/util/AccessibilityUtil:a	(Landroid/view/View;Ljava/lang/CharSequence;Ljava/lang/String;)V
     //   356: return
     //   357: aload 9
-    //   359: ldc_w 3273
-    //   362: invokevirtual 814	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   359: ldc_w 3405
+    //   362: invokevirtual 847	android/content/res/Resources:getString	(I)Ljava/lang/String;
     //   365: astore 6
     //   367: aload 6
     //   369: astore 5
     //   371: goto -223 -> 148
     //   374: iload_2
     //   375: ifeq +47 -> 422
-    //   378: invokestatic 2461	bhpw:a	()Lbhpw;
-    //   381: getfield 3275	bhpw:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   384: invokestatic 740	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   378: invokestatic 2563	com/tencent/mobileqq/vas/VipGrayConfigHelper:a	()Lcom/tencent/mobileqq/vas/VipGrayConfigHelper;
+    //   381: getfield 3406	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   384: invokestatic 773	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   387: ifne +18 -> 405
-    //   390: invokestatic 2461	bhpw:a	()Lbhpw;
-    //   393: getfield 3275	bhpw:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   390: invokestatic 2563	com/tencent/mobileqq/vas/VipGrayConfigHelper:a	()Lcom/tencent/mobileqq/vas/VipGrayConfigHelper;
+    //   393: getfield 3406	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   396: astore 6
     //   398: aload 6
     //   400: astore 5
     //   402: goto -254 -> 148
     //   405: aload 9
-    //   407: ldc_w 3276
-    //   410: invokevirtual 814	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   407: ldc_w 3407
+    //   410: invokevirtual 847	android/content/res/Resources:getString	(I)Ljava/lang/String;
     //   413: astore 6
     //   415: aload 6
     //   417: astore 5
     //   419: goto -271 -> 148
     //   422: aload 6
-    //   424: ldc_w 3278
+    //   424: ldc_w 3409
     //   427: iconst_0
-    //   428: invokeinterface 1925 3 0
+    //   428: invokeinterface 1970 3 0
     //   433: istore 4
     //   435: iload_3
     //   436: ifgt +8 -> 444
     //   439: iload 4
     //   441: ifle +47 -> 488
-    //   444: invokestatic 2461	bhpw:a	()Lbhpw;
-    //   447: getfield 3279	bhpw:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   450: invokestatic 740	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   444: invokestatic 2563	com/tencent/mobileqq/vas/VipGrayConfigHelper:a	()Lcom/tencent/mobileqq/vas/VipGrayConfigHelper;
+    //   447: getfield 3410	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   450: invokestatic 773	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   453: ifne +18 -> 471
-    //   456: invokestatic 2461	bhpw:a	()Lbhpw;
-    //   459: getfield 3279	bhpw:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   456: invokestatic 2563	com/tencent/mobileqq/vas/VipGrayConfigHelper:a	()Lcom/tencent/mobileqq/vas/VipGrayConfigHelper;
+    //   459: getfield 3410	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   462: astore 6
     //   464: aload 6
     //   466: astore 5
     //   468: goto -320 -> 148
     //   471: aload 9
-    //   473: ldc_w 3280
-    //   476: invokevirtual 814	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   473: ldc_w 3411
+    //   476: invokevirtual 847	android/content/res/Resources:getString	(I)Ljava/lang/String;
     //   479: astore 6
     //   481: aload 6
     //   483: astore 5
     //   485: goto -337 -> 148
-    //   488: invokestatic 2461	bhpw:a	()Lbhpw;
-    //   491: getfield 3281	bhpw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   494: invokestatic 740	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   488: invokestatic 2563	com/tencent/mobileqq/vas/VipGrayConfigHelper:a	()Lcom/tencent/mobileqq/vas/VipGrayConfigHelper;
+    //   491: getfield 3412	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   494: invokestatic 773	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   497: ifne +18 -> 515
-    //   500: invokestatic 2461	bhpw:a	()Lbhpw;
-    //   503: getfield 3281	bhpw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   500: invokestatic 2563	com/tencent/mobileqq/vas/VipGrayConfigHelper:a	()Lcom/tencent/mobileqq/vas/VipGrayConfigHelper;
+    //   503: getfield 3412	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   506: astore 6
     //   508: aload 6
     //   510: astore 5
     //   512: goto -364 -> 148
     //   515: aload 9
-    //   517: ldc 184
-    //   519: invokevirtual 814	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   517: ldc 199
+    //   519: invokevirtual 847	android/content/res/Resources:getString	(I)Ljava/lang/String;
     //   522: astore 6
     //   524: aload 6
     //   526: astore 5
@@ -3684,54 +3789,54 @@ public class QQSettingMe
     //   531: iload_1
     //   532: ifeq +16 -> 548
     //   535: aload 9
-    //   537: ldc_w 3273
-    //   540: invokevirtual 814	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   537: ldc_w 3405
+    //   540: invokevirtual 847	android/content/res/Resources:getString	(I)Ljava/lang/String;
     //   543: astore 6
     //   545: goto -373 -> 172
     //   548: iload_2
     //   549: ifeq +16 -> 565
     //   552: aload 9
-    //   554: ldc_w 3276
-    //   557: invokevirtual 814	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   554: ldc_w 3407
+    //   557: invokevirtual 847	android/content/res/Resources:getString	(I)Ljava/lang/String;
     //   560: astore 6
     //   562: goto -390 -> 172
     //   565: aload 6
-    //   567: ldc_w 3278
+    //   567: ldc_w 3409
     //   570: iconst_0
-    //   571: invokeinterface 1925 3 0
+    //   571: invokeinterface 1970 3 0
     //   576: istore 4
     //   578: iload_3
     //   579: ifgt +8 -> 587
     //   582: iload 4
     //   584: ifle +16 -> 600
     //   587: aload 9
-    //   589: ldc_w 3280
-    //   592: invokevirtual 814	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   589: ldc_w 3411
+    //   592: invokevirtual 847	android/content/res/Resources:getString	(I)Ljava/lang/String;
     //   595: astore 6
     //   597: goto -425 -> 172
     //   600: aload 9
-    //   602: ldc 184
-    //   604: invokevirtual 814	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   602: ldc 199
+    //   604: invokevirtual 847	android/content/res/Resources:getString	(I)Ljava/lang/String;
     //   607: astore 6
     //   609: goto -437 -> 172
     //   612: astore 6
-    //   614: ldc_w 324
+    //   614: ldc_w 353
     //   617: iconst_1
-    //   618: ldc_w 3283
+    //   618: ldc_w 3414
     //   621: aload 6
-    //   623: invokestatic 1845	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   623: invokestatic 1882	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   626: aload 5
     //   628: astore 6
     //   630: goto -458 -> 172
-    //   633: ldc_w 3284
+    //   633: ldc_w 3415
     //   636: istore_3
     //   637: goto -432 -> 205
     //   640: astore 5
-    //   642: ldc_w 324
+    //   642: ldc_w 353
     //   645: iconst_1
-    //   646: ldc_w 3286
+    //   646: ldc_w 3417
     //   649: aload 5
-    //   651: invokestatic 1845	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   651: invokestatic 1882	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   654: goto -331 -> 323
     //   657: astore 6
     //   659: goto -45 -> 614
@@ -3780,9 +3885,9 @@ public class QQSettingMe
   int[] a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return new int[] { 2130846067, 2130846082, 2130846065, 2130846078, 2130846084, 2130846086, 2130846088, 2130846038, 2130846070, 2130846063, 2130846061, 2130846068, 2130846077, 2130846034, 2130846080 };
+      return new int[] { 2130846388, 2130846404, 2130846386, 2130846400, 2130846406, 2130846408, 2130846410, 2130846359, 2130846391, 2130846384, 2130846382, 2130846389, 2130846398, 2130846355, 2130846402 };
     }
-    return new int[] { 2130846067, 2130846083, 2130846066, 2130846079, 2130846085, 2130846087, 2130846089, 2130846038, 2130846071, 2130846064, 2130846061, 2130846069, 2130846077, 2130846035, 2130846080 };
+    return new int[] { 2130846388, 2130846405, 2130846387, 2130846401, 2130846407, 2130846409, 2130846411, 2130846359, 2130846392, 2130846385, 2130846382, 2130846390, 2130846398, 2130846356, 2130846402 };
   }
   
   void b()
@@ -3795,7 +3900,7 @@ public class QQSettingMe
       return;
       SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "qqsettingme_f2f_guide", 0);
       int i2 = localSharedPreferences.getInt("qqsettingme_f2f_guide_switch", 0);
-      str = localSharedPreferences.getString("qqsettingme_f2f_guide_tip", anvx.a(2131710208));
+      str = localSharedPreferences.getString("qqsettingme_f2f_guide_tip", HardCodeUtil.a(2131710724));
       boolean bool = localSharedPreferences.getBoolean("qqsettingme_f2f_guide_flag", false);
       if (QLog.isColorLevel()) {
         QLog.i("QQSettingRedesign", 2, String.format("updateFace2FaceGuide switch_hasShowed = %d_%b", new Object[] { Integer.valueOf(i2), Boolean.valueOf(bool) }));
@@ -3812,7 +3917,7 @@ public class QQSettingMe
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 50L);
   }
   
-  public void b(String paramString)
+  protected void b(String paramString)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.15(this, paramString));
   }
@@ -3835,15 +3940,15 @@ public class QQSettingMe
     }
     this.jdField_c_of_type_Boolean = false;
     this.jdField_e_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.f();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.onPause();
     }
     if (f()) {
       L();
     }
     this.jdField_a_of_type_JavaUtilHashSet.clear();
-    this.jdField_a_of_type_Avli.d();
-    bdlm.a().b("QQSettingMe");
+    this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitSession.d();
+    SceneTracker.a().b("QQSettingMe");
   }
   
   public void c(String paramString)
@@ -3859,7 +3964,7 @@ public class QQSettingMe
     if (this.jdField_d_of_type_Boolean)
     {
       e();
-      this.jdField_a_of_type_Beid.a();
+      this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic.a();
     }
     try
     {
@@ -3871,12 +3976,13 @@ public class QQSettingMe
           localAvatarPendantManager.c();
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.g();
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.onDestroy();
       }
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       }
+      QQValueInfoManage.a().a("setting");
       return;
     }
     catch (Exception localException)
@@ -3929,33 +4035,35 @@ public class QQSettingMe
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anvi);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ansi);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aogx);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aodb);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.a);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppVipInfoObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.getObserver());
       }
-      if (this.jdField_a_of_type_Bbvn != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager != null)
       {
-        this.jdField_a_of_type_Bbvn.b(this.jdField_a_of_type_Bbtg);
-        this.jdField_a_of_type_Bbvn.b(this.jdField_a_of_type_Bbtd);
-        this.jdField_a_of_type_Bbvn.b(this.jdField_a_of_type_Bbtb);
+        this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener);
+        this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener);
+        this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener);
       }
-      if (this.jdField_a_of_type_Amee != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager != null)
       {
-        this.jdField_a_of_type_Amee.a(null);
-        this.jdField_a_of_type_Amee = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager.a(null);
+        this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Ayqy);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anya);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppLoveZoneInfoObserver);
     }
-    if (this.jdField_a_of_type_Beid != null) {
-      this.jdField_a_of_type_Beid.a(this.jdField_a_of_type_Beig, false);
+    if (this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic != null) {
+      this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic.a(this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic$NightModeCallback, false);
     }
-    bhpw.a().b(this.jdField_a_of_type_Bhpy);
-    aavb.a().b(this.jdField_a_of_type_Aavc);
+    VipGrayConfigHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqVasVipGrayConfigHelper$VipGrayConfigListener);
+    MemoryClearManager.a().b(this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager$IClearMemoryListener);
   }
   
   public void e(String paramString)
@@ -3972,7 +4080,7 @@ public class QQSettingMe
     for (;;)
     {
       localStringBuilder.append("，温度：").append(this.jdField_e_of_type_AndroidWidgetTextView.getText()).append("摄氏度");
-      if ((AppSetting.jdField_c_of_type_Boolean) && (localStringBuilder != null)) {
+      if ((AppSetting.jdField_d_of_type_Boolean) && (localStringBuilder != null)) {
         this.jdField_c_of_type_AndroidWidgetLinearLayout.setContentDescription(localStringBuilder.toString());
       }
       return;
@@ -4001,31 +4109,33 @@ public class QQSettingMe
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ansi, false);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anvi, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver, false);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver, true);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver, true);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Ayqy);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aogx, true);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aodb, true);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anya, true);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.a);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppVipInfoObserver, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppLoveZoneInfoObserver, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.getObserver());
       }
-      this.jdField_a_of_type_Beid.a(this.jdField_a_of_type_Beig, true);
-      this.jdField_a_of_type_Amee = ((amee)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.WEATHER_MANAGER));
-      if (this.jdField_a_of_type_Amee != null)
+      this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic.a(this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic$NightModeCallback, true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager = ((WeatherManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.WEATHER_MANAGER));
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager != null)
       {
-        this.jdField_a_of_type_Amef = new aesl(this);
-        this.jdField_a_of_type_Amee.a(this.jdField_a_of_type_Amef);
+        this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager$WeatherUpdaterListener = new QQSettingMeWeatherListener(this);
+        this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager$WeatherUpdaterListener);
       }
-      bhpw.a().a(this.jdField_a_of_type_Bhpy);
-      aavb.a().a(this.jdField_a_of_type_Aavc);
+      VipGrayConfigHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqVasVipGrayConfigHelper$VipGrayConfigListener);
+      MemoryClearManager.a().a(this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager$IClearMemoryListener);
     }
   }
   
   public void g()
   {
-    SosoInterface.startLocation(new aesi(this, 0, true, true, 60000L, true, false, "QQSettingRedesign"));
+    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new QQSettingMe.7(this, 0, true, true, 60000L, true, false, "QQSettingRedesign"));
   }
   
   public void h()
@@ -4037,23 +4147,23 @@ public class QQSettingMe
       return;
     }
     this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper = bgvx.a().a();
-    this.jdField_a_of_type_Beid = new beid(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper = UpgradeController.a().a();
+    this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic = new NightModeLogic(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     f();
     k();
     y();
     w();
     b(true);
     m();
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.h();
-      this.jdField_a_of_type_ComTencentMobileqqApolloSettingMeApolloViewController.a();
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.initApolloDrawerStatus();
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiISettingMeApolloViewController.updateCmshowStatus();
     }
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.mobileqq.opencenter.vipInfo"));
-      if (TextUtils.isEmpty(bhpw.a().jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(VipGrayConfigHelper.a().jdField_b_of_type_JavaLangString)) {
         ThreadManager.post(new QQSettingMe.8(this), 5, null, true);
       }
       M();
@@ -4075,9 +4185,9 @@ public class QQSettingMe
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "updateAllRedView");
     }
-    R();
-    X();
+    S();
     Y();
+    Z();
     n();
     o();
     s();
@@ -4087,22 +4197,23 @@ public class QQSettingMe
     j();
     q();
     r();
-    ac();
-    ag();
-    Q();
+    ad();
+    ah();
+    R();
     B();
-    ai();
-    ar();
-    O();
+    aj();
+    as();
     P();
+    Q();
+    O();
   }
   
   protected void j()
   {
     try
     {
-      a(5, this.jdField_g_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-      ((baql)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QZONE_ALBUM_RED_TOUCH)).a(this.jdField_g_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+      a(5, this.jdField_g_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+      ((QzoneAlbumRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QZONE_ALBUM_RED_TOUCH)).a(this.jdField_g_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
       return;
     }
     catch (Exception localException)
@@ -4116,11 +4227,12 @@ public class QQSettingMe
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     if (TextUtils.isEmpty(str))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setImageDrawable(bheg.b());
+      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setImageDrawable(ImageUtil.c());
       this.jdField_a_of_type_AndroidWidgetTextView.setText("");
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
       this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText("");
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
     }
@@ -4137,7 +4249,7 @@ public class QQSettingMe
       c(str);
       this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
       this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      if (!AppSetting.jdField_c_of_type_Boolean) {
+      if (!AppSetting.jdField_d_of_type_Boolean) {
         break;
       }
       this.jdField_a_of_type_AndroidViewView.setContentDescription(this.jdField_a_of_type_JavaLangStringBuilder.toString());
@@ -4149,8 +4261,8 @@ public class QQSettingMe
   @RequiresApi(api=23)
   public void l()
   {
-    if (this.jdField_a_of_type_Beid != null) {
-      this.jdField_a_of_type_Beid.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic != null) {
+      this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic.b();
     }
     Object localObject2;
     boolean bool;
@@ -4166,33 +4278,33 @@ public class QQSettingMe
     if (Build.VERSION.SDK_INT >= 23)
     {
       if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-        this.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView.setForeground(new ColorDrawable(1996488704));
+        this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView.setForeground(new ColorDrawable(1996488704));
       }
     }
     else
     {
-      T();
+      U();
       if (QLog.isColorLevel()) {
         QLog.d("QQSettingRedesign", 2, "ThemeDebugKeyLog:onPostThemeChanged, refresh pendant after theme changed.");
       }
       x();
-      Y();
-      this.jdField_h_of_type_Boolean = true;
+      Z();
+      this.jdField_j_of_type_Boolean = true;
       localObject2 = ThemeUtil.getCurrentThemeInfo();
       Object localObject1 = ((Bundle)localObject2).getString("themeId");
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!"1000".equals(localObject1)) && (!"1103".equals(localObject1))) {
         break label579;
       }
       bool = true;
-      this.jdField_j_of_type_Boolean = bool;
+      this.jdField_l_of_type_Boolean = bool;
       a(null);
-      if (!this.jdField_j_of_type_Boolean) {
+      if (!this.jdField_l_of_type_Boolean) {
         break label584;
       }
-      i1 = this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166474);
-      this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130846072);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130846052);
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || ((!bkxw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard)) && (this.jdField_a_of_type_ComTencentMobileqqDataCard.isNoCover()))) {
+      i1 = this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166477);
+      this.jdField_f_of_type_AndroidWidgetImageView.setImageResource(2130846393);
+      this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130846373);
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || ((!DrawerCoverUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard)) && (this.jdField_a_of_type_ComTencentMobileqqDataCard.isNoCover()))) {
         break label621;
       }
       a(true);
@@ -4203,7 +4315,7 @@ public class QQSettingMe
       this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(i1);
       this.jdField_i_of_type_AndroidWidgetTextView.setTextColor(i1);
       K();
-      localObject2 = (ImageView)this.jdField_e_of_type_AndroidViewView.findViewById(2131368398);
+      localObject2 = (ImageView)this.jdField_e_of_type_AndroidViewView.findViewById(2131368620);
       if (!ThemeUtil.isNowThemeIsDefault(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, null)) {
         break label629;
       }
@@ -4214,24 +4326,24 @@ public class QQSettingMe
         break label656;
       }
       this.jdField_i_of_type_AndroidViewView.setVisibility(0);
-      ae();
-      ak();
       af();
+      al();
+      ag();
       B();
       g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      S();
+      T();
       this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(i1);
-      localObject1 = a(this.jdField_j_of_type_Boolean);
+      localObject1 = a(this.jdField_l_of_type_Boolean);
       i2 = 0;
       if (i2 >= 15) {
         break label689;
       }
       if (this.jdField_a_of_type_ArrayOfAndroidViewView[i2] != null)
       {
-        localObject2 = (ImageView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369113);
+        localObject2 = (ImageView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369364);
         ((ImageView)localObject2).setImageResource(localObject1[i2]);
-        localTextView = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369184);
-        if (this.jdField_j_of_type_Boolean) {
+        localTextView = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[i2].findViewById(2131369437);
+        if (this.jdField_l_of_type_Boolean) {
           break label668;
         }
         localTextView.setTextColor(i1);
@@ -4239,23 +4351,23 @@ public class QQSettingMe
     }
     for (;;)
     {
-      if ((bdfk.b()) && ("2920".equals(ThemeUtil.getCurrentThemeId()))) {
-        localTextView.setTextColor(this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166473));
+      if ((SimpleUIUtil.a()) && ("2920".equals(ThemeUtil.getCurrentThemeId()))) {
+        localTextView.setTextColor(this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166476));
       }
       if (i2 == 10) {
         a((ImageView)localObject2, localTextView);
       }
       i2 += 1;
       break label440;
-      this.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView.setForeground(null);
+      this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardViewQQValuePagView.setForeground(null);
       break;
       label579:
       bool = false;
       break label129;
       label584:
-      i1 = this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166475);
-      this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130846076);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130846051);
+      i1 = this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166478);
+      this.jdField_f_of_type_AndroidWidgetImageView.setImageResource(2130846397);
+      this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130846372);
       break label180;
       label621:
       a(false);
@@ -4269,10 +4381,10 @@ public class QQSettingMe
       this.jdField_i_of_type_AndroidViewView.setVisibility(8);
       break label389;
       label668:
-      localTextView.setTextColor(this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166473));
+      localTextView.setTextColor(this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166476));
     }
     label689:
-    ((aqeq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((DynamicAvatarManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     if (ThemeUtil.isSimpleAndOtherThemeSwitch())
     {
       if (QLog.isColorLevel()) {
@@ -4280,20 +4392,20 @@ public class QQSettingMe
       }
       b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     }
-    ((aocj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REDPOINT_HANDER)).notifyUI(4, true, null);
+    ((IRedTouchServer)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchServer.class, "")).notifyUI(4, true, null);
   }
   
-  public void m()
+  protected void m()
   {
     Object localObject1 = null;
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
-    int i1 = this.jdField_a_of_type_Beid.a();
+    int i1 = this.jdField_a_of_type_ComTencentMobileqqThemeNightModeLogic.a();
     String str;
     if (i1 == 1) {
-      if (this.jdField_j_of_type_Boolean)
+      if (this.jdField_l_of_type_Boolean)
       {
-        localObject1 = ((Resources)localObject2).getDrawable(2130846052);
-        str = ((Resources)localObject2).getString(2131698834);
+        localObject1 = ((Resources)localObject2).getDrawable(2130846373);
+        str = ((Resources)localObject2).getString(2131699147);
         localObject2 = localObject1;
         localObject1 = str;
       }
@@ -4301,7 +4413,7 @@ public class QQSettingMe
     for (;;)
     {
       if (localObject2 != null) {
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+        this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
       }
       if (localObject1 != null)
       {
@@ -4309,14 +4421,14 @@ public class QQSettingMe
         this.jdField_f_of_type_AndroidViewView.setOnClickListener(this);
       }
       return;
-      localObject1 = ((Resources)localObject2).getDrawable(2130846051);
+      localObject1 = ((Resources)localObject2).getDrawable(2130846372);
       break;
       if (i1 == 2)
       {
-        if (this.jdField_j_of_type_Boolean) {}
-        for (localObject1 = ((Resources)localObject2).getDrawable(2130846052);; localObject1 = ((Resources)localObject2).getDrawable(2130846051))
+        if (this.jdField_l_of_type_Boolean) {}
+        for (localObject1 = ((Resources)localObject2).getDrawable(2130846373);; localObject1 = ((Resources)localObject2).getDrawable(2130846372))
         {
-          str = ((Resources)localObject2).getString(2131698834);
+          str = ((Resources)localObject2).getString(2131699147);
           localObject2 = localObject1;
           localObject1 = str;
           break;
@@ -4326,14 +4438,14 @@ public class QQSettingMe
     }
   }
   
-  public void n()
+  protected void n()
   {
     boolean bool2 = true;
-    boolean bool1 = bgvx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    boolean bool1 = UpgradeController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.a(bool1);
     }
-    if ((!bool1) && (aoae.a(1)))
+    if ((!bool1) && (PrivacyPolicyHelper.a(1)))
     {
       bool1 = bool2;
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView != null)
@@ -4345,7 +4457,7 @@ public class QQSettingMe
     for (;;)
     {
       if (!bool1) {
-        this.jdField_i_of_type_ComTencentMobileqqRedtouchRedTouch.c(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+        this.jdField_j_of_type_ComTencentMobileqqTianshuUiRedTouch.c(this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
       }
       return;
     }
@@ -4355,7 +4467,7 @@ public class QQSettingMe
   {
     try
     {
-      a(2, this.jdField_b_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+      a(2, this.jdField_b_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
       return;
     }
     catch (Exception localException)
@@ -4378,31 +4490,32 @@ public class QQSettingMe
       else
       {
         this.jdField_b_of_type_Long = System.currentTimeMillis();
+        Object localObject5 = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
         Object localObject1;
         Object localObject4;
+        label511:
         long l1;
         int i1;
-        Object localObject5;
-        label1184:
+        label1267:
         boolean bool;
         Object localObject2;
-        label2766:
+        label2824:
         Object localObject3;
         switch (paramView.getId())
         {
-        case 2131369370: 
+        case 2131369628: 
         default: 
           break;
-        case 2131363334: 
+        case 2131363413: 
           if (FrameHelperActivity.b())
           {
             FrameHelperActivity.c(true);
-            FrameHelperActivity.t();
-            bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009C4E", "0X8009C4E", 0, 0, "", "", "", "");
+            FrameHelperActivity.w();
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009C4E", "0X8009C4E", 0, 0, "", "", "", "");
           }
           break;
-        case 2131371764: 
-        case 2131371788: 
+        case 2131372078: 
+        case 2131372100: 
           if (this.jdField_b_of_type_Boolean)
           {
             localObject1 = a();
@@ -4414,75 +4527,78 @@ public class QQSettingMe
             ((Intent)localObject4).putExtra("big_brother_source_key", "biz_src_ad_daka");
             ((Intent)localObject4).putExtra("url", (String)localObject1);
             this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject4);
-            if (this.jdField_b_of_type_Int == 1) {
+            if (this.jdField_b_of_type_Int == 1)
+            {
               i("0X800ACFD");
+              d(true);
             }
           }
           while (QLog.isColorLevel())
           {
             QLog.i("DailySignIn", 2, "mydaily onClick mDayliSignMode = " + this.jdField_b_of_type_Boolean);
             break;
-            if (this.jdField_b_of_type_Int == 4)
-            {
-              i("0X800ACFE");
-              continue;
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("task_entry_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getString("jump_url", "");
-              localObject4 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-              ((Intent)localObject4).putExtra("portraitOnly", true);
-              ((Intent)localObject4).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-              ((Intent)localObject4).putExtra("hide_operation_bar", true);
-              ((Intent)localObject4).putExtra("hide_more_button", true);
-              ((Intent)localObject4).putExtra("big_brother_source_key", "biz_src_ad_daka");
-              ((Intent)localObject4).putExtra("url", (String)localObject1);
-              this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject4);
-              bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_duty", "", "locker", "clk", 0, 0, "", "", "", "");
+            if (this.jdField_b_of_type_Int != 4) {
+              break label511;
             }
+            i("0X800ACFE");
+            break label511;
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("task_entry_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getString("jump_url", "");
+            localObject4 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+            ((Intent)localObject4).putExtra("portraitOnly", true);
+            ((Intent)localObject4).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+            ((Intent)localObject4).putExtra("hide_operation_bar", true);
+            ((Intent)localObject4).putExtra("hide_more_button", true);
+            ((Intent)localObject4).putExtra("big_brother_source_key", "biz_src_ad_daka");
+            ((Intent)localObject4).putExtra("url", (String)localObject1);
+            this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject4);
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_duty", "", "locker", "clk", 0, 0, "", "", "", "");
           }
-        case 2131371982: 
-          U();
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80072D6");
+        case 2131372289: 
+          V();
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80072D6", "0X80072D6", 0, 0, "", "", "", "");
           break;
-        case 2131368095: 
-          U();
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004033", "0X8004033", 0, 0, "", "", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80072D7");
+        case 2131368315: 
+          V();
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004033", "0X8004033", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80072D7", "0X80072D7", 0, 0, "", "", "", "");
           DrawerFrame.jdField_a_of_type_Int = jdField_a_of_type_Int;
-          if (this.jdField_d_of_type_ComTencentMobileqqRedtouchRedTouch.c()) {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X8006726");
+          if (this.jdField_e_of_type_ComTencentMobileqqTianshuUiRedTouch.c()) {
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006726", "0X8006726", 0, 0, "", "", "", "");
           }
           break;
-        case 2131374756: 
+        case 2131375127: 
           localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QRDisplayActivity.class);
           localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-          ((Intent)localObject1).putExtra("title", this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131716566));
-          ((Intent)localObject1).putExtra("nick", ContactUtils.getAccountNickName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject4));
+          ((Intent)localObject1).putExtra("title", this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131717061));
+          ((Intent)localObject1).putExtra("nick", ContactUtils.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject4));
           ((Intent)localObject1).putExtra("uin", (String)localObject4);
           ((Intent)localObject1).putExtra("type", 1);
           ((Intent)localObject1).putExtra("reportFlag", 1);
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject1);
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055BB", "0X80055BB", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055BB", "0X80055BB", 0, 0, "", "", "", "");
+          ((IRedTouchManager)localObject5).reportLevelOneRedInfo(101600, 31);
           break;
-        case 2131371799: 
+        case 2131372111: 
           l1 = System.currentTimeMillis();
           if (ProfileActivity.a(this.jdField_a_of_type_Long, l1))
           {
             this.jdField_a_of_type_Long = l1;
-            if (QWalletHelper.isValidToLaunchQWallet(l1))
+            if (QWalletHelperImpl.isValidToLaunchQWallet(l1))
             {
-              QWalletHelper.launchQWalletAct(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, true);
-              bhai.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-              ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(100007, 31);
-              localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch[2];
-              i1 = aogw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), ((RedTouch)localObject1).c());
+              QWalletHelperImpl.launchQWalletAct(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, true);
+              QQSettingUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+              ((IRedTouchManager)localObject5).reportLevelOneRedInfo(100007, 31);
+              localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch[2];
+              i1 = VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), ((RedTouch)localObject1).c());
               localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
               localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
               if (((RedTouch)localObject1).c()) {}
               for (localObject1 = "1";; localObject1 = "2")
               {
-                bdla.b((QQAppInterface)localObject4, "P_CliOper", "Vip_pay_mywallet", (String)localObject5, "wallet", "wallet.entrance.click", 0, 0, (String)localObject1, NetConnInfoCenter.getServerTimeMillis() + "", "", "8.4.10");
-                bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8BF", "0X800A8BF", i1, 0, String.valueOf(i1), "", "", "");
+                ReportController.b((AppRuntime)localObject4, "P_CliOper", "Vip_pay_mywallet", (String)localObject5, "wallet", "wallet.entrance.click", 0, 0, (String)localObject1, NetConnInfoCenter.getServerTimeMillis() + "", "", "8.5.5");
+                ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8BF", "0X800A8BF", i1, 0, String.valueOf(i1), "", "", "");
                 if (jdField_a_of_type_Int <= 0) {
-                  break label1184;
+                  break label1267;
                 }
                 DrawerFrame.jdField_a_of_type_Int = 2;
                 break;
@@ -4491,30 +4607,29 @@ public class QQSettingMe
             }
           }
           break;
-        case 2131371790: 
+        case 2131372102: 
           if (!this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isInMultiWindow()) {}
           for (bool = true;; bool = false)
           {
-            bmaf.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, -1, bool);
-            bman.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 0);
-            bmar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+            QfavHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, -1, bool);
+            QfavReport.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 0);
+            QfavUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
             DrawerFrame.jdField_a_of_type_Int = jdField_a_of_type_Int;
-            ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(103000, 31);
+            ((IRedTouchManager)localObject5).reportLevelOneRedInfo(103000, 31);
             break;
           }
-        case 2131371798: 
-          localObject1 = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
+        case 2131372110: 
           bool = false;
-          localObject4 = new QZoneClickReport.ReportInfo();
-          ((QZoneClickReport.ReportInfo)localObject4).setActionType("443");
-          ((QZoneClickReport.ReportInfo)localObject4).setSubactionType("3");
-          ((QZoneClickReport.ReportInfo)localObject4).setToUin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-          if ((this.jdField_g_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null) && (this.jdField_g_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() == 1))
+          localObject1 = new QZoneClickReport.ReportInfo();
+          ((QZoneClickReport.ReportInfo)localObject1).setActionType("443");
+          ((QZoneClickReport.ReportInfo)localObject1).setSubactionType("3");
+          ((QZoneClickReport.ReportInfo)localObject1).setToUin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+          if ((this.jdField_g_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo != null) && (this.jdField_g_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() == 1))
           {
             bool = true;
-            ((QZoneClickReport.ReportInfo)localObject4).setReserves("1");
-            QZoneClickReport.startReportImediately(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (QZoneClickReport.ReportInfo)localObject4);
-            ((bbbq)localObject1).a(100180, 31);
+            ((QZoneClickReport.ReportInfo)localObject1).setReserves("1");
+            QZoneClickReport.startReportImediately(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (QZoneClickReport.ReportInfo)localObject1);
+            ((IRedTouchManager)localObject5).reportLevelOneRedInfo(100180, 31);
           }
           try
           {
@@ -4524,7 +4639,7 @@ public class QQSettingMe
             localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
             localObject1 = localObject4;
             if (TextUtils.isEmpty((CharSequence)localObject4)) {
-              localObject1 = ContactUtils.getAccountNickName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+              localObject1 = ContactUtils.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
             }
             ((QZoneHelper.UserInfo)localObject5).nickname = ((String)localObject1);
             QZoneHelper.forwardFromQQSettingToPersonalAlbum(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (QZoneHelper.UserInfo)localObject5, Long.valueOf(l1), 0, bool, -1);
@@ -4541,10 +4656,10 @@ public class QQSettingMe
             ((HashMap)localObject1).put("source_from", "drawerAlbumList");
             ((HashMap)localObject1).put("source_to", "QZonePhotoListActivity");
             StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject1, null);
-            bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_myalbum", 0, 0, "", "", "", "");
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_myalbum", 0, 0, "", "", "", "");
             DrawerFrame.jdField_a_of_type_Int = jdField_a_of_type_Int;
             continue;
-            ((QZoneClickReport.ReportInfo)localObject4).setReserves("2");
+            ((QZoneClickReport.ReportInfo)localObject1).setReserves("2");
           }
           catch (Exception localException)
           {
@@ -4554,65 +4669,64 @@ public class QQSettingMe
               l1 = 0L;
             }
           }
-        case 2131371765: 
-          localObject2 = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
-          ((bbbq)localObject2).a(100005, 31);
+        case 2131372079: 
+          ((IRedTouchManager)localObject5).reportLevelOneRedInfo(100005, 31);
           if (((RedTouch)((ViewGroup)paramView).getChildAt(0)).c()) {}
-          for (localObject2 = MobileReportManager.getNewReportInfo(((bbbq)localObject2).a(String.valueOf(100005)));; localObject2 = MobileReportManager.getNewDefaultReportInfo("outside", "3"))
+          for (localObject2 = MobileReportManager.getNewReportInfo(((IRedTouchManager)localObject5).getAppInfoByPath(String.valueOf(100005)));; localObject2 = MobileReportManager.getNewDefaultReportInfo("outside", "3"))
           {
             VasWebviewUtil.openIndividuationIndex(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (String)localObject2);
             ThreadManager.post(new QQSettingMe.17(this), 5, null, true);
-            localObject4 = this.jdField_a_of_type_Bhze.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "key_svip_item_makup_");
+            localObject4 = this.jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "key_svip_item_makup_");
             localObject2 = "0";
             if (localObject4 != null) {
               localObject2 = ((MenumItem)localObject4).user_group + "";
             }
             MobileReportManager.getInstance().qqSetingMeReport(6, 102, (String)localObject2);
-            bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Trends_tab", "Personality_setting", 0, 0, "", "", "", "");
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Trends_tab", "Personality_setting", 0, 0, "", "", "", "");
             DrawerFrame.jdField_a_of_type_Int = jdField_a_of_type_Int;
             break;
           }
-        case 2131377507: 
+        case 2131377918: 
           localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQSettingSettingActivity.class);
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject2);
-          if (bgvx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-            bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004DB0", "0X8004DB0", 0, 0, "", "", bgvx.a(), "");
+          if (UpgradeController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004DB0", "0X8004DB0", 0, 0, "", "", UpgradeController.a(), "");
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.a != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.a.iUpgradeType > 0)) {
-            ansg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.a.iNewTimeStamp);
+            ConfigHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.a.iNewTimeStamp);
           }
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Setting_tab", "Setting_tab", 0, 0, "", "", "", "");
-          ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(100190, 31);
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Setting_tab", "Setting_tab", 0, 0, "", "", "", "");
+          ((IRedTouchManager)localObject5).reportLevelOneRedInfo(100190, 31);
           DrawerFrame.jdField_a_of_type_Int = jdField_a_of_type_Int;
           break;
-        case 2131371995: 
-          if (!behh.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "", new aerp(this))) {
-            W();
+        case 2131372303: 
+          if (!DarkModeManager.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "", new QQSettingMe.18(this))) {
+            X();
           }
           break;
-        case 2131370408: 
+        case 2131370682: 
           localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
           ((Intent)localObject2).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
           ((Intent)localObject2).putExtra("url", "https://ti.qq.com/qqdaren/index?_wv=16777219&_wwv=128&ADTAG=draw");
           ((Intent)localObject2).putExtra("hide_more_button", true);
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject2);
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A9C3", "0X800A9C3", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A9C3", "0X800A9C3", 0, 0, "", "", "", "");
           break;
-        case 2131381374: 
+        case 2131381835: 
           i1 = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).getInt("cur_adcode", 0);
-          amfb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, "", true, String.valueOf(i1));
+          WeatherWebPageHelperKt.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, "", true, String.valueOf(i1));
           QLog.i("QQSettingRedesign", 1, "startNewWeatherWeb adCode = " + i1);
-          amed.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "drawer_weather_click");
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A42C", "0X800A42C", 0, 0, "", "", "", "");
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005BE4", "0X8005BE4", 0, 0, "", "", "", "");
+          WeatherDCReportHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "drawer_weather_click");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A42C", "0X800A42C", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005BE4", "0X8005BE4", 0, 0, "", "", "", "");
           break;
-        case 2131377753: 
-          if ((this.jdField_a_of_type_Bbvn != null) && (!this.jdField_a_of_type_Bbvn.a()))
+        case 2131378164: 
+          if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager != null) && (!this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a()))
           {
-            ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(100450, 31);
+            ((IRedTouchManager)localObject5).reportLevelOneRedInfo(100450, 31);
             if ((this.jdField_e_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null))
             {
-              localObject2 = (TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131376649);
+              localObject2 = (TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131377044);
               if ((localObject2 != null) && (((TextView)localObject2).getText() != null))
               {
                 localObject2 = new Bundle();
@@ -4622,17 +4736,17 @@ public class QQSettingMe
             }
             DrawerFrame.jdField_a_of_type_Int = 0;
           }
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "signiture", "set_enter", 0, 0, "", "", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80072D8");
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X800A669");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "signiture", "set_enter", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80072D8", "0X80072D8", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A669", "0X800A669", 0, 0, "", "", "", "");
           break;
-        case 2131374484: 
+        case 2131374844: 
           localObject2 = new HashMap();
           ((HashMap)localObject2).put("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
           ((HashMap)localObject2).put("key_jump_from", "9");
-          vvh.a(BaseApplicationImpl.context, "openmainpage", (HashMap)localObject2);
+          QCircleUtils.a().enterBySchemeAction(BaseApplicationImpl.context, "openmainpage", (HashMap)localObject2);
           break;
-        case 2131371802: 
+        case 2131372114: 
           l1 = System.currentTimeMillis();
           if (ProfileActivity.a(this.jdField_a_of_type_Long, l1))
           {
@@ -4641,18 +4755,17 @@ public class QQSettingMe
               QLog.i("QQSettingRedesign", 2, "enter vip");
             }
             ThreadManager.post(new QQSettingMe.19(this), 5, null, true);
-            localObject2 = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
-            localObject4 = this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch[1];
-            i1 = aogw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), ((RedTouch)localObject4).c());
-            if (((RedTouch)localObject4).c()) {}
-            for (localObject2 = MobileReportManager.getNewReportInfo(((bbbq)localObject2).a(String.valueOf(100400)));; localObject2 = MobileReportManager.getNewDefaultReportInfo("outside", "1"))
+            localObject2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch[1];
+            i1 = VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), ((RedTouch)localObject2).c());
+            if (((RedTouch)localObject2).c()) {}
+            for (localObject2 = MobileReportManager.getNewReportInfo(((IRedTouchManager)localObject5).getAppInfoByPath(String.valueOf(100400)));; localObject2 = MobileReportManager.getNewDefaultReportInfo("outside", "1"))
             {
-              bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8BE", "0X800A8BE", i1, 0, String.valueOf(i1), "", "", "");
+              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8BE", "0X800A8BE", i1, 0, String.valueOf(i1), "", "", "");
               h((String)localObject2);
-              bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004185", "0X8004185", 0, 0, "", "", "", "");
+              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004185", "0X8004185", 0, 0, "", "", "", "");
               MobileReportManager.getInstance().qqSetingMeReport(1, 102, String.valueOf(i1));
               if (jdField_a_of_type_Int <= 0) {
-                break label2766;
+                break label2824;
               }
               DrawerFrame.jdField_a_of_type_Int = 2;
               break;
@@ -4660,23 +4773,22 @@ public class QQSettingMe
             DrawerFrame.jdField_a_of_type_Int = jdField_a_of_type_Int;
           }
           break;
-        case 2131371793: 
+        case 2131372105: 
           localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, FileAssistantActivity.class);
           ((Intent)localObject2).putExtra("from", "FileAssistant");
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject2);
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004251", "0X8004251", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004251", "0X8004251", 0, 0, "", "", "", "");
           DrawerFrame.jdField_a_of_type_Int = jdField_a_of_type_Int;
-          localObject2 = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
-          localObject4 = ((bbbq)localObject2).a(String.valueOf(100160));
-          if ((localObject4 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject4).iNewFlag != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject4).iNewFlag.get() != 0)) {
-            ((bbbq)localObject2).a(100160, 31);
+          localObject2 = ((IRedTouchManager)localObject5).getAppInfoByPath(String.valueOf(100160));
+          if ((localObject2 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() != 0)) {
+            ((IRedTouchManager)localObject5).reportLevelOneRedInfo(100160, 31);
           }
           try
           {
-            localObject5 = new JSONObject();
-            ((JSONObject)localObject5).put("service_type", 2);
-            ((JSONObject)localObject5).put("act_id", 1002);
-            ((bbbq)localObject2).c((BusinessInfoCheckUpdate.AppInfo)localObject4, ((JSONObject)localObject5).toString());
+            localObject4 = new JSONObject();
+            ((JSONObject)localObject4).put("service_type", 2);
+            ((JSONObject)localObject4).put("act_id", 1002);
+            ((IRedTouchManager)localObject5).onReportBusinessRedTouch((BusinessInfoCheckUpdate.AppInfo)localObject2, ((JSONObject)localObject4).toString());
             if ((this.jdField_o_of_type_AndroidViewView != null) && (this.jdField_o_of_type_AndroidViewView.getVisibility() == 0))
             {
               this.jdField_o_of_type_AndroidViewView.setVisibility(8);
@@ -4690,17 +4802,16 @@ public class QQSettingMe
               localJSONException.printStackTrace();
             }
           }
-        case 2131371800: 
+        case 2131372112: 
           if (jdField_a_of_type_Int > 0) {
             DrawerFrame.jdField_a_of_type_Int = 2;
           } else {
             DrawerFrame.jdField_a_of_type_Int = jdField_a_of_type_Int;
           }
           break;
-        case 2131365343: 
-          localObject5 = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
+        case 2131365492: 
           localObject4 = "";
-          BusinessInfoCheckUpdate.AppInfo localAppInfo = ((bbbq)localObject5).a(String.valueOf(100500));
+          BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)localObject5).getAppInfoByPath(String.valueOf(100500));
           localObject3 = localObject4;
           if (localAppInfo != null)
           {
@@ -4708,7 +4819,7 @@ public class QQSettingMe
             if (localAppInfo.iNewFlag.get() != 0)
             {
               localObject3 = MobileReportManager.getStringReport2H5(localAppInfo);
-              ((bbbq)localObject5).a(100500, 31);
+              ((IRedTouchManager)localObject5).reportLevelOneRedInfo(100500, 31);
             }
           }
           localObject4 = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4).getString("drawerUrl", "");
@@ -4720,100 +4831,100 @@ public class QQSettingMe
           ((Intent)localObject4).putExtra("url", (String)localObject3);
           ((Intent)localObject4).putExtra("startOpenPageTime", System.currentTimeMillis());
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject4);
-          localObject3 = this.jdField_a_of_type_ArrayOfComTencentMobileqqRedtouchRedTouch[13];
-          i1 = aogw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), ((RedTouch)localObject3).c());
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8C0", "0X800A8C0", i1, 0, String.valueOf(i1), this.jdField_d_of_type_JavaLangString, "", "");
+          localObject3 = this.jdField_a_of_type_ArrayOfComTencentMobileqqTianshuUiRedTouch[13];
+          i1 = VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), ((RedTouch)localObject3).c());
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A8C0", "0X800A8C0", i1, 0, String.valueOf(i1), this.jdField_e_of_type_JavaLangString, "", "");
           break;
-        case 2131371801: 
+        case 2131372113: 
           QQStoryMemoriesActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, QQStoryContext.a().b(), true);
           DrawerFrame.jdField_a_of_type_Int = jdField_a_of_type_Int;
           break;
-        case 2131371795: 
+        case 2131372107: 
           localObject3 = QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameJumpUrl", "mqqapi://miniapp/open?_atype=0&_mappid=1108291530&_mvid=&_path=pages%2Fgame-list%2Fgame-list.html%3Fmode%3Dchouti&_vt=3&via=2066&_sig=676003338");
           if (!TextUtils.isEmpty((CharSequence)localObject3))
           {
-            if (MiniAppLauncher.isMiniAppUrl((String)localObject3)) {
-              MiniAppLauncher.startMiniApp(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, a((String)localObject3, this.jdField_n_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo), 2066, null);
+            if (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl((String)localObject3)) {
+              ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, a((String)localObject3, this.jdField_n_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo), 2066, null);
             }
           }
           else
           {
             localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            if (!RedTouch.a(this.jdField_n_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo)) {
-              break label3535;
+            if (!RedTouch.a(this.jdField_n_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo)) {
+              break label3577;
             }
           }
           for (i1 = 1;; i1 = 0)
           {
-            bdla.b((QQAppInterface)localObject3, "dc00898", "", "", "0X800ACDD", "0X800ACDD", 0, i1, "", "", "", "");
-            localObject3 = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
-            if (localObject3 == null) {
-              break;
-            }
-            ((bbbq)localObject3).a(100077, 31);
+            ReportController.b((AppRuntime)localObject3, "dc00898", "", "", "0X800ACDD", "0X800ACDD", 0, i1, "", "", "", "");
+            ((IRedTouchManager)localObject5).reportLevelOneRedInfo(100077, 31);
             break;
             localObject4 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
             ((Intent)localObject4).putExtra("url", (String)localObject3);
             this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject4);
-            break label3417;
+            break label3477;
           }
-        case 2131364221: 
+        case 2131364328: 
           localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
           localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
           localObject4 = ((Context)localObject3).getSharedPreferences("call_tim_config_pre" + (String)localObject4, 0).getString("call_tim_config_url", null);
           localObject3 = localObject4;
           if (localObject4 == null) {
-            localObject3 = arot.a().a();
+            localObject3 = TencentDocUserConfigProcessor.a().a();
           }
           localObject4 = localObject3;
           if (localObject3 == null) {
             localObject4 = "https://docs.qq.com/desktop/m/index.html";
           }
-          localObject3 = becr.b((String)localObject4, "s_qq_drawer");
+          localObject3 = TeamWorkUtils.b((String)localObject4, "s_qq_drawer");
           localObject4 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
           ((Intent)localObject4).putExtra("url", (String)localObject3);
           ((Intent)localObject4).putExtra("fragment_class", TeamWorkDocsListFragment.class.getCanonicalName());
           ((Intent)localObject4).putExtra("tdsourcetag", "s_qq_drawer");
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject4);
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800887E", "0X800887E", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800887E", "0X800887E", 0, 0, "", "", "", "");
           break;
-        case 2131374478: 
-          a(paramView);
+        case 2131374838: 
+          b(paramView);
           break;
-        case 2131374517: 
-          b(paramView.getContext());
-          break;
-        case 2131372386: 
+        case 2131374887: 
           a(paramView.getContext());
           break;
-        case 2131372402: 
-          aa();
-          bhaa.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A97F", "0X800A97F", 0, 0, "0", "0", "", "");
+        case 2131372696: 
+          a(paramView);
           break;
-        case 2131371794: 
-          label3535:
-          i1 = awpu.a(awpu.a(this.jdField_m_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo));
-          localObject3 = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
-          localObject4 = ((bbbq)localObject3).a(String.valueOf(100066));
+        case 2131372712: 
+          ab();
+          ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A97F", "0X800A97F", 0, 0, "0", "0", "", "");
+          break;
+        case 2131372106: 
+          i1 = LoverZoneUtils.a(LoverZoneUtils.a(this.jdField_m_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo));
+          localObject3 = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+          localObject4 = ((IRedTouchManager)localObject3).getAppInfoByPath(String.valueOf(100066));
           if ((localObject4 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject4).iNewFlag.get() != 0))
           {
             if ((this.jdField_a_of_type_ComTencentMobileqqLoverzoneLoveZoneTabRedDotView == null) || (this.jdField_a_of_type_ComTencentMobileqqLoverzoneLoveZoneTabRedDotView.getVisibility() != 0)) {
-              break label3940;
+              break label3985;
             }
             a("0x800AAFB", "1");
           }
           for (;;)
           {
-            ((bbbq)localObject3).a(100066, 31);
-            awpu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2066, "10", i1 + "");
+            ((IRedTouchManager)localObject3).reportLevelOneRedInfo(100066, 31);
+            LoverZoneUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2066, "10", i1 + "");
             break;
             a("0x800AAFB", "2");
           }
-        case 2131371766: 
-          label3417:
-          label3940:
-          V();
+        case 2131372080: 
+          W();
+          break;
+        case 2131381710: 
+          label3477:
+          label3577:
+          VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateExtId);
+          label3985:
+          VipUtils.a("0X800B923", this.jdField_a_of_type_ComTencentMobileqqDataCard.nameplateExtId);
         }
       }
     }
@@ -4846,7 +4957,7 @@ public class QQSettingMe
   {
     try
     {
-      this.jdField_c_of_type_ComTencentMobileqqRedtouchRedTouch.a(this.jdField_f_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+      this.jdField_c_of_type_ComTencentMobileqqTianshuUiRedTouch.a(this.jdField_f_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
       return;
     }
     catch (Exception localException) {}
@@ -4856,7 +4967,7 @@ public class QQSettingMe
   {
     try
     {
-      a(3, this.jdField_h_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+      a(3, this.jdField_h_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
       return;
     }
     catch (Exception localException)
@@ -4869,8 +4980,8 @@ public class QQSettingMe
   {
     try
     {
-      BusinessInfoCheckUpdate.AppInfo localAppInfo = ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(String.valueOf(1000017));
-      if (!((aqjm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER)).a())
+      BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath(String.valueOf(1000017));
+      if (!((BusinessCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER)).a())
       {
         BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo1 = new BusinessInfoCheckUpdate.RedTypeInfo();
         localRedTypeInfo1.red_type.set(9);
@@ -4897,12 +5008,12 @@ public class QQSettingMe
   {
     try
     {
-      a(6, this.jdField_c_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_c_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null) && (this.jdField_c_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() == 1))
+      a(6, this.jdField_c_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_c_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo != null) && (this.jdField_c_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() == 1))
       {
-        WebProcessManager localWebProcessManager = (WebProcessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
-        if (localWebProcessManager != null) {
-          localWebProcessManager.e();
+        IWebProcessManagerService localIWebProcessManagerService = (IWebProcessManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IWebProcessManagerService.class, "");
+        if (localIWebProcessManagerService != null) {
+          localIWebProcessManagerService.startWebProcess(-1, null);
         }
       }
       return;
@@ -4913,224 +5024,79 @@ public class QQSettingMe
     }
   }
   
-  /* Error */
-  public void t()
+  protected void t()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_0
-    //   2: getfield 333	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   5: invokevirtual 1024	com/tencent/mobileqq/app/QQAppInterface:getCurrentUin	()Ljava/lang/String;
-    //   8: putfield 4095	com/tencent/mobileqq/activity/QQSettingMe:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   11: aload_0
-    //   12: aload_0
-    //   13: getfield 4095	com/tencent/mobileqq/activity/QQSettingMe:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   16: invokestatic 4098	aogw:a	(Ljava/lang/String;)LMQQ/PayRuleCfg;
-    //   19: putfield 1517	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_MQQPayRuleCfg	LMQQ/PayRuleCfg;
-    //   22: aload_0
-    //   23: getfield 333	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   26: aload_0
-    //   27: getfield 1517	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_MQQPayRuleCfg	LMQQ/PayRuleCfg;
-    //   30: aload_0
-    //   31: getfield 2913	com/tencent/mobileqq/activity/QQSettingMe:jdField_f_of_type_Boolean	Z
-    //   34: invokestatic 4101	aogw:a	(Lcom/tencent/mobileqq/app/QQAppInterface;LMQQ/PayRuleCfg;Z)Z
-    //   37: istore_1
-    //   38: aload_0
-    //   39: getfield 1517	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_MQQPayRuleCfg	LMQQ/PayRuleCfg;
-    //   42: ifnonnull +266 -> 308
-    //   45: ldc_w 324
-    //   48: iconst_1
-    //   49: ldc_w 4103
-    //   52: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   55: iload_1
-    //   56: ifeq +340 -> 396
-    //   59: aload_0
-    //   60: getfield 2913	com/tencent/mobileqq/activity/QQSettingMe:jdField_f_of_type_Boolean	Z
-    //   63: ifne +59 -> 122
-    //   66: aload_0
-    //   67: iconst_1
-    //   68: putfield 2913	com/tencent/mobileqq/activity/QQSettingMe:jdField_f_of_type_Boolean	Z
-    //   71: aconst_null
-    //   72: ldc_w 1198
-    //   75: ldc 208
-    //   77: ldc 208
-    //   79: ldc 208
-    //   81: ldc_w 4105
-    //   84: aload_0
-    //   85: getfield 1517	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_MQQPayRuleCfg	LMQQ/PayRuleCfg;
-    //   88: invokestatic 4108	aogw:a	(LMQQ/PayRuleCfg;)I
-    //   91: iconst_1
-    //   92: iconst_0
-    //   93: ldc_w 1196
-    //   96: aload_0
-    //   97: getfield 1517	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_MQQPayRuleCfg	LMQQ/PayRuleCfg;
-    //   100: getfield 4111	MQQ/PayRuleCfg:advId	Ljava/lang/String;
-    //   103: ldc 208
-    //   105: ldc 208
-    //   107: invokestatic 4114	bdla:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   110: bipush 101
-    //   112: aload_0
-    //   113: getfield 1517	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_MQQPayRuleCfg	LMQQ/PayRuleCfg;
-    //   116: getfield 4111	MQQ/PayRuleCfg:advId	Ljava/lang/String;
-    //   119: invokestatic 4117	aogw:a	(ILjava/lang/String;)V
-    //   122: aload_0
-    //   123: invokespecial 4119	com/tencent/mobileqq/activity/QQSettingMe:ah	()V
-    //   126: invokestatic 322	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   129: ifeq +36 -> 165
-    //   132: ldc_w 324
-    //   135: iconst_2
-    //   136: new 337	java/lang/StringBuilder
-    //   139: dup
-    //   140: invokespecial 338	java/lang/StringBuilder:<init>	()V
-    //   143: ldc_w 4121
-    //   146: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: aload_0
-    //   150: getfield 1102	com/tencent/mobileqq/activity/QQSettingMe:jdField_d_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo	Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
-    //   153: invokestatic 4122	bbbq:a	(Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;)Ljava/lang/String;
-    //   156: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: invokevirtual 486	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   162: invokestatic 634	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   165: new 1050	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo
-    //   168: dup
-    //   169: invokespecial 1641	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:<init>	()V
-    //   172: astore_2
-    //   173: aload_2
-    //   174: aload_0
-    //   175: getfield 1102	com/tencent/mobileqq/activity/QQSettingMe:jdField_d_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo	Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
-    //   178: invokevirtual 1644	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   181: iload_1
-    //   182: ifeq +54 -> 236
-    //   185: aload_2
-    //   186: invokestatic 4125	com/tencent/mobileqq/redtouch/RedTouchTextView:a	(Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;)Ljava/util/List;
-    //   189: ifnull +47 -> 236
-    //   192: new 96	java/util/ArrayList
-    //   195: dup
-    //   196: invokespecial 99	java/util/ArrayList:<init>	()V
-    //   199: astore_3
-    //   200: new 1670	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo
-    //   203: dup
-    //   204: invokespecial 1695	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:<init>	()V
-    //   207: astore 4
-    //   209: aload 4
-    //   211: getfield 1673	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:red_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   214: iconst_0
-    //   215: invokevirtual 1696	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   218: aload_3
-    //   219: aload 4
-    //   221: invokevirtual 1122	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   224: pop
-    //   225: aload_2
-    //   226: getfield 1648	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:red_display_info	Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedDisplayInfo;
-    //   229: getfield 1657	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedDisplayInfo:red_type_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   232: aload_3
-    //   233: invokevirtual 1694	com/tencent/mobileqq/pb/PBRepeatMessageField:set	(Ljava/util/List;)V
-    //   236: aload_0
-    //   237: iconst_1
-    //   238: aload_2
-    //   239: invokespecial 1191	com/tencent/mobileqq/activity/QQSettingMe:a	(ILcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;)V
-    //   242: aload_0
-    //   243: getfield 333	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   246: ifnull +61 -> 307
-    //   249: aload_0
-    //   250: getfield 1102	com/tencent/mobileqq/activity/QQSettingMe:jdField_d_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo	Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
-    //   253: ifnull +163 -> 416
-    //   256: aload_0
-    //   257: getfield 1102	com/tencent/mobileqq/activity/QQSettingMe:jdField_d_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo	Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
-    //   260: getfield 1063	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:iNewFlag	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   263: invokevirtual 1326	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   266: iconst_1
-    //   267: if_icmpeq +6 -> 273
-    //   270: goto +146 -> 416
-    //   273: ldc_w 324
-    //   276: iconst_1
-    //   277: ldc_w 4127
-    //   280: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   283: new 1342	android/content/Intent
-    //   286: dup
-    //   287: aload_0
-    //   288: getfield 331	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppBaseActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   291: ldc_w 4129
-    //   294: invokespecial 1347	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   297: astore_2
-    //   298: aload_0
-    //   299: getfield 331	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_ComTencentMobileqqAppBaseActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   302: aload_2
-    //   303: invokevirtual 4133	com/tencent/mobileqq/app/BaseActivity:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
-    //   306: pop
-    //   307: return
-    //   308: ldc_w 324
-    //   311: iconst_1
-    //   312: new 337	java/lang/StringBuilder
-    //   315: dup
-    //   316: invokespecial 338	java/lang/StringBuilder:<init>	()V
-    //   319: ldc_w 4135
-    //   322: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: aload_0
-    //   326: getfield 1517	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_MQQPayRuleCfg	LMQQ/PayRuleCfg;
-    //   329: getfield 1987	MQQ/PayRuleCfg:iconText	Ljava/lang/String;
-    //   332: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   335: ldc_w 4137
-    //   338: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   341: iload_1
-    //   342: invokevirtual 1411	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   345: ldc_w 4139
-    //   348: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   351: aload_0
-    //   352: getfield 1517	com/tencent/mobileqq/activity/QQSettingMe:jdField_a_of_type_MQQPayRuleCfg	LMQQ/PayRuleCfg;
-    //   355: getfield 1990	MQQ/PayRuleCfg:iconUrl	Ljava/lang/String;
-    //   358: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   361: ldc_w 4141
-    //   364: invokevirtual 485	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   367: aload_0
-    //   368: getfield 2913	com/tencent/mobileqq/activity/QQSettingMe:jdField_f_of_type_Boolean	Z
-    //   371: invokevirtual 1411	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   374: invokevirtual 486	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   377: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   380: goto -325 -> 55
-    //   383: astore_2
-    //   384: ldc_w 324
-    //   387: iconst_1
-    //   388: ldc_w 4143
-    //   391: aload_2
-    //   392: invokestatic 1845	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   395: return
-    //   396: aload_0
-    //   397: invokevirtual 4146	com/tencent/mobileqq/activity/QQSettingMe:v	()V
-    //   400: goto -274 -> 126
-    //   403: astore_2
-    //   404: ldc_w 324
-    //   407: iconst_2
-    //   408: ldc_w 4148
-    //   411: aload_2
-    //   412: invokestatic 1845	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   415: return
-    //   416: iload_1
-    //   417: ifeq -110 -> 307
-    //   420: goto -147 -> 273
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	423	0	this	QQSettingMe
-    //   37	380	1	bool	boolean
-    //   172	131	2	localObject	Object
-    //   383	9	2	localException	Exception
-    //   403	9	2	localThrowable	Throwable
-    //   199	34	3	localArrayList	ArrayList
-    //   207	13	4	localRedTypeInfo	BusinessInfoCheckUpdate.RedTypeInfo
-    // Exception table:
-    //   from	to	target	type
-    //   0	55	383	java/lang/Exception
-    //   59	122	383	java/lang/Exception
-    //   122	126	383	java/lang/Exception
-    //   126	165	383	java/lang/Exception
-    //   165	181	383	java/lang/Exception
-    //   185	236	383	java/lang/Exception
-    //   236	270	383	java/lang/Exception
-    //   273	298	383	java/lang/Exception
-    //   298	307	383	java/lang/Exception
-    //   308	380	383	java/lang/Exception
-    //   396	400	383	java/lang/Exception
-    //   404	415	383	java/lang/Exception
-    //   298	307	403	java/lang/Throwable
+    for (;;)
+    {
+      boolean bool;
+      try
+      {
+        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+        this.jdField_a_of_type_MQQPayRuleCfg = VipInfoHandler.a(this.jdField_b_of_type_JavaLangString);
+        bool = VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_MQQPayRuleCfg, this.jdField_h_of_type_Boolean);
+        if (this.jdField_a_of_type_MQQPayRuleCfg == null)
+        {
+          QLog.e("QQSettingRedesign", 1, "VipInfoHandler getPayRule is null");
+          if (!bool) {
+            break label415;
+          }
+          if (!this.jdField_h_of_type_Boolean)
+          {
+            this.jdField_h_of_type_Boolean = true;
+            ReportController.b(null, "dc00898", "", "", "", "0X800A632", VipInfoHandler.a(this.jdField_a_of_type_MQQPayRuleCfg), 1, 0, "1", this.jdField_a_of_type_MQQPayRuleCfg.advId, "", "");
+            VipInfoHandler.a(101, this.jdField_a_of_type_MQQPayRuleCfg.advId);
+          }
+          ai();
+          if (QLog.isColorLevel())
+          {
+            localObject = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+            QLog.d("QQSettingRedesign", 2, "VipInfoHandler vipAppinfo: " + ((IRedTouchManager)localObject).appToString(this.jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo));
+          }
+          localObject = new BusinessInfoCheckUpdate.AppInfo();
+          ((BusinessInfoCheckUpdate.AppInfo)localObject).set(this.jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
+          if ((bool) && (RedTouchTextView.a((BusinessInfoCheckUpdate.AppInfo)localObject) != null))
+          {
+            ArrayList localArrayList = new ArrayList();
+            BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+            localRedTypeInfo.red_type.set(0);
+            localArrayList.add(localRedTypeInfo);
+            ((BusinessInfoCheckUpdate.AppInfo)localObject).red_display_info.red_type_info.set(localArrayList);
+          }
+          a(1, (BusinessInfoCheckUpdate.AppInfo)localObject);
+          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+          {
+            if ((this.jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo == null) || (this.jdField_d_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 1)) {
+              break label435;
+            }
+            QLog.e("QQSettingRedesign", 1, "VipInfoHandler PreloadWebService updateVipItemView");
+            localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, PreloadWebService.class);
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        QLog.e("QQSettingRedesign", 1, "updateVipItemView: ", localException);
+        return;
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startService((Intent)localObject);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("QQSettingRedesign", 2, "PreloadWebService", localThrowable);
+        return;
+      }
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler getPayRule " + this.jdField_a_of_type_MQQPayRuleCfg.iconText + " needShowPayButton=" + bool + " url=" + this.jdField_a_of_type_MQQPayRuleCfg.iconUrl + " exposed:" + this.jdField_h_of_type_Boolean);
+      continue;
+      label415:
+      v();
+      continue;
+      label435:
+      if (!bool) {}
+    }
   }
   
   public void u()
@@ -5144,7 +5110,7 @@ public class QQSettingMe
   
   public void v()
   {
-    TextView localTextView = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[1].findViewById(2131369165);
+    TextView localTextView = (TextView)this.jdField_a_of_type_ArrayOfAndroidViewView[1].findViewById(2131369416);
     localTextView.setText("");
     localTextView.setBackgroundDrawable(null);
   }
@@ -5157,35 +5123,35 @@ public class QQSettingMe
   
   public void x()
   {
-    ExtensionInfo localExtensionInfo = ((anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-    if (bdfk.b())
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+    if (SimpleUIUtil.a())
     {
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
       this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
     }
-    label236:
+    label253:
     for (;;)
     {
       return;
       Object localObject;
-      if ((!this.jdField_i_of_type_Boolean) && (localExtensionInfo != null) && (localExtensionInfo.isPendantValid()))
+      if ((!this.jdField_k_of_type_Boolean) && (localExtensionInfo != null) && (localExtensionInfo.isPendantValid()))
       {
         localObject = (AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
         ((AvatarPendantManager)localObject).b();
         this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
         localObject = ((AvatarPendantManager)localObject).a(localExtensionInfo.pendantId);
-        if (bhcs.a(localExtensionInfo.pendantId))
+        if (AvatarPendantUtil.a(localExtensionInfo.pendantId))
         {
           ((PendantInfo)localObject).a(this.jdField_a_of_type_ComTencentImageURLImageView, 2, PendantInfo.jdField_h_of_type_Int, localExtensionInfo.uin, localExtensionInfo.pendantDiyId);
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "AvatarPendant", "choutishow", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "AvatarPendant", "choutishow", 0, 0, "", "", "", "");
         }
       }
       for (int i1 = 1;; i1 = 0)
       {
-        if ((i1 != 1) || (i1 != this.jdField_i_of_type_Boolean)) {
-          break label236;
+        if ((i1 != 1) || (i1 != this.jdField_k_of_type_Boolean)) {
+          break label253;
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X8006728");
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006728", "0X8006728", 0, 0, "", "", "", "");
         return;
         ((PendantInfo)localObject).a(this.jdField_a_of_type_ComTencentImageURLImageView, 1, PendantInfo.jdField_h_of_type_Int, localExtensionInfo.uin, localExtensionInfo.pendantDiyId);
         break;
@@ -5195,22 +5161,22 @@ public class QQSettingMe
     }
   }
   
-  public void y()
+  protected void y()
   {
-    this.jdField_a_of_type_Bbvn = ((bbvn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER));
-    if ((this.jdField_a_of_type_Bbvn == null) || (this.jdField_e_of_type_AndroidViewView == null)) {
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER));
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager == null) || (this.jdField_e_of_type_AndroidViewView == null)) {
       return;
     }
-    if (this.jdField_a_of_type_Bbtg == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener == null)
     {
-      this.jdField_a_of_type_Bbtg = new aert(this);
-      this.jdField_a_of_type_Bbtd = new aeru(this);
-      this.jdField_a_of_type_Bbtb = new aerv(this);
-      this.jdField_a_of_type_Bbvn.a(this.jdField_a_of_type_Bbtg);
-      this.jdField_a_of_type_Bbvn.a(this.jdField_a_of_type_Bbtd);
-      this.jdField_a_of_type_Bbvn.a(this.jdField_a_of_type_Bbtb);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new QQSettingMe.26(this);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new QQSettingMe.27(this);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener = new QQSettingMe.28(this);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener);
     }
-    RichStatus localRichStatus = this.jdField_a_of_type_Bbvn.a(false);
+    RichStatus localRichStatus = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(false);
     if ((localRichStatus == null) || (localRichStatus.isEmpty()))
     {
       ThreadManager.getFileThreadHandler().post(new QQSettingMe.29(this));
@@ -5221,15 +5187,15 @@ public class QQSettingMe
   
   void z()
   {
-    this.jdField_a_of_type_Bbvn = ((bbvn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER));
-    if (this.jdField_a_of_type_Bbvn == null)
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER));
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager == null)
     {
       QLog.e("QQSettingRedesign", 1, "preLoadSignature, mStatusManager == null");
       return;
     }
-    ImageView localImageView1 = (ImageView)this.jdField_e_of_type_AndroidViewView.findViewById(2131376648);
-    TextView localTextView = (TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131376649);
-    ImageView localImageView2 = (ImageView)this.jdField_e_of_type_AndroidViewView.findViewById(2131368398);
+    ImageView localImageView1 = (ImageView)this.jdField_e_of_type_AndroidViewView.findViewById(2131377043);
+    TextView localTextView = (TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131377044);
+    ImageView localImageView2 = (ImageView)this.jdField_e_of_type_AndroidViewView.findViewById(2131368620);
     localImageView2.setColorFilter(localTextView.getCurrentTextColor());
     Object localObject1 = new StringBuilder(100);
     label118:
@@ -5251,7 +5217,7 @@ public class QQSettingMe
       if (TextUtils.isEmpty(str1)) {
         break label509;
       }
-      localImageView1.setImageBitmap(this.jdField_a_of_type_Bbvn.a(i1, 200));
+      localImageView1.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(i1, 200));
       localImageView1.setVisibility(0);
       ((StringBuilder)localObject1).append(str1);
       if (!TextUtils.isEmpty(str2)) {
@@ -5273,18 +5239,18 @@ public class QQSettingMe
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         break label549;
       }
-      localTextView.setText(2131698804);
+      localTextView.setText(2131699117);
       localImageView2.setVisibility(0);
     }
     for (;;)
     {
-      if (AppSetting.jdField_c_of_type_Boolean)
+      if (AppSetting.jdField_d_of_type_Boolean)
       {
         this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
         this.jdField_a_of_type_JavaLangStringBuilder.append("个性签名").append((String)localObject1);
         this.jdField_e_of_type_AndroidViewView.setContentDescription(this.jdField_a_of_type_JavaLangStringBuilder.toString());
       }
-      if (!bdfk.b()) {
+      if (!SimpleUIUtil.a()) {
         break;
       }
       localImageView1.setVisibility(8);
@@ -5294,7 +5260,7 @@ public class QQSettingMe
       label509:
       localImageView1.setBackgroundResource(0);
       localImageView1.setPadding(0, 0, 0, 0);
-      localImageView1.setImageResource(2130846059);
+      localImageView1.setImageResource(2130846380);
       localImageView1.setVisibility(8);
       break label373;
       label538:
@@ -5302,7 +5268,7 @@ public class QQSettingMe
       break label413;
       label549:
       localImageView2.setVisibility(0);
-      if (DeviceInfoUtil.isRubbishPhoneLenovoA366t()) {
+      if (DeviceInfoUtil.b()) {
         localTextView.setText((String)localObject1 + " ");
       } else {
         localTextView.setText((CharSequence)localObject1);
@@ -5312,7 +5278,7 @@ public class QQSettingMe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe
  * JD-Core Version:    0.7.0.1
  */

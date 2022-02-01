@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.download.unite.core;
 
-import bjkp;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.open.base.MD5;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -25,7 +25,7 @@ public class UniteDownloadEntity
     UniteDownloadEntity localUniteDownloadEntity = new UniteDownloadEntity();
     localUniteDownloadEntity.downloadTimestamp = NetConnInfoCenter.getServerTimeMillis();
     localUniteDownloadEntity.apkPath = paramDownloadInfo.l;
-    localUniteDownloadEntity.apkMd5 = bjkp.a(new File(paramDownloadInfo.l));
+    localUniteDownloadEntity.apkMd5 = MD5.a(new File(paramDownloadInfo.l));
     localUniteDownloadEntity.source = paramDownloadInfo.m;
     localUniteDownloadEntity.appId = paramDownloadInfo.c;
     if (QLog.isColorLevel()) {
@@ -46,7 +46,7 @@ public class UniteDownloadEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.UniteDownloadEntity
  * JD-Core Version:    0.7.0.1
  */

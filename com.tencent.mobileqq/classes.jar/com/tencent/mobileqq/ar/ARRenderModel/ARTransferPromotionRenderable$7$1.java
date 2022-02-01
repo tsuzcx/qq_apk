@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
 import android.widget.TextView;
-import apem;
 
 class ARTransferPromotionRenderable$7$1
   implements Runnable
@@ -10,13 +9,13 @@ class ARTransferPromotionRenderable$7$1
   
   public void run()
   {
-    apem.a(this.a.this$0).setVisibility(8);
-    apem.a(this.a.this$0, null);
+    ARTransferPromotionRenderable.a(this.a.this$0).setVisibility(8);
+    ARTransferPromotionRenderable.a(this.a.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.7.1
  * JD-Core Version:    0.7.0.1
  */

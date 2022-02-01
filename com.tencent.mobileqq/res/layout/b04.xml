@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.leba.widget.LebaRoundLayout android:id="@id/bzs" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/bzs" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="horizontal" android:id="@id/ee7" android:background="@drawable/jm" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <View android:layout_gravity="center_vertical" android:id="@id/ecs" android:layout_width="0.0dip" android:layout_height="32.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:layout_weight="1.0" />
         <ImageView android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="9.0dip" android:layout_height="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="20.0dip" android:src="@drawable/common_arrow_right_selector" />
     </LinearLayout>
-</com.tencent.mobileqq.leba.widget.LebaRoundLayout>
+</com.tencent.mobileqq.widget.RoundRelativeLayout>

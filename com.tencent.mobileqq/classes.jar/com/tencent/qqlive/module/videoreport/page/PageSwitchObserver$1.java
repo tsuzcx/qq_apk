@@ -4,16 +4,20 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import java.lang.ref.WeakReference;
 
 class PageSwitchObserver$1
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  PageSwitchObserver$1(PageSwitchObserver paramPageSwitchObserver, Activity paramActivity, View paramView) {}
+  PageSwitchObserver$1(PageSwitchObserver paramPageSwitchObserver, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
   
   public void onGlobalLayout()
   {
-    this.this$0.postAppearDetectionTask(this.val$activity);
-    this.val$view.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    PageSwitchObserver.access$200(this.this$0, (Activity)this.val$weakRefActivity.get());
+    View localView = (View)this.val$weakRefView.get();
+    if (localView != null) {
+      localView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

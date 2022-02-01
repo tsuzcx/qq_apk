@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.util;
 
-import bhat;
-
 class ScreenShotUtil$2$1
   implements Runnable
 {
@@ -9,7 +7,7 @@ class ScreenShotUtil$2$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Bhat.a(this.a, this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqUtilScreenShotUtil$ScreenLongShotCallback.a(this.a, this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

@@ -9,7 +9,7 @@ public final class GetBulkImageClassifyRsp
   extends JceStruct
 {
   static ArrayList<SmartFilterRspItem> cache_MiltiRsps = new ArrayList();
-  public ArrayList<SmartFilterRspItem> MiltiRsps;
+  public ArrayList<SmartFilterRspItem> MiltiRsps = null;
   
   static
   {
@@ -38,7 +38,7 @@ public final class GetBulkImageClassifyRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetBulkImageClassifyRsp
  * JD-Core Version:    0.7.0.1
  */

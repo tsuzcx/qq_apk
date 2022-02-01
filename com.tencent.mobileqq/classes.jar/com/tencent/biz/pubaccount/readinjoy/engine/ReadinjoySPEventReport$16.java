@@ -1,23 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.List;
-import pwb;
-import pwo;
-import pwp;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import uuc;
 
-public final class ReadinjoySPEventReport$16
+final class ReadinjoySPEventReport$16
   implements Runnable
 {
-  public ReadinjoySPEventReport$16(List paramList) {}
+  ReadinjoySPEventReport$16(List paramList) {}
   
   public void run()
   {
-    if (pwb.b(19))
+    if (ReadinjoySPEventReport.b(19))
     {
       ArrayList localArrayList = new ArrayList();
       Object localObject1 = new StringBuilder();
@@ -27,18 +25,18 @@ public final class ReadinjoySPEventReport$16
       int i = 0;
       if (j < this.a.size())
       {
-        localObject2 = (pwp)this.a.get(j);
-        ((StringBuilder)localObject1).append(((pwp)localObject2).jdField_a_of_type_Int + "-" + ((pwp)localObject2).jdField_a_of_type_Long + "-" + ((pwp)localObject2).b + "-" + ((pwp)localObject2).c);
+        localObject2 = (ReadinjoySPEventReport.ScrollStep)this.a.get(j);
+        ((StringBuilder)localObject1).append(((ReadinjoySPEventReport.ScrollStep)localObject2).jdField_a_of_type_Int + "-" + ((ReadinjoySPEventReport.ScrollStep)localObject2).jdField_a_of_type_Long + "-" + ((ReadinjoySPEventReport.ScrollStep)localObject2).b + "-" + ((ReadinjoySPEventReport.ScrollStep)localObject2).c);
         if (j != this.a.size() - 1) {
           ((StringBuilder)localObject1).append(":");
         }
         for (;;)
         {
-          i += ((pwp)localObject2).b;
-          l += ((pwp)localObject2).jdField_a_of_type_Long;
+          i += ((ReadinjoySPEventReport.ScrollStep)localObject2).b;
+          l += ((ReadinjoySPEventReport.ScrollStep)localObject2).jdField_a_of_type_Long;
           j += 1;
           break;
-          k = ((pwp)localObject2).d;
+          k = ((ReadinjoySPEventReport.ScrollStep)localObject2).d;
         }
       }
       Object localObject2 = new oidb_cmd0x80a.AttributeList();
@@ -61,14 +59,14 @@ public final class ReadinjoySPEventReport$16
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("items");
       ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set("" + k);
       localArrayList.add(localObject1);
-      uuc.a(19, localArrayList);
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPushEffectEvent(19, localArrayList);
     }
-    pwo.a();
+    ReadinjoySPEventReport.ScrollReportUtil.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.16
  * JD-Core Version:    0.7.0.1
  */

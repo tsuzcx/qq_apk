@@ -1,6 +1,6 @@
 package com.tencent.avcore.jni.mav;
 
-import ncl;
+import com.tencent.avcore.util.AVCoreLog;
 
 class MavEngineJni$NativeEventHandler$EventCountLog
 {
@@ -17,7 +17,7 @@ class MavEngineJni$NativeEventHandler$EventCountLog
   
   void log()
   {
-    if (!ncl.c()) {}
+    if (!AVCoreLog.isColorLevel()) {}
     long l1;
     do
     {
@@ -28,13 +28,13 @@ class MavEngineJni$NativeEventHandler$EventCountLog
     long l2 = this.intervalMS;
     long l3 = this.logTime;
     this.logTime = (l1 + this.intervalMS);
-    ncl.b(this.tag, "EventCountLog, eventCount[" + this.eventCount + "], intervalMS[" + (l2 + l1 - l3) + "]");
+    AVCoreLog.i(this.tag, "EventCountLog, eventCount[" + this.eventCount + "], intervalMS[" + (l2 + l1 - l3) + "]");
     this.eventCount = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avcore.jni.mav.MavEngineJni.NativeEventHandler.EventCountLog
  * JD-Core Version:    0.7.0.1
  */

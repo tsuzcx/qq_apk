@@ -1,21 +1,20 @@
 package com.tencent.avgame.videorecord;
 
 import android.opengl.GLES20;
-import nqx;
 
-public class GameVideoDarkCoverFilter$1
+class GameVideoDarkCoverFilter$1
   implements Runnable
 {
-  public GameVideoDarkCoverFilter$1(nqx paramnqx, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  GameVideoDarkCoverFilter$1(GameVideoDarkCoverFilter paramGameVideoDarkCoverFilter, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
   public void run()
   {
-    GLES20.glUniform4f(nqx.a(this.this$0), this.a, this.b, this.c, this.d);
+    GLES20.glUniform4f(GameVideoDarkCoverFilter.a(this.this$0), this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.videorecord.GameVideoDarkCoverFilter.1
  * JD-Core Version:    0.7.0.1
  */

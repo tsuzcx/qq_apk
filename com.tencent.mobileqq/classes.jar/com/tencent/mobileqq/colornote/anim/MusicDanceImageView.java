@@ -26,7 +26,7 @@ public class MusicDanceImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     if (!this.a) {
       return;
@@ -34,7 +34,7 @@ public class MusicDanceImageView
     super.dispatchDraw(paramCanvas);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (!this.a) {
       return;
@@ -42,7 +42,7 @@ public class MusicDanceImageView
     super.onDraw(paramCanvas);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (!this.a)
     {

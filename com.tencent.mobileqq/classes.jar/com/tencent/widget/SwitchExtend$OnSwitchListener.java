@@ -2,7 +2,7 @@ package com.tencent.widget;
 
 public abstract interface SwitchExtend$OnSwitchListener
 {
-  public abstract boolean prePerformClick(SwitchExtend paramSwitchExtend);
+  public abstract boolean a(SwitchExtend paramSwitchExtend);
 }
 
 

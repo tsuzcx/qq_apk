@@ -9,9 +9,6 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import auea;
-import aues;
-import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
@@ -19,8 +16,11 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
 import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
 import com.tencent.mobileqq.transfile.bitmapcreator.ExifBitmapCreator;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -74,8 +74,8 @@ public class DataLineDownloader
         BitmapFactory.decodeFile(paramDatalineDownLoadInfo.photoInfo.path, localOptions);
         localOptions.inJustDecodeBounds = false;
         localOptions.inSampleSize = calculateInSampleSize(localOptions, i, k);
-        Object localObject1 = aues.a(paramDatalineDownLoadInfo.photoInfo.path, localOptions);
-        k = AIOUtils.dp2px(135.0F, BaseApplicationImpl.getContext().getResources());
+        Object localObject1 = FilePicURLDrawlableHelper.a(paramDatalineDownLoadInfo.photoInfo.path, localOptions);
+        k = AIOUtils.a(135.0F, BaseApplicationImpl.getContext().getResources());
         if (localOptions.outHeight > localOptions.outWidth * 2.0F)
         {
           i = (int)((localOptions.outHeight - localOptions.outWidth * 2.0F) / 2.0F);
@@ -91,7 +91,7 @@ public class DataLineDownloader
           }
           else
           {
-            localObject1 = bheg.a((Bitmap)localObject2, k);
+            localObject1 = ImageUtil.a((Bitmap)localObject2, k);
           }
           localObject2 = localObject1;
           if (localObject1 == null) {
@@ -182,8 +182,8 @@ public class DataLineDownloader
     if (localObject == null)
     {
       paramURLDrawableHandler = BaseApplicationImpl.getContext();
-      int i = auea.a(paramFile.getPath());
-      paramURLDrawableHandler = drawableToBitmap(paramURLDrawableHandler.getResources().getDrawable(auea.a(i)));
+      int i = FileManagerUtil.a(paramFile.getPath());
+      paramURLDrawableHandler = drawableToBitmap(paramURLDrawableHandler.getResources().getDrawable(FileManagerUtil.a(i)));
     }
     paramDownloadParams = parseUrl(paramDownloadParams.url);
     paramFile = paramURLDrawableHandler;
@@ -192,7 +192,7 @@ public class DataLineDownloader
       paramFile = paramURLDrawableHandler;
       if (paramDownloadParams.isDrawRound)
       {
-        paramFile = bheg.a(paramURLDrawableHandler, AIOUtils.dp2px(12.0F, BaseApplicationImpl.getContext().getResources()));
+        paramFile = ImageUtil.a(paramURLDrawableHandler, AIOUtils.a(12.0F, BaseApplicationImpl.getContext().getResources()));
         paramURLDrawableHandler.recycle();
       }
     }

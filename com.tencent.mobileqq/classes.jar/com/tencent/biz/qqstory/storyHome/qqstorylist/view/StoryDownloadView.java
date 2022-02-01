@@ -66,6 +66,7 @@ public class StoryDownloadView
   public StoryDownloadView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_d_of_type_Int = 0;
     this.jdField_a_of_type_Float = 1.0F;
     a(this.jdField_a_of_type_Float);
@@ -185,7 +186,7 @@ public class StoryDownloadView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     paramCanvas.translate(super.getPaddingLeft(), super.getPaddingTop());
     if (this.jdField_d_of_type_Int == 2) {
@@ -202,7 +203,7 @@ public class StoryDownloadView
     } while (this.jdField_d_of_type_Int != 3);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     float f3 = 1.0F;
     int i1 = View.MeasureSpec.getMode(paramInt1);
@@ -255,7 +256,7 @@ public class StoryDownloadView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView
  * JD-Core Version:    0.7.0.1
  */

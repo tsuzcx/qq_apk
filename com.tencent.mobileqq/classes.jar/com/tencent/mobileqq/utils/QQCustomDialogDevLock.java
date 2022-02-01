@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.utils;
 
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
@@ -10,38 +8,13 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 public class QQCustomDialogDevLock
   extends ReportDialog
 {
-  public static final int WHICH_NEGATIVE = 0;
-  public static final int WHICH_POSITIVE = 1;
-  ImageView imageiconpc;
-  ImageView imageiconphone;
-  TextView lBtn;
-  TextView rBtn;
-  TextView textpc;
-  TextView textphone;
-  TextView title;
-  
-  public QQCustomDialogDevLock(Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public QQCustomDialogDevLock(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
-  
-  public static QQCustomDialogDevLock createDevLockCustomDialog(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
-  {
-    paramContext = new QQCustomDialogDevLock(paramContext, 2131755829);
-    paramContext.setContentView(2131561895);
-    paramContext.setTitle(paramString1);
-    paramContext.setPcText(paramString2);
-    paramContext.setPhoneText(paramString3);
-    paramContext.setPositiveButton(paramString5, paramOnClickListener1);
-    paramContext.setNegativeButton(paramString4, paramOnClickListener2);
-    paramContext.setCanceledOnTouchOutside(true);
-    return paramContext;
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
+  TextView e;
   
   public void dismiss()
   {
@@ -53,91 +26,16 @@ public class QQCustomDialogDevLock
     catch (Exception localException) {}
   }
   
-  public String getInputValue()
-  {
-    return null;
-  }
-  
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.title = ((TextView)findViewById(2131365681));
-    this.imageiconpc = ((ImageView)findViewById(2131368429));
-    this.textpc = ((TextView)findViewById(2131378659));
-    this.imageiconphone = ((ImageView)findViewById(2131368430));
-    this.textphone = ((TextView)findViewById(2131378661));
-    this.lBtn = ((TextView)findViewById(2131365633));
-    this.rBtn = ((TextView)findViewById(2131365639));
-  }
-  
-  public QQCustomDialogDevLock setNegativeButton(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.lBtn.setVisibility(8);
-      return this;
-    }
-    this.lBtn.setText(paramString);
-    this.lBtn.setContentDescription(paramString);
-    this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new QQCustomDialogDevLock.1(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public void setNegativeButtonContentDescription(String paramString)
-  {
-    this.lBtn.setContentDescription(paramString);
-  }
-  
-  public void setPcText(String paramString)
-  {
-    if (paramString == null) {}
-    while (this.textpc == null) {
-      return;
-    }
-    this.textpc.setText(paramString);
-  }
-  
-  public void setPhoneText(String paramString)
-  {
-    if (paramString == null) {}
-    while (this.textpc == null) {
-      return;
-    }
-    this.textphone.setText(paramString);
-  }
-  
-  public QQCustomDialogDevLock setPositiveButton(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.rBtn.setVisibility(8);
-      return this;
-    }
-    this.rBtn.setText(paramString);
-    this.rBtn.setContentDescription(paramString);
-    this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new QQCustomDialogDevLock.2(this, paramOnClickListener));
-    setSeperatorState();
-    return this;
-  }
-  
-  public void setPositiveButtonContentDescription(String paramString)
-  {
-    this.rBtn.setContentDescription(paramString);
-  }
-  
-  protected void setSeperatorState() {}
-  
-  public void setTitle(String paramString)
-  {
-    if (paramString == null) {}
-    while (this.title == null) {
-      return;
-    }
-    this.title.setText(paramString);
-    this.title.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365844));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368653));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379092));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368654));
+    this.c = ((TextView)findViewById(2131379094));
+    this.d = ((TextView)findViewById(2131365796));
+    this.e = ((TextView)findViewById(2131365802));
   }
 }
 

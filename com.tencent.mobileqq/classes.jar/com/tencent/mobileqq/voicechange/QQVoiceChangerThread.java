@@ -4,20 +4,15 @@ import android.content.Context;
 import android.media.AudioTrack;
 import android.os.Process;
 import android.text.TextUtils;
-import baii;
-import baij;
-import baik;
-import baim;
-import bhhd;
-import bibz;
-import bica;
-import bicd;
-import bicf;
-import bicj;
+import com.tencent.mobileqq.qqaudio.audioprocessor.AudioCompositeProcessor;
+import com.tencent.mobileqq.qqaudio.audioprocessor.IAudioProcessor;
+import com.tencent.mobileqq.qqaudio.audioprocessor.IAudioProcessor.ProcessData;
+import com.tencent.mobileqq.qqaudio.audioprocessor.IAudioProcessorListener;
 import com.tencent.mobileqq.transfile.PttInfoCollector;
 import com.tencent.mobileqq.utils.AmrInputStreamWrapper;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.utils.RecordParams;
 import com.tencent.mobileqq.utils.SilkCodecWrapper;
 import com.tencent.mobileqq.utils.WechatNsWrapper;
 import com.tencent.qphone.base.util.QLog;
@@ -28,53 +23,53 @@ import java.io.IOException;
 
 public class QQVoiceChangerThread
   extends Thread
-  implements baik
+  implements IAudioProcessorListener
 {
   int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
-  private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
-  private baim jdField_a_of_type_Baim;
-  bibz jdField_a_of_type_Bibz;
-  bica jdField_a_of_type_Bica;
-  bicf jdField_a_of_type_Bicf;
-  private FileInputStream jdField_a_of_type_JavaIoFileInputStream;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack = null;
+  private AudioCompositeProcessor jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor;
+  IVoiceChangeListener jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener;
+  VoiceChangeBasicParams jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams;
+  VoiceChangeModeParams jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams;
+  private FileInputStream jdField_a_of_type_JavaIoFileInputStream = null;
+  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream = null;
   public String a;
   public volatile boolean a;
   private byte[] jdField_a_of_type_ArrayOfByte = new byte[960];
   int jdField_b_of_type_Int = 0;
   private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   int c = 0;
   
-  public QQVoiceChangerThread(Context paramContext, bica parambica, bicf parambicf, String paramString, bibz parambibz)
+  public QQVoiceChangerThread(Context paramContext, VoiceChangeBasicParams paramVoiceChangeBasicParams, VoiceChangeModeParams paramVoiceChangeModeParams, String paramString, IVoiceChangeListener paramIVoiceChangeListener)
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_JavaLangString = parambica.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Bica = parambica;
-    this.jdField_a_of_type_Bicf = parambicf;
+    this.jdField_b_of_type_JavaLangString = paramVoiceChangeBasicParams.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams = paramVoiceChangeBasicParams;
+    this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams = paramVoiceChangeModeParams;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bibz = parambibz;
+    this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener = paramIVoiceChangeListener;
     if (QLog.isColorLevel()) {
-      QLog.d("QQVoiceChanger", 2, "new QQVoiceChangerThread filePath=" + this.jdField_b_of_type_JavaLangString + " sampleRate=" + parambica.jdField_b_of_type_Int + " bitRate=" + parambica.d + " voiceType=" + parambica.e + " changeType=" + parambica.f);
+      QLog.d("QQVoiceChanger", 2, "new QQVoiceChangerThread filePath=" + this.jdField_b_of_type_JavaLangString + " sampleRate=" + paramVoiceChangeBasicParams.jdField_b_of_type_Int + " bitRate=" + paramVoiceChangeBasicParams.d + " voiceType=" + paramVoiceChangeBasicParams.e + " changeType=" + paramVoiceChangeBasicParams.f);
     }
   }
   
   private void a(byte[] paramArrayOfByte, int paramInt)
   {
     int i = (int)AudioHelper.a(this.jdField_a_of_type_AndroidContentContext, paramArrayOfByte, paramInt, 1.0F);
-    if (this.jdField_a_of_type_Bibz != null) {
-      this.jdField_a_of_type_Bibz.onSlicePlayed(i, this.c * 100 / this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener.onSlicePlayed(i, this.c * 100 / this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
     }
     this.jdField_a_of_type_AndroidMediaAudioTrack.write(paramArrayOfByte, 0, paramInt);
   }
   
   private void e()
   {
-    String str = this.jdField_a_of_type_Bicf.jdField_a_of_type_JavaLangString;
+    String str = this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.jdField_a_of_type_JavaLangString;
     if (!TextUtils.isEmpty(str)) {}
-    for (this.jdField_b_of_type_JavaLangString = str;; this.jdField_b_of_type_JavaLangString = bicj.a(this.jdField_b_of_type_JavaLangString))
+    for (this.jdField_b_of_type_JavaLangString = str;; this.jdField_b_of_type_JavaLangString = VoiceTuneUtil.a(this.jdField_b_of_type_JavaLangString))
     {
       this.jdField_a_of_type_JavaIoFileInputStream = new FileInputStream(this.jdField_b_of_type_JavaLangString);
       if (QLog.isColorLevel()) {
@@ -89,8 +84,8 @@ public class QQVoiceChangerThread
     if (this.jdField_a_of_type_AndroidMediaAudioTrack != null) {
       this.jdField_a_of_type_AndroidMediaAudioTrack.release();
     }
-    if (this.jdField_a_of_type_Baim != null) {
-      this.jdField_a_of_type_Baim.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor != null) {
+      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a();
     }
     if (this.jdField_a_of_type_JavaIoFileInputStream != null) {
       this.jdField_a_of_type_JavaIoFileInputStream.close();
@@ -99,7 +94,7 @@ public class QQVoiceChangerThread
       this.jdField_a_of_type_JavaIoFileOutputStream.close();
     }
     if (this.jdField_b_of_type_Boolean) {
-      bicj.a(this.jdField_a_of_type_Bica.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      VoiceTuneUtil.a(this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQVoiceChanger", 2, "clean up requestToCancel=" + this.jdField_b_of_type_Boolean);
@@ -108,25 +103,25 @@ public class QQVoiceChangerThread
   
   protected void a()
   {
-    int i = AudioTrack.getMinBufferSize(this.jdField_a_of_type_Bica.jdField_b_of_type_Int, this.jdField_a_of_type_Bica.jdField_a_of_type_Int, this.jdField_a_of_type_Bica.c);
-    this.jdField_a_of_type_AndroidMediaAudioTrack = new AudioTrack(3, this.jdField_a_of_type_Bica.jdField_b_of_type_Int, 4, 2, i, 1);
+    int i = AudioTrack.getMinBufferSize(this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.c);
+    this.jdField_a_of_type_AndroidMediaAudioTrack = new AudioTrack(3, this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_b_of_type_Int, 4, 2, i, 1);
     this.jdField_a_of_type_AndroidMediaAudioTrack.play();
   }
   
   protected void a(int paramInt)
   {
-    File localFile = new File(bicj.a(this.jdField_a_of_type_Bica.jdField_a_of_type_JavaLangString, paramInt));
+    File localFile = new File(VoiceTuneUtil.a(this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_a_of_type_JavaLangString, paramInt));
     localFile.createNewFile();
     this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
   }
   
-  public void a(baii parambaii, baij parambaij)
+  public void a(IAudioProcessor paramIAudioProcessor, IAudioProcessor.ProcessData paramProcessData)
   {
-    if (((parambaii instanceof SilkCodecWrapper)) || ((parambaii instanceof AmrInputStreamWrapper)))
+    if (((paramIAudioProcessor instanceof SilkCodecWrapper)) || ((paramIAudioProcessor instanceof AmrInputStreamWrapper)))
     {
-      this.jdField_a_of_type_Int += (int)QQRecorder.a(this.jdField_a_of_type_Bica.jdField_b_of_type_Int, 4, 2, parambaij.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Bicf.jdField_a_of_type_Boolean) {
-        a(parambaij.jdField_a_of_type_ArrayOfByte, parambaij.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int += (int)QQRecorder.a(this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_b_of_type_Int, 4, 2, paramProcessData.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.jdField_a_of_type_Boolean) {
+        a(paramProcessData.jdField_a_of_type_ArrayOfByte, paramProcessData.jdField_a_of_type_Int);
       }
     }
   }
@@ -135,7 +130,7 @@ public class QQVoiceChangerThread
   {
     this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaIoFileInputStream.available();
     if (QLog.isColorLevel()) {
-      QLog.d("QQVoiceChanger", 2, "start progress totalSize=" + this.jdField_b_of_type_Int + " filePath=" + this.jdField_b_of_type_JavaLangString + "pcmFilePath=" + this.jdField_a_of_type_Bica.jdField_a_of_type_JavaLangString);
+      QLog.d("QQVoiceChanger", 2, "start progress totalSize=" + this.jdField_b_of_type_Int + " filePath=" + this.jdField_b_of_type_JavaLangString + "pcmFilePath=" + this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_a_of_type_JavaLangString);
     }
     int k = 0;
     int i = 0;
@@ -145,12 +140,12 @@ public class QQVoiceChangerThread
       if (this.jdField_a_of_type_Boolean)
       {
         j = k;
-        if (this.jdField_a_of_type_Bicf.e)
+        if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.e)
         {
           j = k;
           if (k == 0)
           {
-            if (this.jdField_a_of_type_Bica.e != 0) {
+            if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.e != 0) {
               break label260;
             }
             this.jdField_a_of_type_JavaIoFileInputStream.skip("#!AMR\n".length());
@@ -159,33 +154,33 @@ public class QQVoiceChangerThread
         }
       }
       label260:
-      baij localbaij;
+      IAudioProcessor.ProcessData localProcessData;
       try
       {
         k = this.jdField_a_of_type_JavaIoFileInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, 960);
         if (k == -1)
         {
           this.jdField_a_of_type_Boolean = false;
-          if (this.jdField_a_of_type_Bibz != null) {
-            this.jdField_a_of_type_Bibz.onPlayEnd();
+          if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener != null) {
+            this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener.onPlayEnd();
           }
           PttInfoCollector.reportGcAndMemoryUse(4, this.jdField_a_of_type_Int);
-          bicd.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bica.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bica.f, this.jdField_a_of_type_Bica.e);
+          VoiceChangeManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.f, this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.e);
           if (QLog.isColorLevel()) {
             QLog.d("QQVoiceChanger", 2, "finishedCompress playedTime=" + this.jdField_a_of_type_Int);
           }
           for (;;)
           {
-            if (this.jdField_a_of_type_Bibz != null) {
-              this.jdField_a_of_type_Bibz.onPlayStop();
+            if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener != null) {
+              this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener.onPlayStop();
             }
             return;
-            if (this.jdField_a_of_type_Bica.e == 1)
+            if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.e == 1)
             {
               this.jdField_a_of_type_JavaIoFileInputStream.skip(10L);
               break;
             }
-            if (this.jdField_a_of_type_Bica.e != 2) {
+            if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.e != 2) {
               break;
             }
             j = this.jdField_a_of_type_JavaIoFileInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, 64);
@@ -211,24 +206,24 @@ public class QQVoiceChangerThread
           }
         }
         this.c += k;
-        localbaij = this.jdField_a_of_type_Baim.a(this.jdField_a_of_type_ArrayOfByte, 0, k);
+        localProcessData = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a(this.jdField_a_of_type_ArrayOfByte, 0, k);
         PttInfoCollector.noteOneFrameProcessed();
-        if ((this.jdField_a_of_type_JavaIoFileOutputStream != null) && (this.jdField_a_of_type_Bicf.c))
+        if ((this.jdField_a_of_type_JavaIoFileOutputStream != null) && (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.c))
         {
           int m = i;
           if (i == 0)
           {
-            byte[] arrayOfByte = bhhd.a(this.jdField_a_of_type_Bica.e, this.jdField_a_of_type_Bica.jdField_b_of_type_Int);
+            byte[] arrayOfByte = RecordParams.a(this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.e, this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_b_of_type_Int);
             this.jdField_a_of_type_JavaIoFileOutputStream.write(arrayOfByte, 0, arrayOfByte.length);
             this.jdField_a_of_type_JavaIoFileOutputStream.flush();
             m = 1;
           }
           k = j;
           i = m;
-          if (localbaij == null) {
+          if (localProcessData == null) {
             continue;
           }
-          this.jdField_a_of_type_JavaIoFileOutputStream.write(localbaij.jdField_a_of_type_ArrayOfByte, 0, localbaij.jdField_a_of_type_Int);
+          this.jdField_a_of_type_JavaIoFileOutputStream.write(localProcessData.jdField_a_of_type_ArrayOfByte, 0, localProcessData.jdField_a_of_type_Int);
           this.jdField_a_of_type_JavaIoFileOutputStream.flush();
           k = j;
           i = m;
@@ -239,9 +234,9 @@ public class QQVoiceChangerThread
       if (this.jdField_a_of_type_JavaIoFileOutputStream != null)
       {
         k = j;
-        if (localbaij != null)
+        if (localProcessData != null)
         {
-          this.jdField_a_of_type_JavaIoFileOutputStream.write(localbaij.jdField_a_of_type_ArrayOfByte, 0, localbaij.jdField_a_of_type_Int);
+          this.jdField_a_of_type_JavaIoFileOutputStream.write(localProcessData.jdField_a_of_type_ArrayOfByte, 0, localProcessData.jdField_a_of_type_Int);
           this.jdField_a_of_type_JavaIoFileOutputStream.flush();
           k = j;
         }
@@ -249,17 +244,17 @@ public class QQVoiceChangerThread
     }
   }
   
-  public void b(baii parambaii, baij parambaij)
+  public void b(IAudioProcessor paramIAudioProcessor, IAudioProcessor.ProcessData paramProcessData)
   {
-    if (((parambaii instanceof VoiceChange)) && (!this.jdField_a_of_type_Bicf.c) && (this.jdField_a_of_type_Bicf.jdField_a_of_type_Boolean)) {
-      a(parambaij.jdField_a_of_type_ArrayOfByte, parambaij.jdField_a_of_type_Int);
+    if (((paramIAudioProcessor instanceof VoiceChange)) && (!this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.c) && (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.jdField_a_of_type_Boolean)) {
+      a(paramProcessData.jdField_a_of_type_ArrayOfByte, paramProcessData.jdField_a_of_type_Int);
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Bicf.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bibz = null;
+    this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener = null;
     if (QLog.isColorLevel()) {
       QLog.d("QQVoiceChanger", 2, "requestToSend isRunning=" + this.jdField_a_of_type_Boolean);
     }
@@ -268,9 +263,9 @@ public class QQVoiceChangerThread
   public void d()
   {
     if (!this.jdField_a_of_type_Boolean) {
-      bicj.b(this.jdField_a_of_type_Bica.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      VoiceTuneUtil.b(this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Bibz = null;
+    this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener = null;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
     if (QLog.isColorLevel()) {
@@ -281,36 +276,36 @@ public class QQVoiceChangerThread
   public void run()
   {
     Process.setThreadPriority(-19);
-    this.jdField_a_of_type_Baim = new baim();
+    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor = new AudioCompositeProcessor();
     for (;;)
     {
       try
       {
-        if (this.jdField_a_of_type_Bica.f == 0) {
-          this.jdField_a_of_type_Bicf.d = false;
+        if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.f == 0) {
+          this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.d = false;
         }
-        if (this.jdField_a_of_type_Bicf.d) {
-          this.jdField_a_of_type_Baim.a(new VoiceChange(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bica.f, this.jdField_a_of_type_JavaLangString));
+        if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.d) {
+          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a(new VoiceChange(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.f, this.jdField_a_of_type_JavaLangString));
         }
-        if (this.jdField_a_of_type_Bicf.jdField_b_of_type_Boolean)
+        if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.jdField_b_of_type_Boolean)
         {
           WechatNsWrapper localWechatNsWrapper = new WechatNsWrapper(this.jdField_a_of_type_AndroidContentContext);
           if (WechatNsWrapper.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Baim.a(localWechatNsWrapper);
+            this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a(localWechatNsWrapper);
           }
         }
-        if (this.jdField_a_of_type_Bicf.c)
+        if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams.c)
         {
-          if (this.jdField_a_of_type_Bica.e == 0) {
-            this.jdField_a_of_type_Baim.a(new AmrInputStreamWrapper(this.jdField_a_of_type_AndroidContentContext));
+          if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.e == 0) {
+            this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a(new AmrInputStreamWrapper(this.jdField_a_of_type_AndroidContentContext));
           }
         }
         else
         {
           e();
-          a(this.jdField_a_of_type_Bica.f);
-          this.jdField_a_of_type_Baim.a(this.jdField_a_of_type_Bica.jdField_b_of_type_Int, this.jdField_a_of_type_Bica.d, this.jdField_a_of_type_Bica.e);
-          this.jdField_a_of_type_Baim.a(this);
+          a(this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.f);
+          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a(this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.d, this.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.e);
+          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a(this);
           a();
           b();
         }
@@ -319,8 +314,8 @@ public class QQVoiceChangerThread
       {
         localIOException1 = localIOException1;
         localIOException1.printStackTrace();
-        if (this.jdField_a_of_type_Bibz != null) {
-          this.jdField_a_of_type_Bibz.onError();
+        if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener.onError();
         }
         try
         {
@@ -336,10 +331,10 @@ public class QQVoiceChangerThread
       catch (Exception localException)
       {
         localException = localException;
-        if (this.jdField_a_of_type_Bibz == null) {
+        if (this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener == null) {
           continue;
         }
-        this.jdField_a_of_type_Bibz.onError();
+        this.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeListener.onError();
         localException.printStackTrace();
         try
         {
@@ -363,7 +358,7 @@ public class QQVoiceChangerThread
         localIOException3.printStackTrace();
         return;
       }
-      this.jdField_a_of_type_Baim.a(new SilkCodecWrapper(this.jdField_a_of_type_AndroidContentContext));
+      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a(new SilkCodecWrapper(this.jdField_a_of_type_AndroidContentContext));
     }
     try
     {
@@ -381,7 +376,7 @@ public class QQVoiceChangerThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.voicechange.QQVoiceChangerThread
  * JD-Core Version:    0.7.0.1
  */

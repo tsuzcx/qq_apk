@@ -3,15 +3,13 @@ package com.tencent.mobileqq.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import biqb;
-import biqc;
 import com.tencent.image.URLImageView;
 
 public class MosaicURLImageView
   extends URLImageView
-  implements biqc
+  implements MosaicEffect.IMosaicEffect
 {
-  private biqb a;
+  private MosaicEffect a;
   
   public MosaicURLImageView(Context paramContext)
   {
@@ -28,16 +26,6 @@ public class MosaicURLImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void b(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
-  }
-  
-  public void c(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-  }
-  
   public void draw(Canvas paramCanvas)
   {
     if (this.a != null)
@@ -48,7 +36,7 @@ public class MosaicURLImageView
     super.draw(paramCanvas);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.a != null)
     {
@@ -58,21 +46,31 @@ public class MosaicURLImageView
     super.onDraw(paramCanvas);
   }
   
-  public void setMosaicEffect(biqb parambiqb)
+  public void setMosaicEffect(MosaicEffect paramMosaicEffect)
   {
     if (this.a != null) {
       this.a.a(null);
     }
-    this.a = parambiqb;
+    this.a = paramMosaicEffect;
     if (this.a != null) {
       this.a.a(this);
     }
     invalidate();
   }
+  
+  public void superDrawMosaic(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+  }
+  
+  public void superOnDrawMosaic(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MosaicURLImageView
  * JD-Core Version:    0.7.0.1
  */

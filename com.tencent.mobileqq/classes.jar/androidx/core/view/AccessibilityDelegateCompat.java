@@ -37,7 +37,7 @@ public class AccessibilityDelegateCompat
   
   static List<AccessibilityNodeInfoCompat.AccessibilityActionCompat> getActionList(View paramView)
   {
-    List localList = (List)paramView.getTag(2131378447);
+    List localList = (List)paramView.getTag(2131378878);
     paramView = localList;
     if (localList == null) {
       paramView = Collections.emptyList();
@@ -77,7 +77,7 @@ public class AccessibilityDelegateCompat
   
   private boolean performClickableSpanAction(int paramInt, View paramView)
   {
-    Object localObject = (SparseArray)paramView.getTag(2131378448);
+    Object localObject = (SparseArray)paramView.getTag(2131378879);
     if (localObject != null)
     {
       localObject = (WeakReference)((SparseArray)localObject).get(paramInt);
@@ -160,7 +160,7 @@ public class AccessibilityDelegateCompat
       if (!bool1)
       {
         bool2 = bool1;
-        if (paramInt == 2131361824) {
+        if (paramInt == 2131361823) {
           bool2 = performClickableSpanAction(paramBundle.getInt("ACCESSIBILITY_CLICKABLE_SPAN_ID", -1), paramView);
         }
       }
@@ -182,7 +182,7 @@ public class AccessibilityDelegateCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.view.AccessibilityDelegateCompat
  * JD-Core Version:    0.7.0.1
  */

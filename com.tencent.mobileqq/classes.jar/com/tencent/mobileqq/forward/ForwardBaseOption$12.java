@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.forward;
 
 import android.graphics.drawable.Drawable;
-import aupt;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ForwardBaseOption$12
+class ForwardBaseOption$12
   implements Runnable
 {
-  public ForwardBaseOption$12(aupt paramaupt, Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
+  ForwardBaseOption$12(ForwardBaseOption paramForwardBaseOption, Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
   
   public void run()
   {

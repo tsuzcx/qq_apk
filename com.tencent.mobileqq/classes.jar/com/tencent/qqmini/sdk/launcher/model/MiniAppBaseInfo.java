@@ -11,26 +11,26 @@ import java.util.Map;
 public class MiniAppBaseInfo
   implements Parcelable
 {
-  public static final int Audit = 2;
-  public static final int AuditPass = 6;
-  public static final int AuditReject = 7;
+  public static final int AUDIT = 2;
+  public static final int AUDIT_PASS = 6;
+  public static final int AUDIT_REJECT = 7;
   public static final Parcelable.Creator<MiniAppBaseInfo> CREATOR = new MiniAppBaseInfo.1();
+  public static final int DELETED = 5;
+  public static final int DEVELOP = 0;
   public static final int DEVICE_UNKOWN = 0;
-  public static final int Deleted = 5;
-  public static final int Develop = 0;
   public static final String ENV_VERSION_DEVELOP = "develop";
   public static final String ENV_VERSION_RELEASE = "release";
   public static final String ENV_VERSION_TRIAL = "trial";
-  public static final int Experience = 1;
-  public static final int GrayRelease = 8;
+  public static final int EXPERIENCE = 1;
+  public static final int GRAY_RELEASE = 8;
   public static final int LANDSCAPE = 2;
   public static final int LANDSCAPELEFT = 3;
   public static final int LANDSCAPERIGHT = 4;
   public static final int NO_SHOW = 2;
-  public static final int Offline = 9;
-  public static final int Online = 3;
+  public static final int OFFLINE = 9;
+  public static final int ONLINE = 3;
   public static final int PORTRAIT = 1;
-  public static final int Preview = 4;
+  public static final int PREVIEW = 4;
   public static final int SHOW_STATUS = 1;
   public static final int SHOW_UNKOWN = 0;
   public static final String TAG = "MiniAppInfo";
@@ -58,9 +58,9 @@ public class MiniAppBaseInfo
   public FirstPageInfo firstPage;
   public String firstPath;
   public String iconUrl;
-  public String ide_extraAppid;
-  public String ide_extraData;
-  public String ide_scene;
+  public String ideExtraAppid;
+  public String ideExtraData;
+  public String ideScene;
   public String link;
   public int linkType;
   public String name;
@@ -140,9 +140,9 @@ public class MiniAppBaseInfo
       this.prepayId = paramParcel.readString();
       this.amsAdInfo = paramParcel.readString();
       this.apngUrl = paramParcel.readString();
-      this.ide_scene = paramParcel.readString();
-      this.ide_extraAppid = paramParcel.readString();
-      this.ide_extraData = paramParcel.readString();
+      this.ideScene = paramParcel.readString();
+      this.ideExtraAppid = paramParcel.readString();
+      this.ideExtraData = paramParcel.readString();
       this.tianshuAdId = paramParcel.readInt();
       return;
     }
@@ -218,7 +218,11 @@ public class MiniAppBaseInfo
   
   public boolean isInternalApp()
   {
-    return (this.appMode != null) && (this.appMode.interMode);
+    if (this.appId.equals("1109907872")) {}
+    while ((this.appMode != null) && (this.appMode.interMode)) {
+      return true;
+    }
+    return false;
   }
   
   public boolean isLandScape()
@@ -308,9 +312,9 @@ public class MiniAppBaseInfo
       paramParcel.writeString(this.prepayId);
       paramParcel.writeString(this.amsAdInfo);
       paramParcel.writeString(this.apngUrl);
-      paramParcel.writeString(this.ide_scene);
-      paramParcel.writeString(this.ide_extraAppid);
-      paramParcel.writeString(this.ide_extraData);
+      paramParcel.writeString(this.ideScene);
+      paramParcel.writeString(this.ideExtraAppid);
+      paramParcel.writeString(this.ideExtraData);
       paramParcel.writeInt(this.tianshuAdId);
       return;
     }
@@ -318,7 +322,7 @@ public class MiniAppBaseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo
  * JD-Core Version:    0.7.0.1
  */

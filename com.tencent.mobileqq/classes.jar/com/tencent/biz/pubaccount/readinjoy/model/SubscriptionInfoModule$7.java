@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pvm;
-import qhx;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class SubscriptionInfoModule$7
+class SubscriptionInfoModule$7
   implements Runnable
 {
-  public SubscriptionInfoModule$7(qhx paramqhx, int paramInt1, int paramInt2) {}
+  SubscriptionInfoModule$7(SubscriptionInfoModule paramSubscriptionInfoModule, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    pvm.a().a(this.a, this.b);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule.7
  * JD-Core Version:    0.7.0.1
  */

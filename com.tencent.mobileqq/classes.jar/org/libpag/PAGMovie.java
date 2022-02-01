@@ -9,7 +9,6 @@ public class PAGMovie
   {
     LibraryLoadUtils.loadLibrary("libpag");
     nativeInit();
-    PAGFont.loadSystemFonts();
   }
   
   private PAGMovie(long paramLong)
@@ -56,7 +55,7 @@ public class PAGMovie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     org.libpag.PAGMovie
  * JD-Core Version:    0.7.0.1
  */

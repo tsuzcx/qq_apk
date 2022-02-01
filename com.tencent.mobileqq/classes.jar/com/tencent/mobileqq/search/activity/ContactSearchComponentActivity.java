@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.search.activity;
 
-import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -8,7 +7,6 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import bcam;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
@@ -98,7 +96,7 @@ public class ContactSearchComponentActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131377188).setOnTouchListener(new bcam(this));
+    findViewById(2131377608).setOnTouchListener(new ContactSearchComponentActivity.1(this));
     return true;
   }
   
@@ -117,7 +115,7 @@ public class ContactSearchComponentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchComponentActivity
  * JD-Core Version:    0.7.0.1
  */

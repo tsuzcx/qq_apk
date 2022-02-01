@@ -25,15 +25,15 @@ public class RecommendCommonMessage
   private ArrayList<Integer> atLength = new ArrayList();
   public boolean isFromArkServer;
   public ArrayList<RecommendCommonMessage.ArkContextInfo> mContextList = new ArrayList();
-  public int mContextMatchType;
-  public int mEchoType;
-  public boolean mHasReportShowIcon;
-  public boolean mHasReportShowIconEach;
-  public boolean mHasReportShowUnderline;
-  public boolean mHasReportShowUnderlineEach;
+  public int mContextMatchType = 0;
+  public int mEchoType = 0;
+  public boolean mHasReportShowIcon = false;
+  public boolean mHasReportShowIconEach = false;
+  public boolean mHasReportShowUnderline = false;
+  public boolean mHasReportShowUnderlineEach = false;
   public String mIconAppPath;
   public boolean mIsMsgParsedByAi;
-  public boolean mIsShow;
+  public boolean mIsShow = false;
   public RecommendCommonMessage.ArkMsgAppInfo mOldAppInfo = new RecommendCommonMessage.ArkMsgAppInfo();
   
   public void addAtInfo(int paramInt1, int paramInt2)
@@ -103,14 +103,14 @@ public class RecommendCommonMessage
         for (;;)
         {
           if (TextUtils.isEmpty(this.mOldAppInfo.appName)) {
-            break label538;
+            break label539;
           }
           bool1 = true;
           this.mIsMsgParsedByAi = bool1;
           if (!this.mIsMsgParsedByAi)
           {
             if (this.mContextList.size() <= 0) {
-              break label543;
+              break label544;
             }
             bool1 = true;
             this.mIsMsgParsedByAi = bool1;
@@ -120,7 +120,7 @@ public class RecommendCommonMessage
           }
           String str1 = getExtInfoFromExtStr("ark_ai_message_parsed");
           if ((TextUtils.isEmpty(str1)) || (!str1.equals("1"))) {
-            break label548;
+            break label549;
           }
           bool1 = bool2;
           this.mIsMsgParsedByAi = bool1;
@@ -140,9 +140,9 @@ public class RecommendCommonMessage
       }
       catch (Exception localException)
       {
-        label538:
-        label543:
-        label548:
+        label539:
+        label544:
+        label549:
         for (;;)
         {
           boolean bool1;
@@ -226,7 +226,7 @@ public class RecommendCommonMessage
     for (;;)
     {
       if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
-        break label444;
+        break label445;
       }
       return;
       localObject = "0";
@@ -289,13 +289,13 @@ public class RecommendCommonMessage
         QLog.d("Ark", 2, "RecommendCommonMessage saveRecommendMsg exception=" + localException);
       }
     }
-    label444:
+    label445:
     ArkRecommendLogic.a().post(new RecommendCommonMessage.1(this, paramWeakReference));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecommendCommonMessage
  * JD-Core Version:    0.7.0.1
  */

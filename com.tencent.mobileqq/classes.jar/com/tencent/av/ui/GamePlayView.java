@@ -6,29 +6,31 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.widget.FrameLayout;
+import com.tencent.av.AVLog;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.zimu.SpitZimuTask.ISpitZimuTaskPlayer;
 import com.tencent.av.gameplay.ARNativeBridge;
 import com.tencent.mobileqq.armap.ARGLSurfaceView;
 import com.tencent.mobileqq.armap.ARGLSurfaceView.SurfaceStateListener;
 import com.tencent.qphone.base.util.QLog;
-import lbd;
-import lji;
-import mex;
 
 public class GamePlayView
   extends FrameLayout
-  implements lji
+  implements SpitZimuTask.ISpitZimuTaskPlayer
 {
+  public int a;
   private long jdField_a_of_type_Long;
   private Activity jdField_a_of_type_AndroidAppActivity;
   protected VideoAppInterface a;
   private ARNativeBridge jdField_a_of_type_ComTencentAvGameplayARNativeBridge;
-  ARGLSurfaceView.SurfaceStateListener jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView$SurfaceStateListener = new mex(this);
+  ARGLSurfaceView.SurfaceStateListener jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView$SurfaceStateListener = new GamePlayView.1(this);
   private ARGLSurfaceView jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView;
+  public int b = 0;
   
   public GamePlayView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 0;
   }
   
   public void a()
@@ -45,8 +47,8 @@ public class GamePlayView
   public void a(VideoAppInterface paramVideoAppInterface, Activity paramActivity, String paramString, int paramInt)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    lbd.f("ARZimuTask_GamePlayView", "init strResPath = " + paramString + "  |  code = " + paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131367758));
+    AVLog.printColorLog("ARZimuTask_GamePlayView", "init strResPath = " + paramString + "  |  code = " + paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131367966));
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentAvGameplayARNativeBridge = new ARNativeBridge();
     this.jdField_a_of_type_ComTencentAvGameplayARNativeBridge.native_updateResourcePath(paramString);
@@ -77,13 +79,13 @@ public class GamePlayView
     return false;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     b();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     a();
@@ -101,7 +103,7 @@ public class GamePlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.GamePlayView
  * JD-Core Version:    0.7.0.1
  */

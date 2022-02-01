@@ -10,30 +10,31 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import zii;
-import zim;
 
 public class RecyclerViewWithHeaderFooter
   extends RecyclerView
 {
+  private RecyclerViewHeaderViewAdapter.ContentDataObserver jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver;
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private zim jdField_a_of_type_Zim;
   public boolean a;
   private final List<View> b = new ArrayList();
   
   public RecyclerViewWithHeaderFooter(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public RecyclerViewWithHeaderFooter(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public RecyclerViewWithHeaderFooter(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a(View paramView)
@@ -73,17 +74,17 @@ public class RecyclerViewWithHeaderFooter
     }
     else
     {
-      localObject = new zii(paramAdapter);
+      localObject = new RecyclerViewHeaderViewAdapter(paramAdapter);
       paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramAdapter.hasNext()) {
-        ((zii)localObject).a((View)paramAdapter.next());
+        ((RecyclerViewHeaderViewAdapter)localObject).a((View)paramAdapter.next());
       }
       paramAdapter = this.b.iterator();
       while (paramAdapter.hasNext()) {
-        ((zii)localObject).b((View)paramAdapter.next());
+        ((RecyclerViewHeaderViewAdapter)localObject).b((View)paramAdapter.next());
       }
-      if (this.jdField_a_of_type_Zim != null) {
-        ((zii)localObject).a(this.jdField_a_of_type_Zim);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver != null) {
+        ((RecyclerViewHeaderViewAdapter)localObject).a(this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
@@ -91,7 +92,7 @@ public class RecyclerViewWithHeaderFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewWithHeaderFooter
  * JD-Core Version:    0.7.0.1
  */

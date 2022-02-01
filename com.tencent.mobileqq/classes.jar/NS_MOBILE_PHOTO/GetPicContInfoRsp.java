@@ -10,7 +10,7 @@ public final class GetPicContInfoRsp
   extends JceStruct
 {
   static Map<String, PicContInfo> cache_pic_info = new HashMap();
-  public Map<String, PicContInfo> pic_info;
+  public Map<String, PicContInfo> pic_info = null;
   
   static
   {

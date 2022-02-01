@@ -1,41 +1,25 @@
 package com.tencent.mobileqq.apollo;
 
-import ampv;
-import anhm;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.apollo.api.listener.OnApolloViewListener;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloRender$5
-  extends IApolloRunnableTask
+  implements Runnable
 {
-  ApolloRender$5(ApolloRender paramApolloRender, int paramInt1, int paramInt2) {}
-  
-  public String a()
-  {
-    return "addOnCommonScript";
-  }
+  ApolloRender$5(ApolloRender paramApolloRender, OnApolloViewListener paramOnApolloViewListener, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if ((ApolloRender.getRenderViewByThreadId() instanceof ampv)) {}
-    for (int i = ((ampv)ApolloRender.getRenderViewByThreadId()).getInitHeight();; i = 0)
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApiListenerOnApolloViewListener != null)
     {
-      int j = i;
-      if (i == 0) {
-        j = (int)DeviceInfoUtil.getPortraitHeight();
-      }
-      String str = anhm.b(this.a, this.b, j);
-      ApolloRender.access$300(this.this$0).a(str);
-      if (QLog.isColorLevel()) {
-        QLog.d("sava_ApolloRender", 2, new Object[] { "addOnCommonScript:", str });
-      }
-      return;
+      QLog.d("sava_ApolloRender", 2, "cb.onSurfaceReady");
+      this.jdField_a_of_type_ComTencentMobileqqApolloApiListenerOnApolloViewListener.onSurfaceReady(this.jdField_a_of_type_Int, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.5
  * JD-Core Version:    0.7.0.1
  */

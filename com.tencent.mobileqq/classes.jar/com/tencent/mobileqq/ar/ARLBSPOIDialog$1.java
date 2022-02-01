@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.ar;
 
 import android.widget.ProgressBar;
-import apbl;
 
-public class ARLBSPOIDialog$1
+class ARLBSPOIDialog$1
   implements Runnable
 {
-  public ARLBSPOIDialog$1(apbl paramapbl) {}
+  ARLBSPOIDialog$1(ARLBSPOIDialog paramARLBSPOIDialog) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class ARLBSPOIDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARLBSPOIDialog.1
  * JD-Core Version:    0.7.0.1
  */

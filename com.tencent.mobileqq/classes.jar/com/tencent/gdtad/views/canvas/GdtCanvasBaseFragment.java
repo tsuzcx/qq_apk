@@ -1,7 +1,5 @@
 package com.tencent.gdtad.views.canvas;
 
-import acho;
-import aciv;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +12,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
 import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasView;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.views.GdtUIUtils;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -34,10 +34,10 @@ public abstract class GdtCanvasBaseFragment
   {
     if ((paramActivity == null) || (paramAdCanvasData == null) || (!paramAdCanvasData.isValid()))
     {
-      acho.b("GdtCanvasBaseFragment", "start error");
+      GdtLog.b("GdtCanvasBaseFragment", "start error");
       return;
     }
-    acho.b("GdtCanvasBaseFragment", "start");
+    GdtLog.b("GdtCanvasBaseFragment", "start");
     Bundle localBundle = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       localBundle.putAll(paramBundle);
@@ -49,7 +49,7 @@ public abstract class GdtCanvasBaseFragment
     paramAdCanvasData.putExtra("big_brother_source_key", "biz_src_ads");
     paramAdCanvasData.putExtras(localBundle);
     if (TextUtils.isEmpty(paramAdCanvasData.getStringExtra("big_brother_ref_source_key"))) {
-      acho.d("GdtCanvasBaseFragment", "start gdt empty refId");
+      GdtLog.d("GdtCanvasBaseFragment", "start gdt empty refId");
     }
     PublicFragmentActivity.a(paramActivity, paramAdCanvasData, paramClass);
   }
@@ -104,7 +104,7 @@ public abstract class GdtCanvasBaseFragment
         paramLayoutInflater.sourceId = getArguments().getString("big_brother_ref_source_key");
       }
       this.contentView = new AdCanvasView(getActivity());
-      aciv.a(this.contentView);
+      GdtUIUtils.a(this.contentView);
       this.contentView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       this.contentView.setData(paramLayoutInflater);
       if ((getActivity() != null) && (getActivity().getWindow() != null)) {
@@ -139,7 +139,7 @@ public abstract class GdtCanvasBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment
  * JD-Core Version:    0.7.0.1
  */

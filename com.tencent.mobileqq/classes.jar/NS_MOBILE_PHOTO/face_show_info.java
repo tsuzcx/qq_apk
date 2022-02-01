@@ -12,8 +12,8 @@ public final class face_show_info
   static ArrayList<String> cache_groupids;
   static uin_nick_info cache_pic_host;
   static int cache_status = 0;
-  public ArrayList<String> groupids;
-  public uin_nick_info pic_host;
+  public ArrayList<String> groupids = null;
+  public uin_nick_info pic_host = null;
   public int status = 0;
   
   static

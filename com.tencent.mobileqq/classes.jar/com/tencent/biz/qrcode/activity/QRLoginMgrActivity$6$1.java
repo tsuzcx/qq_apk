@@ -1,42 +1,41 @@
 package com.tencent.biz.qrcode.activity;
 
-import java.util.ArrayList;
+import com.tencent.biz.qrcode.logindev.LoginDevInfoAdapter;
+import com.tencent.biz.qrcode.logindev.LoginDevItem;
 import java.util.Iterator;
-import zlw;
-import zmz;
-import znf;
+import java.util.List;
 
-public class QRLoginMgrActivity$6$1
+class QRLoginMgrActivity$6$1
   implements Runnable
 {
-  public QRLoginMgrActivity$6$1(zlw paramzlw, ArrayList paramArrayList) {}
+  QRLoginMgrActivity$6$1(QRLoginMgrActivity.6 param6, List paramList) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      this.jdField_a_of_type_Zlw.a.finish();
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a.finish();
     }
     do
     {
       return;
-      if (QRLoginMgrActivity.a(this.jdField_a_of_type_Zlw.a) != -1L)
+      if (QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a) != -1L)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext())
         {
-          znf localznf = (znf)localIterator.next();
-          if (localznf.a == QRLoginMgrActivity.a(this.jdField_a_of_type_Zlw.a)) {
-            localznf.c = QRLoginMgrActivity.a(this.jdField_a_of_type_Zlw.a);
+          LoginDevItem localLoginDevItem = (LoginDevItem)localIterator.next();
+          if (localLoginDevItem.a == QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a)) {
+            localLoginDevItem.c = QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a);
           }
         }
       }
-    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_Zlw.a) == null);
-    QRLoginMgrActivity.a(this.jdField_a_of_type_Zlw.a).a(this.jdField_a_of_type_JavaUtilArrayList);
+    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a) == null);
+    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a).a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

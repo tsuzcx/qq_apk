@@ -4,13 +4,13 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.qwallet.preload.IPreloadService.PathResult;
 import cooperation.qwallet.plugin.QWalletPicHelper;
 
 class MiniGamePublicAccountWebFragment$4$1
   implements Runnable
 {
-  MiniGamePublicAccountWebFragment$4$1(MiniGamePublicAccountWebFragment.4 param4, int paramInt, PreloadManager.PathResult paramPathResult) {}
+  MiniGamePublicAccountWebFragment$4$1(MiniGamePublicAccountWebFragment.4 param4, int paramInt, IPreloadService.PathResult paramPathResult) {}
   
   public void run()
   {
@@ -19,13 +19,13 @@ class MiniGamePublicAccountWebFragment$4$1
       Drawable localDrawable = QWalletPicHelper.getDrawableForWallet(this.val$pathRes.filePath, null);
       if (localDrawable != null)
       {
-        ((ImageView)this.this$1.val$rootView.findViewById(2131368692)).setImageDrawable(localDrawable);
+        ((ImageView)this.this$1.val$rootView.findViewById(2063794184)).setImageDrawable(localDrawable);
         return;
       }
-      MiniGamePublicAccountWebFragment.access$1200(this.this$1.this$0);
+      MiniGamePublicAccountWebFragment.access$500(this.this$1.this$0);
       return;
     }
-    MiniGamePublicAccountWebFragment.access$1200(this.this$1.this$0);
+    MiniGamePublicAccountWebFragment.access$500(this.this$1.this$0);
   }
 }
 

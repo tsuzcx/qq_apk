@@ -1,52 +1,85 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcwp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.text.TextUtils;
+import com.tencent.av.ManageConfig.QAVConfItem;
+import com.tencent.av.ManageConfig.QAVConfig;
+import com.tencent.av.utils.UITools;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public class PtvTemplateManager$5
+class PtvTemplateManager$5
   implements Runnable
 {
-  PtvTemplateManager$5(PtvTemplateManager paramPtvTemplateManager, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  PtvTemplateManager$5(PtvTemplateManager paramPtvTemplateManager, Runnable paramRunnable) {}
   
   public void run()
   {
-    if (this.this$0.a(this.a)) {
-      this.a.usable = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, String.format("双人挂件加载 start, rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
     }
-    do
+    Object localObject1 = QAVConfig.b(106).a;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+    for (;;)
     {
-      QQAppInterface localQQAppInterface;
-      do
-      {
-        return;
-        this.a.usable = false;
-        localQQAppInterface = this.this$0.a();
-        if (localQQAppInterface != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("PtvTemplateManager", 2, "preDownloadTemplates  null!");
       return;
-      HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.mCallback = new bcwp(this);
-      localHttpNetReq.mReqUrl = this.a.resurl;
-      localHttpNetReq.mHttpMethod = 0;
-      localHttpNetReq.mOutPath = new File(PtvTemplateManager.a, this.a.name).getPath();
-      localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
-      localQQAppInterface.getNetEngine(0).sendReq(localHttpNetReq);
-    } while (!QLog.isColorLevel());
-    QLog.i("PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.a.resurl);
+      ??? = PtvTemplateManager.a(this.this$0, (String)localObject1);
+      if ((??? == null) || (((List)???).isEmpty())) {
+        continue;
+      }
+      localObject1 = new ArrayList();
+      int i = UITools.getQQVersion();
+      if (QLog.isColorLevel()) {
+        QLog.d("PtvTemplateManager", 2, "cur version:" + i);
+      }
+      ??? = ((List)???).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)???).next();
+        if (QLog.isColorLevel()) {
+          QLog.d("PtvTemplateManager", 2, String.format("the pandent[%s], platform[%s]", new Object[] { localPtvTemplateInfo.id, Integer.valueOf(localPtvTemplateInfo.platform) }));
+        }
+        if ((localPtvTemplateInfo.platform == 0) || (i >= localPtvTemplateInfo.platform))
+        {
+          localPtvTemplateInfo.usable = this.this$0.a(localPtvTemplateInfo);
+          ((List)localObject1).add(localPtvTemplateInfo);
+        }
+        else if (QLog.isDevelopLevel())
+        {
+          QLog.d("PtvTemplateManager", 4, String.format("双人挂件加载, platform不符合, %s", new Object[] { localPtvTemplateInfo }));
+        }
+      }
+      boolean bool;
+      if (QLog.isDevelopLevel())
+      {
+        i = ((List)localObject1).size();
+        if (this.a == null) {
+          break label427;
+        }
+        bool = true;
+        QLog.d("PtvTemplateManager", 2, String.format("双人挂件加载 size[%s], onInitFinishSink[%s], mVersion[%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), this.this$0.f }));
+      }
+      synchronized (this.this$0.c)
+      {
+        QLog.w("PtvTemplateManager", 1, "initLocalTemplateConfigInfoWithExtra, isEmpty[" + this.this$0.c.isEmpty() + "], size[" + ((List)localObject1).size() + "]");
+        this.this$0.c.clear();
+        this.this$0.c.addAll((Collection)localObject1);
+        if (this.a == null) {
+          continue;
+        }
+        this.a.run();
+        return;
+        label427:
+        bool = false;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.5
  * JD-Core Version:    0.7.0.1
  */

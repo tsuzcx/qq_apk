@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.fragment;
 
-import algs;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,36 +25,33 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import anvx;
-import auwj;
-import auwk;
-import auwl;
-import auwm;
-import auwn;
-import awzg;
-import awzi;
-import awzs;
-import awzy;
-import axac;
-import axag;
-import axaj;
-import axam;
-import axar;
-import axas;
-import axcp;
-import axcw;
-import bisl;
+import com.tencent.biz.qqstory.utils.BitmapUtils;
 import com.tencent.component.utils.preference.PreferenceManager;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.photo.SendPhotoTask;
+import com.tencent.mobileqq.activity.recent.RecentDataListManager;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthHandler;
+import com.tencent.mobileqq.msgbackup.authentication.MsgBackupObserver;
+import com.tencent.mobileqq.msgbackup.controller.MsgBackupManager;
+import com.tencent.mobileqq.msgbackup.controller.MsgBackupRequest;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupConfirmQrRsp;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupGetQrRsp;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupPushData;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupQryStateRsp;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData.Builder;
+import com.tencent.mobileqq.msgbackup.data.MsgbackupMsgGenerator;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupConstant;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
@@ -66,23 +62,22 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import mqq.os.MqqHandler;
-import zdr;
 
 public class MsgBackupSettingFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
   public static int a;
-  public static axag a;
+  public static MsgBackupGetQrRsp a;
   public static String a;
   long jdField_a_of_type_Long;
-  private awzg jdField_a_of_type_Awzg;
-  private awzi jdField_a_of_type_Awzi = new auwm(this);
-  private axac jdField_a_of_type_Axac;
-  private axaj jdField_a_of_type_Axaj;
-  private axam jdField_a_of_type_Axam;
-  private bisl jdField_a_of_type_Bisl;
+  private MsgBackupAuthHandler jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthHandler;
+  private MsgBackupObserver jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver = new MsgBackupSettingFragment.7(this);
+  private MsgBackupConfirmQrRsp jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupConfirmQrRsp;
+  private MsgBackupPushData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupPushData;
+  private MsgBackupQryStateRsp jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupQryStateRsp;
   MsgBackupJniProxy jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy;
+  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private Integer jdField_a_of_type_JavaLangInteger = new Integer(0);
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[10];
@@ -94,9 +89,9 @@ public class MsgBackupSettingFragment
   private int jdField_c_of_type_Int;
   private String jdField_c_of_type_JavaLangString;
   private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString = anvx.a(2131706385);
+  private String jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131706926);
   private final int jdField_e_of_type_Int = 0;
-  private String jdField_e_of_type_JavaLangString = anvx.a(2131706402);
+  private String jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131706943);
   private final int jdField_f_of_type_Int = 1;
   private String jdField_f_of_type_JavaLangString;
   private final int jdField_g_of_type_Int = 2;
@@ -105,9 +100,9 @@ public class MsgBackupSettingFragment
   
   private void a(Object paramObject)
   {
-    if ((paramObject instanceof axaj))
+    if ((paramObject instanceof MsgBackupPushData))
     {
-      paramObject = (axaj)paramObject;
+      paramObject = (MsgBackupPushData)paramObject;
       this.jdField_c_of_type_Int = paramObject.a();
       this.jdField_b_of_type_JavaLangString = paramObject.a();
       QLog.d("MsgBackup", 1, "onProcessPush0x11b confirmQrRsp = " + paramObject);
@@ -138,7 +133,7 @@ public class MsgBackupSettingFragment
         do
         {
           return;
-          localObject1 = new File(paramString).listFiles(new auwn(this));
+          localObject1 = new File(paramString).listFiles(new MsgBackupSettingFragment.9(this));
         } while ((localObject1 == null) || (localObject1.length <= 0));
         localObject2 = localObject1[0];
         localObject1 = BitmapFactory.decodeFile(((File)localObject2).getAbsolutePath());
@@ -178,7 +173,7 @@ public class MsgBackupSettingFragment
           {
             for (;;)
             {
-              zdr.a(localBitmap, str);
+              BitmapUtils.a(localBitmap, str);
               localCanvas.restoreToCount(n);
               i += 1;
               break;
@@ -227,7 +222,7 @@ public class MsgBackupSettingFragment
     default: 
       return;
     case 0: 
-      a(anvx.a(2131706406));
+      a(HardCodeUtil.a(2131706947));
       return;
     }
     b();
@@ -281,8 +276,8 @@ public class MsgBackupSettingFragment
     String str1 = getActivity().app.getCurrentUin();
     String str2 = str1 + ".db";
     str1 = getActivity().getDatabasePath(str2).getAbsolutePath();
-    str2 = axcp.jdField_a_of_type_JavaLangString + "test/" + str2;
-    axcw.a("qqdb copy fromPath = %s,toPath = %s,result = %b", str1, new Object[] { str2, Boolean.valueOf(FileUtils.copyFile(str1, str2)) });
+    str2 = MsgBackupConstant.jdField_a_of_type_JavaLangString + "test/" + str2;
+    MsgBackupUtil.a("qqdb copy fromPath = %s,toPath = %s,result = %b", str1, new Object[] { str2, Boolean.valueOf(FileUtils.d(str1, str2)) });
   }
   
   public void a(Message paramMessage)
@@ -302,12 +297,12 @@ public class MsgBackupSettingFragment
   {
     try
     {
-      if (this.jdField_a_of_type_Bisl == null) {
-        this.jdField_a_of_type_Bisl = new bisl(getActivity(), getActivity().getTitleBarHeight());
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), getActivity().getTitleBarHeight());
       }
-      this.jdField_a_of_type_Bisl.a(paramString);
-      this.jdField_a_of_type_Bisl.c(false);
-      this.jdField_a_of_type_Bisl.show();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       return;
     }
     catch (Exception paramString)
@@ -334,8 +329,8 @@ public class MsgBackupSettingFragment
   {
     try
     {
-      if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
-        this.jdField_a_of_type_Bisl.dismiss();
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
       return;
     }
@@ -349,39 +344,39 @@ public class MsgBackupSettingFragment
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Awzg = ((awzg)getActivity().app.getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER));
-    getActivity().app.addObserver(this.jdField_a_of_type_Awzi);
-    this.vg.setRightButton(anvx.a(2131706404));
-    this.vg.setLeftButton(anvx.a(2131706405));
-    ((Button)this.mContentView.findViewById(2131370433)).setOnClickListener(this);
-    ((Button)this.mContentView.findViewById(2131376561)).setOnClickListener(this);
-    ((Button)this.mContentView.findViewById(2131365069)).setOnClickListener(this);
-    this.mContentView.findViewById(2131376498).setOnClickListener(this);
-    this.mContentView.findViewById(2131374840).setOnClickListener(this);
-    this.mContentView.findViewById(2131379201).setOnClickListener(this);
-    this.mContentView.findViewById(2131366310).setOnClickListener(this);
-    this.mContentView.findViewById(2131374105).setOnClickListener(this);
-    this.mContentView.findViewById(2131365383).setOnClickListener(this);
-    this.mContentView.findViewById(2131364673).setOnClickListener(this);
-    this.mContentView.findViewById(2131364671).setOnClickListener(this);
-    this.mContentView.findViewById(2131365251).setOnClickListener(this);
-    this.mContentView.findViewById(2131377999).setOnClickListener(this);
-    this.mContentView.findViewById(2131365070).setOnClickListener(this);
-    this.mContentView.findViewById(2131365074).setOnClickListener(this);
-    this.mContentView.findViewById(2131368364).setOnClickListener(this);
-    this.mContentView.findViewById(2131366195).setOnClickListener(this);
-    this.mContentView.findViewById(2131377398).setOnClickListener(this);
-    this.mContentView.findViewById(2131376560).setOnClickListener(this);
-    this.mContentView.findViewById(2131376559).setOnClickListener(this);
-    this.mContentView.findViewById(2131380576).setOnClickListener(this);
-    this.mContentView.findViewById(2131380575).setOnClickListener(this);
-    this.mContentView.findViewById(2131377399).setOnClickListener(this);
-    this.mContentView.findViewById(2131371613).setOnClickListener(this);
-    this.mContentView.findViewById(2131371631).setOnClickListener(this);
-    this.mContentView.findViewById(2131380572).setOnClickListener(this);
-    paramLayoutInflater = (TextView)this.mContentView.findViewById(2131377398);
-    paramViewGroup = (TextView)this.mContentView.findViewById(2131377399);
-    ((EditText)this.mContentView.findViewById(2131368923)).addTextChangedListener(new auwj(this, paramLayoutInflater, paramViewGroup));
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthHandler = ((MsgBackupAuthHandler)getActivity().app.getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER));
+    getActivity().app.addObserver(this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver);
+    this.vg.setRightButton(HardCodeUtil.a(2131706945));
+    this.vg.setLeftButton(HardCodeUtil.a(2131706946));
+    ((Button)this.mContentView.findViewById(2131370710)).setOnClickListener(this);
+    ((Button)this.mContentView.findViewById(2131376954)).setOnClickListener(this);
+    ((Button)this.mContentView.findViewById(2131365204)).setOnClickListener(this);
+    this.mContentView.findViewById(2131376891).setOnClickListener(this);
+    this.mContentView.findViewById(2131375217).setOnClickListener(this);
+    this.mContentView.findViewById(2131379635).setOnClickListener(this);
+    this.mContentView.findViewById(2131366484).setOnClickListener(this);
+    this.mContentView.findViewById(2131374421).setOnClickListener(this);
+    this.mContentView.findViewById(2131365533).setOnClickListener(this);
+    this.mContentView.findViewById(2131364787).setOnClickListener(this);
+    this.mContentView.findViewById(2131364785).setOnClickListener(this);
+    this.mContentView.findViewById(2131365390).setOnClickListener(this);
+    this.mContentView.findViewById(2131378418).setOnClickListener(this);
+    this.mContentView.findViewById(2131365205).setOnClickListener(this);
+    this.mContentView.findViewById(2131365209).setOnClickListener(this);
+    this.mContentView.findViewById(2131368582).setOnClickListener(this);
+    this.mContentView.findViewById(2131366366).setOnClickListener(this);
+    this.mContentView.findViewById(2131377820).setOnClickListener(this);
+    this.mContentView.findViewById(2131376953).setOnClickListener(this);
+    this.mContentView.findViewById(2131376952).setOnClickListener(this);
+    this.mContentView.findViewById(2131381022).setOnClickListener(this);
+    this.mContentView.findViewById(2131381021).setOnClickListener(this);
+    this.mContentView.findViewById(2131377821).setOnClickListener(this);
+    this.mContentView.findViewById(2131371923).setOnClickListener(this);
+    this.mContentView.findViewById(2131371942).setOnClickListener(this);
+    this.mContentView.findViewById(2131381018).setOnClickListener(this);
+    paramLayoutInflater = (TextView)this.mContentView.findViewById(2131377820);
+    paramViewGroup = (TextView)this.mContentView.findViewById(2131377821);
+    ((EditText)this.mContentView.findViewById(2131369155)).addTextChangedListener(new MsgBackupSettingFragment.1(this, paramLayoutInflater, paramViewGroup));
     paramLayoutInflater.setText(String.format(this.jdField_d_of_type_JavaLangString, new Object[] { "10000" }));
     paramViewGroup.setText(String.format(this.jdField_e_of_type_JavaLangString, new Object[] { "1000" }));
     paramViewGroup = PreferenceManager.getDefaultGlobalPreference(getActivity());
@@ -392,31 +387,31 @@ public class MsgBackupSettingFragment
     if (!TextUtils.isEmpty(paramBundle))
     {
       int i = paramViewGroup.getInt("msgbackup_uintype", 0);
-      ((EditText)this.mContentView.findViewById(2131366311)).setText(paramBundle);
-      ((EditText)this.mContentView.findViewById(2131366312)).setText(String.valueOf(i));
-      ((EditText)this.mContentView.findViewById(2131366777)).setText(str1);
-      ((EditText)this.mContentView.findViewById(2131368923)).setText(str2);
-      ((EditText)this.mContentView.findViewById(2131369003)).setText(str3);
+      ((EditText)this.mContentView.findViewById(2131366485)).setText(paramBundle);
+      ((EditText)this.mContentView.findViewById(2131366486)).setText(String.valueOf(i));
+      ((EditText)this.mContentView.findViewById(2131366955)).setText(str1);
+      ((EditText)this.mContentView.findViewById(2131369155)).setText(str2);
+      ((EditText)this.mContentView.findViewById(2131369235)).setText(str3);
     }
     paramLayoutInflater.requestFocus();
     this.jdField_b_of_type_ArrayOfJavaLangString = a();
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), new auwk(this));
-    this.jdField_b_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getSubThreadLooper(), new auwl(this));
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), new MsgBackupSettingFragment.2(this));
+    this.jdField_b_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getSubThreadLooper(), new MsgBackupSettingFragment.3(this));
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561505;
+    return 2131561616;
   }
   
   public void onClick(View paramView)
   {
     int m = paramView.getId();
-    Object localObject1 = ((EditText)this.mContentView.findViewById(2131366311)).getText().toString();
-    Object localObject5 = ((EditText)this.mContentView.findViewById(2131366312)).getText().toString();
-    Object localObject3 = ((EditText)this.mContentView.findViewById(2131368923)).getText().toString();
-    Object localObject2 = ((EditText)this.mContentView.findViewById(2131366777)).getText().toString();
-    Object localObject4 = ((EditText)this.mContentView.findViewById(2131369003)).getText().toString();
+    Object localObject1 = ((EditText)this.mContentView.findViewById(2131366485)).getText().toString();
+    Object localObject5 = ((EditText)this.mContentView.findViewById(2131366486)).getText().toString();
+    Object localObject3 = ((EditText)this.mContentView.findViewById(2131369155)).getText().toString();
+    Object localObject2 = ((EditText)this.mContentView.findViewById(2131366955)).getText().toString();
+    Object localObject4 = ((EditText)this.mContentView.findViewById(2131369235)).getText().toString();
     boolean bool;
     int j;
     int i;
@@ -453,9 +448,9 @@ public class MsgBackupSettingFragment
     {
       localObject1 = jdField_a_of_type_JavaLangString;
       j = jdField_a_of_type_Int;
-      localObject3 = awzs.a();
-      localObject4 = (awzg)getActivity().app.getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER);
-      localObject5 = new axar();
+      localObject3 = MsgBackupManager.a();
+      localObject4 = (MsgBackupAuthHandler)getActivity().app.getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER);
+      localObject5 = new MsgBackupUserData.Builder();
       localArrayList = new ArrayList(2);
       switch (m)
       {
@@ -480,79 +475,79 @@ public class MsgBackupSettingFragment
       continue;
       if ((this.jdField_b_of_type_JavaLangInteger.intValue() != 0) && (this.jdField_a_of_type_JavaLangInteger.intValue() != 0))
       {
-        QQToast.a(getActivity(), -1, anvx.a(2131706403), 1).a();
-        ((axar)localObject5).c(this.jdField_b_of_type_ArrayOfJavaLangString[1]);
-        ((axar)localObject5).b(this.jdField_b_of_type_ArrayOfJavaLangString[0]);
-        ((axar)localObject5).a(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+        QQToast.a(getActivity(), -1, HardCodeUtil.a(2131706944), 1).a();
+        ((MsgBackupUserData.Builder)localObject5).c(this.jdField_b_of_type_ArrayOfJavaLangString[1]);
+        ((MsgBackupUserData.Builder)localObject5).b(this.jdField_b_of_type_ArrayOfJavaLangString[0]);
+        ((MsgBackupUserData.Builder)localObject5).a(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
         localArrayList.add(this.jdField_b_of_type_JavaLangInteger);
         localArrayList.add(this.jdField_a_of_type_JavaLangInteger);
-        ((axar)localObject5).a(localArrayList);
-        ((axar)localObject5).a(4);
-        ((awzg)localObject4).a(((axar)localObject5).a(), 3, false);
+        ((MsgBackupUserData.Builder)localObject5).a(localArrayList);
+        ((MsgBackupUserData.Builder)localObject5).a(4);
+        ((MsgBackupAuthHandler)localObject4).a(((MsgBackupUserData.Builder)localObject5).a(), 3, false);
         continue;
         if ((this.jdField_b_of_type_JavaLangInteger.intValue() != 0) && (this.jdField_a_of_type_JavaLangInteger.intValue() != 0))
         {
-          QQToast.a(getActivity(), -1, anvx.a(2131706400), 1).a();
-          if (jdField_a_of_type_Axag != null)
+          QQToast.a(getActivity(), -1, HardCodeUtil.a(2131706941), 1).a();
+          if (jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupGetQrRsp != null)
           {
-            ((axar)localObject5).c(this.jdField_b_of_type_ArrayOfJavaLangString[1]);
-            ((axar)localObject5).b(this.jdField_b_of_type_ArrayOfJavaLangString[0]);
-            ((axar)localObject5).a(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+            ((MsgBackupUserData.Builder)localObject5).c(this.jdField_b_of_type_ArrayOfJavaLangString[1]);
+            ((MsgBackupUserData.Builder)localObject5).b(this.jdField_b_of_type_ArrayOfJavaLangString[0]);
+            ((MsgBackupUserData.Builder)localObject5).a(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
             localArrayList.add(this.jdField_b_of_type_JavaLangInteger);
             localArrayList.add(this.jdField_a_of_type_JavaLangInteger);
-            ((axar)localObject5).a(localArrayList);
-            ((axar)localObject5).a(4);
-            ((awzg)localObject4).a(((axar)localObject5).a(), jdField_a_of_type_Axag.a(), 3);
+            ((MsgBackupUserData.Builder)localObject5).a(localArrayList);
+            ((MsgBackupUserData.Builder)localObject5).a(4);
+            ((MsgBackupAuthHandler)localObject4).a(((MsgBackupUserData.Builder)localObject5).a(), jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupGetQrRsp.a(), 3);
           }
           else
           {
             QLog.d("MsgBackup", 1, "case confirmQR qrResponse is null!");
             continue;
-            if (jdField_a_of_type_Axag != null)
+            if (jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupGetQrRsp != null)
             {
-              ((awzg)localObject4).a(jdField_a_of_type_Axag.a(), 3);
+              ((MsgBackupAuthHandler)localObject4).a(jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupGetQrRsp.a(), 3);
             }
             else
             {
               QLog.d("MsgBackup", 1, "case rejectQR qrResponse is null!");
               continue;
-              if (jdField_a_of_type_Axag != null)
+              if (jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupGetQrRsp != null)
               {
-                ((awzg)localObject4).c(jdField_a_of_type_Axag.a());
+                ((MsgBackupAuthHandler)localObject4).c(jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupGetQrRsp.a());
               }
               else
               {
                 QLog.d("MsgBackup", 1, "case queryQRState qrResponse is null!");
                 continue;
-                if (this.jdField_a_of_type_Axac != null)
+                if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupConfirmQrRsp != null)
                 {
-                  ((awzg)localObject4).a(this.jdField_a_of_type_Axac.a());
+                  ((MsgBackupAuthHandler)localObject4).a(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupConfirmQrRsp.a());
                 }
                 else
                 {
                   QLog.d("MsgBackup", 1, "case tokenConfirm qrConfirmReponse is null!");
                   continue;
-                  ((awzs)localObject3).jdField_a_of_type_JavaUtilHashSet.clear();
+                  ((MsgBackupManager)localObject3).jdField_a_of_type_JavaUtilHashSet.clear();
                   getActivity().app.getProxyManager().a();
-                  localObject1 = algs.a((String)localObject1, j);
-                  localObject1 = algs.a().a((String)localObject1);
+                  localObject1 = RecentDataListManager.a((String)localObject1, j);
+                  localObject1 = RecentDataListManager.a().a((String)localObject1);
                   if (localObject1 != null)
                   {
-                    ((awzs)localObject3).jdField_a_of_type_JavaUtilHashSet.add(localObject1);
-                    localObject1 = new awzy();
-                    ((awzy)localObject1).jdField_a_of_type_JavaUtilHashSet = awzs.a().jdField_a_of_type_JavaUtilHashSet;
-                    ((awzy)localObject1).jdField_a_of_type_Int = 0;
-                    ((awzs)localObject3).a((awzy)localObject1);
+                    ((MsgBackupManager)localObject3).jdField_a_of_type_JavaUtilHashSet.add(localObject1);
+                    localObject1 = new MsgBackupRequest();
+                    ((MsgBackupRequest)localObject1).jdField_a_of_type_JavaUtilHashSet = MsgBackupManager.a().jdField_a_of_type_JavaUtilHashSet;
+                    ((MsgBackupRequest)localObject1).jdField_a_of_type_Int = 0;
+                    ((MsgBackupManager)localObject3).a((MsgBackupRequest)localObject1);
                   }
                   else
                   {
                     QLog.d("MsgBackup", 1, "test export submit,recentBaseData is null");
                     continue;
-                    awzs.a().c(null);
+                    MsgBackupManager.a().c(null);
                     continue;
                     localObject2 = new SessionInfo();
-                    ((SessionInfo)localObject2).curFriendUin = ((String)localObject1);
-                    ((SessionInfo)localObject2).curType = j;
+                    ((SessionInfo)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
+                    ((SessionInfo)localObject2).jdField_a_of_type_Int = j;
                     if (i > 0) {}
                     for (;;)
                     {
@@ -564,24 +559,24 @@ public class MsgBackupSettingFragment
                     continue;
                     a((String)localObject1, j, (String)localObject2, i);
                     continue;
-                    getActivity().app.getMessageFacade().clearHistory((String)localObject1, j);
+                    getActivity().app.getMessageFacade().a((String)localObject1, j);
                     continue;
-                    ((awzs)localObject3).f();
+                    ((MsgBackupManager)localObject3).f();
                     continue;
                     a();
                     continue;
                     d();
                     continue;
-                    a(this.jdField_a_of_type_Axaj);
+                    a(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupPushData);
                     continue;
-                    a(this.jdField_a_of_type_Axaj);
+                    a(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupPushData);
                     continue;
-                    QQToast.a(getActivity(), -1, anvx.a(2131706399), 1).a();
+                    QQToast.a(getActivity(), -1, HardCodeUtil.a(2131706940), 1).a();
                     continue;
                     localObject1 = MsgBackupJniProxy.encryptFromString("i am a hero!!!", "1111111111111111");
-                    axcw.a("MsgBackup", anvx.a(2131706407), new Object[] { "i am a hero!!!", localObject1 });
+                    MsgBackupUtil.a("MsgBackup", HardCodeUtil.a(2131706948), new Object[] { "i am a hero!!!", localObject1 });
                     localObject2 = MsgBackupJniProxy.decryptFromString((String)localObject1, "1111111111111111");
-                    axcw.a("MsgBackup", anvx.a(2131706391), new Object[] { localObject1, localObject2 });
+                    MsgBackupUtil.a("MsgBackup", HardCodeUtil.a(2131706932), new Object[] { localObject1, localObject2 });
                     localObject2 = new byte[12];
                     Object tmp1330_1328 = localObject2;
                     tmp1330_1328[0] = 73;
@@ -609,40 +604,40 @@ public class MsgBackupSettingFragment
                     tmp1401_1394[11] = 33;
                     tmp1401_1394;
                     localObject1 = MsgBackupJniProxy.encryptFromByteArray((byte[])localObject2, "1111111111111111");
-                    axcw.a("MsgBackup", anvx.a(2131706393), new Object[] { Integer.valueOf(localObject2.length), Integer.valueOf(localObject1.length) });
+                    MsgBackupUtil.a("MsgBackup", HardCodeUtil.a(2131706934), new Object[] { Integer.valueOf(localObject2.length), Integer.valueOf(localObject1.length) });
                     localObject2 = MsgBackupJniProxy.decryptFromByteArray((byte[])localObject1, "1111111111111111");
-                    axcw.a("MsgBackup", anvx.a(2131706378), new Object[] { Integer.valueOf(localObject1.length), Integer.valueOf(localObject2.length) });
+                    MsgBackupUtil.a("MsgBackup", HardCodeUtil.a(2131706919), new Object[] { Integer.valueOf(localObject1.length), Integer.valueOf(localObject2.length) });
                     continue;
-                    this.jdField_a_of_type_Awzg.a();
+                    this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthHandler.a();
                     continue;
-                    if (!TextUtils.isEmpty(awzs.jdField_a_of_type_JavaLangString))
+                    if (!TextUtils.isEmpty(MsgBackupManager.jdField_a_of_type_JavaLangString))
                     {
-                      this.jdField_a_of_type_Awzg.b(awzs.jdField_a_of_type_JavaLangString);
+                      this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthHandler.b(MsgBackupManager.jdField_a_of_type_JavaLangString);
                       continue;
                       this.jdField_c_of_type_JavaLangString = Uri.encode("111111111111111111");
-                      axcw.a("IphoneTitleBarFragment", "编码之后的value = %s", new Object[] { this.jdField_c_of_type_JavaLangString });
+                      MsgBackupUtil.a("IphoneTitleBarFragment", "编码之后的value = %s", new Object[] { this.jdField_c_of_type_JavaLangString });
                       continue;
                       if (this.jdField_c_of_type_JavaLangString != null)
                       {
-                        axcw.a("IphoneTitleBarFragment", "解码之后的value = %s", new Object[] { Uri.decode(this.jdField_c_of_type_JavaLangString) });
+                        MsgBackupUtil.a("IphoneTitleBarFragment", "解码之后的value = %s", new Object[] { Uri.decode(this.jdField_c_of_type_JavaLangString) });
                         continue;
-                        axas.a(getActivity().app);
+                        MsgbackupMsgGenerator.a(getActivity().app);
                         continue;
                         if (i > 0) {}
                         for (;;)
                         {
-                          localObject2 = axas.a(null, i, (String)localObject1, j, getActivity().app.getCurrentUin());
+                          localObject2 = MsgbackupMsgGenerator.a(null, i, (String)localObject1, j, getActivity().app.getCurrentUin());
                           if (((List)localObject2).size() > 0) {
-                            axas.a(getActivity().app, (List)localObject2);
+                            MsgbackupMsgGenerator.a(getActivity().app, (List)localObject2);
                           }
                           localObject1 = MessageRecord.getTableName((String)localObject1, j);
-                          i = getActivity().app.getMessageFacade().getQuickDBMsgCount((String)localObject1, 0L, 9223372036854775807L, false);
-                          ((TextView)getActivity().findViewById(2131371630)).setText("result:msgSize =  " + i);
+                          i = getActivity().app.getMessageFacade().a((String)localObject1, 0L, 9223372036854775807L, false);
+                          ((TextView)getActivity().findViewById(2131371941)).setText("result:msgSize =  " + i);
                           break;
                           i = 0;
                         }
                         c();
-                        localObject1 = axcw.a("http://10.71.161.35:8001/4EFF91728050FE643749C167C73EBCDA6CD8EE193B8636D01B445730BB8A31EE1374186F5611658FD9217AB6FF9BC857DE9D9A8DFA5CFF3C8E063D3B2FA3BB0B1B0EDC7D8B162F850C0A375A45E4CE3B70846A812C626CB5ED09EB107556EECB765BCF39A41BACA755747BE723749A26655D46D004D3DBA34C374CA622B8B0F3E3B2F0E582BA37B4", "10.71.161.35", 8001, "'U}MXig2f9zi:$?_");
+                        localObject1 = MsgBackupUtil.a("http://10.71.161.35:8001/4EFF91728050FE643749C167C73EBCDA6CD8EE193B8636D01B445730BB8A31EE1374186F5611658FD9217AB6FF9BC857DE9D9A8DFA5CFF3C8E063D3B2FA3BB0B1B0EDC7D8B162F850C0A375A45E4CE3B70846A812C626CB5ED09EB107556EECB765BCF39A41BACA755747BE723749A26655D46D004D3DBA34C374CA622B8B0F3E3B2F0E582BA37B4", "10.71.161.35", 8001, "'U}MXig2f9zi:$?_");
                         QLog.e("MsgBackupSettingFragment", 1, "RESULT = " + (String)localObject1);
                       }
                     }
@@ -659,14 +654,14 @@ public class MsgBackupSettingFragment
   public void onDestroy()
   {
     if (getActivity() != null) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Awzi);
+      getActivity().app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver);
     }
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MsgBackupSettingFragment
  * JD-Core Version:    0.7.0.1
  */

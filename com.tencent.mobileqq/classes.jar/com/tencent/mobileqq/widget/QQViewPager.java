@@ -16,11 +16,11 @@ public class QQViewPager
   private static final byte SLIDE_DIR_HORIZONTAL = 1;
   private static final byte SLIDE_DIR_VERTICAL = 2;
   private static final String TAG = "QQViewPager";
-  private boolean disable;
+  private boolean disable = false;
   private int downX;
   private int downY;
   private byte mSlideDir = 0;
-  private boolean requestParentDisallowInterceptTouchEvent;
+  private boolean requestParentDisallowInterceptTouchEvent = false;
   private final int scaledTouchSlop;
   
   public QQViewPager(Context paramContext)
@@ -153,7 +153,7 @@ public class QQViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQViewPager
  * JD-Core Version:    0.7.0.1
  */

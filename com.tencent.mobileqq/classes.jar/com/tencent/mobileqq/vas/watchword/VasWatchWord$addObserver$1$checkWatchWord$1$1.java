@@ -3,7 +3,6 @@ package com.tencent.mobileqq.vas.watchword;
 import QC.GetWatchWordShareRsp;
 import android.content.Context;
 import android.os.Bundle;
-import bhvq;
 import com.tencent.mobileqq.app.BaseActivity;
 import eipc.EIPCResult;
 import kotlin.Metadata;
@@ -11,10 +10,10 @@ import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
-public final class VasWatchWord$addObserver$1$checkWatchWord$1$1
+final class VasWatchWord$addObserver$1$checkWatchWord$1$1
   implements Runnable
 {
-  public VasWatchWord$addObserver$1$checkWatchWord$1$1(EIPCResult paramEIPCResult, int paramInt) {}
+  VasWatchWord$addObserver$1$checkWatchWord$1$1(EIPCResult paramEIPCResult, int paramInt) {}
   
   public final void run()
   {
@@ -31,39 +30,39 @@ public final class VasWatchWord$addObserver$1$checkWatchWord$1$1
     default: 
       return;
     case -2600001: 
-      localbhvq = bhvq.a;
+      localVasWatchWord = VasWatchWord.a;
       localObject2 = BaseActivity.sTopActivity;
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseActivity.sTopActivity");
       localObject2 = (Context)localObject2;
       localObject1 = ((GetWatchWordShareRsp)localObject1).errmsg;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "rsp.errmsg");
-      localbhvq.c((Context)localObject2, (String)localObject1);
+      localVasWatchWord.c((Context)localObject2, (String)localObject1);
       return;
     case 0: 
-      bhvq.a.a((GetWatchWordShareRsp)localObject1);
+      VasWatchWord.a.a((GetWatchWordShareRsp)localObject1);
       return;
     case 2600003: 
-      localbhvq = bhvq.a;
+      localVasWatchWord = VasWatchWord.a;
       localObject2 = BaseActivity.sTopActivity;
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseActivity.sTopActivity");
       localObject2 = (Context)localObject2;
       localObject1 = ((GetWatchWordShareRsp)localObject1).errmsg;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "rsp.errmsg");
-      localbhvq.c((Context)localObject2, (String)localObject1);
+      localVasWatchWord.c((Context)localObject2, (String)localObject1);
       return;
     }
-    bhvq localbhvq = bhvq.a;
+    VasWatchWord localVasWatchWord = VasWatchWord.a;
     Object localObject2 = BaseActivity.sTopActivity;
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseActivity.sTopActivity");
     localObject2 = (Context)localObject2;
     localObject1 = ((GetWatchWordShareRsp)localObject1).errmsg;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "rsp.errmsg");
-    localbhvq.c((Context)localObject2, (String)localObject1);
+    localVasWatchWord.c((Context)localObject2, (String)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.watchword.VasWatchWord.addObserver.1.checkWatchWord.1.1
  * JD-Core Version:    0.7.0.1
  */

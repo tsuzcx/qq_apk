@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import bdbr;
-
-public class CameraProxy$WaitDoneBundle$1
+class CameraProxy$WaitDoneBundle$1
   implements Runnable
 {
-  public CameraProxy$WaitDoneBundle$1(bdbr parambdbr) {}
+  CameraProxy$WaitDoneBundle$1(CameraProxy.WaitDoneBundle paramWaitDoneBundle) {}
   
   public void run()
   {

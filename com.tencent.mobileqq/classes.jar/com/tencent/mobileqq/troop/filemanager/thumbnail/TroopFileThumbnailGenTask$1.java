@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import bfmf;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import com.tencent.mobileqq.utils.FileUtils;
 
@@ -13,7 +13,7 @@ class TroopFileThumbnailGenTask$1
   {
     if (this.this$0.jdField_a_of_type_Boolean)
     {
-      bfmf.b("TroopFileThumbnailGenTask", bfmf.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveEnd. but had stop");
+      TroopFileTransferUtil.Log.b("TroopFileThumbnailGenTask", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveEnd. but had stop");
       return;
     }
     if (!this.jdField_a_of_type_Boolean)
@@ -24,13 +24,13 @@ class TroopFileThumbnailGenTask$1
     this.this$0.e = this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_Int);
     if (this.this$0.e.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
     {
-      bfmf.b("TroopFileThumbnailGenTask", bfmf.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveSuc thumbpath is same.");
+      TroopFileTransferUtil.Log.b("TroopFileThumbnailGenTask", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveSuc thumbpath is same.");
       this.this$0.a(true, true);
       return;
     }
-    bfmf.c("TroopFileThumbnailGenTask", bfmf.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveSuc copy file.");
+    TroopFileTransferUtil.Log.c("TroopFileThumbnailGenTask", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveSuc copy file.");
     this.this$0.d = (this.this$0.e + ".ttmp");
-    FileUtils.copyFile(this.jdField_a_of_type_JavaLangString, this.this$0.d);
+    FileUtils.d(this.jdField_a_of_type_JavaLangString, this.this$0.d);
     this.this$0.a(false, true);
   }
 }

@@ -11,9 +11,9 @@ public final class SSummaryCardSetLabel
   static int cache_cmd;
   static ArrayList<Long> cache_labels;
   public int cmd = 4;
-  public ArrayList<Long> labels;
-  public long platform;
-  public long uin;
+  public ArrayList<Long> labels = null;
+  public long platform = 0L;
+  public long uin = 0L;
   public String version = "5.2.0";
   
   public SSummaryCardSetLabel() {}
@@ -54,7 +54,7 @@ public final class SSummaryCardSetLabel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SSummaryCardSetLabel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import anvk;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
@@ -37,14 +37,14 @@ public class OnlineStatusPermissionChecker$OnlineStatusPermissionItem
   public List<Long> filterNotFriend()
   {
     ArrayList localArrayList = new ArrayList();
-    anvk localanvk = (anvk)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.FRIENDS_MANAGER);
+    FriendsManager localFriendsManager = (FriendsManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (this.permissionUins != null)
     {
       Iterator localIterator = this.permissionUins.iterator();
       while (localIterator.hasNext())
       {
         Long localLong = (Long)localIterator.next();
-        if (localanvk.b(localLong.toString())) {
+        if (localFriendsManager.b(localLong.toString())) {
           localArrayList.add(localLong);
         } else if (QLog.isColorLevel()) {
           QLog.d("OnlineStatusPermissionChecker", 2, new Object[] { "filterNotFriend: invoked. ", " uin: ", localLong });

@@ -1,26 +1,31 @@
 package com.tencent.mobileqq.activity;
 
-import aenm;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.text.TextUtils;
-import blvn;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.litelivesdk.sdkimpl.ipc.LiteLiveSDKClientIPCModule;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
+import cooperation.ilive.util.IlivePreloadHelper;
 import java.io.File;
 import mqq.app.MobileQQ;
 
 public class PreloadWebService
   extends Service
 {
-  private CustomWebView a;
+  private CustomWebView a = null;
   
   public IBinder onBind(Intent paramIntent)
   {
     return null;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
@@ -28,9 +33,15 @@ public class PreloadWebService
     if (paramIntent == null) {
       return paramInt1;
     }
+    if (paramIntent.getBooleanExtra("liveSdkBinding", false))
+    {
+      QLog.e("PreloadWebService", 1, "liveSdkBinding");
+      LiteLiveSDKClientIPCModule.a(paramIntent);
+      return 2;
+    }
     if (paramIntent.getBooleanExtra("isPreloadLiveShopping", false))
     {
-      blvn.a(paramIntent);
+      IlivePreloadHelper.a(paramIntent);
       return 2;
     }
     String str3 = paramIntent.getStringExtra("url");
@@ -39,7 +50,7 @@ public class PreloadWebService
       if (this.a == null)
       {
         this.a = new CustomWebView(getBaseContext());
-        this.a.setWebViewClient(new aenm(this));
+        this.a.setWebViewClient(new PreloadWebService.1(this));
         WebSettings localWebSettings = this.a.getSettings();
         localWebSettings.setJavaScriptEnabled(true);
         localWebSettings.setCacheMode(-1);
@@ -69,7 +80,7 @@ public class PreloadWebService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PreloadWebService
  * JD-Core Version:    0.7.0.1
  */

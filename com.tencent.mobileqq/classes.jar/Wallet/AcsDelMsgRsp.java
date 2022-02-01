@@ -8,7 +8,7 @@ public final class AcsDelMsgRsp
   extends JceStruct
 {
   public String err_str = "";
-  public int ret_code;
+  public int ret_code = 0;
   
   public AcsDelMsgRsp() {}
   

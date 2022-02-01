@@ -3,9 +3,9 @@ package cooperation.qzone.video;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import blvy;
-import blwh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 
 public class QzoneVideoPluginProxyService
   extends PluginProxyService
@@ -13,19 +13,19 @@ public class QzoneVideoPluginProxyService
   public static void bindService(Context paramContext, String paramString, Intent paramIntent, ServiceConnection paramServiceConnection)
   {
     paramIntent.putExtra("useSkinEngine", 1);
-    blwh localblwh = new blwh(0);
-    localblwh.b = "qzone_plugin.apk";
-    localblwh.d = "QZone";
-    localblwh.jdField_a_of_type_JavaLangString = paramString;
-    localblwh.e = "com.qzone.video.service.QzoneVideoPluginService";
-    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localblwh.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    blvy.c(paramContext, localblwh);
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.b = "qzone_plugin.apk";
+    localPluginParams.e = "QZone";
+    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
+    localPluginParams.f = "com.qzone.video.service.QzoneVideoPluginService";
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    IPluginManager.c(paramContext, localPluginParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.video.QzoneVideoPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

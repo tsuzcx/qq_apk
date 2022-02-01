@@ -12,6 +12,24 @@ class ac
 {
   ac(ab paramab) {}
   
+  public void onBindingDied(ComponentName paramComponentName)
+  {
+    try
+    {
+      if (this.a.r != null) {}
+      for (String str = this.a.r.processName;; str = "sdk_null")
+      {
+        QLog.d("MSF.D.RemoteServiceProxy", 1, new Object[] { "onBindingDied: name = ", paramComponentName, ", process = ", str });
+        return;
+      }
+      return;
+    }
+    catch (Throwable paramComponentName)
+    {
+      QLog.e("MSF.D.RemoteServiceProxy", 1, "log onBindingDied throw t", paramComponentName);
+    }
+  }
+  
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     QLog.d("MSF.D.RemoteServiceProxy", 1, "onServiceConnected service:" + paramComponentName);

@@ -1,30 +1,28 @@
 package com.tencent.device.file;
 
-import abhs;
-import abhu;
-import abkw;
-import azjq;
-import bcyj;
+import com.tencent.device.msg.data.DeviceMsgHandle;
 import com.tencent.device.msg.data.MessageForDevShortVideo;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
 
-public class DevShortVideoOperator$1
+class DevShortVideoOperator$1
   implements Runnable
 {
-  public DevShortVideoOperator$1(abhs paramabhs, bcyj parambcyj) {}
+  DevShortVideoOperator$1(DevShortVideoOperator paramDevShortVideoOperator, ShortVideoUploadInfo paramShortVideoUploadInfo) {}
   
   public void run()
   {
-    bcyj localbcyj = this.a;
+    ShortVideoUploadInfo localShortVideoUploadInfo = this.a;
     Object localObject = null;
     int i;
-    if (localbcyj.g == 0)
+    if (localShortVideoUploadInfo.g == 0)
     {
-      localObject = this.this$0.a(localbcyj);
+      localObject = this.this$0.a(localShortVideoUploadInfo);
       i = 1;
     }
     for (;;)
@@ -32,9 +30,9 @@ public class DevShortVideoOperator$1
       if (localObject == null)
       {
         return;
-        if (localbcyj.g == 1)
+        if (localShortVideoUploadInfo.g == 1)
         {
-          localObject = (MessageForShortVideo)localbcyj.a;
+          localObject = (MessageForShortVideo)localShortVideoUploadInfo.a;
           i = 0;
         }
       }
@@ -46,10 +44,10 @@ public class DevShortVideoOperator$1
         }
         long l = System.currentTimeMillis();
         if (i != 0) {
-          this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addMessage((MessageRecord)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         }
-        ((abkw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(abkw.e, this.a.h, Long.parseLong(this.a.c), ((MessageRecord)localObject).uniseq, ((MessageRecord)localObject).istroop, 0);
-        azjq.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
+        ((DeviceMsgHandle)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(DeviceMsgHandle.e, this.a.h, Long.parseLong(this.a.c), ((MessageRecord)localObject).uniseq, ((MessageRecord)localObject).istroop, 0);
+        Logger.a(this.this$0.g, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
         return;
       }
       i = 0;
@@ -58,7 +56,7 @@ public class DevShortVideoOperator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.file.DevShortVideoOperator.1
  * JD-Core Version:    0.7.0.1
  */

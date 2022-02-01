@@ -10,7 +10,7 @@ public class CoverCacheData$PackageInfo
   public static final Parcelable.Creator<PackageInfo> CREATOR = new CoverCacheData.PackageInfo.1();
   public String PackageUrl;
   public int coverStyle = -1;
-  public int daytime;
+  public int daytime = 0;
   public String degrade_pic;
   public String md5;
   public String prePic;
@@ -34,7 +34,7 @@ public class CoverCacheData$PackageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.CoverCacheData.PackageInfo
  * JD-Core Version:    0.7.0.1
  */

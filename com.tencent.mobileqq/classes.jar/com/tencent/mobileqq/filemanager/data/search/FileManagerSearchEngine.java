@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
 import android.text.TextUtils;
-import atlf;
-import atpt;
-import atqj;
-import bclw;
-import bclx;
-import bcmk;
-import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
+import com.tencent.mobileqq.statistics.ReportController;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -19,7 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class FileManagerSearchEngine
-  implements bclw<atqj>
+  implements ISearchEngine<FileEntitySearchResultModel>
 {
   int jdField_a_of_type_Int = -1;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -31,17 +30,17 @@ public class FileManagerSearchEngine
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public List<atqj> a(bcmk parambcmk)
+  public List<FileEntitySearchResultModel> a(SearchRequest paramSearchRequest)
   {
-    Map localMap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(parambcmk.jdField_a_of_type_JavaLangString);
+    Map localMap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramSearchRequest.jdField_a_of_type_JavaLangString);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator1 = localMap.keySet().iterator();
     Object localObject;
-    atqj localatqj;
+    FileEntitySearchResultModel localFileEntitySearchResultModel;
     if (localIterator1.hasNext())
     {
       localObject = (String)localIterator1.next();
-      localatqj = new atqj();
+      localFileEntitySearchResultModel = new FileEntitySearchResultModel();
       localObject = (List)localMap.get(localObject);
       Iterator localIterator2 = ((List)localObject).iterator();
       do
@@ -58,18 +57,18 @@ public class FileManagerSearchEngine
         if (this.jdField_a_of_type_Int != 1) {
           break label203;
         }
-        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A083", "0X800A083", 0, 0, "", "", "", "");
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A083", "0X800A083", 0, 0, "", "", "", "");
       }
       for (;;)
       {
-        localatqj.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
-        localatqj.jdField_a_of_type_JavaLangString = parambcmk.jdField_a_of_type_JavaLangString;
-        localatqj.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        localArrayList.add(localatqj);
+        localFileEntitySearchResultModel.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+        localFileEntitySearchResultModel.jdField_a_of_type_JavaLangString = paramSearchRequest.jdField_a_of_type_JavaLangString;
+        localFileEntitySearchResultModel.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        localArrayList.add(localFileEntitySearchResultModel);
         break;
         label203:
         if (this.jdField_a_of_type_Int == 8) {
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A085", "0X800A085", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A085", "0X800A085", 0, 0, "", "", "", "");
         }
       }
       return localArrayList;
@@ -78,18 +77,18 @@ public class FileManagerSearchEngine
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().init();
   }
   
-  public void a(bcmk parambcmk, bclx<atqj> parambclx)
+  public void a(SearchRequest paramSearchRequest, ISearchListener<FileEntitySearchResultModel> paramISearchListener)
   {
-    if ((parambcmk == null) || (parambcmk.jdField_a_of_type_JavaLangString == null) || (TextUtils.isEmpty(parambcmk.jdField_a_of_type_JavaLangString.trim()))) {
+    if ((paramSearchRequest == null) || (paramSearchRequest.jdField_a_of_type_JavaLangString == null) || (TextUtils.isEmpty(paramSearchRequest.jdField_a_of_type_JavaLangString.trim()))) {
       return;
     }
     synchronized (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Bcmk = parambcmk;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Bclx = parambclx;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = paramSearchRequest;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = paramISearchListener;
       ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable, 64);
       ThreadManager.executeOnFileThread(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable);
       return;
@@ -100,8 +99,8 @@ public class FileManagerSearchEngine
   {
     synchronized (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Bcmk = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Bclx = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = null;
       ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable, 64);
       return;
     }
@@ -115,7 +114,7 @@ public class FileManagerSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileManagerSearchEngine
  * JD-Core Version:    0.7.0.1
  */

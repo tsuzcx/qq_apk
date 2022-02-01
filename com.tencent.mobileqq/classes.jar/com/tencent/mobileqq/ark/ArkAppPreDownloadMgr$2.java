@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.ark;
 
 import android.text.TextUtils;
-import apyo;
-import apyu;
-import apyy;
 import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,39 +10,39 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ArkAppPreDownloadMgr$2
+class ArkAppPreDownloadMgr$2
   implements Runnable
 {
-  public ArkAppPreDownloadMgr$2(apyu paramapyu) {}
+  ArkAppPreDownloadMgr$2(ArkAppPreDownloadMgr paramArkAppPreDownloadMgr) {}
   
   public void run()
   {
-    if ((apyu.a(this.this$0).size() == 0) || (apyu.a(this.this$0))) {}
+    if ((ArkAppPreDownloadMgr.a(this.this$0).size() == 0) || (ArkAppPreDownloadMgr.a(this.this$0))) {}
     for (;;)
     {
       return;
-      apyu.a(this.this$0, true);
+      ArkAppPreDownloadMgr.a(this.this$0, true);
       if ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null)
       {
         QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling predownload error for invalid ArkAppMgr");
         return;
       }
-      Iterator localIterator = apyu.a(this.this$0).entrySet().iterator();
+      Iterator localIterator = ArkAppPreDownloadMgr.a(this.this$0).entrySet().iterator();
       while (localIterator.hasNext())
       {
-        apyy localapyy = (apyy)((Map.Entry)localIterator.next()).getValue();
-        if ((!TextUtils.isEmpty(localapyy.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(ArkAppMgr.getInstance().getAppPathByNameFromLocal(localapyy.jdField_a_of_type_JavaLangString, "", null, false))))
+        ArkAppPreDownloadMgr.PreloadItem localPreloadItem = (ArkAppPreDownloadMgr.PreloadItem)((Map.Entry)localIterator.next()).getValue();
+        if ((!TextUtils.isEmpty(localPreloadItem.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(ArkAppMgr.getInstance().getAppPathByNameFromLocal(localPreloadItem.jdField_a_of_type_JavaLangString, "", null, false))))
         {
-          if (apyo.c(localapyy.jdField_a_of_type_JavaLangString))
+          if (ArkAppCrashProtect.c(localPreloadItem.jdField_a_of_type_JavaLangString))
           {
-            localapyy.jdField_a_of_type_Int = 0;
-            QLog.w("ArkApp.ArkAppPreDownloadMgr", 1, "profiling disable to preload ArkApp name = " + localapyy.jdField_a_of_type_JavaLangString);
+            localPreloadItem.jdField_a_of_type_Int = 0;
+            QLog.w("ArkApp.ArkAppPreDownloadMgr", 1, "profiling disable to preload ArkApp name = " + localPreloadItem.jdField_a_of_type_JavaLangString);
           }
-          if (localapyy.jdField_a_of_type_Int == 1)
+          if (localPreloadItem.jdField_a_of_type_Int == 1)
           {
-            QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling need to preload ArkApp name = " + localapyy.jdField_a_of_type_JavaLangString);
-            String str = ArkAppMgr.getInstance().getAppPathByNameFromLocal(localapyy.jdField_a_of_type_JavaLangString, "", "0.0.0.1", false);
-            apyu.a(this.this$0, localapyy.jdField_a_of_type_JavaLangString, str, apyu.a(this.this$0), 1);
+            QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling need to preload ArkApp name = " + localPreloadItem.jdField_a_of_type_JavaLangString);
+            String str = ArkAppMgr.getInstance().getAppPathByNameFromLocal(localPreloadItem.jdField_a_of_type_JavaLangString, "", "0.0.0.1", false);
+            ArkAppPreDownloadMgr.a(this.this$0, localPreloadItem.jdField_a_of_type_JavaLangString, str, ArkAppPreDownloadMgr.a(this.this$0), 1);
           }
         }
       }

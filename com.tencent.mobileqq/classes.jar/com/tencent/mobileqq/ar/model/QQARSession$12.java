@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.ar.model;
 
-import aply;
-import apos;
+import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class QQARSession$12
+class QQARSession$12
   implements Runnable
 {
-  public QQARSession$12(apos paramapos) {}
+  QQARSession$12(QQARSession paramQQARSession) {}
   
   public void run()
   {
     QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult. download resource timeout.");
-    apos.a(this.this$0).b();
+    QQARSession.a(this.this$0).b();
     this.this$0.b(false, null);
   }
 }

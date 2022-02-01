@@ -13,6 +13,8 @@ import com.tencent.qphone.base.util.QLog;
 public class TKDCommentFragmentHelper
 {
   private static final String TAG = "HippyNestHelper";
+  private static final String TKD_COMMENT = "TKDComment";
+  private static final String TKD_COMMENT_SWITCH = "comment_hippy_switch";
   private static AladdinConfig hippyCommentConfig;
   
   public static void clearHippyCommentConfig()
@@ -34,43 +36,65 @@ public class TKDCommentFragmentHelper
   {
     // Byte code:
     //   0: iconst_1
-    //   1: istore_1
+    //   1: istore_2
     //   2: ldc 2
     //   4: monitorenter
-    //   5: getstatic 18	com/tencent/hippy/qq/utils/tkd/TKDCommentFragmentHelper:hippyCommentConfig	Lcom/tencent/aladdin/config/AladdinConfig;
+    //   5: getstatic 24	com/tencent/hippy/qq/utils/tkd/TKDCommentFragmentHelper:hippyCommentConfig	Lcom/tencent/aladdin/config/AladdinConfig;
     //   8: ifnonnull +12 -> 20
     //   11: sipush 383
-    //   14: invokestatic 26	com/tencent/aladdin/config/Aladdin:get	(I)Lcom/tencent/aladdin/config/AladdinConfig;
-    //   17: putstatic 18	com/tencent/hippy/qq/utils/tkd/TKDCommentFragmentHelper:hippyCommentConfig	Lcom/tencent/aladdin/config/AladdinConfig;
-    //   20: getstatic 18	com/tencent/hippy/qq/utils/tkd/TKDCommentFragmentHelper:hippyCommentConfig	Lcom/tencent/aladdin/config/AladdinConfig;
-    //   23: ldc 28
-    //   25: iconst_0
-    //   26: invokevirtual 34	com/tencent/aladdin/config/AladdinConfig:getIntegerFromString	(Ljava/lang/String;I)I
-    //   29: istore_0
-    //   30: iload_0
-    //   31: iconst_1
-    //   32: if_icmpne +8 -> 40
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: iload_1
-    //   39: ireturn
-    //   40: iconst_0
-    //   41: istore_1
-    //   42: goto -7 -> 35
-    //   45: astore_2
-    //   46: ldc 2
-    //   48: monitorexit
-    //   49: aload_2
-    //   50: athrow
+    //   14: invokestatic 32	com/tencent/aladdin/config/Aladdin:get	(I)Lcom/tencent/aladdin/config/AladdinConfig;
+    //   17: putstatic 24	com/tencent/hippy/qq/utils/tkd/TKDCommentFragmentHelper:hippyCommentConfig	Lcom/tencent/aladdin/config/AladdinConfig;
+    //   20: ldc 11
+    //   22: invokestatic 38	com/tencent/hippy/qq/app/HippyQQEngine:getModuleOnlineConfig	(Ljava/lang/String;)I
+    //   25: istore_0
+    //   26: getstatic 24	com/tencent/hippy/qq/utils/tkd/TKDCommentFragmentHelper:hippyCommentConfig	Lcom/tencent/aladdin/config/AladdinConfig;
+    //   29: ldc 14
+    //   31: iconst_0
+    //   32: invokevirtual 44	com/tencent/aladdin/config/AladdinConfig:getIntegerFromString	(Ljava/lang/String;I)I
+    //   35: istore_1
+    //   36: ldc 8
+    //   38: iconst_1
+    //   39: new 46	java/lang/StringBuilder
+    //   42: dup
+    //   43: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   46: ldc 49
+    //   48: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: iload_1
+    //   52: invokevirtual 56	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   55: ldc 58
+    //   57: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: iload_0
+    //   61: invokevirtual 56	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   64: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokestatic 68	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   70: iload_0
+    //   71: iconst_1
+    //   72: if_icmpne +13 -> 85
+    //   75: iload_1
+    //   76: iconst_1
+    //   77: if_icmpne +8 -> 85
+    //   80: ldc 2
+    //   82: monitorexit
+    //   83: iload_2
+    //   84: ireturn
+    //   85: iconst_0
+    //   86: istore_2
+    //   87: goto -7 -> 80
+    //   90: astore_3
+    //   91: ldc 2
+    //   93: monitorexit
+    //   94: aload_3
+    //   95: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   29	4	0	i	int
-    //   1	41	1	bool	boolean
-    //   45	5	2	localObject	Object
+    //   25	48	0	i	int
+    //   35	43	1	j	int
+    //   1	86	2	bool	boolean
+    //   90	5	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   5	20	45	finally
-    //   20	30	45	finally
+    //   5	20	90	finally
+    //   20	70	90	finally
   }
   
   @Nullable
@@ -138,7 +162,7 @@ public class TKDCommentFragmentHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.utils.tkd.TKDCommentFragmentHelper
  * JD-Core Version:    0.7.0.1
  */

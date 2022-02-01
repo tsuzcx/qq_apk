@@ -17,20 +17,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvx;
-import asbg;
-import bjak;
-import bjcb;
-import bjcc;
-import bjcd;
-import bjce;
-import bjcf;
-import bjcg;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener.Adapter;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.drawable.EmptyDrawable;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBSInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -51,7 +44,7 @@ public class CardContainer
 {
   protected int a;
   protected Context a;
-  public Drawable a;
+  protected Drawable a;
   protected Handler a;
   protected LayoutInflater a;
   protected ImageView a;
@@ -61,8 +54,8 @@ public class CardContainer
   protected URLDrawableDownListener.Adapter a;
   public AnyScaleTypeImageView a;
   protected FixedBounceScrollView a;
-  public AuthorityAccountView a;
-  protected List<bjcg> a;
+  protected AuthorityAccountView a;
+  protected List<CardContainer.Permission> a;
   public boolean a;
   protected final int b;
   protected ImageView b;
@@ -82,8 +75,10 @@ public class CardContainer
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new bjcb(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bjcc(this);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler = new CardContainer.1(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new CardContainer.2(this);
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     new DisplayMetrics();
     paramAttributeSet = getResources().getDisplayMetrics();
@@ -98,7 +93,7 @@ public class CardContainer
     localObject3 = null;
     try
     {
-      Object localObject1 = new asbg(0, this.jdField_b_of_type_Int, 100);
+      Object localObject1 = new EmptyDrawable(0, this.jdField_b_of_type_Int, 100);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
@@ -149,9 +144,9 @@ public class CardContainer
     }
     ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { 0, paramInt1 });
     ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { 0, paramInt2 });
-    localValueAnimator1.addUpdateListener(new bjcd(this, paramImageView));
-    localValueAnimator1.addListener(new bjce(this, paramImageView));
-    localValueAnimator2.addUpdateListener(new bjcf(this));
+    localValueAnimator1.addUpdateListener(new CardContainer.4(this, paramImageView));
+    localValueAnimator1.addListener(new CardContainer.5(this, paramImageView));
+    localValueAnimator2.addUpdateListener(new CardContainer.6(this));
     localValueAnimator1.setDuration(300L);
     localValueAnimator2.setDuration(300L);
     paramImageView = new AnimatorSet();
@@ -170,10 +165,10 @@ public class CardContainer
       this.jdField_b_of_type_Boolean = true;
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
       if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-        ImmersiveUtils.a(false, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getWindow());
+        ImmersiveUtils.setStatusTextColor(false, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getWindow());
       }
       if (!(this.jdField_a_of_type_AndroidContentContext instanceof AuthorityActivity)) {
-        break label111;
+        break label112;
       }
       ((AuthorityActivity)this.jdField_a_of_type_AndroidContentContext).l();
     }
@@ -183,7 +178,7 @@ public class CardContainer
       int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight();
       a(this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView, i, i - j);
       return;
-      label111:
+      label112:
       if ((this.jdField_a_of_type_AndroidContentContext instanceof QuickLoginAuthorityActivity)) {
         ((QuickLoginAuthorityActivity)this.jdField_a_of_type_AndroidContentContext).h();
       }
@@ -228,7 +223,7 @@ public class CardContainer
     return localStringBuilder.toString();
   }
   
-  public List<bjcg> a()
+  public List<CardContainer.Permission> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -279,7 +274,7 @@ public class CardContainer
     QLog.i("showAppInfo", 1, "showAppInfo appName = " + paramString, new RuntimeException("ShowAppInfoStack"));
     setVisibility(0);
     if ((!TextUtils.isEmpty(paramString)) && (getTag() != null)) {
-      ((TextView)findViewById(2131362313)).setText(anvx.a(2131700946) + paramString + anvx.a(2131700945));
+      ((TextView)findViewById(2131362341)).setText(HardCodeUtil.a(2131701521) + paramString + HardCodeUtil.a(2131701520));
     }
     if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null) {
       this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setAppInfo(paramString, paramBitmap);
@@ -320,7 +315,7 @@ public class CardContainer
       this.jdField_b_of_type_AndroidWidgetTextView.setText(str1);
       if (!TextUtils.isEmpty(paramString1))
       {
-        paramString2 = String.format(super.getContext().getString(2131689852), new Object[] { paramString1 });
+        paramString2 = String.format(super.getContext().getString(2131689892), new Object[] { paramString1 });
         this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString2);
         this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString2);
         if (this.e.getVisibility() == 0) {
@@ -355,19 +350,19 @@ public class CardContainer
       appType.AuthItem localAuthItem = (appType.AuthItem)((Iterator)localObject).next();
       if (localAuthItem.is_new.get() != 0)
       {
-        bjcg localbjcg = new bjcg();
-        localbjcg.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
-        localbjcg.jdField_a_of_type_Int = localAuthItem.default_flag.get();
-        localbjcg.jdField_b_of_type_Int = localAuthItem.id.get();
+        CardContainer.Permission localPermission = new CardContainer.Permission();
+        localPermission.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
+        localPermission.jdField_a_of_type_Int = localAuthItem.default_flag.get();
+        localPermission.jdField_b_of_type_Int = localAuthItem.id.get();
         if (localAuthItem.is_new.get() == 0) {}
         for (bool = false;; bool = true)
         {
-          localbjcg.jdField_a_of_type_Boolean = bool;
-          localbjcg.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
+          localPermission.jdField_a_of_type_Boolean = bool;
+          localPermission.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
           if (QLog.isColorLevel()) {
-            paramGetAuthApiListResponse.append("--> Permission p, api: ").append(localbjcg.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localbjcg.jdField_a_of_type_Int).append(" | id: ").append(localbjcg.jdField_b_of_type_Int).append(" | isNew: ").append(localbjcg.jdField_a_of_type_Boolean).append(" | title: ").append(localbjcg.jdField_a_of_type_JavaLangString).append("\n");
+            paramGetAuthApiListResponse.append("--> Permission p, api: ").append(localPermission.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localPermission.jdField_a_of_type_Int).append(" | id: ").append(localPermission.jdField_b_of_type_Int).append(" | isNew: ").append(localPermission.jdField_a_of_type_Boolean).append(" | title: ").append(localPermission.jdField_a_of_type_JavaLangString).append("\n");
           }
-          this.jdField_a_of_type_JavaUtilList.add(localbjcg);
+          this.jdField_a_of_type_JavaUtilList.add(localPermission);
           break;
         }
       }
@@ -394,9 +389,9 @@ public class CardContainer
     paramGetAuthApiListResponse = "";
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject = (bjcg)this.jdField_a_of_type_JavaUtilList.get(i);
+      localObject = (CardContainer.Permission)this.jdField_a_of_type_JavaUtilList.get(i);
       if (getTag() != null) {}
-      for (paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· 获得你与QQ通讯录绑定的电话号码";; paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· " + ((bjcg)localObject).jdField_a_of_type_JavaLangString)
+      for (paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· 获得你与QQ通讯录绑定的电话号码";; paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· " + ((CardContainer.Permission)localObject).jdField_a_of_type_JavaLangString)
       {
         paramGetAuthApiListResponse = paramGetAuthApiListResponse + "\n";
         i += 1;
@@ -414,29 +409,29 @@ public class CardContainer
     }
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362319));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362320));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362311));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362315));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362317));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362312));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362316));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362318));
-    this.e = ((TextView)super.findViewById(2131362314));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362347));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362348));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362339));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362343));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362345));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362340));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362344));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362346));
+    this.e = ((TextView)super.findViewById(2131362342));
     this.e.setVisibility(8);
-    this.f = ((TextView)super.findViewById(2131372245));
+    this.f = ((TextView)super.findViewById(2131372548));
     this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView = ((AuthorityAccountView)super.findViewById(2131361929));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363072));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView = ((FixedBounceScrollView)super.findViewById(2131363083));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setMaxHeight(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 102.0F));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363115));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView = ((FixedBounceScrollView)super.findViewById(2131363128));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setMaxHeight(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 102.0F));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setNeedDisallowIntercept(true);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362322));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131367526));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131379086));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131379087));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362350));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131367714));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131379520));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131379521));
   }
   
   public void setAdImageByURL(AnyScaleTypeImageView paramAnyScaleTypeImageView, String paramString)
@@ -448,7 +443,7 @@ public class CardContainer
     }
     try
     {
-      paramAnyScaleTypeImageView = new asbg(0, this.jdField_b_of_type_Int, 100);
+      paramAnyScaleTypeImageView = new EmptyDrawable(0, this.jdField_b_of_type_Int, 100);
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = paramAnyScaleTypeImageView;
       localURLDrawableOptions.mFailedDrawable = paramAnyScaleTypeImageView;
@@ -501,16 +496,16 @@ public class CardContainer
     }
   }
   
-  public void setChangeAccountListener(bjak parambjak)
+  public void setChangeAccountListener(AuthorityAccountView.IChangeAccountListener paramIChangeAccountListener)
   {
     if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setChangeAccountListener(parambjak);
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setChangeAccountListener(paramIChangeAccountListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.CardContainer
  * JD-Core Version:    0.7.0.1
  */

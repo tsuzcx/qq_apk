@@ -44,7 +44,7 @@ public class EmoticonGuideBubbleView
     int i = this.mEmoIconView.getWidth();
     paramImageView.measure(0, 0);
     if (paramBoolean) {}
-    for (paramInt = j - (paramLinearLayout[0] - ViewUtils.dip2px(20.0F)) - paramImageView.getMeasuredWidth() / 4 - paramInt;; paramInt = j - paramLinearLayout[0] - i / 2 - paramImageView.getMeasuredWidth() / 4 - paramInt)
+    for (paramInt = j - (paramLinearLayout[0] - ViewUtils.a(20.0F)) - paramImageView.getMeasuredWidth() / 4 - paramInt;; paramInt = j - paramLinearLayout[0] - i / 2 - paramImageView.getMeasuredWidth() / 4 - paramInt)
     {
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonGuideBubbleView", 2, new Object[] { "calcArrowOffset arrowOffset:", Integer.valueOf(paramInt), " ,eW:", Integer.valueOf(i), " ,eLX:", Integer.valueOf(paramLinearLayout[0]) });
@@ -62,7 +62,7 @@ public class EmoticonGuideBubbleView
     measure(0, 0);
     int k = getMeasuredWidth();
     if (paramBoolean) {}
-    for (i = i - (paramView[0] - ViewUtils.dip2px(20.0F)) - k / 2;; i = i - (paramView[0] + j / 2) - k / 2)
+    for (i = i - (paramView[0] - ViewUtils.a(20.0F)) - k / 2;; i = i - (paramView[0] + j / 2) - k / 2)
     {
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonGuideBubbleView", 2, new Object[] { "calcOffset offset:", Integer.valueOf(i), " ,bW:", Integer.valueOf(k), " ,eW:", Integer.valueOf(j), " ,eLX:", Integer.valueOf(paramView[0]) });
@@ -77,11 +77,11 @@ public class EmoticonGuideBubbleView
     if (paramInt > 0)
     {
       i = paramInt;
-      if (getMeasuredWidth() + paramInt < ViewUtils.getScreenWidth()) {}
+      if (getMeasuredWidth() + paramInt < ViewUtils.a()) {}
     }
     else
     {
-      i = ViewUtils.dip2px(6.0F);
+      i = ViewUtils.a(6.0F);
     }
     return i;
   }
@@ -138,17 +138,17 @@ public class EmoticonGuideBubbleView
       return false;
     }
     if (paramBoolean) {
-      this.mEmoIconView = paramRelativeLayout.findViewById(2131367477);
+      this.mEmoIconView = paramRelativeLayout.findViewById(2131367664);
     }
     while (this.mEmoIconView == null)
     {
       return false;
-      this.mEmoIconView = paramLinearLayout.findViewById(2131374194);
+      this.mEmoIconView = paramLinearLayout.findViewById(2131374514);
       if (this.mEmoIconView == null) {
-        this.mEmoIconView = paramLinearLayout.findViewById(2131374195);
+        this.mEmoIconView = paramLinearLayout.findViewById(2131374515);
       }
     }
-    View localView = paramRelativeLayout.findViewById(2131368910);
+    View localView = paramRelativeLayout.findViewById(2131369142);
     if (localView == null) {
       return false;
     }
@@ -160,15 +160,15 @@ public class EmoticonGuideBubbleView
       QLog.d("EmoticonGuideBubbleView", 2, "showGuideBubble drawable status: " + ((URLDrawable)paramString).getStatus());
     }
     localImageView.setImageDrawable(paramString);
-    paramInt1 = ViewUtils.dip2px(paramInt1 / 2);
-    int i = ViewUtils.dip2px(paramInt2 / 2);
-    if (paramInt1 >= ViewUtils.getScreenWidth()) {
-      paramInt2 = ViewUtils.getScreenWidth() / 2;
+    paramInt1 = ViewUtils.a(paramInt1 / 2);
+    int i = ViewUtils.a(paramInt2 / 2);
+    if (paramInt1 >= ViewUtils.a()) {
+      paramInt2 = ViewUtils.a() / 2;
     }
     for (paramInt1 = i * paramInt2 / paramInt1;; paramInt1 = i)
     {
       localImageView.setLayoutParams(new ViewGroup.LayoutParams(paramInt2, paramInt1));
-      localImageView.setBackgroundResource(2130838043);
+      localImageView.setBackgroundResource(2130838115);
       addView(localImageView);
       setVisibility(0);
       paramString = new AlphaAnimation(0.0F, 1.0F);
@@ -177,18 +177,18 @@ public class EmoticonGuideBubbleView
       paramString.setFillAfter(true);
       startAnimation(paramString);
       paramString = new RelativeLayout.LayoutParams(-2, -2);
-      paramString.addRule(2, 2131368910);
-      paramString.addRule(7, 2131368910);
+      paramString.addRule(2, 2131369142);
+      paramString.addRule(7, 2131369142);
       paramInt1 = calcOffset(paramLinearLayout, paramBoolean);
       if (paramInt1 > 0)
       {
         paramString.rightMargin = paramInt1;
         localImageView = new ImageView(this.mContext);
-        localImageView.setImageDrawable(getResources().getDrawable(2130839707));
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(ViewUtils.dip2px(13.0F), ViewUtils.dip2px(8.0F));
+        localImageView.setImageDrawable(getResources().getDrawable(2130839791));
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(ViewUtils.a(13.0F), ViewUtils.a(8.0F));
         localLayoutParams.gravity = 8388613;
         localLayoutParams.rightMargin = calcArrowOffset(paramLinearLayout, localImageView, paramInt1, paramBoolean);
-        localLayoutParams.topMargin = (-ViewUtils.dip2px(1.0F));
+        localLayoutParams.topMargin = (-ViewUtils.a(1.0F));
         localImageView.setLayoutParams(localLayoutParams);
         addView(localImageView);
         paramString.bottomMargin = (-localView.getPaddingTop());
@@ -201,7 +201,7 @@ public class EmoticonGuideBubbleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonGuideBubbleView
  * JD-Core Version:    0.7.0.1
  */

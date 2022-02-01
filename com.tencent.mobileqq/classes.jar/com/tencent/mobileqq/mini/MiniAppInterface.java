@@ -7,15 +7,15 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseMiniAppInterface;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.mini.app.AuthorizeCenter;
 import com.tencent.mobileqq.mini.network.RequestStrategy;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.startup.step.InitMemoryCache;
 import com.tencent.mobileqq.startup.step.InitUrlDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -24,9 +24,10 @@ import cooperation.qzone.report.lp.LpReportManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class MiniAppInterface
-  extends AppInterface
+  extends BaseMiniAppInterface
 {
   public static final String ACTION_MINI_PROCESS_EXIT = "com.tencent.mobile.mini.process.exit";
   private static final String ACTION_PROCESS_EXIT = "com.tencent.process.exit";
@@ -124,7 +125,7 @@ public class MiniAppInterface
   public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
     if (this.mFactory == null) {
-      this.mFactory = new QQEntityManagerFactory(getAccount());
+      this.mFactory = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
     }
     return this.mFactory;
   }

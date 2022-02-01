@@ -1,12 +1,13 @@
 package com.tencent.biz.pubaccount;
 
-import afoe;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.webprocess.temp.api.IWebviewApi;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
 import java.util.Map;
@@ -16,10 +17,10 @@ public abstract class SuperWebView
   extends WebView
 {
   static final String JAVASCRIPT_SCHEME = "javascript:";
-  protected Intent mIntent;
-  private boolean mIsForceLoadUrl;
+  protected Intent mIntent = null;
+  private boolean mIsForceLoadUrl = false;
   private ArrayList<String> mJsUrlsWaitingForLoad = new ArrayList();
-  private boolean mReadyForLoadJs;
+  private boolean mReadyForLoadJs = false;
   
   public SuperWebView(Context paramContext)
   {
@@ -53,7 +54,7 @@ public abstract class SuperWebView
   
   public void loadUrl(String paramString)
   {
-    afoe.a(this.mIntent, paramString);
+    ((IWebviewApi)QRoute.api(IWebviewApi.class)).monitorLoadUrl(this.mIntent, paramString);
     if (this.mReadyForLoadJs) {
       if ((Build.VERSION.SDK_INT >= 19) && (paramString != null) && (paramString.startsWith("javascript:"))) {
         super.evaluateJavascript(paramString.substring("javascript:".length()), null);
@@ -125,7 +126,7 @@ public abstract class SuperWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.SuperWebView
  * JD-Core Version:    0.7.0.1
  */

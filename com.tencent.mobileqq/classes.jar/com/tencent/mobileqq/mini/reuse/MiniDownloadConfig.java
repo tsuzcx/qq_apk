@@ -103,7 +103,7 @@ class MiniDownloadConfig
   
   public String getVersion()
   {
-    return DeviceInfoUtil.getQQVersion();
+    return DeviceInfoUtil.c();
   }
   
   public boolean isFromQzoneAlbum(String paramString)

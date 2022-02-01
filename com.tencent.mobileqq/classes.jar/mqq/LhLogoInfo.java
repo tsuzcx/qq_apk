@@ -10,8 +10,8 @@ public final class LhLogoInfo
   extends JceStruct
 {
   static Map<Integer, LhLogoResources> cache_lhLogoResources = new HashMap();
-  public int bUpdate;
-  public Map<Integer, LhLogoResources> lhLogoResources;
+  public int bUpdate = 0;
+  public Map<Integer, LhLogoResources> lhLogoResources = null;
   
   static
   {

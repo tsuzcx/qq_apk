@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class SignatureRes
   extends JceStruct
 {
-  public long dwSeq;
+  public long dwSeq = 0L;
   public String strLongNick = "";
-  public long uin;
+  public long uin = 0L;
   
   public SignatureRes() {}
   

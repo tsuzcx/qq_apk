@@ -95,7 +95,7 @@ public class ActionSheet
   private boolean mIsMenuMode;
   public boolean mIsReady;
   private CharSequence mMainTitle;
-  private ActionSheet.onPreShowListener mOnPreShowListener = null;
+  private ActionSheet.OnPreShowListener mOnPreShowListener = null;
   private SparseArray<View> mRadioButtonMap;
   private boolean mRadioGroupMode = false;
   private Resources mResources;
@@ -878,9 +878,9 @@ public class ActionSheet
     this.mDismissListener = paramOnDismissListener;
   }
   
-  public void setOnPreShowListener(ActionSheet.onPreShowListener paramonPreShowListener)
+  public void setOnPreShowListener(ActionSheet.OnPreShowListener paramOnPreShowListener)
   {
-    this.mOnPreShowListener = paramonPreShowListener;
+    this.mOnPreShowListener = paramOnPreShowListener;
   }
   
   public void setOutsideDismissEnable(boolean paramBoolean)
@@ -1038,7 +1038,7 @@ public class ActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.actionsheet.ActionSheet
  * JD-Core Version:    0.7.0.1
  */

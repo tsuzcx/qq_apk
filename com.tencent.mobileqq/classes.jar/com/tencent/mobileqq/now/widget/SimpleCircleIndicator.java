@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import ayqw;
 import com.tencent.mobileqq.R.styleable;
 
 public class SimpleCircleIndicator
@@ -133,7 +132,7 @@ public class SimpleCircleIndicator
     return this.k;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int m = getWidth();
     int i1 = b();
@@ -175,7 +174,7 @@ public class SimpleCircleIndicator
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int i1 = View.MeasureSpec.getMode(paramInt1);
@@ -243,7 +242,7 @@ public class SimpleCircleIndicator
     paramViewPager.removeOnPageChangeListener(this);
     paramViewPager.addOnPageChangeListener(this);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
-    paramViewPager.getAdapter().registerDataSetObserver(new ayqw(this, paramViewPager));
+    paramViewPager.getAdapter().registerDataSetObserver(new SimpleCircleIndicator.1(this, paramViewPager));
     setCurrentItem(0);
   }
 }

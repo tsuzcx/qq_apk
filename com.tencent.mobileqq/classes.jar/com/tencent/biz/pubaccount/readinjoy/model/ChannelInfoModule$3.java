@@ -1,30 +1,28 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import java.util.List;
-import pvm;
-import qfb;
-import qhw;
 
-public class ChannelInfoModule$3
+class ChannelInfoModule$3
   implements Runnable
 {
-  public ChannelInfoModule$3(qfb paramqfb, boolean paramBoolean, List paramList) {}
+  ChannelInfoModule$3(ChannelInfoModule paramChannelInfoModule, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      pvm.a().d(false, null);
+      ReadInJoyLogicEngineEventDispatcher.a().d(false, null);
       return;
     }
-    qhw.a().a(this.jdField_a_of_type_JavaUtilList);
+    SpecialChannelFilter.a().a(this.jdField_a_of_type_JavaUtilList);
     this.this$0.f(this.jdField_a_of_type_JavaUtilList);
-    pvm.a().d(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
+    ReadInJoyLogicEngineEventDispatcher.a().d(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule.3
  * JD-Core Version:    0.7.0.1
  */

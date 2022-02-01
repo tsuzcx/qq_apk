@@ -5,10 +5,10 @@ import android.view.TouchDelegate;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
-public final class GdtUIUtils$2
+final class GdtUIUtils$2
   implements Runnable
 {
-  public GdtUIUtils$2(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  GdtUIUtils$2(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public final class GdtUIUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.GdtUIUtils.2
  * JD-Core Version:    0.7.0.1
  */

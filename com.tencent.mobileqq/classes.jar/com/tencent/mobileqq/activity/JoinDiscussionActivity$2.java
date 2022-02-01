@@ -1,0 +1,37 @@
+package com.tencent.mobileqq.activity;
+
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
+
+class JoinDiscussionActivity$2
+  extends FriendListObserver
+{
+  JoinDiscussionActivity$2(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  
+  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      paramString = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.a.a + "");
+      if (paramString != null)
+      {
+        this.a.e = paramString.name;
+        JoinDiscussionActivity.a(this.a);
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.2
+ * JD-Core Version:    0.7.0.1
+ */

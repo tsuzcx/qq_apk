@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.a.a;
 
-import com.tencent.mobileqq.msf.core.c.k.a;
+import com.tencent.mobileqq.msf.core.c.j.a;
 
 class a$d
-  extends k.a
+  extends j.a
 {
   public static final String a = "dim.msf.ServiceInitToConnedCost";
   

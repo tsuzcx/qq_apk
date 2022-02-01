@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ancb;
-import ancc;
 import android.os.Message;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.api.script.ISpriteCommFunc;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -17,15 +17,15 @@ class SpriteUIHandler$5
   {
     try
     {
-      MqqHandler localMqqHandler = SpriteUIHandler.a(this.this$0).a().getUIHandler();
+      MqqHandler localMqqHandler = SpriteUIHandler.a(this.this$0).a().a();
       if (1 == this.a)
       {
-        localMqqHandler.obtainMessage(47, (int)((float)DeviceInfoUtil.getDispalyHeight() / 7.0F / 2.84D) + 40, 0).sendToTarget();
+        localMqqHandler.obtainMessage(47, (int)((float)DeviceInfoUtil.h() / 7.0F / 2.84D) + 40, 0).sendToTarget();
         return;
       }
       if (2 == this.a)
       {
-        localMqqHandler.obtainMessage(47, this.b + 40 + (int)((float)DeviceInfoUtil.getDispalyHeight() / 7.0F), 0).sendToTarget();
+        localMqqHandler.obtainMessage(47, this.b + 40 + (int)((float)DeviceInfoUtil.h() / 7.0F), 0).sendToTarget();
         return;
       }
     }
@@ -35,7 +35,7 @@ class SpriteUIHandler$5
       return;
     }
     if (3 == this.a) {
-      if ((ancb.a(SpriteUIHandler.a(this.this$0).a())) && (ancb.b(SpriteUIHandler.a(this.this$0).a(), "select_more_msg")))
+      if ((((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(SpriteUIHandler.a(this.this$0).a())) && (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHiddenForBusiness(SpriteUIHandler.a(this.this$0).a(), "select_more_msg")))
       {
         if (QLog.isColorLevel()) {
           QLog.d("cmshow_scripted_SpriteUIHandler", 2, "addOrRemoveMargin hidden but not should remove margin");
@@ -49,7 +49,7 @@ class SpriteUIHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.5
  * JD-Core Version:    0.7.0.1
  */

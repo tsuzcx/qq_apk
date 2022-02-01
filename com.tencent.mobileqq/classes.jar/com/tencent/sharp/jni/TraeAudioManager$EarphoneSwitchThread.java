@@ -1,5 +1,8 @@
 package com.tencent.sharp.jni;
 
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+
 class TraeAudioManager$EarphoneSwitchThread
   extends TraeAudioManager.SwitchThread
 {
@@ -22,7 +25,7 @@ class TraeAudioManager$EarphoneSwitchThread
     {
       if (this.jdField_a_of_type_Boolean == true)
       {
-        if (TraeAudioManager.a(this.this$0)) {
+        if ((TraeAudioManager.a(this.this$0)) && (a())) {
           this.this$0.a(this.jdField_a_of_type_Long, TraeAudioManager.a(this.this$0), false);
         }
         long l;
@@ -34,7 +37,7 @@ class TraeAudioManager$EarphoneSwitchThread
           for (;;)
           {
             Thread.sleep(l);
-            label77:
+            label84:
             i += 1;
             break;
             l = 4000L;
@@ -42,9 +45,26 @@ class TraeAudioManager$EarphoneSwitchThread
         }
         catch (InterruptedException localInterruptedException)
         {
-          break label77;
+          break label84;
         }
       }
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if (!this.c) {
+      return true;
+    }
+    SessionInfo localSessionInfo = VideoController.a().a();
+    if ((localSessionInfo != null) && ((localSessionInfo.d == 1) || (localSessionInfo.d == 2))) {}
+    for (int i = 1;; i = 0)
+    {
+      if ((i == 0) || (!VideoController.a().b())) {
+        bool = true;
+      }
+      return bool;
     }
   }
   
@@ -52,7 +72,7 @@ class TraeAudioManager$EarphoneSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioManager.EarphoneSwitchThread
  * JD-Core Version:    0.7.0.1
  */

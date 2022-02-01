@@ -11,6 +11,7 @@ import com.tencent.qqmini.miniapp.core.BaseAppBrandRuntime;
 import com.tencent.qqmini.miniapp.core.page.IAppBrandPageContainer;
 import com.tencent.qqmini.miniapp.core.service.AppV8JsService;
 import com.tencent.qqmini.miniapp.core.service.IAppBrandService;
+import com.tencent.qqmini.sdk.action.AppStateEvent;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.utils.JSONUtil;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
@@ -18,6 +19,9 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
 import com.tencent.qqmini.sdk.plugins.engine.JsPluginEngine;
+import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
+import com.tencent.qqmini.sdk.report.MiniProgramReportHelper;
+import com.tencent.qqmini.sdk.report.MiniReportManager;
 import io.flutter.app.FlutterPluginRegistry;
 import io.flutter.plugin.common.BasicMessageChannel;
 import io.flutter.plugin.common.BinaryCodec;
@@ -52,6 +56,90 @@ public class NativeAppBrandRuntime
   {
     super(paramContext);
     this.mEventListener = new NativeEventListener(this);
+  }
+  
+  private void onTimeCostReport(Map paramMap)
+  {
+    Object localObject = (Map)paramMap.get("data");
+    if (localObject != null)
+    {
+      Integer localInteger3 = (Integer)((Map)localObject).get("matchTimeCost");
+      Integer localInteger2 = (Integer)((Map)localObject).get("setDataTimeCost");
+      Integer localInteger1 = (Integer)((Map)localObject).get("renderTimeCost");
+      if (localInteger3 != null)
+      {
+        if (getMiniAppInfo() != null) {
+          break label187;
+        }
+        paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
+        MiniReportManager.reportEventType(paramMap, 217, "0", localInteger3.intValue());
+      }
+      if (localInteger2 != null)
+      {
+        if (getMiniAppInfo() != null) {
+          break label195;
+        }
+        paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
+        label101:
+        MiniReportManager.reportEventType(paramMap, 218, "0", localInteger2.intValue());
+      }
+      if (localInteger1 != null)
+      {
+        if (getMiniAppInfo() != null) {
+          break label203;
+        }
+        paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
+        label131:
+        MiniReportManager.reportEventType(paramMap, 219, "0", localInteger1.intValue());
+      }
+      localObject = (Integer)((Map)localObject).get("totalTimeCost");
+      if (localObject != null) {
+        if (getMiniAppInfo() != null) {
+          break label211;
+        }
+      }
+    }
+    label187:
+    label195:
+    label203:
+    label211:
+    for (paramMap = MiniProgramReportHelper.miniAppConfigForPreload();; paramMap = getMiniAppInfo())
+    {
+      MiniReportManager.reportEventType(paramMap, 220, "0", ((Integer)localObject).intValue());
+      return;
+      paramMap = getMiniAppInfo();
+      break;
+      paramMap = getMiniAppInfo();
+      break label101;
+      paramMap = getMiniAppInfo();
+      break label131;
+    }
+  }
+  
+  private void onViewDidAppear(Map paramMap)
+  {
+    performAction(AppStateEvent.obtain(11));
+    if ((paramMap.containsKey("data")) && ((paramMap.get("data") instanceof Map)))
+    {
+      paramMap = (Map)paramMap.get("data");
+      if ((!paramMap.containsKey("pageID")) || (!(paramMap.get("pageID") instanceof Integer))) {}
+    }
+    for (paramMap = (Integer)paramMap.get("pageID");; paramMap = Integer.valueOf(0))
+    {
+      QMLog.w("miniapp-start-TISSUE", "flutter page " + paramMap + " shown" + System.currentTimeMillis() + "runtime: " + hashCode());
+      if (!this.firstPageShown) {
+        if (getMiniAppInfo() != null) {
+          break label164;
+        }
+      }
+      label164:
+      for (paramMap = MiniProgramReportHelper.miniAppConfigForPreload();; paramMap = getMiniAppInfo())
+      {
+        MiniAppReportManager2.reportLaunchPiecewise(216, "", paramMap);
+        this.firstPageShown = true;
+        return;
+      }
+    }
   }
   
   private void sendPageState(int paramInt)
@@ -182,7 +270,7 @@ public class NativeAppBrandRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.NativeAppBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

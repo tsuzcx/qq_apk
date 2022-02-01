@@ -117,44 +117,57 @@ class FlutterEnginePluginRegistry
   
   public void add(@NonNull FlutterPlugin paramFlutterPlugin)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("Adding plugin: ");
-    ((StringBuilder)localObject).append(paramFlutterPlugin);
-    Log.v("FlutterEnginePluginRegistry", ((StringBuilder)localObject).toString());
-    this.plugins.put(paramFlutterPlugin.getClass(), paramFlutterPlugin);
-    paramFlutterPlugin.onAttachedToEngine(this.pluginBinding);
-    if ((paramFlutterPlugin instanceof ActivityAware))
+    Object localObject;
+    if (has(paramFlutterPlugin.getClass()))
     {
-      localObject = (ActivityAware)paramFlutterPlugin;
-      this.activityAwarePlugins.put(paramFlutterPlugin.getClass(), localObject);
-      if (isAttachedToActivity()) {
-        ((ActivityAware)localObject).onAttachedToActivity(this.activityPluginBinding);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Attempted to register plugin (");
+      ((StringBuilder)localObject).append(paramFlutterPlugin);
+      ((StringBuilder)localObject).append(") but it was already registered with this FlutterEngine (");
+      ((StringBuilder)localObject).append(this.flutterEngine);
+      ((StringBuilder)localObject).append(").");
+      Log.w("FlutterEnginePluginRegistry", ((StringBuilder)localObject).toString());
     }
-    if ((paramFlutterPlugin instanceof ServiceAware))
+    do
     {
-      localObject = (ServiceAware)paramFlutterPlugin;
-      this.serviceAwarePlugins.put(paramFlutterPlugin.getClass(), localObject);
-      if (isAttachedToService()) {
-        ((ServiceAware)localObject).onAttachedToService(this.servicePluginBinding);
-      }
-    }
-    if ((paramFlutterPlugin instanceof BroadcastReceiverAware))
-    {
-      localObject = (BroadcastReceiverAware)paramFlutterPlugin;
-      this.broadcastReceiverAwarePlugins.put(paramFlutterPlugin.getClass(), localObject);
-      if (isAttachedToBroadcastReceiver()) {
-        ((BroadcastReceiverAware)localObject).onAttachedToBroadcastReceiver(this.broadcastReceiverPluginBinding);
-      }
-    }
-    if ((paramFlutterPlugin instanceof ContentProviderAware))
-    {
+      do
+      {
+        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Adding plugin: ");
+        ((StringBuilder)localObject).append(paramFlutterPlugin);
+        Log.v("FlutterEnginePluginRegistry", ((StringBuilder)localObject).toString());
+        this.plugins.put(paramFlutterPlugin.getClass(), paramFlutterPlugin);
+        paramFlutterPlugin.onAttachedToEngine(this.pluginBinding);
+        if ((paramFlutterPlugin instanceof ActivityAware))
+        {
+          localObject = (ActivityAware)paramFlutterPlugin;
+          this.activityAwarePlugins.put(paramFlutterPlugin.getClass(), localObject);
+          if (isAttachedToActivity()) {
+            ((ActivityAware)localObject).onAttachedToActivity(this.activityPluginBinding);
+          }
+        }
+        if ((paramFlutterPlugin instanceof ServiceAware))
+        {
+          localObject = (ServiceAware)paramFlutterPlugin;
+          this.serviceAwarePlugins.put(paramFlutterPlugin.getClass(), localObject);
+          if (isAttachedToService()) {
+            ((ServiceAware)localObject).onAttachedToService(this.servicePluginBinding);
+          }
+        }
+        if ((paramFlutterPlugin instanceof BroadcastReceiverAware))
+        {
+          localObject = (BroadcastReceiverAware)paramFlutterPlugin;
+          this.broadcastReceiverAwarePlugins.put(paramFlutterPlugin.getClass(), localObject);
+          if (isAttachedToBroadcastReceiver()) {
+            ((BroadcastReceiverAware)localObject).onAttachedToBroadcastReceiver(this.broadcastReceiverPluginBinding);
+          }
+        }
+      } while (!(paramFlutterPlugin instanceof ContentProviderAware));
       localObject = (ContentProviderAware)paramFlutterPlugin;
       this.contentProviderAwarePlugins.put(paramFlutterPlugin.getClass(), localObject);
-      if (isAttachedToContentProvider()) {
-        ((ContentProviderAware)localObject).onAttachedToContentProvider(this.contentProviderPluginBinding);
-      }
-    }
+    } while (!isAttachedToContentProvider());
+    ((ContentProviderAware)localObject).onAttachedToContentProvider(this.contentProviderPluginBinding);
   }
   
   public void add(@NonNull Set<FlutterPlugin> paramSet)
@@ -186,7 +199,7 @@ class FlutterEnginePluginRegistry
     for (;;)
     {
       if (!paramActivity.hasNext()) {
-        break label180;
+        break label181;
       }
       paramLifecycle = (ActivityAware)paramActivity.next();
       if (this.isWaitingForActivityReattachment)
@@ -198,7 +211,7 @@ class FlutterEnginePluginRegistry
       }
       paramLifecycle.onAttachedToActivity(this.activityPluginBinding);
     }
-    label180:
+    label181:
     this.isWaitingForActivityReattachment = false;
   }
   
@@ -249,7 +262,7 @@ class FlutterEnginePluginRegistry
   
   public void destroy()
   {
-    Log.d("FlutterEnginePluginRegistry", "Destroying.");
+    Log.v("FlutterEnginePluginRegistry", "Destroying.");
     detachFromAndroidComponent();
     removeAll();
   }
@@ -496,7 +509,7 @@ class FlutterEnginePluginRegistry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterEnginePluginRegistry
  * JD-Core Version:    0.7.0.1
  */

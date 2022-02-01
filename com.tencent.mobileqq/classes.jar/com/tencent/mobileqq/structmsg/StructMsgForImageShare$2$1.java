@@ -11,7 +11,7 @@ class StructMsgForImageShare$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare$2.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(AIOUtils.dp2px(3.0F, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare$2.jdField_a_of_type_AndroidContentResResources));
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare$2.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(AIOUtils.a(3.0F, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare$2.jdField_a_of_type_AndroidContentResResources));
     this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare$2.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
   }
 }

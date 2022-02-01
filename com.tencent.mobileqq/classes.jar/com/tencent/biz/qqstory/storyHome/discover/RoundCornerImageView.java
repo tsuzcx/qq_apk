@@ -18,10 +18,10 @@ public class RoundCornerImageView
 {
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int b = Color.parseColor("#FFD5D5D5");
   private int c;
-  private int d;
+  private int d = 0;
   
   public RoundCornerImageView(Context paramContext)
   {
@@ -109,7 +109,7 @@ public class RoundCornerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView
  * JD-Core Version:    0.7.0.1
  */

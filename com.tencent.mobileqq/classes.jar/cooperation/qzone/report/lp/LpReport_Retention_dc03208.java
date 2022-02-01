@@ -1,12 +1,10 @@
 package cooperation.qzone.report.lp;
 
 import android.os.Build;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.module.common.NetworkState;
-import cooperation.qzone.QUA;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReport_Retention_dc03208
   implements LpReportInfo
@@ -47,9 +45,10 @@ public class LpReport_Retention_dc03208
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
-    localHashMap.put("network_type", String.valueOf(LpReportInfo_dc00321.convertNetworkTypeToFitInDc00321(NetworkState.g().getNetworkType())));
+    LpReportUtils.safePut(localHashMap, "uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
+    LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    int i = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType();
+    localHashMap.put("network_type", String.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).convertNetworkTypeToFitInDc00518(i)));
     LpReportUtils.safePut(localHashMap, "mobile_type", Build.MODEL);
     localHashMap.put("device", "2");
     LpReportUtils.safePut(localHashMap, "function", this.function);
@@ -62,7 +61,7 @@ public class LpReport_Retention_dc03208
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_Retention_dc03208
  * JD-Core Version:    0.7.0.1
  */

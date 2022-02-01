@@ -11,7 +11,7 @@ import com.tencent.ttpic.model.SizeI;
 import com.tencent.ttpic.openapi.initializer.TNNGenderSwitchInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
 import java.util.ArrayList;
@@ -186,7 +186,7 @@ public class RapidNetFilter
     int i = paramFrame.getTextureId();
     int j = paramFrame.width;
     int k = paramFrame.height;
-    paramFrame = VideoMaterialUtil.copyList(paramList);
+    paramFrame = VideoMaterial.copyList(paramList);
     scale(paramFrame, 1.0D / paramDouble);
     FaceOffUtil.getFullCoords(paramFrame, 2.5F);
     calCropCoordsV2(paramFrame, j, k);
@@ -206,7 +206,7 @@ public class RapidNetFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.RapidNetFilter
  * JD-Core Version:    0.7.0.1
  */

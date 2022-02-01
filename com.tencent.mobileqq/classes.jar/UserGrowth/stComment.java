@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stComment
   extends JceStruct
 {
-  public int count;
+  public int count = 0;
   
   public stComment() {}
   

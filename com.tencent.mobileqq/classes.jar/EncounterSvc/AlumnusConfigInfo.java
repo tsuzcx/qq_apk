@@ -9,9 +9,9 @@ public final class AlumnusConfigInfo
 {
   static byte[] cache_alumnus_pic_md5;
   static byte[] cache_alumnus_pic_url = (byte[])new byte[1];
-  public byte alumnus_entrance_open;
-  public byte[] alumnus_pic_md5;
-  public byte[] alumnus_pic_url;
+  public byte alumnus_entrance_open = 0;
+  public byte[] alumnus_pic_md5 = null;
+  public byte[] alumnus_pic_url = null;
   
   static
   {

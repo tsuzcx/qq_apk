@@ -1,13 +1,13 @@
 package dov.com.qq.im.capture.music;
 
-import bkwk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.securitysdk.utils.MD5;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,10 +15,10 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 abstract class QIMMusicConfigManager$LoadMusicStepTask
-  implements INetEngine.INetEngineListener, Runnable
+  implements INetEngineListener, Runnable
 {
   final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  final INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  final IHttpEngineService jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
   final QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
   final String b;
   final String c;
@@ -29,7 +29,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQIMMusicConfigManager.getApp();
     this.b = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
     this.c = paramQIMMusicConfigManager.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = paramQIMMusicConfigManager.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = paramQIMMusicConfigManager.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
   }
   
   String a(long paramLong)
@@ -37,7 +37,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000228").append("_").append("TCOHANTCNlddnsTY").append("_").append("uZliVvhTJzkDPlHX").append("_").append(paramLong);
     localObject = ((StringBuilder)localObject).toString();
-    String str = bkwk.a((String)localObject).toLowerCase();
+    String str = MD5.a((String)localObject).toLowerCase();
     if (QLog.isColorLevel()) {
       QLog.d("QIMMusicConfigManager", 2, "generate the sign string, pre=" + (String)localObject + ", md5=" + str);
     }
@@ -95,7 +95,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QIMMusicConfigManager.LoadMusicStepTask
  * JD-Core Version:    0.7.0.1
  */

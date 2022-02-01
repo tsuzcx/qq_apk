@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.stt;
 
-import bdtt;
-import bdtu;
 import com.tencent.mobileqq.data.MessageForPtt;
 
-public class SttManager$5
+class SttManager$5
   implements Runnable
 {
-  public SttManager$5(bdtt parambdtt, MessageForPtt paramMessageForPtt, boolean paramBoolean) {}
+  SttManager$5(SttManager paramSttManager, MessageForPtt paramMessageForPtt, boolean paramBoolean) {}
   
   public void run()
   {

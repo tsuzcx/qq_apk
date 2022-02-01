@@ -5,12 +5,11 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import vsk;
 
 public class WSSwipeRefreshLayout
   extends SwipeRefreshLayout
 {
-  private vsk a;
+  private WSSwipeRefreshLayout.OnInterceptTouchEventListener a;
   
   public WSSwipeRefreshLayout(Context paramContext)
   {
@@ -37,14 +36,14 @@ public class WSSwipeRefreshLayout
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setOnInterceptTouchEventListener(vsk paramvsk)
+  public void setOnInterceptTouchEventListener(WSSwipeRefreshLayout.OnInterceptTouchEventListener paramOnInterceptTouchEventListener)
   {
-    this.a = paramvsk;
+    this.a = paramOnInterceptTouchEventListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.view.WSSwipeRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

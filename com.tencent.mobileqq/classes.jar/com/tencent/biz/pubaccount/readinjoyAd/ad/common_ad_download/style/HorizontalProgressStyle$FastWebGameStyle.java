@@ -18,7 +18,7 @@ final class HorizontalProgressStyle$FastWebGameStyle
   private String btnTextColor = "#FFFFFF";
   private int btnTextLength = 2;
   private float btnTextSize = 14.0F;
-  private int progressDrawable = 2130842743;
+  private int progressDrawable = 2130842896;
   @NotNull
   private String progressTextColor = "#FF00cafc";
   private float progressTextSize = 14.0F;
@@ -138,7 +138,7 @@ final class HorizontalProgressStyle$FastWebGameStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle.FastWebGameStyle
  * JD-Core Version:    0.7.0.1
  */

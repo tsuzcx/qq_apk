@@ -1,6 +1,5 @@
 package cooperation.groupvideo;
 
-import Override;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -8,15 +7,13 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import anvx;
-import bisl;
-import bltt;
-import bltu;
-import blvy;
-import blwh;
 import com.tencent.mobileqq.activity.fling.FlingHandler;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.plugin.PluginInfo;
 
 public class GVideoProxyActivity
@@ -26,32 +23,32 @@ public class GVideoProxyActivity
   
   public static Dialog a(Activity paramActivity)
   {
-    paramActivity = new bisl(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299080));
-    paramActivity.a(anvx.a(2131704910));
-    paramActivity.setOnDismissListener(new bltt());
+    paramActivity = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299166));
+    paramActivity.a(HardCodeUtil.a(2131705453));
+    paramActivity.setOnDismissListener(new GVideoProxyActivity.1());
     return paramActivity;
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
-    blwh localblwh = new blwh(1);
-    localblwh.jdField_b_of_type_JavaLangString = "group_video_plugin.apk";
-    localblwh.d = PluginInfo.k;
-    localblwh.jdField_a_of_type_JavaLangString = paramString2;
-    localblwh.e = paramString1;
-    localblwh.jdField_a_of_type_JavaLangClass = GVideoProxyActivity.class;
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
+    localPluginParams.b = "group_video_plugin.apk";
+    localPluginParams.e = PluginInfo.k;
+    localPluginParams.jdField_a_of_type_JavaLangString = paramString2;
+    localPluginParams.f = paramString1;
+    localPluginParams.jdField_a_of_type_JavaLangClass = GVideoProxyActivity.class;
     paramString1 = paramIntent;
     if (paramIntent == null) {
       paramString1 = new Intent();
     }
-    localblwh.jdField_a_of_type_AndroidContentIntent = paramString1;
-    localblwh.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    localblwh.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    localblwh.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
-    localblwh.jdField_b_of_type_Int = paramInt;
-    localblwh.c = 20000;
-    localblwh.f = null;
-    blvy.a(paramActivity, localblwh);
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramString1;
+    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    localPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
+    localPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
+    localPluginParams.c = paramInt;
+    localPluginParams.d = 20000;
+    localPluginParams.g = null;
+    IPluginManager.a(paramActivity, localPluginParams);
   }
   
   @Override
@@ -85,7 +82,7 @@ public class GVideoProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     if (getIntent().getExtras() != null) {
-      this.a = new bltu(this);
+      this.a = new GVideoProxyActivity.MyFlingGestureHandler(this);
     }
     super.onCreate(paramBundle);
   }
@@ -98,7 +95,7 @@ public class GVideoProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.groupvideo.GVideoProxyActivity
  * JD-Core Version:    0.7.0.1
  */

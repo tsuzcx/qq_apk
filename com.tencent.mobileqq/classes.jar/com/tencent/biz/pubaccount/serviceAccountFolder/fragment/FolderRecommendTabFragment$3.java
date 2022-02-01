@@ -1,45 +1,34 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
-import android.os.Message;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import uon;
-import uot;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.mobilereport.MobileReportManager;
 
 class FolderRecommendTabFragment$3
-  implements Runnable
+  implements View.OnClickListener
 {
-  FolderRecommendTabFragment$3(FolderRecommendTabFragment paramFolderRecommendTabFragment, int paramInt) {}
+  FolderRecommendTabFragment$3(FolderRecommendTabFragment paramFolderRecommendTabFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = uot.a();
-    List localList = ((uot)localObject).a();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = localList.iterator();
-    while (localIterator.hasNext())
+    if (!TextUtils.isEmpty(FolderRecommendTabFragment.d))
     {
-      uon localuon = (uon)localIterator.next();
-      if (FolderRecommendTabFragment.a(this.this$0, localuon.a))
-      {
-        localArrayList.add(localuon);
-        localIterator.remove();
-      }
+      MobileReportManager.getInstance().reportActionLive("", "25", "qq_live", "find_page", "bottom_button", 102, 1, System.currentTimeMillis(), "");
+      Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+      localIntent.putExtra("url", FolderRecommendTabFragment.d);
+      this.a.getActivity().startActivity(localIntent);
     }
-    ((uot)localObject).a(localList);
-    localObject = Message.obtain();
-    ((Message)localObject).arg1 = this.a;
-    ((Message)localObject).obj = localList;
-    ((Message)localObject).what = 101;
-    FolderRecommendTabFragment.a(this.this$0).sendMessage((Message)localObject);
-    FolderRecommendTabFragment.a(this.this$0, localArrayList);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.3
  * JD-Core Version:    0.7.0.1
  */

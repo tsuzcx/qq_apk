@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bbhm;
-import bpjt;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 
 class EditVideoActivity$6
   implements Runnable
@@ -10,13 +10,13 @@ class EditVideoActivity$6
   
   public void run()
   {
-    bbhm.b();
-    bpjt.a().a(this.this$0.getApplicationContext(), this.this$0, true);
+    CaptureUtil.b();
+    VideoFilterTools.a().a(this.this$0.getApplicationContext(), this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity.6
  * JD-Core Version:    0.7.0.1
  */

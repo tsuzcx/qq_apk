@@ -9,9 +9,9 @@ public final class BubbleInfo
 {
   static ItemBase cache_item = new ItemBase();
   public String btn = "";
-  public int feeType;
-  public ItemBase item;
-  public int month;
+  public int feeType = 0;
+  public ItemBase item = null;
+  public int month = 0;
   public String msg = "";
   public String name = "";
   public String payUrl = "";

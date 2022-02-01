@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/guw" />
-    <item android:drawable="@drawable/gus" />
-</selector>
+    <size android:height="7.0dip" android:width="7.0dip" />
+    <corners android:radius="3.5dip" />
+    <solid android:color="#fff04638" />
+</shape>

@@ -10,7 +10,7 @@ public final class PushCardMsg
   static int cache_ePushType;
   static byte[] cache_vPushInfo;
   public int ePushType = PushType.PUSH_TYPE_NONE.value();
-  public byte[] vPushInfo;
+  public byte[] vPushInfo = null;
   
   public PushCardMsg() {}
   

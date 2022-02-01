@@ -25,9 +25,9 @@
             <View style="@style/ta" />
             <RelativeLayout android:background="@drawable/a4e" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <ImageView android:id="@id/jdn" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true" />
-                <LinearLayout android:orientation="vertical" android:id="@id/nu1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" android:layout_toRightOf="@id/jdn">
+                <LinearLayout android:orientation="vertical" android:id="@id/o8x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" android:layout_toRightOf="@id/jdn">
                     <TextView android:textSize="@dimen/ayp" android:textColor="@color/bp" android:id="@id/at5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:singleLine="true" android:includeFontPadding="false" />
-                    <TextView android:textSize="@dimen/ayk" android:textColor="@color/common_text_gray" android:id="@id/mm6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginTop="4.0dip" android:singleLine="true" android:includeFontPadding="false" />
+                    <TextView android:textSize="@dimen/ayk" android:textColor="@color/common_text_gray" android:id="@id/mpb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginTop="4.0dip" android:singleLine="true" android:includeFontPadding="false" />
                 </LinearLayout>
                 <ImageView android:id="@id/dui" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:src="@drawable/dvh" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
             </RelativeLayout>

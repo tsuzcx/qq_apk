@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class TimeCtrl
   extends JceStruct
 {
-  public int validEndTime;
+  public int validEndTime = 0;
   
   public JceStruct newInit()
   {

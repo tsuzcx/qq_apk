@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.listentogether.ipc;
 
-import awgm;
-import aztn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.profile.musicbox.ProfileMusicBoxController;
 
-public class ListenTogetherIPCModuleMainServer$3
+class ListenTogetherIPCModuleMainServer$3
   implements Runnable
 {
-  public ListenTogetherIPCModuleMainServer$3(awgm paramawgm) {}
+  ListenTogetherIPCModuleMainServer$3(ListenTogetherIPCModuleMainServer paramListenTogetherIPCModuleMainServer) {}
   
   public void run()
   {
-    aztn localaztn = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (localaztn != null) {
-      localaztn.o();
+    ProfileMusicBoxController localProfileMusicBoxController = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (localProfileMusicBoxController != null) {
+      localProfileMusicBoxController.o();
     }
   }
 }

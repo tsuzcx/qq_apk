@@ -29,15 +29,15 @@ class BaseMessageManager$RefreshRunnable
     if (localBaseMessageManager == null) {
       return;
     }
-    localBaseMessageManager.a.qLogColor("refreshMessageListHead uin = " + this.jdField_a_of_type_JavaLangString + ", type = " + this.jdField_a_of_type_Int + ", count = " + this.jdField_b_of_type_Int + ", context = " + this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext, ", timestamp = " + System.currentTimeMillis());
+    localBaseMessageManager.a.a("refreshMessageListHead uin = " + this.jdField_a_of_type_JavaLangString + ", type = " + this.jdField_a_of_type_Int + ", count = " + this.jdField_b_of_type_Int + ", context = " + this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext, ", timestamp = " + System.currentTimeMillis());
     localBaseMessageManager.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext);
     localBaseMessageManager.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext);
-    localBaseMessageManager.a.mUIHandler.post(new BaseMessageManager.RefreshRunnable.RemoveRefreshKeyRunnable(this, localBaseMessageManager));
+    localBaseMessageManager.a.a.post(new BaseMessageManager.RefreshRunnable.RemoveRefreshKeyRunnable(this, localBaseMessageManager));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManager.RefreshRunnable
  * JD-Core Version:    0.7.0.1
  */

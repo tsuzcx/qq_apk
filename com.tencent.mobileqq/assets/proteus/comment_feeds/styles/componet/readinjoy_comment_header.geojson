@@ -59,7 +59,19 @@
                     },
                     "attributes": {
                         "defaultImage:": "$default_comment_avatar",
-                        "loadImageWithPath:": "$avator_url"
+                        "loadImageWithPath:": "$avator_url",
+                        "setDTElementID:withParams:": [
+                            "comment_uin_button",
+                            {
+                                "rowkey": "$rowkey",
+                                "actionid": "click_comment_uin",
+                                "click_type": "single",
+                                "puin": "$puin",
+                                "comment_id": "$comment_id",
+                                "sub_comment_id": "$sub_comment_id",
+                                "comment_type": "$comment_type"
+                            }
+                        ]
                     }
                 },
                 {
@@ -77,6 +89,36 @@
                         "setImageWithURLString:lineup:": [
                             "$rij_comment_avatar_pendant",
                             "-1"
+                        ]
+                    }
+                },
+                {
+                    "view_type":"UIButton",
+                    "default_visible": "NO",
+                    "view_id":"id_comment_follow_button",
+                    "align_parent_bottom":"YES",
+                    "align_parent_center_horizontal":"YES",
+                    "setAlphaString:": "1.0",
+                    "height":{
+                        "type":"absolutely",
+                        "value":"18"
+                    },
+                    "width":{
+                        "type":"absolutely",
+                        "value":"39"
+                    },
+                    "event_type":"cmd_follow_button_click",
+                    "attributes":{
+                        "setSelectedString:":"$follow_btn_show",
+                        "setBackgroundImages:forStates:":[
+                            [
+                                "unfollow_bg",
+                                "follow_bg_white"
+                            ],
+                            [
+                                "0",
+                                "4"
+                            ]
                         ]
                     }
                 },
@@ -127,7 +169,18 @@
                 "type": "wrap_content"
             },
             "attributes": {
-                "setCommentModel:": "$commentModel"
+                "setCommentModel:": "$commentModel",
+                "setDTElementID:withParams:": [
+                    "like_comment_button",
+                    {
+                        "rowkey": "$rowkey",
+                        "actionid": "$comment_like_actionid",
+                        "click_type": "single",
+                        "comment_id": "$comment_id",
+                        "sub_comment_id": "$sub_comment_id",
+                        "comment_type": "$comment_type"
+                    }
+                ]
             }
         },
         {

@@ -1,10 +1,10 @@
 package cooperation.qzone;
 
 import android.content.DialogInterface;
-import bhdx;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
 final class QZoneHelper$6
-  extends bhdx
+  extends DialogUtil.DialogOnClickAdapter
 {
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
@@ -13,7 +13,7 @@ final class QZoneHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.6
  * JD-Core Version:    0.7.0.1
  */

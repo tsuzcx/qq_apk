@@ -14,10 +14,10 @@ public final class RspResUpdate
   static int cache_ResID;
   static ArrayList<ResUpdate> cache_ResInfo;
   static int cache_Ret;
-  public int ResID;
-  public ArrayList<ResUpdate> ResInfo;
-  public int Ret;
-  public long SeqID;
+  public int ResID = 0;
+  public ArrayList<ResUpdate> ResInfo = null;
+  public int Ret = 0;
+  public long SeqID = 0L;
   
   static
   {

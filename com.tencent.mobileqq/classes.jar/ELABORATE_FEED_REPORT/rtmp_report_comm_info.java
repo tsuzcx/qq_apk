@@ -9,13 +9,13 @@ public final class rtmp_report_comm_info
 {
   static int cache_play_type = 0;
   public String appid = "";
-  public long flow;
+  public long flow = 0L;
   public String network = "";
   public String play_id = "";
-  public int play_type;
+  public int play_type = 0;
   public String qua = "";
   public String room_id = "";
-  public long uin;
+  public long uin = 0L;
   
   public rtmp_report_comm_info() {}
   

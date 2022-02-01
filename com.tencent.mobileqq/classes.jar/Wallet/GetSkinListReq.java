@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class GetSkinListReq
   extends JceStruct
 {
-  public int app_type;
+  public int app_type = 0;
   public String busi_type = "";
   public String hb_from_type = "";
-  public long op_uin;
+  public long op_uin = 0L;
   public String phone_model = "";
   public String phone_os = "";
   public String qq_version = "";
-  public int selected_id;
+  public int selected_id = 0;
   
   public GetSkinListReq() {}
   

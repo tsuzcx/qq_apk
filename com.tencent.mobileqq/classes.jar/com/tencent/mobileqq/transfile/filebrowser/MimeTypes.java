@@ -7,9 +7,21 @@ public class MimeTypes
 {
   private Map<String, String> mMimeTypes = new HashMap();
   
+  public static String getExtension(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    int i = paramString.lastIndexOf(".");
+    if (i >= 0) {
+      return paramString.substring(i);
+    }
+    return "";
+  }
+  
   public String getMimeType(String paramString)
   {
-    paramString = FileUtils.getExtension(paramString);
+    paramString = getExtension(paramString);
     return (String)this.mMimeTypes.get(paramString);
   }
   

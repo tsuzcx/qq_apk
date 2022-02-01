@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.apollo.utils.task;
 
-import anmo;
 import com.tencent.qphone.base.util.QLog;
 
-public class AsyncTask$1
+class AsyncTask$1
   implements Runnable
 {
-  public AsyncTask$1(anmo paramanmo) {}
+  AsyncTask$1(AsyncTask paramAsyncTask) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class AsyncTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.AsyncTask.1
  * JD-Core Version:    0.7.0.1
  */

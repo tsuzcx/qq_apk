@@ -1,11 +1,9 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import aaaf;
-
-public class VideoPlayerView$15$2
+class VideoPlayerView$15$2
   implements Runnable
 {
-  public VideoPlayerView$15$2(aaaf paramaaaf) {}
+  VideoPlayerView$15$2(VideoPlayerView.15 param15) {}
   
   public void run()
   {
@@ -17,7 +15,7 @@ public class VideoPlayerView$15$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.15.2
  * JD-Core Version:    0.7.0.1
  */

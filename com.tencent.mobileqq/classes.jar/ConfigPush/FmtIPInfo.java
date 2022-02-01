@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class FmtIPInfo
   extends JceStruct
 {
-  public long iGateIpOper;
+  public long iGateIpOper = 0L;
   public String sGateIp = "";
   
   public FmtIPInfo() {}

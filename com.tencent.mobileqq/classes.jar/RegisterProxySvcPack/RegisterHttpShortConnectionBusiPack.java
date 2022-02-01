@@ -9,8 +9,8 @@ public final class RegisterHttpShortConnectionBusiPack
 {
   static byte[] cache_vBusi;
   public String strSvcCmd = "";
-  public long uSeq;
-  public byte[] vBusi;
+  public long uSeq = 0L;
+  public byte[] vBusi = null;
   
   public RegisterHttpShortConnectionBusiPack() {}
   

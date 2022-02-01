@@ -1,27 +1,28 @@
 package com.tencent.mobileqq.apollo;
 
-import amnm;
+import android.text.Editable;
 
-public class ApolloRender$16$1
+class ApolloRender$16$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$16$1(amnm paramamnm, String paramString) {}
+  ApolloRender$16$1(ApolloRender.16 param16, Editable paramEditable) {}
   
   public String a()
   {
-    return "setEditorBtnClick";
+    return "afterTextChanged";
   }
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().b(this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr, this.a);
+    ApolloRender localApolloRender = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender();
+    if ((localApolloRender != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr != 0L)) {
+      localApolloRender.getSavaWrapper().a(this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr, this.a.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.16.1
  * JD-Core Version:    0.7.0.1
  */

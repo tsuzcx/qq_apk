@@ -89,8 +89,8 @@ class BlurStickerEditView
       else
       {
         Log.e("BlurStickerEditView", "drawBlurBgTexture: 模糊纹理为空！");
-        paramCanvas = WSOverLayBlurManager.getInstance().getSourceCIImage();
-        localObject = WSOverLayBlurManager.getInstance().getRenderInfo();
+        paramCanvas = WSOverLayBlurManager.getSourceCIImage();
+        localObject = WSOverLayBlurManager.getRenderInfo();
         if (this.playerThreadHandler != null)
         {
           this.playerThreadHandler.post(new BlurStickerEditView.2(this, paramCanvas, (RenderInfo)localObject));
@@ -305,7 +305,7 @@ class BlurStickerEditView
   {
     paramCIImage = extractTextureInfoFromCIImage(paramCIImage, paramRenderInfo);
     int i = paramCIImage.preferRotation;
-    paramCIImage = new CIImage(WSOverLayBlurManager.getInstance().getBlurredTextureInfo(paramCIImage, getWidth(), getHeight(), i, 10, 0.25F, this.hBlurFilter, this.vBlurFilter, this.scaleSmallTextureFilter, this.scaleBigTextureFilter).clone());
+    paramCIImage = new CIImage(WSOverLayBlurManager.getBlurredTextureInfo(paramCIImage, getWidth(), getHeight(), i, 10, 0.25F, this.hBlurFilter, this.vBlurFilter, this.scaleSmallTextureFilter, this.scaleBigTextureFilter).clone());
     paramCIImage.applyPreferRotation(0);
     paramCIImage.applyFillInFrame(new CGRect(new PointF(0.0F, 0.0F), new CGSize(getWidth(), getHeight())), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
     paramCIImage.applyFlip(false, true);
@@ -391,7 +391,7 @@ class BlurStickerEditView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.BlurStickerEditView
  * JD-Core Version:    0.7.0.1
  */

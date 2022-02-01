@@ -21,7 +21,7 @@ public class DataReportListView
     this.jdField_a_of_type_Int = (this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getHeight() / 3);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);

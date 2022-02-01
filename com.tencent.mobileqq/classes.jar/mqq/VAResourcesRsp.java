@@ -9,7 +9,7 @@ public final class VAResourcesRsp
 {
   static LhLogoInfo cache_lhLogoInfo = new LhLogoInfo();
   public int iSyncFreq = -1;
-  public LhLogoInfo lhLogoInfo;
+  public LhLogoInfo lhLogoInfo = null;
   
   public VAResourcesRsp() {}
   

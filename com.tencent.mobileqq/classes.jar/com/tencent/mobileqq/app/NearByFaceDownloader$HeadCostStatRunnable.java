@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app;
 
 import AvatarInfo.QQHeadInfo;
-import aokc;
-import com.tencent.mobileqq.app.face.FaceDownloader;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.face.FaceHandler;
 import com.tencent.mobileqq.app.face.FaceInfo;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.avatar.utils.AvatarImplUtil;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -36,8 +36,8 @@ class NearByFaceDownloader$HeadCostStatRunnable
   public void run()
   {
     String str1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType + "_" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b + "_" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString;
-    this.this$0.jdField_a_of_type_Aokc.a(str1, false);
-    if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFaceFaceHandler.a(str1, false);
+    if (NetworkUtil.d(BaseApplication.getContext())) {
       if ((this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] <= 0L) || (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l] <= 0L)) {
         break label770;
       }
@@ -64,16 +64,16 @@ class NearByFaceDownloader$HeadCostStatRunnable
           ((HashMap)localObject1).put("param_FailCode", Integer.toString(this.jdField_a_of_type_Int));
           ((HashMap)localObject1).put("fail_reason", Integer.toString(this.d));
           ((HashMap)localObject1).put("ssoAndHttp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.e));
-          Object localObject2 = FaceDownloader.getHeadActionTagWithNetWork(32);
+          Object localObject2 = AvatarImplUtil.a(32);
           Object localObject3 = StatisticCollector.getInstance(BaseApplication.getContext());
-          String str2 = this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
+          String str2 = this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
           boolean bool;
           if (this.jdField_a_of_type_Int == 0)
           {
             bool = true;
             ((StatisticCollector)localObject3).collectPerformance(str2, (String)localObject2, bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
             localObject2 = StatisticCollector.getInstance(BaseApplication.getContext());
-            localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
+            localObject3 = this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
             if (this.jdField_a_of_type_Int != 0) {
               break label747;
             }
@@ -115,7 +115,7 @@ class NearByFaceDownloader$HeadCostStatRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearByFaceDownloader.HeadCostStatRunnable
  * JD-Core Version:    0.7.0.1
  */

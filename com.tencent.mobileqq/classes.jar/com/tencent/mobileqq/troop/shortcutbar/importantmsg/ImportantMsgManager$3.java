@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
-import bgbv;
-
-public class ImportantMsgManager$3
+class ImportantMsgManager$3
   implements Runnable
 {
   public void run()
   {
-    bgbv.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilArrayList);
+    ImportantMsgManager.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

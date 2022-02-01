@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aido;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class PublicAccountChatPie$8
+class PublicAccountChatPie$8
   implements Runnable
 {
-  public PublicAccountChatPie$8(aido paramaido) {}
+  PublicAccountChatPie$8(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    this.this$0.listView.setPadding(this.this$0.listView.getPaddingLeft(), this.this$0.listView.getPaddingTop(), this.this$0.listView.getPaddingRight(), UIUtils.dip2px(this.this$0.mContext, 80.0F));
+    int i = UIUtils.a(this.this$0.jdField_a_of_type_AndroidContentContext, 80.0F);
+    if ("top".equals(PublicAccountChatPie.a(this.this$0))) {
+      i = 0;
+    }
+    this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setPadding(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingLeft(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingTop(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingRight(), i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.8
  * JD-Core Version:    0.7.0.1
  */

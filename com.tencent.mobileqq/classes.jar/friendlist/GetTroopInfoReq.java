@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class GetTroopInfoReq
   extends JceStruct
 {
-  public long GroupCode;
-  public long GroupUin;
-  public byte isneedstatus;
-  public long uin;
+  public long GroupCode = 0L;
+  public long GroupUin = 0L;
+  public byte isneedstatus = 0;
+  public long uin = 0L;
   
   public GetTroopInfoReq() {}
   
@@ -40,7 +40,7 @@ public final class GetTroopInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.GetTroopInfoReq
  * JD-Core Version:    0.7.0.1
  */

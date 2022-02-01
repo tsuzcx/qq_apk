@@ -8,7 +8,7 @@ public class AEFilterExtendBean
 {
   private Map<String, String> adjustParams;
   private float defaultEffectAlpha = 1.0F;
-  private float glowStrength;
+  private float glowStrength = 0.0F;
   private String lutID;
   private String motionID;
   
@@ -39,7 +39,7 @@ public class AEFilterExtendBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.filter.AEFilterExtendBean
  * JD-Core Version:    0.7.0.1
  */

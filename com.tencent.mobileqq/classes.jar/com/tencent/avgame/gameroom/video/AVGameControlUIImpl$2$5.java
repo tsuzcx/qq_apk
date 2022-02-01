@@ -1,20 +1,24 @@
 package com.tencent.avgame.gameroom.video;
 
-import nmb;
+import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.data.EngineData;
 
-public class AVGameControlUIImpl$2$5
+class AVGameControlUIImpl$2$5
   implements Runnable
 {
-  public AVGameControlUIImpl$2$5(nmb paramnmb) {}
+  AVGameControlUIImpl$2$5(AVGameControlUIImpl.2 param2) {}
   
   public void run()
   {
+    if ((GameEngine.a().f()) && (!GameEngine.a().g()) && (GameEngine.a().a().a() == 0)) {
+      return;
+    }
     AVGameControlUIImpl.c(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.5
  * JD-Core Version:    0.7.0.1
  */

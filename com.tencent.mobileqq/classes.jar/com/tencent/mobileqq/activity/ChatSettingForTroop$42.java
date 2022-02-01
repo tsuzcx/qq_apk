@@ -1,21 +1,26 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class ChatSettingForTroop$42
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  ChatSettingForTroop$42(ChatSettingForTroop paramChatSettingForTroop, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
+  ChatSettingForTroop$42(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.chatopttroop", 2, "setTroopUinTextViewClickListener onLongClick");
+    }
+    ChatSettingForTroop.p(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.42
  * JD-Core Version:    0.7.0.1
  */

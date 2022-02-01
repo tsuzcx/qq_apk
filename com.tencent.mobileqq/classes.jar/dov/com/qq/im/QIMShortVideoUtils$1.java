@@ -2,10 +2,10 @@ package dov.com.qq.im;
 
 import android.content.Context;
 
-public final class QIMShortVideoUtils$1
+final class QIMShortVideoUtils$1
   implements Runnable
 {
-  public QIMShortVideoUtils$1(Context paramContext, String paramString, Runnable paramRunnable) {}
+  QIMShortVideoUtils$1(Context paramContext, String paramString, Runnable paramRunnable) {}
   
   /* Error */
   public void run()
@@ -15,7 +15,7 @@ public final class QIMShortVideoUtils$1
     //   1: istore_2
     //   2: aload_0
     //   3: getfield 14	dov/com/qq/im/QIMShortVideoUtils$1:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   6: invokestatic 32	bmux:a	(Landroid/content/Context;)Z
+    //   6: invokestatic 32	dov/com/qq/im/QIMShortVideoUtils:a	(Landroid/content/Context;)Z
     //   9: ifeq +4 -> 13
     //   12: return
     //   13: invokestatic 38	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
@@ -78,7 +78,7 @@ public final class QIMShortVideoUtils$1
     //   129: istore_2
     //   130: iload_2
     //   131: ifeq -119 -> 12
-    //   134: getstatic 90	blvp:a	Lavli;
+    //   134: getstatic 90	cooperation/peak/PeakUtils:a	Lcom/tencent/mobileqq/hitrate/PreloadProcHitSession;
     //   137: ifnonnull +42 -> 179
     //   140: aload_0
     //   141: getfield 16	dov/com/qq/im/QIMShortVideoUtils$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -89,14 +89,14 @@ public final class QIMShortVideoUtils$1
     //   152: ifnonnull +7 -> 159
     //   155: ldc 92
     //   157: astore 7
-    //   159: new 94	avli
+    //   159: new 94	com/tencent/mobileqq/hitrate/PreloadProcHitSession
     //   162: dup
     //   163: aload 7
     //   165: ldc 96
-    //   167: invokespecial 99	avli:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   170: putstatic 90	blvp:a	Lavli;
-    //   173: getstatic 90	blvp:a	Lavli;
-    //   176: invokevirtual 101	avli:a	()V
+    //   167: invokespecial 99	com/tencent/mobileqq/hitrate/PreloadProcHitSession:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   170: putstatic 90	cooperation/peak/PeakUtils:a	Lcom/tencent/mobileqq/hitrate/PreloadProcHitSession;
+    //   173: getstatic 90	cooperation/peak/PeakUtils:a	Lcom/tencent/mobileqq/hitrate/PreloadProcHitSession;
+    //   176: invokevirtual 101	com/tencent/mobileqq/hitrate/PreloadProcHitSession:a	()V
     //   179: new 103	android/content/Intent
     //   182: dup
     //   183: aload_0
@@ -194,7 +194,7 @@ public final class QIMShortVideoUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.QIMShortVideoUtils.1
  * JD-Core Version:    0.7.0.1
  */

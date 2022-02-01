@@ -1,10 +1,6 @@
 package com.tencent.common.app;
 
 import android.os.Bundle;
-import blqp;
-import bmcs;
-import bmds;
-import bmep;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
 import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
@@ -16,15 +12,21 @@ import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
 import com.tencent.mobileqq.startup.step.DtSdkInitStep;
 import com.tencent.mobileqq.startup.step.InitSkin;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.VipComicHelper;
 import cooperation.ilive.IliveAppInterface;
 import cooperation.liveroom.LiveRoomHelper;
-import cooperation.qwallet.plugin.QWalletHelper;
+import cooperation.qqindividuality.QQIndividualityRuntimeHelper;
+import cooperation.qqpim.QQPimPluginRuntimeHelper;
+import cooperation.qqreader.QReaderHelper;
+import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
 public class ToolAppRuntime
   extends ToolRuntimeBase
 {
+  private AppInterface a = null;
+  
   public String getModuleId()
   {
     return "tool";
@@ -57,17 +59,17 @@ public class ToolAppRuntime
       return paramString;
       if ("comic_plugin.apk".equals(paramString))
       {
-        paramString = blqp.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = VipComicHelper.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqreaderplugin.apk".equals(paramString))
       {
-        paramString = bmep.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = QReaderHelper.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqpim_plugin.apk".equals(paramString))
       {
-        paramString = bmds.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = QQPimPluginRuntimeHelper.a(localBaseApplicationImpl, MobileQQ.processName);
       }
       else if ("module_olympic".equals(paramString))
       {
@@ -76,11 +78,11 @@ public class ToolAppRuntime
       }
       else if ("qwallet_plugin.apk".equals(paramString))
       {
-        paramString = QWalletHelper.createQWalletAppInterface(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = QWalletHelperImpl.createQWalletAppInterface(localBaseApplicationImpl, MobileQQ.processName);
       }
       else if ("qqindividuality_plugin.apk".equals(paramString))
       {
-        paramString = bmcs.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = QQIndividualityRuntimeHelper.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("modular_web".equals(paramString))

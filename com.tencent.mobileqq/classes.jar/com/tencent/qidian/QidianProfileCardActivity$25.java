@@ -1,34 +1,47 @@
 package com.tencent.qidian;
 
 import android.text.TextUtils;
-import azrb;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class QidianProfileCardActivity$25
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  QidianProfileCardActivity$25(QidianProfileCardActivity paramQidianProfileCardActivity, byte[] paramArrayOfByte) {}
+  QidianProfileCardActivity$25(QidianProfileCardActivity paramQidianProfileCardActivity, ActionSheet paramActionSheet, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject2 = this.this$0.app.getCurrentNickname();
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = this.this$0.app.getCurrentNickname();
+    if (paramView == null) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
-    localObject2 = QZoneHelper.UserInfo.getInstance();
-    ((QZoneHelper.UserInfo)localObject2).qzone_uin = this.this$0.app.getCurrentAccountUin();
-    ((QZoneHelper.UserInfo)localObject2).nickname = ((String)localObject1);
-    QZoneHelper.forwardToUserHome(this.this$0, (QZoneHelper.UserInfo)localObject2, this.this$0.jdField_a_of_type_Azrb.a.a, this.this$0.jdField_a_of_type_Azrb.a.g, -1, 5, this.this$0.jdField_a_of_type_Avlg, this.a, false);
-    QidianProfileCardActivity.b(this.this$0, false);
+    do
+    {
+      return;
+      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
+      if (TextUtils.isEmpty(paramView))
+      {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        return;
+      }
+      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131693302)))
+      {
+        QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131693308)))
+      {
+        QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+    } while (!paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131698260)));
+    QidianProfileCardActivity.c(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.25
  * JD-Core Version:    0.7.0.1
  */

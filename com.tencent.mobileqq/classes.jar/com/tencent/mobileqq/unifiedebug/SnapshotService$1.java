@@ -1,30 +1,27 @@
 package com.tencent.mobileqq.unifiedebug;
 
-import bgur;
-import bgus;
-import bgut;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.qphone.base.util.QLog;
 
 class SnapshotService$1
   implements Runnable
 {
-  SnapshotService$1(SnapshotService paramSnapshotService, bgut parambgut, bgur parambgur) {}
+  SnapshotService$1(SnapshotService paramSnapshotService, SnapshotService.Snapshot paramSnapshot, SnapshotService.DebugCommand paramDebugCommand) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i(SnapshotService.a(), 2, "start once debug, webview id =" + bgut.a(this.jdField_a_of_type_Bgut) + ", seq=" + this.jdField_a_of_type_Bgur.a);
+      QLog.i(SnapshotService.a(), 2, "start once debug, webview id =" + SnapshotService.Snapshot.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot) + ", seq=" + this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$DebugCommand.a);
     }
-    this.jdField_a_of_type_Bgut.a.mWebview.invalidate();
-    if (this.jdField_a_of_type_Bgut.a.mWebview.getX5WebViewExtension() != null) {
-      this.jdField_a_of_type_Bgut.a.mWebview.loadUrl("javascript:window.scrollTo(0, 0);");
+    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot.a.mWebview.invalidate();
+    if (this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot.a.mWebview.getX5WebViewExtension() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot.a.mWebview.loadUrl("javascript:window.scrollTo(0, 0);");
     }
     for (;;)
     {
-      SnapshotService.a(this.this$0, this.jdField_a_of_type_Bgur, this.jdField_a_of_type_Bgut);
+      SnapshotService.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$DebugCommand, this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot);
       return;
-      this.jdField_a_of_type_Bgut.a.mWebview.pageUp(true);
+      this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot.a.mWebview.pageUp(true);
     }
   }
 }

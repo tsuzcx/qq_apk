@@ -10,9 +10,9 @@ class QQCustomDialogWtihInputAndChoose$4
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.this$0.mIsWindowAdded))
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
     {
-      this.this$0.hideChooseList();
+      this.a.a();
       return true;
     }
     return false;

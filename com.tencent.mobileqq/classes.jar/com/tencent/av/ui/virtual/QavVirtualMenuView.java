@@ -8,36 +8,35 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.makeup.MakeupMng;
 import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.av.business.manager.pendant.VirtualBgMng;
 import com.tencent.av.opengl.GraphicRenderMgr;
 import com.tencent.av.ui.BaseToolbar;
 import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.QAVPtvTemplateAdapter;
+import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
+import com.tencent.av.ui.QavListItemBase.ItemInfo;
+import com.tencent.av.ui.QavListItemHelper;
 import com.tencent.av.ui.QavMenuBaseView;
 import com.tencent.av.ui.QavPanel;
+import com.tencent.av.utils.AVUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import lhs;
-import lif;
-import mhn;
-import mht;
-import min;
-import mio;
-import mrm;
-import mrr;
 
 public class QavVirtualMenuView
   extends QavMenuBaseView
-  implements View.OnClickListener, mht
+  implements View.OnClickListener, QAVPtvTemplateAdapter.IEffectCallback
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
+  private VirtualBgMng jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng = null;
+  private QAVPtvTemplateAdapter jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter;
+  private QavListItemHelper jdField_a_of_type_ComTencentAvUiQavListItemHelper = null;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  private lif jdField_a_of_type_Lif;
-  private mhn jdField_a_of_type_Mhn;
-  private mio jdField_a_of_type_Mio;
   
   public QavVirtualMenuView(Context paramContext)
   {
@@ -59,11 +58,11 @@ public class QavVirtualMenuView
   {
     this.jdField_a_of_type_JavaLangString = ("QavVirtualMenuView_" + AudioHelper.b());
     setGravity(80);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559740, this);
-    paramContext.setOnTouchListener(new mrm(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramContext.findViewById(2131373440));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559816, this);
+    paramContext.setOnTouchListener(new QavVirtualMenuView.1(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramContext.findViewById(2131373754));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramContext.findViewById(2131368362));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramContext.findViewById(2131368580));
   }
   
   public void a(long paramLong)
@@ -71,36 +70,36 @@ public class QavVirtualMenuView
     EffectSettingUi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramLong);
   }
   
-  public void a(long paramLong, min parammin)
+  public void a(long paramLong, QavListItemBase.ItemInfo paramItemInfo)
   {
     PendantItem localPendantItem = null;
     EffectSettingUi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramLong);
-    if (parammin == null) {}
+    if (paramItemInfo == null) {}
     do
     {
       do
       {
         return;
-      } while (TextUtils.equals("-1", parammin.jdField_a_of_type_JavaLangString));
-      if (!TextUtils.equals("0", parammin.jdField_a_of_type_JavaLangString)) {
+      } while (TextUtils.equals("-1", paramItemInfo.jdField_a_of_type_JavaLangString));
+      if (!TextUtils.equals("0", paramItemInfo.jdField_a_of_type_JavaLangString)) {
         break;
       }
-      if (this.jdField_a_of_type_Lif != null) {
-        this.jdField_a_of_type_Lif.a(paramLong, null);
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng != null) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng.a(paramLong, null);
       }
     } while (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(13));
-    ((lhs)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(13)).a(paramLong, "onEffectClick_vb");
+    ((MakeupMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(13)).a(paramLong, "onEffectClick_vb");
     return;
-    if (this.jdField_a_of_type_Lif != null) {
-      localPendantItem = (PendantItem)this.jdField_a_of_type_Lif.a(parammin.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng != null) {
+      localPendantItem = (PendantItem)this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng.a(paramItemInfo.jdField_a_of_type_JavaLangString);
     }
     if ((localPendantItem == null) || (TextUtils.isEmpty(localPendantItem.getId()))) {}
     for (;;)
     {
-      mrr.a("0X800AF86", mrr.a(), 0, String.valueOf(parammin.jdField_a_of_type_JavaLangString), "", "", "");
+      AVUtil.a("0X800AF86", AVUtil.a(), 0, String.valueOf(paramItemInfo.jdField_a_of_type_JavaLangString), "", "", "");
       return;
-      if (this.jdField_a_of_type_Lif != null) {
-        this.jdField_a_of_type_Lif.a(paramLong, localPendantItem);
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng != null) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng.a(paramLong, localPendantItem);
       }
     }
   }
@@ -111,17 +110,17 @@ public class QavVirtualMenuView
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
       paramQavPanel = getContext();
-      this.jdField_a_of_type_Lif = ((lif)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(14));
-      this.jdField_a_of_type_Mio = new mio(5, this.jdField_a_of_type_Lif);
-      ArrayList localArrayList = this.jdField_a_of_type_Mio.a(getContext());
-      this.jdField_a_of_type_Mhn = new mhn(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramQavPanel, localArrayList, this.jdField_a_of_type_ComTencentWidgetHorizontalListView);
-      this.jdField_a_of_type_Mio.a(this.jdField_a_of_type_Mhn);
-      this.jdField_a_of_type_Mhn.b(true);
-      this.jdField_a_of_type_Mhn.a(this);
-      this.jdField_a_of_type_Mhn.a(this.jdField_a_of_type_Mio);
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Mhn);
-      if (this.jdField_a_of_type_Lif != null) {
-        this.jdField_a_of_type_Lif.a(0L, this.jdField_a_of_type_Mio);
+      this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng = ((VirtualBgMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(14));
+      this.jdField_a_of_type_ComTencentAvUiQavListItemHelper = new QavListItemHelper(5, this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng);
+      ArrayList localArrayList = this.jdField_a_of_type_ComTencentAvUiQavListItemHelper.a(getContext());
+      this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter = new QAVPtvTemplateAdapter(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramQavPanel, localArrayList, this.jdField_a_of_type_ComTencentWidgetHorizontalListView);
+      this.jdField_a_of_type_ComTencentAvUiQavListItemHelper.a(this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter);
+      this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.b(true);
+      this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.a(this);
+      this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.a(this.jdField_a_of_type_ComTencentAvUiQavListItemHelper);
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter);
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng != null) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng.a(0L, this.jdField_a_of_type_ComTencentAvUiQavListItemHelper);
       }
     }
     if (GraphicRenderMgr.soloadedPTV) {
@@ -131,8 +130,8 @@ public class QavVirtualMenuView
   
   public void b(long paramLong)
   {
-    if (this.jdField_a_of_type_Lif != null) {
-      this.jdField_a_of_type_Lif.b(paramLong, this.jdField_a_of_type_Mio);
+    if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng != null) {
+      this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng.b(paramLong, this.jdField_a_of_type_ComTencentAvUiQavListItemHelper);
     }
     super.b(paramLong);
   }
@@ -152,26 +151,26 @@ public class QavVirtualMenuView
     int i;
     int j;
     int k;
-    if (this.jdField_a_of_type_Mhn != null)
+    if (this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter != null)
     {
       Object localObject2 = "0";
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Lif != null)
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng != null)
       {
-        localObject3 = (PendantItem)this.jdField_a_of_type_Lif.a();
+        localObject3 = (PendantItem)this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng.a();
         localObject1 = localObject2;
         if (localObject3 != null) {
           localObject1 = ((PendantItem)localObject3).getId();
         }
       }
-      localObject2 = this.jdField_a_of_type_Mio.a(getContext());
-      this.jdField_a_of_type_Mhn.a((ArrayList)localObject2);
+      localObject2 = this.jdField_a_of_type_ComTencentAvUiQavListItemHelper.a(getContext());
+      this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.a((ArrayList)localObject2);
       i = 0;
       j = -1;
       if ((localObject2 == null) || (i >= ((ArrayList)localObject2).size())) {
         break label251;
       }
-      Object localObject3 = (min)((ArrayList)localObject2).get(i);
+      Object localObject3 = (QavListItemBase.ItemInfo)((ArrayList)localObject2).get(i);
       if (localObject3 == null) {
         k = j;
       }
@@ -180,26 +179,26 @@ public class QavVirtualMenuView
         i += 1;
         j = k;
         break;
-        if (TextUtils.equals("0", ((min)localObject3).jdField_a_of_type_JavaLangString)) {
+        if (TextUtils.equals("0", ((QavListItemBase.ItemInfo)localObject3).jdField_a_of_type_JavaLangString)) {
           j = i;
         }
         k = j;
-      } while (!TextUtils.equals((CharSequence)localObject1, ((min)localObject3).jdField_a_of_type_JavaLangString));
+      } while (!TextUtils.equals((CharSequence)localObject1, ((QavListItemBase.ItemInfo)localObject3).jdField_a_of_type_JavaLangString));
     }
     for (;;)
     {
       k = i;
       if (i == -1)
       {
-        if (this.jdField_a_of_type_Lif != null) {
-          this.jdField_a_of_type_Lif.a(0L, null);
+        if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng != null) {
+          this.jdField_a_of_type_ComTencentAvBusinessManagerPendantVirtualBgMng.a(0L, null);
         }
         k = j;
       }
       if (QLog.isDevelopLevel()) {
         QLog.i(this.jdField_a_of_type_JavaLangString, 4, "refreshUI, curSelItemId[" + (String)localObject1 + "], curSelItemIndex[" + k + "], curDefaultIndex[" + j + "]");
       }
-      BaseToolbar.setSelectedListViewItemAndShow(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, this.jdField_a_of_type_Mhn, k);
+      BaseToolbar.setSelectedListViewItemAndShow(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter, k);
       return;
       label251:
       i = -1;
@@ -217,7 +216,7 @@ public class QavVirtualMenuView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.virtual.QavVirtualMenuView
  * JD-Core Version:    0.7.0.1
  */

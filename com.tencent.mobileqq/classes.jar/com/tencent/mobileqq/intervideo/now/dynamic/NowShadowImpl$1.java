@@ -2,13 +2,12 @@ package com.tencent.mobileqq.intervideo.now.dynamic;
 
 import android.content.Context;
 import android.os.Bundle;
-import avvx;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 
-public class NowShadowImpl$1
+class NowShadowImpl$1
   implements Runnable
 {
-  public NowShadowImpl$1(avvx paramavvx, Context paramContext, String paramString1, String paramString2, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback) {}
+  NowShadowImpl$1(NowShadowImpl paramNowShadowImpl, Context paramContext, String paramString1, String paramString2, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback) {}
   
   /* Error */
   public void run()
@@ -17,8 +16,8 @@ public class NowShadowImpl$1
     //   0: ldc 44
     //   2: monitorenter
     //   3: aload_0
-    //   4: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lavvx;
-    //   7: invokestatic 47	avvx:a	(Lavvx;)Lavrx;
+    //   4: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;
+    //   7: invokestatic 47	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl:a	(Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;)Lcom/tencent/mobileqq/intervideo/IVPluginManager;
     //   10: astore_1
     //   11: aload_1
     //   12: ifnonnull +38 -> 50
@@ -27,29 +26,29 @@ public class NowShadowImpl$1
     //   18: ldc 51
     //   20: invokestatic 57	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   23: aload_0
-    //   24: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lavvx;
+    //   24: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;
     //   27: aload_0
-    //   28: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lavvx;
+    //   28: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;
     //   31: aload_0
     //   32: getfield 21	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   35: aload_0
     //   36: getfield 23	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   39: aload_0
     //   40: getfield 25	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:b	Ljava/lang/String;
-    //   43: invokevirtual 60	avvx:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Lavrx;
-    //   46: invokestatic 63	avvx:a	(Lavvx;Lavrx;)Lavrx;
+    //   43: invokevirtual 60	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mobileqq/intervideo/IVPluginManager;
+    //   46: invokestatic 63	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl:a	(Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;Lcom/tencent/mobileqq/intervideo/IVPluginManager;)Lcom/tencent/mobileqq/intervideo/IVPluginManager;
     //   49: pop
     //   50: ldc 49
     //   52: iconst_1
     //   53: ldc 65
     //   55: invokestatic 68	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   58: aload_0
-    //   59: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lavvx;
-    //   62: invokestatic 47	avvx:a	(Lavvx;)Lavrx;
+    //   59: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;
+    //   62: invokestatic 47	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl:a	(Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;)Lcom/tencent/mobileqq/intervideo/IVPluginManager;
     //   65: ifnull +31 -> 96
     //   68: aload_0
-    //   69: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lavvx;
-    //   72: invokestatic 47	avvx:a	(Lavvx;)Lavrx;
+    //   69: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;
+    //   72: invokestatic 47	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl:a	(Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;)Lcom/tencent/mobileqq/intervideo/IVPluginManager;
     //   75: aload_0
     //   76: getfield 21	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   79: aload_0
@@ -66,10 +65,10 @@ public class NowShadowImpl$1
     //   101: aload_1
     //   102: invokevirtual 77	java/lang/InterruptedException:printStackTrace	()V
     //   105: aload_0
-    //   106: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lavvx;
+    //   106: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;
     //   109: aload_1
     //   110: invokevirtual 81	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
-    //   113: invokestatic 84	avvx:a	(Lavvx;Ljava/lang/String;)V
+    //   113: invokestatic 84	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl:a	(Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;Ljava/lang/String;)V
     //   116: ldc 86
     //   118: iconst_1
     //   119: new 88	java/lang/StringBuilder
@@ -92,10 +91,10 @@ public class NowShadowImpl$1
     //   154: aload_1
     //   155: invokevirtual 103	java/util/concurrent/TimeoutException:printStackTrace	()V
     //   158: aload_0
-    //   159: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lavvx;
+    //   159: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;
     //   162: aload_1
     //   163: invokevirtual 104	java/util/concurrent/TimeoutException:getMessage	()Ljava/lang/String;
-    //   166: invokestatic 84	avvx:a	(Lavvx;Ljava/lang/String;)V
+    //   166: invokestatic 84	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl:a	(Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;Ljava/lang/String;)V
     //   169: ldc 86
     //   171: iconst_1
     //   172: new 88	java/lang/StringBuilder
@@ -113,10 +112,10 @@ public class NowShadowImpl$1
     //   201: aload_1
     //   202: invokevirtual 106	java/util/concurrent/ExecutionException:printStackTrace	()V
     //   205: aload_0
-    //   206: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lavvx;
+    //   206: getfield 19	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl$1:this$0	Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;
     //   209: aload_1
     //   210: invokevirtual 107	java/util/concurrent/ExecutionException:getMessage	()Ljava/lang/String;
-    //   213: invokestatic 84	avvx:a	(Lavvx;Ljava/lang/String;)V
+    //   213: invokestatic 84	com/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl:a	(Lcom/tencent/mobileqq/intervideo/now/dynamic/NowShadowImpl;Ljava/lang/String;)V
     //   216: ldc 86
     //   218: iconst_1
     //   219: new 88	java/lang/StringBuilder
@@ -133,7 +132,7 @@ public class NowShadowImpl$1
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	247	0	this	1
-    //   10	2	1	localavrx	avrx
+    //   10	2	1	localIVPluginManager	com.tencent.mobileqq.intervideo.IVPluginManager
     //   100	32	1	localInterruptedException	java.lang.InterruptedException
     //   147	5	1	localObject	Object
     //   153	32	1	localTimeoutException	java.util.concurrent.TimeoutException
@@ -155,7 +154,7 @@ public class NowShadowImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.1
  * JD-Core Version:    0.7.0.1
  */

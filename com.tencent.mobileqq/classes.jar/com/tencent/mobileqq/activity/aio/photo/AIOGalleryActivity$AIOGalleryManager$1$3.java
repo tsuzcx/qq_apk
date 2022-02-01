@@ -1,41 +1,37 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aavp;
-import ahqw;
-import ahqx;
-import ahri;
-import ahsn;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
 
-public class AIOGalleryActivity$AIOGalleryManager$1$3
+class AIOGalleryActivity$AIOGalleryManager$1$3
   implements Runnable
 {
-  public AIOGalleryActivity$AIOGalleryManager$1$3(ahqx paramahqx, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
+  AIOGalleryActivity$AIOGalleryManager$1$3(AIOGalleryActivity.AIOGalleryManager.1 param1, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
   
   public void run()
   {
-    ahsn localahsn;
+    AIOImageListModel localAIOImageListModel;
     if (this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null)
     {
-      localahsn = (ahsn)ahqw.a(this.jdField_a_of_type_Ahqx.a);
-      if (!localahsn.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int)) {
+      localAIOImageListModel = (AIOImageListModel)AIOGalleryActivity.AIOGalleryManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a);
+      if (!localAIOImageListModel.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int)) {
         break label92;
       }
-      if (ahqw.e(this.jdField_a_of_type_Ahqx.a) != null) {
-        ((ahri)ahqw.f(this.jdField_a_of_type_Ahqx.a)).z();
+      if (AIOGalleryActivity.AIOGalleryManager.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a) != null) {
+        ((AIOGalleryScene)AIOGalleryActivity.AIOGalleryManager.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a)).z();
       }
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Ahqx.a.a != null) {
-        this.jdField_a_of_type_Ahqx.a.a.e();
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a.a.e();
       }
       return;
       label92:
-      if ((this.jdField_a_of_type_Ahqx.a.a != null) && (this.jdField_a_of_type_Ahqx.a.a() == this.jdField_a_of_type_Ahqx.a.a))
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a.a() == this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a.a))
       {
-        localahsn.b();
-        if (ahqw.g(this.jdField_a_of_type_Ahqx.a) != null) {
-          ((ahri)ahqw.h(this.jdField_a_of_type_Ahqx.a)).z();
+        localAIOImageListModel.b();
+        if (AIOGalleryActivity.AIOGalleryManager.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a) != null) {
+          ((AIOGalleryScene)AIOGalleryActivity.AIOGalleryManager.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a)).z();
         }
       }
     }
@@ -43,7 +39,7 @@ public class AIOGalleryActivity$AIOGalleryManager$1$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.3
  * JD-Core Version:    0.7.0.1
  */

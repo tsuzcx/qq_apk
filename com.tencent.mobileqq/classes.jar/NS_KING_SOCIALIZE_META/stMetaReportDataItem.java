@@ -10,7 +10,7 @@ public final class stMetaReportDataItem
   extends JceStruct
 {
   static Map<String, String> cache_strData = new HashMap();
-  public Map<String, String> strData;
+  public Map<String, String> strData = null;
   
   static
   {

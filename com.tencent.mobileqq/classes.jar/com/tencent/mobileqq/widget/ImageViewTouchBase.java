@@ -13,23 +13,21 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bipp;
-import bitf;
 
 public abstract class ImageViewTouchBase
   extends ImageView
 {
   static final float SCALE_RATE = 1.15F;
-  private boolean bShadow;
+  private boolean bShadow = false;
   protected Matrix mBaseMatrix = new Matrix();
-  protected final bitf mBitmapDisplayed = new bitf(null);
+  protected final RotateBitmap mBitmapDisplayed = new RotateBitmap(null);
   private final Matrix mDisplayMatrix = new Matrix();
   protected Handler mHandler = new Handler();
   private final float[] mMatrixValues = new float[9];
   float mMaxZoom = 3.0F;
   float mMinZoom = 0.5F;
-  private Runnable mOnLayoutRunnable;
-  private bipp mRecycler;
+  private Runnable mOnLayoutRunnable = null;
+  private ImageViewTouchBase.Recycler mRecycler;
   protected Matrix mSuppMatrix = new Matrix();
   int mThisHeight = -1;
   int mThisWidth = -1;
@@ -47,15 +45,15 @@ public abstract class ImageViewTouchBase
     init();
   }
   
-  private void getProperBaseMatrix(bitf parambitf, Matrix paramMatrix)
+  private void getProperBaseMatrix(RotateBitmap paramRotateBitmap, Matrix paramMatrix)
   {
     float f1 = getWidth();
     float f2 = getHeight();
-    float f3 = parambitf.c();
-    float f4 = parambitf.b();
+    float f3 = paramRotateBitmap.c();
+    float f4 = paramRotateBitmap.b();
     paramMatrix.reset();
     float f5 = Math.min(Math.min(f1 / f3, 3.0F), Math.min(f2 / f4, 3.0F));
-    paramMatrix.postConcat(parambitf.a());
+    paramMatrix.postConcat(paramRotateBitmap.a());
     paramMatrix.postScale(f5, f5);
     paramMatrix.postTranslate((f1 - f3 * f5) / 2.0F, (f2 - f4 * f5) / 2.0F);
   }
@@ -186,7 +184,7 @@ public abstract class ImageViewTouchBase
     return this.mMaxZoom;
   }
   
-  public bitf getRotateBitmap()
+  public RotateBitmap getRotateBitmap()
   {
     return this.mBitmapDisplayed;
   }
@@ -290,7 +288,7 @@ public abstract class ImageViewTouchBase
     return super.onKeyUp(paramInt, paramKeyEvent);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.mThisWidth = (paramInt3 - paramInt1);
@@ -326,20 +324,20 @@ public abstract class ImageViewTouchBase
   
   public void setImageBitmapResetBase(Bitmap paramBitmap, boolean paramBoolean)
   {
-    setImageRotateBitmapResetBase(new bitf(paramBitmap), paramBoolean);
+    setImageRotateBitmapResetBase(new RotateBitmap(paramBitmap), paramBoolean);
   }
   
-  public void setImageRotateBitmapResetBase(bitf parambitf, boolean paramBoolean)
+  public void setImageRotateBitmapResetBase(RotateBitmap paramRotateBitmap, boolean paramBoolean)
   {
     if (getWidth() <= 0)
     {
-      this.mOnLayoutRunnable = new ImageViewTouchBase.1(this, parambitf, paramBoolean);
+      this.mOnLayoutRunnable = new ImageViewTouchBase.1(this, paramRotateBitmap, paramBoolean);
       return;
     }
-    if (parambitf.a() != null)
+    if (paramRotateBitmap.a() != null)
     {
-      getProperBaseMatrix(parambitf, this.mBaseMatrix);
-      setImageBitmap(parambitf.a(), parambitf.a());
+      getProperBaseMatrix(paramRotateBitmap, this.mBaseMatrix);
+      setImageBitmap(paramRotateBitmap.a(), paramRotateBitmap.a());
     }
     for (;;)
     {
@@ -354,9 +352,9 @@ public abstract class ImageViewTouchBase
     }
   }
   
-  public void setRecycler(bipp parambipp)
+  public void setRecycler(ImageViewTouchBase.Recycler paramRecycler)
   {
-    this.mRecycler = parambipp;
+    this.mRecycler = paramRecycler;
   }
   
   public void setShadow(boolean paramBoolean)
@@ -460,7 +458,7 @@ public abstract class ImageViewTouchBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageViewTouchBase
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,27 @@
 package com.tencent.mobileqq.forward;
 
-import auui;
-import auuv;
-import bhdj;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ForwardShareByServerHelper$5
+class ForwardShareByServerHelper$5
   implements Runnable
 {
-  public ForwardShareByServerHelper$5(auui paramauui, String paramString) {}
+  ForwardShareByServerHelper$5(ForwardShareByServerHelper paramForwardShareByServerHelper, String paramString) {}
   
   public void run()
   {
-    auuv.a("KEY_STAGE_2_TOTAL", false);
-    if (auui.a(this.this$0) == null) {
-      auui.a(this.this$0, bhdj.a(auui.a(this.this$0), 230));
+    ForwardStatisticsReporter.a("KEY_STAGE_2_TOTAL", false);
+    if (ForwardShareByServerHelper.a(this.this$0) == null) {
+      ForwardShareByServerHelper.a(this.this$0, DialogUtil.a(ForwardShareByServerHelper.a(this.this$0), 230));
     }
-    auui.a(this.this$0).setMessage(this.a);
-    auui.a(this.this$0).setPositiveButton(2131694399, this.this$0.a);
-    auui.a(this.this$0).show();
+    ForwardShareByServerHelper.a(this.this$0).setMessage(this.a);
+    ForwardShareByServerHelper.a(this.this$0).setPositiveButton(2131694615, this.this$0.a);
+    ForwardShareByServerHelper.a(this.this$0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareByServerHelper.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,5 @@
 package com.tencent.device.msg.activities;
 
-import Override;
-import abgm;
-import abkm;
-import abkn;
-import abko;
-import abkp;
-import absn;
-import absz;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,23 +24,26 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import bhcl;
-import bjkv;
+import com.tencent.av.utils.BitmapTools;
+import com.tencent.av.utils.UITools;
 import com.tencent.av.widget.shimmer.ShimmerTextView;
 import com.tencent.device.DeviceHeadMgr;
 import com.tencent.device.JNICallCenter.DataPoint;
 import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
+import com.tencent.device.utils.LightAppUtil;
+import com.tencent.device.utils.SmartDeviceUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.PermissionUtils;
+import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Method;
-import mrx;
-import mvk;
 
 public class DeviceTipActivity
   extends BaseActivity
@@ -59,53 +54,40 @@ public class DeviceTipActivity
   int jdField_a_of_type_Int;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public Rect a;
+  Rect jdField_a_of_type_AndroidGraphicsRect = null;
   Bundle jdField_a_of_type_AndroidOsBundle = null;
   private final Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new abkp(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new DeviceTipActivity.FloatViewTouchListener(this);
   Button jdField_a_of_type_AndroidWidgetButton = null;
-  public ImageView a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
   ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = null;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  public ShimmerTextView a;
+  ShimmerTextView jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = null;
   DeviceInfo jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo;
   Runnable jdField_a_of_type_JavaLangRunnable = new DeviceTipActivity.1(this);
-  public int b;
-  public Rect b;
+  int jdField_b_of_type_Int = 0;
+  Rect jdField_b_of_type_AndroidGraphicsRect = null;
   Button jdField_b_of_type_AndroidWidgetButton = null;
-  public ImageView b;
+  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
   TextView jdField_b_of_type_AndroidWidgetTextView;
-  public String b;
+  String jdField_b_of_type_JavaLangString;
   int jdField_c_of_type_Int = 0;
-  public Rect c;
+  Rect jdField_c_of_type_AndroidGraphicsRect = null;
   Button jdField_c_of_type_AndroidWidgetButton;
-  public ImageView c;
+  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
   TextView jdField_c_of_type_AndroidWidgetTextView = null;
   String jdField_c_of_type_JavaLangString = "";
-  public int d;
-  ImageView d;
-  public int e = 0;
+  int jdField_d_of_type_Int = 0;
+  ImageView jdField_d_of_type_AndroidWidgetImageView = null;
+  int e = 0;
   int f;
   
   static
   {
     jdField_a_of_type_JavaLangString = "DeviceTipActivity";
-  }
-  
-  public DeviceTipActivity()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_b_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_b_of_type_AndroidGraphicsRect = null;
-    this.jdField_c_of_type_AndroidGraphicsRect = null;
-    this.jdField_c_of_type_AndroidWidgetImageView = null;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_d_of_type_AndroidWidgetImageView = null;
+    jdField_a_of_type_Boolean = false;
   }
   
   private void a(int paramInt)
@@ -116,7 +98,7 @@ public class DeviceTipActivity
     localDataPoint.mProperityId = 1600008;
     localDataPoint.mValue = String.valueOf(paramInt);
     localDataPoint.mValueType = "string";
-    ((abgm)this.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(localDataPoint, 0, this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din, 3);
+    ((SmartDeviceProxyMgr)this.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(localDataPoint, 0, this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din, 3);
   }
   
   private boolean a()
@@ -143,7 +125,7 @@ public class DeviceTipActivity
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new abko(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new DeviceTipActivity.BroadcastHandler(this);
     Object localObject1 = new IntentFilter();
     ((IntentFilter)localObject1).addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
     ((IntentFilter)localObject1).addAction("android.intent.action.SCREEN_OFF");
@@ -154,19 +136,19 @@ public class DeviceTipActivity
     super.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject1);
     d();
     a();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131373756));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131373751));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131373757));
-    localObject1 = (ImageView)super.findViewById(2131380975);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131374070));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131374065));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131374071));
+    localObject1 = (ImageView)super.findViewById(2131381432);
     Object localObject2 = super.getResources();
     RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
     RelativeLayout.LayoutParams localLayoutParams2;
     if (this.f <= 320)
     {
-      localLayoutParams1.topMargin = ((Resources)localObject2).getDimensionPixelSize(2131297782);
+      localLayoutParams1.topMargin = ((Resources)localObject2).getDimensionPixelSize(2131297849);
       ((ImageView)localObject1).setLayoutParams(localLayoutParams1);
       localLayoutParams1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-      localLayoutParams1.topMargin = ((Resources)localObject2).getDimensionPixelSize(2131297952);
+      localLayoutParams1.topMargin = ((Resources)localObject2).getDimensionPixelSize(2131298019);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams1);
       if ((FontSettingManager.getFontLevel() == 20.0F) || (FontSettingManager.getFontLevel() == 18.0F) || (FontSettingManager.getFontLevel() == 17.0F))
       {
@@ -175,9 +157,9 @@ public class DeviceTipActivity
         if (this.f > 540) {
           break label524;
         }
-        localLayoutParams1.topMargin = ((Resources)localObject2).getDimensionPixelSize(2131297961);
+        localLayoutParams1.topMargin = ((Resources)localObject2).getDimensionPixelSize(2131298028);
         this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams1);
-        localLayoutParams2.topMargin = ((Resources)localObject2).getDimensionPixelSize(2131297784);
+        localLayoutParams2.topMargin = ((Resources)localObject2).getDimensionPixelSize(2131297851);
         ((ImageView)localObject1).setLayoutParams(localLayoutParams2);
       }
     }
@@ -185,18 +167,18 @@ public class DeviceTipActivity
     {
       if (FontSettingManager.getFontLevel() == 20.0F)
       {
-        localObject1 = (Button)super.findViewById(2131373624);
+        localObject1 = (Button)super.findViewById(2131373938);
         localObject2 = (RelativeLayout.LayoutParams)((Button)localObject1).getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject2).leftMargin = super.getResources().getDimensionPixelSize(2131297607);
+        ((RelativeLayout.LayoutParams)localObject2).leftMargin = super.getResources().getDimensionPixelSize(2131297674);
         ((Button)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        localObject1 = (Button)super.findViewById(2131373627);
+        localObject1 = (Button)super.findViewById(2131373941);
         localObject2 = (RelativeLayout.LayoutParams)((Button)localObject1).getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject2).rightMargin = super.getResources().getDimensionPixelSize(2131297607);
+        ((RelativeLayout.LayoutParams)localObject2).rightMargin = super.getResources().getDimensionPixelSize(2131297674);
         ((Button)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
       if ((this.jdField_a_of_type_Int <= 800) || ((a()) && (this.jdField_a_of_type_Int <= 1280)))
       {
-        localObject1 = (RelativeLayout)super.findViewById(2131373620);
+        localObject1 = (RelativeLayout)super.findViewById(2131373934);
         localObject2 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject1).getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
         ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
@@ -209,12 +191,12 @@ public class DeviceTipActivity
         break;
       }
       localLayoutParams1 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
-      int i = ((Resources)localObject2).getDimensionPixelSize(2131297781);
+      int i = ((Resources)localObject2).getDimensionPixelSize(2131297848);
       localLayoutParams1.topMargin = (i - (i - i * 2 / 3));
       ((ImageView)localObject1).setLayoutParams(localLayoutParams1);
       break;
       label524:
-      localLayoutParams2.topMargin = ((Resources)localObject2).getDimensionPixelSize(2131297782);
+      localLayoutParams2.topMargin = ((Resources)localObject2).getDimensionPixelSize(2131297849);
       ((ImageView)localObject1).setLayoutParams(localLayoutParams2);
     }
   }
@@ -227,13 +209,13 @@ public class DeviceTipActivity
       this.jdField_a_of_type_AndroidOsBundle = super.getIntent().getExtras();
       if (this.jdField_a_of_type_AndroidOsBundle == null)
       {
-        bjkv.a().a(2131691547);
+        ToastUtil.a().a(2131691660);
         return;
       }
     }
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
     this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("digest");
-    this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo = ((abgm)this.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(this.jdField_b_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo = ((SmartDeviceProxyMgr)this.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(this.jdField_b_of_type_JavaLangString));
     this.jdField_a_of_type_AndroidGraphicsBitmap = DeviceHeadMgr.getInstance().getDeviceHeadByPID(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.productId);
   }
   
@@ -256,42 +238,42 @@ public class DeviceTipActivity
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131380959));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373472));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373621));
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842199);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131381416));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373786));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373935));
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842342);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373627));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373626));
-    Drawable localDrawable = super.getResources().getDrawable(2130842008);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373941));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373940));
+    Drawable localDrawable = super.getResources().getDrawable(2130842151);
     this.jdField_b_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
-    this.jdField_b_of_type_AndroidWidgetButton.setText(anvx.a(2131702711));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new abkn(this));
-    this.jdField_d_of_type_Int = super.getApplicationContext().getResources().getDimensionPixelSize(2131297793);
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = ((ShimmerTextView)super.findViewById(2131373623));
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setText(anvx.a(2131702712));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373622));
-    localDrawable = mrx.a(super.getApplicationContext(), 2130842141);
+    this.jdField_b_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131703259));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new DeviceTipActivity.3(this));
+    this.jdField_d_of_type_Int = super.getApplicationContext().getResources().getDimensionPixelSize(2131297860);
+    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = ((ShimmerTextView)super.findViewById(2131373937));
+    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setText(HardCodeUtil.a(2131703260));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373936));
+    localDrawable = BitmapTools.a(super.getApplicationContext(), 2130842284);
     if (localDrawable != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(localDrawable);
     }
     for (;;)
     {
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131380975));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131381432));
       if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
         this.jdField_d_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380976));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131381433));
       if (this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo != null) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(absz.a(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo));
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(SmartDeviceUtil.a(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo));
       }
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131373783));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131374097));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373624));
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373938));
       this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
       return;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842141);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842284);
     }
   }
   
@@ -299,11 +281,11 @@ public class DeviceTipActivity
   {
     if (this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo != null)
     {
-      absn localabsn = new absn(this);
+      LightAppUtil localLightAppUtil = new LightAppUtil(this);
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("from_tip", true);
-      localabsn.a(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo, localBundle, false);
-      ((abgm)this.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din, this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.productId);
+      localLightAppUtil.a(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo, localBundle, false);
+      ((SmartDeviceProxyMgr)this.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din, this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.productId);
       a(1);
     }
     finish();
@@ -322,16 +304,16 @@ public class DeviceTipActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    this.f = mvk.a(super.getApplicationContext());
-    this.jdField_a_of_type_Int = mvk.b(super.getApplicationContext());
-    super.setContentView(2131559114);
+    this.f = UITools.a(super.getApplicationContext());
+    this.jdField_a_of_type_Int = UITools.b(super.getApplicationContext());
+    super.setContentView(2131559156);
     super.getWindow().addFlags(524288);
     super.getWindow().addFlags(128);
     super.getWindow().addFlags(1024);
     super.getWindow().addFlags(2097152);
     if (Build.VERSION.SDK_INT >= 23) {
       if (!PermissionUtils.isStorePermissionEnable(this)) {
-        PermissionUtils.requestStorePermission(this, 3, new abkm(this));
+        PermissionUtils.requestStorePermission(this, 3, new DeviceTipActivity.2(this));
       }
     }
     for (;;)
@@ -349,7 +331,7 @@ public class DeviceTipActivity
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy");
     }
-    bhcl.a();
+    AudioUtil.a();
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
       super.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
     }
@@ -373,14 +355,14 @@ public class DeviceTipActivity
   public void doOnResume()
   {
     super.doOnResume();
-    bhcl.a(2131230742, -1, null);
+    AudioUtil.a(2131230742, -1, null);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, g);
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    bhcl.a();
+    AudioUtil.a();
   }
   
   @Override
@@ -392,7 +374,7 @@ public class DeviceTipActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.msg.activities.DeviceTipActivity
  * JD-Core Version:    0.7.0.1
  */

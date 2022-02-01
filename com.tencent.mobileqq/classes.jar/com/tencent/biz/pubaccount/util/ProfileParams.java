@@ -3,18 +3,17 @@ package com.tencent.biz.pubaccount.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import usm;
 
 public class ProfileParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProfileParams> CREATOR = new usm();
-  public int a;
-  public ProfileParams.CurLoginUsr a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public static final Parcelable.Creator<ProfileParams> CREATOR = new ProfileParams.1();
+  int jdField_a_of_type_Int;
+  ProfileParams.CurLoginUsr jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  String c;
+  String d;
   
   public int a()
   {
@@ -61,7 +60,7 @@ public class ProfileParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ProfileParams
  * JD-Core Version:    0.7.0.1
  */

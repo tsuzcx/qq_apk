@@ -1,20 +1,17 @@
 package com.tencent.mobileqq.together.ui;
 
 import android.widget.FrameLayout;
-import bemy;
-import bemz;
-import benb;
 
-public class TogetherPopupDialog$1$1
+class TogetherPopupDialog$1$1
   implements Runnable
 {
-  public TogetherPopupDialog$1$1(bemz parambemz) {}
+  TogetherPopupDialog$1$1(TogetherPopupDialog.1 param1) {}
   
   public void run()
   {
-    if ((this.a.a.jdField_a_of_type_Benb != null) && (this.a.a.jdField_a_of_type_AndroidWidgetFrameLayout != null))
+    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryAdapter != null) && (this.a.a.jdField_a_of_type_AndroidWidgetFrameLayout != null))
     {
-      this.a.a.jdField_a_of_type_Benb.a();
+      this.a.a.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryAdapter.a();
       this.a.a.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
     }
   }

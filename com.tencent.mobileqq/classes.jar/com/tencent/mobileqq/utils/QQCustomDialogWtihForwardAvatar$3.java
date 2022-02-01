@@ -15,8 +15,8 @@ class QQCustomDialogWtihForwardAvatar$3
   public void onClick(View paramView)
   {
     ResultRecord localResultRecord = (ResultRecord)paramView.getTag();
-    this.this$0.hideSoftInputFromWindow();
-    MiniChatActivity.a(this.val$activity, localResultRecord.getUinType(), localResultRecord.uin, localResultRecord.name, 0.86F, this.this$0.getElasticScaleRation(this.val$activity, 0.78F));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.hideSoftInputFromWindow();
+    MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, localResultRecord.getUinType(), localResultRecord.uin, localResultRecord.name, 0.86F, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.a(this.jdField_a_of_type_AndroidAppActivity, 0.78F));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

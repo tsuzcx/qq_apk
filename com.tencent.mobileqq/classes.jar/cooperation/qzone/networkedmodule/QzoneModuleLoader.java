@@ -15,7 +15,7 @@ import java.util.Locale;
 public class QzoneModuleLoader
 {
   public static final String TAG = "QzoneModuleLoader";
-  private static boolean sIsLibLoaded;
+  private static boolean sIsLibLoaded = false;
   
   public static boolean loadModuleDex(String paramString1, Context paramContext, ClassLoader paramClassLoader, String paramString2, QzoneModuleConfigManager.QzoneModuleRecord paramQzoneModuleRecord)
   {
@@ -118,7 +118,7 @@ public class QzoneModuleLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ public final class stFriendFeedRsp
 {
   static stFriendFeed cache_friendFeed = new stFriendFeed();
   static Map<String, String> cache_mapExt = new HashMap();
-  public stFriendFeed friendFeed;
-  public int isFinished;
-  public Map<String, String> mapExt;
+  public stFriendFeed friendFeed = null;
+  public int isFinished = 0;
+  public Map<String, String> mapExt = null;
   public String traceId = "";
   
   static

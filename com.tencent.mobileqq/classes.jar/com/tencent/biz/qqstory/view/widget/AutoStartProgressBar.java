@@ -31,6 +31,7 @@ public class AutoStartProgressBar
   public AutoStartProgressBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   private double a(int paramInt)
@@ -64,7 +65,7 @@ public class AutoStartProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.AutoStartProgressBar
  * JD-Core Version:    0.7.0.1
  */

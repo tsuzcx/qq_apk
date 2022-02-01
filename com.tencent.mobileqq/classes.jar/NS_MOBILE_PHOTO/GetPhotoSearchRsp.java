@@ -11,11 +11,11 @@ public final class GetPhotoSearchRsp
   static PhotoSearchBoxPhoto cache_photo_search_box_photo = new PhotoSearchBoxPhoto();
   static s_outshare cache_shareinfo = new s_outshare();
   public String msg = "";
-  public PhotoSearchBox photo_search_box;
-  public PhotoSearchBoxPhoto photo_search_box_photo;
-  public int ret;
-  public long share_ctime;
-  public s_outshare shareinfo;
+  public PhotoSearchBox photo_search_box = null;
+  public PhotoSearchBoxPhoto photo_search_box_photo = null;
+  public int ret = 0;
+  public long share_ctime = 0L;
+  public s_outshare shareinfo = null;
   
   public GetPhotoSearchRsp() {}
   

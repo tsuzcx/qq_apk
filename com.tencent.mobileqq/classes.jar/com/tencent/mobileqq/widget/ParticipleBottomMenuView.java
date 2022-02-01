@@ -12,13 +12,11 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anvx;
-import bdla;
-import biqp;
-import biqq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -28,7 +26,7 @@ public class ParticipleBottomMenuView
 {
   private int jdField_a_of_type_Int;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private biqq jdField_a_of_type_Biqq;
+  private ParticipleBottomMenuView.OnMenuClickListener jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView$OnMenuClickListener;
   private ParticipleView jdField_a_of_type_ComTencentMobileqqWidgetParticipleView;
   private int jdField_b_of_type_Int;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
@@ -55,20 +53,20 @@ public class ParticipleBottomMenuView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(getContext()).inflate(2131559583, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372441));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372445));
-    this.c = ((ImageView)findViewById(2131372443));
-    this.d = ((ImageView)findViewById(2131372447));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(a(anvx.a(2131707345)));
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(a(anvx.a(2131707349)));
-    this.c.setContentDescription(a(anvx.a(2131707348)));
-    this.d.setContentDescription(a(anvx.a(2131707346)));
-    TextView localTextView = (TextView)findViewById(2131380067);
-    findViewById(2131372442).setOnClickListener(this);
-    findViewById(2131372446).setOnClickListener(this);
-    findViewById(2131372444).setOnClickListener(this);
-    findViewById(2131372448).setOnClickListener(this);
+    LayoutInflater.from(getContext()).inflate(2131559659, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372751));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372755));
+    this.c = ((ImageView)findViewById(2131372753));
+    this.d = ((ImageView)findViewById(2131372757));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(a(HardCodeUtil.a(2131707872)));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(a(HardCodeUtil.a(2131707876)));
+    this.c.setContentDescription(a(HardCodeUtil.a(2131707875)));
+    this.d.setContentDescription(a(HardCodeUtil.a(2131707873)));
+    TextView localTextView = (TextView)findViewById(2131380504);
+    findViewById(2131372752).setOnClickListener(this);
+    findViewById(2131372756).setOnClickListener(this);
+    findViewById(2131372754).setOnClickListener(this);
+    findViewById(2131372758).setOnClickListener(this);
     localTextView.setOnClickListener(this);
     if ((paramAttributeSet != null) && (paramContext != null))
     {
@@ -98,7 +96,7 @@ public class ParticipleBottomMenuView
   
   public String a(String paramString)
   {
-    return getContext().getString(2131690678, new Object[] { paramString });
+    return getContext().getString(2131690780, new Object[] { paramString });
   }
   
   public void a()
@@ -110,19 +108,19 @@ public class ParticipleBottomMenuView
         if (QLog.isColorLevel()) {
           QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon enable STATE_BLACK");
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845573);
-        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845598);
-        this.c.setBackgroundResource(2130845579);
-        this.d.setBackgroundResource(2130845611);
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845890);
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845915);
+        this.c.setBackgroundResource(2130845896);
+        this.d.setBackgroundResource(2130845928);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon enable STATE_WHITE");
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845570);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845585);
-      this.c.setBackgroundResource(2130845576);
-      this.d.setBackgroundResource(2130845591);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845887);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845902);
+      this.c.setBackgroundResource(2130845893);
+      this.d.setBackgroundResource(2130845908);
       return;
     }
     if (this.jdField_a_of_type_Int == 1)
@@ -130,25 +128,25 @@ public class ParticipleBottomMenuView
       if (QLog.isColorLevel()) {
         QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon unable STATE_BLACK");
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845571);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845586);
-      this.c.setBackgroundResource(2130845577);
-      this.d.setBackgroundResource(2130845588);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845888);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845903);
+      this.c.setBackgroundResource(2130845894);
+      this.d.setBackgroundResource(2130845905);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon unable STATE_BLACK");
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845572);
-    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845587);
-    this.c.setBackgroundResource(2130845578);
-    this.d.setBackgroundResource(2130845592);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845889);
+    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845904);
+    this.c.setBackgroundResource(2130845895);
+    this.d.setBackgroundResource(2130845909);
   }
   
   public void a(ParticipleView paramParticipleView)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView = paramParticipleView;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView.setOnParticipleSelectChangeListener(new biqp(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView.setOnParticipleSelectChangeListener(new ParticipleBottomMenuView.1(this));
   }
   
   public void b()
@@ -163,13 +161,13 @@ public class ParticipleBottomMenuView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Biqq != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView$OnMenuClickListener != null)
     {
-      if (paramView.getId() != 2131380067) {
+      if (paramView.getId() != 2131380504) {
         break label66;
       }
-      this.jdField_a_of_type_Biqq.a();
-      bdla.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35F", "0X800A35F", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView$OnMenuClickListener.a();
+      ReportController.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35F", "0X800A35F", 0, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -182,47 +180,47 @@ public class ParticipleBottomMenuView
         if (!TextUtils.isEmpty(str)) {
           switch (paramView.getId())
           {
-          case 2131372443: 
-          case 2131372445: 
-          case 2131372447: 
+          case 2131372753: 
+          case 2131372755: 
+          case 2131372757: 
           default: 
             break;
-          case 2131372442: 
-            this.jdField_a_of_type_Biqq.a(str);
-            bdla.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35A", "0X800A35A", 0, 0, "", "", "", "");
+          case 2131372752: 
+            this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView$OnMenuClickListener.a(str);
+            ReportController.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35A", "0X800A35A", 0, 0, "", "", "", "");
             break;
-          case 2131372444: 
-            this.jdField_a_of_type_Biqq.c(str);
-            bdla.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35B", "0X800A35B", 0, 0, "", "", "", "");
+          case 2131372754: 
+            this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView$OnMenuClickListener.c(str);
+            ReportController.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35B", "0X800A35B", 0, 0, "", "", "", "");
             break;
-          case 2131372446: 
-            this.jdField_a_of_type_Biqq.b(str);
-            bdla.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35C", "0X800A35C", 0, 0, "", "", "", "");
+          case 2131372756: 
+            this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView$OnMenuClickListener.b(str);
+            ReportController.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35C", "0X800A35C", 0, 0, "", "", "", "");
             break;
-          case 2131372448: 
-            this.jdField_a_of_type_Biqq.d(str);
-            bdla.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35E", "0X800A35E", 0, 0, "", "", "", "");
+          case 2131372758: 
+            this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView$OnMenuClickListener.d(str);
+            ReportController.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A35E", "0X800A35E", 0, 0, "", "", "", "");
             break;
           }
         } else {
-          QQToast.a(BaseApplicationImpl.getContext(), -1, anvx.a(2131707344), 0).a();
+          QQToast.a(BaseApplicationImpl.getContext(), -1, HardCodeUtil.a(2131707871), 0).a();
         }
       }
       else
       {
-        QQToast.a(getContext(), anvx.a(2131707347), 0).a();
+        QQToast.a(getContext(), HardCodeUtil.a(2131707874), 0).a();
       }
     }
   }
   
-  public void setOnMenuClickListener(biqq parambiqq)
+  public void setOnMenuClickListener(ParticipleBottomMenuView.OnMenuClickListener paramOnMenuClickListener)
   {
-    this.jdField_a_of_type_Biqq = parambiqq;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView$OnMenuClickListener = paramOnMenuClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ParticipleBottomMenuView
  * JD-Core Version:    0.7.0.1
  */

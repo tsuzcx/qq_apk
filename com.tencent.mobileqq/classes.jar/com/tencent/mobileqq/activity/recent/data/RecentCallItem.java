@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import anvx;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QCallRecent;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class RecentCallItem
   extends RecentBaseData
@@ -28,7 +28,7 @@ public class RecentCallItem
     this.mShowTime = "0";
     this.mUnreadNum = 0;
     this.mMenuFlag = 12288;
-    this.mCallingText = anvx.a(2131712610);
+    this.mCallingText = HardCodeUtil.a(2131713106);
     this.call.isVideo = 1;
   }
   
@@ -57,16 +57,16 @@ public class RecentCallItem
     return this.call.uin;
   }
   
-  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      a((QQAppInterface)paramIMCoreAppRuntime, paramContext);
+    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
+      a((QQAppInterface)paramBaseQQAppInterface, paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentCallItem
  * JD-Core Version:    0.7.0.1
  */

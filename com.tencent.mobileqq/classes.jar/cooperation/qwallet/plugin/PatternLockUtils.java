@@ -5,12 +5,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import avhn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.gesturelock.LockPatternView.Cell;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +39,7 @@ public class PatternLockUtils
   
   public static String encodeToLocalPWD(Context paramContext, String paramString1, String paramString2)
   {
-    String str = QWalletHelper.getQWDevId();
+    String str = QWalletHelperImpl.getQWDevId();
     paramContext = encodeToServerPWD(paramContext, paramString1, paramString2);
     return MD5.toMD5(str + paramContext);
   }
@@ -266,7 +267,7 @@ public class PatternLockUtils
     return (paramContext != null) && (paramContext.length() > 0);
   }
   
-  public static String patternToString(List<avhn> paramList)
+  public static String patternToString(List<LockPatternView.Cell> paramList)
   {
     if (paramList == null) {
       return "";
@@ -276,9 +277,9 @@ public class PatternLockUtils
     int i = 0;
     while (i < j)
     {
-      avhn localavhn = (avhn)paramList.get(i);
-      int k = localavhn.a();
-      localStringBuilder.append((char)(localavhn.b() + k * 3 + 49));
+      LockPatternView.Cell localCell = (LockPatternView.Cell)paramList.get(i);
+      int k = localCell.a();
+      localStringBuilder.append((char)(localCell.b() + k * 3 + 49));
       i += 1;
     }
     return localStringBuilder.toString();
@@ -393,7 +394,7 @@ public class PatternLockUtils
     paramContext.apply();
   }
   
-  public static List<avhn> stringToPattern(String paramString)
+  public static List<LockPatternView.Cell> stringToPattern(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {
@@ -403,7 +404,7 @@ public class PatternLockUtils
     while (i < paramString.length())
     {
       int j = paramString.indexOf(i) - 49;
-      localArrayList.add(avhn.a(j / 3, j % 3));
+      localArrayList.add(LockPatternView.Cell.a(j / 3, j % 3));
       i += 1;
     }
     return localArrayList;
@@ -411,7 +412,7 @@ public class PatternLockUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.PatternLockUtils
  * JD-Core Version:    0.7.0.1
  */

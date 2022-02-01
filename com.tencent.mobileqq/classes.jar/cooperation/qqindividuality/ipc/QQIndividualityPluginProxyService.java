@@ -2,13 +2,11 @@ package cooperation.qqindividuality.ipc;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import blvy;
-import blwh;
-import bmcx;
-import bmde;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.plugin.PluginInfo;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -16,41 +14,41 @@ import mqq.app.MobileQQ;
 public class QQIndividualityPluginProxyService
   extends PluginProxyService
 {
-  private static bmcx jdField_a_of_type_Bmcx;
-  private static bmde jdField_a_of_type_Bmde;
+  private static IndividualityRemoteCommand jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand = null;
+  private static QQIndividualityRemoteProxy jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = null;
   
-  public static bmcx a()
+  public static IndividualityRemoteCommand a()
   {
-    if (jdField_a_of_type_Bmcx == null) {}
+    if (jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand == null) {}
     try
     {
-      if (jdField_a_of_type_Bmcx == null) {
-        jdField_a_of_type_Bmcx = new bmcx(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand == null) {
+        jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand = new IndividualityRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_Bmcx;
+      return jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand;
     }
     finally {}
   }
   
-  public static bmde a()
+  public static QQIndividualityRemoteProxy a()
   {
-    if (jdField_a_of_type_Bmde == null) {}
+    if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy == null) {}
     try
     {
-      if (jdField_a_of_type_Bmde == null) {
-        jdField_a_of_type_Bmde = new bmde(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy == null) {
+        jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = new QQIndividualityRemoteProxy(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_Bmde;
+      return jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy;
     }
     finally {}
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_Bmde != null)
+    if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy != null)
     {
-      jdField_a_of_type_Bmde.b("qqindividuality_signature");
-      jdField_a_of_type_Bmde = null;
+      jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy.b("qqindividuality_signature");
+      jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = null;
     }
   }
   
@@ -63,22 +61,22 @@ public class QQIndividualityPluginProxyService
   {
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QQIndividualityPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    blwh localblwh = new blwh(0);
-    localblwh.b = "qqindividuality_plugin.apk";
-    localblwh.d = PluginInfo.m;
-    localblwh.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localblwh.e = paramString;
-    localblwh.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localblwh.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    blvy.c(paramAppRuntime.getApplication(), localblwh);
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.b = "qqindividuality_plugin.apk";
+    localPluginParams.e = PluginInfo.m;
+    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localPluginParams.f = paramString;
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    IPluginManager.c(paramAppRuntime.getApplication(), localPluginParams);
   }
   
   public static boolean a()
   {
-    bmcx localbmcx = a();
-    if (!PluginCommunicationHandler.getInstance().containsCmd(localbmcx.getCmd()))
+    IndividualityRemoteCommand localIndividualityRemoteCommand = a();
+    if (!PluginCommunicationHandler.getInstance().containsCmd(localIndividualityRemoteCommand.getCmd()))
     {
-      PluginCommunicationHandler.getInstance().register(localbmcx);
+      PluginCommunicationHandler.getInstance().register(localIndividualityRemoteCommand);
       return true;
     }
     return false;
@@ -86,7 +84,7 @@ public class QQIndividualityPluginProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,7 @@ import com.tencent.thumbplayer.core.common.TPNativeLibraryLoader;
 import com.tencent.thumbplayer.core.common.TPNativeLog;
 import com.tencent.thumbplayer.core.common.TPScreenRefreshRateDetector;
 import com.tencent.thumbplayer.core.common.TPSystemInfo;
+import com.tencent.thumbplayer.core.demuxer.ITPDemuxerCallback;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -128,6 +129,8 @@ public class TPNativePlayer
   private native int _setDataSourceFd(int paramInt);
   
   private native int _setDataSourceWithHttpHeader(String paramString, Object[] paramArrayOfObject);
+  
+  private native int _setDemuxerCallback(Object paramObject);
   
   private native int _setInitConfigBool(int paramInt, boolean paramBoolean);
   
@@ -299,10 +302,10 @@ public class TPNativePlayer
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 198	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramCount	()I
+    //   1: invokespecial 199	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramCount	()I
     //   4: istore_2
     //   5: iload_2
-    //   6: anewarray 202	com/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo
+    //   6: anewarray 203	com/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo
     //   9: astore 4
     //   11: iconst_0
     //   12: istore_1
@@ -315,7 +318,7 @@ public class TPNativePlayer
     //   23: iload_1
     //   24: aload_0
     //   25: iload_1
-    //   26: invokespecial 204	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramInfo	(I)Lcom/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo;
+    //   26: invokespecial 205	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramInfo	(I)Lcom/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo;
     //   29: aastore
     //   30: iload_1
     //   31: iconst_1
@@ -669,6 +672,20 @@ public class TPNativePlayer
     }
   }
   
+  public int setDemuxerCallback(ITPDemuxerCallback paramITPDemuxerCallback)
+  {
+    try
+    {
+      int i = _setDemuxerCallback(paramITPDemuxerCallback);
+      return i;
+    }
+    catch (Throwable paramITPDemuxerCallback)
+    {
+      TPNativeLog.printLog(4, paramITPDemuxerCallback.getMessage());
+    }
+    return 1000001;
+  }
+  
   public void setInitConfig(TPNativePlayerInitConfig paramTPNativePlayerInitConfig)
   {
     Object localObject5;
@@ -934,7 +951,7 @@ public class TPNativePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayer
  * JD-Core Version:    0.7.0.1
  */

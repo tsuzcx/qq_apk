@@ -29,25 +29,25 @@ public class DecodeAIOInputBitmapHeightTask
     if (localBaseChatPie == null) {
       return;
     }
-    Object localObject1 = localBaseChatPie.input;
+    Object localObject1 = localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx;
     Object localObject2 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject2).inScaled = false;
-    localObject2 = BitmapFactory.decodeResource(localBaseChatPie.mActivity.getResources(), 2130849853, (BitmapFactory.Options)localObject2);
+    localObject2 = BitmapFactory.decodeResource(localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources(), 2130850251, (BitmapFactory.Options)localObject2);
     float f;
     int j;
     int k;
     if (localObject2 != null)
     {
-      i = AIOUtils.dp2px(((Bitmap)localObject2).getHeight() / 2, localBaseChatPie.mActivity.getResources());
+      i = AIOUtils.a(((Bitmap)localObject2).getHeight() / 2, localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
       localObject2 = ((EditText)localObject1).getPaint().getFontMetrics();
       f = Math.abs(((Paint.FontMetrics)localObject2).bottom - ((Paint.FontMetrics)localObject2).top);
-      j = AIOUtils.dp2px(36.0F, localBaseChatPie.mActivity.getResources());
+      j = AIOUtils.a(36.0F, localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
       k = ((EditText)localObject1).getPaddingTop();
     }
-    for (int i = (Math.max(j, Math.max((int)(((EditText)localObject1).getPaddingBottom() + k + f), i)) - localBaseChatPie.mActivity.getResources().getDimensionPixelSize(2131298128)) / 2;; i = 0)
+    for (int i = (Math.max(j, Math.max((int)(((EditText)localObject1).getPaddingBottom() + k + f), i)) - localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDimensionPixelSize(2131298208)) / 2;; i = 0)
     {
       i = Math.max(i, 0);
-      localObject1 = localBaseChatPie.getUIHandler();
+      localObject1 = localBaseChatPie.a();
       if (localObject1 == null) {
         break;
       }
@@ -58,7 +58,7 @@ public class DecodeAIOInputBitmapHeightTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.DecodeAIOInputBitmapHeightTask
  * JD-Core Version:    0.7.0.1
  */

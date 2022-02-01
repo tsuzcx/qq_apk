@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aiav;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import bilj;
 import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 import com.tencent.qphone.base.util.QLog;
 
 class GameRoomChatPie$16$1
@@ -16,22 +15,22 @@ class GameRoomChatPie$16$1
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.tag, 2, "initPlugin! hasDestory = " + this.a.this$0.hasDestory);
+      QLog.d(this.a.this$0.b, 2, "initPlugin! hasDestory = " + this.a.this$0.I);
     }
-    if ((!this.a.this$0.hasDestory) && (this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView != null))
+    if ((!this.a.this$0.I) && (this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView != null))
     {
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
-      aiav.a(this.a.this$0).removeView(this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView);
+      GameRoomChatPie.a(this.a.this$0).removeView(this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView);
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setBackgroundDrawable(null);
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.b.setBackgroundDrawable(null);
-      this.a.this$0.jdField_a_of_type_Bilj.a((ViewGroup)this.a.this$0.jdField_a_of_type_AndroidViewView);
-      this.a.this$0.a(false, false);
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a((ViewGroup)this.a.this$0.m);
+      this.a.this$0.e(false, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.16.1
  * JD-Core Version:    0.7.0.1
  */

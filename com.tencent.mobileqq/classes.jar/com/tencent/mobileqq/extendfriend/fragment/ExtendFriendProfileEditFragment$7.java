@@ -3,7 +3,7 @@ package com.tencent.mobileqq.extendfriend.fragment;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhdz;
+import com.tencent.mobileqq.utils.DisplayUtils;
 
 class ExtendFriendProfileEditFragment$7
   implements Runnable
@@ -12,12 +12,12 @@ class ExtendFriendProfileEditFragment$7
   
   public void run()
   {
-    if (bhdz.a(ExtendFriendProfileEditFragment.a(this.this$0), ExtendFriendProfileEditFragment.a(this.this$0).getWidth()) > 4)
+    if (DisplayUtils.a(ExtendFriendProfileEditFragment.a(this.this$0), ExtendFriendProfileEditFragment.a(this.this$0).getWidth()) > 4)
     {
       ExtendFriendProfileEditFragment.a(this.this$0).setText(this.a.d);
       ImageView localImageView = ExtendFriendProfileEditFragment.b(this.this$0);
       if (this.a.a == 2L) {}
-      for (int i = 2130845119;; i = 2130845120)
+      for (int i = 2130845281;; i = 2130845282)
       {
         localImageView.setImageResource(i);
         ExtendFriendProfileEditFragment.b(this.this$0).setVisibility(0);
@@ -29,7 +29,7 @@ class ExtendFriendProfileEditFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import Override;
-import akmd;
-import akme;
-import akmf;
-import akoq;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -16,10 +11,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aqrl;
+import com.tencent.av.camera.QavCameraUsage;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoLogicFactory;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
 import com.tencent.mobileqq.startup.step.CheckPermission;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
@@ -33,28 +30,26 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import lka;
 
 public class NewPhotoListActivity
   extends AbstractPhotoListActivity
 {
-  public akmf a;
   public Handler a;
-  View a;
+  View jdField_a_of_type_AndroidViewView;
   public Button a;
   public CheckBox a;
   public TextView a;
+  NewPhotoListActivity.QZoneGetAlbumListNumObserver jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity$QZoneGetAlbumListNumObserver = new NewPhotoListActivity.QZoneGetAlbumListNumObserver(this);
   public TextView b;
   public TextView c;
   TextView d;
   
   public NewPhotoListActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new akme(this);
-    this.jdField_a_of_type_Akmf = new akmf(this);
+    this.jdField_a_of_type_AndroidOsHandler = new NewPhotoListActivity.NewPhotoListActivityHandler(this);
   }
   
-  String a(String paramString)
+  public static String a(String paramString)
   {
     try
     {
@@ -74,7 +69,7 @@ public class NewPhotoListActivity
           boolean bool2 = localFile.renameTo(new File(str));
           boolean bool1 = bool2;
           if (!bool2) {
-            bool1 = FileUtils.moveFile(paramString, str);
+            bool1 = FileUtils.b(paramString, str);
           }
           QLog.d("PhotoListActivity", 2, new Object[] { "saveToDCIM rename to :", str });
           localObject = paramString;
@@ -94,7 +89,7 @@ public class NewPhotoListActivity
   
   public void a()
   {
-    if (lka.b(BaseApplicationImpl.getContext())) {}
+    if (QavCameraUsage.b(BaseApplicationImpl.getContext())) {}
     label27:
     do
     {
@@ -128,7 +123,7 @@ public class NewPhotoListActivity
     }
   }
   
-  public void a(List<String> paramList, HashMap<String, LocalMediaInfo> paramHashMap)
+  void a(List<String> paramList, HashMap<String, LocalMediaInfo> paramHashMap)
   {
     if ((paramList != null) && (paramHashMap != null) && (this.mPhotoListLogic.mPhotoCommonData.allMediaInfoHashMap != null))
     {
@@ -197,13 +192,13 @@ public class NewPhotoListActivity
   public void doOnPause()
   {
     super.doOnPause();
-    aqrl.a(BaseApplicationImpl.getContext(), 2, true);
+    ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 2, true);
   }
   
   protected PhotoListLogic generateLogic()
   {
     int i = getIntent().getIntExtra("enter_from", 0);
-    PhotoListLogic localPhotoListLogic = akoq.a(i, this);
+    PhotoListLogic localPhotoListLogic = PhotoLogicFactory.a(i, this);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListActivity", 2, "generateLogic:" + localPhotoListLogic.getClass().getName() + " enterFrom:" + i);
     }
@@ -217,8 +212,8 @@ public class NewPhotoListActivity
   
   protected Dialog getDialog()
   {
-    ReportDialog localReportDialog = new ReportDialog(this, 2131755829);
-    localReportDialog.setContentView(2131559607);
+    ReportDialog localReportDialog = new ReportDialog(this, 2131755842);
+    localReportDialog.setContentView(2131559683);
     return localReportDialog;
   }
   
@@ -229,21 +224,21 @@ public class NewPhotoListActivity
   
   protected void initUI()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376947);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131377356);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       localRelativeLayout.setFitsSystemWindows(true);
       localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367863);
-    this.d = ((TextView)findViewById(2131380554));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370688));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131374832));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374838));
-    this.b = ((TextView)findViewById(2131374833));
-    this.c = ((TextView)findViewById(2131368669));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131368071);
+    this.d = ((TextView)findViewById(2131381000));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370969));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131375209));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375215));
+    this.b = ((TextView)findViewById(2131375210));
+    this.c = ((TextView)findViewById(2131368901));
     super.initUI();
-    this.mGridView.addOnScrollListener(new akmd(this));
+    this.mGridView.addOnScrollListener(new NewPhotoListActivity.1(this));
   }
   
   public void onClick(View paramView)
@@ -269,7 +264,14 @@ public class NewPhotoListActivity
   
   void processNewIntent(Intent paramIntent)
   {
-    if (paramIntent.getBooleanExtra("extra_directly_back", false))
+    boolean bool = paramIntent.getBooleanExtra("extra_directly_back", false);
+    if (paramIntent.getIntExtra("p_e_s_type", 0) == 7)
+    {
+      this.mPhotoListData.needQueryTask = false;
+      this.mPhotoListLogic.initData(paramIntent);
+      return;
+    }
+    if (bool)
     {
       this.mPhotoListData.needQueryTask = false;
       a(paramIntent);
@@ -282,7 +284,7 @@ public class NewPhotoListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity
  * JD-Core Version:    0.7.0.1
  */

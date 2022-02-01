@@ -10,11 +10,11 @@ public class MessageForGrayTips$HighlightItem
   public int groupId;
   public String icon;
   public String iconAlt;
-  private int iconSize = ViewUtils.dpToPx(16.0F);
-  public String mMsgActionData;
-  public String mMsg_A_ActionData;
+  private int iconSize = ViewUtils.b(16.0F);
+  public String mMsgActionData = null;
+  public String mMsg_A_ActionData = null;
   public boolean needUpdateNick;
-  public String remark;
+  public String remark = null;
   public int start;
   public int textColor;
   public long uin;
@@ -62,7 +62,7 @@ public class MessageForGrayTips$HighlightItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.HighlightItem
  * JD-Core Version:    0.7.0.1
  */

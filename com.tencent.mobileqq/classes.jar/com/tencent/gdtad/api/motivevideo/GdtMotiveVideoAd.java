@@ -1,18 +1,17 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acee;
-import acho;
-import aciv;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.views.GdtUIUtils;
 
 public final class GdtMotiveVideoAd
   extends com.tencent.gdtad.api.GdtAd
 {
-  private acee params;
+  private GdtMotiveVideoParams params;
   
-  public GdtMotiveVideoAd(acee paramacee)
+  public GdtMotiveVideoAd(GdtMotiveVideoParams paramGdtMotiveVideoParams)
   {
-    super(paramacee);
-    this.params = paramacee;
+    super(paramGdtMotiveVideoParams);
+    this.params = paramGdtMotiveVideoParams;
   }
   
   public int getErrorCode(com.tencent.gdtad.aditem.GdtAd paramGdtAd, int paramInt1, int paramInt2, int paramInt3)
@@ -23,23 +22,23 @@ public final class GdtMotiveVideoAd
     }
     if ((paramGdtAd == null) || (!isValid()) || (getParams().a == null))
     {
-      acho.d("GdtMotiveVideoAd", "getErrorCode error");
+      GdtLog.d("GdtMotiveVideoAd", "getErrorCode error");
       return 1;
     }
-    if (aciv.a(paramGdtAd.getCreativeSize())) {
+    if (GdtUIUtils.a(paramGdtAd.getCreativeSize())) {
       return 0;
     }
     return 7;
   }
   
-  protected acee getParams()
+  protected GdtMotiveVideoParams getParams()
   {
     return this.params;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMotiveVideoAd
  * JD-Core Version:    0.7.0.1
  */

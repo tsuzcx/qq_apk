@@ -16,14 +16,14 @@ import java.util.Map;
 class ApkgManager$5
   implements DownloaderProxy.DownloadListener
 {
-  ApkgManager$5(ApkgManager paramApkgManager, ApkgManager.OnInitApkgListener paramOnInitApkgListener, ApkgInfo paramApkgInfo, MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2) {}
+  ApkgManager$5(ApkgManager paramApkgManager, ApkgManager.OnInitApkgListener paramOnInitApkgListener, ApkgInfo paramApkgInfo, String paramString1, String paramString2, String paramString3, MiniAppInfo paramMiniAppInfo, String paramString4) {}
   
   public void onDownloadFailed(int paramInt, String paramString)
   {
     if (this.val$listener != null)
     {
       this.val$listener.onInitApkgInfo(2, this.val$apkgInfo, "下载失败");
-      QMLog.d("ApkgManager", "onDownloadFailed() called with: statusCode = [" + paramInt + "], errorMsg = [" + paramString + "]");
+      QMLog.d("ApkgManager", "onDownloadFailed() called with: statusCode = [" + paramInt + "], errorMsg = [" + paramString + "] subRoot:" + this.val$subRoot);
     }
   }
   
@@ -33,44 +33,34 @@ class ApkgManager$5
   
   public void onDownloadSucceed(int paramInt, String paramString, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult)
   {
+    QMLog.i("ApkgManager", "onDownloadSucceed subRoot=" + this.val$subRoot + " url=" + this.val$subPackDownloadUrl + " path=" + this.val$savePath);
     MiniReportManager.reportEventType(this.val$appConfig, 614, this.val$url, null, null, 0, "0", 0L, null);
     paramString = ApkgManager.getApkgFolderPath(this.val$appConfig);
     paramDownloadResult = new File(this.val$savePath);
-    FileUtils.delete(paramString + File.separator + ApkgManager.access$200(this.this$0), false);
+    FileUtils.delete(paramString + File.separator + this.val$subRoot, false);
     boolean bool2 = this.val$appConfig.launchParam.isFlutterMode;
     boolean bool1 = false;
     if (bool2)
     {
       MiniReportManager.reportEventType(this.val$appConfig, 615, this.val$url, null, null, 0, "0", 0L, null);
-      bool1 = WxapkgUnpacker.unpackSync(paramDownloadResult.getAbsolutePath(), paramString, ApkgManager.access$200(this.this$0));
-      QMLog.d("ApkgManager", "downloadSubPack | getResPath :hasUnpack=" + bool1 + "; folderPath=" + paramString + "; subRoot=" + ApkgManager.access$200(this.this$0));
+      bool1 = WxapkgUnpacker.unpackSync(paramDownloadResult.getAbsolutePath(), paramString, this.val$subRoot);
+      QMLog.d("ApkgManager", "downloadSubPack | getResPath :hasUnpack=" + bool1 + "; folderPath=" + paramString + "; subRoot=" + this.val$subRoot);
       MiniReportManager.reportEventType(this.val$appConfig, 1045, null, null, null, 0);
-      if ((!bool1) && (bool2)) {
-        break label343;
-      }
+    }
+    if ((bool1) || (!bool2)) {
       if (this.val$listener != null) {
         this.val$listener.onInitApkgInfo(0, this.val$apkgInfo, null);
       }
     }
-    label343:
-    while (this.val$listener == null)
-    {
+    while (this.val$listener == null) {
       return;
-      String str = ApkgManager.access$200(this.this$0).replaceAll("/", "");
-      if (!FileUtils.copyFile(paramDownloadResult.getAbsolutePath(), paramString + File.separator + str + ".qapkg"))
-      {
-        QMLog.e("ApkgManager", "copyFile to " + paramString + File.separator + str + ".qapkg" + " err");
-        return;
-      }
-      FileUtils.deleteFile(paramDownloadResult.getAbsolutePath());
-      break;
     }
     this.val$listener.onInitApkgInfo(3, this.val$apkgInfo, "解包失败");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.ApkgManager.5
  * JD-Core Version:    0.7.0.1
  */

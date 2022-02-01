@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.activity;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 
 class TroopAvatarWallEditActivity$4
   implements Runnable

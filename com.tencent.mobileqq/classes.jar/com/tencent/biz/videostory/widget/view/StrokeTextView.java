@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class StrokeTextView
   extends TextView
 {
-  private TextView a;
+  private TextView a = null;
   
   public StrokeTextView(Context paramContext)
   {
@@ -44,19 +44,19 @@ public class StrokeTextView
     this.a.setGravity(getGravity());
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     this.a.draw(paramCanvas);
     super.onDraw(paramCanvas);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     CharSequence localCharSequence = this.a.getText();
@@ -76,7 +76,7 @@ public class StrokeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.StrokeTextView
  * JD-Core Version:    0.7.0.1
  */

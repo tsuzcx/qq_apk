@@ -9,8 +9,8 @@ public final class ResponeBindMobileV2
 {
   static byte[] cache_sessionSid = (byte[])new byte[1];
   public String alreadyBindedUin = "";
-  public boolean bindSuccess;
-  public byte[] sessionSid;
+  public boolean bindSuccess = false;
+  public byte[] sessionSid = null;
   
   static
   {

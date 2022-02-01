@@ -20,13 +20,13 @@ import com.tencent.qphone.base.util.QLog;
 public class CircleProgressView
   extends ImageView
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int b = -1;
   private int c = -9013368;
   private int d = 6;
@@ -50,7 +50,7 @@ public class CircleProgressView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int j = getWidth();
     int k = getHeight();
@@ -148,7 +148,7 @@ public class CircleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CircleProgressView
  * JD-Core Version:    0.7.0.1
  */

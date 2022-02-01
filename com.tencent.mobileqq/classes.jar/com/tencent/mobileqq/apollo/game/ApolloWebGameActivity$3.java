@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.game;
 
-import amyo;
 import android.content.Intent;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 
 class ApolloWebGameActivity$3
   extends IApolloRunnableTask
@@ -25,7 +25,7 @@ class ApolloWebGameActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloWebGameActivity.3
  * JD-Core Version:    0.7.0.1
  */

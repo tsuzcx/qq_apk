@@ -4,7 +4,7 @@ import LBS_V2_PROTOCOL.GPS_V2;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blpm;
+import common.config.service.QzoneLbsConfig;
 
 public class GpsInfo4LocalImage
   implements Parcelable
@@ -80,7 +80,7 @@ public class GpsInfo4LocalImage
       }
     } while (!(paramObject instanceof GpsInfo4LocalImage));
     paramObject = (GpsInfo4LocalImage)paramObject;
-    if ((this.gpsType == paramObject.gpsType) && (getDistance(this.latitude * 1000000.0F, this.longtitude * 1000000.0F, paramObject.latitude * 1000000.0F, paramObject.longtitude * 1000000.0F) <= blpm.a().a())) {}
+    if ((this.gpsType == paramObject.gpsType) && (getDistance(this.latitude * 1000000.0F, this.longtitude * 1000000.0F, paramObject.latitude * 1000000.0F, paramObject.longtitude * 1000000.0F) <= QzoneLbsConfig.getInstance().getValidRadiusGeo())) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -99,7 +99,7 @@ public class GpsInfo4LocalImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.GpsInfo4LocalImage
  * JD-Core Version:    0.7.0.1
  */

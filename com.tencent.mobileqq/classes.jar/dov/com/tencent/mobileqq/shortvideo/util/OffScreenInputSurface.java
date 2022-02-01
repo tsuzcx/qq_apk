@@ -8,7 +8,7 @@ import android.opengl.EGLDisplay;
 import android.opengl.EGLSurface;
 import android.os.Build.VERSION;
 import android.util.Log;
-import bdaw;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(17)
@@ -16,11 +16,11 @@ public class OffScreenInputSurface
 {
   static final int[] jdField_a_of_type_ArrayOfInt = { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 };
   static final int[] jdField_b_of_type_ArrayOfInt = { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 16, 12326, 0, 12339, 1, 12344 };
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
   private EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay;
   private EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface;
-  private int jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 0;
   private EGLContext jdField_b_of_type_AndroidOpenglEGLContext = EGL14.EGL_NO_CONTEXT;
   
   public OffScreenInputSurface(int paramInt1, int paramInt2, EGLContext paramEGLContext)
@@ -31,7 +31,7 @@ public class OffScreenInputSurface
     a();
   }
   
-  public static int a(EGLContext paramEGLContext)
+  static int a(EGLContext paramEGLContext)
   {
     return 0;
   }
@@ -44,7 +44,7 @@ public class OffScreenInputSurface
     return null;
   }
   
-  public int a()
+  int a()
   {
     return a(this.jdField_b_of_type_AndroidOpenglEGLContext);
   }
@@ -64,7 +64,7 @@ public class OffScreenInputSurface
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
     int[] arrayOfInt2 = new int[1];
     arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    boolean bool = bdaw.e(bdaw.v);
+    boolean bool = CameraCompatibleList.e(CameraCompatibleList.v);
     if (bool) {
       arrayOfInt1 = jdField_b_of_type_ArrayOfInt;
     }
@@ -123,7 +123,7 @@ public class OffScreenInputSurface
     return EGL14.eglGetCurrentContext().equals(this.jdField_a_of_type_AndroidOpenglEGLContext);
   }
   
-  public boolean a(EGLContext paramEGLContext)
+  boolean a(EGLContext paramEGLContext)
   {
     if (Build.VERSION.SDK_INT >= 17) {
       return paramEGLContext.equals(this.jdField_b_of_type_AndroidOpenglEGLContext);
@@ -154,7 +154,7 @@ public class OffScreenInputSurface
     this.jdField_b_of_type_AndroidOpenglEGLContext = EGL14.EGL_NO_CONTEXT;
   }
   
-  public boolean b()
+  boolean b()
   {
     return this.jdField_b_of_type_AndroidOpenglEGLContext == a();
   }
@@ -168,7 +168,7 @@ public class OffScreenInputSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.OffScreenInputSurface
  * JD-Core Version:    0.7.0.1
  */

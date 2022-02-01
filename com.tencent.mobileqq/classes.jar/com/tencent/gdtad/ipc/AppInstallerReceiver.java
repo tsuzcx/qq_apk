@@ -1,13 +1,12 @@
 package com.tencent.gdtad.ipc;
 
-import acfs;
-import acho;
-import acik;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.gdtad.aditem.GdtBaseAdItem;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.util.GdtAppOpenUtil;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -15,11 +14,11 @@ public class AppInstallerReceiver
   extends BroadcastReceiver
 {
   private Map<String, GdtBaseAdItem> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public static AppInstallerReceiver a()
   {
-    return acfs.a;
+    return AppInstallerReceiver.Holder.a;
   }
   
   public void a(Context paramContext)
@@ -31,7 +30,7 @@ public class AppInstallerReceiver
       localIntentFilter.addDataScheme("package");
       paramContext.registerReceiver(this, localIntentFilter);
       this.jdField_a_of_type_Boolean = true;
-      acho.a("GdtAppOpenUtil", "regeist AppInstallerReceiver");
+      GdtLog.a("GdtAppOpenUtil", "regeist AppInstallerReceiver");
     }
   }
   
@@ -50,10 +49,10 @@ public class AppInstallerReceiver
     }
     for (;;)
     {
-      acho.a("GdtAppOpenUtil", "package added " + paramIntent);
+      GdtLog.a("GdtAppOpenUtil", "package added " + paramIntent);
       if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramIntent))
       {
-        acik.a(paramContext, (GdtBaseAdItem)this.jdField_a_of_type_JavaUtilMap.get(paramIntent));
+        GdtAppOpenUtil.a(paramContext, (GdtBaseAdItem)this.jdField_a_of_type_JavaUtilMap.get(paramIntent));
         this.jdField_a_of_type_JavaUtilMap.remove(paramIntent);
       }
       return;
@@ -62,7 +61,7 @@ public class AppInstallerReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.ipc.AppInstallerReceiver
  * JD-Core Version:    0.7.0.1
  */

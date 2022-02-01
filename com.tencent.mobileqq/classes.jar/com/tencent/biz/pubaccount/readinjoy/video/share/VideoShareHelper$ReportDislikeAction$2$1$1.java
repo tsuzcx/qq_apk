@@ -1,39 +1,35 @@
 package com.tencent.biz.pubaccount.readinjoy.video.share;
 
 import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import cooperation.plugin.PluginBaseActivity;
-import suw;
-import svh;
-import svj;
-import svk;
-import szd;
 
-public class VideoShareHelper$ReportDislikeAction$2$1$1
+class VideoShareHelper$ReportDislikeAction$2$1$1
   implements Runnable
 {
-  public VideoShareHelper$ReportDislikeAction$2$1$1(svk paramsvk) {}
+  VideoShareHelper$ReportDislikeAction$2$1$1(VideoShareHelper.ReportDislikeAction.2.1 param1) {}
   
   public void run()
   {
-    suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a).a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    if ((suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a) instanceof BaseActivity)) {
-      QQToast.a(suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a), -1, suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a).getString(2131699166), 0).b(((BaseActivity)suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a)).getTitleBarHeight());
+    VideoShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a).a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    if ((VideoShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a) instanceof BaseActivity)) {
+      QQToast.a(VideoShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a), -1, VideoShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a).getString(2131699744), 0).b(((BaseActivity)VideoShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a)).getTitleBarHeight());
     }
     for (;;)
     {
-      suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a).a(suw.b(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a), this.a.jdField_a_of_type_Svj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
+      VideoShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a).a(VideoShareHelper.b(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
       return;
-      if ((suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a) instanceof PluginBaseActivity)) {
-        QQToast.a(suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a), -1, suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a).getString(2131699166), 0).b(((PluginBaseActivity)suw.a(this.a.jdField_a_of_type_Svj.jdField_a_of_type_Svh.a)).g());
+      if ((VideoShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a) instanceof PluginBaseActivity)) {
+        QQToast.a(VideoShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a), -1, VideoShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a).getString(2131699744), 0).b(((PluginBaseActivity)VideoShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoShareVideoShareHelper$ReportDislikeAction.a)).g());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.share.VideoShareHelper.ReportDislikeAction.2.1.1
  * JD-Core Version:    0.7.0.1
  */

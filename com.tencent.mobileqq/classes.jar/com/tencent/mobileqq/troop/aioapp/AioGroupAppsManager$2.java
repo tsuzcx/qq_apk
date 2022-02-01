@@ -1,20 +1,15 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import bfbz;
-import bfcb;
-import bfcd;
-import bfce;
-
-public class AioGroupAppsManager$2
+class AioGroupAppsManager$2
   implements Runnable
 {
-  public AioGroupAppsManager$2(bfbz parambfbz, long paramLong) {}
+  AioGroupAppsManager$2(AioGroupAppsManager paramAioGroupAppsManager, long paramLong) {}
   
   public void run()
   {
-    bfbz.a(this.this$0).a();
-    if (!bfce.a(this.this$0.a(this.a))) {
-      bfcd.a(bfbz.a(this.this$0), this.a);
+    AioGroupAppsManager.a(this.this$0).a();
+    if (!GroupUtil.a(this.this$0.a(this.a))) {
+      GroupAppsServlet.a(AioGroupAppsManager.a(this.this$0), this.a);
     }
   }
 }

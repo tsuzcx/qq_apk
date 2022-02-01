@@ -163,8 +163,8 @@ public class PictureView
     for (;;)
     {
       return this.mBrowserItemView;
-      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559615, paramViewGroup, false));
-      this.imageView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131368524));
+      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559691, paramViewGroup, false));
+      this.imageView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131368754));
       this.imageView.setOnClickListener(this);
     }
   }
@@ -176,7 +176,7 @@ public class PictureView
     default: 
       return false;
     }
-    paramMessage = this.mContext.getResources().getDrawable(2130850820);
+    paramMessage = this.mContext.getResources().getDrawable(2130851249);
     this.imageView.initDrawable(paramMessage, ScreenUtils.getScreenWidth(this.mContext), ScreenUtils.getScreenHeight(this.mContext), 0);
     this.imageView.setImageDrawable(paramMessage);
     return false;
@@ -294,7 +294,7 @@ public class PictureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.pic.PictureView
  * JD-Core Version:    0.7.0.1
  */

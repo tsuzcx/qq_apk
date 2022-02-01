@@ -8,7 +8,7 @@ public final class stUserAuth
   extends JceStruct
 {
   static stSchema cache_schema = new stSchema();
-  public stSchema schema;
+  public stSchema schema = null;
   public boolean show_confirm = true;
   
   public stUserAuth() {}

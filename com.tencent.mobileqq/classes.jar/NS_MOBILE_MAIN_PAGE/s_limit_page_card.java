@@ -9,7 +9,7 @@ public final class s_limit_page_card
   extends JceStruct
 {
   static ArrayList<s_limit_page_card_item> cache_lst_data = new ArrayList();
-  public ArrayList<s_limit_page_card_item> lst_data;
+  public ArrayList<s_limit_page_card_item> lst_data = null;
   
   static
   {

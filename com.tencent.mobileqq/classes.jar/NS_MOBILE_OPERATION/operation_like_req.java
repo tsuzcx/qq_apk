@@ -13,15 +13,15 @@ public final class operation_like_req
   static Map<String, String> cache_bypass_param;
   static Map<String, byte[]> cache_bypass_param_binary;
   static Map<Integer, String> cache_extern_param;
-  public int action;
-  public int appid;
-  public Map<Integer, String> busi_param;
-  public Map<String, String> bypass_param;
-  public Map<String, byte[]> bypass_param_binary;
+  public int action = 0;
+  public int appid = 0;
+  public Map<Integer, String> busi_param = null;
+  public Map<String, String> bypass_param = null;
+  public Map<String, byte[]> bypass_param_binary = null;
   public String curkey = "";
-  public Map<Integer, String> extern_param;
-  public long hostuin;
-  public long uin;
+  public Map<Integer, String> extern_param = null;
+  public long hostuin = 0L;
+  public long uin = 0L;
   public String unikey = "";
   
   static

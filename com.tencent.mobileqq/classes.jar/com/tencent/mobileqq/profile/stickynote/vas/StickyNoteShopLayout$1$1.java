@@ -2,19 +2,17 @@ package com.tencent.mobileqq.profile.stickynote.vas;
 
 import QC.GetSuixintieSigFontRsp;
 import android.view.View;
-import azuk;
-import azun;
 
-public class StickyNoteShopLayout$1$1
+class StickyNoteShopLayout$1$1
   implements Runnable
 {
-  public StickyNoteShopLayout$1$1(azuk paramazuk, GetSuixintieSigFontRsp paramGetSuixintieSigFontRsp) {}
+  StickyNoteShopLayout$1$1(StickyNoteShopLayout.1 param1, GetSuixintieSigFontRsp paramGetSuixintieSigFontRsp) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Azuk.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.findViewById(2131379899).setVisibility(8);
-    this.jdField_a_of_type_Azuk.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.findViewById(2131368577).setVisibility(8);
-    StickyNoteShopLayout.a(this.jdField_a_of_type_Azuk.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout).a(this.jdField_a_of_type_QCGetSuixintieSigFontRsp.vItems, this.jdField_a_of_type_Azuk.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$1.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.findViewById(2131380328).setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$1.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.findViewById(2131368807).setVisibility(8);
+    StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$1.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout).a(this.jdField_a_of_type_QCGetSuixintieSigFontRsp.vItems, this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$1.jdField_a_of_type_Boolean);
   }
 }
 

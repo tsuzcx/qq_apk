@@ -10,23 +10,23 @@ public final class GroupMngReq
   static int cache_reqtype = 0;
   static byte[] cache_vecBody = (byte[])new byte[1];
   static byte[] cache_vecJoinGroupRichMsg;
-  public byte cCheckInGroup;
-  public byte cIfGetAuthInfo;
-  public byte cIsSupportAuthQuestionJoin;
-  public byte cStatOption;
-  public long dwDiscussUin;
-  public long dwJoinVerifyType;
-  public int reqtype;
+  public byte cCheckInGroup = 0;
+  public byte cIfGetAuthInfo = 0;
+  public byte cIsSupportAuthQuestionJoin = 0;
+  public byte cStatOption = 0;
+  public long dwDiscussUin = 0L;
+  public long dwJoinVerifyType = 0L;
+  public int reqtype = 0;
   public String sGroupLocation = "";
   public String sJoinGroupAuth = "";
   public String sJoinGroupKey = "";
   public String sJoinGroupPicUrl = "";
   public String sJoinGroupVerifyToken = "";
-  public long uin;
-  public byte[] vecBody;
-  public byte[] vecJoinGroupRichMsg;
-  public int wSourceID;
-  public int wSourceSubID;
+  public long uin = 0L;
+  public byte[] vecBody = null;
+  public byte[] vecJoinGroupRichMsg = null;
+  public int wSourceID = 0;
+  public int wSourceSubID = 0;
   
   static
   {

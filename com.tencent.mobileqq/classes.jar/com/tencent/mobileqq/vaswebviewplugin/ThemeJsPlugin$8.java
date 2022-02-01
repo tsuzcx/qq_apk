@@ -2,16 +2,16 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import beho;
-import beil;
-import bhrw;
+import com.tencent.mobileqq.theme.IDownloadListener.Stub;
+import com.tencent.mobileqq.theme.ThemeReporter;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
+import com.tencent.mobileqq.vas.quickupdate.ThemeUpdateCallback;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 
 class ThemeJsPlugin$8
-  extends beho
+  extends IDownloadListener.Stub
 {
   private long startTime = SystemClock.uptimeMillis();
   
@@ -19,7 +19,7 @@ class ThemeJsPlugin$8
   
   public void onComplete(String paramString, int paramInt)
   {
-    if ((paramInt == 0) && (!paramString.startsWith(bhrw.a))) {
+    if ((paramInt == 0) && (!paramString.startsWith(ThemeUpdateCallback.SCID_THEME_ZIP_PREFIX))) {
       return;
     }
     String str2 = ThemeUtil.getIDFromSCID(paramString);
@@ -37,7 +37,7 @@ class ThemeJsPlugin$8
     QLog.d("ThemeJsPlugin", 1, "onComplete :" + paramInt + ", scid " + paramString + ", themeInfo:" + localThemeInfo);
     long l1 = SystemClock.uptimeMillis();
     long l2 = this.startTime;
-    this.this$0.reportTheme("theme_download", 0, ThemeJsPlugin.access$200(this.this$0), l1 - l2, "VipThemeMallDowned", "ok", "200", 153, beil.a, 9, localThemeInfo.version, "");
+    this.this$0.reportTheme("theme_download", 0, ThemeJsPlugin.access$200(this.this$0), l1 - l2, "VipThemeMallDowned", "ok", "200", 153, ThemeReporter.a, 9, localThemeInfo.version, "");
     if (!str2.equals(ThemeJsPlugin.access$200(this.this$0)))
     {
       QLog.e("ThemeJsPlugin", 1, "onComplete not currentId: " + ThemeJsPlugin.access$200(this.this$0));
@@ -98,7 +98,7 @@ class ThemeJsPlugin$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

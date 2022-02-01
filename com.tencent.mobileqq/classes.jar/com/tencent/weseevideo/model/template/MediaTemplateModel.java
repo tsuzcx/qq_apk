@@ -3,14 +3,18 @@ package com.tencent.weseevideo.model.template;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.weseevideo.model.BaseMediaModel;
+import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.template.auto.AutomaticMediaTemplateModel;
+import com.tencent.weseevideo.model.template.light.LightMediaTemplateModel;
 import com.tencent.weseevideo.model.template.movie.MovieMediaTemplateModel;
 
 public class MediaTemplateModel
   extends BaseMediaModel
 {
   private AutomaticMediaTemplateModel automaticMediaTemplateModel = new AutomaticMediaTemplateModel();
+  private LightMediaTemplateModel lightMediaTemplateModel = new LightMediaTemplateModel();
   private MovieMediaTemplateModel movieMediaTemplateModel = new MovieMediaTemplateModel();
+  private MediaResourceModel originMediaResourceModel = null;
   private String smartMatchTemplateTips;
   
   @NonNull
@@ -19,10 +23,20 @@ public class MediaTemplateModel
     return this.automaticMediaTemplateModel;
   }
   
+  public LightMediaTemplateModel getLightMediaTemplateModel()
+  {
+    return this.lightMediaTemplateModel;
+  }
+  
   @NonNull
   public MovieMediaTemplateModel getMovieMediaTemplateModel()
   {
     return this.movieMediaTemplateModel;
+  }
+  
+  public MediaResourceModel getOriginMediaResourceModel()
+  {
+    return this.originMediaResourceModel;
   }
   
   @Nullable
@@ -38,7 +52,12 @@ public class MediaTemplateModel
   
   public boolean isEmpty()
   {
-    return (isAutoTemplateEmpty()) && (isMovieTemplateEmpty());
+    return (isAutoTemplateEmpty()) && (isMovieTemplateEmpty()) && (isLightTemplateEmpty());
+  }
+  
+  public boolean isLightTemplateEmpty()
+  {
+    return this.lightMediaTemplateModel.isEmpty();
   }
   
   public boolean isMovieTemplateEmpty()
@@ -51,9 +70,19 @@ public class MediaTemplateModel
     this.automaticMediaTemplateModel = paramAutomaticMediaTemplateModel;
   }
   
+  public void setLightMediaTemplateModel(LightMediaTemplateModel paramLightMediaTemplateModel)
+  {
+    this.lightMediaTemplateModel = paramLightMediaTemplateModel;
+  }
+  
   public void setMovieMediaTemplateModel(@NonNull MovieMediaTemplateModel paramMovieMediaTemplateModel)
   {
     this.movieMediaTemplateModel = paramMovieMediaTemplateModel;
+  }
+  
+  public void setOriginMediaResourceModel(MediaResourceModel paramMediaResourceModel)
+  {
+    this.originMediaResourceModel = paramMediaResourceModel;
   }
   
   public void setSmartMatchTemplateTips(@Nullable String paramString)
@@ -63,7 +92,7 @@ public class MediaTemplateModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.MediaTemplateModel
  * JD-Core Version:    0.7.0.1
  */

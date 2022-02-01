@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.utils.httputils;
 
-import com.tencent.mobileqq.transfile.BaseTransProcessor;
-import com.tencent.mobileqq.transfile.RichMediaStrategy.OldEngineDPCProfile.TimeoutParam;
-import com.tencent.mobileqq.transfile.RichMediaUtil;
+import com.tencent.mobileqq.transfile.TimeoutParam;
+import com.tencent.mobileqq.transfile.TransFileUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
@@ -75,39 +74,39 @@ public class HttpMsg
   public static final String XUSERRETURNCODE = "X-User-ReturnCode";
   public static final String X_CACHE_LOOKUP = "X-Cache-Lookup";
   public static final String ZERO = "0";
-  private boolean bDataSlice;
+  private boolean bDataSlice = false;
   private boolean bInstanceFollowRedirects = true;
-  public boolean bReportRedirects;
+  public boolean bReportRedirects = false;
   final boolean bVerifyPayment;
-  public boolean bViaWhiteShark;
+  public boolean bViaWhiteShark = false;
   public int busiType = -1;
   private String connectString;
-  public long cost;
+  public long cost = 0L;
   public int data_slice_type;
   public long detailErrcode;
   public int errCode;
-  public String errString;
+  public String errString = null;
   public int fileType = -1;
   public int flow;
   public AtomicBoolean hasFinished;
-  public long inQueueCost;
-  public long inQueueStartTime;
-  public boolean isCmwapRetried;
-  public boolean isRequestInCmwap;
-  public Object lockForSyncSend;
+  public long inQueueCost = 0L;
+  public long inQueueStartTime = 0L;
+  public boolean isCmwapRetried = false;
+  public boolean isRequestInCmwap = false;
+  public Object lockForSyncSend = null;
   public boolean mCanPrintUrl = true;
-  public int mCmwapConnectionType;
-  public HttpURLConnection mConn;
-  public boolean mHaveIpConnect;
+  public int mCmwapConnectionType = 0;
+  public HttpURLConnection mConn = null;
+  public boolean mHaveIpConnect = false;
   public AtomicBoolean mIsCancel = new AtomicBoolean(false);
   public boolean mIsHostIP;
   public boolean mIsHttps;
   public boolean mIsPreStructPic;
   public AtomicBoolean mIsPreempted = new AtomicBoolean(false);
   public boolean mIsSync;
-  public boolean mNeedNotReferer;
+  public boolean mNeedNotReferer = false;
   public String mReqHost;
-  public boolean mUseByteArrayPool;
+  public boolean mUseByteArrayPool = false;
   public String msgId;
   public int netType;
   private final IHttpCommunicatorListener processor;
@@ -116,16 +115,16 @@ public class HttpMsg
   private String realConnectString;
   private byte[] recvData;
   private String requestMethod = "GET";
-  HashMap<String, String> requestPropertys = new HashMap();
+  public HashMap<String, String> requestPropertys = new HashMap();
   public int responseCode = -1;
   public HashMap<String, String> responsePropertys = new HashMap();
   private byte[] sendData;
-  private int serial;
-  public long startTime;
+  private int serial = 0;
+  public long startTime = 0L;
   public int threadPriority = 201;
-  public RichMediaStrategy.OldEngineDPCProfile.TimeoutParam timeoutParam;
-  public long totalBlockLen;
-  public long totalLen;
+  public TimeoutParam timeoutParam;
+  public long totalBlockLen = 0L;
+  public long totalLen = 0L;
   public String[] whiteList_type;
   
   public HttpMsg(String paramString, byte[] paramArrayOfByte, IHttpCommunicatorListener paramIHttpCommunicatorListener)
@@ -141,7 +140,7 @@ public class HttpMsg
       this.realConnectString = paramString.substring(0, paramString.length());
       this.processor = paramIHttpCommunicatorListener;
       if (paramArrayOfByte != null) {
-        break label139;
+        break label234;
       }
       this.sendData = null;
     }
@@ -151,7 +150,7 @@ public class HttpMsg
       return;
       this.realConnectString = null;
       break;
-      label139:
+      label234:
       this.sendData = new byte[paramArrayOfByte.length];
       System.arraycopy(paramArrayOfByte, 0, this.sendData, 0, this.sendData.length);
     }
@@ -227,7 +226,7 @@ public class HttpMsg
     String str2 = getUrl();
     String str1 = str2;
     if (!this.mCanPrintUrl) {
-      str1 = RichMediaUtil.getIpOrDomainFromURL(str2);
+      str1 = TransFileUtil.getIpOrDomainFromURL(str2);
     }
     return str1;
   }
@@ -294,9 +293,6 @@ public class HttpMsg
     this.errCode = paramInt1;
     this.responseCode = paramInt2;
     this.errString = paramString;
-    if ((this.processor instanceof BaseTransProcessor)) {
-      ((BaseTransProcessor)this.processor).setHttpError(paramInt1, paramInt2, 0L, paramString);
-    }
   }
   
   public void setInstanceFollowRedirects(boolean paramBoolean)

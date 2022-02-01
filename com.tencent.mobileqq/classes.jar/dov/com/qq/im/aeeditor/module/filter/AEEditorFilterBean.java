@@ -25,6 +25,7 @@ public class AEEditorFilterBean
   public static AEEditorFilterBean createAiFilterInstance()
   {
     AEEditorFilterBean localAEEditorFilterBean = new AEEditorFilterBean();
+    localAEEditorFilterBean.editorEffectItem.setHideApplyAll(1);
     localAEEditorFilterBean.type = AEEditorFilterBean.FilterID.AIFilter;
     localAEEditorFilterBean.effectId = "effect_aieffect";
     return localAEEditorFilterBean;
@@ -33,6 +34,7 @@ public class AEEditorFilterBean
   public static AEEditorFilterBean createNonFilterInstance()
   {
     AEEditorFilterBean localAEEditorFilterBean = new AEEditorFilterBean();
+    localAEEditorFilterBean.editorEffectItem.setHideApplyAll(1);
     localAEEditorFilterBean.type = AEEditorFilterBean.FilterID.NON;
     localAEEditorFilterBean.effectId = "effect_blank";
     return localAEEditorFilterBean;
@@ -111,7 +113,7 @@ public class AEEditorFilterBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean
  * JD-Core Version:    0.7.0.1
  */

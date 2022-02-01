@@ -19,14 +19,14 @@ public class QzoneModuleManager
   private static final int ENABLE_MODULE = 0;
   private static final String TAG = "QzoneModuleManager";
   private static volatile QzoneModuleManager sModuleManager;
-  public volatile boolean hasLoadNewMapSDK;
-  public volatile boolean hasLoadOldMapSDK;
-  private volatile boolean hasSetVersionNum;
+  public volatile boolean hasLoadNewMapSDK = false;
+  public volatile boolean hasLoadOldMapSDK = false;
+  private volatile boolean hasSetVersionNum = false;
   QzoneModuleDownloadManager mDownloadManager = new QzoneModuleDownloadManager(BaseApplicationImpl.getApplication());
-  private volatile boolean mHasStartedUpdateTask;
+  private volatile boolean mHasStartedUpdateTask = false;
   public Object mLock = new Object();
   private Map<String, Boolean> mModueLoadState = new ConcurrentHashMap();
-  private int mNextModuleIndex;
+  private int mNextModuleIndex = 0;
   
   public static QzoneModuleManager getInstance()
   {
@@ -134,14 +134,14 @@ public class QzoneModuleManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: invokestatic 75	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 81	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: ifne +24 -> 30
     //   9: aload_0
     //   10: getfield 37	cooperation/qzone/networkedmodule/QzoneModuleManager:mModueLoadState	Ljava/util/Map;
     //   13: aload_1
-    //   14: invokeinterface 204 2 0
-    //   19: checkcast 206	java/lang/Boolean
-    //   22: invokevirtual 209	java/lang/Boolean:booleanValue	()Z
+    //   14: invokeinterface 208 2 0
+    //   19: checkcast 210	java/lang/Boolean
+    //   22: invokevirtual 213	java/lang/Boolean:booleanValue	()Z
     //   25: istore_2
     //   26: aload_0
     //   27: monitorexit
@@ -353,7 +353,7 @@ public class QzoneModuleManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleManager
  * JD-Core Version:    0.7.0.1
  */

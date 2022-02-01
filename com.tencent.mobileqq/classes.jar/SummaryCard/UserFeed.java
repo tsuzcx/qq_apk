@@ -8,8 +8,8 @@ public final class UserFeed
   extends JceStruct
 {
   static byte[] cache_vFeedInfo;
-  public long uFlag;
-  public byte[] vFeedInfo;
+  public long uFlag = 0L;
+  public byte[] vFeedInfo = null;
   
   public UserFeed() {}
   
@@ -40,7 +40,7 @@ public final class UserFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.UserFeed
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class FileChooserHelper$3
 {
   FileChooserHelper$3(FileChooserHelper paramFileChooserHelper, Activity paramActivity, String paramString, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
@@ -27,7 +27,7 @@ class FileChooserHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.FileChooserHelper.3
  * JD-Core Version:    0.7.0.1
  */

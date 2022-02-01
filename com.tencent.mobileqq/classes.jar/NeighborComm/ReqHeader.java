@@ -11,11 +11,11 @@ public final class ReqHeader
   static int cache_eMqqSysType;
   public int eBusiType = BusinessType.BusinessType_MQQ.value();
   public int eMqqSysType = MqqSysType.MqqSysType_default.value();
-  public long iAppID;
-  public long lMID;
+  public long iAppID = 0L;
+  public long lMID = 0L;
   public short shVersion = 1;
-  public long uClientIp;
-  public long uClientPort;
+  public long uClientIp = 0L;
+  public long uClientPort = 0L;
   
   public ReqHeader() {}
   

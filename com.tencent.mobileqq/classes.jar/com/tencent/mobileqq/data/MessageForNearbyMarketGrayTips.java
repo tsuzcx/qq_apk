@@ -3,7 +3,6 @@ package com.tencent.mobileqq.data;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import arut;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -30,7 +29,7 @@ public class MessageForNearbyMarketGrayTips
   public static final int SCENE_SAY_HI = 1;
   public static final int SCENE_SAY_HI_FREQ = 2;
   public static final String TAG = "MessageForNearbyMarketGrayTips";
-  public int AioType;
+  public int AioType = 0;
   public int gender;
   private String mContent;
   private String mHighLight;
@@ -131,7 +130,7 @@ public class MessageForNearbyMarketGrayTips
         }
         for (;;)
         {
-          localSpannableString.setSpan(new arut(paramQQAppInterface, paramContext, this.mId, -12541697, i, this.mLink, this.mScene, this), j, k, 33);
+          localSpannableString.setSpan(new MessageForNearbyMarketGrayTips.HightlightClickableSpan(paramQQAppInterface, paramContext, this.mId, -12541697, i, this.mLink, this.mScene, this), j, k, 33);
           return localSpannableString;
           if (TextUtils.isEmpty(this.mLink)) {
             break;
@@ -155,7 +154,7 @@ public class MessageForNearbyMarketGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips
  * JD-Core Version:    0.7.0.1
  */

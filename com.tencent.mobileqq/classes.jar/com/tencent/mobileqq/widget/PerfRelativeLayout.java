@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import auvj;
+import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class PerfRelativeLayout
   extends RelativeLayout
 {
-  private auvj a;
+  private OnDrawCompleteListener a;
   
   public PerfRelativeLayout(Context paramContext)
   {
@@ -27,7 +27,7 @@ public class PerfRelativeLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     if (this.a != null) {
@@ -49,14 +49,14 @@ public class PerfRelativeLayout
     }
   }
   
-  public void setOnDrawCompleteListener(auvj paramauvj)
+  public void setOnDrawCompleteListener(OnDrawCompleteListener paramOnDrawCompleteListener)
   {
-    this.a = paramauvj;
+    this.a = paramOnDrawCompleteListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PerfRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

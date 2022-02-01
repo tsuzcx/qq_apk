@@ -19,9 +19,8 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import bioq;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -30,7 +29,7 @@ public class FolderTextView
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bioq(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new FolderTextView.2(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
@@ -59,11 +58,11 @@ public class FolderTextView
     {
       this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(2);
       this.jdField_b_of_type_Int = a(paramAttributeSet.getColorStateList(1));
-      this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(0, ViewUtils.dip2px(12.0F));
-      this.jdField_a_of_type_Int = ViewUtils.pxTosp(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(0, ViewUtils.a(12.0F));
+      this.jdField_a_of_type_Int = ViewUtils.e(this.jdField_a_of_type_Int);
       this.c = paramAttributeSet.getInt(5, 2);
       this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(4);
-      this.d = paramAttributeSet.getColor(3, paramContext.getResources().getColor(2131166331));
+      this.d = paramAttributeSet.getColor(3, paramContext.getResources().getColor(2131166334));
     }
     catch (Exception paramContext)
     {
@@ -78,7 +77,7 @@ public class FolderTextView
       paramAttributeSet.recycle();
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = anvx.a(2131704141);
+      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704689);
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       this.jdField_a_of_type_JavaLangCharSequence = "";
@@ -167,7 +166,7 @@ public class FolderTextView
   private void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131379935);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131380364);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(this.jdField_a_of_type_Int);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
@@ -178,11 +177,11 @@ public class FolderTextView
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.d);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    int i = ViewUtils.dip2px(10.0F);
+    int i = ViewUtils.a(10.0F);
     this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(8, 2131379935);
-    localLayoutParams.addRule(7, 2131379935);
+    localLayoutParams.addRule(8, 2131380364);
+    localLayoutParams.addRule(7, 2131380364);
     addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       post(new FolderTextView.1(this));
@@ -286,7 +285,7 @@ public class FolderTextView
     return this.jdField_a_of_type_AndroidWidgetTextView.getText();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (!this.jdField_a_of_type_Boolean)
@@ -307,7 +306,7 @@ public class FolderTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FolderTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.hiboom;
 
-import avka;
-import avkb;
+import com.Vas.ColorFont.FastColorFontHelper;
 import com.Vas.ColorFont.FreeTypeLib;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
-import l;
 
 class HiBoomFontDrawer$1$1
   implements Runnable
@@ -15,29 +13,29 @@ class HiBoomFontDrawer$1$1
   
   public void run()
   {
-    if (!l.a().c.get())
+    if (!FastColorFontHelper.a().c.get())
     {
-      l.a().a().a();
-      l.a().c.set(true);
+      FastColorFontHelper.a().a().a();
+      FastColorFontHelper.a().c.set(true);
     }
     if (this.a.this$0.c == -1)
     {
-      String str = this.a.this$0.jdField_a_of_type_Avka.a() + this.a.this$0.jdField_b_of_type_Int + File.separator + this.a.this$0.jdField_b_of_type_Int + ".fz4";
-      this.a.this$0.c = l.a().a(this.a.this$0.jdField_b_of_type_Int, str);
+      String str = this.a.this$0.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.a.this$0.jdField_b_of_type_Int + File.separator + this.a.this$0.jdField_b_of_type_Int + ".fz4";
+      this.a.this$0.c = FastColorFontHelper.a().a(this.a.this$0.jdField_b_of_type_Int, str);
       if (QLog.isColorLevel()) {
         QLog.d("HiBoomFont.FontDrawer", 2, "initColorFont: fontid=" + this.a.this$0.jdField_b_of_type_Int + " result=" + this.a.this$0.c);
       }
       this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
       this.a.this$0.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       if (this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        avkb.a(this.a.this$0);
+        HiBoomFontDrawer.a(this.a.this$0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomFontDrawer.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import omo;
-import uge;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.SmallMiniGameInfo;
 
 public class VideoInfo$SoftAdDownloadBarInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoInfo.DownloadBarInfo> CREATOR = new omo();
+  public static final Parcelable.Creator<VideoInfo.DownloadBarInfo> CREATOR = new VideoInfo.SoftAdDownloadBarInfo.1();
   public int a;
   public UrlJumpInfo a;
+  public SmallMiniGameInfo a;
   public String a;
-  public uge a;
   public int b;
   public String b;
   public String c;
@@ -45,7 +44,7 @@ public class VideoInfo$SoftAdDownloadBarInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.SoftAdDownloadBarInfo
  * JD-Core Version:    0.7.0.1
  */

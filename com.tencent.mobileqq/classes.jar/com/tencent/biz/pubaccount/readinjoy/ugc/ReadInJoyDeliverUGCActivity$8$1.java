@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import rtz;
-
-public class ReadInJoyDeliverUGCActivity$8$1
+class ReadInJoyDeliverUGCActivity$8$1
   implements Runnable
 {
-  public ReadInJoyDeliverUGCActivity$8$1(rtz paramrtz) {}
+  ReadInJoyDeliverUGCActivity$8$1(ReadInJoyDeliverUGCActivity.8 param8) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ReadInJoyDeliverUGCActivity$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.8.1
  * JD-Core Version:    0.7.0.1
  */

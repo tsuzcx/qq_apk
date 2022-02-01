@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import bofz;
 import com.tencent.common.app.AppInterface;
+import dov.com.qq.im.capture.CaptureContext;
 
 class SaveVideoActivity$1
   implements Runnable
@@ -10,13 +10,13 @@ class SaveVideoActivity$1
   
   public void run()
   {
-    AppInterface localAppInterface = bofz.a();
+    AppInterface localAppInterface = CaptureContext.a();
     SaveVideoActivity.a(localAppInterface, SaveVideoActivity.a(localAppInterface, this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity.1
  * JD-Core Version:    0.7.0.1
  */

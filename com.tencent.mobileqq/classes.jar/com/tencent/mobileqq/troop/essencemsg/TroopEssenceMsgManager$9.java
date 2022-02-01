@@ -1,24 +1,19 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bflc;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import mqq.os.MqqHandler;
 
-public class TroopEssenceMsgManager$9
+class TroopEssenceMsgManager$9
   implements Runnable
 {
-  public TroopEssenceMsgManager$9(bflc parambflc, long paramLong) {}
+  TroopEssenceMsgManager$9(TroopEssenceMsgManager paramTroopEssenceMsgManager, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    HashMap localHashMap = this.this$0.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopEssenceMsgManager", 2, "readEntity costTime" + (System.currentTimeMillis() - l));
-    }
-    ThreadManager.getUIHandler().post(new TroopEssenceMsgManager.9.1(this, localHashMap));
+    TroopEssenceMsgManager.a(this.this$0).getMessageFacade().b(String.valueOf(this.a), 1, this.b);
+    ThreadManager.getUIHandler().post(new TroopEssenceMsgManager.9.1(this));
   }
 }
 

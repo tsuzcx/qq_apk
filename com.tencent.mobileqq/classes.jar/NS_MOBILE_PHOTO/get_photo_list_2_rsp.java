@@ -22,23 +22,23 @@ public final class get_photo_list_2_rsp
   static s_outshare cache_shareinfo;
   static ArrayList<TimeLine> cache_timeline;
   static s_videoflow_user cache_user;
-  public Album albuminfo;
-  public int appid;
+  public Album albuminfo = null;
+  public int appid = 0;
   public String attach_info = "";
-  public Map<Integer, String> busi_param;
-  public int curindex;
-  public Map<Integer, byte[]> features;
-  public long finish;
-  public int lossy_service;
+  public Map<Integer, String> busi_param = null;
+  public int curindex = 0;
+  public Map<Integer, byte[]> features = null;
+  public long finish = 0L;
+  public int lossy_service = 0;
   public int photo_search_status = 1;
-  public ArrayList<s_picdata> photolist;
-  public stPhotoPoiAreaList pos;
-  public ArrayList<Album> recommand_album;
-  public RecommendPhotos recommend_photos;
-  public s_outshare shareinfo;
-  public ArrayList<TimeLine> timeline;
-  public long total;
-  public s_videoflow_user user;
+  public ArrayList<s_picdata> photolist = null;
+  public stPhotoPoiAreaList pos = null;
+  public ArrayList<Album> recommand_album = null;
+  public RecommendPhotos recommend_photos = null;
+  public s_outshare shareinfo = null;
+  public ArrayList<TimeLine> timeline = null;
+  public long total = 0L;
+  public s_videoflow_user user = null;
   
   static
   {

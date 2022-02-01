@@ -168,50 +168,6 @@ public abstract class Feature
     return false;
   }
   
-  private boolean systemLoadLibrarySafely(String paramString)
-  {
-    try
-    {
-      System.loadLibrary(paramString);
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      setPendingErrorMessage(paramString);
-      return false;
-    }
-    catch (Error paramString)
-    {
-      label7:
-      break label7;
-    }
-  }
-  
-  private boolean systemLoadSafely(String paramString, SharedLibraryInfo paramSharedLibraryInfo)
-  {
-    try
-    {
-      paramString = new File(paramString, paramSharedLibraryInfo.getFullLibName());
-      if ((FeatureManager.isEnableResourceCheck()) && (!isVersionOK(paramSharedLibraryInfo))) {
-        return false;
-      }
-      System.load(paramString.getPath());
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      setPendingErrorMessage(paramString);
-      return false;
-    }
-    catch (Error paramString)
-    {
-      label39:
-      break label39;
-    }
-  }
-  
   private String trimEnd(String paramString)
   {
     String str = paramString;
@@ -241,13 +197,13 @@ public abstract class Feature
       }
       localModelInfo = (ModelInfo)((Iterator)localObject).next();
       if (!isModelFileInAssets(localModelInfo)) {
-        break label110;
+        break label109;
       }
       bool3 = checkAssetsFileExist(localModelInfo);
       AEOpenRenderConfig.checkStrictMode(bool3, "file not found: " + localModelInfo);
       bool2 &= bool3;
     }
-    label110:
+    label109:
     File localFile = new File(getFinalResourcesDir(), localModelInfo.fileName);
     AEOpenRenderConfig.checkStrictMode(localFile.exists(), "file " + localModelInfo + " not found in " + getFinalResourcesDir());
     boolean bool1;
@@ -272,30 +228,27 @@ public abstract class Feature
   
   protected boolean checkAllSoFilesExists()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((getSharedLibraries() == null) || (getSharedLibraries().size() == 0))
-    {
-      bool1 = true;
-      return bool1;
+    if ((getSharedLibraries() == null) || (getSharedLibraries().size() == 0)) {
+      return true;
     }
-    label110:
     Object localObject2;
     if ((TextUtils.isEmpty(FeatureManager.getSoDir())) && (TextUtils.isEmpty(getSoDirOverrideFeatureManager())))
     {
       if (AEModule.getContext() != null) {}
-      for (bool1 = true;; bool1 = false)
+      for (boolean bool = true;; bool = false)
       {
-        AEOpenRenderConfig.checkStrictMode(bool1, "AEModule context is null");
-        bool1 = bool2;
-        if (AEModule.getContext() == null) {
+        AEOpenRenderConfig.checkStrictMode(bool, "AEModule context is null");
+        if (AEModule.getContext() != null) {
           break;
         }
-        localObject1 = new File(AEModule.getContext().getApplicationInfo().nativeLibraryDir).list();
-        if ((localObject1 != null) && (localObject1.length != 0)) {
-          break label110;
-        }
+        LogUtils.e("AEKitFeature", "[checkAllSoFilesExists] so load failed: AEModule context is null");
+        return false;
+      }
+      localObject1 = new File(AEModule.getContext().getApplicationInfo().nativeLibraryDir).list();
+      if ((localObject1 == null) || (localObject1.length == 0))
+      {
         AEOpenRenderConfig.checkStrictMode(false, "so load failed: no libs in apk");
+        LogUtils.e("AEKitFeature", "[checkAllSoFilesExists] so load failed: no libs in apk");
         return false;
       }
       localObject2 = getSharedLibraries().iterator();
@@ -305,6 +258,7 @@ public abstract class Feature
         if (!containsLib((String[])localObject1, getFullLibname(localSharedLibraryInfo.fileName)))
         {
           AEOpenRenderConfig.checkStrictMode(false, "so load failed: " + localSharedLibraryInfo + " not found in apk");
+          LogUtils.e("AEKitFeature", "[checkAllSoFilesExists] so load failed: " + localSharedLibraryInfo + " not found in apk");
           return false;
         }
       }
@@ -317,6 +271,7 @@ public abstract class Feature
       if (!new File(getFinalSoDir(), getFullLibname(((SharedLibraryInfo)localObject2).fileName)).exists())
       {
         AEOpenRenderConfig.checkStrictMode(false, "so load failed: " + localObject2 + " not found in " + getFinalSoDir());
+        LogUtils.e("AEKitFeature", "[checkAllSoFilesExists] so load failed: " + localObject2 + " not found in " + getFinalSoDir());
         return false;
       }
     }
@@ -513,23 +468,37 @@ public abstract class Feature
   
   protected boolean loadAllSoFiles()
   {
-    if ((FeatureManager.isEnableResourceCheck()) && (!checkAllSoFilesExists())) {
+    if ((FeatureManager.isEnableResourceCheck()) && (!checkAllSoFilesExists()))
+    {
+      LogUtils.e("AEKitFeature", "checkAllSoFilesExists : " + checkAllSoFilesExists());
+      LogUtils.e("AEKitFeature", "isEnableResourceCheck : " + FeatureManager.isEnableResourceCheck());
       return false;
     }
     this.isSoFilesLoaded = true;
     Iterator localIterator = getSharedLibraries().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      SharedLibraryInfo localSharedLibraryInfo = (SharedLibraryInfo)localIterator.next();
-      boolean bool = loadSoFile(localSharedLibraryInfo);
-      AEOpenRenderConfig.checkStrictMode(bool, "so load failed: " + localSharedLibraryInfo);
-      if ((!bool) && (FeatureManager.isEnableSoLoadCheck()))
+      SharedLibraryInfo localSharedLibraryInfo;
+      boolean bool;
+      if (localIterator.hasNext())
       {
-        LogUtils.i("AEKitFeature", "so load failed: " + localSharedLibraryInfo);
-        this.isSoFilesLoaded = false;
+        localSharedLibraryInfo = (SharedLibraryInfo)localIterator.next();
+        bool = loadSoFile(localSharedLibraryInfo);
+        AEOpenRenderConfig.checkStrictMode(bool, "so load failed: " + localSharedLibraryInfo);
+        if ((!bool) && (FeatureManager.isEnableSoLoadCheck()))
+        {
+          LogUtils.i("AEKitFeature", "so load failed: " + localSharedLibraryInfo);
+          this.isSoFilesLoaded = false;
+        }
+      }
+      else
+      {
+        return this.isSoFilesLoaded;
+      }
+      if (bool) {
+        LogUtils.i("AEKitFeature", "load so success:" + localSharedLibraryInfo);
       }
     }
-    return this.isSoFilesLoaded;
   }
   
   protected boolean loadSoFile(SharedLibraryInfo paramSharedLibraryInfo)
@@ -585,6 +554,51 @@ public abstract class Feature
     this.soDirOverrideFeatureManager = paramString;
   }
   
+  protected boolean systemLoadLibrarySafely(String paramString)
+  {
+    try
+    {
+      System.loadLibrary(paramString);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      LogUtils.e("AEKitFeature", paramString + " systemLoadLibrarySafely failed:" + localException.toString());
+      setPendingErrorMessage(localException);
+      return false;
+    }
+    catch (Error localError)
+    {
+      label7:
+      break label7;
+    }
+  }
+  
+  protected boolean systemLoadSafely(String paramString, SharedLibraryInfo paramSharedLibraryInfo)
+  {
+    try
+    {
+      paramString = new File(paramString, paramSharedLibraryInfo.getFullLibName());
+      if ((FeatureManager.isEnableResourceCheck()) && (!isVersionOK(paramSharedLibraryInfo))) {
+        return false;
+      }
+      System.load(paramString.getPath());
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      setPendingErrorMessage(paramString);
+      return false;
+    }
+    catch (Error paramString)
+    {
+      label39:
+      break label39;
+    }
+  }
+  
   public String toString()
   {
     return "Initializer(" + getName() + ", init=" + this.isInited + ")";
@@ -592,7 +606,7 @@ public abstract class Feature
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.Feature
  * JD-Core Version:    0.7.0.1
  */

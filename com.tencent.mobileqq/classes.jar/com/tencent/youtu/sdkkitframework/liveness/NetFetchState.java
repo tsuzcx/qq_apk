@@ -19,6 +19,7 @@ public class NetFetchState
   private static final String TAG = NetFetchState.class.getSimpleName();
   private String actionSeqData = "";
   private String appId;
+  private int backendProtoType = 0;
   private int changePointNum = 2;
   private String configUrl;
   private String controlConfig = "";
@@ -29,14 +30,14 @@ public class NetFetchState
   
   private void onReflectRequest()
   {
-    YTAGReflectLiveCheckInterface.getLiveCheckType(YtFSM.getInstance().getContext().currentAppContext, new NetFetchState.2(this));
+    YTAGReflectLiveCheckInterface.getLiveCheckType(YtFSM.getInstance().getContext().currentAppContext, new NetFetchState.3(this));
   }
   
   public void enter()
   {
     super.enter();
     YtFSM.getInstance().sendFSMEvent(new NetFetchState.1(this));
-    switch (NetFetchState.3.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
+    switch (NetFetchState.4.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
     {
     case 1: 
     default: 
@@ -55,7 +56,7 @@ public class NetFetchState
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
     super.loadStateWith(paramString, paramJSONObject);
-    label331:
+    label350:
     for (;;)
     {
       try
@@ -82,10 +83,10 @@ public class NetFetchState
           {
             this.actionSeqData += paramString.getString(i);
             if (i >= paramString.length() - 1) {
-              break label331;
+              break label350;
             }
             this.actionSeqData += ",";
-            break label331;
+            break label350;
           }
         }
         else
@@ -103,6 +104,9 @@ public class NetFetchState
           }
           if (paramJSONObject.has("select_data")) {
             this.selectData = paramJSONObject.getJSONObject("select_data");
+          }
+          if (paramJSONObject.has("backend_proto_type")) {
+            this.backendProtoType = paramJSONObject.getInt("backend_proto_type");
           }
           if (!paramJSONObject.has("net_request_timeout_ms")) {
             break;
@@ -126,10 +130,12 @@ public class NetFetchState
   public void moveToNextState()
   {
     super.moveToNextState();
-    switch (NetFetchState.3.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
+    switch (NetFetchState.4.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
     {
-    case 1: 
     default: 
+      String str = "msg_param_error current unknown work mode:" + YtFSM.getInstance().getWorkMode();
+      YtSDKStats.getInstance().reportError(4194304, str);
+      YtFSM.getInstance().sendFSMEvent(new NetFetchState.2(this, str));
       return;
     }
     YtFSM.getInstance().transitNextRound(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
@@ -147,7 +153,7 @@ public class NetFetchState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.NetFetchState
  * JD-Core Version:    0.7.0.1
  */

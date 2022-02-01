@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.webviewplugin;
 
 import android.app.Activity;
-import bifw;
-import bikp;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 
-public class WebViewJumpPlugin$5
+class WebViewJumpPlugin$5
   implements Runnable
 {
-  public WebViewJumpPlugin$5(bikp parambikp) {}
+  WebViewJumpPlugin$5(WebViewJumpPlugin paramWebViewJumpPlugin) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class WebViewJumpPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin.5
  * JD-Core Version:    0.7.0.1
  */

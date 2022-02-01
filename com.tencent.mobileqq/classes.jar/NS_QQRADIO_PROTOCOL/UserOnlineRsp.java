@@ -8,7 +8,7 @@ public final class UserOnlineRsp
   extends JceStruct
 {
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

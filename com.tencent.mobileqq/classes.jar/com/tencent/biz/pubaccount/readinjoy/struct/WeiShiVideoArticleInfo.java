@@ -8,14 +8,13 @@ import kotlin.jvm.internal.Intrinsics;
 import localpb.readinjoy.Readinjoy.ArticleSummary;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import rss;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.ArticleSummary;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/struct/WeiShiVideoArticleInfo;", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseVideoArticleInfo;", "()V", "in", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "videoSubscriptColor", "", "videoSubscriptTxt", "writeToParcel", "", "dest", "flags", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class WeiShiVideoArticleInfo
   extends BaseVideoArticleInfo
 {
-  public static final rss Companion = new rss(null);
+  public static final WeiShiVideoArticleInfo.Companion Companion = new WeiShiVideoArticleInfo.Companion(null);
   @JvmField
   @NotNull
   public static final String TABLE_NAME;
@@ -66,7 +65,7 @@ public final class WeiShiVideoArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo
  * JD-Core Version:    0.7.0.1
  */

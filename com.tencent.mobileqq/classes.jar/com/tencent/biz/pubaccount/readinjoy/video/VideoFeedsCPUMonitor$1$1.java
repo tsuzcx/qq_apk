@@ -1,19 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
-import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pkh;
-import shz;
-import sia;
 
-public class VideoFeedsCPUMonitor$1$1
+class VideoFeedsCPUMonitor$1$1
   implements Runnable
 {
-  public VideoFeedsCPUMonitor$1$1(sia paramsia) {}
+  VideoFeedsCPUMonitor$1$1(VideoFeedsCPUMonitor.1 param1) {}
   
   public void run()
   {
@@ -25,13 +24,13 @@ public class VideoFeedsCPUMonitor$1$1
         Thread.sleep(10000L);
         localThread.start();
         l1 = System.currentTimeMillis();
-        l2 = shz.a();
-        if (shz.a().get() == 2)
+        l2 = VideoFeedsCPUMonitor.a();
+        if (VideoFeedsCPUMonitor.a().get() == 2)
         {
           l3 = System.currentTimeMillis();
-          shz.b().getAndAdd(1);
+          VideoFeedsCPUMonitor.b().getAndAdd(1);
           if (QLog.isColorLevel()) {
-            QLog.d(shz.a(), 2, "cost = " + (l3 - l1) + ", runCount = " + l2);
+            QLog.d(VideoFeedsCPUMonitor.a(), 2, "cost = " + (l3 - l1) + ", runCount = " + l2);
           }
           localJSONObject = new JSONObject();
         }
@@ -45,21 +44,21 @@ public class VideoFeedsCPUMonitor$1$1
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(shz.a(), 2, "InterruptedException");
+        QLog.d(VideoFeedsCPUMonitor.a(), 2, "InterruptedException");
         continue;
       }
       try
       {
         localJSONObject.put("result", String.valueOf(l2));
         localJSONObject.put("costTime", String.valueOf(l3 - l1));
-        localJSONObject.put("deviceModel", DeviceInfoUtil.getDeviceModel());
-        localJSONObject.put("manufactureInfo", DeviceInfoUtil.getManufactureInfo());
-        localJSONObject.put("uin", pkh.a());
-        olh.a(null, null, "0X8009576", "0X8009576", 0, 0, pkh.a(), "1", "", localJSONObject.toString(), false);
+        localJSONObject.put("deviceModel", DeviceInfoUtil.d());
+        localJSONObject.put("manufactureInfo", DeviceInfoUtil.h());
+        localJSONObject.put("uin", ReadInJoyUtils.a());
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009576", "0X8009576", 0, 0, ReadInJoyUtils.a(), "1", "", localJSONObject.toString(), false);
         if (localThread.isAlive()) {
           localThread.interrupt();
         }
-        shz.a().set(0);
+        VideoFeedsCPUMonitor.a().set(0);
         return;
       }
       catch (JSONException localJSONException)
@@ -71,7 +70,7 @@ public class VideoFeedsCPUMonitor$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCPUMonitor.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public class QWalletAnimDialog
   private AnimationView.AnimationInfo mAnimInfo;
   private AnimationView mAnimationView;
   private BroadcastReceiver mBroadcastReceiver = new QWalletAnimDialog.2(this);
-  protected boolean mIsFirstRepeated;
+  protected boolean mIsFirstRepeated = false;
   protected String mNickName;
   protected long mReportSeq;
   protected String mUin;
@@ -40,14 +40,14 @@ public class QWalletAnimDialog
   {
     super.requestWindowFeature(1);
     Object localObject = getWindow();
-    setContentView(2131562090);
+    setContentView(2131562228);
     ((Window)localObject).setLayout(-1, -1);
     ((Window)localObject).setBackgroundDrawable(new ColorDrawable(0));
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       ((Window)localObject).addFlags(67108864);
     }
     setCanceledOnTouchOutside(false);
-    this.mAnimationView = ((AnimationView)findViewById(2131364403));
+    this.mAnimationView = ((AnimationView)findViewById(2131364510));
     this.mAnimationView.setAnimationFromInfo(this.mAnimInfo);
     this.mAnimationView.setAnimationListener(new QWalletAnimDialog.1(this));
     localObject = new IntentFilter();
@@ -86,7 +86,7 @@ public class QWalletAnimDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.QWalletAnimDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/w9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="65.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/adk" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
-            <TextView android:id="@id/dbd" android:paddingLeft="15.0dip" android:paddingTop="14.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x1p" android:singleLine="false" android:layout_weight="1.0" style="@style/t4" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:background="@drawable/dw1" android:paddingTop="1.0dip" android:paddingBottom="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="vertical" android:background="@drawable/a3q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip">
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
-                    <TextView android:id="@id/jfo" android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/e3k" style="@style/t9" />
-                    <com.tenpay.sdk.view.ClearableEditText android:id="@id/dba" android:layout_width="fill_parent" android:hint="@string/x1o" android:singleLine="true" style="@style/to" />
-                </LinearLayout>
-                <View style="@style/ta" />
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
-                    <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/e9b" style="@style/t9" />
-                    <TextView android:textColor="#ff777777" android:layout_width="fill_parent" android:text="@string/q3l" android:singleLine="true" android:maxLength="18" style="@style/to" />
-                </LinearLayout>
-                <View style="@style/ta" />
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
-                    <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/e9_" style="@style/t9" />
-                    <com.tenpay.sdk.view.ClearableEditText android:id="@id/db9" android:layout_width="fill_parent" android:hint="@string/x1m" android:singleLine="true" android:maxLength="18" style="@style/to" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-        <View android:id="@id/a9c" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="15.0dip" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/dw1" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginTop="45.0dip">
-            <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/x1n" style="@style/t9" />
-            <TextView android:textColor="@android:color/black" android:id="@id/ndr" android:layout_width="fill_parent" android:hint="@string/e8x" android:singleLine="true" android:maxLength="18" style="@style/to" />
-        </LinearLayout>
-        <Button android:enabled="false" android:id="@id/db6" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="9.0dip" android:text="@string/e4o" style="@style/sv" />
-    </LinearLayout>
-    <com.tenpay.api.MyKeyboardWindow android:id="@id/f4i" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/a2o" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/ifd" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/wvq" />
+    <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center" android:id="@id/nbb" android:background="@drawable/bln" android:layout_width="53.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:text="进群" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/nbb" android:layout_toRightOf="@id/a2o" android:layout_centerVertical="true">
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="1" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+</RelativeLayout>

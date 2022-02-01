@@ -1,16 +1,15 @@
 package cooperation.vip.manager;
 
-import bmni;
+import com.tencent.mobileqq.tianshu.data.TianShuAdPosItemData;
 import cooperation.qzone.util.QZLog;
-import cooperation.vip.tianshu.TianShuAdPosItemData;
 import cooperation.vip.tianshu.TianShuManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileBannerTianshuManger$1
+class FileBannerTianshuManger$1
   implements Runnable
 {
-  public FileBannerTianshuManger$1(bmni parambmni) {}
+  FileBannerTianshuManger$1(FileBannerTianshuManger paramFileBannerTianshuManger) {}
   
   public void run()
   {
@@ -19,15 +18,15 @@ public class FileBannerTianshuManger$1
     }
     ArrayList localArrayList = new ArrayList();
     TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-    localTianShuAdPosItemData.mPosId = bmni.jdField_a_of_type_Int;
-    localTianShuAdPosItemData.mNeedCnt = 1;
+    localTianShuAdPosItemData.jdField_a_of_type_Int = FileBannerTianshuManger.jdField_a_of_type_Int;
+    localTianShuAdPosItemData.b = 1;
     localArrayList.add(localTianShuAdPosItemData);
-    TianShuManager.getInstance().requestAdv(localArrayList, this.this$0.jdField_a_of_type_CooperationVipTianshuTianShuGetAdvCallback);
+    TianShuManager.getInstance().requestAdv(localArrayList, this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuDataTianShuGetAdvCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.manager.FileBannerTianshuManger.1
  * JD-Core Version:    0.7.0.1
  */

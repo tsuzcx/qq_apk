@@ -1,37 +1,36 @@
 package com.tencent.mobileqq.nearby.smooth;
 
 import android.view.View;
-import aymv;
 import java.lang.ref.SoftReference;
 
 final class ItemLoader$DisplayItemRunnable<Params, Result>
   implements Runnable
 {
-  private final aymv<Params, Result> jdField_a_of_type_Aymv;
+  private final ItemLoader.ItemRequest<Params, Result> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest;
   private final ItemLoader<Params, Result> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
   private final boolean jdField_a_of_type_Boolean;
   
-  public ItemLoader$DisplayItemRunnable(ItemLoader<Params, Result> paramItemLoader, aymv<Params, Result> paramaymv, boolean paramBoolean)
+  public ItemLoader$DisplayItemRunnable(ItemLoader<Params, Result> paramItemLoader, ItemLoader.ItemRequest<Params, Result> paramItemRequest, boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader = paramItemLoader;
-    this.jdField_a_of_type_Aymv = paramaymv;
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest = paramItemRequest;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Aymv)) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest)) {}
     View localView;
     do
     {
       return;
-      if (this.jdField_a_of_type_Aymv.c == null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.c == null) {
         throw new IllegalStateException("Result should not be null when displaying an item part");
       }
-      localView = (View)this.jdField_a_of_type_Aymv.b.get();
+      localView = (View)this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.b.get();
     } while (localView == null);
-    Object localObject = this.jdField_a_of_type_Aymv.c.get();
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localView, localObject, this.jdField_a_of_type_Aymv.a.intValue(), this.jdField_a_of_type_Boolean);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.c.get();
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localView, localObject, this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.a.intValue(), this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -17,13 +17,13 @@ class QfileBaseCloudFileTabView$15
       if (QLog.isColorLevel()) {
         QLog.i(QfileBaseCloudFileTabView.b, 2, "setSelect[" + this.a + "] success mFileListView");
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.expandGroup(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.15
  * JD-Core Version:    0.7.0.1
  */

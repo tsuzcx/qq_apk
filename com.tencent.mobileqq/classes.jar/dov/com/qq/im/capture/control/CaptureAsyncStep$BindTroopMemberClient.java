@@ -1,25 +1,24 @@
 package dov.com.qq.im.capture.control;
 
-import aady;
-import bohb;
+import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
 public class CaptureAsyncStep$BindTroopMemberClient
   extends AsyncStep
 {
-  public aady a;
+  public TroopMemberApiClient a;
   
   public int a()
   {
-    this.a = aady.a();
+    this.a = TroopMemberApiClient.a();
     this.a.a();
-    this.a.e(new bohb(this));
+    this.a.e(new CaptureAsyncStep.BindTroopMemberClient.1(this));
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.control.CaptureAsyncStep.BindTroopMemberClient
  * JD-Core Version:    0.7.0.1
  */

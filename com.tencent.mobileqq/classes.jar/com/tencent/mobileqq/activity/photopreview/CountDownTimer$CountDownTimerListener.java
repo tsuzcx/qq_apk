@@ -4,43 +4,38 @@ import android.os.SystemClock;
 
 public abstract class CountDownTimer$CountDownTimerListener
 {
-  private CountDownTimer countDownTimer;
-  private long mOverTime;
-  private long mStopTimeInFuture;
+  private long jdField_a_of_type_Long;
+  private CountDownTimer jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
+  private long b;
   
   public CountDownTimer$CountDownTimerListener(long paramLong)
   {
-    setOverTime(paramLong);
+    a(paramLong);
   }
   
-  public CountDownTimer$CountDownTimerListener(CountDownTimer paramCountDownTimer)
+  public final void a()
   {
-    this.countDownTimer = paramCountDownTimer;
-  }
-  
-  public abstract void onFinish();
-  
-  public abstract void onTick(long paramLong);
-  
-  public void setOverTime(long paramLong)
-  {
-    if (this.countDownTimer != null) {
-      this.countDownTimer.setTime(paramLong);
-    }
-    this.mOverTime = paramLong;
-    this.mStopTimeInFuture = (SystemClock.elapsedRealtime() + 1000L * paramLong);
-  }
-  
-  public final void tick()
-  {
-    long l = this.mStopTimeInFuture - SystemClock.elapsedRealtime();
+    long l = this.jdField_a_of_type_Long - SystemClock.elapsedRealtime();
     if (l > 1000L)
     {
-      onTick(l);
+      b(l);
       return;
     }
-    onFinish();
+    b();
   }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer.a(paramLong);
+    }
+    this.b = paramLong;
+    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + 1000L * paramLong);
+  }
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
 }
 
 

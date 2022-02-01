@@ -2,12 +2,12 @@ package com.tencent.mobileqq.nearby;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anvx;
-import bdqg;
 import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout12;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 
@@ -31,11 +31,11 @@ public class NearbyFlowerMessage
   public String fromName = "";
   public String fromUrl = "";
   public String groupCode;
-  public boolean is1v1;
-  public boolean isAnonymous;
-  public boolean isRead;
-  public boolean isReceive;
-  public boolean isSend;
+  public boolean is1v1 = false;
+  public boolean isAnonymous = false;
+  public boolean isRead = false;
+  public boolean isReceive = false;
+  public boolean isSend = false;
   public long msgTime;
   public String pID = "";
   public String pURL = "";
@@ -44,7 +44,7 @@ public class NearbyFlowerMessage
   public String sID = "";
   public String sNick = "";
   public String sUin = "";
-  public int score;
+  public int score = 0;
   public int serviceID = -1;
   public long time;
   public String toName = "";
@@ -67,9 +67,9 @@ public class NearbyFlowerMessage
       if ((paramMessageForStructing.mMsgServiceID == 52) && (paramMessageForStructing.getItemCount() > 0))
       {
         paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-        if ((paramMessageForStructing instanceof bdqg))
+        if ((paramMessageForStructing instanceof StructMsgItemLayout12))
         {
-          paramMessageForStructing = (bdqg)paramMessageForStructing;
+          paramMessageForStructing = (StructMsgItemLayout12)paramMessageForStructing;
           if (!paramMessageForStructing.jdField_a_of_type_Boolean) {
             paramMessageForStructing.a();
           }
@@ -107,10 +107,10 @@ public class NearbyFlowerMessage
         continue;
       }
       paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-      if (!(paramMessageForStructing instanceof bdqg)) {
+      if (!(paramMessageForStructing instanceof StructMsgItemLayout12)) {
         continue;
       }
-      paramMessageForStructing = (bdqg)paramMessageForStructing;
+      paramMessageForStructing = (StructMsgItemLayout12)paramMessageForStructing;
       if (!paramMessageForStructing.jdField_a_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
@@ -164,7 +164,7 @@ public class NearbyFlowerMessage
             {
               str = paramQQAppInterface.getAVNotifyCenter().b(this.rUin);
               if (TextUtils.isEmpty(str)) {
-                break label845;
+                break label847;
               }
               i = str.lastIndexOf("voice_hall_avatar_");
               this.toUrl = (str.substring(0, i) + "voice_hall_avatar_" + localObject[2]);
@@ -181,15 +181,15 @@ public class NearbyFlowerMessage
         else
         {
           if (!this.isAnonymous) {
-            break label1011;
+            break label1013;
           }
           if (!this.is1v1) {
-            break label962;
+            break label964;
           }
           if (!this.isSend) {
-            break label875;
+            break label877;
           }
-          this.brief = (anvx.a(2131706619) + this.toName + anvx.a(2131706624));
+          this.brief = (HardCodeUtil.a(2131707158) + this.toName + HardCodeUtil.a(2131707163));
           if (QLog.isColorLevel()) {
             QLog.i("NearbyFlowerMessage", 2, paramMessageForStructing.jdField_a_of_type_AndroidOsBundle.toString());
           }
@@ -202,28 +202,28 @@ public class NearbyFlowerMessage
       }
       catch (Throwable localThrowable)
       {
-        label962:
+        label964:
         for (;;)
         {
           this.score = 0;
           continue;
           this.fromUrl = ("voice_hall_avatar_" + localThrowable[0]);
           continue;
-          label845:
+          label847:
           this.toUrl = ("voice_hall_avatar_" + localThrowable[2]);
           continue;
-          label875:
+          label877:
           if (this.isReceive)
           {
             if ((TextUtils.isEmpty(this.fromName)) || (TextUtils.equals(this.fromName, "null"))) {
               this.fromName = paramQQAppInterface.getAVNotifyCenter().a(this.sUin);
             }
-            this.brief = (this.fromName + anvx.a(2131706623) + anvx.a(2131706616));
+            this.brief = (this.fromName + HardCodeUtil.a(2131707162) + HardCodeUtil.a(2131707155));
             continue;
-            this.brief = (this.fromName + anvx.a(2131706615) + this.toName + anvx.a(2131706620));
+            this.brief = (this.fromName + HardCodeUtil.a(2131707154) + this.toName + HardCodeUtil.a(2131707159));
             continue;
-            label1011:
-            this.brief = (this.sNick + anvx.a(2131706622) + this.rNick + anvx.a(2131706625));
+            label1013:
+            this.brief = (this.sNick + HardCodeUtil.a(2131707161) + this.rNick + HardCodeUtil.a(2131707164));
           }
         }
       }

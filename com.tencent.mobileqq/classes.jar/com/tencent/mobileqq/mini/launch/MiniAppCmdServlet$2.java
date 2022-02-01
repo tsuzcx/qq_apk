@@ -1,15 +1,27 @@
 package com.tencent.mobileqq.mini.launch;
 
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.api.IMiniCallback;
+import com.tencent.qphone.base.util.QLog;
 
 class MiniAppCmdServlet$2
-  implements Runnable
+  implements IMiniCallback
 {
-  MiniAppCmdServlet$2(MiniAppCmdServlet paramMiniAppCmdServlet) {}
+  MiniAppCmdServlet$2(MiniAppCmdServlet paramMiniAppCmdServlet, CmdCallback paramCmdCallback, String paramString) {}
   
-  public void run()
+  public void onCallbackResult(boolean paramBoolean, Bundle paramBundle)
   {
-    MiniAppUtils.updateMiniAppList(6);
+    try
+    {
+      if (this.val$callback != null) {
+        this.val$callback.onCmdResult(paramBoolean, paramBundle);
+      }
+      return;
+    }
+    catch (Throwable paramBundle)
+    {
+      QLog.e("MiniAppCmdServlet", 1, "cmd response exception. cmd=" + this.val$cmd, paramBundle);
+    }
   }
 }
 

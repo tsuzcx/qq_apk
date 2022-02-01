@@ -18,26 +18,26 @@ public final class MsgInfo
   static byte[] cache_vMsgCookies;
   static ArrayList<String> cache_vNickName;
   static byte[] cache_vRemarkOfSender;
-  public long lFromInstId;
-  public long lFromUin;
+  public long lFromInstId = 0L;
+  public long lFromUin = 0L;
   public long lLastChangeTime = 1L;
-  public long lMsgUid;
-  public short shMsgSeq;
-  public short shMsgType;
-  public TempMsgHead stC2CTmpMsgHead;
-  public shareData stShareData;
+  public long lMsgUid = 0L;
+  public short shMsgSeq = 0;
+  public short shMsgType = 0;
+  public TempMsgHead stC2CTmpMsgHead = null;
+  public shareData stShareData = null;
   public String strFromMobile = "";
   public String strFromName = "";
   public String strMsg = "";
-  public long uAppShareID;
-  public long uMsgTime;
-  public int uRealMsgTime;
-  public byte[] vAppShareCookie;
-  public ArrayList<CPicInfo> vCPicInfo;
-  public byte[] vMsg;
-  public byte[] vMsgCookies;
-  public ArrayList<String> vNickName;
-  public byte[] vRemarkOfSender;
+  public long uAppShareID = 0L;
+  public long uMsgTime = 0L;
+  public int uRealMsgTime = 0;
+  public byte[] vAppShareCookie = null;
+  public ArrayList<CPicInfo> vCPicInfo = null;
+  public byte[] vMsg = null;
+  public byte[] vMsgCookies = null;
+  public ArrayList<String> vNickName = null;
+  public byte[] vRemarkOfSender = null;
   
   public MsgInfo() {}
   

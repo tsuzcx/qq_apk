@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahkx;
 import com.tencent.mobileqq.widget.BubbleImageView;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TroopGiftMsgItemBuilder$4
+class TroopGiftMsgItemBuilder$4
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$4(ahkx paramahkx, String paramString1, BubbleImageView paramBubbleImageView, String paramString2, int paramInt) {}
+  TroopGiftMsgItemBuilder$4(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder, String paramString1, BubbleImageView paramBubbleImageView, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -22,12 +21,12 @@ public class TroopGiftMsgItemBuilder$4
       }
     }
     this.this$0.b.remove(this.jdField_a_of_type_JavaLangString);
-    ahkx.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.b, this.jdField_a_of_type_Int);
+    TroopGiftMsgItemBuilder.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.b, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

@@ -4,13 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import axwj;
 import java.io.Serializable;
 
 public class LocationInfo
   implements Parcelable, Serializable, Cloneable
 {
-  public static final Parcelable.Creator<LocationInfo> CREATOR = new axwj();
+  public static final Parcelable.Creator<LocationInfo> CREATOR = new LocationInfo.1();
   public String address = "";
   public String city = "";
   boolean isForeign = false;
@@ -20,7 +19,7 @@ public class LocationInfo
   
   public LocationInfo() {}
   
-  public LocationInfo(Parcel paramParcel)
+  protected LocationInfo(Parcel paramParcel)
   {
     this.lng = paramParcel.readString();
     this.lat = paramParcel.readString();

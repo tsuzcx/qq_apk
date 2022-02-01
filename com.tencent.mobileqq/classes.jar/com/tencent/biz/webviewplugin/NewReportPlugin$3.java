@@ -1,16 +1,15 @@
 package com.tencent.biz.webviewplugin;
 
-import aaqo;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bisl;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 
-public final class NewReportPlugin$3
+final class NewReportPlugin$3
   implements Runnable
 {
-  public NewReportPlugin$3(Bundle paramBundle, String paramString1, int paramInt, BaseActivity paramBaseActivity, String paramString2, String paramString3, String paramString4, bisl parambisl) {}
+  NewReportPlugin$3(Bundle paramBundle, String paramString1, int paramInt, BaseActivity paramBaseActivity, String paramString2, String paramString3, String paramString4, QQProgressDialog paramQQProgressDialog) {}
   
   public void run()
   {
@@ -36,15 +35,15 @@ public final class NewReportPlugin$3
         }
       }
       label236:
-      for (String str1 = aaqo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.b, this.c, this.jdField_a_of_type_Int, (Bundle)localObject1);; str1 = "chatmsg%3A")
+      for (String str1 = NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.b, this.c, this.jdField_a_of_type_Int, (Bundle)localObject1);; str1 = "chatmsg%3A")
       {
-        localObject1 = aaqo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.d, "", "", this.c, "", "", this.jdField_a_of_type_Int, (String)localObject2, str1, str2, str3, str4, str5, str6, str7, str8, (Bundle)localObject1);
+        localObject1 = NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.d, "", "", this.c, "", "", this.jdField_a_of_type_Int, (String)localObject2, str1, str2, str3, str4, str5, str6, str7, str8, (Bundle)localObject1);
         if (QLog.isColorLevel()) {
           QLog.i("NewReportPlugin", 2, String.format("nearbySafetyRealReport post: %s", new Object[] { localObject1 }));
         }
         this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new NewReportPlugin.3.1(this, (String)localObject1));
         return;
-        localObject2 = aaqo.a(this.jdField_a_of_type_Int);
+        localObject2 = NewReportPlugin.a(this.jdField_a_of_type_Int);
         break;
       }
       return;
@@ -57,7 +56,7 @@ public final class NewReportPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.3
  * JD-Core Version:    0.7.0.1
  */

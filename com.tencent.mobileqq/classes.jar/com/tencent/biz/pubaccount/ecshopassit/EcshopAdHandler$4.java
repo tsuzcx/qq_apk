@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import achn;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
@@ -19,14 +19,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import onx;
 import org.json.JSONObject;
 import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
 
-public class EcshopAdHandler$4
+class EcshopAdHandler$4
   implements Runnable
 {
-  public EcshopAdHandler$4(onx paramonx, int paramInt, List paramList1, List paramList2, boolean paramBoolean, String paramString) {}
+  EcshopAdHandler$4(EcshopAdHandler paramEcshopAdHandler, int paramInt, List paramList1, List paramList2, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -38,21 +37,21 @@ public class EcshopAdHandler$4
         qq_ad.QQAdGet localQQAdGet = new qq_ad.QQAdGet();
         localQQAdGet.trigger_type.set(this.jdField_a_of_type_Int);
         Object localObject1 = new GdtDeviceInfoHelper.Params();
-        ((GdtDeviceInfoHelper.Params)localObject1).businessIdForAidTicketAndTaidTicket = "cd22b9";
+        ((GdtDeviceInfoHelper.Params)localObject1).jdField_a_of_type_JavaLangString = "cd22b9";
         long l = System.currentTimeMillis();
-        localObject1 = GdtDeviceInfoHelper.create(BaseApplicationImpl.getApplication().getApplicationContext(), (GdtDeviceInfoHelper.Params)localObject1);
+        localObject1 = GdtDeviceInfoHelper.a(BaseApplicationImpl.getApplication().getApplicationContext(), (GdtDeviceInfoHelper.Params)localObject1);
         if (localObject1 == null) {
           break label403;
         }
-        localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).deviceInfo;
-        Object localObject3 = achn.a((PBField)localObject1);
+        localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).a;
+        Object localObject3 = GdtJsonPbUtil.a((PBField)localObject1);
         if ((localObject3 != null) && (localObject3 != JSONObject.NULL))
         {
           localObject3 = localObject3.toString();
           if (QLog.isColorLevel()) {
             QLog.i("Ecshop_EcshopAdHandler", 2, (String)localObject3);
           }
-          if (!StringUtil.isEmpty((String)localObject3)) {
+          if (!StringUtil.a((String)localObject3)) {
             localQQAdGet.device_info.set((String)localObject3);
           }
         }
@@ -79,7 +78,7 @@ public class EcshopAdHandler$4
           System.arraycopy(this.this$0.jdField_a_of_type_JavaUtilSet.toArray(), i - 5, localObject1, 0, 5);
           localObject1 = Arrays.asList((Object[])localObject1);
           break label395;
-          localObject1 = new ToServiceMsg("mobileqq.service", this.this$0.app.getCurrentUin(), this.jdField_a_of_type_JavaLangString);
+          localObject1 = new ToServiceMsg("mobileqq.service", EcshopAdHandler.a(this.this$0).getCurrentUin(), this.jdField_a_of_type_JavaLangString);
           ((ToServiceMsg)localObject1).putWupBuffer(localQQAdGet.toByteArray());
           this.this$0.sendPbReq((ToServiceMsg)localObject1);
           this.this$0.jdField_a_of_type_Long = (System.currentTimeMillis() / 1000L);
@@ -105,7 +104,7 @@ public class EcshopAdHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler.4
  * JD-Core Version:    0.7.0.1
  */

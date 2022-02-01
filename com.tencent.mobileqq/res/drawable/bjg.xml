@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/skin_aio_at_white_for_theme" />
-</shape>
+    <item android:state_selected="false" android:drawable="@drawable/g5t" />
+    <item android:state_selected="true" android:drawable="@drawable/g6a" />
+</selector>

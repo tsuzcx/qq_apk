@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import atpt;
-import bedw;
-import bedy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuddyFileDataLineMsgTips$1
+class BuddyFileDataLineMsgTips$1
   implements Runnable
 {
   public void run()

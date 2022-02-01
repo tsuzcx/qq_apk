@@ -24,7 +24,7 @@ class GameResultFragment$4
       if (localBitmap1 != null)
       {
         QLog.d("GameResultFragment", 2, "initViewForGameKnowledge save bitmap " + localBitmap1.getWidth());
-        int i = ViewUtils.dip2px(300.0F);
+        int i = ViewUtils.a(300.0F);
         Bitmap localBitmap2 = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
         Canvas localCanvas = new Canvas(localBitmap2);
         localCanvas.drawARGB(255, 255, 255, 255);
@@ -42,7 +42,7 @@ class GameResultFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameresult.GameResultFragment.4
  * JD-Core Version:    0.7.0.1
  */

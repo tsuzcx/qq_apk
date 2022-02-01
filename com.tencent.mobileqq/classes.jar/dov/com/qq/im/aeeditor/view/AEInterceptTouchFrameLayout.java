@@ -6,12 +6,11 @@ import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import bodt;
 
 public class AEInterceptTouchFrameLayout
   extends FrameLayout
 {
-  private bodt a;
+  private AEInterceptTouchFrameLayout.InterceptTouchEventHandler a;
   
   public AEInterceptTouchFrameLayout(@NonNull Context paramContext)
   {
@@ -44,14 +43,14 @@ public class AEInterceptTouchFrameLayout
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setInterceptTouchEventHandler(bodt parambodt)
+  public void setInterceptTouchEventHandler(AEInterceptTouchFrameLayout.InterceptTouchEventHandler paramInterceptTouchEventHandler)
   {
-    this.a = parambodt;
+    this.a = paramInterceptTouchEventHandler;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.AEInterceptTouchFrameLayout
  * JD-Core Version:    0.7.0.1
  */

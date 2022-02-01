@@ -20,7 +20,7 @@ public final class qq_common$DeviceExt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tencent.gdt.qq_common.DeviceExt
  * JD-Core Version:    0.7.0.1
  */

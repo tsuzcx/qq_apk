@@ -1,14 +1,14 @@
 package com.tencent.gdtad.statistics;
 
-import acho;
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
+import com.tencent.gdtad.log.GdtLog;
 import org.json.JSONObject;
 
-public final class GdtReportForAntiSpam$1
+final class GdtReportForAntiSpam$1
   implements Runnable
 {
-  public GdtReportForAntiSpam$1(byte[] paramArrayOfByte, JSONObject paramJSONObject) {}
+  GdtReportForAntiSpam$1(byte[] paramArrayOfByte, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -19,16 +19,16 @@ public final class GdtReportForAntiSpam$1
     localParams.requestData = this.jdField_a_of_type_ArrayOfByte;
     if (!localParams.canSend())
     {
-      acho.d("GdtReportForAntiSpam", "reportAntiSpam error");
+      GdtLog.d("GdtReportForAntiSpam", "reportAntiSpam error");
       return;
     }
     AdHttp.send(localParams);
-    acho.b("GdtReportForAntiSpam", String.format("reportAntiSpam responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.jdField_a_of_type_OrgJsonJSONObject.toString() }));
+    GdtLog.b("GdtReportForAntiSpam", String.format("reportAntiSpam responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.jdField_a_of_type_OrgJsonJSONObject.toString() }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtReportForAntiSpam.1
  * JD-Core Version:    0.7.0.1
  */

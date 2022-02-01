@@ -41,7 +41,7 @@ public class MiniAppTextArea
     }
     String str = paramJSONObject.optString("placeholder");
     JSONObject localJSONObject2 = paramJSONObject.optJSONObject("placeholderStyle");
-    if (!StringUtil.isEmpty(str))
+    if (!StringUtil.a(str))
     {
       setHint(str);
       setHintTextColor(Color.parseColor(localJSONObject2.optString("color")));

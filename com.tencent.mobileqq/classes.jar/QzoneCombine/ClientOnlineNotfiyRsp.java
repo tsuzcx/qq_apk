@@ -8,7 +8,7 @@ public final class ClientOnlineNotfiyRsp
   extends JceStruct
 {
   static byte[] cache_AttachInfo = (byte[])new byte[1];
-  public byte[] AttachInfo;
+  public byte[] AttachInfo = null;
   
   static
   {

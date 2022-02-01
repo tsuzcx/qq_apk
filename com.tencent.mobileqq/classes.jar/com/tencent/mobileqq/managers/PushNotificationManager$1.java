@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.managers;
 
-import aora;
-import aqxe;
-import ardv;
-import awtn;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.config.business.QConfPushBean;
 
-public class PushNotificationManager$1
+class PushNotificationManager$1
   implements Runnable
 {
-  public PushNotificationManager$1(awtn paramawtn, QQAppInterface paramQQAppInterface) {}
+  PushNotificationManager$1(PushNotificationManager paramPushNotificationManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    awtn.a(this.this$0, (ardv)aqxe.a().a(390));
-    aora.a(this.a);
+    PushNotificationManager.a(this.this$0, (QConfPushBean)QConfigManager.a().a(390));
+    MsgNotifyPushDialog.a(this.a);
   }
 }
 

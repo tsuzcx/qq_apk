@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.emosm;
 
-import asda;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 
-public class CustomEmotionRoamingDBManagerBase$2
+class CustomEmotionRoamingDBManagerBase$2
   implements Runnable
 {
-  public CustomEmotionRoamingDBManagerBase$2(asda paramasda, int paramInt, CustomEmotionBase paramCustomEmotionBase) {}
+  CustomEmotionRoamingDBManagerBase$2(CustomEmotionRoamingDBManagerBase paramCustomEmotionRoamingDBManagerBase, int paramInt, CustomEmotionBase paramCustomEmotionBase) {}
   
   public void run()
   {
@@ -55,7 +54,7 @@ public class CustomEmotionRoamingDBManagerBase$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.2
  * JD-Core Version:    0.7.0.1
  */

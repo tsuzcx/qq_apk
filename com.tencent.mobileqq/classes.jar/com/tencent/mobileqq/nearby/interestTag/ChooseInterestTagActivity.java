@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
-import Override;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -38,44 +37,29 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import axqt;
-import axqx;
-import axtu;
-import axtv;
-import axtw;
-import axtx;
-import axty;
-import axtz;
-import axua;
-import axub;
-import axuc;
-import axud;
-import axue;
-import axuf;
-import axuh;
-import axuk;
-import axun;
-import aydi;
-import bdla;
-import bgxc;
-import bhdz;
-import bipz;
-import biso;
-import bkxz;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
+import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
+import com.tencent.mobileqq.nearby.profilecard.LabelEditCtrl;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.transfile.NearbyImgDownloader;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV.IOnSizeChangeCallback;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.InputMethodUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -87,52 +71,52 @@ public class ChooseInterestTagActivity
 {
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "#77C6F4", "#FFA366", "#333333", "#5DC2A2" };
   private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new axub(this);
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new axtx(this);
+  private int jdField_a_of_type_Int = 0;
+  private Handler jdField_a_of_type_AndroidOsHandler = new ChooseInterestTagActivity.5(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ChooseInterestTagActivity.13(this);
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new axtu(this);
-  private View.OnKeyListener jdField_a_of_type_AndroidViewView$OnKeyListener = new axue(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ChooseInterestTagActivity.10(this);
+  private View.OnKeyListener jdField_a_of_type_AndroidViewView$OnKeyListener = new ChooseInterestTagActivity.8(this);
   private View jdField_a_of_type_AndroidViewView;
-  private AbsListView.OnScrollListener jdField_a_of_type_AndroidWidgetAbsListView$OnScrollListener = new axud(this);
+  private AbsListView.OnScrollListener jdField_a_of_type_AndroidWidgetAbsListView$OnScrollListener = new ChooseInterestTagActivity.7(this);
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private axqt jdField_a_of_type_Axqt;
-  private axqx jdField_a_of_type_Axqx = new axuc(this);
-  private axuh jdField_a_of_type_Axuh;
-  private axuk jdField_a_of_type_Axuk = new axty(this);
-  private axun jdField_a_of_type_Axun = new axtw(this);
-  private bipz jdField_a_of_type_Bipz = new axuf(this);
-  private biso jdField_a_of_type_Biso;
+  private NearbyCardHandler jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler;
+  private NearbyCardObserver jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new ChooseInterestTagActivity.6(this);
+  private InterestTagAdapter jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagAdapter;
+  private InterestTagItemView.IInterestTagItemViewCallback jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagItemView$IInterestTagItemViewCallback = new ChooseInterestTagActivity.14(this);
+  private ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback jdField_a_of_type_ComTencentMobileqqNearbyInterestTagShowTagNamePopupWindow$IShowTagNamePopupWindowCallback = new ChooseInterestTagActivity.12(this);
+  private MonitorSizeChangeHSV.IOnSizeChangeCallback jdField_a_of_type_ComTencentMobileqqWidgetMonitorSizeChangeHSV$IOnSizeChangeCallback = new ChooseInterestTagActivity.9(this);
   private MonitorSizeChangeHSV jdField_a_of_type_ComTencentMobileqqWidgetMonitorSizeChangeHSV;
+  private QQProgressNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier;
   private String jdField_a_of_type_JavaLangString = "";
   private ArrayList<InterestTagInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private List<InterestTagInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new axtv(this);
+  private boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int = 0;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new ChooseInterestTagActivity.11(this);
   private View jdField_b_of_type_AndroidViewView;
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private List<InterestTagInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int = -1;
   private View jdField_c_of_type_AndroidViewView;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
+  private boolean jdField_c_of_type_Boolean = false;
+  private int jdField_d_of_type_Int = 0;
   private View jdField_d_of_type_AndroidViewView;
   private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private boolean jdField_d_of_type_Boolean;
+  private boolean jdField_d_of_type_Boolean = false;
   private int jdField_e_of_type_Int;
   private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private boolean jdField_e_of_type_Boolean;
+  private boolean jdField_e_of_type_Boolean = false;
   private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
+  private boolean jdField_f_of_type_Boolean = false;
   
   private View a(InterestTagInfo paramInterestTagInfo, boolean paramBoolean)
   {
@@ -143,12 +127,12 @@ public class ChooseInterestTagActivity
     int i;
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_c_of_type_Int == 3) || (this.jdField_c_of_type_Int == 2) || (this.jdField_c_of_type_Int == 1) || (this.jdField_c_of_type_Int == 4))
     {
-      localObject4 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561285, null);
-      localTextView = (TextView)((View)localObject4).findViewById(2131380283);
+      localObject4 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561390, null);
+      localTextView = (TextView)((View)localObject4).findViewById(2131380726);
       if (localTextView != null)
       {
         if (paramInterestTagInfo.tagName != null) {
-          break label300;
+          break label301;
         }
         localObject1 = "";
         localObject3 = localObject1;
@@ -158,13 +142,13 @@ public class ChooseInterestTagActivity
         localTextView.setSingleLine(true);
         localTextView.setText((CharSequence)localObject3);
         if (!this.jdField_c_of_type_Boolean) {
-          break label312;
+          break label313;
         }
-        i = aydi.a(this.jdField_c_of_type_Int);
+        i = LabelEditCtrl.a(this.jdField_c_of_type_Int);
         if (i == -1) {
-          break label804;
+          break label805;
         }
-        i = Color.parseColor(aydi.b[i]);
+        i = Color.parseColor(LabelEditCtrl.b[i]);
       }
     }
     for (;;)
@@ -173,24 +157,24 @@ public class ChooseInterestTagActivity
       localTextView.setTextColor(i);
       if (this.jdField_c_of_type_Boolean)
       {
-        i = aydi.a(this.jdField_c_of_type_Int);
+        i = LabelEditCtrl.a(this.jdField_c_of_type_Int);
         if (i == -1) {
-          break label799;
+          break label800;
         }
-        i = Color.parseColor(aydi.jdField_a_of_type_ArrayOfJavaLangString[i]);
+        i = Color.parseColor(LabelEditCtrl.jdField_a_of_type_ArrayOfJavaLangString[i]);
       }
       for (;;)
       {
         label198:
         localObject1 = new GradientDrawable();
         ((GradientDrawable)localObject1).setColor(i);
-        ((GradientDrawable)localObject1).setCornerRadius(getResources().getDimensionPixelSize(2131298846));
+        ((GradientDrawable)localObject1).setCornerRadius(getResources().getDimensionPixelSize(2131298933));
         ((View)localObject4).setBackgroundDrawable((Drawable)localObject1);
         ((View)localObject4).setTag(paramInterestTagInfo);
-        paramInterestTagInfo = new LinearLayout.LayoutParams(-2, (int)bhdz.a(this, 17.0F));
+        paramInterestTagInfo = new LinearLayout.LayoutParams(-2, (int)DisplayUtils.a(this, 17.0F));
         if (paramBoolean) {}
-        label300:
-        label312:
+        label301:
+        label313:
         int j;
         for (i = 10;; i = 5)
         {
@@ -244,13 +228,13 @@ public class ChooseInterestTagActivity
         if (this.jdField_c_of_type_Int == 7)
         {
           localObject2 = new GradientDrawable();
-          ((GradientDrawable)localObject2).setColor(getResources().getColor(2131165881));
+          ((GradientDrawable)localObject2).setColor(getResources().getColor(2131165883));
           ((GradientDrawable)localObject2).setCornerRadius(this.jdField_a_of_type_Float * 10.0F);
           ((GradientDrawable)localObject2).setShape(0);
-          i = getResources().getDimensionPixelSize(2131297405);
+          i = getResources().getDimensionPixelSize(2131297473);
           ((GradientDrawable)localObject2).setSize(i, i);
           if (TextUtils.isEmpty(paramInterestTagInfo.tagIconUrl)) {
-            break label794;
+            break label795;
           }
         }
         for (;;)
@@ -260,9 +244,9 @@ public class ChooseInterestTagActivity
             localObject3 = URLDrawable.URLDrawableOptions.obtain();
             if (this.jdField_c_of_type_Int == 5)
             {
-              i = getResources().getDimensionPixelSize(2131297407);
+              i = getResources().getDimensionPixelSize(2131297475);
               ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = i;
-              j = getResources().getDimensionPixelSize(2131297406);
+              j = getResources().getDimensionPixelSize(2131297474);
               ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = j;
               ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject2);
               ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject2);
@@ -277,41 +261,41 @@ public class ChooseInterestTagActivity
           {
             if (this.jdField_c_of_type_Int == 7)
             {
-              paramInterestTagInfo.setTag(bgxc.b(j, i, (int)(this.jdField_a_of_type_Float * 10.0F)));
-              paramInterestTagInfo.setDecodeHandler(bgxc.c);
+              paramInterestTagInfo.setTag(URLDrawableDecodeHandler.b(j, i, (int)(this.jdField_a_of_type_Float * 10.0F)));
+              paramInterestTagInfo.setDecodeHandler(URLDrawableDecodeHandler.c);
             }
             ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = null;
             ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = null;
             if (paramInterestTagInfo != null) {
-              break label783;
+              break label784;
             }
             ((ImageView)localObject4).setImageDrawable((Drawable)localObject2);
             return localObject4;
           }
           catch (Exception localException4)
           {
-            break label762;
+            break label763;
           }
-          localObject2 = getResources().getDrawable(2131165881);
+          localObject2 = getResources().getDrawable(2131165883);
           break;
-          i = getResources().getDimensionPixelSize(2131297405);
+          i = getResources().getDimensionPixelSize(2131297473);
           ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = i;
           continue;
-          label762:
+          label763:
           if (QLog.isColorLevel()) {
             QLog.i("choose_interest_tag", 2, localException3.toString());
           }
           continue;
-          label783:
+          label784:
           localObject2 = paramInterestTagInfo;
           continue;
-          label794:
+          label795:
           paramInterestTagInfo = null;
         }
-        label799:
+        label800:
         i = 0;
       }
-      label804:
+      label805:
       i = -1;
     }
   }
@@ -320,11 +304,11 @@ public class ChooseInterestTagActivity
   {
     String str2 = "";
     String str1 = "";
-    String str3 = anvx.a(2131701277);
+    String str3 = HardCodeUtil.a(2131701852);
     if (this.jdField_c_of_type_Int == 3)
     {
-      str2 = anvx.a(2131701287);
-      str1 = anvx.a(2131701315);
+      str2 = HardCodeUtil.a(2131701862);
+      str1 = HardCodeUtil.a(2131701890);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_d_of_type_AndroidViewView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetEditText.setHint(str3);
@@ -338,49 +322,49 @@ public class ChooseInterestTagActivity
       if (!this.jdField_b_of_type_Boolean) {
         break label404;
       }
-      setLeftViewName(2131690697);
+      setLeftViewName(2131690800);
       this.leftView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.rightViewImg.setVisibility(8);
       this.rightViewText.setVisibility(0);
-      this.rightViewText.setText(anvx.a(2131701299));
+      this.rightViewText.setText(HardCodeUtil.a(2131701874));
       this.rightViewText.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       return;
       if (this.jdField_c_of_type_Int == 5)
       {
-        str2 = anvx.a(2131701278);
-        str1 = anvx.a(2131701286);
+        str2 = HardCodeUtil.a(2131701853);
+        str1 = HardCodeUtil.a(2131701861);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_d_of_type_AndroidViewView.setVisibility(0);
         break;
       }
       if (this.jdField_c_of_type_Int == 6)
       {
-        str2 = anvx.a(2131701310);
-        str1 = anvx.a(2131701304);
+        str2 = HardCodeUtil.a(2131701885);
+        str1 = HardCodeUtil.a(2131701879);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_d_of_type_AndroidViewView.setVisibility(0);
         break;
       }
       if (this.jdField_c_of_type_Int == 2)
       {
-        str2 = anvx.a(2131701283);
-        str1 = anvx.a(2131701307);
+        str2 = HardCodeUtil.a(2131701858);
+        str1 = HardCodeUtil.a(2131701882);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_d_of_type_AndroidViewView.setVisibility(8);
         break;
       }
       if (this.jdField_c_of_type_Int == 7)
       {
-        str2 = anvx.a(2131701282);
-        str1 = anvx.a(2131701308);
+        str2 = HardCodeUtil.a(2131701857);
+        str1 = HardCodeUtil.a(2131701883);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_d_of_type_AndroidViewView.setVisibility(0);
         break;
       }
       if (this.jdField_c_of_type_Int == 4)
       {
-        str1 = anvx.a(2131701316);
-        str2 = anvx.a(2131701288);
+        str1 = HardCodeUtil.a(2131701891);
+        str2 = HardCodeUtil.a(2131701863);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_d_of_type_AndroidViewView.setVisibility(8);
         break;
@@ -388,17 +372,17 @@ public class ChooseInterestTagActivity
       if (this.jdField_c_of_type_Int != 1) {
         break;
       }
-      str2 = anvx.a(2131701285);
-      str1 = anvx.a(2131701294);
+      str2 = HardCodeUtil.a(2131701860);
+      str1 = HardCodeUtil.a(2131701869);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      str3 = anvx.a(2131701279);
+      str3 = HardCodeUtil.a(2131701854);
       break;
       label399:
       str1 = str2;
     }
     label404:
-    setLeftViewName(2131690499);
+    setLeftViewName(2131690601);
     this.leftView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.rightViewImg.setVisibility(8);
     this.rightViewText.setVisibility(8);
@@ -446,8 +430,8 @@ public class ChooseInterestTagActivity
   
   private void a(int paramInt1, String paramString, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Biso != null) && (!isFinishing())) {
-      this.jdField_a_of_type_Biso.a(paramInt1, paramString, paramInt2);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) && (!isFinishing())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(paramInt1, paramString, paramInt2);
     }
   }
   
@@ -484,14 +468,14 @@ public class ChooseInterestTagActivity
       localAnimationSet.setFillAfter(true);
       localAnimationSet.setDuration(70L);
       localAnimationSet.setInterpolator(new DecelerateInterpolator());
-      localAnimationSet.setAnimationListener(new axtz(this));
+      localAnimationSet.setAnimationListener(new ChooseInterestTagActivity.3(this));
       paramInterestTagInfo.startAnimation(localAnimationSet);
       if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
         break label299;
       }
       this.rightViewText.setEnabled(false);
       if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842370), null, null, null);
+        this.jdField_a_of_type_AndroidWidgetEditText.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842513), null, null, null);
       }
     }
     for (;;)
@@ -541,7 +525,7 @@ public class ChooseInterestTagActivity
         }
         this.rightViewText.setEnabled(false);
       } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_AndroidWidgetEditText.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842370), null, null, null);
+      this.jdField_a_of_type_AndroidWidgetEditText.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842513), null, null, null);
       return;
       this.rightViewText.setEnabled(true);
     } while (this.jdField_a_of_type_Boolean);
@@ -561,7 +545,7 @@ public class ChooseInterestTagActivity
     label52:
     for (String str = "add_tag";; str = "del_tag")
     {
-      bdla.b(localQQAppInterface, "dc00899", "grp_lbs", "", "data_card", str, 0, 0, "", "", "", String.valueOf(this.jdField_c_of_type_Int));
+      ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "data_card", str, 0, 0, "", "", "", String.valueOf(this.jdField_c_of_type_Int));
       return;
     }
   }
@@ -580,17 +564,17 @@ public class ChooseInterestTagActivity
     {
       do
       {
-        localTextView = (TextView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131371586);
-        localProgressBar = (ProgressBar)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131376461);
-        ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131370440);
+        localTextView = (TextView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131371896);
+        localProgressBar = (ProgressBar)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131376854);
+        ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131370717);
         if (localImageView.getVisibility() != 8) {
           localImageView.setVisibility(8);
         }
         if (!paramBoolean1) {
           break;
         }
-        localTextView.setTextColor(getResources().getColor(2131167106));
-        localTextView.setText(anvx.a(2131701306));
+        localTextView.setTextColor(getResources().getColor(2131167113));
+        localTextView.setText(HardCodeUtil.a(2131701881));
         localProgressBar.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         return;
@@ -599,14 +583,14 @@ public class ChooseInterestTagActivity
     }
     if (paramBoolean2)
     {
-      localTextView.setTextColor(getResources().getColor(2131167171));
-      localTextView.setText(anvx.a(2131701292));
+      localTextView.setTextColor(getResources().getColor(2131167178));
+      localTextView.setText(HardCodeUtil.a(2131701867));
       localProgressBar.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       return;
     }
-    localTextView.setTextColor(getResources().getColor(2131167106));
-    localTextView.setText(anvx.a(2131701314));
+    localTextView.setTextColor(getResources().getColor(2131167113));
+    localTextView.setText(HardCodeUtil.a(2131701889));
     localProgressBar.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
   }
@@ -620,37 +604,37 @@ public class ChooseInterestTagActivity
   private void b()
   {
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366269));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMonitorSizeChangeHSV = ((MonitorSizeChangeHSV)findViewById(2131368362));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370368));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370582));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376829));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376828);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131376870);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380366));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380375));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376885));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380386));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131380658);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380374));
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131380669);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380376));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366441));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMonitorSizeChangeHSV = ((MonitorSizeChangeHSV)findViewById(2131368580));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370642));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370870));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377236));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377235);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131377277);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380809));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380818));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377292));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380829));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131381105);
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380817));
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131381116);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380819));
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    int i = getResources().getColor(2131166363);
+    int i = getResources().getColor(2131166366);
     this.jdField_c_of_type_AndroidViewView.setBackgroundColor(i);
     this.jdField_d_of_type_AndroidViewView.setBackgroundColor(i);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this).inflate(2131559520, null));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this).inflate(2131559592, null));
     a(false, true);
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(this.jdField_a_of_type_AndroidViewView$OnKeyListener);
       this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      if (AppSetting.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(anvx.a(2131701309));
+      if (AppSetting.jdField_d_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(HardCodeUtil.a(2131701884));
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMonitorSizeChangeHSV.setOnSizeChangeCallback(this.jdField_a_of_type_Bipz);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMonitorSizeChangeHSV.setOnSizeChangeCallback(this.jdField_a_of_type_ComTencentMobileqqWidgetMonitorSizeChangeHSV$IOnSizeChangeCallback);
     this.jdField_a_of_type_AndroidWidgetListView.setOnScrollListener(this.jdField_a_of_type_AndroidWidgetAbsListView$OnScrollListener);
     this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
     if (Build.VERSION.SDK_INT >= 9) {
@@ -679,7 +663,7 @@ public class ChooseInterestTagActivity
         localAnimationSet.setFillAfter(true);
         localAnimationSet.setDuration(70L);
         localAnimationSet.setInterpolator(new AccelerateInterpolator());
-        localAnimationSet.setAnimationListener(new axua(this, localView));
+        localAnimationSet.setAnimationListener(new ChooseInterestTagActivity.4(this, localView));
         localView.startAnimation(localAnimationSet);
       }
     }
@@ -690,7 +674,7 @@ public class ChooseInterestTagActivity
       }
       this.rightViewText.setEnabled(false);
       if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842370), null, null, null);
+        this.jdField_a_of_type_AndroidWidgetEditText.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842513), null, null, null);
       }
     }
     for (;;)
@@ -741,7 +725,7 @@ public class ChooseInterestTagActivity
         if (this.jdField_c_of_type_Int != 3) {
           break label468;
         }
-        localObject = anvx.a(2131701317);
+        localObject = HardCodeUtil.a(2131701892);
         label146:
         this.jdField_d_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       }
@@ -791,8 +775,8 @@ public class ChooseInterestTagActivity
         }
         d();
       }
-      this.jdField_a_of_type_Biso = new biso(this);
-      this.jdField_a_of_type_Axqt = ((axqt)this.app.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler = ((NearbyCardHandler)this.app.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER));
       ThreadManager.getFileThreadHandler().post(new ChooseInterestTagActivity.1(this));
       return;
       i = getIntent().getIntExtra("interest_tag_type", -1);
@@ -803,33 +787,33 @@ public class ChooseInterestTagActivity
       label468:
       if (this.jdField_c_of_type_Int == 5)
       {
-        localObject = anvx.a(2131701295);
+        localObject = HardCodeUtil.a(2131701870);
         break label146;
       }
       if (this.jdField_c_of_type_Int == 6)
       {
-        localObject = anvx.a(2131701281);
+        localObject = HardCodeUtil.a(2131701856);
         break label146;
       }
       if (this.jdField_c_of_type_Int == 2)
       {
-        localObject = anvx.a(2131701300);
+        localObject = HardCodeUtil.a(2131701875);
         break label146;
       }
       if (this.jdField_c_of_type_Int == 7)
       {
-        localObject = anvx.a(2131701298);
+        localObject = HardCodeUtil.a(2131701873);
         break label146;
       }
       if (this.jdField_c_of_type_Int == 4)
       {
-        localObject = anvx.a(2131701276);
+        localObject = HardCodeUtil.a(2131701851);
         break label146;
       }
       if (this.jdField_c_of_type_Int != 1) {
         break label146;
       }
-      localObject = anvx.a(2131701280);
+      localObject = HardCodeUtil.a(2131701855);
       break label146;
       label584:
       bool = false;
@@ -901,8 +885,8 @@ public class ChooseInterestTagActivity
   
   private void e()
   {
-    if (this.jdField_a_of_type_Biso != null) {
-      this.jdField_a_of_type_Biso.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
     }
   }
   
@@ -935,10 +919,10 @@ public class ChooseInterestTagActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561234);
-    getWindow().setBackgroundDrawable(getResources().getDrawable(2130845021));
+    setContentView(2131561339);
+    getWindow().setBackgroundDrawable(getResources().getDrawable(2130845181));
     b();
-    addObserver(this.jdField_a_of_type_Axqx);
+    addObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver);
     c();
     a();
     return true;
@@ -947,15 +931,15 @@ public class ChooseInterestTagActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Axqx);
-    if (this.jdField_a_of_type_Biso != null) {
-      this.jdField_a_of_type_Biso.b();
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
     }
   }
   
   public void finish()
   {
-    bkxz.b(this.jdField_a_of_type_AndroidWidgetEditText);
+    InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
     super.finish();
   }
   

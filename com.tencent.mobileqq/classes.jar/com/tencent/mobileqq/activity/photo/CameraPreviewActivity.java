@@ -1,15 +1,5 @@
 package com.tencent.mobileqq.activity.photo;
 
-import Override;
-import ahtj;
-import akjh;
-import akji;
-import akjj;
-import akjk;
-import akjl;
-import akjm;
-import akjn;
-import aklj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -26,10 +16,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhdj;
 import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.QQToast;
@@ -44,16 +35,16 @@ public class CameraPreviewActivity
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private akjn jdField_a_of_type_Akjn;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public QQCustomDialog a;
+  private CameraPreviewActivity.GalleryImageAdapter jdField_a_of_type_ComTencentMobileqqActivityPhotoCameraPreviewActivity$GalleryImageAdapter;
+  protected QQCustomDialog a;
   private Gallery jdField_a_of_type_ComTencentWidgetGallery;
   String jdField_a_of_type_JavaLangString = null;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean;
-  private int b;
-  public boolean b;
+  private int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
   
   private void a()
   {
@@ -61,7 +52,7 @@ public class CameraPreviewActivity
     Intent localIntent = getIntent();
     this.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("callFromFastImage", false);
     if (this.jdField_b_of_type_Boolean) {
-      aklj.c();
+      StatisticConstants.c();
     }
     for (;;)
     {
@@ -73,7 +64,7 @@ public class CameraPreviewActivity
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("PhotoConst.CUSTOM_SENDBTN_TEXT");
       return;
-      aklj.a();
+      StatisticConstants.a();
     }
   }
   
@@ -83,20 +74,20 @@ public class CameraPreviewActivity
     String str2;
     if (paramInt == 6)
     {
-      str1 = getString(2131718345);
-      str2 = getString(2131718344);
+      str1 = getString(2131718864);
+      str2 = getString(2131718863);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, 230, str1, str2, new akjk(this), null);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new akjl(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new akjm(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, str1, str2, new CameraPreviewActivity.4(this), null);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new CameraPreviewActivity.5(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new CameraPreviewActivity.6(this));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
       if (paramInt == 7)
       {
-        str1 = getString(2131718347);
-        str2 = getString(2131718346);
+        str1 = getString(2131718866);
+        str2 = getString(2131718865);
       }
       else
       {
@@ -118,7 +109,7 @@ public class CameraPreviewActivity
       a(7);
       return true;
     }
-    if (ahtj.a() < 10L)
+    if (AIOPhotoListUtils.a() < 10L)
     {
       a(6);
       return true;
@@ -131,7 +122,7 @@ public class CameraPreviewActivity
     boolean bool = false;
     if (new File(paramString).length() > PicUploadFileSizeLimit.getLimitC2C())
     {
-      QQToast.a(this, getResources().getString(2131694641), 0).b(getResources().getDimensionPixelSize(2131299080));
+      QQToast.a(this, getResources().getString(2131694878), 0).b(getResources().getDimensionPixelSize(2131299166));
       bool = true;
     }
     return bool;
@@ -140,10 +131,10 @@ public class CameraPreviewActivity
   private void b()
   {
     this.jdField_a_of_type_ComTencentWidgetGallery = new Gallery(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297147));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297168));
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentWidgetGallery, -1, -1);
-    this.jdField_a_of_type_Akjn = new akjn(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Akjn);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoCameraPreviewActivity$GalleryImageAdapter = new CameraPreviewActivity.GalleryImageAdapter(this);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoCameraPreviewActivity$GalleryImageAdapter);
   }
   
   @Override
@@ -206,20 +197,20 @@ public class CameraPreviewActivity
   {
     super.onCreate(paramBundle);
     a();
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getLayoutInflater().inflate(2131559603, null));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getLayoutInflater().inflate(2131559679, null));
     b();
-    getLayoutInflater().inflate(2131559605, this.jdField_a_of_type_AndroidViewViewGroup);
+    getLayoutInflater().inflate(2131559681, this.jdField_a_of_type_AndroidViewViewGroup);
     this.jdField_a_of_type_Int = getResources().getDisplayMetrics().widthPixels;
     this.jdField_b_of_type_Int = getResources().getDisplayMetrics().heightPixels;
     super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
     if (this.jdField_a_of_type_Boolean) {
-      setRightButton(2131694655, new akjh(this));
+      setRightButton(2131694892, new CameraPreviewActivity.1(this));
     }
-    setTitle(2131694766);
+    setTitle(2131695004);
     this.leftView.setVisibility(8);
-    this.leftViewNotBack = ((TextView)findViewById(2131369233));
+    this.leftViewNotBack = ((TextView)findViewById(2131369489));
     this.leftViewNotBack.setVisibility(8);
-    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372737);
+    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373063);
     QLog.d("IphoneTitleBarActivity", 2, "BUILD MODEL:" + Build.MODEL);
     RelativeLayout.LayoutParams localLayoutParams;
     if (this.jdField_a_of_type_JavaLangString != null)
@@ -228,26 +219,26 @@ public class CameraPreviewActivity
       if (Build.MODEL.equals("PAFM00"))
       {
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.setMargins(0, 0, ViewUtils.dpToPx(12.0F), 0);
+        localLayoutParams.setMargins(0, 0, ViewUtils.b(12.0F), 0);
         localLayoutParams.addRule(11);
         paramBundle.setLayoutParams(localLayoutParams);
       }
     }
-    paramBundle.setOnClickListener(new akji(this));
-    paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372736);
+    paramBundle.setOnClickListener(new CameraPreviewActivity.2(this));
+    paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373061);
     if (Build.MODEL.equals("PAFM00"))
     {
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(9);
-      localLayoutParams.setMargins(ViewUtils.dpToPx(12.0F), 0, 0, 0);
+      localLayoutParams.setMargins(ViewUtils.b(12.0F), 0, 0, 0);
       paramBundle.setLayoutParams(localLayoutParams);
     }
-    paramBundle.setOnClickListener(new akjj(this));
+    paramBundle.setOnClickListener(new CameraPreviewActivity.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.CameraPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,13 @@
 package com.tencent.av.wtogether;
 
 import com.tencent.av.app.VideoAppInterface;
-import lhb;
-import lhy;
-import mxd;
+import com.tencent.av.business.manager.filter.EffectFilterTools;
+import com.tencent.av.business.manager.pendant.EffectPendantBase;
 
-public class WTogetherMng$3
+class WTogetherMng$3
   implements Runnable
 {
-  public WTogetherMng$3(mxd parammxd, long paramLong) {}
+  WTogetherMng$3(WTogetherMng paramWTogetherMng, long paramLong) {}
   
   public void run()
   {
@@ -23,11 +22,11 @@ public class WTogetherMng$3
     int i = 0;
     if (i < arrayOfInt.length)
     {
-      lhy locallhy;
-      if (mxd.b(this.this$0).a(arrayOfInt[i]))
+      EffectPendantBase localEffectPendantBase;
+      if (WTogetherMng.b(this.this$0).a(arrayOfInt[i]))
       {
-        locallhy = (lhy)mxd.c(this.this$0).a(arrayOfInt[i]);
-        if (locallhy != null) {
+        localEffectPendantBase = (EffectPendantBase)WTogetherMng.c(this.this$0).a(arrayOfInt[i]);
+        if (localEffectPendantBase != null) {
           break label72;
         }
       }
@@ -36,17 +35,17 @@ public class WTogetherMng$3
         i += 1;
         break;
         label72:
-        locallhy.a(this.a, null);
+        localEffectPendantBase.a(this.a, null);
       }
     }
-    if (mxd.d(this.this$0).a(1)) {
-      ((lhb)mxd.e(this.this$0).a(1)).a(this.a, null);
+    if (WTogetherMng.d(this.this$0).a(1)) {
+      ((EffectFilterTools)WTogetherMng.e(this.this$0).a(1)).a(this.a, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.WTogetherMng.3
  * JD-Core Version:    0.7.0.1
  */

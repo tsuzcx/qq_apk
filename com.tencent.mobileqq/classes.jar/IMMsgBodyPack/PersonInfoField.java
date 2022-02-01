@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class PersonInfoField
   extends JceStruct
 {
-  public long uField;
+  public long uField = 0L;
   
   public PersonInfoField() {}
   

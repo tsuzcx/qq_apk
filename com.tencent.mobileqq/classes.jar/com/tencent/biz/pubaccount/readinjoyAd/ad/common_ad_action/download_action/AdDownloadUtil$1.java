@@ -1,25 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action;
 
 import android.text.TextUtils;
-import bjjq;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
+import com.tencent.open.appstore.dl.DownloadManagerV2;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.io.File;
-import udu;
-import ule;
 
-public final class AdDownloadUtil$1
+final class AdDownloadUtil$1
   implements Runnable
 {
-  public AdDownloadUtil$1(ule paramule, udu paramudu) {}
+  AdDownloadUtil$1(ADVideoAppDownloadData paramADVideoAppDownloadData, AdDownloadUtil.PkgExistCallback paramPkgExistCallback) {}
   
   public void run()
   {
     Object localObject4 = null;
-    DownloadInfo localDownloadInfo = bjjq.a().b(this.jdField_a_of_type_Ule.c);
+    DownloadInfo localDownloadInfo = DownloadManagerV2.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c);
     if (localDownloadInfo == null)
     {
-      this.jdField_a_of_type_Udu.a(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_actionDownload_actionAdDownloadUtil$PkgExistCallback.a(false);
       return;
     }
     Object localObject1 = "";
@@ -33,7 +32,7 @@ public final class AdDownloadUtil$1
       if (localDownloadInfo.c != 0) {
         break label227;
       }
-      localObject3 = bjjq.a().a(localDownloadInfo.d);
+      localObject3 = DownloadManagerV2.a().a(localDownloadInfo.d);
       localObject2 = localObject1;
       if (localObject3 != null)
       {
@@ -46,7 +45,7 @@ public final class AdDownloadUtil$1
       localObject3 = localObject4;
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localObject3 = bjjq.a().a(localDownloadInfo);
+        localObject3 = DownloadManagerV2.a().a(localDownloadInfo);
         localObject1 = localObject2;
       }
       localObject2 = localObject1;
@@ -62,17 +61,17 @@ public final class AdDownloadUtil$1
       {
         localDownloadInfo.l = ((String)localObject2);
         localDownloadInfo.a(4);
-        bjjq.a().c(localDownloadInfo);
+        DownloadManagerV2.a().c(localDownloadInfo);
         localObject3 = localObject2;
       }
     }
     if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (new File((String)localObject3).exists())) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Udu.a(bool);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_actionDownload_actionAdDownloadUtil$PkgExistCallback.a(bool);
       return;
       label227:
-      localObject3 = bjjq.a().a(localDownloadInfo);
+      localObject3 = DownloadManagerV2.a().a(localDownloadInfo);
       localObject2 = localObject1;
       if (localObject3 != null)
       {
@@ -86,7 +85,7 @@ public final class AdDownloadUtil$1
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         break;
       }
-      localObject3 = bjjq.a().a(localDownloadInfo.d);
+      localObject3 = DownloadManagerV2.a().a(localDownloadInfo.d);
       localObject1 = localObject2;
       break;
     }
@@ -94,7 +93,7 @@ public final class AdDownloadUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action.AdDownloadUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public final class StCommonExt
 {
   static Map<String, String> cache_mapInfo = new HashMap();
   public String attachInfo = "";
-  public Map<String, String> mapInfo;
+  public Map<String, String> mapInfo = null;
   
   static
   {

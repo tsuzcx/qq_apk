@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import afwg;
-
-public class XBubbleAnimation$1
+class XBubbleAnimation$1
   implements Runnable
 {
-  public XBubbleAnimation$1(afwg paramafwg) {}
+  XBubbleAnimation$1(XBubbleAnimation paramXBubbleAnimation) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class XBubbleAnimation$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.1
  * JD-Core Version:    0.7.0.1
  */

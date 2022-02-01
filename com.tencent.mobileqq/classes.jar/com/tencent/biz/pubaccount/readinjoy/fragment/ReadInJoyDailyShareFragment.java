@@ -15,14 +15,21 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ScrollView;
-import bgua;
-import bheg;
+import com.tencent.biz.pubaccount.readinjoy.common.ProteusSupportUtil;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.utils.DynamicItemViewHelper;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyShareView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInjoyImageView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.wrap.ReadInjoyContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.FileUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.io.File;
@@ -33,23 +40,16 @@ import java.util.Date;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
-import piv;
-import ptj;
-import qsf;
-import quf;
-import quz;
-import qxj;
-import tmy;
 
 public class ReadInJoyDailyShareFragment
   extends PublicBaseFragment
 {
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   ProteusItemView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView;
+  private DynamicItemViewHelper jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusUtilsDynamicItemViewHelper;
   private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
   private String jdField_a_of_type_JavaLangString;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private qsf jdField_a_of_type_Qsf;
   private String b;
   
   private Bitmap a(View paramView)
@@ -80,13 +80,13 @@ public class ReadInJoyDailyShareFragment
       return;
       Object localObject = this.jdField_a_of_type_OrgJsonJSONObject.optString("qr_code_url");
       if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (localObject = bgua.a((String)localObject, getActivity().getResources(), 540, 0, false);; localObject = null)
+      for (localObject = TroopShareUtility.a((String)localObject, getActivity().getResources(), 540, 0, false);; localObject = null)
       {
         if (localObject == null) {
           break label92;
         }
         ViewBase localViewBase = (ViewBase)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.a().getViewIdMapping().get("id_kandian_share_qr_code");
-        if (!(localViewBase instanceof quz)) {
+        if (!(localViewBase instanceof ReadInjoyImageView)) {
           break;
         }
         ((ImageView)localViewBase.getNativeView()).setImageBitmap((Bitmap)localObject);
@@ -102,7 +102,7 @@ public class ReadInJoyDailyShareFragment
     }
     try
     {
-      bheg.a(paramBitmap, new File(paramString));
+      ImageUtil.a(paramBitmap, new File(paramString));
       return true;
     }
     catch (IOException paramBitmap)
@@ -115,8 +115,8 @@ public class ReadInJoyDailyShareFragment
   private void b()
   {
     ViewBase localViewBase = (ViewBase)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.a().getViewIdMapping().get("id_share_choice");
-    if ((localViewBase instanceof quf)) {
-      ((quf)localViewBase).a(new ReadInJoyDailyShareFragment.1(this, localViewBase));
+    if ((localViewBase instanceof ReadInJoyShareView)) {
+      ((ReadInJoyShareView)localViewBase).a(new ReadInJoyDailyShareFragment.1(this, localViewBase));
     }
   }
   
@@ -129,7 +129,7 @@ public class ReadInJoyDailyShareFragment
       {
         this.jdField_a_of_type_JavaLangString = AppConstants.SDCARD_IMG_SAVE;
         this.b = (this.jdField_a_of_type_JavaLangString + "kandiandaily-" + a(Calendar.getInstance().getTime()) + ".png");
-        tmy.a(new File(this.jdField_a_of_type_JavaLangString));
+        FileUtils.a(new File(this.jdField_a_of_type_JavaLangString));
         this.jdField_a_of_type_AndroidGraphicsBitmap = a(localView);
         a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.b);
       }
@@ -166,13 +166,13 @@ public class ReadInJoyDailyShareFragment
       {
         this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramBundle);
         QLog.d("ReadInJoyDailyShareFragment", 1, "shareinfo is " + this.jdField_a_of_type_OrgJsonJSONObject.toString());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qxj();
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new ReadInjoyContext();
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(getActivity());
-        piv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
+        ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(getActivity());
-        this.jdField_a_of_type_Qsf = new qsf();
-        this.jdField_a_of_type_Qsf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
-        ptj.a.a(getActivity());
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusUtilsDynamicItemViewHelper = new DynamicItemViewHelper();
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusUtilsDynamicItemViewHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
+        RIJDtReportHelper.a.a(getActivity());
         return;
         paramBundle = null;
       }
@@ -188,11 +188,11 @@ public class ReadInJoyDailyShareFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560205, paramViewGroup, false);
-    paramViewGroup = (ScrollView)paramLayoutInflater.findViewById(2131377554);
-    if ((paramViewGroup != null) && (this.jdField_a_of_type_Qsf != null) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560282, paramViewGroup, false);
+    paramViewGroup = (ScrollView)paramLayoutInflater.findViewById(2131377965);
+    if ((paramViewGroup != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusUtilsDynamicItemViewHelper != null) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView = this.jdField_a_of_type_Qsf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_OrgJsonJSONObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusUtilsDynamicItemViewHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_OrgJsonJSONObject);
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView != null) {
         paramViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView, -1, -1);
       }
@@ -212,7 +212,7 @@ public class ReadInJoyDailyShareFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyShareFragment
  * JD-Core Version:    0.7.0.1
  */

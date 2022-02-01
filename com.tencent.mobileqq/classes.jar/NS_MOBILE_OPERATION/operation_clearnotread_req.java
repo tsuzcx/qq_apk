@@ -11,11 +11,11 @@ public final class operation_clearnotread_req
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
   static Map<String, String> cache_mapEx;
-  public int appid;
-  public Map<Integer, String> busi_param;
-  public int clear_type;
-  public Map<String, String> mapEx;
-  public long uin;
+  public int appid = 0;
+  public Map<Integer, String> busi_param = null;
+  public int clear_type = 0;
+  public Map<String, String> mapEx = null;
+  public long uin = 0L;
   
   static
   {

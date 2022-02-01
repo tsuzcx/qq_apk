@@ -16,7 +16,6 @@ import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SearchResultAdapter$SearchResultViewHolder$1
   implements View.OnClickListener
@@ -25,35 +24,29 @@ class SearchResultAdapter$SearchResultViewHolder$1
   
   public void onClick(View paramView)
   {
-    for (;;)
+    try
     {
-      try
+      ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      paramView = this.val$activity;
+      MiniAppInfo localMiniAppInfo = this.val$miniAppInfo;
+      if (this.val$searchInfo.getType() == 5) {}
+      for (int i = 3028;; i = 3026)
       {
-        ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-        Object localObject = this.val$activity;
-        MiniAppInfo localMiniAppInfo = this.val$miniAppInfo;
-        if (this.val$searchInfo.getType() != 5) {
-          continue;
-        }
-        i = 3028;
-        MiniAppController.launchMiniAppByAppInfo((Activity)localObject, localMiniAppInfo, i);
+        MiniAppController.launchMiniAppByAppInfo(paramView, localMiniAppInfo, i);
         ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).updateHistorySearchList(this.val$keyword);
-        localObject = new MiniAppConfig(this.val$miniAppInfo);
-        ((MiniAppConfig)localObject).launchParam.scene = 3026;
+        paramView = new MiniAppConfig(this.val$miniAppInfo);
+        paramView.launchParam.scene = 3026;
         if (this.val$searchInfo.getType() == 5) {
-          ((MiniAppConfig)localObject).launchParam.scene = 3028;
+          paramView.launchParam.scene = 3028;
         }
-        MiniProgramLpReportDC04239.reportAsync((MiniAppConfig)localObject, "desktop", "search", this.val$reserves_click, this.val$keyword);
+        MiniProgramLpReportDC04239.reportAsync(paramView, "desktop", "search", this.val$reserves_click, this.val$keyword);
+        return;
       }
-      catch (Exception localException)
-      {
-        int i;
-        QLog.e("SearchResultAdapter", 1, "SearchResultAdapter, start miniApp exception: " + Log.getStackTraceString(localException));
-        continue;
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      i = 3026;
+    }
+    catch (Exception paramView)
+    {
+      QLog.e("SearchResultAdapter", 1, "SearchResultAdapter, start miniApp exception: " + Log.getStackTraceString(paramView));
     }
   }
 }

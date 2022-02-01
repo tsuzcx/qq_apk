@@ -1,7 +1,5 @@
 package com.tencent.biz.troopgift;
 
-import aaif;
-import aajw;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.support.v4.view.ViewCompat;
@@ -17,7 +15,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class RadioButtonIndicator
   extends RadioGroup
-  implements aajw, ViewPager.OnPageChangeListener, View.OnClickListener
+  implements ViewPager.OnPageChangeListener, View.OnClickListener, absMultiViewPager.OnPagerSizeChangeListener
 {
   protected int a;
   protected ViewPager a;
@@ -31,19 +29,19 @@ public class RadioButtonIndicator
   public RadioButtonIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130839700;
+    this.jdField_a_of_type_Int = 2130839777;
   }
   
   public RadioButton a(int paramInt)
   {
-    aaif localaaif = new aaif(this, getContext());
-    localaaif.setButtonDrawable(this.jdField_a_of_type_Int);
-    localaaif.setPadding(10, 0, 10, 0);
-    localaaif.setClickable(true);
-    if ((AppSetting.c) && (Build.VERSION.SDK_INT > 16)) {
-      ViewCompat.setImportantForAccessibility(localaaif, 2);
+    RadioButtonIndicator.1 local1 = new RadioButtonIndicator.1(this, getContext());
+    local1.setButtonDrawable(this.jdField_a_of_type_Int);
+    local1.setPadding(10, 0, 10, 0);
+    local1.setClickable(true);
+    if ((AppSetting.d) && (Build.VERSION.SDK_INT > 16)) {
+      ViewCompat.setImportantForAccessibility(local1, 2);
     }
-    return localaaif;
+    return local1;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -103,7 +101,7 @@ public class RadioButtonIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.troopgift.RadioButtonIndicator
  * JD-Core Version:    0.7.0.1
  */

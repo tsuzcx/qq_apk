@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bewh;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.List;
+import java.util.Map;
 
 class TroopAdminList$4
   implements Runnable
@@ -9,9 +11,15 @@ class TroopAdminList$4
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.notifyDataSetChanged();
+    int j = this.this$0.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      String str = (String)((Map)this.this$0.a.get(i)).get("uin");
+      ((Map)this.this$0.a.get(i)).put("nick", ContactUtils.j(this.this$0.app, str));
+      i += 1;
     }
+    this.this$0.runOnUiThread(new TroopAdminList.4.1(this));
   }
 }
 

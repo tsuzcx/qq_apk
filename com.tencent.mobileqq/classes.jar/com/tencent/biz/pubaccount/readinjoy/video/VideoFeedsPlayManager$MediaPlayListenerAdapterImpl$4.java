@@ -2,15 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import sfg;
-import sko;
-import skq;
-import sks;
 
-public class VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$4
+class VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$4
   implements Runnable
 {
-  public VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$4(sko paramsko) {}
+  VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$4(VideoFeedsPlayManager.MediaPlayListenerAdapterImpl paramMediaPlayListenerAdapterImpl) {}
   
   public void run()
   {
@@ -21,14 +17,14 @@ public class VideoFeedsPlayManager$MediaPlayListenerAdapterImpl$4
     {
       Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
       while (localIterator.hasNext()) {
-        ((sks)localIterator.next()).b(VideoFeedsPlayManager.a(this.a.a));
+        ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).b(VideoFeedsPlayManager.a(this.a.a));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.MediaPlayListenerAdapterImpl.4
  * JD-Core Version:    0.7.0.1
  */

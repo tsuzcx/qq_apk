@@ -28,7 +28,7 @@ public class ChildPressEffectRelativeLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     if (isPressed())
     {
@@ -54,7 +54,7 @@ public class ChildPressEffectRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.view.ChildPressEffectRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

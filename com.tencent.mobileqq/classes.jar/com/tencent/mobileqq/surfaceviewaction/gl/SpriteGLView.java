@@ -10,15 +10,9 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.FrameLayout;
-import bdxv;
-import bdyb;
-import bdza;
-import bdzf;
-import bdzg;
-import bdzh;
-import bdzi;
-import bdzj;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.surfaceviewaction.BaseNode;
+import com.tencent.mobileqq.surfaceviewaction.ISpriteView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,34 +22,36 @@ import java.util.List;
 
 public class SpriteGLView
   extends FrameLayout
-  implements bdyb<bdzf>
+  implements ISpriteView<Node>
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   protected View a;
-  private bdzi jdField_a_of_type_Bdzi;
+  private SpriteGLView.IVideoTimeGetter jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView$IVideoTimeGetter;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private final LinkedList<Integer> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private final List<bdxv> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private final List<BaseNode> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   public boolean a;
   private final Object jdField_b_of_type_JavaLangObject = new Object();
   private List<Runnable> jdField_b_of_type_JavaUtilList = new LinkedList();
   public boolean b;
-  public int c;
-  private List<Runnable> c;
+  int jdField_c_of_type_Int;
+  private List<Runnable> jdField_c_of_type_JavaUtilList = new ArrayList();
   public volatile boolean c;
   
   public SpriteGLView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     a();
   }
   
   public SpriteGLView(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Int = paramInt;
     a();
   }
@@ -63,7 +59,8 @@ public class SpriteGLView
   public SpriteGLView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SpriteGLView, 0, 0);
     try
     {
@@ -89,7 +86,7 @@ public class SpriteGLView
       ((GLSurfaceView)localObject).setEGLContextClientVersion(2);
       ((GLSurfaceView)localObject).getHolder().setFormat(-3);
       ((GLSurfaceView)localObject).setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-      ((GLSurfaceView)localObject).setRenderer(new bdzj(this, null));
+      ((GLSurfaceView)localObject).setRenderer(new SpriteGLView.SimpleRenderer(this, null));
       ((GLSurfaceView)localObject).setZOrderOnTop(true);
     }
     for (;;)
@@ -99,7 +96,7 @@ public class SpriteGLView
       localObject = a(getContext());
       this.jdField_a_of_type_AndroidViewView = ((View)localObject);
       addView((View)localObject, -1, -1);
-      ((GLTextureView)localObject).setRenderer(new bdzj(this, null));
+      ((GLTextureView)localObject).setRenderer(new SpriteGLView.SimpleRenderer(this, null));
     }
   }
   
@@ -108,7 +105,7 @@ public class SpriteGLView
     return new GLTextureView(paramContext);
   }
   
-  public List<bdxv> a()
+  public List<BaseNode> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -140,38 +137,38 @@ public class SpriteGLView
     }
   }
   
-  public void a(int paramInt, bdzf parambdzf)
+  public void a(int paramInt, Node paramNode)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(parambdzf)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramInt, parambdzf);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramNode)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramInt, paramNode);
       }
       return;
     }
   }
   
-  public void a(bdza parambdza)
+  public void a(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)
   {
     if ((this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
-      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).a(parambdza);
+      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).a(paramOnSurfaceChangedListener);
     }
   }
   
-  public void a(bdzf parambdzf)
+  public void a(Node paramNode)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(parambdzf)) {
-        this.jdField_a_of_type_JavaUtilList.add(parambdzf);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramNode)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramNode);
       }
       return;
     }
   }
   
-  public void a(bdzh parambdzh)
+  public void a(Sprite paramSprite)
   {
-    a(parambdzh);
+    a(paramSprite);
   }
   
   public void a(Runnable paramRunnable)
@@ -188,7 +185,7 @@ public class SpriteGLView
     return this.jdField_a_of_type_JavaUtilList.isEmpty();
   }
   
-  public void b(int paramInt)
+  void b(int paramInt)
   {
     synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
@@ -197,19 +194,19 @@ public class SpriteGLView
     }
   }
   
-  public void b(bdza parambdza)
+  public void b(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)
   {
     if ((this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
-      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).b(parambdza);
+      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).b(paramOnSurfaceChangedListener);
     }
   }
   
-  public void b(bdzf parambdzf)
+  public void b(Node paramNode)
   {
-    if (parambdzf.a()) {
-      parambdzf.a();
+    if (paramNode.a()) {
+      paramNode.a();
     }
-    this.jdField_a_of_type_JavaUtilList.remove(parambdzf);
+    this.jdField_a_of_type_JavaUtilList.remove(paramNode);
   }
   
   public void b(Runnable paramRunnable)
@@ -223,8 +220,8 @@ public class SpriteGLView
   
   public int c()
   {
-    if (this.jdField_a_of_type_Bdzi != null) {
-      return this.jdField_a_of_type_Bdzi.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView$IVideoTimeGetter != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView$IVideoTimeGetter.a();
     }
     return (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
   }
@@ -249,8 +246,8 @@ public class SpriteGLView
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((localObject instanceof bdzf)) {
-        ((bdzf)localObject).b();
+      if ((localObject instanceof Node)) {
+        ((Node)localObject).b();
       }
       i += 1;
     }
@@ -267,8 +264,8 @@ public class SpriteGLView
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((localObject instanceof bdzf)) {
-        ((bdzf)localObject).c();
+      if ((localObject instanceof Node)) {
+        ((Node)localObject).c();
       }
       i += 1;
     }
@@ -295,11 +292,11 @@ public class SpriteGLView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((bdzf)localIterator.next()).aA_();
+      ((Node)localIterator.next()).aC_();
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -311,7 +308,7 @@ public class SpriteGLView
     int i = arrayOfObject.length - 1;
     while (i >= 0)
     {
-      if (((arrayOfObject[i] instanceof bdzg)) && (((bdzg)arrayOfObject[i]).a(paramMotionEvent, getWidth(), getHeight()))) {
+      if (((arrayOfObject[i] instanceof Node.Clickable)) && (((Node.Clickable)arrayOfObject[i]).a(paramMotionEvent, getWidth(), getHeight()))) {
         return true;
       }
       i -= 1;
@@ -347,9 +344,9 @@ public class SpriteGLView
     this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public void setVideoTimeGetter(bdzi parambdzi)
+  public void setVideoTimeGetter(SpriteGLView.IVideoTimeGetter paramIVideoTimeGetter)
   {
-    this.jdField_a_of_type_Bdzi = parambdzi;
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView$IVideoTimeGetter = paramIVideoTimeGetter;
   }
 }
 

@@ -3,11 +3,7 @@ package Wallet;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.RedInfo;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public final class RedInfoSyncReq
   extends JceStruct
@@ -16,9 +12,9 @@ public final class RedInfoSyncReq
   static ArrayList<RedInfo> cache_vecRedInfo = new ArrayList();
   public String OSVersion = "";
   public String deviceModel = "";
-  public int platId;
+  public int platId = 0;
   public String qVersion = "";
-  public ArrayList<RedInfo> vecRedInfo;
+  public ArrayList<RedInfo> vecRedInfo = null;
   
   static
   {
@@ -35,18 +31,6 @@ public final class RedInfoSyncReq
     this.OSVersion = paramString2;
     this.deviceModel = paramString3;
     this.vecRedInfo = paramArrayList;
-  }
-  
-  public static RedInfoSyncReq createReq(List<QWRedConfig.RedInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      QWRedConfig.RedInfo localRedInfo = (QWRedConfig.RedInfo)paramList.next();
-      localArrayList.add(new RedInfo(localRedInfo.path, localRedInfo.taskId, localRedInfo.isShow));
-    }
-    return new RedInfoSyncReq(1, DeviceInfoUtil.getQQVersion(), DeviceInfoUtil.getDeviceOSVersion(), DeviceInfoUtil.getModel(), localArrayList);
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

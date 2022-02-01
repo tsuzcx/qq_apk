@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class TempMsgHead
   extends JceStruct
 {
-  public int c2c_type;
-  public int service_type;
+  public int c2c_type = 0;
+  public int service_type = 0;
   
   public TempMsgHead() {}
   

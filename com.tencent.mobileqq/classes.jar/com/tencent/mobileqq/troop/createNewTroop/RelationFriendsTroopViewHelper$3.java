@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import bfem;
-import bfeq;
-import bfes;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.PinnedFooterExpandableListView;
 import java.util.ArrayList;
 
-public class RelationFriendsTroopViewHelper$3
+class RelationFriendsTroopViewHelper$3
   implements Runnable
 {
-  public RelationFriendsTroopViewHelper$3(bfeq parambfeq, String paramString) {}
+  RelationFriendsTroopViewHelper$3(RelationFriendsTroopViewHelper paramRelationFriendsTroopViewHelper, String paramString) {}
   
   public void run()
   {
-    ArrayList localArrayList1 = this.this$0.jdField_a_of_type_Bfem.a(this.a);
+    ArrayList localArrayList1 = this.this$0.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopRelationFriendsSearchHelper.a(this.a);
     if (localArrayList1 == null) {
       QLog.i("RelationFriendsTroopViewHelper", 1, "updateRelationFriends searchend result null,uin:" + this.a);
     }
@@ -30,7 +27,7 @@ public class RelationFriendsTroopViewHelper$3
       QLog.i("RelationFriendsTroopViewHelper", 1, "updateRelationFriends startsearch uin:" + this.a + ",resultsize:" + localArrayList1.size());
       localArrayList2 = new ArrayList();
       localArrayList3 = new ArrayList();
-      localArrayList3.addAll(bfeq.a(this.this$0).b());
+      localArrayList3.addAll(RelationFriendsTroopViewHelper.a(this.this$0).b());
       i = 0;
       j = 0;
       if (i < localArrayList1.size())

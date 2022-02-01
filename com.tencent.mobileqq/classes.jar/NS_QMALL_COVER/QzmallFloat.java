@@ -9,7 +9,7 @@ public final class QzmallFloat
   extends JceStruct
 {
   static FloatItem cache_stFloatItem = new FloatItem();
-  public FloatItem stFloatItem;
+  public FloatItem stFloatItem = null;
   
   public QzmallFloat() {}
   

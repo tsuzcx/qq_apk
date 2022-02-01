@@ -65,7 +65,7 @@ class AbsListView$PositionScroller
                         i = this.this$0.getChildCount() - 1;
                         n = k + i;
                       } while (i < 0);
-                      if ((!AbsListView.access$3000(this.this$0)) && (n == this.mLastSeenPos))
+                      if ((!AbsListView.access$3100(this.this$0)) && (n == this.mLastSeenPos))
                       {
                         if (Build.VERSION.SDK_INT >= 16)
                         {
@@ -75,7 +75,7 @@ class AbsListView$PositionScroller
                         this.this$0.post(this);
                         return;
                       }
-                      if ((!AbsListView.access$3000(this.this$0)) || (n < this.mTargetPos) || (k > this.mTargetPos)) {
+                      if ((!AbsListView.access$3100(this.this$0)) || (n < this.mTargetPos) || (k > this.mTargetPos)) {
                         break;
                       }
                       i = this.mTargetPos;
@@ -142,7 +142,7 @@ class AbsListView$PositionScroller
                 QLog.d("XListView", 2, new Object[] { " MOVE_UP_POS:firstPos=", Integer.valueOf(k), " mLastSeenPos=", Integer.valueOf(this.mLastSeenPos), " mTargetPos", Integer.valueOf(this.mTargetPos) });
               }
             } while ((k == this.mLastSeenPos) && (k <= this.mTargetPos));
-            if ((AbsListView.access$3000(this.this$0)) && (this.mTargetPos == 0))
+            if ((AbsListView.access$3100(this.this$0)) && (this.mTargetPos == 0))
             {
               m = this.this$0.getChildCount();
               if ((this.this$0.mItemCount > 30) && (k + m - 1 > m * 3 - 1))
@@ -307,7 +307,7 @@ class AbsListView$PositionScroller
           this.mMode = 1;
           break;
         }
-      } while (!AbsListView.access$3000(this.this$0));
+      } while (!AbsListView.access$3100(this.this$0));
       i = paramInt - i;
       this.mMode = 1;
       break;

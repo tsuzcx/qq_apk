@@ -1,0 +1,675 @@
+package com.tencent.mobileqq.activity.aio.item;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.av.core.VcSystemInfo;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.gaudio.AVNotifyCenter.VideoRoomInfo;
+import com.tencent.av.utils.UITools;
+import com.tencent.av.utils.VideoActionSheet;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.bubble.BubbleInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForVideo;
+import com.tencent.mobileqq.pluspanel.appinfo.GroupVideoChatAppInfo;
+import com.tencent.mobileqq.qcall.UinUtils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.TroopGagInfo;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QAVGroupConfig;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+
+public class VideoItemBuilder
+  extends BaseBubbleBuilder
+{
+  private static final int c = BaseChatItemLayout.h + BaseChatItemLayout.m;
+  private static final int d = BaseChatItemLayout.i + BaseChatItemLayout.n;
+  private static final int e;
+  private static final int jdField_f_of_type_Int = BaseChatItemLayout.k + BaseChatItemLayout.p;
+  private View.OnClickListener a;
+  private boolean jdField_f_of_type_Boolean = true;
+  
+  static
+  {
+    jdField_e_of_type_Int = BaseChatItemLayout.j + BaseChatItemLayout.o;
+  }
+  
+  public VideoItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  {
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new VideoItemBuilder.1(this);
+  }
+  
+  private void a(TextView paramTextView, int paramInt)
+  {
+    if (paramInt <= 0)
+    {
+      paramTextView.setCompoundDrawables(null, null, null, null);
+      return;
+    }
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    Drawable localDrawable = localResources.getDrawable(paramInt);
+    int i = localDrawable.getIntrinsicWidth();
+    int j = localDrawable.getIntrinsicHeight();
+    switch (this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("setting_text_size", 0).getInt("chat_text_size_type", 0))
+    {
+    default: 
+      paramInt = j;
+    }
+    for (;;)
+    {
+      localDrawable.setBounds(0, 0, i, paramInt);
+      paramTextView.setCompoundDrawables(localDrawable, null, null, null);
+      paramTextView.setCompoundDrawablePadding(BaseChatItemLayout.r);
+      return;
+      int k = localResources.getDimensionPixelSize(2131297709);
+      int m = localResources.getDimensionPixelSize(2131297710);
+      paramInt = k;
+      if (k == 0) {
+        paramInt = 1;
+      }
+      i = i * this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int / paramInt;
+      paramInt = j * this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int / paramInt + m;
+      i += m;
+    }
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt, boolean paramBoolean)
+  {
+    QLog.w("ChatItemBuilder", 1, "qqVideo_group, avType[" + paramInt + "], isVideo[" + paramBoolean + "]");
+    if (paramInt == 2)
+    {
+      localObject = new HashMap();
+      ((Map)localObject).put("MultiAVType", String.valueOf(paramInt));
+      ((Map)localObject).put("from", "itemBuilder");
+      GroupVideoChatAppInfo.startGroupVideoOrVoice(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, (Map)localObject);
+      long l = Long.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+      if (paramSessionInfo.jdField_a_of_type_Int == 3000) {
+        if (paramQQAppInterface.getAVNotifyCenter().b() != l) {
+          ReportController.b(paramQQAppInterface, "CliOper", "", "", "Multi_call", "Multi_call_disobj_launch", 0, 0, "", "", "", "");
+        }
+      }
+      while ((paramSessionInfo.jdField_a_of_type_Int != 1) || (paramQQAppInterface.getAVNotifyCenter().b(1, l))) {
+        return;
+      }
+      if (paramInt == 10)
+      {
+        if (paramQQAppInterface.getAVNotifyCenter().b() == 0L)
+        {
+          paramContext = paramQQAppInterface.getAVNotifyCenter().a(l, 10);
+          if ((paramContext == null) || (paramContext.jdField_a_of_type_Int <= 0)) {
+            break label242;
+          }
+        }
+        for (;;)
+        {
+          ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005DC6", "0X8005DC6", 0, 0, "", "", "", "");
+          return;
+          label242:
+          ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005925", "0X8005925", 0, 0, "", "", "", "");
+        }
+      }
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80046CB", "0X80046CB", 0, 0, "", "", "", "");
+      return;
+    }
+    boolean bool = QAVGroupConfig.a("qqVideoEx", paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString);
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("MultiAVType", paramInt);
+    ((Bundle)localObject).putBoolean("enableInvite", bool);
+    ((Bundle)localObject).putBoolean("isVideo", paramBoolean);
+    ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, (Bundle)localObject);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt, boolean paramBoolean, String paramString1, String paramString2)
+  {
+    long l1 = AudioHelper.b();
+    int j = paramSessionInfo.jdField_a_of_type_Int;
+    String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    long l2 = UinUtils.b(str);
+    QLog.w("ChatItemBuilder", 1, "showGroupQavActionSheet, avType[" + paramInt + "], isVideo[" + paramBoolean + "], msgSelfUin[" + paramString1 + "], uinType[" + j + "], groupId[" + str + "], curFriendNick[" + paramSessionInfo.d + "], troopUin[" + paramSessionInfo.jdField_b_of_type_JavaLangString + "], fromWhere[" + paramString2 + "], isVideoActionSheetShown[" + VideoActionSheet.a() + "], seq[" + l1 + "]");
+    if (10 == paramInt)
+    {
+      i = 0;
+      boolean bool = false;
+      paramString1 = paramQQAppInterface.getAVNotifyCenter().a(l2, paramInt);
+      if ((paramString1 == null) || (paramString1.jdField_a_of_type_Int <= 0))
+      {
+        paramString1 = QAVGroupConfig.a(paramQQAppInterface, str);
+        bool = paramString1.getBoolean("forceDisableInviteBox");
+        i = paramString1.getInt("errId", 2131695624);
+      }
+      if (bool)
+      {
+        DialogUtil.a(paramContext, 230, null, paramContext.getResources().getString(i), 2131695411, 2131720534, new VideoItemBuilder.2(), null).show();
+        return;
+      }
+    }
+    if (paramBoolean)
+    {
+      i = 2;
+      label274:
+      if ((paramQQAppInterface.getAVNotifyCenter().a(paramContext, i, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) || (paramQQAppInterface.getAVNotifyCenter().a(paramContext, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, paramBoolean))) {
+        break label443;
+      }
+      if (AudioHelper.a(19) != 1) {
+        break label445;
+      }
+    }
+    label443:
+    label445:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        AudioHelper.a(HardCodeUtil.a(2131716122));
+      }
+      if ((!paramQQAppInterface.getAVNotifyCenter().a(l1, str)) && (i == 0)) {
+        break label451;
+      }
+      paramSessionInfo = new Bundle();
+      paramSessionInfo.putInt("MultiAVType", UITools.a(j));
+      if (paramBoolean) {
+        paramSessionInfo.putBoolean("isVideo", true);
+      }
+      if (j == 1) {
+        paramSessionInfo.putBoolean("enableInvite", QAVGroupConfig.a("showGroupQavActionSheet", paramQQAppInterface, str));
+      }
+      paramSessionInfo.putString("Fromwhere", paramString2);
+      ChatActivityUtils.a(paramQQAppInterface, paramContext, j, str, true, true, null, paramSessionInfo);
+      return;
+      i = 1;
+      break label274;
+      break;
+    }
+    label451:
+    paramString1 = paramQQAppInterface.getAVNotifyCenter().a(UinUtils.b(str));
+    if ((paramString1 == null) || (paramString1.jdField_b_of_type_Int != paramInt))
+    {
+      VideoMsgTools.a(paramQQAppInterface, paramContext, j, str, paramSessionInfo.d, paramBoolean, paramString2);
+      return;
+    }
+    if ((paramString1 != null) && (paramString1.jdField_b_of_type_Int == 2) && (paramString1.d == 2) && (paramString1.jdField_e_of_type_Int == 4)) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      VideoStatusTipsBar.a(paramQQAppInterface, paramContext, j, str, paramInt, paramBoolean, paramString2);
+      return;
+    }
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, MessageForVideo paramMessageForVideo)
+  {
+    if ((!VcSystemInfo.isSupportSharpAudio()) || (VideoActionSheet.a())) {
+      return;
+    }
+    if (paramMessageForVideo.type == 13) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label77;
+      }
+      i = paramMessageForVideo.istroop;
+      if ((i != 1) && (i != 3000)) {
+        break;
+      }
+      a(paramQQAppInterface, paramContext, paramSessionInfo, paramMessageForVideo.extInt, paramMessageForVideo.isVideo, paramMessageForVideo.selfuin, "");
+      return;
+    }
+    label77:
+    c(paramQQAppInterface, paramSessionInfo, paramMessageForVideo.isVideo, paramMessageForVideo.type);
+    if (paramMessageForVideo.isVideo)
+    {
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005642", "0X8005642", 0, 0, "", "", "", "");
+      return;
+    }
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
+  }
+  
+  static void a(QQAppInterface paramQQAppInterface, Context paramContext, MessageForVideo paramMessageForVideo, SessionInfo paramSessionInfo)
+  {
+    AIOUtils.o = true;
+    if (VcSystemInfo.isSupportSharpAudio())
+    {
+      a(paramQQAppInterface, paramMessageForVideo, paramSessionInfo);
+      if ((paramSessionInfo.jdField_a_of_type_Int != 1) || (paramMessageForVideo.extInt == 10)) {}
+    }
+    else
+    {
+      try
+      {
+        l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        int i = UITools.b(paramSessionInfo.jdField_a_of_type_Int);
+        l = paramQQAppInterface.getAVNotifyCenter().a(i, l);
+        Object localObject = (TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER);
+        boolean bool1 = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramQQAppInterface.getCurrentAccountUin());
+        boolean bool2 = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        boolean bool3 = ((TroopGagMgr)localObject).b(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        localObject = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        if ((l == 0L) && (((!bool3) && (bool1)) || ((!bool2) && (localObject != null) && (((TroopGagMgr.TroopGagInfo)localObject).a > 0L))))
+        {
+          QQToast.a(paramQQAppInterface.getApp(), HardCodeUtil.a(2131716121), 0).b(paramQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299166));
+          return;
+        }
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          long l = 0L;
+        }
+        a(paramQQAppInterface, paramContext, paramSessionInfo, paramMessageForVideo.extInt, paramMessageForVideo.isVideo);
+        return;
+      }
+    }
+    a(paramQQAppInterface, paramContext, paramSessionInfo, paramMessageForVideo);
+  }
+  
+  static void a(QQAppInterface paramQQAppInterface, MessageForVideo paramMessageForVideo, SessionInfo paramSessionInfo)
+  {
+    int i = paramMessageForVideo.istroop;
+    if (paramMessageForVideo.type == 13)
+    {
+      if (i != 3000) {
+        break label123;
+      }
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "Multi_call", "Multi_call_disobj", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      if ((paramMessageForVideo.type == 2) || (paramMessageForVideo.type == 24)) {
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004009", "", 0, 0, "1", "", "", "");
+      }
+      if (paramMessageForVideo.type == 0) {
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800400A", "", 0, 0, "1", "", "", "");
+      }
+      return;
+      label123:
+      if (i == 1) {
+        if (paramMessageForVideo.extInt == 10) {
+          ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005924", "0X8005924", 0, 0, "", "", "", "");
+        } else {
+          ReportController.b(null, "dc00899", "Grp_video", "", "notice", "video", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, "" + TroopUtils.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString), "0", "");
+        }
+      }
+    }
+  }
+  
+  private void a(MessageForVideo paramMessageForVideo, Context paramContext, View paramView)
+  {
+    Object localObject1 = "";
+    if (paramMessageForVideo == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatItemBuilder", 2, "setMsgAccDescription-->message is null");
+      }
+    }
+    do
+    {
+      return;
+      if ((paramMessageForVideo.senderuin != null) && (paramMessageForVideo.selfuin != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ChatItemBuilder", 2, "setMsgAccDescription-->uin is null");
+    return;
+    int i;
+    if (paramMessageForVideo.selfuin.equals(paramMessageForVideo.senderuin))
+    {
+      if (-2016 == paramMessageForVideo.msgtype) {
+        localObject1 = HardCodeUtil.a(2131716115);
+      }
+      Object localObject2 = localObject1;
+      if (paramMessageForVideo.msgtype == -2009)
+      {
+        localObject1 = new StringBuilder().append((String)localObject1);
+        localObject2 = paramView.getResources();
+        if (!paramMessageForVideo.isVideo) {
+          break label259;
+        }
+        i = 2131720015;
+        label132:
+        localObject2 = ((Resources)localObject2).getString(i);
+      }
+      localObject1 = (String)localObject2 + paramMessageForVideo.text;
+      if (!paramMessageForVideo.text.contains(paramContext.getResources().getString(2131720530))) {
+        break label267;
+      }
+      localObject1 = (String)localObject1 + a(paramMessageForVideo, paramContext, paramView);
+    }
+    for (;;)
+    {
+      paramView.setContentDescription(((String)localObject1).replace(HardCodeUtil.a(2131716123), HardCodeUtil.a(2131716114)));
+      return;
+      localObject1 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForVideo.senderuin, 0);
+      break;
+      label259:
+      i = 2131720001;
+      break label132;
+      label267:
+      if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131720519)))
+      {
+        paramContext = paramContext.getResources();
+        if (paramMessageForVideo.isVideo) {}
+        for (i = 2131720538;; i = 2131690289)
+        {
+          localObject1 = paramContext.getString(i);
+          break;
+        }
+      }
+      if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695945))) {
+        localObject1 = paramContext.getResources().getString(2131719017);
+      } else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695944))) {
+        localObject1 = paramContext.getResources().getString(2131718555);
+      } else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695368))) {
+        localObject1 = paramContext.getResources().getString(2131719017);
+      } else if (paramMessageForVideo.text.contains(paramContext.getResources().getString(2131695367))) {
+        localObject1 = paramContext.getResources().getString(2131718555);
+      }
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean, int paramInt)
+  {
+    String str1;
+    String str2;
+    if (!paramBoolean)
+    {
+      str1 = "Two_call";
+      str2 = "Two_call_launch";
+      switch (paramSessionInfo.jdField_a_of_type_Int)
+      {
+      default: 
+        paramSessionInfo = "0";
+        label72:
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", str1, str2, 0, 0, paramSessionInfo, "", "", "");
+        if (paramInt == 2) {
+          ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004009", "", 0, 0, "2", "", "", "");
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      if (!paramBoolean) {
+        break label238;
+      }
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005643", "0X8005643", 0, 0, "", "", "", "");
+      return;
+      str1 = "Two_video_call";
+      str2 = "Two_video_call_launch";
+      break;
+      paramSessionInfo = "0";
+      break label72;
+      paramSessionInfo = "1";
+      break label72;
+      paramSessionInfo = "2";
+      break label72;
+      paramSessionInfo = "3";
+      break label72;
+      paramSessionInfo = "4";
+      break label72;
+      if (paramInt == 0) {
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800400A", "", 0, 0, "2", "", "", "");
+      }
+    }
+    label238:
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005244", "0X8005244", 0, 0, "", "", "", "");
+  }
+  
+  private static void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean, int paramInt)
+  {
+    QLog.w("ChatItemBuilder", 1, "qqVideoEx, isVideo[" + paramBoolean + "], closeType[" + paramInt + "]");
+    b(paramQQAppInterface, paramSessionInfo, paramBoolean, paramInt);
+    int i = paramSessionInfo.jdField_a_of_type_Int;
+    String str3 = paramSessionInfo.d;
+    String str2;
+    String str1;
+    if (i == 1006)
+    {
+      str2 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      str1 = null;
+      if (!paramBoolean) {
+        break label115;
+      }
+    }
+    label115:
+    for (paramInt = 2;; paramInt = 1)
+    {
+      if (!paramQQAppInterface.getAVNotifyCenter().a(paramQQAppInterface.getApp(), paramInt, i, str1)) {
+        break label120;
+      }
+      return;
+      str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      str2 = null;
+      break;
+    }
+    label120:
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ChatActivityUtils.a(paramQQAppInterface, localBaseApplication, i, str1, str3, str2, paramBoolean, paramSessionInfo.jdField_b_of_type_JavaLangString, true, true, null, "from_internal");
+      return;
+    }
+  }
+  
+  public int a(ChatMessage paramChatMessage)
+  {
+    return 1;
+  }
+  
+  public View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  {
+    VideoItemBuilder.Holder localHolder = (VideoItemBuilder.Holder)paramViewHolder;
+    paramBaseChatItemLayout = paramBaseChatItemLayout.getContext();
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    paramViewHolder = paramView;
+    if (paramView == null)
+    {
+      paramViewHolder = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      paramViewHolder.setId(2131364637);
+      paramViewHolder.setTextColor(localResources.getColorStateList(2131167052));
+      paramViewHolder.setTextSize(localResources.getDimensionPixelOffset(2131296475));
+      paramViewHolder.setGravity(16);
+      localHolder.a = paramViewHolder;
+    }
+    paramView = (MessageForVideo)paramChatMessage;
+    int i = VideoMsgTools.a(paramBaseChatItemLayout, paramView.type, paramView.text, paramView.isVideo, paramChatMessage.isSendFromLocal());
+    a(localHolder.a, i);
+    i = VideoMsgTools.a(paramBaseChatItemLayout, paramView.type, paramView.text, paramChatMessage.isSendFromLocal());
+    localHolder.a.setTextColor(localResources.getColor(i));
+    localHolder.a.setText(paramView.text);
+    if ((paramView.istroop == 1) && (this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695566).equals(paramView.text))) {
+      ReportController.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, paramView.frienduin, "" + TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.frienduin), "", "");
+    }
+    paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
+    paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    paramViewHolder.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (jdField_e_of_type_Boolean) {
+      a(paramView, paramBaseChatItemLayout, paramViewHolder);
+    }
+    return paramViewHolder;
+  }
+  
+  public BaseBubbleBuilder.ViewHolder a()
+  {
+    return new VideoItemBuilder.Holder(this);
+  }
+  
+  public String a(ChatMessage paramChatMessage)
+  {
+    return HardCodeUtil.a(2131716120);
+  }
+  
+  String a(MessageForVideo paramMessageForVideo, Context paramContext, View paramView)
+  {
+    int j = 0;
+    Object localObject = "";
+    String str2 = paramMessageForVideo.text;
+    String str1 = paramContext.getResources().getString(2131720530) + ",";
+    paramContext = str2.substring(str2.indexOf(':') - 2, str2.lastIndexOf(':') + 3).split(":");
+    int k;
+    int i;
+    if (paramContext.length == 3)
+    {
+      k = Integer.valueOf(paramContext[0]).intValue();
+      j = Integer.valueOf(paramContext[1]).intValue();
+      i = Integer.valueOf(paramContext[2]).intValue();
+    }
+    for (;;)
+    {
+      if ((k <= 0) && (j <= 0))
+      {
+        paramContext = (Context)localObject;
+        if (i <= 0) {}
+      }
+      else
+      {
+        if (k <= 0) {
+          break label331;
+        }
+      }
+      label331:
+      for (localObject = str1 + k + HardCodeUtil.a(2131716117);; localObject = str1)
+      {
+        paramContext = (Context)localObject;
+        if (j > 0) {
+          paramContext = (String)localObject + j + HardCodeUtil.a(2131716119);
+        }
+        localObject = paramContext;
+        if (i > 0) {
+          localObject = paramContext + i + HardCodeUtil.a(2131716118);
+        }
+        paramContext = paramView.getResources();
+        if (paramMessageForVideo.isVideo) {}
+        for (i = 2131720015;; i = 2131720001)
+        {
+          paramMessageForVideo = paramContext.getString(i);
+          paramContext = paramMessageForVideo + (String)localObject;
+          return paramContext;
+          if (paramContext.length != 2) {
+            break label338;
+          }
+          j = Integer.valueOf(paramContext[0]).intValue();
+          i = Integer.valueOf(paramContext[1]).intValue();
+          k = 0;
+          break;
+        }
+      }
+      label338:
+      i = 0;
+      k = 0;
+    }
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
+  {
+    if (paramInt == 2131365636)
+    {
+      ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+      return;
+    }
+    super.a(paramInt, paramContext, paramChatMessage);
+  }
+  
+  public void a(View paramView, ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage.isSend())
+    {
+      paramView.setPadding(jdField_f_of_type_Int, c, jdField_e_of_type_Int, d);
+      return;
+    }
+    paramView.setPadding(jdField_e_of_type_Int, c, jdField_f_of_type_Int, d);
+  }
+  
+  public void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
+  {
+    VideoItemBuilder.Holder localHolder = (VideoItemBuilder.Holder)paramViewHolder;
+    localHolder.a.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int);
+    if ((paramBubbleInfo.jdField_a_of_type_Int == 0) || (!paramBubbleInfo.a()))
+    {
+      paramView = paramView.getResources();
+      if (localHolder.a.getText().toString().contains(this.jdField_a_of_type_AndroidContentContext.getString(2131720516)))
+      {
+        paramViewHolder = paramView.getColorStateList(2131165954);
+        localHolder.a.setTextColor(paramViewHolder);
+        return;
+      }
+      if (paramChatMessage.isSend())
+      {
+        paramViewHolder = paramView.getColorStateList(2131167056);
+        localHolder.a.setTextColor(paramViewHolder);
+        if (!paramChatMessage.isSend()) {
+          break label151;
+        }
+      }
+      label151:
+      for (paramViewHolder = paramView.getColorStateList(2131167055);; paramViewHolder = paramView.getColorStateList(2131167054))
+      {
+        localHolder.a.setLinkTextColor(paramViewHolder);
+        return;
+        paramViewHolder = paramView.getColorStateList(2131167052);
+        break;
+      }
+    }
+    if (paramBubbleInfo.jdField_b_of_type_Int == 0) {
+      localHolder.a.setTextColor(-16777216);
+    }
+    while (paramBubbleInfo.c == 0)
+    {
+      localHolder.a.setLinkTextColor(paramView.getResources().getColorStateList(2131167054));
+      return;
+      localHolder.a.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+    }
+    localHolder.a.setLinkTextColor(paramBubbleInfo.c);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_f_of_type_Boolean = paramBoolean;
+  }
+  
+  public QQCustomMenuItem[] a(View paramView)
+  {
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    AIOUtils.a(paramView);
+    ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371997, null, null);
+    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362524, null, null);
+    return localQQCustomMenu.a();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.aio.item.VideoItemBuilder
+ * JD-Core Version:    0.7.0.1
+ */

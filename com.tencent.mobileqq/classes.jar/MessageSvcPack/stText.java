@@ -9,8 +9,8 @@ public final class stText
 {
   static byte[] cache_strUrl;
   static byte[] cache_vMsg;
-  public byte[] strUrl;
-  public byte[] vMsg;
+  public byte[] strUrl = null;
+  public byte[] vMsg = null;
   
   public stText() {}
   

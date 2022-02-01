@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 
-public class ZanCombolEffectView$1
+class ZanCombolEffectView$1
   implements Runnable
 {
   ZanCombolEffectView$1(ZanCombolEffectView paramZanCombolEffectView, Integer[] paramArrayOfInteger) {}
@@ -57,7 +57,7 @@ public class ZanCombolEffectView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ZanCombolEffectView.1
  * JD-Core Version:    0.7.0.1
  */

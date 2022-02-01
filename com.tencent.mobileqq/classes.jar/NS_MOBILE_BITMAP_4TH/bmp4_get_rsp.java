@@ -11,8 +11,8 @@ public final class bmp4_get_rsp
 {
   static Map<Long, bmp4_values> cache_map_rsp = new HashMap();
   public String errmsg = "";
-  public Map<Long, bmp4_values> map_rsp;
-  public int retCode;
+  public Map<Long, bmp4_values> map_rsp = null;
+  public int retCode = 0;
   
   static
   {

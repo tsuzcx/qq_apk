@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afug;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -23,7 +22,7 @@ class PokePanel$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PokePanel.2.1
  * JD-Core Version:    0.7.0.1
  */

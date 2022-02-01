@@ -21,13 +21,14 @@ class TAVCutVideoSession$1
   
   public void buildCompleted(int paramInt, VideoRenderChainManager paramVideoRenderChainManager, MediaBuilderOutput paramMediaBuilderOutput)
   {
+    TAVCutVideoSession.access$002(this.this$0, paramMediaBuilderOutput);
     paramInt = ((MediaClipModel)paramVideoRenderChainManager.getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getWidth();
     int i = ((MediaClipModel)paramVideoRenderChainManager.getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getHeight();
     if (this.this$0.tavCutVideoView != null) {
       this.this$0.tavCutVideoView.adjustStickerContainer(new Size(paramInt, i));
     }
     paramMediaBuilderOutput = this.this$0.constrainRenderSize(paramInt, i);
-    paramVideoRenderChainManager.getComposition().setRenderSize(paramMediaBuilderOutput);
+    TAVCutVideoSession.access$100(this.this$0, paramVideoRenderChainManager, paramMediaBuilderOutput);
     this.this$0.renderChainManagers.put(0, paramVideoRenderChainManager);
     this.this$0.tavCompositions.put(0, paramVideoRenderChainManager.getComposition());
     paramMediaBuilderOutput = paramVideoRenderChainManager.getComposition();
@@ -41,7 +42,7 @@ class TAVCutVideoSession$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession.1
  * JD-Core Version:    0.7.0.1
  */

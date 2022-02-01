@@ -36,9 +36,12 @@ public class SingleLineHotwordTextView
   public SingleLineHotwordTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_JavaLangString = null;
     this.jdField_a_of_type_Int = 2147483647;
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
     this.jdField_d_of_type_Int = -97212;
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_d_of_type_JavaLangString = "";
@@ -104,7 +107,7 @@ public class SingleLineHotwordTextView
       return null;
     }
     paramString = new SpannableString(paramString);
-    if (TroopUtils.isArrayEmpty(paramArrayList)) {
+    if (TroopUtils.a(paramArrayList)) {
       return paramString;
     }
     String str1 = paramString.toString().toLowerCase();
@@ -360,7 +363,7 @@ public class SingleLineHotwordTextView
     return "…." + paramString1.substring(paramString1.length() - paramInt1, paramString1.length());
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
@@ -420,7 +423,7 @@ public class SingleLineHotwordTextView
     String str1;
     if (paramInt1 == 1)
     {
-      str1 = FileUtil.getExtension(str2);
+      str1 = FileUtil.a(str2);
       if (!TextUtils.isEmpty(str1))
       {
         paramInt1 = str2.toLowerCase().lastIndexOf(str1.toLowerCase());
@@ -433,12 +436,12 @@ public class SingleLineHotwordTextView
           }
         }
         if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-          break label274;
+          break label273;
         }
         str1 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
         this.jdField_c_of_type_Int = a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int);
         if (this.jdField_c_of_type_Int != 3) {
-          break label279;
+          break label278;
         }
         this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "." + this.jdField_b_of_type_JavaLangString);
         this.jdField_b_of_type_JavaLangString = null;
@@ -450,10 +453,10 @@ public class SingleLineHotwordTextView
         QLog.d("SingleLineHotwordTextView", 2, "setContentType name = " + this.jdField_a_of_type_JavaLangString + ", extension = " + this.jdField_b_of_type_JavaLangString);
       }
       return;
-      label274:
+      label273:
       str1 = null;
       break;
-      label279:
+      label278:
       this.jdField_b_of_type_JavaLangString = a(this.jdField_b_of_type_JavaLangString, str1, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int);
       if ((this.jdField_c_of_type_Int == 2) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (str1 != null) && (str1.length() > this.jdField_a_of_type_Int))
       {

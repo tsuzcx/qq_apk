@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo;
 
-import anct;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
 
-public class FriendCardApolloViewController$1
+class FriendCardApolloViewController$1
   implements Runnable
 {
   FriendCardApolloViewController$1(FriendCardApolloViewController paramFriendCardApolloViewController) {}
@@ -18,7 +18,7 @@ public class FriendCardApolloViewController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.FriendCardApolloViewController.1
  * JD-Core Version:    0.7.0.1
  */

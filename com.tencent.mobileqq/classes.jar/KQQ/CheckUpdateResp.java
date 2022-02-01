@@ -9,10 +9,10 @@ public final class CheckUpdateResp
   extends JceStruct
 {
   static ArrayList<RespItem> cache_vecResPkg;
-  public long dwSsoSeq;
+  public long dwSsoSeq = 0L;
   public boolean isEnd = true;
-  public byte result;
-  public ArrayList<RespItem> vecResPkg;
+  public byte result = 0;
+  public ArrayList<RespItem> vecResPkg = null;
   
   public CheckUpdateResp() {}
   

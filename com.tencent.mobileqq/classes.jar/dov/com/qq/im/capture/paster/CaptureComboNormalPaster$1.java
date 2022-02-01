@@ -1,26 +1,25 @@
 package dov.com.qq.im.capture.paster;
 
-import bojm;
-import bonc;
-import bptp;
+import dov.com.qq.im.capture.util.DoodleLayoutConnector;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
-public class CaptureComboNormalPaster$1
+class CaptureComboNormalPaster$1
   implements Runnable
 {
-  public CaptureComboNormalPaster$1(bojm parambojm, int paramInt) {}
+  CaptureComboNormalPaster$1(CaptureComboNormalPaster paramCaptureComboNormalPaster, int paramInt) {}
   
   public void run()
   {
-    DoodleLayout localDoodleLayout = bonc.a().a(this.a);
+    DoodleLayout localDoodleLayout = DoodleLayoutConnector.a().a(this.a);
     if (localDoodleLayout != null) {
-      bojm.a(this.this$0.a, bojm.a(this.this$0), bptp.a, bptp.b, bojm.a(this.this$0), bojm.b(this.this$0), bojm.c(this.this$0), bojm.a(this.this$0), localDoodleLayout.a());
+      CaptureComboNormalPaster.a(this.this$0.a, CaptureComboNormalPaster.a(this.this$0), ScreenUtil.a, ScreenUtil.b, CaptureComboNormalPaster.a(this.this$0), CaptureComboNormalPaster.b(this.this$0), CaptureComboNormalPaster.c(this.this$0), CaptureComboNormalPaster.a(this.this$0), localDoodleLayout.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.paster.CaptureComboNormalPaster.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 package com.tencent.gamecenter.appointment;
 
-import abub;
-import abuf;
 import android.text.TextUtils;
-import bjqp;
+import com.tencent.gamecenter.wadl.util.GameCenterSpUtils;
+import com.tencent.gamecenter.wadl.util.WLog;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -12,27 +11,27 @@ final class GameCenterCheck$1
 {
   public void run()
   {
-    String str2 = abuf.a("APPOINTMENT_LIST");
-    String str3 = abuf.a("DELAY_LIST");
-    String str4 = abuf.a("APPOINTMENT_UPDATE_LIST");
-    String str1 = abuf.a("APPOINTMENT_TGPA_LIST");
+    String str2 = GameCenterSpUtils.a("APPOINTMENT_LIST");
+    String str3 = GameCenterSpUtils.a("DELAY_LIST");
+    String str4 = GameCenterSpUtils.a("APPOINTMENT_UPDATE_LIST");
+    String str1 = GameCenterSpUtils.a("APPOINTMENT_TGPA_LIST");
     if ((TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4)) && (TextUtils.isEmpty(str1)))
     {
-      bjqp.c("GameCenterCheck", "checkGameCenter no task, unRegisterReceiver");
-      abub.b();
+      WLog.c("GameCenterCheck", "checkGameCenter no task, unRegisterReceiver");
+      GameCenterBroadcastReceiver.b();
     }
     for (;;)
     {
       return;
-      bjqp.c("GameCenterCheck", "checkGameCenter begin");
-      abuf.a();
-      if ((!TextUtils.isEmpty(str3)) && (abuf.a)) {
+      WLog.c("GameCenterCheck", "checkGameCenter begin");
+      GameCenterUtils.a();
+      if ((!TextUtils.isEmpty(str3)) && (GameCenterUtils.a)) {
         GameCenterCheck.a(str3.split("\\|"));
       }
-      if ((!TextUtils.isEmpty(str2)) && (abuf.b)) {
+      if ((!TextUtils.isEmpty(str2)) && (GameCenterUtils.b)) {
         GameCenterCheck.b(str2.split("\\|"));
       }
-      if ((!TextUtils.isEmpty(str4)) && (abuf.c)) {}
+      if ((!TextUtils.isEmpty(str4)) && (GameCenterUtils.c)) {}
       try
       {
         GameCenterCheck.a(new JSONArray(str4));
@@ -62,7 +61,7 @@ final class GameCenterCheck$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gamecenter.appointment.GameCenterCheck.1
  * JD-Core Version:    0.7.0.1
  */

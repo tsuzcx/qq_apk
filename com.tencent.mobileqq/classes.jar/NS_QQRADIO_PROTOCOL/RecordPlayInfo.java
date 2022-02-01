@@ -10,9 +10,9 @@ public final class RecordPlayInfo
 {
   static ArrayList<OneVideoVidInfo> cache_video_info_vec = new ArrayList();
   public String fileName = "";
-  public int status;
-  public int totalCount;
-  public ArrayList<OneVideoVidInfo> video_info_vec;
+  public int status = 0;
+  public int totalCount = 0;
+  public ArrayList<OneVideoVidInfo> video_info_vec = null;
   
   static
   {

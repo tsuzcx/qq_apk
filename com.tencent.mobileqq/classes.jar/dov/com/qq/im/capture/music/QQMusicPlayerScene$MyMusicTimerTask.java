@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.music;
 
-import bkys;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import java.util.TimerTask;
 
 class QQMusicPlayerScene$MyMusicTimerTask
@@ -19,7 +19,7 @@ class QQMusicPlayerScene$MyMusicTimerTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QQMusicPlayerScene.MyMusicTimerTask
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,6 @@ import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class HotSearchAdapter$HotSearchViewHolder$1
   implements View.OnClickListener
@@ -22,15 +21,11 @@ class HotSearchAdapter$HotSearchViewHolder$1
     {
       ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
       MiniAppController.launchMiniAppByAppInfo(this.val$activity, this.val$miniAppInfo, this.val$refer);
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramView)
     {
-      for (;;)
-      {
-        QLog.e("HotSearchAdapter", 1, "HotSearchAdapter, start miniApp exception: " + Log.getStackTraceString(localException));
-      }
+      QLog.e("HotSearchAdapter", 1, "HotSearchAdapter, start miniApp exception: " + Log.getStackTraceString(paramView));
     }
   }
 }

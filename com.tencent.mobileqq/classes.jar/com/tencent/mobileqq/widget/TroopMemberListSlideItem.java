@@ -20,12 +20,18 @@ public class TroopMemberListSlideItem
   public TroopMemberListSlideItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     a(paramContext);
   }
   
   public TroopMemberListSlideItem(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     a(paramContext);
   }
   
@@ -75,7 +81,7 @@ public class TroopMemberListSlideItem
     }
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
     this.jdField_a_of_type_AndroidViewView = getChildAt(0);
@@ -86,7 +92,7 @@ public class TroopMemberListSlideItem
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt1 = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
     if (this.jdField_a_of_type_Boolean) {
@@ -96,7 +102,7 @@ public class TroopMemberListSlideItem
     this.jdField_b_of_type_AndroidViewView.layout(paramInt1, 0, this.jdField_b_of_type_AndroidViewView.getMeasuredWidth() + paramInt1, this.jdField_b_of_type_AndroidViewView.getMeasuredHeight());
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_Int = this.jdField_b_of_type_AndroidViewView.getMeasuredWidth();
@@ -115,7 +121,7 @@ public class TroopMemberListSlideItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TroopMemberListSlideItem
  * JD-Core Version:    0.7.0.1
  */

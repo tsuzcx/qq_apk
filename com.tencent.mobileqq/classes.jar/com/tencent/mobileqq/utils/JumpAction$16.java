@@ -1,46 +1,84 @@
 package com.tencent.mobileqq.utils;
 
-import android.text.TextUtils;
-import auuv;
-import bhcu;
-import bheh;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.ForwardMiniAppThirdPartyHelper;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 
-public class JumpAction$16
-  implements Runnable
+class JumpAction$16
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public JumpAction$16(bheh parambheh, String paramString, long paramLong, HashMap paramHashMap) {}
+  JumpAction$16(JumpAction paramJumpAction, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    String str1 = FileUtils.saveFileUriToFile(this.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "opensdk_tmp");
-    if (!TextUtils.isEmpty(str1)) {}
-    try
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      String str2 = new String(bhcu.encode(str1.getBytes("UTF-8"), 0));
-      this.this$0.jdField_a_of_type_JavaUtilHashMap.put("file_data", str2);
-      long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-      auuv.a("KEY_STAGE_1_SAVE_IMAGE", l, this.jdField_a_of_type_JavaUtilHashMap, true);
-      QLog.i("JumpAction", 1, "gotoShareMsgCheck save file to:" + str1 + ",cost=" + l);
-      bheh.e(this.this$0);
-      if ((!this.this$0.f) && (!MiniProgramOpenSdkUtil.isSharingMiniProgram(this.this$0.jdField_a_of_type_JavaUtilHashMap)) && ((this.this$0.jdField_a_of_type_AndroidContentContext instanceof JumpActivity))) {
-        ((JumpActivity)this.this$0.jdField_a_of_type_AndroidContentContext).finish();
+      ForwardStatisticsReporter.a("KEY_STAGE_2_CONNECT_MINI_D55", bool);
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.i)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.i = false;
+        this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.d();
       }
-      if (((this.this$0.jdField_a_of_type_AndroidContentContext instanceof GesturePWDUnlockActivity)) && (this.this$0.g)) {
-        ((GesturePWDUnlockActivity)this.this$0.jdField_a_of_type_AndroidContentContext).finish();
+      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.h) {
+        break;
       }
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.jdField_a_of_type_AndroidContentContext, 1, 2131699301, 1).a();
+      paramArrayOfByte = new Intent(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
+      paramArrayOfByte.addFlags(67108864);
+      paramArrayOfByte.addFlags(268435456);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte);
+      JumpAction.c(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction);
       return;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    paramBundle = JumpAction.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction);
+    if (paramInt == 0)
     {
-      for (;;)
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A51A", "0X800A51A", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, this.b);
+      paramBundle.putExtra("mini_app_id", this.b);
+      paramBundle.putExtra("mini_app_path", this.c);
+      paramBundle.putExtra("mini_app_type", this.d);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.jdField_a_of_type_AndroidContentContext.startActivity(paramBundle);
+      JumpAction.c(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction);
+      return;
+      if (paramInt == 25501)
       {
-        QLog.i("JumpAction", 1, "gotoShareMsgCheck put exception:", localUnsupportedEncodingException);
+        if (QLog.isColorLevel()) {
+          QLog.i("JumpAction", 2, "Account not the same");
+        }
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A51A", "0X800A51A", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, this.b);
+        paramBundle.putExtra("mini_app_id", this.b);
+        paramBundle.putExtra("mini_app_path", this.c);
+        paramBundle.putExtra("mini_app_type", this.d);
+        paramBundle.putExtra("openid", this.e);
+        paramBundle.putExtra("appid", this.jdField_a_of_type_JavaLangString);
+        paramBundle.putExtra("pull_show_open_id_diff_main", true);
+      }
+      else
+      {
+        paramArrayOfByte = ForwardMiniAppThirdPartyHelper.a(paramArrayOfByte);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A51B", "0X800A51B", 0, paramInt, "", "", this.jdField_a_of_type_JavaLangString, this.b);
+        if (paramInt == 25601)
+        {
+          paramBundle.putExtra("pull_mini_app_not_privilege_not_bind", true);
+          paramBundle.putExtra("pull_mini_app_not_privilege_not_bind_app_name", this.f);
+        }
+        paramBundle.putExtra("pull_mini_app_not_privilege", true);
+        paramBundle.putExtra("pull_mini_app_not_privilege_string", paramArrayOfByte);
       }
     }
   }

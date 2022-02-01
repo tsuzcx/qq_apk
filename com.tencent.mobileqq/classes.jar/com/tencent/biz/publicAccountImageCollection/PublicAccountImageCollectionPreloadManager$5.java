@@ -1,12 +1,12 @@
 package com.tencent.biz.publicAccountImageCollection;
 
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
-import tlv;
-import tlw;
 
 class PublicAccountImageCollectionPreloadManager$5
   implements Runnable
@@ -31,9 +31,9 @@ class PublicAccountImageCollectionPreloadManager$5
             localObject1 = new URL((String)localObject1);
             if (localObject1 != null)
             {
-              tlw localtlw = new tlw();
-              localtlw.a = ((URL)localObject1);
-              tlv.a().a(localtlw, null);
+              ImageRequest localImageRequest = new ImageRequest();
+              localImageRequest.a = ((URL)localObject1);
+              ImageManager.a().a(localImageRequest, null);
             }
           }
           catch (MalformedURLException localMalformedURLException)
@@ -53,7 +53,7 @@ class PublicAccountImageCollectionPreloadManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager.5
  * JD-Core Version:    0.7.0.1
  */

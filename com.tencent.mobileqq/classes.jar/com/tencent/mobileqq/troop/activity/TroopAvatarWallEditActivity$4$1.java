@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bgop;
 import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter;
 
 class TroopAvatarWallEditActivity$4$1
   implements Runnable

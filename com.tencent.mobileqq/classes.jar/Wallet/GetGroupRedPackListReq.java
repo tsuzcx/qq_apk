@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GetGroupRedPackListReq
   extends JceStruct
 {
-  public int iGroupType;
-  public int iPlatForm;
+  public int iGroupType = 0;
+  public int iPlatForm = 0;
   public String sClientIp = "";
   public String sGroupUin = "";
   public String sQQVersion = "";

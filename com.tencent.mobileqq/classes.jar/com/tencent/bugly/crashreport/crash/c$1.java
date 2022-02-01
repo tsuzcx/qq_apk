@@ -17,7 +17,7 @@ final class c$1
       if (this.f)
       {
         x.a("clear user datas", new Object[0]);
-        a.a(c.b(this.g)).B();
+        a.a(c.b(this.g)).A();
       }
       return;
     }

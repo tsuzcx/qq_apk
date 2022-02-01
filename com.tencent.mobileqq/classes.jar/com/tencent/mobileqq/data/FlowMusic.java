@@ -20,7 +20,7 @@ public class FlowMusic
   public String albumName;
   public String albumUrl;
   public int duration = -1;
-  public String path;
+  public String path = null;
   @notColumn
   public int playable = 1;
   public int singerId;
@@ -38,7 +38,7 @@ public class FlowMusic
   public int tryBegin = -1;
   public int tryEnd = -1;
   @notColumn
-  public String url;
+  public String url = null;
   public int userOwnRule;
   
   public FlowMusic() {}
@@ -154,7 +154,7 @@ public class FlowMusic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.FlowMusic
  * JD-Core Version:    0.7.0.1
  */

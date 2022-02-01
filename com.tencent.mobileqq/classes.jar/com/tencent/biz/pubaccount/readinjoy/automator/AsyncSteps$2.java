@@ -1,12 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import ovv;
-import ovx;
-
-public class AsyncSteps$2
+class AsyncSteps$2
   implements Runnable
 {
-  public AsyncSteps$2(ovv paramovv, ovx paramovx) {}
+  AsyncSteps$2(AsyncSteps paramAsyncSteps, BaseStep paramBaseStep) {}
   
   public void run()
   {
@@ -16,7 +13,7 @@ public class AsyncSteps$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.automator.AsyncSteps.2
  * JD-Core Version:    0.7.0.1
  */

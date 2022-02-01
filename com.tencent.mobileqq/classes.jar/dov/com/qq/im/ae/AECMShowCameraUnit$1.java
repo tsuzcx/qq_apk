@@ -1,11 +1,9 @@
 package dov.com.qq.im.ae;
 
-import bmvk;
-
-public class AECMShowCameraUnit$1
+class AECMShowCameraUnit$1
   implements Runnable
 {
-  public AECMShowCameraUnit$1(bmvk parambmvk) {}
+  AECMShowCameraUnit$1(AECMShowCameraUnit paramAECMShowCameraUnit) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class AECMShowCameraUnit$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.AECMShowCameraUnit.1
  * JD-Core Version:    0.7.0.1
  */

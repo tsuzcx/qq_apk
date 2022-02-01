@@ -1,22 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge;
 
+import com.tencent.biz.pubaccount.readinjoy.model.FollowListInfoModule;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
-import qfq;
-import tyk;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run", "com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DataBridgeInvokeHandler$isFollowUin$1$1"}, k=3, mv={1, 1, 16})
-public final class DataBridgeInvokeHandler$isFollowUin$$inlined$also$lambda$1
+final class DataBridgeInvokeHandler$isFollowUin$$inlined$also$lambda$1
   implements Runnable
 {
-  public DataBridgeInvokeHandler$isFollowUin$$inlined$also$lambda$1(String paramString1, tyk paramtyk, String paramString2) {}
+  DataBridgeInvokeHandler$isFollowUin$$inlined$also$lambda$1(String paramString1, DataBridgeInvokeHandler paramDataBridgeInvokeHandler, String paramString2) {}
   
   public final void run()
   {
     try
     {
-      boolean bool = qfq.a(Long.parseLong(this.a), null);
-      tyk.a(this.this$0, bool, this.b);
+      boolean bool = FollowListInfoModule.a(Long.parseLong(this.a), null);
+      DataBridgeInvokeHandler.a(this.this$0, bool, this.b);
       return;
     }
     catch (Exception localException)
@@ -28,7 +27,7 @@ public final class DataBridgeInvokeHandler$isFollowUin$$inlined$also$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.isFollowUin..inlined.also.lambda.1
  * JD-Core Version:    0.7.0.1
  */

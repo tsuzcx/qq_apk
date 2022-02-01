@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class TNearbyGodInfo
   extends JceStruct
 {
-  public int iIsGodFlag;
+  public int iIsGodFlag = 0;
   public String strJumpUrl = "";
   
   public TNearbyGodInfo() {}
@@ -34,7 +34,7 @@ public final class TNearbyGodInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.TNearbyGodInfo
  * JD-Core Version:    0.7.0.1
  */

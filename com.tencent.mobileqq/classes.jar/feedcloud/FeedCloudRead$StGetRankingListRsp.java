@@ -5,6 +5,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
@@ -16,18 +17,19 @@ public final class FeedCloudRead$StGetRankingListRsp
   public final PBUInt32Field endTime = PBField.initUInt32(0);
   public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
   public FeedCloudMeta.StRankingItem hostUinRank = new FeedCloudMeta.StRankingItem();
+  public final PBInt32Field isActiveRank = PBField.initInt32(0);
   public final PBRepeatMessageField<FeedCloudMeta.StRankingItem> items = PBField.initRepeatMessage(FeedCloudMeta.StRankingItem.class);
   public final PBUInt32Field startTime = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50 }, new String[] { "extInfo", "items", "startTime", "endTime", "busiRspData", "hostUinRank" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null }, StGetRankingListRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 56 }, new String[] { "extInfo", "items", "startTime", "endTime", "busiRspData", "hostUinRank", "isActiveRank" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null, Integer.valueOf(0) }, StGetRankingListRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     feedcloud.FeedCloudRead.StGetRankingListRsp
  * JD-Core Version:    0.7.0.1
  */

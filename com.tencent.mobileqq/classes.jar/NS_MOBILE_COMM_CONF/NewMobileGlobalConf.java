@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class NewMobileGlobalConf
   extends JceStruct
 {
-  public long version;
+  public long version = 0L;
   
   public NewMobileGlobalConf() {}
   

@@ -10,14 +10,14 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.ap;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.ai;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.core.g;
 import com.tencent.mobileqq.msf.core.h;
+import com.tencent.mobileqq.msf.core.i;
 import com.tencent.mobileqq.msf.core.net.l;
 import com.tencent.mobileqq.msf.core.net.n;
-import com.tencent.mobileqq.msf.core.q;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -123,11 +123,11 @@ public class b
         return;
       }
       this.j.lightSender.a(paramToServiceMsg);
-    } while ((this.j.lightTcpSender == null) || (!f()) || (!com.tencent.mobileqq.a.a.a.b()));
+    } while ((this.j.lightTcpSender == null) || (!g()) || (!com.tencent.mobileqq.a.a.a.b()));
     this.j.lightTcpSender.b(paramToServiceMsg);
   }
   
-  public static boolean f()
+  public static boolean g()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
@@ -185,7 +185,7 @@ public class b
           }
         }
       }
-      h();
+      i();
       Message localMessage = this.h.obtainMessage();
       localMessage.what = 1;
       localMessage.arg1 = paramToServiceMsg.getRequestSsoSeq();
@@ -194,17 +194,6 @@ public class b
         QLog.d("MSF.C.QuickSendManager", 2, "tryResendMsg cmd:" + paramToServiceMsg.getServiceCmd() + " ssoSeq:" + paramToServiceMsg.getRequestSsoSeq() + " resendIndex: " + (i1 + 1) + " delayed: " + locala.b);
       }
       return true;
-    }
-  }
-  
-  public static void h()
-  {
-    if ((f()) && (com.tencent.mobileqq.msf.core.a.a.bu()) && (com.tencent.mobileqq.a.a.a.b()))
-    {
-      NetConnInfoCenter.checkConnInfo();
-      if (!NetConnInfoCenter.isMobileConn()) {
-        l.a(BaseApplication.getContext());
-      }
     }
   }
   
@@ -227,17 +216,26 @@ public class b
   
   public static void i()
   {
+    if ((g()) && (com.tencent.mobileqq.msf.core.a.a.bu()) && (com.tencent.mobileqq.a.a.a.b()))
+    {
+      NetConnInfoCenter.checkConnInfo();
+      if (!NetConnInfoCenter.isMobileConn()) {
+        l.a(BaseApplication.getContext());
+      }
+    }
+  }
+  
+  public static void j()
+  {
     if ((MsfCore.sCore.lightTcpSender != null) && (com.tencent.mobileqq.msf.core.a.a.bu()) && (MsfCore.sCore.lightTcpSender.a())) {
       MsfCore.sCore.lightTcpSender.b();
     }
   }
   
-  private boolean j()
+  private boolean k()
   {
     boolean bool = BaseApplication.getContext().getSharedPreferences("common_sp_for_msf", 4).getBoolean("isSendQuickHBBackToForeground", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.QuickSendManager", 2, "isSendQuickHBBackToForeground = " + bool);
-    }
+    QLog.d("MSF.C.QuickSendManager", 1, "isSendQuickHBBackToForeground = " + bool);
     return bool;
   }
   
@@ -343,7 +341,7 @@ public class b
     {
       try
       {
-        ap.a(paramToServiceMsg, paramFromServiceMsg, true);
+        ai.a(paramToServiceMsg, paramFromServiceMsg, true);
         com.tencent.mobileqq.a.a.a.a().a(paramToServiceMsg, paramFromServiceMsg, true, 0);
         if (com.tencent.mobileqq.msf.core.a.a.aH())
         {
@@ -476,15 +474,15 @@ public class b
       paramBoolean = true;
       i1 = 0;
       break;
-      paramFromServiceMsg.put("account", this.j.sender.j());
+      paramFromServiceMsg.put("account", this.j.sender.l());
       break label193;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean) {
-      b(j());
+    if ((paramBoolean) || (k())) {
+      d();
     }
   }
   
@@ -513,11 +511,8 @@ public class b
   
   public void b(boolean paramBoolean)
   {
-    long l1 = SystemClock.elapsedRealtime();
-    if ((q.a().d()) && (l1 - this.s > 120000L) && ((this.t.compareAndSet(false, true)) || (paramBoolean)))
-    {
-      a(2000L);
-      this.s = l1;
+    if ((g()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
+      j();
     }
   }
   
@@ -576,18 +571,13 @@ public class b
     }
   }
   
-  public void c(boolean paramBoolean)
-  {
-    if ((f()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
-      i();
-    }
-  }
-  
   public void d()
   {
-    MsfCore.sCore.lightSender.a();
-    if (MsfCore.sCore.lightTcpSender != null) {
-      MsfCore.sCore.lightTcpSender.c();
+    long l1 = SystemClock.elapsedRealtime();
+    if ((i.a().d()) && (l1 - this.s > 120000L) && (this.t.compareAndSet(false, true)))
+    {
+      a(2000L);
+      this.s = l1;
     }
   }
   
@@ -604,9 +594,9 @@ public class b
   
   public void e()
   {
-    MsfCore.sCore.lightSender.b();
+    MsfCore.sCore.lightSender.a();
     if (MsfCore.sCore.lightTcpSender != null) {
-      MsfCore.sCore.lightTcpSender.d();
+      MsfCore.sCore.lightTcpSender.c();
     }
   }
   
@@ -634,9 +624,17 @@ public class b
     return false;
   }
   
-  public void g()
+  public void f()
   {
-    if ((f()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
+    MsfCore.sCore.lightSender.b();
+    if (MsfCore.sCore.lightTcpSender != null) {
+      MsfCore.sCore.lightTcpSender.d();
+    }
+  }
+  
+  public void h()
+  {
+    if ((g()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
       b(30000);
     }
   }

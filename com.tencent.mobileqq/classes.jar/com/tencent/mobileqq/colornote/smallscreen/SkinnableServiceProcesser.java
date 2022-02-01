@@ -6,19 +6,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Process;
-import aqrp;
 import com.tencent.qphone.base.util.QLog;
 
 public class SkinnableServiceProcesser
   extends BroadcastReceiver
 {
   private final Service jdField_a_of_type_AndroidAppService;
-  private final aqrp jdField_a_of_type_Aqrp;
+  private final SkinnableServiceProcesser.Callback jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser$Callback;
   
-  public SkinnableServiceProcesser(Service paramService, aqrp paramaqrp)
+  public SkinnableServiceProcesser(Service paramService, SkinnableServiceProcesser.Callback paramCallback)
   {
     this.jdField_a_of_type_AndroidAppService = paramService;
-    this.jdField_a_of_type_Aqrp = paramaqrp;
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser$Callback = paramCallback;
     try
     {
       this.jdField_a_of_type_AndroidAppService.registerReceiver(this, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
@@ -43,8 +42,8 @@ public class SkinnableServiceProcesser
       return;
     }
     QLog.d("SkinEngine", 1, "SkinnableActivityProcesser on pre theme changed");
-    if (this.jdField_a_of_type_Aqrp != null) {
-      this.jdField_a_of_type_Aqrp.e();
+    if (this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser$Callback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser$Callback.e();
     }
     QLog.d("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
   }

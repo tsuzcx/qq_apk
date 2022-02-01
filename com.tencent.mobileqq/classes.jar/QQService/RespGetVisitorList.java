@@ -11,10 +11,10 @@ public final class RespGetVisitorList
   static RespHead cache_stHeader;
   static UserCntlData cache_stUserData;
   static ArrayList<UserProfile> cache_vEncounterInfos;
-  public long RespTime;
-  public RespHead stHeader;
-  public UserCntlData stUserData;
-  public ArrayList<UserProfile> vEncounterInfos;
+  public long RespTime = 0L;
+  public RespHead stHeader = null;
+  public UserCntlData stUserData = null;
+  public ArrayList<UserProfile> vEncounterInfos = null;
   
   public RespGetVisitorList() {}
   

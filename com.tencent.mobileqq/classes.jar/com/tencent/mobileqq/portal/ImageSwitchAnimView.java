@@ -5,12 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
-import aznm;
 
 public class ImageSwitchAnimView
   extends View
 {
-  private aznm a = new aznm(getContext(), 0, 0, 0, 0, 0, 0, 0, 0);
+  private ImageSwitchAnim a = null;
   
   public ImageSwitchAnimView(Context paramContext)
   {
@@ -33,7 +32,7 @@ public class ImageSwitchAnimView
     invalidate();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     boolean bool = false;
     super.onDraw(paramCanvas);
@@ -63,7 +62,7 @@ public class ImageSwitchAnimView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int i;

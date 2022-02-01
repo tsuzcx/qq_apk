@@ -4,12 +4,11 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjos;
 
 public class NoticeParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<NoticeParam> CREATOR = new bjos();
+  public static final Parcelable.Creator<NoticeParam> CREATOR = new NoticeParam.1();
   public int a;
   public long a;
   public Intent a;
@@ -67,7 +66,7 @@ public class NoticeParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.NoticeParam
  * JD-Core Version:    0.7.0.1
  */

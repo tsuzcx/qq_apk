@@ -15,7 +15,7 @@ final class MiniLogManager$6
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     paramBundle = (GetMiniAppRsp)paramBundle.getSerializable("rsp");
-    if ((paramBundle != null) && (!StringUtil.isEmpty(paramBundle.extra)))
+    if ((paramBundle != null) && (!StringUtil.a(paramBundle.extra)))
     {
       paramBundle = paramBundle.extra;
       MiniLogManager.access$800(paramBundle, this.val$filePath);

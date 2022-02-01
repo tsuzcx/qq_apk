@@ -34,13 +34,13 @@ public class MarqueeText
     setHorizontallyScrolling(true);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     setSelected(true);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     setSelected(false);
@@ -48,7 +48,7 @@ public class MarqueeText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.MarqueeText
  * JD-Core Version:    0.7.0.1
  */

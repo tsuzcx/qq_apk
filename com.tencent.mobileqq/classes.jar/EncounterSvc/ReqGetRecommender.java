@@ -10,7 +10,7 @@ public final class ReqGetRecommender
   static int cache_eTimingType;
   static ReqUserInfo cache_stUserInfo;
   public int eTimingType = 0;
-  public ReqUserInfo stUserInfo;
+  public ReqUserInfo stUserInfo = null;
   
   public ReqGetRecommender() {}
   

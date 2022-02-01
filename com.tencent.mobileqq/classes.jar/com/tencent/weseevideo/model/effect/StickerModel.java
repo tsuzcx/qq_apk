@@ -21,6 +21,7 @@ public class StickerModel
   protected long endTime = 0L;
   protected String fontId = "";
   protected int height = 0;
+  protected int interactive = 0;
   protected int layerIndex = -1;
   protected StickerModel.LimitArea limitArea;
   boolean lockRatio = true;
@@ -76,6 +77,11 @@ public class StickerModel
   public int getHeight()
   {
     return this.height;
+  }
+  
+  public int getInteractive()
+  {
+    return this.interactive;
   }
   
   public int getLayerIndex()
@@ -233,6 +239,11 @@ public class StickerModel
     this.height = paramInt;
   }
   
+  public void setInteractive(int paramInt)
+  {
+    this.interactive = paramInt;
+  }
+  
   public void setLayerIndex(int paramInt)
   {
     this.layerIndex = paramInt;
@@ -340,7 +351,7 @@ public class StickerModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.model.effect.StickerModel
  * JD-Core Version:    0.7.0.1
  */

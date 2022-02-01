@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
-import znl;
+import com.tencent.biz.qrcode.util.QRUtils;
 
 class QRDisplayActivity$15$1
   implements Runnable
@@ -12,12 +12,12 @@ class QRDisplayActivity$15$1
     if (this.a.this$0.isFinishing()) {
       return;
     }
-    znl.a(1, 2131696209);
+    QRUtils.a(1, 2131696461);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.15.1
  * JD-Core Version:    0.7.0.1
  */

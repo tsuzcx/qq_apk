@@ -118,6 +118,10 @@ public abstract interface ISuperPlayer
   
   public abstract void setPlaySpeedRatio(float paramFloat);
   
+  public abstract void setPlayerActive();
+  
+  public abstract void setReportContentId(String paramString);
+  
   public abstract void setSurface(Surface paramSurface);
   
   public abstract void setXYaxis(int paramInt);
@@ -132,7 +136,7 @@ public abstract interface ISuperPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.api.ISuperPlayer
  * JD-Core Version:    0.7.0.1
  */

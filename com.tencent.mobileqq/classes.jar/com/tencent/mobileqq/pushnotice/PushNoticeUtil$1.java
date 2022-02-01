@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.pushnotice;
 
 import android.text.TextUtils;
-import baiw;
 import com.huawei.agconnect.config.AGConnectServicesConfig;
 import com.huawei.hms.aaid.HmsInstanceId;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public final class PushNoticeUtil$1
+final class PushNoticeUtil$1
   implements Runnable
 {
   public void run()
@@ -19,10 +18,10 @@ public final class PushNoticeUtil$1
       if (BaseApplicationImpl.sProcessId == 1)
       {
         String str = AGConnectServicesConfig.fromContext(localBaseApplication).getString("client/app_id");
-        baiw.a = HmsInstanceId.getInstance(localBaseApplication).getToken(str, "HCM");
-        baiw.b();
+        PushNoticeUtil.a = HmsInstanceId.getInstance(localBaseApplication).getToken(str, "HCM");
+        PushNoticeUtil.b();
         if (QLog.isColorLevel()) {
-          QLog.d("HPush", 2, "HPush_Huawei Push Token : " + TextUtils.isEmpty(baiw.a));
+          QLog.d("HPush", 2, "HPush_Huawei Push Token : " + TextUtils.isEmpty(PushNoticeUtil.a));
         }
       }
       return;

@@ -1,22 +1,20 @@
 package dov.com.qq.im.capture.adapter;
 
-import bogm;
-import bogo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
 import dov.com.tencent.mobileqq.activity.richmedia.PtvTemplateItemView;
 import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import java.util.ArrayList;
 
-public class QIMPtvTemplateAdapter$2$3
+class QIMPtvTemplateAdapter$2$3
   implements Runnable
 {
-  public QIMPtvTemplateAdapter$2$3(bogo parambogo, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt) {}
+  QIMPtvTemplateAdapter$2$3(QIMPtvTemplateAdapter.2 param2, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Bogo.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
-    int k = this.jdField_a_of_type_Bogo.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
+    int j = this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateAdapter$2.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
+    int k = this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateAdapter$2.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
     int i = j;
     Object localObject;
     if (i <= k)
@@ -26,13 +24,13 @@ public class QIMPtvTemplateAdapter$2$3
       {
         i += 1;
         break;
-        localObject = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Bogo.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateAdapter$2.a.jdField_a_of_type_JavaUtilArrayList.get(i);
       } while ((localObject == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
       if (QLog.isColorLevel()) {
         QLog.i("QIMPtvTemplateManager", 2, "onProgressUpdate index: " + i + " progress: " + this.jdField_a_of_type_Int);
       }
       ((PtvTemplateManager.PtvTemplateInfo)localObject).downloading = true;
-      localObject = this.jdField_a_of_type_Bogo.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
+      localObject = this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateAdapter$2.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
       if ((localObject instanceof PtvTemplateItemView))
       {
         localObject = (PtvTemplateItemView)localObject;
@@ -51,7 +49,7 @@ public class QIMPtvTemplateAdapter$2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.3
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,10 @@ package com.tencent.mobileqq.util;
 import android.os.Build.VERSION;
 import android.view.View;
 
-public final class AccessibilityUtil$3
+final class AccessibilityUtil$3
   implements Runnable
 {
-  public AccessibilityUtil$3(View paramView) {}
+  AccessibilityUtil$3(View paramView) {}
   
   public void run()
   {

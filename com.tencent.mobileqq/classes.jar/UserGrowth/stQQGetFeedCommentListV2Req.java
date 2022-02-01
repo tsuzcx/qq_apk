@@ -9,7 +9,7 @@ public final class stQQGetFeedCommentListV2Req
   extends JceStruct
 {
   static stGetFeedCommentListV2Req cache_req = new stGetFeedCommentListV2Req();
-  public stGetFeedCommentListV2Req req;
+  public stGetFeedCommentListV2Req req = null;
   
   public stQQGetFeedCommentListV2Req() {}
   

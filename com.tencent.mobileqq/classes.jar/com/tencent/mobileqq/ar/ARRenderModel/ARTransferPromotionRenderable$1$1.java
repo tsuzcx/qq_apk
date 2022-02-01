@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apby;
-import apem;
+import com.tencent.mobileqq.ar.ARPromotion.ARPromotionMediaPlayerWrapper;
 import com.tencent.qphone.base.util.QLog;
 
 class ARTransferPromotionRenderable$1$1
@@ -11,16 +10,16 @@ class ARTransferPromotionRenderable$1$1
   
   public void run()
   {
-    if ((apem.a(this.a.this$0) != null) && (apem.a(this.a.this$0).a()))
+    if ((ARTransferPromotionRenderable.a(this.a.this$0) != null) && (ARTransferPromotionRenderable.a(this.a.this$0).a()))
     {
-      apem.a(this.a.this$0).a();
+      ARTransferPromotionRenderable.a(this.a.this$0).a();
       QLog.d("ARTransferPromotionRenderable", 2, "mRepeatCheckRunnable run ");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.1.1
  * JD-Core Version:    0.7.0.1
  */

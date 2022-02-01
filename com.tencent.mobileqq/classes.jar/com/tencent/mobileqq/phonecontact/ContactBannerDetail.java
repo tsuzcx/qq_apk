@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.phonecontact;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.app.BaseActivity;

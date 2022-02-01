@@ -10,10 +10,10 @@ public final class IsUinFocusMpIdRsp
   public String account_name = "";
   public String describe_content = "";
   public String icon_url = "";
-  public int is_focus_link_mp_id;
+  public int is_focus_link_mp_id = 0;
   public String link_mp_id = "";
   public String link_mp_id_admin_uin = "";
-  public int status_code;
+  public int status_code = 0;
   
   public IsUinFocusMpIdRsp() {}
   

@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.managers;
 
-import awte;
-
-public class CUOpenCardGuideMng$GuideConfigData$1
+class CUOpenCardGuideMng$GuideConfigData$1
   implements Runnable
 {
-  public CUOpenCardGuideMng$GuideConfigData$1(awte paramawte) {}
+  CUOpenCardGuideMng$GuideConfigData$1(CUOpenCardGuideMng.GuideConfigData paramGuideConfigData) {}
   
   public void run()
   {

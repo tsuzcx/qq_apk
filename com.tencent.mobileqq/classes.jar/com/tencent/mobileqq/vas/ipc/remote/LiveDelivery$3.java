@@ -2,16 +2,16 @@ package com.tencent.mobileqq.vas.ipc.remote;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aoav;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.PublicAccountObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import eipc.EIPCModule;
 import eipc.EIPCResult;
-import uqx;
 
 class LiveDelivery$3
-  extends aoav
+  extends PublicAccountObserver
 {
   LiveDelivery$3(LiveDelivery paramLiveDelivery, EIPCModule paramEIPCModule, int paramInt, QQAppInterface paramQQAppInterface) {}
   
@@ -23,7 +23,7 @@ class LiveDelivery$3
     localEIPCResult.data.putBoolean("isSuccess", paramBoolean);
     localEIPCResult.data.putString("uin", paramString);
     this.val$moudle.callbackResult(this.val$callbackId, localEIPCResult);
-    if ((paramBoolean) && (TextUtils.isEmpty(uqx.a().a(paramString))))
+    if ((paramBoolean) && (TextUtils.isEmpty(TroopBarAssistantManager.a().a(paramString))))
     {
       paramString = (PublicAccountHandler)this.val$app.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
       if (paramString != null) {
@@ -34,7 +34,7 @@ class LiveDelivery$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.LiveDelivery.3
  * JD-Core Version:    0.7.0.1
  */

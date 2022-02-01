@@ -10,10 +10,10 @@ public final class mobile_get_qzone_public_msg_rsp
   extends JceStruct
 {
   static Map<String, String> cache_map_ext = new HashMap();
-  public int left_req_times;
-  public Map<String, String> map_ext;
-  public int next_req_tmstamp;
-  public int stay_min_seconds_to_req;
+  public int left_req_times = 0;
+  public Map<String, String> map_ext = null;
+  public int next_req_tmstamp = 0;
+  public int stay_min_seconds_to_req = 0;
   
   static
   {

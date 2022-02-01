@@ -1,10 +1,10 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
 import android.os.Bundle;
-import bnrh;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.qq.im.ae.util.AEQLog;
 import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
 
 class CaptureQmcfSoDownloadActivity$1
@@ -27,20 +27,20 @@ class CaptureQmcfSoDownloadActivity$1
         {
           QIMCameraCaptureActivity.a(this.this$0, CaptureQmcfSoDownloadActivity.a(this.this$0), CaptureQmcfSoDownloadActivity.a(this.this$0));
           return;
-          bnrh.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]soDownloadFragment not instanceof CaptureQmcfSoDownloadFragment");
+          AEQLog.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]soDownloadFragment not instanceof CaptureQmcfSoDownloadFragment");
         }
       }
-      bnrh.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]hasRequest false");
+      AEQLog.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]hasRequest false");
       QIMCameraCaptureActivity.a(this.this$0, CaptureQmcfSoDownloadActivity.a(this.this$0));
       this.this$0.finish();
       return;
     }
-    bnrh.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]BaseActivity.sTopActivity not instanceof CaptureQmcfSoDownloadActivity");
+    AEQLog.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]BaseActivity.sTopActivity not instanceof CaptureQmcfSoDownloadActivity");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity.1
  * JD-Core Version:    0.7.0.1
  */

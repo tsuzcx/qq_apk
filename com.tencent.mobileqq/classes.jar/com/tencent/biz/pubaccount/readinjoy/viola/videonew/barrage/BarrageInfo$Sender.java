@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ubi;
 
 public class BarrageInfo$Sender
   implements Parcelable
 {
-  public static final Parcelable.Creator<Sender> CREATOR = new ubi();
+  public static final Parcelable.Creator<Sender> CREATOR = new BarrageInfo.Sender.1();
   public String a;
   public boolean a;
   public String b;
@@ -16,7 +15,7 @@ public class BarrageInfo$Sender
   
   public BarrageInfo$Sender() {}
   
-  public BarrageInfo$Sender(Parcel paramParcel)
+  protected BarrageInfo$Sender(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
@@ -55,7 +54,7 @@ public class BarrageInfo$Sender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo.Sender
  * JD-Core Version:    0.7.0.1
  */

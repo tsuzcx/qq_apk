@@ -2,11 +2,11 @@ package com.tencent.mobileqq.startup.step;
 
 import android.os.Debug;
 import android.widget.Toast;
-import avru;
-import avux;
-import bdhk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.intervideo.IVLoggerFactory;
+import com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager;
+import com.tencent.mobileqq.pic.URLDrawableDepWrapInit;
 import com.tencent.shadow.core.common.LoggerFactory;
 import com.tencent.shadow.dynamic.host.DynamicRuntime;
 import com.tencent.shadow.dynamic.host.PluginProcessService;
@@ -26,12 +26,12 @@ public class HuayangPluginContainer
       Toast.makeText(BaseApplicationImpl.getContext(), "waitForDebugger", 1).show();
       Debug.waitForDebugger();
     }
-    LoggerFactory.setILoggerFactory(avru.a());
+    LoggerFactory.setILoggerFactory(IVLoggerFactory.a());
     BaseApplicationImpl.getApplication().registerActivityLifecycleCallbacks(PluginProcessService.getActivityHolder());
     DynamicRuntime.recoveryRuntime(BaseApplicationImpl.getContext());
-    avux.d();
-    bdhk localbdhk = new bdhk(BaseApplicationImpl.getApplication());
-    URLDrawable.init(BaseApplicationImpl.getApplication(), localbdhk);
+    DynamicNowManager.d();
+    HuayangPluginContainer.URLDrawableFactory localURLDrawableFactory = new HuayangPluginContainer.URLDrawableFactory(BaseApplicationImpl.getApplication());
+    URLDrawable.init(URLDrawableDepWrapInit.a(), localURLDrawableFactory);
     new InitUrlDrawable().step();
     new InitMemoryCache().step();
     return true;

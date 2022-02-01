@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class s_premovie_item
   extends JceStruct
 {
-  public int actiontype;
-  public int duration;
-  public int height;
+  public int actiontype = 0;
+  public int duration = 0;
+  public int height = 0;
   public String jumpurl = "";
   public String vid = "";
   public String videourl = "";
-  public int width;
+  public int width = 0;
   
   public s_premovie_item() {}
   

@@ -1,8 +1,5 @@
 package com.tencent.qqmini.miniapp.widget;
 
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent;
 import org.json.JSONObject;
 
@@ -13,13 +10,12 @@ class CanvasView$2
   
   public void run()
   {
-    Bitmap localBitmap = CanvasView.access$000(this.this$0, this.this$0, this.val$isPngFile);
-    ThreadManager.getSubThreadHandler().post(new CanvasView.2.1(this, localBitmap));
+    CanvasView.access$200(this.this$0, this.val$isPngFile, this.val$req, this.val$paramObj, this.val$fileType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.CanvasView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class RespSetSettings
   extends JceStruct
 {
-  public int Revision;
+  public int Revision = 0;
   
   public RespSetSettings() {}
   

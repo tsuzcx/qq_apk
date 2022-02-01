@@ -1,45 +1,41 @@
 package com.tencent.mobileqq.location.net;
 
 import android.content.Intent;
-import awiz;
-import awjm;
-import bdla;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class LocationHandler$8
+class LocationHandler$8
   implements Runnable
 {
-  public LocationHandler$8(awiz paramawiz) {}
+  LocationHandler$8(LocationHandler paramLocationHandler) {}
   
   public void run()
   {
-    if (awiz.a(this.this$0))
+    if (LocationHandler.a(this.this$0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "run: invoked. ", " bgHandlerForDelayExitRoomStopped: ", Boolean.valueOf(awiz.a(this.this$0)) });
+        QLog.d("LocationHandler", 2, new Object[] { "run: invoked. ", " bgHandlerForDelayExitRoomStopped: ", Boolean.valueOf(LocationHandler.a(this.this$0)) });
       }
       return;
     }
-    this.this$0.a(awiz.a(this.this$0), true);
+    this.this$0.a(LocationHandler.a(this.this$0), true);
     this.this$0.a.a();
-    QQToast.a(BaseApplicationImpl.context, this.this$0.app.getApp().getString(2131693013), 0).a();
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity != null)
+    QQToast.a(BaseApplication.getContext(), BaseApplication.getContext().getString(2131693159), 0).a();
+    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
+    if (localQBaseActivity != null)
     {
-      String str = localBaseActivity.getIntent().getStringExtra("FRAGMENT_KEY");
+      String str = localQBaseActivity.getIntent().getStringExtra("FRAGMENT_KEY");
       if (QLog.isColorLevel()) {
         QLog.d("LocationHandler", 2, new Object[] { "onAppBackground::run: invoked[仅用来关闭地图页]. ", " fragmentKey: ", str });
       }
       if ("LocationShareFragment".equals(str)) {
-        localBaseActivity.finish();
+        localQBaseActivity.finish();
       }
     }
-    bdla.b(null, "CliOper", "", "", "0X800A8BB", "0X800A8BB", 0, 0, "", "0", "0", "");
+    ReportController.b(null, "CliOper", "", "", "0X800A8BB", "0X800A8BB", 0, 0, "", "0", "0", "");
   }
 }
 

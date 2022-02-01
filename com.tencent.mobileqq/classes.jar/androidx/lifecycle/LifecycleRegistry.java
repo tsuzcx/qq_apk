@@ -1,6 +1,5 @@
 package androidx.lifecycle;
 
-import android.util.Log;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +13,6 @@ import java.util.Map.Entry;
 public class LifecycleRegistry
   extends Lifecycle
 {
-  private static final String LOG_TAG = "LifecycleRegistry";
   private int mAddingObserverCounter = 0;
   private boolean mHandlingEvent = false;
   private final WeakReference<LifecycleOwner> mLifecycleOwner;
@@ -167,10 +165,8 @@ public class LifecycleRegistry
   private void sync()
   {
     LifecycleOwner localLifecycleOwner = (LifecycleOwner)this.mLifecycleOwner.get();
-    if (localLifecycleOwner == null)
-    {
-      Log.w("LifecycleRegistry", "LifecycleOwner is garbage collected, you shouldn't try dispatch new events from it.");
-      return;
+    if (localLifecycleOwner == null) {
+      throw new IllegalStateException("LifecycleOwner of this LifecycleRegistry is alreadygarbage collected. It is too late to change lifecycle state.");
     }
     while (!isSynced())
     {
@@ -259,20 +255,27 @@ public class LifecycleRegistry
     moveToState(getStateAfter(paramEvent));
   }
   
+  @Deprecated
   @MainThread
   public void markState(@NonNull Lifecycle.State paramState)
   {
-    moveToState(paramState);
+    setCurrentState(paramState);
   }
   
   public void removeObserver(@NonNull LifecycleObserver paramLifecycleObserver)
   {
     this.mObserverMap.remove(paramLifecycleObserver);
   }
+  
+  @MainThread
+  public void setCurrentState(@NonNull Lifecycle.State paramState)
+  {
+    moveToState(paramState);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.lifecycle.LifecycleRegistry
  * JD-Core Version:    0.7.0.1
  */

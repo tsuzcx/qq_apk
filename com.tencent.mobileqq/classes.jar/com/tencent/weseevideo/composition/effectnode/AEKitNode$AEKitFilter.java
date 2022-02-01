@@ -4,6 +4,7 @@ import android.opengl.GLES20;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
+import com.tencent.aekit.api.standard.filter.AEAdjust;
 import com.tencent.aekit.api.standard.filter.AEFilterManager;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
@@ -21,18 +22,20 @@ import com.tencent.tavkit.composition.video.RenderInfo;
 import com.tencent.tavkit.composition.video.TAVVideoEffect;
 import com.tencent.tavkit.composition.video.TAVVideoEffect.Filter;
 import com.tencent.tavkit.report.IReportable;
-import com.tencent.ttpic.openapi.PTFaceDetector;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.filter.AlphaAdjustFilter;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.VideoSDKMaterialParser;
 import java.util.HashMap;
 import java.util.Map;
+import org.light.bean.Texture;
+import org.light.callback.ExternalRenderCallback;
 
 class AEKitNode$AEKitFilter
-  implements TAVVideoEffect.Filter, IReportable
+  implements TAVVideoEffect.Filter, IReportable, ExternalRenderCallback
 {
   public static final String BaseFragShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\nvec2 flipTex = vec2(textureCoordinate.x, 1.0 - textureCoordinate.y);\ngl_FragColor = texture2D (inputImageTexture, flipTex);\n}\n";
   public static final String BaseVertexShader = "precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\n\nvoid main() {\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate;\n}\n";
+  AEAdjust aeAdjust;
   AEFilterManager aeFilterManager;
   AlphaAdjustFilter alphaAdjustFilter;
   private Frame cacheFrame;
@@ -40,7 +43,7 @@ class AEKitNode$AEKitFilter
   private TextureInfo cacheTextureInfo;
   private String currentAppliedLutPath;
   private String currentAppliedMaterialPath;
-  private PTFaceDetector faceDetector;
+  private boolean currentSyncMode;
   private VideoFilterBase mFlipFilter;
   private Frame mFlipFrame = new Frame();
   private int[] mFlipTextureID = new int[1];
@@ -53,14 +56,12 @@ class AEKitNode$AEKitFilter
     DurationUtil.start("init aeFilterManager");
     this.aeFilterManager = new AEFilterManager();
     this.aeFilterManager.supportMultiThreads(true);
-    this.aeFilterManager.enableAIDetect(false);
     this.aeFilterManager.initInGL(paramInt1, paramInt2);
-    this.aeFilterManager.defineFiltersAndOrder(new int[] { 118, 101, 116, 102, 103 });
+    this.aeFilterManager.defineFiltersAndOrder(new int[] { 300, 100 });
     this.aeFilterManager.setFilterInSmooth(true);
-    this.aeFilterManager.switchFilterOn(101, false);
-    this.aeFilterManager.switchFilterOn(116, false);
-    this.aeFilterManager.switchFilterOn(102, false);
-    this.aeFilterManager.switchFilterOn(103, false);
+    this.aeFilterManager.setExternalRenderCallback(this);
+    this.aeAdjust = new AEAdjust();
+    this.aeAdjust.apply();
     this.cacheFrame = new Frame();
     this.alphaAdjustFilter = new AlphaAdjustFilter();
     this.alphaAdjustFilter.apply();
@@ -128,143 +129,168 @@ class AEKitNode$AEKitFilter
       paramTAVVideoEffect.convertImageToTexture(paramCIImage, this.cacheTextureInfo);
       paramRenderInfo = this.cacheTextureInfo;
     } while (paramRenderInfo == null);
-    paramTAVVideoEffect = null;
-    this.aeFilterManager.updateWidthHeight(paramRenderInfo.width, paramRenderInfo.height);
-    label526:
-    boolean bool;
-    label576:
+    label380:
+    int i;
+    label451:
+    label496:
     Object localObject;
-    if (AEKitNode.access$100(this.this$0) != null)
+    boolean bool;
+    if (AEKitNode.access$100(this.this$0).getMediaType() == 1)
     {
-      this.aeFilterManager.setGlowAlpha(AEKitNode.access$100(this.this$0).getGlowAlpha());
-      if (!TextUtils.equals(this.currentAppliedLutPath, AEKitNode.access$100(this.this$0).getLutPath()))
+      if (!this.currentSyncMode)
       {
-        this.currentAppliedLutPath = AEKitNode.access$100(this.this$0).getLutPath();
+        this.aeFilterManager.setSyncMode(true);
+        this.currentSyncMode = true;
+      }
+      this.aeFilterManager.updateWidthHeight(paramRenderInfo.width, paramRenderInfo.height);
+      if (AEKitNode.access$100(this.this$0) == null) {
+        break label1128;
+      }
+      this.aeFilterManager.setGlowAlpha(AEKitNode.access$100(this.this$0).getGlowAlpha());
+      if ((!TextUtils.isEmpty(this.currentAppliedLutPath)) || (!TextUtils.isEmpty(AEKitNode.access$100(this.this$0).getLutPath()))) {
+        break label1060;
+      }
+      i = 1;
+      if ((i == 0) && (!TextUtils.equals(this.currentAppliedLutPath, AEKitNode.access$100(this.this$0).getLutPath())))
+      {
+        if (AEKitNode.access$100(this.this$0).getLutPath() != null) {
+          break label1066;
+        }
+        this.currentAppliedLutPath = "";
         this.aeFilterManager.updateLutGL(this.currentAppliedLutPath);
-        this.aeFilterManager.setFilterInSmooth(true);
       }
       this.aeFilterManager.setLookupLevel(AEKitNode.access$100(this.this$0).getLutAlpha());
       this.aeFilterManager.setSmoothLevel(AEKitNode.access$100(this.this$0).getSmoothLevel());
-      paramCIImage = AEKitNode.access$100(this.this$0).getAdjustParams();
-      if ((paramCIImage != null) && (!paramCIImage.isEmpty()))
+      localObject = AEKitNode.access$100(this.this$0).getMaterial();
+      if ((TextUtils.isEmpty(AEKitNode.access$100(this.this$0).getLutPath())) && (AEKitNode.access$100(this.this$0).getSmoothLevel() <= 0) && (TextUtils.isEmpty((CharSequence)localObject))) {
+        break label1083;
+      }
+      bool = true;
+      label593:
+      this.aeFilterManager.switchAbilityInLightNode("smooth.enable", bool);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label1123;
+      }
+      this.mFlipFilter.RenderProcess(paramRenderInfo.textureID, paramRenderInfo.width, paramRenderInfo.height, this.mFlipTextureID[0], 0.0D, this.mFlipFrame);
+      paramTAVVideoEffect = this.mFlipFrame;
+      label648:
+      paramCIImage = paramTAVVideoEffect;
+      if (!TextUtils.equals(this.currentAppliedMaterialPath, (CharSequence)localObject))
       {
-        this.aeFilterManager.setAdjustParams(new HashMap(paramCIImage));
-        this.aeFilterManager.switchFilterOn(116, true);
-        paramCIImage = AEKitNode.access$100(this.this$0).getMaterial();
-        if ((TextUtils.isEmpty(AEKitNode.access$100(this.this$0).getLutPath())) && (AEKitNode.access$100(this.this$0).getSmoothLevel() <= 0) && (TextUtils.isEmpty(paramCIImage))) {
-          break label981;
+        this.currentAppliedMaterialPath = ((String)localObject);
+        paramCIImage = this.aeFilterManager;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label1089;
         }
         bool = true;
-        this.aeFilterManager.switchFilterOn(101, bool);
-        if (!TextUtils.isEmpty(paramCIImage))
-        {
-          this.mFlipFilter.RenderProcess(paramRenderInfo.textureID, paramRenderInfo.width, paramRenderInfo.height, this.mFlipTextureID[0], 0.0D, this.mFlipFrame);
-          paramTAVVideoEffect = this.mFlipFrame;
-        }
-        if (TextUtils.equals(this.currentAppliedMaterialPath, paramCIImage)) {
-          break label1090;
-        }
-        this.currentAppliedMaterialPath = paramCIImage;
-        localObject = this.aeFilterManager;
-        if (TextUtils.isEmpty(paramCIImage)) {
-          break label987;
-        }
-        bool = true;
-        label661:
-        ((AEFilterManager)localObject).switchFilterOn(102, bool);
-        localObject = this.aeFilterManager;
-        if (TextUtils.isEmpty(paramCIImage)) {
-          break label993;
-        }
-        bool = true;
-        label686:
-        ((AEFilterManager)localObject).switchFilterOn(103, bool);
-        if (!TextUtils.isEmpty(paramCIImage)) {
-          break label999;
+        label684:
+        paramCIImage.switchAbilityInLightNode("sticker.enable", bool);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          break label1095;
         }
         this.aeFilterManager.updateMaterialGL(null);
+        paramCIImage = paramTAVVideoEffect;
       }
     }
     for (;;)
     {
-      label710:
-      int i;
-      if (paramTAVVideoEffect != null)
-      {
+      label711:
+      i = paramRenderInfo.textureID;
+      DurationUtil.start("aeFilterManager.drawFrame");
+      i = this.aeFilterManager.drawFrame(i, false, 0L);
+      DurationUtil.end("aeFilterManager.drawFrame");
+      this.mFlipFilter.OnDrawFrameGLSL();
+      paramTAVVideoEffect = this.mFlipFilter.RenderProcess(i, j, k);
+      if (paramTAVVideoEffect != null) {
         i = paramTAVVideoEffect.getTextureId();
-        label720:
-        DurationUtil.start("aeFilterManager.drawFrame");
-        i = this.aeFilterManager.drawFrame(i, false, 0L);
-        DurationUtil.end("aeFilterManager.drawFrame");
-        if (paramTAVVideoEffect == null) {
-          break label1108;
-        }
-        this.mFlipFilter.OnDrawFrameGLSL();
       }
-      label1090:
-      label1108:
-      for (paramCIImage = this.mFlipFilter.RenderProcess(i, j, k);; paramCIImage = null)
+      this.alphaAdjustFilter.setFilterTexture(i);
+      localObject = this.alphaAdjustFilter;
+      if (AEKitNode.access$100(this.this$0) != null) {}
+      for (float f = AEKitNode.access$100(this.this$0).getEffectStrength();; f = 1.0F)
       {
-        if (paramCIImage != null) {
-          i = paramCIImage.getTextureId();
+        ((AlphaAdjustFilter)localObject).setAdjustParam(f);
+        this.alphaAdjustFilter.RenderProcess(paramRenderInfo.textureID, paramRenderInfo.width, paramRenderInfo.height, this.cacheOutTexture.textureID, 0.0D, this.cacheFrame);
+        if ((paramCIImage != null) && (!paramCIImage.unlock())) {
+          paramCIImage.clear();
         }
-        this.alphaAdjustFilter.setFilterTexture(i);
-        localObject = this.alphaAdjustFilter;
-        if (AEKitNode.access$100(this.this$0) != null) {}
-        for (float f = AEKitNode.access$100(this.this$0).getEffectStrength();; f = 1.0F)
-        {
-          ((AlphaAdjustFilter)localObject).setAdjustParam(f);
-          this.alphaAdjustFilter.RenderProcess(paramRenderInfo.textureID, paramRenderInfo.width, paramRenderInfo.height, this.cacheOutTexture.textureID, 0.0D, this.cacheFrame);
-          if ((paramTAVVideoEffect != null) && (!paramTAVVideoEffect.unlock())) {
-            paramTAVVideoEffect.clear();
-          }
-          if ((paramCIImage != null) && (!paramCIImage.unlock())) {
-            paramCIImage.clear();
-          }
-          FrameBufferCache.getInstance().forceRecycle();
-          DurationUtil.end("apply aeFilterManager");
-          return new CIImage(this.cacheOutTexture);
-          if ((this.cacheOutTexture.width == j) && (this.cacheOutTexture.height == k)) {
-            break;
-          }
-          paramTAVVideoEffect.getRenderContext().makeCurrent();
-          this.cacheOutTexture.release();
-          this.cacheOutTexture = CIContext.newTextureInfo(j, k);
+        if ((paramTAVVideoEffect != null) && (!paramTAVVideoEffect.unlock())) {
+          paramTAVVideoEffect.clear();
+        }
+        FrameBufferCache.getInstance().forceRecycle();
+        if (AEKitNode.access$100(this.this$0).getMediaType() == 1) {
+          this.aeFilterManager.freeCache();
+        }
+        DurationUtil.end("apply aeFilterManager");
+        return new CIImage(this.cacheOutTexture);
+        if ((this.cacheOutTexture.width == j) && (this.cacheOutTexture.height == k)) {
           break;
-          this.aeFilterManager.setAdjustParams(null);
-          this.aeFilterManager.switchFilterOn(116, false);
-          break label526;
-          label981:
-          bool = false;
-          break label576;
-          label987:
-          bool = false;
-          break label661;
-          label993:
-          bool = false;
-          break label686;
-          label999:
-          paramCIImage = VideoSDKMaterialParser.parseVideoMaterial(paramCIImage, "params");
-          this.aeFilterManager.updateMaterialGL(paramCIImage);
-          if ((VideoMaterialUtil.isCyberpunkMaterial(paramCIImage)) && (AEKitNode.access$100(this.this$0).getMediaType() == 1) && (this.faceDetector == null))
-          {
-            this.faceDetector = new PTFaceDetector();
-            this.faceDetector.init(true);
-            paramCIImage = this.faceDetector.detectFrame(paramTAVVideoEffect, System.currentTimeMillis(), 0, 1.0D, 90.0F, true, false, null);
-            this.aeFilterManager.setPTFaceAttrData(paramCIImage);
-          }
-          break label710;
-          i = paramRenderInfo.textureID;
-          break label720;
         }
+        paramTAVVideoEffect.getRenderContext().makeCurrent();
+        this.cacheOutTexture.release();
+        this.cacheOutTexture = CIContext.newTextureInfo(j, k);
+        break;
+        if ((AEKitNode.access$100(this.this$0).isDisable() == AEKitNode.access$100(this.this$0).getLastState()) || (AEKitNode.access$100(this.this$0).isDisable())) {
+          break label380;
+        }
+        if (!this.currentSyncMode)
+        {
+          this.aeFilterManager.setSyncMode(true);
+          this.currentSyncMode = true;
+          break label380;
+        }
+        this.aeFilterManager.setSyncMode(false);
+        this.currentSyncMode = false;
+        AEKitNode.access$100(this.this$0).setLastState(false);
+        break label380;
+        label1060:
+        i = 0;
+        break label451;
+        label1066:
+        this.currentAppliedLutPath = AEKitNode.access$100(this.this$0).getLutPath();
+        break label496;
+        label1083:
+        bool = false;
+        break label593;
+        label1089:
+        bool = false;
+        break label684;
+        label1095:
+        paramCIImage = VideoSDKMaterialParser.parseVideoMaterial((String)localObject, "params");
+        this.aeFilterManager.updateMaterialGL(paramCIImage);
+        paramCIImage = paramTAVVideoEffect;
+        break label711;
       }
+      label1123:
       paramTAVVideoEffect = null;
+      break label648;
+      label1128:
+      paramCIImage = null;
     }
   }
   
   public String getReportKey()
   {
     return AEKitNode.access$200(this.this$0);
+  }
+  
+  public void onRender(Texture paramTexture1, String paramString1, String paramString2, Texture paramTexture2)
+  {
+    LogUtils.d("AEKitNode", "onRender: 触发外挂滤镜，参数：" + paramTexture1 + "|" + paramString1 + "|" + paramString2 + "|" + paramTexture2);
+    if ((this.aeAdjust != null) && (AEKitNode.access$100(this.this$0) != null))
+    {
+      paramString1 = AEKitNode.access$100(this.this$0).getAdjustParams();
+      if ((paramString1 != null) && (!paramString1.isEmpty()))
+      {
+        this.aeAdjust.setAdjustParams(new HashMap(paramString1));
+        paramString1 = new Frame();
+        paramString1.setSizedTexture(paramTexture1.id, paramTexture1.width, paramTexture1.height);
+        paramTexture1 = this.aeAdjust.render(paramString1);
+        paramTexture2.id = paramTexture1.getTextureId();
+        paramTexture2.width = paramTexture1.width;
+        paramTexture2.height = paramTexture1.height;
+      }
+    }
   }
   
   public void release()
@@ -298,16 +324,16 @@ class AEKitNode$AEKitFilter
       this.mFlipFilter.clearGLSLSelf();
       this.mFlipFilter = null;
     }
-    if (this.faceDetector != null)
+    if (this.aeAdjust != null)
     {
-      this.faceDetector.destroy();
-      this.faceDetector = null;
+      this.aeAdjust.clear();
+      this.aeAdjust = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.AEKitNode.AEKitFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,16 @@ package com.tencent.mobileqq.transfile.quic.internal;
 
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.lang.reflect.Method;
+import mqq.app.MobileQQ;
 
 public class Utils
 {
+  public static final String ANDROMEDA_NAME = "libandromeda.so";
+  public static final String QUIC_LIB_NAME = "libquic_engine.so";
   public static final String TAG = "quic";
   
   public static boolean checkIfCPUx86()
@@ -19,6 +24,34 @@ public class Utils
       str = getSystemProperty("ro.product.cpu.abi", "arm");
     } while (TextUtils.isEmpty(str));
     return str.contains("x86");
+  }
+  
+  public static String getAndromedaSoPath()
+  {
+    return getQuicSoSavePath() + "libandromeda.so";
+  }
+  
+  public static String getQuicEngineSoPath()
+  {
+    return getQuicSoSavePath() + "libquic_engine.so";
+  }
+  
+  public static String getQuicSoSavePath()
+  {
+    try
+    {
+      Object localObject = new File(MobileQQ.getContext().getFilesDir(), "/quic_net_res");
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      localObject = ((File)localObject).getAbsolutePath() + File.separator;
+      return localObject;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      QLog.e("quic", 1, "npe:", localNullPointerException);
+    }
+    return "/quic_net_res";
   }
   
   private static String getSystemProperty(String paramString1, String paramString2)

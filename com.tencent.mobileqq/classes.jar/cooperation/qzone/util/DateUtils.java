@@ -1,28 +1,28 @@
 package cooperation.qzone.util;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.util.Calendar;
 
 public class DateUtils
 {
   public static final String BEFOREY_YESTERDAY;
   public static final String COLON = ":";
-  public static final String DAY = anvx.a(2131702329);
+  public static final String DAY = HardCodeUtil.a(2131702877);
   public static final long DAY_MILLIS_SECOND = 86400000L;
   public static final int DAY_SECOND = 86400;
-  public static final String JUST_MINS = anvx.a(2131702334);
+  public static final String JUST_MINS = HardCodeUtil.a(2131702882);
   public static final String MONTH;
   public static final String TODAY;
   public static final long TWO_DAY_MILLIS_SECOND = 172800000L;
   public static final String YEAR;
-  public static final String YESTERDAY = anvx.a(2131702305);
+  public static final String YESTERDAY = HardCodeUtil.a(2131702853);
   
   static
   {
-    TODAY = anvx.a(2131702286);
-    BEFOREY_YESTERDAY = anvx.a(2131702326);
-    YEAR = anvx.a(2131702296);
-    MONTH = anvx.a(2131702290);
+    TODAY = HardCodeUtil.a(2131702834);
+    BEFOREY_YESTERDAY = HardCodeUtil.a(2131702874);
+    YEAR = HardCodeUtil.a(2131702844);
+    MONTH = HardCodeUtil.a(2131702838);
   }
   
   static String doubleD(int paramInt)
@@ -90,7 +90,7 @@ public class DateUtils
       return YESTERDAY;
     }
     if ((l2 >= 86400000L) && (l2 <= 777600000L)) {
-      return (int)(l2 / 86400000L) + anvx.a(2131702314);
+      return (int)(l2 / 86400000L) + HardCodeUtil.a(2131702862);
     }
     return "";
   }
@@ -111,7 +111,7 @@ public class DateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.DateUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,26 @@
+package com.tencent.mobileqq.activity.recent.bannerprocessor;
+
+import com.tencent.mobileqq.banner.BannerManager;
+
+class SetPwdBannerProcessor$2$1
+  implements Runnable
+{
+  SetPwdBannerProcessor$2$1(SetPwdBannerProcessor.2 param2, boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      BannerManager.a().a(20, 2, null);
+    }
+    while (!this.b) {
+      return;
+    }
+    BannerManager.a().a(20, 0, null);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.SetPwdBannerProcessor.2.1
+ * JD-Core Version:    0.7.0.1
+ */

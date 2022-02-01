@@ -1,70 +1,50 @@
 package com.tencent.mobileqq.shortvideo;
 
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 class PtvTemplateManager$14
   implements Runnable
 {
-  PtvTemplateManager$14(PtvTemplateManager paramPtvTemplateManager) {}
+  PtvTemplateManager$14(PtvTemplateManager paramPtvTemplateManager, PtvTemplateManager.DoodleInfo paramDoodleInfo) {}
   
   public void run()
   {
-    if (PtvTemplateManager.b == null) {}
-    File[] arrayOfFile;
+    if (this.this$0.a(this.a, true)) {
+      this.a.doodleUsable = true;
+    }
     do
     {
-      return;
-      arrayOfFile = PtvTemplateManager.b.listFiles();
-    } while ((arrayOfFile == null) || (arrayOfFile.length == 0));
-    int k = arrayOfFile.length;
-    int i = 0;
-    label32:
-    File localFile;
-    if (i < k)
-    {
-      localFile = arrayOfFile[i];
-      if ((localFile != null) && (localFile.isFile())) {
-        break label63;
-      }
-    }
-    label63:
-    label208:
-    for (;;)
-    {
-      i += 1;
-      break label32;
-      break;
-      Object localObject = localFile.getName();
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).contains(".")))
+      QQAppInterface localQQAppInterface;
+      do
       {
-        localObject = this.this$0.a.doodleInfos.iterator();
-        PtvTemplateManager.DoodleInfo localDoodleInfo;
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localDoodleInfo = (PtvTemplateManager.DoodleInfo)((Iterator)localObject).next();
-        } while ((localDoodleInfo == null) || (TextUtils.isEmpty(localDoodleInfo.doodleName)) || (!localFile.getName().equalsIgnoreCase(localDoodleInfo.doodleName)));
-        for (int j = 1;; j = 0)
-        {
-          if (j != 0) {
-            break label208;
-          }
-          localFile.deleteOnExit();
-          new File(PtvTemplateManager.c + localFile.getName()).deleteOnExit();
+        return;
+        localQQAppInterface = this.this$0.a();
+        if (localQQAppInterface != null) {
           break;
         }
-      }
-    }
+      } while (!QLog.isColorLevel());
+      QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "reqApp:" + localQQAppInterface);
+      return;
+      HttpNetReq localHttpNetReq = new HttpNetReq();
+      localHttpNetReq.mCallback = new PtvTemplateManager.14.1(this);
+      localHttpNetReq.mReqUrl = this.a.doodleUrl;
+      localHttpNetReq.mHttpMethod = 0;
+      localHttpNetReq.mOutPath = new File(PtvTemplateManager.b, this.a.doodleName).getPath();
+      localHttpNetReq.mContinuErrorLimit = NetworkUtil.a(NetworkCenter.getInstance().getNetType());
+      ((IHttpEngineService)localQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
+    } while (!QLog.isColorLevel());
+    QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.a.doodleUrl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.14
  * JD-Core Version:    0.7.0.1
  */

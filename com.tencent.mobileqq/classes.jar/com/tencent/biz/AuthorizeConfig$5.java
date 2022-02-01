@@ -3,12 +3,11 @@ package com.tencent.biz;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.TicketManager;
-import nro;
 
-public class AuthorizeConfig$5
+class AuthorizeConfig$5
   implements Runnable
 {
-  public AuthorizeConfig$5(nro paramnro, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
+  AuthorizeConfig$5(AuthorizeConfig paramAuthorizeConfig, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
   
   public void run()
   {
@@ -35,7 +34,7 @@ public class AuthorizeConfig$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfig.5
  * JD-Core Version:    0.7.0.1
  */

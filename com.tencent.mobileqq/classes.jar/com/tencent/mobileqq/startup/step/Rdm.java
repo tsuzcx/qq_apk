@@ -1,15 +1,19 @@
 package com.tencent.mobileqq.startup.step;
 
 import android.os.Looper;
-import android.os.SystemClock;
 import android.util.Log;
-import awoi;
-import bdkp;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.bridge.ReportControllerServiceHolder;
+import com.tencent.mobileqq.log.ReportLog;
 import com.tencent.mobileqq.logcathook.LogcatHook;
+import com.tencent.mobileqq.statistics.CrashReportServiceImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.statistics.provider.report.ReportDataProviderServiceProvider;
+import com.tencent.mobileqq.statistics.provider.report.ReportServiceProvider;
+import com.tencent.mobileqq.statistics.provider.report.TouchEventServiceProvider;
+import com.tencent.mobileqq.statistics.provider.statistic.LocalMultiProcConfigServiceProvider;
+import com.tencent.mobileqq.statistics.provider.statistic.StaticsCollectorServiceProvider;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneCrashHandler;
@@ -22,93 +26,76 @@ public class Rdm
 {
   private static AtomicInteger a = new AtomicInteger(0);
   
-  private void a(String paramString1, String paramString2)
+  private static void a()
   {
-    if (BaseApplicationImpl.sProcessId == 4) {
-      return;
-    }
-    long l = SystemClock.uptimeMillis();
-    bdkp localbdkp = bdkp.a(BaseApplicationImpl.sApplication);
-    localbdkp.a(false);
-    localbdkp.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
-    localbdkp.b("MTA_" + paramString1.replace(':', '_'));
-    if (!paramString1.endsWith(":openSdk")) {
-      localbdkp.a(paramString2);
-    }
-    QLog.d("AutoMonitor", 1, "MTA, cost=" + (SystemClock.uptimeMillis() - l) + " results: true");
+    ReportControllerServiceHolder.a(new ReportDataProviderServiceProvider());
+    ReportControllerServiceHolder.b(new TouchEventServiceProvider());
+    ReportControllerServiceHolder.c(new ReportServiceProvider());
+    ReportControllerServiceHolder.e(new StaticsCollectorServiceProvider());
+    ReportControllerServiceHolder.f(new CrashReportServiceImpl());
+    ReportControllerServiceHolder.d(new LocalMultiProcConfigServiceProvider());
   }
   
   protected boolean doStep()
   {
     String str2 = BaseApplicationImpl.processName;
+    a();
     QLog.d("RdmInit", 1, "doStep process=" + str2 + ", sRdmState=" + a.get());
     if ((a.compareAndSet(0, 1)) && (BaseApplicationImpl.sProcessId != 4)) {}
     for (;;)
     {
       try
       {
-        localObject1 = BaseApplicationImpl.sApplication.getAllAccounts();
-        if (localObject1 != null)
-        {
-          localObject1 = (SimpleAccount)((List)localObject1).get(0);
-          if (localObject1 == null) {
-            continue;
-          }
-          localObject1 = ((SimpleAccount)localObject1).getUin();
+        localObject = BaseApplicationImpl.sApplication.getAllAccounts();
+        if (localObject == null) {
+          continue;
+        }
+        localObject = (SimpleAccount)((List)localObject).get(0);
+        if (localObject == null) {
+          break label249;
+        }
+        localObject = ((SimpleAccount)localObject).getUin();
+        if ((BaseApplicationImpl.sProcessId != 1) && (BaseApplicationImpl.sProcessId != 7)) {
+          continue;
+        }
+        Thread.setDefaultUncaughtExceptionHandler(new ReportLog());
+        StatisticCollector.getInstance(BaseApplicationImpl.sApplication).setEnableCrashRecord((String)localObject);
+        if (!str2.endsWith(":openSdk")) {
+          StatisticCollector.getInstance(BaseApplicationImpl.sApplication).setContact((String)localObject);
         }
       }
-      catch (Exception localException2)
+      catch (Exception localException)
       {
-        Object localObject1;
-        String str1 = "10000";
+        Object localObject;
+        localException.printStackTrace();
         continue;
-        str1 = "10000";
+        localException.run();
         continue;
+      }
+      localObject = new Rdm.1(this, str2);
+      if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+        ThreadManager.post((Runnable)localObject, 5, null, true);
       }
       try
       {
-        if ((BaseApplicationImpl.sProcessId == 1) || (BaseApplicationImpl.sProcessId == 7))
-        {
-          Thread.setDefaultUncaughtExceptionHandler(new awoi());
-          StatisticCollector.getInstance(BaseApplicationImpl.sApplication).setEnableCrashRecord((String)localObject1);
-          Object localObject2 = localObject1;
-          if (!str2.endsWith(":openSdk"))
-          {
-            StatisticCollector.getInstance(BaseApplicationImpl.sApplication).setContact((String)localObject1);
-            localObject2 = localObject1;
-          }
-          localObject1 = new Rdm.1(this, str2);
-          if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-            continue;
-          }
-          ThreadManager.post((Runnable)localObject1, 5, null, true);
-          a(str2, localObject2);
-        }
-      }
-      catch (Exception localException1) {}
-      try
-      {
-        if ((BaseApplicationImpl.sProcessId != 9) && (!LogcatHook.a.get()) && (LogcatHook.b)) {
-          LogcatHook.a();
+        if ((!LogcatHook.sLogcatHooked.get()) && (LogcatHook.ENABEL_SYSLOG_IN_RDM)) {
+          LogcatHook.startHookLogcat();
         }
         return true;
       }
       catch (Throwable localThrowable)
       {
-        Object localObject3;
         Log.e("LogcatHook", "LogcatHook start failed !!", localThrowable);
         return true;
       }
-      localObject1 = null;
+      localObject = null;
       continue;
       if (BaseApplicationImpl.sProcessId == 2)
       {
         Thread.setDefaultUncaughtExceptionHandler(new QZoneCrashHandler());
         continue;
-        localException1.printStackTrace();
-        localObject3 = localObject1;
-        continue;
-        ((Runnable)localObject1).run();
+        label249:
+        String str1 = "10000";
       }
     }
   }

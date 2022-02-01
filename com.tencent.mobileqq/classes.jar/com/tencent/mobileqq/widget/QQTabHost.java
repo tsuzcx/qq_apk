@@ -6,26 +6,25 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.widget.TabHost;
 import android.widget.TabWidget;
-import auvj;
-import bhhy;
-import bisp;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.ITabFrameController;
+import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.qphone.base.util.QLog;
-import pwb;
 
 public class QQTabHost
   extends TabHost
 {
-  private auvj jdField_a_of_type_Auvj;
-  private bisp jdField_a_of_type_Bisp;
-  private boolean jdField_a_of_type_Boolean;
+  private OnDrawCompleteListener jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener;
+  private QQTabHost.OnTabSelectionListener jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost$OnTabSelectionListener;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public QQTabHost(Context paramContext)
   {
     super(paramContext);
     setWillNotDraw(false);
-    if ((paramContext instanceof auvj)) {
-      this.jdField_a_of_type_Auvj = ((auvj)paramContext);
+    if ((paramContext instanceof OnDrawCompleteListener)) {
+      this.jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener = ((OnDrawCompleteListener)paramContext);
     }
   }
   
@@ -46,15 +45,15 @@ public class QQTabHost
   public void draw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_Boolean) {
-      bhhy.a(null, "Recent_Draw");
+      StartupTracker.a(null, "Recent_Draw");
     }
     super.draw(paramCanvas);
     if (this.jdField_a_of_type_Boolean)
     {
-      bhhy.a("Recent_Draw", null);
+      StartupTracker.a("Recent_Draw", null);
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Auvj != null) {
-        this.jdField_a_of_type_Auvj.b();
+      if (this.jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener.b();
       }
     }
   }
@@ -62,20 +61,20 @@ public class QQTabHost
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (this.jdField_a_of_type_Boolean) {
-      bhhy.a(null, "Recent_OnLayout");
+      StartupTracker.a(null, "Recent_OnLayout");
     }
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.jdField_a_of_type_Boolean) {
-      bhhy.a("Recent_OnLayout", null);
+      StartupTracker.a("Recent_OnLayout", null);
     }
   }
   
   public void onTouchModeChanged(boolean paramBoolean)
   {
-    if (SplashActivity.a != 1)
+    if (((ITabFrameController)QRoute.api(ITabFrameController.class)).isFragmentNotMatch())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.QQTabHost", 2, " QQTabHost onTouchModeChanged isInTouchMode:" + paramBoolean + " currentFragment = " + SplashActivity.a);
+        QLog.d("Q.aio.QQTabHost", 2, " QQTabHost onTouchModeChanged isInTouchMode:" + paramBoolean);
       }
       return;
     }
@@ -91,11 +90,8 @@ public class QQTabHost
       return;
       i = getCurrentTab();
       super.setCurrentTab(paramInt);
-      if (this.jdField_a_of_type_Bisp != null) {
-        this.jdField_a_of_type_Bisp.a(i, paramInt, this);
-      }
-      if (paramInt == 0) {
-        pwb.a().a(1, false);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost$OnTabSelectionListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost$OnTabSelectionListener.a(i, paramInt, this);
       }
     } while (!QLog.isColorLevel());
     try
@@ -113,19 +109,19 @@ public class QQTabHost
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void setOnDrawCompleteListener(auvj paramauvj)
+  public void setOnDrawCompleteListener(OnDrawCompleteListener paramOnDrawCompleteListener)
   {
-    this.jdField_a_of_type_Auvj = paramauvj;
+    this.jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener = paramOnDrawCompleteListener;
   }
   
-  public void setOnTabSelectionListener(bisp parambisp)
+  public void setOnTabSelectionListener(QQTabHost.OnTabSelectionListener paramOnTabSelectionListener)
   {
-    this.jdField_a_of_type_Bisp = parambisp;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost$OnTabSelectionListener = paramOnTabSelectionListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQTabHost
  * JD-Core Version:    0.7.0.1
  */

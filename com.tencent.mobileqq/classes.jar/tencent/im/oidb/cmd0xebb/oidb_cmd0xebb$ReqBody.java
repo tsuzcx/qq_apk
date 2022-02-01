@@ -15,11 +15,12 @@ public final class oidb_cmd0xebb$ReqBody
   public oidb_cmd0xebb.ReqRecommendPara msg_req_recommend_para = new oidb_cmd0xebb.ReqRecommendPara();
   public final PBUInt32Field uint32_network_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_os_type = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_req_source = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 16, 24, 90, 194 }, new String[] { "uint32_network_type", "uint32_os_type", "msg_req_recommend_para", "bytes_sso_client_version" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 16, 24, 90, 194, 1600 }, new String[] { "uint32_network_type", "uint32_os_type", "msg_req_recommend_para", "bytes_sso_client_version", "uint32_req_source" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro, Integer.valueOf(0) }, ReqBody.class);
   }
 }
 

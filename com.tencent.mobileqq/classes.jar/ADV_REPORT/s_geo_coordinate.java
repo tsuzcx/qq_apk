@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class s_geo_coordinate
   extends JceStruct
 {
-  public double latitude_axis;
-  public double longitude_axis;
+  public double latitude_axis = 0.0D;
+  public double longitude_axis = 0.0D;
   
   public s_geo_coordinate() {}
   

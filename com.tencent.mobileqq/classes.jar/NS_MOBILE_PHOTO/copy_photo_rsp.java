@@ -9,7 +9,7 @@ public final class copy_photo_rsp
   extends JceStruct
 {
   static ArrayList<st_copy_photo> cache_fails = new ArrayList();
-  public ArrayList<st_copy_photo> fails;
+  public ArrayList<st_copy_photo> fails = null;
   
   static
   {

@@ -12,29 +12,22 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bnrh;
-import bntw;
-import bnub;
-import bnue;
-import bnuk;
-import bnul;
-import bnum;
-import bnun;
 import com.tencent.weseevideo.editor.sticker.music.LyricParseHelper;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.text.SimpleDateFormat;
 
 public class LyricWithBuoyView
   extends FrameLayout
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new bnuk(this, Looper.getMainLooper());
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bnub a;
-  private bnun jdField_a_of_type_Bnun;
+  private Handler jdField_a_of_type_AndroidOsHandler = new LyricWithBuoyView.1(this, Looper.getMainLooper());
+  private View jdField_a_of_type_AndroidViewView = null;
+  private TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  public LyricViewController a;
   public LyricViewDetail a;
+  private LyricWithBuoyView.OnLyricWithBuoyViewOperationListener jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricWithBuoyView$OnLyricWithBuoyViewOperationListener;
   private volatile boolean jdField_a_of_type_Boolean = true;
-  private View b;
+  private View b = null;
   
   public LyricWithBuoyView(Context paramContext)
   {
@@ -49,15 +42,15 @@ public class LyricWithBuoyView
   public LyricWithBuoyView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131558566, this);
-    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewDetail = ((LyricViewDetail)paramContext.findViewById(2131363959));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131380034));
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131363960);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new bnul(this));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bnum(this));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131558588, this);
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewDetail = ((LyricViewDetail)paramContext.findViewById(2131364056));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131380470));
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131364057);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new LyricWithBuoyView.2(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new LyricWithBuoyView.3(this));
     this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewDetail.setIsDealTouchEvent(false);
-    this.b = paramContext.findViewById(2131371719);
-    this.jdField_a_of_type_Bnub = new bnub(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewDetail);
+    this.b = paramContext.findViewById(2131372033);
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController = new LyricViewController(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewDetail);
   }
   
   public static String a(int paramInt)
@@ -73,12 +66,12 @@ public class LyricWithBuoyView
   public void a()
   {
     if (this.b == null) {
-      bnrh.c("LyricWithBuoyView", "handlerHideSelection() mMusicLyricLineView == null.");
+      AEQLog.c("LyricWithBuoyView", "handlerHideSelection() mMusicLyricLineView == null.");
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bnub != null) {
-        this.jdField_a_of_type_Bnub.b(false);
+      if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController != null) {
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.b(false);
       }
       return;
       this.b.setVisibility(4);
@@ -87,41 +80,41 @@ public class LyricWithBuoyView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bnub != null) {
-      this.jdField_a_of_type_Bnub.a(paramInt);
+    if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a(paramInt);
     }
   }
   
-  public void a(bntw parambntw)
+  public void a(LyricScrollHelper.LyricScrollListener paramLyricScrollListener)
   {
-    if (this.jdField_a_of_type_Bnub == null)
+    if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController == null)
     {
-      bnrh.c("LyricWithBuoyView", "registerScrollListener() mLyricViewController == null.");
+      AEQLog.c("LyricWithBuoyView", "registerScrollListener() mLyricViewController == null.");
       return;
     }
-    this.jdField_a_of_type_Bnub.a(parambntw);
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a(paramLyricScrollListener);
   }
   
-  public void a(String paramString1, String paramString2, int paramInt, bnue parambnue)
+  public void a(String paramString1, String paramString2, int paramInt, LyricViewController.OnObtainMusicPositionListener paramOnObtainMusicPositionListener)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      bnrh.a("LyricWithBuoyView", "initLyricView() lyric info is empty.");
+      AEQLog.a("LyricWithBuoyView", "initLyricView() lyric info is empty.");
     }
     label199:
     for (;;)
     {
       return;
-      if (this.jdField_a_of_type_Bnub != null) {
-        this.jdField_a_of_type_Bnub.a();
+      if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController != null) {
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a();
       }
       Lyric localLyric;
       if (TextUtils.equals(paramString2.toUpperCase(), "LRC"))
       {
         localLyric = LyricParseHelper.parseTextToLyric(paramString1, false);
         paramString1 = localLyric;
-        if (this.jdField_a_of_type_Bnub != null)
+        if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController != null)
         {
-          this.jdField_a_of_type_Bnub.a(null, localLyric, null);
+          this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a(null, localLyric, null);
           paramString1 = localLyric;
         }
       }
@@ -130,21 +123,21 @@ public class LyricWithBuoyView
         if (paramString1 == null) {
           break label199;
         }
-        bnrh.a("LyricWithBuoyView", "initLyricView() startTime => " + paramInt + ",lyricFormat:" + paramString2);
-        if (this.jdField_a_of_type_Bnub == null) {
+        AEQLog.a("LyricWithBuoyView", "initLyricView() startTime => " + paramInt + ",lyricFormat:" + paramString2);
+        if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController == null) {
           break;
         }
-        this.jdField_a_of_type_Bnub.a(false);
-        this.jdField_a_of_type_Bnub.a(paramInt, true);
-        this.jdField_a_of_type_Bnub.a(parambnue);
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a(false);
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a(paramInt, true);
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a(paramOnObtainMusicPositionListener);
         return;
         if (TextUtils.equals(paramString2.toUpperCase(), "QRC"))
         {
           localLyric = LyricParseHelper.parseTextToLyric(paramString1, true);
           paramString1 = localLyric;
-          if (this.jdField_a_of_type_Bnub != null)
+          if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController != null)
           {
-            this.jdField_a_of_type_Bnub.a(localLyric, null, null);
+            this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a(localLyric, null, null);
             paramString1 = localLyric;
           }
         }
@@ -156,7 +149,7 @@ public class LyricWithBuoyView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = (int)(getMeasuredHeight() * 0.3F);
@@ -189,12 +182,12 @@ public class LyricWithBuoyView
       if ((this.b != null) && (this.b.getVisibility() != 0)) {
         this.b.setVisibility(0);
       }
-      if (this.jdField_a_of_type_Bnub != null)
+      if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController != null)
       {
-        this.jdField_a_of_type_Bnub.b(true);
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.b(true);
         continue;
         Log.d("LyricWithBuoyView", "onTouchEvent -> ACTION_MOVE");
-        String str = a(this.jdField_a_of_type_Bnub.a());
+        String str = a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a());
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
         invalidate();
         continue;
@@ -206,31 +199,31 @@ public class LyricWithBuoyView
   
   public void setLyric(Lyric paramLyric1, Lyric paramLyric2, Lyric paramLyric3)
   {
-    if (this.jdField_a_of_type_Bnub == null)
+    if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController == null)
     {
-      bnrh.c("LyricWithBuoyView", "setLyric() mLyricViewController == null.");
+      AEQLog.c("LyricWithBuoyView", "setLyric() mLyricViewController == null.");
       return;
     }
-    this.jdField_a_of_type_Bnub.a(paramLyric1, paramLyric2, paramLyric3);
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a(paramLyric1, paramLyric2, paramLyric3);
   }
   
-  public void setOnLyricWithBuoyViewOperationListener(bnun parambnun)
+  public void setOnLyricWithBuoyViewOperationListener(LyricWithBuoyView.OnLyricWithBuoyViewOperationListener paramOnLyricWithBuoyViewOperationListener)
   {
-    this.jdField_a_of_type_Bnun = parambnun;
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricWithBuoyView$OnLyricWithBuoyViewOperationListener = paramOnLyricWithBuoyViewOperationListener;
   }
   
   public void setSelectedFlag(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bnub != null)
+    if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController != null)
     {
-      this.jdField_a_of_type_Bnub.a(paramInt, true);
+      this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewController.a(paramInt, true);
       a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView
  * JD-Core Version:    0.7.0.1
  */

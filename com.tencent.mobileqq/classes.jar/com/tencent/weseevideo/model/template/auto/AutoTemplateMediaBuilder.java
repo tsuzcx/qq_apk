@@ -103,10 +103,13 @@ public class AutoTemplateMediaBuilder
     paramMediaBuilderListener.buildCompleted(0, paramMediaModel, paramIStickerContextInterface);
   }
   
-  private static TAVAutomaticTemplate buildAutomaticTemplate(Context paramContext, @NonNull MediaModel paramMediaModel, CGSize paramCGSize)
+  private static TAVAutomaticTemplate buildAutomaticTemplate(Context paramContext, MediaModel paramMediaModel, CGSize paramCGSize)
   {
+    if (paramMediaModel == null) {
+      return null;
+    }
     AutomaticMediaTemplateModel localAutomaticMediaTemplateModel = paramMediaModel.getMediaTemplateModel().getAutomaticMediaTemplateModel();
-    if ((localAutomaticMediaTemplateModel != null) && (!TextUtils.isEmpty(localAutomaticMediaTemplateModel.getTemplateDir()))) {}
+    if (!TextUtils.isEmpty(localAutomaticMediaTemplateModel.getTemplateDir())) {}
     for (paramContext = TAVAutomaticTemplateParse.parseAutomaticTemplate(paramContext, localAutomaticMediaTemplateModel.getTemplateDir(), localAutomaticMediaTemplateModel.getTemplateFileName());; paramContext = null)
     {
       if (paramContext != null)
@@ -114,31 +117,30 @@ public class AutoTemplateMediaBuilder
         paramContext.setRenderSize(paramCGSize);
         paramContext.setImagePagAssetDir(localAutomaticMediaTemplateModel.getImagePagAssetDir());
         paramCGSize = paramMediaModel.getMediaEffectModel().getMusicModel();
-        if (paramCGSize != null)
+        paramContext.setBgmVolume(paramCGSize.getBgmVolume());
+        paramContext.setVolume(Utils.getPlayVolume(paramCGSize));
+        Object localObject = paramCGSize.getMetaDataBean();
+        if ((localObject != null) && (FileUtils.exists(((MusicMaterialMetaDataBean)localObject).path)))
         {
-          paramContext.setBgmVolume(paramCGSize.getBgmVolume());
-          paramContext.setVolume(Utils.getPlayVolume(paramCGSize));
-          Object localObject = paramCGSize.getMetaDataBean();
-          if ((localObject != null) && (FileUtils.exists(((MusicMaterialMetaDataBean)localObject).path)))
-          {
-            String str = Utils.getPath((MusicMaterialMetaDataBean)localObject);
-            boolean bool = FileUtils.exists(str);
-            Logger.i(TAG, "build template, isRhythmMusic: " + ((MusicMaterialMetaDataBean)localObject).isStuckPoint + ", isRhythmFileExist: " + bool + ", muiscId: " + ((MusicMaterialMetaDataBean)localObject).id);
-            if ((!(paramContext instanceof TAVRhythmAutomaticTemplate)) || (!((MusicMaterialMetaDataBean)localObject).isStuckPoint) || (!bool)) {
-              break label261;
-            }
-            localObject = paramMediaModel.getMediaTemplateModel().getAutomaticMediaTemplateModel().getRhythmSecondEffectIndices();
-            int i = localAutomaticMediaTemplateModel.getRandomIndex();
-            ((TAVRhythmAutomaticTemplate)paramContext).parseMusicRhythm(null, str, paramCGSize.getMetaDataBean().path, paramCGSize.getMetaDataBean().startTime, (List)localObject, i);
-            paramMediaModel = paramMediaModel.getMediaTemplateModel().getAutomaticMediaTemplateModel().getTransitionEffects();
-            ((TAVRhythmAutomaticTemplate)paramContext).setTransitionEffects(paramMediaModel);
+          String str = Utils.getPath((MusicMaterialMetaDataBean)localObject);
+          boolean bool = FileUtils.exists(str);
+          Logger.i(TAG, "build template, isRhythmMusic: " + ((MusicMaterialMetaDataBean)localObject).isStuckPoint + ", isRhythmFileExist: " + bool + ", muiscId: " + ((MusicMaterialMetaDataBean)localObject).id);
+          if ((!(paramContext instanceof TAVRhythmAutomaticTemplate)) || (!((MusicMaterialMetaDataBean)localObject).isStuckPoint) || (!bool)) {
+            break label258;
           }
+          localObject = paramMediaModel.getMediaTemplateModel().getAutomaticMediaTemplateModel().getRhythmSecondEffectIndices();
+          int i = localAutomaticMediaTemplateModel.getRandomIndex();
+          ((TAVRhythmAutomaticTemplate)paramContext).parseMusicRhythm(null, str, paramCGSize.getMetaDataBean().path, paramCGSize.getMetaDataBean().startTime, (List)localObject, i);
+          paramMediaModel = paramMediaModel.getMediaTemplateModel().getAutomaticMediaTemplateModel().getTransitionEffects();
+          ((TAVRhythmAutomaticTemplate)paramContext).setTransitionEffects(paramMediaModel);
         }
       }
-      return paramContext;
-      label261:
-      paramContext.configMusic(null, paramCGSize.getMetaDataBean().path, paramCGSize.getMetaDataBean().startTime);
-      return paramContext;
+      for (;;)
+      {
+        return paramContext;
+        label258:
+        paramContext.configMusic(null, paramCGSize.getMetaDataBean().path, paramCGSize.getMetaDataBean().startTime);
+      }
     }
   }
   
@@ -502,7 +504,7 @@ public class AutoTemplateMediaBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.auto.AutoTemplateMediaBuilder
  * JD-Core Version:    0.7.0.1
  */

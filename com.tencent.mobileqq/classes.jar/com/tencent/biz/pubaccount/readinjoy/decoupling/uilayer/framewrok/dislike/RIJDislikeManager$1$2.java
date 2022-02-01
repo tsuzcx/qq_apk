@@ -2,22 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.dislik
 
 import android.view.View;
 import android.view.animation.Animation;
-import pps;
-import sxl;
+import com.tencent.biz.pubaccount.readinjoy.video.viewholder.ViewHolder;
 
-public class RIJDislikeManager$1$2
+class RIJDislikeManager$1$2
   implements Runnable
 {
-  public RIJDislikeManager$1$2(pps parampps, Animation paramAnimation) {}
+  RIJDislikeManager$1$2(RIJDislikeManager.1 param1, Animation paramAnimation) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Pps.a.g.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDecouplingUilayerFramewrokDislikeRIJDislikeManager$1.a.g.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.dislike.RIJDislikeManager.1.2
  * JD-Core Version:    0.7.0.1
  */

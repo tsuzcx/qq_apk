@@ -3,7 +3,7 @@ package com.tencent.qg.loader;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class QGLoader$1
+final class QGLoader$1
   implements Runnable
 {
   public void run()
@@ -13,7 +13,7 @@ public final class QGLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qg.loader.QGLoader.1
  * JD-Core Version:    0.7.0.1
  */

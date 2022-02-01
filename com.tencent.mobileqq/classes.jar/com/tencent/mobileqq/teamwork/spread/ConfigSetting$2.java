@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import arom;
-import bedz;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocTipsConfigBean;
 
-public class ConfigSetting$2
+class ConfigSetting$2
   implements Runnable
 {
-  public ConfigSetting$2(bedz parambedz, arom paramarom) {}
+  ConfigSetting$2(ConfigSetting paramConfigSetting, TencentDocTipsConfigBean paramTencentDocTipsConfigBean) {}
   
   public void run()
   {
-    bedz.a(this.this$0, this.a);
+    ConfigSetting.a(this.this$0, this.a);
   }
 }
 

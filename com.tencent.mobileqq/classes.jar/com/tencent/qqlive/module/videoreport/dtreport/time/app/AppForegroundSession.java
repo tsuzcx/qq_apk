@@ -87,9 +87,9 @@ public class AppForegroundSession
     FinalDataTarget.handle(null, localFinalData);
   }
   
-  private void reportAppOut(boolean paramBoolean)
+  private void reportAppOut(long paramLong)
   {
-    long l1 = SystemClock.uptimeMillis() - this.mAppStartTime;
+    long l1 = SystemClock.uptimeMillis() - this.mAppStartTime - paramLong;
     long l2 = this.mInterceptorMonitor.getInterceptDuration();
     long l3 = this.mInterceptDuration;
     this.mInterceptorMonitor.onAppOut(false);
@@ -100,10 +100,11 @@ public class AppForegroundSession
     localFinalData.put("lvtm", Long.valueOf(l1));
     localFinalData.put("dt_white_lvtm", Long.valueOf(l3 + (l1 - l2)));
     localFinalData.put("dt_activity_blacklist", localObject);
-    localFinalData.put("dt_app_stoptime", Long.valueOf(System.currentTimeMillis()));
-    localFinalData.put("dt_sys_elapsed_realtime", Long.valueOf(SystemClock.elapsedRealtime()));
+    localFinalData.put("dt_lvtm_delta", Long.valueOf(paramLong));
+    localFinalData.put("dt_app_stoptime", Long.valueOf(System.currentTimeMillis() - paramLong));
+    localFinalData.put("dt_sys_elapsed_realtime", Long.valueOf(SystemClock.elapsedRealtime() - paramLong));
     localFinalData.put("dt_app_sessionid", getAppSessionId());
-    localFinalData.put("dt_app_foreground_duration", Long.valueOf(getForegroundDuration()));
+    localFinalData.put("dt_app_foreground_duration", Long.valueOf(getForegroundDuration() - paramLong));
     localFinalData.put("cur_pg", PageReporter.getInstance().getCurPageReportInfo());
     localFinalData.put("dt_activity_name", AppEventReporter.getInstance().getActivityName());
     localFinalData.put("dt_active_info", AppEventReporter.getInstance().getActiveInfo());
@@ -111,12 +112,7 @@ public class AppForegroundSession
     if (localObject != null) {
       ((IEventDynamicParams)localObject).setEventDynamicParams("appout", localFinalData.getEventParams());
     }
-    if (paramBoolean)
-    {
-      FinalDataTarget.handleInMainThread(null, localFinalData);
-      return;
-    }
-    FinalDataTarget.handle(null, localFinalData);
+    FinalDataTarget.handleInMainThread(null, localFinalData);
   }
   
   private static void reportHeartBeat(Map<String, Object> paramMap)
@@ -134,6 +130,11 @@ public class AppForegroundSession
   public static void reportLastHeartBeat(String paramString)
   {
     ThreadUtils.execTask(new AppForegroundSession.3(paramString));
+  }
+  
+  private void stopToReport()
+  {
+    stopToReport(0L);
   }
   
   private void triggerTiming()
@@ -184,7 +185,7 @@ public class AppForegroundSession
     try
     {
       if (this.mProcessorState == 0) {
-        stop(true);
+        stopToReport();
       }
       this.mProcessorState = -1;
       this.mAppSessionId = ReportUtils.generateSessionId();
@@ -204,7 +205,7 @@ public class AppForegroundSession
     try
     {
       if (this.mProcessorState == 0) {
-        stop(true);
+        stopToReport();
       }
       this.mProcessorState = 0;
       this.mAppStartTime = SystemClock.uptimeMillis();
@@ -238,14 +239,14 @@ public class AppForegroundSession
     }
   }
   
-  public void stop(boolean paramBoolean)
+  public void stopToReport(long paramLong)
   {
     try
     {
       if (this.mProcessorState == 0)
       {
         stop();
-        reportAppOut(paramBoolean);
+        reportAppOut(paramLong);
       }
       return;
     }

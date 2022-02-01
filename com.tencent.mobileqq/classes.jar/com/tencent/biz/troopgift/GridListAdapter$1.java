@@ -1,22 +1,20 @@
 package com.tencent.biz.troopgift;
 
-import aaic;
-import aaid;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.util.DisplayUtil;
 
-public class GridListAdapter$1
+class GridListAdapter$1
   implements Runnable
 {
-  public GridListAdapter$1(aaic paramaaic, aaid paramaaid) {}
+  GridListAdapter$1(GridListAdapter paramGridListAdapter, GridListAdapter.Holder paramHolder) {}
   
   public void run()
   {
-    int i = DisplayUtil.dip2px(this.this$0.a, 5.0F);
-    new Paint().setTextSize(DisplayUtil.dip2px(this.this$0.a, 11.0F));
+    int i = DisplayUtil.a(this.this$0.a, 5.0F);
+    new Paint().setTextSize(DisplayUtil.a(this.this$0.a, 11.0F));
     int j = this.a.a.getWidth();
     int k = this.a.a.getHeight();
     if ((j == 0) || (k == 0)) {
@@ -31,7 +29,7 @@ public class GridListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.troopgift.GridListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

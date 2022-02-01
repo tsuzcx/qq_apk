@@ -2,6 +2,9 @@ package com.tencent.qqlive.module.videoreport.dtreport;
 
 import com.tencent.qqlive.module.videoreport.Configuration.Builder;
 import com.tencent.qqlive.module.videoreport.ILogger;
+import com.tencent.qqlive.module.videoreport.constants.ClickPolicy;
+import com.tencent.qqlive.module.videoreport.constants.EndExposurePolicy;
+import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTParamProvider;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTReport;
 import com.tencent.qqlive.module.videoreport.dtreport.constants.DTConfigConstants.ElementFormatMode;
@@ -56,6 +59,24 @@ public class DTReportComponent$Builder
   public Builder dtReport(IDTReport paramIDTReport)
   {
     this.mDTReport = paramIDTReport;
+    return this;
+  }
+  
+  public Builder elementClickPolicy(ClickPolicy paramClickPolicy)
+  {
+    this.mConfigurationBuilder.elementClickPolicy(paramClickPolicy);
+    return this;
+  }
+  
+  public Builder elementEndExposePolicy(EndExposurePolicy paramEndExposurePolicy)
+  {
+    this.mConfigurationBuilder.elementEndExposePolicy(paramEndExposurePolicy);
+    return this;
+  }
+  
+  public Builder elementExposePolicy(ExposurePolicy paramExposurePolicy)
+  {
+    this.mConfigurationBuilder.elementExposePolicy(paramExposurePolicy);
     return this;
   }
   

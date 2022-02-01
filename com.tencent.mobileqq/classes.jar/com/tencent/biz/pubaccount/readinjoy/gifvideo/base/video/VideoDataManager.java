@@ -1,0 +1,71 @@
+package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
+
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoDataManager;", "", "()V", "rowKeyAndProgressMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "getRowKeyAndProgressMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "setRowKeyAndProgressMap", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "rowKeyAndTotalDurationMap", "getRowKeyAndTotalDurationMap", "setRowKeyAndTotalDurationMap", "getProgressByRowKey", "rowKey", "getTotalDurationByRowKey", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class VideoDataManager
+{
+  public static final VideoDataManager a;
+  @NotNull
+  private static ConcurrentHashMap<String, Long> a;
+  @NotNull
+  private static ConcurrentHashMap<String, Long> b = new ConcurrentHashMap();
+  
+  static
+  {
+    jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoDataManager = new VideoDataManager();
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public final long a(@Nullable String paramString)
+  {
+    if (paramString != null)
+    {
+      paramString = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (paramString != null)
+      {
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "it");
+        return paramString.longValue();
+      }
+      paramString = (Void)null;
+    }
+    return 0L;
+  }
+  
+  @NotNull
+  public final ConcurrentHashMap<String, Long> a()
+  {
+    return jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  }
+  
+  public final long b(@Nullable String paramString)
+  {
+    if (paramString != null)
+    {
+      paramString = (Long)b.get(paramString);
+      if (paramString != null)
+      {
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "it");
+        return paramString.longValue();
+      }
+      paramString = (Void)null;
+    }
+    return 0L;
+  }
+  
+  @NotNull
+  public final ConcurrentHashMap<String, Long> b()
+  {
+    return b;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoDataManager
+ * JD-Core Version:    0.7.0.1
+ */

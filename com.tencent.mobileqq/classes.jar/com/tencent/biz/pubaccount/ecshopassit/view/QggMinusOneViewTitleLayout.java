@@ -11,6 +11,8 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import com.tencent.biz.pubaccount.ecshopassit.conf.EcshopConfBean;
+import com.tencent.biz.pubaccount.ecshopassit.utils.EcshopUtils;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -19,8 +21,6 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.util.Date;
-import opa;
-import opg;
 
 public class QggMinusOneViewTitleLayout
   extends FrameLayout
@@ -74,7 +74,7 @@ public class QggMinusOneViewTitleLayout
   
   private void a(String paramString, ImageView paramImageView, int paramInt)
   {
-    if ((StringUtil.isEmpty(paramString)) || (paramImageView == null)) {
+    if ((StringUtil.a(paramString)) || (paramImageView == null)) {
       return;
     }
     for (;;)
@@ -82,10 +82,10 @@ public class QggMinusOneViewTitleLayout
       try
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850736);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = UIUtils.dip2px(getContext(), 40.0F);
+        localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130851162);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = UIUtils.a(getContext(), 40.0F);
         localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height;
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = (localURLDrawableOptions.mRequestHeight * 3 + UIUtils.dip2px(getContext(), 10.0F));
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = (localURLDrawableOptions.mRequestHeight * 3 + UIUtils.a(getContext(), 10.0F));
         localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width;
         paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
         if (paramString == null) {
@@ -113,44 +113,44 @@ public class QggMinusOneViewTitleLayout
   
   private void a(String paramString, TextView paramTextView)
   {
-    if ((StringUtil.isEmpty(paramString)) || (paramTextView == null)) {
+    if ((StringUtil.a(paramString)) || (paramTextView == null)) {
       return;
     }
     paramTextView.setText(paramString);
   }
   
-  public void setMinusViewTitle(opa paramopa)
+  public void setMinusViewTitle(EcshopConfBean paramEcshopConfBean)
   {
-    if (paramopa == null) {
+    if (paramEcshopConfBean == null) {
       return;
     }
-    if (StringUtil.isEmpty(paramopa.c)) {}
-    for (paramopa = "https://i.gtimg.cn/channel/imglib/202005/upload_0130d1d150ac825d9804c01c17955272.png";; paramopa = paramopa.c)
+    if (StringUtil.a(paramEcshopConfBean.c)) {}
+    for (paramEcshopConfBean = "https://i.gtimg.cn/channel/imglib/202005/upload_0130d1d150ac825d9804c01c17955272.png";; paramEcshopConfBean = paramEcshopConfBean.c)
     {
-      a(paramopa, this.jdField_a_of_type_AndroidWidgetImageView, 0);
-      paramopa = opg.a(NetConnInfoCenter.getServerTimeMillis(), "M月d日");
-      String str = opg.a(getContext(), new Date());
-      a(paramopa + "\n" + str, this.jdField_a_of_type_AndroidWidgetTextView);
+      a(paramEcshopConfBean, this.jdField_a_of_type_AndroidWidgetImageView, 0);
+      paramEcshopConfBean = EcshopUtils.a(NetConnInfoCenter.getServerTimeMillis(), "M月d日");
+      String str = EcshopUtils.a(getContext(), new Date());
+      a(paramEcshopConfBean + "\n" + str, this.jdField_a_of_type_AndroidWidgetTextView);
       return;
     }
   }
   
-  public void setQggTitle(opa paramopa)
+  public void setQggTitle(EcshopConfBean paramEcshopConfBean)
   {
-    if (paramopa == null) {
+    if (paramEcshopConfBean == null) {
       return;
     }
-    if (StringUtil.isEmpty(paramopa.d)) {}
-    for (paramopa = "https://i.gtimg.cn/channel/imglib/202005/upload_d10f6014892e80a6195c5a965a6b8ac0.png";; paramopa = paramopa.d)
+    if (StringUtil.a(paramEcshopConfBean.d)) {}
+    for (paramEcshopConfBean = "https://i.gtimg.cn/channel/imglib/202005/upload_d10f6014892e80a6195c5a965a6b8ac0.png";; paramEcshopConfBean = paramEcshopConfBean.d)
     {
-      a(paramopa, this.jdField_a_of_type_AndroidWidgetImageView, 1);
+      a(paramEcshopConfBean, this.jdField_a_of_type_AndroidWidgetImageView, 1);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.view.QggMinusOneViewTitleLayout
  * JD-Core Version:    0.7.0.1
  */

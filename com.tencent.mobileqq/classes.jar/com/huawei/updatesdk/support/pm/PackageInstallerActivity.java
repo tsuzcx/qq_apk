@@ -1,6 +1,5 @@
 package com.huawei.updatesdk.support.pm;
 
-import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.FragmentCollector;
@@ -28,6 +29,7 @@ import com.tencent.tkd.comment.publisher.qq.util.TkdQQToast;
 import com.tencent.tkd.comment.publisher.qq.util.TkdQQView;
 import com.tencent.tkd.comment.publisher.qq.widget.TkdCommentLinkView;
 import com.tencent.tkd.comment.util.CommonUtil;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
@@ -45,12 +47,14 @@ public class QQPublishCommentFragment
   private static final String RIJ_SP_EDITOR_LAST_CHECK = "rij_sp_editor_last_check";
   private static final String TAG = "QQPublisherFragment";
   private static final int WRITE_COMMENT = 1;
+  private static HashMap<String, String> draftMap = new HashMap();
   private QQPublishCommentFragment.BiuAndCommentMixUi biuAndCommentMixUi;
   private QQPublishCommentFragment.BiuUi biuUi;
   private int curPanel = 0;
   private boolean dismissOnDeliver;
   private QQPublishCommentFragment.EmotionUi emotionUi;
   private QQPublishCommentFragment.GifUi gifUi;
+  private boolean isRecreate;
   private int lastState = 1;
   private QQPublishCommentFragment.LinkUi linkUi;
   private Activity mActivity;
@@ -62,6 +66,16 @@ public class QQPublishCommentFragment
   private Button vDeliverButton;
   private EditText vInputEdit;
   private PanelFrameLayout vPanelHolder;
+  private ImageView vTopic;
+  
+  private void addCommentDraft()
+  {
+    String str1 = getDraftId();
+    String str2 = getCommentString();
+    if (str2 != null) {
+      draftMap.put(str1, str2);
+    }
+  }
   
   private void addViewToPanel(View paramView, boolean paramBoolean)
   {
@@ -85,13 +99,13 @@ public class QQPublishCommentFragment
     if (this.mInputOverlong)
     {
       TkdQQLog.d("QQPublisherFragment", "onDeliver overlong!");
-      TkdQQToast.show(getActivity().getString(2131719367), 0, 1);
+      TkdQQToast.show(getActivity().getString(2131719930), 0, 1);
       return false;
     }
     if (!QQPublishCommentManager.getInstance().getPublisherBridge().isNetworkAvailable())
     {
       TkdQQLog.d("QQPublisherFragment", "onDeliver network error!");
-      TkdQQToast.show(getActivity().getString(2131719368), 0, 1);
+      TkdQQToast.show(getActivity().getString(2131719931), 0, 1);
       return false;
     }
     return true;
@@ -111,7 +125,34 @@ public class QQPublishCommentFragment
   
   private String getCommentString()
   {
-    return QQPublishCommentManager.getInstance().getPublisherBridge().getCommentString(this.vInputEdit.getText());
+    if (QQPublishCommentManager.getInstance().getPublisherBridge() != null) {
+      return QQPublishCommentManager.getInstance().getPublisherBridge().getCommentString(this.vInputEdit.getText());
+    }
+    return "";
+  }
+  
+  private String getDraftId()
+  {
+    try
+    {
+      Object localObject = new JSONObject();
+      if (!TextUtils.isEmpty(this.qqArgument.innerUniqueID)) {
+        ((JSONObject)localObject).put("innerUniqueID", this.qqArgument.innerUniqueID);
+      }
+      if (!TextUtils.isEmpty(this.qqArgument.commentId)) {
+        ((JSONObject)localObject).put("commentId", this.qqArgument.commentId);
+      }
+      if (!TextUtils.isEmpty(this.qqArgument.firstCommentId)) {
+        ((JSONObject)localObject).put("firstCommentId", this.qqArgument.firstCommentId);
+      }
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return "";
   }
   
   private JSONObject getFolderStatus(boolean paramBoolean)
@@ -122,10 +163,10 @@ public class QQPublishCommentFragment
       localJSONObject.put("folder_status", TkdQQReport.getFolderStatus());
       if (paramBoolean) {
         if (!this.biuUi.isSelected) {
-          break label78;
+          break label79;
         }
       }
-      label78:
+      label79:
       for (String str = "0";; str = "1")
       {
         localJSONObject.put("biu_comment", str);
@@ -155,20 +196,46 @@ public class QQPublishCommentFragment
     return "";
   }
   
-  private void initDefaultCommentAtFromArguments()
+  private void initDefaultComment(String paramString)
   {
-    String str = this.qqArgument.defaultTxt;
-    if (!TextUtils.isEmpty(str))
+    if (!TextUtils.isEmpty(paramString))
     {
-      str = TkdQQView.getEmotionText(str);
-      this.vInputEdit.setText(str);
-      this.vInputEdit.setSelection(str.length());
+      paramString = TkdQQView.getEmotionText(paramString);
+      TkdQQLog.d("QQPublisherFragment", "initData | default_comment : " + paramString);
+      this.vInputEdit.setText(paramString);
+      this.vInputEdit.setSelection(paramString.length());
       updateDeliverEnable();
     }
     while (this.vCharCountView == null) {
       return;
     }
     this.vCharCountView.setText(String.valueOf(this.mMaxCharCount));
+  }
+  
+  private void initDefaultCommentAtFromArguments()
+  {
+    initDefaultComment(this.qqArgument.defaultTxt);
+  }
+  
+  private void initDefaultCommentFromDraft()
+  {
+    String str2 = this.qqArgument.recreateDraft;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
+    {
+      str1 = getDraftId();
+      str1 = (String)draftMap.get(str1);
+    }
+    initDefaultComment(str1);
+  }
+  
+  private void initDefaultInput()
+  {
+    if ((isCommentArticle()) && (!TextUtils.isEmpty(this.qqArgument.defaultInput)))
+    {
+      TkdQQLog.d("QQPublisherFragment", "initData | comment_default_input : " + this.qqArgument.defaultInput);
+      this.vInputEdit.setHint(this.qqArgument.defaultInput);
+    }
   }
   
   private void initPlaceHolderFromArguments()
@@ -180,17 +247,17 @@ public class QQPublishCommentFragment
       this.vInputEdit.setHint(this.placeHolder);
       return;
     }
-    this.vInputEdit.setHint(this.mActivity.getString(2131719363));
+    this.vInputEdit.setHint(this.mActivity.getString(2131719926));
   }
   
   private void initView()
   {
     Dialog localDialog = getDialog();
-    this.vPanelHolder = ((PanelFrameLayout)localDialog.findViewById(2131367705));
-    this.vCharCountView = ((TextView)localDialog.findViewById(2131364471));
-    this.vDeliverButton = ((Button)localDialog.findViewById(2131365507));
+    this.vPanelHolder = ((PanelFrameLayout)localDialog.findViewById(2131367912));
+    this.vCharCountView = ((TextView)localDialog.findViewById(2131364581));
+    this.vDeliverButton = ((Button)localDialog.findViewById(2131365668));
     this.vDeliverButton.setOnClickListener(this);
-    this.vInputEdit = ((EditText)localDialog.findViewById(2131368909));
+    this.vInputEdit = ((EditText)localDialog.findViewById(2131369141));
     this.vInputEdit.requestFocus();
     try
     {
@@ -198,8 +265,10 @@ public class QQPublishCommentFragment
       label87:
       this.vInputEdit.addTextChangedListener(new QQPublishCommentFragment.MyTextWatcher(this, null));
       this.vInputEdit.post(new QQPublishCommentFragment.1(this));
-      init(localDialog.findViewById(2131376947), this.vPanelHolder, this.vInputEdit);
+      init(localDialog.findViewById(2131377356), this.vPanelHolder, this.vInputEdit);
       TkdQQView.bindInput(this.vInputEdit);
+      this.vTopic = ((ImageView)localDialog.findViewById(2131379696));
+      TkdQQView.bindTopic(this.vTopic);
       this.emotionUi = new QQPublishCommentFragment.EmotionUi(this, localDialog);
       this.gifUi = new QQPublishCommentFragment.GifUi(this, localDialog);
       this.gifUi.initData();
@@ -211,7 +280,7 @@ public class QQPublishCommentFragment
       this.gifUi.setOnGifChangeListener(this.biuUi);
       addViewToPanel(this.emotionUi.getEmotionPanel(), true);
       if (TkdQQView.isNightMode()) {
-        localDialog.findViewById(2131371990).setVisibility(0);
+        localDialog.findViewById(2131372297).setVisibility(0);
       }
       if (this.biuAndCommentMixUi.initBiuAndCommentMix())
       {
@@ -225,6 +294,11 @@ public class QQPublishCommentFragment
     {
       break label87;
     }
+  }
+  
+  private boolean isCommentArticle()
+  {
+    return TextUtils.isEmpty(this.qqArgument.commentId);
   }
   
   private void onDeliver()
@@ -266,6 +340,12 @@ public class QQPublishCommentFragment
     {
       localJSONException.printStackTrace();
     }
+  }
+  
+  private void removeCommentDraft()
+  {
+    String str = getDraftId();
+    draftMap.remove(str);
   }
   
   private void reportCommentCancelEvent()
@@ -353,8 +433,8 @@ public class QQPublishCommentFragment
   
   private void reportOpenCommentComponent()
   {
-    int j = 1;
-    if ((!TextUtils.isEmpty(this.placeHolder)) && (this.placeHolder.contains(getString(2131719362)))) {}
+    int k = 1;
+    if ((!TextUtils.isEmpty(this.placeHolder)) && (this.placeHolder.contains(getString(2131719925)))) {}
     for (int i = 2;; i = 1)
     {
       Object localObject1 = "";
@@ -374,17 +454,26 @@ public class QQPublishCommentFragment
           if (!this.qqArgument.linkEnable) {
             continue;
           }
+          j = 1;
           ((JSONObject)localObject2).put("link_entry", j);
+          if (this.vTopic.getVisibility() != 0) {
+            continue;
+          }
+          j = k;
+          ((JSONObject)localObject2).put("subject", j);
           localObject2 = ((JSONObject)localObject2).toString();
           localObject1 = localObject2;
         }
         catch (JSONException localJSONException)
         {
+          int j;
           localJSONException.printStackTrace();
           continue;
         }
         TkdQQReport.publicAccountReportClickEvent(getToUin(), "0X800844A", "0X800844A", String.valueOf(i), String.valueOf(this.qqArgument.mSourceType), "", (String)localObject1);
         return;
+        j = 0;
+        continue;
         j = 0;
       }
     }
@@ -451,11 +540,19 @@ public class QQPublishCommentFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
+    if (paramBundle != null)
+    {
+      this.isRecreate = true;
+      getActivity().finish();
+      return;
+    }
     this.qqArgument = QQPublishCommentManager.getInstance().getPublisherBridge().getArgument();
     initView();
     this.mMaxCharCount = this.qqArgument.maxCharCount;
     initDefaultCommentAtFromArguments();
     initPlaceHolderFromArguments();
+    initDefaultCommentFromDraft();
+    initDefaultInput();
     reportOpenCommentComponent();
   }
   
@@ -475,7 +572,7 @@ public class QQPublishCommentFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562957, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131563106, paramViewGroup, false);
     FragmentCollector.onFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -483,23 +580,39 @@ public class QQPublishCommentFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.linkUi.onDestroy();
-    if (!this.dismissOnDeliver) {
+    if (this.isRecreate) {}
+    do
+    {
+      return;
+      this.linkUi.onDestroy();
+    } while (QQPublishCommentManager.getInstance().isBridgeNotAvailable());
+    QQLifecycleBridge localQQLifecycleBridge;
+    if (!this.dismissOnDeliver)
+    {
       reportCommentCancelEvent();
+      addCommentDraft();
+      localQQLifecycleBridge = QQPublishCommentManager.getInstance().getLifecycleBridge();
+      if (this.dismissOnDeliver) {
+        break label80;
+      }
     }
-    QQLifecycleBridge localQQLifecycleBridge = QQPublishCommentManager.getInstance().getLifecycleBridge();
-    if (!this.dismissOnDeliver) {}
+    label80:
     for (boolean bool = true;; bool = false)
     {
       localQQLifecycleBridge.onDestroy(bool);
       QQPublishCommentManager.getInstance().reset();
       return;
+      removeCommentDraft();
+      break;
     }
   }
   
   public void onPause()
   {
     super.onPause();
+    if (QQPublishCommentManager.getInstance().isBridgeNotAvailable()) {
+      return;
+    }
     this.lastState = getState();
     QQPublishCommentManager.getInstance().getLifecycleBridge().onPause();
   }
@@ -507,15 +620,20 @@ public class QQPublishCommentFragment
   public void onResume()
   {
     super.onResume();
-    QQPublishCommentManager.getInstance().getLifecycleBridge().onResume();
-    if (this.lastState == 1) {
-      this.vInputEdit.postDelayed(new QQPublishCommentFragment.2(this), 150L);
+    if (QQPublishCommentManager.getInstance().isBridgeNotAvailable()) {
+      getActivity().finish();
     }
+    do
+    {
+      return;
+      QQPublishCommentManager.getInstance().getLifecycleBridge().onResume();
+    } while (this.lastState != 1);
+    this.vInputEdit.postDelayed(new QQPublishCommentFragment.2(this), 150L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment
  * JD-Core Version:    0.7.0.1
  */

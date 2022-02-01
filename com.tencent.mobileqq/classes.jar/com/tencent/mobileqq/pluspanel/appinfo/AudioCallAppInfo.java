@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import aftr;
-import ahpt;
-import ahvi;
 import android.content.res.Resources;
-import anxi;
-import arxx;
-import bdla;
-import bjxa;
 import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.LBSHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.dating.DatingUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qidian.QidianManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import nwu;
 
 public class AudioCallAppInfo
   extends PlusPanelAppInfo
 {
-  public AudioCallAppInfo() {}
+  AudioCallAppInfo() {}
   
   public AudioCallAppInfo(int paramInt)
   {
@@ -33,7 +33,7 @@ public class AudioCallAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839190;
+    return 2130839259;
   }
   
   public int getAppID()
@@ -68,81 +68,81 @@ public class AudioCallAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719436);
+    return BaseApplicationImpl.getContext().getString(2131720000);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    if (localQQAppInterface.getAVNotifyCenter().a(paramBaseChatPie.getActivity(), 1, paramSessionInfo.curType, paramSessionInfo.curFriendUin)) {}
+    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    if (localQQAppInterface.getAVNotifyCenter().a(paramBaseChatPie.a(), 1, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) {}
     long l;
     do
     {
       return;
-      if (paramSessionInfo.curType == 1)
+      if (paramSessionInfo.jdField_a_of_type_Int == 1)
       {
         showSelGAudioChatEntryActionSheet(paramBaseChatPie, paramSessionInfo, 10, false, null);
         return;
       }
-      if (paramSessionInfo.curType != 3000) {
+      if (paramSessionInfo.jdField_a_of_type_Int != 3000) {
         break;
       }
-      paramahvi.a("chat_tool_gaudio", localQQAppInterface.getCurrentAccountUin());
+      paramPlusPanelViewModel.a("chat_tool_gaudio", localQQAppInterface.getCurrentAccountUin());
       showSelGAudioChatEntryActionSheet(paramBaseChatPie, paramSessionInfo, 1, false, null);
-      paramahvi.b(paramBaseChatPie);
-      paramBaseChatPie.getActivity().setCanLock(false);
-      l = Long.parseLong(paramSessionInfo.curFriendUin);
+      paramPlusPanelViewModel.b(paramBaseChatPie);
+      paramBaseChatPie.a().setCanLock(false);
+      l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
     } while (localQQAppInterface.getAVNotifyCenter().b() == l);
-    bdla.b(localQQAppInterface, "CliOper", "", "", "0X8004085", "0X8004085", 0, 0, "", "", "", "");
+    ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004085", "0X8004085", 0, 0, "", "", "", "");
     return;
-    if ((paramSessionInfo.curType == 1001) || (paramSessionInfo.curType == 10002))
+    if ((paramSessionInfo.jdField_a_of_type_Int == 1001) || (paramSessionInfo.jdField_a_of_type_Int == 10002))
     {
-      bdla.b(localQQAppInterface, "CliOper", "", "", "0X8005152", "0X8005152", 0, 0, "", "", "", "");
-      if (!anxi.a(localQQAppInterface, paramSessionInfo.curFriendUin))
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8005152", "0X8005152", 0, 0, "", "", "", "");
+      if (!LBSHandler.a(localQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString))
       {
-        paramBaseChatPie.showNearPeopleOperDialog(BaseApplicationImpl.getContext().getString(2131694233));
-        bdla.b(localQQAppInterface, "CliOper", "", "", "0X8005154", "0X8005154", 0, 0, "", "", "", "");
-        if (paramSessionInfo.curType == 1001) {}
-        for (paramahvi = "0";; paramahvi = "1")
+        paramBaseChatPie.g(BaseApplicationImpl.getContext().getString(2131694437));
+        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8005154", "0X8005154", 0, 0, "", "", "", "");
+        if (paramSessionInfo.jdField_a_of_type_Int == 1001) {}
+        for (paramPlusPanelViewModel = "0";; paramPlusPanelViewModel = "1")
         {
-          bdla.b(localQQAppInterface, "dc00899", "grp_lbs", "", "c2c_tmp", "tip_annoy", 0, 0, paramahvi, "0", "", "");
+          ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "c2c_tmp", "tip_annoy", 0, 0, paramPlusPanelViewModel, "0", "", "");
           return;
         }
       }
     }
-    else if ((paramSessionInfo.curType == 1010) && (!arxx.a(localQQAppInterface, paramSessionInfo.curFriendUin)))
+    else if ((paramSessionInfo.jdField_a_of_type_Int == 1010) && (!DatingUtil.a(localQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString)))
     {
-      paramBaseChatPie.showNearPeopleOperDialog(BaseApplicationImpl.getContext().getString(2131694233));
-      bdla.b(localQQAppInterface, "CliOper", "", "", "0X80049C8", "0X80049C8", 0, 0, "", "", "", "");
+      paramBaseChatPie.g(BaseApplicationImpl.getContext().getString(2131694437));
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X80049C8", "0X80049C8", 0, 0, "", "", "", "");
       return;
     }
-    paramahvi.a("chat_tool_audio", localQQAppInterface.getCurrentAccountUin());
-    paramBaseChatPie.hidePanel();
-    paramahvi.b(paramBaseChatPie);
-    if (paramSessionInfo.curType == 1024)
+    paramPlusPanelViewModel.a("chat_tool_audio", localQQAppInterface.getCurrentAccountUin());
+    paramBaseChatPie.an();
+    paramPlusPanelViewModel.b(paramBaseChatPie);
+    if (paramSessionInfo.jdField_a_of_type_Int == 1024)
     {
-      if (((bjxa)localQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).c(paramSessionInfo.curFriendUin))
+      if (((QidianManager)localQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString))
       {
-        aftr.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo, true, null, null);
+        PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo, true, null, null);
         return;
       }
-      if (nwu.a(localQQAppInterface, paramSessionInfo.curFriendUin, paramSessionInfo.curType))
+      if (CrmUtils.a(localQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int))
       {
-        nwu.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo, "IvrAIOBottomButtonEngineFalse");
-        bdla.b(localQQAppInterface, "CliOper", "", "", "0X8004651", "0X8004651", 0, 0, "", "", "", "");
+        CrmUtils.a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo, "IvrAIOBottomButtonEngineFalse");
+        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004651", "0X8004651", 0, 0, "", "", "", "");
       }
     }
     for (;;)
     {
-      paramBaseChatPie.getActivity().setCanLock(false);
-      ahpt.a(localQQAppInterface, "0X800407B", paramSessionInfo.curType);
+      paramBaseChatPie.a().setCanLock(false);
+      AIOPanelUtiles.a(localQQAppInterface, "0X800407B", paramSessionInfo.jdField_a_of_type_Int);
       return;
-      QQToast.a(BaseApplicationImpl.getContext(), 2131695451, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299080));
+      QQToast.a(BaseApplicationImpl.getContext(), 2131695692, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299166));
       if (QLog.isColorLevel())
       {
         QLog.d("AIOAudioPanel", 2, "Don't support ivr");
         continue;
-        aftr.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo, true, null, null);
+        PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo, true, null, null);
       }
     }
   }

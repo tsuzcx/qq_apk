@@ -8,11 +8,11 @@ public final class DCacheUserInfo
   extends JceStruct
 {
   static byte[] cache_strBlackList;
-  public byte cPushNbTimes;
-  public int iAtoRTimes;
-  public int iRtoATimes;
-  public int lTime;
-  public byte[] strBlackList;
+  public byte cPushNbTimes = 0;
+  public int iAtoRTimes = 0;
+  public int iRtoATimes = 0;
+  public int lTime = 0;
+  public byte[] strBlackList = null;
   
   public DCacheUserInfo() {}
   

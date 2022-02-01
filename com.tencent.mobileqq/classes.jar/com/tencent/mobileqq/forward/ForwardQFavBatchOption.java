@@ -1,40 +1,39 @@
 package com.tencent.mobileqq.forward;
 
-import admh;
-import agfe;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import apyl;
-import athn;
-import aupt;
-import bcpt;
-import bcsa;
-import bcwz;
-import bcxr;
-import bdof;
-import bkxr;
-import bmaf;
-import bman;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.forward.ForwardOrderManager;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCenterCheckEvent;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.service.MobileQQService;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoReq;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.AutoSaveUtils;
+import cooperation.qqfav.QfavHelper;
+import cooperation.qqfav.QfavReport;
 import java.util.ArrayList;
 import java.util.Set;
 import mqq.app.MobileQQ;
@@ -43,14 +42,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ForwardQFavBatchOption
-  extends aupt
+  extends ForwardBaseOption
 {
-  boolean i = false;
   boolean j = false;
+  boolean k;
   
   public ForwardQFavBatchOption(Intent paramIntent)
   {
     super(paramIntent);
+    this.jdField_k_of_type_Boolean = false;
   }
   
   private String a(Bundle paramBundle)
@@ -62,17 +62,17 @@ public class ForwardQFavBatchOption
     Object localObject2;
     do
     {
-      int k;
+      int i;
       do
       {
         return localObject1;
         localObject2 = paramBundle.getString("forward_extra");
-        k = paramBundle.getInt("qfavType");
-        if ((k == 5) || (k == 8)) {
+        i = paramBundle.getInt("qfavType");
+        if ((i == 5) || (i == 8)) {
           break;
         }
         localObject1 = localObject2;
-      } while (k != 2);
+      } while (i != 2);
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = paramBundle.getString("forward_extra");
@@ -88,23 +88,23 @@ public class ForwardQFavBatchOption
   
   private void a(Intent paramIntent, Bundle paramBundle, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, int paramInt3)
   {
-    paramString1 = bcwz.a(3, 2);
+    paramString1 = ShortVideoBusiManager.a(3, 2);
     paramIntent.putExtras(paramBundle);
-    paramIntent = bcwz.a(2, paramIntent, paramString1);
+    paramIntent = ShortVideoBusiManager.a(2, paramIntent, paramString1);
     paramIntent.c = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
     paramIntent.d = this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin");
     paramIntent.b = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    paramIntent.a = 2;
+    paramIntent.jdField_a_of_type_Int = 2;
     paramIntent.p = paramInt2;
     paramString1.a(paramIntent);
-    bcwz.a(paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bman.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 5, 0, paramInt3);
+    ShortVideoBusiManager.a(paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 5, 0, paramInt3);
   }
   
   private void a(Bundle paramBundle, int paramInt)
   {
     String str = AppConstants.DATALINE_PC_UIN;
-    paramBundle = bmaf.a(paramBundle, str, 7);
+    paramBundle = QfavHelper.a(paramBundle, str, 7);
     if (paramBundle == null) {
       return;
     }
@@ -113,28 +113,28 @@ public class ForwardQFavBatchOption
   
   private void a(Bundle paramBundle, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, int paramInt4)
   {
-    paramBundle.putString("struct_share_key_source_icon", BaseApplicationImpl.getContext().getString(2131692150));
-    paramBundle.putString("app_name", BaseApplicationImpl.getContext().getString(2131692148));
+    paramBundle.putString("struct_share_key_source_icon", BaseApplicationImpl.getContext().getString(2131692282));
+    paramBundle.putString("app_name", BaseApplicationImpl.getContext().getString(2131692280));
     paramBundle.putString("struct_share_key_source_action", "plugin");
     paramBundle.putString("struct_share_key_source_action_data", "qqfav://operation/2");
     paramBundle.putInt("req_type", 133);
     boolean bool1 = false;
-    int k = 0;
+    int i = 0;
     boolean bool2 = paramBundle.getBoolean("bFriendCard", false);
     Object localObject1 = paramBundle.getByteArray("sBizDataList");
     Object localObject2;
     if (paramInt1 == 6)
     {
-      k = paramBundle.getInt("nLinkType");
-      if ((k == 4) || (k == 5))
+      i = paramBundle.getInt("nLinkType");
+      if ((i == 4) || (i == 5))
       {
         localObject2 = new ArkAppMessage();
         ((ArkAppMessage)localObject2).fromAppXml(new String((byte[])localObject1));
-        localObject2 = bcsa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2, paramInt2, (ArkAppMessage)localObject2);
-        agfe.a().a(((MessageForArkApp)localObject2).uniseq, ((MessageForArkApp)localObject2).uniseq, paramInt3);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addAndSendMessage((MessageRecord)localObject2, null);
+        localObject2 = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2, paramInt2, (ArkAppMessage)localObject2);
+        ForwardOrderManager.a().a(((MessageForArkApp)localObject2).uniseq, ((MessageForArkApp)localObject2).uniseq, paramInt3);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject2, null);
         bool1 = true;
-        k = 0;
+        i = 0;
       }
     }
     for (;;)
@@ -143,21 +143,21 @@ public class ForwardQFavBatchOption
       if (!bool1)
       {
         bool2 = bool1;
-        if (k != 0)
+        if (i != 0)
         {
           bool2 = bool1;
           if (localObject1 != null)
           {
-            localObject1 = bdof.a((byte[])localObject1, 0);
+            localObject1 = StructMsgFactory.a((byte[])localObject1, 0);
             bool2 = bool1;
             if (localObject1 != null)
             {
               localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              k = bcpt.a;
-              bcpt.a = k + 1;
-              localObject2 = bcsa.a((QQAppInterface)localObject2, paramString3, paramString1, paramString2, paramInt2, k, (AbsStructMsg)localObject1);
-              agfe.a().a(((MessageForStructing)localObject2).uniseq, ((AbsStructMsg)localObject1).uniseq, paramInt3);
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addAndSendMessage((MessageRecord)localObject2, null);
+              i = MobileQQService.seq;
+              MobileQQService.seq = i + 1;
+              localObject2 = MessageRecordFactory.a((QQAppInterface)localObject2, paramString3, paramString1, paramString2, paramInt2, i, (AbsStructMsg)localObject1);
+              ForwardOrderManager.a().a(((MessageForStructing)localObject2).uniseq, ((AbsStructMsg)localObject1).uniseq, paramInt3);
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject2, null);
               bool2 = true;
             }
           }
@@ -165,61 +165,61 @@ public class ForwardQFavBatchOption
       }
       if (!bool2)
       {
-        paramBundle = bdof.a(paramBundle);
+        paramBundle = StructMsgFactory.a(paramBundle);
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        k = bcpt.a;
-        bcpt.a = k + 1;
-        paramString1 = bcsa.a((QQAppInterface)localObject1, paramString3, paramString1, paramString2, paramInt2, k, paramBundle);
-        agfe.a().a(paramString1.uniseq, paramBundle.uniseq, paramInt3);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addAndSendMessage(paramString1, null);
+        i = MobileQQService.seq;
+        MobileQQService.seq = i + 1;
+        paramString1 = MessageRecordFactory.a((QQAppInterface)localObject1, paramString3, paramString1, paramString2, paramInt2, i, paramBundle);
+        ForwardOrderManager.a().a(paramString1.uniseq, paramBundle.uniseq, paramInt3);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString1, null);
       }
       if (paramInt1 == 8)
       {
-        bman.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 8, 0, paramInt4);
+        QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 8, 0, paramInt4);
         return;
-        if ((k == 6) || (k == 7))
+        if ((i == 6) || (i == 7))
         {
-          k = 1;
+          i = 1;
           continue;
         }
-        if (k != 8) {
+        if (i != 8) {
           break label476;
         }
         bool1 = a((byte[])localObject1, paramString1, paramString1, paramString2, paramInt2, paramInt3);
-        k = 0;
+        i = 0;
         continue;
         if ((bool2) && (localObject1 != null))
         {
-          k = 1;
+          i = 1;
           bool1 = false;
         }
       }
       else
       {
-        bman.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 2, 0, paramInt4);
+        QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 2, 0, paramInt4);
         return;
       }
       bool1 = false;
       continue;
       label476:
-      k = 0;
+      i = 0;
     }
   }
   
   private void a(Bundle paramBundle, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, int paramInt3)
   {
     paramString4 = new SessionInfo();
-    paramString4.curFriendUin = paramString2;
-    paramString4.curFriendNick = paramString1;
-    paramString4.curType = paramInt1;
-    paramString4.troopUin = paramString3;
+    paramString4.jdField_a_of_type_JavaLangString = paramString2;
+    paramString4.d = paramString1;
+    paramString4.jdField_a_of_type_Int = paramInt1;
+    paramString4.b = paramString3;
     paramString1 = paramBundle.getString("lat");
     paramString2 = paramBundle.getString("lon");
     paramString3 = paramBundle.getString("title");
     paramBundle = paramBundle.getString("address");
     this.jdField_a_of_type_AndroidOsBundle.putInt("isArk", 1);
-    admh.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString4, paramString1, paramString2, paramBundle, paramString3, paramBundle, null, "", "", "", this.jdField_a_of_type_AndroidOsBundle);
-    bman.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 7, 0, paramInt3);
+    ChatActivityFacade.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString4, paramString1, paramString2, paramBundle, paramString3, paramBundle, null, "", "", "", this.jdField_a_of_type_AndroidOsBundle);
+    QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 7, 0, paramInt3);
   }
   
   private boolean a(byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
@@ -246,16 +246,16 @@ public class ForwardQFavBatchOption
         String str4 = paramArrayOfByte.optString("appConfig");
         String str5 = paramArrayOfByte.optString("metaData");
         paramArrayOfByte = new ArkAppMessage(paramArrayOfByte.optString("promptText"), (String)localObject, str1, str3, str2, str5, str4, "");
-        localObject = (ArkAppMessage)apyl.a(2, (String)localObject, this.jdField_a_of_type_AndroidOsBundle, paramArrayOfByte);
+        localObject = (ArkAppMessage)ArkAppCenterCheckEvent.a(2, (String)localObject, this.jdField_a_of_type_AndroidOsBundle, paramArrayOfByte);
         if (localObject == null)
         {
           localObject = new SessionInfo();
-          ((SessionInfo)localObject).curFriendUin = paramString2;
-          ((SessionInfo)localObject).curFriendNick = paramString1;
-          ((SessionInfo)localObject).curType = paramInt1;
-          ((SessionInfo)localObject).troopUin = paramString3;
+          ((SessionInfo)localObject).jdField_a_of_type_JavaLangString = paramString2;
+          ((SessionInfo)localObject).d = paramString1;
+          ((SessionInfo)localObject).jdField_a_of_type_Int = paramInt1;
+          ((SessionInfo)localObject).b = paramString3;
           paramArrayOfByte.forwardID = paramInt2;
-          admh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (SessionInfo)localObject, paramArrayOfByte);
+          ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (SessionInfo)localObject, paramArrayOfByte);
           return true;
         }
       }
@@ -270,12 +270,12 @@ public class ForwardQFavBatchOption
   private void b(Bundle paramBundle, int paramInt)
   {
     String str = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    int k = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    paramBundle = bmaf.a(paramBundle, this.jdField_a_of_type_AndroidOsBundle.getString("uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"));
+    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
+    paramBundle = QfavHelper.a(paramBundle, this.jdField_a_of_type_AndroidOsBundle.getString("uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"));
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramBundle, str, k, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramBundle, str, i, paramInt);
   }
   
   private void b(Bundle paramBundle, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, int paramInt4)
@@ -285,11 +285,11 @@ public class ForwardQFavBatchOption
     if (str == null) {
       paramBundle = "";
     }
-    paramBundle = bcsa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString3, paramString1, paramString2, paramInt2, (byte)1, (byte)0, (short)0, paramBundle);
+    paramBundle = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString3, paramString1, paramString2, paramInt2, (byte)1, (byte)0, (short)0, paramBundle);
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addAndSendMessage(paramBundle, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramBundle, null);
     }
-    bman.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 1, 0, paramInt4);
+    QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 1, 0, paramInt4);
   }
   
   private void c(Bundle paramBundle, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, int paramInt4)
@@ -300,18 +300,18 @@ public class ForwardQFavBatchOption
       paramBundle = "";
     }
     ThreadManager.post(new ForwardQFavBatchOption.3(this, paramBundle, paramString1, paramInt2, paramString2, paramInt3), 8, null, false);
-    bman.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 3, 0, paramInt4);
+    QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_Forward", 3, 0, paramInt4);
   }
   
   public String a()
   {
     ArrayList localArrayList;
-    if (!this.i)
+    if (!this.j)
     {
       localArrayList = this.jdField_a_of_type_AndroidContentIntent.getParcelableArrayListExtra("bundleList");
       if (localArrayList == null) {}
     }
-    for (this.jdField_a_of_type_JavaLangString = (localArrayList.size() + this.jdField_a_of_type_AndroidAppActivity.getString(2131697841));; this.jdField_a_of_type_JavaLangString = null)
+    for (this.jdField_a_of_type_JavaLangString = (localArrayList.size() + this.jdField_a_of_type_AndroidAppActivity.getString(2131698098));; this.jdField_a_of_type_JavaLangString = null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ForwardOption.ForwardQFavBatchOption", 2, "DialogContent:mForwardText=" + this.jdField_a_of_type_JavaLangString);
@@ -320,55 +320,11 @@ public class ForwardQFavBatchOption
     }
   }
   
-  public void a()
-  {
-    super.a();
-    Object localObject = this.jdField_a_of_type_AndroidContentIntent.getParcelableArrayListExtra("bundleList");
-    if (localObject != null)
-    {
-      m = 0;
-      int k = 1;
-      while (m < ((ArrayList)localObject).size())
-      {
-        if (((Bundle)((ArrayList)localObject).get(m)).getInt("qfavType") != 3) {
-          k = 0;
-        }
-        m += 1;
-      }
-      m = k;
-      if (((ArrayList)localObject).size() == 1)
-      {
-        localObject = (Bundle)((ArrayList)localObject).get(0);
-        int n = ((Bundle)localObject).getInt("qfavType");
-        if ((n != 5) && (n != 8))
-        {
-          m = k;
-          if (n != 2) {}
-        }
-        else
-        {
-          m = k;
-          if (!((Bundle)localObject).getBoolean("k_dataline", false)) {}
-        }
-      }
-    }
-    for (int m = 1;; m = 1)
-    {
-      if (m != 0)
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(f);
-        this.jdField_a_of_type_JavaUtilSet.add(k);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("isJumpAIO", false);
-      }
-      return;
-    }
-  }
-  
   public boolean a()
   {
     super.a();
-    this.i = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("bSinglePicSelected", false);
-    if ((this.i) && (TextUtils.isEmpty(this.b))) {
+    this.j = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("bSinglePicSelected", false);
+    if ((this.j) && (TextUtils.isEmpty(this.b))) {
       this.b = this.jdField_a_of_type_AndroidOsBundle.getString("forward_filepath");
     }
     if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("qqfav_extra_skip_confirm", false)) {
@@ -388,23 +344,57 @@ public class ForwardQFavBatchOption
     return true;
   }
   
-  public void b()
+  protected void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageWithEmo(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
-    TextView localTextView = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getMessageTextView();
-    ViewGroup.LayoutParams localLayoutParams = localTextView.getLayoutParams();
-    localLayoutParams.width = -1;
-    localTextView.setLayoutParams(localLayoutParams);
-    localTextView.setGravity(17);
-  }
-  
-  public void b(Intent paramIntent)
-  {
-    int m = 0;
-    if (this.j) {
+    super.b();
+    Object localObject = this.jdField_a_of_type_AndroidContentIntent.getParcelableArrayListExtra("bundleList");
+    if (localObject != null)
+    {
+      m = 0;
+      int i = 1;
+      while (m < ((ArrayList)localObject).size())
+      {
+        if (((Bundle)((ArrayList)localObject).get(m)).getInt("qfavType") != 3) {
+          i = 0;
+        }
+        m += 1;
+      }
+      m = i;
+      if (((ArrayList)localObject).size() == 1)
+      {
+        localObject = (Bundle)((ArrayList)localObject).get(0);
+        int n = ((Bundle)localObject).getInt("qfavType");
+        if ((n != 5) && (n != 8))
+        {
+          m = i;
+          if (n != 2) {}
+        }
+        else
+        {
+          m = i;
+          if (!((Bundle)localObject).getBoolean("k_dataline", false)) {}
+        }
+      }
+    }
+    for (int m = 1;; m = 1)
+    {
+      if (m != 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(f);
+        this.jdField_a_of_type_JavaUtilSet.add(jdField_k_of_type_JavaLangInteger);
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("isJumpAIO", false);
+      }
       return;
     }
-    this.j = true;
+  }
+  
+  protected void b(Intent paramIntent)
+  {
+    int m = 0;
+    if (this.jdField_k_of_type_Boolean) {
+      return;
+    }
+    this.jdField_k_of_type_Boolean = true;
     ArrayList localArrayList = this.jdField_a_of_type_AndroidContentIntent.getParcelableArrayListExtra("bundleList");
     this.jdField_a_of_type_AndroidAppActivity.getIntent().putExtra("isFromFavorites", true);
     this.jdField_a_of_type_AndroidAppActivity.getIntent().putExtra("hasJumpAIO", false);
@@ -412,12 +402,12 @@ public class ForwardQFavBatchOption
     this.jdField_a_of_type_AndroidAppActivity.finish();
     int n = this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_MSG_FORWARD_ID");
     Object localObject;
-    int k;
+    int i;
     if ((localArrayList != null) && (localArrayList.size() == 1))
     {
       localObject = (Bundle)localArrayList.get(0);
-      k = ((Bundle)localObject).getInt("qfavType");
-      if (k == 5)
+      i = ((Bundle)localObject).getInt("qfavType");
+      if (i == 5)
       {
         paramIntent.putExtra("dataline_forward_type", 100);
         a((Bundle)localObject, n);
@@ -431,34 +421,34 @@ public class ForwardQFavBatchOption
       }
       boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("needStartChatActivity", false);
       paramIntent.putExtra("needStartChatActivity", bool);
-      k = m;
+      i = m;
       if (bool)
       {
-        AIOUtils.setOpenAIOIntent(paramIntent, null).putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        k = m;
+        AIOUtils.a(paramIntent, null).putExtras(this.jdField_a_of_type_AndroidOsBundle);
+        i = m;
       }
       label200:
-      if (k < localArrayList.size())
+      if (i < localArrayList.size())
       {
-        localObject = (Bundle)localArrayList.get(k);
+        localObject = (Bundle)localArrayList.get(i);
         if (localObject != null)
         {
           paramIntent = ThreadManager.getUIHandler();
           localObject = new ForwardQFavBatchOption.2(this, (Bundle)localObject, n);
-          if (k != 0) {
+          if (i != 0) {
             break label384;
           }
         }
       }
     }
     label384:
-    for (long l = 200L;; l = k * 10)
+    for (long l = 200L;; l = i * 10)
     {
       paramIntent.postDelayed((Runnable)localObject, l);
-      k += 1;
+      i += 1;
       break label200;
       break;
-      if ((k != 8) && (k != 2)) {
+      if ((i != 8) && (i != 2)) {
         break label141;
       }
       localObject = a((Bundle)localObject);
@@ -471,7 +461,7 @@ public class ForwardQFavBatchOption
       paramIntent.putExtra("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
       QLog.d("ForwardOption.ForwardQFavBatchOption", 1, "sendDatalineSingle filePath: " + (String)localObject);
       paramIntent.putExtra("dataline_forward_path", (String)localObject);
-      bkxr.a(true, (String)localObject);
+      AutoSaveUtils.a(true, (String)localObject);
       break label141;
       label382:
       break;
@@ -482,14 +472,24 @@ public class ForwardQFavBatchOption
   {
     String str = this.jdField_a_of_type_AndroidOsBundle.getString("uinname");
     if (this.jdField_a_of_type_AndroidOsBundle.getInt("key_forward_ability_type") == f.intValue()) {
-      str = anvx.a(2131694211);
+      str = HardCodeUtil.a(2131694415);
     }
     return str;
   }
   
-  public void t()
+  protected void c()
   {
-    if (this.i) {
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageWithEmo(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
+    TextView localTextView = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getMessageTextView();
+    ViewGroup.LayoutParams localLayoutParams = localTextView.getLayoutParams();
+    localLayoutParams.width = -1;
+    localTextView.setLayoutParams(localLayoutParams);
+    localTextView.setGravity(17);
+  }
+  
+  protected void t()
+  {
+    if (this.j) {
       u();
     }
   }
@@ -506,7 +506,7 @@ public class ForwardQFavBatchOption
     Object localObject1 = localObject2;
     if (bool)
     {
-      localObject1 = AIOUtils.setOpenAIOIntent((Intent)localObject2, null);
+      localObject1 = AIOUtils.a((Intent)localObject2, null);
       ((Intent)localObject1).putExtras(this.jdField_a_of_type_AndroidOsBundle);
     }
     this.jdField_a_of_type_AndroidAppActivity.getIntent().putExtra("isFromFavorites", true);
@@ -514,7 +514,7 @@ public class ForwardQFavBatchOption
     this.jdField_a_of_type_AndroidAppActivity.finish();
     localObject1 = new Intent((Intent)localObject1);
     localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    int k;
+    int i;
     ArrayList localArrayList;
     int m;
     label198:
@@ -522,7 +522,7 @@ public class ForwardQFavBatchOption
     MqqHandler localMqqHandler;
     if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("forwardFromAIO", false))
     {
-      k = 2;
+      i = 2;
       localArrayList = this.jdField_a_of_type_AndroidContentIntent.getParcelableArrayListExtra("bundleList");
       int i1 = this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_MSG_FORWARD_ID");
       m = 0;
@@ -533,7 +533,7 @@ public class ForwardQFavBatchOption
       if (localObject3 != null)
       {
         localMqqHandler = ThreadManager.getUIHandler();
-        localObject3 = new ForwardQFavBatchOption.1(this, (Bundle)localObject3, str2, str1, n, i1, (String)localObject2, k, str3, (Intent)localObject1);
+        localObject3 = new ForwardQFavBatchOption.1(this, (Bundle)localObject3, str2, str1, n, i1, (String)localObject2, i, str3, (Intent)localObject1);
         if (m != 0) {
           break label285;
         }
@@ -545,16 +545,16 @@ public class ForwardQFavBatchOption
       localMqqHandler.postDelayed((Runnable)localObject3, l);
       m += 1;
       break label198;
-      k = 1;
+      i = 1;
       break;
     }
     label295:
-    bman.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_BatchForwardSendBtnClick", 0, 0, localArrayList.size());
+    QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_BatchForwardSendBtnClick", 0, 0, localArrayList.size());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardQFavBatchOption
  * JD-Core Version:    0.7.0.1
  */

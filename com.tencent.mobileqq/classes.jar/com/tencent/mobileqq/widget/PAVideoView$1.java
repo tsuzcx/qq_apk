@@ -10,7 +10,7 @@ class PAVideoView$1
   public void run()
   {
     this.a.setVisibility(0);
-    this.a.setImageResource(2130843292);
+    this.a.setImageResource(2130843457);
     this.a.clearAnimation();
     this.a.startAnimation(this.this$0.a);
     if (this.this$0.j == 4) {
@@ -20,7 +20,7 @@ class PAVideoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAVideoView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,11 @@ import android.database.MatrixCursor;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Pair;
-import azgt;
-import azgw;
-import azgy;
-import azgz;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.openapi.sdk.ApiConstants.Provider;
+import com.tencent.mobileqq.openapi.sdk.MessageItem;
+import com.tencent.mobileqq.openapi.sdk.QQResult.QQRegResult;
+import com.tencent.mobileqq.openapi.sdk.QQResult.QQStringResult;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class OpenApiProvider
   
   private Cursor a(int paramInt)
   {
-    MatrixCursor localMatrixCursor = new MatrixCursor(azgt.a);
+    MatrixCursor localMatrixCursor = new MatrixCursor(ApiConstants.Provider.a);
     localMatrixCursor.addRow(new Object[] { Integer.valueOf(paramInt) });
     return localMatrixCursor;
   }
@@ -129,7 +129,7 @@ public class OpenApiProvider
       if (QLog.isColorLevel())
       {
         paramString1 = new StringBuilder(150);
-        paramString1.append("query face, uin = ").append(StringUtil.getSimpleUinForPrint(paramArrayOfString1));
+        paramString1.append("query face, uin = ").append(StringUtil.e(paramArrayOfString1));
         paramString1.append(", type = ").append(i);
         paramString1.append(", rs = ").append(paramUri.b);
         paramString1.append(", path = ").append(paramUri.jdField_a_of_type_JavaLangString);
@@ -138,7 +138,7 @@ public class OpenApiProvider
       if (paramUri.b != 0) {
         return a(paramUri.b);
       }
-      paramArrayOfString1 = new MatrixCursor(azgt.c);
+      paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.c);
       paramArrayOfString1.addRow(new Object[] { paramUri.jdField_a_of_type_JavaLangString });
       return paramArrayOfString1;
     case 0: 
@@ -191,7 +191,7 @@ public class OpenApiProvider
     if (QLog.isColorLevel())
     {
       paramString1 = new StringBuilder(100);
-      paramString1.append("query msg, uin = ").append(StringUtil.getSimpleUinForPrint(paramArrayOfString1));
+      paramString1.append("query msg, uin = ").append(StringUtil.e(paramArrayOfString1));
       paramString1.append(", type = ").append(i);
       paramString1.append(", count = ").append(j);
       paramString1.append(", rs = ").append(k);
@@ -201,10 +201,10 @@ public class OpenApiProvider
     if (k != 0) {
       return a(k);
     }
-    paramArrayOfString1 = new MatrixCursor(azgt.b);
+    paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.b);
     paramUri = paramUri.iterator();
     while (paramUri.hasNext()) {
-      paramArrayOfString1.addRow(((azgw)paramUri.next()).a());
+      paramArrayOfString1.addRow(((MessageItem)paramUri.next()).a());
     }
     return paramArrayOfString1;
     paramArrayOfString1 = paramUri.getQueryParameter("uin");
@@ -226,7 +226,7 @@ public class OpenApiProvider
     if (QLog.isColorLevel())
     {
       paramString1 = new StringBuilder(150);
-      paramString1.append("query nick, uin = ").append(StringUtil.getSimpleUinForPrint(paramArrayOfString1));
+      paramString1.append("query nick, uin = ").append(StringUtil.e(paramArrayOfString1));
       paramString1.append(", type = ").append(i);
       paramString1.append(", rs = ").append(paramUri.b);
       QLog.d("OpenApi.Provider", 2, paramString1.toString());
@@ -234,7 +234,7 @@ public class OpenApiProvider
     if (paramUri.b != 0) {
       return a(paramUri.b);
     }
-    paramArrayOfString1 = new MatrixCursor(azgt.d);
+    paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.d);
     paramArrayOfString1.addRow(new Object[] { paramUri.jdField_a_of_type_JavaLangString });
     return paramArrayOfString1;
     i = 0;
@@ -285,10 +285,10 @@ public class OpenApiProvider
       if (QLog.isColorLevel()) {
         QLog.d("OpenApi.Provider", 2, "reg, op = " + k + ", filter = " + i + ", rs = " + paramUri.jdField_a_of_type_Int + ", stamp = " + paramUri.jdField_a_of_type_Long + ", uin = " + paramUri.jdField_a_of_type_JavaLangString);
       }
-      paramArrayOfString1 = new MatrixCursor(azgt.e);
+      paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.e);
       paramArrayOfString1.addRow(new Object[] { Integer.valueOf(paramUri.jdField_a_of_type_Int), Long.valueOf(paramUri.jdField_a_of_type_Long), paramUri.jdField_a_of_type_JavaLangString });
       return paramArrayOfString1;
-      paramUri = new azgy(paramString1.unregisterThirdApp(paramString2, str1), 0L, null);
+      paramUri = new QQResult.QQRegResult(paramString1.unregisterThirdApp(paramString2, str1), 0L, null);
     }
     paramArrayOfString1 = paramUri.getQueryParameter("uin");
     try
@@ -315,7 +315,7 @@ public class OpenApiProvider
     if (paramUri.b != 0) {
       return a(paramUri.b);
     }
-    paramArrayOfString1 = new MatrixCursor(azgt.f);
+    paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.f);
     paramArrayOfString1.addRow(new Object[] { paramUri.jdField_a_of_type_JavaLangString });
     return paramArrayOfString1;
     paramArrayOfString1 = paramUri.getQueryParameter("uin");
@@ -338,13 +338,13 @@ public class OpenApiProvider
     if (QLog.isColorLevel())
     {
       paramUri = new StringBuilder();
-      paramUri.append("set readed, uin = ").append(StringUtil.getSimpleUinForPrint(paramArrayOfString1));
+      paramUri.append("set readed, uin = ").append(StringUtil.e(paramArrayOfString1));
       paramUri.append(", uinType = ").append(i);
       paramUri.append(", msgids = ").append(paramArrayOfString2);
       paramUri.append(", rs = ").append(j);
       QLog.d("OpenApi.Provider", 2, paramUri.toString());
     }
-    paramUri = new MatrixCursor(azgt.a);
+    paramUri = new MatrixCursor(ApiConstants.Provider.a);
     paramUri.addRow(new Object[] { Integer.valueOf(j) });
     return paramUri;
     paramArrayOfString1 = paramUri.getQueryParameter("uin");
@@ -355,7 +355,7 @@ public class OpenApiProvider
       if (QLog.isColorLevel()) {
         QLog.d("OpenApi.Provider", 2, "open aio, result = " + i);
       }
-      paramUri = new MatrixCursor(azgt.h);
+      paramUri = new MatrixCursor(ApiConstants.Provider.h);
       paramUri.addRow(new Object[] { Integer.valueOf(i) });
       return paramUri;
     }
@@ -390,7 +390,7 @@ public class OpenApiProvider
         }
       }
       paramUri = paramString1.decodePtt(paramString2, str1, paramArrayOfString1, i, paramArrayOfString2, str2, paramUri);
-      paramArrayOfString1 = new MatrixCursor(azgt.i);
+      paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.i);
       paramArrayOfString1.addRow(new Object[] { paramUri.first, paramUri.second });
       return paramArrayOfString1;
     }
@@ -419,7 +419,7 @@ public class OpenApiProvider
       if (((Integer)paramUri.first).intValue() != 0) {
         return a(((Integer)paramUri.first).intValue());
       }
-      paramArrayOfString1 = new MatrixCursor(azgt.j);
+      paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.j);
       paramArrayOfString1.addRow(new Object[] { paramUri.second });
       return paramArrayOfString1;
     }
@@ -455,7 +455,7 @@ public class OpenApiProvider
         break label2306;
       }
       return a(paramString1[0].b);
-      paramArrayOfString1 = new MatrixCursor(azgt.k);
+      paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.k);
       j = paramString1.length;
       i = 0;
       paramUri = paramArrayOfString1;
@@ -479,13 +479,13 @@ public class OpenApiProvider
     }
     while ((paramUri != null) && (paramUri.size() > 0))
     {
-      paramArrayOfString1 = new MatrixCursor(azgt.l);
+      paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.l);
       paramUri = paramUri.iterator();
       for (;;)
       {
         if (paramUri.hasNext())
         {
-          paramString1 = (azgz)paramUri.next();
+          paramString1 = (QQResult.QQStringResult)paramUri.next();
           paramArrayOfString1.addRow(new Object[] { Integer.valueOf(paramString1.jdField_a_of_type_Int), Integer.valueOf(paramString1.b), paramString1.jdField_a_of_type_JavaLangString });
           continue;
           paramUri = paramString1.handlePayMsgRsp(null);

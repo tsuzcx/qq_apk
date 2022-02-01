@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.mini.share;
 
 import android.os.Bundle;
-import auuv;
-import com.tencent.mobileqq.mini.launch.CmdCallback.Stub;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
+import com.tencent.mobileqq.mini.api.IMiniCallback;
 import com.tencent.mobileqq.mini.share.opensdk.OpenSdkShareModel;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 class MiniProgramOpenSdkUtil$3$1
-  extends CmdCallback.Stub
+  implements IMiniCallback
 {
   MiniProgramOpenSdkUtil$3$1(MiniProgramOpenSdkUtil.3 param3, JSONObject paramJSONObject, OpenSdkShareModel paramOpenSdkShareModel) {}
   
-  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
+  public void onCallbackResult(boolean paramBoolean, Bundle paramBundle)
   {
     QLog.d("MiniProgramOpenSdkUtil", 2, "onCmdResult() called with: succ = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
-    auuv.a("KEY_STAGE_1_UPLOAD_IMAGE", paramBoolean);
+    ForwardStatisticsReporter.a("KEY_STAGE_1_UPLOAD_IMAGE", paramBoolean);
     if ((paramBoolean) && (paramBundle != null))
     {
       paramBundle = paramBundle.getString("imageUrl", "").replaceFirst("https*://", "");

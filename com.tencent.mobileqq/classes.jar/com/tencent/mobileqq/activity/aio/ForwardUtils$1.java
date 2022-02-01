@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import admh;
 import android.app.Activity;
 import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -14,14 +14,14 @@ final class ForwardUtils$1
   
   public void run()
   {
-    admh.a(this.val$app, this.val$activity, this.val$sessionInfo, this.val$forwardFilePath, this.val$forwardImageOrgServerpath, this.val$forwardImageOrgUin, this.val$forwardImageOrgItemId, this.val$forwardImageOrgUinType, this.val$forwardTaskKey, this.val$forwardID);
+    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.d, this.jdField_b_of_type_Int);
     if (QLog.isColorLevel()) {
       QLog.d("ForwardUtils", 2, "[@]call instantUpdate start!");
     }
     Message localMessage = new Message();
     localMessage.what = 57;
-    if (this.val$uihandler != null) {
-      this.val$uihandler.sendMessage(localMessage);
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
     }
     if (QLog.isColorLevel()) {
       QLog.d("ForwardUtils", 2, "[@]call instantUpdate end!");
@@ -30,7 +30,7 @@ final class ForwardUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ public class AEGIFTextColorSelectionView
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(jdField_d_of_type_JavaLangString));
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 2.0F));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
   }
   
   public void a(Boolean paramBoolean)
@@ -70,7 +70,7 @@ public class AEGIFTextColorSelectionView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean) {
@@ -80,14 +80,14 @@ public class AEGIFTextColorSelectionView
     paramCanvas.drawCircle(this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, this.jdField_d_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_Int = View.MeasureSpec.getSize(paramInt1);
     this.jdField_b_of_type_Int = View.MeasureSpec.getSize(paramInt2);
-    this.e = (this.jdField_a_of_type_Int / 2 - DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 1.0F));
-    this.jdField_c_of_type_Int = (this.e - DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 5.0F));
-    this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int - DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 2.0F));
+    this.e = (this.jdField_a_of_type_Int / 2 - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 1.0F));
+    this.jdField_c_of_type_Int = (this.e - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F));
+    this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
   }
   
   public void setColor(String paramString)
@@ -99,7 +99,7 @@ public class AEGIFTextColorSelectionView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.giftext.AEGIFTextColorSelectionView
  * JD-Core Version:    0.7.0.1
  */

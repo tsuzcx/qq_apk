@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.managers;
 
-import awtp;
 import java.util.ArrayList;
 
-public class ShieldMsgManger$2
+class ShieldMsgManger$2
   implements Runnable
 {
-  public ShieldMsgManger$2(awtp paramawtp, ArrayList paramArrayList) {}
+  ShieldMsgManger$2(ShieldMsgManger paramShieldMsgManger, ArrayList paramArrayList) {}
   
   public void run()
   {

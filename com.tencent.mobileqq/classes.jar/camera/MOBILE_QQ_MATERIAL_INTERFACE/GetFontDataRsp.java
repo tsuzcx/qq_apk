@@ -8,8 +8,8 @@ public final class GetFontDataRsp
   extends JceStruct
 {
   static byte[] cache_FontData = (byte[])new byte[1];
-  public int Code;
-  public byte[] FontData;
+  public int Code = 0;
+  public byte[] FontData = null;
   
   static
   {
@@ -40,7 +40,7 @@ public final class GetFontDataRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp
  * JD-Core Version:    0.7.0.1
  */

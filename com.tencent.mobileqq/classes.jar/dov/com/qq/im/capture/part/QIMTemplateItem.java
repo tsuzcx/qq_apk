@@ -3,20 +3,20 @@ package dov.com.qq.im.capture.part;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bohs;
-import bojf;
+import dov.com.qq.im.capture.data.CaptureTemplateManager;
 import java.util.ArrayList;
 import org.json.JSONArray;
 
 public class QIMTemplateItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMTemplateItem> CREATOR = new bojf();
+  public static final Parcelable.Creator<QIMTemplateItem> CREATOR = new QIMTemplateItem.1();
   public int a;
   public String a;
   public ArrayList<String> a;
   public JSONArray a;
   public boolean a;
+  public int b;
   public String b;
   public JSONArray b;
   public boolean b;
@@ -26,7 +26,7 @@ public class QIMTemplateItem
   public JSONArray d;
   public String e;
   public JSONArray e;
-  public String f;
+  public String f = null;
   public JSONArray f;
   public String g;
   public String h;
@@ -36,11 +36,13 @@ public class QIMTemplateItem
   public QIMTemplateItem()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public QIMTemplateItem(Parcel paramParcel)
+  protected QIMTemplateItem(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.f = paramParcel.readString();
@@ -56,14 +58,14 @@ public class QIMTemplateItem
       this.h = paramParcel.readString();
       this.i = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
-        break label163;
+        break label173;
       }
     }
-    label163:
+    label173:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_a_of_type_Boolean = bool1;
-      this.j = (bohs.jdField_b_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + ".mp4");
+      this.j = (CaptureTemplateManager.jdField_b_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + ".mp4");
       return;
       bool1 = false;
       break;
@@ -146,7 +148,7 @@ public class QIMTemplateItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.part.QIMTemplateItem
  * JD-Core Version:    0.7.0.1
  */

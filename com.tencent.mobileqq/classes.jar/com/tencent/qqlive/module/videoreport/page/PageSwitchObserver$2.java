@@ -4,17 +4,21 @@ import android.view.View;
 import android.view.View.OnAttachStateChangeListener;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import java.lang.ref.WeakReference;
 
 class PageSwitchObserver$2
   implements View.OnAttachStateChangeListener
 {
-  PageSwitchObserver$2(PageSwitchObserver paramPageSwitchObserver, View paramView, ViewTreeObserver.OnGlobalLayoutListener paramOnGlobalLayoutListener) {}
+  PageSwitchObserver$2(PageSwitchObserver paramPageSwitchObserver, WeakReference paramWeakReference, ViewTreeObserver.OnGlobalLayoutListener paramOnGlobalLayoutListener) {}
   
   public void onViewAttachedToWindow(View paramView) {}
   
   public void onViewDetachedFromWindow(View paramView)
   {
-    this.val$view.getViewTreeObserver().removeGlobalOnLayoutListener(this.val$onGlobalLayoutListener);
+    paramView = (View)this.val$weakRefView.get();
+    if (paramView != null) {
+      paramView.getViewTreeObserver().removeGlobalOnLayoutListener(this.val$onGlobalLayoutListener);
+    }
   }
 }
 

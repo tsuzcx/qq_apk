@@ -3,17 +3,16 @@ package com.tencent.biz.qqstory.storyHome.messagenotify;
 import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import ybh;
 
-public class StoryMessageListActivity$3$1
+class StoryMessageListActivity$3$1
   implements Runnable
 {
-  public StoryMessageListActivity$3$1(ybh paramybh, ArrayList paramArrayList, qqstory_710_message.RspStoryMessageList paramRspStoryMessageList) {}
+  StoryMessageListActivity$3$1(StoryMessageListActivity.3 param3, ArrayList paramArrayList, qqstory_710_message.RspStoryMessageList paramRspStoryMessageList) {}
   
   public void run()
   {
     boolean bool2 = false;
-    StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_Ybh.a;
+    StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity$3.a;
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.get() != 0)) {}
     for (boolean bool1 = true;; bool1 = false)
@@ -28,7 +27,7 @@ public class StoryMessageListActivity$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

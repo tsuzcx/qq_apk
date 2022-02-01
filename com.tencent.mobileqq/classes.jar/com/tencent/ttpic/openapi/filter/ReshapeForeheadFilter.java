@@ -5,7 +5,7 @@ import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.FloatsParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.util.List;
 import java.util.Map;
 
@@ -18,8 +18,8 @@ public class ReshapeForeheadFilter
   public static final String VERTEX_SHADER_VTF = "precision highp float;\n//uniform mat4 projection;\n//uniform mat4 faceFrame;\n//uniform mat4 stableToImage;\n\nuniform vec2 foreheadSize;\nuniform vec3 foreheadCenter;\nuniform vec2 leftEyebrowPlainSize;\nuniform vec3 leftEyebrowCenter;\nuniform vec2 rightEyebrowPlainSize;\nuniform vec3 rightEyebrowCenter;\nuniform float foreheadHeight;\n\nattribute vec4 position;\nvarying vec2 textureCoordinate;\nuniform vec3 angles; // angles.x: pitch, angles.y: yaw, angles.z: roll\nuniform vec2 size;\n\nuniform sampler2D inputImageTexture;\n\nfloat my_smoothstep(float edge0, float edge1, float x) {\n    float t = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);\n    return t * t * (3.0 - 2.0 * t);\n}\n\nfloat getEllipseMask(in vec2 sigmaScaling, in vec2 point,in vec2 center, in vec2 boundingSize, float a1, float a2) {\n    // un-normalization\n    boundingSize = boundingSize * size;\n    point = point * size;\n    center = center * size;\n\n    float cos_t = cos(angles.z);\n    float sin_t = sin(angles.z);\n    vec2 translate = (point - center);\n    // rotate and scale\n    vec2 v = vec2(dot(translate, vec2(cos_t, sin_t)), dot(translate, vec2(-sin_t, cos_t))) * sigmaScaling;\n\n    float d2 = sqrt(dot(v / boundingSize, v / boundingSize));\n\n    return 1.0 - my_smoothstep(a1, a2, d2);\n}\n\nfloat getLeftEyebrowMask() {\n    const vec2 sigmaScaling = vec2(1.0, 0.8);\n    return getEllipseMask(sigmaScaling, position.xy, leftEyebrowCenter.xy, leftEyebrowPlainSize, 0.6, 1.0);\n}\nfloat getRightEyebrowMask() {\n    const vec2 sigmaScaling = vec2(1.0, 0.8);\n    return getEllipseMask(sigmaScaling, position.xy, rightEyebrowCenter.xy, rightEyebrowPlainSize, 0.6, 1.0);\n}\nfloat getForeheadMask() {\n    const vec2 sigmaScaling = vec2(1.5, 1.5);\n    return getEllipseMask(sigmaScaling, position.xy, foreheadCenter.xy, foreheadSize, 0.4, 1.3);\n}\n\nvec3 getScaledFacePoint2(vec3 originalPoint, vec3 center, vec3 scalingFactors, float mask) {\n    vec3 scaledPoint = center + scalingFactors * (originalPoint - center);\n    return mix(originalPoint, scaledPoint, mask);\n}\n\nvoid main() {\n    const float pi = 3.1415926;\n    float foreheadMask    = getForeheadMask() * (1.0 - getLeftEyebrowMask()) * (1.0 - getRightEyebrowMask());\n    vec3 displacedForeheadPoint   = position.xyz;\n\n    float cos_t = cos(angles.z);\n    float sin_t = sin(angles.z);\n\n    //vec3 displacedForeheadPoint2 = getScaledFacePoint2(displacedForeheadPoint, foreheadCenter, vec3(1.1, 1.1, 1.0), 0.3*foreheadHeight*foreheadMask);\n\n    const float kForeheadLiftingYRatio = 0.05518821053;\n    vec2 foreheadLiftingVector = vec2(0.0, -kForeheadLiftingYRatio * foreheadSize.y);\n    foreheadLiftingVector = vec2(dot(foreheadLiftingVector, vec2(cos_t, -sin_t)), dot(foreheadLiftingVector, vec2(sin_t, cos_t)));\n    vec3 foreheadPositionPoint = vec3(displacedForeheadPoint.xy + foreheadLiftingVector, displacedForeheadPoint.z);\n    displacedForeheadPoint = mix(displacedForeheadPoint, foreheadPositionPoint, foreheadMask * foreheadHeight);\n\n    displacedForeheadPoint = displacedForeheadPoint;\n\n    vec2 originalPosition = (vec4(position.xyz, 1.0)).xy;\n    vec2 displacedPosition = (vec4(displacedForeheadPoint, 1.0)).xy;\n    highp vec4 color = texture2D(inputImageTexture, position.xy);\n    highp vec2 offset = (color.xy * 255.0 + color.zw) / 127.5 - 1.0;\n    textureCoordinate = offset + displacedPosition - originalPosition;\n\n    gl_Position = vec4(originalPosition.x*2.0-1.0, originalPosition.y*2.0-1.0, 0.0, 1.0);\n}";
   private static final int XCOORD_NUM = 128;
   private static final int YCOORD_NUM = 128;
-  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterialUtil.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
-  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterialUtil.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
+  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterial.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
+  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterial.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
   private float[] angles = { 0.0F, 0.0F, 0.0F };
   private float[] foreheadCenter = { 0.0F, 0.0F, 0.0F };
   private float foreheadHeight = 0.0F;
@@ -53,8 +53,8 @@ public class ReshapeForeheadFilter
   
   public void initAttribParams()
   {
-    setPositions(VideoMaterialUtil.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
-    setTexCords(VideoMaterialUtil.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
+    setPositions(VideoMaterial.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
+    setTexCords(VideoMaterial.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
     setCoordNum(32897);
   }
   
@@ -110,7 +110,7 @@ public class ReshapeForeheadFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.ReshapeForeheadFilter
  * JD-Core Version:    0.7.0.1
  */

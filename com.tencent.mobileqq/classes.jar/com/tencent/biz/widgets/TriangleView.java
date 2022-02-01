@@ -24,7 +24,7 @@ public class TriangleView
     this.b.setStrokeWidth(2.0F);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getMeasuredHeight();
@@ -50,7 +50,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.widgets.TriangleView
  * JD-Core Version:    0.7.0.1
  */

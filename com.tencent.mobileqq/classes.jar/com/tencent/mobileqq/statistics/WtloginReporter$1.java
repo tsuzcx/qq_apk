@@ -6,10 +6,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import oicq.wlogin_sdk.tools.util;
 
-public final class WtloginReporter$1
+final class WtloginReporter$1
   implements Runnable
 {
-  public WtloginReporter$1(String paramString) {}
+  WtloginReporter$1(String paramString) {}
   
   public void run()
   {

@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
-import pvm;
-import uad;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class VVideoDelegate$2
+class VVideoDelegate$2
   implements Runnable
 {
-  public VVideoDelegate$2(uad paramuad) {}
+  VVideoDelegate$2(VVideoDelegate paramVVideoDelegate) {}
   
   public void run()
   {
-    pvm.a().n();
+    ReadInJoyLogicEngineEventDispatcher.a().m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoDelegate.2
  * JD-Core Version:    0.7.0.1
  */

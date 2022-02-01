@@ -14,7 +14,7 @@ import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
-import avic;
+import com.tencent.mobileqq.haoliyou.IATHandler;
 import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
 import com.tencent.mobileqq.qfix.ApplicationDelegate;
 import com.tencent.mobileqq.qfix.QFixApplication;
@@ -38,6 +38,8 @@ public class QFixApplicationImpl
   static
   {
     jdField_a_of_type_JavaLangString = "com.tencent.common.app.BaseApplicationImpl";
+    b = null;
+    jdField_a_of_type_Boolean = false;
   }
   
   public QFixApplicationImpl()
@@ -240,8 +242,8 @@ public class QFixApplicationImpl
       else
       {
         localObject2 = ((JSONObject)localObject1).optString("revision", "");
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "b8c39faf");
-        if (!"b8c39faf".equals(localObject2))
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "de12fadd");
+        if (!"de12fadd".equals(localObject2))
         {
           Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision not match.");
           bool1 = false;
@@ -397,7 +399,7 @@ public class QFixApplicationImpl
     {
       FileProvider7Helper.intentCompatForN(this, paramIntent);
       ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
-      avic.a(this, paramIntent, new QFixApplicationImpl.1(this, paramIntent));
+      IATHandler.a(this, paramIntent, new QFixApplicationImpl.1(this, paramIntent));
       return;
     }
     catch (Throwable paramIntent)
@@ -412,7 +414,7 @@ public class QFixApplicationImpl
     {
       FileProvider7Helper.intentCompatForN(this, paramIntent);
       ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
-      avic.a(this, paramIntent, new QFixApplicationImpl.2(this, paramIntent, paramBundle));
+      IATHandler.a(this, paramIntent, new QFixApplicationImpl.2(this, paramIntent, paramBundle));
       return;
     }
     catch (Throwable paramIntent)

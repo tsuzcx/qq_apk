@@ -12,9 +12,9 @@ public final class s_premovie_adv
   static Map<Integer, String> cache_busi_param;
   static s_premovie_item cache_premovie = new s_premovie_item();
   static Map<Integer, String> cache_report_cookie;
-  public Map<Integer, String> busi_param;
-  public s_premovie_item premovie;
-  public Map<Integer, String> report_cookie;
+  public Map<Integer, String> busi_param = null;
+  public s_premovie_item premovie = null;
+  public Map<Integer, String> report_cookie = null;
   
   static
   {

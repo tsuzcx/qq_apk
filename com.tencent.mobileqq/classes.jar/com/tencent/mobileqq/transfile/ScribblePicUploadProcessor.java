@@ -2,13 +2,10 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anyz;
-import azla;
-import azlb;
-import blkh;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForScribble;
 import com.tencent.mobileqq.highway.HwEngine;
@@ -16,10 +13,13 @@ import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.mobileqq.highway.config.HwServlet;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
 import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.wstt.SSCM.SSCM;
 import java.io.File;
 import java.util.HashMap;
 
@@ -32,8 +32,8 @@ public class ScribblePicUploadProcessor
   private byte[] mLocalMd52;
   private String mPicUrl = "";
   private byte[] mSessionKey;
-  anyz messageObserver = new ScribblePicUploadProcessor.2(this);
-  private Transaction trans;
+  MessageObserver messageObserver = new ScribblePicUploadProcessor.2(this);
+  private Transaction trans = null;
   
   public ScribblePicUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
@@ -77,7 +77,7 @@ public class ScribblePicUploadProcessor
         QLog.d("ScribblePicUploadProcessor", 2, "TestPicSend finish upload,currentTime = " + System.currentTimeMillis() + ",processor = " + this);
       }
       this.mStepMsg.logStartTime();
-      this.mApp.getMessageFacade().sendMessage(localMessageForScribble, this.messageObserver);
+      this.mApp.getMessageFacade().b(localMessageForScribble, this.messageObserver);
       QLog.i("SCRIBBLEMSG", 2, "!!!sendMessage uniseq:" + localMessageForScribble.uniseq);
       return;
     }
@@ -90,7 +90,7 @@ public class ScribblePicUploadProcessor
     if (paramMessageForScribble != null)
     {
       paramMessageForScribble.prewrite();
-      this.mApp.getMessageFacade().updateMsgContentByUniseq(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
+      this.mApp.getMessageFacade().a(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
     }
   }
   
@@ -216,11 +216,11 @@ public class ScribblePicUploadProcessor
     QLog.e("ScribblePicUploadProcessor", 2, "onError()---- errCode: " + this.errCode + ", errDesc:" + this.errDesc);
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localObject = new azlb();
-      ((azlb)localObject).jdField_a_of_type_Int = -1;
-      ((azlb)localObject).b = this.errCode;
-      ((azlb)localObject).jdField_a_of_type_JavaLangString = this.errDesc;
-      this.mUiRequest.mUpCallBack.onSend((azlb)localObject);
+      localObject = new UpCallBack.SendResult();
+      ((UpCallBack.SendResult)localObject).jdField_a_of_type_Int = -1;
+      ((UpCallBack.SendResult)localObject).b = this.errCode;
+      ((UpCallBack.SendResult)localObject).jdField_a_of_type_JavaLangString = this.errDesc;
+      this.mUiRequest.mUpCallBack.b((UpCallBack.SendResult)localObject);
     }
   }
   
@@ -238,25 +238,9 @@ public class ScribblePicUploadProcessor
     }
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localObject = new azlb();
-      ((azlb)localObject).jdField_a_of_type_Int = 0;
-      this.mUiRequest.mUpCallBack.onSend((azlb)localObject);
-    }
-  }
-  
-  protected void reportDataFlow(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
-  {
-    if (paramLong1 != 0L) {
-      this.app.countFlow(true, 1, this.file.fileType, this.mUiRequest.mUinType, paramLong1);
-    }
-    if (paramLong2 != 0L) {
-      this.app.countFlow(true, 1, this.file.fileType, this.mUiRequest.mUinType, paramLong2);
-    }
-    if (paramLong3 != 0L) {
-      this.app.countFlow(true, 0, this.file.fileType, this.mUiRequest.mUinType, paramLong3);
-    }
-    if (paramLong4 != 0L) {
-      this.app.countFlow(true, 0, this.file.fileType, this.mUiRequest.mUinType, paramLong4);
+      localObject = new UpCallBack.SendResult();
+      ((UpCallBack.SendResult)localObject).jdField_a_of_type_Int = 0;
+      this.mUiRequest.mUpCallBack.b((UpCallBack.SendResult)localObject);
     }
   }
   

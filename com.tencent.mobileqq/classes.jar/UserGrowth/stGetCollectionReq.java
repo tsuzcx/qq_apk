@@ -9,7 +9,7 @@ public final class stGetCollectionReq
 {
   public String attachInfo = "";
   public String cid = "";
-  public int scene;
+  public int scene = 0;
   
   public stGetCollectionReq() {}
   

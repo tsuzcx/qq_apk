@@ -1,22 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pvm;
-import qfe;
-import qhs;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class SelfInfoModule$1
+class SelfInfoModule$1
   implements Runnable
 {
-  public SelfInfoModule$1(qhs paramqhs, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, qfe paramqfe) {}
+  SelfInfoModule$1(SelfInfoModule paramSelfInfoModule, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, ColumnInfoForSelfPage paramColumnInfoForSelfPage) {}
   
   public void run()
   {
-    pvm.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Qfe);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelColumnInfoForSelfPage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.SelfInfoModule.1
  * JD-Core Version:    0.7.0.1
  */

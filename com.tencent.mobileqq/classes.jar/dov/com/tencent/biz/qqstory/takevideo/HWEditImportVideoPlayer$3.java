@@ -1,13 +1,11 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import botw;
-import bous;
 
-public class HWEditImportVideoPlayer$3
+class HWEditImportVideoPlayer$3
   implements Runnable
 {
-  public HWEditImportVideoPlayer$3(bous parambous, int paramInt) {}
+  HWEditImportVideoPlayer$3(HWEditImportVideoPlayer paramHWEditImportVideoPlayer, int paramInt) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public class HWEditImportVideoPlayer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer.3
  * JD-Core Version:    0.7.0.1
  */

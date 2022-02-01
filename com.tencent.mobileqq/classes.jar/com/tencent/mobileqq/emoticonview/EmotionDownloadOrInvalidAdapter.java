@@ -8,12 +8,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
+import com.tencent.mobileqq.core.QQEmotionPanelManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.widget.ProgressButton;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.XPanelContainer;
 
 public class EmotionDownloadOrInvalidAdapter
   extends EmotionDownloadOrUpdateAdapter
@@ -22,11 +22,27 @@ public class EmotionDownloadOrInvalidAdapter
   public static final String TAG = "EmotionDownloadOrInvalidAdapter";
   protected int contentHight;
   
-  public EmotionDownloadOrInvalidAdapter(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, EmoticonCallback paramEmoticonCallback, int paramInt4)
+  public EmotionDownloadOrInvalidAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, EmoticonCallback paramEmoticonCallback, int paramInt4)
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramEmoticonCallback, paramInt4);
+    super(paramIEmoticonMainPanelApp, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramEmoticonCallback, paramInt4);
     this.isUpdatePanel = false;
-    this.contentHight = (XPanelContainer.a - (int)paramContext.getResources().getDimension(2131296963));
+  }
+  
+  private void initContentHeight()
+  {
+    if ((this.contentHight == 0) && (QQEmotionPanelManager.a().a() != null))
+    {
+      if (getCurrentListView() == null) {
+        break label71;
+      }
+      this.contentHight = getCurrentListView().getHeight();
+      if (this.contentHight == 0) {
+        this.contentHight = (QQEmotionPanelManager.a().a().getExternalPanelheight() - (int)this.mContext.getResources().getDimension(2131296984));
+      }
+    }
+    return;
+    label71:
+    this.contentHight = (QQEmotionPanelManager.a().a().getExternalPanelheight() - (int)this.mContext.getResources().getDimension(2131296984));
   }
   
   public int getCount()
@@ -47,6 +63,7 @@ public class EmotionDownloadOrInvalidAdapter
     this.holder = ((EmotionDownloadOrUpdateAdapter.EmotionDownloadOrUpdateViewHolder)paramViewHolder);
     if (paramView == null)
     {
+      initContentHeight();
       paramViewHolder = EmotionPanelViewPool.getInstance().getView(this.panelType);
       paramView = new AbsListView.LayoutParams(-1, this.contentHight);
       if (paramViewHolder == null)
@@ -54,11 +71,11 @@ public class EmotionDownloadOrInvalidAdapter
         if (QLog.isColorLevel()) {
           QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form inflater");
         }
-        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561925, null);
+        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561740, null);
         paramViewHolder.setLayoutParams(paramView);
-        this.holder.cover = ((URLImageView)paramViewHolder.findViewById(2131365278));
-        this.holder.name = ((TextView)paramViewHolder.findViewById(2131365371));
-        this.holder.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365369));
+        this.holder.cover = ((URLImageView)paramViewHolder.findViewById(2131365419));
+        this.holder.name = ((TextView)paramViewHolder.findViewById(2131365521));
+        this.holder.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365519));
         recycleView(this.panelType, paramViewHolder);
         paramViewHolder.setTag(this.holder);
       }
@@ -66,15 +83,18 @@ public class EmotionDownloadOrInvalidAdapter
     for (;;)
     {
       updateDownloadUI(this.holder);
-      paramInt = XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296963);
-      if (paramInt != this.contentHight)
+      if (QQEmotionPanelManager.a().a() != null)
       {
-        this.contentHight = paramInt;
-        paramView = (AbsListView.LayoutParams)paramViewHolder.getLayoutParams();
-        if (paramView != null)
+        paramInt = QQEmotionPanelManager.a().a().getExternalPanelheight() - (int)this.mContext.getResources().getDimension(2131296984);
+        if (paramInt != this.contentHight)
         {
-          paramView.height = this.contentHight;
-          paramViewHolder.setLayoutParams(paramView);
+          this.contentHight = paramInt;
+          paramView = (AbsListView.LayoutParams)paramViewHolder.getLayoutParams();
+          if (paramView != null)
+          {
+            paramView.height = this.contentHight;
+            paramViewHolder.setLayoutParams(paramView);
+          }
         }
       }
       return paramViewHolder;
@@ -88,7 +108,7 @@ public class EmotionDownloadOrInvalidAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionDownloadOrInvalidAdapter
  * JD-Core Version:    0.7.0.1
  */

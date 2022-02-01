@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.ae.view.AETouchNotifyRelativeLayout android:id="@id/cg_" android:background="@color/dg" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.ae.view.NoScrollViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <dov.com.qq.im.ae.view.TabLayout android:id="@id/ntb" android:layout_width="fill_parent" android:layout_height="@dimen/b6a" android:layout_marginLeft="@dimen/b90" android:layout_marginTop="@dimen/b6c" android:layout_marginRight="@dimen/b90" android:layout_marginBottom="@dimen/b6b" android:layout_alignParentBottom="true" />
-</dov.com.qq.im.ae.view.AETouchNotifyRelativeLayout>
+    <dov.com.qq.im.ae.cmshow.AECMShowSquareLayout android:id="@id/mqy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbf" android:id="@id/oed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_below="@id/mqy" android:layout_centerHorizontal="true" />
+</merge>

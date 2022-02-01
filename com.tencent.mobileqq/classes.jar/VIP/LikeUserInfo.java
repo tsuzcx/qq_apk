@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class LikeUserInfo
   extends JceStruct
 {
-  public long iLikeNum;
-  public long iUin;
+  public long iLikeNum = 0L;
+  public long iUin = 0L;
   public boolean isFriend = true;
   public String sNickName = "";
   

@@ -1,13 +1,10 @@
 package com.tencent.mobileqq.activity.history;
 
-import acnh;
-import ajwg;
-import amgj;
 import android.text.TextUtils;
-import atpk;
-import aufn;
-import bhfp;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.UinTypeUtil;
+import com.tencent.mobileqq.activity.history.helper.ContentHelper;
+import com.tencent.mobileqq.adapter.ChatHistoryStructAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForMixedMsg;
@@ -15,7 +12,10 @@ import com.tencent.mobileqq.data.MessageForReplyText;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.FMConstants;
+import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.utils.Patterns;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -48,7 +48,7 @@ class ChatHistoryC2CLinkFragment$2
       localObject2 = this.this$0.jdField_c_of_type_JavaLangString;
       i = this.this$0.jdField_a_of_type_Int;
       k = ChatHistoryC2CLinkFragment.d();
-      localObject1 = ((QQMessageFacade)localObject1).getAllMessages((String)localObject2, i, new int[] { -2011, -1000, -1035, -1049, -5008 }, k);
+      localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, i, new int[] { -2011, -1000, -1035, -1049, -5008 }, k);
       if (QLog.isColorLevel())
       {
         boolean bool = this.a;
@@ -72,7 +72,7 @@ class ChatHistoryC2CLinkFragment$2
         break label955;
       }
       localObject3 = (MessageRecord)((List)localObject1).get(i);
-      if (!amgj.a((MessageRecord)localObject3)) {
+      if (!ChatHistoryStructAdapter.a((MessageRecord)localObject3)) {
         break label771;
       }
       if (((MessageRecord)localObject3).shmsgseq < this.this$0.jdField_b_of_type_Long) {
@@ -95,7 +95,7 @@ class ChatHistoryC2CLinkFragment$2
         break label711;
       }
       localObject4 = (AbsShareMsg)((MessageForStructing)localObject4).structingMsg;
-      if ((((MessageRecord)localObject3).time < 1548460800L) || (!atpk.a(((AbsShareMsg)localObject4).mMsgUrl))) {
+      if ((((MessageRecord)localObject3).time < 1548460800L) || (!FMConstants.a(((AbsShareMsg)localObject4).mMsgUrl))) {
         break label711;
       }
     }
@@ -103,7 +103,7 @@ class ChatHistoryC2CLinkFragment$2
     {
       i -= 1;
       break label229;
-      if (acnh.a(this.this$0.jdField_a_of_type_Int))
+      if (UinTypeUtil.g(this.this$0.jdField_a_of_type_Int))
       {
         localObject1 = this.this$0;
         ((ChatHistoryC2CLinkFragment)localObject1).jdField_b_of_type_Long -= 1L;
@@ -114,7 +114,7 @@ class ChatHistoryC2CLinkFragment$2
         k = this.this$0.jdField_b_of_type_Int;
         l2 = this.this$0.jdField_b_of_type_Long;
         m = ChatHistoryC2CLinkFragment.d();
-        localObject1 = ((QQMessageFacade)localObject1).getMessagesFromDB((String)localObject2, i, l1, k, l2, new int[] { -2011, -1000, -1035, -1049, -5008 }, m);
+        localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, i, l1, k, l2, new int[] { -2011, -1000, -1035, -1049, -5008 }, m);
         break;
       }
       localObject1 = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
@@ -124,13 +124,13 @@ class ChatHistoryC2CLinkFragment$2
       k = this.this$0.jdField_b_of_type_Int;
       long l2 = this.this$0.jdField_c_of_type_Long;
       int m = ChatHistoryC2CLinkFragment.d();
-      localObject1 = ((QQMessageFacade)localObject1).getMessagesFromDB((String)localObject2, i, l1, k, l2, new int[] { -2011, -1000, -1035, -1049, -5008 }, m);
+      localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, i, l1, k, l2, new int[] { -2011, -1000, -1035, -1049, -5008 }, m);
       break;
       label706:
       i = 0;
       break label125;
       label711:
-      localObject4 = aufn.a(((MessageRecord)localObject3).time * 1000L);
+      localObject4 = QfileTimeUtils.a(((MessageRecord)localObject3).time * 1000L);
       if (!((LinkedHashMap)localObject2).containsKey(localObject4)) {
         ((LinkedHashMap)localObject2).put(localObject4, new ArrayList());
       }
@@ -139,15 +139,15 @@ class ChatHistoryC2CLinkFragment$2
       label771:
       if ((((localObject3 instanceof MessageForText)) || ((localObject3 instanceof MessageForMixedMsg)) || ((localObject3 instanceof MessageForReplyText)) || ((localObject3 instanceof MessageForArkApp))) && (((MessageRecord)localObject3).time >= 1548460800L))
       {
-        localObject4 = ajwg.a((MessageRecord)localObject3);
+        localObject4 = ContentHelper.a((MessageRecord)localObject3);
         if (!TextUtils.isEmpty((CharSequence)localObject4))
         {
           if (((MessageRecord)localObject3).time < this.this$0.jdField_c_of_type_Long) {
             this.this$0.jdField_c_of_type_Long = ((MessageRecord)localObject3).time;
           }
-          if ((bhfp.b.matcher((CharSequence)localObject4).find()) && (ChatHistoryC2CLinkFragment.jdField_a_of_type_JavaUtilRegexPattern.matcher((CharSequence)localObject4).find()))
+          if ((Patterns.b.matcher((CharSequence)localObject4).find()) && (ChatHistoryC2CLinkFragment.jdField_a_of_type_JavaUtilRegexPattern.matcher((CharSequence)localObject4).find()))
           {
-            localObject4 = aufn.a(((MessageRecord)localObject3).time * 1000L);
+            localObject4 = QfileTimeUtils.a(((MessageRecord)localObject3).time * 1000L);
             if (!((LinkedHashMap)localObject2).containsKey(localObject4)) {
               ((LinkedHashMap)localObject2).put(localObject4, new ArrayList());
             }
@@ -188,7 +188,7 @@ class ChatHistoryC2CLinkFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment.2
  * JD-Core Version:    0.7.0.1
  */

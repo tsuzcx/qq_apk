@@ -56,6 +56,8 @@ public class YTPoseDetectJNIInterface
   
   public static native void resetDetect();
   
+  public static native byte[] rotateYuv(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  
   public static void setLoggerListener(YTPoseDetectJNIInterface.IYtLoggerListener paramIYtLoggerListener)
   {
     loggerListener = paramIYtLoggerListener;
@@ -67,7 +69,7 @@ public class YTPoseDetectJNIInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface
  * JD-Core Version:    0.7.0.1
  */

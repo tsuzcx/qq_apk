@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidd;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class NearbyChatPie$3
+class NearbyChatPie$3
   implements Runnable
 {
-  public NearbyChatPie$3(aidd paramaidd) {}
+  NearbyChatPie$3(NearbyChatPie paramNearbyChatPie) {}
   
   public void run()
   {
-    this.this$0.mTitleText.setText(this.this$0.sessionInfo.curFriendNick);
+    this.this$0.e.setText(this.this$0.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.3
  * JD-Core Version:    0.7.0.1
  */

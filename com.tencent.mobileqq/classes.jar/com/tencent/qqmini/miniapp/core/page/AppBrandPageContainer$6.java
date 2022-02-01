@@ -1,47 +1,25 @@
 package com.tencent.qqmini.miniapp.core.page;
 
-import com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import java.util.Iterator;
-import java.util.LinkedList;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
+import com.tencent.qqmini.sdk.manager.ApkgManager.OnInitApkgListener;
+import com.tencent.qqmini.sdk.widget.ToastView;
+import java.lang.ref.WeakReference;
 
 class AppBrandPageContainer$6
-  implements Runnable
+  implements ApkgManager.OnInitApkgListener
 {
-  AppBrandPageContainer$6(AppBrandPageContainer paramAppBrandPageContainer, NativeViewRequestEvent paramNativeViewRequestEvent) {}
+  AppBrandPageContainer$6(AppBrandPageContainer paramAppBrandPageContainer, ToastView paramToastView, String paramString1, WeakReference paramWeakReference, String paramString2) {}
   
-  public void run()
+  public void onInitApkgInfo(int paramInt, ApkgInfo paramApkgInfo, String paramString)
   {
-    for (int i = -1;; i = -16777216)
-    {
-      try
-      {
-        boolean bool = "light".equals(new JSONObject(this.val$req.jsonParams).optString("textStyle", "light"));
-        if (!bool) {
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Iterator localIterator;
-          QMLog.e("minisdk-start-AppBrandPageContainer", this.val$req.event + " error.", localException);
-          i = -1;
-        }
-        this.val$req.ok();
-      }
-      localIterator = AppBrandPageContainer.access$300(this.this$0).iterator();
-      while (localIterator.hasNext()) {
-        ((AppBrandPage)localIterator.next()).notifyChangePullDownRefreshStyle(i);
-      }
-    }
+    ThreadManager.getUIHandler().post(new AppBrandPageContainer.6.1(this, paramInt, paramApkgInfo, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.6
  * JD-Core Version:    0.7.0.1
  */

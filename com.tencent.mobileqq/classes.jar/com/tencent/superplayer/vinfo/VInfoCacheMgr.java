@@ -14,7 +14,7 @@ class VInfoCacheMgr
   
   private static boolean checkVInfoIsValid(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
   {
-    return (paramSuperPlayerVideoInfo != null) && (paramSuperPlayerVideoInfo.getVideoType() == 1) && (!TextUtils.isEmpty(getKeyFromVInfo(paramSuperPlayerVideoInfo)));
+    return (paramSuperPlayerVideoInfo != null) && (paramSuperPlayerVideoInfo.getVideoType() == 1) && (!TextUtils.isEmpty(getKeyFromVInfo(paramSuperPlayerVideoInfo))) && (!paramSuperPlayerVideoInfo.getIsDisableTVideoCache());
   }
   
   private static boolean checkVInfoUpdateTimeIsValid(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
@@ -73,7 +73,7 @@ class VInfoCacheMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.vinfo.VInfoCacheMgr
  * JD-Core Version:    0.7.0.1
  */

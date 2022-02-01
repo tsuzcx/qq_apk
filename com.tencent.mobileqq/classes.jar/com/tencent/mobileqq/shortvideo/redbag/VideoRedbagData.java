@@ -5,10 +5,10 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class VideoRedbagData
   extends Entity
 {
   public static String TAG = "VideoRedbagData";
-  public int redBagStat;
+  public int redBagStat = 0;
   public String shortVideoId;
   public long uniseq;
   

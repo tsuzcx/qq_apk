@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pvj;
-import rpx;
+import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
 
 class ComponentHeaderPolymeric$5
   implements Runnable
@@ -11,12 +11,12 @@ class ComponentHeaderPolymeric$5
   
   public void run()
   {
-    pvj.a().c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.b, this.jdField_a_of_type_Int);
+    ReadInJoyLogicEngine.a().c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.b, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import bdzf;
 import java.util.List;
 
-public class SpriteGLView$1
+class SpriteGLView$1
   implements Runnable
 {
   SpriteGLView$1(SpriteGLView paramSpriteGLView) {}
@@ -17,8 +16,8 @@ public class SpriteGLView$1
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((localObject instanceof bdzf)) {
-        ((bdzf)localObject).a();
+      if ((localObject instanceof Node)) {
+        ((Node)localObject).a();
       }
       i += 1;
     }

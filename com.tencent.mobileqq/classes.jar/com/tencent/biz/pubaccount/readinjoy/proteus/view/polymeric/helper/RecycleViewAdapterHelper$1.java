@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper;
 
-import qwx;
-
-public class RecycleViewAdapterHelper$1
+class RecycleViewAdapterHelper$1
   implements Runnable
 {
-  public RecycleViewAdapterHelper$1(qwx paramqwx) {}
+  RecycleViewAdapterHelper$1(RecycleViewAdapterHelper paramRecycleViewAdapterHelper) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class RecycleViewAdapterHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper.RecycleViewAdapterHelper.1
  * JD-Core Version:    0.7.0.1
  */

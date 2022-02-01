@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bkpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -18,6 +17,7 @@ import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.MiniSdkUtil;
 import com.tencent.qqmini.sdk.MiniSDK;
 import java.io.File;
 
@@ -32,16 +32,16 @@ public class MiniCacheFreeManager
   
   private static void clearAllPkgs()
   {
-    com.tencent.mobileqq.utils.FileUtils.delete(ApkgManager.PATH_GAMEPKG_ROOT, false);
-    com.tencent.mobileqq.utils.FileUtils.delete(ApkgManager.PATH_WXAPKG_ROOT, false);
-    com.tencent.mobileqq.utils.FileUtils.delete(ApkgManager.PATH_APKG_TISSUE_ROOT, false);
+    com.tencent.mobileqq.utils.FileUtils.a(ApkgManager.PATH_GAMEPKG_ROOT, false);
+    com.tencent.mobileqq.utils.FileUtils.a(ApkgManager.PATH_WXAPKG_ROOT, false);
+    com.tencent.mobileqq.utils.FileUtils.a(ApkgManager.PATH_APKG_TISSUE_ROOT, false);
   }
   
   private static void clearAllStorageCache()
   {
     try
     {
-      com.tencent.mobileqq.utils.FileUtils.delete(BaseApplication.getContext().getCacheDir() + "/mini", false);
+      com.tencent.mobileqq.utils.FileUtils.a(BaseApplication.getContext().getCacheDir() + "/mini", false);
       return;
     }
     catch (Exception localException)
@@ -114,7 +114,7 @@ public class MiniCacheFreeManager
       return;
       str = ApkgManager.getApkgFolderPath(paramMiniAppInfo);
     } while (!new File(str).exists());
-    com.tencent.mobileqq.utils.FileUtils.delete(str, false);
+    com.tencent.mobileqq.utils.FileUtils.a(str, false);
     QLog.i("MiniCacheFreeManager", 1, "clearPkg finish: " + paramMiniAppInfo.appId);
   }
   
@@ -224,7 +224,7 @@ public class MiniCacheFreeManager
     {
       return;
       if (!paramMiniAppInfo.isEngineTypeMiniGame()) {}
-      for (boolean bool = true; bkpw.a(bool); bool = false)
+      for (boolean bool = true; MiniSdkUtil.a(bool); bool = false)
       {
         MiniSDK.stopMiniApp(BaseApplicationImpl.getContext(), MiniSdkLauncher.convert(paramMiniAppInfo));
         return;

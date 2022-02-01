@@ -11,6 +11,7 @@ public class TextEditorData
   private Map<String, Integer> colorList = new HashMap();
   private String content;
   private String fontPath;
+  private String interactive = "0";
   private String itemID;
   private String pagFilePath;
   private String stickerType;
@@ -54,6 +55,11 @@ public class TextEditorData
   public String getFontPath()
   {
     return this.fontPath;
+  }
+  
+  public String getInteractive()
+  {
+    return this.interactive;
   }
   
   public String getItemID()
@@ -111,6 +117,11 @@ public class TextEditorData
     this.fontPath = paramString;
   }
   
+  public void setInteractive(String paramString)
+  {
+    this.interactive = paramString;
+  }
+  
   public void setItemID(String paramString)
   {
     this.itemID = paramString;
@@ -143,7 +154,7 @@ public class TextEditorData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.bean.TextEditorData
  * JD-Core Version:    0.7.0.1
  */

@@ -3,18 +3,17 @@ package com.tencent.avgame.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import nqe;
 
 public class AVGameStep
   implements Parcelable
 {
-  public static final Parcelable.Creator<AVGameStep> CREATOR = new nqe();
+  public static final Parcelable.Creator<AVGameStep> CREATOR = new AVGameStep.1();
   public int a;
   public long a;
   public String a;
   public long b;
   
-  public AVGameStep(Parcel paramParcel)
+  protected AVGameStep(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Long = paramParcel.readLong();
@@ -65,7 +64,7 @@ public class AVGameStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.util.AVGameStep
  * JD-Core Version:    0.7.0.1
  */

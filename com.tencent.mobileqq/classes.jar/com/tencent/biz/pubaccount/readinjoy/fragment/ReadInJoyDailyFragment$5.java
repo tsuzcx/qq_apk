@@ -1,9 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import pnn;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 
 class ReadInJoyDailyFragment$5
   implements Runnable
@@ -12,16 +11,16 @@ class ReadInJoyDailyFragment$5
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = pnn.a();
+    QQAppInterface localQQAppInterface = RIJQQAppInterfaceUtil.a();
     if (localQQAppInterface == null) {
       return;
     }
-    ((WebProcessManager)localQQAppInterface.getManager(QQManagerFactory.WEBPROCESS_MANAGER)).e();
+    ((IWebProcessManagerService)localQQAppInterface.getRuntimeService(IWebProcessManagerService.class, "")).startWebProcess(-1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment.5
  * JD-Core Version:    0.7.0.1
  */

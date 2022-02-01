@@ -469,7 +469,7 @@ public class MsfServiceSdk
     return localToServiceMsg;
   }
   
-  public ToServiceMsg getRegisterCommitMobileMsg(String paramString1, byte paramByte1, byte paramByte2, byte paramByte3, String paramString2, String paramString3, String paramString4, Long paramLong)
+  public ToServiceMsg getRegisterCommitMobileMsg(String paramString1, byte paramByte1, byte paramByte2, byte paramByte3, String paramString2, String paramString3, String paramString4, Long paramLong, HashMap paramHashMap)
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), "0", "wtlogin.trans_emp");
     localToServiceMsg.setMsfCommand(MsfCommand.regUin_commitMobile);
@@ -481,6 +481,7 @@ public class MsfServiceSdk
     localToServiceMsg.getAttributes().put("to_register_cr_mobile", paramString4);
     localToServiceMsg.getAttributes().put("appid", paramLong);
     localToServiceMsg.getAttributes().put("To_register_captcha_sig", paramString1);
+    localToServiceMsg.getAttributes().put("To_register_map_param", paramHashMap);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }
@@ -500,6 +501,11 @@ public class MsfServiceSdk
   
   public ToServiceMsg getRegisterCommitPassMsg(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5, String paramString6)
   {
+    return getRegisterCommitPassMsg(paramString1, paramString2, paramString3, paramBoolean, paramString4, paramString5, paramString6, null);
+  }
+  
+  public ToServiceMsg getRegisterCommitPassMsg(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5, String paramString6, HashMap paramHashMap)
+  {
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), "0", "wtlogin.trans_emp");
     localToServiceMsg.setMsfCommand(MsfCommand.regUin_commitPass);
     localToServiceMsg.getAttributes().put("To_register_smsCode", paramString1);
@@ -511,6 +517,7 @@ public class MsfServiceSdk
     }
     for (;;)
     {
+      localToServiceMsg.getAttributes().put("To_register_map_param", paramHashMap);
       localToServiceMsg.getAttributes().put("to_register_cr_appVersion", paramString6);
       beforeSend(localToServiceMsg);
       return localToServiceMsg;

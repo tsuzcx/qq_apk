@@ -209,7 +209,7 @@ public class CircleBoarderImageView
     return jdField_a_of_type_AndroidWidgetImageView$ScaleType;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_d_of_type_Boolean) {
       super.onDraw(paramCanvas);
@@ -228,7 +228,7 @@ public class CircleBoarderImageView
     paramCanvas.drawCircle(this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY(), this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     d();
@@ -350,7 +350,7 @@ public class CircleBoarderImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleBoarderImageView
  * JD-Core Version:    0.7.0.1
  */

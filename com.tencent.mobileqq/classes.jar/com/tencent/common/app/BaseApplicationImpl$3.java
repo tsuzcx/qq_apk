@@ -1,19 +1,27 @@
 package com.tencent.common.app;
 
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qroute.remote.IQRemoteProxy;
+import com.tencent.mobileqq.qroute.remote.IQRemoteResultCallback;
+import com.tencent.mobileqq.qroute.remote.QRemoteResult;
+import eipc.EIPCResult;
 
 class BaseApplicationImpl$3
-  implements Runnable
+  implements IQRemoteProxy
 {
-  BaseApplicationImpl$3(BaseApplicationImpl paramBaseApplicationImpl, int paramInt, String paramString) {}
+  BaseApplicationImpl$3(BaseApplicationImpl paramBaseApplicationImpl) {}
   
-  public void run()
+  public void callServerAsync(String paramString, Bundle paramBundle, IQRemoteResultCallback paramIQRemoteResultCallback) {}
+  
+  public QRemoteResult callServerSync(String paramString, Bundle paramBundle)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_retryIndex", Integer.toString(this.val$retryIndex));
-    localHashMap.put("param_uin", this.val$uin);
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(this.val$uin, "PcActiveSuccB", true, 0L, 0L, localHashMap, "", true);
+    paramString = QIPCClientHelper.getInstance().callServer("QRouteIPCModule", paramString, paramBundle);
+    paramBundle = new QRemoteResult();
+    paramBundle.code = paramString.code;
+    paramBundle.data = paramString.data;
+    paramBundle.throwable = paramString.e;
+    return paramBundle;
   }
 }
 

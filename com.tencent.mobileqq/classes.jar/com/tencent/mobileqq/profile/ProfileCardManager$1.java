@@ -2,8 +2,6 @@ package com.tencent.mobileqq.profile;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import azrc;
-import azrd;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -11,14 +9,14 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class ProfileCardManager$1
+class ProfileCardManager$1
   implements Runnable
 {
-  public ProfileCardManager$1(azrc paramazrc, File paramFile, int paramInt) {}
+  ProfileCardManager$1(ProfileCardManager paramProfileCardManager, File paramFile, int paramInt) {}
   
   public void run()
   {
-    Object localObject = FileUtils.readFileToStringEx(this.jdField_a_of_type_JavaIoFile, -1);
+    Object localObject = FileUtils.a(this.jdField_a_of_type_JavaIoFile, -1);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     try
     {
@@ -26,22 +24,22 @@ public class ProfileCardManager$1
       if ((localObject != null) && (((JSONArray)localObject).length() > 0))
       {
         JSONObject localJSONObject1 = ((JSONArray)localObject).getJSONObject(0);
-        localObject = new azrd(this.this$0, this.jdField_a_of_type_Int);
-        ((azrd)localObject).jdField_a_of_type_JavaLangString = localJSONObject1.optString("name");
+        localObject = new ProfileCardManager.DefaultCardItem(this.this$0, this.jdField_a_of_type_Int);
+        ((ProfileCardManager.DefaultCardItem)localObject).jdField_a_of_type_JavaLangString = localJSONObject1.optString("name");
         JSONObject localJSONObject2 = localJSONObject1.optJSONObject("previewImage");
         if (localJSONObject2 != null) {
-          ((azrd)localObject).b = (azrc.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
+          ((ProfileCardManager.DefaultCardItem)localObject).b = (ProfileCardManager.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
         }
         localJSONObject2 = localJSONObject1.optJSONObject("coverImg");
         if (localJSONObject2 != null) {
-          ((azrd)localObject).c = (azrc.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
+          ((ProfileCardManager.DefaultCardItem)localObject).c = (ProfileCardManager.jdField_a_of_type_JavaLangString + localJSONObject2.optString("src"));
         }
         localJSONObject1 = localJSONObject1.optJSONObject("detailImage");
         if (localJSONObject1 != null) {
-          ((azrd)localObject).d = (azrc.jdField_a_of_type_JavaLangString + localJSONObject1.optString("src"));
+          ((ProfileCardManager.DefaultCardItem)localObject).d = (ProfileCardManager.jdField_a_of_type_JavaLangString + localJSONObject1.optString("src"));
         }
-        ((azrd)localObject).jdField_a_of_type_Boolean = true;
-        azrc.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
+        ((ProfileCardManager.DefaultCardItem)localObject).jdField_a_of_type_Boolean = true;
+        ProfileCardManager.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
         if (this.this$0.jdField_a_of_type_AndroidOsHandler != null)
         {
           this.this$0.jdField_a_of_type_AndroidOsHandler.removeMessages(101);

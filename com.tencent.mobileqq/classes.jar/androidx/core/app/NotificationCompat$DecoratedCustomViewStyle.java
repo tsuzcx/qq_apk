@@ -18,8 +18,8 @@ public class NotificationCompat$DecoratedCustomViewStyle
   
   private RemoteViews createRemoteViews(RemoteViews paramRemoteViews, boolean paramBoolean)
   {
-    RemoteViews localRemoteViews = applyStandardTemplate(true, 2131559558, false);
-    localRemoteViews.removeAllViews(2131361989);
+    RemoteViews localRemoteViews = applyStandardTemplate(true, 2131559630, false);
+    localRemoteViews.removeAllViews(2131361992);
     List localList = getNonContextualActions(this.mBuilder.mActions);
     if ((paramBoolean) && (localList != null))
     {
@@ -29,7 +29,7 @@ public class NotificationCompat$DecoratedCustomViewStyle
         i = 0;
         while (i < j)
         {
-          localRemoteViews.addView(2131361989, generateActionButton((NotificationCompat.Action)localList.get(i)));
+          localRemoteViews.addView(2131361992, generateActionButton((NotificationCompat.Action)localList.get(i)));
           i += 1;
         }
       }
@@ -39,8 +39,8 @@ public class NotificationCompat$DecoratedCustomViewStyle
       if (i != 0) {}
       for (i = 0;; i = 8)
       {
-        localRemoteViews.setViewVisibility(2131361989, i);
-        localRemoteViews.setViewVisibility(2131361953, i);
+        localRemoteViews.setViewVisibility(2131361992, i);
+        localRemoteViews.setViewVisibility(2131361954, i);
         buildIntoRemoteViews(localRemoteViews, paramRemoteViews);
         return localRemoteViews;
       }
@@ -60,11 +60,11 @@ public class NotificationCompat$DecoratedCustomViewStyle
       }
     }
     label123:
-    for (int j = 2131559555;; j = 2131559554)
+    for (int j = 2131559627;; j = 2131559626)
     {
       localObject = new RemoteViews((String)localObject, j);
-      ((RemoteViews)localObject).setImageViewBitmap(2131361957, createColoredBitmap(paramAction.getIconCompat(), this.mBuilder.mContext.getResources().getColor(2131165889)));
-      ((RemoteViews)localObject).setTextViewText(2131361988, paramAction.title);
+      ((RemoteViews)localObject).setImageViewBitmap(2131361958, createColoredBitmap(paramAction.getIconCompat(), this.mBuilder.mContext.getResources().getColor(2131165893)));
+      ((RemoteViews)localObject).setTextViewText(2131361990, paramAction.title);
       if (i == 0) {
         ((RemoteViews)localObject).setOnClickPendingIntent(2131361951, paramAction.actionIntent);
       }
@@ -146,7 +146,7 @@ public class NotificationCompat$DecoratedCustomViewStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.DecoratedCustomViewStyle
  * JD-Core Version:    0.7.0.1
  */

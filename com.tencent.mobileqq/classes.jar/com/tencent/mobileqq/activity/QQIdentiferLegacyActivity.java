@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,8 +10,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bdla;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.VersionUtils;
 
@@ -23,14 +22,14 @@ public class QQIdentiferLegacyActivity
   {
     paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager();
     FragmentTransaction localFragmentTransaction = paramFragmentActivity.beginTransaction();
-    if (paramFragmentActivity.findFragmentById(2131367945) != null) {
-      localFragmentTransaction.replace(2131367945, paramFragment);
+    if (paramFragmentActivity.findFragmentById(2131368153) != null) {
+      localFragmentTransaction.replace(2131368153, paramFragment);
     }
-    while (VersionUtils.isHoneycomb())
+    while (VersionUtils.e())
     {
       localFragmentTransaction.commitAllowingStateLoss();
       return;
-      localFragmentTransaction.add(2131367945, paramFragment);
+      localFragmentTransaction.add(2131368153, paramFragment);
     }
     localFragmentTransaction.commit();
   }
@@ -39,10 +38,10 @@ public class QQIdentiferLegacyActivity
   {
     String str = getIntent().getStringExtra("method");
     if ("setFaceData".equals(str)) {
-      bdla.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
+      ReportController.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
     }
     if ("loginVerify".equals(str)) {
-      bdla.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
+      ReportController.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
     }
   }
   
@@ -59,7 +58,7 @@ public class QQIdentiferLegacyActivity
   {
     super.doOnCreate(paramBundle);
     paramBundle = new FrameLayout(this);
-    paramBundle.setId(2131367945);
+    paramBundle.setId(2131368153);
     paramBundle.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     setContentView(paramBundle);
     a(this, new QQIdentiferLegacy());
@@ -68,7 +67,7 @@ public class QQIdentiferLegacyActivity
   
   public boolean onBackEvent()
   {
-    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131367945);
+    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131368153);
     if ((localFragment != null) && ((localFragment instanceof QQLightRecognitionGuide))) {
       a("0X800A85E");
     }
@@ -78,7 +77,7 @@ public class QQIdentiferLegacyActivity
   public void onBackPressed()
   {
     super.onBackPressed();
-    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131367945);
+    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131368153);
     if ((localFragment != null) && ((localFragment instanceof QQLightRecognitionGuide))) {
       a("0X800A85E");
     }
@@ -93,7 +92,7 @@ public class QQIdentiferLegacyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,12 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import omn;
 import org.json.JSONObject;
 
 public class VideoInfo$RichTitleInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RichTitleInfo> CREATOR = new omn();
+  public static final Parcelable.Creator<RichTitleInfo> CREATOR = new VideoInfo.RichTitleInfo.1();
   public int a;
   public String a;
   public String b;
@@ -21,7 +20,7 @@ public class VideoInfo$RichTitleInfo
     this.jdField_a_of_type_Int = 0;
   }
   
-  public VideoInfo$RichTitleInfo(Parcel paramParcel)
+  protected VideoInfo$RichTitleInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -64,7 +63,7 @@ public class VideoInfo$RichTitleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.RichTitleInfo
  * JD-Core Version:    0.7.0.1
  */

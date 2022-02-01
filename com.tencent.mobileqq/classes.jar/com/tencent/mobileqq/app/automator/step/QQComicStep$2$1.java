@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import blqy;
-import blrf;
 import com.tencent.mobileqq.app.automator.Automator;
+import cooperation.comic.VipComicNavConfigHelper;
+import cooperation.comic.VipComicSoHelper;
 
 class QQComicStep$2$1
   implements Runnable
@@ -11,8 +11,8 @@ class QQComicStep$2$1
   
   public void run()
   {
-    blqy.a(this.a.this$0.a.app);
-    blrf.a(this.a.this$0.a.app);
+    VipComicNavConfigHelper.a(this.a.this$0.a.a);
+    VipComicSoHelper.a(this.a.this$0.a.a);
   }
 }
 

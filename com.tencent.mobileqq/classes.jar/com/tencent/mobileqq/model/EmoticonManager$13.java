@@ -1,25 +1,16 @@
 package com.tencent.mobileqq.model;
 
-import awyr;
-import com.tencent.mobileqq.data.EmoticonTab;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
-public class EmoticonManager$13
-  implements Runnable
+class EmoticonManager$13
+  implements QueryTask.Query<MarkFaceMessage, PicEmoticonInfo>
 {
-  public EmoticonManager$13(awyr paramawyr, String paramString) {}
+  EmoticonManager$13(EmoticonManager paramEmoticonManager, MarkFaceMessage paramMarkFaceMessage) {}
   
-  public void run()
+  public PicEmoticonInfo a(MarkFaceMessage paramMarkFaceMessage)
   {
-    EmoticonTab localEmoticonTab = (EmoticonTab)this.this$0.a.find(EmoticonTab.class, this.a);
-    if (localEmoticonTab != null) {}
-    for (localEmoticonTab.kandianHave = true;; localEmoticonTab.kandianHave = true)
-    {
-      awyr.a(this.this$0, localEmoticonTab);
-      return;
-      localEmoticonTab = new EmoticonTab();
-      localEmoticonTab.epId = this.a;
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage);
   }
 }
 

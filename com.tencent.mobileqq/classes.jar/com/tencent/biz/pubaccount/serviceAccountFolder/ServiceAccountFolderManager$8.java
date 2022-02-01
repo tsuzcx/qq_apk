@@ -5,12 +5,11 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import uot;
 
-public class ServiceAccountFolderManager$8
+class ServiceAccountFolderManager$8
   implements Runnable
 {
-  public ServiceAccountFolderManager$8(uot paramuot, QQAppInterface paramQQAppInterface) {}
+  ServiceAccountFolderManager$8(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -18,23 +17,23 @@ public class ServiceAccountFolderManager$8
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_display_time", uot.c(this.this$0));
-      ((SharedPreferences.Editor)localObject).putString("service_account_folder_time", uot.a(this.this$0));
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_operation_time", uot.d(this.this$0));
-      ((SharedPreferences.Editor)localObject).putString("service_account_folder_brief", uot.a(this.this$0).toString());
-      ((SharedPreferences.Editor)localObject).putString("service_account_folder_extend", uot.b(this.this$0));
-      ((SharedPreferences.Editor)localObject).putInt("service_account_folder_unreadnum", uot.a(this.this$0));
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_maxunreadtime", uot.e(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_display_time", ServiceAccountFolderManager.c(this.this$0));
+      ((SharedPreferences.Editor)localObject).putString("service_account_folder_time", ServiceAccountFolderManager.a(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_operation_time", ServiceAccountFolderManager.d(this.this$0));
+      ((SharedPreferences.Editor)localObject).putString("service_account_folder_brief", ServiceAccountFolderManager.a(this.this$0).toString());
+      ((SharedPreferences.Editor)localObject).putString("service_account_folder_extend", ServiceAccountFolderManager.b(this.this$0));
+      ((SharedPreferences.Editor)localObject).putInt("service_account_folder_unreadnum", ServiceAccountFolderManager.a(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_maxunreadtime", ServiceAccountFolderManager.e(this.this$0));
       ((SharedPreferences.Editor)localObject).commit();
       if (QLog.isColorLevel()) {
-        QLog.d("ServiceAccountFolderManager", 2, "saveFolderLocalData->mFolderDisplayTime:" + uot.c(this.this$0) + ", mFolderShowTime:" + uot.a(this.this$0) + ", mFolderOperationTime:" + uot.d(this.this$0) + ", mFolderMsgBrief:" + uot.a(this.this$0));
+        QLog.d("ServiceAccountFolderManager", 2, "saveFolderLocalData->mFolderDisplayTime:" + ServiceAccountFolderManager.c(this.this$0) + ", mFolderShowTime:" + ServiceAccountFolderManager.a(this.this$0) + ", mFolderOperationTime:" + ServiceAccountFolderManager.d(this.this$0) + ", mFolderMsgBrief:" + ServiceAccountFolderManager.a(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.startup.step;
 
-import bdgy;
-import bdjo;
+import com.tencent.mobileqq.startup.director.StartupDirector;
 
 public class Step$AfterDexStepFactory
-  implements bdjo
+  implements Step.IStepFactory
 {
-  public Step a(int paramInt, bdgy parambdgy, int[] paramArrayOfInt)
+  public Step a(int paramInt, StartupDirector paramStartupDirector, int[] paramArrayOfInt)
   {
-    parambdgy = null;
+    paramStartupDirector = null;
     switch (paramInt)
     {
     case 8: 
@@ -16,10 +15,11 @@ public class Step$AfterDexStepFactory
     case 10: 
     case 13: 
     case 21: 
+    case 49: 
     default: 
-      parambdgy = new Step();
-    case 31: 
-      return parambdgy;
+      paramStartupDirector = new Step();
+    case 30: 
+      return paramStartupDirector;
     case 7: 
     case 19: 
       return new LoadData();
@@ -50,51 +50,53 @@ public class Step$AfterDexStepFactory
     case 25: 
       return new UpdateArkSo();
     case 26: 
-      return new UpdateRMSo();
-    case 27: 
       return new SetPlugin();
-    case 28: 
+    case 27: 
       return new UpdatePluginVersion();
-    case 29: 
+    case 28: 
       return new WebP();
-    case 32: 
+    case 31: 
       return new PreInitValues();
     case 16: 
       return new InitMagnifierSDK();
-    case 30: 
+    case 29: 
       return new InitHook();
-    case 33: 
+    case 32: 
       return new InjectBitmap();
-    case 34: 
+    case 33: 
       return new MigrateSubscribeDB();
-    case 35: 
+    case 34: 
       return new UpdatePatchConfig();
-    case 36: 
+    case 35: 
       return new UpdateSecureFileStrategy();
-    case 37: 
+    case 36: 
       return new InstallPlugins();
-    case 38: 
+    case 37: 
       return new HuayangPluginContainer();
-    case 48: 
+    case 47: 
       return new StudyRoomPluginContainer();
-    case 39: 
+    case 51: 
+      return new QShadowPluginInitStep();
+    case 38: 
       return new ThreadHookStep();
-    case 40: 
+    case 39: 
       return new QzoneTracer();
-    case 41: 
+    case 40: 
       return new OpenThreadCreateHook();
+    case 41: 
     case 42: 
     case 43: 
-    case 44: 
       return new HackVm();
-    case 45: 
+    case 44: 
       return new BroadcastReportRegister();
-    case 46: 
+    case 45: 
       return RecordTracer.a();
-    case 47: 
+    case 46: 
       return new NowliveContainer();
+    case 48: 
+      return new GdtInitializeOnToolProcessStep();
     }
-    return new GdtInitializeOnToolProcessStep();
+    return new LiteLiveSDKOnToolProcessStep();
   }
 }
 

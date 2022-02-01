@@ -1,120 +1,128 @@
 package com.tencent.mobileqq.profilecard.vas;
 
 import android.text.TextUtils;
-import azrb;
-import azrc;
-import azri;
-import azso;
-import badc;
-import badd;
-import baeb;
-import bhaa;
-import bhou;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.ProfileCardManager;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.profile.VipWZRYTemplateHelper;
+import com.tencent.mobileqq.profilecard.vas.misc.VasProfileTemplateCheckUtils;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.vas.VasExtensionManager;
+import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class VasProfileTemplateController
 {
-  private int jdField_a_of_type_Int;
-  private azrb jdField_a_of_type_Azrb;
-  private FriendProfileCardActivity jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  private boolean d = true;
-  private boolean e;
+  private static final int MAX_TRY_DOWNLOAD_TIMES = 3;
+  private static final String TAG = "ProfileTemplateCheckController";
+  private FriendProfileCardActivity mActivity;
+  private QQAppInterface mApp;
+  private ProfileCardInfo mCardInfo;
+  private int mDownloadProfileResTimes = 0;
+  private boolean mFirstCheckTemplate = true;
+  private boolean mHasDownloadWZRYTemplate;
+  private AtomicBoolean mIsDownloadTemplateRunning = new AtomicBoolean(false);
+  public boolean updateBG;
+  public boolean updateDiyText;
+  public boolean updateStyle;
   
   public VasProfileTemplateController(FriendProfileCardActivity paramFriendProfileCardActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity = paramFriendProfileCardActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramFriendProfileCardActivity.app;
-    this.jdField_a_of_type_Azrb = paramFriendProfileCardActivity.jdField_a_of_type_Azrb;
+    this.mActivity = paramFriendProfileCardActivity;
+    this.mApp = paramFriendProfileCardActivity.app;
+    this.mCardInfo = paramFriendProfileCardActivity.a;
   }
   
-  private void a(Card paramCard)
+  private void checkDynamicRes(Card paramCard, ProfileCardTemplate paramProfileCardTemplate)
   {
-    if (paramCard.lCurrentStyleId != azri.g) {}
-    while (VipProfileCardDiyActivity.a(this.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextFontId)) {
+    String str = paramCard.backgroundUrl;
+    int i = paramCard.dynamicCardFlag;
+    long l = paramCard.lCurrentBgId;
+    if (i == 1)
+    {
+      boolean bool = ProfileCardManager.a(this.mApp.getApp(), l, ".dynamic");
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate dynamicBackgroundExist=%s", new Object[] { Boolean.valueOf(bool) }));
+      }
+      if ((!bool) && (tryDownload())) {
+        downloadProfileCardRes(str, l, paramProfileCardTemplate);
+      }
+    }
+  }
+  
+  private void checkSimpleRes(Card paramCard)
+  {
+    if (paramCard.lCurrentStyleId != ProfileCardTemplate.g) {}
+    while (VipProfileCardDiyActivity.a(this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextFontId)) {
       return;
     }
-    paramCard = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
-    paramCard.addCallBacker(new badc(this));
-    paramCard.downloadItem(5L, "font.diycard.android." + this.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextFontId, "ProfileTemplateCheckController");
+    paramCard = (IVasQuickUpdateService)this.mApp.getRuntimeService(IVasQuickUpdateService.class, "");
+    paramCard.addCallBacker(new VasProfileTemplateController.1(this, paramCard));
+    paramCard.downloadItem(5L, "font.diycard.android." + this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextFontId, "ProfileTemplateCheckController");
   }
   
-  private void a(Card paramCard, azri paramazri)
+  private void checkWzryRes(Card paramCard, ProfileCardTemplate paramProfileCardTemplate)
   {
     String str = paramCard.backgroundUrl;
     long l = paramCard.lCurrentBgId;
     boolean bool;
-    if (paramCard.lCurrentStyleId == azri.j)
+    if (paramCard.lCurrentStyleId == ProfileCardTemplate.j)
     {
-      bool = azrc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramCard.lCurrentBgId, "wzMainImage.png");
+      bool = ProfileCardManager.a(this.mApp.getApp(), paramCard.lCurrentBgId, "wzMainImage.png");
       if (QLog.isColorLevel()) {
         QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate heroFileExist=%s", new Object[] { Boolean.valueOf(bool) }));
       }
-      if ((!bool) && (a())) {
-        a(str, l, paramazri);
+      if ((!bool) && (tryDownload())) {
+        downloadProfileCardRes(str, l, paramProfileCardTemplate);
       }
     }
-    if ((paramCard.lCurrentStyleId == azri.j) || (paramCard.lCurrentStyleId == azri.i))
+    if ((paramCard.lCurrentStyleId == ProfileCardTemplate.j) || (paramCard.lCurrentStyleId == ProfileCardTemplate.i))
     {
-      bool = azso.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, "cardWZ.zip");
+      bool = VipWZRYTemplateHelper.a(this.mActivity, "cardWZ.zip");
       if (QLog.isColorLevel()) {
         QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate heroTemplateExist=%s", new Object[] { Boolean.valueOf(bool) }));
       }
-      if ((!this.e) && (!bool))
+      if ((!this.mHasDownloadWZRYTemplate) && (!bool))
       {
-        azso.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new badd(this, paramazri, paramCard));
-        this.e = true;
+        VipWZRYTemplateHelper.a(this.mApp, new VasProfileTemplateController.2(this, paramProfileCardTemplate, paramCard));
+        this.mHasDownloadWZRYTemplate = true;
       }
     }
   }
   
-  private void a(String paramString, long paramLong, azri paramazri)
+  private void downloadProfileCardRes(String paramString, long paramLong, ProfileCardTemplate paramProfileCardTemplate)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileTemplateCheckController", 2, String.format("downloadProfileCardRes bgUrl=%s bgId=%s mIsDownloadTemplateRunning=%s", new Object[] { paramString, Long.valueOf(paramLong), this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean }));
+      QLog.d("ProfileTemplateCheckController", 2, String.format("downloadProfileCardRes bgUrl=%s bgId=%s mIsDownloadTemplateRunning=%s", new Object[] { paramString, Long.valueOf(paramLong), this.mIsDownloadTemplateRunning }));
     }
     if ((paramLong != 160L) && (paramLong != 1600L)) {
-      ((bhou)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "card." + paramLong);
+      ((VasExtensionManager)this.mApp.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(this.mApp, "card." + paramLong);
     }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (!this.mIsDownloadTemplateRunning.get())
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      ThreadManagerV2.excute(new VasProfileTemplateController.DownloadTemplateRunnable(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramazri, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean, paramString, paramLong), 128, null, true);
+      this.mIsDownloadTemplateRunning.set(true);
+      ThreadManagerV2.excute(new VasProfileTemplateController.DownloadTemplateRunnable(this.mActivity, paramProfileCardTemplate, this.mIsDownloadTemplateRunning, paramString, paramLong), 128, null, true);
     }
   }
   
-  private boolean a()
-  {
-    if (this.jdField_a_of_type_Int > 3) {
-      return false;
-    }
-    this.jdField_a_of_type_Int += 1;
-    return true;
-  }
-  
-  private boolean a(Card paramCard)
+  private boolean isBackgroundResExist(Card paramCard)
   {
     long l1 = paramCard.lCurrentStyleId;
     String str = paramCard.backgroundUrl;
     int i = paramCard.dynamicCardFlag;
     long l2 = paramCard.lCurrentBgId;
-    boolean bool3 = bhaa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    boolean bool3 = ProfileCardUtil.a(this.mApp);
     boolean bool1;
     if ((l2 == 160L) || (l2 == 1600L)) {
-      bool1 = bhaa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), str);
+      bool1 = ProfileCardUtil.a(this.mApp.getApp(), str);
     }
     for (;;)
     {
@@ -127,66 +135,58 @@ public class VasProfileTemplateController
       return true;
       if (i == 1)
       {
-        boolean bool2 = azrc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), l2, "dynamicBottom.jpg");
+        boolean bool2 = ProfileCardManager.a(this.mApp.getApp(), l2, "dynamicBottom.jpg");
         bool1 = bool2;
         if (!bool2) {
-          bool1 = new File(azrc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), l1, l2)).exists();
+          bool1 = new File(ProfileCardManager.a(this.mApp.getApp(), l1, l2)).exists();
         }
       }
       else
       {
-        bool1 = new File(azrc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), l1, l2)).exists();
+        bool1 = new File(ProfileCardManager.a(this.mApp.getApp(), l1, l2)).exists();
       }
     }
     return false;
   }
   
-  private void b(Card paramCard, azri paramazri)
+  private boolean tryDownload()
   {
-    String str = paramCard.backgroundUrl;
-    int i = paramCard.dynamicCardFlag;
-    long l = paramCard.lCurrentBgId;
-    if (i == 1)
-    {
-      boolean bool = azrc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), l, ".dynamic");
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate dynamicBackgroundExist=%s", new Object[] { Boolean.valueOf(bool) }));
-      }
-      if ((!bool) && (a())) {
-        a(str, l, paramazri);
-      }
+    if (this.mDownloadProfileResTimes > 3) {
+      return false;
     }
+    this.mDownloadProfileResTimes += 1;
+    return true;
   }
   
-  public void a(Card paramCard, int paramInt)
+  public void onCardUpdate(Card paramCard, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.c = false;
+    this.updateBG = false;
+    this.updateStyle = false;
+    this.updateDiyText = false;
     if (paramInt == 8)
     {
-      if (this.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+      if (this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl)) {
+        if (!TextUtils.isEmpty(this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl)) {
           break label305;
         }
         if (!TextUtils.isEmpty(paramCard.backgroundUrl)) {
-          this.jdField_a_of_type_Boolean = true;
+          this.updateBG = true;
         }
-        if ((this.jdField_a_of_type_Azrb.jdField_a_of_type_Long != paramCard.lCurrentStyleId) || (this.jdField_a_of_type_Azrb.b != azri.a(paramCard))) {
-          this.b = true;
+        if ((this.mCardInfo.jdField_a_of_type_Long != paramCard.lCurrentStyleId) || (this.mCardInfo.b != ProfileCardTemplate.a(paramCard))) {
+          this.updateStyle = true;
         }
-        if ((this.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == azri.g) && (!TextUtils.isEmpty(paramCard.diyText))) {
-          this.c = true;
+        if ((this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.g) && (!TextUtils.isEmpty(paramCard.diyText))) {
+          this.updateDiyText = true;
         }
       }
       label129:
       if (QLog.isColorLevel()) {
-        QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate updateBG=%s updateStyle=%s updateDiyText=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Boolean.valueOf(this.c) }));
+        QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate updateBG=%s updateStyle=%s updateDiyText=%s", new Object[] { Boolean.valueOf(this.updateBG), Boolean.valueOf(this.updateStyle), Boolean.valueOf(this.updateDiyText) }));
       }
-      this.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-      if ((this.d) || (this.jdField_a_of_type_Boolean) || (this.b)) {
-        this.d = false;
+      this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
+      if ((this.mFirstCheckTemplate) || (this.updateBG) || (this.updateStyle)) {
+        this.mFirstCheckTemplate = false;
       }
     }
     for (;;)
@@ -198,56 +198,56 @@ public class VasProfileTemplateController
         String str = paramCard.backgroundUrl;
         l2 = paramCard.backgroundColor;
         l3 = paramCard.lCurrentBgId;
-        localazri = bhaa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l1, true);
-        if ((l1 > 0L) && (localazri != null) && (!TextUtils.isEmpty(str)) && (paramInt == 0)) {
+        localProfileCardTemplate = ProfileCardUtil.a(this.mApp, l1, true);
+        if ((l1 > 0L) && (localProfileCardTemplate != null) && (!TextUtils.isEmpty(str)) && (paramInt == 0)) {
           continue;
         }
-        this.jdField_a_of_type_Azrb.jdField_a_of_type_Azri = null;
+        this.mCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null;
       }
       catch (Throwable localThrowable)
       {
         long l1;
         long l2;
         long l3;
-        azri localazri;
+        ProfileCardTemplate localProfileCardTemplate;
         label305:
         QLog.e("ProfileTemplateCheckController", 1, "onCardUpdate fail.", localThrowable);
-        this.jdField_a_of_type_Azrb.jdField_a_of_type_Azri = null;
+        this.mCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null;
         continue;
-        this.jdField_a_of_type_Azrb.jdField_a_of_type_Azri = null;
+        this.mCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null;
         continue;
-        if (!a()) {
+        if (!tryDownload()) {
           continue;
         }
-        a(localThrowable, l3, localazri);
+        downloadProfileCardRes(localThrowable, l3, localProfileCardTemplate);
         continue;
-        this.jdField_a_of_type_Azrb.jdField_a_of_type_Azri = null;
+        this.mCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null;
         continue;
       }
-      if (this.c) {
-        a(paramCard);
+      if (this.updateDiyText) {
+        checkSimpleRes(paramCard);
       }
-      baeb.a(this.jdField_a_of_type_Azrb);
+      VasProfileTemplateCheckUtils.checkCurrentUseTemplate(this.mCardInfo);
       return;
-      if (this.jdField_a_of_type_Azrb.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl.equals(paramCard.backgroundUrl)) {
+      if (this.mCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl.equals(paramCard.backgroundUrl)) {
         break;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.updateBG = true;
       break;
       if (paramInt != 13) {
         break label129;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.updateBG = true;
       break label129;
-      if (!a(paramCard)) {
+      if (!isBackgroundResExist(paramCard)) {
         continue;
       }
-      if (!localazri.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l2, l1)) {
+      if (!localProfileCardTemplate.a(this.mApp, l2, l1)) {
         continue;
       }
-      this.jdField_a_of_type_Azrb.jdField_a_of_type_Azri = localazri;
-      b(paramCard, localazri);
-      a(paramCard, localazri);
+      this.mCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = localProfileCardTemplate;
+      checkDynamicRes(paramCard, localProfileCardTemplate);
+      checkWzryRes(paramCard, localProfileCardTemplate);
     }
   }
 }

@@ -10,11 +10,11 @@ public final class Visitor
   public String lastmood = "";
   public String name = "";
   public String portrait = "";
-  public int sqqlevel;
-  public long uin;
-  public int viplevle;
-  public int visittime;
-  public int weight;
+  public int sqqlevel = 0;
+  public long uin = 0L;
+  public int viplevle = 0;
+  public int visittime = 0;
+  public int weight = 0;
   
   public Visitor() {}
   
@@ -60,7 +60,7 @@ public final class Visitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     cannon.Visitor
  * JD-Core Version:    0.7.0.1
  */

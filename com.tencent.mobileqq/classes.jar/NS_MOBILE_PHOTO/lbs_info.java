@@ -7,23 +7,23 @@ import com.qq.taf.jce.JceStruct;
 public final class lbs_info
   extends JceStruct
 {
-  public int category_id;
+  public int category_id = 0;
   public String city = "";
-  public int city_id;
+  public int city_id = 0;
   public String continent = "";
   public String country = "";
   public String district = "";
-  public int eType;
+  public int eType = 0;
   public String geoDesc = "";
-  public int iAlt;
-  public int iLat;
-  public int iLon;
-  public int isInland;
+  public int iAlt = 0;
+  public int iLat = 0;
+  public int iLon = 0;
+  public int isInland = 0;
   public String poiDesc = "";
   public String province = "";
   public String road = "";
   public String scenery = "";
-  public int source;
+  public int source = 0;
   public String town = "";
   
   public lbs_info() {}

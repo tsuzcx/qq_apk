@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.qphone.base.util.QLog;
-import ykv;
 
 final class FFmpegUtils$7
   extends ExecuteBinResponseCallback
@@ -14,7 +14,7 @@ final class FFmpegUtils$7
       QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
     }
     this.val$endCallback.onFailure(paramString);
-    ykv.a("music_composite", "music_clip", 0, 1, new String[0]);
+    StoryReportor.a("music_composite", "music_clip", 0, 1, new String[0]);
   }
   
   public void onStart()
@@ -25,7 +25,7 @@ final class FFmpegUtils$7
   public void onSuccess(String paramString)
   {
     paramString = String.valueOf(System.currentTimeMillis() - this.startime);
-    ykv.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    StoryReportor.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
     if (QLog.isColorLevel()) {
       QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + paramString);
     }
@@ -33,7 +33,7 @@ final class FFmpegUtils$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils.7
  * JD-Core Version:    0.7.0.1
  */

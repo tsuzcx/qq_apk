@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aekj;
-import aekk;
-
-public class NotificationActivity$8$1$1
+class NotificationActivity$8$1$1
   implements Runnable
 {
-  public NotificationActivity$8$1$1(aekk paramaekk) {}
+  NotificationActivity$8$1$1(NotificationActivity.8.1 param1) {}
   
   public void run()
   {
     try
     {
       Thread.sleep(1500L);
-      this.a.a.a.c();
+      this.a.a.a.exitApp();
       return;
     }
     catch (InterruptedException localInterruptedException)

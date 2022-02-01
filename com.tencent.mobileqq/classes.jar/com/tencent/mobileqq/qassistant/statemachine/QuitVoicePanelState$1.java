@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.qassistant.statemachine;
 
-import bakj;
-import bamb;
-import bamm;
+import com.tencent.mobileqq.qassistant.core.AssistantPanelManager;
 
-public class QuitVoicePanelState$1
+class QuitVoicePanelState$1
   implements Runnable
 {
-  public QuitVoicePanelState$1(bamb parambamb, boolean paramBoolean) {}
+  QuitVoicePanelState$1(QuitVoicePanelState paramQuitVoicePanelState, boolean paramBoolean) {}
   
   public void run()
   {
-    bamb.a(this.this$0).a().a(this.a, false);
+    QuitVoicePanelState.a(this.this$0).a().a(this.a, false);
   }
 }
 

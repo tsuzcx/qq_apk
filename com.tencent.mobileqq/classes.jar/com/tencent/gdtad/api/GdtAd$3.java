@@ -1,7 +1,6 @@
 package com.tencent.gdtad.api;
 
-import acaq;
-import acho;
+import com.tencent.gdtad.log.GdtLog;
 import java.lang.ref.WeakReference;
 
 class GdtAd$3
@@ -13,16 +12,16 @@ class GdtAd$3
   {
     if ((this.a == null) || (this.a.get() == null) || (GdtAd.access$000((GdtAd)this.a.get()) == null) || (GdtAd.access$000((GdtAd)this.a.get()).get() == null))
     {
-      acho.d("GdtAd", "notifyImpression error");
+      GdtLog.d("GdtAd", "notifyImpression error");
       return;
     }
-    acho.b("GdtAd", "notifyImpression");
-    ((acaq)GdtAd.access$000((GdtAd)this.a.get()).get()).b((GdtAd)this.a.get());
+    GdtLog.b("GdtAd", "notifyImpression");
+    ((GdtAdListener)GdtAd.access$000((GdtAd)this.a.get()).get()).b((GdtAd)this.a.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.GdtAd.3
  * JD-Core Version:    0.7.0.1
  */

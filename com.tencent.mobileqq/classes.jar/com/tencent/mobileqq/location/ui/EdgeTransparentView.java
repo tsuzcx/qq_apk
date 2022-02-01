@@ -12,7 +12,7 @@ import android.graphics.Shader.TileMode;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 
 public class EdgeTransparentView
   extends FrameLayout
@@ -55,18 +55,18 @@ public class EdgeTransparentView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.EdgeTransparentView);
-    this.jdField_a_of_type_Int = paramContext.getInt(0, 0);
-    this.jdField_a_of_type_Float = paramContext.getDimension(1, 40.0F);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.v);
+    this.jdField_a_of_type_Int = paramContext.getInt(R.styleable.jdField_a_of_type_Int, 0);
+    this.jdField_a_of_type_Float = paramContext.getDimension(R.styleable.b, 40.0F);
     paramContext.recycle();
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
   }
   
-  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null, 31);
     boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
@@ -102,12 +102,12 @@ public class EdgeTransparentView
     return bool;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     a();

@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aqpx;
 
 public class ColorNoteListLayout
   extends LinearLayout
@@ -20,7 +19,7 @@ public class ColorNoteListLayout
   private int jdField_a_of_type_Int;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
-  private aqpx jdField_a_of_type_Aqpx;
+  private OnListHideListener jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int b;
   private int c = -1;
@@ -50,7 +49,7 @@ public class ColorNoteListLayout
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131364840);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131364964);
     paramContext = new LinearLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, paramContext);
   }
@@ -64,15 +63,15 @@ public class ColorNoteListLayout
   {
     if (paramKeyEvent.getKeyCode() == 4)
     {
-      if ((paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Aqpx != null)) {
-        this.jdField_a_of_type_Aqpx.b();
+      if ((paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener.b();
       }
       return true;
     }
     return false;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = 0;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -136,9 +135,9 @@ public class ColorNoteListLayout
     this.b = paramInt2;
   }
   
-  public void setHideListener(aqpx paramaqpx)
+  public void setHideListener(OnListHideListener paramOnListHideListener)
   {
-    this.jdField_a_of_type_Aqpx = paramaqpx;
+    this.jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener = paramOnListHideListener;
   }
 }
 

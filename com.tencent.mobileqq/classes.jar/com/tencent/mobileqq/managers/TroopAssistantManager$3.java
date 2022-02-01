@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.managers;
 
-import awtz;
 import com.tencent.mobileqq.data.TroopAssistantData;
 import com.tencent.mobileqq.persistence.EntityManager;
 
-public class TroopAssistantManager$3
+class TroopAssistantManager$3
   implements Runnable
 {
-  public TroopAssistantManager$3(awtz paramawtz, EntityManager paramEntityManager, TroopAssistantData paramTroopAssistantData) {}
+  TroopAssistantManager$3(TroopAssistantManager paramTroopAssistantManager, EntityManager paramEntityManager, TroopAssistantData paramTroopAssistantData) {}
   
   public void run()
   {

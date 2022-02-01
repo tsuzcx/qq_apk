@@ -5,9 +5,8 @@ import android.media.AudioTrack;
 import android.media.MediaFormat;
 import android.util.Log;
 import java.nio.ByteBuffer;
-import xle;
 
-public class AudioPlayback
+class AudioPlayback
 {
   public static long a;
   private float jdField_a_of_type_Float = 1.0F;
@@ -15,7 +14,7 @@ public class AudioPlayback
   private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
   private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
   private AudioPlayback.AudioThread jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread;
-  protected xle a;
+  protected AudioPlayback.BufferQueue a;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private float jdField_b_of_type_Float = 1.0F;
   private int jdField_b_of_type_Int;
@@ -34,7 +33,7 @@ public class AudioPlayback
   
   public AudioPlayback()
   {
-    this.jdField_a_of_type_Xle = new xle();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$BufferQueue = new AudioPlayback.BufferQueue();
   }
   
   @TargetApi(16)
@@ -68,7 +67,7 @@ public class AudioPlayback
   
   public long a()
   {
-    return (xle.a(this.jdField_a_of_type_Xle) / this.jdField_b_of_type_Int / this.jdField_c_of_type_Int * 1000000.0D);
+    return (AudioPlayback.BufferQueue.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$BufferQueue) / this.jdField_b_of_type_Int / this.jdField_c_of_type_Int * 1000000.0D);
   }
   
   public void a()
@@ -190,7 +189,7 @@ public class AudioPlayback
         Log.d("AudioPlayback", "playback head not reset");
       }
     }
-    this.jdField_a_of_type_Xle.a(paramByteBuffer, paramLong);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$BufferQueue.a(paramByteBuffer, paramLong);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread.a();
   }
   
@@ -268,7 +267,7 @@ public class AudioPlayback
         this.jdField_a_of_type_AndroidMediaAudioTrack.pause();
       }
       this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
-      this.jdField_a_of_type_Xle.a();
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$BufferQueue.a();
       this.jdField_c_of_type_Long = jdField_a_of_type_Long;
       if (bool) {
         this.jdField_a_of_type_AndroidMediaAudioTrack.play();
@@ -285,7 +284,7 @@ public class AudioPlayback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.AudioPlayback
  * JD-Core Version:    0.7.0.1
  */

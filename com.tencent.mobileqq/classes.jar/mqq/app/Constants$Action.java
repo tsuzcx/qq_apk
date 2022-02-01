@@ -67,6 +67,7 @@ public abstract interface Constants$Action
   public static final int ACTION_WTLOGIN_GET_ST_WITHOUT_PASSWD = 2101;
   public static final int ACTION_WTLOGIN_GET_ST_WITH_PASSWD = 2100;
   public static final int ACTION_WTLOGIN_GET_SUBACCOUNT_ST_VIA_SMS_VERIFY_LOGIN = 2122;
+  public static final int ACTION_WTLOGIN_QUICK_LOGIN_BY_GATEWAY = 2215;
   public static final int ACTION_WTLOGIN_REFRESH_PICTURE_DATA = 2103;
   public static final int ACTION_WTLOGIN_REFRESH_SMS_DATA = 2112;
   public static final int ACTION_WTLOGIN_REFRESH_SMS_VERIFY_LOGIN_CODE = 2119;

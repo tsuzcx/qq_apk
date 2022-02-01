@@ -10,8 +10,8 @@
             <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/aag" android:layout_centerVertical="true">
                 <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/gm8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" />
                 <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip">
-                    <ImageView android:layout_gravity="center_vertical" android:id="@id/n34" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="3.0dip" />
-                    <TextView android:textSize="12.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/o0c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@id/nap" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="3.0dip" />
+                    <TextView android:textSize="12.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/oer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

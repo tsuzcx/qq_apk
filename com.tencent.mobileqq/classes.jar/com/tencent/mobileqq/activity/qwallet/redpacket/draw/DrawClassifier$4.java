@@ -1,34 +1,31 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import agcb;
-import akzp;
-import akzu;
-import alan;
-import albw;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleItem;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.qphone.base.util.QLog;
 
-public class DrawClassifier$4
+class DrawClassifier$4
   implements Runnable
 {
-  public DrawClassifier$4(akzp paramakzp, akzu paramakzu, agcb paramagcb) {}
+  DrawClassifier$4(DrawClassifier paramDrawClassifier, DrawClassifier.OnRecogListener paramOnRecogListener, DoodleItem paramDoodleItem) {}
   
   public void run()
   {
     try
     {
-      if (!akzp.a(this.this$0))
+      if (!DrawClassifier.a(this.this$0))
       {
         if (QLog.isColorLevel()) {
           QLog.e("DrawClassifier", 2, "not init ok or already close to recog");
         }
-        if (this.jdField_a_of_type_Akzu != null) {
-          this.jdField_a_of_type_Akzu.a(false);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawClassifier$OnRecogListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawClassifier$OnRecogListener.a(false);
         }
       }
       long l = System.currentTimeMillis();
-      boolean bool = akzp.a(this.this$0).a(this.jdField_a_of_type_Agcb, akzp.c(this.this$0), this.this$0.a, akzp.a(this.this$0), akzp.a(this.this$0));
-      if (this.jdField_a_of_type_Akzu != null) {
-        this.jdField_a_of_type_Akzu.a(bool);
+      boolean bool = DrawClassifier.a(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleItem, DrawClassifier.c(this.this$0), this.this$0.a, DrawClassifier.a(this.this$0), DrawClassifier.a(this.this$0));
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawClassifier$OnRecogListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawClassifier$OnRecogListener.a(bool);
       }
       if (QLog.isColorLevel()) {
         QLog.i("DrawClassifier", 2, "recognize cost:" + (System.currentTimeMillis() - l));
@@ -40,17 +37,17 @@ public class DrawClassifier$4
       do
       {
         if (QLog.isColorLevel()) {
-          QLog.e("DrawClassifier", 2, "recognition throwable:" + albw.a(localThrowable));
+          QLog.e("DrawClassifier", 2, "recognition throwable:" + QWalletTools.a(localThrowable));
         }
         localThrowable.printStackTrace();
-      } while (this.jdField_a_of_type_Akzu == null);
-      this.jdField_a_of_type_Akzu.a(false);
+      } while (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawClassifier$OnRecogListener == null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawClassifier$OnRecogListener.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawClassifier.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.Advertisement.manager;
 
-import ofd;
-
-public class AdvertisementVideoPreloadManager$9
+class AdvertisementVideoPreloadManager$9
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$9(ofd paramofd) {}
+  AdvertisementVideoPreloadManager$9(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class AdvertisementVideoPreloadManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.9
  * JD-Core Version:    0.7.0.1
  */

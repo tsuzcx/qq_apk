@@ -3,15 +3,15 @@ package com.tencent.biz.pubaccount.readinjoy.view.headers;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.IBannerAdapter;
 import com.tencent.mobileqq.widget.MeasureGridView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import tsb;
 
 public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
   extends PagerAdapter
-  implements tsb
+  implements IBannerAdapter
 {
   private List<MeasureGridView> jdField_a_of_type_JavaUtilList = new ArrayList();
   
@@ -44,7 +44,7 @@ public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
     return paramInt - 1;
   }
   
-  public void a(List<MeasureGridView> paramList)
+  void a(List<MeasureGridView> paramList)
   {
     if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
       this.jdField_a_of_type_JavaUtilList.clear();
@@ -142,7 +142,7 @@ public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

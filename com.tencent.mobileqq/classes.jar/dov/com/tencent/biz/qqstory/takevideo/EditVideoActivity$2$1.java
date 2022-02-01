@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Build.VERSION;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class EditVideoActivity$2$1
@@ -14,13 +14,13 @@ class EditVideoActivity$2$1
     if (((Build.VERSION.SDK_INT > 16) && (this.a.this$0.isDestroyed())) || (this.a.this$0.isFinishing())) {
       return;
     }
-    QQToast.a(this.a.this$0, anvx.a(2131703239), 0).a();
+    QQToast.a(this.a.this$0, HardCodeUtil.a(2131703787), 0).a();
     this.a.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

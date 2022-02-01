@@ -5,7 +5,6 @@ import com.tencent.mobileqq.ac.ArticleComment.GetPhotoCollectionInfoResponse;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileInputStream;
-import vus;
 
 class PublicAccountImageCollectionPreloadManager$ReadFileThread
   implements Runnable
@@ -60,15 +59,15 @@ class PublicAccountImageCollectionPreloadManager$ReadFileThread
       ((ArticleComment.GetPhotoCollectionInfoResponse)localObject2).mergeFrom((byte[])localObject1);
       localObject1 = PublicAccountImageCollectionPreloadManager.a(this.this$0, (ArticleComment.GetPhotoCollectionInfoResponse)localObject2, this.a);
       this.this$0.a.put(this.a, localObject1);
-      this.this$0.a((vus)localObject1);
-      this.this$0.b((vus)localObject1);
+      this.this$0.a((PublicAccountImageCollectionUtils.PhotoCollectionInfo)localObject1);
+      this.this$0.b((PublicAccountImageCollectionUtils.PhotoCollectionInfo)localObject1);
     }
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager.ReadFileThread
  * JD-Core Version:    0.7.0.1
  */

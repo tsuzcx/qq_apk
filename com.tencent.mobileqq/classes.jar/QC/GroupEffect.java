@@ -9,8 +9,8 @@ public final class GroupEffect
   extends JceStruct
 {
   static ArrayList<UserConfig> cache_vUserConfig = new ArrayList();
-  public int global_effect_id;
-  public ArrayList<UserConfig> vUserConfig;
+  public int global_effect_id = 0;
+  public ArrayList<UserConfig> vUserConfig = null;
   
   static
   {

@@ -2,7 +2,6 @@ package com.tencent.mobileqq.graytip;
 
 import android.os.Handler;
 import android.os.Looper;
-import avhu;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.transfile.AbsDownloader;
@@ -10,10 +9,10 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import java.io.File;
 import java.net.URL;
 
-public class UniteGrayTipItemBuilder$1
+class UniteGrayTipItemBuilder$1
   implements Runnable
 {
-  public UniteGrayTipItemBuilder$1(avhu paramavhu, MessageRecord paramMessageRecord) {}
+  UniteGrayTipItemBuilder$1(UniteGrayTipItemBuilder paramUniteGrayTipItemBuilder, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
@@ -25,7 +24,7 @@ public class UniteGrayTipItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

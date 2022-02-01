@@ -1,11 +1,9 @@
 package com.tencent.avgame.gameroom;
 
-import nhz;
-
-public final class AVGameLottieHelper$2
+final class AVGameLottieHelper$2
   implements Runnable
 {
-  public AVGameLottieHelper$2(nhz paramnhz) {}
+  AVGameLottieHelper$2(AVGameLottieHelper.LottieDrawableLoadedListener paramLottieDrawableLoadedListener) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public final class AVGameLottieHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.AVGameLottieHelper.2
  * JD-Core Version:    0.7.0.1
  */

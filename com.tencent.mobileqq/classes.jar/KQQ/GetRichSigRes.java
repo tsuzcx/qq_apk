@@ -10,7 +10,7 @@ public final class GetRichSigRes
 {
   static ArrayList<ResRichSigInfo> cache_vstSigInfo;
   public byte cResult = -1;
-  public ArrayList<ResRichSigInfo> vstSigInfo;
+  public ArrayList<ResRichSigInfo> vstSigInfo = null;
   
   public GetRichSigRes() {}
   

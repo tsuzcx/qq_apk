@@ -37,7 +37,7 @@ public class BorderURLImageView
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Int <= 0) {

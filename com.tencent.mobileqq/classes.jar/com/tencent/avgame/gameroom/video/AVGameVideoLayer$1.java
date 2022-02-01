@@ -1,20 +1,18 @@
 package com.tencent.avgame.gameroom.video;
 
-import nmq;
-
-public class AVGameVideoLayer$1
+class AVGameVideoLayer$1
   implements Runnable
 {
-  public AVGameVideoLayer$1(nmq paramnmq) {}
+  AVGameVideoLayer$1(AVGameVideoLayer paramAVGameVideoLayer) {}
   
   public void run()
   {
-    nmq.a(this.this$0);
+    AVGameVideoLayer.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameVideoLayer.1
  * JD-Core Version:    0.7.0.1
  */

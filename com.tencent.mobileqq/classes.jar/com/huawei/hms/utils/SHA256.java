@@ -167,7 +167,7 @@ public abstract class SHA256
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.huawei.hms.utils.SHA256
  * JD-Core Version:    0.7.0.1
  */

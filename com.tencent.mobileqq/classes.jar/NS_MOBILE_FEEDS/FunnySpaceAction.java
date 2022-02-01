@@ -12,12 +12,12 @@ public final class FunnySpaceAction
 {
   static ArrayList<Integer> cache_ComboIndexList;
   static Map<String, String> cache_ExtendInfo = new HashMap();
-  public ArrayList<Integer> ComboIndexList;
-  public Map<String, String> ExtendInfo;
+  public ArrayList<Integer> ComboIndexList = null;
+  public Map<String, String> ExtendInfo = null;
   public String ID = "";
   public String LikeKey = "";
   public String Name = "";
-  public int Type;
+  public int Type = 0;
   public String Url = "";
   
   static

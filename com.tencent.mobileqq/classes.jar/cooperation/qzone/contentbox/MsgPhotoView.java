@@ -19,11 +19,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvx;
-import bmkt;
-import bmor;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -40,6 +38,8 @@ import cooperation.qzone.contentbox.model.MQUserPersonalProfile;
 import cooperation.qzone.contentbox.model.MsgOnClickListener;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.zipanimate.ZipAnimationDrawable;
+import cooperation.vip.VipReporterManager;
+import cooperation.vip.vipcomponent.VipModule;
 import cooperation.vip.vipcomponent.util.VipResourcesListener;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -51,7 +51,7 @@ import mqq.os.MqqHandler;
 public class MsgPhotoView
   extends BaseMsgView
 {
-  private static final int AVATAR_GAP = ViewUtils.dpToPx(36.0F);
+  private static final int AVATAR_GAP = ViewUtils.b(36.0F);
   private static final int MSG_UPDATE_AVATAR = 10001;
   private static final String TAG = "MsgPhotoView";
   public static final int TEXT_COLOR = -7500397;
@@ -71,7 +71,7 @@ public class MsgPhotoView
   private TextView mDesc6;
   View.OnClickListener mIconListener = new MsgPhotoView.3(this);
   private ImageView mImageShadow;
-  private boolean mIsRepeat;
+  private boolean mIsRepeat = false;
   private LinearLayout mLikeCommentContainer;
   private RelativeLayout mLikeContainer;
   private ImageView mLikeIcon;
@@ -154,48 +154,48 @@ public class MsgPhotoView
   {
     this.mContext = paramContext;
     this.mUiHandler = new BaseMsgView.MyHandler(this);
-    LayoutInflater.from(this.mContext).inflate(2131562419, this);
-    this.mAvatarContainer = ((LinearLayout)findViewById(2131363181));
-    this.mAvatarImage = ((ImageView)findViewById(2131363145));
-    this.mNickNameView = ((TextView)findViewById(2131371981));
-    this.mBackgroundImage = ((AnyScaleTypeImageView)findViewById(2131363496));
+    LayoutInflater.from(this.mContext).inflate(2131562559, this);
+    this.mAvatarContainer = ((LinearLayout)findViewById(2131363236));
+    this.mAvatarImage = ((ImageView)findViewById(2131363196));
+    this.mNickNameView = ((TextView)findViewById(2131372288));
+    this.mBackgroundImage = ((AnyScaleTypeImageView)findViewById(2131363583));
     this.mBackgroundImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.viewPager = ((QzoneMsgViewPager)findViewById(2131381152));
+    this.viewPager = ((QzoneMsgViewPager)findViewById(2131381619));
     initViewPager();
-    this.mDesc1 = ((TextView)findViewById(2131365514));
-    this.mDesc2 = ((TextView)findViewById(2131365515));
-    this.mDesc3 = ((TextView)findViewById(2131365516));
-    this.mDesc4 = ((TextView)findViewById(2131365517));
-    this.mDesc5 = ((TextView)findViewById(2131365518));
-    this.mDesc6 = ((TextView)findViewById(2131365519));
-    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363170));
-    this.mLikeCommentContainer = ((LinearLayout)findViewById(2131370088));
-    this.mLikeContainer = ((RelativeLayout)findViewById(2131370089));
-    this.mCommentContainer = ((RelativeLayout)findViewById(2131364921));
-    this.mLikeIcon = ((ImageView)findViewById(2131370092));
-    this.mLikeNum = ((TextView)findViewById(2131370097));
-    this.mCommentIcon = ((ImageView)findViewById(2131364937));
-    this.mCommentNum = ((TextView)findViewById(2131364962));
-    this.mShareContainer = ((LinearLayout)findViewById(2131377543));
-    this.mShareQQView = ((RelativeLayout)findViewById(2131374555));
-    this.mShareQzoneView = ((RelativeLayout)findViewById(2131376064));
-    this.mQqshareIcon = ((ImageView)findViewById(2131374556));
-    this.mQzoneshareIcon = ((ImageView)findViewById(2131376065));
-    this.mQqshareText = ((TextView)findViewById(2131374557));
-    this.mQzoneshareText = ((TextView)findViewById(2131376066));
+    this.mDesc1 = ((TextView)findViewById(2131365675));
+    this.mDesc2 = ((TextView)findViewById(2131365676));
+    this.mDesc3 = ((TextView)findViewById(2131365677));
+    this.mDesc4 = ((TextView)findViewById(2131365678));
+    this.mDesc5 = ((TextView)findViewById(2131365679));
+    this.mDesc6 = ((TextView)findViewById(2131365680));
+    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363223));
+    this.mLikeCommentContainer = ((LinearLayout)findViewById(2131370360));
+    this.mLikeContainer = ((RelativeLayout)findViewById(2131370361));
+    this.mCommentContainer = ((RelativeLayout)findViewById(2131365058));
+    this.mLikeIcon = ((ImageView)findViewById(2131370364));
+    this.mLikeNum = ((TextView)findViewById(2131370369));
+    this.mCommentIcon = ((ImageView)findViewById(2131365072));
+    this.mCommentNum = ((TextView)findViewById(2131365097));
+    this.mShareContainer = ((LinearLayout)findViewById(2131377954));
+    this.mShareQQView = ((RelativeLayout)findViewById(2131374926));
+    this.mShareQzoneView = ((RelativeLayout)findViewById(2131376445));
+    this.mQqshareIcon = ((ImageView)findViewById(2131374927));
+    this.mQzoneshareIcon = ((ImageView)findViewById(2131376446));
+    this.mQqshareText = ((TextView)findViewById(2131374928));
+    this.mQzoneshareText = ((TextView)findViewById(2131376447));
     this.mLikeContainer.setOnClickListener(this.listener);
     this.mCommentContainer.setOnClickListener(this.listener);
     this.mShareQQView.setOnClickListener(this.listener);
     this.mShareQzoneView.setOnClickListener(this.listener);
-    this.mImageShadow = ((ImageView)findViewById(2131375665));
-    this.mVideoIcon = ((ImageView)findViewById(2131380934));
-    this.mQcircleDes = ((TextView)findViewById(2131374033));
-    this.mQcircleContainer = ((LinearLayout)findViewById(2131374055));
-    this.mQcircleLikeCount = ((TextView)findViewById(2131374039));
-    this.mQcirclePushCount = ((TextView)findViewById(2131374054));
-    this.mQQUnionVipIcon = ((ImageView)findViewById(2131368618));
-    this.mVipYellowIcon = ((ImageView)findViewById(2131368619));
-    this.mVipLoverYellowIcon = ((ImageView)findViewById(2131368617));
+    this.mImageShadow = ((ImageView)findViewById(2131376045));
+    this.mVideoIcon = ((ImageView)findViewById(2131381391));
+    this.mQcircleDes = ((TextView)findViewById(2131374347));
+    this.mQcircleContainer = ((LinearLayout)findViewById(2131374371));
+    this.mQcircleLikeCount = ((TextView)findViewById(2131374355));
+    this.mQcirclePushCount = ((TextView)findViewById(2131374370));
+    this.mQQUnionVipIcon = ((ImageView)findViewById(2131368850));
+    this.mVipYellowIcon = ((ImageView)findViewById(2131368851));
+    this.mVipLoverYellowIcon = ((ImageView)findViewById(2131368849));
     this.mQQUnionVipIcon.setOnClickListener(this.mIconListener);
     this.mVipYellowIcon.setOnClickListener(this.mIconListener);
     this.mVipLoverYellowIcon.setOnClickListener(this.mIconListener);
@@ -220,7 +220,7 @@ public class MsgPhotoView
       this.mVipLoverYellowIcon.setImageDrawable((Drawable)localObject);
       this.mVipLoverYellowIcon.setVisibility(0);
     } while (this.mIsRepeat);
-    bmkt.a(13, 1);
+    VipReporterManager.a(13, 1);
   }
   
   private void showPersonalVipInfo()
@@ -268,20 +268,20 @@ public class MsgPhotoView
       if ((paramMQUserClientShowInfo.unionIconWidth > 0) && (paramMQUserClientShowInfo.unionIconHeight > 0))
       {
         localObject = this.mQQUnionVipIcon.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = ViewUtils.dpToPx(paramMQUserClientShowInfo.unionIconWidth / 2.0F);
-        ((ViewGroup.LayoutParams)localObject).height = ViewUtils.dpToPx(paramMQUserClientShowInfo.unionIconHeight / 2.0F);
+        ((ViewGroup.LayoutParams)localObject).width = ViewUtils.b(paramMQUserClientShowInfo.unionIconWidth / 2.0F);
+        ((ViewGroup.LayoutParams)localObject).height = ViewUtils.b(paramMQUserClientShowInfo.unionIconHeight / 2.0F);
         this.mQQUnionVipIcon.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       paramMQUserClientShowInfo = paramMQUserClientShowInfo.unionVipUrl;
       Object localObject = new ZipAnimationDrawable();
       ((ZipAnimationDrawable)localObject).setAnimationRes(paramMQUserClientShowInfo, 10);
-      ((ZipAnimationDrawable)localObject).setScale(ViewUtils.getScreenWidth() / 720.0F);
+      ((ZipAnimationDrawable)localObject).setScale(ViewUtils.a() / 720.0F);
       ((ZipAnimationDrawable)localObject).setRepeatAnimation(true);
       ((ZipAnimationDrawable)localObject).clearFirstFrame();
       ((ZipAnimationDrawable)localObject).start();
       this.mQQUnionVipIcon.setImageDrawable((Drawable)localObject);
     } while (this.mIsRepeat);
-    bmkt.a(12, 1);
+    VipReporterManager.a(12, 1);
   }
   
   private void showVipIcon(int paramInt1, int paramInt2, int paramInt3)
@@ -298,12 +298,12 @@ public class MsgPhotoView
       {
         return;
         localObject1 = new MsgPhotoView.WeakVipResourcesListener(this.mUiHandler, this.mVipLoverYellowIcon, paramInt2, this.mIsRepeat);
-        localObject2 = bmor.a();
+        localObject2 = VipModule.a();
         if (paramInt3 != 1) {
           break;
         }
         bool = true;
-        localObject1 = ((bmor)localObject2).a(paramInt1, paramInt2, bool, false, "", 8, (VipResourcesListener)localObject1);
+        localObject1 = ((VipModule)localObject2).a(paramInt1, paramInt2, bool, false, "", 8, (VipResourcesListener)localObject1);
       } while (localObject1 == null);
       Object localObject2 = this.mVipYellowIcon;
       if (paramInt2 != 2) {
@@ -317,7 +317,7 @@ public class MsgPhotoView
     if (paramInt2 == 2) {}
     for (paramInt1 = 11;; paramInt1 = 10)
     {
-      bmkt.a(paramInt1, 1);
+      VipReporterManager.a(paramInt1, 1);
       return;
       bool = false;
       break;
@@ -340,7 +340,7 @@ public class MsgPhotoView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.mUiHandler != null)
@@ -411,8 +411,8 @@ public class MsgPhotoView
               this.mQcircleLikeCount.setText(bigNumberFormatTranfer(paramMQMsg.msgInteractData.likeCell.totalLike));
             }
             this.mImageShadow.setVisibility(0);
-            findViewById(2131376053).setVisibility(8);
-            findViewById(2131379361).setVisibility(8);
+            findViewById(2131376434).setVisibility(8);
+            findViewById(2131379784).setVisibility(8);
             this.mDesc4.setVisibility(8);
             this.mDesc5.setVisibility(8);
             this.mDesc6.setVisibility(8);
@@ -434,7 +434,7 @@ public class MsgPhotoView
           int j = 0;
           while (j < i)
           {
-            localObject2 = new UserListItemView(this.mContext, 0, false);
+            localObject2 = new UserListItemView(this.mContext, 0, false, false);
             ((UserListItemView)localObject2).setUin((String)((MQMsgBody)localObject1).vecUserAvatar.get(j));
             ((UserListItemView)localObject2).setTranslationX(AVATAR_GAP * j);
             this.mAvatarListLayout.addView((View)localObject2, 0);
@@ -490,12 +490,12 @@ public class MsgPhotoView
               this.mDesc4.setText(paramMQMsg.eventTitle);
               this.mDesc5.setVisibility(0);
               this.mDesc5.setText("摄于" + paramMQMsg.capTime);
-              findViewById(2131376053).setVisibility(0);
-              findViewById(2131379361).setVisibility(0);
+              findViewById(2131376434).setVisibility(0);
+              findViewById(2131379784).setVisibility(0);
               if (paramBoolean2)
               {
-                ((ImageView)findViewById(2131379362)).setImageResource(2130848488);
-                ((TextView)findViewById(2131379363)).setTextColor(-7500397);
+                ((ImageView)findViewById(2131379785)).setImageResource(2130848847);
+                ((TextView)findViewById(2131379786)).setTextColor(-7500397);
               }
               if (((MQMsgBody)localObject1).photolist == null) {
                 break;
@@ -521,7 +521,7 @@ public class MsgPhotoView
             {
               if (!TextUtils.isEmpty(paramMQMsg.msgBody.coverPicUrl))
               {
-                localObject2 = (ImageView)findViewById(2131376053);
+                localObject2 = (ImageView)findViewById(2131376434);
                 ((ImageView)localObject2).setVisibility(0);
                 ((ImageView)localObject2).setImageDrawable(getUrlDrawable(paramMQMsg.msgBody.coverPicUrl));
               }
@@ -530,8 +530,8 @@ public class MsgPhotoView
               this.mDesc6.setText(paramMQMsg.msgBody.content);
               break label407;
             }
-            findViewById(2131376053).setVisibility(8);
-            findViewById(2131379361).setVisibility(8);
+            findViewById(2131376434).setVisibility(8);
+            findViewById(2131379784).setVisibility(8);
             this.mDesc4.setVisibility(8);
             this.mDesc5.setVisibility(8);
             this.mDesc6.setVisibility(8);
@@ -548,7 +548,7 @@ public class MsgPhotoView
             if (!paramMQMsg.msgInteractData.likeCell.liked) {
               break label1494;
             }
-            this.mLikeIcon.setImageResource(2130848476);
+            this.mLikeIcon.setImageResource(2130848833);
             if (paramMQMsg.msgInteractData.likeCell.totalLike <= 0) {
               break label1527;
             }
@@ -564,7 +564,7 @@ public class MsgPhotoView
             {
               this.mLikeNum.setTextColor(-7500397);
               this.mCommentNum.setTextColor(-7500397);
-              this.mCommentIcon.setImageResource(2130848471);
+              this.mCommentIcon.setImageResource(2130848828);
             }
           }
           if (paramMQMsg.msgInteractData.type != 2) {
@@ -573,8 +573,8 @@ public class MsgPhotoView
           this.mShareContainer.setVisibility(0);
           if (paramBoolean2)
           {
-            this.mQqshareIcon.setImageResource(2130848482);
-            this.mQzoneshareIcon.setImageResource(2130848485);
+            this.mQqshareIcon.setImageResource(2130848841);
+            this.mQzoneshareIcon.setImageResource(2130848844);
             this.mQqshareText.setTextColor(-7500397);
             this.mQzoneshareText.setTextColor(-7500397);
           }
@@ -587,21 +587,21 @@ public class MsgPhotoView
           return;
           localObject1 = this.mLikeIcon;
           if (paramBoolean2) {}
-          for (i = 2130848479;; i = 2130848478)
+          for (i = 2130848836;; i = 2130848835)
           {
             ((ImageView)localObject1).setImageResource(i);
             break;
           }
-          this.mLikeNum.setText(anvx.a(2131706427));
+          this.mLikeNum.setText(HardCodeUtil.a(2131706968));
           this.mLikeNum.setVisibility(0);
           break label1345;
-          this.mCommentNum.setText(anvx.a(2131706428));
+          this.mCommentNum.setText(HardCodeUtil.a(2131706969));
           this.mCommentNum.setVisibility(0);
           break label1396;
         }
         localObject1 = (MQButtonCell)paramMQMsg.msgInteractData.buttonInfos.get(0);
-        findViewById(2131379361).setVisibility(0);
-        paramMQMsg = (TextView)findViewById(2131379363);
+        findViewById(2131379784).setVisibility(0);
+        paramMQMsg = (TextView)findViewById(2131379786);
         paramMQMsg.setText(((MQButtonCell)localObject1).words);
         paramMQMsg.setTypeface(Typeface.DEFAULT_BOLD);
         localObject1 = getUrlDrawable(((MQButtonCell)localObject1).iconUrl);
@@ -612,7 +612,7 @@ public class MsgPhotoView
         }
         for (;;)
         {
-          ((ImageView)findViewById(2131379362)).setImageDrawable((Drawable)localObject1);
+          ((ImageView)findViewById(2131379785)).setImageDrawable((Drawable)localObject1);
           break;
           ((URLDrawable)localObject1).setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
         }
@@ -628,7 +628,7 @@ public class MsgPhotoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgPhotoView
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.FrameLayout;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +20,15 @@ public class RedPointView
   protected List<BusinessInfoCheckUpdate.RedTypeInfo> a;
   protected boolean a;
   protected int b;
+  protected boolean b;
   protected int c;
+  protected boolean c;
   protected int d;
   protected int f = 21;
-  protected int g;
-  protected int h;
-  protected int i;
-  protected int j;
+  protected int g = 0;
+  protected int h = 0;
+  protected int i = 0;
+  protected int j = 0;
   protected int k;
   protected int l;
   protected int m;
@@ -42,7 +44,9 @@ public class RedPointView
   public RedPointView(Context paramContext, View paramView)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewView = paramView;
     a();
@@ -59,8 +63,8 @@ public class RedPointView
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_Int = 10;
-    this.b = 20;
-    this.c = 30;
+    this.jdField_b_of_type_Int = 20;
+    this.jdField_c_of_type_Int = 30;
     this.d = 40;
   }
   

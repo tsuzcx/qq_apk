@@ -96,7 +96,7 @@ public class ConnectionImpl
   public ConnectionImpl(int paramInt, String paramString)
   {
     this.mId = paramString;
-    native_setup(new WeakReference(this), 1, paramInt);
+    native_setup2(new WeakReference(this), 1, paramInt, Integer.parseInt(this.mId));
     UploadLog.d("ConnectionImpl", "ConnectionImpl constructor : id = " + this.mId);
   }
   
@@ -138,6 +138,8 @@ public class ConnectionImpl
   private static final native void native_init();
   
   private final native void native_setup(Object paramObject, int paramInt1, int paramInt2);
+  
+  private final native void native_setup2(Object paramObject, int paramInt1, int paramInt2, int paramInt3);
   
   private void onConnect(boolean paramBoolean, int paramInt, String paramString)
   {
@@ -206,13 +208,13 @@ public class ConnectionImpl
   {
     if (!(paramObject1 instanceof WeakReference))
     {
-      UploadLog.w("ConnectionImpl", "fromNative: !(ConnectionImpl_ref instanceof WeakReference<?>)");
+      UploadLog.w("ConnectionImpl", "fromNative: !(ConnectionImpl_ref instanceof WeakReference<?>) what:" + getActionNameById(paramInt1) + " arg1:" + paramInt2 + " arg2:" + paramInt3);
       return;
     }
     paramObject1 = ((WeakReference)paramObject1).get();
     if (!(paramObject1 instanceof ConnectionImpl))
     {
-      UploadLog.w("ConnectionImpl", "fromNative: !(ref instanceof ConnectionImpl)");
+      UploadLog.w("ConnectionImpl", "fromNative: !(ref instanceof ConnectionImpl) what:" + getActionNameById(paramInt1) + " arg1:" + paramInt2 + " arg2:" + paramInt3 + "ref:" + paramObject1);
       return;
     }
     paramObject1 = (ConnectionImpl)paramObject1;
@@ -273,6 +275,7 @@ public class ConnectionImpl
     UploadLog.w("ConnectionImpl", this.mId + " finalize");
     try
     {
+      disconnect();
       super.finalize();
       return;
     }
@@ -310,7 +313,7 @@ public class ConnectionImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.upload.network.base.ConnectionImpl
  * JD-Core Version:    0.7.0.1
  */

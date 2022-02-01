@@ -286,7 +286,7 @@ public class PTSSwiperView
     PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure], is not PTSLiteAppInstance.");
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     switchAutoPlay(this.mAutoPlay);
@@ -306,13 +306,13 @@ public class PTSSwiperView
     post(new PTSSwiperView.2(this, paramPTSNodeInfo));
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     switchAutoPlay(false);
   }
   
-  protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
+  public void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
     if ((paramInt == 0) && (this.mAutoPlay)) {}
@@ -413,7 +413,7 @@ public class PTSSwiperView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSSwiperView
  * JD-Core Version:    0.7.0.1
  */

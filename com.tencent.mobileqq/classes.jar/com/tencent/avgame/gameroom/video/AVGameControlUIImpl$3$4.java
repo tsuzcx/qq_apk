@@ -1,12 +1,11 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.mobileqq.utils.AudioHelper;
-import nmc;
 
-public class AVGameControlUIImpl$3$4
+class AVGameControlUIImpl$3$4
   implements Runnable
 {
-  public AVGameControlUIImpl$3$4(nmc paramnmc) {}
+  AVGameControlUIImpl$3$4(AVGameControlUIImpl.3 param3) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class AVGameControlUIImpl$3$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.4
  * JD-Core Version:    0.7.0.1
  */

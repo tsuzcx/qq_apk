@@ -14,7 +14,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import c;
+import androidx.core.R.styleable;
 import java.util.ArrayList;
 import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
@@ -58,20 +58,20 @@ final class GradientColorInflaterCompat
     if (!((String)localObject).equals("gradient")) {
       throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": invalid gradient color tag " + (String)localObject);
     }
-    localObject = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, c.d);
-    float f1 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "startX", c.B, 0.0F);
-    float f2 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "startY", c.C, 0.0F);
-    float f3 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "endX", c.D, 0.0F);
-    float f4 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "endY", c.E, 0.0F);
-    float f5 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "centerX", c.w, 0.0F);
-    float f6 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "centerY", c.x, 0.0F);
-    int i = TypedArrayUtils.getNamedInt((TypedArray)localObject, paramXmlPullParser, "type", c.v, 0);
-    int j = TypedArrayUtils.getNamedColor((TypedArray)localObject, paramXmlPullParser, "startColor", c.t, 0);
+    localObject = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, R.styleable.d);
+    float f1 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "startX", R.styleable.B, 0.0F);
+    float f2 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "startY", R.styleable.C, 0.0F);
+    float f3 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "endX", R.styleable.D, 0.0F);
+    float f4 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "endY", R.styleable.E, 0.0F);
+    float f5 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "centerX", R.styleable.w, 0.0F);
+    float f6 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "centerY", R.styleable.x, 0.0F);
+    int i = TypedArrayUtils.getNamedInt((TypedArray)localObject, paramXmlPullParser, "type", R.styleable.v, 0);
+    int j = TypedArrayUtils.getNamedColor((TypedArray)localObject, paramXmlPullParser, "startColor", R.styleable.t, 0);
     boolean bool = TypedArrayUtils.hasAttribute(paramXmlPullParser, "centerColor");
-    int k = TypedArrayUtils.getNamedColor((TypedArray)localObject, paramXmlPullParser, "centerColor", c.A, 0);
-    int m = TypedArrayUtils.getNamedColor((TypedArray)localObject, paramXmlPullParser, "endColor", c.u, 0);
-    int n = TypedArrayUtils.getNamedInt((TypedArray)localObject, paramXmlPullParser, "tileMode", c.z, 0);
-    float f7 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "gradientRadius", c.y, 0.0F);
+    int k = TypedArrayUtils.getNamedColor((TypedArray)localObject, paramXmlPullParser, "centerColor", R.styleable.A, 0);
+    int m = TypedArrayUtils.getNamedColor((TypedArray)localObject, paramXmlPullParser, "endColor", R.styleable.u, 0);
+    int n = TypedArrayUtils.getNamedInt((TypedArray)localObject, paramXmlPullParser, "tileMode", R.styleable.z, 0);
+    float f7 = TypedArrayUtils.getNamedFloat((TypedArray)localObject, paramXmlPullParser, "gradientRadius", R.styleable.y, 0.0F);
     ((TypedArray)localObject).recycle();
     paramResources = checkColors(inflateChildElements(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme), j, m, bool, k);
     switch (i)
@@ -104,14 +104,14 @@ final class GradientColorInflaterCompat
       }
       if ((j == 2) && (k <= i) && (paramXmlPullParser.getName().equals("item")))
       {
-        TypedArray localTypedArray = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, c.e);
-        boolean bool1 = localTypedArray.hasValue(c.F);
-        boolean bool2 = localTypedArray.hasValue(c.G);
+        TypedArray localTypedArray = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, R.styleable.e);
+        boolean bool1 = localTypedArray.hasValue(R.styleable.F);
+        boolean bool2 = localTypedArray.hasValue(R.styleable.G);
         if ((!bool1) || (!bool2)) {
           throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <item> tag requires a 'color' attribute and a 'offset' attribute!");
         }
-        j = localTypedArray.getColor(c.F, 0);
-        float f = localTypedArray.getFloat(c.G, 0.0F);
+        j = localTypedArray.getColor(R.styleable.F, 0);
+        float f = localTypedArray.getFloat(R.styleable.G, 0.0F);
         localTypedArray.recycle();
         localArrayList2.add(Integer.valueOf(j));
         localArrayList1.add(Float.valueOf(f));
@@ -137,7 +137,7 @@ final class GradientColorInflaterCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.content.res.GradientColorInflaterCompat
  * JD-Core Version:    0.7.0.1
  */

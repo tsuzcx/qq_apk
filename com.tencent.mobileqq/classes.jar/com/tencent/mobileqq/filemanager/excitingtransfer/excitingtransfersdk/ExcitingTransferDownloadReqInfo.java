@@ -5,17 +5,17 @@ import com.tencent.commonsdk.util.HexUtil;
 
 public class ExcitingTransferDownloadReqInfo
 {
-  public byte[] bufLanUuid;
-  public long fileSize;
-  public boolean isSupportHttps;
-  public ExcitingTransferHostInfo[] mHosts;
-  public String mLanHost;
-  public int mLanPort;
-  public long mSRKey;
+  public byte[] bufLanUuid = null;
+  public long fileSize = 0L;
+  public boolean isSupportHttps = false;
+  public ExcitingTransferHostInfo[] mHosts = null;
+  public String mLanHost = null;
+  public int mLanPort = 0;
+  public long mSRKey = 0L;
   public byte[] md5;
-  public String serverPath;
-  public String sslCName;
-  public String strCookie;
+  public String serverPath = null;
+  public String sslCName = null;
+  public String strCookie = null;
   public String strFileName;
   public String strSaveFileDir;
   public String strTempFilePath;
@@ -46,7 +46,7 @@ public class ExcitingTransferDownloadReqInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo
  * JD-Core Version:    0.7.0.1
  */

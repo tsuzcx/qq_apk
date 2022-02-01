@@ -5,8 +5,6 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bijg;
-import bijv;
 
 final class WebSoService$11
   implements Runnable
@@ -19,15 +17,15 @@ final class WebSoService$11
     String str1 = "";
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      bijv.a(this.jdField_a_of_type_JavaLangString.getBytes(), bijv.b(this.jdField_a_of_type_AndroidNetUri));
-      str1 = bijg.a(this.jdField_a_of_type_JavaLangString);
+      WebSoUtils.a(this.jdField_a_of_type_JavaLangString.getBytes(), WebSoUtils.b(this.jdField_a_of_type_AndroidNetUri));
+      str1 = SHA1Util.a(this.jdField_a_of_type_JavaLangString);
     }
     SharedPreferences.Editor localEditor;
     if ((!TextUtils.isEmpty(this.b)) && (this.jdField_a_of_type_AndroidNetUri != null))
     {
       localEditor = WebSoService.a().edit();
-      String str2 = String.valueOf(bijv.a());
-      String str3 = bijv.a(this.jdField_a_of_type_AndroidNetUri);
+      String str2 = String.valueOf(WebSoUtils.a());
+      String str3 = WebSoUtils.a(this.jdField_a_of_type_AndroidNetUri);
       localEditor.putString("eTag_" + str2 + str3, this.b);
       localEditor.putString("pageVersion_" + str2 + str3, this.c);
       localEditor.putString("htmlSha1_" + str2 + str3, str1);
@@ -44,7 +42,7 @@ final class WebSoService$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoService.11
  * JD-Core Version:    0.7.0.1
  */

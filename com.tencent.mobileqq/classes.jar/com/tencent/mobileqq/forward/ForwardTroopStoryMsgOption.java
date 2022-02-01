@@ -16,7 +16,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aupt;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -28,17 +27,17 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class ForwardTroopStoryMsgOption
-  extends aupt
+  extends ForwardBaseOption
 {
   public ForwardTroopStoryMsgOption(Intent paramIntent)
   {
     super(paramIntent);
   }
   
-  public boolean a(QQCustomDialog paramQQCustomDialog)
+  protected boolean a(QQCustomDialog paramQQCustomDialog)
   {
-    int i = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 164.0F);
-    int j = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 265.0F);
+    int i = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 164.0F);
+    int j = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 265.0F);
     int k = Color.parseColor("#e1e1e5");
     Object localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
     ((LinearLayout)localObject1).setOrientation(1);
@@ -51,9 +50,9 @@ public class ForwardTroopStoryMsgOption
     ((RelativeLayout)localObject3).addView(localURLImageView, new RelativeLayout.LayoutParams(-1, -1));
     Object localObject5 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
     ((ImageView)localObject5).setScaleType(ImageView.ScaleType.FIT_XY);
-    ((ImageView)localObject5).setImageResource(2130839648);
+    ((ImageView)localObject5).setImageResource(2130839727);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    int m = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 8.0F);
+    int m = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 8.0F);
     localLayoutParams.setMargins(0, m, m, 0);
     localLayoutParams.addRule(10);
     localLayoutParams.addRule(11);
@@ -66,7 +65,7 @@ public class ForwardTroopStoryMsgOption
       ((TextView)localObject4).setTextColor(-7829368);
       ((TextView)localObject4).setTextSize(1, 12.0F);
       localObject5 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject5).topMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 5.0F);
+      ((LinearLayout.LayoutParams)localObject5).topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 5.0F);
       ((LinearLayout.LayoutParams)localObject5).gravity = 3;
       ((TextView)localObject4).setText((CharSequence)localObject3);
       ((LinearLayout)localObject1).addView((View)localObject4, (ViewGroup.LayoutParams)localObject5);
@@ -100,13 +99,13 @@ public class ForwardTroopStoryMsgOption
     return true;
   }
   
-  public boolean c()
+  protected boolean c()
   {
     Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
     localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    localIntent = AIOUtils.setOpenAIOIntent(localIntent, null);
+    localIntent = AIOUtils.a(localIntent, null);
     localIntent.putExtra("isBack2Root", true);
-    ForwardUtils.handleForwardData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
+    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
     this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
     this.jdField_a_of_type_AndroidAppActivity.finish();
     return true;
@@ -114,7 +113,7 @@ public class ForwardTroopStoryMsgOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopStoryMsgOption
  * JD-Core Version:    0.7.0.1
  */

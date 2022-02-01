@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class BorderTextView
   extends TextView
 {
-  private int border_color;
+  private int borderColor;
   
   public BorderTextView(Context paramContext, int paramInt)
   {
@@ -19,13 +19,13 @@ public class BorderTextView
   public BorderTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    this.border_color = paramInt;
+    this.borderColor = paramInt;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     Paint localPaint = new Paint();
-    localPaint.setColor(this.border_color);
+    localPaint.setColor(this.borderColor);
     localPaint.setStrokeWidth(5.0F);
     paramCanvas.drawLine(0.0F, 0.0F, getWidth(), 0.0F, localPaint);
     paramCanvas.drawLine(0.0F, 0.0F, 0.0F, getHeight(), localPaint);
@@ -36,7 +36,7 @@ public class BorderTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.danmu.BorderTextView
  * JD-Core Version:    0.7.0.1
  */

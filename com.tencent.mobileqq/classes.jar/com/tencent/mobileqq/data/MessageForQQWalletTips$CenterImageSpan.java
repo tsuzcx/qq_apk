@@ -12,7 +12,7 @@ import android.text.style.ImageSpan;
 public class MessageForQQWalletTips$CenterImageSpan
   extends ImageSpan
 {
-  private int size;
+  private int size = 0;
   
   public MessageForQQWalletTips$CenterImageSpan(Context paramContext, int paramInt)
   {
@@ -69,7 +69,7 @@ public class MessageForQQWalletTips$CenterImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips.CenterImageSpan
  * JD-Core Version:    0.7.0.1
  */

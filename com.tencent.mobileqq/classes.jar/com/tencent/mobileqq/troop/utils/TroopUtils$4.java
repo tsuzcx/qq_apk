@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.content.Context;
-import bhdj;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 final class TroopUtils$4
@@ -11,7 +11,7 @@ final class TroopUtils$4
   
   public void run()
   {
-    bhdj.a(this.val$context, 230, null, this.val$context.getString(2131691833), this.val$context.getString(2131694399), null, null, new TroopUtils.4.1(this)).show();
+    DialogUtil.a(this.a, 230, null, this.a.getString(2131691951), this.a.getString(2131694615), null, null, new TroopUtils.4.1(this)).show();
   }
 }
 

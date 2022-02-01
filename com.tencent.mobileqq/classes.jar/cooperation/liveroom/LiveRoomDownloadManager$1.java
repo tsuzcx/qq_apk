@@ -1,31 +1,31 @@
 package cooperation.liveroom;
 
-import bhyn;
-import bhyo;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 
 class LiveRoomDownloadManager$1
-  extends bhyn
+  extends DownloadListener
 {
   LiveRoomDownloadManager$1(LiveRoomDownloadManager paramLiveRoomDownloadManager, LiveRoomDownloadManager.DownloadCallback paramDownloadCallback) {}
   
-  public void onDone(bhyo parambhyo)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    super.onDone(parambhyo);
+    super.onDone(paramDownloadTask);
     if (this.val$callback != null)
     {
-      if (parambhyo.a() == 3) {
-        this.val$callback.onSuccess(parambhyo.a(), parambhyo.a);
+      if (paramDownloadTask.a() == 3) {
+        this.val$callback.onSuccess(paramDownloadTask.a(), paramDownloadTask.a);
       }
     }
     else {
       return;
     }
-    this.val$callback.onFailure(parambhyo.a(), parambhyo.a);
+    this.val$callback.onFailure(paramDownloadTask.a(), paramDownloadTask.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.os.Handler;
-import bezp;
 
-public class TroopBarReplyActivity$12$3
+class TroopBarReplyActivity$12$3
   implements Runnable
 {
-  public TroopBarReplyActivity$12$3(bezp parambezp) {}
+  TroopBarReplyActivity$12$3(TroopBarReplyActivity.12 param12) {}
   
   public void run()
   {

@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
-import bhbx;
-import bhwz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.vashealth.SportManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -317,7 +317,7 @@ public class QZoneDistributedAppCtrl
         str = (String)paramControl.data.get("key_wns_config_main");
         paramControl = (String)paramControl.data.get("key_wns_config_second");
         QzoneConfig.getInstance().printWNSConfig(str, paramControl);
-        bhwz.d();
+        SportManager.d();
         return;
         paramControl = (String)paramControl.data.get("key_url");
         QZoneAppCtrlUploadFileLogic.showDirFileList(BaseApplicationImpl.getContext(), paramControl);
@@ -353,7 +353,7 @@ public class QZoneDistributedAppCtrl
   {
     Intent localIntent = new Intent(BaseApplicationImpl.getContext(), QzonePluginProxyService.class);
     BaseApplicationImpl.getContext().stopService(localIntent);
-    bhbx.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:qzone");
+    Utils.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:qzone");
   }
   
   private void onHandleComboQzProtect(boolean paramBoolean, int paramInt, String paramString)
@@ -398,7 +398,7 @@ public class QZoneDistributedAppCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.QZoneDistributedAppCtrl
  * JD-Core Version:    0.7.0.1
  */

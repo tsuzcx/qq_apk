@@ -5,7 +5,7 @@ import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 public class PreviewBean
 {
   LocalMediaInfo mMediaInfo;
-  public int mMediaType;
+  int mMediaType;
   String mPath;
   
   public LocalMediaInfo getMediaInfo()
@@ -40,7 +40,7 @@ public class PreviewBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.PreviewBean
  * JD-Core Version:    0.7.0.1
  */

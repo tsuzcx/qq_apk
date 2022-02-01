@@ -18,15 +18,15 @@ class AppBrandLaunchManager$StartMiniAppReceiver$1
   {
     String str = AppLoaderFactory.PATH_WXAPKG_ROOT + this.val$appid + "_debug";
     if (new File(str).exists()) {
-      FileUtils.delete(str, false);
+      FileUtils.a(str, false);
     }
     str = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(this.val$appid);
     if (new File(str).exists()) {
-      FileUtils.delete(str, false);
+      FileUtils.a(str, false);
     }
     str = Storage.getCacheDir(this.val$context.getCacheDir().getAbsolutePath(), this.val$uin, this.val$appid);
     if ((str != null) && (new File(str).exists())) {
-      FileUtils.delete(str, false);
+      FileUtils.a(str, false);
     }
     QLog.e("debug", 1, "clear miniapp");
   }

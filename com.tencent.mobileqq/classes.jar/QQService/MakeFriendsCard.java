@@ -13,23 +13,23 @@ public final class MakeFriendsCard
   static byte[] cache_vBackground;
   static byte[] cache_vQQFaceID;
   static ArrayList<TagInfo> cache_vTags;
-  public byte bSingle;
+  public byte bSingle = 0;
   public int eUserIdentityType = UserIdentityType.UserIdentityType_Nomal.value();
-  public int iFaceNum;
-  public int iQQLevel;
-  public long lFavoriteCount;
-  public long lVisitCount;
-  public long lVoteCount;
-  public int nFaceID;
-  public short shAge;
-  public short shGender;
-  public Intro stIntro;
+  public int iFaceNum = 0;
+  public int iQQLevel = 0;
+  public long lFavoriteCount = 0L;
+  public long lVisitCount = 0L;
+  public long lVoteCount = 0L;
+  public int nFaceID = 0;
+  public short shAge = 0;
+  public short shGender = 0;
+  public Intro stIntro = null;
   public String strCertificationInfo = "";
   public String strNick = "";
-  public int uFaceTimeStamp;
-  public byte[] vBackground;
-  public byte[] vQQFaceID;
-  public ArrayList<TagInfo> vTags;
+  public int uFaceTimeStamp = 0;
+  public byte[] vBackground = null;
+  public byte[] vQQFaceID = null;
+  public ArrayList<TagInfo> vTags = null;
   
   public MakeFriendsCard() {}
   

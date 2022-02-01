@@ -1,17 +1,16 @@
 package com.tencent.open.downloadnew;
 
 import android.text.TextUtils;
-import bjko;
-import bjok;
-import bjop;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.common.DownloadDBHelper;
 import java.io.File;
 
-public final class YybHandleUtil$1
+final class YybHandleUtil$1
   implements Runnable
 {
   public void run()
   {
-    Object localObject = bjop.a().a("com.tencent.android.qqdownloader");
+    Object localObject = DownloadDBHelper.a().a("com.tencent.android.qqdownloader");
     String str = "";
     if (localObject != null) {
       str = ((DownloadInfo)localObject).l;
@@ -19,10 +18,10 @@ public final class YybHandleUtil$1
     if (!TextUtils.isEmpty(str))
     {
       localObject = new File(str);
-      bjko.c(bjok.a, "---localFilePath = " + str);
+      LogUtility.c(YybHandleUtil.a, "---localFilePath = " + str);
       if ((localObject != null) && (((File)localObject).exists()))
       {
-        bjko.c(bjok.a, "---delete apk ");
+        LogUtility.c(YybHandleUtil.a, "---delete apk ");
         ((File)localObject).delete();
       }
     }
@@ -30,7 +29,7 @@ public final class YybHandleUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.YybHandleUtil.1
  * JD-Core Version:    0.7.0.1
  */

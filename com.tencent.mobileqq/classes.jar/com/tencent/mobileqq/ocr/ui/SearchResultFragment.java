@@ -5,22 +5,24 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aysw;
-import ayuq;
-import ayur;
-import ayuu;
-import bdla;
 import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SearchResult;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.List;
 
 public class SearchResultFragment
   extends BaseOCRTextSearchFragment
 {
-  public int a;
-  public ViewPager a;
-  public ScrolledTabHost a;
-  public SearchResultViewPagerAdapter a;
+  protected int a;
+  ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
+  ScrolledTabHost jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost;
+  SearchResultViewPagerAdapter jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter;
+  
+  public SearchResultFragment()
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
   
   public void a()
   {
@@ -29,15 +31,15 @@ public class SearchResultFragment
     }
   }
   
-  public void a(String paramString, int paramInt, aysw paramaysw)
+  public void a(String paramString, int paramInt, OCRTextSearchInfo.SearchResult paramSearchResult)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramString, paramInt, paramaysw);
+    paramString = this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramString, paramInt, paramSearchResult);
     this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a();
     paramInt = 0;
     while (paramInt < paramString.size())
     {
-      paramaysw = (ayuu)paramString.get(paramInt);
-      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(paramaysw.a);
+      paramSearchResult = (SearchResultViewPagerAdapter.TabItem)paramString.get(paramInt);
+      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(paramSearchResult.a);
       paramInt += 1;
     }
     if (paramString.size() == 1) {
@@ -53,19 +55,19 @@ public class SearchResultFragment
   
   public void onCreate(Bundle paramBundle)
   {
-    bdla.b(null, "dc00898", "", "", "0X80082E6", "0X80082E6", 0, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X80082E6", "0X80082E6", 0, 0, "", "", "", "");
     super.onCreate(paramBundle);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559861, null);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramLayoutInflater.findViewById(2131381206));
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost = ((ScrolledTabHost)paramLayoutInflater.findViewById(2131378428));
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter = new SearchResultViewPagerAdapter(this.jdField_a_of_type_Ayud, this, this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559937, null);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramLayoutInflater.findViewById(2131381672));
+    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost = ((ScrolledTabHost)paramLayoutInflater.findViewById(2131378857));
+    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter = new SearchResultViewPagerAdapter(this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface, this, this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setOnTabSelectedListener(new ayuq(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ayur(this));
+    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setOnTabSelectedListener(new SearchResultFragment.1(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new SearchResultFragment.2(this));
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

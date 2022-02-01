@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import Override;
-import albw;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,12 +9,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
-import anvx;
-import bgyr;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.util.CommonUtil;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -70,7 +69,7 @@ public class TenpayJumpActivity
   {
     try
     {
-      int j = paramContext.getResources().getDimensionPixelSize(2131299080);
+      int j = paramContext.getResources().getDimensionPixelSize(2131299166);
       float f1 = paramContext.getResources().getDisplayMetrics().density;
       return j - (int)(f1 * 5.0F);
     }
@@ -112,13 +111,13 @@ public class TenpayJumpActivity
       {
         if (this.jdField_a_of_type_JavaLangString.equals(str2))
         {
-          a(anvx.a(2131714223));
+          a(HardCodeUtil.a(2131714719));
           finish();
           return;
         }
         if (!this.jdField_a_of_type_JavaLangString.equals(str1))
         {
-          a(anvx.a(2131714224));
+          a(HardCodeUtil.a(2131714720));
           finish();
           return;
         }
@@ -131,8 +130,8 @@ public class TenpayJumpActivity
         localObject1 = new Bundle();
         ((Bundle)localObject1).putString("json", localJSONObject.toString());
         ((Bundle)localObject1).putString("callbackSn", "0");
-        PayBridgeActivity.a(this, 9, (Bundle)localObject1);
-        albw.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.e, 1L, 0, "scanTransferLimmitQR", "", "");
+        PayBridgeActivity.tenpay(this, 9, (Bundle)localObject1);
+        QWalletTools.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.e, 1L, 0, "scanTransferLimmitQR", "", "");
         return;
       }
       a("verifyqrcode", localJSONObject.toString());
@@ -184,7 +183,7 @@ public class TenpayJumpActivity
     paramString5.append("|0|1|0|android.");
     paramString5.append(6);
     paramString5.append("|");
-    paramString5.append(bgyr.a());
+    paramString5.append(CommonUtil.a());
     paramString5.append("|");
     if ((!TextUtils.isEmpty(paramString3)) || (!TextUtils.isEmpty(paramString4)))
     {
@@ -247,7 +246,7 @@ public class TenpayJumpActivity
           continue;
         }
         this.i = "1";
-        paramBundle = ContactUtils.getFriendShowName(this.app, this.g);
+        paramBundle = ContactUtils.m(this.app, this.g);
         if ((!TextUtils.isEmpty(paramBundle)) && (!paramBundle.equals(this.g))) {
           this.h = paramBundle;
         }
@@ -355,9 +354,9 @@ public class TenpayJumpActivity
     //   158: iload 4
     //   160: istore_2
     //   161: iload_2
-    //   162: ifne +379 -> 541
+    //   162: ifne +388 -> 550
     //   165: aload_3
-    //   166: ifnull +375 -> 541
+    //   166: ifnull +384 -> 550
     //   169: iload_1
     //   170: tableswitch	default:+18 -> 188, 5:+19->189
     //   189: aload_3
@@ -375,7 +374,7 @@ public class TenpayJumpActivity
     //   215: ifne +41 -> 256
     //   218: aload_0
     //   219: ldc_w 404
-    //   222: invokestatic 161	anvx:a	(I)Ljava/lang/String;
+    //   222: invokestatic 161	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   225: invokevirtual 164	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(Ljava/lang/CharSequence;)V
     //   228: aload_0
     //   229: invokevirtual 167	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
@@ -418,16 +417,16 @@ public class TenpayJumpActivity
     //   301: getfield 193	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   304: aload_0
     //   305: getfield 357	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
-    //   308: invokestatic 377	com/tencent/mobileqq/utils/ContactUtils:getFriendShowName	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   308: invokestatic 377	com/tencent/mobileqq/utils/ContactUtils:m	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
     //   311: astore 5
     //   313: aload 5
     //   315: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   318: ifne +239 -> 557
+    //   318: ifne +248 -> 566
     //   321: aload 5
     //   323: aload_0
     //   324: getfield 357	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
     //   327: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   330: ifne +227 -> 557
+    //   330: ifne +236 -> 566
     //   333: aload 5
     //   335: astore_3
     //   336: aload_3
@@ -514,40 +513,45 @@ public class TenpayJumpActivity
     //   506: invokevirtual 438	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   509: pop
     //   510: aload_3
-    //   511: aload_0
-    //   512: getfield 237	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   515: ldc_w 440
-    //   518: invokevirtual 444	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
-    //   521: pop
-    //   522: aload_0
-    //   523: aload_3
-    //   524: ldc_w 390
-    //   527: invokevirtual 448	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:startActivityForResult	(Landroid/content/Intent;I)V
-    //   530: return
-    //   531: astore 5
-    //   533: aload 5
-    //   535: invokevirtual 449	java/io/UnsupportedEncodingException:printStackTrace	()V
-    //   538: goto -72 -> 466
-    //   541: aload_0
-    //   542: iconst_m1
-    //   543: aconst_null
-    //   544: invokevirtual 67	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(ILandroid/os/Bundle;)V
-    //   547: aload_0
-    //   548: invokevirtual 167	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
-    //   551: return
-    //   552: astore 5
-    //   554: goto -88 -> 466
-    //   557: goto -221 -> 336
+    //   511: ldc_w 440
+    //   514: iconst_0
+    //   515: invokevirtual 438	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   518: pop
+    //   519: aload_3
+    //   520: aload_0
+    //   521: getfield 237	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   524: ldc_w 442
+    //   527: invokevirtual 446	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+    //   530: pop
+    //   531: aload_0
+    //   532: aload_3
+    //   533: ldc_w 390
+    //   536: invokevirtual 450	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:startActivityForResult	(Landroid/content/Intent;I)V
+    //   539: return
+    //   540: astore 5
+    //   542: aload 5
+    //   544: invokevirtual 451	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   547: goto -81 -> 466
+    //   550: aload_0
+    //   551: iconst_m1
+    //   552: aconst_null
+    //   553: invokevirtual 67	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(ILandroid/os/Bundle;)V
+    //   556: aload_0
+    //   557: invokevirtual 167	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
+    //   560: return
+    //   561: astore 5
+    //   563: goto -97 -> 466
+    //   566: goto -230 -> 336
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	560	0	this	TenpayJumpActivity
-    //   0	560	1	paramInt1	int
-    //   0	560	2	paramInt2	int
-    //   0	560	3	paramIntent	Intent
+    //   0	569	0	this	TenpayJumpActivity
+    //   0	569	1	paramInt1	int
+    //   0	569	2	paramInt2	int
+    //   0	569	3	paramIntent	Intent
     //   122	127	4	j	int
     //   14	395	5	localObject	Object
-    //   531	3	5	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
-    //   552	1	5	localJSONException	JSONException
+    //   540	3	5	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
+    //   561	1	5	localJSONException	JSONException
     //   204	194	6	str1	String
     //   263	157	7	str2	String
     //   290	165	8	str3	String
@@ -556,8 +560,8 @@ public class TenpayJumpActivity
     //   from	to	target	type
     //   94	103	233	java/lang/Exception
     //   149	158	243	java/lang/Exception
-    //   392	466	531	java/io/UnsupportedEncodingException
-    //   392	466	552	org/json/JSONException
+    //   392	466	540	java/io/UnsupportedEncodingException
+    //   392	466	561	org/json/JSONException
   }
   
   @Override
@@ -574,7 +578,7 @@ public class TenpayJumpActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.TenpayJumpActivity
  * JD-Core Version:    0.7.0.1
  */

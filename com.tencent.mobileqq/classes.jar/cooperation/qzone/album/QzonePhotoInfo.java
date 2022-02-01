@@ -11,12 +11,12 @@ public class QzonePhotoInfo
 {
   public static final Parcelable.Creator<QzonePhotoInfo> CREATOR = new QzonePhotoInfo.1();
   public String mAlbumId = "";
-  public int mBigHeight;
+  public int mBigHeight = 0;
   public String mBigUrl = "";
-  public int mBigWidth;
-  public long mShootTime;
+  public int mBigWidth = 0;
+  public long mShootTime = 0L;
   public Map<Integer, String> mShouzhang_extend_map = new HashMap();
-  public long mUploadTime;
+  public long mUploadTime = 0L;
   public String mlloc = "";
   
   public QzonePhotoInfo() {}
@@ -52,7 +52,7 @@ public class QzonePhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.album.QzonePhotoInfo
  * JD-Core Version:    0.7.0.1
  */

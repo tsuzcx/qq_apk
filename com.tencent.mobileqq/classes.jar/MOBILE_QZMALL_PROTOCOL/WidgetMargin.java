@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class WidgetMargin
   extends JceStruct
 {
-  public int iToRightBorderMargin;
-  public int iToTopBorderMargin;
+  public int iToRightBorderMargin = 0;
+  public int iToTopBorderMargin = 0;
   
   public WidgetMargin() {}
   

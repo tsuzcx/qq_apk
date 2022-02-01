@@ -19,7 +19,7 @@ public class ComboProviderPagerAdapter
   extends PagerAdapter
 {
   public static final int a;
-  public static final int b = AIOUtils.dp2px(0.0F, BaseApplication.getContext().getResources());
+  public static final int b = AIOUtils.a(0.0F, BaseApplication.getContext().getResources());
   private Context jdField_a_of_type_AndroidContentContext;
   public SparseArray<GridView> a;
   private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener;
@@ -28,7 +28,7 @@ public class ComboProviderPagerAdapter
   
   static
   {
-    jdField_a_of_type_Int = AIOUtils.dp2px(7.0F, BaseApplication.getContext().getResources());
+    jdField_a_of_type_Int = AIOUtils.a(7.0F, BaseApplication.getContext().getResources());
   }
   
   public ComboProviderPagerAdapter(Context paramContext, int paramInt)
@@ -78,7 +78,7 @@ public class ComboProviderPagerAdapter
       ((GridView)localObject1).setVerticalSpacing(b);
       ((GridView)localObject1).setHorizontalSpacing(b);
       ((GridView)localObject1).setClipToPadding(false);
-      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + AIOUtils.dp2px(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int + AIOUtils.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((GridView)localObject1).setVerticalScrollBarEnabled(false);
       localObject2 = new ComboProviderGridAdapter(this.jdField_a_of_type_AndroidContentContext, this.c);
       ((ComboProviderGridAdapter)localObject2).a = ((GridView)localObject1);
@@ -99,7 +99,7 @@ public class ComboProviderPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.adapter.ComboProviderPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

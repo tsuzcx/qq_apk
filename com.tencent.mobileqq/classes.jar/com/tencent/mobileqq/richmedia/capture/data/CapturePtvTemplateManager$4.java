@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import bbgg;
-import bdee;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class CapturePtvTemplateManager$4
+class CapturePtvTemplateManager$4
   implements Runnable
 {
-  public CapturePtvTemplateManager$4(bbgg parambbgg) {}
+  CapturePtvTemplateManager$4(CapturePtvTemplateManager paramCapturePtvTemplateManager) {}
   
   public void run()
   {
     int i = 1;
-    boolean bool1 = bdee.a();
-    boolean bool2 = NetworkUtil.isNetSupport(BaseApplication.getContext());
+    boolean bool1 = PtvFilterSoLoad.a();
+    boolean bool2 = NetworkUtil.d(BaseApplication.getContext());
     if (BaseApplicationImpl.sProcessId == 1) {
       i = 0;
     }
@@ -30,7 +29,7 @@ public class CapturePtvTemplateManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.4
  * JD-Core Version:    0.7.0.1
  */

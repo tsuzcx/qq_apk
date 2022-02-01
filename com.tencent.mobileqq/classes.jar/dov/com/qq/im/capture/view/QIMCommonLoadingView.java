@@ -14,12 +14,10 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import boov;
-import boow;
 
 public class QIMCommonLoadingView
   extends View
-  implements boow
+  implements QIMCommonLoadingProgress.Observer
 {
   private static float jdField_d_of_type_Float;
   protected float a;
@@ -28,7 +26,7 @@ public class QIMCommonLoadingView
   protected Paint a;
   protected Path a;
   protected RectF a;
-  boov jdField_a_of_type_Boov;
+  QIMCommonLoadingProgress jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress;
   boolean jdField_a_of_type_Boolean = false;
   protected float b;
   protected int b;
@@ -46,6 +44,7 @@ public class QIMCommonLoadingView
     super(paramContext);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Int - 16843176, this.jdField_b_of_type_Int - 16843176, this.jdField_a_of_type_Int + 16843176, this.jdField_b_of_type_Int + 16843176);
     this.jdField_a_of_type_Long = 100L;
+    this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_Float = a(2.0F, getContext());
     this.jdField_b_of_type_Float = a(17.5F, getContext());
     this.jdField_c_of_type_Float = a(2.5F, getContext());
@@ -58,6 +57,7 @@ public class QIMCommonLoadingView
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Int - 16843176, this.jdField_b_of_type_Int - 16843176, this.jdField_a_of_type_Int + 16843176, this.jdField_b_of_type_Int + 16843176);
     this.jdField_a_of_type_Long = 100L;
+    this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_Float = a(2.0F, getContext());
     this.jdField_b_of_type_Float = a(17.5F, getContext());
     this.jdField_c_of_type_Float = a(2.5F, getContext());
@@ -70,6 +70,7 @@ public class QIMCommonLoadingView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Int - 16843176, this.jdField_b_of_type_Int - 16843176, this.jdField_a_of_type_Int + 16843176, this.jdField_b_of_type_Int + 16843176);
     this.jdField_a_of_type_Long = 100L;
+    this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_Float = a(2.0F, getContext());
     this.jdField_b_of_type_Float = a(17.5F, getContext());
     this.jdField_c_of_type_Float = a(2.5F, getContext());
@@ -87,23 +88,23 @@ public class QIMCommonLoadingView
   
   public void a()
   {
-    boov localboov = this.jdField_a_of_type_Boov;
-    if (localboov != null) {
-      setProgress(Math.round(localboov.a() * (float)this.jdField_a_of_type_Long));
+    QIMCommonLoadingProgress localQIMCommonLoadingProgress = this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress;
+    if (localQIMCommonLoadingProgress != null) {
+      setProgress(Math.round(localQIMCommonLoadingProgress.a() * (float)this.jdField_a_of_type_Long));
     }
   }
   
-  public void a(boov paramboov)
+  public void a(QIMCommonLoadingProgress paramQIMCommonLoadingProgress)
   {
-    boov localboov = this.jdField_a_of_type_Boov;
-    if (localboov != null) {
-      localboov.a(this);
+    QIMCommonLoadingProgress localQIMCommonLoadingProgress = this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress;
+    if (localQIMCommonLoadingProgress != null) {
+      localQIMCommonLoadingProgress.a(this);
     }
-    this.jdField_a_of_type_Boov = paramboov;
-    if (paramboov != null)
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress = paramQIMCommonLoadingProgress;
+    if (paramQIMCommonLoadingProgress != null)
     {
-      paramboov.b(this);
-      setProgress(Math.round(paramboov.a() * (float)this.jdField_a_of_type_Long));
+      paramQIMCommonLoadingProgress.b(this);
+      setProgress(Math.round(paramQIMCommonLoadingProgress.a() * (float)this.jdField_a_of_type_Long));
     }
   }
   
@@ -127,7 +128,7 @@ public class QIMCommonLoadingView
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean) {
@@ -151,10 +152,10 @@ public class QIMCommonLoadingView
         }
         while (this.jdField_c_of_type_Boolean)
         {
-          if ((this.jdField_b_of_type_Long == this.jdField_a_of_type_Long) || (this.jdField_a_of_type_Boov == null)) {
+          if ((this.jdField_b_of_type_Long == this.jdField_a_of_type_Long) || (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress == null)) {
             break label262;
           }
-          setProgress(Math.round(this.jdField_a_of_type_Boov.a() * (float)this.jdField_a_of_type_Long));
+          setProgress(Math.round(this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress.a() * (float)this.jdField_a_of_type_Long));
           return;
           paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 270.0F, f, false, this.jdField_b_of_type_AndroidGraphicsPaint);
         }
@@ -164,12 +165,12 @@ public class QIMCommonLoadingView
     this.jdField_c_of_type_Boolean = false;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_c_of_type_Int = paramInt1;
@@ -207,7 +208,7 @@ public class QIMCommonLoadingView
     {
       invalidate();
       return;
-      if (this.jdField_a_of_type_Boov != null) {
+      if (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress != null) {
         this.jdField_c_of_type_Boolean = true;
       }
     }
@@ -239,7 +240,7 @@ public class QIMCommonLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMCommonLoadingView
  * JD-Core Version:    0.7.0.1
  */

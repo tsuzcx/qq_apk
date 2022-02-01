@@ -1,17 +1,19 @@
 package com.tencent.mobileqq.model;
 
-import awyr;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
+import java.io.File;
+import mqq.app.MobileQQ;
 
-public class EmoticonManager$28
+class EmoticonManager$28
   implements Runnable
 {
-  public EmoticonManager$28(awyr paramawyr, Emoticon paramEmoticon) {}
+  EmoticonManager$28(EmoticonManager paramEmoticonManager, int paramInt, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend) {}
   
   public void run()
   {
-    this.this$0.a.update(this.a);
+    FileUtils.a(new File(this.this$0.a.getApplication().getFilesDir(), "recommemd_emotion_file__" + this.jdField_a_of_type_Int + this.this$0.a.getCurrentUin()).getAbsolutePath(), this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.toByteArray(), false);
   }
 }
 

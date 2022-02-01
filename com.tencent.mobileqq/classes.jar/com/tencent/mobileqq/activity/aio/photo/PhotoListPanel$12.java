@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahun;
-import ahup;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.util.LinkedList;
 
 class PhotoListPanel$12
@@ -17,9 +15,9 @@ class PhotoListPanel$12
   
   public void run()
   {
-    Object localObject1 = this.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694659);
+    Object localObject1 = this.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694896);
     if (PhotoListPanel.a(this.this$0)) {
-      localObject1 = this.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694661);
+      localObject1 = this.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694898);
     }
     if (this.this$0.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
     {
@@ -27,7 +25,7 @@ class PhotoListPanel$12
       Object localObject2 = localObject1;
       if (bool)
       {
-        this.this$0.c.setContentDescription((String)localObject1 + this.this$0.jdField_a_of_type_JavaUtilLinkedList.size() + anvx.a(2131707557));
+        this.this$0.c.setContentDescription((String)localObject1 + this.this$0.jdField_a_of_type_JavaUtilLinkedList.size() + HardCodeUtil.a(2131708084));
         localObject2 = (String)localObject1 + "(" + this.this$0.jdField_a_of_type_JavaUtilLinkedList.size() + ")";
       }
       this.this$0.c.setText((CharSequence)localObject2);
@@ -44,14 +42,14 @@ class PhotoListPanel$12
     }
     for (;;)
     {
-      if (this.this$0.jdField_a_of_type_Ahun != null) {
-        this.this$0.jdField_a_of_type_Ahun.a(this.this$0.d());
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$ImageCountChangedListener != null) {
+        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$ImageCountChangedListener.a(this.this$0.d());
       }
       return;
       bool = false;
       break;
       label270:
-      if (this.this$0.jdField_a_of_type_Ahup.a((String)this.this$0.jdField_a_of_type_JavaUtilLinkedList.peek()) != 1) {
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.a((String)this.this$0.jdField_a_of_type_JavaUtilLinkedList.peek()) != 1) {
         break label339;
       }
       this.this$0.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
@@ -75,7 +73,7 @@ class PhotoListPanel$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.12
  * JD-Core Version:    0.7.0.1
  */

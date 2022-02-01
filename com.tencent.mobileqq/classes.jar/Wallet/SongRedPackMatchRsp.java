@@ -9,11 +9,11 @@ public final class SongRedPackMatchRsp
 {
   public String billno = "";
   public String degree = "";
-  public long grabUin;
-  public long makeUin;
-  public int status;
+  public long grabUin = 0L;
+  public long makeUin = 0L;
+  public int status = 0;
   public String strErr = "";
-  public int timeInterval;
+  public int timeInterval = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

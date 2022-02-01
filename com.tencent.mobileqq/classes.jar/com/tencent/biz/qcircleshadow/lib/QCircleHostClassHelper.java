@@ -1,71 +1,69 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForPeak;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
-import cooperation.qqcircle.hippy.QCircleHippyFragment;
-import dov.com.qq.im.ae.play.AECoverSelectFragment;
-import dov.com.qq.im.ae.play.AEVideoPreviewFragment;
+import com.ae.light.camera.api.IAEEditorManagerForQzone;
+import com.tencent.mobileqq.chat.api.IChatActivityApi;
+import com.tencent.mobileqq.forward.api.IForwardApi;
+import com.tencent.mobileqq.jump.api.IJumpApi;
+import com.tencent.mobileqq.peak.api.IPeakHelperApi;
+import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
+import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class QCircleHostClassHelper
 {
   public static Class getAECoverSelectFragmentClass()
   {
-    return AECoverSelectFragment.class;
+    return ((IAEEditorManagerForQzone)QRoute.api(IAEEditorManagerForQzone.class)).getAECoverSelectFragmentClass();
   }
   
   public static Class getAEVideoPreviewFragmentClass()
   {
-    return AEVideoPreviewFragment.class;
+    return ((IAEEditorManagerForQzone)QRoute.api(IAEEditorManagerForQzone.class)).getAEVideoPreviewFragmentClass();
   }
   
   public static Class getChatActivityClass()
   {
-    return ChatActivity.class;
+    return QCircleServiceImpl.getChatActivityApi().getChatActivityClass();
   }
   
   public static Class getForwardRecentActivityClass()
   {
-    return ForwardRecentActivity.class;
+    return QCircleServiceImpl.getForwardApi().getForwardRecentActivityClass();
   }
   
   public static Class getForwardRecentTranslucentActivityClass()
   {
-    return ForwardRecentTranslucentActivity.class;
+    return QCircleServiceImpl.getForwardApi().getForwardRecentTranslucentActivityClass();
   }
   
   public static Class getJumpActivityClass()
   {
-    return JumpActivity.class;
+    return QCircleServiceImpl.getJumpApi().getJumpActivityClass();
   }
   
   public static Class getPublicFragmentActivityForPeakClass()
   {
-    return PublicFragmentActivityForPeak.class;
+    return ((IPeakHelperApi)QRoute.api(IPeakHelperApi.class)).getPublicFragmentActivityForPeakClass();
   }
   
   public static Class getQCircleHippyFragmentClass()
   {
-    return QCircleHippyFragment.class;
+    return QCircleServiceImpl.getQQService().getQCircleHippyFragmentClass();
   }
   
   public static Class getQQBrowserActivityClass()
   {
-    return QQBrowserActivity.class;
+    return QCircleServiceImpl.getQQService().getQQBrowserActivityClass();
   }
   
   public static Class getQQTranslucentBrowserActivityClass()
   {
-    return QQTranslucentBrowserActivity.class;
+    return QCircleServiceImpl.getQQService().getQQTranslucentBrowserActivityClass();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostClassHelper
  * JD-Core Version:    0.7.0.1
  */

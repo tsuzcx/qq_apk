@@ -1,22 +1,20 @@
 package dov.com.qq.im.ae.gif;
 
-import bnln;
-import bnlv;
-import bnne;
+import dov.com.qq.im.ae.gif.giftext.adapter.AEGIFStickerAdapter;
 
-public class AEGIFStickerListPart$7$2
+class AEGIFStickerListPart$7$2
   implements Runnable
 {
-  public AEGIFStickerListPart$7$2(bnlv parambnlv, int paramInt) {}
+  AEGIFStickerListPart$7$2(AEGIFStickerListPart.7 param7, int paramInt) {}
   
   public void run()
   {
-    bnln.a(this.jdField_a_of_type_Bnlv.a).a(this.jdField_a_of_type_Int);
+    AEGIFStickerListPart.a(this.jdField_a_of_type_DovComQqImAeGifAEGIFStickerListPart$7.a).a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.AEGIFStickerListPart.7.2
  * JD-Core Version:    0.7.0.1
  */

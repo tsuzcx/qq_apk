@@ -15,12 +15,12 @@ public final class PushUpdateFeeds
   static Map<String, String> cache_extendinfo;
   static Map<Integer, byte[]> cache_feeds_data = new HashMap();
   public boolean all_pull = true;
-  public Map<Integer, String> cell_checksum;
-  public Map<Integer, String> cell_infos;
-  public CommentReplyInfo commmet_reply_info;
-  public Map<String, String> extendinfo;
-  public Map<Integer, byte[]> feeds_data;
-  public long feeds_update_time;
+  public Map<Integer, String> cell_checksum = null;
+  public Map<Integer, String> cell_infos = null;
+  public CommentReplyInfo commmet_reply_info = null;
+  public Map<String, String> extendinfo = null;
+  public Map<Integer, byte[]> feeds_data = null;
+  public long feeds_update_time = 0L;
   public boolean need_pull = true;
   public String ugc_key = "";
   

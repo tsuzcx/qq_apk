@@ -1,21 +1,24 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajza;
-import baoq;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class Conversation$UICallBack$8
-  implements Runnable
+class Conversation$UICallBack$8
+  implements View.OnClickListener
 {
-  public Conversation$UICallBack$8(ajza paramajza, String paramString) {}
+  Conversation$UICallBack$8(Conversation.UICallBack paramUICallBack) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    baoq.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ajza.a.a);
+    this.a.a.a.b.performLongClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.8
  * JD-Core Version:    0.7.0.1
  */

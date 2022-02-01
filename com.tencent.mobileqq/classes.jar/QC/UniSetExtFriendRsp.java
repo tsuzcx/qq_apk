@@ -8,7 +8,7 @@ public final class UniSetExtFriendRsp
   extends JceStruct
 {
   public String errmsg = "";
-  public int ret;
+  public int ret = 0;
   
   public UniSetExtFriendRsp() {}
   

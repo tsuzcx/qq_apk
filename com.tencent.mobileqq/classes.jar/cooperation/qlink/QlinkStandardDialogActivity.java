@@ -1,6 +1,5 @@
 package cooperation.qlink;
 
-import Override;
 import android.content.BroadcastReceiver;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
@@ -9,22 +8,12 @@ import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import anvx;
-import bhdj;
-import blyb;
-import blzd;
-import blze;
-import blzf;
-import blzg;
-import blzh;
-import blzi;
-import blzj;
-import blzk;
-import blzl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -33,41 +22,41 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class QlinkStandardDialogActivity
   extends BaseActivity
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  final DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new blze(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+  final DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new QlinkStandardDialogActivity.2(this);
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   
   private void a()
   {
-    Object localObject = new blzf(this);
-    localObject = bhdj.a(this, 230, getString(2131698058), getString(2131698047), 2131698051, 2131698051, (DialogInterface.OnClickListener)localObject, null);
+    Object localObject = new QlinkStandardDialogActivity.3(this);
+    localObject = DialogUtil.a(this, 230, getString(2131698334), getString(2131698323), 2131698327, 2131698327, (DialogInterface.OnClickListener)localObject, null);
     ((QQCustomDialog)localObject).setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
     ((QQCustomDialog)localObject).show();
   }
   
   private void a(String paramString1, String paramString2)
   {
-    paramString1 = bhdj.a(this, 230, getString(2131698038), anvx.a(2131709483) + paramString2 + anvx.a(2131709481), 2131698050, 2131698037, new blzk(this, paramString1, paramString2), new blzl(this));
+    paramString1 = DialogUtil.a(this, 230, getString(2131698314), HardCodeUtil.a(2131709999) + paramString2 + HardCodeUtil.a(2131709997), 2131698326, 2131698313, new QlinkStandardDialogActivity.8(this, paramString1, paramString2), new QlinkStandardDialogActivity.9(this));
     paramString1.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
     paramString1.show();
   }
   
   private void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    blzi localblzi = new blzi(this);
-    blzj localblzj = new blzj(this);
+    QlinkStandardDialogActivity.6 local6 = new QlinkStandardDialogActivity.6(this);
+    QlinkStandardDialogActivity.7 local7 = new QlinkStandardDialogActivity.7(this);
     String str = paramString2;
     if (paramString1 != null)
     {
       str = paramString2;
       if (paramString1.equalsIgnoreCase(paramString2)) {
-        str = ContactUtils.getFriendDisplayName(this.app, paramString1);
+        str = ContactUtils.j(this.app, paramString1);
       }
     }
     if (paramBoolean) {}
-    for (paramString1 = getString(2131698087) + str + getString(2131698088) + paramInt + getString(2131698089) + paramString3 + getString(2131698090) + paramString4 + "。";; paramString1 = getString(2131698078) + str + getString(2131698079) + paramInt + getString(2131698080) + paramString3 + getString(2131698081) + paramString4 + "。")
+    for (paramString1 = getString(2131698363) + str + getString(2131698364) + paramInt + getString(2131698365) + paramString3 + getString(2131698366) + paramString4 + "。";; paramString1 = getString(2131698354) + str + getString(2131698355) + paramInt + getString(2131698356) + paramString3 + getString(2131698357) + paramString4 + "。")
     {
-      paramString1 = bhdj.a(this, 230, getString(2131698058), paramString1, 2131698105, 2131698106, localblzj, localblzi);
+      paramString1 = DialogUtil.a(this, 230, getString(2131698334), paramString1, 2131698381, 2131698382, local7, local6);
       paramString1.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
       paramString1.show();
       return;
@@ -76,12 +65,12 @@ public class QlinkStandardDialogActivity
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    blzg localblzg = new blzg(this);
-    blzh localblzh = new blzh(this, paramBoolean1, paramBoolean2);
+    QlinkStandardDialogActivity.4 local4 = new QlinkStandardDialogActivity.4(this);
+    QlinkStandardDialogActivity.5 local5 = new QlinkStandardDialogActivity.5(this, paramBoolean1, paramBoolean2);
     if (paramBoolean1) {}
-    for (int i = 2131698053;; i = 2131698052)
+    for (int i = 2131698329;; i = 2131698328)
     {
-      paramString = bhdj.a(this, 230, getString(2131698058), paramString, 2131698050, i, localblzh, localblzg);
+      paramString = DialogUtil.a(this, 230, getString(2131698334), paramString, 2131698326, i, local5, local4);
       paramString.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
       paramString.show();
       return;
@@ -133,7 +122,7 @@ public class QlinkStandardDialogActivity
     paramBundle.addAction("com.tencent.qlink.finishdlg");
     if (this.app.getApp() != null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new blzd(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QlinkStandardDialogActivity.1(this);
       this.app.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     }
     for (;;)
@@ -165,7 +154,7 @@ public class QlinkStandardDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qlink.QlinkStandardDialogActivity
  * JD-Core Version:    0.7.0.1
  */

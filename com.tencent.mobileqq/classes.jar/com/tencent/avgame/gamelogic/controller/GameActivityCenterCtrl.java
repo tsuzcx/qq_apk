@@ -3,31 +3,30 @@ package com.tencent.avgame.gamelogic.controller;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.SystemClock;
-import aojq;
 import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.business.handler.HandlerFactory;
+import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.data.EngineData;
+import com.tencent.avgame.gamelogic.data.GameActivityCenterEntry;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.gamelogic.handler.GameRoomHandler;
+import com.tencent.avgame.gamelogic.observer.GameRoomObserver;
+import com.tencent.avgame.ui.AVGameHandler;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.avgameshare.AVGameShareUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.util.WeakReference;
-import nfc;
-import nfl;
-import nfm;
-import nfv;
-import nfy;
-import ngu;
-import nhd;
-import nom;
 
 public class GameActivityCenterCtrl
 {
-  private static GameActivityCenterCtrl jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl;
-  private long jdField_a_of_type_Long;
-  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
-  private nfy jdField_a_of_type_Nfy;
-  private nhd jdField_a_of_type_Nhd = new nfm(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private static GameActivityCenterCtrl jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl = null;
+  private long jdField_a_of_type_Long = 0L;
+  private GameActivityCenterEntry jdField_a_of_type_ComTencentAvgameGamelogicDataGameActivityCenterEntry = null;
+  private GameRoomObserver jdField_a_of_type_ComTencentAvgameGamelogicObserverGameRoomObserver = new GameActivityCenterCtrl.2(this);
+  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference = null;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   private Activity a()
   {
@@ -76,12 +75,12 @@ public class GameActivityCenterCtrl
       }
       if ((localObject != null) && (bool))
       {
-        ((AVGameAppInterface)localObject).addObserver(this.jdField_a_of_type_Nhd, true);
-        localObject = (ngu)((AVGameAppInterface)localObject).a(1);
+        ((AVGameAppInterface)localObject).addObserver(this.jdField_a_of_type_ComTencentAvgameGamelogicObserverGameRoomObserver, true);
+        localObject = (GameRoomHandler)((AVGameAppInterface)localObject).getBusinessHandler(HandlerFactory.a);
         if (localObject != null)
         {
           this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          ((ngu)localObject).a();
+          ((GameRoomHandler)localObject).a();
         }
       }
       return;
@@ -101,7 +100,7 @@ public class GameActivityCenterCtrl
     }
     this.b = false;
     this.jdField_a_of_type_Boolean = true;
-    nom.a().b().post(new GameActivityCenterCtrl.RefreshEntryTask());
+    AVGameHandler.a().b().post(new GameActivityCenterCtrl.RefreshEntryTask());
     if (QLog.isDevelopLevel()) {
       QLog.i("GameACCtrl", 4, "enterGameRoom, activity[" + paramActivity + "]");
     }
@@ -115,8 +114,8 @@ public class GameActivityCenterCtrl
     paramActivity = a();
     if (paramActivity != null)
     {
-      paramActivity.addObserver(this.jdField_a_of_type_Nhd, true);
-      paramActivity = (ngu)paramActivity.a(1);
+      paramActivity.addObserver(this.jdField_a_of_type_ComTencentAvgameGamelogicObserverGameRoomObserver, true);
+      paramActivity = (GameRoomHandler)paramActivity.getBusinessHandler(HandlerFactory.a);
       if (paramActivity != null) {
         paramActivity.a(paramString);
       }
@@ -142,21 +141,21 @@ public class GameActivityCenterCtrl
     if (paramActivity != null) {
       this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
     }
-    AVGameAppInterface localAVGameAppInterface = nfc.a().a();
+    AVGameAppInterface localAVGameAppInterface = GameEngine.a().a();
     String str2 = localAVGameAppInterface.getCurrentAccountUin();
-    nfv localnfv = nfc.a().a();
+    EngineData localEngineData = GameEngine.a().a();
     long l;
     String str1;
-    if (localnfv != null)
+    if (localEngineData != null)
     {
-      l = localnfv.a();
-      str1 = localnfv.a().getNick(str2);
+      l = localEngineData.a();
+      str1 = localEngineData.a().getNick(str2);
     }
-    for (int i = localnfv.d();; i = 0)
+    for (int i = localEngineData.d();; i = 0)
     {
-      aojq.a().a(localAVGameAppInterface, l, Long.valueOf(str2).longValue(), str1, 3, "", i, new nfl(this, str1));
+      AVGameShareUtil.a().a(localAVGameAppInterface, l, Long.valueOf(str2).longValue(), str1, 3, "", i, new GameActivityCenterCtrl.1(this, str1));
       if (QLog.isColorLevel()) {
-        QLog.i("GameACCtrl", 2, "openGameActivityCenter, ctx[" + paramActivity + "], entry[" + this.jdField_a_of_type_Nfy + "]");
+        QLog.i("GameACCtrl", 2, "openGameActivityCenter, ctx[" + paramActivity + "], entry[" + this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameActivityCenterEntry + "]");
       }
       return;
       l = 0L;
@@ -166,7 +165,7 @@ public class GameActivityCenterCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl
  * JD-Core Version:    0.7.0.1
  */

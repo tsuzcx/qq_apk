@@ -1,26 +1,27 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
 import android.widget.TextView;
-import anvx;
-import com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class WSHomeFragment$1
+class WSHomeFragment$1
   implements Runnable
 {
   WSHomeFragment$1(WSHomeFragment paramWSHomeFragment) {}
   
   public void run()
   {
-    String str = anvx.a(2131706296) + TaskMonitorManager.g().getMemeryUsage() + "%";
+    String str = HardCodeUtil.a(2131706836) + ((IMiniAppService)QRoute.api(IMiniAppService.class)).getMemeryUsage() + "%";
     if (WSHomeFragment.a(this.this$0) != null) {
       WSHomeFragment.a(this.this$0).setText(str);
     }
-    this.this$0.c();
+    this.this$0.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.1
  * JD-Core Version:    0.7.0.1
  */

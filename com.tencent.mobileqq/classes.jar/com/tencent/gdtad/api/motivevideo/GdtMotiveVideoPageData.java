@@ -20,7 +20,7 @@ public class GdtMotiveVideoPageData
   public int bottomCardLoadTime = 2;
   public String bottomCardUrl;
   public int containerType = 0;
-  public long downloadNum;
+  public long downloadNum = 0L;
   public int endcardLoadTime = 5;
   public String endcardUrl;
   public String exposureUrl;
@@ -32,7 +32,7 @@ public class GdtMotiveVideoPageData
   public String refId;
   private String rewardText;
   public int screenOrientation = 0;
-  public int style;
+  public int style = 0;
   public String traceId;
   public String url;
   public int vSize;
@@ -81,7 +81,7 @@ public class GdtMotiveVideoPageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData
  * JD-Core Version:    0.7.0.1
  */

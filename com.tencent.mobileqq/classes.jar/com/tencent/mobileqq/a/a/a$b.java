@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.a.a;
 
-import com.tencent.mobileqq.msf.core.c.k.a;
+import com.tencent.mobileqq.msf.core.c.j.a;
 import com.tencent.qphone.base.a;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class a$b
-  extends k.a
+  extends j.a
 {
   private static final String b = "freqCloseConn";
   private static final String c = "msf.event.freqCloseConn";

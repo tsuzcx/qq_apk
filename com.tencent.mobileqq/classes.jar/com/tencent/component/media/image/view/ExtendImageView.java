@@ -124,7 +124,7 @@ public class ExtendImageView
     this.mBlockMeasurement = false;
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     ViewForeground localViewForeground = this.mForeground;
@@ -138,7 +138,7 @@ public class ExtendImageView
     return this.mAdjustViewBounds;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     ViewForeground localViewForeground = this.mForeground;
@@ -147,7 +147,7 @@ public class ExtendImageView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     ViewForeground localViewForeground = this.mForeground;
@@ -156,7 +156,7 @@ public class ExtendImageView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     this.mMeasuredExactly = isMeasuredExactly(paramInt1, paramInt2);
     super.onMeasure(paramInt1, paramInt2);
@@ -165,7 +165,7 @@ public class ExtendImageView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     ViewForeground localViewForeground = this.mForeground;
@@ -318,7 +318,7 @@ public class ExtendImageView
     scheduleAnimation(paramAnimation1, null);
   }
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public boolean verifyDrawable(Drawable paramDrawable)
   {
     Object localObject = this.mForeground;
     if (localObject == null) {}
@@ -330,7 +330,7 @@ public class ExtendImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.component.media.image.view.ExtendImageView
  * JD-Core Version:    0.7.0.1
  */

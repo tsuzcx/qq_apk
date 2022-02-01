@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import ascz;
-import ashz;
-import bifw;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.swift.WebViewProvider;
 import java.util.Map;
 
 public class ChatBackgroundUiPlugin
   extends VasWebviewUiPlugin
 {
   private static final String TAG = "ChatBackgroundUiPlugin";
-  ascz mOnRemoteResp = new ChatBackgroundUiPlugin.1(this);
+  Client.OnRemoteRespObserver mOnRemoteResp = new ChatBackgroundUiPlugin.1(this);
   private Bundle mReqBundle;
   private String uin;
   
@@ -21,17 +21,17 @@ public class ChatBackgroundUiPlugin
     super.OnActivityCreate();
     this.mReqBundle = new Bundle();
     this.uin = this.mRuntime.a().getAccount();
-    WebViewFragment localWebViewFragment = this.mRuntime.a();
-    if (localWebViewFragment != null) {
-      localWebViewFragment.mUrl = super.decodeUrl(localWebViewFragment.mUrl);
+    WebViewProvider localWebViewProvider = this.mRuntime.a();
+    if (localWebViewProvider != null) {
+      localWebViewProvider.setCurUrl(super.decodeUrl(localWebViewProvider.getCurrentUrl()));
     }
-    ashz.a().a(this.mOnRemoteResp);
+    WebIPCOperator.a().a(this.mOnRemoteResp);
   }
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    ashz.a().b(this.mOnRemoteResp);
+    WebIPCOperator.a().b(this.mOnRemoteResp);
   }
   
   protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -43,10 +43,15 @@ public class ChatBackgroundUiPlugin
   {
     return 33554432L;
   }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 3L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatBackgroundUiPlugin
  * JD-Core Version:    0.7.0.1
  */

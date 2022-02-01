@@ -2,7 +2,6 @@ package com.tencent.mobileqq.mini.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SubscribePermissionAdapter$2
   implements View.OnClickListener
@@ -14,7 +13,6 @@ class SubscribePermissionAdapter$2
     if (SubscribePermissionAdapter.access$000(this.this$0) != null) {
       SubscribePermissionAdapter.access$000(this.this$0).onClickDetail(this.val$index);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

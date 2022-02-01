@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util;
 
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJUserDeviceInfoReport;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
@@ -8,35 +8,34 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import pqh;
-import pqu;
+import cooperation.readinjoy.ReadInJoyHelper;
 
-public final class RIJAppSetting$3
+final class RIJAppSetting$3
   implements Runnable
 {
-  public RIJAppSetting$3(QQAppInterface paramQQAppInterface) {}
+  RIJAppSetting$3(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if ((this.a == null) || (!this.a.isLogin())) {
       return;
     }
-    if (NetworkUtil.isWifiEnabled(this.a.getApp()))
+    if (NetworkUtil.a(this.a.getApp()))
     {
-      pqu.b(this.a);
+      RIJAppSetting.b(this.a);
       if (QLog.isColorLevel()) {
         QLog.d("RIJAppSetting", 2, "handConversationToShow is wifi");
       }
     }
-    if (!bmhv.E(this.a))
+    if (!ReadInJoyHelper.E(this.a))
     {
-      pqh.a(this.a);
-      bmhv.f(this.a);
+      RIJUserDeviceInfoReport.a(this.a);
+      ReadInJoyHelper.f(this.a);
     }
     KandianMergeManager localKandianMergeManager = (KandianMergeManager)this.a.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-    if (bmhv.z(this.a))
+    if (ReadInJoyHelper.A(this.a))
     {
-      bmhv.n(this.a, false);
+      ReadInJoyHelper.o(this.a, false);
       if (localKandianMergeManager != null) {
         localKandianMergeManager.k();
       }
@@ -54,7 +53,7 @@ public final class RIJAppSetting$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJAppSetting.3
  * JD-Core Version:    0.7.0.1
  */

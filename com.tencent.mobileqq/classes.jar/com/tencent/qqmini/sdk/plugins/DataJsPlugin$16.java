@@ -25,12 +25,12 @@ class DataJsPlugin$16
         {
           Object localObject = (MiniProgramShare.StGetGroupShareInfoRsp)paramJSONObject.get("response");
           int i = paramJSONObject.getInt("resultCode");
-          String str1 = ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).encryptedData.get();
-          String str2 = ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).iv.get();
-          QMLog.d("DataJsPlugin", "getGroupShareInfo receive resultCode= " + i + " encryptedData=" + str1 + " iv=" + str2);
+          paramJSONObject = ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).encryptedData.get();
+          String str = ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).iv.get();
+          QMLog.d("DataJsPlugin", "getGroupShareInfo receive resultCode= " + i + " encryptedData=" + paramJSONObject + " iv=" + str);
           localObject = new JSONObject();
-          ((JSONObject)localObject).putOpt("encryptedData", str1);
-          ((JSONObject)localObject).putOpt("iv", str2);
+          ((JSONObject)localObject).putOpt("encryptedData", paramJSONObject);
+          ((JSONObject)localObject).putOpt("iv", str);
           if (!DataJsPlugin.access$600(this.this$0))
           {
             paramJSONObject = new JSONObject();
@@ -51,7 +51,7 @@ class DataJsPlugin$16
               continue;
             }
           }
-          this.val$req.ok(paramJSONObject);
+          this.val$req.ok(localJSONException);
         }
         catch (Exception paramJSONObject)
         {
@@ -67,7 +67,7 @@ class DataJsPlugin$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin.16
  * JD-Core Version:    0.7.0.1
  */

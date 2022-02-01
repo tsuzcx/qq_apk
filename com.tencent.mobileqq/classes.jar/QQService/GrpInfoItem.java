@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GrpInfoItem
   extends JceStruct
 {
-  public long Content;
-  public byte Type;
+  public long Content = 0L;
+  public byte Type = 0;
   
   public GrpInfoItem() {}
   

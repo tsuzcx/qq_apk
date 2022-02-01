@@ -1,24 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.logic;
 
 import java.util.concurrent.atomic.AtomicBoolean;
-import qdz;
-import qea;
-import qeb;
 
-public class FeManager$1
+class FeManager$1
   implements Runnable
 {
   public void run()
   {
     try
     {
-      this.this$0.jdField_a_of_type_Qea.a(this.a);
+      this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicGFeReporter.a(this.a);
     }
     catch (Exception localException2)
     {
       try
       {
-        this.this$0.jdField_a_of_type_Qeb.a(this.a);
+        this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicPFeReporter.a(this.a);
       }
       catch (Exception localException2)
       {
@@ -26,12 +23,12 @@ public class FeManager$1
         {
           for (;;)
           {
-            qdz.a(this.this$0, System.currentTimeMillis());
-            qdz.a(this.this$0, qdz.a(this.this$0));
+            FeManager.a(this.this$0, System.currentTimeMillis());
+            FeManager.a(this.this$0, FeManager.a(this.this$0));
             if (this.this$0.jdField_a_of_type_Boolean) {
               this.this$0.jdField_a_of_type_Boolean = false;
             }
-            qdz.a(this.this$0).set(false);
+            FeManager.a(this.this$0).set(false);
             return;
             localException1 = localException1;
             localException1.printStackTrace();
@@ -53,7 +50,7 @@ public class FeManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.logic.FeManager.1
  * JD-Core Version:    0.7.0.1
  */

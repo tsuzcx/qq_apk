@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import apib;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +17,7 @@ import org.json.JSONObject;
 public class ArEffectConfig
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new apib();
+  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new ArEffectConfig.1();
   public int a;
   public ArrayList<String> a;
   public int b;
@@ -310,30 +309,30 @@ public class ArEffectConfig
     //   144: invokevirtual 287	java/io/BufferedOutputStream:flush	()V
     //   147: aload 7
     //   149: aload 5
-    //   151: invokestatic 293	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   151: invokestatic 292	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
     //   154: istore_2
     //   155: aload 6
-    //   157: invokevirtual 296	android/os/Parcel:recycle	()V
+    //   157: invokevirtual 295	android/os/Parcel:recycle	()V
     //   160: aload_3
     //   161: ifnull +7 -> 168
     //   164: aload_3
-    //   165: invokevirtual 299	java/io/BufferedOutputStream:close	()V
+    //   165: invokevirtual 298	java/io/BufferedOutputStream:close	()V
     //   168: iload_2
     //   169: istore_1
     //   170: aload 4
     //   172: ifnull -164 -> 8
     //   175: aload 4
-    //   177: invokevirtual 300	java/io/FileOutputStream:close	()V
+    //   177: invokevirtual 299	java/io/FileOutputStream:close	()V
     //   180: iload_2
     //   181: ireturn
     //   182: astore_0
     //   183: aload_0
-    //   184: invokevirtual 301	java/io/IOException:printStackTrace	()V
+    //   184: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   187: iload_2
     //   188: ireturn
     //   189: astore_0
     //   190: aload_0
-    //   191: invokevirtual 301	java/io/IOException:printStackTrace	()V
+    //   191: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   194: goto -26 -> 168
     //   197: astore 4
     //   199: aconst_null
@@ -343,27 +342,27 @@ public class ArEffectConfig
     //   204: aload 5
     //   206: astore_3
     //   207: aload 4
-    //   209: invokevirtual 301	java/io/IOException:printStackTrace	()V
+    //   209: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   212: aload 6
-    //   214: invokevirtual 296	android/os/Parcel:recycle	()V
+    //   214: invokevirtual 295	android/os/Parcel:recycle	()V
     //   217: aload_3
     //   218: ifnull +7 -> 225
     //   221: aload_3
-    //   222: invokevirtual 299	java/io/BufferedOutputStream:close	()V
+    //   222: invokevirtual 298	java/io/BufferedOutputStream:close	()V
     //   225: aload_0
     //   226: ifnull -218 -> 8
     //   229: aload_0
-    //   230: invokevirtual 300	java/io/FileOutputStream:close	()V
+    //   230: invokevirtual 299	java/io/FileOutputStream:close	()V
     //   233: iconst_0
     //   234: ireturn
     //   235: astore_0
     //   236: aload_0
-    //   237: invokevirtual 301	java/io/IOException:printStackTrace	()V
+    //   237: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   240: iconst_0
     //   241: ireturn
     //   242: astore_3
     //   243: aload_3
-    //   244: invokevirtual 301	java/io/IOException:printStackTrace	()V
+    //   244: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   247: goto -22 -> 225
     //   250: astore_0
     //   251: aconst_null
@@ -371,24 +370,24 @@ public class ArEffectConfig
     //   253: aconst_null
     //   254: astore 4
     //   256: aload 6
-    //   258: invokevirtual 296	android/os/Parcel:recycle	()V
+    //   258: invokevirtual 295	android/os/Parcel:recycle	()V
     //   261: aload_3
     //   262: ifnull +7 -> 269
     //   265: aload_3
-    //   266: invokevirtual 299	java/io/BufferedOutputStream:close	()V
+    //   266: invokevirtual 298	java/io/BufferedOutputStream:close	()V
     //   269: aload 4
     //   271: ifnull +8 -> 279
     //   274: aload 4
-    //   276: invokevirtual 300	java/io/FileOutputStream:close	()V
+    //   276: invokevirtual 299	java/io/FileOutputStream:close	()V
     //   279: aload_0
     //   280: athrow
     //   281: astore_3
     //   282: aload_3
-    //   283: invokevirtual 301	java/io/IOException:printStackTrace	()V
+    //   283: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   286: goto -17 -> 269
     //   289: astore_3
     //   290: aload_3
-    //   291: invokevirtual 301	java/io/IOException:printStackTrace	()V
+    //   291: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   294: goto -15 -> 279
     //   297: astore_0
     //   298: aconst_null

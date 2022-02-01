@@ -16,12 +16,12 @@ public final class s_life_moment
   public String button_text = "";
   public String left_title = "";
   public String right_title = "";
-  public int show_type;
-  public s_single_count stCount;
-  public single_feed stMomentFeed;
+  public int show_type = 0;
+  public s_single_count stCount = null;
+  public single_feed stMomentFeed = null;
   public String summary = "";
-  public ArrayList<s_life_moment_info> vec_lifemoment;
-  public ArrayList<s_picurl> vec_picurls;
+  public ArrayList<s_life_moment_info> vec_lifemoment = null;
+  public ArrayList<s_picurl> vec_picurls = null;
   
   static
   {

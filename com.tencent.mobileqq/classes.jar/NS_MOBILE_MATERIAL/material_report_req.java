@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class material_report_req
   extends JceStruct
 {
-  public int iBannerType;
-  public int iOperType;
-  public int iSource;
-  public long lUin;
+  public int iBannerType = 0;
+  public int iOperType = 0;
+  public int iSource = 0;
+  public long lUin = 0L;
   public String strQbossTraceinfo = "";
   
   public material_report_req() {}

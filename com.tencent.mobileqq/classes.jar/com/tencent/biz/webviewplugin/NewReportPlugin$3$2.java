@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 
 class NewReportPlugin$3$2
@@ -18,7 +18,7 @@ class NewReportPlugin$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.3.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
 import android.app.Activity;
-import bhdj;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -14,10 +14,10 @@ class ShareUtils$6$1
   {
     if ((this.val$finalErrCode == -100070004L) || (this.val$finalErrCode == -1000710003L))
     {
-      bhdj.a(this.this$0.val$activity, 233, this.this$0.val$activity.getString(2131718769), this.val$finalErrMsg, new ShareUtils.6.1.1(this), null).show();
+      DialogUtil.a(this.this$0.val$activity, 233, this.this$0.val$activity.getString(2131719294), this.val$finalErrMsg, new ShareUtils.6.1.1(this), null).show();
       return;
     }
-    QQToast.a(this.this$0.val$activity, 1, 2131694008, 1).a();
+    QQToast.a(this.this$0.val$activity, 1, 2131694210, 1).a();
   }
 }
 

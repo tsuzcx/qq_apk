@@ -1,48 +1,37 @@
 package com.tencent.mobileqq.app;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import avlf;
-import ayof;
-import azco;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.Message;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Set;
 
 class QQAppInterface$8
-  extends BroadcastReceiver
+  extends FriendListObserver
 {
   QQAppInterface$8(QQAppInterface paramQQAppInterface) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
-          {
-            avlf.a();
-            ayof.a();
-            azco.c();
-            return;
-          }
-        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
-        paramContext = paramIntent.getStringExtra("kickedUin");
-      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.this$0.getAccount())));
-      paramContext = this.this$0.getKickIntent();
-    } while (paramContext == null);
-    paramContext.putExtra("isSameDevice", false);
-    paramIntent = paramIntent.getStringExtra("msg");
-    if (!TextUtils.isEmpty(paramIntent)) {
-      paramContext.putExtra("msg", paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface_friendListObserver", 2, "onUpdateFriendInfo uin:" + paramString + ",isSuccess:" + paramBoolean);
     }
-    this.this$0.setKickIntent(paramContext);
+    if (this.this$0.friendInfoQueue.contains(paramString))
+    {
+      if ((this.this$0.msgFacade.a.a() == 1) && (paramString != null) && (paramString.equals(((Message)this.this$0.msgFacade.a.a().get(0)).frienduin)) && (this.this$0.isBackgroundPause) && (this.this$0.isShowMsgContent()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQAppInterface_friendListObserver", 2, "update notifcation");
+        }
+        QQAppInterface.access$1900(this.this$0, (Message)this.this$0.msgFacade.a.a().get(0), false);
+      }
+      this.this$0.friendInfoQueue.remove(paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface_friendListObserver", 2, "removeObserver");
+    }
+    this.this$0.removeObserver(this);
   }
 }
 

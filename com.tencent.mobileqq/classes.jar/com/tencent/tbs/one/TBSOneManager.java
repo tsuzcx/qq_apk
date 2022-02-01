@@ -2,18 +2,17 @@ package com.tencent.tbs.one;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.tbs.one.impl.TBSOneManagerImpl;
+import com.tencent.tbs.one.impl.c;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class TBSOneManager
 {
-  private static final String DEFAULT_CATEGORY = "default";
-  private static TBSOneManager sDefaultInstance;
-  private static final Object sDefaultInstanceSync = new Object();
-  private static Map<String, TBSOneManager> sInstances;
-  private static final Object sInstancesSync = new Object();
+  private static final Object a = new Object();
+  private static final Object b = new Object();
+  private static TBSOneManager c;
+  private static Map<String, TBSOneManager> d;
   
   /* Error */
   public static TBSOneManager getDefaultInstance(Context paramContext)
@@ -21,19 +20,19 @@ public abstract class TBSOneManager
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 23	com/tencent/tbs/one/TBSOneManager:sDefaultInstanceSync	Ljava/lang/Object;
+    //   3: getstatic 19	com/tencent/tbs/one/TBSOneManager:a	Ljava/lang/Object;
     //   6: astore_1
     //   7: aload_1
     //   8: monitorenter
-    //   9: getstatic 30	com/tencent/tbs/one/TBSOneManager:sDefaultInstance	Lcom/tencent/tbs/one/TBSOneManager;
+    //   9: getstatic 26	com/tencent/tbs/one/TBSOneManager:c	Lcom/tencent/tbs/one/TBSOneManager;
     //   12: ifnonnull +16 -> 28
-    //   15: new 32	com/tencent/tbs/one/impl/TBSOneManagerImpl
+    //   15: new 28	com/tencent/tbs/one/impl/c
     //   18: dup
     //   19: aload_0
-    //   20: ldc 8
-    //   22: invokespecial 35	com/tencent/tbs/one/impl/TBSOneManagerImpl:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   25: putstatic 30	com/tencent/tbs/one/TBSOneManager:sDefaultInstance	Lcom/tencent/tbs/one/TBSOneManager;
-    //   28: getstatic 30	com/tencent/tbs/one/TBSOneManager:sDefaultInstance	Lcom/tencent/tbs/one/TBSOneManager;
+    //   20: ldc 30
+    //   22: invokespecial 33	com/tencent/tbs/one/impl/c:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   25: putstatic 26	com/tencent/tbs/one/TBSOneManager:c	Lcom/tencent/tbs/one/TBSOneManager;
+    //   28: getstatic 26	com/tencent/tbs/one/TBSOneManager:c	Lcom/tencent/tbs/one/TBSOneManager;
     //   31: astore_0
     //   32: aload_1
     //   33: monitorexit
@@ -68,23 +67,25 @@ public abstract class TBSOneManager
     if (paramString.equals("default")) {
       return getDefaultInstance(paramContext);
     }
-    synchronized (sInstancesSync)
+    synchronized (b)
     {
-      if (sInstances == null) {
-        sInstances = new HashMap();
+      if (d == null) {
+        d = new HashMap();
       }
-      TBSOneManager localTBSOneManager = (TBSOneManager)sInstances.get(paramString);
+      TBSOneManager localTBSOneManager = (TBSOneManager)d.get(paramString);
       Object localObject1 = localTBSOneManager;
       if (localTBSOneManager == null)
       {
-        localObject1 = new TBSOneManagerImpl(paramContext, paramString);
-        sInstances.put(paramString, localObject1);
+        localObject1 = new c(paramContext, paramString);
+        d.put(paramString, localObject1);
       }
       return localObject1;
     }
   }
   
   public abstract void configure(String paramString, Object paramObject);
+  
+  public abstract String getBuildNumber();
   
   public abstract TBSOneDebugger getDebugger();
   
@@ -93,6 +94,10 @@ public abstract class TBSOneManager
   public abstract TBSOneComponent getLoadedComponent(String paramString);
   
   public abstract TBSOneOnlineService getOnlineService();
+  
+  public abstract int getVersionCode();
+  
+  public abstract String getVersionName();
   
   public abstract void installComponent(String paramString, Bundle paramBundle, TBSOneCallback<File> paramTBSOneCallback);
   
@@ -104,9 +109,9 @@ public abstract class TBSOneManager
   
   public abstract void loadComponentAsync(String paramString, TBSOneCallback<TBSOneComponent> paramTBSOneCallback);
   
-  public abstract TBSOneComponent loadComponentSync(String paramString);
+  public abstract TBSOneComponent loadComponentSync(String paramString, long paramLong);
   
-  public abstract TBSOneComponent loadComponentSync(String paramString, Bundle paramBundle);
+  public abstract TBSOneComponent loadComponentSync(String paramString, Bundle paramBundle, long paramLong);
   
   public abstract void setAutoUpdateEnabled(boolean paramBoolean);
   
@@ -116,7 +121,7 @@ public abstract class TBSOneManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tbs.one.TBSOneManager
  * JD-Core Version:    0.7.0.1
  */

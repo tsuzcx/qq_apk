@@ -10,25 +10,22 @@ import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mobileqq.util.DisplayUtil;
-import ssj;
-import ssk;
-import ssl;
 
 public class HorizontalRefreshLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private ssk jdField_a_of_type_Ssk;
-  private ssl jdField_a_of_type_Ssl;
+  private HorizontalRefreshLayout.OnDraggingListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryHorizontalRefreshLayout$OnDraggingListener;
+  private HorizontalRefreshLayout.RefreshHeader jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryHorizontalRefreshLayout$RefreshHeader;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
   private int c;
   private int d;
   private int e;
-  private int f = DisplayUtil.dip2px(getContext(), 25.0F);
+  private int f = DisplayUtil.a(getContext(), 25.0F);
   
   public HorizontalRefreshLayout(Context paramContext)
   {
@@ -82,7 +79,7 @@ public class HorizontalRefreshLayout
   {
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null))
     {
-      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new ssj(this)).start();
+      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new HorizontalRefreshLayout.1(this)).start();
       this.jdField_b_of_type_AndroidViewView.animate().translationX(this.jdField_a_of_type_Int).setDuration(500L).start();
     }
   }
@@ -137,7 +134,7 @@ public class HorizontalRefreshLayout
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (getChildCount() == 0) {}
     do
@@ -154,7 +151,7 @@ public class HorizontalRefreshLayout
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (this.jdField_b_of_type_AndroidViewView != null)
@@ -197,27 +194,27 @@ public class HorizontalRefreshLayout
       return false;
       this.c = 0;
       this.e = 0;
-      if (this.jdField_a_of_type_Ssk != null) {
-        this.jdField_a_of_type_Ssk.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryHorizontalRefreshLayout$OnDraggingListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryHorizontalRefreshLayout$OnDraggingListener.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
       }
       b();
     }
   }
   
-  public void setOnDraggingListener(ssk paramssk)
+  public void setOnDraggingListener(HorizontalRefreshLayout.OnDraggingListener paramOnDraggingListener)
   {
-    this.jdField_a_of_type_Ssk = paramssk;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryHorizontalRefreshLayout$OnDraggingListener = paramOnDraggingListener;
   }
   
-  public void setRefreshHeader(ssl paramssl)
+  public void setRefreshHeader(HorizontalRefreshLayout.RefreshHeader paramRefreshHeader)
   {
-    this.jdField_a_of_type_Ssl = paramssl;
-    a(this.jdField_a_of_type_Ssl.a(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryHorizontalRefreshLayout$RefreshHeader = paramRefreshHeader;
+    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryHorizontalRefreshLayout$RefreshHeader.a(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

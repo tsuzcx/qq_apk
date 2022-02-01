@@ -8,9 +8,9 @@ public final class RespGetCardSwitch
   extends JceStruct
 {
   static RespHead cache_stHeader;
-  public RespHead stHeader;
-  public long uCloseNeighborVote;
-  public long uCloseTimeGateVote;
+  public RespHead stHeader = null;
+  public long uCloseNeighborVote = 0L;
+  public long uCloseTimeGateVote = 0L;
   
   public RespGetCardSwitch() {}
   

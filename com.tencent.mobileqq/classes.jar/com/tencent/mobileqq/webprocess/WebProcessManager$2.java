@@ -1,20 +1,56 @@
 package com.tencent.mobileqq.webprocess;
 
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BabyQHandler;
+import com.tencent.mobileqq.app.BabyQObserver;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 class WebProcessManager$2
-  implements Runnable
+  extends BabyQObserver
 {
   WebProcessManager$2(WebProcessManager paramWebProcessManager) {}
   
-  public void run()
+  public void b(boolean paramBoolean, Object paramObject)
   {
-    if (this.this$0.d()) {
-      this.this$0.a(-1);
+    int j = -1;
+    int i = j;
+    if (paramObject != null)
+    {
+      i = j;
+      if ((paramObject instanceof Bundle))
+      {
+        paramObject = (Bundle)paramObject;
+        i = paramObject.getInt("ad_bbq_code", -1);
+        if (i == 0)
+        {
+          paramObject = paramObject.getString("ad_bbq_message");
+          Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+          if ((localObject instanceof QQAppInterface))
+          {
+            localObject = (BabyQHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER);
+            if (localObject != null) {
+              ((BabyQHandler)localObject).b(paramObject);
+            }
+          }
+        }
+      }
+    }
+    paramObject = new Intent("com.tencent.mobileqq.babyq.added");
+    paramObject.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+    paramObject.putExtra("result", i);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebProcessManager", 2, "babyq observer return result=" + i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessManager.2
  * JD-Core Version:    0.7.0.1
  */

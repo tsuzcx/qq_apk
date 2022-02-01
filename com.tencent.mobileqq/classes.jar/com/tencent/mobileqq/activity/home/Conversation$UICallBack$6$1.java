@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajza;
 import android.os.Message;
 
 class Conversation$UICallBack$6$1
@@ -15,7 +14,7 @@ class Conversation$UICallBack$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.6.1
  * JD-Core Version:    0.7.0.1
  */

@@ -200,12 +200,12 @@ final class b$1
     //   403: return
     //   404: astore_3
     //   405: aload_3
-    //   406: invokevirtual 200	java/lang/Exception:printStackTrace	()V
+    //   406: invokestatic 201	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/Throwable;)V
     //   409: aconst_null
     //   410: astore_3
     //   411: goto -128 -> 283
     //   414: aload_3
-    //   415: invokevirtual 203	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   415: invokevirtual 204	org/json/JSONObject:toString	()Ljava/lang/String;
     //   418: ldc 64
     //   420: invokevirtual 70	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   423: astore 4
@@ -213,32 +213,32 @@ final class b$1
     //   426: ifeq +198 -> 624
     //   429: invokestatic 141	com/tencent/smtt/utils/g:a	()Lcom/tencent/smtt/utils/g;
     //   432: aload 4
-    //   434: invokevirtual 206	com/tencent/smtt/utils/g:a	([B)[B
+    //   434: invokevirtual 207	com/tencent/smtt/utils/g:a	([B)[B
     //   437: astore 4
     //   439: aload 5
-    //   441: ldc 208
-    //   443: ldc 210
+    //   441: ldc 209
+    //   443: ldc 211
     //   445: invokevirtual 180	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   448: aload 5
-    //   450: ldc 212
+    //   450: ldc 213
     //   452: aload 4
     //   454: arraylength
-    //   455: invokestatic 216	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   455: invokestatic 217	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   458: invokevirtual 180	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   461: aload 5
-    //   463: invokevirtual 220	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   463: invokevirtual 221	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   466: astore 6
     //   468: aload 6
     //   470: aload 4
-    //   472: invokevirtual 226	java/io/OutputStream:write	([B)V
+    //   472: invokevirtual 227	java/io/OutputStream:write	([B)V
     //   475: aload 6
-    //   477: invokevirtual 229	java/io/OutputStream:flush	()V
+    //   477: invokevirtual 230	java/io/OutputStream:flush	()V
     //   480: aload 5
-    //   482: invokevirtual 232	java/net/HttpURLConnection:getResponseCode	()I
+    //   482: invokevirtual 233	java/net/HttpURLConnection:getResponseCode	()I
     //   485: sipush 200
     //   488: if_icmpne +147 -> 635
     //   491: ldc 72
-    //   493: ldc 234
+    //   493: ldc 235
     //   495: invokestatic 237	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   498: ldc 72
     //   500: new 129	java/lang/StringBuilder
@@ -290,28 +290,28 @@ final class b$1
     //   601: invokevirtual 276	com/tencent/smtt/sdk/TbsLogReport$TbsLogInfo:setErrorCode	(I)V
     //   604: aload_3
     //   605: aload_2
-    //   606: invokevirtual 280	com/tencent/smtt/sdk/TbsLogReport$TbsLogInfo:setFailDetail	(Ljava/lang/Throwable;)V
+    //   606: invokevirtual 279	com/tencent/smtt/sdk/TbsLogReport$TbsLogInfo:setFailDetail	(Ljava/lang/Throwable;)V
     //   609: aload_0
     //   610: getfield 12	com/tencent/smtt/sdk/stat/b$1:a	Landroid/content/Context;
     //   613: invokestatic 267	com/tencent/smtt/sdk/TbsLogReport:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsLogReport;
-    //   616: getstatic 286	com/tencent/smtt/sdk/TbsLogReport$EventType:TYPE_DOWNLOAD	Lcom/tencent/smtt/sdk/TbsLogReport$EventType;
+    //   616: getstatic 285	com/tencent/smtt/sdk/TbsLogReport$EventType:TYPE_DOWNLOAD	Lcom/tencent/smtt/sdk/TbsLogReport$EventType;
     //   619: aload_3
-    //   620: invokevirtual 290	com/tencent/smtt/sdk/TbsLogReport:eventReport	(Lcom/tencent/smtt/sdk/TbsLogReport$EventType;Lcom/tencent/smtt/sdk/TbsLogReport$TbsLogInfo;)V
+    //   620: invokevirtual 289	com/tencent/smtt/sdk/TbsLogReport:eventReport	(Lcom/tencent/smtt/sdk/TbsLogReport$EventType;Lcom/tencent/smtt/sdk/TbsLogReport$TbsLogInfo;)V
     //   623: return
     //   624: aload 4
     //   626: aload_2
-    //   627: invokestatic 293	com/tencent/smtt/utils/g:a	([BLjava/lang/String;)[B
+    //   627: invokestatic 292	com/tencent/smtt/utils/g:a	([BLjava/lang/String;)[B
     //   630: astore 4
     //   632: goto -193 -> 439
     //   635: ldc 72
     //   637: new 129	java/lang/StringBuilder
     //   640: dup
     //   641: invokespecial 131	java/lang/StringBuilder:<init>	()V
-    //   644: ldc_w 295
+    //   644: ldc_w 294
     //   647: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   650: aload 5
-    //   652: invokevirtual 232	java/net/HttpURLConnection:getResponseCode	()I
-    //   655: invokevirtual 298	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   652: invokevirtual 233	java/net/HttpURLConnection:getResponseCode	()I
+    //   655: invokevirtual 297	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   658: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   661: invokestatic 80	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   664: aload_0
@@ -329,16 +329,16 @@ final class b$1
     //   689: ldc 96
     //   691: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   694: aload 5
-    //   696: invokevirtual 232	java/net/HttpURLConnection:getResponseCode	()I
-    //   699: invokevirtual 298	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   696: invokevirtual 233	java/net/HttpURLConnection:getResponseCode	()I
+    //   699: invokevirtual 297	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   702: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   705: invokevirtual 300	com/tencent/smtt/sdk/TbsLogReport$TbsLogInfo:setFailDetail	(Ljava/lang/String;)V
+    //   705: invokevirtual 299	com/tencent/smtt/sdk/TbsLogReport$TbsLogInfo:setFailDetail	(Ljava/lang/String;)V
     //   708: aload_0
     //   709: getfield 12	com/tencent/smtt/sdk/stat/b$1:a	Landroid/content/Context;
     //   712: invokestatic 267	com/tencent/smtt/sdk/TbsLogReport:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsLogReport;
-    //   715: getstatic 286	com/tencent/smtt/sdk/TbsLogReport$EventType:TYPE_DOWNLOAD	Lcom/tencent/smtt/sdk/TbsLogReport$EventType;
+    //   715: getstatic 285	com/tencent/smtt/sdk/TbsLogReport$EventType:TYPE_DOWNLOAD	Lcom/tencent/smtt/sdk/TbsLogReport$EventType;
     //   718: aload_2
-    //   719: invokevirtual 290	com/tencent/smtt/sdk/TbsLogReport:eventReport	(Lcom/tencent/smtt/sdk/TbsLogReport$EventType;Lcom/tencent/smtt/sdk/TbsLogReport$TbsLogInfo;)V
+    //   719: invokevirtual 289	com/tencent/smtt/sdk/TbsLogReport:eventReport	(Lcom/tencent/smtt/sdk/TbsLogReport$EventType;Lcom/tencent/smtt/sdk/TbsLogReport$TbsLogInfo;)V
     //   722: return
     //   723: astore_2
     //   724: return
@@ -392,7 +392,7 @@ final class b$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.stat.b.1
  * JD-Core Version:    0.7.0.1
  */

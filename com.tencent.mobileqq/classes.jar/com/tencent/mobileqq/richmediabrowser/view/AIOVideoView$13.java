@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import bbrz;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class AIOVideoView$13
+class AIOVideoView$13
   implements Runnable
 {
-  public AIOVideoView$13(bbrz parambbrz, ArrayList paramArrayList) {}
+  AIOVideoView$13(AIOVideoView paramAIOVideoView, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -18,9 +17,9 @@ public class AIOVideoView$13
     while (localIterator.hasNext())
     {
       ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)localIterator.next();
-      bbrz.a(this.this$0).add(bbrz.a(this.this$0).size() - 1, localActionSheetItem);
+      AIOVideoView.a(this.this$0).add(AIOVideoView.a(this.this$0).size() - 1, localActionSheetItem);
     }
-    this.this$0.a.setActionSheetItems(bbrz.b(this.this$0), bbrz.a(this.this$0));
+    this.this$0.a.setActionSheetItems(AIOVideoView.b(this.this$0), AIOVideoView.a(this.this$0));
     if (this.this$0.a.isShowing())
     {
       if (QLog.isColorLevel()) {
@@ -34,7 +33,7 @@ public class AIOVideoView$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOVideoView.13
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import anwd;
-import axrb;
 import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class HotChatHandler$2
+class HotChatHandler$2
   implements Runnable
 {
-  public HotChatHandler$2(anwd paramanwd, boolean paramBoolean, List paramList) {}
+  HotChatHandler$2(HotChatHandler paramHotChatHandler, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
-    if ((!axrb.a().jdField_a_of_type_Boolean) && (!axrb.a().c))
+    if ((!GameRoomAVController.a().jdField_a_of_type_Boolean) && (!GameRoomAVController.a().c))
     {
       if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
         break label110;
@@ -21,11 +20,11 @@ public class HotChatHandler$2
       localHotChatInfo = (HotChatInfo)this.jdField_a_of_type_JavaUtilList.get(0);
     }
     label110:
-    while (axrb.a().a() != 1) {
+    while (GameRoomAVController.a().a() != 1) {
       try
       {
         long l = Long.parseLong(localHotChatInfo.troopUin);
-        axrb.a().a(1, null, l, localHotChatInfo.name);
+        GameRoomAVController.a().a(1, null, l, localHotChatInfo.name);
         return;
       }
       catch (Exception localException)
@@ -36,12 +35,12 @@ public class HotChatHandler$2
         return;
       }
     }
-    axrb.a().d();
+    GameRoomAVController.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatHandler.2
  * JD-Core Version:    0.7.0.1
  */

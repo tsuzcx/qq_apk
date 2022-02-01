@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby;
 
 import android.content.Intent;
-import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Constants.LogoutReason;
 
-public class NearbyAppInterface$1
+class NearbyAppInterface$1
   implements Runnable
 {
   NearbyAppInterface$1(NearbyAppInterface paramNearbyAppInterface) {}
@@ -20,8 +20,8 @@ public class NearbyAppInterface$1
         this.this$0.logout(true);
       }
       Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
-      localIntent.putExtra("title", anvx.a(2131706574));
-      localIntent.putExtra("msg", anvx.a(2131706575));
+      localIntent.putExtra("title", HardCodeUtil.a(2131707113));
+      localIntent.putExtra("msg", HardCodeUtil.a(2131707114));
       localIntent.putExtra("reason", Constants.LogoutReason.kicked);
       localIntent.addFlags(268435456);
       BaseApplicationImpl.sApplication.startActivity(localIntent);

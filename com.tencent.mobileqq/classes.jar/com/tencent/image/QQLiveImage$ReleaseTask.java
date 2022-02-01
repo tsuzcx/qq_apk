@@ -1,7 +1,8 @@
 package com.tencent.image;
 
 import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 class QQLiveImage$ReleaseTask
@@ -29,7 +30,7 @@ class QQLiveImage$ReleaseTask
       this.videoPlayer.release();
       this.videoPlayer = null;
       long l2 = SystemClock.uptimeMillis();
-      QLog.d(QQLiveImage.TAG + this.this$0.ID, 1, "ReleaseTask release TVK_IMediaPlayer =" + localTVK_IMediaPlayer + "，cost = " + (l2 - l1) + "ms");
+      URLDrawable.depImp.mLog.d(QQLiveImage.TAG + this.this$0.ID, 1, "ReleaseTask release TVK_IMediaPlayer =" + localTVK_IMediaPlayer + "，cost = " + (l2 - l1) + "ms");
     }
   }
 }

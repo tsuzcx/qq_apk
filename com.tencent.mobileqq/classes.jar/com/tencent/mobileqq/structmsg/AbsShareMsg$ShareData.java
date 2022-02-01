@@ -21,7 +21,7 @@ public class AbsShareMsg$ShareData
   public String pkgName;
   public byte shortUrlStatus = 0;
   public String sourceIconBig;
-  public int status;
+  public int status = 0;
   public byte version = 1;
   
   public boolean isFinish()

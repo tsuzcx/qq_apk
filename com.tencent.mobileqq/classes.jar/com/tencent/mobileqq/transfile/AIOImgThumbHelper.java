@@ -2,9 +2,9 @@ package com.tencent.mobileqq.transfile;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import aqyb;
-import aqyc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.config.business.AIOPicThumbSizeProcessor;
+import com.tencent.mobileqq.config.business.AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -20,7 +20,7 @@ public class AIOImgThumbHelper
   private static int sAioImageMinSize;
   private static int sAioImageMinSizeUnderLimit;
   private static int sPicSizeLimit = 650;
-  private static boolean sSizeInited;
+  private static boolean sSizeInited = false;
   
   public static int getAioThumbMaxDp(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
@@ -104,17 +104,17 @@ public class AIOImgThumbHelper
         if (bool) {
           return;
         }
-        aqyc localaqyc = aqyb.a();
-        if ((localaqyc != null) && (localaqyc.jdField_a_of_type_Boolean))
+        AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig localAIOPicThumbSizeConfig = AIOPicThumbSizeProcessor.a();
+        if ((localAIOPicThumbSizeConfig != null) && (localAIOPicThumbSizeConfig.jdField_a_of_type_Boolean))
         {
-          sAioImageMinSize = localaqyc.d;
-          sAioImageMaxSize = localaqyc.c;
-          sAioImageDynamicMin = localaqyc.h;
-          sAioImageDynamicMax = localaqyc.g;
-          sAioImageMinSizeUnderLimit = localaqyc.f;
-          sAioImageMaxSizeUnderLimit = localaqyc.e;
-          sPicSizeLimit = localaqyc.jdField_b_of_type_Int;
-          QLog.d("AIOImgThumbHelper", 1, new Object[] { "maxRatio:", Double.valueOf(localaqyc.jdField_a_of_type_Double), ", minRatio:", Double.valueOf(localaqyc.jdField_b_of_type_Double), ", picSizeLimit:", Integer.valueOf(sPicSizeLimit) });
+          sAioImageMinSize = localAIOPicThumbSizeConfig.d;
+          sAioImageMaxSize = localAIOPicThumbSizeConfig.c;
+          sAioImageDynamicMin = localAIOPicThumbSizeConfig.h;
+          sAioImageDynamicMax = localAIOPicThumbSizeConfig.g;
+          sAioImageMinSizeUnderLimit = localAIOPicThumbSizeConfig.f;
+          sAioImageMaxSizeUnderLimit = localAIOPicThumbSizeConfig.e;
+          sPicSizeLimit = localAIOPicThumbSizeConfig.jdField_b_of_type_Int;
+          QLog.d("AIOImgThumbHelper", 1, new Object[] { "maxRatio:", Double.valueOf(localAIOPicThumbSizeConfig.jdField_a_of_type_Double), ", minRatio:", Double.valueOf(localAIOPicThumbSizeConfig.jdField_b_of_type_Double), ", picSizeLimit:", Integer.valueOf(sPicSizeLimit) });
           sSizeInited = true;
           if (!QLog.isColorLevel()) {
             continue;

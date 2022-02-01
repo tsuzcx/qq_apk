@@ -34,9 +34,9 @@ public class FormSwitchItem
   public static final int BG_TYPE_MIDDLE = 2;
   public static final int BG_TYPE_SINGLE = 0;
   public static final int BG_TYPE_TOP = 1;
-  int COLOR_DEFAULT_BG_DIVIDER = Color.parseColor("#EBEDF5");
-  int HEIGHT_DEFAULT_BG_DIVIDER = ViewUtils.dpToPx(0.5F);
-  int PADDING_DEFAULT_BG_DIVIDER = ViewUtils.dpToPx(16.0F);
+  private static final int COLOR_DEFAULT_BG_DIVIDER = Color.parseColor("#EBEDF5");
+  private static final int HEIGHT_DEFAULT_BG_DIVIDER = ViewUtils.dpToPx(0.5F);
+  private static final int PADDING_DEFAULT_BG_DIVIDER = ViewUtils.dpToPx(16.0F);
   private int mBgType;
   private boolean mChecked;
   private int mItemHeight;
@@ -81,7 +81,7 @@ public class FormSwitchItem
     paramContext.recycle();
     this.mNeedSetHeight = true;
     this.mPaint.setAntiAlias(true);
-    this.mPaint.setColor(this.COLOR_DEFAULT_BG_DIVIDER);
+    this.mPaint.setColor(COLOR_DEFAULT_BG_DIVIDER);
     initViews();
   }
   
@@ -137,23 +137,23 @@ public class FormSwitchItem
     return false;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if ((this.mBgType == 1) || (this.mBgType == 2))
     {
       if (!isDefTheme()) {
-        break label76;
+        break label73;
       }
-      this.mPaint.setColor(this.COLOR_DEFAULT_BG_DIVIDER);
+      this.mPaint.setColor(COLOR_DEFAULT_BG_DIVIDER);
     }
     for (;;)
     {
       int i = getMeasuredWidth();
       int j = getMeasuredHeight();
-      this.mRect.set(this.PADDING_DEFAULT_BG_DIVIDER, j - this.HEIGHT_DEFAULT_BG_DIVIDER, i, j);
+      this.mRect.set(PADDING_DEFAULT_BG_DIVIDER, j - HEIGHT_DEFAULT_BG_DIVIDER, i, j);
       paramCanvas.drawRect(this.mRect, this.mPaint);
       return;
-      label76:
+      label73:
       this.mPaint.setColor(0);
     }
   }
@@ -335,7 +335,7 @@ public class FormSwitchItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.FormSwitchItem
  * JD-Core Version:    0.7.0.1
  */

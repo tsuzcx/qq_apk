@@ -21,6 +21,7 @@ public class FlutterNativeView
   private static final String TAG = "FlutterNativeView";
   private boolean applicationIsRunning;
   private final DartExecutor dartExecutor;
+  private String[] entryArgs = new String[0];
   private final FlutterUiDisplayListener flutterUiDisplayListener = new FlutterNativeView.1(this);
   private final Context mContext;
   private final FlutterJNI mFlutterJNI;
@@ -34,6 +35,14 @@ public class FlutterNativeView
   
   public FlutterNativeView(@NonNull Context paramContext, boolean paramBoolean)
   {
+    this(paramContext, paramBoolean, null);
+  }
+  
+  public FlutterNativeView(@NonNull Context paramContext, boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if (paramArrayOfString != null) {
+      this.entryArgs = paramArrayOfString;
+    }
     this.mContext = paramContext;
     this.mPluginRegistry = new FlutterPluginRegistry(this, paramContext);
     this.mFlutterJNI = new FlutterJNI();
@@ -44,9 +53,14 @@ public class FlutterNativeView
     assertAttached();
   }
   
+  public FlutterNativeView(@NonNull Context paramContext, String[] paramArrayOfString)
+  {
+    this(paramContext, false, paramArrayOfString);
+  }
+  
   private void attach(FlutterNativeView paramFlutterNativeView, boolean paramBoolean)
   {
-    this.mFlutterJNI.attachToNative(paramBoolean);
+    this.mFlutterJNI.attachToNative(paramBoolean, this.entryArgs);
     this.dartExecutor.onAttachedToJNI();
   }
   
@@ -156,7 +170,7 @@ public class FlutterNativeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.view.FlutterNativeView
  * JD-Core Version:    0.7.0.1
  */

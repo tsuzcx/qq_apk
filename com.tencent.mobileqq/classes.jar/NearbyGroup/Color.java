@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class Color
   extends JceStruct
 {
-  public long B;
-  public long G;
-  public long R;
+  public long B = 0L;
+  public long G = 0L;
+  public long R = 0L;
   
   public Color() {}
   

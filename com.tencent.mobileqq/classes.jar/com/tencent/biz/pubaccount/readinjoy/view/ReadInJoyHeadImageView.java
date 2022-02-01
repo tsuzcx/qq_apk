@@ -7,27 +7,27 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import bheg;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJThreadHandler;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.RefreshUserInfoCallBack;
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.DrawableController;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
-import pno;
-import qhl;
-import tlt;
 
 public class ReadInJoyHeadImageView
   extends NativeReadInjoyImageView
-  implements IView, qhl
+  implements ReadInJoyUserInfoModule.RefreshUserInfoCallBack, IView
 {
   private long jdField_a_of_type_Long;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841758));
-  private WeakReference<qhl> jdField_a_of_type_MqqUtilWeakReference;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841899));
+  private WeakReference<ReadInJoyUserInfoModule.RefreshUserInfoCallBack> jdField_a_of_type_MqqUtilWeakReference;
   
   public ReadInJoyHeadImageView(Context paramContext)
   {
@@ -50,7 +50,7 @@ public class ReadInJoyHeadImageView
   private void a()
   {
     setRound(true);
-    setImagePlaceHolder(bheg.a());
+    setImagePlaceHolder(ImageUtil.d());
     this.mController.a(false);
   }
   
@@ -67,14 +67,14 @@ public class ReadInJoyHeadImageView
   {
     if (paramReadInJoyUserInfo != null)
     {
-      if (pno.a()) {
+      if (RIJThreadHandler.a()) {
         a(paramReadInJoyUserInfo);
       }
     }
     else {
       return;
     }
-    pno.b().post(new ReadInJoyHeadImageView.2(this, paramReadInJoyUserInfo));
+    RIJThreadHandler.b().post(new ReadInJoyHeadImageView.2(this, paramReadInJoyUserInfo));
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
@@ -108,7 +108,7 @@ public class ReadInJoyHeadImageView
   {
     QLog.d("ReadInJoyHeadImageView", 1, "uin: " + paramString1 + " onLoadUserInfoFailed:" + paramString2);
     if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)) {
-      ((qhl)this.jdField_a_of_type_MqqUtilWeakReference.get()).onLoadUserInfoFailed(paramString1, paramString2);
+      ((ReadInJoyUserInfoModule.RefreshUserInfoCallBack)this.jdField_a_of_type_MqqUtilWeakReference.get()).onLoadUserInfoFailed(paramString1, paramString2);
     }
   }
   
@@ -121,7 +121,7 @@ public class ReadInJoyHeadImageView
       return;
       ThreadManager.getUIHandler().post(new ReadInJoyHeadImageView.1(this, paramReadInJoyUserInfo));
     } while ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null));
-    ((qhl)this.jdField_a_of_type_MqqUtilWeakReference.get()).onLoadUserInfoSucceed(paramString, paramReadInJoyUserInfo);
+    ((ReadInJoyUserInfoModule.RefreshUserInfoCallBack)this.jdField_a_of_type_MqqUtilWeakReference.get()).onLoadUserInfoSucceed(paramString, paramReadInJoyUserInfo);
   }
   
   public void setHeadImgByUin(long paramLong)
@@ -134,12 +134,12 @@ public class ReadInJoyHeadImageView
     setHeadImgByUin(paramLong, paramBoolean, null);
   }
   
-  public void setHeadImgByUin(long paramLong, boolean paramBoolean, qhl paramqhl)
+  public void setHeadImgByUin(long paramLong, boolean paramBoolean, ReadInJoyUserInfoModule.RefreshUserInfoCallBack paramRefreshUserInfoCallBack)
   {
-    setHeadImgByUin(paramLong, paramBoolean, paramqhl, false);
+    setHeadImgByUin(paramLong, paramBoolean, paramRefreshUserInfoCallBack, false);
   }
   
-  public void setHeadImgByUin(long paramLong, boolean paramBoolean1, qhl paramqhl, boolean paramBoolean2)
+  public void setHeadImgByUin(long paramLong, boolean paramBoolean1, ReadInJoyUserInfoModule.RefreshUserInfoCallBack paramRefreshUserInfoCallBack, boolean paramBoolean2)
   {
     if (paramLong <= 0L) {
       QLog.d("ReadInJoyHeadImageView", 2, "Uin is illegal");
@@ -151,13 +151,13 @@ public class ReadInJoyHeadImageView
       if (paramBoolean1) {
         setImagePlaceHolder(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
-      if (paramqhl != null) {
-        this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramqhl);
+      if (paramRefreshUserInfoCallBack != null) {
+        this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramRefreshUserInfoCallBack);
       }
-      paramqhl = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this, paramBoolean2);
-      b(paramqhl);
-    } while ((paramqhl == null) || (!QLog.isColorLevel()));
-    QLog.d("ReadInJoyHeadImageView", 2, "setHeadImgByUin faceFlag:" + paramqhl.faceFlag);
+      paramRefreshUserInfoCallBack = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this, paramBoolean2);
+      b(paramRefreshUserInfoCallBack);
+    } while ((paramRefreshUserInfoCallBack == null) || (!QLog.isColorLevel()));
+    QLog.d("ReadInJoyHeadImageView", 2, "setHeadImgByUin faceFlag:" + paramRefreshUserInfoCallBack.faceFlag);
   }
   
   public void setHeadImgByUin(String paramString)
@@ -185,7 +185,7 @@ public class ReadInJoyHeadImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,32 +3,28 @@ package com.tencent.mobileqq.bigbrother;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.QFragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import aqfz;
-import aqga;
-import aqgb;
-import bhdj;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
 import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class JumpConfirmFragment
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
 {
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
   
-  public void initWindowStyleAndAnimation(Activity paramActivity)
+  public void a(Activity paramActivity)
   {
-    super.initWindowStyleAndAnimation(paramActivity);
+    super.a(paramActivity);
     paramActivity.getWindow().setFlags(1024, 1024);
     paramActivity.overridePendingTransition(0, 0);
   }
@@ -42,13 +38,11 @@ public class JumpConfirmFragment
     this.jdField_b_of_type_Int = ((Bundle)localObject).getInt("key_callback_id", 0);
     try
     {
-      localObject = bhdj.a(getActivity(), 0, null, "即将离开QQ\n打开其他应用", getString(2131690697), getString(2131720094), new aqfz(this), new aqga(this));
-      ((QQCustomDialog)localObject).setOnDismissListener(new aqgb(this));
+      localObject = DialogUtil.a(getActivity(), 0, null, "即将离开QQ\n打开其他应用", getString(2131690800), getString(2131720671), new JumpConfirmFragment.1(this), new JumpConfirmFragment.2(this));
+      ((QQCustomDialog)localObject).setOnDismissListener(new JumpConfirmFragment.3(this));
       getActivity().setJumpDialog((Dialog)localObject);
       ((QQCustomDialog)localObject).show();
-      paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
+      return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     }
     catch (Throwable localThrowable)
     {

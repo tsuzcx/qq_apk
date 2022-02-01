@@ -13,11 +13,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import beix;
-import bgyo;
-import bhdz;
-import bheg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -30,11 +29,11 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
   Bundle bundle;
   Context ctx;
   ThemeDIYData data;
-  beix dealPicCallBack;
+  ThemeDiyStyleLogic.StyleCallBack dealPicCallBack;
   String orgSrc;
   String saveSrc;
   
-  public ThemeDiyStyleLogic$DarkBrightnessTask(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ThemeDIYData paramThemeDIYData, Bundle paramBundle, beix parambeix)
+  public ThemeDiyStyleLogic$DarkBrightnessTask(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ThemeDIYData paramThemeDIYData, Bundle paramBundle, ThemeDiyStyleLogic.StyleCallBack paramStyleCallBack)
   {
     this.ctx = paramContext;
     this.app = paramQQAppInterface;
@@ -42,7 +41,7 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
     this.data = paramThemeDIYData;
     this.bundle = paramBundle;
     this.saveSrc = paramString2;
-    this.dealPicCallBack = parambeix;
+    this.dealPicCallBack = paramStyleCallBack;
     if ((paramThemeDIYData != null) && (paramThemeDIYData.tryOnBgBigOrgRD != null)) {
       paramThemeDIYData.tryOnBgBigOrgRD.state = 4;
     }
@@ -63,7 +62,7 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
     }
     paramVarArgs = new BitmapFactory.Options();
     paramVarArgs.inPreferredConfig = Bitmap.Config.RGB_565;
-    Bitmap localBitmap = bgyo.a(this.orgSrc, paramVarArgs);
+    Bitmap localBitmap = BitmapManager.a(this.orgSrc, paramVarArgs);
     if (localBitmap == null) {
       return Integer.valueOf(0);
     }
@@ -98,8 +97,8 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
     {
       if (this.data.position != 0)
       {
-        k = (int)(bhdz.a(this.ctx, 113.0F) * f);
-        m = (int)(f * bhdz.a(this.ctx, 51.0F));
+        k = (int)(DisplayUtils.a(this.ctx, 113.0F) * f);
+        m = (int)(f * DisplayUtils.a(this.ctx, 51.0F));
         i -= k;
       }
       for (;;)
@@ -118,7 +117,7 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
           ((Canvas)localObject).drawBitmap(localBitmap, 0.0F, 0.0F, localPaint);
           localPaint.setColor(this.app.getApp().getResources().getColor(this.data.orgMarkColor));
           ((Canvas)localObject).drawRect(0.0F, 0.0F, j, i, localPaint);
-          bheg.a(paramVarArgs, new File(this.saveSrc));
+          ImageUtil.a(paramVarArgs, new File(this.saveSrc));
           return Integer.valueOf(1);
         }
         catch (OutOfMemoryError paramVarArgs)
@@ -167,7 +166,7 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
         QLog.e("ThemeDiyStyleLogic", 2, "DoBrightnessTask.onPostExecute, result is ok");
       }
       if (this.dealPicCallBack != null) {
-        this.dealPicCallBack.callback(14, 4, this.bundle, this.data.tryOnBgBigOrgRD);
+        this.dealPicCallBack.a(14, 4, this.bundle, this.data.tryOnBgBigOrgRD);
       }
     }
     do
@@ -177,7 +176,7 @@ public class ThemeDiyStyleLogic$DarkBrightnessTask
         QLog.e("ThemeDiyStyleLogic", 2, "DoBrightnessTask.onPostExecute, result is error");
       }
     } while (this.dealPicCallBack == null);
-    this.dealPicCallBack.callback(14, 8, this.bundle, this.data.tryOnBgBigOrgRD);
+    this.dealPicCallBack.a(14, 8, this.bundle, this.data.tryOnBgBigOrgRD);
   }
 }
 

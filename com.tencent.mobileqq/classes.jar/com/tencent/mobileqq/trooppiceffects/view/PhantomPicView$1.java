@@ -7,9 +7,8 @@ import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.widget.FrameLayout;
-import bgtw;
 
-public class PhantomPicView$1
+class PhantomPicView$1
   implements Runnable
 {
   PhantomPicView$1(PhantomPicView paramPhantomPicView) {}
@@ -35,7 +34,7 @@ public class PhantomPicView$1
     ((AnimatorSet)localObject3).play((Animator)localObject1).with((Animator)localObject4).with((Animator)localObject2);
     ((AnimatorSet)localObject3).start();
     this.this$0.b.setTag(localObject3);
-    ((AnimatorSet)localObject3).addListener(new bgtw(this));
+    ((AnimatorSet)localObject3).addListener(new PhantomPicView.1.1(this));
   }
 }
 

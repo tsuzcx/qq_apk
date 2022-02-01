@@ -4,12 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bjht;
-import bjjp;
-import bjko;
-import bjlo;
-import bjoq;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appcommon.Common;
+import com.tencent.open.appstore.dl.DownloadInfoReport;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.AppUtil;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DownloadReceiver
@@ -21,7 +20,7 @@ public class DownloadReceiver
     if (paramIntent != null)
     {
       str3 = paramIntent.getStringExtra("processName");
-      if ((!TextUtils.isEmpty(str3)) && (str3.equalsIgnoreCase(bjht.r()))) {
+      if ((!TextUtils.isEmpty(str3)) && (str3.equalsIgnoreCase(Common.r()))) {
         break label32;
       }
     }
@@ -38,12 +37,12 @@ public class DownloadReceiver
         paramIntent = (NoticeParam)paramIntent.getParcelableExtra("noticeParam");
       } while (paramIntent == null);
       str2 = str3.replace(":", ".");
-      if ((bjoq.e + "." + str2).equals(str1))
+      if ((IntentFactory.e + "." + str2).equals(str1))
       {
-        bjlo.a(paramContext, paramIntent.d);
+        AppUtil.a(paramContext, paramIntent.d);
         return;
       }
-      bjko.b("vivi", "processName :" + str3 + " | formatStr:" + str2);
+      LogUtility.b("vivi", "processName :" + str3 + " | formatStr:" + str2);
       str3 = paramIntent.a;
       str4 = paramIntent.d;
     } while ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4)));
@@ -56,21 +55,21 @@ public class DownloadReceiver
       i += 1;
     }
     if (!TextUtils.isEmpty(str3)) {
-      bjjp.a.put(str3, localStringBuilder.toString());
+      DownloadInfoReport.a.put(str3, localStringBuilder.toString());
     }
     for (;;)
     {
       ThreadManager.executeOnSubThread(new DownloadReceiver.1(this, str3, str4, paramIntent, str2, str1, paramContext));
       return;
       if (!TextUtils.isEmpty(paramIntent.e)) {
-        bjjp.a.put(paramIntent.e, localStringBuilder.toString());
+        DownloadInfoReport.a.put(paramIntent.e, localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.DownloadReceiver
  * JD-Core Version:    0.7.0.1
  */

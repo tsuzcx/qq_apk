@@ -11,18 +11,18 @@ public final class ItemDisDetail
   static ExtraAppInfo cache_extraappinfo;
   static ExtraImageInfo cache_extraimage;
   static UniBusiExtraInfo cache_extrainfo = new UniBusiExtraInfo();
-  public int appId;
-  public AuthResultInfo authResult;
-  public ExtraAppInfo extraappinfo;
-  public ExtraImageInfo extraimage;
-  public UniBusiExtraInfo extrainfo;
-  public int feeType;
+  public int appId = 0;
+  public AuthResultInfo authResult = null;
+  public ExtraAppInfo extraappinfo = null;
+  public ExtraImageInfo extraimage = null;
+  public UniBusiExtraInfo extrainfo = null;
+  public int feeType = 0;
   public String image = "";
-  public int isSetup;
+  public int isSetup = 0;
   public String itemBgColor = "";
-  public int itemId;
+  public int itemId = 0;
   public String name = "";
-  public long validlast;
+  public long validlast = 0L;
   
   static
   {

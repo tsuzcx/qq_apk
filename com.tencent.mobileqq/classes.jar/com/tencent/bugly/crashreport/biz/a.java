@@ -507,10 +507,10 @@ public final class a
       localUserInfoBean.h = ((com.tencent.bugly.crashreport.common.info.a)localObject).u;
       localUserInfoBean.i = ((com.tencent.bugly.crashreport.common.info.a)localObject).v;
       localUserInfoBean.k = ((com.tencent.bugly.crashreport.common.info.a)localObject).w;
-      localUserInfoBean.r = ((com.tencent.bugly.crashreport.common.info.a)localObject).A();
-      localUserInfoBean.s = ((com.tencent.bugly.crashreport.common.info.a)localObject).F();
-      localUserInfoBean.p = ((com.tencent.bugly.crashreport.common.info.a)localObject).G();
-      localUserInfoBean.q = ((com.tencent.bugly.crashreport.common.info.a)localObject).H();
+      localUserInfoBean.r = ((com.tencent.bugly.crashreport.common.info.a)localObject).z();
+      localUserInfoBean.s = ((com.tencent.bugly.crashreport.common.info.a)localObject).E();
+      localUserInfoBean.p = ((com.tencent.bugly.crashreport.common.info.a)localObject).F();
+      localUserInfoBean.q = ((com.tencent.bugly.crashreport.common.info.a)localObject).G();
       w.a().a(new a.a(this, localUserInfoBean, paramBoolean), 0L);
       return;
     }

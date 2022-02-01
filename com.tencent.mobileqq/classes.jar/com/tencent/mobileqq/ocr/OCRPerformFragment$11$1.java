@@ -2,26 +2,24 @@ package com.tencent.mobileqq.ocr;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import ayrl;
-import ayrt;
 import com.tencent.mobileqq.ocr.data.TranslateResult;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class OCRPerformFragment$11$1
+class OCRPerformFragment$11$1
   implements Runnable
 {
-  public OCRPerformFragment$11$1(ayrl paramayrl, boolean paramBoolean, TranslateResult paramTranslateResult) {}
+  OCRPerformFragment$11$1(OCRPerformFragment.11 param11, boolean paramBoolean, TranslateResult paramTranslateResult) {}
   
   public void run()
   {
-    OCRPerformFragment.a(this.jdField_a_of_type_Ayrl.a, true);
+    OCRPerformFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment$11.a, true);
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.b()) && (!this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a()))
     {
-      ayrt.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult = this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult;
-      OCRPerformFragment.a(this.jdField_a_of_type_Ayrl.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
+      OCRPerformUtil.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult = this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult;
+      OCRPerformFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment$11.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
       return;
     }
-    String str2 = this.jdField_a_of_type_Ayrl.a.getResources().getString(2131698707);
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment$11.a.getResources().getString(2131699010);
     String str1 = str2;
     if (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null)
     {
@@ -32,13 +30,13 @@ public class OCRPerformFragment$11$1
     }
     for (;;)
     {
-      QQToast.a(OCRPerformFragment.a(this.jdField_a_of_type_Ayrl.a), 1, str1, 0).a();
-      ayrt.a("0X800B558", 0);
+      QQToast.a(OCRPerformFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment$11.a), 1, str1, 0).a();
+      OCRPerformUtil.a("0X800B558", 0);
       return;
       label140:
       str1 = str2;
       if (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a()) {
-        str1 = this.jdField_a_of_type_Ayrl.a.getResources().getString(2131698694);
+        str1 = this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment$11.a.getResources().getString(2131698997);
       }
     }
   }

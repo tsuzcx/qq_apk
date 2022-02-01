@@ -1,24 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.preload.util;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 import java.util.List;
-import pvj;
-import qkt;
 
-public final class FeedsPreloadExposeReport$1
+final class FeedsPreloadExposeReport$1
   implements Runnable
 {
-  public FeedsPreloadExposeReport$1(pvj parampvj, List paramList, String paramString) {}
+  FeedsPreloadExposeReport$1(ReadInJoyLogicEngine paramReadInJoyLogicEngine, List paramList, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Pvj != null) {
-      this.jdField_a_of_type_Pvj.a(qkt.a(this.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyLogicEngine != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyLogicEngine.a(FeedsPreloadExposeReport.a(this.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadExposeReport.1
  * JD-Core Version:    0.7.0.1
  */

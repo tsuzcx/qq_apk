@@ -10,7 +10,7 @@ class C2CPicUploadProcessor$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.sApplication, 2131689931, 1).a();
+    QQToast.a(BaseApplicationImpl.sApplication, 2131689973, 1).a();
   }
 }
 

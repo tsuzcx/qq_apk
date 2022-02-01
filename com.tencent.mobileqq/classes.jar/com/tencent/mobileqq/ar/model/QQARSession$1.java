@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.ar.model;
 
-import apos;
-
-public class QQARSession$1
+class QQARSession$1
   implements Runnable
 {
-  public QQARSession$1(apos paramapos) {}
+  QQARSession$1(QQARSession paramQQARSession) {}
   
   public void run()
   {

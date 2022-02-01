@@ -8,9 +8,9 @@ public final class RespHeader
   extends JceStruct
 {
   static int cache_eReplyCode;
-  public int eReplyCode;
-  public long lMID;
-  public short shVersion;
+  public int eReplyCode = 0;
+  public long lMID = 0L;
+  public short shVersion = 0;
   public String strResult = "";
   
   public RespHeader() {}

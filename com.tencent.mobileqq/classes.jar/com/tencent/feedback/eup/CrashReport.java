@@ -122,7 +122,7 @@ public class CrashReport
       x.d("getAllUserDataKeys args context should not be null", new Object[0]);
       return null;
     }
-    return com.tencent.bugly.crashreport.common.info.a.a(paramContext).D();
+    return com.tencent.bugly.crashreport.common.info.a.a(paramContext).C();
   }
   
   public static CrashHandleListener getCrashHandler()
@@ -175,7 +175,7 @@ public class CrashReport
       x.d("getUserDatasSize args context should not be null", new Object[0]);
       return -1;
     }
-    return com.tencent.bugly.crashreport.common.info.a.a(paramContext).C();
+    return com.tencent.bugly.crashreport.common.info.a.a(paramContext).B();
   }
   
   public static int getUserSceneTagId(Context paramContext)
@@ -185,7 +185,7 @@ public class CrashReport
       x.d("getUserSceneTagId args context should not be null", new Object[0]);
       return -1;
     }
-    return com.tencent.bugly.crashreport.common.info.a.a(paramContext).G();
+    return com.tencent.bugly.crashreport.common.info.a.a(paramContext).F();
   }
   
   public static boolean handleCatchException(Thread paramThread, Throwable paramThrowable, String paramString, byte[] paramArrayOfByte)
@@ -438,13 +438,13 @@ public class CrashReport
       str = paramString2.substring(0, 200);
     }
     paramString2 = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
-    if (paramString2.D().contains(paramString1))
+    if (paramString2.C().contains(paramString1))
     {
       com.tencent.bugly.crashreport.common.info.a.a(paramContext).a(paramString1, str);
       x.c("replace KV %s %s", new Object[] { paramString1, str });
       return;
     }
-    if (paramString2.C() >= 500)
+    if (paramString2.B() >= 500)
     {
       x.d("user data size is over limit %d , will drop this new key %s", new Object[] { Integer.valueOf(50), paramString1 });
       return;
@@ -509,6 +509,17 @@ public class CrashReport
     com.tencent.bugly.crashreport.common.info.a.a(paramContext).g(paramString);
   }
   
+  public static void setCrashFilter(String paramString)
+  {
+    if (!com.tencent.bugly.b.a)
+    {
+      Log.w(x.b, "Can not set App package because bugly is disable.");
+      return;
+    }
+    Log.i(x.b, "Set crash stack filter: " + paramString);
+    c.n = paramString;
+  }
+  
   public static void setCrashHandler(CrashHandleListener paramCrashHandleListener)
   {
     if (paramCrashHandleListener == null) {}
@@ -520,6 +531,17 @@ public class CrashReport
       paramCrashHandleListener = c.a();
     } while (paramCrashHandleListener == null);
     paramCrashHandleListener.a(c);
+  }
+  
+  public static void setCrashRegularFilter(String paramString)
+  {
+    if (!com.tencent.bugly.b.a)
+    {
+      Log.w(x.b, "Can not set App package because bugly is disable.");
+      return;
+    }
+    Log.i(x.b, "Set crash stack filter: " + paramString);
+    c.o = paramString;
   }
   
   public static void setCrashReportAble(boolean paramBoolean)

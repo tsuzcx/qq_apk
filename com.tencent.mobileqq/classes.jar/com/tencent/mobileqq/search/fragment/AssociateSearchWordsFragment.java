@@ -7,12 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import bbzj;
-import bcbu;
-import bcbv;
-import bcbx;
-import bcby;
-import bcnc;
+import com.tencent.mobileqq.search.SearchInfoInterface;
+import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.XListView;
@@ -21,19 +17,18 @@ import java.util.List;
 public class AssociateSearchWordsFragment
   extends ReportV4Fragment
 {
-  public View.OnClickListener a;
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new AssociateSearchWordsFragment.1(this);
   public View.OnTouchListener a;
-  private bcbx jdField_a_of_type_Bcbx;
+  private AssociateSearchWordsFragment.AssociateWordClickCallback jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$AssociateWordClickCallback;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
-  public String a;
+  protected String a;
   private List<AssociateSearchWordsFragment.AssociateItem> jdField_a_of_type_JavaUtilList;
   boolean jdField_a_of_type_Boolean = false;
-  public boolean b;
+  protected boolean b = false;
   
   public AssociateSearchWordsFragment()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bcbu(this);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bcbv(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new AssociateSearchWordsFragment.2(this);
   }
   
   public void a(String paramString)
@@ -60,25 +55,25 @@ public class AssociateSearchWordsFragment
   {
     if (this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == null)
     {
-      bcby localbcby = new bcby(this, paramList);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(localbcby);
-      localbcby.a(paramList);
+      AssociateSearchWordsFragment.SearchAssociatedWordAdapter localSearchAssociatedWordAdapter = new AssociateSearchWordsFragment.SearchAssociatedWordAdapter(this, paramList);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(localSearchAssociatedWordAdapter);
+      localSearchAssociatedWordAdapter.a(paramList);
     }
     for (;;)
     {
       paramList = getActivity();
-      if ((paramList instanceof bbzj)) {
-        bcnc.a("sub_result", "exp_auto", new String[] { ((bbzj)paramList).a(), "", "", "" });
+      if ((paramList instanceof SearchInfoInterface)) {
+        SearchUtils.a("sub_result", "exp_auto", new String[] { ((SearchInfoInterface)paramList).a(), "", "", "" });
       }
       return;
-      ((bcby)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
+      ((AssociateSearchWordsFragment.SearchAssociatedWordAdapter)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559848, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131377207));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559924, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131377627));
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_a_of_type_Boolean = true;
@@ -99,7 +94,7 @@ public class AssociateSearchWordsFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment
  * JD-Core Version:    0.7.0.1
  */

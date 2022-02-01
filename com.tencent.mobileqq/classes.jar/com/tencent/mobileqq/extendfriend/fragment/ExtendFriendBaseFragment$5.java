@@ -7,12 +7,12 @@ class ExtendFriendBaseFragment$5
   
   public void run()
   {
-    this.this$0.j();
+    this.this$0.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment.5
  * JD-Core Version:    0.7.0.1
  */

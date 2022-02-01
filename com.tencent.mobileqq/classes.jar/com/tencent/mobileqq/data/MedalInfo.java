@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import bhbx;
 import com.tencent.mobileqq.medalwall.MedalID;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.util.Utils;
 import java.util.ArrayList;
 
 public class MedalInfo
@@ -54,23 +54,23 @@ public class MedalInfo
     }
     long l2 = this.lObtainTimeLevel1;
     long l1 = l2;
-    if (bhbx.b(l2, this.lObtainTimeLevel2) < 0) {
+    if (Utils.b(l2, this.lObtainTimeLevel2) < 0) {
       l1 = this.lObtainTimeLevel2;
     }
     l2 = l1;
-    if (bhbx.b(l1, this.lObtainTimeLevel3) < 0) {
+    if (Utils.b(l1, this.lObtainTimeLevel3) < 0) {
       l2 = this.lObtainTimeLevel3;
     }
     long l3 = paramMedalInfo.lObtainTimeLevel1;
     l1 = l3;
-    if (bhbx.b(l3, paramMedalInfo.lObtainTimeLevel2) < 0) {
+    if (Utils.b(l3, paramMedalInfo.lObtainTimeLevel2) < 0) {
       l1 = paramMedalInfo.lObtainTimeLevel2;
     }
     l3 = l1;
-    if (bhbx.b(l1, paramMedalInfo.lObtainTimeLevel3) < 0) {
+    if (Utils.b(l1, paramMedalInfo.lObtainTimeLevel3) < 0) {
       l3 = paramMedalInfo.lObtainTimeLevel3;
     }
-    if (bhbx.b(l2, l3) > 0) {}
+    if (Utils.b(l2, l3) > 0) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -173,7 +173,7 @@ public class MedalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MedalInfo
  * JD-Core Version:    0.7.0.1
  */

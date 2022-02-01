@@ -8,6 +8,7 @@ class GdtCgiReportRunnable
   
   GdtCgiReportRunnable(String paramString)
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -19,27 +20,27 @@ class GdtCgiReportRunnable
     //   1: astore_1
     //   2: aconst_null
     //   3: astore_3
-    //   4: new 22	java/net/URL
+    //   4: new 24	java/net/URL
     //   7: dup
     //   8: aload_0
-    //   9: getfield 16	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12: invokespecial 24	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   15: invokevirtual 28	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   18: checkcast 30	java/net/HttpURLConnection
+    //   9: getfield 18	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   12: invokespecial 26	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   15: invokevirtual 30	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   18: checkcast 32	java/net/HttpURLConnection
     //   21: astore_2
     //   22: aload_2
-    //   23: ldc 32
-    //   25: ldc 34
-    //   27: invokevirtual 38	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: ldc 34
+    //   25: ldc 36
+    //   27: invokevirtual 40	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   30: aload_2
-    //   31: invokevirtual 41	java/net/HttpURLConnection:connect	()V
+    //   31: invokevirtual 43	java/net/HttpURLConnection:connect	()V
     //   34: aload_2
-    //   35: invokevirtual 45	java/net/HttpURLConnection:getResponseCode	()I
+    //   35: invokevirtual 47	java/net/HttpURLConnection:getResponseCode	()I
     //   38: sipush 200
     //   41: if_icmpne +8 -> 49
     //   44: aload_0
     //   45: iconst_1
-    //   46: putfield 47	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_Boolean	Z
+    //   46: putfield 16	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_Boolean	Z
     //   49: aload_2
     //   50: ifnull +7 -> 57
     //   53: aload_2
@@ -59,11 +60,11 @@ class GdtCgiReportRunnable
     //   73: dup
     //   74: iconst_0
     //   75: aload_0
-    //   76: getfield 16	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   76: getfield 18	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   79: aastore
     //   80: invokestatic 60	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   83: aload_3
-    //   84: invokestatic 66	acho:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   84: invokestatic 66	com/tencent/gdtad/log/GdtLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   87: aload_2
     //   88: ifnull -31 -> 57
     //   91: aload_2
@@ -106,7 +107,7 @@ class GdtCgiReportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtCgiReportRunnable
  * JD-Core Version:    0.7.0.1
  */

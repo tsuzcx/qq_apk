@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aqeh;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
 import com.tencent.qphone.base.util.QLog;
 
 class NearbyAuthVideoPlayerFragment$1

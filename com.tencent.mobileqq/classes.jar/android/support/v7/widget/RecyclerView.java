@@ -1330,7 +1330,7 @@ public class RecyclerView
     }
   }
   
-  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return ((paramLayoutParams instanceof RecyclerView.LayoutParams)) && (this.mLayout.checkLayoutParams((RecyclerView.LayoutParams)paramLayoutParams));
   }
@@ -1515,12 +1515,12 @@ public class RecyclerView
     }
   }
   
-  protected void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
+  public void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchThawSelfOnly(paramSparseArray);
   }
   
-  protected void dispatchSaveInstanceState(SparseArray<Parcelable> paramSparseArray)
+  public void dispatchSaveInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchFreezeSelfOnly(paramSparseArray);
   }
@@ -1915,7 +1915,7 @@ public class RecyclerView
     return super.focusSearch(paramView, paramInt);
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     if (this.mLayout == null) {
       throw new IllegalStateException("RecyclerView has no LayoutManager");
@@ -1931,7 +1931,7 @@ public class RecyclerView
     return this.mLayout.generateLayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     if (this.mLayout == null) {
       throw new IllegalStateException("RecyclerView has no LayoutManager");
@@ -1969,7 +1969,7 @@ public class RecyclerView
     return -1;
   }
   
-  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
+  public int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     if (this.mChildDrawingOrderCallback == null) {
       return super.getChildDrawingOrder(paramInt1, paramInt2);
@@ -2282,7 +2282,7 @@ public class RecyclerView
     requestLayout();
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.mLayoutOrScrollCounter = 0;
@@ -2298,7 +2298,7 @@ public class RecyclerView
   
   public void onChildDetachedFromWindow(View paramView) {}
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.mItemAnimator != null) {
@@ -2494,7 +2494,7 @@ public class RecyclerView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     TraceCompat.beginSection("RV OnLayout");
     dispatchLayout();
@@ -2502,7 +2502,7 @@ public class RecyclerView
     this.mFirstLayoutComplete = true;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int j = 0;
     if (this.mLayout == null) {
@@ -2578,7 +2578,7 @@ public class RecyclerView
     }
   }
   
-  protected void onRestoreInstanceState(Parcelable paramParcelable)
+  public void onRestoreInstanceState(Parcelable paramParcelable)
   {
     this.mPendingSavedState = ((RecyclerView.SavedState)paramParcelable);
     super.onRestoreInstanceState(this.mPendingSavedState.getSuperState());
@@ -2587,7 +2587,7 @@ public class RecyclerView
     }
   }
   
-  protected Parcelable onSaveInstanceState()
+  public Parcelable onSaveInstanceState()
   {
     RecyclerView.SavedState localSavedState = new RecyclerView.SavedState(super.onSaveInstanceState());
     if (this.mPendingSavedState != null)
@@ -2608,7 +2608,7 @@ public class RecyclerView
   
   public void onScrolled(int paramInt1, int paramInt2) {}
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {
@@ -2807,7 +2807,7 @@ public class RecyclerView
     }
   }
   
-  protected void removeDetachedView(View paramView, boolean paramBoolean)
+  public void removeDetachedView(View paramView, boolean paramBoolean)
   {
     RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(paramView);
     if (localViewHolder != null)

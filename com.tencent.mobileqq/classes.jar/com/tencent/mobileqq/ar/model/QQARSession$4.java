@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.ar.model;
 
-import apos;
 import com.tencent.qphone.base.util.QLog;
 
-public class QQARSession$4
+class QQARSession$4
   implements Runnable
 {
-  public QQARSession$4(apos paramapos) {}
+  QQARSession$4(QQARSession paramQQARSession) {}
   
   public void run()
   {
-    QLog.i("AREngine_QQARSession", 1, "uninit run. mIsInited = " + apos.b(this.this$0));
-    apos.a(this.this$0);
+    QLog.i("AREngine_QQARSession", 1, "uninit run. mIsInited = " + QQARSession.b(this.this$0));
+    QQARSession.a(this.this$0);
     this.this$0.a = 5;
-    apos.a(this.this$0, false);
-    QLog.i("AREngine_QQARSession", 1, "uninit end. mIsInited = " + apos.b(this.this$0));
+    QQARSession.a(this.this$0, false);
+    QLog.i("AREngine_QQARSession", 1, "uninit end. mIsInited = " + QQARSession.b(this.this$0));
   }
 }
 

@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.theme;
 
 import android.app.Activity;
-import behh;
-import behm;
 
-public final class DarkModeManager$6
+final class DarkModeManager$6
   implements Runnable
 {
-  public DarkModeManager$6(Activity paramActivity, String paramString, behm parambehm) {}
+  DarkModeManager$6(Activity paramActivity, String paramString, DarkModeManager.ActionResult paramActionResult) {}
   
   public void run()
   {
-    behh.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Behm);
+    DarkModeManager.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqThemeDarkModeManager$ActionResult);
   }
 }
 

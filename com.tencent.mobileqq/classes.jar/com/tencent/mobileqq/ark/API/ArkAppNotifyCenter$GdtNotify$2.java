@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ark.API;
 
-import achn;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apsw;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForArk;
 import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import uuc;
 
-public class ArkAppNotifyCenter$GdtNotify$2
+class ArkAppNotifyCenter$GdtNotify$2
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$2(apsw paramapsw, String paramString1, WeakReference paramWeakReference, String paramString2) {}
+  ArkAppNotifyCenter$GdtNotify$2(ArkAppNotifyCenter.GdtNotify paramGdtNotify, String paramString1, WeakReference paramWeakReference, String paramString2) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class ArkAppNotifyCenter$GdtNotify$2
         int i = ((JSONObject)localObject3).optInt("clickScene");
         int j = ((JSONObject)localObject3).optInt("clickPosition");
         localObject3 = ((JSONObject)localObject3).optString("gdtRefsid");
-        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), ((JSONObject)localObject1).getJSONObject("adInfo")));
+        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), ((JSONObject)localObject1).getJSONObject("adInfo")));
         GdtHandler.Params localParams = new GdtHandler.Params();
         localParams.jdField_c_of_type_Int = 7;
         localParams.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
@@ -60,7 +60,7 @@ public class ArkAppNotifyCenter$GdtNotify$2
             continue;
           }
           localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-          localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", uuc.b("3026775809"));
+          localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId("3026775809"));
           continue;
         }
         Object localObject2 = null;

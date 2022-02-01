@@ -6,11 +6,11 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import aupt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -40,7 +40,7 @@ public class ShareUtils
   {
     if ((paramInt1 == 1010) && (paramInt2 == -1) && (paramActivity != null) && (!paramActivity.isFinishing()))
     {
-      Intent localIntent = AIOUtils.setOpenAIOIntent(new Intent(paramActivity, SplashActivity.class), null);
+      Intent localIntent = AIOUtils.a(new Intent(paramActivity, SplashActivity.class), null);
       Bundle localBundle = new Bundle();
       localBundle.putString("key_mini_report_event_action_type", "user_click");
       localBundle.putString("key_mini_report_event_sub_action_type", "custom_button");
@@ -135,7 +135,7 @@ public class ShareUtils
     {
       paramString = new Intent();
       paramString.putExtras(localBundle);
-      aupt.a(paramActivity, paramString, 1010);
+      ForwardBaseOption.a(paramActivity, paramString, 1010);
       return;
     }
     MiniProgramShareUtils.shareToChatDirectly(paramActivity, localBundle, paramShareChatModel.type, String.valueOf(paramShareChatModel.uin), paramShareChatModel.name, 1010, true);

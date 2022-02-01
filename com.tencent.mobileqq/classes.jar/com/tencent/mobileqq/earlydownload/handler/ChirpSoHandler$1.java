@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import asbt;
 import com.tencent.chirp.ChirpWrapper;
 
-public class ChirpSoHandler$1
+class ChirpSoHandler$1
   implements Runnable
 {
-  public ChirpSoHandler$1(asbt paramasbt, String paramString) {}
+  ChirpSoHandler$1(ChirpSoHandler paramChirpSoHandler, String paramString) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class ChirpSoHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.1
  * JD-Core Version:    0.7.0.1
  */

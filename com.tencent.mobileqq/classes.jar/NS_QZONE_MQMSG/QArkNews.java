@@ -11,9 +11,9 @@ public final class QArkNews
   public String img_url = "";
   public String jump_url = "";
   public String title = "";
-  public int type;
+  public int type = 0;
   public String type_content = "";
-  public long utime;
+  public long utime = 0L;
   
   public QArkNews() {}
   

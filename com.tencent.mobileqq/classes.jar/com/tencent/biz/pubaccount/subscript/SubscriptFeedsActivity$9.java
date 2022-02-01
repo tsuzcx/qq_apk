@@ -14,14 +14,14 @@ class SubscriptFeedsActivity$9
     QQMessageFacade localQQMessageFacade = this.this$0.app.getMessageFacade();
     if (localQQMessageFacade != null)
     {
-      int i = localQQMessageFacade.getUnreadMsgsNum();
+      int i = localQQMessageFacade.b();
       this.this$0.leftView.post(new SubscriptFeedsActivity.9.1(this, i));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.activity.home;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import axio;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.crash.RenderInSubThreadMonitor;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QIMNewFriendManager;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import mqq.app.AppRuntime;
 
 class MainFragment$3
   implements Runnable
@@ -15,45 +12,21 @@ class MainFragment$3
   
   public void run()
   {
-    boolean bool2 = true;
-    if (this.this$0.getActivity() == null) {
-      return;
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver != null) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a();
     }
-    RenderInSubThreadMonitor.disableMonitor();
-    MainFragment.a(this.this$0, PreferenceManager.getDefaultSharedPreferences(MainFragment.a(this.this$0).getApp()));
-    boolean bool1 = bool2;
-    if (MainFragment.a(this.this$0).getBoolean("theme_voice_setting_" + MainFragment.a(this.this$0).getCurrentAccountUin(), true))
+    if (this.this$0.jdField_a_of_type_MqqAppAppRuntime != null)
     {
-      Object localObject = ThemeUtil.getUserCurrentThemeId(MainFragment.a(this.this$0));
-      localObject = ThemeUtil.getThemeInfo(this.this$0.getActivity(), (String)localObject);
-      bool1 = bool2;
-      if (localObject != null)
-      {
-        bool1 = bool2;
-        if (((ThemeUtil.ThemeInfo)localObject).status.equals("5"))
-        {
-          bool1 = bool2;
-          if (((ThemeUtil.ThemeInfo)localObject).isVoiceTheme) {
-            bool1 = false;
-          }
-        }
-      }
+      ((QIMNewFriendManager)this.this$0.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.QIM_NEW_FRIEND_MANAGER)).a(MainFragment.a(this.this$0));
+      this.this$0.jdField_a_of_type_MqqAppAppRuntime.registObserver(MainFragment.a(this.this$0));
+      this.this$0.jdField_a_of_type_MqqAppAppRuntime.registObserver(MainFragment.a(this.this$0));
     }
-    MainFragment.a(this.this$0, bool1, MainFragment.a);
-    MainFragment.a(this.this$0, bool1, MainFragment.b);
-    MainFragment.a(this.this$0, bool1, MainFragment.c);
-    MainFragment.a(this.this$0, bool1, "NOW");
-    MainFragment.a(this.this$0, bool1, MainFragment.d);
-    MainFragment.a(this.this$0, bool1, "动态");
-    if (!axio.a().a()) {
-      axio.a().a(MainFragment.a(this.this$0));
-    }
-    RenderInSubThreadMonitor.enableMonitor();
+    MainFragment.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.MainFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import java.util.HashSet;
 import java.util.Iterator;
 import org.json.JSONException;
@@ -68,7 +68,7 @@ public class PublicAccountShowPictureReport
         localStringBuilder.append((Integer)localIterator.next()).append(",");
       }
     }
-    bdla.b(paramQQAppInterface, "dc00899", "Pb_account_lifeservice", this.puin, "0X80066AB", "0X80066AB", this.slide_number - 1, Integer.parseInt(this.imgCount), 0, this.articleId, localStringBuilder.toString(), this.leave_mode + "", this.time_on_show_end - this.time_on_show_start + "");
+    ReportController.b(paramQQAppInterface, "dc00899", "Pb_account_lifeservice", this.puin, "0X80066AB", "0X80066AB", this.slide_number - 1, Integer.parseInt(this.imgCount), 0, this.articleId, localStringBuilder.toString(), this.leave_mode + "", this.time_on_show_end - this.time_on_show_start + "");
   }
   
   public void reset()
@@ -114,7 +114,7 @@ public class PublicAccountShowPictureReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PublicAccountShowPictureReport
  * JD-Core Version:    0.7.0.1
  */

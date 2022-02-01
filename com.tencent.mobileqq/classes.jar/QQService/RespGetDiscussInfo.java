@@ -11,16 +11,16 @@ public final class RespGetDiscussInfo
   extends JceStruct
 {
   static ArrayList<DiscussMemberInfo> cache_Members;
-  public long CreateTime;
-  public long DiscussFlag;
-  public long DiscussUin;
-  public long GroupCode;
-  public long GroupUin;
-  public long InfoSeq;
-  public long InteRemarkTimeStamp;
-  public ArrayList<DiscussMemberInfo> Members;
+  public long CreateTime = 0L;
+  public long DiscussFlag = 0L;
+  public long DiscussUin = 0L;
+  public long GroupCode = 0L;
+  public long GroupUin = 0L;
+  public long InfoSeq = 0L;
+  public long InteRemarkTimeStamp = 0L;
+  public ArrayList<DiscussMemberInfo> Members = null;
   public String Name = "";
-  public long OwnerUin;
+  public long OwnerUin = 0L;
   
   static
   {

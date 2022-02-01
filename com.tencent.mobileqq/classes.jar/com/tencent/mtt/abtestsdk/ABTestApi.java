@@ -96,6 +96,76 @@ public class ABTestApi
     ABTestManager.getInstance().doGetSourceExperiments(paramGetExperimentListener, paramInt);
   }
   
+  public static RomaExpEntity getExpById(String paramString)
+  {
+    RomaExpEntity localRomaExpEntity1 = new RomaExpEntity("");
+    Object localObject;
+    if (TextUtils.isEmpty(paramString))
+    {
+      localObject = localRomaExpEntity1;
+      return localObject;
+    }
+    List localList = ABTestManager.getInstance().getAllRomaExpDataFromCache();
+    int i = 0;
+    for (;;)
+    {
+      if (i >= localList.size()) {
+        return localRomaExpEntity1;
+      }
+      RomaExpEntity localRomaExpEntity2 = (RomaExpEntity)localList.get(i);
+      localObject = localRomaExpEntity2;
+      if (TextUtils.equals(paramString, localRomaExpEntity2.getGrayId())) {
+        break;
+      }
+      i += 1;
+    }
+    return localRomaExpEntity1;
+  }
+  
+  public static RomaExpEntity getExpByIdAndReport(String paramString)
+  {
+    paramString = getExpById(paramString);
+    if (!TextUtils.equals("-1", paramString.getGrayId())) {
+      reportExpExpose(paramString);
+    }
+    return paramString;
+  }
+  
+  public static RomaExpEntity getExpByLayerCode(String paramString)
+  {
+    RomaExpEntity localRomaExpEntity1 = new RomaExpEntity("");
+    Object localObject;
+    if (TextUtils.isEmpty(paramString))
+    {
+      localObject = localRomaExpEntity1;
+      return localObject;
+    }
+    List localList = ABTestManager.getInstance().getAllRomaExpDataFromCache();
+    int i = 0;
+    for (;;)
+    {
+      if (i >= localList.size()) {
+        return localRomaExpEntity1;
+      }
+      RomaExpEntity localRomaExpEntity2 = (RomaExpEntity)localList.get(i);
+      localObject = localRomaExpEntity2;
+      if (TextUtils.equals(paramString, localRomaExpEntity2.getLayerCode())) {
+        break;
+      }
+      i += 1;
+    }
+    return localRomaExpEntity1;
+  }
+  
+  public static RomaExpEntity getExpByLayerCodeAndReport(String paramString)
+  {
+    paramString = getExpByLayerCode(paramString);
+    if (!TextUtils.equals("default", paramString.getLayerCode())) {
+      reportExpExpose(paramString);
+    }
+    return paramString;
+  }
+  
   public static void getExpByName(@NonNull String paramString, @NonNull GetExperimentListener paramGetExperimentListener, int paramInt)
   {
     _getExpByName(paramString, paramGetExperimentListener, paramInt, false);
@@ -144,7 +214,9 @@ public class ABTestApi
     String str1 = paramRomaExpEntity.getExpName();
     String str2 = paramRomaExpEntity.getAssignment();
     paramRomaExpEntity = paramRomaExpEntity.getGrayId();
-    if ((!TextUtils.isEmpty(str1)) && ("default".equals(str2))) {
+    if ((!TextUtils.isEmpty(str1)) && ("default".equals(str2)))
+    {
+      ABTestLog.stepReport("assignment is default and give up reporting", new Object[0]);
       return;
     }
     boolean bool = ABTestManager.getInstance().reportBeaconExpExpose(paramRomaExpEntity, str1);
@@ -152,7 +224,8 @@ public class ABTestApi
     if (bool)
     {
       long l2 = System.currentTimeMillis();
-      ABTestManager.getInstance().reportBeaconApiEvent("reportExpExpose", true, l2 - l1);
+      bool = ABTestManager.getInstance().reportBeaconApiEvent("reportExpExpose", true, l2 - l1);
+      ABTestLog.debug("reportApiEvent result: " + bool, new Object[0]);
       return;
     }
     ABTestManager.getInstance().reportExpAttaExpose(paramRomaExpEntity);
@@ -182,7 +255,7 @@ public class ABTestApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.ABTestApi
  * JD-Core Version:    0.7.0.1
  */

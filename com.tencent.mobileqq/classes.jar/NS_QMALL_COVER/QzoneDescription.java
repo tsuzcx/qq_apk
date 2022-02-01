@@ -8,9 +8,9 @@ public final class QzoneDescription
   extends JceStruct
 {
   static int cache_iType = 0;
-  public int iHeight;
-  public int iType;
-  public int iWidth;
+  public int iHeight = 0;
+  public int iType = 0;
+  public int iWidth = 0;
   public String strJumpUrl = "";
   public String strUrl = "";
   

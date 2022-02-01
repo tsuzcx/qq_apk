@@ -1,15 +1,15 @@
 package com.tencent.qqlive.module.videoreport.report;
 
-import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
+import android.app.Activity;
 
 class AppEventReporter$3
-  implements ListenerMgr.INotifyCallback<AppEventReporter.IAppEventListener>
+  implements Runnable
 {
-  AppEventReporter$3(AppEventReporter paramAppEventReporter) {}
+  AppEventReporter$3(AppEventReporter paramAppEventReporter, Activity paramActivity) {}
   
-  public void onNotify(AppEventReporter.IAppEventListener paramIAppEventListener)
+  public void run()
   {
-    paramIAppEventListener.onAppIn();
+    AppEventReporter.access$600(this.this$0, this.val$activity);
   }
 }
 

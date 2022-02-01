@@ -3,10 +3,6 @@ package com.tencent.mobileqq.transfile;
 import android.graphics.BitmapFactory.Options;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import azla;
-import azlb;
-import bheg;
-import blkh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
@@ -23,7 +19,11 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
 import com.tencent.mobileqq.transfile.protohandler.BaseHandler;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
@@ -32,9 +32,11 @@ import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.BDHCommonUpResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.wstt.SSCM.SSCM;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +51,7 @@ import tencent.im.cs.cmd0x388.cmd0x388.ExpRoamExtendInfo;
 public class BDHCommonUploadProcessor
   extends BaseUploadProcessor
 {
+  public static final int COMMAND_ID_AE_CAMERA_UPLOAD_ARK_VIDEO = 82;
   public static final int COMMAND_ID_AREA_GRAB = 35;
   public static final int COMMAND_ID_AV_GAME_RESULT = 78;
   public static final int COMMAND_ID_BUSINESS_CARD = 18;
@@ -71,6 +74,7 @@ public class BDHCommonUploadProcessor
   public static final int COMMAND_ID_TRIBE_VIDEO_UPLOAD = 57;
   public static final int COMMAND_ID_TROOP_CHECKIN_PIC = 75;
   public static final int COMMAND_ID_TROOP_CHECKIN_VIDEO = 74;
+  public static final int COMMAND_ID_UPLOAD_PIC_STUDY_ROOM = 80;
   public static final int COMMAND_ID_UPLOAD_WEBPIC = 51;
   public static final int COMMAND_ID_VOICE_SEARCH = 40;
   public static final int RET_ERR_FAV_EMO_NORMAL_LIMITED = 400010;
@@ -86,9 +90,9 @@ public class BDHCommonUploadProcessor
   private Bdh_extinfo.UploadPicExtInfo mUploadPicExtInfo = new Bdh_extinfo.UploadPicExtInfo();
   Transaction trans = null;
   
-  public BDHCommonUploadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public BDHCommonUploadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     this.mCommandId = paramTransferRequest.mCommandId;
     this.file.commandId = paramTransferRequest.mCommandId;
     this.mRichTag = paramTransferRequest.mRichTag;
@@ -170,7 +174,7 @@ public class BDHCommonUploadProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "bdh_common_up";
     localRichProtoReq.reqs.add(localPicUpReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
     localRichProtoReq.commandId = this.mCommandId;
     localRichProtoReq.extention = this.mExtention;
     return localRichProtoReq;
@@ -193,7 +197,7 @@ public class BDHCommonUploadProcessor
       localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       ((BitmapFactory.Options)localObject).inSampleSize = 1;
-      bheg.a(this.mUiRequest.mLocalPath, (BitmapFactory.Options)localObject);
+      ImageUtil.a(this.mUiRequest.mLocalPath, (BitmapFactory.Options)localObject);
       this.mHeight = ((BitmapFactory.Options)localObject).outHeight;
       this.mWidth = ((BitmapFactory.Options)localObject).outWidth;
     }
@@ -226,7 +230,7 @@ public class BDHCommonUploadProcessor
       onError();
       return -1;
     }
-    localObject = FileUtils.estimateFileType((String)localObject);
+    localObject = FileUtils.b((String)localObject);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       this.mExtName = ((String)localObject);
     }
@@ -336,25 +340,21 @@ public class BDHCommonUploadProcessor
   
   protected final void doStatistic(HashMap<String, String> paramHashMap)
   {
-    long l2 = 0L;
-    long l3 = 0L;
-    long l4 = 0L;
-    long l5 = 0L;
     try
     {
-      l1 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+      Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
     }
     catch (Exception localException3)
     {
       try
       {
-        l2 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+        Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
       }
       catch (Exception localException3)
       {
         try
         {
-          l3 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+          Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
         }
         catch (Exception localException3)
         {
@@ -362,7 +362,7 @@ public class BDHCommonUploadProcessor
           {
             for (;;)
             {
-              l4 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+              Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
               String str1 = (String)paramHashMap.get("tc_p:");
               String str2 = (String)paramHashMap.get("rep_bdhTrans");
               String str3 = (String)paramHashMap.get("segspercnt");
@@ -381,28 +381,20 @@ public class BDHCommonUploadProcessor
               this.mReportInfo.put("param_conf_segSize", str4);
               this.mReportInfo.put("param_conf_segNum", str5);
               this.mReportInfo.put("param_conf_connNum", str6);
-              reportDataFlow(l1, l2, l3, l4);
               return;
               localException1 = localException1;
-              long l1 = l2;
               if (QLog.isColorLevel())
               {
                 QLog.w("BDHCommonUploadProcessor", 2, "upFlow_Wifi : number format exception !");
-                l1 = l2;
                 continue;
                 localException2 = localException2;
-                l2 = l3;
                 if (QLog.isColorLevel())
                 {
                   QLog.w("BDHCommonUploadProcessor", 2, "dwFlow_Wifi : number format exception !");
-                  l2 = l3;
                   continue;
                   localException3 = localException3;
-                  l3 = l4;
-                  if (QLog.isColorLevel())
-                  {
+                  if (QLog.isColorLevel()) {
                     QLog.w("BDHCommonUploadProcessor", 2, "upFlow_Xg : number format exception !");
-                    l3 = l4;
                   }
                 }
               }
@@ -412,11 +404,8 @@ public class BDHCommonUploadProcessor
           {
             for (;;)
             {
-              l4 = l5;
-              if (QLog.isColorLevel())
-              {
+              if (QLog.isColorLevel()) {
                 QLog.w("BDHCommonUploadProcessor", 2, "dwFlow_Xg : number format exception !");
-                l4 = l5;
               }
             }
           }
@@ -510,16 +499,16 @@ public class BDHCommonUploadProcessor
     if (QLog.isColorLevel()) {
       QLog.d("BDHCommonUploadProcessor", 2, "uploadCustomEmoticon resultError ---- errCode: " + this.errCode + ", errDesc:" + this.errDesc);
     }
-    azlb localazlb;
+    UpCallBack.SendResult localSendResult;
     String str;
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localazlb = new azlb();
-      localazlb.jdField_a_of_type_Int = -1;
-      localazlb.b = this.errCode;
-      localazlb.jdField_a_of_type_JavaLangString = this.errDesc;
+      localSendResult = new UpCallBack.SendResult();
+      localSendResult.jdField_a_of_type_Int = -1;
+      localSendResult.b = this.errCode;
+      localSendResult.jdField_a_of_type_JavaLangString = this.errDesc;
       if ((this.mCommandId == 20) && (BaseTransProcessor.getUrlReason(120509L).equals(this.mReportInfo.get("param_reason")))) {
-        localazlb.b = 120509;
+        localSendResult.b = 120509;
       }
       if (this.mCommandId == 9)
       {
@@ -527,16 +516,16 @@ public class BDHCommonUploadProcessor
         if (!BaseTransProcessor.getUrlReason(400010L).equals(str)) {
           break label207;
         }
-        localazlb.b = 400010;
+        localSendResult.b = 400010;
       }
     }
     for (;;)
     {
-      this.mUiRequest.mUpCallBack.onSend(localazlb);
+      this.mUiRequest.mUpCallBack.b(localSendResult);
       return;
       label207:
       if (BaseTransProcessor.getUrlReason(400011L).equals(str)) {
-        localazlb.b = 400011;
+        localSendResult.b = 400011;
       }
     }
   }
@@ -558,12 +547,12 @@ public class BDHCommonUploadProcessor
     }
     if (this.mUiRequest.mUpCallBack != null)
     {
-      azlb localazlb = new azlb();
-      localazlb.jdField_a_of_type_Int = 0;
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+      localSendResult.jdField_a_of_type_Int = 0;
       if (this.mCommandId == 20) {
-        localazlb.c = this.file.serverPath;
+        localSendResult.c = this.file.serverPath;
       }
-      this.mUiRequest.mUpCallBack.onSend(localazlb);
+      this.mUiRequest.mUpCallBack.b(localSendResult);
     }
     if ((this.mCommandId == 9) || (this.mCommandId == 76)) {
       sendMessageToUpdate(1008);
@@ -591,22 +580,6 @@ public class BDHCommonUploadProcessor
       return;
     }
     super.pause();
-  }
-  
-  protected final void reportDataFlow(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
-  {
-    if (paramLong1 != 0L) {
-      this.app.countFlow(true, 1, this.mUiRequest.mFileType, this.mUiRequest.mUinType, paramLong1);
-    }
-    if (paramLong2 != 0L) {
-      this.app.countFlow(true, 1, this.mUiRequest.mFileType, this.mUiRequest.mUinType, paramLong2);
-    }
-    if (paramLong3 != 0L) {
-      this.app.countFlow(true, 0, this.mUiRequest.mFileType, this.mUiRequest.mUinType, paramLong3);
-    }
-    if (paramLong4 != 0L) {
-      this.app.countFlow(true, 0, this.mUiRequest.mFileType, this.mUiRequest.mUinType, paramLong4);
-    }
   }
   
   public final int resume()
@@ -663,7 +636,7 @@ public class BDHCommonUploadProcessor
         this.trans = new Transaction(this.app.getCurrentAccountUin(), this.mCommandId, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mLocalMd5, local1, this.mUiRequest.mExtentionInfo, true);
       } else if (this.mCommandId == 54) {
         this.trans = new Transaction(this.app.getCurrentAccountUin(), this.mCommandId, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mLocalMd5, local1, this.mUiRequest.mExtentionInfo, false);
-      } else if ((this.mCommandId == 51) || (this.mCommandId == 58) || (this.mCommandId == 62) || (this.mCommandId == 65) || (this.mCommandId == 70) || (this.mCommandId == 76) || (this.mCommandId == 78) || (this.mCommandId == 79)) {
+      } else if ((this.mCommandId == 51) || (this.mCommandId == 58) || (this.mCommandId == 62) || (this.mCommandId == 65) || (this.mCommandId == 70) || (this.mCommandId == 76) || (this.mCommandId == 78) || (this.mCommandId == 79) || (this.mCommandId == 80) || (this.mCommandId == 82)) {
         this.trans = new Transaction(this.app.getCurrentAccountUin(), this.mCommandId, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mLocalMd5, local1, this.mUiRequest.mExtentionInfo, false);
       } else {
         this.trans = new Transaction(this.app.getCurrentAccountUin(), this.mCommandId, this.mUiRequest.mLocalPath, (int)this.mStartOffset, PkgTools.hexToBytes(this.mSessionKey), this.mLocalMd5, local1);
@@ -731,6 +704,14 @@ public class BDHCommonUploadProcessor
         sendFile();
       }
       else if (79 == this.mCommandId)
+      {
+        sendFile();
+      }
+      else if (80 == this.mCommandId)
+      {
+        sendFile();
+      }
+      else if (82 == this.mCommandId)
       {
         sendFile();
       }

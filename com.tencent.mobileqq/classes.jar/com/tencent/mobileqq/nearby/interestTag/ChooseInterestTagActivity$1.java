@@ -3,11 +3,11 @@ package com.tencent.mobileqq.nearby.interestTag;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
-import axqt;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import java.util.List;
 
@@ -25,7 +25,7 @@ class ChooseInterestTagActivity$1
     int i;
     if ((l - ((SharedPreferences)localObject2).getLong("list_last_update_time_" + ChooseInterestTagActivity.a(this.this$0), -1L) >= 3600000L) || (ChooseInterestTagActivity.a(this.this$0)))
     {
-      if (NetworkUtil.isNetSupport(this.this$0))
+      if (NetworkUtil.d(this.this$0))
       {
         localObject1 = ChooseInterestTagActivity.a(this.this$0);
         j = ChooseInterestTagActivity.a(this.this$0);
@@ -33,7 +33,7 @@ class ChooseInterestTagActivity$1
         if (ChooseInterestTagActivity.a(this.this$0)) {}
         for (i = 1;; i = 0)
         {
-          ((axqt)localObject1).a("", j, k, 30, 0, i);
+          ((NearbyCardHandler)localObject1).a("", j, k, 30, 0, i);
           return;
         }
       }
@@ -45,7 +45,7 @@ class ChooseInterestTagActivity$1
     localEntityManager.close();
     if ((localObject1 == null) || (((List)localObject1).isEmpty()))
     {
-      if (NetworkUtil.isNetSupport(this.this$0))
+      if (NetworkUtil.d(this.this$0))
       {
         localObject1 = ChooseInterestTagActivity.a(this.this$0);
         j = ChooseInterestTagActivity.a(this.this$0);
@@ -53,7 +53,7 @@ class ChooseInterestTagActivity$1
         if (ChooseInterestTagActivity.a(this.this$0)) {}
         for (i = 1;; i = 0)
         {
-          ((axqt)localObject1).a("", j, k, 30, 0, i);
+          ((NearbyCardHandler)localObject1).a("", j, k, 30, 0, i);
           return;
         }
       }

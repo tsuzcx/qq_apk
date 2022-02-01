@@ -4,7 +4,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.thumbplayer.adapter.TPPlayerBaseListeners;
-import com.tencent.thumbplayer.utils.TPLogUtil;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMapUtil;
+import com.tencent.thumbplayer.api.TPCommonEnum.NativeErrorType;
+import com.tencent.thumbplayer.log.TPBaseLogger;
 import java.lang.ref.WeakReference;
 
 class TPThumbPlayer$EventHandler
@@ -32,9 +34,9 @@ class TPThumbPlayer$EventHandler
     TPThumbPlayer.access$400(this.this$0);
   }
   
-  private void handleOnError(int paramInt1, int paramInt2)
+  private void handleOnError(@TPCommonEnum.NativeErrorType int paramInt1, int paramInt2)
   {
-    TPThumbPlayer.access$200(this.this$0).onError(TPThumbPlayerUtils.convert2TPErrorType(paramInt1), paramInt2, 0L, 0L);
+    TPThumbPlayer.access$200(this.this$0).onError(TPNativeKeyMapUtil.convertToTPErrorType(paramInt1), paramInt2, 0L, 0L);
   }
   
   private void handleOnInfoLong(TPThumbPlayer.OnInfoLongInfo paramOnInfoLongInfo)
@@ -70,13 +72,13 @@ class TPThumbPlayer$EventHandler
   {
     if ((TPThumbPlayer)this.mWeakRef.get() == null)
     {
-      TPLogUtil.e(TPThumbPlayer.access$000(this.this$0), "mWeakRef is null");
+      TPThumbPlayer.access$000(this.this$0).error("mWeakRef is null");
       return;
     }
     switch (paramMessage.what)
     {
     default: 
-      TPLogUtil.w(TPThumbPlayer.access$000(this.this$0), "message :" + paramMessage.what + "  not recognition");
+      TPThumbPlayer.access$000(this.this$0).warn("message :" + paramMessage.what + "  not recognition");
       return;
     case 1: 
       handleOnAsyncCallResult((TPThumbPlayer.OnASyncCallResultInfo)paramMessage.obj);
@@ -94,7 +96,7 @@ class TPThumbPlayer$EventHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.thumbplayer.TPThumbPlayer.EventHandler
  * JD-Core Version:    0.7.0.1
  */

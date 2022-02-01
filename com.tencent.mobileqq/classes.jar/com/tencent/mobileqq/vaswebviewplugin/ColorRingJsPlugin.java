@@ -3,12 +3,12 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import bifw;
-import bihb;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -34,13 +34,13 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "changeTab");
     }
-    bihb localbihb = (bihb)super.getBrowserComponent(32);
-    if (localbihb != null)
+    SwiftBrowserMiscHandler localSwiftBrowserMiscHandler = (SwiftBrowserMiscHandler)super.getBrowserComponent(32);
+    if (localSwiftBrowserMiscHandler != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("callbackId", paramString);
-      paramString = localbihb.a.obtainMessage(5, localBundle);
-      localbihb.a.dispatchMessage(paramString);
+      paramString = localSwiftBrowserMiscHandler.a.obtainMessage(5, localBundle);
+      localSwiftBrowserMiscHandler.a.dispatchMessage(paramString);
     }
   }
   
@@ -126,15 +126,15 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "play, id=" + paramLong);
     }
-    bihb localbihb = (bihb)super.getBrowserComponent(32);
-    if (localbihb != null)
+    SwiftBrowserMiscHandler localSwiftBrowserMiscHandler = (SwiftBrowserMiscHandler)super.getBrowserComponent(32);
+    if (localSwiftBrowserMiscHandler != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("id", paramLong);
       localBundle.putString("callbackId", paramString2);
       localBundle.putString("type", paramString1);
-      paramString1 = localbihb.a.obtainMessage(3, localBundle);
-      localbihb.a.dispatchMessage(paramString1);
+      paramString1 = localSwiftBrowserMiscHandler.a.obtainMessage(3, localBundle);
+      localSwiftBrowserMiscHandler.a.dispatchMessage(paramString1);
     }
   }
   
@@ -143,22 +143,22 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "setup, id=" + paramLong);
     }
-    bihb localbihb = (bihb)super.getBrowserComponent(32);
-    if (localbihb != null)
+    SwiftBrowserMiscHandler localSwiftBrowserMiscHandler = (SwiftBrowserMiscHandler)super.getBrowserComponent(32);
+    if (localSwiftBrowserMiscHandler != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("id", paramLong);
       localBundle.putInt("status", paramInt);
       localBundle.putString("type", paramString1);
       localBundle.putString("callbackId", paramString2);
-      paramString1 = localbihb.a.obtainMessage(4, localBundle);
-      localbihb.a.dispatchMessage(paramString1);
+      paramString1 = localSwiftBrowserMiscHandler.a.obtainMessage(4, localBundle);
+      localSwiftBrowserMiscHandler.a.dispatchMessage(paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ColorRingJsPlugin
  * JD-Core Version:    0.7.0.1
  */

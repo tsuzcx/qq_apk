@@ -2,19 +2,15 @@ package com.tencent.biz.subscribe.animation;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
-import zrv;
-import zrw;
-import zrx;
-import zry;
 
 public class PopViewAnimationDrawableHelper
 {
   private int jdField_a_of_type_Int;
   private AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler;
+  private PopViewAnimationDrawableHelper.OnFrameAnimationListener jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnFrameAnimationListener;
+  private PopViewAnimationDrawableHelper.OnInnerFrameAnimationListener jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnInnerFrameAnimationListener;
   private Runnable jdField_a_of_type_JavaLangRunnable;
-  private zrx jdField_a_of_type_Zrx;
-  private zry jdField_a_of_type_Zry;
   private int b;
   private int c;
   
@@ -22,8 +18,8 @@ public class PopViewAnimationDrawableHelper
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = paramAnimationDrawable;
     this.c = paramAnimationDrawable.getNumberOfFrames();
-    this.jdField_a_of_type_AndroidOsHandler = new zrw();
-    this.jdField_a_of_type_Zry = new zrv(this);
+    this.jdField_a_of_type_AndroidOsHandler = new PopViewAnimationDrawableHelper.InnerHandler();
+    this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnInnerFrameAnimationListener = new PopViewAnimationDrawableHelper.1(this);
     this.jdField_a_of_type_JavaLangRunnable = new PopViewAnimationDrawableHelper.LoopingRunnable(this);
   }
   
@@ -72,13 +68,13 @@ public class PopViewAnimationDrawableHelper
       return;
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
       c();
-    } while (this.jdField_a_of_type_Zrx == null);
-    this.jdField_a_of_type_Zrx.a();
+    } while (this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnFrameAnimationListener == null);
+    this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnFrameAnimationListener.a();
   }
   
-  public void a(zrx paramzrx)
+  public void a(PopViewAnimationDrawableHelper.OnFrameAnimationListener paramOnFrameAnimationListener)
   {
-    this.jdField_a_of_type_Zrx = paramzrx;
+    this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnFrameAnimationListener = paramOnFrameAnimationListener;
   }
   
   public void b()
@@ -92,7 +88,7 @@ public class PopViewAnimationDrawableHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atht;
-import atlf;
-import atpt;
-import auea;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
 
-public class FileTransferHandler$3
+class FileTransferHandler$3
   implements Runnable
 {
-  public FileTransferHandler$3(atht paramatht, String paramString, int paramInt, short paramShort, long paramLong1, long paramLong2) {}
+  FileTransferHandler$3(FileTransferHandler paramFileTransferHandler, String paramString, int paramInt, short paramShort, long paramLong1, long paramLong2) {}
   
   public void run()
   {
@@ -23,7 +22,7 @@ public class FileTransferHandler$3
       localFileManagerEntity.msgTime = this.b;
       this.this$0.a.getFileManagerProxy().f(localFileManagerEntity);
       if (QLog.isColorLevel()) {
-        QLog.d("FileTransferHandler<FileAssistant>", 2, "online change to offline, update offline msg seq , uid and msgTime" + auea.a(localFileManagerEntity));
+        QLog.d("FileTransferHandler<FileAssistant>", 2, "online change to offline, update offline msg seq , uid and msgTime" + FileManagerUtil.a(localFileManagerEntity));
       }
     }
   }

@@ -1,6 +1,8 @@
 package cooperation.qzone.util;
 
 import android.os.Build;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.utils.IQzoneHardwareRestriction;
 import common.config.service.QzoneConfig;
 
 public class gifCoderWnsConfig
@@ -41,12 +43,11 @@ public class gifCoderWnsConfig
   
   public static int getCurrentDeviceLevel()
   {
-    int i = 2;
-    if (QzoneHardwareRestriction.meetHardwareRestriction(2, 2)) {
-      i = 3;
+    if (((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(2, 2)) {
+      return 3;
     }
-    while (QzoneHardwareRestriction.meetHardwareRestriction(1, 1)) {
-      return i;
+    if (((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(1, 1)) {
+      return 2;
     }
     return 1;
   }
@@ -75,7 +76,7 @@ public class gifCoderWnsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.gifCoderWnsConfig
  * JD-Core Version:    0.7.0.1
  */

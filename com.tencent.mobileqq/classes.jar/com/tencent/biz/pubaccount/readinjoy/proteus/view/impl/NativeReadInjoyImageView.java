@@ -6,19 +6,18 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.DrawableController;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
+import com.tencent.biz.pubaccount.util.FluencyOptUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import pjr;
-import qwd;
-import tlt;
-import tlw;
-import uro;
 
 public class NativeReadInjoyImageView
   extends KandianUrlImageView
@@ -27,10 +26,10 @@ public class NativeReadInjoyImageView
   private static final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
   private static Map<String, Drawable> jdField_a_of_type_JavaUtilMap = new HashMap();
   private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private String jdField_a_of_type_JavaLangString = null;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int c;
   private int d;
   
@@ -80,8 +79,8 @@ public class NativeReadInjoyImageView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    tlw localtlw = this.mController.a();
-    if (((localtlw == null) || (localtlw.jdField_a_of_type_Boolean)) && (this.jdField_a_of_type_JavaLangString != null)) {
+    ImageRequest localImageRequest = this.mController.a();
+    if (((localImageRequest == null) || (localImageRequest.jdField_a_of_type_Boolean)) && (this.jdField_a_of_type_JavaLangString != null)) {
       setImageSrc(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -107,8 +106,8 @@ public class NativeReadInjoyImageView
   public void onFinishTemporaryDetach()
   {
     super.onFinishTemporaryDetach();
-    tlw localtlw = this.mController.a();
-    if (((localtlw == null) || (localtlw.jdField_a_of_type_Boolean)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+    ImageRequest localImageRequest = this.mController.a();
+    if (((localImageRequest == null) || (localImageRequest.jdField_a_of_type_Boolean)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
       setImageSrc(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -155,18 +154,18 @@ public class NativeReadInjoyImageView
       }
       for (;;)
       {
-        URL localURL = uro.a.a(this.jdField_a_of_type_JavaLangString);
+        URL localURL = FluencyOptUtils.a.a(this.jdField_a_of_type_JavaLangString);
         localObject = localURL;
         if (localURL == null)
         {
           localObject = new URL(paramString);
-          uro.a.a((URL)localObject);
+          FluencyOptUtils.a.a((URL)localObject);
         }
         QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | mPathUrl :" + this.jdField_a_of_type_JavaLangString);
-        if (!pjr.a(getContext(), (URL)localObject)) {
+        if (!ReadInJoyDisplayUtils.a(getContext(), (URL)localObject)) {
           break;
         }
-        setImageResource(2130841740);
+        setImageResource(2130841881);
         return;
         QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | current path unchanged ");
       }
@@ -180,7 +179,7 @@ public class NativeReadInjoyImageView
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
     if (paramBoolean) {
-      setPublicAccountImageDownListener(new qwd(null));
+      setPublicAccountImageDownListener(new NativeReadInjoyImageView.BitmapRefListener(null));
     }
   }
   
@@ -194,7 +193,7 @@ public class NativeReadInjoyImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView
  * JD-Core Version:    0.7.0.1
  */

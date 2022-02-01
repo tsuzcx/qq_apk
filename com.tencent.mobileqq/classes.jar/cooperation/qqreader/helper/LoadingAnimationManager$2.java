@@ -1,16 +1,15 @@
 package cooperation.qqreader.helper;
 
 import android.content.Context;
-import bmez;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.dinifly.LottieCompositionFactory;
 import com.tencent.mobileqq.dinifly.LottieResult;
 import mqq.os.MqqHandler;
 
-public class LoadingAnimationManager$2
+class LoadingAnimationManager$2
   implements Runnable
 {
-  public LoadingAnimationManager$2(bmez parambmez, Context paramContext) {}
+  LoadingAnimationManager$2(LoadingAnimationManager paramLoadingAnimationManager, Context paramContext) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class LoadingAnimationManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.helper.LoadingAnimationManager.2
  * JD-Core Version:    0.7.0.1
  */

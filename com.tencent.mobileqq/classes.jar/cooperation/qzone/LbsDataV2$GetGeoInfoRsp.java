@@ -9,8 +9,8 @@ public class LbsDataV2$GetGeoInfoRsp
   implements Parcelable
 {
   public static final Parcelable.Creator<GetGeoInfoRsp> CREATOR = new LbsDataV2.GetGeoInfoRsp.1();
-  public LbsDataV2.GeoInfo stGeoInfo;
-  public LbsDataV2.GpsInfo stGps;
+  public LbsDataV2.GeoInfo stGeoInfo = null;
+  public LbsDataV2.GpsInfo stGps = null;
   
   public LbsDataV2$GetGeoInfoRsp() {}
   
@@ -49,7 +49,7 @@ public class LbsDataV2$GetGeoInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.GetGeoInfoRsp
  * JD-Core Version:    0.7.0.1
  */

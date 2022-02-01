@@ -1,29 +1,28 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bmzr;
-import bnrh;
 import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
 
-public class AEPhotoListLogicBase$15
+class AEPhotoListLogicBase$15
   implements Runnable
 {
-  public AEPhotoListLogicBase$15(bmzr parambmzr, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  AEPhotoListLogicBase$15(AEPhotoListLogicBase paramAEPhotoListLogicBase, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
   public void run()
   {
-    bnrh.b("AEPhotoListLogicBase", "serialCompressVideos---begin, need compress count=" + this.a.size());
-    bmzr.b(this.this$0, false);
-    bmzr.a(this.this$0, this.a);
-    bnrh.b("AEPhotoListLogicBase", "serialCompressVideos---end, canceled=" + bmzr.a(this.this$0));
-    if ((!bmzr.a(this.this$0)) && (!bmzr.b(this.this$0))) {
+    AEQLog.b("AEPhotoListLogicBase", "serialCompressVideos---begin, need compress count=" + this.a.size());
+    AEPhotoListLogicBase.b(this.this$0, false);
+    AEPhotoListLogicBase.a(this.this$0, this.a);
+    AEQLog.b("AEPhotoListLogicBase", "serialCompressVideos---end, canceled=" + AEPhotoListLogicBase.a(this.this$0));
+    if ((!AEPhotoListLogicBase.a(this.this$0)) && (!AEPhotoListLogicBase.b(this.this$0))) {
       ThreadManager.getUIHandler().post(new AEPhotoListLogicBase.15.1(this));
     }
     for (;;)
     {
-      bmzr.a(this.this$0, false);
-      bmzr.b(this.this$0, false);
+      AEPhotoListLogicBase.a(this.this$0, false);
+      AEPhotoListLogicBase.b(this.this$0, false);
       return;
       ThreadManager.getUIHandler().post(new AEPhotoListLogicBase.15.2(this));
     }
@@ -31,7 +30,7 @@ public class AEPhotoListLogicBase$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.logic.AEPhotoListLogicBase.15
  * JD-Core Version:    0.7.0.1
  */

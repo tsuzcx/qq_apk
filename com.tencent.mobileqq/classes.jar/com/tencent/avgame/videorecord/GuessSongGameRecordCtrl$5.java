@@ -6,12 +6,11 @@ import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 import android.view.View;
 import mqq.util.WeakReference;
-import nrf;
 
-public class GuessSongGameRecordCtrl$5
+class GuessSongGameRecordCtrl$5
   implements Runnable
 {
-  public GuessSongGameRecordCtrl$5(nrf paramnrf, View paramView) {}
+  GuessSongGameRecordCtrl$5(GuessSongGameRecordCtrl paramGuessSongGameRecordCtrl, View paramView) {}
   
   public void run()
   {
@@ -37,7 +36,7 @@ public class GuessSongGameRecordCtrl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.videorecord.GuessSongGameRecordCtrl.5
  * JD-Core Version:    0.7.0.1
  */

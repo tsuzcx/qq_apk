@@ -11,7 +11,7 @@ public final class CategoryRecommendItem
   static ArrayList<PhotoFeedsData> cache_photos = new ArrayList();
   public String categoryid = "";
   public String desc = "";
-  public ArrayList<PhotoFeedsData> photos;
+  public ArrayList<PhotoFeedsData> photos = null;
   
   static
   {

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class CmShowQzoneTrack
   extends JceStruct
 {
-  public int iItemType;
+  public int iItemType = 0;
   public String strItemId = "";
   public String strName = "";
   public String strThumb = "";

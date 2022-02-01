@@ -9,7 +9,7 @@ public final class stNotificationRedDot
 {
   static int cache_type = 0;
   public String text = "";
-  public int type;
+  public int type = 0;
   
   public stNotificationRedDot() {}
   

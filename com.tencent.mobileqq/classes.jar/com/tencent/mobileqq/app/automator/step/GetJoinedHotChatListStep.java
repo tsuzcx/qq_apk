@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import anwd;
-import anwo;
-import aoio;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HotChatHandler;
 import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -12,26 +11,26 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class GetJoinedHotChatListStep
   extends AsyncStep
 {
-  private anwo a;
+  private HotChatObserver a;
   
   public int a()
   {
-    if (!HotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app)) {
+    if (!HotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a)) {
       return 7;
     }
-    anwd localanwd = (anwd)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER);
-    this.jdField_a_of_type_Anwo = new aoio(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Anwo);
-    localanwd.a();
+    HotChatHandler localHotChatHandler = (HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER);
+    this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new GetJoinedHotChatListStep.GetJoindedHotChatListObserver(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
+    localHotChatHandler.a();
     return 2;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Anwo != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anwo);
-      this.jdField_a_of_type_Anwo = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = null;
     }
   }
 }

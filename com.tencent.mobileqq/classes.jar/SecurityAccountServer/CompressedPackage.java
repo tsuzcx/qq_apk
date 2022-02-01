@@ -9,8 +9,8 @@ public final class CompressedPackage
 {
   static byte[] cache_buffer;
   static int cache_command;
-  public byte[] buffer;
-  public int command;
+  public byte[] buffer = null;
+  public int command = 0;
   public boolean compressed = true;
   
   public CompressedPackage() {}

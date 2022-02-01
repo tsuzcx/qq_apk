@@ -13,9 +13,9 @@ class VideoAppInterface$2
   {
     long l1 = System.currentTimeMillis();
     if (!Build.MANUFACTURER.toLowerCase().equals("xiaomi")) {
-      ImmersiveUtils.d = false;
+      ImmersiveUtils.enableStatusBarDarkModeForMIUI = false;
     }
-    boolean bool = ImmersiveUtils.a();
+    boolean bool = ImmersiveUtils.supportStatusBarDarkMode();
     long l2 = System.currentTimeMillis();
     VideoAppInterface.a(this.this$0, null);
     QLog.w(VideoAppInterface.c(), 1, "supportStatusBarDarkMode, support[" + bool + "], start[" + l1 + "], cost[" + (l2 - l1) + "]");
@@ -23,7 +23,7 @@ class VideoAppInterface$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.app.VideoAppInterface.2
  * JD-Core Version:    0.7.0.1
  */

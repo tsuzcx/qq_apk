@@ -9,12 +9,12 @@ class BrandPageWebview$4
   
   public void run()
   {
-    BrandPageWebview.access$700(this.this$0).getAppBrandPagePool().preLoadAppBrandPage(BrandPageWebview.access$500(this.this$0), BrandPageWebview.access$700(this.this$0));
+    BrandPageWebview.access$700(this.this$0).getAppBrandPagePool().preLoadAppBrandPage(BrandPageWebview.access$300(this.this$0), BrandPageWebview.access$700(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.BrandPageWebview.4
  * JD-Core Version:    0.7.0.1
  */

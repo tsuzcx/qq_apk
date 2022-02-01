@@ -1,22 +1,27 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import android.annotation.SuppressLint;
-import augq;
+import com.tencent.mobileqq.filemanager.fileassistant.util.DatalineDeviceChooseModel.DeviceChooseInterface;
 
-public class SendBottomBar$15
-  implements Runnable
+class SendBottomBar$15
+  implements DatalineDeviceChooseModel.DeviceChooseInterface
 {
   SendBottomBar$15(SendBottomBar paramSendBottomBar) {}
   
-  @SuppressLint({"StaticFieldLeak"})
-  public void run()
+  public void a()
   {
-    new augq(this).execute(new Void[0]);
+    this.a.d();
   }
+  
+  public void b()
+  {
+    this.a.d();
+  }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.15
  * JD-Core Version:    0.7.0.1
  */

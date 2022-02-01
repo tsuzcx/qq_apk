@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class feed_info
   extends JceStruct
 {
-  public int appid;
-  public long has_pic;
-  public long opuin;
+  public int appid = 0;
+  public long has_pic = 0L;
+  public long opuin = 0L;
   public String strImgUrl = "";
   public String strcontent = "";
   public String strkey = "";
-  public long time;
-  public int typeId;
+  public long time = 0L;
+  public int typeId = 0;
   
   public feed_info() {}
   

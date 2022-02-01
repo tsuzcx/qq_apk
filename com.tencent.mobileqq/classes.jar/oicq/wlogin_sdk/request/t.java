@@ -452,7 +452,7 @@ public class t
         if (util.need_pow_test(ao)) {
           b.a();
         }
-        util.LOGI("init ok os ver:" + new String(K) + " cur_guid:" + util.buf_to_string(B) + " svn " + 2438L + " at " + m(), "");
+        util.LOGI("init ok os ver:" + new String(K) + " cur_guid:" + util.buf_to_string(B) + " svn " + 2463L + " at " + m(), "");
         return;
         W = 1;
         Y = 17;

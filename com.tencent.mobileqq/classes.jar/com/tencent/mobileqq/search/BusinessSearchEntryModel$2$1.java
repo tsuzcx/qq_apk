@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.search;
 
-import bbyh;
-
 class BusinessSearchEntryModel$2$1
   implements Runnable
 {
@@ -14,7 +12,7 @@ class BusinessSearchEntryModel$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.BusinessSearchEntryModel.2.1
  * JD-Core Version:    0.7.0.1
  */

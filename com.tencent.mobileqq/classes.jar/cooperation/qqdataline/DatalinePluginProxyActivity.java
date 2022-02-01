@@ -1,6 +1,5 @@
 package cooperation.qqdataline;
 
-import Override;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -10,12 +9,12 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bisl;
-import blvy;
-import blwh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.plugin.PluginInfo;
 import java.util.Iterator;
 import java.util.List;
@@ -34,21 +33,21 @@ public class DatalinePluginProxyActivity
     return DatalinePluginProxyActivity.class;
   }
   
-  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, bisl parambisl)
+  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, QQProgressDialog paramQQProgressDialog)
   {
     paramIntent.putExtra("userQqResources", 2);
-    blwh localblwh = new blwh(0);
-    localblwh.jdField_b_of_type_JavaLangString = "qqdataline.apk";
-    localblwh.d = PluginInfo.d;
-    localblwh.jdField_a_of_type_JavaLangString = paramString1;
-    localblwh.e = paramString2;
-    localblwh.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
-    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localblwh.jdField_b_of_type_Int = paramInt;
-    localblwh.jdField_a_of_type_AndroidAppDialog = parambisl;
-    localblwh.c = 10000;
-    localblwh.f = null;
-    blvy.a(paramActivity, localblwh);
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.b = "qqdataline.apk";
+    localPluginParams.e = PluginInfo.d;
+    localPluginParams.jdField_a_of_type_JavaLangString = paramString1;
+    localPluginParams.f = paramString2;
+    localPluginParams.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localPluginParams.c = paramInt;
+    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramQQProgressDialog;
+    localPluginParams.d = 10000;
+    localPluginParams.g = null;
+    IPluginManager.a(paramActivity, localPluginParams);
   }
   
   public static boolean a(Context paramContext)
@@ -120,7 +119,7 @@ public class DatalinePluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqdataline.DatalinePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

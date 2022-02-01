@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import bfxp;
-
-public class TroopNoticeJsHandler$3
+class TroopNoticeJsHandler$3
   implements Runnable
 {
-  public TroopNoticeJsHandler$3(bfxp parambfxp, String paramString) {}
+  TroopNoticeJsHandler$3(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
   
   public void run()
   {

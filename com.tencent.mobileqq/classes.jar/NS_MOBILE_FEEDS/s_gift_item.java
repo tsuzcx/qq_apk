@@ -10,16 +10,16 @@ public final class s_gift_item
   extends JceStruct
 {
   static Map<Integer, String> cache_gifturl = new HashMap();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
   public String giftbackid = "";
   public String giftdesc = "";
   public String giftid = "";
   public String giftname = "";
   public String gifttype = "";
-  public Map<Integer, String> gifturl;
+  public Map<Integer, String> gifturl = null;
   public boolean istiming = true;
-  public int moreflag;
+  public int moreflag = 0;
   public String sendtime = "";
   
   static

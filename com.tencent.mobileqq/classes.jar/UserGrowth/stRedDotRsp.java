@@ -13,11 +13,11 @@ public final class stRedDotRsp
   static ArrayList<stNotificationRedDot> cache_notificationReddot;
   static int cache_reddotAction = 0;
   static stSimpleMetaPerson cache_user;
-  public ArrayList<stRedDotMenu> menu;
-  public stNewsRedDot newsReddot;
-  public ArrayList<stNotificationRedDot> notificationReddot;
-  public int reddotAction;
-  public stSimpleMetaPerson user;
+  public ArrayList<stRedDotMenu> menu = null;
+  public stNewsRedDot newsReddot = null;
+  public ArrayList<stNotificationRedDot> notificationReddot = null;
+  public int reddotAction = 0;
+  public stSimpleMetaPerson user = null;
   
   static
   {

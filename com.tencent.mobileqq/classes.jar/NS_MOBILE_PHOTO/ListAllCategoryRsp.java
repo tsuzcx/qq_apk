@@ -10,8 +10,8 @@ public final class ListAllCategoryRsp
   extends JceStruct
 {
   static Map<Integer, ListAllCategoryRspItem> cache_rsp_item_map = new HashMap();
-  public long host;
-  public Map<Integer, ListAllCategoryRspItem> rsp_item_map;
+  public long host = 0L;
+  public Map<Integer, ListAllCategoryRspItem> rsp_item_map = null;
   
   static
   {

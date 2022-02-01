@@ -1,13 +1,5 @@
 package com.tencent.mobileqq.activity.photo;
 
-import Override;
-import akjv;
-import akjx;
-import akjy;
-import akjz;
-import akka;
-import akkb;
-import akkf;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -20,13 +12,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import bdla;
-import bisl;
 import com.tencent.mobileqq.activity.PortraitImageview;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -37,42 +29,42 @@ public class PhotoCropActivity
   extends BaseActivity
   implements View.OnClickListener
 {
-  public int a;
+  int jdField_a_of_type_Int;
   final long jdField_a_of_type_Long = 10000L;
-  akjv jdField_a_of_type_Akjv;
   Intent jdField_a_of_type_AndroidContentIntent;
   public Handler a;
   View jdField_a_of_type_AndroidViewView;
-  public ViewGroup a;
-  public Button a;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  Button jdField_a_of_type_AndroidWidgetButton;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bisl a;
-  public PortraitImageview a;
-  public RegionView a;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new akjz(this);
-  public String a;
-  public boolean a;
+  PortraitImageview jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview;
+  PhotoCropAction jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction;
+  RegionView jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView;
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new PhotoCropActivity.3(this);
+  public QQProgressDialog a;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   String[] jdField_a_of_type_ArrayOfJavaLangString;
-  public int b;
-  Button b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  boolean c;
-  public int d;
-  String d;
-  public boolean d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
+  int jdField_b_of_type_Int;
+  Button jdField_b_of_type_AndroidWidgetButton;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  boolean jdField_c_of_type_Boolean = false;
+  int jdField_d_of_type_Int;
+  String jdField_d_of_type_JavaLangString;
+  protected boolean d;
+  int e;
+  int f;
+  int g;
+  int h;
+  protected int i = 0;
   
   public PhotoCropActivity()
   {
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new akjx(this);
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler = new PhotoCropActivity.1(this);
   }
   
   private void a(int paramInt)
@@ -82,26 +74,26 @@ public class PhotoCropActivity
     }
   }
   
-  public void a()
+  void a()
   {
     if (this.jdField_c_of_type_Boolean) {
       return;
     }
     this.jdField_c_of_type_Boolean = true;
-    new akkb(this, null).execute(new Void[0]);
+    new PhotoCropActivity.StoreFileTask(this, null).execute(new Void[0]);
   }
   
   @SuppressLint({"NewApi"})
   void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376947);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377356);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(true);
     }
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131372770));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365367));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363336));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379001));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131373097));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365517));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363416));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379432));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
@@ -113,7 +105,7 @@ public class PhotoCropActivity
       this.jdField_a_of_type_AndroidWidgetTextView.setText("调整QQ头像");
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview = new PortraitImageview(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.addOnLayoutChangeListener(new akjy(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.addOnLayoutChangeListener(new PhotoCropActivity.2(this));
   }
   
   protected boolean a()
@@ -135,7 +127,7 @@ public class PhotoCropActivity
     this.jdField_a_of_type_Int = localIntent.getIntExtra("BUSINESS_ORIGIN_NEW", 0);
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      QQToast.a(this, 2131694621, 0).a();
+      QQToast.a(this, 2131694856, 0).a();
       return false;
     }
     if (QLog.isColorLevel()) {
@@ -148,21 +140,21 @@ public class PhotoCropActivity
       QLog.d("PhotoCropActivity", 2, "initData from=" + this.jdField_b_of_type_JavaLangString + " targetSampleSize=" + this.g + " keepClipInfo=" + this.jdField_b_of_type_Boolean);
     }
     if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.jdField_b_of_type_JavaLangString)) {
-      bdla.b(this.app, "dc00898", "", "", "0X8009B68", "0X8009B68", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "dc00898", "", "", "0X8009B68", "0X8009B68", 0, 0, "", "", "", "");
     }
     return true;
   }
   
-  public void b()
+  protected void b()
   {
     try
     {
       if (!isFinishing())
       {
-        this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
-        this.jdField_a_of_type_Bisl.setCancelable(false);
-        this.jdField_a_of_type_Bisl.c(2131690806);
-        this.jdField_a_of_type_Bisl.show();
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131690911);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       return;
     }
@@ -172,14 +164,14 @@ public class PhotoCropActivity
     }
   }
   
-  public void c()
+  protected void c()
   {
-    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bisl.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       label24:
-      this.jdField_a_of_type_Bisl = null;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
       return;
     }
     catch (Exception localException)
@@ -210,7 +202,7 @@ public class PhotoCropActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559600);
+    super.setContentView(2131559676);
     if (!a())
     {
       finish();
@@ -218,7 +210,7 @@ public class PhotoCropActivity
     }
     a(this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.e, this.f, this.h);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-    new akka(this, null).execute(new Void[0]);
+    new PhotoCropActivity.LoadBitmapTask(this, null).execute(new Void[0]);
     return true;
   }
   
@@ -241,7 +233,7 @@ public class PhotoCropActivity
       return;
     }
     a(this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.e, this.f, this.h);
-    new akka(this, null).execute(new Void[0]);
+    new PhotoCropActivity.LoadBitmapTask(this, null).execute(new Void[0]);
   }
   
   public String getModuleId()
@@ -275,7 +267,7 @@ public class PhotoCropActivity
       }
       else if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.jdField_b_of_type_JavaLangString))
       {
-        bdla.b(this.app, "dc00898", "", "", "0X8009B69", "0X8009B69", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "dc00898", "", "", "0X8009B69", "0X8009B69", 0, 0, "", "", "", "");
         if (QLog.isColorLevel()) {
           QLog.d("PhotoCropActivity", 2, "onBackEvent");
         }
@@ -297,23 +289,23 @@ public class PhotoCropActivity
       return;
       if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
       {
-        if (this.jdField_a_of_type_Akjv == null)
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction == null)
         {
-          this.jdField_a_of_type_Akjv = new akkf(this);
-          this.jdField_a_of_type_Akjv.a(this.jdField_a_of_type_ArrayOfJavaLangString);
+          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction = new PhotoCropMenuForQzone(this);
+          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.a(this.jdField_a_of_type_ArrayOfJavaLangString);
         }
         if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView != null) {
-          this.jdField_a_of_type_Akjv.a();
+          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.a();
         }
       }
       for (;;)
       {
         AlbumUtil.clearSelectItemInfo();
-        AlbumUtil.RecordLastPosByIntent(this.jdField_a_of_type_AndroidContentIntent);
+        AlbumUtil.a(this.jdField_a_of_type_AndroidContentIntent);
         if (!"FROM_SDK_AVATAR_SET_IMAGE".equals(this.jdField_b_of_type_JavaLangString)) {
           break;
         }
-        bdla.b(this.app, "dc00898", "", "", "0X8009B6A", "0X8009B6A", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "dc00898", "", "", "0X8009B6A", "0X8009B6A", 0, 0, "", "", "", "");
         break;
         if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView != null) {
           a();
@@ -332,7 +324,7 @@ public class PhotoCropActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoCropActivity
  * JD-Core Version:    0.7.0.1
  */

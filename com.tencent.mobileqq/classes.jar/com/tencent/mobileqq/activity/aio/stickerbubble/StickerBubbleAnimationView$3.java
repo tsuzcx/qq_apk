@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aigq;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,23 +19,23 @@ class StickerBubbleAnimationView$3
     if (((File)localObject).exists()) {
       try
       {
-        aigq localaigq = new aigq((File)localObject, false);
-        StickerBubbleAnimationView.c(this.this$0).put(this.a, Integer.valueOf(localaigq.a()));
-        BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[localaigq.b()];
-        localObject = StickerBubbleAnimationView.a(this.this$0, localaigq.a(), 0.7D);
+        ManualDecodeGifImage localManualDecodeGifImage = new ManualDecodeGifImage((File)localObject, false);
+        StickerBubbleAnimationView.c(this.this$0).put(this.a, Integer.valueOf(localManualDecodeGifImage.a()));
+        BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[localManualDecodeGifImage.b()];
+        localObject = StickerBubbleAnimationView.a(this.this$0, localManualDecodeGifImage.a(), 0.7D);
         Resources localResources = this.this$0.getResources();
         if (localObject != null) {}
         for (;;)
         {
           arrayOfBitmapDrawable[0] = new BitmapDrawable(localResources, (Bitmap)localObject);
-          StickerBubbleAnimationView.a(this.this$0, localaigq, arrayOfBitmapDrawable, this.a, localaigq.a());
+          StickerBubbleAnimationView.a(this.this$0, localManualDecodeGifImage, arrayOfBitmapDrawable, this.a, localManualDecodeGifImage.a());
           StickerBubbleAnimationView.d(this.this$0).put(this.a, arrayOfBitmapDrawable);
           if (!QLog.isColorLevel()) {
             break;
           }
           QLog.d("StickerBubbleAnimationView", 2, "decoded first frame of gif: " + this.a);
           return;
-          localObject = localaigq.a();
+          localObject = localManualDecodeGifImage.a();
         }
         QLog.e("StickerBubbleAnimationView", 1, "gifFile " + this.a + " is not exist");
       }
@@ -55,7 +54,7 @@ class StickerBubbleAnimationView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView.3
  * JD-Core Version:    0.7.0.1
  */

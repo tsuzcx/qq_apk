@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import anvk;
-import azqg;
-import bcrg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 
-public final class ChatActivityFacade$5
+final class ChatActivityFacade$5
   implements Runnable
 {
-  public ChatActivityFacade$5(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  ChatActivityFacade$5(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     long l1;
     long l2;
     label39:
@@ -34,7 +34,7 @@ public final class ChatActivityFacade$5
       }
       l3 = 0L;
       label47:
-      long l4 = bcrg.a();
+      long l4 = MessageCache.a();
       if ((l4 <= 0L) || (l4 - l1 <= 604800L)) {
         break label206;
       }
@@ -48,7 +48,7 @@ public final class ChatActivityFacade$5
         QLog.i("ChatActivityFacade", 2, String.format("insertFriendPLNewsIfNeeded latest:%d last:%d pull:%d overWeek:%b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool) }));
       }
       if ((l1 > l2) && (!bool) && (System.currentTimeMillis() / 1000L - l3 >= 86400L)) {
-        ((azqg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, l2, l1);
+        ((PersonalityLabelHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2, l1);
       }
       return;
       l1 = localExtensionInfo.latestPLUpdateTimestamp;
@@ -62,7 +62,7 @@ public final class ChatActivityFacade$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.5
  * JD-Core Version:    0.7.0.1
  */

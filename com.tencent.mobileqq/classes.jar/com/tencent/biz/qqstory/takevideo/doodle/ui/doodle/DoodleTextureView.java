@@ -3,22 +3,19 @@ package com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
-import android.opengl.GLSurfaceView.Renderer;
-import com.tencent.mobileqq.apollo.GLTextureView;
+import com.tencent.mobileqq.apollo.view.opengl.GLTextureView;
+import com.tencent.mobileqq.apollo.view.opengl.Renderer;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import yth;
-import yud;
-import yum;
 
 @TargetApi(14)
 public class DoodleTextureView
   extends GLTextureView
-  implements GLSurfaceView.Renderer, yth
+  implements DoodleGLCallback, Renderer
 {
   int jdField_a_of_type_Int = 320;
-  yud jdField_a_of_type_Yud;
+  DoodleOpController jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController;
   int b = 480;
   
   public DoodleTextureView(Context paramContext)
@@ -38,8 +35,8 @@ public class DoodleTextureView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Yud != null) {
-      this.jdField_a_of_type_Yud.c(paramInt);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.c(paramInt);
     }
   }
   
@@ -63,8 +60,8 @@ public class DoodleTextureView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.jdField_a_of_type_Yud != null) {
-      this.jdField_a_of_type_Yud.e();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.e();
     }
   }
   
@@ -73,9 +70,9 @@ public class DoodleTextureView
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    if (this.jdField_a_of_type_Yud != null)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController != null)
     {
-      paramGL10 = (yum)this.jdField_a_of_type_Yud.a(102);
+      paramGL10 = (PersonalityOperator)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
       if (paramGL10 != null) {
         paramGL10.a(paramInt1, paramInt2);
       }
@@ -84,8 +81,8 @@ public class DoodleTextureView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.jdField_a_of_type_Yud != null) {
-      this.jdField_a_of_type_Yud.d();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.d();
     }
   }
   
@@ -95,16 +92,16 @@ public class DoodleTextureView
     return true;
   }
   
-  public void setOpController(yud paramyud)
+  public void setOpController(DoodleOpController paramDoodleOpController)
   {
-    this.jdField_a_of_type_Yud = paramyud;
-    this.jdField_a_of_type_Yud.a(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController = paramDoodleOpController;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(this);
     super.queueEvent(new DoodleTextureView.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView
  * JD-Core Version:    0.7.0.1
  */

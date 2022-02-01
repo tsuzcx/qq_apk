@@ -30,7 +30,7 @@ public class InterceptHorizontalScrollView
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     paramInt7 = (int)(paramInt1 * 0.3F);
     if ((paramInt3 + paramInt1 == 0) || (paramInt3 - paramInt5 + paramInt1 == 0)) {
@@ -41,7 +41,7 @@ public class InterceptHorizontalScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.InterceptHorizontalScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,14 @@
 package com.tencent.qqmini.sdk.launcher.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import org.json.JSONObject;
 
 public class NetworkTimeoutInfo
+  implements Parcelable
 {
+  public static final Parcelable.Creator<NetworkTimeoutInfo> CREATOR = new NetworkTimeoutInfo.1();
   public static final int TIME_DEFAULT_MS = 60000;
   public int connectSocket = 60000;
   public int downloadFile = 60000;
@@ -49,10 +54,28 @@ public class NetworkTimeoutInfo
       break label42;
     }
   }
+  
+  public int describeContents()
+  {
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "NetworkTimeoutInfo{request='" + this.request + '\'' + ", connectSocket='" + this.connectSocket + '\'' + ", uploadFile='" + this.uploadFile + '\'' + ", downloadFile='" + this.downloadFile + '\'' + '}';
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeInt(this.request);
+    paramParcel.writeInt(this.connectSocket);
+    paramParcel.writeInt(this.uploadFile);
+    paramParcel.writeInt(this.downloadFile);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.NetworkTimeoutInfo
  * JD-Core Version:    0.7.0.1
  */

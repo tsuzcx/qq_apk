@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +11,8 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -22,9 +22,9 @@ import mqq.app.AppRuntime;
 public class UserguideActivity
   extends FragmentActivity
 {
-  public static boolean a;
-  public static boolean b;
-  private static boolean d;
+  public static boolean a = false;
+  public static boolean b = false;
+  private static boolean d = false;
   boolean c = false;
   
   public static void a()
@@ -42,10 +42,10 @@ public class UserguideActivity
   
   public static boolean a(SplashActivity paramSplashActivity)
   {
-    if ((AppSetting.c) || (Build.VERSION.SDK_INT < 14) || (d))
+    if ((AppSetting.d) || (Build.VERSION.SDK_INT < 14) || (d))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("UserGuide", 2, String.format("showUserGuide [%s, %s, %s]", new Object[] { Boolean.valueOf(AppSetting.c), Integer.valueOf(Build.VERSION.SDK_INT), Boolean.valueOf(d) }));
+        QLog.i("UserGuide", 2, String.format("showUserGuide [%s, %s, %s]", new Object[] { Boolean.valueOf(AppSetting.d), Integer.valueOf(Build.VERSION.SDK_INT), Boolean.valueOf(d) }));
       }
       return false;
     }
@@ -64,9 +64,9 @@ public class UserguideActivity
         String str1 = ((SharedPreferences)localObject).getString("qq_version", "");
         String str2 = ((SharedPreferences)localObject).getString("qq_version_full", "");
         if (QLog.isColorLevel()) {
-          QLog.e("UserGuide", 2, "pkg build num is 4875, local build num is " + str1);
+          QLog.e("UserGuide", 2, "pkg build num is 5105, local build num is " + str1);
         }
-        if (!"4875".equals(str1))
+        if (!"5105".equals(str1))
         {
           localHashMap = new HashMap();
           if (!TextUtils.isEmpty(str1)) {
@@ -81,14 +81,14 @@ public class UserguideActivity
           localObject = AppSetting.a();
           paramSplashActivity.putString("qq_version_pre", str1);
           paramSplashActivity.putString("qq_version_full_pre", str2);
-          paramSplashActivity.putString("qq_version", "4875");
+          paramSplashActivity.putString("qq_version", "5105");
           paramSplashActivity.putString("qq_version_full", (String)localObject);
           paramSplashActivity.commit();
           if (QLog.isColorLevel()) {
-            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "4875", localObject }));
+            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "5105", localObject }));
           }
         }
-        QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str1 + ", " + "4875");
+        QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str1 + ", " + "5105");
       }
       else
       {
@@ -122,15 +122,13 @@ public class UserguideActivity
     if ((getAppRuntime() != null) && (getAppRuntime().isLogin()))
     {
       localIntent.setClass(this, SplashActivity.class);
-      localIntent.putExtra("tab_index", MainFragment.b);
-    }
-    for (;;)
-    {
+      localIntent.putExtra("tab_index", FrameControllerUtil.a);
       localIntent.addFlags(67108864);
       startActivity(localIntent);
       return;
-      localIntent.setClass(this, LoginActivity.class);
     }
+    localIntent.addFlags(67108864);
+    RouteUtils.a(this, localIntent, "/base/login");
   }
   
   @Override
@@ -183,7 +181,7 @@ public class UserguideActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserguideActivity
  * JD-Core Version:    0.7.0.1
  */

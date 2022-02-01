@@ -1,7 +1,7 @@
 package com.tencent.av.gaudio;
 
+import com.tencent.av.utils.PhoneStatusMonitor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import mtf;
 
 class AVNotifyCenter$1
   implements Runnable
@@ -11,7 +11,7 @@ class AVNotifyCenter$1
   public void run()
   {
     if (this.this$0.a != null) {
-      AVNotifyCenter.a(this.this$0, new mtf(this.this$0.a.getApp(), null));
+      AVNotifyCenter.a(this.this$0, new PhoneStatusMonitor(this.this$0.a.getApp(), null));
     }
   }
 }

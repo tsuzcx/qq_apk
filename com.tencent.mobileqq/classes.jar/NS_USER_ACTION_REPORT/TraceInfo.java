@@ -10,7 +10,7 @@ public final class TraceInfo
   public String trace_detail = "";
   public String trace_id = "";
   public String trace_index = "";
-  public long trace_num;
+  public long trace_num = 0L;
   
   public TraceInfo() {}
   

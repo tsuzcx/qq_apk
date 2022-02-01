@@ -8,7 +8,7 @@ public final class s_presentman
   extends JceStruct
 {
   static s_user cache_user = new s_user();
-  public s_user user;
+  public s_user user = null;
   
   public s_presentman() {}
   

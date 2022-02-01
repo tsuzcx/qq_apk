@@ -1,7 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import olh;
-import omx;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class ReadInJoyVideoSubChannelActivity$2
   implements Runnable
@@ -10,12 +11,12 @@ class ReadInJoyVideoSubChannelActivity$2
   
   public void run()
   {
-    olh.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", omx.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity.2
  * JD-Core Version:    0.7.0.1
  */

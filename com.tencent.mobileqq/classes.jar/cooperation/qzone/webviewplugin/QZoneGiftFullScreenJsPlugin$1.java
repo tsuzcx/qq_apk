@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import awsc;
+import com.tencent.mobileqq.magicface.model.MagicfaceResLoader;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.RemoteRequestSender;
 import org.json.JSONException;
@@ -36,7 +36,7 @@ class QZoneGiftFullScreenJsPlugin$1
         localObject6 = localJSONObject.getJSONObject("giftZipUrl");
         localObject2 = localObject3;
         localObject1 = localObject5;
-        if (awsc.a().equals("sbig"))
+        if (MagicfaceResLoader.a().equals("sbig"))
         {
           localObject2 = localObject3;
           localObject1 = localObject5;
@@ -76,7 +76,7 @@ class QZoneGiftFullScreenJsPlugin$1
       }
       localObject2 = localObject3;
       localObject1 = localObject5;
-      if (awsc.a().equals("xbig"))
+      if (MagicfaceResLoader.a().equals("xbig"))
       {
         localObject2 = localObject3;
         localObject1 = localObject5;
@@ -91,7 +91,7 @@ class QZoneGiftFullScreenJsPlugin$1
       {
         localObject2 = localObject3;
         localObject1 = localObject5;
-        if (awsc.a().equals("small"))
+        if (MagicfaceResLoader.a().equals("small"))
         {
           localObject2 = localObject3;
           localObject1 = localObject5;
@@ -124,7 +124,7 @@ class QZoneGiftFullScreenJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneGiftFullScreenJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,8 @@ import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 import com.tencent.ttpic.openapi.model.CameraBeautyParams;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.FaceDetectUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.FrameUtil;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -512,7 +512,7 @@ public class RemodelFilter
         localObject = this.cameraBeautyParams.param;
         this.reshapeEyeNoseLipsFilter.setParam((Map)localObject);
         this.reshapeWholeFaceFilter.setParam((Map)localObject);
-        localObject = FaceDetectUtil.facePointf83to90(VideoMaterialUtil.copyList((List)paramList.get(i)));
+        localObject = FaceDetectUtil.facePointf83to90(VideoMaterial.copyList((List)paramList.get(i)));
         Iterator localIterator = ((List)localObject).iterator();
         while (localIterator.hasNext())
         {
@@ -566,7 +566,7 @@ public class RemodelFilter
         localMap = this.cameraBeautyParams.param;
         this.reshapeEyeNoseLipsFilter.setParam(localMap);
         this.reshapeWholeFaceFilter.setParam(localMap);
-        this.facePoints = VideoMaterialUtil.copyList((List)paramList.get(i));
+        this.facePoints = VideoMaterial.copyList((List)paramList.get(i));
         localObject1 = FaceDetectUtil.facePointf83to90(this.facePoints);
         Iterator localIterator = ((List)localObject1).iterator();
         while (localIterator.hasNext())
@@ -914,7 +914,7 @@ public class RemodelFilter
   
   public void init()
   {
-    float[] arrayOfFloat = VideoMaterialUtil.toFlatArray(VideoMaterialUtil.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F));
+    float[] arrayOfFloat = VideoMaterial.toFlatArray(VideoMaterial.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F));
     init(arrayOfFloat, arrayOfFloat);
   }
   
@@ -1038,7 +1038,7 @@ public class RemodelFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.RemodelFilter
  * JD-Core Version:    0.7.0.1
  */

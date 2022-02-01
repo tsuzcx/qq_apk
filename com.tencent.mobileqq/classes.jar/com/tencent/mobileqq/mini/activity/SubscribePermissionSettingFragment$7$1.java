@@ -10,7 +10,7 @@ class SubscribePermissionSettingFragment$7$1
   public void run()
   {
     boolean bool = false;
-    QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693992), 0).a();
+    QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694194), 0).a();
     SubscribePermissionSettingFragment localSubscribePermissionSettingFragment = this.this$1.this$0;
     int i = this.this$1.val$position;
     if (!this.this$1.val$isChecked) {

@@ -2,12 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.editvideo;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
-import rys;
 
-public class PublishVideoHelper$1$1
+class PublishVideoHelper$1$1
   implements Runnable
 {
-  public PublishVideoHelper$1$1(rys paramrys, int paramInt) {}
+  PublishVideoHelper$1$1(PublishVideoHelper.1 param1, int paramInt) {}
   
   public void run()
   {
@@ -32,7 +31,7 @@ public class PublishVideoHelper$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.PublishVideoHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

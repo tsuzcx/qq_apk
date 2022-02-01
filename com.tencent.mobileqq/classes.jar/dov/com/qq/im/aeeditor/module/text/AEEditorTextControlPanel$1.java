@@ -1,16 +1,15 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bnrh;
-import boaf;
-import boce;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.tavcut.PagTransformManager;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorResourceManager;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class AEEditorTextControlPanel$1
+class AEEditorTextControlPanel$1
   implements Runnable
 {
   AEEditorTextControlPanel$1(AEEditorTextControlPanel paramAEEditorTextControlPanel) {}
@@ -26,12 +25,12 @@ public class AEEditorTextControlPanel$1
       {
         String str = AEEditorTextControlPanel.a() + AEEditorTextControlPanel.a(this.this$0) + "_" + localAEEditorTextBean.id + ".png";
         localAEEditorTextBean.thumbPath = str;
-        AEEditorTextBean.updateTextBeanByStickerConfig(localAEEditorTextBean, boaf.a().a(boaf.a().d(localAEEditorTextBean.id)));
+        AEEditorTextBean.updateTextBeanByStickerConfig(localAEEditorTextBean, AEEditorResourceManager.a().a(AEEditorResourceManager.a().d(localAEEditorTextBean.id)));
         if (localAEEditorTextBean.aiColorIndex >= 0)
         {
           localAEEditorTextBean.backgroundColor = this.this$0.a(localAEEditorTextBean);
           localAEEditorTextBean.textStrokeColor = this.this$0.b(localAEEditorTextBean);
-          bnrh.a("AEEditorTextControlPanel", "[createImageAndUpdate] Intelligent color:" + localAEEditorTextBean.backgroundColor);
+          AEQLog.a("AEEditorTextControlPanel", "[createImageAndUpdate] Intelligent color:" + localAEEditorTextBean.backgroundColor);
         }
         for (;;)
         {
@@ -43,14 +42,14 @@ public class AEEditorTextControlPanel$1
           break;
           localAEEditorTextBean.backgroundColor = localAEEditorTextBean.defaultColor;
           localAEEditorTextBean.textStrokeColor = localAEEditorTextBean.textColor;
-          bnrh.a("AEEditorTextControlPanel", "[createImageAndUpdate] default color:" + localAEEditorTextBean.backgroundColor);
+          AEQLog.a("AEEditorTextControlPanel", "[createImageAndUpdate] default color:" + localAEEditorTextBean.backgroundColor);
         }
         label256:
-        bnrh.a("AEEditorTextControlPanel", "[createImageAndUpdate] pagThumbFilePath:" + localAEEditorTextBean.pagThumbFilePath);
-        bnrh.a("AEEditorTextControlPanel", "[createImageAndUpdate] textStrokeColor:" + localAEEditorTextBean.textStrokeColor);
-        bnrh.a("AEEditorTextControlPanel", "[createImageAndUpdate] backgroundColor:" + localAEEditorTextBean.backgroundColor);
+        AEQLog.a("AEEditorTextControlPanel", "[createImageAndUpdate] pagThumbFilePath:" + localAEEditorTextBean.pagThumbFilePath);
+        AEQLog.a("AEEditorTextControlPanel", "[createImageAndUpdate] textStrokeColor:" + localAEEditorTextBean.textStrokeColor);
+        AEQLog.a("AEEditorTextControlPanel", "[createImageAndUpdate] backgroundColor:" + localAEEditorTextBean.backgroundColor);
         if ((localAEEditorTextBean.pagThumbFilePath != null) && (new File(localAEEditorTextBean.pagThumbFilePath).exists())) {
-          PagTransformManager.getInstance().pagFile2Bitmap(PagTransformManager.getInstance().createThumbPagFile(localAEEditorTextBean.pagThumbFilePath, localAEEditorTextBean.textStrokeColor, localAEEditorTextBean.backgroundColor), new boce(this, str, i));
+          PagTransformManager.getInstance().pagFile2Bitmap(PagTransformManager.getInstance().createThumbPagFile(localAEEditorTextBean.pagThumbFilePath, localAEEditorTextBean.textStrokeColor, localAEEditorTextBean.backgroundColor), new AEEditorTextControlPanel.1.2(this, str, i));
         }
       }
       i += 1;
@@ -59,7 +58,7 @@ public class AEEditorTextControlPanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel.1
  * JD-Core Version:    0.7.0.1
  */

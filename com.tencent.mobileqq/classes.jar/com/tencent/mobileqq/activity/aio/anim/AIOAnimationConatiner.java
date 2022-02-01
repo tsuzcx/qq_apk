@@ -1,11 +1,5 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import afup;
-import afva;
-import afvb;
-import afvc;
-import afvn;
-import afvo;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
@@ -14,16 +8,16 @@ import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Transformation;
-import aqhk;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ykq;
-import zdl;
 
 public class AIOAnimationConatiner
   extends ViewGroup
@@ -32,10 +26,10 @@ public class AIOAnimationConatiner
   public static final ViewGroup.LayoutParams a;
   public static ClassLoader a;
   private int jdField_a_of_type_Int;
-  private afup jdField_a_of_type_Afup;
-  public afvn a;
+  private AIOAnimationConatiner.AIOAnimator jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
+  public IAioAnimListener a;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private List<afup> jdField_a_of_type_JavaUtilList;
+  private List<AIOAnimationConatiner.AIOAnimator> jdField_a_of_type_JavaUtilList;
   
   static
   {
@@ -53,7 +47,7 @@ public class AIOAnimationConatiner
     super(paramContext, paramAttributeSet);
   }
   
-  private afup a(int paramInt)
+  private AIOAnimationConatiner.AIOAnimator a(int paramInt)
   {
     switch (paramInt)
     {
@@ -64,15 +58,15 @@ public class AIOAnimationConatiner
     case 2: 
       return new FloorJumperSet(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 1: 
-      return new afvc(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new ComboAnimation3(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 0: 
-      return new afvb(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new BubbleAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 4: 
       return new PathAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 5: 
-      return new aqhk(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new BubbleInterActiveAnim(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 7: 
-      return new afvo(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new LottieAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     }
     return new BusinessEggsAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
   }
@@ -83,7 +77,7 @@ public class AIOAnimationConatiner
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        a(((afup)localIterator.next()).jdField_a_of_type_Int);
+        a(((AIOAnimationConatiner.AIOAnimator)localIterator.next()).jdField_a_of_type_Int);
       }
       this.jdField_a_of_type_JavaUtilList.clear();
     }
@@ -94,7 +88,7 @@ public class AIOAnimationConatiner
     if (QLog.isColorLevel()) {
       QLog.d("AIOAnimationContainer", 2, "animation end");
     }
-    this.jdField_a_of_type_Afup = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator = null;
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
       removeAllViewsInLayout();
@@ -112,8 +106,8 @@ public class AIOAnimationConatiner
   
   public void a()
   {
-    if (this.jdField_a_of_type_Afup != null) {
-      this.jdField_a_of_type_Afup.c();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.c();
     }
     g();
   }
@@ -121,20 +115,20 @@ public class AIOAnimationConatiner
   public void a(int paramInt)
   {
     int i = 0;
-    afup localafup;
+    AIOAnimationConatiner.AIOAnimator localAIOAnimator;
     if ((this.jdField_a_of_type_JavaUtilList != null) && (i < this.jdField_a_of_type_JavaUtilList.size()))
     {
-      localafup = (afup)this.jdField_a_of_type_JavaUtilList.get(i);
-      if ((localafup == null) || (paramInt != localafup.jdField_a_of_type_Int)) {}
+      localAIOAnimator = (AIOAnimationConatiner.AIOAnimator)this.jdField_a_of_type_JavaUtilList.get(i);
+      if ((localAIOAnimator == null) || (paramInt != localAIOAnimator.jdField_a_of_type_Int)) {}
     }
     for (;;)
     {
       if (i != -1)
       {
-        localafup.c();
+        localAIOAnimator.c();
         this.jdField_a_of_type_JavaUtilList.remove(i);
       }
-      if (((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_Afup == null))
+      if (((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator == null))
       {
         removeAllViewsInLayout();
         if (QLog.isColorLevel()) {
@@ -145,22 +139,22 @@ public class AIOAnimationConatiner
       return;
       i += 1;
       break;
-      localafup = null;
+      localAIOAnimator = null;
       i = -1;
     }
   }
   
   public void a(ListView paramListView)
   {
-    zdl.a(paramListView);
+    AssertUtils.a(paramListView);
     if (this.jdField_a_of_type_ComTencentWidgetListView == paramListView)
     {
-      ykq.e("AIOAnimationConatiner", "attach the same listView!");
+      SLog.e("AIOAnimationConatiner", "attach the same listView!");
       return;
     }
     if (this.jdField_a_of_type_ComTencentWidgetListView != null)
     {
-      ykq.e("AIOAnimationConatiner", "attach and override listView!");
+      SLog.e("AIOAnimationConatiner", "attach and override listView!");
       e();
     }
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
@@ -169,33 +163,33 @@ public class AIOAnimationConatiner
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Afup != null;
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null;
   }
   
   public boolean a(int paramInt1, int paramInt2, Object... paramVarArgs)
   {
     boolean bool1 = false;
-    if ((this.jdField_a_of_type_Afup != null) && (paramInt2 < this.jdField_a_of_type_Afup.jdField_a_of_type_Int)) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) && (paramInt2 < this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.jdField_a_of_type_Int)) {}
     boolean bool2;
     do
     {
       do
       {
         return bool1;
-        if ((this.jdField_a_of_type_Afup != null) && (paramInt2 == this.jdField_a_of_type_Afup.jdField_a_of_type_Int) && (this.jdField_a_of_type_Afup.a(paramInt1))) {
-          return this.jdField_a_of_type_Afup.a(paramVarArgs);
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) && (paramInt2 == this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a(paramInt1))) {
+          return this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a(paramVarArgs);
         }
-        if (this.jdField_a_of_type_Afup != null) {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) {
           a();
         }
         this.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_Afup = a(paramInt1);
-      } while (this.jdField_a_of_type_Afup == null);
-      this.jdField_a_of_type_Afup.jdField_a_of_type_Int = paramInt2;
-      bool2 = this.jdField_a_of_type_Afup.a(paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator = a(paramInt1);
+      } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator == null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.jdField_a_of_type_Int = paramInt2;
+      bool2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a(paramVarArgs);
       bool1 = bool2;
     } while (bool2);
-    this.jdField_a_of_type_Afup = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator = null;
     return bool2;
   }
   
@@ -212,7 +206,7 @@ public class AIOAnimationConatiner
   
   public void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_Afup != null) && (paramInt == this.jdField_a_of_type_Int)) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) && (paramInt == this.jdField_a_of_type_Int)) {
       a();
     }
   }
@@ -227,10 +221,10 @@ public class AIOAnimationConatiner
     {
       if (((Iterator)localObject).hasNext())
       {
-        afup localafup = (afup)((Iterator)localObject).next();
-        if ((paramInt1 == localafup.jdField_a_of_type_Int) && (localafup.a(paramInt1)))
+        AIOAnimationConatiner.AIOAnimator localAIOAnimator = (AIOAnimationConatiner.AIOAnimator)((Iterator)localObject).next();
+        if ((paramInt1 == localAIOAnimator.jdField_a_of_type_Int) && (localAIOAnimator.a(paramInt1)))
         {
-          localafup.a(paramVarArgs);
+          localAIOAnimator.a(paramVarArgs);
           if (QLog.isColorLevel())
           {
             QLog.d("AIOAnimationConatiner", 2, "[concurrentStartAnimation] reuse animator, type: " + paramInt1);
@@ -248,7 +242,7 @@ public class AIOAnimationConatiner
           return false;
         }
         this.jdField_a_of_type_JavaUtilList.add(localObject);
-        ((afup)localObject).a(paramVarArgs);
+        ((AIOAnimationConatiner.AIOAnimator)localObject).a(paramVarArgs);
         if (QLog.isColorLevel()) {
           QLog.d("AIOAnimationConatiner", 2, "[concurrentStartAnimation] create new animator, type: " + paramInt1);
         }
@@ -262,35 +256,35 @@ public class AIOAnimationConatiner
   
   public void c()
   {
-    if (this.jdField_a_of_type_Afup != null) {
-      this.jdField_a_of_type_Afup.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a();
     }
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((afup)localIterator.next()).a();
+        ((AIOAnimationConatiner.AIOAnimator)localIterator.next()).a();
       }
     }
   }
   
   public void c(int paramInt)
   {
-    if (this.jdField_a_of_type_Afup != null) {
-      this.jdField_a_of_type_Afup.a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a(paramInt);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Afup != null) {
-      this.jdField_a_of_type_Afup.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.b();
     }
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((afup)localIterator.next()).b();
+        ((AIOAnimationConatiner.AIOAnimator)localIterator.next()).b();
       }
     }
   }
@@ -304,19 +298,19 @@ public class AIOAnimationConatiner
     this.jdField_a_of_type_ComTencentWidgetListView = null;
   }
   
-  protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
+  public boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
     Object localObject = paramView.getTag();
-    if ((VersionUtils.isHoneycomb()) && ((localObject instanceof afva)) && (((afva)localObject).b))
+    if ((VersionUtils.e()) && ((localObject instanceof AnimationPath.Values)) && (((AnimationPath.Values)localObject).b))
     {
-      localObject = (afva)localObject;
+      localObject = (AnimationPath.Values)localObject;
       Matrix localMatrix = paramTransformation.getMatrix();
       localMatrix.reset();
       int i = paramView.getWidth() / 2;
       int j = paramView.getHeight() / 2;
-      localMatrix.preRotate(((afva)localObject).a, i, j);
-      localMatrix.preScale(((afva)localObject).d, ((afva)localObject).e, j, j);
-      paramTransformation.setAlpha(((afva)localObject).f);
+      localMatrix.preRotate(((AnimationPath.Values)localObject).a, i, j);
+      localMatrix.preScale(((AnimationPath.Values)localObject).d, ((AnimationPath.Values)localObject).e, j, j);
+      paramTransformation.setAlpha(((AnimationPath.Values)localObject).f);
       return true;
     }
     return false;
@@ -327,7 +321,7 @@ public class AIOAnimationConatiner
     return true;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_ComTencentWidgetListView != null) {
@@ -335,16 +329,16 @@ public class AIOAnimationConatiner
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Afup != null) {
-      this.jdField_a_of_type_Afup.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.jdField_a_of_type_Afup != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator != null) {
       if ((paramInt1 == paramInt5) && (paramInt2 == paramInt6) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8)) {
         break label53;
       }
@@ -352,14 +346,14 @@ public class AIOAnimationConatiner
     label53:
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Afup.a(bool, paramInt1, paramInt2, paramInt3, paramInt4);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a(bool, paramInt1, paramInt2, paramInt3, paramInt4);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner
  * JD-Core Version:    0.7.0.1
  */

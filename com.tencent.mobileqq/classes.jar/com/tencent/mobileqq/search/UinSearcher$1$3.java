@@ -1,35 +1,33 @@
 package com.tencent.mobileqq.search;
 
 import android.text.TextUtils;
-import arml;
-import bbzy;
-import bbzz;
-import bceh;
-import bdla;
-import bkzi;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.search.UinSearchConfProcessor.UinSearchConfigBean;
+import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
-public class UinSearcher$1$3
+class UinSearcher$1$3
   implements Runnable
 {
-  public UinSearcher$1$3(bbzz parambbzz, bkzi parambkzi, bceh[] paramArrayOfbceh1, bceh[] paramArrayOfbceh2, arml paramarml, QQAppInterface paramQQAppInterface, bceh[] paramArrayOfbceh3) {}
+  UinSearcher$1$3(UinSearcher.1 param1, ActionSheet paramActionSheet, GroupBaseNetSearchModelItem[] paramArrayOfGroupBaseNetSearchModelItem1, GroupBaseNetSearchModelItem[] paramArrayOfGroupBaseNetSearchModelItem2, UinSearchConfProcessor.UinSearchConfigBean paramUinSearchConfigBean, QQAppInterface paramQQAppInterface, GroupBaseNetSearchModelItem[] paramArrayOfGroupBaseNetSearchModelItem3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bkzi.show();
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
     String str1;
     String str2;
-    if (this.jdField_a_of_type_ArrayOfBceh[0] == null) {
+    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0] == null) {
       if (this.b[0] == null)
       {
         str1 = "0X800A923";
-        if ((this.jdField_a_of_type_ArrayOfBceh[0] != null) || (this.b[0] != null)) {
+        if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0] != null) || (this.b[0] != null)) {
           break label286;
         }
         str2 = "";
         label49:
-        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str1, str1, bbzy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bbzy.a(this.jdField_a_of_type_Bbzz.a), bbzy.d(this.jdField_a_of_type_Bbzz.a)), 0, str2, "", "", "");
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str1, str1, UinSearcher.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, UinSearcher.a(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), UinSearcher.d(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a)), 0, str2, "", "", "");
         if ((this.c[0] == null) || (TextUtils.isEmpty(this.c[0].n))) {
           break label352;
         }
@@ -58,7 +56,7 @@ public class UinSearcher$1$3
       if (QLog.isColorLevel()) {
         QLog.d("UinSearcher", 2, "baoguang TValue r4 r5: " + str1 + ", " + str2 + ", " + str3);
       }
-      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str1, str1, bbzy.a(bbzy.a(this.jdField_a_of_type_Bbzz.a)), 0, "", "", str2, str3);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str1, str1, UinSearcher.a(UinSearcher.a(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a)), 0, "", "", str2, str3);
       return;
       str1 = "0X800A921";
       break;
@@ -69,12 +67,12 @@ public class UinSearcher$1$3
       }
       str1 = "0X800A922";
       break;
-      if (this.jdField_a_of_type_Arml.a())
+      if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessSearchUinSearchConfProcessor$UinSearchConfigBean.a())
       {
-        str2 = arml.a + "";
+        str2 = UinSearchConfProcessor.UinSearchConfigBean.a + "";
         break label49;
       }
-      str2 = arml.b + "";
+      str2 = UinSearchConfProcessor.UinSearchConfigBean.b + "";
       break label49;
       str1 = "0X800B0BE";
       break label143;
@@ -87,7 +85,7 @@ public class UinSearcher$1$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.UinSearcher.1.3
  * JD-Core Version:    0.7.0.1
  */

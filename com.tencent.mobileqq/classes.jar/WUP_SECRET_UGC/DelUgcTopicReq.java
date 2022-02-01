@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class DelUgcTopicReq
   extends JceStruct
 {
-  public int source;
+  public int source = 0;
   public String ugc_id = "";
   public String uid = "";
   

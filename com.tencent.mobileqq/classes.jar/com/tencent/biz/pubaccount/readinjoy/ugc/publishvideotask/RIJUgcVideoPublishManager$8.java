@@ -8,18 +8,17 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import sad;
 
-public class RIJUgcVideoPublishManager$8
+class RIJUgcVideoPublishManager$8
   implements Runnable
 {
-  public RIJUgcVideoPublishManager$8(sad paramsad) {}
+  RIJUgcVideoPublishManager$8(RIJUgcVideoPublishManager paramRIJUgcVideoPublishManager) {}
   
   public void run()
   {
     try
     {
-      Object localObject1 = sad.a(this.this$0).query(UgcVideo.class, UgcVideo.class.getSimpleName(), true, "", null, null, null, "insertTime desc", null);
+      Object localObject1 = RIJUgcVideoPublishManager.a(this.this$0).query(UgcVideo.class, UgcVideo.class.getSimpleName(), true, "", null, null, null, "insertTime desc", null);
       localArrayList = new ArrayList();
       if (localObject1 != null)
       {
@@ -52,7 +51,7 @@ public class RIJUgcVideoPublishManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.RIJUgcVideoPublishManager.8
  * JD-Core Version:    0.7.0.1
  */

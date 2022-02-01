@@ -10,10 +10,9 @@ import java.util.ArrayList;
 public class AnimationView
   extends RoundImageView
 {
-  protected static final String TAG = "AnimationView";
-  protected AnimationView.AnimationInfo mAnimationInfo;
-  protected AnimationView.MyAnimationListener mListener;
-  protected AnimationView.Player mPlayer;
+  protected AnimationView.AnimationInfo a;
+  protected AnimationView.MyAnimationListener a;
+  protected AnimationView.Player a;
   
   public AnimationView(Context paramContext)
   {
@@ -32,36 +31,36 @@ public class AnimationView
   
   public AnimationView.AnimationInfo getAnimationFromInfo()
   {
-    return this.mAnimationInfo;
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
   }
   
   public AnimationView.Player getPlayer()
   {
-    return this.mPlayer;
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
   }
   
   public void pause()
   {
-    if (this.mPlayer == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
       return;
     }
-    this.mPlayer.pause();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.pause();
   }
   
   public void play()
   {
-    if (this.mPlayer == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
       return;
     }
-    this.mPlayer.play();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.play();
   }
   
   public void resume()
   {
-    if (this.mPlayer == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
       return;
     }
-    this.mPlayer.resume();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.resume();
   }
   
   public void setAnimationFromBitmaps(ArrayList<Bitmap> paramArrayList, int paramInt1, int paramInt2)
@@ -85,9 +84,9 @@ public class AnimationView
     do
     {
       return;
-      this.mAnimationInfo = AnimationView.AnimationInfo.loadFromFrames(paramArrayList, paramInt1, paramInt2);
-    } while (this.mPlayer != null);
-    this.mPlayer = new AnimationView.Player(this);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = AnimationView.AnimationInfo.loadFromFrames(paramArrayList, paramInt1, paramInt2);
+    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player != null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = new AnimationView.Player(this);
   }
   
   public void setAnimationFromDrawabs(Drawable[] paramArrayOfDrawable, int paramInt1, int paramInt2)
@@ -107,33 +106,33 @@ public class AnimationView
   
   public void setAnimationFromInfo(AnimationView.AnimationInfo paramAnimationInfo)
   {
-    this.mAnimationInfo = paramAnimationInfo;
-    if (this.mPlayer == null) {
-      this.mPlayer = new AnimationView.Player(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramAnimationInfo;
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = new AnimationView.Player(this);
     }
   }
   
   public void setAnimationListener(AnimationView.MyAnimationListener paramMyAnimationListener)
   {
-    this.mListener = paramMyAnimationListener;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener = paramMyAnimationListener;
   }
   
   public void setPlayer(AnimationView.Player paramPlayer)
   {
-    this.mPlayer = paramPlayer;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = paramPlayer;
   }
   
   public void stop()
   {
-    if (this.mPlayer == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
       return;
     }
-    this.mPlayer.stop();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.stop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView
  * JD-Core Version:    0.7.0.1
  */

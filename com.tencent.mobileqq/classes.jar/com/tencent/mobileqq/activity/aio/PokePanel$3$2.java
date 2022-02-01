@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afud;
-import afug;
-
-public class PokePanel$3$2
+class PokePanel$3$2
   implements Runnable
 {
-  public PokePanel$3$2(afud paramafud, String paramString1, String paramString2, boolean paramBoolean) {}
+  PokePanel$3$2(PokePanel.3 param3, String paramString1, String paramString2, boolean paramBoolean) {}
   
   public void run()
   {
-    PokePanel.a(this.jdField_a_of_type_Afud.a).a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b).intValue(), false, this.jdField_a_of_type_Boolean);
+    PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel$3.a).a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b).intValue(), false, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PokePanel.3.2
  * JD-Core Version:    0.7.0.1
  */

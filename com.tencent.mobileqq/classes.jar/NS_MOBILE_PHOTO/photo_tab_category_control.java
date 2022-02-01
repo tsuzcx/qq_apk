@@ -9,8 +9,8 @@ public final class photo_tab_category_control
   extends JceStruct
 {
   static ArrayList<photo_tab_categroy_info> cache_category_infos = new ArrayList();
-  public ArrayList<photo_tab_categroy_info> category_infos;
-  public boolean is_visible;
+  public ArrayList<photo_tab_categroy_info> category_infos = null;
+  public boolean is_visible = false;
   
   static
   {

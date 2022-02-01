@@ -1,0 +1,28 @@
+package com.tencent.av.ui;
+
+class VoiceChangeAdapter$1
+  implements VoiceChangeItemView1.ICallback
+{
+  public void a(VoiceChangeItemView1 paramVoiceChangeItemView1, int paramInt)
+  {
+    VoiceChangeData.VoiceInfo localVoiceInfo = (VoiceChangeData.VoiceInfo)this.a.getItem(paramInt);
+    if ((localVoiceInfo == null) || (localVoiceInfo.a == VoiceChangeAdapter.a(this.a))) {}
+    do
+    {
+      return;
+      if (VoiceChangeAdapter.a(this.a) != null) {
+        VoiceChangeAdapter.a(this.a).setHighlight(false);
+      }
+      VoiceChangeAdapter.a(this.a, localVoiceInfo.a);
+      VoiceChangeAdapter.a(this.a, paramVoiceChangeItemView1);
+      VoiceChangeAdapter.a(this.a).setHighlight(true);
+    } while (VoiceChangeAdapter.a(this.a) == null);
+    VoiceChangeAdapter.a(this.a).a(VoiceChangeAdapter.a(this.a));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.av.ui.VoiceChangeAdapter.1
+ * JD-Core Version:    0.7.0.1
+ */

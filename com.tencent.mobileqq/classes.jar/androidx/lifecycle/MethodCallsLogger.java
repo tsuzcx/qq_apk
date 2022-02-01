@@ -4,12 +4,12 @@ import androidx.annotation.RestrictTo;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 public class MethodCallsLogger
 {
   private Map<String, Integer> mCalledMethods = new HashMap();
   
-  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public boolean approveCall(String paramString, int paramInt)
   {
     Integer localInteger = (Integer)this.mCalledMethods.get(paramString);
@@ -38,7 +38,7 @@ public class MethodCallsLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.lifecycle.MethodCallsLogger
  * JD-Core Version:    0.7.0.1
  */

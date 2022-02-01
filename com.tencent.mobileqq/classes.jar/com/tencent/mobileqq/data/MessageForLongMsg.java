@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.data;
 
-import acnh;
 import android.text.TextUtils;
-import apab;
-import arts;
-import bcsa;
-import biyt;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.imcore.message.MsgProxyUtils;
 import com.tencent.ims.bankcode_info.BankcodeCtrlInfo;
 import com.tencent.ims.bankcode_info.BankcodeElem;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.text.QQText;
+import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,12 +21,12 @@ import java.util.List;
 
 public class MessageForLongMsg
   extends RecommendCommonMessage
-  implements arts
+  implements HasSourceMessage
 {
   public Object fragmentListSyncLock = new Object();
   public List<MessageRecord> longMsgFragmentList;
-  public boolean mHasPullHistorySourceMsg;
-  public boolean mIsCutAtInfoLocal;
+  public boolean mHasPullHistorySourceMsg = false;
+  public boolean mIsCutAtInfoLocal = false;
   public MessageForReplyText.SourceMsgInfo mSourceMsgInfo;
   public CharSequence sb;
   public CharSequence sb2;
@@ -250,7 +249,7 @@ public class MessageForLongMsg
             }
             m = k;
             bool3 = bool1;
-            bool2 = biyt.a().a((String)localObject1);
+            bool2 = MQPSensitiveMsgUtil.a().a((String)localObject1);
             if (bool2) {
               break label983;
             }
@@ -269,7 +268,7 @@ public class MessageForLongMsg
           }
           try
           {
-            this.mSourceMsgInfo = ((MessageForReplyText.SourceMsgInfo)apab.a(HexUtil.hexStr2Bytes(str)));
+            this.mSourceMsgInfo = ((MessageForReplyText.SourceMsgInfo)MessagePkgUtils.a(HexUtil.hexStr2Bytes(str)));
             k = n;
             bool1 = bool2;
           }
@@ -394,7 +393,7 @@ public class MessageForLongMsg
   
   public boolean isSupportFTS()
   {
-    return acnh.x(this.istroop);
+    return MsgProxyUtils.m(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -480,7 +479,7 @@ public class MessageForLongMsg
                   while (((Iterator)localObject10).hasNext()) {
                     ((StringBuffer)localObject7).append(((MessageRecord)((Iterator)localObject10).next()).msg);
                   }
-                  localObject10 = (MessageForText)bcsa.a(-1000);
+                  localObject10 = (MessageForText)MessageRecordFactory.a(-1000);
                   ((MessageForText)localObject10).msgtype = -1000;
                   ((MessageForText)localObject10).msg = ((StringBuffer)localObject7).toString();
                   ((StringBuffer)localObject7).delete(0, ((StringBuffer)localObject7).length());
@@ -503,7 +502,7 @@ public class MessageForLongMsg
               while (((Iterator)localObject9).hasNext()) {
                 ((StringBuffer)localObject7).append(((MessageRecord)((Iterator)localObject9).next()).msg);
               }
-              localObject9 = (MessageForText)bcsa.a(-1000);
+              localObject9 = (MessageForText)MessageRecordFactory.a(-1000);
               ((MessageForText)localObject9).msgtype = -1000;
               ((MessageForText)localObject9).msg = ((StringBuffer)localObject7).toString();
               ((StringBuffer)localObject7).delete(0, ((StringBuffer)localObject7).length());
@@ -530,14 +529,14 @@ public class MessageForLongMsg
               break;
             }
           }
-          ??? = (MessageForText)bcsa.a(-1000);
+          ??? = (MessageForText)MessageRecordFactory.a(-1000);
           ((MessageForText)???).msgtype = -1000;
           ((MessageForText)???).msg = ((StringBuffer)localObject7).toString();
           ((StringBuffer)localObject7).delete(0, ((StringBuffer)localObject7).length());
           localObject5.add(???);
           ((List)localObject6).clear();
         }
-        ??? = (MessageForMixedMsg)bcsa.a(-1035);
+        ??? = (MessageForMixedMsg)MessageRecordFactory.a(-1035);
         copyMessageRecordBaseField((MessageRecord)???, this);
         ((MessageForMixedMsg)???).msgtype = -1035;
         ((MessageForMixedMsg)???).msgElemList = localObject5;
@@ -555,7 +554,7 @@ public class MessageForLongMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForLongMsg
  * JD-Core Version:    0.7.0.1
  */

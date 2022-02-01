@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.troop.troopgame;
 
 import android.database.Cursor;
-import androidx.annotation.NonNull;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
@@ -12,7 +11,7 @@ public class MemberGradeLevelInfo
   extends Entity
   implements Serializable
 {
-  public int gradeLevel;
+  public int gradeLevel = 0;
   public String memberuin;
   
   public boolean entityByCursor(Cursor paramCursor)
@@ -22,7 +21,6 @@ public class MemberGradeLevelInfo
     return true;
   }
   
-  @NonNull
   public String toString()
   {
     return "memberuin = " + this.memberuin + ", gradeLevel = " + this.gradeLevel;

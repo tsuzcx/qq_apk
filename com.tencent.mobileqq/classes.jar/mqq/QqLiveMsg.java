@@ -11,8 +11,8 @@ public final class QqLiveMsg
   public String ShopText = "";
   public String anchorUrl = "";
   public String anchorUrlMd5 = "";
-  public int isPreload;
-  public int isShopEntrance;
+  public int isPreload = 0;
+  public int isShopEntrance = 0;
   public String plus_text = "";
   public String recomm_room_schema = "";
   public String recomm_roomid = "";

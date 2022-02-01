@@ -1,8 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload;
 
 import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,7 +20,7 @@ public class MaterialData
   public String adid;
   public String animFileName;
   public int delivery_effect;
-  public int enable_4g;
+  public int enable_4g = 0;
   public long end_time;
   public int normal_mask;
   public String res_md5;
@@ -33,7 +35,7 @@ public class MaterialData
   public MaterialData(JSONObject paramJSONObject)
   {
     super(paramJSONObject);
-    this.start_time = paramJSONObject.optLong("start_time");
+    this.start_time = paramJSONObject.optLong("start_time", NetConnInfoCenter.getServerTime());
     this.sub_adid = paramJSONObject.optString("sub_adid");
     this.ad_type = paramJSONObject.optInt("ad_type");
     this.res_version = paramJSONObject.optInt("res_version");
@@ -49,6 +51,23 @@ public class MaterialData
     this.normal_mask = paramJSONObject.optInt("normal_mask");
     this.id = (this.ad_source + "_" + this.adid);
     this.url = paramJSONObject.optString("res_url");
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
+    }
+    paramObject = (MaterialData)paramObject;
+    return this.id.equals(paramObject.id);
+  }
+  
+  public int hashCode()
+  {
+    return Arrays.hashCode(new Object[] { this.id });
   }
   
   public oidb_0x885.RspBody toBody()
@@ -95,7 +114,7 @@ public class MaterialData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData
  * JD-Core Version:    0.7.0.1
  */

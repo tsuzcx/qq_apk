@@ -9,8 +9,8 @@ public final class stFriendLikes
   extends JceStruct
 {
   static ArrayList<stFriendLike> cache_likeFriends = new ArrayList();
-  public ArrayList<stFriendLike> likeFriends;
-  public int total;
+  public ArrayList<stFriendLike> likeFriends = null;
+  public int total = 0;
   
   static
   {

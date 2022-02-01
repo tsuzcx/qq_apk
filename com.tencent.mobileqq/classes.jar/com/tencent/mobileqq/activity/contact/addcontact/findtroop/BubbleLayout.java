@@ -31,6 +31,7 @@ public class BubbleLayout
   boolean jdField_a_of_type_Boolean;
   int b;
   private int c;
+  @BubbleLayout.Direction
   private int d;
   private int e;
   
@@ -181,7 +182,7 @@ public class BubbleLayout
     localPoint.x -= this.e;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((this.jdField_a_of_type_AndroidGraphicsPoint.x > 0) && (this.jdField_a_of_type_AndroidGraphicsPoint.y > 0))
@@ -210,7 +211,7 @@ public class BubbleLayout
     d(paramCanvas);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_AndroidGraphicsRectF.left = getPaddingLeft();
@@ -282,7 +283,7 @@ public class BubbleLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout
  * JD-Core Version:    0.7.0.1
  */

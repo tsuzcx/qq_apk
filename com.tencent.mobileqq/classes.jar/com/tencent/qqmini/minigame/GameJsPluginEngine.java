@@ -16,6 +16,7 @@ import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.plugins.engine.IJsPluginEngine;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.LameMp3SoDownloadListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.WebAudioDownloadListener;
 import com.tencent.qqmini.sdk.plugins.engine.JsPluginEngine;
 import java.util.HashMap;
@@ -154,7 +155,9 @@ public final class GameJsPluginEngine
     ((GameRuntime)localObject).setJsPluginEngine(this);
     this.innerAudio.onCreate(paramTritonEngine);
     this.webAudio.onCreate(paramTritonEngine);
-    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).getWebAudioDownloadPath((DownloaderProxy.WebAudioDownloadListener)new GameJsPluginEngine.onCreate.listener.1(this));
+    paramTritonEngine = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
+    paramTritonEngine.getWebAudioDownloadPath((DownloaderProxy.WebAudioDownloadListener)new GameJsPluginEngine.onCreate.webAudioDownloadListener.1(this));
+    paramTritonEngine.getLameMp3SoDownloadPath((DownloaderProxy.LameMp3SoDownloadListener)new GameJsPluginEngine.onCreate.lameMp3SoDownloadListener.1(this));
   }
   
   public void onDestroy()
@@ -205,7 +208,7 @@ public final class GameJsPluginEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameJsPluginEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public class SneakyParams
   private String backupActivityUri = "";
   private int baseDelayMs = 10000;
   private int debounceIntervalMinutes = 60;
-  private boolean enable;
+  private boolean enable = false;
   private int maximumWakeUpTimes = 3;
   private Map<String, OccasionRule> occasionTypeRulesMap = new HashMap();
   private String packageName = "";
@@ -122,7 +122,7 @@ public class SneakyParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.config.beans.SneakyParams
  * JD-Core Version:    0.7.0.1
  */

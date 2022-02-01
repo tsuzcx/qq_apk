@@ -12,9 +12,7 @@ class LivePusherEmbeddedWidgetClient$2
   
   public void onBGMComplete(int paramInt)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("miniapp-embedded-live-pusher", "onBGMComplete, errCode:" + paramInt);
-    }
+    QMLog.d("miniapp-embedded-live-pusher", "onBGMComplete, errCode:" + paramInt);
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -31,9 +29,7 @@ class LivePusherEmbeddedWidgetClient$2
   
   public void onBGMProgress(long paramLong1, long paramLong2)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.e("miniapp-embedded-live-pusher", "onBGMProgress progress:" + paramLong1 + ",duration:" + paramLong2);
-    }
+    QMLog.e("miniapp-embedded-live-pusher", "onBGMProgress progress:" + paramLong1 + ",duration:" + paramLong2);
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -67,7 +63,7 @@ class LivePusherEmbeddedWidgetClient$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePusherEmbeddedWidgetClient.2
  * JD-Core Version:    0.7.0.1
  */

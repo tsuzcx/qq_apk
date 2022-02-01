@@ -1,24 +1,21 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apef;
-import apez;
-
-public class MultiFragmentAnimRenderable$5
+class MultiFragmentAnimRenderable$5
   implements Runnable
 {
-  public MultiFragmentAnimRenderable$5(apez paramapez) {}
+  MultiFragmentAnimRenderable$5(MultiFragmentAnimRenderable paramMultiFragmentAnimRenderable) {}
   
   public void run()
   {
     this.this$0.f();
-    if (apez.a(this.this$0) != null) {
-      apez.a(this.this$0).b(1, 0);
+    if (MultiFragmentAnimRenderable.a(this.this$0) != null) {
+      MultiFragmentAnimRenderable.a(this.this$0).b(1, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable.5
  * JD-Core Version:    0.7.0.1
  */

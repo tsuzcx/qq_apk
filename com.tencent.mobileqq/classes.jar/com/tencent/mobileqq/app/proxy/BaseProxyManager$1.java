@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.proxy;
 
 import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadRegulator;
+import com.tencent.mobileqq.imcore.proxy.db.ThreadRegulatorProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Vector;
 
@@ -20,8 +20,8 @@ class BaseProxyManager$1
         {
           BaseProxyManager.access$100(this.this$0);
           this.this$0.msgQueueLock.wait(BaseProxyManager.access$200());
-          IMCoreProxyRoute.ThreadRegulator.checkInNextBusiness();
-          if (((!this.this$0.msgQueue.isEmpty()) || (BaseProxyManager.access$300(this.this$0).getQueue().size() > 0)) && (BaseProxyManager.access$400(this.this$0)))
+          ThreadRegulatorProxy.checkInNextBusiness();
+          if (((!this.this$0.msgQueue.isEmpty()) || (BaseProxyManager.access$300(this.this$0).getQueue().size() > 0)) && (this.this$0.isSaveDBAtOnce()))
           {
             this.this$0.transSaveToDatabase();
             BaseProxyManager.access$300(this.this$0).transSaveToDatabase();

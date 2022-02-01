@@ -4,13 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bosv;
 import java.io.File;
 
 public class EditRecordVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new bosv();
+  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new EditRecordVideoSource.1();
   public final float a;
   public final int a;
   public final long a;
@@ -25,7 +24,7 @@ public class EditRecordVideoSource
   public final int f;
   public final int g;
   
-  public EditRecordVideoSource(Parcel paramParcel)
+  protected EditRecordVideoSource(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -104,7 +103,7 @@ public class EditRecordVideoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource
  * JD-Core Version:    0.7.0.1
  */

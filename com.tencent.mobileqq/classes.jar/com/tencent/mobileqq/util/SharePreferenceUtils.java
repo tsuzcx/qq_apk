@@ -6,9 +6,7 @@ import android.content.SharedPreferences.Editor;
 
 public class SharePreferenceUtils
 {
-  private static final String m_str_key_x = "c_profile_sharepreference";
-  
-  public static String get(Context paramContext, String paramString)
+  public static String a(Context paramContext, String paramString)
   {
     if (paramContext != null) {
       return paramContext.getSharedPreferences("c_profile_sharepreference", 4).getString(paramString, "");
@@ -16,7 +14,7 @@ public class SharePreferenceUtils
     return "";
   }
   
-  public static void remove(Context paramContext, String paramString)
+  public static void a(Context paramContext, String paramString)
   {
     if (paramContext != null)
     {
@@ -26,16 +24,16 @@ public class SharePreferenceUtils
     }
   }
   
-  private static void save(Context paramContext, String paramString1, String paramString2)
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    b(paramContext, paramString1, paramString2);
+  }
+  
+  private static void b(Context paramContext, String paramString1, String paramString2)
   {
     paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 4).edit();
     paramContext.putString(paramString1, paramString2);
     paramContext.commit();
-  }
-  
-  public static void set(Context paramContext, String paramString1, String paramString2)
-  {
-    save(paramContext, paramString1, paramString2);
   }
 }
 

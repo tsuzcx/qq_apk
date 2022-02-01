@@ -1,21 +1,23 @@
 package dov.com.qq.im.ae.camera.core;
 
-import android.graphics.PointF;
-import bnaz;
+import dov.com.qq.im.ae.camera.filter.FilterProcessBase;
 
 class AECameraGLSurfaceView$22
   implements Runnable
 {
-  AECameraGLSurfaceView$22(AECameraGLSurfaceView paramAECameraGLSurfaceView, bnaz parambnaz, float paramFloat1, float paramFloat2, int paramInt) {}
+  AECameraGLSurfaceView$22(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
   public void run()
   {
-    this.val$aeFilterProcessTex.a(new PointF(this.val$x, this.val$y), this.val$screenWidth);
+    if (AECameraGLSurfaceView.access$000(this.this$0) != null) {
+      AECameraGLSurfaceView.access$000(this.this$0).a(true, AECameraGLSurfaceView.access$800(this.this$0), this.this$0);
+    }
+    this.this$0.requestRender();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.22
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import asbl;
-import ascr;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.earlydownload.EarlyDataFactory;
+import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
+import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
 import com.tencent.mobileqq.persistence.Entity;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -12,46 +15,55 @@ public abstract class XmlData
   public static final int STATE_LOADING = 2;
   public static final int STATE_NONE = 0;
   public static final int STATE_SUCCESS = 1;
-  @ascr(a=true, b=false)
+  @saveInSP(a=true, b=false)
   public String MD5;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public boolean StoreBackup;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public int Version;
   public long downSize;
-  @ascr(a=false, b=true)
+  @saveInSP(a=false, b=true)
   public boolean hasResDownloaded;
   public boolean isUserClick;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public boolean load2G;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public boolean load3G;
-  @ascr(a=false, b=true)
+  @saveInSP(a=false, b=true)
   public int loadState;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public boolean loadWifi;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public boolean net_2_2G;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public boolean net_2_3G;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public boolean net_2_wifi;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public boolean notPreDownloadInLowEndPhone;
   public int reqLoadCount;
   public String strLog;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public String strPkgName;
-  @ascr(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public String strResName;
-  @ascr(a=true, b=false)
+  @saveInSP(a=true, b=false)
   public String strResURL_big;
-  @ascr(a=true, b=false)
+  @saveInSP(a=true, b=false)
   public String strResURL_small;
-  @ascr(a=false, b=true)
+  @saveInSP(a=false, b=true)
   public long tLoadFail;
   public long tStart;
   public long totalSize;
+  
+  public static String packageNameOf(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = ((EarlyDownloadManager)paramQQAppInterface.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER)).a(paramString);
+    if ((paramQQAppInterface == null) || (paramQQAppInterface.a() == null)) {
+      return "(null)";
+    }
+    return paramQQAppInterface.a().strPkgName;
+  }
   
   public abstract String getSharedPreferencesName();
   
@@ -73,7 +85,7 @@ public abstract class XmlData
         {
           i += 1;
           break;
-          if (((Field)localObject).isAnnotationPresent(ascr.class))
+          if (((Field)localObject).isAnnotationPresent(saveInSP.class))
           {
             if (!((Field)localObject).isAccessible()) {
               ((Field)localObject).setAccessible(true);
@@ -102,14 +114,14 @@ public abstract class XmlData
     do
     {
       return;
-      arrayOfField = asbl.a(paramXmlData.getClass());
+      arrayOfField = EarlyDataFactory.a(paramXmlData.getClass());
     } while ((arrayOfField == null) || (arrayOfField.length == 0));
     int j = arrayOfField.length;
     int i = 0;
     while (i < j)
     {
       Field localField = arrayOfField[i];
-      if ((localField.isAnnotationPresent(ascr.class)) && (((ascr)localField.getAnnotation(ascr.class)).a())) {}
+      if ((localField.isAnnotationPresent(saveInSP.class)) && (((saveInSP)localField.getAnnotation(saveInSP.class)).a())) {}
       try
       {
         localField.set(this, localField.get(paramXmlData));
@@ -134,7 +146,7 @@ public abstract class XmlData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.XmlData
  * JD-Core Version:    0.7.0.1
  */

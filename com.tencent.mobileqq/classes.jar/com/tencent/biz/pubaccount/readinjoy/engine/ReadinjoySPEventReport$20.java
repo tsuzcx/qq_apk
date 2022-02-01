@@ -1,19 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import pwb;
-import pwq;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import uuc;
 
-public final class ReadinjoySPEventReport$20
+final class ReadinjoySPEventReport$20
   implements Runnable
 {
-  public ReadinjoySPEventReport$20(int paramInt1, Map paramMap, int paramInt2) {}
+  ReadinjoySPEventReport$20(int paramInt1, Map paramMap, int paramInt2) {}
   
   public void run()
   {
@@ -49,23 +48,23 @@ public final class ReadinjoySPEventReport$20
     else
     {
       if (this.jdField_a_of_type_Int != 1) {
-        break label748;
+        break label758;
       }
       localObject = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(5);
       ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("operation_bitmap");
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(this.b + "");
       localArrayList.add(localObject);
-      localObject = pwb.a().b;
+      localObject = ReadinjoySPEventReport.a().b;
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(7);
       localAttributeList.att_name.set("staticDurationAfterEnter");
-      if (((pwq)localObject).a <= 0L) {
-        break label743;
+      if (((ReadinjoySPEventReport.UserOptInfo)localObject).a <= 0L) {
+        break label753;
       }
     }
-    label743:
-    for (long l1 = ((pwq)localObject).a - ((pwq)localObject).d;; l1 = 0L)
+    label753:
+    for (long l1 = ((ReadinjoySPEventReport.UserOptInfo)localObject).a - ((ReadinjoySPEventReport.UserOptInfo)localObject).d;; l1 = 0L)
     {
       localAttributeList.att_value.set(l1 + "");
       localArrayList.add(localAttributeList);
@@ -73,49 +72,49 @@ public final class ReadinjoySPEventReport$20
       localAttributeList.att_id.set(8);
       localAttributeList.att_name.set("staticDurationBeforeExit");
       l1 = l2;
-      if (((pwq)localObject).c > 0L) {
-        l1 = ((pwq)localObject).e - ((pwq)localObject).c;
+      if (((ReadinjoySPEventReport.UserOptInfo)localObject).c > 0L) {
+        l1 = ((ReadinjoySPEventReport.UserOptInfo)localObject).e - ((ReadinjoySPEventReport.UserOptInfo)localObject).c;
       }
       localAttributeList.att_value.set(l1 + "");
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(9);
       localAttributeList.att_name.set("articleInfoList");
-      localAttributeList.att_value.set(((pwq)localObject).a());
+      localAttributeList.att_value.set(((ReadinjoySPEventReport.UserOptInfo)localObject).a());
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(10);
       localAttributeList.att_name.set("scrollInfoList");
-      localAttributeList.att_value.set(((pwq)localObject).b());
+      localAttributeList.att_value.set(((ReadinjoySPEventReport.UserOptInfo)localObject).b());
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(11);
       localAttributeList.att_name.set("stayDuration");
-      localAttributeList.att_value.set(((pwq)localObject).e - ((pwq)localObject).d + "");
+      localAttributeList.att_value.set(((ReadinjoySPEventReport.UserOptInfo)localObject).e - ((ReadinjoySPEventReport.UserOptInfo)localObject).d + "");
       localArrayList.add(localAttributeList);
-      uuc.a(90, localArrayList);
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPushEffectEvent(90, localArrayList);
       return;
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set("1");
       break;
     }
-    label748:
+    label758:
     localObject = new oidb_cmd0x80a.AttributeList();
     ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(6);
     ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("durationBeforeEnter");
     l2 = System.currentTimeMillis();
-    if (pwb.f() <= 0L) {}
-    for (l1 = pwb.a;; l1 = pwb.f())
+    if (ReadinjoySPEventReport.f() <= 0L) {}
+    for (l1 = ReadinjoySPEventReport.a;; l1 = ReadinjoySPEventReport.f())
     {
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(l2 - l1 + "");
       localArrayList.add(localObject);
-      pwb.n();
+      ReadinjoySPEventReport.n();
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.20
  * JD-Core Version:    0.7.0.1
  */

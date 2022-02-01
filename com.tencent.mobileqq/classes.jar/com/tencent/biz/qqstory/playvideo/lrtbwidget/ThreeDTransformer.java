@@ -3,9 +3,9 @@ package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 import android.os.Build;
 import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import ykq;
 
 public class ThreeDTransformer
   implements ViewPager.PageTransformer
@@ -48,7 +48,7 @@ public class ThreeDTransformer
       if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)) == null)
       {
         this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(0));
-        ykq.b("ThreeDTransformer", "mInitMatcher viewId: " + i + " | count: " + 0);
+        SLog.b("ThreeDTransformer", "mInitMatcher viewId: " + i + " | count: " + 0);
       }
     }
     else if ((this.jdField_a_of_type_Int != 0) && (paramFloat < 0.0F) && (paramFloat >= -1.0F) && (this.b))
@@ -73,12 +73,12 @@ public class ThreeDTransformer
     label246:
     for (paramView = "toLeft";; paramView = "toRight")
     {
-      ykq.b("ThreeDTransformer", paramView);
+      SLog.b("ThreeDTransformer", paramView);
       return;
       this.jdField_a_of_type_Int = i;
       this.jdField_a_of_type_Float = paramFloat;
       this.jdField_a_of_type_JavaUtilHashMap.clear();
-      ykq.b("ThreeDTransformer", "initDrawingView pos: " + this.jdField_a_of_type_Int);
+      SLog.b("ThreeDTransformer", "initDrawingView pos: " + this.jdField_a_of_type_Int);
       return;
       bool = false;
       break;
@@ -232,7 +232,7 @@ public class ThreeDTransformer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.ThreeDTransformer
  * JD-Core Version:    0.7.0.1
  */

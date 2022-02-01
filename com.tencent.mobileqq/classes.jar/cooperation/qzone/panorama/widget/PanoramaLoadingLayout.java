@@ -15,15 +15,20 @@ public class PanoramaLoadingLayout
   extends RelativeLayout
 {
   public static final int ANIMATION_TIME = 300;
-  public static final int HEIGHT = ViewUtils.dpToPx(55.0F);
+  public static final int HEIGHT = ViewUtils.b(55.0F);
   private static final String TAG = "PanoramaLoadingLayout";
-  public static final int WIDTH = ViewUtils.dpToPx(55.0F);
-  public static boolean isPanoramaLoading;
+  public static final int WIDTH;
+  public static boolean isPanoramaLoading = false;
   private Context context;
   private PanoramaLoadingBall horizontalPanoramaLoadingBall;
   private PanoramaLoadingBackground panoramaLoadingBackground;
   private TextView tvToast;
   private PanoramaLoadingBall verticalPanoramaLoadingBall;
+  
+  static
+  {
+    WIDTH = ViewUtils.b(55.0F);
+  }
   
   public PanoramaLoadingLayout(@NonNull Context paramContext)
   {
@@ -83,14 +88,14 @@ public class PanoramaLoadingLayout
     if (this.tvToast == null)
     {
       this.tvToast = new TextView(this.context);
-      this.tvToast.setText(this.context.getResources().getString(2131717264));
+      this.tvToast.setText(this.context.getResources().getString(2131717759));
       this.tvToast.setTextColor(-1);
       this.tvToast.setTextSize(14.0F);
       this.tvToast.setShadowLayer(2.0F, 2.0F, 2.0F, -16777216);
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(14);
       localLayoutParams.addRule(3, this.panoramaLoadingBackground.getId());
-      localLayoutParams.topMargin = (ViewUtils.dip2px(10.0F) + WIDTH / 5);
+      localLayoutParams.topMargin = (ViewUtils.a(10.0F) + WIDTH / 5);
       addView(this.tvToast, localLayoutParams);
     }
     if (paramBoolean1) {
@@ -129,7 +134,7 @@ public class PanoramaLoadingLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaLoadingLayout
  * JD-Core Version:    0.7.0.1
  */

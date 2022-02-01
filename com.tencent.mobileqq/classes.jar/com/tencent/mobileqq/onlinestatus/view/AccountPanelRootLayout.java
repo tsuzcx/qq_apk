@@ -11,21 +11,20 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
-import azfi;
 
 public class AccountPanelRootLayout
   extends RelativeLayout
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 2;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private azfi jdField_a_of_type_Azfi;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private AccountPanelRootLayout.AccountPanelRootLayoutListener jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener;
+  private boolean jdField_a_of_type_Boolean = false;
+  private float jdField_b_of_type_Float = 0.0F;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = false;
   
   public AccountPanelRootLayout(@NonNull Context paramContext)
   {
@@ -107,7 +106,7 @@ public class AccountPanelRootLayout
   private void c()
   {
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131365154);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131365291);
     }
   }
   
@@ -119,8 +118,8 @@ public class AccountPanelRootLayout
     }
     if (i >= 0)
     {
-      if (this.jdField_a_of_type_Azfi != null) {
-        this.jdField_a_of_type_Azfi.b();
+      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener.b();
       }
       return 0 - getScrollY();
     }
@@ -187,8 +186,8 @@ public class AccountPanelRootLayout
         return;
       } while (!this.c);
       this.c = false;
-    } while (this.jdField_a_of_type_Azfi == null);
-    this.jdField_a_of_type_Azfi.b(this.jdField_a_of_type_Int);
+    } while (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener == null);
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener.b(this.jdField_a_of_type_Int);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -229,10 +228,10 @@ public class AccountPanelRootLayout
         if (Math.abs(f1) > 5.0F) {
           this.jdField_b_of_type_Boolean = true;
         }
-        if (this.jdField_a_of_type_Azfi == null) {
+        if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener == null) {
           break;
         }
-        paramMotionEvent = this.jdField_a_of_type_Azfi;
+        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener;
         bool1 = bool2;
         if (getScrollY() > 0) {
           bool1 = true;
@@ -259,7 +258,7 @@ public class AccountPanelRootLayout
         break;
       }
       label332:
-      if (this.jdField_a_of_type_Azfi != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener != null)
       {
         this.c = true;
         a(-this.jdField_b_of_type_Int);
@@ -272,9 +271,9 @@ public class AccountPanelRootLayout
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setAccountPanelRootLayoutListener(azfi paramazfi)
+  public void setAccountPanelRootLayoutListener(AccountPanelRootLayout.AccountPanelRootLayoutListener paramAccountPanelRootLayoutListener)
   {
-    this.jdField_a_of_type_Azfi = paramazfi;
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener = paramAccountPanelRootLayoutListener;
   }
   
   public void setMode(int paramInt)

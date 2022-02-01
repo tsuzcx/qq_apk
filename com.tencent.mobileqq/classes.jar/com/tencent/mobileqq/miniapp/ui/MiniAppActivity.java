@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.miniapp.ui;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -8,27 +7,27 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
-import awxs;
-import awxt;
-import awxy;
+import com.tencent.biz.qqstory.base.StoryDispatcher;
+import com.tencent.mobileqq.miniapp.MiniAppEvent;
+import com.tencent.mobileqq.miniapp.MiniAppInfo;
+import com.tencent.mobileqq.miniapp.MiniAppManager;
 import com.tencent.mobileqq.miniapp.MiniAppOptions;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import wad;
 
 public class MiniAppActivity
   extends FragmentActivity
 {
   protected int a;
-  public awxt a;
+  public MiniAppInfo a;
   private MiniAppBaseFragment a;
   protected String a;
   
   public void a(MiniAppBaseFragment paramMiniAppBaseFragment)
   {
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-    localFragmentTransaction.replace(2131367244, paramMiniAppBaseFragment);
+    localFragmentTransaction.replace(2131367430, paramMiniAppBaseFragment);
     localFragmentTransaction.commit();
     this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppBaseFragment = paramMiniAppBaseFragment;
   }
@@ -46,31 +45,31 @@ public class MiniAppActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131558455);
+    super.setContentView(2131558456);
     paramBundle = getIntent().getExtras();
     Object localObject = new MiniAppLoadingFragment();
     ((MiniAppLoadingFragment)localObject).setArguments(paramBundle);
     a((MiniAppBaseFragment)localObject);
-    awxy.a();
+    MiniAppManager.a();
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("key_appid");
     this.jdField_a_of_type_Int = getIntent().getIntExtra("key_appType", 0);
     paramBundle = (MiniAppOptions)getIntent().getParcelableExtra("key_options");
-    localObject = new awxs();
-    ((awxs)localObject).jdField_a_of_type_Int = 2;
-    ((awxs)localObject).jdField_a_of_type_Boolean = true;
-    ((awxs)localObject).jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramBundle };
-    wad.a().dispatch("MiniAppManager", (Dispatcher.Dispatchable)localObject);
+    localObject = new MiniAppEvent();
+    ((MiniAppEvent)localObject).jdField_a_of_type_Int = 2;
+    ((MiniAppEvent)localObject).jdField_a_of_type_Boolean = true;
+    ((MiniAppEvent)localObject).jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramBundle };
+    StoryDispatcher.a().dispatch("MiniAppManager", (Dispatcher.Dispatchable)localObject);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    awxs localawxs = new awxs();
-    localawxs.jdField_a_of_type_Int = 3;
-    localawxs.jdField_a_of_type_Boolean = true;
-    localawxs.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) };
-    wad.a().dispatch("MiniAppManager", localawxs);
+    MiniAppEvent localMiniAppEvent = new MiniAppEvent();
+    localMiniAppEvent.jdField_a_of_type_Int = 3;
+    localMiniAppEvent.jdField_a_of_type_Boolean = true;
+    localMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) };
+    StoryDispatcher.a().dispatch("MiniAppManager", localMiniAppEvent);
   }
   
   public boolean isWrapContent()
@@ -81,7 +80,7 @@ public class MiniAppActivity
   public boolean onBackEvent()
   {
     moveTaskToBack(true);
-    overridePendingTransition(2130772300, 2130771990);
+    overridePendingTransition(2130772315, 2130771992);
     return true;
   }
   

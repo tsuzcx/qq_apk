@@ -22,11 +22,13 @@ public abstract class FolderBaseTabFragment
   static
   {
     jdField_a_of_type_JavaLangString = "FolderBaseTabFragment";
+    jdField_a_of_type_Int = 0;
     jdField_b_of_type_Int = 1;
   }
   
   public FolderBaseTabFragment()
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_JavaLangString = "";
   }
   
@@ -55,7 +57,7 @@ public abstract class FolderBaseTabFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderBaseTabFragment
  * JD-Core Version:    0.7.0.1
  */

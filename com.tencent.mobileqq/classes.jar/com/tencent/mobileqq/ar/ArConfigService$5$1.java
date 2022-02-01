@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.ar;
 
-import apfr;
-
-public class ArConfigService$5$1
+class ArConfigService$5$1
   implements Runnable
 {
-  public ArConfigService$5$1(apfr paramapfr, int paramInt) {}
+  ArConfigService$5$1(ArConfigService.5 param5, int paramInt) {}
   
   public void run()
   {
-    ArConfigService.a(this.jdField_a_of_type_Apfr.a, this.jdField_a_of_type_Int);
+    ArConfigService.a(this.jdField_a_of_type_ComTencentMobileqqArArConfigService$5.a, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.5.1
  * JD-Core Version:    0.7.0.1
  */

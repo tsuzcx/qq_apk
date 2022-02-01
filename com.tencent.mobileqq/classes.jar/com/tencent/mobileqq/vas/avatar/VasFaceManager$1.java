@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.vas.avatar;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -22,10 +21,10 @@ class VasFaceManager$1
         return;
       }
       QLog.d("Q.qqhead.VasFaceManager", 1, "getFace need download: " + this.b);
-      VasQuickUpdateManager localVasQuickUpdateManager = (VasQuickUpdateManager)this.this$0.a.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
-      if (localVasQuickUpdateManager != null)
+      IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)this.this$0.a.getRuntimeService(IVasQuickUpdateService.class, "");
+      if (localIVasQuickUpdateService != null)
       {
-        localVasQuickUpdateManager.downloadItem(23L, this.b, "Q.qqhead.VasFaceManager");
+        localIVasQuickUpdateService.downloadItem(23L, this.b, "Q.qqhead.VasFaceManager");
         return;
       }
     }
@@ -37,7 +36,7 @@ class VasFaceManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasFaceManager.1
  * JD-Core Version:    0.7.0.1
  */

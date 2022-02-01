@@ -13,10 +13,9 @@ import android.text.format.Time;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import anvx;
-import bivm;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -54,13 +53,13 @@ public class SimpleMonthView
   int O;
   int P;
   int Q;
-  private int R;
-  private int S;
+  private int R = 0;
+  private int S = 0;
   private int T = 6;
   protected Paint a;
   final Time jdField_a_of_type_AndroidTextFormatTime = new Time(Time.getCurrentTimezone());
-  private bivm jdField_a_of_type_Bivm;
   private CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+  private SimpleMonthView.OnDayClickListener jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthView$OnDayClickListener;
   protected Boolean a;
   private String jdField_a_of_type_JavaLangString;
   private DateFormatSymbols jdField_a_of_type_JavaTextDateFormatSymbols = new DateFormatSymbols();
@@ -76,7 +75,7 @@ public class SimpleMonthView
   protected Paint c;
   private boolean c;
   protected Paint d;
-  protected int i;
+  protected int i = 0;
   protected int j;
   protected int k;
   protected int l;
@@ -104,6 +103,9 @@ public class SimpleMonthView
   public SimpleMonthView(Context paramContext, TypedArray paramTypedArray)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidTextFormatTime.setToNow();
     this.jdField_a_of_type_JavaLangString = "sans-serif";
     this.jdField_b_of_type_JavaLangString = "sans-serif";
@@ -120,13 +122,13 @@ public class SimpleMonthView
     this.o = paramTypedArray.getColor(5, this.E);
     this.p = paramTypedArray.getColor(6, this.F);
     this.n = paramTypedArray.getColor(7, this.G);
-    this.K = UIUtils.dip2px(paramContext, 16.0F);
-    this.L = UIUtils.dip2px(paramContext, 10.0F);
-    this.M = UIUtils.dip2px(paramContext, 50.0F);
-    this.N = UIUtils.dip2px(paramContext, 342.0F);
-    this.O = UIUtils.dip2px(paramContext, 12.5F);
-    this.P = UIUtils.dip2px(paramContext, 14.0F);
-    this.Q = UIUtils.dip2px(paramContext, 17.5F);
+    this.K = UIUtils.a(paramContext, 16.0F);
+    this.L = UIUtils.a(paramContext, 10.0F);
+    this.M = UIUtils.a(paramContext, 50.0F);
+    this.N = UIUtils.a(paramContext, 342.0F);
+    this.O = UIUtils.a(paramContext, 12.5F);
+    this.P = UIUtils.a(paramContext, 14.0F);
+    this.Q = UIUtils.a(paramContext, 17.5F);
     jdField_d_of_type_Int = paramTypedArray.getDimensionPixelSize(15, this.K);
     h = paramTypedArray.getDimensionPixelSize(17, this.K);
     f = paramTypedArray.getDimensionPixelSize(16, this.L);
@@ -158,7 +160,7 @@ public class SimpleMonthView
   {
     int i1;
     MessageRecord localMessageRecord;
-    if ((this.jdField_a_of_type_Bivm != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && ((this.jdField_b_of_type_JavaLangBoolean.booleanValue()) || (paramCalendarDay.month != this.jdField_a_of_type_AndroidTextFormatTime.month) || (paramCalendarDay.year != this.jdField_a_of_type_AndroidTextFormatTime.year) || (paramCalendarDay.day >= this.jdField_a_of_type_AndroidTextFormatTime.monthDay)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthView$OnDayClickListener != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && ((this.jdField_b_of_type_JavaLangBoolean.booleanValue()) || (paramCalendarDay.month != this.jdField_a_of_type_AndroidTextFormatTime.month) || (paramCalendarDay.year != this.jdField_a_of_type_AndroidTextFormatTime.year) || (paramCalendarDay.day >= this.jdField_a_of_type_AndroidTextFormatTime.monthDay)))
     {
       i1 = 0;
       if (i1 >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
@@ -171,7 +173,7 @@ public class SimpleMonthView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bivm.a(this, paramCalendarDay, localMessageRecord);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthView$OnDayClickListener.a(this, paramCalendarDay, localMessageRecord);
       return;
       label129:
       i1 += 1;
@@ -342,7 +344,7 @@ public class SimpleMonthView
         i1 = this.p;
         label504:
         this.jdField_d_of_type_AndroidGraphicsPaint.setColor(i1);
-        paramCanvas.drawText(anvx.a(2131713613), i9, jdField_b_of_type_Int + i2 + jdField_d_of_type_Int / 2, this.jdField_d_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawText(HardCodeUtil.a(2131714109), i9, jdField_b_of_type_Int + i2 + jdField_d_of_type_Int / 2, this.jdField_d_of_type_AndroidGraphicsPaint);
         label541:
         if (i7 == 0) {
           break label745;
@@ -427,18 +429,18 @@ public class SimpleMonthView
     requestLayout();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     b(paramCanvas);
     a(paramCanvas);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.B * this.T + g + this.L);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.C = paramInt1;
   }
@@ -543,9 +545,9 @@ public class SimpleMonthView
     this.T = a();
   }
   
-  public void setOnDayClickListener(bivm parambivm)
+  public void setOnDayClickListener(SimpleMonthView.OnDayClickListener paramOnDayClickListener)
   {
-    this.jdField_a_of_type_Bivm = parambivm;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerSimpleMonthView$OnDayClickListener = paramOnDayClickListener;
   }
   
   public void setStartAndEndDate(CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
@@ -556,7 +558,7 @@ public class SimpleMonthView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.datepicker.SimpleMonthView
  * JD-Core Version:    0.7.0.1
  */

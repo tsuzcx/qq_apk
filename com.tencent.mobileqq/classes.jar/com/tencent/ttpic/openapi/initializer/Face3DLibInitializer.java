@@ -21,8 +21,8 @@ public class Face3DLibInitializer
   
   static
   {
-    FACE_3D_SO_MODEL = new ModelInfo[] { new ModelInfo(true, "Face3DLib", "2DTo3D_Edge.txt"), new ModelInfo(true, "Face3DLib", "mean.bin"), new ModelInfo(true, "Face3DLib", "normalised_pca_basis_roi.bin"), new ModelInfo(true, "Face3DLib", "All_68_youtu2.txt"), new ModelInfo(true, "Face3DLib", "blendshape_46.bin"), new ModelInfo(true, "Face3DLib", "blendshape_46_nnls_68.bin"), new ModelInfo(true, "Face3DLib", "LeftFace2.txt"), new ModelInfo(true, "Face3DLib", "RightFace2.txt"), new ModelInfo(true, "Face3DLib", "LeftFace3.txt"), new ModelInfo(true, "Face3DLib", "RightFace3.txt"), new ModelInfo(true, "Face3DLib", "tongueReg.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "Face3DLib", "tongueReg.onnx.opt.onnx.rapidproto"), new ModelInfo(true, "Face3DLib", "eyebrow_base.bin"), new ModelInfo(true, "Face3DLib", "eyelash_base.bin"), new ModelInfo(true, "Face3DLib", "face_base.bin"), new ModelInfo(true, "Face3DLib", "face_exps.bin"), new ModelInfo(true, "Face3DLib", "mouth_base.bin"), new ModelInfo(true, "Face3DLib", "mouth_exps.bin"), new ModelInfo(true, "Face3DLib", "tongue_base.bin"), new ModelInfo(true, "Face3DLib", "tongue_exps.bin"), new ModelInfo(true, "Face3DLib", "tooth_down_base.bin"), new ModelInfo(true, "Face3DLib", "tooth_down_exps.bin"), new ModelInfo(true, "Face3DLib", "tooth_up_base.bin"), new ModelInfo(true, "Face3DLib", "tooth_up_exps.bin") };
-    FACE_3D_FILTER_MODEL = new ModelInfo[] { new ModelInfo(true, "Face3DLib", "face3d_indices_config.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv_config.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv_config_yt.dat"), new ModelInfo(true, "Face3DLib", "face3d_normal_v2.dat"), new ModelInfo(true, "Face3DLib", "face3d_indices.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv_v2.dat") };
+    FACE_3D_SO_MODEL = new ModelInfo[] { new ModelInfo(true, "Face3DLib", "2DTo3D_Edge.txt"), new ModelInfo(true, "Face3DLib", "mean.bin"), new ModelInfo(true, "Face3DLib", "normalised_pca_basis_roi.bin"), new ModelInfo(true, "Face3DLib", "All_68_youtu2.txt"), new ModelInfo(true, "Face3DLib", "blendshape_46.bin"), new ModelInfo(true, "Face3DLib", "blendshape_46_nnls_68.bin"), new ModelInfo(true, "Face3DLib", "LeftFace2.txt"), new ModelInfo(true, "Face3DLib", "RightFace2.txt") };
+    FACE_3D_FILTER_MODEL = new ModelInfo[] { new ModelInfo(true, "Face3DLib", "face3d_indices_config.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv_config.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv_config_yt.dat"), new ModelInfo(true, "Face3DLib", "face3d_normal_v2.dat") };
     face3DLibJNI = Face3DLibJNI.getInstance();
     face3DUV = new float[34480];
   }
@@ -139,7 +139,7 @@ public class Face3DLibInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.Face3DLibInitializer
  * JD-Core Version:    0.7.0.1
  */

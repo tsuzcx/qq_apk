@@ -1,18 +1,18 @@
 package com.tencent.device.msg.data;
 
 import android.text.TextUtils;
-import anvx;
-import apab;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class MessageForDevPtt
   extends MessageForPtt
 {
-  public int channeltype;
-  public long fileSessionId;
+  public int channeltype = 0;
+  public long fileSessionId = 0L;
   public String strFileKey2;
   
   public void doParse()
@@ -24,7 +24,7 @@ public class MessageForDevPtt
       return;
       try
       {
-        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)apab.a(this.msgData);
+        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)MessagePkgUtils.a(this.msgData);
         if (localMessageForDevPttSerial == null) {
           continue;
         }
@@ -76,18 +76,18 @@ public class MessageForDevPtt
       if (this.fileSize > 0L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691258);
+          return ((QQAppInterface)localObject).getApp().getString(2131691366);
         }
-        return anvx.a(2131706078);
+        return HardCodeUtil.a(2131706618);
       }
       if (this.fileSize == -1L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691258);
+          return ((QQAppInterface)localObject).getApp().getString(2131691366);
         }
-        return anvx.a(2131706049);
+        return HardCodeUtil.a(2131706589);
       }
-      return anvx.a(2131706050);
+      return HardCodeUtil.a(2131706590);
     }
     return null;
   }
@@ -123,7 +123,7 @@ public class MessageForDevPtt
     localMessageForDevPttSerial.strFileKey2 = this.strFileKey2;
     try
     {
-      this.msgData = apab.a(localMessageForDevPttSerial);
+      this.msgData = MessagePkgUtils.a(localMessageForDevPttSerial);
       return;
     }
     catch (Exception localException)
@@ -134,7 +134,7 @@ public class MessageForDevPtt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevPtt
  * JD-Core Version:    0.7.0.1
  */

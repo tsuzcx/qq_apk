@@ -5,9 +5,8 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
-import anvk;
-import aunw;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -35,20 +34,20 @@ public class ZanRankingIpcServer
   
   public static ZanRankingIpcServer a()
   {
-    return aunw.a();
+    return ZanRankingIpcServer.Holder.a();
   }
   
   private EIPCResult a(ArrayList<String> paramArrayList)
   {
     Bundle localBundle = new Bundle();
     ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    anvk localanvk = (anvk)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.FRIENDS_MANAGER);
+    FriendsManager localFriendsManager = (FriendsManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.FRIENDS_MANAGER);
     Iterator localIterator = paramArrayList.iterator();
     Object localObject;
     if (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localObject = localanvk.e(str);
+      localObject = localFriendsManager.e(str);
       if (localObject == null)
       {
         localObject = "";
@@ -81,6 +80,10 @@ public class ZanRankingIpcServer
   {
     super.onAccountChange();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (localIterator.hasNext()) {
+      ((ZanRankingIpcServer.GetCoverTask)localIterator.next()).a();
+    }
     this.jdField_a_of_type_JavaUtilSet.clear();
   }
   
@@ -108,7 +111,7 @@ public class ZanRankingIpcServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.zanranking.ZanRankingIpcServer
  * JD-Core Version:    0.7.0.1
  */

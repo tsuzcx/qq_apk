@@ -1,6 +1,5 @@
 package com.tencent.biz.ui;
 
-import aakx;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
@@ -55,7 +54,7 @@ class TouchWebView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.ui.TouchWebView.1
  * JD-Core Version:    0.7.0.1
  */

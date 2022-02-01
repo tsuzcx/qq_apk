@@ -8,7 +8,7 @@ public final class AuthResultInfo
   extends JceStruct
 {
   public String authmsg = "";
-  public int authret;
+  public int authret = 0;
   public String authurl = "";
   
   public AuthResultInfo() {}

@@ -2,8 +2,6 @@ package com.tencent.mobileqq.webview.webso;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bijf;
-import bijv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.http.HttpBaseUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -28,12 +26,12 @@ class HybridWebReporter$ReportRunnable
 {
   int jdField_a_of_type_Int = 0;
   String jdField_a_of_type_JavaLangString;
-  ArrayList<bijf> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<HybridWebReporter.HybridWebReportInfo> jdField_a_of_type_JavaUtilArrayList;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
   boolean jdField_b_of_type_Boolean = false;
   
-  public HybridWebReporter$ReportRunnable(ArrayList<bijf> paramArrayList)
+  public HybridWebReporter$ReportRunnable(ArrayList<HybridWebReporter.HybridWebReportInfo> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -60,7 +58,7 @@ class HybridWebReporter$ReportRunnable
       {
         if (((Iterator)localObject2).hasNext())
         {
-          localJSONArray.put(((bijf)((Iterator)localObject2).next()).a());
+          localJSONArray.put(((HybridWebReporter.HybridWebReportInfo)((Iterator)localObject2).next()).a());
           continue;
           if (localObject1 == null) {
             break;
@@ -88,7 +86,7 @@ class HybridWebReporter$ReportRunnable
   public void run()
   {
     Object localObject = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatCgiURL", "https://h5.qzone.qq.com/report/native");
-    String str2 = (String)localObject + "?uin=" + bijv.a();
+    String str2 = (String)localObject + "?uin=" + WebSoUtils.a();
     a();
     if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
       return;
@@ -179,7 +177,7 @@ class HybridWebReporter$ReportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HybridWebReporter.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

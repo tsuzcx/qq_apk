@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class qq_ad$QQAdGetRsp
   extends MessageMicro<QQAdGetRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 50, 56, 64, 74, 82, 90, 98 }, new String[] { "ret", "msg", "is_boss_qq", "del_aid", "red_point", "qgg_prompt", "qgg_msgs", "qgg_prompt_id" }, new Object[] { Integer.valueOf(0), "", Boolean.valueOf(false), Long.valueOf(0L), null, "", "", "" }, QQAdGetRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 50, 56, 64, 74, 82, 90, 98, 106 }, new String[] { "ret", "msg", "is_boss_qq", "del_aid", "red_point", "qgg_prompt", "qgg_msgs", "qgg_prompt_id", "tab_policy" }, new Object[] { Integer.valueOf(0), "", Boolean.valueOf(false), Long.valueOf(0L), null, "", "", "", "" }, QQAdGetRsp.class);
   public final PBRepeatField<Long> del_aid = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBBoolField is_boss_qq = PBField.initBool(false);
   public final PBStringField msg = PBField.initString("");
@@ -22,6 +22,7 @@ public final class qq_ad$QQAdGetRsp
   public final PBStringField qgg_prompt_id = PBField.initString("");
   public final PBRepeatMessageField<qq_ad.QQAdGetRsp.RedPointInfo> red_point = PBField.initRepeatMessage(qq_ad.QQAdGetRsp.RedPointInfo.class);
   public final PBInt32Field ret = PBField.initInt32(0);
+  public final PBStringField tab_policy = PBField.initString("");
 }
 
 

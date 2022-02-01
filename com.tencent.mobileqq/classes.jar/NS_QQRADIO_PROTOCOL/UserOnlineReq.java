@@ -8,9 +8,9 @@ public final class UserOnlineReq
   extends JceStruct
 {
   public String anchorId = "";
-  public int relativeTime;
+  public int relativeTime = 0;
   public String roomId = "";
-  public int type;
+  public int type = 0;
   public String uid = "";
   
   public UserOnlineReq() {}

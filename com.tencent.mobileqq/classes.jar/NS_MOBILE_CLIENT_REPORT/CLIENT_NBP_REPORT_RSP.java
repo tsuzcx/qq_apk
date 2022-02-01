@@ -10,8 +10,8 @@ public final class CLIENT_NBP_REPORT_RSP
   extends JceStruct
 {
   static Map<String, String> cache_extra_info = new HashMap();
-  public int code;
-  public Map<String, String> extra_info;
+  public int code = 0;
+  public Map<String, String> extra_info = null;
   
   static
   {

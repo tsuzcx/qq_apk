@@ -14,19 +14,19 @@ public final class SvcResponseGetMsgV2
   static ArrayList<SvcGetMsgInfo> cache_vMsgInfos;
   static byte[] cache_vSyncCookie;
   static ArrayList<UinPairMsg> cache_vUinPairMsg;
-  public byte cMoreMsg;
-  public byte cReplyCode;
-  public int cSyncFlag;
-  public int iAccostTotalUnread;
-  public long lUin;
-  public short shSumMsg;
+  public byte cMoreMsg = 0;
+  public byte cReplyCode = 0;
+  public int cSyncFlag = 0;
+  public int iAccostTotalUnread = 0;
+  public long lUin = 0L;
+  public short shSumMsg = 0;
   public String strResult = "";
-  public int uMsgTime;
-  public ArrayList<AccostMsg> vAccostMsg;
-  public byte[] vCookies;
-  public ArrayList<SvcGetMsgInfo> vMsgInfos;
-  public byte[] vSyncCookie;
-  public ArrayList<UinPairMsg> vUinPairMsg;
+  public int uMsgTime = 0;
+  public ArrayList<AccostMsg> vAccostMsg = null;
+  public byte[] vCookies = null;
+  public ArrayList<SvcGetMsgInfo> vMsgInfos = null;
+  public byte[] vSyncCookie = null;
+  public ArrayList<UinPairMsg> vUinPairMsg = null;
   
   public SvcResponseGetMsgV2() {}
   

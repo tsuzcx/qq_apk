@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import asvf;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,29 +39,29 @@ public class LabelLayout
     setOrientation(0);
   }
   
-  public int a(int paramInt1, List<asvf> paramList, boolean paramBoolean, int paramInt2)
+  public int a(int paramInt1, List<LabelLayout.Label> paramList, boolean paramBoolean, int paramInt2)
   {
     removeAllViews();
-    int j = ViewUtils.dpToPx(12.0F);
-    int k = ViewUtils.dpToPx(1.0F);
-    int m = ViewUtils.dpToPx(8.0F);
-    int n = ViewUtils.dpToPx(6.0F);
+    int j = ViewUtils.b(12.0F);
+    int k = ViewUtils.b(1.0F);
+    int m = ViewUtils.b(8.0F);
+    int n = ViewUtils.b(6.0F);
     Object localObject = new Paint();
-    ((Paint)localObject).setTextSize(ViewUtils.dpToPx(paramInt2));
+    ((Paint)localObject).setTextSize(ViewUtils.b(paramInt2));
     ArrayList localArrayList = new ArrayList(paramList.size());
     int i1 = paramList.size();
     int i = 0;
-    asvf localasvf;
+    LabelLayout.Label localLabel;
     if (i < i1)
     {
-      localasvf = (asvf)paramList.get(i);
-      if (TextUtils.isEmpty(localasvf.jdField_a_of_type_JavaLangCharSequence)) {
+      localLabel = (LabelLayout.Label)paramList.get(i);
+      if (TextUtils.isEmpty(localLabel.jdField_a_of_type_JavaLangCharSequence)) {
         break label366;
       }
-      int i2 = (int)(((Paint)localObject).measureText(localasvf.jdField_a_of_type_JavaLangCharSequence.toString()) + m * 2);
+      int i2 = (int)(((Paint)localObject).measureText(localLabel.jdField_a_of_type_JavaLangCharSequence.toString()) + m * 2);
       if (paramInt1 >= i2 + n)
       {
-        localArrayList.add(localasvf);
+        localArrayList.add(localLabel);
         paramInt1 = paramInt1 - i2 - n;
       }
     }
@@ -72,17 +71,17 @@ public class LabelLayout
       i += 1;
       break;
       if (i == 0) {
-        localArrayList.add(localasvf);
+        localArrayList.add(localLabel);
       }
       i = localArrayList.size();
       paramInt1 = 0;
       while (paramInt1 < i)
       {
-        localObject = (asvf)localArrayList.get(paramInt1);
+        localObject = (LabelLayout.Label)localArrayList.get(paramInt1);
         paramList = new LabelTextView(getContext());
-        paramList.setParam(((asvf)localObject).jdField_a_of_type_Int, ((asvf)localObject).b, j);
+        paramList.setParam(((LabelLayout.Label)localObject).jdField_a_of_type_Int, ((LabelLayout.Label)localObject).b, j);
         paramList.setTextSize(paramInt2);
-        paramList.setText(((asvf)localObject).jdField_a_of_type_JavaLangCharSequence);
+        paramList.setText(((LabelLayout.Label)localObject).jdField_a_of_type_JavaLangCharSequence);
         paramList.setPadding(m, k, m, k);
         localObject = new LinearLayout.LayoutParams(-2, -2);
         if (paramInt1 != 0) {
@@ -102,7 +101,7 @@ public class LabelLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.LabelLayout
  * JD-Core Version:    0.7.0.1
  */

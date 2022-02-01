@@ -8,7 +8,7 @@ public final class AllowDomainInfo
   extends JceStruct
 {
   public String allow_domain_regex = "";
-  public int open_type;
+  public int open_type = 0;
   
   public AllowDomainInfo() {}
   

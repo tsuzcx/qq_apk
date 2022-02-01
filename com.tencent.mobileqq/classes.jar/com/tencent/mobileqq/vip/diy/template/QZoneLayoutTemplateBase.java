@@ -31,7 +31,7 @@ public class QZoneLayoutTemplateBase
   public QZoneLayoutTemplateBase(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.c = UIUtils.dip2px(paramContext, 5.0F);
+    this.c = UIUtils.a(paramContext, 5.0F);
   }
   
   public void addView(View paramView)
@@ -46,7 +46,7 @@ public class QZoneLayoutTemplateBase
     paramView.setBackgroundColor(this.e);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt1 = getChildCount();
     if (paramInt1 > 0) {
@@ -63,7 +63,7 @@ public class QZoneLayoutTemplateBase
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_Int = View.MeasureSpec.getSize(paramInt1);
     this.b = ((this.jdField_a_of_type_Int - this.c * 3) / 4);
@@ -100,7 +100,7 @@ public class QZoneLayoutTemplateBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.QZoneLayoutTemplateBase
  * JD-Core Version:    0.7.0.1
  */

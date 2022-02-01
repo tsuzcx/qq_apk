@@ -2,8 +2,8 @@ package com.tencent.mobileqq.business.sougou;
 
 public class WordMatchManager$HotWordItem
 {
-  public String hotWord = "";
-  public int offset;
+  String hotWord = "";
+  int offset;
 }
 
 

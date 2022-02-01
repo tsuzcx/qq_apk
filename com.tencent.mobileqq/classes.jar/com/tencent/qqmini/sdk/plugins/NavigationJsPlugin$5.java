@@ -12,10 +12,16 @@ class NavigationJsPlugin$5
   {
     try
     {
-      if (!this.val$activity.moveTaskToBack(false)) {
+      if (NavigationJsPlugin.access$600(this.this$0))
+      {
         this.val$activity.finish();
+        return;
       }
-      return;
+      if (!this.val$activity.moveTaskToBack(false))
+      {
+        this.val$activity.finish();
+        return;
+      }
     }
     catch (Throwable localThrowable)
     {
@@ -25,7 +31,7 @@ class NavigationJsPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.NavigationJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

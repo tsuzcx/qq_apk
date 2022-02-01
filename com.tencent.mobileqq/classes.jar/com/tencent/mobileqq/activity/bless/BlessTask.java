@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
@@ -15,7 +15,7 @@ import org.json.JSONTokener;
 public class BlessTask
   extends Entity
 {
-  public int cameraMode;
+  public int cameraMode = 0;
   public String defaultShareTitle;
   public String defaultVoice;
   public int defaultVoiceLength;
@@ -25,18 +25,18 @@ public class BlessTask
   public String entranceHint;
   public String ex1 = "";
   public String ex2 = "";
-  public int ex3;
-  public int ex4;
+  public int ex3 = 0;
+  public int ex4 = 0;
   public int festival_id;
   public String filterCategory = "";
   public String filterId = "";
   @unique
   public int id = 1000;
-  public boolean isDeleted;
+  public boolean isDeleted = false;
   public boolean isNew = true;
   public String mainBanner;
   public String mainCenter;
-  public String pendantCategory = anvx.a(2131700663);
+  public String pendantCategory = HardCodeUtil.a(2131701241);
   public String pendantId = "";
   public int ptvAnimationCost;
   public int ptvAnimationCount;
@@ -63,20 +63,20 @@ public class BlessTask
   public String succeededBanner;
   public int supportFilter = 1;
   public int supportPendant = 1;
-  public int supportPhoto;
+  public int supportPhoto = 0;
   public int supportVideo = 1;
   public int task_id;
   public String typeBanner;
   public int uinTotalLimit;
-  public int unfoldFilter;
+  public int unfoldFilter = 0;
   public int unfoldPendant = 1;
   public int unread;
-  public boolean videoPlayed;
+  public boolean videoPlayed = false;
   public String webBlessUrl;
   
   public static boolean parse(String paramString, BlessTask paramBlessTask, ArrayList<BlessPtvModule> paramArrayList, ArrayList<BlessWording> paramArrayList1)
   {
-    label585:
+    label589:
     for (;;)
     {
       try
@@ -129,7 +129,7 @@ public class BlessTask
           if (paramString.has("mb_ptvAnimation_open"))
           {
             if (paramString.getInt("mb_ptvAnimation_open") != 1) {
-              break label585;
+              break label589;
             }
             bool = true;
             paramBlessTask.ptvAnimationSwtich = bool;
@@ -213,7 +213,7 @@ public class BlessTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessTask
  * JD-Core Version:    0.7.0.1
  */

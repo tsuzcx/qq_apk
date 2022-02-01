@@ -1,28 +1,23 @@
 package com.tencent.mobileqq.ark;
 
-import apwz;
-import apxi;
-import apxk;
-import apxm;
-import apxp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import java.lang.ref.WeakReference;
 
-public class ArkAiDictUpdateMgr$8
+class ArkAiDictUpdateMgr$8
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$8(apwz paramapwz, String paramString, apxm paramapxm, apxk paramapxk) {}
+  ArkAiDictUpdateMgr$8(ArkAiDictUpdateMgr paramArkAiDictUpdateMgr, String paramString, ArkAiDictUpdateMgr.PreDownloadState paramPreDownloadState, ArkAiDictUpdateMgr.IDownloadDictFileCallback paramIDownloadDictFileCallback) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)apwz.a(this.this$0).get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)ArkAiDictUpdateMgr.a(this.this$0).get();
     if (localQQAppInterface == null)
     {
       ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, qq app interface is null, return from task");
       return;
     }
-    ((ArkAppCenter)localQQAppInterface.getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER)).a().a(this.jdField_a_of_type_JavaLangString, 0L, new apxi(this));
+    ((ArkAppCenter)localQQAppInterface.getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER)).a().a(this.jdField_a_of_type_JavaLangString, 0L, new ArkAiDictUpdateMgr.8.1(this));
   }
 }
 

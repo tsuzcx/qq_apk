@@ -2,12 +2,12 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 
 import android.content.Context;
 import android.widget.FrameLayout;
-import bisl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.appbrand.a;
 import com.tencent.mobileqq.microapp.appbrand.b.h;
 import com.tencent.mobileqq.microapp.widget.TabBarView.b;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -48,11 +48,11 @@ public final class AppBrandPageContainer
   private void executeDownSubPack(String paramString1, String paramString2)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    bisl localbisl = new bisl(getContext());
-    localbisl.a("正在加载模块...");
-    localbisl.setCancelable(false);
-    localbisl.show();
-    this.appBrandRuntime.c.a(paramString1, new AppBrandPageContainer.1(this, localWeakReference, paramString2, paramString1, localbisl));
+    QQProgressDialog localQQProgressDialog = new QQProgressDialog(getContext());
+    localQQProgressDialog.a("正在加载模块...");
+    localQQProgressDialog.setCancelable(false);
+    localQQProgressDialog.show();
+    this.appBrandRuntime.c.a(paramString1, new AppBrandPageContainer.1(this, localWeakReference, paramString2, paramString1, localQQProgressDialog));
   }
   
   private boolean isUrlResReady(String paramString)

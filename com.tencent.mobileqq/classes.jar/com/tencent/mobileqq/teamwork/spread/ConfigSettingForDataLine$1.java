@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import arnh;
-import beeb;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocDataLineTipsConfigBean;
 
-public class ConfigSettingForDataLine$1
+class ConfigSettingForDataLine$1
   implements Runnable
 {
-  public ConfigSettingForDataLine$1(beeb parambeeb, arnh paramarnh) {}
+  ConfigSettingForDataLine$1(ConfigSettingForDataLine paramConfigSettingForDataLine, TencentDocDataLineTipsConfigBean paramTencentDocDataLineTipsConfigBean) {}
   
   public void run()
   {
-    beeb.a(this.this$0, this.a);
+    ConfigSettingForDataLine.a(this.this$0, this.a);
   }
 }
 

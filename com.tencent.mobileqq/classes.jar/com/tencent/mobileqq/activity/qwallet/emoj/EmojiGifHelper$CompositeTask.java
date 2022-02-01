@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import albw;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.shortvideo.mediadevice.GifProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -10,7 +10,7 @@ public class EmojiGifHelper$CompositeTask
   implements Runnable
 {
   public EmojiGifHelper.EmojiInfo emojiInfo;
-  public boolean isCancel;
+  public boolean isCancel = false;
   public EmojiGifHelper.OnConvertListener l;
   public EmojiGifHelper.ConvertParam publishParam;
   
@@ -22,7 +22,7 @@ public class EmojiGifHelper$CompositeTask
   
   private String getGifPath()
   {
-    String str = albw.a(null) + "Camera/";
+    String str = QWalletTools.a(null) + "Camera/";
     File localFile = new File(str + "gif");
     if ((localFile.exists()) && (!localFile.isDirectory())) {
       localFile.delete();
@@ -122,7 +122,7 @@ public class EmojiGifHelper$CompositeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.CompositeTask
  * JD-Core Version:    0.7.0.1
  */

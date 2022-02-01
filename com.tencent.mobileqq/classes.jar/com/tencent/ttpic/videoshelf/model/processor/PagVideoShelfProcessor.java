@@ -9,7 +9,7 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.SurfaceTextureFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
+import com.tencent.ttpic.openapi.offlineset.AEOfflineConfig;
 import com.tencent.ttpic.videoshelf.libpag.PagNotSupportSystemException;
 import com.tencent.ttpic.videoshelf.libpag.PagUtil;
 import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
@@ -249,7 +249,7 @@ public class PagVideoShelfProcessor
         return 2;
       }
       this.mPagRenderer = new PAGRenderer();
-      if (OfflineConfig.isNeedSoftDecode()) {
+      if (AEOfflineConfig.isNeedSoftDecode()) {
         PagUtil.useSoftDecode();
       }
       return 0;
@@ -359,7 +359,7 @@ public class PagVideoShelfProcessor
             return;
           } while ((paramObject == null) || (!(paramObject instanceof PAGRenderer)));
           this.mPagRenderer = ((PAGRenderer)paramObject);
-          if (OfflineConfig.isNeedSoftDecode()) {
+          if (AEOfflineConfig.isNeedSoftDecode()) {
             PagUtil.useSoftDecode();
           }
           if (this.mPagSurface != null) {
@@ -408,7 +408,7 @@ public class PagVideoShelfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.processor.PagVideoShelfProcessor
  * JD-Core Version:    0.7.0.1
  */

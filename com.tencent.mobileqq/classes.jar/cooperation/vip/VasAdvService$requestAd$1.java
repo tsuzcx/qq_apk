@@ -1,9 +1,5 @@
 package cooperation.vip;
 
-import bmkd;
-import bmki;
-import bmkk;
-import bmkl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.vac_adv_get.VacAdvReq;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -11,7 +7,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
-public final class VasAdvService$requestAd$1
+final class VasAdvService$requestAd$1
   implements Runnable
 {
   VasAdvService$requestAd$1(VasAdvService paramVasAdvService) {}
@@ -36,11 +32,11 @@ public final class VasAdvService$requestAd$1
     try
     {
       byte[] arrayOfByte = this.this$0.a().toByteArray();
-      bmki localbmki = new bmki(this);
-      bmkk localbmkk = bmkk.a.a();
+      VasAdvService.requestAd.1.callback.1 local1 = new VasAdvService.requestAd.1.callback.1(this);
+      VasAdvSupport localVasAdvSupport = VasAdvSupport.a.a();
       String str = VasAdvService.a(this.this$0);
       Intrinsics.checkExpressionValueIsNotNull(arrayOfByte, "reqBytes");
-      localbmkk.a("MobileAdv.AdvGet", str, arrayOfByte, (bmkd)localbmki);
+      localVasAdvSupport.a("MobileAdv.AdvGet", str, arrayOfByte, (VasAdvCallback)local1);
       return;
     }
     catch (Throwable localThrowable)
@@ -53,7 +49,7 @@ public final class VasAdvService$requestAd$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.VasAdvService.requestAd.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
-import bhgy;
 import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -13,7 +13,7 @@ final class BaseTransProcessorStaticVariable$1
   
   public void onResultOverflow(HashMap<String, String> paramHashMap)
   {
-    this.reportor.collectPerformance(bhgy.a(), "actWeaknetProbe", true, 0L, paramHashMap.size(), paramHashMap, "");
+    this.reportor.collectPerformance(QQUtils.a(), "actWeaknetProbe", true, 0L, paramHashMap.size(), paramHashMap, "");
   }
 }
 

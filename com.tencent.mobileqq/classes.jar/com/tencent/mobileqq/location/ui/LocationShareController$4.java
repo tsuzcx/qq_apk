@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.location.ui;
 
-import awnj;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.location.util.LocationProtoUtil;
 
-public final class LocationShareController$4
+final class LocationShareController$4
   implements Runnable
 {
-  public LocationShareController$4(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
+  LocationShareController$4(AppInterface paramAppInterface, int paramInt, String paramString) {}
   
   public void run()
   {
-    awnj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
+    LocationProtoUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

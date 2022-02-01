@@ -1,23 +1,5 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import Override;
-import aisn;
-import aiso;
-import aisp;
-import aisq;
-import aisr;
-import aiss;
-import aist;
-import aisu;
-import aisv;
-import aisw;
-import aisx;
-import aisy;
-import aisz;
-import aita;
-import aitk;
-import aitl;
-import aiuk;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -45,42 +27,44 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import anvx;
-import bhdj;
-import blcj;
 import com.tencent.biz.lebasearch.SearchProtocol;
+import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
 import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer.OnTipClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer.TipsInfo;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
+import com.tencent.mobileqq.qroute.route.URIRequest;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HeaderViewListAdapter;
 import com.tencent.widget.XListView;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nyp;
-import olh;
-import pvj;
-import pvm;
-import pvq;
-import tbk;
-import usu;
 
 public class ClassificationSearchActivity
   extends SearchBaseActivity
-  implements aitl
+  implements ReadInJoySearchHistoryAdapter.OnItemClickObserver
 {
   public static int a;
-  private static aiuk jdField_a_of_type_Aiuk;
+  private static SearchResult jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult;
   public static String a;
   public static int b;
   static String jdField_b_of_type_JavaLangString = "";
@@ -89,27 +73,27 @@ public class ClassificationSearchActivity
   public static int d;
   public static int e;
   protected Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aisx(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aisq(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ClassificationSearchActivity.6(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new ClassificationSearchActivity.12(this);
   View jdField_a_of_type_AndroidViewView;
-  private TextView.OnEditorActionListener jdField_a_of_type_AndroidWidgetTextView$OnEditorActionListener = new aisy(this);
+  private TextView.OnEditorActionListener jdField_a_of_type_AndroidWidgetTextView$OnEditorActionListener = new ClassificationSearchActivity.7(this);
+  SearchProtocol.SearchObserver jdField_a_of_type_ComTencentBizLebasearchSearchProtocol$SearchObserver = new ClassificationSearchActivity.8(this);
+  protected ReadInJoyObserver a;
+  ReadInJoySearchTipsContainer.OnTipClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer$OnTipClickListener = new ClassificationSearchActivity.10(this);
   ReadInJoySearchTipsContainer jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   List<ReadInJoySearchHistoryEntity> jdField_a_of_type_JavaUtilList = new ArrayList();
-  nyp jdField_a_of_type_Nyp = new aisz(this);
-  protected pvq a;
-  tbk jdField_a_of_type_Tbk = new aiso(this);
   boolean jdField_a_of_type_Boolean = false;
   View jdField_b_of_type_AndroidViewView;
+  ReadInJoySearchTipsContainer.OnTipClickListener jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer$OnTipClickListener = new ClassificationSearchActivity.11(this);
   ReadInJoySearchTipsContainer jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer;
-  public List<SearchProtocol.WordItem> b;
-  tbk jdField_b_of_type_Tbk = new aisp(this);
+  List<SearchProtocol.WordItem> jdField_b_of_type_JavaUtilList = new ArrayList();
   View jdField_c_of_type_AndroidViewView;
-  public List<ChannelInfo> c;
+  List<ChannelInfo> jdField_c_of_type_JavaUtilList = new ArrayList();
   View d;
   View e;
-  public int f;
-  View f;
+  int jdField_f_of_type_Int = 0;
+  View jdField_f_of_type_AndroidViewView;
   
   static
   {
@@ -123,11 +107,8 @@ public class ClassificationSearchActivity
   
   public ClassificationSearchActivity()
   {
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Pvq = new aita(this);
-    this.jdField_a_of_type_AndroidOsHandler = new aiss(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new ClassificationSearchActivity.9(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ClassificationSearchActivity.16(this);
   }
   
   private String a(int paramInt)
@@ -137,55 +118,53 @@ public class ClassificationSearchActivity
     default: 
       return "";
     case 80000000: 
-      return anvx.a(2131701425);
+      return HardCodeUtil.a(2131701980);
     case 80000001: 
-      return anvx.a(2131701431);
+      return HardCodeUtil.a(2131701986);
     case 80000002: 
       if (UniteSearchActivity.jdField_d_of_type_Int == 12) {
-        return anvx.a(2131701428) + usu.a(this.app, getApplicationContext());
+        return HardCodeUtil.a(2131701983) + ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(this.app, getApplicationContext());
       }
-      return anvx.a(2131701435);
+      return HardCodeUtil.a(2131701990);
     }
-    return anvx.a(2131701427);
+    return HardCodeUtil.a(2131701982);
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, aiuk paramaiuk)
+  public static void a(Activity paramActivity, Intent paramIntent, SearchResult paramSearchResult)
   {
-    jdField_a_of_type_Aiuk = paramaiuk;
+    jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult = paramSearchResult;
     jdField_c_of_type_JavaLangString = paramIntent.getStringExtra("last_hint");
     paramActivity.startActivityForResult(paramIntent, 1);
   }
   
   private void b(String paramString)
   {
-    paramString = paramString.trim();
+    localObject = paramString.trim();
     try
     {
-      localObject = URLEncoder.encode(paramString, "utf-8");
-      paramString = (String)localObject;
+      paramString = URLEncoder.encode((String)localObject, "utf-8");
+      localObject = paramString;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    catch (UnsupportedEncodingException paramString)
     {
       for (;;)
       {
-        Object localObject;
+        String str;
         continue;
-        paramString = localUnsupportedEncodingException;
+        paramString = "https://so.mp.qq.com/search/index?key=" + (String)localObject + "&_wv=3&_bid=2321";
       }
     }
-    localObject = usu.jdField_c_of_type_JavaLangString;
-    if (localObject != null)
+    str = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getReadinjoySearchUrl();
+    if (str != null)
     {
-      if (!((String)localObject).contains("keyword")) {}
-    }
-    else {
-      for (paramString = ((String)localObject).replace("keyword", paramString);; paramString = "https://so.mp.qq.com/search/index?key=" + paramString + "&_wv=3&_bid=2321")
-      {
-        localObject = new Intent(this, PublicAccountBrowser.class);
-        ((Intent)localObject).putExtra("url", paramString);
-        startActivity((Intent)localObject);
-        return;
+      paramString = str;
+      if (str.contains("keyword")) {
+        paramString = str.replace("keyword", (CharSequence)localObject);
       }
+      localObject = new ActivityURIRequest(this, "/pubaccount/browser");
+      ((ActivityURIRequest)localObject).extra().putString("url", paramString);
+      QRoute.startUri((URIRequest)localObject, null);
+      return;
     }
   }
   
@@ -195,7 +174,7 @@ public class ClassificationSearchActivity
     do
     {
       return;
-      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer.setOnTipsClickListener(this.jdField_a_of_type_Tbk);
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer.setOnTipsClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer$OnTipClickListener);
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
@@ -218,7 +197,7 @@ public class ClassificationSearchActivity
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer.setOnTipsClickListener(this.jdField_b_of_type_Tbk);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer.setOnTipsClickListener(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer$OnTipClickListener);
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
@@ -231,21 +210,21 @@ public class ClassificationSearchActivity
   
   private void e()
   {
-    this.jdField_d_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131560021, null);
+    this.jdField_d_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131560098, null);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
     this.jdField_d_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_d_of_type_AndroidViewView.findViewById(2131377198));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_d_of_type_AndroidViewView.findViewById(2131377618));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131559651, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131559727, null);
     this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer = ((ReadInJoySearchTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131378963));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer = ((ReadInJoySearchTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131379394));
     if ((this.jdField_f_of_type_Int == jdField_a_of_type_Int) || (this.jdField_f_of_type_Int == jdField_d_of_type_Int)) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer.setMaxLines(-1);
     }
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377200);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378980);
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer = ((ReadInJoySearchTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131364465));
-    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364464);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377620);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379411);
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer = ((ReadInJoySearchTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131364575));
+    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364574);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.jdField_a_of_type_AndroidViewView);
   }
   
@@ -291,20 +270,20 @@ public class ClassificationSearchActivity
   
   protected SearchBaseFragment a()
   {
-    if ((jdField_a_of_type_Aiuk == null) && ((this.jdField_f_of_type_Int == jdField_a_of_type_Int) || (this.jdField_f_of_type_Int == jdField_d_of_type_Int) || (this.jdField_f_of_type_Int == jdField_e_of_type_Int) || (this.jdField_f_of_type_Int == jdField_b_of_type_Int) || (this.jdField_f_of_type_Int == jdField_c_of_type_Int))) {
+    if ((jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult == null) && ((this.jdField_f_of_type_Int == jdField_a_of_type_Int) || (this.jdField_f_of_type_Int == jdField_d_of_type_Int) || (this.jdField_f_of_type_Int == jdField_e_of_type_Int) || (this.jdField_f_of_type_Int == jdField_b_of_type_Int) || (this.jdField_f_of_type_Int == jdField_c_of_type_Int))) {
       return ClassificationSearchFragment.a(this.jdField_f_of_type_Int);
     }
-    return ClassificationSearchFragment.a(jdField_a_of_type_Aiuk);
+    return ClassificationSearchFragment.a(jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult);
   }
   
   public void a()
   {
-    QQCustomDialog localQQCustomDialog = bhdj.a(this, 230);
-    Object localObject = new aisr(this);
-    localQQCustomDialog.setPositiveButton(2131695760, (DialogInterface.OnClickListener)localObject);
-    localQQCustomDialog.setNegativeButton(2131695759, (DialogInterface.OnClickListener)localObject);
-    localObject = getString(2131695761);
-    localQQCustomDialog.setTitle(2131696992);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
+    Object localObject = new ClassificationSearchActivity.15(this);
+    localQQCustomDialog.setPositiveButton(2131696007, (DialogInterface.OnClickListener)localObject);
+    localQQCustomDialog.setNegativeButton(2131696006, (DialogInterface.OnClickListener)localObject);
+    localObject = getString(2131696008);
+    localQQCustomDialog.setTitle(2131697246);
     TextView localTextView = new TextView(this);
     localTextView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     localTextView.setTextSize(14.0F);
@@ -324,7 +303,7 @@ public class ClassificationSearchActivity
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
       }
       b(paramReadInJoySearchHistoryEntity.keyWord);
-      olh.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006819", "0X8006819", 0, 0, paramReadInJoySearchHistoryEntity.keyWord, "", "", "");
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006819", "0X8006819", 0, 0, paramReadInJoySearchHistoryEntity.keyWord, "", "", "");
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramReadInJoySearchHistoryEntity.keyWord, false);
@@ -335,7 +314,7 @@ public class ClassificationSearchActivity
     ThreadManager.post(new ClassificationSearchActivity.13(this, paramString), 10, null, true);
   }
   
-  public void a(List<ReadInJoySearchHistoryEntity> paramList, boolean paramBoolean)
+  protected void a(List<ReadInJoySearchHistoryEntity> paramList, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     if (paramBoolean) {
@@ -343,21 +322,21 @@ public class ClassificationSearchActivity
     }
     if (this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == null)
     {
-      paramList = new aitk(this, paramList, this);
+      paramList = new ReadInJoySearchHistoryAdapter(this, paramList, this);
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(paramList);
     }
-    aitk localaitk;
+    ReadInJoySearchHistoryAdapter localReadInJoySearchHistoryAdapter;
     do
     {
       return;
-      if (!(this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() instanceof blcj)) {
+      if (!(this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() instanceof HeaderViewListAdapter)) {
         break;
       }
-      localaitk = (aitk)((blcj)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).getWrappedAdapter();
-    } while (localaitk == null);
-    localaitk.a(paramList);
+      localReadInJoySearchHistoryAdapter = (ReadInJoySearchHistoryAdapter)((HeaderViewListAdapter)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).getWrappedAdapter();
+    } while (localReadInJoySearchHistoryAdapter == null);
+    localReadInJoySearchHistoryAdapter.a(paramList);
     return;
-    ((aitk)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
+    ((ReadInJoySearchHistoryAdapter)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
   }
   
   public void a(boolean paramBoolean)
@@ -398,23 +377,23 @@ public class ClassificationSearchActivity
   protected void c()
   {
     super.c();
-    if (jdField_a_of_type_Aiuk != null)
+    if (jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult != null)
     {
-      String str = a(jdField_a_of_type_Aiuk.jdField_a_of_type_Int);
+      String str = a(jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidWidgetEditText.setHint(str);
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aist(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ClassificationSearchActivity.2(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(this.jdField_a_of_type_AndroidWidgetTextView$OnEditorActionListener);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aisu(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ClassificationSearchActivity.3(this));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(anvx.a(2131701432) + this.jdField_d_of_type_JavaLangString);
+    if (AppSetting.d) {
+      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(HardCodeUtil.a(2131701987) + this.jdField_d_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new aisv(this));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new ClassificationSearchActivity.4(this));
     if ((this.jdField_f_of_type_Int == jdField_a_of_type_Int) || (this.jdField_f_of_type_Int == jdField_d_of_type_Int))
     {
       e();
-      Looper.myQueue().addIdleHandler(new aisw(this));
+      Looper.myQueue().addIdleHandler(new ClassificationSearchActivity.5(this));
     }
   }
   
@@ -445,23 +424,23 @@ public class ClassificationSearchActivity
     if (this.jdField_f_of_type_Int == jdField_a_of_type_Int)
     {
       d();
-      SearchProtocol.a(this.app, this, this.jdField_a_of_type_Nyp);
-      pvm.a().a(this.jdField_a_of_type_Pvq);
-      if (pvj.a().b() == 0) {
-        pvj.a().a(1, 1);
+      SearchProtocol.a(this.app, this, this.jdField_a_of_type_ComTencentBizLebasearchSearchProtocol$SearchObserver);
+      ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
+      if (ReadInJoyLogicEngine.a().b() == 0) {
+        ReadInJoyLogicEngine.a().a(1, 1);
       }
     }
     while (this.jdField_f_of_type_Int != jdField_d_of_type_Int) {
       return bool;
     }
     a(null, true);
-    SearchProtocol.a(this.app, this, this.jdField_a_of_type_Nyp);
+    SearchProtocol.a(this.app, this, this.jdField_a_of_type_ComTencentBizLebasearchSearchProtocol$SearchObserver);
     return bool;
   }
   
   public void doOnDestroy()
   {
-    pvm.a().b(this.jdField_a_of_type_Pvq);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
     super.doOnDestroy();
   }
   
@@ -473,7 +452,7 @@ public class ClassificationSearchActivity
     }
     if (((ClassificationSearchFragment)this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment).a())
     {
-      Looper.myQueue().addIdleHandler(new aisn(this));
+      Looper.myQueue().addIdleHandler(new ClassificationSearchActivity.1(this));
       ((ClassificationSearchFragment)this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment).a(false);
     }
     if (this.jdField_f_of_type_Int == jdField_a_of_type_Int)
@@ -489,12 +468,12 @@ public class ClassificationSearchActivity
       f();
       if (this.jdField_f_of_type_Int == jdField_d_of_type_Int)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anvx.a(2131701430));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131701985));
         f();
       }
       if (this.jdField_f_of_type_Int == jdField_b_of_type_Int)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anvx.a(2131701421));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131701976));
         f();
         if ((!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_Boolean)) {
           this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(jdField_b_of_type_JavaLangString, false);
@@ -506,14 +485,14 @@ public class ClassificationSearchActivity
         if (this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().equals("")) {
           this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anvx.a(2131701422));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131701977));
       }
       if (this.jdField_f_of_type_Int == jdField_e_of_type_Int)
       {
         if (this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().equals("")) {
           this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anvx.a(2131701426));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131701981));
       }
       return;
       label313:
@@ -524,7 +503,7 @@ public class ClassificationSearchActivity
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anvx.a(2131701439));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131701994));
       }
     }
   }
@@ -547,7 +526,7 @@ public class ClassificationSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity
  * JD-Core Version:    0.7.0.1
  */

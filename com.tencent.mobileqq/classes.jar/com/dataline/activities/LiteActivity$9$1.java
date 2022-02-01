@@ -1,11 +1,9 @@
 package com.dataline.activities;
 
-import ce;
-
-public class LiteActivity$9$1
+class LiteActivity$9$1
   implements Runnable
 {
-  public LiteActivity$9$1(ce paramce) {}
+  LiteActivity$9$1(LiteActivity.9 param9) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class LiteActivity$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

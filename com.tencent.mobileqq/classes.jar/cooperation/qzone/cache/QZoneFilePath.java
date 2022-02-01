@@ -1,9 +1,9 @@
 package cooperation.qzone.cache;
 
 import android.os.Environment;
-import bhxq;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.mobileqq.vfs.VFSRegisterProxy;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 
@@ -24,7 +24,7 @@ public class QZoneFilePath
   public static final String DCIM_CAMERA_PATH;
   public static final String JCE_DATA_DIR;
   public static final String QQ_EMOTICON_DIR = VFSAssistantUtils.getSDKPrivatePath("Tencent/mobileqq/.emotionsm/");
-  public static final String ROOT_PATH = bhxq.a().a();
+  public static final String ROOT_PATH = VFSRegisterProxy.a().a();
   public static final String ROOT_QZONE_PATH = VFSAssistantUtils.getSDKPrivatePath("qzone");
   public static final String SERVER_DIR;
   public static final String TESTSERVER_PATH;
@@ -60,7 +60,7 @@ public class QZoneFilePath
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.cache.QZoneFilePath
  * JD-Core Version:    0.7.0.1
  */

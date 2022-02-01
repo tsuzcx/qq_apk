@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.text.TextUtils;
-import bjko;
+import com.tencent.open.base.LogUtility;
 import com.tencent.smtt.sdk.WebView;
 
 class DownloadInterface$3
@@ -20,13 +20,13 @@ class DownloadInterface$3
     }
     catch (Exception localException)
     {
-      bjko.a("DownloadInterface", "webview loadUrl>>> ", localException);
+      LogUtility.a("DownloadInterface", "webview loadUrl>>> ", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appcommon.js.DownloadInterface.3
  * JD-Core Version:    0.7.0.1
  */

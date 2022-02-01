@@ -12,9 +12,12 @@ public class VideoReportPlayerUtils
   private static int bufferEndEventId;
   private static int bufferStartEventId;
   private static Method getCurrentPosition;
+  private static Method getDuration;
   private static Method getKey = null;
   private static Method getParamLong;
   private static Method getParamType;
+  private static int loopEndId;
+  private static int loopStartId;
   private static int paramsTypeLongId;
   private static Field paramsValue = null;
   private static Field scenesId = null;
@@ -23,17 +26,21 @@ public class VideoReportPlayerUtils
   private static Class<?> tpOptionalParamClass;
   private static Class<?> tpOptionalParamLongClass;
   private static Class<?> tpPlayerClass;
+  private static Field vid = null;
   
   static
   {
     bufferStartEventId = 0;
     bufferEndEventId = 0;
     paramsTypeLongId = 0;
+    loopStartId = 0;
+    loopEndId = 0;
     tpPlayerClass = null;
     tpOptionalParamClass = null;
     tpOptionalParamLongClass = null;
     tpDefaultReportInfoClass = null;
     getCurrentPosition = null;
+    getDuration = null;
     getParamType = null;
     getParamLong = null;
   }
@@ -48,29 +55,43 @@ public class VideoReportPlayerUtils
       if (startParamsId > 0) {
         return startParamsId;
       }
-      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPOptionalID", "OPTION_ID_BEFORE_LONG_START_PLAYING_TIME_MS");
+      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPOptionalID", new String[] { "OPTION_ID_BEFORE_LONG_START_PLAYING_TIME_MS" });
       startParamsId = paramInt;
       return paramInt;
     case 1: 
       if (bufferStartEventId > 0) {
         return bufferStartEventId;
       }
-      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", "TP_PLAYER_INFO_LONG0_BUFFERING_START");
+      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_BUFFERING_START" });
       bufferStartEventId = paramInt;
       return paramInt;
     case 2: 
       if (bufferEndEventId > 0) {
         return bufferEndEventId;
       }
-      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", "TP_PLAYER_INFO_LONG0_BUFFERING_END");
+      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_BUFFERING_END" });
       bufferEndEventId = paramInt;
       return paramInt;
+    case 4: 
+      if (paramsTypeLongId > 0) {
+        return paramsTypeLongId;
+      }
+      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPOptionalParam", new String[] { "TP_OPTIONAL_RARAM_TYPE_LONG", "TP_OPTIONAL_PARAM_TYPE_LONG" });
+      paramsTypeLongId = paramInt;
+      return paramInt;
+    case 5: 
+      if (loopStartId > 0) {
+        return loopStartId;
+      }
+      paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_CURRENT_LOOP_START" });
+      loopStartId = paramInt;
+      return paramInt;
     }
-    if (paramsTypeLongId > 0) {
-      return paramsTypeLongId;
+    if (loopEndId > 0) {
+      return loopEndId;
     }
-    paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPOptionalParam", "TP_OPTIONAL_RARAM_TYPE_LONG");
-    paramsTypeLongId = paramInt;
+    paramInt = getStaticFiledFromClass("com.tencent.thumbplayer.api.TPPlayerMsg", new String[] { "TP_PLAYER_INFO_LONG0_CURRENT_LOOP_END" });
+    loopEndId = paramInt;
     return paramInt;
   }
   
@@ -86,6 +107,17 @@ public class VideoReportPlayerUtils
     if (VideoReportInner.getInstance().isDebugMode()) {
       return new VideoReportPlayerUtils.DebugTime(System.currentTimeMillis());
     }
+    return null;
+  }
+  
+  private static Field findFieldSafely(Class<?> paramClass, String paramString)
+  {
+    try
+    {
+      paramClass = paramClass.getField(paramString);
+      return paramClass;
+    }
+    catch (Exception paramClass) {}
     return null;
   }
   
@@ -108,6 +140,27 @@ public class VideoReportPlayerUtils
       Log.w("VideoReportPlayerUtils", "getCurrentPosition," + paramObject.toString());
     }
     return 0L;
+  }
+  
+  public static int getDuration(Object paramObject)
+  {
+    try
+    {
+      if (tpPlayerClass == null) {
+        tpPlayerClass = Class.forName("com.tencent.thumbplayer.api.ITPPlayer");
+      }
+      if (getDuration == null) {
+        getDuration = tpPlayerClass.getDeclaredMethod("getDurationMs", new Class[0]);
+      }
+      int i = ((Integer)getDuration.invoke(paramObject, new Object[0])).intValue();
+      Log.i("VideoReportPlayerUtils", "getDuration,time=" + i);
+      return i;
+    }
+    catch (Exception paramObject)
+    {
+      Log.w("VideoReportPlayerUtils", "getDuration," + paramObject.toString());
+    }
+    return 0;
   }
   
   public static long getStartPosition(Object paramObject)
@@ -143,23 +196,59 @@ public class VideoReportPlayerUtils
     return 0L;
   }
   
-  private static int getStaticFiledFromClass(String paramString1, String paramString2)
+  private static int getStaticFiledFromClass(String paramString, String... paramVarArgs)
   {
     try
     {
-      paramString1 = Class.forName(paramString1).getField(paramString2);
-      int i = ((Integer)paramString1.get(paramString1)).intValue();
-      return i;
+      paramString = Class.forName(paramString);
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        Field localField = findFieldSafely(paramString, paramVarArgs[i]);
+        if (localField != null)
+        {
+          i = ((Integer)localField.get(localField)).intValue();
+          return i;
+        }
+        i += 1;
+      }
+      return -1;
     }
-    catch (Exception paramString1)
+    catch (Exception paramString)
     {
-      Log.w("VideoReportPlayerUtils", "getStaticFiledFromClass," + paramString1.toString());
+      Log.w("VideoReportPlayerUtils", "getStaticFiledFromClass," + paramString.toString());
     }
-    return -1;
+  }
+  
+  public static String getVidByReportInfo(Object paramObject)
+  {
+    if (paramObject == null) {
+      return null;
+    }
+    try
+    {
+      if (tpDefaultReportInfoClass == null) {
+        tpDefaultReportInfoClass = Class.forName("com.tencent.thumbplayer.api.report.TPDefaultReportInfo");
+      }
+      if (vid == null) {
+        vid = tpDefaultReportInfoClass.getField("vid");
+      }
+      paramObject = (String)vid.get(paramObject);
+      return paramObject;
+    }
+    catch (Exception paramObject)
+    {
+      Log.w("VideoReportPlayerUtils", "getVidByReportInfo," + paramObject.toString());
+    }
+    return null;
   }
   
   public static boolean isPlayAdByPlayer(Object paramObject)
   {
+    if (paramObject == null) {
+      return false;
+    }
     try
     {
       if (tpDefaultReportInfoClass == null) {

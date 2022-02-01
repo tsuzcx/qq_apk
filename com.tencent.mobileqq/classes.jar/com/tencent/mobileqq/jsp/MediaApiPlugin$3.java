@@ -19,106 +19,106 @@ class MediaApiPlugin$3
     //   11: astore_2
     //   12: aload_0
     //   13: getfield 18	com/tencent/mobileqq/jsp/MediaApiPlugin$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   16: invokestatic 50	com/tencent/mobileqq/utils/FileUtils:readFile	(Ljava/lang/String;)[B
+    //   16: invokestatic 49	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)[B
     //   19: astore_3
     //   20: aload_0
     //   21: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$3:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
     //   24: aload_3
-    //   25: invokevirtual 55	com/tencent/mobileqq/jsp/MediaApiPlugin:a	([B)Ljava/lang/String;
+    //   25: invokevirtual 54	com/tencent/mobileqq/jsp/MediaApiPlugin:a	([B)Ljava/lang/String;
     //   28: astore_3
     //   29: aload_1
-    //   30: ldc 57
+    //   30: ldc 56
     //   32: iconst_0
-    //   33: invokevirtual 61	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   33: invokevirtual 60	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   36: pop
     //   37: aload_1
-    //   38: ldc 63
+    //   38: ldc 62
     //   40: aload_2
-    //   41: ldc 64
-    //   43: invokevirtual 70	android/content/Context:getString	(I)Ljava/lang/String;
-    //   46: invokevirtual 73	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   41: ldc 63
+    //   43: invokevirtual 69	android/content/Context:getString	(I)Ljava/lang/String;
+    //   46: invokevirtual 72	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   49: pop
     //   50: aload_1
-    //   51: ldc 75
+    //   51: ldc 74
     //   53: aload_3
-    //   54: invokevirtual 73	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   54: invokevirtual 72	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   57: pop
     //   58: aload_0
     //   59: getfield 20	com/tencent/mobileqq/jsp/MediaApiPlugin$3:b	Ljava/lang/String;
-    //   62: invokestatic 81	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   62: invokestatic 80	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   65: ifne +129 -> 194
     //   68: aload_0
     //   69: getfield 22	com/tencent/mobileqq/jsp/MediaApiPlugin$3:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   72: iconst_0
     //   73: iconst_1
-    //   74: invokevirtual 87	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   74: invokevirtual 86	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
     //   77: ifeq +117 -> 194
     //   80: aload_0
     //   81: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$3:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
     //   84: aload_0
     //   85: getfield 20	com/tencent/mobileqq/jsp/MediaApiPlugin$3:b	Ljava/lang/String;
     //   88: iconst_1
-    //   89: anewarray 89	java/lang/String
+    //   89: anewarray 88	java/lang/String
     //   92: dup
     //   93: iconst_0
     //   94: aload_1
-    //   95: invokevirtual 93	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   95: invokevirtual 92	org/json/JSONObject:toString	()Ljava/lang/String;
     //   98: aastore
-    //   99: invokevirtual 97	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   99: invokevirtual 96	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   102: return
     //   103: astore_3
     //   104: aload_1
-    //   105: ldc 57
+    //   105: ldc 56
     //   107: iconst_1
-    //   108: invokevirtual 61	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   108: invokevirtual 60	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   111: pop
     //   112: aload_1
-    //   113: ldc 63
+    //   113: ldc 62
     //   115: aload_2
-    //   116: ldc 98
-    //   118: invokevirtual 70	android/content/Context:getString	(I)Ljava/lang/String;
-    //   121: invokevirtual 73	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   116: ldc 97
+    //   118: invokevirtual 69	android/content/Context:getString	(I)Ljava/lang/String;
+    //   121: invokevirtual 72	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   124: pop
     //   125: goto -67 -> 58
     //   128: astore_2
     //   129: goto -71 -> 58
     //   132: astore_3
     //   133: aload_1
-    //   134: ldc 57
+    //   134: ldc 56
     //   136: iconst_2
-    //   137: invokevirtual 61	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   137: invokevirtual 60	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   140: pop
     //   141: aload_1
-    //   142: ldc 63
+    //   142: ldc 62
     //   144: aload_2
-    //   145: ldc 99
-    //   147: invokevirtual 70	android/content/Context:getString	(I)Ljava/lang/String;
-    //   150: invokevirtual 73	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   145: ldc 98
+    //   147: invokevirtual 69	android/content/Context:getString	(I)Ljava/lang/String;
+    //   150: invokevirtual 72	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   153: pop
     //   154: goto -96 -> 58
     //   157: astore_2
     //   158: goto -100 -> 58
     //   161: astore_2
-    //   162: getstatic 100	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   162: getstatic 99	com/tencent/mobileqq/jsp/MediaApiPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   165: iconst_2
-    //   166: new 102	java/lang/StringBuilder
+    //   166: new 101	java/lang/StringBuilder
     //   169: dup
-    //   170: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   173: ldc 105
-    //   175: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   173: ldc 104
+    //   175: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   178: aload_2
-    //   179: invokestatic 115	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   182: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   185: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   188: invokestatic 120	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   179: invokestatic 114	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   182: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   188: invokestatic 119	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   191: goto -133 -> 58
     //   194: aload_0
     //   195: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$3:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   198: ldc 122
+    //   198: ldc 121
     //   200: iconst_0
     //   201: aload_1
-    //   202: invokevirtual 93	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   205: invokevirtual 125	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs4OpenApiIfNeeded	(Ljava/lang/String;ILjava/lang/String;)V
+    //   202: invokevirtual 92	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   205: invokevirtual 124	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs4OpenApiIfNeeded	(Ljava/lang/String;ILjava/lang/String;)V
     //   208: return
     //   209: astore_2
     //   210: goto -152 -> 58

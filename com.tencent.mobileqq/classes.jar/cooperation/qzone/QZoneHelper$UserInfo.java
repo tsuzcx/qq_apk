@@ -5,9 +5,9 @@ import mqq.app.AppRuntime;
 
 public class QZoneHelper$UserInfo
 {
-  private static UserInfo userInfo;
-  public String nickname;
-  public String qzone_uin;
+  private static UserInfo userInfo = null;
+  public String nickname = null;
+  public String qzone_uin = null;
   
   public static UserInfo getInstance()
   {
@@ -21,7 +21,7 @@ public class QZoneHelper$UserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.UserInfo
  * JD-Core Version:    0.7.0.1
  */

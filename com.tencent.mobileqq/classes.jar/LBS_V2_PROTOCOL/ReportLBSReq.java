@@ -8,7 +8,7 @@ public final class ReportLBSReq
   extends JceStruct
 {
   static ReportLBSInfo cache_stReportInfo = new ReportLBSInfo();
-  public ReportLBSInfo stReportInfo;
+  public ReportLBSInfo stReportInfo = null;
   
   public ReportLBSReq() {}
   

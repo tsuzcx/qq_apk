@@ -1,13 +1,12 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
 import android.text.TextUtils;
-import bjjq;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
+import com.tencent.open.appstore.dl.DownloadManagerV2;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import oil;
-import ule;
 
-public class ADBaseAppDownloadManager$4
+class ADBaseAppDownloadManager$4
   implements Runnable
 {
   public void run()
@@ -15,7 +14,7 @@ public class ADBaseAppDownloadManager$4
     Object localObject = this.a.c;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = bjjq.a().a((String)localObject);
+      localObject = DownloadManagerV2.a().a((String)localObject);
       if (localObject != null)
       {
         int i = (int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen * 100.0F);
@@ -61,7 +60,7 @@ public class ADBaseAppDownloadManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.4
  * JD-Core Version:    0.7.0.1
  */

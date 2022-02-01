@@ -24,6 +24,7 @@ public class NewIntent
   public static final String ACTION_OVERLOAD_PUSH = "mqq.intent.action.OVERLOAD_PUSH";
   public static final String ACTION_PCACTIVE_TIPS = "mqq.intent.action.PCACTIVE_TIPS";
   public static final String ACTION_PUZZLE_VERYFYCODE_OPENSDK = "mqq.opensdk.intent.action.PUZZLEVERIFYCODE";
+  public static final String ACTION_QRCODE_LOGIN_FINISH = "mqq.intent.action.QRCODE_LOGIN_FINISH";
   public static final String ACTION_SUSPEND = "mqq.intent.action.SUSPEND";
   public static final String ACTION_VERYFYCODE_OPENSDK = "mqq.opensdk.intent.action.VERIFYCODE";
   public static final String ACTION_VERYFY_LOCK_CODE_OPENSDK = "mqq.opensdk.intent.action.ACTION_VERYFY_LOCK_CODE";

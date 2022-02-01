@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import anhc;
 import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
 
-public class ApolloUrlConnection$1
+class ApolloUrlConnection$1
   implements Runnable
 {
-  public ApolloUrlConnection$1(anhc paramanhc) {}
+  ApolloUrlConnection$1(ApolloUrlConnection paramApolloUrlConnection) {}
   
   public void run()
   {
     try
     {
-      anhc.a(this.this$0).disconnect();
+      ApolloUrlConnection.a(this.this$0).disconnect();
       return;
     }
     catch (Throwable localThrowable)
@@ -24,7 +23,7 @@ public class ApolloUrlConnection$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloUrlConnection.1
  * JD-Core Version:    0.7.0.1
  */

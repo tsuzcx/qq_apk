@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.text.TextUtils;
-import aueq;
-import bcrg;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="nSessionId")
@@ -29,7 +27,7 @@ public class FileManagerEntity
   public boolean bOnceSuccess;
   public boolean bSend;
   @notColumn
-  public boolean bSetVerify;
+  public boolean bSetVerify = false;
   @notColumn
   public boolean bUseMediaPlatform;
   public byte[] bombData;
@@ -38,6 +36,9 @@ public class FileManagerEntity
   @notColumn
   public long datalineEntitySessionId;
   public long dbVer;
+  public int dlGourpIndex;
+  public int dlGroupCount;
+  public int dlGroupId;
   public int errCode;
   public float fOlRecvProgressOnNotify;
   public float fOlRecvSpeed;
@@ -50,10 +51,12 @@ public class FileManagerEntity
   public int imgHeight;
   public int imgWidth;
   @notColumn
-  public boolean isCheckPrivateDir;
+  public boolean isCheckPrivateDir = false;
   @notColumn
   public boolean isFromrMolo;
   public boolean isReaded;
+  @notColumn
+  public boolean isStartWlan = false;
   public boolean isZipInnerFile;
   @notColumn
   public long lastSuccessTime;
@@ -62,7 +65,7 @@ public class FileManagerEntity
   @notColumn
   public Object mContext;
   @notColumn
-  public String mExcitingSpeed;
+  public String mExcitingSpeed = null;
   @notColumn
   public int mThumbRetryCount;
   public long mTroopFileVideoReqInterval;
@@ -80,6 +83,14 @@ public class FileManagerEntity
   public long nSessionId = 0L;
   public int nWeiYunSrcType;
   @notColumn
+  public int nfcServerIP;
+  @notColumn
+  public short nfcServerPort;
+  @notColumn
+  public byte[] nfcTokenKey;
+  @notColumn
+  public byte[] nfcUrlNotify;
+  @notColumn
   public long peerDin;
   public String peerNick;
   public int peerType = 0;
@@ -89,7 +100,7 @@ public class FileManagerEntity
   @notColumn
   public FileManagerEntity relatedEntity;
   public String selfUin;
-  public long srvTime = bcrg.a() * 1000L;
+  public long srvTime = MessageCache.a() * 1000L;
   public int status;
   public String str10Md5;
   public String strApkPackageName;
@@ -280,21 +291,12 @@ public class FileManagerEntity
   
   public String getFilePath()
   {
-    return aueq.c(this.strFilePath);
+    return this.strFilePath;
   }
   
   public String getTableName()
   {
     return "mr_fileManager";
-  }
-  
-  public boolean hasNoThumb()
-  {
-    if (FileUtil.fileExistsAndNotEmpty(this.strLargeThumPath)) {}
-    while (FileUtil.fileExistsAndNotEmpty(this.strMiddleThumPath)) {
-      return true;
-    }
-    return FileUtil.fileExistsAndNotEmpty(this.strThumbPath);
   }
   
   public boolean isFromProcessingBuddyForward2DatalineItem()
@@ -314,22 +316,23 @@ public class FileManagerEntity
   
   public boolean isSend()
   {
-    return (this.nOpType == 0) || (this.nOpType == 3) || (this.nOpType == 4) || (this.nOpType == 6) || (this.nOpType == 7) || (this.nOpType == 20) || (this.nOpType == 21) || (this.nOpType == 22) || (this.nOpType == 24) || (this.nOpType == 25) || (this.nOpType == 26) || (this.nOpType == 27) || (this.nOpType == 28) || (this.nOpType == 29) || (this.nOpType == 31) || (this.nOpType == 32);
+    return (this.nOpType == 0) || (this.nOpType == 3) || (this.nOpType == 4) || (this.nOpType == 6) || (this.nOpType == 7) || (this.nOpType == 20) || (this.nOpType == 21) || (this.nOpType == 22) || (this.nOpType == 24) || (this.nOpType == 25) || (this.nOpType == 26) || (this.nOpType == 27) || (this.nOpType == 28) || (this.nOpType == 29) || (this.nOpType == 31) || (this.nOpType == 51) || (this.nOpType == 32);
   }
   
   public boolean sendCloudUnsuccessful()
   {
-    boolean bool = true;
-    if (this.status == 1) {}
-    while (!isSend()) {
-      return false;
-    }
-    if (this.status != -1) {}
-    for (;;)
+    if (this.status == 16) {}
+    do
     {
-      return bool;
-      bool = false;
-    }
+      return true;
+      if (this.status == 1) {
+        return false;
+      }
+      if (!isSend()) {
+        return false;
+      }
+    } while (this.status != -1);
+    return false;
   }
   
   public void setCloudType(int paramInt)
@@ -358,7 +361,7 @@ public class FileManagerEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerEntity
  * JD-Core Version:    0.7.0.1
  */

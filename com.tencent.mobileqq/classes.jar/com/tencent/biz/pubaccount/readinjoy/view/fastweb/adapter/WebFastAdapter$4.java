@@ -3,18 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRecommendUGInfo;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tgb;
-import tjl;
 
-public class WebFastAdapter$4
+class WebFastAdapter$4
   implements Runnable
 {
-  public WebFastAdapter$4(tgb paramtgb, DownloadInfo paramDownloadInfo) {}
+  WebFastAdapter$4(WebFastAdapter paramWebFastAdapter, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -34,8 +33,8 @@ public class WebFastAdapter$4
           j = i;
           if (localJSONObject.optString("kd_ug_rsp_info") != null)
           {
-            localObject = new tjl(localJSONObject.optString("kd_ug_rsp_info"), tgb.a(localJSONObject));
-            if ((TextUtils.isEmpty(((tjl)localObject).b)) || (!((tjl)localObject).b.equals(this.a.d))) {
+            localObject = new FastWebRecommendUGInfo(localJSONObject.optString("kd_ug_rsp_info"), WebFastAdapter.a(localJSONObject));
+            if ((TextUtils.isEmpty(((FastWebRecommendUGInfo)localObject).b)) || (!((FastWebRecommendUGInfo)localObject).b.equals(this.a.d))) {
               continue;
             }
             j = i;
@@ -53,7 +52,7 @@ public class WebFastAdapter$4
             i = k;
             localJSONObject = localJSONObject.getJSONObject("id_recommend_category_txt");
             i = k;
-            localJSONObject.put("text", ((tjl)localObject).h + this.a.f + "%");
+            localJSONObject.put("text", ((FastWebRecommendUGInfo)localObject).h + this.a.f + "%");
             i = k;
             localJSONObject.put("label_ug_progress_progress", this.a.f);
           }
@@ -74,7 +73,7 @@ public class WebFastAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.4
  * JD-Core Version:    0.7.0.1
  */

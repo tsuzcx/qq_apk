@@ -14,12 +14,9 @@ import android.text.InputFilter;
 import android.text.StaticLayout;
 import android.view.MotionEvent;
 import android.view.View;
-import bolc;
-import bolh;
-import boli;
-import bowi;
-import bpdf;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -29,18 +26,18 @@ public abstract class DynamicTextItem
   private static final String jdField_a_of_type_JavaLangString = DynamicTextItem.class.getSimpleName();
   protected int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private volatile bolh<Integer, Boolean> jdField_a_of_type_Bolh = new bolh(Integer.valueOf(-1), Boolean.valueOf(false));
+  private Handler jdField_a_of_type_AndroidOsHandler = null;
+  private volatile DynamicTextItem.Pair<Integer, Boolean> jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair = new DynamicTextItem.Pair(Integer.valueOf(-1), Boolean.valueOf(false));
   private DynamicTextItem.TextMap jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$TextMap;
   public Stack<Integer> a;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
-  protected StaticLayout b;
-  private volatile boolean jdField_b_of_type_Boolean;
+  StaticLayout jdField_b_of_type_AndroidTextStaticLayout;
+  private volatile boolean jdField_b_of_type_Boolean = false;
   private int c;
   protected boolean c;
   public boolean d;
-  private volatile boolean e;
+  private volatile boolean e = false;
   
   public DynamicTextItem(int paramInt, @NonNull List<String> paramList)
   {
@@ -99,7 +96,7 @@ public abstract class DynamicTextItem
     return -1;
   }
   
-  public int a(@NonNull MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, @Nullable bowi parambowi, bpdf parambpdf)
+  public int a(@NonNull MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, @Nullable TextLayer.TextItem paramTextItem, GestureHelper paramGestureHelper)
   {
     if (QLog.isColorLevel())
     {
@@ -108,7 +105,7 @@ public abstract class DynamicTextItem
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Touch Y: " + paramMotionEvent.getY());
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Container W: " + paramFloat1);
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Container H: " + paramFloat2);
-      if (parambowi != null) {
+      if (paramTextItem != null) {
         break label208;
       }
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Zoom info is null, use default info");
@@ -120,15 +117,15 @@ public abstract class DynamicTextItem
       QLog.d(jdField_a_of_type_JavaLangString, 2, "=========================================");
       return -1;
       label208:
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text X: " + parambowi.jdField_a_of_type_AndroidGraphicsPointF.x);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Y: " + parambowi.jdField_a_of_type_AndroidGraphicsPointF.y);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text W: " + parambowi.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a());
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text H: " + parambowi.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b());
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Scale: " + parambpdf.a(parambowi));
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Matrix: " + parambpdf.a(parambowi));
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateX: " + parambowi.s);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateY: " + parambowi.t);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text rotate: " + parambowi.r);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text X: " + paramTextItem.jdField_a_of_type_AndroidGraphicsPointF.x);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Y: " + paramTextItem.jdField_a_of_type_AndroidGraphicsPointF.y);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text W: " + paramTextItem.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a());
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text H: " + paramTextItem.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b());
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Scale: " + paramGestureHelper.a(paramTextItem));
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Matrix: " + paramGestureHelper.a(paramTextItem));
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateX: " + paramTextItem.s);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateY: " + paramTextItem.t);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text rotate: " + paramTextItem.r);
     }
   }
   
@@ -171,13 +168,13 @@ public abstract class DynamicTextItem
   }
   
   @NonNull
-  protected final String a(int paramInt, @Nullable boli paramboli)
+  protected final String a(int paramInt, @Nullable DynamicTextItem.PreHandleTextHandler paramPreHandleTextHandler)
   {
     paramInt = a(paramInt);
     String str2 = a(paramInt);
     String str1 = str2;
-    if (paramboli != null) {
-      str1 = paramboli.a(paramInt, str2);
+    if (paramPreHandleTextHandler != null) {
+      str1 = paramPreHandleTextHandler.a(paramInt, str2);
     }
     return a(str1);
   }
@@ -217,7 +214,7 @@ public abstract class DynamicTextItem
     return localStringBuilder.toString();
   }
   
-  public String a(String paramString)
+  protected String a(String paramString)
   {
     Object localObject = paramString;
     int j;
@@ -289,7 +286,7 @@ public abstract class DynamicTextItem
     for (;;)
     {
       int i = 0;
-      this.jdField_a_of_type_Bolh.a = Integer.valueOf(paramInt1);
+      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.a = Integer.valueOf(paramInt1);
       paramInt1 = i;
       while (paramInt1 < paramInt2 - paramInt3)
       {
@@ -323,8 +320,8 @@ public abstract class DynamicTextItem
   public void a(int paramInt, boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_Bolh.a = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_Bolh.b = Boolean.valueOf(paramBoolean);
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.a = Integer.valueOf(paramInt);
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.b = Boolean.valueOf(paramBoolean);
   }
   
   protected abstract void a(Canvas paramCanvas);
@@ -338,7 +335,7 @@ public abstract class DynamicTextItem
   
   public boolean a(int paramInt)
   {
-    return a(paramInt).equals(bolc.a(this.jdField_b_of_type_Int, paramInt));
+    return a(paramInt).equals(DynamicTextBuilder.a(this.jdField_b_of_type_Int, paramInt));
   }
   
   public abstract float b();
@@ -363,7 +360,7 @@ public abstract class DynamicTextItem
   public void b()
   {
     a();
-    this.jdField_a_of_type_Bolh.b = Boolean.valueOf(false);
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.b = Boolean.valueOf(false);
   }
   
   public void b(int paramInt)
@@ -395,8 +392,8 @@ public abstract class DynamicTextItem
   
   public boolean b(int paramInt)
   {
-    if ((((Integer)this.jdField_a_of_type_Bolh.a).intValue() == paramInt) || (((Integer)this.jdField_a_of_type_Bolh.a).intValue() == -1)) {
-      return ((Boolean)this.jdField_a_of_type_Bolh.b).booleanValue();
+    if ((((Integer)this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.a).intValue() == paramInt) || (((Integer)this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.a).intValue() == -1)) {
+      return ((Boolean)this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.b).booleanValue();
     }
     return false;
   }
@@ -430,7 +427,7 @@ public abstract class DynamicTextItem
   public boolean d()
   {
     ArrayList localArrayList = a();
-    List localList = bolc.a(this.jdField_b_of_type_Int);
+    List localList = DynamicTextBuilder.a(this.jdField_b_of_type_Int);
     if (localList == null) {}
     int i;
     String str;
@@ -500,7 +497,7 @@ public abstract class DynamicTextItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.text.DynamicTextItem
  * JD-Core Version:    0.7.0.1
  */

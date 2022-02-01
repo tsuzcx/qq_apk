@@ -3,33 +3,30 @@ package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import bljk;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ProteusSupportUtilBase;
 import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DataEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DataObserver;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DynamicChannelDataModule;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DynamicChannelHeaderModule;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.HeaderDataModel;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import com.tencent.widget.pull2refresh.XRecyclerView;
+import com.tencent.widget.pull2refresh.XRecyclerView.RefreshCallback;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import ptq;
-import ptx;
-import ptz;
-import pua;
-import pui;
-import puj;
-import puk;
-import puo;
-import puq;
 
 public class ReadInJoyCGIDynamicChannelFragment
   extends ReadInJoyDynamicChannelBaseFragment
 {
-  private bljk jdField_a_of_type_Bljk = new pua(this);
-  private ptx jdField_a_of_type_Ptx;
-  private puj jdField_a_of_type_Puj = new ptz(this);
+  private ReadInJoyCGIDynamicChannelAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter;
+  private DataObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDataObserver = new ReadInJoyCGIDynamicChannelFragment.1(this);
+  private XRecyclerView.RefreshCallback jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback = new ReadInJoyCGIDynamicChannelFragment.2(this);
   
   public static ReadInJoyCGIDynamicChannelFragment a(int paramInt1, int paramInt2, String paramString)
   {
@@ -42,7 +39,7 @@ public class ReadInJoyCGIDynamicChannelFragment
     return localReadInJoyCGIDynamicChannelFragment;
   }
   
-  private void a(int paramInt, List<puq> paramList)
+  private void a(int paramInt, List<HeaderDataModel> paramList)
   {
     if (paramInt != this.jdField_b_of_type_Int) {}
     for (;;)
@@ -54,12 +51,12 @@ public class ReadInJoyCGIDynamicChannelFragment
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
-          puq localpuq = (puq)paramList.next();
-          QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "channelID = ", Integer.valueOf(paramInt), ", styleID = ", localpuq.a, ", proteusData = ", localpuq.jdField_b_of_type_JavaLangString });
-          if ((!TextUtils.isEmpty(localpuq.a)) && (!TextUtils.isEmpty(localpuq.jdField_b_of_type_JavaLangString)))
+          HeaderDataModel localHeaderDataModel = (HeaderDataModel)paramList.next();
+          QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "channelID = ", Integer.valueOf(paramInt), ", styleID = ", localHeaderDataModel.a, ", proteusData = ", localHeaderDataModel.jdField_b_of_type_JavaLangString });
+          if ((!TextUtils.isEmpty(localHeaderDataModel.a)) && (!TextUtils.isEmpty(localHeaderDataModel.jdField_b_of_type_JavaLangString)))
           {
-            ProteusItemView localProteusItemView = ptq.a(this.jdField_a_of_type_Ptx.a(), a(), ptq.a(localpuq.jdField_b_of_type_JavaLangString));
-            ptq.a(localProteusItemView, this.jdField_a_of_type_Ptx.a(), a(), localpuq.jdField_b_of_type_JavaLangString);
+            ProteusItemView localProteusItemView = ProteusSupportUtilBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.a(), a(), ProteusSupportUtilBase.a(localHeaderDataModel.jdField_b_of_type_JavaLangString));
+            ProteusSupportUtilBase.a(localProteusItemView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.a(), a(), localHeaderDataModel.jdField_b_of_type_JavaLangString);
             a(localProteusItemView);
           }
         }
@@ -77,16 +74,16 @@ public class ReadInJoyCGIDynamicChannelFragment
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      Object localObject = puk.a();
+      Object localObject = DynamicChannelDataModule.a();
       if (localObject != null) {
-        ((puk)localObject).a(this.jdField_b_of_type_Int, 10);
+        ((DynamicChannelDataModule)localObject).a(this.jdField_b_of_type_Int, 10);
       }
-      localObject = puo.a();
+      localObject = DynamicChannelHeaderModule.a();
       if (localObject != null)
       {
-        ((puo)localObject).a(this.jdField_b_of_type_Int);
-        a(this.jdField_b_of_type_Int, ((puo)localObject).a(this.jdField_b_of_type_Int));
-        ((puo)localObject).b(this.jdField_b_of_type_Int);
+        ((DynamicChannelHeaderModule)localObject).a(this.jdField_b_of_type_Int);
+        a(this.jdField_b_of_type_Int, ((DynamicChannelHeaderModule)localObject).a(this.jdField_b_of_type_Int));
+        ((DynamicChannelHeaderModule)localObject).b(this.jdField_b_of_type_Int);
       }
       return;
     }
@@ -95,16 +92,16 @@ public class ReadInJoyCGIDynamicChannelFragment
   
   public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    Object localObject = puo.a();
+    Object localObject = DynamicChannelHeaderModule.a();
     if (localObject != null)
     {
-      localObject = ((puo)localObject).a(this.jdField_b_of_type_Int);
+      localObject = ((DynamicChannelHeaderModule)localObject).a(this.jdField_b_of_type_Int);
       if ((paramInt >= 0) && (paramInt < ((List)localObject).size()))
       {
-        localObject = (puq)((List)localObject).get(paramInt);
+        localObject = (HeaderDataModel)((List)localObject).get(paramInt);
         paramViewHolder = (ProteusItemView)paramViewHolder.itemView;
         if ((localObject != null) && (paramViewHolder != null)) {
-          ptq.a(paramViewHolder, this.jdField_a_of_type_Ptx.a(), a(), ((puq)localObject).jdField_b_of_type_JavaLangString);
+          ProteusSupportUtilBase.a(paramViewHolder, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.a(), a(), ((HeaderDataModel)localObject).jdField_b_of_type_JavaLangString);
         }
       }
     }
@@ -112,28 +109,28 @@ public class ReadInJoyCGIDynamicChannelFragment
   
   public void b()
   {
-    this.jdField_a_of_type_Ptx.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.notifyDataSetChanged();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Ptx = new ptx(getActivity(), this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(), this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().setAdapter(this.jdField_a_of_type_Ptx);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter = new ReadInJoyCGIDynamicChannelAdapter(getActivity(), this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(), this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Bljk);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback);
   }
   
   public void i()
   {
     super.i();
-    if (this.jdField_a_of_type_Ptx != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter != null)
     {
       QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "reportExposureAndClear, mChannelID = ", Integer.valueOf(this.jdField_b_of_type_Int) });
-      a(this.jdField_a_of_type_Ptx.a());
-      this.jdField_a_of_type_Ptx.a();
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.a());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.a();
       return;
     }
     QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "mAdapter is null.");
@@ -142,18 +139,18 @@ public class ReadInJoyCGIDynamicChannelFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    pui.a().a(this.jdField_a_of_type_Puj);
+    DataEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDataObserver);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    pui.a().b(this.jdField_a_of_type_Puj);
+    DataEventDispatcher.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDataObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment
  * JD-Core Version:    0.7.0.1
  */

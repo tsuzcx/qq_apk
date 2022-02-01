@@ -2,10 +2,6 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import azla;
-import azlb;
-import azlg;
-import blkh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
@@ -21,10 +17,14 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.wstt.SSCM.SSCM;
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class NearbyPeoplePhotoUploadProcessor
   public String mThumbPhotoUrl;
   public String mUrl;
   public String mVideoId;
-  private Transaction trans;
+  private Transaction trans = null;
   public String uuid;
   
   public NearbyPeoplePhotoUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
@@ -57,7 +57,7 @@ public class NearbyPeoplePhotoUploadProcessor
     }
     Object localObject = new CompressInfo(this.mUiRequest.mLocalPath, 0);
     ((CompressInfo)localObject).f = 0;
-    azlg.a((CompressInfo)localObject);
+    CompressOperator.a((CompressInfo)localObject);
     if (TextUtils.isEmpty(((CompressInfo)localObject).e)) {
       onError();
     }
@@ -519,11 +519,11 @@ public class NearbyPeoplePhotoUploadProcessor
     }
     if (this.mUiRequest.mUpCallBack != null)
     {
-      azlb localazlb = new azlb();
-      localazlb.jdField_a_of_type_Int = -1;
-      localazlb.b = this.errCode;
-      localazlb.jdField_a_of_type_JavaLangString = this.errDesc;
-      this.mUiRequest.mUpCallBack.onSend(localazlb);
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+      localSendResult.jdField_a_of_type_Int = -1;
+      localSendResult.b = this.errCode;
+      localSendResult.jdField_a_of_type_JavaLangString = this.errDesc;
+      this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
   
@@ -541,25 +541,9 @@ public class NearbyPeoplePhotoUploadProcessor
     }
     if (this.mUiRequest.mUpCallBack != null)
     {
-      azlb localazlb = new azlb();
-      localazlb.jdField_a_of_type_Int = 0;
-      this.mUiRequest.mUpCallBack.onSend(localazlb);
-    }
-  }
-  
-  protected void reportDataFlow(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
-  {
-    if (paramLong1 != 0L) {
-      this.app.countFlow(true, 1, this.file.fileType, this.mUiRequest.mUinType, paramLong1);
-    }
-    if (paramLong2 != 0L) {
-      this.app.countFlow(true, 1, this.file.fileType, this.mUiRequest.mUinType, paramLong2);
-    }
-    if (paramLong3 != 0L) {
-      this.app.countFlow(true, 0, this.file.fileType, this.mUiRequest.mUinType, paramLong3);
-    }
-    if (paramLong4 != 0L) {
-      this.app.countFlow(true, 0, this.file.fileType, this.mUiRequest.mUinType, paramLong4);
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+      localSendResult.jdField_a_of_type_Int = 0;
+      this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
   

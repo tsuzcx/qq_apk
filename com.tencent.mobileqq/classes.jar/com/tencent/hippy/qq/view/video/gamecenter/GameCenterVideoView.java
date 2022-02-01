@@ -1,13 +1,15 @@
 package com.tencent.hippy.qq.view.video.gamecenter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.SparseIntArray;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import androidx.collection.ArrayMap;
-import avdj;
-import bapt;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.gamecenter.media.DanmakuHost.Item;
+import com.tencent.mobileqq.gamecenter.media.DanmakuLayout;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
 import com.tencent.mtt.hippy.common.HippyArray;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
@@ -17,6 +19,8 @@ import com.tencent.mtt.hippy.uimanager.NativeGestureDispatcher;
 import com.tencent.mtt.hippy.views.view.HippyViewGroup;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class GameCenterVideoView
   extends HippyViewGroup
@@ -32,11 +36,11 @@ public class GameCenterVideoView
   public static final int STYLE_SHOW_PLAY_BTN = 1;
   public static final int STYLE_SHOW_PROGRESS_BTN = 4;
   private static final String TAG = "GameCenterVideoView";
-  private boolean mAutoPlay;
+  private boolean mAutoPlay = false;
   private String mCoverUrl;
   private int mCurrentLoop = 1;
   private long mDuration;
-  private boolean mIsDoingFullscreen;
+  private boolean mIsDoingFullscreen = false;
   private volatile boolean mListenProgress;
   private int mLoop = 1;
   private boolean mMuted = true;
@@ -57,15 +61,15 @@ public class GameCenterVideoView
     STATUS_MAP.put(7, 6);
   }
   
-  public GameCenterVideoView(@android.support.annotation.NonNull Context paramContext)
+  public GameCenterVideoView(@android.support.annotation.NonNull Context paramContext, int paramInt)
   {
     super(paramContext);
-    initVideoView(paramContext);
+    initVideoView(paramContext, paramInt);
   }
   
   private void doActionAfterSDKInit(Runnable paramRunnable)
   {
-    if (bapt.a())
+    if (QQVideoPlaySDKManager.a())
     {
       paramRunnable.run();
       return;
@@ -73,7 +77,7 @@ public class GameCenterVideoView
     if (this.mSDKInitListener == null)
     {
       this.mSDKInitListener = new GameCenterVideoView.SDKInitListenerWithAction(this, paramRunnable);
-      bapt.a(BaseApplication.getContext(), this.mSDKInitListener);
+      QQVideoPlaySDKManager.a(BaseApplication.getContext(), this.mSDKInitListener);
       return;
     }
     this.mSDKInitListener.action = paramRunnable;
@@ -96,11 +100,24 @@ public class GameCenterVideoView
     paramView.layout(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
   }
   
-  private void initVideoView(@android.support.annotation.NonNull Context paramContext)
+  private void initVideoView(@android.support.annotation.NonNull Context paramContext, int paramInt)
   {
-    this.mVideoView = new GameCenterVideoView.VideoViewWrapper(this, paramContext);
+    this.mVideoView = new GameCenterVideoView.VideoViewWrapper(this, paramContext, paramInt);
     this.mVideoView.setBackgroundColor(-16777216);
     addView(this.mVideoView, -1, -1);
+  }
+  
+  public void clearDanmu()
+  {
+    DanmakuLayout localDanmakuLayout = this.mVideoView.getDanmakuLayout();
+    if (localDanmakuLayout != null) {
+      localDanmakuLayout.a();
+    }
+  }
+  
+  public void destory()
+  {
+    this.mVideoView.destroy();
   }
   
   public void dispatchFunction(String paramString, HippyArray paramHippyArray, Promise paramPromise)
@@ -139,15 +156,6 @@ public class GameCenterVideoView
     }
   }
   
-  public void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    this.mVideoView.release();
-    if (avdj.a().a() == this.mVideoView) {
-      avdj.a().a();
-    }
-  }
-  
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (getChildAt(0) != null) {
@@ -155,7 +163,7 @@ public class GameCenterVideoView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (getChildAt(0) != null) {
@@ -187,6 +195,41 @@ public class GameCenterVideoView
     this.mCoverUrl = paramString;
   }
   
+  public void setDanmuData(String paramString)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        if (TextUtils.isEmpty(paramString)) {
+          return;
+        }
+        JSONArray localJSONArray = new JSONObject(paramString).optJSONArray("data");
+        DanmakuHost.Item[] arrayOfItem = new DanmakuHost.Item[paramString.length()];
+        i = 0;
+        if (i < paramString.length())
+        {
+          JSONObject localJSONObject = localJSONArray.optJSONObject(i);
+          if (localJSONObject != null) {
+            arrayOfItem[i] = new DanmakuHost.Item(localJSONObject.optString("text"), localJSONObject.optDouble("onScreenTime"), localJSONObject.optDouble("screenDuration"), localJSONObject.optString("fontColor"), localJSONObject.optString("backgroundColor"));
+          }
+        }
+        else
+        {
+          this.mVideoView.getDanmakuLayout().a(arrayOfItem);
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.d("GameCenterVideoView", 1, "setDanmuData Err:" + paramString.toString());
+        return;
+      }
+      i += 1;
+    }
+  }
+  
   public void setGestureDispatcher(NativeGestureDispatcher paramNativeGestureDispatcher) {}
   
   public void setListenProgress(boolean paramBoolean)
@@ -201,7 +244,7 @@ public class GameCenterVideoView
     }
   }
   
-  void setMuted(boolean paramBoolean)
+  public void setMuted(boolean paramBoolean)
   {
     this.mMuted = paramBoolean;
     this.mVideoView.setMute(paramBoolean);
@@ -252,6 +295,13 @@ public class GameCenterVideoView
     }
   }
   
+  public void setVideoDuration(int paramInt)
+  {
+    if (this.mVideoView != null) {
+      this.mVideoView.setVideoDuration(paramInt);
+    }
+  }
+  
   @androidx.annotation.NonNull
   public String toString()
   {
@@ -272,7 +322,7 @@ public class GameCenterVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView
  * JD-Core Version:    0.7.0.1
  */

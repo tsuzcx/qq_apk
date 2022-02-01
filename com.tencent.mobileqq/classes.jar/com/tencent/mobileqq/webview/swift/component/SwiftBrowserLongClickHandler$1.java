@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import android.app.Activity;
-import apnc;
-import bigy;
+import com.tencent.mobileqq.ar.codeEngine.MiniCodeController;
 
-public class SwiftBrowserLongClickHandler$1
+class SwiftBrowserLongClickHandler$1
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$1(bigy parambigy, Activity paramActivity) {}
+  SwiftBrowserLongClickHandler$1(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler) {}
   
   public void run()
   {
-    apnc.a().a(this.a, this.this$0.hashCode(), "SwiftBrowserLongClickHandler");
+    MiniCodeController.a().a(this.this$0.a.a(), this.this$0.hashCode(), "SwiftBrowserLongClickHandler");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.1
  * JD-Core Version:    0.7.0.1
  */

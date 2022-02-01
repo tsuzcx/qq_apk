@@ -8,7 +8,7 @@ public final class SvcResponseSendFile
   extends JceStruct
 {
   public String strResult = "";
-  public long uReplyCode;
+  public long uReplyCode = 0L;
   
   public SvcResponseSendFile() {}
   

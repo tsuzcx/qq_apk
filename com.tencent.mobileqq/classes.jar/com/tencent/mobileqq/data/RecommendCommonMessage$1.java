@@ -13,13 +13,13 @@ class RecommendCommonMessage$1
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     if (localQQAppInterface != null) {
-      localQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(this.this$0.frienduin, this.this$0.istroop, this.this$0.uniseq, "extStr", this.this$0.extStr);
+      localQQAppInterface.getMessageFacade().a(this.this$0.frienduin, this.this$0.istroop, this.this$0.uniseq, "extStr", this.this$0.extStr);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecommendCommonMessage.1
  * JD-Core Version:    0.7.0.1
  */

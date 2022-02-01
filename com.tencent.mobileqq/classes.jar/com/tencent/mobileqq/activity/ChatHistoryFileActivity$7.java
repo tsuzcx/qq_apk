@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import athn;
-import audr;
-import audy;
-import becb;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.teamwork.TeamWorkHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -26,7 +26,7 @@ class ChatHistoryFileActivity$7
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.this$0.app.getMessageFacade().removeMsgByMessageRecord((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+      this.this$0.app.getMessageFacade().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
     }
     Object localObject1;
     Object localObject2;
@@ -43,7 +43,7 @@ class ChatHistoryFileActivity$7
         this.this$0.app.getFileManagerEngine().b(((FileManagerEntity)localObject2).nSessionId);
       }
       if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.this$0.app.getMessageFacade().removeMultiMsgByMessageRecord(this.jdField_a_of_type_JavaUtilList, false);
+        this.this$0.app.getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
       }
     }
     try
@@ -69,21 +69,21 @@ class ChatHistoryFileActivity$7
     for (;;)
     {
       return;
-      localObject2 = ((becb)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).a(localJSONException);
+      localObject2 = ((TeamWorkHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).a(localJSONException);
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryFIleActivity", 1, localJSONException.toString());
       }
       if (((JSONObject)localObject2).getInt("retcode") == 0) {
-        audy.a("0X8009AA0");
+        FileManagerReporter.a("0X8009AA0");
       } else {
-        audr.a(((JSONObject)localObject2).getString("msg"));
+        FMToastUtil.a(((JSONObject)localObject2).getString("msg"));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.7
  * JD-Core Version:    0.7.0.1
  */

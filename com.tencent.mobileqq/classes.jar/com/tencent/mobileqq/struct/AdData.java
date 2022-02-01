@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.struct;
 
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +22,7 @@ public class AdData
   public String expose_url;
   public int fontColor;
   public String hasAvatarAnimation;
-  public boolean hasShow;
+  public boolean hasShow = false;
   public long id;
   public int idType;
   public String img_url;
@@ -45,18 +44,18 @@ public class AdData
     switch (paramInt)
     {
     default: 
-      paramString = BaseApplicationImpl.getContext().getString(2131695780);
+      paramString = BaseApplicationImpl.getContext().getString(2131696027);
     }
     for (;;)
     {
       return paramString;
-      paramString = BaseApplicationImpl.getContext().getString(2131698390);
+      paramString = BaseApplicationImpl.getContext().getString(2131698670);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131691075);
+      paramString = BaseApplicationImpl.getContext().getString(2131691182);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131698638);
+      paramString = BaseApplicationImpl.getContext().getString(2131698941);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131693070);
+      paramString = BaseApplicationImpl.getContext().getString(2131693216);
     }
   }
   
@@ -125,63 +124,6 @@ public class AdData
       i = 1;
       paramString = str;
     }
-  }
-  
-  public static final void reportTValue(AppInterface paramAppInterface, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    String str;
-    switch (paramInt2)
-    {
-    case 6: 
-    case 7: 
-    default: 
-      str = null;
-      if (str == null) {
-        return;
-      }
-      break;
-    case 0: 
-      if (paramBoolean) {}
-      for (str = "0X8005B64";; str = "0X8005B65") {
-        break;
-      }
-    case 4: 
-      if (paramBoolean) {}
-      for (str = "0X8005684";; str = "0X8005685") {
-        break;
-      }
-    case 3: 
-      if (paramBoolean) {}
-      for (str = "0X8005682";; str = "0X8005683") {
-        break;
-      }
-    case 2: 
-      if (paramBoolean) {}
-      for (str = "0X8005680";; str = "0X8005681") {
-        break;
-      }
-    case 1: 
-      if (paramBoolean) {}
-      for (str = "0X800567E";; str = "0X800567F") {
-        break;
-      }
-    case 5: 
-      if (paramBoolean) {}
-      for (str = "0X8005ADA";; str = "0X8005ADB") {
-        break;
-      }
-    case 8: 
-      if (paramBoolean) {}
-      for (str = "0X800621F";; str = "0X8006220") {
-        break;
-      }
-    case 9: 
-      if (paramBoolean) {}
-      for (str = "0X8006833";; str = "0X8006834") {
-        break;
-      }
-    }
-    paramAppInterface.reportClickEvent("CliOper", "", "", str, str, 0, 0, Integer.toString(paramInt1), "", "", "");
   }
   
   public int compareTo(AdData paramAdData)

@@ -17,12 +17,12 @@ public final class AdBrowserAdapter$Params
   
   public boolean isValid()
   {
-    return (this.activity != null) && (this.activity.get() != null) && (!TextUtils.isEmpty(this.url)) && (this.ad != null) && (this.ad.isValid());
+    return (this.activity != null) && (this.activity.get() != null) && (!TextUtils.isEmpty(this.url));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.web.AdBrowserAdapter.Params
  * JD-Core Version:    0.7.0.1
  */

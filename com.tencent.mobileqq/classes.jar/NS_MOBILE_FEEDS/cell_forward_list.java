@@ -13,11 +13,11 @@ public final class cell_forward_list
   static Map<String, String> cache_extendinfo;
   static ArrayList<s_user> cache_fwdmans = new ArrayList();
   public String actionUrl = "";
-  public Map<String, String> extendinfo;
+  public Map<String, String> extendinfo = null;
   public String forwardkey = "";
-  public ArrayList<s_user> fwdmans;
-  public int isforward;
-  public int num;
+  public ArrayList<s_user> fwdmans = null;
+  public int isforward = 0;
+  public int num = 0;
   
   static
   {

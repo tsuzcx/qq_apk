@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class query_order_rsp
   extends JceStruct
 {
-  public int iProduct;
-  public int iResult;
-  public int iStatus;
+  public int iProduct = 0;
+  public int iResult = 0;
+  public int iStatus = 0;
   
   public query_order_rsp() {}
   

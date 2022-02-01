@@ -1,21 +1,18 @@
 package dov.com.tencent.mobileqq.shortvideo.util;
 
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
-public final class ShortVideoGuideUtil$1
+final class ShortVideoGuideUtil$1
   implements Runnable
 {
-  public ShortVideoGuideUtil$1(AppInterface paramAppInterface) {}
-  
   public void run()
   {
-    ShortVideoUtils.loadShortVideoSo(this.a);
+    VideoEnvironment.loadAVCodecSo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil.1
  * JD-Core Version:    0.7.0.1
  */

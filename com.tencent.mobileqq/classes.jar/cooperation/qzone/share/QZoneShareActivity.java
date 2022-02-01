@@ -1,7 +1,5 @@
 package cooperation.qzone.share;
 
-import Override;
-import aasr;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -30,9 +28,8 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdla;
-import bhdj;
-import bisl;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.biz.webviewplugin.Share;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -44,18 +41,22 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.OpenID;
 import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
-import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.mobileqq.text.QzoneTextBuilder;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.open.agent.AgentActivity;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -68,6 +69,7 @@ import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneShareData;
 import cooperation.qzone.QZoneShareManager;
 import cooperation.qzone.util.QZonePermission;
+import cooperation.qzone.widget.QzoneEmotionUtils;
 import eipc.EIPCClient;
 import java.io.File;
 import java.util.ArrayList;
@@ -76,13 +78,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import znl;
 
 public class QZoneShareActivity
   extends IphoneTitleBarActivity
 {
+  public static final Pattern AT_PATTERN = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
   public static final String BROADCAST_SHARE_UPDATE = "com.tencent.qq.shareupdate";
   public static final String EXTRA_INPUT_MAX_LEN = "inputmax";
   public static final String EXTRA_INTENT_KEY_PARCELABLE = "extraIntentKeyParcelable";
@@ -114,45 +118,45 @@ public class QZoneShareActivity
   public static final String TAG = "QZoneShare";
   protected static final Object sAppinfoLock = new Object();
   protected static final String simpleClassname = QZoneShareActivity.class.getSimpleName();
-  private int askAnonymouslyShareType;
+  private int askAnonymouslyShareType = 0;
   private int atEnd = -1;
   private int atStatr = -1;
   protected View desToolbar;
-  protected boolean emoShow;
-  protected boolean emoShowing;
-  protected boolean hintHidden;
+  protected boolean emoShow = false;
+  protected boolean emoShowing = false;
+  protected boolean hintHidden = false;
   protected InputMethodManager imm;
-  private boolean isFromInnerButton;
-  protected boolean isInputAt;
-  protected boolean isKeyboardHidden;
-  public boolean isResemeInited;
-  private boolean isSharedFromAskAnonymously;
-  private boolean isSharedFromMiniProgram;
+  private boolean isFromInnerButton = false;
+  protected boolean isInputAt = false;
+  protected boolean isKeyboardHidden = false;
+  public boolean isResemeInited = false;
+  private boolean isSharedFromAskAnonymously = false;
+  private boolean isSharedFromMiniProgram = false;
   RelativeLayout line;
   protected mqq.observer.BusinessObserver mAppinfoObserver = new QZoneShareActivity.19(this);
   private int mAtMaxLen;
   public List<Friend> mAtUserList;
   private RelativeLayout mConatainer;
-  protected GetAppInfoProto.GetAppinfoResponse mGetAppinfoResponse;
-  private String mHint;
+  protected GetAppInfoProto.GetAppinfoResponse mGetAppinfoResponse = null;
+  private String mHint = null;
   private boolean mIsCanShowKeyboard = true;
   protected boolean mIsGettingAppinfo;
-  public int mMaxLen;
+  public int mMaxLen = 0;
   private String mOwnUin;
-  private bisl mProgressDialog;
+  private QQProgressDialog mProgressDialog;
   private QZoneShareData mShareData;
   private int mShowAtIcon = 1;
   private int mShowEmoIcon = 1;
-  private String mSummary;
-  protected long mTempTime;
+  private String mSummary = null;
+  protected long mTempTime = 0L;
   private FrameLayout mThumbContainer;
-  private String mThumbUrl;
+  private String mThumbUrl = null;
   private URLImageView mThumbView;
-  private String mTitle;
+  private String mTitle = null;
   public EditText mViewEdit;
   private TextView mViewForwardSummary;
   private TextView mViewForwardTitle;
-  private boolean needShareCallback;
+  private boolean needShareCallback = false;
   private TextView preMeasureSummaryTextArea;
   BroadcastReceiver receiver = new QZoneShareActivity.22(this);
   private int rootHeight;
@@ -177,7 +181,7 @@ public class QZoneShareActivity
   private void askAnonymouslyReport()
   {
     if ((this.isSharedFromAskAnonymously) && (this.askAnonymouslyShareType == 1)) {
-      bdla.b(null, "dc00898", "", "", "0X800B46E", "0X800B46E", 0, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B46E", "0X800B46E", 0, 0, "", "", "", "");
     }
   }
   
@@ -257,7 +261,7 @@ public class QZoneShareActivity
     if (QLog.isColorLevel()) {
       QLog.d("QZoneShare", 2, "-->sdk_share, getting appinfo in construct. sign: " + str);
     }
-    aasr.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l, this.mAppinfoObserver, paramString);
+    Share.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l, this.mAppinfoObserver, paramString);
   }
   
   public static String getStringFromEditText(EditText paramEditText)
@@ -374,7 +378,7 @@ public class QZoneShareActivity
     }
     if (this.isSharedFromMiniProgram)
     {
-      showProgressDialog(2131718796);
+      showProgressDialog(2131719321);
       boolean bool = localIntent.getBooleanExtra("isSharedFromThirdParty", false);
       String str1 = localIntent.getStringExtra("miniShareParamAppId");
       String str2 = localIntent.getStringExtra("miniShareParamTitle");
@@ -388,8 +392,8 @@ public class QZoneShareActivity
       int m = localIntent.getIntExtra("miniShareParamVersionType", -1);
       String str7 = localIntent.getStringExtra("miniShareParamVersionId");
       String str8 = localIntent.getStringExtra("miniShareAppRichId");
-      Object localObject = localIntent.getStringExtra("miniSharePkgName");
-      String str9 = localIntent.getStringExtra("miniShareOpenId");
+      Object localObject1 = localIntent.getStringExtra("miniSharePkgName");
+      Object localObject2 = localIntent.getStringExtra("miniShareOpenId");
       this.isFromInnerButton = localIntent.getBooleanExtra("miniShareIsFromInnerButton", false);
       this.mShareData = new QZoneShareData();
       this.mShareData.mTitle = str2;
@@ -397,11 +401,11 @@ public class QZoneShareActivity
       try
       {
         this.mShareData.appid = Long.parseLong(str8);
-        this.mShareData.openId = str9;
-        this.mShareData.pkgname = ((String)localObject);
+        this.mShareData.openId = ((String)localObject2);
+        this.mShareData.pkgname = ((String)localObject1);
         this.mShareData.mSummary = str3;
         this.mShareData.mImageUrls = new ArrayList();
-        if (!StringUtil.isEmpty(str4))
+        if (!StringUtil.a(str4))
         {
           this.mShareData.mImageUrls.add(str4);
           if (bool) {
@@ -411,11 +415,12 @@ public class QZoneShareActivity
           this.mShareData.xcxMapEx.put("xcxPath", str5);
           this.mShareData.xcxMapEx.put("xcxAppId", str1);
           this.mShareData.xcxMapEx.put("xcxSourceType", String.valueOf(k));
-          localObject = new QZoneShareActivity.4(this);
+          localObject1 = new QZoneShareActivity.4(this);
+          localObject2 = (IMiniAppService)QRoute.api(IMiniAppService.class);
           if (!TextUtils.isEmpty(str6)) {
-            break label545;
+            break label558;
           }
-          MiniAppCmdUtil.getInstance().getAppInfoById(null, str1, str5, String.valueOf(m), new QZoneShareActivity.5(this, str2, str3, str1, i, j, k, str4, str5, m, str8, (MiniAppCmdInterface)localObject));
+          ((IMiniAppService)localObject2).getAppInfoById(null, str1, str5, String.valueOf(m), null, new QZoneShareActivity.5(this, str2, str3, str1, i, j, k, str4, str5, m, str8, (MiniAppCmdInterface)localObject1));
         }
       }
       catch (NumberFormatException localNumberFormatException)
@@ -424,12 +429,12 @@ public class QZoneShareActivity
         {
           QLog.e("QZoneShare", 1, "Long.parseLong(appRichId) get an Exception", localNumberFormatException);
           continue;
-          if (!StringUtil.isEmpty(str6)) {
+          if (!StringUtil.a(str6)) {
             this.mShareData.mImageUrls.add(str6);
           }
         }
-        label545:
-        MiniProgramShareUtils.shareAsQzoneFeeds(str1, str2, str3, i, j, k, str4, null, str5, str6, m, str7, str8, (MiniAppCmdInterface)localObject);
+        label558:
+        ((IMiniAppService)localObject2).shareAsQzoneFeeds(str1, str2, str3, i, j, k, str4, null, str5, str6, m, str7, str8, (MiniAppCmdInterface)localObject1);
         return;
       }
     }
@@ -438,21 +443,23 @@ public class QZoneShareActivity
   
   private void initUI()
   {
-    setContentView(2131562148);
-    setRightButton(2131717466, new QZoneShareActivity.6(this));
-    this.mConatainer = ((RelativeLayout)findViewById(2131375570));
-    this.mViewEdit = ((EditText)findViewById(2131367226));
-    this.mThumbContainer = ((FrameLayout)findViewById(2131367228));
-    this.mThumbView = ((URLImageView)findViewById(2131367231));
-    this.mViewForwardTitle = ((TextView)findViewById(2131367240));
-    this.mViewForwardSummary = ((TextView)findViewById(2131367236));
+    setContentView(2131562286);
+    setRightButton(2131717961, new QZoneShareActivity.6(this));
+    this.mConatainer = ((RelativeLayout)findViewById(2131375947));
+    this.mViewEdit = ((EditText)findViewById(2131367411));
+    this.mThumbContainer = ((FrameLayout)findViewById(2131367413));
+    this.mThumbView = ((URLImageView)findViewById(2131367416));
+    this.mViewForwardTitle = ((TextView)findViewById(2131367425));
+    this.mViewForwardTitle.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
+    this.mViewForwardSummary = ((TextView)findViewById(2131367421));
+    this.mViewForwardSummary.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
     addEmoPanel();
-    this.viewAtUser = findViewById(2131375086);
+    this.viewAtUser = findViewById(2131375464);
     setEventAtUser();
-    this.viewSmiley = ((ImageView)findViewById(2131375119));
+    this.viewSmiley = ((ImageView)findViewById(2131375497));
     setEventSmiley();
     setEventEditView();
-    this.viewTextCount = ((TextView)findViewById(2131367238));
+    this.viewTextCount = ((TextView)findViewById(2131367423));
     this.imm = ((InputMethodManager)getSystemService("input_method"));
     this.mAtUserList = new ArrayList();
   }
@@ -535,9 +542,9 @@ public class QZoneShareActivity
   private void startShare()
   {
     callbackShareSuccess();
-    if (!NetworkUtil.isNetSupport(this))
+    if (!NetworkUtil.d(this))
     {
-      znl.a(1, 2131694255);
+      QRUtils.a(1, 2131694459);
       return;
     }
     ThreadManager.postImmediately(new QZoneShareActivity.7(this), null, true);
@@ -653,26 +660,28 @@ public class QZoneShareActivity
     }
   }
   
+  private void updateForwardSummary()
+  {
+    String str = handleATContent(this.mSummary);
+    this.mViewForwardSummary.setText(new QQText(QzoneEmotionUtils.emCodesToQQcodes(str), 3, 16));
+  }
+  
   private void updateForwardTitle()
   {
-    String str2 = this.mTitle;
-    String str1 = str2;
-    if (str2 != null) {
-      str1 = this.mTitle.replace("[em]e10086[/em]", "");
-    }
-    this.mViewForwardTitle.setText(str1);
+    String str = handleATContent(this.mTitle);
+    this.mViewForwardTitle.setText(new QQText(QzoneEmotionUtils.emCodesToQQcodes(str), 3, 16));
   }
   
   private void updateImageView()
   {
-    Object localObject = getResources().getDrawable(2130847847);
+    Object localObject = getResources().getDrawable(2130848204);
     if (!TextUtils.isEmpty(this.mThumbUrl))
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mRequestHeight = ViewUtils.dpToPx(70.0F);
-      localURLDrawableOptions.mRequestWidth = ViewUtils.dpToPx(70.0F);
+      localURLDrawableOptions.mRequestHeight = ViewUtils.b(70.0F);
+      localURLDrawableOptions.mRequestWidth = ViewUtils.b(70.0F);
       if (isValidUrl(this.mThumbUrl)) {}
       for (localObject = URLDrawable.getDrawable(this.mThumbUrl, localURLDrawableOptions);; localObject = URLDrawable.getDrawable(new File(this.mThumbUrl), localURLDrawableOptions))
       {
@@ -703,10 +712,10 @@ public class QZoneShareActivity
     }
     for (;;)
     {
-      localObject = getResources().getDrawable(2130847847);
+      localObject = getResources().getDrawable(2130848204);
       this.mThumbView.setBackgroundDrawable((Drawable)localObject);
       return;
-      this.mViewForwardSummary.setText(this.mSummary);
+      updateForwardSummary();
       break;
       if (TextUtils.isEmpty(this.mSummary))
       {
@@ -720,10 +729,10 @@ public class QZoneShareActivity
       }
       else
       {
-        int i = ViewUtils.getScreenWidth();
-        int j = ViewUtils.dpToPx(24.0F);
-        int k = ViewUtils.dpToPx(24.0F);
-        int m = ViewUtils.dpToPx(80.0F);
+        int i = ViewUtils.a();
+        int j = ViewUtils.b(24.0F);
+        int k = ViewUtils.b(24.0F);
+        int m = ViewUtils.b(80.0F);
         if (getTitleLineCount(this.mTitle, 14, i - j - k - m) > 1)
         {
           this.mViewForwardTitle.setVisibility(0);
@@ -746,7 +755,7 @@ public class QZoneShareActivity
           }
           updateForwardTitle();
           this.mViewForwardTitle.setMaxLines(1);
-          this.mViewForwardSummary.setText(this.mSummary);
+          updateForwardSummary();
           this.mViewForwardSummary.setMaxLines(1);
         }
       }
@@ -772,7 +781,7 @@ public class QZoneShareActivity
   
   protected final void addEmoPanel()
   {
-    this.mViewEdit.setEditableFactory(QzoneTextBuilder.EMOCTATION_FACORY);
+    this.mViewEdit.setEditableFactory(QzoneTextBuilder.a);
     try
     {
       this.viewEmoView = InputViewPanelControl.createEmoPanel(this, this.mViewEdit);
@@ -795,7 +804,7 @@ public class QZoneShareActivity
           }
           try
           {
-            showProgressDialog(2131692060);
+            showProgressDialog(2131692191);
             sAppinfoLock.wait(5000L);
             if (this.mGetAppinfoResponse != null) {
               break;
@@ -824,8 +833,8 @@ public class QZoneShareActivity
         if (QLog.isColorLevel()) {
           QLog.d("QZoneShare", 2, "-->sdk_share, checkAppinfoLocked, sign: " + str + ", appinfo is null.");
         }
-        showProgressDialog(2131692060);
-        aasr.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l, this.mAppinfoObserver, paramString);
+        showProgressDialog(2131692191);
+        Share.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l, this.mAppinfoObserver, paramString);
         try
         {
           sAppinfoLock.wait(5000L);
@@ -890,7 +899,7 @@ public class QZoneShareActivity
     initUI();
     initData();
     updateLayout();
-    if ((!ImmersiveUtils.c) && (!isInMultiWindow())) {
+    if ((!ImmersiveUtils.statusHeightCorrect) && (!isInMultiWindow())) {
       getWindow().getDecorView().post(new QZoneShareActivity.1(this));
     }
     if ((!TextUtils.isEmpty(this.mThumbUrl)) && (!isValidUrl(this.mThumbUrl)) && (getIntent().getBooleanExtra("key_require_storage_permission", false)))
@@ -994,6 +1003,42 @@ public class QZoneShareActivity
     return this.mConatainer;
   }
   
+  public String handleATContent(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(paramString);
+    Matcher localMatcher = AT_PATTERN.matcher(localStringBuilder);
+    int i = 0;
+    try
+    {
+      while (localMatcher.find())
+      {
+        int j = localMatcher.start();
+        int k = localMatcher.end();
+        String str1 = localMatcher.group();
+        int n = str1.indexOf("uin:");
+        int i1 = "uin:".length();
+        int m = str1.indexOf(",nick:");
+        str1.substring(n + i1, m);
+        n = str1.length();
+        String str2 = str1.substring(m + ",nick:".length(), n - 1).replace("%25", "%").replace("%2C", ",").replace("%7D", "}").replace("%7B", "{").replace("%3A", ":").replace("%3E", ">");
+        str2 = "@" + str2;
+        localStringBuilder.replace(j - i, k - i, str2);
+        j = str1.length();
+        k = str2.length();
+        i += j - k;
+      }
+      return localException.toString();
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QZoneShare", 1, localException, new Object[0]);
+      return paramString;
+    }
+  }
+  
   protected boolean hideEmoView()
   {
     if ((this.viewEmoView == null) || (this.viewDivider == null) || (this.viewSmiley == null)) {}
@@ -1004,7 +1049,7 @@ public class QZoneShareActivity
     this.viewEmoView.setVisibility(8);
     this.viewDivider.setVisibility(4);
     ajustDesToolbar(this.emoShow);
-    this.viewSmiley.setImageResource(2130849069);
+    this.viewSmiley.setImageResource(2130849449);
     return true;
   }
   
@@ -1057,20 +1102,20 @@ public class QZoneShareActivity
       RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams1.addRule(12);
       this.line = new RelativeLayout(this);
-      this.desToolbar = LayoutInflater.from(this).inflate(2131562345, null);
+      this.desToolbar = LayoutInflater.from(this).inflate(2131562483, null);
       RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams2.addRule(10);
       this.desToolbar.setVisibility(4);
       this.line.addView(this.desToolbar, localLayoutParams2);
       localLayoutParams2 = new RelativeLayout.LayoutParams(-1, 2);
       localLayoutParams2.addRule(3, this.desToolbar.getId());
-      this.viewDivider = LayoutInflater.from(this).inflate(2131562238, null);
+      this.viewDivider = LayoutInflater.from(this).inflate(2131562376, null);
       this.line.addView(this.viewDivider, localLayoutParams2);
-      localLayoutParams2 = new RelativeLayout.LayoutParams(-1, (int)(150.0F * ViewUtils.getDensity()));
+      localLayoutParams2 = new RelativeLayout.LayoutParams(-1, (int)(150.0F * ViewUtils.a()));
       localLayoutParams2.addRule(3, this.viewDivider.getId());
       this.line.addView(this.viewEmoView, localLayoutParams2);
       this.viewEmoView.setVisibility(8);
-      this.viewEmoView.setBackgroundColor(getResources().getColor(2131166685));
+      this.viewEmoView.setBackgroundColor(getResources().getColor(2131166688));
       ((RelativeLayout)localObject).addView(this.line, localLayoutParams1);
       this.rootHeight = ((RelativeLayout)localObject).getHeight();
       ((RelativeLayout)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new QZoneShareActivity.8(this, (RelativeLayout)localObject));
@@ -1192,11 +1237,11 @@ public class QZoneShareActivity
   protected final void showOpenIdConfirmDialog(Activity paramActivity, QZoneShareData paramQZoneShareData)
   {
     paramQZoneShareData = new QZoneShareActivity.17(this, paramActivity, paramQZoneShareData);
-    QQCustomDialog localQQCustomDialog = bhdj.a(paramActivity, 230);
-    localQQCustomDialog.setMessage(2131694975);
-    localQQCustomDialog.setTitle(2131692056);
-    localQQCustomDialog.setNegativeButton(2131690697, paramQZoneShareData);
-    localQQCustomDialog.setPositiveButton(2131718634, paramQZoneShareData);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
+    localQQCustomDialog.setMessage(2131695214);
+    localQQCustomDialog.setTitle(2131692187);
+    localQQCustomDialog.setNegativeButton(2131690800, paramQZoneShareData);
+    localQQCustomDialog.setPositiveButton(2131719158, paramQZoneShareData);
     localQQCustomDialog.setCancelable(false);
     if ((paramActivity != null) && (!paramActivity.isFinishing())) {}
     try
@@ -1217,7 +1262,7 @@ public class QZoneShareActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity
  * JD-Core Version:    0.7.0.1
  */

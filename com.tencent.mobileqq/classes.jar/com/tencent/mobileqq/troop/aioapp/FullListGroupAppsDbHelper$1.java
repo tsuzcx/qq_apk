@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import bfca;
 import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
 
-public class FullListGroupAppsDbHelper$1
+class FullListGroupAppsDbHelper$1
   implements Runnable
 {
-  public FullListGroupAppsDbHelper$1(bfca parambfca, FullListGroupAppEntity paramFullListGroupAppEntity) {}
+  FullListGroupAppsDbHelper$1(FullListGroupAppsDbHelper paramFullListGroupAppsDbHelper, FullListGroupAppEntity paramFullListGroupAppEntity) {}
   
   public void run()
   {
-    bfca.a(this.this$0, this.a);
+    FullListGroupAppsDbHelper.a(this.this$0, this.a);
   }
 }
 

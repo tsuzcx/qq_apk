@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.ark.API;
 
-import apqy;
-import aprb;
-import apre;
 import com.tencent.ark.ark.VariantWrapper;
 
-public class ArkAppDeviceModule$ObserverMethod$3$2
+class ArkAppDeviceModule$ObserverMethod$3$2
   implements Runnable
 {
-  public ArkAppDeviceModule$ObserverMethod$3$2(apre paramapre) {}
+  ArkAppDeviceModule$ObserverMethod$3$2(ArkAppDeviceModule.ObserverMethod.3 param3) {}
   
   public void run()
   {
-    apqy.a(this.a.jdField_a_of_type_Aprb.a, this.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
-    ark.VariantWrapper localVariantWrapper = this.a.jdField_a_of_type_Aprb.a.a(this.a.jdField_a_of_type_Long);
+    ArkAppDeviceModule.a(this.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDeviceModule$ObserverMethod.a, this.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
+    ark.VariantWrapper localVariantWrapper = this.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDeviceModule$ObserverMethod.a.a(this.a.jdField_a_of_type_Long);
     if (localVariantWrapper != null) {
       localVariantWrapper.Reset();
     }

@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agjm;
-
-public class QQGamePubAIOHelper$5
+class QQGamePubAIOHelper$5
   implements Runnable
 {
-  public QQGamePubAIOHelper$5(agjm paramagjm, int paramInt) {}
+  QQGamePubAIOHelper$5(QQGamePubAIOHelper paramQQGamePubAIOHelper, int paramInt) {}
   
   public void run()
   {
-    if (!agjm.a(this.this$0)) {
+    if (!QQGamePubAIOHelper.a(this.this$0)) {
       return;
     }
-    this.this$0.b(this.a);
+    this.this$0.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.5
  * JD-Core Version:    0.7.0.1
  */

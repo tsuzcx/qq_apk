@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.ocr;
 
-import apkm;
-import aytd;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.io.File;
 import java.util.HashMap;
 
-public class OcrControl$4
+class OcrControl$4
   implements Runnable
 {
-  public OcrControl$4(aytd paramaytd, apkm paramapkm) {}
+  OcrControl$4(OcrControl paramOcrControl, ARCloudReqFileInfo paramARCloudReqFileInfo) {}
   
   public void run()
   {

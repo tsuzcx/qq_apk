@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class QzmallCustomPraise
   extends JceStruct
 {
-  public int iFrameRate;
+  public int iFrameRate = 0;
   public int iItemId = -1;
-  public int iSubPraisetype;
-  public int iType;
-  public long lUin;
+  public int iSubPraisetype = 0;
+  public int iType = 0;
+  public long lUin = 0L;
   public String strCmShowActionId = "";
   public String strItemSummary = "";
   public String strPraiseComboZip = "";

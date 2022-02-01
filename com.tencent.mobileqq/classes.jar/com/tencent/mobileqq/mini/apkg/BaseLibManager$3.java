@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.apkg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05325;
@@ -13,7 +14,6 @@ import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nwp;
 
 class BaseLibManager$3
   implements Downloader.DownloadListener
@@ -94,7 +94,7 @@ class BaseLibManager$3
           FileUtils.delete(paramString, false);
         }
         paramDownloadResult.mkdir();
-        i = nwp.a(this.val$downloadZipPath, paramString);
+        i = ZipUtils.unZipFolder(this.val$downloadZipPath, paramString);
         if (i != 0) {
           break label676;
         }

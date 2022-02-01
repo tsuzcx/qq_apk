@@ -10,8 +10,8 @@ public final class doufu_piece_req
   extends JceStruct
 {
   static Map<String, String> cache_mapExt = new HashMap();
-  public Map<String, String> mapExt;
-  public long uin;
+  public Map<String, String> mapExt = null;
+  public long uin = 0L;
   
   static
   {

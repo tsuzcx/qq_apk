@@ -104,7 +104,7 @@ class PtvGuideUploader$1
       if (QLog.isColorLevel()) {
         QLog.d("PtvGuideUploader", 2, "<BDH_LOG> Transaction Success,delete combined file");
       }
-      FileUtils.deleteFile(this.val$combinePath);
+      FileUtils.e(this.val$combinePath);
       PtvGuideUploader.access$700(this.this$0, true);
       return;
     }

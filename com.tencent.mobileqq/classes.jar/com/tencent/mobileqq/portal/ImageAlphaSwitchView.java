@@ -9,19 +9,18 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Transformation;
-import aznk;
-import bhil;
+import com.tencent.mobileqq.utils.ValueAnimation;
 
 public class ImageAlphaSwitchView
   extends View
 {
-  public float a;
+  float jdField_a_of_type_Float = 0.0F;
   int jdField_a_of_type_Int;
   public Bitmap a;
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   public Transformation a;
-  public bhil<Float> a;
+  ValueAnimation<Float> jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = null;
   int b;
   public Bitmap b;
   int c = 3;
@@ -30,8 +29,6 @@ public class ImageAlphaSwitchView
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_Bhil = null;
-    this.jdField_a_of_type_Float = 0.0F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
@@ -39,20 +36,18 @@ public class ImageAlphaSwitchView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_Bhil = null;
-    this.jdField_a_of_type_Float = 0.0F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
   private void a()
   {
-    bhil localbhil = new bhil(Float.valueOf(0.0F), Float.valueOf(255.0F), new aznk(this));
-    if (this.jdField_a_of_type_Bhil != null) {
-      this.jdField_a_of_type_Bhil.cancel();
+    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(255.0F), new ImageAlphaSwitchView.1(this));
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
     }
-    this.jdField_a_of_type_Bhil = localbhil;
-    localbhil.setDuration(500L);
-    localbhil.start();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = localValueAnimation;
+    localValueAnimation.setDuration(500L);
+    localValueAnimation.start();
     invalidate();
   }
   
@@ -70,7 +65,7 @@ public class ImageAlphaSwitchView
     a();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     boolean bool = false;
     super.onDraw(paramCanvas);
@@ -126,8 +121,8 @@ public class ImageAlphaSwitchView
             this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255 - (int)this.jdField_a_of_type_Float);
             this.jdField_a_of_type_AndroidGraphicsRect.set(i, k, m + i, j);
             paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-            if (this.jdField_a_of_type_Bhil != null) {
-              bool = this.jdField_a_of_type_Bhil.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+            if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
+              bool = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
             }
             if (bool) {
               invalidate();
@@ -157,7 +152,7 @@ public class ImageAlphaSwitchView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -169,8 +164,8 @@ public class ImageAlphaSwitchView
   
   public void setImage(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_Bhil != null) {
-      this.jdField_a_of_type_Bhil.cancel();
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     this.jdField_b_of_type_AndroidGraphicsBitmap = null;

@@ -5,13 +5,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import avla;
-import avld;
 
 public class RichTextPanelRecyclerView
   extends RecyclerView
 {
-  private avld a;
+  private RichTextPanelScrollListener a;
   
   public RichTextPanelRecyclerView(Context paramContext)
   {
@@ -47,18 +45,18 @@ public class RichTextPanelRecyclerView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setPanelExtendHelper(avla paramavla)
+  public void setPanelExtendHelper(RichTextPanelExtendHelper paramRichTextPanelExtendHelper)
   {
-    if (paramavla == null) {
+    if (paramRichTextPanelExtendHelper == null) {
       return;
     }
-    this.a = new avld(paramavla);
+    this.a = new RichTextPanelScrollListener(paramRichTextPanelExtendHelper);
     addOnScrollListener(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.RichTextPanelRecyclerView
  * JD-Core Version:    0.7.0.1
  */

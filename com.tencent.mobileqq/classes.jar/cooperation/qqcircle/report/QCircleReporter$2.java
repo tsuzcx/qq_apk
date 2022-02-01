@@ -1,6 +1,6 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue;
 
 class QCircleReporter$2
@@ -10,13 +10,13 @@ class QCircleReporter$2
   
   public void run()
   {
-    QLog.d("QCircleReportOutboxTaskQueue", 1, "initOutbox...");
+    RFLog.d("QCircleReportOutboxTaskQueue", RFLog.USR, "initOutbox...");
     QCircleReportOutboxTaskQueue.getInstance();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReporter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,32 +13,32 @@ class ApolloFloatActivity$1
   
   public void run()
   {
-    this.this$0.a = new TextView(this.this$0);
-    this.this$0.a.setBackgroundResource(2130850733);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.dp2px(50.0F, this.jdField_a_of_type_AndroidContentResResources), AIOUtils.dp2px(52.0F, this.jdField_a_of_type_AndroidContentResResources));
-    if (ApolloFloatActivity.a(this.this$0) == 1)
+    this.this$0.rightView = new TextView(this.this$0);
+    this.this$0.rightView.setBackgroundResource(2130851159);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentResResources), AIOUtils.a(52.0F, this.jdField_a_of_type_AndroidContentResResources));
+    if (ApolloFloatActivity.access$000(this.this$0) == 1)
     {
-      this.this$0.a.setTextColor(-16777216);
-      this.this$0.a.setVisibility(8);
+      this.this$0.rightView.setTextColor(-16777216);
+      this.this$0.rightView.setVisibility(8);
     }
     for (;;)
     {
-      this.this$0.a.setGravity(17);
-      this.this$0.a.setTextSize(17.0F);
-      this.this$0.a.setText(2131690845);
-      this.this$0.a.setOnClickListener(this.this$0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.this$0.a, localLayoutParams);
+      this.this$0.rightView.setGravity(17);
+      this.this$0.rightView.setTextSize(17.0F);
+      this.this$0.rightView.setText(2131690946);
+      this.this$0.rightView.setOnClickListener(this.this$0);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.this$0.rightView, localLayoutParams);
       return;
       localLayoutParams.addRule(10, -1);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.rightMargin = AIOUtils.dp2px(5.0F, this.jdField_a_of_type_AndroidContentResResources);
-      this.this$0.a.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131167020));
+      localLayoutParams.rightMargin = AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentResResources);
+      this.this$0.rightView.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131167027));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloFloatActivity.1
  * JD-Core Version:    0.7.0.1
  */

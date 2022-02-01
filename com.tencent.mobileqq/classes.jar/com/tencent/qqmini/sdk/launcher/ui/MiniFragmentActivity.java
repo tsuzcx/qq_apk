@@ -1,6 +1,5 @@
 package com.tencent.qqmini.sdk.launcher.ui;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -160,7 +159,7 @@ public class MiniFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ui.MiniFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

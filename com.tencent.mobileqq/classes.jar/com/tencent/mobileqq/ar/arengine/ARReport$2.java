@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apmk;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public class ARReport$2
+class ARReport$2
   implements Runnable
 {
-  public ARReport$2(apmk paramapmk, String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, long paramLong4, int paramInt2, long paramLong5, int paramInt3, long paramLong6, long paramLong7, int paramInt4) {}
+  ARReport$2(ARReport paramARReport, String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, long paramLong4, int paramInt2, long paramLong5, int paramInt3, long paramLong6, long paramLong7, int paramInt4) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class ARReport$2
     if (this.jdField_a_of_type_Long > 0L) {
       localHashMap.put("cloud_download_feature_size", String.valueOf(this.jdField_a_of_type_Long));
     }
-    if (apmk.a(this.this$0, this.jdField_b_of_type_Long)) {
+    if (ARReport.a(this.this$0, this.jdField_b_of_type_Long)) {
       localHashMap.put("cloud_download_feature_time", String.valueOf(this.jdField_b_of_type_Long));
     }
     if (this.jdField_a_of_type_Int > -1) {
@@ -29,7 +28,7 @@ public class ARReport$2
     if (this.jdField_c_of_type_Long > 0L) {
       localHashMap.put("cloud_download_model_size", String.valueOf(this.jdField_c_of_type_Long));
     }
-    if (apmk.a(this.this$0, this.jdField_d_of_type_Long)) {
+    if (ARReport.a(this.this$0, this.jdField_d_of_type_Long)) {
       localHashMap.put("cloud_download_model_time", String.valueOf(this.jdField_d_of_type_Long));
     }
     if (this.jdField_b_of_type_Int > -1) {
@@ -41,8 +40,8 @@ public class ARReport$2
     if (this.jdField_c_of_type_Int > -1) {
       localHashMap.put("cloud_download_type", String.valueOf(this.jdField_c_of_type_Int));
     }
-    localHashMap.put("cloud_download_net_type", String.valueOf(NetworkUtil.getSystemNetwork(BaseApplication.getContext())));
-    if (apmk.a(this.this$0, this.f)) {
+    localHashMap.put("cloud_download_net_type", String.valueOf(NetworkUtil.a(BaseApplication.getContext())));
+    if (ARReport.a(this.this$0, this.f)) {
       localHashMap.put("cloud_download_all_time", String.valueOf(this.f));
     }
     if (this.g > 0L) {

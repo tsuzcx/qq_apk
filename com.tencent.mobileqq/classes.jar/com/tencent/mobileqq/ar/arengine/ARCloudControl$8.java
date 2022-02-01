@@ -1,37 +1,34 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apji;
-import apjo;
-import apjq;
-import apki;
-import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ISosoInterfaceApi;
 import com.tencent.qphone.base.util.QLog;
 
-public class ARCloudControl$8
+class ARCloudControl$8
   implements Runnable
 {
-  public ARCloudControl$8(apji paramapji) {}
+  ARCloudControl$8(ARCloudControl paramARCloudControl) {}
   
   public void run()
   {
-    if ((apji.a(this.this$0) != null) && (apji.e(this.this$0)))
+    if ((ARCloudControl.a(this.this$0) != null) && (ARCloudControl.e(this.this$0)))
     {
       QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
-      SosoInterface.removeOnLocationListener(this.this$0.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
-      if (!apji.a(this.this$0)) {}
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this.this$0.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+      if (!ARCloudControl.a(this.this$0)) {}
     }
     else
     {
       return;
     }
-    apjq localapjq = new apjq();
-    localapjq.a = 2;
-    apki.a(this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, apji.a(this.this$0), localapjq);
-    if (apji.a(this.this$0) != null) {
-      apji.a(this.this$0).a(0, apji.a(this.this$0));
+    ARCloudLBSLocationCheckResult localARCloudLBSLocationCheckResult = new ARCloudLBSLocationCheckResult();
+    localARCloudLBSLocationCheckResult.a = 2;
+    ARCloudRecogResult.a(this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, ARCloudControl.a(this.this$0), localARCloudLBSLocationCheckResult);
+    if (ARCloudControl.a(this.this$0) != null) {
+      ARCloudControl.a(this.this$0).a(0, ARCloudControl.a(this.this$0));
     }
-    apji.a(this.this$0, null);
+    ARCloudControl.a(this.this$0, null);
   }
 }
 

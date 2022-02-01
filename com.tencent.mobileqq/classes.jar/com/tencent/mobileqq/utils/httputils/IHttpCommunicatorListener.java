@@ -8,9 +8,6 @@ public abstract interface IHttpCommunicatorListener
   
   public abstract void handleRedirect(String paramString);
   
-  @Deprecated
-  public abstract void onFlowEvent(HttpMsg paramHttpMsg);
-  
   public abstract boolean statusChanged(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt);
 }
 

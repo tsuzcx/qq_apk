@@ -1,12 +1,11 @@
 package com.tencent.gdtad.api.motivevideo.webbottomcard;
 
-import acfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class GdtMVWebBottomCardController$1
+class GdtMVWebBottomCardController$1
   implements Runnable
 {
-  public GdtMVWebBottomCardController$1(acfo paramacfo) {}
+  GdtMVWebBottomCardController$1(GdtMVWebBottomCardController paramGdtMVWebBottomCardController) {}
   
   public void run()
   {
@@ -21,7 +20,7 @@ public class GdtMVWebBottomCardController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.webbottomcard.GdtMVWebBottomCardController.1
  * JD-Core Version:    0.7.0.1
  */

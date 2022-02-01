@@ -12,9 +12,7 @@ public class ByteData$a$a
   {
     if ((paramInt == 0) && (paramObject != null))
     {
-      a locala = ByteData.access$300(this.a.b);
-      paramObject = (String)paramObject;
-      locala.a(paramObject);
+      ByteData.access$400(this.a.b).a((String)paramObject);
       ByteData.logCat("poxy_java", "data: " + paramObject);
     }
   }

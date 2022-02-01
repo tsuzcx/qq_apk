@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class QueryADBannerRsp
   extends JceStruct
 {
-  private static volatile boolean cacheInited;
+  private static volatile boolean cacheInited = false;
   static volatile ArrayList<QueryADBannerUnit> cache_vecAdBanner;
   public ArrayList<QueryADBannerUnit> vecAdBanner;
   

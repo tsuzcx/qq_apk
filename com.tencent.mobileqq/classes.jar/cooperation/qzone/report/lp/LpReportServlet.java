@@ -2,18 +2,16 @@ package cooperation.qzone.report.lp;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QUA;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import cooperation.qzone.statistic.StatisticCollector;
 import cooperation.qzone.statistic.access.WnsKeys;
 import cooperation.qzone.statistic.access.concept.Statistic;
-import cooperation.qzone.util.NetworkState;
 import cooperation.qzone.util.ProtocolUtils;
 import cooperation.qzone.util.QZLog;
 import java.util.ArrayList;
-import mqq.app.AppRuntime;
 import mqq.app.MSFServlet;
 import mqq.app.Packet;
 
@@ -30,11 +28,11 @@ public class LpReportServlet
     localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
     localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
     localStatistic.setValue(WnsKeys.CommandId, "ClientReport.update.ClientReport");
-    localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
+    localStatistic.setValue(WnsKeys.APN, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAPN());
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt));
-    localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()));
-    localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
-    localStatistic.setValue(WnsKeys.Build, "4875");
+    localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin()));
+    localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    localStatistic.setValue(WnsKeys.Build, "5105");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);
@@ -113,11 +111,11 @@ public class LpReportServlet
       {
         paramIntent = new StringBuilder().append("startReport, tabletype = ").append(localLpReportNewIntent.type).append(", size = ");
         if (localLpReportNewIntent.multi_info == null) {
-          break label165;
+          break label164;
         }
       }
     }
-    label165:
+    label164:
     for (int i = localLpReportNewIntent.multi_info.size();; i = 0)
     {
       QLog.i("LpReport.LpReportServlet", 2, i);
@@ -127,7 +125,7 @@ public class LpReportServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -18,22 +18,22 @@ public final class mobile_feeds_req
   static Map<Integer, String> cache_rank_param;
   static Map<String, String> cache_stMapExtendinfo;
   public String attach_info = "";
-  public Map<Integer, String> busi_param;
-  public int count;
+  public Map<Integer, String> busi_param = null;
+  public int count = 0;
   public String device_info = "";
   public String feed_attach_info = "";
-  public Map<String, String> feed_infos;
-  public byte force;
-  public s_gps gps_info;
-  public Map<String, String> kitFileInfos;
-  public Map<String, byte[]> mapBinaryExtendInfo;
-  public Map<Integer, String> mapDesc;
-  public long offset;
-  public Map<Integer, String> rank_param;
-  public int refresh_type;
-  public int relation_type;
-  public int scene;
-  public Map<String, String> stMapExtendinfo;
+  public Map<String, String> feed_infos = null;
+  public byte force = 0;
+  public s_gps gps_info = null;
+  public Map<String, String> kitFileInfos = null;
+  public Map<String, byte[]> mapBinaryExtendInfo = null;
+  public Map<Integer, String> mapDesc = null;
+  public long offset = 0L;
+  public Map<Integer, String> rank_param = null;
+  public int refresh_type = 0;
+  public int relation_type = 0;
+  public int scene = 0;
+  public Map<String, String> stMapExtendinfo = null;
   public String tlv_attach_info = "";
   
   static

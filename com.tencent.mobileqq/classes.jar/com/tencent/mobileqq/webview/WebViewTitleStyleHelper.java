@@ -2,9 +2,9 @@ package com.tencent.mobileqq.webview;
 
 import android.graphics.Color;
 import android.text.TextUtils;
-import bhnm;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.IndividuationConfigInfo;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,12 +14,16 @@ import org.json.JSONObject;
 
 public class WebViewTitleStyleHelper
 {
-  public static final String TAG = "WebViewTitleStyleHelper";
-  private static WebViewTitleStyleHelper sInstance;
-  public boolean hasParseJson;
-  public Map<String, WebViewTitleStyle> styleMap = new HashMap();
+  private static WebViewTitleStyleHelper a;
+  public Map<String, WebViewTitleStyle> a;
+  public boolean a;
   
-  private int getColorFromStr(String paramString)
+  private WebViewTitleStyleHelper()
+  {
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  private int a(String paramString)
   {
     int j = -1;
     int i = j;
@@ -54,20 +58,77 @@ public class WebViewTitleStyleHelper
     }
   }
   
-  public static WebViewTitleStyleHelper getsInstance()
+  public static WebViewTitleStyleHelper a()
   {
-    if (sInstance == null) {}
+    if (jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyleHelper == null) {}
     try
     {
-      if (sInstance == null) {
-        sInstance = new WebViewTitleStyleHelper();
+      if (jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyleHelper == null) {
+        jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyleHelper = new WebViewTitleStyleHelper();
       }
-      return sInstance;
+      return jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyleHelper;
     }
     finally {}
   }
   
-  public boolean isConfigValid(AppRuntime paramAppRuntime, JSONObject paramJSONObject)
+  public void a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_JavaUtilMap.clear();
+        boolean bool = paramAppRuntime instanceof QQAppInterface;
+        try
+        {
+          localObject = VasUpdateUtil.a(paramAppRuntime, "vipData_app_webviewNavStyle.json", bool, null);
+          if (localObject != null) {
+            break label75;
+          }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("WebViewTitleStyleHelper", 2, "parseJson file not exists");
+        }
+        catch (Exception paramAppRuntime)
+        {
+          QLog.e("WebViewTitleStyleHelper", 1, "parseJson exception e = ", paramAppRuntime);
+        }
+        continue;
+      }
+      finally {}
+      label75:
+      this.jdField_a_of_type_Boolean = true;
+      Object localObject = ((JSONObject)localObject).optJSONArray("webViewStyleList");
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+      {
+        int j = ((JSONArray)localObject).length();
+        int i = 0;
+        while (i < j)
+        {
+          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+          if (a(paramAppRuntime, localJSONObject))
+          {
+            String str = localJSONObject.optString("domain", "");
+            if (!TextUtils.isEmpty(str))
+            {
+              WebViewTitleStyle localWebViewTitleStyle = new WebViewTitleStyle();
+              localWebViewTitleStyle.b = a(localJSONObject.optString("statusColor", ""));
+              localWebViewTitleStyle.c = a(localJSONObject.optString("bgColor", ""));
+              localWebViewTitleStyle.d = a(localJSONObject.optString("titleColor", ""));
+              localWebViewTitleStyle.e = a(localJSONObject.optString("iconColor", ""));
+              this.jdField_a_of_type_JavaUtilMap.put(str, localWebViewTitleStyle);
+            }
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public boolean a(AppRuntime paramAppRuntime, JSONObject paramJSONObject)
   {
     bool3 = false;
     bool1 = false;
@@ -95,7 +156,7 @@ public class WebViewTitleStyleHelper
         break label416;
       }
       str = paramJSONObject.getString("minVersion");
-      if ((TextUtils.isEmpty(str)) || (bhnm.a(str, "8.4.10.4875"))) {
+      if ((TextUtils.isEmpty(str)) || (IndividuationConfigInfo.a(str, "8.5.5.5105"))) {
         break label416;
       }
       i = 0;
@@ -132,7 +193,7 @@ public class WebViewTitleStyleHelper
         if (!TextUtils.isEmpty(str))
         {
           j = i;
-          if (!bhnm.a("8.4.10.4875", str)) {
+          if (!IndividuationConfigInfo.a("8.5.5.5105", str)) {
             j = 0;
           }
         }
@@ -171,67 +232,10 @@ public class WebViewTitleStyleHelper
       QLog.e("WebViewTitleStyleHelper", 1, "parseJson, startIndex < endIndex, element=" + paramJSONObject);
     }
   }
-  
-  public void parseJson(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        this.styleMap.clear();
-        boolean bool = paramAppRuntime instanceof QQAppInterface;
-        try
-        {
-          localObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "vipData_app_webviewNavStyle.json", bool, null);
-          if (localObject != null) {
-            break label75;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("WebViewTitleStyleHelper", 2, "parseJson file not exists");
-        }
-        catch (Exception paramAppRuntime)
-        {
-          QLog.e("WebViewTitleStyleHelper", 1, "parseJson exception e = ", paramAppRuntime);
-        }
-        continue;
-      }
-      finally {}
-      label75:
-      this.hasParseJson = true;
-      Object localObject = ((JSONObject)localObject).optJSONArray("webViewStyleList");
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-      {
-        int j = ((JSONArray)localObject).length();
-        int i = 0;
-        while (i < j)
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-          if (isConfigValid(paramAppRuntime, localJSONObject))
-          {
-            String str = localJSONObject.optString("domain", "");
-            if (!TextUtils.isEmpty(str))
-            {
-              WebViewTitleStyle localWebViewTitleStyle = new WebViewTitleStyle();
-              localWebViewTitleStyle.statusBarColor = getColorFromStr(localJSONObject.optString("statusColor", ""));
-              localWebViewTitleStyle.titleBgColor = getColorFromStr(localJSONObject.optString("bgColor", ""));
-              localWebViewTitleStyle.titleColor = getColorFromStr(localJSONObject.optString("titleColor", ""));
-              localWebViewTitleStyle.leftAndRightBtnColor = getColorFromStr(localJSONObject.optString("iconColor", ""));
-              this.styleMap.put(str, localWebViewTitleStyle);
-            }
-          }
-          i += 1;
-        }
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebViewTitleStyleHelper
  * JD-Core Version:    0.7.0.1
  */

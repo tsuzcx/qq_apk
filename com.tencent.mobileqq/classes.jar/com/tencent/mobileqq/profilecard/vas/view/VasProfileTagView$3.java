@@ -7,7 +7,7 @@ class VasProfileTagView$3
   
   public void run()
   {
-    this.this$0.a();
+    this.this$0.switchScreenMode();
   }
 }
 

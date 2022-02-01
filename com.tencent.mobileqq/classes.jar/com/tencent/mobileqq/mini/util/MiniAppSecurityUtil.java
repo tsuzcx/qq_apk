@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bjhh;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.agent.util.AuthorityUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -66,7 +66,7 @@ public class MiniAppSecurityUtil
     {
       String str = getLoginMiniAppUin(BaseApplicationImpl.sApplication);
       if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSecurityUtil", 2, "doClearAfterLoginSuccess uin: " + bjhh.a(str));
+        QLog.d("MiniAppSecurityUtil", 2, "doClearAfterLoginSuccess uin: " + AuthorityUtil.a(str));
       }
       if (!TextUtils.isEmpty(str))
       {
@@ -135,7 +135,7 @@ public class MiniAppSecurityUtil
     {
       paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).getString(paramString + "_" + "kLoginMiniAppForbidToken", "");
       if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSecurityUtil", 2, "getLoginMiniAppForbidToken uin: " + bjhh.a(paramString));
+        QLog.d("MiniAppSecurityUtil", 2, "getLoginMiniAppForbidToken uin: " + AuthorityUtil.a(paramString));
       }
       return paramContext;
     }
@@ -236,7 +236,7 @@ public class MiniAppSecurityUtil
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSecurityUtil", 2, "updateLoginMiniAppUin uin: " + bjhh.a(paramString));
+        QLog.d("MiniAppSecurityUtil", 2, "updateLoginMiniAppUin uin: " + AuthorityUtil.a(paramString));
       }
       paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).edit();
       paramContext.putString("kLoginMiniAppUin", paramString);

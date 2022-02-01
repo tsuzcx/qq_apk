@@ -34,7 +34,6 @@ public class QIPCClientHelper
     sThreadEngine = paramEIPCThreadEngine;
   }
   
-  @Deprecated
   public EIPCResult callServer(String paramString1, String paramString2, Bundle paramBundle)
   {
     return getClient().callServer(paramString1, paramString2, paramBundle);

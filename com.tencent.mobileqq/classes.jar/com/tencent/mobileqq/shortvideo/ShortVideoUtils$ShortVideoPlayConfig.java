@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.shortvideo;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.dpc.api.IDPCApi;
+import com.tencent.mobileqq.dpc.enumname.DPCNames;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 public class ShortVideoUtils$ShortVideoPlayConfig
 {
   private static final String TAG = "ShortVideo.ShortVideoPlayConfig";
   public static boolean sAutoPlayInAIO = true;
-  public static boolean sReadFromDPC;
+  public static boolean sReadFromDPC = false;
   public static int sRequestedFPS = 18;
   
   public static void initConfig()
@@ -17,7 +18,7 @@ public class ShortVideoUtils$ShortVideoPlayConfig
     Object localObject;
     if (!sReadFromDPC)
     {
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.ShortVideoPlayInAIO.name(), null);
+      localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.ShortVideoPlayInAIO.name(), null);
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initConfig(), videoPlayConfig=" + (String)localObject);
       }
@@ -53,7 +54,7 @@ public class ShortVideoUtils$ShortVideoPlayConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoUtils.ShortVideoPlayConfig
  * JD-Core Version:    0.7.0.1
  */

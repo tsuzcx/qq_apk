@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import avli;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
 
 final class MiniAppController$8
   implements Runnable

@@ -3,14 +3,14 @@ package com.tencent.mobileqq.troop.shortcutbar;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class TroopShortcutBarUtil$2
+final class TroopShortcutBarUtil$2
   implements Runnable
 {
-  public TroopShortcutBarUtil$2(QQAppInterface paramQQAppInterface, String paramString, long paramLong) {}
+  TroopShortcutBarUtil$2(QQAppInterface paramQQAppInterface, String paramString, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Long);
   }
 }
 

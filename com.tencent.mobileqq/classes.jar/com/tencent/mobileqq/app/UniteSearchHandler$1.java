@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import aogi;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class UniteSearchHandler$1
+class UniteSearchHandler$1
   implements Runnable
 {
-  public UniteSearchHandler$1(aogi paramaogi, String paramString, Object paramObject) {}
+  UniteSearchHandler$1(UniteSearchHandler paramUniteSearchHandler, String paramString, Object paramObject) {}
   
   public void run()
   {
@@ -90,7 +89,7 @@ public class UniteSearchHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.UniteSearchHandler.1
  * JD-Core Version:    0.7.0.1
  */

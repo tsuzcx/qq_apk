@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.vas.qvip.util;
 
-import bhsg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 
-public class QQVipHelper$1$1
+class QQVipHelper$1$1
   implements Runnable
 {
-  public QQVipHelper$1$1(bhsg parambhsg, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
+  QQVipHelper$1$1(QQVipHelper.1 param1, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
   
   public void run()
   {
@@ -23,7 +22,7 @@ public class QQVipHelper$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.util.QQVipHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

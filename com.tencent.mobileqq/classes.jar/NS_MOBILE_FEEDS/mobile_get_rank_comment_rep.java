@@ -10,8 +10,8 @@ public final class mobile_get_rank_comment_rep
   extends JceStruct
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
-  public Map<Integer, String> busi_param;
-  public int icount;
+  public Map<Integer, String> busi_param = null;
+  public int icount = 0;
   
   static
   {

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.content.Context;
-import bizw;
 import com.tencent.mobileqq.mini.cache.Storage;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniAppUtils$2
@@ -16,7 +16,7 @@ final class MiniAppUtils$2
     Object localObject1 = null;
     try
     {
-      Storage localStorage = Storage.open(this.val$context, String.valueOf(bizw.a().a()), this.val$appId);
+      Storage localStorage = Storage.open(this.val$context, String.valueOf(CommonDataAdapter.a().a()), this.val$appId);
       localObject1 = localStorage;
       localObject3 = localStorage;
       localStorage.writeSync(this.val$key, "Object", this.val$data);

@@ -10,7 +10,7 @@ public final class stLyricInfo
   public String strFormat = "";
   public String strLyric = "";
   public String strSongMid = "";
-  public long uiSongId;
+  public long uiSongId = 0L;
   
   public stLyricInfo() {}
   

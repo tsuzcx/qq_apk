@@ -20,18 +20,18 @@ public final class get_travel_photo_list_rsp
   static ArrayList<Album> cache_recommand_album;
   static RecommendPhotos cache_recommend_photos;
   static s_outshare cache_shareinfo;
-  public Album albuminfo;
-  public int appid;
+  public Album albuminfo = null;
+  public int appid = 0;
   public String attach_info = "";
-  public Map<Integer, String> busi_param;
-  public Map<Integer, byte[]> features;
-  public int hasmore;
+  public Map<Integer, String> busi_param = null;
+  public Map<Integer, byte[]> features = null;
+  public int hasmore = 0;
   public int photo_search_status = 1;
-  public ArrayList<s_picdata> photolist;
-  public stPhotoPoiAreaList pos;
-  public ArrayList<Album> recommand_album;
-  public RecommendPhotos recommend_photos;
-  public s_outshare shareinfo;
+  public ArrayList<s_picdata> photolist = null;
+  public stPhotoPoiAreaList pos = null;
+  public ArrayList<Album> recommand_album = null;
+  public RecommendPhotos recommend_photos = null;
+  public s_outshare shareinfo = null;
   
   static
   {

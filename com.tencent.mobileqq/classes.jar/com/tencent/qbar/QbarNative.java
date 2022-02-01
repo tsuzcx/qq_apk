@@ -3,17 +3,17 @@ package com.tencent.qbar;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
 import android.text.TextUtils;
-import apho;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 public class QbarNative
 {
-  static boolean jdField_a_of_type_Boolean;
-  static boolean jdField_b_of_type_Boolean;
+  static boolean jdField_a_of_type_Boolean = false;
+  static boolean jdField_b_of_type_Boolean = false;
   private int jdField_a_of_type_Int = -1;
   private int jdField_b_of_type_Int;
   private int c;
@@ -54,7 +54,7 @@ public class QbarNative
               System.loadLibrary("QBarMod");
               jdField_a_of_type_Boolean = true;
               if (BaseApplicationImpl.getContext() != null) {
-                apho.a().a(jdField_a_of_type_Boolean);
+                ScanEntranceReport.a().a(jdField_a_of_type_Boolean);
               }
               return;
               localThrowable1 = localThrowable1;
@@ -93,21 +93,21 @@ public class QbarNative
     return GetVersion();
   }
   
-  public static native int nativeArrayConvert(int paramInt1, int paramInt2, byte[] paramArrayOfByte, int[] paramArrayOfInt);
+  protected static native int nativeArrayConvert(int paramInt1, int paramInt2, byte[] paramArrayOfByte, int[] paramArrayOfInt);
   
-  public static native int nativeCropGray2(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3);
+  protected static native int nativeCropGray2(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3);
   
-  public static native int nativeGrayRotateCropSub(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte2, int[] paramArrayOfInt, int paramInt7, int paramInt8);
+  protected static native int nativeGrayRotateCropSub(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte2, int[] paramArrayOfInt, int paramInt7, int paramInt8);
   
-  public static native int nativeTransBytes(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  protected static native int nativeTransBytes(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public static native int nativeTransPixels(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  protected static native int nativeTransPixels(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public static native int nativeYUVrotate(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2);
+  protected static native int nativeYUVrotate(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2);
   
-  public static native int nativeYUVrotateLess(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  protected static native int nativeYUVrotateLess(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public static native int nativeYuvToCropIntArray(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  protected static native int nativeYuvToCropIntArray(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
   protected native int GetCodeDetectInfo(QbarNative.QBarCodeDetectInfo[] paramArrayOfQBarCodeDetectInfo, QbarNative.QBarPoint[] paramArrayOfQBarPoint, int paramInt);
   
@@ -344,7 +344,7 @@ public class QbarNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qbar.QbarNative
  * JD-Core Version:    0.7.0.1
  */

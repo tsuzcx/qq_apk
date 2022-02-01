@@ -2,10 +2,10 @@ package com.tencent.mobileqq.profile.lifeachivement;
 
 import android.view.View;
 
-public final class LifeAchivementHelper$1
+final class LifeAchivementHelper$1
   implements Runnable
 {
-  public LifeAchivementHelper$1(View paramView) {}
+  LifeAchivementHelper$1(View paramView) {}
   
   public void run()
   {

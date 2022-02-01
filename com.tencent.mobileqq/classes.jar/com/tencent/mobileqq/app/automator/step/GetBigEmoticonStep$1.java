@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aoih;
-import asih;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -36,10 +35,10 @@ class GetBigEmoticonStep$1
     {
       return;
       localObject1 = new ArrayList();
-      aoih localaoih;
+      GetBigEmoticonStep.PackTypePair localPackTypePair;
       try
       {
-        localObject2 = new JSONObject(FileUtils.readFileContent((File)localObject2)).getJSONArray("data");
+        localObject2 = new JSONObject(FileUtils.a((File)localObject2)).getJSONArray("data");
         if ((localObject2 == null) || (((JSONArray)localObject2).length() == 0)) {
           continue;
         }
@@ -48,10 +47,10 @@ class GetBigEmoticonStep$1
         {
           int j = ((JSONArray)localObject2).getJSONObject(i).getInt("epId");
           int k = ((JSONArray)localObject2).getJSONObject(i).getInt("type");
-          localaoih = new aoih();
-          localaoih.jdField_a_of_type_JavaLangString = Integer.toString(j);
-          localaoih.jdField_a_of_type_Int = k;
-          ((List)localObject1).add(localaoih);
+          localPackTypePair = new GetBigEmoticonStep.PackTypePair();
+          localPackTypePair.jdField_a_of_type_JavaLangString = Integer.toString(j);
+          localPackTypePair.jdField_a_of_type_Int = k;
+          ((List)localObject1).add(localPackTypePair);
           i += 1;
         }
         if (localJSONException.size() == 0) {
@@ -63,15 +62,15 @@ class GetBigEmoticonStep$1
         localJSONException.printStackTrace();
         return;
       }
-      localObject2 = (asih)this.this$0.a.app.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
+      localObject2 = (EmojiManager)this.this$0.a.a.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
       int i = 0;
       while (i < localJSONException.size())
       {
-        localaoih = (aoih)localJSONException.get(i);
+        localPackTypePair = (GetBigEmoticonStep.PackTypePair)localJSONException.get(i);
         EmoticonPackage localEmoticonPackage = new EmoticonPackage();
-        localEmoticonPackage.jobType = localaoih.jdField_a_of_type_Int;
-        localEmoticonPackage.epId = localaoih.jdField_a_of_type_JavaLangString;
-        ((asih)localObject2).a(localEmoticonPackage, true);
+        localEmoticonPackage.jobType = localPackTypePair.jdField_a_of_type_Int;
+        localEmoticonPackage.epId = localPackTypePair.jdField_a_of_type_JavaLangString;
+        ((EmojiManager)localObject2).a(localEmoticonPackage, true);
         i += 1;
       }
     }

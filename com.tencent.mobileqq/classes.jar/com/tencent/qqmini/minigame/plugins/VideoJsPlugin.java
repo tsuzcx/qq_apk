@@ -67,6 +67,51 @@ public class VideoJsPlugin
     }
   }
   
+  private boolean operatePlayerSeek(String paramString, CoverVideoView paramCoverVideoView)
+  {
+    try
+    {
+      boolean bool = paramCoverVideoView.seekTo((int)(new JSONObject(paramString).optDouble("time") * 1000.0D));
+      return bool;
+    }
+    catch (Exception paramCoverVideoView)
+    {
+      QMLog.e("VideoPlugin", "wrong seek pram. " + paramString, paramCoverVideoView);
+    }
+    return false;
+  }
+  
+  private boolean operatePlayerSendDanmu(String paramString, CoverVideoView paramCoverVideoView)
+  {
+    for (;;)
+    {
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramString);
+        if (localJSONArray.length() == 2)
+        {
+          paramString = localJSONArray.getString(0);
+          i = ColorUtils.parseColor(localJSONArray.getString(1));
+          paramCoverVideoView.playDanmu(paramString, i);
+          return true;
+        }
+        if (localJSONArray.length() == 1)
+        {
+          paramString = localJSONArray.getString(0);
+          i = 0;
+          continue;
+        }
+        paramString = null;
+      }
+      catch (Exception paramString)
+      {
+        QMLog.e("VideoPlugin", "sendDanmu error.", paramString);
+        return false;
+      }
+      int i = 0;
+    }
+  }
+  
   private void removeCoverChildView(int paramInt)
   {
     int i = 0;
@@ -166,88 +211,50 @@ public class VideoJsPlugin
   public boolean operateVideoPlayer(int paramInt, String paramString1, String paramString2)
   {
     CoverView localCoverView = (CoverView)this.mCoverViewSparseArray.get(paramInt);
-    if (!(localCoverView instanceof CoverVideoView)) {}
-    do
-    {
+    if (!(localCoverView instanceof CoverVideoView)) {
       return false;
-      if ("play".equals(paramString1))
-      {
-        ((CoverVideoView)localCoverView).playWithUi();
-        return true;
-      }
-      if ("pause".equals(paramString1))
-      {
-        ((CoverVideoView)localCoverView).pauseWithUi();
-        return true;
-      }
-      if ("stop".equals(paramString1))
-      {
-        ((CoverVideoView)localCoverView).stop();
-        return true;
-      }
-      if (("seek".equals(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-        try
-        {
-          paramInt = (int)(new JSONObject(paramString2).optDouble("time") * 1000.0D);
-          bool = ((CoverVideoView)localCoverView).seekTo(paramInt);
-          return bool;
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            QMLog.e("VideoPlugin", "wrong seek pram. " + paramString2, paramString1);
-            boolean bool = false;
-          }
-        }
-      }
-      if (("playbackRate".equals(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-      {
-        QMLog.e("VideoPlugin", "playbackRate is not support.");
-        return true;
-      }
-      if ("requestFullScreen".equals(paramString1))
-      {
-        if (!((CoverVideoView)localCoverView).isFullScreen()) {
-          ((CoverVideoView)localCoverView).fullScreen();
-        }
-        return true;
-      }
-      if ("exitFullScreen".equals(paramString1))
-      {
-        if (((CoverVideoView)localCoverView).isFullScreen()) {
-          ((CoverVideoView)localCoverView).smallScreen();
-        }
-        return true;
-      }
-    } while (!"sendDanmu".equals(paramString1));
-    for (;;)
-    {
-      try
-      {
-        paramString2 = new JSONArray(paramString2);
-        if (paramString2.length() == 2)
-        {
-          paramString1 = paramString2.getString(0);
-          paramInt = ColorUtils.parseColor(paramString2.getString(1));
-          ((CoverVideoView)localCoverView).playDanmu(paramString1, paramInt);
-          return true;
-        }
-        if (paramString2.length() == 1)
-        {
-          paramString1 = paramString2.getString(0);
-          paramInt = 0;
-          continue;
-        }
-        paramString1 = null;
-      }
-      catch (Exception paramString1)
-      {
-        QMLog.e("VideoPlugin", "sendDanmu error.", paramString1);
-        return false;
-      }
-      paramInt = 0;
     }
+    if ("play".equals(paramString1))
+    {
+      ((CoverVideoView)localCoverView).playWithUi();
+      return true;
+    }
+    if ("pause".equals(paramString1))
+    {
+      ((CoverVideoView)localCoverView).pauseWithUi();
+      return true;
+    }
+    if ("stop".equals(paramString1))
+    {
+      ((CoverVideoView)localCoverView).stop();
+      return true;
+    }
+    if (("seek".equals(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      return operatePlayerSeek(paramString2, (CoverVideoView)localCoverView);
+    }
+    if (("playbackRate".equals(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      QMLog.e("VideoPlugin", "playbackRate is not support.");
+      return true;
+    }
+    if ("requestFullScreen".equals(paramString1))
+    {
+      if (!((CoverVideoView)localCoverView).isFullScreen()) {
+        ((CoverVideoView)localCoverView).fullScreen();
+      }
+      return true;
+    }
+    if ("exitFullScreen".equals(paramString1))
+    {
+      if (((CoverVideoView)localCoverView).isFullScreen()) {
+        ((CoverVideoView)localCoverView).smallScreen();
+      }
+      return true;
+    }
+    if ("sendDanmu".equals(paramString1)) {
+      return operatePlayerSendDanmu(paramString2, (CoverVideoView)localCoverView);
+    }
+    return false;
   }
   
   @JsEvent({"removeVideoPlayer"})
@@ -298,7 +305,7 @@ public class VideoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.VideoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

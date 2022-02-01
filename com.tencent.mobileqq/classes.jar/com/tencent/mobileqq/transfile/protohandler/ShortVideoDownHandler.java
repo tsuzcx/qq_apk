@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -12,9 +12,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
 import com.tencent.mobileqq.transfile.ServerAddr;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -164,7 +164,7 @@ public class ShortVideoDownHandler
     }
   }
   
-  public void handleRespBody(byte[] paramArrayOfByte, RichProto.RichProtoResp paramRichProtoResp, anza paramanza)
+  public void handleRespBody(byte[] paramArrayOfByte, RichProto.RichProtoResp paramRichProtoResp, StatictisInfo paramStatictisInfo)
   {
     for (;;)
     {
@@ -183,12 +183,12 @@ public class ShortVideoDownHandler
           localShortVideoDownResp.md5 = localPttShortVideoDownloadResp.bytes_file_md5.get().toByteArray();
           handleAddr(localShortVideoDownResp, localPttShortVideoDownloadResp);
           handleSupportQuic(localShortVideoDownResp, localPttShortVideoDownloadResp);
-          setResult(0, 0, "", "", paramanza, localShortVideoDownResp);
+          setResult(0, 0, "", "", paramStatictisInfo, localShortVideoDownResp);
           return;
         }
         if (i == -5100026)
         {
-          setResult(-1, -5100026, BaseTransProcessor.getUrlReason(i), "", paramanza, localShortVideoDownResp);
+          setResult(-1, -5100026, BaseTransProcessor.getUrlReason(i), "", paramStatictisInfo, localShortVideoDownResp);
           if (localRspBody.uint32_allow_retry.get() != 1) {
             break;
           }
@@ -201,17 +201,17 @@ public class ShortVideoDownHandler
       }
       catch (Exception localException)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), localException.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, paramRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), localException.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramStatictisInfo, paramRichProtoResp.resps);
         return;
       }
       if (i == -5100528)
       {
         long l = i;
-        setResult(-1, -5100528, BaseTransProcessor.getUrlReason(l), "", paramanza, localShortVideoDownResp);
+        setResult(-1, -5100528, BaseTransProcessor.getUrlReason(l), "", paramStatictisInfo, localShortVideoDownResp);
       }
       else
       {
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramanza, localShortVideoDownResp);
+        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramStatictisInfo, localShortVideoDownResp);
       }
     }
   }
@@ -321,7 +321,7 @@ public class ShortVideoDownHandler
     }
   }
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     FromServiceMsg localFromServiceMsg = paramProtoResp.resp;
     byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
@@ -347,11 +347,11 @@ public class ShortVideoDownHandler
   
   public void sendRichProtoReq(RichProto.RichProtoReq paramRichProtoReq)
   {
-    ProtoReqManager.ProtoReq localProtoReq;
+    ProtoReqManagerImpl.ProtoReq localProtoReq;
     RichProto.RichProtoReq.ReqCommon localReqCommon;
     if ((paramRichProtoReq != null) && (paramRichProtoReq.reqs != null) && (paramRichProtoReq.protoReqMgr != null))
     {
-      localProtoReq = new ProtoReqManager.ProtoReq();
+      localProtoReq = new ProtoReqManagerImpl.ProtoReq();
       if (paramRichProtoReq.reqs.size() != 1) {
         break label134;
       }

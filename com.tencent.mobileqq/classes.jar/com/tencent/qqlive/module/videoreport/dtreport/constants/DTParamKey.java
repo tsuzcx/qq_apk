@@ -34,9 +34,12 @@ public class DTParamKey
   public static final String REPORT_KEY_ELEMENT_LVTM = "dt_element_lvtm";
   public static final String REPORT_KEY_ELE_IMP_AREA = "dt_ele_imp_area";
   public static final String REPORT_KEY_ELE_IMP_RATE = "dt_ele_imp_rate";
+  public static final String REPORT_KEY_ELE_IS_FIRST_IMP = "dt_ele_is_first_imp";
+  public static final String REPORT_KEY_ELE_REUSE_ID = "dt_ele_reuse_id";
   public static final String REPORT_KEY_INTERACTIVE_FLAG = "dt_is_interactive_flag";
   public static final String REPORT_KEY_IS_PAGE_RETURN = "dt_pg_isreturn";
   public static final String REPORT_KEY_LVTM = "dt_lvtm";
+  public static final String REPORT_KEY_LVTM_DELTA = "dt_lvtm_delta";
   public static final String REPORT_KEY_PG_AREA = "dt_pg_area";
   public static final String REPORT_KEY_PG_ID = "dt_pgid";
   public static final String REPORT_KEY_PG_IMP_AREA = "dt_pg_imp_area";

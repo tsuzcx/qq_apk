@@ -1,78 +1,52 @@
 package com.tencent.mobileqq.model;
 
 import android.text.TextUtils;
-import awyr;
 import com.tencent.mobileqq.data.RecentEmotion;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class EmoticonManager$20
+class EmoticonManager$20
   implements Runnable
 {
-  public EmoticonManager$20(awyr paramawyr, List paramList) {}
+  EmoticonManager$20(EmoticonManager paramEmoticonManager, RecentEmotion paramRecentEmotion) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    EntityTransaction localEntityTransaction = this.this$0.a.getTransaction();
+    if (this.a == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManager", 2, "addRecentEmotionToCache key = " + this.a);
+    }
+    String str = this.a.keyword;
+    if (TextUtils.isEmpty(str))
+    {
+      QLog.e("EmoticonManager", 1, "addRecentEmotionToCache keyword empty");
+      return;
+    }
+    RecentEmotion localRecentEmotion = this.a;
+    CopyOnWriteArrayList localCopyOnWriteArrayList = EmoticonManager.a(this.this$0, str);
+    if (localCopyOnWriteArrayList != null)
+    {
+      int i = localCopyOnWriteArrayList.indexOf(this.a);
+      if (i > -1)
+      {
+        localRecentEmotion = (RecentEmotion)localCopyOnWriteArrayList.get(i);
+        localRecentEmotion.replace(this.a);
+      }
+    }
     for (;;)
     {
-      int i;
-      try
-      {
-        localEntityTransaction.begin();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("saveRecentEmotionToDB:");
-        i = this.a.size() - 1;
-        if (i >= 0)
-        {
-          RecentEmotion localRecentEmotion1 = (RecentEmotion)this.a.get(i);
-          if (localRecentEmotion1 == null) {
-            break label364;
-          }
-          String str1 = localRecentEmotion1.epId;
-          String str2 = localRecentEmotion1.eId;
-          String str3 = localRecentEmotion1.keyword;
-          localStringBuilder.append("emotion=").append(localRecentEmotion1);
-          if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3))) {
-            break label364;
-          }
-          RecentEmotion localRecentEmotion2 = (RecentEmotion)this.this$0.a.find(RecentEmotion.class, "epId=? and eId=? and keyword=?", new String[] { str1, str2, str3 });
-          RecentEmotion localRecentEmotion3 = new RecentEmotion();
-          localRecentEmotion3.epId = str1;
-          localRecentEmotion3.eId = str2;
-          localRecentEmotion3.keyword = str3;
-          localRecentEmotion3.exposeNum = localRecentEmotion1.exposeNum;
-          localRecentEmotion3.setStatus(1000);
-          if (localRecentEmotion2 != null) {
-            this.this$0.a.remove(localRecentEmotion2);
-          }
-          awyr.a(this.this$0, localRecentEmotion3);
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("EmoticonManager", 2, "saveRecentEmotionToDB e = " + localException.getMessage());
-        localEntityTransaction.end();
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonManager", 2, "saveRecentEmotionToDB_Time: " + (System.currentTimeMillis() - l));
-        }
-        return;
-        localEntityTransaction.commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonManager", 2, localException.toString());
-        }
-        localEntityTransaction.end();
-        continue;
-      }
-      finally
-      {
-        localEntityTransaction.end();
-      }
-      label364:
-      i -= 1;
+      this.this$0.d.remove(localRecentEmotion);
+      this.this$0.d.add(0, localRecentEmotion);
+      return;
+      localCopyOnWriteArrayList.add(this.a);
+      continue;
+      localCopyOnWriteArrayList = new CopyOnWriteArrayList();
+      localCopyOnWriteArrayList.add(this.a);
+      this.this$0.e.put(str, localCopyOnWriteArrayList);
     }
   }
 }

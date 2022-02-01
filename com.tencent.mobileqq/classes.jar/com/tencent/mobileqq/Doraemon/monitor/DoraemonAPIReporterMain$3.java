@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
-import adcq;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 
-public class DoraemonAPIReporterMain$3
+class DoraemonAPIReporterMain$3
   implements Runnable
 {
-  public DoraemonAPIReporterMain$3(adcq paramadcq, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2) {}
+  DoraemonAPIReporterMain$3(DoraemonAPIReporterMain paramDoraemonAPIReporterMain, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2) {}
   
   public void run()
   {
@@ -24,7 +23,7 @@ public class DoraemonAPIReporterMain$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain.3
  * JD-Core Version:    0.7.0.1
  */

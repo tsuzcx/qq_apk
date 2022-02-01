@@ -18,7 +18,6 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
-import yqc;
 
 public class ArtFilterItemView
   extends RelativeLayout
@@ -31,18 +30,17 @@ public class ArtFilterItemView
   public RelativeLayout a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   String jdField_a_of_type_JavaLangString;
-  public boolean a;
+  boolean jdField_a_of_type_Boolean = false;
   
   public ArtFilterItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(paramContext, 2131559613, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363010));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363012));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363013));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363011));
+    inflate(paramContext, 2131559689, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363052));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363054));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363055));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363053));
   }
   
   public void a()
@@ -134,14 +132,14 @@ public class ArtFilterItemView
     localTranslateAnimation.setFillEnabled(true);
     localTranslateAnimation.setStartTime(0L);
     localTranslateAnimation.setDuration(200L);
-    localTranslateAnimation.setAnimationListener(new yqc(this, paramEditVideoArtFilter));
+    localTranslateAnimation.setAnimationListener(new ArtFilterItemView.2(this, paramEditVideoArtFilter));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
   }
   
   public void b()
   {
     setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, AIOUtils.dp2px(228.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0.0F);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, AIOUtils.a(228.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0.0F);
     localTranslateAnimation.setInterpolator(new AccelerateInterpolator());
     localTranslateAnimation.setFillEnabled(true);
     localTranslateAnimation.setStartTime(0L);
@@ -163,7 +161,7 @@ public class ArtFilterItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView
  * JD-Core Version:    0.7.0.1
  */

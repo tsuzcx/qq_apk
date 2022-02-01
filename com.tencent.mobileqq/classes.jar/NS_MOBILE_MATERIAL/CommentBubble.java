@@ -9,10 +9,10 @@ public final class CommentBubble
 {
   static int cache_eType = 0;
   static BubbleSource cache_stSource = new BubbleSource();
-  public int eType;
-  public int iFrameRate;
+  public int eType = 0;
+  public int iFrameRate = 0;
   public int iItemId = -1;
-  public BubbleSource stSource;
+  public BubbleSource stSource = null;
   public String strAndBgUrl = "";
   public String strFrameZip = "";
   public String strIosBgUrl = "";

@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.feedspopup.steps;
 
-import pxg;
-
-public class RIJSkinOperationPopupStep$6
+class RIJSkinOperationPopupStep$6
   implements Runnable
 {
-  public RIJSkinOperationPopupStep$6(pxg parampxg, boolean paramBoolean) {}
+  RIJSkinOperationPopupStep$6(RIJSkinOperationPopupStep paramRIJSkinOperationPopupStep, boolean paramBoolean) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class RIJSkinOperationPopupStep$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJSkinOperationPopupStep.6
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.mobileqq.servlet;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bcvr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -46,7 +45,7 @@ public class ClearPushReceiver
     int j = paramIntent.getIntExtra("pushtype", 0);
     if ((j == 1) || (j == 300))
     {
-      paramIntent = (bcvr)((QQAppInterface)localObject).getManager(QQManagerFactory.QZONE_MANAGER);
+      paramIntent = (QZoneManagerImp)((QQAppInterface)localObject).getManager(QQManagerFactory.QZONE_MANAGER);
       if (paramIntent != null) {
         paramIntent.a(1, 0);
       }
@@ -56,7 +55,7 @@ public class ClearPushReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.ClearPushReceiver
  * JD-Core Version:    0.7.0.1
  */

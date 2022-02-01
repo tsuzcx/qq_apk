@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajza;
 import android.os.Message;
-import bhhr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
-public class Conversation$UICallBack$6
+class Conversation$UICallBack$6
   implements Runnable
 {
-  public Conversation$UICallBack$6(ajza paramajza) {}
+  Conversation$UICallBack$6(Conversation.UICallBack paramUICallBack) {}
   
   public void run()
   {
-    long l = bhhr.a(this.a.a.a.getApplication(), this.a.a.a.getCurrentAccountUin());
+    long l = SharedPreUtils.a(this.a.a.a.getApplication(), this.a.a.a().getCurrentAccountUin());
     if (System.currentTimeMillis() - l >= 86400000L)
     {
       localUpgradeTIMWrapper = UpgradeTIMWrapper.a();
@@ -37,7 +37,7 @@ public class Conversation$UICallBack$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.6
  * JD-Core Version:    0.7.0.1
  */

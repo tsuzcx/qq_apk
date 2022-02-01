@@ -9,8 +9,8 @@ public final class CommTaskReq
 {
   static CommHeader cache_stHeader = new CommHeader();
   static byte[] cache_vTaskData = (byte[])new byte[1];
-  public CommHeader stHeader;
-  public byte[] vTaskData;
+  public CommHeader stHeader = null;
+  public byte[] vTaskData = null;
   
   static
   {

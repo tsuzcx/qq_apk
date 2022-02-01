@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahfn;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
@@ -10,14 +9,14 @@ import com.tencent.mobileqq.data.MessageForRichState;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 
-public class RichStatItemBuilder$1
+class RichStatItemBuilder$1
   implements Runnable
 {
-  public RichStatItemBuilder$1(ahfn paramahfn) {}
+  RichStatItemBuilder$1(RichStatItemBuilder paramRichStatItemBuilder) {}
   
   public void run()
   {
-    if (TextUtils.isEmpty(ahfn.a().feedsId))
+    if (TextUtils.isEmpty(RichStatItemBuilder.a().feedsId))
     {
       ((FriendListHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getRichStatus(new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin });
       if (QLog.isColorLevel()) {
@@ -35,7 +34,7 @@ public class RichStatItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

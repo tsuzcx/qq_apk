@@ -18,17 +18,17 @@ public final class get_all_feedsphoto_ex_rsp
   static single_feed cache_share_album;
   static s_memory_seal_off cache_stMemoryInfo = new s_memory_seal_off();
   static ArrayList<TabTimeLine> cache_timeline;
-  public ArrayList<PhotoFeedsData> all_applist_data;
+  public ArrayList<PhotoFeedsData> all_applist_data = null;
   public String attach_info = "";
-  public int auto_load;
-  public photo_tab_category_control category_infos;
-  public Map<String, String> extend_info;
-  public int hasmore;
-  public int lossy_service;
-  public int remain_count;
-  public single_feed share_album;
-  public s_memory_seal_off stMemoryInfo;
-  public ArrayList<TabTimeLine> timeline;
+  public int auto_load = 0;
+  public photo_tab_category_control category_infos = null;
+  public Map<String, String> extend_info = null;
+  public int hasmore = 0;
+  public int lossy_service = 0;
+  public int remain_count = 0;
+  public single_feed share_album = null;
+  public s_memory_seal_off stMemoryInfo = null;
+  public ArrayList<TabTimeLine> timeline = null;
   
   static
   {

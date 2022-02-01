@@ -10,9 +10,9 @@ public final class SetFontBubbleReq
   static BubbleReq cache_stBubbleReq = new BubbleReq();
   static FontReq cache_stFontReq;
   static LoginInfo cache_stLogin = new LoginInfo();
-  public BubbleReq stBubbleReq;
-  public FontReq stFontReq;
-  public LoginInfo stLogin;
+  public BubbleReq stBubbleReq = null;
+  public FontReq stFontReq = null;
+  public LoginInfo stLogin = null;
   
   static
   {

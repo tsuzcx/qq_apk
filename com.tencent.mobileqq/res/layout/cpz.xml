@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/c3_" android:paddingLeft="9.0dip" android:paddingTop="9.0dip" android:paddingRight="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="88.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/lh0" android:background="@drawable/hfa" android:paddingLeft="11.0dip" android:paddingRight="11.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="88.0dip">
-        <include android:id="@id/c3f" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="12.0dip" android:layout_centerVertical="true" layout="@layout/al2" />
-        <FrameLayout android:id="@id/lh1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:layout_toLeftOf="@id/b8q" android:layout_alignParentRight="true">
-            <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/c3e" android:layout_width="65.0dip" android:layout_height="65.0dip" android:layout_marginLeft="34.0dip" android:scaleType="centerCrop" android:contentDescription="@null" app:cornerRadius="12.0dip" />
-            <com.tencent.mobileqq.widget.FixRatioPAHighLightImageView android:id="@id/fb3" android:layout_width="65.0dip" android:layout_height="65.0dip" android:layout_marginLeft="34.0dip" />
-            <com.tencent.image.URLImageView android:id="@id/c3k" android:background="@drawable/hfg" android:visibility="visible" android:clickable="true" android:layout_width="65.0dip" android:layout_height="65.0dip" android:layout_marginLeft="34.0dip" android:src="@drawable/cll" android:scaleType="center" android:contentDescription="@null" />
-        </FrameLayout>
-        <include android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" layout="@layout/al4" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginBottom="17.0dip" android:layout_toLeftOf="@id/lh1" android:layout_toRightOf="@id/c3f" android:layout_centerVertical="true">
-            <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/c3m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="70.0dip" android:maxLines="2" android:minLines="1" android:includeFontPadding="false" android:lineSpacingExtra="4.0dip" />
-            <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/lh2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:maxHeight="70.0dip" android:maxLines="1" android:minLines="1" android:includeFontPadding="false" android:lineSpacingExtra="4.0dip" />
-            <include layout="@layout/cpy" />
-            <include layout="@layout/cpx" />
-            <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:gravity="bottom|center|left" android:id="@id/c3i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxLines="2" android:includeFontPadding="false" android:lineSpacingExtra="1.0dip" android:lineSpacingMultiplier="1.2" />
-        </LinearLayout>
-    </RelativeLayout>
-</FrameLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/k_e" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕1" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/k_i" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕2" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/k_k" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕3" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -1,36 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import ovv;
-import ovw;
-import ovx;
-import owa;
-import owb;
-
-public class Automator$6
+class Automator$6
   implements Runnable
 {
-  public Automator$6(ovw paramovw, ovx paramovx) {}
+  Automator$6(Automator paramAutomator, BaseStep paramBaseStep) {}
   
   public void run()
   {
     this.a.c();
-    owa localowa = this.a.a();
-    if ((localowa instanceof ovv))
+    StepGroup localStepGroup = this.a.a();
+    if ((localStepGroup instanceof AsyncSteps))
     {
-      ((ovv)localowa).b();
+      ((AsyncSteps)localStepGroup).b();
       return;
     }
-    if ((localowa instanceof owb))
+    if ((localStepGroup instanceof SyncSteps))
     {
-      ((owb)localowa).b();
+      ((SyncSteps)localStepGroup).b();
       return;
     }
-    ovw.a(this.this$0);
+    Automator.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.automator.Automator.6
  * JD-Core Version:    0.7.0.1
  */

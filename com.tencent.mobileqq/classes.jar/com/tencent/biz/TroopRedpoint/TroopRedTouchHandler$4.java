@@ -5,10 +5,10 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
 
-public final class TroopRedTouchHandler$4
+final class TroopRedTouchHandler$4
   implements Runnable
 {
-  public TroopRedTouchHandler$4(QQAppInterface paramQQAppInterface, long paramLong) {}
+  TroopRedTouchHandler$4(QQAppInterface paramQQAppInterface, long paramLong) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public final class TroopRedTouchHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchHandler.4
  * JD-Core Version:    0.7.0.1
  */

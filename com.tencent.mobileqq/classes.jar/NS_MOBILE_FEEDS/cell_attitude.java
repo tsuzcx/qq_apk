@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class cell_attitude
   extends JceStruct
 {
-  public int num;
+  public int num = 0;
   
   public cell_attitude() {}
   

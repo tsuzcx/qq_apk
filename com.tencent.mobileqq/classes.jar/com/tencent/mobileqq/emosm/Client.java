@@ -8,21 +8,19 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import ascx;
-import ascy;
-import asgs;
-import ashz;
+import com.tencent.mobileqq.emosm.web.IPCConstants;
 import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.qphone.base.util.QLog;
 
 public class Client
-  implements asgs
+  implements IPCConstants
 {
   public static final String TAG = "Q.emoji.web.Client";
-  private ServiceConnection mConnection = new ascx(this);
-  public boolean mIsBound;
-  public final Messenger mMessenger = new Messenger(new ascy(this, Looper.getMainLooper()));
-  public Messenger mService = null;
+  private ServiceConnection mConnection = new Client.1(this);
+  boolean mIsBound;
+  final Messenger mMessenger = new Messenger(new Client.IncomingHandler(this, Looper.getMainLooper()));
+  Messenger mService = null;
   
   public void doBindService(Context paramContext)
   {
@@ -83,14 +81,14 @@ public class Client
     return this.mService != null;
   }
   
-  public void onDisconnectWithService()
+  void onDisconnectWithService()
   {
-    ashz.a().b();
+    WebIPCOperator.a().b();
   }
   
-  public void onPushMsgFromServer(Bundle paramBundle)
+  void onPushMsgFromServer(Bundle paramBundle)
   {
-    ashz.a().d(paramBundle);
+    WebIPCOperator.a().d(paramBundle);
   }
   
   public boolean onReqToServer(Bundle paramBundle)
@@ -129,11 +127,11 @@ public class Client
     return bool2;
   }
   
-  public void onRespFromServer(Bundle paramBundle)
+  void onRespFromServer(Bundle paramBundle)
   {
     try
     {
-      ashz.a().c(paramBundle);
+      WebIPCOperator.a().c(paramBundle);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
@@ -152,7 +150,7 @@ public class Client
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.Client
  * JD-Core Version:    0.7.0.1
  */

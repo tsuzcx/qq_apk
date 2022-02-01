@@ -13,8 +13,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -29,19 +30,19 @@ public class UserGuideWeishiFragment
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   
   private void a(View paramView)
   {
     if (QLog.isColorLevel()) {
       QLog.d("UserGuideWeishiFragment", 2, "initUI has been called");
     }
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363717);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380604);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363811);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131381049);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380605));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381050));
     b();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new UserGuideWeishiFragment.FinishDeLay5Seconds(new WeakReference(getActivity())), 5000L);
@@ -57,94 +58,94 @@ public class UserGuideWeishiFragment
     //   3: aconst_null
     //   4: astore 5
     //   6: aload_0
-    //   7: invokevirtual 97	com/tencent/mobileqq/activity/UserGuideWeishiFragment:getResources	()Landroid/content/res/Resources;
-    //   10: invokevirtual 103	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   13: getfield 109	android/util/DisplayMetrics:widthPixels	I
+    //   7: invokevirtual 101	com/tencent/mobileqq/activity/UserGuideWeishiFragment:getResources	()Landroid/content/res/Resources;
+    //   10: invokevirtual 107	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   13: getfield 113	android/util/DisplayMetrics:widthPixels	I
     //   16: istore_1
     //   17: aload_0
-    //   18: invokevirtual 97	com/tencent/mobileqq/activity/UserGuideWeishiFragment:getResources	()Landroid/content/res/Resources;
-    //   21: invokevirtual 103	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   24: getfield 112	android/util/DisplayMetrics:heightPixels	I
+    //   18: invokevirtual 101	com/tencent/mobileqq/activity/UserGuideWeishiFragment:getResources	()Landroid/content/res/Resources;
+    //   21: invokevirtual 107	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   24: getfield 116	android/util/DisplayMetrics:heightPixels	I
     //   27: istore_2
     //   28: iload_2
     //   29: ifle +30 -> 59
     //   32: aload_0
-    //   33: getfield 41	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_b_of_type_AndroidViewView	Landroid/view/View;
-    //   36: invokevirtual 116	android/view/View:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   33: getfield 45	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_b_of_type_AndroidViewView	Landroid/view/View;
+    //   36: invokevirtual 120	android/view/View:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
     //   39: astore_3
     //   40: aload_3
     //   41: iload_2
     //   42: i2d
-    //   43: ldc2_w 117
+    //   43: ldc2_w 121
     //   46: dmul
     //   47: d2i
-    //   48: putfield 123	android/view/ViewGroup$LayoutParams:height	I
+    //   48: putfield 127	android/view/ViewGroup$LayoutParams:height	I
     //   51: aload_0
-    //   52: getfield 41	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_b_of_type_AndroidViewView	Landroid/view/View;
+    //   52: getfield 45	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_b_of_type_AndroidViewView	Landroid/view/View;
     //   55: aload_3
-    //   56: invokevirtual 127	android/view/View:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   56: invokevirtual 131	android/view/View:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
     //   59: aload_0
-    //   60: invokevirtual 76	com/tencent/mobileqq/activity/UserGuideWeishiFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-    //   63: invokevirtual 133	android/support/v4/app/FragmentActivity:getAssets	()Landroid/content/res/AssetManager;
-    //   66: ldc 135
-    //   68: invokevirtual 141	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   60: invokevirtual 80	com/tencent/mobileqq/activity/UserGuideWeishiFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
+    //   63: invokevirtual 137	android/support/v4/app/FragmentActivity:getAssets	()Landroid/content/res/AssetManager;
+    //   66: ldc 139
+    //   68: invokevirtual 145	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   71: astore_3
     //   72: aload_3
     //   73: ifnull +223 -> 296
-    //   76: new 143	java/io/BufferedInputStream
+    //   76: new 147	java/io/BufferedInputStream
     //   79: dup
     //   80: aload_3
-    //   81: invokespecial 146	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   81: invokespecial 150	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   84: astore 4
     //   86: aload 4
-    //   88: invokestatic 152	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   88: invokestatic 156	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   91: astore 5
     //   93: aload 5
     //   95: ifnull +159 -> 254
-    //   98: new 154	blah
+    //   98: new 158	com/tencent/widget/BottomDrawable
     //   101: dup
     //   102: aload 5
     //   104: iload_1
     //   105: iload_2
-    //   106: invokespecial 157	blah:<init>	(Landroid/graphics/Bitmap;II)V
+    //   106: invokespecial 161	com/tencent/widget/BottomDrawable:<init>	(Landroid/graphics/Bitmap;II)V
     //   109: astore 5
     //   111: aload 5
     //   113: ifnull +71 -> 184
     //   116: aload_0
-    //   117: getfield 53	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   120: invokevirtual 158	android/widget/ImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   117: getfield 57	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   120: invokevirtual 162	android/widget/ImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
     //   123: astore 6
     //   125: aload 6
     //   127: iload_1
-    //   128: putfield 161	android/view/ViewGroup$LayoutParams:width	I
+    //   128: putfield 165	android/view/ViewGroup$LayoutParams:width	I
     //   131: aload 6
     //   133: iload_2
-    //   134: putfield 123	android/view/ViewGroup$LayoutParams:height	I
+    //   134: putfield 127	android/view/ViewGroup$LayoutParams:height	I
     //   137: aload_0
-    //   138: getfield 53	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   138: getfield 57	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
     //   141: aload 6
-    //   143: invokevirtual 162	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   143: invokevirtual 166	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
     //   146: aload_0
-    //   147: getfield 53	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   150: getstatic 168	android/widget/ImageView$ScaleType:CENTER_CROP	Landroid/widget/ImageView$ScaleType;
-    //   153: invokevirtual 172	android/widget/ImageView:setScaleType	(Landroid/widget/ImageView$ScaleType;)V
+    //   147: getfield 57	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   150: getstatic 172	android/widget/ImageView$ScaleType:CENTER_CROP	Landroid/widget/ImageView$ScaleType;
+    //   153: invokevirtual 176	android/widget/ImageView:setScaleType	(Landroid/widget/ImageView$ScaleType;)V
     //   156: aload_0
-    //   157: getfield 53	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   157: getfield 57	com/tencent/mobileqq/activity/UserGuideWeishiFragment:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
     //   160: aload 5
-    //   162: invokevirtual 176	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   162: invokevirtual 180	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   165: aload_3
     //   166: ifnull +7 -> 173
     //   169: aload_3
-    //   170: invokevirtual 181	java/io/InputStream:close	()V
+    //   170: invokevirtual 185	java/io/InputStream:close	()V
     //   173: aload 4
     //   175: ifnull +8 -> 183
     //   178: aload 4
-    //   180: invokevirtual 182	java/io/BufferedInputStream:close	()V
+    //   180: invokevirtual 186	java/io/BufferedInputStream:close	()V
     //   183: return
-    //   184: ldc 26
+    //   184: ldc 30
     //   186: iconst_1
-    //   187: ldc 184
-    //   189: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   187: ldc 188
+    //   189: invokestatic 191	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   192: goto -27 -> 165
     //   195: astore 6
     //   197: aload 4
@@ -152,34 +153,34 @@ public class UserGuideWeishiFragment
     //   201: aload 6
     //   203: astore 4
     //   205: aload 4
-    //   207: invokevirtual 190	java/lang/Throwable:printStackTrace	()V
-    //   210: ldc 26
+    //   207: invokevirtual 194	java/lang/Throwable:printStackTrace	()V
+    //   210: ldc 30
     //   212: iconst_1
-    //   213: ldc 192
+    //   213: ldc 196
     //   215: aload 4
-    //   217: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   217: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   220: aload_3
     //   221: ifnull +7 -> 228
     //   224: aload_3
-    //   225: invokevirtual 181	java/io/InputStream:close	()V
+    //   225: invokevirtual 185	java/io/InputStream:close	()V
     //   228: aload 5
     //   230: ifnull -47 -> 183
     //   233: aload 5
-    //   235: invokevirtual 182	java/io/BufferedInputStream:close	()V
+    //   235: invokevirtual 186	java/io/BufferedInputStream:close	()V
     //   238: return
     //   239: astore_3
     //   240: aload_3
-    //   241: invokevirtual 190	java/lang/Throwable:printStackTrace	()V
-    //   244: ldc 26
+    //   241: invokevirtual 194	java/lang/Throwable:printStackTrace	()V
+    //   244: ldc 30
     //   246: iconst_1
-    //   247: ldc 192
+    //   247: ldc 196
     //   249: aload_3
-    //   250: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   250: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   253: return
-    //   254: ldc 26
+    //   254: ldc 30
     //   256: iconst_1
-    //   257: ldc 197
-    //   259: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   257: ldc 201
+    //   259: invokestatic 191	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   262: goto -97 -> 165
     //   265: astore 6
     //   267: aload 4
@@ -189,37 +190,37 @@ public class UserGuideWeishiFragment
     //   275: aload_3
     //   276: ifnull +7 -> 283
     //   279: aload_3
-    //   280: invokevirtual 181	java/io/InputStream:close	()V
+    //   280: invokevirtual 185	java/io/InputStream:close	()V
     //   283: aload 5
     //   285: ifnull +8 -> 293
     //   288: aload 5
-    //   290: invokevirtual 182	java/io/BufferedInputStream:close	()V
+    //   290: invokevirtual 186	java/io/BufferedInputStream:close	()V
     //   293: aload 4
     //   295: athrow
-    //   296: ldc 26
+    //   296: ldc 30
     //   298: iconst_1
-    //   299: ldc 199
-    //   301: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   299: ldc 203
+    //   301: invokestatic 191	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   304: aconst_null
     //   305: astore 4
     //   307: goto -142 -> 165
     //   310: astore_3
     //   311: aload_3
-    //   312: invokevirtual 190	java/lang/Throwable:printStackTrace	()V
-    //   315: ldc 26
+    //   312: invokevirtual 194	java/lang/Throwable:printStackTrace	()V
+    //   315: ldc 30
     //   317: iconst_1
-    //   318: ldc 192
+    //   318: ldc 196
     //   320: aload_3
-    //   321: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   321: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   324: return
     //   325: astore_3
     //   326: aload_3
-    //   327: invokevirtual 190	java/lang/Throwable:printStackTrace	()V
-    //   330: ldc 26
+    //   327: invokevirtual 194	java/lang/Throwable:printStackTrace	()V
+    //   330: ldc 30
     //   332: iconst_1
-    //   333: ldc 192
+    //   333: ldc 196
     //   335: aload_3
-    //   336: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   336: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   339: goto -46 -> 293
     //   342: astore 4
     //   344: aconst_null
@@ -311,16 +312,16 @@ public class UserGuideWeishiFragment
       if ((localAppRuntime != null) && (localAppRuntime.isLogin()))
       {
         localIntent.setClass(localFragmentActivity, SplashActivity.class);
-        localIntent.putExtra("tab_index", MainFragment.b);
-      }
-      for (;;)
-      {
+        localIntent.putExtra("tab_index", FrameControllerUtil.a);
         localIntent.addFlags(67108864);
         startActivity(localIntent);
-        localFragmentActivity.overridePendingTransition(2130771986, 2130772006);
+        localFragmentActivity.overridePendingTransition(2130771988, 2130772008);
         return;
-        localIntent.setClass(localFragmentActivity, LoginActivity.class);
       }
+      localIntent.addFlags(67108864);
+      RouteUtils.a(localFragmentActivity, localIntent, "/base/login");
+      localFragmentActivity.overridePendingTransition(2130771988, 2130772008);
+      return;
     }
     QLog.d("UserGuideWeishiFragment", 2, "UserGuideWeishiFragment activity ==null.");
   }
@@ -363,7 +364,7 @@ public class UserGuideWeishiFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131563037, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131563192, null);
     a(paramLayoutInflater);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -406,7 +407,7 @@ public class UserGuideWeishiFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserGuideWeishiFragment
  * JD-Core Version:    0.7.0.1
  */

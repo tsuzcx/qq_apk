@@ -20,7 +20,7 @@ public class YtSDKKitConfigHelper
     try
     {
       paramJSONObject = paramJSONObject.getString(paramString);
-      if ((paramJSONObject == null) || ((paramBoolean) && (paramJSONObject.equals(""))))
+      if ((paramBoolean) && ((paramJSONObject == null) || (paramJSONObject.equals(""))))
       {
         YtLogger.e(TAG, "Parse json object failed " + paramString + "参数解析失败, 不存在或者不能为空");
         YtSDKStats.getInstance().reportError(3145729, "msg_param_error");
@@ -44,7 +44,7 @@ public class YtSDKKitConfigHelper
   
   public static ArrayList<String> getPipleStateNames(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode)
   {
-    switch (YtSDKKitConfigHelper.9.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[paramYtSDKKitFrameworkWorkMode.ordinal()])
+    switch (YtSDKKitConfigHelper.10.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[paramYtSDKKitFrameworkWorkMode.ordinal()])
     {
     default: 
       return null;
@@ -59,8 +59,10 @@ public class YtSDKKitConfigHelper
       return new YtSDKKitConfigHelper.6();
     case 6: 
       return new YtSDKKitConfigHelper.7();
+    case 7: 
+      return new YtSDKKitConfigHelper.8();
     }
-    return new YtSDKKitConfigHelper.8();
+    return new YtSDKKitConfigHelper.9();
   }
   
   public static JSONObject getSDKConfig(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, JSONObject paramJSONObject)
@@ -119,7 +121,7 @@ public class YtSDKKitConfigHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtSDKKitConfigHelper
  * JD-Core Version:    0.7.0.1
  */

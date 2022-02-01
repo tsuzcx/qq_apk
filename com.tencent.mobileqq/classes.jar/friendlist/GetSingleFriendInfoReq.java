@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class GetSingleFriendInfoReq
   extends JceStruct
 {
-  public long frienduin;
-  public byte ifReflush;
-  public long uin;
+  public long frienduin = 0L;
+  public byte ifReflush = 0;
+  public long uin = 0L;
   
   public GetSingleFriendInfoReq() {}
   
@@ -36,7 +36,7 @@ public final class GetSingleFriendInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.GetSingleFriendInfoReq
  * JD-Core Version:    0.7.0.1
  */

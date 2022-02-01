@@ -1,20 +1,25 @@
 package com.tencent.av.ui;
 
-import mcx;
+import com.tencent.av.gaudio.VideoViewInfo;
+import java.util.Comparator;
 
 class AVActivity$14
-  implements Runnable
+  implements Comparator<VideoViewInfo>
 {
   AVActivity$14(AVActivity paramAVActivity) {}
   
-  public void run()
+  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
   {
-    this.this$0.a.a("self", String.valueOf(1));
+    if (paramVideoViewInfo1.a) {}
+    while (paramVideoViewInfo2.a) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.14
  * JD-Core Version:    0.7.0.1
  */

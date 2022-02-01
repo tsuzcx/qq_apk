@@ -4,6 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.hippy.qq.module.tkd.TKDBiuModule.ParamsFetcher;
 import com.tencent.hippy.qq.utils.tkd.TKDCommentDispatcher.HippyCommentEvent;
 import com.tencent.hippy.qq.utils.tkd.TKDCommentDispatcher.HippyCommentEvent.DefaultImpls;
+import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -91,10 +92,16 @@ public final class TKDCommentFragment$commentEventListener$1
   {
     TKDCommentDispatcher.HippyCommentEvent.DefaultImpls.openComment(this);
   }
+  
+  public void refreshNewAndHotData(@NotNull HippyMap paramHippyMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHippyMap, "propsMap");
+    TKDCommentDispatcher.HippyCommentEvent.DefaultImpls.refreshNewAndHotData(this, paramHippyMap);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.fragment.TKDCommentFragment.commentEventListener.1
  * JD-Core Version:    0.7.0.1
  */

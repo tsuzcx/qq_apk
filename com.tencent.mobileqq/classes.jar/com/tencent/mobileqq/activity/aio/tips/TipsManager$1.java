@@ -1,29 +1,27 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import afoi;
-import ailp;
-import ailr;
 import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
 import java.util.Observer;
 
-public class TipsManager$1
+class TipsManager$1
   implements Runnable
 {
-  public TipsManager$1(ailr paramailr, ailp paramailp, Object[] paramArrayOfObject) {}
+  TipsManager$1(TipsManager paramTipsManager, TipsBarTask paramTipsBarTask, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    View localView = this.jdField_a_of_type_Ailp.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
-    ailr.a(this.this$0).a(localView, ailr.a(this.this$0), this.jdField_a_of_type_Ailp);
-    ailr.a(this.this$0, this.jdField_a_of_type_Ailp);
-    if (ailr.a(this.this$0) != null) {
-      ailr.a(this.this$0).update(null, null);
+    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    TipsManager.a(this.this$0).a(localView, TipsManager.a(this.this$0), this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask);
+    TipsManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask);
+    if (TipsManager.a(this.this$0) != null) {
+      TipsManager.a(this.this$0).update(null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.TipsManager.1
  * JD-Core Version:    0.7.0.1
  */

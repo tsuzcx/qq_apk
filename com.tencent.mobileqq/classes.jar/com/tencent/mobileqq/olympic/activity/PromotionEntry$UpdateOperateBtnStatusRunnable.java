@@ -2,9 +2,8 @@ package com.tencent.mobileqq.olympic.activity;
 
 import android.animation.ObjectAnimator;
 import android.widget.ImageView;
-import apcn;
-import apct;
-import ayxw;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo.PromotionItem;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionPath;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
@@ -13,20 +12,19 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
-public class PromotionEntry$UpdateOperateBtnStatusRunnable
+class PromotionEntry$UpdateOperateBtnStatusRunnable
   implements Runnable
 {
-  public ObjectAnimator a;
-  apcn jdField_a_of_type_Apcn = null;
-  public LottieDrawable a;
+  ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+  PromotionConfigInfo.PromotionItem jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem = null;
+  LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
   OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = null;
   private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
   public boolean a;
   
   private PromotionEntry$UpdateOperateBtnStatusRunnable()
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a()
@@ -48,13 +46,13 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
     do
     {
       return;
-      if (this.jdField_a_of_type_Apcn == null)
+      if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem == null)
       {
         QLog.w(PromotionEntry.a, 1, "createShowOperateBtnAnim, promotionItem为空");
         return;
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null);
-    Object localObject = apct.a(this.jdField_a_of_type_Apcn);
+    Object localObject = PromotionPath.a(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem);
     a((String)localObject);
     try
     {
@@ -70,7 +68,7 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new ayxw(this, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new PromotionEntry.UpdateOperateBtnStatusRunnable.1(this, paramString);
   }
   
   public void run()

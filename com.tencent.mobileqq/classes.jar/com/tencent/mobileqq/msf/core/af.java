@@ -1,492 +1,752 @@
 package com.tencent.mobileqq.msf.core;
 
-final class af
-  implements Runnable
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.msf.core.c.e.a;
+import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.push.g;
+import com.tencent.mobileqq.msf.sdk.MsfCommand;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
+import com.tencent.msf.service.protocol.push.RequestMSFForceOffline;
+import com.tencent.msf.service.protocol.security.i;
+import com.tencent.msf.service.protocol.security.m;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class af
 {
-  /* Error */
-  public void run()
+  public static ConcurrentHashMap a = new ConcurrentHashMap();
+  public static final int b = 210;
+  public static final int c = -12003;
+  public static final int d = -10001;
+  public static final int e = -10003;
+  public static final int f = -10004;
+  public static final int g = -10005;
+  public static final int h = -10006;
+  public static final int i = -10000;
+  public static final int j = -10007;
+  public static final int k = -10009;
+  public static final int l = -10101;
+  public static final int m = -10102;
+  public static final int n = -10103;
+  public static final int o = -10104;
+  public static final int p = -10105;
+  public static final int q = -10106;
+  static final String r = "OverLoadPush.notify";
+  private static final String v = "MSF.C.SSORespHandler";
+  private static final int w = 1000;
+  MsfCore s;
+  long t = -1L;
+  long u = -1L;
+  private Handler x = new ag(this);
+  
+  public af(MsfCore paramMsfCore)
   {
-    // Byte code:
-    //   0: invokestatic 22	com/tencent/mobileqq/msf/core/ab:f	()J
-    //   3: invokestatic 28	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   6: astore 5
-    //   8: new 30	java/io/File
-    //   11: dup
-    //   12: getstatic 34	com/tencent/mobileqq/msf/core/ab:ac	Ljava/lang/String;
-    //   15: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
-    //   18: astore_2
-    //   19: new 30	java/io/File
-    //   22: dup
-    //   23: getstatic 40	com/tencent/mobileqq/msf/core/ab:af	Ljava/lang/String;
-    //   26: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
-    //   29: astore_3
-    //   30: aload_2
-    //   31: invokestatic 46	com/tencent/mobileqq/msf/sdk/utils/SignUtils:readFile	(Ljava/io/File;)Ljava/lang/String;
-    //   34: astore 4
-    //   36: ldc 48
-    //   38: astore_1
-    //   39: getstatic 52	com/tencent/mobileqq/msf/core/ab:aj	Z
-    //   42: ifne +8 -> 50
-    //   45: aload_3
-    //   46: invokestatic 46	com/tencent/mobileqq/msf/sdk/utils/SignUtils:readFile	(Ljava/io/File;)Ljava/lang/String;
-    //   49: astore_1
-    //   50: getstatic 52	com/tencent/mobileqq/msf/core/ab:aj	Z
-    //   53: ifeq +356 -> 409
-    //   56: new 54	com/tencent/qphone/base/util/Cryptor
-    //   59: dup
-    //   60: invokespecial 55	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   63: astore 4
-    //   65: new 57	java/io/RandomAccessFile
-    //   68: dup
-    //   69: getstatic 34	com/tencent/mobileqq/msf/core/ab:ac	Ljava/lang/String;
-    //   72: ldc 59
-    //   74: invokespecial 62	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   77: astore_2
-    //   78: aload_2
-    //   79: astore_1
-    //   80: aload_2
-    //   81: astore_3
-    //   82: aload_2
-    //   83: invokevirtual 65	java/io/RandomAccessFile:length	()J
-    //   86: l2i
-    //   87: newarray byte
-    //   89: astore 6
-    //   91: aload_2
-    //   92: astore_1
-    //   93: aload_2
-    //   94: astore_3
-    //   95: aload_2
-    //   96: aload 6
-    //   98: invokevirtual 69	java/io/RandomAccessFile:read	([B)I
-    //   101: pop
-    //   102: aload_2
-    //   103: astore_1
-    //   104: aload_2
-    //   105: astore_3
-    //   106: new 24	java/lang/String
-    //   109: dup
-    //   110: aload 4
-    //   112: aload 6
-    //   114: ldc 71
-    //   116: invokevirtual 75	java/lang/String:getBytes	()[B
-    //   119: invokevirtual 79	com/tencent/qphone/base/util/Cryptor:decrypt	([B[B)[B
-    //   122: invokespecial 82	java/lang/String:<init>	([B)V
-    //   125: astore 4
-    //   127: aload_2
-    //   128: astore_1
-    //   129: aload_2
-    //   130: astore_3
-    //   131: new 84	org/json/JSONObject
-    //   134: dup
-    //   135: aload 4
-    //   137: invokespecial 85	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   140: putstatic 89	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
-    //   143: aload_2
-    //   144: astore_1
-    //   145: aload_2
-    //   146: astore_3
-    //   147: getstatic 89	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
-    //   150: new 91	java/lang/StringBuilder
-    //   153: dup
-    //   154: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   157: aload 5
-    //   159: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: ldc 98
-    //   164: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokevirtual 106	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   173: putstatic 110	com/tencent/mobileqq/msf/core/ab:W	I
-    //   176: aload_2
-    //   177: astore_1
-    //   178: aload_2
-    //   179: astore_3
-    //   180: getstatic 89	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
-    //   183: new 91	java/lang/StringBuilder
-    //   186: dup
-    //   187: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   190: aload 5
-    //   192: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   195: ldc 112
-    //   197: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   200: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   203: invokevirtual 106	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   206: putstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   209: aload_2
-    //   210: astore_1
-    //   211: aload_2
-    //   212: astore_3
-    //   213: getstatic 89	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
-    //   216: new 91	java/lang/StringBuilder
-    //   219: dup
-    //   220: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   223: aload 5
-    //   225: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: ldc 117
-    //   230: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   236: invokevirtual 106	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   239: putstatic 120	com/tencent/mobileqq/msf/core/ab:Y	I
-    //   242: aload_2
-    //   243: astore_1
-    //   244: aload_2
-    //   245: astore_3
-    //   246: getstatic 89	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
-    //   249: ldc 122
-    //   251: iconst_1
-    //   252: invokevirtual 126	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   255: putstatic 129	com/tencent/mobileqq/msf/core/ab:M	Z
-    //   258: aload_2
-    //   259: astore_1
-    //   260: aload_2
-    //   261: astore_3
-    //   262: getstatic 89	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
-    //   265: ldc 131
-    //   267: invokevirtual 135	org/json/JSONObject:optLong	(Ljava/lang/String;)J
-    //   270: putstatic 139	com/tencent/mobileqq/msf/core/ab:aa	J
-    //   273: aload_2
-    //   274: astore_1
-    //   275: aload_2
-    //   276: astore_3
-    //   277: ldc 141
-    //   279: iconst_1
-    //   280: new 91	java/lang/StringBuilder
-    //   283: dup
-    //   284: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   287: ldc 143
-    //   289: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   292: aload 5
-    //   294: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   297: ldc 145
-    //   299: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   302: getstatic 89	com/tencent/mobileqq/msf/core/ab:ad	Lorg/json/JSONObject;
-    //   305: invokevirtual 146	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   308: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   311: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   314: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   317: aload_2
-    //   318: ifnull +7 -> 325
-    //   321: aload_2
-    //   322: invokevirtual 155	java/io/RandomAccessFile:close	()V
-    //   325: getstatic 158	com/tencent/mobileqq/msf/core/ab:Z	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   328: iconst_1
-    //   329: invokevirtual 164	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   332: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   335: ifeq +517 -> 852
-    //   338: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   341: ifeq +511 -> 852
-    //   344: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   347: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   350: if_icmple +502 -> 852
-    //   353: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   356: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   359: isub
-    //   360: getstatic 169	com/tencent/mobileqq/msf/core/ab:U	I
-    //   363: if_icmpge +489 -> 852
-    //   366: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   369: putstatic 172	com/tencent/mobileqq/msf/core/ab:H	I
-    //   372: getstatic 172	com/tencent/mobileqq/msf/core/ab:H	I
-    //   375: putstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   378: invokestatic 177	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
-    //   381: putstatic 180	com/tencent/mobileqq/msf/core/ab:ab	J
-    //   384: iconst_0
-    //   385: aconst_null
-    //   386: aconst_null
-    //   387: invokestatic 184	com/tencent/mobileqq/msf/core/ab:a	(ZLjava/lang/String;Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
-    //   390: invokestatic 189	java/lang/System:currentTimeMillis	()J
-    //   393: putstatic 191	com/tencent/mobileqq/msf/core/ab:J	J
-    //   396: iconst_0
-    //   397: putstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   400: ldc 141
-    //   402: iconst_1
-    //   403: ldc 193
-    //   405: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   408: return
-    //   409: aload 4
-    //   411: aload_1
-    //   412: ldc 195
-    //   414: invokestatic 199	com/tencent/mobileqq/msf/sdk/utils/SignUtils:verifyData	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
-    //   417: ifne +519 -> 936
-    //   420: ldc 141
-    //   422: iconst_1
-    //   423: ldc 201
-    //   425: invokestatic 204	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   428: iconst_0
-    //   429: putstatic 207	com/tencent/mobileqq/msf/core/ab:ah	Z
-    //   432: aload_2
-    //   433: invokevirtual 211	java/io/File:exists	()Z
-    //   436: ifeq +8 -> 444
-    //   439: aload_2
-    //   440: invokevirtual 214	java/io/File:delete	()Z
-    //   443: pop
-    //   444: aload_3
-    //   445: invokevirtual 211	java/io/File:exists	()Z
-    //   448: ifeq +8 -> 456
-    //   451: aload_3
-    //   452: invokevirtual 214	java/io/File:delete	()Z
-    //   455: pop
-    //   456: iconst_0
-    //   457: ifeq +11 -> 468
-    //   460: new 216	java/lang/NullPointerException
-    //   463: dup
-    //   464: invokespecial 217	java/lang/NullPointerException:<init>	()V
-    //   467: athrow
-    //   468: getstatic 158	com/tencent/mobileqq/msf/core/ab:Z	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   471: iconst_1
-    //   472: invokevirtual 164	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   475: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   478: ifeq +414 -> 892
-    //   481: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   484: ifeq +408 -> 892
-    //   487: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   490: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   493: if_icmple +399 -> 892
-    //   496: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   499: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   502: isub
-    //   503: getstatic 169	com/tencent/mobileqq/msf/core/ab:U	I
-    //   506: if_icmpge +386 -> 892
-    //   509: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   512: putstatic 172	com/tencent/mobileqq/msf/core/ab:H	I
-    //   515: getstatic 172	com/tencent/mobileqq/msf/core/ab:H	I
-    //   518: putstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   521: invokestatic 177	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
-    //   524: putstatic 180	com/tencent/mobileqq/msf/core/ab:ab	J
-    //   527: iconst_0
-    //   528: aconst_null
-    //   529: aconst_null
-    //   530: invokestatic 184	com/tencent/mobileqq/msf/core/ab:a	(ZLjava/lang/String;Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
-    //   533: invokestatic 189	java/lang/System:currentTimeMillis	()J
-    //   536: putstatic 191	com/tencent/mobileqq/msf/core/ab:J	J
-    //   539: iconst_0
-    //   540: putstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   543: goto -143 -> 400
-    //   546: astore_2
-    //   547: aconst_null
-    //   548: astore_3
-    //   549: aload_3
-    //   550: astore_1
-    //   551: ldc 141
-    //   553: iconst_1
-    //   554: new 91	java/lang/StringBuilder
-    //   557: dup
-    //   558: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   561: ldc 219
-    //   563: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   566: aload_2
-    //   567: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   570: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   573: invokestatic 204	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   576: aload_3
-    //   577: ifnull +7 -> 584
-    //   580: aload_3
-    //   581: invokevirtual 155	java/io/RandomAccessFile:close	()V
-    //   584: getstatic 158	com/tencent/mobileqq/msf/core/ab:Z	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   587: iconst_1
-    //   588: invokevirtual 164	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   591: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   594: ifeq +213 -> 807
-    //   597: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   600: ifeq +207 -> 807
-    //   603: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   606: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   609: if_icmple +198 -> 807
-    //   612: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   615: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   618: isub
-    //   619: getstatic 169	com/tencent/mobileqq/msf/core/ab:U	I
-    //   622: if_icmpge +185 -> 807
-    //   625: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   628: putstatic 172	com/tencent/mobileqq/msf/core/ab:H	I
-    //   631: getstatic 172	com/tencent/mobileqq/msf/core/ab:H	I
-    //   634: putstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   637: invokestatic 177	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
-    //   640: putstatic 180	com/tencent/mobileqq/msf/core/ab:ab	J
-    //   643: iconst_0
-    //   644: aconst_null
-    //   645: aconst_null
-    //   646: invokestatic 184	com/tencent/mobileqq/msf/core/ab:a	(ZLjava/lang/String;Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
-    //   649: invokestatic 189	java/lang/System:currentTimeMillis	()J
-    //   652: putstatic 191	com/tencent/mobileqq/msf/core/ab:J	J
-    //   655: iconst_0
-    //   656: putstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   659: goto -259 -> 400
-    //   662: astore_2
-    //   663: aconst_null
-    //   664: astore_1
-    //   665: aload_1
-    //   666: ifnull +7 -> 673
-    //   669: aload_1
-    //   670: invokevirtual 155	java/io/RandomAccessFile:close	()V
-    //   673: getstatic 158	com/tencent/mobileqq/msf/core/ab:Z	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   676: iconst_1
-    //   677: invokevirtual 164	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   680: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   683: ifeq +79 -> 762
-    //   686: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   689: ifeq +73 -> 762
-    //   692: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   695: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   698: if_icmple +64 -> 762
-    //   701: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   704: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   707: isub
-    //   708: getstatic 169	com/tencent/mobileqq/msf/core/ab:U	I
-    //   711: if_icmpge +51 -> 762
-    //   714: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   717: putstatic 172	com/tencent/mobileqq/msf/core/ab:H	I
-    //   720: getstatic 172	com/tencent/mobileqq/msf/core/ab:H	I
-    //   723: putstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   726: invokestatic 177	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
-    //   729: putstatic 180	com/tencent/mobileqq/msf/core/ab:ab	J
-    //   732: iconst_0
-    //   733: aconst_null
-    //   734: aconst_null
-    //   735: invokestatic 184	com/tencent/mobileqq/msf/core/ab:a	(ZLjava/lang/String;Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
-    //   738: invokestatic 189	java/lang/System:currentTimeMillis	()J
-    //   741: putstatic 191	com/tencent/mobileqq/msf/core/ab:J	J
-    //   744: iconst_0
-    //   745: putstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   748: ldc 141
-    //   750: iconst_1
-    //   751: ldc 193
-    //   753: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   756: aload_2
-    //   757: athrow
-    //   758: astore_1
-    //   759: goto -86 -> 673
-    //   762: ldc 141
-    //   764: iconst_1
-    //   765: new 91	java/lang/StringBuilder
-    //   768: dup
-    //   769: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   772: ldc 224
-    //   774: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   777: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   780: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   783: ldc 229
-    //   785: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   788: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   791: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   794: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   797: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   800: goto -44 -> 756
-    //   803: astore_1
-    //   804: goto -220 -> 584
-    //   807: new 91	java/lang/StringBuilder
-    //   810: dup
-    //   811: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   814: ldc 224
-    //   816: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   819: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   822: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   825: ldc 229
-    //   827: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   830: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   833: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   836: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   839: astore_1
-    //   840: ldc 141
-    //   842: iconst_1
-    //   843: aload_1
-    //   844: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   847: return
-    //   848: astore_1
-    //   849: goto -524 -> 325
-    //   852: new 91	java/lang/StringBuilder
-    //   855: dup
-    //   856: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   859: ldc 224
-    //   861: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   864: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   867: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   870: ldc 229
-    //   872: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   875: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   878: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   881: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   884: astore_1
-    //   885: goto -45 -> 840
-    //   888: astore_1
-    //   889: goto -421 -> 468
-    //   892: new 91	java/lang/StringBuilder
-    //   895: dup
-    //   896: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   899: ldc 224
-    //   901: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   904: getstatic 115	com/tencent/mobileqq/msf/core/ab:X	I
-    //   907: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   910: ldc 229
-    //   912: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   915: getstatic 166	com/tencent/mobileqq/msf/core/ab:I	I
-    //   918: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   921: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   924: astore_1
-    //   925: goto -85 -> 840
-    //   928: astore_2
-    //   929: goto -264 -> 665
-    //   932: astore_2
-    //   933: goto -384 -> 549
-    //   936: aconst_null
-    //   937: astore_2
-    //   938: goto -811 -> 127
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	941	0	this	af
-    //   38	632	1	localObject1	Object
-    //   758	1	1	localIOException1	java.io.IOException
-    //   803	1	1	localIOException2	java.io.IOException
-    //   839	5	1	str1	java.lang.String
-    //   848	1	1	localIOException3	java.io.IOException
-    //   884	1	1	str2	java.lang.String
-    //   888	1	1	localIOException4	java.io.IOException
-    //   924	1	1	str3	java.lang.String
-    //   18	422	2	localObject2	Object
-    //   546	21	2	localException1	java.lang.Exception
-    //   662	95	2	localObject3	Object
-    //   928	1	2	localObject4	Object
-    //   932	1	2	localException2	java.lang.Exception
-    //   937	1	2	localObject5	Object
-    //   29	552	3	localObject6	Object
-    //   34	376	4	localObject7	Object
-    //   6	287	5	str4	java.lang.String
-    //   89	24	6	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   30	36	546	java/lang/Exception
-    //   39	50	546	java/lang/Exception
-    //   50	78	546	java/lang/Exception
-    //   409	444	546	java/lang/Exception
-    //   444	456	546	java/lang/Exception
-    //   30	36	662	finally
-    //   39	50	662	finally
-    //   50	78	662	finally
-    //   409	444	662	finally
-    //   444	456	662	finally
-    //   669	673	758	java/io/IOException
-    //   580	584	803	java/io/IOException
-    //   321	325	848	java/io/IOException
-    //   460	468	888	java/io/IOException
-    //   82	91	928	finally
-    //   95	102	928	finally
-    //   106	127	928	finally
-    //   131	143	928	finally
-    //   147	176	928	finally
-    //   180	209	928	finally
-    //   213	242	928	finally
-    //   246	258	928	finally
-    //   262	273	928	finally
-    //   277	317	928	finally
-    //   551	576	928	finally
-    //   82	91	932	java/lang/Exception
-    //   95	102	932	java/lang/Exception
-    //   106	127	932	java/lang/Exception
-    //   131	143	932	java/lang/Exception
-    //   147	176	932	java/lang/Exception
-    //   180	209	932	java/lang/Exception
-    //   213	242	932	java/lang/Exception
-    //   246	258	932	java/lang/Exception
-    //   262	273	932	java/lang/Exception
-    //   277	317	932	java/lang/Exception
+    this.s = paramMsfCore;
+  }
+  
+  public static void a(FromServiceMsg paramFromServiceMsg)
+  {
+    paramFromServiceMsg.setBusinessFail(2002, "verifyCode");
+    paramFromServiceMsg.setMsfCommand(MsfCommand.onRecvVerifyCode);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if ((paramToServiceMsg == null) && (paramFromServiceMsg == null)) {
+      QLog.d("MSF.C.SSORespHandler", 1, "handleHttpSsoFailResp msg is empty");
+    }
+    do
+    {
+      return;
+      if (paramToServiceMsg.getServiceCmd().equals("MessageSvc.QueryPullUp"))
+      {
+        this.s.pushManager.q().a(paramToServiceMsg, paramFromServiceMsg);
+        return;
+      }
+    } while (!paramToServiceMsg.getAttributes().containsKey("attr_quick_send"));
+    this.s.quicksender.a(paramToServiceMsg, paramFromServiceMsg, -1);
+  }
+  
+  protected boolean a(int paramInt)
+  {
+    return (paramInt == -12003) || (paramInt == 210) || (paramInt == -10001) || (paramInt == -10003) || (paramInt == -10004) || (paramInt == -10006) || (paramInt == -10106);
+  }
+  
+  protected boolean a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  {
+    int i2 = paramFromServiceMsg.getBusinessFailCode();
+    boolean bool2 = a(i2);
+    Object localObject1;
+    if (-10106 == i2)
+    {
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("uin", paramFromServiceMsg.getUin());
+    }
+    try
+    {
+      ((HashMap)localObject1).put("time", new Date().toString());
+      j localj;
+      int i1;
+      if (this.s.statReporter != null)
+      {
+        localj = this.s.statReporter;
+        if (true != bool2) {
+          break label432;
+        }
+        i1 = 1;
+      }
+      label432:
+      label437:
+      for (;;)
+      {
+        localj.a("dim.Msf.ForceQuitParseFail", true, i1, 0L, (Map)localObject1, false, false);
+        bool1 = bool2;
+        if (!bool2)
+        {
+          bool1 = bool2;
+          if (i2 == -10005)
+          {
+            if (this.t == -1L) {
+              this.t = System.currentTimeMillis();
+            }
+            if (this.s.sender.ab.get()) {
+              break label437;
+            }
+            if (this.s.getAccountCenter().a(paramFromServiceMsg.getUin())) {
+              break label1608;
+            }
+            QLog.d("MSF.C.SSORespHandler", 1, "reload D2 failed");
+            this.s.sender.aa = 1;
+            bool1 = true;
+            this.s.sender.ab.set(true);
+          }
+        }
+        label211:
+        if (bool1)
+        {
+          QLog.d("MSF.C.SSORespHandler", 1, Thread.currentThread().getName() + " handleSsoFailCode tokenExpired to setAccountNoLogin uin=" + MsfSdkUtils.getShortUin(paramFromServiceMsg.getUin()));
+          this.s.getAccountCenter().k(paramFromServiceMsg.getUin());
+          if ((!com.tencent.mobileqq.msf.service.u.b()) && ((this.u == -1L) || (System.currentTimeMillis() - this.u > 10000L))) {}
+          try
+          {
+            localObject1 = com.tencent.mobileqq.msf.service.u.c();
+            i1 = this.s.getUinPushStatus(paramFromServiceMsg.getUin());
+            com.tencent.mobileqq.msf.service.u.a(BaseApplication.getContext(), BaseApplication.getContext().getPackageName(), paramFromServiceMsg.getUin(), (String)localObject1, i1, null);
+            QLog.d("MSF.C.SSORespHandler", 1, "sendBootAction for mainProcess for " + MD5.toMD5(paramFromServiceMsg.getUin()));
+            this.u = System.currentTimeMillis();
+            paramFromServiceMsg.setBusinessFail(2001, paramFromServiceMsg.getBusinessFailMsg());
+            MsfSdkUtils.addFromMsgProcessName("*", paramFromServiceMsg);
+            this.s.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+            if (this.s.getStatReporter() != null) {
+              this.s.getStatReporter().a(0L, i2, 0L);
+            }
+            return true;
+            i1 = 0;
+            continue;
+            if ((paramToServiceMsg != null) && (this.s.sender.aa != -1) && (paramToServiceMsg.getRequestSsoSeq() >= this.s.sender.aa))
+            {
+              bool2 = true;
+              bool1 = bool2;
+              if (!QLog.isColorLevel()) {
+                break label211;
+              }
+              QLog.d("MSF.C.SSORespHandler", 2, "set userTokenExpired. afterReloadD2SendSeq is " + this.s.sender.aa);
+              bool1 = bool2;
+              break label211;
+            }
+            bool1 = bool2;
+            if (this.t == -1L) {
+              break label211;
+            }
+            bool1 = bool2;
+            if (System.currentTimeMillis() - this.t <= 60000L) {
+              break label211;
+            }
+            bool2 = true;
+            bool1 = bool2;
+            if (!QLog.isColorLevel()) {
+              break label211;
+            }
+            QLog.d("MSF.C.SSORespHandler", 2, "set userTokenExpired after so long wait. ");
+            bool1 = bool2;
+          }
+          catch (Exception localException1)
+          {
+            for (;;)
+            {
+              QLog.d("MSF.C.SSORespHandler", 1, "sendBootAction for mainProcess error " + localException1, localException1);
+            }
+          }
+        }
+      }
+      if (i2 == -10101)
+      {
+        QLog.d("MSF.C.SSORespHandler", 1, "handleSsoFailCode, sso pop tips");
+        paramFromServiceMsg.setBusinessFail(2011, paramFromServiceMsg.getBusinessFailMsg());
+        MsfSdkUtils.addFromMsgProcessName("*", paramFromServiceMsg);
+        this.s.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+        return true;
+      }
+      if (i2 == -10102)
+      {
+        QLog.d("MSF.C.SSORespHandler", 1, "handleSsoFailCode, sso suspent");
+        this.s.suspend();
+        paramFromServiceMsg.setBusinessFail(2009, paramFromServiceMsg.getBusinessFailMsg());
+        MsfSdkUtils.addFromMsgProcessName("*", paramFromServiceMsg);
+        this.s.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+        return true;
+      }
+      if (i2 == -10103)
+      {
+        QLog.d("MSF.C.SSORespHandler", 1, "handleSsoFailCode, sso expired token");
+        this.s.getAccountCenter().k(paramFromServiceMsg.getUin());
+        paramFromServiceMsg.setBusinessFail(2012, paramFromServiceMsg.getBusinessFailMsg());
+        MsfSdkUtils.addFromMsgProcessName("*", paramFromServiceMsg);
+        this.s.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+        return true;
+      }
+      if (i2 == -10009)
+      {
+        paramFromServiceMsg.setBusinessFail(2015, paramFromServiceMsg.getBusinessFailMsg());
+        MsfSdkUtils.addFromMsgProcessName("*", paramFromServiceMsg);
+        this.s.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.NetConnTag", 2, Thread.currentThread().getName() + " handleSsoFailCode closeConn ssoInvalidCookie");
+        }
+        this.s.sender.a(com.tencent.qphone.base.a.m);
+        return true;
+      }
+      if (i2 == -10104)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.SSORespHandler", 2, "get CODE_SSO_FORCEQUIT kill " + BaseApplication.getContext().getPackageName() + ":qq now");
+        }
+        MsfSdkUtils.killProcess(BaseApplication.getContext(), BaseApplication.getContext().getPackageName());
+        return true;
+      }
+      if (i2 == -10105)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.SSORespHandler", 2, "get CODE_SSO_FORCEQUITSDK kill " + BaseApplication.getContext().getPackageName() + ":msf now");
+        }
+        MsfSdkUtils.killProcess(BaseApplication.getContext(), BaseApplication.getContext().getPackageName() + ":MSF");
+        return true;
+      }
+      Object localObject2 = null;
+      if (paramToServiceMsg != null) {
+        localObject2 = (com.tencent.msf.service.protocol.e.d)a.get(paramToServiceMsg.getUin());
+      }
+      if ((localObject2 != null) && (!paramFromServiceMsg.getServiceCmd().startsWith("login.")) && (!paramToServiceMsg.getServiceCmd().startsWith("wtlogin.login")) && (!paramToServiceMsg.getServiceCmd().equals("GrayUinPro.Check")))
+      {
+        QLog.d("MSF.C.SSORespHandler", 1, new Object[] { "handleSsoFailCode, not in gray list, ", paramFromServiceMsg.getUin() });
+        if (paramToServiceMsg != null) {}
+        try
+        {
+          paramFromServiceMsg.setBusinessFail(2008, new String(((com.tencent.msf.service.protocol.e.d)localObject2).c, "UTF-8"));
+          paramFromServiceMsg.addAttribute(paramFromServiceMsg.getServiceCmd(), String.valueOf(((com.tencent.msf.service.protocol.e.d)localObject2).b));
+          MsfSdkUtils.addFromMsgProcessName("*", paramFromServiceMsg);
+          this.s.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+          return true;
+        }
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            paramFromServiceMsg.setBusinessFail(2008, paramToServiceMsg.getUin() + " not in gray list");
+          }
+        }
+      }
+      if (paramFromServiceMsg.getServiceCmd().equals("MessageSvc.PushForceOffline")) {
+        try
+        {
+          this.s.pushManager.c(paramFromServiceMsg.getUin());
+          paramFromServiceMsg.addAttribute("_attr_sameDevice", Boolean.valueOf(false));
+          paramFromServiceMsg.setBusinessFail(2013, paramFromServiceMsg.getBusinessFailMsg());
+          MsfSdkUtils.addFromMsgProcessName("*", paramFromServiceMsg);
+          this.s.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+          com.tencent.mobileqq.msf.core.net.a.a.a("kicked");
+          return true;
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("MSF.C.SSORespHandler", 2, "handle forceLogout error " + paramFromServiceMsg);
+            }
+          }
+        }
+      }
+      if (paramFromServiceMsg.getServiceCmd().equals("StatSvc.ReqMSFOffline")) {
+        try
+        {
+          this.s.pushManager.c(paramFromServiceMsg.getUin());
+          paramToServiceMsg = new UniPacket(true);
+          paramToServiceMsg.setEncodeName("utf-8");
+          paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+          paramToServiceMsg = (RequestMSFForceOffline)paramToServiceMsg.getByClass("RequestMSFForceOffline", new RequestMSFForceOffline());
+          paramToServiceMsg = new com.tencent.msf.service.protocol.push.b(paramToServiceMsg.lUin, paramToServiceMsg.iSeqno, (byte)0);
+          localObject2 = new ToServiceMsg("", paramFromServiceMsg.getUin(), "StatSvc.RspMSFForceOffline");
+          ((ToServiceMsg)localObject2).addAttribute("_attr_sameDevice", Boolean.valueOf(false));
+          UniPacket localUniPacket = new UniPacket(true);
+          localUniPacket.setEncodeName("utf-8");
+          localUniPacket.setServantName("StatSvc");
+          localUniPacket.setFuncName("RspMSFForceOffline");
+          localUniPacket.put("RspMSFForceOffline", paramToServiceMsg);
+          ((ToServiceMsg)localObject2).setMsfCommand(MsfCommand._msf_kickedAndCleanTokenResp);
+          ((ToServiceMsg)localObject2).setNeedCallback(false);
+          ((ToServiceMsg)localObject2).putWupBuffer(localUniPacket.encode());
+          ((ToServiceMsg)localObject2).setRequestSsoSeq(MsfCore.getNextSeq());
+          ((ToServiceMsg)localObject2).setAppId(this.s.getMsfAppid());
+          ((ToServiceMsg)localObject2).setTimeout(30000L);
+          ((ToServiceMsg)localObject2).addAttribute(((ToServiceMsg)localObject2).getServiceCmd(), paramFromServiceMsg);
+          this.s.sender.b((ToServiceMsg)localObject2);
+          com.tencent.mobileqq.msf.core.net.a.a.a("kicked");
+          return true;
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("MSF.C.SSORespHandler", 2, "send offlineResp error " + paramFromServiceMsg);
+            }
+          }
+        }
+      }
+      return false;
+    }
+    catch (AssertionError localAssertionError)
+    {
+      for (;;)
+      {
+        continue;
+        label1608:
+        boolean bool1 = bool2;
+      }
+    }
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt)
+  {
+    if ((paramToServiceMsg == null) && (paramFromServiceMsg == null))
+    {
+      QLog.d("MSF.C.SSORespHandler", 1, "handleHttpSsoResp msg is empty");
+      return false;
+    }
+    if (paramFromServiceMsg.getServiceCmd().equals("ConfigPushSvc.PushReq"))
+    {
+      paramToServiceMsg = new UniPacket(true);
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramFromServiceMsg.getUin();
+      paramToServiceMsg = (com.tencent.msf.service.protocol.serverconfig.f)paramToServiceMsg.getByClass("PushReq", new com.tencent.msf.service.protocol.serverconfig.f());
+      this.s.ssoListManager.a(paramToServiceMsg);
+      return false;
+    }
+    if (paramFromServiceMsg.getServiceCmd().equals("MessageSvc.QueryPullUp"))
+    {
+      this.s.pushManager.q().a(paramToServiceMsg, paramFromServiceMsg);
+      return true;
+    }
+    if (paramToServiceMsg.getAttributes().containsKey("attr_quick_send"))
+    {
+      this.s.quicksender.a(paramToServiceMsg, paramFromServiceMsg, paramInt);
+      return true;
+    }
+    return false;
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramToServiceMsg != null)
+    {
+      paramToServiceMsg.getAttributes().remove("to_timeoutCallbacker");
+      if (com.tencent.mobileqq.msf.core.a.a.x()) {
+        paramToServiceMsg.getAttributes().remove("to_predetect_timeoutCallbacker");
+      }
+      if ((this.s.getMsfAppid() == -1) && (paramToServiceMsg.getAppId() != 100) && (!paramToServiceMsg.getUin().equals("0"))) {
+        this.s.setMsfAppid(paramToServiceMsg.getAppId());
+      }
+      if (paramFromServiceMsg.getBusinessFailCode() == 1000) {}
+    }
+    label790:
+    label846:
+    label1743:
+    for (;;)
+    {
+      int i1;
+      long l2;
+      long l1;
+      try
+      {
+        i1 = paramFromServiceMsg.getBusinessFailCode();
+        int i2 = ((Integer)paramToServiceMsg.getAttribute("reqPkgSize", Integer.valueOf(0))).intValue();
+        bool = false;
+        if (((Boolean)paramToServiceMsg.getAttribute("_tag_senddata_error", Boolean.valueOf(false))).booleanValue()) {
+          bool = true;
+        }
+        l2 = ((Long)paramFromServiceMsg.getAttribute("__timestamp_net2msf", Long.valueOf(0L))).longValue() - ((Long)paramToServiceMsg.getAttribute("__timestamp_msf2net", Long.valueOf(0L))).longValue();
+        if (l2 < 0L) {
+          break label2098;
+        }
+        l1 = l2;
+        if (l2 > 2147483647L) {
+          break label2098;
+        }
+        if (this.s.statReporter != null) {
+          this.s.statReporter.a(paramToServiceMsg.getServiceCmd(), paramToServiceMsg.getRequestSsoSeq(), l1, i1, paramToServiceMsg.getWupBuffer().length, paramFromServiceMsg.getWupBuffer().length, i2, bool);
+        }
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          QLog.d("MSF.C.NetConnTag", 1, "recv data in socket adaptor way");
+          if (this.s.sender.I != null) {
+            this.s.sender.I.b().a(paramFromServiceMsg.getRequestSsoSeq(), false);
+          }
+          if (paramFromServiceMsg.getServiceCmd().equals("RegPrxySvc.PbSyncMsg")) {
+            paramFromServiceMsg.addAttribute("infoSync_timestamp", Long.valueOf(SystemClock.elapsedRealtime()));
+          }
+          Object localObject1;
+          if (("LongConn.OffPicUp".equals(paramFromServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equals(paramFromServiceMsg.getServiceCmd())))
+          {
+            localObject1 = new StringBuilder().append("SsoRespHandler handleSsoResp resp:").append(paramFromServiceMsg.getStringForLog()).append(" ToServiceMsg:");
+            if (paramToServiceMsg != null)
+            {
+              bool = true;
+              QLog.d("MSF.C.SSORespHandler", 1, bool);
+            }
+          }
+          else if ((paramToServiceMsg != null) && (this.s.quicksender != null))
+          {
+            this.s.quicksender.a(paramToServiceMsg, paramFromServiceMsg);
+          }
+          try
+          {
+            if (!"MessageSvc.PbSendMsg".equals(paramFromServiceMsg.getServiceCmd())) {
+              continue;
+            }
+            ai.a(paramToServiceMsg, paramFromServiceMsg, false);
+            com.tencent.mobileqq.a.a.a.a().a(paramToServiceMsg, paramFromServiceMsg, false, 0);
+            if (com.tencent.mobileqq.msf.core.a.a.aH()) {
+              com.tencent.mobileqq.a.a.d.a(paramToServiceMsg, paramFromServiceMsg);
+            }
+            if ((paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().startsWith("RegPrxySvc"))) {
+              this.s.sender.b(paramFromServiceMsg);
+            }
+            if (("RegPrxySvc.infoSync".equals(paramFromServiceMsg.getServiceCmd())) && (this.s.getStatReporter() != null))
+            {
+              localObject1 = this.s.getStatReporter();
+              if (paramFromServiceMsg.getBusinessFailCode() != 1000) {
+                continue;
+              }
+              bool = true;
+              ((j)localObject1).c(bool);
+            }
+            if ((paramToServiceMsg != null) && (this.s.quicksender != null) && (this.s.quicksender.b(paramToServiceMsg)) && (paramFromServiceMsg.isSuccess())) {
+              this.s.quicksender.f.a(paramToServiceMsg, paramFromServiceMsg);
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            localThrowable.printStackTrace();
+            continue;
+            paramFromServiceMsg.addAttribute("__timestamp_msf2net_boot_sharp_c2s", Integer.valueOf(-1));
+            continue;
+            if ((!com.tencent.mobileqq.msf.core.a.a.u) || (paramToServiceMsg == null) || (paramToServiceMsg.getMsfCommand() == MsfCommand._msf_RegPush) || (paramToServiceMsg.getMsfCommand() == MsfCommand._msf_queryPush) || (this.s.pushManager == null)) {
+              break label846;
+            }
+            this.s.pushManager.a(System.currentTimeMillis(), SystemClock.elapsedRealtime());
+            if ((paramToServiceMsg == null) || (paramToServiceMsg.getAttribute("to_wtlogin_oldcmd") == null)) {
+              break label899;
+            }
+            for (i1 = 1;; i1 = 0)
+            {
+              if ((!paramFromServiceMsg.getServiceCmd().startsWith("login.")) || (i1 != 0)) {
+                break label1003;
+              }
+              if (paramToServiceMsg == null) {
+                break;
+              }
+              this.s.getAccountCenter().f.a(paramToServiceMsg, paramFromServiceMsg);
+              return;
+            }
+            if (((!paramFromServiceMsg.getServiceCmd().equals("login.auth")) && (!paramFromServiceMsg.getServiceCmd().equals("login.chguin"))) || (paramFromServiceMsg.getResultCode() != 1000) || (this.s.getStatReporter() == null)) {
+              break label970;
+            }
+            this.s.getStatReporter().a(paramFromServiceMsg.getServiceCmd().equals("login.chguin"));
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("MSF.C.SSORespHandler", 2, "found timeoutResp " + paramFromServiceMsg);
+            return;
+          }
+          if (paramFromServiceMsg.getServiceCmd().startsWith("SharpSvr."))
+          {
+            l1 = SystemClock.elapsedRealtime();
+            if ((ac.J > 0L) && (l1 - ac.J > 0L) && (l1 - ac.J <= 30000L)) {
+              paramFromServiceMsg.addAttribute("__timestamp_msf2net_boot_sharp_c2s", Long.valueOf(ac.J));
+            }
+          }
+          else
+          {
+            if (!a(paramFromServiceMsg, paramToServiceMsg)) {
+              break label790;
+            }
+            if ((paramFromServiceMsg.getServiceCmd().startsWith("wtlogin.")) && (paramToServiceMsg != null)) {
+              com.tencent.mobileqq.msf.core.auth.n.a(paramToServiceMsg, paramFromServiceMsg);
+            }
+            return;
+            localException1 = localException1;
+            QLog.e("MSF.C.SSORespHandler", 1, "reportSendError exception:", localException1);
+          }
+        }
+        catch (Exception localException2)
+        {
+          QLog.d("MSF.C.SSORespHandler", 1, "adaptor recv failed", localException2);
+          continue;
+          boolean bool = false;
+          continue;
+          bool = "RegPrxySvc.NoticeEnd".equals(paramFromServiceMsg.getServiceCmd());
+          if (!bool) {
+            continue;
+          }
+          continue;
+          bool = false;
+          continue;
+        }
+      }
+      label1003:
+      if (((!ac.s) || (!com.tencent.mobileqq.msf.core.net.a.f.a())) || ((paramFromServiceMsg.getServiceCmd().startsWith("wtlogin.")) && (i1 != 0)))
+      {
+        if (paramToServiceMsg != null)
+        {
+          com.tencent.mobileqq.msf.core.auth.n.a(paramToServiceMsg, paramFromServiceMsg);
+          return;
+        }
+        if ((paramFromServiceMsg.getServiceCmd().equals("wtlogin.login")) && (paramFromServiceMsg.getResultCode() == 1000) && (this.s.getStatReporter() != null)) {
+          this.s.getStatReporter().a(false);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.SSORespHandler", 2, "found timeoutResp " + paramFromServiceMsg);
+        }
+      }
+      else
+      {
+        if (paramFromServiceMsg.getServiceCmd().equals("wtlogin.PushChangeToken"))
+        {
+          this.s.getAccountCenter().g.b();
+          return;
+        }
+        Object localObject2;
+        if (paramFromServiceMsg.getServiceCmd().equals("OnlinePush.SidTicketExpired"))
+        {
+          localObject2 = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+          ((ToServiceMsg)localObject2).setRequestSsoSeq(paramFromServiceMsg.getRequestSsoSeq());
+          ((ToServiceMsg)localObject2).setAppId(this.s.getMsfAppid());
+          ((ToServiceMsg)localObject2).setNeedCallback(false);
+          ((ToServiceMsg)localObject2).setTimeout(30000L);
+          this.s.sendSsoMsg((ToServiceMsg)localObject2);
+          localObject2 = this.x.obtainMessage();
+          ((Message)localObject2).what = 1000;
+          ((Message)localObject2).obj = paramFromServiceMsg.getUin();
+          if (this.x.hasMessages(1000)) {
+            this.x.removeMessages(1000);
+          }
+          this.x.sendMessageDelayed((Message)localObject2, 3000L);
+        }
+        if (paramFromServiceMsg.getServiceCmd().equals("ConfigPushSvc.PushReq"))
+        {
+          this.s.ssoListManager.a(paramFromServiceMsg);
+          return;
+        }
+        if (paramFromServiceMsg.getServiceCmd().equals("SSO.HelloPush"))
+        {
+          this.s.pushManager.d(paramFromServiceMsg);
+          return;
+        }
+        if (paramFromServiceMsg.getServiceCmd().equals("QualityTest.PushList"))
+        {
+          com.tencent.mobileqq.msf.core.net.c.k.d = this.s;
+          com.tencent.mobileqq.msf.core.net.c.k.a(paramFromServiceMsg);
+          paramToServiceMsg = new ToServiceMsg("", "0", paramFromServiceMsg.getServiceCmd());
+          paramToServiceMsg.setMsfCommand(MsfCommand._msf_QualityTest);
+          paramToServiceMsg.setRequestSsoSeq(paramFromServiceMsg.getRequestSsoSeq());
+          paramToServiceMsg.setAppId(this.s.getMsfAppid());
+          paramToServiceMsg.setNeedCallback(false);
+          paramToServiceMsg.setTimeout(30000L);
+          this.s.sendSsoMsg(paramToServiceMsg);
+          return;
+        }
+        if (paramFromServiceMsg.getServiceCmd().equals("OnlinePush.PbPushOffMsg"))
+        {
+          this.s.pushManager.c(paramFromServiceMsg);
+          return;
+        }
+        if (paramFromServiceMsg.getServiceCmd().equals("OnlinePush.PushOffReadedNotify"))
+        {
+          this.s.pushManager.b(paramFromServiceMsg);
+          return;
+        }
+        if (paramFromServiceMsg.getServiceCmd().equals("MessageSvc.PullUnreadMsgCount"))
+        {
+          this.s.pushManager.a(paramFromServiceMsg, paramToServiceMsg);
+          return;
+        }
+        if ((paramFromServiceMsg.getServiceCmd().equals("RegPrxySvc.infoLogin")) || (paramFromServiceMsg.getServiceCmd().equals("RegPrxySvc.PbSyncMsg"))) {
+          this.s.mbIsInfoLoginGetted.set(true);
+        }
+        if ((paramToServiceMsg != null) && ((paramFromServiceMsg.getServiceCmd().equals("ConfigService.ClientReq")) || (paramFromServiceMsg.getServiceCmd().equals("ResourceConfig.ClientReq"))))
+        {
+          if (paramToServiceMsg.getMsfCommand() == MsfCommand._msf_getConfig)
+          {
+            this.s.configManager.a(paramFromServiceMsg, paramToServiceMsg);
+            return;
+          }
+          this.s.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+          return;
+        }
+        if (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))
+        {
+          localObject2 = new ToServiceMsg("", paramFromServiceMsg.getUin(), "SharpSvr.s2cackMSF");
+          ((ToServiceMsg)localObject2).setAppId(this.s.getMsfAppid());
+          ((ToServiceMsg)localObject2).setRequestSsoSeq(paramFromServiceMsg.getRequestSsoSeq());
+          ((ToServiceMsg)localObject2).setNeedCallback(false);
+          ((ToServiceMsg)localObject2).setTimeout(30000L);
+          ((ToServiceMsg)localObject2).putWupBuffer(paramFromServiceMsg.getWupBuffer());
+          this.s.sender.b((ToServiceMsg)localObject2);
+          if (paramToServiceMsg != null) {
+            break label1743;
+          }
+          com.tencent.mobileqq.msf.core.c.e.a().a(e.a.b, paramFromServiceMsg.getWupBuffer(), 0);
+        }
+        while ((paramFromServiceMsg.getServiceCmd().equals("QQWifiSvc.AvailQQWiFiForMSF")) && (paramToServiceMsg != null) && (((Boolean)paramToServiceMsg.getAttribute("isformsf", Boolean.valueOf(false))).booleanValue()))
+        {
+          u.a().a(paramToServiceMsg, paramFromServiceMsg);
+          return;
+          com.tencent.mobileqq.msf.core.c.e.a().a(e.a.b, paramFromServiceMsg.getWupBuffer(), 2);
+        }
+        if (paramToServiceMsg == null)
+        {
+          if (paramFromServiceMsg.getServiceCmd().equals("OverLoadPush.notify"))
+          {
+            this.s.configManager.a(paramFromServiceMsg);
+            return;
+          }
+          this.s.pushManager.a(paramFromServiceMsg);
+          return;
+        }
+        switch (ah.a[paramToServiceMsg.getMsfCommand().ordinal()])
+        {
+        default: 
+          paramFromServiceMsg.setAppId(paramToServiceMsg.getAppId());
+          paramFromServiceMsg.setAppSeq(paramToServiceMsg.getAppSeq());
+          paramFromServiceMsg.setMsfCommand(paramToServiceMsg.getMsfCommand());
+          this.s.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+          return;
+        case 1: 
+          this.s.pushManager.a(paramToServiceMsg, paramFromServiceMsg);
+          return;
+        case 2: 
+          this.s.pushManager.a(paramToServiceMsg, paramFromServiceMsg);
+          return;
+        case 3: 
+          this.s.pushManager.b(paramToServiceMsg, paramFromServiceMsg);
+          return;
+        case 4: 
+          this.s.sender.a(paramFromServiceMsg);
+          return;
+        case 5: 
+          this.s.getAccountCenter().c.a(paramToServiceMsg, paramFromServiceMsg);
+          return;
+        }
+        l2 = System.currentTimeMillis() / 1000L;
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.SSORespHandler", 2, "CorrectTime get current time:" + l2);
+        }
+        l1 = l2;
+        try
+        {
+          if (paramFromServiceMsg.isSuccess())
+          {
+            i1 = MsfSdkUtils.convertBytes2Int(paramFromServiceMsg.getWupBuffer(), 4);
+            l1 = i1;
+          }
+        }
+        catch (Exception paramToServiceMsg)
+        {
+          for (;;)
+          {
+            l1 = l2;
+            if (QLog.isDevelopLevel())
+            {
+              QLog.d("MSF.C.SSORespHandler", 4, "handle serverTime error " + paramToServiceMsg);
+              l1 = l2;
+            }
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.SSORespHandler", 2, "CorrectTime get server time:" + l1);
+        }
+        NetConnInfoCenter.handleGetServerTimeResp(l1);
+        return;
+        l1 = 0L;
+      }
+    }
+  }
+  
+  public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    a(paramFromServiceMsg);
+    Object localObject = new UniPacket(true);
+    ((UniPacket)localObject).setEncodeName("UTF-8");
+    ((UniPacket)localObject).decode(paramFromServiceMsg.getWupBuffer());
+    paramToServiceMsg = (com.tencent.msf.service.protocol.security.k)((UniPacket)localObject).getByClass("RespondHeader", new com.tencent.msf.service.protocol.security.k());
+    VerifyCodeInfo localVerifyCodeInfo = new VerifyCodeInfo();
+    localVerifyCodeInfo.ssoSeq = paramFromServiceMsg.getRequestSsoSeq();
+    localVerifyCodeInfo.wupSeq = paramToServiceMsg.c;
+    switch (paramToServiceMsg.b)
+    {
+    }
+    for (;;)
+    {
+      VerifyCodeInfo.putVerifyCodeInfo(paramFromServiceMsg, localVerifyCodeInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.SSORespHandler", 2, "rece businessVerifyCode from:" + paramFromServiceMsg + " svrseqNo:" + localVerifyCodeInfo.svrSeqNo + " vipsid:" + localVerifyCodeInfo.vpicSid + " wupSeq:" + localVerifyCodeInfo.wupSeq);
+      }
+      return;
+      localObject = (i)((UniPacket)localObject).getByClass("RespondAuth", new i());
+      localVerifyCodeInfo.vpicSid = ((i)localObject).c;
+      localVerifyCodeInfo.svrSeqNo = paramToServiceMsg.e;
+      localVerifyCodeInfo.verifyimage = ((i)localObject).a;
+      localVerifyCodeInfo.verifyNote = ((i)localObject).b;
+      continue;
+      localObject = (com.tencent.msf.service.protocol.security.n)((UniPacket)localObject).getByClass("RespondVerifyPic", new com.tencent.msf.service.protocol.security.n());
+      localVerifyCodeInfo.vpicSid = ((com.tencent.msf.service.protocol.security.n)localObject).b;
+      localVerifyCodeInfo.svrSeqNo = paramToServiceMsg.e;
+      localVerifyCodeInfo.verifyimage = ((com.tencent.msf.service.protocol.security.n)localObject).a;
+      localVerifyCodeInfo.verifyNote = "";
+      continue;
+      localObject = (m)((UniPacket)localObject).getByClass("RespondRefreshVPic", new m());
+      localVerifyCodeInfo.vpicSid = ((m)localObject).c;
+      localVerifyCodeInfo.svrSeqNo = paramToServiceMsg.e;
+      localVerifyCodeInfo.verifyimage = ((m)localObject).a;
+      localVerifyCodeInfo.verifyNote = ((m)localObject).b;
+    }
   }
 }
 

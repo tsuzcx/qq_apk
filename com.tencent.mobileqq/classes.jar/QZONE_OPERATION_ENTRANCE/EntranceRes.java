@@ -8,10 +8,10 @@ public final class EntranceRes
   extends JceStruct
 {
   private static final long serialVersionUID = 0L;
-  public long expireTime;
-  public int limitCount;
-  public int loopCount;
-  public int oper;
+  public long expireTime = 0L;
+  public int limitCount = 0;
+  public int loopCount = 0;
+  public int oper = 0;
   public String resUrl = "";
   
   public EntranceRes() {}

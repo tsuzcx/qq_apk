@@ -2,10 +2,12 @@ package cooperation.qzone;
 
 import QMF_PROTOCAL.RetryInfo;
 import android.text.TextUtils;
-import bhjl;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.WupUtil;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import cooperation.qzone.util.ProtocolUtils;
 
 public abstract class QzoneExternalRequest
@@ -17,7 +19,7 @@ public abstract class QzoneExternalRequest
   private String charset = "utf-8";
   private String deviceTail;
   protected long hostUin;
-  private long loginUserId;
+  private long loginUserId = 0L;
   protected boolean needCompress = true;
   private String refer;
   private RetryInfo retryInfo;
@@ -40,13 +42,13 @@ public abstract class QzoneExternalRequest
   public byte[] encode()
   {
     Object localObject1 = getDeviceInfo();
-    Object localObject2 = QUA.getQUA3();
+    Object localObject2 = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3();
     long l = getLoginUserId();
     RetryInfo localRetryInfo = (RetryInfo)getRetryInfo();
     localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
     localObject2 = getEncodedUniParameter();
     if (localObject2 != null) {
-      return bhjl.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
+      return WupUtil.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
     }
     return null;
   }
@@ -60,7 +62,7 @@ public abstract class QzoneExternalRequest
   
   public String getDeviceInfo()
   {
-    return PlatformInfor.g().getDeviceInfor();
+    return ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getDeviceInfor();
   }
   
   public String getDeviceTail()
@@ -149,7 +151,7 @@ public abstract class QzoneExternalRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzoneExternalRequest
  * JD-Core Version:    0.7.0.1
  */

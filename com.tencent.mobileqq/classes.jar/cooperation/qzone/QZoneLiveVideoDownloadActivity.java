@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import Override;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -98,7 +97,7 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QZLog.w("QZoneLiveVideoDownloadActivity", "[onPluginManagerLoaded] pInterface is null");
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717185);
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717680);
       QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
@@ -113,7 +112,7 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QLog.w("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] PluginBaseInfo is null, isReady=" + this.mPluginManager.isReady());
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717185);
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717680);
       QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
@@ -162,7 +161,7 @@ public class QZoneLiveVideoDownloadActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

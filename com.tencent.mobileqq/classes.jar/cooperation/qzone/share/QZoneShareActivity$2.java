@@ -1,6 +1,6 @@
 package cooperation.qzone.share;
 
-import bhdj;
+import com.tencent.mobileqq.utils.DialogUtil;
 import mqq.app.QQPermissionCallback;
 
 class QZoneShareActivity$2
@@ -10,7 +10,7 @@ class QZoneShareActivity$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bhdj.a(this.this$0);
+    DialogUtil.a(this.this$0);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -20,7 +20,7 @@ class QZoneShareActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.2
  * JD-Core Version:    0.7.0.1
  */

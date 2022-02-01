@@ -1,12 +1,11 @@
 package com.tencent.av.ui.redbag;
 
 import com.tencent.av.app.VideoAppInterface;
-import mqu;
 
-public class OtherBtnController$2
+class OtherBtnController$2
   implements Runnable
 {
-  public OtherBtnController$2(mqu parammqu) {}
+  OtherBtnController$2(OtherBtnController paramOtherBtnController) {}
   
   public void run()
   {
@@ -16,17 +15,17 @@ public class OtherBtnController$2
       return;
       this.this$0.a();
     } while (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null);
-    if (this.this$0.jdField_a_of_type_Mcx != null)
+    if (this.this$0.jdField_a_of_type_ComTencentAvUiControlUIObserver != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.this$0.jdField_a_of_type_Mcx);
-      this.this$0.jdField_a_of_type_Mcx = null;
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.this$0.jdField_a_of_type_ComTencentAvUiControlUIObserver);
+      this.this$0.jdField_a_of_type_ComTencentAvUiControlUIObserver = null;
     }
     this.this$0.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.redbag.OtherBtnController.2
  * JD-Core Version:    0.7.0.1
  */

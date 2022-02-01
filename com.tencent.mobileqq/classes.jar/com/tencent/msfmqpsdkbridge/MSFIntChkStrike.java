@@ -13,13 +13,13 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bhfn;
-import bhhr;
-import bizi;
-import bizl;
-import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.utils.PackageUtil;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mqpsdk.secsrv.IIntChkStrikeResultListener;
+import com.tencent.mqpsdk.secsrv.MQPIntChkService.IIntChkStrike;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.ByteArrayInputStream;
 import javax.xml.parsers.DocumentBuilder;
@@ -30,7 +30,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 public class MSFIntChkStrike
-  implements bizl
+  implements MQPIntChkService.IIntChkStrike
 {
   private static final int BTN_ACTION_BROWSER = 5;
   private static final int BTN_ACTION_BROWSER_AND_LOGOUT = 6;
@@ -40,15 +40,15 @@ public class MSFIntChkStrike
   private static final int BTN_ACTION_LOGOUT = 2;
   private static final int BTN_ACTION_QQDOWNLOADER = 3;
   private static final int BTN_ACTION_QQDOWNLOADER_AND_LOGOUT = 3;
-  private QQAppInterface mApp;
-  private long mDownloadReference;
-  private int mNetworkFlags;
+  private QQAppInterface mApp = null;
+  private long mDownloadReference = 0L;
+  private int mNetworkFlags = 0;
   private String mPackageDownloadURL = "";
   private String mPackageName = "MQPINTCHK";
-  private bizi mResultListener;
+  private IIntChkStrikeResultListener mResultListener = null;
   private int mStrikeResult = 0;
   private int mStrikeType;
-  private boolean mToastAlreadyShown;
+  private boolean mToastAlreadyShown = false;
   
   public MSFIntChkStrike(QQAppInterface paramQQAppInterface, int paramInt)
   {
@@ -122,17 +122,17 @@ public class MSFIntChkStrike
               if (this.mApp != null)
               {
                 this.mApp.logout(true);
-                bhhr.a(this.mApp.getApp(), this.mApp.getCurrentAccountUin(), false);
+                SharedPreUtils.a(this.mApp.getApp(), this.mApp.getCurrentAccountUin(), false);
               }
-              localObject = new Intent(paramDialogInterface, LoginActivity.class);
+              localObject = new Intent();
               ((Intent)localObject).addFlags(335544320);
-              paramDialogInterface.startActivity((Intent)localObject);
+              RouteUtils.a(paramDialogInterface, (Intent)localObject, "/base/login");
             }
             return;
           }
           catch (Exception localException2)
           {
-            break label363;
+            break label362;
           }
           if (paramInt2 == 2)
           {
@@ -185,12 +185,12 @@ public class MSFIntChkStrike
       }
       this.mStrikeResult = 65535;
       break;
-      label363:
+      label362:
       localException1.printStackTrace();
     }
   }
   
-  public void exec(String paramString, bizi parambizi)
+  public void exec(String paramString, IIntChkStrikeResultListener paramIIntChkStrikeResultListener)
   {
     Object localObject1 = null;
     Object localObject3 = null;
@@ -215,13 +215,13 @@ public class MSFIntChkStrike
             if (TextUtils.isEmpty(paramString)) {
               break;
             }
-            if (parambizi != null) {
-              this.mResultListener = parambizi;
+            if (paramIIntChkStrikeResultListener != null) {
+              this.mResultListener = paramIIntChkStrikeResultListener;
             }
-            parambizi = DocumentBuilderFactory.newInstance();
+            paramIIntChkStrikeResultListener = DocumentBuilderFactory.newInstance();
             try
             {
-              localObject1 = parambizi.newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes())).getDocumentElement();
+              localObject1 = paramIIntChkStrikeResultListener.newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes())).getDocumentElement();
               paramString = ((Element)localObject1).getElementsByTagName("title");
               if (paramString.getLength() == 0) {
                 break;
@@ -248,13 +248,13 @@ public class MSFIntChkStrike
                   this.mNetworkFlags = 0;
                 }
               }
-              parambizi = "";
+              paramIIntChkStrikeResultListener = "";
               paramString = ((Element)localObject1).getElementsByTagName("btn_confirm");
               if (paramString.getLength() <= 0) {
                 break label762;
               }
               paramString = (Element)paramString.item(0);
-              parambizi = paramString.getAttribute("text");
+              paramIIntChkStrikeResultListener = paramString.getAttribute("text");
               paramString = new MSFIntChkStrike.1(this, Integer.parseInt(paramString.getAttribute("action")));
               localObject3 = "";
               localObject1 = ((Element)localObject1).getElementsByTagName("btn_cancel");
@@ -265,7 +265,7 @@ public class MSFIntChkStrike
               localObject3 = ((Element)localObject1).getAttribute("text");
               localObject1 = new MSFIntChkStrike.2(this, Integer.parseInt(((Element)localObject1).getAttribute("action")));
               MSFIntChkStrike.3 local3 = new MSFIntChkStrike.3(this);
-              new Handler(Looper.getMainLooper()).post(new MSFIntChkStrike.4(this, str1, str2, paramString, (DialogInterface.OnClickListener)localObject1, (String)localObject3, parambizi, local3));
+              new Handler(Looper.getMainLooper()).post(new MSFIntChkStrike.4(this, str1, str2, paramString, (DialogInterface.OnClickListener)localObject1, (String)localObject3, paramIIntChkStrikeResultListener, local3));
               return;
             }
             catch (Exception paramString)
@@ -284,7 +284,7 @@ public class MSFIntChkStrike
       }
       if (this.mStrikeType == 2)
       {
-        if (parambizi != null) {}
+        if (paramIIntChkStrikeResultListener != null) {}
         label584:
         for (;;)
         {
@@ -299,7 +299,7 @@ public class MSFIntChkStrike
             {
               paramString.put("strike_result", 5);
               if (paramString != null) {
-                parambizi.a(paramString.toString());
+                paramIIntChkStrikeResultListener.a(paramString.toString());
               }
               this.mApp.exit(false);
               return;
@@ -333,13 +333,13 @@ public class MSFIntChkStrike
           for (;;)
           {
             paramString.put("strike_result", i);
-            parambizi.a(paramString.toString());
+            paramIIntChkStrikeResultListener.a(paramString.toString());
             return;
             paramString = paramString;
             paramString.printStackTrace();
             paramString = localContext;
             continue;
-            if (!bhfn.a(localContext, paramString, this.mApp.getCurrentAccountUin())) {
+            if (!PackageUtil.a(localContext, paramString, this.mApp.getCurrentAccountUin())) {
               break;
             }
             i = 13;
@@ -358,10 +358,10 @@ public class MSFIntChkStrike
         break;
       }
       localContext = this.mApp.getApp().getApplicationContext();
-      if (!bhfn.a(localContext, paramString))
+      if (!PackageUtil.a(localContext, paramString))
       {
         i = 11;
-        if (parambizi == null) {
+        if (paramIIntChkStrikeResultListener == null) {
           break;
         }
         paramString = new JSONObject();
@@ -376,7 +376,7 @@ public class MSFIntChkStrike
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.msfmqpsdkbridge.MSFIntChkStrike
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ public final class mobile_visit_hb_callback_rsp
 {
   static Map<String, String> cache_ext_info = new HashMap();
   public String err_msg = "";
-  public Map<String, String> ext_info;
-  public int ret;
+  public Map<String, String> ext_info = null;
+  public int ret = 0;
   
   static
   {

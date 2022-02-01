@@ -1,28 +1,24 @@
 package dov.com.qq.im.ae.album.fragment;
 
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import bmyq;
-import bnrh;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.album.logic.AEPhotoListLogic;
 
-public class AEAbstractPhotoListFragment$4
-  implements Runnable
+class AEAbstractPhotoListFragment$4
+  implements View.OnClickListener
 {
-  public AEAbstractPhotoListFragment$4(bmyq parambmyq) {}
+  AEAbstractPhotoListFragment$4(AEAbstractPhotoListFragment paramAEAbstractPhotoListFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = bmyq.a(this.this$0).indexOfChild(bmyq.a(this.this$0));
-    int j = Math.min(bmyq.a(this.this$0).getWidth(), bmyq.a(this.this$0).getHeight());
-    bnrh.b("PhotoListActivity", "createVideoPreviewView--length=" + j);
-    bmyq.a(this.this$0).addView(this.this$0.a, Math.max(0, i + 1), new FrameLayout.LayoutParams(j, j));
-    this.this$0.a.setVisibility(4);
+    this.a.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.fragment.AEAbstractPhotoListFragment.4
  * JD-Core Version:    0.7.0.1
  */

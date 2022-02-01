@@ -1,0 +1,3 @@
+<script>
+    var getQueryString=function(name,inputurl){var url=window.location.href,output="";if(inputurl){url=inputurl}if(url.indexOf("?")==-1||url.indexOf(name+"=")==-1){output=""}var queryString=url.substring(url.indexOf("?")+1),parameters=queryString.split("&"),pos,paraName,paraValue;for(var i=0,l=parameters.length;i<l;i++){pos=parameters[i].indexOf("=");if(pos===-1){continue}paraName=parameters[i].substring(0,pos);paraValue=parameters[i].substring(pos+1);if(paraName===name){output=unescape(paraValue.replace(/\+/g," "));break}}return output};if(getQueryString("_env")=="buluo"){window.mqq=parent.window.mqq}if(getQueryString("debug")==534){window.isDebug=true}mqq&&mqq.ui.setWebViewBehavior({progressBar:false});
+</script>

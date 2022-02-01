@@ -80,7 +80,7 @@ public final class a
   public final String d;
   public String e;
   public boolean f = true;
-  public String g = "3.2.3";
+  public String g = "3.2.4";
   public final String h;
   public final String i;
   public final String j;
@@ -194,7 +194,7 @@ public final class a
     }
   }
   
-  public static int J()
+  public static int I()
   {
     return b.c();
   }
@@ -240,19 +240,7 @@ public final class a
     }
   }
   
-  public final Map<String, String> A()
-  {
-    synchronized (this.ay)
-    {
-      if (this.ak.size() <= 0) {
-        return null;
-      }
-      HashMap localHashMap = new HashMap(this.ak);
-      return localHashMap;
-    }
-  }
-  
-  public final void B()
+  public final void A()
   {
     synchronized (this.ay)
     {
@@ -261,7 +249,7 @@ public final class a
     }
   }
   
-  public final int C()
+  public final int B()
   {
     synchronized (this.ay)
     {
@@ -270,7 +258,7 @@ public final class a
     }
   }
   
-  public final Set<String> D()
+  public final Set<String> C()
   {
     synchronized (this.ay)
     {
@@ -279,7 +267,7 @@ public final class a
     }
   }
   
-  public final Map<String, String> E()
+  public final Map<String, String> D()
   {
     synchronized (this.aC)
     {
@@ -291,7 +279,7 @@ public final class a
     }
   }
   
-  public final Map<String, String> F()
+  public final Map<String, String> E()
   {
     synchronized (this.az)
     {
@@ -303,7 +291,7 @@ public final class a
     }
   }
   
-  public final int G()
+  public final int F()
   {
     synchronized (this.aA)
     {
@@ -312,12 +300,12 @@ public final class a
     }
   }
   
-  public final int H()
+  public final int G()
   {
     return this.aj;
   }
   
-  public final Map<String, PlugInBean> I()
+  public final Map<String, PlugInBean> H()
   {
     try
     {
@@ -334,7 +322,7 @@ public final class a
     }
   }
   
-  public final String K()
+  public final String J()
   {
     if (this.ar == null) {
       this.ar = b.q();
@@ -342,7 +330,7 @@ public final class a
     return this.ar;
   }
   
-  public final String L()
+  public final String K()
   {
     if (this.as == null) {
       this.as = b.f(this.H);
@@ -350,7 +338,7 @@ public final class a
     return this.as;
   }
   
-  public final String M()
+  public final String L()
   {
     if (this.at == null) {
       this.at = b.g(this.H);
@@ -358,13 +346,13 @@ public final class a
     return this.at;
   }
   
-  public final String N()
+  public final String M()
   {
     Context localContext = this.H;
     return b.r();
   }
   
-  public final String O()
+  public final String N()
   {
     if (this.au == null) {
       this.au = b.h(this.H);
@@ -372,13 +360,13 @@ public final class a
     return this.au;
   }
   
-  public final long P()
+  public final long O()
   {
     Context localContext = this.H;
     return b.s();
   }
   
-  public final boolean Q()
+  public final boolean P()
   {
     if (this.ao == null)
     {
@@ -388,7 +376,7 @@ public final class a
     return this.ao.booleanValue();
   }
   
-  public final boolean R()
+  public final boolean Q()
   {
     if (this.ap == null)
     {
@@ -398,7 +386,7 @@ public final class a
     return this.ap.booleanValue();
   }
   
-  public final String S()
+  public final String R()
   {
     if (this.J == null)
     {
@@ -663,8 +651,15 @@ public final class a
     if (this.K != null) {
       return this.K;
     }
-    this.K = m();
-    return this.K;
+    if (!this.Y) {}
+    for (String str = "";; str = this.R)
+    {
+      this.K = str;
+      return this.K;
+      if (this.R == null) {
+        this.R = b.a(this.H);
+      }
+    }
   }
   
   public final void g(String paramString)
@@ -767,18 +762,7 @@ public final class a
     return this.Q;
   }
   
-  public final String m()
-  {
-    if (!this.Y) {
-      return "";
-    }
-    if (this.R == null) {
-      this.R = b.a(this.H);
-    }
-    return this.R;
-  }
-  
-  public final long n()
+  public final long m()
   {
     if (this.S <= 0L) {
       this.S = b.h();
@@ -786,7 +770,7 @@ public final class a
     return this.S;
   }
   
-  public final long o()
+  public final long n()
   {
     if (this.T <= 0L) {
       this.T = b.j();
@@ -794,7 +778,7 @@ public final class a
     return this.T;
   }
   
-  public final long p()
+  public final long o()
   {
     if (this.U <= 0L) {
       this.U = b.l();
@@ -802,7 +786,7 @@ public final class a
     return this.U;
   }
   
-  public final String q()
+  public final String p()
   {
     if (this.V == null) {
       this.V = b.a(this.H, true);
@@ -810,7 +794,7 @@ public final class a
     return this.V;
   }
   
-  public final String r()
+  public final String q()
   {
     if (this.W == null) {
       this.W = b.e(this.H);
@@ -818,7 +802,7 @@ public final class a
     return this.W;
   }
   
-  public final String s()
+  public final String r()
   {
     try
     {
@@ -878,7 +862,7 @@ public final class a
     }
   }
   
-  public final String t()
+  public final String s()
   {
     if (this.av == null) {
       this.av = AppInfo.e(this.H);
@@ -887,7 +871,7 @@ public final class a
   }
   
   /* Error */
-  public final Map<String, PlugInBean> u()
+  public final Map<String, PlugInBean> t()
   {
     // Byte code:
     //   0: aload_0
@@ -897,7 +881,7 @@ public final class a
     //   6: ifnull +17 -> 23
     //   9: aload_0
     //   10: getfield 148	com/tencent/bugly/crashreport/common/info/a:X	Ljava/util/Map;
-    //   13: invokeinterface 450 1 0
+    //   13: invokeinterface 452 1 0
     //   18: istore_1
     //   19: iload_1
     //   20: ifgt +9 -> 29
@@ -911,8 +895,8 @@ public final class a
     //   32: dup
     //   33: aload_0
     //   34: getfield 148	com/tencent/bugly/crashreport/common/info/a:X	Ljava/util/Map;
-    //   37: invokeinterface 450 1 0
-    //   42: invokespecial 638	java/util/HashMap:<init>	(I)V
+    //   37: invokeinterface 452 1 0
+    //   42: invokespecial 636	java/util/HashMap:<init>	(I)V
     //   45: astore_2
     //   46: aload_2
     //   47: aload_0
@@ -936,7 +920,7 @@ public final class a
     //   29	56	59	finally
   }
   
-  public final String v()
+  public final String u()
   {
     if (this.Z == null) {
       this.Z = b.n();
@@ -944,7 +928,7 @@ public final class a
     return this.Z;
   }
   
-  public final Boolean w()
+  public final Boolean v()
   {
     if (this.ab == null) {
       this.ab = Boolean.valueOf(b.p());
@@ -952,7 +936,7 @@ public final class a
     return this.ab;
   }
   
-  public final String x()
+  public final String w()
   {
     if (this.ac == null)
     {
@@ -962,7 +946,7 @@ public final class a
     return this.ac;
   }
   
-  public final String y()
+  public final String x()
   {
     if (this.ad == null)
     {
@@ -972,7 +956,7 @@ public final class a
     return this.ad;
   }
   
-  public final String z()
+  public final String y()
   {
     if (this.ae == null)
     {
@@ -980,6 +964,18 @@ public final class a
       x.a("Hardware serial number: %s", new Object[] { this.ae });
     }
     return this.ae;
+  }
+  
+  public final Map<String, String> z()
+  {
+    synchronized (this.ay)
+    {
+      if (this.ak.size() <= 0) {
+        return null;
+      }
+      HashMap localHashMap = new HashMap(this.ak);
+      return localHashMap;
+    }
   }
 }
 

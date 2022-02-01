@@ -1,8 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.Iterator;
-import olh;
 
 class ReadInJoySelectMemberAQFragment$3
   implements Runnable
@@ -14,14 +15,15 @@ class ReadInJoySelectMemberAQFragment$3
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-      olh.a(null, "", "0X8009543", "0X8009543", 0, 0, "", "", "", ReadInJoySelectMemberAQFragment.a(this.this$0, localResultRecord, this.jdField_a_of_type_JavaLangString), false);
+      Object localObject = (ResultRecord)localIterator.next();
+      localObject = ReadInJoySelectMemberAQFragment.a(this.this$0, (ResultRecord)localObject, this.jdField_a_of_type_JavaLangString);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009543", "0X8009543", 0, 0, "", "", "", (String)localObject, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberAQFragment.3
  * JD-Core Version:    0.7.0.1
  */

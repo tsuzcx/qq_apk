@@ -18,6 +18,7 @@ public class SPReportEvent
   public static final int PREPLAY_FULL = 1;
   public static final int PREPLAY_NO = 0;
   public static final int PREPLAY_NOT_FULL = 2;
+  public String CDNIP;
   public int appId;
   public boolean audioCodecEnable;
   public String audioCodecJson;
@@ -38,12 +39,23 @@ public class SPReportEvent
   public boolean hadSeek;
   public boolean hadStart;
   public int hardwareLevel;
+  public String headerClientIP;
+  public String headerServerIP;
   public int height;
-  public int netType;
+  public int httpDownloadCompleteCnt;
+  public int httpDownloadFailCnt;
+  public boolean isDownloadByQuic;
+  public boolean isDownloadByQuicPlaintext;
+  public boolean isEnableQuic;
+  public boolean isEnableQuicConnectionMigration;
+  public boolean isEnableQuicPlaintext;
   public int platform = 1;
   public long playDuration;
   public int prePlay = 0;
   public long prepareDuration;
+  public int quicCongestionType;
+  public int quicDownloadCompleteCnt;
+  public int quicDownloadFailCnt;
   public long realPrepareDuration;
   public long realRenderDuration;
   public long renderDuration;
@@ -51,6 +63,13 @@ public class SPReportEvent
   public String sdkVersion;
   public int secondBufferCount;
   public long secondBufferDuration;
+  public int seekBufferCount;
+  public int seekBufferDuration;
+  public int seekCount;
+  public int seekDuration;
+  public float seekPercent;
+  public float seekStartPercent;
+  public long seekStartTime;
   public long startPosition;
   public long stopPosition;
   public boolean success = true;
@@ -96,7 +115,6 @@ public class SPReportEvent
       localLinkedHashMap.put("param_sdkVersion", this.sdkVersion);
       localLinkedHashMap.put("param_flowId", this.flowId);
       localLinkedHashMap.put("param_configExt", this.configExt);
-      localLinkedHashMap.put("param_netType", String.valueOf(this.netType));
       localLinkedHashMap.put("param_success", String.valueOf(this.success));
       localLinkedHashMap.put("param_errCode", this.errCode);
       localLinkedHashMap.put("param_errDetailInfo", this.errDetailInfo);
@@ -126,6 +144,25 @@ public class SPReportEvent
       localLinkedHashMap.put("param_playDuration", String.valueOf(this.playDuration));
       localLinkedHashMap.put("param_hadStart", String.valueOf(this.hadStart));
       localLinkedHashMap.put("param_hadSeek", String.valueOf(this.hadSeek));
+      localLinkedHashMap.put("param_isEnableQuic", String.valueOf(this.isEnableQuic));
+      localLinkedHashMap.put("param_isEnableQuicPlaintext", String.valueOf(this.isEnableQuicPlaintext));
+      localLinkedHashMap.put("param_isEnableQuicConnectionMigration", String.valueOf(this.isEnableQuicConnectionMigration));
+      localLinkedHashMap.put("param_quicCongestionType", String.valueOf(this.quicCongestionType));
+      localLinkedHashMap.put("param_isDownloadByQuic", String.valueOf(this.isDownloadByQuic));
+      localLinkedHashMap.put("param_quicDownloadCompleteCnt", String.valueOf(this.quicDownloadCompleteCnt));
+      localLinkedHashMap.put("param_quicDownloadFailCnt", String.valueOf(this.quicDownloadFailCnt));
+      localLinkedHashMap.put("param_httpDownloadCompleteCnt", String.valueOf(this.httpDownloadCompleteCnt));
+      localLinkedHashMap.put("param_httpDownloadFailCnt", String.valueOf(this.httpDownloadFailCnt));
+      localLinkedHashMap.put("param_isDownloadByQuicPlaintext", String.valueOf(this.isDownloadByQuicPlaintext));
+      localLinkedHashMap.put("param_headerServerIP", String.valueOf(this.headerServerIP));
+      localLinkedHashMap.put("param_headerClientIP", String.valueOf(this.headerClientIP));
+      localLinkedHashMap.put("param_CDNIP", String.valueOf(this.CDNIP));
+      localLinkedHashMap.put("param_seekCount", String.valueOf(this.seekCount));
+      localLinkedHashMap.put("param_seekBufferCount", String.valueOf(this.seekBufferCount));
+      localLinkedHashMap.put("param_seekBufferDuration", String.valueOf(this.seekBufferDuration));
+      localLinkedHashMap.put("param_seekDuration", String.valueOf(this.seekDuration));
+      localLinkedHashMap.put("param_seekPercent", String.valueOf(this.seekPercent));
+      localLinkedHashMap.put("param_seekStartPercent", String.valueOf(this.seekStartPercent));
       localObject = this.extReportData.entrySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -143,7 +180,7 @@ public class SPReportEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.report.SPReportEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -18,13 +18,13 @@ class MultiVideoCtrlLayerUIBase$3
       }
       return;
     }
-    int i = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131299185);
+    int i = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131299271);
     this.this$0.e.setMaxWidth(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.3
  * JD-Core Version:    0.7.0.1
  */

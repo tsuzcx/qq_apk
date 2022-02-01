@@ -1,7 +1,7 @@
 package cooperation.qqreader.host.advertisement;
 
-import acal;
 import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtImageData;
 
 public class ReaderAdWrapper$ImageData
 {
@@ -9,11 +9,11 @@ public class ReaderAdWrapper$ImageData
   public String url;
   public int width;
   
-  ReaderAdWrapper$ImageData(acal paramacal)
+  ReaderAdWrapper$ImageData(GdtImageData paramGdtImageData)
   {
-    this.url = paramacal.jdField_a_of_type_JavaLangString;
-    this.width = paramacal.jdField_a_of_type_Int;
-    this.height = paramacal.b;
+    this.url = paramGdtImageData.jdField_a_of_type_JavaLangString;
+    this.width = paramGdtImageData.jdField_a_of_type_Int;
+    this.height = paramGdtImageData.b;
   }
   
   public boolean isValid()
@@ -23,7 +23,7 @@ public class ReaderAdWrapper$ImageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderAdWrapper.ImageData
  * JD-Core Version:    0.7.0.1
  */

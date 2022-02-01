@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class FriendListSubSrvRspCode
   extends JceStruct
 {
-  public short wGetIntimateInfoRspCode;
-  public short wGetMutualMarkRspCode;
+  public short wGetIntimateInfoRspCode = 0;
+  public short wGetMutualMarkRspCode = 0;
   
   public FriendListSubSrvRspCode() {}
   
@@ -32,7 +32,7 @@ public final class FriendListSubSrvRspCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.FriendListSubSrvRspCode
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class Conversation$18
   
   public void run()
   {
-    Conversation.a(this.this$0, this.a, ContactUtils.getFriendNickName(this.this$0.a, this.this$0.a.getCurrentUin()));
+    Conversation.a(this.this$0, this.a, ContactUtils.i(this.this$0.a(), this.this$0.a().getCurrentUin()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.18
  * JD-Core Version:    0.7.0.1
  */

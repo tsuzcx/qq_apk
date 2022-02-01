@@ -15,24 +15,24 @@ public final class stMetaComment
   static ArrayList<stMetaReply> cache_replyList = new ArrayList();
   static Map<Integer, String> cache_reserve;
   public String beReplyCommendId = "";
-  public int createtime;
-  public long dingNum;
-  public int essOpUin;
+  public int createtime = 0;
+  public long dingNum = 0L;
+  public int essOpUin = 0;
   public String feedId = "";
   public String feedOwnerId = "";
   public String id = "";
-  public int isDing;
-  public boolean isTempData;
-  public int mask;
-  public stMetaPerson poster;
+  public int isDing = 0;
+  public boolean isTempData = false;
+  public int mask = 0;
+  public stMetaPerson poster = null;
   public String poster_id = "";
-  public stMetaPerson receiver;
+  public stMetaPerson receiver = null;
   public String receiver_id = "";
-  public long replyIdNum;
-  public ArrayList<stMetaReply> replyList;
-  public long replyNum;
-  public Map<Integer, String> reserve;
-  public int robotMode;
+  public long replyIdNum = 0L;
+  public ArrayList<stMetaReply> replyList = null;
+  public long replyNum = 0L;
+  public Map<Integer, String> reserve = null;
+  public int robotMode = 0;
   public String wording = "";
   
   static

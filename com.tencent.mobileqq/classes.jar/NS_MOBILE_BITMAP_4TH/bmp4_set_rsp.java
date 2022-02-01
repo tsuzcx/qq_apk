@@ -8,7 +8,7 @@ public final class bmp4_set_rsp
   extends JceStruct
 {
   public String errmsg = "";
-  public int retCode;
+  public int retCode = 0;
   
   public bmp4_set_rsp() {}
   

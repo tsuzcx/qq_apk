@@ -9,8 +9,8 @@ public final class SetRichSigReq
 {
   static int cache_eSourceID;
   static byte[] cache_vbSignature;
-  public int eSourceID;
-  public byte[] vbSignature;
+  public int eSourceID = 0;
+  public byte[] vbSignature = null;
   
   public SetRichSigReq() {}
   

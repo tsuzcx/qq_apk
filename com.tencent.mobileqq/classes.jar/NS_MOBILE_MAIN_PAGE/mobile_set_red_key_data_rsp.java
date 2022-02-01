@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_set_red_key_data_rsp
   extends JceStruct
 {
-  public int rsp_code;
+  public int rsp_code = 0;
   public String rsp_msg = "";
   
   public mobile_set_red_key_data_rsp() {}

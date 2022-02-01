@@ -130,7 +130,7 @@ public class GLTextureView
     return this.mGLThread.getRenderMode();
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if ((this.mDetached) && (this.mRenderer != null)) {
@@ -151,7 +151,7 @@ public class GLTextureView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     if (this.mGLThread != null) {
       this.mGLThread.requestExitAndWait();
@@ -312,7 +312,7 @@ public class GLTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.view.GLTextureView
  * JD-Core Version:    0.7.0.1
  */

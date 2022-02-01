@@ -39,13 +39,13 @@ public class RelatedEmoSlideBottomPanel
   public static final int TYPE_EMPTY_DISMISS = 1;
   public static final int TYPE_NONE_DISMISS = -1;
   private RelatedEmoSlideBottomPanel.Callback mCallback;
-  private boolean mConsumeTouchEvent;
-  private int mContentHeight;
+  private boolean mConsumeTouchEvent = false;
+  private int mContentHeight = 0;
   private LinearLayout mContentView;
   private float mDensity;
   private int mDismissType = -1;
   private FrameLayout mDragArea;
-  private boolean mIsTouch;
+  private boolean mIsTouch = false;
   private ImageView mIvDragIcon;
   private float mLastY;
   private int mMoveDistance;
@@ -105,7 +105,7 @@ public class RelatedEmoSlideBottomPanel
     boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
     if (bool1)
     {
-      this.mContentView.setBackgroundResource(2130849679);
+      this.mContentView.setBackgroundResource(2130850074);
       this.mContentView.setOrientation(1);
       addView(this.mContentView);
       i = dp2px(38);
@@ -116,7 +116,7 @@ public class RelatedEmoSlideBottomPanel
       this.mIvDragIcon = new ImageView(getContext());
       localObject = new FrameLayout.LayoutParams(i, i);
       ((FrameLayout.LayoutParams)localObject).gravity = 17;
-      this.mIvDragIcon.setImageResource(2130849681);
+      this.mIvDragIcon.setImageResource(2130850076);
       this.mIvDragIcon.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.mDragArea.addView(this.mIvDragIcon);
       setOnClickListener(new RelatedEmoSlideBottomPanel.1(this));
@@ -126,7 +126,7 @@ public class RelatedEmoSlideBottomPanel
     }
     localObject = this.mContentView;
     if (bool2) {}
-    for (int i = 2130849678;; i = 2130849677)
+    for (int i = 2130850073;; i = 2130850072)
     {
       ((LinearLayout)localObject).setBackgroundResource(i);
       break;
@@ -408,7 +408,7 @@ public class RelatedEmoSlideBottomPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel
  * JD-Core Version:    0.7.0.1
  */

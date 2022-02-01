@@ -4,8 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import android.webkit.URLUtil;
-import bkyp;
+import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import com.tencent.component.network.utils.thread.PriorityThreadPool.Priority;
@@ -19,7 +18,6 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import nwp;
 
 public class QzoneZipCacheHelper
 {
@@ -190,10 +188,10 @@ public class QzoneZipCacheHelper
   
   public static File getFileIfExists(AppInterface paramAppInterface, String paramString)
   {
-    if (!URLUtil.isNetworkUrl(paramString)) {
+    if (!android.webkit.URLUtil.isNetworkUrl(paramString)) {
       return null;
     }
-    Map localMap = bkyp.a(paramString);
+    Map localMap = com.tencent.util.URLUtil.a(paramString);
     return getFileIfExists(paramAppInterface, getUrlBase(paramString), getFileName(paramString), (String)localMap.get("business"), (String)localMap.get("dir"), null);
   }
   
@@ -306,7 +304,7 @@ public class QzoneZipCacheHelper
   public static void unzipFile(String paramString1, String paramString2)
   {
     createAndClearFile(new File(paramString2));
-    nwp.a(paramString1, paramString2);
+    ZipUtils.unZipFolder(paramString1, paramString2);
   }
   
   private static void updateLruFileInNewThread(String paramString1, String paramString2)
@@ -316,7 +314,7 @@ public class QzoneZipCacheHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneZipCacheHelper
  * JD-Core Version:    0.7.0.1
  */

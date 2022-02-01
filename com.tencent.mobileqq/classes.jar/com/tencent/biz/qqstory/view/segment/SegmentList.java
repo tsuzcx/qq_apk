@@ -11,8 +11,14 @@ import android.view.View;
 import android.widget.ListAdapter;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.biz.qqstory.base.QQStoryIllegalException;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.biz.qqstory.view.widget.LoadMoreLayout;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
 import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
@@ -20,39 +26,30 @@ import com.tencent.widget.AbsListView.RecyclerListener;
 import com.tencent.widget.ListView;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import yew;
-import ykq;
-import zdl;
-import zgq;
-import zgr;
-import zgs;
-import zgt;
-import zgu;
-import zgw;
-import zgy;
-import zgz;
-import zhm;
-import zho;
-import zhs;
 
 public abstract class SegmentList
   extends QQStoryPullToRefreshListView
-  implements AbsListView.RecyclerListener, zgy
+  implements SegmentManager.RequestDataCompletedListener, AbsListView.RecyclerListener
 {
   public static int c;
   public static int d = 1;
   public static int e = 2;
   private int jdField_a_of_type_Int = -1;
   private Handler jdField_a_of_type_AndroidOsHandler;
+  protected SegmentManager a;
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private AbsListView.RecyclerListener jdField_a_of_type_ComTencentWidgetAbsListView$RecyclerListener;
   private String jdField_a_of_type_JavaLangString;
-  public zgw a;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
+  private LoadingMoreHelper jdField_b_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper;
   private String jdField_b_of_type_JavaLangString = "default";
-  private zhm jdField_b_of_type_Zhm;
   protected boolean b;
   private boolean c;
+  
+  static
+  {
+    jdField_c_of_type_Int = 0;
+  }
   
   public SegmentList(Context paramContext)
   {
@@ -83,31 +80,31 @@ public abstract class SegmentList
       if (this.jdField_a_of_type_Boolean) {
         return false;
       }
-      setAdapter(this.jdField_a_of_type_Zgw);
+      setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager);
       f();
     }
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Zgw = new zgw(this, this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new zgq(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager = new SegmentManager(this, this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new SegmentList.1(this));
     super.setRecyclerListener(this);
     super.setDragEnable(true);
-    super.setSwipListListener(new zgr(this));
-    super.setRightIconMenuListener(new zgs(this));
+    super.setSwipListListener(new SegmentList.2(this));
+    super.setRightIconMenuListener(new SegmentList.3(this));
   }
   
-  public <T extends zgz> T a(String paramString)
+  public <T extends SegmentView> T a(String paramString)
   {
-    return this.jdField_a_of_type_Zgw.a(paramString);
+    return this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a(paramString);
   }
   
-  public zhm a(@NonNull String paramString)
+  public LoadingMoreHelper a(@NonNull String paramString)
   {
-    zdl.a(paramString);
+    AssertUtils.a(paramString);
     if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_b_of_type_Zhm;
+      return this.jdField_b_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper;
     }
     return null;
   }
@@ -116,7 +113,7 @@ public abstract class SegmentList
   
   public void a(int paramInt)
   {
-    yew.c("SwipListView", new Object[] { "allRequestCompletedAndSuccess ", Integer.valueOf(paramInt) });
+    InfoPrinter.c("SwipListView", new Object[] { "allRequestCompletedAndSuccess ", Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     case 2: 
@@ -141,7 +138,7 @@ public abstract class SegmentList
   
   public void a(int paramInt1, int paramInt2)
   {
-    yew.c("SwipListView", new Object[] { "allRequestCompletedButOccurError ", Integer.valueOf(paramInt1) });
+    InfoPrinter.c("SwipListView", new Object[] { "allRequestCompletedButOccurError ", Integer.valueOf(paramInt1) });
     switch (paramInt1)
     {
     case 2: 
@@ -166,17 +163,17 @@ public abstract class SegmentList
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Zgw.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void a(@NonNull SegmentView paramSegmentView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a(paramSegmentView);
   }
   
   public void a(@NonNull String paramString)
   {
-    this.jdField_a_of_type_Zgw.a(paramString);
-  }
-  
-  public void a(@NonNull zgz paramzgz)
-  {
-    this.jdField_a_of_type_Zgw.a(paramzgz);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a(paramString);
   }
   
   public void a(boolean paramBoolean)
@@ -202,27 +199,27 @@ public abstract class SegmentList
   
   public void h()
   {
-    this.jdField_a_of_type_Zgw.a(true);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a(true);
   }
   
   public void j()
   {
-    setPullToRefreshListener(new zgt(this));
+    setPullToRefreshListener(new SegmentList.4(this));
     a();
-    this.jdField_a_of_type_Zgw.a();
-    Bosses.get().postJob(new zgu(this, "SwipListView"));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a();
+    Bosses.get().postJob(new SegmentList.5(this, "SwipListView"));
   }
   
   public void k()
   {
-    this.jdField_a_of_type_Zgw.c();
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.c();
   }
   
   public void l()
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_Zgw.d();
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.d();
   }
   
   public void layoutChildren()
@@ -230,42 +227,42 @@ public abstract class SegmentList
     try
     {
       super.layoutChildren();
-      this.jdField_a_of_type_Zgw.e();
+      this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.e();
       if (this.jdField_c_of_type_Boolean) {
-        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Zgw.a();
+        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a();
       }
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ykq.e("SwipListView", localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_Zgw.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_Zgw.a());
+      SLog.e("SwipListView", localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a());
       if (!this.jdField_c_of_type_Boolean) {
         throw localIllegalStateException;
       }
-      if (this.mItemCount == this.jdField_a_of_type_Zgw.getCount()) {
+      if (this.mItemCount == this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.getCount()) {
         throw localIllegalStateException;
       }
-      throw new QQStoryIllegalException(localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_Zgw.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_Zgw.a());
+      throw new QQStoryIllegalException(localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a());
     }
   }
   
   public void n()
   {
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_b_of_type_Zhm = new zhm(localLoadMoreLayout, getContext().getApplicationContext());
-    this.jdField_b_of_type_Zhm.a(true, false);
+    this.jdField_b_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper = new LoadingMoreHelper(localLoadMoreLayout, getContext().getApplicationContext());
+    this.jdField_b_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.a(true, false);
     super.addFooterView(localLoadMoreLayout);
     super.setOnScrollListener(this);
   }
   
   public void o()
   {
-    this.jdField_a_of_type_Zgw.b();
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.b();
   }
   
   public void onMovedToScrapHeap(View paramView)
   {
-    this.jdField_a_of_type_Zgw.a(paramView);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a(paramView);
     if (this.jdField_a_of_type_ComTencentWidgetAbsListView$RecyclerListener != null) {
       this.jdField_a_of_type_ComTencentWidgetAbsListView$RecyclerListener.onMovedToScrapHeap(paramView);
     }
@@ -281,8 +278,8 @@ public abstract class SegmentList
     {
       return;
       this.jdField_a_of_type_Int = paramInt1;
-    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_b_of_type_Zhm.a());
-    this.jdField_b_of_type_Zhm.b(true);
+    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_b_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.a());
+    this.jdField_b_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.b(true);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
@@ -295,36 +292,36 @@ public abstract class SegmentList
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     this.jdField_b_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-    if (!NetworkUtil.isNetworkAvailable(getContext().getApplicationContext()))
+    if (!NetworkUtil.a(getContext().getApplicationContext()))
     {
       a(1, d);
       return true;
     }
-    this.jdField_a_of_type_Zhs.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView$PullToRefreshListener.a();
     return true;
   }
   
   public void p()
   {
-    this.jdField_a_of_type_Zgw.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.notifyDataSetChanged();
   }
   
   public void q()
   {
     if (this.jdField_c_of_type_Boolean) {
-      super.setAdapter(this.jdField_a_of_type_Zgw);
+      super.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager);
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    this.jdField_a_of_type_Zgw.a(paramInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a(paramInt);
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((paramListAdapter instanceof zgw))
+    if ((paramListAdapter instanceof SegmentManager))
     {
       super.setAdapter(paramListAdapter);
       this.jdField_c_of_type_Boolean = true;
@@ -335,17 +332,17 @@ public abstract class SegmentList
   
   public void setLoadMoreComplete(@NonNull String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    zdl.a(paramString);
+    AssertUtils.a(paramString);
     if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_b_of_type_Zhm.a(paramBoolean1, paramBoolean2);
+      this.jdField_b_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.a(paramBoolean1, paramBoolean2);
     }
   }
   
-  public void setOnLoadMoreListener(@NonNull String paramString, zho paramzho)
+  public void setOnLoadMoreListener(@NonNull String paramString, LoadingMoreHelper.OnLoadMoreListener paramOnLoadMoreListener)
   {
-    this.jdField_b_of_type_Zhm.a(paramzho);
+    this.jdField_b_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.a(paramOnLoadMoreListener);
     this.jdField_a_of_type_JavaLangString = paramString;
-    zdl.a(paramString);
+    AssertUtils.a(paramString);
   }
   
   public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
@@ -360,7 +357,7 @@ public abstract class SegmentList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.segment.SegmentList
  * JD-Core Version:    0.7.0.1
  */

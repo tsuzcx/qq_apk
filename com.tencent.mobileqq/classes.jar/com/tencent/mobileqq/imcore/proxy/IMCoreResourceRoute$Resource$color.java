@@ -2,8 +2,8 @@ package com.tencent.mobileqq.imcore.proxy;
 
 public final class IMCoreResourceRoute$Resource$color
 {
-  public static int skin_gray2_theme_version2 = 0;
-  public static int skin_orange = 0;
+  public static int a = 0;
+  public static int b = 0;
 }
 
 

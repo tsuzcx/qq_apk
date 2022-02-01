@@ -2,20 +2,19 @@ package com.tencent.mobileqq.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import aodi;
 import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public class SecSvcHandler$1
+class SecSvcHandler$1
   implements Runnable
 {
-  public SecSvcHandler$1(aodi paramaodi, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3) {}
+  SecSvcHandler$1(SecSvcHandler paramSecSvcHandler, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
     try
     {
-      Intent localIntent = new Intent(this.this$0.app.getApp(), NotificationActivity.class);
+      Intent localIntent = new Intent(SecSvcHandler.a(this.this$0).getApp(), NotificationActivity.class);
       localIntent.putExtra("type", 11);
       Bundle localBundle = new Bundle();
       localBundle.putString("dlg_title", this.jdField_a_of_type_JavaLangString);
@@ -28,8 +27,8 @@ public class SecSvcHandler$1
       localBundle.putInt("dlg_seccmd", this.jdField_c_of_type_Int);
       localIntent.putExtras(localBundle);
       localIntent.setFlags(872415232);
-      if (!this.this$0.app.isBackgroundStop) {
-        this.this$0.app.getApp().startActivity(localIntent);
+      if (!SecSvcHandler.a(this.this$0).isBackgroundStop) {
+        SecSvcHandler.a(this.this$0).getApp().startActivity(localIntent);
       }
       return;
     }
@@ -41,7 +40,7 @@ public class SecSvcHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SecSvcHandler.1
  * JD-Core Version:    0.7.0.1
  */

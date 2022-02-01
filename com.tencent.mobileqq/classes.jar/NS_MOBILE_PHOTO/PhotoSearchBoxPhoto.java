@@ -10,9 +10,9 @@ public final class PhotoSearchBoxPhoto
 {
   static ArrayList<PhotoFeedsData> cache_photos = new ArrayList();
   public String attach_info = "";
-  public boolean hasmore;
-  public ArrayList<PhotoFeedsData> photos;
-  public long total;
+  public boolean hasmore = false;
+  public ArrayList<PhotoFeedsData> photos = null;
+  public long total = 0L;
   
   static
   {

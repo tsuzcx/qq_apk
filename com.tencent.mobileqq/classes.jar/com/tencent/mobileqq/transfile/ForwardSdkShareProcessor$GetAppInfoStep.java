@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.transfile;
 
-import aasr;
 import android.text.TextUtils;
-import aupn;
-import auql;
-import auuc;
+import com.tencent.biz.webviewplugin.Share;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.forward.AppInfo;
+import com.tencent.mobileqq.forward.ForwardD55Manager;
+import com.tencent.mobileqq.forward.ForwardSdkStatusManager;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.open.agent.AgentActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -55,13 +55,13 @@ class ForwardSdkShareProcessor$GetAppInfoStep
     default: 
       return;
     case 2: 
-      aasr.a(this.this$0.app, this.this$0.mAppContext, this.this$0.app.getCurrentAccountUin(), ForwardSdkShareProcessor.access$400(this.this$0), 0L, this.mAppInfoObserver, ForwardSdkShareProcessor.access$500(this.this$0));
+      Share.a(this.this$0.app, this.this$0.mAppContext, this.this$0.app.getCurrentAccountUin(), ForwardSdkShareProcessor.access$400(this.this$0), 0L, this.mAppInfoObserver, ForwardSdkShareProcessor.access$500(this.this$0));
       return;
     }
-    Object localObject = ((auuc)this.this$0.app.getManager(QQManagerFactory.SDK_SHARE)).a().a(ForwardSdkShareProcessor.access$400(this.this$0));
+    Object localObject = ((ForwardSdkStatusManager)this.this$0.app.getManager(QQManagerFactory.SDK_SHARE)).a().a(ForwardSdkShareProcessor.access$400(this.this$0));
     if (localObject != null)
     {
-      useCachedAppInfo((aupn)localObject);
+      useCachedAppInfo((AppInfo)localObject);
       return;
     }
     long l = ForwardSdkShareProcessor.access$600(this.this$0) / 1000L;
@@ -69,12 +69,12 @@ class ForwardSdkShareProcessor$GetAppInfoStep
     if (QLog.isColorLevel()) {
       QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|process|sign: " + (String)localObject);
     }
-    aasr.a(this.this$0.app, this.this$0.mAppContext, this.this$0.app.getCurrentAccountUin(), ForwardSdkShareProcessor.access$400(this.this$0), (String)localObject, l, this.mAppInfoObserver, ForwardSdkShareProcessor.access$500(this.this$0));
+    Share.a(this.this$0.app, this.this$0.mAppContext, this.this$0.app.getCurrentAccountUin(), ForwardSdkShareProcessor.access$400(this.this$0), (String)localObject, l, this.mAppInfoObserver, ForwardSdkShareProcessor.access$500(this.this$0));
   }
   
   void updateMessageRecord()
   {
-    Object localObject = this.this$0.app.getMessageFacade().queryMsgItemByUniseq(this.this$0.mUiRequest.mPeerUin, this.this$0.mUiRequest.mUinType, this.this$0.mUiRequest.mUniseq);
+    Object localObject = this.this$0.app.getMessageFacade().b(this.this$0.mUiRequest.mPeerUin, this.this$0.mUiRequest.mUinType, this.this$0.mUiRequest.mUniseq);
     if (((localObject instanceof MessageForStructing)) && ((((MessageForStructing)localObject).structingMsg instanceof AbsShareMsg)))
     {
       localObject = (AbsShareMsg)((MessageForStructing)localObject).structingMsg;
@@ -83,26 +83,26 @@ class ForwardSdkShareProcessor$GetAppInfoStep
       ((AbsShareMsg)localObject).mSourceIcon = this.this$0.mAppInfo.sourceIconSmall;
       ((AbsShareMsg)localObject).mSourceUrl = this.this$0.mAppInfo.sourceUrl;
       ((AbsShareMsg)localObject).shareData.appInfoStatus = 1;
-      this.this$0.app.getMessageFacade().updateMsgContentByUniseq(this.this$0.mUiRequest.mPeerUin, this.this$0.mUiRequest.mUinType, this.this$0.mUiRequest.mUniseq, ((AbsShareMsg)localObject).getBytes());
+      this.this$0.app.getMessageFacade().a(this.this$0.mUiRequest.mPeerUin, this.this$0.mUiRequest.mUinType, this.this$0.mUiRequest.mUniseq, ((AbsShareMsg)localObject).getBytes());
       this.this$0.sendMessageToUpdate(1002);
     }
   }
   
-  void useCachedAppInfo(aupn paramaupn)
+  void useCachedAppInfo(AppInfo paramAppInfo)
   {
     QLog.d("Q.share.ForwardSdkShareProcessor", 1, "GetAppInfoStep|useCachedAppInfo=,time=" + (System.currentTimeMillis() - ForwardSdkShareProcessor.access$600(this.this$0)));
-    this.this$0.mAppInfo.sourceIconSmall = paramaupn.a();
-    this.this$0.mAppInfo.sourceIconBig = paramaupn.e();
-    if (paramaupn.a())
+    this.this$0.mAppInfo.sourceIconSmall = paramAppInfo.a();
+    this.this$0.mAppInfo.sourceIconBig = paramAppInfo.e();
+    if (paramAppInfo.a())
     {
-      if (!TextUtils.isEmpty(paramaupn.d())) {
-        this.this$0.mAppInfo.packName = paramaupn.d();
+      if (!TextUtils.isEmpty(paramAppInfo.d())) {
+        this.this$0.mAppInfo.packName = paramAppInfo.d();
       }
-      if (!TextUtils.isEmpty(paramaupn.c())) {
-        this.this$0.mAppInfo.sourceName = paramaupn.c();
+      if (!TextUtils.isEmpty(paramAppInfo.c())) {
+        this.this$0.mAppInfo.sourceName = paramAppInfo.c();
       }
-      if ((!TextUtils.isEmpty(paramaupn.b())) && (ForwardSdkShareProcessor.access$400(this.this$0) != Long.parseLong("1103584836"))) {
-        this.this$0.mAppInfo.sourceUrl = paramaupn.b();
+      if ((!TextUtils.isEmpty(paramAppInfo.b())) && (ForwardSdkShareProcessor.access$400(this.this$0) != Long.parseLong("1103584836"))) {
+        this.this$0.mAppInfo.sourceUrl = paramAppInfo.b();
       }
     }
     this.this$0.mAppInfo.status = 1;

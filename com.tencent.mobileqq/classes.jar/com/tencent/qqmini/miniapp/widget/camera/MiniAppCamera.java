@@ -9,6 +9,7 @@ import android.media.ThumbnailUtils;
 import android.os.Build;
 import android.os.Looper;
 import android.util.Log;
+import com.tencent.qqmini.miniapp.util.CameraCompatibleList;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
@@ -64,7 +65,25 @@ public class MiniAppCamera
   {
     showLoading("正在处理");
     paramString1 = paramString1.split(" ");
-    mExecutor.execute(new MiniAppCamera.6(this, paramString2, paramString1, paramRequestEvent, paramString3));
+    mExecutor.execute(new MiniAppCamera.7(this, paramString2, paramString1, paramRequestEvent, paramString3));
+  }
+  
+  private float getDegrees()
+  {
+    float f = 90.0F;
+    if (CameraCompatibleList.isFoundProduct(CameraCompatibleList.KEY_PREVIEW_ORIENTATION_270_OF_BACK_MODEL))
+    {
+      if (this.isBackCameraNow) {
+        return 270.0F;
+      }
+      return 90.0F;
+    }
+    if (this.isBackCameraNow) {}
+    for (;;)
+    {
+      return f;
+      f = 270.0F;
+    }
   }
   
   private static Bitmap getFirstKeyFrame(String paramString)
@@ -72,9 +91,21 @@ public class MiniAppCamera
     return ThumbnailUtils.createVideoThumbnail(paramString, 1);
   }
   
+  private float getQuScale(String paramString)
+  {
+    float f = 1.0F;
+    if ("normal".equals(paramString)) {
+      f = 0.8F;
+    }
+    while (!"low".equals(paramString)) {
+      return f;
+    }
+    return 0.6F;
+  }
+  
   private void hideLoading()
   {
-    AppBrandTask.runTaskOnUiThread(new MiniAppCamera.8(this));
+    AppBrandTask.runTaskOnUiThread(new MiniAppCamera.9(this));
   }
   
   private boolean isMainThread()
@@ -185,10 +216,15 @@ public class MiniAppCamera
     }
   }
   
+  private void postProcessPhoto(byte[] paramArrayOfByte, boolean paramBoolean, String paramString, MiniAppCamera.GetPhotoCallback paramGetPhotoCallback)
+  {
+    ThreadManager.executeOnDiskIOThreadPool(new MiniAppCamera.3(this, paramArrayOfByte, paramBoolean, paramString, paramGetPhotoCallback));
+  }
+  
   private void reportRecordAns(String paramString, RequestEvent paramRequestEvent)
   {
     Log.i("MiniAppCamera", "reportRecordAns: " + paramString);
-    ThreadManager.executeOnComputationThreadPool(new MiniAppCamera.5(this, paramString, paramRequestEvent));
+    ThreadManager.executeOnComputationThreadPool(new MiniAppCamera.6(this, paramString, paramRequestEvent));
   }
   
   /* Error */
@@ -197,88 +233,88 @@ public class MiniAppCamera
     // Byte code:
     //   0: bipush 100
     //   2: istore_3
-    //   3: new 336	java/io/BufferedOutputStream
+    //   3: new 382	java/io/BufferedOutputStream
     //   6: dup
-    //   7: new 338	java/io/FileOutputStream
+    //   7: new 384	java/io/FileOutputStream
     //   10: dup
     //   11: aload_1
-    //   12: invokespecial 341	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   15: invokespecial 344	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   12: invokespecial 387	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   15: invokespecial 390	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   18: astore 5
-    //   20: ldc_w 346
-    //   23: aload_2
-    //   24: invokevirtual 350	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   27: ifeq +58 -> 85
-    //   30: bipush 80
-    //   32: istore_3
-    //   33: aload_0
-    //   34: getstatic 356	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   37: bipush 100
-    //   39: iload_3
-    //   40: invokestatic 362	java/lang/Math:min	(II)I
-    //   43: aload 5
-    //   45: invokevirtual 368	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   48: pop
-    //   49: aload 5
-    //   51: invokevirtual 371	java/io/BufferedOutputStream:flush	()V
-    //   54: aload_1
-    //   55: invokevirtual 376	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   58: aload_1
-    //   59: invokevirtual 376	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   62: getstatic 52	com/tencent/qqmini/miniapp/widget/camera/MiniAppCamera:cameraWidth	I
-    //   65: getstatic 54	com/tencent/qqmini/miniapp/widget/camera/MiniAppCamera:cameraHeight	I
-    //   68: iload_3
-    //   69: invokestatic 382	com/tencent/qqmini/sdk/core/utils/ImageUtil:compressImageJpg	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
-    //   72: astore_0
-    //   73: aload 5
-    //   75: ifnull +8 -> 83
-    //   78: aload 5
-    //   80: invokevirtual 385	java/io/BufferedOutputStream:close	()V
-    //   83: aload_0
-    //   84: areturn
-    //   85: ldc_w 387
-    //   88: aload_2
-    //   89: invokevirtual 350	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   92: istore 4
-    //   94: iload 4
-    //   96: ifeq -63 -> 33
-    //   99: bipush 60
-    //   101: istore_3
-    //   102: goto -69 -> 33
-    //   105: astore_0
-    //   106: aconst_null
-    //   107: astore_1
-    //   108: aload_1
-    //   109: ifnull +7 -> 116
-    //   112: aload_1
-    //   113: invokevirtual 385	java/io/BufferedOutputStream:close	()V
-    //   116: aload_0
-    //   117: athrow
-    //   118: astore_1
-    //   119: aload_0
-    //   120: areturn
-    //   121: astore_1
-    //   122: goto -6 -> 116
-    //   125: astore_0
-    //   126: aload 5
-    //   128: astore_1
-    //   129: goto -21 -> 108
+    //   20: ldc 206
+    //   22: aload_2
+    //   23: invokevirtual 210	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   26: ifeq +58 -> 84
+    //   29: bipush 80
+    //   31: istore_3
+    //   32: aload_0
+    //   33: getstatic 396	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   36: bipush 100
+    //   38: iload_3
+    //   39: invokestatic 402	java/lang/Math:min	(II)I
+    //   42: aload 5
+    //   44: invokevirtual 408	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   47: pop
+    //   48: aload 5
+    //   50: invokevirtual 411	java/io/BufferedOutputStream:flush	()V
+    //   53: aload_1
+    //   54: invokevirtual 416	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   57: aload_1
+    //   58: invokevirtual 416	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   61: getstatic 52	com/tencent/qqmini/miniapp/widget/camera/MiniAppCamera:cameraWidth	I
+    //   64: getstatic 54	com/tencent/qqmini/miniapp/widget/camera/MiniAppCamera:cameraHeight	I
+    //   67: iload_3
+    //   68: invokestatic 422	com/tencent/qqmini/sdk/core/utils/ImageUtil:compressImageJpg	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   71: astore_0
+    //   72: aload 5
+    //   74: ifnull +8 -> 82
+    //   77: aload 5
+    //   79: invokevirtual 425	java/io/BufferedOutputStream:close	()V
+    //   82: aload_0
+    //   83: areturn
+    //   84: ldc 213
+    //   86: aload_2
+    //   87: invokevirtual 210	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   90: istore 4
+    //   92: iload 4
+    //   94: ifeq -62 -> 32
+    //   97: bipush 60
+    //   99: istore_3
+    //   100: goto -68 -> 32
+    //   103: astore_0
+    //   104: aconst_null
+    //   105: astore_1
+    //   106: aload_1
+    //   107: ifnull +7 -> 114
+    //   110: aload_1
+    //   111: invokevirtual 425	java/io/BufferedOutputStream:close	()V
+    //   114: aload_0
+    //   115: athrow
+    //   116: astore_1
+    //   117: aload_0
+    //   118: areturn
+    //   119: astore_1
+    //   120: goto -6 -> 114
+    //   123: astore_0
+    //   124: aload 5
+    //   126: astore_1
+    //   127: goto -21 -> 106
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	132	0	paramBitmap	Bitmap
-    //   0	132	1	paramFile	File
-    //   0	132	2	paramString	String
-    //   2	100	3	i	int
-    //   92	3	4	bool	boolean
-    //   18	109	5	localBufferedOutputStream	java.io.BufferedOutputStream
+    //   0	130	0	paramBitmap	Bitmap
+    //   0	130	1	paramFile	File
+    //   0	130	2	paramString	String
+    //   2	98	3	i	int
+    //   90	3	4	bool	boolean
+    //   18	107	5	localBufferedOutputStream	java.io.BufferedOutputStream
     // Exception table:
     //   from	to	target	type
-    //   3	20	105	finally
-    //   78	83	118	java/lang/Exception
-    //   112	116	121	java/lang/Exception
-    //   20	30	125	finally
-    //   33	73	125	finally
-    //   85	94	125	finally
+    //   3	20	103	finally
+    //   77	82	116	java/lang/Exception
+    //   110	114	119	java/lang/Exception
+    //   20	29	123	finally
+    //   32	72	123	finally
+    //   84	92	123	finally
   }
   
   private String saveVideoThumbImg(String paramString)
@@ -297,9 +333,29 @@ public class MiniAppCamera
     return paramString;
   }
   
+  private void setupCamera(String paramString)
+  {
+    if (("front".equals(paramString)) && (this.frontCameraId != null))
+    {
+      setupCamera(this.frontCameraId.intValue());
+      return;
+    }
+    if (("back".equals(paramString)) && (this.backCameraId != null))
+    {
+      setupCamera(this.backCameraId.intValue());
+      return;
+    }
+    if (this.backCameraId == null) {}
+    for (paramString = this.frontCameraId;; paramString = this.backCameraId)
+    {
+      setupCamera(paramString.intValue());
+      return;
+    }
+  }
+  
   private void showLoading(String paramString)
   {
-    AppBrandTask.runTaskOnUiThread(new MiniAppCamera.7(this, paramString));
+    AppBrandTask.runTaskOnUiThread(new MiniAppCamera.8(this, paramString));
   }
   
   private void startCrop(String paramString, RequestEvent paramRequestEvent)
@@ -396,51 +452,34 @@ public class MiniAppCamera
   
   public void openCamera(String paramString)
   {
-    if ((this.frontCameraId == null) && (this.backCameraId == null))
-    {
+    if ((this.frontCameraId == null) && (this.backCameraId == null)) {
       if (this.mCallback != null) {
         this.mCallback.onStartPreview(false);
       }
-      return;
     }
-    for (;;)
+    do
     {
-      try
+      for (;;)
       {
-        if ((!"front".equals(paramString)) || (this.frontCameraId == null)) {
-          break label118;
-        }
-        setupCamera(this.frontCameraId.intValue());
-        setCameraSize(this.cameraSize);
-        startPreview();
-        if (this.mCallback == null) {
-          break;
-        }
-        this.mCallback.onStartPreview(true);
         return;
+        try
+        {
+          setupCamera(paramString);
+          setCameraSize(this.cameraSize);
+          startPreview();
+          if (this.mCallback != null)
+          {
+            this.mCallback.onStartPreview(true);
+            return;
+          }
+        }
+        catch (Exception paramString)
+        {
+          Log.w("MiniAppCamera", "openCamera: ", paramString);
+        }
       }
-      catch (Exception paramString)
-      {
-        Log.w("MiniAppCamera", "openCamera: ", paramString);
-      }
-      if (this.mCallback == null) {
-        break;
-      }
-      this.mCallback.onStartPreview(false);
-      return;
-      label118:
-      if ((!"back".equals(paramString)) || (this.backCameraId == null)) {
-        break label148;
-      }
-      setupCamera(this.backCameraId.intValue());
-    }
-    label148:
-    if (this.backCameraId == null) {}
-    for (paramString = this.frontCameraId;; paramString = this.backCameraId)
-    {
-      setupCamera(paramString.intValue());
-      break;
-    }
+    } while (this.mCallback == null);
+    this.mCallback.onStartPreview(false);
   }
   
   public void setCameraId(int paramInt)
@@ -472,8 +511,8 @@ public class MiniAppCamera
     sRecordJsService = new WeakReference(paramRequestEvent.jsService);
     recordCallBackId = paramRequestEvent.callbackId;
     recorder = new MediaRecorder();
-    recorder.setOnErrorListener(new MiniAppCamera.3(this, paramRequestEvent));
-    recorder.setOnInfoListener(new MiniAppCamera.4(this, paramRequestEvent));
+    recorder.setOnErrorListener(new MiniAppCamera.4(this, paramRequestEvent));
+    recorder.setOnInfoListener(new MiniAppCamera.5(this, paramRequestEvent));
     try
     {
       nativeStartRecord();
@@ -556,7 +595,7 @@ public class MiniAppCamera
       updateFlashMode();
       return;
     }
-    ThreadManager.executeOnComputationThreadPool(new MiniAppCamera.9(this, paramBoolean));
+    ThreadManager.executeOnComputationThreadPool(new MiniAppCamera.10(this, paramBoolean));
   }
   
   public void takePhoto(RequestEvent paramRequestEvent, String paramString)
@@ -566,7 +605,7 @@ public class MiniAppCamera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.MiniAppCamera
  * JD-Core Version:    0.7.0.1
  */

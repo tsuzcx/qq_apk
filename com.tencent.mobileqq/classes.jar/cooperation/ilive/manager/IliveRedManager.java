@@ -2,7 +2,7 @@ package cooperation.ilive.manager;
 
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,7 +50,7 @@ public class IliveRedManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.manager.IliveRedManager
  * JD-Core Version:    0.7.0.1
  */

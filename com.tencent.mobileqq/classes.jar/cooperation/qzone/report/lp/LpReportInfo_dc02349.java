@@ -1,11 +1,10 @@
 package cooperation.qzone.report.lp;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.QUA;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReportInfo_dc02349
   implements LpReportInfo
@@ -27,10 +26,10 @@ public class LpReportInfo_dc02349
   {
     HashMap localHashMap = new HashMap();
     if (this.uin <= 1000L) {}
-    for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
+    for (String str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();; str = String.valueOf(this.uin))
     {
       localHashMap.put("uin", str);
-      LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
+      LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
       localHashMap.put("downloadType", String.valueOf(this.downloadType));
       localHashMap.put("isHttp2", String.valueOf(this.isHttp2));
       localHashMap.put("retCode", String.valueOf(this.retCode));
@@ -72,7 +71,7 @@ public class LpReportInfo_dc02349
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc02349
  * JD-Core Version:    0.7.0.1
  */

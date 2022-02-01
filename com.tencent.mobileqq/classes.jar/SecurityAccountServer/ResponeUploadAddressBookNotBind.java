@@ -11,11 +11,11 @@ public final class ResponeUploadAddressBookNotBind
   static ArrayList<NotBindContactFriendInfo> cache_BindFriendContacts;
   static ArrayList<NotBindContactNotFriendInfo> cache_BindNotFriendContacts;
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public ArrayList<NotBindContactFriendInfo> BindFriendContacts;
-  public ArrayList<NotBindContactNotFriendInfo> BindNotFriendContacts;
-  public long nextFlag;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public ArrayList<NotBindContactFriendInfo> BindFriendContacts = null;
+  public ArrayList<NotBindContactNotFriendInfo> BindNotFriendContacts = null;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   
   static
   {

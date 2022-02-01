@@ -1,67 +1,64 @@
 package com.tencent.mobileqq.troop.data;
 
-import aoep;
-import bfgz;
-import bfhd;
-import bfhj;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.handler.TroopInfoHandler;
 import com.tencent.qphone.base.util.QLog;
 
-public class TroopCreateLogic$4$1
+class TroopCreateLogic$4$1
   implements Runnable
 {
-  public TroopCreateLogic$4$1(bfhd parambfhd, String paramString, TroopInfo paramTroopInfo, int paramInt) {}
+  TroopCreateLogic$4$1(TroopCreateLogic.4 param4, String paramString, TroopInfo paramTroopInfo, int paramInt) {}
   
   public void run()
   {
-    Object localObject1 = (aoep)this.jdField_a_of_type_Bfhd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-    ((aoep)localObject1).a(this.jdField_a_of_type_JavaLangString, "TroopCreateLogic.create_new_troop");
-    ((aoep)localObject1).f(this.jdField_a_of_type_JavaLangString);
-    localObject1 = ((TroopManager)this.jdField_a_of_type_Bfhd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString);
-    if (localObject1 == null) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
+    ((TroopInfoHandler)this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$4.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER)).a(this.jdField_a_of_type_JavaLangString, "TroopCreateLogic.create_new_troop");
+    ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$4.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).f(this.jdField_a_of_type_JavaLangString);
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$4.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString);
+    if (localTroopInfo == null) {
+      localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
     }
     for (;;)
     {
-      Object localObject2;
+      Object localObject;
       int j;
       int i;
-      if (localObject1 != null)
+      if (localTroopInfo != null)
       {
-        ((TroopInfo)localObject1).dwGroupClassExt = this.jdField_a_of_type_Bfhd.a.jdField_a_of_type_Bfhj.jdField_a_of_type_Int;
-        ((TroopInfo)localObject1).mRichFingerMemo = this.jdField_a_of_type_Bfhd.a.jdField_a_of_type_Bfhj.d;
-        localObject2 = this.jdField_a_of_type_Bfhd.a.jdField_a_of_type_Bfhj.e.split("\\|");
-        if (localObject2.length != 4) {
-          break label338;
+        localTroopInfo.dwGroupClassExt = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$4.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_Int;
+        localTroopInfo.mRichFingerMemo = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$4.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.d;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$4.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.e.split("\\|");
+        if (localObject.length != 4) {
+          break label354;
         }
-        j = (int)(Float.valueOf(localObject2[1]).floatValue() * 1000000.0F);
-        i = (int)(Float.valueOf(localObject2[2]).floatValue() * 1000000.0F);
+        j = (int)(Float.valueOf(localObject[1]).floatValue() * 1000000.0F);
+        i = (int)(Float.valueOf(localObject[2]).floatValue() * 1000000.0F);
       }
       for (;;)
       {
-        ((TroopInfo)localObject1).troopLat = j;
-        ((TroopInfo)localObject1).troopLon = i;
-        ((TroopInfo)localObject1).isNewTroop = true;
-        ((TroopInfo)localObject1).hasSetNewTroopHead = false;
-        ((TroopInfo)localObject1).hasSetNewTroopName = false;
-        ((TroopInfo)localObject1).wMemberNum = this.jdField_a_of_type_Int;
-        ((TroopInfo)localObject1).wMemberNumClient = ((TroopInfo)localObject1).wMemberNum;
-        ((TroopInfo)localObject1).troopowneruin = this.jdField_a_of_type_Bfhd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        ((TroopInfo)localObject1).troopCreateTime = (System.currentTimeMillis() / 1000L);
+        localTroopInfo.troopLat = j;
+        localTroopInfo.troopLon = i;
+        localTroopInfo.isNewTroop = true;
+        localTroopInfo.hasSetNewTroopHead = false;
+        localTroopInfo.hasSetNewTroopName = false;
+        localTroopInfo.wMemberNum = this.jdField_a_of_type_Int;
+        localTroopInfo.wMemberNumClient = localTroopInfo.wMemberNum;
+        localTroopInfo.troopowneruin = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$4.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        localTroopInfo.troopCreateTime = (System.currentTimeMillis() / 1000L);
         if (QLog.isColorLevel()) {
-          QLog.d("TroopCreateLogic", 2, "onGetTroopCreate wMemberNumClient:" + ((TroopInfo)localObject1).wMemberNumClient + "  wMemberNum:" + ((TroopInfo)localObject1).wMemberNum + " troopUin:" + ((TroopInfo)localObject1).troopuin);
+          QLog.d("TroopCreateLogic", 2, "onGetTroopCreate wMemberNumClient:" + localTroopInfo.wMemberNumClient + "  wMemberNum:" + localTroopInfo.wMemberNum + " troopUin:" + localTroopInfo.troopuin);
         }
         this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.dwAdditionalFlag = 1L;
-        localObject2 = (TroopManager)this.jdField_a_of_type_Bfhd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-        if (localObject2 != null) {
-          ((TroopManager)localObject2).b((TroopInfo)localObject1);
+        localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$4.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+        if (localObject != null) {
+          ((TroopManager)localObject).b(localTroopInfo);
         }
         return;
-        label338:
+        label354:
         i = 0;
         j = 0;
       }

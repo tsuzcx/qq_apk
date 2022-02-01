@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -25,7 +24,7 @@ public class SystemUtil
       paramContext = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0).applicationInfo.packageName;
       return paramContext;
     }
-    catch (PackageManager.NameNotFoundException paramContext)
+    catch (Exception paramContext)
     {
       paramContext.printStackTrace();
     }
@@ -39,10 +38,19 @@ public class SystemUtil
   
   public static int getHeight(Context paramContext)
   {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    paramContext.getDefaultDisplay().getRealMetrics(localDisplayMetrics);
-    return localDisplayMetrics.heightPixels;
+    try
+    {
+      paramContext = (WindowManager)paramContext.getSystemService("window");
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      paramContext.getDefaultDisplay().getRealMetrics(localDisplayMetrics);
+      int i = localDisplayMetrics.heightPixels;
+      return i;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0;
   }
   
   private static String getIMEI(Context paramContext)
@@ -82,7 +90,7 @@ public class SystemUtil
       paramContext = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0).versionName;
       return paramContext;
     }
-    catch (PackageManager.NameNotFoundException paramContext)
+    catch (Exception paramContext)
     {
       paramContext.printStackTrace();
     }
@@ -91,10 +99,19 @@ public class SystemUtil
   
   public static int getWidth(Context paramContext)
   {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    paramContext.getDefaultDisplay().getRealMetrics(localDisplayMetrics);
-    return localDisplayMetrics.widthPixels;
+    try
+    {
+      paramContext = (WindowManager)paramContext.getSystemService("window");
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      paramContext.getDefaultDisplay().getRealMetrics(localDisplayMetrics);
+      int i = localDisplayMetrics.widthPixels;
+      return i;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0;
   }
   
   public static boolean isNetworkConnected(Context paramContext)
@@ -111,7 +128,7 @@ public class SystemUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.utils.SystemUtil
  * JD-Core Version:    0.7.0.1
  */

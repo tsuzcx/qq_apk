@@ -9,12 +9,12 @@ class GameRuntime$2
   
   public void onDestroy()
   {
-    GameRuntime.access$200(this.this$0);
+    GameRuntime.access$300(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameRuntime.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public final class Funcall
   extends JceStruct
 {
   static ArrayList<Long> cache_rptUins = new ArrayList();
-  public int funcallId;
-  public int ringId;
-  public ArrayList<Long> rptUins;
+  public int funcallId = 0;
+  public int ringId = 0;
+  public ArrayList<Long> rptUins = null;
   
   static
   {

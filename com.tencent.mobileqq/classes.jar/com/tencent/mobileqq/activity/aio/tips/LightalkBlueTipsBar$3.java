@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aikw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class LightalkBlueTipsBar$3
+class LightalkBlueTipsBar$3
   implements Runnable
 {
-  public LightalkBlueTipsBar$3(aikw paramaikw) {}
+  LightalkBlueTipsBar$3(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
   
   public void run()
   {
-    Object localObject = aikw.a(this.this$0).getPreferences();
-    if (((SharedPreferences)localObject).getInt("LT_tip_show_times" + aikw.a(this.this$0).getCurrentAccountUin(), 5) != 5)
+    Object localObject = LightalkBlueTipsBar.a(this.this$0).getPreferences();
+    if (((SharedPreferences)localObject).getInt("LT_tip_show_times" + LightalkBlueTipsBar.a(this.this$0).getCurrentAccountUin(), 5) != 5)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + aikw.a(this.this$0).getCurrentAccountUin(), 5);
+      ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + LightalkBlueTipsBar.a(this.this$0).getCurrentAccountUin(), 5);
       ((SharedPreferences.Editor)localObject).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ public class RequestStrategy
 {
   static final String TAG = "MiniAppInterface";
   private static int forceIpv6Switch = -1;
-  public static RequestStrategy g;
-  private boolean mIPv6Only;
+  public static RequestStrategy g = null;
+  private boolean mIPv6Only = false;
   
   static
   {

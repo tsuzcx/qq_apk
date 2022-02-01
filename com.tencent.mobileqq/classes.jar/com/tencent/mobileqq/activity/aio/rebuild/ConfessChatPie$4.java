@@ -1,23 +1,54 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahzq;
-import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class ConfessChatPie$4
-  implements Runnable
+class ConfessChatPie$4
+  extends MessageObserver
 {
-  public ConfessChatPie$4(ahzq paramahzq) {}
+  ConfessChatPie$4(ConfessChatPie paramConfessChatPie) {}
   
-  public void run()
+  public void onSendResult_confess(boolean paramBoolean, String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    this.this$0.app.getMessageFacade().getAndParseAIOList(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, this.this$0.sessionInfo.topicId, 8);
+    if ((paramString == null) || (!paramString.equals(this.a.a.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.a.jdField_a_of_type_Int) || (paramInt2 != this.a.a.e))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.b, 2, "onSendResult_confess err uin " + paramString + " type " + paramInt1 + " uniseq " + paramLong + " topicId " + paramInt2);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onSendResult_confess uin " + paramString + " type " + paramInt1 + " uniseq " + paramLong + " topicId " + paramInt2);
+    }
+    this.a.q = true;
+    this.a.a(262144, null, paramLong);
+  }
+  
+  public void onUpdateMsgContent(boolean paramBoolean, String paramString)
+  {
+    this.a.g(65536);
+  }
+  
+  public void onUpdateSendMsgError_confess(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2, int paramInt3)
+  {
+    if ((paramString1 == null) || (!paramString1.equals(this.a.a.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.a.jdField_a_of_type_Int) || (paramInt3 != this.a.a.e))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.b, 2, "onUpdateSendMsgError_confess err uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " topicId " + paramInt3);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onUpdateSendMsgError_confess uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " errorCode " + paramInt2 + " topicId " + paramInt3);
+    }
+    this.a.g(196608);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.4
  * JD-Core Version:    0.7.0.1
  */

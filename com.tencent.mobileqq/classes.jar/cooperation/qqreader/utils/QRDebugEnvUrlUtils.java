@@ -2,7 +2,6 @@ package cooperation.qqreader.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bmgl;
 
 public final class QRDebugEnvUrlUtils
 {
@@ -34,8 +33,8 @@ public final class QRDebugEnvUrlUtils
   
   public static void initTestEnv(Context paramContext)
   {
-    jdField_a_of_type_Boolean = bmgl.a(paramContext);
-    jdField_a_of_type_JavaLangString = bmgl.a(paramContext);
+    jdField_a_of_type_Boolean = Config.WebConfig.a(paramContext);
+    jdField_a_of_type_JavaLangString = Config.WebConfig.a(paramContext);
   }
   
   public static boolean isDebugEnv()
@@ -45,14 +44,14 @@ public final class QRDebugEnvUrlUtils
   
   public static void setTestEnv(Context paramContext, boolean paramBoolean, String paramString)
   {
-    bmgl.a(paramContext, paramBoolean, paramString);
+    Config.WebConfig.a(paramContext, paramBoolean, paramString);
     jdField_a_of_type_Boolean = paramBoolean;
     jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.utils.QRDebugEnvUrlUtils
  * JD-Core Version:    0.7.0.1
  */

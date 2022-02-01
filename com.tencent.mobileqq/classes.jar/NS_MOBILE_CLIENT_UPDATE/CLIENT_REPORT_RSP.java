@@ -10,8 +10,8 @@ public final class CLIENT_REPORT_RSP
   extends JceStruct
 {
   static Map<String, String> cache_msg = new HashMap();
-  public int code;
-  public Map<String, String> msg;
+  public int code = 0;
+  public Map<String, String> msg = null;
   
   static
   {

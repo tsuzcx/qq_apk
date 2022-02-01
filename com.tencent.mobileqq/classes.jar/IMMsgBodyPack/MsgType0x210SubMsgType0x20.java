@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class MsgType0x210SubMsgType0x20
   extends JceStruct
 {
-  public long dwOpType;
-  public long dwType;
-  public long dwUin;
+  public long dwOpType = 0L;
+  public long dwType = 0L;
+  public long dwUin = 0L;
   public String strRemaek = "";
   
   public MsgType0x210SubMsgType0x20() {}

@@ -51,7 +51,7 @@ public class ShortVideoThumbDownloader
     //   1: invokevirtual 105	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   4: astore_3
     //   5: aload_3
-    //   6: invokestatic 111	com/tencent/mobileqq/utils/FileUtils:fileExistsAndNotEmpty	(Ljava/lang/String;)Z
+    //   6: invokestatic 111	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
     //   9: ifne +21 -> 30
     //   12: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   15: ifeq +11 -> 26

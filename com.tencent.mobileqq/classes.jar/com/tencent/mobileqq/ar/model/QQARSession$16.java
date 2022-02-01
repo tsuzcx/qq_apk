@@ -1,39 +1,38 @@
 package com.tencent.mobileqq.ar.model;
 
-import apdk;
-import apfk;
-import apku;
-import apos;
-import bdla;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.ar.ARTarget;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
-public class QQARSession$16
+class QQARSession$16
   implements Runnable
 {
-  public QQARSession$16(apos paramapos, boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  QQARSession$16(QQARSession paramQQARSession, boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
   public void run()
   {
     int i;
-    if (((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.b())) && (apos.b(this.this$0)) && (this.this$0.jdField_a_of_type_Int == 2) && (apos.a(this.this$0) != null))
+    if (((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.b())) && (QQARSession.b(this.this$0)) && (this.this$0.jdField_a_of_type_Int == 2) && (QQARSession.a(this.this$0) != null))
     {
-      apku localapku = apos.a(this.this$0);
+      AREngineCallback localAREngineCallback = QQARSession.a(this.this$0);
       if (this.jdField_a_of_type_Boolean)
       {
         i = 4;
-        localapku.a(1, i);
+        localAREngineCallback.a(1, i);
       }
     }
     else
     {
-      if (apos.a(this.this$0) != null)
+      if (QQARSession.a(this.this$0) != null)
       {
         QLog.i("AREngine_QQARSession", 1, "processCloudObjectClassifyResult post task for handle timeout");
-        apos.b(apos.a(this.this$0));
-        apos.a(this.this$0, null);
+        QQARSession.b(QQARSession.a(this.this$0));
+        QQARSession.a(this.this$0, null);
       }
       if (this.jdField_a_of_type_Boolean) {
         break label161;
@@ -52,17 +51,17 @@ public class QQARSession$16
       QLog.i("AREngine_QQARSession", 1, "onARObjectClassifyDownloadComplete end. isNeedInternalRender = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.f() + ", isNeedExternalRender = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.g() + ", isNeedWaitUserOperation = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.h());
       if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.b())
       {
-        if ((apos.b(this.this$0)) && (this.this$0.jdField_a_of_type_Int == 2)) {
+        if ((QQARSession.b(this.this$0)) && (this.this$0.jdField_a_of_type_Int == 2)) {
           this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
         }
       }
       else
       {
-        if ((apos.b(this.this$0)) && (this.this$0.jdField_a_of_type_Int == 2) && (apos.a(this.this$0) != null)) {}
+        if ((QQARSession.b(this.this$0)) && (this.this$0.jdField_a_of_type_Int == 2) && (QQARSession.a(this.this$0) != null)) {}
         try
         {
-          bdla.b(null, "CliOper", "", "", "0X80081DE", "0X80081DE", 0, 0, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.b + "", "2", "", "");
-          apos.a(this.this$0).a(2L, new apfk(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo));
+          ReportController.b(null, "CliOper", "", "", "0X80081DE", "0X80081DE", 0, 0, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.b + "", "2", "", "");
+          QQARSession.a(this.this$0).a(2L, new ARTarget(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo));
           if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d())
           {
             this.this$0.o();
@@ -77,17 +76,17 @@ public class QQARSession$16
           }
           if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.f())
           {
-            apdk.a().a(2);
+            ARVideoRecordUIControllerImpl.a().a(2);
             if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.j()) {
-              apos.c(this.this$0, false);
+              QQARSession.c(this.this$0, false);
             }
-            apos.a(this.this$0, 2L, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, -1, 0.0F, 0.0F, 0.0F);
+            QQARSession.a(this.this$0, 2L, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, -1, 0.0F, 0.0F, 0.0F);
             return;
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.h()) || (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.g()))
           {
             if ((this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.g()) && (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.j())) {
-              apos.c(this.this$0, true);
+              QQARSession.c(this.this$0, true);
             }
           }
           else {

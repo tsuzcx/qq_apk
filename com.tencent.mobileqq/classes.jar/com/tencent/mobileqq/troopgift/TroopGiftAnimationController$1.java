@@ -1,17 +1,14 @@
 package com.tencent.mobileqq.troopgift;
 
-import bgrg;
-import bgrh;
-
-public class TroopGiftAnimationController$1
+class TroopGiftAnimationController$1
   implements Runnable
 {
-  public TroopGiftAnimationController$1(bgrg parambgrg) {}
+  TroopGiftAnimationController$1(TroopGiftAnimationController paramTroopGiftAnimationController) {}
   
   public void run()
   {
     if ((this.this$0.a instanceof TroopGiftToAllSurfaceView)) {
-      ((TroopGiftToAllSurfaceView)this.this$0.a).a(new bgrh(this));
+      ((TroopGiftToAllSurfaceView)this.this$0.a).a(new TroopGiftAnimationController.1.1(this));
     }
   }
 }

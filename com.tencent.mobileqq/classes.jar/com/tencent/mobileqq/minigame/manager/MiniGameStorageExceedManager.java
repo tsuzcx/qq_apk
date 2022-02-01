@@ -8,8 +8,8 @@ import mqq.util.WeakReference;
 
 public class MiniGameStorageExceedManager
 {
-  private static boolean hasShowStorageExceedDialog;
-  private static int storageExceedCount;
+  private static boolean hasShowStorageExceedDialog = false;
+  private static int storageExceedCount = 0;
   
   public static void resetStorageExceedDialogStatus()
   {

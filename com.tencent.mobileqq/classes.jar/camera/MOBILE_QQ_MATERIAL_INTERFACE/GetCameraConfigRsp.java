@@ -10,8 +10,8 @@ public final class GetCameraConfigRsp
   extends JceStruct
 {
   static Map<String, CameraConfig> cache_ConfigMap = new HashMap();
-  public int Code;
-  public Map<String, CameraConfig> ConfigMap;
+  public int Code = 0;
+  public Map<String, CameraConfig> ConfigMap = null;
   
   static
   {
@@ -43,7 +43,7 @@ public final class GetCameraConfigRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigRsp
  * JD-Core Version:    0.7.0.1
  */

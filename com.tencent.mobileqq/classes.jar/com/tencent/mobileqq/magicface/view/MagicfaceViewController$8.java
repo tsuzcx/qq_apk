@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.magicface.view;
 
-import awsw;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class MagicfaceViewController$8
+class MagicfaceViewController$8
   implements Runnable
 {
-  public MagicfaceViewController$8(awsw paramawsw) {}
+  MagicfaceViewController$8(MagicfaceViewController paramMagicfaceViewController) {}
   
   public void run()
   {
-    this.this$0.a.refreshMagicFaceItem();
+    this.this$0.a.Z();
   }
 }
 

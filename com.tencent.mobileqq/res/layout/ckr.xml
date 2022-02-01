@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/ncv" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bd8"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/icon" android:background="@drawable/dhp" android:layout_width="@dimen/bd9" android:layout_height="@dimen/bd8" android:scaleType="center" />
-    <FrameLayout android:id="@id/ncu" android:paddingLeft="12.0dip" android:paddingTop="@dimen/bd_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <FrameLayout android:id="@id/nn4" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <include android:layout_gravity="end|center|top" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/cku" />
-        <LinearLayout android:layout_gravity="end|bottom|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip">
-            <TextView android:textAppearance="@style/zf" android:layout_gravity="center" android:id="@id/info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            <ImageView android:layout_gravity="center" android:id="@id/ia2" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:scaleType="center" android:alpha="0.7" />
-        </LinearLayout>
+    <FrameLayout android:id="@id/mg6" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/n5p" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/n5n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/n5o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
     </FrameLayout>
-</LinearLayout>
+    <ViewStub android:id="@id/nde" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

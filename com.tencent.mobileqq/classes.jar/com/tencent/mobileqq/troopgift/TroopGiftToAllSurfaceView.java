@@ -11,26 +11,21 @@ import android.graphics.Paint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import bdyd;
-import bdye;
-import bdyf;
-import bdyj;
-import bdyl;
-import bdym;
-import bdyx;
-import bdyy;
-import bdzb;
-import bdzc;
-import bdzd;
-import bdzh;
-import bgrt;
-import bgru;
-import bgrv;
-import bgrw;
-import bgry;
-import bhdz;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.DelayAction;
+import com.tencent.mobileqq.surfaceviewaction.action.OpacityAction;
+import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
+import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton;
+import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.Label;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopGiftToAllSurfaceView
@@ -38,13 +33,13 @@ public class TroopGiftToAllSurfaceView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private bdzb jdField_a_of_type_Bdzb;
-  private bdzd jdField_a_of_type_Bdzd;
-  private bdzh jdField_a_of_type_Bdzh;
-  private bgry jdField_a_of_type_Bgry;
+  private ImageButton jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton;
+  private Label jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel;
+  private Sprite jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
+  private TroopGiftToAllSurfaceView.Options jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options;
   private String jdField_a_of_type_JavaLangString;
-  private bdzb jdField_b_of_type_Bdzb;
-  private bdzh jdField_b_of_type_Bdzh;
+  private ImageButton jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton;
+  private Sprite jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
   
   public TroopGiftToAllSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,44 +48,44 @@ public class TroopGiftToAllSurfaceView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bdzb != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton != null)
     {
-      bdyj localbdyj = new bdyj(500, 255, 0);
-      localbdyj.a(new bgrw(this));
-      this.jdField_a_of_type_Bdzb.a(new bdyd[] { localbdyj });
+      OpacityAction localOpacityAction = new OpacityAction(500, 255, 0);
+      localOpacityAction.a(new TroopGiftToAllSurfaceView.4(this));
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(new Action[] { localOpacityAction });
     }
   }
   
-  protected void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, bdzc parambdzc, bgry parambgry)
+  protected void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, ImageButton.OnClickListener paramOnClickListener, TroopGiftToAllSurfaceView.Options paramOptions)
   {
     Bitmap localBitmap;
     Canvas localCanvas;
     Paint localPaint;
     float f1;
     int j;
-    if ((!parambgry.jdField_a_of_type_Boolean) && (paramBitmap1 != null))
+    if ((!paramOptions.jdField_a_of_type_Boolean) && (paramBitmap1 != null))
     {
       localBitmap = paramBitmap1.copy(Bitmap.Config.ARGB_8888, true);
       localCanvas = new Canvas(localBitmap);
       localPaint = new Paint();
       localPaint.setAntiAlias(true);
-      localPaint.setColor(parambgry.g);
+      localPaint.setColor(paramOptions.g);
       localPaint.setTextSize(34.0F);
       paramBitmap1 = new Matrix();
       f1 = 140.0F / paramBitmap2.getWidth();
       paramBitmap1.postScale(f1, f1);
       paramBitmap1.postTranslate((localBitmap.getWidth() - f1 * paramBitmap2.getWidth()) / 2.0F, 154.0F);
       localCanvas.drawBitmap(paramBitmap2, paramBitmap1, localPaint);
-      if ((!TextUtils.isEmpty(parambgry.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(parambgry.jdField_a_of_type_JavaLangString)))
+      if ((!TextUtils.isEmpty(paramOptions.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramOptions.jdField_a_of_type_JavaLangString)))
       {
-        float f2 = localPaint.measureText(parambgry.jdField_b_of_type_JavaLangString);
+        float f2 = localPaint.measureText(paramOptions.jdField_b_of_type_JavaLangString);
         f1 = 0.0F;
         j = 0;
-        paramBitmap1 = parambgry.jdField_b_of_type_JavaLangString;
+        paramBitmap1 = paramOptions.jdField_b_of_type_JavaLangString;
         int i = 0;
-        while (i < parambgry.jdField_a_of_type_JavaLangString.length())
+        while (i < paramOptions.jdField_a_of_type_JavaLangString.length())
         {
-          float f3 = localPaint.measureText("" + parambgry.jdField_a_of_type_JavaLangString.charAt(i));
+          float f3 = localPaint.measureText("" + paramOptions.jdField_a_of_type_JavaLangString.charAt(i));
           if (f1 + f3 + f2 > 475.0F) {
             break;
           }
@@ -101,10 +96,10 @@ public class TroopGiftToAllSurfaceView
         if (j <= 0) {
           break label577;
         }
-        if (j != parambgry.jdField_a_of_type_JavaLangString.length()) {
+        if (j != paramOptions.jdField_a_of_type_JavaLangString.length()) {
           break label524;
         }
-        paramBitmap1 = parambgry.jdField_a_of_type_JavaLangString + paramBitmap1;
+        paramBitmap1 = paramOptions.jdField_a_of_type_JavaLangString + paramBitmap1;
       }
     }
     label524:
@@ -113,25 +108,25 @@ public class TroopGiftToAllSurfaceView
     {
       f1 = localPaint.measureText(paramBitmap1);
       localCanvas.drawText(paramBitmap1, localBitmap.getWidth() / 2 - f1 / 2.0F, 359.20001F, localPaint);
-      this.jdField_a_of_type_Bdzh = new bdzh(this, localBitmap);
-      this.jdField_a_of_type_Bdzh.c = (this.jdField_a_of_type_Bgry.jdField_a_of_type_Int / 2);
-      this.jdField_a_of_type_Bdzh.d = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Bdzh.e = 0.0F;
-      a(this.jdField_a_of_type_Bdzh);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite(this, localBitmap);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c = (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_a_of_type_Int / 2);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.e = 0.0F;
+      a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
       if (paramBitmap3 != null)
       {
-        this.jdField_a_of_type_Bdzb = new bdzb(this, paramBitmap3, false);
-        this.jdField_a_of_type_Bdzb.a(this.jdField_a_of_type_Bgry.jdField_a_of_type_Int / 2, this.jdField_a_of_type_Bgry.jdField_b_of_type_Int * this.jdField_a_of_type_Bgry.f / 100);
+        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, paramBitmap3, false);
+        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_a_of_type_Int / 2, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_b_of_type_Int * this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.f / 100);
       }
       try
       {
-        this.jdField_b_of_type_Bdzb = new bdzb(this, BitmapFactory.decodeResource(getResources(), 2130847187), true);
-        this.jdField_b_of_type_Bdzb.a(parambgry.jdField_a_of_type_Int - bhdz.a(getContext(), 40.0F), bhdz.a(getContext(), 120.0F));
-        this.jdField_b_of_type_Bdzb.a(parambdzc);
-        this.jdField_b_of_type_Bdzb.e = 0.75F;
-        a(this.jdField_b_of_type_Bdzb);
+        this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, BitmapFactory.decodeResource(getResources(), 2130847544), true);
+        this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOptions.jdField_a_of_type_Int - DisplayUtils.a(getContext(), 40.0F), DisplayUtils.a(getContext(), 120.0F));
+        this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOnClickListener);
+        this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.e = 0.75F;
+        a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton);
         return;
-        paramBitmap1 = parambgry.jdField_a_of_type_JavaLangString.substring(0, j) + "..." + paramBitmap1;
+        paramBitmap1 = paramOptions.jdField_a_of_type_JavaLangString.substring(0, j) + "..." + paramBitmap1;
       }
       catch (OutOfMemoryError paramBitmap1)
       {
@@ -142,94 +137,94 @@ public class TroopGiftToAllSurfaceView
     }
   }
   
-  public void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String paramString, bdzc parambdzc, bgry parambgry)
+  public void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String paramString, ImageButton.OnClickListener paramOnClickListener, TroopGiftToAllSurfaceView.Options paramOptions)
   {
-    this.jdField_a_of_type_Bgry = parambgry;
-    this.jdField_a_of_type_Int = (parambgry.jdField_b_of_type_Int * parambgry.c / 100);
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options = paramOptions;
+    this.jdField_a_of_type_Int = (paramOptions.jdField_b_of_type_Int * paramOptions.c / 100);
     this.jdField_a_of_type_Float = (getResources().getDisplayMetrics().density / 2.0F);
     this.jdField_a_of_type_JavaLangString = paramString;
     paramString = new VideoSprite(this, getContext(), true);
     paramString.b = true;
-    paramString.c = (this.jdField_a_of_type_Bgry.jdField_a_of_type_Int / 2);
-    paramString.d = (this.jdField_a_of_type_Bgry.jdField_b_of_type_Int / 2);
-    this.jdField_b_of_type_Bdzh = paramString;
-    a(paramBitmap1, paramBitmap2, paramBitmap3, parambdzc, parambgry);
+    paramString.c = (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_a_of_type_Int / 2);
+    paramString.d = (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_b_of_type_Int / 2);
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = paramString;
+    a(paramBitmap1, paramBitmap2, paramBitmap3, paramOnClickListener, paramOptions);
   }
   
-  public void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String[] paramArrayOfString, bdzc parambdzc, bgry parambgry)
+  public void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String[] paramArrayOfString, ImageButton.OnClickListener paramOnClickListener, TroopGiftToAllSurfaceView.Options paramOptions)
   {
-    this.jdField_a_of_type_Bgry = parambgry;
-    this.jdField_a_of_type_Int = (parambgry.jdField_b_of_type_Int * parambgry.c / 100);
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options = paramOptions;
+    this.jdField_a_of_type_Int = (paramOptions.jdField_b_of_type_Int * paramOptions.c / 100);
     this.jdField_a_of_type_Float = (getResources().getDisplayMetrics().density / 2.0F);
-    paramArrayOfString = new bdyx(this, paramArrayOfString);
-    this.jdField_b_of_type_Bdzh = paramArrayOfString;
-    this.jdField_b_of_type_Bdzh.c = (this.jdField_a_of_type_Bgry.jdField_a_of_type_Int / 2);
-    this.jdField_b_of_type_Bdzh.d = (this.jdField_a_of_type_Bgry.jdField_b_of_type_Int / 2);
-    this.jdField_b_of_type_Bdzh.e = parambgry.jdField_a_of_type_Float;
-    paramArrayOfString.e(parambgry.h);
+    paramArrayOfString = new FrameSprite(this, paramArrayOfString);
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = paramArrayOfString;
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c = (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_a_of_type_Int / 2);
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d = (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView$Options.jdField_b_of_type_Int / 2);
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.e = paramOptions.jdField_a_of_type_Float;
+    paramArrayOfString.e(paramOptions.h);
     paramArrayOfString.a(true);
-    a(paramBitmap1, paramBitmap2, paramBitmap3, parambdzc, parambgry);
+    a(paramBitmap1, paramBitmap2, paramBitmap3, paramOnClickListener, paramOptions);
   }
   
-  public void a(bdye parambdye)
+  public void a(Action.OnActionEndListener paramOnActionEndListener)
   {
-    if (this.jdField_b_of_type_Bdzh != null) {
-      this.jdField_b_of_type_Bdzh.a(new bdyd[] { new bdyj(500, 255, 0, 1) });
+    if (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) {
+      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
     }
-    bdyj localbdyj = new bdyj(500, 255, 0, 1);
-    localbdyj.a(parambdye);
-    if (this.jdField_a_of_type_Bdzh != null) {
-      this.jdField_a_of_type_Bdzh.a(new bdyd[] { localbdyj });
+    OpacityAction localOpacityAction = new OpacityAction(500, 255, 0, 1);
+    localOpacityAction.a(paramOnActionEndListener);
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localOpacityAction });
     }
-    if (this.jdField_a_of_type_Bdzb != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton != null)
     {
-      this.jdField_a_of_type_Bdzb.a(null);
-      this.jdField_a_of_type_Bdzb.a(new bdyd[] { new bdyj(500, 255, 0, 1) });
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(null);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
     }
-    if (this.jdField_a_of_type_Bdzd != null) {
-      this.jdField_a_of_type_Bdzd.a(new bdyd[] { new bdyj(500, 255, 0, 1) });
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
     }
-    if (this.jdField_b_of_type_Bdzb != null) {
-      this.jdField_b_of_type_Bdzb.a(new bdyd[] { new bdyj(500, 255, 0, 1) });
+    if (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton != null) {
+      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
     }
   }
   
-  public void a(bdyy parambdyy)
+  public void a(FrameSprite.OnFrameEndListener paramOnFrameEndListener)
   {
-    if (this.jdField_a_of_type_Bdzh != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null)
     {
-      bdym localbdym = new bdym(new bdyd[] { new bdyl(500, 0.0F, this.jdField_a_of_type_Float * 1.1F), new bdyl(200, this.jdField_a_of_type_Float * 1.1F, this.jdField_a_of_type_Float * 0.95F), new bdyl(200, this.jdField_a_of_type_Float * 0.95F, this.jdField_a_of_type_Float * 1.05F), new bdyl(200, this.jdField_a_of_type_Float * 1.05F, this.jdField_a_of_type_Float * 1.0F) });
-      this.jdField_a_of_type_Bdzh.a(new bdyd[] { localbdym });
+      SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(500, 0.0F, this.jdField_a_of_type_Float * 1.1F), new ScaleAction(200, this.jdField_a_of_type_Float * 1.1F, this.jdField_a_of_type_Float * 0.95F), new ScaleAction(200, this.jdField_a_of_type_Float * 0.95F, this.jdField_a_of_type_Float * 1.05F), new ScaleAction(200, this.jdField_a_of_type_Float * 1.05F, this.jdField_a_of_type_Float * 1.0F) });
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localSequenceAction });
     }
-    if ((this.jdField_b_of_type_Bdzh != null) && ((this.jdField_b_of_type_Bdzh instanceof bdyx)))
+    if ((this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) && ((this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite instanceof FrameSprite)))
     {
-      ((bdyx)this.jdField_b_of_type_Bdzh).a = new bgrt(this, parambdyy);
-      ((bdyx)this.jdField_b_of_type_Bdzh).a(getContext(), this);
+      ((FrameSprite)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite).a = new TroopGiftToAllSurfaceView.1(this, paramOnFrameEndListener);
+      ((FrameSprite)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite).a(getContext(), this);
     }
     for (;;)
     {
-      parambdyy = new bdyf(500);
-      parambdyy.a(new bgru(this));
-      if (this.jdField_a_of_type_Bdzh != null) {
-        this.jdField_a_of_type_Bdzh.a(new bdyd[] { parambdyy });
+      paramOnFrameEndListener = new DelayAction(500);
+      paramOnFrameEndListener.a(new TroopGiftToAllSurfaceView.2(this));
+      if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) {
+        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { paramOnFrameEndListener });
       }
       return;
-      if ((this.jdField_b_of_type_Bdzh != null) && ((this.jdField_b_of_type_Bdzh instanceof VideoSprite))) {
-        ((VideoSprite)this.jdField_b_of_type_Bdzh).a(parambdyy);
+      if ((this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) && ((this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite instanceof VideoSprite))) {
+        ((VideoSprite)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite).a(paramOnFrameEndListener);
       }
     }
   }
   
-  public void a(bdzc parambdzc)
+  public void a(ImageButton.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_Bdzb != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton != null)
     {
-      this.jdField_a_of_type_Bdzb.a(parambdzc);
-      this.jdField_a_of_type_Bdzb.e = 0.0F;
-      a(this.jdField_a_of_type_Bdzb);
-      parambdzc = new bdym(new bdyd[] { new bdyl(500, 0.0F, this.jdField_a_of_type_Float * 1.1F), new bdyl(200, this.jdField_a_of_type_Float * 1.1F, this.jdField_a_of_type_Float * 0.88F), new bdyl(200, this.jdField_a_of_type_Float * 0.88F, this.jdField_a_of_type_Float) });
-      parambdzc.a(new bgrv(this));
-      this.jdField_a_of_type_Bdzb.a(new bdyd[] { parambdzc });
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOnClickListener);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.e = 0.0F;
+      a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton);
+      paramOnClickListener = new SequenceAction(new Action[] { new ScaleAction(500, 0.0F, this.jdField_a_of_type_Float * 1.1F), new ScaleAction(200, this.jdField_a_of_type_Float * 1.1F, this.jdField_a_of_type_Float * 0.88F), new ScaleAction(200, this.jdField_a_of_type_Float * 0.88F, this.jdField_a_of_type_Float) });
+      paramOnClickListener.a(new TroopGiftToAllSurfaceView.3(this));
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(new Action[] { paramOnClickListener });
     }
   }
   

@@ -7,7 +7,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import angc;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloOpenBoxView
@@ -17,7 +16,7 @@ public class ApolloOpenBoxView
   private long jdField_a_of_type_Long;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private angc jdField_a_of_type_Angc;
+  private IApolloOpenBoxListener jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener;
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private int jdField_c_of_type_Int;
@@ -43,18 +42,18 @@ public class ApolloOpenBoxView
     c();
   }
   
-  public ApolloOpenBoxView(Context paramContext, angc paramangc)
+  public ApolloOpenBoxView(Context paramContext, IApolloOpenBoxListener paramIApolloOpenBoxListener)
   {
     super(paramContext);
     c();
-    this.jdField_a_of_type_Angc = paramangc;
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener = paramIApolloOpenBoxListener;
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838495);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838494);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838493);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838569);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838568);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838567);
     int i1 = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() >> 1;
     int i2 = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() >> 1;
     this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(-i1, -i2, i1, i2);
@@ -74,17 +73,17 @@ public class ApolloOpenBoxView
     this.jdField_a_of_type_Int = 4;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     super.invalidate();
-    if (this.jdField_a_of_type_Angc != null) {
-      this.jdField_a_of_type_Angc.a(this.jdField_a_of_type_Int, this.j, this.k);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener.a(this.jdField_a_of_type_Int, this.j, this.k);
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Angc = null;
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener = null;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     float f1 = 1.0F;
     super.onDraw(paramCanvas);
@@ -150,9 +149,9 @@ public class ApolloOpenBoxView
             this.jdField_a_of_type_Int = 4;
             this.jdField_a_of_type_Long = l1;
             f2 = f1;
-            if (this.jdField_a_of_type_Angc != null)
+            if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener != null)
             {
-              this.jdField_a_of_type_Angc.a(this.jdField_a_of_type_Int, this.j, this.k);
+              this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener.a(this.jdField_a_of_type_Int, this.j, this.k);
               f2 = f1;
             }
           }
@@ -230,7 +229,7 @@ public class ApolloOpenBoxView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = paramInt3 - paramInt1;
@@ -279,7 +278,7 @@ public class ApolloOpenBoxView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.ApolloOpenBoxView
  * JD-Core Version:    0.7.0.1
  */

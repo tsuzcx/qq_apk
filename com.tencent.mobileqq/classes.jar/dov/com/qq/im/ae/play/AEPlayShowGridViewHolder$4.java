@@ -13,13 +13,13 @@ class AEPlayShowGridViewHolder$4
   {
     AEPlayShowGridViewHolder.access$200(this.this$0).setVisibility(8);
     if (!this.val$isSuccess) {
-      QQToast.a(AEPlayShowGridViewHolder.access$300(), AEPlayShowGridViewHolder.access$300().getString(2131717606), 0).a();
+      QQToast.a(AEPlayShowGridViewHolder.access$300(), AEPlayShowGridViewHolder.access$300().getString(2131718101), 0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEPlayShowGridViewHolder.4
  * JD-Core Version:    0.7.0.1
  */

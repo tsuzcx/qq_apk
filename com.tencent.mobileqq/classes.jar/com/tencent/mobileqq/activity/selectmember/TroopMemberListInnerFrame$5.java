@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.selectmember;
 
 import android.os.Handler;
 import android.os.Message;
-import bhbx;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -39,20 +39,20 @@ class TroopMemberListInnerFrame$5
       for (;;)
       {
         return;
-        if (((!this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mShowMyself) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mIsPutMySelfFirst)) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(localTroopMemberInfo.memberuin)))
+        if (((!this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.p) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.u)) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(localTroopMemberInfo.memberuin)))
         {
           this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo = localTroopMemberInfo;
           break;
         }
-        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mUinsToHide.contains(localTroopMemberInfo.memberuin)) || (!bhbx.d(localTroopMemberInfo.memberuin))) {
+        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.contains(localTroopMemberInfo.memberuin)) || (!Utils.d(localTroopMemberInfo.memberuin))) {
           break;
         }
         if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null) && (this.this$0.jdField_b_of_type_Int == 2) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isTroopAdmin(localTroopMemberInfo.memberuin)) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isTroopOwner(localTroopMemberInfo.memberuin)))
         {
-          this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mUinsToHide.add(localTroopMemberInfo.memberuin);
+          this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.add(localTroopMemberInfo.memberuin);
           break;
         }
-        localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(ContactUtils.getTroopMemberName(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
+        localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(ContactUtils.g(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
         String str;
         if ((localTroopMemberInfo.displayedNamePinyinFirst == null) || (localTroopMemberInfo.displayedNamePinyinFirst.length() == 0))
         {
@@ -89,7 +89,7 @@ class TroopMemberListInnerFrame$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.5
  * JD-Core Version:    0.7.0.1
  */

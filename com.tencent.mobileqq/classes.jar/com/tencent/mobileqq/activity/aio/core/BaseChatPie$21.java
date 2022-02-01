@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity.aio.core;
 
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
+
 class BaseChatPie$21
   implements Runnable
 {
@@ -7,12 +10,12 @@ class BaseChatPie$21
   
   public void run()
   {
-    this.this$0.doOnUnRegReceivers();
+    TextTranslationItemBuilder.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.21
  * JD-Core Version:    0.7.0.1
  */

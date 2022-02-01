@@ -11,7 +11,7 @@ import java.util.List;
 public class HttpAssembler
   extends Assembler
 {
-  protected Statistic publicField;
+  protected Statistic publicField = null;
   
   public static String utf8encode(Object paramObject)
   {
@@ -135,7 +135,7 @@ public class HttpAssembler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.statistic.access.HttpAssembler
  * JD-Core Version:    0.7.0.1
  */

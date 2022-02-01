@@ -1,11 +1,11 @@
 package com.tencent.avgame.qav;
 
 import android.os.Handler;
-import aqxe;
+import com.tencent.avgame.ui.AVGameHandler;
+import com.tencent.avgame.util.AvGameConfBean;
+import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
-import nom;
-import nqg;
 
 class SecurityPolicyChecker$1
   implements Runnable
@@ -16,9 +16,9 @@ class SecurityPolicyChecker$1
   {
     boolean bool2 = false;
     boolean bool1 = SecurityPolicyChecker.a(this.this$0);
-    nqg localnqg = (nqg)aqxe.a().a(642);
-    if (localnqg != null) {
-      if (localnqg.a() == 1) {
+    AvGameConfBean localAvGameConfBean = (AvGameConfBean)QConfigManager.a().a(642);
+    if (localAvGameConfBean != null) {
+      if (localAvGameConfBean.a() == 1) {
         bool1 = true;
       }
     }
@@ -36,7 +36,7 @@ class SecurityPolicyChecker$1
       if (!SecurityPolicyChecker.b(this.this$0)) {
         SecurityPolicyChecker.b(this.this$0, true);
       }
-      nom.a().b().post(new SecurityPolicyChecker.1.1(this, bool2));
+      AVGameHandler.a().b().post(new SecurityPolicyChecker.1.1(this, bool2));
       return;
       bool1 = false;
     }
@@ -44,7 +44,7 @@ class SecurityPolicyChecker$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.qav.SecurityPolicyChecker.1
  * JD-Core Version:    0.7.0.1
  */

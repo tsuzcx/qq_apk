@@ -1,8 +1,5 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acar;
-import acce;
-import acho;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,32 +7,36 @@ import android.text.TextUtils;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.gdtad.api.GdtAdParams;
+import com.tencent.gdtad.log.GdtLog;
 import org.json.JSONObject;
 
 public class GdtInterstitialParams
-  extends acar
+  extends GdtAdParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new acce();
+  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new GdtInterstitialParams.1();
   public int a;
   public GdtHandler.Options a;
   public JSONObject a;
   public boolean a;
   public int b = -2147483648;
-  public int c = -2147483648;
-  public int d = -2147483648;
+  int c = -2147483648;
+  int d = -2147483648;
   
   public GdtInterstitialParams()
   {
     this.jdField_a_of_type_Int = -2147483648;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public GdtInterstitialParams(Parcel paramParcel)
+  protected GdtInterstitialParams(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = -2147483648;
+    this.jdField_a_of_type_Boolean = false;
     if (paramParcel == null)
     {
-      acho.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
+      GdtLog.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
       return;
     }
     String str = paramParcel.readString();
@@ -64,7 +65,7 @@ public class GdtInterstitialParams
     }
   }
   
-  public String a()
+  String a()
   {
     if (!a()) {}
     while ((this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a == null) || (!this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.isValid())) {
@@ -78,7 +79,7 @@ public class GdtInterstitialParams
     return (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null) && (this.jdField_a_of_type_Int != -2147483648) && (this.b != -2147483648);
   }
   
-  public boolean b()
+  boolean b()
   {
     return (a()) && (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a());
   }
@@ -92,7 +93,7 @@ public class GdtInterstitialParams
   {
     if (paramParcel == null)
     {
-      acho.d("GdtInterstitialParams", "writeToParcel error");
+      GdtLog.d("GdtInterstitialParams", "writeToParcel error");
       return;
     }
     String str;
@@ -119,7 +120,7 @@ public class GdtInterstitialParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialParams
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
 package cooperation.vip.ad;
 
-import bmlj;
-import bmlk;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 
-public class TianshuSplashManager$TianShuGetSplashCallback$1
+class TianshuSplashManager$TianShuGetSplashCallback$1
   implements Runnable
 {
-  public TianshuSplashManager$TianShuGetSplashCallback$1(bmlk parambmlk, TianShuAccess.GetAdsRsp paramGetAdsRsp) {}
+  TianshuSplashManager$TianShuGetSplashCallback$1(TianshuSplashManager.TianShuGetSplashCallback paramTianShuGetSplashCallback, TianShuAccess.GetAdsRsp paramGetAdsRsp) {}
   
   public void run()
   {
-    bmlj.a(this.jdField_a_of_type_Bmlk.jdField_a_of_type_Bmlj, this.jdField_a_of_type_CooperationVipPbTianShuAccess$GetAdsRsp, this.jdField_a_of_type_Bmlk.jdField_a_of_type_JavaLangString);
+    TianshuSplashManager.a(this.jdField_a_of_type_CooperationVipAdTianshuSplashManager$TianShuGetSplashCallback.jdField_a_of_type_CooperationVipAdTianshuSplashManager, this.jdField_a_of_type_CooperationVipPbTianShuAccess$GetAdsRsp, this.jdField_a_of_type_CooperationVipAdTianshuSplashManager$TianShuGetSplashCallback.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.ad.TianshuSplashManager.TianShuGetSplashCallback.1
  * JD-Core Version:    0.7.0.1
  */

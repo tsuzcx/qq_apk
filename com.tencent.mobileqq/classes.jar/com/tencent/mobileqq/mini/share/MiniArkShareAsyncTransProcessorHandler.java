@@ -3,29 +3,28 @@ package com.tencent.mobileqq.mini.share;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
-import android.os.RemoteException;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.mini.launch.CmdCallback;
+import com.tencent.mobileqq.mini.api.IMiniCallback;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniArkShareAsyncTransProcessorHandler
   extends TransProcessorHandler
 {
   private static final String TAG = "MiniArkShareImageTransP";
-  private final CmdCallback cmdCallback;
+  private final IMiniCallback cmdCallback;
   
-  public MiniArkShareAsyncTransProcessorHandler(Looper paramLooper, CmdCallback paramCmdCallback)
+  public MiniArkShareAsyncTransProcessorHandler(Looper paramLooper, IMiniCallback paramIMiniCallback)
   {
     super(paramLooper);
-    this.cmdCallback = paramCmdCallback;
+    this.cmdCallback = paramIMiniCallback;
   }
   
   public void handleMessage(Message paramMessage)
@@ -64,9 +63,9 @@ public class MiniArkShareAsyncTransProcessorHandler
             if (this.cmdCallback != null) {
               try
               {
-                this.cmdCallback.onCmdResult(false, new Bundle());
+                this.cmdCallback.onCallbackResult(false, new Bundle());
               }
-              catch (RemoteException paramMessage)
+              catch (Throwable paramMessage)
               {
                 QLog.d("MiniArkShareImageTransP", 2, "handleMessage ", paramMessage);
               }
@@ -75,15 +74,15 @@ public class MiniArkShareAsyncTransProcessorHandler
         }
         try
         {
-          this.cmdCallback.onCmdResult(true, localBundle);
+          this.cmdCallback.onCallbackResult(true, localBundle);
           paramMessage = BaseApplicationImpl.getApplication().getRuntime();
           if (!(paramMessage instanceof QQAppInterface)) {
             continue;
           }
-          ((QQAppInterface)paramMessage).getTransFileController().removeHandle(this);
+          ((ITransFileController)((QQAppInterface)paramMessage).getRuntimeService(ITransFileController.class)).removeHandle(this);
           return;
         }
-        catch (RemoteException paramMessage)
+        catch (Throwable paramMessage)
         {
           paramMessage.printStackTrace();
           break label201;
@@ -96,15 +95,15 @@ public class MiniArkShareAsyncTransProcessorHandler
       if (this.cmdCallback != null) {}
       try
       {
-        this.cmdCallback.onCmdResult(false, new Bundle());
+        this.cmdCallback.onCallbackResult(false, new Bundle());
         paramMessage = BaseApplicationImpl.getApplication().getRuntime();
         if (!(paramMessage instanceof QQAppInterface)) {
           continue;
         }
-        ((QQAppInterface)paramMessage).getTransFileController().removeHandle(this);
+        ((ITransFileController)((QQAppInterface)paramMessage).getRuntimeService(ITransFileController.class)).removeHandle(this);
         return;
       }
-      catch (RemoteException paramMessage)
+      catch (Throwable paramMessage)
       {
         for (;;)
         {

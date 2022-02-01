@@ -1,0 +1,76 @@
+package com.tencent.biz.qqstory.network.handler;
+
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.StoryDispatcher;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.model.item.VideoLinkInfo;
+import com.tencent.biz.qqstory.network.request.GetStoryPlayerTagInfoRequest;
+import com.tencent.biz.qqstory.network.request.GetStoryPlayerTagInfoRequest.TagInfoBaseVidList;
+import com.tencent.biz.qqstory.network.response.GetStoryPlayerTagInfoResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+final class GetStoryPlayerTagInfoHandler$1
+  implements CmdTaskManger.CommandCallback<GetStoryPlayerTagInfoRequest, GetStoryPlayerTagInfoResponse>
+{
+  GetStoryPlayerTagInfoHandler$1(List paramList) {}
+  
+  public void a(@NonNull GetStoryPlayerTagInfoRequest paramGetStoryPlayerTagInfoRequest, @Nullable GetStoryPlayerTagInfoResponse paramGetStoryPlayerTagInfoResponse, @NonNull ErrorMessage paramErrorMessage)
+  {
+    SLog.b("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond");
+    GetStoryPlayerTagInfoHandler.GetStoryPlayerTagInfoEvent localGetStoryPlayerTagInfoEvent = new GetStoryPlayerTagInfoHandler.GetStoryPlayerTagInfoEvent();
+    localGetStoryPlayerTagInfoEvent.jdField_a_of_type_JavaUtilList = new ArrayList(paramGetStoryPlayerTagInfoRequest.jdField_a_of_type_JavaUtilList);
+    localGetStoryPlayerTagInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    if ((paramErrorMessage.isFail()) || (paramGetStoryPlayerTagInfoResponse == null))
+    {
+      SLog.c("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond: get story player tag info failed, error:%s", paramErrorMessage);
+      StoryDispatcher.a().dispatch(localGetStoryPlayerTagInfoEvent);
+      return;
+    }
+    SLog.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond, vid list:%s, response list:%s", this.jdField_a_of_type_JavaUtilList, paramGetStoryPlayerTagInfoResponse.jdField_a_of_type_JavaUtilList);
+    paramErrorMessage = (StoryManager)SuperManager.a(5);
+    paramGetStoryPlayerTagInfoRequest = paramGetStoryPlayerTagInfoRequest.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramGetStoryPlayerTagInfoRequest.hasNext())
+    {
+      Object localObject = (String)paramGetStoryPlayerTagInfoRequest.next();
+      StoryVideoItem localStoryVideoItem = paramErrorMessage.a((String)localObject);
+      localObject = GetStoryPlayerTagInfoHandler.a((String)localObject, paramGetStoryPlayerTagInfoResponse.jdField_a_of_type_JavaUtilList);
+      if (localStoryVideoItem != null)
+      {
+        if (localObject == null)
+        {
+          localStoryVideoItem.mTagInfoBase = null;
+          localStoryVideoItem.mCompInfoBase = null;
+          localStoryVideoItem.mOALinkInfoJson = null;
+        }
+        for (localStoryVideoItem.mOALinkInfo = null;; localStoryVideoItem.mOALinkInfo = VideoLinkInfo.a(localStoryVideoItem.mOALinkInfoJson))
+        {
+          if (localStoryVideoItem.mTagInfoBase != null) {
+            localStoryVideoItem.mTagInfoBase.b = System.currentTimeMillis();
+          }
+          paramErrorMessage.a(localStoryVideoItem);
+          break;
+          localStoryVideoItem.mTagInfoBase = ((GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)localObject).jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase;
+          localStoryVideoItem.mCompInfoBase = ((GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)localObject).jdField_a_of_type_ComTencentBizQqstoryTakevideoTagCompInfoBase;
+          localStoryVideoItem.mOALinkInfoJson = ((GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)localObject).b;
+        }
+      }
+    }
+    localGetStoryPlayerTagInfoEvent.b = new ArrayList(paramGetStoryPlayerTagInfoResponse.jdField_a_of_type_JavaUtilList);
+    StoryDispatcher.a().dispatch(localGetStoryPlayerTagInfoEvent);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetStoryPlayerTagInfoHandler.1
+ * JD-Core Version:    0.7.0.1
+ */

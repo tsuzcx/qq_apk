@@ -10,7 +10,7 @@ public final class bmp4_values
   extends JceStruct
 {
   static Map<String, Long> cache_map_kv = new HashMap();
-  public Map<String, Long> map_kv;
+  public Map<String, Long> map_kv = null;
   
   static
   {

@@ -9,10 +9,10 @@ public final class GetRichSigReq
   extends JceStruct
 {
   static ArrayList<ReqRichInfo> cache_vstReqRichInfo;
-  public boolean checkupdate;
-  public boolean get_large_tlv;
-  public boolean showdatesig;
-  public ArrayList<ReqRichInfo> vstReqRichInfo;
+  public boolean checkupdate = false;
+  public boolean get_large_tlv = false;
+  public boolean showdatesig = false;
+  public ArrayList<ReqRichInfo> vstReqRichInfo = null;
   
   public GetRichSigReq() {}
   

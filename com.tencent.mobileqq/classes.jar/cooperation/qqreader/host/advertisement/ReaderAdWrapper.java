@@ -1,13 +1,13 @@
 package cooperation.qqreader.host.advertisement;
 
-import acal;
 import android.text.TextUtils;
-import bhfn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtImageData;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.PackageUtil;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,14 +19,14 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
 public class ReaderAdWrapper
 {
   public static final int PRODUCT_TYPE_APP = 12;
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
   private ReaderAdWrapper.ImageData jdField_a_of_type_CooperationQqreaderHostAdvertisementReaderAdWrapper$ImageData;
   private ReaderAdWrapper jdField_a_of_type_CooperationQqreaderHostAdvertisementReaderAdWrapper;
   private String jdField_a_of_type_JavaLangString;
   private List<ReaderAdWrapper.ImageData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private long jdField_b_of_type_Long;
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
@@ -151,7 +151,7 @@ public class ReaderAdWrapper
   
   public boolean isAdAppInstalled()
   {
-    return bhfn.a(BaseApplicationImpl.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAppPackageName());
+    return PackageUtil.a(BaseApplicationImpl.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAppPackageName());
   }
   
   public boolean isAppType()
@@ -196,7 +196,7 @@ public class ReaderAdWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderAdWrapper
  * JD-Core Version:    0.7.0.1
  */

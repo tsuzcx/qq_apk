@@ -2,10 +2,10 @@ package com.tencent.mobileqq.activity.recent;
 
 import com.tencent.mobileqq.app.MessageHandler;
 
-public final class RecentUtil$3
+final class RecentUtil$3
   implements Runnable
 {
-  public RecentUtil$3(MessageHandler paramMessageHandler, String paramString, int paramInt) {}
+  RecentUtil$3(MessageHandler paramMessageHandler, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public final class RecentUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,18 @@
 package com.tencent.open.downloadnew;
 
-import bjna;
-import bjnz;
-
-public class MyAppApi$QQDownloadListener$2
+class MyAppApi$QQDownloadListener$2
   implements Runnable
 {
-  public MyAppApi$QQDownloadListener$2(bjnz parambjnz) {}
+  MyAppApi$QQDownloadListener$2(MyAppApi.QQDownloadListener paramQQDownloadListener) {}
   
   public void run()
   {
-    bjna.a().d();
+    DownloadManager.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.2
  * JD-Core Version:    0.7.0.1
  */

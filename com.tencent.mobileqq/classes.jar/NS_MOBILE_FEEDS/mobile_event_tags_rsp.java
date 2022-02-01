@@ -9,7 +9,7 @@ public final class mobile_event_tags_rsp
   extends JceStruct
 {
   static ArrayList<s_event_tag> cache_event_tags = new ArrayList();
-  public ArrayList<s_event_tag> event_tags;
+  public ArrayList<s_event_tag> event_tags = null;
   
   static
   {

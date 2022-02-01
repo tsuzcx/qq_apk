@@ -9,22 +9,20 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
-import anvk;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.friend.api.IFriendDataService;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import common.config.service.QzoneConfig;
+import cooperation.qqcircle.QCircleConfig;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zqn;
 
 public class QCircleCommonUtil
 {
@@ -44,8 +42,8 @@ public class QCircleCommonUtil
   {
     try
     {
-      String str = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-      com.tencent.TMG.utils.QLog.d("QCircleHostUtil", 1, String.format("convertDomainToIp ips:%s, main:%s,second:%s", new Object[] { str, paramString1, paramString2 }));
+      String str = QCircleConfig.getInstance().getConfigValue(paramString1, paramString2);
+      RFLog.d("QCircleHostUtil", RFLog.USR, String.format("convertDomainToIp ips:%s, main:%s,second:%s", new Object[] { str, paramString1, paramString2 }));
       paramString2 = new JSONObject(str);
       if (paramString4 != null)
       {
@@ -62,7 +60,7 @@ public class QCircleCommonUtil
         if ((paramString2.length() > 0) && ((paramString2.get(0) instanceof JSONObject)) && (((JSONObject)paramString2.get(0)).has("ip")) && (((JSONObject)paramString2.get(0)).has("port")))
         {
           paramString1 = paramString3.replace(paramString1, String.format("%s:%s", new Object[] { ((JSONObject)paramString2.get(0)).get("ip"), ((JSONObject)paramString2.get(0)).get("port") }));
-          com.tencent.TMG.utils.QLog.d("QCircleHostUtil", 1, "convertDomainToIp newUrl:" + paramString1);
+          RFLog.d("QCircleHostUtil", RFLog.USR, "convertDomainToIp newUrl:" + paramString1);
           return paramString1;
         }
       }
@@ -70,10 +68,10 @@ public class QCircleCommonUtil
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      com.tencent.TMG.utils.QLog.d("QCircleHostUtil", 1, "convertDomainToIp use old url");
+      RFLog.d("QCircleHostUtil", RFLog.USR, "convertDomainToIp use old url");
       return paramString3;
     }
-    com.tencent.TMG.utils.QLog.d("QCircleHostUtil", 1, "convertDomainToIp use old url");
+    RFLog.d("QCircleHostUtil", RFLog.USR, "convertDomainToIp use old url");
     return paramString3;
   }
   
@@ -148,17 +146,18 @@ public class QCircleCommonUtil
   
   public static long getCurrentAccountLongUin()
   {
-    return BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+    return MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin();
   }
   
   public static int getDefaultThemeColor()
   {
-    return getDefaultThemeColor(zqn.a());
+    return getDefaultThemeColor(QQTheme.a());
   }
   
   public static int getDefaultThemeColor(boolean paramBoolean)
   {
-    int j = BaseApplicationImpl.getContext().getResources().getColor(2131166262);
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    int j = MobileQQ.getContext().getResources().getColor(2131166268);
     int i = j;
     if (paramBoolean) {
       i = getNightModeColor(j);
@@ -185,26 +184,18 @@ public class QCircleCommonUtil
     {
     default: 
       return 0;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
     case 1: 
+      return 1;
+    case 2: 
+      return 2;
+    case 4: 
       return 4;
     case 5: 
       return 5;
-    case 4: 
+    case 3: 
       return 3;
     }
     return 6;
-  }
-  
-  public static QQAppInterface getQQAppInterface()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
   }
   
   public static String getUrlHost(String paramString)
@@ -223,24 +214,20 @@ public class QCircleCommonUtil
   
   public static boolean isFriend(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      localQQAppInterface = getQQAppInterface();
-    } while (localQQAppInterface == null);
-    return ((anvk)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
+    }
+    return ((IFriendDataService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IFriendDataService.class, "")).isFriend(paramString);
   }
   
   public static boolean isInNightMode()
   {
-    return zqn.a();
+    return QQTheme.a();
   }
   
   public static boolean isOwner(String paramString)
   {
-    return BaseApplicationImpl.getApplication().getRuntime().getAccount().equals(paramString);
+    return MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount().equals(paramString);
   }
   
   public static Bundle jsonToLabel(Bundle paramBundle, String paramString)
@@ -274,7 +261,7 @@ public class QCircleCommonUtil
     }
     catch (Exception paramString)
     {
-      com.tencent.qphone.base.util.QLog.e("QCircleHostUtil", 1, "jsonToLabel error.", paramString);
+      RFLog.e("QCircleHostUtil", RFLog.USR, new Object[] { "jsonToLabel error.", paramString });
       localBundle.putString("key_parse_data_error_msg", paramString.getMessage());
       localBundle.putStringArrayList("key_selected_label_id", paramBundle);
       localBundle.putStringArrayList("key_selected_label_name", localArrayList1);
@@ -311,7 +298,7 @@ public class QCircleCommonUtil
     {
       for (;;)
       {
-        com.tencent.qphone.base.util.QLog.e("QCircleHostUtil", 1, "labelToJson error.", localException);
+        RFLog.e("QCircleHostUtil", RFLog.USR, new Object[] { "labelToJson error.", localException });
       }
     }
     return paramBundle.toString();
@@ -320,7 +307,7 @@ public class QCircleCommonUtil
   public static void setDefaultStatusBarColor(Activity paramActivity)
   {
     setStatusBarColor(paramActivity, getDefaultThemeColor());
-    ImmersiveUtils.a(true, paramActivity.getWindow());
+    ImmersiveUtils.setStatusTextColor(true, paramActivity.getWindow());
   }
   
   public static void setStatusBarColor(Activity paramActivity, int paramInt)
@@ -336,6 +323,7 @@ public class QCircleCommonUtil
         paramActivity.getDecorView().setSystemUiVisibility(1280);
         paramActivity.addFlags(-2147483648);
         paramActivity.setStatusBarColor(paramInt);
+        paramActivity.setNavigationBarColor(paramInt);
         return;
       }
     } while (Build.VERSION.SDK_INT < 19);
@@ -344,7 +332,7 @@ public class QCircleCommonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.utils.QCircleCommonUtil
  * JD-Core Version:    0.7.0.1
  */

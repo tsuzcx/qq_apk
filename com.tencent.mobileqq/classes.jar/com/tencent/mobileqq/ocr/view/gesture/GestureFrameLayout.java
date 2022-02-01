@@ -16,12 +16,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
-import ayvr;
-import ayvx;
-import aywg;
+import com.tencent.mobileqq.ocr.view.gesture.control.OnGestureListener;
+import com.tencent.mobileqq.ocr.view.gesture.state.State;
 
 public class GestureFrameLayout
   extends FrameLayout
+  implements GestureView
 {
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
@@ -47,7 +47,7 @@ public class GestureFrameLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a().a(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a(new ayvr(this));
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a(new GestureFrameLayout.1(this));
   }
   
   protected static int a(int paramInt1, int paramInt2, int paramInt3)
@@ -100,11 +100,11 @@ public class GestureFrameLayout
   }
   
   @TargetApi(16)
-  public void a(aywg paramaywg)
+  protected void a(State paramState)
   {
     if ((!isHardwareAccelerated()) || (this.jdField_a_of_type_AndroidViewView == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramaywg.a());
+      this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramState.a());
       this.jdField_a_of_type_AndroidGraphicsMatrix.invert(this.b);
       if (a().a() != null) {
         a().a().a(this.b);
@@ -116,11 +116,11 @@ public class GestureFrameLayout
       return;
       this.jdField_a_of_type_AndroidViewView.setPivotX(0.0F);
       this.jdField_a_of_type_AndroidViewView.setPivotY(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setScaleX(paramaywg.c());
-      this.jdField_a_of_type_AndroidViewView.setScaleY(paramaywg.c());
-      this.jdField_a_of_type_AndroidViewView.setTranslationX(paramaywg.a());
-      this.jdField_a_of_type_AndroidViewView.setTranslationY(paramaywg.b());
-      this.c.set(paramaywg.a());
+      this.jdField_a_of_type_AndroidViewView.setScaleX(paramState.c());
+      this.jdField_a_of_type_AndroidViewView.setScaleY(paramState.c());
+      this.jdField_a_of_type_AndroidViewView.setTranslationX(paramState.a());
+      this.jdField_a_of_type_AndroidViewView.setTranslationY(paramState.b());
+      this.c.set(paramState.a());
       this.c.invert(this.d);
     } while (a().a() == null);
     a().a().a(this.d);
@@ -134,7 +134,7 @@ public class GestureFrameLayout
     super.addView(paramView, paramInt, paramLayoutParams);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     paramCanvas.save();
     paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
@@ -163,7 +163,7 @@ public class GestureFrameLayout
     return super.invalidateChildInParent(paramArrayOfInt, paramRect);
   }
   
-  protected void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
     int i = getPaddingLeft();
@@ -182,7 +182,7 @@ public class GestureFrameLayout
     return this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a(this, this.jdField_a_of_type_AndroidViewMotionEvent);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (getChildCount() == 0) {}
@@ -198,7 +198,7 @@ public class GestureFrameLayout
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a().a(paramInt1 - getPaddingLeft() - getPaddingRight(), paramInt2 - getPaddingTop() - getPaddingBottom());

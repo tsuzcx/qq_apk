@@ -1,15 +1,17 @@
 package com.tencent.biz.richframework.download;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import mqq.util.WeakReference;
 
 public class RFWMultiDownloadHelper
 {
+  private HashSet<RFWDownloader.RFWDownloadListener> mDownloadListenerSet;
   private Map<String, RFWMultiDownloadHelper.DownloadResult> mDownloadResultMap;
   private List<RFWMultiDownloadHelper.DownloadTask> mDownloadTasks;
   private AtomicInteger mErrorCount;
@@ -43,17 +45,20 @@ public class RFWMultiDownloadHelper
     this.mErrorCount = new AtomicInteger(0);
     int i = this.mDownloadTasks.size();
     this.mDownloadResultMap = new ConcurrentHashMap();
+    this.mDownloadListenerSet = new HashSet();
     Iterator localIterator = this.mDownloadTasks.iterator();
     while (localIterator.hasNext())
     {
       RFWMultiDownloadHelper.DownloadTask localDownloadTask = (RFWMultiDownloadHelper.DownloadTask)localIterator.next();
-      RFWDownloaderFactory.getDownloader(localDownloadTask.mDownloadStrategy).getZipFile(localDownloadTask.mDownloadUrl, new RFWMultiDownloadHelper.1(this, localDownloadTask, i));
+      RFWMultiDownloadHelper.1 local1 = new RFWMultiDownloadHelper.1(this, localDownloadTask, i);
+      this.mDownloadListenerSet.add(local1);
+      RFWDownloaderFactory.getDownloader(localDownloadTask.mDownloadStrategy).download(localDownloadTask.mDownloadUrl, local1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.download.RFWMultiDownloadHelper
  * JD-Core Version:    0.7.0.1
  */

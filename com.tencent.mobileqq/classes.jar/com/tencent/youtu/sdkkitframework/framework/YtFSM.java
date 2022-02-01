@@ -14,14 +14,18 @@ public class YtFSM
 {
   private static final String TAG = YtFSM.class.getSimpleName();
   private static YtFSM instance;
+  private boolean checkUpdateTimerFlag = true;
   private YtFSM.YtFSMUpdateData currentData = new YtFSM.YtFSMUpdateData(this, null);
   private YtFSMBaseState currentState;
-  private YtSDKKitFramework.YtSDKKitFrameworkWorkMode currentWorkMode;
+  private YtFSM.YtFSMUpdateStrategy currentStrategy = YtFSM.YtFSMUpdateStrategy.CacheStrategy;
+  private YtSDKKitFramework.YtSDKKitFrameworkWorkMode currentWorkMode = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
   private YtSDKKitFramework.IYtSDKKitFrameworkEventListener eventListener;
+  private long feedTimeMs = 0L;
   private String firstStateName;
   private boolean isStarted = false;
   private boolean needEventHandler = false;
   private YtSDKKitFramework.YtSDKPlatformContext sdkPlatformContex;
+  private Lock startStopLock = new ReentrantLock();
   private Lock stateLock = new ReentrantLock();
   private HashMap<String, YtFSMBaseState> stateMap = new HashMap();
   private Thread updateEventHandler;
@@ -54,6 +58,11 @@ public class YtFSM
       return localYtFSM;
     }
     finally {}
+  }
+  
+  public void cleanUpQueue()
+  {
+    this.updateQueue.clear();
   }
   
   public YtSDKKitFramework.YtSDKPlatformContext getContext()
@@ -127,14 +136,14 @@ public class YtFSM
     {
       this.stateLock.lock();
       if (this.isStarted != true) {
-        break label168;
+        break label173;
       }
       Iterator localIterator = this.stateMap.values().iterator();
       while (localIterator.hasNext()) {
         ((YtFSMBaseState)localIterator.next()).reset();
       }
       if (!this.stateMap.containsKey(this.firstStateName)) {
-        break label178;
+        break label183;
       }
     }
     finally
@@ -147,10 +156,11 @@ public class YtFSM
     for (;;)
     {
       this.updateQueue.clear();
-      label168:
+      this.checkUpdateTimerFlag = true;
+      label173:
       this.stateLock.unlock();
       return;
-      label178:
+      label183:
       YtLogger.e(TAG, "reset failed: " + this.firstStateName + " state is not found");
     }
   }
@@ -190,226 +200,231 @@ public class YtFSM
   }
   
   /* Error */
-  public void start(String paramString, YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, int paramInt)
+  public void start(String paramString, YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, int paramInt, long paramLong)
   {
     // Byte code:
-    //   0: getstatic 42	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
-    //   3: new 126	java/lang/StringBuilder
+    //   0: getstatic 48	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
+    //   3: new 161	java/lang/StringBuilder
     //   6: dup
-    //   7: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   10: ldc_w 272
-    //   13: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   10: ldc_w 304
+    //   13: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: aload_2
-    //   17: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   20: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   23: invokestatic 208	com/tencent/youtu/sdkkitframework/common/YtLogger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   17: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   20: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   23: invokestatic 243	com/tencent/youtu/sdkkitframework/common/YtLogger:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   26: aload_0
-    //   27: getfield 67	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateLock	Ljava/util/concurrent/locks/Lock;
-    //   30: invokeinterface 124 1 0
+    //   27: getfield 93	com/tencent/youtu/sdkkitframework/framework/YtFSM:startStopLock	Ljava/util/concurrent/locks/Lock;
+    //   30: invokeinterface 159 1 0
     //   35: aload_0
-    //   36: getfield 48	com/tencent/youtu/sdkkitframework/framework/YtFSM:isStarted	Z
-    //   39: ifne +132 -> 171
+    //   36: getfield 61	com/tencent/youtu/sdkkitframework/framework/YtFSM:isStarted	Z
+    //   39: ifne +139 -> 178
     //   42: aload_0
     //   43: aload_1
-    //   44: putfield 212	com/tencent/youtu/sdkkitframework/framework/YtFSM:firstStateName	Ljava/lang/String;
+    //   44: putfield 247	com/tencent/youtu/sdkkitframework/framework/YtFSM:firstStateName	Ljava/lang/String;
     //   47: aload_0
     //   48: aload_2
-    //   49: putfield 117	com/tencent/youtu/sdkkitframework/framework/YtFSM:currentWorkMode	Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKKitFrameworkWorkMode;
+    //   49: putfield 59	com/tencent/youtu/sdkkitframework/framework/YtFSM:currentWorkMode	Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKKitFrameworkWorkMode;
     //   52: aload_0
     //   53: iconst_1
-    //   54: putfield 48	com/tencent/youtu/sdkkitframework/framework/YtFSM:isStarted	Z
+    //   54: putfield 61	com/tencent/youtu/sdkkitframework/framework/YtFSM:isStarted	Z
     //   57: aload_0
     //   58: iconst_1
-    //   59: putfield 50	com/tencent/youtu/sdkkitframework/framework/YtFSM:needEventHandler	Z
+    //   59: putfield 63	com/tencent/youtu/sdkkitframework/framework/YtFSM:needEventHandler	Z
     //   62: aload_0
-    //   63: getfield 55	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateMap	Ljava/util/HashMap;
-    //   66: aload_0
-    //   67: getfield 212	com/tencent/youtu/sdkkitframework/framework/YtFSM:firstStateName	Ljava/lang/String;
-    //   70: invokevirtual 107	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   73: ifeq +108 -> 181
-    //   76: getstatic 42	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
-    //   79: new 126	java/lang/StringBuilder
-    //   82: dup
-    //   83: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   86: ldc_w 274
-    //   89: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: aload_1
-    //   93: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   99: invokestatic 147	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   102: aload_0
-    //   103: aload_0
-    //   104: getfield 55	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateMap	Ljava/util/HashMap;
+    //   63: iconst_1
+    //   64: putfield 74	com/tencent/youtu/sdkkitframework/framework/YtFSM:checkUpdateTimerFlag	Z
+    //   67: aload_0
+    //   68: getfield 79	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateMap	Ljava/util/HashMap;
+    //   71: aload_0
+    //   72: getfield 247	com/tencent/youtu/sdkkitframework/framework/YtFSM:firstStateName	Ljava/lang/String;
+    //   75: invokevirtual 144	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   78: ifeq +110 -> 188
+    //   81: getstatic 48	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
+    //   84: new 161	java/lang/StringBuilder
+    //   87: dup
+    //   88: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   91: ldc_w 306
+    //   94: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: aload_1
+    //   98: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   104: invokestatic 182	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
     //   107: aload_0
-    //   108: getfield 212	com/tencent/youtu/sdkkitframework/framework/YtFSM:firstStateName	Ljava/lang/String;
-    //   111: invokevirtual 111	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   114: checkcast 113	com/tencent/youtu/sdkkitframework/framework/YtFSMBaseState
-    //   117: putfield 87	com/tencent/youtu/sdkkitframework/framework/YtFSM:currentState	Lcom/tencent/youtu/sdkkitframework/framework/YtFSMBaseState;
-    //   120: aload_0
-    //   121: getfield 87	com/tencent/youtu/sdkkitframework/framework/YtFSM:currentState	Lcom/tencent/youtu/sdkkitframework/framework/YtFSMBaseState;
-    //   124: invokevirtual 217	com/tencent/youtu/sdkkitframework/framework/YtFSMBaseState:enter	()V
-    //   127: aload_0
-    //   128: getfield 72	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateQueue	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   131: invokevirtual 220	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
-    //   134: aload_0
-    //   135: new 276	java/lang/Thread
-    //   138: dup
-    //   139: new 278	com/tencent/youtu/sdkkitframework/framework/YtFSM$1
-    //   142: dup
-    //   143: aload_0
-    //   144: iload_3
-    //   145: invokespecial 281	com/tencent/youtu/sdkkitframework/framework/YtFSM$1:<init>	(Lcom/tencent/youtu/sdkkitframework/framework/YtFSM;I)V
-    //   148: invokespecial 284	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
-    //   151: putfield 286	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
-    //   154: aload_0
-    //   155: getfield 286	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
-    //   158: ldc_w 288
-    //   161: invokevirtual 291	java/lang/Thread:setName	(Ljava/lang/String;)V
-    //   164: aload_0
-    //   165: getfield 286	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
-    //   168: invokevirtual 293	java/lang/Thread:start	()V
+    //   108: aload_0
+    //   109: getfield 79	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateMap	Ljava/util/HashMap;
+    //   112: aload_0
+    //   113: getfield 247	com/tencent/youtu/sdkkitframework/framework/YtFSM:firstStateName	Ljava/lang/String;
+    //   116: invokevirtual 148	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   119: checkcast 150	com/tencent/youtu/sdkkitframework/framework/YtFSMBaseState
+    //   122: putfield 118	com/tencent/youtu/sdkkitframework/framework/YtFSM:currentState	Lcom/tencent/youtu/sdkkitframework/framework/YtFSMBaseState;
+    //   125: aload_0
+    //   126: getfield 118	com/tencent/youtu/sdkkitframework/framework/YtFSM:currentState	Lcom/tencent/youtu/sdkkitframework/framework/YtFSMBaseState;
+    //   129: invokevirtual 252	com/tencent/youtu/sdkkitframework/framework/YtFSMBaseState:enter	()V
+    //   132: aload_0
+    //   133: getfield 98	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateQueue	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   136: invokevirtual 131	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   139: aload_0
+    //   140: new 308	java/lang/Thread
+    //   143: dup
+    //   144: new 310	com/tencent/youtu/sdkkitframework/framework/YtFSM$1
+    //   147: dup
+    //   148: aload_0
+    //   149: iload_3
+    //   150: lload 4
+    //   152: invokespecial 313	com/tencent/youtu/sdkkitframework/framework/YtFSM$1:<init>	(Lcom/tencent/youtu/sdkkitframework/framework/YtFSM;IJ)V
+    //   155: invokespecial 316	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
+    //   158: putfield 318	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
+    //   161: aload_0
+    //   162: getfield 318	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
+    //   165: ldc_w 320
+    //   168: invokevirtual 323	java/lang/Thread:setName	(Ljava/lang/String;)V
     //   171: aload_0
-    //   172: getfield 67	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateLock	Ljava/util/concurrent/locks/Lock;
-    //   175: invokeinterface 172 1 0
-    //   180: return
-    //   181: getstatic 42	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
-    //   184: new 126	java/lang/StringBuilder
-    //   187: dup
-    //   188: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   191: ldc_w 295
-    //   194: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: aload_1
-    //   198: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   201: ldc_w 297
-    //   204: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   210: invokestatic 227	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   213: goto -86 -> 127
-    //   216: astore_1
-    //   217: getstatic 42	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
-    //   220: aload_1
-    //   221: invokevirtual 300	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
-    //   224: invokestatic 227	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   227: aload_0
-    //   228: getfield 67	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateLock	Ljava/util/concurrent/locks/Lock;
-    //   231: invokeinterface 172 1 0
-    //   236: return
-    //   237: astore_1
-    //   238: aload_0
-    //   239: getfield 67	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateLock	Ljava/util/concurrent/locks/Lock;
-    //   242: invokeinterface 172 1 0
-    //   247: aload_1
-    //   248: athrow
+    //   172: getfield 318	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
+    //   175: invokevirtual 325	java/lang/Thread:start	()V
+    //   178: aload_0
+    //   179: getfield 93	com/tencent/youtu/sdkkitframework/framework/YtFSM:startStopLock	Ljava/util/concurrent/locks/Lock;
+    //   182: invokeinterface 207 1 0
+    //   187: return
+    //   188: getstatic 48	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
+    //   191: new 161	java/lang/StringBuilder
+    //   194: dup
+    //   195: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   198: ldc_w 327
+    //   201: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: aload_1
+    //   205: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: ldc_w 329
+    //   211: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   217: invokestatic 259	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   220: goto -88 -> 132
+    //   223: astore_1
+    //   224: getstatic 48	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
+    //   227: aload_1
+    //   228: invokevirtual 332	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
+    //   231: invokestatic 259	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   234: aload_0
+    //   235: getfield 93	com/tencent/youtu/sdkkitframework/framework/YtFSM:startStopLock	Ljava/util/concurrent/locks/Lock;
+    //   238: invokeinterface 207 1 0
+    //   243: return
+    //   244: astore_1
+    //   245: aload_0
+    //   246: getfield 93	com/tencent/youtu/sdkkitframework/framework/YtFSM:startStopLock	Ljava/util/concurrent/locks/Lock;
+    //   249: invokeinterface 207 1 0
+    //   254: aload_1
+    //   255: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	249	0	this	YtFSM
-    //   0	249	1	paramString	String
-    //   0	249	2	paramYtSDKKitFrameworkWorkMode	YtSDKKitFramework.YtSDKKitFrameworkWorkMode
-    //   0	249	3	paramInt	int
+    //   0	256	0	this	YtFSM
+    //   0	256	1	paramString	String
+    //   0	256	2	paramYtSDKKitFrameworkWorkMode	YtSDKKitFramework.YtSDKKitFrameworkWorkMode
+    //   0	256	3	paramInt	int
+    //   0	256	4	paramLong	long
     // Exception table:
     //   from	to	target	type
-    //   26	127	216	java/lang/Exception
-    //   127	171	216	java/lang/Exception
-    //   181	213	216	java/lang/Exception
-    //   26	127	237	finally
-    //   127	171	237	finally
-    //   181	213	237	finally
-    //   217	227	237	finally
+    //   26	132	223	java/lang/Exception
+    //   132	178	223	java/lang/Exception
+    //   188	220	223	java/lang/Exception
+    //   26	132	244	finally
+    //   132	178	244	finally
+    //   188	220	244	finally
+    //   224	234	244	finally
   }
   
   /* Error */
   public void stop()
   {
     // Byte code:
-    //   0: getstatic 42	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
-    //   3: new 126	java/lang/StringBuilder
+    //   0: getstatic 48	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
+    //   3: new 161	java/lang/StringBuilder
     //   6: dup
-    //   7: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   10: ldc_w 305
-    //   13: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   10: ldc_w 337
+    //   13: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: aload_0
-    //   17: getfield 117	com/tencent/youtu/sdkkitframework/framework/YtFSM:currentWorkMode	Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKKitFrameworkWorkMode;
-    //   20: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: invokestatic 208	com/tencent/youtu/sdkkitframework/common/YtLogger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   17: getfield 59	com/tencent/youtu/sdkkitframework/framework/YtFSM:currentWorkMode	Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKKitFrameworkWorkMode;
+    //   20: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   26: invokestatic 243	com/tencent/youtu/sdkkitframework/common/YtLogger:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   29: aload_0
-    //   30: getfield 67	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateLock	Ljava/util/concurrent/locks/Lock;
-    //   33: invokeinterface 124 1 0
+    //   30: getfield 93	com/tencent/youtu/sdkkitframework/framework/YtFSM:startStopLock	Ljava/util/concurrent/locks/Lock;
+    //   33: invokeinterface 159 1 0
     //   38: aload_0
     //   39: iconst_0
-    //   40: putfield 50	com/tencent/youtu/sdkkitframework/framework/YtFSM:needEventHandler	Z
+    //   40: putfield 63	com/tencent/youtu/sdkkitframework/framework/YtFSM:needEventHandler	Z
     //   43: aload_0
-    //   44: getfield 48	com/tencent/youtu/sdkkitframework/framework/YtFSM:isStarted	Z
-    //   47: iconst_1
-    //   48: if_icmpne +80 -> 128
-    //   51: aload_0
-    //   52: iconst_0
-    //   53: putfield 48	com/tencent/youtu/sdkkitframework/framework/YtFSM:isStarted	Z
-    //   56: aload_0
-    //   57: getfield 55	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateMap	Ljava/util/HashMap;
-    //   60: invokevirtual 151	java/util/HashMap:values	()Ljava/util/Collection;
-    //   63: invokeinterface 157 1 0
-    //   68: astore_1
-    //   69: aload_1
-    //   70: invokeinterface 163 1 0
-    //   75: ifeq +39 -> 114
-    //   78: aload_1
-    //   79: invokeinterface 167 1 0
-    //   84: checkcast 113	com/tencent/youtu/sdkkitframework/framework/YtFSMBaseState
-    //   87: invokevirtual 308	com/tencent/youtu/sdkkitframework/framework/YtFSMBaseState:unload	()V
-    //   90: goto -21 -> 69
-    //   93: astore_1
-    //   94: getstatic 42	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
-    //   97: aload_1
-    //   98: invokevirtual 309	java/lang/InterruptedException:getLocalizedMessage	()Ljava/lang/String;
-    //   101: invokestatic 227	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   104: aload_0
-    //   105: getfield 67	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateLock	Ljava/util/concurrent/locks/Lock;
-    //   108: invokeinterface 172 1 0
-    //   113: return
-    //   114: aload_0
-    //   115: getfield 55	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateMap	Ljava/util/HashMap;
-    //   118: invokevirtual 310	java/util/HashMap:clear	()V
-    //   121: aload_0
-    //   122: getfield 72	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateQueue	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   125: invokevirtual 220	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   44: getfield 318	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
+    //   47: ifnull +20 -> 67
+    //   50: aload_0
+    //   51: getfield 318	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
+    //   54: invokevirtual 340	java/lang/Thread:isAlive	()Z
+    //   57: ifeq +10 -> 67
+    //   60: aload_0
+    //   61: getfield 318	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
+    //   64: invokevirtual 343	java/lang/Thread:join	()V
+    //   67: aload_0
+    //   68: getfield 61	com/tencent/youtu/sdkkitframework/framework/YtFSM:isStarted	Z
+    //   71: iconst_1
+    //   72: if_icmpne +80 -> 152
+    //   75: aload_0
+    //   76: iconst_0
+    //   77: putfield 61	com/tencent/youtu/sdkkitframework/framework/YtFSM:isStarted	Z
+    //   80: aload_0
+    //   81: getfield 79	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateMap	Ljava/util/HashMap;
+    //   84: invokevirtual 186	java/util/HashMap:values	()Ljava/util/Collection;
+    //   87: invokeinterface 192 1 0
+    //   92: astore_1
+    //   93: aload_1
+    //   94: invokeinterface 198 1 0
+    //   99: ifeq +39 -> 138
+    //   102: aload_1
+    //   103: invokeinterface 202 1 0
+    //   108: checkcast 150	com/tencent/youtu/sdkkitframework/framework/YtFSMBaseState
+    //   111: invokevirtual 346	com/tencent/youtu/sdkkitframework/framework/YtFSMBaseState:unload	()V
+    //   114: goto -21 -> 93
+    //   117: astore_1
+    //   118: getstatic 48	com/tencent/youtu/sdkkitframework/framework/YtFSM:TAG	Ljava/lang/String;
+    //   121: aload_1
+    //   122: invokevirtual 347	java/lang/InterruptedException:getLocalizedMessage	()Ljava/lang/String;
+    //   125: invokestatic 259	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   128: aload_0
-    //   129: getfield 286	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
-    //   132: ifnull +20 -> 152
-    //   135: aload_0
-    //   136: getfield 286	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
-    //   139: invokevirtual 313	java/lang/Thread:isAlive	()Z
-    //   142: ifeq +10 -> 152
+    //   129: getfield 93	com/tencent/youtu/sdkkitframework/framework/YtFSM:startStopLock	Ljava/util/concurrent/locks/Lock;
+    //   132: invokeinterface 207 1 0
+    //   137: return
+    //   138: aload_0
+    //   139: getfield 79	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateMap	Ljava/util/HashMap;
+    //   142: invokevirtual 348	java/util/HashMap:clear	()V
     //   145: aload_0
-    //   146: getfield 286	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateEventHandler	Ljava/lang/Thread;
-    //   149: invokevirtual 316	java/lang/Thread:join	()V
+    //   146: getfield 98	com/tencent/youtu/sdkkitframework/framework/YtFSM:updateQueue	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   149: invokevirtual 131	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   152: aload_0
-    //   153: getfield 67	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateLock	Ljava/util/concurrent/locks/Lock;
-    //   156: invokeinterface 172 1 0
+    //   153: getfield 93	com/tencent/youtu/sdkkitframework/framework/YtFSM:startStopLock	Ljava/util/concurrent/locks/Lock;
+    //   156: invokeinterface 207 1 0
     //   161: return
     //   162: astore_1
     //   163: aload_0
-    //   164: getfield 67	com/tencent/youtu/sdkkitframework/framework/YtFSM:stateLock	Ljava/util/concurrent/locks/Lock;
-    //   167: invokeinterface 172 1 0
+    //   164: getfield 93	com/tencent/youtu/sdkkitframework/framework/YtFSM:startStopLock	Ljava/util/concurrent/locks/Lock;
+    //   167: invokeinterface 207 1 0
     //   172: aload_1
     //   173: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	174	0	this	YtFSM
-    //   68	11	1	localIterator	Iterator
-    //   93	5	1	localInterruptedException	java.lang.InterruptedException
+    //   92	11	1	localIterator	Iterator
+    //   117	5	1	localInterruptedException	java.lang.InterruptedException
     //   162	11	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   29	69	93	java/lang/InterruptedException
-    //   69	90	93	java/lang/InterruptedException
-    //   114	128	93	java/lang/InterruptedException
-    //   128	152	93	java/lang/InterruptedException
-    //   29	69	162	finally
-    //   69	90	162	finally
-    //   94	104	162	finally
-    //   114	128	162	finally
-    //   128	152	162	finally
+    //   29	67	117	java/lang/InterruptedException
+    //   67	93	117	java/lang/InterruptedException
+    //   93	114	117	java/lang/InterruptedException
+    //   138	152	117	java/lang/InterruptedException
+    //   29	67	162	finally
+    //   67	93	162	finally
+    //   93	114	162	finally
+    //   118	128	162	finally
+    //   138	152	162	finally
   }
   
   public int transitNextRound(String paramString)
@@ -464,7 +479,13 @@ public class YtFSM
         YtLogger.w(TAG, "drop frame");
       }
       this.updateQueue.add(localYtFSMUpdateData);
+      this.feedTimeMs = System.currentTimeMillis();
     }
+  }
+  
+  public void updateCacheStrategy(YtFSM.YtFSMUpdateStrategy paramYtFSMUpdateStrategy)
+  {
+    this.currentStrategy = paramYtFSMUpdateStrategy;
   }
   
   public void updateSDKSetting(JSONObject paramJSONObject)
@@ -477,7 +498,7 @@ public class YtFSM
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtFSM
  * JD-Core Version:    0.7.0.1
  */

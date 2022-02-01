@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
-import bdla;
+import com.tencent.av.core.VcSystemInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.BaseConstants;
@@ -15,7 +16,6 @@ import java.lang.ref.ReferenceQueue;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
-import llq;
 
 public class PttInfoCollector
 {
@@ -58,19 +58,32 @@ public class PttInfoCollector
   public static final int VOICE_CHANGING = 4;
   static boolean addedObject;
   public static boolean changeLoadedV7;
-  static int consumeCount;
+  static int consumeCount = 0;
   static long consumedSize;
   static long frameConsumedSize;
   static int gcCount;
   static long gcReleasedSize;
   private static Random random = new Random();
   static PhantomReference<Object> reference;
-  static ReferenceQueue<Object> referenceQueue = new ReferenceQueue();
-  static int releaseCount;
+  static ReferenceQueue<Object> referenceQueue;
+  static int releaseCount = 0;
   public static long sCostUntilPrepare;
   public static ConcurrentHashMap<String, Long> sPttSendCostRecorder = new ConcurrentHashMap();
   public static long sTotalSendCost;
-  public static boolean silkLoadedV7;
+  public static boolean silkLoadedV7 = false;
+  
+  static
+  {
+    changeLoadedV7 = false;
+    sCostUntilPrepare = 0L;
+    sTotalSendCost = 0L;
+    referenceQueue = new ReferenceQueue();
+    gcCount = 0;
+    addedObject = false;
+    consumedSize = 0L;
+    frameConsumedSize = 0L;
+    gcReleasedSize = 0L;
+  }
   
   private static void checkCurrentMemory()
   {
@@ -125,7 +138,7 @@ public class PttInfoCollector
   
   private static void innerReportPttItemBuilderType(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    bdla.b(paramQQAppInterface, "CliOper", "", "", "0X80059B1", "0X80059B1", paramInt, 0, "", "", "", "8.4.10");
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80059B1", "0X80059B1", paramInt, 0, "", "", "", "8.5.5");
   }
   
   public static final int mergeDownloadPTTFromType(int paramInt1, int paramInt2)
@@ -196,10 +209,10 @@ public class PttInfoCollector
   
   public static void reportMyCpuArch()
   {
-    int i = llq.f();
-    int j = llq.e();
-    long l1 = llq.d();
-    long l2 = DeviceInfoUtil.getSystemTotalMemory() / 1048576L;
+    int i = VcSystemInfo.getCpuArchitecture();
+    int j = VcSystemInfo.getNumCores();
+    long l1 = VcSystemInfo.getMaxCpuFreq();
+    long l2 = DeviceInfoUtil.a() / 1048576L;
     HashMap localHashMap = new HashMap();
     localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
     localHashMap.put("cpuArch", String.valueOf(i));
@@ -222,7 +235,7 @@ public class PttInfoCollector
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      bdla.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1C", "0X8005C1C", i * 10 + paramInt1 * 100 + paramInt2, 0, "", "", "", "8.4.10");
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1C", "0X8005C1C", i * 10 + paramInt1 * 100 + paramInt2, 0, "", "", "", "8.5.5");
       return;
     }
   }
@@ -277,7 +290,7 @@ public class PttInfoCollector
     }
     for (;;)
     {
-      bdla.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1D", "0X8005C1D", paramInt1, paramInt2, "", "", "", "8.4.10");
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1D", "0X8005C1D", paramInt1, paramInt2, "", "", "", "8.5.5");
       return;
     }
   }
@@ -389,20 +402,20 @@ public class PttInfoCollector
     HashMap localHashMap;
     if (Math.abs(random.nextInt() % 100) < 10)
     {
-      int i = llq.f();
-      int j = llq.e();
-      long l1 = llq.d();
-      long l2 = DeviceInfoUtil.getSystemTotalMemory() / 1048576L;
+      int i = VcSystemInfo.getCpuArchitecture();
+      int j = VcSystemInfo.getNumCores();
+      long l1 = VcSystemInfo.getMaxCpuFreq();
+      long l2 = DeviceInfoUtil.a() / 1048576L;
       localHashMap = new HashMap();
       localHashMap.put("cpuArch", String.valueOf(i));
       localHashMap.put("numCores", String.valueOf(j));
       localHashMap.put("maxFreq", String.valueOf(l1));
       localHashMap.put("memory", String.valueOf(l2));
       if (paramInt2 <= 2) {
-        break label179;
+        break label180;
       }
     }
-    label179:
+    label180:
     for (boolean bool = changeLoadedV7;; bool = silkLoadedV7)
     {
       localHashMap.put("v7so", String.valueOf(bool));

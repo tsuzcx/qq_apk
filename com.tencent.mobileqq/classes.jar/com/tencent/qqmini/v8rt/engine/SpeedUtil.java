@@ -13,7 +13,7 @@ import java.util.Set;
 public class SpeedUtil
 {
   public static final SpeedUtil DEFAULT = new SpeedUtil("default");
-  public final String TAG = "SpdUtl";
+  public static final String TAG = "SpdUtl";
   private final Map<String, SpeedUtil.ReportPoint> mPoints = new LinkedHashMap();
   private final String name;
   
@@ -43,44 +43,44 @@ public class SpeedUtil
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 34	com/tencent/qqmini/v8rt/engine/SpeedUtil:mPoints	Ljava/util/Map;
+    //   3: getfield 32	com/tencent/qqmini/v8rt/engine/SpeedUtil:mPoints	Ljava/util/Map;
     //   6: aload_1
-    //   7: invokeinterface 46 2 0
-    //   12: checkcast 48	com/tencent/qqmini/v8rt/engine/SpeedUtil$ReportPoint
+    //   7: invokeinterface 44 2 0
+    //   12: checkcast 46	com/tencent/qqmini/v8rt/engine/SpeedUtil$ReportPoint
     //   15: astore_2
     //   16: aload_2
     //   17: ifnonnull +38 -> 55
-    //   20: new 48	com/tencent/qqmini/v8rt/engine/SpeedUtil$ReportPoint
+    //   20: new 46	com/tencent/qqmini/v8rt/engine/SpeedUtil$ReportPoint
     //   23: dup
-    //   24: invokespecial 49	com/tencent/qqmini/v8rt/engine/SpeedUtil$ReportPoint:<init>	()V
+    //   24: invokespecial 47	com/tencent/qqmini/v8rt/engine/SpeedUtil$ReportPoint:<init>	()V
     //   27: astore_2
     //   28: aload_0
-    //   29: getfield 34	com/tencent/qqmini/v8rt/engine/SpeedUtil:mPoints	Ljava/util/Map;
+    //   29: getfield 32	com/tencent/qqmini/v8rt/engine/SpeedUtil:mPoints	Ljava/util/Map;
     //   32: aload_1
     //   33: aload_2
-    //   34: invokeinterface 53 3 0
+    //   34: invokeinterface 51 3 0
     //   39: pop
     //   40: aload_2
     //   41: aload_1
-    //   42: putfield 55	com/tencent/qqmini/v8rt/engine/SpeedUtil$ReportPoint:event	Ljava/lang/String;
+    //   42: putfield 53	com/tencent/qqmini/v8rt/engine/SpeedUtil$ReportPoint:event	Ljava/lang/String;
     //   45: aload_2
-    //   46: invokestatic 61	java/lang/System:currentTimeMillis	()J
-    //   49: putfield 65	com/tencent/qqmini/v8rt/engine/SpeedUtil$ReportPoint:startTs	J
+    //   46: invokestatic 59	java/lang/System:currentTimeMillis	()J
+    //   49: putfield 63	com/tencent/qqmini/v8rt/engine/SpeedUtil$ReportPoint:startTs	J
     //   52: aload_0
     //   53: monitorexit
     //   54: return
-    //   55: ldc 27
-    //   57: new 67	java/lang/StringBuilder
+    //   55: ldc 10
+    //   57: new 65	java/lang/StringBuilder
     //   60: dup
-    //   61: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   64: ldc 70
-    //   66: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   64: ldc 68
+    //   66: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   69: aload_1
-    //   70: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: ldc 76
-    //   75: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   81: invokestatic 86	com/tencent/qqmini/v8rt/engine/Logger:w	(Ljava/lang/String;Ljava/lang/String;)I
+    //   70: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: ldc 74
+    //   75: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: invokestatic 84	com/tencent/qqmini/v8rt/engine/Logger:w	(Ljava/lang/String;Ljava/lang/String;)I
     //   84: pop
     //   85: goto -45 -> 40
     //   88: astore_1
@@ -159,7 +159,7 @@ public class SpeedUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.SpeedUtil
  * JD-Core Version:    0.7.0.1
  */

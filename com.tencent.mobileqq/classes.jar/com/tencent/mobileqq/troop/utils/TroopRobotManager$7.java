@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgls;
-import bhhr;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class TroopRobotManager$7
+class TroopRobotManager$7
   implements Runnable
 {
-  public TroopRobotManager$7(bgls parambgls, String paramString1, String paramString2, cmd0x934.RspBody paramRspBody) {}
+  TroopRobotManager$7(TroopRobotManager paramTroopRobotManager, String paramString1, String paramString2, cmd0x934.RspBody paramRspBody) {}
   
   public void run()
   {
@@ -34,7 +33,7 @@ public class TroopRobotManager$7
         localFileOutputStream.close();
         localObject1 = localFileOutputStream;
         localObject3 = localFileOutputStream;
-        bhhr.M(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString + "_" + this.b, this.jdField_a_of_type_TencentImOidbCmd0x934Cmd0x934$RspBody.version.get());
+        SharedPreUtils.M(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString + "_" + this.b, this.jdField_a_of_type_TencentImOidbCmd0x934Cmd0x934$RspBody.version.get());
       }
       catch (IOException localIOException4)
       {

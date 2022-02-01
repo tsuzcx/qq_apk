@@ -11,10 +11,10 @@ public class BroadcastOneShow
   public static final Parcelable.Creator<BroadcastOneShow> CREATOR = new BroadcastOneShow.1();
   public String bcShowId = "";
   public String bcShowName = "";
-  public long endTime;
-  public int singerId;
+  public long endTime = 0L;
+  public int singerId = 0;
   public String singerName = "";
-  public long startTime;
+  public long startTime = 0L;
   
   BroadcastOneShow() {}
   
@@ -75,7 +75,7 @@ public class BroadcastOneShow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.music.BroadcastOneShow
  * JD-Core Version:    0.7.0.1
  */

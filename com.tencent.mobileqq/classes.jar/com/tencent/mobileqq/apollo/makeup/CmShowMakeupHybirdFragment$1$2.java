@@ -1,21 +1,25 @@
 package com.tencent.mobileqq.apollo.makeup;
 
-import amvb;
+import com.tencent.TMG.utils.QLog;
 
-public class CmShowMakeupHybirdFragment$1$2
+class CmShowMakeupHybirdFragment$1$2
   implements Runnable
 {
-  public CmShowMakeupHybirdFragment$1$2(amvb paramamvb) {}
+  CmShowMakeupHybirdFragment$1$2(CmShowMakeupHybirdFragment.1 param1) {}
   
   public void run()
   {
-    this.a.a.a();
-    this.a.a.b();
+    if (CmShowMakeupHybirdFragment.a(this.a.a))
+    {
+      QLog.d("CmShowMakeupHybirdFragment", 0, "[cmShowResPreLoad][onComplete] step = STEP_FETCH_BUNDLE , aekitview ready , refresh bundle path");
+      return;
+    }
+    QLog.e("CmShowMakeupHybirdFragment", 0, "[cmShowResPreLoad][onComplete] step = STEP_FETCH_BUNDLE , aekitview not ready");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowMakeupHybirdFragment.1.2
  * JD-Core Version:    0.7.0.1
  */

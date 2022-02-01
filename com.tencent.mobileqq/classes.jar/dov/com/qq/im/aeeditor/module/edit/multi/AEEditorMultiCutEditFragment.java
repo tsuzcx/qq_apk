@@ -8,55 +8,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
-import anvx;
-import bhdj;
-import bmxz;
-import bnqm;
-import bnrh;
-import bnxc;
-import bnyu;
-import bnyw;
-import bnyx;
-import bnyy;
-import bnyz;
-import bnza;
-import bnzb;
-import bnzc;
-import bnzd;
-import bnze;
-import bnzf;
-import bnzg;
-import bnzh;
-import bnzi;
-import bnzj;
-import bnzk;
-import bnzl;
-import bnzm;
-import bnzn;
-import bnzo;
-import bnzu;
-import bnzv;
-import bnzw;
-import bnzx;
-import bobw;
-import boby;
-import bodv;
-import boee;
-import boer;
-import bpdd;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.qcircle.api.IQCircleRFWApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -82,62 +48,81 @@ import com.tencent.weseevideo.model.effect.VideoTransitionModel;
 import com.tencent.weseevideo.model.resource.MediaClipModel;
 import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import dov.com.qq.im.AEReportUtils;
+import dov.com.qq.im.ae.AEViewModelProviders;
 import dov.com.qq.im.ae.album.data.AEAlbumImageModel;
 import dov.com.qq.im.ae.album.data.AEAlbumMediaBaseModel;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.util.AECameraPrefsUtil;
+import dov.com.qq.im.ae.util.AEQLog;
 import dov.com.qq.im.aeeditor.AEEditorActivity;
 import dov.com.qq.im.aeeditor.arch.AEEditorBaseFragment;
 import dov.com.qq.im.aeeditor.module.clip.image.EditorPicInfo;
-import dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar;
+import dov.com.qq.im.aeeditor.module.clip.video.VideoSetSpeedDialog;
+import dov.com.qq.im.aeeditor.module.edit.multi.action.ActionFactory;
+import dov.com.qq.im.aeeditor.module.edit.multi.data.DataProcessor;
+import dov.com.qq.im.aeeditor.module.edit.multi.viewmodel.MvVideoViewModel;
+import dov.com.qq.im.aeeditor.module.params.ParamFactory;
+import dov.com.qq.im.aeeditor.module.params.VideoParamStrategy;
+import dov.com.qq.im.aeeditor.view.AEEditorQcircleBubbleView;
+import dov.com.qq.im.aeeditor.view.dragdrop.IDragView;
 import dov.com.qq.im.aeeditor.view.reorder.ReorderContainerView;
+import dov.com.qq.im.aeeditor.view.reorder.ReorderListener;
 import dov.com.qq.im.aeeditor.view.timebar.ScaleTimeBar;
+import dov.com.qq.im.aeeditor.view.timebar.scale.ScaleAdapter;
 import dov.com.qq.im.aeeditor.view.timeline.ScaleScrollLayout;
 import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.jetbrains.annotations.Nullable;
-import zpz;
 
 public class AEEditorMultiCutEditFragment
   extends AEEditorBaseFragment
 {
   private int jdField_a_of_type_Int = ScreenUtil.dip2px(73.0F);
-  private SpannableStringBuilder jdField_a_of_type_AndroidTextSpannableStringBuilder;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bnxc jdField_a_of_type_Bnxc;
-  private bnzx jdField_a_of_type_Bnzx;
-  private boby jdField_a_of_type_Boby = bobw.a();
-  private boee jdField_a_of_type_Boee = new bnyu(this);
-  private boer jdField_a_of_type_Boer;
-  private MoviePlayer jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer;
+  private MoviePlayer jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer = null;
   private TAVCutVideoSession jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession;
-  private TAVCutVideoView jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView;
-  private AEEditorTopBar jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar;
+  private TAVCutVideoView jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = null;
+  private VideoSetSpeedDialog jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog;
+  private MvVideoViewModel jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel;
+  private VideoParamStrategy jdField_a_of_type_DovComQqImAeeditorModuleParamsVideoParamStrategy = ParamFactory.a();
+  protected AEEditorQcircleBubbleView a;
   private ReorderContainerView jdField_a_of_type_DovComQqImAeeditorViewReorderReorderContainerView;
+  private ReorderListener jdField_a_of_type_DovComQqImAeeditorViewReorderReorderListener = new AEEditorMultiCutEditFragment.1(this);
   private ScaleTimeBar jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar;
+  private ScaleAdapter jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter;
   private ScaleScrollLayout jdField_a_of_type_DovComQqImAeeditorViewTimelineScaleScrollLayout;
-  public VideoTrackContainerView a;
+  protected VideoTrackContainerView a;
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new AEEditorMultiCutEditFragment.9(this);
   private ArrayList<AEAlbumMediaBaseModel> jdField_a_of_type_JavaUtilArrayList;
   private List<CutModelKt> jdField_a_of_type_JavaUtilList = Collections.emptyList();
   protected boolean a;
-  private FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   protected String b;
   private boolean jdField_b_of_type_Boolean = true;
   private ImageView jdField_c_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
   protected String c;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private ImageView jdField_d_of_type_AndroidWidgetImageView;
   private boolean jdField_d_of_type_Boolean;
   private boolean e = true;
-  private boolean f;
-  private boolean g;
+  private boolean f = true;
+  private boolean g = false;
+  private boolean h = false;
   
   private int a(@Nullable List<CutModelKt> paramList)
   {
@@ -186,7 +171,7 @@ public class AEEditorMultiCutEditFragment
   
   private long a()
   {
-    return this.jdField_a_of_type_Boer.a(getResources().getDimension(2131296284));
+    return this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(getResources().getDimension(2131296301));
   }
   
   private LifecycleOwner a()
@@ -239,72 +224,9 @@ public class AEEditorMultiCutEditFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar = ((AEEditorTopBar)paramView.findViewById(2131379218));
-    this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378517));
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTopBarClickListener(new bnzl(this));
-  }
-  
-  @RequiresApi(api=16)
-  private void a(bodv parambodv)
-  {
-    if ((parambodv == null) || (((View)parambodv).getParent() == null)) {}
-    for (;;)
-    {
-      return;
-      long l1 = this.jdField_a_of_type_Boer.c();
-      long l2 = this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.a(parambodv);
-      long l3 = this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.b(parambodv);
-      if ((this.f) || (this.g) || (l2 >= l1) || (l3 <= l1))
-      {
-        if (this.f)
-        {
-          l1 = a() + l2;
-          this.f = false;
-          bnrh.a("AEEditorMultiCutEditFragment", "起始点变化，滚到view的起始位置. 旧方法计算的时间：" + l2 + ". 新方法：" + l1);
-        }
-        while (l1 != 9223372036854775807L)
-        {
-          if (l1 < 0L)
-          {
-            bnrh.a("AEEditorMultiCutEditFragment", "targetTime小于0，设置为0");
-            l2 = 0L;
-          }
-          for (;;)
-          {
-            this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.a(l2, 800);
-            b(l2);
-            return;
-            if (this.g)
-            {
-              l1 = l3 - a();
-              this.g = false;
-              bnrh.a("AEEditorMultiCutEditFragment", "结束点变化，滚到view的结束位置. 旧方法计算的时间：" + l3 + ". 新方法:" + l1);
-              break;
-            }
-            if ((l3 >= 0L) && (l3 <= l1))
-            {
-              l1 = l3 - a();
-              bnrh.a("AEEditorMultiCutEditFragment", "滑块在屏幕左边，滚到view的结束位置. 旧方法：" + l3 + ". 新方法：" + l1);
-              break;
-            }
-            if ((l2 < 0L) || (l2 < l1)) {
-              break label411;
-            }
-            l1 = a() + l2;
-            bnrh.a("AEEditorMultiCutEditFragment", "滑块在屏幕右边，滚到view的开始位置. 旧方法：" + l2 + ". 新方法：" + l1);
-            break;
-            l2 = l1;
-            if (l1 > this.jdField_a_of_type_Boer.b())
-            {
-              l2 = this.jdField_a_of_type_Boer.b();
-              bnrh.a("AEEditorMultiCutEditFragment", "targetTime大于endValue，设置为endValue：" + l2);
-            }
-          }
-          label411:
-          l1 = 9223372036854775807L;
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378948));
+    ((ImageView)paramView.findViewById(2131369466)).setOnClickListener(new AEEditorMultiCutEditFragment.10(this));
+    ((ImageView)paramView.findViewById(2131369463)).setOnClickListener(new AEEditorMultiCutEditFragment.11(this));
   }
   
   private void a(ResourceModel paramResourceModel)
@@ -317,8 +239,87 @@ public class AEEditorMultiCutEditFragment
       localVideoTransitionModel = (VideoTransitionModel)localIterator.next();
       f1 = i;
     }
-    this.jdField_a_of_type_Boer.a(paramResourceModel.getAllVideoDuration() - i);
-    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.a(this.jdField_a_of_type_Boer);
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(paramResourceModel.getAllVideoDuration() - i);
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.a(this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter);
+  }
+  
+  @RequiresApi(api=16)
+  private void a(IDragView paramIDragView)
+  {
+    if ((paramIDragView == null) || (((View)paramIDragView).getParent() == null)) {}
+    for (;;)
+    {
+      return;
+      long l1 = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.c();
+      long l2 = this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.a(paramIDragView);
+      long l3 = this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.b(paramIDragView);
+      if ((this.g) || (this.h) || (l2 >= l1) || (l3 <= l1))
+      {
+        if (this.g)
+        {
+          l1 = a() + l2;
+          this.g = false;
+          AEQLog.a("AEEditorMultiCutEditFragment", "起始点变化，滚到view的起始位置. 旧方法计算的时间：" + l2 + ". 新方法：" + l1);
+        }
+        while (l1 != 9223372036854775807L)
+        {
+          if (l1 < 0L)
+          {
+            AEQLog.a("AEEditorMultiCutEditFragment", "targetTime小于0，设置为0");
+            l2 = 0L;
+          }
+          for (;;)
+          {
+            this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.a(l2, 800);
+            b(l2);
+            return;
+            if (this.h)
+            {
+              l1 = l3 - a();
+              this.h = false;
+              AEQLog.a("AEEditorMultiCutEditFragment", "结束点变化，滚到view的结束位置. 旧方法计算的时间：" + l3 + ". 新方法:" + l1);
+              break;
+            }
+            if ((l3 >= 0L) && (l3 <= l1))
+            {
+              l1 = l3 - a();
+              AEQLog.a("AEEditorMultiCutEditFragment", "滑块在屏幕左边，滚到view的结束位置. 旧方法：" + l3 + ". 新方法：" + l1);
+              break;
+            }
+            if ((l2 < 0L) || (l2 < l1)) {
+              break label411;
+            }
+            l1 = a() + l2;
+            AEQLog.a("AEEditorMultiCutEditFragment", "滑块在屏幕右边，滚到view的开始位置. 旧方法：" + l2 + ". 新方法：" + l1);
+            break;
+            l2 = l1;
+            if (l1 > this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.b())
+            {
+              l2 = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.b();
+              AEQLog.a("AEEditorMultiCutEditFragment", "targetTime大于endValue，设置为endValue：" + l2);
+            }
+          }
+          label411:
+          l1 = 9223372036854775807L;
+        }
+      }
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+      AEQLog.c("AEEditorMultiCutEditFragment", "mediaModels == null || mediaModels.size() == 0");
+    }
+    Iterator localIterator;
+    do
+    {
+      return;
+      while (!localIterator.hasNext()) {
+        localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      }
+    } while (!((AEAlbumMediaBaseModel)localIterator.next()).getOriginPath().equals(paramString));
+    localIterator.remove();
   }
   
   @RequiresApi(api=16)
@@ -328,8 +329,9 @@ public class AEEditorMultiCutEditFragment
     if (l >= 0L) {
       a(l);
     }
-    this.jdField_a_of_type_Bnzx.a.postValue(bnzu.a(paramString, paramLong1, paramLong2, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel()));
-    bnqm.a().D();
+    this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel.a.postValue(ActionFactory.a(paramString, paramLong1, paramLong2, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel()));
+    AEBaseDataReporter.a().B();
+    AEReportUtils.o();
   }
   
   @RequiresApi(api=16)
@@ -343,111 +345,104 @@ public class AEEditorMultiCutEditFragment
     if (paramBoolean) {
       a(0L);
     }
-    this.jdField_a_of_type_Bnzx.a.postValue(bnzu.a(localList1, null));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel.a.postValue(ActionFactory.a(localList1, null));
   }
   
   private void a(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-    for (;;)
-    {
       return;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      CutModelKt localCutModelKt = this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.a();
-      if (localCutModelKt != null)
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        if (localCutModelKt.getResource().getType() == 2)
-        {
-          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-          this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          if ((this.jdField_a_of_type_Bnxc != null) && (this.jdField_a_of_type_Bnxc.isShowing())) {
-            this.jdField_a_of_type_Bnxc.dismiss();
-          }
-        }
-        else
-        {
-          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          if (bnzw.a(localCutModelKt.getResource().getScaleSpeed(), 1.0F))
-          {
-            this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130837906);
-            return;
-          }
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130837907);
-        }
-      }
-      else
-      {
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        if (this.jdField_a_of_type_Boer.b() > 60000L)
-        {
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          k();
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidTextSpannableStringBuilder);
-        }
-        while ((this.jdField_a_of_type_Bnxc != null) && (this.jdField_a_of_type_Bnxc.isShowing()))
-        {
-          this.jdField_a_of_type_Bnxc.dismiss();
-          return;
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131689706);
-          this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165240));
-        }
-      }
     }
+    CutModelKt localCutModelKt = this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.a();
+    if (localCutModelKt != null)
+    {
+      if (localCutModelKt.getResource().getType() == 2)
+      {
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130837914);
+        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166284));
+        if ((this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog != null) && (this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog.isShowing())) {
+          this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog.dismiss();
+        }
+      }
+      while (this.jdField_a_of_type_JavaUtilList.size() < 2)
+      {
+        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166284));
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837908);
+        return;
+        if (this.e)
+        {
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130837913);
+          this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165357));
+        }
+      }
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837907);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165357));
+      return;
+    }
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166284));
+    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130837914);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837908);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166284));
   }
   
   private List<MediaClipModel> b()
   {
-    return bnzv.a(this.jdField_a_of_type_JavaUtilArrayList);
+    return DataProcessor.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
   
   private void b(long paramLong)
   {
-    this.jdField_a_of_type_Bnzx.a(CMTime.fromMs(paramLong));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel.a(CMTime.fromMs(paramLong));
   }
   
   private void b(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370369));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369595));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380258));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(zpz.a(getActivity(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bnzm(this));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366864));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout.setOnClickListener(new bnzn(this));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369302));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366918));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369376));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bnzo(this));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369551));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new bnyw(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380206));
-    this.jdField_a_of_type_DovComQqImAeeditorViewTimelineScaleScrollLayout = ((ScaleScrollLayout)paramView.findViewById(2131377054));
-    this.jdField_a_of_type_DovComQqImAeeditorViewTimelineScaleScrollLayout.setOnClickListener(new bnyx(this));
-    this.jdField_a_of_type_DovComQqImAeeditorViewReorderReorderContainerView = ((ReorderContainerView)paramView.findViewById(2131376589));
-    this.jdField_a_of_type_DovComQqImAeeditorViewReorderReorderContainerView.a();
-    this.jdField_a_of_type_DovComQqImAeeditorViewReorderReorderContainerView.setReorderListener(this.jdField_a_of_type_Boee);
-    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar = ((ScaleTimeBar)paramView.findViewById(2131378039));
-    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.setOnBarMoveListener(new bnyy(this));
-    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.setMaxDurationLimit(60000L);
-    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.setMaxDurationLimitTip(getString(2131689705));
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView = ((VideoTrackContainerView)paramView.findViewById(2131381327));
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setScaleAdapter(this.jdField_a_of_type_Boer);
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setMaxDurationLimit(60000L);
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setTimeBar(this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar);
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setVideoModel(this.jdField_a_of_type_Bnzx);
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setScrollListener(new bnyz(this));
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setOnStartTimeChangedListener(new bnza(this));
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setSelectedStateListener(new bnzb(this));
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setOnTransitionListener(new bnzc(this));
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setVideoTrackStoreListener(new bnzd(this));
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setItemOnLongClickListener(new bnze(this));
-    paramView.setOnClickListener(new bnzf(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370643));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369867));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380701));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getActivity(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new AEEditorMultiCutEditFragment.12(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131367054));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new AEEditorMultiCutEditFragment.13(this));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369558));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362321));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369634));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380299));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new AEEditorMultiCutEditFragment.14(this));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362322));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380608));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369818));
+    if (!getArguments().getBoolean("ae_editor_is_light_model", false)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.e = bool;
+      if (this.e) {
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new AEEditorMultiCutEditFragment.15(this));
+      }
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377156));
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimelineScaleScrollLayout = ((ScaleScrollLayout)paramView.findViewById(2131377468));
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimelineScaleScrollLayout.setOnClickListener(new AEEditorMultiCutEditFragment.16(this));
+      this.jdField_a_of_type_DovComQqImAeeditorViewReorderReorderContainerView = ((ReorderContainerView)paramView.findViewById(2131376983));
+      this.jdField_a_of_type_DovComQqImAeeditorViewReorderReorderContainerView.a();
+      this.jdField_a_of_type_DovComQqImAeeditorViewReorderReorderContainerView.setReorderListener(this.jdField_a_of_type_DovComQqImAeeditorViewReorderReorderListener);
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar = ((ScaleTimeBar)paramView.findViewById(2131378459));
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.setOnBarMoveListener(new AEEditorMultiCutEditFragment.17(this));
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.setMaxDurationLimit(60000L);
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.setMaxDurationLimitTip(getString(2131689724));
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView = ((VideoTrackContainerView)paramView.findViewById(2131381790));
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setScaleAdapter(this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter);
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setMaxDurationLimit(60000L);
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setTimeBar(this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar);
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setVideoModel(this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel);
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setScrollListener(new AEEditorMultiCutEditFragment.18(this));
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setOnStartTimeChangedListener(new AEEditorMultiCutEditFragment.19(this));
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setSelectedStateListener(new AEEditorMultiCutEditFragment.20(this));
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setOnTransitionListener(new AEEditorMultiCutEditFragment.21(this));
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setVideoTrackStoreListener(new AEEditorMultiCutEditFragment.22(this));
+      this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.setItemOnLongClickListener(new AEEditorMultiCutEditFragment.23(this));
+      paramView.setOnClickListener(new AEEditorMultiCutEditFragment.24(this));
+      return;
+    }
   }
   
   @RequiresApi(api=17)
@@ -461,21 +456,9 @@ public class AEEditorMultiCutEditFragment
     this.jdField_a_of_type_DovComQqImAeeditorViewReorderReorderContainerView.a(paramResourceModel.getData());
   }
   
-  private boolean b()
-  {
-    return (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals("AEEditorMultiVideoEdit"));
-  }
-  
-  private void c()
-  {
-    if ((this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) && (!this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying())) {
-      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.play();
-    }
-  }
-  
   private void c(long paramLong)
   {
-    if ((this.jdField_a_of_type_Bnzx == null) || (!this.jdField_a_of_type_Bnzx.a())) {}
+    if ((this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel == null) || (!this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel.a())) {}
     do
     {
       return;
@@ -486,7 +469,19 @@ public class AEEditorMultiCutEditFragment
     this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.c();
   }
   
+  private boolean c()
+  {
+    return (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals("AEEditorMultiVideoEdit"));
+  }
+  
   private void d()
+  {
+    if ((this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) && (!this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying())) {
+      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.play();
+    }
+  }
+  
+  private void e()
   {
     if ((this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) && (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying())) {
       this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.pause();
@@ -494,11 +489,11 @@ public class AEEditorMultiCutEditFragment
   }
   
   @RequiresApi(api=16)
-  private void e()
+  private void f()
   {
     try
     {
-      MediaResourceModel localMediaResourceModel = ((MediaResourceModel)getArguments().getSerializable("resource_model")).clone();
+      MediaResourceModel localMediaResourceModel = ((MediaResourceModel)getArguments().getSerializable("resource_model")).deepCopy();
       if (localMediaResourceModel != null)
       {
         this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().setMediaResourceModel(localMediaResourceModel);
@@ -518,38 +513,59 @@ public class AEEditorMultiCutEditFragment
     }
   }
   
-  private void f()
-  {
-    this.jdField_a_of_type_Boer = new boer();
-    this.jdField_a_of_type_Boer.a(ViewUtils.dip2px(30.0F));
-    this.jdField_a_of_type_Boer.b(ViewUtils.dip2px(20.0F));
-  }
-  
   private void g()
   {
-    this.jdField_a_of_type_Bnzx = ((bnzx)bmxz.a(a()).get(bnzx.class));
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter = new ScaleAdapter();
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(ViewUtils.a(30.0F));
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.b(ViewUtils.a(20.0F));
+  }
+  
+  private void h()
+  {
+    this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel = ((MvVideoViewModel)AEViewModelProviders.a(a()).get(MvVideoViewModel.class));
   }
   
   @RequiresApi(api=16)
-  private void h()
+  private void i()
   {
-    Object localObject = getArguments();
-    if ((localObject != null) && (((Bundle)localObject).containsKey("ae_album_selected_media_models"))) {
-      this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)((Bundle)localObject).getSerializable("ae_album_selected_media_models"));
+    Object localObject1 = getArguments();
+    if ((localObject1 != null) && (((Bundle)localObject1).containsKey("ae_album_selected_media_models"))) {
+      this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)((Bundle)localObject1).getSerializable("ae_album_selected_media_models"));
     }
-    localObject = new StringBuilder().append("passed in media models, size=");
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilArrayList.size())
+    StringBuilder localStringBuilder = new StringBuilder().append("passed in media models, size=");
+    int i;
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      i = 0;
+    }
+    for (;;)
     {
-      bnrh.a("AEEditorMultiCutEditFragment", i);
-      this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.setScaleAdapter(this.jdField_a_of_type_Boer);
-      this.jdField_a_of_type_Bnzx.a.observe(a(), new bnzj(this));
-      a(b(), false);
-      return;
+      AEQLog.a("AEEditorMultiCutEditFragment", i);
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleTimeBar.setScaleAdapter(this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter);
+      this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel.a.observe(a(), new AEEditorMultiCutEditFragment.6(this));
+      if ((localObject1 != null) && (((Bundle)localObject1).containsKey("resource_model"))) {
+        try
+        {
+          localObject1 = ((MediaResourceModel)getArguments().getSerializable("resource_model")).deepCopy();
+          if (localObject1 != null) {
+            a(((MediaResourceModel)localObject1).getVideos(), true);
+          }
+          return;
+          i = this.jdField_a_of_type_JavaUtilArrayList.size();
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            Object localObject2 = null;
+          }
+        }
+      }
     }
+    a(b(), false);
   }
   
-  private void i()
+  private void j()
   {
     if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null)
     {
@@ -559,7 +575,7 @@ public class AEEditorMultiCutEditFragment
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer = new MoviePlayer();
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setLoopPlay(true);
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setBackColor(getResources().getColor(2131165216));
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.addPlayerListener(new bnzk(this));
+    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.addPlayerListener(new AEEditorMultiCutEditFragment.7(this));
     if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null)
     {
       this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
@@ -569,50 +585,43 @@ public class AEEditorMultiCutEditFragment
     SessionConfig localSessionConfig = new SessionConfig();
     localSessionConfig.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
     localSessionConfig.setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFit);
-    localSessionConfig.setMaxIntermediateRenderSize(this.jdField_a_of_type_Boby.a());
+    localSessionConfig.setMaxIntermediateRenderSize(this.jdField_a_of_type_DovComQqImAeeditorModuleParamsVideoParamStrategy.a());
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setSessionConfig(localSessionConfig);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.addPlayer(this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setTAVCutVideoView(this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.initMultiCutSession(getActivity(), a());
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setTemplate(2, "assets://camera/template", true, new String[] { "template.json" });
-    if (this.jdField_a_of_type_Bnzx != null) {
-      this.jdField_a_of_type_Bnzx.a(this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer);
+    if (this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel.a(this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer);
     }
     this.jdField_b_of_type_JavaLangString = Util.md5(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().toString());
   }
   
-  private void j()
+  private void k()
   {
-    if (this.jdField_a_of_type_Bnxc == null)
-    {
-      this.jdField_a_of_type_Bnxc = new bnxc(getActivity(), 2131755189);
-      this.jdField_a_of_type_Bnxc.c(85);
-      this.jdField_a_of_type_Bnxc.b((UIUtils.getScreenWidth(getActivity()) - bpdd.b(getActivity(), 65.0F)) / 2);
-      this.jdField_a_of_type_Bnxc.a(bpdd.b(getActivity(), 212.0F));
-      this.jdField_a_of_type_Bnxc.a(new bnzh(this));
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorQcircleBubbleView == null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorQcircleBubbleView = new AEEditorQcircleBubbleView(getActivity());
     }
-    this.jdField_a_of_type_Bnxc.show();
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout.post(new AEEditorMultiCutEditFragment.8(this));
+  }
+  
+  private void l()
+  {
+    if (this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog == null)
+    {
+      this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog = new VideoSetSpeedDialog(getActivity(), 2131755194);
+      this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog.c(83);
+      this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog.b(DisplayUtil.b(getActivity(), 60.0F));
+      this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog.a(DisplayUtil.b(getActivity(), 42.0F));
+      this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog.a(new AEEditorMultiCutEditFragment.25(this));
+    }
+    this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog.show();
     if (this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView != null)
     {
       CutModelKt localCutModelKt = this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.a();
       if ((localCutModelKt != null) && (localCutModelKt.getResource() != null)) {
-        this.jdField_a_of_type_Bnxc.a(localCutModelKt.getResource().getScaleSpeed());
+        this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoVideoSetSpeedDialog.a(localCutModelKt.getResource().getScaleSpeed());
       }
-    }
-  }
-  
-  private void k()
-  {
-    if (this.jdField_a_of_type_AndroidTextSpannableStringBuilder == null)
-    {
-      String str1 = getResources().getString(2131689699);
-      String str2 = "  " + getResources().getString(2131689706);
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-      localSpannableStringBuilder.append(str1);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(2131165241)), 0, str1.length(), 17);
-      localSpannableStringBuilder.append(str2);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(2131165240)), str1.length(), localSpannableStringBuilder.length(), 17);
-      this.jdField_a_of_type_AndroidTextSpannableStringBuilder = localSpannableStringBuilder;
     }
   }
   
@@ -624,12 +633,12 @@ public class AEEditorMultiCutEditFragment
   @RequiresApi(api=16)
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    bnrh.b("AEEditorMultiCutEditFragment", "doOnActivityResult---requestCode=" + paramInt1 + ", resultCode=" + paramInt2);
+    AEQLog.b("AEEditorMultiCutEditFragment", "doOnActivityResult---requestCode=" + paramInt1 + ", resultCode=" + paramInt2);
     if ((paramInt1 == 1024) && (paramInt2 == -1))
     {
       paramIntent = paramIntent.getSerializableExtra("ae_album_selected_media_models");
       if (paramIntent == null) {
-        bnrh.a("AEEditorMultiCutEditFragment", "serializableExtra == null");
+        AEQLog.a("AEEditorMultiCutEditFragment", "serializableExtra == null");
       }
     }
     else
@@ -637,22 +646,23 @@ public class AEEditorMultiCutEditFragment
       return;
     }
     Object localObject = (ArrayList)paramIntent;
-    bnrh.a("AEEditorMultiCutEditFragment", "ADDITIONAL passed in media models, size=" + ((ArrayList)localObject).size());
+    AEQLog.a("AEEditorMultiCutEditFragment", "ADDITIONAL passed in media models, size=" + ((ArrayList)localObject).size());
     if (((ArrayList)localObject).size() == 0)
     {
-      bnrh.a("AEEditorMultiCutEditFragment", "addMediaModels.size() == 0");
+      AEQLog.a("AEEditorMultiCutEditFragment", "addMediaModels.size() == 0");
       return;
     }
     if (this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView == null)
     {
-      bnrh.a("AEEditorMultiCutEditFragment", "mVideoTrackContainer == null");
+      AEQLog.a("AEEditorMultiCutEditFragment", "mVideoTrackContainer == null");
       return;
     }
+    this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject);
     paramInt2 = this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView.b();
-    paramIntent = bnzv.a((List)localObject);
-    localObject = bnzv.b((List)localObject);
+    paramIntent = DataProcessor.a((List)localObject);
+    localObject = DataProcessor.b((List)localObject);
     paramIntent = StoreModelConvert.INSTANCE.convert(paramIntent);
-    paramIntent = bnzu.a(paramInt2, this.jdField_a_of_type_JavaUtilList, paramIntent, (List)localObject, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel());
+    paramIntent = ActionFactory.a(paramInt2, this.jdField_a_of_type_JavaUtilList, paramIntent, (List)localObject, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel());
     if (MediaModelUtils.getTotalSelectDuration(paramIntent.getMediaClipModel()) >= 60000L)
     {
       localObject = StoreModelConvert.INSTANCE.restoreClipTimeRange(paramIntent.getData());
@@ -660,9 +670,7 @@ public class AEEditorMultiCutEditFragment
     }
     for (;;)
     {
-      if (paramIntent.getMediaClipModel().size() >= 2) {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837917);
-      }
+      this.jdField_a_of_type_DovComQqImAeeditorModuleEditMultiViewmodelMvVideoViewModel.a.setValue(paramIntent);
       long l = 0L;
       paramInt1 = 0;
       while (paramInt1 <= paramInt2)
@@ -671,7 +679,6 @@ public class AEEditorMultiCutEditFragment
         paramInt1 += 1;
       }
       a(l);
-      this.jdField_a_of_type_Bnzx.a.postValue(paramIntent);
       return;
     }
   }
@@ -694,7 +701,7 @@ public class AEEditorMultiCutEditFragment
       else
       {
         Object localObject = getActivity();
-        localObject = bhdj.a((Context)localObject, 230).setTitle(anvx.a(2131689726)).setMessage(((Context)localObject).getString(2131689727)).setPositiveButton(((Context)localObject).getString(2131689726), new bnzi(this)).setNegativeButton(((Context)localObject).getString(2131689698), new bnzg(this));
+        localObject = DialogUtil.a((Context)localObject, 230).setTitle(HardCodeUtil.a(2131689758)).setMessage(((Context)localObject).getString(2131689759)).setPositiveButton(((Context)localObject).getString(2131689715), new AEEditorMultiCutEditFragment.5(this)).setNegativeButton(((Context)localObject).getString(2131689713), new AEEditorMultiCutEditFragment.4(this));
         if (localObject != null) {}
         try
         {
@@ -715,6 +722,16 @@ public class AEEditorMultiCutEditFragment
     }
   }
   
+  protected boolean b()
+  {
+    return AECameraPrefsUtil.a().a("SP_KEY_FIRST_ENTER_VIDEO_CUT", true, 0);
+  }
+  
+  protected void c()
+  {
+    AECameraPrefsUtil.a().a("SP_KEY_FIRST_ENTER_VIDEO_CUT", false, 0);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -724,9 +741,9 @@ public class AEEditorMultiCutEditFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    f();
     g();
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558570, paramViewGroup, false);
+    h();
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558592, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -748,41 +765,52 @@ public class AEEditorMultiCutEditFragment
   @RequiresApi(api=16)
   public void onHiddenChanged(boolean paramBoolean)
   {
+    boolean bool = true;
     super.onHiddenChanged(paramBoolean);
     this.jdField_d_of_type_Boolean = paramBoolean;
     if (!paramBoolean)
     {
-      if (b())
+      if (!c())
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setStyleAsCancelAndFinish();
-        if ((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null) && (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel() != null)) {
-          e();
+        paramBoolean = true;
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        f();
+        if (this.jdField_c_of_type_Boolean) {
+          d();
         }
+        if (getArguments().getBoolean("ae_editor_is_light_model", false)) {
+          break label100;
+        }
+        paramBoolean = bool;
+        label61:
+        this.e = paramBoolean;
+        if (!this.e) {
+          break label105;
+        }
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new AEEditorMultiCutEditFragment.2(this));
       }
       for (;;)
       {
-        if (this.jdField_c_of_type_Boolean) {
-          c();
-        }
-        bnqm.a().A();
+        AEBaseDataReporter.a().y();
         return;
-        this.jdField_a_of_type_Boolean = false;
-        if ((getArguments() != null) && ((getArguments().getSerializable("resource_model") instanceof MediaResourceModel))) {
-          e();
-        }
-        this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setLeftButtonAsBackArray();
+        paramBoolean = false;
+        break;
+        label100:
+        paramBoolean = false;
+        break label61;
+        label105:
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new AEEditorMultiCutEditFragment.3(this));
       }
     }
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.onPause();
-    d();
+    e();
   }
   
   public void onPause()
   {
     super.onPause();
     if (!this.jdField_d_of_type_Boolean) {
-      d();
+      e();
     }
   }
   
@@ -792,9 +820,10 @@ public class AEEditorMultiCutEditFragment
     if (!this.jdField_d_of_type_Boolean)
     {
       if (this.jdField_b_of_type_Boolean) {
-        c();
+        d();
       }
-      bnqm.a().A();
+      AEBaseDataReporter.a().y();
+      AEReportUtils.k();
     }
   }
   
@@ -804,13 +833,14 @@ public class AEEditorMultiCutEditFragment
     super.onViewCreated(paramView, paramBundle);
     a(paramView);
     b(paramView);
-    h();
     i();
+    j();
+    f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment
  * JD-Core Version:    0.7.0.1
  */

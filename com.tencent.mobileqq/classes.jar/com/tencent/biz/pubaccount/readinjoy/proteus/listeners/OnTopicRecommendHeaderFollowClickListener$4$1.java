@@ -1,23 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.listeners;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pvj;
-import qrw;
-import qsa;
 
-public class OnTopicRecommendHeaderFollowClickListener$4$1
+class OnTopicRecommendHeaderFollowClickListener$4$1
   implements Runnable
 {
-  public OnTopicRecommendHeaderFollowClickListener$4$1(qsa paramqsa) {}
+  OnTopicRecommendHeaderFollowClickListener$4$1(OnTopicRecommendHeaderFollowClickListener.4 param4) {}
   
   public void run()
   {
-    pvj.a().a((int)qrw.a(this.a.a).businessId, 0);
+    ReadInJoyLogicEngine.a().a((int)OnTopicRecommendHeaderFollowClickListener.a(this.a.a).businessId, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener.4.1
  * JD-Core Version:    0.7.0.1
  */

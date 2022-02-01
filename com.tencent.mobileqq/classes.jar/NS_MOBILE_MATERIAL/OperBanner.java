@@ -8,7 +8,7 @@ public final class OperBanner
   extends JceStruct
 {
   static MaterialFile cache_stFile = new MaterialFile();
-  public MaterialFile stFile;
+  public MaterialFile stFile = null;
   public String strH5JumpUrl = "";
   public String strSchema = "";
   

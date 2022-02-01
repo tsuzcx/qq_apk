@@ -1,7 +1,6 @@
 package com.tencent.smtt.utils;
 
 import android.os.Build.VERSION;
-import android.util.Log;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
@@ -63,7 +62,7 @@ public class i
     } while ((paramString.equalsIgnoreCase("canLoadX5Core")) || (paramString.equalsIgnoreCase("initTesRuntimeEnvironment")));
     paramString = new StringWriter();
     paramObject.printStackTrace(new PrintWriter(paramString));
-    Log.e("ReflectionUtils", "invokeInstance -- exceptions:" + paramString.toString());
+    TbsLog.i("ReflectionUtils", "invokeInstance -- exceptions:" + paramString.toString());
     return null;
   }
   
@@ -104,7 +103,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.utils.i
  * JD-Core Version:    0.7.0.1
  */

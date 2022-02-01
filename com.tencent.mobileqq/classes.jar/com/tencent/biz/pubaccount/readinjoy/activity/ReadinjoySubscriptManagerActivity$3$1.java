@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ovj;
-
-public class ReadinjoySubscriptManagerActivity$3$1
+class ReadinjoySubscriptManagerActivity$3$1
   implements Runnable
 {
-  public ReadinjoySubscriptManagerActivity$3$1(ovj paramovj) {}
+  ReadinjoySubscriptManagerActivity$3$1(ReadinjoySubscriptManagerActivity.3 param3) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ReadinjoySubscriptManagerActivity$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

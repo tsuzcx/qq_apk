@@ -8,9 +8,9 @@ public final class CommTaskRsp
   extends JceStruct
 {
   static byte[] cache_vTaskData = (byte[])new byte[1];
-  public long iRetCode;
+  public long iRetCode = 0L;
   public String sRetMsg = "";
-  public byte[] vTaskData;
+  public byte[] vTaskData = null;
   
   static
   {

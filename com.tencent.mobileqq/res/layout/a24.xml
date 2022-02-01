@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ce1" android:layout_width="fill_parent" android:layout_height="@dimen/b_b" android:layout_alignParentBottom="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/b_d">
-        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/lau" android:background="@drawable/yc" android:visibility="invisible" android:layout_width="@dimen/b_c" android:layout_height="@dimen/b_c" android:layout_marginRight="1.0dip" android:layout_marginBottom="-5.5dip" android:layout_alignParentRight="true" app:foregroundHeight="30.0dip" app:foregroundResource="@drawable/er8" app:foregroundWidth="30.0dip" />
-        <RelativeLayout android:id="@id/nnj" android:layout_width="fill_parent" android:layout_height="@dimen/b_c" android:layout_below="@id/lau">
-            <TextView android:textColor="@color/al3" android:gravity="center" android:id="@id/nxh" android:background="@drawable/bid" android:paddingLeft="18.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="13.0dip" android:text="@string/vyf" android:includeFontPadding="false" android:drawableRight="@drawable/ew6" android:drawablePadding="2.0dip" android:layout_centerVertical="true" />
-            <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/lb8" android:background="@drawable/yb" android:visibility="gone" android:layout_width="@dimen/b_c" android:layout_height="@dimen/b_c" android:layout_marginRight="1.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:foregroundHeight="30.0dip" app:foregroundResource="@drawable/evy" app:foregroundWidth="30.0dip" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/n8g" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/al0">
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/gq9" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:leftText="@string/xgz" formItem:showArrow="false" />
+        <ImageView android:id="@id/o5a" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </com.tencent.mobileqq.widget.FormItemRelativeLayout>
+    <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/n8h" android:background="@drawable/common_strip_setting_bottom" android:paddingTop="19.5dip" android:paddingBottom="19.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/o5d" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/j6l" android:paddingLeft="@dimen/is" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/xh0" style="@style/w2" />
+            <ImageView android:id="@id/o5b" android:focusable="false" android:visibility="gone" android:clickable="false" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
         </RelativeLayout>
-    </RelativeLayout>
-    <com.tencent.biz.videostory.capture.widgets.SquareRoundImageView android:id="@id/eg5" android:visibility="gone" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="34.0dip" android:layout_marginBottom="39.0dip" android:layout_alignParentBottom="true" app:roundImageSelectWidth="1.0dip" />
-    <dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout android:id="@id/apc" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" app:captureCircleStyle="true" />
-</RelativeLayout>
+        <RelativeLayout android:id="@id/o5c" android:visibility="gone" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/o5d">
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/fyp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/fyg" android:paddingLeft="@dimen/is" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/fyp" />
+        </RelativeLayout>
+    </com.tencent.mobileqq.widget.FormItemRelativeLayout>
+</LinearLayout>

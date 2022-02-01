@@ -1,15 +1,12 @@
 package com.tencent.mobileqq.troop.troopCard;
 
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import bgdr;
-import bhdj;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class VisitorTroopCardFragment$22
+class VisitorTroopCardFragment$22
   implements Runnable
 {
-  VisitorTroopCardFragment$22(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  VisitorTroopCardFragment$22(VisitorTroopCardFragment paramVisitorTroopCardFragment, String paramString) {}
   
   public void run()
   {
@@ -21,10 +18,11 @@ public class VisitorTroopCardFragment$22
     do
     {
       return;
-      this.this$0.a = bhdj.a(this.this$0.getActivity(), 230);
-      this.this$0.a.setMessage(this.this$0.getActivity().getResources().getString(2131719602));
-      bgdr localbgdr = new bgdr(this);
-      this.this$0.a.setPositiveButton(2131691037, localbgdr);
+      this.this$0.a = DialogUtil.a(this.this$0.getActivity(), 230);
+      this.this$0.a.setMessage(this.a);
+      VisitorTroopCardFragment.22.1 local1 = new VisitorTroopCardFragment.22.1(this);
+      this.this$0.a.setPositiveButton(2131691144, local1);
+      this.this$0.a.setNegativeButton(2131690800, local1);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

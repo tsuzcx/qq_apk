@@ -16,10 +16,10 @@ public class ResizeURLImageView
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (getContext().getResources().getConfiguration().orientation == 1) {}
-    for (paramInt1 = ViewUtils.getScreenWidth() - getPaddingLeft() - getPaddingRight();; paramInt1 = ViewUtils.getScreenHeight() - getPaddingTop() - getPaddingBottom())
+    for (paramInt1 = ViewUtils.a() - getPaddingLeft() - getPaddingRight();; paramInt1 = ViewUtils.b() - getPaddingTop() - getPaddingBottom())
     {
       paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
       super.onMeasure(paramInt1, paramInt1);

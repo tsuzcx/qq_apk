@@ -28,7 +28,7 @@ public final class GdtHandler$Params
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtHandler.Params
  * JD-Core Version:    0.7.0.1
  */

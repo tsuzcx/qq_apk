@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestSetGroupFilter
   extends JceStruct
 {
-  public byte cOp;
-  public byte cVerifyType;
-  public long lGroupCode;
-  public long lUin;
+  public byte cOp = 0;
+  public byte cVerifyType = 0;
+  public long lGroupCode = 0L;
+  public long lUin = 0L;
   
   public SvcRequestSetGroupFilter() {}
   

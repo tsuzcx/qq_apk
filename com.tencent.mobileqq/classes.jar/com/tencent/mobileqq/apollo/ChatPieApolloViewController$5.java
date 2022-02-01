@@ -1,31 +1,34 @@
 package com.tencent.mobileqq.apollo;
 
-import amos;
-import anch;
-import anis;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.api.IApolloPushManager;
+import com.tencent.mobileqq.apollo.api.IApolloPushManager.OnActionPushListener;
+import com.tencent.mobileqq.apollo.api.model.ApolloActionPush;
 import com.tencent.qphone.base.util.QLog;
 
-public class ChatPieApolloViewController$5
-  implements Runnable
+class ChatPieApolloViewController$5
+  implements IApolloPushManager.OnActionPushListener
 {
-  public ChatPieApolloViewController$5(amos paramamos, int paramInt, BaseChatPie paramBaseChatPie, anch paramanch) {}
+  ChatPieApolloViewController$5(ChatPieApolloViewController paramChatPieApolloViewController, BaseChatPie paramBaseChatPie, IApolloPushManager paramIApolloPushManager) {}
   
-  public void run()
+  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
   {
-    anis.a(this.jdField_a_of_type_Int, 101, 0, new Object[] { "parallel surfaceReady" });
-    QLog.i("sava_ChatPieApolloViewController", 1, "TraceReport CmShowStatUtil start preLoad Js");
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_Anch != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo != null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a != null) && (paramApolloActionPush != null))
     {
-      this.jdField_a_of_type_Anch.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo);
-      this.jdField_a_of_type_Anch.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType);
+      if (QLog.isColorLevel()) {
+        QLog.d("sava_ChatPieApolloViewController", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.jdField_a_of_type_Int == paramInt) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApiIApolloPushManager.triggerAction(paramApolloActionPush);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ChatPieApolloViewController.5
  * JD-Core Version:    0.7.0.1
  */

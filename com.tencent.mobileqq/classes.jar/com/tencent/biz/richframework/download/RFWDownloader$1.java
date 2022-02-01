@@ -1,51 +1,34 @@
 package com.tencent.biz.richframework.download;
 
-import bhhk;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Set;
+import android.os.SystemClock;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 class RFWDownloader$1
-  implements Runnable
+  implements Callback
 {
-  RFWDownloader$1(RFWDownloader paramRFWDownloader, String paramString, RFWDownloader.GetFileListener paramGetFileListener) {}
+  RFWDownloader$1(RFWDownloader paramRFWDownloader, RFWDownloadInfo paramRFWDownloadInfo, long paramLong) {}
   
-  public void run()
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    String str = this.this$0.getUnZipPath(this.val$downloadUrl);
-    File localFile = new File(str);
-    if (bhhk.a() == null)
-    {
-      QLog.i("RFWDownloader", 1, "getFile error, SdCardUtil.getSdCardDirectory() == null");
-      if (this.val$downloadListener != null) {
-        this.val$downloadListener.onRspCallback(false, "");
-      }
-    }
-    if (this.this$0.isFileDownLoaded(this.val$downloadUrl))
-    {
-      QLog.i("RFWDownloader", 1, "getFile success, the file is exist path:" + str);
-      if (this.val$downloadListener != null) {
-        this.val$downloadListener.onRspCallback(true, str);
-      }
-      return;
-    }
-    if (this.val$downloadListener != null) {
-      RFWDownloader.access$000(this.this$0, this.val$downloadUrl, this.val$downloadListener);
-    }
-    if (RFWDownloader.access$100(this.this$0).contains(this.val$downloadUrl))
-    {
-      QLog.i("RFWDownloader", 1, "getFile ..., file is downloading");
-      return;
-    }
-    FileUtils.deleteFile(localFile);
-    QLog.i("RFWDownloader", 1, "getFile ..., start download");
-    RFWDownloader.access$200(this.this$0, this.val$downloadUrl);
+    paramIOException.printStackTrace();
+    RFLog.e("RFWDownloader", RFLog.USR, new Object[] { paramIOException, paramIOException.getMessage() });
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    long l1 = SystemClock.uptimeMillis();
+    RFWDownloader.access$000(this.this$0, this.val$downloadInfo, paramResponse);
+    long l2 = SystemClock.uptimeMillis();
+    RFLog.e("RFWDownloader", RFLog.USR, "download [timeCost=" + (SystemClock.uptimeMillis() - this.val$beginEnqueue) + "][receiveData=" + (l2 - l1) + "] [url=" + this.val$downloadInfo.getUrl() + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.download.RFWDownloader.1
  * JD-Core Version:    0.7.0.1
  */

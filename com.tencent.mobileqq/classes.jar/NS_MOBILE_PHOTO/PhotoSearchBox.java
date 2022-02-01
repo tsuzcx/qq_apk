@@ -13,9 +13,9 @@ public final class PhotoSearchBox
   static Map<Integer, PhotoSearchBoxItem> cache_items;
   static int cache_status = 0;
   static ArrayList<Integer> cache_types = new ArrayList();
-  public Map<Integer, PhotoSearchBoxItem> items;
+  public Map<Integer, PhotoSearchBoxItem> items = null;
   public int status = 1;
-  public ArrayList<Integer> types;
+  public ArrayList<Integer> types = null;
   
   static
   {

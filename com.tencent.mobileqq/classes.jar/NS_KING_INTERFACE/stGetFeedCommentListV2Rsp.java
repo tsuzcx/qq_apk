@@ -16,14 +16,14 @@ public final class stGetFeedCommentListV2Rsp
   static Map<String, String> cache_replyListAttachInfos;
   static Map<String, stReplyListInfo> cache_replyListInfos;
   public String attach_info = "";
-  public ArrayList<stSimpleMetaComment> comments;
-  public ArrayList<stMetaExternPlatformInfo> externPlatformInfos;
+  public ArrayList<stSimpleMetaComment> comments = null;
+  public ArrayList<stMetaExternPlatformInfo> externPlatformInfos = null;
   public String feed_id = "";
-  public int isGetAll;
+  public int isGetAll = 0;
   public boolean is_finished = true;
-  public Map<String, String> replyListAttachInfos;
-  public Map<String, stReplyListInfo> replyListInfos;
-  public int total_comment_num;
+  public Map<String, String> replyListAttachInfos = null;
+  public Map<String, stReplyListInfo> replyListInfos = null;
+  public int total_comment_num = 0;
   
   static
   {

@@ -11,25 +11,37 @@ import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.taveffect.core.TAVTextureInfo;
 import com.tencent.tavkit.ciimage.CIImage;
 import com.tencent.tavkit.composition.video.RenderInfo;
+import com.tencent.tavsticker.core.TAVStickerRenderContext;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.utils.TAVStickerUtil;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class WSOverLayBlurManager
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/weseevideo/composition/effectnode/WSOverLayBlurManager;", "", "()V", "observersOfContext", "Ljava/util/HashMap;", "Lcom/tencent/tavsticker/core/TAVStickerRenderContext;", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/weseevideo/composition/effectnode/WSOverLayBlurManager$SourceImageObserver;", "Lkotlin/collections/HashMap;", "<set-?>", "Lcom/tencent/tavkit/composition/video/RenderInfo;", "renderInfo", "renderInfo$annotations", "getRenderInfo", "()Lcom/tencent/tavkit/composition/video/RenderInfo;", "Lcom/tencent/tavkit/ciimage/CIImage;", "sourceCIImage", "sourceCIImage$annotations", "getSourceCIImage", "()Lcom/tencent/tavkit/ciimage/CIImage;", "getBlurRect", "Lcom/tencent/tav/coremedia/CGRect;", "rotation", "", "sticker", "Lcom/tencent/tavsticker/model/TAVSticker;", "realBlurCiImage", "info", "getBlurredTextureInfo", "Lcom/tencent/tav/coremedia/TextureInfo;", "holderTextureInfo", "blurRadius", "blurScale", "", "horizontalBlurFilter", "Lcom/tencent/autotemplate/filter/GaosiBlurFilter;", "verticalBlurFilter", "scaleSmallTextureFilter", "Lcom/tencent/autotemplate/filter/ScaleTextureFilter;", "scaleBigTextureFilter", "renderWidth", "renderHeight", "getTavTextureInfo", "Lcom/tencent/taveffect/core/TAVTextureInfo;", "getTextureInfo", "rendererWidth", "rendererHeight", "textureAfterBlur", "registerSourceImageObserver", "", "stickerContext", "uniqId", "observer", "unregisterSourceImageObserver", "updateSourceCIImage", "SourceImageObserver", "libtavcut_debug"}, k=1, mv={1, 1, 16})
+public final class WSOverLayBlurManager
 {
-  private static volatile WSOverLayBlurManager instance;
-  private HashMap<String, WeakReference<WSOverLayBlurManager.SourceImageObserver>> observers = new HashMap();
-  private RenderInfo renderInfo;
-  private CIImage sourceCIImage;
+  public static final WSOverLayBlurManager INSTANCE = new WSOverLayBlurManager();
+  private static final HashMap<TAVStickerRenderContext, HashMap<String, WeakReference<WSOverLayBlurManager.SourceImageObserver>>> observersOfContext = new HashMap();
+  @Nullable
+  private static RenderInfo renderInfo;
+  @Nullable
+  private static CIImage sourceCIImage;
   
+  @JvmStatic
   @NotNull
-  public static CGRect getBlurRect(int paramInt, TAVSticker paramTAVSticker, CIImage paramCIImage, RenderInfo paramRenderInfo)
+  public static final CGRect getBlurRect(int paramInt, @NotNull TAVSticker paramTAVSticker, @Nullable CIImage paramCIImage, @NotNull RenderInfo paramRenderInfo)
   {
+    Intrinsics.checkParameterIsNotNull(paramTAVSticker, "sticker");
+    Intrinsics.checkParameterIsNotNull(paramRenderInfo, "info");
     paramTAVSticker = TAVStickerUtil.computeRectanglePoints(WsStickerUtil.getRatioChangeMatrix(paramTAVSticker, (int)paramRenderInfo.getRenderSize().width, (int)paramRenderInfo.getRenderSize().height), paramTAVSticker.getWidth(), paramTAVSticker.getHeight());
     paramCIImage = new CGRect();
     Object localObject = paramCIImage.size;
@@ -39,26 +51,26 @@ public class WSOverLayBlurManager
       ((CGSize)localObject).height = f;
       localObject = paramCIImage.size;
       if (paramInt != 1) {
-        break label204;
+        break label216;
       }
       f = paramTAVSticker[3].y - paramTAVSticker[0].y;
-      label101:
+      label113:
       ((CGSize)localObject).width = f;
       localObject = paramCIImage.origin;
       if (paramInt != 1) {
-        break label222;
+        break label234;
       }
       f = paramRenderInfo.getRenderSize().height - paramTAVSticker[1].y - paramCIImage.size.width;
-      label143:
+      label155:
       ((PointF)localObject).x = f;
       localObject = paramCIImage.origin;
       if (paramInt != 1) {
-        break label233;
+        break label245;
       }
     }
-    label204:
-    label222:
-    label233:
+    label216:
+    label234:
+    label245:
     for (float f = paramRenderInfo.getRenderSize().width - paramTAVSticker[1].x;; f = paramRenderInfo.getRenderSize().height - paramTAVSticker[1].y - paramCIImage.size.height)
     {
       ((PointF)localObject).y = f;
@@ -66,27 +78,270 @@ public class WSOverLayBlurManager
       f = paramTAVSticker[3].y - paramTAVSticker[0].y;
       break;
       f = paramTAVSticker[1].x - paramTAVSticker[0].x;
-      break label101;
+      break label113;
       f = paramTAVSticker[0].x;
-      break label143;
+      break label155;
     }
   }
   
-  public static WSOverLayBlurManager getInstance()
+  @JvmStatic
+  @NotNull
+  public static final TextureInfo getBlurredTextureInfo(@NotNull TextureInfo paramTextureInfo, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, @NotNull GaosiBlurFilter paramGaosiBlurFilter1, @NotNull GaosiBlurFilter paramGaosiBlurFilter2, @NotNull ScaleTextureFilter paramScaleTextureFilter1, @NotNull ScaleTextureFilter paramScaleTextureFilter2)
   {
-    if (instance == null) {}
+    for (;;)
+    {
+      try
+      {
+        Intrinsics.checkParameterIsNotNull(paramTextureInfo, "holderTextureInfo");
+        Intrinsics.checkParameterIsNotNull(paramGaosiBlurFilter1, "horizontalBlurFilter");
+        Intrinsics.checkParameterIsNotNull(paramGaosiBlurFilter2, "verticalBlurFilter");
+        Intrinsics.checkParameterIsNotNull(paramScaleTextureFilter1, "scaleSmallTextureFilter");
+        Intrinsics.checkParameterIsNotNull(paramScaleTextureFilter2, "scaleBigTextureFilter");
+        int i;
+        if (paramInt3 == 0)
+        {
+          i = paramInt1;
+          break label221;
+          paramGaosiBlurFilter1.setRadius(paramInt4);
+          paramGaosiBlurFilter2.setRadius(paramInt4);
+          TAVTextureInfo localTAVTextureInfo = INSTANCE.getTavTextureInfo(paramTextureInfo);
+          paramInt1 = (int)Math.floor(paramTextureInfo.width * paramFloat);
+          paramInt3 = (int)Math.floor(paramTextureInfo.height * paramFloat);
+          paramGaosiBlurFilter1.setRendererWidth(paramInt1);
+          paramGaosiBlurFilter1.setRendererHeight(paramInt3);
+          paramGaosiBlurFilter2.setRendererWidth(paramInt1);
+          paramGaosiBlurFilter2.setRendererHeight(paramInt3);
+          paramScaleTextureFilter1.setRendererWidth(paramInt1);
+          paramScaleTextureFilter1.setRendererHeight(paramInt3);
+          paramScaleTextureFilter2.setRendererWidth(i);
+          paramScaleTextureFilter2.setRendererHeight(paramInt2);
+          paramScaleTextureFilter1.scale(paramFloat, 0.0F, 0.0F);
+          paramGaosiBlurFilter1 = paramGaosiBlurFilter2.applyFilter(paramGaosiBlurFilter1.applyFilter(paramScaleTextureFilter1.applyFilter(localTAVTextureInfo)));
+          paramGaosiBlurFilter2 = INSTANCE;
+          Intrinsics.checkExpressionValueIsNotNull(paramGaosiBlurFilter1, "textureAfterBlur");
+          paramTextureInfo = paramGaosiBlurFilter2.getTextureInfo(paramTextureInfo, i, paramInt2, paramGaosiBlurFilter1);
+          return paramTextureInfo;
+        }
+        else
+        {
+          i = paramInt2;
+        }
+      }
+      finally {}
+      paramInt2 = paramInt1;
+      continue;
+      label221:
+      if (paramInt3 != 0) {}
+    }
+  }
+  
+  /* Error */
+  @JvmStatic
+  @NotNull
+  public static final TextureInfo getBlurredTextureInfo(@NotNull TextureInfo paramTextureInfo, @NotNull RenderInfo paramRenderInfo, int paramInt1, int paramInt2, float paramFloat, @NotNull GaosiBlurFilter paramGaosiBlurFilter1, @NotNull GaosiBlurFilter paramGaosiBlurFilter2, @NotNull ScaleTextureFilter paramScaleTextureFilter1, @NotNull ScaleTextureFilter paramScaleTextureFilter2)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_0
+    //   4: ldc 156
+    //   6: invokestatic 95	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   9: aload_1
+    //   10: ldc 210
+    //   12: invokestatic 95	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   15: aload 5
+    //   17: ldc 157
+    //   19: invokestatic 95	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   22: aload 6
+    //   24: ldc 158
+    //   26: invokestatic 95	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   29: aload 7
+    //   31: ldc 159
+    //   33: invokestatic 95	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   36: aload 8
+    //   38: ldc 160
+    //   40: invokestatic 95	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   43: iload_2
+    //   44: ifne +205 -> 249
+    //   47: aload_1
+    //   48: invokevirtual 213	com/tencent/tavkit/composition/video/RenderInfo:getRenderWidth	()I
+    //   51: istore 9
+    //   53: iload_2
+    //   54: ifne +204 -> 258
+    //   57: aload_1
+    //   58: invokevirtual 216	com/tencent/tavkit/composition/video/RenderInfo:getRenderHeight	()I
+    //   61: istore_2
+    //   62: aload 5
+    //   64: iload_3
+    //   65: invokevirtual 166	com/tencent/autotemplate/filter/GaosiBlurFilter:setRadius	(I)V
+    //   68: aload 6
+    //   70: iload_3
+    //   71: invokevirtual 166	com/tencent/autotemplate/filter/GaosiBlurFilter:setRadius	(I)V
+    //   74: getstatic 78	com/tencent/weseevideo/composition/effectnode/WSOverLayBlurManager:INSTANCE	Lcom/tencent/weseevideo/composition/effectnode/WSOverLayBlurManager;
+    //   77: aload_0
+    //   78: invokespecial 169	com/tencent/weseevideo/composition/effectnode/WSOverLayBlurManager:getTavTextureInfo	(Lcom/tencent/tav/coremedia/TextureInfo;)Lcom/tencent/taveffect/core/TAVTextureInfo;
+    //   81: astore_1
+    //   82: aload_0
+    //   83: getfield 174	com/tencent/tav/coremedia/TextureInfo:width	I
+    //   86: i2d
+    //   87: fload 4
+    //   89: f2d
+    //   90: dmul
+    //   91: invokestatic 180	java/lang/Math:floor	(D)D
+    //   94: d2i
+    //   95: istore_3
+    //   96: aload_0
+    //   97: getfield 182	com/tencent/tav/coremedia/TextureInfo:height	I
+    //   100: i2d
+    //   101: fload 4
+    //   103: f2d
+    //   104: dmul
+    //   105: invokestatic 180	java/lang/Math:floor	(D)D
+    //   108: d2i
+    //   109: istore 10
+    //   111: aload 5
+    //   113: iload_3
+    //   114: invokevirtual 185	com/tencent/autotemplate/filter/GaosiBlurFilter:setRendererWidth	(I)V
+    //   117: aload 5
+    //   119: iload 10
+    //   121: invokevirtual 188	com/tencent/autotemplate/filter/GaosiBlurFilter:setRendererHeight	(I)V
+    //   124: aload 6
+    //   126: iload_3
+    //   127: invokevirtual 185	com/tencent/autotemplate/filter/GaosiBlurFilter:setRendererWidth	(I)V
+    //   130: aload 6
+    //   132: iload 10
+    //   134: invokevirtual 188	com/tencent/autotemplate/filter/GaosiBlurFilter:setRendererHeight	(I)V
+    //   137: aload 7
+    //   139: iload_3
+    //   140: invokevirtual 191	com/tencent/autotemplate/filter/ScaleTextureFilter:setRendererWidth	(I)V
+    //   143: aload 7
+    //   145: iload 10
+    //   147: invokevirtual 192	com/tencent/autotemplate/filter/ScaleTextureFilter:setRendererHeight	(I)V
+    //   150: aload 8
+    //   152: iload 9
+    //   154: invokevirtual 191	com/tencent/autotemplate/filter/ScaleTextureFilter:setRendererWidth	(I)V
+    //   157: aload 8
+    //   159: iload_2
+    //   160: invokevirtual 192	com/tencent/autotemplate/filter/ScaleTextureFilter:setRendererHeight	(I)V
+    //   163: aload 7
+    //   165: fload 4
+    //   167: fconst_0
+    //   168: fconst_0
+    //   169: invokevirtual 196	com/tencent/autotemplate/filter/ScaleTextureFilter:scale	(FFF)V
+    //   172: aload 6
+    //   174: aload 5
+    //   176: aload 7
+    //   178: aload_1
+    //   179: invokevirtual 200	com/tencent/autotemplate/filter/ScaleTextureFilter:applyFilter	(Lcom/tencent/taveffect/core/TAVTextureInfo;)Lcom/tencent/taveffect/core/TAVTextureInfo;
+    //   182: invokevirtual 201	com/tencent/autotemplate/filter/GaosiBlurFilter:applyFilter	(Lcom/tencent/taveffect/core/TAVTextureInfo;)Lcom/tencent/taveffect/core/TAVTextureInfo;
+    //   185: invokevirtual 201	com/tencent/autotemplate/filter/GaosiBlurFilter:applyFilter	(Lcom/tencent/taveffect/core/TAVTextureInfo;)Lcom/tencent/taveffect/core/TAVTextureInfo;
+    //   188: astore_1
+    //   189: aload 8
+    //   191: fconst_1
+    //   192: iload_2
+    //   193: i2f
+    //   194: fmul
+    //   195: iload 10
+    //   197: i2f
+    //   198: fdiv
+    //   199: fconst_1
+    //   200: iload 9
+    //   202: i2f
+    //   203: fmul
+    //   204: iload_3
+    //   205: i2f
+    //   206: fdiv
+    //   207: invokestatic 220	java/lang/Math:max	(FF)F
+    //   210: fconst_0
+    //   211: fconst_0
+    //   212: invokevirtual 196	com/tencent/autotemplate/filter/ScaleTextureFilter:scale	(FFF)V
+    //   215: aload 8
+    //   217: aload_1
+    //   218: invokevirtual 200	com/tencent/autotemplate/filter/ScaleTextureFilter:applyFilter	(Lcom/tencent/taveffect/core/TAVTextureInfo;)Lcom/tencent/taveffect/core/TAVTextureInfo;
+    //   221: astore_1
+    //   222: getstatic 78	com/tencent/weseevideo/composition/effectnode/WSOverLayBlurManager:INSTANCE	Lcom/tencent/weseevideo/composition/effectnode/WSOverLayBlurManager;
+    //   225: astore 5
+    //   227: aload_1
+    //   228: ldc 202
+    //   230: invokestatic 205	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   233: aload 5
+    //   235: aload_0
+    //   236: iload 9
+    //   238: iload_2
+    //   239: aload_1
+    //   240: invokespecial 208	com/tencent/weseevideo/composition/effectnode/WSOverLayBlurManager:getTextureInfo	(Lcom/tencent/tav/coremedia/TextureInfo;IILcom/tencent/taveffect/core/TAVTextureInfo;)Lcom/tencent/tav/coremedia/TextureInfo;
+    //   243: astore_0
+    //   244: ldc 2
+    //   246: monitorexit
+    //   247: aload_0
+    //   248: areturn
+    //   249: aload_1
+    //   250: invokevirtual 216	com/tencent/tavkit/composition/video/RenderInfo:getRenderHeight	()I
+    //   253: istore 9
+    //   255: goto -202 -> 53
+    //   258: aload_1
+    //   259: invokevirtual 213	com/tencent/tavkit/composition/video/RenderInfo:getRenderWidth	()I
+    //   262: istore_2
+    //   263: goto -201 -> 62
+    //   266: astore_0
+    //   267: ldc 2
+    //   269: monitorexit
+    //   270: aload_0
+    //   271: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	272	0	paramTextureInfo	TextureInfo
+    //   0	272	1	paramRenderInfo	RenderInfo
+    //   0	272	2	paramInt1	int
+    //   0	272	3	paramInt2	int
+    //   0	272	4	paramFloat	float
+    //   0	272	5	paramGaosiBlurFilter1	GaosiBlurFilter
+    //   0	272	6	paramGaosiBlurFilter2	GaosiBlurFilter
+    //   0	272	7	paramScaleTextureFilter1	ScaleTextureFilter
+    //   0	272	8	paramScaleTextureFilter2	ScaleTextureFilter
+    //   51	203	9	i	int
+    //   109	87	10	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   3	43	266	finally
+    //   47	53	266	finally
+    //   57	62	266	finally
+    //   62	244	266	finally
+    //   249	255	266	finally
+    //   258	263	266	finally
+  }
+  
+  @Nullable
+  public static final RenderInfo getRenderInfo()
+  {
     try
     {
-      if (instance == null) {
-        instance = new WSOverLayBlurManager();
-      }
-      return instance;
+      RenderInfo localRenderInfo = renderInfo;
+      return localRenderInfo;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  @NotNull
-  public static TAVTextureInfo getTavTextureInfo(TextureInfo paramTextureInfo)
+  @Nullable
+  public static final CIImage getSourceCIImage()
+  {
+    try
+    {
+      CIImage localCIImage = sourceCIImage;
+      return localCIImage;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private final TAVTextureInfo getTavTextureInfo(TextureInfo paramTextureInfo)
   {
     if (paramTextureInfo.getTextureMatrix() != null)
     {
@@ -97,272 +352,90 @@ public class WSOverLayBlurManager
     return new TAVTextureInfo(paramTextureInfo.textureID, paramTextureInfo.textureType, paramTextureInfo.width, paramTextureInfo.height, null, paramTextureInfo.preferRotation);
   }
   
-  @NotNull
-  public static TextureInfo getTextureInfo(TextureInfo paramTextureInfo, int paramInt1, int paramInt2, TAVTextureInfo paramTAVTextureInfo)
+  private final TextureInfo getTextureInfo(TextureInfo paramTextureInfo, int paramInt1, int paramInt2, TAVTextureInfo paramTAVTextureInfo)
   {
     return new TextureInfo(paramTAVTextureInfo.textureID, paramTAVTextureInfo.textureType, paramInt1, paramInt2, paramTextureInfo.getTextureMatrix(), paramTextureInfo.preferRotation);
   }
   
-  public TextureInfo getBlurredTextureInfo(TextureInfo paramTextureInfo, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, GaosiBlurFilter paramGaosiBlurFilter1, GaosiBlurFilter paramGaosiBlurFilter2, ScaleTextureFilter paramScaleTextureFilter1, ScaleTextureFilter paramScaleTextureFilter2)
+  @JvmStatic
+  public static final void registerSourceImageObserver(@NotNull TAVStickerRenderContext paramTAVStickerRenderContext, @NotNull String paramString, @Nullable WSOverLayBlurManager.SourceImageObserver paramSourceImageObserver)
   {
-    int i;
-    if (paramInt3 == 0)
-    {
-      i = paramInt1;
-      if (paramInt3 != 0) {
-        break label160;
-      }
-    }
-    for (;;)
-    {
-      label160:
-      try
-      {
-        paramGaosiBlurFilter1.setRadius(paramInt4);
-        paramGaosiBlurFilter2.setRadius(paramInt4);
-        TAVTextureInfo localTAVTextureInfo = getTavTextureInfo(paramTextureInfo);
-        paramInt1 = (int)Math.floor(paramTextureInfo.width * paramFloat);
-        paramInt3 = (int)Math.floor(paramTextureInfo.height * paramFloat);
-        paramGaosiBlurFilter1.setRendererWidth(paramInt1);
-        paramGaosiBlurFilter1.setRendererHeight(paramInt3);
-        paramGaosiBlurFilter2.setRendererWidth(paramInt1);
-        paramGaosiBlurFilter2.setRendererHeight(paramInt3);
-        paramScaleTextureFilter1.setRendererWidth(paramInt1);
-        paramScaleTextureFilter1.setRendererHeight(paramInt3);
-        paramScaleTextureFilter2.setRendererWidth(i);
-        paramScaleTextureFilter2.setRendererHeight(paramInt2);
-        paramScaleTextureFilter1.scale(paramFloat, 0.0F, 0.0F);
-        paramTextureInfo = getTextureInfo(paramTextureInfo, i, paramInt2, paramGaosiBlurFilter2.applyFilter(paramGaosiBlurFilter1.applyFilter(paramScaleTextureFilter1.applyFilter(localTAVTextureInfo))));
-        return paramTextureInfo;
-      }
-      finally {}
-      i = paramInt2;
-      break;
-      paramInt2 = paramInt1;
-    }
-  }
-  
-  /* Error */
-  @NotNull
-  public TextureInfo getBlurredTextureInfo(TextureInfo paramTextureInfo, RenderInfo paramRenderInfo, int paramInt1, int paramInt2, float paramFloat, GaosiBlurFilter paramGaosiBlurFilter1, GaosiBlurFilter paramGaosiBlurFilter2, ScaleTextureFilter paramScaleTextureFilter1, ScaleTextureFilter paramScaleTextureFilter2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: iload_3
-    //   3: ifne +193 -> 196
-    //   6: aload_2
-    //   7: invokevirtual 168	com/tencent/tavkit/composition/video/RenderInfo:getRenderWidth	()I
-    //   10: istore 10
-    //   12: iload_3
-    //   13: ifne +192 -> 205
-    //   16: aload_2
-    //   17: invokevirtual 171	com/tencent/tavkit/composition/video/RenderInfo:getRenderHeight	()I
-    //   20: istore_3
-    //   21: aload 6
-    //   23: iload 4
-    //   25: invokevirtual 135	com/tencent/autotemplate/filter/GaosiBlurFilter:setRadius	(I)V
-    //   28: aload 7
-    //   30: iload 4
-    //   32: invokevirtual 135	com/tencent/autotemplate/filter/GaosiBlurFilter:setRadius	(I)V
-    //   35: aload_1
-    //   36: invokestatic 137	com/tencent/weseevideo/composition/effectnode/WSOverLayBlurManager:getTavTextureInfo	(Lcom/tencent/tav/coremedia/TextureInfo;)Lcom/tencent/taveffect/core/TAVTextureInfo;
-    //   39: astore_2
-    //   40: aload_1
-    //   41: getfield 112	com/tencent/tav/coremedia/TextureInfo:width	I
-    //   44: i2f
-    //   45: fload 5
-    //   47: fmul
-    //   48: f2d
-    //   49: invokestatic 143	java/lang/Math:floor	(D)D
-    //   52: d2i
-    //   53: istore 4
-    //   55: aload_1
-    //   56: getfield 114	com/tencent/tav/coremedia/TextureInfo:height	I
-    //   59: i2f
-    //   60: fload 5
-    //   62: fmul
-    //   63: f2d
-    //   64: invokestatic 143	java/lang/Math:floor	(D)D
-    //   67: d2i
-    //   68: istore 11
-    //   70: aload 6
-    //   72: iload 4
-    //   74: invokevirtual 146	com/tencent/autotemplate/filter/GaosiBlurFilter:setRendererWidth	(I)V
-    //   77: aload 6
-    //   79: iload 11
-    //   81: invokevirtual 149	com/tencent/autotemplate/filter/GaosiBlurFilter:setRendererHeight	(I)V
-    //   84: aload 7
-    //   86: iload 4
-    //   88: invokevirtual 146	com/tencent/autotemplate/filter/GaosiBlurFilter:setRendererWidth	(I)V
-    //   91: aload 7
-    //   93: iload 11
-    //   95: invokevirtual 149	com/tencent/autotemplate/filter/GaosiBlurFilter:setRendererHeight	(I)V
-    //   98: aload 8
-    //   100: iload 4
-    //   102: invokevirtual 152	com/tencent/autotemplate/filter/ScaleTextureFilter:setRendererWidth	(I)V
-    //   105: aload 8
-    //   107: iload 11
-    //   109: invokevirtual 153	com/tencent/autotemplate/filter/ScaleTextureFilter:setRendererHeight	(I)V
-    //   112: aload 9
-    //   114: iload 10
-    //   116: invokevirtual 152	com/tencent/autotemplate/filter/ScaleTextureFilter:setRendererWidth	(I)V
-    //   119: aload 9
-    //   121: iload_3
-    //   122: invokevirtual 153	com/tencent/autotemplate/filter/ScaleTextureFilter:setRendererHeight	(I)V
-    //   125: aload 8
-    //   127: fload 5
-    //   129: fconst_0
-    //   130: fconst_0
-    //   131: invokevirtual 157	com/tencent/autotemplate/filter/ScaleTextureFilter:scale	(FFF)V
-    //   134: aload 7
-    //   136: aload 6
-    //   138: aload 8
-    //   140: aload_2
-    //   141: invokevirtual 161	com/tencent/autotemplate/filter/ScaleTextureFilter:applyFilter	(Lcom/tencent/taveffect/core/TAVTextureInfo;)Lcom/tencent/taveffect/core/TAVTextureInfo;
-    //   144: invokevirtual 162	com/tencent/autotemplate/filter/GaosiBlurFilter:applyFilter	(Lcom/tencent/taveffect/core/TAVTextureInfo;)Lcom/tencent/taveffect/core/TAVTextureInfo;
-    //   147: invokevirtual 162	com/tencent/autotemplate/filter/GaosiBlurFilter:applyFilter	(Lcom/tencent/taveffect/core/TAVTextureInfo;)Lcom/tencent/taveffect/core/TAVTextureInfo;
-    //   150: astore_2
-    //   151: aload 9
-    //   153: fconst_1
-    //   154: iload_3
-    //   155: i2f
-    //   156: fmul
-    //   157: iload 11
-    //   159: i2f
-    //   160: fdiv
-    //   161: fconst_1
-    //   162: iload 10
-    //   164: i2f
-    //   165: fmul
-    //   166: iload 4
-    //   168: i2f
-    //   169: fdiv
-    //   170: invokestatic 175	java/lang/Math:max	(FF)F
-    //   173: fconst_0
-    //   174: fconst_0
-    //   175: invokevirtual 157	com/tencent/autotemplate/filter/ScaleTextureFilter:scale	(FFF)V
-    //   178: aload_1
-    //   179: iload 10
-    //   181: iload_3
-    //   182: aload 9
-    //   184: aload_2
-    //   185: invokevirtual 161	com/tencent/autotemplate/filter/ScaleTextureFilter:applyFilter	(Lcom/tencent/taveffect/core/TAVTextureInfo;)Lcom/tencent/taveffect/core/TAVTextureInfo;
-    //   188: invokestatic 164	com/tencent/weseevideo/composition/effectnode/WSOverLayBlurManager:getTextureInfo	(Lcom/tencent/tav/coremedia/TextureInfo;IILcom/tencent/taveffect/core/TAVTextureInfo;)Lcom/tencent/tav/coremedia/TextureInfo;
-    //   191: astore_1
-    //   192: aload_0
-    //   193: monitorexit
-    //   194: aload_1
-    //   195: areturn
-    //   196: aload_2
-    //   197: invokevirtual 171	com/tencent/tavkit/composition/video/RenderInfo:getRenderHeight	()I
-    //   200: istore 10
-    //   202: goto -190 -> 12
-    //   205: aload_2
-    //   206: invokevirtual 168	com/tencent/tavkit/composition/video/RenderInfo:getRenderWidth	()I
-    //   209: istore_3
-    //   210: goto -189 -> 21
-    //   213: astore_1
-    //   214: aload_0
-    //   215: monitorexit
-    //   216: aload_1
-    //   217: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	218	0	this	WSOverLayBlurManager
-    //   0	218	1	paramTextureInfo	TextureInfo
-    //   0	218	2	paramRenderInfo	RenderInfo
-    //   0	218	3	paramInt1	int
-    //   0	218	4	paramInt2	int
-    //   0	218	5	paramFloat	float
-    //   0	218	6	paramGaosiBlurFilter1	GaosiBlurFilter
-    //   0	218	7	paramGaosiBlurFilter2	GaosiBlurFilter
-    //   0	218	8	paramScaleTextureFilter1	ScaleTextureFilter
-    //   0	218	9	paramScaleTextureFilter2	ScaleTextureFilter
-    //   10	191	10	i	int
-    //   68	90	11	j	int
-    // Exception table:
-    //   from	to	target	type
-    //   6	12	213	finally
-    //   16	21	213	finally
-    //   21	192	213	finally
-    //   196	202	213	finally
-    //   205	210	213	finally
-  }
-  
-  public RenderInfo getRenderInfo()
-  {
-    try
-    {
-      RenderInfo localRenderInfo = this.renderInfo;
-      return localRenderInfo;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public CIImage getSourceCIImage()
-  {
-    try
-    {
-      CIImage localCIImage = this.sourceCIImage;
-      return localCIImage;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void registerSourceImageObserver(String paramString, WSOverLayBlurManager.SourceImageObserver paramSourceImageObserver)
-  {
+    Intrinsics.checkParameterIsNotNull(paramTAVStickerRenderContext, "stickerContext");
+    Intrinsics.checkParameterIsNotNull(paramString, "uniqId");
     if (paramSourceImageObserver != null)
     {
       Log.d("genglin", "register: " + paramSourceImageObserver.hashCode());
-      if (!this.observers.containsKey(paramString))
+      if (!observersOfContext.containsKey(paramTAVStickerRenderContext)) {
+        ((Map)observersOfContext).put(paramTAVStickerRenderContext, new HashMap());
+      }
+      HashMap localHashMap = (HashMap)observersOfContext.get(paramTAVStickerRenderContext);
+      if ((localHashMap != null) && (!localHashMap.containsKey(paramString)))
       {
         paramSourceImageObserver = new WeakReference(paramSourceImageObserver);
-        this.observers.put(paramString, paramSourceImageObserver);
+        paramTAVStickerRenderContext = (HashMap)observersOfContext.get(paramTAVStickerRenderContext);
+        if (paramTAVStickerRenderContext != null) {
+          paramTAVStickerRenderContext = (WeakReference)paramTAVStickerRenderContext.put(paramString, paramSourceImageObserver);
+        }
       }
     }
   }
   
-  public void unregisterSourceImageObserver(String paramString)
+  @JvmStatic
+  public static final void unregisterSourceImageObserver(@NotNull TAVStickerRenderContext paramTAVStickerRenderContext, @NotNull String paramString)
   {
+    Intrinsics.checkParameterIsNotNull(paramTAVStickerRenderContext, "stickerContext");
+    Intrinsics.checkParameterIsNotNull(paramString, "uniqId");
     Log.d("genglin", "unregister: " + paramString);
-    this.observers.remove(paramString);
-    Log.d("genglin", "unregisterSourceImageObserver: size = " + this.observers.size());
+    HashMap localHashMap = (HashMap)observersOfContext.get(paramTAVStickerRenderContext);
+    if (localHashMap != null) {
+      paramString = (WeakReference)localHashMap.remove(paramString);
+    }
+    paramString = new StringBuilder().append("unregisterSourceImageObserver: size = ");
+    paramTAVStickerRenderContext = (HashMap)observersOfContext.get(paramTAVStickerRenderContext);
+    if (paramTAVStickerRenderContext != null) {}
+    for (paramTAVStickerRenderContext = Integer.valueOf(paramTAVStickerRenderContext.size());; paramTAVStickerRenderContext = null)
+    {
+      Log.d("genglin", paramTAVStickerRenderContext);
+      return;
+    }
   }
   
-  public void updateSourceCIImage(CIImage paramCIImage, RenderInfo paramRenderInfo)
+  @JvmStatic
+  public static final void updateSourceCIImage(@NotNull TAVStickerRenderContext paramTAVStickerRenderContext, @Nullable CIImage paramCIImage, @Nullable RenderInfo paramRenderInfo)
   {
     try
     {
-      this.sourceCIImage = paramCIImage;
-      this.renderInfo = paramRenderInfo;
-      Log.d("sticker_size", "updateSourceCIImage: thread = " + Thread.currentThread().getName());
-      if ((this.observers != null) && (this.observers.size() > 0))
+      Intrinsics.checkParameterIsNotNull(paramTAVStickerRenderContext, "stickerContext");
+      sourceCIImage = paramCIImage;
+      renderInfo = paramRenderInfo;
+      Object localObject = new StringBuilder().append("updateSourceCIImage: thread = ");
+      Thread localThread = Thread.currentThread();
+      Intrinsics.checkExpressionValueIsNotNull(localThread, "Thread.currentThread()");
+      Log.d("sticker_size", localThread.getName());
+      paramTAVStickerRenderContext = (HashMap)observersOfContext.get(paramTAVStickerRenderContext);
+      if (paramTAVStickerRenderContext != null)
       {
-        Iterator localIterator = this.observers.entrySet().iterator();
-        while (localIterator.hasNext())
+        paramTAVStickerRenderContext = ((Map)paramTAVStickerRenderContext).entrySet().iterator();
+        while (paramTAVStickerRenderContext.hasNext())
         {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if ((localEntry.getValue() != null) && (((WeakReference)localEntry.getValue()).get() != null)) {
-            ((WSOverLayBlurManager.SourceImageObserver)((WeakReference)localEntry.getValue()).get()).onSourceImageUpdated(paramCIImage, paramRenderInfo);
+          localObject = (WeakReference)((Map.Entry)paramTAVStickerRenderContext.next()).getValue();
+          if (localObject != null)
+          {
+            localObject = (WSOverLayBlurManager.SourceImageObserver)((WeakReference)localObject).get();
+            if (localObject != null) {
+              ((WSOverLayBlurManager.SourceImageObserver)localObject).onSourceImageUpdated(paramCIImage, paramRenderInfo);
+            }
           }
         }
       }
+      return;
     }
     finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSOverLayBlurManager
  * JD-Core Version:    0.7.0.1
  */

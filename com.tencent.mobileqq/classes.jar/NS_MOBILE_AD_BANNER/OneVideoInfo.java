@@ -10,32 +10,32 @@ public final class OneVideoInfo
   extends JceStruct
 {
   static Map<String, String> cache_extendinfo = new HashMap();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
   public String clientkey = "";
-  public int commentCount;
+  public int commentCount = 0;
   public String coverurl = "";
-  public long createtime;
-  public Map<String, String> extendinfo;
-  public int filetype;
-  public int height;
-  public int ifLiked;
+  public long createtime = 0L;
+  public Map<String, String> extendinfo = null;
+  public int filetype = 0;
+  public int height = 0;
+  public int ifLiked = 0;
   public String likeKey = "";
-  public int likeNum;
+  public int likeNum = 0;
   public String lloc = "";
-  public byte playtype;
+  public byte playtype = 0;
   public String qqUrl = "";
   public String shuoid = "";
   public String sloc = "";
   public String toast = "";
   public String ugckey = "";
   public String videoid = "";
-  public int videostatus;
-  public long videotime;
-  public byte videotype;
+  public int videostatus = 0;
+  public long videotime = 0L;
+  public byte videotype = 0;
   public String videourl = "";
   public String weixinUrl = "";
-  public int width;
+  public int width = 0;
   
   static
   {

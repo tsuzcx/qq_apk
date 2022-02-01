@@ -2,12 +2,11 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.os.Handler;
 import android.widget.TextView;
-import asyp;
 
-public class FilePreviewActivity$9$3
+class FilePreviewActivity$9$3
   implements Runnable
 {
-  public FilePreviewActivity$9$3(asyp paramasyp) {}
+  FilePreviewActivity$9$3(FilePreviewActivity.9 param9) {}
   
   public void run()
   {
@@ -32,7 +31,7 @@ public class FilePreviewActivity$9$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.9.3
  * JD-Core Version:    0.7.0.1
  */

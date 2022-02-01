@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import atlf;
-import auea;
-import bhbx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -20,6 +19,8 @@ import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -30,6 +31,7 @@ import java.util.Iterator;
 import localpb.dataline.DatalineMsgData.MsgData;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="time,msgid")
+@KeepClassConstructor
 public class DataLineMsgRecord
   extends MessageRecord
   implements Cloneable
@@ -486,9 +488,9 @@ public class DataLineMsgRecord
         try
         {
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.fileMsgStatus = bhbx.a((byte[])localObject2);
+          paramDataLineMsgRecord.fileMsgStatus = Utils.a((byte[])localObject2);
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.nWeiyunSessionId = bhbx.a((byte[])localObject2);
+          paramDataLineMsgRecord.nWeiyunSessionId = Utils.a((byte[])localObject2);
           paramArrayOfByte = new byte[paramArrayOfByte.length - 16];
           ((ByteArrayInputStream)localObject1).read(paramArrayOfByte);
           paramDataLineMsgRecord.msg = new String(paramArrayOfByte, "UTF-8");
@@ -506,7 +508,7 @@ public class DataLineMsgRecord
         localObject2 = new byte[paramArrayOfByte.length - 8];
         System.arraycopy(paramArrayOfByte, 0, localObject1, 0, 8);
         System.arraycopy(paramArrayOfByte, 8, localObject2, 0, localObject2.length);
-        paramDataLineMsgRecord.fileMsgStatus = bhbx.a((byte[])localObject1);
+        paramDataLineMsgRecord.fileMsgStatus = Utils.a((byte[])localObject1);
         paramDataLineMsgRecord.msg = new String((byte[])localObject2, "UTF-8");
         return;
       }
@@ -594,7 +596,7 @@ public class DataLineMsgRecord
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (FileUtils.fileExistsAndNotEmpty(this.path))
+    if (FileUtils.b(this.path))
     {
       bool1 = bool2;
       if (this.strMoloKey == null) {
@@ -661,7 +663,7 @@ public class DataLineMsgRecord
     if (localFileManagerEntity == null)
     {
       localFileManagerEntity = new FileManagerEntity();
-      localFileManagerEntity.nSessionId = auea.a().longValue();
+      localFileManagerEntity.nSessionId = FileManagerUtil.a().longValue();
       this.entityID = localFileManagerEntity.nSessionId;
       switch (this.nOpType)
       {
@@ -694,7 +696,7 @@ public class DataLineMsgRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DataLineMsgRecord
  * JD-Core Version:    0.7.0.1
  */

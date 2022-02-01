@@ -28,7 +28,7 @@ class MobileQQ$5
     }
     ((AppRuntime)localObject1).init(this.this$0, MobileQQ.access$100(this.this$0), this.val$account);
     if (!this.this$0.getQQProcessName().endsWith(":video")) {
-      ((AppRuntime)localObject1).getService().msfSub.registerMsfService();
+      ((AppRuntime)localObject1).getRuntimeService().msfSub.registerMsfService();
     }
     if ((this.val$account != null) && (this.val$account.isLogined())) {
       if (this.val$cnrType == 2) {

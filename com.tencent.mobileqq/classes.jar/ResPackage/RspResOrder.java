@@ -14,8 +14,8 @@ public final class RspResOrder
   public String ButtonDesc = "";
   public String ButtonUrl = "";
   public String ErrMsg = "";
-  public int Ret;
-  public int SeqID;
+  public int Ret = 0;
+  public int SeqID = 0;
   public String Title = "";
   
   static

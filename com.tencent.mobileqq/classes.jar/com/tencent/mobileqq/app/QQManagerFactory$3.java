@@ -18,7 +18,6 @@ final class QQManagerFactory$3
     add(Integer.valueOf(QQManagerFactory.QIDIAN_MANAGER));
     add(Integer.valueOf(QQManagerFactory.AR_RESOURCE_MANAGER));
     add(Integer.valueOf(QQManagerFactory.PHOTO_PLUS_MANAGER));
-    add(Integer.valueOf(QQManagerFactory.FACE_MANAGER));
     add(Integer.valueOf(QQManagerFactory.DYNAMIC_AVATAR_MANAGER));
     add(Integer.valueOf(QQManagerFactory.QQSTORY_MANAGER));
     add(Integer.valueOf(QQManagerFactory.ART_FILTER_MANAGER));
@@ -34,14 +33,12 @@ final class QQManagerFactory$3
     add(Integer.valueOf(QQManagerFactory.READ_INJOY_REFRESH_MANAGER));
     add(Integer.valueOf(QQManagerFactory.READ_IN_JOY_OPERATION_MANAGER));
     add(Integer.valueOf(QQManagerFactory.ARPROMOTION_MANAGER));
-    add(Integer.valueOf(QQManagerFactory.HCE_PLUGIN_MANAGER));
     add(Integer.valueOf(QQManagerFactory.READINJOY_AD_MATERIAL_MANAGER));
-    add(Integer.valueOf(QQManagerFactory.QQ_NOTIFY_MANAGER));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQManagerFactory.3
  * JD-Core Version:    0.7.0.1
  */

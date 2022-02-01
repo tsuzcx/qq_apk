@@ -7,7 +7,7 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.c.k.c;
+import com.tencent.mobileqq.msf.core.c.j.c;
 import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;

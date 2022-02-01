@@ -2,11 +2,11 @@ package com.tencent.mobileqq.transfile.quic.report;
 
 public class QuicNetReport$Stats
 {
-  public int mByteRecv;
-  public int mEstimatedBandwidth;
-  public int mLostRate;
-  public int mRttMean;
-  public int mSrttUs;
+  public int mByteRecv = 0;
+  public int mEstimatedBandwidth = 0;
+  public int mLostRate = 0;
+  public int mRttMean = 0;
+  public int mSrttUs = 0;
   public byte[] mSrvMessage;
   
   public boolean isValid()

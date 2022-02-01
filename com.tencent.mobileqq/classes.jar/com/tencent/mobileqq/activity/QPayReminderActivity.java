@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -14,10 +13,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdla;
 import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -41,7 +40,7 @@ public class QPayReminderActivity
         Object localObject1 = getIntent();
         if (((Intent)localObject1).getIntExtra("URGENCY", 1) == 1)
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847263);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847620);
           this.jdField_a_of_type_Int = ((Intent)localObject1).getIntExtra("TEMPLATE", 1);
           localObject1 = new JSONObject(((Intent)localObject1).getStringExtra("CONTENT"));
           setTitle(((JSONObject)localObject1).getJSONObject("title").getString("text"));
@@ -67,7 +66,7 @@ public class QPayReminderActivity
         }
         else
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847262);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847619);
           continue;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
@@ -97,12 +96,12 @@ public class QPayReminderActivity
   {
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561992);
-    setLeftButton(2131690845, this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372492));
+    super.setContentView(2131562129);
+    setLeftButton(2131690946, this);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372802));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372486));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372485));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372796));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372795));
     if (!a()) {
       finish();
     }
@@ -112,7 +111,7 @@ public class QPayReminderActivity
   public void finish()
   {
     super.finish();
-    overridePendingTransition(2130771990, 2130772301);
+    overridePendingTransition(2130771992, 2130772316);
   }
   
   public void onClick(View paramView)
@@ -131,7 +130,7 @@ public class QPayReminderActivity
     label92:
     for (int i = 1;; i = 2)
     {
-      bdla.b((QQAppInterface)localObject, "CliOper", "", "", "0X8004B3F", "0X8004B3F", 0, i, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
+      ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X8004B3F", "0X8004B3F", 0, i, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       finish();
@@ -148,7 +147,7 @@ public class QPayReminderActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QPayReminderActivity
  * JD-Core Version:    0.7.0.1
  */

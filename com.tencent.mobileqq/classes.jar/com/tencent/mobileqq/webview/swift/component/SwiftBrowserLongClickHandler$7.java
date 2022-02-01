@@ -2,15 +2,14 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.os.Bundle;
 import android.util.Base64;
-import bigy;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 
-public class SwiftBrowserLongClickHandler$7
+class SwiftBrowserLongClickHandler$7
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$7(bigy parambigy, String paramString, IX5WebViewExtension paramIX5WebViewExtension) {}
+  SwiftBrowserLongClickHandler$7(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler, String paramString, IX5WebViewExtension paramIX5WebViewExtension) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class SwiftBrowserLongClickHandler$7
     {
       try
       {
-        localObject2 = FileUtils.readFile(this.jdField_a_of_type_JavaLangString);
+        localObject2 = FileUtils.a(this.jdField_a_of_type_JavaLangString);
         if (localObject2 == null) {
           continue;
         }
@@ -52,7 +51,7 @@ public class SwiftBrowserLongClickHandler$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.7
  * JD-Core Version:    0.7.0.1
  */

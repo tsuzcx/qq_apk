@@ -3,19 +3,20 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.TimeManager;
-import com.tencent.mobileqq.data.BaseRecentUser;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.TroopAssistantDataStub;
 import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
 import com.tencent.mobileqq.imcore.message.QQMessageFacadeStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.color;
 import com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.ContactUtilsProxy;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.QQTextProxy;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.TroopAssistantManagerProxy;
+import com.tencent.mobileqq.imcore.proxy.msg.QQTextProxy;
+import com.tencent.mobileqq.imcore.proxy.troop.TroopAssistantManagerProxy;
+import com.tencent.mobileqq.imcore.proxy.utils.ContactUtilsProxy;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentItemTroopAssistantBaseData
@@ -23,33 +24,33 @@ public class RecentItemTroopAssistantBaseData
 {
   public static final String TAG = "RecentItemTroopAssistant";
   
-  public RecentItemTroopAssistantBaseData(BaseRecentUser paramBaseRecentUser)
+  public RecentItemTroopAssistantBaseData(RecentUser paramRecentUser)
   {
-    super(paramBaseRecentUser);
+    super(paramRecentUser);
     this.mUnreadFlag = 0;
   }
   
-  private void processEmptyContent(Context paramContext, MsgSummary paramMsgSummary)
+  private void a(Context paramContext, MsgSummary paramMsgSummary)
   {
     if ((TextUtils.isEmpty(paramMsgSummary.strContent)) && (TextUtils.isEmpty(paramMsgSummary.suffix)))
     {
       paramMsgSummary.strPrefix = null;
-      paramMsgSummary.strContent = paramContext.getString(IMCoreResourceRoute.Resource.string.troop_assistant_detail);
+      paramMsgSummary.strContent = paramContext.getString(IMCoreResourceRoute.Resource.string.b);
     }
   }
   
-  private void processUnreadNumInner(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext, IMCoreMessageStub paramIMCoreMessageStub)
+  private void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, IMCoreMessageStub paramIMCoreMessageStub)
   {
     if (paramIMCoreMessageStub != null)
     {
-      this.mUnreadNum = RecentRoute.TroopAssistantManagerProxy.getTroopAssistantUnreadNum(paramIMCoreAppRuntime);
+      this.mUnreadNum = TroopAssistantManagerProxy.a(paramBaseQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.i("RecentItemTroopAssistant", 2, "mUnreadNum :" + this.mUnreadNum);
       }
       this.mDisplayTime = paramIMCoreMessageStub.getTime();
-      buildMessageBody(paramIMCoreMessageStub, 1, paramIMCoreAppRuntime, paramContext, this.msgSummary);
+      buildMessageBody(paramIMCoreMessageStub, 1, paramBaseQQAppInterface, paramContext, this.msgSummary);
       if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
-        this.mShowTime = TimeManager.getInstance().getMsgDisplayTime(getRecentUserUin(), this.mDisplayTime);
+        this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
       }
       return;
     }
@@ -57,55 +58,68 @@ public class RecentItemTroopAssistantBaseData
     this.mDisplayTime = 0L;
   }
   
-  public final void dealDraft(IMCoreAppRuntime paramIMCoreAppRuntime, MsgSummary paramMsgSummary)
+  public void a(Context paramContext)
+  {
+    if (this.mUnreadNum > 0)
+    {
+      this.mMsgExtroInfo = String.format(paramContext.getString(IMCoreResourceRoute.Resource.string.a), new Object[] { Integer.valueOf(this.mUnreadNum) });
+      this.mExtraInfoColor = paramContext.getResources().getColor(IMCoreResourceRoute.Resource.color.b);
+      return;
+    }
+    this.mMsgExtroInfo = "";
+  }
+  
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, IMCoreMessageStub paramIMCoreMessageStub, MsgSummary paramMsgSummary) {}
+  
+  public final void dealDraft(BaseQQAppInterface paramBaseQQAppInterface, MsgSummary paramMsgSummary)
   {
     if (paramMsgSummary != null)
     {
       paramMsgSummary.bShowDraft = false;
       paramMsgSummary.mDraft = null;
     }
-    Object localObject = paramIMCoreAppRuntime.getMessageFacade();
-    if (localObject == null) {}
-    TroopAssistantDataStub localTroopAssistantDataStub;
+    Object localObject1 = (IMessageFacade)paramBaseQQAppInterface.getRuntimeService(IMessageFacade.class, "");
+    if ((localObject1 == null) || (!(((IMessageFacade)localObject1).getQQMessageFacadeStub() instanceof QQMessageFacadeStub))) {}
+    Object localObject2;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            localObject2 = (QQMessageFacadeStub)((IMessageFacade)localObject1).getQQMessageFacadeStub();
+          } while (localObject2 == null);
+          localObject1 = TroopAssistantManagerProxy.a(paramBaseQQAppInterface);
+        } while ((localObject1 == null) || (TextUtils.isEmpty(((TroopAssistantDataStub)localObject1).getTroopUin())) || (this.mDisplayTime >= ((TroopAssistantDataStub)localObject1).getLastdrafttime()));
+        localObject2 = ((QQMessageFacadeStub)localObject2).getDraftSummaryInfo(((TroopAssistantDataStub)localObject1).getTroopUin(), 1);
+      } while ((localObject2 == null) || (TextUtils.isEmpty(((DraftSummaryInfo)localObject2).getSummary())));
+      this.mDisplayTime = ((DraftSummaryInfo)localObject2).getTime();
+      localObject2 = ((DraftSummaryInfo)localObject2).getSummary();
+      paramBaseQQAppInterface = ContactUtilsProxy.b(paramBaseQQAppInterface, ((TroopAssistantDataStub)localObject1).getTroopUin(), true);
+    } while (paramMsgSummary == null);
+    paramMsgSummary.bShowDraft = true;
+    paramMsgSummary.mDraft = QQTextProxy.a(paramBaseQQAppInterface + ": " + (String)localObject2, 3, 16);
+  }
+  
+  public final void dealStatus(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    this.mStatus = 0;
+    TroopAssistantDataStub localTroopAssistantDataStub = TroopAssistantManagerProxy.a(paramBaseQQAppInterface);
+    if ((localTroopAssistantDataStub == null) || (TextUtils.isEmpty(localTroopAssistantDataStub.getTroopUin()))) {}
     do
     {
       do
       {
         return;
-        localTroopAssistantDataStub = RecentRoute.TroopAssistantManagerProxy.getFirstData(paramIMCoreAppRuntime);
-      } while ((localTroopAssistantDataStub == null) || (TextUtils.isEmpty(localTroopAssistantDataStub.getTroopUin())) || (this.mDisplayTime >= localTroopAssistantDataStub.getLastdrafttime()));
-      localObject = ((QQMessageFacadeStub)localObject).getDraftSummaryInfo(localTroopAssistantDataStub.getTroopUin(), 1);
-    } while ((localObject == null) || (TextUtils.isEmpty(((DraftSummaryInfo)localObject).getSummary())));
-    this.mDisplayTime = ((DraftSummaryInfo)localObject).getTime();
-    paramMsgSummary.bShowDraft = true;
-    localObject = ((DraftSummaryInfo)localObject).getSummary();
-    paramIMCoreAppRuntime = RecentRoute.ContactUtilsProxy.getTroopName(paramIMCoreAppRuntime, localTroopAssistantDataStub.getTroopUin(), true);
-    paramMsgSummary.mDraft = RecentRoute.QQTextProxy.generalQQText(paramIMCoreAppRuntime + ": " + (String)localObject, 3, 16);
-  }
-  
-  public void dealMsgAttention(Context paramContext)
-  {
-    if (this.mUnreadNum > 0)
-    {
-      this.mMsgExtroInfo = String.format(paramContext.getString(IMCoreResourceRoute.Resource.string.troop_assistant_num_unreadmsg), new Object[] { Integer.valueOf(this.mUnreadNum) });
-      this.mExtraInfoColor = paramContext.getResources().getColor(IMCoreResourceRoute.Resource.color.skin_gray2_theme_version2);
-      return;
-    }
-    this.mMsgExtroInfo = "";
-  }
-  
-  public final void dealStatus(IMCoreAppRuntime paramIMCoreAppRuntime)
-  {
-    this.mStatus = 0;
-    TroopAssistantDataStub localTroopAssistantDataStub = RecentRoute.TroopAssistantManagerProxy.getFirstData(paramIMCoreAppRuntime);
-    if ((localTroopAssistantDataStub == null) || (TextUtils.isEmpty(localTroopAssistantDataStub.getTroopUin()))) {}
-    do
-    {
-      return;
-      paramIMCoreAppRuntime = paramIMCoreAppRuntime.getMessageFacade();
-    } while (paramIMCoreAppRuntime == null);
-    paramIMCoreAppRuntime = paramIMCoreAppRuntime.getDraftSummaryInfo(localTroopAssistantDataStub.getTroopUin(), 1);
-    if ((paramIMCoreAppRuntime != null) && (!TextUtils.isEmpty(paramIMCoreAppRuntime.getSummary())))
+        paramBaseQQAppInterface = (IMessageFacade)paramBaseQQAppInterface.getRuntimeService(IMessageFacade.class, "");
+      } while ((paramBaseQQAppInterface == null) || (!(paramBaseQQAppInterface.getQQMessageFacadeStub() instanceof QQMessageFacadeStub)));
+      paramBaseQQAppInterface = (QQMessageFacadeStub)paramBaseQQAppInterface.getQQMessageFacadeStub();
+    } while (paramBaseQQAppInterface == null);
+    paramBaseQQAppInterface = paramBaseQQAppInterface.getDraftSummaryInfo(localTroopAssistantDataStub.getTroopUin(), 1);
+    if ((paramBaseQQAppInterface != null) && (!TextUtils.isEmpty(paramBaseQQAppInterface.getSummary())))
     {
       this.mStatus = 4;
       return;
@@ -113,43 +127,44 @@ public class RecentItemTroopAssistantBaseData
     this.mStatus = 0;
   }
   
-  public void extraUpdate(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext, MsgSummary paramMsgSummary)
+  public void extraUpdate(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    processEmptyContent(paramContext, paramMsgSummary);
-    dealStatus(paramIMCoreAppRuntime);
-    dealDraft(paramIMCoreAppRuntime, paramMsgSummary);
-    super.extraUpdate(paramIMCoreAppRuntime, paramContext, paramMsgSummary);
+    a(paramContext, paramMsgSummary);
+    dealStatus(paramBaseQQAppInterface);
+    dealDraft(paramBaseQQAppInterface, paramMsgSummary);
+    super.extraUpdate(paramBaseQQAppInterface, paramContext, paramMsgSummary);
     if (this.mUnreadNum > 0) {
       this.mLastMsg = "";
     }
   }
   
-  public final void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  public final void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
-    if ((paramIMCoreAppRuntime == null) || (paramContext == null)) {
+    if ((paramBaseQQAppInterface == null) || (paramContext == null)) {}
+    do
+    {
+      return;
+      if (TextUtils.isEmpty(this.mTitleName)) {
+        this.mTitleName = paramContext.getString(IMCoreResourceRoute.Resource.string.c);
+      }
+      localObject = (IMessageFacade)paramBaseQQAppInterface.getRuntimeService(IMessageFacade.class, "");
+    } while ((localObject == null) || (!(((IMessageFacade)localObject).getQQMessageFacadeStub() instanceof QQMessageFacadeStub)));
+    Object localObject = (QQMessageFacadeStub)((IMessageFacade)localObject).getQQMessageFacadeStub();
+    TroopAssistantDataStub localTroopAssistantDataStub;
+    if (localObject != null)
+    {
+      localTroopAssistantDataStub = TroopAssistantManagerProxy.a(paramBaseQQAppInterface);
+      if (localTroopAssistantDataStub == null) {}
+    }
+    for (localObject = ((QQMessageFacadeStub)localObject).getLastMessage(localTroopAssistantDataStub.getTroopUin(), 1);; localObject = null)
+    {
+      this.msgSummary = getMsgSummaryTemp();
+      a(paramBaseQQAppInterface, paramContext, (IMCoreMessageStub)localObject);
+      super.update(paramBaseQQAppInterface, paramContext);
+      a(paramBaseQQAppInterface, paramContext, (IMCoreMessageStub)localObject, this.msgSummary);
       return;
     }
-    if (TextUtils.isEmpty(this.mTitleName)) {
-      this.mTitleName = paramContext.getString(IMCoreResourceRoute.Resource.string.troop_assistant);
-    }
-    Object localObject2 = null;
-    QQMessageFacadeStub localQQMessageFacadeStub = paramIMCoreAppRuntime.getMessageFacade();
-    Object localObject1 = localObject2;
-    if (localQQMessageFacadeStub != null)
-    {
-      TroopAssistantDataStub localTroopAssistantDataStub = RecentRoute.TroopAssistantManagerProxy.getFirstData(paramIMCoreAppRuntime);
-      localObject1 = localObject2;
-      if (localTroopAssistantDataStub != null) {
-        localObject1 = localQQMessageFacadeStub.getLastMessage(localTroopAssistantDataStub.getTroopUin(), 1);
-      }
-    }
-    this.msgSummary = getMsgSummaryTemp();
-    processUnreadNumInner(paramIMCoreAppRuntime, paramContext, (IMCoreMessageStub)localObject1);
-    super.update(paramIMCoreAppRuntime, paramContext);
-    update(paramIMCoreAppRuntime, paramContext, (IMCoreMessageStub)localObject1, this.msgSummary);
   }
-  
-  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext, IMCoreMessageStub paramIMCoreMessageStub, MsgSummary paramMsgSummary) {}
 }
 
 

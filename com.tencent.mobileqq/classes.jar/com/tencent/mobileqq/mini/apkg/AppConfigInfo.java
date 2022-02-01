@@ -155,7 +155,7 @@ public class AppConfigInfo
   
   public String getRootPath(String paramString)
   {
-    if (StringUtil.isEmpty(paramString)) {
+    if (StringUtil.a(paramString)) {
       return "";
     }
     String str2 = AppBrandUtil.getUrlWithoutParams(paramString);

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class AIOSendReq
   extends JceStruct
 {
-  public int iSend;
+  public int iSend = 0;
   public String sAid = "";
   public String sFriendUin = "";
   public String sUin = "";

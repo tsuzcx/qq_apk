@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahfz;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,10 +7,10 @@ import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
 
-public class ShortVideoItemBuilder$8
+class ShortVideoItemBuilder$8
   implements Runnable
 {
-  public ShortVideoItemBuilder$8(ahfz paramahfz) {}
+  ShortVideoItemBuilder$8(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
   
   public void run()
   {
@@ -39,7 +38,7 @@ public class ShortVideoItemBuilder$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

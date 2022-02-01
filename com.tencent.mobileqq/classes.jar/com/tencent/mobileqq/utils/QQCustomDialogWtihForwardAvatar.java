@@ -15,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.qphone.base.util.QLog;
@@ -27,48 +27,27 @@ import java.util.List;
 public class QQCustomDialogWtihForwardAvatar
   extends QQCustomDialog
 {
-  private static final String TAG = "QQCustomDialogWithForwardAvatar";
-  int mImgvHeadWidth;
-  RelativeLayout mRlForwardTarget;
-  RelativeLayout mRlMultiForwardTarget;
-  RelativeLayout mRlTitle;
-  TextView mTxvTitle;
+  TextView a;
+  RelativeLayout b;
+  RelativeLayout c;
+  RelativeLayout d;
+  int i;
   
   public QQCustomDialogWtihForwardAvatar(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    this.mImgvHeadWidth = AIOUtils.dp2px(35.0F, paramContext.getResources());
+    this.i = AIOUtils.a(35.0F, paramContext.getResources());
   }
   
-  public void adjustMultiForwardMargins()
-  {
-    if (this.mRlMultiForwardTarget == null) {
-      return;
-    }
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mRlMultiForwardTarget.getLayoutParams();
-    localMarginLayoutParams.topMargin = AIOUtils.dp2px(2.0F, getContext().getResources());
-    this.mRlMultiForwardTarget.setLayoutParams(localMarginLayoutParams);
-  }
-  
-  public void dismiss()
-  {
-    if (hasPreViewInDialog())
-    {
-      removePreviewView();
-      return;
-    }
-    super.dismiss();
-  }
-  
-  public float getElasticScaleRation(Activity paramActivity, float paramFloat)
+  public float a(Activity paramActivity, float paramFloat)
   {
     Display localDisplay = paramActivity.getWindowManager().getDefaultDisplay();
     float f2 = localDisplay.getWidth();
-    int i = paramActivity.getResources().getDimensionPixelSize(2131296897);
+    int j = paramActivity.getResources().getDimensionPixelSize(2131296917);
     float f1 = paramFloat;
-    if (i > f2 * paramFloat)
+    if (j > f2 * paramFloat)
     {
-      f2 = i / localDisplay.getWidth();
+      f2 = j / localDisplay.getWidth();
       f1 = paramFloat;
       if (f2 > paramFloat)
       {
@@ -81,41 +60,24 @@ public class QQCustomDialogWtihForwardAvatar
     return f1;
   }
   
-  public void setAvatarTitle(String paramString)
-  {
-    this.title.setVisibility(8);
-    this.mRlTitle.setVisibility(0);
-    ((TextView)this.mRlTitle.findViewById(2131380385)).setText(paramString);
-  }
-  
-  @TargetApi(11)
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    this.mRlTitle = ((RelativeLayout)findViewById(2131376888));
-    this.mTxvTitle = ((TextView)this.mRlTitle.findViewById(2131380388));
-    this.mRlForwardTarget = ((RelativeLayout)this.mRlTitle.findViewById(2131368112));
-    this.mRlMultiForwardTarget = ((RelativeLayout)this.mRlTitle.findViewById(2131368113));
-  }
-  
-  public void showForwardTargetAvatar(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, int paramInt, String paramString2, boolean paramBoolean)
+  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, int paramInt, String paramString2, boolean paramBoolean)
   {
     QLog.i("Forward.Dialog", 1, "uin: " + paramString1 + " uinType: " + paramInt + " titleStr: " + paramString2);
-    this.mRlTitle.setVisibility(0);
+    this.b.setVisibility(0);
     this.title.setVisibility(8);
-    this.mRlMultiForwardTarget.setVisibility(8);
-    this.mRlForwardTarget.setVisibility(0);
-    this.mTxvTitle.setText(paramString2);
-    ImageView localImageView1 = (ImageView)this.mRlTitle.findViewById(2131368764);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.mRlTitle.findViewById(2131379041);
-    ImageView localImageView2 = (ImageView)this.mRlTitle.findViewById(2131368762);
+    this.d.setVisibility(8);
+    this.c.setVisibility(0);
+    this.a.setText(paramString2);
+    ImageView localImageView1 = (ImageView)this.b.findViewById(2131368996);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.b.findViewById(2131379472);
+    ImageView localImageView2 = (ImageView)this.b.findViewById(2131368994);
     QQCustomDialogWtihForwardAvatar.1 local1 = new QQCustomDialogWtihForwardAvatar.1(this, paramQQAppInterface, paramString2, paramString1, paramInt);
     paramActivity = new QQCustomDialogWtihForwardAvatar.2(this, paramInt, paramQQAppInterface, paramActivity, paramString1, paramString2);
     if ((paramInt == 0) || (paramInt == 1000))
     {
       localImageView1.setImageDrawable(FaceDrawable.getFaceDrawable(paramQQAppInterface, 1, paramString1));
-      this.mRlForwardTarget.setOnClickListener(paramActivity);
-      this.mRlForwardTarget.setBackgroundResource(2130840193);
+      this.c.setOnClickListener(paramActivity);
+      this.c.setBackgroundResource(2130840284);
       return;
     }
     if (paramInt == 1)
@@ -126,7 +88,7 @@ public class QQCustomDialogWtihForwardAvatar
         localImageView1.setImageDrawable(paramQQAppInterface);
         localImageView1.setOnClickListener(local1);
         localRelativeLayout.setOnClickListener(paramActivity);
-        localRelativeLayout.setBackgroundResource(2130840193);
+        localRelativeLayout.setBackgroundResource(2130840284);
         return;
       }
     }
@@ -135,30 +97,30 @@ public class QQCustomDialogWtihForwardAvatar
       localImageView1.setImageDrawable(FaceDrawable.getFaceDrawable(paramQQAppInterface, 101, paramString1));
       localImageView1.setOnClickListener(local1);
       localRelativeLayout.setOnClickListener(paramActivity);
-      localRelativeLayout.setBackgroundResource(2130840193);
+      localRelativeLayout.setBackgroundResource(2130840284);
       return;
     }
     if (paramInt == 1006)
     {
       localImageView1.setImageDrawable(FaceDrawable.getFaceDrawable(paramQQAppInterface, 11, paramString1));
-      this.mRlForwardTarget.setOnClickListener(paramActivity);
-      this.mRlForwardTarget.setBackgroundResource(2130840193);
+      this.c.setOnClickListener(paramActivity);
+      this.c.setBackgroundResource(2130840284);
       return;
     }
     if (AppConstants.DATALINE_PC_UIN.equals(paramString1))
     {
-      localImageView1.setImageResource(2130844186);
+      localImageView1.setImageResource(2130844376);
       localImageView1.setOnClickListener(local1);
-      this.mRlForwardTarget.setOnClickListener(paramActivity);
-      this.mRlForwardTarget.setBackgroundResource(2130840193);
+      this.c.setOnClickListener(paramActivity);
+      this.c.setBackgroundResource(2130840284);
       return;
     }
     if (AppConstants.DATALINE_IPAD_UIN.equals(paramString1))
     {
-      localImageView1.setImageResource(2130844184);
+      localImageView1.setImageResource(2130844371);
       localImageView1.setOnClickListener(local1);
-      this.mRlForwardTarget.setOnClickListener(paramActivity);
-      this.mRlForwardTarget.setBackgroundResource(2130840193);
+      this.c.setOnClickListener(paramActivity);
+      this.c.setBackgroundResource(2130840284);
       return;
     }
     localImageView2.setVisibility(8);
@@ -166,23 +128,23 @@ public class QQCustomDialogWtihForwardAvatar
   }
   
   @TargetApi(16)
-  public void showForwardTargetAvatar(QQAppInterface paramQQAppInterface, Activity paramActivity, List<ResultRecord> paramList, boolean paramBoolean)
+  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, List<ResultRecord> paramList, boolean paramBoolean)
   {
-    this.mRlTitle.setVisibility(0);
-    this.mRlMultiForwardTarget.setVisibility(0);
+    this.b.setVisibility(0);
+    this.d.setVisibility(0);
     this.title.setVisibility(8);
-    this.mRlForwardTarget.setVisibility(8);
-    ((TextView)this.mRlTitle.findViewById(2131380385)).setText(anvx.a(2131709650));
-    GridView localGridView = (GridView)this.mRlTitle.findViewById(2131367975);
+    this.c.setVisibility(8);
+    ((TextView)this.b.findViewById(2131380828)).setText(HardCodeUtil.a(2131710166));
+    GridView localGridView = (GridView)this.b.findViewById(2131368183);
     localGridView.setNumColumns(5);
-    localGridView.setHorizontalSpacing((AIOUtils.dp2px(236.0F, getContext().getResources()) - this.mImgvHeadWidth * 5) / 5);
-    localGridView.setVerticalSpacing(AIOUtils.dp2px(10.0F, getContext().getResources()));
+    localGridView.setHorizontalSpacing((AIOUtils.a(236.0F, getContext().getResources()) - this.i * 5) / 5);
+    localGridView.setVerticalSpacing(AIOUtils.a(10.0F, getContext().getResources()));
     Object localObject = (RelativeLayout.LayoutParams)localGridView.getLayoutParams();
     if (Build.VERSION.SDK_INT >= 16) {}
-    for (int i = localGridView.getVerticalSpacing();; i = 0)
+    for (int j = localGridView.getVerticalSpacing();; j = 0)
     {
       if (paramList.size() <= 5) {}
-      for (((RelativeLayout.LayoutParams)localObject).height = this.mImgvHeadWidth;; ((RelativeLayout.LayoutParams)localObject).height = (i + this.mImgvHeadWidth * 2))
+      for (((RelativeLayout.LayoutParams)localObject).height = this.i;; ((RelativeLayout.LayoutParams)localObject).height = (j + this.i * 2))
       {
         localGridView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         localGridView.setFocusable(false);
@@ -194,6 +156,43 @@ public class QQCustomDialogWtihForwardAvatar
         return;
       }
     }
+  }
+  
+  public void c()
+  {
+    if (this.d == null) {
+      return;
+    }
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.d.getLayoutParams();
+    localMarginLayoutParams.topMargin = AIOUtils.a(2.0F, getContext().getResources());
+    this.d.setLayoutParams(localMarginLayoutParams);
+  }
+  
+  public void c(String paramString)
+  {
+    this.title.setVisibility(8);
+    this.b.setVisibility(0);
+    ((TextView)this.b.findViewById(2131380828)).setText(paramString);
+  }
+  
+  public void dismiss()
+  {
+    if (hasPreViewInDialog())
+    {
+      removePreviewView();
+      return;
+    }
+    super.dismiss();
+  }
+  
+  @TargetApi(11)
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    this.b = ((RelativeLayout)findViewById(2131377295));
+    this.a = ((TextView)this.b.findViewById(2131380831));
+    this.c = ((RelativeLayout)this.b.findViewById(2131368332));
+    this.d = ((RelativeLayout)this.b.findViewById(2131368333));
   }
 }
 

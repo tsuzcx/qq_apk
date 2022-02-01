@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.fragment;
 
 import android.os.Handler;
-import auxn;
-import awtz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 import mqq.os.MqqHandler;
 
-public class QQSettingChatOperationFragment$2$1
+class QQSettingChatOperationFragment$2$1
   implements Runnable
 {
-  public QQSettingChatOperationFragment$2$1(auxn paramauxn) {}
+  QQSettingChatOperationFragment$2$1(QQSettingChatOperationFragment.2 param2) {}
   
   public void run()
   {
     QQSettingChatOperationFragment.a(this.a.a).getMsgHandler().d(true);
-    QQSettingChatOperationFragment.a(this.a.a).getMessageFacade().clearRecentUserList();
-    awtz.a().j(QQSettingChatOperationFragment.a(this.a.a));
+    QQSettingChatOperationFragment.a(this.a.a).getMessageFacade().h();
+    TroopAssistantManager.a().j(QQSettingChatOperationFragment.a(this.a.a));
     this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
     MqqHandler localMqqHandler = QQSettingChatOperationFragment.a(this.a.a).getHandler(Conversation.class);
     if (localMqqHandler != null) {
@@ -28,7 +27,7 @@ public class QQSettingChatOperationFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

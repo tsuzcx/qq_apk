@@ -9,12 +9,12 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
-import bdlv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.tools.ThreadTraceHelper;
 import java.io.File;
 import java.io.IOException;
 
@@ -30,7 +30,7 @@ public class LogcatUtil
   private static void a()
   {
     QLog.e("LogcatUtil", 1, "get trace file begin");
-    String str2 = bdlv.a(String.valueOf(100));
+    String str2 = ThreadTraceHelper.a(String.valueOf(100));
     StringBuilder localStringBuilder = new StringBuilder(50);
     localStringBuilder.append("AdditionInfo:0|");
     String str1 = "";
@@ -68,7 +68,7 @@ public class LogcatUtil
     localStringBuilder.append((String)localObject3).append("|").append((String)localObject1).append("|");
     localStringBuilder.append("|").append("pub").append("|").append(System.currentTimeMillis());
     localStringBuilder.append("|").append(100).append("|").append(Build.MODEL).append("|").append(Build.VERSION.RELEASE);
-    i = bdlv.a(BaseApplicationImpl.getContext(), str2, localStringBuilder.toString());
+    i = ThreadTraceHelper.a(BaseApplicationImpl.getContext(), str2, localStringBuilder.toString());
     if (i == 1)
     {
       bool = true;
@@ -76,7 +76,7 @@ public class LogcatUtil
       if (i == 1) {
         break label332;
       }
-      bool = bdlv.a(str2, localStringBuilder.toString());
+      bool = ThreadTraceHelper.a(str2, localStringBuilder.toString());
       QLog.e("LogcatUtil", 1, new Object[] { "get trace file fileName = ", str2, ",get java trace status=", Boolean.valueOf(bool) });
     }
   }
@@ -630,7 +630,7 @@ public class LogcatUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.logcat.LogcatUtil
  * JD-Core Version:    0.7.0.1
  */

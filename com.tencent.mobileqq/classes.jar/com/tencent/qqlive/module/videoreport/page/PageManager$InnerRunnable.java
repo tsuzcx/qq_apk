@@ -10,6 +10,7 @@ import com.tencent.qqlive.module.videoreport.utils.UIUtils;
 class PageManager$InnerRunnable
   implements Runnable
 {
+  int invokeFrom = 0;
   PageInfo pageInfo;
   
   private PageManager$InnerRunnable(PageManager paramPageManager) {}
@@ -43,13 +44,13 @@ class PageManager$InnerRunnable
     PageInfo localPageInfo = PageManager.access$500(this.this$0);
     PageManager.access$502(this.this$0, this.pageInfo);
     if (PageManager.access$700(this.this$0, this.pageInfo, localPageInfo, PageManager.access$400(this.this$0))) {
-      PageManager.access$800(this.this$0, this.pageInfo, localPageInfo);
+      PageManager.access$800(this.this$0, this.pageInfo, localPageInfo, this.invokeFrom);
     }
     for (;;)
     {
       PageManager.access$402(this.this$0, false);
       return;
-      PageManager.access$900(this.this$0, this.pageInfo);
+      PageManager.access$900(this.this$0, this.pageInfo, this.invokeFrom);
     }
   }
 }

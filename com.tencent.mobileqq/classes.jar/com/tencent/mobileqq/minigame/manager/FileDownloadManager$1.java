@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.os.SystemClock;
-import bkoh;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.HttpUtil;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,7 +13,7 @@ final class FileDownloadManager$1
   implements Callback
 {
   private long beginEnqueue = SystemClock.uptimeMillis();
-  private volatile boolean canceled;
+  private volatile boolean canceled = false;
   
   FileDownloadManager$1(String paramString1, DownloaderProxy.DownloadListener paramDownloadListener, String paramString2, long paramLong) {}
   
@@ -29,7 +29,7 @@ final class FileDownloadManager$1
     {
       FileDownloadManager.access$000().remove(this.val$url);
       return;
-      this.val$listener.onDownloadFailed(bkoh.a(paramIOException, -1), "request error:network");
+      this.val$listener.onDownloadFailed(HttpUtil.a(paramIOException, -1), "request error:network");
     }
   }
   
@@ -38,7 +38,7 @@ final class FileDownloadManager$1
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 76	com/tencent/mobileqq/minigame/manager/FileDownloadManager$1:canceled	Z
+    //   1: getfield 31	com/tencent/mobileqq/minigame/manager/FileDownloadManager$1:canceled	Z
     //   4: ifeq +4 -> 8
     //   7: return
     //   8: aload_2
@@ -78,7 +78,7 @@ final class FileDownloadManager$1
     //   85: aload 10
     //   87: invokevirtual 150	java/io/File:createNewFile	()Z
     //   90: pop
-    //   91: invokestatic 35	android/os/SystemClock:uptimeMillis	()J
+    //   91: invokestatic 37	android/os/SystemClock:uptimeMillis	()J
     //   94: lstore 6
     //   96: aload_2
     //   97: invokevirtual 154	okhttp3/Response:body	()Lokhttp3/ResponseBody;
@@ -159,11 +159,11 @@ final class FileDownloadManager$1
     //   243: invokevirtual 190	java/io/OutputStream:close	()V
     //   246: return
     //   247: astore_1
-    //   248: ldc 42
+    //   248: ldc 44
     //   250: iconst_1
     //   251: ldc 192
     //   253: aload_1
-    //   254: invokestatic 61	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   254: invokestatic 63	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   257: return
     //   258: astore_1
     //   259: aload_0
@@ -185,7 +185,7 @@ final class FileDownloadManager$1
     //   295: ifnull +8 -> 303
     //   298: aload 10
     //   300: invokevirtual 190	java/io/OutputStream:close	()V
-    //   303: invokestatic 35	android/os/SystemClock:uptimeMillis	()J
+    //   303: invokestatic 37	android/os/SystemClock:uptimeMillis	()J
     //   306: lstore 8
     //   308: aload_0
     //   309: getfield 22	com/tencent/mobileqq/minigame/manager/FileDownloadManager$1:val$listener	Lcom/tencent/qqmini/sdk/launcher/core/proxy/DownloaderProxy$DownloadListener;
@@ -212,7 +212,7 @@ final class FileDownloadManager$1
     //   350: lconst_0
     //   351: lconst_0
     //   352: lconst_0
-    //   353: invokestatic 35	android/os/SystemClock:uptimeMillis	()J
+    //   353: invokestatic 37	android/os/SystemClock:uptimeMillis	()J
     //   356: aload_0
     //   357: getfield 26	com/tencent/mobileqq/minigame/manager/FileDownloadManager$1:val$startTime	J
     //   360: lsub
@@ -234,54 +234,54 @@ final class FileDownloadManager$1
     //   394: getfield 20	com/tencent/mobileqq/minigame/manager/FileDownloadManager$1:val$url	Ljava/lang/String;
     //   397: invokevirtual 96	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   400: pop
-    //   401: ldc 42
+    //   401: ldc 44
     //   403: iconst_1
-    //   404: new 44	java/lang/StringBuilder
+    //   404: new 46	java/lang/StringBuilder
     //   407: dup
-    //   408: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   408: invokespecial 47	java/lang/StringBuilder:<init>	()V
     //   411: ldc 223
-    //   413: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   416: invokestatic 35	android/os/SystemClock:uptimeMillis	()J
+    //   413: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   416: invokestatic 37	android/os/SystemClock:uptimeMillis	()J
     //   419: aload_0
-    //   420: getfield 37	com/tencent/mobileqq/minigame/manager/FileDownloadManager$1:beginEnqueue	J
+    //   420: getfield 39	com/tencent/mobileqq/minigame/manager/FileDownloadManager$1:beginEnqueue	J
     //   423: lsub
     //   424: invokevirtual 226	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   427: ldc 228
-    //   429: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   429: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   432: lload 8
     //   434: lload 6
     //   436: lsub
     //   437: invokevirtual 226	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   440: ldc 230
-    //   442: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   442: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   445: aload_0
     //   446: getfield 20	com/tencent/mobileqq/minigame/manager/FileDownloadManager$1:val$url	Ljava/lang/String;
-    //   449: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   449: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   452: ldc 232
-    //   454: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   457: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   454: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   460: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   463: return
     //   464: astore_1
-    //   465: ldc 42
+    //   465: ldc 44
     //   467: iconst_1
     //   468: ldc 192
     //   470: aload_1
-    //   471: invokestatic 61	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   471: invokestatic 63	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   474: goto -181 -> 293
     //   477: astore_1
-    //   478: ldc 42
+    //   478: ldc 44
     //   480: iconst_1
     //   481: ldc 192
     //   483: aload_1
-    //   484: invokestatic 61	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   484: invokestatic 63	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   487: goto -184 -> 303
     //   490: astore_2
-    //   491: ldc 42
+    //   491: ldc 44
     //   493: iconst_1
     //   494: ldc 192
     //   496: aload_2
-    //   497: invokestatic 61	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   497: invokestatic 63	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   500: goto -262 -> 238
     //   503: astore_1
     //   504: aconst_null
@@ -297,18 +297,18 @@ final class FileDownloadManager$1
     //   524: aload_1
     //   525: athrow
     //   526: astore 10
-    //   528: ldc 42
+    //   528: ldc 44
     //   530: iconst_1
     //   531: ldc 192
     //   533: aload 10
-    //   535: invokestatic 61	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   535: invokestatic 63	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   538: goto -22 -> 516
     //   541: astore_2
-    //   542: ldc 42
+    //   542: ldc 44
     //   544: iconst_1
     //   545: ldc 192
     //   547: aload_2
-    //   548: invokestatic 61	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   548: invokestatic 63	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   551: goto -27 -> 524
     //   554: astore_1
     //   555: aload 10

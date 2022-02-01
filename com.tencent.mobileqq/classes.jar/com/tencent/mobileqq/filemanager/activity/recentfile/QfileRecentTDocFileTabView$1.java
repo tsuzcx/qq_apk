@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import aufn;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,7 +13,7 @@ class QfileRecentTDocFileTabView$1
   
   public void run()
   {
-    Object localObject = aufn.a(this.a.srvTime);
+    Object localObject = QfileTimeUtils.a(this.a.srvTime);
     if (!this.this$0.a.containsKey(localObject)) {
       this.this$0.a.put(localObject, new ArrayList());
     }
@@ -27,7 +27,7 @@ class QfileRecentTDocFileTabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView.1
  * JD-Core Version:    0.7.0.1
  */

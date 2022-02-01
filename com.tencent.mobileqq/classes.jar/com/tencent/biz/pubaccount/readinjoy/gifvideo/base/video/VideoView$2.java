@@ -1,21 +1,33 @@
 package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class VideoView$2
-  implements Runnable
+  extends Handler
 {
-  VideoView$2(VideoView paramVideoView) {}
-  
-  public void run()
+  VideoView$2(VideoView paramVideoView, Looper paramLooper)
   {
-    ThreadManager.getUIHandler().post(new VideoView.2.1(this));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if ((VideoView.access$100(this.a) != null) && (!VideoView.access$100(this.a).a())) {
+      this.a.updateSeekBarImmediately();
+    }
+    this.a.postPlayProgressMessage();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,7 @@
 package com.tencent.mobileqq.utils.httputils;
 
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
-import com.tencent.mobileqq.highway.utils.BdhUtils;
-import com.tencent.qphone.base.util.BaseApplication;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -324,11 +321,6 @@ public class PkgTools
     return Long.valueOf(paramString1).longValue();
   }
   
-  public static String byte2Unicode(byte[] paramArrayOfByte)
-  {
-    return byte2Unicode(paramArrayOfByte, 0, paramArrayOfByte.length);
-  }
-  
   public static String byte2Unicode(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     if ((paramInt1 + paramInt2 > paramArrayOfByte.length) || (paramInt2 % 2 != 0)) {
@@ -581,31 +573,31 @@ public class PkgTools
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 331	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   1: invokevirtual 328	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   4: getstatic 43	com/tencent/mobileqq/utils/httputils/PkgTools:PREFERRED_APN_URI	Landroid/net/Uri;
     //   7: aconst_null
     //   8: aconst_null
     //   9: aconst_null
     //   10: aconst_null
-    //   11: invokevirtual 337	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   11: invokevirtual 334	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   14: astore_1
     //   15: aload_1
     //   16: ifnonnull +17 -> 33
     //   19: aload_1
     //   20: ifnull +9 -> 29
     //   23: aload_1
-    //   24: invokeinterface 342 1 0
-    //   29: ldc_w 344
+    //   24: invokeinterface 339 1 0
+    //   29: ldc_w 341
     //   32: areturn
     //   33: aload_1
-    //   34: invokeinterface 348 1 0
+    //   34: invokeinterface 345 1 0
     //   39: pop
     //   40: aload_1
     //   41: aload_1
-    //   42: ldc_w 350
-    //   45: invokeinterface 353 2 0
-    //   50: invokeinterface 356 2 0
-    //   55: invokevirtual 358	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   42: ldc_w 347
+    //   45: invokeinterface 350 2 0
+    //   50: invokeinterface 353 2 0
+    //   55: invokevirtual 355	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   58: astore_0
     //   59: aload_0
     //   60: getstatic 47	com/tencent/mobileqq/utils/httputils/PkgTools:APN_TYPE_CTNET	Ljava/lang/String;
@@ -618,7 +610,7 @@ public class PkgTools
     //   75: aload_1
     //   76: ifnull +11 -> 87
     //   79: aload_1
-    //   80: invokeinterface 342 1 0
+    //   80: invokeinterface 339 1 0
     //   85: aload_0
     //   86: astore_2
     //   87: aload_2
@@ -664,8 +656,8 @@ public class PkgTools
     //   177: aload_0
     //   178: ifnull +41 -> 219
     //   181: aload_0
-    //   182: invokeinterface 342 1 0
-    //   187: ldc_w 344
+    //   182: invokeinterface 339 1 0
+    //   187: ldc_w 341
     //   190: astore_2
     //   191: goto -104 -> 87
     //   194: astore_0
@@ -674,7 +666,7 @@ public class PkgTools
     //   197: aload_1
     //   198: ifnull +9 -> 207
     //   201: aload_1
-    //   202: invokeinterface 342 1 0
+    //   202: invokeinterface 339 1 0
     //   207: aload_0
     //   208: athrow
     //   209: astore_0
@@ -683,10 +675,10 @@ public class PkgTools
     //   214: aload_1
     //   215: astore_0
     //   216: goto -39 -> 177
-    //   219: ldc_w 344
+    //   219: ldc_w 341
     //   222: astore_2
     //   223: goto -136 -> 87
-    //   226: ldc_w 344
+    //   226: ldc_w 341
     //   229: astore_0
     //   230: goto -157 -> 73
     // Local variable table:
@@ -765,7 +757,29 @@ public class PkgTools
   
   public static HttpURLConnection getConnectionWithXOnlineHost(String paramString1, String paramString2, int paramInt)
   {
-    return BdhUtils.getConnectionWithXOnlineHost(paramString1, paramString2, paramInt);
+    int i = "http://".length();
+    int j = paramString1.indexOf('/', i);
+    Object localObject;
+    if (j < 0)
+    {
+      paramString1 = paramString1.substring(i);
+      localObject = "";
+      if (paramInt == 80) {
+        break label125;
+      }
+    }
+    label125:
+    for (paramString2 = new URL("http://" + paramString2 + ":" + paramInt + (String)localObject);; paramString2 = new URL("http://" + paramString2 + (String)localObject))
+    {
+      paramString2 = (HttpURLConnection)paramString2.openConnection();
+      paramString2.setRequestProperty("X-Online-Host", paramString1);
+      return paramString2;
+      localObject = paramString1.substring(i, j);
+      String str = paramString1.substring(j);
+      paramString1 = (String)localObject;
+      localObject = str;
+      break;
+    }
   }
   
   public static short getHShortData(byte[] paramArrayOfByte, int paramInt)
@@ -789,14 +803,6 @@ public class PkgTools
   public static long getLongLongData(byte[] paramArrayOfByte, int paramInt)
   {
     return ((paramArrayOfByte[(paramInt + 4)] & 0xFF) << 56) + ((paramArrayOfByte[(paramInt + 5)] & 0xFF) << 48) + ((paramArrayOfByte[(paramInt + 6)] & 0xFF) << 40) + ((paramArrayOfByte[(paramInt + 7)] & 0xFF) << 32) + ((paramArrayOfByte[paramInt] & 0xFF) << 24) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16) + ((paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8) + (paramArrayOfByte[(paramInt + 3)] & 0xFF);
-  }
-  
-  public static NetworkInfo getNetWorkInfo()
-  {
-    if (conMgr == null) {
-      conMgr = (ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity");
-    }
-    return conMgr.getActiveNetworkInfo();
   }
   
   public static short getShortData(byte[] paramArrayOfByte, int paramInt)
@@ -1321,32 +1327,32 @@ public class PkgTools
     //   36: aload 7
     //   38: iconst_2
     //   39: iload_2
-    //   40: invokestatic 292	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   43: new 241	java/io/ByteArrayInputStream
+    //   40: invokestatic 289	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   43: new 238	java/io/ByteArrayInputStream
     //   46: dup
     //   47: aload 7
-    //   49: invokespecial 244	java/io/ByteArrayInputStream:<init>	([B)V
+    //   49: invokespecial 241	java/io/ByteArrayInputStream:<init>	([B)V
     //   52: astore_0
-    //   53: new 239	java/io/DataInputStream
+    //   53: new 236	java/io/DataInputStream
     //   56: dup
     //   57: aload_0
-    //   58: invokespecial 247	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   58: invokespecial 244	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   61: astore_3
     //   62: aload_3
-    //   63: invokevirtual 555	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   63: invokevirtual 546	java/io/DataInputStream:readUTF	()Ljava/lang/String;
     //   66: astore 5
     //   68: aload 5
     //   70: astore 4
     //   72: aload_3
     //   73: ifnull +7 -> 80
     //   76: aload_3
-    //   77: invokevirtual 556	java/io/DataInputStream:close	()V
+    //   77: invokevirtual 547	java/io/DataInputStream:close	()V
     //   80: aload 4
     //   82: astore_3
     //   83: aload_0
     //   84: ifnull +10 -> 94
     //   87: aload_0
-    //   88: invokevirtual 557	java/io/ByteArrayInputStream:close	()V
+    //   88: invokevirtual 548	java/io/ByteArrayInputStream:close	()V
     //   91: aload 4
     //   93: astore_3
     //   94: aload_3
@@ -1361,13 +1367,13 @@ public class PkgTools
     //   105: aload_3
     //   106: ifnull +7 -> 113
     //   109: aload_3
-    //   110: invokevirtual 556	java/io/DataInputStream:close	()V
+    //   110: invokevirtual 547	java/io/DataInputStream:close	()V
     //   113: aload 4
     //   115: astore_3
     //   116: aload_0
     //   117: ifnull -23 -> 94
     //   120: aload_0
-    //   121: invokevirtual 557	java/io/ByteArrayInputStream:close	()V
+    //   121: invokevirtual 548	java/io/ByteArrayInputStream:close	()V
     //   124: ldc 92
     //   126: areturn
     //   127: astore_0
@@ -1381,13 +1387,13 @@ public class PkgTools
     //   137: aload_3
     //   138: ifnull +7 -> 145
     //   141: aload_3
-    //   142: invokevirtual 556	java/io/DataInputStream:close	()V
+    //   142: invokevirtual 547	java/io/DataInputStream:close	()V
     //   145: aload 4
     //   147: astore_3
     //   148: aload_0
     //   149: ifnull -55 -> 94
     //   152: aload_0
-    //   153: invokevirtual 557	java/io/ByteArrayInputStream:close	()V
+    //   153: invokevirtual 548	java/io/ByteArrayInputStream:close	()V
     //   156: ldc 92
     //   158: areturn
     //   159: astore_0
@@ -1401,11 +1407,11 @@ public class PkgTools
     //   170: aload 4
     //   172: ifnull +8 -> 180
     //   175: aload 4
-    //   177: invokevirtual 556	java/io/DataInputStream:close	()V
+    //   177: invokevirtual 547	java/io/DataInputStream:close	()V
     //   180: aload_0
     //   181: ifnull +7 -> 188
     //   184: aload_0
-    //   185: invokevirtual 557	java/io/ByteArrayInputStream:close	()V
+    //   185: invokevirtual 548	java/io/ByteArrayInputStream:close	()V
     //   188: aload_3
     //   189: athrow
     //   190: astore_3

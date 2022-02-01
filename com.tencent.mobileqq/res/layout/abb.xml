@@ -17,7 +17,7 @@
                 <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ffff4060" android:ellipsize="end" android:gravity="left" android:layout_gravity="bottom" android:id="@id/ep2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:includeFontPadding="false" android:layout_alignParentBottom="true" />
             </RelativeLayout>
         </LinearLayout>
-        <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView android:layout_gravity="bottom" android:id="@id/k68" android:layout_width="fill_parent" android:layout_height="31.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+        <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView android:layout_gravity="bottom" android:id="@id/kb2" android:layout_width="fill_parent" android:layout_height="31.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
     </LinearLayout>
     <ImageView android:id="@id/cz8" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="33.0dip" android:layout_marginRight="22.0dip" android:src="@drawable/dpj" android:scaleType="center" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
 </RelativeLayout>

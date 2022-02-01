@@ -13,16 +13,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import avnf;
-import avng;
-import avni;
-import bldq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.OverScroller;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -43,8 +40,8 @@ public class HotPicTab
   int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new avnf(this);
-  avng jdField_a_of_type_Avng;
+  private Handler jdField_a_of_type_AndroidOsHandler = new HotPicTab.1(this);
+  HotPicTab.HotPicTabAdapter jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab$HotPicTabAdapter;
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
   private int jdField_b_of_type_Int = -1;
@@ -59,8 +56,8 @@ public class HotPicTab
     f = (int)(4.0F * localResources.getDisplayMetrics().density + 0.5F);
     g = 14;
     jdField_b_of_type_Float = localResources.getDisplayMetrics().density;
-    h = localResources.getColor(2131167034);
-    i = localResources.getColor(2131167026);
+    h = localResources.getColor(2131167041);
+    i = localResources.getColor(2131167033);
   }
   
   public HotPicTab(Context paramContext, AttributeSet paramAttributeSet)
@@ -85,7 +82,7 @@ public class HotPicTab
     if (j > this.mMaxX) {
       return 1;
     }
-    this.mScroller.a(this.mNextX, 0, paramInt, 0, 20);
+    this.mScroller.startScroll(this.mNextX, 0, paramInt, 0, 20);
     setCurrentScrollState(4098);
     requestLayout();
     return 0;
@@ -93,9 +90,9 @@ public class HotPicTab
   
   public HotPicTagInfo a()
   {
-    if (this.jdField_a_of_type_Avng != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab$HotPicTabAdapter != null)
     {
-      Object localObject = this.jdField_a_of_type_Avng.a;
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab$HotPicTabAdapter.a;
       if (((List)localObject).size() > this.mCurrentlySelectedAdapterIndex)
       {
         localObject = (HotPicTagInfo)((List)localObject).get(this.mCurrentlySelectedAdapterIndex);
@@ -112,7 +109,7 @@ public class HotPicTab
     setAdapter(null);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     setOnItemClickListener(null);
-    this.jdField_a_of_type_Avng = null;
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab$HotPicTabAdapter = null;
     this.jdField_a_of_type_JavaUtilSet.clear();
   }
   
@@ -122,7 +119,7 @@ public class HotPicTab
     if (ThemeUtil.isNowThemeIsNight(null, false, null)) {}
     Iterator localIterator;
     HotPicTagInfo localHotPicTagInfo;
-    for (int j = 2131165373;; j = 2131167378)
+    for (int j = 2131165373;; j = 2131167390)
     {
       setBackgroundResource(j);
       paramList = new ArrayList(paramList);
@@ -153,9 +150,9 @@ public class HotPicTab
         this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
       }
     }
-    this.jdField_a_of_type_Avng = new avng(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab$HotPicTabAdapter = new HotPicTab.HotPicTabAdapter(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
     this.jdField_a_of_type_Int = paramInt;
-    setAdapter(this.jdField_a_of_type_Avng);
+    setAdapter(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab$HotPicTabAdapter);
   }
   
   public void dispatchDraw(Canvas paramCanvas)
@@ -179,7 +176,7 @@ public class HotPicTab
         localView = getSelectedView();
         if ((localView != null) && (localView.getTag() != null))
         {
-          localObject = ((avni)localView.getTag()).a;
+          localObject = ((HotPicTab.ViewHolder)localView.getTag()).a;
           n = (int)(localView.getLeft() + ((TextView)localObject).getLeft() - jdField_b_of_type_Float * 5.0F);
           m = localView.getLeft();
           m = (int)(((TextView)localObject).getRight() + m + jdField_b_of_type_Float * 5.0F);
@@ -205,10 +202,10 @@ public class HotPicTab
         if ((localView == null) || (localView.getTag() == null)) {
           break label314;
         }
-        localObject = (avni)localView.getTag();
-        k = (int)(localView.getLeft() + ((avni)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
+        localObject = (HotPicTab.ViewHolder)localView.getTag();
+        k = (int)(localView.getLeft() + ((HotPicTab.ViewHolder)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
         j = localView.getLeft();
-        j = (int)(((avni)localObject).a.getRight() + j + jdField_b_of_type_Float * 5.0F);
+        j = (int)(((HotPicTab.ViewHolder)localObject).a.getRight() + j + jdField_b_of_type_Float * 5.0F);
         break;
         n = 0;
         break label121;
@@ -220,7 +217,7 @@ public class HotPicTab
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (AppSetting.c) {
+    if (AppSetting.d) {
       return true;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
@@ -360,7 +357,7 @@ public class HotPicTab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicTab
  * JD-Core Version:    0.7.0.1
  */

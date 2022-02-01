@@ -4,12 +4,11 @@ import android.content.Context;
 import android.widget.Button;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import muy;
 
-public class TraeHelper$5
+class TraeHelper$5
   implements Runnable
 {
-  public TraeHelper$5(muy parammuy, Button paramButton, Context paramContext) {}
+  TraeHelper$5(TraeHelper paramTraeHelper, Button paramButton, Context paramContext) {}
   
   public void run()
   {
@@ -24,7 +23,7 @@ public class TraeHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.TraeHelper.5
  * JD-Core Version:    0.7.0.1
  */

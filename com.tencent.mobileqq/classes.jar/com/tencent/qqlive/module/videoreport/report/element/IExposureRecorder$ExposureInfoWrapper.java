@@ -12,6 +12,7 @@ public class IExposureRecorder$ExposureInfoWrapper
 {
   AreaInfo areaInfo;
   final WeakReference<Object> attachedPage;
+  final boolean canReportExposureEnd;
   final Map<String, Object> exposureParams;
   final long exposureTime;
   final WeakReference<View> exposureView;
@@ -22,6 +23,7 @@ public class IExposureRecorder$ExposureInfoWrapper
     this.exposureView = new WeakReference(paramExposureElementInfo.getView());
     this.attachedPage = new WeakReference(paramExposureElementInfo.getPage());
     this.exposureParams = new HashMap();
+    this.canReportExposureEnd = ReportHelper.reportEndExposure(paramExposureElementInfo.getView());
     paramExposureElementInfo = paramExposureElementInfo.getFinalData();
     if ((paramExposureElementInfo != null) && (paramExposureElementInfo.eventParams != null))
     {

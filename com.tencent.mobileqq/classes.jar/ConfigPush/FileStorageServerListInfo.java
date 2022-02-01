@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class FileStorageServerListInfo
   extends JceStruct
 {
-  public int iPort;
+  public int iPort = 0;
   public String sIP = "";
   
   public FileStorageServerListInfo() {}

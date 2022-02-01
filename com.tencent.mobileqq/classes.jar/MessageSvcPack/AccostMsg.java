@@ -9,14 +9,14 @@ public final class AccostMsg
 {
   static int cache_eAccostType;
   static byte[] cache_strMsg;
-  public int eAccostType;
-  public int iAccostType;
-  public int iMsgTime;
-  public long lFromMID;
-  public long lToMID;
-  public short shMsgType;
-  public byte[] strMsg;
-  public long uMsgID;
+  public int eAccostType = 0;
+  public int iAccostType = 0;
+  public int iMsgTime = 0;
+  public long lFromMID = 0L;
+  public long lToMID = 0L;
+  public short shMsgType = 0;
+  public byte[] strMsg = null;
+  public long uMsgID = 0L;
   
   public AccostMsg() {}
   

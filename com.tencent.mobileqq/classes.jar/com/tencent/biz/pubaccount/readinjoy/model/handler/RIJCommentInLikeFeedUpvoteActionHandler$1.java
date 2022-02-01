@@ -1,13 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model.handler;
 
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import qep;
-import qip;
 
-public class RIJCommentInLikeFeedUpvoteActionHandler$1
+class RIJCommentInLikeFeedUpvoteActionHandler$1
   implements Runnable
 {
-  public RIJCommentInLikeFeedUpvoteActionHandler$1(qip paramqip, ArticleInfo paramArticleInfo) {}
+  RIJCommentInLikeFeedUpvoteActionHandler$1(RIJCommentInLikeFeedUpvoteActionHandler paramRIJCommentInLikeFeedUpvoteActionHandler, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class RIJCommentInLikeFeedUpvoteActionHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.handler.RIJCommentInLikeFeedUpvoteActionHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,7 @@ import org.json.JSONObject;
 public class InnerShareData
   extends ShareData
 {
+  public static final int SUB_SCENE_ARK_INVITE_API = 4023;
   public int callbackId;
   public EntryModel entryModel;
   public String entryPath;
@@ -21,6 +22,7 @@ public class InnerShareData
   public String recvOpenId;
   public ShareChatModel shareChatModel;
   public int shareScene = 1;
+  public int subScene;
   public String templateData;
   public String templateId;
   public String webURL;
@@ -67,7 +69,7 @@ public class InnerShareData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.InnerShareData
  * JD-Core Version:    0.7.0.1
  */

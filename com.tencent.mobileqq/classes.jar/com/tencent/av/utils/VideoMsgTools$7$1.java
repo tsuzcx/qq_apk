@@ -2,10 +2,10 @@ package com.tencent.av.utils;
 
 import android.content.Context;
 import android.os.Bundle;
-import bhfy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QAVGroupConfig;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
@@ -33,7 +33,7 @@ class VideoMsgTools$7$1
         localBundle.putParcelableArrayList("invitelist", this.a);
       }
       if (this.this$0.jdField_a_of_type_Int == 1) {
-        localBundle.putBoolean("enableInvite", bhfy.a("selectMemberToStartGAudioChat", localQQAppInterface, this.this$0.jdField_a_of_type_JavaLangString));
+        localBundle.putBoolean("enableInvite", QAVGroupConfig.a("selectMemberToStartGAudioChat", localQQAppInterface, this.this$0.jdField_a_of_type_JavaLangString));
       }
       localBundle.putString("Fromwhere", this.this$0.b);
       ChatActivityUtils.a(localQQAppInterface, localContext, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_JavaLangString, true, true, null, localBundle);
@@ -43,7 +43,7 @@ class VideoMsgTools$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.VideoMsgTools.7.1
  * JD-Core Version:    0.7.0.1
  */

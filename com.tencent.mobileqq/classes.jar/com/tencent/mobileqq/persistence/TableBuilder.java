@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.persistence;
 
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.OGEntityDaoManager;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.TableBuilder;
+import com.tencent.mobileqq.imcore.proxy.db.OGEntityDaoManagerProxy;
+import com.tencent.mobileqq.imcore.proxy.db.TableBuilderProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -53,7 +53,7 @@ public class TableBuilder
   
   public static String createIndexSQLStatement(Entity paramEntity)
   {
-    return IMCoreProxyRoute.TableBuilder.createIndexSQLStatement(paramEntity);
+    return TableBuilderProxy.createIndexSQLStatement(paramEntity);
   }
   
   public static String createSQLStatement(Entity paramEntity)
@@ -62,7 +62,7 @@ public class TableBuilder
     if (CREATE_TABLE_CACHE.containsKey(str1)) {
       return (String)CREATE_TABLE_CACHE.get(str1);
     }
-    Object localObject1 = IMCoreProxyRoute.OGEntityDaoManager.getEntityDao(paramEntity.getClass());
+    Object localObject1 = OGEntityDaoManagerProxy.getEntityDao(paramEntity.getClass());
     if (localObject1 != null)
     {
       localObject2 = ((OGAbstractDao)localObject1).getCreateTableSql(str1);
@@ -262,7 +262,7 @@ public class TableBuilder
   {
     int j = 0;
     if (sNeedPrivateFieldsClass.length == 0) {
-      sNeedPrivateFieldsClass = IMCoreProxyRoute.TableBuilder.getNeedPrivateFieldsClass();
+      sNeedPrivateFieldsClass = TableBuilderProxy.getNeedPrivateFieldsClass();
     }
     Class[] arrayOfClass;
     int k;

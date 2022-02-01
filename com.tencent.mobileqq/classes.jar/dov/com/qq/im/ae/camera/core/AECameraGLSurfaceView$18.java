@@ -1,20 +1,18 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnbe;
-
 class AECameraGLSurfaceView$18
   implements Runnable
 {
-  AECameraGLSurfaceView$18(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
+  AECameraGLSurfaceView$18(AECameraGLSurfaceView paramAECameraGLSurfaceView, Runnable paramRunnable) {}
   
   public void run()
   {
-    AECameraGLSurfaceView.access$000(this.this$0).e();
+    this.val$applyRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.18
  * JD-Core Version:    0.7.0.1
  */

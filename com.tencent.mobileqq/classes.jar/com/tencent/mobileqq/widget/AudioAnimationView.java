@@ -108,7 +108,7 @@ public class AudioAnimationView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
@@ -116,7 +116,7 @@ public class AudioAnimationView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean)
@@ -147,7 +147,7 @@ public class AudioAnimationView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i = 0;
     super.onMeasure(paramInt1, paramInt2);
@@ -231,7 +231,7 @@ public class AudioAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AudioAnimationView
  * JD-Core Version:    0.7.0.1
  */

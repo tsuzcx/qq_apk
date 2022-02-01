@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class PermissionSettingFragment$1$2
   implements Runnable

@@ -1,9 +1,5 @@
 package dov.com.tencent.mobileqq.activity.richmedia.view;
 
-import aluz;
-import alvb;
-import alvc;
-import alvo;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -26,51 +22,58 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import bplg;
-import bplh;
-import bplj;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
+import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LimitListener;
+import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.SuperFontInfo;
+import com.tencent.mobileqq.activity.richmedia.view.TextColorAnimation;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class ExtendEditText
   extends EditText
 {
-  public static final aluz a;
-  private static final aluz c;
+  public static final ExtendEditText.LengthConvertor a;
+  private static final ExtendEditText.LengthConvertor c;
   protected int a;
-  private alvb jdField_a_of_type_Alvb;
-  protected alvo a;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList = null;
   protected LinearGradient a;
   protected GradientDrawable.Orientation a;
   private Transformation jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
+  private ExtendEditText.LimitListener jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LimitListener;
+  protected TextColorAnimation a;
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   protected float[] a;
   protected int[] a;
   int jdField_b_of_type_Int = -1;
-  private aluz jdField_b_of_type_Aluz;
+  private ExtendEditText.LengthConvertor jdField_b_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = null;
   protected int c;
   private int d = 4;
   private int e;
   
   static
   {
-    jdField_c_of_type_Aluz = new bplg();
-    jdField_a_of_type_Aluz = new bplh();
+    jdField_c_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new ExtendEditText.1();
+    jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new ExtendEditText.2();
   }
   
   public ExtendEditText(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = null;
     d();
   }
   
   public ExtendEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = null;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.EditText);
     setClearFocusOnBack(paramContext.getBoolean(0, false));
     this.jdField_b_of_type_Int = paramContext.getInteger(1, -1);
@@ -81,13 +84,16 @@ public class ExtendEditText
   public ExtendEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = null;
     d();
   }
   
-  private void a(alvc paramalvc)
+  private void a(ExtendEditText.SuperFontInfo paramSuperFontInfo)
   {
     int j = 0;
-    if (paramalvc == null)
+    if (paramSuperFontInfo == null)
     {
       if (this.jdField_a_of_type_AndroidContentResColorStateList != null)
       {
@@ -103,31 +109,31 @@ public class ExtendEditText
       this.jdField_a_of_type_AndroidContentResColorStateList = getTextColors();
     }
     int i;
-    if ((paramalvc.jdField_a_of_type_Long & 1L) != 0L)
+    if ((paramSuperFontInfo.jdField_a_of_type_Long & 1L) != 0L)
     {
-      i = alvc.a(paramalvc.jdField_e_of_type_JavaLangString);
+      i = ExtendEditText.SuperFontInfo.a(paramSuperFontInfo.jdField_e_of_type_JavaLangString);
       setTextColor(i);
       setHintTextColor(i);
-      if ((paramalvc.jdField_a_of_type_Long & 0x2) == 0L) {
+      if ((paramSuperFontInfo.jdField_a_of_type_Long & 0x2) == 0L) {
         break label271;
       }
-      setShadowLayer(AIOUtils.dp2px(paramalvc.d, getResources()), AIOUtils.dp2px(paramalvc.jdField_b_of_type_Int, getResources()), AIOUtils.dp2px(paramalvc.jdField_c_of_type_Int, getResources()), alvc.a(paramalvc.jdField_f_of_type_JavaLangString));
+      setShadowLayer(AIOUtils.a(paramSuperFontInfo.jdField_e_of_type_Int, getResources()), AIOUtils.a(paramSuperFontInfo.jdField_c_of_type_Int, getResources()), AIOUtils.a(paramSuperFontInfo.d, getResources()), ExtendEditText.SuperFontInfo.a(paramSuperFontInfo.jdField_f_of_type_JavaLangString));
     }
     label158:
     Object localObject;
     int k;
     for (;;)
     {
-      if (((paramalvc.jdField_a_of_type_Long & 0x8) != 0L) && (paramalvc.jdField_c_of_type_JavaUtilArrayList != null) && (paramalvc.jdField_c_of_type_JavaUtilArrayList.size() >= 2))
+      if (((paramSuperFontInfo.jdField_a_of_type_Long & 0x8) != 0L) && (paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList != null) && (paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size() >= 2))
       {
-        localObject = new ArrayList(paramalvc.jdField_c_of_type_JavaUtilArrayList.size());
-        k = paramalvc.jdField_c_of_type_JavaUtilArrayList.size();
+        localObject = new ArrayList(paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size());
+        k = paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size();
         i = 0;
         for (;;)
         {
           if (i < k)
           {
-            ((ArrayList)localObject).add(Integer.valueOf(alvc.a((String)paramalvc.jdField_c_of_type_JavaUtilArrayList.get(i))));
+            ((ArrayList)localObject).add(Integer.valueOf(ExtendEditText.SuperFontInfo.a((String)paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.get(i))));
             i += 1;
             continue;
             setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
@@ -138,50 +144,50 @@ public class ExtendEditText
             break label158;
           }
         }
-        setTextColorAnimation((ArrayList)localObject, paramalvc.jdField_f_of_type_Int * (k - 1));
+        setTextColorAnimation((ArrayList)localObject, paramSuperFontInfo.g * (k - 1));
       }
     }
-    while (((paramalvc.jdField_a_of_type_Long & 0x4) != 0L) && (paramalvc.jdField_a_of_type_JavaUtilArrayList != null) && (paramalvc.jdField_a_of_type_JavaUtilArrayList.size() >= 2) && (paramalvc.jdField_b_of_type_JavaUtilArrayList != null) && (paramalvc.jdField_b_of_type_JavaUtilArrayList.size() >= 2))
+    while (((paramSuperFontInfo.jdField_a_of_type_Long & 0x4) != 0L) && (paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.size() >= 2) && (paramSuperFontInfo.b != null) && (paramSuperFontInfo.b.size() >= 2))
     {
-      k = paramalvc.jdField_a_of_type_JavaUtilArrayList.size();
+      k = paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.size();
       localObject = new int[k];
       i = 0;
       for (;;)
       {
         if (i < k)
         {
-          localObject[i] = alvc.a((String)paramalvc.jdField_a_of_type_JavaUtilArrayList.get(i));
+          localObject[i] = ExtendEditText.SuperFontInfo.a((String)paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.get(i));
           i += 1;
           continue;
           setTextColorAnimation(null, 0);
           break;
         }
       }
-      k = paramalvc.jdField_b_of_type_JavaUtilArrayList.size();
+      k = paramSuperFontInfo.b.size();
       float[] arrayOfFloat = new float[k];
       i = j;
       while (i < k)
       {
-        arrayOfFloat[i] = ((Double)paramalvc.jdField_b_of_type_JavaUtilArrayList.get(i)).floatValue();
+        arrayOfFloat[i] = ((Double)paramSuperFontInfo.b.get(i)).floatValue();
         i += 1;
       }
       GradientDrawable.Orientation localOrientation = GradientDrawable.Orientation.LEFT_RIGHT;
-      switch (paramalvc.jdField_e_of_type_Int)
+      switch (paramSuperFontInfo.jdField_f_of_type_Int)
       {
       default: 
-        paramalvc = GradientDrawable.Orientation.LEFT_RIGHT;
+        paramSuperFontInfo = GradientDrawable.Orientation.LEFT_RIGHT;
       }
       for (;;)
       {
-        setGradientColor((int[])localObject, arrayOfFloat, paramalvc);
+        setGradientColor((int[])localObject, arrayOfFloat, paramSuperFontInfo);
         return;
-        paramalvc = GradientDrawable.Orientation.LEFT_RIGHT;
+        paramSuperFontInfo = GradientDrawable.Orientation.LEFT_RIGHT;
         continue;
-        paramalvc = GradientDrawable.Orientation.BL_TR;
+        paramSuperFontInfo = GradientDrawable.Orientation.BL_TR;
         continue;
-        paramalvc = GradientDrawable.Orientation.TOP_BOTTOM;
+        paramSuperFontInfo = GradientDrawable.Orientation.TOP_BOTTOM;
         continue;
-        paramalvc = GradientDrawable.Orientation.TL_BR;
+        paramSuperFontInfo = GradientDrawable.Orientation.TL_BR;
       }
     }
     setGradientColor(null, null, null);
@@ -231,7 +237,7 @@ public class ExtendEditText
   private void d()
   {
     if (this.jdField_b_of_type_Int >= 0) {
-      setFilters(new InputFilter[] { new bplj(this, this.jdField_b_of_type_Int) });
+      setFilters(new InputFilter[] { new ExtendEditText.LengthFilter(this, this.jdField_b_of_type_Int) });
     }
   }
   
@@ -250,7 +256,7 @@ public class ExtendEditText
     float f2;
     float f3;
     float f4;
-    switch (bpli.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation.ordinal()])
+    switch (ExtendEditText.3.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation.ordinal()])
     {
     default: 
       f1 = localRect.left;
@@ -412,13 +418,13 @@ public class ExtendEditText
     scrollTo(getScrollX(), i);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     TextPaint localTextPaint = getPaint();
-    if (this.jdField_a_of_type_Alvo != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation != null)
     {
-      boolean bool = this.jdField_a_of_type_Alvo.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
-      int i = this.jdField_a_of_type_Alvo.a();
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+      int i = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.a();
       setTextColor(i);
       setHintTextColor(i);
       if (bool) {
@@ -508,33 +514,33 @@ public class ExtendEditText
     }
   }
   
-  public void setLimitListener(alvb paramalvb)
+  public void setLimitListener(ExtendEditText.LimitListener paramLimitListener)
   {
-    this.jdField_a_of_type_Alvb = paramalvb;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LimitListener = paramLimitListener;
   }
   
-  public void setMaxLengthConvertor(aluz paramaluz)
+  public void setMaxLengthConvertor(ExtendEditText.LengthConvertor paramLengthConvertor)
   {
-    this.jdField_b_of_type_Aluz = paramaluz;
+    this.jdField_b_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = paramLengthConvertor;
   }
   
   public void setTextColorAnimation(ArrayList<Integer> paramArrayList, int paramInt)
   {
-    if (this.jdField_a_of_type_Alvo != null) {
-      this.jdField_a_of_type_Alvo.cancel();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.cancel();
     }
     if ((paramArrayList == null) || (paramArrayList.size() < 2) || (paramInt == 0))
     {
-      this.jdField_a_of_type_Alvo = null;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = null;
       return;
     }
-    this.jdField_a_of_type_Alvo = new alvo(paramArrayList);
-    this.jdField_a_of_type_Alvo.setFillAfter(true);
-    this.jdField_a_of_type_Alvo.setRepeatCount(-1);
-    this.jdField_a_of_type_Alvo.setRepeatMode(2);
-    this.jdField_a_of_type_Alvo.setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_Alvo.setDuration(paramInt);
-    this.jdField_a_of_type_Alvo.setStartTime(0L);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = new TextColorAnimation(paramArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setFillAfter(true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setRepeatCount(-1);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setRepeatMode(2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setInterpolator(new LinearInterpolator());
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setDuration(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setStartTime(0L);
   }
   
   public void setTextEffect(String paramString)
@@ -544,12 +550,12 @@ public class ExtendEditText
       a(null);
       return;
     }
-    a(alvc.a(paramString));
+    a(ExtendEditText.SuperFontInfo.a(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.view.ExtendEditText
  * JD-Core Version:    0.7.0.1
  */

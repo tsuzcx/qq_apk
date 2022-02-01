@@ -10,8 +10,6 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.R.styleable;
-import mwg;
-import mwh;
 
 public class RatingBar
   extends LinearLayout
@@ -19,8 +17,8 @@ public class RatingBar
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private RatingBar.OnRatingListener jdField_a_of_type_ComTencentAvWidgetRatingBar$OnRatingListener;
   private Object jdField_a_of_type_JavaLangObject;
-  private mwh jdField_a_of_type_Mwh;
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
@@ -38,7 +36,7 @@ public class RatingBar
     while (i < this.jdField_a_of_type_Int)
     {
       localObject = a(paramContext, paramAttributeSet);
-      ((ImageView)localObject).setOnClickListener(new mwg(this));
+      ((ImageView)localObject).setOnClickListener(new RatingBar.1(this));
       addView((View)localObject);
       i += 1;
     }
@@ -65,9 +63,9 @@ public class RatingBar
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnRatingListener(mwh parammwh)
+  public void setOnRatingListener(RatingBar.OnRatingListener paramOnRatingListener)
   {
-    this.jdField_a_of_type_Mwh = parammwh;
+    this.jdField_a_of_type_ComTencentAvWidgetRatingBar$OnRatingListener = paramOnRatingListener;
   }
   
   public void setStar(int paramInt, boolean paramBoolean)
@@ -124,7 +122,7 @@ public class RatingBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.widget.RatingBar
  * JD-Core Version:    0.7.0.1
  */

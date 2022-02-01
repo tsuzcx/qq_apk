@@ -13,8 +13,8 @@ public final class QzoneWeisiReqcommendReq
   public String aggregate_name = "";
   public String aggregate_page_id = "";
   public int entrance_type = 2;
-  public int index;
-  public ArrayList<QzoneWeisiReqcommendKey> keys;
+  public int index = 0;
+  public ArrayList<QzoneWeisiReqcommendKey> keys = null;
   
   static
   {

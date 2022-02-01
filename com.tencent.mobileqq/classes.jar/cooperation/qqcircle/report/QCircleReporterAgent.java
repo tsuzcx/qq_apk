@@ -1,11 +1,11 @@
 package cooperation.qqcircle.report;
 
 import android.text.TextUtils;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudCommon.BytesEntry;
 import feedcloud.FeedCloudCommon.StCommonExt;
 import java.util.ArrayList;
@@ -40,10 +40,10 @@ public class QCircleReporterAgent
     if (localArrayList.size() > 0)
     {
       localStCommonExt.mapBytesInfo.set(localArrayList);
-      QLog.d("QCircleReporterAgent", 2, "buildSessionCommonExt() valid session and subsession!scene:" + this.mScene);
+      RFLog.d("QCircleReporterAgent", RFLog.CLR, "buildSessionCommonExt() valid session and subsession!scene:" + this.mScene);
       return localStCommonExt;
     }
-    QLog.e("QCircleReporterAgent", 2, "buildSessionCommonExt() no session and subsession!scene:" + this.mScene);
+    RFLog.e("QCircleReporterAgent", RFLog.CLR, "buildSessionCommonExt() no session and subsession!scene:" + this.mScene);
     return localStCommonExt;
   }
   
@@ -116,7 +116,7 @@ public class QCircleReporterAgent
   
   public void updateSubSession(FeedCloudCommon.StCommonExt paramStCommonExt)
   {
-    QLog.d("QCircleReporterAgent", 1, "updateSubSession,scene:" + this.mScene);
+    RFLog.d("QCircleReporterAgent", RFLog.USR, "updateSubSession,scene:" + this.mScene);
     int i;
     if ((paramStCommonExt != null) && (paramStCommonExt.has()) && (paramStCommonExt.mapBytesInfo.has()))
     {
@@ -138,10 +138,10 @@ public class QCircleReporterAgent
       }
       if (i != 0)
       {
-        QLog.d("QCircleReporterAgent", 1, "find subsession!");
+        RFLog.d("QCircleReporterAgent", RFLog.USR, "find subsession!");
         return;
       }
-      QLog.e("QCircleReporterAgent", 1, "can't find subsession!");
+      RFLog.e("QCircleReporterAgent", RFLog.USR, "can't find subsession!");
       return;
       i = 0;
       paramStCommonExt = null;
@@ -150,7 +150,7 @@ public class QCircleReporterAgent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReporterAgent
  * JD-Core Version:    0.7.0.1
  */

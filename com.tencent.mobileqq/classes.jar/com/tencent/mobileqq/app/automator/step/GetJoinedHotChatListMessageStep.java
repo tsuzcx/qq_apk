@@ -15,9 +15,9 @@ public class GetJoinedHotChatListMessageStep
 {
   public int a()
   {
-    if (HotChatManager.a(this.a.app))
+    if (HotChatManager.a(this.a.a))
     {
-      HotChatManager localHotChatManager = (HotChatManager)this.a.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      HotChatManager localHotChatManager = (HotChatManager)this.a.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
       Object localObject = localHotChatManager.b();
       if (QLog.isColorLevel())
       {

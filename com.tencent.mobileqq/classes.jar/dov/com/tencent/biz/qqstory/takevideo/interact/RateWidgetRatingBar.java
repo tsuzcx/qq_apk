@@ -8,11 +8,9 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bpdo;
-import bpdp;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.R.styleable;
 import java.math.BigDecimal;
-import ykq;
 
 public class RateWidgetRatingBar
   extends LinearLayout
@@ -20,7 +18,7 @@ public class RateWidgetRatingBar
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bpdp jdField_a_of_type_Bpdp;
+  private RateWidgetRatingBar.OnRatingChangeListener jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractRateWidgetRatingBar$OnRatingChangeListener;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -52,7 +50,7 @@ public class RateWidgetRatingBar
       while (i < this.jdField_a_of_type_Int)
       {
         paramAttributeSet = a(paramContext, this.jdField_b_of_type_Boolean);
-        paramAttributeSet.setOnClickListener(new bpdo(this));
+        paramAttributeSet.setOnClickListener(new RateWidgetRatingBar.1(this));
         addView(paramAttributeSet);
         i += 1;
       }
@@ -61,7 +59,7 @@ public class RateWidgetRatingBar
     {
       for (;;)
       {
-        ykq.c("RateWidgetRatingBar", "RateWidgetRatingBar load drawable failed : %s", localOutOfMemoryError);
+        SLog.c("RateWidgetRatingBar", "RateWidgetRatingBar load drawable failed : %s", localOutOfMemoryError);
       }
       setStar(this.jdField_b_of_type_Int);
     }
@@ -83,9 +81,9 @@ public class RateWidgetRatingBar
     return paramContext;
   }
   
-  public void setOnRatingChangeListener(bpdp parambpdp)
+  public void setOnRatingChangeListener(RateWidgetRatingBar.OnRatingChangeListener paramOnRatingChangeListener)
   {
-    this.jdField_a_of_type_Bpdp = parambpdp;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractRateWidgetRatingBar$OnRatingChangeListener = paramOnRatingChangeListener;
   }
   
   public void setRatable(boolean paramBoolean)
@@ -154,7 +152,7 @@ public class RateWidgetRatingBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar
  * JD-Core Version:    0.7.0.1
  */

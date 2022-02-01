@@ -1124,6 +1124,27 @@ public class TVKUtils
     //   177	181	331	java/io/IOException
   }
   
+  public static void invokeSetterMethod(Object paramObject1, String paramString, Class<?> paramClass, Object paramObject2)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
+    {
+      String str2 = "set" + Character.toUpperCase(paramString.charAt(0));
+      String str1 = str2;
+      if (paramString.length() > 1) {
+        str1 = str2 + paramString.substring(1);
+      }
+      paramObject1.getClass().getDeclaredMethod(str1, new Class[] { paramClass }).invoke(paramObject1, new Object[] { paramObject2 });
+      return;
+    }
+    catch (Exception paramObject1)
+    {
+      TVKLogUtil.e("TVKUtils[TVKUtils.java]", "invokeSetterMethod error = " + paramObject1.toString());
+    }
+  }
+  
   public static boolean isAllowBySample(int paramInt)
   {
     boolean bool = true;
@@ -1282,7 +1303,7 @@ public class TVKUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.TVKUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,18 @@ class QQCustomArkDialog$4
   
   public void run()
   {
-    if (!QQCustomArkDialog.access$300(this.this$0))
+    if (!QQCustomArkDialog.b(this.this$0))
     {
-      QQCustomArkDialog.access$102(this.this$0, true);
+      QQCustomArkDialog.a(this.this$0, true);
       if (QLog.isColorLevel()) {
         QLog.d("QQCustomArkDialog", 2, "overtime,show dialog right now");
       }
-      if (QQCustomArkDialog.access$400(this.this$0) == null) {
+      if (QQCustomArkDialog.a(this.this$0) == null) {
         break label76;
       }
     }
     label76:
-    for (Activity localActivity = (Activity)QQCustomArkDialog.access$400(this.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
+    for (Activity localActivity = (Activity)QQCustomArkDialog.a(this.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
     {
       this.this$0.show();
       return;

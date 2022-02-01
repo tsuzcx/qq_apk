@@ -11,10 +11,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import arza;
-import arzb;
-import arzc;
-import arzd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -28,12 +24,12 @@ import org.jetbrains.annotations.Nullable;
 public final class VasAdvDebugFragment
   extends IphoneTitleBarFragment
 {
-  public static final arza a;
+  public static final VasAdvDebugFragment.Companion a;
   private HashMap a;
   
   static
   {
-    jdField_a_of_type_Arza = new arza(null);
+    jdField_a_of_type_ComTencentMobileqqDebugVasAdvDebugFragment$Companion = new VasAdvDebugFragment.Companion(null);
   }
   
   private final void a(boolean paramBoolean)
@@ -50,14 +46,14 @@ public final class VasAdvDebugFragment
   private final void b()
   {
     View localView = this.mContentView;
-    Object localObject = (CheckBox)localView.findViewById(2131364397);
+    Object localObject = (CheckBox)localView.findViewById(2131364504);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "cbWebViewDebug");
     ((CheckBox)localObject).setChecked(a());
-    ((CheckBox)localObject).setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new arzb(this));
-    ((TextView)localView.findViewById(2131380220)).setOnClickListener((View.OnClickListener)new arzc(this));
-    localObject = (EditText)localView.findViewById(2131366289);
-    EditText localEditText = (EditText)localView.findViewById(2131366290);
-    ((TextView)localView.findViewById(2131380221)).setOnClickListener((View.OnClickListener)new arzd(localView, (EditText)localObject, localEditText));
+    ((CheckBox)localObject).setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new VasAdvDebugFragment.initView..inlined.apply.lambda.1(this));
+    ((TextView)localView.findViewById(2131380660)).setOnClickListener((View.OnClickListener)new VasAdvDebugFragment.initView..inlined.apply.lambda.2(this));
+    localObject = (EditText)localView.findViewById(2131366461);
+    EditText localEditText = (EditText)localView.findViewById(2131366462);
+    ((TextView)localView.findViewById(2131380661)).setOnClickListener((View.OnClickListener)new VasAdvDebugFragment.initView.1.3(localView, (EditText)localObject, localEditText));
   }
   
   public void a()
@@ -77,12 +73,12 @@ public final class VasAdvDebugFragment
   
   public int getContentLayoutId()
   {
-    return 2131561616;
+    return 2131561735;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.VasAdvDebugFragment
  * JD-Core Version:    0.7.0.1
  */

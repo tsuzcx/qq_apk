@@ -8,16 +8,16 @@ public final class PayParam
   extends JceStruct
 {
   public String app_id = "";
-  public int maxUpMonth;
+  public int maxUpMonth = 0;
   public String offerid = "";
-  public int openMode;
-  public int openMonth;
-  public int openServicePrice;
-  public int openType;
-  public int pay_item;
+  public int openMode = 0;
+  public int openMonth = 0;
+  public int openServicePrice = 0;
+  public int openType = 0;
+  public int pay_item = 0;
   public String product_id = "";
   public String product_type = "";
-  public int qq_product_id;
+  public int qq_product_id = 0;
   public String qq_product_name = "";
   public String serviceName = "";
   public String serviceType = "";

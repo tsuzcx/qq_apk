@@ -4,13 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
-import pta;
-import ptd;
 
-public class ReadInJoyLottieDrawable$3$1$1
+class ReadInJoyLottieDrawable$3$1$1
   implements Runnable
 {
-  public ReadInJoyLottieDrawable$3$1$1(ptd paramptd, String paramString) {}
+  ReadInJoyLottieDrawable$3$1$1(ReadInJoyLottieDrawable.3.1 param1, String paramString) {}
   
   public void run()
   {
@@ -18,7 +16,7 @@ public class ReadInJoyLottieDrawable$3$1$1
     {
       Bitmap localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString);
       if (localBitmap != null) {
-        pta.b().put(this.jdField_a_of_type_JavaLangString, localBitmap);
+        ReadInJoyLottieDrawable.b().put(this.jdField_a_of_type_JavaLangString, localBitmap);
       }
       return;
     }
@@ -35,7 +33,7 @@ public class ReadInJoyLottieDrawable$3$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3.1.1
  * JD-Core Version:    0.7.0.1
  */

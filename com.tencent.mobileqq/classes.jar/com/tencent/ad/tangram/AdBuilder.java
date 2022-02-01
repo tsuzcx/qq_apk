@@ -1,19 +1,47 @@
 package com.tencent.ad.tangram;
 
 import android.support.annotation.Keep;
+import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo;
+import java.lang.ref.WeakReference;
 
 @Keep
-public final class AdBuilder
+public enum AdBuilder
 {
-  public static Ad build(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  INSTANCE;
+  
+  private static final String TAG = "AdBuilder";
+  private WeakReference<AdBuilderAdapter> adapter;
+  
+  private AdBuilder() {}
+  
+  public Ad build(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
-    return new a(paramAdInfo);
+    AdBuilderAdapter localAdBuilderAdapter = getAdapter();
+    if (localAdBuilderAdapter == null)
+    {
+      AdLog.e("AdBuilder", "build error, adapter is null");
+      return null;
+    }
+    return localAdBuilderAdapter.build(paramAdInfo);
+  }
+  
+  public AdBuilderAdapter getAdapter()
+  {
+    if (this.adapter != null) {
+      return (AdBuilderAdapter)this.adapter.get();
+    }
+    return null;
+  }
+  
+  public void setAdapter(WeakReference<AdBuilderAdapter> paramWeakReference)
+  {
+    this.adapter = paramWeakReference;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.AdBuilder
  * JD-Core Version:    0.7.0.1
  */

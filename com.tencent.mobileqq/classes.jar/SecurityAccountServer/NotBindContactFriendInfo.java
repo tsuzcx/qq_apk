@@ -8,10 +8,10 @@ public final class NotBindContactFriendInfo
   extends JceStruct
 {
   static byte[] cache_MobileNoMask = (byte[])new byte[1];
-  public byte[] MobileNoMask;
-  public long bindUin;
+  public byte[] MobileNoMask = null;
+  public long bindUin = 0L;
   public String contactsInfoEncrypt = "";
-  public long uAbiFlag;
+  public long uAbiFlag = 0L;
   
   static
   {

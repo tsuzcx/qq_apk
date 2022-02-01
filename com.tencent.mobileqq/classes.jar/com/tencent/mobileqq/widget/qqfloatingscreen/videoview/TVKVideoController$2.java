@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.videoview;
 
-import bixb;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenManager;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindow;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class TVKVideoController$2
+class TVKVideoController$2
   implements Runnable
 {
-  public TVKVideoController$2(bixb parambixb) {}
+  TVKVideoController$2(TVKVideoController paramTVKVideoController) {}
   
   public void run()
   {
-    FloatingScreenManager.getInstance().quitFloatingScreen();
+    ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).quitFloatingScreen();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController.2
  * JD-Core Version:    0.7.0.1
  */

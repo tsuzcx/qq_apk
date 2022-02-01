@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import aytq;
-
-public class ScanOcrActivity$6$3
+class ScanOcrActivity$6$3
   implements Runnable
 {
-  public ScanOcrActivity$6$3(aytq paramaytq) {}
+  ScanOcrActivity$6$3(ScanOcrActivity.6 param6) {}
   
   public void run()
   {

@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.subaccount;
 
-import bdxj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class SubAccountControll$4
+class SubAccountControll$4
   implements Runnable
 {
-  public SubAccountControll$4(bdxj parambdxj) {}
+  SubAccountControll$4(SubAccountControll paramSubAccountControll) {}
   
   public void run()
   {

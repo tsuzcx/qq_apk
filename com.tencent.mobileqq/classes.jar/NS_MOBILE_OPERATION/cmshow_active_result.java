@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class cmshow_active_result
   extends JceStruct
 {
-  public int cm_cardli_count;
-  public int cm_stone_count;
-  public int fire_score;
-  public byte is_reach_friend_limit;
-  public byte is_reach_limit;
+  public int cm_cardli_count = 0;
+  public int cm_stone_count = 0;
+  public int fire_score = 0;
+  public byte is_reach_friend_limit = 0;
+  public byte is_reach_limit = 0;
   
   public cmshow_active_result() {}
   

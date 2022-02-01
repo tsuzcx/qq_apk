@@ -7,17 +7,14 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.DisableSlideHorizontalListView;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
-import syb;
-import syc;
-import sye;
 
-public class ChannelClassificationListView<T extends sye>
+public class ChannelClassificationListView<T extends ChannelClassificationListView.IClassData>
   extends DisableSlideHorizontalListView
 {
   private int jdField_a_of_type_Int;
   private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
+  private ChannelClassificationListView<T>.ClassificationAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView$ClassificationAdapter;
   private ArrayList<T> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ChannelClassificationListView<T>.syc jdField_a_of_type_Syc;
   
   public ChannelClassificationListView(Context paramContext)
   {
@@ -33,17 +30,17 @@ public class ChannelClassificationListView<T extends sye>
   
   private void a()
   {
-    this.jdField_a_of_type_Syc = new syc(this, null);
-    setAdapter(this.jdField_a_of_type_Syc);
-    setDividerWidth(DisplayUtil.dip2px(getContext(), 10.0F));
-    setOnScrollStateChangedListener(new syb(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView$ClassificationAdapter = new ChannelClassificationListView.ClassificationAdapter(this, null);
+    setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView$ClassificationAdapter);
+    setDividerWidth(DisplayUtil.a(getContext(), 10.0F));
+    setOnScrollStateChangedListener(new ChannelClassificationListView.1(this));
   }
   
   public void setData(int paramInt, ArrayList<T> paramArrayList)
   {
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Syc.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView$ClassificationAdapter.notifyDataSetChanged();
   }
   
   public void setOnItemClickListener(@Nullable AdapterView.OnItemClickListener paramOnItemClickListener)
@@ -53,7 +50,7 @@ public class ChannelClassificationListView<T extends sye>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ public final class QzoneMessageReq
   extends JceStruct
 {
   static Map<String, String> cache_ext = new HashMap();
-  public Map<String, String> ext;
-  public long num;
-  public int scence;
+  public Map<String, String> ext = null;
+  public long num = 0L;
+  public int scence = 0;
   public String trace_info = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

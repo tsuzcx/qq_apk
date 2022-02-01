@@ -9,19 +9,19 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import anvx;
-import bifb;
-import bifw;
-import bifx;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.swift.WebViewPluginContainer;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
@@ -74,12 +74,12 @@ public class QZoneCoverStoreJsPlugin
   public static final int VIDEO_COVER_SOURCE_RECORD_VIDEO = 2;
   public String mAid = "";
   public int mFrom = 4;
-  public int mOpenMouth;
+  public int mOpenMouth = 0;
   BroadcastReceiver mReceiver = new QZoneCoverStoreJsPlugin.4(this);
-  private volatile boolean mReceiverRegistered;
+  private volatile boolean mReceiverRegistered = false;
   public int mSource = 0;
-  private int mVideoCoverFrom;
-  public int mVipType;
+  private int mVideoCoverFrom = 0;
+  public int mVipType = 0;
   String type = "";
   
   public QZoneCoverStoreJsPlugin()
@@ -94,10 +94,10 @@ public class QZoneCoverStoreJsPlugin
   
   private int generateRequestCode(int paramInt)
   {
-    bifb localbifb = this.mRuntime.a(this.mRuntime.a());
+    WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
     int i = paramInt;
-    if ((localbifb instanceof bifx)) {
-      i = ((bifx)localbifb).switchRequestCode(this, (byte)paramInt);
+    if ((localWebUiBaseInterface instanceof WebViewPluginContainer)) {
+      i = ((WebViewPluginContainer)localWebUiBaseInterface).switchRequestCode(this, (byte)paramInt);
     }
     return i;
   }
@@ -130,11 +130,11 @@ public class QZoneCoverStoreJsPlugin
     do
     {
       return;
-      j = this.mRuntime.a().getResources().getDimensionPixelSize(2131299080);
+      j = this.mRuntime.a().getResources().getDimensionPixelSize(2131299166);
       if (!QZoneHelper.isBestPerformanceDevice()) {}
       for (int i = 1; i != 0; i = 0)
       {
-        QQToast.a(this.mRuntime.a(), 2131717516, 0).b(j);
+        QQToast.a(this.mRuntime.a(), 2131718011, 0).b(j);
         return;
       }
       registerBroadcast();
@@ -151,7 +151,7 @@ public class QZoneCoverStoreJsPlugin
         localBaseBusinessAlbumInfo.mUin = this.mRuntime.a().getLongAccountUin();
         localBaseBusinessAlbumInfo.mAlbumType = 10;
         localBaseBusinessAlbumInfo.mAnonymity = 10;
-        localBaseBusinessAlbumInfo.mTitle = this.mRuntime.a().getString(2131717009);
+        localBaseBusinessAlbumInfo.mTitle = this.mRuntime.a().getString(2131717504);
         QZoneHelper.forwardToPersonalAlbumVideoList(this.mRuntime.a(), localUserInfo, localBaseBusinessAlbumInfo, -1, "cover_mall_record_video");
         return;
       }
@@ -181,7 +181,7 @@ public class QZoneCoverStoreJsPlugin
       ((Bundle)localObject).putInt("uintype", 0);
       QZoneHelper.addSource(paramString);
       paramString.putExtras((Bundle)localObject);
-      ((AbsBaseWebViewActivity)this.mRuntime.a()).a(this, paramString, (byte)2);
+      ((AbsBaseWebViewActivity)this.mRuntime.a()).gotoSelectPicture(this, paramString, (byte)2);
       return;
     }
     paramString = new Bundle();
@@ -546,12 +546,12 @@ public class QZoneCoverStoreJsPlugin
       if (this.mRuntime.a() == null) {
         return false;
       }
-      paramJsBridgeListener = (TextView)this.mRuntime.a().findViewById(2131369262);
+      paramJsBridgeListener = (TextView)this.mRuntime.a().findViewById(2131369518);
       if (paramJsBridgeListener != null)
       {
         paramJsBridgeListener.setVisibility(0);
         paramJsBridgeListener.setTextColor(-1);
-        paramJsBridgeListener.setText(anvx.a(2131711091));
+        paramJsBridgeListener.setText(HardCodeUtil.a(2131711606));
         paramJsBridgeListener.setOnClickListener(new QZoneCoverStoreJsPlugin.1(this));
       }
     }
@@ -607,7 +607,7 @@ public class QZoneCoverStoreJsPlugin
           }
           paramJsBridgeListener = this.mRuntime.a().getAccount();
           paramString1 = new Intent();
-          paramString2 = anvx.a(2131711089);
+          paramString2 = HardCodeUtil.a(2131711604);
           QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
           if (TextUtils.isEmpty(this.mAid)) {
             this.mAid = getAid();
@@ -706,7 +706,7 @@ public class QZoneCoverStoreJsPlugin
         if (this.mRuntime.a() == null) {
           return false;
         }
-        ((TextView)this.mRuntime.a().findViewById(2131369231)).performClick();
+        ((TextView)this.mRuntime.a().findViewById(2131369487)).performClick();
         return true;
       }
     } while (!"Init".equals(paramString3));
@@ -810,7 +810,7 @@ public class QZoneCoverStoreJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.ark.API;
 
-import achn;
 import android.content.Context;
 import android.text.TextUtils;
-import apsw;
 import com.tencent.ark.ArkDispatchTask;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
@@ -14,10 +13,10 @@ import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ArkAppNotifyCenter$GdtNotify$4
+class ArkAppNotifyCenter$GdtNotify$4
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$4(apsw paramapsw, WeakReference paramWeakReference, String paramString1, String paramString2) {}
+  ArkAppNotifyCenter$GdtNotify$4(ArkAppNotifyCenter.GdtNotify paramGdtNotify, WeakReference paramWeakReference, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -45,12 +44,12 @@ public class ArkAppNotifyCenter$GdtNotify$4
           QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", localJSONException);
           localObject2 = null;
         }
-        localObject2 = achn.a(localObject2.deviceInfo);
+        localObject2 = GdtJsonPbUtil.a(localObject2.a);
       }
       localParams = new GdtDeviceInfoHelper.Params();
-      localParams.businessIdForAidTicketAndTaidTicket = ((String)localObject1);
-      localObject1 = GdtDeviceInfoHelper.create((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localParams);
-      if ((localObject1 == null) || (((GdtDeviceInfoHelper.Result)localObject1).deviceInfo == null))
+      localParams.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      localObject1 = GdtDeviceInfoHelper.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localParams);
+      if ((localObject1 == null) || (((GdtDeviceInfoHelper.Result)localObject1).a == null))
       {
         QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", null);
         return;

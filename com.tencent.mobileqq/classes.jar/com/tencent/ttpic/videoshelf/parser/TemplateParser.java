@@ -109,33 +109,33 @@ public class TemplateParser
     //   89: dup
     //   90: aload_1
     //   91: invokespecial 138	java/io/File:<init>	(Ljava/lang/String;)V
-    //   94: astore 9
+    //   94: astore 8
     //   96: new 45	java/io/File
     //   99: dup
     //   100: aload 6
     //   102: invokespecial 138	java/io/File:<init>	(Ljava/lang/String;)V
-    //   105: astore 8
-    //   107: aload 9
+    //   105: astore 9
+    //   107: aload 8
     //   109: invokevirtual 52	java/io/File:exists	()Z
     //   112: ifeq +11 -> 123
-    //   115: aload 9
+    //   115: aload 8
     //   117: invokevirtual 141	java/io/File:isFile	()Z
     //   120: ifne +19 -> 139
-    //   123: aload 8
+    //   123: aload 9
     //   125: invokevirtual 52	java/io/File:exists	()Z
     //   128: ifeq +301 -> 429
-    //   131: aload 8
+    //   131: aload 9
     //   133: invokevirtual 141	java/io/File:isFile	()Z
     //   136: ifeq +293 -> 429
-    //   139: aload 9
+    //   139: aload 8
     //   141: invokevirtual 52	java/io/File:exists	()Z
     //   144: ifeq +224 -> 368
-    //   147: aload 9
+    //   147: aload 8
     //   149: invokevirtual 141	java/io/File:isFile	()Z
     //   152: ifeq +216 -> 368
     //   155: new 143	java/io/FileInputStream
     //   158: dup
-    //   159: aload 9
+    //   159: aload 8
     //   161: invokespecial 146	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   164: astore_0
     //   165: aload_0
@@ -244,15 +244,15 @@ public class TemplateParser
     //   363: iconst_0
     //   364: istore_3
     //   365: goto -336 -> 29
-    //   368: aload 8
+    //   368: aload 9
     //   370: invokevirtual 52	java/io/File:exists	()Z
-    //   373: ifeq +607 -> 980
-    //   376: aload 8
+    //   373: ifeq +605 -> 978
+    //   376: aload 9
     //   378: invokevirtual 141	java/io/File:isFile	()Z
-    //   381: ifeq +599 -> 980
+    //   381: ifeq +597 -> 978
     //   384: new 143	java/io/FileInputStream
     //   387: dup
-    //   388: aload 8
+    //   388: aload 9
     //   390: invokespecial 146	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   393: astore_0
     //   394: iload_3
@@ -475,152 +475,150 @@ public class TemplateParser
     //   793: goto -91 -> 702
     //   796: astore_0
     //   797: aconst_null
-    //   798: astore_2
-    //   799: aload_1
-    //   800: astore 6
-    //   802: aconst_null
-    //   803: astore 8
-    //   805: aload_2
-    //   806: astore_1
-    //   807: aload 8
-    //   809: astore_2
-    //   810: goto -108 -> 702
-    //   813: astore 8
+    //   798: astore 8
+    //   800: aload_1
+    //   801: astore 6
+    //   803: aconst_null
+    //   804: astore_2
+    //   805: aload 8
+    //   807: astore_1
+    //   808: goto -106 -> 702
+    //   811: astore 8
+    //   813: aconst_null
+    //   814: astore_1
     //   815: aconst_null
-    //   816: astore_1
-    //   817: aconst_null
-    //   818: astore_2
-    //   819: aload_0
-    //   820: astore 6
-    //   822: aload 8
-    //   824: astore_0
-    //   825: goto -123 -> 702
-    //   828: astore_0
+    //   816: astore_2
+    //   817: aload_0
+    //   818: astore 6
+    //   820: aload 8
+    //   822: astore_0
+    //   823: goto -121 -> 702
+    //   826: astore_0
+    //   827: aconst_null
+    //   828: astore_1
     //   829: aconst_null
-    //   830: astore_1
-    //   831: aconst_null
-    //   832: astore_2
-    //   833: goto -131 -> 702
-    //   836: astore_0
-    //   837: aconst_null
-    //   838: astore 8
-    //   840: aload_2
-    //   841: astore_1
-    //   842: aload 8
-    //   844: astore_2
-    //   845: goto -143 -> 702
-    //   848: astore_0
-    //   849: aload 11
-    //   851: astore 7
-    //   853: aload 10
-    //   855: astore_1
-    //   856: aload 9
-    //   858: astore_2
-    //   859: aload 8
-    //   861: astore 6
-    //   863: goto -161 -> 702
-    //   866: astore_1
-    //   867: aconst_null
-    //   868: astore 7
+    //   830: astore_2
+    //   831: goto -129 -> 702
+    //   834: astore_0
+    //   835: aconst_null
+    //   836: astore 8
+    //   838: aload_2
+    //   839: astore_1
+    //   840: aload 8
+    //   842: astore_2
+    //   843: goto -141 -> 702
+    //   846: astore_0
+    //   847: aload 11
+    //   849: astore 7
+    //   851: aload 10
+    //   853: astore_1
+    //   854: aload 9
+    //   856: astore_2
+    //   857: aload 8
+    //   859: astore 6
+    //   861: goto -159 -> 702
+    //   864: astore_1
+    //   865: aconst_null
+    //   866: astore 7
+    //   868: aconst_null
+    //   869: astore_2
     //   870: aconst_null
-    //   871: astore_2
+    //   871: astore_0
     //   872: aconst_null
-    //   873: astore_0
-    //   874: aconst_null
-    //   875: astore 6
-    //   877: goto -583 -> 294
-    //   880: astore_1
+    //   873: astore 6
+    //   875: goto -581 -> 294
+    //   878: astore_1
+    //   879: aconst_null
+    //   880: astore_2
     //   881: aconst_null
-    //   882: astore_2
+    //   882: astore_0
     //   883: aconst_null
-    //   884: astore_0
-    //   885: aconst_null
-    //   886: astore 6
-    //   888: goto -594 -> 294
-    //   891: astore_1
-    //   892: aconst_null
-    //   893: astore_2
-    //   894: aload_0
-    //   895: astore 6
-    //   897: aconst_null
-    //   898: astore_0
-    //   899: goto -605 -> 294
-    //   902: astore 8
-    //   904: aconst_null
-    //   905: astore 7
-    //   907: aconst_null
-    //   908: astore_0
-    //   909: aload_1
-    //   910: astore 6
-    //   912: aconst_null
-    //   913: astore_2
-    //   914: aload 8
-    //   916: astore_1
-    //   917: goto -623 -> 294
-    //   920: astore 8
-    //   922: aconst_null
-    //   923: astore 7
-    //   925: aconst_null
-    //   926: astore_2
-    //   927: aload_1
-    //   928: astore 6
-    //   930: aconst_null
-    //   931: astore_0
-    //   932: aload 8
-    //   934: astore_1
-    //   935: goto -641 -> 294
-    //   938: astore_1
+    //   884: astore 6
+    //   886: goto -592 -> 294
+    //   889: astore_1
+    //   890: aconst_null
+    //   891: astore_2
+    //   892: aload_0
+    //   893: astore 6
+    //   895: aconst_null
+    //   896: astore_0
+    //   897: goto -603 -> 294
+    //   900: astore 8
+    //   902: aconst_null
+    //   903: astore 7
+    //   905: aconst_null
+    //   906: astore_0
+    //   907: aload_1
+    //   908: astore 6
+    //   910: aconst_null
+    //   911: astore_2
+    //   912: aload 8
+    //   914: astore_1
+    //   915: goto -621 -> 294
+    //   918: astore 8
+    //   920: aconst_null
+    //   921: astore 7
+    //   923: aconst_null
+    //   924: astore_2
+    //   925: aload_1
+    //   926: astore 6
+    //   928: aconst_null
+    //   929: astore_0
+    //   930: aload 8
+    //   932: astore_1
+    //   933: goto -639 -> 294
+    //   936: astore_1
+    //   937: aconst_null
+    //   938: astore_2
     //   939: aconst_null
-    //   940: astore_2
-    //   941: aconst_null
-    //   942: astore 8
-    //   944: aload_0
-    //   945: astore 6
-    //   947: aconst_null
-    //   948: astore 7
-    //   950: aload 8
-    //   952: astore_0
-    //   953: goto -659 -> 294
-    //   956: astore_1
+    //   940: astore 8
+    //   942: aload_0
+    //   943: astore 6
+    //   945: aconst_null
+    //   946: astore 7
+    //   948: aload 8
+    //   950: astore_0
+    //   951: goto -657 -> 294
+    //   954: astore_1
+    //   955: aconst_null
+    //   956: astore_2
     //   957: aconst_null
-    //   958: astore_2
-    //   959: aconst_null
-    //   960: astore_0
-    //   961: goto -667 -> 294
-    //   964: astore_1
-    //   965: aconst_null
-    //   966: astore_0
-    //   967: goto -673 -> 294
+    //   958: astore_0
+    //   959: goto -665 -> 294
+    //   962: astore_1
+    //   963: aconst_null
+    //   964: astore_0
+    //   965: goto -671 -> 294
+    //   968: astore_1
+    //   969: aload_0
     //   970: astore_1
-    //   971: aload_0
-    //   972: astore_1
-    //   973: goto -451 -> 522
-    //   976: astore_2
-    //   977: goto -506 -> 471
-    //   980: aconst_null
-    //   981: astore 7
-    //   983: goto -815 -> 168
+    //   971: goto -449 -> 522
+    //   974: astore_2
+    //   975: goto -504 -> 471
+    //   978: aconst_null
+    //   979: astore 7
+    //   981: goto -813 -> 168
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	986	0	paramContext	Context
-    //   0	986	1	paramString1	String
-    //   0	986	2	paramString2	String
+    //   0	984	0	paramContext	Context
+    //   0	984	1	paramString1	String
+    //   0	984	2	paramString2	String
     //   28	485	3	i	int
     //   4	482	4	j	int
     //   7	392	5	k	int
-    //   33	913	6	localObject1	Object
-    //   1	981	7	localObject2	Object
-    //   105	439	8	localObject3	Object
+    //   33	911	6	localObject1	Object
+    //   1	979	7	localObject2	Object
+    //   94	450	8	localObject3	Object
     //   770	10	8	localObject4	Object
-    //   803	5	8	localObject5	Object
-    //   813	10	8	localObject6	Object
-    //   838	22	8	localObject7	Object
-    //   902	13	8	localException1	java.lang.Exception
-    //   920	13	8	localException2	java.lang.Exception
-    //   942	9	8	localObject8	Object
-    //   94	763	9	localObject9	Object
-    //   228	626	10	str	String
-    //   225	625	11	localObject10	Object
+    //   798	8	8	localObject5	Object
+    //   811	10	8	localObject6	Object
+    //   836	22	8	localObject7	Object
+    //   900	13	8	localException1	java.lang.Exception
+    //   918	13	8	localException2	java.lang.Exception
+    //   940	9	8	localObject8	Object
+    //   105	750	9	localObject9	Object
+    //   228	624	10	str	String
+    //   225	623	11	localObject10	Object
     //   244	302	12	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
@@ -660,36 +658,36 @@ public class TemplateParser
     //   448	452	785	finally
     //   471	481	796	finally
     //   492	498	796	finally
-    //   498	502	813	finally
-    //   201	211	828	finally
-    //   211	223	836	finally
-    //   237	246	848	finally
-    //   260	265	848	finally
-    //   283	290	848	finally
-    //   308	323	848	finally
-    //   545	551	848	finally
-    //   86	123	866	java/lang/Exception
-    //   123	139	866	java/lang/Exception
-    //   139	165	866	java/lang/Exception
-    //   368	394	866	java/lang/Exception
-    //   429	438	866	java/lang/Exception
-    //   442	448	866	java/lang/Exception
-    //   172	188	880	java/lang/Exception
-    //   412	419	880	java/lang/Exception
-    //   188	193	891	java/lang/Exception
-    //   448	452	902	java/lang/Exception
-    //   471	481	920	java/lang/Exception
-    //   492	498	920	java/lang/Exception
-    //   498	502	938	java/lang/Exception
-    //   201	211	956	java/lang/Exception
-    //   211	223	964	java/lang/Exception
-    //   498	502	970	java/io/IOException
-    //   448	452	976	java/io/IOException
+    //   498	502	811	finally
+    //   201	211	826	finally
+    //   211	223	834	finally
+    //   237	246	846	finally
+    //   260	265	846	finally
+    //   283	290	846	finally
+    //   308	323	846	finally
+    //   545	551	846	finally
+    //   86	123	864	java/lang/Exception
+    //   123	139	864	java/lang/Exception
+    //   139	165	864	java/lang/Exception
+    //   368	394	864	java/lang/Exception
+    //   429	438	864	java/lang/Exception
+    //   442	448	864	java/lang/Exception
+    //   172	188	878	java/lang/Exception
+    //   412	419	878	java/lang/Exception
+    //   188	193	889	java/lang/Exception
+    //   448	452	900	java/lang/Exception
+    //   471	481	918	java/lang/Exception
+    //   492	498	918	java/lang/Exception
+    //   498	502	936	java/lang/Exception
+    //   201	211	954	java/lang/Exception
+    //   211	223	962	java/lang/Exception
+    //   498	502	968	java/io/IOException
+    //   448	452	974	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.parser.TemplateParser
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import Override;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -22,61 +21,35 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import aupt;
-import axrb;
-import axrk;
-import axrl;
-import axrm;
-import axrn;
-import axro;
-import axrq;
-import axrr;
-import axrs;
-import axrt;
-import axru;
-import axrv;
-import axrw;
-import axrx;
-import axrz;
-import axsa;
-import axsb;
-import axsc;
-import axsd;
-import axse;
-import axsg;
-import axsh;
-import axsi;
-import axss;
-import axtf;
-import axth;
-import bdla;
-import bdnr;
-import bdnv;
-import bdoe;
-import bdof;
-import bghi;
-import bhdj;
-import bhhn;
-import bikt;
-import bilh;
-import bilj;
 import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
+import com.tencent.mobileqq.structmsg.StructMsgElementFactory;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.ShareMsgHelper;
 import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
+import com.tencent.mobileqq.werewolves.WerewolvesObserver;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -93,59 +66,59 @@ public class GameRoomInviteActivity
 {
   public static SparseArray<String> a;
   public static String a;
-  public int a;
-  public long a;
+  protected int a;
+  protected long a;
   protected Handler a;
   protected View a;
   protected Button a;
   protected ImageView a;
-  public LinearLayout a;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   protected TextView a;
-  public axrb a;
-  public axsi a;
-  public axtf a;
-  protected bghi a;
-  bikt a;
-  protected bilh a;
-  public bilj a;
+  protected GameRoomAVController a;
+  protected GameRoomInviteActivity.UserGridAdapter a;
   protected PlayerInvitePanel a;
-  public RecentUserInvitePanel a;
-  public WereWolvesLoadingView a;
-  public List<axsh> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public View b;
+  RecentUserInvitePanel jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel;
+  WerewolvesDataManager jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager;
+  protected HttpWebCgiAsyncTask.Callback a;
+  WereWolvesLoadingView jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView;
+  WerewolvesHandler jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler;
+  protected WerewolvesObserver a;
+  WerewolvesPluginManager jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager;
+  List<GameRoomInviteActivity.GameRoomUser> jdField_a_of_type_JavaUtilList = new ArrayList();
+  protected boolean a;
+  protected int b;
+  protected long b;
+  protected View b;
   protected Button b;
   protected ImageView b;
-  public String b;
-  public List<axth> b;
-  public boolean b;
-  public int c;
+  protected String b;
+  List<WerewolvesDataManager.InviteUser> b;
+  protected boolean b;
+  protected int c;
   protected Button c;
   boolean c;
-  public int d;
-  public boolean d;
-  public boolean e = true;
-  public boolean f = false;
-  public boolean g;
+  int jdField_d_of_type_Int = 0;
+  boolean jdField_d_of_type_Boolean = false;
+  boolean e = true;
+  boolean f = false;
+  boolean g;
   
   static
   {
     jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    jdField_a_of_type_AndroidUtilSparseArray.put(-1, anvx.a(2131704589));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1000, anvx.a(2131704573));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1001, anvx.a(2131704579));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1002, anvx.a(2131704616));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1003, anvx.a(2131704612));
+    jdField_a_of_type_AndroidUtilSparseArray.put(-1, HardCodeUtil.a(2131705139));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1000, HardCodeUtil.a(2131705123));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1001, HardCodeUtil.a(2131705129));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1002, HardCodeUtil.a(2131705166));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1003, HardCodeUtil.a(2131705162));
     jdField_a_of_type_AndroidUtilSparseArray.put(1004, "邀请id不存在");
     jdField_a_of_type_AndroidUtilSparseArray.put(1005, "接受邀请时uin已经存在");
-    jdField_a_of_type_AndroidUtilSparseArray.put(1006, anvx.a(2131704619));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1007, anvx.a(2131704592));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1008, anvx.a(2131704564));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1009, anvx.a(2131704581));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1010, anvx.a(2131704587));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1011, anvx.a(2131704593));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1006, HardCodeUtil.a(2131705169));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1007, HardCodeUtil.a(2131705142));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1008, HardCodeUtil.a(2131705114));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1009, HardCodeUtil.a(2131705131));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1010, HardCodeUtil.a(2131705137));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1011, HardCodeUtil.a(2131705143));
   }
   
   public GameRoomInviteActivity()
@@ -158,30 +131,27 @@ public class GameRoomInviteActivity
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_c_of_type_Int = 1000;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Bilh = new axro(this);
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver = new GameRoomInviteActivity.13(this);
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Bghi = new axrx(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new GameRoomInviteActivity.21(this);
   }
   
   private Intent a()
   {
     Object localObject2 = "mqqapi://qwerewolf/openInvitationRoom?src_type=app&version=1&from=test&invitorId=" + this.jdField_b_of_type_JavaLangString + "&roomNum=" + this.jdField_a_of_type_Int;
-    String str = this.app.getCurrentNickname() + anvx.a(2131704618);
+    String str = this.app.getCurrentNickname() + HardCodeUtil.a(2131705168);
     Object localObject1;
     if (this.jdField_a_of_type_Int == 10) {
       if (this.jdField_b_of_type_Int == 1) {
-        localObject1 = anvx.a(2131704569);
+        localObject1 = HardCodeUtil.a(2131705119);
       }
     }
     for (;;)
     {
-      localObject2 = new bdnr(StructMsgForGeneralShare.class).c(105).a(str).a("plugin", null, (String)localObject2, null, null).a(anvx.a(2131704544), null).f("https://nearby.qq.com/werewolf/game-overview.html?_bid=2652&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0&_wv=16779011&_wwv=5&from=9").a();
-      bdnv localbdnv = bdoe.a(2);
-      localbdnv.a("https://p.qpic.cn/qqconadmin/0/642c0594c9494bfa85666b448c3bfa68/0", str, (String)localObject1, 0);
-      ((AbsShareMsg)localObject2).addItem(localbdnv);
+      localObject2 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(105).a(str).a("plugin", null, (String)localObject2, null, null).a(HardCodeUtil.a(2131705094), null).f("https://nearby.qq.com/werewolf/game-overview.html?_bid=2652&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0&_wv=16779011&_wwv=5&from=9").a();
+      AbsStructMsgItem localAbsStructMsgItem = StructMsgElementFactory.a(2);
+      localAbsStructMsgItem.a("https://p.qpic.cn/qqconadmin/0/642c0594c9494bfa85666b448c3bfa68/0", str, (String)localObject1, 0);
+      ((AbsShareMsg)localObject2).addItem(localAbsStructMsgItem);
       ((AbsShareMsg)localObject2).mCommentText = null;
       localObject1 = new Intent();
       ((Intent)localObject1).putExtra("forward_type", 41);
@@ -190,16 +160,16 @@ public class GameRoomInviteActivity
       return localObject1;
       if (this.jdField_b_of_type_Int == 2)
       {
-        localObject1 = anvx.a(2131704548);
+        localObject1 = HardCodeUtil.a(2131705098);
       }
       else
       {
         localObject1 = "基础10人局轻松碾压，一起开黑一起high！";
         continue;
         if (this.jdField_a_of_type_Int == 12) {
-          localObject1 = anvx.a(2131704560);
+          localObject1 = HardCodeUtil.a(2131705110);
         } else {
-          localObject1 = anvx.a(2131704566);
+          localObject1 = HardCodeUtil.a(2131705116);
         }
       }
     }
@@ -207,42 +177,42 @@ public class GameRoomInviteActivity
   
   private void a(String paramString, int paramInt)
   {
-    AbsStructMsg localAbsStructMsg = bdof.a(a().getByteArrayExtra("stuctmsg_bytes"));
+    AbsStructMsg localAbsStructMsg = StructMsgFactory.a(a().getByteArrayExtra("stuctmsg_bytes"));
     if (localAbsStructMsg == null) {
       return;
     }
-    bhhn.a(this.app, paramString, paramInt, localAbsStructMsg, null);
-    this.jdField_a_of_type_Axtf.a(paramString, paramInt, this.jdField_b_of_type_JavaLangString);
+    ShareMsgHelper.a(this.app, paramString, paramInt, localAbsStructMsg, null);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(paramString, paramInt, this.jdField_b_of_type_JavaLangString);
   }
   
-  public axsh a()
+  public GameRoomInviteActivity.GameRoomUser a()
   {
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        axsh localaxsh = (axsh)localIterator.next();
-        if (localaxsh.jdField_a_of_type_JavaLangString.equals(this.app.getCurrentAccountUin())) {
-          return localaxsh;
+        GameRoomInviteActivity.GameRoomUser localGameRoomUser = (GameRoomInviteActivity.GameRoomUser)localIterator.next();
+        if (localGameRoomUser.jdField_a_of_type_JavaLangString.equals(this.app.getCurrentAccountUin())) {
+          return localGameRoomUser;
         }
       }
     }
     return null;
   }
   
-  public void a()
+  protected void a()
   {
     if (this.jdField_a_of_type_Boolean)
     {
       if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131704542));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131705092));
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_c_of_type_AndroidWidgetButton.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetButton.setText(anvx.a(2131704549));
+        this.jdField_c_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131705099));
         this.jdField_c_of_type_AndroidWidgetButton.setTextColor(-1);
-        this.jdField_c_of_type_AndroidWidgetButton.setBackgroundResource(2130841356);
+        this.jdField_c_of_type_AndroidWidgetButton.setBackgroundResource(2130841496);
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
@@ -260,8 +230,8 @@ public class GameRoomInviteActivity
         this.jdField_b_of_type_AndroidViewView.setVisibility(4);
       }
     }
-    axsh localaxsh = a();
-    if (localaxsh != null)
+    GameRoomInviteActivity.GameRoomUser localGameRoomUser = a();
+    if (localGameRoomUser != null)
     {
       this.jdField_c_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -270,22 +240,22 @@ public class GameRoomInviteActivity
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       this.jdField_b_of_type_AndroidViewView.setEnabled(true);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (localaxsh.jdField_a_of_type_Boolean)
+      if (localGameRoomUser.jdField_a_of_type_Boolean)
       {
-        this.jdField_c_of_type_AndroidWidgetButton.setText(anvx.a(2131704607));
-        this.jdField_c_of_type_AndroidWidgetButton.setBackgroundResource(2130841359);
+        this.jdField_c_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131705157));
+        this.jdField_c_of_type_AndroidWidgetButton.setBackgroundResource(2130841499);
         this.jdField_c_of_type_AndroidWidgetButton.setTextColor(-16777216);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131704561));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131705111));
       }
     }
     for (;;)
     {
       this.jdField_b_of_type_AndroidViewView.setVisibility(4);
       break;
-      this.jdField_c_of_type_AndroidWidgetButton.setText(anvx.a(2131704615));
-      this.jdField_c_of_type_AndroidWidgetButton.setBackgroundResource(2130841356);
+      this.jdField_c_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131705165));
+      this.jdField_c_of_type_AndroidWidgetButton.setBackgroundResource(2130841496);
       this.jdField_c_of_type_AndroidWidgetButton.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131704562));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131705112));
       continue;
       this.jdField_c_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -330,11 +300,11 @@ public class GameRoomInviteActivity
         }
         if (paramInt == 1009)
         {
-          paramString = bhdj.a(this, 230);
+          paramString = DialogUtil.a(this, 230);
           paramString.setTitle(localObject2);
           paramString.setMessage((CharSequence)localObject3);
-          paramString.setPositiveButton(anvx.a(2131704536), new axrq(this, paramRspBody));
-          paramString.setNegativeButton(2131690697, new axrr(this, paramString));
+          paramString.setPositiveButton(HardCodeUtil.a(2131705086), new GameRoomInviteActivity.14(this, paramRspBody));
+          paramString.setNegativeButton(2131690800, new GameRoomInviteActivity.15(this, paramString));
           if (!isFinishing()) {
             paramString.show();
           }
@@ -351,7 +321,7 @@ public class GameRoomInviteActivity
                 return;
                 if (paramInt == 1008)
                 {
-                  this.jdField_a_of_type_Bikt.a(new axrs(this, localObject2, (String)localObject3));
+                  this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(new GameRoomInviteActivity.16(this, localObject2, (String)localObject3));
                   return;
                 }
                 if ((paramInt != 1004) && (paramInt != 1006) && (paramInt != 1010)) {
@@ -375,7 +345,7 @@ public class GameRoomInviteActivity
               break;
             }
           } while (isFinishing());
-          axss.a(this, localObject2, (String)localObject3);
+          GameRoomUtils.a(this, localObject2, (String)localObject3);
           return;
         } while ((paramInt == -1) || (isFinishing()));
         QQToast.a(this, 1, (CharSequence)localObject4, 0).a();
@@ -387,7 +357,7 @@ public class GameRoomInviteActivity
   }
   
   /* Error */
-  public void a(com.tencent.mobileqq.data.HotChatInfo paramHotChatInfo, int paramInt, String paramString1, String paramString2)
+  protected void a(com.tencent.mobileqq.data.HotChatInfo paramHotChatInfo, int paramInt, String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aload_0
@@ -405,11 +375,11 @@ public class GameRoomInviteActivity
     //   18: iload_2
     //   19: aload_3
     //   20: aload 4
-    //   22: invokestatic 481	axss:a	(Landroid/content/Context;Lcom/tencent/mobileqq/data/HotChatInfo;ILjava/lang/String;Ljava/lang/String;)V
+    //   22: invokestatic 481	com/tencent/mobileqq/nearby/gameroom/GameRoomUtils:a	(Landroid/content/Context;Lcom/tencent/mobileqq/data/HotChatInfo;ILjava/lang/String;Ljava/lang/String;)V
     //   25: aload_0
     //   26: getfield 156	com/tencent/mobileqq/nearby/gameroom/GameRoomInviteActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   29: aload_0
-    //   30: getfield 111	com/tencent/mobileqq/nearby/gameroom/GameRoomInviteActivity:jdField_a_of_type_Bilh	Lbilh;
+    //   30: getfield 111	com/tencent/mobileqq/nearby/gameroom/GameRoomInviteActivity:jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver	Lcom/tencent/mobileqq/werewolves/WerewolvesObserver;
     //   33: invokevirtual 485	com/tencent/mobileqq/app/QQAppInterface:removeObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
     //   36: aload_0
     //   37: iconst_1
@@ -436,25 +406,25 @@ public class GameRoomInviteActivity
     //   16	45	48	finally
   }
   
-  public void a(String paramString1, String paramString2)
+  protected void a(String paramString1, String paramString2)
   {
-    bdla.b(this.app, "dc00899", "Grp_wolf", "", paramString1, paramString2, 0, 0, "", "", "", "");
+    ReportController.b(this.app, "dc00899", "Grp_wolf", "", paramString1, paramString2, 0, 0, "", "", "", "");
   }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  protected void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    QQCustomDialog localQQCustomDialog = bhdj.a(this, 230);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     localQQCustomDialog.setTitle(paramString1);
     localQQCustomDialog.setMessage(paramString2);
-    localQQCustomDialog.setNegativeButton(2131690499, new axru(this, paramBoolean));
-    localQQCustomDialog.setPositiveButton(anvx.a(2131704588), new axrv(this));
+    localQQCustomDialog.setNegativeButton(2131690601, new GameRoomInviteActivity.18(this, paramBoolean));
+    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131705138), new GameRoomInviteActivity.19(this));
     if (!isFinishing()) {
       localQQCustomDialog.show();
     }
     this.e = false;
   }
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean)
   {
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setVisibility(8);
@@ -467,16 +437,16 @@ public class GameRoomInviteActivity
       e();
       return;
     }
-    this.jdField_a_of_type_Bikt.a(new axsa(this, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(new GameRoomInviteActivity.4(this, paramBoolean));
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
   {
     if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals(paramString1))) {}
     do
     {
       return;
-      paramString1 = bhdj.a(this, 230, paramString2, paramString3, anvx.a(2131704551), anvx.a(2131704577), new axsc(this, paramBoolean, paramString1), new axsd(this));
+      paramString1 = DialogUtil.a(this, 230, paramString2, paramString3, HardCodeUtil.a(2131705101), HardCodeUtil.a(2131705127), new GameRoomInviteActivity.6(this, paramBoolean, paramString1), new GameRoomInviteActivity.7(this));
     } while (isFinishing());
     paramString1.show();
   }
@@ -484,40 +454,40 @@ public class GameRoomInviteActivity
   protected void b()
   {
     if (!NetworkUtils.isNetworkAvailable(this)) {
-      QQToast.a(this, 1, 2131694255, 1).a();
+      QQToast.a(this, 1, 2131694459, 1).a();
     }
-    bikt localbikt;
+    WerewolvesHandler localWerewolvesHandler;
     do
     {
       return;
-      localbikt = (bikt)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER);
+      localWerewolvesHandler = (WerewolvesHandler)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER);
     } while (!this.jdField_a_of_type_Boolean);
     if (this.jdField_b_of_type_AndroidWidgetButton.getVisibility() == 0)
     {
-      localbikt.a(new axse(this, localbikt));
+      localWerewolvesHandler.a(new GameRoomInviteActivity.8(this, localWerewolvesHandler));
       a("start_page", "clk_start");
       return;
     }
-    localbikt.b(this.jdField_b_of_type_JavaLangString, new axsg(this));
+    localWerewolvesHandler.b(this.jdField_b_of_type_JavaLangString, new GameRoomInviteActivity.9(this));
     a("invite_page", "clk_start");
   }
   
-  public void c()
+  protected void c()
   {
     if (!NetworkUtils.isNetworkAvailable(this))
     {
-      QQToast.a(this, 1, 2131694255, 1).a();
+      QQToast.a(this, 1, 2131694459, 1).a();
       return;
     }
-    ((bikt)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new axrl(this));
+    ((WerewolvesHandler)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new GameRoomInviteActivity.10(this));
     a("start_page", "clk_invite");
   }
   
-  public void d()
+  protected void d()
   {
-    bikt localbikt = (bikt)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER);
+    WerewolvesHandler localWerewolvesHandler = (WerewolvesHandler)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER);
     this.jdField_b_of_type_AndroidViewView.setEnabled(false);
-    localbikt.a(this.jdField_b_of_type_JavaLangString, false, new axrm(this));
+    localWerewolvesHandler.a(this.jdField_b_of_type_JavaLangString, false, new GameRoomInviteActivity.11(this));
   }
   
   @Override
@@ -532,19 +502,19 @@ public class GameRoomInviteActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559536);
-    this.jdField_a_of_type_Axrb = axrb.a();
-    this.jdField_a_of_type_Bikt = ((bikt)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER));
-    this.jdField_a_of_type_Bilj = this.jdField_a_of_type_Bikt.a("");
-    this.jdField_a_of_type_Axtf = ((axtf)this.app.getManager(QQManagerFactory.WEREWOLVES_MANAGER));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131367555));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131367549));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378000);
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131367554));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367556));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363486));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368525));
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView = ((WereWolvesLoadingView)findViewById(2131372968));
+    setContentView(2131559608);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController = GameRoomAVController.a();
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler = ((WerewolvesHandler)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER));
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a("");
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager = ((WerewolvesDataManager)this.app.getManager(QQManagerFactory.WEREWOLVES_MANAGER));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131367746));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131367740));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131378419);
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131367745));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367747));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363573));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368755));
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView = ((WereWolvesLoadingView)findViewById(2131373294));
     this.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(null);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -557,22 +527,22 @@ public class GameRoomInviteActivity
     this.jdField_b_of_type_Boolean = paramBundle.getBooleanExtra("isInviteTroop", true);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      paramBundle = findViewById(2131376760);
+      paramBundle = findViewById(2131377159);
       localObject = (RelativeLayout.LayoutParams)paramBundle.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.dip2px(this, 25.0F);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.a(this, 25.0F);
       paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    findViewById(2131369231).setOnClickListener(new axrk(this));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131369239);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new axrw(this));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel = ((RecentUserInvitePanel)findViewById(2131368990));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.setOnClickListener(new axrz(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368989));
+    findViewById(2131369487).setOnClickListener(new GameRoomInviteActivity.1(this));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131369495);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new GameRoomInviteActivity.2(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel = ((RecentUserInvitePanel)findViewById(2131369222));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.setOnClickListener(new GameRoomInviteActivity.3(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369221));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel = ((PlayerInvitePanel)findViewById(2131367557));
-    this.jdField_a_of_type_Axsi = new axsi(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel = ((PlayerInvitePanel)findViewById(2131367748));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity$UserGridAdapter = new GameRoomInviteActivity.UserGridAdapter(this, null);
     this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel.setColumnCount(6);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel.setAdapter(this.jdField_a_of_type_Axsi);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel.setAdapter(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity$UserGridAdapter);
     paramBundle = URLDrawable.URLDrawableOptions.obtain();
     Object localObject = new ColorDrawable(Color.parseColor("#323e6f"));
     paramBundle.mFailedDrawable = ((Drawable)localObject);
@@ -587,11 +557,11 @@ public class GameRoomInviteActivity
     this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
     if (!NetworkUtils.isNetworkAvailable(this)) {
-      QQToast.a(this, 1, 2131694255, 1).a();
+      QQToast.a(this, 1, 2131694459, 1).a();
     }
     for (;;)
     {
-      this.app.addObserver(this.jdField_a_of_type_Bilh);
+      this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver);
       return true;
       h();
     }
@@ -600,7 +570,7 @@ public class GameRoomInviteActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.removeObserver(this.jdField_a_of_type_Bilh);
+    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_AndroidOsHandler = null;
   }
@@ -609,7 +579,7 @@ public class GameRoomInviteActivity
   {
     super.doOnNewIntent(paramIntent);
     setIntent(paramIntent);
-    this.jdField_a_of_type_Axtf = ((axtf)this.app.getManager(QQManagerFactory.WEREWOLVES_MANAGER));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager = ((WerewolvesDataManager)this.app.getManager(QQManagerFactory.WEREWOLVES_MANAGER));
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       setIntent(paramIntent);
@@ -623,56 +593,56 @@ public class GameRoomInviteActivity
       a(true);
       return;
     }
-    this.jdField_a_of_type_Bikt.a(new axsb(this));
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(new GameRoomInviteActivity.5(this));
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Axrb.jdField_c_of_type_Boolean = false;
-    axsh localaxsh = a();
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (localaxsh != null) && (localaxsh.jdField_a_of_type_Boolean)) {
-      axrb.a().a(0, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, 0L, null);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.jdField_c_of_type_Boolean = false;
+    GameRoomInviteActivity.GameRoomUser localGameRoomUser = a();
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (localGameRoomUser != null) && (localGameRoomUser.jdField_a_of_type_Boolean)) {
+      GameRoomAVController.a().a(0, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, 0L, null);
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Axrb.jdField_c_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Axrb.a() == 0) {
-      this.jdField_a_of_type_Axrb.d();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.jdField_c_of_type_Boolean = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.a() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.d();
     }
-    this.jdField_a_of_type_Axrb.e();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.e();
   }
   
-  public void e()
+  protected void e()
   {
     if (!NetworkUtils.isNetworkAvailable(this)) {}
-    bikt localbikt;
+    WerewolvesHandler localWerewolvesHandler;
     do
     {
       return;
-      localbikt = (bikt)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER);
+      localWerewolvesHandler = (WerewolvesHandler)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER);
     } while (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
-    localbikt.a(this.jdField_b_of_type_JavaLangString, new axrn(this));
+    localWerewolvesHandler.a(this.jdField_b_of_type_JavaLangString, new GameRoomInviteActivity.12(this));
   }
   
-  public void f()
+  protected void f()
   {
-    aupt.a(this, a(), 111);
+    ForwardBaseOption.a(this, a(), 111);
   }
   
   public void finish()
   {
-    axsh localaxsh = a();
-    if ((localaxsh != null) && (!localaxsh.jdField_a_of_type_Boolean)) {
+    GameRoomInviteActivity.GameRoomUser localGameRoomUser = a();
+    if ((localGameRoomUser != null) && (!localGameRoomUser.jdField_a_of_type_Boolean)) {
       d();
     }
     super.finish();
   }
   
-  public void g()
+  protected void g()
   {
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
@@ -683,12 +653,12 @@ public class GameRoomInviteActivity
   
   public void h()
   {
-    if (!this.jdField_a_of_type_Bilj.a())
+    if (!this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a())
     {
       this.jdField_d_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.b();
-      this.jdField_a_of_type_Bilj.a();
+      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
       a("load_page", "in_cnt");
       return;
     }
@@ -697,19 +667,19 @@ public class GameRoomInviteActivity
   
   void i()
   {
-    axsh localaxsh = a();
-    if (localaxsh == null) {
+    GameRoomInviteActivity.GameRoomUser localGameRoomUser = a();
+    if (localGameRoomUser == null) {
       return;
     }
-    if (!localaxsh.jdField_a_of_type_Boolean) {
+    if (!localGameRoomUser.jdField_a_of_type_Boolean) {
       a("invite_page", "clk_ready");
     }
-    bikt localbikt = this.jdField_a_of_type_Bikt;
+    WerewolvesHandler localWerewolvesHandler = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler;
     String str = this.jdField_b_of_type_JavaLangString;
-    if (!localaxsh.jdField_a_of_type_Boolean) {}
+    if (!localGameRoomUser.jdField_a_of_type_Boolean) {}
     for (boolean bool = true;; bool = false)
     {
-      localbikt.b(str, bool, new axrt(this, localaxsh));
+      localWerewolvesHandler.b(str, bool, new GameRoomInviteActivity.17(this, localGameRoomUser));
       return;
     }
   }
@@ -742,23 +712,23 @@ public class GameRoomInviteActivity
     {
       Object localObject1 = new Intent();
       ((Intent)localObject1).putExtras(paramIntent);
-      Object localObject2 = bdof.a(((Intent)localObject1).getByteArrayExtra("stuctmsg_bytes"));
+      Object localObject2 = StructMsgFactory.a(((Intent)localObject1).getByteArrayExtra("stuctmsg_bytes"));
       if (localObject2 == null) {
         return;
       }
       String str = ((Intent)localObject1).getStringExtra("uin");
       i = ((Intent)localObject1).getIntExtra("uintype", -1);
-      bhhn.a(this.app, str, i, (AbsStructMsg)localObject2, null);
-      this.jdField_a_of_type_Axtf.a(str, i, this.jdField_b_of_type_JavaLangString);
+      ShareMsgHelper.a(this.app, str, i, (AbsStructMsg)localObject2, null);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(str, i, this.jdField_b_of_type_JavaLangString);
       localObject1 = this.jdField_b_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (axth)((Iterator)localObject1).next();
-        if ((((axth)localObject2).jdField_a_of_type_Int == i) && (((axth)localObject2).jdField_a_of_type_JavaLangString.equals(str))) {
-          if (!((axth)localObject2).jdField_a_of_type_Boolean)
+        localObject2 = (WerewolvesDataManager.InviteUser)((Iterator)localObject1).next();
+        if ((((WerewolvesDataManager.InviteUser)localObject2).jdField_a_of_type_Int == i) && (((WerewolvesDataManager.InviteUser)localObject2).jdField_a_of_type_JavaLangString.equals(str))) {
+          if (!((WerewolvesDataManager.InviteUser)localObject2).jdField_a_of_type_Boolean)
           {
-            ((axth)localObject2).jdField_a_of_type_Boolean = true;
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a((axth)localObject2);
+            ((WerewolvesDataManager.InviteUser)localObject2).jdField_a_of_type_Boolean = true;
+            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a((WerewolvesDataManager.InviteUser)localObject2);
           }
         }
       }

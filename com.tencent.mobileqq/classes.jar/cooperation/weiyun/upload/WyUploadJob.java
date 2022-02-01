@@ -1,7 +1,5 @@
 package cooperation.weiyun.upload;
 
-import bmtp;
-import bmtr;
 import com.tencent.weiyun.uploader.IReporter;
 import com.tencent.weiyun.uploader.IUploader;
 import com.tencent.weiyun.uploader.IUploader.IUploadListener;
@@ -14,21 +12,21 @@ import java.io.File;
 public class WyUploadJob
   implements IUploader, Runnable
 {
-  private volatile int jdField_a_of_type_Int;
+  private volatile int jdField_a_of_type_Int = 0;
   private IUploader.IUploadListener jdField_a_of_type_ComTencentWeiyunUploaderIUploader$IUploadListener;
   protected UploadRequest a;
   protected File a;
   protected volatile boolean a;
-  protected volatile boolean b;
+  protected volatile boolean b = false;
+  
+  public WyUploadJob()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
   
   public int a()
   {
     return this.jdField_a_of_type_Int;
-  }
-  
-  bmtp a(UploadRequest paramUploadRequest)
-  {
-    return new bmtr(paramUploadRequest, this);
   }
   
   UploadResponse a(int paramInt)
@@ -37,6 +35,11 @@ public class WyUploadJob
     localBuilder.request(this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest);
     localBuilder.code(paramInt);
     return localBuilder.build();
+  }
+  
+  Transfer a(UploadRequest paramUploadRequest)
+  {
+    return new UploadTransfer(paramUploadRequest, this);
   }
   
   void a()
@@ -163,7 +166,7 @@ public class WyUploadJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.weiyun.upload.WyUploadJob
  * JD-Core Version:    0.7.0.1
  */

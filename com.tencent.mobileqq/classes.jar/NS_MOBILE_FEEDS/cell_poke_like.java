@@ -9,8 +9,8 @@ public final class cell_poke_like
   extends JceStruct
 {
   static ArrayList<String> cache_emotion_id = new ArrayList();
-  public int count;
-  public ArrayList<String> emotion_id;
+  public int count = 0;
+  public ArrayList<String> emotion_id = null;
   
   static
   {

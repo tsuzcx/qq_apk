@@ -4,17 +4,17 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public final class ShareImageUtils$4
+final class ShareImageUtils$4
   implements Runnable
 {
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(2131694684), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(2131694921), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.4
  * JD-Core Version:    0.7.0.1
  */

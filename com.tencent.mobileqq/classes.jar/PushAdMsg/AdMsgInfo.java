@@ -8,10 +8,10 @@ public final class AdMsgInfo
   extends JceStruct
 {
   public String strMsgContent = "";
-  public long uDstUin;
-  public int uMsgType;
-  public long uSrcUin;
-  public long utime;
+  public long uDstUin = 0L;
+  public int uMsgType = 0;
+  public long uSrcUin = 0L;
+  public long utime = 0L;
   
   public AdMsgInfo() {}
   

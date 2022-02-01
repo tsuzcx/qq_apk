@@ -11,8 +11,8 @@ class QZoneMsgFragment$7
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QZoneMsgFragment.access$1100(this.this$0) != null) {
-      QZoneMsgFragment.access$1100(this.this$0).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (QZoneMsgFragment.access$1300(this.this$0) != null) {
+      QZoneMsgFragment.access$1300(this.this$0).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
@@ -23,17 +23,20 @@ class QZoneMsgFragment$7
     }
     for (;;)
     {
-      if (QZoneMsgFragment.access$1100(this.this$0) != null) {
-        QZoneMsgFragment.access$1100(this.this$0).onScrollStateChanged(paramAbsListView, paramInt);
+      if (QZoneMsgFragment.access$1300(this.this$0) != null) {
+        QZoneMsgFragment.access$1300(this.this$0).onScrollStateChanged(paramAbsListView, paramInt);
       }
       return;
       QZoneMsgFragment.access$300(this.this$0);
+      if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) {
+        QZoneMsgFragment.access$1200(this.this$0);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.7
  * JD-Core Version:    0.7.0.1
  */

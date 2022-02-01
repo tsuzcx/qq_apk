@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.splashad;
 
 import android.text.TextUtils;
-import bmoq;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.utils.Tools;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public final class SplashADUtil$1
+final class SplashADUtil$1
   implements Runnable
 {
-  public SplashADUtil$1(int paramInt, String paramString) {}
+  SplashADUtil$1(int paramInt, String paramString) {}
   
   public void run()
   {
@@ -54,7 +54,7 @@ public final class SplashADUtil$1
           continue;
         }
         localObject2 = ((String)localObject3).replace("__APP__", MD5Utils.encodeHexStr("android_qq_splash"));
-        localObject3 = bmoq.b();
+        localObject3 = Tools.b();
         String str = "";
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
           continue;

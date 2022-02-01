@@ -14,6 +14,7 @@ public final class TroopTips0x857$QQGroupDigestMsg
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field digest_oper = PBField.initUInt64(0L);
+  public final PBInt32Field ext_info = PBField.initInt32(0);
   public final PBUInt64Field group_code = PBField.initUInt64(0L);
   public final PBUInt32Field lastest_msg_seq = PBField.initUInt32(0);
   public final PBUInt32Field msg_random = PBField.initUInt32(0);
@@ -28,12 +29,12 @@ public final class TroopTips0x857$QQGroupDigestMsg
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74, 82 }, new String[] { "group_code", "msg_seq", "msg_random", "op_type", "msg_sender", "digest_oper", "op_time", "lastest_msg_seq", "oper_nick", "sender_nick" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, QQGroupDigestMsg.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74, 82, 88 }, new String[] { "group_code", "msg_seq", "msg_random", "op_type", "msg_sender", "digest_oper", "op_time", "lastest_msg_seq", "oper_nick", "sender_nick", "ext_info" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, QQGroupDigestMsg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.TroopTips0x857.QQGroupDigestMsg
  * JD-Core Version:    0.7.0.1
  */

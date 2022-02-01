@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import pvm;
-import tja;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class FastWebArticleInfo$2$1$1
+class FastWebArticleInfo$2$1$1
   implements Runnable
 {
-  public FastWebArticleInfo$2$1$1(tja paramtja) {}
+  FastWebArticleInfo$2$1$1(FastWebArticleInfo.2.1 param1) {}
   
   public void run()
   {
-    pvm.a().c();
+    ReadInJoyLogicEngineEventDispatcher.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo.2.1.1
  * JD-Core Version:    0.7.0.1
  */

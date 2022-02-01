@@ -135,7 +135,7 @@ public class QGJavaScriptView
     return this.mGLThread.getRenderMode();
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if ((this.mDetached) && (this.mRenderer != null)) {
@@ -156,7 +156,7 @@ public class QGJavaScriptView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     if (this.mGLThread != null) {
       this.mGLThread.requestExitAndWait();
@@ -288,7 +288,7 @@ public class QGJavaScriptView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qg.sdk.QGJavaScriptView
  * JD-Core Version:    0.7.0.1
  */

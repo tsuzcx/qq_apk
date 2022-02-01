@@ -24,7 +24,7 @@ class ReportUtil$ReportRunnable
     //   1: astore_2
     //   2: aconst_null
     //   3: astore_3
-    //   4: getstatic 34	acwy:b	Ljava/lang/String;
+    //   4: getstatic 34	com/tencent/kingkong/Constant:b	Ljava/lang/String;
     //   7: astore_1
     //   8: new 36	java/lang/StringBuilder
     //   11: dup
@@ -71,7 +71,7 @@ class ReportUtil$ReportRunnable
     //   111: aload 4
     //   113: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   119: invokestatic 81	acwx:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   119: invokestatic 81	com/tencent/kingkong/Common$Log:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   122: ldc 74
     //   124: new 36	java/lang/StringBuilder
     //   127: dup
@@ -81,7 +81,7 @@ class ReportUtil$ReportRunnable
     //   136: aload 5
     //   138: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   144: invokestatic 81	acwx:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   144: invokestatic 81	com/tencent/kingkong/Common$Log:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   147: new 36	java/lang/StringBuilder
     //   150: dup
     //   151: invokespecial 37	java/lang/StringBuilder:<init>	()V
@@ -95,7 +95,7 @@ class ReportUtil$ReportRunnable
     //   171: astore_1
     //   172: ldc 74
     //   174: aload_1
-    //   175: invokestatic 81	acwx:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   175: invokestatic 81	com/tencent/kingkong/Common$Log:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   178: new 87	java/net/URL
     //   181: dup
     //   182: aload_1
@@ -129,7 +129,7 @@ class ReportUtil$ReportRunnable
     //   238: invokevirtual 119	java/io/InputStreamReader:close	()V
     //   241: ldc 74
     //   243: ldc 121
-    //   245: invokestatic 81	acwx:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   245: invokestatic 81	com/tencent/kingkong/Common$Log:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   248: return
     //   249: astore_1
     //   250: ldc 123
@@ -141,7 +141,7 @@ class ReportUtil$ReportRunnable
     //   264: aload_1
     //   265: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   268: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   271: invokestatic 81	acwx:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   271: invokestatic 81	com/tencent/kingkong/Common$Log:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   274: return
     //   275: astore_1
     //   276: new 130	java/io/StringWriter
@@ -164,7 +164,7 @@ class ReportUtil$ReportRunnable
     //   311: invokevirtual 143	java/io/StringWriter:toString	()Ljava/lang/String;
     //   314: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   317: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   320: invokestatic 81	acwx:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   320: invokestatic 81	com/tencent/kingkong/Common$Log:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   323: goto -82 -> 241
     //   326: astore_1
     //   327: aconst_null
@@ -189,7 +189,7 @@ class ReportUtil$ReportRunnable
     //   367: invokevirtual 143	java/io/StringWriter:toString	()Ljava/lang/String;
     //   370: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   373: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   376: invokestatic 81	acwx:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   376: invokestatic 81	com/tencent/kingkong/Common$Log:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   379: aload_3
     //   380: ifnull +7 -> 387
     //   383: aload_3
@@ -220,7 +220,7 @@ class ReportUtil$ReportRunnable
     //   434: invokevirtual 143	java/io/StringWriter:toString	()Ljava/lang/String;
     //   437: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   440: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   443: invokestatic 81	acwx:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   443: invokestatic 81	com/tencent/kingkong/Common$Log:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   446: goto -205 -> 241
     //   449: astore_1
     //   450: aconst_null
@@ -260,7 +260,7 @@ class ReportUtil$ReportRunnable
     //   512: invokevirtual 143	java/io/StringWriter:toString	()Ljava/lang/String;
     //   515: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   518: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   521: invokestatic 81	acwx:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   521: invokestatic 81	com/tencent/kingkong/Common$Log:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   524: goto -50 -> 474
     //   527: astore 4
     //   529: aconst_null
@@ -333,7 +333,7 @@ class ReportUtil$ReportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.kingkong.ReportUtil.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

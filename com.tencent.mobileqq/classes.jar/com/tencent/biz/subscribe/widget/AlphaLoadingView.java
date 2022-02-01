@@ -1,6 +1,5 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaaq;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -42,7 +41,7 @@ public class AlphaLoadingView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidOsHandler = new aaaq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new AlphaLoadingView.1(this);
   }
   
   private int a(int paramInt, boolean paramBoolean)
@@ -92,13 +91,13 @@ public class AlphaLoadingView
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     a();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     b();
@@ -107,7 +106,7 @@ public class AlphaLoadingView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i = 255;
     int j = 30;
@@ -141,13 +140,13 @@ public class AlphaLoadingView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(a(paramInt1, true), a(paramInt2, false));
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_Int = paramInt1;
@@ -167,7 +166,7 @@ public class AlphaLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AlphaLoadingView
  * JD-Core Version:    0.7.0.1
  */

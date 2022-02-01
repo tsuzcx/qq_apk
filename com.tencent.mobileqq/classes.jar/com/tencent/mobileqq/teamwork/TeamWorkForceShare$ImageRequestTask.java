@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.graphics.BitmapFactory.Options;
-import beak;
-import bheg;
 import com.tencent.mobileqq.transfile.HttpDownloader;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-public class TeamWorkForceShare$ImageRequestTask
+class TeamWorkForceShare$ImageRequestTask
   implements Runnable
 {
-  private beak jdField_a_of_type_Beak;
-  private String jdField_a_of_type_JavaLangString;
+  private BitmapDecodedListener jdField_a_of_type_ComTencentMobileqqTeamworkBitmapDecodedListener;
+  private String jdField_a_of_type_JavaLangString = null;
   
-  public TeamWorkForceShare$ImageRequestTask(TeamWorkForceShare paramTeamWorkForceShare, String paramString, beak parambeak)
+  public TeamWorkForceShare$ImageRequestTask(TeamWorkForceShare paramTeamWorkForceShare, String paramString, BitmapDecodedListener paramBitmapDecodedListener)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Beak = parambeak;
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkBitmapDecodedListener = paramBitmapDecodedListener;
   }
   
   /* Error */
@@ -28,10 +27,10 @@ public class TeamWorkForceShare$ImageRequestTask
     //   3: dup
     //   4: invokespecial 29	com/tencent/mobileqq/transfile/HttpDownloader:<init>	()V
     //   7: astore_3
-    //   8: new 31	beca
+    //   8: new 31	com/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask$1
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 34	beca:<init>	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask;)V
+    //   13: invokespecial 34	com/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask$1:<init>	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask;)V
     //   16: astore 4
     //   18: new 36	com/tencent/image/DownloadParams
     //   21: dup
@@ -144,7 +143,7 @@ public class TeamWorkForceShare$ImageRequestTask
     //   7	63	3	localHttpDownloader	HttpDownloader
     //   94	28	3	localException4	java.lang.Exception
     //   194	1	3	localException5	java.lang.Exception
-    //   16	58	4	localbeca	beca
+    //   16	58	4	local1	TeamWorkForceShare.ImageRequestTask.1
     //   25	47	5	localDownloadParams	com.tencent.image.DownloadParams
     // Exception table:
     //   from	to	target	type
@@ -174,14 +173,14 @@ public class TeamWorkForceShare$ImageRequestTask
       localOptions.inJustDecodeBounds = true;
       try
       {
-        bheg.a(((File)localObject2).getAbsolutePath(), localOptions);
-        if (localOptions.outWidth > DeviceInfoUtil.getPortraitWidth()) {
-          localOptions.inSampleSize = ((int)(DeviceInfoUtil.getPortraitWidth() / localOptions.outWidth));
+        ImageUtil.a(((File)localObject2).getAbsolutePath(), localOptions);
+        if (localOptions.outWidth > DeviceInfoUtil.i()) {
+          localOptions.inSampleSize = ((int)(DeviceInfoUtil.i() / localOptions.outWidth));
         }
         localOptions.inJustDecodeBounds = false;
         try
         {
-          localObject2 = bheg.a(((File)localObject2).getAbsolutePath(), localOptions);
+          localObject2 = ImageUtil.a(((File)localObject2).getAbsolutePath(), localOptions);
           localObject1 = localObject2;
         }
         catch (OutOfMemoryError localOutOfMemoryError1)
@@ -192,8 +191,8 @@ public class TeamWorkForceShare$ImageRequestTask
             QLog.d(TeamWorkForceShare.a(), 1, "oom, url = " + this.jdField_a_of_type_JavaLangString);
           }
         }
-        if (this.jdField_a_of_type_Beak != null) {
-          this.jdField_a_of_type_Beak.a(localObject1);
+        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBitmapDecodedListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqTeamworkBitmapDecodedListener.a(localObject1);
         }
         return true;
       }
@@ -208,8 +207,8 @@ public class TeamWorkForceShare$ImageRequestTask
     if (paramBoolean)
     {
       QLog.d(TeamWorkForceShare.a(), 1, "file not exist, url = " + this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Beak != null) {
-        this.jdField_a_of_type_Beak.a(null);
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBitmapDecodedListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkBitmapDecodedListener.a(null);
       }
     }
     return false;

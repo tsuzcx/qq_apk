@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.debug.page;
 
-import amsa;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -9,7 +8,7 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 public abstract class CmGameDebugBaseFragment
   extends ReportV4Fragment
 {
-  public amsa a;
+  public CmGameDebugBaseFragment.DebugViewCallback a;
   
   public void a()
   {
@@ -18,9 +17,9 @@ public abstract class CmGameDebugBaseFragment
     }
   }
   
-  public void a(amsa paramamsa)
+  public void a(CmGameDebugBaseFragment.DebugViewCallback paramDebugViewCallback)
   {
-    this.a = paramamsa;
+    this.a = paramDebugViewCallback;
   }
   
   public void onDestroy()
@@ -36,7 +35,7 @@ public abstract class CmGameDebugBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.debug.page.CmGameDebugBaseFragment
  * JD-Core Version:    0.7.0.1
  */

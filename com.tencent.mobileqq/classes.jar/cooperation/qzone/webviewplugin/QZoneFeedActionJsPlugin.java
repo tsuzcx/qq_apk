@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.QZoneHelper;
@@ -38,8 +38,8 @@ public class QZoneFeedActionJsPlugin
   public static final String TAG = "QZoneFeedActionJsPlugin";
   public static final String UNIQUE_KEY_FEEDACTION_ACTIVE = "FeedAction#isActive";
   public static String name = "";
-  public static boolean sAcceptEncoded;
-  private boolean acceptEncoded;
+  public static boolean sAcceptEncoded = false;
+  private boolean acceptEncoded = false;
   private String mSwitchFontCallback;
   
   private void handleFeedActionPanel(String... paramVarArgs)
@@ -789,7 +789,7 @@ public class QZoneFeedActionJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneFeedActionJsPlugin
  * JD-Core Version:    0.7.0.1
  */

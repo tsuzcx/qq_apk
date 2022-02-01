@@ -14,25 +14,25 @@ class QQCustomDialogWtihEmoticonInput$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.this$0.mViewEmoBtn.setImageResource(2130840191);
-    this.this$0.mViewEmoBtn.setTag(Integer.valueOf(2130840191));
-    if (this.this$0.mIsWindowAdded)
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840282);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840282));
+    if (this.a.c)
     {
-      QQCustomDialogWtihEmoticonInput.access$100(this.this$0);
-      if (!this.this$0.useAIOStyle) {
+      QQCustomDialogWtihEmoticonInput.a(this.a);
+      if (!this.a.jdField_a_of_type_Boolean) {
         break label110;
       }
-      this.this$0.mWindowManager.removeView(this.this$0.mViewEmoSpace);
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
     }
     for (;;)
     {
-      this.this$0.mIsWindowAdded = false;
-      paramView = this.this$0.getWindow().getAttributes();
+      this.a.c = false;
+      paramView = this.a.getWindow().getAttributes();
       paramView.y = 0;
-      this.this$0.getWindow().setAttributes(paramView);
+      this.a.getWindow().setAttributes(paramView);
       return false;
       label110:
-      this.this$0.mWindowManager.removeView(this.this$0.mOldViewEmoSpace);
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
     }
   }
 }

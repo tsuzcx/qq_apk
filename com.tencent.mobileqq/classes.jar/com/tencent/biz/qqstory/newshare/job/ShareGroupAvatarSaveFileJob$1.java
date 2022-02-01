@@ -1,21 +1,20 @@
 package com.tencent.biz.qqstory.newshare.job;
 
-import wwm;
-import xqx;
+import com.tencent.biz.qqstory.shareGroup.icon.RestrictedBitmap;
 
-public class ShareGroupAvatarSaveFileJob$1
+class ShareGroupAvatarSaveFileJob$1
   implements Runnable
 {
-  public ShareGroupAvatarSaveFileJob$1(wwm paramwwm, xqx paramxqx) {}
+  ShareGroupAvatarSaveFileJob$1(ShareGroupAvatarSaveFileJob paramShareGroupAvatarSaveFileJob, RestrictedBitmap paramRestrictedBitmap) {}
   
   public void run()
   {
-    wwm.a(this.this$0, wwm.a(this.this$0, this.a));
+    ShareGroupAvatarSaveFileJob.a(this.this$0, ShareGroupAvatarSaveFileJob.a(this.this$0, this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1
  * JD-Core Version:    0.7.0.1
  */

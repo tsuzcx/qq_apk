@@ -12,12 +12,12 @@ public final class get_parenting_photo_list_req
   static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumid = "";
   public String attach_info = "";
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String ciphertext = "";
   public String password = "";
-  public int share_flag;
-  public int type;
-  public long uin;
+  public int share_flag = 0;
+  public int type = 0;
+  public long uin = 0L;
   
   static
   {

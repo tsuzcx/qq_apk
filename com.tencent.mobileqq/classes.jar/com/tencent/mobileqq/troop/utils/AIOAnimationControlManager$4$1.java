@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bggl;
-import bggs;
-
-public class AIOAnimationControlManager$4$1
+class AIOAnimationControlManager$4$1
   implements Runnable
 {
-  public AIOAnimationControlManager$4$1(bggs parambggs) {}
+  AIOAnimationControlManager$4$1(AIOAnimationControlManager.4 param4) {}
   
   public void run()
   {

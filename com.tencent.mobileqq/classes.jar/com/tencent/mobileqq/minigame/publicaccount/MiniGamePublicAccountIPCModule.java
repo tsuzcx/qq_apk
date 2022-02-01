@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import apau;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.applets.PublicAccountEventReport;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mobileqq.minigame.publicaccount.model.QQGameMsgInfo;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -33,6 +34,26 @@ public class MiniGamePublicAccountIPCModule
     super(paramString);
   }
   
+  @Nullable
+  private JSONObject getArkModel(JSONObject paramJSONObject, String[] paramArrayOfString)
+  {
+    if (paramJSONObject == null) {}
+    for (;;)
+    {
+      return null;
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        JSONObject localJSONObject = paramJSONObject.optJSONObject(paramArrayOfString[i]);
+        if (localJSONObject != null) {
+          return localJSONObject;
+        }
+        i += 1;
+      }
+    }
+  }
+  
   public static MiniGamePublicAccountIPCModule getInstance()
   {
     if (instance == null) {}
@@ -51,7 +72,7 @@ public class MiniGamePublicAccountIPCModule
     try
     {
       int j = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePublicAccountMsgListCount", 4);
-      List localList = paramQQAppInterface.getMessageFacade().getMessages(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, 10);
+      List localList = paramQQAppInterface.getMessageFacade().a(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, 10);
       ArrayList localArrayList = new ArrayList();
       int i;
       if ((localList != null) && (localList.size() > 0)) {
@@ -107,32 +128,26 @@ public class MiniGamePublicAccountIPCModule
         paramMessageRecord = new JSONObject((String)localObject1).optString("report_key_bytes_oac_msg_extend", "");
         if (!TextUtils.isEmpty(paramMessageRecord))
         {
-          Bundle localBundle = apau.a(paramMessageRecord);
+          Bundle localBundle = PublicAccountEventReport.a(paramMessageRecord);
           if ((localBundle != null) && (!TextUtils.isEmpty(paramQQGameMsgInfo.arkMetaList)))
           {
-            localObject2 = new JSONObject(paramQQGameMsgInfo.arkMetaList);
-            localObject1 = ((JSONObject)localObject2).optJSONObject("xmodal");
-            paramMessageRecord = (MessageRecord)localObject1;
-            if (localObject1 == null)
-            {
-              localObject1 = ((JSONObject)localObject2).optJSONObject("notification");
-              paramMessageRecord = (MessageRecord)localObject1;
-              if (localObject1 == null) {
-                return;
-              }
+            paramMessageRecord = new JSONObject(paramQQGameMsgInfo.arkMetaList);
+            localObject1 = getArkModel(paramMessageRecord, new String[] { "xmodal", "notification", "qqgame_model" });
+            if (localObject1 == null) {
+              return;
             }
-            paramMessageRecord.put("isFromPublicLandingPage", true);
-            paramMessageRecord.put("msgExposePosition", paramInt);
-            localObject1 = new JSONObject();
-            ((JSONObject)localObject1).put("adId", paramQQGameMsgInfo.advId);
-            ((JSONObject)localObject1).put("appid", "vab_push");
-            ((JSONObject)localObject1).put("traceId", paramString + "_" + System.currentTimeMillis() / 1000L);
+            ((JSONObject)localObject1).put("isFromPublicLandingPage", true);
+            ((JSONObject)localObject1).put("msgExposePosition", paramInt);
+            localObject2 = new JSONObject();
+            ((JSONObject)localObject2).put("adId", paramQQGameMsgInfo.advId);
+            ((JSONObject)localObject2).put("appid", "vab_push");
+            ((JSONObject)localObject2).put("traceId", paramString + "_" + System.currentTimeMillis() / 1000L);
             paramString = localBundle.getString("busi_info");
             if (!TextUtils.isEmpty(paramString)) {
-              ((JSONObject)localObject1).put("traceInfo", paramString);
+              ((JSONObject)localObject2).put("traceInfo", paramString);
             }
-            paramMessageRecord.put("tianshuAdData", localObject1);
-            paramQQGameMsgInfo.arkMetaList = ((JSONObject)localObject2).toString();
+            ((JSONObject)localObject1).put("tianshuAdData", localObject2);
+            paramQQGameMsgInfo.arkMetaList = paramMessageRecord.toString();
             return;
           }
         }
@@ -158,7 +173,7 @@ public class MiniGamePublicAccountIPCModule
         return null;
       }
     } while (!"action_do_on_resume".equals(paramString));
-    ((QQAppInterface)paramBundle).getMessageFacade().setReaded(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, true, true);
+    ((QQAppInterface)paramBundle).getMessageFacade().a(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, true, true);
     return null;
   }
 }

@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.config.handlers.ChannelListDynamicOrderConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.push.RIJKanDianFolderStatus;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
 import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
-import olh;
 import org.json.JSONObject;
-import oxo;
-import pkh;
-import plh;
-import prp;
-import pvj;
-import qez;
 
-public final class ChannelCoverView$3
+final class ChannelCoverView$3
   implements Runnable
 {
-  public ChannelCoverView$3(ChannelCoverInfo paramChannelCoverInfo, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  ChannelCoverView$3(ChannelCoverInfo paramChannelCoverInfo, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public final class ChannelCoverView$3
       try
       {
         localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("folder_status", prp.jdField_a_of_type_Int);
+        ((JSONObject)localObject1).put("folder_status", RIJKanDianFolderStatus.jdField_a_of_type_Int);
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
           ((JSONObject)localObject1).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
         }
@@ -37,7 +37,7 @@ public final class ChannelCoverView$3
           i = 2;
         }
         ((JSONObject)localObject1).put("network_type", i);
-        if (this.jdField_a_of_type_Int != oxo.jdField_a_of_type_Int) {
+        if (this.jdField_a_of_type_Int != ChannelCoverView.jdField_a_of_type_Int) {
           continue;
         }
         ((JSONObject)localObject1).put("channel_type", "2");
@@ -68,12 +68,12 @@ public final class ChannelCoverView$3
         ((JSONObject)localObject1).put("location", this.c + 1);
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
-        ((JSONObject)localObject1).put("is_change", plh.a(pkh.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId));
+        ((JSONObject)localObject1).put("is_change", ChannelListDynamicOrderConfigHandler.a(ReadInJoyUtils.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId));
       }
       ((JSONObject)localObject1).put("style", 0);
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId == 41695))
       {
-        localObject2 = pvj.a().a();
+        localObject2 = ReadInJoyLogicEngine.a().a();
         if (localObject2 != null)
         {
           localObject2 = ((SelectPositionModule)localObject2).a();
@@ -88,7 +88,7 @@ public final class ChannelCoverView$3
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null)
       {
-        if ((qez.a() != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId) || (qez.a() == 0)) {
+        if ((ChannelCoverInfoModule.a() != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId) || (ChannelCoverInfoModule.a() == 0)) {
           continue;
         }
         ((JSONObject)localObject1).put("channelid_to_mainfeeds", 1);
@@ -97,9 +97,9 @@ public final class ChannelCoverView$3
       if (QLog.isColorLevel()) {
         QLog.d("ChannelCoverView", 2, "reportRecommendEvent actionName =" + this.jdField_a_of_type_JavaLangString + "; reportString = " + (String)localObject1);
       }
-      olh.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", (String)localObject1, false);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", (String)localObject1, false);
       return;
-      if (this.jdField_a_of_type_Int == oxo.b) {
+      if (this.jdField_a_of_type_Int == ChannelCoverView.b) {
         ((JSONObject)localObject1).put("channel_type", "1");
       }
     }
@@ -107,7 +107,7 @@ public final class ChannelCoverView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView.3
  * JD-Core Version:    0.7.0.1
  */

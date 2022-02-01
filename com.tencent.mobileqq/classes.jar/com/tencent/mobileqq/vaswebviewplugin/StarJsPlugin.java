@@ -2,16 +2,16 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import ascz;
-import asdd;
-import ashz;
-import bhgy;
-import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 import org.json.JSONException;
@@ -40,13 +40,13 @@ public class StarJsPlugin
     {
       JSONObject localJSONObject = new JSONObject();
       str = paramJSONObject.getString("nickname");
-      if (bhgy.a(this.browserApp.getApp(), new String[] { str }))
+      if (QQUtils.a(this.browserApp.getApp(), new String[] { str }))
       {
         localJSONObject.put("ret", -2);
         super.callJs(paramString + "(" + localJSONObject.toString() + ");");
         return;
       }
-      if (!NetworkUtil.isNetSupport(this.browserApp.getApplication().getApplicationContext()))
+      if (!NetworkUtil.d(this.browserApp.getApplication().getApplicationContext()))
       {
         localJSONObject.put("ret", -3);
         super.callJs(paramString + "(" + localJSONObject.toString() + ");");
@@ -66,8 +66,8 @@ public class StarJsPlugin
     this.mReqBundle.putString("nickname", str);
     this.mReqBundle.putString("starhomeurl", paramJSONObject.getString("starhomeurl"));
     this.mReqBundle.putString("sid", paramJSONObject.getString("starid"));
-    paramJSONObject = asdd.a("createShortcut", paramString, this.mOnRemoteResp.key, this.mReqBundle);
-    ashz.a().a(paramJSONObject);
+    paramJSONObject = DataFactory.a("createShortcut", paramString, this.mOnRemoteResp.key, this.mReqBundle);
+    WebIPCOperator.a().a(paramJSONObject);
   }
   
   protected long getPluginBusiness()
@@ -170,7 +170,7 @@ public class StarJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.StarJsPlugin
  * JD-Core Version:    0.7.0.1
  */

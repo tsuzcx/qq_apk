@@ -11,9 +11,9 @@ public final class UniGetRsp
   static NamePlate cache_stNamePlate = new NamePlate();
   static ArrayList<UniBusinessItem> cache_uniBusinessItemList = new ArrayList();
   public String errmsg = "";
-  public int ret;
-  public NamePlate stNamePlate;
-  public ArrayList<UniBusinessItem> uniBusinessItemList;
+  public int ret = 0;
+  public NamePlate stNamePlate = null;
+  public ArrayList<UniBusinessItem> uniBusinessItemList = null;
   
   static
   {

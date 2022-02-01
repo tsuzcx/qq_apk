@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aktz;
-import albw;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 
@@ -16,9 +16,9 @@ class CustomizeStrategyFactory$2
     {
       if (!CustomizeStrategyFactory.a(this.this$0))
       {
-        QQAppInterface localQQAppInterface = albw.a();
+        QQAppInterface localQQAppInterface = QWalletTools.a();
         if (localQQAppInterface != null) {
-          this.this$0.a = ((aktz)localQQAppInterface.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER));
+          this.this$0.a = ((QWalletConfigManager)localQQAppInterface.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER));
         }
         if (this.this$0.a != null) {
           this.this$0.a.c("redPack", this.this$0);
@@ -30,7 +30,7 @@ class CustomizeStrategyFactory$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.2
  * JD-Core Version:    0.7.0.1
  */

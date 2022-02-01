@@ -10,13 +10,13 @@ public final class Software
   public String category = "";
   public String cpname = "";
   public String downloadCountDesc = "";
-  public int nCommentCount;
-  public int nDownloadCount;
-  public int nFileId;
-  public int nFileSize;
-  public int nProductId;
-  public byte nScore;
-  public int nSoftId;
+  public int nCommentCount = 0;
+  public int nDownloadCount = 0;
+  public int nFileId = 0;
+  public int nFileSize = 0;
+  public int nProductId = 0;
+  public byte nScore = 0;
+  public int nSoftId = 0;
   public String sFee = "";
   public String sFeedesc = "";
   public String sFileuid = "";
@@ -28,7 +28,7 @@ public final class Software
   public String sPublishTime = "";
   public String sSoftName = "";
   public String sSoftVersion = "";
-  public int supportdevice;
+  public int supportdevice = 0;
   
   public Software() {}
   

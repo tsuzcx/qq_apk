@@ -75,24 +75,38 @@ public class WebAudioManager
       ((JSONObject)localObject).put("audioId", i);
       return localObject;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      while (this.logDelegate == null) {}
+      this.logDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "createAudioContext error:", localThrowable);
+    }
     return localObject;
   }
   
   public JSONObject createBuffer(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    Object localObject;
     if ((AudioContext)this.audioContextHashMap.get(Integer.valueOf(paramInt1)) == null) {
-      return null;
+      localObject = null;
     }
-    paramInt1 = AudioNativeManager.createBuffer(paramInt2, paramInt3 * paramInt2 * 2, paramInt4);
-    this.audioBufferList.add(Integer.valueOf(paramInt1));
-    JSONObject localJSONObject = new JSONObject();
-    try
+    JSONObject localJSONObject;
+    do
     {
-      localJSONObject.put("bufferId", paramInt1);
-      return localJSONObject;
-    }
-    catch (Throwable localThrowable) {}
+      return localObject;
+      paramInt1 = AudioNativeManager.createBuffer(paramInt2, paramInt3 * paramInt2 * 2, paramInt4);
+      this.audioBufferList.add(Integer.valueOf(paramInt1));
+      localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("bufferId", paramInt1);
+        return localJSONObject;
+      }
+      catch (Throwable localThrowable)
+      {
+        localObject = localJSONObject;
+      }
+    } while (this.logDelegate == null);
+    this.logDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "createBuffer error:", localThrowable);
     return localJSONObject;
   }
   
@@ -100,17 +114,26 @@ public class WebAudioManager
   {
     Object localObject = (AudioContext)this.audioContextHashMap.get(Integer.valueOf(paramInt));
     if (localObject == null) {
-      return null;
+      localObject = null;
     }
-    paramInt = ((AudioContext)localObject).createBufferSource();
-    localObject = new JSONObject();
-    try
+    JSONObject localJSONObject;
+    do
     {
-      ((JSONObject)localObject).put("channelId", paramInt);
       return localObject;
-    }
-    catch (Throwable localThrowable) {}
-    return localObject;
+      paramInt = ((AudioContext)localObject).createBufferSource();
+      localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("channelId", paramInt);
+        return localJSONObject;
+      }
+      catch (Throwable localThrowable)
+      {
+        localObject = localJSONObject;
+      }
+    } while (this.logDelegate == null);
+    this.logDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "createBufferSource error:", localThrowable);
+    return localJSONObject;
   }
   
   public void createScriptProcessor(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -326,42 +349,42 @@ public class WebAudioManager
     //   1: istore 5
     //   3: aconst_null
     //   4: astore 6
-    //   6: new 182	java/io/File
+    //   6: new 202	java/io/File
     //   9: dup
     //   10: aload_2
-    //   11: invokespecial 185	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 205	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore_2
     //   15: aload_2
-    //   16: invokevirtual 188	java/io/File:exists	()Z
+    //   16: invokevirtual 208	java/io/File:exists	()Z
     //   19: ifne +26 -> 45
     //   22: aload_2
-    //   23: invokevirtual 348	java/io/File:getParentFile	()Ljava/io/File;
-    //   26: invokevirtual 188	java/io/File:exists	()Z
+    //   23: invokevirtual 356	java/io/File:getParentFile	()Ljava/io/File;
+    //   26: invokevirtual 208	java/io/File:exists	()Z
     //   29: ifne +11 -> 40
     //   32: aload_2
-    //   33: invokevirtual 348	java/io/File:getParentFile	()Ljava/io/File;
-    //   36: invokevirtual 351	java/io/File:mkdirs	()Z
+    //   33: invokevirtual 356	java/io/File:getParentFile	()Ljava/io/File;
+    //   36: invokevirtual 359	java/io/File:mkdirs	()Z
     //   39: pop
     //   40: aload_2
-    //   41: invokevirtual 354	java/io/File:createNewFile	()Z
+    //   41: invokevirtual 362	java/io/File:createNewFile	()Z
     //   44: pop
-    //   45: new 356	java/io/FileOutputStream
+    //   45: new 364	java/io/FileOutputStream
     //   48: dup
     //   49: aload_2
     //   50: iload_3
-    //   51: invokespecial 359	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   51: invokespecial 367	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   54: astore_2
     //   55: aload_2
     //   56: aload_1
     //   57: iconst_0
     //   58: iload 4
-    //   60: invokevirtual 363	java/io/FileOutputStream:write	([BII)V
+    //   60: invokevirtual 371	java/io/FileOutputStream:write	([BII)V
     //   63: aload_2
-    //   64: invokevirtual 366	java/io/FileOutputStream:flush	()V
+    //   64: invokevirtual 374	java/io/FileOutputStream:flush	()V
     //   67: aload_2
     //   68: ifnull +7 -> 75
     //   71: aload_2
-    //   72: invokevirtual 369	java/io/FileOutputStream:close	()V
+    //   72: invokevirtual 377	java/io/FileOutputStream:close	()V
     //   75: iconst_1
     //   76: istore_3
     //   77: iload_3
@@ -374,7 +397,7 @@ public class WebAudioManager
     //   85: aload_1
     //   86: ifnull -9 -> 77
     //   89: aload_1
-    //   90: invokevirtual 369	java/io/FileOutputStream:close	()V
+    //   90: invokevirtual 377	java/io/FileOutputStream:close	()V
     //   93: iconst_0
     //   94: ireturn
     //   95: astore_1
@@ -386,7 +409,7 @@ public class WebAudioManager
     //   102: aload_2
     //   103: ifnull +7 -> 110
     //   106: aload_2
-    //   107: invokevirtual 369	java/io/FileOutputStream:close	()V
+    //   107: invokevirtual 377	java/io/FileOutputStream:close	()V
     //   110: aload_1
     //   111: athrow
     //   112: astore_1

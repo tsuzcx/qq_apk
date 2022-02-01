@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import awpl;
-import awpm;
 import com.tencent.image.URLDrawable;
 
-public class LoginwelcomeHelper$1$1
+class LoginwelcomeHelper$1$1
   implements Runnable
 {
-  public LoginwelcomeHelper$1$1(awpm paramawpm, URLDrawable paramURLDrawable) {}
+  LoginwelcomeHelper$1$1(LoginwelcomeHelper.1 param1, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    awpl.a(this.jdField_a_of_type_Awpm.a, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    LoginwelcomeHelper.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginwelcomeHelper$1.a, this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

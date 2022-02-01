@@ -6,8 +6,8 @@ import android.os.Looper;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.c.k;
-import com.tencent.mobileqq.msf.core.w;
+import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.o;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -63,7 +63,7 @@ public class d
         }
         this.b = new CopyOnWriteArrayList();
         this.c = new CopyOnWriteArrayList();
-        Object localObject = w.e();
+        Object localObject = o.e();
         if (localObject == null) {
           return;
         }

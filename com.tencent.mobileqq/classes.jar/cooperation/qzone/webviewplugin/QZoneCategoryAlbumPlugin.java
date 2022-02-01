@@ -1,10 +1,10 @@
 package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
-import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import org.json.JSONObject;
@@ -47,7 +47,7 @@ public class QZoneCategoryAlbumPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneCategoryAlbumPlugin
  * JD-Core Version:    0.7.0.1
  */

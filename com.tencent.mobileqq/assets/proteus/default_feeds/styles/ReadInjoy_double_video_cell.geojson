@@ -393,25 +393,66 @@
                     }
                   },
                   {
-                    "view_type":"UILabel",
-                    "view_id":"id_left_item_title",
-                    "above_of_view":"id_left_info_item",
-                    "margin_left":"8",
-                    "margin_right":"8",
-                    "margin_bottom":"5",
-                    "height":{
-                      "type":"wrap_content"
-                    },
-                    "width":{
-                      "type":"match_parent"
-                    },
-                    "attributes":{
-                      "setText:lineSpace:":["$left_article_title","1"],
-                      "setTextColorString:":"#ffffff",
-                      "setBoldFontSizeString:":"16",
-                      "setNumberOfLinesString:":"$title_num",
-                      "setText:": "$left_item_title"
-                    }
+                      "view_type": "UIView",
+                      "view_id": "id_left_item_title_container",
+                      "above_of_view":"id_left_info_item",
+                      "visible_depend_on_children" :"YES",
+                      "margin_left":"8",
+                      "margin_right":"8",
+                      "margin_bottom":"5",
+                      "height":{
+                        "type":"wrap_content"
+                      },
+                      "width":{
+                        "type":"match_parent"
+                      },
+                      "subviews": [
+                          {
+                            "view_type":"UILabel",
+                            "view_id":"id_left_item_title",
+                            "height":{
+                              "type":"wrap_content"
+                            },
+                            "width":{
+                              "type":"match_parent"
+                            },
+                            "attributes":{
+                              "setText:lineSpace:":["$left_article_title","1"],
+                              "setTextColorString:":"#ffffff",
+                              "setBoldFontSizeString:":"16",
+                              "setNumberOfLinesString:":"$left_title_num",
+                              "setText:": "$left_item_title"
+                            }
+                          },
+                          {
+                              "view_type":"PTSRichTextView",
+                              "view_id": "id_left_richtext_title",
+                              "height":{
+                                "type":"wrap_content"
+                              },
+                              "width":{
+                                "type":"match_parent"
+                              },
+                              "attributes":{
+                                  "setBackgroundColorString:" :"#00000000",
+                                  "setRichData:":[
+                                   {
+                                    "truncationAttrs": {
+                                           "font-size": "16px",
+                                           "font-weight" :"bold",
+                                           "color": "#FFFFFF"
+                                       },
+                                      "name":"strong",
+                                      "attrs":{
+                                          "class":"div_class",
+                                          "style":"font-size:16px;line-height: 21px;color: #FFFFFF;-webkit-line-clamp:${left_rich_text_line}"
+                                      },
+                                      "children":"$left_rich_text_info"
+                                   }
+                                 ]
+                              }
+                          }
+                      ]
                   },
                   {
                     "view_type":"UILabel",
@@ -426,7 +467,7 @@
                     "padding_right":"3.5",
                     "margin_left":"9",
                     "margin_bottom":"5",
-                    "above_of_view":"id_left_item_title",
+                    "above_of_view":"id_left_item_title_container",
                     "attributes":{
                       "setTextAlignmentString:": "1",
                       "setFontSizeString:": "10",
@@ -990,25 +1031,66 @@
                     }
                   },
                   {
-                    "view_type":"UILabel",
-                    "view_id":"id_right_item_title",
-                    "above_of_view":"id_right_info_item",
-                    "margin_left":"8",
-                    "margin_right":"8",
-                    "margin_bottom":"5",
-                    "height":{
-                      "type":"wrap_content"
-                    },
-                    "width":{
-                      "type":"match_parent"
-                    },
-                    "attributes":{
-                      "setText:lineSpace:":["$right_article_title","1"],
-                      "setTextColorString:":"#ffffff",
-                      "setBoldFontSizeString:":"16",
-                      "setNumberOfLinesString:":"$title_num",
-                      "setText:": "$right_item_title"
-                    }
+                      "view_type": "UIView",
+                      "view_id": "id_right_item_title_container",
+                      "above_of_view":"id_right_info_item",
+                      "visible_depend_on_children" :"YES",
+                      "margin_left":"8",
+                      "margin_right":"8",
+                      "margin_bottom":"5",
+                      "height":{
+                        "type":"wrap_content"
+                      },
+                      "width":{
+                        "type":"match_parent"
+                      },
+                      "subviews": [
+                          {
+                            "view_type":"UILabel",
+                            "view_id":"id_right_item_title",
+                            "height":{
+                              "type":"wrap_content"
+                            },
+                            "width":{
+                              "type":"match_parent"
+                            },
+                            "attributes":{
+                              "setText:lineSpace:":["$right_article_title","1"],
+                              "setTextColorString:":"#ffffff",
+                              "setBoldFontSizeString:":"16",
+                              "setNumberOfLinesString:":"$right_title_num",
+                              "setText:": "$right_item_title"
+                            }
+                          },
+                          {
+                              "view_type":"PTSRichTextView",
+                              "view_id": "id_right_richtext_title",
+                              "height":{
+                                "type":"wrap_content"
+                              },
+                              "width":{
+                                "type":"match_parent"
+                              },
+                              "attributes":{
+                                  "setBackgroundColorString:" :"#00000000",
+                                  "setRichData:":[
+                                   {
+                                    "truncationAttrs": {
+                                           "font-size": "16px",
+                                           "font-weight" :"bold",
+                                           "color": "#FFFFFF"
+                                       },
+                                      "name":"strong",
+                                      "attrs":{
+                                          "class":"div_class",
+                                          "style":"font-size:16px;line-height: 21px;color: #FFFFFF;-webkit-line-clamp:${right_rich_text_line}"
+                                      },
+                                      "children":"$right_rich_text_info"
+                                   }
+                                 ]
+                              }
+                          }
+                      ]
                   },
                   {
                     "view_type":"UILabel",
@@ -1023,7 +1105,7 @@
                     "padding_right":"3.5",
                     "margin_left":"9",
                     "margin_bottom":"5",
-                    "above_of_view":"id_right_item_title",
+                    "above_of_view":"id_right_item_title_container",
                     "attributes":{
                       "setTextAlignmentString:": "1",
                       "setFontSizeString:": "10",

@@ -18,14 +18,14 @@ public class EmojiStickerManager$StickerFrameLayout
   public ImageView a()
   {
     if (this.a == null) {
-      this.a = ((ImageView)findViewById(2131362368));
+      this.a = ((ImageView)findViewById(2131362397));
     }
     return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout
  * JD-Core Version:    0.7.0.1
  */

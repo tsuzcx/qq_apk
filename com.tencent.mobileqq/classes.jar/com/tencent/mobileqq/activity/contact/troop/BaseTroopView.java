@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajdx;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,17 +8,17 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import bkyc;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class BaseTroopView
   extends FrameLayout
 {
   protected int a;
-  public ajdx a;
   View a;
-  public QQAppInterface a;
+  protected BaseTroopView.ITroopContext a;
+  protected QQAppInterface a;
   protected boolean a;
   View b;
   public boolean b;
@@ -30,11 +29,13 @@ public class BaseTroopView
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
   }
   
   public Activity a()
   {
-    return this.jdField_a_of_type_Ajdx.a();
+    return this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a();
   }
   
   public void a()
@@ -52,32 +53,32 @@ public class BaseTroopView
   
   public void a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Ajdx.a().sendEmptyMessageDelayed(paramInt, paramLong);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a().sendEmptyMessageDelayed(paramInt, paramLong);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Ajdx.a(paramInt, paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(paramInt, paramBoolean);
   }
   
-  public void a(Intent paramIntent)
+  protected void a(Intent paramIntent)
   {
     a(paramIntent, 0);
   }
   
   protected final void a(Intent paramIntent, int paramInt)
   {
-    this.jdField_a_of_type_Ajdx.a().startActivityForResult(paramIntent, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a().startActivityForResult(paramIntent, paramInt);
   }
   
-  protected void a(Intent paramIntent, ajdx paramajdx)
+  protected void a(Intent paramIntent, BaseTroopView.ITroopContext paramITroopContext)
   {
-    this.jdField_a_of_type_Ajdx = paramajdx;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Ajdx.a();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Ajdx.b();
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_Ajdx.c();
-    this.c = this.jdField_a_of_type_Ajdx.a();
-    this.d = this.jdField_a_of_type_Ajdx.d();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext = paramITroopContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a();
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.b();
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.c();
+    this.c = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a();
+    this.d = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.d();
   }
   
   public void a(BusinessObserver paramBusinessObserver)
@@ -90,11 +91,11 @@ public class BaseTroopView
   protected final void a(String paramString)
   {
     if (!a()) {
-      this.jdField_a_of_type_Ajdx.a(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(paramString);
     }
   }
   
-  public final boolean a()
+  protected final boolean a()
   {
     return this.jdField_a_of_type_Boolean;
   }
@@ -109,7 +110,7 @@ public class BaseTroopView
     this.jdField_b_of_type_Boolean = false;
   }
   
-  public final void b(int paramInt)
+  protected final void b(int paramInt)
   {
     a(getResources().getString(paramInt));
   }
@@ -141,7 +142,7 @@ public class BaseTroopView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.BaseTroopView
  * JD-Core Version:    0.7.0.1
  */

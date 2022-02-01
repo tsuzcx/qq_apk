@@ -8,7 +8,6 @@ final class QQManagerFactory$1
   QQManagerFactory$1()
   {
     add(Integer.valueOf(QQManagerFactory.MGR_NET_ENGINE));
-    add(Integer.valueOf(QQManagerFactory.VACD_REPORT_MANAGER));
     add(Integer.valueOf(QQManagerFactory.PHOTOLIST_CONFIG_MANAGER));
     add(Integer.valueOf(QQManagerFactory.CHECK_FORWARD_MANAGER));
     add(Integer.valueOf(QQManagerFactory.QZONE_GIFT_MANAGER));
@@ -20,7 +19,7 @@ final class QQManagerFactory$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQManagerFactory.1
  * JD-Core Version:    0.7.0.1
  */

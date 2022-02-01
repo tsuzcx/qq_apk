@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahbp;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 
-public class MixedMsgItemBuilder$2
+class MixedMsgItemBuilder$2
   implements Runnable
 {
-  public MixedMsgItemBuilder$2(ahbp paramahbp, String paramString, URLDrawable paramURLDrawable) {}
+  MixedMsgItemBuilder$2(MixedMsgItemBuilder paramMixedMsgItemBuilder, String paramString, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -22,7 +21,7 @@ public class MixedMsgItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

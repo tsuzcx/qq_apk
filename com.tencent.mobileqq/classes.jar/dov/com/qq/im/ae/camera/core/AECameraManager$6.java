@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bdbf;
-import bnrh;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class AECameraManager$6
@@ -11,10 +11,10 @@ class AECameraManager$6
   
   public void run()
   {
-    bnrh.b("AECameraManager", "cameraStopPreview---ENTER");
+    AEQLog.b("AECameraManager", "cameraStopPreview---ENTER");
     if (!AECameraManager.access$600(this.this$0))
     {
-      bnrh.d("AECameraManager", "cameraStopPreview---EXIT, is not previewing");
+      AEQLog.d("AECameraManager", "cameraStopPreview---EXIT, is not previewing");
       return;
     }
     AECameraManager.access$800(this.this$0).a(false);
@@ -23,7 +23,7 @@ class AECameraManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraManager.6
  * JD-Core Version:    0.7.0.1
  */

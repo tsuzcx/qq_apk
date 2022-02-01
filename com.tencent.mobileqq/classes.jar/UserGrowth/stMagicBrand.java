@@ -9,9 +9,9 @@ public final class stMagicBrand
 {
   static stSchema cache_schema = new stSchema();
   public String icon = "";
-  public stSchema schema;
+  public stSchema schema = null;
   public String text = "";
-  public int type;
+  public int type = 0;
   
   public stMagicBrand() {}
   

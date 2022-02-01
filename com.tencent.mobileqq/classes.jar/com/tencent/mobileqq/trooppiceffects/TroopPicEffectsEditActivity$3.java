@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import azkn;
-import azlg;
-import bgts;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.pic.PicUploadInfo;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.mobileqq.transfile.TransferRequest.PicUpExtraInfo;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 
 class TroopPicEffectsEditActivity$3
   implements Runnable
 {
-  TroopPicEffectsEditActivity$3(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity, azkn paramazkn) {}
+  TroopPicEffectsEditActivity$3(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity, PicUploadInfo paramPicUploadInfo) {}
   
   public void run()
   {
     this.this$0.app.getHwEngine().preConnect();
     Object localObject = new CompressInfo(this.a.g, 0);
     ((CompressInfo)localObject).f = 0;
-    azlg.a((CompressInfo)localObject);
+    CompressOperator.a((CompressInfo)localObject);
     TransferRequest localTransferRequest = new TransferRequest();
     localTransferRequest.mSelfUin = this.this$0.app.getAccount();
     localTransferRequest.mPeerUin = this.this$0.b;
@@ -34,12 +33,12 @@ class TroopPicEffectsEditActivity$3
     localObject = new TransferRequest.PicUpExtraInfo();
     localTransferRequest.mExtraObj = localObject;
     ((TransferRequest.PicUpExtraInfo)localObject).mIsRaw = false;
-    localTransferRequest.mUpCallBack = new bgts(this.this$0);
+    localTransferRequest.mUpCallBack = new TroopPicEffectsEditActivity.UploadPicCallback(this.this$0);
     localTransferRequest.mIsPresend = this.a.c;
     localTransferRequest.myPresendInvalid = this.a.e;
     localTransferRequest.mFileType = 55;
     localTransferRequest.mUniseq = System.currentTimeMillis();
-    this.this$0.app.getTransFileController().transferAsync(localTransferRequest);
+    ((ITransFileController)this.this$0.app.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
   }
 }
 

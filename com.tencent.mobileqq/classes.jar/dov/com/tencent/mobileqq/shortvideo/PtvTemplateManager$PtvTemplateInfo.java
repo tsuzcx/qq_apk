@@ -45,7 +45,7 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean bigHeadModelUsable;
   public String bigHeadName = "";
   public String bigHeadUrl = "";
-  public int businessID;
+  public int businessID = 0;
   public String buttonbgcolor;
   public String cameraScheme;
   public String cameraTitle;
@@ -63,7 +63,7 @@ public class PtvTemplateManager$PtvTemplateInfo
   public ArrayList<PtvTemplateManager.DoodleInfo> doodleInfos;
   public boolean downloading;
   public boolean editablewatermark;
-  public int funcType;
+  public int funcType = 0;
   public String gestureType = "";
   public String gestureWording = "";
   public String iconurl;
@@ -75,7 +75,7 @@ public class PtvTemplateManager$PtvTemplateInfo
   public String name;
   public boolean needRedDot;
   public String openurl;
-  public int platform;
+  public int platform = 0;
   public String playShowCoverImg;
   public String playShowDisplayText;
   public boolean popup = true;
@@ -86,10 +86,10 @@ public class PtvTemplateManager$PtvTemplateInfo
   public String popupimgurl;
   public boolean predownload;
   public String resurl;
-  public double sizeFree;
+  public double sizeFree = 0.0D;
   public long startDownloadTime;
   public String storeurl;
-  public int templateStyle;
+  public int templateStyle = 0;
   public long totalLen;
   public boolean usable;
   
@@ -309,13 +309,13 @@ public class PtvTemplateManager$PtvTemplateInfo
     default: 
       return -1;
     case 1: 
-      return 2130844535;
+      return 2130844717;
     case 2: 
-      return 2130844536;
+      return 2130844718;
     case 3: 
-      return 2130844538;
+      return 2130844720;
     }
-    return 2130844537;
+    return 2130844719;
   }
   
   public String getLbsActivityType(int paramInt)
@@ -369,7 +369,7 @@ public class PtvTemplateManager$PtvTemplateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo
  * JD-Core Version:    0.7.0.1
  */

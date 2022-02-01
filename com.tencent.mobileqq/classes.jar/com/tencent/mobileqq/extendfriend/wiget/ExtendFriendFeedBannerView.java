@@ -4,14 +4,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import arhw;
-import aslo;
-import asmr;
-import asms;
-import asmt;
-import asmw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.config.business.extendfriend.ExtendFriendBannerConfBean.BannerItem;
+import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
+import com.tencent.mobileqq.extendfriend.bean.FeedBannerInfo;
+import com.tencent.mobileqq.extendfriend.bean.FeedBannerTabItem;
+import com.tencent.mobileqq.extendfriend.bean.FeedBannerViewHolder;
+import com.tencent.mobileqq.extendfriend.bean.FeedBannerViewHolder.FeedBannerClickListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,9 +19,11 @@ import java.util.Iterator;
 public class ExtendFriendFeedBannerView
   extends TabLayout
 {
-  private asmr jdField_a_of_type_Asmr;
-  private asmt jdField_a_of_type_Asmt;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private FeedBannerInfo jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerInfo;
+  private FeedBannerViewHolder jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerViewHolder;
+  private String jdField_a_of_type_JavaLangString = "school_tab";
+  private boolean jdField_a_of_type_Boolean = true;
   
   public ExtendFriendFeedBannerView(Context paramContext)
   {
@@ -38,31 +40,34 @@ public class ExtendFriendFeedBannerView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void a(asmw paramasmw)
+  private void a(FeedBannerViewHolder.FeedBannerClickListener paramFeedBannerClickListener)
   {
-    if (this.jdField_a_of_type_Asmt == null) {
-      this.jdField_a_of_type_Asmt = new asmt(this, paramasmw);
+    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerViewHolder == null) {
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerViewHolder = new FeedBannerViewHolder(this, paramFeedBannerClickListener, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
-    this.jdField_a_of_type_Asmt.a(this.jdField_a_of_type_Asmr, 0);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerInfo, 0);
   }
   
   private void b()
   {
-    label130:
-    arhw localarhw;
-    asms localasms;
-    if (this.jdField_a_of_type_Asmr == null)
+    label137:
+    ExtendFriendBannerConfBean.BannerItem localBannerItem;
+    FeedBannerTabItem localFeedBannerTabItem;
+    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerInfo == null)
     {
-      this.jdField_a_of_type_Asmr = new asmr();
-      this.jdField_a_of_type_Asmr.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      Object localObject = new asms();
-      ((asms)localObject).jdField_a_of_type_Int = 0;
-      ((asms)localObject).jdField_a_of_type_JavaLangString = getResources().getString(2131698484);
-      ((asms)localObject).jdField_b_of_type_Int = -20771;
-      ((asms)localObject).jdField_c_of_type_Int = -31578;
-      ((asms)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
-      this.jdField_a_of_type_Asmr.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      localObject = ((aslo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a();
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerInfo = new FeedBannerInfo();
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localObject = new FeedBannerTabItem();
+        ((FeedBannerTabItem)localObject).jdField_a_of_type_Int = 0;
+        ((FeedBannerTabItem)localObject).jdField_a_of_type_JavaLangString = getResources().getString(2131698767);
+        ((FeedBannerTabItem)localObject).jdField_b_of_type_Int = -20771;
+        ((FeedBannerTabItem)localObject).jdField_c_of_type_Int = -31578;
+        ((FeedBannerTabItem)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerInfo.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      }
+      Object localObject = ((ExtendFriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a();
       if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
         return;
       }
@@ -70,28 +75,28 @@ public class ExtendFriendFeedBannerView
       if (!((Iterator)localObject).hasNext()) {
         return;
       }
-      localarhw = (arhw)((Iterator)localObject).next();
-      localasms = new asms();
-      if (!"0".equals(localarhw.f)) {
-        break label286;
+      localBannerItem = (ExtendFriendBannerConfBean.BannerItem)((Iterator)localObject).next();
+      localFeedBannerTabItem = new FeedBannerTabItem();
+      if (!"0".equals(localBannerItem.type)) {
+        break label293;
       }
-      localasms.jdField_a_of_type_Int = 0;
+      localFeedBannerTabItem.jdField_a_of_type_Int = 0;
     }
     for (;;)
     {
-      localasms.jdField_a_of_type_JavaLangString = localarhw.jdField_c_of_type_JavaLangString;
-      localasms.jdField_a_of_type_Long = localarhw.jdField_a_of_type_Long;
-      localasms.jdField_b_of_type_JavaLangString = localarhw.d;
-      localasms.d = localarhw.g;
-      localasms.jdField_c_of_type_JavaLangString = localarhw.e;
-      localasms.jdField_a_of_type_OrgJsonJSONObject = localarhw.jdField_a_of_type_OrgJsonJSONObject;
+      localFeedBannerTabItem.jdField_a_of_type_JavaLangString = localBannerItem.title;
+      localFeedBannerTabItem.jdField_a_of_type_Long = localBannerItem.id;
+      localFeedBannerTabItem.jdField_b_of_type_JavaLangString = localBannerItem.subTitle;
+      localFeedBannerTabItem.d = localBannerItem.schemeOrUrl;
+      localFeedBannerTabItem.jdField_c_of_type_JavaLangString = localBannerItem.iconUrl;
+      localFeedBannerTabItem.jdField_a_of_type_OrgJsonJSONObject = localBannerItem.extra;
       try
       {
-        if (localarhw.jdField_a_of_type_JavaLangString != null) {
-          localasms.jdField_b_of_type_Int = Color.parseColor(localarhw.jdField_a_of_type_JavaLangString);
+        if (localBannerItem.bgBeginColor != null) {
+          localFeedBannerTabItem.jdField_b_of_type_Int = Color.parseColor(localBannerItem.bgBeginColor);
         }
-        if (localarhw.jdField_b_of_type_JavaLangString != null) {
-          localasms.jdField_c_of_type_Int = Color.parseColor(localarhw.jdField_b_of_type_JavaLangString);
+        if (localBannerItem.bgEndColor != null) {
+          localFeedBannerTabItem.jdField_c_of_type_Int = Color.parseColor(localBannerItem.bgEndColor);
         }
       }
       catch (Exception localException)
@@ -101,48 +106,55 @@ public class ExtendFriendFeedBannerView
           QLog.e("TabLayout", 1, "loadFeedBannerData fail.", localException);
         }
       }
-      this.jdField_a_of_type_Asmr.jdField_a_of_type_JavaUtilArrayList.add(localasms);
-      break label130;
-      this.jdField_a_of_type_Asmr.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerInfo.jdField_a_of_type_JavaUtilArrayList.add(localFeedBannerTabItem);
+      break label137;
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerInfo.jdField_a_of_type_JavaUtilArrayList.clear();
       break;
-      label286:
-      if ("1".equals(localarhw.f)) {
-        localasms.jdField_a_of_type_Int = 1;
-      } else if ("2".equals(localarhw.f)) {
-        localasms.jdField_a_of_type_Int = 2;
-      } else if ("3".equals(localarhw.f)) {
-        localasms.jdField_a_of_type_Int = 3;
+      label293:
+      if ("1".equals(localBannerItem.type)) {
+        localFeedBannerTabItem.jdField_a_of_type_Int = 1;
+      } else if ("2".equals(localBannerItem.type)) {
+        localFeedBannerTabItem.jdField_a_of_type_Int = 2;
+      } else if ("3".equals(localBannerItem.type)) {
+        localFeedBannerTabItem.jdField_a_of_type_Int = 3;
       } else {
-        localasms.jdField_a_of_type_Int = -1;
+        localFeedBannerTabItem.jdField_a_of_type_Int = -1;
       }
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Asmt != null) {
-      this.jdField_a_of_type_Asmt.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerViewHolder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerViewHolder.a();
     }
   }
   
   public void a(int paramInt, ArrayList<String> paramArrayList)
   {
-    asms localasms = new asms();
-    localasms.jdField_b_of_type_JavaLangString = (paramInt + getResources().getString(2131698507));
-    localasms.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Asmt.a(localasms);
+    FeedBannerTabItem localFeedBannerTabItem = new FeedBannerTabItem();
+    localFeedBannerTabItem.jdField_b_of_type_JavaLangString = (paramInt + getResources().getString(2131698792));
+    localFeedBannerTabItem.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanFeedBannerViewHolder.a(localFeedBannerTabItem);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, asmw paramasmw)
+  public void a(QQAppInterface paramQQAppInterface, FeedBannerViewHolder.FeedBannerClickListener paramFeedBannerClickListener)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     b();
-    a(paramasmw);
+    a(paramFeedBannerClickListener);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, FeedBannerViewHolder.FeedBannerClickListener paramFeedBannerClickListener, boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    a(paramQQAppInterface, paramFeedBannerClickListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendFeedBannerView
  * JD-Core Version:    0.7.0.1
  */

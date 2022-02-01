@@ -8,16 +8,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import bcvb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
+import com.tencent.mobileqq.qcircle.api.IQCircleService;
+import com.tencent.mobileqq.servlet.CliNotifyPush;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_dc00420;
 import cooperation.qzone.report.lp.QZoneLoginReportHelper;
 import java.util.HashMap;
 import java.util.List;
-import vvh;
 
 public class NotificationClickReceiver
   extends BroadcastReceiver
@@ -95,7 +96,7 @@ public class NotificationClickReceiver
       {
         paramContext = new HashMap();
         paramContext.put("url", str1);
-        vvh.a(BaseApplicationImpl.getContext(), "openwebview", paramContext);
+        QCircleUtils.a().enterBySchemeAction(BaseApplicationImpl.getContext(), "openwebview", paramContext);
       }
     }
     try
@@ -114,16 +115,16 @@ public class NotificationClickReceiver
           paramContext.subactionType = String.valueOf(3);
           paramContext.reserves = String.valueOf(7);
           QZoneClickReport.report((String)localObject, paramContext, true);
-          bcvb.a.clear();
+          CliNotifyPush.a.clear();
         }
         localUri = Uri.parse(str1);
         if (!TextUtils.isEmpty(localUri.getQueryParameter("from"))) {
-          break label384;
+          break label389;
         }
         paramContext = paramIntent;
         if (localUri.getPathSegments().size() <= 0) {}
       }
-      label384:
+      label389:
       for (paramContext = (String)localUri.getPathSegments().get(0);; paramContext = localUri.getQueryParameter("from"))
       {
         LpReportInfo_dc00420.report(3, 0, paramContext, str2, 1);
@@ -152,7 +153,7 @@ public class NotificationClickReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.NotificationClickReceiver
  * JD-Core Version:    0.7.0.1
  */

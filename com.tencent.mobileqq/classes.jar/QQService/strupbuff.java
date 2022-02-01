@@ -11,10 +11,10 @@ public final class strupbuff
   extends JceStruct
 {
   static Map<String, ArrayList<byte[]>> cache_logstring;
-  public byte encoding;
-  public Map<String, ArrayList<byte[]>> logstring;
+  public byte encoding = 0;
+  public Map<String, ArrayList<byte[]>> logstring = null;
   public String prefix = "";
-  public int seqno;
+  public int seqno = 0;
   
   public strupbuff() {}
   

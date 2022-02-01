@@ -9,7 +9,6 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import bopn;
 
 public abstract class StoryToastView
   extends LinearLayout
@@ -42,7 +41,7 @@ public abstract class StoryToastView
     {
       this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F });
       this.jdField_a_of_type_AndroidAnimationAnimator.setDuration(300L);
-      this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new bopn(this));
+      this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new StoryToastView.2(this));
     }
     return this.jdField_a_of_type_AndroidAnimationAnimator;
   }
@@ -72,7 +71,7 @@ public abstract class StoryToastView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.capture.view.StoryToastView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package cooperation.qqcircle.chat;
 
 import android.content.Context;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public class QCircleBlankRecentChatListData
   extends RecentBaseData
@@ -27,11 +27,11 @@ public class QCircleBlankRecentChatListData
     return null;
   }
   
-  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext) {}
+  public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.chat.QCircleBlankRecentChatListData
  * JD-Core Version:    0.7.0.1
  */

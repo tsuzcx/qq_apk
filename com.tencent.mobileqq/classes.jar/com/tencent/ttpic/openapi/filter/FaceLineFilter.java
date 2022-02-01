@@ -6,7 +6,7 @@ import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FaceOffUtil;
 import java.util.List;
 
@@ -59,7 +59,7 @@ public class FaceLineFilter
   
   public void updateIrisPoints(List<PointF> paramList)
   {
-    setPositions(FaceOffUtil.initIrisLinePositions(VideoMaterialUtil.copyList(paramList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.irisVertices));
+    setPositions(FaceOffUtil.initIrisLinePositions(VideoMaterial.copyList(paramList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.irisVertices));
     setCoordNum(48);
   }
   
@@ -71,7 +71,7 @@ public class FaceLineFilter
       setCoordNum(4);
       return;
     }
-    paramList = VideoMaterialUtil.copyList((List)paramList.get(paramInt));
+    paramList = VideoMaterial.copyList((List)paramList.get(paramInt));
     FaceOffUtil.getFullCoords(paramList, 2.0F);
     setPositions(FaceOffUtil.initFaceLinePositions(paramList, (int)(this.width * paramDouble), (int)(this.height * paramDouble), this.faceVertices));
     setCoordNum(1380);
@@ -79,7 +79,7 @@ public class FaceLineFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FaceLineFilter
  * JD-Core Version:    0.7.0.1
  */

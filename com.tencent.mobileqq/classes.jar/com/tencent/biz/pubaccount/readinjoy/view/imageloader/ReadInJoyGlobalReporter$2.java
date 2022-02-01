@@ -4,12 +4,11 @@ import android.content.IntentFilter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tlx;
 
-public class ReadInJoyGlobalReporter$2
+class ReadInJoyGlobalReporter$2
   implements Runnable
 {
-  public ReadInJoyGlobalReporter$2(tlx paramtlx) {}
+  ReadInJoyGlobalReporter$2(ReadInJoyGlobalReporter paramReadInJoyGlobalReporter) {}
   
   public void run()
   {
@@ -19,10 +18,10 @@ public class ReadInJoyGlobalReporter$2
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      if (tlx.b(this.this$0) == 0)
+      if (ReadInJoyGlobalReporter.b(this.this$0) == 0)
       {
         BaseApplicationImpl.getContext().registerReceiver(this.this$0.a, localIntentFilter);
-        tlx.a(this.this$0, 1);
+        ReadInJoyGlobalReporter.a(this.this$0, 1);
       }
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyGlobalReporter", 2, "registerScreenListener");
@@ -41,7 +40,7 @@ public class ReadInJoyGlobalReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter.2
  * JD-Core Version:    0.7.0.1
  */

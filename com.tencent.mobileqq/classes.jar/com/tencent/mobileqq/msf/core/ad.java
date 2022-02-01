@@ -1,13 +1,18 @@
 package com.tencent.mobileqq.msf.core;
 
+import com.tencent.beacon.qimei.IAsyncQimeiListener;
+import com.tencent.beacon.qimei.Qimei;
+import com.tencent.qphone.base.util.QLog;
+
 class ad
-  implements Runnable
+  implements IAsyncQimeiListener
 {
-  ad(ab paramab, MsfCore paramMsfCore) {}
+  ad(ac paramac) {}
   
-  public void run()
+  public void onQimeiDispatch(Qimei paramQimei)
   {
-    ab.a(this.b, this.a);
+    ac.d(paramQimei.getQimeiNew());
+    QLog.d("libboot_MSF.C.NetConnTag", 1, "onQimeiDispatch, sQimei = " + ac.s() + ", qimeiOld = " + paramQimei.getQimeiOld());
   }
 }
 

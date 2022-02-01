@@ -9,8 +9,8 @@ public final class GetRandomHbIdiomRsp
   extends JceStruct
 {
   static ArrayList<String> cache_suggestIdioms = new ArrayList();
-  public long makeUin;
-  public ArrayList<String> suggestIdioms;
+  public long makeUin = 0L;
+  public ArrayList<String> suggestIdioms = null;
   
   static
   {

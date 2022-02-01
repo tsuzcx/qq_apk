@@ -9,7 +9,7 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.ttpic.filter.blurmaskfilter.OptimGaussianMaskFilter;
 import com.tencent.ttpic.openapi.filter.stylizefilter.IStlylizeFilterIniter;
-import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
+import com.tencent.ttpic.openapi.offlineset.AEOfflineConfig;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -34,7 +34,7 @@ public class TTCartoonFilterGroup
   
   public TTCartoonFilterGroup()
   {
-    if (OfflineConfig.getPhonePerfLevel() <= 3) {}
+    if (AEOfflineConfig.getPhonePerfLevel() <= 3) {}
     for (int i = 2;; i = 1)
     {
       this.mScaleValue = i;
@@ -261,7 +261,7 @@ public class TTCartoonFilterGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.stylizefilter.cartoonfilter.TTCartoonFilterGroup
  * JD-Core Version:    0.7.0.1
  */

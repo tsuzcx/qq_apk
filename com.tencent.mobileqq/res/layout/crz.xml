@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="105.0dip" android:layout_height="176.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.widget.AlphaClickableRelativeLayout android:id="@id/myg" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.profile.lifeachivement.LayerImageView android:id="@id/jom" android:paddingLeft="0.0dip" android:paddingTop="3.5dip" android:paddingRight="0.0dip" android:paddingBottom="3.5dip" android:layout_width="105.0dip" android:layout_height="120.0dip" android:src="@drawable/com" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="24.0dip" android:textColor="@color/skin_aio_listen_together_grey" android:gravity="center_horizontal" android:id="@id/jop" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="47.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/aez" android:gravity="center_horizontal" android:id="@id/joj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxWidth="100.0dip" android:maxLines="2" android:layout_below="@id/jom" android:layout_centerHorizontal="true" />
-    </com.tencent.widget.AlphaClickableRelativeLayout>
-    <com.tencent.widget.AlphaClickableTextView android:textSize="12.0dip" android:textColor="@color/aez" android:id="@id/jor" android:paddingLeft="5.0dip" android:paddingTop="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<FrameLayout android:id="@id/o3s" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/icx" android:background="@drawable/b4w" android:layout_width="fill_parent" android:layout_height="@dimen/j4">
+        <CheckBox android:id="@id/axa" android:background="@drawable/nj" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:checked="false" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <FrameLayout android:gravity="center_vertical" android:id="@id/head" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="15.0dip" android:layout_toRightOf="@id/axa" android:layout_centerVertical="true">
+            <com.tencent.widget.ThemeImageView android:id="@id/icon" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:contentDescription="@null" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/skin_black_theme_version2" android:gravity="center" android:id="@id/k8l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="35.0dip" android:layout_toRightOf="@id/head" android:layout_centerVertical="true">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.widget.ThemeURLImageView android:gravity="center" android:id="@id/kab" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/hvj" android:layout_centerVertical="true" android:contentDescription="BOT" />
+                <com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberNewLevelView android:id="@id/oar" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:layout_toRightOf="@id/kab" android:layout_centerVertical="true" />
+                <com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberNewLevelView android:id="@id/oaq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:layout_toRightOf="@id/oar" android:layout_centerVertical="true" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/oaq" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

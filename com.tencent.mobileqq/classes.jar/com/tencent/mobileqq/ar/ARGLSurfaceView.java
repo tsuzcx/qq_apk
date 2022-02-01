@@ -7,29 +7,26 @@ import android.opengl.GLSurfaceView.Renderer;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
-import apbc;
-import apbd;
-import apbe;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(14)
 public class ARGLSurfaceView
   extends GLSurfaceView
 {
-  private apbd jdField_a_of_type_Apbd;
-  private apbe jdField_a_of_type_Apbe;
+  private ARGLSurfaceView.ARGLSurfaceViewCallback jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$ARGLSurfaceViewCallback = null;
+  private ARGLSurfaceView.OnEglContextDestoryListener jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$OnEglContextDestoryListener;
   
-  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, apbd paramapbd)
+  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, ARGLSurfaceView.ARGLSurfaceViewCallback paramARGLSurfaceViewCallback)
   {
     super(paramContext);
-    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramapbd);
-    setEGLContextFactory(new apbc(this));
+    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramARGLSurfaceViewCallback);
+    setEGLContextFactory(new ARGLSurfaceView.1(this));
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 16, 0);
     if (paramCallback != null) {
       getHolder().addCallback(paramCallback);
     }
-    this.jdField_a_of_type_Apbd = paramapbd;
+    this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$ARGLSurfaceViewCallback = paramARGLSurfaceViewCallback;
   }
   
   public void onPause()
@@ -44,16 +41,16 @@ public class ARGLSurfaceView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Apbd != null) {
-      this.jdField_a_of_type_Apbd.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
+    if (this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$ARGLSurfaceViewCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$ARGLSurfaceViewCallback.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
     }
     super.onTouchEvent(paramMotionEvent);
     return false;
   }
   
-  public void setOnEglContextDestoryListener(apbe paramapbe)
+  public void setOnEglContextDestoryListener(ARGLSurfaceView.OnEglContextDestoryListener paramOnEglContextDestoryListener)
   {
-    this.jdField_a_of_type_Apbe = paramapbe;
+    this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$OnEglContextDestoryListener = paramOnEglContextDestoryListener;
   }
   
   @Deprecated
@@ -64,7 +61,7 @@ public class ARGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

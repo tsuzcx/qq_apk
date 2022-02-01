@@ -9,14 +9,14 @@ public final class EctCookie
 {
   static int cache_eNextGridListType = 0;
   static byte[] cache_vCookie = (byte[])new byte[1];
-  public byte cNextGridSIndex;
-  public byte cResetIdentity;
+  public byte cNextGridSIndex = 0;
+  public byte cResetIdentity = 0;
   public int eNextGridListType = 0;
-  public long lCurrentGrid;
-  public long lNextMid;
-  public long lOriginGridS;
-  public int last_max_distance;
-  public byte[] vCookie;
+  public long lCurrentGrid = 0L;
+  public long lNextMid = 0L;
+  public long lOriginGridS = 0L;
+  public int last_max_distance = 0;
+  public byte[] vCookie = null;
   
   static
   {

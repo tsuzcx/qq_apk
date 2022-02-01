@@ -10,15 +10,15 @@ public final class GetTroopListReqV2
 {
   static byte[] cache_vecCookies = (byte[])new byte[1];
   static ArrayList<stTroopNum> cache_vecGroupInfo;
-  public byte bGetLongGroupName;
-  public byte bGetMSFMsgFlag;
-  public byte bGroupFlagExt;
-  public long dwCompanyId;
-  public int shVersion;
-  public long uin;
-  public byte[] vecCookies;
-  public ArrayList<stTroopNum> vecGroupInfo;
-  public long versionNum;
+  public byte bGetLongGroupName = 0;
+  public byte bGetMSFMsgFlag = 0;
+  public byte bGroupFlagExt = 0;
+  public long dwCompanyId = 0L;
+  public int shVersion = 0;
+  public long uin = 0L;
+  public byte[] vecCookies = null;
+  public ArrayList<stTroopNum> vecGroupInfo = null;
+  public long versionNum = 0L;
   
   static
   {
@@ -75,7 +75,7 @@ public final class GetTroopListReqV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.GetTroopListReqV2
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.hippy.qq.update;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import org.json.JSONArray;
@@ -14,7 +15,7 @@ public class HippyQQUpdateManager
 {
   private HippyQQUpdateManager.PackageUpdateListener mUpdateListener;
   
-  private String getGuid()
+  public static String getGuid()
   {
     Object localObject2 = "0";
     Object localObject3 = BaseApplicationImpl.getApplication();
@@ -67,6 +68,11 @@ public class HippyQQUpdateManager
       } while (paramPackageUpdateListener == null);
       paramPackageUpdateListener.onUpdateComplete(1, "", null);
     }
+  }
+  
+  public void loadOnlineBundle(String paramString1, String paramString2, HippyQQUpdateManager.PackageUpdateListener paramPackageUpdateListener)
+  {
+    ThreadManagerV2.excute(new HippyQQUpdateManager.2(this, paramString1, paramString2, paramPackageUpdateListener), 128, null, true);
   }
   
   public void onResponse(String paramString)
@@ -141,7 +147,7 @@ public class HippyQQUpdateManager
     JSONObject localJSONObject2 = new JSONObject();
     localJSONObject2.put("iPlatform", 0);
     localJSONObject2.put("sAppKey", "mqq");
-    localJSONObject2.put("sAppVer", "8.4.10.4875");
+    localJSONObject2.put("sAppVer", "8.5.5.5105");
     localJSONObject2.put("sSdkVer", "3.0");
     localJSONObject2.put("sChannel", "10001");
     localJSONObject2.put("sGuid", getGuid());
@@ -158,7 +164,7 @@ public class HippyQQUpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQUpdateManager
  * JD-Core Version:    0.7.0.1
  */

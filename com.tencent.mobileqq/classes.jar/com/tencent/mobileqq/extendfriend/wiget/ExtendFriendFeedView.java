@@ -22,10 +22,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
-import assx;
-import astj;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.extendfriend.utils.ExtendFriendResourceUtil;
+import com.tencent.mobileqq.extendfriend.utils.GradientDrawableUtils;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +46,7 @@ public class ExtendFriendFeedView
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private int c;
+  private int c = 0;
   
   static
   {
@@ -66,13 +66,13 @@ public class ExtendFriendFeedView
   public ExtendFriendFeedView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131561145, this, true);
-    this.jdField_a_of_type_Float = AIOUtils.dp2px(4.0F, getResources());
+    LayoutInflater.from(paramContext).inflate(2131561242, this, true);
+    this.jdField_a_of_type_Float = AIOUtils.a(4.0F, getResources());
   }
   
   private Bitmap a(String paramString)
   {
-    Object localObject1 = assx.c;
+    Object localObject1 = ExtendFriendResourceUtil.c;
     if ((localObject1 != null) && (localObject1.length > 0)) {
       for (;;)
       {
@@ -92,7 +92,7 @@ public class ExtendFriendFeedView
           i = paramString.toUpperCase().charAt(0) % localObject1.length;
           if (i == -1)
           {
-            str = assx.a("expand_feed_bg_default.png");
+            str = ExtendFriendResourceUtil.a("expand_feed_bg_default.png");
             paramString = (WeakReference)jdField_a_of_type_JavaUtilMap.get(str);
             if (paramString == null) {
               break label207;
@@ -124,7 +124,7 @@ public class ExtendFriendFeedView
             localObject1 = paramString;
             ((BitmapFactory.Options)localObject2).inSampleSize = 2;
             localObject1 = paramString;
-            localObject2 = assx.a(str, (BitmapFactory.Options)localObject2);
+            localObject2 = ExtendFriendResourceUtil.a(str, (BitmapFactory.Options)localObject2);
             localObject1 = localObject2;
             jdField_a_of_type_JavaUtilMap.put(str, new WeakReference(localObject2));
           }
@@ -134,7 +134,7 @@ public class ExtendFriendFeedView
         {
           continue;
         }
-        str = assx.a(localObject1[i]);
+        str = ExtendFriendResourceUtil.a(localObject1[i]);
         continue;
         label207:
         paramString = null;
@@ -151,7 +151,7 @@ public class ExtendFriendFeedView
     int i = jdField_a_of_type_ArrayOfInt.length;
     paramInt = jdField_a_of_type_ArrayOfInt[(paramInt % i)];
     if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = astj.a(paramInt, 0.0F, 0.0F, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = GradientDrawableUtils.a(paramInt, 0.0F, 0.0F, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float);
     }
     for (;;)
     {
@@ -208,7 +208,7 @@ public class ExtendFriendFeedView
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, this.c, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable != null)
       {
-        i = AIOUtils.dp2px(5.0F, getResources());
+        i = AIOUtils.a(5.0F, getResources());
         this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setBounds(0, this.jdField_b_of_type_Int - i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
       return;
@@ -218,7 +218,7 @@ public class ExtendFriendFeedView
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     if ((this.jdField_a_of_type_AndroidGraphicsRectF != null) && (this.jdField_a_of_type_AndroidGraphicsPaint != null)) {
       paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -229,7 +229,7 @@ public class ExtendFriendFeedView
     super.dispatchDraw(paramCanvas);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_Int = paramInt1;
@@ -292,7 +292,7 @@ public class ExtendFriendFeedView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendFeedView
  * JD-Core Version:    0.7.0.1
  */

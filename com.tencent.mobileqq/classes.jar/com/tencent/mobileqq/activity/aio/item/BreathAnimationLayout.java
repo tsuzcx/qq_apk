@@ -16,7 +16,7 @@ public class BreathAnimationLayout
   extends RelativeLayout
 {
   private long jdField_a_of_type_Long = -1L;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public BreathAnimationLayout(Context paramContext)
   {
@@ -80,7 +80,7 @@ public class BreathAnimationLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout
  * JD-Core Version:    0.7.0.1
  */

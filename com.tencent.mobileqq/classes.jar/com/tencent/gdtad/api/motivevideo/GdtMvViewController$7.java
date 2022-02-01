@@ -1,23 +1,21 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acev;
-import acey;
-import acfo;
+import com.tencent.gdtad.api.motivevideo.webbottomcard.GdtMVWebBottomCardController;
 
-public class GdtMvViewController$7
+class GdtMvViewController$7
   implements Runnable
 {
-  public GdtMvViewController$7(acey paramacey) {}
+  GdtMvViewController$7(GdtMvViewController paramGdtMvViewController) {}
   
   public void run()
   {
-    acey.a(this.this$0).e();
+    GdtMvViewController.a(this.this$0).e();
     this.this$0.a.a(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvViewController.7
  * JD-Core Version:    0.7.0.1
  */

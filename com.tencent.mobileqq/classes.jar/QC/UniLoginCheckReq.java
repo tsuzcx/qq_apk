@@ -11,10 +11,10 @@ public final class UniLoginCheckReq
   static ArrayList<Hamlet> cache_stHamletList;
   static GetUsrKeyWordInfoReq cache_stKeyWord = new GetUsrKeyWordInfoReq();
   static LoginInfo cache_stLogin = new LoginInfo();
-  public ArrayList<Hamlet> stHamletList;
-  public GetUsrKeyWordInfoReq stKeyWord;
-  public LoginInfo stLogin;
-  public long uAppidMask;
+  public ArrayList<Hamlet> stHamletList = null;
+  public GetUsrKeyWordInfoReq stKeyWord = null;
+  public LoginInfo stLogin = null;
+  public long uAppidMask = 0L;
   
   static
   {

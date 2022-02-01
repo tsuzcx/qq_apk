@@ -17,10 +17,17 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import anvx;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
 import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.Utils;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyBottomAdVideoUtil;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -28,13 +35,6 @@ import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
-import ois;
-import pkh;
-import pqw;
-import ptj;
-import rvy;
-import ufy;
-import ukt;
 
 public class ReadInJoyUninterestComplainFragment
   extends IphoneTitleBarFragment
@@ -58,40 +58,40 @@ public class ReadInJoyUninterestComplainFragment
       return;
     case 1: 
       paramString1 = (AdvertisementInfo)this.jdField_a_of_type_AndroidOsParcelable;
-      if (pqw.a(paramString1)) {}
+      if (RIJFeedsType.a(paramString1)) {}
       for (int i = 11;; i = 3)
       {
-        ois.a(new ufy().a(getActivity()).a(3).b(i).a(paramString1).a(localBundle).a());
+        NativeAdUtils.a(new AdReportData().a(getActivity()).a(3).b(i).a(paramString1).a(localBundle));
         return;
       }
     case 2: 
       paramString1 = (VideoAdInfo)this.jdField_a_of_type_AndroidOsParcelable;
-      ois.a(new ufy().a(getActivity()).a(3).b(10).a(ois.a(paramString1)).a(paramString1).a(localBundle).a());
+      NativeAdUtils.a(new AdReportData().a(getActivity()).a(3).b(10).a(NativeAdUtils.a(paramString1)).a(paramString1).a(localBundle));
       return;
     }
     paramString1 = (AdData)this.jdField_a_of_type_AndroidOsParcelable;
-    ois.a(new ufy().a(getActivity()).a(3).b(1).a(ukt.a(paramString1)).a(localBundle).a());
+    NativeAdUtils.a(new AdReportData().a(getActivity()).a(3).b(1).a(ReadInJoyBottomAdVideoUtil.a(paramString1)).a(localBundle));
   }
   
   private void b()
   {
     this.vg.changeBg(true);
     if (this.leftView != null) {
-      this.leftView.setText(anvx.a(2131712259));
+      this.leftView.setText(HardCodeUtil.a(2131712771));
     }
-    setTitle(anvx.a(2131712276));
-    if (ThemeUtil.isInNightMode(pkh.a())) {
-      View.inflate(getActivity(), 2131560291, this.titleRoot);
+    setTitle(HardCodeUtil.a(2131712788));
+    if (ThemeUtil.isInNightMode(ReadInJoyUtils.a())) {
+      View.inflate(getActivity(), 2131560363, this.titleRoot);
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131365036));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131365171));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365260));
-    this.b = ((EditText)this.mContentView.findViewById(2131372620));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131378241));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365400));
+    this.b = ((EditText)this.mContentView.findViewById(2131372940));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131378667));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -182,12 +182,12 @@ public class ReadInJoyUninterestComplainFragment
     b();
     c();
     d();
-    ptj.a.a(getActivity());
+    RIJDtReportHelper.a.a(getActivity());
   }
   
   public int getContentLayoutId()
   {
-    return 2131560352;
+    return 2131560422;
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -220,7 +220,7 @@ public class ReadInJoyUninterestComplainFragment
   public void onResume()
   {
     super.onResume();
-    rvy.a(this);
+    Utils.a(this);
     ThreadManager.getUIHandler().postDelayed(new ReadInJoyUninterestComplainFragment.1(this), 300L);
   }
   
@@ -228,7 +228,7 @@ public class ReadInJoyUninterestComplainFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment
  * JD-Core Version:    0.7.0.1
  */

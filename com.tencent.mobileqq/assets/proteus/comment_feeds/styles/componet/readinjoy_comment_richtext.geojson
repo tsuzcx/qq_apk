@@ -5,6 +5,17 @@
     "margin_top": "6",
     "attributes": {
         "setCommentModel:":"$commentModel",
+        "setDTElementID:withParams:": [
+            "comment_button",
+            {
+                "rowkey": "$rowkey",
+                "actionid": "click_comment",
+                "click_type": "single",
+                "comment_id": "$comment_id",
+                "sub_comment_id": "$sub_comment_id",
+                "comment_type": "$comment_type"
+            }
+        ],
         "setRichData:": [
             {
                 "name": "div",
@@ -70,18 +81,13 @@
                       ]
                     },
                     {
-                        "name": "text",
+                        "name": "div",
                         "attrs": {
                             "class": "div_class",
                             "style": "line-height: 24px; color: #000000;width:351px;font-size:16px;",
                             "ratio": "$ratio"
                         },
-                        "children": [
-                            {
-                                "type": "text",
-                                "text": "$comment_text"
-                            }
-                        ]
+                        "children": "$rpt_data_info"
                     }
                 ]
             }

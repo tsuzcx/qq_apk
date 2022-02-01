@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.content.Context;
-import bdyx;
-import bdzk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 
-public class FrameSprite$1
+class FrameSprite$1
   implements Runnable
 {
-  public FrameSprite$1(bdyx parambdyx, Context paramContext, SpriteGLView paramSpriteGLView) {}
+  FrameSprite$1(FrameSprite paramFrameSprite, Context paramContext, SpriteGLView paramSpriteGLView) {}
   
   public void run()
   {
@@ -22,10 +20,10 @@ public class FrameSprite$1
         long l = System.currentTimeMillis();
         i = 0;
         Object localObject;
-        if ((i < bdyx.a(this.this$0).length) && (!bdyx.a(this.this$0)))
+        if ((i < FrameSprite.a(this.this$0).length) && (!FrameSprite.a(this.this$0)))
         {
-          localObject = new bdzk(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, bdyx.a(this.this$0)[i]);
-          bdyx.a(this.this$0, i, (bdzk)localObject);
+          localObject = new Texture(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, FrameSprite.a(this.this$0)[i]);
+          FrameSprite.a(this.this$0, i, (Texture)localObject);
           i += 1;
           continue;
         }
@@ -34,34 +32,34 @@ public class FrameSprite$1
         }
         l = System.currentTimeMillis();
         i = j;
-        if ((i < bdyx.a(this.this$0).length) && (!bdyx.a(this.this$0)))
+        if ((i < FrameSprite.a(this.this$0).length) && (!FrameSprite.a(this.this$0)))
         {
-          if ((!bdyx.b(this.this$0)) || (i % 2 == 0))
+          if ((!FrameSprite.b(this.this$0)) || (i % 2 == 0))
           {
             if (QLog.isColorLevel()) {
               QLog.d("FrameSprite", 2, "FrameSprite: deode:" + i);
             }
             localObject = this.this$0;
-            if (bdyx.b(this.this$0))
+            if (FrameSprite.b(this.this$0))
             {
               j = i / 2;
-              bdyx.a((bdyx)localObject, j);
-              if ((!bdyx.c(this.this$0)) && ((i == this.this$0.g - 1) || (i == bdyx.a(this.this$0).length - 1)))
+              FrameSprite.a((FrameSprite)localObject, j);
+              if ((!FrameSprite.c(this.this$0)) && ((i == this.this$0.g - 1) || (i == FrameSprite.a(this.this$0).length - 1)))
               {
-                if ((bdyx.a(this.this$0) == 20) && ((int)(System.currentTimeMillis() - l) / this.this$0.g > 50))
+                if ((FrameSprite.a(this.this$0) == 20) && ((int)(System.currentTimeMillis() - l) / this.this$0.g > 50))
                 {
                   this.this$0.e(10);
-                  bdyx.a(this.this$0, true);
+                  FrameSprite.a(this.this$0, true);
                   if (QLog.isColorLevel()) {
                     QLog.d("FrameSprite", 2, "mIsHalf = true");
                   }
                   this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new FrameSprite.1.1(this));
                 }
-                this.this$0.az_();
+                this.this$0.aB_();
               }
-              if (bdyx.a(this.this$0) != null)
+              if (FrameSprite.a(this.this$0) != null)
               {
-                j = bdyx.a(this.this$0).size();
+                j = FrameSprite.a(this.this$0).size();
                 int k = this.this$0.g;
                 if (j >= k)
                 {

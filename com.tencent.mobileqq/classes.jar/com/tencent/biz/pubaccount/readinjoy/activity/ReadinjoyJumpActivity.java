@@ -13,52 +13,52 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import anvx;
-import biur;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadinjoyJumpUtils;
+import com.tencent.biz.pubaccount.readinjoy.config.handlers.DailyModeConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.config.handlers.MultiVideoConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJKanDianTabReport;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebContentGetCallback;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoHelper;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.webarticle.RIJWebArticleUtil;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
+import com.tencent.mobileqq.widget.WebViewProgressBarController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import mqq.os.MqqHandler;
-import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ovh;
-import pkh;
-import pkj;
-import plm;
-import plw;
-import pqc;
-import ptj;
-import pvj;
-import pvm;
-import pvq;
-import qfk;
-import ssn;
-import udj;
 
 public class ReadinjoyJumpActivity
   extends IphoneTitleBarFragment
-  implements qfk
+  implements FastWebModule.FastWebContentGetCallback
 {
   private static Runnable jdField_b_of_type_JavaLangRunnable;
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = -1L;
-  private biur jdField_a_of_type_Biur;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new ReadinjoyJumpActivity.2(this);
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = null;
   private WebViewProgressBar jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
+  private WebViewProgressBarController jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController;
   private Runnable jdField_a_of_type_JavaLangRunnable = new ReadinjoyJumpActivity.1(this);
-  private pvq jdField_a_of_type_Pvq = new ovh(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = false;
   
   public static void a(Context paramContext, Intent paramIntent, long paramLong)
   {
@@ -81,11 +81,11 @@ public class ReadinjoyJumpActivity
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)this.mContentView.findViewById(2131373229));
-    this.jdField_a_of_type_Biur = new biur();
-    this.jdField_a_of_type_Biur.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Biur);
-    this.jdField_a_of_type_Biur.a((byte)0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)this.mContentView.findViewById(2131373555));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController = new WebViewProgressBarController();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a((byte)0);
   }
   
   public static boolean b(Intent paramIntent)
@@ -119,7 +119,7 @@ public class ReadinjoyJumpActivity
     }
     finally {}
     this.c = true;
-    int i = pkj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    int i = ReadinjoyJumpUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
     switch (i)
     {
     }
@@ -127,54 +127,54 @@ public class ReadinjoyJumpActivity
     {
       for (;;)
       {
-        pvj.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID, System.currentTimeMillis());
+        ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID, System.currentTimeMillis());
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
         Object localObject = new JSONObject();
         try
         {
           ((JSONObject)localObject).put("algorithm_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID);
           ((JSONObject)localObject).put("rowkey", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-          pqc.a(false, (JSONObject)localObject);
-          olh.a(null, "", "0X80094C3", "0X80094C3", 0, 0, "" + this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId + "", ((JSONObject)localObject).toString(), false);
+          RIJKanDianTabReport.a(false, (JSONObject)localObject);
+          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X80094C3", "0X80094C3", 0, 0, "" + this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId + "", ((JSONObject)localObject).toString(), false);
           QLog.d("ReadinjoyJumpActivity", 1, new Object[] { "do dump action, type : ", Integer.valueOf(i), ", needFinfishActivity : " + this.jdField_b_of_type_Boolean });
           if (!this.jdField_b_of_type_Boolean) {
             break;
           }
           localContext.finish();
           break;
-          localObject = pkj.b(localContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+          localObject = ReadinjoyJumpUtils.b(localContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
           ((Intent)localObject).putExtra("from_native", true);
           if (!((Intent)localObject).getBooleanExtra("is_native_fast_web", false)) {
             this.jdField_b_of_type_Boolean = false;
           }
           localContext.startActivity((Intent)localObject);
-          if (udj.a.d())
+          if (RIJWebArticleUtil.a.d())
           {
-            localContext.overridePendingTransition(2130771982, 0);
+            localContext.overridePendingTransition(2130771984, 0);
           }
           else
           {
             localContext.overridePendingTransition(0, 0);
             continue;
-            Intent localIntent = pkj.a(localContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+            Intent localIntent = ReadinjoyJumpUtils.a(localContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
             localIntent.putExtra("VIDEO_FROM_TYPE", 27);
             localObject = localIntent.getExtras();
             bool1 = false;
             try
             {
-              boolean bool2 = plw.a(((Bundle)localObject).getInt("VIDEO_FROM_TYPE", -1), Integer.valueOf(((Bundle)localObject).getString("VIDEO_WIDTH")).intValue(), Integer.valueOf(((Bundle)localObject).getString("VIDEO_HEIGHT")).intValue(), Integer.valueOf(((Bundle)localObject).getString("VIDEO_TIME")).intValue());
+              boolean bool2 = MultiVideoConfigHandler.a(((Bundle)localObject).getInt("VIDEO_FROM_TYPE", -1), Integer.valueOf(((Bundle)localObject).getString("VIDEO_WIDTH")).intValue(), Integer.valueOf(((Bundle)localObject).getString("VIDEO_HEIGHT")).intValue(), Integer.valueOf(((Bundle)localObject).getString("VIDEO_TIME")).intValue());
               bool1 = bool2;
             }
             catch (Exception localException)
             {
-              label476:
-              break label476;
+              label487:
+              break label487;
             }
             if (bool1)
             {
               localIntent = new Intent();
               localIntent.putExtras((Bundle)localObject);
-              ssn.a(localContext, localIntent);
+              MultiVideoHelper.a(localContext, localIntent);
             }
             else
             {
@@ -207,13 +207,13 @@ public class ReadinjoyJumpActivity
     if (this.leftView != null)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setText(anvx.a(2131712456));
-      this.leftView.setBackgroundResource(2130849537);
+      this.leftView.setText(HardCodeUtil.a(2131712959));
+      this.leftView.setBackgroundResource(2130849916);
     }
     if (getTitleBarView() != null)
     {
       getTitleBarView().setBackgroundResource(0);
-      if (!ThemeUtil.isInNightMode(pkh.a())) {
+      if (!ThemeUtil.isInNightMode(ReadInJoyUtils.a())) {
         break label95;
       }
       getTitleBarView().setBackgroundColor(Color.parseColor("#888888"));
@@ -229,9 +229,9 @@ public class ReadinjoyJumpActivity
   
   private void e()
   {
-    this.jdField_a_of_type_Biur.a((byte)2);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a((byte)2);
     if (this.mContentView != null) {
-      this.mContentView.findViewById(2131366248).setVisibility(0);
+      this.mContentView.findViewById(2131366420).setVisibility(0);
     }
     QLog.d("ReadinjoyJumpActivity", 1, "show error page!");
   }
@@ -248,7 +248,7 @@ public class ReadinjoyJumpActivity
         if (!ThemeUtil.isInNightMode(((PublicFragmentActivity)localFragmentActivity).getAppRuntime())) {
           break label95;
         }
-        if ((SystemUtil.isMIUI()) || (SystemUtil.isFlyme())) {
+        if ((SystemUtil.b()) || (SystemUtil.d())) {
           break label82;
         }
         localSystemBarCompact.setStatusBarColor(-7829368);
@@ -260,13 +260,13 @@ public class ReadinjoyJumpActivity
     localSystemBarCompact.setStatusBarDarkMode(true);
     return;
     label95:
-    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
     {
       ((PublicFragmentActivity)localFragmentActivity).getWindow().getDecorView().setSystemUiVisibility(9216);
       localSystemBarCompact.setStatusBarColor(-1);
       return;
     }
-    if (!SystemUtil.isFlyme())
+    if (!SystemUtil.d())
     {
       localSystemBarCompact.setStatusBarColor(-2368549);
       return;
@@ -303,43 +303,43 @@ public class ReadinjoyJumpActivity
       return;
     }
     paramLayoutInflater = new JSONObject();
-    pqc.a(false, paramLayoutInflater);
-    olh.a(null, "", "0X80094C1", "0X80094C1", 0, 0, "" + this.jdField_a_of_type_Int, this.jdField_a_of_type_Long + "", "", paramLayoutInflater.toString(), false);
+    RIJKanDianTabReport.a(false, paramLayoutInflater);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X80094C1", "0X80094C1", 0, 0, "" + this.jdField_a_of_type_Int, this.jdField_a_of_type_Long + "", "", paramLayoutInflater.toString(), false);
     QLog.d("ReadinjoyJumpActivity", 1, "param_article_id : " + this.jdField_a_of_type_Long);
     if (getActivity().getIntent().getBooleanExtra("daily_lock_screen_param", false)) {
-      i = plm.b();
+      i = DailyModeConfigHandler.b();
     }
     int j = i;
     if (this.jdField_a_of_type_Int == 0) {
       j = getActivity().getIntent().getIntExtra("arg_channel_cover_id", i);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = pvj.a().b(j, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = ReadInJoyLogicEngine.a().b(j, this.jdField_a_of_type_Long);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null)
     {
       ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
-      pvm.a().a(this.jdField_a_of_type_Pvq);
+      ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
     }
-    ptj.a.a(getActivity());
+    RIJDtReportHelper.a.a(getActivity());
   }
   
   public int getContentLayoutId()
   {
-    return 2131560262;
+    return 2131560335;
   }
   
   public boolean onBackEvent()
   {
     String str = this.jdField_a_of_type_Long + "";
     JSONObject localJSONObject = new JSONObject();
-    pqc.a(false, localJSONObject);
-    olh.a(null, "", "0X80094C2", "0X80094C2", 0, 0, this.jdField_a_of_type_Int + "", str, "", localJSONObject.toString(), false);
+    RIJKanDianTabReport.a(false, localJSONObject);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X80094C2", "0X80094C2", 0, 0, this.jdField_a_of_type_Int + "", str, "", localJSONObject.toString(), false);
     this.jdField_b_of_type_Boolean = true;
     return super.onBackEvent();
   }
   
   public void onDestroy()
   {
-    pvm.a().b(this.jdField_a_of_type_Pvq);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
     super.onDestroy();
   }
   
@@ -354,7 +354,7 @@ public class ReadinjoyJumpActivity
     super.onStop();
     if (this.jdField_b_of_type_Boolean)
     {
-      pvm.a().b(this.jdField_a_of_type_Pvq);
+      ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
       getActivity().finish();
     }
     QLog.d("ReadinjoyJumpActivity", 2, "onStop, needFinfish : " + this.jdField_b_of_type_Boolean);
@@ -373,7 +373,7 @@ public class ReadinjoyJumpActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity
  * JD-Core Version:    0.7.0.1
  */

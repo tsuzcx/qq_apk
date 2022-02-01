@@ -1,16 +1,15 @@
 package com.tencent.common.app;
 
-import aauu;
 import android.content.Context;
 
-public final class SafeModeUtil$1
+final class SafeModeUtil$1
   implements Runnable
 {
-  public SafeModeUtil$1(Context paramContext) {}
+  SafeModeUtil$1(Context paramContext) {}
   
   public void run()
   {
-    aauu.a(this.a, 2);
+    SafeModeUtil.a(this.a, 2);
   }
 }
 

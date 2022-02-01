@@ -1,6 +1,5 @@
 package com.tencent.av.ui;
 
-import Override;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -10,15 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import antl;
-import antp;
-import anvx;
-import anyv;
-import bcrg;
-import bcsa;
-import bdof;
-import bhgf;
 import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.utils.download.DownloadParams;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
@@ -26,6 +18,10 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.MessageHandlerUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -33,9 +29,13 @@ import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.data.MessageForNewGrayTips;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QAVHrMeeting;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -43,50 +43,38 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
-import mcr;
-import mcs;
-import mct;
-import mcu;
 import mqq.manager.TicketManager;
-import mvt;
 
 public class ConferenceFlyTicketActivity
   extends BaseActivity
 {
   int jdField_a_of_type_Int = -1;
   Handler jdField_a_of_type_AndroidOsHandler = null;
-  public antl a;
-  public final String a;
-  mcr jdField_a_of_type_Mcr;
-  public mcs a;
-  mct jdField_a_of_type_Mct;
-  mcu jdField_a_of_type_Mcu;
+  ConferenceFlyTicketActivity.MyDiscussionObserver jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$MyDiscussionObserver;
+  ConferenceFlyTicketActivity.OnAfterCreateDiscussionAsyncTask jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnAfterCreateDiscussionAsyncTask;
+  ConferenceFlyTicketActivity.OnGetDiscNameCardTask jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnGetDiscNameCardTask;
+  ConferenceFlyTicketActivity.OnReportHrSelfNickNameTask jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnReportHrSelfNickNameTask;
+  DiscussionHandler jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
+  final String jdField_a_of_type_JavaLangString = "ConferenceFlyTicketActivity." + AudioHelper.b();
   boolean jdField_a_of_type_Boolean = false;
-  public String b;
-  boolean b;
-  public String c = null;
-  public String d = null;
+  String jdField_b_of_type_JavaLangString = null;
+  boolean jdField_b_of_type_Boolean = false;
+  String c = null;
+  String d = null;
   String e = null;
   String f = null;
   String g = null;
-  public String h = null;
+  String h = null;
   String i = null;
   String j = null;
   
-  public ConferenceFlyTicketActivity()
-  {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = ("ConferenceFlyTicketActivity." + AudioHelper.b());
-  }
-  
   private void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    long l = bcrg.a();
+    long l = MessageCache.a();
     ArrayList localArrayList = new ArrayList();
-    MessageRecord localMessageRecord = bcsa.a(-7003);
-    if (bhgf.a(this.jdField_a_of_type_Int)) {}
-    for (String str = this.app.getApp().getString(2131691759);; str = this.app.getApp().getString(2131691758))
+    MessageRecord localMessageRecord = MessageRecordFactory.a(-7003);
+    if (QAVHrMeeting.a(this.jdField_a_of_type_Int)) {}
+    for (String str = this.app.getApp().getString(2131691875);; str = this.app.getApp().getString(2131691874))
     {
       localMessageRecord.init(paramString2, paramString1, paramString3, str, l, -7003, 3000, l);
       localMessageRecord.isread = true;
@@ -95,13 +83,13 @@ public class ConferenceFlyTicketActivity
       if (bool1) {
         ((MessageForNewGrayTips)localMessageRecord).updateMsgData();
       }
-      boolean bool2 = anyv.a(this.app, localMessageRecord, false);
+      boolean bool2 = MessageHandlerUtils.a(this.app, localMessageRecord, false);
       if (!bool2) {
         localArrayList.add(localMessageRecord);
       }
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "showHRMeetingTip, friendUin[" + localMessageRecord.frienduin + "], msgType[" + -7003 + "], friendType[" + 3000 + "], bMessageForNewGrayTips[" + bool1 + "], msgFilter[" + bool2 + "], msgContent[" + localMessageRecord.getLogColorContent() + "]");
       if (localArrayList.size() > 0) {
-        this.app.getMessageFacade().addMessage(localArrayList, String.valueOf(paramString2));
+        this.app.getMessageFacade().a(localArrayList, String.valueOf(paramString2));
       }
       return;
     }
@@ -119,15 +107,15 @@ public class ConferenceFlyTicketActivity
     if ((localObject == null) || (((String)localObject).isEmpty())) {
       return false;
     }
-    this.jdField_a_of_type_Mcu = new mcu(this);
+    this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnReportHrSelfNickNameTask = new ConferenceFlyTicketActivity.OnReportHrSelfNickNameTask(this);
     ArrayList localArrayList = new ArrayList();
-    mvt localmvt = new mvt();
+    DownloadParams localDownloadParams = new DownloadParams();
     String str = this.app.getCurrentAccountUin();
-    localmvt.jdField_a_of_type_JavaLangString = ("https://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/report_nickname_video_meeting_for_hr?discid=" + this.h + "&uin=" + str + "&name=" + URLEncoder.encode(this.j));
-    localmvt.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    localmvt.jdField_a_of_type_JavaUtilHashMap.put("Cookie", "uin=o" + str + ";skey=" + (String)localObject);
-    localArrayList.add(localmvt);
-    this.jdField_a_of_type_Mcu.execute(new ArrayList[] { localArrayList });
+    localDownloadParams.jdField_a_of_type_JavaLangString = ("https://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/report_nickname_video_meeting_for_hr?discid=" + this.h + "&uin=" + str + "&name=" + URLEncoder.encode(this.j));
+    localDownloadParams.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    localDownloadParams.jdField_a_of_type_JavaUtilHashMap.put("Cookie", "uin=o" + str + ";skey=" + (String)localObject);
+    localArrayList.add(localDownloadParams);
+    this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnReportHrSelfNickNameTask.execute(new ArrayList[] { localArrayList });
     return true;
   }
   
@@ -159,7 +147,7 @@ public class ConferenceFlyTicketActivity
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  void a(int paramInt1, int paramInt2)
   {
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "showFailMessage, type[" + paramInt1 + "], errorCode[" + paramInt2 + "]");
     String str;
@@ -167,7 +155,7 @@ public class ConferenceFlyTicketActivity
     {
     default: 
       if (paramInt1 == 1) {
-        str = anvx.a(2131701884);
+        str = HardCodeUtil.a(2131702439);
       }
       break;
     }
@@ -175,20 +163,20 @@ public class ConferenceFlyTicketActivity
     {
       this.jdField_a_of_type_AndroidOsHandler.post(new ConferenceFlyTicketActivity.1(this, str));
       return;
-      str = anvx.a(2131701873);
+      str = HardCodeUtil.a(2131702428);
       continue;
-      str = anvx.a(2131701875);
+      str = HardCodeUtil.a(2131702430);
       continue;
-      str = anvx.a(2131701880);
+      str = HardCodeUtil.a(2131702435);
       continue;
-      str = anvx.a(2131701883);
+      str = HardCodeUtil.a(2131702438);
       continue;
-      str = anvx.a(2131701882);
+      str = HardCodeUtil.a(2131702437);
       continue;
-      str = anvx.a(2131701878);
+      str = HardCodeUtil.a(2131702433);
       continue;
       if (paramInt1 == 0) {
-        str = anvx.a(2131701877);
+        str = HardCodeUtil.a(2131702432);
       } else {
         str = "";
       }
@@ -198,22 +186,22 @@ public class ConferenceFlyTicketActivity
   @TargetApi(9)
   void a(String paramString)
   {
-    this.jdField_a_of_type_Mct = new mct(this, paramString);
+    this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnGetDiscNameCardTask = new ConferenceFlyTicketActivity.OnGetDiscNameCardTask(this, paramString);
     paramString = new ArrayList();
-    mvt localmvt = new mvt();
+    DownloadParams localDownloadParams = new DownloadParams();
     String str1 = this.app.getCurrentAccountUin();
-    localmvt.jdField_a_of_type_JavaLangString = ("https://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/get_namecard_by_discid?discid=" + this.h);
-    localmvt.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    localDownloadParams.jdField_a_of_type_JavaLangString = ("https://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/get_namecard_by_discid?discid=" + this.h);
+    localDownloadParams.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     String str2 = ((TicketManager)this.app.getManager(2)).getSkey(this.app.getAccount());
     if ((str2 == null) || (str2.isEmpty())) {
       return;
     }
-    localmvt.jdField_a_of_type_JavaUtilHashMap.put("Cookie", "uin=o" + str1 + ";skey=" + str2);
-    paramString.add(localmvt);
-    this.jdField_a_of_type_Mct.execute(new ArrayList[] { paramString });
+    localDownloadParams.jdField_a_of_type_JavaUtilHashMap.put("Cookie", "uin=o" + str1 + ";skey=" + str2);
+    paramString.add(localDownloadParams);
+    this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnGetDiscNameCardTask.execute(new ArrayList[] { paramString });
   }
   
-  public void a(String paramString1, String paramString2)
+  void a(String paramString1, String paramString2)
   {
     if (this.jdField_a_of_type_Boolean) {
       return;
@@ -222,7 +210,7 @@ public class ConferenceFlyTicketActivity
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "startGAudioOnCreateDiscussion, discID[" + paramString1 + "], discussName[" + paramString2 + "], isBeInvitingOnDoubleVideo[" + bool + "]");
     if (bool)
     {
-      QQToast.a(getApplicationContext(), 2131695634, 1).b(getApplicationContext().getResources().getDimensionPixelSize(2131299080));
+      QQToast.a(getApplicationContext(), 2131695877, 1).b(getApplicationContext().getResources().getDimensionPixelSize(2131299166));
       return;
     }
     this.jdField_a_of_type_Boolean = true;
@@ -236,7 +224,7 @@ public class ConferenceFlyTicketActivity
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "ShowNameCard, mBusinessType[" + this.i + "], mStasks[" + this.jdField_a_of_type_Int + "]");
       a(paramString1);
     }
-    AudioHelper.b(anvx.a(2131701876));
+    AudioHelper.b(HardCodeUtil.a(2131702431));
     ChatActivityUtils.a(this.app, this.app.getApp(), 3000, paramString1, true, true, null, paramString2);
   }
   
@@ -249,9 +237,9 @@ public class ConferenceFlyTicketActivity
       do
       {
         return;
-        localAbsStructMsg = bdof.a(paramString1.getBytes(), 0);
+        localAbsStructMsg = StructMsgFactory.a(paramString1.getBytes(), 0);
       } while (localAbsStructMsg == null);
-      paramString1 = (MessageForStructing)bcsa.a(-2011);
+      paramString1 = (MessageForStructing)MessageRecordFactory.a(-2011);
       paramString1.msgtype = -2011;
       paramString1.istroop = 3000;
       paramString1.issend = 0;
@@ -264,18 +252,18 @@ public class ConferenceFlyTicketActivity
       paramString1.msgData = localAbsStructMsg.getBytes();
       paramString1.saveExtInfoToExtStr("troop_msg_nickname", paramString5);
       paramString2 = new ArrayList();
-      if (!anyv.a(this.app, paramString1, false)) {
+      if (!MessageHandlerUtils.a(this.app, paramString1, false)) {
         paramString2.add(paramString1);
       }
     } while (paramString2.size() <= 0);
-    this.app.getMessageFacade().addMessage(paramString2, String.valueOf(paramString3));
+    this.app.getMessageFacade().a(paramString2, String.valueOf(paramString3));
   }
   
   @TargetApi(9)
-  public void b()
+  void b()
   {
-    AudioHelper.b(anvx.a(2131701874));
-    if (NetworkUtil.isNetSupport(this))
+    AudioHelper.b(HardCodeUtil.a(2131702429));
+    if (NetworkUtil.d(this))
     {
       if (!TextUtils.isEmpty(this.e))
       {
@@ -311,7 +299,7 @@ public class ConferenceFlyTicketActivity
     ThreadManager.post(new ConferenceFlyTicketActivity.2(this, paramString), 5, null, false);
   }
   
-  public void c()
+  void c()
   {
     if (this.jdField_b_of_type_Boolean) {}
     DiscussionInfo localDiscussionInfo;
@@ -320,17 +308,17 @@ public class ConferenceFlyTicketActivity
       do
       {
         return;
-        localObject = (antp)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-        localDiscussionInfo = ((antp)localObject).a(this.h);
+        localObject = (DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+        localDiscussionInfo = ((DiscussionManager)localObject).a(this.h);
       } while (localDiscussionInfo == null);
       if (localDiscussionInfo.mSelfRight != this.jdField_a_of_type_Int)
       {
         localDiscussionInfo.mSelfRight = this.jdField_a_of_type_Int;
-        ((antp)localObject).a(localDiscussionInfo);
+        ((DiscussionManager)localObject).a(localDiscussionInfo);
       }
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "gotoAIO, DiscussionInfo_" + localDiscussionInfo);
     } while (localDiscussionInfo.isHidden());
-    Object localObject = AIOUtils.setOpenAIOIntent(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
+    Object localObject = AIOUtils.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
     ((Intent)localObject).putExtra("uin", this.h);
     ((Intent)localObject).putExtra("uintype", 3000);
     ((Intent)localObject).putExtra("uinname", localDiscussionInfo.discussionName);
@@ -353,9 +341,9 @@ public class ConferenceFlyTicketActivity
     AudioHelper.b("ConferenceFlyTicketActivity.doOnCreate.begin");
     boolean bool = super.doOnCreate(paramBundle);
     a();
-    this.jdField_a_of_type_Antl = ((antl)this.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER));
-    this.jdField_a_of_type_Mcr = new mcr(this);
-    addObserver(this.jdField_a_of_type_Mcr);
+    this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler = ((DiscussionHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER));
+    this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$MyDiscussionObserver = new ConferenceFlyTicketActivity.MyDiscussionObserver(this);
+    addObserver(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$MyDiscussionObserver);
     if (this.i.equals("video_hr"))
     {
       if (!a()) {
@@ -372,7 +360,7 @@ public class ConferenceFlyTicketActivity
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Mcr);
+    removeObserver(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$MyDiscussionObserver);
     this.jdField_a_of_type_AndroidOsHandler = null;
     super.doOnDestroy();
   }
@@ -391,7 +379,7 @@ public class ConferenceFlyTicketActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.ConferenceFlyTicketActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import aftr;
-import ahpt;
-import ahvi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class FavoriteAppInfo
   extends PlusPanelAppInfo
 {
-  public FavoriteAppInfo() {}
+  FavoriteAppInfo() {}
   
   public FavoriteAppInfo(int paramInt)
   {
@@ -23,7 +23,7 @@ public class FavoriteAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130844144;
+    return 2130844326;
   }
   
   public int getAppID()
@@ -52,17 +52,17 @@ public class FavoriteAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698192);
+    return BaseApplicationImpl.getContext().getString(2131698468);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    paramahvi.a("chat_tool_qfav", localQQAppInterface.getCurrentAccountUin());
-    paramahvi.b(paramBaseChatPie);
-    aftr.b(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
-    paramBaseChatPie.getActivity().setCanLock(false);
-    ahpt.a(localQQAppInterface, "0X8005CB1", paramSessionInfo.curType);
+    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    paramPlusPanelViewModel.a("chat_tool_qfav", localQQAppInterface.getCurrentAccountUin());
+    paramPlusPanelViewModel.b(paramBaseChatPie);
+    PlusPanelUtils.b(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo);
+    paramBaseChatPie.a().setCanLock(false);
+    AIOPanelUtiles.a(localQQAppInterface, "0X8005CB1", paramSessionInfo.a);
   }
 }
 

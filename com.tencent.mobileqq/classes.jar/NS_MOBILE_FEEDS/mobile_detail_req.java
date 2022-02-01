@@ -11,18 +11,18 @@ public final class mobile_detail_req
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
   static Map<String, String> cache_mapExt;
-  public int appid;
+  public int appid = 0;
   public String attach_info = "";
   public String attach_info_essence = "";
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String cellid = "";
   public String clientkey = "";
-  public int count;
+  public int count = 0;
   public String likekey = "";
-  public Map<String, String> mapExt;
-  public int refresh_type;
+  public Map<String, String> mapExt = null;
+  public int refresh_type = 0;
   public String subid = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

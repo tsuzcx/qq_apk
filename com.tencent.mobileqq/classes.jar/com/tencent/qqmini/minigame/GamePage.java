@@ -34,6 +34,7 @@ import com.tencent.qqmini.minigame.gpkg.MiniGamePkg;
 import com.tencent.qqmini.minigame.manager.CustomButtonManager;
 import com.tencent.qqmini.minigame.manager.FloatDragAdManager;
 import com.tencent.qqmini.minigame.manager.GameInfoManager;
+import com.tencent.qqmini.minigame.manager.PendantManager;
 import com.tencent.qqmini.minigame.ui.VConsoleDragView;
 import com.tencent.qqmini.minigame.ui.VConsoleDragView.Listener;
 import com.tencent.qqmini.minigame.ui.VConsoleView;
@@ -51,6 +52,7 @@ import com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.model.AppPageInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.AppPageInfo.Builder;
 import com.tencent.qqmini.sdk.launcher.core.model.FloatDragAdInfo;
+import com.tencent.qqmini.sdk.launcher.core.model.PendantAdInfo;
 import com.tencent.qqmini.sdk.launcher.core.proxy.KingCardProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
@@ -87,6 +89,7 @@ public class GamePage
   private MiniAppMonitorInfoView mMiniAppMonitorInfoView;
   private GameNavigationBar mNavigationBar;
   private View mPayForFriendView;
+  private PendantManager mPendantManager;
   private ViewGroup mRootView;
   private Handler mUIHandler = new Handler(Looper.getMainLooper());
   private VConsoleLogManager mVConsoleManager;
@@ -126,13 +129,18 @@ public class GamePage
     if (this.mGameInfo == null) {
       QMLog.w("GamePage", "Failed to attach vConsole view, game info is null");
     }
-    while (!StorageUtil.getPreference().getBoolean(this.mGameInfo.getId() + "_debug", false)) {
-      return;
-    }
-    this.vConsoleBtn = createVConsoleBtn();
-    paramViewGroup.addView(this.vConsoleBtn);
-    this.vConsoleBtn.bringToFront();
-    this.vConsoleBtn.setVisibility(0);
+    do
+    {
+      do
+      {
+        return;
+      } while (!StorageUtil.getPreference().getBoolean(this.mGameInfo.getId() + "_debug", false));
+      this.vConsoleBtn = createVConsoleBtn();
+      paramViewGroup.addView(this.vConsoleBtn);
+      this.vConsoleBtn.bringToFront();
+      this.vConsoleBtn.setVisibility(0);
+    } while (this.mGameInfo.getOrientation() != GamePackage.Orientation.LANDSCAPE);
+    this.vConsoleBtn.requestLandscapeLayout();
   }
   
   private void changeWindowInfo(MiniAppInfo paramMiniAppInfo)
@@ -157,9 +165,6 @@ public class GamePage
       this.mActivity.setRequestedOrientation(0);
       if (this.mNavigationBar != null) {
         this.mNavigationBar.requestLandscapeLayout();
-      }
-      if (this.vConsoleBtn != null) {
-        this.vConsoleBtn.requestLandscapeLayout();
       }
     }
     try
@@ -189,18 +194,18 @@ public class GamePage
     if (this.mGameInfo.getOrientation() == GamePackage.Orientation.LANDSCAPE)
     {
       k = 1;
-      label151:
+      label137:
       j = this.mActivity.getResources().getDisplayMetrics().widthPixels;
       i = this.mActivity.getResources().getDisplayMetrics().heightPixels;
       if (Build.VERSION.SDK_INT < 17) {
-        break label439;
+        break label425;
       }
       localDisplayMetrics = new DisplayMetrics();
       ((WindowManager)this.mActivity.getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
       i = localDisplayMetrics.heightPixels;
       m = localDisplayMetrics.widthPixels;
       if (!Build.MANUFACTURER.equalsIgnoreCase("huawei")) {
-        break label347;
+        break label333;
       }
       j = m;
       if (Settings.Secure.getInt(this.mActivity.getContentResolver(), "display_notch_status", 0) == 1)
@@ -222,7 +227,7 @@ public class GamePage
       else
       {
         if ((k != 0) || (i > j)) {
-          break label424;
+          break label410;
         }
         n = i;
         m = j;
@@ -234,10 +239,10 @@ public class GamePage
       this.mActivity.setRequestedOrientation(1);
       break;
       k = 0;
-      break label151;
-      label347:
+      break label137;
+      label333:
       if ((!Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) || (Settings.Global.getInt(this.mActivity.getContentResolver(), "force_black", 0) != 1)) {
-        break label433;
+        break label419;
       }
       QMLog.i("GamePage", "xiaomi has notch");
       if (k != 0)
@@ -563,6 +568,11 @@ public class GamePage
       this.mFloatDragAdManager.removeDragAd();
       this.mFloatDragAdManager = null;
     }
+    if (this.mPendantManager != null)
+    {
+      this.mPendantManager.removePendantAd();
+      this.mPendantManager = null;
+    }
     if ((this.mActivity != null) && (!this.mActivity.isFinishing())) {
       this.mActivity.finish();
     }
@@ -637,6 +647,21 @@ public class GamePage
     }
     if (("remove".equals(paramString)) && (this.mFloatDragAdManager != null)) {
       return this.mFloatDragAdManager.removeDragAd();
+    }
+    return false;
+  }
+  
+  public boolean operatePendantAd(String paramString, PendantAdInfo paramPendantAdInfo)
+  {
+    if ("add".equals(paramString))
+    {
+      if (this.mPendantManager == null) {
+        this.mPendantManager = new PendantManager(this.mActivity, this.mMiniAppContext, this.mRootView);
+      }
+      return this.mPendantManager.showPendantAd(paramPendantAdInfo);
+    }
+    if (("remove".equals(paramString)) && (this.mPendantManager != null)) {
+      return this.mPendantManager.removePendantAd();
     }
     return false;
   }
@@ -725,7 +750,7 @@ public class GamePage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GamePage
  * JD-Core Version:    0.7.0.1
  */

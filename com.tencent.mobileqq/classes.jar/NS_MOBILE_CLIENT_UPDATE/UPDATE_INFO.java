@@ -12,14 +12,14 @@ public final class UPDATE_INFO
   static int cache_actype = 0;
   static Map<String, String> cache_extra_info = new HashMap();
   static Map<Integer, String> cache_plugin_info;
-  public int actype;
+  public int actype = 0;
   public String app = "";
-  public Map<String, String> extra_info;
+  public Map<String, String> extra_info = null;
   public String id = "";
   public String mainVersion = "";
   public String md5 = "";
   public String name = "";
-  public Map<Integer, String> plugin_info;
+  public Map<Integer, String> plugin_info = null;
   public String ver = "";
   
   static

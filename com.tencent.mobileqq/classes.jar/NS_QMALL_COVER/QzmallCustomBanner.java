@@ -8,9 +8,9 @@ public final class QzmallCustomBanner
   extends JceStruct
 {
   static BannerStyleConf cache_stBannerStyle = new BannerStyleConf();
-  public int iBannerConfType;
-  public int iBannerType;
-  public BannerStyleConf stBannerStyle;
+  public int iBannerConfType = 0;
+  public int iBannerType = 0;
+  public BannerStyleConf stBannerStyle = null;
   public String strBannerUrl = "";
   public String strJumpUrl = "";
   public String strQbossTraceinfo = "";

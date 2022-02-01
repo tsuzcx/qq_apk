@@ -1,11 +1,9 @@
 package com.tencent.mm.hardcoder;
 
-import aczy;
-
-public class HardCoderManager$2
+class HardCoderManager$2
   implements Runnable
 {
-  public HardCoderManager$2(aczy paramaczy) {}
+  HardCoderManager$2(HardCoderManager paramHardCoderManager) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class HardCoderManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderManager.2
  * JD-Core Version:    0.7.0.1
  */

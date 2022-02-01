@@ -9,8 +9,8 @@ public final class Font
 {
   static int cache_font_size = 0;
   static int cache_hideFlag = 0;
-  public int font_size;
-  public int hideFlag;
+  public int font_size = 0;
+  public int hideFlag = 0;
   
   public Font() {}
   

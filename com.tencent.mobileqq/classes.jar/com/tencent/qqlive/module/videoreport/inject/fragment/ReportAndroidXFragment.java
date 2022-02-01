@@ -1,9 +1,9 @@
 package com.tencent.qqlive.module.videoreport.inject.fragment;
 
-import d;
+import androidx.fragment.app.Fragment;
 
 public class ReportAndroidXFragment
-  extends d
+  extends Fragment
 {
   public void onDestroyView()
   {

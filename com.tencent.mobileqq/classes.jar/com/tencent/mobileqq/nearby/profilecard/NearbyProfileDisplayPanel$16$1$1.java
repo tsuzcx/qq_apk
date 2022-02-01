@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import anvx;
-import ayek;
-import ayeq;
-import ayer;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class NearbyProfileDisplayPanel$16$1$1
+class NearbyProfileDisplayPanel$16$1$1
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$16$1$1(ayer paramayer) {}
+  NearbyProfileDisplayPanel$16$1$1(NearbyProfileDisplayPanel.16.1 param1) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a.a, 2, anvx.a(2131706835), 0).a();
+    QQToast.a(this.a.a.a.a, 2, HardCodeUtil.a(2131707374), 0).a();
   }
 }
 

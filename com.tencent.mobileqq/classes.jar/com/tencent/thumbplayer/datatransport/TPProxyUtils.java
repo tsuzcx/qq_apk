@@ -193,12 +193,12 @@ public class TPProxyUtils
   
   static TPDLProxyInitParam getProxyInitParam(Context paramContext, int paramInt)
   {
-    return new TPDLProxyInitParam(TPPlayerConfig.getPlatform(), TPPlayerConfig.getAppVersionName(paramContext), TPPlayerConfig.getGuid(), TPPlayerConfig.getProxyCacheDir(paramInt), TPPlayerConfig.getProxyDataDir(paramInt), TPPlayerConfig.getProxyConfigStr(paramInt));
+    return new TPDLProxyInitParam(TPPlayerConfig.getPlatform(), TPPlayerConfig.getAppVersionName(paramContext), TPPlayerConfig.getGuid(), TPPlayerConfig.getProxyCacheDir(paramInt), TPPlayerConfig.getProxyDataDir(paramInt), TPPlayerConfig.getProxyConfigStr());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPProxyUtils
  * JD-Core Version:    0.7.0.1
  */

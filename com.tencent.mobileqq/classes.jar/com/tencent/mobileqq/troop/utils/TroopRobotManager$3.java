@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgls;
-import bgmb;
 import java.lang.ref.WeakReference;
 
-public class TroopRobotManager$3
+class TroopRobotManager$3
   implements Runnable
 {
-  public TroopRobotManager$3(bgls parambgls) {}
+  TroopRobotManager$3(TroopRobotManager paramTroopRobotManager) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bgmb localbgmb = (bgmb)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbgmb != null) {
-        localbgmb.a(this.this$0.d, this.this$0.b, this.this$0.jdField_a_of_type_Boolean);
+      TroopRobotManager.OnTalkingChangeListener localOnTalkingChangeListener = (TroopRobotManager.OnTalkingChangeListener)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localOnTalkingChangeListener != null) {
+        localOnTalkingChangeListener.a(this.this$0.d, this.this$0.b, this.this$0.jdField_a_of_type_Boolean);
       }
     }
   }

@@ -11,9 +11,9 @@ public final class ShareInfo
   static ShareCell cache_shareToFriend = new ShareCell();
   static ShareCell cache_shareToQzone = new ShareCell();
   static single_feed cache_single_feed_data = new single_feed();
-  public ShareCell shareToFriend;
-  public ShareCell shareToQzone;
-  public single_feed single_feed_data;
+  public ShareCell shareToFriend = null;
+  public ShareCell shareToQzone = null;
+  public single_feed single_feed_data = null;
   
   public ShareInfo() {}
   

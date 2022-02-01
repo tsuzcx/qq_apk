@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.transfile;
 
-import auuv;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 abstract class ForwardSdkShareProcessor$ForwardStep
 {
-  protected long beginTime;
+  protected long beginTime = 0L;
   protected AtomicBoolean isCancelled = new AtomicBoolean(false);
   protected AtomicBoolean isRunning = new AtomicBoolean(false);
   private ForwardStep[] lastSteps;
@@ -65,10 +67,17 @@ abstract class ForwardSdkShareProcessor$ForwardStep
       l = System.currentTimeMillis() - this.beginTime;
     }
     QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.stepName + "|finished,cost=" + l);
-    auuv.a(this.stepName, l);
-    if ((this.nextStep != null) && (!this.isCancelled.get())) {
-      this.this$0.mController.mHandler.post(new ForwardSdkShareProcessor.ForwardStep.1(this));
+    ForwardStatisticsReporter.a(this.stepName, l);
+    if ((this.nextStep != null) && (!this.isCancelled.get()))
+    {
+      if (Looper.getMainLooper() == Looper.myLooper()) {
+        ThreadManager.excute(new ForwardSdkShareProcessor.ForwardStep.1(this), 128, null, true);
+      }
     }
+    else {
+      return;
+    }
+    this.nextStep.doStep();
   }
   
   void doStep()

@@ -1,58 +1,53 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import anvx;
-import begq;
-import bhmb;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.common.config.AppSetting;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.activity.recent.parcelUtils.annotation.ParcelAnnotation.NotParcel;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.text.ColorNickText;
 import com.tencent.mobileqq.text.QQText;
-import nty;
+import com.tencent.mobileqq.vas.ColorNickManager;
 
 public class RecentItemTroopAssistant
   extends RecentItemTroopAssistantBaseData
 {
   public static final String TAG = "RecentItemTroopAssistant";
-  @ParcelAnnotation.NotParcel
-  public RecentUser mUser;
   
   public RecentItemTroopAssistant(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    this.mUser = paramRecentUser;
   }
   
   private void a()
   {
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       if (this.mUnreadNum > 0) {
-        this.mContentDesc = String.format(anvx.a(2131712641), new Object[] { Integer.valueOf(this.mUnreadNum), this.mShowTime });
+        this.mContentDesc = String.format(HardCodeUtil.a(2131713137), new Object[] { Integer.valueOf(this.mUnreadNum), this.mShowTime });
       }
     }
     else {
       return;
     }
-    this.mContentDesc = String.format(anvx.a(2131712647), new Object[] { this.mLastMsg, this.mShowTime });
+    this.mContentDesc = String.format(HardCodeUtil.a(2131713143), new Object[] { this.mLastMsg, this.mShowTime });
   }
   
-  private void a(Context paramContext, QQMessageFacade.Message paramMessage, MsgSummary paramMsgSummary)
+  private void a(Context paramContext, Message paramMessage, MsgSummary paramMsgSummary)
   {
-    if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (paramMessage != null) && (paramMsgSummary != null) && (nty.a(paramMessage))) {
-      this.mLastMsg = paramMsgSummary.parseMsgWithExtraInfo(paramContext, paramContext.getResources().getString(2131696965), -1);
+    if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (paramMessage != null) && (paramMsgSummary != null) && (AnonymousChatHelper.a(paramMessage))) {
+      this.mLastMsg = paramMsgSummary.a(paramContext, AnonymousChatHelper.a(paramMessage), -1);
     }
   }
   
-  private void a(QQMessageFacade.Message paramMessage, MsgSummary paramMsgSummary)
+  private void a(Message paramMessage, MsgSummary paramMsgSummary)
   {
     SpannableString localSpannableString;
     String str;
@@ -78,9 +73,9 @@ public class RecentItemTroopAssistant
     for (Object localObject = (String)str.subSequence(paramMsgSummary.strPrefix.length() + 2, paramMsgSummary.strContent.length());; localObject = paramMsgSummary.suffix.toString())
     {
       if (!TextUtils.isEmpty(paramMsgSummary.strPrefix)) {
-        localSpannableString = new begq(paramMsgSummary.strPrefix, 16).a();
+        localSpannableString = new ColorNickText(paramMsgSummary.strPrefix, 16).a();
       }
-      paramMessage = bhmb.a((String)localObject, paramMessage, 16, 3);
+      paramMessage = ColorNickManager.a((String)localObject, paramMessage, 16, 3);
       localObject = new SpannableStringBuilder();
       if (localSpannableString != null) {
         ((SpannableStringBuilder)localObject).append(localSpannableString).append(": ");
@@ -91,18 +86,18 @@ public class RecentItemTroopAssistant
     }
   }
   
-  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext, IMCoreMessageStub paramIMCoreMessageStub, MsgSummary paramMsgSummary)
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, IMCoreMessageStub paramIMCoreMessageStub, MsgSummary paramMsgSummary)
   {
-    if ((paramIMCoreAppRuntime == null) || (paramContext == null)) {
+    if ((paramBaseQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    super.update(paramIMCoreAppRuntime, paramContext, paramIMCoreMessageStub, paramMsgSummary);
-    if ((paramIMCoreMessageStub instanceof QQMessageFacade.Message)) {}
-    for (paramIMCoreMessageStub = (QQMessageFacade.Message)paramIMCoreMessageStub;; paramIMCoreMessageStub = null)
+    super.a(paramBaseQQAppInterface, paramContext, paramIMCoreMessageStub, paramMsgSummary);
+    if ((paramIMCoreMessageStub instanceof Message)) {}
+    for (paramIMCoreMessageStub = (Message)paramIMCoreMessageStub;; paramIMCoreMessageStub = null)
     {
       a(paramIMCoreMessageStub, paramMsgSummary);
-      extraUpdate(paramIMCoreAppRuntime, paramContext, paramMsgSummary);
-      dealMsgAttention(paramContext);
+      extraUpdate(paramBaseQQAppInterface, paramContext, paramMsgSummary);
+      a(paramContext);
       a(paramContext, paramIMCoreMessageStub, paramMsgSummary);
       a();
       return;
@@ -111,7 +106,7 @@ public class RecentItemTroopAssistant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTroopAssistant
  * JD-Core Version:    0.7.0.1
  */

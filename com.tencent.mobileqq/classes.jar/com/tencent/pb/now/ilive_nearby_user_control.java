@@ -3,7 +3,7 @@ package com.tencent.pb.now;
 public final class ilive_nearby_user_control {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.pb.now.ilive_nearby_user_control
  * JD-Core Version:    0.7.0.1
  */

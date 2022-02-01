@@ -2,25 +2,23 @@ package com.tencent.mobileqq.troop.shortcutbar.troopapp;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import bgcr;
-import bgct;
 import com.tencent.mobileqq.widget.AppShortcutBarScrollView;
 
-public class AppShortcutBarPanel$1
+class AppShortcutBarPanel$1
   implements Runnable
 {
-  public AppShortcutBarPanel$1(bgcr parambgcr) {}
+  AppShortcutBarPanel$1(AppShortcutBarPanel paramAppShortcutBarPanel) {}
   
   public void run()
   {
     this.this$0.e();
-    if ((bgcr.a(this.this$0) != null) && (bgcr.a(this.this$0) != null) && (bgcr.a(this.this$0) != null) && (bgcr.b(this.this$0) != null) && (bgcr.a(this.this$0) != null) && (bgcr.a(this.this$0).jdField_a_of_type_Boolean) && (bgcr.a(this.this$0).jdField_a_of_type_Int > 4) && (bgcr.b(this.this$0).getChildCount() == 0))
+    if ((AppShortcutBarPanel.a(this.this$0) != null) && (AppShortcutBarPanel.a(this.this$0) != null) && (AppShortcutBarPanel.a(this.this$0) != null) && (AppShortcutBarPanel.b(this.this$0) != null) && (AppShortcutBarPanel.a(this.this$0) != null) && (AppShortcutBarPanel.a(this.this$0).jdField_a_of_type_Boolean) && (AppShortcutBarPanel.a(this.this$0).jdField_a_of_type_Int > 4) && (AppShortcutBarPanel.b(this.this$0).getChildCount() == 0))
     {
-      View localView1 = bgcr.a(this.this$0).findViewById((int)bgcr.a(this.this$0).jdField_a_of_type_Long);
-      View localView2 = bgcr.a(this.this$0).findViewById((int)bgcr.a(this.this$0).b);
+      View localView1 = AppShortcutBarPanel.a(this.this$0).findViewById((int)AppShortcutBarPanel.a(this.this$0).jdField_a_of_type_Long);
+      View localView2 = AppShortcutBarPanel.a(this.this$0).findViewById((int)AppShortcutBarPanel.a(this.this$0).b);
       int i = localView1.getLeft();
       int j = localView2.getLeft();
-      bgcr.a(this.this$0).scrollBy(i - j, 0);
+      AppShortcutBarPanel.a(this.this$0).scrollBy(i - j, 0);
     }
   }
 }

@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class UniBusinessCheckItem
   extends JceStruct
 {
-  public int appid;
+  public int appid = 0;
   public String errmsg = "";
-  public int itemid;
-  public int ret;
+  public int itemid = 0;
+  public int ret = 0;
   public String strAID = "";
   public String txRuleID = "";
   public String url = "";

@@ -9,9 +9,9 @@ public final class mobile_video_nag_feedback_req
   extends JceStruct
 {
   static ArrayList<nagative_fb_info> cache_vecNagFbInfo = new ArrayList();
-  public long feedsUin;
-  public long loginUin;
-  public ArrayList<nagative_fb_info> vecNagFbInfo;
+  public long feedsUin = 0L;
+  public long loginUin = 0L;
+  public ArrayList<nagative_fb_info> vecNagFbInfo = null;
   
   static
   {

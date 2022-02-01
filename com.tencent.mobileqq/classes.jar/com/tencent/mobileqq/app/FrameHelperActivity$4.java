@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import blgc;
+import com.tencent.widget.UpSideDownDrawable;
 
 class FrameHelperActivity$4
   implements Runnable
 {
-  FrameHelperActivity$4(FrameHelperActivity paramFrameHelperActivity, blgc paramblgc) {}
+  FrameHelperActivity$4(FrameHelperActivity paramFrameHelperActivity, UpSideDownDrawable paramUpSideDownDrawable) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class FrameHelperActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.4
  * JD-Core Version:    0.7.0.1
  */

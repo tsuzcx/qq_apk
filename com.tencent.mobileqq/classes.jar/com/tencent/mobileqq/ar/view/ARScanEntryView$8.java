@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.os.Handler;
-import apov;
+import com.tencent.mobileqq.ar.model.ScanEntryResourceDelegate;
 import com.tencent.qphone.base.util.QLog;
 
 class ARScanEntryView$8
   implements Runnable
 {
-  ARScanEntryView$8(ARScanEntryView paramARScanEntryView, long paramLong, apov paramapov) {}
+  ARScanEntryView$8(ARScanEntryView paramARScanEntryView, long paramLong, ScanEntryResourceDelegate paramScanEntryResourceDelegate) {}
   
   public void run()
   {
@@ -20,23 +20,23 @@ class ARScanEntryView$8
     if ((this.jdField_a_of_type_Long & 0x4) != 0L)
     {
       i = 1;
-      if (!this.jdField_a_of_type_Apov.a(2)) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate.a(2)) {
         l1 = 0L | 0x2;
       }
       l2 = l1;
-      if (!this.jdField_a_of_type_Apov.a(8)) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate.a(8)) {
         l2 = l1 | 0x8;
       }
-      if ((this.jdField_a_of_type_Apov.a(4)) || (i == 0)) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate.a(4)) || (i == 0)) {
         break label294;
       }
       l2 |= 0x4;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Apov.a(l2, ARScanEntryView.a(this.this$0), ARScanEntryView.a(this.this$0));
-      boolean bool = this.jdField_a_of_type_Apov.c();
-      if ((this.jdField_a_of_type_Apov.a(4)) || (i == 0)) {
+      this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate.a(l2, ARScanEntryView.a(this.this$0), ARScanEntryView.a(this.this$0));
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate.c();
+      if ((this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate.a(4)) || (i == 0)) {
         ARScanEntryView.b(this.this$0, 100);
       }
       if (bool)

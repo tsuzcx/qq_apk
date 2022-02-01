@@ -22,93 +22,97 @@ public class HardCodeIpList
     this.mPort4HardCode.add(Integer.valueOf(80));
     this.mPort4HardCode.add(Integer.valueOf(8080));
     this.mPort4HardCode.add(Integer.valueOf(443));
+    ArrayList localArrayList1 = new ArrayList();
+    localArrayList1.add("121.51.158.123");
+    localArrayList1.add("1121.51.139.184");
+    localArrayList1.add("111.13.34.183");
+    localArrayList1.add("111.30.144.63");
+    localArrayList1.add("183.194.234.190");
+    localArrayList1.add("183.194.234.249");
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList2.add("157.255.196.94");
+    localArrayList2.add("61.241.43.180");
+    localArrayList2.add("223.167.252.209");
+    localArrayList2.add("111.161.111.177");
+    localArrayList2.add("111.161.64.121");
+    localArrayList2.add("116.128.163.67");
+    ArrayList localArrayList3 = new ArrayList();
+    localArrayList3.add("14.18.161.24");
+    localArrayList3.add("59.36.121.49");
+    localArrayList3.add("61.151.207.107");
+    localArrayList3.add("123.151.71.152");
+    localArrayList3.add("123.151.137.126");
+    localArrayList3.add("101.89.38.28");
+    ArrayList localArrayList4 = new ArrayList();
+    localArrayList4.add("203.205.234.15");
+    localArrayList4.add("203.205.234.144");
     if (this.mHcIpCandicateListWifi == null)
     {
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
-      ArrayList localArrayList3 = new ArrayList();
-      ArrayList localArrayList4 = new ArrayList();
-      localArrayList3.add(new HardCodeIpList.Candiate(this, "121.51.141.73"));
-      localArrayList3.add(new HardCodeIpList.Candiate(this, "121.51.139.184"));
-      localArrayList3.add(new HardCodeIpList.Candiate(this, "111.13.34.183"));
-      localArrayList3.add(new HardCodeIpList.Candiate(this, "111.30.144.63"));
-      localArrayList3.add(new HardCodeIpList.Candiate(this, "183.194.234.190"));
-      localArrayList3.add(new HardCodeIpList.Candiate(this, "183.194.234.249"));
-      Collections.sort(localArrayList3, new HardCodeIpList.CustomComparator(this));
-      localArrayList2.add(new HardCodeIpList.Candiate(this, "58.250.136.56"));
-      localArrayList2.add(new HardCodeIpList.Candiate(this, "163.177.92.121"));
-      localArrayList2.add(new HardCodeIpList.Candiate(this, "223.167.104.34"));
-      localArrayList2.add(new HardCodeIpList.Candiate(this, "111.161.111.177"));
-      localArrayList2.add(new HardCodeIpList.Candiate(this, "111.161.64.121"));
-      localArrayList2.add(new HardCodeIpList.Candiate(this, "116.128.163.67"));
-      Collections.sort(localArrayList2, new HardCodeIpList.CustomComparator(this));
-      localArrayList1.add(new HardCodeIpList.Candiate(this, "183.3.225.58"));
-      localArrayList1.add(new HardCodeIpList.Candiate(this, "183.3.235.188"));
-      localArrayList1.add(new HardCodeIpList.Candiate(this, "180.163.25.38"));
-      localArrayList1.add(new HardCodeIpList.Candiate(this, "123.151.71.152"));
-      localArrayList1.add(new HardCodeIpList.Candiate(this, "123.151.137.126"));
-      localArrayList1.add(new HardCodeIpList.Candiate(this, "101.89.38.28"));
-      Collections.sort(localArrayList1, new HardCodeIpList.CustomComparator(this));
-      localArrayList4.add(new HardCodeIpList.Candiate(this, "203.205.234.15"));
-      localArrayList4.add(new HardCodeIpList.Candiate(this, "203.205.234.144"));
-      Collections.sort(localArrayList4, new HardCodeIpList.CustomComparator(this));
+      ArrayList localArrayList5 = new ArrayList();
+      ArrayList localArrayList6 = new ArrayList();
+      ArrayList localArrayList7 = new ArrayList();
+      ArrayList localArrayList8 = new ArrayList();
+      Iterator localIterator = localArrayList1.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList7.add(new HardCodeIpList.Candiate(this, (String)localIterator.next()));
+      }
+      Collections.sort(localArrayList7, new HardCodeIpList.CustomComparator(this));
+      localIterator = localArrayList2.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList6.add(new HardCodeIpList.Candiate(this, (String)localIterator.next()));
+      }
+      Collections.sort(localArrayList6, new HardCodeIpList.CustomComparator(this));
+      localIterator = localArrayList3.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList5.add(new HardCodeIpList.Candiate(this, (String)localIterator.next()));
+      }
+      Collections.sort(localArrayList5, new HardCodeIpList.CustomComparator(this));
+      localIterator = localArrayList4.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList8.add(new HardCodeIpList.Candiate(this, (String)localIterator.next()));
+      }
+      Collections.sort(localArrayList8, new HardCodeIpList.CustomComparator(this));
       this.mHcIpCandicateListWifi = new CopyOnWriteArrayList();
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList1.get(0)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList2.get(0)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList3.get(0)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList4.get(0)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList1.get(1)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList2.get(1)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList3.get(1)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList4.get(1)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList1.get(2)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList2.get(2)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList3.get(2)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList1.get(3)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList2.get(3)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList3.get(3)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList1.get(4)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList2.get(4)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList3.get(4)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList1.get(5)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList2.get(5)).ip);
-      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList3.get(5)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList5.get(0)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList6.get(0)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList7.get(0)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList8.get(0)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList5.get(1)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList6.get(1)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList7.get(1)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList8.get(1)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList5.get(2)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList6.get(2)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList7.get(2)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList5.get(3)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList6.get(3)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList7.get(3)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList5.get(4)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList6.get(4)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList7.get(4)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList5.get(5)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList6.get(5)).ip);
+      this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList7.get(5)).ip);
     }
     if (this.mHcIpCandicateListChinaMobile == null)
     {
       this.mHcIpCandicateListChinaMobile = new CopyOnWriteArrayList();
-      this.mHcIpCandicateListChinaMobile.add("121.51.141.73");
-      this.mHcIpCandicateListChinaMobile.add("121.51.139.184");
-      this.mHcIpCandicateListChinaMobile.add("111.30.159.176");
-      this.mHcIpCandicateListChinaMobile.add("111.30.159.160");
-      this.mHcIpCandicateListChinaMobile.add("183.194.234.190");
-      this.mHcIpCandicateListChinaMobile.add("183.194.234.249");
+      this.mHcIpCandicateListChinaMobile.addAll(localArrayList1);
     }
     if (this.mHcIpCandicateListChinaUnicom == null)
     {
       this.mHcIpCandicateListChinaUnicom = new CopyOnWriteArrayList();
-      this.mHcIpCandicateListChinaUnicom.add("58.250.136.56");
-      this.mHcIpCandicateListChinaUnicom.add("163.177.92.121");
-      this.mHcIpCandicateListChinaUnicom.add("223.167.104.34");
-      this.mHcIpCandicateListChinaUnicom.add("220.194.95.148");
-      this.mHcIpCandicateListChinaUnicom.add("220.194.95.147");
-      this.mHcIpCandicateListChinaUnicom.add("116.128.163.67");
+      this.mHcIpCandicateListChinaUnicom.addAll(localArrayList2);
     }
     if (this.mHcIpCandicateListChinaTelecom == null)
     {
       this.mHcIpCandicateListChinaTelecom = new CopyOnWriteArrayList();
-      this.mHcIpCandicateListChinaTelecom.add("183.3.225.58");
-      this.mHcIpCandicateListChinaTelecom.add("183.3.235.188");
-      this.mHcIpCandicateListChinaTelecom.add("180.163.25.38");
-      this.mHcIpCandicateListChinaTelecom.add("123.151.190.162");
-      this.mHcIpCandicateListChinaTelecom.add("123.151.190.163");
-      this.mHcIpCandicateListChinaTelecom.add("101.89.38.28");
+      this.mHcIpCandicateListChinaTelecom.addAll(localArrayList3);
     }
     if (this.mHcIpCandicateListOverseas == null)
     {
       this.mHcIpCandicateListOverseas = new CopyOnWriteArrayList();
-      this.mHcIpCandicateListOverseas.add("203.205.234.15");
-      this.mHcIpCandicateListOverseas.add("203.205.234.144");
+      this.mHcIpCandicateListOverseas.addAll(localArrayList4);
     }
   }
   

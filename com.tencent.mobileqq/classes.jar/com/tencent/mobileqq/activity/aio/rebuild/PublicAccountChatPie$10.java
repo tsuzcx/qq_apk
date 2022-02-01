@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aido;
-import uot;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
 
-public class PublicAccountChatPie$10
+class PublicAccountChatPie$10
   implements Runnable
 {
-  public PublicAccountChatPie$10(aido paramaido) {}
+  PublicAccountChatPie$10(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    uot.a().b(this.this$0.app);
+    ServiceAccountFolderManager.a().b(this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.10
  * JD-Core Version:    0.7.0.1
  */

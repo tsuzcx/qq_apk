@@ -1240,6 +1240,19 @@ public class BasePluginActivity
     }
   }
   
+  public void startActivity(Intent paramIntent, Bundle paramBundle)
+  {
+    try
+    {
+      super.startActivity(paramIntent, paramBundle);
+      return;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      startActivityForResult(paramIntent, -1, paramBundle);
+    }
+  }
+  
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
     boolean bool2 = false;

@@ -3,12 +3,11 @@ package com.tencent.mobileqq.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import biqa;
 
 public class MonitorSizeChangeRelativeLayout
   extends RelativeLayout
 {
-  private biqa a;
+  private MonitorSizeChangeRelativeLayout.ICallback a;
   
   public MonitorSizeChangeRelativeLayout(Context paramContext)
   {
@@ -20,7 +19,7 @@ public class MonitorSizeChangeRelativeLayout
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.a != null) {
@@ -28,14 +27,14 @@ public class MonitorSizeChangeRelativeLayout
     }
   }
   
-  public void setCallBack(biqa parambiqa)
+  public void setCallBack(MonitorSizeChangeRelativeLayout.ICallback paramICallback)
   {
-    this.a = parambiqa;
+    this.a = paramICallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MonitorSizeChangeRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

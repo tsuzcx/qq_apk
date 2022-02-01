@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -10,7 +9,7 @@ public class QQH5BrowserActivity
 {
   public QQH5BrowserActivity()
   {
-    this.a = QQH5BrowserActivity.QQH5BrowserFragment.class;
+    this.mFragmentClass = QQH5BrowserActivity.QQH5BrowserFragment.class;
   }
   
   @Override
@@ -31,7 +30,7 @@ public class QQH5BrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQH5BrowserActivity
  * JD-Core Version:    0.7.0.1
  */

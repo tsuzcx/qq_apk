@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import beho;
+import com.tencent.mobileqq.theme.IDownloadListener.Stub;
 
 class QQLevelJsPlugin$1
-  extends beho
+  extends IDownloadListener.Stub
 {
   QQLevelJsPlugin$1(QQLevelJsPlugin paramQQLevelJsPlugin, String paramString) {}
   
@@ -16,7 +16,7 @@ class QQLevelJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQLevelJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

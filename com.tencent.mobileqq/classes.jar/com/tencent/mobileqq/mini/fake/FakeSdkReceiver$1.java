@@ -5,7 +5,11 @@ class FakeSdkReceiver$1
 {
   FakeSdkReceiver$1(FakeSdkReceiver paramFakeSdkReceiver) {}
   
-  public void run() {}
+  public void run()
+  {
+    FakeSdkBrandUI.initOKHttpClient();
+    FakeSdkBrandUI.setCookie();
+  }
 }
 
 

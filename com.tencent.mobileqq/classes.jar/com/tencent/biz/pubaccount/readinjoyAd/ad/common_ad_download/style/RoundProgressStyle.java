@@ -3,11 +3,10 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
-import ufa;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/RoundProgressStyle;", "", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "(Ljava/lang/String;I)V", "btnDrawableNormalColor", "", "getBtnDrawableNormalColor", "()Ljava/lang/String;", "setBtnDrawableNormalColor", "(Ljava/lang/String;)V", "btnDrawableNormalRadius", "", "getBtnDrawableNormalRadius", "()F", "setBtnDrawableNormalRadius", "(F)V", "btnResource", "", "getBtnResource", "()I", "setBtnResource", "(I)V", "btnTextLength", "getBtnTextLength", "setBtnTextLength", "imageIconHeight", "getImageIconHeight", "setImageIconHeight", "imageIconWidth", "getImageIconWidth", "setImageIconWidth", "pauseRectColor", "getPauseRectColor", "setPauseRectColor", "pauseRectWidth", "getPauseRectWidth", "setPauseRectWidth", "progressColorHighLight", "getProgressColorHighLight", "setProgressColorHighLight", "progressColorNormal", "getProgressColorNormal", "setProgressColorNormal", "progressHighLightWidth", "getProgressHighLightWidth", "setProgressHighLightWidth", "progressWidthNormal", "getProgressWidthNormal", "setProgressWidthNormal", "roundSize", "getRoundSize", "setRoundSize", "startAngle", "getStartAngle", "setStartAngle", "styleType", "getStyleType", "setStyleType", "VideoSoftAd", "FastWebSoftAd", "DefaultRoundStyle", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public enum RoundProgressStyle
-  implements ufa
+  implements IDownloadStyle
 {
   @NotNull
   private String btnDrawableNormalColor = "#00000000";
@@ -202,7 +201,7 @@ public enum RoundProgressStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle
  * JD-Core Version:    0.7.0.1
  */

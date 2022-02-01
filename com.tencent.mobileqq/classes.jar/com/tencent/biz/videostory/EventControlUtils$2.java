@@ -1,9 +1,8 @@
 package com.tencent.biz.videostory;
 
-import aakz;
 import java.util.TimerTask;
 
-public final class EventControlUtils$2
+final class EventControlUtils$2
   extends TimerTask
 {
   public void run()
@@ -15,7 +14,7 @@ public final class EventControlUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.videostory.EventControlUtils.2
  * JD-Core Version:    0.7.0.1
  */

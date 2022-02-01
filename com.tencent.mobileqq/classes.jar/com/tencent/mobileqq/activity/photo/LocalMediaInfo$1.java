@@ -38,13 +38,13 @@ final class LocalMediaInfo$1
       localLocalMediaInfo.mediaOriginSize = paramParcel.readLong();
       localLocalMediaInfo.mediaOriginBitrate = paramParcel.readLong();
       if (paramParcel.readByte() != 1) {
-        break label438;
+        break label520;
       }
       bool1 = true;
       label247:
       localLocalMediaInfo.isSystemMeidaStore = bool1;
       if (paramParcel.readByte() != 1) {
-        break label443;
+        break label525;
       }
       bool1 = true;
       label263:
@@ -56,12 +56,12 @@ final class LocalMediaInfo$1
       localLocalMediaInfo.mCloudPhotoOwnerAlbumId = paramParcel.readString();
       localLocalMediaInfo.mCloudPhotoId = paramParcel.readString();
       if (paramParcel.readByte() != 1) {
-        break label448;
+        break label530;
       }
     }
-    label438:
-    label443:
-    label448:
+    label520:
+    label525:
+    label530:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       localLocalMediaInfo.isVideoReady = bool1;
@@ -74,6 +74,14 @@ final class LocalMediaInfo$1
       localLocalMediaInfo.mTransferPosList = paramParcel.readArrayList(Long.class.getClassLoader());
       localLocalMediaInfo.aiTextLabel = paramParcel.readArrayList(String.class.getClassLoader());
       localLocalMediaInfo.thumbnailProgress = paramParcel.readFloat();
+      localLocalMediaInfo.mOriginPath = paramParcel.readArrayList(String.class.getClassLoader());
+      localLocalMediaInfo.mKuolieId = paramParcel.readString();
+      localLocalMediaInfo.mKuolieCenterX = paramParcel.readFloat();
+      localLocalMediaInfo.mKuolieCenterY = paramParcel.readFloat();
+      localLocalMediaInfo.mKuolieRotate = paramParcel.readFloat();
+      localLocalMediaInfo.mKuolieWidthScale = paramParcel.readFloat();
+      localLocalMediaInfo.mKuolieHeightScale = paramParcel.readFloat();
+      localLocalMediaInfo.mHashTagList = paramParcel.readArrayList(String.class.getClassLoader());
       return localLocalMediaInfo;
       bool1 = false;
       break;
@@ -91,7 +99,7 @@ final class LocalMediaInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.LocalMediaInfo.1
  * JD-Core Version:    0.7.0.1
  */

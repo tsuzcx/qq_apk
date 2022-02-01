@@ -15,16 +15,16 @@ public final class single_feed
   static Map<Integer, byte[]> cache_singlefeed = new HashMap();
   public String feed_attach_info = "";
   public String feed_info = "";
-  public long feeds_update_time;
+  public long feeds_update_time = 0L;
   public String feedskey = "";
-  public int iUnifyRecomType;
-  public Map<Integer, byte[]> patch_singlefeed;
-  public boolean pullAll;
-  public ArrayList<Map<Integer, byte[]>> recomfeeds;
-  public Map<Integer, byte[]> singlefeed;
-  public long status;
-  public int time;
-  public long uContainerSubType;
+  public int iUnifyRecomType = 0;
+  public Map<Integer, byte[]> patch_singlefeed = null;
+  public boolean pullAll = false;
+  public ArrayList<Map<Integer, byte[]>> recomfeeds = null;
+  public Map<Integer, byte[]> singlefeed = null;
+  public long status = 0L;
+  public int time = 0;
+  public long uContainerSubType = 0L;
   
   static
   {

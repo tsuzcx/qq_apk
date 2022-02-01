@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import blgy;
+import com.tencent.widget.XPanelContainer.ReadyToShowChangeListener;
 
 class BaseChatPie$2
-  implements blgy
+  implements XPanelContainer.ReadyToShowChangeListener
 {
   BaseChatPie$2(BaseChatPie paramBaseChatPie) {}
   
-  public void onReadyToShowChanged(boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      BaseChatPie.access$000(this.this$0);
-      BaseChatPie.access$100(this.this$0);
+      BaseChatPie.a(this.a);
+      BaseChatPie.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.2
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,7 @@ public class c
   protected byte[] getAppInfo(long paramLong1, long paramLong2)
   {
     byte[] arrayOfByte = new byte[28 + (t.F.length + 2 + 2 + t.H.length + 2 + t.I.length)];
-    util.int64_to_buf32(arrayOfByte, 0, 13L);
+    util.int64_to_buf32(arrayOfByte, 0, 15L);
     util.int64_to_buf32(arrayOfByte, 4, paramLong1);
     util.int64_to_buf32(arrayOfByte, 8, paramLong2);
     System.arraycopy(t.B, 0, arrayOfByte, 12, t.B.length);

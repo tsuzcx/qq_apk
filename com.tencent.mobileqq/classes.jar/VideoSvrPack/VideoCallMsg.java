@@ -10,16 +10,16 @@ public final class VideoCallMsg
 {
   static byte[] cache_errMsg;
   static byte[] cache_vMsg;
-  public byte cVerifyType;
-  public byte[] errMsg;
-  public long lPeerUin;
-  public long lUin;
-  public byte type;
-  public int uDateTime;
-  public int uSeqId;
-  public int uSessionId;
-  public byte[] vMsg;
-  public byte ver;
+  public byte cVerifyType = 0;
+  public byte[] errMsg = null;
+  public long lPeerUin = 0L;
+  public long lUin = 0L;
+  public byte type = 0;
+  public int uDateTime = 0;
+  public int uSeqId = 0;
+  public int uSessionId = 0;
+  public byte[] vMsg = null;
+  public byte ver = 0;
   
   static
   {

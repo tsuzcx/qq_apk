@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
 import com.tencent.qphone.base.util.QLog;
-import pau;
 
 class FastWebActivity$32
   implements Runnable
@@ -26,7 +26,7 @@ class FastWebActivity$32
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.32
  * JD-Core Version:    0.7.0.1
  */

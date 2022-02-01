@@ -1,5 +1,6 @@
 package com.qflutter.log.qflutter_log;
 
+import android.text.TextUtils;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -9,7 +10,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 public class QflutterLogPlugin
   implements MethodChannel.MethodCallHandler
 {
-  private static QflutterLogPlugin.Log sLog;
+  public static QflutterLogPlugin.Log sLog;
   
   public static void registerWith(PluginRegistry.Registrar paramRegistrar)
   {
@@ -22,6 +23,13 @@ public class QflutterLogPlugin
       sLog.e("changing logger!");
     }
     sLog = paramLog;
+    paramLog = sLog.soPath();
+    if (TextUtils.isEmpty(paramLog))
+    {
+      System.loadLibrary("QFlutterLog");
+      return;
+    }
+    System.load(paramLog);
   }
   
   public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
@@ -61,12 +69,28 @@ public class QflutterLogPlugin
       paramResult.success(Integer.valueOf(1));
       return;
     }
+    if ("getDylibPath".equals(paramMethodCall.method))
+    {
+      if (sLog == null)
+      {
+        paramResult.success(null);
+        return;
+      }
+      paramMethodCall = sLog.soPath();
+      if (TextUtils.isEmpty(paramMethodCall))
+      {
+        paramResult.success(null);
+        return;
+      }
+      paramResult.success(paramMethodCall);
+      return;
+    }
     paramResult.notImplemented();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.log.qflutter_log.QflutterLogPlugin
  * JD-Core Version:    0.7.0.1
  */

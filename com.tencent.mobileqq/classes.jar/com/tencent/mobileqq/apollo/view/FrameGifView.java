@@ -5,42 +5,39 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import annq;
-import annt;
-import anny;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class FrameGifView
   extends ImageView
-  implements anny
+  implements SimpleFrameZipDecoder.onFrameDecodeListener
 {
-  annq jdField_a_of_type_Annq;
-  protected annt a;
+  FrameGifView.AnimationListener jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener;
   private FrameGifView.DecoderRunnable jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable = new FrameGifView.DecoderRunnable();
+  protected QQFrameZipDecoder a;
   
   public FrameGifView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Annt = new annt(this);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder = new QQFrameZipDecoder(this);
   }
   
   public FrameGifView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Annt = new annt(this);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder = new QQFrameZipDecoder(this);
   }
   
   public FrameGifView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Annt = new annt(this);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder = new QQFrameZipDecoder(this);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Annq != null) {
-      this.jdField_a_of_type_Annq.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener.a();
     }
   }
   
@@ -51,29 +48,29 @@ public class FrameGifView
   
   public int b()
   {
-    if (this.jdField_a_of_type_Annt != null) {
-      return this.jdField_a_of_type_Annt.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a();
     }
     return 0;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Annt != null) {
-      this.jdField_a_of_type_Annt.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Annt != null) {
-      this.jdField_a_of_type_Annt.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.b();
     }
   }
   
-  public void setAnimaListener(annq paramannq)
+  public void setAnimaListener(FrameGifView.AnimationListener paramAnimationListener)
   {
-    this.jdField_a_of_type_Annq = paramannq;
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener = paramAnimationListener;
   }
   
   public void setGifData(int paramInt, Drawable paramDrawable, String paramString1, String paramString2, boolean paramBoolean)
@@ -81,9 +78,9 @@ public class FrameGifView
     if (getDrawable() == null) {
       super.setImageDrawable(paramDrawable);
     }
-    if (this.jdField_a_of_type_Annt != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable.a(this.jdField_a_of_type_Annt, paramInt, paramString1, paramString2, paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder, paramInt, paramString1, paramString2, paramBoolean);
       ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable);
       ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable);
     }
@@ -91,14 +88,14 @@ public class FrameGifView
   
   public void setPlayLoop(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Annt != null) {
-      this.jdField_a_of_type_Annt.a(paramBoolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.FrameGifView
  * JD-Core Version:    0.7.0.1
  */

@@ -241,7 +241,7 @@ public class SecurityFileFrameworkManagerImpl
     }
     Object localObject = paramContext.getExternalCacheDir();
     File localFile;
-    if (localObject != null)
+    if ((localObject != null) && (((File)localObject).getParentFile() != null))
     {
       SDCARD_ROOT = ((File)localObject).getParentFile().getAbsolutePath();
       SDCARD_PATH = SDCARD_ROOT + "/Tencent/MobileQQ/";
@@ -275,27 +275,36 @@ public class SecurityFileFrameworkManagerImpl
         paramContext = null;
         int j = localObject.length;
         i = 0;
+        label216:
         if (i < j)
         {
           localFile = localObject[i];
           if (localFile.lastModified() >= l) {
-            break label721;
+            break label762;
           }
           l = localFile.lastModified();
           paramContext = localFile;
         }
       }
     }
-    label721:
+    label762:
     for (;;)
     {
       i += 1;
-      break;
-      QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "initSecureFileFramework: fileKeyFiles.length=", Integer.valueOf(localObject.length) });
-      localObject = paramContext.getName().replaceAll("NoRename#", "");
-      localSharedPreferences.edit().putString("FILE_KEY", (String)localObject).commit();
-      sRootFile = paramContext;
-      return true;
+      break label216;
+      i = localObject.length;
+      if (paramContext == null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "initSecureFileFramework: fileKeyFiles.length=", Integer.valueOf(i), "firstCreateFile=", Boolean.valueOf(bool) });
+        if (paramContext == null) {
+          break;
+        }
+        localObject = paramContext.getName().replaceAll("NoRename#", "");
+        localSharedPreferences.edit().putString("FILE_KEY", (String)localObject).commit();
+        sRootFile = paramContext;
+        return true;
+      }
       if (localObject.length == 0)
       {
         paramContext = generalFileKey();

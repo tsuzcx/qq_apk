@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.filemanager.multisave;
 
 import android.text.TextUtils;
-import auch;
-import auci;
-import aueq;
+import com.tencent.mobileqq.filemanager.util.FilePathUtil;
 
-public class QFileMultiSaveReq$1
+class QFileMultiSaveReq$1
   implements Runnable
 {
-  public QFileMultiSaveReq$1(auch paramauch, String paramString, auci paramauci) {}
+  QFileMultiSaveReq$1(QFileMultiSaveReq paramQFileMultiSaveReq, String paramString, QFileMultiSaveReq.ISaveFileCallBack paramISaveFileCallBack) {}
   
   public void run()
   {
@@ -16,25 +14,25 @@ public class QFileMultiSaveReq$1
     {
       try
       {
-        if (TextUtils.isEmpty(aueq.b(this.jdField_a_of_type_JavaLangString))) {
+        if (TextUtils.isEmpty(FilePathUtil.b(this.jdField_a_of_type_JavaLangString))) {
           break label97;
         }
         i = 1;
-        if (this.jdField_a_of_type_Auci != null)
+        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq$ISaveFileCallBack != null)
         {
           if (i != 0)
           {
-            this.jdField_a_of_type_Auci.a();
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq$ISaveFileCallBack.a();
             return;
           }
-          this.jdField_a_of_type_Auci.a(-1, "save file fail. filePath[" + this.jdField_a_of_type_JavaLangString + "]");
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq$ISaveFileCallBack.a(-1, "save file fail. filePath[" + this.jdField_a_of_type_JavaLangString + "]");
           return;
         }
       }
       catch (Exception localException)
       {
-        if (this.jdField_a_of_type_Auci != null) {
-          this.jdField_a_of_type_Auci.a(-1, localException.getMessage());
+        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq$ISaveFileCallBack != null) {
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq$ISaveFileCallBack.a(-1, localException.getMessage());
         }
       }
       return;
@@ -45,7 +43,7 @@ public class QFileMultiSaveReq$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.QFileMultiSaveReq.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ansg;
-import ansi;
-import aoht;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.ConfigObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,16 +10,16 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class CheckAuthCode
   extends AsyncStep
 {
-  private ansi a;
+  private ConfigObserver a;
   
   public int a()
   {
-    if (this.jdField_a_of_type_Ansi == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver == null)
     {
-      this.jdField_a_of_type_Ansi = new aoht(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addDefaultObservers(this.jdField_a_of_type_Ansi);
+      this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new CheckAuthCode.CheckAuthCodeObserver(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.addDefaultObservers(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
     }
-    if (((ansg)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).a()) {
+    if (((ConfigHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).a()) {
       return 2;
     }
     return 7;
@@ -28,10 +27,10 @@ public class CheckAuthCode
   
   public void c()
   {
-    if (this.jdField_a_of_type_Ansi != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ansi);
-      this.jdField_a_of_type_Ansi = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = null;
     }
   }
 }

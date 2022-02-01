@@ -19,14 +19,14 @@ class SearchEmoticonFragment$2
     {
       localObject = AbsDownloader.getFilePath(((URL)localObject).toString());
       if ((!TextUtils.isEmpty(this.a.path)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-        FileUtils.copyFile(this.a.path, (String)localObject);
+        FileUtils.d(this.a.path, (String)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment.2
  * JD-Core Version:    0.7.0.1
  */

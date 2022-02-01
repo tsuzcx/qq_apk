@@ -12,25 +12,24 @@ import android.widget.FrameLayout;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 import com.tencent.mobileqq.util.DisplayUtil;
-import ofm;
 
 public class DragFrameLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   public int a;
   private View jdField_a_of_type_AndroidViewView;
   private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
   private ScaleAnimation jdField_a_of_type_AndroidViewAnimationScaleAnimation;
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private ofm jdField_a_of_type_Ofm;
+  private DragFrameLayout.OnDraggingListener jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener;
   protected boolean a;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  private float jdField_b_of_type_Float = 0.0F;
+  private int jdField_b_of_type_Int = 0;
   protected boolean b;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
+  private float jdField_c_of_type_Float = 0.0F;
+  private int jdField_c_of_type_Int = 0;
+  private float jdField_d_of_type_Float = 0.0F;
   private int jdField_d_of_type_Int = 0;
   
   public DragFrameLayout(Context paramContext)
@@ -57,8 +56,8 @@ public class DragFrameLayout
     ViewHelper.setScaleY(this.jdField_a_of_type_AndroidViewView, f);
     ViewHelper.setX(this.jdField_a_of_type_AndroidViewView, paramInt1);
     ViewHelper.setY(this.jdField_a_of_type_AndroidViewView, paramInt2);
-    if (this.jdField_a_of_type_Ofm != null) {
-      this.jdField_a_of_type_Ofm.a(paramInt1, paramInt2, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(this.jdField_b_of_type_Int * f), (int)(this.jdField_c_of_type_Int * f));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener.a(paramInt1, paramInt2, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(this.jdField_b_of_type_Int * f), (int)(this.jdField_c_of_type_Int * f));
     }
   }
   
@@ -163,7 +162,7 @@ public class DragFrameLayout
     {
       float f1 = Math.abs(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float);
       float f2 = Math.abs(this.jdField_d_of_type_Float - this.jdField_b_of_type_Float);
-      if ((this.jdField_d_of_type_Int == 0) && (f1 + f2 < DisplayUtil.dip2px(getContext(), 10.0F))) {
+      if ((this.jdField_d_of_type_Int == 0) && (f1 + f2 < DisplayUtil.a(getContext(), 10.0F))) {
         return false;
       }
       f1 = this.jdField_c_of_type_Float - this.jdField_a_of_type_Float;
@@ -178,7 +177,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Ofm.a()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener.a()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -198,7 +197,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Ofm.b()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener.b()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -218,7 +217,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Ofm.c()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener.c()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -345,12 +344,12 @@ public class DragFrameLayout
       if (this.jdField_d_of_type_Int != 0)
       {
         this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Ofm != null)
+        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener != null)
         {
           f1 = ViewHelper.getScaleX(this.jdField_a_of_type_AndroidViewView);
           f2 = ViewHelper.getScaleY(this.jdField_a_of_type_AndroidViewView);
           if ((f1 > 0.0F) && (f2 > 0.0F)) {
-            this.jdField_a_of_type_Ofm.a(this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(f1 * this.jdField_b_of_type_Int), (int)(f2 * this.jdField_c_of_type_Int), (int)ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), (int)ViewHelper.getY(this.jdField_a_of_type_AndroidViewView));
+            this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener.a(this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(f1 * this.jdField_b_of_type_Int), (int)(f2 * this.jdField_c_of_type_Int), (int)ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), (int)ViewHelper.getY(this.jdField_a_of_type_AndroidViewView));
           }
         }
       }
@@ -372,14 +371,14 @@ public class DragFrameLayout
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnDraggingListener(ofm paramofm)
+  public void setOnDraggingListener(DragFrameLayout.OnDraggingListener paramOnDraggingListener)
   {
-    this.jdField_a_of_type_Ofm = paramofm;
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener = paramOnDraggingListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout
  * JD-Core Version:    0.7.0.1
  */

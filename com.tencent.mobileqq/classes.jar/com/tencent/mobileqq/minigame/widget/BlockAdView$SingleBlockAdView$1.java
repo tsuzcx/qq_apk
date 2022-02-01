@@ -7,7 +7,6 @@ import android.view.View.OnClickListener;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
 class BlockAdView$SingleBlockAdView$1
@@ -17,17 +16,16 @@ class BlockAdView$SingleBlockAdView$1
   
   public void onClick(View paramView)
   {
-    GdtHandler.Params localParams = new GdtHandler.Params();
-    localParams.c = 11;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)BlockAdView.SingleBlockAdView.access$000(this.this$1));
-    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = this.val$gdtAd;
-    localParams.jdField_a_of_type_Boolean = true;
-    localParams.b = true;
+    paramView = new GdtHandler.Params();
+    paramView.c = 11;
+    paramView.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)BlockAdView.SingleBlockAdView.access$000(this.this$1));
+    paramView.jdField_a_of_type_ComTencentGdtadAditemGdtAd = this.val$gdtAd;
+    paramView.jdField_a_of_type_Boolean = true;
+    paramView.b = true;
     Bundle localBundle = new Bundle();
     localBundle.putString("big_brother_ref_source_key", "biz_src_miniappD");
-    localParams.jdField_a_of_type_AndroidOsBundle = localBundle;
-    GdtHandler.a(localParams);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramView.jdField_a_of_type_AndroidOsBundle = localBundle;
+    GdtHandler.a(paramView);
   }
 }
 

@@ -3,8 +3,7 @@ package com.tencent.mobileqq.msf.core.net;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.b.c;
+import com.tencent.mobileqq.msf.core.ac;
 import com.tencent.mobileqq.msf.core.net.a.e;
 import com.tencent.mobileqq.msf.core.net.a.f;
 import com.tencent.mobileqq.msf.core.push.g;
@@ -164,7 +163,7 @@ public class m
           this.r.sender.a(paramToServiceMsg, this.g.hashCode());
         }
         label243:
-        if ((!aj.s) || (!f.a())) {
+        if ((!ac.s) || (!f.a())) {
           break label556;
         }
         QLog.d("MSF.C.NetConnTag", 1, "send data in socket adaptor way");
@@ -208,7 +207,7 @@ public class m
         this.h.flush();
       }
       label575:
-      QLog.d("MSF.C.NetConnTag", 1, "netSend ssoSeq:" + paramInt3 + " uin:" + MsfSdkUtils.getShortUin(paramString1) + " cmd:" + c.a(paramString2) + new StringBuilder().append(" ").append(paramArrayOfByte.length + paramInt3).toString() + new StringBuilder().append(" ").append(Integer.toHexString(this.g.hashCode())).toString());
+      QLog.d("MSF.C.NetConnTag", 1, "netSend ssoSeq:" + paramInt3 + " uin:" + MsfSdkUtils.getShortUin(paramString1) + " cmd:" + com.tencent.mobileqq.msf.core.b.a.a(paramString2) + new StringBuilder().append(" ").append(paramArrayOfByte.length + paramInt3).toString() + new StringBuilder().append(" ").append(Integer.toHexString(this.g.hashCode())).toString());
     }
   }
   
@@ -248,10 +247,10 @@ public class m
     //   56: pop
     //   57: aload_0
     //   58: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   61: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
+    //   61: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
     //   64: aload_0
     //   65: getfield 504	com/tencent/mobileqq/msf/core/net/m:F	Ljava/lang/Runnable;
-    //   68: invokevirtual 507	com/tencent/mobileqq/msf/core/aj:a	(Ljava/lang/Runnable;)V
+    //   68: invokevirtual 507	com/tencent/mobileqq/msf/core/ac:a	(Ljava/lang/Runnable;)V
     //   71: aload_0
     //   72: aload_1
     //   73: putfield 349	com/tencent/mobileqq/msf/core/net/m:d	Lcom/tencent/mobileqq/msf/core/d;
@@ -260,10 +259,10 @@ public class m
     //   78: putfield 344	com/tencent/mobileqq/msf/core/net/m:i	Lcom/tencent/mobileqq/msf/core/net/d;
     //   81: aload_0
     //   82: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   85: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
+    //   85: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
     //   88: aload_1
     //   89: invokevirtual 511	com/tencent/mobileqq/msf/core/d:j	()Z
-    //   92: putfield 363	com/tencent/mobileqq/msf/core/aj:r	Z
+    //   92: putfield 363	com/tencent/mobileqq/msf/core/ac:r	Z
     //   95: getstatic 516	com/tencent/mobileqq/msf/core/net/x:b	Lcom/tencent/mobileqq/msf/core/net/x;
     //   98: astore 14
     //   100: ldc 82
@@ -352,7 +351,7 @@ public class m
     //   270: invokevirtual 555	com/tencent/mobileqq/msf/core/d:toString	()Ljava/lang/String;
     //   273: aastore
     //   274: invokestatic 559	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   277: invokestatic 564	com/tencent/mobileqq/msf/core/ar:a	(Ljava/lang/String;)V
+    //   277: invokestatic 564	com/tencent/mobileqq/msf/core/ak:a	(Ljava/lang/String;)V
     //   280: aload 15
     //   282: astore 12
     //   284: lload 6
@@ -723,8 +722,8 @@ public class m
     //   1024: astore_2
     //   1025: aload_0
     //   1026: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1029: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   1032: getfield 632	com/tencent/mobileqq/msf/core/aj:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   1029: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   1032: getfield 632	com/tencent/mobileqq/msf/core/ac:b	Lcom/tencent/mobileqq/msf/core/net/n;
     //   1035: astore 16
     //   1037: aload 15
     //   1039: astore 12
@@ -755,8 +754,8 @@ public class m
     //   1089: astore_2
     //   1090: aload_0
     //   1091: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1094: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   1097: getfield 632	com/tencent/mobileqq/msf/core/aj:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   1094: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   1097: getfield 632	com/tencent/mobileqq/msf/core/ac:b	Lcom/tencent/mobileqq/msf/core/net/n;
     //   1100: aload_0
     //   1101: getfield 132	com/tencent/mobileqq/msf/core/net/m:G	I
     //   1104: iconst_1
@@ -801,7 +800,7 @@ public class m
     //   1178: astore_2
     //   1179: aload_0
     //   1180: getfield 106	com/tencent/mobileqq/msf/core/net/m:z	J
-    //   1183: putstatic 642	com/tencent/mobileqq/msf/core/aj:U	J
+    //   1183: putstatic 642	com/tencent/mobileqq/msf/core/ac:U	J
     //   1186: aload 15
     //   1188: astore 12
     //   1190: lload 6
@@ -1005,7 +1004,7 @@ public class m
     //   1590: astore 13
     //   1592: aload 14
     //   1594: astore_2
-    //   1595: invokestatic 686	com/tencent/mobileqq/msf/core/aj:h	()V
+    //   1595: invokestatic 686	com/tencent/mobileqq/msf/core/ac:j	()V
     //   1598: aload 15
     //   1600: astore 12
     //   1602: lload 6
@@ -1018,7 +1017,7 @@ public class m
     //   1616: astore_2
     //   1617: aload_1
     //   1618: invokevirtual 688	com/tencent/mobileqq/msf/core/d:a	()Ljava/lang/String;
-    //   1621: putstatic 690	com/tencent/mobileqq/msf/core/aj:E	Ljava/lang/String;
+    //   1621: putstatic 690	com/tencent/mobileqq/msf/core/ac:E	Ljava/lang/String;
     //   1624: aload 15
     //   1626: astore 12
     //   1628: lload 6
@@ -1043,7 +1042,7 @@ public class m
     //   1670: invokevirtual 702	com/tencent/mobileqq/msf/core/net/h:getLocalPort	()I
     //   1673: invokevirtual 196	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1676: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1679: putstatic 704	com/tencent/mobileqq/msf/core/aj:F	Ljava/lang/String;
+    //   1679: putstatic 704	com/tencent/mobileqq/msf/core/ac:F	Ljava/lang/String;
     //   1682: aload 15
     //   1684: astore 12
     //   1686: lload 6
@@ -1055,7 +1054,7 @@ public class m
     //   1698: aload 14
     //   1700: astore_2
     //   1701: invokestatic 707	com/tencent/mobileqq/msf/core/net/j:b	()B
-    //   1704: putstatic 710	com/tencent/mobileqq/msf/core/aj:H	I
+    //   1704: putstatic 710	com/tencent/mobileqq/msf/core/ac:H	I
     //   1707: aload 15
     //   1709: astore 12
     //   1711: lload 6
@@ -1067,7 +1066,7 @@ public class m
     //   1723: aload 14
     //   1725: astore_2
     //   1726: aload_1
-    //   1727: invokevirtual 711	com/tencent/mobileqq/msf/core/d:h	()V
+    //   1727: invokevirtual 712	com/tencent/mobileqq/msf/core/d:h	()V
     //   1730: aload 15
     //   1732: astore 12
     //   1734: lload 6
@@ -1081,8 +1080,8 @@ public class m
     //   1749: aload 17
     //   1751: iconst_0
     //   1752: aload 17
-    //   1754: invokevirtual 714	java/lang/StringBuilder:length	()I
-    //   1757: invokevirtual 718	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   1754: invokevirtual 715	java/lang/StringBuilder:length	()I
+    //   1757: invokevirtual 719	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
     //   1760: pop
     //   1761: aload 15
     //   1763: astore 12
@@ -1107,30 +1106,30 @@ public class m
     //   1802: aload 14
     //   1804: astore_2
     //   1805: aload 17
-    //   1807: ldc_w 720
+    //   1807: ldc_w 721
     //   1810: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1813: aload_0
     //   1814: getfield 489	com/tencent/mobileqq/msf/core/net/m:c	Ljava/net/InetSocketAddress;
-    //   1817: invokevirtual 721	java/net/InetSocketAddress:toString	()Ljava/lang/String;
+    //   1817: invokevirtual 722	java/net/InetSocketAddress:toString	()Ljava/lang/String;
     //   1820: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1823: ldc_w 723
+    //   1823: ldc_w 724
     //   1826: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1829: aload_0
     //   1830: getfield 108	com/tencent/mobileqq/msf/core/net/m:A	J
     //   1833: invokevirtual 204	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1836: ldc_w 725
+    //   1836: ldc_w 726
     //   1839: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1842: aload_1
     //   1843: invokevirtual 614	com/tencent/mobileqq/msf/core/d:g	()I
     //   1846: invokevirtual 196	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1849: ldc_w 727
+    //   1849: ldc_w 728
     //   1852: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1855: aload_0
     //   1856: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
-    //   1859: invokevirtual 731	com/tencent/mobileqq/msf/core/net/h:getLocalAddress	()Ljava/net/InetAddress;
-    //   1862: invokevirtual 736	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   1859: invokevirtual 732	com/tencent/mobileqq/msf/core/net/h:getLocalAddress	()Ljava/net/InetAddress;
+    //   1862: invokevirtual 737	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
     //   1865: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1868: ldc_w 738
+    //   1868: ldc_w 739
     //   1871: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1874: aload_0
     //   1875: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
@@ -1181,7 +1180,7 @@ public class m
     //   1970: aload_1
     //   1971: invokestatic 584	com/tencent/mobileqq/msf/core/net/j:a	(Lcom/tencent/mobileqq/msf/core/d;)Z
     //   1974: ifeq +2839 -> 4813
-    //   1977: ldc_w 740
+    //   1977: ldc_w 741
     //   1980: astore 16
     //   1982: aload 15
     //   1984: astore 12
@@ -1218,7 +1217,7 @@ public class m
     //   2049: aload_0
     //   2050: getfield 95	com/tencent/mobileqq/msf/core/net/m:s	Ljava/util/concurrent/atomic/AtomicInteger;
     //   2053: iconst_0
-    //   2054: invokevirtual 742	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   2054: invokevirtual 743	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   2057: aload 15
     //   2059: astore 12
     //   2061: lload 6
@@ -1229,7 +1228,7 @@ public class m
     //   2071: astore 13
     //   2073: aload 14
     //   2075: astore_2
-    //   2076: getstatic 418	com/tencent/mobileqq/msf/core/aj:s	Z
+    //   2076: getstatic 418	com/tencent/mobileqq/msf/core/ac:s	Z
     //   2079: ifeq +133 -> 2212
     //   2082: aload 15
     //   2084: astore 12
@@ -1257,7 +1256,7 @@ public class m
     //   2129: astore_2
     //   2130: ldc 179
     //   2132: iconst_1
-    //   2133: ldc_w 744
+    //   2133: ldc_w 745
     //   2136: invokestatic 213	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2139: aload 15
     //   2141: astore 12
@@ -1271,8 +1270,8 @@ public class m
     //   2157: astore_2
     //   2158: aload_0
     //   2159: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2162: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   2165: getfield 427	com/tencent/mobileqq/msf/core/aj:I	Lcom/tencent/mobileqq/msf/core/net/a/f;
+    //   2162: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   2165: getfield 427	com/tencent/mobileqq/msf/core/ac:I	Lcom/tencent/mobileqq/msf/core/net/a/f;
     //   2168: ifnull +44 -> 2212
     //   2171: aload 15
     //   2173: astore 12
@@ -1286,12 +1285,12 @@ public class m
     //   2189: astore_2
     //   2190: aload_0
     //   2191: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2194: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   2197: getfield 427	com/tencent/mobileqq/msf/core/aj:I	Lcom/tencent/mobileqq/msf/core/net/a/f;
+    //   2194: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   2197: getfield 427	com/tencent/mobileqq/msf/core/ac:I	Lcom/tencent/mobileqq/msf/core/net/a/f;
     //   2200: invokevirtual 430	com/tencent/mobileqq/msf/core/net/a/f:b	()Lcom/tencent/mobileqq/msf/core/net/a/e;
     //   2203: aload_0
     //   2204: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
-    //   2207: invokeinterface 747 2 0
+    //   2207: invokeinterface 748 2 0
     //   2212: aload 15
     //   2214: astore 12
     //   2216: lload 6
@@ -1304,7 +1303,7 @@ public class m
     //   2230: astore_2
     //   2231: aload_0
     //   2232: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2235: invokevirtual 751	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/k;
+    //   2235: invokevirtual 752	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
     //   2238: ifnull +166 -> 2404
     //   2241: aload 15
     //   2243: astore 12
@@ -1318,8 +1317,8 @@ public class m
     //   2259: astore_2
     //   2260: aload_0
     //   2261: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2264: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   2267: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
+    //   2264: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   2267: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
     //   2270: ifnull +134 -> 2404
     //   2273: aload 15
     //   2275: astore 12
@@ -1333,9 +1332,9 @@ public class m
     //   2291: astore_2
     //   2292: aload_0
     //   2293: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2296: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   2299: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
-    //   2302: getfield 765	com/tencent/mobileqq/msf/core/c/k$c:e	J
+    //   2296: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   2299: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   2302: getfield 766	com/tencent/mobileqq/msf/core/c/j$c:e	J
     //   2305: lconst_0
     //   2306: lcmp
     //   2307: ifle +36 -> 2343
@@ -1351,10 +1350,10 @@ public class m
     //   2328: astore_2
     //   2329: aload_0
     //   2330: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2333: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   2336: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
+    //   2333: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   2336: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
     //   2339: lconst_0
-    //   2340: putfield 767	com/tencent/mobileqq/msf/core/c/k$c:f	J
+    //   2340: putfield 768	com/tencent/mobileqq/msf/core/c/j$c:f	J
     //   2343: aload 15
     //   2345: astore 12
     //   2347: lload 6
@@ -1367,10 +1366,10 @@ public class m
     //   2361: astore_2
     //   2362: aload_0
     //   2363: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2366: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   2369: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
+    //   2366: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   2369: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
     //   2372: lconst_0
-    //   2373: putfield 769	com/tencent/mobileqq/msf/core/c/k$c:g	J
+    //   2373: putfield 770	com/tencent/mobileqq/msf/core/c/j$c:g	J
     //   2376: aload 15
     //   2378: astore 12
     //   2380: lload 6
@@ -1383,11 +1382,11 @@ public class m
     //   2394: astore_2
     //   2395: ldc 179
     //   2397: iconst_1
-    //   2398: ldc_w 771
+    //   2398: ldc_w 772
     //   2401: invokestatic 213	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2404: aload_0
     //   2405: getfield 128	com/tencent/mobileqq/msf/core/net/m:E	Ljava/util/concurrent/locks/ReentrantLock;
-    //   2408: invokevirtual 774	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   2408: invokevirtual 775	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   2411: aload 14
     //   2413: getstatic 682	com/tencent/mobileqq/msf/core/net/x:c	Lcom/tencent/mobileqq/msf/core/net/x;
     //   2416: if_acmpeq +18 -> 2434
@@ -1396,30 +1395,30 @@ public class m
     //   2421: putfield 627	com/tencent/mobileqq/msf/core/net/a:d	Z
     //   2424: aload_3
     //   2425: aload_3
-    //   2426: getfield 776	com/tencent/mobileqq/msf/core/net/a:k	I
+    //   2426: getfield 777	com/tencent/mobileqq/msf/core/net/a:k	I
     //   2429: iconst_1
     //   2430: iadd
-    //   2431: putfield 776	com/tencent/mobileqq/msf/core/net/a:k	I
+    //   2431: putfield 777	com/tencent/mobileqq/msf/core/net/a:k	I
     //   2434: aload_3
     //   2435: aload 14
-    //   2437: putfield 778	com/tencent/mobileqq/msf/core/net/a:e	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   2437: putfield 779	com/tencent/mobileqq/msf/core/net/a:e	Lcom/tencent/mobileqq/msf/core/net/x;
     //   2440: aload_3
     //   2441: ldc_w 684
-    //   2444: putfield 780	com/tencent/mobileqq/msf/core/net/a:f	Ljava/lang/String;
+    //   2444: putfield 781	com/tencent/mobileqq/msf/core/net/a:f	Ljava/lang/String;
     //   2447: aload_3
     //   2448: invokestatic 263	android/os/SystemClock:elapsedRealtime	()J
     //   2451: lload 8
     //   2453: lsub
-    //   2454: putfield 782	com/tencent/mobileqq/msf/core/net/a:a	J
+    //   2454: putfield 783	com/tencent/mobileqq/msf/core/net/a:a	J
     //   2457: aload 14
     //   2459: astore 12
     //   2461: aload_0
     //   2462: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2465: invokevirtual 751	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/k;
+    //   2465: invokevirtual 752	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
     //   2468: ifnull +36 -> 2504
     //   2471: aload_0
     //   2472: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2475: invokevirtual 751	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/k;
+    //   2475: invokevirtual 752	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
     //   2478: astore_2
     //   2479: aload 12
     //   2481: getstatic 682	com/tencent/mobileqq/msf/core/net/x:c	Lcom/tencent/mobileqq/msf/core/net/x;
@@ -1432,7 +1431,7 @@ public class m
     //   2494: getfield 108	com/tencent/mobileqq/msf/core/net/m:A	J
     //   2497: aload_1
     //   2498: invokevirtual 545	com/tencent/mobileqq/msf/core/d:c	()Ljava/lang/String;
-    //   2501: invokevirtual 785	com/tencent/mobileqq/msf/core/c/k:b	(ZJLjava/lang/String;)V
+    //   2501: invokevirtual 786	com/tencent/mobileqq/msf/core/c/j:b	(ZJLjava/lang/String;)V
     //   2504: aload 12
     //   2506: getstatic 682	com/tencent/mobileqq/msf/core/net/x:c	Lcom/tencent/mobileqq/msf/core/net/x;
     //   2509: if_acmpne +2150 -> 4659
@@ -1441,30 +1440,30 @@ public class m
     //   2516: ifeq +16 -> 2532
     //   2519: invokestatic 538	com/tencent/mobileqq/a/a/a$c:a	()Lcom/tencent/mobileqq/a/a/a$c;
     //   2522: iconst_1
-    //   2523: invokevirtual 787	com/tencent/mobileqq/a/a/a$c:a	(Z)V
+    //   2523: invokevirtual 788	com/tencent/mobileqq/a/a/a$c:a	(Z)V
     //   2526: invokestatic 538	com/tencent/mobileqq/a/a/a$c:a	()Lcom/tencent/mobileqq/a/a/a$c;
-    //   2529: invokevirtual 789	com/tencent/mobileqq/a/a/a$c:b	()V
-    //   2532: invokestatic 792	com/tencent/mobileqq/msf/core/NetConnInfoCenter:checkConnInfo	()V
-    //   2535: invokestatic 795	com/tencent/mobileqq/msf/core/NetConnInfoCenter:isNetSupport	()Z
+    //   2529: invokevirtual 790	com/tencent/mobileqq/a/a/a$c:b	()V
+    //   2532: invokestatic 793	com/tencent/mobileqq/msf/core/NetConnInfoCenter:checkConnInfo	()V
+    //   2535: invokestatic 796	com/tencent/mobileqq/msf/core/NetConnInfoCenter:isNetSupport	()Z
     //   2538: ifne +7 -> 2545
     //   2541: iconst_1
-    //   2542: invokestatic 798	com/tencent/mobileqq/msf/core/NetConnInfoCenter:setNetSupport	(Z)V
-    //   2545: invokestatic 801	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getSystemNetworkType	()I
-    //   2548: putstatic 802	com/tencent/mobileqq/msf/core/aj:G	I
+    //   2542: invokestatic 799	com/tencent/mobileqq/msf/core/NetConnInfoCenter:setNetSupport	(Z)V
+    //   2545: invokestatic 802	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getSystemNetworkType	()I
+    //   2548: putstatic 803	com/tencent/mobileqq/msf/core/ac:G	I
     //   2551: aload_0
     //   2552: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2555: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
+    //   2555: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
     //   2558: aconst_null
-    //   2559: invokevirtual 804	com/tencent/mobileqq/msf/core/aj:a	([B)V
+    //   2559: invokevirtual 805	com/tencent/mobileqq/msf/core/ac:a	([B)V
     //   2562: aload_0
     //   2563: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2566: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   2569: invokevirtual 806	com/tencent/mobileqq/msf/core/aj:f	()V
-    //   2572: getstatic 808	com/tencent/mobileqq/msf/core/aj:A	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   2566: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   2569: invokevirtual 807	com/tencent/mobileqq/msf/core/ac:f	()V
+    //   2572: getstatic 809	com/tencent/mobileqq/msf/core/ac:A	Ljava/util/concurrent/atomic/AtomicInteger;
     //   2575: iconst_0
-    //   2576: invokevirtual 742	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   2579: getstatic 810	com/tencent/mobileqq/msf/core/aj:B	Ljava/util/ArrayList;
-    //   2582: invokevirtual 813	java/util/ArrayList:clear	()V
+    //   2576: invokevirtual 743	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   2579: getstatic 811	com/tencent/mobileqq/msf/core/ac:B	Ljava/util/ArrayList;
+    //   2582: invokevirtual 814	java/util/ArrayList:clear	()V
     //   2585: aload_0
     //   2586: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
     //   2589: ifnull +195 -> 2784
@@ -1475,81 +1474,81 @@ public class m
     //   2600: invokespecial 182	java/lang/StringBuilder:<init>	()V
     //   2603: aload_0
     //   2604: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
-    //   2607: invokevirtual 731	com/tencent/mobileqq/msf/core/net/h:getLocalAddress	()Ljava/net/InetAddress;
-    //   2610: invokevirtual 736	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   2607: invokevirtual 732	com/tencent/mobileqq/msf/core/net/h:getLocalAddress	()Ljava/net/InetAddress;
+    //   2610: invokevirtual 737	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
     //   2613: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2616: ldc_w 738
+    //   2616: ldc_w 739
     //   2619: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2622: aload_0
     //   2623: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
     //   2626: invokevirtual 702	com/tencent/mobileqq/msf/core/net/h:getLocalPort	()I
     //   2629: invokevirtual 196	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   2632: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2635: putfield 816	com/tencent/mobileqq/msf/core/MsfCore:nowSocketConnAdd	Ljava/lang/String;
+    //   2635: putfield 817	com/tencent/mobileqq/msf/core/MsfCore:nowSocketConnAdd	Ljava/lang/String;
     //   2638: invokestatic 298	com/tencent/mobileqq/a/a/a:a	()Lcom/tencent/mobileqq/a/a/a;
     //   2641: aload_0
     //   2642: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
-    //   2645: getstatic 802	com/tencent/mobileqq/msf/core/aj:G	I
+    //   2645: getstatic 803	com/tencent/mobileqq/msf/core/ac:G	I
     //   2648: aload_0
     //   2649: getfield 108	com/tencent/mobileqq/msf/core/net/m:A	J
     //   2652: l2i
-    //   2653: invokevirtual 819	com/tencent/mobileqq/a/a/a:a	(Ljava/net/Socket;II)V
+    //   2653: invokevirtual 820	com/tencent/mobileqq/a/a/a:a	(Ljava/net/Socket;II)V
     //   2656: aload_0
     //   2657: getfield 104	com/tencent/mobileqq/msf/core/net/m:x	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   2660: iconst_0
     //   2661: invokevirtual 497	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   2664: invokestatic 821	com/tencent/mobileqq/msf/core/a/a:v	()Z
+    //   2664: invokestatic 822	com/tencent/mobileqq/msf/core/a/a:v	()Z
     //   2667: ifeq +1949 -> 4616
     //   2670: aload_0
     //   2671: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2674: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   2677: getfield 632	com/tencent/mobileqq/msf/core/aj:b	Lcom/tencent/mobileqq/msf/core/net/n;
-    //   2680: invokevirtual 823	com/tencent/mobileqq/msf/core/net/n:o	()Z
+    //   2674: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   2677: getfield 632	com/tencent/mobileqq/msf/core/ac:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   2680: invokevirtual 824	com/tencent/mobileqq/msf/core/net/n:o	()Z
     //   2683: ifeq +1907 -> 4590
     //   2686: aload_0
-    //   2687: invokevirtual 825	com/tencent/mobileqq/msf/core/net/m:j	()I
+    //   2687: invokevirtual 826	com/tencent/mobileqq/msf/core/net/m:j	()I
     //   2690: iconst_1
     //   2691: if_icmpne +1899 -> 4590
     //   2694: aload_0
     //   2695: iconst_1
-    //   2696: invokespecial 827	com/tencent/mobileqq/msf/core/net/m:b	(Z)V
+    //   2696: invokespecial 828	com/tencent/mobileqq/msf/core/net/m:b	(Z)V
     //   2699: aload_0
-    //   2700: invokespecial 829	com/tencent/mobileqq/msf/core/net/m:m	()V
-    //   2703: invokestatic 831	com/tencent/mobileqq/msf/core/a/a:w	()Z
+    //   2700: invokespecial 830	com/tencent/mobileqq/msf/core/net/m:m	()V
+    //   2703: invokestatic 832	com/tencent/mobileqq/msf/core/a/a:w	()Z
     //   2706: ifeq +1922 -> 4628
     //   2709: aload_0
     //   2710: aload_0
     //   2711: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2714: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
+    //   2714: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
     //   2717: aload_0
     //   2718: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
     //   2721: invokevirtual 413	java/lang/Object:hashCode	()I
-    //   2724: invokevirtual 834	com/tencent/mobileqq/msf/core/aj:a	(I)Ljava/lang/Runnable;
+    //   2724: invokevirtual 835	com/tencent/mobileqq/msf/core/ac:a	(I)Ljava/lang/Runnable;
     //   2727: putfield 504	com/tencent/mobileqq/msf/core/net/m:F	Ljava/lang/Runnable;
     //   2730: aload_0
     //   2731: getfield 489	com/tencent/mobileqq/msf/core/net/m:c	Ljava/net/InetSocketAddress;
-    //   2734: invokevirtual 721	java/net/InetSocketAddress:toString	()Ljava/lang/String;
-    //   2737: invokestatic 839	com/tencent/qphone/base/util/g:b	(Ljava/lang/String;)J
-    //   2740: putstatic 843	com/tencent/mobileqq/msf/core/push/e:d	J
+    //   2734: invokevirtual 722	java/net/InetSocketAddress:toString	()Ljava/lang/String;
+    //   2737: invokestatic 840	com/tencent/qphone/base/util/g:b	(Ljava/lang/String;)J
+    //   2740: putstatic 844	com/tencent/mobileqq/msf/core/push/e:d	J
     //   2743: aload_1
     //   2744: invokevirtual 545	com/tencent/mobileqq/msf/core/d:c	()Ljava/lang/String;
     //   2747: aload_1
     //   2748: invokevirtual 547	com/tencent/mobileqq/msf/core/d:f	()I
-    //   2751: getstatic 802	com/tencent/mobileqq/msf/core/aj:G	I
-    //   2754: invokestatic 848	com/tencent/mobileqq/a/a/f:a	(Ljava/lang/String;II)V
+    //   2751: getstatic 803	com/tencent/mobileqq/msf/core/ac:G	I
+    //   2754: invokestatic 849	com/tencent/mobileqq/a/a/f:a	(Ljava/lang/String;II)V
     //   2757: aload_0
     //   2758: getfield 489	com/tencent/mobileqq/msf/core/net/m:c	Ljava/net/InetSocketAddress;
-    //   2761: invokevirtual 721	java/net/InetSocketAddress:toString	()Ljava/lang/String;
+    //   2761: invokevirtual 722	java/net/InetSocketAddress:toString	()Ljava/lang/String;
     //   2764: aload_0
     //   2765: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2768: getfield 816	com/tencent/mobileqq/msf/core/MsfCore:nowSocketConnAdd	Ljava/lang/String;
-    //   2771: invokestatic 852	com/tencent/mobileqq/msf/core/NetConnInfoCenter:onConnOpened	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2768: getfield 817	com/tencent/mobileqq/msf/core/MsfCore:nowSocketConnAdd	Ljava/lang/String;
+    //   2771: invokestatic 853	com/tencent/mobileqq/msf/core/NetConnInfoCenter:onConnOpened	(Ljava/lang/String;Ljava/lang/String;)V
     //   2774: aload_0
     //   2775: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2778: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   2781: invokevirtual 853	com/tencent/mobileqq/msf/core/aj:m	()V
+    //   2778: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   2781: invokevirtual 855	com/tencent/mobileqq/msf/core/ac:o	()V
     //   2784: return
-    //   2785: ldc_w 855
+    //   2785: ldc_w 857
     //   2788: astore 16
     //   2790: goto -2418 -> 372
     //   2793: aload 15
@@ -1567,7 +1566,7 @@ public class m
     //   2817: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2820: aload_1
     //   2821: invokevirtual 555	com/tencent/mobileqq/msf/core/d:toString	()Ljava/lang/String;
-    //   2824: invokestatic 486	com/tencent/mobileqq/msf/core/b/c:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   2824: invokestatic 486	com/tencent/mobileqq/msf/core/b/a:a	(Ljava/lang/String;)Ljava/lang/String;
     //   2827: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2830: astore 18
     //   2832: aload 15
@@ -1659,8 +1658,8 @@ public class m
     //   3016: astore_2
     //   3017: aload_0
     //   3018: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   3021: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   3024: getfield 632	com/tencent/mobileqq/msf/core/aj:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   3021: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   3024: getfield 632	com/tencent/mobileqq/msf/core/ac:b	Lcom/tencent/mobileqq/msf/core/net/n;
     //   3027: astore 14
     //   3029: aload 12
     //   3031: astore 13
@@ -1679,7 +1678,7 @@ public class m
     //   3057: astore_2
     //   3058: aload_0
     //   3059: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   3062: invokevirtual 751	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/k;
+    //   3062: invokevirtual 752	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
     //   3065: ifnull +176 -> 3241
     //   3068: aload 12
     //   3070: astore 13
@@ -1687,8 +1686,8 @@ public class m
     //   3074: astore_2
     //   3075: aload_0
     //   3076: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   3079: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   3082: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
+    //   3079: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   3082: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
     //   3085: ifnull +156 -> 3241
     //   3088: aload 12
     //   3090: astore 13
@@ -1696,9 +1695,9 @@ public class m
     //   3094: astore_2
     //   3095: aload_0
     //   3096: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   3099: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   3102: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
-    //   3105: getfield 765	com/tencent/mobileqq/msf/core/c/k$c:e	J
+    //   3099: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   3102: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   3105: getfield 766	com/tencent/mobileqq/msf/core/c/j$c:e	J
     //   3108: lconst_0
     //   3109: lcmp
     //   3110: ifle +51 -> 3161
@@ -1708,9 +1707,9 @@ public class m
     //   3119: astore_2
     //   3120: aload_0
     //   3121: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   3124: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   3127: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
-    //   3130: getfield 767	com/tencent/mobileqq/msf/core/c/k$c:f	J
+    //   3124: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   3127: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   3130: getfield 768	com/tencent/mobileqq/msf/core/c/j$c:f	J
     //   3133: lconst_0
     //   3134: lcmp
     //   3135: ifne +26 -> 3161
@@ -1720,19 +1719,19 @@ public class m
     //   3144: astore_2
     //   3145: aload_0
     //   3146: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   3149: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   3152: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
+    //   3149: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   3152: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
     //   3155: invokestatic 533	java/lang/System:currentTimeMillis	()J
-    //   3158: putfield 767	com/tencent/mobileqq/msf/core/c/k$c:f	J
+    //   3158: putfield 768	com/tencent/mobileqq/msf/core/c/j$c:f	J
     //   3161: aload 12
     //   3163: astore 13
     //   3165: aload 11
     //   3167: astore_2
     //   3168: aload_0
     //   3169: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   3172: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   3175: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
-    //   3178: getfield 769	com/tencent/mobileqq/msf/core/c/k$c:g	J
+    //   3172: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   3175: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   3178: getfield 770	com/tencent/mobileqq/msf/core/c/j$c:g	J
     //   3181: lconst_0
     //   3182: lcmp
     //   3183: ifne +58 -> 3241
@@ -1742,10 +1741,10 @@ public class m
     //   3192: astore_2
     //   3193: aload_0
     //   3194: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   3197: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   3200: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
+    //   3197: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   3200: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
     //   3203: invokestatic 533	java/lang/System:currentTimeMillis	()J
-    //   3206: putfield 769	com/tencent/mobileqq/msf/core/c/k$c:g	J
+    //   3206: putfield 770	com/tencent/mobileqq/msf/core/c/j$c:g	J
     //   3209: aload 12
     //   3211: astore 13
     //   3213: aload 11
@@ -1756,51 +1755,51 @@ public class m
     //   3220: anewarray 4	java/lang/Object
     //   3223: dup
     //   3224: iconst_0
-    //   3225: ldc_w 857
+    //   3225: ldc_w 859
     //   3228: aastore
     //   3229: dup
     //   3230: iconst_1
     //   3231: invokestatic 533	java/lang/System:currentTimeMillis	()J
     //   3234: invokestatic 269	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   3237: aastore
-    //   3238: invokestatic 860	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   3238: invokestatic 862	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   3241: aload 12
     //   3243: astore 13
     //   3245: aload 11
     //   3247: astore_2
     //   3248: aload 16
-    //   3250: invokevirtual 861	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   3253: invokevirtual 864	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   3250: invokevirtual 863	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   3253: invokevirtual 866	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   3256: astore 15
     //   3258: aload 15
     //   3260: astore 13
     //   3262: aload 11
     //   3264: astore_2
-    //   3265: invokestatic 801	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getSystemNetworkType	()I
+    //   3265: invokestatic 802	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getSystemNetworkType	()I
     //   3268: ifne +521 -> 3789
     //   3271: aload 15
     //   3273: astore 13
     //   3275: aload 11
     //   3277: astore_2
-    //   3278: getstatic 866	com/tencent/mobileqq/msf/core/net/x:m	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   3278: getstatic 868	com/tencent/mobileqq/msf/core/net/x:m	Lcom/tencent/mobileqq/msf/core/net/x;
     //   3281: astore 12
     //   3283: aload 15
     //   3285: astore 13
     //   3287: aload 12
     //   3289: astore_2
     //   3290: aload 12
-    //   3292: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   3292: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   3295: astore 11
     //   3297: aload 11
     //   3299: astore 13
     //   3301: aload 12
     //   3303: astore_2
     //   3304: aload_3
-    //   3305: invokestatic 870	com/tencent/mobileqq/msf/core/a/a:aE	()I
-    //   3308: putfield 872	com/tencent/mobileqq/msf/core/net/a:h	I
+    //   3305: invokestatic 872	com/tencent/mobileqq/msf/core/a/a:aE	()I
+    //   3308: putfield 874	com/tencent/mobileqq/msf/core/net/a:h	I
     //   3311: aload_0
     //   3312: getfield 128	com/tencent/mobileqq/msf/core/net/m:E	Ljava/util/concurrent/locks/ReentrantLock;
-    //   3315: invokevirtual 774	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   3315: invokevirtual 775	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   3318: aload 12
     //   3320: getstatic 682	com/tencent/mobileqq/msf/core/net/x:c	Lcom/tencent/mobileqq/msf/core/net/x;
     //   3323: if_acmpeq +18 -> 3341
@@ -1809,21 +1808,21 @@ public class m
     //   3328: putfield 627	com/tencent/mobileqq/msf/core/net/a:d	Z
     //   3331: aload_3
     //   3332: aload_3
-    //   3333: getfield 776	com/tencent/mobileqq/msf/core/net/a:k	I
+    //   3333: getfield 777	com/tencent/mobileqq/msf/core/net/a:k	I
     //   3336: iconst_1
     //   3337: iadd
-    //   3338: putfield 776	com/tencent/mobileqq/msf/core/net/a:k	I
+    //   3338: putfield 777	com/tencent/mobileqq/msf/core/net/a:k	I
     //   3341: aload_3
     //   3342: aload 12
-    //   3344: putfield 778	com/tencent/mobileqq/msf/core/net/a:e	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   3344: putfield 779	com/tencent/mobileqq/msf/core/net/a:e	Lcom/tencent/mobileqq/msf/core/net/x;
     //   3347: aload_3
     //   3348: aload 11
-    //   3350: putfield 780	com/tencent/mobileqq/msf/core/net/a:f	Ljava/lang/String;
+    //   3350: putfield 781	com/tencent/mobileqq/msf/core/net/a:f	Ljava/lang/String;
     //   3353: aload_3
     //   3354: invokestatic 263	android/os/SystemClock:elapsedRealtime	()J
     //   3357: lload 8
     //   3359: lsub
-    //   3360: putfield 782	com/tencent/mobileqq/msf/core/net/a:a	J
+    //   3360: putfield 783	com/tencent/mobileqq/msf/core/net/a:a	J
     //   3363: goto -902 -> 2461
     //   3366: astore_1
     //   3367: aload_3
@@ -1831,22 +1830,22 @@ public class m
     //   3369: putfield 627	com/tencent/mobileqq/msf/core/net/a:d	Z
     //   3372: aload_3
     //   3373: aload_3
-    //   3374: getfield 776	com/tencent/mobileqq/msf/core/net/a:k	I
+    //   3374: getfield 777	com/tencent/mobileqq/msf/core/net/a:k	I
     //   3377: iconst_1
     //   3378: iadd
-    //   3379: putfield 776	com/tencent/mobileqq/msf/core/net/a:k	I
+    //   3379: putfield 777	com/tencent/mobileqq/msf/core/net/a:k	I
     //   3382: aload_3
-    //   3383: getstatic 874	com/tencent/mobileqq/msf/core/net/x:f	Lcom/tencent/mobileqq/msf/core/net/x;
-    //   3386: putfield 778	com/tencent/mobileqq/msf/core/net/a:e	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   3383: getstatic 876	com/tencent/mobileqq/msf/core/net/x:f	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   3386: putfield 779	com/tencent/mobileqq/msf/core/net/a:e	Lcom/tencent/mobileqq/msf/core/net/x;
     //   3389: aload_3
     //   3390: aload_1
-    //   3391: invokevirtual 875	java/lang/InterruptedException:toString	()Ljava/lang/String;
-    //   3394: putfield 780	com/tencent/mobileqq/msf/core/net/a:f	Ljava/lang/String;
+    //   3391: invokevirtual 877	java/lang/InterruptedException:toString	()Ljava/lang/String;
+    //   3394: putfield 781	com/tencent/mobileqq/msf/core/net/a:f	Ljava/lang/String;
     //   3397: aload_3
     //   3398: lconst_0
-    //   3399: putfield 782	com/tencent/mobileqq/msf/core/net/a:a	J
+    //   3399: putfield 783	com/tencent/mobileqq/msf/core/net/a:a	J
     //   3402: return
-    //   3403: ldc_w 855
+    //   3403: ldc_w 857
     //   3406: astore 16
     //   3408: goto -545 -> 2863
     //   3411: aload 15
@@ -1861,12 +1860,12 @@ public class m
     //   3429: astore_2
     //   3430: aload_0
     //   3431: getfield 78	com/tencent/mobileqq/msf/core/net/m:j	Lcom/tencent/mobileqq/msf/core/net/m$a;
-    //   3434: invokevirtual 877	com/tencent/mobileqq/msf/core/net/m$a:a	()V
+    //   3434: invokevirtual 879	com/tencent/mobileqq/msf/core/net/m$a:a	()V
     //   3437: goto -1917 -> 1520
     //   3440: astore_1
     //   3441: aload_0
     //   3442: getfield 128	com/tencent/mobileqq/msf/core/net/m:E	Ljava/util/concurrent/locks/ReentrantLock;
-    //   3445: invokevirtual 774	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   3445: invokevirtual 775	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   3448: aload_2
     //   3449: getstatic 682	com/tencent/mobileqq/msf/core/net/x:c	Lcom/tencent/mobileqq/msf/core/net/x;
     //   3452: if_acmpeq +18 -> 3470
@@ -1875,24 +1874,24 @@ public class m
     //   3457: putfield 627	com/tencent/mobileqq/msf/core/net/a:d	Z
     //   3460: aload_3
     //   3461: aload_3
-    //   3462: getfield 776	com/tencent/mobileqq/msf/core/net/a:k	I
+    //   3462: getfield 777	com/tencent/mobileqq/msf/core/net/a:k	I
     //   3465: iconst_1
     //   3466: iadd
-    //   3467: putfield 776	com/tencent/mobileqq/msf/core/net/a:k	I
+    //   3467: putfield 777	com/tencent/mobileqq/msf/core/net/a:k	I
     //   3470: aload_3
     //   3471: aload_2
-    //   3472: putfield 778	com/tencent/mobileqq/msf/core/net/a:e	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   3472: putfield 779	com/tencent/mobileqq/msf/core/net/a:e	Lcom/tencent/mobileqq/msf/core/net/x;
     //   3475: aload_3
     //   3476: aload 13
-    //   3478: putfield 780	com/tencent/mobileqq/msf/core/net/a:f	Ljava/lang/String;
+    //   3478: putfield 781	com/tencent/mobileqq/msf/core/net/a:f	Ljava/lang/String;
     //   3481: aload_3
     //   3482: invokestatic 263	android/os/SystemClock:elapsedRealtime	()J
     //   3485: lload 8
     //   3487: lsub
-    //   3488: putfield 782	com/tencent/mobileqq/msf/core/net/a:a	J
+    //   3488: putfield 783	com/tencent/mobileqq/msf/core/net/a:a	J
     //   3491: aload_1
     //   3492: athrow
-    //   3493: ldc_w 855
+    //   3493: ldc_w 857
     //   3496: astore 16
     //   3498: goto -1581 -> 1917
     //   3501: aload 15
@@ -1906,32 +1905,32 @@ public class m
     //   3517: aload 14
     //   3519: astore_2
     //   3520: aload 17
-    //   3522: ldc_w 720
+    //   3522: ldc_w 721
     //   3525: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3528: aload_0
     //   3529: getfield 489	com/tencent/mobileqq/msf/core/net/m:c	Ljava/net/InetSocketAddress;
-    //   3532: invokevirtual 721	java/net/InetSocketAddress:toString	()Ljava/lang/String;
-    //   3535: invokestatic 486	com/tencent/mobileqq/msf/core/b/c:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   3532: invokevirtual 722	java/net/InetSocketAddress:toString	()Ljava/lang/String;
+    //   3535: invokestatic 486	com/tencent/mobileqq/msf/core/b/a:a	(Ljava/lang/String;)Ljava/lang/String;
     //   3538: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3541: ldc_w 723
+    //   3541: ldc_w 724
     //   3544: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3547: aload_0
     //   3548: getfield 108	com/tencent/mobileqq/msf/core/net/m:A	J
     //   3551: invokevirtual 204	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3554: ldc_w 725
+    //   3554: ldc_w 726
     //   3557: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3560: aload_1
     //   3561: invokevirtual 614	com/tencent/mobileqq/msf/core/d:g	()I
     //   3564: invokevirtual 196	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3567: ldc_w 727
+    //   3567: ldc_w 728
     //   3570: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3573: aload_0
     //   3574: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
-    //   3577: invokevirtual 731	com/tencent/mobileqq/msf/core/net/h:getLocalAddress	()Ljava/net/InetAddress;
-    //   3580: invokevirtual 736	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   3583: invokestatic 486	com/tencent/mobileqq/msf/core/b/c:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   3577: invokevirtual 732	com/tencent/mobileqq/msf/core/net/h:getLocalAddress	()Ljava/net/InetAddress;
+    //   3580: invokevirtual 737	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   3583: invokestatic 486	com/tencent/mobileqq/msf/core/b/a:a	(Ljava/lang/String;)Ljava/lang/String;
     //   3586: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3589: ldc_w 738
+    //   3589: ldc_w 739
     //   3592: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3595: aload_0
     //   3596: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
@@ -1982,7 +1981,7 @@ public class m
     //   3691: aload_1
     //   3692: invokestatic 584	com/tencent/mobileqq/msf/core/net/j:a	(Lcom/tencent/mobileqq/msf/core/d;)Z
     //   3695: ifeq +1134 -> 4829
-    //   3698: ldc_w 740
+    //   3698: ldc_w 741
     //   3701: astore 16
     //   3703: aload 15
     //   3705: astore 12
@@ -2020,7 +2019,7 @@ public class m
     //   3774: astore_2
     //   3775: ldc 179
     //   3777: iconst_1
-    //   3778: ldc_w 879
+    //   3778: ldc_w 881
     //   3781: aload 16
     //   3783: invokestatic 308	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   3786: goto -1574 -> 2212
@@ -2029,22 +2028,22 @@ public class m
     //   3793: aload 11
     //   3795: astore_2
     //   3796: aload 15
-    //   3798: ldc_w 881
-    //   3801: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   3798: ldc_w 883
+    //   3801: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   3804: iconst_m1
     //   3805: if_icmple +32 -> 3837
     //   3808: aload 15
     //   3810: astore 13
     //   3812: aload 11
     //   3814: astore_2
-    //   3815: getstatic 887	com/tencent/mobileqq/msf/core/net/x:g	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   3815: getstatic 889	com/tencent/mobileqq/msf/core/net/x:g	Lcom/tencent/mobileqq/msf/core/net/x;
     //   3818: astore 12
     //   3820: aload 15
     //   3822: astore 13
     //   3824: aload 12
     //   3826: astore_2
     //   3827: aload 12
-    //   3829: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   3829: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   3832: astore 11
     //   3834: goto -523 -> 3311
     //   3837: aload 15
@@ -2052,22 +2051,22 @@ public class m
     //   3841: aload 11
     //   3843: astore_2
     //   3844: aload 15
-    //   3846: ldc_w 889
-    //   3849: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   3846: ldc_w 891
+    //   3849: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   3852: iconst_m1
     //   3853: if_icmple +32 -> 3885
     //   3856: aload 15
     //   3858: astore 13
     //   3860: aload 11
     //   3862: astore_2
-    //   3863: getstatic 891	com/tencent/mobileqq/msf/core/net/x:q	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   3863: getstatic 893	com/tencent/mobileqq/msf/core/net/x:q	Lcom/tencent/mobileqq/msf/core/net/x;
     //   3866: astore 12
     //   3868: aload 15
     //   3870: astore 13
     //   3872: aload 12
     //   3874: astore_2
     //   3875: aload 12
-    //   3877: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   3877: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   3880: astore 11
     //   3882: goto -571 -> 3311
     //   3885: aload 15
@@ -2075,52 +2074,52 @@ public class m
     //   3889: aload 11
     //   3891: astore_2
     //   3892: aload 15
-    //   3894: ldc_w 893
-    //   3897: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   3894: ldc_w 895
+    //   3897: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   3900: iconst_m1
     //   3901: if_icmple +46 -> 3947
     //   3904: aload 15
     //   3906: astore 13
     //   3908: aload 11
     //   3910: astore_2
-    //   3911: getstatic 866	com/tencent/mobileqq/msf/core/net/x:m	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   3911: getstatic 868	com/tencent/mobileqq/msf/core/net/x:m	Lcom/tencent/mobileqq/msf/core/net/x;
     //   3914: astore 12
     //   3916: aload 15
     //   3918: astore 13
     //   3920: aload 12
     //   3922: astore_2
     //   3923: aload 12
-    //   3925: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   3925: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   3928: astore 11
     //   3930: aload 11
     //   3932: astore 13
     //   3934: aload 12
     //   3936: astore_2
     //   3937: aload_3
-    //   3938: invokestatic 870	com/tencent/mobileqq/msf/core/a/a:aE	()I
-    //   3941: putfield 872	com/tencent/mobileqq/msf/core/net/a:h	I
+    //   3938: invokestatic 872	com/tencent/mobileqq/msf/core/a/a:aE	()I
+    //   3941: putfield 874	com/tencent/mobileqq/msf/core/net/a:h	I
     //   3944: goto -633 -> 3311
     //   3947: aload 15
     //   3949: astore 13
     //   3951: aload 11
     //   3953: astore_2
     //   3954: aload 15
-    //   3956: ldc_w 895
-    //   3959: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   3956: ldc_w 897
+    //   3959: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   3962: iconst_m1
     //   3963: if_icmple +32 -> 3995
     //   3966: aload 15
     //   3968: astore 13
     //   3970: aload 11
     //   3972: astore_2
-    //   3973: getstatic 897	com/tencent/mobileqq/msf/core/net/x:i	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   3973: getstatic 899	com/tencent/mobileqq/msf/core/net/x:i	Lcom/tencent/mobileqq/msf/core/net/x;
     //   3976: astore 12
     //   3978: aload 15
     //   3980: astore 13
     //   3982: aload 12
     //   3984: astore_2
     //   3985: aload 12
-    //   3987: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   3987: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   3990: astore 11
     //   3992: goto -681 -> 3311
     //   3995: aload 15
@@ -2128,22 +2127,22 @@ public class m
     //   3999: aload 11
     //   4001: astore_2
     //   4002: aload 15
-    //   4004: ldc_w 899
-    //   4007: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4004: ldc_w 901
+    //   4007: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4010: iconst_m1
     //   4011: if_icmple +32 -> 4043
     //   4014: aload 15
     //   4016: astore 13
     //   4018: aload 11
     //   4020: astore_2
-    //   4021: getstatic 901	com/tencent/mobileqq/msf/core/net/x:s	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4021: getstatic 903	com/tencent/mobileqq/msf/core/net/x:s	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4024: astore 12
     //   4026: aload 15
     //   4028: astore 13
     //   4030: aload 12
     //   4032: astore_2
     //   4033: aload 12
-    //   4035: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   4035: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   4038: astore 11
     //   4040: goto -729 -> 3311
     //   4043: aload 15
@@ -2151,22 +2150,22 @@ public class m
     //   4047: aload 11
     //   4049: astore_2
     //   4050: aload 15
-    //   4052: ldc_w 903
-    //   4055: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4052: ldc_w 905
+    //   4055: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4058: iconst_m1
     //   4059: if_icmple +32 -> 4091
     //   4062: aload 15
     //   4064: astore 13
     //   4066: aload 11
     //   4068: astore_2
-    //   4069: getstatic 905	com/tencent/mobileqq/msf/core/net/x:r	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4069: getstatic 907	com/tencent/mobileqq/msf/core/net/x:r	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4072: astore 12
     //   4074: aload 15
     //   4076: astore 13
     //   4078: aload 12
     //   4080: astore_2
     //   4081: aload 12
-    //   4083: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   4083: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   4086: astore 11
     //   4088: goto -777 -> 3311
     //   4091: aload 15
@@ -2174,8 +2173,8 @@ public class m
     //   4095: aload 11
     //   4097: astore_2
     //   4098: aload 15
-    //   4100: ldc_w 907
-    //   4103: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4100: ldc_w 909
+    //   4103: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4106: iconst_m1
     //   4107: if_icmpgt +22 -> 4129
     //   4110: aload 15
@@ -2183,22 +2182,22 @@ public class m
     //   4114: aload 11
     //   4116: astore_2
     //   4117: aload 15
-    //   4119: ldc_w 909
-    //   4122: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4119: ldc_w 911
+    //   4122: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4125: iconst_m1
     //   4126: if_icmple +32 -> 4158
     //   4129: aload 15
     //   4131: astore 13
     //   4133: aload 11
     //   4135: astore_2
-    //   4136: getstatic 911	com/tencent/mobileqq/msf/core/net/x:t	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4136: getstatic 913	com/tencent/mobileqq/msf/core/net/x:t	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4139: astore 12
     //   4141: aload 15
     //   4143: astore 13
     //   4145: aload 12
     //   4147: astore_2
     //   4148: aload 12
-    //   4150: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   4150: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   4153: astore 11
     //   4155: goto -844 -> 3311
     //   4158: aload 15
@@ -2206,22 +2205,22 @@ public class m
     //   4162: aload 11
     //   4164: astore_2
     //   4165: aload 15
-    //   4167: ldc_w 913
-    //   4170: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4167: ldc_w 915
+    //   4170: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4173: iconst_m1
     //   4174: if_icmple +32 -> 4206
     //   4177: aload 15
     //   4179: astore 13
     //   4181: aload 11
     //   4183: astore_2
-    //   4184: getstatic 915	com/tencent/mobileqq/msf/core/net/x:p	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4184: getstatic 917	com/tencent/mobileqq/msf/core/net/x:p	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4187: astore 12
     //   4189: aload 15
     //   4191: astore 13
     //   4193: aload 12
     //   4195: astore_2
     //   4196: aload 12
-    //   4198: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   4198: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   4201: astore 11
     //   4203: goto -892 -> 3311
     //   4206: aload 15
@@ -2229,22 +2228,22 @@ public class m
     //   4210: aload 11
     //   4212: astore_2
     //   4213: aload 15
-    //   4215: ldc_w 917
-    //   4218: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4215: ldc_w 919
+    //   4218: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4221: iconst_m1
     //   4222: if_icmple +32 -> 4254
     //   4225: aload 15
     //   4227: astore 13
     //   4229: aload 11
     //   4231: astore_2
-    //   4232: getstatic 919	com/tencent/mobileqq/msf/core/net/x:o	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4232: getstatic 921	com/tencent/mobileqq/msf/core/net/x:o	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4235: astore 12
     //   4237: aload 15
     //   4239: astore 13
     //   4241: aload 12
     //   4243: astore_2
     //   4244: aload 12
-    //   4246: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   4246: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   4249: astore 11
     //   4251: goto -940 -> 3311
     //   4254: aload 15
@@ -2252,22 +2251,22 @@ public class m
     //   4258: aload 11
     //   4260: astore_2
     //   4261: aload 15
-    //   4263: ldc_w 921
-    //   4266: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4263: ldc_w 923
+    //   4266: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4269: iconst_m1
     //   4270: if_icmple +32 -> 4302
     //   4273: aload 15
     //   4275: astore 13
     //   4277: aload 11
     //   4279: astore_2
-    //   4280: getstatic 923	com/tencent/mobileqq/msf/core/net/x:h	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4280: getstatic 925	com/tencent/mobileqq/msf/core/net/x:h	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4283: astore 12
     //   4285: aload 15
     //   4287: astore 13
     //   4289: aload 12
     //   4291: astore_2
     //   4292: aload 12
-    //   4294: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   4294: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   4297: astore 11
     //   4299: goto -988 -> 3311
     //   4302: aload 15
@@ -2275,22 +2274,22 @@ public class m
     //   4306: aload 11
     //   4308: astore_2
     //   4309: aload 15
-    //   4311: ldc_w 925
-    //   4314: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4311: ldc_w 927
+    //   4314: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4317: iconst_m1
     //   4318: if_icmple +32 -> 4350
     //   4321: aload 15
     //   4323: astore 13
     //   4325: aload 11
     //   4327: astore_2
-    //   4328: getstatic 927	com/tencent/mobileqq/msf/core/net/x:l	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4328: getstatic 929	com/tencent/mobileqq/msf/core/net/x:l	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4331: astore 12
     //   4333: aload 15
     //   4335: astore 13
     //   4337: aload 12
     //   4339: astore_2
     //   4340: aload 12
-    //   4342: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   4342: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   4345: astore 11
     //   4347: goto -1036 -> 3311
     //   4350: aload 15
@@ -2298,22 +2297,22 @@ public class m
     //   4354: aload 11
     //   4356: astore_2
     //   4357: aload 15
-    //   4359: ldc_w 929
-    //   4362: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4359: ldc_w 931
+    //   4362: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4365: iconst_m1
     //   4366: if_icmple +32 -> 4398
     //   4369: aload 15
     //   4371: astore 13
     //   4373: aload 11
     //   4375: astore_2
-    //   4376: getstatic 931	com/tencent/mobileqq/msf/core/net/x:j	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4376: getstatic 933	com/tencent/mobileqq/msf/core/net/x:j	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4379: astore 12
     //   4381: aload 15
     //   4383: astore 13
     //   4385: aload 12
     //   4387: astore_2
     //   4388: aload 12
-    //   4390: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   4390: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   4393: astore 11
     //   4395: goto -1084 -> 3311
     //   4398: aload 15
@@ -2321,22 +2320,22 @@ public class m
     //   4402: aload 11
     //   4404: astore_2
     //   4405: aload 15
-    //   4407: ldc_w 933
-    //   4410: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4407: ldc_w 935
+    //   4410: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4413: iconst_m1
     //   4414: if_icmple +32 -> 4446
     //   4417: aload 15
     //   4419: astore 13
     //   4421: aload 11
     //   4423: astore_2
-    //   4424: getstatic 911	com/tencent/mobileqq/msf/core/net/x:t	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4424: getstatic 913	com/tencent/mobileqq/msf/core/net/x:t	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4427: astore 12
     //   4429: aload 15
     //   4431: astore 13
     //   4433: aload 12
     //   4435: astore_2
     //   4436: aload 12
-    //   4438: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   4438: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   4441: astore 11
     //   4443: goto -1132 -> 3311
     //   4446: aload 15
@@ -2344,36 +2343,36 @@ public class m
     //   4450: aload 11
     //   4452: astore_2
     //   4453: aload 15
-    //   4455: ldc_w 935
-    //   4458: invokevirtual 885	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   4455: ldc_w 937
+    //   4458: invokevirtual 887	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   4461: iconst_m1
     //   4462: if_icmple +32 -> 4494
     //   4465: aload 15
     //   4467: astore 13
     //   4469: aload 11
     //   4471: astore_2
-    //   4472: getstatic 937	com/tencent/mobileqq/msf/core/net/x:n	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4472: getstatic 939	com/tencent/mobileqq/msf/core/net/x:n	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4475: astore 12
     //   4477: aload 15
     //   4479: astore 13
     //   4481: aload 12
     //   4483: astore_2
     //   4484: aload 12
-    //   4486: invokevirtual 867	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
+    //   4486: invokevirtual 869	com/tencent/mobileqq/msf/core/net/x:toString	()Ljava/lang/String;
     //   4489: astore 11
     //   4491: goto -1180 -> 3311
     //   4494: aload 15
     //   4496: astore 13
     //   4498: aload 11
     //   4500: astore_2
-    //   4501: getstatic 939	com/tencent/mobileqq/msf/core/net/x:u	Lcom/tencent/mobileqq/msf/core/net/x;
+    //   4501: getstatic 941	com/tencent/mobileqq/msf/core/net/x:u	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4504: astore 14
     //   4506: aload 15
     //   4508: astore 13
     //   4510: aload 14
     //   4512: astore_2
     //   4513: aload 16
-    //   4515: invokestatic 943	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   4515: invokestatic 945	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   4518: astore 15
     //   4520: aload 15
     //   4522: astore 11
@@ -2384,7 +2383,7 @@ public class m
     //   4532: aload 14
     //   4534: astore_2
     //   4535: aload 15
-    //   4537: invokevirtual 944	java/lang/String:length	()I
+    //   4537: invokevirtual 946	java/lang/String:length	()I
     //   4540: sipush 200
     //   4543: if_icmple -1232 -> 3311
     //   4546: aload 15
@@ -2394,7 +2393,7 @@ public class m
     //   4553: aload 15
     //   4555: iconst_0
     //   4556: sipush 200
-    //   4559: invokevirtual 948	java/lang/String:substring	(II)Ljava/lang/String;
+    //   4559: invokevirtual 950	java/lang/String:substring	(II)Ljava/lang/String;
     //   4562: astore 11
     //   4564: aload 14
     //   4566: astore 12
@@ -2405,68 +2404,68 @@ public class m
     //   4577: astore_2
     //   4578: ldc 179
     //   4580: iconst_1
-    //   4581: ldc_w 950
+    //   4581: ldc_w 952
     //   4584: invokestatic 213	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   4587: goto -2083 -> 2504
     //   4590: aload_0
     //   4591: iconst_0
-    //   4592: invokespecial 827	com/tencent/mobileqq/msf/core/net/m:b	(Z)V
+    //   4592: invokespecial 828	com/tencent/mobileqq/msf/core/net/m:b	(Z)V
     //   4595: goto -1896 -> 2699
     //   4598: astore_2
     //   4599: aload_2
     //   4600: invokevirtual 303	java/lang/Exception:printStackTrace	()V
     //   4603: ldc 179
     //   4605: iconst_1
-    //   4606: ldc_w 952
+    //   4606: ldc_w 954
     //   4609: aload_2
     //   4610: invokestatic 308	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   4613: goto -1883 -> 2730
     //   4616: ldc 179
     //   4618: iconst_1
-    //   4619: ldc_w 954
+    //   4619: ldc_w 956
     //   4622: invokestatic 213	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   4625: goto -1922 -> 2703
     //   4628: ldc 179
     //   4630: iconst_1
-    //   4631: ldc_w 956
+    //   4631: ldc_w 958
     //   4634: invokestatic 213	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   4637: goto -1907 -> 2730
     //   4640: astore_2
-    //   4641: ldc2_w 957
-    //   4644: putstatic 843	com/tencent/mobileqq/msf/core/push/e:d	J
+    //   4641: ldc2_w 959
+    //   4644: putstatic 844	com/tencent/mobileqq/msf/core/push/e:d	J
     //   4647: ldc 179
     //   4649: iconst_1
-    //   4650: ldc_w 960
-    //   4653: invokestatic 962	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4650: ldc_w 962
+    //   4653: invokestatic 964	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   4656: goto -1913 -> 2743
     //   4659: aload 12
     //   4661: getstatic 682	com/tencent/mobileqq/msf/core/net/x:c	Lcom/tencent/mobileqq/msf/core/net/x;
     //   4664: if_acmpeq -1880 -> 2784
     //   4667: invokestatic 298	com/tencent/mobileqq/a/a/a:a	()Lcom/tencent/mobileqq/a/a/a;
-    //   4670: getstatic 802	com/tencent/mobileqq/msf/core/aj:G	I
+    //   4670: getstatic 803	com/tencent/mobileqq/msf/core/ac:G	I
     //   4673: aload_0
     //   4674: getfield 108	com/tencent/mobileqq/msf/core/net/m:A	J
     //   4677: aload 12
-    //   4679: invokevirtual 965	com/tencent/mobileqq/a/a/a:a	(IJLcom/tencent/mobileqq/msf/core/net/x;)V
+    //   4679: invokevirtual 967	com/tencent/mobileqq/a/a/a:a	(IJLcom/tencent/mobileqq/msf/core/net/x;)V
     //   4682: new 181	java/lang/StringBuilder
     //   4685: dup
     //   4686: invokespecial 182	java/lang/StringBuilder:<init>	()V
-    //   4689: ldc_w 967
+    //   4689: ldc_w 969
     //   4692: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   4695: aload_0
     //   4696: getfield 489	com/tencent/mobileqq/msf/core/net/m:c	Ljava/net/InetSocketAddress;
     //   4699: invokevirtual 697	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   4702: ldc_w 969
+    //   4702: ldc_w 971
     //   4705: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   4708: aload_3
-    //   4709: getfield 780	com/tencent/mobileqq/msf/core/net/a:f	Ljava/lang/String;
+    //   4709: getfield 781	com/tencent/mobileqq/msf/core/net/a:f	Ljava/lang/String;
     //   4712: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4715: ldc_w 971
+    //   4715: ldc_w 973
     //   4718: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   4721: aload_0
     //   4722: getfield 108	com/tencent/mobileqq/msf/core/net/m:A	J
     //   4725: invokevirtual 204	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   4728: ldc_w 725
+    //   4728: ldc_w 726
     //   4731: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   4734: aload_1
     //   4735: invokevirtual 614	com/tencent/mobileqq/msf/core/d:g	()I
@@ -2505,16 +2504,16 @@ public class m
     //   4806: ldc 142
     //   4808: astore 16
     //   4810: goto -1870 -> 2940
-    //   4813: ldc_w 973
+    //   4813: ldc_w 975
     //   4816: astore 16
     //   4818: goto -2836 -> 1982
-    //   4821: ldc_w 855
+    //   4821: ldc_w 857
     //   4824: astore 16
     //   4826: goto -1188 -> 3638
-    //   4829: ldc_w 973
+    //   4829: ldc_w 975
     //   4832: astore 16
     //   4834: goto -1131 -> 3703
-    //   4837: ldc_w 855
+    //   4837: ldc_w 857
     //   4840: astore_2
     //   4841: goto -87 -> 4754
     // Local variable table:
@@ -2844,97 +2843,97 @@ public class m
     //   7: putfield 90	com/tencent/mobileqq/msf/core/net/m:o	I
     //   10: aload_0
     //   11: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   14: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
+    //   14: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
     //   17: iconst_0
-    //   18: putfield 976	com/tencent/mobileqq/msf/core/aj:q	Z
+    //   18: putfield 978	com/tencent/mobileqq/msf/core/ac:q	Z
     //   21: aload_0
     //   22: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   25: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
+    //   25: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
     //   28: iconst_0
-    //   29: putfield 363	com/tencent/mobileqq/msf/core/aj:r	Z
+    //   29: putfield 363	com/tencent/mobileqq/msf/core/ac:r	Z
     //   32: aload_0
     //   33: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   36: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
+    //   36: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
     //   39: lconst_0
-    //   40: putfield 978	com/tencent/mobileqq/msf/core/aj:p	J
+    //   40: putfield 980	com/tencent/mobileqq/msf/core/ac:p	J
     //   43: aload_0
     //   44: getfield 489	com/tencent/mobileqq/msf/core/net/m:c	Ljava/net/InetSocketAddress;
     //   47: ifnull +26 -> 73
-    //   50: getstatic 980	com/tencent/mobileqq/msf/core/push/e:e	Z
+    //   50: getstatic 982	com/tencent/mobileqq/msf/core/push/e:e	Z
     //   53: ifeq +20 -> 73
     //   56: aload_0
     //   57: getfield 489	com/tencent/mobileqq/msf/core/net/m:c	Ljava/net/InetSocketAddress;
-    //   60: invokevirtual 721	java/net/InetSocketAddress:toString	()Ljava/lang/String;
-    //   63: invokestatic 839	com/tencent/qphone/base/util/g:b	(Ljava/lang/String;)J
-    //   66: putstatic 982	com/tencent/mobileqq/msf/core/push/e:c	J
+    //   60: invokevirtual 722	java/net/InetSocketAddress:toString	()Ljava/lang/String;
+    //   63: invokestatic 840	com/tencent/qphone/base/util/g:b	(Ljava/lang/String;)J
+    //   66: putstatic 984	com/tencent/mobileqq/msf/core/push/e:c	J
     //   69: iconst_0
-    //   70: putstatic 980	com/tencent/mobileqq/msf/core/push/e:e	Z
+    //   70: putstatic 982	com/tencent/mobileqq/msf/core/push/e:e	Z
     //   73: ldc 179
     //   75: iconst_1
     //   76: iconst_2
     //   77: anewarray 4	java/lang/Object
     //   80: dup
     //   81: iconst_0
-    //   82: invokestatic 988	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   85: invokevirtual 991	java/lang/Thread:getName	()Ljava/lang/String;
+    //   82: invokestatic 990	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   85: invokevirtual 993	java/lang/Thread:getName	()Ljava/lang/String;
     //   88: aastore
     //   89: dup
     //   90: iconst_1
     //   91: new 181	java/lang/StringBuilder
     //   94: dup
     //   95: invokespecial 182	java/lang/StringBuilder:<init>	()V
-    //   98: ldc_w 993
+    //   98: ldc_w 995
     //   101: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: aload_1
     //   105: invokevirtual 697	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   108: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   111: aastore
-    //   112: invokestatic 860	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   112: invokestatic 862	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   115: aload_0
     //   116: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   119: astore 6
-    //   121: getstatic 996	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   124: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
+    //   121: getstatic 998	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   124: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
     //   127: ifnull +90 -> 217
     //   130: aload_0
     //   131: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   134: astore 6
-    //   136: getstatic 996	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   139: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   142: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
+    //   136: getstatic 998	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   139: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   142: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
     //   145: ifnull +72 -> 217
     //   148: aload_0
     //   149: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   152: astore 6
-    //   154: getstatic 996	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   157: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   160: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
-    //   163: getfield 769	com/tencent/mobileqq/msf/core/c/k$c:g	J
+    //   154: getstatic 998	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   157: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   160: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   163: getfield 770	com/tencent/mobileqq/msf/core/c/j$c:g	J
     //   166: lconst_0
     //   167: lcmp
     //   168: ifne +49 -> 217
     //   171: aload_0
     //   172: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   175: astore 6
-    //   177: getstatic 996	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   180: getfield 755	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/k;
-    //   183: getfield 761	com/tencent/mobileqq/msf/core/c/k:Y	Lcom/tencent/mobileqq/msf/core/c/k$c;
+    //   177: getstatic 998	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   180: getfield 756	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   183: getfield 762	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
     //   186: invokestatic 533	java/lang/System:currentTimeMillis	()J
-    //   189: putfield 769	com/tencent/mobileqq/msf/core/c/k$c:g	J
+    //   189: putfield 770	com/tencent/mobileqq/msf/core/c/j$c:g	J
     //   192: ldc 179
     //   194: iconst_1
     //   195: iconst_2
     //   196: anewarray 4	java/lang/Object
     //   199: dup
     //   200: iconst_0
-    //   201: ldc_w 998
+    //   201: ldc_w 1000
     //   204: aastore
     //   205: dup
     //   206: iconst_1
     //   207: invokestatic 533	java/lang/System:currentTimeMillis	()J
     //   210: invokestatic 269	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   213: aastore
-    //   214: invokestatic 860	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   214: invokestatic 862	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   217: aload_0
     //   218: getfield 245	com/tencent/mobileqq/msf/core/net/m:y	Lcom/tencent/qphone/base/remote/ToServiceMsg;
     //   221: ifnull +22 -> 243
@@ -2943,10 +2942,10 @@ public class m
     //   228: pop
     //   229: aload_0
     //   230: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   233: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
+    //   233: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
     //   236: aload_0
     //   237: getfield 504	com/tencent/mobileqq/msf/core/net/m:F	Ljava/lang/Runnable;
-    //   240: invokevirtual 507	com/tencent/mobileqq/msf/core/aj:a	(Ljava/lang/Runnable;)V
+    //   240: invokevirtual 507	com/tencent/mobileqq/msf/core/ac:a	(Ljava/lang/Runnable;)V
     //   243: aload_0
     //   244: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
     //   247: ifnonnull +61 -> 308
@@ -2955,7 +2954,7 @@ public class m
     //   253: new 181	java/lang/StringBuilder
     //   256: dup
     //   257: invokespecial 182	java/lang/StringBuilder:<init>	()V
-    //   260: ldc_w 1000
+    //   260: ldc_w 1002
     //   263: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   266: aload_1
     //   267: invokevirtual 697	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -2963,56 +2962,56 @@ public class m
     //   273: invokestatic 213	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   276: return
     //   277: astore 6
-    //   279: ldc2_w 957
-    //   282: putstatic 982	com/tencent/mobileqq/msf/core/push/e:c	J
+    //   279: ldc2_w 959
+    //   282: putstatic 984	com/tencent/mobileqq/msf/core/push/e:c	J
     //   285: ldc 179
     //   287: iconst_1
-    //   288: ldc_w 1002
-    //   291: invokestatic 962	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   288: ldc_w 1004
+    //   291: invokestatic 964	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   294: iconst_0
-    //   295: putstatic 980	com/tencent/mobileqq/msf/core/push/e:e	Z
+    //   295: putstatic 982	com/tencent/mobileqq/msf/core/push/e:e	Z
     //   298: goto -225 -> 73
     //   301: astore_1
     //   302: iconst_0
-    //   303: putstatic 980	com/tencent/mobileqq/msf/core/push/e:e	Z
+    //   303: putstatic 982	com/tencent/mobileqq/msf/core/push/e:e	Z
     //   306: aload_1
     //   307: athrow
-    //   308: invokestatic 1005	com/tencent/mobileqq/msf/core/a/a:aI	()Z
+    //   308: invokestatic 1007	com/tencent/mobileqq/msf/core/a/a:aI	()Z
     //   311: ifeq +550 -> 861
-    //   314: getstatic 418	com/tencent/mobileqq/msf/core/aj:s	Z
+    //   314: getstatic 418	com/tencent/mobileqq/msf/core/ac:s	Z
     //   317: ifeq +49 -> 366
     //   320: invokestatic 422	com/tencent/mobileqq/msf/core/net/a/f:a	()Z
     //   323: ifeq +43 -> 366
     //   326: ldc 179
     //   328: iconst_1
-    //   329: ldc_w 1007
+    //   329: ldc_w 1009
     //   332: invokestatic 213	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   335: aload_0
     //   336: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   339: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   342: getfield 427	com/tencent/mobileqq/msf/core/aj:I	Lcom/tencent/mobileqq/msf/core/net/a/f;
+    //   339: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   342: getfield 427	com/tencent/mobileqq/msf/core/ac:I	Lcom/tencent/mobileqq/msf/core/net/a/f;
     //   345: ifnull +21 -> 366
     //   348: aload_0
     //   349: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   352: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   355: getfield 427	com/tencent/mobileqq/msf/core/aj:I	Lcom/tencent/mobileqq/msf/core/net/a/f;
+    //   352: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   355: getfield 427	com/tencent/mobileqq/msf/core/ac:I	Lcom/tencent/mobileqq/msf/core/net/a/f;
     //   358: invokevirtual 430	com/tencent/mobileqq/msf/core/net/a/f:b	()Lcom/tencent/mobileqq/msf/core/net/a/e;
-    //   361: invokeinterface 1008 1 0
+    //   361: invokeinterface 1010 1 0
     //   366: iconst_1
     //   367: istore_3
-    //   368: invokestatic 1009	com/tencent/mobileqq/a/a/f:a	()V
+    //   368: invokestatic 1011	com/tencent/mobileqq/a/a/f:a	()V
     //   371: invokestatic 298	com/tencent/mobileqq/a/a/a:a	()Lcom/tencent/mobileqq/a/a/a;
     //   374: aload_1
-    //   375: invokevirtual 1011	com/tencent/mobileqq/a/a/a:a	(Lcom/tencent/qphone/base/a;)V
-    //   378: invokestatic 1016	com/tencent/mobileqq/a/a/a$b:a	()Lcom/tencent/mobileqq/a/a/a$b;
+    //   375: invokevirtual 1013	com/tencent/mobileqq/a/a/a:a	(Lcom/tencent/qphone/base/a;)V
+    //   378: invokestatic 1018	com/tencent/mobileqq/a/a/a$b:a	()Lcom/tencent/mobileqq/a/a/a$b;
     //   381: aload_1
-    //   382: invokevirtual 1017	com/tencent/mobileqq/a/a/a$b:a	(Lcom/tencent/qphone/base/a;)V
-    //   385: invokestatic 1020	com/tencent/mobileqq/msf/core/a/a:aH	()Z
+    //   382: invokevirtual 1019	com/tencent/mobileqq/a/a/a$b:a	(Lcom/tencent/qphone/base/a;)V
+    //   385: invokestatic 1022	com/tencent/mobileqq/msf/core/a/a:aH	()Z
     //   388: ifeq +6 -> 394
-    //   391: invokestatic 1023	com/tencent/mobileqq/a/a/d:a	()V
+    //   391: invokestatic 1025	com/tencent/mobileqq/a/a/d:a	()V
     //   394: aload_0
     //   395: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
-    //   398: invokevirtual 1024	com/tencent/mobileqq/msf/core/net/h:toString	()Ljava/lang/String;
+    //   398: invokevirtual 1026	com/tencent/mobileqq/msf/core/net/h:toString	()Ljava/lang/String;
     //   401: astore 6
     //   403: aload_0
     //   404: getfield 128	com/tencent/mobileqq/msf/core/net/m:E	Ljava/util/concurrent/locks/ReentrantLock;
@@ -3025,12 +3024,12 @@ public class m
     //   421: aload_0
     //   422: getfield 95	com/tencent/mobileqq/msf/core/net/m:s	Ljava/util/concurrent/atomic/AtomicInteger;
     //   425: iconst_0
-    //   426: invokevirtual 742	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   426: invokevirtual 743	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   429: aload_0
     //   430: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   433: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
+    //   433: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
     //   436: aconst_null
-    //   437: invokevirtual 804	com/tencent/mobileqq/msf/core/aj:a	([B)V
+    //   437: invokevirtual 805	com/tencent/mobileqq/msf/core/ac:a	([B)V
     //   440: aload_0
     //   441: getfield 100	com/tencent/mobileqq/msf/core/net/m:v	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   444: invokevirtual 342	java/util/concurrent/atomic/AtomicBoolean:get	()Z
@@ -3040,17 +3039,17 @@ public class m
     //   452: ifnull +14 -> 466
     //   455: aload_0
     //   456: getfield 78	com/tencent/mobileqq/msf/core/net/m:j	Lcom/tencent/mobileqq/msf/core/net/m$a;
-    //   459: getfield 1026	com/tencent/mobileqq/msf/core/net/m$a:a	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   459: getfield 1028	com/tencent/mobileqq/msf/core/net/m$a:a	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   462: iconst_0
     //   463: invokevirtual 497	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   466: aload_0
     //   467: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
-    //   470: invokevirtual 1030	com/tencent/mobileqq/msf/core/net/h:getInputStream	()Ljava/io/InputStream;
+    //   470: invokevirtual 1032	com/tencent/mobileqq/msf/core/net/h:getInputStream	()Ljava/io/InputStream;
     //   473: ifnull +13 -> 486
     //   476: aload_0
     //   477: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
-    //   480: invokevirtual 1030	com/tencent/mobileqq/msf/core/net/h:getInputStream	()Ljava/io/InputStream;
-    //   483: invokevirtual 1035	java/io/InputStream:close	()V
+    //   480: invokevirtual 1032	com/tencent/mobileqq/msf/core/net/h:getInputStream	()Ljava/io/InputStream;
+    //   483: invokevirtual 1037	java/io/InputStream:close	()V
     //   486: aload_0
     //   487: getfield 76	com/tencent/mobileqq/msf/core/net/m:h	Ljava/io/OutputStream;
     //   490: astore 7
@@ -3060,11 +3059,11 @@ public class m
     //   500: aload_0
     //   501: getfield 76	com/tencent/mobileqq/msf/core/net/m:h	Ljava/io/OutputStream;
     //   504: invokevirtual 649	java/lang/Object:toString	()Ljava/lang/String;
-    //   507: invokevirtual 1037	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   507: invokevirtual 1039	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
     //   510: pop
     //   511: aload_0
     //   512: getfield 76	com/tencent/mobileqq/msf/core/net/m:h	Ljava/io/OutputStream;
-    //   515: invokevirtual 1038	java/io/OutputStream:close	()V
+    //   515: invokevirtual 1040	java/io/OutputStream:close	()V
     //   518: aload_0
     //   519: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
     //   522: astore 7
@@ -3072,15 +3071,15 @@ public class m
     //   526: ifnull +30 -> 556
     //   529: aload_0
     //   530: getfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
-    //   533: invokevirtual 1039	com/tencent/mobileqq/msf/core/net/h:close	()V
+    //   533: invokevirtual 1041	com/tencent/mobileqq/msf/core/net/h:close	()V
     //   536: aload_1
-    //   537: invokestatic 1042	com/tencent/mobileqq/msf/core/ap:a	(Lcom/tencent/qphone/base/a;)V
+    //   537: invokestatic 1044	com/tencent/mobileqq/msf/core/ai:a	(Lcom/tencent/qphone/base/a;)V
     //   540: aload_0
     //   541: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   544: invokevirtual 1046	com/tencent/mobileqq/msf/core/MsfCore:getStandyModeManager	()Lcom/tencent/mobileqq/msf/core/d/a;
-    //   547: invokevirtual 1049	com/tencent/mobileqq/msf/core/d/a:f	()V
+    //   544: invokevirtual 1048	com/tencent/mobileqq/msf/core/MsfCore:getStandyModeManager	()Lcom/tencent/mobileqq/msf/core/d/a;
+    //   547: invokevirtual 1051	com/tencent/mobileqq/msf/core/d/a:f	()V
     //   550: getstatic 69	com/tencent/mobileqq/msf/core/net/m:q	Ljava/util/ArrayList;
-    //   553: invokevirtual 813	java/util/ArrayList:clear	()V
+    //   553: invokevirtual 814	java/util/ArrayList:clear	()V
     //   556: aload_0
     //   557: aconst_null
     //   558: putfield 410	com/tencent/mobileqq/msf/core/net/m:g	Lcom/tencent/mobileqq/msf/core/net/h;
@@ -3093,7 +3092,7 @@ public class m
     //   571: putfield 344	com/tencent/mobileqq/msf/core/net/m:i	Lcom/tencent/mobileqq/msf/core/net/d;
     //   574: aload_0
     //   575: getfield 128	com/tencent/mobileqq/msf/core/net/m:E	Ljava/util/concurrent/locks/ReentrantLock;
-    //   578: invokevirtual 774	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   578: invokevirtual 775	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   581: aload_0
     //   582: getfield 102	com/tencent/mobileqq/msf/core/net/m:w	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   585: invokevirtual 342	java/util/concurrent/atomic/AtomicBoolean:get	()Z
@@ -3115,48 +3114,48 @@ public class m
     //   616: putfield 106	com/tencent/mobileqq/msf/core/net/m:z	J
     //   619: aload_0
     //   620: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   623: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   626: invokevirtual 1051	com/tencent/mobileqq/msf/core/aj:e	()[B
-    //   629: invokestatic 1057	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   623: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   626: invokevirtual 1053	com/tencent/mobileqq/msf/core/ac:e	()[B
+    //   629: invokestatic 1059	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   632: astore 7
-    //   634: invokestatic 1060	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getCurrentAPN	()Ljava/lang/String;
+    //   634: invokestatic 1062	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getCurrentAPN	()Ljava/lang/String;
     //   637: astore 8
     //   639: aload_0
     //   640: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   643: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   646: getfield 632	com/tencent/mobileqq/msf/core/aj:b	Lcom/tencent/mobileqq/msf/core/net/n;
-    //   649: invokevirtual 1062	com/tencent/mobileqq/msf/core/net/n:g	()V
+    //   643: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   646: getfield 632	com/tencent/mobileqq/msf/core/ac:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   649: invokevirtual 1064	com/tencent/mobileqq/msf/core/net/n:g	()V
     //   652: aload_0
     //   653: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   656: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/aj;
-    //   659: getfield 632	com/tencent/mobileqq/msf/core/aj:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   656: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
+    //   659: getfield 632	com/tencent/mobileqq/msf/core/ac:b	Lcom/tencent/mobileqq/msf/core/net/n;
     //   662: lconst_0
-    //   663: putfield 1064	com/tencent/mobileqq/msf/core/net/n:m	J
+    //   663: putfield 1066	com/tencent/mobileqq/msf/core/net/n:m	J
     //   666: aload_0
     //   667: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   670: invokevirtual 751	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/k;
+    //   670: invokevirtual 752	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
     //   673: ifnull +48 -> 721
     //   676: aload_0
     //   677: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   680: invokevirtual 751	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/k;
+    //   680: invokevirtual 752	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
     //   683: iconst_0
     //   684: lload 4
-    //   686: ldc2_w 1065
+    //   686: ldc2_w 1067
     //   689: ldiv
     //   690: aload_0
     //   691: getfield 349	com/tencent/mobileqq/msf/core/net/m:d	Lcom/tencent/mobileqq/msf/core/d;
     //   694: aload_1
-    //   695: getstatic 710	com/tencent/mobileqq/msf/core/aj:H	I
+    //   695: getstatic 710	com/tencent/mobileqq/msf/core/ac:H	I
     //   698: lload 4
     //   700: aload_0
     //   701: getfield 121	com/tencent/mobileqq/msf/core/net/m:C	Ljava/util/concurrent/atomic/AtomicLong;
-    //   704: invokevirtual 1068	java/util/concurrent/atomic/AtomicLong:get	()J
+    //   704: invokevirtual 1070	java/util/concurrent/atomic/AtomicLong:get	()J
     //   707: aload_0
     //   708: getfield 123	com/tencent/mobileqq/msf/core/net/m:D	Ljava/util/concurrent/atomic/AtomicLong;
-    //   711: invokevirtual 1068	java/util/concurrent/atomic/AtomicLong:get	()J
+    //   711: invokevirtual 1070	java/util/concurrent/atomic/AtomicLong:get	()J
     //   714: aload 7
     //   716: aload 8
-    //   718: invokevirtual 1071	com/tencent/mobileqq/msf/core/c/k:a	(ZJLcom/tencent/mobileqq/msf/core/d;Lcom/tencent/qphone/base/a;IJJJLjava/lang/String;Ljava/lang/String;)V
+    //   718: invokevirtual 1073	com/tencent/mobileqq/msf/core/c/j:a	(ZJLcom/tencent/mobileqq/msf/core/d;Lcom/tencent/qphone/base/a;IJJJLjava/lang/String;Ljava/lang/String;)V
     //   721: invokestatic 442	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   724: ifeq +275 -> 999
     //   727: ldc 179
@@ -3164,11 +3163,11 @@ public class m
     //   730: new 181	java/lang/StringBuilder
     //   733: dup
     //   734: invokespecial 182	java/lang/StringBuilder:<init>	()V
-    //   737: ldc_w 1073
+    //   737: ldc_w 1075
     //   740: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   743: aload 6
     //   745: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   748: ldc_w 1075
+    //   748: ldc_w 1077
     //   751: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   754: aload_1
     //   755: invokevirtual 697	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -3180,25 +3179,25 @@ public class m
     //   771: aload_0
     //   772: getfield 349	com/tencent/mobileqq/msf/core/net/m:d	Lcom/tencent/mobileqq/msf/core/d;
     //   775: aload_1
-    //   776: invokevirtual 1078	com/tencent/mobileqq/msf/core/d:a	(Lcom/tencent/qphone/base/a;)Z
+    //   776: invokevirtual 1080	com/tencent/mobileqq/msf/core/d:a	(Lcom/tencent/qphone/base/a;)Z
     //   779: ifeq +17 -> 796
     //   782: aload_0
     //   783: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   786: invokevirtual 1082	com/tencent/mobileqq/msf/core/MsfCore:getSsoListManager	()Lcom/tencent/mobileqq/msf/core/a/c;
+    //   786: invokevirtual 1084	com/tencent/mobileqq/msf/core/MsfCore:getSsoListManager	()Lcom/tencent/mobileqq/msf/core/a/c;
     //   789: aload_0
     //   790: getfield 349	com/tencent/mobileqq/msf/core/net/m:d	Lcom/tencent/mobileqq/msf/core/d;
-    //   793: invokevirtual 1087	com/tencent/mobileqq/msf/core/a/c:a	(Lcom/tencent/mobileqq/msf/core/d;)V
-    //   796: ldc_w 738
-    //   799: putstatic 690	com/tencent/mobileqq/msf/core/aj:E	Ljava/lang/String;
+    //   793: invokevirtual 1089	com/tencent/mobileqq/msf/core/a/c:a	(Lcom/tencent/mobileqq/msf/core/d;)V
+    //   796: ldc_w 739
+    //   799: putstatic 690	com/tencent/mobileqq/msf/core/ac:E	Ljava/lang/String;
     //   802: ldc 142
-    //   804: putstatic 704	com/tencent/mobileqq/msf/core/aj:F	Ljava/lang/String;
+    //   804: putstatic 704	com/tencent/mobileqq/msf/core/ac:F	Ljava/lang/String;
     //   807: aload_0
     //   808: aconst_null
     //   809: putfield 349	com/tencent/mobileqq/msf/core/net/m:d	Lcom/tencent/mobileqq/msf/core/d;
     //   812: aload_0
     //   813: getfield 130	com/tencent/mobileqq/msf/core/net/m:r	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   816: aconst_null
-    //   817: putfield 816	com/tencent/mobileqq/msf/core/MsfCore:nowSocketConnAdd	Ljava/lang/String;
+    //   817: putfield 817	com/tencent/mobileqq/msf/core/MsfCore:nowSocketConnAdd	Ljava/lang/String;
     //   820: aload_0
     //   821: getfield 121	com/tencent/mobileqq/msf/core/net/m:C	Ljava/util/concurrent/atomic/AtomicLong;
     //   824: lconst_0
@@ -3207,23 +3206,23 @@ public class m
     //   829: getfield 123	com/tencent/mobileqq/msf/core/net/m:D	Ljava/util/concurrent/atomic/AtomicLong;
     //   832: lconst_0
     //   833: invokevirtual 644	java/util/concurrent/atomic/AtomicLong:set	(J)V
-    //   836: invokestatic 1092	com/tencent/qphone/base/util/CodecWarpper:nativeOnConnClose	()V
+    //   836: invokestatic 1094	com/tencent/qphone/base/util/CodecWarpper:nativeOnConnClose	()V
     //   839: aload_1
-    //   840: invokestatic 1095	com/tencent/mobileqq/msf/core/NetConnInfoCenter:onConnClosed	(Lcom/tencent/qphone/base/a;)V
+    //   840: invokestatic 1097	com/tencent/mobileqq/msf/core/NetConnInfoCenter:onConnClosed	(Lcom/tencent/qphone/base/a;)V
     //   843: return
     //   844: astore 6
-    //   846: getstatic 1099	com/tencent/mobileqq/msf/core/net/a/a:a	Ljava/lang/String;
+    //   846: getstatic 1101	com/tencent/mobileqq/msf/core/net/a/a:a	Ljava/lang/String;
     //   849: iconst_1
-    //   850: ldc_w 1101
+    //   850: ldc_w 1103
     //   853: aload 6
     //   855: invokestatic 308	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   858: goto -492 -> 366
     //   861: iconst_0
-    //   862: putstatic 418	com/tencent/mobileqq/msf/core/aj:s	Z
+    //   862: putstatic 418	com/tencent/mobileqq/msf/core/ac:s	Z
     //   865: goto -499 -> 366
     //   868: astore 7
     //   870: aload 7
-    //   872: invokevirtual 1102	java/lang/Throwable:printStackTrace	()V
+    //   872: invokevirtual 1104	java/lang/Throwable:printStackTrace	()V
     //   875: goto -325 -> 550
     //   878: astore 7
     //   880: goto -324 -> 556
@@ -3232,7 +3231,7 @@ public class m
     //   886: istore_2
     //   887: aload_0
     //   888: getfield 128	com/tencent/mobileqq/msf/core/net/m:E	Ljava/util/concurrent/locks/ReentrantLock;
-    //   891: invokevirtual 774	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   891: invokevirtual 775	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   894: aload 7
     //   896: athrow
     //   897: astore 7
@@ -3241,7 +3240,7 @@ public class m
     //   902: new 181	java/lang/StringBuilder
     //   905: dup
     //   906: invokespecial 182	java/lang/StringBuilder:<init>	()V
-    //   909: ldc_w 1104
+    //   909: ldc_w 1106
     //   912: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   915: aload 7
     //   917: invokevirtual 697	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -3254,12 +3253,12 @@ public class m
     //   935: ifnull +14 -> 949
     //   938: aload_0
     //   939: getfield 78	com/tencent/mobileqq/msf/core/net/m:j	Lcom/tencent/mobileqq/msf/core/net/m$a;
-    //   942: getfield 1026	com/tencent/mobileqq/msf/core/net/m$a:a	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   942: getfield 1028	com/tencent/mobileqq/msf/core/net/m$a:a	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   945: iconst_0
     //   946: invokevirtual 497	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   949: ldc 179
     //   951: iconst_1
-    //   952: ldc_w 1106
+    //   952: ldc_w 1108
     //   955: invokestatic 213	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   958: aload_0
     //   959: getfield 102	com/tencent/mobileqq/msf/core/net/m:w	Ljava/util/concurrent/atomic/AtomicBoolean;
@@ -3270,11 +3269,11 @@ public class m
     //   968: aload_0
     //   969: getfield 95	com/tencent/mobileqq/msf/core/net/m:s	Ljava/util/concurrent/atomic/AtomicInteger;
     //   972: iconst_1
-    //   973: invokevirtual 1109	java/util/concurrent/atomic/AtomicInteger:addAndGet	(I)I
+    //   973: invokevirtual 1111	java/util/concurrent/atomic/AtomicInteger:addAndGet	(I)I
     //   976: bipush 10
     //   978: if_icmpne -397 -> 581
-    //   981: invokestatic 1114	android/os/Process:myPid	()I
-    //   984: invokestatic 1117	android/os/Process:killProcess	(I)V
+    //   981: invokestatic 1116	android/os/Process:myPid	()I
+    //   984: invokestatic 1119	android/os/Process:killProcess	(I)V
     //   987: iload_3
     //   988: istore_2
     //   989: goto -408 -> 581
@@ -3287,12 +3286,12 @@ public class m
     //   1002: new 181	java/lang/StringBuilder
     //   1005: dup
     //   1006: invokespecial 182	java/lang/StringBuilder:<init>	()V
-    //   1009: ldc_w 1073
+    //   1009: ldc_w 1075
     //   1012: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1015: aload 6
-    //   1017: invokestatic 486	com/tencent/mobileqq/msf/core/b/c:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1017: invokestatic 486	com/tencent/mobileqq/msf/core/b/a:a	(Ljava/lang/String;)Ljava/lang/String;
     //   1020: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1023: ldc_w 1075
+    //   1023: ldc_w 1077
     //   1026: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1029: aload_1
     //   1030: invokevirtual 697	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -3309,7 +3308,7 @@ public class m
     //   1057: new 181	java/lang/StringBuilder
     //   1060: dup
     //   1061: invokespecial 182	java/lang/StringBuilder:<init>	()V
-    //   1064: ldc_w 1119
+    //   1064: ldc_w 1121
     //   1067: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1070: aload 6
     //   1072: invokevirtual 697	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;

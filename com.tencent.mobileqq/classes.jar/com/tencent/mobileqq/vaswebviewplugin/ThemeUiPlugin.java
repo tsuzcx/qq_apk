@@ -2,13 +2,12 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.content.Intent;
 import android.os.Handler;
-import anvx;
-import bhxo;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
@@ -27,10 +26,15 @@ public class ThemeUiPlugin
   public static final String REPORT_THEME_DOWNLOAD_TAG = "report_theme_file_download";
   static final int REPORT_THEME_INFO = 1;
   private static final String TAG = "ThemeUiPlugin";
-  public static String initCurrThemeNameForReport;
-  public static int initDownloadedThemeNumForReport;
-  public static Handler reportHandler;
-  public static int reportTimes;
+  static String initCurrThemeNameForReport;
+  static int initDownloadedThemeNumForReport = 0;
+  static Handler reportHandler;
+  static int reportTimes = 0;
+  
+  static
+  {
+    reportHandler = null;
+  }
   
   public static void destroy(QQAppInterface paramQQAppInterface)
   {
@@ -55,7 +59,7 @@ public class ThemeUiPlugin
   {
     reportTimes = 0;
     if (reportHandler == null) {
-      reportHandler = new bhxo(BaseApplication.getContext().getMainLooper());
+      reportHandler = new ThemeUiPlugin.ReportThemeInfoHandler(BaseApplication.getContext().getMainLooper());
     }
     reportHandler.removeMessages(1);
     initDownloadedThemeNumForReport = 0;
@@ -65,12 +69,17 @@ public class ThemeUiPlugin
   
   void OnActivityResume()
   {
-    this.activity.setTitle(anvx.a(2131714306));
+    this.activity.setTitle(HardCodeUtil.a(2131714801));
   }
   
   protected long getPluginBusiness()
   {
     return 32L;
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 3L;
   }
   
   public boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -108,7 +117,7 @@ public class ThemeUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.mobileqq.mini.entry.desktop;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
 class MiniAppDesktopAdapter$ModuleViewHolder$1
@@ -13,17 +12,16 @@ class MiniAppDesktopAdapter$ModuleViewHolder$1
   
   public void onClick(View paramView)
   {
-    Activity localActivity = (Activity)MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0).get();
-    if ((localActivity != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0) != null)) {
+    paramView = (Activity)MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0).get();
+    if ((paramView != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0) != null)) {
       if (this.val$moduleType != 1) {
-        break label60;
+        break label53;
       }
     }
-    label60:
+    label53:
     for (int i = 3005;; i = 3004)
     {
-      MiniAppDesktopAdapter.startMiniApp(localActivity, MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0), i);
-      EventCollector.getInstance().onViewClicked(paramView);
+      MiniAppDesktopAdapter.startMiniApp(paramView, MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0), i);
       return;
     }
   }

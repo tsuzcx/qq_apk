@@ -7,26 +7,21 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import androidx.core.util.Pools.Pool;
 import androidx.core.util.Pools.SimplePool;
-import avdd;
-import avde;
-import avdf;
-import avdg;
-import avdi;
 import java.util.LinkedList;
 import java.util.List;
 
 public class DanmakuLayout
   extends ViewGroup
-  implements avdd
+  implements DanmakuHost
 {
   private float jdField_a_of_type_Float = 50.0F;
   private int jdField_a_of_type_Int = 9;
   private long jdField_a_of_type_Long;
-  private Pools.Pool<avdg> jdField_a_of_type_AndroidxCoreUtilPools$Pool = new Pools.SimplePool(20);
-  private avdf jdField_a_of_type_Avdf;
+  private Pools.Pool<DanmakuLayout.DrawItem> jdField_a_of_type_AndroidxCoreUtilPools$Pool = new Pools.SimplePool(20);
+  private DanmakuHost.TimeSupplier jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$TimeSupplier;
   private Runnable jdField_a_of_type_JavaLangRunnable = new DanmakuLayout.1(this);
-  private List<avde> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private avdi[] jdField_a_of_type_ArrayOfAvdi;
+  private List<DanmakuHost.Item> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private DanmakuLayout.Track[] jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track;
   private int b;
   private int c;
   
@@ -45,13 +40,13 @@ public class DanmakuLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private avdg a()
+  private DanmakuLayout.DrawItem a()
   {
-    avdg localavdg = (avdg)this.jdField_a_of_type_AndroidxCoreUtilPools$Pool.acquire();
-    if (localavdg != null) {
-      return localavdg;
+    DanmakuLayout.DrawItem localDrawItem = (DanmakuLayout.DrawItem)this.jdField_a_of_type_AndroidxCoreUtilPools$Pool.acquire();
+    if (localDrawItem != null) {
+      return localDrawItem;
     }
-    return new avdg(this, null);
+    return new DanmakuLayout.DrawItem(this, null);
   }
   
   private void a(long paramLong)
@@ -63,7 +58,7 @@ public class DanmakuLayout
   
   private boolean a()
   {
-    return this.jdField_a_of_type_ArrayOfAvdi != null;
+    return this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track != null;
   }
   
   private boolean b()
@@ -71,14 +66,14 @@ public class DanmakuLayout
     int i = 0;
     long l = SystemClock.uptimeMillis();
     boolean bool2;
-    for (boolean bool1 = false; i < this.jdField_a_of_type_ArrayOfAvdi.length; bool1 = bool2)
+    for (boolean bool1 = false; i < this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track.length; bool1 = bool2)
     {
-      avdi localavdi = this.jdField_a_of_type_ArrayOfAvdi[i];
+      DanmakuLayout.Track localTrack = this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track[i];
       bool2 = bool1;
-      if (localavdi.a())
+      if (localTrack.a())
       {
-        this.jdField_a_of_type_ArrayOfAvdi[i].a(l);
-        bool2 = bool1 | localavdi.a();
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track[i].a(l);
+        bool2 = bool1 | localTrack.a();
       }
       i += 1;
     }
@@ -89,19 +84,19 @@ public class DanmakuLayout
   {
     b();
     this.c = (getWidth() - getPaddingLeft() - getPaddingRight());
-    avdg localavdg = a();
-    localavdg.a(new avde("", 0.0D));
-    avdg.a(localavdg);
-    this.b = localavdg.c;
-    localavdg.a();
-    this.jdField_a_of_type_ArrayOfAvdi = new avdi[(getHeight() - getPaddingTop() - getPaddingBottom()) / (this.b + this.jdField_a_of_type_Int)];
+    DanmakuLayout.DrawItem localDrawItem = a();
+    localDrawItem.a(new DanmakuHost.Item("", 0.0D));
+    DanmakuLayout.DrawItem.a(localDrawItem);
+    this.b = localDrawItem.c;
+    localDrawItem.a();
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track = new DanmakuLayout.Track[(getHeight() - getPaddingTop() - getPaddingBottom()) / (this.b + this.jdField_a_of_type_Int)];
     int j = getPaddingTop();
     int k = getPaddingLeft();
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfAvdi.length)
+    while (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track.length)
     {
-      this.jdField_a_of_type_ArrayOfAvdi[i] = new avdi(this);
-      this.jdField_a_of_type_ArrayOfAvdi[i].a(k, j, getWidth() - getPaddingRight(), this.b + j);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track[i] = new DanmakuLayout.Track(this);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track[i].a(k, j, getWidth() - getPaddingRight(), this.b + j);
       j += this.b + this.jdField_a_of_type_Int;
       i += 1;
     }
@@ -115,7 +110,7 @@ public class DanmakuLayout
     this.jdField_a_of_type_JavaUtilList.clear();
   }
   
-  public void a(avde... paramVarArgs)
+  public void a(DanmakuHost.Item... paramVarArgs)
   {
     if (paramVarArgs == null) {
       return;
@@ -123,13 +118,13 @@ public class DanmakuLayout
     int i = 0;
     if (i < paramVarArgs.length)
     {
-      avde localavde = paramVarArgs[i];
+      DanmakuHost.Item localItem = paramVarArgs[i];
       int j = 0;
       for (;;)
       {
-        if ((j >= this.jdField_a_of_type_JavaUtilList.size()) || (localavde.jdField_a_of_type_Long < ((avde)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_a_of_type_Long))
+        if ((j >= this.jdField_a_of_type_JavaUtilList.size()) || (localItem.jdField_a_of_type_Long < ((DanmakuHost.Item)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_a_of_type_Long))
         {
-          this.jdField_a_of_type_JavaUtilList.add(j, localavde);
+          this.jdField_a_of_type_JavaUtilList.add(j, localItem);
           i += 1;
           break;
         }
@@ -145,9 +140,9 @@ public class DanmakuLayout
     if (a())
     {
       boolean bool = false;
-      while (i < this.jdField_a_of_type_ArrayOfAvdi.length)
+      while (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track.length)
       {
-        bool |= this.jdField_a_of_type_ArrayOfAvdi[i].b();
+        bool |= this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track[i].b();
         i += 1;
       }
       if (bool) {
@@ -156,7 +151,7 @@ public class DanmakuLayout
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     if (!a()) {}
     boolean bool;
@@ -169,15 +164,15 @@ public class DanmakuLayout
     invalidate();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     c();
   }
@@ -239,18 +234,18 @@ public class DanmakuLayout
     }
   }
   
-  public void setTimeSupplier(avdf paramavdf, long paramLong)
+  public void setTimeSupplier(DanmakuHost.TimeSupplier paramTimeSupplier, long paramLong)
   {
-    if (paramavdf == null) {
+    if (paramTimeSupplier == null) {
       throw new NullPointerException("timeSupplier must not be null");
     }
-    this.jdField_a_of_type_Avdf = paramavdf;
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$TimeSupplier = paramTimeSupplier;
     this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.media.DanmakuLayout
  * JD-Core Version:    0.7.0.1
  */

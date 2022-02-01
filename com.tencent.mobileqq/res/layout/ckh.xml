@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/g_n" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:clickable="false" android:layout_width="fill_parent" android:layout_height="56.0dip" android:minHeight="56.0dip"
+<LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ibt" android:background="#00000000" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/nxy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/n1t" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/g7q" android:layout_toRightOf="@id/nxy" android:layout_centerVertical="true" />
-    <com.tencent.qqmini.sdk.launcher.widget.Switch android:id="@id/nsx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <View android:id="@id/kw9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:background="#ffffffff" android:paddingTop="2.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <EditText android:textSize="18.0dip" android:textColor="#ff000000" android:textColorHint="#ffbbbbbb" android:layout_gravity="center" android:id="@id/byp" android:background="@drawable/dhm" android:paddingLeft="4.0dip" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="50.0dip" android:cursorVisible="true" android:maxLines="5" android:singleLine="true" android:layout_weight="1.0" android:imeOptions="actionNone" />
+        <View android:id="@id/nfz" android:background="@drawable/d0e" android:layout_width="1.0dip" android:layout_height="50.0dip" android:layout_marginTop="1.0dip" />
+        <Button android:textSize="18.0dip" android:textColor="#ff4c9afa" android:gravity="center" android:layout_gravity="center|right" android:id="@id/mni" android:background="@drawable/dhn" android:visibility="visible" android:layout_width="64.0dip" android:layout_height="50.0dip" android:text="发送" />
+    </LinearLayout>
+</LinearLayout>

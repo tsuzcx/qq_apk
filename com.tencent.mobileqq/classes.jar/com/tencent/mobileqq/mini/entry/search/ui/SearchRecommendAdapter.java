@@ -15,7 +15,6 @@ import com.tencent.mobileqq.mini.entry.search.comm.TitleInfo;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager.HotSearchDataChangedListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.util.WeakReference;
@@ -51,28 +50,24 @@ public class SearchRecommendAdapter
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.appList.size() == 0) {
-      QLog.e("SearchRecommendAdapter", 1, "onBindViewHolder, size = " + this.appList.size());
-    }
-    for (;;)
+    if (this.appList.size() == 0)
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      QLog.e("SearchRecommendAdapter", 1, "onBindViewHolder, size = " + this.appList.size());
       return;
-      switch (getItemViewType(paramInt))
-      {
-      default: 
-        break;
-      case 1: 
-        ((SearchRecommendAdapter.TitleViewHolder)paramViewHolder).update((TitleInfo)this.appList.get(paramInt));
-        break;
-      case 2: 
-      case 4: 
-        ((SearchRecommendAdapter.PlayingViewHolder)paramViewHolder).update((SearchInfo)this.appList.get(paramInt), (Activity)this.mActivityReference.get(), this.mRefer);
-        break;
-      case 3: 
-        ((SearchRecommendAdapter.LiveViewHolder)paramViewHolder).update((LiveInfo)this.appList.get(paramInt), this.mRefer);
-      }
     }
+    switch (getItemViewType(paramInt))
+    {
+    default: 
+      return;
+    case 1: 
+      ((SearchRecommendAdapter.TitleViewHolder)paramViewHolder).update((TitleInfo)this.appList.get(paramInt));
+      return;
+    case 2: 
+    case 4: 
+      ((SearchRecommendAdapter.PlayingViewHolder)paramViewHolder).update((SearchInfo)this.appList.get(paramInt), (Activity)this.mActivityReference.get(), this.mRefer);
+      return;
+    }
+    ((SearchRecommendAdapter.LiveViewHolder)paramViewHolder).update((LiveInfo)this.appList.get(paramInt), this.mRefer);
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -82,12 +77,12 @@ public class SearchRecommendAdapter
     default: 
       return null;
     case 1: 
-      return new SearchRecommendAdapter.TitleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559453, paramViewGroup, false));
+      return new SearchRecommendAdapter.TitleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559520, paramViewGroup, false));
     case 2: 
     case 4: 
-      return new SearchRecommendAdapter.PlayingViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559451, paramViewGroup, false));
+      return new SearchRecommendAdapter.PlayingViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559518, paramViewGroup, false));
     }
-    return new SearchRecommendAdapter.LiveViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559450, paramViewGroup, false));
+    return new SearchRecommendAdapter.LiveViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559517, paramViewGroup, false));
   }
   
   public void onHotSearchDataChanged()

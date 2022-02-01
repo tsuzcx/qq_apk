@@ -13,7 +13,7 @@ class GameActivity1$6
     Bundle localBundle = new Bundle();
     localBundle.putString("param_proc_name", BaseApplicationImpl.getApplication().getQQProcessName());
     localBundle.putString("param_proc_modulename", "mini_sdk_client_module");
-    GameActivity1.access$200(this.this$0, localBundle);
+    GameActivity1.access$300(this.this$0, localBundle);
   }
 }
 

@@ -1,35 +1,36 @@
 package com.tencent.mobileqq.activity;
 
-import adgo;
-import bhdj;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class AddFriendVerifyActivity$30
-  implements Runnable
+class AddFriendVerifyActivity$30
+  implements View.OnClickListener
 {
-  AddFriendVerifyActivity$30(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  AddFriendVerifyActivity$30(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.this$0.a != null) {
-      if (!this.this$0.a.isShowing()) {
-        this.this$0.a.show();
-      }
-    }
-    do
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getWindow() != null)) {}
+    try
     {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.dismiss();
+      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, -1, this.jdField_a_of_type_JavaLangString);
+      label58:
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a = null;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.this$0.a = bhdj.a(this.this$0, 230);
-      this.this$0.a.setMessage(2131719600);
-      adgo localadgo = new adgo(this);
-      this.this$0.a.setPositiveButton(2131691037, localadgo);
-    } while (this.this$0.a.isShowing());
-    this.this$0.a.show();
+    }
+    catch (Throwable localThrowable)
+    {
+      break label58;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.30
  * JD-Core Version:    0.7.0.1
  */

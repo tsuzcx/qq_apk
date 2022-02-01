@@ -1,0 +1,42 @@
+package com.tencent.mobileqq.activity.aio.core;
+
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
+
+class DiscussChatPie$4
+  extends BizTroopObserver
+{
+  DiscussChatPie$4(DiscussChatPie paramDiscussChatPie) {}
+  
+  public void onTransferDiscussionToGroup(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
+  {
+    if (paramBoolean)
+    {
+      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
+        DiscussChatPie.a(this.a);
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (paramBoolean1.booleanValue());
+        paramString1 = BaseActivity.sTopActivity;
+      } while (paramString1 == null);
+      DialogUtil.a(paramString1, 230, paramString1.getString(2131689988), null, null, paramString1.getString(2131719347), new DiscussChatPie.4.1(this, paramString1), null).show();
+      return;
+    }
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.aio.core.DiscussChatPie.4
+ * JD-Core Version:    0.7.0.1
+ */

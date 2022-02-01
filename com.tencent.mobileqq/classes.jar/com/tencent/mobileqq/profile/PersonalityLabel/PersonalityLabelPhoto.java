@@ -5,24 +5,23 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import azqj;
-import bhbx;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.util.Utils;
 import java.io.Serializable;
 import tencent.im.label.comm.PersonalityTagComm.LabelPhoto;
 
 public class PersonalityLabelPhoto
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PersonalityLabelPhoto> CREATOR = new azqj();
+  public static final Parcelable.Creator<PersonalityLabelPhoto> CREATOR = new PersonalityLabelPhoto.1();
   public static final long ID_INVALID = -1L;
   public static final String TAG = "PersonalityLabelPhoto";
-  public long fileId = -1L;
-  public boolean local = false;
-  public String localThumbPath = "";
+  long fileId = -1L;
+  boolean local = false;
+  String localThumbPath = "";
   long praiseCount = 0L;
-  public long uniseq = 0L;
+  long uniseq = 0L;
   public String url = "";
   
   public PersonalityLabelPhoto()
@@ -34,7 +33,7 @@ public class PersonalityLabelPhoto
     this.uniseq = System.currentTimeMillis();
   }
   
-  public PersonalityLabelPhoto(Parcel paramParcel)
+  protected PersonalityLabelPhoto(Parcel paramParcel)
   {
     paramParcel.readInt();
     this.fileId = paramParcel.readLong();
@@ -79,7 +78,7 @@ public class PersonalityLabelPhoto
   
   public boolean equals(Object paramObject)
   {
-    return bhbx.a(((PersonalityLabelPhoto)paramObject).url, this.url);
+    return Utils.a(((PersonalityLabelPhoto)paramObject).url, this.url);
   }
   
   public String get128SizeUrl()
@@ -110,7 +109,7 @@ public class PersonalityLabelPhoto
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(PersonalityLabel.CURRENT_VERSION);
+    paramParcel.writeInt(ProfilePersonalityLabelInfo.CURRENT_VERSION);
     paramParcel.writeLong(this.fileId);
     paramParcel.writeString(this.url);
     paramParcel.writeLong(this.praiseCount);

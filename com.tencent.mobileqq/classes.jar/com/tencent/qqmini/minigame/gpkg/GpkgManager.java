@@ -6,6 +6,7 @@ import com.tencent.qqmini.sdk.core.manager.WxapkgUnpacker;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.FileUtils;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener.DownloadResult;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.FirstPageInfo;
@@ -152,12 +153,12 @@ public class GpkgManager
         if (((String)localObject1).toLowerCase().endsWith(".zip")) {}
         for (str2 = ".zip";; str2 = ".tqapkg")
         {
-          str2 = ApkgManager.getPkgRoot(paramMiniAppInfo) + paramMiniAppInfo.appId + '_' + paramMiniAppInfo.version + str2;
+          str2 = ApkgManager.getPkgRoot(paramMiniAppInfo) + paramMiniAppInfo.appId + '_' + paramMiniAppInfo.versionId + str2;
           QMLog.i("[minigame] GpkgManager", "[Gpkg]download gpkgUrl=" + (String)localObject1 + " ,subApkUrl=" + (String)localObject2 + " ,independentPath=" + str1 + " ,savePath=" + str2 + " ,fileSize=" + i);
           MiniReportManager.reportEventType(paramMiniAppInfo, 619, "1");
           localObject3 = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
           new HashMap(1).put("Connection", "keep-alive");
-          ((DownloaderProxy)localObject3).download((String)localObject1, null, str2, 60, new GpkgManager.4(paramMiniAppInfo, paramOnInitGpkgListener, l, str2, paramString, (String)localObject2, str1, i));
+          ((DownloaderProxy)localObject3).download((String)localObject1, null, str2, 60, getGpkgDownloadListener(paramMiniAppInfo, paramOnInitGpkgListener, paramString, l, str2, i, str1, (String)localObject2));
           return;
         }
         break label182;
@@ -171,6 +172,11 @@ public class GpkgManager
       localObject2 = null;
       localObject1 = null;
     }
+  }
+  
+  private static void downloadGpkgPlugin(MiniGamePluginInfo paramMiniGamePluginInfo, GpkgManager.DownloadPluginCallback paramDownloadPluginCallback, File paramFile1, File paramFile2)
+  {
+    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramMiniGamePluginInfo.url, null, paramFile2.getAbsolutePath(), 60, new GpkgManager.3(paramMiniGamePluginInfo, paramDownloadPluginCallback, paramFile2, paramFile1));
   }
   
   public static void downloadSubPack(MiniAppInfo paramMiniAppInfo, MiniGamePkg paramMiniGamePkg, String paramString, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener)
@@ -223,15 +229,25 @@ public class GpkgManager
       if (str1.toLowerCase().endsWith(".zip")) {}
       for (paramString = ".zip";; paramString = ".tqapkg")
       {
-        paramString = ApkgManager.getPkgRoot(paramMiniAppInfo) + paramMiniAppInfo.appId + '_' + paramMiniAppInfo.version + "_" + System.nanoTime() + paramString;
+        paramString = ApkgManager.getPkgRoot(paramMiniAppInfo) + paramMiniAppInfo.appId + '_' + paramMiniAppInfo.versionId + "_" + System.nanoTime() + paramString;
         MiniReportManager.reportEventType(paramMiniAppInfo, 613, "1");
         localObject = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
         new HashMap(1).put("Connection", "keep-alive");
-        ((DownloaderProxy)localObject).download(str1, null, paramString, 60, new GpkgManager.6(paramMiniAppInfo, paramOnInitGpkgListener, paramString, str2, paramMiniGamePkg, i));
+        downloadSubpackUrl(paramMiniGamePkg, paramOnInitGpkgListener, paramMiniAppInfo, str2, str1, i, paramString, (DownloaderProxy)localObject);
         return;
       }
     }
     paramOnInitGpkgListener.onInitGpkgInfo(2008, null, "sub pkg download url empty", null);
+  }
+  
+  private static void downloadSubpackUrl(MiniGamePkg paramMiniGamePkg, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener, MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, int paramInt, String paramString3, DownloaderProxy paramDownloaderProxy)
+  {
+    paramDownloaderProxy.download(paramString2, null, paramString3, 60, new GpkgManager.6(paramMiniAppInfo, paramOnInitGpkgListener, paramString3, paramString1, paramMiniGamePkg, paramInt));
+  }
+  
+  private static DownloaderProxy.DownloadListener getGpkgDownloadListener(MiniAppInfo paramMiniAppInfo, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener, String paramString1, long paramLong, String paramString2, int paramInt, String paramString3, String paramString4)
+  {
+    return new GpkgManager.4(paramMiniAppInfo, paramOnInitGpkgListener, paramLong, paramString2, paramString1, paramString4, paramString3, paramInt);
   }
   
   /* Error */
@@ -247,18 +263,18 @@ public class GpkgManager
     //   10: areturn
     //   11: ldc 21
     //   13: aload_0
-    //   14: invokestatic 327	com/tencent/qqmini/sdk/core/utils/FileUtils:getExtension	(Ljava/lang/String;)Ljava/lang/String;
+    //   14: invokestatic 349	com/tencent/qqmini/sdk/core/utils/FileUtils:getExtension	(Ljava/lang/String;)Ljava/lang/String;
     //   17: invokevirtual 189	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   20: ifeq +186 -> 206
     //   23: aload_0
     //   24: ldc 21
-    //   26: ldc_w 329
-    //   29: invokevirtual 333	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   26: ldc_w 351
+    //   29: invokevirtual 355	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   32: astore 6
     //   34: aload_0
     //   35: ldc 21
     //   37: ldc 15
-    //   39: invokevirtual 333	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   39: invokevirtual 355	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   42: astore 5
     //   44: iconst_0
     //   45: istore_1
@@ -266,52 +282,52 @@ public class GpkgManager
     //   47: astore_3
     //   48: aload_0
     //   49: aload 6
-    //   51: invokestatic 339	com/tencent/qqmini/sdk/core/utils/ZipUtil:unZipFolder	(Ljava/lang/String;Ljava/lang/String;)I
+    //   51: invokestatic 361	com/tencent/qqmini/sdk/core/utils/ZipUtil:unZipFolder	(Ljava/lang/String;Ljava/lang/String;)I
     //   54: ifne +218 -> 272
     //   57: aload 6
-    //   59: invokestatic 342	com/tencent/qqmini/sdk/core/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   59: invokestatic 364	com/tencent/qqmini/sdk/core/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   62: ifeq +210 -> 272
     //   65: aload 6
     //   67: iconst_0
     //   68: iconst_0
-    //   69: invokestatic 346	com/tencent/qqmini/sdk/core/utils/FileUtils:getFiles	(Ljava/lang/String;ZI)Ljava/util/ArrayList;
+    //   69: invokestatic 368	com/tencent/qqmini/sdk/core/utils/FileUtils:getFiles	(Ljava/lang/String;ZI)Ljava/util/ArrayList;
     //   72: astore 4
     //   74: aload 4
     //   76: ifnull +306 -> 382
     //   79: aload 4
-    //   81: invokevirtual 352	java/util/ArrayList:size	()I
+    //   81: invokevirtual 374	java/util/ArrayList:size	()I
     //   84: ifle +298 -> 382
     //   87: aload 4
-    //   89: invokevirtual 353	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   89: invokevirtual 375	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   92: astore 4
     //   94: aload 4
     //   96: invokeinterface 176 1 0
     //   101: ifeq +281 -> 382
     //   104: aload 4
     //   106: invokeinterface 180 1 0
-    //   111: checkcast 355	com/tencent/qqmini/sdk/core/utils/FileInfo
+    //   111: checkcast 377	com/tencent/qqmini/sdk/core/utils/FileInfo
     //   114: astore 7
     //   116: ldc 15
     //   118: aload 7
-    //   120: invokevirtual 358	com/tencent/qqmini/sdk/core/utils/FileInfo:getPath	()Ljava/lang/String;
-    //   123: invokestatic 327	com/tencent/qqmini/sdk/core/utils/FileUtils:getExtension	(Ljava/lang/String;)Ljava/lang/String;
+    //   120: invokevirtual 380	com/tencent/qqmini/sdk/core/utils/FileInfo:getPath	()Ljava/lang/String;
+    //   123: invokestatic 349	com/tencent/qqmini/sdk/core/utils/FileUtils:getExtension	(Ljava/lang/String;)Ljava/lang/String;
     //   126: invokevirtual 189	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   129: ifne +19 -> 148
     //   132: ldc 18
     //   134: aload 7
-    //   136: invokevirtual 358	com/tencent/qqmini/sdk/core/utils/FileInfo:getPath	()Ljava/lang/String;
-    //   139: invokestatic 327	com/tencent/qqmini/sdk/core/utils/FileUtils:getExtension	(Ljava/lang/String;)Ljava/lang/String;
+    //   136: invokevirtual 380	com/tencent/qqmini/sdk/core/utils/FileInfo:getPath	()Ljava/lang/String;
+    //   139: invokestatic 349	com/tencent/qqmini/sdk/core/utils/FileUtils:getExtension	(Ljava/lang/String;)Ljava/lang/String;
     //   142: invokevirtual 189	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   145: ifeq -51 -> 94
     //   148: aload 7
-    //   150: invokevirtual 358	com/tencent/qqmini/sdk/core/utils/FileInfo:getPath	()Ljava/lang/String;
+    //   150: invokevirtual 380	com/tencent/qqmini/sdk/core/utils/FileInfo:getPath	()Ljava/lang/String;
     //   153: astore 4
     //   155: aload 4
     //   157: astore_3
     //   158: aload_3
     //   159: astore 4
     //   161: aload_3
-    //   162: invokestatic 342	com/tencent/qqmini/sdk/core/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   162: invokestatic 364	com/tencent/qqmini/sdk/core/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   165: ifeq +110 -> 275
     //   168: new 70	java/io/File
     //   171: dup
@@ -321,7 +337,7 @@ public class GpkgManager
     //   179: dup
     //   180: aload 5
     //   182: invokespecial 82	java/io/File:<init>	(Ljava/lang/String;)V
-    //   185: invokestatic 362	com/tencent/qqmini/sdk/core/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   185: invokestatic 384	com/tencent/qqmini/sdk/core/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
     //   188: istore_2
     //   189: aload_3
     //   190: astore 4
@@ -329,12 +345,12 @@ public class GpkgManager
     //   193: ifeq +82 -> 275
     //   196: aload 6
     //   198: iconst_0
-    //   199: invokestatic 366	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
+    //   199: invokestatic 388	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
     //   202: pop2
     //   203: aload 5
     //   205: astore_3
     //   206: aload_3
-    //   207: invokestatic 342	com/tencent/qqmini/sdk/core/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   207: invokestatic 364	com/tencent/qqmini/sdk/core/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   210: ifeq +153 -> 363
     //   213: aload_3
     //   214: astore 4
@@ -344,7 +360,7 @@ public class GpkgManager
     //   221: ifne +12 -> 233
     //   224: aload_0
     //   225: iconst_0
-    //   226: invokestatic 366	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
+    //   226: invokestatic 388	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
     //   229: pop2
     //   230: aload_3
     //   231: astore 4
@@ -352,11 +368,11 @@ public class GpkgManager
     //   235: new 63	java/lang/StringBuilder
     //   238: dup
     //   239: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   242: ldc_w 368
+    //   242: ldc_w 390
     //   245: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   248: aload 4
     //   250: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   253: ldc_w 370
+    //   253: ldc_w 392
     //   256: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   259: aload_0
     //   260: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -383,24 +399,24 @@ public class GpkgManager
     //   297: new 63	java/lang/StringBuilder
     //   300: dup
     //   301: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   304: ldc_w 372
+    //   304: ldc_w 394
     //   307: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   310: aload_0
     //   311: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   314: ldc_w 374
+    //   314: ldc_w 396
     //   317: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   320: aload 6
     //   322: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: ldc_w 376
+    //   325: ldc_w 398
     //   328: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   331: iload_1
     //   332: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   335: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   338: aload 4
-    //   340: invokestatic 379	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   340: invokestatic 401	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   343: aload 6
     //   345: iconst_0
-    //   346: invokestatic 366	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
+    //   346: invokestatic 388	com/tencent/qqmini/sdk/core/utils/FileUtils:delete	(Ljava/lang/String;Z)J
     //   349: pop2
     //   350: iload_1
     //   351: iconst_1
@@ -631,7 +647,7 @@ public class GpkgManager
     paramDownloadPluginCallback.onPluginDownloadComplete(false, paramMiniGamePluginInfo, null);
     return;
     QMLog.i("[minigame] GpkgManager", "[Gpkg] start download plugin to:" + localFile1.getAbsolutePath() + " " + paramMiniGamePluginInfo);
-    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramMiniGamePluginInfo.url, null, localFile2.getAbsolutePath(), 60, new GpkgManager.3(paramMiniGamePluginInfo, paramDownloadPluginCallback, localFile2, localFile1));
+    downloadGpkgPlugin(paramMiniGamePluginInfo, paramDownloadPluginCallback, localFile1, localFile2);
   }
   
   public static void performGetGpkgInfoByConfig(MiniAppInfo paramMiniAppInfo, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener)
@@ -700,7 +716,7 @@ public class GpkgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.GpkgManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import android.util.Log;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -11,36 +10,25 @@ import com.tencent.qphone.base.util.QLog;
 class DesktopDataManager$31
   implements Runnable
 {
-  DesktopDataManager$31(DesktopDataManager paramDesktopDataManager, String paramString) {}
+  DesktopDataManager$31(DesktopDataManager paramDesktopDataManager, MiniAppRedDotEntity paramMiniAppRedDotEntity) {}
   
   public void run()
   {
     Object localObject = MiniAppUtils.getAppInterface();
     if (localObject == null) {
-      QLog.e("DesktopDataManager", 1, "deleteMiniAppFromDB, app is null.");
+      QLog.e("DesktopDataManager", 1, "updateRedDotData, app is null.");
     }
-    MiniAppRedDotEntity localMiniAppRedDotEntity;
     do
     {
       return;
-      localMiniAppRedDotEntity = new MiniAppRedDotEntity(this.val$appId, 0, 0);
       localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
     } while (localObject == null);
-    try
+    if (DesktopDataManager.access$3300(this.this$0, (EntityManager)localObject, this.val$entity))
     {
-      localMiniAppRedDotEntity.setStatus(1001);
-      if (((EntityManager)localObject).remove(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
-      {
-        QLog.d("DesktopDataManager", 2, "deleteRedDotDataFromDB, delete " + localMiniAppRedDotEntity.appId + " success from db");
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("DesktopDataManager", 1, "deleteRedDotDataFromDB, exception: " + Log.getStackTraceString(localThrowable));
+      QLog.d("DesktopDataManager", 1, "updateRedDotData, success to delete recommend appInfo: " + this.val$entity);
       return;
     }
-    QLog.d("DesktopDataManager", 2, "deleteRedDotDataFromDB, delete " + localThrowable.appId + " fail from db");
+    QLog.e("DesktopDataManager", 1, "updateRedDotData, failed to delete recommend appInfo: " + this.val$entity);
   }
 }
 

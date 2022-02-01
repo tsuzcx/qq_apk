@@ -13,14 +13,14 @@ public class CleanVideoPlayerView
     setCleanMode(true);
   }
   
-  public void f()
+  public void g()
   {
-    super.f();
+    super.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class stCommentJumpText
   extends JceStruct
 {
   public String h5_url = "";
-  public int index;
+  public int index = 0;
   public String schema_url = "";
   public String text = "";
   

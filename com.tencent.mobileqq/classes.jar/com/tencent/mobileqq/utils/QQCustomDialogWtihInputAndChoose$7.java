@@ -12,15 +12,15 @@ class QQCustomDialogWtihInputAndChoose$7
   
   public void onClick(View paramView)
   {
-    if (this.val$pl != null)
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
     {
-      this.val$pl.onClick(this.this$0, 0);
-      this.this$0.hideChooseList();
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 0);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
     }
     try
     {
-      if (this.this$0.isShowing()) {
-        this.this$0.dismiss();
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
       }
       label45:
       EventCollector.getInstance().onViewClicked(paramView);

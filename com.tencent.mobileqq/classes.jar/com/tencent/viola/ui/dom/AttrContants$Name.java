@@ -40,6 +40,7 @@ public abstract interface AttrContants$Name
   public static final String LIST_STICKY_SLOW_REBOUND = "stickySlowRebound";
   public static final String LIST_STICKY_SPEED = "stickySpeed";
   public static final String LIST_STICKY_TYPE = "stickyType";
+  public static final String LOTTIE_IS_AUTO_PLAY = "isAutoPlay";
   public static final String LOTTIE_LOOP = "loop";
   public static final String LOTTIE_SCALE = "scale";
   public static final String MODAL_AUTO_LAYOUT = "autoLayout";
@@ -74,7 +75,7 @@ public abstract interface AttrContants$Name
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.dom.AttrContants.Name
  * JD-Core Version:    0.7.0.1
  */

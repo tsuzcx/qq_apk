@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stWeishiReportRsp
   extends JceStruct
 {
-  public int code;
+  public int code = 0;
   public String msg = "";
   
   public stWeishiReportRsp() {}

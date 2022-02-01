@@ -13,7 +13,7 @@ class QZoneShareActivity$13
   {
     this.this$0.viewEmoView.setVisibility(0);
     this.this$0.viewDivider.setVisibility(0);
-    this.this$0.viewSmiley.setImageResource(2130849072);
+    this.this$0.viewSmiley.setImageResource(2130849452);
     this.this$0.emoShow = true;
     this.this$0.emoShowing = false;
     QZoneShareActivity.access$1700(this.this$0, this.this$0.emoShow);
@@ -21,7 +21,7 @@ class QZoneShareActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.13
  * JD-Core Version:    0.7.0.1
  */

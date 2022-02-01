@@ -3,7 +3,6 @@ package com.tencent.mobileqq.bubble;
 import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
-import aqiy;
 import com.tencent.qphone.base.util.QLog;
 
 class QQAnimationDrawable$WorkerRunnable

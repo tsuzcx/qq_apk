@@ -7,12 +7,11 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import rsr;
 
 public class VisibleSetParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<VisibleSetParam> CREATOR = new rsr();
+  public static final Parcelable.Creator<VisibleSetParam> CREATOR = new VisibleSetParam.1();
   public static VisibleSetParam a;
   public static VisibleSetParam b;
   private final int jdField_a_of_type_Int;
@@ -30,7 +29,7 @@ public class VisibleSetParam
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public VisibleSetParam(Parcel paramParcel)
+  protected VisibleSetParam(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -65,7 +64,7 @@ public class VisibleSetParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam
  * JD-Core Version:    0.7.0.1
  */

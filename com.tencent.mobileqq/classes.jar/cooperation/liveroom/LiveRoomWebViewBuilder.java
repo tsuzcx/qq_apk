@@ -18,19 +18,20 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aodv;
-import bied;
-import bief;
-import biit;
-import biix;
-import biur;
+import com.tencent.biz.AuthorizeConfig;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.StartAppCheckHandler;
 import com.tencent.mobileqq.haoliyou.JefsClass;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import com.tencent.mobileqq.webview.build.WebViewBaseBuilder;
+import com.tencent.mobileqq.webview.build.WebViewBaseBuilder.ImmersiveParam;
+import com.tencent.mobileqq.webview.swift.CommonJsPluginFactory;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
+import com.tencent.mobileqq.webview.ui.WebViewTitlerBar;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
+import com.tencent.mobileqq.widget.WebViewProgressBarController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.WebSettings;
@@ -38,15 +39,14 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
-import nro;
 
 public class LiveRoomWebViewBuilder
-  extends bied
+  extends WebViewBaseBuilder
 {
   public static final String TAG = "LiveRoomWebViewBuilder";
-  private final WebAccelerateHelper.CommonJsPluginFactory LIVEROOM_COMMON_JS = new LiveRoomWebViewBuilder.1(this);
-  protected nro authConfig = nro.a();
-  private boolean loading;
+  private final CommonJsPluginFactory LIVEROOM_COMMON_JS = new LiveRoomWebViewBuilder.1(this);
+  protected AuthorizeConfig authConfig = AuthorizeConfig.a();
+  private boolean loading = false;
   private ArrayList<WebViewPlugin> mBussinessPluginList;
   private View mContentView;
   private LiveRoomWebViewBuilder.WebviewCallback mWebviewCallback;
@@ -83,31 +83,31 @@ public class LiveRoomWebViewBuilder
   @TargetApi(14)
   public View buildLayoutOnly()
   {
-    View localView = LayoutInflater.from(this.mContext).inflate(2131563068, null);
-    this.mViewRoot = localView.findViewById(2131381386);
+    View localView = LayoutInflater.from(this.mContext).inflate(2131563224, null);
+    this.mViewRoot = localView.findViewById(2131381847);
     if (this.mViewRoot == null) {
       return localView;
     }
     if ((this.bNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
       this.mViewRoot.setFitsSystemWindows(this.bFitSystemWindow);
     }
-    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131379040));
-    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363710));
-    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131381405));
-    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131376461));
-    this.maskView = this.mViewRoot.findViewById(2131381408);
-    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131365167));
+    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131379471));
+    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363804));
+    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131381866));
+    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131376854));
+    this.maskView = this.mViewRoot.findViewById(2131381869);
+    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131365304));
     if ((this.mIntent != null) && (!this.mIntent.getBooleanExtra("webview_hide_progress", false)))
     {
-      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131373229));
-      this.mProgressBarController = new biur();
+      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131373555));
+      this.mProgressBarController = new WebViewProgressBarController();
       this.mLoadingProgressBar.setController(this.mProgressBarController);
       if ((this.mIsFirstOnPageStart) && (this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
         this.mProgressBarController.a((byte)0);
       }
     }
     this.mWebview = new TouchWebView(this.mContext);
-    this.mWebview.setId(2131381402);
+    this.mWebview.setId(2131381863);
     WebSettings localWebSettings = this.mWebview.getSettings();
     String str1 = " gflive/" + this.sdkVersion;
     StringBuilder localStringBuilder = new StringBuilder();
@@ -116,7 +116,7 @@ public class LiveRoomWebViewBuilder
     if (this.mWebview.getX5WebViewExtension() != null) {}
     for (boolean bool = true;; bool = false)
     {
-      localWebSettings.setUserAgentString(biit.a(str2, str3, bool) + " gflivesdk" + str1);
+      localWebSettings.setUserAgentString(SwiftWebViewUtils.a(str2, str3, bool) + " gflivesdk" + str1);
       localWebSettings.setMixedContentMode(0);
       this.webviewContainer.addView(this.mWebview, new RelativeLayout.LayoutParams(-1, -1));
       return localView;
@@ -126,10 +126,10 @@ public class LiveRoomWebViewBuilder
   public void buildTitleBar()
   {
     this.titleContainer.setBackgroundColor(getResources().getColor(17170445));
-    bief localbief = new bief();
-    localbief.a = this.webviewContainer;
-    localbief.b = this.titleContainer;
-    setTittlebarImmersive(true, localbief);
+    WebViewBaseBuilder.ImmersiveParam localImmersiveParam = new WebViewBaseBuilder.ImmersiveParam();
+    localImmersiveParam.a = this.webviewContainer;
+    localImmersiveParam.b = this.titleContainer;
+    setTittlebarImmersive(true, localImmersiveParam);
   }
   
   public Object doInterceptRequest(WebView paramWebView, String paramString)
@@ -158,12 +158,12 @@ public class LiveRoomWebViewBuilder
     return "LiveRoom";
   }
   
-  public WebAccelerateHelper.CommonJsPluginFactory myCommonJsPlugins()
+  public CommonJsPluginFactory myCommonJsPlugins()
   {
     return this.LIVEROOM_COMMON_JS;
   }
   
-  public void onImmersive(boolean paramBoolean, bief parambief)
+  public void onImmersive(boolean paramBoolean, WebViewBaseBuilder.ImmersiveParam paramImmersiveParam)
   {
     if (QLog.isColorLevel()) {
       QLog.d("LiveRoomWebViewBuilder", 2, "onImmersive");
@@ -173,8 +173,8 @@ public class LiveRoomWebViewBuilder
       if (this.mSystemBarComp != null) {
         this.mSystemBarComp.setgetStatusBarVisible(false, 0);
       }
-      if (parambief.b != null) {
-        parambief.b.getBackground().setAlpha(0);
+      if (paramImmersiveParam.b != null) {
+        paramImmersiveParam.b.getBackground().setAlpha(0);
       }
     }
     do
@@ -183,8 +183,8 @@ public class LiveRoomWebViewBuilder
       if (this.mSystemBarComp != null) {
         this.mSystemBarComp.setgetStatusBarVisible(true, 0);
       }
-      if (parambief.b != null) {
-        parambief.b.setBackgroundResource(2130850109);
+      if (paramImmersiveParam.b != null) {
+        paramImmersiveParam.b.setBackgroundResource(2130850507);
       }
     } while (this.mTitleBar == null);
     this.mTitleBar.a(255, 0);
@@ -248,7 +248,7 @@ public class LiveRoomWebViewBuilder
             localObject1 = ((ActivityInfo)localObject3).packageName;
           }
           localObject3 = this.mInActivity.getClass().getName();
-          aodv.a("scheme", paramWebView.getUrl(), (String)localObject1, "1", "web", (String)localObject3);
+          StartAppCheckHandler.a("scheme", paramWebView.getUrl(), (String)localObject1, "1", "web", (String)localObject3);
         }
         catch (Exception paramWebView)
         {
@@ -271,7 +271,7 @@ public class LiveRoomWebViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomWebViewBuilder
  * JD-Core Version:    0.7.0.1
  */

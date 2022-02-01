@@ -10,11 +10,11 @@ public final class cluster_identify_face_rsp
 {
   static int cache_mode = 0;
   static ArrayList<cluster_search_result> cache_results = new ArrayList();
-  public boolean has_identify;
+  public boolean has_identify = false;
   public int mode = 1;
   public String msg = "";
-  public ArrayList<cluster_search_result> results;
-  public int ret;
+  public ArrayList<cluster_search_result> results = null;
+  public int ret = 0;
   public String url = "";
   
   static

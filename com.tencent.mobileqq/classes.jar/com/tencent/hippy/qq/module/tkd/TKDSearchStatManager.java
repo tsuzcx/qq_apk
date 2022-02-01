@@ -2,12 +2,12 @@ package com.tencent.hippy.qq.module.tkd;
 
 import android.text.TextUtils;
 import com.tencent.beacon.event.UserAction;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.ug.RIJUGJsonUtils;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import org.jetbrains.annotations.NotNull;
-import pqp;
 
 public class TKDSearchStatManager
 {
@@ -59,7 +59,7 @@ public class TKDSearchStatManager
     }
     HashMap localHashMap = new HashMap();
     if (!paramMap.containsKey("qua2")) {
-      localHashMap.put("qua2", pqp.c());
+      localHashMap.put("qua2", RIJUGJsonUtils.c());
     }
     localHashMap.put("event_name", paramString1);
     localHashMap.put("event_details", getCommonEventDetail(paramMap));
@@ -103,7 +103,7 @@ public class TKDSearchStatManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDSearchStatManager
  * JD-Core Version:    0.7.0.1
  */

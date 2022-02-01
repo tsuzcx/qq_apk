@@ -10,7 +10,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class FDStatsHooker
 {
-  static long lastLogTime;
+  private static final String TAG = "FDStats";
+  static long lastLogTime = 0L;
   private static final ConcurrentHashMap<Integer, String> mStackMap = new ConcurrentHashMap(1024);
   private static ConcurrentHashMap<String, Integer> sErrorFDMap = new ConcurrentHashMap(100);
   

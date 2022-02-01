@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgjr;
 import com.tencent.mobileqq.app.AppConstants;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public final class TroopFileTransferManager$1
+final class TroopFileTransferManager$1
   implements Runnable
 {
   public void run()
@@ -28,7 +27,7 @@ public final class TroopFileTransferManager$1
         localInterruptedException.printStackTrace();
         return;
       }
-      arrayOfFile = localInterruptedException.listFiles(new bgjr(this));
+      arrayOfFile = localInterruptedException.listFiles(new TroopFileTransferManager.1.1(this));
     } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
     Object localObject = new ArrayList(arrayOfFile.length);
     int j = arrayOfFile.length;

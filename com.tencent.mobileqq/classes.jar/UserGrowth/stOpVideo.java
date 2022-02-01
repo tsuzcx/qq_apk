@@ -10,10 +10,10 @@ public final class stOpVideo
   static stSchema cache_jump = new stSchema();
   public String h5_url = "";
   public String img_url = "";
-  public stSchema jump;
+  public stSchema jump = null;
   public String schema = "";
   public String text = "";
-  public int videoType;
+  public int videoType = 0;
   
   public stOpVideo() {}
   

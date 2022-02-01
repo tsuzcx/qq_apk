@@ -3,10 +3,10 @@ package com.tencent.av.ui;
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
 
-public class MultiVideoCtrlLayerUI4Discussion$AutoCheckVideoRunnable
+class MultiVideoCtrlLayerUI4Discussion$AutoCheckVideoRunnable
   implements Runnable
 {
-  public MultiVideoCtrlLayerUI4Discussion$AutoCheckVideoRunnable(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  MultiVideoCtrlLayerUI4Discussion$AutoCheckVideoRunnable(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
   public void run()
   {
@@ -14,14 +14,14 @@ public class MultiVideoCtrlLayerUI4Discussion$AutoCheckVideoRunnable
       QLog.d(this.this$0.d, 2, "AutoCheckVideoRunnable");
     }
     if (this.this$0.a != null) {
-      this.this$0.a.a().al = true;
+      this.this$0.a.a().an = true;
     }
-    this.this$0.v();
+    this.this$0.x();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion.AutoCheckVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

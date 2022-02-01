@@ -82,7 +82,7 @@ public class SimpleTextView
     return this.jdField_a_of_type_AndroidTextTextPaint;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     String str = this.jdField_a_of_type_JavaLangCharSequence.toString();
@@ -145,7 +145,7 @@ public class SimpleTextView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int k = getMeasuredWidth();
     int m = getMeasuredHeight();
@@ -231,7 +231,7 @@ public class SimpleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.SimpleTextView
  * JD-Core Version:    0.7.0.1
  */

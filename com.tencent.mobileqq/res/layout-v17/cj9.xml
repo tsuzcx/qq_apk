@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nf6" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/o1u" android:layout_width="0.0dip" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_weight="1.0" android:layout_marginStart="16.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:gravity="center|left" android:id="@id/oet" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="19.0dip" android:lines="1" android:singleLine="true" android:drawableLeft="@drawable/gdp" android:drawablePadding="5.0dip" android:layout_toLeftOf="@id/naq" android:layout_centerVertical="true" android:drawableStart="@drawable/gdp" android:layout_marginStart="19.0dip" android:layout_toStartOf="@id/naq" />
+            <ImageView android:id="@id/naq" android:background="@drawable/common_input_box_clear" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/wbp" android:layout_marginEnd="10.0dip" android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+        <Button android:textSize="16.0sp" android:textColor="#ff4d94ff" android:id="@id/afr" android:background="@null" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="16.0dip" android:text="@string/cancel" android:layout_marginStart="12.0dip" android:layout_marginEnd="16.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/myj" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="#ffb0b3bf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wbo" android:drawableLeft="@drawable/gdp" android:drawablePadding="6.0dip" android:drawableStart="@drawable/gdp" />
+    </LinearLayout>
+</LinearLayout>

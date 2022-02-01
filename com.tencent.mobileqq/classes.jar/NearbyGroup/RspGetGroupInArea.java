@@ -8,7 +8,7 @@ public final class RspGetGroupInArea
   extends JceStruct
 {
   static GroupArea cache_stGroupArea;
-  public GroupArea stGroupArea;
+  public GroupArea stGroupArea = null;
   
   public RspGetGroupInArea() {}
   

@@ -1,19 +1,18 @@
 package com.tencent.gdtad.aditem;
 
-import acak;
-import acho;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.tencent.gdtad.log.GdtLog;
 import org.json.JSONObject;
 
 public class GdtHandler$Options
   implements Parcelable
 {
-  public static final Parcelable.Creator<Options> CREATOR = new acak();
+  public static final Parcelable.Creator<Options> CREATOR = new GdtHandler.Options.1();
   public int a;
   public long a;
   public Rect a;
@@ -24,28 +23,38 @@ public class GdtHandler$Options
   public boolean a;
   public int b;
   public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  private boolean h;
+  public boolean c = false;
+  public boolean d = false;
+  public boolean e = false;
+  public boolean f = false;
+  public boolean g = false;
+  private boolean h = false;
   
   public GdtHandler$Options()
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Int = -2147483648;
     this.jdField_b_of_type_Int = -2147483648;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_OrgJsonJSONObject = null;
   }
   
-  public GdtHandler$Options(Parcel paramParcel)
+  protected GdtHandler$Options(Parcel paramParcel)
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Int = -2147483648;
     this.jdField_b_of_type_Int = -2147483648;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_OrgJsonJSONObject = null;
     if (paramParcel == null)
     {
-      acho.d("GdtHandler", "Options(Parcel in) error");
+      GdtLog.d("GdtHandler", "Options(Parcel in) error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)paramParcel.readParcelable(GdtAd.class.getClassLoader()));
@@ -56,52 +65,54 @@ public class GdtHandler$Options
       this.jdField_a_of_type_Int = paramParcel.readInt();
       this.jdField_b_of_type_Int = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label250;
+        break label305;
       }
       bool1 = true;
-      label90:
+      label145:
       this.jdField_b_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label255;
+        break label310;
       }
       bool1 = true;
-      label104:
+      label159:
       this.c = bool1;
       if (paramParcel.readByte() == 0) {
-        break label260;
+        break label315;
       }
       bool1 = true;
-      label118:
+      label173:
       this.d = bool1;
       if (paramParcel.readByte() == 0) {
-        break label265;
+        break label320;
       }
       bool1 = true;
-      label132:
+      label187:
       this.e = bool1;
       this.jdField_a_of_type_AndroidGraphicsRect = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
       if (paramParcel.readByte() == 0) {
-        break label270;
+        break label325;
       }
       bool1 = true;
-      label162:
+      label217:
       this.h = bool1;
       this.jdField_a_of_type_Long = paramParcel.readLong();
       if (paramParcel.readByte() == 0) {
-        break label275;
+        break label330;
       }
       bool1 = true;
-      label184:
+      label239:
       this.f = bool1;
       if (paramParcel.readByte() == 0) {
-        break label280;
+        break label335;
       }
     }
-    label260:
-    label265:
-    label270:
-    label275:
-    label280:
+    label305:
+    label310:
+    label315:
+    label320:
+    label325:
+    label330:
+    label335:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.g = bool1;
@@ -114,25 +125,23 @@ public class GdtHandler$Options
       }
       catch (Throwable paramParcel)
       {
-        acho.d("GdtHandler", "Options(Parcel in)", paramParcel);
+        GdtLog.d("GdtHandler", "Options(Parcel in)", paramParcel);
         return;
       }
       bool1 = false;
       break;
-      label250:
       bool1 = false;
-      break label90;
-      label255:
+      break label145;
       bool1 = false;
-      break label104;
+      break label159;
       bool1 = false;
-      break label118;
+      break label173;
       bool1 = false;
-      break label132;
+      break label187;
       bool1 = false;
-      break label162;
+      break label217;
       bool1 = false;
-      break label184;
+      break label239;
     }
   }
   
@@ -151,7 +160,7 @@ public class GdtHandler$Options
     int j = 1;
     if (paramParcel == null)
     {
-      acho.d("GdtHandler", "writeToParcel error");
+      GdtLog.d("GdtHandler", "writeToParcel error");
       return;
     }
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramInt);
@@ -245,7 +254,7 @@ public class GdtHandler$Options
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtHandler.Options
  * JD-Core Version:    0.7.0.1
  */

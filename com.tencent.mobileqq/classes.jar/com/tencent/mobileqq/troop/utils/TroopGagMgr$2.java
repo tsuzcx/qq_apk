@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.content.Context;
-import bgkf;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class TroopGagMgr$2
+class TroopGagMgr$2
   implements Runnable
 {
-  public TroopGagMgr$2(bgkf parambgkf, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
+  TroopGagMgr$2(TroopGagMgr paramTroopGagMgr, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class TroopGagMgr$2
       QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130839653, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130839732, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,33 +1,31 @@
 package com.tencent.av.utils;
 
 import android.os.Handler;
-import lbd;
-import mut;
-import muu;
+import com.tencent.av.AVLog;
 
-public class SignalStrengthReport$2
+class SignalStrengthReport$2
   implements Runnable
 {
-  public SignalStrengthReport$2(mut parammut) {}
+  SignalStrengthReport$2(SignalStrengthReport paramSignalStrengthReport) {}
   
   public void run()
   {
     this.this$0.b = 0;
-    if ((this.this$0.jdField_a_of_type_Int == -1) || (mut.e() == 1)) {}
+    if ((this.this$0.jdField_a_of_type_Int == -1) || (SignalStrengthReport.e() == 1)) {}
     try
     {
-      String str = mut.a(this.this$0);
-      this.this$0.b = muu.a("http://" + str);
+      String str = SignalStrengthReport.a(this.this$0);
+      this.this$0.b = SignalStrengthReport.PingUtil.a("http://" + str);
       if (this.this$0.b < 0) {
         this.this$0.b = 0;
       }
-      lbd.f("SignalStrengthReport", "mPingTask gatewayIP:" + str + " | avgRtt:" + this.this$0.b);
+      AVLog.printColorLog("SignalStrengthReport", "mPingTask gatewayIP:" + str + " | avgRtt:" + this.this$0.b);
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        lbd.f("SignalStrengthReport", "mPingTask e:" + localException);
+        AVLog.printColorLog("SignalStrengthReport", "mPingTask e:" + localException);
       }
     }
     if (this.this$0.jdField_a_of_type_AndroidOsHandler != null) {
@@ -37,7 +35,7 @@ public class SignalStrengthReport$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.SignalStrengthReport.2
  * JD-Core Version:    0.7.0.1
  */

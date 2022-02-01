@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.richstatus;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -20,24 +19,16 @@ import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
 import android.widget.TextView;
-import anvx;
-import bbsk;
-import bbsm;
-import bbsn;
-import bbso;
-import bbtb;
-import bbtd;
-import bbvk;
-import bbvn;
-import bdla;
-import bisl;
-import bity;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.StatableBitmapDrawable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qqreader.QRBridgeActivity;
@@ -45,32 +36,27 @@ import java.util.ArrayList;
 
 public class ActionListActivity
   extends IphoneTitleBarActivity
-  implements ViewPager.OnPageChangeListener, View.OnClickListener, TabHost.OnTabChangeListener, bbtb, bbtd
+  implements ViewPager.OnPageChangeListener, View.OnClickListener, TabHost.OnTabChangeListener, IActionListener, IIconListener
 {
-  static final boolean jdField_a_of_type_Boolean = AppSetting.c;
+  static final boolean jdField_a_of_type_Boolean = AppSetting.d;
   private int jdField_a_of_type_Int;
   private Intent jdField_a_of_type_AndroidContentIntent;
   ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   TabHost jdField_a_of_type_AndroidWidgetTabHost;
   TabWidget jdField_a_of_type_AndroidWidgetTabWidget;
-  private bbvn jdField_a_of_type_Bbvn;
-  public ArrayList<bbvk> a;
-  
-  public ActionListActivity()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
+  ArrayList<StateTag> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   private void a()
   {
-    int i = this.jdField_a_of_type_Bbvn.a(this.jdField_a_of_type_JavaUtilArrayList);
+    int i = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_JavaUtilArrayList);
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "ActionListActivity.initData(), state tag size: " + this.jdField_a_of_type_JavaUtilArrayList.size() + " result: " + i);
     }
     if (i != 100)
     {
-      this.jdField_a_of_type_Bbvn.a(i);
-      if ((this.jdField_a_of_type_Int == -1) && ((i == 102) || (NetworkUtil.isNetSupport(this)))) {
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(i);
+      if ((this.jdField_a_of_type_Int == -1) && ((i == 102) || (NetworkUtil.d(this)))) {
         startTitleProgress();
       }
     }
@@ -84,21 +70,21 @@ public class ActionListActivity
       i = 0;
       while (i < j)
       {
-        bbvk localbbvk = (bbvk)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        TextView localTextView = (TextView)localLayoutInflater.inflate(2131561173, this.jdField_a_of_type_AndroidWidgetTabWidget, false);
-        localTextView.setText(localbbvk.a);
+        StateTag localStateTag = (StateTag)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        TextView localTextView = (TextView)localLayoutInflater.inflate(2131561274, this.jdField_a_of_type_AndroidWidgetTabWidget, false);
+        localTextView.setText(localStateTag.a);
         localTextView.setWidth(k);
         localTextView.setGravity(17);
-        this.jdField_a_of_type_AndroidWidgetTabHost.addTab(this.jdField_a_of_type_AndroidWidgetTabHost.newTabSpec(localbbvk.a).setIndicator(localTextView).setContent(2131361810));
+        this.jdField_a_of_type_AndroidWidgetTabHost.addTab(this.jdField_a_of_type_AndroidWidgetTabHost.newTabSpec(localStateTag.a).setIndicator(localTextView).setContent(2131361809));
         i += 1;
       }
     }
-    ((bbso)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter()).a();
+    ((ActionListActivity.ViewPagerAdapter)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter()).a();
     int j = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildCount();
     i = 0;
     while (i < j)
     {
-      ((bbsn)((GridView)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildAt(i)).getAdapter()).notifyDataSetChanged();
+      ((ActionListActivity.GridAdapter)((GridView)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildAt(i)).getAdapter()).notifyDataSetChanged();
       i += 1;
     }
   }
@@ -114,13 +100,6 @@ public class ActionListActivity
     stopTitleProgress();
   }
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((paramBitmap != null) && (paramInt2 == 201)) {
-      a(paramInt1, paramBitmap);
-    }
-  }
-  
   void a(int paramInt, Bitmap paramBitmap)
   {
     int k = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildCount();
@@ -132,9 +111,9 @@ public class ActionListActivity
       int j = 0;
       while (j < m)
       {
-        bbsm localbbsm = (bbsm)localGridView.getChildAt(j).getTag();
-        if ((localbbsm != null) && (localbbsm.jdField_a_of_type_Int == paramInt)) {
-          localbbsm.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new bity(getResources(), paramBitmap, false, false));
+        ActionListActivity.ActionViewHolder localActionViewHolder = (ActionListActivity.ActionViewHolder)localGridView.getChildAt(j).getTag();
+        if ((localActionViewHolder != null) && (localActionViewHolder.jdField_a_of_type_Int == paramInt)) {
+          localActionViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(getResources(), paramBitmap, false, false));
         }
         j += 1;
       }
@@ -174,28 +153,28 @@ public class ActionListActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(2131558436);
-    this.jdField_a_of_type_AndroidWidgetTabHost = ((TabHost)findViewById(2131378411));
+    this.jdField_a_of_type_AndroidWidgetTabHost = ((TabHost)findViewById(2131378839));
     this.jdField_a_of_type_AndroidWidgetTabHost.setup();
     this.jdField_a_of_type_AndroidWidgetTabHost.setOnTabChangedListener(this);
     this.jdField_a_of_type_AndroidWidgetTabWidget = this.jdField_a_of_type_AndroidWidgetTabHost.getTabWidget();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((MyViewPager)findViewById(2131381152));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((MyViewPager)findViewById(2131381619));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new bbso(this, null));
-    this.jdField_a_of_type_Bbvn = ((bbvn)this.app.getManager(QQManagerFactory.STATUS_MANAGER));
-    this.jdField_a_of_type_Bbvn.a(this);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new ActionListActivity.ViewPagerAdapter(this, null));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.app.getManager(QQManagerFactory.STATUS_MANAGER));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("k_action_id", -1);
     if (this.jdField_a_of_type_Int == -1)
     {
-      setTitle(anvx.a(2131699264));
+      setTitle(HardCodeUtil.a(2131699842));
       this.leftView.setVisibility(8);
-      setRightButton(2131690845, this);
+      setRightButton(2131690946, this);
     }
     for (;;)
     {
       if (jdField_a_of_type_Boolean)
       {
-        this.leftView.setContentDescription(this.leftView.getText() + anvx.a(2131699263));
-        this.rightViewText.setContentDescription(getResources().getString(2131690845) + anvx.a(2131699262));
+        this.leftView.setContentDescription(this.leftView.getText() + HardCodeUtil.a(2131699841));
+        this.rightViewText.setContentDescription(getResources().getString(2131690946) + HardCodeUtil.a(2131699840));
       }
       a();
       if (this.jdField_a_of_type_AndroidWidgetTabWidget.getChildCount() > 0)
@@ -210,18 +189,18 @@ public class ActionListActivity
         this.jdField_a_of_type_AndroidContentIntent.putExtra("k_action_text", paramBundle.getString("k_action_text"));
       }
       return true;
-      bbsk localbbsk = this.jdField_a_of_type_Bbvn.a(this.jdField_a_of_type_Int);
-      if (localbbsk != null) {
-        setTitle(localbbsk.c);
+      ActionInfo localActionInfo = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_Int);
+      if (localActionInfo != null) {
+        setTitle(localActionInfo.c);
       } else {
-        setTitle(anvx.a(2131699261));
+        setTitle(HardCodeUtil.a(2131699839));
       }
     }
   }
   
   public void doOnDestroy()
   {
-    this.jdField_a_of_type_Bbvn.b(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.b(this);
     super.doOnDestroy();
   }
   
@@ -239,7 +218,7 @@ public class ActionListActivity
   {
     super.finish();
     if (this.jdField_a_of_type_Int == -1) {
-      overridePendingTransition(0, 2130771978);
+      overridePendingTransition(0, 2130771980);
     }
   }
   
@@ -253,7 +232,7 @@ public class ActionListActivity
     if (paramView == this.rightViewText) {
       finish();
     }
-    bbsk localbbsk;
+    ActionInfo localActionInfo;
     Intent localIntent;
     do
     {
@@ -262,30 +241,30 @@ public class ActionListActivity
         EventCollector.getInstance().onViewClicked(paramView);
         return;
         localObject = paramView.getTag();
-        if ((localObject == null) || ((localObject instanceof bbsm)))
+        if ((localObject == null) || ((localObject instanceof ActionListActivity.ActionViewHolder)))
         {
-          localObject = (bbsm)localObject;
-          localbbsk = this.jdField_a_of_type_Bbvn.a(((bbsm)localObject).jdField_a_of_type_Int);
-          if (localbbsk != null)
+          localObject = (ActionListActivity.ActionViewHolder)localObject;
+          localActionInfo = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(((ActionListActivity.ActionViewHolder)localObject).jdField_a_of_type_Int);
+          if (localActionInfo != null)
           {
             localIntent = new Intent();
-            localIntent.putExtra("k_action_id", localbbsk.jdField_a_of_type_Int);
-            localIntent.putExtra("k_action_text", localbbsk.d);
-            if (localbbsk.b != 1) {
+            localIntent.putExtra("k_action_id", localActionInfo.jdField_a_of_type_Int);
+            localIntent.putExtra("k_action_text", localActionInfo.d);
+            if (localActionInfo.b != 1) {
               break;
             }
-            bdla.b(this.app, "CliOper", "", "", "0X8006988", "0X8006988", 0, 0, Integer.toString(localbbsk.jdField_a_of_type_Int), "", "", "");
+            ReportController.b(this.app, "CliOper", "", "", "0X8006988", "0X8006988", 0, 0, Integer.toString(localActionInfo.jdField_a_of_type_Int), "", "", "");
             setResult(-1, localIntent);
             finish();
           }
         }
       }
-    } while (localbbsk.b == 0);
+    } while (localActionInfo.b == 0);
     for (;;)
     {
       try
       {
-        int i = localbbsk.b;
+        int i = localActionInfo.b;
         switch (i)
         {
         default: 
@@ -298,16 +277,16 @@ public class ActionListActivity
         {
           ((Intent)localObject).putExtra("param_plugin_gesturelock", true);
           if (localException2.i != null) {
-            ((Intent)localObject).putExtra("key_params_qq", this.jdField_a_of_type_Bbvn.a(localException2.i, localException2.jdField_a_of_type_Int, 0, ""));
+            ((Intent)localObject).putExtra("key_params_qq", this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(localException2.i, localException2.jdField_a_of_type_Int, 0, ""));
           }
           if (!QRBridgeActivity.jdField_a_of_type_Boolean) {
             continue;
           }
           if (!QRBridgeActivity.b)
           {
-            bisl localbisl = new bisl(this, getTitleBarHeight());
-            localbisl.a(anvx.a(2131699260));
-            new SplashDialogWrapper(this, localbisl, anvx.a(2131699259), "qqreaderplugin.apk", true, 10000).show();
+            QQProgressDialog localQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
+            localQQProgressDialog.a(HardCodeUtil.a(2131699838));
+            new SplashDialogWrapper(this, localQQProgressDialog, HardCodeUtil.a(2131699837), "qqreaderplugin.apk", true, 10000).show();
             QRBridgeActivity.b = true;
           }
         }
@@ -326,7 +305,7 @@ public class ActionListActivity
       localObject = new Intent(this, ActionListActivity.class);
       try
       {
-        ((Intent)localObject).putExtra("k_action_id", localbbsk.jdField_a_of_type_Int);
+        ((Intent)localObject).putExtra("k_action_id", localActionInfo.jdField_a_of_type_Int);
       }
       catch (Exception localException1) {}
     }
@@ -358,6 +337,13 @@ public class ActionListActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
+  public void onGetIcon(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (paramInt2 == 201)) {
+      a(paramInt1, paramBitmap);
+    }
+  }
+  
   public void onPageScrollStateChanged(int paramInt) {}
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
@@ -372,7 +358,7 @@ public class ActionListActivity
     int i = 0;
     for (;;)
     {
-      if ((i >= this.jdField_a_of_type_JavaUtilArrayList.size()) || (paramString.equals(((bbvk)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a)))
+      if ((i >= this.jdField_a_of_type_JavaUtilArrayList.size()) || (paramString.equals(((StateTag)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a)))
       {
         this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(i, false);
         return;
@@ -383,7 +369,7 @@ public class ActionListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.ActionListActivity
  * JD-Core Version:    0.7.0.1
  */

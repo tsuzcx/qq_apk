@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.text;
 
 import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emoticon.QQEmojiUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 
 final class TextUtils$1
@@ -11,7 +11,7 @@ final class TextUtils$1
   
   public void run()
   {
-    Drawable localDrawable = TextUtils.loadEmojiFromDisk(BaseApplicationImpl.getContext().getResources(), this.val$index);
+    Drawable localDrawable = QQEmojiUtil.loadEmojiFromDisk(BaseApplication.getContext().getResources(), this.val$index);
     if ((localDrawable != null) && (this.val$callback != null)) {
       this.val$callback.callbackWhenSysEmojiLoaded(localDrawable);
     }

@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<selector android:exitFadeDuration="@android:integer/config_mediumAnimTime"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:state_pressed="true">
-        <bitmap android:src="@drawable/gnp" android:alpha="0.5" />
-    </item>
-    <item android:state_enabled="false" android:drawable="@drawable/gno" />
-    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/gnp" />
-    <item android:state_selected="false" android:state_pressed="true">
-        <bitmap android:src="@drawable/gno" android:alpha="0.5" />
-    </item>
-    <item android:state_selected="false" android:drawable="@drawable/gno" />
-    <item android:drawable="@drawable/gnp" />
+    <item android:state_pressed="true" android:drawable="@drawable/f3x" />
+    <item android:state_pressed="false" android:drawable="@drawable/f3w" />
 </selector>

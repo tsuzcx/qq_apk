@@ -12,7 +12,7 @@ public class TissueEnvImpl
 {
   public static final String BUNDLE_KEY_TISSUE_NATIVE_LIB_DIR = "tissuenativelibdir";
   public static final String LOG_TAG = "Tissue";
-  private static boolean sCheckLibUpdate;
+  private static boolean sCheckLibUpdate = false;
   
   public static String getNativeLibDir()
   {

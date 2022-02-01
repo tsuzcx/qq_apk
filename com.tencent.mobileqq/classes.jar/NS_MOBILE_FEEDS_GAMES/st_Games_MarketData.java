@@ -8,8 +8,8 @@ public final class st_Games_MarketData
   extends JceStruct
 {
   public String strZipUrl = "";
-  public long uBeginTime;
-  public long uEndTime;
+  public long uBeginTime = 0L;
+  public long uEndTime = 0L;
   
   public st_Games_MarketData() {}
   

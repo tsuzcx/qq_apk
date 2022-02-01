@@ -20,7 +20,7 @@ final class ThemeBackground$2
     }
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("key_use_rect", true);
-    Drawable localDrawable = this.val$context.getResources().getDrawable(2130838912);
+    Drawable localDrawable = this.val$context.getResources().getDrawable(2130838980);
     return VasApngUtil.getApngDrawable(this.val$app, this.val$themeBackground.path, "-conversation-", localDrawable, VasApngUtil.converstionTag, this.val$animateName, localBundle);
   }
 }

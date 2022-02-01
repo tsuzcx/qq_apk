@@ -15,33 +15,33 @@ public final class GetFriendListResp
   static ArrayList<FriendInfo> cache_vecFriendInfo = new ArrayList();
   static ArrayList<GroupInfo> cache_vecGroupInfo;
   static ArrayList<GroupInfo> cache_vecMSFGroupInfo;
-  public byte cHasOtherRespFlag;
-  public byte cRespType;
-  public byte cShowPcIcon;
-  public short errorCode;
-  public short friend_count;
-  public short getfriendCount;
-  public byte getgroupCount;
-  public byte group_count;
-  public byte groupid;
-  public byte groupstartIndex;
-  public byte ifGetGroupInfo;
-  public byte ifReflush;
-  public short online_friend_count;
-  public int reqtype;
-  public int result;
-  public long serverTime;
-  public short sqqOnLine_count;
-  public FriendInfo stSelfInfo;
-  public FriendListSubSrvRspCode stSubSrvRspCode;
-  public short startIndex;
-  public short totoal_friend_count;
-  public short totoal_group_count;
-  public long uin;
-  public ArrayList<FriendInfo> vecFriendInfo;
-  public ArrayList<GroupInfo> vecGroupInfo;
-  public ArrayList<GroupInfo> vecMSFGroupInfo;
-  public short wGetExtSnsRspCode;
+  public byte cHasOtherRespFlag = 0;
+  public byte cRespType = 0;
+  public byte cShowPcIcon = 0;
+  public short errorCode = 0;
+  public short friend_count = 0;
+  public short getfriendCount = 0;
+  public byte getgroupCount = 0;
+  public byte group_count = 0;
+  public byte groupid = 0;
+  public byte groupstartIndex = 0;
+  public byte ifGetGroupInfo = 0;
+  public byte ifReflush = 0;
+  public short online_friend_count = 0;
+  public int reqtype = 0;
+  public int result = 0;
+  public long serverTime = 0L;
+  public short sqqOnLine_count = 0;
+  public FriendInfo stSelfInfo = null;
+  public FriendListSubSrvRspCode stSubSrvRspCode = null;
+  public short startIndex = 0;
+  public short totoal_friend_count = 0;
+  public short totoal_group_count = 0;
+  public long uin = 0L;
+  public ArrayList<FriendInfo> vecFriendInfo = null;
+  public ArrayList<GroupInfo> vecGroupInfo = null;
+  public ArrayList<GroupInfo> vecMSFGroupInfo = null;
+  public short wGetExtSnsRspCode = 0;
   
   static
   {
@@ -161,7 +161,7 @@ public final class GetFriendListResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.GetFriendListResp
  * JD-Core Version:    0.7.0.1
  */

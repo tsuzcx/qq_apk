@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.lang.ref.WeakReference;
 
 class NativeVideoImage$RefreshJob
@@ -15,8 +16,8 @@ class NativeVideoImage$RefreshJob
   
   public void run()
   {
-    if ((QLog.isColorLevel()) && (this.this$0.debug)) {
-      QLog.d(NativeVideoImage.TAG + NativeVideoImage.access$000(this.this$0), 2, "RefreshJob.run(): refreshId:" + this.refreshId);
+    if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.this$0.debug)) {
+      URLDrawable.depImp.mLog.d(NativeVideoImage.TAG + NativeVideoImage.access$000(this.this$0), 2, "RefreshJob.run(): refreshId:" + this.refreshId);
     }
     NativeVideoImage.WrappedRefreshImg localWrappedRefreshImg = new NativeVideoImage.WrappedRefreshImg();
     localWrappedRefreshImg.img = this.this$0;

@@ -1,27 +1,26 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok;
 
 import android.util.Pair;
-import oha;
-import pne;
-import pnh;
-import ppg;
-import pvj;
+import com.tencent.biz.pubaccount.NativeAd.data.AdRequestData;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data.RIJDataManager;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data.RIJDataManager.Builder;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 
-public class RIJOnScrollListener$3
+class RIJOnScrollListener$3
   implements Runnable
 {
-  public RIJOnScrollListener$3(ppg paramppg, Pair paramPair) {}
+  RIJOnScrollListener$3(RIJOnScrollListener paramRIJOnScrollListener, Pair paramPair) {}
   
   public void run()
   {
-    oha localoha = new oha();
-    localoha.a = true;
-    pvj.a().a(this.this$0.a.a().b(), 3, ((Integer)this.a.first).intValue(), ((Integer)this.a.second).intValue(), localoha);
+    AdRequestData localAdRequestData = new AdRequestData();
+    localAdRequestData.a = true;
+    ReadInJoyLogicEngine.a().a(this.this$0.a.a().b(), 3, ((Integer)this.a.first).intValue(), ((Integer)this.a.second).intValue(), localAdRequestData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJOnScrollListener.3
  * JD-Core Version:    0.7.0.1
  */

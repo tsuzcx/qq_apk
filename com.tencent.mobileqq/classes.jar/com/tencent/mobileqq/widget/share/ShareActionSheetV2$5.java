@@ -10,16 +10,16 @@ class ShareActionSheetV2$5
   
   public void onShow(DialogInterface paramDialogInterface)
   {
-    ShareActionSheetV2.access$602(this.this$0, false);
-    if (ShareActionSheetV2.access$700(this.this$0) != null) {
-      ShareActionSheetV2.access$700(this.this$0).onShow(paramDialogInterface);
+    ShareActionSheetV2.a(this.a, false);
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onShow(paramDialogInterface);
     }
-    ShareActionSheetV2.access$800(this.this$0);
+    ShareActionSheetV2.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.5
  * JD-Core Version:    0.7.0.1
  */

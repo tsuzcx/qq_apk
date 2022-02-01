@@ -1,24 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.MobileQQ;
 
 class QQAppInterface$21
   implements Runnable
 {
-  QQAppInterface$21(QQAppInterface paramQQAppInterface, long paramLong, Intent paramIntent) {}
+  QQAppInterface$21(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.val$startTime;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.broadcast", 2, "runNext, ThreadManager.excute, cost=" + (l1 - l2));
-    }
-    QQAppInterface.access$3800(this.this$0, this.val$intent);
-    this.this$0.mRunningTaskNum.decrementAndGet();
-    QQAppInterface.access$3900(this.this$0);
+    QQToast.a(QQAppInterface.access$3400(this.this$0).getApplicationContext(), 2131690600, 5000).a();
   }
 }
 

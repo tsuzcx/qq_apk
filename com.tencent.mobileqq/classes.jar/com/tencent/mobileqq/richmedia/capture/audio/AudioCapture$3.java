@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.audio;
 
 import android.media.AudioRecord;
-import bbgd;
 import com.tencent.qphone.base.util.QLog;
 
 class AudioCapture$3
@@ -69,7 +68,7 @@ class AudioCapture$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.audio.AudioCapture.3
  * JD-Core Version:    0.7.0.1
  */

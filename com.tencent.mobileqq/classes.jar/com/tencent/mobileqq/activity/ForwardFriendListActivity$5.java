@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import bkxz;
+import com.tencent.util.InputMethodUtil;
 
 class ForwardFriendListActivity$5
   implements Runnable
@@ -10,12 +10,12 @@ class ForwardFriendListActivity$5
   
   public void run()
   {
-    bkxz.b(this.a);
+    InputMethodUtil.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardFriendListActivity.5
  * JD-Core Version:    0.7.0.1
  */

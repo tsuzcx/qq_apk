@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.text;
 
-import begp;
 import java.io.File;
 
 final class EmotcationConstants$1
@@ -16,7 +15,7 @@ final class EmotcationConstants$1
     if (this.val$emojiFile.exists()) {
       this.val$emojiFile.delete();
     }
-    begp.a(this.val$zipfile);
+    AppleEmojiManager.unzip(this.val$zipfile);
   }
 }
 

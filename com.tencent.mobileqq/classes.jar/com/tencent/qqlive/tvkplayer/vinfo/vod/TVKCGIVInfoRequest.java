@@ -63,43 +63,148 @@ public class TVKCGIVInfoRequest
     executeRequest();
   }
   
-  private void fillClipAndDtypeParams(Map<String, String> paramMap, TVKCGIVInfoRequestParams paramTVKCGIVInfoRequestParams)
+  private void fillClipAndDtypeParams(Map<String, String> paramMap)
   {
-    if ((paramMap == null) || (paramTVKCGIVInfoRequestParams == null)) {
+    if ((paramMap == null) || (this.mParams == null)) {
       return;
     }
-    if (paramTVKCGIVInfoRequestParams.getDlType() == 0)
+    if (this.mParams.getDlType() == 0)
     {
       paramMap.put("clip", "0");
       paramMap.put("dtype", "3");
       return;
     }
-    if (paramTVKCGIVInfoRequestParams.getDlType() == 4)
+    if (this.mParams.getDlType() == 4)
     {
       paramMap.put("clip", "2");
       paramMap.put("dtype", "1");
       return;
     }
-    if (paramTVKCGIVInfoRequestParams.getDlType() == 5)
+    if (this.mParams.getDlType() == 5)
     {
       paramMap.put("clip", "3");
       paramMap.put("dtype", "1");
       return;
     }
-    if (paramTVKCGIVInfoRequestParams.getDlType() == 1)
+    if (this.mParams.getDlType() == 1)
     {
       paramMap.put("clip", "4");
       paramMap.put("dtype", "1");
       return;
     }
-    if (paramTVKCGIVInfoRequestParams.getDlType() == 3)
+    if (this.mParams.getDlType() == 3)
     {
       paramMap.put("clip", "0");
       paramMap.put("dtype", "3");
       return;
     }
     paramMap.put("clip", "0");
-    paramMap.put("dtype", String.valueOf(paramTVKCGIVInfoRequestParams.getDlType()));
+    paramMap.put("dtype", String.valueOf(this.mParams.getDlType()));
+  }
+  
+  private void fillEncryptVerParam(Map<String, String> paramMap)
+  {
+    if (65 == this.mParams.getEncrypVer())
+    {
+      paramMap.put("encryptVer", "4.1");
+      return;
+    }
+    if (66 == this.mParams.getEncrypVer())
+    {
+      paramMap.put("encryptVer", "4.2");
+      return;
+    }
+    paramMap.put("encryptVer", "5.1");
+  }
+  
+  private void fillUpcParam(Map<String, String> paramMap)
+  {
+    if (!TextUtils.isEmpty(this.mParams.getUpc()))
+    {
+      String[] arrayOfString1;
+      int i;
+      label48:
+      String[] arrayOfString2;
+      if (this.mParams.getUpc().contains("&"))
+      {
+        arrayOfString1 = this.mParams.getUpc().split("&");
+        int j = arrayOfString1.length;
+        i = 0;
+        if (i >= j) {
+          return;
+        }
+        arrayOfString2 = arrayOfString1[i].split("=");
+        if (arrayOfString2.length != 2) {
+          break label113;
+        }
+        paramMap.put(arrayOfString2[0], arrayOfString2[1]);
+      }
+      for (;;)
+      {
+        i += 1;
+        break label48;
+        arrayOfString1 = new String[1];
+        arrayOfString1[0] = this.mParams.getUpc();
+        break;
+        label113:
+        if (arrayOfString2.length == 1) {
+          paramMap.put(arrayOfString2[0], "");
+        }
+      }
+    }
+  }
+  
+  private int findAppDrmType(Map<String, String> paramMap)
+  {
+    int j = 0;
+    int i = j;
+    if (paramMap != null)
+    {
+      i = j;
+      if (!paramMap.isEmpty())
+      {
+        Iterator localIterator = paramMap.entrySet().iterator();
+        i = 0;
+        for (;;)
+        {
+          j = i;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          i = j;
+          if (localEntry != null)
+          {
+            i = j;
+            try
+            {
+              if (localEntry.getKey() != null)
+              {
+                i = j;
+                if (localEntry.getValue() != null) {
+                  if (((String)localEntry.getKey()).equalsIgnoreCase("drm"))
+                  {
+                    i = TVKUtils.optInt((String)localEntry.getValue(), 0);
+                  }
+                  else
+                  {
+                    paramMap.put(localEntry.getKey(), localEntry.getValue());
+                    i = j;
+                  }
+                }
+              }
+            }
+            catch (Throwable localThrowable)
+            {
+              TVKLogUtil.e("MediaPlayerMgr[TVKCGIVInfoRequest.java]", localThrowable, "packRequestParams failed");
+              i = j;
+            }
+          }
+        }
+        i = j;
+      }
+    }
+    return i;
   }
   
   private String genCkey(TVKCGIVInfoRequestParams paramTVKCGIVInfoRequestParams, Map<String, String> paramMap)
@@ -136,7 +241,7 @@ public class TVKCGIVInfoRequest
       if (paramMap != null)
       {
         if ((!paramMap.containsKey("toushe")) || (!paramMap.containsKey("from_platform"))) {
-          break label323;
+          break label330;
         }
         localObject2[0] = 16;
         localObject2[1] = TVKUtils.optInt((String)paramMap.get("from_platform"), j);
@@ -149,7 +254,7 @@ public class TVKCGIVInfoRequest
       return this.mCKey;
       localObject2[0] = 4;
       break;
-      label323:
+      label330:
       if (paramMap.containsKey("sptest")) {
         localObject2[0] = 64;
       } else if (paramMap.containsKey("ottflag")) {
@@ -363,7 +468,6 @@ public class TVKCGIVInfoRequest
   
   private Map<String, String> packRequestParams()
   {
-    int j = 0;
     HashMap localHashMap = new HashMap();
     localHashMap.put("vid", this.mParams.getVid());
     localHashMap.put("charge", String.valueOf(this.mParams.isCharge()));
@@ -373,131 +477,39 @@ public class TVKCGIVInfoRequest
     localHashMap.put("sphls", "1");
     localHashMap.put("defn", this.mParams.getFormat());
     localHashMap.put("ipstack", String.valueOf(this.mParams.getipstack()));
-    fillClipAndDtypeParams(localHashMap, this.mParams);
-    if ((this.mParams.getDlType() == 0) || (this.mParams.getDlType() == 3))
-    {
+    fillClipAndDtypeParams(localHashMap);
+    if ((this.mParams.getDlType() == 0) || (this.mParams.getDlType() == 3)) {
       if ((this.mParams.getCkeyExtraParamsMap() != null) && (!this.mParams.getCkeyExtraParamsMap().isEmpty())) {
-        break label423;
+        break label420;
       }
-      i = 1;
+    }
+    label420:
+    for (int i = 1;; i = 0)
+    {
       if (i != 0)
       {
         localHashMap.put("sphls", "2");
         localHashMap.put("spgzip", "1");
       }
-    }
-    if (this.mParams.getPlayerCapacity() > 0) {
-      localHashMap.put("device", String.valueOf(this.mParams.getPlayerCapacity()));
-    }
-    if (this.mParams.getAppVer() != null) {
-      localHashMap.put("appVer", this.mParams.getAppVer());
-    }
-    label326:
-    label370:
-    label376:
-    Object localObject2;
-    if (65 == this.mParams.getEncrypVer())
-    {
-      localHashMap.put("encryptVer", "4.1");
-      if (TextUtils.isEmpty(this.mParams.getUpc())) {
-        break label516;
+      if (this.mParams.getPlayerCapacity() > 0) {
+        localHashMap.put("device", String.valueOf(this.mParams.getPlayerCapacity()));
       }
-      if (!this.mParams.getUpc().contains("&")) {
-        break label472;
+      if (this.mParams.getAppVer() != null) {
+        localHashMap.put("appVer", this.mParams.getAppVer());
       }
-      localObject1 = this.mParams.getUpc().split("&");
-      int k = localObject1.length;
-      i = 0;
-      if (i >= k) {
-        break label516;
+      fillEncryptVerParam(localHashMap);
+      fillUpcParam(localHashMap);
+      Map localMap = this.mParams.getExtraParamsMap();
+      localHashMap.put("drm", String.valueOf(findAppDrmType(localMap) + this.mParams.getDrm()));
+      localHashMap.put("cKey", genCkey(this.mParams, localMap));
+      localHashMap.put("newnettype", String.valueOf(this.mParams.getNetworkType()));
+      localHashMap.put("otype", "xml");
+      if (!TextUtils.isEmpty(this.mParams.getWxOpenId())) {
+        localHashMap.put("openid", this.mParams.getWxOpenId());
       }
-      localObject2 = localObject1[i].split("=");
-      if (localObject2.length != 2) {
-        break label492;
-      }
-      localHashMap.put(localObject2[0], localObject2[1]);
+      localHashMap.put("spwm", "1");
+      return localHashMap;
     }
-    for (;;)
-    {
-      i += 1;
-      break label376;
-      label423:
-      i = 0;
-      break;
-      if (66 == this.mParams.getEncrypVer())
-      {
-        localHashMap.put("encryptVer", "4.2");
-        break label326;
-      }
-      localHashMap.put("encryptVer", "5.1");
-      break label326;
-      label472:
-      localObject1 = new String[1];
-      localObject1[0] = this.mParams.getUpc();
-      break label370;
-      label492:
-      if (localObject2.length == 1) {
-        localHashMap.put(localObject2[0], "");
-      }
-    }
-    label516:
-    Object localObject1 = this.mParams.getExtraParamsMap();
-    int i = j;
-    if (localObject1 != null)
-    {
-      i = j;
-      if (!((Map)localObject1).isEmpty())
-      {
-        localObject2 = ((Map)localObject1).entrySet().iterator();
-        i = 0;
-        for (;;)
-        {
-          j = i;
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-          Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-          i = j;
-          if (localEntry != null)
-          {
-            i = j;
-            try
-            {
-              if (localEntry.getKey() != null)
-              {
-                i = j;
-                if (localEntry.getValue() != null) {
-                  if (((String)localEntry.getKey()).equalsIgnoreCase("drm"))
-                  {
-                    i = TVKUtils.optInt((String)localEntry.getValue(), 0);
-                  }
-                  else
-                  {
-                    localHashMap.put(localEntry.getKey(), localEntry.getValue());
-                    i = j;
-                  }
-                }
-              }
-            }
-            catch (Throwable localThrowable)
-            {
-              localThrowable.printStackTrace();
-              i = j;
-            }
-          }
-        }
-        i = j;
-      }
-    }
-    localHashMap.put("drm", String.valueOf(i + this.mParams.getDrm()));
-    localHashMap.put("cKey", genCkey(this.mParams, (Map)localObject1));
-    localHashMap.put("newnettype", String.valueOf(this.mParams.getNetworkType()));
-    localHashMap.put("otype", "xml");
-    if (!TextUtils.isEmpty(this.mParams.getWxOpenId())) {
-      localHashMap.put("openid", this.mParams.getWxOpenId());
-    }
-    localHashMap.put("spwm", "1");
-    return localHashMap;
   }
   
   public void cancelRequest()
@@ -535,7 +547,7 @@ public class TVKCGIVInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVInfoRequest
  * JD-Core Version:    0.7.0.1
  */

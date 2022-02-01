@@ -1,32 +1,31 @@
 package com.tencent.mobileqq.profilecard.bussiness.personalitysign;
 
-import azru;
-import babn;
-import babu;
-import babv;
-import bdla;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profile.SigTopicManager;
+import com.tencent.mobileqq.profilecard.bussiness.personalitysign.utils.UiUtils;
+import com.tencent.mobileqq.profilecard.bussiness.personalitysign.utils.UiUtils.Companion;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class ProfileContentSignComponent$2
+class ProfileContentSignComponent$2
   implements Runnable
 {
-  public ProfileContentSignComponent$2(babn parambabn) {}
+  ProfileContentSignComponent$2(ProfileContentSignComponent paramProfileContentSignComponent) {}
   
   public void run()
   {
     int i;
-    if ((babn.a(this.this$0) != null) && (!babn.b(this.this$0).isFinishing()))
+    if ((ProfileContentSignComponent.access$1300(this.this$0) != null) && (!ProfileContentSignComponent.access$1400(this.this$0).isFinishing()))
     {
-      i = azru.a().a(babn.a(this.this$0), babn.a(this.this$0), babn.b(this.this$0), babn.a(this.this$0), babn.c(this.this$0), babn.b(this.this$0));
+      i = SigTopicManager.a().a(ProfileContentSignComponent.access$1500(this.this$0), ProfileContentSignComponent.access$1600(this.this$0), ProfileContentSignComponent.access$1700(this.this$0), ProfileContentSignComponent.access$1800(this.this$0), ProfileContentSignComponent.access$1900(this.this$0), ProfileContentSignComponent.access$2000(this.this$0));
       if (i != -2147483648) {}
     }
     else
     {
       return;
     }
-    babu.a.a(babn.a(this.this$0), -i, 0);
-    azru.a().a(babn.g(this.this$0));
-    bdla.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
+    UiUtils.Companion.showProfileSignGuideAsDropDown(ProfileContentSignComponent.access$1500(this.this$0), -i, 0);
+    SigTopicManager.a().a(ProfileContentSignComponent.access$2100(this.this$0));
+    ReportController.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
   }
 }
 

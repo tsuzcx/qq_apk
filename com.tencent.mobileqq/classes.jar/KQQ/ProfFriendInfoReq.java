@@ -9,9 +9,9 @@ public final class ProfFriendInfoReq
   extends JceStruct
 {
   static ArrayList<Short> cache_vFieldIdList;
-  public byte cDataCode;
-  public long uFriendUin;
-  public ArrayList<Short> vFieldIdList;
+  public byte cDataCode = 0;
+  public long uFriendUin = 0L;
+  public ArrayList<Short> vFieldIdList = null;
   
   public ProfFriendInfoReq() {}
   

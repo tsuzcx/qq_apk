@@ -1,42 +1,41 @@
 package com.tencent.mobileqq.qassistant.audio;
 
 import android.media.AudioRecord;
-import baja;
-import bakl;
-import balq;
+import com.tencent.mobileqq.qassistant.core.AssistantUtils;
+import com.tencent.mobileqq.qassistant.listener.IRecordEventListener;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class AudioNewRecorder$2
+class AudioNewRecorder$2
   implements Runnable
 {
-  public AudioNewRecorder$2(baja parambaja) {}
+  AudioNewRecorder$2(AudioNewRecorder paramAudioNewRecorder) {}
   
   public void run()
   {
     int i = 0;
-    if ((baja.a(this.this$0) == null) || (baja.a(this.this$0).getState() != 1))
+    if ((AudioNewRecorder.a(this.this$0) == null) || (AudioNewRecorder.a(this.this$0).getState() != 1))
     {
-      bakl.a("AudioNewRecorder", "session, doRecord, stateError");
+      AssistantUtils.a("AudioNewRecorder", "session, doRecord, stateError");
       return;
     }
     for (;;)
     {
       try
       {
-        if (baja.a(this.this$0) != null) {
-          baja.a(this.this$0).b(System.currentTimeMillis());
+        if (AudioNewRecorder.a(this.this$0) != null) {
+          AudioNewRecorder.a(this.this$0).b(System.currentTimeMillis());
         }
-        baja.a(this.this$0).startRecording();
-        if (baja.a(this.this$0) == null) {
+        AudioNewRecorder.a(this.this$0).startRecording();
+        if (AudioNewRecorder.a(this.this$0) == null) {
           break label216;
         }
-        j = baja.a(this.this$0).a();
-        i = baja.a(this.this$0).b();
-        baja.a(this.this$0, j, i);
+        j = AudioNewRecorder.a(this.this$0).a();
+        i = AudioNewRecorder.a(this.this$0).b();
+        AudioNewRecorder.a(this.this$0, j, i);
       }
       catch (InterruptedException localInterruptedException)
       {
-        baja.a(this.this$0).a(localInterruptedException.getMessage());
+        AudioNewRecorder.a(this.this$0).a(localInterruptedException.getMessage());
         localInterruptedException.printStackTrace();
         this.this$0.a();
         this.this$0.b();
@@ -47,10 +46,10 @@ public class AudioNewRecorder$2
         this.this$0.a();
         this.this$0.b();
       }
-      if (baja.a(this.this$0) == null) {
+      if (AudioNewRecorder.a(this.this$0) == null) {
         break;
       }
-      baja.a(this.this$0).a(this.this$0.a.get());
+      AudioNewRecorder.a(this.this$0).a(this.this$0.a.get());
       return;
       label216:
       int j = 0;

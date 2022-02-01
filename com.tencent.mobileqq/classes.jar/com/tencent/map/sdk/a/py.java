@@ -65,7 +65,7 @@ public final class py
     return this.c.a(paramGL10);
   }
   
-  protected final boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
+  public final boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
     if ((this.c != null) && (this.c.a(paramMotionEvent))) {
       return true;
@@ -147,7 +147,7 @@ public final class py
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.py
  * JD-Core Version:    0.7.0.1
  */

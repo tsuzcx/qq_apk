@@ -1,0 +1,22 @@
+package com.tencent.biz.pubaccount.api.impl;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class PublicAccountJavascriptInterfaceImpl$8
+  implements DialogInterface.OnClickListener
+{
+  PublicAccountJavascriptInterfaceImpl$8(PublicAccountJavascriptInterfaceImpl paramPublicAccountJavascriptInterfaceImpl, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.hasAsked = true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountJavascriptInterfaceImpl.8
+ * JD-Core Version:    0.7.0.1
+ */

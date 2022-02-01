@@ -8,7 +8,7 @@ final class QQText$1
 {
   public Spannable newSpannable(CharSequence paramCharSequence)
   {
-    if ((!QQText.IS_MOTO_ME) && ((paramCharSequence instanceof QQText))) {
+    if ((paramCharSequence instanceof QQText)) {
       try
       {
         QQText localQQText = (QQText)((QQText)paramCharSequence).clone();

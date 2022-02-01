@@ -7,32 +7,29 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import audn;
-import aumj;
-import bgyd;
-import bogd;
-import boki;
-import bolc;
-import bolg;
-import bpcd;
-import bpce;
-import bpcf;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
+import com.tencent.mobileqq.flashchat.OnHolderItemClickListener;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.util.AccessibilityUtils;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.predownload.QIMPredownManager;
+import dov.com.qq.im.capture.text.DynamicTextBuilder;
 import dov.com.qq.im.capture.text.DynamicTextConfigManager;
 import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.IDynamicTextResDownloadCallback;
 
 public class EditTextPanel
   extends RelativeLayout
-  implements aumj
+  implements OnHolderItemClickListener
 {
   public static String a;
   int jdField_a_of_type_Int = -1;
   EditText jdField_a_of_type_AndroidWidgetEditText;
-  private bolg jdField_a_of_type_Bolg = new bpcd(this);
-  bpcf jdField_a_of_type_Bpcf;
-  public EditTextEffectView a;
+  private DynamicTextConfigManager.IDynamicTextResDownloadCallback jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback = new EditTextPanel.2(this);
+  EditTextEffectView jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView;
+  EditTextPanel.EditTextPanelListener jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel$EditTextPanelListener;
   int b = -1;
   int c;
   int d = 0;
@@ -58,8 +55,8 @@ public class EditTextPanel
   
   private void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, int paramInt)
   {
-    if (this.jdField_a_of_type_Bpcf != null) {
-      this.jdField_a_of_type_Bpcf.a(paramDynamicTextConfigBean, paramInt);
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel$EditTextPanelListener != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel$EditTextPanelListener.a(paramDynamicTextConfigBean, paramInt);
     }
   }
   
@@ -131,16 +128,16 @@ public class EditTextPanel
     this.d = paramInt1;
     DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = a(paramInt2, paramInt1);
     if (localDynamicTextConfigBean != null) {
-      if (!AppSetting.c) {}
+      if (!AppSetting.d) {}
     }
     while (!QLog.isColorLevel()) {
       try
       {
-        bgyd.a(paramView, bolc.a(localDynamicTextConfigBean.text_id, 0));
-        DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bogd.a(7);
-        boki localboki = (boki)bogd.a(14);
+        AccessibilityUtils.a(paramView, DynamicTextBuilder.a(localDynamicTextConfigBean.text_id, 0));
+        DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)QIMManager.a(7);
+        QIMPredownManager localQIMPredownManager = (QIMPredownManager)QIMManager.a(14);
         if (localDynamicTextConfigBean != null) {
-          localboki.a(String.valueOf(localDynamicTextConfigBean.text_id), 5);
+          localQIMPredownManager.a(String.valueOf(localDynamicTextConfigBean.text_id), 5);
         }
         if (localDynamicTextConfigManager.a(localDynamicTextConfigBean))
         {
@@ -156,10 +153,10 @@ public class EditTextPanel
         }
         if (NetConnInfoCenter.isMobileConn())
         {
-          audn.a(paramView.getContext(), 2131698010, 2131698009, new bpce(this, localException, localDynamicTextConfigBean));
+          FMDialogUtil.a(paramView.getContext(), 2131698286, 2131698285, new EditTextPanel.3(this, localException, localDynamicTextConfigBean));
           return;
         }
-        localException.a(localDynamicTextConfigBean, this.jdField_a_of_type_Bolg);
+        localException.a(localDynamicTextConfigBean, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback);
         return;
       }
     }
@@ -195,14 +192,14 @@ public class EditTextPanel
     }
   }
   
-  public void setPanelListener(bpcf parambpcf)
+  public void setPanelListener(EditTextPanel.EditTextPanelListener paramEditTextPanelListener)
   {
-    this.jdField_a_of_type_Bpcf = parambpcf;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel$EditTextPanelListener = paramEditTextPanelListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel
  * JD-Core Version:    0.7.0.1
  */

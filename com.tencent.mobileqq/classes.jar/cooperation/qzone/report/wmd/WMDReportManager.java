@@ -2,10 +2,10 @@ package cooperation.qzone.report.wmd;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import arvg;
-import bcus;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.QZoneCommonServlet;
 import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic.WMDConfig;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneCommonRequest;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class WMDReportManager
   private static final String REPORT_TIME_INTERNAL = "reportTimeInternal";
   private static final String TAG = "WMDReportManager";
   private static WMDReportManager reportManager;
-  private long lastReportTime;
+  private long lastReportTime = 0L;
   private int reportBatchNum;
   private String reportId;
   private long reportTimeInternal;
@@ -30,11 +30,11 @@ public class WMDReportManager
   
   public WMDReportManager()
   {
-    bcus localbcus = new bcus();
-    localbcus.a();
-    this.reportTimeInternal = (localbcus.d * 1000);
-    this.reportBatchNum = localbcus.c;
-    this.reportId = localbcus.a;
+    QZoneUnreadServletLogic.WMDConfig localWMDConfig = new QZoneUnreadServletLogic.WMDConfig();
+    localWMDConfig.a();
+    this.reportTimeInternal = (localWMDConfig.d * 1000);
+    this.reportBatchNum = localWMDConfig.c;
+    this.reportId = localWMDConfig.a;
   }
   
   public static WMDReportManager getInstance()
@@ -112,7 +112,7 @@ public class WMDReportManager
       this.storedMsgs.clear();
       this.lastReportTime = System.currentTimeMillis();
       ??? = new WMDReportReq(this.reportId, (ArrayList)localObject2, null);
-      localObject2 = new QzoneCommonIntent(BaseApplicationImpl.getContext(), arvg.class);
+      localObject2 = new QzoneCommonIntent(BaseApplicationImpl.getContext(), QZoneCommonServlet.class);
       ((QzoneCommonIntent)localObject2).setRequest((QZoneCommonRequest)???);
       ((QzoneCommonIntent)localObject2).setObserver(this);
       BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject2);
@@ -122,7 +122,7 @@ public class WMDReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.wmd.WMDReportManager
  * JD-Core Version:    0.7.0.1
  */

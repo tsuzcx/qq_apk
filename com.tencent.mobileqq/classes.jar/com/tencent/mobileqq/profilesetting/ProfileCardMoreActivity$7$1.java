@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.profilesetting;
 
 import android.text.TextUtils;
-import bagk;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 
-public class ProfileCardMoreActivity$7$1
+class ProfileCardMoreActivity$7$1
   implements Runnable
 {
-  public ProfileCardMoreActivity$7$1(bagk parambagk) {}
+  ProfileCardMoreActivity$7$1(ProfileCardMoreActivity.7 param7) {}
   
   public void run()
   {

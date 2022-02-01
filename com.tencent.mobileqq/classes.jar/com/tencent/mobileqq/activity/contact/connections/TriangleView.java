@@ -14,9 +14,9 @@ import com.tencent.mobileqq.utils.ViewUtils;
 public class TriangleView
   extends View
 {
-  public static final int a = ViewUtils.dip2px(7.0F);
-  public static final int b = ViewUtils.dip2px(2.0F);
-  public static final int c = ViewUtils.dip2px(2.0F);
+  public static final int a = ViewUtils.a(7.0F);
+  public static final int b = ViewUtils.a(2.0F);
+  public static final int c = ViewUtils.a(2.0F);
   private int d = 1;
   private int e = Color.parseColor("#00CAFC");
   
@@ -30,7 +30,7 @@ public class TriangleView
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawColor(0);
@@ -72,7 +72,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.TriangleView
  * JD-Core Version:    0.7.0.1
  */

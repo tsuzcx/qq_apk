@@ -4,12 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import vor;
 
 public class WSVerticalVideoRelativeLayout
   extends RelativeLayout
 {
-  private vor a;
+  private WSVerticalVideoRelativeLayout.DispatchTouchEventListener a;
   
   public WSVerticalVideoRelativeLayout(Context paramContext)
   {
@@ -29,14 +28,14 @@ public class WSVerticalVideoRelativeLayout
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setDispatchTouchEventListener(vor paramvor)
+  public void setDispatchTouchEventListener(WSVerticalVideoRelativeLayout.DispatchTouchEventListener paramDispatchTouchEventListener)
   {
-    this.a = paramvor;
+    this.a = paramDispatchTouchEventListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class QQStoryVideoPlayerErrorView
   extends FrameLayout
@@ -29,7 +29,7 @@ public class QQStoryVideoPlayerErrorView
   
   public void a()
   {
-    this.a.setText(anvx.a(2131710548));
+    this.a.setText(HardCodeUtil.a(2131711064));
     this.a.setVisibility(0);
     this.b.setVisibility(8);
   }
@@ -42,9 +42,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559547, this, true);
-    this.a = ((TextView)paramContext.findViewById(2131376615));
-    this.b = ((TextView)paramContext.findViewById(2131378963));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559619, this, true);
+    this.a = ((TextView)paramContext.findViewById(2131377011));
+    this.b = ((TextView)paramContext.findViewById(2131379394));
   }
   
   public void setOnRetryClickListener(View.OnClickListener paramOnClickListener)

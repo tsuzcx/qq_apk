@@ -8,7 +8,7 @@ import LBS_V2_PROTOCOL.Wifi_V2;
 import NS_MOBILE_OPERATION.LbsInfo;
 import android.text.TextUtils;
 import com.tencent.map.geolocation.TencentPoi;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.soso.location.data.SosoLocation;
 import cooperation.qzone.model.GpsInfo4LocalImage;
 import cooperation.qzone.model.LocalImageShootInfo;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class LbsDataV2
   public static int LBS_REQUEST_APPID = 12103;
   public static int POI_DEFAULT_DISTANCE = 500;
   
-  public static LbsDataV2.GpsInfo convertFromSoso(SosoInterface.SosoLocation paramSosoLocation)
+  public static LbsDataV2.GpsInfo convertFromSoso(SosoLocation paramSosoLocation)
   {
     if (paramSosoLocation == null) {
       return null;
@@ -193,7 +193,7 @@ public class LbsDataV2
     return localCellInfo;
   }
   
-  public static ArrayList<LbsDataV2.PoiInfo> fromSosoLocation(SosoInterface.SosoLocation paramSosoLocation)
+  public static ArrayList<LbsDataV2.PoiInfo> fromSosoLocation(SosoLocation paramSosoLocation)
   {
     ArrayList localArrayList = new ArrayList();
     if ((paramSosoLocation != null) && (paramSosoLocation.poi != null) && (!paramSosoLocation.poi.isEmpty()))
@@ -295,7 +295,7 @@ public class LbsDataV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2
  * JD-Core Version:    0.7.0.1
  */

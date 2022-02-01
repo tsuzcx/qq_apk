@@ -5,12 +5,11 @@ import android.view.View.OnLayoutChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.utils.ViewUtils;
-import qwb;
 
 public class NativeMiddleBodyView$RadiusView
   extends RelativeLayout
 {
-  final int jdField_a_of_type_Int = ViewUtils.dip2px(8.0F);
+  final int jdField_a_of_type_Int = ViewUtils.a(8.0F);
   String jdField_a_of_type_JavaLangString = null;
   String b = null;
   String c = null;
@@ -23,7 +22,7 @@ public class NativeMiddleBodyView$RadiusView
   
   public View.OnLayoutChangeListener a()
   {
-    return new qwb(this);
+    return new NativeMiddleBodyView.RadiusView.1(this);
   }
   
   public void setBottomLeftRadius(String paramString)
@@ -75,7 +74,7 @@ public class NativeMiddleBodyView$RadiusView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView.RadiusView
  * JD-Core Version:    0.7.0.1
  */

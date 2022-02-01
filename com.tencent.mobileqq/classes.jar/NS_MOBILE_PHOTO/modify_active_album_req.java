@@ -13,12 +13,12 @@ public final class modify_active_album_req
   static ArrayList<active_photo> cache_added_photo;
   static Map<String, String> cache_map_params = new HashMap();
   static shuoshuo_privacy cache_ss_info = new shuoshuo_privacy();
-  public ArrayList<active_photo> added_photo;
-  public Map<String, String> map_params;
+  public ArrayList<active_photo> added_photo = null;
+  public Map<String, String> map_params = null;
   public String mgz_id = "";
-  public long pic_total;
-  public shuoshuo_privacy ss_info;
-  public long uin;
+  public long pic_total = 0L;
+  public shuoshuo_privacy ss_info = null;
+  public long uin = 0L;
   
   static
   {

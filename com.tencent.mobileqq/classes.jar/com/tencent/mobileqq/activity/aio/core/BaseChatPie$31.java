@@ -1,29 +1,31 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class BaseChatPie$31
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  BaseChatPie$31(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$31(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.this$0.mTitleText.setText(this.this$0.sessionInfo.curFriendNick);
-    if (AppSetting.c)
+    switch (paramInt)
     {
-      String str = this.this$0.mTitleText.getText().toString();
-      this.this$0.mTitleText.setContentDescription(str);
-      this.this$0.getActivity().setTitle(this.this$0.mTitleText.getText());
+    default: 
+      return;
+    case 0: 
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      return;
     }
+    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_Boolean);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.31
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ public final class UniCheckReq
 {
   static LoginInfo cache_stLogin = new LoginInfo();
   static ArrayList<UniBusinessItem> cache_uniBusinessItemList = new ArrayList();
-  public LoginInfo stLogin;
-  public ArrayList<UniBusinessItem> uniBusinessItemList;
+  public LoginInfo stLogin = null;
+  public ArrayList<UniBusinessItem> uniBusinessItemList = null;
   
   static
   {

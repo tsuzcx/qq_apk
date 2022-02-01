@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.fragment;
 
-import bczy;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
 
 class CaptureQmcfSoDownloadFragmentAllWaite$4
   implements Runnable
@@ -9,12 +9,12 @@ class CaptureQmcfSoDownloadFragmentAllWaite$4
   
   public void run()
   {
-    bczy.a().b();
+    GestureMgr.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite.4
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ public final class PicTagInfo
   extends JceStruct
 {
   static ArrayList<TagInfo> cache_vecTagInfo = new ArrayList();
-  public int iCode;
+  public int iCode = 0;
   public String strPicId = "";
   public String strPicTagId = "";
-  public ArrayList<TagInfo> vecTagInfo;
+  public ArrayList<TagInfo> vecTagInfo = null;
   
   static
   {

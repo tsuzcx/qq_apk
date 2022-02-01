@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.ark;
 
-import apxp;
-import apxy;
-import apyb;
 import java.util.ArrayList;
 
-public class ArkAppCGI$10
+class ArkAppCGI$10
   implements Runnable
 {
-  public ArkAppCGI$10(apxp paramapxp, apyb paramapyb, boolean paramBoolean, byte[] paramArrayOfByte) {}
+  ArkAppCGI$10(ArkAppCGI paramArkAppCGI, ArkAppCGI.QueryTask paramQueryTask, boolean paramBoolean, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    synchronized (apxp.a(this.this$0))
+    synchronized (ArkAppCGI.a(this.this$0))
     {
-      apxp.a(this.this$0).remove(this.jdField_a_of_type_Apyb);
-      this.jdField_a_of_type_Apyb.a.a(this.jdField_a_of_type_Apyb, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
+      ArkAppCGI.a(this.this$0).remove(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$QueryTask);
+      this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$QueryTask.a.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$QueryTask, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
       return;
     }
   }

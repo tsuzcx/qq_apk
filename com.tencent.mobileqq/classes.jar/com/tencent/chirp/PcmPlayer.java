@@ -1,6 +1,5 @@
 package com.tencent.chirp;
 
-import aaun;
 import android.content.Context;
 import android.media.AudioRecord;
 import android.media.AudioTrack;
@@ -9,19 +8,19 @@ import com.tencent.qphone.base.util.QLog;
 public class PcmPlayer
 {
   private int jdField_a_of_type_Int = 44100;
-  private aaun jdField_a_of_type_Aaun;
   private Context jdField_a_of_type_AndroidContentContext;
   private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
   private PcmPlayer.PlayThread jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread;
+  private PcmPlayer.QQPlayerListener jdField_a_of_type_ComTencentChirpPcmPlayer$QQPlayerListener;
   private String jdField_a_of_type_JavaLangString;
-  private int b;
+  private int b = 0;
   private int c = 2;
   private int d = 2;
   
-  public PcmPlayer(Context paramContext, aaun paramaaun, int paramInt, String paramString)
+  public PcmPlayer(Context paramContext, PcmPlayer.QQPlayerListener paramQQPlayerListener, int paramInt, String paramString)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aaun = paramaaun;
+    this.jdField_a_of_type_ComTencentChirpPcmPlayer$QQPlayerListener = paramQQPlayerListener;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
@@ -40,9 +39,9 @@ public class PcmPlayer
         this.jdField_a_of_type_AndroidMediaAudioTrack.play();
         this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread = new PcmPlayer.PlayThread(this, null);
         this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread.start();
-        if (this.jdField_a_of_type_Aaun != null)
+        if (this.jdField_a_of_type_ComTencentChirpPcmPlayer$QQPlayerListener != null)
         {
-          this.jdField_a_of_type_Aaun.l();
+          this.jdField_a_of_type_ComTencentChirpPcmPlayer$QQPlayerListener.l();
           return;
         }
       }
@@ -63,7 +62,7 @@ public class PcmPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.chirp.PcmPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import bcfi;
-import bclx;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
 import com.tencent.qphone.base.util.QLog;
@@ -13,24 +12,24 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class NetSearchEngine$ParseTask
+class NetSearchEngine$ParseTask
   implements Runnable
 {
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<bclx> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ISearchListener> jdField_a_of_type_JavaLangRefWeakReference;
   private ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList;
   
-  public NetSearchEngine$ParseTask(String paramString, ArrayList<byte[]> paramArrayList, bclx parambclx)
+  public NetSearchEngine$ParseTask(String paramString, ArrayList<byte[]> paramArrayList, ISearchListener paramISearchListener)
   {
     this.jdField_a_of_type_JavaLangString = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = parambclx;
+    this.jdField_a_of_type_JavaUtilArrayList = paramISearchListener;
     Object localObject;
     if (localObject != null) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
     }
   }
   
-  private List<bcfi> a(String paramString, ArrayList<byte[]> paramArrayList)
+  private List<ISearchResultGroupModel> a(String paramString, ArrayList<byte[]> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
       return null;
@@ -104,16 +103,16 @@ public class NetSearchEngine$ParseTask
     List localList = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList);
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bclx localbclx = (bclx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbclx != null) {
-        localbclx.a(localList, 1);
+      ISearchListener localISearchListener = (ISearchListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localISearchListener != null) {
+        localISearchListener.a(localList, 1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask
  * JD-Core Version:    0.7.0.1
  */

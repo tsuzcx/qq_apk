@@ -15,7 +15,7 @@ public class MessageForSystemMsg
 {
   public static final String TAG = "MessageForSystemMsg";
   public int mSysmsgMenuFlag = 0;
-  public structmsg.StructMsg structMsg;
+  public structmsg.StructMsg structMsg = null;
   
   public MessageForSystemMsg()
   {
@@ -56,13 +56,13 @@ public class MessageForSystemMsg
       }
       QLog.i("MessageForSystemMsg", 2, String.format("getSysMsgDesc, msg: %s, suffix: %s", new Object[] { Integer.valueOf(i), paramResources }));
       return paramResources;
-      paramResources = paramResources.getString(2131689583);
+      paramResources = paramResources.getString(2131689590);
+      break label87;
+      paramResources = paramResources.getString(2131689499);
       break label87;
       paramResources = paramResources.getString(2131689498);
       break label87;
-      paramResources = paramResources.getString(2131689497);
-      break label87;
-      paramResources = paramResources.getString(2131718020);
+      paramResources = paramResources.getString(2131718512);
       break label87;
       if (i == 2)
       {
@@ -71,13 +71,13 @@ public class MessageForSystemMsg
         if (QLog.isColorLevel()) {
           QLog.d("MessageForSystemMsg", 2, "groupMsgType:" + j + "|req_uin_nick:" + paramStructMsg.msg.req_uin_nick.get() + "|actor_uin_nick:" + paramStructMsg.msg.actor_uin_nick.get() + "|action_uin_nick:" + paramStructMsg.msg.action_uin_nick.get() + "|msg_describe:" + paramStructMsg.msg.msg_describe.get());
         }
-        j = TroopUtils.getMsgSenderType(j);
+        j = TroopUtils.a(j);
         if (j == 1) {
           paramResources = paramStructMsg.msg.action_uin_nick.get();
         }
         for (;;)
         {
-          paramResources = TroopUtils.getMsgInfo(paramStructMsg, paramResources + paramStructMsg.msg.msg_describe.get());
+          paramResources = TroopUtils.a(paramStructMsg, paramResources + paramStructMsg.msg.msg_describe.get());
           break;
           if (j == 2) {
             paramResources = paramStructMsg.msg.req_uin_nick.get();

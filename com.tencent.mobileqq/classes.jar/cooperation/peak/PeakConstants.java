@@ -8,6 +8,9 @@ public abstract interface PeakConstants
   public static final String ACTION_H5_VIDEO_RECORD_CALLBACK = "com.qzone.h5.video.recordCallback";
   public static final String ACTION_TOPIC_VIDEO_FAKE_FEED = "com.qzone.topic.video.FakeFeed";
   public static final String ACTION_TOPIC_VIDEO_HALF_FAKE_FEED = "com.qzone.topic.video.HalfFakeFeed";
+  public static final String AE_BROADCAST_ACTION_AE_CLOSE_CAMERA = "com.tencent.mobileqq.action.ae.CLOSE_CAMERA";
+  public static final String AE_BROADCAST_ACTION_AE_OPEN_CAMERA = "com.tencent.mobileqq.action.ae.OPEN_CAMERA";
+  public static final String AE_BROADCAST_RECEIVE_PERMISSION = "com.tencent.msg.permission.pushnotify";
   public static final String AIO_TO_PHOTO_LIST_NEED_SHOW_UPLOAD_BAR = "PhotoConst.AIO_TO_PHOTO_LIST_NEED_SHOW_UPLOAD_BAR";
   public static final String ALBUM_BACKUP = "PhotoConst.ALBUM_BACKUP";
   public static final String ALBUM_COUNT = "PhotoConst.ALBUM_COUNT";
@@ -86,6 +89,7 @@ public abstract interface PeakConstants
   public static final String EXTRA_HAS_ANTISHAKE = "extra_has_antishake";
   public static final String EXTRA_IS_FROM_P2V_EDIT = "extra_is_from_p2v_edit";
   public static final String FILTER_PHOTOLIST_TROOPALBUM_TOOLBAR = "filter_photolist_troopalbum_toolbar";
+  public static final int FIRST_SCREEN_PHOTO_SIZE_IN_RECENT_PHOTO = 12;
   public static final String FLAG_COMPRESSINFOLIST = "flag_compressinfolist";
   public static final String FROM_AIO_LONGSHOT = "PhotoConst.IS_FROM_FROM_AIO_LONGSHOT";
   public static final String FROM_DYNAMIC_ALBUM = "PhotoConst.IS_FROM_DYNAMIC_ALBUM";
@@ -261,6 +265,7 @@ public abstract interface PeakConstants
   public static final String PLUGIN_APK = "PhotoConst.PLUGIN_APK";
   public static final String PLUGIN_NAME = "PhotoConst.PLUGIN_NAME";
   public static final String PRESEND_CONFIG_SP = "presend_config_sp";
+  public static final String QCIRCLE_CLIENT_TRACEID = "qcircle_client_traceid";
   public static final int QUALITY_NORMAL = 0;
   public static final int QUALITY_RAW = 3;
   public static final String QZONETAIL_TITLE = "魔法视频";
@@ -275,13 +280,17 @@ public abstract interface PeakConstants
   public static final String QZONE_PEAK_SUPPORT_VIDEO_EDIT_WHEN_PREVIEW = "QZONE_PEAK_SUPPORT_VIDEO_EDIT_WHEN_PREVIEW";
   public static final String QZONE_PHOTO_EDIT_FROM_CAMERA = "p_e_f_camera";
   public static final String QZONE_PHOTO_EDIT_SOURCE_TYPE = "p_e_s_type";
+  public static final String QZONE_SINGLE_PHOTO_PATH_EDITED = "PhotoConst.QZONE_SINGLE_PHOTO_PATH_EDITED";
   public static final int QZONE_SOURCE_FROM_ALBUM = 2;
   public static final int QZONE_SOURCE_FROM_CAMERA = 1;
+  public static final int QZONE_SOURCE_FROM_DEFAULT = 0;
+  public static final int QZONE_SOURCE_FROM_EDIT_BTN = 7;
   public static final int QZONE_SOURCE_FROM_FORWARD = 4;
   public static final int QZONE_SOURCE_FROM_GALLERY = 6;
   public static final int QZONE_SOURCE_FROM_PREVIEW = 3;
-  public static final int QZONE_SOURCE_FROM_PUB_PAGE_PREVIEW = 7;
+  public static final int QZONE_SOURCE_FROM_PUB_PAGE_PREVIEW = 8;
   public static final int QZONE_SOURCE_FROM_SELECTOR = 5;
+  public static final int QZONE_SOURCE_FROM_SHEET_CAMERA = 9;
   public static final long QZONE_UPLOAD_PHOTO_ACTIVITY_VIDEO_DURATION_LOWER_LIMIT = 1000L;
   public static final long QZONE_UPLOAD_PHOTO_ACTIVITY_VIDEO_DURATION_UPPER_LIMIT = 601000L;
   public static final long QZONE_UPLOAD_PHOTO_ACTIVITY_VIDEO_SIZE_LIMIT = 1610612736L;
@@ -305,6 +314,7 @@ public abstract interface PeakConstants
   public static final int REQUEST_CODE_ALBUM_CHOOSE = 100009;
   public static final int REQUEST_CODE_FOR_PHOTO_CROP = 100014;
   public static final int REQUEST_CODE_FOR_PHOTO_PREVIEW = 100015;
+  public static final int REQUEST_CODE_FOR_PHOTO_PREVIEW_QCIRCLE = 100019;
   public static final int REQUEST_CODE_FOR_TROOP_ALBUM = 100008;
   public static final int REQUEST_CODE_INPUT_FULL_LIST_EDIT = 100018;
   public static final int REQUEST_CODE_INPUT_FULL_SCREEN = 100017;
@@ -377,6 +387,7 @@ public abstract interface PeakConstants
   public static final int VIDEO_DOWNLOAD_ENTRY_SOURCE_QUICK_LEFT_SLIDE = 2;
   public static final int VIDEO_DOWNLOAD_ENTRY_SOURCE_QUICK_MOOD = 8;
   public static final int VIDEO_DOWNLOAD_ENTRY_SOURCE_TOPIC_PAGE = 7;
+  public static final int VIDEO_DOWNLOAD_ENTRY_SOURCE_VIDEO_COVER = 9;
   public static final String VIDEO_END_TIME = "end_time";
   public static final String VIDEO_HAS_TAG = "VIDEO_HAS_TAG";
   public static final String VIDEO_INFO = "PhotoConst.VIDEO_INFOS";
@@ -405,7 +416,7 @@ public abstract interface PeakConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.peak.PeakConstants
  * JD-Core Version:    0.7.0.1
  */

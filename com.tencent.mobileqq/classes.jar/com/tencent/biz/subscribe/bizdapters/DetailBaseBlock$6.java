@@ -1,12 +1,11 @@
 package com.tencent.biz.subscribe.bizdapters;
 
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import zsl;
 
-public class DetailBaseBlock$6
+class DetailBaseBlock$6
   implements Runnable
 {
-  public DetailBaseBlock$6(zsl paramzsl) {}
+  DetailBaseBlock$6(DetailBaseBlock paramDetailBaseBlock) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class DetailBaseBlock$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.6
  * JD-Core Version:    0.7.0.1
  */

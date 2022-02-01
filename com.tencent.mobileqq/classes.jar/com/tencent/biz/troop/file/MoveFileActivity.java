@@ -1,18 +1,5 @@
 package com.tencent.biz.troop.file;
 
-import Override;
-import aagl;
-import aagm;
-import aagn;
-import aago;
-import aagp;
-import aagq;
-import aagr;
-import aags;
-import aagu;
-import aahb;
-import aahf;
-import aatk;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -32,14 +19,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import bdla;
-import bfif;
-import bgjh;
-import bgke;
-import bisl;
+import com.tencent.biz.troop.file.protocol.TroopFileCreateFolderObserver;
+import com.tencent.biz.troop.file.protocol.TroopFileGetFileListObserver;
+import com.tencent.biz.widgets.InputDialog;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AdapterView;
@@ -51,35 +41,29 @@ public class MoveFileActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-  public int a;
-  public long a;
-  private aags jdField_a_of_type_Aags = new aags(this, null);
-  private aahb jdField_a_of_type_Aahb = new aagr(this);
-  private aahf jdField_a_of_type_Aahf = new aagn(this);
+  int jdField_a_of_type_Int = 0;
+  protected long a;
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bgjh jdField_a_of_type_Bgjh;
-  private bisl jdField_a_of_type_Bisl;
+  private MoveFileActivity.FolderListAdapter jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity$FolderListAdapter = new MoveFileActivity.FolderListAdapter(this, null);
+  private TroopFileCreateFolderObserver jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileCreateFolderObserver = new MoveFileActivity.8(this);
+  private TroopFileGetFileListObserver jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetFileListObserver = new MoveFileActivity.3(this);
   private ByteStringMicro jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
+  private TroopFileManager jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager;
+  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  public String a;
-  private ArrayList<bfif> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
+  protected String a;
+  private ArrayList<TroopFileInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = -1;
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = 15;
   private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
+  private int jdField_d_of_type_Int = 0;
   private String jdField_d_of_type_JavaLangString;
-  private int e;
-  
-  public MoveFileActivity()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  private int e = 0;
   
   public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
@@ -108,19 +92,19 @@ public class MoveFileActivity
   
   public void a()
   {
-    aagu.a(this.app, this.jdField_a_of_type_Long, this.jdField_d_of_type_Int, 0, this.jdField_c_of_type_Int, 3, 1, "/", 1, 0L, this.e, this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro, this.jdField_a_of_type_Aahf);
+    TroopFileProtocol.a(this.app, this.jdField_a_of_type_Long, this.jdField_d_of_type_Int, 0, this.jdField_c_of_type_Int, 3, 1, "/", 1, 0L, this.e, this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetFileListObserver);
   }
   
   public void a(int paramInt)
   {
     try
     {
-      if (this.jdField_a_of_type_Bisl == null) {
-        this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
       }
-      this.jdField_a_of_type_Bisl.c(paramInt);
-      this.jdField_a_of_type_Bisl.c(false);
-      this.jdField_a_of_type_Bisl.show();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       return;
     }
     catch (Exception localException)
@@ -132,19 +116,19 @@ public class MoveFileActivity
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    paramString1 = aatk.a(this, paramString1, "", 2131690697, 2131691037, new aago(this), new aagp(this));
+    paramString1 = InputDialog.a(this, paramString1, "", 2131690800, 2131691144, new MoveFileActivity.4(this), new MoveFileActivity.5(this));
     paramString2 = paramString1.getEditText();
     if (!TextUtils.isEmpty(paramString3)) {
       paramString2.setText(paramString3);
     }
     paramString2.setFilters(new InputFilter[] { new InputFilter.LengthFilter(48) });
-    paramString2.setHint(2131697359);
-    paramString2.addTextChangedListener(new aagq(this, paramString2, paramString1));
+    paramString2.setHint(2131697613);
+    paramString2.addTextChangedListener(new MoveFileActivity.6(this, paramString2, paramString1));
     if (!TextUtils.isEmpty(paramString4)) {
       paramString1.a(paramString4, -65536);
     }
     paramString1.getBtnight().setEnabled(false);
-    paramString1.getBtnight().setTextColor(getResources().getColor(2131165627));
+    paramString1.getBtnight().setTextColor(getResources().getColor(2131165629));
     paramString1.show();
     new Handler(getMainLooper()).post(new MoveFileActivity.7(this, paramString2));
   }
@@ -162,8 +146,8 @@ public class MoveFileActivity
       return;
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718995);
-    Drawable localDrawable = getResources().getDrawable(2130839466);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719531);
+    Drawable localDrawable = getResources().getDrawable(2130839545);
     localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
     ((Animatable)localDrawable).start();
@@ -173,8 +157,8 @@ public class MoveFileActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
-        this.jdField_a_of_type_Bisl.dismiss();
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
       return;
     }
@@ -223,37 +207,37 @@ public class MoveFileActivity
       finish();
       return false;
     }
-    this.jdField_a_of_type_Bgjh = bgjh.a(this.app, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager = TroopFileManager.a(this.app, this.jdField_a_of_type_Long);
     paramBundle = (LayoutInflater)getSystemService("layout_inflater");
-    localObject = paramBundle.inflate(2131560669, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)((View)localObject).findViewById(2131365022));
+    localObject = paramBundle.inflate(2131560759, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)((View)localObject).findViewById(2131365157));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setFocusable(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    TextView localTextView = (TextView)((View)localObject).findViewById(2131365314);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131365067));
+    TextView localTextView = (TextView)((View)localObject).findViewById(2131365455);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131365202));
     localTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     setContentView((View)localObject);
-    setTitle(2131697349);
-    localTextView = (TextView)findViewById(2131369262);
-    localTextView.setText(2131690697);
+    setTitle(2131697603);
+    localTextView = (TextView)findViewById(2131369518);
+    localTextView.setText(2131690800);
     localTextView.setOnClickListener(this);
     localTextView.setVisibility(0);
     this.leftView.setVisibility(8);
-    localObject = (TextView)((View)localObject).findViewById(2131366779);
-    TextUtils.ellipsize(this.jdField_d_of_type_JavaLangString, ((TextView)localObject).getPaint(), AIOUtils.dp2px(230.0F, getResources()), TextUtils.TruncateAt.MIDDLE, false, new aagl(this, (TextView)localObject));
-    this.jdField_a_of_type_AndroidViewView = paramBundle.inflate(2131560674, null);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131373992).setBackgroundResource(2130838911);
+    localObject = (TextView)((View)localObject).findViewById(2131366957);
+    TextUtils.ellipsize(this.jdField_d_of_type_JavaLangString, ((TextView)localObject).getPaint(), AIOUtils.a(230.0F, getResources()), TextUtils.TruncateAt.MIDDLE, false, new MoveFileActivity.1(this, (TextView)localObject));
+    this.jdField_a_of_type_AndroidViewView = paramBundle.inflate(2131560764, null);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131374306).setBackgroundResource(2130838979);
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373993));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167026));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Aags);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aags);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374307));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167033));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity$FolderListAdapter);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity$FolderListAdapter);
     c();
-    bdla.b(this.app, "P_CliOper", "Grp_files", "", "file", "move_file", 0, 0, Long.toString(this.jdField_a_of_type_Long), "", "", "");
+    ReportController.b(this.app, "P_CliOper", "Grp_files", "", "file", "move_file", 0, 0, Long.toString(this.jdField_a_of_type_Long), "", "", "");
     return true;
   }
   
@@ -271,28 +255,28 @@ public class MoveFileActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bdla.b(this.app, "P_CliOper", "Grp_files", "", "file", "move_cancel", 0, 0, Long.toString(this.jdField_a_of_type_Long), "", "", "");
+      ReportController.b(this.app, "P_CliOper", "Grp_files", "", "file", "move_cancel", 0, 0, Long.toString(this.jdField_a_of_type_Long), "", "", "");
       finish();
-      overridePendingTransition(0, 2130772001);
+      overridePendingTransition(0, 2130772003);
       continue;
-      if (bgke.a(this.app, this, this.jdField_a_of_type_Long) != 0)
+      if (TroopFileUtils.a(this.app, this, this.jdField_a_of_type_Long) != 0)
       {
-        a(getResources().getString(2131697279), null, this.jdField_a_of_type_JavaLangString, "");
+        a(getResources().getString(2131697533), null, this.jdField_a_of_type_JavaLangString, "");
         continue;
-        bfif localbfif = (bfif)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int);
-        if (this.jdField_b_of_type_JavaLangString.equals(localbfif.jdField_b_of_type_JavaLangString))
+        TroopFileInfo localTroopFileInfo = (TroopFileInfo)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int);
+        if (this.jdField_b_of_type_JavaLangString.equals(localTroopFileInfo.jdField_b_of_type_JavaLangString))
         {
           finish();
-          overridePendingTransition(0, 2130772001);
+          overridePendingTransition(0, 2130772003);
         }
         else
         {
           try
           {
-            if (bgke.a(this.app, this, this.jdField_a_of_type_Long) != 0)
+            if (TroopFileUtils.a(this.app, this, this.jdField_a_of_type_Long) != 0)
             {
-              aagu.a(this.app, this.jdField_a_of_type_Long, localbfif.jdField_a_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, localbfif.jdField_b_of_type_JavaLangString, new aagm(this, localbfif));
-              a(2131697350);
+              TroopFileProtocol.a(this.app, this.jdField_a_of_type_Long, localTroopFileInfo.jdField_a_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, localTroopFileInfo.jdField_b_of_type_JavaLangString, new MoveFileActivity.2(this, localTroopFileInfo));
+              a(2131697604);
             }
           }
           catch (NumberFormatException localNumberFormatException) {}
@@ -314,15 +298,15 @@ public class MoveFileActivity
       return;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839368);
-    this.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(getActivity(), 2131755343);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839445);
+    this.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(getActivity(), 2131755349);
     this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aags.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity$FolderListAdapter.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity
  * JD-Core Version:    0.7.0.1
  */

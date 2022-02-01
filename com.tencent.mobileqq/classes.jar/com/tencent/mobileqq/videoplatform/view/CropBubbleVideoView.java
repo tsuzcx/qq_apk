@@ -121,7 +121,7 @@ public class CropBubbleVideoView
     return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     int i = getWidth();
     int j = getHeight();
@@ -138,7 +138,7 @@ public class CropBubbleVideoView
     return this.triWidth;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (Build.VERSION.SDK_INT < 18)
@@ -161,7 +161,7 @@ public class CropBubbleVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView
  * JD-Core Version:    0.7.0.1
  */

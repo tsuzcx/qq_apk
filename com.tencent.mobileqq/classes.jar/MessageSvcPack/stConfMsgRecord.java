@@ -13,22 +13,22 @@ public final class stConfMsgRecord
   static byte[] cache_vAppShareCookie;
   static byte[] cache_vMsg;
   static byte[] cache_vRemarkOfSender;
-  public byte cConfType;
-  public long lConfUin;
-  public long lFromUin;
-  public long lGroupUin;
-  public long lSendUin;
-  public long lToUin;
-  public long uAppShareID;
-  public long uInfoSeq;
-  public int uMsgLen;
-  public long uMsgSeq;
-  public long uMsgTime;
-  public byte[] vAppShareCookie;
-  public byte[] vMsg;
-  public byte[] vRemarkOfSender;
-  public int wSeqNum;
-  public int wType;
+  public byte cConfType = 0;
+  public long lConfUin = 0L;
+  public long lFromUin = 0L;
+  public long lGroupUin = 0L;
+  public long lSendUin = 0L;
+  public long lToUin = 0L;
+  public long uAppShareID = 0L;
+  public long uInfoSeq = 0L;
+  public int uMsgLen = 0;
+  public long uMsgSeq = 0L;
+  public long uMsgTime = 0L;
+  public byte[] vAppShareCookie = null;
+  public byte[] vMsg = null;
+  public byte[] vRemarkOfSender = null;
+  public int wSeqNum = 0;
+  public int wType = 0;
   
   static
   {

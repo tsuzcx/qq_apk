@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.apollo.view;
 
-import annt;
-import bhyo;
-import bhyq;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 
-public class QQFrameZipDecoder$2
+class QQFrameZipDecoder$2
   implements Runnable
 {
-  public QQFrameZipDecoder$2(annt paramannt, bhyo parambhyo) {}
+  QQFrameZipDecoder$2(QQFrameZipDecoder paramQQFrameZipDecoder, DownloadTask paramDownloadTask) {}
   
   public void run()
   {
-    bhyq.a(this.a, null);
+    DownloaderFactory.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.QQFrameZipDecoder.2
  * JD-Core Version:    0.7.0.1
  */

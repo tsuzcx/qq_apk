@@ -20,7 +20,7 @@ public class PublicAccountEntityManagerFactory
   public PublicAccountEntityManagerFactory(String paramString)
   {
     super(paramString);
-    this.TAG = "PublicAccountEntityManagerFactory";
+    this.tag = "PublicAccountEntityManagerFactory";
   }
   
   public static void a(String paramString, android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
@@ -98,7 +98,7 @@ public class PublicAccountEntityManagerFactory
   
   public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    QLog.i(this.TAG, 1, "[DB]|upgrade. oldVer=" + paramInt1 + ", newVer=" + paramInt2);
+    QLog.i(this.tag, 1, "[DB]|upgrade. oldVer=" + paramInt1 + ", newVer=" + paramInt2);
     a(getPackageName(), paramSQLiteDatabase);
   }
   
@@ -129,7 +129,7 @@ public class PublicAccountEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

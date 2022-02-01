@@ -13,9 +13,10 @@ public final class VipBaseInfo
   implements Cloneable
 {
   static Map<Integer, VipOpenInfo> cache_mOpenInfo;
-  public int iGrayNameplateFlag;
-  public int iNameplateVipType;
-  public Map<Integer, VipOpenInfo> mOpenInfo;
+  public int iGrayNameplateFlag = 0;
+  public int iNameplateVipType = 0;
+  public Map<Integer, VipOpenInfo> mOpenInfo = null;
+  public String strExtendNameplateId = "";
   
   static
   {
@@ -32,11 +33,12 @@ public final class VipBaseInfo
   
   public VipBaseInfo() {}
   
-  public VipBaseInfo(Map<Integer, VipOpenInfo> paramMap, int paramInt1, int paramInt2)
+  public VipBaseInfo(Map<Integer, VipOpenInfo> paramMap, int paramInt1, int paramInt2, String paramString)
   {
     this.mOpenInfo = paramMap;
     this.iNameplateVipType = paramInt1;
     this.iGrayNameplateFlag = paramInt2;
+    this.strExtendNameplateId = paramString;
   }
   
   public String className()
@@ -66,6 +68,7 @@ public final class VipBaseInfo
     paramStringBuilder.display(this.mOpenInfo, "mOpenInfo");
     paramStringBuilder.display(this.iNameplateVipType, "iNameplateVipType");
     paramStringBuilder.display(this.iGrayNameplateFlag, "iGrayNameplateFlag");
+    paramStringBuilder.display(this.strExtendNameplateId, "strExtendNameplateId");
   }
   
   public void displaySimple(StringBuilder paramStringBuilder, int paramInt)
@@ -74,6 +77,7 @@ public final class VipBaseInfo
     paramStringBuilder.displaySimple(this.mOpenInfo, true);
     paramStringBuilder.displaySimple(this.iNameplateVipType, true);
     paramStringBuilder.displaySimple(this.iGrayNameplateFlag, false);
+    paramStringBuilder.displaySimple(this.strExtendNameplateId, true);
   }
   
   public boolean equals(Object paramObject)
@@ -125,6 +129,7 @@ public final class VipBaseInfo
     this.mOpenInfo = ((Map)paramJceInputStream.read(cache_mOpenInfo, 0, true));
     this.iNameplateVipType = paramJceInputStream.read(this.iNameplateVipType, 1, false);
     this.iGrayNameplateFlag = paramJceInputStream.read(this.iGrayNameplateFlag, 2, false);
+    this.strExtendNameplateId = paramJceInputStream.readString(3, false);
   }
   
   public void setIGrayNameplateFlag(int paramInt)
@@ -147,11 +152,14 @@ public final class VipBaseInfo
     paramJceOutputStream.write(this.mOpenInfo, 0);
     paramJceOutputStream.write(this.iNameplateVipType, 1);
     paramJceOutputStream.write(this.iGrayNameplateFlag, 2);
+    if (this.strExtendNameplateId != null) {
+      paramJceOutputStream.write(this.strExtendNameplateId, 3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.VipBaseInfo
  * JD-Core Version:    0.7.0.1
  */

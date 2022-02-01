@@ -9,8 +9,8 @@ public final class MaterialUserItem
 {
   static MaterialItem cache_stItem = new MaterialItem();
   public long lExpireTime = -1L;
-  public long lSettleTime;
-  public MaterialItem stItem;
+  public long lSettleTime = 0L;
+  public MaterialItem stItem = null;
   
   public MaterialUserItem() {}
   

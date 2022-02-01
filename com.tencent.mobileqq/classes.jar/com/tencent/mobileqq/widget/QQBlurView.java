@@ -10,10 +10,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
-import bise;
-import bisf;
-import bisg;
-import bish;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(19)
@@ -21,8 +17,8 @@ public class QQBlurView
   extends View
 {
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ViewTreeObserver.OnPreDrawListener jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = new bish(this);
-  private bise jdField_a_of_type_Bise = new bise();
+  private ViewTreeObserver.OnPreDrawListener jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = new QQBlurView.1(this);
+  private QQBlur jdField_a_of_type_ComTencentMobileqqWidgetQQBlur = new QQBlur();
   private boolean jdField_a_of_type_Boolean = true;
   
   public QQBlurView(Context paramContext)
@@ -55,37 +51,37 @@ public class QQBlurView
     if (QLog.isColorLevel()) {
       QLog.d("QQBlurView", 2, "onResume() called " + Integer.toHexString(System.identityHashCode(this)));
     }
-    this.jdField_a_of_type_Bise.b();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.b();
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Bise.a(paramFloat);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a(paramFloat);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bise.a(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a(paramInt);
   }
   
   public void a(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Bise.a(paramDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a(paramDrawable);
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_Bise.a(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a(paramView);
   }
   
-  public void a(bisg parambisg)
+  public void a(QQBlur.OnDrawBgListener paramOnDrawBgListener)
   {
-    this.jdField_a_of_type_Bise.a(parambisg);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a(paramOnDrawBgListener);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Bise.c();
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.c();
   }
   
   public void b()
@@ -93,17 +89,17 @@ public class QQBlurView
     if (QLog.isColorLevel()) {
       QLog.d("QQBlurView", 2, "onPause() called" + Integer.toHexString(System.identityHashCode(this)));
     }
-    this.jdField_a_of_type_Bise.a();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a();
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Bise.b(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.b(paramInt);
   }
   
   public void b(View paramView)
   {
-    this.jdField_a_of_type_Bise.b(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.b(paramView);
   }
   
   public void c()
@@ -112,12 +108,12 @@ public class QQBlurView
       QLog.d("QQBlurView", 2, "onDestroy() called" + Integer.toHexString(System.identityHashCode(this)));
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
-    this.jdField_a_of_type_Bise.c();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.c();
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_Bise.c(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.c(paramInt);
   }
   
   public void d()
@@ -127,12 +123,12 @@ public class QQBlurView
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
     getViewTreeObserver().addOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
-    if (!this.jdField_a_of_type_Bise.a()) {
-      this.jdField_a_of_type_Bise.a();
+    if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a()) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a();
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     if (!a()) {
       super.dispatchDraw(paramCanvas);
@@ -146,10 +142,10 @@ public class QQBlurView
       super.draw(paramCanvas);
       return;
     }
-    this.jdField_a_of_type_Bise.d();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.d();
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (QLog.isColorLevel()) {
@@ -157,31 +153,31 @@ public class QQBlurView
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
     getViewTreeObserver().addOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
-    if (this.jdField_a_of_type_Bise != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur != null) {
       a();
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (QLog.isColorLevel()) {
       QLog.d("QQBlurView", 2, "onDetachedFromWindow() called " + Integer.toHexString(System.identityHashCode(this)));
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
-    if (this.jdField_a_of_type_Bise != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur != null) {
       b();
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (!a())
     {
       if (this.jdField_a_of_type_Boolean)
       {
         setBackgroundDrawable(null);
-        this.jdField_a_of_type_Bise.a(this, paramCanvas);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a(this, paramCanvas);
         super.onDraw(paramCanvas);
       }
     }
@@ -194,12 +190,12 @@ public class QQBlurView
   
   public void setDebugTag(String paramString)
   {
-    this.jdField_a_of_type_Bise.a(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a(paramString);
   }
   
-  public void setDirtyListener(bisf parambisf)
+  public void setDirtyListener(QQBlur.BackgroundViewDirtyListener paramBackgroundViewDirtyListener)
   {
-    this.jdField_a_of_type_Bise.a(parambisf);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur.a(paramBackgroundViewDirtyListener);
   }
   
   public void setDisableBlurDrawableRes(int paramInt)
@@ -214,7 +210,7 @@ public class QQBlurView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQBlurView
  * JD-Core Version:    0.7.0.1
  */

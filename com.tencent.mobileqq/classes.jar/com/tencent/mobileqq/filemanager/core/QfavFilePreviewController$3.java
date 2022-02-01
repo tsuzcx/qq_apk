@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import asyq;
-import atpa;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
 import com.tencent.qphone.base.util.QLog;
 
-public class QfavFilePreviewController$3
+class QfavFilePreviewController$3
   implements Runnable
 {
-  public QfavFilePreviewController$3(atpa paramatpa) {}
+  QfavFilePreviewController$3(QfavFilePreviewController paramQfavFilePreviewController) {}
   
   public void run()
   {
-    asyq localasyq = this.this$0.a;
-    if (0L == atpa.a(this.this$0)) {}
+    FilePreviewActivity.ControlerCallback localControlerCallback = this.this$0.a;
+    if (0L == QfavFilePreviewController.a(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      localasyq.a(bool, atpa.a(this.this$0), String.valueOf(atpa.a(this.this$0)), atpa.a(this.this$0), null, atpa.b(this.this$0), null, atpa.c(this.this$0), null);
+      localControlerCallback.a(bool, QfavFilePreviewController.a(this.this$0), String.valueOf(QfavFilePreviewController.a(this.this$0)), QfavFilePreviewController.a(this.this$0), null, QfavFilePreviewController.b(this.this$0), null, QfavFilePreviewController.c(this.this$0), null);
       if (QLog.isColorLevel()) {
-        QLog.i("QfavFilePreviewController", 2, "sendCS: mHost=" + atpa.a(this.this$0) + ", port=" + atpa.a(this.this$0) + ", key=" + atpa.b(this.this$0) + ", retCode =" + atpa.a(this.this$0));
+        QLog.i("QfavFilePreviewController", 2, "sendCS: mHost=" + QfavFilePreviewController.a(this.this$0) + ", port=" + QfavFilePreviewController.a(this.this$0) + ", key=" + QfavFilePreviewController.b(this.this$0) + ", retCode =" + QfavFilePreviewController.a(this.this$0));
       }
       return;
     }
@@ -25,7 +24,7 @@ public class QfavFilePreviewController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.3
  * JD-Core Version:    0.7.0.1
  */

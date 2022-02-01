@@ -5,9 +5,21 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJArticleInfoRepo;
 import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
 import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityAdapter;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityAdapter.CityData;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.IView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.Utils;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoySelectPositionHeader;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoySelectPositionHeader.ISelectCityListener;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -16,39 +28,25 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
-import pkh;
-import ptj;
-import pvj;
-import pvm;
-import pzk;
-import pzl;
-import qep;
-import qga;
-import qki;
-import qkk;
-import qkm;
-import qkn;
-import rvy;
-import tqy;
 
 public class ReadInJoySelectPositionFragment
   extends IphoneTitleBarFragment
-  implements qkn, tqy
+  implements SelectCityPresenter.IView, ReadInJoySelectPositionHeader.ISelectCityListener
 {
   private SelectPositionModule.PositionData jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData = new SelectPositionModule.PositionData();
+  private SelectCityAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyPositionSelectCityAdapter;
+  private SelectCityPresenter jdField_a_of_type_ComTencentBizPubaccountReadinjoyPositionSelectCityPresenter;
   private ReadInJoySelectPositionHeader jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader;
   private WordNavView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private List<qkk> jdField_a_of_type_JavaUtilList;
-  private qki jdField_a_of_type_Qki;
-  private qkm jdField_a_of_type_Qkm;
+  private List<SelectCityAdapter.CityData> jdField_a_of_type_JavaUtilList;
   
   private void a()
   {
     this.vg.changeBg(true);
     setTitle("城市");
-    if (ThemeUtil.isInNightMode(pkh.a())) {
-      View.inflate(getActivity(), 2131560291, this.titleRoot);
+    if (ThemeUtil.isInNightMode(ReadInJoyUtils.a())) {
+      View.inflate(getActivity(), 2131560363, this.titleRoot);
     }
   }
   
@@ -56,7 +54,7 @@ public class ReadInJoySelectPositionFragment
   {
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-      if ((((qkk)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int != 1) || (!((qkk)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equals(paramString))) {}
+      if ((((SelectCityAdapter.CityData)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int != 1) || (!((SelectCityAdapter.CityData)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equals(paramString))) {}
     }
     for (;;)
     {
@@ -72,13 +70,13 @@ public class ReadInJoySelectPositionFragment
   {
     if (this.mContentView != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131364644));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView = ((WordNavView)this.mContentView.findViewById(2131368803));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView.setOnTouchingWordChangedListener(new pzk(this));
-      this.jdField_a_of_type_Qki = new qki(getActivity());
+      this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131364758));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView = ((WordNavView)this.mContentView.findViewById(2131369035));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView.setOnTouchingWordChangedListener(new ReadInJoySelectPositionFragment.1(this));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPositionSelectCityAdapter = new SelectCityAdapter(getActivity());
       c();
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Qki);
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(new pzl(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPositionSelectCityAdapter);
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(new ReadInJoySelectPositionFragment.2(this));
     }
   }
   
@@ -91,7 +89,7 @@ public class ReadInJoySelectPositionFragment
   
   private void d()
   {
-    Object localObject = pvj.a().a();
+    Object localObject = ReadInJoyLogicEngine.a().a();
     if (localObject != null)
     {
       SelectPositionModule.PositionData localPositionData = ((SelectPositionModule)localObject).c();
@@ -107,8 +105,8 @@ public class ReadInJoySelectPositionFragment
       if (localObject != null) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader.setGPSCity(((SelectPositionModule.PositionData)localObject).cityGPS);
       }
-      this.jdField_a_of_type_Qkm = new qkm(this);
-      this.jdField_a_of_type_Qkm.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPositionSelectCityPresenter = new SelectCityPresenter(this);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPositionSelectCityPresenter.a();
       return;
       label82:
       if (localObject != null) {
@@ -130,32 +128,32 @@ public class ReadInJoySelectPositionFragment
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.cityCode == null) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.cityCode.equals(paramPositionData.cityCode)))
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.copy(paramPositionData);
-      SelectPositionModule localSelectPositionModule = pvj.a().a();
+      SelectPositionModule localSelectPositionModule = ReadInJoyLogicEngine.a().a();
       if (localSelectPositionModule != null)
       {
         localSelectPositionModule.a(paramPositionData);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader.setSelectedCity(paramPositionData.city);
       }
-      pvj.a().a(41695, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.city);
-      paramPositionData = pvj.a().a();
+      ReadInJoyLogicEngine.a().a(41695, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.city);
+      paramPositionData = ReadInJoyLogicEngine.a().a();
       if (paramPositionData != null) {
         paramPositionData.a().b(41695);
       }
-      pvm.a().h(41695);
+      ReadInJoyLogicEngineEventDispatcher.a().h(41695);
     }
     onBackEvent();
   }
   
-  public void a(List<qkk> paramList)
+  public void a(List<SelectCityAdapter.CityData> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Qki.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPositionSelectCityAdapter.a(this.jdField_a_of_type_JavaUtilList);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramList.size())
     {
-      if (((qkk)paramList.get(i)).jdField_a_of_type_Int == 1) {
-        localArrayList.add(((qkk)paramList.get(i)).jdField_a_of_type_JavaLangString);
+      if (((SelectCityAdapter.CityData)paramList.get(i)).jdField_a_of_type_Int == 1) {
+        localArrayList.add(((SelectCityAdapter.CityData)paramList.get(i)).jdField_a_of_type_JavaLangString);
       }
       i += 1;
     }
@@ -175,23 +173,23 @@ public class ReadInJoySelectPositionFragment
     a();
     b();
     d();
-    ptj.a.a(getActivity());
+    RIJDtReportHelper.a.a(getActivity());
   }
   
   public int getContentLayoutId()
   {
-    return 2131560316;
+    return 2131560388;
   }
   
   public void onResume()
   {
     super.onResume();
-    rvy.a(this);
+    Utils.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment
  * JD-Core Version:    0.7.0.1
  */

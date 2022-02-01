@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import amzh;
-
-public class CmGameShareDataHandler$1
+class CmGameShareDataHandler$1
   implements Runnable
 {
-  public CmGameShareDataHandler$1(amzh paramamzh) {}
+  CmGameShareDataHandler$1(CmGameShareDataHandler paramCmGameShareDataHandler) {}
   
   public void run()
   {
-    amzh.a(this.this$0);
+    CmGameShareDataHandler.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.data.CmGameShareDataHandler.1
  * JD-Core Version:    0.7.0.1
  */

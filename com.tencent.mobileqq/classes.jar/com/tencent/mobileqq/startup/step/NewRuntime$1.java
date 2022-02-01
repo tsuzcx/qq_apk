@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import arvo;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper;
 
 class NewRuntime$1
   implements Runnable
@@ -9,7 +9,7 @@ class NewRuntime$1
   
   public void run()
   {
-    arvo.a(false);
+    NativeMonitorConfigHelper.a(false);
   }
 }
 

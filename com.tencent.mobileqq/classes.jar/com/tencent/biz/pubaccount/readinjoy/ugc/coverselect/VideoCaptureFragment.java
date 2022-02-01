@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.capture.CaptureTask;
 import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.VideoMeasureScaleView;
 import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
@@ -18,28 +19,21 @@ import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.List;
-import rwo;
-import rwp;
-import rwv;
-import rww;
-import rxa;
-import rxb;
-import rxh;
 
 public class VideoCaptureFragment
   extends PublicBaseFragment
-  implements rwo
+  implements IVideoCaptureView
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageUpdateListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectImageUpdateListener;
+  private PreviewImageAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectPreviewImageAdapter;
+  private VideoCapturePresenter jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCapturePresenter;
   private CaptureOperateTouchLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout;
   private VideoMeasureScaleView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView;
-  private rwp jdField_a_of_type_Rwp;
-  private rww jdField_a_of_type_Rww;
-  private rxb jdField_a_of_type_Rxb;
   private TextView b;
   
   public static VideoCaptureFragment a(String paramString, float paramFloat)
@@ -65,7 +59,7 @@ public class VideoCaptureFragment
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.setup(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetTextView, this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView, a());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.setEnabled(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.setOnCaptureOperateCallback(new rxa(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.setOnCaptureOperateCallback(new VideoCaptureFragment.1(this));
   }
   
   public float a()
@@ -90,7 +84,7 @@ public class VideoCaptureFragment
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Rww.notifyItemChanged(paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectPreviewImageAdapter.notifyItemChanged(paramInt);
   }
   
   public void a(long paramLong)
@@ -101,30 +95,30 @@ public class VideoCaptureFragment
   public void a(Bitmap paramBitmap)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-    if (this.jdField_a_of_type_Rwp != null) {
-      this.jdField_a_of_type_Rwp.a(paramBitmap);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectImageUpdateListener != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectImageUpdateListener.a(paramBitmap);
     }
   }
   
-  public void a(List<rxh> paramList)
+  public void a(ImageUpdateListener paramImageUpdateListener)
   {
-    this.jdField_a_of_type_Rww = new rww(this.jdField_a_of_type_AndroidAppActivity, paramList);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Rww);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectImageUpdateListener = paramImageUpdateListener;
   }
   
-  public void a(rwp paramrwp)
+  public void a(OutputPicListener paramOutputPicListener)
   {
-    this.jdField_a_of_type_Rwp = paramrwp;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCapturePresenter.a(paramOutputPicListener);
   }
   
-  public void a(rwv paramrwv)
+  public void a(List<CaptureTask> paramList)
   {
-    this.jdField_a_of_type_Rxb.a(paramrwv);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectPreviewImageAdapter = new PreviewImageAdapter(this.jdField_a_of_type_AndroidAppActivity, paramList);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectPreviewImageAdapter);
   }
   
   public int b()
   {
-    return (int)((DisplayUtil.getWindowScreenWidth(BaseApplication.getContext()) - DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 5.0F)) / a());
+    return (int)((DisplayUtil.a(BaseApplication.getContext()) - DisplayUtil.b(this.jdField_a_of_type_AndroidAppActivity, 5.0F)) / a());
   }
   
   public void b(long paramLong)
@@ -133,13 +127,13 @@ public class VideoCaptureFragment
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.setEnabled(true);
   }
   
-  public void b(List<rxh> paramList)
+  public void b(List<CaptureTask> paramList)
   {
-    if (this.jdField_a_of_type_Rww != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectPreviewImageAdapter != null)
     {
-      this.jdField_a_of_type_Rww.b();
-      this.jdField_a_of_type_Rww.b(paramList);
-      this.jdField_a_of_type_Rww.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectPreviewImageAdapter.b();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectPreviewImageAdapter.b(paramList);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectPreviewImageAdapter.notifyDataSetChanged();
     }
   }
   
@@ -151,7 +145,7 @@ public class VideoCaptureFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560033, null);
+    paramLayoutInflater = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560110, null);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -159,44 +153,44 @@ public class VideoCaptureFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Rxb.c();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCapturePresenter.c();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Rxb.e();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCapturePresenter.e();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Rxb.d();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCapturePresenter.d();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131380839));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131380833));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout = ((CaptureOperateTouchLayout)paramView.findViewById(2131380837));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380834));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380838));
-    this.b = ((TextView)paramView.findViewById(2131380840));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView = ((VideoMeasureScaleView)paramView.findViewById(2131380836));
-    this.jdField_a_of_type_Rxb = new rxb(this.jdField_a_of_type_AndroidAppActivity, getArguments(), this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131381287));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131381281));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout = ((CaptureOperateTouchLayout)paramView.findViewById(2131381285));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381282));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381286));
+    this.b = ((TextView)paramView.findViewById(2131381288));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView = ((VideoMeasureScaleView)paramView.findViewById(2131381284));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCapturePresenter = new VideoCapturePresenter(this.jdField_a_of_type_AndroidAppActivity, getArguments(), this);
     paramView = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutParams().height = b();
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
     a();
     b();
-    this.jdField_a_of_type_Rxb.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectVideoCapturePresenter.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.VideoCaptureFragment
  * JD-Core Version:    0.7.0.1
  */

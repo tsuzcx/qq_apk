@@ -1,26 +1,25 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
 import android.widget.TextView;
-import woo;
-import ykq;
-import zez;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.RedPointUtils;
 
-public class MsgTabStoryNodeListManager$5
+class MsgTabStoryNodeListManager$5
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$5(woo paramwoo) {}
+  MsgTabStoryNodeListManager$5(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
   public void run()
   {
-    int i = zez.a(52);
+    int i = RedPointUtils.a(52);
     String str = this.this$0.a.a.getText().toString();
-    ykq.a(woo.b(), "redpoint update, update count = %s->%d", str, Integer.valueOf(i));
+    SLog.a(MsgTabStoryNodeListManager.b(), "redpoint update, update count = %s->%d", str, Integer.valueOf(i));
     this.this$0.a.a(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.5
  * JD-Core Version:    0.7.0.1
  */

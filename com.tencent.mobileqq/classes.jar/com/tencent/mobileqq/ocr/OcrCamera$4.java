@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.ocr;
 
-import anvx;
-import aysx;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class OcrCamera$4
+class OcrCamera$4
   implements Runnable
 {
-  public OcrCamera$4(aysx paramaysx) {}
+  OcrCamera$4(OcrCamera paramOcrCamera) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), anvx.a(2131707145), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131707670), 0).a();
   }
 }
 

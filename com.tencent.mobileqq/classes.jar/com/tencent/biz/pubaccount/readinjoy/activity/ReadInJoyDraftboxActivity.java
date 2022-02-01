@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import anvx;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TopEdgeGestureLayout;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import pkh;
-import sfq;
 
 public class ReadInJoyDraftboxActivity
   extends IphoneTitleBarActivity
@@ -29,16 +28,16 @@ public class ReadInJoyDraftboxActivity
     if (this.app == null) {
       return;
     }
-    sfq.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    setContentView(2131558458);
-    setTitle(anvx.a(2131712350));
-    this.leftView.setText(anvx.a(2131712339));
+    ReadInJoyWebDataManager.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    setContentView(2131558459);
+    setTitle(HardCodeUtil.a(2131712859));
+    this.leftView.setText(HardCodeUtil.a(2131712849));
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new TopEdgeGestureLayout(this));
     }
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment = new ReadInJoyDraftboxFragment();
-    localFragmentTransaction.add(2131367244, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment);
+    localFragmentTransaction.add(2131367430, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment);
     localFragmentTransaction.show(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxFragment);
     localFragmentTransaction.commit();
   }
@@ -55,7 +54,7 @@ public class ReadInJoyDraftboxActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)pkh.a());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ReadInJoyUtils.a());
     a();
     return true;
   }
@@ -74,7 +73,7 @@ public class ReadInJoyDraftboxActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyDraftboxActivity
  * JD-Core Version:    0.7.0.1
  */

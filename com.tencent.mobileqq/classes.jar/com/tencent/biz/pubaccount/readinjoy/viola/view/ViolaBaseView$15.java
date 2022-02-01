@@ -1,20 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import ucq;
-
 class ViolaBaseView$15
   implements Runnable
 {
-  ViolaBaseView$15(ViolaBaseView paramViolaBaseView, int paramInt) {}
+  ViolaBaseView$15(ViolaBaseView paramViolaBaseView) {}
   
   public void run()
   {
-    ViolaBaseView.a(this.this$0).a(this.a);
+    ViolaBaseView.g(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.15
  * JD-Core Version:    0.7.0.1
  */

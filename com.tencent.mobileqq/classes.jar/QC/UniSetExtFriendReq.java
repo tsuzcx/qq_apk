@@ -10,9 +10,9 @@ public final class UniSetExtFriendReq
   static ExtendFriend cache_stExtendFriend = new ExtendFriend();
   static LoginInfo cache_stLogin = new LoginInfo();
   static UniBusinessItem cache_stUniBusinessItem = new UniBusinessItem();
-  public ExtendFriend stExtendFriend;
-  public LoginInfo stLogin;
-  public UniBusinessItem stUniBusinessItem;
+  public ExtendFriend stExtendFriend = null;
+  public LoginInfo stLogin = null;
+  public UniBusinessItem stUniBusinessItem = null;
   
   public UniSetExtFriendReq() {}
   

@@ -1,45 +1,23 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Bundle;
-import android.os.Looper;
-import anyz;
 import com.qq.jce.wup.UniPacket;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import mqq.os.MqqHandler;
 
 public abstract class BaseBusinessHandler
   extends OidbWrapper
 {
-  public static final int BG_OBSERVERS = 2;
-  public static final int DEFAULT_OBSERVER = 0;
   public static final String SEQ_KEY = BaseBusinessHandler.class.getName();
-  public static final int UI_OBSERVERS = 1;
-  private static MqqHandler bgHandler = ThreadManager.getSubThreadHandler();
-  private static int notReportedCallNum;
-  private static int reportThreshold = -1;
-  private static MqqHandler uiHandler = new MqqHandler(Looper.getMainLooper());
   protected Set<String> allowCmdSet;
-  private Map<Long, BusinessObserver> bgObserverMap = new HashMap();
-  private long seq;
-  private Map<Long, BusinessObserver> uiObserverMap = new HashMap();
-  
-  private void dispatchMessage(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, BusinessObserver paramBusinessObserver, MqqHandler paramMqqHandler)
-  {
-    paramObject = new BaseBusinessHandler.1(this, paramBusinessObserver, paramInt, paramMqqHandler, paramBoolean1, paramObject);
-    if (paramBoolean2)
-    {
-      paramMqqHandler.postAtFrontOfQueue(paramObject);
-      return;
-    }
-    paramMqqHandler.post(paramObject);
-  }
+  protected AppInterface appRuntime;
+  protected Map<Long, BusinessObserver> bgObserverMap = new HashMap();
+  protected long seq;
+  protected Map<Long, BusinessObserver> uiObserverMap = new HashMap();
   
   protected void addBusinessObserver(ToServiceMsg paramToServiceMsg, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
@@ -67,7 +45,7 @@ public abstract class BaseBusinessHandler
     return createToServiceMsg(paramString, paramBusinessObserver, false);
   }
   
-  protected ToServiceMsg createToServiceMsg(String arg1, BusinessObserver paramBusinessObserver, boolean paramBoolean)
+  ToServiceMsg createToServiceMsg(String arg1, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
     ToServiceMsg localToServiceMsg = createToServiceMsg(???);
     if ((paramBusinessObserver == null) || (paramBoolean)) {}
@@ -97,142 +75,57 @@ public abstract class BaseBusinessHandler
     return null;
   }
   
-  public abstract String getCurrentAccountUin();
+  protected abstract Set<String> getCommandList();
   
-  public abstract List<BusinessObserver> getObservers(int paramInt);
-  
-  protected boolean msgCmdFilter(String paramString)
+  public String getCurrentAccountUin()
   {
-    return false;
+    return this.appRuntime.getAccount();
   }
   
-  public final void notifyUI(int paramInt, boolean paramBoolean, Object paramObject)
+  protected abstract Set<String> getPushCommandList();
+  
+  protected abstract Set<String> getPushPBCommandList();
+  
+  protected final boolean isPbReq(ToServiceMsg paramToServiceMsg)
   {
-    notifyUI(paramInt, paramBoolean, paramObject, false);
+    boolean bool = false;
+    if (paramToServiceMsg != null) {
+      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+    }
+    return bool;
   }
   
-  public void notifyUI(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2)
+  public boolean msgCmdFilter(String paramString)
   {
-    List localList = getObservers(0);
-    Iterator localIterator;
-    Object localObject;
-    if ((localList != null) && (localList.size() > 0)) {
-      try
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject = (BusinessObserver)localIterator.next();
-          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass())))
-          {
-            long l = System.currentTimeMillis();
-            ((BusinessObserver)localObject).onUpdate(paramInt, paramBoolean1, paramObject);
-            l = System.currentTimeMillis() - l;
-            if ((l > 100L) && (QLog.isColorLevel()))
-            {
-              localObject = new Exception("run too long!");
-              QLog.d("BaseBusinessHandler.notifyUI", 2, "defaultObserver onUpdate cost:" + l, (Throwable)localObject);
-            }
-          }
-        }
-      }
-      finally {}
+    if (this.allowCmdSet == null) {
+      this.allowCmdSet = getCommandList();
     }
-    localList = getObservers(1);
-    if ((localList != null) && (localList.size() > 0)) {
-      try
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject = (BusinessObserver)localIterator.next();
-          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
-            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (BusinessObserver)localObject, uiHandler);
-          }
-        }
-      }
-      finally {}
+    if (this.allowCmdSet == null) {}
+    while (this.allowCmdSet.contains(paramString)) {
+      return false;
     }
-    localList = getObservers(2);
-    if ((localList != null) && (localList.size() > 0)) {
-      try
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject = (BusinessObserver)localIterator.next();
-          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
-            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (BusinessObserver)localObject, bgHandler);
-          }
-        }
-      }
-      finally {}
-    }
+    return true;
   }
-  
-  public void notifyUI(ToServiceMsg paramToServiceMsg, int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    long l;
-    MqqHandler localMqqHandler;
-    if (paramToServiceMsg.extraData.containsKey(SEQ_KEY))
-    {
-      l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
-      synchronized (this.uiObserverMap)
-      {
-        paramToServiceMsg = (BusinessObserver)this.uiObserverMap.remove(Long.valueOf(l));
-        localMqqHandler = uiHandler;
-        if (paramToServiceMsg != null) {}
-      }
-    }
-    for (;;)
-    {
-      synchronized (this.bgObserverMap)
-      {
-        paramToServiceMsg = (BusinessObserver)this.bgObserverMap.remove(Long.valueOf(l));
-        localMqqHandler = bgHandler;
-        if (paramToServiceMsg != null)
-        {
-          dispatchMessage(paramInt, paramBoolean, paramObject, false, paramToServiceMsg, localMqqHandler);
-          return;
-          paramToServiceMsg = finally;
-          throw paramToServiceMsg;
-        }
-      }
-      notifyUI(paramInt, paramBoolean, paramObject);
-      return;
-    }
-  }
-  
-  protected abstract Class<? extends BusinessObserver> observerClass();
-  
-  public void onDestroy() {}
   
   public abstract void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
   
-  public anyz removeMessageObserver(ToServiceMsg paramToServiceMsg)
+  public void send(ToServiceMsg paramToServiceMsg)
   {
-    if ((paramToServiceMsg == null) || (!paramToServiceMsg.extraData.containsKey(SEQ_KEY))) {
-      return null;
-    }
-    synchronized (this.uiObserverMap)
-    {
-      long l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
-      if (anyz.class.isInstance((BusinessObserver)this.uiObserverMap.get(Long.valueOf(l))))
-      {
-        paramToServiceMsg = (anyz)this.uiObserverMap.remove(Long.valueOf(l));
-        return paramToServiceMsg;
-      }
-    }
-    return null;
+    this.appRuntime.sendToService(paramToServiceMsg);
   }
   
-  public abstract void send(ToServiceMsg paramToServiceMsg);
-  
-  public abstract void sendPbReq(ToServiceMsg paramToServiceMsg);
+  public void sendPbReq(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg != null)
+    {
+      paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
+      this.appRuntime.sendToService(paramToServiceMsg);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.app.BaseBusinessHandler
  * JD-Core Version:    0.7.0.1
  */

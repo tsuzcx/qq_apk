@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:layout_gravity="bottom" android:background="#ffffffff" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="52.0dip" android:minHeight="52.0dip"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iie" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="52.0dip">
-        <EditText android:textSize="17.0sp" android:textColor="@color/ja" android:textColorHint="@color/jc" android:gravity="center_vertical" android:id="@id/nek" android:background="@drawable/mu" android:paddingLeft="12.0dip" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" android:minHeight="36.0dip" android:hint="@string/x9p" android:maxLines="2" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/mp" />
-        <TextView android:textColor="@color/skin_aio_send_button" android:id="@id/mm5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="@string/x9k" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/hz" />
+    <LinearLayout android:orientation="vertical" android:id="@id/eq9" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView android:id="@id/mps" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/ngf" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/cancel" />
     </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

@@ -2,61 +2,58 @@ package dov.com.qq.im.aeeditor.manage;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import aqxe;
-import bnrh;
-import bnuo;
-import bnup;
-import bnuq;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.QConfigManager;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.io.File;
 import mqq.os.MqqHandler;
 
-public class AEEditorEffectConfigManager$2
+class AEEditorEffectConfigManager$2
   implements Runnable
 {
-  public AEEditorEffectConfigManager$2(bnuo parambnuo) {}
+  AEEditorEffectConfigManager$2(AEEditorEffectConfigManager paramAEEditorEffectConfigManager) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(bnuo.a())) {
+    if (!TextUtils.isEmpty(AEEditorEffectConfigManager.a())) {
       for (;;)
       {
         try
         {
-          synchronized (bnuo.a())
+          synchronized (AEEditorEffectConfigManager.a())
           {
-            if (new File(bnuo.a()).exists())
+            if (new File(AEEditorEffectConfigManager.a()).exists())
             {
-              if (bnuo.a(this.this$0) != null)
+              if (AEEditorEffectConfigManager.a(this.this$0) != null)
               {
-                bnuo.a(this.this$0).a(bnuo.a());
+                AEEditorEffectConfigManager.a(this.this$0).a(AEEditorEffectConfigManager.a());
                 return;
               }
-              bnrh.d("AEEditorEffectConfigManager", "group list back is null.");
+              AEQLog.d("AEEditorEffectConfigManager", "group list back is null.");
             }
           }
-          if (bnuo.a(this.this$0) == null) {
+          if (AEEditorEffectConfigManager.a(this.this$0) == null) {
             break label155;
           }
         }
         catch (Exception localException)
         {
-          bnrh.d("AEEditorEffectConfigManager", localException.toString());
+          AEQLog.d("AEEditorEffectConfigManager", localException.toString());
           return;
         }
-        ((bnuq)aqxe.a().a(643)).a();
-        ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(bnuo.a(this.this$0));
-        ThreadManager.getSubThreadHandler().postAtTime(new AEEditorEffectConfigManager.2.1(this), bnuo.a(this.this$0), SystemClock.uptimeMillis() + 5000L);
+        ((AEEditorEffectConfigProcessor)QConfigManager.a().a(643)).a();
+        ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(AEEditorEffectConfigManager.a(this.this$0));
+        ThreadManager.getSubThreadHandler().postAtTime(new AEEditorEffectConfigManager.2.1(this), AEEditorEffectConfigManager.a(this.this$0), SystemClock.uptimeMillis() + 5000L);
         continue;
         label155:
-        bnrh.d("AEEditorEffectConfigManager", "group list back is null && data empty.");
+        AEQLog.d("AEEditorEffectConfigManager", "group list back is null && data empty.");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.manage.AEEditorEffectConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

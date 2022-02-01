@@ -5,32 +5,24 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import bnjs;
-import bnqm;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
 import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import com.tencent.ttpic.openapi.model.TextWMElement;
-import com.tencent.ttpic.openapi.util.WMTextDrawer;
 import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
 import com.tencent.ttpic.videoshelf.model.edit.NodeText;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
 import java.io.File;
+import org.light.device.LightDeviceUtils;
 
 public class EditTextViewer
   extends ImageView
@@ -39,22 +31,21 @@ public class EditTextViewer
   private static final int DEFAUT_TEXT_MAX_COUNT = 10;
   private static final String TAG = EditTextViewer.class.getSimpleName();
   private EditTextViewer.OnDownloadDialogListener downloadDialogLister;
-  private boolean inited;
-  private boolean isAnimationPlaying;
+  private boolean inited = false;
+  private boolean isAnimationPlaying = false;
   private boolean isFirstRender = true;
   private EditTextViewer.OnSaveTextInfoListener listener;
-  private int mActionBarHeight;
+  private int mActionBarHeight = 0;
   private Activity mActivity;
   private LayerDrawable mAnimationDrawable;
   private Drawable mAnimationSolidDrawable;
   private Bitmap mBlankBitmap;
   private EditTextDialog mEditTextDialog;
-  private boolean mIsTextSelected;
+  private boolean mIsTextSelected = false;
   private String mLastUseText;
   private Matrix mMatrix = new Matrix();
   private NodeItem mNodeItem = new NodeItem();
   private String mTemplateID;
-  private TextWMElement mTextWMElement = new TextWMElement();
   private ValueAnimator mValueAnimator;
   private String materialId;
   
@@ -64,9 +55,9 @@ public class EditTextViewer
     this.mActivity = ((Activity)paramContext);
     setOnClickListener(this);
     this.isFirstRender = true;
-    setBackgroundDrawable(getResources().getDrawable(2130837706));
-    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837705));
-    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368579);
+    setBackgroundDrawable(getResources().getDrawable(2130837714));
+    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837713));
+    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368809);
   }
   
   private boolean deleteSingleFile(String paramString)
@@ -99,33 +90,14 @@ public class EditTextViewer
   
   private void drawBlankText()
   {
-    if (this.mBlankBitmap == null) {
-      this.mBlankBitmap = Bitmap.createBitmap(this.mTextWMElement.width, this.mTextWMElement.height, Bitmap.Config.ARGB_8888);
-    }
     this.mNodeItem.bitmap = this.mBlankBitmap;
   }
   
-  private void drawText()
-  {
-    String str1 = this.mTextWMElement.fontName;
-    String str2 = this.mTextWMElement.userValue;
-    AppInterface localAppInterface = QQStoryContext.a();
-    localAppInterface.addObserver(new EditTextViewer.4(this, localAppInterface, str2));
-    ((bnjs)localAppInterface.getBusinessHandler(3)).a(str1, str2);
-  }
+  private void drawText() {}
   
   private String getValue()
   {
-    String str;
-    if (this.mTextWMElement.userValue != null) {
-      str = this.mTextWMElement.userValue;
-    }
-    do
-    {
-      return str;
-      str = "";
-    } while (this.mTextWMElement.fmtstr == null);
-    return new String(this.mTextWMElement.fmtstr);
+    return "";
   }
   
   private void hideDownloadDialog()
@@ -137,31 +109,7 @@ public class EditTextViewer
   
   private void onGetFontDataSuccess(GetFontDataRsp paramGetFontDataRsp)
   {
-    paramGetFontDataRsp = saveFontFile(getContext(), paramGetFontDataRsp.FontData);
-    if (!TextUtils.isEmpty(paramGetFontDataRsp))
-    {
-      this.mTextWMElement.fontName = paramGetFontDataRsp;
-      this.mTextWMElement.isLocalFont = false;
-    }
-    try
-    {
-      this.mTextWMElement.wmTextDrawer.drawTextToBitmap(this.mTextWMElement, getValue(), false, true);
-      this.mNodeItem.bitmap = this.mTextWMElement.getBitmap();
-      if (!TextUtils.isEmpty(paramGetFontDataRsp))
-      {
-        deleteSingleFile(paramGetFontDataRsp);
-        this.mTextWMElement.fontName = this.mNodeItem.nodeTextGroup.fontName;
-        this.mTextWMElement.isLocalFont = true;
-      }
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      for (;;)
-      {
-        Log.e(TAG, "drawText of drawTextToBitmap Error, maybe use a recycle bitmap!");
-      }
-    }
+    saveFontFile(getContext(), paramGetFontDataRsp.FontData);
   }
   
   private String saveFontFile(Context paramContext, byte[] paramArrayOfByte)
@@ -170,7 +118,7 @@ public class EditTextViewer
       return "";
     }
     paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + "temp.ttf";
-    FileUtils.writeFile(paramArrayOfByte, paramContext);
+    FileUtils.a(paramArrayOfByte, paramContext);
     return paramContext;
   }
   
@@ -181,22 +129,11 @@ public class EditTextViewer
     }
   }
   
-  private void showTextEditDlg()
-  {
-    if (this.mTextWMElement != null)
-    {
-      this.mEditTextDialog = new EditTextDialog(this.mActivity);
-      this.mEditTextDialog.setEditMaxLength(this.mNodeItem.nodeTextMaxCount);
-      this.mEditTextDialog.setDefaultEditText(this.mTextWMElement, this.isFirstRender);
-      this.mEditTextDialog.setOnConfirmClickListener(new EditTextViewer.1(this));
-      this.mEditTextDialog.show();
-      this.mEditTextDialog.setOnDismissListener(new EditTextViewer.2(this));
-    }
-  }
+  private void showTextEditDlg() {}
   
   private void toastInUIThread(int paramInt)
   {
-    this.mActivity.runOnUiThread(new EditTextViewer.5(this, paramInt));
+    this.mActivity.runOnUiThread(new EditTextViewer.1(this, paramInt));
   }
   
   private void updateParams()
@@ -225,12 +162,7 @@ public class EditTextViewer
     this.inited = false;
   }
   
-  public void clearTextWMElement()
-  {
-    if (this.mTextWMElement != null) {
-      this.mTextWMElement.clear();
-    }
-  }
+  public void clearTextWMElement() {}
   
   public NodeItem getNode()
   {
@@ -244,77 +176,9 @@ public class EditTextViewer
   
   public void initTextWMElement()
   {
-    boolean bool2 = false;
-    if (this.mTextWMElement == null)
-    {
-      this.inited = false;
-      return;
-    }
-    label64:
-    boolean bool1;
-    if (TextUtils.isEmpty(this.mNodeItem.nodeTextGroup.id))
-    {
-      this.mTextWMElement.id = ("text" + this.mNodeItem.nodeID);
-      this.mTextWMElement.relativeID = this.mNodeItem.nodeTextGroup.relativeID;
-      this.mTextWMElement.relativeAnchor = this.mNodeItem.nodeTextGroup.relativeAnchor;
-      this.mTextWMElement.anchor = this.mNodeItem.nodeTextGroup.anchor;
-      this.mTextWMElement.offsetX = this.mNodeItem.nodeTextGroup.offsetX;
-      this.mTextWMElement.offsetY = this.mNodeItem.nodeTextGroup.offsetY;
-      this.mTextWMElement.width = this.mNodeItem.nodeTextGroup.width;
-      this.mTextWMElement.height = this.mNodeItem.nodeTextGroup.height;
-      this.mTextWMElement.edittype = this.mNodeItem.nodeTextGroup.editType;
-      this.mTextWMElement.fontSize = this.mNodeItem.nodeTextGroup.fontSize;
-      this.mTextWMElement.fontFit = this.mNodeItem.nodeTextGroup.fontFit;
-      this.mTextWMElement.wmtype = this.mNodeItem.nodeTextGroup.wmtype;
-      this.mTextWMElement.fmtstr = this.mNodeItem.nodeTextGroup.fmtstr;
-      this.mTextWMElement.fontName = this.mNodeItem.nodeTextGroup.fontName;
-      this.mTextWMElement.color = this.mNodeItem.nodeTextGroup.color;
-      this.mTextWMElement.alignment = this.mNodeItem.nodeTextGroup.alignment;
-      this.mTextWMElement.vertical = this.mNodeItem.nodeTextGroup.vertical;
-      TextWMElement localTextWMElement = this.mTextWMElement;
-      if (this.mNodeItem.nodeTextGroup.fontBold != 0) {
-        break label592;
-      }
-      bool1 = false;
-      label356:
-      localTextWMElement.fontBold = bool1;
-      localTextWMElement = this.mTextWMElement;
-      if (this.mNodeItem.nodeTextGroup.fontItalics != 0) {
-        break label597;
-      }
-      bool1 = bool2;
-      label381:
-      localTextWMElement.fontItalics = bool1;
-      this.mTextWMElement.strokeColor = this.mNodeItem.nodeTextGroup.strokeColor;
-      this.mTextWMElement.strokeSize = this.mNodeItem.nodeTextGroup.strokeSize;
-      this.mTextWMElement.outerStrokeColor = this.mNodeItem.nodeTextGroup.outerStrokeColor;
-      this.mTextWMElement.outerStrokeSize = this.mNodeItem.nodeTextGroup.outerStrokeSize;
-      if (!TextUtils.isEmpty(this.mNodeItem.nodeTextGroup.shadowColor)) {
-        break label602;
-      }
-    }
-    label592:
-    label597:
-    label602:
-    for (this.mTextWMElement.shadowColor = "#00000000";; this.mTextWMElement.shadowColor = this.mNodeItem.nodeTextGroup.shadowColor)
-    {
-      this.mTextWMElement.shadowDx = this.mNodeItem.nodeTextGroup.shadowDx;
-      this.mTextWMElement.shadowDy = this.mNodeItem.nodeTextGroup.shadowDy;
-      this.mTextWMElement.blurAmount = this.mNodeItem.nodeTextGroup.blurAmount;
-      this.mTextWMElement.numberSource = "";
-      this.mTextWMElement.init();
-      this.inited = true;
-      if (this.mNodeItem.nodeTextMaxCount > 0) {
-        break;
-      }
+    this.inited = true;
+    if (this.mNodeItem.nodeTextMaxCount <= 0) {
       this.mNodeItem.nodeTextMaxCount = 10;
-      return;
-      this.mTextWMElement.id = this.mNodeItem.nodeTextGroup.id;
-      break label64;
-      bool1 = true;
-      break label356;
-      bool1 = true;
-      break label381;
     }
   }
   
@@ -325,11 +189,11 @@ public class EditTextViewer
     }
     showTextEditDlg();
     setTextSelected(false);
-    bnqm.a().f();
+    AEBaseDataReporter.a().f();
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int j = 0;
     label197:
@@ -387,38 +251,13 @@ public class EditTextViewer
   
   public void renderAndSaveTexture(String paramString)
   {
-    if (!DeviceUtils.isNetworkAvailable(AEModule.getContext())) {
-      QQToast.a(getContext(), 2131689782, 1).a();
+    if (!LightDeviceUtils.isNetworkAvailable(AEModule.getContext())) {
+      QQToast.a(getContext(), 2131689822, 1).a();
     }
-    label131:
-    for (;;)
-    {
+    while (this.inited) {
       return;
-      if (!this.inited) {
-        initTextWMElement();
-      }
-      if (TextUtils.isEmpty(paramString)) {}
-      for (this.mTextWMElement.userValue = "";; this.mTextWMElement.userValue = paramString)
-      {
-        if (this.mTextWMElement.userValue.equals(this.mLastUseText)) {
-          break label131;
-        }
-        if (!TextUtils.isEmpty(this.mTextWMElement.userValue)) {
-          break label133;
-        }
-        this.mLastUseText = this.mTextWMElement.userValue;
-        drawBlankText();
-        updateParams();
-        if (this.listener == null) {
-          break;
-        }
-        this.listener.onCompleteTextEdit(this.mNodeItem);
-        return;
-      }
     }
-    label133:
-    showDownloadDialog();
-    new Thread(new EditTextViewer.3(this)).start();
+    initTextWMElement();
   }
   
   public Bitmap renderBitmap()
@@ -426,18 +265,7 @@ public class EditTextViewer
     if (!this.inited) {
       initTextWMElement();
     }
-    try
-    {
-      this.mTextWMElement.wmTextDrawer.drawTextToBitmap(this.mTextWMElement, getValue(), false, true);
-      return this.mTextWMElement.getBitmap();
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      for (;;)
-      {
-        Log.e(TAG, "renderBitmap of drawTextToBitmap Error, maybe use a recycle bitmap!");
-      }
-    }
+    return null;
   }
   
   public void setActionBarHeight(int paramInt)
@@ -495,8 +323,8 @@ public class EditTextViewer
       this.mValueAnimator.setRepeatCount(4);
       this.mValueAnimator.setInterpolator(new DecelerateInterpolator());
       this.mValueAnimator.setRepeatMode(2);
-      this.mValueAnimator.addUpdateListener(new EditTextViewer.6(this));
-      this.mValueAnimator.addListener(new EditTextViewer.7(this));
+      this.mValueAnimator.addUpdateListener(new EditTextViewer.2(this));
+      this.mValueAnimator.addListener(new EditTextViewer.3(this));
     }
     if (this.mValueAnimator.isRunning()) {
       this.mValueAnimator.cancel();
@@ -541,7 +369,7 @@ public class EditTextViewer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.EditTextViewer
  * JD-Core Version:    0.7.0.1
  */

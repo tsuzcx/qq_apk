@@ -8,7 +8,7 @@ public final class ClientInfo
   extends JceStruct
 {
   static int cache_eUinType;
-  public int eUinType;
+  public int eUinType = 0;
   public String strAuthName = "";
   public String strAuthPassword = "";
   public String strUin = "";

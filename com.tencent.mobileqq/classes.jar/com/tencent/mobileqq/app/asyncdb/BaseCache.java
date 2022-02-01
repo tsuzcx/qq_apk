@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.asyncdb;
 
+import com.tencent.mobileqq.app.proxy.ProxyListener;
 import com.tencent.mobileqq.persistence.Entity;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class BaseCache
 {
-  public ConcurrentHashMap<String, Entity> cacheMap;
+  protected ConcurrentHashMap<String, Entity> cacheMap;
   protected ArrayList<CacheObserver> cacheObserver;
   protected Class<? extends Entity> clazz;
   protected DBDelayManager proxyManager;

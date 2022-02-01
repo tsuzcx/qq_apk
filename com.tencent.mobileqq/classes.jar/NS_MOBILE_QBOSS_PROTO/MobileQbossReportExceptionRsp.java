@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class MobileQbossReportExceptionRsp
   extends JceStruct
 {
-  public int iRet;
+  public int iRet = 0;
   
   public MobileQbossReportExceptionRsp() {}
   

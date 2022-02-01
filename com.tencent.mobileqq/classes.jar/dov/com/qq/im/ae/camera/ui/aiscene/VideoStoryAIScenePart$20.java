@@ -4,20 +4,19 @@ import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
 import android.widget.TextView;
-import bncm;
 
-public class VideoStoryAIScenePart$20
+class VideoStoryAIScenePart$20
   implements Runnable
 {
-  public VideoStoryAIScenePart$20(bncm parambncm) {}
+  VideoStoryAIScenePart$20(VideoStoryAIScenePart paramVideoStoryAIScenePart) {}
   
   public void run()
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bncm.a(this.this$0), "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bncm.b(this.this$0), "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(bncm.b(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(VideoStoryAIScenePart.a(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(VideoStoryAIScenePart.b(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(VideoStoryAIScenePart.b(this.this$0), "translationY", new float[] { 0.0F });
     Object localObject = new int[2];
-    bncm.a(this.this$0).getLocationInWindow((int[])localObject);
+    VideoStoryAIScenePart.a(this.this$0).getLocationInWindow((int[])localObject);
     localObject = new AnimatorSet();
     ((AnimatorSet)localObject).play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
     ((AnimatorSet)localObject).setDuration(300L).start();
@@ -25,7 +24,7 @@ public class VideoStoryAIScenePart$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.aiscene.VideoStoryAIScenePart.20
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class MusicListInfo
   extends JceStruct
 {
   static ArrayList<MusicInfo> cache_vMusicList = new ArrayList();
-  public ArrayList<MusicInfo> vMusicList;
+  public ArrayList<MusicInfo> vMusicList = null;
   
   static
   {

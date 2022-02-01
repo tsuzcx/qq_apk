@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,16 +13,16 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import anvx;
-import bisl;
-import blvy;
-import blwh;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import java.lang.reflect.Field;
 import mqq.app.AndroidOreoUtils;
 
@@ -51,34 +50,34 @@ public class TranslucentActivity
   
   private void startPlugin(Intent paramIntent)
   {
-    bisl localbisl;
-    if (!((blvy)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.MGR_PLUGIN)).isPlugininstalled("qzone_plugin.apk"))
+    QQProgressDialog localQQProgressDialog;
+    if (!((IPluginManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.MGR_PLUGIN)).isPlugininstalled("qzone_plugin.apk"))
     {
-      localbisl = new bisl(this, getResources().getDimensionPixelSize(2131299080));
-      localbisl.a(anvx.a(2131714433));
-      localbisl.setOnDismissListener(new TranslucentActivity.1(this));
+      localQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131299166));
+      localQQProgressDialog.a(HardCodeUtil.a(2131714928));
+      localQQProgressDialog.setOnDismissListener(new TranslucentActivity.1(this));
     }
     for (;;)
     {
       String str = QzonePluginProxyActivity.getActivityNameToIntent(paramIntent);
       paramIntent.putExtra("userQqResources", 2);
-      blwh localblwh = new blwh(0);
-      localblwh.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-      localblwh.d = "QZone";
-      localblwh.jdField_a_of_type_JavaLangString = "";
-      localblwh.e = str;
-      localblwh.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
-      localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localblwh.jdField_b_of_type_Int = -1;
-      localblwh.jdField_a_of_type_AndroidAppDialog = localbisl;
-      localblwh.c = 10000;
-      localblwh.f = null;
-      blvy.a(this, localblwh);
-      if (localbisl == null) {
+      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+      localPluginParams.b = "qzone_plugin.apk";
+      localPluginParams.e = "QZone";
+      localPluginParams.jdField_a_of_type_JavaLangString = "";
+      localPluginParams.f = str;
+      localPluginParams.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
+      localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localPluginParams.c = -1;
+      localPluginParams.jdField_a_of_type_AndroidAppDialog = localQQProgressDialog;
+      localPluginParams.d = 10000;
+      localPluginParams.g = null;
+      IPluginManager.a(this, localPluginParams);
+      if (localQQProgressDialog == null) {
         finish();
       }
       return;
-      localbisl = null;
+      localQQProgressDialog = null;
     }
   }
   
@@ -123,7 +122,7 @@ public class TranslucentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.TranslucentActivity
  * JD-Core Version:    0.7.0.1
  */

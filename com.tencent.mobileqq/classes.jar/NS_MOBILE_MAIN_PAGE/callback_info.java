@@ -13,8 +13,8 @@ public final class callback_info
   public String content = "";
   public String h5hb_url = "";
   public boolean has_grabed = true;
-  public short hb_type;
-  public Map<String, String> trans_info;
+  public short hb_type = 0;
+  public Map<String, String> trans_info = null;
   
   static
   {

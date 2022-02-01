@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.main;
 
-import acyc;
-import ahpt;
-import akam;
 import android.content.res.Resources;
 import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
-import axio;
-import bdmg;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.MagnifierSDK;
+import com.tencent.qqperf.monitor.backgroundcpu.BatteryStats;
+import com.tencent.qqperf.opt.clearmemory.MemoryConfigs;
 
-public class MainAssistObserver$2
+class MainAssistObserver$2
   implements Runnable
 {
-  public MainAssistObserver$2(akam paramakam) {}
+  MainAssistObserver$2(MainAssistObserver paramMainAssistObserver) {}
   
   public void run()
   {
@@ -29,16 +29,16 @@ public class MainAssistObserver$2
     }
     try
     {
-      ahpt.a(localQQAppInterface);
-      axio.a().a(localQQAppInterface);
+      AIOPanelUtiles.a(localQQAppInterface);
+      MultiMsgManager.a().a(localQQAppInterface);
       localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
       int i = ((DisplayMetrics)localObject).widthPixels;
       int j = ((DisplayMetrics)localObject).heightPixels;
-      localObject = BaseApplicationImpl.sImageCache;
+      localObject = GlobalImageCache.a;
       float f = MagnifierSDK.a().a().a;
       ((MQLruCache)localObject).setLargeSize((int)(j * i * 4 * f));
       localQQAppInterface.setTalkbackSwitch();
-      QQToast.a(true);
+      QQToast.a();
       QQAppInterface.getBatteryStats().a();
       return;
     }
@@ -53,7 +53,7 @@ public class MainAssistObserver$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.2
  * JD-Core Version:    0.7.0.1
  */

@@ -103,8 +103,8 @@ public class NotificationCompat$Builder
     {
       return paramBitmap;
       Resources localResources = this.mContext.getResources();
-      i = localResources.getDimensionPixelSize(2131296808);
-      j = localResources.getDimensionPixelSize(2131296807);
+      i = localResources.getDimensionPixelSize(2131296828);
+      j = localResources.getDimensionPixelSize(2131296827);
     } while ((paramBitmap.getWidth() <= i) && (paramBitmap.getHeight() <= j));
     double d = Math.min(i / Math.max(1, paramBitmap.getWidth()), j / Math.max(1, paramBitmap.getHeight()));
     return Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d), (int)Math.ceil(d * paramBitmap.getHeight()), true);
@@ -591,7 +591,7 @@ public class NotificationCompat$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.Builder
  * JD-Core Version:    0.7.0.1
  */

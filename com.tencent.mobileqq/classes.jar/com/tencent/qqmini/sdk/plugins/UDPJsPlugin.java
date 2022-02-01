@@ -116,19 +116,18 @@ public class UDPJsPlugin
   
   private void performSend(IJsService paramIJsService, JSONObject paramJSONObject, UDPJsPlugin.UDPTask paramUDPTask)
   {
-    int j = 0;
     Object localObject2 = null;
-    String str = paramJSONObject.optString("address");
     int n = paramJSONObject.optInt("port", -1);
-    boolean bool = paramJSONObject.optBoolean("__skipDomainCheck__", false);
     if (!paramJSONObject.isNull("message")) {}
     for (Object localObject1 = paramJSONObject.optString("message", null);; localObject1 = null)
     {
       int i;
+      int j;
       if (localObject1 != null)
       {
         paramIJsService = ((String)localObject1).getBytes("UTF-8");
         i = paramIJsService.length;
+        j = 0;
       }
       while (n < 0)
       {
@@ -142,22 +141,23 @@ public class UDPJsPlugin
         paramIJsService = localObject2;
         if (localObject1 != null)
         {
-          paramJSONObject = ((NativeBuffer)localObject1).buf;
+          localObject1 = ((NativeBuffer)localObject1).buf;
           i = m;
           j = k;
-          paramIJsService = paramJSONObject;
+          paramIJsService = (IJsService)localObject1;
           if (m == -1)
           {
-            i = paramJSONObject.length;
+            i = localObject1.length;
             j = k;
-            paramIJsService = paramJSONObject;
+            paramIJsService = (IJsService)localObject1;
           }
         }
       }
-      paramJSONObject = validAddress(str, n, bool);
+      localObject1 = paramJSONObject.optString("address");
+      paramJSONObject = validAddress((String)localObject1, n, paramJSONObject.optBoolean("__skipDomainCheck__", false));
       if (paramJSONObject == null)
       {
-        paramIJsService = "invalid address :[" + str + "]";
+        paramIJsService = "invalid address :[" + (String)localObject1 + "]";
         QMLog.d("UDPPlugin", paramIJsService);
         callbackError(paramIJsService, paramUDPTask.taskId);
         return;
@@ -285,7 +285,7 @@ public class UDPJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.UDPJsPlugin
  * JD-Core Version:    0.7.0.1
  */

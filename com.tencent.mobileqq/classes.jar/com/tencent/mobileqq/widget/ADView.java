@@ -13,9 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdno;
-import bilp;
-import bilq;
+import com.tencent.mobileqq.struct.PushBanner;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
 
@@ -23,21 +21,22 @@ public class ADView
   extends LinearLayout
 {
   protected float a;
-  private bilq jdField_a_of_type_Bilq = new bilq(this);
-  public WorkSpaceView a;
+  private ADView.WeakHandler jdField_a_of_type_ComTencentMobileqqWidgetADView$WeakHandler = new ADView.WeakHandler(this);
+  protected WorkSpaceView a;
   public final String a;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   protected LinearLayout b;
   protected boolean e = true;
-  public boolean f = true;
+  protected boolean f = true;
   protected int g = 2130837595;
   protected int h = this.g;
   protected int i = 2;
-  protected int j;
+  protected int j = 0;
   
   public ADView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = null;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_JavaLangString = "ADView";
     a(paramContext);
@@ -46,6 +45,7 @@ public class ADView
   public ADView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = null;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_JavaLangString = "ADView";
     a(paramContext);
@@ -136,7 +136,7 @@ public class ADView
       localObject = new LinearLayout(getContext());
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = new WorkSpaceView(getContext());
       setCircle(this.f);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new bilp(this, (LinearLayout)localObject));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new ADView.1(this, (LinearLayout)localObject));
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setId(100000);
@@ -170,7 +170,7 @@ public class ADView
     localLayoutParams.addRule(14, 100000);
     localLayoutParams.setMargins(0, 0, 0, (int)(6.0F * this.jdField_a_of_type_Float));
     paramLinearLayout.setGravity(16);
-    paramLinearLayout.setBackgroundResource(2130840583);
+    paramLinearLayout.setBackgroundResource(2130840714);
     paramLinearLayout.setPadding((int)(4.0F * this.jdField_a_of_type_Float), 0, (int)(2.0F * this.jdField_a_of_type_Float), 0);
     paramLinearLayout.setLayoutParams(localLayoutParams);
   }
@@ -232,12 +232,12 @@ public class ADView
   
   public void i()
   {
-    this.jdField_a_of_type_Bilq.removeMessages(0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetADView$WeakHandler.removeMessages(0);
     try
     {
-      bdno localbdno = (bdno)this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a()).getTag();
-      k = localbdno.a;
-      setContentDescription(localbdno.n);
+      PushBanner localPushBanner = (PushBanner)this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a()).getTag();
+      k = localPushBanner.a;
+      setContentDescription(localPushBanner.n);
       k *= 1000;
     }
     catch (Exception localException)
@@ -247,12 +247,12 @@ public class ADView
         int k = 5000;
       }
     }
-    this.jdField_a_of_type_Bilq.sendEmptyMessageDelayed(0, k);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetADView$WeakHandler.sendEmptyMessageDelayed(0, k);
   }
   
   public void j()
   {
-    this.jdField_a_of_type_Bilq.sendEmptyMessage(1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetADView$WeakHandler.sendEmptyMessage(1);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -291,7 +291,7 @@ public class ADView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ADView
  * JD-Core Version:    0.7.0.1
  */

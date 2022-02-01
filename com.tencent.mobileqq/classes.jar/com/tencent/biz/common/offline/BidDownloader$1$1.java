@@ -1,11 +1,9 @@
 package com.tencent.biz.common.offline;
 
-import nuy;
-
-public class BidDownloader$1$1
+class BidDownloader$1$1
   extends Thread
 {
-  public BidDownloader$1$1(nuy paramnuy) {}
+  BidDownloader$1$1(BidDownloader.1 param1) {}
   
   public void run()
   {
@@ -36,7 +34,7 @@ public class BidDownloader$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.BidDownloader.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,22 @@
 package com.tencent.qqmini.miniapp.plugin;
 
-import com.tencent.qqmini.miniapp.util.TextureRender.VideoTextureRenderer;
 import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer;
-import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnVideoSizeChangedListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnSeekCompleteListener;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 class VideoEmbeddedWidgetClient$2
-  implements IMediaPlayer.OnVideoSizeChangedListener
+  implements IMediaPlayer.OnSeekCompleteListener
 {
   VideoEmbeddedWidgetClient$2(VideoEmbeddedWidgetClient paramVideoEmbeddedWidgetClient) {}
   
-  public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onSeekComplete(IMediaPlayer paramIMediaPlayer)
   {
-    QMLog.i("miniapp-embedded", "onVideoSizeChanged : w - " + paramInt1 + "; h - " + paramInt2);
-    VideoEmbeddedWidgetClient.access$202(this.this$0, paramInt1);
-    VideoEmbeddedWidgetClient.access$302(this.this$0, paramInt2);
-    if (VideoEmbeddedWidgetClient.access$400(this.this$0) != null)
-    {
-      VideoEmbeddedWidgetClient.access$400(this.this$0).setVideoSize(paramInt1, paramInt2, VideoEmbeddedWidgetClient.access$500(this.this$0));
-      return;
-    }
-    QMLog.e("miniapp-embedded", "setOnVideoSizeChangedListener renderer is null");
+    QMLog.i("miniapp-embedded", "onSeekComplete ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.VideoEmbeddedWidgetClient.2
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,9 @@ import android.graphics.Bitmap.Config;
 import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.component.media.image.ImageLoader.Options;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.utils.IQzoneHardwareRestriction;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
@@ -30,16 +33,23 @@ public class PanoramaUtil
   private static final String QZONE_CONFIG_SECONDARY_KEY_PANORAMA_BLACKLIST_VALUE = "panoramaBlackListValue";
   private static final String QZONE_CONFIG_SECONDARY_KEY_PANORAMA_SWITCH_VALUE = "panoramaSwitch";
   private static final String QZONE_CONFIG_SECONDARY_KEY_PANORAMA__ROTATION_BLACKLIST_VALUE = "panoramaRotationBlackListValue";
+  public static final String SVR_PANORAMA_BALL = "2";
+  public static final String SVR_PANORAMA_CYLINDER = "1";
+  public static final String SVR_PANORAMA_NORMAL = "0";
   private static final String TAG = "PanoramaUtil";
-  private static PanoramaUtil instance;
+  public static final int TYPE_PANORAMA_BALL = 2;
+  public static final int TYPE_PANORAMA_CYLINDER = 1;
+  public static final String TYPE_PANORAMA_NAME = "panorama_type";
+  public static final int TYPE_PANORAMA_NORMAL = 3;
+  private static PanoramaUtil instance = null;
   private static final int mPanoramaBlackLevel = QzoneConfig.getInstance().getConfig("QZoneSetting", "panoramaBlackListLevelValue", 20);
   private static final String mPanoramaBlackList = QzoneConfig.getInstance().getConfig("QZoneSetting", "panoramaBlackListValue", "MI 3");
   private static final String mPanoramaRotationBlackList = QzoneConfig.getInstance().getConfig("QZoneSetting", "panoramaRotationBlackListValue", "KNT-AL20");
   private static int mPanoramaSwitch = QzoneConfig.getInstance().getConfig("QZoneSetting", "panoramaSwitch", 1);
-  private volatile boolean g_isInPanoramaBlacklist;
-  private volatile boolean g_isInPanoramaRotationBlacklist;
-  private volatile String g_panoramaBlacklist;
-  private volatile String g_panoramaRotationBlacklist;
+  private volatile boolean g_isInPanoramaBlacklist = false;
+  private volatile boolean g_isInPanoramaRotationBlacklist = false;
+  private volatile String g_panoramaBlacklist = null;
+  private volatile String g_panoramaRotationBlacklist = null;
   private ArrayList<float[]> sphereList;
   
   public static PanoramaUtil getInstance()
@@ -85,6 +95,19 @@ public class PanoramaUtil
     }
     return false;
     label150:
+    return false;
+  }
+  
+  public static boolean isPanoramaPhoto(int paramInt)
+  {
+    if (!getInstance().isNeedShowPanorama()) {}
+    do
+    {
+      return false;
+      if ((paramInt == 1) || (paramInt == 2)) {
+        return true;
+      }
+    } while (paramInt != 3);
     return false;
   }
   
@@ -182,6 +205,30 @@ public class PanoramaUtil
     ((ArrayList)localObject).add(paramArrayList);
     ((ArrayList)localObject).add(arrayOfFloat);
     return localObject;
+  }
+  
+  public static void setPanoramaType(LocalMediaInfo paramLocalMediaInfo)
+  {
+    if ((paramLocalMediaInfo.panoramaPhotoType != 0) || (!getInstance().isNeedShowPanorama())) {}
+    while ((paramLocalMediaInfo.mediaWidth == 0) || (paramLocalMediaInfo.mediaHeight == 0)) {
+      return;
+    }
+    if ((paramLocalMediaInfo.mediaHeight >= 1000) && (paramLocalMediaInfo.mediaWidth / paramLocalMediaInfo.mediaHeight == 2.0F))
+    {
+      if (XMPCoreUtil.getInstance().isPanorama(paramLocalMediaInfo.path))
+      {
+        paramLocalMediaInfo.panoramaPhotoType = 2;
+        return;
+      }
+      paramLocalMediaInfo.panoramaPhotoType = 3;
+      return;
+    }
+    if ((paramLocalMediaInfo.mediaHeight >= 512) && (paramLocalMediaInfo.mediaWidth / paramLocalMediaInfo.mediaHeight >= 4.0F))
+    {
+      paramLocalMediaInfo.panoramaPhotoType = 1;
+      return;
+    }
+    paramLocalMediaInfo.panoramaPhotoType = 3;
   }
   
   public int computeSampleSize(ImageLoader.Options paramOptions, int paramInt1, int paramInt2)
@@ -347,7 +394,7 @@ public class PanoramaUtil
   
   public boolean isHighDevice()
   {
-    return QzoneHardwareRestriction.getCurrentMemLevel() == 3;
+    return ((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getCurrentMemLevel() == 3;
   }
   
   public boolean isNeedShowPanorama()
@@ -380,7 +427,7 @@ public class PanoramaUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.PanoramaUtil
  * JD-Core Version:    0.7.0.1
  */

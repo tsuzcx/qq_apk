@@ -23,10 +23,10 @@ public class MaskView
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   
   public MaskView(Context paramContext)
   {
@@ -48,8 +48,8 @@ public class MaskView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845596);
-    this.jdField_a_of_type_Int = AIOUtils.dp2px(3.0F, getResources());
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845913);
+    this.jdField_a_of_type_Int = AIOUtils.a(3.0F, getResources());
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     int j;
     int i;
@@ -60,7 +60,7 @@ public class MaskView
     }
     for (;;)
     {
-      int k = j - AIOUtils.dp2px(18.0F, getResources());
+      int k = j - AIOUtils.a(18.0F, getResources());
       int m = k * 424 / 680;
       int n = (j - k) / 2 + 0;
       int i1 = (i - m) / 2 + 0;
@@ -86,7 +86,7 @@ public class MaskView
     return this.jdField_a_of_type_AndroidGraphicsRectF;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (!this.jdField_a_of_type_Boolean) {

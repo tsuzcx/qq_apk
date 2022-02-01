@@ -8,15 +8,15 @@ public final class stcustomPraise
   extends JceStruct
 {
   public int customPraisetype = 0;
-  public int iFrameRate;
-  public int iItemId;
-  public int iPraiseActId;
+  public int iFrameRate = 0;
+  public int iItemId = 0;
+  public int iPraiseActId = 0;
   public String strPraiseButton = "";
   public String strPraiseComboZip = "";
   public String strPraisePic = "";
   public String strPraiseZip = "";
-  public int subpraisetype;
-  public long uiComboCount;
+  public int subpraisetype = 0;
+  public long uiComboCount = 0L;
   
   public stcustomPraise() {}
   

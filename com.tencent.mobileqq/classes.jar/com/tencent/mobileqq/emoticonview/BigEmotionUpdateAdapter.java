@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.core.SystemEmotionPanelManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.widget.ProgressButton;
 import com.tencent.qphone.base.util.QLog;
@@ -19,9 +19,9 @@ public class BigEmotionUpdateAdapter
 {
   public static final String TAG = "BigEmotionUpdateAdapter";
   
-  public BigEmotionUpdateAdapter(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, EmoticonCallback paramEmoticonCallback, int paramInt4)
+  public BigEmotionUpdateAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, EmoticonCallback paramEmoticonCallback, int paramInt4)
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramEmoticonCallback, paramInt4);
+    super(paramIEmoticonMainPanelApp, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramEmoticonCallback, paramInt4);
     this.callback = paramEmoticonCallback;
     this.isUpdatePanel = true;
   }
@@ -35,7 +35,7 @@ public class BigEmotionUpdateAdapter
     if (i == 0)
     {
       if (paramView != null) {
-        break label662;
+        break label673;
       }
       paramViewHolder = EmotionPanelViewPool.getInstance().getView(7);
       paramView = new AbsListView.LayoutParams(-1, -2);
@@ -44,13 +44,13 @@ public class BigEmotionUpdateAdapter
         if (QLog.isColorLevel()) {
           QLog.d("BigEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemtype = " + i + ";view from inflater");
         }
-        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561925, null);
+        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561740, null);
         paramViewHolder.setLayoutParams(paramView);
         paramViewHolder.setPadding(0, (int)(10.0F * this.density), 0, 0);
         recycleView(7, paramViewHolder);
-        paramViewGroup.cover = ((URLImageView)paramViewHolder.findViewById(2131365278));
-        paramViewGroup.name = ((TextView)paramViewHolder.findViewById(2131365371));
-        paramViewGroup.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365369));
+        paramViewGroup.cover = ((URLImageView)paramViewHolder.findViewById(2131365419));
+        paramViewGroup.name = ((TextView)paramViewHolder.findViewById(2131365521));
+        paramViewGroup.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365519));
         paramViewHolder.setTag(paramViewGroup);
       }
     }
@@ -71,7 +71,7 @@ public class BigEmotionUpdateAdapter
           if (QLog.isColorLevel()) {
             QLog.d("BigEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemtype = " + i + ";view from inflater");
           }
-          paramView = new EmoticonPanelLinearLayout(this.mContext);
+          paramView = new EmoticonPanelLinearLayout(this.mContext, SystemEmotionPanelManager.a().a(this.mContext, false));
           paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
           paramView.setOrientation(0);
           if (paramInt == 1) {
@@ -134,7 +134,7 @@ public class BigEmotionUpdateAdapter
         paramViewHolder = paramView;
         i = j;
       }
-      label662:
+      label673:
       paramViewHolder = paramView;
     }
   }
@@ -146,7 +146,7 @@ public class BigEmotionUpdateAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BigEmotionUpdateAdapter
  * JD-Core Version:    0.7.0.1
  */

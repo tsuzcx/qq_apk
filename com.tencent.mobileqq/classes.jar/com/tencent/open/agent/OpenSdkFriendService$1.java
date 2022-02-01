@@ -1,10 +1,9 @@
 package com.tencent.open.agent;
 
 import android.os.Message;
-import bjet;
 import java.util.ArrayList;
 
-public class OpenSdkFriendService$1
+class OpenSdkFriendService$1
   implements Runnable
 {
   public void run()
@@ -15,7 +14,7 @@ public class OpenSdkFriendService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.OpenSdkFriendService.1
  * JD-Core Version:    0.7.0.1
  */

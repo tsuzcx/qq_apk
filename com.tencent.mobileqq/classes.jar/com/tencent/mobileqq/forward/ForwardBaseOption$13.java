@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.forward;
 
 import android.os.Bundle;
-import aupt;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-public class ForwardBaseOption$13
+class ForwardBaseOption$13
   implements Runnable
 {
-  public ForwardBaseOption$13(aupt paramaupt, String paramString, QQCustomDialog paramQQCustomDialog) {}
+  ForwardBaseOption$13(ForwardBaseOption paramForwardBaseOption, String paramString, QQCustomDialog paramQQCustomDialog) {}
   
   public void run()
   {
     Object localObject1;
     if (!this.this$0.jdField_a_of_type_Boolean)
     {
-      localObject2 = aupt.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+      localObject2 = ForwardBaseOption.a(this.this$0, this.jdField_a_of_type_JavaLangString);
       localObject1 = localObject2;
       if (localObject2 != null) {
         break label83;
@@ -29,7 +28,7 @@ public class ForwardBaseOption$13
     do
     {
       return;
-      localObject2 = aupt.a(this.this$0);
+      localObject2 = ForwardBaseOption.a(this.this$0);
       localObject1 = localObject2;
       if (localObject2 != null) {
         break;
@@ -40,11 +39,11 @@ public class ForwardBaseOption$13
     label83:
     this.this$0.a(localObject1, this.this$0.jdField_a_of_type_Boolean);
     Object localObject2 = (ArrayList)this.this$0.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
-    aupt localaupt = this.this$0;
+    ForwardBaseOption localForwardBaseOption = this.this$0;
     if (localObject2 != null) {}
     for (int i = ((ArrayList)localObject2).size();; i = 0)
     {
-      localaupt.a(localObject1, true, i, this.this$0.jdField_a_of_type_Boolean);
+      localForwardBaseOption.a(localObject1, true, i, this.this$0.jdField_a_of_type_Boolean);
       return;
     }
   }

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.entry;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bijj;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -19,13 +19,13 @@ final class MiniAppUtils$3
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((paramMessage.obj instanceof bijj))
+    if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
-      bijj localbijj = (bijj)paramMessage.obj;
-      if (localbijj.c == 0)
+      WebSoCgiService.WebSoCgiState localWebSoCgiState = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
+      if (localWebSoCgiState.c == 0)
       {
         QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
-        ThreadManager.getFileThreadHandler().post(new MiniAppUtils.3.1(this, localbijj));
+        ThreadManager.getFileThreadHandler().post(new MiniAppUtils.3.1(this, localWebSoCgiState));
       }
     }
   }

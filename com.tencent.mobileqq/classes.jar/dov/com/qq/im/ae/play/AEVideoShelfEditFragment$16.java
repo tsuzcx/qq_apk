@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bkyq;
+import com.tencent.util.UiThreadUtil;
 import java.util.TimerTask;
 
 class AEVideoShelfEditFragment$16
@@ -10,12 +10,12 @@ class AEVideoShelfEditFragment$16
   
   public void run()
   {
-    bkyq.a(new AEVideoShelfEditFragment.16.1(this));
+    UiThreadUtil.a(new AEVideoShelfEditFragment.16.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoShelfEditFragment.16
  * JD-Core Version:    0.7.0.1
  */

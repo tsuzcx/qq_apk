@@ -1,6 +1,5 @@
 package com.tencent.open.agent;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -53,7 +52,7 @@ public class PublicFragmentActivityForOpenSDK
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.PublicFragmentActivityForOpenSDK
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,19 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import ayzg;
-import bdxj;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-public class AccountPanel$3
-  implements Runnable
+class AccountPanel$3
+  extends View.AccessibilityDelegate
 {
-  public AccountPanel$3(ayzg paramayzg) {}
+  AccountPanel$3(AccountPanel paramAccountPanel, ClickableSpan paramClickableSpan) {}
   
-  public void run()
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if ((ayzg.a(this.this$0) != null) && (ayzg.a(this.this$0) != null))
-    {
-      ayzg.a(this.this$0, true);
-      ayzg.b(this.this$0, false);
-      ayzg.a(this.this$0, ayzg.a(this.this$0));
-      ayzg.a(this.this$0).startAllSubMessageAccountMsg(false);
-      bdxj.a(ayzg.a(this.this$0), false);
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if ((paramInt == 1) && (this.jdField_a_of_type_AndroidTextStyleClickableSpan != null)) {
+      this.jdField_a_of_type_AndroidTextStyleClickableSpan.onClick(paramView);
     }
   }
 }

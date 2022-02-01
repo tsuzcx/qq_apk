@@ -3,12 +3,11 @@ package com.tencent.mobileqq.intervideo.yiqikan;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avwz;
 
 public class NewTogetherRoomMessageData
   implements Parcelable
 {
-  public static final Parcelable.Creator<NewTogetherRoomMessageData> CREATOR = new avwz();
+  public static final Parcelable.Creator<NewTogetherRoomMessageData> CREATOR = new NewTogetherRoomMessageData.1();
   public int a;
   public long a;
   public String a;
@@ -24,12 +23,22 @@ public class NewTogetherRoomMessageData
   
   public NewTogetherRoomMessageData()
   {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
   }
   
-  public NewTogetherRoomMessageData(Parcel paramParcel)
+  protected NewTogetherRoomMessageData(Parcel paramParcel)
   {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -79,7 +88,7 @@ public class NewTogetherRoomMessageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData
  * JD-Core Version:    0.7.0.1
  */

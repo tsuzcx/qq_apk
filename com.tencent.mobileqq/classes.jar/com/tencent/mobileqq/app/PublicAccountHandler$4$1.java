@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import aoaq;
-
-public class PublicAccountHandler$4$1
+class PublicAccountHandler$4$1
   implements Runnable
 {
-  public PublicAccountHandler$4$1(aoaq paramaoaq) {}
+  PublicAccountHandler$4$1(PublicAccountHandler.4 param4) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class PublicAccountHandler$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PublicAccountHandler.4.1
  * JD-Core Version:    0.7.0.1
  */

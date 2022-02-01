@@ -1,12 +1,11 @@
 package com.tencent.av.ui;
 
 import com.tencent.qphone.base.util.QLog;
-import mci;
 
-public class BaseInviteFloatBarUICtr$2
+class BaseInviteFloatBarUICtr$2
   implements Runnable
 {
-  public BaseInviteFloatBarUICtr$2(mci parammci) {}
+  BaseInviteFloatBarUICtr$2(BaseInviteFloatBarUICtr paramBaseInviteFloatBarUICtr) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class BaseInviteFloatBarUICtr$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.BaseInviteFloatBarUICtr.2
  * JD-Core Version:    0.7.0.1
  */

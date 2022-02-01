@@ -13,12 +13,12 @@ public final class SvcMsgInfo
 {
   static Map<String, byte[]> cache_msgByteInfos;
   static Map<String, String> cache_msgInfos;
-  public int iMsgType;
-  public long lFromUin;
-  public Map<String, byte[]> msgByteInfos;
-  public Map<String, String> msgInfos;
+  public int iMsgType = 0;
+  public long lFromUin = 0L;
+  public Map<String, byte[]> msgByteInfos = null;
+  public Map<String, String> msgInfos = null;
   public String strOther = "";
-  public int tTimeStamp;
+  public int tTimeStamp = 0;
   
   static
   {
@@ -118,7 +118,7 @@ public final class SvcMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.sc.qzonepush.QQService.SvcMsgInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -389,7 +389,7 @@ class AccessibilityBridge$SemanticsNode
     i = 0;
     while (i < j)
     {
-      paramArrayOfString = AccessibilityBridge.access$6100(this.accessibilityBridge, paramByteBuffer.getInt());
+      paramArrayOfString = AccessibilityBridge.access$6000(this.accessibilityBridge, paramByteBuffer.getInt());
       paramArrayOfString.parent = this;
       this.childrenInTraversalOrder.add(paramArrayOfString);
       i += 1;
@@ -397,7 +397,7 @@ class AccessibilityBridge$SemanticsNode
     i = 0;
     while (i < j)
     {
-      paramArrayOfString = AccessibilityBridge.access$6100(this.accessibilityBridge, paramByteBuffer.getInt());
+      paramArrayOfString = AccessibilityBridge.access$6000(this.accessibilityBridge, paramByteBuffer.getInt());
       paramArrayOfString.parent = this;
       this.childrenInHitTestOrder.add(paramArrayOfString);
       i += 1;
@@ -416,7 +416,7 @@ class AccessibilityBridge$SemanticsNode
       if (i >= j) {
         break label613;
       }
-      paramArrayOfString = AccessibilityBridge.access$6200(this.accessibilityBridge, paramByteBuffer.getInt());
+      paramArrayOfString = AccessibilityBridge.access$6100(this.accessibilityBridge, paramByteBuffer.getInt());
       if (AccessibilityBridge.CustomAccessibilityAction.access$3900(paramArrayOfString) != AccessibilityBridge.Action.TAP.value) {
         break label615;
       }
@@ -443,7 +443,7 @@ class AccessibilityBridge$SemanticsNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.view.AccessibilityBridge.SemanticsNode
  * JD-Core Version:    0.7.0.1
  */

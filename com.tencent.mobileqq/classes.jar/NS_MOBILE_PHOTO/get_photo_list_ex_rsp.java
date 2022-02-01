@@ -13,16 +13,16 @@ public final class get_photo_list_ex_rsp
   static Album cache_albuminfo = new Album();
   static Map<Integer, byte[]> cache_features;
   static ArrayList<Photo> cache_photolist = new ArrayList();
-  public Album albuminfo;
-  public int appid;
-  public Map<Integer, byte[]> features;
-  public int imaxfetch;
-  public int index;
-  public int indexInVec;
-  public long left_finish;
-  public int lossy_service;
-  public ArrayList<Photo> photolist;
-  public long right_finish;
+  public Album albuminfo = null;
+  public int appid = 0;
+  public Map<Integer, byte[]> features = null;
+  public int imaxfetch = 0;
+  public int index = 0;
+  public int indexInVec = 0;
+  public long left_finish = 0L;
+  public int lossy_service = 0;
+  public ArrayList<Photo> photolist = null;
+  public long right_finish = 0L;
   
   static
   {

@@ -1,22 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.manager;
 
-import oha;
-import pvj;
-import uhx;
+import com.tencent.biz.pubaccount.NativeAd.data.AdRequestData;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 
-public class ReadInjoyADExposureManager$1
+class ReadInjoyADExposureManager$1
   implements Runnable
 {
-  public ReadInjoyADExposureManager$1(uhx paramuhx, int paramInt, oha paramoha) {}
+  ReadInjoyADExposureManager$1(ReadInjoyADExposureManager paramReadInjoyADExposureManager, int paramInt, AdRequestData paramAdRequestData) {}
   
   public void run()
   {
-    pvj.a().a(this.jdField_a_of_type_Int, 4, 0, 10000, this.jdField_a_of_type_Oha);
+    ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_Int, 4, 0, 10000, this.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataAdRequestData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.ReadInjoyADExposureManager.1
  * JD-Core Version:    0.7.0.1
  */

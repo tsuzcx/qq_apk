@@ -14,8 +14,8 @@ public abstract class FragmentStatePagerAdapter
 {
   private static final boolean DEBUG = false;
   private static final String TAG = "FragmentStatePagerAdapter";
-  private FragmentTransaction mCurTransaction;
-  private Fragment mCurrentPrimaryItem;
+  private FragmentTransaction mCurTransaction = null;
+  private Fragment mCurrentPrimaryItem = null;
   private final FragmentManager mFragmentManager;
   protected ArrayList<Fragment> mFragments = new ArrayList();
   private ArrayList<Fragment.SavedState> mSavedState = new ArrayList();

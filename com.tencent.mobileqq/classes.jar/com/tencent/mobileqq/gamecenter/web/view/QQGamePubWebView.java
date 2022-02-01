@@ -3,12 +3,11 @@ package com.tencent.mobileqq.gamecenter.web.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import avhe;
 
 public class QQGamePubWebView
   extends BaseNestScrollWebView
 {
-  private avhe a;
+  private QQGamePubWebView.HeadViewVisibleListener a;
   
   public QQGamePubWebView(Context paramContext)
   {
@@ -45,14 +44,14 @@ public class QQGamePubWebView
     super.setPaddingTop(paramInt);
   }
   
-  public void setViewVisibleListener(avhe paramavhe)
+  public void setViewVisibleListener(QQGamePubWebView.HeadViewVisibleListener paramHeadViewVisibleListener)
   {
-    this.a = paramavhe;
+    this.a = paramHeadViewVisibleListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView
  * JD-Core Version:    0.7.0.1
  */

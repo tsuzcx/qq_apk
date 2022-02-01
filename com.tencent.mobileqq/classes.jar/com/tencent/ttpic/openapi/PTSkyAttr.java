@@ -9,7 +9,6 @@ public class PTSkyAttr
   private Bitmap maskBitmap;
   private Frame maskFrame;
   private long nextSurfaceTime;
-  private float[] pixelRange;
   private float[] rotationMatrix;
   private long surfaceTime;
   
@@ -26,11 +25,6 @@ public class PTSkyAttr
   public long getNextSurfaceTime()
   {
     return this.nextSurfaceTime;
-  }
-  
-  public float[] getPixelRange()
-  {
-    return this.pixelRange;
   }
   
   public float[] getRotationMatrix()
@@ -63,11 +57,6 @@ public class PTSkyAttr
     this.nextSurfaceTime = paramLong;
   }
   
-  public void setPixelRange(float[] paramArrayOfFloat)
-  {
-    this.pixelRange = paramArrayOfFloat;
-  }
-  
   public void setRotationMatrix(float[] paramArrayOfFloat)
   {
     this.rotationMatrix = paramArrayOfFloat;
@@ -80,7 +69,7 @@ public class PTSkyAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTSkyAttr
  * JD-Core Version:    0.7.0.1
  */

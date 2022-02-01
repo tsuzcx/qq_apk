@@ -8,6 +8,8 @@ import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PicUpReq;
@@ -22,9 +24,9 @@ import java.util.List;
 public class GroupQzonePicUploadProcessor
   extends GroupPicUploadProcessor
 {
-  public GroupQzonePicUploadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public GroupQzonePicUploadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
   }
   
   protected int doCheckParam()
@@ -207,7 +209,7 @@ public class GroupQzonePicUploadProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "grp_pic_up";
     localRichProtoReq.reqs.add(localPicUpReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
     if (!isAppValid())
     {
       setError(9366, "illegal app", null, this.mStepUrl);

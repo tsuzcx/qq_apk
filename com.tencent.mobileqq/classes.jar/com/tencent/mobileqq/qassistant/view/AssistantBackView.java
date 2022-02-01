@@ -10,13 +10,12 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bakl;
-import bamv;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory.ListenerAdapter;
 import com.tencent.mobileqq.dinifly.LottieCompositionFactory;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieTask;
+import com.tencent.mobileqq.qassistant.core.AssistantUtils;
 
 public class AssistantBackView
   extends ImageView
@@ -30,11 +29,11 @@ public class AssistantBackView
   private LottieTask<LottieComposition> jdField_a_of_type_ComTencentMobileqqDiniflyLottieTask;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private Runnable jdField_a_of_type_JavaLangRunnable = new AssistantBackView.1(this);
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = -16725252;
-  private volatile boolean jdField_b_of_type_Boolean;
+  private volatile boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private int d;
   
   public AssistantBackView(Context paramContext)
@@ -54,7 +53,7 @@ public class AssistantBackView
   
   private void a()
   {
-    LottieComposition.Factory.ListenerAdapter localListenerAdapter = new LottieComposition.Factory.ListenerAdapter(new bamv(this));
+    LottieComposition.Factory.ListenerAdapter localListenerAdapter = new LottieComposition.Factory.ListenerAdapter(new AssistantBackView.3(this));
     LottieTask localLottieTask = LottieCompositionFactory.fromAsset(getContext(), "login_btn_lottie_anim.json");
     localLottieTask.addListener(localListenerAdapter);
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -79,7 +78,7 @@ public class AssistantBackView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     try
     {
@@ -144,7 +143,7 @@ public class AssistantBackView
     if (bool == paramBoolean) {
       return;
     }
-    bakl.a("AssistantBackView", "setEnabled isEnabled:" + isEnabled() + "  mLottieDrawable:" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    AssistantUtils.a("AssistantBackView", "setEnabled isEnabled:" + isEnabled() + "  mLottieDrawable:" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     post(this.jdField_a_of_type_JavaLangRunnable);
   }

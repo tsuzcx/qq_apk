@@ -8,7 +8,7 @@ public final class QzmallCustomPlayer
   extends JceStruct
 {
   public int iItemId = -1;
-  public long lTextColor;
+  public long lTextColor = 0L;
   public String strPlayerDecoUrl = "";
   
   public QzmallCustomPlayer() {}

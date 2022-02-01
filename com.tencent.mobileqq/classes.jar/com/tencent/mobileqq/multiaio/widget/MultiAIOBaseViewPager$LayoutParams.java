@@ -11,8 +11,8 @@ public class MultiAIOBaseViewPager$LayoutParams
   float a;
   public int a;
   public boolean a;
-  public int b;
-  boolean b;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
   int c;
   
   public MultiAIOBaseViewPager$LayoutParams()

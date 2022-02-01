@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.ar.model;
 
-import apki;
-import apos;
+import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
 
-public class QQARSession$9
+class QQARSession$9
   implements Runnable
 {
-  public QQARSession$9(apos paramapos, boolean paramBoolean) {}
+  QQARSession$9(QQARSession paramQQARSession, boolean paramBoolean) {}
   
   public void run()
   {
     int j = 0;
-    if (apos.c(this.this$0)) {
-      if (apos.a(this.this$0) != null) {
-        apos.b(this.this$0, false);
+    if (QQARSession.c(this.this$0)) {
+      if (QQARSession.a(this.this$0) != null) {
+        QQARSession.b(this.this$0, false);
       }
     }
     int i;
@@ -21,13 +20,13 @@ public class QQARSession$9
     {
       return;
       i = j;
-      if (apos.a(this.this$0) != null)
+      if (QQARSession.a(this.this$0) != null)
       {
         i = j;
-        if (apos.a(this.this$0).a != null)
+        if (QQARSession.a(this.this$0).a != null)
         {
           i = j;
-          if (apos.b(this.this$0))
+          if (QQARSession.b(this.this$0))
           {
             i = j;
             if (this.this$0.a == 2) {
@@ -38,12 +37,12 @@ public class QQARSession$9
       }
       if ((this.a) && (i != 0))
       {
-        apos.a(this.this$0, apos.a(this.this$0).a);
+        QQARSession.a(this.this$0, QQARSession.a(this.this$0).a);
         return;
       }
     } while (i == 0);
-    if (apos.a(this.this$0) != null) {
-      apos.b(this.this$0, true);
+    if (QQARSession.a(this.this$0) != null) {
+      QQARSession.b(this.this$0, true);
     }
     this.this$0.p();
   }

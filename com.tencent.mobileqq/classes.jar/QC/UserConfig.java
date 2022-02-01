@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class UserConfig
   extends JceStruct
 {
-  public int effect_id;
-  public long group_code;
-  public long set_mode;
-  public long status;
+  public int effect_id = 0;
+  public long group_code = 0L;
+  public long set_mode = 0L;
+  public long status = 0L;
   
   public UserConfig() {}
   

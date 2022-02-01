@@ -1,26 +1,26 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.utils;
 
-import tmh;
-import tmk;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.TemplateFactory;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleConfigHelper;
 
-public final class OfflineUtils$1
+final class OfflineUtils$1
   implements Runnable
 {
-  public OfflineUtils$1(boolean paramBoolean) {}
+  OfflineUtils$1(boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a) {
       return;
     }
-    tmh.a();
-    tmh.a("default_feeds", true);
-    new tmk().a();
+    TemplateFactory.a();
+    TemplateFactory.a("default_feeds", true);
+    new StyleConfigHelper().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.OfflineUtils.1
  * JD-Core Version:    0.7.0.1
  */

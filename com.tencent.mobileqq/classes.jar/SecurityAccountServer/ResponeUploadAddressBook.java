@@ -8,8 +8,8 @@ public final class ResponeUploadAddressBook
   extends JceStruct
 {
   static byte[] cache_sessionSid;
-  public long nextFlag;
-  public byte[] sessionSid;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
   
   public ResponeUploadAddressBook() {}
   

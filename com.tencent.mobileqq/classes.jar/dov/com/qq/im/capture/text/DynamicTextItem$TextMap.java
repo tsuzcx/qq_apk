@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bolj;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,12 +16,12 @@ import java.util.Set;
 public class DynamicTextItem$TextMap
   implements Parcelable
 {
-  public static final Parcelable.Creator<TextMap> CREATOR = new bolj();
+  public static final Parcelable.Creator<TextMap> CREATOR = new DynamicTextItem.TextMap.1();
   private Map<Integer, String> a = new HashMap();
   
   public DynamicTextItem$TextMap() {}
   
-  public DynamicTextItem$TextMap(Parcel paramParcel)
+  protected DynamicTextItem$TextMap(Parcel paramParcel)
   {
     this();
     int j = paramParcel.readInt();
@@ -188,7 +187,7 @@ public class DynamicTextItem$TextMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.text.DynamicTextItem.TextMap
  * JD-Core Version:    0.7.0.1
  */

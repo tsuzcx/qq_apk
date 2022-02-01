@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.ptt.preop;
 
-import baif;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class PttPreSendManager$1
+class PttPreSendManager$1
   implements Runnable
 {
-  public PttPreSendManager$1(baif parambaif, BaseChatPie paramBaseChatPie) {}
+  PttPreSendManager$1(PttPreSendManager paramPttPreSendManager, BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    this.a.playPersonalSound(2131230732);
+    this.a.k(2131230732);
   }
 }
 

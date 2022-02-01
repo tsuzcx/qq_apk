@@ -5,20 +5,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import bhoo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.URL;
-import javax.annotation.Nullable;
 import mqq.app.AppRuntime;
+import org.jetbrains.annotations.Nullable;
 
+@Deprecated
 public class VasApngUtil
 {
   public static final int CAN_PLAY_TAG_AIO = 0;
@@ -71,9 +71,9 @@ public class VasApngUtil
   public static final int[] VIP_APNG_TAGS = { 1, 0, 2, 3, 9, 27 };
   public static int[] converstionTag = { 2, 3, 4, 5, 6, 8 };
   
-  public static bhoo factory()
+  public static VasApngFactory factory()
   {
-    return bhoo.a;
+    return VasApngFactory.jdField_a_of_type_ComTencentMobileqqVasApngApiVasApngFactory;
   }
   
   @Deprecated
@@ -234,8 +234,8 @@ public class VasApngUtil
   public static URLDrawable getRegionUrlDrawable(String paramString, int paramInt)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    localURLDrawableOptions.mLoadingDrawable = VasApngFactory.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+    localURLDrawableOptions.mFailedDrawable = VasApngFactory.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     paramString.setURLDrawableListener(new VasApngUtil.1(paramInt));
     return paramString;
@@ -251,7 +251,7 @@ public class VasApngUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasApngUtil
  * JD-Core Version:    0.7.0.1
  */

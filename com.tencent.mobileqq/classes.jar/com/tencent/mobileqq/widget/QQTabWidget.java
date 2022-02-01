@@ -4,16 +4,15 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TabWidget;
-import bisq;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQTabWidget
   extends TabWidget
 {
-  private float jdField_a_of_type_Float;
-  private bisq jdField_a_of_type_Bisq;
-  private boolean jdField_a_of_type_Boolean;
-  private float b;
+  private float jdField_a_of_type_Float = 0.0F;
+  private QQTabWidget.onTabWidgetTouchMoveListener jdField_a_of_type_ComTencentMobileqqWidgetQQTabWidget$onTabWidgetTouchMoveListener;
+  private boolean jdField_a_of_type_Boolean = false;
+  private float b = 0.0F;
   
   public QQTabWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,10 +52,10 @@ public class QQTabWidget
       continue;
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      if ((f2 < this.b) && (this.b - f2 > 50.0F) && (this.b - f2 > Math.abs(this.jdField_a_of_type_Float - f1)) && (this.jdField_a_of_type_Bisq != null) && (!this.jdField_a_of_type_Boolean))
+      if ((f2 < this.b) && (this.b - f2 > 50.0F) && (this.b - f2 > Math.abs(this.jdField_a_of_type_Float - f1)) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabWidget$onTabWidgetTouchMoveListener != null) && (!this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Bisq.a();
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabWidget$onTabWidgetTouchMoveListener.a();
       }
     }
   }
@@ -66,14 +65,14 @@ public class QQTabWidget
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setTabWidgetMoveListener(bisq parambisq)
+  public void setTabWidgetMoveListener(QQTabWidget.onTabWidgetTouchMoveListener paramonTabWidgetTouchMoveListener)
   {
-    this.jdField_a_of_type_Bisq = parambisq;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabWidget$onTabWidgetTouchMoveListener = paramonTabWidgetTouchMoveListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQTabWidget
  * JD-Core Version:    0.7.0.1
  */

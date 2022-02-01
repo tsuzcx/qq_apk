@@ -13,7 +13,7 @@ public final class strupbuff
   extends JceStruct
 {
   static Map<String, ArrayList<byte[]>> cache_logstring;
-  public Map<String, ArrayList<byte[]>> logstring;
+  public Map<String, ArrayList<byte[]>> logstring = null;
   
   static
   {
@@ -98,7 +98,7 @@ public final class strupbuff
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.video.jce.QQService.strupbuff
  * JD-Core Version:    0.7.0.1
  */

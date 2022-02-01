@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class stFavoriteGroup
   extends JceStruct
 {
-  public long dwGroupCode;
-  public long dwOpenTimestamp;
+  public long dwGroupCode = 0L;
+  public long dwOpenTimestamp = 0L;
   public long dwSnsFlag = 1L;
-  public long dwTimestamp;
+  public long dwTimestamp = 0L;
   
   public stFavoriteGroup() {}
   
@@ -40,7 +40,7 @@ public final class stFavoriteGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.stFavoriteGroup
  * JD-Core Version:    0.7.0.1
  */

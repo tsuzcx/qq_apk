@@ -16,19 +16,19 @@ public final class mobile_count_req
   static Map<String, String> cache_mapSqDyncFeedsInfo;
   static Map<Integer, Long> cache_mapTimeStamp;
   static Map<Integer, count_info> cache_stMapCountInfo;
-  public Map<Integer, String> extendinfo;
-  public int iRelationType;
-  public int iVisitQZoneType;
-  public long lastSqDynamicFeedsTime;
+  public Map<Integer, String> extendinfo = null;
+  public int iRelationType = 0;
+  public int iVisitQZoneType = 0;
+  public long lastSqDynamicFeedsTime = 0L;
   public String lastUndealCountTime = "";
-  public Map<Long, s_comm_data> mapBuf;
-  public Map<Long, Long> mapDyncShowTime;
-  public Map<Long, Long> mapLastGetTime;
-  public Map<String, String> mapSqDyncFeedsInfo;
-  public Map<Integer, Long> mapTimeStamp;
+  public Map<Long, s_comm_data> mapBuf = null;
+  public Map<Long, Long> mapDyncShowTime = null;
+  public Map<Long, Long> mapLastGetTime = null;
+  public Map<String, String> mapSqDyncFeedsInfo = null;
+  public Map<Integer, Long> mapTimeStamp = null;
   public String sTransParam = "";
-  public Map<Integer, count_info> stMapCountInfo;
-  public long uMask;
+  public Map<Integer, count_info> stMapCountInfo = null;
+  public long uMask = 0L;
   
   static
   {

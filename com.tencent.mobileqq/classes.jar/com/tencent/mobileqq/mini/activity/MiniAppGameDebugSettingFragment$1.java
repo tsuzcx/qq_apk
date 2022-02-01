@@ -5,7 +5,6 @@ import android.content.SharedPreferences.Editor;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class MiniAppGameDebugSettingFragment$1
   implements CompoundButton.OnCheckedChangeListener
@@ -20,7 +19,6 @@ class MiniAppGameDebugSettingFragment$1
       this.this$0.startTitleProgress();
       ThreadManagerV2.executeOnSubThread(new MiniAppGameDebugSettingFragment.1.1(this));
     }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

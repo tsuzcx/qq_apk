@@ -2,9 +2,9 @@ package cooperation.qqreader.host.webview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 
 public abstract class ReaderBaseWebViewPlugin
   extends WebViewPlugin
@@ -62,9 +62,9 @@ public abstract class ReaderBaseWebViewPlugin
     onCreate();
   }
   
-  public void init(bifw parambifw, JsBridgeListener paramJsBridgeListener)
+  public void init(WebViewPlugin.PluginRuntime paramPluginRuntime, JsBridgeListener paramJsBridgeListener)
   {
-    this.mRuntime = parambifw;
+    this.mRuntime = paramPluginRuntime;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = paramJsBridgeListener;
     this.jdField_a_of_type_AndroidContentContext = null;
     onCreate();
@@ -86,7 +86,7 @@ public abstract class ReaderBaseWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

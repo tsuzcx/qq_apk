@@ -20,14 +20,20 @@ public class ResInfo
   private static final String FIELD_RES_VERSION = "resVersion";
   private static final String FIELD_RES_ZIP_MD5 = "resZipMd5";
   private static final String FIELD_RES_ZIP_URL = "resZipUrl";
+  public static final String RES_ID_AVGAME_VOICE_RECOG_AILAB_MODEL = "AVGameVoiceRecogAILabModel";
+  public static final String RES_ID_AVGAME_VOICE_RECOG_AILAB_SO = "AVGameVoiceRecogAILabSo";
   public static final String RES_ID_AVGAME_VOICE_RECOG_MODEL = "AVGameVoiceRecogModel";
   public static final String RES_ID_AVGAME_VOICE_RECOG_SO = "AVGameVoiceRecogSo";
+  public static final String RES_ID_AV_AI_NS_MEDIALAB_MODEL = "AVAINSMediaLabModel";
   public static final String RES_ID_AV_VOICE_RECOG_MODEL = "AVVoiceRecogModel";
   public static final String RES_ID_AV_VOICE_RECOG_SO = "AVVoiceRecogSo";
   public static final String RES_TYPE_MODEL = "model";
   public static final String RES_TYPE_SO = "so";
+  public static final String RES_VERSION_AVGAME_VOICE_RECOG_AILAB_MODEL = "QQ8.4.17";
+  public static final String RES_VERSION_AVGAME_VOICE_RECOG_AILAB_SO = "QQ8.4.17";
   public static final String RES_VERSION_AVGAME_VOICE_RECOG_MODEL = "QQ8.4.8";
   public static final String RES_VERSION_AVGAME_VOICE_RECOG_SO = "QQ8.4.8";
+  public static final String RES_VERSION_AV_AI_NS_MEDIALAB_MODEL = "QQ8.5.5";
   public static final String RES_VERSION_AV_VOICE_RECOG_MODEL = "QQ8.4.8";
   public static final String RES_VERSION_AV_VOICE_RECOG_SO = "QQ8.4.8";
   public boolean isAutoDownload = true;
@@ -52,6 +58,15 @@ public class ResInfo
     }
     if ("AVGameVoiceRecogModel".equalsIgnoreCase(paramString)) {
       return "QQ8.4.8";
+    }
+    if ("AVGameVoiceRecogAILabSo".equalsIgnoreCase(paramString)) {
+      return "QQ8.4.17";
+    }
+    if ("AVGameVoiceRecogAILabModel".equalsIgnoreCase(paramString)) {
+      return "QQ8.4.17";
+    }
+    if ("AVAINSMediaLabModel".equalsIgnoreCase(paramString)) {
+      return "QQ8.5.5";
     }
     return "";
   }
@@ -101,20 +116,20 @@ public class ResInfo
           localResInfo.isAutoDownload = localJSONObject.getBoolean("isAutoDownload");
         }
         if ((TextUtils.isEmpty(localResInfo.resId)) || (TextUtils.isEmpty(localResInfo.resType)) || (TextUtils.isEmpty(localResInfo.resVersion)) || (TextUtils.isEmpty(localResInfo.resZipUrl)) || (TextUtils.isEmpty(localResInfo.resZipMd5)) || (TextUtils.isEmpty(localResInfo.resFileName)) || (TextUtils.isEmpty(localResInfo.resMd5))) {
-          QLog.i("ResMgr", 1, "parseJson. discard res. fileds are empty. " + localResInfo);
+          QLog.i("AVResMgr", 1, "parseJson. discard res. fileds are empty. " + localResInfo);
         } else if (!getResVersion(localResInfo.resId).equalsIgnoreCase(localResInfo.resVersion)) {
-          QLog.i("ResMgr", 1, "parseJson. discard res. version is not match. " + localResInfo);
+          QLog.i("AVResMgr", 1, "parseJson. discard res. version is not match. " + localResInfo);
         }
       }
       catch (Exception paramJSONObject)
       {
-        QLog.e("ResMgr", 1, "parseJson failed. err: " + paramJSONObject);
+        QLog.e("AVResMgr", 1, "parseJson failed. err: " + paramJSONObject);
         return null;
       }
       localArrayList.add(localResInfo);
       break label407;
       label397:
-      QLog.i("ResMgr", 1, "parseJson successfully.");
+      QLog.i("AVResMgr", 1, "parseJson successfully.");
       return localArrayList;
       label407:
       i += 1;
@@ -133,7 +148,7 @@ public class ResInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.so.ResInfo
  * JD-Core Version:    0.7.0.1
  */

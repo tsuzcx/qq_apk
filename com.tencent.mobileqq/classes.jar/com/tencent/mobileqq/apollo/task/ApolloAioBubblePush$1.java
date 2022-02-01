@@ -1,40 +1,39 @@
 package com.tencent.mobileqq.apollo.task;
 
-import amme;
-import anho;
 import com.tencent.mobileqq.DrawerPushItem;
+import com.tencent.mobileqq.apollo.api.IApolloManagerService;
+import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
-public class ApolloAioBubblePush$1
+class ApolloAioBubblePush$1
   implements Runnable
 {
-  public ApolloAioBubblePush$1(anho paramanho, QQAppInterface paramQQAppInterface) {}
+  ApolloAioBubblePush$1(ApolloAioBubblePush paramApolloAioBubblePush, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (this.a == null) {
       return;
     }
-    amme localamme = (amme)this.a.getManager(QQManagerFactory.APOLLO_MANAGER);
-    Object localObject2 = localamme.a(4);
+    ApolloManagerServiceImpl localApolloManagerServiceImpl = (ApolloManagerServiceImpl)this.a.getRuntimeService(IApolloManagerService.class, "all");
+    Object localObject2 = localApolloManagerServiceImpl.getCurrentPushItem(4);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = localamme.a(3);
+      localObject1 = localApolloManagerServiceImpl.getCurrentPushItem(3);
     }
     localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = localamme.a(9);
+      localObject2 = localApolloManagerServiceImpl.getCurrentPushItem(9);
     }
     Object localObject3 = localObject2;
     if (localObject2 == null) {
-      localObject3 = localamme.a(2);
+      localObject3 = localApolloManagerServiceImpl.getCurrentPushItem(2);
     }
     localObject1 = localObject3;
     if (localObject3 == null)
     {
-      localObject2 = localamme.a(10);
+      localObject2 = localApolloManagerServiceImpl.getCurrentPushItem(10);
       localObject1 = localObject2;
       if (localObject2 != null)
       {
@@ -45,24 +44,24 @@ public class ApolloAioBubblePush$1
     localObject2 = localObject1;
     if (localObject1 == null)
     {
-      localObject2 = localamme.a(7);
-      localamme.o = false;
+      localObject2 = localApolloManagerServiceImpl.getCurrentPushItem(7);
+      localApolloManagerServiceImpl.mIsBubbleTab = false;
     }
     if ((localObject2 != null) && (((DrawerPushItem)localObject2).reddotGameId > 0)) {
-      localamme.f(((DrawerPushItem)localObject2).reddotGameId);
+      localApolloManagerServiceImpl.pushApolloPanelGame(((DrawerPushItem)localObject2).reddotGameId);
     }
     if ((localObject2 == null) || (((DrawerPushItem)localObject2).show_sum < ((DrawerPushItem)localObject2).show_counts)) {
-      anho.a(this.this$0, (DrawerPushItem)localObject2);
+      ApolloAioBubblePush.a(this.this$0, (DrawerPushItem)localObject2);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloAioBubblePush", 2, new Object[] { "[onEnterAIO] pushItem:", anho.a(this.this$0) });
+      QLog.d("ApolloAioBubblePush", 2, new Object[] { "[onEnterAIO] pushItem:", ApolloAioBubblePush.a(this.this$0) });
     }
-    anho.a(this.this$0, false);
+    ApolloAioBubblePush.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.task.ApolloAioBubblePush.1
  * JD-Core Version:    0.7.0.1
  */

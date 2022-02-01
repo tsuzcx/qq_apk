@@ -23,6 +23,12 @@ public class QCircleFakeFeed
   private ArrayList<String> filterId;
   private int height;
   private ArrayList<String> imgLists;
+  private ArrayList<Float> kuolieCentreX;
+  private ArrayList<Float> kuolieCentreY;
+  private ArrayList<Float> kuolieHeightScale;
+  private ArrayList<String> kuolieId;
+  private ArrayList<Float> kuolieRotate;
+  private ArrayList<Float> kuolieWidthScale;
   private ArrayList<LabelInfo> labelInfos;
   private ArrayList<String> materialId;
   private String nickename = "";
@@ -59,6 +65,12 @@ public class QCircleFakeFeed
     this.filterId = ((ArrayList)paramParcel.readSerializable());
     this.simulateName = ((ArrayList)paramParcel.readSerializable());
     this.simulateSchema = ((ArrayList)paramParcel.readSerializable());
+    this.kuolieId = ((ArrayList)paramParcel.readSerializable());
+    this.kuolieCentreX = ((ArrayList)paramParcel.readSerializable());
+    this.kuolieCentreY = ((ArrayList)paramParcel.readSerializable());
+    this.kuolieWidthScale = ((ArrayList)paramParcel.readSerializable());
+    this.kuolieHeightScale = ((ArrayList)paramParcel.readSerializable());
+    this.kuolieRotate = ((ArrayList)paramParcel.readSerializable());
   }
   
   public int describeContents()
@@ -114,6 +126,36 @@ public class QCircleFakeFeed
   public ArrayList<String> getImgLists()
   {
     return this.imgLists;
+  }
+  
+  public ArrayList<Float> getKuolieCentreX()
+  {
+    return this.kuolieCentreX;
+  }
+  
+  public ArrayList<Float> getKuolieCentreY()
+  {
+    return this.kuolieCentreY;
+  }
+  
+  public ArrayList<Float> getKuolieHeightScale()
+  {
+    return this.kuolieHeightScale;
+  }
+  
+  public ArrayList<String> getKuolieId()
+  {
+    return this.kuolieId;
+  }
+  
+  public ArrayList<Float> getKuolieRotate()
+  {
+    return this.kuolieRotate;
+  }
+  
+  public ArrayList<Float> getKuolieWidthScale()
+  {
+    return this.kuolieWidthScale;
   }
   
   public ArrayList<LabelInfo> getLabelInfos()
@@ -216,6 +258,42 @@ public class QCircleFakeFeed
     this.imgLists = paramArrayList;
   }
   
+  public QCircleFakeFeed setKuolieCentreX(ArrayList<Float> paramArrayList)
+  {
+    this.kuolieCentreX = paramArrayList;
+    return this;
+  }
+  
+  public QCircleFakeFeed setKuolieCentreY(ArrayList<Float> paramArrayList)
+  {
+    this.kuolieCentreY = paramArrayList;
+    return this;
+  }
+  
+  public QCircleFakeFeed setKuolieHeightScale(ArrayList<Float> paramArrayList)
+  {
+    this.kuolieHeightScale = paramArrayList;
+    return this;
+  }
+  
+  public QCircleFakeFeed setKuolieId(ArrayList<String> paramArrayList)
+  {
+    this.kuolieId = paramArrayList;
+    return this;
+  }
+  
+  public QCircleFakeFeed setKuolieRotate(ArrayList<Float> paramArrayList)
+  {
+    this.kuolieRotate = paramArrayList;
+    return this;
+  }
+  
+  public QCircleFakeFeed setKuolieWidthScale(ArrayList<Float> paramArrayList)
+  {
+    this.kuolieWidthScale = paramArrayList;
+    return this;
+  }
+  
   public void setLabelInfos(ArrayList<LabelInfo> paramArrayList)
   {
     this.labelInfos = paramArrayList;
@@ -273,11 +351,17 @@ public class QCircleFakeFeed
     paramParcel.writeSerializable(this.filterId);
     paramParcel.writeSerializable(this.simulateName);
     paramParcel.writeSerializable(this.simulateSchema);
+    paramParcel.writeSerializable(this.kuolieId);
+    paramParcel.writeSerializable(this.kuolieCentreX);
+    paramParcel.writeSerializable(this.kuolieCentreY);
+    paramParcel.writeSerializable(this.kuolieWidthScale);
+    paramParcel.writeSerializable(this.kuolieHeightScale);
+    paramParcel.writeSerializable(this.kuolieRotate);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.beans.QCircleFakeFeed
  * JD-Core Version:    0.7.0.1
  */

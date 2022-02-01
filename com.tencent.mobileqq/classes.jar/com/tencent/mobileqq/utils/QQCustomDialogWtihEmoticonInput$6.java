@@ -15,10 +15,10 @@ class QQCustomDialogWtihEmoticonInput$6
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.this$0.inputView.getText().length() == this.val$maxLength) && (paramCharSequence.charAt(this.val$maxLength - 1) == '\024'))
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
     {
-      this.this$0.inputView.setText(paramCharSequence.subSequence(0, this.val$maxLength - 1));
-      this.this$0.inputView.setSelection(this.val$maxLength - 1);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.a.setSelection(this.jdField_a_of_type_Int - 1);
     }
   }
 }

@@ -10,7 +10,7 @@ class ShaderAnimLayout$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.this$0.setVisibility(8);
+    this.a.setVisibility(8);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -19,7 +19,7 @@ class ShaderAnimLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ShaderAnimLayout.2
  * JD-Core Version:    0.7.0.1
  */

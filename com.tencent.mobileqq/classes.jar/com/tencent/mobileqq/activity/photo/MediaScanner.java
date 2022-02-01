@@ -59,118 +59,23 @@ public class MediaScanner
   public static void buildVideoMediaInfo(LocalMediaInfo paramLocalMediaInfo)
   {
     MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    localMediaMetadataRetriever.setDataSource(paramLocalMediaInfo.path);
-    String str = localMediaMetadataRetriever.extractMetadata(9);
-    label285:
-    label417:
-    label424:
-    for (;;)
+    getDuration(paramLocalMediaInfo, localMediaMetadataRetriever);
+    getRotation(paramLocalMediaInfo, localMediaMetadataRetriever);
+    getWidthAndHeight(paramLocalMediaInfo, localMediaMetadataRetriever);
+    getLocation(paramLocalMediaInfo, localMediaMetadataRetriever);
+    localMediaMetadataRetriever.release();
+  }
+  
+  private boolean checkNoMedia(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (!isNomediaFileExisit(paramString)))
     {
-      char[] arrayOfChar;
-      int m;
-      int i;
-      int k;
-      char c;
-      try
-      {
-        paramLocalMediaInfo.mDuration = Long.parseLong(str);
-        if (Build.VERSION.SDK_INT >= 17) {
-          str = localMediaMetadataRetriever.extractMetadata(24);
-        }
-        try
-        {
-          paramLocalMediaInfo.rotation = Integer.parseInt(str);
-          Object localObject;
-          if (Build.VERSION.SDK_INT >= 14)
-          {
-            str = localMediaMetadataRetriever.extractMetadata(18);
-            localObject = localMediaMetadataRetriever.extractMetadata(19);
-          }
-          try
-          {
-            paramLocalMediaInfo.mediaWidth = Integer.parseInt(str);
-            paramLocalMediaInfo.mediaHeight = Integer.parseInt((String)localObject);
-            StringBuilder localStringBuilder;
-            if (Build.VERSION.SDK_INT >= 15)
-            {
-              str = localMediaMetadataRetriever.extractMetadata(23);
-              if (str != null)
-              {
-                label221:
-                try
-                {
-                  localObject = new ArrayList(3);
-                  localStringBuilder = new StringBuilder();
-                  arrayOfChar = str.toCharArray();
-                  m = arrayOfChar.length;
-                  i = 0;
-                  k = 0;
-                }
-                catch (NumberFormatException paramLocalMediaInfo) {}
-                int j = i;
-                if (localStringBuilder.length() > 0)
-                {
-                  ((ArrayList)localObject).add(Integer.valueOf((int)(Double.parseDouble(localStringBuilder.toString()) * 1000000.0D)));
-                  localStringBuilder.setLength(0);
-                  j = i + 1;
-                }
-                localStringBuilder.append(c);
-                i = j;
-                break label417;
-                if ((!Character.isDigit(c)) && (c != '.')) {
-                  continue;
-                }
-                localStringBuilder.append(c);
-                break label417;
-              }
-            }
-            localMediaMetadataRetriever.release();
-            return;
-            QLog.e("MediaScanner", 2, "Can not under stand the location string: " + str + " !");
-            break label417;
-            if (localStringBuilder.length() > 0) {
-              ((ArrayList)localObject).add(Integer.valueOf((int)(Double.parseDouble(localStringBuilder.toString()) * 1000000.0D)));
-            }
-            if (((ArrayList)localObject).size() < 2) {
-              continue;
-            }
-            paramLocalMediaInfo.latitude = ((Integer)((ArrayList)localObject).get(0)).intValue();
-            paramLocalMediaInfo.longitude = ((Integer)((ArrayList)localObject).get(1)).intValue();
-            continue;
-          }
-          catch (NumberFormatException localNumberFormatException1)
-          {
-            continue;
-          }
-        }
-        catch (NumberFormatException localNumberFormatException2)
-        {
-          continue;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaScanner", 2, "doScanFolder() isNomediaFileExisit()=false, return");
       }
-      catch (NumberFormatException localNumberFormatException3)
-      {
-        continue;
-      }
-      for (;;)
-      {
-        if (k >= m) {
-          break label424;
-        }
-        c = arrayOfChar[k];
-        if (i >= 2) {
-          break label285;
-        }
-        if ((c == '+') || (c == '-') || (c == '\n')) {
-          break;
-        }
-        if (c != 0) {
-          break label221;
-        }
-        break;
-        k += 1;
-      }
+      return true;
     }
+    return false;
   }
   
   public static int convertGpsToDegreeE6(String paramString)
@@ -217,75 +122,29 @@ public class MediaScanner
   @TargetApi(10)
   private void doScanFolder(String paramString, boolean paramBoolean)
   {
-    Object localObject = new File(paramString);
+    File localFile = new File(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("MediaScanner", 2, "doScanFolder() folderPath=" + paramString);
     }
-    if (localObject == null) {}
-    label47:
-    label332:
+    if (localFile == null) {}
     do
     {
       do
       {
         do
         {
-          break label47;
-          do
-          {
-            return;
-          } while (this.mSqLiteOpenHelper == null);
-          if ((!((File)localObject).exists()) || (!((File)localObject).isDirectory())) {
-            break label332;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MediaScanner", 2, "doScanFolder() videoFolder.exists()=true");
-          }
-          if ((!paramBoolean) || (isNomediaFileExisit(paramString))) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("MediaScanner", 2, "doScanFolder() isNomediaFileExisit()=false, return");
-        return;
-      } while (needScanFolder(paramString) != true);
-      localObject = ((File)localObject).listFiles();
-      HashSet localHashSet = this.mSqLiteOpenHelper.queryAllMediaScannerInfoPathSetByFolder(paramString);
-      ArrayList localArrayList = new ArrayList();
-      if (localObject != null)
-      {
-        int j = localObject.length;
-        int i = 0;
-        if (i < j)
-        {
-          MediaScannerInfo localMediaScannerInfo = localObject[i];
-          String str;
-          if (localMediaScannerInfo.getName().endsWith(".mp4"))
-          {
-            str = paramString + "/" + localMediaScannerInfo.getName();
-            if ((localHashSet.contains(str)) || (this.mMd5Set == null) || (this.mMd5Set.contains(String.valueOf(localMediaScannerInfo.length())))) {
-              break label297;
-            }
-            localMediaScannerInfo = createMediaScannerInfo(null, paramString, str);
-            if (localMediaScannerInfo != null)
-            {
-              localArrayList.add(localMediaScannerInfo);
-              this.mMd5Set.add(String.valueOf(localMediaScannerInfo.fileSize));
-            }
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            localHashSet.remove(str);
-          }
+          return;
+        } while (this.mSqLiteOpenHelper == null);
+        if ((!localFile.exists()) || (!localFile.isDirectory())) {
+          break;
         }
-      }
-      this.mSqLiteOpenHelper.deleteMediaScannerInfoByPathSet(localHashSet);
-      this.mSqLiteOpenHelper.insertMediaScannerInfoByList(localArrayList);
-      updateScanFolderInfo(paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("MediaScanner", 2, "doScanFolder() videoFolder.exists()=true");
+        }
+      } while ((checkNoMedia(paramString, paramBoolean)) || (needScanFolder(paramString) != true));
+      scanFolder(paramString, localFile);
       return;
     } while (!QLog.isColorLevel());
-    label297:
     QLog.d("MediaScanner", 2, "doScanFolder() videoFolder.exists() = false");
   }
   
@@ -316,6 +175,21 @@ public class MediaScanner
     }
   }
   
+  private static void getDuration(LocalMediaInfo paramLocalMediaInfo, MediaMetadataRetriever paramMediaMetadataRetriever)
+  {
+    paramMediaMetadataRetriever.setDataSource(paramLocalMediaInfo.path);
+    paramMediaMetadataRetriever = paramMediaMetadataRetriever.extractMetadata(9);
+    try
+    {
+      paramLocalMediaInfo.mDuration = Long.parseLong(paramMediaMetadataRetriever);
+      return;
+    }
+    catch (NumberFormatException paramLocalMediaInfo)
+    {
+      QLog.e("MediaScanner", 2, "getDuration error. ", paramLocalMediaInfo);
+    }
+  }
+  
   public static MediaScanner getInstance(Context paramContext)
   {
     try
@@ -327,6 +201,156 @@ public class MediaScanner
       return paramContext;
     }
     finally {}
+  }
+  
+  private static void getLocation(LocalMediaInfo paramLocalMediaInfo, MediaMetadataRetriever paramMediaMetadataRetriever)
+  {
+    int i = 0;
+    ArrayList localArrayList;
+    StringBuilder localStringBuilder;
+    char[] arrayOfChar;
+    int m;
+    int k;
+    char c;
+    if (Build.VERSION.SDK_INT >= 15)
+    {
+      paramMediaMetadataRetriever = paramMediaMetadataRetriever.extractMetadata(23);
+      if (paramMediaMetadataRetriever != null)
+      {
+        try
+        {
+          localArrayList = new ArrayList(3);
+          localStringBuilder = new StringBuilder();
+          arrayOfChar = paramMediaMetadataRetriever.toCharArray();
+          m = arrayOfChar.length;
+          k = 0;
+        }
+        catch (NumberFormatException paramLocalMediaInfo)
+        {
+          int j;
+          label114:
+          QLog.e("MediaScanner", 2, "getLocation error. ", paramLocalMediaInfo);
+        }
+        j = i;
+        if (localStringBuilder.length() > 0)
+        {
+          localArrayList.add(Integer.valueOf((int)(Double.parseDouble(localStringBuilder.toString()) * 1000000.0D)));
+          localStringBuilder.setLength(0);
+          j = i + 1;
+        }
+        localStringBuilder.append(c);
+        i = j;
+        break label299;
+        if ((!Character.isDigit(c)) && (c != '.')) {
+          break label149;
+        }
+        localStringBuilder.append(c);
+        break label299;
+      }
+    }
+    label148:
+    return;
+    label149:
+    QLog.e("MediaScanner", 2, "Can not under stand the location string: " + paramMediaMetadataRetriever + " !");
+    label299:
+    label306:
+    for (;;)
+    {
+      label184:
+      if (localStringBuilder.length() > 0) {
+        localArrayList.add(Integer.valueOf((int)(Double.parseDouble(localStringBuilder.toString()) * 1000000.0D)));
+      }
+      if (localArrayList.size() < 2) {
+        break label148;
+      }
+      paramLocalMediaInfo.latitude = ((Integer)localArrayList.get(0)).intValue();
+      paramLocalMediaInfo.longitude = ((Integer)localArrayList.get(1)).intValue();
+      return;
+      for (;;)
+      {
+        if (k >= m) {
+          break label306;
+        }
+        c = arrayOfChar[k];
+        if (i >= 2) {
+          break label184;
+        }
+        if ((c == '+') || (c == '-') || (c == '\n')) {
+          break;
+        }
+        if (c != 0) {
+          break label114;
+        }
+        break;
+        k += 1;
+      }
+    }
+  }
+  
+  private static void getRotation(LocalMediaInfo paramLocalMediaInfo, MediaMetadataRetriever paramMediaMetadataRetriever)
+  {
+    if (Build.VERSION.SDK_INT >= 17) {
+      paramMediaMetadataRetriever = paramMediaMetadataRetriever.extractMetadata(24);
+    }
+    try
+    {
+      paramLocalMediaInfo.rotation = Integer.parseInt(paramMediaMetadataRetriever);
+      return;
+    }
+    catch (NumberFormatException paramLocalMediaInfo)
+    {
+      QLog.e("MediaScanner", 2, "getRotation error. ", paramLocalMediaInfo);
+    }
+  }
+  
+  private static void getWidthAndHeight(LocalMediaInfo paramLocalMediaInfo, MediaMetadataRetriever paramMediaMetadataRetriever)
+  {
+    String str;
+    if (Build.VERSION.SDK_INT >= 14)
+    {
+      str = paramMediaMetadataRetriever.extractMetadata(18);
+      paramMediaMetadataRetriever = paramMediaMetadataRetriever.extractMetadata(19);
+    }
+    try
+    {
+      paramLocalMediaInfo.mediaWidth = Integer.parseInt(str);
+      paramLocalMediaInfo.mediaHeight = Integer.parseInt(paramMediaMetadataRetriever);
+      return;
+    }
+    catch (NumberFormatException paramLocalMediaInfo)
+    {
+      QLog.e("MediaScanner", 2, "getWidthAndHeight error. ", paramLocalMediaInfo);
+    }
+  }
+  
+  private void handleMoveToEvent(String paramString1, String paramString2)
+  {
+    paramString2 = paramString1 + "/" + paramString2;
+    File localFile = new File(paramString2);
+    if ((this.mMd5Set == null) && (this.mSqLiteOpenHelper != null)) {
+      this.mMd5Set = this.mSqLiteOpenHelper.queryAllMediaScannerInfoMd5Set();
+    }
+    if ((this.mMd5Set == null) || (this.mSqLiteOpenHelper == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        if (!localFile.exists()) {
+          break;
+        }
+        paramString1 = createMediaScannerInfo(null, paramString1, paramString2);
+        if ((paramString1 != null) && (!this.mMd5Set.contains(paramString1.md5)))
+        {
+          this.mMd5Set.add(paramString1.md5);
+          this.mSqLiteOpenHelper.insertMediaScannerInfo(paramString1);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("MediaScanner", 2, "handleFileObserverEvent() info=null");
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("MediaScanner", 2, "handleFileObserverEvent() mMd5Set.contains( md5 ) = true");
   }
   
   private boolean isNomediaFileExisit(String paramString)
@@ -391,6 +415,46 @@ public class MediaScanner
       }
     }
     this.mSqLiteOpenHelper.deleteMediaScannerInfoByFolderPathSet(localHashSet);
+  }
+  
+  private void scanFolder(String paramString, File paramFile)
+  {
+    paramFile = paramFile.listFiles();
+    HashSet localHashSet = this.mSqLiteOpenHelper.queryAllMediaScannerInfoPathSetByFolder(paramString);
+    ArrayList localArrayList = new ArrayList();
+    if (paramFile != null)
+    {
+      int j = paramFile.length;
+      int i = 0;
+      if (i < j)
+      {
+        MediaScannerInfo localMediaScannerInfo = paramFile[i];
+        String str;
+        if (localMediaScannerInfo.getName().endsWith(".mp4"))
+        {
+          str = paramString + "/" + localMediaScannerInfo.getName();
+          if ((localHashSet.contains(str)) || (this.mMd5Set == null) || (this.mMd5Set.contains(String.valueOf(localMediaScannerInfo.length())))) {
+            break label169;
+          }
+          localMediaScannerInfo = createMediaScannerInfo(null, paramString, str);
+          if (localMediaScannerInfo != null)
+          {
+            localArrayList.add(localMediaScannerInfo);
+            this.mMd5Set.add(String.valueOf(localMediaScannerInfo.fileSize));
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          label169:
+          localHashSet.remove(str);
+        }
+      }
+    }
+    this.mSqLiteOpenHelper.deleteMediaScannerInfoByPathSet(localHashSet);
+    this.mSqLiteOpenHelper.insertMediaScannerInfoByList(localArrayList);
+    updateScanFolderInfo(paramString);
   }
   
   private void updateScanFolderInfo(String paramString)
@@ -494,9 +558,9 @@ public class MediaScanner
     //   19: monitorexit
     //   20: aload_3
     //   21: areturn
-    //   22: ldc_w 462
-    //   25: invokestatic 465	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
-    //   28: invokevirtual 466	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   22: ldc_w 508
+    //   25: invokestatic 511	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
+    //   28: invokevirtual 512	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   31: ifeq -13 -> 18
     //   34: aload 4
     //   36: astore_3
@@ -504,20 +568,20 @@ public class MediaScanner
     //   38: iconst_m1
     //   39: if_icmpeq +8 -> 47
     //   42: iload_2
-    //   43: invokestatic 486	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   43: invokestatic 532	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   46: astore_3
     //   47: iload_1
     //   48: ifne +15 -> 63
     //   51: aload_0
     //   52: getfield 57	com/tencent/mobileqq/activity/photo/MediaScanner:mSqLiteOpenHelper	Lcom/tencent/mobileqq/activity/photo/MediaDatabaseHelper;
     //   55: aload_3
-    //   56: invokevirtual 490	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:queryAllMediaScannerInfo	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   56: invokevirtual 536	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:queryAllMediaScannerInfo	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   59: astore_3
     //   60: goto -42 -> 18
     //   63: aload_0
     //   64: getfield 57	com/tencent/mobileqq/activity/photo/MediaScanner:mSqLiteOpenHelper	Lcom/tencent/mobileqq/activity/photo/MediaDatabaseHelper;
     //   67: aload_3
-    //   68: invokevirtual 493	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:queryAllLongVideoMediaScannerInfo	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   68: invokevirtual 539	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:queryAllLongVideoMediaScannerInfo	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   71: astore_3
     //   72: goto -54 -> 18
     //   75: astore_3
@@ -560,13 +624,13 @@ public class MediaScanner
     //   14: monitorexit
     //   15: iload_1
     //   16: ireturn
-    //   17: ldc_w 462
-    //   20: invokestatic 465	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
-    //   23: invokevirtual 466	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   17: ldc_w 508
+    //   20: invokestatic 511	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
+    //   23: invokevirtual 512	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   26: ifeq -13 -> 13
     //   29: aload_0
     //   30: getfield 57	com/tencent/mobileqq/activity/photo/MediaScanner:mSqLiteOpenHelper	Lcom/tencent/mobileqq/activity/photo/MediaDatabaseHelper;
-    //   33: invokevirtual 499	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:queryAllMediaScannerInfoCnt	()I
+    //   33: invokevirtual 545	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:queryAllMediaScannerInfoCnt	()I
     //   36: istore_1
     //   37: goto -24 -> 13
     //   40: astore_2
@@ -595,44 +659,16 @@ public class MediaScanner
     if (!misInitialized.get()) {}
     do
     {
-      do
-      {
-        do
-        {
-          File localFile;
-          do
-          {
-            return;
-            switch (paramInt)
-            {
-            default: 
-              return;
-            case 8: 
-            case 128: 
-              paramString2 = paramString1 + "/" + paramString2;
-              localFile = new File(paramString2);
-              if ((this.mMd5Set == null) && (this.mSqLiteOpenHelper != null)) {
-                this.mMd5Set = this.mSqLiteOpenHelper.queryAllMediaScannerInfoMd5Set();
-              }
-              break;
-            }
-          } while ((this.mMd5Set == null) || (this.mSqLiteOpenHelper == null));
-          if (!localFile.exists()) {
-            break;
-          }
-          paramString1 = createMediaScannerInfo(null, paramString1, paramString2);
-          if ((paramString1 != null) && (!this.mMd5Set.contains(paramString1.md5)))
-          {
-            this.mMd5Set.add(paramString1.md5);
-            this.mSqLiteOpenHelper.insertMediaScannerInfo(paramString1);
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("MediaScanner", 2, "handleFileObserverEvent() info=null");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("MediaScanner", 2, "handleFileObserverEvent() mMd5Set.contains( md5 ) = true");
       return;
+      switch (paramInt)
+      {
+      default: 
+        return;
+      case 8: 
+      case 128: 
+        handleMoveToEvent(paramString1, paramString2);
+        return;
+      }
       paramString1 = paramString1 + "/" + paramString2;
       paramString2 = new File(paramString1);
     } while ((paramString2 == null) || (paramString2.exists() == true) || (this.mSqLiteOpenHelper == null));
@@ -644,8 +680,7 @@ public class MediaScanner
   @TargetApi(10)
   public void queryMediaInfoAsync(MediaScanner.OnMediaInfoScannerListener paramOnMediaInfoScannerListener, LocalMediaInfo paramLocalMediaInfo)
   {
-    paramOnMediaInfoScannerListener = new WeakReference(paramOnMediaInfoScannerListener);
-    paramOnMediaInfoScannerListener = new MediaScanner.2(this, new WeakReference(paramLocalMediaInfo), paramOnMediaInfoScannerListener);
+    paramOnMediaInfoScannerListener = new MediaScanner.QueryTaskRunnable(paramOnMediaInfoScannerListener, paramLocalMediaInfo);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
       ThreadManagerV2.excute(paramOnMediaInfoScannerListener, 64, null, true);
@@ -663,7 +698,7 @@ public class MediaScanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaScanner
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ public final class BroadcastOneShow
 {
   public String bcShowId = "";
   public String bcShowName = "";
-  public long endTime;
-  public int singerId;
+  public long endTime = 0L;
+  public int singerId = 0;
   public String singerName = "";
-  public long startTime;
+  public long startTime = 0L;
   
   public BroadcastOneShow() {}
   

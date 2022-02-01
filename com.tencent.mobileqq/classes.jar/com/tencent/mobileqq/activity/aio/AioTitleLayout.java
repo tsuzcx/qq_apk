@@ -45,7 +45,7 @@ public class AioTitleLayout
   private TextView a()
   {
     if (this.a == null) {
-      this.a = ((TextView)findViewById(2131365728));
+      this.a = ((TextView)findViewById(2131365891));
     }
     return this.a;
   }
@@ -98,12 +98,12 @@ public class AioTitleLayout
   private TextView b()
   {
     if (this.b == null) {
-      this.b = ((TextView)findViewById(2131379001));
+      this.b = ((TextView)findViewById(2131379432));
     }
     return this.b;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int j = getPaddingLeft();
     int i = 0;
@@ -177,7 +177,7 @@ public class AioTitleLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getMode(paramInt1);
     int m = View.MeasureSpec.getSize(paramInt1);
@@ -199,7 +199,7 @@ public class AioTitleLayout
         {
           paramInt2 = j;
           paramInt1 = i;
-          if (((View)localObject1).getId() != 2131379001)
+          if (((View)localObject1).getId() != 2131379432)
           {
             localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
             paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
@@ -289,7 +289,7 @@ public class AioTitleLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AioTitleLayout
  * JD-Core Version:    0.7.0.1
  */

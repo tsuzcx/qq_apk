@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahip;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class StructingMsgItemBuilder$CacheMap
-  extends HashMap<String, ArrayList<ahip>>
+class StructingMsgItemBuilder$CacheMap
+  extends HashMap<String, ArrayList<StructingMsgItemBuilder.ViewWrapper>>
 {
   private static final long serialVersionUID = -7873031099646660622L;
   
-  public void add(ahip paramahip)
+  public void add(StructingMsgItemBuilder.ViewWrapper paramViewWrapper)
   {
-    if (paramahip == null) {
+    if (paramViewWrapper == null) {
       return;
     }
-    get(paramahip.a).add(paramahip);
+    get(paramViewWrapper.a).add(paramViewWrapper);
   }
   
-  public ArrayList<ahip> get(String paramString)
+  public ArrayList<StructingMsgItemBuilder.ViewWrapper> get(String paramString)
   {
     ArrayList localArrayList2 = (ArrayList)super.get(paramString);
     ArrayList localArrayList1 = localArrayList2;
@@ -29,22 +28,22 @@ public class StructingMsgItemBuilder$CacheMap
     return localArrayList1;
   }
   
-  public void remove(ahip paramahip)
+  public void remove(StructingMsgItemBuilder.ViewWrapper paramViewWrapper)
   {
-    if ((paramahip == null) || (paramahip.a == null)) {}
+    if ((paramViewWrapper == null) || (paramViewWrapper.a == null)) {}
     ArrayList localArrayList;
     do
     {
       return;
-      localArrayList = get(paramahip.a);
-      localArrayList.remove(paramahip);
+      localArrayList = get(paramViewWrapper.a);
+      localArrayList.remove(paramViewWrapper);
     } while (!localArrayList.isEmpty());
-    remove(paramahip.a);
+    remove(paramViewWrapper.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.CacheMap
  * JD-Core Version:    0.7.0.1
  */

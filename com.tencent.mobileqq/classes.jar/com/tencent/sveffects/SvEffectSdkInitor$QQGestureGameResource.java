@@ -1,7 +1,7 @@
 package com.tencent.sveffects;
 
-import bczy;
-import bdaf;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
+import com.tencent.mobileqq.shortvideo.gesture.GestureUtil;
 import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
 
 public class SvEffectSdkInitor$QQGestureGameResource
@@ -9,17 +9,17 @@ public class SvEffectSdkInitor$QQGestureGameResource
 {
   public String getGameModelPath()
   {
-    return bdaf.c();
+    return GestureUtil.c();
   }
   
   public boolean isGestureGameEnable()
   {
-    return bczy.a().d();
+    return GestureMgr.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.sveffects.SvEffectSdkInitor.QQGestureGameResource
  * JD-Core Version:    0.7.0.1
  */

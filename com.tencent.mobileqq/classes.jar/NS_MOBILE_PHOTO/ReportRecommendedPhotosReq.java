@@ -8,8 +8,8 @@ public final class ReportRecommendedPhotosReq
   extends JceStruct
 {
   static RecommendPhotos cache_recommend_photos = new RecommendPhotos();
-  public RecommendPhotos recommend_photos;
-  public long uin;
+  public RecommendPhotos recommend_photos = null;
+  public long uin = 0L;
   
   public ReportRecommendedPhotosReq() {}
   

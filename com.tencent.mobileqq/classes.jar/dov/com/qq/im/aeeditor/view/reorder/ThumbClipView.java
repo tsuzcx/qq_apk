@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import boel;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.weishi.module.edit.widget.playtrack.provider.BaseVideoThumbAssetCache.LRUKey;
 import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbListener;
@@ -57,8 +56,8 @@ public final class ThumbClipView
   public ThumbClipView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    View.inflate(paramContext, 2131558563, (ViewGroup)this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378880));
+    View.inflate(paramContext, 2131558584, (ViewGroup)this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379310));
   }
   
   private final int a()
@@ -71,7 +70,7 @@ public final class ThumbClipView
     return paramString + '_' + paramInt;
   }
   
-  protected void dispatchDraw(@Nullable Canvas paramCanvas)
+  public void dispatchDraw(@Nullable Canvas paramCanvas)
   {
     Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
     if ((localPath != null) && (paramCanvas != null)) {
@@ -80,19 +79,19 @@ public final class ThumbClipView
     super.dispatchDraw(paramCanvas);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     VideoThumbProviderManager.getInstance().registerListener((VideoThumbListener)this);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     VideoThumbProviderManager.getInstance().unRegisterListener((VideoThumbListener)this);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
@@ -135,7 +134,7 @@ public final class ThumbClipView
         }
         paramCMTime = getResources();
         Intrinsics.checkExpressionValueIsNotNull(paramCMTime, "resources");
-        localImageView.setImageDrawable((Drawable)new boel(paramCMTime, localBitmap));
+        localImageView.setImageDrawable((Drawable)new SafeBitmapDrawable(paramCMTime, localBitmap));
         break;
       }
     }
@@ -167,7 +166,7 @@ public final class ThumbClipView
       {
         localObject3 = getResources();
         Intrinsics.checkExpressionValueIsNotNull(localObject3, "resources");
-        ((ImageView)localObject2).setImageDrawable((Drawable)new boel((Resources)localObject3, localBitmap));
+        ((ImageView)localObject2).setImageDrawable((Drawable)new SafeBitmapDrawable((Resources)localObject3, localBitmap));
       }
       i += 1;
     }
@@ -175,7 +174,7 @@ public final class ThumbClipView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.reorder.ThumbClipView
  * JD-Core Version:    0.7.0.1
  */

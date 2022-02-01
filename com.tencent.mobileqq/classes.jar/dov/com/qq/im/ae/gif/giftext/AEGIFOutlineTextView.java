@@ -13,24 +13,24 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import bnlh;
+import dov.com.qq.im.ae.font.AEFontManager;
 
 public class AEGIFOutlineTextView
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  private float jdField_a_of_type_Float = 0.0F;
+  private int jdField_a_of_type_Int = 0;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
   private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
+  private boolean jdField_a_of_type_Boolean = false;
+  private float jdField_b_of_type_Float = 0.0F;
   private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean = true;
-  private float jdField_c_of_type_Float;
+  private float jdField_c_of_type_Float = 0.0F;
   private String jdField_c_of_type_JavaLangString = "#00FFFFFF";
   
   public AEGIFOutlineTextView(Context paramContext)
@@ -50,7 +50,7 @@ public class AEGIFOutlineTextView
   
   private void a()
   {
-    Typeface localTypeface = bnlh.a().a(this.jdField_b_of_type_JavaLangString);
+    Typeface localTypeface = AEFontManager.a().a(this.jdField_b_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
     this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
   }
@@ -86,7 +86,7 @@ public class AEGIFOutlineTextView
     return this.jdField_a_of_type_AndroidTextTextPaint.getStrokeWidth();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     a();
     this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_AndroidTextTextPaint.getTextSize());
@@ -141,7 +141,7 @@ public class AEGIFOutlineTextView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))
     {
@@ -208,7 +208,7 @@ public class AEGIFOutlineTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView
  * JD-Core Version:    0.7.0.1
  */

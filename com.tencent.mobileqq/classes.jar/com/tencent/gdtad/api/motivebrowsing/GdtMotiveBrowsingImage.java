@@ -7,8 +7,8 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
-import axng;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.mvvm.ResourcesExtKt;
 import kotlin.Lazy;
 import kotlin.LazyKt;
 import kotlin.Metadata;
@@ -44,9 +44,9 @@ public final class GdtMotiveBrowsingImage
       if (localGradientDrawable == null) {
         Intrinsics.throwNpe();
       }
-      localGradientDrawable.setStroke(AIOUtils.dp2px(1.0F, getResources()), Color.parseColor("#E5E5E5"));
-      localGradientDrawable.setCornerRadius(AIOUtils.dp2px(18.0F, getResources()));
-      int i = AIOUtils.dp2px(33.0F, getResources());
+      localGradientDrawable.setStroke(AIOUtils.a(1.0F, getResources()), Color.parseColor("#E5E5E5"));
+      localGradientDrawable.setCornerRadius(AIOUtils.a(18.0F, getResources()));
+      int i = AIOUtils.a(33.0F, getResources());
       localGradientDrawable.setBounds(0, 0, i, i);
     }
     GradientDrawable localGradientDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
@@ -62,8 +62,8 @@ public final class GdtMotiveBrowsingImage
     {
       localObject = getResources();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "resources");
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = axng.a((Resources)localObject, 2130840288);
-      int i = AIOUtils.dp2px(18.0F, getResources());
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ResourcesExtKt.a((Resources)localObject, 2130840392);
+      int i = AIOUtils.a(18.0F, getResources());
       localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
       if (localObject == null) {
         Intrinsics.throwNpe();
@@ -77,7 +77,7 @@ public final class GdtMotiveBrowsingImage
     return localObject;
   }
   
-  protected void onDraw(@Nullable Canvas paramCanvas)
+  public void onDraw(@Nullable Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (paramCanvas != null)
@@ -92,7 +92,7 @@ public final class GdtMotiveBrowsingImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingImage
  * JD-Core Version:    0.7.0.1
  */

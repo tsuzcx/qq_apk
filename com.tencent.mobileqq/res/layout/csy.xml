@@ -1,26 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/cg_" android:background="@drawable/een" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:id="@id/aga" android:background="@drawable/fqo" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="25.0dip" android:layout_marginTop="29.0dip" android:contentDescription="@string/qd0" />
-    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="5.0" />
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/nvb" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="24.0dip" android:textColor="#ff03081a" android:layout_gravity="center_horizontal" android:id="@id/o1o" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="16.0dip" android:textColor="#3303081a" android:layout_gravity="center_horizontal" android:id="@id/ker" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/xjh" />
-    </LinearLayout>
-    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <EditText android:textSize="17.0dip" android:textColor="@color/fl" android:gravity="start" android:layout_gravity="center_horizontal" android:id="@id/o1l" android:background="@drawable/eel" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="33.0dip" android:layout_width="275.0dip" android:layout_height="117.0dip" android:layout_marginTop="16.0dip" android:hint="@string/xja" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/anm" android:id="@id/o1m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:layout_alignRight="@id/o1l" android:layout_alignBottom="@id/o1l" />
-    </RelativeLayout>
-    <TextView android:textSize="20.0dip" android:textColor="@color/anl" android:layout_gravity="center_horizontal" android:id="@id/o1n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44.0dip" android:text="@string/xje" android:singleLine="true" android:layout_centerHorizontal="true" />
-    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="12.0" />
-    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/dh7" android:layout_width="150.0dip" android:layout_height="150.0dip" android:layout_centerHorizontal="true" />
-        <View android:id="@id/aic" android:background="@drawable/fqp" android:clickable="false" android:layout_width="110.0dip" android:layout_height="110.0dip" android:layout_marginBottom="20.0dip" android:layout_alignBottom="@id/dh7" android:layout_centerHorizontal="true" android:alpha="0.5" />
-        <View android:id="@id/dhb" android:background="@drawable/h1a" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginTop="17.5dip" android:layout_alignTop="@id/aic" android:layout_centerHorizontal="true" android:alpha="0.5" />
-        <Button android:id="@id/nmt" android:background="@drawable/h1c" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="46.0dip" android:layout_toLeftOf="@id/aic" android:layout_alignTop="@id/aic" />
-    </RelativeLayout>
-    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="3.0" />
-    <FrameLayout android:id="@id/kw5" android:background="@drawable/hhj" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true">
-        <View android:layout_gravity="top" android:background="@drawable/eem" android:layout_width="fill_parent" android:layout_height="20.0dip" />
-    </FrameLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/oou" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:showArrow="true" formItem:switchText="应用宝推广按钮" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/oov" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:showArrow="true" formItem:switchText="应用宝推广二次弹框" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nsb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:showArrow="true" formItem:switchText="QB文档阅读器底部功能条展示" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/muz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:showArrow="true" formItem:switchText="好友文件下载使用harcodeIP(域名)" />
+            <EditText android:textSize="17.0sp" android:id="@id/muy" android:background="@color/al3" android:padding="@dimen/aes" android:layout_width="fill_parent" android:layout_height="56.0dip" android:hint="ip/域名" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="数据线Debug" />
+                <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mu1" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:showArrow="true" formItem:switchText="新版数据线启用开关" />
+                <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mu0" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:showArrow="true" formItem:switchText="iPad在线(转发逻辑)" />
+                <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mu3" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:showArrow="true" formItem:switchText="大于10M仅启用局域网" />
+                <EditText android:textSize="17.0sp" android:id="@id/mu2" android:background="@color/al3" android:padding="@dimen/aes" android:layout_width="fill_parent" android:layout_height="56.0dip" android:hint="数据线测试uin" android:inputType="number" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#ffffffff" android:padding="@dimen/aes" android:layout_width="fill_parent" android:layout_height="56.0dip">
+                    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="当前设备类型" android:layout_weight="1.0" />
+                    <RadioGroup android:orientation="horizontal" android:id="@id/mtz" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <RadioButton android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/mty" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="手机" />
+                        <RadioButton android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/mtw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="iPad" />
+                        <RadioButton android:textSize="10.0sp" android:textColor="#ff000000" android:id="@id/mtx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PC" />
+                    </RadioGroup>
+                </LinearLayout>
+                <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/o6h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:leftText="清空数据线迁移记录" formItem:showArrow="false" />
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/n6p" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="IPv6使用本地开关配置" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/n6l" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="-->打开C2C IPv6" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/n6o" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="-->打开Group IPv6" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/n6n" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="-->打开Disc IPv6" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/n6m" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="-->打开数据线 IPv6" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:paddingLeft="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-->IPv6策略" android:layout_weight="1.0" />
+                <RadioGroup android:orientation="horizontal" android:id="@id/o6q" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <RadioButton android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/o6n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="IPv4优先" />
+                    <RadioButton android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/o6o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IPv6优先" />
+                    <RadioButton android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/o6p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="跟随登录" />
+                </RadioGroup>
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/n6k" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="打开IPv6的情况下不使用IPv4地址" />
+            <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/nfw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="" />
+            <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="后台IPv6开关配置：" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip">
+                <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/mrz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/ms2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/ms1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/ms0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:id="@id/ms3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvk" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="Apk安全检测使用本地开关配置" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvj" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="打开Apk安全检测" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
 </LinearLayout>

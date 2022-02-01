@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class InstanceInfo
   extends JceStruct
 {
-  public byte cTablet;
-  public int iAppId;
-  public long iClientType;
-  public long iPlatform;
-  public long iProductType;
+  public byte cTablet = 0;
+  public int iAppId = 0;
+  public long iClientType = 0L;
+  public long iPlatform = 0L;
+  public long iProductType = 0L;
   
   public InstanceInfo() {}
   

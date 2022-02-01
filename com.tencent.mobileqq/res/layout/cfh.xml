@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:layout_gravity="center" android:id="@id/fie" android:background="@drawable/tips_popup_win_bg" android:layout_width="160.0dip" android:layout_height="170.0dip"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n27" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/photo_prievew_progress_dialog_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/xxt" android:layout_below="@id/n27" android:layout_centerHorizontal="true" />
-    <Button android:textColor="@color/al3" android:gravity="center" android:id="@id/afr" android:background="@drawable/blh" android:paddingLeft="16.0dip" android:paddingTop="6.0dip" android:paddingRight="16.0dip" android:paddingBottom="6.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="取消" android:layout_below="@id/photo_prievew_progress_dialog_text" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar android:layout_gravity="top" android:id="@id/jt2" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/bc0" />
+        <FrameLayout android:id="@id/myb" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <dov.com.qq.im.aeeditor.module.edit.AEEditorImageViewPager android:id="@id/kwk" android:background="@color/dh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <dov.com.qq.im.aeeditor.view.NumberIndicator android:textSize="13.0sp" android:textColor="@color/al3" android:id="@id/nnl" android:background="@drawable/bja" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:text="0 / 0" android:includeFontPadding="false" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/al3" android:layout_gravity="bottom|center" android:id="@id/mxx" android:background="@drawable/bja" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:text="" />
+            <ViewStub android:id="@id/mua" android:layout="@layout/cf_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:layout_gravity="bottom|center|left" android:id="@id/mve" android:layout_width="96.0dip" android:layout_height="26.0dip" android:layout_marginLeft="16.0dip" android:layout_marginBottom="16.0dip" android:src="@drawable/fpi" android:scaleType="fitXY" />
+            <FrameLayout android:layout_gravity="bottom|center|right" android:id="@id/mtb" android:background="@drawable/bie" android:layout_width="66.0dip" android:layout_height="26.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/fzs" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:text="@string/wpn" />
+            </FrameLayout>
+        </FrameLayout>
+        <View android:id="@id/ogt" android:layout_width="fill_parent" android:layout_height="@dimen/b_p" />
+        <include android:layout_width="fill_parent" android:layout_height="@dimen/b_r" layout="@layout/cfi" />
+    </LinearLayout>
+    <dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel android:layout_gravity="bottom" android:id="@id/mxq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/b_r" />
+    <android.support.v7.widget.RecyclerView android:layout_gravity="bottom" android:id="@id/o28" android:background="@color/m7" android:visibility="gone" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/b_p" android:layout_marginBottom="@dimen/b_r" />
+    <dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel android:layout_gravity="bottom" android:id="@id/o93" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/b_r" />
+    <FrameLayout android:id="@id/myc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <dov.com.qq.im.aeeditor.module.clip.image.AEEditorCropperPanel android:id="@id/kts" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/bc0" />
+</FrameLayout>

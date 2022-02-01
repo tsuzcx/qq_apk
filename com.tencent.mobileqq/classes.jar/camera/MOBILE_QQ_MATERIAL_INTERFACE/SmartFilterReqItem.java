@@ -10,8 +10,8 @@ public final class SmartFilterReqItem
 {
   static ArrayList<FaceRects> cache_Faces;
   static byte[] cache_Rawdata = (byte[])new byte[1];
-  public ArrayList<FaceRects> Faces;
-  public byte[] Rawdata;
+  public ArrayList<FaceRects> Faces = null;
+  public byte[] Rawdata = null;
   
   static
   {
@@ -47,7 +47,7 @@ public final class SmartFilterReqItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem
  * JD-Core Version:    0.7.0.1
  */

@@ -159,10 +159,10 @@ public class FrozenFrameTrigerCtrlItem
   
   public PTFaceAttr updateFaceAttr(PTFaceAttr paramPTFaceAttr)
   {
-    if ((paramPTFaceAttr != null) && (paramPTFaceAttr.getData() != null))
+    if (paramPTFaceAttr != null)
     {
       if (this.mFaceAttr != null) {
-        break label191;
+        break label184;
       }
       byte[] arrayOfByte = new byte[paramPTFaceAttr.getData().length];
       System.arraycopy(paramPTFaceAttr.getData(), 0, arrayOfByte, 0, arrayOfByte.length);
@@ -171,7 +171,7 @@ public class FrozenFrameTrigerCtrlItem
     for (;;)
     {
       return this.mFaceAttr;
-      label191:
+      label184:
       this.mFaceAttr.setTimeStamp(paramPTFaceAttr.getTimeStamp());
     }
   }
@@ -248,7 +248,7 @@ public class FrozenFrameTrigerCtrlItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.trigger.triggerctrlitem.FrozenFrameTrigerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

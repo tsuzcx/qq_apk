@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahfs;
-import bisa;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
 import com.tencent.qphone.base.util.QLog;
 
-public class ScribbleItemBuilder$3$1
+class ScribbleItemBuilder$3$1
   implements Runnable
 {
-  public ScribbleItemBuilder$3$1(ahfs paramahfs, bisa parambisa) {}
+  ScribbleItemBuilder$3$1(ScribbleItemBuilder.3 param3, ProgressPieDrawable paramProgressPieDrawable) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class ScribbleItemBuilder$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.3.1
  * JD-Core Version:    0.7.0.1
  */

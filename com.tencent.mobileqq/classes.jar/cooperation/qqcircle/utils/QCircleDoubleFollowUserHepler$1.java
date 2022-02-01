@@ -1,14 +1,15 @@
 package cooperation.qqcircle.utils;
 
 import android.text.TextUtils;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.qcircle.api.utils.QCircleHostConfig;
 import cooperation.qqcircle.beans.Friend;
 import feedcloud.FeedCloudCommon.Entry;
 import feedcloud.FeedCloudCommon.StCommonExt;
@@ -18,14 +19,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import qqcircle.QQCircleRelation.RelationBiz;
-import vvv;
 
 class QCircleDoubleFollowUserHepler$1
   implements VSDispatchObserver.onVSRspCallBack<FeedCloudRead.StGetFollowListRsp>
 {
   QCircleDoubleFollowUserHepler$1(QCircleDoubleFollowUserHepler paramQCircleDoubleFollowUserHepler) {}
   
-  public void onReceive(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFollowListRsp paramStGetFollowListRsp)
+  public void onReceive(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFollowListRsp paramStGetFollowListRsp)
   {
     long l = 0L;
     Object localObject;
@@ -37,11 +37,11 @@ class QCircleDoubleFollowUserHepler$1
         {
           try
           {
-            paramVSBaseRequest = paramStGetFollowListRsp.relationInfo.get().iterator();
-            if (!paramVSBaseRequest.hasNext()) {
+            paramBaseRequest = paramStGetFollowListRsp.relationInfo.get().iterator();
+            if (!paramBaseRequest.hasNext()) {
               break;
             }
-            localObject = (FeedCloudMeta.StRelationInfo)paramVSBaseRequest.next();
+            localObject = (FeedCloudMeta.StRelationInfo)paramBaseRequest.next();
             paramString = new Friend();
             paramString.mUin = Long.parseLong(((FeedCloudMeta.StRelationInfo)localObject).id.get());
             if (((FeedCloudMeta.StRelationInfo)localObject).busiData.get() != null)
@@ -60,13 +60,13 @@ class QCircleDoubleFollowUserHepler$1
               return;
             }
           }
-          catch (Exception paramVSBaseRequest)
+          catch (Exception paramBaseRequest)
           {
-            QLog.e("QCircleDoubleFollowUserHepler", 1, paramVSBaseRequest, new Object[0]);
+            RFLog.e("QCircleDoubleFollowUserHepler", RFLog.USR, new Object[] { paramBaseRequest });
           }
           paramString.mName = ((String)localObject);
         }
-        paramVSBaseRequest = paramStGetFollowListRsp.attachInfo.get();
+        paramBaseRequest = paramStGetFollowListRsp.attachInfo.get();
         paramString = paramStGetFollowListRsp.extInfo.mapInfo.get().iterator();
         paramLong = l;
       }
@@ -84,16 +84,16 @@ class QCircleDoubleFollowUserHepler$1
       {
         if (paramStGetFollowListRsp.hasNext.get() == 1)
         {
-          QCircleDoubleFollowUserHepler.access$100(this.this$0, paramVSBaseRequest, paramLong);
+          QCircleDoubleFollowUserHepler.access$100(this.this$0, paramBaseRequest, paramLong);
           return;
         }
         QCircleDoubleFollowUserHepler.access$202(this.this$0, (List)QCircleDoubleFollowUserHepler.access$000(this.this$0).clone());
         this.this$0.updateFollowUserList(QCircleDoubleFollowUserHepler.access$200(this.this$0));
-        vvv.a(System.currentTimeMillis());
+        QCircleHostConfig.saveGetFollowUserTime(System.currentTimeMillis());
         return;
-        QLog.e("QCircleDoubleFollowUserHepler", 1, "doGetFollowUser fail: retCode:" + paramLong);
+        RFLog.e("QCircleDoubleFollowUserHepler", RFLog.USR, "doGetFollowUser fail: retCode:" + paramLong);
         return;
-        QLog.e("QCircleDoubleFollowUserHepler", 1, "doGetFollowUser fail: stGetFollowListRsp is null");
+        RFLog.e("QCircleDoubleFollowUserHepler", RFLog.USR, "doGetFollowUser fail: stGetFollowListRsp is null");
         return;
       }
     }
@@ -101,7 +101,7 @@ class QCircleDoubleFollowUserHepler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.utils.QCircleDoubleFollowUserHepler.1
  * JD-Core Version:    0.7.0.1
  */

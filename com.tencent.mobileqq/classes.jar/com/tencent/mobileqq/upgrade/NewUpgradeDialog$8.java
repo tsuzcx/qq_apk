@@ -2,18 +2,17 @@ package com.tencent.mobileqq.upgrade;
 
 import android.content.Context;
 import android.os.Bundle;
-import bgvp;
-import bjnn;
+import com.tencent.open.downloadnew.MyAppApi;
 import java.lang.ref.WeakReference;
 
-public class NewUpgradeDialog$8
+class NewUpgradeDialog$8
   implements Runnable
 {
-  public NewUpgradeDialog$8(bgvp parambgvp, Bundle paramBundle) {}
+  NewUpgradeDialog$8(NewUpgradeDialog paramNewUpgradeDialog, Bundle paramBundle) {}
   
   public void run()
   {
-    bjnn.a().a((Context)this.this$0.a.get(), this.a, false, false);
+    MyAppApi.a().a((Context)this.this$0.a.get(), this.a, false, false);
   }
 }
 

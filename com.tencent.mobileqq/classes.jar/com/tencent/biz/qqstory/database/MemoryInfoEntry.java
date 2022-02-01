@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
-import vzk;
 
 public class MemoryInfoEntry
   extends Entity
-  implements vzk
+  implements Copyable
 {
   public String cookie = "";
   public int isEnd = -1;
@@ -61,7 +61,7 @@ public class MemoryInfoEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.MemoryInfoEntry
  * JD-Core Version:    0.7.0.1
  */

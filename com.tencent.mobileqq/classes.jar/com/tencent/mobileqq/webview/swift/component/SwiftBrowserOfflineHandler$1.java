@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bihf;
-import bihg;
+import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.concurrent.atomic.AtomicInteger;
-import nuz;
 
-public class SwiftBrowserOfflineHandler$1
+class SwiftBrowserOfflineHandler$1
   implements Runnable
 {
-  public SwiftBrowserOfflineHandler$1(bihf parambihf, String paramString) {}
+  SwiftBrowserOfflineHandler$1(SwiftBrowserOfflineHandler paramSwiftBrowserOfflineHandler, String paramString) {}
   
   public void run()
   {
     this.this$0.b();
     long l = System.currentTimeMillis();
-    if (bihf.c.get() == 3) {}
-    for (boolean bool = nuz.a(BaseApplicationImpl.getApplication().getApplicationContext(), this.a, new bihg(this, l));; bool = false)
+    if (SwiftBrowserOfflineHandler.c.get() == 3) {}
+    for (boolean bool = HtmlOffline.a(BaseApplicationImpl.getApplication().getApplicationContext(), this.a, new SwiftBrowserOfflineHandler.1.1(this, l));; bool = false)
     {
       if (!bool) {
         this.this$0.a();
@@ -27,7 +25,7 @@ public class SwiftBrowserOfflineHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bffk;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.troop.data.MediaInfo;
 import java.io.File;
-import ylp;
 
 public class EditLocalVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalVideoSource> CREATOR = new ylp();
+  public static final Parcelable.Creator<EditLocalVideoSource> CREATOR = new EditLocalVideoSource.1();
   public int a;
   @NonNull
   public final LocalMediaInfo a;
@@ -20,10 +19,10 @@ public class EditLocalVideoSource
   public final String a;
   public final int b;
   
-  public EditLocalVideoSource(Parcel paramParcel)
+  protected EditLocalVideoSource(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bffk.class.getClassLoader()));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(MediaInfo.class.getClassLoader()));
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.b = paramParcel.readInt();
   }
@@ -36,7 +35,23 @@ public class EditLocalVideoSource
     this.b = paramInt2;
   }
   
-  public String checkParam()
+  public int a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
+  }
+  
+  @NonNull
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+  }
+  
+  public String b()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return "sourcePath is empty";
@@ -61,22 +76,6 @@ public class EditLocalVideoSource
     return 0;
   }
   
-  public int getHeight()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
-  }
-  
-  @NonNull
-  public String getSourcePath()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int getWidth()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
@@ -87,7 +86,7 @@ public class EditLocalVideoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditLocalVideoSource
  * JD-Core Version:    0.7.0.1
  */

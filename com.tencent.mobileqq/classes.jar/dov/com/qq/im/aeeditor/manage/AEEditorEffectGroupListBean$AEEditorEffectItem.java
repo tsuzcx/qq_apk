@@ -7,21 +7,21 @@ public class AEEditorEffectGroupListBean$AEEditorEffectItem
 {
   public static final int STYLIZE_TYPE_COMIC = 1;
   public static final int STYLIZE_TYPE_PAINTING = 2;
-  private int disableForImage;
-  private int disableForVideo;
+  private int disableForImage = 0;
+  private int disableForVideo = 0;
   private String effectID = "";
   private String effectName = "";
   private String effectType = "client";
-  private int hideAlphaBar;
-  private int hideApplyAll;
-  private int imageShowLevel;
-  private int netStylizeType;
-  private int preDownload;
+  private int hideAlphaBar = 0;
+  private int hideApplyAll = 0;
+  private int imageShowLevel = 0;
+  private int netStylizeType = 0;
+  private int preDownload = 0;
   private String resourceMD5 = "";
   private String resourceURL = "";
   private String thumbURL = "";
   private int uploadMaxSize;
-  private int videoShowLevel;
+  private int videoShowLevel = 0;
   
   public int getDisableForImage()
   {
@@ -97,10 +97,15 @@ public class AEEditorEffectGroupListBean$AEEditorEffectItem
   {
     return this.videoShowLevel;
   }
+  
+  public void setHideApplyAll(int paramInt)
+  {
+    this.hideApplyAll = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean.AEEditorEffectItem
  * JD-Core Version:    0.7.0.1
  */

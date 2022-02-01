@@ -9,7 +9,7 @@ import com.tencent.mobileqq.data.QQAlbumInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract interface AlbumListLogic$IalbumListAdapterCallBack
+abstract interface AlbumListLogic$IalbumListAdapterCallBack
 {
   public abstract String adapterGenerateSelection();
   
@@ -23,7 +23,7 @@ public abstract interface AlbumListLogic$IalbumListAdapterCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AlbumListLogic.IalbumListAdapterCallBack
  * JD-Core Version:    0.7.0.1
  */

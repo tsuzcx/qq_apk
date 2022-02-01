@@ -11,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
-import uek;
 
 public class GameGiftsImageView
   extends FrameLayout
@@ -43,13 +42,13 @@ public class GameGiftsImageView
   
   private void a()
   {
-    View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560250, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368386));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368387));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368388));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131365120));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131365123));
-    this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131365126));
+    View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560323, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368608));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368609));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368610));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131365256));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131365259));
+    this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131365262));
   }
   
   private void a(ViewGroup paramViewGroup, ImageView paramImageView, String paramString)
@@ -58,7 +57,7 @@ public class GameGiftsImageView
       return;
     }
     paramViewGroup.setVisibility(0);
-    uek.a(paramImageView.getContext(), paramImageView, paramString, 0, AIOUtils.dp2px(16.0F, getResources()), -1);
+    ReadInJoyCommonSoftAdUtils.a(paramImageView.getContext(), paramImageView, paramString, 0, AIOUtils.a(16.0F, getResources()), -1);
   }
   
   public void setImages(ArrayList<String> paramArrayList)
@@ -85,7 +84,7 @@ public class GameGiftsImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.GameGiftsImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,14 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bnrh;
-import boct;
-import bocv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.util.List;
 
-public class AETextStickerAdapter$3
+class AETextStickerAdapter$3
   implements Runnable
 {
-  public AETextStickerAdapter$3(boct paramboct, AEEditorTextBean paramAEEditorTextBean, boolean paramBoolean) {}
+  AETextStickerAdapter$3(AETextStickerAdapter paramAETextStickerAdapter, AEEditorTextBean paramAEEditorTextBean, boolean paramBoolean) {}
   
   public void run()
   {
@@ -18,11 +16,11 @@ public class AETextStickerAdapter$3
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.progress = 100;
-      bnrh.d("AETextStickerAdapter", "[onPrepareCompleted] success");
-      int i = boct.a(this.this$0).indexOf(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
-      if (i == boct.c(this.this$0)) {
-        if (boct.a(this.this$0) != null) {
-          boct.a(this.this$0).a(i, this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
+      AEQLog.d("AETextStickerAdapter", "[onPrepareCompleted] success");
+      int i = AETextStickerAdapter.a(this.this$0).indexOf(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
+      if (i == AETextStickerAdapter.d(this.this$0)) {
+        if (AETextStickerAdapter.a(this.this$0) != null) {
+          AETextStickerAdapter.a(this.this$0).a(i, this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
         }
       }
     }
@@ -30,16 +28,16 @@ public class AETextStickerAdapter$3
     {
       this.this$0.notifyDataSetChanged();
       return;
-      bnrh.a("AETextStickerAdapter", "[onPrepareCompleted] not last selected item");
+      AEQLog.a("AETextStickerAdapter", "[onPrepareCompleted] not last selected item");
       continue;
-      QQToast.a(BaseApplicationImpl.getContext(), 2131691790, 1).a();
-      bnrh.d("AETextStickerAdapter", "[onPrepareCompleted] failed");
+      QQToast.a(BaseApplicationImpl.getContext(), 2131691908, 1).a();
+      AEQLog.d("AETextStickerAdapter", "[onPrepareCompleted] failed");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.text.AETextStickerAdapter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView android:id="@id/n8n" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:layout_alignParentLeft="true" android:layout_marginStart="10.0dip" android:layout_alignParentStart="true" />
+    <TextView android:id="@id/n8t" android:layout_width="10.0dip" android:layout_height="8.5dip" android:layout_marginLeft="6.0dip" android:layout_alignLeft="@id/n8n" android:layout_alignBottom="@id/n8n" android:layout_marginStart="6.0dip" android:layout_alignStart="@id/n8n" />
+    <TextView android:textSize="12.0sp" android:ellipsize="end" android:id="@id/n8u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="12.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/n8n" android:layout_marginStart="5.0dip" android:layout_marginEnd="12.0dip" android:layout_toEndOf="@id/n8n" />
+</RelativeLayout>

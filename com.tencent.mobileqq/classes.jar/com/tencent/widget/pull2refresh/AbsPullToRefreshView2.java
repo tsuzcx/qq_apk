@@ -19,12 +19,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bliz;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoyAnimBaseManager;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoyRefreshAnimFactory;
 import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.qphone.base.util.QLog;
-import tnd;
-import tni;
 
 public abstract class AbsPullToRefreshView2
   extends LinearLayout
@@ -35,8 +34,8 @@ public abstract class AbsPullToRefreshView2
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler;
   protected View a;
-  private bliz jdField_a_of_type_Bliz;
-  protected tnd a;
+  protected ReadInJoyAnimBaseManager a;
+  private PullToRefreshListener jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener;
   protected boolean a;
   private float jdField_b_of_type_Float = -1.0F;
   private int jdField_b_of_type_Int;
@@ -49,12 +48,14 @@ public abstract class AbsPullToRefreshView2
   public AbsPullToRefreshView2(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
     b();
   }
   
   public AbsPullToRefreshView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
     b();
   }
   
@@ -62,6 +63,7 @@ public abstract class AbsPullToRefreshView2
   public AbsPullToRefreshView2(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
     b();
   }
   
@@ -79,7 +81,7 @@ public abstract class AbsPullToRefreshView2
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView, true);
+      this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView, true);
       this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0), paramLong);
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
@@ -117,7 +119,7 @@ public abstract class AbsPullToRefreshView2
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_AndroidViewView = a();
     this.jdField_b_of_type_AndroidViewView = b();
-    this.f = UIUtils.dip2px(getContext(), 15.0F);
+    this.f = UIUtils.a(getContext(), 15.0F);
     this.d = ViewConfiguration.get(getContext()).getScaledMaximumFlingVelocity();
     a(this.jdField_a_of_type_AndroidViewView);
     setWillNotDraw(false);
@@ -126,7 +128,7 @@ public abstract class AbsPullToRefreshView2
   private void b(int paramInt)
   {
     int i = 0;
-    if (this.jdField_a_of_type_Bliz == null) {}
+    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener == null) {}
     do
     {
       return;
@@ -137,7 +139,7 @@ public abstract class AbsPullToRefreshView2
       }
     } while (this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView);
     return;
     paramInt = 100 - Math.abs((int)(b() * 1.0F / -this.jdField_b_of_type_Int * 100.0F));
     if (paramInt < 0) {
@@ -145,16 +147,16 @@ public abstract class AbsPullToRefreshView2
     }
     while (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView, paramInt);
+      this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView, paramInt);
       return;
       if (this.jdField_a_of_type_Boolean) {
         break;
       }
-      this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView);
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView, false);
+        this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView, false);
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0), 1000L);
       }
       this.jdField_a_of_type_Boolean = false;
@@ -162,7 +164,7 @@ public abstract class AbsPullToRefreshView2
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bliz.a(this.jdField_a_of_type_AndroidViewView, true);
+        this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener.a(this.jdField_a_of_type_AndroidViewView, true);
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0), 0L);
       }
       this.jdField_a_of_type_Boolean = false;
@@ -223,29 +225,29 @@ public abstract class AbsPullToRefreshView2
   
   protected int a()
   {
-    return UIUtils.dip2px(getContext(), 60.0F);
+    return UIUtils.a(getContext(), 60.0F);
   }
   
   protected abstract View a();
   
-  protected tnd a()
+  protected ReadInJoyAnimBaseManager a()
   {
     return a(1);
   }
   
-  public tnd a(int paramInt)
+  public ReadInJoyAnimBaseManager a(int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AbsPullToRefreshView2", 1, "setAnimType animType = " + paramInt);
     }
-    if ((this.jdField_a_of_type_Tnd != null) && ((this.jdField_a_of_type_Tnd instanceof ReadInJoySkinAnimManager))) {
-      this.jdField_a_of_type_Tnd.d();
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager instanceof ReadInJoySkinAnimManager))) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.d();
     }
-    this.jdField_a_of_type_Tnd = tni.a(getContext(), paramInt);
-    return this.jdField_a_of_type_Tnd;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager = ReadInJoyRefreshAnimFactory.a(getContext(), paramInt);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager;
   }
   
-  public void a()
+  protected void a()
   {
     if (a())
     {
@@ -282,9 +284,9 @@ public abstract class AbsPullToRefreshView2
     }
   }
   
-  protected void a(bliz parambliz)
+  protected void a(PullToRefreshListener paramPullToRefreshListener)
   {
-    this.jdField_a_of_type_Bliz = parambliz;
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshPullToRefreshListener = paramPullToRefreshListener;
   }
   
   public void a(boolean paramBoolean)
@@ -299,10 +301,10 @@ public abstract class AbsPullToRefreshView2
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if ((this.jdField_a_of_type_Tnd != null) && (this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager != null) && (this.jdField_a_of_type_Boolean))
     {
       a(1500L);
-      this.jdField_a_of_type_Tnd.a(paramBoolean, paramString);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a(paramBoolean, paramString);
     }
   }
   
@@ -446,13 +448,13 @@ public abstract class AbsPullToRefreshView2
     return true;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i = b() + this.jdField_b_of_type_Int;
     if ((i > 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
@@ -470,7 +472,7 @@ public abstract class AbsPullToRefreshView2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.AbsPullToRefreshView2
  * JD-Core Version:    0.7.0.1
  */

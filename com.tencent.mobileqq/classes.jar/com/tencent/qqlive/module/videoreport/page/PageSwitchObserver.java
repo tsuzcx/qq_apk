@@ -2,13 +2,12 @@ package com.tencent.qqlive.module.videoreport.page;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.os.Looper;
-import android.os.MessageQueue;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.collect.DefaultEventListener;
@@ -20,6 +19,7 @@ import com.tencent.qqlive.module.videoreport.report.AppEventReporter;
 import com.tencent.qqlive.module.videoreport.report.AppEventReporter.IAppEventListener;
 import com.tencent.qqlive.module.videoreport.trace.SimpleTracer;
 import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
+import com.tencent.qqlive.module.videoreport.utils.DelayedIdleHandler;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr;
 import com.tencent.qqlive.module.videoreport.utils.ReflectUtils;
 import com.tencent.qqlive.module.videoreport.utils.ViewCompatUtils;
@@ -33,8 +33,10 @@ public class PageSwitchObserver
   extends DefaultEventListener
   implements AppEventReporter.IAppEventListener
 {
+  private static final long FORCE_DETECTION_DELAY = 80L;
   private static final String TAG = "PageSwitchObserver";
-  private PageSwitchObserver.DetectionIdleHandler mDetectionIdleHandler = new PageSwitchObserver.DetectionIdleHandler(this, null);
+  private DelayedIdleHandler mDelayedIdleHandler = new DelayedIdleHandler();
+  private PageSwitchObserver.DetectionTask mDetectionTask = new PageSwitchObserver.DetectionTask(this, null);
   private boolean mIsAppForeground = true;
   private final ListenerMgr<PageSwitchObserver.IPageSwitchListener> mListenerMgr = new ListenerMgr();
   private Set<Activity> mResumedActivities = Collections.newSetFromMap(new WeakHashMap());
@@ -69,7 +71,7 @@ public class PageSwitchObserver
     return false;
   }
   
-  private void detectActivePage(Activity paramActivity)
+  private void detectActivePage(Activity paramActivity, int paramInt)
   {
     Log.d("LazyInitSequence", "detect page");
     String str = "PageSwitchObserver.detectActivity(" + paramActivity.getClass().getSimpleName() + ")";
@@ -80,18 +82,38 @@ public class PageSwitchObserver
     {
       Object localObject = (WeakReference)localList.get(i);
       if (localObject == null) {}
-      for (localObject = null; (localObject != null) && (detectActivePage(((Dialog)localObject).getWindow())); localObject = (Dialog)((WeakReference)localObject).get()) {
+      for (localObject = null; (localObject != null) && (detectActivePage(((Dialog)localObject).getWindow(), paramInt)); localObject = (Dialog)((WeakReference)localObject).get()) {
         return;
       }
       i -= 1;
     }
-    detectActivePage(paramActivity.getWindow());
+    detectActivePage(paramActivity.getWindow(), paramInt);
     SimpleTracer.end(str);
   }
   
-  private boolean detectActivePage(Window paramWindow)
+  private boolean detectActivePage(View paramView, int paramInt)
   {
-    return (paramWindow != null) && (detectActivePage(paramWindow.getDecorView()));
+    PageInfo localPageInfo = PageFinder.findExposurePage(paramView);
+    if (localPageInfo == null)
+    {
+      if (VideoReportInner.getInstance().isDebugMode()) {
+        Log.d("PageSwitchObserver", "detectActivePage: no active page found");
+      }
+      if (VideoReportInner.getInstance().getConfiguration().isIndependentPageOut()) {
+        notifyPageDisappear();
+      }
+      return false;
+    }
+    if (VideoReportInner.getInstance().isDebugMode()) {
+      Log.d("PageSwitchObserver", "detectActivePage: active page found, view = " + paramView + ", page = " + localPageInfo);
+    }
+    onActivePageFound(localPageInfo, paramInt);
+    return true;
+  }
+  
+  private boolean detectActivePage(Window paramWindow, int paramInt)
+  {
+    return (paramWindow != null) && (detectActivePage(paramWindow.getDecorView(), paramInt));
   }
   
   private Activity findAttachedActivity(View paramView)
@@ -144,19 +166,21 @@ public class PageSwitchObserver
       postAppearDetectionTask(paramActivity);
       return;
     }
-    paramActivity = new PageSwitchObserver.1(this, paramActivity, paramView);
-    paramView.getViewTreeObserver().addOnGlobalLayoutListener(paramActivity);
-    paramView.addOnAttachStateChangeListener(new PageSwitchObserver.2(this, paramView, paramActivity));
+    Object localObject = new WeakReference(paramActivity);
+    paramActivity = new WeakReference(paramView);
+    localObject = new PageSwitchObserver.1(this, (WeakReference)localObject, paramActivity);
+    paramView.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)localObject);
+    paramView.addOnAttachStateChangeListener(new PageSwitchObserver.2(this, paramActivity, (ViewTreeObserver.OnGlobalLayoutListener)localObject));
   }
   
-  private void notifyPageAppear(PageInfo paramPageInfo)
+  private void notifyPageAppear(PageInfo paramPageInfo, int paramInt)
   {
     if (paramPageInfo != null)
     {
       if (VideoReportInner.getInstance().isDebugMode()) {
         Log.d("PageSwitchObserver", "notifyPageAppear: page = " + paramPageInfo + ", view = " + paramPageInfo.getPageView());
       }
-      this.mListenerMgr.startNotify(new PageSwitchObserver.3(this, paramPageInfo));
+      this.mListenerMgr.startNotify(new PageSwitchObserver.3(this, paramPageInfo, paramInt));
     }
   }
   
@@ -167,7 +191,7 @@ public class PageSwitchObserver
     }
     paramView = new PageSwitchObserver.PageDestroyCallback(paramView);
     this.mListenerMgr.startNotify(paramView);
-    return PageSwitchObserver.PageDestroyCallback.access$200(paramView);
+    return PageSwitchObserver.PageDestroyCallback.access$300(paramView);
   }
   
   private void notifyPageDisappear()
@@ -178,29 +202,33 @@ public class PageSwitchObserver
     this.mListenerMgr.startNotify(new PageSwitchObserver.4(this));
   }
   
-  private void onActivePageFound(PageInfo paramPageInfo)
+  private void onActivePageFound(PageInfo paramPageInfo, int paramInt)
   {
-    notifyPageAppear(paramPageInfo);
+    notifyPageAppear(paramPageInfo, paramInt);
   }
   
-  public boolean detectActivePage(View paramView)
+  private void postAppearDetectionTask(Activity paramActivity)
   {
-    PageInfo localPageInfo = PageFinder.findExposurePage(paramView);
-    if (localPageInfo == null)
-    {
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("PageSwitchObserver", "detectActivePage: no active page found");
-      }
-      if (VideoReportInner.getInstance().getConfiguration().isIndependentPageOut()) {
-        notifyPageDisappear();
-      }
-      return false;
-    }
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "detectActivePage: active page found, view = " + paramView + ", page = " + localPageInfo);
+      Log.d("PageSwitchObserver", "postAppearDetectionTask: activity = " + paramActivity);
     }
-    onActivePageFound(localPageInfo);
-    return true;
+    if ((paramActivity == null) || (!DetectionPolicy.isAbleToDetect(paramActivity))) {
+      if (VideoReportInner.getInstance().isDebugMode()) {
+        Log.d("PageSwitchObserver", "postAppearDetectionTask: unable to detect activity");
+      }
+    }
+    do
+    {
+      return;
+      if (this.mResumedActivities.contains(paramActivity)) {
+        break;
+      }
+    } while (!VideoReportInner.getInstance().isDebugMode());
+    Log.d("PageSwitchObserver", "postAppearDetectionTask: activity is not resumed, skip detection");
+    return;
+    this.mDelayedIdleHandler.remove(this.mDetectionTask);
+    this.mDetectionTask.setActivity(paramActivity);
+    this.mDelayedIdleHandler.post(this.mDetectionTask, 80L);
   }
   
   public void onActivityConfigurationChanged(Activity paramActivity, android.content.res.Configuration paramConfiguration)
@@ -224,12 +252,12 @@ public class PageSwitchObserver
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("PageSwitchObserver", "onActivityPause: activity = " + paramActivity);
     }
-    if (this.mDetectionIdleHandler.getActivity() == paramActivity)
+    if (this.mDetectionTask.getActivity() == paramActivity)
     {
       if (VideoReportInner.getInstance().isDebugMode()) {
         Log.d("PageSwitchObserver", "onActivityPause: activity matched, remove idle handler");
       }
-      Looper.myQueue().removeIdleHandler(this.mDetectionIdleHandler);
+      this.mDelayedIdleHandler.remove(this.mDetectionTask);
     }
     this.mResumedActivities.remove(paramActivity);
     if (VideoReportInner.getInstance().getConfiguration().isIndependentPageOut()) {
@@ -356,23 +384,6 @@ public class PageSwitchObserver
       Log.d("PageSwitchObserver", "onPageViewVisible: view = " + paramView);
     }
     postAppearDetectionTask(findAttachedActivity(paramView));
-  }
-  
-  public void postAppearDetectionTask(Activity paramActivity)
-  {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "postAppearDetectionTask: activity = " + paramActivity);
-    }
-    if ((paramActivity == null) || (!DetectionPolicy.isAbleToDetect(paramActivity)))
-    {
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("PageSwitchObserver", "postAppearDetectionTask: unable to detect activity");
-      }
-      return;
-    }
-    Looper.myQueue().removeIdleHandler(this.mDetectionIdleHandler);
-    this.mDetectionIdleHandler.setActivity(paramActivity);
-    Looper.myQueue().addIdleHandler(this.mDetectionIdleHandler);
   }
   
   public void register(PageSwitchObserver.IPageSwitchListener paramIPageSwitchListener)

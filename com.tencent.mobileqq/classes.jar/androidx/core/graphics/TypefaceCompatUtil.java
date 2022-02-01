@@ -299,20 +299,20 @@ public class TypefaceCompatUtil
     //   165: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
     //   168: aload_0
     //   169: areturn
-    //   170: astore_0
-    //   171: aload_0
+    //   170: astore_1
+    //   171: aload_1
     //   172: athrow
-    //   173: astore_1
+    //   173: astore_0
     //   174: aload 5
     //   176: ifnull +12 -> 188
-    //   179: aload_0
+    //   179: aload_1
     //   180: ifnull +21 -> 201
     //   183: aload 5
     //   185: invokevirtual 188	java/io/FileInputStream:close	()V
-    //   188: aload_1
+    //   188: aload_0
     //   189: athrow
     //   190: astore 5
-    //   192: aload_0
+    //   192: aload_1
     //   193: aload 5
     //   195: invokevirtual 192	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   198: goto -10 -> 188
@@ -327,9 +327,9 @@ public class TypefaceCompatUtil
     //   218: aload_2
     //   219: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
     //   222: goto -74 -> 148
-    //   225: astore_1
+    //   225: astore_0
     //   226: aconst_null
-    //   227: astore_0
+    //   227: astore_1
     //   228: goto -54 -> 174
     //   231: astore_0
     //   232: aconst_null
@@ -474,7 +474,7 @@ public class TypefaceCompatUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.graphics.TypefaceCompatUtil
  * JD-Core Version:    0.7.0.1
  */

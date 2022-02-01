@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class material_get_my_item_req
   extends JceStruct
 {
-  public int iAppid;
-  public long lUin;
+  public int iAppid = 0;
+  public long lUin = 0L;
   
   public material_get_my_item_req() {}
   

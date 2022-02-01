@@ -16,7 +16,7 @@ public final class QQALive$GetOpenInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.pb.QQALive.GetOpenInfoRsp
  * JD-Core Version:    0.7.0.1
  */

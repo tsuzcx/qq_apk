@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atip;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -14,12 +13,12 @@ class QFileAppStorePromoteManager$2$2
     if (QLog.isColorLevel()) {
       QLog.i("QFileAppStorePromoteManager<QFile>", 1, "request appInfo. add reqId[" + this.jdField_a_of_type_Int + "]");
     }
-    atip.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.a);
+    QFileAppStorePromoteManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.2.2
  * JD-Core Version:    0.7.0.1
  */

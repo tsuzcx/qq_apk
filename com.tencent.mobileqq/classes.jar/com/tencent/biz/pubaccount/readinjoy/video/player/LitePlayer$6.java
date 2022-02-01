@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import spn;
-import sss;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
 
-public class LitePlayer$6
+class LitePlayer$6
   implements Runnable
 {
-  public LitePlayer$6(sss paramsss, spn paramspn) {}
+  LitePlayer$6(LitePlayer paramLitePlayer, VideoPlayerWrapper paramVideoPlayerWrapper) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class LitePlayer$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.player.LitePlayer.6
  * JD-Core Version:    0.7.0.1
  */

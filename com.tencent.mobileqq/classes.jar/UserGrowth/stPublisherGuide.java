@@ -9,7 +9,7 @@ public final class stPublisherGuide
 {
   public String btnText = "";
   public String desc = "";
-  public int imageType;
+  public int imageType = 0;
   public String imageUrl = "";
   
   public stPublisherGuide() {}

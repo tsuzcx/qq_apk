@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.onlinestatus.view;
 
-import aeow;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +11,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import azcl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.onlinestatus.ReportHelperKt;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
@@ -30,14 +30,14 @@ public class AutoStatusHintFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.setClass(paramContext, PublicTransFragmentActivity.class);
     localIntent.putExtra("public_fragment_class", AutoStatusHintFragment.class.getName());
-    aeow.a(localIntent, PublicTransFragmentActivity.class, AutoStatusHintFragment.class);
+    PublicFragmentActivity.Launcher.a(localIntent, PublicTransFragmentActivity.class, AutoStatusHintFragment.class);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     super.initWindowStyleAndAnimation(paramActivity);
     paramActivity.getWindow().setSoftInputMode(3);
-    paramActivity.overridePendingTransition(2130771986, 2130771985);
+    paramActivity.overridePendingTransition(2130771988, 2130771987);
   }
   
   public boolean isWrapContent()
@@ -64,7 +64,7 @@ public class AutoStatusHintFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      azcl.a("0X800B0F4");
+      ReportHelperKt.a("0X800B0F4");
       getActivity().finish();
     }
   }
@@ -74,9 +74,9 @@ public class AutoStatusHintFragment
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramLayoutInflater = paramLayoutInflater.inflate(2131558417, null);
     paramLayoutInflater.setOnClickListener(this);
-    this.a = ((Button)paramLayoutInflater.findViewById(2131373062));
+    this.a = ((Button)paramLayoutInflater.findViewById(2131373388));
     this.a.setOnClickListener(this);
-    azcl.a("0X800B0F3");
+    ReportHelperKt.a("0X800B0F3");
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -85,7 +85,7 @@ public class AutoStatusHintFragment
   {
     FragmentActivity localFragmentActivity = getActivity();
     if (localFragmentActivity != null) {
-      localFragmentActivity.overridePendingTransition(2130771986, 2130771985);
+      localFragmentActivity.overridePendingTransition(2130771988, 2130771987);
     }
     super.onFinish();
   }

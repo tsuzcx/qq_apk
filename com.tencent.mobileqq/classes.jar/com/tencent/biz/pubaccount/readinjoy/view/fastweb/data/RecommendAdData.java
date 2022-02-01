@@ -2,26 +2,24 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.TemplateFactory;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyBottomAdVideoUtil;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdCommonBlurImageView.BlurDataModel;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import ois;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tmh;
-import ukt;
-import usq;
 
 public class RecommendAdData
   extends AdData
 {
   private long f;
-  public int w = 2;
-  private int x = 184;
+  public int y = 2;
+  private int z = 184;
   
   public RecommendAdData()
   {
     super(9);
+    this.jdField_f_of_type_Long = 0L;
   }
   
   private String a(String paramString, int paramInt)
@@ -65,83 +63,65 @@ public class RecommendAdData
   
   private JSONObject a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    label452:
-    for (;;)
+    localJSONObject1 = new JSONObject();
+    try
     {
-      try
+      JSONObject localJSONObject2;
+      if (this.z == 185)
       {
-        if (this.x == 185)
-        {
-          localJSONObject1.put("style_ID", "ReadInjoy_native_recommend_ad_video_cell");
-          Object localObject = new JSONObject();
-          ((JSONObject)localObject).put("video_time_txt", "" + this.jdField_f_of_type_Long / 60L + ":" + this.jdField_f_of_type_Long % 60L);
-          localJSONObject1.put("video_time", localObject);
-          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-          {
-            localObject = new JSONObject();
-            ((JSONObject)localObject).put("text", this.jdField_b_of_type_JavaLangString);
-            localJSONObject1.put("id_recommend_title", localObject);
-          }
-          if (!TextUtils.isEmpty(this.d))
-          {
-            localObject = usq.a(this.d, 4);
-            JSONObject localJSONObject2 = new JSONObject();
-            localJSONObject2.put("image_url", ((URL)localObject).toString());
-            localJSONObject1.put("id_recommend_cover_img", localJSONObject2);
-          }
-          int j = 22;
-          localObject = new JSONObject();
-          if (!TextUtils.isEmpty(this.D))
-          {
-            ((JSONObject)localObject).put("text", this.D);
-            localJSONObject1.put("id_recommend_category_txt", localObject);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RecommendAdData", 2, "detail ad recommend adInconText:" + this.D);
-          }
-          int i = j;
-          if (this.jdField_b_of_type_Int == 12)
-          {
-            i = j;
-            if (!TextUtils.isEmpty(this.h))
-            {
-              localObject = new JSONObject();
-              if (!ois.a(BaseApplicationImpl.getContext(), this.h)) {
-                break label452;
-              }
-              ((JSONObject)localObject).put("text", "打开APP");
-              localJSONObject1.put("id_recommend_category_download", localObject);
-              i = 16;
-            }
-          }
-          if (!TextUtils.isEmpty(this.i))
-          {
-            localObject = new JSONObject();
-            ((JSONObject)localObject).put("text", a(this.i, i));
-            localJSONObject1.put("id_recommend_account_name", localObject);
-          }
-          if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
-          {
-            localObject = new JSONObject();
-            ((JSONObject)localObject).put("jump_url", this.jdField_f_of_type_JavaLangString);
-            localJSONObject1.put("id_native_recommend_small_container", localObject);
-          }
-          localJSONObject1.put("id_ad_dislike_button", new JSONObject());
-          return localJSONObject1;
-        }
-        else
-        {
-          localJSONObject1.put("style_ID", "ReadInjoy_native_recommend_ad_small_cell");
-          continue;
-        }
-        localJSONException.put("text", "下载APP");
+        localJSONObject1.put("style_ID", "ReadInjoy_native_recommend_ad_video_cell");
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("video_time_txt", "" + this.jdField_f_of_type_Long / 60L + ":" + this.jdField_f_of_type_Long % 60L);
+        localJSONObject1.put("video_time", localJSONObject2);
       }
-      catch (JSONException localJSONException)
+      for (;;)
       {
-        localJSONException.printStackTrace();
+        if (!TextUtils.isEmpty(this.b))
+        {
+          localJSONObject2 = new JSONObject();
+          localJSONObject2.put("text", this.b);
+          localJSONObject1.put("id_recommend_title", localJSONObject2);
+        }
+        if (!TextUtils.isEmpty(this.d))
+        {
+          localJSONObject2 = new JSONObject();
+          localJSONObject2.put("article_model", this);
+          ReadInJoyAdCommonBlurImageView.BlurDataModel localBlurDataModel = new ReadInJoyAdCommonBlurImageView.BlurDataModel();
+          localBlurDataModel.a = this.d;
+          localBlurDataModel.b = this.d;
+          localJSONObject2.put("article_model", localBlurDataModel);
+          localJSONObject1.put("id_recommend_cover_img", localJSONObject2);
+        }
+        localJSONObject2 = new JSONObject();
+        if (!TextUtils.isEmpty(this.D))
+        {
+          localJSONObject2.put("text", this.D);
+          localJSONObject1.put("id_recommend_category_txt", localJSONObject2);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("RecommendAdData", 2, "detail ad recommend adInconText:" + this.D);
+        }
+        if (!TextUtils.isEmpty(this.i))
+        {
+          localJSONObject2 = new JSONObject();
+          localJSONObject2.put("text", a(this.i, 22));
+          localJSONObject1.put("id_recommend_account_name", localJSONObject2);
+        }
+        if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
+        {
+          localJSONObject2 = new JSONObject();
+          localJSONObject2.put("jump_url", this.jdField_f_of_type_JavaLangString);
+          localJSONObject1.put("id_native_recommend_small_container", localJSONObject2);
+        }
+        localJSONObject1.put("id_ad_dislike_button", new JSONObject());
         return localJSONObject1;
+        localJSONObject1.put("style_ID", "ReadInjoy_native_recommend_ad_small_cell");
       }
+      return localJSONObject1;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
   }
   
@@ -151,10 +131,10 @@ public class RecommendAdData
     this.c = a();
     try
     {
-      tmh localtmh = tmh.a("native_article", true);
+      TemplateFactory localTemplateFactory = TemplateFactory.a("native_article", true);
       localObject1 = localObject3;
-      if (localtmh != null) {
-        localObject1 = localtmh.getTemplateBean(this.c);
+      if (localTemplateFactory != null) {
+        localObject1 = localTemplateFactory.getTemplateBean(this.c);
       }
     }
     catch (JSONException localJSONException)
@@ -174,11 +154,11 @@ public class RecommendAdData
   public boolean a(JSONObject paramJSONObject, int paramInt)
   {
     super.a(paramJSONObject, paramInt);
-    this.w = paramInt;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ukt.a(this);
+    this.y = paramInt;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ReadInJoyBottomAdVideoUtil.a(this);
     if (paramJSONObject != null)
     {
-      this.x = paramJSONObject.optInt("material_id");
+      this.z = paramJSONObject.optInt("material_id");
       this.jdField_f_of_type_Long = paramJSONObject.optInt("media_duration");
     }
     return true;
@@ -186,7 +166,7 @@ public class RecommendAdData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData
  * JD-Core Version:    0.7.0.1
  */

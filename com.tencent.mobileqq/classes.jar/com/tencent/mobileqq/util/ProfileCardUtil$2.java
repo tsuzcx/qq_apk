@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.util;
 
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class ProfileCardUtil$2
+final class ProfileCardUtil$2
   implements Runnable
 {
   public void run()
   {
-    File localFile = new File(this.a);
-    if ((localFile.exists()) && (localFile.isFile()))
-    {
-      boolean bool = localFile.delete();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.VoiceIntro", 2, "delete result=" + bool + " f.path=" + this.a);
-      }
-    }
+    String str1 = CardHandler.a(this.a, CardHandler.b(BaseApplication.getContext()));
+    int i = CardHandler.c(BaseApplication.getContext());
+    String str2 = CardHandler.a(this.a, i);
+    ImageUtil.a(this.b, str1);
+    ImageUtil.a(this.b, str2, i, i);
+    FileUtils.a(this.b, true);
   }
 }
 

@@ -14,14 +14,14 @@ public final class DownloadReportReq
   static ArrayList<ResInfo> cache_vecResInfo = new ArrayList();
   public int iActId = 1001;
   public int iPlatForm = 1;
-  public int iScene;
-  public int iType;
-  public long iUin;
+  public int iScene = 0;
+  public int iType = 0;
+  public long iUin = 0L;
   public String sOsVersion = "";
   public String sPhoneType = "";
   public String sQQVersion = "";
   public String sSpeed = "";
-  public ArrayList<ResInfo> vecResInfo;
+  public ArrayList<ResInfo> vecResInfo = null;
   
   static
   {

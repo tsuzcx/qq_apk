@@ -12,8 +12,8 @@ public final class PrivilegeBaseInfo
   static ArrayList<PrivilegeInfo> cache_vOpenPriv = new ArrayList();
   public String strJumpUrl = "";
   public String strMsg = "";
-  public ArrayList<PrivilegeInfo> vClosePriv;
-  public ArrayList<PrivilegeInfo> vOpenPriv;
+  public ArrayList<PrivilegeInfo> vClosePriv = null;
+  public ArrayList<PrivilegeInfo> vOpenPriv = null;
   
   static
   {
@@ -56,7 +56,7 @@ public final class PrivilegeBaseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.PrivilegeBaseInfo
  * JD-Core Version:    0.7.0.1
  */

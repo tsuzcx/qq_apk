@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/d6"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="@dimen/d8" android:layout_height="@dimen/d6" android:dividerPadding="@dimen/ms"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/o62" android:visibility="gone" android:layout_width="@dimen/mr" android:layout_height="fill_parent" />
-    <RelativeLayout android:layout_gravity="center" android:layout_width="@dimen/d8" android:layout_height="fill_parent">
-        <com.tencent.image.URLImageView android:id="@id/tabView" android:background="@null" android:layout_width="@dimen/d7" android:layout_height="@dimen/d7" android:scaleType="centerCrop" android:adjustViewBounds="false" android:layout_centerInParent="true" />
+    <RelativeLayout android:layout_gravity="center" android:id="@id/lvy" android:background="@drawable/bk_" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <ImageView android:id="@id/j_3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_tips_dot" android:layout_toRightOf="@id/tabView" android:layout_alignParentTop="true" />
+        <com.tencent.image.URLImageView android:id="@id/tabView" android:background="@null" android:layout_width="@dimen/d7" android:layout_height="@dimen/d7" android:scaleType="centerCrop" android:adjustViewBounds="false" android:layout_centerInParent="true" />
     </RelativeLayout>
     <View android:layout_gravity="center_vertical" android:id="@id/j_2" android:visibility="gone" android:layout_width="1.0dip" android:layout_height="@dimen/nx" />
 </LinearLayout>

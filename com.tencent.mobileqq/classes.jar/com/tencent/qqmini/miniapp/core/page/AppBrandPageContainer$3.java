@@ -1,36 +1,39 @@
 package com.tencent.qqmini.miniapp.core.page;
 
-import com.tencent.qqmini.miniapp.core.BaseAppBrandRuntime;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.action.Action;
-import com.tencent.qqmini.sdk.runtime.AppStateManager;
+import com.tencent.qqmini.miniapp.core.EventListener;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
+import org.json.JSONObject;
 
 class AppBrandPageContainer$3
-  implements Action<Boolean>
+  implements Runnable
 {
-  AppBrandPageContainer$3(AppBrandPageContainer paramAppBrandPageContainer) {}
+  AppBrandPageContainer$3(AppBrandPageContainer paramAppBrandPageContainer, int paramInt) {}
   
-  public Boolean perform(BaseRuntime paramBaseRuntime)
+  public void run()
   {
-    if ((paramBaseRuntime instanceof BaseAppBrandRuntime))
+    try
     {
-      paramBaseRuntime = (BaseAppBrandRuntime)paramBaseRuntime;
-      if ((paramBaseRuntime == null) || (paramBaseRuntime.getAppStateManager() == null) || (!paramBaseRuntime.getAppStateManager().isFromPrelaunch)) {
-        break label45;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("height", (int)(this.val$realKeyboardHeight / DisplayUtil.getDensity(AppBrandPageContainer.access$200(this.this$0).getContext())));
+      localJSONObject.put("inputId", this.this$0.getCurShowingInputId());
+      if (this.this$0.mEventListener != null)
+      {
+        QMLog.d("minisdk-start-AppBrandPageContainer", "onKeyboardHeightChange : " + localJSONObject.toString());
+        this.this$0.mEventListener.onWebViewEvent("onKeyboardHeightChange", localJSONObject.toString(), this.this$0.getShowingPageWebViewId());
       }
+      return;
     }
-    label45:
-    for (boolean bool = true;; bool = false)
+    catch (Throwable localThrowable)
     {
-      return Boolean.valueOf(bool);
-      paramBaseRuntime = null;
-      break;
+      QMLog.e("minisdk-start-AppBrandPageContainer", "KeyboardObserver error, ", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.3
  * JD-Core Version:    0.7.0.1
  */

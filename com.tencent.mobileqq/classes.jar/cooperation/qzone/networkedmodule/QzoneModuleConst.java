@@ -14,6 +14,7 @@ import java.util.Map;
 
 public class QzoneModuleConst
 {
+  public static final String MINIGAME_MODULE_MINIGAME_LAMEMP3_SO = "libminigame_lamemp3.so";
   public static final String MINIGAME_MODULE_WEBAUDIO_SO = "libwebAudio.so";
   public static final String QZONE_DECODE_ANIMATED_WEBP_KEY = "animatedWebp";
   public static final String QZONE_DECODE_ANIMATED_WEBP_MD5 = "4c8590a921c2722051416111dfd57122";
@@ -163,34 +164,34 @@ public class QzoneModuleConst
     //   1: istore_3
     //   2: ldc 2
     //   4: monitorenter
-    //   5: ldc_w 363
+    //   5: ldc_w 366
     //   8: aload_0
-    //   9: invokestatic 367	cooperation/qzone/networkedmodule/QzoneModuleConst:getSpKeyById	(Ljava/lang/String;)Ljava/lang/String;
+    //   9: invokestatic 370	cooperation/qzone/networkedmodule/QzoneModuleConst:getSpKeyById	(Ljava/lang/String;)Ljava/lang/String;
     //   12: iconst_0
-    //   13: invokestatic 435	cooperation/qzone/LocalMultiProcConfig:getInt	(Ljava/lang/String;Ljava/lang/String;I)I
+    //   13: invokestatic 438	cooperation/qzone/LocalMultiProcConfig:getInt	(Ljava/lang/String;Ljava/lang/String;I)I
     //   16: istore_1
-    //   17: ldc_w 306
+    //   17: ldc_w 309
     //   20: iconst_1
-    //   21: new 397	java/lang/StringBuilder
+    //   21: new 400	java/lang/StringBuilder
     //   24: dup
-    //   25: invokespecial 398	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 437
-    //   31: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokespecial 401	java/lang/StringBuilder:<init>	()V
+    //   28: ldc_w 440
+    //   31: invokevirtual 414	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: iload_1
-    //   35: invokevirtual 440	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 419	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 443	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: invokevirtual 443	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 422	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokestatic 446	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   44: iload_1
     //   45: iconst_2
     //   46: if_icmpne +28 -> 74
     //   49: iload_3
     //   50: istore_2
-    //   51: invokestatic 447	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   51: invokestatic 450	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   54: ifeq +15 -> 69
-    //   57: ldc_w 306
+    //   57: ldc_w 309
     //   60: iconst_2
-    //   61: ldc_w 449
-    //   64: invokestatic 452	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   61: ldc_w 452
+    //   64: invokestatic 455	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   67: iload_3
     //   68: istore_2
     //   69: ldc 2

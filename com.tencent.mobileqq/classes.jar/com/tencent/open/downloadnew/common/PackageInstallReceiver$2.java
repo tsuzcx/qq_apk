@@ -1,8 +1,8 @@
 package com.tencent.open.downloadnew.common;
 
-import bjko;
-import bjna;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
 class PackageInstallReceiver$2
   implements Runnable
@@ -11,14 +11,14 @@ class PackageInstallReceiver$2
   
   public void run()
   {
-    bjko.c(this.this$0.a, "ACTION_PACKAGE_REPLACED >> " + this.a);
+    LogUtility.c(this.this$0.a, "ACTION_PACKAGE_REPLACED >> " + this.a);
     DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    bjna.a().a(13, localDownloadInfo);
+    DownloadManager.a().a(13, localDownloadInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.PackageInstallReceiver.2
  * JD-Core Version:    0.7.0.1
  */

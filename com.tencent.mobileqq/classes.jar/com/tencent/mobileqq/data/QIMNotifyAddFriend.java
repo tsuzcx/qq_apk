@@ -17,8 +17,8 @@ public class QIMNotifyAddFriend
   public int age;
   public String coverStory;
   public int gender;
-  public boolean hasRead;
-  public boolean hasShowToast;
+  public boolean hasRead = false;
+  public boolean hasShowToast = false;
   public String nickName;
   public long pushTime;
   public long qqUin;
@@ -125,7 +125,7 @@ public class QIMNotifyAddFriend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QIMNotifyAddFriend
  * JD-Core Version:    0.7.0.1
  */

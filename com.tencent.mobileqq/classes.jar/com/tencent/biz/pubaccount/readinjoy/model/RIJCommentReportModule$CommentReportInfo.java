@@ -6,13 +6,12 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qgm;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/model/RIJCommentReportModule$CommentReportInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "firstCommentId", "", "getFirstCommentId", "()Ljava/lang/String;", "setFirstCommentId", "(Ljava/lang/String;)V", "reportReason", "getReportReason", "setReportReason", "reportType", "", "getReportType", "()I", "setReportType", "(I)V", "rowkey", "getRowkey", "setRowkey", "subCommentId", "getSubCommentId", "setSubCommentId", "describeContents", "toString", "writeToParcel", "", "flags", "CREATOR", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class RIJCommentReportModule$CommentReportInfo
   implements Parcelable
 {
-  public static final qgm CREATOR = new qgm(null);
+  public static final RIJCommentReportModule.CommentReportInfo.CREATOR CREATOR = new RIJCommentReportModule.CommentReportInfo.CREATOR(null);
   private int jdField_a_of_type_Int;
   @Nullable
   private String jdField_a_of_type_JavaLangString = "";
@@ -116,7 +115,7 @@ public final class RIJCommentReportModule$CommentReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.RIJCommentReportModule.CommentReportInfo
  * JD-Core Version:    0.7.0.1
  */

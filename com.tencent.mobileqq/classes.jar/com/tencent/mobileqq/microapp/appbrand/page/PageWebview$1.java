@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.microapp.appbrand.page;
 
-import Override;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;

@@ -22,8 +22,17 @@ class MiniLoadingAdManager$4
   
   public void getLoadingAdLayoutReady() {}
   
-  public void onAdClick()
+  public void onAdClick(int paramInt)
   {
+    switch (paramInt)
+    {
+    default: 
+      QMLog.e("MiniLoadingAdManager", "onAdClick, unknown type:" + paramInt);
+      return;
+    case 1: 
+      SDKMiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.val$miniAppInfo), null, "ad", "ad_loading", "click_bar", null);
+      return;
+    }
     SDKMiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.val$miniAppInfo), null, "ad", "ad_loading", "click", null);
   }
   
@@ -68,7 +77,7 @@ class MiniLoadingAdManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniLoadingAdManager.4
  * JD-Core Version:    0.7.0.1
  */

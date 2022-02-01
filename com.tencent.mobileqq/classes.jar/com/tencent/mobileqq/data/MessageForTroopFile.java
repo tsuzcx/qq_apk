@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import anvx;
-import apab;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 
 public class MessageForTroopFile
   extends ChatMessage
@@ -17,7 +17,7 @@ public class MessageForTroopFile
   public String fileName;
   public long fileSize;
   public int height;
-  public boolean isPause;
+  public boolean isPause = false;
   public long lastTime;
   public String md5;
   public String sha1;
@@ -32,7 +32,7 @@ public class MessageForTroopFile
   {
     try
     {
-      TroopFileData localTroopFileData = (TroopFileData)apab.a(this.msgData);
+      TroopFileData localTroopFileData = (TroopFileData)MessagePkgUtils.a(this.msgData);
       if (localTroopFileData != null)
       {
         this.url = localTroopFileData.fileUrl;
@@ -54,7 +54,7 @@ public class MessageForTroopFile
         this.yybApkName = localTroopFileData.yybApkName;
         this.yybApkIconUrl = localTroopFileData.yybApkIconUrl;
       }
-      this.msg = anvx.a(2131706043);
+      this.msg = HardCodeUtil.a(2131706583);
       return;
     }
     catch (Exception localException)
@@ -69,7 +69,7 @@ public class MessageForTroopFile
   
   public String getSummaryMsg()
   {
-    return anvx.a(2131706092) + this.fileName;
+    return HardCodeUtil.a(2131706632) + this.fileName;
   }
   
   public boolean isSupportReply()
@@ -110,7 +110,7 @@ public class MessageForTroopFile
     localTroopFileData.yybApkIconUrl = this.yybApkIconUrl;
     try
     {
-      this.msgData = apab.a(localTroopFileData);
+      this.msgData = MessagePkgUtils.a(localTroopFileData);
       return;
     }
     catch (Exception localException)
@@ -121,7 +121,7 @@ public class MessageForTroopFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopFile
  * JD-Core Version:    0.7.0.1
  */

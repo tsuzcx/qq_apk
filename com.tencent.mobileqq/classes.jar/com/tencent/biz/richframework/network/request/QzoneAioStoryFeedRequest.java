@@ -4,10 +4,9 @@ import NS_COMM.COMM.StCommonExt;
 import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryReq;
 import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryRsp;
 import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class QzoneAioStoryFeedRequest
@@ -40,8 +39,8 @@ public class QzoneAioStoryFeedRequest
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAioStoryFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (RFLog.isColorLevel()) {
+        RFLog.d("QzoneAioStoryFeedRequest", RFLog.CLR, "onResponse fail." + paramArrayOfByte);
       }
     }
     return null;
@@ -54,7 +53,7 @@ public class QzoneAioStoryFeedRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.QzoneAioStoryFeedRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.structmsg;
 
-import aqxe;
-import aqyg;
-import bdnp;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.config.business.AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean;
 
-public class AIOVideoPlayController$1
+class AIOVideoPlayController$1
   implements Runnable
 {
-  public AIOVideoPlayController$1(bdnp parambdnp) {}
+  AIOVideoPlayController$1(AIOVideoPlayController paramAIOVideoPlayController) {}
   
   public void run()
   {
-    bdnp.a(this.this$0, (aqyg)aqxe.a().a(537));
+    AIOVideoPlayController.a(this.this$0, (AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean)QConfigManager.a().a(537));
   }
 }
 

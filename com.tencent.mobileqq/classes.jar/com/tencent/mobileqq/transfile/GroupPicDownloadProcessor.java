@@ -1,13 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import bdlg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.DownloadEncryptConf;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.RichMediaBugReport;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.GroupPicDownReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
@@ -31,9 +34,9 @@ public class GroupPicDownloadProcessor
   
   public GroupPicDownloadProcessor() {}
   
-  public GroupPicDownloadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public GroupPicDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     this.file.fileType = this.mUiRequest.mFileType;
     this.file.uniseq = this.mUiRequest.mUniseq;
     this.file.mSubMsgId = this.mUiRequest.mSubMsgId;
@@ -53,7 +56,7 @@ public class GroupPicDownloadProcessor
     int i = 0;
     logRichMediaEvent("uiParam", this.mUiRequest.toString());
     String str1 = this.mUiRequest.mServerPath;
-    if ((str1 == null) || (str1.equals("")) || (str1.equals("null")) || (FileUtils.isLocalPath(str1)) || (str1.startsWith("http://")))
+    if ((str1 == null) || (str1.equals("")) || (str1.equals("null")) || (FileUtils.c(str1)) || (str1.startsWith("http://")))
     {
       if ((str1 == null) || (!str1.startsWith("http://"))) {
         break label184;
@@ -121,7 +124,7 @@ public class GroupPicDownloadProcessor
     Object localObject2;
     if (!paramBoolean)
     {
-      localObject1 = "Q.richmedia." + RichMediaUtil.getUinDesc(this.mUiRequest.mUinType) + "." + RichMediaUtil.getFileType(this.mUiRequest.mFileType);
+      localObject1 = "Q.richmedia." + TransFileUtil.getUinDesc(this.mUiRequest.mUinType) + "." + RichMediaUtil.getFileType(this.mUiRequest.mFileType);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("id:" + this.mUiRequest.mUniseq + "  ");
       ((StringBuilder)localObject2).append("errCode:" + this.errCode + "  ");
@@ -205,7 +208,7 @@ public class GroupPicDownloadProcessor
       {
         localObject1 = localObject2;
         if (this.app != null) {
-          localObject1 = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+          localObject1 = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
         }
       }
       if ((localObject1 != null) && ((localObject1 instanceof MessageForPic))) {
@@ -373,7 +376,7 @@ public class GroupPicDownloadProcessor
     {
       localObject = "https://";
       if (!this.isDomainTest) {
-        break label704;
+        break label702;
       }
       this.mIpList.clear();
       localHttpNetReq.mIsHostIP = false;
@@ -403,7 +406,7 @@ public class GroupPicDownloadProcessor
       localHttpNetReq.mWhiteListContentType = new String[] { "image" };
       i = getDownloadStatus(this.mUiRequest);
       if (i != 4) {
-        break label902;
+        break label900;
       }
       localHttpNetReq.mStartDownOffset = this.mUiRequest.mRequestOffset;
       localHttpNetReq.mEndDownOffset = 0L;
@@ -414,7 +417,7 @@ public class GroupPicDownloadProcessor
     for (;;)
     {
       localHttpNetReq.mReqProperties.put("Accept-Encoding", "identity");
-      localHttpNetReq.mBreakDownFix = mPicBreakDownFixForOldHttpEngine;
+      localHttpNetReq.mSupportBreakResume = true;
       localHttpNetReq.mReqProperties.put("Referer", "http://im.qq.com/mobileqq");
       encryptReqInit(localHttpNetReq, (String)localObject);
       localHttpNetReq.mCanPrintUrl = true;
@@ -438,7 +441,7 @@ public class GroupPicDownloadProcessor
       return;
       localObject = "http://";
       break label62;
-      label704:
+      label702:
       if ((this.mIpList != null) && (this.mIpList.size() > 0))
       {
         localHttpNetReq.mIsHostIP = true;
@@ -457,7 +460,7 @@ public class GroupPicDownloadProcessor
       localHttpNetReq.mIsHostIP = false;
       localObject = (String)localObject + this.mDownDomain;
       break label111;
-      label902:
+      label900:
       if ((i == 3) || (i == 2))
       {
         localHttpNetReq.mStartDownOffset = this.mUiRequest.mRequestOffset;
@@ -492,7 +495,7 @@ public class GroupPicDownloadProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "grp_pic_dw";
     localRichProtoReq.reqs.add(localGroupPicDownReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
     if (!isAppValid())
     {
       setError(9366, "illegal app", null, this.mStepUrl);
@@ -519,7 +522,7 @@ public class GroupPicDownloadProcessor
     paramString = this.mUiRequest.mServerPath;
     paramString = "setError,uuid:" + paramString + " md5:" + this.mUiRequest.mMd5;
     QLog.d("BaseTransProcessor", 1, paramString);
-    bdlg.a("Download_Pic_Error_Param_Check", paramString);
+    RichMediaBugReport.a("Download_Pic_Error_Param_Check", paramString);
   }
   
   protected void setMtype()

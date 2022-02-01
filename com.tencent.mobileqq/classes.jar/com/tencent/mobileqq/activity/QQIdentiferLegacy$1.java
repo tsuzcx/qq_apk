@@ -19,13 +19,13 @@ class QQIdentiferLegacy$1
       QLog.d("QQIdentiferLegacy", 1, "mResLoadingRunnable null == activity || activity.isFinishing()");
       return;
     }
-    ForwardUtils.report(null, "0X800B307", new String[0]);
-    QQToast.a(this.this$0.getActivity(), 2131693138, 0).a();
+    ForwardUtils.a(null, "0X800B307", new String[0]);
+    QQToast.a(this.this$0.getActivity(), 2131693284, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.1
  * JD-Core Version:    0.7.0.1
  */

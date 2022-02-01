@@ -1,21 +1,29 @@
 package com.tencent.avgame.gameroom;
 
-import nfc;
-import nii;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class GameRoomPresenterImp$4
-  implements Runnable
+class GameRoomPresenterImp$4
+  implements DialogInterface.OnClickListener
 {
-  public GameRoomPresenterImp$4(nii paramnii) {}
+  GameRoomPresenterImp$4(GameRoomPresenterImp paramGameRoomPresenterImp) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    nfc.a().c();
+    paramDialogInterface = this.a.a();
+    if ((paramDialogInterface == null) || (paramDialogInterface.isFinishing())) {
+      return;
+    }
+    this.a.a(false, 1);
+    GameRoomViewLayoutParamsDef.w = 0;
+    GameRoomViewLayoutParamsDef.x = 0;
+    this.a.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomPresenterImp.4
  * JD-Core Version:    0.7.0.1
  */

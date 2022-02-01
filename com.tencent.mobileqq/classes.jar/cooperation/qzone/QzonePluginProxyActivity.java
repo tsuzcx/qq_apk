@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import Override;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -17,19 +16,19 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.CheckBox;
-import anvx;
-import avlg;
-import bdlr;
-import bhdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.mobileqq.statistics.StatisticHitRateCollector;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.QQToast;
@@ -90,7 +89,7 @@ public class QzonePluginProxyActivity
       i = LocalMultiProcConfig.getInt("qzone_app_start_fail_count", 0) + 1;
       if (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_startup_failed_toast_show_limit", 1) < i)
       {
-        str = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_startup_fail_msg", anvx.a(2131711651));
+        str = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_startup_fail_msg", HardCodeUtil.a(2131712166));
         QQToast.a(BaseApplicationImpl.sApplication, 4, str, 1).a();
         LocalMultiProcConfig.putInt("qzone_app_start_fail_count", 0);
         QLog.w("QzonePluginProxyActivity", 1, "qzone进程可能启动失败弹出toast提示用户卸载重新安装");
@@ -259,30 +258,30 @@ public class QzonePluginProxyActivity
     launchPluingActivityForResult(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean, null, false);
   }
   
-  public static void launchPluingActivityForResult(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, avlg paramavlg, boolean paramBoolean2)
+  public static void launchPluingActivityForResult(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, boolean paramBoolean2)
   {
-    openActivityForResult(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean1, paramavlg, paramBoolean2);
+    openActivityForResult(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean1, paramPreloadProcHitPluginSession, paramBoolean2);
   }
   
-  public static void launchPluingActivityForResult(Context paramContext, String paramString, Intent paramIntent, int paramInt, avlg paramavlg)
+  public static void launchPluingActivityForResult(Context paramContext, String paramString, Intent paramIntent, int paramInt, PreloadProcHitPluginSession paramPreloadProcHitPluginSession)
   {
-    launchPluingActivityForResult(paramContext, paramString, paramIntent, paramInt, null, true, paramavlg, false);
+    launchPluingActivityForResult(paramContext, paramString, paramIntent, paramInt, null, true, paramPreloadProcHitPluginSession, false);
   }
   
-  private static void openActivityForResult(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean, avlg paramavlg)
+  private static void openActivityForResult(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean, PreloadProcHitPluginSession paramPreloadProcHitPluginSession)
   {
-    openActivityForResult(paramActivity, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean, paramavlg, false);
+    openActivityForResult(paramActivity, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean, paramPreloadProcHitPluginSession, false);
   }
   
-  private static void openActivityForResult(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, avlg paramavlg, boolean paramBoolean2)
+  private static void openActivityForResult(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, boolean paramBoolean2)
   {
     if ((QZoneHelper.comboqzProtectEnable) && ((paramContext instanceof SplashActivity)))
     {
       paramInt = LocalMultiProcConfig.getInt("qzapp_vercode", 84);
       if (!LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false))
       {
-        paramContext = bhdj.a(paramContext, 230, 2131562561, anvx.a(2131711638), "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", anvx.a(2131711650), anvx.a(2131711634), new QzonePluginProxyActivity.1(paramContext, paramInt, paramString, paramIntent), new QzonePluginProxyActivity.2());
-        ((CheckBox)paramContext.findViewById(2131365680)).setOnCheckedChangeListener(new QzonePluginProxyActivity.3());
+        paramContext = DialogUtil.a(paramContext, 230, 2131562704, HardCodeUtil.a(2131712153), "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", HardCodeUtil.a(2131712165), HardCodeUtil.a(2131712149), new QzonePluginProxyActivity.1(paramContext, paramInt, paramString, paramIntent), new QzonePluginProxyActivity.2());
+        ((CheckBox)paramContext.findViewById(2131365843)).setOnCheckedChangeListener(new QzonePluginProxyActivity.3());
         paramContext.show();
       }
       while (QZoneHelper.forwardQZoneApp(paramContext, paramInt, Long.valueOf(paramString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
@@ -292,12 +291,12 @@ public class QzonePluginProxyActivity
       return;
     }
     if ((paramContext instanceof FriendProfileCardActivity)) {
-      bdlr.a().c(paramString);
+      StatisticHitRateCollector.a().c(paramString);
     }
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "launchPluingActivityForResult.isPluginInstalled start， showProgressDialog：" + paramBoolean1);
     }
-    QZoneHelper.openActivityAsync(paramBoolean1, new QzonePluginProxyActivity.4(paramIntent, paramString, paramavlg, paramInt, paramBoolean2, paramContext, paramOnDismissListener));
+    QZoneHelper.openActivityAsync(paramBoolean1, new QzonePluginProxyActivity.4(paramIntent, paramString, paramPreloadProcHitPluginSession, paramInt, paramBoolean2, paramContext, paramOnDismissListener));
   }
   
   public static void setActivityNameToIntent(Intent paramIntent, String paramString)
@@ -357,7 +356,7 @@ public class QzonePluginProxyActivity
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    ViewUtils.resetScreenSize();
+    ViewUtils.a();
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
@@ -376,10 +375,10 @@ public class QzonePluginProxyActivity
       for (;;)
       {
         paramBundle = paramBundle.getString("pluginsdk_launchActivity");
-        localObject = new StringBuffer(anvx.a(2131711652));
+        localObject = new StringBuffer(HardCodeUtil.a(2131712167));
         ((StringBuffer)localObject).append(paramBundle).append(" ").append(this.mCreateErrorInfo);
         QLog.e("QZLog", 1, ((StringBuffer)localObject).toString());
-        QZoneExceptionReport.doReport(new QZoneStartupFailException(this.mCreateErrorInfo), anvx.a(2131711639) + getPluginActivity());
+        QZoneExceptionReport.doReport(new QZoneStartupFailException(this.mCreateErrorInfo), HardCodeUtil.a(2131712154) + getPluginActivity());
         dismissPluginLoading();
         return;
         paramBundle = getIntent().getExtras();
@@ -480,7 +479,7 @@ public class QzonePluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzonePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

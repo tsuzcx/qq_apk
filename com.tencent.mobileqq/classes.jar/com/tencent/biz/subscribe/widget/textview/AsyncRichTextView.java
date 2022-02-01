@@ -1,14 +1,5 @@
 package com.tencent.biz.subscribe.widget.textview;
 
-import aaco;
-import aacq;
-import aacs;
-import aact;
-import aacu;
-import aacv;
-import aadb;
-import aadc;
-import aadd;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -35,6 +26,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.widget.TextView.BufferType;
+import com.tencent.biz.subscribe.comment.Patterns;
+import com.tencent.biz.subscribe.widget.span.CustomSchemaSpan.OnCustomSchemaClickListener;
+import com.tencent.biz.subscribe.widget.span.CustomUrlSpan.OnCustomUrlClickListener;
+import com.tencent.biz.subscribe.widget.span.UserNameSapn.OnUserNameClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.R.styleable;
@@ -43,7 +38,6 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.theme.ISkinIgnoreTypeface;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import zwg;
 
 public class AsyncRichTextView
   extends SafeTextView
@@ -51,25 +45,25 @@ public class AsyncRichTextView
 {
   private double jdField_a_of_type_Double = 1.0D;
   protected int a;
-  protected aaco a;
-  protected aacq a;
-  protected aacs a;
-  private aacv jdField_a_of_type_Aacv;
   private Context jdField_a_of_type_AndroidContentContext;
   protected ColorStateList a;
   private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   protected View.OnClickListener a;
+  protected CustomSchemaSpan.OnCustomSchemaClickListener a;
+  protected CustomUrlSpan.OnCustomUrlClickListener a;
+  protected UserNameSapn.OnUserNameClickListener a;
+  private AsyncRichTextView.onTriggerEllipseListener jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView$onTriggerEllipseListener;
   protected URLDrawable.URLDrawableListener a;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean = true;
   protected int b;
-  public aacs b;
   private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
-  private boolean jdField_b_of_type_Boolean;
+  protected UserNameSapn.OnUserNameClickListener b;
+  private boolean jdField_b_of_type_Boolean = false;
   protected int c;
-  protected aacs c;
+  protected UserNameSapn.OnUserNameClickListener c;
   private boolean c;
   private int jdField_d_of_type_Int;
   private boolean jdField_d_of_type_Boolean;
@@ -80,33 +74,36 @@ public class AsyncRichTextView
   public AsyncRichTextView(Context paramContext)
   {
     super(paramContext, null);
+    this.jdField_c_of_type_Boolean = false;
     this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167210);
+    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167217);
     this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Aacs = new aact(this);
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new aacu(this);
+    this.jdField_c_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = new AsyncRichTextView.1(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new AsyncRichTextView.AsyncRichImageLoadListener(this);
     a(paramContext, null);
   }
   
   public AsyncRichTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_c_of_type_Boolean = false;
     this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167210);
+    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167217);
     this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Aacs = new aact(this);
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new aacu(this);
+    this.jdField_c_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = new AsyncRichTextView.1(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new AsyncRichTextView.AsyncRichImageLoadListener(this);
     a(paramContext, paramAttributeSet);
   }
   
   public AsyncRichTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_c_of_type_Boolean = false;
     this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167210);
+    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167217);
     this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Aacs = new aact(this);
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new aacu(this);
+    this.jdField_c_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = new AsyncRichTextView.1(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new AsyncRichTextView.AsyncRichImageLoadListener(this);
     a(paramContext, paramAttributeSet);
   }
   
@@ -129,20 +126,20 @@ public class AsyncRichTextView
     }
   }
   
-  private void a(CharSequence paramCharSequence, ColorStateList paramColorStateList, int paramInt1, int paramInt2, aacs paramaacs, Drawable.Callback paramCallback)
+  private void a(CharSequence paramCharSequence, ColorStateList paramColorStateList, int paramInt1, int paramInt2, UserNameSapn.OnUserNameClickListener paramOnUserNameClickListener, Drawable.Callback paramCallback)
   {
     this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
     this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList;
     this.jdField_d_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Aacs = paramaacs;
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = paramOnUserNameClickListener;
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = paramCallback;
-    paramCallback = new aadd();
+    paramCallback = new RichTextParser.TextImageSpanConfig();
     paramCallback.jdField_a_of_type_Float = ((int)(getTextSize() * this.jdField_a_of_type_Double));
     paramCallback.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
     paramCallback.jdField_a_of_type_JavaLangCharSequence = getText();
-    paramCharSequence = aadb.a(paramCallback, getContext(), paramCharSequence, paramColorStateList, paramInt1, this.jdField_e_of_type_Int, paramInt2, paramaacs, this.jdField_a_of_type_Aacq, this.jdField_a_of_type_Aaco, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
+    paramCharSequence = RichTextParser.a(paramCallback, getContext(), paramCharSequence, paramColorStateList, paramInt1, this.jdField_e_of_type_Int, paramInt2, paramOnUserNameClickListener, this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomUrlSpan$OnCustomUrlClickListener, this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomSchemaSpan$OnCustomSchemaClickListener, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
     if ((paramCharSequence != null) && (paramCharSequence.jdField_a_of_type_Boolean)) {
-      if (paramaacs != null) {
+      if (paramOnUserNameClickListener != null) {
         setMovementMethod(getDefaultMovementMethod());
       }
     }
@@ -150,7 +147,7 @@ public class AsyncRichTextView
     {
       super.setText(new QQText(a(paramCharSequence), 3, 16), null);
       return;
-      if ((paramCharSequence != null) && (paramCharSequence.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Aaco != null)) {
+      if ((paramCharSequence != null) && (paramCharSequence.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomSchemaSpan$OnCustomSchemaClickListener != null)) {
         setMovementMethod(getDefaultMovementMethod());
       }
     }
@@ -198,7 +195,7 @@ public class AsyncRichTextView
         if (!((CharSequence)localObject1).toString().endsWith("[/em]")) {
           break label351;
         }
-        Matcher localMatcher = zwg.g.matcher((CharSequence)localObject1);
+        Matcher localMatcher = Patterns.g.matcher((CharSequence)localObject1);
         int i2;
         do
         {
@@ -251,8 +248,8 @@ public class AsyncRichTextView
       }
       ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1);
       super.setText(new QQText((CharSequence)localObject2, 3, 16), null);
-      if (this.jdField_a_of_type_Aacv != null) {
-        this.jdField_a_of_type_Aacv.a();
+      if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView$onTriggerEllipseListener != null) {
+        this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView$onTriggerEllipseListener.a();
       }
       this.jdField_e_of_type_Boolean = true;
       return;
@@ -278,13 +275,13 @@ public class AsyncRichTextView
     {
       paramMessage = (CharSequence)paramMessage.obj;
       if ((paramMessage != null) && (paramMessage.equals(this.jdField_a_of_type_JavaLangCharSequence))) {
-        a(paramMessage, this.jdField_b_of_type_AndroidContentResColorStateList, this.jdField_d_of_type_Int, this.f, this.jdField_a_of_type_Aacs, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+        a(paramMessage, this.jdField_b_of_type_AndroidContentResColorStateList, this.jdField_d_of_type_Int, this.f, this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
       }
     }
     return false;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     CharSequence localCharSequence = getText();
@@ -294,7 +291,7 @@ public class AsyncRichTextView
   }
   
   @RequiresApi(api=16)
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((this.jdField_c_of_type_Boolean) && (Build.VERSION.SDK_INT > 16))
@@ -328,9 +325,9 @@ public class AsyncRichTextView
     this.jdField_b_of_type_Int = Color.parseColor(paramString);
   }
   
-  public void setDefaultUserNameClickListener(aacs paramaacs)
+  public void setDefaultUserNameClickListener(UserNameSapn.OnUserNameClickListener paramOnUserNameClickListener)
   {
-    this.jdField_c_of_type_Aacs = paramaacs;
+    this.jdField_c_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = paramOnUserNameClickListener;
   }
   
   public void setNeedParseColor(boolean paramBoolean)
@@ -349,24 +346,24 @@ public class AsyncRichTextView
     super.setOnClickListener(paramOnClickListener);
   }
   
-  public void setOnCustomSchemaClickListener(aaco paramaaco)
+  public void setOnCustomSchemaClickListener(CustomSchemaSpan.OnCustomSchemaClickListener paramOnCustomSchemaClickListener)
   {
-    this.jdField_a_of_type_Aaco = paramaaco;
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomSchemaSpan$OnCustomSchemaClickListener = paramOnCustomSchemaClickListener;
   }
   
-  public void setOnCustomUrlClickListener(aacq paramaacq)
+  public void setOnCustomUrlClickListener(CustomUrlSpan.OnCustomUrlClickListener paramOnCustomUrlClickListener)
   {
-    this.jdField_a_of_type_Aacq = paramaacq;
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomUrlSpan$OnCustomUrlClickListener = paramOnCustomUrlClickListener;
   }
   
-  public void setOnTriggerEllipseListener(aacv paramaacv)
+  public void setOnTriggerEllipseListener(AsyncRichTextView.onTriggerEllipseListener paramonTriggerEllipseListener)
   {
-    this.jdField_a_of_type_Aacv = paramaacv;
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView$onTriggerEllipseListener = paramonTriggerEllipseListener;
   }
   
-  public void setOnUserNewClickListener(aacs paramaacs)
+  public void setOnUserNewClickListener(UserNameSapn.OnUserNameClickListener paramOnUserNameClickListener)
   {
-    this.jdField_b_of_type_Aacs = paramaacs;
+    this.jdField_b_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = paramOnUserNameClickListener;
   }
   
   public void setOrgText(String paramString)
@@ -382,7 +379,7 @@ public class AsyncRichTextView
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
     this.jdField_c_of_type_Boolean = true;
-    a(paramCharSequence, this.jdField_a_of_type_AndroidContentResColorStateList, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_c_of_type_Aacs, null);
+    a(paramCharSequence, this.jdField_a_of_type_AndroidContentResColorStateList, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_c_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener, null);
   }
   
   public void setUrlColorRes(int paramInt)
@@ -392,7 +389,7 @@ public class AsyncRichTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.AsyncRichTextView
  * JD-Core Version:    0.7.0.1
  */

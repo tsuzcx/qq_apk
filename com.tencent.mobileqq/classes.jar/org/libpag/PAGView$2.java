@@ -15,9 +15,10 @@ class PAGView$2
     super.onAnimationCancel(???);
     synchronized (this.this$0)
     {
-      Iterator localIterator = PAGView.access$400(this.this$0).iterator();
-      if (localIterator.hasNext()) {
-        ((PAGView.PAGViewListener)localIterator.next()).onAnimationCancel(this.this$0);
+      ArrayList localArrayList = new ArrayList(PAGView.access$500(this.this$0));
+      ??? = localArrayList.iterator();
+      if (???.hasNext()) {
+        ((PAGView.PAGViewListener)???.next()).onAnimationCancel(this.this$0);
       }
     }
   }
@@ -27,9 +28,10 @@ class PAGView$2
     super.onAnimationEnd(???);
     synchronized (this.this$0)
     {
-      Iterator localIterator = PAGView.access$400(this.this$0).iterator();
-      if (localIterator.hasNext()) {
-        ((PAGView.PAGViewListener)localIterator.next()).onAnimationEnd(this.this$0);
+      ArrayList localArrayList = new ArrayList(PAGView.access$500(this.this$0));
+      ??? = localArrayList.iterator();
+      if (???.hasNext()) {
+        ((PAGView.PAGViewListener)???.next()).onAnimationEnd(this.this$0);
       }
     }
   }
@@ -39,9 +41,10 @@ class PAGView$2
     super.onAnimationRepeat(???);
     synchronized (this.this$0)
     {
-      Iterator localIterator = PAGView.access$400(this.this$0).iterator();
-      if (localIterator.hasNext()) {
-        ((PAGView.PAGViewListener)localIterator.next()).onAnimationRepeat(this.this$0);
+      ArrayList localArrayList = new ArrayList(PAGView.access$500(this.this$0));
+      ??? = localArrayList.iterator();
+      if (???.hasNext()) {
+        ((PAGView.PAGViewListener)???.next()).onAnimationRepeat(this.this$0);
       }
     }
   }
@@ -51,16 +54,17 @@ class PAGView$2
     super.onAnimationStart(???);
     synchronized (this.this$0)
     {
-      Iterator localIterator = PAGView.access$400(this.this$0).iterator();
-      if (localIterator.hasNext()) {
-        ((PAGView.PAGViewListener)localIterator.next()).onAnimationStart(this.this$0);
+      ArrayList localArrayList = new ArrayList(PAGView.access$500(this.this$0));
+      ??? = localArrayList.iterator();
+      if (???.hasNext()) {
+        ((PAGView.PAGViewListener)???.next()).onAnimationStart(this.this$0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     org.libpag.PAGView.2
  * JD-Core Version:    0.7.0.1
  */

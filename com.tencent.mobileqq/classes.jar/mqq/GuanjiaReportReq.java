@@ -9,9 +9,9 @@ public final class GuanjiaReportReq
 {
   public boolean bKingCard = true;
   public boolean bReportFlag = true;
-  public int iCardStatus;
-  public int iCardType;
-  public int iImplat;
+  public int iCardStatus = 0;
+  public int iCardType = 0;
+  public int iImplat = 0;
   public String sIdfa = "";
   public String sIdfv = "";
   public String sMac = "";
@@ -19,7 +19,7 @@ public final class GuanjiaReportReq
   public String sOsVersion = "";
   public String sPhoneNum = "";
   public String sPkgName = "";
-  public long uin;
+  public long uin = 0L;
   
   public GuanjiaReportReq() {}
   

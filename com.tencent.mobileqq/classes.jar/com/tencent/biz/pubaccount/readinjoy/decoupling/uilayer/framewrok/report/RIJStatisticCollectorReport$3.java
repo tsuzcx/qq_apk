@@ -4,10 +4,10 @@ import android.content.Context;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
-public final class RIJStatisticCollectorReport$3
+final class RIJStatisticCollectorReport$3
   implements Runnable
 {
-  public RIJStatisticCollectorReport$3(Context paramContext, String paramString, HashMap paramHashMap) {}
+  RIJStatisticCollectorReport$3(Context paramContext, String paramString, HashMap paramHashMap) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public final class RIJStatisticCollectorReport$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJStatisticCollectorReport.3
  * JD-Core Version:    0.7.0.1
  */

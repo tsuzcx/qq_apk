@@ -6,7 +6,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.SystemClock;
 import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.CaughtExceptionReport;
+import com.tencent.mobileqq.imcore.proxy.basic.CaughtExceptionReportProxy;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -93,7 +93,7 @@ public class SecurityUtile
     catch (UnsatisfiedLinkError paramString)
     {
       if (paramBoolean) {
-        IMCoreProxyRoute.CaughtExceptionReport.e(paramString, "encode str error");
+        CaughtExceptionReportProxy.e(paramString, "encode str error");
       }
       QLog.e("SecurityUtile", 1, "encode str error", paramString);
       str = null;
@@ -131,7 +131,7 @@ public class SecurityUtile
     }
     catch (UnsatisfiedLinkError paramArrayOfByte)
     {
-      IMCoreProxyRoute.CaughtExceptionReport.e(paramArrayOfByte, "encode byte error");
+      CaughtExceptionReportProxy.e(paramArrayOfByte, "encode byte error");
       QLog.e("SecurityUtile", 1, "encode byte error", paramArrayOfByte);
       arrayOfByte = null;
     }
@@ -201,9 +201,9 @@ public class SecurityUtile
     localObject1 = null;
     for (;;)
     {
-      label173:
-      label199:
-      label228:
+      WifiInfo localWifiInfo;
+      label186:
+      label212:
       try
       {
         boolean bool = isKeyFileExists(paramContext);
@@ -221,7 +221,7 @@ public class SecurityUtile
         }
         catch (Exception localException1)
         {
-          break label228;
+          break label241;
         }
         try
         {
@@ -252,9 +252,9 @@ public class SecurityUtile
         {
           localObject1 = localObject2;
           localObject2 = localException3;
-          break label228;
-          break label173;
-          break label199;
+          break label241;
+          break label186;
+          break label212;
         }
       }
       try
@@ -264,11 +264,16 @@ public class SecurityUtile
         {
           localObject1 = localObject2;
           if (((String)localObject2).length() >= codeKey.length) {
-            break label332;
+            break label345;
           }
         }
         localObject1 = localObject2;
-        localObject2 = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getMacAddress();
+        localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+        if (localWifiInfo == null) {
+          break label345;
+        }
+        localObject1 = localObject2;
+        localObject2 = localWifiInfo.getMacAddress();
       }
       catch (Exception localException2)
       {
@@ -298,6 +303,7 @@ public class SecurityUtile
       codeKey = ((String)localObject2).toCharArray();
       codeKeyLen = codeKey.length;
       return;
+      label241:
       QLog.e("SecurityUtile", 1, "read key Exception " + ((Exception)localObject2).getMessage());
       continue;
       QLog.e("SecurityUtile", 1, "isKeyFileExists = false");

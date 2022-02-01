@@ -9,9 +9,9 @@ public final class WalletSkinRsp
 {
   public static final int STATUS_CLOSE = 0;
   public static final int STATUS_OPEN = 1;
-  public int skinID;
-  public int status;
-  public long uin;
+  public int skinID = 0;
+  public int status = 0;
+  public long uin = 0L;
   public String zipMd5 = "";
   public String zipUrl = "";
   

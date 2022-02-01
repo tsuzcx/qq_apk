@@ -18,7 +18,6 @@ import com.tencent.ttpic.cache.LoadStickerItemManager;
 import com.tencent.ttpic.cache.PreLoader;
 import com.tencent.ttpic.filter.juyoujinggame.UKYOGameSetting;
 import com.tencent.ttpic.model.FaceFeatureItem;
-import com.tencent.ttpic.model.ImagesSetting;
 import com.tencent.ttpic.model.MultiViewerItem;
 import com.tencent.ttpic.openapi.extrastickerutil.ExtraStickerParserAgent;
 import com.tencent.ttpic.openapi.filter.FabbyMvPart;
@@ -26,7 +25,6 @@ import com.tencent.ttpic.openapi.filter.FabbyParts;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
 import com.tencent.ttpic.util.VideoFilterFactory.STICKER_TYPE;
@@ -69,7 +67,7 @@ public final class VideoMemoryManager
       while (paramList.hasNext())
       {
         StickerItem localStickerItem = (StickerItem)paramList.next();
-        if ((!VideoMaterialUtil.isEmptyItem(localStickerItem)) && (!this.mStickerManagers.containsKey(localStickerItem.id))) {
+        if ((!VideoMaterial.isEmptyItem(localStickerItem)) && (!this.mStickerManagers.containsKey(localStickerItem.id))) {
           if (ExtraStickerParserAgent.getInstance().isInExtraParser(localStickerItem.stickerType)) {
             this.mStickerManagers.put(localStickerItem.id, new LoadExtraStickerParserManager(paramVideoMaterial.getDataPath(), localStickerItem));
           } else if (localStickerItem.stickerType == VideoFilterFactory.STICKER_TYPE.PAG_STICKER.type) {
@@ -143,7 +141,7 @@ public final class VideoMemoryManager
         }
       }
       localObject1 = ((List)localObject1).iterator();
-      for (l2 = l1; ((Iterator)localObject1).hasNext(); l2 = VideoMaterialUtil.getAllImageSize(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject2).subFolder) / 1024 + l2) {
+      for (l2 = l1; ((Iterator)localObject1).hasNext(); l2 = VideoMaterial.getAllImageSize(paramVideoMaterial.getDataPath() + File.separator + ((StickerItem)localObject2).subFolder) / 1024 + l2) {
         localObject2 = (StickerItem)((Iterator)localObject1).next();
       }
       l1 = l2;
@@ -158,7 +156,7 @@ public final class VideoMemoryManager
           }
           localObject2 = (FaceItem)((Iterator)localObject1).next();
           if (!TextUtils.isEmpty(((FaceItem)localObject2).id)) {
-            l2 += VideoMaterialUtil.getAllImageSize(paramVideoMaterial.getDataPath() + File.separator + ((FaceItem)localObject2).id) / 1024;
+            l2 += VideoMaterial.getAllImageSize(paramVideoMaterial.getDataPath() + File.separator + ((FaceItem)localObject2).id) / 1024;
           }
         }
       }
@@ -184,7 +182,7 @@ public final class VideoMemoryManager
           }
           localObject3 = (FaceItem)((Iterator)localObject2).next();
           if (!TextUtils.isEmpty(((FaceItem)localObject3).id)) {
-            l2 += VideoMaterialUtil.getAllImageSize(paramVideoMaterial.getDataPath() + File.separator + ((FaceItem)localObject3).id) / 1024;
+            l2 += VideoMaterial.getAllImageSize(paramVideoMaterial.getDataPath() + File.separator + ((FaceItem)localObject3).id) / 1024;
           }
         }
       }
@@ -260,9 +258,6 @@ public final class VideoMemoryManager
     if (paramVideoMaterial.getUkyoGameSetting() != null) {
       localArrayList.addAll(paramVideoMaterial.getUkyoGameSetting().getItems());
     }
-    if (paramVideoMaterial.getImageSetting() != null) {
-      localArrayList.addAll(paramVideoMaterial.getImageSetting().getStickerItems());
-    }
     return localArrayList;
   }
   
@@ -286,7 +281,7 @@ public final class VideoMemoryManager
         while (localIterator1.hasNext())
         {
           localObject2 = (FaceItem)localIterator1.next();
-          if (!VideoMaterialUtil.isEmptyItem((FaceItem)localObject2))
+          if (!VideoMaterial.isEmptyItem((FaceItem)localObject2))
           {
             if (TextUtils.isEmpty(((FaceItem)localObject2).id)) {}
             for (localObject1 = ((FaceItem)localObject2).faceExchangeImage;; localObject1 = ((FaceItem)localObject2).id)
@@ -311,7 +306,7 @@ public final class VideoMemoryManager
             while (localIterator2.hasNext())
             {
               localFaceItem = (FaceItem)localIterator2.next();
-              if (!VideoMaterialUtil.isEmptyItem(localFaceItem)) {
+              if (!VideoMaterial.isEmptyItem(localFaceItem)) {
                 if (!TextUtils.isEmpty(localFaceItem.id)) {
                   break label269;
                 }
@@ -333,7 +328,7 @@ public final class VideoMemoryManager
         while (paramList.hasNext())
         {
           localObject1 = (StickerItem)paramList.next();
-          if ((!VideoMaterialUtil.isEmptyItem((StickerItem)localObject1)) && (!this.mStickerManagers.containsKey(((StickerItem)localObject1).id)) && (((StickerItem)localObject1).type != VideoFilterFactory.POSITION_TYPE.SKYBOX.type)) {
+          if ((!VideoMaterial.isEmptyItem((StickerItem)localObject1)) && (!this.mStickerManagers.containsKey(((StickerItem)localObject1).id)) && (((StickerItem)localObject1).type != VideoFilterFactory.POSITION_TYPE.SKYBOX.type)) {
             if (ExtraStickerParserAgent.getInstance().isInExtraParser(((StickerItem)localObject1).stickerType)) {
               this.mStickerManagers.put(((StickerItem)localObject1).id, new LoadExtraStickerParserManager(paramVideoMaterial.getDataPath(), (StickerItem)localObject1));
             } else if (((StickerItem)localObject1).stickerType == VideoFilterFactory.STICKER_TYPE.ETC.type) {
@@ -464,7 +459,7 @@ public final class VideoMemoryManager
     {
       String str = (String)paramSet.next();
       if ((!this.mBeautyFaceCache.containsKey(str)) || (!BitmapUtils.isLegal((Bitmap)this.mBeautyFaceCache.get(str)))) {
-        AsyncTask.THREAD_POOL_EXECUTOR.execute(new VideoMemoryManager.3(this, paramString1, paramString2, str, paramBoolean));
+        AsyncTask.THREAD_POOL_EXECUTOR.execute(new VideoMemoryManager.2(this, paramString1, paramString2, str, paramBoolean));
       }
     }
   }
@@ -528,12 +523,6 @@ public final class VideoMemoryManager
     return null;
   }
   
-  public void loadWM260Material(VideoMaterial paramVideoMaterial)
-  {
-    clearWM260();
-    this.mHandler.post(new VideoMemoryManager.2(this, paramVideoMaterial));
-  }
-  
   public void recycleBitmap(String paramString, Bitmap paramBitmap)
   {
     paramString = (LoadItemManager)this.mStickerManagers.get(paramString);
@@ -578,7 +567,7 @@ public final class VideoMemoryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.cache.VideoMemoryManager
  * JD-Core Version:    0.7.0.1
  */

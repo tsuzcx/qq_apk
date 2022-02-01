@@ -3,27 +3,15 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import bdla;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.mobileqq.core.SystemEmotionPanelManager;
+import com.tencent.mobileqq.emoticonview.api.IPanelDependListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,30 +22,22 @@ public class EmoticonLinearLayout
   private static Rect tmp = new Rect();
   EmoticonCallback callback;
   Context context;
-  float density;
   public int emoticonTextColor;
   EmoticonLinearLayout.EmoticonAdapter mAdapter;
   Runnable mDelete = new EmoticonLinearLayout.2(this);
   boolean mHasPerformedLongPress;
   private EmoticonLinearLayout.CheckForLongPress mPendingCheckForLongPress;
-  private EmoticonInfo mPointInfo;
   View mPointView;
-  private FrameLayout mPopupEmo;
-  private ImageView mPopupEmoImage;
-  private FrameLayout mWindowContent;
   EmoticonLinearLayout.DataObserver observer = new EmoticonLinearLayout.1(this);
   public int panelViewType = 6;
-  private AudioPlayer player;
-  private boolean showing;
   List<RelativeLayout> viewCache = new ArrayList();
   
   public EmoticonLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.context = paramContext;
-    this.emoticonTextColor = super.getResources().getColor(2131166537);
+    this.emoticonTextColor = super.getResources().getColor(2131167232);
     setOrientation(1);
-    this.density = paramContext.getResources().getDisplayMetrics().density;
     super.setClickable(true);
     super.setLongClickable(true);
   }
@@ -128,16 +108,8 @@ public class EmoticonLinearLayout
   
   public void hidePopupWindow()
   {
-    if ((this.mPopupEmo != null) && (this.showing))
-    {
-      ((WindowManager)getContext().getSystemService("window")).removeViewImmediate(this.mWindowContent);
-      if (this.player != null) {
-        this.player.c();
-      }
-      if (this.callback != null) {
-        this.callback.onHidePopup(this.mPointInfo);
-      }
-      this.showing = false;
+    if (SystemEmotionPanelManager.a().a() != null) {
+      SystemEmotionPanelManager.a().a().hidePopupWindow(getContext(), this.callback);
     }
   }
   
@@ -228,101 +200,14 @@ public class EmoticonLinearLayout
   
   void showPopupEmo(View paramView, EmoticonInfo paramEmoticonInfo)
   {
-    Drawable localDrawable = paramEmoticonInfo.getBigDrawable(this.context, this.density);
-    if (localDrawable == null) {
-      return;
-    }
-    paramView.getGlobalVisibleRect(tmp);
-    int i = paramEmoticonInfo.type;
-    if (this.mWindowContent == null)
-    {
-      this.mWindowContent = new FrameLayout(getContext());
-      this.mPopupEmo = new FrameLayout(getContext());
-      this.mPopupEmoImage = new ImageView(getContext());
-      this.mPopupEmoImage.setAdjustViewBounds(false);
-      this.mPopupEmoImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      this.mWindowContent.addView(this.mPopupEmo);
-      this.mPopupEmo.addView(this.mPopupEmoImage);
-    }
-    this.mPopupEmoImage.setImageDrawable(localDrawable);
-    float f = getContext().getResources().getDisplayMetrics().density;
-    int k = (int)(5.0F * f);
-    paramView = (FrameLayout.LayoutParams)this.mPopupEmoImage.getLayoutParams();
-    int j;
-    if ((i == 1) || (i == 2) || (i == 7) || (i == 10))
-    {
-      j = (int)(64.0F * f);
-      i = (int)(71.0F * f);
-      this.mPopupEmo.setBackgroundResource(2130838055);
-      this.mPopupEmo.setPadding(k, k, k, k);
-      paramView.width = ((int)(28.0F * f));
-      paramView.height = ((int)(28.0F * f));
-      paramView.bottomMargin = ((int)(6.0F * f));
-      paramView.gravity = 17;
-      label271:
-      paramView = (FrameLayout.LayoutParams)this.mPopupEmo.getLayoutParams();
-      paramView.gravity = 51;
-      paramView.leftMargin = (tmp.left - (j - tmp.width()) / 2);
-      paramView.topMargin = (tmp.top - i - (int)(15.0F * f));
-      paramView.width = j;
-      paramView.height = i;
-      if (!this.showing) {
-        break label685;
-      }
-      this.mPopupEmo.requestLayout();
-    }
-    for (;;)
-    {
-      paramView = this.mPointInfo;
-      this.mPointInfo = paramEmoticonInfo;
-      if ((paramView != null) && (paramView.type == 6) && ((paramView instanceof PicEmoticonInfo)) && (this.player != null)) {
-        this.player.c();
-      }
-      if ((paramEmoticonInfo.type == 6) && ((paramEmoticonInfo instanceof PicEmoticonInfo)) && ((localDrawable instanceof URLDrawable)))
-      {
-        localObject = (PicEmoticonInfo)paramEmoticonInfo;
-        if (((PicEmoticonInfo)localObject).isSound())
-        {
-          String str = EmoticonUtils.emoticonSoundPath.replace("[epId]", ((PicEmoticonInfo)localObject).emoticon.epId).replace("[eId]", ((PicEmoticonInfo)localObject).emoticon.eId);
-          if (this.player == null) {
-            this.player = new AudioPlayer(getContext(), null);
-          }
-          this.player.a(str);
-          PicEmoticonInfo.startSoundDrawablePlay((URLDrawable)localDrawable);
-        }
-        if (2 == ((PicEmoticonInfo)localObject).emoticon.jobType) {
-          bdla.b(null, "CliOper", "", "", "MbYulan", "MbChangan", 0, 0, ((PicEmoticonInfo)localObject).emoticon.epId, "", "", "");
-        }
-      }
-      if (this.callback == null) {
-        break;
-      }
-      this.callback.onShowPopup(paramView, paramEmoticonInfo, localDrawable);
-      return;
-      j = (int)(110.0F * f);
-      i = (int)(110.0F * f);
-      this.mPopupEmo.setBackgroundResource(2130838054);
-      this.mPopupEmo.setPadding(k, k, k, k);
-      paramView.bottomMargin = 0;
-      paramView.width = ((int)(100.0F * f));
-      paramView.height = ((int)(100.0F * f));
-      bdla.b(null, "CliOper", "", "", "ep_mall", "ep_preview", 0, 0, "", "", "", "");
-      break label271;
-      label685:
-      paramView = (WindowManager)getContext().getSystemService("window");
-      i = 24;
-      if (ImmersiveUtils.isSupporImmersive() == 1) {
-        i = 67108888;
-      }
-      Object localObject = new WindowManager.LayoutParams(-1, -1, 2, i, -3);
-      paramView.addView(this.mWindowContent, (ViewGroup.LayoutParams)localObject);
-      this.showing = true;
+    if (SystemEmotionPanelManager.a().a() != null) {
+      SystemEmotionPanelManager.a().a().showPopupEmo(paramView, paramEmoticonInfo, tmp, getContext(), this.callback);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonLinearLayout
  * JD-Core Version:    0.7.0.1
  */

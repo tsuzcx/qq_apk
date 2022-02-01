@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import ajjp;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -8,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import atdd;
+import com.tencent.mobileqq.activity.contacts.base.HeaderScrollHelper.ScrollableContainer;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
@@ -22,7 +21,7 @@ import mqq.os.MqqHandler;
 
 public class QfileBaseTabView
   extends RelativeLayout
-  implements ajjp, atdd
+  implements HeaderScrollHelper.ScrollableContainer, IBaseTabViewEvent
 {
   View a;
   public QQAppInterface a;
@@ -47,6 +46,7 @@ public class QfileBaseTabView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_d_of_type_Boolean = true;
     this.jdField_d_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangRunnable = null;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)paramContext);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app;
   }
@@ -99,7 +99,7 @@ public class QfileBaseTabView
     return null;
   }
   
-  public void ap_() {}
+  public void aq_() {}
   
   public void b() {}
   
@@ -216,7 +216,7 @@ public class QfileBaseTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileassistant.QfileBaseTabView
  * JD-Core Version:    0.7.0.1
  */

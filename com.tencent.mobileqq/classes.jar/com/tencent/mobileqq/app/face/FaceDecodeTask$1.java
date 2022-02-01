@@ -18,7 +18,7 @@ final class FaceDecodeTask$1
   {
     if (paramMessage == null) {}
     label4:
-    FaceDecodeTask.DecodeCompletionListener localDecodeCompletionListener;
+    DecodeCompletionListener localDecodeCompletionListener;
     label143:
     label150:
     do
@@ -44,7 +44,7 @@ final class FaceDecodeTask$1
           if ((paramMessage == null) || (paramMessage.faceInfo == null) || (paramMessage.mDecodeCompletionListenerWrf == null) || (paramMessage.mDecodeCompletionListenerWrf.get() == null)) {
             break;
           }
-          localDecodeCompletionListener = (FaceDecodeTask.DecodeCompletionListener)paramMessage.mDecodeCompletionListenerWrf.get();
+          localDecodeCompletionListener = (DecodeCompletionListener)paramMessage.mDecodeCompletionListenerWrf.get();
         } while (localDecodeCompletionListener == null);
         if (paramMessage.needDownload)
         {
@@ -61,7 +61,7 @@ final class FaceDecodeTask$1
         return;
         paramMessage = (FaceDecodeTask)paramMessage.obj;
       } while ((paramMessage == null) || (paramMessage.faceInfo == null) || (paramMessage.mDecodeCompletionListenerWrf == null) || (paramMessage.mDecodeCompletionListenerWrf.get() == null));
-      localDecodeCompletionListener = (FaceDecodeTask.DecodeCompletionListener)paramMessage.mDecodeCompletionListenerWrf.get();
+      localDecodeCompletionListener = (DecodeCompletionListener)paramMessage.mDecodeCompletionListenerWrf.get();
     } while (localDecodeCompletionListener == null);
     if (paramMessage.needDownload)
     {
@@ -74,7 +74,7 @@ final class FaceDecodeTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecodeTask.1
  * JD-Core Version:    0.7.0.1
  */

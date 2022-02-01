@@ -10,7 +10,7 @@ public final class s_mainPageTabItem
   public String content = "";
   public String icon = "";
   public String jumpUrl = "";
-  public int order;
+  public int order = 0;
   
   public s_mainPageTabItem() {}
   

@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.vashealth;
 
-import bhww;
-import bhwx;
-
-public class SSOHttpUtils$1$1
+class SSOHttpUtils$1$1
   implements Runnable
 {
-  public SSOHttpUtils$1$1(bhwx parambhwx, int paramInt, String paramString) {}
+  SSOHttpUtils$1$1(SSOHttpUtils.1 param1, int paramInt, String paramString) {}
   
   public void run()
   {
-    bhww.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    SSOHttpUtils.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.SSOHttpUtils.1.1
  * JD-Core Version:    0.7.0.1
  */

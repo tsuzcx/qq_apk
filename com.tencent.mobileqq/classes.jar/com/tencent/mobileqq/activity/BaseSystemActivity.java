@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -39,16 +38,16 @@ public class BaseSystemActivity
     int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
     int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
     if (k == j) {
-      i = 2131719421;
+      i = 2131719984;
     }
     do
     {
       return i;
       if (k == j - 1) {
-        return 2131720188;
+        return 2131720766;
       }
     } while (k != j - 2);
-    return 2131690601;
+    return 2131690703;
   }
   
   public static String a(long paramLong, boolean paramBoolean)
@@ -59,7 +58,7 @@ public class BaseSystemActivity
     int k = a(paramLong);
     if (k != -1)
     {
-      if (k != 2131719421) {
+      if (k != 2131719984) {
         jdField_a_of_type_JavaLangStringBuffer.append(BaseApplication.getContext().getString(k));
       }
       i = 1;
@@ -67,7 +66,7 @@ public class BaseSystemActivity
     int m = jdField_a_of_type_JavaUtilCalendar.get(11);
     int j = jdField_a_of_type_JavaUtilCalendar.get(12);
     if (i != 0) {
-      if (k == 2131719421) {
+      if (k == 2131719984) {
         if (m == 24)
         {
           i = 24;
@@ -118,9 +117,9 @@ public class BaseSystemActivity
   
   private void c()
   {
-    super.setContentView(2131561546);
-    setContentBackgroundResource(2130838911);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131378383));
+    super.setContentView(2131561663);
+    setContentBackgroundResource(2130838979);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131378809));
     this.jdField_a_of_type_JavaLangString = a();
     if (this.jdField_a_of_type_JavaLangString == null) {
       throw new Exception("peerUin is null");
@@ -137,7 +136,7 @@ public class BaseSystemActivity
     jdField_a_of_type_Int = TimeZone.getDefault().getRawOffset();
   }
   
-  public long a(long paramLong)
+  protected long a(long paramLong)
   {
     if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong))) {
       return ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong))).longValue();
@@ -167,7 +166,7 @@ public class BaseSystemActivity
   
   protected void a() {}
   
-  public void a(Cursor paramCursor)
+  protected void a(Cursor paramCursor)
   {
     Object localObject1 = null;
     this.jdField_a_of_type_JavaUtilHashMap.clear();
@@ -187,7 +186,7 @@ public class BaseSystemActivity
     paramCursor.moveToFirst();
   }
   
-  public void b()
+  protected void b()
   {
     if (a() != null)
     {
@@ -230,7 +229,7 @@ public class BaseSystemActivity
   {
     super.onCreateRightView();
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130850647, 0, 0, 0);
+    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130851071, 0, 0, 0);
     return this.rightViewText;
   }
   
@@ -256,7 +255,7 @@ public class BaseSystemActivity
       paramObservable = (MessageRecord)paramObject;
       if ((this.jdField_a_of_type_JavaLangString.equals(paramObservable.frienduin)) && (paramObservable.istroop == 0))
       {
-        this.app.getMessageFacade().setReaded(this.jdField_a_of_type_JavaLangString, 0);
+        this.app.getMessageFacade().c(this.jdField_a_of_type_JavaLangString, 0);
         runOnUiThread(new BaseSystemActivity.1(this));
       }
       if (!paramObservable.isSendFromLocal()) {
@@ -267,7 +266,7 @@ public class BaseSystemActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseSystemActivity
  * JD-Core Version:    0.7.0.1
  */

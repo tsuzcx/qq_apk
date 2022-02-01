@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahit;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,18 +9,18 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.util.LRULinkedHashMap;
 import mqq.os.MqqHandler;
 
-public class TextItemBuilder$8
+class TextItemBuilder$8
   implements Runnable
 {
-  public TextItemBuilder$8(ahit paramahit, CharSequence paramCharSequence, long paramLong1, long paramLong2) {}
+  TextItemBuilder$8(TextItemBuilder paramTextItemBuilder, CharSequence paramCharSequence, long paramLong1, long paramLong2) {}
   
   public void run()
   {
     SpannableString localSpannableString = this.this$0.a(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Long);
     if (localSpannableString != null) {}
-    synchronized (ahit.jdField_a_of_type_ComTencentUtilLRULinkedHashMap)
+    synchronized (TextItemBuilder.jdField_a_of_type_ComTencentUtilLRULinkedHashMap)
     {
-      ahit.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(Long.valueOf(this.b), localSpannableString);
+      TextItemBuilder.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(Long.valueOf(this.b), localSpannableString);
       Object localObject3 = this.this$0.b.obtainMessage();
       ((Message)localObject3).what = 1;
       ((Message)localObject3).obj = localSpannableString;
@@ -44,7 +43,7 @@ public class TextItemBuilder$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,36 @@
 package com.tencent.imcore.message;
 
-import aopk;
-import atlf;
-import atpl;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.UncommonMessageProcessor;
 import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FMConstants.RevertMsgCallback;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class QQMessageFacade$3
-  implements atpl
+  implements FMConstants.RevertMsgCallback
 {
   QQMessageFacade$3(QQMessageFacade paramQQMessageFacade, MessageForFile paramMessageForFile, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onError(int paramInt, String paramString)
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop).c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+  }
+  
+  public void a(int paramInt, String paramString)
   {
     if ((paramInt == -6101) || (paramInt == -7003))
     {
-      this.val$entity.status = 16;
-      QQMessageFacade.access$100(this.this$0).getFileManagerDataCenter().c(this.val$entity);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+      QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
-    QQMessageFacade.access$100(this.this$0).getMsgHandler().a().a(this.val$msg.frienduin, this.val$msg.istroop, aopk.e, 0);
-  }
-  
-  public void onSuccess()
-  {
-    this.this$0.getBaseMessageManager(this.val$msg.istroop).c(this.val$msg);
+    QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).getMsgHandler().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop, UncommonMessageProcessor.e, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.imcore.message.QQMessageFacade.3
  * JD-Core Version:    0.7.0.1
  */

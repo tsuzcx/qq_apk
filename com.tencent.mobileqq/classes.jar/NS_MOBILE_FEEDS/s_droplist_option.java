@@ -10,16 +10,16 @@ public final class s_droplist_option
   extends JceStruct
 {
   static Map<String, String> cache_extend_info = new HashMap();
-  public int action_detail;
-  public int actiontype;
-  public Map<String, String> extend_info;
+  public int action_detail = 0;
+  public int actiontype = 0;
+  public Map<String, String> extend_info = null;
   public String iconurl = "";
   public String jumpurl = "";
   public String optext = "";
   public String pattonID = "";
   public String reportattach = "";
-  public int reporttype;
-  public int reporttypeV2;
+  public int reporttype = 0;
+  public int reporttypeV2 = 0;
   
   static
   {

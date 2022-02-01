@@ -10,15 +10,15 @@ public final class PSMetaMaterial
   extends JceStruct
 {
   static Map<String, String> cache_additionalFields = new HashMap();
-  public Map<String, String> additionalFields;
+  public Map<String, String> additionalFields = null;
   public String id = "";
   public String name = "";
   public String packageMd5 = "";
   public String packageUrl = "";
   public String thumbMd5 = "";
   public String thumbUrl = "";
-  public int type;
-  public int updateTime;
+  public int type = 0;
+  public int updateTime = 0;
   
   static
   {
@@ -82,7 +82,7 @@ public final class PSMetaMaterial
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSMetaMaterial
  * JD-Core Version:    0.7.0.1
  */

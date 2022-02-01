@@ -63,19 +63,22 @@ public class CacheManager
   public static final int ZIP_CACHE_INTERNAL_CAPACITY = 20971520;
   public static final String ZIP_CACHE_NAME = "zip_cache";
   public static final int ZIP_CACHE__EXTERNAL_CAPACITY = 104857600;
-  private static HashMap<String, Boolean> isStorageReallyCanwriteMap = new HashMap();
+  private static HashMap<String, Boolean> isStorageReallyCanwriteMap;
   private static volatile boolean mHasLoadSDCardName;
   private static HashMap<String, String> mSDCardName2PathMap;
-  private static long maxAvailableSize;
-  private static String maxAvailableSizePath = "";
+  private static long maxAvailableSize = 0L;
+  private static String maxAvailableSizePath;
   private static final HashMap<String, FileCacheService> sFileCacheService = new HashMap();
-  private static FileStorageHandler sStorageHandler;
+  private static FileStorageHandler sStorageHandler = null;
   private static Object storageHandlerLock = new Object();
-  private static String storeRootPath;
+  private static String storeRootPath = null;
   
   static
   {
     mSDCardName2PathMap = new HashMap();
+    isStorageReallyCanwriteMap = new HashMap();
+    mHasLoadSDCardName = false;
+    maxAvailableSizePath = "";
   }
   
   private static final String calcCapUnit(int paramInt, float paramFloat)
@@ -108,29 +111,29 @@ public class CacheManager
   {
     paramContext = QZoneFilePath.CACHE_DIR_IMAGE;
     if (paramContext != null) {
-      FileUtil.deleteFile(paramContext);
+      FileUtil.c(paramContext);
     }
-    FileUtil.deleteFile(QZoneFilePath.CACHE_DIR_IMAGE_SR);
+    FileUtil.c(QZoneFilePath.CACHE_DIR_IMAGE_SR);
     paramContext = QZoneFilePath.CACHE_DIR_VIDEO;
     if (paramContext != null) {
-      FileUtil.deleteFile(paramContext);
+      FileUtil.c(paramContext);
     }
-    FileUtil.deleteFile(QZoneFilePath.CACHE_DIR_VIDEO_PLAY);
+    FileUtil.c(QZoneFilePath.CACHE_DIR_VIDEO_PLAY);
     paramContext = QZoneFilePath.CACHE_DIR_FILE;
     if (paramContext != null) {
-      FileUtil.deleteFile(paramContext);
+      FileUtil.c(paramContext);
     }
     paramContext = QZoneFilePath.CACHE_DIR_FEEDS;
     if (paramContext != null) {
-      FileUtil.deleteFile(paramContext);
+      FileUtil.c(paramContext);
     }
     paramContext = getStoreRootPath();
     if (paramContext != null) {
-      FileUtil.deleteFile(paramContext);
+      FileUtil.c(paramContext);
     }
     paramContext = getInternalCacheDir();
     if (paramContext != null) {
-      FileUtil.deleteFile(paramContext);
+      FileUtil.c(paramContext);
     }
   }
   
@@ -335,51 +338,51 @@ public class CacheManager
   private static int getOldVer(String paramString)
   {
     // Byte code:
-    //   0: getstatic 437	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
+    //   0: getstatic 445	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
     //   3: ifnonnull +13 -> 16
     //   6: new 125	java/util/HashMap
     //   9: dup
     //   10: invokespecial 128	java/util/HashMap:<init>	()V
-    //   13: putstatic 437	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
-    //   16: getstatic 437	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
+    //   13: putstatic 445	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
+    //   16: getstatic 445	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
     //   19: aload_0
-    //   20: invokevirtual 376	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   23: checkcast 439	java/lang/Integer
+    //   20: invokevirtual 384	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   23: checkcast 447	java/lang/Integer
     //   26: astore_3
     //   27: aload_3
     //   28: ifnull +10 -> 38
     //   31: aload_3
-    //   32: invokevirtual 442	java/lang/Integer:intValue	()I
+    //   32: invokevirtual 450	java/lang/Integer:intValue	()I
     //   35: istore_2
     //   36: iload_2
     //   37: ireturn
-    //   38: invokestatic 236	cooperation/qzone/cache/CacheManager:getStoreRootPath	()Ljava/lang/String;
+    //   38: invokestatic 244	cooperation/qzone/cache/CacheManager:getStoreRootPath	()Ljava/lang/String;
     //   41: astore_3
     //   42: aload_0
-    //   43: invokestatic 290	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   43: invokestatic 298	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   46: ifeq +177 -> 223
-    //   49: new 308	java/io/File
+    //   49: new 316	java/io/File
     //   52: dup
     //   53: aload_3
-    //   54: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
+    //   54: invokespecial 334	java/io/File:<init>	(Ljava/lang/String;)V
     //   57: astore_3
     //   58: aload_3
-    //   59: invokevirtual 339	java/io/File:exists	()Z
+    //   59: invokevirtual 347	java/io/File:exists	()Z
     //   62: ifeq +357 -> 419
     //   65: aload_3
-    //   66: invokevirtual 445	java/io/File:isDirectory	()Z
+    //   66: invokevirtual 453	java/io/File:isDirectory	()Z
     //   69: ifeq +350 -> 419
-    //   72: new 308	java/io/File
+    //   72: new 316	java/io/File
     //   75: dup
     //   76: aload_3
-    //   77: ldc_w 447
-    //   80: invokespecial 450	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   77: ldc_w 455
+    //   80: invokespecial 458	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   83: astore_3
     //   84: aload_3
-    //   85: invokevirtual 339	java/io/File:exists	()Z
+    //   85: invokevirtual 347	java/io/File:exists	()Z
     //   88: ifeq +331 -> 419
     //   91: aload_3
-    //   92: invokevirtual 330	java/io/File:isFile	()Z
+    //   92: invokevirtual 338	java/io/File:isFile	()Z
     //   95: ifeq +324 -> 419
     //   98: aconst_null
     //   99: astore 6
@@ -387,82 +390,82 @@ public class CacheManager
     //   102: astore 4
     //   104: aconst_null
     //   105: astore 5
-    //   107: new 452	java/io/BufferedReader
+    //   107: new 460	java/io/BufferedReader
     //   110: dup
-    //   111: new 454	java/io/InputStreamReader
+    //   111: new 462	java/io/InputStreamReader
     //   114: dup
-    //   115: new 456	java/io/FileInputStream
+    //   115: new 464	java/io/FileInputStream
     //   118: dup
     //   119: aload_3
-    //   120: invokespecial 458	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   123: invokespecial 461	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   126: invokespecial 464	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   120: invokespecial 466	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   123: invokespecial 469	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   126: invokespecial 472	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   129: astore_3
     //   130: aload_3
     //   131: astore 4
     //   133: aload_3
-    //   134: invokevirtual 467	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   134: invokevirtual 475	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   137: astore 5
     //   139: aload 5
     //   141: ifnull +283 -> 424
     //   144: aload_3
     //   145: astore 4
     //   147: aload 5
-    //   149: invokestatic 470	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   149: invokestatic 478	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   152: istore_2
     //   153: iload_2
     //   154: istore_1
     //   155: aload_3
     //   156: ifnull +9 -> 165
     //   159: aload_3
-    //   160: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   160: invokevirtual 481	java/io/BufferedReader:close	()V
     //   163: iload_2
     //   164: istore_1
-    //   165: getstatic 437	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
+    //   165: getstatic 445	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
     //   168: aload_0
     //   169: iload_1
-    //   170: invokestatic 476	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   173: invokevirtual 387	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   170: invokestatic 484	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   173: invokevirtual 395	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   176: pop
     //   177: iload_1
     //   178: istore_2
-    //   179: invokestatic 481	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   179: invokestatic 489	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   182: ifeq -146 -> 36
     //   185: ldc 80
     //   187: iconst_2
-    //   188: new 149	java/lang/StringBuilder
+    //   188: new 157	java/lang/StringBuilder
     //   191: dup
-    //   192: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   195: ldc_w 483
-    //   198: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   195: ldc_w 491
+    //   198: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   201: aload_0
-    //   202: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   205: ldc_w 485
-    //   208: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   202: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   205: ldc_w 493
+    //   208: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   211: iload_1
-    //   212: invokevirtual 488	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   215: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   218: invokestatic 492	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   212: invokevirtual 496	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   215: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   218: invokestatic 500	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   221: iload_1
     //   222: ireturn
-    //   223: new 308	java/io/File
+    //   223: new 316	java/io/File
     //   226: dup
-    //   227: new 149	java/lang/StringBuilder
+    //   227: new 157	java/lang/StringBuilder
     //   230: dup
-    //   231: invokespecial 150	java/lang/StringBuilder:<init>	()V
+    //   231: invokespecial 158	java/lang/StringBuilder:<init>	()V
     //   234: aload_3
-    //   235: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: getstatic 323	java/io/File:separator	Ljava/lang/String;
-    //   241: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: getstatic 331	java/io/File:separator	Ljava/lang/String;
+    //   241: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   244: aload_0
-    //   245: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   248: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   251: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
+    //   245: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   251: invokespecial 334	java/io/File:<init>	(Ljava/lang/String;)V
     //   254: astore_3
     //   255: goto -197 -> 58
     //   258: astore_3
     //   259: aload_3
-    //   260: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   260: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   263: iload_2
     //   264: istore_1
     //   265: goto -100 -> 165
@@ -472,17 +475,17 @@ public class CacheManager
     //   272: aload_3
     //   273: astore 4
     //   275: aload 5
-    //   277: invokevirtual 496	java/io/FileNotFoundException:printStackTrace	()V
+    //   277: invokevirtual 504	java/io/FileNotFoundException:printStackTrace	()V
     //   280: aload_3
     //   281: ifnull +138 -> 419
     //   284: aload_3
-    //   285: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   285: invokevirtual 481	java/io/BufferedReader:close	()V
     //   288: iconst_0
     //   289: istore_1
     //   290: goto -125 -> 165
     //   293: astore_3
     //   294: aload_3
-    //   295: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   295: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   298: iconst_0
     //   299: istore_1
     //   300: goto -135 -> 165
@@ -494,17 +497,17 @@ public class CacheManager
     //   312: aload_3
     //   313: astore 4
     //   315: aload 5
-    //   317: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   317: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   320: aload_3
     //   321: ifnull +98 -> 419
     //   324: aload_3
-    //   325: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   325: invokevirtual 481	java/io/BufferedReader:close	()V
     //   328: iconst_0
     //   329: istore_1
     //   330: goto -165 -> 165
     //   333: astore_3
     //   334: aload_3
-    //   335: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   335: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   338: iconst_0
     //   339: istore_1
     //   340: goto -175 -> 165
@@ -514,17 +517,17 @@ public class CacheManager
     //   348: aload_3
     //   349: astore 4
     //   351: aload 5
-    //   353: invokevirtual 497	java/lang/Exception:printStackTrace	()V
+    //   353: invokevirtual 505	java/lang/Exception:printStackTrace	()V
     //   356: aload_3
     //   357: ifnull +62 -> 419
     //   360: aload_3
-    //   361: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   361: invokevirtual 481	java/io/BufferedReader:close	()V
     //   364: iconst_0
     //   365: istore_1
     //   366: goto -201 -> 165
     //   369: astore_3
     //   370: aload_3
-    //   371: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   371: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   374: iconst_0
     //   375: istore_1
     //   376: goto -211 -> 165
@@ -532,12 +535,12 @@ public class CacheManager
     //   380: aload 4
     //   382: ifnull +8 -> 390
     //   385: aload 4
-    //   387: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   387: invokevirtual 481	java/io/BufferedReader:close	()V
     //   390: aload_0
     //   391: athrow
     //   392: astore_3
     //   393: aload_3
-    //   394: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   394: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   397: goto -7 -> 390
     //   400: astore_0
     //   401: goto -21 -> 380
@@ -933,53 +936,53 @@ public class CacheManager
   private static void saveOldVer(String paramString, int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 236	cooperation/qzone/cache/CacheManager:getStoreRootPath	()Ljava/lang/String;
+    //   0: invokestatic 244	cooperation/qzone/cache/CacheManager:getStoreRootPath	()Ljava/lang/String;
     //   3: astore_2
-    //   4: getstatic 437	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
+    //   4: getstatic 445	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
     //   7: ifnonnull +13 -> 20
     //   10: new 125	java/util/HashMap
     //   13: dup
     //   14: invokespecial 128	java/util/HashMap:<init>	()V
-    //   17: putstatic 437	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
-    //   20: getstatic 437	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
+    //   17: putstatic 445	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
+    //   20: getstatic 445	cooperation/qzone/cache/CacheManager:VersionMap	Ljava/util/HashMap;
     //   23: aload_0
     //   24: iload_1
-    //   25: invokestatic 476	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   28: invokevirtual 387	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   25: invokestatic 484	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   28: invokevirtual 395	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   31: pop
     //   32: aload_0
-    //   33: invokestatic 290	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   33: invokestatic 298	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   36: ifeq +172 -> 208
-    //   39: new 308	java/io/File
+    //   39: new 316	java/io/File
     //   42: dup
     //   43: aload_2
-    //   44: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
+    //   44: invokespecial 334	java/io/File:<init>	(Ljava/lang/String;)V
     //   47: astore_2
     //   48: aload_2
-    //   49: invokevirtual 339	java/io/File:exists	()Z
+    //   49: invokevirtual 347	java/io/File:exists	()Z
     //   52: ifeq +155 -> 207
     //   55: aload_2
-    //   56: invokevirtual 445	java/io/File:isDirectory	()Z
+    //   56: invokevirtual 453	java/io/File:isDirectory	()Z
     //   59: ifeq +148 -> 207
-    //   62: new 308	java/io/File
+    //   62: new 316	java/io/File
     //   65: dup
     //   66: aload_2
-    //   67: ldc_w 447
-    //   70: invokespecial 450	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   67: ldc_w 455
+    //   70: invokespecial 458	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   73: astore_3
     //   74: aload_3
-    //   75: invokevirtual 339	java/io/File:exists	()Z
+    //   75: invokevirtual 347	java/io/File:exists	()Z
     //   78: ifeq +7 -> 85
     //   81: aload_3
-    //   82: invokestatic 336	com/tencent/component/network/utils/FileUtils:delete	(Ljava/io/File;)V
+    //   82: invokestatic 344	com/tencent/component/network/utils/FileUtils:delete	(Ljava/io/File;)V
     //   85: aload_3
-    //   86: invokevirtual 634	java/io/File:createNewFile	()Z
+    //   86: invokevirtual 638	java/io/File:createNewFile	()Z
     //   89: pop
     //   90: aload_3
-    //   91: invokevirtual 339	java/io/File:exists	()Z
+    //   91: invokevirtual 347	java/io/File:exists	()Z
     //   94: ifeq +71 -> 165
     //   97: aload_3
-    //   98: invokevirtual 330	java/io/File:isFile	()Z
+    //   98: invokevirtual 338	java/io/File:isFile	()Z
     //   101: ifeq +64 -> 165
     //   104: aconst_null
     //   105: astore 5
@@ -987,75 +990,75 @@ public class CacheManager
     //   108: astore_2
     //   109: aconst_null
     //   110: astore 4
-    //   112: new 663	java/io/BufferedWriter
+    //   112: new 665	java/io/BufferedWriter
     //   115: dup
-    //   116: new 665	java/io/OutputStreamWriter
+    //   116: new 667	java/io/OutputStreamWriter
     //   119: dup
-    //   120: new 667	java/io/FileOutputStream
+    //   120: new 669	java/io/FileOutputStream
     //   123: dup
     //   124: aload_3
-    //   125: invokespecial 668	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   128: invokespecial 671	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
-    //   131: invokespecial 674	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   125: invokespecial 670	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   128: invokespecial 673	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
+    //   131: invokespecial 676	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
     //   134: astore_3
     //   135: aload_3
     //   136: astore_2
     //   137: aload_3
     //   138: iload_1
-    //   139: invokestatic 415	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   142: invokevirtual 677	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   139: invokestatic 423	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   142: invokevirtual 679	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   145: aload_3
     //   146: astore_2
     //   147: aload_3
-    //   148: invokevirtual 680	java/io/BufferedWriter:newLine	()V
+    //   148: invokevirtual 682	java/io/BufferedWriter:newLine	()V
     //   151: aload_3
     //   152: astore_2
     //   153: aload_3
-    //   154: invokevirtual 683	java/io/BufferedWriter:flush	()V
+    //   154: invokevirtual 685	java/io/BufferedWriter:flush	()V
     //   157: aload_3
     //   158: ifnull +7 -> 165
     //   161: aload_3
-    //   162: invokevirtual 684	java/io/BufferedWriter:close	()V
-    //   165: invokestatic 481	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   162: invokevirtual 686	java/io/BufferedWriter:close	()V
+    //   165: invokestatic 489	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   168: ifeq +39 -> 207
     //   171: ldc 80
     //   173: iconst_2
-    //   174: new 149	java/lang/StringBuilder
+    //   174: new 157	java/lang/StringBuilder
     //   177: dup
-    //   178: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   181: ldc_w 686
-    //   184: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   181: ldc_w 688
+    //   184: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   187: aload_0
-    //   188: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: ldc_w 485
-    //   194: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: ldc_w 493
+    //   194: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   197: iload_1
-    //   198: invokevirtual 488	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   201: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: invokestatic 492	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   198: invokevirtual 496	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   201: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   204: invokestatic 500	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   207: return
-    //   208: new 308	java/io/File
+    //   208: new 316	java/io/File
     //   211: dup
-    //   212: new 149	java/lang/StringBuilder
+    //   212: new 157	java/lang/StringBuilder
     //   215: dup
-    //   216: invokespecial 150	java/lang/StringBuilder:<init>	()V
+    //   216: invokespecial 158	java/lang/StringBuilder:<init>	()V
     //   219: aload_2
-    //   220: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   223: getstatic 323	java/io/File:separator	Ljava/lang/String;
-    //   226: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: getstatic 331	java/io/File:separator	Ljava/lang/String;
+    //   226: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   229: aload_0
-    //   230: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   236: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
+    //   230: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: invokespecial 334	java/io/File:<init>	(Ljava/lang/String;)V
     //   239: astore_2
     //   240: goto -192 -> 48
     //   243: astore_2
     //   244: aload_2
-    //   245: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   245: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   248: goto -158 -> 90
     //   251: astore_2
     //   252: aload_2
-    //   253: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   253: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   256: goto -91 -> 165
     //   259: astore 4
     //   261: aconst_null
@@ -1063,15 +1066,15 @@ public class CacheManager
     //   263: aload_3
     //   264: astore_2
     //   265: aload 4
-    //   267: invokevirtual 496	java/io/FileNotFoundException:printStackTrace	()V
+    //   267: invokevirtual 504	java/io/FileNotFoundException:printStackTrace	()V
     //   270: aload_3
     //   271: ifnull -106 -> 165
     //   274: aload_3
-    //   275: invokevirtual 684	java/io/BufferedWriter:close	()V
+    //   275: invokevirtual 686	java/io/BufferedWriter:close	()V
     //   278: goto -113 -> 165
     //   281: astore_2
     //   282: aload_2
-    //   283: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   283: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   286: goto -121 -> 165
     //   289: astore_2
     //   290: aload 4
@@ -1081,15 +1084,15 @@ public class CacheManager
     //   296: aload_3
     //   297: astore_2
     //   298: aload 4
-    //   300: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   300: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   303: aload_3
     //   304: ifnull -139 -> 165
     //   307: aload_3
-    //   308: invokevirtual 684	java/io/BufferedWriter:close	()V
+    //   308: invokevirtual 686	java/io/BufferedWriter:close	()V
     //   311: goto -146 -> 165
     //   314: astore_2
     //   315: aload_2
-    //   316: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   316: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   319: goto -154 -> 165
     //   322: astore 4
     //   324: aload 5
@@ -1097,26 +1100,26 @@ public class CacheManager
     //   327: aload_3
     //   328: astore_2
     //   329: aload 4
-    //   331: invokevirtual 497	java/lang/Exception:printStackTrace	()V
+    //   331: invokevirtual 505	java/lang/Exception:printStackTrace	()V
     //   334: aload_3
     //   335: ifnull -170 -> 165
     //   338: aload_3
-    //   339: invokevirtual 684	java/io/BufferedWriter:close	()V
+    //   339: invokevirtual 686	java/io/BufferedWriter:close	()V
     //   342: goto -177 -> 165
     //   345: astore_2
     //   346: aload_2
-    //   347: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   347: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   350: goto -185 -> 165
     //   353: astore_0
     //   354: aload_2
     //   355: ifnull +7 -> 362
     //   358: aload_2
-    //   359: invokevirtual 684	java/io/BufferedWriter:close	()V
+    //   359: invokevirtual 686	java/io/BufferedWriter:close	()V
     //   362: aload_0
     //   363: athrow
     //   364: astore_2
     //   365: aload_2
-    //   366: invokevirtual 495	java/io/IOException:printStackTrace	()V
+    //   366: invokevirtual 503	java/io/IOException:printStackTrace	()V
     //   369: goto -7 -> 362
     //   372: astore_0
     //   373: goto -19 -> 354
@@ -1183,40 +1186,40 @@ public class CacheManager
   private static void updateStorage(String paramString)
   {
     // Byte code:
-    //   0: new 308	java/io/File
+    //   0: new 316	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 334	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_0
     //   9: aload_0
-    //   10: invokevirtual 339	java/io/File:exists	()Z
+    //   10: invokevirtual 347	java/io/File:exists	()Z
     //   13: ifeq +164 -> 177
-    //   16: new 452	java/io/BufferedReader
+    //   16: new 460	java/io/BufferedReader
     //   19: dup
-    //   20: new 689	java/io/FileReader
+    //   20: new 691	java/io/FileReader
     //   23: dup
     //   24: aload_0
-    //   25: invokespecial 690	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   28: invokespecial 464	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   25: invokespecial 692	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   28: invokespecial 472	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   31: astore_1
     //   32: aload_1
     //   33: astore_0
     //   34: aload_1
-    //   35: invokevirtual 467	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   35: invokevirtual 475	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   38: astore_2
     //   39: aload_2
     //   40: ifnull +138 -> 178
     //   43: aload_1
     //   44: astore_0
     //   45: aload_2
-    //   46: ldc_w 692
-    //   49: invokevirtual 605	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   46: ldc_w 694
+    //   49: invokevirtual 609	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   52: ifeq -20 -> 32
     //   55: aload_1
     //   56: astore_0
     //   57: aload_2
-    //   58: ldc_w 694
-    //   61: invokevirtual 698	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   58: ldc_w 696
+    //   61: invokevirtual 700	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   64: astore_3
     //   65: aload_1
     //   66: astore_0
@@ -1234,76 +1237,76 @@ public class CacheManager
     //   80: astore_3
     //   81: aload_1
     //   82: astore_0
-    //   83: new 308	java/io/File
+    //   83: new 316	java/io/File
     //   86: dup
     //   87: aload_2
-    //   88: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
-    //   91: invokevirtual 339	java/io/File:exists	()Z
+    //   88: invokespecial 334	java/io/File:<init>	(Ljava/lang/String;)V
+    //   91: invokevirtual 347	java/io/File:exists	()Z
     //   94: ifeq -62 -> 32
     //   97: aload_1
     //   98: astore_0
-    //   99: getstatic 135	cooperation/qzone/cache/CacheManager:mSDCardName2PathMap	Ljava/util/HashMap;
+    //   99: getstatic 137	cooperation/qzone/cache/CacheManager:mSDCardName2PathMap	Ljava/util/HashMap;
     //   102: aload_3
     //   103: aload_2
-    //   104: invokevirtual 387	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   104: invokevirtual 395	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   107: pop
     //   108: aload_1
     //   109: astore_0
-    //   110: invokestatic 701	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   110: invokestatic 703	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   113: ifeq -81 -> 32
     //   116: aload_1
     //   117: astore_0
     //   118: ldc 80
     //   120: iconst_4
-    //   121: new 149	java/lang/StringBuilder
+    //   121: new 157	java/lang/StringBuilder
     //   124: dup
-    //   125: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   128: ldc_w 703
-    //   131: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   128: ldc_w 705
+    //   131: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: aload_3
-    //   135: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: ldc_w 705
-    //   141: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: ldc_w 707
+    //   141: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   144: aload_2
-    //   145: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokestatic 708	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   145: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   151: invokestatic 710	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   154: goto -122 -> 32
     //   157: astore_2
     //   158: aload_1
     //   159: astore_0
     //   160: ldc 80
     //   162: iconst_1
-    //   163: ldc 139
+    //   163: ldc 143
     //   165: aload_2
-    //   166: invokestatic 527	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   166: invokestatic 535	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   169: aload_1
     //   170: ifnull +7 -> 177
     //   173: aload_1
-    //   174: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   174: invokevirtual 481	java/io/BufferedReader:close	()V
     //   177: return
     //   178: aload_1
     //   179: astore_0
     //   180: aload_1
-    //   181: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   181: invokevirtual 481	java/io/BufferedReader:close	()V
     //   184: aload_1
     //   185: ifnull -8 -> 177
     //   188: aload_1
-    //   189: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   189: invokevirtual 481	java/io/BufferedReader:close	()V
     //   192: return
     //   193: astore_0
     //   194: ldc 80
     //   196: iconst_1
-    //   197: ldc 139
+    //   197: ldc 143
     //   199: aload_0
-    //   200: invokestatic 527	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   200: invokestatic 535	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   203: return
     //   204: astore_0
     //   205: ldc 80
     //   207: iconst_1
-    //   208: ldc 139
+    //   208: ldc 143
     //   210: aload_0
-    //   211: invokestatic 527	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   211: invokestatic 535	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   214: return
     //   215: astore_1
     //   216: aconst_null
@@ -1311,15 +1314,15 @@ public class CacheManager
     //   218: aload_0
     //   219: ifnull +7 -> 226
     //   222: aload_0
-    //   223: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   223: invokevirtual 481	java/io/BufferedReader:close	()V
     //   226: aload_1
     //   227: athrow
     //   228: astore_0
     //   229: ldc 80
     //   231: iconst_1
-    //   232: ldc 139
+    //   232: ldc 143
     //   234: aload_0
-    //   235: invokestatic 527	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   235: invokestatic 535	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   238: goto -12 -> 226
     //   241: astore_1
     //   242: goto -24 -> 218
@@ -1368,7 +1371,7 @@ public class CacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.cache.CacheManager
  * JD-Core Version:    0.7.0.1
  */

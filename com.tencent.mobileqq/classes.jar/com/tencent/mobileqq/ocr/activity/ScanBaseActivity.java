@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -9,20 +8,20 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import apbf;
-import apfm;
-import apgb;
-import apji;
-import ayrg;
-import bisl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARGlobalConfigManager;
+import com.tencent.mobileqq.ar.ArCloudNativeSoLoader;
+import com.tencent.mobileqq.ar.ArNativeSoManager;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl;
+import com.tencent.mobileqq.ocr.OCRManager;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -32,12 +31,17 @@ public class ScanBaseActivity
   extends FragmentActivity
 {
   protected TextView a;
-  private bisl a;
   public AppInterface a;
   public QQAppInterface a;
   public OcrConfig a;
+  private QQProgressDialog a;
   public boolean a;
   protected TextView b;
+  
+  public ScanBaseActivity()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
   
   private boolean a()
   {
@@ -49,10 +53,10 @@ public class ScanBaseActivity
       QLog.d("ScanBaseActivity", 1, "checkOcrEnable config is null");
       return false;
     }
-    boolean bool1 = ayrg.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
+    boolean bool1 = OCRManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
     if (bool1)
     {
-      boolean bool2 = apji.a();
+      boolean bool2 = ARCloudControl.a();
       if (!bool2)
       {
         QLog.d("ScanBaseActivity", 1, "checkOcrEnable load so failed!");
@@ -60,16 +64,16 @@ public class ScanBaseActivity
       }
       return bool1 & bool2;
     }
-    Object localObject = ((apbf)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER)).a(true);
+    Object localObject = ((ARGlobalConfigManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER)).a(true);
     if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0))
     {
       new ArrayList();
       new ArrayList();
       ArrayList localArrayList = ((ARCommonConfigInfo)localObject).nativeSoResList;
       localObject = ((ARCommonConfigInfo)localObject).nativeSoResList;
-      apgb localapgb = new apgb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!apfm.a()) {
-        localapgb.a(localArrayList, (ArrayList)localObject, "arcloud");
+      ArNativeSoManager localArNativeSoManager = new ArNativeSoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!ArCloudNativeSoLoader.a()) {
+        localArNativeSoManager.a(localArrayList, (ArrayList)localObject, "arcloud");
       }
     }
     return bool1;
@@ -87,7 +91,7 @@ public class ScanBaseActivity
     {
       localObject = localOcrConfig;
       if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        localObject = ((ayrg)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.OCR_MANAGER)).a(false);
+        localObject = ((OCRManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.OCR_MANAGER)).a(false);
       }
     }
     if (QLog.isColorLevel()) {
@@ -98,18 +102,18 @@ public class ScanBaseActivity
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369231));
-    this.b = ((TextView)findViewById(2131369278));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369487));
+    this.b = ((TextView)findViewById(2131369534));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       int i = ImmersiveUtils.getStatusBarHeight(this);
-      View localView = findViewById(2131379015);
+      View localView = findViewById(2131379446);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.topMargin = i;
       localView.setLayoutParams(localLayoutParams);
     }
-    if (AppSetting.c) {
-      findViewById(2131369231).setContentDescription(anvx.a(2131712966));
+    if (AppSetting.d) {
+      findViewById(2131369487).setContentDescription(HardCodeUtil.a(2131713462));
     }
   }
   
@@ -137,8 +141,8 @@ public class ScanBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bisl != null) {
-      this.jdField_a_of_type_Bisl.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
   }
   

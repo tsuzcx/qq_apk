@@ -8,15 +8,15 @@ public final class PrivilegeInfo
   extends JceStruct
 {
   public int iFeeType = -1;
-  public int iFlag;
-  public int iIsBig;
-  public int iIsRemind;
+  public int iFlag = 0;
+  public int iIsBig = 0;
+  public int iIsRemind = 0;
   public int iLevel = -1;
-  public int iRemindTime;
+  public int iRemindTime = 0;
   public int iSort = -1;
-  public int iTipsTimes;
+  public int iTipsTimes = 0;
   public int iType = -1;
-  public boolean isOpen;
+  public boolean isOpen = false;
   public String strDeluxeIconUrl = "";
   public String strIconUrl = "";
   public String strJumpUrl = "";
@@ -83,7 +83,7 @@ public final class PrivilegeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.PrivilegeInfo
  * JD-Core Version:    0.7.0.1
  */

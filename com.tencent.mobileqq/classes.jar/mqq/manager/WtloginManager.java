@@ -69,6 +69,8 @@ public abstract interface WtloginManager
   
   public abstract boolean isWtLoginUrl(String paramString);
   
+  public abstract int quickLoginByGateway(byte[] paramArrayOfByte, WtloginObserver paramWtloginObserver);
+  
   public abstract void refreLocalHelper(Context paramContext);
   
   public abstract void refreshMemorySig();

@@ -54,10 +54,7 @@ public final class CutModelKt
   @NotNull
   public final MediaClipModel convert()
   {
-    MediaClipModel localMediaClipModel = new MediaClipModel();
-    localMediaClipModel.setResource(this.resource.convert());
-    localMediaClipModel.setVideoConfigurationModel(this.videoConfiguration.convert());
-    return localMediaClipModel;
+    return new MediaClipModel(this.resource.convert(), this.videoConfiguration.convert(), null, null, null, null, 60, null);
   }
   
   @NotNull
@@ -153,7 +150,7 @@ public final class CutModelKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.CutModelKt
  * JD-Core Version:    0.7.0.1
  */

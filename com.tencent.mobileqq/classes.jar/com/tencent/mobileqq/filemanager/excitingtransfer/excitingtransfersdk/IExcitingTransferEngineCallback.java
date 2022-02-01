@@ -2,9 +2,7 @@ package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 public abstract interface IExcitingTransferEngineCallback
 {
-  public abstract void OnOneSlotComplete(long paramLong, int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete);
-  
-  public abstract void OnSpeed(long paramLong, ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo);
+  public abstract void onOneSlotComplete(long paramLong, int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete);
   
   public abstract void onRecvComplete(long paramLong, int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo);
   
@@ -18,11 +16,13 @@ public abstract interface IExcitingTransferEngineCallback
   
   public abstract void onSendStart(long paramLong);
   
+  public abstract void onSpeed(long paramLong, ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo);
+  
   public abstract void onSubSenderResult(long paramLong, int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.IExcitingTransferEngineCallback
  * JD-Core Version:    0.7.0.1
  */

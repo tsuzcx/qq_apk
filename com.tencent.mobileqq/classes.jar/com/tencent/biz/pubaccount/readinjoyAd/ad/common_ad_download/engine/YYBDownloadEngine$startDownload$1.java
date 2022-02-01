@@ -1,93 +1,78 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine;
 
 import android.text.TextUtils;
-import bjju;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.AdDownloadScene;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadCallBack;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.data.AdDownloadInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateHandler;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdUrlChangeUtil;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
-import java.net.URLEncoder;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
+import com.tencent.open.appstore.dl.DownloadProxy;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import uev;
-import uey;
-import ufl;
-import ukq;
-import ule;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
-public final class YYBDownloadEngine$startDownload$1
+final class YYBDownloadEngine$startDownload$1
   implements Runnable
 {
-  public YYBDownloadEngine$startDownload$1(RIJDownloadView paramRIJDownloadView, ule paramule) {}
-  
   public final void run()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView == null) || (this.jdField_a_of_type_Ule == null)) {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData == null)) {
       return;
     }
-    uev localuev = new uev();
-    localuev.a(this.jdField_a_of_type_Ule.d);
-    localuev.c(this.jdField_a_of_type_Ule.jdField_a_of_type_JavaLangString);
-    Object localObject;
-    if (uey.a(uey.a, this.jdField_a_of_type_Ule))
+    AdDownloadInfo localAdDownloadInfo = new AdDownloadInfo();
+    localAdDownloadInfo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.d);
+    localAdDownloadInfo.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.jdField_a_of_type_JavaLangString);
+    Object localObject2;
+    RIJAdUrlChangeUtil localRIJAdUrlChangeUtil;
+    if (YYBDownloadEngine.a(YYBDownloadEngine.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData))
     {
-      localObject = this.jdField_a_of_type_Ule.b;
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a() != AdDownloadScene.VideoFloatButton) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a() != AdDownloadScene.VideoFloatCardButton)) {
-        break label302;
+      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+      localRIJAdUrlChangeUtil = RIJAdUrlChangeUtil.a;
+      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+      if (localObject1 == null) {
+        break label240;
       }
+    }
+    label240:
+    for (Object localObject1 = ((RIJDownloadView)localObject1).a();; localObject1 = null)
+    {
+      ((ADVideoAppDownloadData)localObject2).c = localRIJAdUrlChangeUtil.a((AdDownloadScene)localObject1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.b);
+      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", "needReplaceUrl: pkg = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.d + "  url = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c);
+      localObject1 = AdDownloadStateHandler.OnReplaceUrl;
+      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+      localAdDownloadInfo.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c);
+      ((AdDownloadStateHandler)localObject1).doCallBack((RIJDownloadView)localObject2, localAdDownloadInfo);
+      if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c)) {
+        break;
+      }
+      localObject1 = AdDownloadStateHandler.OnReplaceUrl;
+      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+      localAdDownloadInfo.e("");
+      ((AdDownloadStateHandler)localObject1).doCallBack((RIJDownloadView)localObject2, localAdDownloadInfo);
+      localObject1 = AdDownloadStateHandler.OnErrorDownload;
+      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+      localAdDownloadInfo.c(-1);
+      localAdDownloadInfo.b("url is empty");
+      localAdDownloadInfo.a(6);
+      ((AdDownloadStateHandler)localObject1).doCallBack((RIJDownloadView)localObject2, localAdDownloadInfo);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.jdField_a_of_type_Int == 4) {
+      AdDownloadStateHandler.OnResumeDownload.doCallBack(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, localAdDownloadInfo);
     }
     for (;;)
     {
-      try
-      {
-        localObject = URLEncoder.encode("{\"click_pos\":\"8\"}", "utf-8");
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "URLEncoder.encode(\"{\\\"cl…k_pos\\\":\\\"8\\\"}\", \"utf-8\")");
-        localObject = this.jdField_a_of_type_Ule.b + "&gd=1&feeds_attachment=" + (String)localObject;
-        this.jdField_a_of_type_Ule.c = ufl.a.a((String)localObject);
-        ukq.a("AD_DOWNLOAD_TAG", "needReplaceUrl: pkg = " + this.jdField_a_of_type_Ule.d + "  url = " + this.jdField_a_of_type_Ule.c);
-        localObject = AdDownloadCallBack.OnReplaceUrl;
-        RIJDownloadView localRIJDownloadView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-        localuev.e(this.jdField_a_of_type_Ule.c);
-        ((AdDownloadCallBack)localObject).doCallBack(localRIJDownloadView, localuev);
-        if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_Ule.c)) {
-          break;
-        }
-        localObject = AdDownloadCallBack.OnReplaceUrl;
-        localRIJDownloadView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-        localuev.e("");
-        ((AdDownloadCallBack)localObject).doCallBack(localRIJDownloadView, localuev);
-        localObject = AdDownloadCallBack.OnErrorDownload;
-        localRIJDownloadView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-        localuev.c(-1);
-        localuev.b("url is empty");
-        localuev.a(6);
-        ((AdDownloadCallBack)localObject).doCallBack(localRIJDownloadView, localuev);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        str = "";
-        continue;
-      }
-      label302:
-      String str = this.jdField_a_of_type_Ule.b + "&gd=1";
-    }
-    if (this.jdField_a_of_type_Ule.jdField_a_of_type_Int == 4) {
-      AdDownloadCallBack.OnResumeDownload.doCallBack(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, localuev);
-    }
-    for (;;)
-    {
-      ukq.a("AD_DOWNLOAD_TAG", "startDownload: pkg = " + this.jdField_a_of_type_Ule.d + "  url = " + this.jdField_a_of_type_Ule.c);
-      bjju.a().a(null, uey.a(uey.a, this.jdField_a_of_type_Ule), "biz_src_feeds_kandianads", null, 0);
+      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", "startDownload: pkg = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.d + "  url = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c);
+      DownloadProxy.a().a(null, YYBDownloadEngine.a(YYBDownloadEngine.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData), "biz_src_feeds_kandianads", null, 0);
       return;
-      AdDownloadCallBack.OnStartDownload.doCallBack(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, localuev);
+      AdDownloadStateHandler.OnStartDownload.doCallBack(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, localAdDownloadInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.YYBDownloadEngine.startDownload.1
  * JD-Core Version:    0.7.0.1
  */

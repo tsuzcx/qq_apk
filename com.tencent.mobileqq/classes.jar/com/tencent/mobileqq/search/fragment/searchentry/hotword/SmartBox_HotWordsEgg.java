@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class SmartBox_HotWordsEgg
   extends JceStruct
 {
-  public long iEndTimeStamp;
-  public int iExposureCount;
-  public int iId;
-  public int iWordId;
+  public long iEndTimeStamp = 0L;
+  public int iExposureCount = 0;
+  public int iId = 0;
+  public int iWordId = 0;
   public String sAppend = "";
   public String sIcon = "";
   
@@ -52,7 +52,7 @@ public final class SmartBox_HotWordsEgg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hotword.SmartBox_HotWordsEgg
  * JD-Core Version:    0.7.0.1
  */

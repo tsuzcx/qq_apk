@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import akmj;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import java.util.Map;
 
-public class PhotoListLogicDefault$7
+class PhotoListLogicDefault$7
   implements Runnable
 {
-  public PhotoListLogicDefault$7(akmj paramakmj, String paramString) {}
+  PhotoListLogicDefault$7(PhotoListLogicDefault paramPhotoListLogicDefault, String paramString) {}
   
   public void run()
   {
     Message localMessage = Message.obtain();
     localMessage.what = 3;
-    String str = ((NewPhotoListActivity)this.this$0.mActivity).a(this.a);
-    localMessage.obj = str;
+    Object localObject = (NewPhotoListActivity)this.this$0.mActivity;
+    localObject = NewPhotoListActivity.a(this.a);
+    localMessage.obj = localObject;
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    AlbumUtil.getMediaInfo(localLocalMediaInfo, str);
-    PhotoListBaseData.newCaptureMediaInfo.put(str, localLocalMediaInfo);
+    AlbumUtil.a(localLocalMediaInfo, (String)localObject);
+    PhotoListBaseData.newCaptureMediaInfo.put(localObject, localLocalMediaInfo);
     ((NewPhotoListActivity)this.this$0.mActivity).a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListLogicDefault.7
  * JD-Core Version:    0.7.0.1
  */

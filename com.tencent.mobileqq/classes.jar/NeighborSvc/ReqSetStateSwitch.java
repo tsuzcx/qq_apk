@@ -8,8 +8,8 @@ public final class ReqSetStateSwitch
   extends JceStruct
 {
   static ReqHeader cache_stHeader;
-  public byte bIsOpen;
-  public ReqHeader stHeader;
+  public byte bIsOpen = 0;
+  public ReqHeader stHeader = null;
   
   public ReqSetStateSwitch() {}
   

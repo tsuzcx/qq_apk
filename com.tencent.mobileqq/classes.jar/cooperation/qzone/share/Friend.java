@@ -8,7 +8,7 @@ public class Friend
   public long mUin = -1L;
   public String uinKey = "";
   public int vipLevel = -1;
-  public int who;
+  public int who = 0;
   
   public Friend() {}
   
@@ -24,7 +24,7 @@ public class Friend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.share.Friend
  * JD-Core Version:    0.7.0.1
  */

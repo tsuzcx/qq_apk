@@ -8,10 +8,10 @@ public final class share_outsite_rsp
   extends JceStruct
 {
   static s_arkshare cache_ark_sharedata = new s_arkshare();
-  public s_arkshare ark_sharedata;
-  public int iShareOutType;
+  public s_arkshare ark_sharedata = null;
+  public int iShareOutType = 0;
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   public String strProgramID = "";
   public String strProgramMsg = "";
   public String strProgramPath = "";

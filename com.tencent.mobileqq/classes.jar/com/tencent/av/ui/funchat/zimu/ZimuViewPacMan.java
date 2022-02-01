@@ -5,30 +5,25 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import com.tencent.av.AVLog;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.handler.SentenceInfo;
+import com.tencent.av.core.VcSystemInfo;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import lbd;
-import lgo;
-import llq;
-import moy;
-import moz;
-import mpd;
-import mpe;
-import mpk;
 
 public class ZimuViewPacMan
   extends ZimuViewMotion
 {
-  static final moy[] jdField_a_of_type_ArrayOfMoy = { new moy(Color.parseColor("#ffffff"), Color.parseColor("#000000"), 4) };
+  static final IZimuItemView.FontPara[] jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara = { new IZimuItemView.FontPara(Color.parseColor("#ffffff"), Color.parseColor("#000000"), 4) };
   WeakReference<ZimuView> jdField_a_of_type_JavaLangRefWeakReference;
   Random jdField_a_of_type_JavaUtilRandom = new Random();
   int[] jdField_a_of_type_ArrayOfInt = { 48, 38, 34 };
   Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = { null, null };
-  List<mpk> jdField_b_of_type_JavaUtilList = new ArrayList(4);
+  List<ZimuViewPacMan.RAILWAY> jdField_b_of_type_JavaUtilList = new ArrayList(4);
   final int[] jdField_b_of_type_ArrayOfInt = { 70, 58, 52 };
   int[] c;
   
@@ -39,7 +34,7 @@ public class ZimuViewPacMan
     int i = 0;
     while (i < 4)
     {
-      paramVideoAppInterface = new mpk(this, i, 0);
+      paramVideoAppInterface = new ZimuViewPacMan.RAILWAY(this, i, 0);
       this.jdField_b_of_type_JavaUtilList.add(paramVideoAppInterface);
       i += 1;
     }
@@ -48,7 +43,7 @@ public class ZimuViewPacMan
   
   long a()
   {
-    long l = llq.d();
+    long l = VcSystemInfo.getMaxCpuFreq();
     if (l > 1800000L) {
       this.jdField_c_of_type_Long = 50L;
     }
@@ -68,7 +63,7 @@ public class ZimuViewPacMan
     return "pacman";
   }
   
-  protected List<moz> a(lgo paramlgo, boolean paramBoolean)
+  protected List<ZimuItemView> a(SentenceInfo paramSentenceInfo, boolean paramBoolean)
   {
     c();
     ArrayList localArrayList = new ArrayList();
@@ -77,18 +72,18 @@ public class ZimuViewPacMan
     int n = this.jdField_c_of_type_ArrayOfInt.length;
     int i = k % this.jdField_a_of_type_ArrayOfInt.length;
     int j = c();
-    Object localObject = new mpe(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap, this.jdField_c_of_type_ArrayOfInt[(k % n)], this.jdField_b_of_type_ArrayOfInt[(k % m)], j);
-    localObject = new mpd(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, (mpe)localObject);
-    ((mpd)localObject).a(paramBoolean);
-    ((mpd)localObject).a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[i], jdField_a_of_type_ArrayOfMoy[0]);
-    ((mpd)localObject).a(paramlgo);
+    Object localObject = new ZimuItemViewPacMan.PacManPara(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap, this.jdField_c_of_type_ArrayOfInt[(k % n)], this.jdField_b_of_type_ArrayOfInt[(k % m)], j);
+    localObject = new ZimuItemViewPacMan(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, (ZimuItemViewPacMan.PacManPara)localObject);
+    ((ZimuItemViewPacMan)localObject).a(paramBoolean);
+    ((ZimuItemViewPacMan)localObject).a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[i], jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara[0]);
+    ((ZimuItemViewPacMan)localObject).a(paramSentenceInfo);
     m = this.jdField_c_of_type_Int;
-    k = ((mpd)localObject).d();
+    k = ((ZimuItemViewPacMan)localObject).d();
     j = a(m * j, k);
-    ((mpd)localObject).a(this.jdField_a_of_type_Int, j);
-    ((mpd)localObject).a(0L);
+    ((ZimuItemViewPacMan)localObject).a(this.jdField_a_of_type_Int, j);
+    ((ZimuItemViewPacMan)localObject).a(0L);
     localArrayList.add(localObject);
-    lbd.f("ZimuViewPacMan", "onCreateItemView:|" + j + "|" + k + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_a_of_type_ArrayOfInt[i]);
+    AVLog.printColorLog("ZimuViewPacMan", "onCreateItemView:|" + j + "|" + k + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_a_of_type_ArrayOfInt[i]);
     return localArrayList;
   }
   
@@ -97,22 +92,22 @@ public class ZimuViewPacMan
     Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      mpk localmpk = (mpk)localIterator.next();
-      if (localmpk.jdField_a_of_type_Int == paramInt)
+      ZimuViewPacMan.RAILWAY localRAILWAY = (ZimuViewPacMan.RAILWAY)localIterator.next();
+      if (localRAILWAY.jdField_a_of_type_Int == paramInt)
       {
-        localmpk.jdField_b_of_type_Int -= 1;
-        if (localmpk.jdField_b_of_type_Int == 0)
+        localRAILWAY.jdField_b_of_type_Int -= 1;
+        if (localRAILWAY.jdField_b_of_type_Int == 0)
         {
           localIterator.remove();
-          this.jdField_b_of_type_JavaUtilList.add(0, localmpk);
+          this.jdField_b_of_type_JavaUtilList.add(0, localRAILWAY);
         }
       }
     }
   }
   
-  protected void a(moz parammoz)
+  protected void a(ZimuItemView paramZimuItemView)
   {
-    a(((mpd)parammoz).e());
+    a(((ZimuItemViewPacMan)paramZimuItemView).e());
   }
   
   public void b()
@@ -146,8 +141,8 @@ public class ZimuViewPacMan
     }
     try
     {
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[0] = BitmapFactory.decodeResource(getContext().getResources(), 2130842358);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[1] = BitmapFactory.decodeResource(getContext().getResources(), 2130842359);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[0] = BitmapFactory.decodeResource(getContext().getResources(), 2130842501);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[1] = BitmapFactory.decodeResource(getContext().getResources(), 2130842502);
       a();
       super.b();
       return;
@@ -161,21 +156,21 @@ public class ZimuViewPacMan
     }
   }
   
-  protected void b(moz parammoz)
+  protected void b(ZimuItemView paramZimuItemView)
   {
-    super.b(parammoz);
-    parammoz.d();
-    parammoz = (mpd)parammoz;
+    super.b(paramZimuItemView);
+    paramZimuItemView.d();
+    paramZimuItemView = (ZimuItemViewPacMan)paramZimuItemView;
     int i = this.jdField_a_of_type_JavaUtilRandom.nextInt(40);
     int j = this.jdField_c_of_type_ArrayOfInt.length;
     int k = this.jdField_b_of_type_ArrayOfInt.length;
     int m = this.jdField_a_of_type_ArrayOfInt.length;
     int n = c();
-    parammoz.a(new mpe(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap, this.jdField_c_of_type_ArrayOfInt[(i % j)], this.jdField_b_of_type_ArrayOfInt[(i % k)], n));
-    parammoz.a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[(i % m)], jdField_a_of_type_ArrayOfMoy[0]);
-    i = a(this.jdField_c_of_type_Int * n, parammoz.d());
-    parammoz.a(this.jdField_a_of_type_Int, i);
-    parammoz.a(0L);
+    paramZimuItemView.a(new ZimuItemViewPacMan.PacManPara(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap, this.jdField_c_of_type_ArrayOfInt[(i % j)], this.jdField_b_of_type_ArrayOfInt[(i % k)], n));
+    paramZimuItemView.a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[(i % m)], jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara[0]);
+    i = a(this.jdField_c_of_type_Int * n, paramZimuItemView.d());
+    paramZimuItemView.a(this.jdField_a_of_type_Int, i);
+    paramZimuItemView.a(0L);
   }
   
   int c()
@@ -189,15 +184,15 @@ public class ZimuViewPacMan
     }
     for (i = this.jdField_a_of_type_JavaUtilRandom.nextInt(i * 10) % i;; i = 0)
     {
-      mpk localmpk = (mpk)this.jdField_b_of_type_JavaUtilList.get(i);
-      localmpk.jdField_b_of_type_Int += 1;
+      ZimuViewPacMan.RAILWAY localRAILWAY = (ZimuViewPacMan.RAILWAY)this.jdField_b_of_type_JavaUtilList.get(i);
+      localRAILWAY.jdField_b_of_type_Int += 1;
       this.jdField_b_of_type_JavaUtilList.remove(i);
-      this.jdField_b_of_type_JavaUtilList.add(localmpk);
-      return localmpk.jdField_a_of_type_Int;
+      this.jdField_b_of_type_JavaUtilList.add(localRAILWAY);
+      return localRAILWAY.jdField_a_of_type_Int;
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     int j = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length;
@@ -215,7 +210,7 @@ public class ZimuViewPacMan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewPacMan
  * JD-Core Version:    0.7.0.1
  */

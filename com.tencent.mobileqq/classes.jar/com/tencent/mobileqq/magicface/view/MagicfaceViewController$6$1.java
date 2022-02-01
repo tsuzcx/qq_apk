@@ -2,29 +2,27 @@ package com.tencent.mobileqq.magicface.view;
 
 import android.widget.ImageView;
 import android.widget.TextView;
-import awsw;
-import awsy;
 
-public class MagicfaceViewController$6$1
+class MagicfaceViewController$6$1
   implements Runnable
 {
-  public MagicfaceViewController$6$1(awsy paramawsy, String paramString) {}
+  MagicfaceViewController$6$1(MagicfaceViewController.6 param6, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Awsy.jdField_a_of_type_Int == 1)
+    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.jdField_a_of_type_Int == 1)
     {
       if (this.jdField_a_of_type_JavaLangString != null) {
         break label48;
       }
-      this.jdField_a_of_type_Awsy.jdField_a_of_type_Awsw.a.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Awsy.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
       return;
       label48:
-      this.jdField_a_of_type_Awsy.jdField_a_of_type_Awsw.a.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(0);
     }
   }
 }

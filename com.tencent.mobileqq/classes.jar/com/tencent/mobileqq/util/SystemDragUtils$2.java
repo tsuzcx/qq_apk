@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.util;
 
-import admh;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipData.Item;
@@ -10,26 +9,26 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
-import athn;
-import auea;
-import bhbl;
-import bkwk;
-import bkyq;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.securitysdk.utils.MD5;
+import com.tencent.util.UiThreadUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public final class SystemDragUtils$2
+final class SystemDragUtils$2
   implements Runnable
 {
-  public SystemDragUtils$2(ClipData paramClipData, Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ProgressDialog paramProgressDialog) {}
+  SystemDragUtils$2(ClipData paramClipData, Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ProgressDialog paramProgressDialog) {}
   
   public void run()
   {
@@ -124,7 +123,7 @@ public final class SystemDragUtils$2
         if ("file".equalsIgnoreCase(localUri.getScheme()))
         {
           str1 = localUri.getPath();
-          k = auea.a(str1);
+          k = FileManagerUtil.a(str1);
           if (k != 0) {
             break label1341;
           }
@@ -149,19 +148,19 @@ public final class SystemDragUtils$2
             if (!"content".equalsIgnoreCase(localUri.getScheme())) {
               break label1313;
             }
-            str1 = bhbl.a(localUri, this.jdField_a_of_type_AndroidContentContext.getContentResolver());
+            str1 = SystemDragUtils.a(localUri, this.jdField_a_of_type_AndroidContentContext.getContentResolver());
             if (!TextUtils.isEmpty(str1)) {
               break label1302;
             }
-            str1 = bhbl.a(localUri, this.jdField_a_of_type_AndroidContentContext);
+            str1 = SystemDragUtils.a(localUri, this.jdField_a_of_type_AndroidContentContext);
             if (QLog.isColorLevel()) {
               QLog.d("SystemDragUtils", 2, "drag description.name=" + str1);
             }
             localObject3 = str1;
             if (TextUtils.isEmpty(str1)) {
-              localObject3 = bkwk.a(localUri.toString()) + "." + str2;
+              localObject3 = MD5.a(localUri.toString()) + "." + str2;
             }
-            str1 = bhbl.a(this.jdField_a_of_type_AndroidContentContext, localUri, bhbl.a(), (String)localObject3);
+            str1 = SystemDragUtils.a(this.jdField_a_of_type_AndroidContentContext, localUri, SystemDragUtils.a(), (String)localObject3);
             localObject3 = localObject2;
             localObject2 = str1;
             break;
@@ -182,12 +181,12 @@ public final class SystemDragUtils$2
             while (((Iterator)localObject2).hasNext())
             {
               localObject3 = (String)((Iterator)localObject2).next();
-              admh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (String)localObject3);
+              ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (String)localObject3);
             }
           }
           if ((localArrayList2.size() > 0) && (localArrayList2.size() == localArrayList1.size()))
           {
-            bkyq.a(new SystemDragUtils.2.1(this, localArrayList2, localHashMap));
+            UiThreadUtil.a(new SystemDragUtils.2.1(this, localArrayList2, localHashMap));
             if ((this.jdField_a_of_type_AndroidAppProgressDialog == null) || (!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
               break;
             }
@@ -199,23 +198,23 @@ public final class SystemDragUtils$2
             localObject2 = BaseApplicationImpl.sApplication.getRuntime();
             if ((localObject2 != null) && ((localObject2 instanceof QQAppInterface)))
             {
-              bkyq.a(new SystemDragUtils.2.2(this));
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)
+              UiThreadUtil.a(new SystemDragUtils.2.2(this));
+              if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
               {
                 localObject3 = localArrayList1.iterator();
                 while (((Iterator)localObject3).hasNext())
                 {
                   str1 = (String)((Iterator)localObject3).next();
-                  ((QQAppInterface)localObject2).getFileManagerEngine().a(str1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+                  ((QQAppInterface)localObject2).getFileManagerEngine().a(str1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
                 }
               }
               localObject3 = localArrayList1.iterator();
               while (((Iterator)localObject3).hasNext())
               {
                 str1 = (String)((Iterator)localObject3).next();
-                ((QQAppInterface)localObject2).getFileManagerEngine().a(str1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, true);
+                ((QQAppInterface)localObject2).getFileManagerEngine().a(str1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
               }
-              bkyq.a(new SystemDragUtils.2.3(this));
+              UiThreadUtil.a(new SystemDragUtils.2.3(this));
             }
             if ((this.jdField_a_of_type_AndroidAppProgressDialog == null) || (!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
               break;

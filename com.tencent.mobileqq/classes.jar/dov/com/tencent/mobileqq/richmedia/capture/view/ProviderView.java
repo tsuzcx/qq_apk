@@ -3,7 +3,6 @@ package dov.com.tencent.mobileqq.richmedia.capture.view;
 import android.content.Context;
 import android.os.Handler;
 import android.widget.FrameLayout;
-import bpoa;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 
@@ -13,15 +12,18 @@ public abstract class ProviderView
   protected int a;
   Context a;
   protected Handler a;
-  protected bpoa a;
   protected AppInterface a;
+  protected ProviderView.ProviderViewListener a;
   protected boolean a;
-  protected int b = 206;
+  protected int b;
+  protected boolean b;
   
   public ProviderView(Context paramContext)
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 206;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
@@ -36,9 +38,9 @@ public abstract class ProviderView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setProviderViewListener(bpoa parambpoa)
+  public void setProviderViewListener(ProviderView.ProviderViewListener paramProviderViewListener)
   {
-    this.jdField_a_of_type_Bpoa = parambpoa;
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener = paramProviderViewListener;
   }
   
   public void setTabBarPosition(int paramInt)
@@ -48,7 +50,7 @@ public abstract class ProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.view.ProviderView
  * JD-Core Version:    0.7.0.1
  */

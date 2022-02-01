@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ancc;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel;
@@ -19,13 +18,13 @@ class SpriteUIHandler$4
       if (SpriteUIHandler.a(this.this$0).a() == null) {
         return;
       }
-      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().getAIORootView().findViewById(2131376947);
+      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().a().findViewById(2131377356);
       if (1 == this.a)
       {
         if (localXPanelContainer.a() != 21) {
           return;
         }
-        SpriteUIHandler.a(this.this$0).a().hidePanel();
+        SpriteUIHandler.a(this.this$0).a().an();
         return;
       }
     }
@@ -39,10 +38,10 @@ class SpriteUIHandler$4
       BaseChatPie localBaseChatPie = SpriteUIHandler.a(this.this$0).a();
       if (localBaseChatPie != null)
       {
-        ApolloPanel localApolloPanel = localBaseChatPie.mApolloPanel;
+        ApolloPanel localApolloPanel = localBaseChatPie.a;
         if ((localApolloPanel != null) && (localApolloPanel.a() == 7))
         {
-          localBaseChatPie.showApolloStatusPanel(0);
+          localBaseChatPie.p(0);
           return;
         }
       }
@@ -52,7 +51,7 @@ class SpriteUIHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.4
  * JD-Core Version:    0.7.0.1
  */

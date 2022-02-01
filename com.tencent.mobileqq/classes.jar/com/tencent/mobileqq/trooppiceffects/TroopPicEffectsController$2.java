@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import bgtj;
-import bgtl;
-
-public class TroopPicEffectsController$2
+class TroopPicEffectsController$2
   implements Runnable
 {
-  public TroopPicEffectsController$2(bgtj parambgtj, bgtl parambgtl) {}
+  TroopPicEffectsController$2(TroopPicEffectsController paramTroopPicEffectsController, TroopPicEffectsController.OnAnimationEndListener paramOnAnimationEndListener) {}
   
   public void run()
   {

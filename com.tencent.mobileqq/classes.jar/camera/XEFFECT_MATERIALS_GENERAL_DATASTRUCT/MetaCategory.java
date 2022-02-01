@@ -13,11 +13,11 @@ public final class MetaCategory
   static Map<String, String> cache_dynamicFields;
   static ArrayList<MetaMaterial> cache_materials;
   static ArrayList<MetaCategory> cache_subCategories = new ArrayList();
-  public Map<String, String> dynamicFields;
+  public Map<String, String> dynamicFields = null;
   public String id = "";
-  public ArrayList<MetaMaterial> materials;
+  public ArrayList<MetaMaterial> materials = null;
   public String name = "";
-  public ArrayList<MetaCategory> subCategories;
+  public ArrayList<MetaCategory> subCategories = null;
   public String thumbUrl = "";
   
   static
@@ -77,7 +77,7 @@ public final class MetaCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory
  * JD-Core Version:    0.7.0.1
  */

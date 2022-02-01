@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.aladdin.config.network.AladdinConfigVersionManager;
 import com.tencent.aladdin.config.network.AladdinRequestHandler;
@@ -22,7 +21,7 @@ import java.util.Map;
 public class Aladdin
 {
   private static final AsyncTaskExecutor DEFAULT_EXECUTOR;
-  private static final AladdinConfigHandler DEFAULT_SIMPLE_CONFIG_HANDLER;
+  private static final SimpleConfigHandler DEFAULT_SIMPLE_CONFIG_HANDLER;
   public static final AladdinConfigParser DEFAULT_SIMPLE_OBJECT_PARSER = new SimpleObjectParser(sBeanTypeMap);
   private static final AladdinConfigParser DEFAULT_SIMPLE_PARSER;
   private static String ROOT_DIR = null;
@@ -31,7 +30,7 @@ public class Aladdin
   private static Integer sAppId;
   private static String sAppVersion;
   private static final Map<String, Class<?>> sBeanTypeMap;
-  private static final SparseArrayCompat<AladdinConfigHandler> sConfigHandlerMap;
+  private static final SparseArrayCompat<SimpleConfigHandler> sConfigHandlerMap;
   private static final SparseArrayCompat<AladdinConfigParser> sConfigParserMap;
   private static AsyncTaskExecutor sExecutor = null;
   private static AladdinLogger sLogger;
@@ -92,17 +91,17 @@ public class Aladdin
     return withUserId(sUserId).get(paramInt);
   }
   
-  public static AladdinConfigHandler getConfigHandlerById(int paramInt)
+  public static SimpleConfigHandler getConfigHandlerById(int paramInt)
   {
     synchronized (sConfigHandlerMap)
     {
-      AladdinConfigHandler localAladdinConfigHandler = (AladdinConfigHandler)sConfigHandlerMap.get(paramInt);
-      if (localAladdinConfigHandler == null)
+      SimpleConfigHandler localSimpleConfigHandler = (SimpleConfigHandler)sConfigHandlerMap.get(paramInt);
+      if (localSimpleConfigHandler == null)
       {
-        localAladdinConfigHandler = DEFAULT_SIMPLE_CONFIG_HANDLER;
-        return localAladdinConfigHandler;
+        localSimpleConfigHandler = DEFAULT_SIMPLE_CONFIG_HANDLER;
+        return localSimpleConfigHandler;
       }
-      return localAladdinConfigHandler;
+      return localSimpleConfigHandler;
     }
   }
   
@@ -173,7 +172,7 @@ public class Aladdin
       sRequestHandler = Aladdin.InitParams.access$700(paramInitParams);
       sAppVersion = Aladdin.InitParams.access$800(paramInitParams);
       sLogger = Aladdin.InitParams.access$900(paramInitParams);
-      Log.i("Aladdin", "initialize: GitHash=2b7f180");
+      Log.i("Aladdin", "initialize: GitHash=a0c9471");
       DeviceInfoUtils.initDisplayParams(Aladdin.InitParams.access$200(paramInitParams));
       return;
       ROOT_DIR = Aladdin.InitParams.access$200(paramInitParams).getFilesDir().getAbsolutePath() + File.separator + "aladdin_configs";
@@ -197,11 +196,11 @@ public class Aladdin
     }
   }
   
-  public static void registerConfigHandler(int paramInt, @NonNull AladdinConfigHandler paramAladdinConfigHandler)
+  public static void registerConfigHandler(int paramInt, @NonNull SimpleConfigHandler paramSimpleConfigHandler)
   {
     synchronized (sConfigHandlerMap)
     {
-      sConfigHandlerMap.put(paramInt, paramAladdinConfigHandler);
+      sConfigHandlerMap.put(paramInt, paramSimpleConfigHandler);
       return;
     }
   }
@@ -248,7 +247,7 @@ public class Aladdin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aladdin.config.Aladdin
  * JD-Core Version:    0.7.0.1
  */

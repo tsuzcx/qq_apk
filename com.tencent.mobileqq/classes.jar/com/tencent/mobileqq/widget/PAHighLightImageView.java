@@ -8,37 +8,36 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import biqk;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class PAHighLightImageView
   extends PAImageView
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private biqk jdField_a_of_type_Biqk;
+  private PAHighLightImageView.ViewOnTouchListener jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView$ViewOnTouchListener;
   
   public PAHighLightImageView(Context paramContext)
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Biqk = new biqk(this, paramContext);
-    setOnTouchListener(this.jdField_a_of_type_Biqk);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView$ViewOnTouchListener = new PAHighLightImageView.ViewOnTouchListener(this, paramContext);
+    setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView$ViewOnTouchListener);
   }
   
   public PAHighLightImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Biqk = new biqk(this, paramContext);
-    setOnTouchListener(this.jdField_a_of_type_Biqk);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView$ViewOnTouchListener = new PAHighLightImageView.ViewOnTouchListener(this, paramContext);
+    setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView$ViewOnTouchListener);
   }
   
   public PAHighLightImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Biqk = new biqk(this, paramContext);
-    setOnTouchListener(this.jdField_a_of_type_Biqk);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView$ViewOnTouchListener = new PAHighLightImageView.ViewOnTouchListener(this, paramContext);
+    setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView$ViewOnTouchListener);
   }
   
   public void a()
@@ -46,7 +45,7 @@ public class PAHighLightImageView
     ViewGroup localViewGroup = (ViewGroup)getParent();
     if (localViewGroup != null)
     {
-      View localView = localViewGroup.findViewById(2131373331);
+      View localView = localViewGroup.findViewById(2131373655);
       if (localView != null) {
         localViewGroup.removeView(localView);
       }
@@ -56,14 +55,14 @@ public class PAHighLightImageView
   public void a(Context paramContext, boolean paramBoolean)
   {
     ViewGroup localViewGroup = (ViewGroup)getParent();
-    if ((localViewGroup != null) && (localViewGroup.findViewById(2131373331) == null))
+    if ((localViewGroup != null) && (localViewGroup.findViewById(2131373655) == null))
     {
       View localView = new View(paramContext);
-      localView.setId(2131373331);
+      localView.setId(2131373655);
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setColor(Color.argb(77, 0, 0, 0));
       if (paramBoolean) {
-        localGradientDrawable.setCornerRadius(AIOUtils.dp2px(5.0F, paramContext.getResources()));
+        localGradientDrawable.setCornerRadius(AIOUtils.a(5.0F, paramContext.getResources()));
       }
       localView.setBackgroundDrawable(localGradientDrawable);
       localViewGroup.addView(localView, new ViewGroup.LayoutParams(getLayoutParams()));
@@ -79,7 +78,7 @@ public class PAHighLightImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAHighLightImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package cooperation.qzone.mobilereport;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -78,7 +78,7 @@ class MobileReportManager$NewReportKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.mobilereport.MobileReportManager.NewReportKey
  * JD-Core Version:    0.7.0.1
  */

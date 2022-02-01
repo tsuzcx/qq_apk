@@ -6,25 +6,23 @@ import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGL10;
-import mvz;
-import mwc;
 
 public class VideoEffectTest
   implements Runnable
 {
-  private android.opengl.EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  private android.opengl.EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay;
-  private android.opengl.EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface;
+  private android.opengl.EGLContext jdField_a_of_type_AndroidOpenglEGLContext = null;
+  private android.opengl.EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay = null;
+  private android.opengl.EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface = null;
+  VideoEffectTest.TestResultCallback jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback = null;
   Thread jdField_a_of_type_JavaLangThread = null;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  mwc jdField_a_of_type_Mwc = null;
+  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
+  private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+  private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
+  private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
   
-  public VideoEffectTest(mwc parammwc)
+  public VideoEffectTest(VideoEffectTest.TestResultCallback paramTestResultCallback)
   {
-    this.jdField_a_of_type_Mwc = parammwc;
+    this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback = paramTestResultCallback;
   }
   
   private void c()
@@ -118,10 +116,10 @@ public class VideoEffectTest
     {
       try
       {
-        localObject = new mvz((byte[])localObject, 480, 640);
-        ((mvz)localObject).a();
-        l2 = (((mvz)localObject).a() + 0L + ((mvz)localObject).a()) / 2L;
-        ((mvz)localObject).b();
+        localObject = new FilterProcess((byte[])localObject, 480, 640);
+        ((FilterProcess)localObject).a();
+        l2 = (((FilterProcess)localObject).a() + 0L + ((FilterProcess)localObject).a()) / 2L;
+        ((FilterProcess)localObject).b();
         if (l2 > 0L) {
           continue;
         }
@@ -134,8 +132,8 @@ public class VideoEffectTest
         i = 0;
         continue;
       }
-      if (this.jdField_a_of_type_Mwc != null) {
-        this.jdField_a_of_type_Mwc.a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
+      if (this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback != null) {
+        this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback.a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
       }
       return;
       i = 1;
@@ -164,9 +162,9 @@ public class VideoEffectTest
     }
     catch (Throwable localThrowable)
     {
-      if (this.jdField_a_of_type_Mwc != null)
+      if (this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback != null)
       {
-        this.jdField_a_of_type_Mwc.a(0, 0L, null, null);
+        this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback.a(0, 0L, null, null);
         return;
         d();
       }
@@ -175,7 +173,7 @@ public class VideoEffectTest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.videoeffect.VideoEffectTest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,26 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
-import biao;
-import biaw;
-import biax;
+import com.tencent.mobileqq.vip.lianghao.data.LiangHaoRsp;
 import java.util.List;
 
-public class GetRegisterLiangHaoList$2
+class GetRegisterLiangHaoList$2
   implements Runnable
 {
-  public GetRegisterLiangHaoList$2(biaw parambiaw, biao parambiao, biax parambiax) {}
+  GetRegisterLiangHaoList$2(GetRegisterLiangHaoList paramGetRegisterLiangHaoList, LiangHaoRsp paramLiangHaoRsp, GetRegisterLiangHaoList.RequestCallBack paramRequestCallBack) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Biao != null) && (this.jdField_a_of_type_Biao.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Biao.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Biao.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp != null) && (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      this.jdField_a_of_type_Biax.a(this.jdField_a_of_type_Biao);
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoNetGetRegisterLiangHaoList$RequestCallBack.a(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp);
       return;
     }
-    this.jdField_a_of_type_Biax.a(-1, "");
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoNetGetRegisterLiangHaoList$RequestCallBack.a(-1, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.net.GetRegisterLiangHaoList.2
  * JD-Core Version:    0.7.0.1
  */

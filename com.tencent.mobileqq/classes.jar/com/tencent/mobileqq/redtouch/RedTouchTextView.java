@@ -24,11 +24,11 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.vas.VasApngUtil;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,22 +39,22 @@ import org.json.JSONObject;
 public class RedTouchTextView
   extends TextView
 {
-  private int jdField_a_of_type_Int = a(30);
+  private int jdField_a_of_type_Int = 0;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   public Drawable a;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private BusinessInfoCheckUpdate.AppInfo jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
+  private BusinessInfoCheckUpdate.AppInfo jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   public String a;
   private List<BusinessInfoCheckUpdate.RedTypeInfo> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int = 0;
   public Drawable b;
   private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int c;
   public Drawable c;
-  private int d = a(9);
-  private int e = a(9);
+  private int d = 0;
+  private int e = 0;
   private int f = a(4);
   private int g = 100;
   
@@ -66,6 +66,7 @@ public class RedTouchTextView
   public RedTouchTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
   }
@@ -81,7 +82,7 @@ public class RedTouchTextView
   
   private int a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    if (a(paramRedTypeInfo, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo))
+    if (a(paramRedTypeInfo, this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo))
     {
       if (this.jdField_a_of_type_Boolean) {
         return this.jdField_b_of_type_Int + this.f;
@@ -321,7 +322,7 @@ public class RedTouchTextView
       }
       paramInt1 = getWidth() - a(this.jdField_a_of_type_JavaUtilList, paramInt1) - a(0);
       paramInt2 = getHeight() / 2 - this.d / 2;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850427);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850830);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramInt1, paramInt2, this.d + paramInt1, this.d + paramInt2);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
@@ -357,7 +358,7 @@ public class RedTouchTextView
             if (QLog.isColorLevel()) {
               QLog.d("RedTouchTextView", 2, "draw redtouch img gif ");
             }
-            paramJSONObject = getResources().getDrawable(2130840348);
+            paramJSONObject = getResources().getDrawable(2130840452);
             localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
             localURLDrawableOptions.mLoadingDrawable = paramJSONObject;
             localURLDrawableOptions.mFailedDrawable = paramJSONObject;
@@ -386,7 +387,7 @@ public class RedTouchTextView
           {
             if (paramInt2 == 1)
             {
-              paramJSONObject = getResources().getDrawable(2130850427);
+              paramJSONObject = getResources().getDrawable(2130850830);
               paramJSONObject.setBounds(getWidth() - a(0) - a(9), k - a(4), getWidth() - a(0), k + a(5));
               paramJSONObject.draw(paramCanvas);
             }
@@ -429,7 +430,7 @@ public class RedTouchTextView
   
   private boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo == null) {
       QLog.d("RedTouchTextView", 1, "isSupportRedTouch appinfo = null");
     }
     do
@@ -439,30 +440,30 @@ public class RedTouchTextView
         do
         {
           return false;
-          if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 1)
+          if (this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 1)
           {
-            QLog.d("RedTouchTextView", 1, "isSupportRedTouch inewflag = 0, path = " + this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path);
+            QLog.d("RedTouchTextView", 1, "isSupportRedTouch inewflag = 0, path = " + this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.path);
             return false;
           }
-          localObject = (BusinessInfoCheckUpdate.RedDisplayInfo)this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.red_display_info.get();
+          localObject = (BusinessInfoCheckUpdate.RedDisplayInfo)this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.red_display_info.get();
           if (localObject != null) {
             break;
           }
         } while (!QLog.isColorLevel());
-        QLog.d("RedTouchTextView", 2, "getRedTypeInfoFromAppInfo diplayInfo = null, path = " + this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get());
+        QLog.d("RedTouchTextView", 2, "getRedTypeInfoFromAppInfo diplayInfo = null, path = " + this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.path.get());
         return false;
         localObject = ((BusinessInfoCheckUpdate.RedDisplayInfo)localObject).red_type_info.get();
         if (localObject != null) {
           break;
         }
       } while (!QLog.isColorLevel());
-      QLog.d("RedTouchTextView", 2, "getRedTypeInfoFromAppInfo redInfos = null, path = " + this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get());
+      QLog.d("RedTouchTextView", 2, "getRedTypeInfoFromAppInfo redInfos = null, path = " + this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.path.get());
       return false;
       if (((List)localObject).size() >= 2) {
         break;
       }
     } while (!QLog.isColorLevel());
-    QLog.d("RedTouchTextView", 2, "getRedTypeInfoFromAppInfo redInfos.size < 2, path = " + this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get());
+    QLog.d("RedTouchTextView", 2, "getRedTypeInfoFromAppInfo redInfos.size < 2, path = " + this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.path.get());
     return false;
     Object localObject = new ArrayList((Collection)localObject);
     int j = a((List)localObject);
@@ -552,8 +553,8 @@ public class RedTouchTextView
       while (paramInt2 < paramList.size())
       {
         localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramList.get(paramInt2);
-        if ((localRedTypeInfo.red_type.get() == 3) && (a(localRedTypeInfo, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo))) {
-          setImageRedNotShowRedPoint(localRedTypeInfo, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+        if ((localRedTypeInfo.red_type.get() == 3) && (a(localRedTypeInfo, this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo))) {
+          setImageRedNotShowRedPoint(localRedTypeInfo, this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo);
         }
         paramInt2 += 1;
       }
@@ -624,7 +625,7 @@ public class RedTouchTextView
     {
       if (paramInt1 == 1)
       {
-        paramRedTypeInfo = getResources().getDrawable(2130850427);
+        paramRedTypeInfo = getResources().getDrawable(2130850830);
         paramRedTypeInfo.setBounds(getWidth() - a(0) - a(9), i - a(4), getWidth() - a(0), a(5) + i);
         paramRedTypeInfo.draw(paramCanvas);
       }
@@ -685,7 +686,7 @@ public class RedTouchTextView
       f2 = ((Paint.FontMetrics)localObject).top;
       if (i != 0)
       {
-        localObject = getResources().getDrawable(2130850431);
+        localObject = getResources().getDrawable(2130850834);
         ((Drawable)localObject).getBounds();
         ((Drawable)localObject).setBounds(paramInt1, m, localRect.right, localRect.bottom);
         ((Drawable)localObject).draw(paramCanvas);
@@ -812,17 +813,17 @@ public class RedTouchTextView
     //   42: aload_2
     //   43: astore_1
     //   44: aload_0
-    //   45: getfield 103	com/tencent/mobileqq/redtouch/RedTouchTextView:jdField_a_of_type_Boolean	Z
+    //   45: getfield 35	com/tencent/mobileqq/redtouch/RedTouchTextView:jdField_a_of_type_Boolean	Z
     //   48: ifne +23 -> 71
     //   51: aload_2
     //   52: astore_1
     //   53: aload 5
     //   55: aload_2
     //   56: aload_0
-    //   57: getfield 55	com/tencent/mobileqq/redtouch/RedTouchTextView:e	I
+    //   57: getfield 39	com/tencent/mobileqq/redtouch/RedTouchTextView:e	I
     //   60: aload_0
-    //   61: getfield 55	com/tencent/mobileqq/redtouch/RedTouchTextView:e	I
-    //   64: invokestatic 585	bheg:a	(Ljava/io/InputStream;II)D
+    //   61: getfield 39	com/tencent/mobileqq/redtouch/RedTouchTextView:e	I
+    //   64: invokestatic 585	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/InputStream;II)D
     //   67: d2i
     //   68: putfield 588	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   71: aload_2
@@ -847,18 +848,18 @@ public class RedTouchTextView
     //   105: aload_3
     //   106: areturn
     //   107: astore_1
-    //   108: ldc 125
+    //   108: ldc 127
     //   110: iconst_1
-    //   111: new 127	java/lang/StringBuilder
+    //   111: new 129	java/lang/StringBuilder
     //   114: dup
-    //   115: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   115: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   118: ldc_w 599
-    //   121: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: aload_1
-    //   125: invokevirtual 389	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   128: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   125: invokevirtual 391	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   128: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokestatic 244	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   137: aload_3
     //   138: areturn
     //   139: astore_3
@@ -866,18 +867,18 @@ public class RedTouchTextView
     //   141: astore_2
     //   142: aload_2
     //   143: astore_1
-    //   144: ldc 125
+    //   144: ldc 127
     //   146: iconst_1
-    //   147: new 127	java/lang/StringBuilder
+    //   147: new 129	java/lang/StringBuilder
     //   150: dup
-    //   151: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   151: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   154: ldc_w 601
-    //   157: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: aload_3
-    //   161: invokevirtual 389	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   164: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   161: invokevirtual 391	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   164: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokestatic 244	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   173: aload 4
     //   175: astore_1
     //   176: aload_2
@@ -887,18 +888,18 @@ public class RedTouchTextView
     //   184: aconst_null
     //   185: areturn
     //   186: astore_1
-    //   187: ldc 125
+    //   187: ldc 127
     //   189: iconst_1
-    //   190: new 127	java/lang/StringBuilder
+    //   190: new 129	java/lang/StringBuilder
     //   193: dup
-    //   194: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   194: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   197: ldc_w 599
-    //   200: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   200: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   203: aload_1
-    //   204: invokevirtual 389	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   207: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   210: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   213: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   204: invokevirtual 391	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   207: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   210: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   213: invokestatic 244	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   216: aconst_null
     //   217: areturn
     //   218: astore_3
@@ -906,18 +907,18 @@ public class RedTouchTextView
     //   220: astore_2
     //   221: aload_2
     //   222: astore_1
-    //   223: ldc 125
+    //   223: ldc 127
     //   225: iconst_1
-    //   226: new 127	java/lang/StringBuilder
+    //   226: new 129	java/lang/StringBuilder
     //   229: dup
-    //   230: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   230: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   233: ldc_w 599
-    //   236: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   239: aload_3
     //   240: invokevirtual 602	java/lang/Error:getMessage	()Ljava/lang/String;
-    //   243: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   246: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   249: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   243: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   246: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   249: invokestatic 244	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   252: aload 4
     //   254: astore_1
     //   255: aload_2
@@ -927,18 +928,18 @@ public class RedTouchTextView
     //   263: aconst_null
     //   264: areturn
     //   265: astore_1
-    //   266: ldc 125
+    //   266: ldc 127
     //   268: iconst_1
-    //   269: new 127	java/lang/StringBuilder
+    //   269: new 129	java/lang/StringBuilder
     //   272: dup
-    //   273: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   273: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   276: ldc_w 599
-    //   279: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   279: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   282: aload_1
-    //   283: invokevirtual 389	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   286: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   292: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   283: invokevirtual 391	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   286: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   292: invokestatic 244	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   295: aconst_null
     //   296: areturn
     //   297: astore_2
@@ -951,18 +952,18 @@ public class RedTouchTextView
     //   308: aload_2
     //   309: athrow
     //   310: astore_1
-    //   311: ldc 125
+    //   311: ldc 127
     //   313: iconst_1
-    //   314: new 127	java/lang/StringBuilder
+    //   314: new 129	java/lang/StringBuilder
     //   317: dup
-    //   318: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   318: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   321: ldc_w 599
-    //   324: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   324: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   327: aload_1
-    //   328: invokevirtual 389	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   331: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   337: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   328: invokevirtual 391	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   331: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   334: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   337: invokestatic 244	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   340: goto -32 -> 308
     //   343: astore_2
     //   344: goto -44 -> 300
@@ -1008,7 +1009,7 @@ public class RedTouchTextView
   
   public BusinessInfoCheckUpdate.AppInfo a()
   {
-    return this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
+    return this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
   }
   
   public void a()
@@ -1029,7 +1030,7 @@ public class RedTouchTextView
     a();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
@@ -1054,7 +1055,7 @@ public class RedTouchTextView
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
     }
-    this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo = paramAppInfo;
+    this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo = paramAppInfo;
     if ((paramAppInfo.red_display_info != null) && (paramAppInfo.red_display_info.red_type_info != null))
     {
       paramAppInfo = paramAppInfo.red_display_info.red_type_info.get();
@@ -1083,7 +1084,7 @@ public class RedTouchTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchTextView
  * JD-Core Version:    0.7.0.1
  */

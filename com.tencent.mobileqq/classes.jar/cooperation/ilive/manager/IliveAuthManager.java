@@ -2,19 +2,20 @@ package cooperation.ilive.manager;
 
 import NS_KING_PUBLIC.stAuth;
 import android.text.TextUtils;
-import bhjl;
-import bkyl;
-import blvh;
-import blvj;
-import blvk;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.litelivesdk.LiteLiveSDKFactory;
+import com.tencent.mobileqq.litelivesdk.api.ILiveSDK;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.ThreeDes;
 import common.config.service.QzoneConfig;
 import cooperation.ilive.pb.QQALive.GetOpenInfoReq;
 import cooperation.ilive.plugin.IlivePluginCallback;
 import cooperation.ilive.plugin.IlivePluginManager;
+import cooperation.ilive.servlet.IliveAuthServlet;
+import cooperation.ilive.time.TimeMonitorData;
+import cooperation.ilive.time.TimeMonitorManager;
 import cooperation.qzone.LocalMultiProcConfig;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -32,9 +33,9 @@ public class IliveAuthManager
   public static final String KEY_QQ_CONNECT_AUTH_TIME = "key_qq_ilive_connect_auth_time";
   public static final String KEY_QQ_CONNECT_OPEN_ID = "key_qq_ilive_connect_open_id";
   private static final String TAG = "IliveAuthManager";
-  private static IliveAuthManager mInstance;
+  private static IliveAuthManager mInstance = null;
   private Map<String, IliveAuthManager.QQConnectData> mCache = new HashMap();
-  private List<WeakReference<IliveAuthManager.Callback>> mWeakCallBackList = new ArrayList();
+  private List<WeakReference<IliveAuthManager.Callback>> mWeakCallBackList = null;
   
   private IliveAuthManager()
   {
@@ -108,11 +109,11 @@ public class IliveAuthManager
     if (IlivePluginManager.getInstance().getPluginCallback() != null) {
       IlivePluginManager.getInstance().getPluginCallback().onPluginLoginStart();
     }
-    blvk.a().a("AUTH_PROCESS").a();
+    TimeMonitorManager.a().a("AUTH_PROCESS").a();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     QQALive.GetOpenInfoReq localGetOpenInfoReq = new QQALive.GetOpenInfoReq();
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), blvh.class);
-    localNewIntent.putExtra("data", bhjl.a(localGetOpenInfoReq.toByteArray()));
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), IliveAuthServlet.class);
+    localNewIntent.putExtra("data", WupUtil.a(localGetOpenInfoReq.toByteArray()));
     localNewIntent.putExtra("cmd", "qqvalivelogin.GetOpenInfo");
     localAppRuntime.startServlet(localNewIntent);
   }
@@ -151,8 +152,8 @@ public class IliveAuthManager
       finally {}
       if (!TextUtils.isEmpty((CharSequence)localObject3))
       {
-        String str2 = bkyl.b((String)localObject2, getStringUin());
-        String str3 = bkyl.b((String)localObject3, getStringUin());
+        String str2 = ThreeDes.b((String)localObject2, getStringUin());
+        String str3 = ThreeDes.b((String)localObject3, getStringUin());
         QLog.d("IliveAuthManager", 1, "use sp openId and accessToken encrypted:" + (String)localObject2 + " , " + (String)localObject3 + ", decrypt:" + str2 + " , " + str3);
         if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3))) {
           this.mCache.put(localException, new IliveAuthManager.QQConnectData(str2, str3));
@@ -168,18 +169,37 @@ public class IliveAuthManager
     }
   }
   
-  public stAuth getLocalIliveAuth()
+  public stAuth getLocalIliveAuth(boolean paramBoolean)
   {
     long l1 = System.currentTimeMillis();
     long l2 = LocalMultiProcConfig.getLong4Uin("key_qq_ilive_connect_auth_time", 0L, getLongUin());
     QLog.e("IliveAuthManager", 1, "getLocalIliveAuth : offest = " + (l1 - l2));
-    if ((TextUtils.isEmpty(IlivePluginManager.getInstance().getLiveToken())) && (l1 - l2 > getQQAuthTime())) {}
+    int j = 0;
+    int i;
+    if ((paramBoolean) && (LiteLiveSDKFactory.a().a() == null))
+    {
+      i = 1;
+      if ((i == 0) || (l1 - l2 <= getQQAuthTime())) {
+        break label109;
+      }
+    }
+    label109:
     IliveAuthManager.QQConnectData localQQConnectData;
     do
     {
       do
       {
         return null;
+        i = j;
+        if (paramBoolean) {
+          break;
+        }
+        i = j;
+        if (!TextUtils.isEmpty(IlivePluginManager.getInstance().getLiveToken())) {
+          break;
+        }
+        i = 1;
+        break;
         localQQConnectData = getCurrentAccountMemoryData();
         if (localQQConnectData != null) {
           return new stAuth(1, localQQConnectData.openId, localQQConnectData.accessToken);
@@ -191,12 +211,14 @@ public class IliveAuthManager
   }
   
   @NotNull
-  public void getStAuth(IliveAuthManager.Callback paramCallback)
+  public void getStAuth(IliveAuthManager.Callback paramCallback, boolean paramBoolean)
   {
-    stAuth localstAuth = getLocalIliveAuth();
+    stAuth localstAuth = getLocalIliveAuth(paramBoolean);
     if (localstAuth != null)
     {
-      paramCallback.onGetAuthInfo(true, localstAuth);
+      if (paramCallback != null) {
+        paramCallback.onGetAuthInfo(true, localstAuth);
+      }
       QLog.e("IliveAuthManager", 1, "getStAuth use local");
       return;
     }
@@ -216,14 +238,14 @@ public class IliveAuthManager
     for (Object localObject1 = "success";; localObject1 = "fail")
     {
       ((HashMap)localObject2).put("status", localObject1);
-      blvk.a().a("AUTH_PROCESS").a("auth_process", (HashMap)localObject2);
+      TimeMonitorManager.a().a("AUTH_PROCESS").a("auth_process", (HashMap)localObject2);
       if (paramBoolean)
       {
         if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
           this.mCache.put(getStringUin(), new IliveAuthManager.QQConnectData(paramString1, paramString2));
         }
-        localObject1 = bkyl.a(paramString1, getStringUin());
-        localObject2 = bkyl.a(paramString2, getStringUin());
+        localObject1 = ThreeDes.a(paramString1, getStringUin());
+        localObject2 = ThreeDes.a(paramString2, getStringUin());
         LocalMultiProcConfig.putString4Uin("key_qq_ilive_connect_open_id", (String)localObject1, getLongUin());
         LocalMultiProcConfig.putString4Uin("key_qq_ilive_connect_access_token", (String)localObject2, getLongUin());
         LocalMultiProcConfig.putLong4Uin("key_qq_ilive_connect_auth_time", System.currentTimeMillis(), getLongUin());
@@ -246,7 +268,7 @@ public class IliveAuthManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.manager.IliveAuthManager
  * JD-Core Version:    0.7.0.1
  */

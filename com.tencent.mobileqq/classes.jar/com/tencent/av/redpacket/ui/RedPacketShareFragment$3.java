@@ -3,7 +3,7 @@ package com.tencent.av.redpacket.ui;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
-public class RedPacketShareFragment$3
+class RedPacketShareFragment$3
   implements Runnable
 {
   RedPacketShareFragment$3(RedPacketShareFragment paramRedPacketShareFragment, int paramInt) {}
@@ -16,7 +16,7 @@ public class RedPacketShareFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketShareFragment.3
  * JD-Core Version:    0.7.0.1
  */

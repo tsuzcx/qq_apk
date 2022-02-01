@@ -1,13 +1,10 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import afsn;
 import android.content.Context;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.LinearLayout;
-import bbja;
-import bbjb;
-import bbjc;
+import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -25,11 +22,11 @@ import mqq.os.MqqHandler;
 
 public class BlankVideoPlayer
   extends LinearLayout
-  implements afsn, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
+  implements FileTransferManager.Callback, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
-  private bbja jdField_a_of_type_Bbja;
-  private bbjb jdField_a_of_type_Bbjb;
-  private bbjc jdField_a_of_type_Bbjc;
+  private GuideVideoView.OnCloseListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCloseListener;
+  private GuideVideoView.OnCompleteListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener;
+  private GuideVideoView.OnErrorListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   boolean jdField_a_of_type_Boolean = false;
   
@@ -57,15 +54,15 @@ public class BlankVideoPlayer
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.jdField_a_of_type_Bbjb != null) {
-      this.jdField_a_of_type_Bbjb.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener.a();
     }
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_Bbjc != null) {
-      this.jdField_a_of_type_Bbjc.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
     }
     return false;
   }
@@ -119,24 +116,24 @@ public class BlankVideoPlayer
     }
   }
   
-  public void setOnCloseListener(bbja parambbja)
+  public void setOnCloseListener(GuideVideoView.OnCloseListener paramOnCloseListener)
   {
-    this.jdField_a_of_type_Bbja = parambbja;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCloseListener = paramOnCloseListener;
   }
   
-  public void setOnCompleteListener(bbjb parambbjb)
+  public void setOnCompleteListener(GuideVideoView.OnCompleteListener paramOnCompleteListener)
   {
-    this.jdField_a_of_type_Bbjb = parambbjb;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener = paramOnCompleteListener;
   }
   
-  public void setOnErrorListener(bbjc parambbjc)
+  public void setOnErrorListener(GuideVideoView.OnErrorListener paramOnErrorListener)
   {
-    this.jdField_a_of_type_Bbjc = parambbjc;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener = paramOnErrorListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.BlankVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

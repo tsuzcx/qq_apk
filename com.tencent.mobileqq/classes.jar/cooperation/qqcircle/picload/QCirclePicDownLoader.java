@@ -1,8 +1,9 @@
 package cooperation.qqcircle.picload;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.qcircle.api.data.Option;
+import com.tencent.mobileqq.utils.FileUtils;
 import cooperation.qqcircle.utils.QCircleCommonUtil;
 import java.net.InetAddress;
 import java.util.Iterator;
@@ -11,8 +12,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class QCirclePicDownLoader
 {
-  protected static String LOG_TAG = QCircleFeedPicLoader.TAG;
-  private static QCirclePicDownLoader mInstance;
+  private static final String LOG_TAG = "QCircleFeedPicLoader";
+  private static final long MAX_WAIT_TIME = 30000L;
+  private static volatile QCirclePicDownLoader sInstance;
   private ConcurrentHashMap<String, ConcurrentHashMap<Integer, QCirclePicDownLoader.PicDownLoadListener>> mDownLoadListeners = new ConcurrentHashMap();
   
   private void callBackResult(Option paramOption, boolean paramBoolean, int paramInt)
@@ -23,7 +25,7 @@ public class QCirclePicDownLoader
       if (localConcurrentHashMap != null)
       {
         Iterator localIterator = localConcurrentHashMap.keySet().iterator();
-        QLog.i(LOG_TAG, 1, "seq = " + paramOption.getSeq() + " call back size:" + localConcurrentHashMap.size());
+        RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " call back size:" + localConcurrentHashMap.size());
         while (localIterator.hasNext())
         {
           QCirclePicDownLoader.PicDownLoadListener localPicDownLoadListener = (QCirclePicDownLoader.PicDownLoadListener)localConcurrentHashMap.remove((Integer)localIterator.next());
@@ -31,22 +33,55 @@ public class QCirclePicDownLoader
             localPicDownLoadListener.onResult(paramBoolean, paramInt);
           }
         }
-        QLog.i(LOG_TAG, 1, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " ifFromPreload:" + paramOption.isFromPreload() + " callBackResult success = " + paramBoolean + " resultCode = " + paramInt);
+        RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " ifFromPreload:" + paramOption.isFromPreload() + " callBackResult success = " + paramBoolean + " resultCode = " + paramInt);
       }
     }
   }
   
   public static QCirclePicDownLoader g()
   {
-    if (mInstance == null) {}
+    if (sInstance == null) {}
     try
     {
-      if (mInstance == null) {
-        mInstance = new QCirclePicDownLoader();
+      if (sInstance == null) {
+        sInstance = new QCirclePicDownLoader();
       }
-      return mInstance;
+      return sInstance;
     }
     finally {}
+  }
+  
+  private long getMaxWaitTime(Option paramOption, ConcurrentHashMap<Integer, QCirclePicDownLoader.PicDownLoadListener> paramConcurrentHashMap)
+  {
+    long l2;
+    if ((paramOption != null) && (paramConcurrentHashMap != null) && (paramConcurrentHashMap.size() > 0))
+    {
+      long l3 = paramOption.mDownLoadStartTime.longValue();
+      Iterator localIterator = paramConcurrentHashMap.keySet().iterator();
+      long l1 = 0L;
+      l2 = l1;
+      if (!localIterator.hasNext()) {
+        break label170;
+      }
+      QCirclePicDownLoader.PicDownLoadListener localPicDownLoadListener = (QCirclePicDownLoader.PicDownLoadListener)paramConcurrentHashMap.get((Integer)localIterator.next());
+      if ((localPicDownLoadListener == null) || (localPicDownLoadListener.mOption == null)) {
+        break label173;
+      }
+      l2 = l3 - localPicDownLoadListener.mOption.mDownLoadStartTime.longValue();
+      RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " old seq = " + localPicDownLoadListener.mOption.getSeq() + " compute WaitTime:" + l2);
+      if (l2 <= l1) {
+        break label173;
+      }
+      l1 = l2;
+    }
+    label170:
+    label173:
+    for (;;)
+    {
+      break;
+      l2 = 0L;
+      return l2;
+    }
   }
   
   private void toDownLoad(Option paramOption, QCirclePicDownLoader.PicDownLoadListener paramPicDownLoadListener)
@@ -68,27 +103,32 @@ public class QCirclePicDownLoader
       ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.mDownLoadListeners.get(paramOption.getLocalPath());
       if ((localConcurrentHashMap != null) && (localConcurrentHashMap.size() > 0))
       {
-        localConcurrentHashMap.put(Integer.valueOf(paramPicDownLoadListener.hashCode()), paramPicDownLoadListener);
-        QLog.i(LOG_TAG, 1, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + ", is on Downloading ifFromPreload:" + paramOption.isFromPreload());
-        if (localConcurrentHashMap.size() == 1)
+        long l = getMaxWaitTime(paramOption, localConcurrentHashMap);
+        if (l > 30000L)
         {
-          if (FileUtil.isFileExists(paramOption.getLocalPath()))
-          {
-            callBackResult(paramOption, true, 0);
-            QLog.i(LOG_TAG, 1, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + ",lost callback  return success ifFromPreload:" + paramOption.isFromPreload());
-          }
+          RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + "over max wait time direct to downloadwaitTime:" + l);
+          toDownLoad(paramOption, paramPicDownLoadListener);
         }
-        else {
+        do
+        {
+          return;
+          localConcurrentHashMap.put(Integer.valueOf(paramPicDownLoadListener.hashCode()), paramPicDownLoadListener);
+          RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + ", is on Downloading ifFromPreload:" + paramOption.isFromPreload());
+        } while (localConcurrentHashMap.size() != 1);
+        if (FileUtils.a(paramOption.getLocalPath()))
+        {
+          callBackResult(paramOption, true, 0);
+          RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + ",lost callback  return success ifFromPreload:" + paramOption.isFromPreload());
           return;
         }
         toDownLoad(paramOption, paramPicDownLoadListener);
-        QLog.i(LOG_TAG, 1, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + ",lost callback  reDownload ifFromPreload:" + paramOption.isFromPreload());
+        RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + ",lost callback  reDownload ifFromPreload:" + paramOption.isFromPreload());
         return;
       }
       toDownLoad(paramOption, paramPicDownLoadListener);
       return;
     }
-    QLog.i(LOG_TAG, 1, "illegal args");
+    RFLog.i("QCircleFeedPicLoader", RFLog.USR, "illegal args");
   }
   
   public void release()
@@ -104,24 +144,24 @@ public class QCirclePicDownLoader
     String str = QCircleCommonUtil.getUrlHost(paramOption.getUrl());
     if (TextUtils.isEmpty(str))
     {
-      QLog.i(LOG_TAG, 1, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " ifFromPreload:" + paramOption.isFromPreload() + " tryGetIp() failed host is np");
+      RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " ifFromPreload:" + paramOption.isFromPreload() + " tryGetIp() failed host is np");
       return;
     }
     try
     {
       paramOption.setIP(InetAddress.getByName(str).getHostAddress());
-      QLog.i(LOG_TAG, 1, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " ifFromPreload:" + paramOption.isFromPreload() + " tryGetIp() success:" + paramOption.getIP());
+      RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " ifFromPreload:" + paramOption.isFromPreload() + " tryGetIp() success:" + paramOption.getIP());
       return;
     }
     catch (Exception localException)
     {
-      QLog.i(LOG_TAG, 1, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " ifFromPreload:" + paramOption.isFromPreload() + " tryGetIp() failed exception");
+      RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " ifFromPreload:" + paramOption.isFromPreload() + " tryGetIp() failed exception");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.picload.QCirclePicDownLoader
  * JD-Core Version:    0.7.0.1
  */

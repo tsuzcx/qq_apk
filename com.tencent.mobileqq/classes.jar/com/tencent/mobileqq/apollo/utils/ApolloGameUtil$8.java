@@ -1,30 +1,24 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ankc;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.ApolloGameRankData;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.game.ApolloFragment;
+import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
 
 final class ApolloGameUtil$8
   implements Runnable
 {
-  ApolloGameUtil$8(QQAppInterface paramQQAppInterface, ApolloGameRankData paramApolloGameRankData) {}
+  ApolloGameUtil$8(ApolloFragment paramApolloFragment, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData != null))
-    {
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData);
-      ((ankc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APOOLO_DAO_MANAGER)).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), localArrayList);
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloFragment != null) && ((this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloFragment instanceof ApolloWebViewFragment)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      ((ApolloWebViewFragment)this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloFragment).a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.8
  * JD-Core Version:    0.7.0.1
  */

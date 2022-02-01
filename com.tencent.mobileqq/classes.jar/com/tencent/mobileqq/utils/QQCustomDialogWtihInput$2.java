@@ -5,7 +5,8 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Build;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.emoticon.QQEmojiUtil;
+import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -20,9 +21,9 @@ class QQCustomDialogWtihInput$2
   public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQCustomDialogWtihInput", 2, "setPositiveButton onClick timeGap:" + (System.currentTimeMillis() - QQCustomDialogWtihInput.access$000(this.this$0)) + " MANUFACTURER:" + Build.MANUFACTURER + " MODEL:" + Build.MODEL);
+      QLog.d("QQCustomDialogWtihInput", 2, "setPositiveButton onClick timeGap:" + (System.currentTimeMillis() - QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput)) + " MANUFACTURER:" + Build.MANUFACTURER + " MODEL:" + Build.MODEL);
     }
-    if ((System.currentTimeMillis() - QQCustomDialogWtihInput.access$000(this.this$0) < 800L) && (QQCustomDialogWtihInput.access$100(this.this$0))) {
+    if ((System.currentTimeMillis() - QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput) < 800L) && (QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput))) {
       if (QLog.isColorLevel()) {
         QLog.d("QQCustomDialogWtihInput", 2, "setPositiveButton onClick skip");
       }
@@ -31,36 +32,36 @@ class QQCustomDialogWtihInput$2
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      Object localObject = QQCustomDialogWtihInput.access$200(this.this$0).getText().toString();
+      Object localObject = QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).getText().toString();
       if (localObject != null) {
-        if ((QQText.containsEmoji((String)localObject)) || (QQText.containsExpression((String)localObject)))
+        if ((QQEmojiUtil.containsEmoji((String)localObject)) || (QQSysFaceUtil.containsExpression((String)localObject)))
         {
-          localObject = (Context)QQCustomDialogWtihInput.access$300(this.this$0).get();
+          localObject = (Context)QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).get();
           if (localObject != null)
           {
             localObject = new QQToast((Context)localObject);
             ((QQToast)localObject).d(2000);
-            ((QQToast)localObject).c(2131719414);
+            ((QQToast)localObject).c(2131719977);
             ((QQToast)localObject).a();
           }
         }
-        else if ((QQCustomDialogWtihInput.access$400(this.this$0) == null) && (24 < ((String)localObject).getBytes().length))
+        else if ((QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput) == null) && (24 < ((String)localObject).getBytes().length))
         {
-          localObject = (Context)QQCustomDialogWtihInput.access$300(this.this$0).get();
+          localObject = (Context)QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).get();
           if (localObject != null)
           {
             localObject = new QQToast((Context)localObject);
             ((QQToast)localObject).d(2000);
-            ((QQToast)localObject).c(2131719415);
+            ((QQToast)localObject).c(2131719978);
             ((QQToast)localObject).a();
           }
         }
         else
         {
-          if (this.val$nl != null) {
-            this.val$nl.onClick(this.this$0, 1);
+          if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+            this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput, 1);
           }
-          this.this$0.dismiss();
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput.dismiss();
         }
       }
     }

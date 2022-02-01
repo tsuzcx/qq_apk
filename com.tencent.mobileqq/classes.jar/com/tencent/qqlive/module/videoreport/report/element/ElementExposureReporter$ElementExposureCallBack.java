@@ -2,9 +2,11 @@ package com.tencent.qqlive.module.videoreport.report.element;
 
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import com.tencent.qqlive.module.videoreport.data.DataBinder;
 import com.tencent.qqlive.module.videoreport.data.DataEntity;
+import com.tencent.qqlive.module.videoreport.data.DataEntityOperator;
 import com.tencent.qqlive.module.videoreport.data.DataRWProxy;
 import com.tencent.qqlive.module.videoreport.exposure.AreaInfo;
 import com.tencent.qqlive.module.videoreport.exposure.IExposureDetectCallback;
@@ -64,6 +66,22 @@ class ElementExposureReporter$ElementExposureCallBack
     return localPathData;
   }
   
+  private void updateEleExpose(View paramView, String paramString, PathData paramPathData)
+  {
+    Object localObject = paramPathData.getPage();
+    EleExposeInfo localEleExposeInfo = ExposurePolicyHelper.getEleExposeInfo(localObject, paramView, paramString);
+    paramPathData = localEleExposeInfo;
+    if (localEleExposeInfo == null)
+    {
+      paramPathData = new EleExposeInfo();
+      ExposurePolicyHelper.putEleExposeInfo(localObject, paramView, paramString, paramPathData);
+    }
+    if (paramPathData.reportOverTime()) {
+      paramPathData.resetReport();
+    }
+    paramPathData.onExpose();
+  }
+  
   public ElementExposureReporter.ReportDetectionData createDetectionData()
   {
     return new ElementExposureReporter.ReportDetectionData();
@@ -73,7 +91,7 @@ class ElementExposureReporter$ElementExposureCallBack
   {
     if ((PageFinder.findRelatedPage(paramView) != null) && (paramView != this.mEntryView))
     {
-      ElementExposureReporter.access$700(this.this$0, paramView, this.mFrontPageArea);
+      ElementExposureReporter.access$800(this.this$0, paramView, this.mFrontPageArea);
       return false;
     }
     paramView = (Boolean)DataRWProxy.getInnerParam(paramView, "element_detection_enable");
@@ -85,45 +103,38 @@ class ElementExposureReporter$ElementExposureCallBack
   
   public void onExposed(View paramView, ElementExposureReporter.ReportDetectionData paramReportDetectionData, @NonNull AreaInfo paramAreaInfo)
   {
-    DataEntity localDataEntity = DataBinder.getDataEntity(paramView);
-    if (!ReportHelper.reportExposure(localDataEntity)) {}
-    Object localObject;
-    long l;
-    do
-    {
+    Object localObject2 = DataBinder.getDataEntity(paramView);
+    if ((localObject2 == null) || (TextUtils.isEmpty(DataEntityOperator.getElementId((DataEntity)localObject2)))) {
       return;
-      localObject = DataRWProxy.getInnerParam(paramView, "element_identifier");
-      if (!(localObject instanceof String)) {
-        break label162;
-      }
-      localObject = (String)localObject;
-      l = ReportUtils.calcElementUniqueId(paramView);
-      if (!ElementExposureReporter.access$100(this.this$0, l)) {
-        break label168;
-      }
-      paramAreaInfo = getPathData(paramReportDetectionData, paramView, localDataEntity);
-      if (paramAreaInfo == null) {
+    }
+    Object localObject1 = DataRWProxy.getInnerParam(paramView, "element_identifier");
+    if ((localObject1 instanceof String)) {}
+    for (localObject1 = (String)localObject1;; localObject1 = null)
+    {
+      long l = ReportUtils.calcElementUniqueId(paramView);
+      paramReportDetectionData = getPathData(paramReportDetectionData, paramView, (DataEntity)localObject2);
+      if (paramReportDetectionData == null) {
         break;
       }
-      paramReportDetectionData = new ExposureElementInfo();
-      paramReportDetectionData.setView(paramView);
-      paramReportDetectionData.setPage(paramAreaInfo.getPage());
-      paramReportDetectionData.setIdentifier((String)localObject);
-      paramReportDetectionData.setUniqueId(l);
-      paramView = DataBuilderFactory.obtain().build(paramAreaInfo);
-    } while (paramView == null);
-    paramView.setEventKey("imp");
-    paramReportDetectionData.setFinalData(paramView);
-    ElementExposureReporter.access$500(this.this$0).add(paramReportDetectionData);
-    for (;;)
-    {
-      ElementExposureReporter.access$600(this.this$0).put(Long.valueOf(l), localObject);
+      if (ElementExposureReporter.access$200(this.this$0, l))
+      {
+        localObject2 = new ExposureElementInfo();
+        ((ExposureElementInfo)localObject2).setView(paramView);
+        ((ExposureElementInfo)localObject2).setPage(paramReportDetectionData.getPage());
+        ((ExposureElementInfo)localObject2).setIdentifier((String)localObject1);
+        ((ExposureElementInfo)localObject2).setUniqueId(l);
+        ((ExposureElementInfo)localObject2).setCanReport(ReportHelper.reportExposure(((ExposureElementInfo)localObject2).getPage(), (String)localObject1, paramView));
+        FinalData localFinalData = DataBuilderFactory.obtain().build(paramReportDetectionData);
+        if (localFinalData != null) {
+          localFinalData.setEventKey("imp");
+        }
+        ((ExposureElementInfo)localObject2).setFinalData(localFinalData);
+        ElementExposureReporter.access$600(this.this$0).add(localObject2);
+      }
+      ElementExposureReporter.access$300(this.this$0).updateAreaInfo(l, paramAreaInfo);
+      updateEleExpose(paramView, (String)localObject1, paramReportDetectionData);
+      ElementExposureReporter.access$700(this.this$0).put(Long.valueOf(l), localObject1);
       return;
-      label162:
-      localObject = null;
-      break;
-      label168:
-      ElementExposureReporter.access$200(this.this$0).updateAreaInfo(l, paramAreaInfo);
     }
   }
   

@@ -7,7 +7,6 @@ import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 final class MiniAppUtils$1
   implements View.OnClickListener
@@ -22,10 +21,9 @@ final class MiniAppUtils$1
       if (this.val$scene == 3008) {
         MiniProgramLpReportDC04239.reportAsync("desktop", "featured", "click", null);
       }
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramView)
     {
       for (;;)
       {

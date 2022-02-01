@@ -12,7 +12,7 @@ public final class stDeleteFeedCommentReq
   implements Cloneable
 {
   static stMetaComment cache_comment;
-  public stMetaComment comment;
+  public stMetaComment comment = null;
   public String feed_id = "";
   
   static

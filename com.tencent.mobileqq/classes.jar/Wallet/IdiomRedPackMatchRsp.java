@@ -9,19 +9,19 @@ public final class IdiomRedPackMatchRsp
 {
   static int cache_subchannel = 0;
   public String billno = "";
-  public int fromType;
-  public long grabUin;
+  public int fromType = 0;
+  public long grabUin = 0L;
   public String groupid = "";
   public String hbIdiom = "";
   public String hbIdiomLastPY = "";
   public String hbPoemRule = "";
-  public int idiomSeq;
-  public int isFinished;
-  public long makeUin;
-  public int status;
+  public int idiomSeq = 0;
+  public int isFinished = 0;
+  public long makeUin = 0L;
+  public int status = 0;
   public String strErr = "";
-  public int subchannel;
-  public int timeInterval;
+  public int subchannel = 0;
+  public int timeInterval = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

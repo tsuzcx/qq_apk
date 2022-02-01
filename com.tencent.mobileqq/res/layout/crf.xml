@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController android:gravity="bottom" android:orientation="vertical" android:id="@id/content" android:background="#80000000" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/lk1" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:id="@id/mb7" android:background="@drawable/gxc" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginTop="60.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-        <ImageView android:id="@id/jv2" android:background="@drawable/hzl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/n4h" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.widget.PinnedDividerSwipListView android:id="@id/mo9" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:listSelector="@color/ajr" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
-        <LinearLayout android:gravity="center_horizontal" android:id="@id/mmb" android:paddingLeft="16.0dip" android:paddingTop="15.0dip" android:paddingRight="16.0dip" android:paddingBottom="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:id="@id/l9u" android:layout_width="0.0dip" android:layout_height="45.0dip" android:layout_marginRight="7.0dip" android:text="@string/wbh" android:layout_weight="1.0" style="@style/bd" />
-            <Button android:id="@id/ndb" android:layout_width="0.0dip" android:layout_height="45.0dip" android:layout_marginLeft="7.0dip" android:text="@string/wvg" android:layout_weight="1.0" style="@style/b9" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.5dip" android:layout_marginBottom="11.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/ayn" android:textColor="@color/bp" android:layout_gravity="center_vertical" android:id="@id/oo6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="推荐关注" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/onc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ifo" />
         </LinearLayout>
-    </LinearLayout>
-</com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController>
+        <TextView android:textSize="@dimen/ayk" android:textColor="@color/bp" android:gravity="center_vertical" android:layout_gravity="center|right" android:id="@id/oo5" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="查看全部" android:drawableRight="@drawable/ig7" />
+    </FrameLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/nzo" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

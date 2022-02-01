@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.animation.AnimationUtils;
-import bizw;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.ProtocolDownloader.Adapter;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.startup.step.InitUrlDrawable;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -82,12 +82,12 @@ public class LastModifySupportDownloader
   
   private String getLastModified(String paramString)
   {
-    return bizw.a().a().getSharedPreferences("http_lastmodify", 0).getString(paramString, "");
+    return CommonDataAdapter.a().a().getSharedPreferences("http_lastmodify", 0).getString(paramString, "");
   }
   
   private void saveLastModified(String paramString1, String paramString2)
   {
-    SharedPreferences.Editor localEditor = bizw.a().a().getSharedPreferences("http_lastmodify", 0).edit();
+    SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("http_lastmodify", 0).edit();
     localEditor.putString(paramString1, paramString2);
     localEditor.commit();
   }

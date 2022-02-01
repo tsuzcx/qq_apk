@@ -2,6 +2,7 @@ package com.tencent.qqmini.minigame.report;
 
 import com.tencent.mobileqq.triton.statistic.TraceStatistics;
 import com.tencent.mobileqq.triton.statistic.TraceStatistics.Record;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.Comparator;
 import java.util.Iterator;
 import kotlin.Metadata;
@@ -18,17 +19,25 @@ final class MiniGameBeaconReport$reportJankTraceRecords$1
   
   public final void run()
   {
-    Iterator localIterator = ((Iterable)CollectionsKt.take((Iterable)CollectionsKt.sortedWith((Iterable)this.$statistics.getRecords(), (Comparator)new MiniGameBeaconReport.reportJankTraceRecords.1..special..inlined.sortedByDescending.1()), 20)).iterator();
-    while (localIterator.hasNext())
+    try
     {
-      TraceStatistics.Record localRecord = (TraceStatistics.Record)localIterator.next();
-      MiniGameBeaconReport.report("jank_trace", MapsKt.mutableMapOf(new Pair[] { TuplesKt.to("trace_name", localRecord.getName()), TuplesKt.to("trace_time", String.valueOf(localRecord.getTimeUs())), TuplesKt.to("is_sdk", String.valueOf(this.$isSdk)), TuplesKt.to("appid", this.$appid), TuplesKt.to("isFirstFrame", String.valueOf(this.$isFirstFrame)) }));
+      Iterator localIterator = ((Iterable)CollectionsKt.take((Iterable)CollectionsKt.sortedWith((Iterable)this.$statistics.getRecords(), (Comparator)new MiniGameBeaconReport.reportJankTraceRecords.1..special..inlined.sortedByDescending.1()), 20)).iterator();
+      while (localIterator.hasNext())
+      {
+        TraceStatistics.Record localRecord = (TraceStatistics.Record)localIterator.next();
+        MiniGameBeaconReport.report("jank_trace", MapsKt.mutableMapOf(new Pair[] { TuplesKt.to("trace_name", localRecord.getName()), TuplesKt.to("trace_time", String.valueOf(localRecord.getTimeUs())), TuplesKt.to("is_sdk", String.valueOf(this.$isSdk)), TuplesKt.to("appid", this.$appid), TuplesKt.to("isFirstFrame", String.valueOf(this.$isFirstFrame)) }));
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QMLog.e("Beacon", "reportJankTraceRecords fail", (Throwable)localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.report.MiniGameBeaconReport.reportJankTraceRecords.1
  * JD-Core Version:    0.7.0.1
  */

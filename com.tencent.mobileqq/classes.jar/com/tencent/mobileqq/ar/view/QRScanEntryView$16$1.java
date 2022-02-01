@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.ar.view;
 
-import apot;
-import apql;
+import com.tencent.mobileqq.ar.model.QRSession;
 
-public class QRScanEntryView$16$1
+class QRScanEntryView$16$1
   implements Runnable
 {
-  public QRScanEntryView$16$1(apql paramapql) {}
+  QRScanEntryView$16$1(QRScanEntryView.16 param16) {}
   
   public void run()
   {
-    if ((this.a.a.m) && (this.a.a.a != null) && ((this.a.a.a instanceof apot))) {
-      ((apot)this.a.a.a).b(false);
+    if ((this.a.a.m) && (this.a.a.a != null) && ((this.a.a.a instanceof QRSession))) {
+      ((QRSession)this.a.a.a).b(false);
     }
   }
 }

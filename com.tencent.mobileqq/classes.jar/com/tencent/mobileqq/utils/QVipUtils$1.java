@@ -3,7 +3,7 @@ package com.tencent.mobileqq.utils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class QVipUtils$1
+final class QVipUtils$1
   implements Runnable
 {
   public void run()

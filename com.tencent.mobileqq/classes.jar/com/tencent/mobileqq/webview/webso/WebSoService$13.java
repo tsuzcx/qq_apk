@@ -15,7 +15,7 @@ final class WebSoService$13
   {
     try
     {
-      View localView = ((Activity)this.a.getContext()).findViewById(2131370784);
+      View localView = ((Activity)this.a.getContext()).findViewById(2131371065);
       localView.animate().alpha(0.0F).setDuration(300L);
       localView.postDelayed(new WebSoService.13.1(this, localView), 300L);
       return;
@@ -28,7 +28,7 @@ final class WebSoService$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoService.13
  * JD-Core Version:    0.7.0.1
  */

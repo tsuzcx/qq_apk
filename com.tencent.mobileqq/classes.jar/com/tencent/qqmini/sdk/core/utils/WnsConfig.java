@@ -7,7 +7,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.WnsConfigProxy;
 public class WnsConfig
 {
   public static final String DEFAULT_DOMAIN_WHITE_LIST = ".qlogo.cn;.tcb.qcloud.la;open.mp.qq.com;api-report.q.qq.com;rpt.gdt.qq.com;.gtimg.cn";
-  public static final String DEFAULT_ENABLE_UPDATE_EMBEDDED_APP_LIST = "1108711239";
+  public static final String DEFAULT_ENABLE_UPDATE_EMBEDDED_APP_LIST = "1108711239;1108735743;1110465521";
   public static final int DEFAULT_ENABLE_UPDATE_FOR_EMBEDDED_WIDGET = 1;
   public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_CHECK_X5 = 1;
   public static final int DEFAULT_MINI_APP_ENABLE_SHOW_CLEAN_DELAY_TIME = 5000;
@@ -300,7 +300,7 @@ public class WnsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.WnsConfig
  * JD-Core Version:    0.7.0.1
  */

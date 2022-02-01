@@ -4,10 +4,10 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import cooperation.qzone.birthdaynotice.BirthDayNoticeManager;
 
-public final class ChatActivityFacade$6
+final class ChatActivityFacade$6
   implements Runnable
 {
-  public ChatActivityFacade$6(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  ChatActivityFacade$6(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public final class ChatActivityFacade$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.6
  * JD-Core Version:    0.7.0.1
  */

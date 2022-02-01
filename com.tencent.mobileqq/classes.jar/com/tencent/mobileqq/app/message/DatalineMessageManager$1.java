@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app.message;
 
-import aont;
-import aoxz;
-import bcrg;
+import com.dataline.util.WaitEvent;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
-import fb;
 
-public class DatalineMessageManager$1
+class DatalineMessageManager$1
   implements Runnable
 {
-  public DatalineMessageManager$1(aont paramaont, DataLineMsgRecord paramDataLineMsgRecord, fb paramfb) {}
+  DatalineMessageManager$1(DatalineMessageManager paramDatalineMessageManager, DataLineMsgRecord paramDataLineMsgRecord, WaitEvent paramWaitEvent) {}
   
   public void run()
   {
@@ -24,20 +24,23 @@ public class DatalineMessageManager$1
     try
     {
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time == 0L) {
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time = bcrg.a();
+        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time = MessageCache.a();
       }
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq == 0L) {
         this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq = ((int)this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time);
       }
-      aoxz localaoxz = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-      RecentUser localRecentUser = (RecentUser)localaoxz.findRecentUserByUin(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
-      localRecentUser.setType(this.this$0.jdField_a_of_type_Int);
-      localRecentUser.lastmsgtime = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time;
-      localaoxz.saveRecentUser(localRecentUser);
-      aont.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, localEntityManager);
+      DatalineMessageManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, localEntityManager);
+      if (!QFileAssistantUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      {
+        RecentUserProxy localRecentUserProxy = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+        RecentUser localRecentUser = localRecentUserProxy.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+        localRecentUser.setType(this.this$0.jdField_a_of_type_Int);
+        localRecentUser.lastmsgtime = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time;
+        localRecentUserProxy.b(localRecentUser);
+        this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+      }
       long l = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId;
-      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
-      this.jdField_a_of_type_Fb.a();
+      this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
       localEntityManager.close();
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.DatalineMessageManager", 2, "mr.msgId: " + l);
@@ -52,7 +55,7 @@ public class DatalineMessageManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.DatalineMessageManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ public final class AllInfo
   static SearchClientShowInfoRsp cache_stYellowVipInfo;
   static byte[] cache_vecQQBigVipInfo = (byte[])new byte[1];
   static byte[] cache_vecSweetStyleInfo;
-  public guest_mainpage_rsp stGuestMainpageRsp;
-  public SearchClientShowInfoRsp stYellowVipInfo;
-  public byte[] vecQQBigVipInfo;
-  public byte[] vecSweetStyleInfo;
+  public guest_mainpage_rsp stGuestMainpageRsp = null;
+  public SearchClientShowInfoRsp stYellowVipInfo = null;
+  public byte[] vecQQBigVipInfo = null;
+  public byte[] vecSweetStyleInfo = null;
   
   static
   {

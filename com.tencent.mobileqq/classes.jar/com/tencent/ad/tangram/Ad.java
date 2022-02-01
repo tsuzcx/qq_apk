@@ -5,6 +5,8 @@ import android.support.annotation.Keep;
 @Keep
 public abstract interface Ad
 {
+  public abstract boolean canLaunchAppAfterInstalled();
+  
   public abstract boolean disableAutoDownload();
   
   public abstract long getAId();
@@ -85,23 +87,21 @@ public abstract interface Ad
   
   public abstract String getVideoUrl2();
   
+  public abstract boolean isAppPreOrder();
+  
   public abstract boolean isAppProductType();
   
   public abstract boolean isAppXiJing();
   
   public abstract boolean isAppXiJingDefault();
   
+  public abstract boolean isAppXiJingFengling();
+  
   public abstract boolean isAppXiJingOffline();
   
   public abstract boolean isCanvas();
   
   public abstract boolean isHitFirstLoadImageExp();
-  
-  public abstract boolean isHitPreloadCanvasJsonExp();
-  
-  public abstract boolean isHitRelationTargetInstallExp();
-  
-  public abstract boolean isHitWithoutInstallSuccessPage();
   
   public abstract boolean isJDProductType();
   
@@ -121,7 +121,7 @@ public abstract interface Ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.Ad
  * JD-Core Version:    0.7.0.1
  */

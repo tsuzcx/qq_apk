@@ -10,9 +10,9 @@ public final class st_Games_OpData
 {
   static ArrayList<Long> cache_vcDataSec = new ArrayList();
   public String uBattleNickName = "";
-  public long uBattleuin;
-  public long uOpuin;
-  public ArrayList<Long> vcDataSec;
+  public long uBattleuin = 0L;
+  public long uOpuin = 0L;
+  public ArrayList<Long> vcDataSec = null;
   
   static
   {

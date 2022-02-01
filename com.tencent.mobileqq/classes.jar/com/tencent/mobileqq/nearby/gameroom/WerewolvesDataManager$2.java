@@ -1,31 +1,28 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import anvk;
-import aoxz;
-import axnp;
-import axtf;
-import axtg;
-import axth;
-import bhbx;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.nearby.HotChatUtil;
 import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.ContactUtils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
-import nwu;
 
-public class WerewolvesDataManager$2
+class WerewolvesDataManager$2
   implements Runnable
 {
-  public WerewolvesDataManager$2(axtf paramaxtf, String paramString1, String paramString2, ArrayList paramArrayList, axtg paramaxtg) {}
+  WerewolvesDataManager$2(WerewolvesDataManager paramWerewolvesDataManager, String paramString1, String paramString2, ArrayList paramArrayList, WerewolvesDataManager.GetInviteUserCallback paramGetInviteUserCallback) {}
   
   public void run()
   {
@@ -40,36 +37,36 @@ public class WerewolvesDataManager$2
     while ((i < ((List)localObject3).size()) && (localArrayList2.size() < 8))
     {
       localObject4 = (RecentInviteUser)((List)localObject3).get(i);
-      localObject5 = new axth(this.this$0);
+      localObject5 = new WerewolvesDataManager.InviteUser(this.this$0);
       if (((TroopManager)localObject1).b(((RecentInviteUser)localObject4).uin) == null)
       {
         i += 1;
       }
       else
       {
-        ((axth)localObject5).jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject4).uin;
-        ((axth)localObject5).jdField_a_of_type_Int = ((RecentInviteUser)localObject4).uinType;
-        ((axth)localObject5).b = ContactUtils.getTroopName(this.this$0.a, ((axth)localObject5).jdField_a_of_type_JavaLangString, false);
-        ((axth)localObject5).jdField_a_of_type_Boolean = this.this$0.a(((axth)localObject5).jdField_a_of_type_JavaLangString, ((axth)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if ((!localArrayList2.contains(localObject5)) && (!((axth)localObject5).jdField_a_of_type_JavaLangString.equals(this.b))) {
+        ((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject4).uin;
+        ((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_Int = ((RecentInviteUser)localObject4).uinType;
+        ((WerewolvesDataManager.InviteUser)localObject5).b = ContactUtils.a(this.this$0.a, ((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_JavaLangString, false);
+        ((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_Boolean = this.this$0.a(((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_JavaLangString, ((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        if ((!localArrayList2.contains(localObject5)) && (!((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_JavaLangString.equals(this.b))) {
           localArrayList2.add(localObject5);
         }
         i += 1;
       }
     }
-    localObject1 = this.this$0.a.getProxyManager().a().getRecentList(true);
+    localObject1 = this.this$0.a.getProxyManager().a().a(true);
     i = 0;
     while ((localArrayList2.size() < 8) && (i < ((List)localObject1).size()))
     {
       localObject3 = (RecentUser)((List)localObject1).get(i);
-      if ((((RecentUser)localObject3).getType() == 1) && (!axnp.a(this.this$0.a, (RecentUser)localObject3)) && (!bhbx.a(((RecentUser)localObject3).uin)) && (((RecentUser)localObject3).lFlag != 16L))
+      if ((((RecentUser)localObject3).getType() == 1) && (!HotChatUtil.a(this.this$0.a, (RecentUser)localObject3)) && (!Utils.a(((RecentUser)localObject3).uin)) && (((RecentUser)localObject3).lFlag != 16L))
       {
-        localObject4 = new axth(this.this$0);
-        ((axth)localObject4).jdField_a_of_type_JavaLangString = ((RecentUser)localObject3).uin;
-        ((axth)localObject4).jdField_a_of_type_Int = ((RecentUser)localObject3).getType();
-        ((axth)localObject4).b = ContactUtils.getTroopName(this.this$0.a, ((axth)localObject4).jdField_a_of_type_JavaLangString, false);
-        ((axth)localObject4).jdField_a_of_type_Boolean = this.this$0.a(((axth)localObject4).jdField_a_of_type_JavaLangString, ((axth)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if ((!localArrayList2.contains(localObject4)) && (!((axth)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
+        localObject4 = new WerewolvesDataManager.InviteUser(this.this$0);
+        ((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_JavaLangString = ((RecentUser)localObject3).uin;
+        ((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_Int = ((RecentUser)localObject3).getType();
+        ((WerewolvesDataManager.InviteUser)localObject4).b = ContactUtils.a(this.this$0.a, ((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_JavaLangString, false);
+        ((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_Boolean = this.this$0.a(((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_JavaLangString, ((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        if ((!localArrayList2.contains(localObject4)) && (!((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
           localArrayList2.add(localObject4);
         }
       }
@@ -84,12 +81,12 @@ public class WerewolvesDataManager$2
         if ((localObject3 instanceof TroopInfo))
         {
           localObject3 = (TroopInfo)localObject3;
-          localObject4 = new axth(this.this$0);
-          ((axth)localObject4).jdField_a_of_type_JavaLangString = ((TroopInfo)localObject3).troopuin;
-          ((axth)localObject4).jdField_a_of_type_Int = 1;
-          ((axth)localObject4).b = ((TroopInfo)localObject3).getTroopName();
-          ((axth)localObject4).jdField_a_of_type_Boolean = this.this$0.a(((axth)localObject4).jdField_a_of_type_JavaLangString, ((axth)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if ((!localArrayList2.contains(localObject4)) && (!((axth)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
+          localObject4 = new WerewolvesDataManager.InviteUser(this.this$0);
+          ((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_JavaLangString = ((TroopInfo)localObject3).troopuin;
+          ((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_Int = 1;
+          ((WerewolvesDataManager.InviteUser)localObject4).b = ((TroopInfo)localObject3).getTroopDisplayName();
+          ((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_Boolean = this.this$0.a(((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_JavaLangString, ((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          if ((!localArrayList2.contains(localObject4)) && (!((WerewolvesDataManager.InviteUser)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
             localArrayList2.add(localObject4);
           }
         }
@@ -98,8 +95,8 @@ public class WerewolvesDataManager$2
     }
     localObject2 = this.this$0.a.getCurrentAccountUin();
     localObject3 = new ArrayList();
-    Object localObject5 = (anvk)this.this$0.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject4 = ((anvk)localObject5).d();
+    Object localObject5 = (FriendsManager)this.this$0.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject4 = ((FriendsManager)localObject5).c();
     int j;
     Object localObject7;
     if (localObject4 == null)
@@ -114,7 +111,7 @@ public class WerewolvesDataManager$2
       for (;;)
       {
         if ((((List)localObject3).size() >= 8) || (i >= 100)) {
-          break label953;
+          break label955;
         }
         localObject6 = (Entity)((List)localObject4).get(localRandom.nextInt(((List)localObject4).size()));
         if ((localObject6 instanceof Friends))
@@ -127,17 +124,17 @@ public class WerewolvesDataManager$2
             j = ((List)localObject4).size();
             break;
           }
-          int k = ContactUtils.getFriendStatus(((Friends)localObject6).detalStatusFlag, ((Friends)localObject6).iTermType);
+          int k = ContactUtils.a(((Friends)localObject6).detalStatusFlag, ((Friends)localObject6).iTermType);
           if ((k != 4) && (k != 3))
           {
             i += 1;
             continue;
           }
-          localObject7 = new axth(this.this$0);
-          ((axth)localObject7).jdField_a_of_type_JavaLangString = ((Friends)localObject6).uin;
-          ((axth)localObject7).jdField_a_of_type_Int = 0;
-          ((axth)localObject7).b = ContactUtils.getFriendNickName(this.this$0.a, ((axth)localObject7).jdField_a_of_type_JavaLangString);
-          ((axth)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((axth)localObject7).jdField_a_of_type_JavaLangString, ((axth)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          localObject7 = new WerewolvesDataManager.InviteUser(this.this$0);
+          ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_JavaLangString = ((Friends)localObject6).uin;
+          ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_Int = 0;
+          ((WerewolvesDataManager.InviteUser)localObject7).b = ContactUtils.i(this.this$0.a, ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_JavaLangString);
+          ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_JavaLangString, ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
           if (!((List)localObject3).contains(localObject7)) {
             ((List)localObject3).add(localObject7);
           }
@@ -145,7 +142,7 @@ public class WerewolvesDataManager$2
         i += 1;
       }
     }
-    label953:
+    label955:
     Object localObject6 = this.this$0.a();
     i = 0;
     while ((((List)localObject3).size() < 8) && (i < ((List)localObject6).size()))
@@ -155,19 +152,19 @@ public class WerewolvesDataManager$2
       {
         i += 1;
       }
-      else if ((j < 1000) && (!((anvk)localObject5).b(((RecentInviteUser)localObject7).uin)))
+      else if ((j < 1000) && (!((FriendsManager)localObject5).b(((RecentInviteUser)localObject7).uin)))
       {
         i += 1;
       }
       else
       {
-        axth localaxth = new axth(this.this$0);
-        localaxth.jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject7).uin;
-        localaxth.jdField_a_of_type_Int = ((RecentInviteUser)localObject7).uinType;
-        localaxth.b = ContactUtils.getFriendNickName(this.this$0.a, localaxth.jdField_a_of_type_JavaLangString);
-        localaxth.jdField_a_of_type_Boolean = this.this$0.a(localaxth.jdField_a_of_type_JavaLangString, localaxth.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if (!((List)localObject3).contains(localaxth)) {
-          ((List)localObject3).add(localaxth);
+        WerewolvesDataManager.InviteUser localInviteUser = new WerewolvesDataManager.InviteUser(this.this$0);
+        localInviteUser.jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject7).uin;
+        localInviteUser.jdField_a_of_type_Int = ((RecentInviteUser)localObject7).uinType;
+        localInviteUser.b = ContactUtils.i(this.this$0.a, localInviteUser.jdField_a_of_type_JavaLangString);
+        localInviteUser.jdField_a_of_type_Boolean = this.this$0.a(localInviteUser.jdField_a_of_type_JavaLangString, localInviteUser.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        if (!((List)localObject3).contains(localInviteUser)) {
+          ((List)localObject3).add(localInviteUser);
         }
         i += 1;
       }
@@ -178,17 +175,17 @@ public class WerewolvesDataManager$2
       while ((((List)localObject3).size() < 8) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
       {
         localObject6 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((((String)localObject2).equals(localObject6)) || (!((anvk)localObject5).b((String)localObject6)))
+        if ((((String)localObject2).equals(localObject6)) || (!((FriendsManager)localObject5).b((String)localObject6)))
         {
           i += 1;
         }
         else
         {
-          localObject7 = new axth(this.this$0);
-          ((axth)localObject7).jdField_a_of_type_JavaLangString = ((String)localObject6);
-          ((axth)localObject7).jdField_a_of_type_Int = 0;
-          ((axth)localObject7).b = ContactUtils.getFriendNickName(this.this$0.a, ((axth)localObject7).jdField_a_of_type_JavaLangString);
-          ((axth)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((axth)localObject7).jdField_a_of_type_JavaLangString, ((axth)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          localObject7 = new WerewolvesDataManager.InviteUser(this.this$0);
+          ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_JavaLangString = ((String)localObject6);
+          ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_Int = 0;
+          ((WerewolvesDataManager.InviteUser)localObject7).b = ContactUtils.i(this.this$0.a, ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_JavaLangString);
+          ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_JavaLangString, ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
           if (!((List)localObject3).contains(localObject7)) {
             ((List)localObject3).add(localObject7);
           }
@@ -206,14 +203,14 @@ public class WerewolvesDataManager$2
       }
       else
       {
-        if ((((RecentUser)localObject6).getType() == 0) && (!bhbx.a(((RecentUser)localObject6).uin)) && (((RecentUser)localObject6).lFlag != 16L) && (!nwu.b(this.this$0.a, ((RecentUser)localObject6).uin, ((RecentUser)localObject6).getType())))
+        if ((((RecentUser)localObject6).getType() == 0) && (!Utils.a(((RecentUser)localObject6).uin)) && (((RecentUser)localObject6).lFlag != 16L) && (!CrmUtils.b(this.this$0.a, ((RecentUser)localObject6).uin, ((RecentUser)localObject6).getType())))
         {
-          localObject7 = new axth(this.this$0);
-          ((axth)localObject7).jdField_a_of_type_JavaLangString = ((RecentUser)localObject6).uin;
-          ((axth)localObject7).jdField_a_of_type_Int = ((RecentUser)localObject6).getType();
-          ((axth)localObject7).b = ContactUtils.getFriendNickName(this.this$0.a, ((axth)localObject7).jdField_a_of_type_JavaLangString);
-          ((axth)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((axth)localObject7).jdField_a_of_type_JavaLangString, ((axth)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if ((!((List)localObject3).contains(localObject7)) && (((anvk)localObject5).b(((RecentUser)localObject6).uin))) {
+          localObject7 = new WerewolvesDataManager.InviteUser(this.this$0);
+          ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_JavaLangString = ((RecentUser)localObject6).uin;
+          ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_Int = ((RecentUser)localObject6).getType();
+          ((WerewolvesDataManager.InviteUser)localObject7).b = ContactUtils.i(this.this$0.a, ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_JavaLangString);
+          ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_JavaLangString, ((WerewolvesDataManager.InviteUser)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          if ((!((List)localObject3).contains(localObject7)) && (((FriendsManager)localObject5).b(((RecentUser)localObject6).uin))) {
             ((List)localObject3).add(localObject7);
           }
         }
@@ -234,11 +231,11 @@ public class WerewolvesDataManager$2
             i += 1;
             continue;
           }
-          localObject5 = new axth(this.this$0);
-          ((axth)localObject5).jdField_a_of_type_JavaLangString = ((Friends)localObject1).uin;
-          ((axth)localObject5).jdField_a_of_type_Int = 0;
-          ((axth)localObject5).b = ContactUtils.getFriendNickName(this.this$0.a, ((axth)localObject5).jdField_a_of_type_JavaLangString);
-          ((axth)localObject5).jdField_a_of_type_Boolean = this.this$0.a(((axth)localObject5).jdField_a_of_type_JavaLangString, ((axth)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+          localObject5 = new WerewolvesDataManager.InviteUser(this.this$0);
+          ((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_JavaLangString = ((Friends)localObject1).uin;
+          ((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_Int = 0;
+          ((WerewolvesDataManager.InviteUser)localObject5).b = ContactUtils.i(this.this$0.a, ((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_JavaLangString);
+          ((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_Boolean = this.this$0.a(((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_JavaLangString, ((WerewolvesDataManager.InviteUser)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
           if (!((List)localObject3).contains(localObject5)) {
             ((List)localObject3).add(localObject5);
           }
@@ -253,7 +250,7 @@ public class WerewolvesDataManager$2
     }
     for (;;)
     {
-      this.jdField_a_of_type_Axtg.a(localArrayList1, true);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager$GetInviteUserCallback.a(localArrayList1, true);
       return;
       if ((localArrayList2.size() < 4) && (((List)localObject3).size() < 4))
       {

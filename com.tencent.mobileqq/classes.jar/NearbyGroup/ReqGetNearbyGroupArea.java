@@ -10,9 +10,9 @@ public final class ReqGetNearbyGroupArea
   extends JceStruct
   implements Cloneable
 {
-  public int iLat;
-  public int iLon;
-  public int iRadius;
+  public int iLat = 0;
+  public int iLon = 0;
+  public int iRadius = 0;
   
   static
   {

@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import omd;
 
 public class VideoInfo$ClassInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ClassInfo> CREATOR = new omd();
+  public static final Parcelable.Creator<ClassInfo> CREATOR = new VideoInfo.ClassInfo.1();
   public long a;
   public String a;
   public long b;
@@ -18,15 +17,21 @@ public class VideoInfo$ClassInfo
   
   public VideoInfo$ClassInfo()
   {
+    this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Long = 0L;
     this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Long = 0L;
     this.jdField_c_of_type_JavaLangString = "";
   }
   
-  public VideoInfo$ClassInfo(Parcel paramParcel)
+  protected VideoInfo$ClassInfo(Parcel paramParcel)
   {
+    this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Long = 0L;
     this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Long = 0L;
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -53,7 +58,7 @@ public class VideoInfo$ClassInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.ClassInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,11 @@ package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
 import com.tencent.av.screenshare.ScreenShareCtrl;
-import mdp;
 
-public class DoubleVideoMeetingCtrlUI$1$1
+class DoubleVideoMeetingCtrlUI$1$1
   implements Runnable
 {
-  public DoubleVideoMeetingCtrlUI$1$1(mdp parammdp) {}
+  DoubleVideoMeetingCtrlUI$1$1(DoubleVideoMeetingCtrlUI.1 param1) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class DoubleVideoMeetingCtrlUI$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoMeetingCtrlUI.1.1
  * JD-Core Version:    0.7.0.1
  */

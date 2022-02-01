@@ -6,8 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.AttributeSet;
 import android.view.View;
-import aycm;
-import ayco;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,13 +33,13 @@ public class CommonRecyclerView
   }
   
   @Nullable
-  public ayco a()
+  public CommonAdapter a()
   {
     if (getAdapter() == null) {
       return null;
     }
-    if ((((aycm)getAdapter()).a() instanceof ayco)) {
-      return (ayco)((aycm)getAdapter()).a();
+    if ((((AdapterWrapper)getAdapter()).a() instanceof CommonAdapter)) {
+      return (CommonAdapter)((AdapterWrapper)getAdapter()).a();
     }
     return null;
   }
@@ -56,10 +54,10 @@ public class CommonRecyclerView
       return;
       if ((a() == null) || (paramAdapter != a()))
       {
-        if (!(paramAdapter instanceof ayco)) {
+        if (!(paramAdapter instanceof CommonAdapter)) {
           throw new IllegalArgumentException("adapter must extends CommonAdapter");
         }
-        super.setAdapter(new aycm(paramAdapter));
+        super.setAdapter(new AdapterWrapper(paramAdapter));
         View localView;
         if (this.jdField_a_of_type_JavaUtilList.size() > 0)
         {
@@ -67,7 +65,7 @@ public class CommonRecyclerView
           while (paramAdapter.hasNext())
           {
             localView = (View)paramAdapter.next();
-            ((aycm)getAdapter()).a(localView);
+            ((AdapterWrapper)getAdapter()).a(localView);
           }
         }
         if (this.b.size() <= 0) {
@@ -77,7 +75,7 @@ public class CommonRecyclerView
         while (paramAdapter.hasNext())
         {
           localView = (View)paramAdapter.next();
-          ((aycm)getAdapter()).b(localView);
+          ((AdapterWrapper)getAdapter()).b(localView);
         }
       }
     }

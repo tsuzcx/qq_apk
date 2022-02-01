@@ -17,7 +17,7 @@ public class URLTextImageView
   Paint jdField_b_of_type_AndroidGraphicsPaint;
   public String e;
   int i;
-  public int j;
+  public int j = 0;
   int k = 2131165559;
   
   public URLTextImageView(Context paramContext)
@@ -80,7 +80,7 @@ public class URLTextImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.URLTextImageView
  * JD-Core Version:    0.7.0.1
  */

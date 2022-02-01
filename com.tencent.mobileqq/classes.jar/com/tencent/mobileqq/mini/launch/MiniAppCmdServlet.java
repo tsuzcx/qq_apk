@@ -97,7 +97,7 @@ public class MiniAppCmdServlet
           {
             if (paramBundle != null)
             {
-              MiniArkShareAsyncManager.performUploadArkShareImage(paramBundle.getString("filePath"), paramCmdCallback);
+              MiniArkShareAsyncManager.performUploadArkShareImage(paramBundle.getString("filePath"), new MiniAppCmdServlet.2(this, paramCmdCallback, paramString));
               return;
             }
             QLog.e("MiniAppCmdServlet", 1, "onMiniAppCmd cmd = " + paramString + ", bundle is null");
@@ -157,7 +157,7 @@ public class MiniAppCmdServlet
         i = j;
       }
     }
-    label436:
+    label445:
     for (paramBundle = paramBundle.getChannelForType(i);; paramBundle = null)
     {
       if (paramBundle != null) {
@@ -177,13 +177,13 @@ public class MiniAppCmdServlet
         return;
       }
       i = 3;
-      break label436;
+      break label445;
       if ("cmd_update_pull_down_entry_list".equals(paramString))
       {
         if (paramBundle != null)
         {
           MiniAppUtils.handlePullDownEntryListData(paramBundle, paramCmdCallback);
-          ThreadManager.getSubThreadHandler().postDelayed(new MiniAppCmdServlet.2(this), 600L);
+          ThreadManager.getSubThreadHandler().postDelayed(new MiniAppCmdServlet.3(this), 600L);
           return;
         }
         QLog.e("MiniAppCmdServlet", 1, "onMiniAppCmd cmd = " + paramString + ", bundle is null");

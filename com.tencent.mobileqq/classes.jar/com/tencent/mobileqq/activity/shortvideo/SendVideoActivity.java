@@ -1,39 +1,37 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import Override;
-import aipw;
-import alpt;
-import amab;
-import amad;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.MotionEvent;
-import bdcw;
-import bkyc;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.bless.BlessManager;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
+import com.tencent.mobileqq.video.AioVideoTransFileController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.MqqWeakReferenceHandler;
 import mqq.os.MqqHandler;
 
 public class SendVideoActivity
   extends BaseActivity
   implements Handler.Callback
 {
-  private static bkyc a;
+  private static MqqWeakReferenceHandler a;
   
   public static void a(Intent paramIntent)
   {
@@ -100,12 +98,12 @@ public class SendVideoActivity
         QLog.d("SendVideoActivity", 2, "doOnCreate(), <<===");
       }
       return true;
-      new amad(this, null).execute(new Void[0]);
+      new SendVideoActivity.SendVideoTask(this, null).execute(new Void[0]);
       continue;
       paramBundle = getIntent().getStringExtra("activity_before_enter_send_video");
       if ((paramBundle != null) && (ShortVideoPreviewActivity.class.getName().equals(paramBundle)))
       {
-        new amab(this).execute(new Void[0]);
+        new SendVideoActivity.SendAppShortVideoTask(this).execute(new Void[0]);
       }
       else
       {
@@ -119,8 +117,8 @@ public class SendVideoActivity
           }
           for (;;)
           {
-            alpt.a("", "0X80088E4", String.valueOf(i));
-            bdcw.a(this.app, false);
+            FlowCameraMqqAction.a("", "0X80088E4", String.valueOf(i));
+            RedBagVideoManager.a(this.app, false);
             break;
             if (j == 3000) {
               i = 2;
@@ -142,7 +140,7 @@ public class SendVideoActivity
             }
             else
             {
-              a = new bkyc(this);
+              a = new MqqWeakReferenceHandler(this);
               a.sendEmptyMessageDelayed(1, 45000L);
             }
           }
@@ -176,16 +174,16 @@ public class SendVideoActivity
       if (QLog.isColorLevel()) {
         QLog.i("SendVideoActivity", 2, "handleMessage: send video timeout!");
       }
-      paramMessage = ((aipw)getAppInterface().getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).a();
+      paramMessage = ((BlessManager)getAppInterface().getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).a();
       if (paramMessage != null)
       {
-        IHttpCommunicatorListener localIHttpCommunicatorListener = this.app.getTransFileController().findProcessor(paramMessage.frienduin, paramMessage.uniseq);
+        IHttpCommunicatorListener localIHttpCommunicatorListener = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class)).findProcessor(paramMessage.frienduin, paramMessage.uniseq);
         if ((localIHttpCommunicatorListener != null) && (ShortVideoUploadProcessor.class.isInstance(localIHttpCommunicatorListener)))
         {
           boolean bool = ((BaseTransProcessor)localIHttpCommunicatorListener).isPause();
           int i = paramMessage.videoFileStatus;
           if ((bool) || (i == 1002) || (i == 1001)) {
-            this.app.getTransFileController().stopSendingShortVideo(paramMessage.frienduin, paramMessage.uniseq);
+            AioVideoTransFileController.d(this.app, paramMessage.frienduin, paramMessage.uniseq);
           }
         }
       }
@@ -201,7 +199,7 @@ public class SendVideoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.SendVideoActivity
  * JD-Core Version:    0.7.0.1
  */

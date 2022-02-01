@@ -12,7 +12,6 @@ import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.Calendar;
-import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,16 +22,30 @@ public class PickerJsPlugin
   private static final String TAG = "PickerJsPlugin";
   private MutiPickerView mutiPickerView;
   
+  private void showDatePicker(RequestEvent paramRequestEvent, JSONObject paramJSONObject, String paramString1, String paramString2)
+  {
+    paramString1 = DateUtils.getSmartDateByTime(paramString1);
+    if (paramString1 == null)
+    {
+      paramRequestEvent.fail();
+      return;
+    }
+    AppBrandTask.runTaskOnUiThread(new PickerJsPlugin.4(this, paramString1, paramString2, paramRequestEvent, paramJSONObject));
+  }
+  
+  private void showTimePicker(RequestEvent paramRequestEvent, JSONObject paramJSONObject, String paramString)
+  {
+    AppBrandTask.runTaskOnUiThread(new PickerJsPlugin.3(this, DateUtils.getTimeByStrTime(paramString), paramRequestEvent, paramJSONObject));
+  }
+  
   @JsEvent({"showDatePickerView"})
   public void handleShowDatePickerView(RequestEvent paramRequestEvent)
   {
-    JSONObject localJSONObject;
-    String str;
     try
     {
       Object localObject2 = new JSONObject(paramRequestEvent.jsonParams);
-      localJSONObject = ((JSONObject)localObject2).optJSONObject("range");
-      str = ((JSONObject)localObject2).optString("current");
+      JSONObject localJSONObject = ((JSONObject)localObject2).optJSONObject("range");
+      String str = ((JSONObject)localObject2).optString("current");
       Object localObject1 = str;
       if (TextUtils.isEmpty(str))
       {
@@ -46,13 +59,12 @@ public class PickerJsPlugin
       localObject2 = ((JSONObject)localObject2).optString("fields");
       if ("date".equals(str))
       {
-        localObject1 = DateUtils.getSmartDateByTime((String)localObject1);
-        if (localObject1 == null)
-        {
-          paramRequestEvent.fail();
-          return;
-        }
-        AppBrandTask.runTaskOnUiThread(new PickerJsPlugin.3(this, (Date)localObject1, (String)localObject2, paramRequestEvent, localJSONObject));
+        showDatePicker(paramRequestEvent, localJSONObject, (String)localObject1, (String)localObject2);
+        return;
+      }
+      if ("time".equals(str))
+      {
+        showTimePicker(paramRequestEvent, localJSONObject, (String)localObject1);
         return;
       }
     }
@@ -60,10 +72,6 @@ public class PickerJsPlugin
     {
       QMLog.e("PickerJsPlugin", "showDatePickerView error.", localJSONException);
       paramRequestEvent.fail();
-      return;
-    }
-    if ("time".equals(str)) {
-      AppBrandTask.runTaskOnUiThread(new PickerJsPlugin.4(this, DateUtils.getTimeByStrTime(localJSONException), paramRequestEvent, localJSONObject));
     }
   }
   
@@ -151,7 +159,7 @@ public class PickerJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.PickerJsPlugin
  * JD-Core Version:    0.7.0.1
  */

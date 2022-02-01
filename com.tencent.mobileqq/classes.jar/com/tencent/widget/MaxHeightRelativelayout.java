@@ -28,7 +28,7 @@ public class MaxHeightRelativelayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int j = View.MeasureSpec.getMode(paramInt2);
     int i = paramInt2;
@@ -60,7 +60,7 @@ public class MaxHeightRelativelayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.MaxHeightRelativelayout
  * JD-Core Version:    0.7.0.1
  */

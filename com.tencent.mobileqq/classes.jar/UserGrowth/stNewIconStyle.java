@@ -10,13 +10,13 @@ public final class stNewIconStyle
   extends JceStruct
 {
   static Map<String, String> cache_exp = new HashMap();
-  public Map<String, String> exp;
+  public Map<String, String> exp = null;
   public String h5_url = "";
   public String iconUrl = "";
-  public int id;
+  public int id = 0;
   public String img_url = "";
   public String schema_url = "";
-  public int tag_type;
+  public int tag_type = 0;
   public String title = "";
   
   static

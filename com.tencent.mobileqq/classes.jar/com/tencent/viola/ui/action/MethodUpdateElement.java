@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.ui.context.DOMActionContext;
 import com.tencent.viola.ui.context.RenderActionContext;
+import com.tencent.viola.ui.dom.Attr;
 import com.tencent.viola.ui.dom.DomObject;
 import com.tencent.viola.ui.dom.DomObject.Consumer;
 import com.tencent.viola.utils.ViolaUtils;
@@ -38,9 +39,14 @@ public class MethodUpdateElement
   
   private void tryCompatVR(Map<String, Object> paramMap, VComponent paramVComponent)
   {
-    if ((paramMap == null) || (!paramMap.containsKey("vr")) || (paramVComponent == null) || (this.mDomObject == null)) {
+    if ((paramMap == null) || (!paramMap.containsKey("vr")) || (paramVComponent == null) || (this.mDomObject == null)) {}
+    Object localObject;
+    do
+    {
       return;
-    }
+      paramMap = paramMap.get("vr");
+      localObject = this.mDomObject.getAttributes().get("vr");
+    } while ((localObject != null) && (paramMap != null) && (localObject.toString().equals(paramMap.toString())));
     paramVComponent.tryCompatVR(this.mDomObject);
   }
   
@@ -144,7 +150,7 @@ public class MethodUpdateElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodUpdateElement
  * JD-Core Version:    0.7.0.1
  */

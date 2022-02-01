@@ -8,17 +8,17 @@ public final class rtmp_report_timed_info
   extends JceStruct
 {
   static int cache_play_status = 0;
-  public long anchor_svr_delay;
-  public double app_memory_usage;
-  public long audience_svr_delay;
+  public long anchor_svr_delay = 0L;
+  public double app_memory_usage = 0.0D;
+  public long audience_svr_delay = 0L;
   public String audio_play_err_code = "";
-  public double cpu_usage;
-  public double downstream_audio_bitrate;
-  public double downstream_total_bitrate;
-  public double downstream_video_bitrate;
-  public long lTime;
+  public double cpu_usage = 0.0D;
+  public double downstream_audio_bitrate = 0.0D;
+  public double downstream_total_bitrate = 0.0D;
+  public double downstream_video_bitrate = 0.0D;
+  public long lTime = 0L;
   public String play_err_code = "";
-  public int play_status;
+  public int play_status = 0;
   public String video_play_err_code = "";
   
   public rtmp_report_timed_info() {}

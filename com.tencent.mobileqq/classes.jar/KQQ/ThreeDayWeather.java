@@ -10,13 +10,13 @@ public final class ThreeDayWeather
   static DayWeather cache_aftertom;
   static DayWeather cache_today;
   static DayWeather cache_tomorrow;
-  public DayWeather aftertom;
+  public DayWeather aftertom = null;
   public String currtime = "";
-  public int currtmpe;
+  public int currtmpe = 0;
   public String day = "";
   public String festa = "";
-  public DayWeather today;
-  public DayWeather tomorrow;
+  public DayWeather today = null;
+  public DayWeather tomorrow = null;
   public String year = "";
   
   public ThreeDayWeather() {}

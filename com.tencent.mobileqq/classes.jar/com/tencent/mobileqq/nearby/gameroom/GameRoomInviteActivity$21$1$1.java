@@ -1,25 +1,22 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
 import android.widget.LinearLayout;
-import axrx;
-import axry;
-import axth;
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 import java.util.Iterator;
 import java.util.List;
 
-public class GameRoomInviteActivity$21$1$1
+class GameRoomInviteActivity$21$1$1
   implements Runnable
 {
-  public GameRoomInviteActivity$21$1$1(axry paramaxry, List paramList, boolean paramBoolean) {}
+  GameRoomInviteActivity$21$1$1(GameRoomInviteActivity.21.1 param1, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axry.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Axry.a.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity$21$1.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity$21$1.a.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
     int j;
     int i;
-    axth localaxth;
+    WerewolvesDataManager.InviteUser localInviteUser;
     int k;
     if (this.jdField_a_of_type_JavaUtilList.size() > 0)
     {
@@ -28,8 +25,8 @@ public class GameRoomInviteActivity$21$1$1
       i = 0;
       if (localIterator.hasNext())
       {
-        localaxth = (axth)localIterator.next();
-        if (localaxth.a == 1)
+        localInviteUser = (WerewolvesDataManager.InviteUser)localIterator.next();
+        if (localInviteUser.a == 1)
         {
           k = j;
           j = i + 1;
@@ -43,15 +40,15 @@ public class GameRoomInviteActivity$21$1$1
       j = i;
       i = k;
       break;
-      if (localaxth.a == 0)
+      if (localInviteUser.a == 0)
       {
         k = j + 1;
         j = i;
         i = k;
         continue;
-        bdla.b(this.jdField_a_of_type_Axry.a.a.app, "dc00899", "Grp_wolf", "", "invite_page", "exp_invite", 0, 0, "" + i, "" + j, "", "");
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity$21$1.a.a.app, "dc00899", "Grp_wolf", "", "invite_page", "exp_invite", 0, 0, "" + i, "" + j, "", "");
         if (this.jdField_a_of_type_Boolean) {
-          bdla.b(this.jdField_a_of_type_Axry.a.a.app, "dc00899", "Grp_wolf", "", "invite_page", "exp_more", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity$21$1.a.a.app, "dc00899", "Grp_wolf", "", "invite_page", "exp_more", 0, 0, "", "", "", "");
         }
       }
       else

@@ -50,7 +50,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ViewCompat
 {
-  private static final int[] ACCESSIBILITY_ACTIONS_RESOURCE_IDS = { 2131361825, 2131361826, 2131361837, 2131361848, 2131361851, 2131361852, 2131361853, 2131361854, 2131361855, 2131361856, 2131361827, 2131361828, 2131361829, 2131361830, 2131361831, 2131361832, 2131361833, 2131361834, 2131361835, 2131361836, 2131361838, 2131361839, 2131361840, 2131361841, 2131361842, 2131361843, 2131361844, 2131361845, 2131361846, 2131361847, 2131361849, 2131361850 };
+  private static final int[] ACCESSIBILITY_ACTIONS_RESOURCE_IDS = { 2131361824, 2131361825, 2131361836, 2131361847, 2131361850, 2131361851, 2131361852, 2131361853, 2131361854, 2131361855, 2131361826, 2131361827, 2131361828, 2131361829, 2131361830, 2131361831, 2131361832, 2131361833, 2131361834, 2131361835, 2131361837, 2131361838, 2131361839, 2131361840, 2131361841, 2131361842, 2131361843, 2131361844, 2131361845, 2131361846, 2131361848, 2131361849 };
   public static final int ACCESSIBILITY_LIVE_REGION_ASSERTIVE = 2;
   public static final int ACCESSIBILITY_LIVE_REGION_NONE = 0;
   public static final int ACCESSIBILITY_LIVE_REGION_POLITE = 1;
@@ -117,7 +117,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<Boolean> accessibilityHeadingProperty()
   {
-    return new ViewCompat.5(2131378449, Boolean.class, 28);
+    return new ViewCompat.5(2131378880, Boolean.class, 28);
   }
   
   public static int addAccessibilityAction(@NonNull View paramView, @NonNull CharSequence paramCharSequence, @NonNull AccessibilityViewCommand paramAccessibilityViewCommand)
@@ -153,12 +153,12 @@ public class ViewCompat
     Object localObject1;
     if (Build.VERSION.SDK_INT >= 28)
     {
-      localObject2 = (SimpleArrayMap)paramView.getTag(2131378494);
+      localObject2 = (SimpleArrayMap)paramView.getTag(2131378925);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new SimpleArrayMap();
-        paramView.setTag(2131378494, localObject1);
+        paramView.setTag(2131378925, localObject1);
       }
       localObject2 = new ViewCompat.2(paramOnUnhandledKeyEventListenerCompat);
       ((SimpleArrayMap)localObject1).put(paramOnUnhandledKeyEventListenerCompat, localObject2);
@@ -167,12 +167,12 @@ public class ViewCompat
     do
     {
       return;
-      localObject2 = (ArrayList)paramView.getTag(2131378494);
+      localObject2 = (ArrayList)paramView.getTag(2131378925);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramView.setTag(2131378494, localObject1);
+        paramView.setTag(2131378925, localObject1);
       }
       ((ArrayList)localObject1).add(paramOnUnhandledKeyEventListenerCompat);
     } while (((ArrayList)localObject1).size() != 1);
@@ -551,12 +551,12 @@ public class ViewCompat
   
   private static List<AccessibilityNodeInfoCompat.AccessibilityActionCompat> getActionList(View paramView)
   {
-    ArrayList localArrayList2 = (ArrayList)paramView.getTag(2131378447);
+    ArrayList localArrayList2 = (ArrayList)paramView.getTag(2131378878);
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2 == null)
     {
       localArrayList1 = new ArrayList();
-      paramView.setTag(2131378447, localArrayList1);
+      paramView.setTag(2131378878, localArrayList1);
     }
     return localArrayList1;
   }
@@ -1298,7 +1298,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<CharSequence> paneTitleProperty()
   {
-    return new ViewCompat.4(2131378450, CharSequence.class, 8, 28);
+    return new ViewCompat.4(2131378881, CharSequence.class, 8, 28);
   }
   
   public static boolean performAccessibilityAction(@NonNull View paramView, int paramInt, Bundle paramBundle)
@@ -1382,7 +1382,7 @@ public class ViewCompat
     Object localObject;
     if (Build.VERSION.SDK_INT >= 28)
     {
-      localObject = (SimpleArrayMap)paramView.getTag(2131378494);
+      localObject = (SimpleArrayMap)paramView.getTag(2131378925);
       if (localObject != null) {}
     }
     do
@@ -1396,7 +1396,7 @@ public class ViewCompat
         } while (paramOnUnhandledKeyEventListenerCompat == null);
         paramView.removeOnUnhandledKeyEventListener(paramOnUnhandledKeyEventListenerCompat);
         return;
-        localObject = (ArrayList)paramView.getTag(2131378494);
+        localObject = (ArrayList)paramView.getTag(2131378925);
       } while (localObject == null);
       ((ArrayList)localObject).remove(paramOnUnhandledKeyEventListenerCompat);
     } while (((ArrayList)localObject).size() != 0);
@@ -1456,7 +1456,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<Boolean> screenReaderFocusableProperty()
   {
-    return new ViewCompat.3(2131378484, Boolean.class, 28);
+    return new ViewCompat.3(2131378915, Boolean.class, 28);
   }
   
   public static void setAccessibilityDelegate(@NonNull View paramView, AccessibilityDelegateCompat paramAccessibilityDelegateCompat)
@@ -1996,7 +1996,7 @@ public class ViewCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.view.ViewCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.open.appcenter;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -27,7 +26,7 @@ public class OpenWriteCodeQQBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appcenter.OpenWriteCodeQQBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

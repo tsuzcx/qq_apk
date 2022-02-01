@@ -24,7 +24,7 @@ public class QzoneHardwareRestriction
   public static int curCpuLevel = -1;
   public static int curMemLevel = -1;
   public static int sCpuCoreNum = -1;
-  private static long sCpuMaxFreq;
+  private static long sCpuMaxFreq = 0L;
   
   public static boolean equalHardwareRestriction(int paramInt1, int paramInt2)
   {
@@ -310,19 +310,19 @@ public class QzoneHardwareRestriction
     //   91: invokestatic 272	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   94: i2l
     //   95: lstore_0
-    //   96: invokestatic 79	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   96: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   99: ifeq +29 -> 128
     //   102: ldc 22
     //   104: iconst_2
-    //   105: new 81	java/lang/StringBuilder
+    //   105: new 83	java/lang/StringBuilder
     //   108: dup
-    //   109: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   109: invokespecial 84	java/lang/StringBuilder:<init>	()V
     //   112: ldc_w 274
-    //   115: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: lload_0
-    //   119: invokevirtual 96	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   122: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: invokestatic 104	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   119: invokevirtual 98	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   128: lload_0
     //   129: lreturn
     //   130: astore_3
@@ -453,16 +453,16 @@ public class QzoneHardwareRestriction
     //   8: if_icmpge +336 -> 344
     //   11: new 243	java/io/FileReader
     //   14: dup
-    //   15: new 81	java/lang/StringBuilder
+    //   15: new 83	java/lang/StringBuilder
     //   18: dup
-    //   19: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   19: invokespecial 84	java/lang/StringBuilder:<init>	()V
     //   22: ldc_w 280
-    //   25: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: iload_0
     //   29: invokevirtual 283	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   32: ldc_w 285
-    //   35: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   35: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   41: invokespecial 246	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   44: astore 5
     //   46: new 241	java/io/BufferedReader
@@ -491,7 +491,7 @@ public class QzoneHardwareRestriction
     //   96: astore 7
     //   98: aload 5
     //   100: astore 6
-    //   102: getstatic 107	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
+    //   102: getstatic 31	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
     //   105: lload_2
     //   106: lcmp
     //   107: ifge +15 -> 122
@@ -500,12 +500,12 @@ public class QzoneHardwareRestriction
     //   114: aload 5
     //   116: astore 6
     //   118: lload_2
-    //   119: putstatic 107	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
+    //   119: putstatic 31	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
     //   122: aload 4
     //   124: astore 7
     //   126: aload 5
     //   128: astore 6
-    //   130: invokestatic 79	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   130: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   133: ifeq +44 -> 177
     //   136: aload 4
     //   138: astore 7
@@ -528,7 +528,7 @@ public class QzoneHardwareRestriction
     //   167: invokestatic 305	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   170: aastore
     //   171: invokestatic 309	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   174: invokestatic 104	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   174: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   177: aload 4
     //   179: ifnull +8 -> 187
     //   182: aload 4
@@ -615,22 +615,22 @@ public class QzoneHardwareRestriction
     //   368: ldc_w 330
     //   371: invokevirtual 328	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   374: ifeq +43 -> 417
-    //   377: getstatic 107	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
+    //   377: getstatic 31	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
     //   380: l2d
     //   381: ldc2_w 331
     //   384: dmul
     //   385: d2l
-    //   386: putstatic 107	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
+    //   386: putstatic 31	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
     //   389: ldc 22
     //   391: iconst_2
-    //   392: new 81	java/lang/StringBuilder
+    //   392: new 83	java/lang/StringBuilder
     //   395: dup
-    //   396: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   396: invokespecial 84	java/lang/StringBuilder:<init>	()V
     //   399: ldc_w 334
-    //   402: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   402: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   405: getstatic 316	android/os/Build:MODEL	Ljava/lang/String;
-    //   408: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   411: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   408: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   411: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   414: invokestatic 337	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   417: return
     //   418: astore 4
@@ -706,7 +706,7 @@ public class QzoneHardwareRestriction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.QzoneHardwareRestriction
  * JD-Core Version:    0.7.0.1
  */

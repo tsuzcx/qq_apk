@@ -8,7 +8,7 @@ public final class CustomTrackUgcDeco
   extends JceStruct
 {
   static UgcCustomTrack cache_stUgcCustomTrack = new UgcCustomTrack();
-  public UgcCustomTrack stUgcCustomTrack;
+  public UgcCustomTrack stUgcCustomTrack = null;
   
   public CustomTrackUgcDeco() {}
   

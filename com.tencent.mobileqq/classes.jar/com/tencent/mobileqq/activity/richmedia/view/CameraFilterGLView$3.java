@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import alsj;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import aqmy;
-import bdei;
-import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.camera.utils.CameraUtils;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
+import com.tencent.mobileqq.shortvideo.util.SVFilterEncodeDoubleCache.SharedMemoryCache;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.os.MqqHandler;
@@ -18,7 +19,7 @@ import mqq.os.MqqHandler;
 class CameraFilterGLView$3
   implements Runnable
 {
-  CameraFilterGLView$3(CameraFilterGLView paramCameraFilterGLView, bdei parambdei) {}
+  CameraFilterGLView$3(CameraFilterGLView paramCameraFilterGLView, SVFilterEncodeDoubleCache.SharedMemoryCache paramSharedMemoryCache) {}
   
   public void run()
   {
@@ -26,7 +27,7 @@ class CameraFilterGLView$3
     this.a.a();
     if (TextUtils.isEmpty(CameraFilterGLView.a(this.this$0)))
     {
-      alsj.a(3);
+      ShortVideoCaptureController.a(3);
       return;
     }
     File localFile = new File(CameraFilterGLView.a(this.this$0));
@@ -42,8 +43,8 @@ class CameraFilterGLView$3
           {
             ((Matrix)localObject).postRotate(CameraFilterGLView.c(this.this$0) + 180);
             ((Matrix)localObject).postScale(-1.0F, 1.0F);
-            localObject = aqmy.a(Bitmap.createBitmap(localBitmap, 0, 0, CameraFilterGLView.a(this.this$0), CameraFilterGLView.b(this.this$0), (Matrix)localObject, true));
-            bool = bheg.a((Bitmap)localObject, localFile);
+            localObject = CameraUtils.a(Bitmap.createBitmap(localBitmap, 0, 0, CameraFilterGLView.a(this.this$0), CameraFilterGLView.b(this.this$0), (Matrix)localObject, true));
+            bool = ImageUtil.a((Bitmap)localObject, localFile);
           }
         }
         catch (Throwable localThrowable1)
@@ -54,8 +55,8 @@ class CameraFilterGLView$3
         try
         {
           localBitmap.recycle();
-          bheg.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
-          BaseApplicationImpl.sImageCache.put(localFile.getAbsolutePath() + "#short_video_camera_preview_cache", localObject);
+          ImageUtil.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+          GlobalImageCache.a.put(localFile.getAbsolutePath() + "#short_video_camera_preview_cache", localObject);
           CameraFilterGLView.a(this.this$0, 90);
           if (!bool) {
             break label279;
@@ -83,7 +84,7 @@ class CameraFilterGLView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView.3
  * JD-Core Version:    0.7.0.1
  */

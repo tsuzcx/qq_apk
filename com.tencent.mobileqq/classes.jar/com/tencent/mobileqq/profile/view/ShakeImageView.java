@@ -12,8 +12,8 @@ import android.hardware.SensorManager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.qphone.base.util.QLog;
-import ykq;
 
 public class ShakeImageView
   extends ImageView
@@ -70,11 +70,11 @@ public class ShakeImageView
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      ykq.e("ShakeImageView", "onAttachedToWindow but mSensorManager is null.");
+      SLog.e("ShakeImageView", "onAttachedToWindow but mSensorManager is null.");
     }
     if ((getVisibility() != 8) && (this.jdField_a_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensorManager != null))
     {
@@ -83,18 +83,18 @@ public class ShakeImageView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      ykq.e("ShakeImageView", "onDetachedFromWindow but mSensorManager is null.");
+      SLog.e("ShakeImageView", "onDetachedFromWindow but mSensorManager is null.");
     }
     if ((this.jdField_a_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensorManager != null)) {
       this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     float f3 = 0.0F;
     System.currentTimeMillis();
@@ -140,7 +140,7 @@ public class ShakeImageView
     invalidate();
   }
   
-  protected void onVisibilityChanged(View paramView, int paramInt)
+  public void onVisibilityChanged(View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
     if ((getVisibility() != 8) && (this.jdField_a_of_type_AndroidHardwareSensor == null))

@@ -9,9 +9,9 @@ public final class ShowRule
   extends JceStruct
 {
   static ArrayList<ShowRangeTime> cache_rangTimes = new ArrayList();
-  public ArrayList<ShowRangeTime> rangTimes;
-  public int showCount;
-  public int showType;
+  public ArrayList<ShowRangeTime> rangTimes = null;
+  public int showCount = 0;
+  public int showType = 0;
   
   static
   {

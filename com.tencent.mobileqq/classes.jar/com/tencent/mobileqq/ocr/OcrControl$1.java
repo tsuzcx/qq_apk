@@ -1,49 +1,46 @@
 package com.tencent.mobileqq.ocr;
 
-import apkm;
-import aytd;
-import aytf;
-import aytg;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-public class OcrControl$1
+class OcrControl$1
   implements Runnable
 {
-  public OcrControl$1(aytd paramaytd, String paramString1, boolean paramBoolean, String paramString2) {}
+  OcrControl$1(OcrControl paramOcrControl, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
-    if (aytg.a(this.jdField_a_of_type_JavaLangString))
+    if (OcrImageUtil.a(this.jdField_a_of_type_JavaLangString))
     {
-      localObject = aytg.a(new File(this.jdField_a_of_type_JavaLangString).getName(), false);
-      if ((this.jdField_a_of_type_Boolean) && (aytg.a(this.jdField_a_of_type_JavaLangString, (String)localObject)))
+      localObject = OcrImageUtil.a(new File(this.jdField_a_of_type_JavaLangString).getName(), false);
+      if ((this.jdField_a_of_type_Boolean) && (OcrImageUtil.a(this.jdField_a_of_type_JavaLangString, (String)localObject)))
       {
-        localapkm = new apkm();
-        localapkm.jdField_a_of_type_JavaLangString = ((String)localObject);
-        localapkm.jdField_a_of_type_Int = 0;
-        localapkm.b = this.jdField_a_of_type_JavaLangString;
+        localARCloudReqFileInfo = new ARCloudReqFileInfo();
+        localARCloudReqFileInfo.jdField_a_of_type_JavaLangString = ((String)localObject);
+        localARCloudReqFileInfo.jdField_a_of_type_Int = 0;
+        localARCloudReqFileInfo.b = this.jdField_a_of_type_JavaLangString;
         if (QLog.isColorLevel()) {
           QLog.d("Q.ocr.control", 2, "upload pic size:" + new File((String)localObject).length() / 1024L + "KB");
         }
-        this.this$0.a(localapkm, this.b);
+        this.this$0.a(localARCloudReqFileInfo, this.b);
       }
     }
-    while (aytd.a(this.this$0) == null)
+    while (OcrControl.a(this.this$0) == null)
     {
-      apkm localapkm;
+      ARCloudReqFileInfo localARCloudReqFileInfo;
       return;
-      Object localObject = new apkm();
-      ((apkm)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((apkm)localObject).jdField_a_of_type_Int = 0;
-      ((apkm)localObject).b = this.jdField_a_of_type_JavaLangString;
+      Object localObject = new ARCloudReqFileInfo();
+      ((ARCloudReqFileInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((ARCloudReqFileInfo)localObject).jdField_a_of_type_Int = 0;
+      ((ARCloudReqFileInfo)localObject).b = this.jdField_a_of_type_JavaLangString;
       if (QLog.isColorLevel()) {
         QLog.d("Q.ocr.control", 2, "upload pic size:" + new File(this.jdField_a_of_type_JavaLangString).length() / 1024L + "KB");
       }
-      this.this$0.a((apkm)localObject, this.b);
+      this.this$0.a((ARCloudReqFileInfo)localObject, this.b);
       return;
     }
-    aytd.a(this.this$0).a(1, null, this.jdField_a_of_type_JavaLangString, 0L);
+    OcrControl.a(this.this$0).a(1, null, this.jdField_a_of_type_JavaLangString, 0L);
   }
 }
 

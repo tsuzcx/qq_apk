@@ -1,38 +1,21 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
+import com.tencent.qphone.base.util.QLog;
 
 class NearbyPeopleProfileActivity$21
   implements Runnable
 {
-  NearbyPeopleProfileActivity$21(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  NearbyPeopleProfileActivity$21(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, String paramString) {}
   
   public void run()
   {
-    if (!StringUtil.isEmpty(NearbyPeopleProfileActivity.a(this.this$0).uin)) {
-      this.this$0.app.refreshStrangerFace(NearbyPeopleProfileActivity.a(this.this$0).uin, 200, false);
-    }
-    if (this.this$0.a > 0L) {
-      this.this$0.app.refreshStrangerFace(String.valueOf(this.this$0.a), 202, false);
-    }
-    EntityManager localEntityManager;
-    do
+    if (NearbyPeopleProfileActivity.a(this.this$0) != null)
     {
-      do
-      {
-        return;
-      } while (StringUtil.isEmpty(NearbyPeopleProfileActivity.a(this.this$0).uin));
-      localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    } while (localEntityManager == null);
-    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.this$0).uin });
-    if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
-      this.this$0.app.refreshStrangerFace(String.valueOf(localNearbyPeopleCard.tinyId), 202, false);
+      NearbyPeopleProfileActivity.a(this.this$0).a(this.a);
+      return;
     }
-    localEntityManager.close();
+    QLog.i("Q.nearby_people_card.", 1, "mDynamicAvatarDownloadManager is NULL!!!");
   }
 }
 

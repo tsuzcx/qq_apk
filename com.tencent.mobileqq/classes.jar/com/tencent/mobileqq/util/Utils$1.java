@@ -2,10 +2,10 @@ package com.tencent.mobileqq.util;
 
 import java.util.HashSet;
 
-public final class Utils$1
+final class Utils$1
   extends HashSet<Long>
 {
-  public Utils$1(int paramInt)
+  Utils$1(int paramInt)
   {
     super(paramInt);
     add(Long.valueOf(542245351L));

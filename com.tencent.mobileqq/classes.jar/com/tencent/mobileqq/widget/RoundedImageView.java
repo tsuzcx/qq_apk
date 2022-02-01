@@ -16,7 +16,6 @@ import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bitj;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -28,18 +27,18 @@ public class RoundedImageView
   private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int;
   private ColorStateList jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(-16777216);
-  private ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter;
+  private ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter = null;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType;
   private final float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 0.0F, 0.0F };
   private int jdField_b_of_type_Int;
   private Shader.TileMode jdField_b_of_type_AndroidGraphicsShader$TileMode = jdField_a_of_type_AndroidGraphicsShader$TileMode;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private Shader.TileMode jdField_c_of_type_AndroidGraphicsShader$TileMode = jdField_a_of_type_AndroidGraphicsShader$TileMode;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e;
+  private boolean jdField_c_of_type_Boolean = false;
+  private boolean d = false;
+  private boolean e = false;
   
   static
   {
@@ -81,33 +80,33 @@ public class RoundedImageView
       int j = this.jdField_a_of_type_ArrayOfFloat.length;
       paramInt = 0;
       i = 0;
-      label164:
+      label189:
       if (paramInt >= j) {
-        break label211;
+        break label236;
       }
       if (this.jdField_a_of_type_ArrayOfFloat[paramInt] >= 0.0F) {
-        break label205;
+        break label230;
       }
       this.jdField_a_of_type_ArrayOfFloat[paramInt] = 0.0F;
     }
     for (;;)
     {
       paramInt += 1;
-      break label164;
+      break label189;
       setScaleType(ImageView.ScaleType.FIT_CENTER);
       break;
-      label205:
+      label230:
       i = 1;
     }
-    label211:
+    label236:
     if (i == 0)
     {
       if (f >= 0.0F) {
-        break label434;
+        break label459;
       }
       f = 0.0F;
     }
-    label434:
+    label459:
     for (;;)
     {
       i = this.jdField_a_of_type_ArrayOfFloat.length;
@@ -177,7 +176,7 @@ public class RoundedImageView
     try
     {
       localObject1 = localResources.getDrawable(this.jdField_a_of_type_Int);
-      return bitj.a((Drawable)localObject1);
+      return RoundedDrawable.a((Drawable)localObject1);
     }
     catch (Exception localException)
     {
@@ -201,11 +200,11 @@ public class RoundedImageView
     for (;;)
     {
       return;
-      if ((paramDrawable instanceof bitj))
+      if ((paramDrawable instanceof RoundedDrawable))
       {
-        ((bitj)paramDrawable).a(paramScaleType).a(this.jdField_a_of_type_Float).a(this.jdField_a_of_type_AndroidContentResColorStateList).a(this.d).a(this.jdField_b_of_type_AndroidGraphicsShader$TileMode).b(this.jdField_c_of_type_AndroidGraphicsShader$TileMode);
+        ((RoundedDrawable)paramDrawable).a(paramScaleType).a(this.jdField_a_of_type_Float).a(this.jdField_a_of_type_AndroidContentResColorStateList).a(this.d).a(this.jdField_b_of_type_AndroidGraphicsShader$TileMode).b(this.jdField_c_of_type_AndroidGraphicsShader$TileMode);
         if (this.jdField_a_of_type_ArrayOfFloat != null) {
-          ((bitj)paramDrawable).a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]);
+          ((RoundedDrawable)paramDrawable).a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]);
         }
         b();
         return;
@@ -229,7 +228,7 @@ public class RoundedImageView
     if (this.e)
     {
       if (paramBoolean) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bitj.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = RoundedDrawable.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
       a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ImageView.ScaleType.FIT_XY);
     }
@@ -247,7 +246,7 @@ public class RoundedImageView
     try
     {
       localObject1 = localResources.getDrawable(this.jdField_b_of_type_Int);
-      return bitj.a((Drawable)localObject1);
+      return RoundedDrawable.a((Drawable)localObject1);
     }
     catch (Exception localException)
     {
@@ -271,7 +270,7 @@ public class RoundedImageView
     }
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     invalidate();
@@ -408,7 +407,7 @@ public class RoundedImageView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = bitj.a(paramBitmap);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = RoundedDrawable.a(paramBitmap);
     a();
     super.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
   }
@@ -416,7 +415,7 @@ public class RoundedImageView
   public void setImageDrawable(Drawable paramDrawable)
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = bitj.a(paramDrawable);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = RoundedDrawable.a(paramDrawable);
     a();
     super.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
   }
@@ -454,7 +453,7 @@ public class RoundedImageView
     if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType != paramScaleType)
     {
       this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = paramScaleType;
-      switch (bitl.a[paramScaleType.ordinal()])
+      switch (RoundedImageView.1.a[paramScaleType.ordinal()])
       {
       default: 
         super.setScaleType(paramScaleType);
@@ -494,7 +493,7 @@ public class RoundedImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RoundedImageView
  * JD-Core Version:    0.7.0.1
  */

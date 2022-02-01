@@ -3,6 +3,7 @@ package com.tencent.qqmini.miniapp.widget.media;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
@@ -17,6 +18,8 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.qqmini.miniapp.core.page.AppBrandPage;
+import com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer;
 import com.tencent.qqmini.miniapp.widget.media.live.TXJSAdapterError;
 import com.tencent.qqmini.miniapp.widget.media.live.TXLivePlayerJSAdapter;
 import com.tencent.qqmini.sdk.R.id;
@@ -33,8 +36,11 @@ import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.launcher.widget.VideoGestureRelativeLayout;
 import com.tencent.qqmini.sdk.utils.ImmersiveUtils;
 import com.tencent.qqmini.sdk.utils.JarReflectUtil;
+import com.tencent.qqmini.sdk.widget.NavigationBar;
+import com.tencent.qqmini.sdk.widget.TabBar;
 import com.tencent.qqmini.sdk.widget.media.danmu.Barrage;
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -188,32 +194,89 @@ public class MiniAppLivePlayer
     this.videoContainer.setEnableProgressGesture(false);
   }
   
+  private void onPlayEvent(int paramInt, Bundle paramBundle, RequestEvent paramRequestEvent)
+  {
+    if (2028 == paramInt) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("livePlayerId", this.livePlayerId);
+        localJSONObject.put("errCode", paramInt);
+        paramBundle = paramBundle.get("EVT_GET_METADATA");
+        if ((paramBundle instanceof HashMap)) {
+          localJSONObject.put("errMsg", new JSONObject((HashMap)paramBundle));
+        }
+        if (this.miniAppContextRef != null) {}
+        for (paramBundle = (IMiniAppContext)this.miniAppContextRef.get();; paramBundle = null)
+        {
+          if (paramBundle != null) {
+            paramBundle.performAction(ServiceSubscribeEvent.obtain("onLivePlayerMetadata", localJSONObject.toString(), this.webviewId));
+          }
+          paramRequestEvent.jsService.evaluateSubscribeJS("onLivePlayerMetadata", localJSONObject.toString(), this.webviewId);
+          QMLog.e("MiniAppLivePlayer", "operate start evaluateSubcribeJS onLivePlayerMetadata = " + localJSONObject.toString());
+          return;
+        }
+        try
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("livePlayerId", this.livePlayerId);
+          localJSONObject.put("errCode", paramInt);
+          localJSONObject.put("errMsg", paramBundle.get("EVT_MSG"));
+          if (this.miniAppContextRef != null)
+          {
+            paramBundle = (IMiniAppContext)this.miniAppContextRef.get();
+            if (paramBundle != null) {
+              paramBundle.performAction(ServiceSubscribeEvent.obtain("onLivePlayerEvent", localJSONObject.toString(), this.webviewId));
+            }
+            paramRequestEvent.jsService.evaluateSubscribeJS("onLivePlayerEvent", localJSONObject.toString(), this.webviewId);
+            QMLog.e("MiniAppLivePlayer", "operate start evaluateSubcribeJS onLivePlayerEvent = " + localJSONObject.toString());
+            return;
+          }
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+    }
+    for (;;)
+    {
+      paramBundle = null;
+    }
+  }
+  
   /* Error */
   private static void saveJpeg(android.graphics.Bitmap paramBitmap, java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 376	java/io/BufferedOutputStream
+    //   0: new 421	java/io/BufferedOutputStream
     //   3: dup
-    //   4: new 378	java/io/FileOutputStream
+    //   4: new 423	java/io/FileOutputStream
     //   7: dup
     //   8: aload_1
-    //   9: invokespecial 381	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 384	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   9: invokespecial 426	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 429	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   15: astore_1
     //   16: aload_0
-    //   17: getstatic 390	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   17: getstatic 435	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   20: bipush 100
     //   22: bipush 100
-    //   24: invokestatic 396	java/lang/Math:min	(II)I
+    //   24: invokestatic 441	java/lang/Math:min	(II)I
     //   27: aload_1
-    //   28: invokevirtual 402	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   28: invokevirtual 447	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   31: pop
     //   32: aload_1
-    //   33: invokevirtual 405	java/io/BufferedOutputStream:flush	()V
+    //   33: invokevirtual 450	java/io/BufferedOutputStream:flush	()V
     //   36: aload_1
     //   37: ifnull +7 -> 44
     //   40: aload_1
-    //   41: invokevirtual 408	java/io/BufferedOutputStream:close	()V
+    //   41: invokevirtual 453	java/io/BufferedOutputStream:close	()V
     //   44: return
     //   45: astore_0
     //   46: aconst_null
@@ -221,7 +284,7 @@ public class MiniAppLivePlayer
     //   48: aload_1
     //   49: ifnull +7 -> 56
     //   52: aload_1
-    //   53: invokevirtual 408	java/io/BufferedOutputStream:close	()V
+    //   53: invokevirtual 453	java/io/BufferedOutputStream:close	()V
     //   56: aload_0
     //   57: athrow
     //   58: astore_0
@@ -240,6 +303,26 @@ public class MiniAppLivePlayer
     //   40	44	58	java/lang/Exception
     //   52	56	60	java/lang/Exception
     //   16	36	64	finally
+  }
+  
+  private void setRequestedOrientation(Activity paramActivity)
+  {
+    if ((this.direction == -90) || (this.direction == 270))
+    {
+      paramActivity.setRequestedOrientation(8);
+      return;
+    }
+    if (this.direction == 0)
+    {
+      paramActivity.setRequestedOrientation(1);
+      return;
+    }
+    if ((this.direction == 180) || (this.direction == -180))
+    {
+      paramActivity.setRequestedOrientation(9);
+      return;
+    }
+    paramActivity.setRequestedOrientation(0);
   }
   
   private void setUpView(Context paramContext)
@@ -263,6 +346,50 @@ public class MiniAppLivePlayer
   public void changeState()
   {
     AppBrandTask.runTaskOnUiThread(new MiniAppLivePlayer.3(this));
+  }
+  
+  public void doSmallScreen(Activity paramActivity, AppBrandPageContainer paramAppBrandPageContainer)
+  {
+    paramAppBrandPageContainer = paramAppBrandPageContainer.getShowingPage();
+    if (paramAppBrandPageContainer != null)
+    {
+      if (paramAppBrandPageContainer.getNavBar() != null) {
+        paramAppBrandPageContainer.getNavBar().setVisibility(this.lastNavBarVisibility);
+      }
+      if (paramAppBrandPageContainer.getTabBar() != null) {
+        paramAppBrandPageContainer.getTabBar().setVisibility(this.lastTabBarVisibility);
+      }
+    }
+    paramActivity.getWindow().clearFlags(1024);
+    paramActivity.setRequestedOrientation(1);
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramActivity.getWindow().getDecorView().setSystemUiVisibility(1024);
+    }
+    if (paramAppBrandPageContainer != null) {}
+    for (;;)
+    {
+      try
+      {
+        i = paramAppBrandPageContainer.getNavBar().getStatusNavigationBarTextStyle();
+        if (i != -1) {
+          continue;
+        }
+        ImmersiveUtils.setStatusTextColor(false, paramActivity.getWindow());
+      }
+      catch (Exception paramActivity)
+      {
+        int i;
+        QMLog.e("MiniAppLivePlayer", "smallScreen: ", paramActivity);
+        continue;
+      }
+      this.lastSmallScreenTime = System.currentTimeMillis();
+      this.isBusyInChangeScreen = true;
+      this.handler.postDelayed(new MiniAppLivePlayer.6(this), 200L);
+      return;
+      if (i == -16777216) {
+        ImmersiveUtils.setStatusTextColor(true, paramActivity.getWindow());
+      }
+    }
   }
   
   public boolean enterBackground()
@@ -398,7 +525,7 @@ public class MiniAppLivePlayer
       return;
     }
     QMLog.e("MiniAppLivePlayer", "takePhoto invoke");
-    this.livePlayerJsAdapter.setSnapshotListener(new MiniAppLivePlayer.6(this, paramString, paramRequestEvent));
+    this.livePlayerJsAdapter.setSnapshotListener(new MiniAppLivePlayer.7(this, paramString, paramRequestEvent));
     this.livePlayerJsAdapter.takePhoto(paramBoolean);
   }
   
@@ -415,7 +542,7 @@ public class MiniAppLivePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppLivePlayer
  * JD-Core Version:    0.7.0.1
  */

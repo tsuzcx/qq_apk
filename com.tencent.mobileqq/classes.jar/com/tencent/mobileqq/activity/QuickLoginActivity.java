@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import aesz;
-import aeta;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -20,12 +17,12 @@ public class QuickLoginActivity
 {
   ListView jdField_a_of_type_AndroidWidgetListView;
   SimpleAdapter jdField_a_of_type_AndroidWidgetSimpleAdapter;
-  public ArrayList<HashMap<String, String>> a;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new aeta(this);
+  ArrayList<HashMap<String, String>> jdField_a_of_type_JavaUtilArrayList;
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new QuickLoginActivity.2(this);
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131374860));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131375238));
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     c();
     b();
@@ -42,9 +39,9 @@ public class QuickLoginActivity
       localHashMap2.put("text", (String)localHashMap1.get("qq") + " " + (String)localHashMap1.get("password"));
       localArrayList.add(localHashMap2);
     }
-    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, localArrayList, 2131558431, new String[] { "text" }, new int[] { 2131369135 });
+    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, localArrayList, 2131558431, new String[] { "text" }, new int[] { 2131369386 });
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_AndroidWidgetSimpleAdapter);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new aesz(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new QuickLoginActivity.1(this));
   }
   
   /* Error */
@@ -244,7 +241,7 @@ public class QuickLoginActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QuickLoginActivity
  * JD-Core Version:    0.7.0.1
  */

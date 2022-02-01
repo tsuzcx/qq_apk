@@ -1,21 +1,19 @@
 package com.tencent.biz.qqstory.settings;
 
-import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import com.tencent.biz.qqstory.boundaries.StoryApi;
+import com.tencent.biz.qqstory.boundaries.delegates.ActivityDelegate;
+import com.tencent.biz.qqstory.boundaries.implement.NullableObjectFactoryImplement;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import weg;
-import wep;
-import weu;
-import xqh;
-import ykv;
 
 public class QQStoryFriendSettings
   extends IphoneTitleBarActivity
 {
-  protected wep<QQStoryFriendSettings> a = weg.a(xqh.class, weu.a(wep.class), new Object[0]);
+  protected ActivityDelegate<QQStoryFriendSettings> a = StoryApi.a(QQStoryFriendSettingDelegate.class, NullableObjectFactoryImplement.a(ActivityDelegate.class), new Object[0]);
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -42,7 +40,7 @@ public class QQStoryFriendSettings
   public void doOnPause()
   {
     super.doOnPause();
-    ykv.a(7, this.currentActivityStayTime);
+    StoryReportor.a(7, this.currentActivityStayTime);
   }
   
   @Override
@@ -54,7 +52,7 @@ public class QQStoryFriendSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryFriendSettings
  * JD-Core Version:    0.7.0.1
  */

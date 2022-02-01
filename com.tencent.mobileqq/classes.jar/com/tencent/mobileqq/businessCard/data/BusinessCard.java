@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aqkr;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -23,7 +22,7 @@ public class BusinessCard
   public static final int CARD_SRC_FX = 2;
   public static final int CARD_SRC_SS = 1;
   public static final int CARD_SRC_ZL = 5;
-  public static final Parcelable.Creator<BusinessCard> CREATOR = new aqkr();
+  public static final Parcelable.Creator<BusinessCard> CREATOR = new BusinessCard.1();
   public static final int TYPE_CARD_ADD = 2;
   public static final int TYPE_CARD_MINE = 1;
   public static final int TYPE_CARD_MINE_ADD = 3;
@@ -38,7 +37,7 @@ public class BusinessCard
   public String cardId;
   public String cardName;
   public int cardSrc = 1;
-  public int cardType;
+  public int cardType = 0;
   public String company;
   @notColumn
   public List<String> descs = new ArrayList();

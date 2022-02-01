@@ -7,7 +7,7 @@ class ScanTorchActivity$4
   
   public void run()
   {
-    this.this$0.j();
+    this.this$0.i();
   }
 }
 

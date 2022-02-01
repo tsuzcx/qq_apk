@@ -11,7 +11,7 @@ public class FlutterFragmentActivity$CachedEngineIntentBuilder
   private final String cachedEngineId;
   private boolean destroyEngineWithActivity = false;
   
-  protected FlutterFragmentActivity$CachedEngineIntentBuilder(@NonNull Class<? extends FlutterFragmentActivity> paramClass, @NonNull String paramString)
+  public FlutterFragmentActivity$CachedEngineIntentBuilder(@NonNull Class<? extends FlutterFragmentActivity> paramClass, @NonNull String paramString)
   {
     this.activityClass = paramClass;
     this.cachedEngineId = paramString;
@@ -38,7 +38,7 @@ public class FlutterFragmentActivity$CachedEngineIntentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragmentActivity.CachedEngineIntentBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,29 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agjm;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class QQGamePubAIOHelper$6
+class QQGamePubAIOHelper$6
   implements Runnable
 {
-  public QQGamePubAIOHelper$6(agjm paramagjm) {}
+  QQGamePubAIOHelper$6(QQGamePubAIOHelper paramQQGamePubAIOHelper) {}
   
   public void run()
   {
     try
     {
-      if (!agjm.a(this.this$0)) {
+      if (!QQGamePubAIOHelper.a(this.this$0)) {
         return;
       }
       long l = System.currentTimeMillis();
-      List localList = agjm.a(this.this$0).getMessageFacade().getAllMessages(agjm.a(this.this$0).curFriendUin, agjm.a(this.this$0).curType, new int[] { -5008 }, 100);
+      List localList = QQGamePubAIOHelper.a(this.this$0).getMessageFacade().a(QQGamePubAIOHelper.a(this.this$0).jdField_a_of_type_JavaLangString, QQGamePubAIOHelper.a(this.this$0).jdField_a_of_type_Int, new int[] { -5008 }, 100);
       if (QLog.isColorLevel()) {
         QLog.i("QQGamePubAIOHelper", 2, "queryTeamMsgFromDb... query aioList- > ,cost:" + (System.currentTimeMillis() - l) + ",size:" + localList.size());
       }
-      agjm.a(this.this$0, localList);
+      QQGamePubAIOHelper.a(this.this$0, localList);
       return;
     }
     catch (Throwable localThrowable)
@@ -35,7 +34,7 @@ public class QQGamePubAIOHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.6
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,11 @@ package com.tencent.mobileqq.filemanageraux.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import auix;
 
 public class WeiYunFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeiYunFileInfo> CREATOR = new auix();
+  public static final Parcelable.Creator<WeiYunFileInfo> CREATOR = new WeiYunFileInfo.1();
   public int a;
   public long a;
   public String a;
@@ -84,7 +83,7 @@ public class WeiYunFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo
  * JD-Core Version:    0.7.0.1
  */

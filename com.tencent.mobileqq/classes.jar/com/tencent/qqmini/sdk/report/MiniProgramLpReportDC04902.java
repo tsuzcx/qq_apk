@@ -13,6 +13,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy.BeaconReportCategory;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.utils.DeviceInfoUtil;
 import com.tencent.qqmini.sdk.utils.QUAUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,14 +47,19 @@ public class MiniProgramLpReportDC04902
   private static final int FRAME_TIME_COUNT = 3;
   private static final long JANK_TIME = 83333332L;
   private static final String KEY_APP_ID = "appId";
+  private static final String KEY_AVG_CPU = "avgCpu";
+  private static final String KEY_AVG_FPS = "avgFps";
+  private static final String KEY_AVG_MEM = "avgMem";
   private static final String KEY_BASE_LIB_VERSION = "baseLibVersion";
   private static final String KEY_BIG_JANK = "bigJank";
   private static final String KEY_IS_SDK = "isSdk";
   private static final String KEY_JANK = "jank";
+  private static final String KEY_LEVEL = "level";
   private static final String KEY_OS_VERSION = "osVersion";
   private static final String KEY_PHONE_MODEL = "phoneModel";
   private static final String KEY_QUA = "qua";
   private static final String KEY_TRITON_VERSION = "tritonVersion";
+  public static String PERF_LEVEL;
   private static final Runnable PERIODICALLY_COLLECT_CPU_MEM_RUNNABLE;
   private static final String TAG = "MiniProgramLpReportDC04902";
   private static int bigJankCount;
@@ -138,17 +144,17 @@ public class MiniProgramLpReportDC04902
     {
       i = 1;
       if (i == 0) {
-        break label721;
+        break label788;
       }
       d1 = 0.0D;
       if (i == 0) {
-        break label733;
+        break label800;
       }
       d2 = 0.0D;
       QMLog.d("MiniProgramLpReportDC04902", "reportGameEnd: minuteFromStart=" + d3 + " jankCount=" + jankCount + " bigJankCount=" + bigJankCount);
       localObject1 = DC_TABLE_VALUE_APPID + '|' + DC_TABLE_VALUE_QUA + '|' + DC_TABLE_VALUE_START_TIME + '|' + DC_TABLE_VALUE_END_TIME + '|' + DC_TABLE_VALUE_F_20 + '|' + DC_TABLE_VALUE_F_33 + '|' + DC_TABLE_VALUE_F_50 + '|' + DC_TABLE_VALUE_F_100 + '|' + DC_TABLE_VALUE_F_LONG + '|' + DC_TABLE_VALUE_AVG_MEM + '|' + DC_TABLE_VALUE_MAX_MEM + '|' + DC_TABLE_VALUE_AVG_CPU + '|' + DC_TABLE_VALUE_MAX_CPU + '|' + DC_TABLE_VALUE_ATTACH_INFO + '|' + DC_TABLE_VALUE_F_MAX_TIME_MILLIS + '|' + DC_TABLE_VALUE_F_MAX + '|' + (int)paramFloat2 + '|' + (int)paramFloat1 + '|' + DC_TABLE_VALUE_TEXTURE_OFFLINE + '|' + MiniProgramReportHelper.getNetworkType() + '|' + DC_TABLE_VALUE_NETWORK_GATEWAY_IP + '|' + NetworkUtil.getCurrentWifiSSID(AppLoaderFactory.g().getContext()) + '|' + DC_TABLE_VALUE_PLATFORM + '|' + Build.MODEL + '|' + Build.VERSION.RELEASE + '|' + d1 + '|' + d2;
       if (QUAUtil.isQQApp()) {
-        break label753;
+        break label820;
       }
       str1 = QUAUtil.getQUA();
       localObject2 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId();
@@ -156,9 +162,9 @@ public class MiniProgramLpReportDC04902
       String str3 = QUAUtil.getLoginType();
       localObject1 = (String)localObject1 + '|' + str1 + '|' + (String)localObject2 + '|' + str2 + '|' + str3;
     }
-    label721:
-    label733:
-    label753:
+    label788:
+    label800:
+    label820:
     for (;;)
     {
       localObject2 = new Bundle();
@@ -170,6 +176,9 @@ public class MiniProgramLpReportDC04902
         QMLog.d("MiniProgramLpReportDC04902", "reportGameEnd " + (String)localObject1);
         AppBrandCmdProxy.g().sendCmd("cmd_dc_report_log_key_data", (Bundle)localObject2, null);
         hasReportStart = false;
+        if (PERF_LEVEL == null) {
+          PERF_LEVEL = String.valueOf(DeviceInfoUtil.getPerfLevel());
+        }
         localObject1 = new HashMap();
         ((HashMap)localObject1).put("appId", DC_TABLE_VALUE_APPID);
         ((HashMap)localObject1).put("qua", DC_TABLE_VALUE_QUA);
@@ -179,6 +188,10 @@ public class MiniProgramLpReportDC04902
         ((HashMap)localObject1).put("isSdk", String.valueOf(1));
         ((HashMap)localObject1).put("jank", String.valueOf(d1));
         ((HashMap)localObject1).put("bigJank", String.valueOf(d2));
+        ((HashMap)localObject1).put("level", PERF_LEVEL);
+        ((HashMap)localObject1).put("avgFps", String.valueOf(paramFloat1));
+        ((HashMap)localObject1).put("avgMem", String.valueOf(DC_TABLE_VALUE_AVG_MEM));
+        ((HashMap)localObject1).put("avgCpu", String.valueOf(DC_TABLE_VALUE_AVG_CPU));
         report("mini_game_jank", (Map)localObject1);
         return;
         i = 0;
@@ -253,7 +266,7 @@ public class MiniProgramLpReportDC04902
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04902
  * JD-Core Version:    0.7.0.1
  */

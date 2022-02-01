@@ -12,12 +12,12 @@ class ThemeHbFragment$1
   {
     ThemeHbFragment.a(this.this$0).startAnimation(ThemeHbFragment.a(this.this$0));
     ThemeHbFragment.a(this.this$0).setVisibility(0);
-    this.this$0.mActivity.c("theme.pack.show");
+    this.this$0.mActivity.addHbUploadData("theme.pack.show");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.1
  * JD-Core Version:    0.7.0.1
  */

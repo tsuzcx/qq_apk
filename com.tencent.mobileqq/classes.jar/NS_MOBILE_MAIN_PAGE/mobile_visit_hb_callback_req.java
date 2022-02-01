@@ -13,9 +13,9 @@ public final class mobile_visit_hb_callback_req
   public String client_key = "";
   public String comment = "";
   public String hb_id = "";
-  public short hb_type;
-  public Map<String, String> trans_info;
-  public long uin;
+  public short hb_type = 0;
+  public Map<String, String> trans_info = null;
+  public long uin = 0L;
   
   static
   {

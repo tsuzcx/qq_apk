@@ -3,18 +3,17 @@ package com.tencent.av.random;
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
 import java.util.concurrent.atomic.AtomicInteger;
-import lth;
 
-public class RandomController$RequestFetchRunnable
+class RandomController$RequestFetchRunnable
   implements Runnable
 {
-  lth a;
+  RandomWebProtocol.RspDouble a;
   
   private RandomController$RequestFetchRunnable(RandomController paramRandomController) {}
   
-  public void a(lth paramlth)
+  void a(RandomWebProtocol.RspDouble paramRspDouble)
   {
-    this.a = paramlth;
+    this.a = paramRspDouble;
   }
   
   public void run()
@@ -31,7 +30,7 @@ public class RandomController$RequestFetchRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.random.RandomController.RequestFetchRunnable
  * JD-Core Version:    0.7.0.1
  */

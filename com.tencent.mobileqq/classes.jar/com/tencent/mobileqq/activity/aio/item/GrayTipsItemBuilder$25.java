@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agtf;
 import android.text.TextUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -8,10 +7,10 @@ import com.tencent.mobileqq.data.MessageRecord;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
-public class GrayTipsItemBuilder$25
+class GrayTipsItemBuilder$25
   implements Runnable
 {
-  public GrayTipsItemBuilder$25(agtf paramagtf, String paramString1, int paramInt, long paramLong, String paramString2) {}
+  GrayTipsItemBuilder$25(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString1, int paramInt, long paramLong, String paramString2) {}
   
   public void run()
   {
@@ -21,13 +20,13 @@ public class GrayTipsItemBuilder$25
       localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(QQManagerFactory.MGR_MSG_FACADE);
       if (localObject != null)
       {
-        MessageRecord localMessageRecord = ((QQMessageFacade)localObject).getMsgItemByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+        MessageRecord localMessageRecord = ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
         if ((localMessageRecord != null) && (!TextUtils.equals(localMessageRecord.getExtInfoFromExtStr("sens_msg_original_text"), this.b)))
         {
           localMessageRecord.saveExtInfoToExtStr("sens_msg_original_text", this.b);
-          ((QQMessageFacade)localObject).updateMsgFieldByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extLong", Integer.valueOf(localMessageRecord.extLong));
-          ((QQMessageFacade)localObject).updateMsgFieldByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
-          ((QQMessageFacade)localObject).setChangeAndNotify(localMessageRecord);
+          ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extLong", Integer.valueOf(localMessageRecord.extLong));
+          ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
+          ((QQMessageFacade)localObject).a(localMessageRecord);
         }
       }
     }
@@ -35,7 +34,7 @@ public class GrayTipsItemBuilder$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.25
  * JD-Core Version:    0.7.0.1
  */

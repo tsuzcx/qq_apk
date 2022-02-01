@@ -8,7 +8,7 @@ public class GetShareAlbumMemberReq
   extends JceStruct
 {
   public String albumid;
-  public long uin;
+  public long uin = 0L;
   
   public GetShareAlbumMemberReq() {}
   

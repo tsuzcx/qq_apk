@@ -295,6 +295,11 @@ public class HwServlet
     return true;
   }
   
+  public static void resetStartMask()
+  {
+    mHasStart.set(false);
+  }
+  
   private void respGetIPList(Intent paramIntent, FromServiceMsg paramFromServiceMsg, AppRuntime paramAppRuntime, String paramString)
   {
     boolean bool = paramFromServiceMsg.isSuccess();
@@ -445,7 +450,7 @@ public class HwServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    mHasStart.set(false);
+    resetStartMask();
     paramFromServiceMsg.getResultCode();
     String str = paramFromServiceMsg.getServiceCmd();
     if (str == null)

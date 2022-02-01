@@ -1,11 +1,11 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,7 +49,7 @@ public class QzoneBannerJsPlugin
     }
     while (paramJsBridgeListener != null)
     {
-      paramString1 = paramJsBridgeListener.getTag(2131368435);
+      paramString1 = paramJsBridgeListener.getTag(2131368659);
       if ((paramString1 != null) && ((paramString1 instanceof QzoneBannerJsPlugin.WebViewBannerInterface)))
       {
         paramString1 = (QzoneBannerJsPlugin.WebViewBannerInterface)paramString1;
@@ -86,9 +86,9 @@ public class QzoneBannerJsPlugin
       if (i == 1) {
         paramString1.setBannerHeight((int)d);
       } else if (i == 2) {
-        paramString1.setBannerHeight((int)ViewUtils.dip2px((float)d));
+        paramString1.setBannerHeight((int)ViewUtils.a((float)d));
       } else if (i == 3) {
-        paramString1.setBannerHeight((int)(d * ViewUtils.getScreenWidth()));
+        paramString1.setBannerHeight((int)(d * ViewUtils.a()));
       } else {
         QLog.e(this.TAG, 1, "setBannerHeight 方法参数错误 :unit= " + i);
       }
@@ -156,7 +156,7 @@ public class QzoneBannerJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneBannerJsPlugin
  * JD-Core Version:    0.7.0.1
  */

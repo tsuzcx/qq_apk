@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.msf.sdk;
 
+import android.content.Intent;
 import android.os.SystemClock;
 import com.qq.taf.jce.JceOutputStream;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -253,6 +254,18 @@ public class MsfMsgUtil
     paramString1.getAttributes().put("mainaccount", paramString2);
     paramString1.setTimeout(paramLong);
     return paramString1;
+  }
+  
+  public static ToServiceMsg get_wt_QuickLoginByGateway(String paramString, Intent paramIntent, long paramLong)
+  {
+    paramString = new ToServiceMsg(paramString, "0", "cmd_appUseWtLogin");
+    paramString.setMsfCommand(MsfCommand.wt_QuickLoginByGateway);
+    paramIntent = paramIntent.getByteArrayExtra("phoneToken");
+    if (paramIntent != null) {
+      paramString.addAttribute("phoneToken", paramIntent);
+    }
+    paramString.setTimeout(paramLong);
+    return paramString;
   }
   
   public static ToServiceMsg get_wt_RefreshPictureData(String paramString1, String paramString2, long paramLong)

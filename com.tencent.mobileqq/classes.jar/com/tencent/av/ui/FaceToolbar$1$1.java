@@ -1,20 +1,19 @@
 package com.tencent.av.ui;
 
-import mee;
-
-public class FaceToolbar$1$1
+class FaceToolbar$1$1
   implements Runnable
 {
-  public FaceToolbar$1$1(mee parammee, int paramInt) {}
+  FaceToolbar$1$1(FaceToolbar.1 param1) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mee.a.fixDimmed(this.jdField_a_of_type_Int);
+    this.a.a.fixDimmed(0);
+    this.a.a.fixDimmed(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.FaceToolbar.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ public class ChannelCoverInfo
   public static final String TAG = "ChannelCoverInfo";
   public String externalExposureBackgroundUrl = "";
   public int filterColor;
-  public boolean hasFilterColor;
+  public boolean hasFilterColor = false;
   @notColumn
   public boolean isCurrent;
-  public boolean isExternalExposure;
-  public boolean isExternalExposurePersist;
-  public boolean isReport;
+  public boolean isExternalExposure = false;
+  public boolean isExternalExposurePersist = false;
+  public boolean isReport = false;
   @notColumn
-  public boolean isSelected;
+  public boolean isSelected = false;
   public long mArticleId = -1L;
   public String mChannelCoverIcon = "";
   public int mChannelCoverId = -1;
@@ -42,7 +42,7 @@ public class ChannelCoverInfo
   public long mPreUpdateTime = -1L;
   public String mTipsText = "";
   public int mTipsType = -1;
-  public long mUpdateTime;
+  public long mUpdateTime = 0L;
   @notColumn
   public int position;
   
@@ -67,7 +67,7 @@ public class ChannelCoverInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo
  * JD-Core Version:    0.7.0.1
  */

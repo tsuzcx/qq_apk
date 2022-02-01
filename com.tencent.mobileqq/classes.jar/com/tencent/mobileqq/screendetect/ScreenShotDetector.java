@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.screendetect;
 
-import aaur;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -18,12 +17,10 @@ import android.os.Looper;
 import android.provider.MediaStore.Images.Media;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anvx;
-import bbxh;
-import bbxi;
-import bbxq;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.IScreenShotShareHandler;
 import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -32,7 +29,7 @@ import java.lang.ref.WeakReference;
 import mqq.app.AppRuntime;
 
 public class ScreenShotDetector
-  extends aaur
+  extends IScreenShotShareHandler
 {
   private static SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("screenshots_quick_share_switch", 4);
   private static Point jdField_a_of_type_AndroidGraphicsPoint;
@@ -42,13 +39,13 @@ public class ScreenShotDetector
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_data", "datetaken" };
   private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "_data", "datetaken", "width", "height" };
   private static final String[] c = { "screenshot", "screen_shot", "screen-shot", "screen shot", "screencapture", "screen_capture", "screen-capture", "screen capture", "screencap", "screen_cap", "screen-cap", "screen cap" };
-  private static final String[] d = { "三星F9000", "三星A8S", "三星S8+", "华为MHA-AL00", "华为P30", "vivoX27", "小米9", "OPPOA59S", "魅族Pro7-H", anvx.a(2131713045), anvx.a(2131713046) };
+  private static final String[] d = { "三星F9000", "三星A8S", "三星S8+", "华为MHA-AL00", "华为P30", "vivoX27", "小米9", "OPPOA59S", "魅族Pro7-H", HardCodeUtil.a(2131713541), HardCodeUtil.a(2131713542) };
   private long jdField_a_of_type_Long;
   private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private bbxh jdField_a_of_type_Bbxh;
-  private bbxi jdField_a_of_type_Bbxi;
+  private ScreenShotDetector.MediaContentObserver jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector$MediaContentObserver;
+  private ScreenShotDetector.ScreenShotListener jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector$ScreenShotListener;
   private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private bbxh jdField_b_of_type_Bbxh;
+  private ScreenShotDetector.MediaContentObserver jdField_b_of_type_ComTencentMobileqqScreendetectScreenShotDetector$MediaContentObserver;
   
   static
   {
@@ -69,14 +66,14 @@ public class ScreenShotDetector
     return BaseApplicationImpl.getApplication().getRuntime();
   }
   
-  private static void a(Context paramContext, bbxh parambbxh)
+  private static void a(Context paramContext, ScreenShotDetector.MediaContentObserver paramMediaContentObserver)
   {
-    if (parambbxh == null) {
+    if (paramMediaContentObserver == null) {
       return;
     }
     try
     {
-      paramContext.getContentResolver().unregisterContentObserver(parambbxh);
+      paramContext.getContentResolver().unregisterContentObserver(paramMediaContentObserver);
       return;
     }
     catch (Exception paramContext)
@@ -235,9 +232,9 @@ public class ScreenShotDetector
         if (QLog.isColorLevel()) {
           QLog.d("ScreenShotDetector", 2, "ScreenShot 机型：" + Build.MANUFACTURER + Build.MODEL);
         }
-        bbxq.a("0X8009FED", 0);
-        if (this.jdField_a_of_type_Bbxi != null) {
-          this.jdField_a_of_type_Bbxi.a();
+        ScreenShotHelper.a("0X8009FED", 0);
+        if (this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector$ScreenShotListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector$ScreenShotListener.a();
         }
         this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
         this.jdField_a_of_type_AndroidOsHandler.post(new ScreenShotDetector.1(this, paramString));
@@ -285,7 +282,7 @@ public class ScreenShotDetector
     }
     if (jdField_a_of_type_AndroidGraphicsPoint == null)
     {
-      jdField_a_of_type_AndroidGraphicsPoint = bbxq.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      jdField_a_of_type_AndroidGraphicsPoint = ScreenShotHelper.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
       if (jdField_a_of_type_AndroidGraphicsPoint == null) {
         break label191;
       }
@@ -336,15 +333,15 @@ public class ScreenShotDetector
     return bool2;
   }
   
-  private static void c(Context paramContext, bbxh parambbxh1, bbxh parambbxh2)
+  private static void c(Context paramContext, ScreenShotDetector.MediaContentObserver paramMediaContentObserver1, ScreenShotDetector.MediaContentObserver paramMediaContentObserver2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotDetector", 2, "doOnRegisterObservers() called with: context = [" + paramContext + "], internalObserver = [" + parambbxh1 + "], externalObserver = [" + parambbxh2 + "]");
+      QLog.d("ScreenShotDetector", 2, "doOnRegisterObservers() called with: context = [" + paramContext + "], internalObserver = [" + paramMediaContentObserver1 + "], externalObserver = [" + paramMediaContentObserver2 + "]");
     }
     try
     {
-      paramContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, true, parambbxh1);
-      paramContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, parambbxh2);
+      paramContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, true, paramMediaContentObserver1);
+      paramContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, paramMediaContentObserver2);
       return;
     }
     catch (Exception paramContext)
@@ -353,15 +350,15 @@ public class ScreenShotDetector
     }
   }
   
-  private static void d(Context paramContext, bbxh parambbxh1, bbxh parambbxh2)
+  private static void d(Context paramContext, ScreenShotDetector.MediaContentObserver paramMediaContentObserver1, ScreenShotDetector.MediaContentObserver paramMediaContentObserver2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotDetector", 2, "doOnUnRegisterObservers() called with: context = [" + paramContext + "], internalObserver = [" + parambbxh1 + "], externalObserver = [" + parambbxh2 + "]");
+      QLog.d("ScreenShotDetector", 2, "doOnUnRegisterObservers() called with: context = [" + paramContext + "], internalObserver = [" + paramMediaContentObserver1 + "], externalObserver = [" + paramMediaContentObserver2 + "]");
     }
     try
     {
-      a(paramContext, parambbxh1);
-      a(paramContext, parambbxh2);
+      a(paramContext, paramMediaContentObserver1);
+      a(paramContext, paramMediaContentObserver2);
       return;
     }
     catch (Exception paramContext)
@@ -375,14 +372,14 @@ public class ScreenShotDetector
     return jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector;
   }
   
-  public void a(bbxi parambbxi)
+  public void a(ScreenShotDetector.ScreenShotListener paramScreenShotListener)
   {
-    this.jdField_a_of_type_Bbxi = parambbxi;
+    this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector$ScreenShotListener = paramScreenShotListener;
   }
   
-  public boolean a()
+  protected boolean a()
   {
-    if (!bbxq.a())
+    if (!ScreenShotHelper.a())
     {
       if (QLog.isColorLevel()) {
         QLog.d("ScreenShotDetector", 2, "ScreenShot: onChange screen switch is closed!");
@@ -406,11 +403,11 @@ public class ScreenShotDetector
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Bbxh == null) {
-      this.jdField_a_of_type_Bbxh = new bbxh(this, MediaStore.Images.Media.INTERNAL_CONTENT_URI, this.jdField_a_of_type_AndroidOsHandler);
+    if (this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector$MediaContentObserver == null) {
+      this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector$MediaContentObserver = new ScreenShotDetector.MediaContentObserver(this, MediaStore.Images.Media.INTERNAL_CONTENT_URI, this.jdField_a_of_type_AndroidOsHandler);
     }
-    if (this.jdField_b_of_type_Bbxh == null) {
-      this.jdField_b_of_type_Bbxh = new bbxh(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, this.jdField_a_of_type_AndroidOsHandler);
+    if (this.jdField_b_of_type_ComTencentMobileqqScreendetectScreenShotDetector$MediaContentObserver == null) {
+      this.jdField_b_of_type_ComTencentMobileqqScreendetectScreenShotDetector$MediaContentObserver = new ScreenShotDetector.MediaContentObserver(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, this.jdField_a_of_type_AndroidOsHandler);
     }
     ThreadManager.executeOnSubThread(new ScreenShotDetector.2(this, paramContext.getApplicationContext()), false);
   }
@@ -423,7 +420,7 @@ public class ScreenShotDetector
   
   public void disaptchTouchEventCallback(Activity paramActivity, MotionEvent paramMotionEvent)
   {
-    bbxq.a(paramActivity, paramMotionEvent);
+    ScreenShotHelper.a(paramActivity, paramMotionEvent);
   }
   
   public void onWindowFocusChanged(Activity paramActivity, boolean paramBoolean)
@@ -433,17 +430,17 @@ public class ScreenShotDetector
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     if (paramBoolean) {
-      bbxq.a(paramActivity, this.jdField_a_of_type_AndroidOsHandler);
+      ScreenShotHelper.a(paramActivity, this.jdField_a_of_type_AndroidOsHandler);
     }
     while (!"XIAOMI".equalsIgnoreCase(Build.MANUFACTURER)) {
       return;
     }
-    bbxq.b(paramActivity);
+    ScreenShotHelper.b(paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotDetector
  * JD-Core Version:    0.7.0.1
  */

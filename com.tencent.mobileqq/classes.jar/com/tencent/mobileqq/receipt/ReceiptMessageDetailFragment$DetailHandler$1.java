@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.receipt;
 
-import bbae;
-
-public class ReceiptMessageDetailFragment$DetailHandler$1
+class ReceiptMessageDetailFragment$DetailHandler$1
   implements Runnable
 {
-  public ReceiptMessageDetailFragment$DetailHandler$1(bbae parambbae, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  ReceiptMessageDetailFragment$DetailHandler$1(ReceiptMessageDetailFragment.DetailHandler paramDetailHandler, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ReceiptMessageDetailFragment$DetailHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.DetailHandler.1
  * JD-Core Version:    0.7.0.1
  */

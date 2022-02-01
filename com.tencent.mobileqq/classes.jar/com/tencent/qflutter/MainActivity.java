@@ -1,6 +1,5 @@
 package com.tencent.qflutter;
 
-import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -11,8 +10,6 @@ import com.tencent.qflutter.utils.FLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import io.flutter.app.FlutterActivity;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity
   extends FlutterActivity
@@ -31,23 +28,7 @@ public class MainActivity
     return bool;
   }
   
-  public void onClick(View paramView)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("test1", "v_test1");
-    localHashMap.put("test2", "v_test2");
-    if (paramView == this.mOpenFlutter) {
-      PageRouter.openPageByUrl(this, "qflutter://home_page", localHashMap);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView == this.mOpenFlutterFragment) {
-        PageRouter.openPageByUrl(this, "qflutter://color_list", localHashMap);
-      }
-    }
-  }
+  public void onClick(View paramView) {}
   
   @Override
   public void onConfigurationChanged(Configuration paramConfiguration)
@@ -60,9 +41,9 @@ public class MainActivity
   {
     super.onCreate(paramBundle);
     sRef = new WeakReference(this);
-    setContentView(2131296284);
-    this.mOpenFlutter = ((TextView)findViewById(2131165303));
-    this.mOpenFlutterFragment = ((TextView)findViewById(2131165302));
+    setContentView(2131296285);
+    this.mOpenFlutter = ((TextView)findViewById(2131165343));
+    this.mOpenFlutterFragment = ((TextView)findViewById(2131165342));
     this.mOpenFlutter.setOnClickListener(this);
     this.mOpenFlutterFragment.setOnClickListener(this);
   }
@@ -88,7 +69,7 @@ public class MainActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qflutter.MainActivity
  * JD-Core Version:    0.7.0.1
  */

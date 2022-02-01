@@ -9,14 +9,14 @@ class QZoneShareActivity$1
   
   public void run()
   {
-    if (ImmersiveUtils.a(this.this$0.getWindow())) {
+    if (ImmersiveUtils.correctStatusBarHeight(this.this$0.getWindow())) {
       this.this$0.recreate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.1
  * JD-Core Version:    0.7.0.1
  */

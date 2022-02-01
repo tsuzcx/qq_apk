@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import zro;
 
 public class SubScribeSwipeRefreshLayout
   extends SwipeRefreshLayout
@@ -62,7 +61,7 @@ public class SubScribeSwipeRefreshLayout
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchEventListener(new zro(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchEventListener(new SubScribeSwipeRefreshLayout.1(this));
     }
   }
   
@@ -103,7 +102,7 @@ public class SubScribeSwipeRefreshLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

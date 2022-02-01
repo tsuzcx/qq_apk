@@ -11,8 +11,8 @@ public final class cell_share_card
 {
   static byte[] cache_content_buf = (byte[])new byte[1];
   static Map<String, String> cache_mapExt;
-  public byte[] content_buf;
-  public Map<String, String> mapExt;
+  public byte[] content_buf = null;
+  public Map<String, String> mapExt = null;
   
   static
   {

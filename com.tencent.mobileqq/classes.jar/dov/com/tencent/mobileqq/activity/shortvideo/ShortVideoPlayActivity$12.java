@@ -1,23 +1,22 @@
 package dov.com.tencent.mobileqq.activity.shortvideo;
 
-import bhdj;
-import bplw;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ShortVideoPlayActivity$12
+class ShortVideoPlayActivity$12
   implements Runnable
 {
   ShortVideoPlayActivity$12(ShortVideoPlayActivity paramShortVideoPlayActivity, String paramString) {}
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = bhdj.a(this.this$0, 232, null, this.a, new bplw(this), null);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.this$0, 232, null, this.a, new ShortVideoPlayActivity.12.1(this), null);
     ShortVideoPlayActivity.a(this.this$0, localQQCustomDialog);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.12
  * JD-Core Version:    0.7.0.1
  */

@@ -144,7 +144,7 @@ public class AccountManagerImpl
     this.app.startServlet(localNewIntent);
   }
   
-  public void sendRegisterBySetPass(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, AccountObserver paramAccountObserver)
+  public void sendRegisterBySetPass(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, Bundle paramBundle, AccountObserver paramAccountObserver)
   {
     NewIntent localNewIntent = new NewIntent(this.app.getApplication(), BuiltInServlet.class);
     localNewIntent.putExtra("action", 1005);
@@ -156,12 +156,15 @@ public class AccountManagerImpl
       localNewIntent.putExtra("unBindlhUin", paramString4);
     }
     localNewIntent.putExtra("appVersion", paramString5);
+    if (paramBundle != null) {
+      localNewIntent.putExtras(paramBundle);
+    }
     localNewIntent.setObserver(paramAccountObserver);
     localNewIntent.withouLogin = true;
     this.app.startServlet(localNewIntent);
   }
   
-  public void sendRegisterBySetPassWithLH(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, AccountObserver paramAccountObserver)
+  public void sendRegisterBySetPassWithLH(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, Bundle paramBundle, AccountObserver paramAccountObserver)
   {
     NewIntent localNewIntent = new NewIntent(this.app.getApplication(), BuiltInServlet.class);
     localNewIntent.putExtra("action", 1005);
@@ -171,6 +174,9 @@ public class AccountManagerImpl
     localNewIntent.putExtra("bindMobile", paramBoolean);
     localNewIntent.putExtra("lhuin", paramString4);
     localNewIntent.putExtra("appVersion", paramString5);
+    if (paramBundle != null) {
+      localNewIntent.putExtras(paramBundle);
+    }
     localNewIntent.setObserver(paramAccountObserver);
     localNewIntent.withouLogin = true;
     this.app.startServlet(localNewIntent);

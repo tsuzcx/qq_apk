@@ -14,10 +14,10 @@ public class LbsDataV2$PoiInfo
   public String dianPingId = "";
   public int distance;
   public String district = "";
-  public int districtCode;
+  public int districtCode = 0;
   public LbsDataV2.GpsInfo gpsInfo = new LbsDataV2.GpsInfo();
-  public int hotValue;
-  public boolean isRecomm;
+  public int hotValue = 0;
+  public boolean isRecomm = false;
   public String phoneNumber = "";
   public String poiDefaultName;
   public String poiId;
@@ -27,7 +27,7 @@ public class LbsDataV2$PoiInfo
   public int poiType;
   public String poiTypeName;
   public String province = "";
-  public int show_poi;
+  public int show_poi = 0;
   
   public static PoiInfo clone(PoiInfo paramPoiInfo)
   {
@@ -117,7 +117,7 @@ public class LbsDataV2$PoiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.PoiInfo
  * JD-Core Version:    0.7.0.1
  */

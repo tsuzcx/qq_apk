@@ -48,7 +48,7 @@ public class WSStatisticsReporter$Builder
   {
     this.eventName = paramString;
     if (TextUtils.equals(paramString, "gzh_click")) {
-      vki.a = true;
+      WSReportEventConstants.a = true;
     }
     return new WSStatisticsReporter(this, null);
   }
@@ -94,14 +94,6 @@ public class WSStatisticsReporter$Builder
     return this;
   }
   
-  public Builder setSceneFrom(String paramString)
-  {
-    if (this.baseCollector != null) {
-      this.baseCollector.setSceneFrom(paramString);
-    }
-    return this;
-  }
-  
   public Builder setSendWeSeeServer(boolean paramBoolean)
   {
     this.isSendServer = paramBoolean;
@@ -116,6 +108,14 @@ public class WSStatisticsReporter$Builder
     return this;
   }
   
+  public Builder setTabId(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.extParams.put("tab_id", paramString);
+    }
+    return this;
+  }
+  
   public Builder setTestId(String paramString)
   {
     if (this.baseCollector != null) {
@@ -126,7 +126,7 @@ public class WSStatisticsReporter$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder
  * JD-Core Version:    0.7.0.1
  */

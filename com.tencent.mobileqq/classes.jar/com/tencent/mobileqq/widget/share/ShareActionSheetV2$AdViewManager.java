@@ -7,67 +7,67 @@ import android.widget.RelativeLayout.LayoutParams;
 
 public class ShareActionSheetV2$AdViewManager
 {
-  private ViewGroup mAdContainer;
-  private View mAdView;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  private void bind()
+  private void a()
   {
-    if ((this.mAdContainer != null) && (this.mAdView != null))
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null))
     {
-      if (this.mAdView.getParent() != null) {
-        ((ViewGroup)this.mAdView.getParent()).removeView(this.mAdView);
+      if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {
+        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
       }
-      this.mAdContainer.addView(this.mAdView);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
     }
   }
   
-  private void clearParentOf(View paramView)
+  private void a(View paramView)
   {
     if (paramView != null)
     {
       paramView = paramView.getParent();
       if ((paramView != null) && ((paramView instanceof ViewGroup))) {
-        removeAllViews((ViewGroup)paramView);
+        a((ViewGroup)paramView);
       }
     }
   }
   
-  private void removeAllViews(ViewGroup paramViewGroup)
+  private void a(ViewGroup paramViewGroup)
   {
     if (paramViewGroup != null) {
       paramViewGroup.removeAllViews();
     }
   }
   
-  public void setAdContainer(RelativeLayout paramRelativeLayout)
+  void a(int paramInt)
   {
-    removeAllViews(this.mAdContainer);
-    removeAllViews(paramRelativeLayout);
-    this.mAdContainer = paramRelativeLayout;
-    bind();
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
+    }
   }
   
-  void setAdView(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
+  void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
   {
-    clearParentOf(this.mAdView);
-    clearParentOf(paramView);
+    a(this.jdField_a_of_type_AndroidViewView);
+    a(paramView);
     if (paramView != null) {
       paramView.setLayoutParams(paramLayoutParams);
     }
-    this.mAdView = paramView;
-    bind();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
   }
   
-  void setBgColor(int paramInt)
+  public void a(RelativeLayout paramRelativeLayout)
   {
-    if (this.mAdContainer != null) {
-      this.mAdContainer.setBackgroundColor(paramInt);
-    }
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.AdViewManager
  * JD-Core Version:    0.7.0.1
  */

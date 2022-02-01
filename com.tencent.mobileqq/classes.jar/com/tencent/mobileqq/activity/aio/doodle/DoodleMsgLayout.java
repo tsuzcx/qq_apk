@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import agce;
-import agcf;
-import agcg;
-import agck;
-import agcw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -23,9 +18,6 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bbye;
-import biqx;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
@@ -33,36 +25,40 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawableDownListener;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResCallback;
 import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.widget.PhotoProgressDrawable;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class DoodleMsgLayout
   extends RelativeLayout
-  implements agck, bbye, GifDrawable.OnGIFPlayOnceListener
+  implements GifDrawable.OnGIFPlayOnceListener, DoodleMsgView.DoodleMsgViewListener, ScribbleResMgr.ResCallback
 {
   private int jdField_a_of_type_Int = 0;
-  private agcg jdField_a_of_type_Agcg = new agcg(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private DoodleMsgLayout.PendingData jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData = new DoodleMsgLayout.PendingData(this);
   private DoodleMsgView jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<agcf> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<DoodleMsgLayout.DoodleMsgLayoutListener> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 0;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
   private URLImageView jdField_c_of_type_ComTencentImageURLImageView;
   private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private int e;
+  private int jdField_d_of_type_Int = 0;
+  private boolean jdField_d_of_type_Boolean = false;
+  private int jdField_e_of_type_Int = 0;
+  private boolean jdField_e_of_type_Boolean = false;
   
   public DoodleMsgLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -72,8 +68,8 @@ public class DoodleMsgLayout
   
   private Bitmap a()
   {
-    if (BaseApplicationImpl.sImageCache != null) {}
-    for (Bitmap localBitmap = (Bitmap)BaseApplicationImpl.sImageCache.get("aio_doodle_progress");; localBitmap = null)
+    if (GlobalImageCache.a != null) {}
+    for (Bitmap localBitmap = (Bitmap)GlobalImageCache.a.get("aio_doodle_progress");; localBitmap = null)
     {
       if ((localBitmap == null) && (!this.jdField_d_of_type_Boolean))
       {
@@ -133,19 +129,19 @@ public class DoodleMsgLayout
     if (paramInt > 0)
     {
       this.jdField_b_of_type_Boolean = false;
-      Drawable localDrawable = agcw.a().a(1, paramInt, true);
+      Drawable localDrawable = DoodleResHelper.a().a(1, paramInt, true);
       if ((localDrawable != null) && (this.jdField_a_of_type_ComTencentImageURLImageView != null))
       {
         this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
         ((URLDrawable)localDrawable).setIndividualPause(true);
       }
-      localDrawable = agcw.a().a(2, paramInt, false);
+      localDrawable = DoodleResHelper.a().a(2, paramInt, false);
       if ((this.jdField_c_of_type_ComTencentImageURLImageView != null) && (localDrawable != null))
       {
         this.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
         ((URLDrawable)localDrawable).startDownload();
       }
-      localDrawable = agcw.a().a(2, paramInt, true);
+      localDrawable = DoodleResHelper.a().a(2, paramInt, true);
       if ((this.jdField_b_of_type_ComTencentImageURLImageView != null) && (localDrawable != null))
       {
         this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
@@ -211,17 +207,17 @@ public class DoodleMsgLayout
   private void h()
   {
     QLog.d("DoodleMsgLayout", 2, "init begin");
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener = new agce(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener = new DoodleMsgLayout.1(this);
     Object localObject = getResources().getDisplayMetrics();
     int i = Math.min(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
-    int k = getResources().getDimensionPixelSize(2131296399);
-    int m = getResources().getDimensionPixelSize(2131296401);
-    int n = getResources().getDimensionPixelSize(2131296400);
-    int i1 = getResources().getDimensionPixelSize(2131296398);
+    int k = getResources().getDimensionPixelSize(2131296415);
+    int m = getResources().getDimensionPixelSize(2131296417);
+    int n = getResources().getDimensionPixelSize(2131296416);
+    int i1 = getResources().getDimensionPixelSize(2131296414);
     this.jdField_d_of_type_Int = ((int)(i * 0.544F));
-    this.e = ((int)(this.jdField_d_of_type_Int * 1.0F / 1.133333F));
+    this.jdField_e_of_type_Int = ((int)(this.jdField_d_of_type_Int * 1.0F / 1.133333F));
     int j = this.jdField_d_of_type_Int - k - n;
-    i = this.e - i1 - m;
+    i = this.jdField_e_of_type_Int - i1 - m;
     if (j * 1.0F / i > 1.133333F) {
       j = (int)(i * 1.133333F);
     }
@@ -264,11 +260,11 @@ public class DoodleMsgLayout
         ((RelativeLayout.LayoutParams)localObject).addRule(13);
         ((RelativeLayout.LayoutParams)localObject).setMargins(k, m, n, i1);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.setBackgroundColor(getResources().getColor(2131167296));
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.setBackgroundColor(getResources().getColor(2131167305));
         addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.a(this, j, i);
       }
-      setLayoutParams(new RelativeLayout.LayoutParams(this.jdField_d_of_type_Int, this.e));
+      setLayoutParams(new RelativeLayout.LayoutParams(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int));
       return;
       i = (int)(j / 1.133333F);
     }
@@ -295,7 +291,7 @@ public class DoodleMsgLayout
     if (this.jdField_a_of_type_AndroidWidgetImageView == null)
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.dp2px(19.0F, getResources()), AIOUtils.dp2px(19.0F, getResources()));
+      localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(19.0F, getResources()), AIOUtils.a(19.0F, getResources()));
       localLayoutParams.addRule(13);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
       this.jdField_a_of_type_AndroidWidgetImageView.setClickable(false);
@@ -347,8 +343,8 @@ public class DoodleMsgLayout
         if (localObject == null) {
           break label149;
         }
-        localObject = new biqx((Bitmap)localObject, 0, false);
-        ((biqx)localObject).setBounds(new Rect(0, 0, AIOUtils.dp2px(19.0F, getResources()), AIOUtils.dp2px(19.0F, getResources())));
+        localObject = new PhotoProgressDrawable((Bitmap)localObject, 0, false);
+        ((PhotoProgressDrawable)localObject).setBounds(new Rect(0, 0, AIOUtils.a(19.0F, getResources()), AIOUtils.a(19.0F, getResources())));
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       }
     }
@@ -373,16 +369,16 @@ public class DoodleMsgLayout
     if (QLog.isColorLevel()) {
       QLog.d("DoodleMsgLayout", 2, "onInitState:" + this.jdField_a_of_type_JavaLangString + " state:" + paramInt);
     }
-    agcf localagcf = null;
+    DoodleMsgLayout.DoodleMsgLayoutListener localDoodleMsgLayoutListener = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localagcf = (agcf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localDoodleMsgLayoutListener = (DoodleMsgLayout.DoodleMsgLayoutListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
     if ((paramInt == -1) || (paramInt == 4) || (this.jdField_c_of_type_Int == 2))
     {
       c(0);
       this.jdField_c_of_type_Boolean = false;
-      if ((paramInt != -1) && (localagcf != null)) {
-        localagcf.a(this, 2);
+      if ((paramInt != -1) && (localDoodleMsgLayoutListener != null)) {
+        localDoodleMsgLayoutListener.a(this, 2);
       }
       return;
     }
@@ -393,8 +389,8 @@ public class DoodleMsgLayout
       }
       for (;;)
       {
-        if (localagcf != null) {
-          localagcf.a(this, 0);
+        if (localDoodleMsgLayoutListener != null) {
+          localDoodleMsgLayoutListener.a(this, 0);
         }
         if (!this.jdField_c_of_type_Boolean) {
           break;
@@ -404,8 +400,8 @@ public class DoodleMsgLayout
         c(0);
       }
     }
-    if (localagcf != null) {
-      localagcf.a(this, 1);
+    if (localDoodleMsgLayoutListener != null) {
+      localDoodleMsgLayoutListener.a(this, 1);
     }
     QLog.i("DoodleMsgLayout", 2, "onLoadData end");
   }
@@ -436,7 +432,7 @@ public class DoodleMsgLayout
     {
       paramView = null;
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        paramView = (agcf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramView = (DoodleMsgLayout.DoodleMsgLayoutListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       }
       if (paramView != null)
       {
@@ -525,7 +521,7 @@ public class DoodleMsgLayout
     }
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Agcg.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_b_of_type_Boolean = false;
       this.jdField_a_of_type_JavaLangString = null;
       this.jdField_b_of_type_Int = 0;
       this.jdField_c_of_type_Int = 0;
@@ -542,7 +538,7 @@ public class DoodleMsgLayout
       if ((this.jdField_b_of_type_Int != i) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramString))) {
         break label277;
       }
-      this.jdField_a_of_type_Agcg.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_b_of_type_Boolean = false;
       if (!b()) {
         break;
       }
@@ -554,7 +550,7 @@ public class DoodleMsgLayout
     }
     if ((this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int == 2))
     {
-      agcw.a().b(1, this.jdField_b_of_type_Int, this, this);
+      DoodleResHelper.a().b(1, this.jdField_b_of_type_Int, this, this);
       this.jdField_c_of_type_Int = 1;
     }
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -567,22 +563,22 @@ public class DoodleMsgLayout
     if (QLog.isColorLevel()) {
       QLog.d("DoodleMsgLayout", 2, "setDoodleContent old data:" + this.jdField_a_of_type_JavaLangString + " GifID:" + this.jdField_b_of_type_Int + " prepare:" + this.jdField_a_of_type_Boolean);
     }
-    if (this.jdField_a_of_type_Agcg.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_a_of_type_Boolean)
     {
       if (QLog.isColorLevel()) {
         QLog.d("DoodleMsgLayout", 2, "pending data, return");
       }
-      this.jdField_a_of_type_Agcg.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Agcg.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Agcg.jdField_c_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_Agcg.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_c_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_b_of_type_Boolean = true;
       c(0);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.a(true);
       }
       return true;
     }
-    this.jdField_a_of_type_Agcg.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_b_of_type_Boolean = false;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.a(false);
     }
@@ -628,25 +624,25 @@ public class DoodleMsgLayout
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Agcg.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.a(paramBoolean);
     }
     if (!paramBoolean)
     {
-      if (this.jdField_a_of_type_Agcg.jdField_b_of_type_Boolean)
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_b_of_type_Boolean)
       {
-        if ((!a(this.jdField_a_of_type_Agcg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agcg.jdField_a_of_type_Int, this.jdField_a_of_type_Agcg.jdField_c_of_type_Boolean)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView != null)) {
+        if ((!a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_c_of_type_Boolean)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView != null)) {
           a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.a());
         }
-        this.jdField_a_of_type_Agcg.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_b_of_type_Boolean = false;
       }
       return;
     }
-    this.jdField_a_of_type_Agcg.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Agcg.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Agcg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Agcg.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$PendingData.jdField_b_of_type_Boolean = true;
   }
   
   public boolean b()
@@ -710,7 +706,7 @@ public class DoodleMsgLayout
   {
     if ((this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int != 0))
     {
-      agcw.a().b(1, this.jdField_b_of_type_Int, this, this);
+      DoodleResHelper.a().b(1, this.jdField_b_of_type_Int, this, this);
       this.jdField_c_of_type_Int = 1;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView != null) {
@@ -745,7 +741,7 @@ public class DoodleMsgLayout
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     k();
     super.onDetachedFromWindow();
@@ -772,7 +768,7 @@ public class DoodleMsgLayout
     }
   }
   
-  protected void onVisibilityChanged(View paramView, int paramInt)
+  public void onVisibilityChanged(View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
     if (paramInt == 0) {
@@ -781,7 +777,7 @@ public class DoodleMsgLayout
     d();
   }
   
-  public void setOperateListener(View.OnClickListener paramOnClickListener, View.OnTouchListener paramOnTouchListener, View.OnLongClickListener paramOnLongClickListener, agcf paramagcf)
+  public void setOperateListener(View.OnClickListener paramOnClickListener, View.OnTouchListener paramOnTouchListener, View.OnLongClickListener paramOnLongClickListener, DoodleMsgLayout.DoodleMsgLayoutListener paramDoodleMsgLayoutListener)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView != null)
     {
@@ -819,7 +815,7 @@ public class DoodleMsgLayout
         this.jdField_c_of_type_ComTencentImageURLImageView.setOnLongClickListener(paramOnLongClickListener);
       }
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramagcf);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleMsgLayoutListener);
   }
   
   public void setTalkBack(String paramString)
@@ -831,7 +827,7 @@ public class DoodleMsgLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout
  * JD-Core Version:    0.7.0.1
  */

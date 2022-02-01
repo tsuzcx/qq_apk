@@ -9,14 +9,14 @@ class ApolloPanel$30
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.setImageDrawable(ApolloPanel.a(this.this$0));
+    if (ApolloPanel.b(this.this$0) != null) {
+      ApolloPanel.b(this.this$0).setImageDrawable(ApolloPanel.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.pannel.ApolloPanel.30
  * JD-Core Version:    0.7.0.1
  */

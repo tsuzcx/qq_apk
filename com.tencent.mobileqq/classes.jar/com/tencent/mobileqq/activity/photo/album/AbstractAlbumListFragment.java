@@ -35,14 +35,14 @@ public abstract class AbstractAlbumListFragment
   @TargetApi(14)
   private void initUI(View paramView)
   {
-    this.xListLayout = ((XFrameLayout)paramView.findViewById(2131370209));
+    this.xListLayout = ((XFrameLayout)paramView.findViewById(2131370481));
     this.xListLayout.setCornerRadiusAndMode(20, 5);
-    this.mListView = ((XListView)paramView.findViewById(2131362585));
+    this.mListView = ((XListView)paramView.findViewById(2131362617));
     this.mListView.setWrapByScroll(true);
     this.mListView.setAdapter(this.listAdapter);
     this.mListView.setOnItemClickListener(new AbstractAlbumListFragment.AlbumListItemClickListener(this, null));
     this.mListView.setOverScrollMode(2);
-    this.albumListRoot = ((FrameLayout)paramView.findViewById(2131362616));
+    this.albumListRoot = ((FrameLayout)paramView.findViewById(2131362648));
     this.albumListRoot.setOnClickListener(new AbstractAlbumListFragment.1(this));
     int i = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_index", 0);
     int j = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_y", 0);
@@ -73,7 +73,7 @@ public abstract class AbstractAlbumListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561007, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561093, paramViewGroup, false);
     this.mAlbumListLogic = generateLogic();
     this.mAlbumListData = this.mAlbumListLogic.mAlbumListData;
     paramViewGroup = getActivity().getIntent();
@@ -107,7 +107,7 @@ public abstract class AbstractAlbumListFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AbstractAlbumListFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -2,33 +2,31 @@ package com.tencent.mobileqq.nearby;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anvk;
-import axpp;
-import axqc;
-import ayob;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper;
 import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public final class NearbyProxy$9
+final class NearbyProxy$9
   implements Runnable
 {
-  public NearbyProxy$9(QQAppInterface paramQQAppInterface) {}
+  NearbyProxy$9(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Object localObject2 = (anvk)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject1 = ((anvk)localObject2).c(this.a.getCurrentAccountUin());
+    Object localObject2 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject1 = ((FriendsManager)localObject2).b(this.a.getCurrentAccountUin());
     if ((localObject1 != null) && (((Card)localObject1).iVoteIncrement > 0))
     {
       ((Card)localObject1).iVoteIncrement = 0;
-      ((anvk)localObject2).a((Card)localObject1);
+      ((FriendsManager)localObject2).a((Card)localObject1);
     }
     localObject2 = this.a.getEntityManagerFactory().createEntityManager();
     NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)((EntityManager)localObject2).find(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
@@ -43,12 +41,12 @@ public final class NearbyProxy$9
     if (localObject1 == null)
     {
       l = 0L;
-      axqc.a((String)localObject2, l, 0);
+      NearbySPUtil.a((String)localObject2, l, 0);
       this.a.getApp().getSharedPreferences(this.a.getCurrentAccountUin(), 0).edit().putInt("profilecard_host_last_newvote_animation_num", 0).commit();
       if (!ConnectNearbyProcService.a()) {
         break label212;
       }
-      axpp.a(this.a.getNearbyProxy(), 4117);
+      NearbyProxy.a(this.a.getNearbyProxy(), 4117);
     }
     label212:
     do
@@ -56,10 +54,10 @@ public final class NearbyProxy$9
       return;
       l = ((Card)localObject1).lVoteCount;
       break;
-      localObject1 = ayob.a(this.a);
+      localObject1 = NearbyMineHelper.a(this.a);
     } while (localObject1 == null);
     ((NearbyMyTabCard)localObject1).newLikeNum = 0;
-    ayob.a(this.a, (NearbyMyTabCard)localObject1);
+    NearbyMineHelper.a(this.a, (NearbyMyTabCard)localObject1);
   }
 }
 

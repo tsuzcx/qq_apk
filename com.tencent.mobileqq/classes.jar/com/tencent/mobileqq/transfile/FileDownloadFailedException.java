@@ -6,7 +6,7 @@ public class FileDownloadFailedException
   int errorCode;
   long errorDetailCode;
   boolean needReport = true;
-  private boolean needRetry;
+  private boolean needRetry = false;
   
   public FileDownloadFailedException(int paramInt1, int paramInt2, String paramString, Throwable paramThrowable, boolean paramBoolean)
   {

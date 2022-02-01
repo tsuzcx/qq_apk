@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pvm;
-import qep;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class ArticleInfoModule$1
+class ArticleInfoModule$1
   implements Runnable
 {
-  public ArticleInfoModule$1(qep paramqep, int paramInt) {}
+  ArticleInfoModule$1(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
   
   public void run()
   {
-    pvm.a().c(this.a);
+    ReadInJoyLogicEngineEventDispatcher.a().c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.1
  * JD-Core Version:    0.7.0.1
  */

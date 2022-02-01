@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.util;
 
-import alsn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.mobileqq.activity.richmedia.Size;
 
 public class DisplayUtil
 {
-  public static int dip2px(Context paramContext, float paramFloat)
+  public static int a(Context paramContext, float paramFloat)
   {
     return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
   }
   
-  public static alsn getScreenSize(Context paramContext)
+  public static Size a(Context paramContext)
   {
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return new alsn(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    return new Size(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
   }
   
-  public static int px2dip(Context paramContext, float paramFloat)
+  public static int b(Context paramContext, float paramFloat)
   {
     return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
-  public static int sp2px(Context paramContext, float paramFloat)
+  public static int c(Context paramContext, float paramFloat)
   {
     return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
   }

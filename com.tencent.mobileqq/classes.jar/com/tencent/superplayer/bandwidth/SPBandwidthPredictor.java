@@ -11,10 +11,10 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import com.tencent.superplayer.api.ISPBandwidthPredictor;
+import com.tencent.superplayer.utils.CommonUtil;
 import com.tencent.superplayer.utils.LogUtil;
 import com.tencent.superplayer.utils.NetworkUtil;
 import com.tencent.superplayer.utils.ThreadUtil;
-import com.tencent.superplayer.utils.Utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -130,10 +130,10 @@ public class SPBandwidthPredictor
     }
     if (NetworkUtil.isWifiConnected())
     {
-      this.resetTimeThreshold = (Utils.parseStr2Int((String)this.configMap.get("reset_time_threshold_wifi"), 3600) * 1000L);
+      this.resetTimeThreshold = (CommonUtil.a((String)this.configMap.get("reset_time_threshold_wifi"), 3600) * 1000L);
       return;
     }
-    this.resetTimeThreshold = (Utils.parseStr2Int((String)this.configMap.get("reset_time_threshold_xg"), 600) * 1000L);
+    this.resetTimeThreshold = (CommonUtil.a((String)this.configMap.get("reset_time_threshold_xg"), 600) * 1000L);
   }
   
   private void sample()
@@ -231,7 +231,7 @@ public class SPBandwidthPredictor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.SPBandwidthPredictor
  * JD-Core Version:    0.7.0.1
  */

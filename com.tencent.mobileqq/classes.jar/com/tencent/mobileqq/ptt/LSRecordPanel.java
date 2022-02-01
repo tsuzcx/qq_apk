@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.ptt;
 
-import admh;
-import afya;
-import ahdc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
@@ -25,56 +22,48 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anvx;
-import bagv;
-import bagw;
-import bagy;
-import bagz;
-import baha;
-import bahb;
-import bahc;
-import bahd;
-import bahe;
-import bahf;
-import bahi;
-import baht;
-import bhcl;
-import bhfx;
-import bhgu;
-import bhhd;
-import bkys;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelCallback;
 import com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView;
+import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qqaudio.QQAudioUtils;
 import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.AudioUtil;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.PttUtils;
 import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.utils.QQRecorder.OnQQRecorderListener;
+import com.tencent.mobileqq.utils.RecordParams;
+import com.tencent.mobileqq.utils.RecordParams.RecorderParam;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import java.io.File;
 
 public final class LSRecordPanel
   extends RelativeLayout
-  implements afya, Handler.Callback, baht, bhgu
+  implements Handler.Callback, AudioPanelCallback, TouchProxyRelativeLayout.ITouchProxy, QQRecorder.OnQQRecorderListener
 {
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   public Animation a;
-  public bagy a;
-  private bahf jdField_a_of_type_Bahf;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
   private VolumeIndicateSquareView jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public LSRecordAnimations.TrackInfo a;
+  private LSRecordPanel.IRecordPanelHandler jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler;
   private LSRecordTextView jdField_a_of_type_ComTencentMobileqqPttLSRecordTextView;
   private TouchProxyRelativeLayout jdField_a_of_type_ComTencentMobileqqPttTouchProxyRelativeLayout;
   private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
@@ -84,7 +73,7 @@ public final class LSRecordPanel
   private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
   private View jdField_b_of_type_AndroidViewView;
   public Animation b;
-  public bagy b;
+  public LSRecordAnimations.TrackInfo b;
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
   private Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
@@ -110,21 +99,21 @@ public final class LSRecordPanel
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private QQRecorder.RecorderParam a()
+  private RecordParams.RecorderParam a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 3000)) {
-      return bhhd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)) {
+      return RecordParams.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     }
-    return new QQRecorder.RecorderParam(bhhd.jdField_a_of_type_Int, 8000, 0);
+    return new RecordParams.RecorderParam(RecordParams.jdField_a_of_type_Int, 8000, 0);
   }
   
-  private void a(QQRecorder.RecorderParam paramRecorderParam)
+  private void a(RecordParams.RecorderParam paramRecorderParam)
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "LS sendPtt");
     }
-    bahi.b(this.jdField_a_of_type_JavaLangString);
-    MessageRecord localMessageRecord = admh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, -2, paramRecorderParam.c);
+    PttBuffer.b(this.jdField_a_of_type_JavaLangString);
+    MessageRecord localMessageRecord = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, -2, paramRecorderParam.c);
     if (localMessageRecord == null) {
       return;
     }
@@ -132,9 +121,9 @@ public final class LSRecordPanel
     long l = localMessageRecord.uniseq;
     Bundle localBundle = new Bundle();
     localBundle.putInt("DiyTextId", localMessageRecord.vipBubbleDiyTextId);
-    admh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_JavaLangString, l, false, this.jdField_a_of_type_Int, paramRecorderParam.c, true, 0, 3, true, localMessageRecord.vipSubBubbleId, localBundle);
+    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, l, false, this.jdField_a_of_type_Int, paramRecorderParam.c, true, 0, 3, true, localMessageRecord.vipSubBubbleId, localBundle);
     this.jdField_a_of_type_JavaLangString = null;
-    bhfx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, 8, this.jdField_a_of_type_Int);
+    PttUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 8, this.jdField_a_of_type_Int);
   }
   
   private void a(boolean paramBoolean)
@@ -156,13 +145,13 @@ public final class LSRecordPanel
         this.jdField_c_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       }
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
-      c(0);
-      if (this.jdField_a_of_type_Bahf != null) {
-        this.jdField_a_of_type_Bahf.a(false, -1, anvx.a(2131705880), true, false);
+      b(0);
+      if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler != null) {
+        this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler.a(false, -1, HardCodeUtil.a(2131706420), true, false);
       }
       return;
     }
-    m();
+    l();
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -185,16 +174,16 @@ public final class LSRecordPanel
         break;
       }
     } while (!this.jdField_b_of_type_Boolean);
-    c(5);
+    b(5);
     this.jdField_c_of_type_AndroidViewView.clearAnimation();
     this.jdField_c_of_type_AndroidViewView.setVisibility(0);
     this.jdField_b_of_type_AndroidViewView.setAnimation(null);
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
     ((GradientDrawable)this.jdField_c_of_type_AndroidViewView.getBackground()).setColor(-15550475);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-    g();
-    n();
-    this.jdField_a_of_type_Bagy = null;
+    f();
+    m();
+    this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo = null;
     this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
     Object localObject = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams();
     int i = (int)(getResources().getDisplayMetrics().density * 4.0F);
@@ -206,25 +195,25 @@ public final class LSRecordPanel
     this.jdField_c_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     d();
     return;
-    if (this.jdField_a_of_type_Bagy != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo != null)
     {
-      c(5);
+      b(5);
       this.jdField_c_of_type_AndroidViewView.setVisibility(0);
       this.jdField_b_of_type_AndroidViewView.setAnimation(null);
       this.jdField_b_of_type_AndroidViewView.setVisibility(4);
       localObject = (GradientDrawable)this.jdField_c_of_type_AndroidViewView.getBackground();
-      i = this.jdField_a_of_type_Bagy.jdField_a_of_type_Int;
+      i = this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Int;
       ((GradientDrawable)localObject).setColor(i);
-      float f = this.jdField_a_of_type_Bagy.jdField_a_of_type_Float;
+      float f = this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Float;
       this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-      g();
-      bagv localbagv = new bagv(f, 1.0F, f, 1.0F, 1, 0.5F, 1, 0.5F, this.jdField_a_of_type_Bagy);
-      localbagv.a((GradientDrawable)localObject, i, -15550475);
-      localbagv.setInterpolator(new LinearInterpolator());
-      localbagv.setDuration(500L);
-      localbagv.setFillAfter(true);
-      localbagv.setAnimationListener(new bahe(this));
-      this.jdField_b_of_type_AndroidViewAnimationAnimation = localbagv;
+      f();
+      LSRecordAnimations.ChangeBgAndScaleAnimation localChangeBgAndScaleAnimation = new LSRecordAnimations.ChangeBgAndScaleAnimation(f, 1.0F, f, 1.0F, 1, 0.5F, 1, 0.5F, this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo);
+      localChangeBgAndScaleAnimation.a((GradientDrawable)localObject, i, -15550475);
+      localChangeBgAndScaleAnimation.setInterpolator(new LinearInterpolator());
+      localChangeBgAndScaleAnimation.setDuration(500L);
+      localChangeBgAndScaleAnimation.setFillAfter(true);
+      localChangeBgAndScaleAnimation.setAnimationListener(new LSRecordPanel.6(this));
+      this.jdField_b_of_type_AndroidViewAnimationAnimation = localChangeBgAndScaleAnimation;
       this.jdField_c_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
       if (QLog.isDevelopLevel()) {
         QLog.d("LsRecord", 4, "LS startCloseAnimation");
@@ -233,6 +222,17 @@ public final class LSRecordPanel
       return;
     }
     d(false);
+  }
+  
+  private void b(int paramInt)
+  {
+    if (paramInt == this.jdField_b_of_type_Int) {}
+    do
+    {
+      return;
+      this.jdField_b_of_type_Int = paramInt;
+    } while (!QLog.isDevelopLevel());
+    QLog.d("LsRecord", 4, "LS setMode: " + this.jdField_b_of_type_Int);
   }
   
   private void b(boolean paramBoolean)
@@ -246,19 +246,19 @@ public final class LSRecordPanel
         break label121;
       }
       label16:
-      if (this.jdField_b_of_type_Bagy == null) {
+      if (this.jdField_b_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo == null) {
         break label128;
       }
-      i = this.jdField_b_of_type_Bagy.jdField_a_of_type_Int;
+      i = this.jdField_b_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Int;
     }
     for (;;)
     {
-      bagw localbagw = new bagw(this.jdField_b_of_type_AndroidViewView, i, j, this.jdField_b_of_type_Bagy);
-      localbagw.setInterpolator(new AccelerateDecelerateInterpolator());
-      localbagw.setDuration(300L);
-      localbagw.setFillAfter(true);
-      localbagw.setAnimationListener(new bahd(this));
-      this.jdField_b_of_type_AndroidViewView.startAnimation(localbagw);
+      LSRecordAnimations.ChangeBgColorAnimation localChangeBgColorAnimation = new LSRecordAnimations.ChangeBgColorAnimation(this.jdField_b_of_type_AndroidViewView, i, j, this.jdField_b_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo);
+      localChangeBgColorAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+      localChangeBgColorAnimation.setDuration(300L);
+      localChangeBgColorAnimation.setFillAfter(true);
+      localChangeBgColorAnimation.setAnimationListener(new LSRecordPanel.5(this));
+      this.jdField_b_of_type_AndroidViewView.startAnimation(localChangeBgColorAnimation);
       if (QLog.isDevelopLevel()) {
         QLog.d("LsRecord", 4, "LS startSideAnimation");
       }
@@ -269,20 +269,14 @@ public final class LSRecordPanel
       i = -15550475;
       break label16;
       label128:
-      this.jdField_b_of_type_Bagy = new bagy();
-      this.jdField_b_of_type_Bagy.jdField_a_of_type_Int = i;
+      this.jdField_b_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo = new LSRecordAnimations.TrackInfo();
+      this.jdField_b_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Int = i;
     }
   }
   
   private void c(int paramInt)
   {
-    if (paramInt == this.jdField_b_of_type_Int) {}
-    do
-    {
-      return;
-      this.jdField_b_of_type_Int = paramInt;
-    } while (!QLog.isDevelopLevel());
-    QLog.d("LsRecord", 4, "LS setMode: " + this.jdField_b_of_type_Int);
+    AudioUtil.b(paramInt, false);
   }
   
   private void c(boolean paramBoolean)
@@ -290,40 +284,35 @@ public final class LSRecordPanel
     a(paramBoolean, false);
   }
   
-  private void d(int paramInt)
-  {
-    bhcl.b(paramInt, false);
-  }
-  
   private void d(boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqPttLSRecordTextView.setText("-:--");
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.a();
-    c(0);
-    if (this.jdField_a_of_type_Bahf != null) {
-      this.jdField_a_of_type_Bahf.a(this.jdField_c_of_type_Boolean, -1, this.jdField_b_of_type_JavaLangString, false, paramBoolean);
+    b(0);
+    if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler.a(this.jdField_c_of_type_Boolean, -1, this.jdField_b_of_type_JavaLangString, false, paramBoolean);
     }
     this.jdField_b_of_type_JavaLangString = null;
     this.jdField_c_of_type_Boolean = false;
   }
   
-  private void i()
+  private void h()
   {
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131381159);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131381627);
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131381158);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131381626);
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131381160);
-    if (AppSetting.jdField_c_of_type_Boolean)
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131381628);
+    if (AppSetting.jdField_d_of_type_Boolean)
     {
       super.setContentDescription(null);
       this.jdField_a_of_type_AndroidViewView.setContentDescription(null);
       this.jdField_b_of_type_AndroidViewView.setContentDescription(null);
-      this.jdField_c_of_type_AndroidViewView.setContentDescription(anvx.a(2131705879));
+      this.jdField_c_of_type_AndroidViewView.setContentDescription(HardCodeUtil.a(2131706419));
     }
-    this.jdField_a_of_type_ComTencentMobileqqPttLSRecordTextView = ((LSRecordTextView)super.findViewById(2131377922));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)super.findViewById(2131368811));
+    this.jdField_a_of_type_ComTencentMobileqqPttLSRecordTextView = ((LSRecordTextView)super.findViewById(2131378337));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)super.findViewById(2131369043));
     this.jdField_a_of_type_ComTencentMobileqqPttLSRecordTextView.setNotLayoutInSettingText(true);
     this.jdField_a_of_type_ComTencentMobileqqPttLSRecordTextView.setVisibility(4);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.setVisibility(4);
@@ -332,24 +321,24 @@ public final class LSRecordPanel
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.setCount(30);
     }
     this.jdField_a_of_type_ComTencentMobileqqPttLSRecordTextView.setText("-:--");
-    this.jdField_d_of_type_AndroidViewView = super.findViewById(2131376384);
-    this.jdField_d_of_type_AndroidViewView.setOnClickListener(new bahb(this));
-    this.jdField_d_of_type_AndroidViewView.setContentDescription(anvx.a(2131705876));
+    this.jdField_d_of_type_AndroidViewView = super.findViewById(2131376779);
+    this.jdField_d_of_type_AndroidViewView.setOnClickListener(new LSRecordPanel.3(this));
+    this.jdField_d_of_type_AndroidViewView.setContentDescription(HardCodeUtil.a(2131706416));
   }
+  
+  private void i() {}
   
   private void j() {}
   
-  private void k() {}
-  
-  private void l()
+  private void k()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "LS startCheckingClick");
     }
-    c(1);
+    b(1);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(101, 250L);
-    if (this.jdField_a_of_type_Bahf != null) {
-      this.jdField_a_of_type_Bahf.a(false, false, this);
+    if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler.a(false, false, this);
     }
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams();
     int i = (int)(getResources().getDisplayMetrics().density * 4.0F);
@@ -360,15 +349,15 @@ public final class LSRecordPanel
     this.jdField_c_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
   
-  private void m()
+  private void l()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "LS expand");
     }
-    c(2);
+    b(2);
     Object localObject;
     float f1;
-    if (this.jdField_a_of_type_Bagy == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo == null)
     {
       getGlobalVisibleRect(this.jdField_c_of_type_AndroidGraphicsRect);
       localObject = new Rect();
@@ -381,17 +370,17 @@ public final class LSRecordPanel
         QLog.d("LsRecord", 4, "LS init dest bgTrack: " + f2 + ", " + f3);
       }
       f1 = f3 / f1;
-      this.jdField_a_of_type_Bagy = new bagy();
-      this.jdField_a_of_type_Bagy.jdField_a_of_type_Float = 1.0F;
+      this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo = new LSRecordAnimations.TrackInfo();
+      this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Float = 1.0F;
     }
     for (;;)
     {
       this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
-      localObject = new bagv(1.0F, f1, 1.0F, f1, 1, 0.5F, 1, 0.5F, this.jdField_a_of_type_Bagy);
-      ((bagv)localObject).setInterpolator(new LinearInterpolator());
+      localObject = new LSRecordAnimations.ChangeBgAndScaleAnimation(1.0F, f1, 1.0F, f1, 1, 0.5F, 1, 0.5F, this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo);
+      ((LSRecordAnimations.ChangeBgAndScaleAnimation)localObject).setInterpolator(new LinearInterpolator());
       ((Animation)localObject).setDuration(450L);
       ((Animation)localObject).setFillAfter(true);
-      ((Animation)localObject).setAnimationListener(new bahc(this));
+      ((Animation)localObject).setAnimationListener(new LSRecordPanel.4(this));
       this.jdField_a_of_type_AndroidViewAnimationAnimation = ((Animation)localObject);
       this.jdField_c_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
       if (QLog.isDevelopLevel()) {
@@ -399,11 +388,11 @@ public final class LSRecordPanel
       }
       a();
       return;
-      f1 = this.jdField_a_of_type_Bagy.jdField_a_of_type_Float;
+      f1 = this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Float;
     }
   }
   
-  private void n()
+  private void m()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "LS stopRecord");
@@ -418,8 +407,8 @@ public final class LSRecordPanel
         QLog.d("LsRecord", 4, "stopRecord() is called,time is:" + System.currentTimeMillis());
       }
       bool = this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
-      d(2131230744);
-      bhcl.a(BaseApplicationImpl.sApplication, false);
+      c(2131230744);
+      QQAudioUtils.a(BaseApplicationImpl.sApplication, false);
     }
     for (;;)
     {
@@ -431,47 +420,13 @@ public final class LSRecordPanel
     }
   }
   
-  private void o()
+  private void n()
   {
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      bahi.a(this.jdField_a_of_type_JavaLangString);
+      PttBuffer.a(this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_JavaLangString = null;
-      bhfx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 8);
-    }
-  }
-  
-  public int a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS onRecorderStart");
-    }
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.8(this));
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 2000L);
-    this.jdField_a_of_type_Boolean = true;
-    return 350;
-  }
-  
-  public int a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS onBeginReceiveData");
-    }
-    int i = ahdc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Normal_MaxPtt") * 1000;
-    int j = VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null);
-    if ((j & 0x4) != 0) {
-      i = ahdc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "SVIP_MaxPtt") * 1000;
-    }
-    for (;;)
-    {
-      i -= 200;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(16711687, i);
-      return i + 200;
-      if ((j & 0x2) != 0) {
-        i = ahdc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "VIP_MaxPtt") * 1000;
-      }
+      PttUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 8);
     }
   }
   
@@ -486,8 +441,8 @@ public final class LSRecordPanel
     localAlphaAnimation.setFillAfter(true);
     localAlphaAnimation.setDuration(300L);
     this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
-    if (this.jdField_a_of_type_Bahf != null) {
-      this.jdField_a_of_type_Bahf.g();
+    if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler.i();
     }
   }
   
@@ -497,12 +452,12 @@ public final class LSRecordPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.a(paramInt);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, TouchProxyRelativeLayout paramTouchProxyRelativeLayout, bahf parambahf)
+  public void a(QQAppInterface paramQQAppInterface, TouchProxyRelativeLayout paramTouchProxyRelativeLayout, LSRecordPanel.IRecordPanelHandler paramIRecordPanelHandler)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPttTouchProxyRelativeLayout = paramTouchProxyRelativeLayout;
-    this.jdField_a_of_type_Bahf = parambahf;
-    this.jdField_a_of_type_AndroidOsHandler = new bkys(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler = paramIRecordPanelHandler;
+    this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "LS init");
     }
@@ -510,71 +465,9 @@ public final class LSRecordPanel
   
   public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin = paramString2;
-  }
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS onRecorderPrepare");
-    }
-    paramRecorderParam = bhhd.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
-    bahi.a(paramString);
-    bahi.a(paramString, paramRecorderParam, paramRecorderParam.length);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.7(this));
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      d(2131230733);
-    }
-  }
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS onRecorderEnd");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if (this.jdField_c_of_type_Boolean) {
-      if (this.jdField_a_of_type_Int < 500)
-      {
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_b_of_type_JavaLangString = anvx.a(2131705877);
-        o();
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.9(this));
-      return;
-      a(paramRecorderParam);
-      continue;
-      o();
-    }
-  }
-  
-  public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS onRecorderError");
-    }
-    o();
-    this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.10(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    bahi.a(paramString, paramArrayOfByte, paramInt1);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    }
-    if ((b()) && (this.jdField_b_of_type_Int != 5)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.13(this, paramInt2, paramDouble));
-    }
-    this.jdField_a_of_type_Int = ((int)paramDouble);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString = paramString2;
   }
   
   public boolean a()
@@ -612,7 +505,7 @@ public final class LSRecordPanel
         break label738;
       }
       this.jdField_a_of_type_Int = 0;
-      l();
+      k();
       bool1 = bool2;
     }
     for (;;)
@@ -651,7 +544,7 @@ public final class LSRecordPanel
                   bool1 = bool2;
                   break;
                 }
-                this.jdField_b_of_type_JavaLangString = anvx.a(2131705878);
+                this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131706418);
                 c(false);
                 bool1 = bool2;
                 break;
@@ -688,12 +581,12 @@ public final class LSRecordPanel
               if (this.jdField_b_of_type_Int == 3) {
                 break;
               }
-              c(3);
+              b(3);
               bool1 = bool2;
-              if (this.jdField_a_of_type_Bahf == null) {
+              if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler == null) {
                 break;
               }
-              this.jdField_a_of_type_Bahf.a(true, false, this);
+              this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler.a(true, false, this);
               bool1 = bool2;
               break;
             }
@@ -704,12 +597,12 @@ public final class LSRecordPanel
             if (this.jdField_b_of_type_Int == 4) {
               break;
             }
-            c(4);
+            b(4);
             bool1 = bool2;
-            if (this.jdField_a_of_type_Bahf == null) {
+            if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler == null) {
               break;
             }
-            this.jdField_a_of_type_Bahf.a(false, true, this);
+            this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler.a(false, true, this);
             bool1 = bool2;
             break;
           }
@@ -727,22 +620,6 @@ public final class LSRecordPanel
     a(false, true);
   }
   
-  public void b(int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS onRecorderVolumeStateChanged");
-    }
-  }
-  
-  public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS onInitFailed");
-    }
-    o();
-    this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.11(this));
-  }
-  
   public boolean b()
   {
     if (this.jdField_a_of_type_Long == 0L) {
@@ -758,15 +635,6 @@ public final class LSRecordPanel
   
   public void c() {}
   
-  public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS onRecorderAbnormal");
-    }
-    o();
-    this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.12(this));
-  }
-  
   public void d()
   {
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
@@ -775,8 +643,8 @@ public final class LSRecordPanel
     localAlphaAnimation.setFillAfter(true);
     localAlphaAnimation.setDuration(300L);
     this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
-    if (this.jdField_a_of_type_Bahf != null) {
-      this.jdField_a_of_type_Bahf.h();
+    if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler.j();
     }
   }
   
@@ -794,19 +662,12 @@ public final class LSRecordPanel
     this.jdField_c_of_type_AndroidViewAnimationAnimation = new AlphaAnimation(0.0F, 1.0F);
     this.jdField_c_of_type_AndroidViewAnimationAnimation.setDuration(200L);
     this.jdField_c_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
-    this.jdField_c_of_type_AndroidViewAnimationAnimation.setAnimationListener(new bagz(this));
+    this.jdField_c_of_type_AndroidViewAnimationAnimation.setAnimationListener(new LSRecordPanel.1(this));
     this.jdField_a_of_type_ComTencentMobileqqPttLSRecordTextView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqPttLSRecordTextView.startAnimation(this.jdField_c_of_type_AndroidViewAnimationAnimation);
   }
   
   public void f()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS onInitSuccess");
-    }
-  }
-  
-  public void g()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.getVisibility() != 0) {
       return;
@@ -822,11 +683,11 @@ public final class LSRecordPanel
     this.jdField_d_of_type_AndroidViewAnimationAnimation = new AlphaAnimation(1.0F, 0.0F);
     this.jdField_d_of_type_AndroidViewAnimationAnimation.setDuration(200L);
     this.jdField_d_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
-    this.jdField_d_of_type_AndroidViewAnimationAnimation.setAnimationListener(new baha(this));
+    this.jdField_d_of_type_AndroidViewAnimationAnimation.setAnimationListener(new LSRecordPanel.2(this));
     this.jdField_a_of_type_ComTencentMobileqqPttLSRecordTextView.startAnimation(this.jdField_d_of_type_AndroidViewAnimationAnimation);
   }
   
-  public void h()
+  public void g()
   {
     if ((this.jdField_b_of_type_Int == 5) || (this.jdField_b_of_type_Int == 0)) {
       return;
@@ -834,8 +695,8 @@ public final class LSRecordPanel
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "LS startRecord");
     }
-    if (this.jdField_a_of_type_Bahf != null) {
-      this.jdField_a_of_type_Bahf.a(true, false, this);
+    if (this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel$IRecordPanelHandler.a(true, false, this);
     }
     this.jdField_c_of_type_AndroidViewView.setAnimation(null);
     this.jdField_c_of_type_AndroidViewView.setVisibility(4);
@@ -843,12 +704,12 @@ public final class LSRecordPanel
     {
       this.jdField_b_of_type_AndroidViewView.setBackgroundColor(-43434);
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      c(3);
+      b(3);
       localObject2 = a();
-      if (FileUtils.hasSDCardAndWritable()) {
+      if (FileUtils.a()) {
         break label148;
       }
-      this.jdField_b_of_type_JavaLangString = getResources().getString(2131694317);
+      this.jdField_b_of_type_JavaLangString = getResources().getString(2131694522);
     }
     for (;;)
     {
@@ -861,13 +722,13 @@ public final class LSRecordPanel
       break;
       label148:
       if (!QQRecorder.d()) {
-        this.jdField_b_of_type_JavaLangString = getResources().getString(2131718343);
-      } else if (!QQRecorder.a(((QQRecorder.RecorderParam)localObject2).c)) {
-        this.jdField_b_of_type_JavaLangString = getResources().getString(2131693292);
+        this.jdField_b_of_type_JavaLangString = getResources().getString(2131718862);
+      } else if (!QQRecorder.a(((RecordParams.RecorderParam)localObject2).c)) {
+        this.jdField_b_of_type_JavaLangString = getResources().getString(2131693443);
       } else if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isVideoChatting()) {
-        this.jdField_b_of_type_JavaLangString = getResources().getString(2131694935);
+        this.jdField_b_of_type_JavaLangString = getResources().getString(2131695173);
       } else if (AudioHelper.b(1)) {
-        this.jdField_b_of_type_JavaLangString = getResources().getString(2131698179);
+        this.jdField_b_of_type_JavaLangString = getResources().getString(2131698455);
       } else {
         this.jdField_b_of_type_JavaLangString = null;
       }
@@ -876,9 +737,9 @@ public final class LSRecordPanel
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(BaseApplicationImpl.sApplication);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a((QQRecorder.RecorderParam)localObject2);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a((RecordParams.RecorderParam)localObject2);
     Object localObject1 = BuddyTransfileProcessor.getTransferFilePath(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, 2, null, false);
-    Object localObject2 = MessageForPtt.getLocalFilePath(((QQRecorder.RecorderParam)localObject2).c, (String)localObject1);
+    Object localObject2 = MessageForPtt.getLocalFilePath(((RecordParams.RecorderParam)localObject2).c, (String)localObject1);
     if ((localObject1 != null) && (!((String)localObject1).equals(localObject2)))
     {
       new File((String)localObject1).deleteOnExit();
@@ -890,7 +751,7 @@ public final class LSRecordPanel
         QLog.i("QQRecorder", 2, "path: " + (String)localObject1);
       }
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
-      bhcl.a(BaseApplicationImpl.sApplication, true);
+      QQAudioUtils.a(BaseApplicationImpl.sApplication, true);
       if (QLog.isColorLevel()) {
         QLog.d("LsRecord", 2, "QQRecorder start() is called,time is:" + System.currentTimeMillis());
       }
@@ -915,18 +776,55 @@ public final class LSRecordPanel
         QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
       }
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
-      d(2131230744);
-      bhcl.a(BaseApplicationImpl.sApplication, false);
+      c(2131230744);
+      QQAudioUtils.a(BaseApplicationImpl.sApplication, false);
       return true;
     }
     a(true);
     return true;
   }
   
-  protected void onFinishInflate()
+  public int onBeginReceiveData(String paramString, RecordParams.RecorderParam paramRecorderParam)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS onBeginReceiveData");
+    }
+    int i = PttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Normal_MaxPtt") * 1000;
+    int j = VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null);
+    if ((j & 0x4) != 0) {
+      i = PttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "SVIP_MaxPtt") * 1000;
+    }
+    for (;;)
+    {
+      i -= 200;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(16711687, i);
+      return i + 200;
+      if ((j & 0x2) != 0) {
+        i = PttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "VIP_MaxPtt") * 1000;
+      }
+    }
+  }
+  
+  public void onFinishInflate()
   {
     super.onFinishInflate();
-    i();
+    h();
+  }
+  
+  public void onInitFailed(String paramString, RecordParams.RecorderParam paramRecorderParam)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS onInitFailed");
+    }
+    n();
+    this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.11(this));
+  }
+  
+  public void onInitSuccess()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS onInitSuccess");
+    }
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -934,6 +832,104 @@ public final class LSRecordPanel
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "LS onLayout: " + paramBoolean);
+    }
+  }
+  
+  public void onRecorderAbnormal(String paramString, RecordParams.RecorderParam paramRecorderParam)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS onRecorderAbnormal");
+    }
+    n();
+    this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.12(this));
+  }
+  
+  public void onRecorderEnd(String paramString, RecordParams.RecorderParam paramRecorderParam, double paramDouble)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS onRecorderEnd");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    if (this.jdField_c_of_type_Boolean) {
+      if (this.jdField_a_of_type_Int < 500)
+      {
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131706417);
+        n();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.9(this));
+      return;
+      a(paramRecorderParam);
+      continue;
+      n();
+    }
+  }
+  
+  public void onRecorderError(String paramString1, RecordParams.RecorderParam paramRecorderParam, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS onRecorderError");
+    }
+    n();
+    this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.10(this));
+  }
+  
+  public void onRecorderNotReady(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS onRecorderNotReady");
+    }
+  }
+  
+  public void onRecorderPrepare(String paramString, RecordParams.RecorderParam paramRecorderParam)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS onRecorderPrepare");
+    }
+    paramRecorderParam = RecordParams.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
+    PttBuffer.a(paramString);
+    PttBuffer.a(paramString, paramRecorderParam, paramRecorderParam.length);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.7(this));
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      c(2131230733);
+    }
+  }
+  
+  public void onRecorderSilceEnd(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, RecordParams.RecorderParam paramRecorderParam)
+  {
+    PttBuffer.a(paramString, paramArrayOfByte, paramInt1);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    }
+    if ((b()) && (this.jdField_b_of_type_Int != 5)) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.13(this, paramInt2, paramDouble));
+    }
+    this.jdField_a_of_type_Int = ((int)paramDouble);
+  }
+  
+  public int onRecorderStart()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS onRecorderStart");
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsHandler.post(new LSRecordPanel.8(this));
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 2000L);
+    this.jdField_a_of_type_Boolean = true;
+    return 350;
+  }
+  
+  public void onRecorderVolumeStateChanged(int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS onRecorderVolumeStateChanged");
     }
   }
   

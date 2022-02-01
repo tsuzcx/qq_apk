@@ -9,7 +9,7 @@ public class AECMShowRequestController$CmShowDataWrapper
 {
   public String cmJsonString;
   public Map<String, Integer> dressidMaps;
-  public int errorCode;
+  public int errorCode = 0;
   public String errorMessage;
   public HashMap<String, String> namePathMap;
   public String rolePath;
@@ -22,7 +22,7 @@ public class AECMShowRequestController$CmShowDataWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.cmshow.AECMShowRequestController.CmShowDataWrapper
  * JD-Core Version:    0.7.0.1
  */

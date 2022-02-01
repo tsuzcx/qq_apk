@@ -16,7 +16,7 @@ final class FFmpegUtils$17
     }
     this.val$endCallback.onFailure(paramString);
     if ((this.val$endCallback instanceof VideoCompositeHelper.MusicCallBack)) {
-      ((VideoCompositeHelper.MusicCallBack)this.val$endCallback).setErrorCode(941006);
+      ((VideoCompositeHelper.MusicCallBack)this.val$endCallback).a(941006);
     }
     QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " getVideoFromMp4 failed msg：" + paramString);
   }
@@ -36,7 +36,7 @@ final class FFmpegUtils$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils.17
  * JD-Core Version:    0.7.0.1
  */

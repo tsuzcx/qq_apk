@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
-import ajch;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.qphone.base.util.QLog;
 
-public class PhoneContactManagerImp$2$2
+class PhoneContactManagerImp$2$2
   implements Runnable
 {
-  public PhoneContactManagerImp$2$2(ajch paramajch) {}
+  PhoneContactManagerImp$2$2(PhoneContactManagerImp.2 param2) {}
   
   public void run()
   {
@@ -28,7 +27,7 @@ public class PhoneContactManagerImp$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.2.2
  * JD-Core Version:    0.7.0.1
  */

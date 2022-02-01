@@ -1,29 +1,28 @@
 package dov.com.qq.im.ae.data;
 
-import bnjw;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import java.util.List;
 
-public class AEGifMaterialManager$2
+class AEGifMaterialManager$2
   implements Runnable
 {
-  public AEGifMaterialManager$2(bnjw parambnjw) {}
+  AEGifMaterialManager$2(AEGifMaterialManager paramAEGifMaterialManager) {}
   
   public void run()
   {
     for (;;)
     {
-      synchronized (bnjw.a(this.this$0))
+      synchronized (AEGifMaterialManager.a(this.this$0))
       {
-        List localList = bnjw.a(this.this$0);
+        List localList = AEGifMaterialManager.a(this.this$0);
         if (!CollectionUtils.isEmpty(localList)) {
-          bnjw.a(this.this$0, localList);
+          AEGifMaterialManager.a(this.this$0, localList);
         }
-        bnjw localbnjw = this.this$0;
+        AEGifMaterialManager localAEGifMaterialManager = this.this$0;
         if (!CollectionUtils.isEmpty(localList))
         {
           bool = true;
-          bnjw.a(localbnjw, bool);
+          AEGifMaterialManager.a(localAEGifMaterialManager, bool);
           return;
         }
       }
@@ -33,7 +32,7 @@ public class AEGifMaterialManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.data.AEGifMaterialManager.2
  * JD-Core Version:    0.7.0.1
  */

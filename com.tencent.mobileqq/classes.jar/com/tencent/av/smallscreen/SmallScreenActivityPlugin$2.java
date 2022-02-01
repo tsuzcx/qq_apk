@@ -2,13 +2,11 @@ package com.tencent.av.smallscreen;
 
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import lzh;
-import lzr;
 
-public class SmallScreenActivityPlugin$2
+class SmallScreenActivityPlugin$2
   implements Runnable
 {
-  public SmallScreenActivityPlugin$2(lzh paramlzh, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
+  SmallScreenActivityPlugin$2(SmallScreenActivityPlugin paramSmallScreenActivityPlugin, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
   
   public void run()
   {
@@ -17,14 +15,14 @@ public class SmallScreenActivityPlugin$2
     if ((this.this$0.b) && (this.jdField_a_of_type_Boolean) && (!this.b)) {}
     for (boolean bool = true;; bool = false)
     {
-      lzr.a(l, 2, localBaseApplication, bool, this.this$0.a.getCurrentAccountUin(), this.c);
+      SmallScreenUtils.a(l, 2, localBaseApplication, bool, this.this$0.a.getCurrentAccountUin(), this.c);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenActivityPlugin.2
  * JD-Core Version:    0.7.0.1
  */

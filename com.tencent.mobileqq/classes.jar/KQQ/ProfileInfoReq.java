@@ -8,10 +8,10 @@ public final class ProfileInfoReq
   extends JceStruct
 {
   static byte[] cache_vecValue;
-  public byte cType;
-  public long dwTimeStamp;
+  public byte cType = 0;
+  public long dwTimeStamp = 0L;
   public String strKey = "";
-  public byte[] vecValue;
+  public byte[] vecValue = null;
   
   public ProfileInfoReq() {}
   

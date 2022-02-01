@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class stSmallPopWindow
   extends JceStruct
 {
-  public int direction;
+  public int direction = 0;
   public String imgurl = "";
-  public int time_to_open;
-  public int y_percent;
+  public int time_to_open = 0;
+  public int y_percent = 0;
   
   public stSmallPopWindow() {}
   

@@ -8,10 +8,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 import java.net.InetAddress;
 import java.net.URL;
 
-public final class TroopNewGuidePopWindow$11
+final class TroopNewGuidePopWindow$11
   implements Runnable
 {
-  public TroopNewGuidePopWindow$11(String paramString) {}
+  TroopNewGuidePopWindow$11(String paramString) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ public final class TroopNewGuidePopWindow$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.troop.feeds.TroopNewGuidePopWindow.11
  * JD-Core Version:    0.7.0.1
  */

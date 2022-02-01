@@ -10,8 +10,8 @@ public final class stOperaData
   extends JceStruct
 {
   static Map<Integer, String> cache_extendinfo = new HashMap();
-  public int actiontype;
-  public Map<Integer, String> extendinfo;
+  public int actiontype = 0;
+  public Map<Integer, String> extendinfo = null;
   public String strData = "";
   
   static

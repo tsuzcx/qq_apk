@@ -8,13 +8,13 @@ public final class PanSocialInfo
   extends JceStruct
 {
   public String strLevelType = "";
-  public long uCharm;
-  public long uCharmLevel;
-  public long uCharmRank;
-  public long uChatflag;
-  public long uChatupCount;
-  public long uCurLevelCharm;
-  public long uNextLevelCharm;
+  public long uCharm = 0L;
+  public long uCharmLevel = 0L;
+  public long uCharmRank = 0L;
+  public long uChatflag = 0L;
+  public long uChatupCount = 0L;
+  public long uCurLevelCharm = 0L;
+  public long uNextLevelCharm = 0L;
   
   public PanSocialInfo() {}
   
@@ -58,7 +58,7 @@ public final class PanSocialInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.PanSocialInfo
  * JD-Core Version:    0.7.0.1
  */

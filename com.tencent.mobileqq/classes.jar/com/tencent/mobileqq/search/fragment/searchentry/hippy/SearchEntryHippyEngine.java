@@ -8,7 +8,6 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import bbzh;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
@@ -20,6 +19,7 @@ import com.tencent.hippy.qq.module.tkd.TKDAccountModule;
 import com.tencent.hippy.qq.module.tkd.TKDAccountModule.AccountInfo;
 import com.tencent.hippy.qq.view.tkd.listview.ResourceUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler;
 import com.tencent.mobileqq.search.fragment.searchentry.nativemethod.RequestHistoryDataMethod;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -32,7 +32,7 @@ public class SearchEntryHippyEngine
 {
   private static final String SPKEY_IS_HIPPY_DEBUG = "SearchEntryHippyEngine.spkey_is_hippy_debug";
   private static final String SPKEY_IS_HIPPY_ON = "SearchEntryHippyEngine.spkey_is_hippy_ON";
-  public static boolean hippyError;
+  public static boolean hippyError = false;
   private String VIEW_ID = "";
   @NonNull
   private final SearchHotwordHandler hotwordHandler;
@@ -59,7 +59,7 @@ public class SearchEntryHippyEngine
     localHippyMap1.pushString("history", RequestHistoryDataMethod.getHistoryListStr());
     localHippyMap1.pushString("guid", TKDAccountModule.getCurAccountInfo().qqNum);
     localHippyMap1.pushString("type", "homePage");
-    localHippyMap1.pushString("hint", ResourceUtil.getString(2131718389));
+    localHippyMap1.pushString("hint", ResourceUtil.getString(2131718908));
     localHippyMap1.pushString("data", SearchHippyEventEmitter.mapToJsonStr(SearchHotwordHandler.getHotwordDataMap(this.hotwordHandler, null)));
     HippyMap localHippyMap2 = new HippyMap();
     localHippyMap2.pushInt("skinMode", 0);
@@ -87,7 +87,7 @@ public class SearchEntryHippyEngine
     for (bool = true;; bool = false)
     {
       if (!bool) {
-        bbzh.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
+        SearchEntryConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
       }
       return bool;
     }
@@ -110,7 +110,7 @@ public class SearchEntryHippyEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchEntryHippyEngine
  * JD-Core Version:    0.7.0.1
  */

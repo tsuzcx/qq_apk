@@ -12,16 +12,16 @@ public final class stFileInfo
   static byte[] cache_strMd5;
   static byte[] cache_strName;
   static byte[] cache_strOriginFileMd5;
-  public long lLen;
-  public long lSessionId;
-  public byte[] strIndex;
-  public byte[] strKey;
-  public byte[] strMd5;
-  public byte[] strName;
-  public byte[] strOriginFileMd5;
-  public long uOriginFileType;
-  public long uSvrIp;
-  public long uSvrPort;
+  public long lLen = 0L;
+  public long lSessionId = 0L;
+  public byte[] strIndex = null;
+  public byte[] strKey = null;
+  public byte[] strMd5 = null;
+  public byte[] strName = null;
+  public byte[] strOriginFileMd5 = null;
+  public long uOriginFileType = 0L;
+  public long uSvrIp = 0L;
+  public long uSvrPort = 0L;
   
   public stFileInfo() {}
   

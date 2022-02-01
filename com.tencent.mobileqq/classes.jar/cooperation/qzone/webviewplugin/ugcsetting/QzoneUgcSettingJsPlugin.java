@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcur;
-import bifw;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.RemoteRequestSender;
@@ -55,7 +55,7 @@ public class QzoneUgcSettingJsPlugin
     this.parentPlugin.callJs(paramString, new String[] { localObject });
   }
   
-  private void handleCancellationStatus(bifw parambifw, String paramString)
+  private void handleCancellationStatus(WebViewPlugin.PluginRuntime paramPluginRuntime, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     for (;;)
@@ -65,13 +65,13 @@ public class QzoneUgcSettingJsPlugin
       {
         if (new JSONObject(paramString).getInt("result") == 1)
         {
-          bcur.a(0, parambifw.a().getLongAccountUin());
+          QZoneUnreadServletLogic.a(0, paramPluginRuntime.a().getLongAccountUin());
           return;
         }
       }
-      catch (Throwable parambifw)
+      catch (Throwable paramPluginRuntime)
       {
-        QLog.e(this.TAG, 1, "handleCancellationStatus... e:", parambifw);
+        QLog.e(this.TAG, 1, "handleCancellationStatus... e:", paramPluginRuntime);
       }
     }
   }
@@ -208,7 +208,7 @@ public class QzoneUgcSettingJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.ugcsetting.QzoneUgcSettingJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public final class DefaultInfo
   extends JceStruct
 {
   static Map<String, ArrayList<String>> cache_topicAndRoomName = new HashMap();
-  public Map<String, ArrayList<String>> topicAndRoomName;
+  public Map<String, ArrayList<String>> topicAndRoomName = null;
   
   static
   {

@@ -152,17 +152,24 @@ public class AppBrandWebviewService
       {
         localObject1 = (String)localObject1 + "__qqConfig.useXWebVideo=" + this.mEmbeddedState.isEnableEmbeddedVideo() + ";";
         QMLog.d("miniapp-embedded", "system service enableEmbeddedVideo : " + this.mEmbeddedState.isEnableEmbeddedVideo());
-        localObject2 = (String)localObject1 + "__qqConfig.useXWebLive=" + this.mEmbeddedState.isEnableEmbeddedLive() + ";";
+        localObject1 = (String)localObject1 + "__qqConfig.useXWebLive=" + this.mEmbeddedState.isEnableEmbeddedLive() + ";";
         QMLog.d("miniapp-embedded", "system service enableEmbeddedLive : " + this.mEmbeddedState.isEnableEmbeddedLive());
+        localObject2 = (String)localObject1 + "__qqConfig.useXWebElement=" + this.mEmbeddedState.isEnableEmbeddedElement() + ";";
+        QMLog.d("miniapp-embedded", "system service enableEmbeddedElement : " + this.mEmbeddedState.isEnableEmbeddedElement());
         if (this.mEmbeddedState.isEnableEmbeddedVideo())
         {
           localObject1 = "system_embedded_video";
           reportEmbeddedStatus(770, (String)localObject1);
           if (!this.mEmbeddedState.isEnableEmbeddedLive()) {
-            break label485;
+            break label576;
           }
           localObject1 = "system_embedded_live";
           reportEmbeddedStatus(771, (String)localObject1);
+          if (!this.mEmbeddedState.isEnableEmbeddedElement()) {
+            break label583;
+          }
+          localObject1 = "system_embedded_element";
+          reportEmbeddedStatus(772, (String)localObject1);
         }
       }
       else
@@ -179,8 +186,11 @@ public class AppBrandWebviewService
         continue;
         String str = "system_native_video";
         continue;
-        label485:
+        label576:
         str = "system_native_live";
+        continue;
+        label583:
+        str = "system_native_element";
       }
     }
   }
@@ -266,7 +276,7 @@ public class AppBrandWebviewService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppBrandWebviewService
  * JD-Core Version:    0.7.0.1
  */

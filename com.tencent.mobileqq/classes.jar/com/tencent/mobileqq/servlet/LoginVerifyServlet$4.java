@@ -2,8 +2,6 @@ package com.tencent.mobileqq.servlet;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import bcvl;
-import bcvm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -16,17 +14,17 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import mqq.os.MqqHandler;
 
-public final class LoginVerifyServlet$4
+final class LoginVerifyServlet$4
   implements Runnable
 {
-  public LoginVerifyServlet$4(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, bcvm parambcvm) {}
+  LoginVerifyServlet$4(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, LoginVerifyServlet.IHttpsCallback paramIHttpsCallback) {}
   
   public void run()
   {
     try
     {
       Object localObject5 = new URL(this.jdField_a_of_type_JavaLangString);
-      Object localObject1 = new bcvl(this, (URL)localObject5);
+      Object localObject1 = new LoginVerifyServlet.4.1(this, (URL)localObject5);
       Object localObject2 = (HttpsURLConnection)((URL)localObject5).openConnection();
       ((HttpsURLConnection)localObject2).setHostnameVerifier((HostnameVerifier)localObject1);
       ((HttpsURLConnection)localObject2).setConnectTimeout(this.jdField_a_of_type_Int);
@@ -36,7 +34,7 @@ public final class LoginVerifyServlet$4
       ((HttpsURLConnection)localObject2).setUseCaches(false);
       ((HttpsURLConnection)localObject2).setRequestMethod("POST");
       ((HttpsURLConnection)localObject2).setRequestProperty("Connection", "Keep-Alive");
-      ((HttpsURLConnection)localObject2).setRequestProperty("User-Agent", "android" + "_" + Build.VERSION.SDK + "_" + Build.DEVICE + "_" + Build.VERSION.RELEASE + "_" + "8.4.10" + "_" + "QQ/" + "8.4.104875");
+      ((HttpsURLConnection)localObject2).setRequestProperty("User-Agent", "android" + "_" + Build.VERSION.SDK + "_" + Build.DEVICE + "_" + Build.VERSION.RELEASE + "_" + "8.5.5" + "_" + "QQ/" + "8.5.55105");
       ((HttpsURLConnection)localObject2).setRequestProperty("Accept", "*/*");
       ((HttpsURLConnection)localObject2).setRequestProperty("Content-Type", this.jdField_b_of_type_JavaLangString);
       localObject1 = ((HttpsURLConnection)localObject2).getOutputStream();
@@ -107,7 +105,7 @@ public final class LoginVerifyServlet$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.LoginVerifyServlet.4
  * JD-Core Version:    0.7.0.1
  */

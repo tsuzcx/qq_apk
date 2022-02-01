@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akrt;
-import akru;
-
-public class RedPacketKSongFragment$10$1$1$1
+class RedPacketKSongFragment$10$1$1$1
   implements Runnable
 {
-  public RedPacketKSongFragment$10$1$1$1(akru paramakru) {}
+  RedPacketKSongFragment$10$1$1$1(RedPacketKSongFragment.10.1.1 param1) {}
   
   public void run()
   {
@@ -16,7 +13,7 @@ public class RedPacketKSongFragment$10$1$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1.1.1
  * JD-Core Version:    0.7.0.1
  */

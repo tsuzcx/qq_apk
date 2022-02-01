@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.redtouch;
 
-import anzt;
-import bbbk;
-import bbbl;
+import com.tencent.mobileqq.app.NumRedMsgHandler;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgRspBody;
+import com.tencent.mobileqq.tianshu.data.NumRedGetMsgCallback;
+import com.tencent.mobileqq.tianshu.pb.NumRedMsg.NumMsgBusi;
+import com.tencent.mobileqq.tianshu.pb.NumRedMsg.NumMsgRspBody;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class NumRedMsgManager$2
+class NumRedMsgManager$2
   implements Runnable
 {
-  public NumRedMsgManager$2(bbbl parambbbl, long[] paramArrayOfLong, bbbk parambbbk, boolean paramBoolean, String paramString) {}
+  NumRedMsgManager$2(NumRedMsgManager paramNumRedMsgManager, long[] paramArrayOfLong, NumRedGetMsgCallback paramNumRedGetMsgCallback, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
     int k = 0;
-    if ((bbbl.a(this.this$0)) || (this.jdField_a_of_type_ArrayOfLong.length < 1) || (this.jdField_a_of_type_Bbbk == null)) {
+    if ((NumRedMsgManager.a(this.this$0)) || (this.jdField_a_of_type_ArrayOfLong.length < 1) || (this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback == null)) {
       return;
     }
-    if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Bbbk.a))) {
-      this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Bbbk.a), this.jdField_a_of_type_Bbbk);
+    if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback.b))) {
+      this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback.b), this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback);
     }
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
@@ -76,10 +75,10 @@ public class NumRedMsgManager$2
       }
       if ((localArrayList1.size() == this.jdField_a_of_type_ArrayOfLong.length) || (this.jdField_a_of_type_Boolean))
       {
-        this.jdField_a_of_type_Bbbk.a(this.jdField_a_of_type_JavaLangString, localArrayList1);
+        this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback.a(this.jdField_a_of_type_JavaLangString, localArrayList1);
         return;
       }
-      this.this$0.jdField_a_of_type_Anzt.a(localArrayList2, this.jdField_a_of_type_Bbbk.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppNumRedMsgHandler.a(localArrayList2, this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong);
       return;
       label365:
       j = 0;
@@ -89,7 +88,7 @@ public class NumRedMsgManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.NumRedMsgManager.2
  * JD-Core Version:    0.7.0.1
  */

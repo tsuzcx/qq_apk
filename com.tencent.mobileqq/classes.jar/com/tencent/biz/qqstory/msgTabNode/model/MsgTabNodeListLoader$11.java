@@ -3,14 +3,11 @@ package com.tencent.biz.qqstory.msgTabNode.model;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import wly;
-import wmd;
-import wmk;
 
-public class MsgTabNodeListLoader$11
+class MsgTabNodeListLoader$11
   implements Runnable
 {
-  public MsgTabNodeListLoader$11(wmd paramwmd, wly paramwly, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2) {}
+  MsgTabNodeListLoader$11(MsgTabNodeListLoader paramMsgTabNodeListLoader, MsgTabNodeInfo paramMsgTabNodeInfo, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -18,7 +15,7 @@ public class MsgTabNodeListLoader$11
     {
       Iterator localIterator = this.this$0.d.iterator();
       if (localIterator.hasNext()) {
-        ((wmk)localIterator.next()).a(this.jdField_a_of_type_Wly, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Boolean);
+        ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Boolean);
       }
     }
     if ((QLog.isDevelopLevel()) && (this.this$0.d.isEmpty())) {
@@ -28,7 +25,7 @@ public class MsgTabNodeListLoader$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.11
  * JD-Core Version:    0.7.0.1
  */

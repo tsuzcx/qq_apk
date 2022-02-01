@@ -24,9 +24,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import uvq;
-import uwm;
-import uwn;
 
 public class SwipeBackLayout
   extends RelativeLayout
@@ -34,13 +31,13 @@ public class SwipeBackLayout
   protected int a;
   public Context a;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  final Handler jdField_a_of_type_AndroidOsHandler = new uwm(this);
+  final Handler jdField_a_of_type_AndroidOsHandler = new SwipeBackLayout.1(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   protected View a;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
+  protected ReadinjoyH5ElementManager a;
   public WebViewFragment a;
   protected List<ViewPager> a;
-  public uvq a;
   protected boolean a;
   protected int b;
   protected boolean b;
@@ -52,9 +49,9 @@ public class SwipeBackLayout
   protected boolean e;
   protected int f;
   private boolean f;
-  private boolean g;
-  private boolean h;
-  private boolean i;
+  private boolean g = false;
+  private boolean h = false;
+  private boolean i = false;
   
   public SwipeBackLayout(Context paramContext)
   {
@@ -71,11 +68,12 @@ public class SwipeBackLayout
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_JavaUtilList = new LinkedList();
     this.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Uvq = new uvq();
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilReadinjoyH5ElementManager = new ReadinjoyH5ElementManager();
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_e_of_type_Boolean = true;
     this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842705);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842851);
     this.jdField_f_of_type_Int = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
   }
   
@@ -84,7 +82,7 @@ public class SwipeBackLayout
     this(paramContext, null);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_e_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new uwn(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new SwipeBackLayout.KandianGestureDetector(this, paramContext));
   }
   
   private void a(List<ViewPager> paramList, ViewGroup paramViewGroup)
@@ -175,7 +173,7 @@ public class SwipeBackLayout
             int j = (int)((paramMotionEvent.getX() + ((CustomWebView)localObject).getWebScrollX()) / f1);
             float f2 = paramMotionEvent.getY();
             int k = (int)((((CustomWebView)localObject).getWebScrollY() + f2) / f1);
-            bool1 = this.jdField_a_of_type_Uvq.a(new Point(j, k));
+            bool1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadinjoyH5ElementManager.a(new Point(j, k));
           }
         }
       }
@@ -209,7 +207,7 @@ public class SwipeBackLayout
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
   }
@@ -236,7 +234,7 @@ public class SwipeBackLayout
         this.jdField_d_of_type_Int = j;
         this.jdField_b_of_type_Int = j;
         this.c = ((int)paramMotionEvent.getRawY());
-        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_Uvq.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
+        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_ComTencentBizPubaccountUtilReadinjoyH5ElementManager.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
           this.jdField_d_of_type_Boolean = true;
         }
       }
@@ -244,7 +242,7 @@ public class SwipeBackLayout
     return true;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean)
@@ -309,7 +307,7 @@ public class SwipeBackLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.SwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

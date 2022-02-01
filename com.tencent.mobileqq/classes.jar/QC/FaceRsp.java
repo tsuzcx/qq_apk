@@ -8,8 +8,8 @@ public final class FaceRsp
   extends JceStruct
 {
   static CommonRsp cache_stRet = new CommonRsp();
-  public int authRet;
-  public CommonRsp stRet;
+  public int authRet = 0;
+  public CommonRsp stRet = null;
   public String url = "";
   
   public FaceRsp() {}

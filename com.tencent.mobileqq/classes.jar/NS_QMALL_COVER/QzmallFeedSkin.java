@@ -9,7 +9,7 @@ public final class QzmallFeedSkin
   extends JceStruct
 {
   static FeedSkinInfo cache_stFeedSkinInfo = new FeedSkinInfo();
-  public FeedSkinInfo stFeedSkinInfo;
+  public FeedSkinInfo stFeedSkinInfo = null;
   
   public QzmallFeedSkin() {}
   

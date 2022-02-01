@@ -10,6 +10,7 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.AppBrandUtil;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMiniReportProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
@@ -30,7 +31,7 @@ public class MiniAppReportManager2
 {
   public static final String APP_TYPE_MINI_APP = "0";
   public static final String APP_TYPE_MINI_GAME = "1";
-  public static final boolean IsMainProcess;
+  public static final boolean IS_MAIN_PROCESS;
   public static final String KEY_ACTION_TYPE = "action_type";
   public static final String KEY_ADD_DURATION_MS = "add_duration_ms";
   public static final String KEY_APP_CONFIG = "app_config";
@@ -56,7 +57,7 @@ public class MiniAppReportManager2
   
   static
   {
-    IsMainProcess = AppLoaderFactory.g().isMainProcess();
+    IS_MAIN_PROCESS = AppLoaderFactory.g().isMainProcess();
     launchStateMap = new HashMap();
     lanchFailCode = new HashMap();
     first = true;
@@ -160,6 +161,48 @@ public class MiniAppReportManager2
     return "0";
   }
   
+  private static String getReserve2(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    String str = MiniAppStartState.getApkgDownloadDesc(paramString);
+    paramString = str;
+    if (paramBoolean1)
+    {
+      paramString = str;
+      if (paramBoolean2) {
+        paramString = "apkg_download_preloaded";
+      }
+    }
+    return paramString;
+  }
+  
+  private static String getReserve3(MiniAppInfo paramMiniAppInfo, String paramString, AppStateManager paramAppStateManager)
+  {
+    if (paramMiniAppInfo.isReportTypeMiniGame()) {}
+    for (paramMiniAppInfo = MiniAppStartState.getProcessLoadDesc(paramString);; paramMiniAppInfo = MiniAppStartState.getBaselibLoadDesc(paramString))
+    {
+      paramString = paramMiniAppInfo;
+      if (paramAppStateManager != null)
+      {
+        paramString = paramMiniAppInfo;
+        if (paramAppStateManager.isFlutter) {
+          if (!paramAppStateManager.isFromPreload)
+          {
+            paramString = paramMiniAppInfo;
+            if (!paramAppStateManager.isFromPrelaunch) {}
+          }
+          else
+          {
+            paramString = paramMiniAppInfo;
+            if (paramAppStateManager.hasPreloadCompleted) {
+              paramString = "service_preload_finished";
+            }
+          }
+        }
+      }
+      return paramString;
+    }
+  }
+  
   public static long getShowTimeout()
   {
     return WnsConfig.getConfig("qqtriton", "MiniShowTimeout", 45000L);
@@ -177,6 +220,11 @@ public class MiniAppReportManager2
       return "timeout_25";
     }
     return "timeout";
+  }
+  
+  private static boolean isNeedFlush(String paramString1, String paramString2)
+  {
+    return ("2hide".equals(paramString1)) || (("2show".equals(paramString1)) && (("first_frame".equals(paramString2)) || ("click_resume".equals(paramString2))));
   }
   
   private static void loadLaunchStates()
@@ -248,14 +296,14 @@ public class MiniAppReportManager2
         localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
         localArrayList.add(MiniProgramReportHelper.newEntry("customInfo", paramMiniAppInfo.customInfo));
       }
-      if ((WnsConfig.getConfig("qqminiapp", "mini_app_report_first_frame_flush", 1) == 1) && (("2hide".equals(paramString2)) || (("2show".equals(paramString2)) && (("first_frame".equals(paramString5)) || ("click_resume".equals(paramString5)))))) {
+      if ((WnsConfig.getConfig("qqminiapp", "mini_app_report_first_frame_flush", 1) == 1) && (isNeedFlush(paramString2, paramString5))) {
         MiniProgramReporter.getInstance().setReportLaunchNeedflush(true);
       }
       if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
-        break label349;
+        break label318;
       }
     }
-    label349:
+    label318:
     for (int i = 2;; i = 12)
     {
       paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
@@ -264,6 +312,16 @@ public class MiniAppReportManager2
       paramString4 = null;
       break;
     }
+  }
+  
+  private static void reportLaunchFail(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo, String paramString3, String paramString4, String paramString5)
+  {
+    Integer localInteger = (Integer)lanchFailCode.get(paramString1);
+    paramString1 = localInteger;
+    if (localInteger == null) {
+      paramString1 = Integer.valueOf(401);
+    }
+    MiniReportManager.reportEventType(paramMiniAppInfo, 2, paramString2, null, null, paramString1.intValue(), paramString4, 0L, null, MiniAppStartState.getBaseLibDownloadDesc(paramString3), MiniAppStartState.getApkgDownloadDesc(paramString3), paramString5, MiniAppStartState.getPageSwitchDesc(paramString3));
   }
   
   public static void reportLaunchPiecewise(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo)
@@ -298,18 +356,18 @@ public class MiniAppReportManager2
   {
     try
     {
-      if (IsMainProcess)
+      if (IS_MAIN_PROCESS)
       {
         reportPageViewInMainProcess(paramString1, paramString2, paramString3, paramMiniAppInfo);
         return;
       }
       MiniProgramReporter.getInstance().getReportHandler().post(new MiniAppReportManager2.2(paramMiniAppInfo, paramString1, paramString3, paramString2));
       reportQulaityResult(paramString1, paramString2, paramString3, paramMiniAppInfo);
-      if (("2unload".equals(paramString1)) && (paramMiniAppInfo != null))
-      {
+      if (("2unload".equals(paramString1)) && (paramMiniAppInfo != null)) {
         MiniAppStartState.removeState(paramMiniAppInfo.appId);
-        return;
       }
+      setCrashReportAppInfo(paramString1, paramMiniAppInfo);
+      return;
     }
     catch (Throwable paramString1)
     {
@@ -397,119 +455,96 @@ public class MiniAppReportManager2
   private static void reportQualityColdStart(String paramString1, MiniAppInfo paramMiniAppInfo, String paramString2, String paramString3)
   {
     MiniAppStartState.updateState(paramString2, true);
-    if ((paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode())) {}
-    for (int i = 1; (i != 0) && (!MiniAppPrelaunchRecorder.get().isCheckinColdStart()); i = 0) {
-      return;
-    }
-    boolean bool = MiniAppPrelaunchRecorder.get().isPrelaunchSuccess();
-    Object localObject1 = MiniAppStartState.getApkgDownloadDesc(paramString2);
-    Object localObject3 = localObject1;
-    if (i != 0)
+    boolean bool;
+    if ((paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode()))
     {
-      localObject3 = localObject1;
-      if (bool) {
-        localObject3 = "apkg_download_preloaded";
+      bool = true;
+      if ((!bool) || (MiniAppPrelaunchRecorder.get().isCheckinColdStart())) {
+        break label43;
       }
     }
-    label93:
-    Object localObject2;
-    if (paramMiniAppInfo.isReportTypeMiniGame())
+    label43:
+    do
     {
-      localObject1 = MiniAppStartState.getProcessLoadDesc(paramString2);
+      return;
+      bool = false;
+      break;
+      String str3 = getReserve2(paramString2, bool, MiniAppPrelaunchRecorder.get().isPrelaunchSuccess());
       AppStateManager localAppStateManager = getAppStateManager(paramMiniAppInfo);
-      localObject2 = localObject1;
-      if (localAppStateManager != null)
+      String str2 = getReserve3(paramMiniAppInfo, paramString2, localAppStateManager);
+      String str1 = str2;
+      if (MiniAppStartState.getBaseLibDownload(paramString2) == 1)
       {
-        localObject2 = localObject1;
-        if (localAppStateManager.isFlutter) {
-          if (!localAppStateManager.isFromPreload)
+        str1 = str2;
+        if (localAppStateManager != null)
+        {
+          QMLog.i("MiniAppReportManager2", "check prelaunch  hasPreloadCompleted:" + localAppStateManager.hasPreloadCompleted + "   isFromPrelaunch:" + localAppStateManager.isFromPrelaunch);
+          str1 = str2;
+          if (localAppStateManager.hasPreloadCompleted)
           {
-            localObject2 = localObject1;
-            if (!localAppStateManager.isFromPrelaunch) {}
-          }
-          else
-          {
-            localObject2 = localObject1;
-            if (localAppStateManager.hasPreloadCompleted) {
-              localObject2 = "service_preload_finished";
+            str1 = str2;
+            if (localAppStateManager.isFromPrelaunch) {
+              str1 = "service_prelaunch";
             }
           }
         }
       }
-      if ((MiniAppStartState.getBaseLibDownload(paramString2) != 1) || (localAppStateManager == null)) {
-        break label275;
-      }
-      QMLog.i("MiniAppReportManager2", "check prelaunch  hasPreloadCompleted:" + localAppStateManager.hasPreloadCompleted + "   isFromPrelaunch:" + localAppStateManager.isFromPrelaunch);
-      if ((!localAppStateManager.hasPreloadCompleted) || (!localAppStateManager.isFromPrelaunch)) {
-        break label275;
-      }
-    }
-    label275:
-    for (localObject1 = "service_prelaunch";; localObject1 = localObject2)
-    {
-      MiniReportManager.reportEventType(paramMiniAppInfo, 2, paramString1, null, null, 0, paramString3, 0L, null, MiniAppStartState.getBaseLibDownloadDesc(paramString2), (String)localObject3, (String)localObject1, "cold_start");
-      if (i == 0) {
-        break;
-      }
-      MiniAppStartState.reset(paramString2, true);
-      return;
-      localObject1 = MiniAppStartState.getBaselibLoadDesc(paramString2);
-      break label93;
-    }
+      MiniReportManager.reportEventType(paramMiniAppInfo, 2, paramString1, null, null, 0, paramString3, 0L, null, MiniAppStartState.getBaseLibDownloadDesc(paramString2), str3, str1, "cold_start");
+    } while (!bool);
+    MiniAppStartState.reset(paramString2, true);
   }
   
   private static void reportQulaityResult(String paramString1, String paramString2, String paramString3, MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId))) {}
-    for (String str1 = paramMiniAppInfo.appId;; str1 = "")
+    String str2 = "";
+    String str1 = str2;
+    if (paramMiniAppInfo != null)
     {
-      String str2;
-      String str3;
-      if (paramMiniAppInfo.isReportTypeMiniGame())
-      {
-        str2 = "1";
-        if (!paramMiniAppInfo.isReportTypeMiniGame()) {
-          break label120;
-        }
-        str3 = MiniAppStartState.getProcessLoadDesc(str1);
-        label45:
-        if (!"2launch_fail".equals(paramString1)) {
-          break label130;
-        }
-        paramString2 = (Integer)lanchFailCode.get(paramString2);
-        paramString1 = paramString2;
-        if (paramString2 == null) {
-          paramString1 = Integer.valueOf(401);
-        }
-        MiniReportManager.reportEventType(paramMiniAppInfo, 2, paramString3, null, null, paramString1.intValue(), str2, 0L, null, MiniAppStartState.getBaseLibDownloadDesc(str1), MiniAppStartState.getApkgDownloadDesc(str1), str3, MiniAppStartState.getPageSwitchDesc(str1));
+      str1 = str2;
+      if (!TextUtils.isEmpty(paramMiniAppInfo.appId)) {
+        str1 = paramMiniAppInfo.appId;
       }
-      label120:
-      do
+    }
+    String str3;
+    if (paramMiniAppInfo.isReportTypeMiniGame())
+    {
+      str2 = "1";
+      if (!paramMiniAppInfo.isReportTypeMiniGame()) {
+        break label88;
+      }
+      str3 = MiniAppStartState.getProcessLoadDesc(str1);
+      label58:
+      if (!"2launch_fail".equals(paramString1)) {
+        break label98;
+      }
+      reportLaunchFail(paramString2, paramString3, paramMiniAppInfo, str1, str2, str3);
+    }
+    label88:
+    label98:
+    do
+    {
+      return;
+      str2 = "0";
+      break;
+      str3 = MiniAppStartState.getBaselibLoadDesc(str1);
+      break label58;
+      if (("2launch".equals(paramString1)) && ("first_frame".equals(paramString2)))
       {
+        reportQualityColdStart(paramString3, paramMiniAppInfo, str1, str2);
         return;
-        str2 = "0";
+      }
+    } while ((!"2launch".equals(paramString1)) || (!"click_resume".equals(paramString2)));
+    if ((paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode())) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        MiniAppStartState.reset(str1, true);
+      }
+      if (MiniAppStartState.getPageSwitch(str1) == 1) {
         break;
-        str3 = MiniAppStartState.getBaselibLoadDesc(str1);
-        break label45;
-        if (("2launch".equals(paramString1)) && ("first_frame".equals(paramString2)))
-        {
-          reportQualityColdStart(paramString3, paramMiniAppInfo, str1, str2);
-          return;
-        }
-      } while ((!"2launch".equals(paramString1)) || (!"click_resume".equals(paramString2)));
-      label130:
-      if ((paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode())) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          MiniAppStartState.reset(str1, true);
-        }
-        if (MiniAppStartState.getPageSwitch(str1) == 1) {
-          break;
-        }
-        MiniReportManager.reportEventType(paramMiniAppInfo, 2, paramString3, null, null, 0, str2, 0L, null, MiniAppStartState.getBaseLibDownloadDesc(str1), MiniAppStartState.getApkgDownloadDesc(str1), str3, "hot_start");
-        return;
       }
+      MiniReportManager.reportEventType(paramMiniAppInfo, 2, paramString3, null, null, 0, str2, 0L, null, MiniAppStartState.getBaseLibDownloadDesc(str1), MiniAppStartState.getApkgDownloadDesc(str1), str3, "hot_start");
+      return;
     }
   }
   
@@ -572,6 +607,13 @@ public class MiniAppReportManager2
     }
     localEditor.putString("appid", localStringBuilder.toString());
     localEditor.commit();
+  }
+  
+  public static void setCrashReportAppInfo(String paramString, MiniAppInfo paramMiniAppInfo)
+  {
+    if (("2show".equals(paramString)) && (paramMiniAppInfo != null)) {
+      ((IMiniReportProxy)ProxyManager.get(IMiniReportProxy.class)).setMiniAppInfo(paramMiniAppInfo.appId + paramMiniAppInfo.name);
+    }
   }
   
   private static void setTimeOutForLaunch()
@@ -698,7 +740,7 @@ public class MiniAppReportManager2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniAppReportManager2
  * JD-Core Version:    0.7.0.1
  */

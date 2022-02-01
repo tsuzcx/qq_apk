@@ -217,6 +217,11 @@ public class ProteusParser
     return j;
   }
   
+  private int getPriority(JSONObject paramJSONObject)
+  {
+    return getPriority(paramJSONObject.optString("platform"), paramJSONObject.optString("min_version"), paramJSONObject.optString("max_version"), paramJSONObject.optString("aladdin_key"));
+  }
+  
   public static TemplateBean getTemplateBean(BaseTemplateFactory paramBaseTemplateFactory, JSONObject paramJSONObject)
   {
     if ((paramJSONObject == null) || (paramBaseTemplateFactory == null)) {
@@ -502,6 +507,13 @@ public class ProteusParser
     return localViewBean;
   }
   
+  private void recordPriority(BaseTemplateFactory paramBaseTemplateFactory, String paramString, JSONObject paramJSONObject)
+  {
+    if ((paramBaseTemplateFactory != null) && (paramJSONObject != null)) {
+      paramBaseTemplateFactory.getParseData(paramString).priority = getPriority(paramJSONObject);
+    }
+  }
+  
   private void trim$String(String paramString, ArrayList<String> paramArrayList)
   {
     if (!TextUtils.isEmpty(paramString)) {
@@ -538,10 +550,11 @@ public class ProteusParser
     String str = getStyleId(paramJSONObject);
     try
     {
-      paramJSONObject = paramJSONObject.getJSONObject(str);
+      JSONObject localJSONObject = paramJSONObject.getJSONObject(str);
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      paramBaseTemplateFactory.createTemplate(i, str, parseItemView(paramJSONObject, paramComplementFileStringLoader, localArrayList2, localArrayList1), getTemplateGloabalVar(localArrayList2, localArrayList1));
+      paramBaseTemplateFactory.createTemplate(i, str, parseItemView(localJSONObject, paramComplementFileStringLoader, localArrayList2, localArrayList1), getTemplateGloabalVar(localArrayList2, localArrayList1));
+      recordPriority(paramBaseTemplateFactory, str, paramJSONObject);
       return;
     }
     catch (IllegalArgumentException paramBaseTemplateFactory)
@@ -849,7 +862,7 @@ public class ProteusParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParser
  * JD-Core Version:    0.7.0.1
  */

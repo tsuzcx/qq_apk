@@ -11,7 +11,7 @@ public final class stFriendFeed
   static ArrayList<stSimpleMetaFeed> cache_friendFeeds = new ArrayList();
   public String attachInfo = "";
   public String dialogTips = "";
-  public ArrayList<stSimpleMetaFeed> friendFeeds;
+  public ArrayList<stSimpleMetaFeed> friendFeeds = null;
   
   static
   {

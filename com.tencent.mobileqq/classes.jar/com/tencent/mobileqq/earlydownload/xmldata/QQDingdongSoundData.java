@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import ascr;
-
 public class QQDingdongSoundData
   extends XmlData
 {
-  @ascr(a=false, b=true)
-  public boolean autoDownload;
+  @saveInSP(a=false, b=true)
+  public boolean autoDownload = false;
   
   public String getSharedPreferencesName()
   {
@@ -20,7 +18,7 @@ public class QQDingdongSoundData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.QQDingdongSoundData
  * JD-Core Version:    0.7.0.1
  */

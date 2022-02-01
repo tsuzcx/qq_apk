@@ -13,22 +13,31 @@ import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import uww;
-import uwx;
-import uwy;
-import uwz;
-import uxk;
 
-public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
+public abstract class WSBaseFragment<V extends IWSBaseView, P extends IWSPresenter<V>>
   extends PublicBaseFragment
-  implements uww, uwx<V, P>
+  implements IWSBaseView, IWSDelegateCallback<V, P>
 {
-  private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
-  private uwy<V, P> jdField_a_of_type_Uwy;
+  private IWSFragmentDelegate<V, P> jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSFragmentDelegate;
   public P a;
+  private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
   public boolean a;
   public boolean b;
   private boolean c;
+  
+  public V a()
+  {
+    return this;
+  }
+  
+  @NonNull
+  protected IWSFragmentDelegate<V, P> a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSFragmentDelegate == null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSFragmentDelegate = new WSFragmentDelegateImpl(this);
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSFragmentDelegate;
+  }
   
   public MiniMsgUser a()
   {
@@ -48,28 +57,9 @@ public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
     return localMiniMsgUserParam;
   }
   
-  public V a()
-  {
-    return this;
-  }
-  
-  @NonNull
-  protected uwy<V, P> a()
-  {
-    if (this.jdField_a_of_type_Uwy == null) {
-      this.jdField_a_of_type_Uwy = new uxk(this);
-    }
-    return this.jdField_a_of_type_Uwy;
-  }
-  
   public void a(P paramP)
   {
-    this.jdField_a_of_type_Uwz = paramP;
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter = paramP;
   }
   
   public boolean a(boolean paramBoolean)
@@ -79,7 +69,7 @@ public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
       return false;
     }
     boolean bool;
-    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isFlyme()) && (!SystemUtil.isMIUI())) {
+    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.d()) && (!SystemUtil.b())) {
       if (paramBoolean)
       {
         getActivity().getWindow().getDecorView().setSystemUiVisibility(i);
@@ -91,14 +81,14 @@ public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
       return bool;
       i = 1280;
       break;
-      if (ImmersiveUtils.a())
+      if (ImmersiveUtils.supportStatusBarDarkMode())
       {
-        ImmersiveUtils.a(getActivity().getWindow(), paramBoolean);
+        ImmersiveUtils.setStatusBarDarkMode(getActivity().getWindow(), paramBoolean);
         bool = paramBoolean;
         if (Build.VERSION.SDK_INT >= 23)
         {
           bool = paramBoolean;
-          if (SystemUtil.isMIUI())
+          if (SystemUtil.b())
           {
             if (paramBoolean) {}
             for (;;)
@@ -120,17 +110,22 @@ public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
   
   public P b()
   {
-    return this.jdField_a_of_type_Uwz;
+    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter;
   }
   
   protected void b() {}
+  
+  protected boolean f_()
+  {
+    return false;
+  }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.b = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
     a().a(paramBundle);
-    if (a())
+    if (f_())
     {
       paramBundle = a();
       this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(getActivity(), paramBundle);
@@ -141,7 +136,7 @@ public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
   {
     super.onDestroy();
     a().b();
-    if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)) {
+    if ((f_()) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.destroy();
     }
   }
@@ -155,7 +150,7 @@ public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
   public void onPause()
   {
     super.onPause();
-    if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)) {
+    if ((f_()) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.onBackground();
     }
   }
@@ -163,7 +158,7 @@ public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
   public void onResume()
   {
     super.onResume();
-    if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)) {
+    if ((f_()) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.onForeground();
     }
     b();
@@ -180,7 +175,7 @@ public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
     super.onWindowFocusChanged(paramBoolean);
     if ((paramBoolean) && (!this.c))
     {
-      if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)) {
+      if ((f_()) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser != null)) {
         this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.showOnFirst();
       }
       this.c = true;
@@ -195,7 +190,7 @@ public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSBaseFragment
  * JD-Core Version:    0.7.0.1
  */

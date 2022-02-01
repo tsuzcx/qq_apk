@@ -2,17 +2,17 @@ package com.tencent.mobileqq.activity.recent;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.recent.config.RecentConfig;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.recent.config.RecentBaseDataConfig;
 import com.tencent.mobileqq.activity.recent.config.statusIcon.RecentStatusIconDispatch;
 import com.tencent.mobileqq.activity.recent.parcelUtils.annotation.ParcelAnnotation.ParcelObject;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
 import com.tencent.mobileqq.imcore.message.QQMessageFacadeStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.IMCoreConstantsRoute.TroopConstants.CreditInfo;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.TalkBack;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.MsgUtils;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.QQTextProxy;
+import com.tencent.mobileqq.imcore.proxy.basic.TalkBackProxy;
+import com.tencent.mobileqq.imcore.proxy.msg.MsgUtilsProxy;
+import com.tencent.mobileqq.imcore.proxy.msg.QQTextProxy;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.qphone.base.util.QLog;
 
 @ParcelAnnotation.ParcelObject
@@ -87,9 +87,13 @@ public abstract class RecentBaseData
     this.mMenuFlag |= 0x1;
   }
   
-  protected void buildMessageBody(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext, MsgSummary paramMsgSummary)
+  protected void buildMessageBody(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    RecentRoute.MsgUtils.buildMsgSummaryForMsg(paramContext, paramIMCoreAppRuntime, paramIMCoreMessageStub, paramInt, paramMsgSummary, false, false);
+    long l = System.currentTimeMillis();
+    MsgUtilsProxy.a(paramContext, paramBaseQQAppInterface, paramIMCoreMessageStub, paramInt, paramMsgSummary, false, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.cost", 2, getClass().getName() + " get summary=" + (l - System.currentTimeMillis()));
+    }
   }
   
   public final void clearUnReadNum()
@@ -97,7 +101,7 @@ public abstract class RecentBaseData
     this.mUnreadNum = 0;
   }
   
-  public void dealDraft(IMCoreAppRuntime paramIMCoreAppRuntime, MsgSummary paramMsgSummary)
+  public void dealDraft(BaseQQAppInterface paramBaseQQAppInterface, MsgSummary paramMsgSummary)
   {
     if (paramMsgSummary == null) {}
     do
@@ -110,18 +114,18 @@ public abstract class RecentBaseData
           paramMsgSummary.bShowDraft = false;
           paramMsgSummary.mDraft = null;
         } while (this.mDisplayTime > getLastDraftTime());
-        paramIMCoreAppRuntime = paramIMCoreAppRuntime.getMessageFacade();
-      } while (paramIMCoreAppRuntime == null);
-      paramIMCoreAppRuntime = paramIMCoreAppRuntime.getDraftSummaryInfo(getRecentUserUin(), getRecentUserType());
-    } while ((paramIMCoreAppRuntime == null) || (TextUtils.isEmpty(paramIMCoreAppRuntime.getSummary())));
-    this.mDisplayTime = paramIMCoreAppRuntime.getTime();
+        paramBaseQQAppInterface = (IMessageFacade)paramBaseQQAppInterface.getRuntimeService(IMessageFacade.class, "");
+      } while ((paramBaseQQAppInterface == null) || (!(paramBaseQQAppInterface.getQQMessageFacadeStub() instanceof QQMessageFacadeStub)));
+      paramBaseQQAppInterface = ((QQMessageFacadeStub)paramBaseQQAppInterface.getQQMessageFacadeStub()).getDraftSummaryInfo(getRecentUserUin(), getRecentUserType());
+    } while ((paramBaseQQAppInterface == null) || (TextUtils.isEmpty(paramBaseQQAppInterface.getSummary())));
+    this.mDisplayTime = paramBaseQQAppInterface.getTime();
     paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = RecentRoute.QQTextProxy.generalQQText(paramIMCoreAppRuntime.getSummary(), 3, 16);
+    paramMsgSummary.mDraft = QQTextProxy.a(paramBaseQQAppInterface.getSummary(), 3, 16);
   }
   
-  public void dealStatus(IMCoreAppRuntime paramIMCoreAppRuntime)
+  public void dealStatus(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    paramIMCoreAppRuntime.getRecentConfig().getRecentStatusIconDispatch().processor(paramIMCoreAppRuntime, this);
+    RecentBaseDataConfig.a().a(paramBaseQQAppInterface, this);
   }
   
   public boolean equals(Object paramObject)
@@ -138,31 +142,31 @@ public abstract class RecentBaseData
     return bool;
   }
   
-  protected void extraUpdate(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext, MsgSummary paramMsgSummary)
+  protected void extraUpdate(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     if (TextUtils.isEmpty(this.mTitleName)) {
       this.mTitleName = getRecentUserUin();
     }
     if (paramMsgSummary != null)
     {
-      this.mLastMsg = paramMsgSummary.parseMsg(paramContext);
-      paramIMCoreAppRuntime = this.mLastMsg;
-      if ((paramIMCoreAppRuntime == null) || (paramIMCoreAppRuntime.length() <= 168)) {}
+      this.mLastMsg = paramMsgSummary.a(paramContext);
+      paramBaseQQAppInterface = this.mLastMsg;
+      if ((paramBaseQQAppInterface == null) || (paramBaseQQAppInterface.length() <= 168)) {}
     }
     try
     {
-      this.mLastMsg = paramIMCoreAppRuntime.subSequence(0, 168);
+      this.mLastMsg = paramBaseQQAppInterface.subSequence(0, 168);
       if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
-        this.mShowTime = TimeManager.getInstance().getMsgDisplayTime(getRecentUserUin(), this.mDisplayTime);
+        this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
       }
       return;
     }
-    catch (Exception paramIMCoreAppRuntime)
+    catch (Exception paramBaseQQAppInterface)
     {
       for (;;)
       {
         if (QLog.isDevelopLevel()) {
-          paramIMCoreAppRuntime.printStackTrace();
+          paramBaseQQAppInterface.printStackTrace();
         }
       }
     }
@@ -170,7 +174,7 @@ public abstract class RecentBaseData
   
   public long getFaceExtraFlag()
   {
-    return IMCoreConstantsRoute.TroopConstants.CreditInfo.LEVEL_NORMAL;
+    return 5L;
   }
   
   public abstract long getLastDraftTime();
@@ -185,7 +189,7 @@ public abstract class RecentBaseData
     for (;;)
     {
       return this.msgSummary;
-      this.msgSummary.reset();
+      this.msgSummary.a();
     }
   }
   
@@ -211,7 +215,7 @@ public abstract class RecentBaseData
   public void makeContentDesc()
   {
     StringBuilder localStringBuilder;
-    if (IMCoreProxyRoute.TalkBack.getTalkBackStatus())
+    if (TalkBackProxy.a())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(this.mTitleName).append(",");
@@ -255,7 +259,7 @@ public abstract class RecentBaseData
     }
   }
   
-  public abstract void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext);
+  public abstract void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext);
 }
 
 

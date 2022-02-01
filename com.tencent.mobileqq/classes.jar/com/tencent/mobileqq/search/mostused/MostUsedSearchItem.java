@@ -11,7 +11,7 @@ public class MostUsedSearchItem
   private static String a = "MostUsedSearchItem";
   public int businessType = 0;
   public String identify = "";
-  public int identifyType;
+  public int identifyType = 0;
   public String searchKey = "";
   public long timeStamp = -1L;
   
@@ -155,7 +155,7 @@ public class MostUsedSearchItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.mostused.MostUsedSearchItem
  * JD-Core Version:    0.7.0.1
  */

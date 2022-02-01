@@ -1,38 +1,30 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import agab;
-import android.widget.TextView;
-import anvk;
-import azbj;
-import bbss;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.AIOTipsListener;
+import com.tencent.mobileqq.activity.aio.helper.TogetherControlHelper;
+import com.tencent.mobileqq.activity.aio.tips.TipsBarTask;
+import com.tencent.mobileqq.listentogether.ui.C2CListenTogetherPanel;
 
-public class FriendChatPie$25
-  implements Runnable
+class FriendChatPie$25
+  implements AIOTipsController.AIOTipsListener
 {
-  public FriendChatPie$25(agab paramagab, String paramString, boolean paramBoolean) {}
+  FriendChatPie$25(FriendChatPie paramFriendChatPie) {}
   
-  public void run()
+  public void a(TipsBarTask paramTipsBarTask)
   {
-    this.this$0.mSubTilteText.setText(this.jdField_a_of_type_JavaLangString);
-    Object localObject = (bbss)this.this$0.getHelper(45);
-    if (((bbss)localObject).c()) {
-      return;
-    }
-    boolean bool = true;
-    if ((this.jdField_a_of_type_Boolean) || (((bbss)localObject).b()) || (!this.this$0.setSubTitleVisiable)) {
-      bool = false;
-    }
-    localObject = ((anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.this$0.sessionInfo.curFriendUin);
-    azbj.a().a(this.this$0.app, (Friends)localObject, this.this$0.mSubTilteText, bool);
+    ((C2CListenTogetherPanel)this.a.a(32)).b(1, paramTipsBarTask);
+    ((TogetherControlHelper)this.a.a(43)).a(1, paramTipsBarTask);
+  }
+  
+  public void a(TipsBarTask paramTipsBarTask1, TipsBarTask paramTipsBarTask2)
+  {
+    ((C2CListenTogetherPanel)this.a.a(32)).a(1, paramTipsBarTask2);
+    ((TogetherControlHelper)this.a.a(43)).b(1, paramTipsBarTask2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.25
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,32 @@
+package com.tencent.biz.cookie;
+
+import com.tencent.mobileqq.activity.weather.webpage.WeatherWebPageHelperKt;
+import com.tencent.mobileqq.webview.cookie.IBrowserCookieInjector;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+
+public class WeatherBrowserCookieInjector
+  implements IBrowserCookieInjector
+{
+  public String a(String paramString)
+  {
+    if ("https://weather.mp.qq.com/".equals(paramString))
+    {
+      paramString = WeatherWebPageHelperKt.a();
+      if (paramString != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("WeatherBrowserCookieInjector", 2, "cookie gdt_device_info for weather 2.0 was added");
+        }
+        return SwiftBrowserCookieMonster.a("gdt_device_info", paramString, "weather.mp.qq.com", false);
+      }
+    }
+    return null;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.biz.cookie.WeatherBrowserCookieInjector
+ * JD-Core Version:    0.7.0.1
+ */

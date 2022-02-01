@@ -51,7 +51,7 @@ public abstract class MSFServlet
     if ((paramToServiceMsg.isNeedCallback()) && (paramIntent != null)) {
       this.mIntents.put(Integer.valueOf(paramToServiceMsg.getAppSeq()), paramIntent);
     }
-    getAppRuntime().getService().sendMessageToMSF(paramToServiceMsg, this);
+    getAppRuntime().getRuntimeService().sendMessageToMSF(paramToServiceMsg, this);
   }
   
   public void service(Intent paramIntent)

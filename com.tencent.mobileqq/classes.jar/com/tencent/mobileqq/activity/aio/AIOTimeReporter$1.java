@@ -1,42 +1,40 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aczy;
-import afog;
-import afoh;
 import android.os.Build;
-import bhhy;
+import com.tencent.mm.hardcoder.HardCoderManager;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public class AIOTimeReporter$1
+class AIOTimeReporter$1
   implements Runnable
 {
-  public AIOTimeReporter$1(afoh paramafoh) {}
+  AIOTimeReporter$1(AIOTimeReporter paramAIOTimeReporter) {}
   
   public void run()
   {
-    Object localObject = afog.a();
-    afoh.a(this.this$0, ((afog)localObject).a());
-    if (bhhy.a <= 0L)
+    Object localObject = AIOReporterGetDeviceInfo.a();
+    AIOTimeReporter.a(this.this$0, ((AIOReporterGetDeviceInfo)localObject).a());
+    if (StartupTracker.a <= 0L)
     {
-      afoh.a(this.this$0);
+      AIOTimeReporter.a(this.this$0);
       return;
     }
     String str = "";
-    switch (afoh.a(this.this$0))
+    switch (AIOTimeReporter.a(this.this$0))
     {
     default: 
       return;
     case 1: 
-      switch (((afog)localObject).a)
+      switch (((AIOReporterGetDeviceInfo)localObject).a)
       {
       default: 
-        if (aczy.a().a())
+        if (HardCoderManager.a().a())
         {
           localObject = new HashMap();
-          ((HashMap)localObject).put("hcState", String.valueOf(aczy.a().a()));
+          ((HashMap)localObject).put("hcState", String.valueOf(HardCoderManager.a().a()));
           ((HashMap)localObject).put("model", Build.MODEL);
         }
         break;
@@ -45,65 +43,65 @@ public class AIOTimeReporter$1
     }
     for (;;)
     {
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, bhhy.a, 0L, (HashMap)localObject, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, StartupTracker.a, 0L, (HashMap)localObject, "");
       if (QLog.isDevelopLevel()) {
-        QLog.d("Q.aio.AIOTimeReporter", 4, "reportAIOTime: " + str + " cost : " + bhhy.a);
+        QLog.d("Q.aio.AIOTimeReporter", 4, "reportAIOTime: " + str + " cost : " + StartupTracker.a);
       }
-      afoh.a(this.this$0);
+      AIOTimeReporter.a(this.this$0);
       return;
-      if (!afoh.a(this.this$0).equalsIgnoreCase("0"))
+      if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0"))
       {
-        str = afoh.a();
+        str = AIOTimeReporter.a();
         break;
       }
-      str = afoh.b();
+      str = AIOTimeReporter.b();
       break;
-      if (!afoh.a(this.this$0).equalsIgnoreCase("0"))
+      if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0"))
       {
-        str = afoh.c();
+        str = AIOTimeReporter.c();
         break;
       }
-      str = afoh.d();
+      str = AIOTimeReporter.d();
       break;
-      switch (((afog)localObject).a)
+      switch (((AIOReporterGetDeviceInfo)localObject).a)
       {
       }
       for (;;)
       {
         break;
-        if (!afoh.a(this.this$0).equalsIgnoreCase("0"))
+        if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0"))
         {
-          str = afoh.e();
+          str = AIOTimeReporter.e();
         }
         else
         {
-          str = afoh.f();
+          str = AIOTimeReporter.f();
           continue;
-          if (!afoh.a(this.this$0).equalsIgnoreCase("0")) {
-            str = afoh.g();
+          if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
+            str = AIOTimeReporter.g();
           } else {
-            str = afoh.h();
+            str = AIOTimeReporter.h();
           }
         }
       }
-      switch (((afog)localObject).a)
+      switch (((AIOReporterGetDeviceInfo)localObject).a)
       {
       }
       for (;;)
       {
         break;
-        if (!afoh.a(this.this$0).equalsIgnoreCase("0"))
+        if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0"))
         {
-          str = afoh.i();
+          str = AIOTimeReporter.i();
         }
         else
         {
-          str = afoh.j();
+          str = AIOTimeReporter.j();
           continue;
-          if (!afoh.a(this.this$0).equalsIgnoreCase("0")) {
-            str = afoh.k();
+          if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
+            str = AIOTimeReporter.k();
           } else {
-            str = afoh.l();
+            str = AIOTimeReporter.l();
           }
         }
       }
@@ -113,7 +111,7 @@ public class AIOTimeReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTimeReporter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 
 import android.content.Context;
-import aodf;
 import com.google.gson.Gson;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SearchWordHistoryManager;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import org.json.JSONArray;
@@ -18,7 +18,7 @@ public class RequestHistoryDataMethod
   
   public static String getHistoryListStr()
   {
-    Object localObject = aodf.a().a();
+    Object localObject = SearchWordHistoryManager.a().a();
     try
     {
       localObject = new Gson().toJson(localObject);
@@ -40,7 +40,7 @@ public class RequestHistoryDataMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.RequestHistoryDataMethod
  * JD-Core Version:    0.7.0.1
  */

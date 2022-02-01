@@ -8,7 +8,7 @@ public final class sweet_rsp_comm
   extends JceStruct
 {
   public String errmsg = "";
-  public int retcode;
+  public int retcode = 0;
   
   public sweet_rsp_comm() {}
   

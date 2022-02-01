@@ -1,20 +1,33 @@
 package com.tencent.mobileqq.profilecard.bussiness.personalitylabel;
 
-import azqg;
-import azrb;
-import babk;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ProfilePersonalityLabelComponent$2
-  implements Runnable
+class ProfilePersonalityLabelComponent$2
+  extends BroadcastReceiver
 {
-  public ProfilePersonalityLabelComponent$2(babk parambabk) {}
+  ProfilePersonalityLabelComponent$2(ProfilePersonalityLabelComponent paramProfilePersonalityLabelComponent) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((babk.f(this.this$0) != null) && (((azrb)babk.g(this.this$0)).jdField_a_of_type_ComTencentMobileqqDataCard != null)) {
-      azqg.a(babk.a(this.this$0), ((azrb)babk.h(this.this$0)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, babk.a(this.this$0), ((azrb)babk.i(this.this$0)).jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel, (azrb)babk.j(this.this$0));
+    paramContext = paramIntent.getBundleExtra("key_bundle_data");
+    if (paramContext != null)
+    {
+      boolean bool = paramContext.getBoolean("onTagChanged");
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfilePersonalityLabelComponent", 2, String.format("onReceive addTag=%s", new Object[] { Boolean.valueOf(bool) }));
+      }
+      if (bool) {
+        ((PersonalityLabelHandler)ProfilePersonalityLabelComponent.access$500(this.this$0).getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(((ProfileCardInfo)ProfilePersonalityLabelComponent.access$600(this.this$0)).a.a, 0);
+      }
     }
   }
 }

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.data;
 
 public class MessageForArkApp$Size
 {
-  public int height;
-  public int width;
+  public int height = 0;
+  public int width = 0;
   
   public MessageForArkApp$Size(int paramInt1, int paramInt2)
   {
@@ -13,7 +13,7 @@ public class MessageForArkApp$Size
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForArkApp.Size
  * JD-Core Version:    0.7.0.1
  */

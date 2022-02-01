@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas.avatar;
 
 import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
@@ -31,7 +31,7 @@ class VasFaceManager$3
   {
     if (size() > 20)
     {
-      BaseApplicationImpl.sImageCache.remove(paramEntry.getKey());
+      GlobalImageCache.a.remove(paramEntry.getKey());
       return true;
     }
     return false;
@@ -39,7 +39,7 @@ class VasFaceManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasFaceManager.3
  * JD-Core Version:    0.7.0.1
  */

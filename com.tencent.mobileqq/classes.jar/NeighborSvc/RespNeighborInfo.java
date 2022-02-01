@@ -13,19 +13,19 @@ public final class RespNeighborInfo
   static byte[] cache_vFaceID;
   static byte[] cache_vIntroContent;
   static VipBaseInfo cache_vipBaseInfo;
-  public byte bIsSingle;
+  public byte bIsSingle = 0;
   public byte cAge = -1;
-  public byte cGroupId;
+  public byte cGroupId = 0;
   public byte cSex = -1;
   public int eMerchantType = MerchantType.MerchantType_Nomal.value();
-  public int iDistance;
-  public int iRank;
+  public int iDistance = 0;
+  public int iRank = 0;
   public int iVoteIncrement = -1;
-  public long lNBID;
-  public int lTime;
-  public long lTotalVisitorsNum;
-  public int nFaceNum;
-  public short shIntroType;
+  public long lNBID = 0L;
+  public int lTime = 0;
+  public long lTotalVisitorsNum = 0L;
+  public int nFaceNum = 0;
+  public short shIntroType = 0;
   public String strCertification = "";
   public String strCompanyName = "";
   public String strDescription = "";
@@ -33,9 +33,9 @@ public final class RespNeighborInfo
   public String strPYFaceUrl = "";
   public String strPYName = "";
   public String strSchoolName = "";
-  public byte[] vFaceID;
-  public byte[] vIntroContent;
-  public VipBaseInfo vipBaseInfo;
+  public byte[] vFaceID = null;
+  public byte[] vIntroContent = null;
+  public VipBaseInfo vipBaseInfo = null;
   
   public RespNeighborInfo() {}
   

@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aikg;
-import ailr;
-
 class FraudTipsBar$1$1
   implements Runnable
 {
@@ -10,13 +7,13 @@ class FraudTipsBar$1$1
   
   public void run()
   {
-    aikg.a(this.a.this$0, 2);
-    aikg.a(this.a.this$0).a();
+    FraudTipsBar.a(this.a.this$0, 2);
+    FraudTipsBar.a(this.a.this$0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.FraudTipsBar.1.1
  * JD-Core Version:    0.7.0.1
  */

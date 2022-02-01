@@ -32,12 +32,12 @@ class QQPublishCommentFragment$LinkUi
   
   QQPublishCommentFragment$LinkUi(QQPublishCommentFragment paramQQPublishCommentFragment, Dialog paramDialog)
   {
-    this.vLinkBtn = ((ImageView)paramDialog.findViewById(2131370161));
+    this.vLinkBtn = ((ImageView)paramDialog.findViewById(2131370432));
     this.vLinkBtn.setOnClickListener(this);
-    this.vCommentLinkLayout = ((FrameLayout)paramDialog.findViewById(2131370171));
-    this.vCommentLinkDivider = paramDialog.findViewById(2131370167);
+    this.vCommentLinkLayout = ((FrameLayout)paramDialog.findViewById(2131370442));
+    this.vCommentLinkDivider = paramDialog.findViewById(2131370438);
     this.vCommentLinkLayout.getViewTreeObserver().addOnGlobalLayoutListener(this);
-    this.vCommentLink = ((TkdCommentLinkView)paramDialog.findViewById(2131364950));
+    this.vCommentLink = ((TkdCommentLinkView)paramDialog.findViewById(2131365085));
     this.vCommentLink.setLinkDeleteLinstener(this);
   }
   
@@ -138,7 +138,7 @@ class QQPublishCommentFragment$LinkUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.LinkUi
  * JD-Core Version:    0.7.0.1
  */

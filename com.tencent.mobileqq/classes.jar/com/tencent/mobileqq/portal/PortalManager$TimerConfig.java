@@ -2,7 +2,7 @@ package com.tencent.mobileqq.portal;
 
 import java.io.Serializable;
 
-public class PortalManager$TimerConfig
+class PortalManager$TimerConfig
   implements Serializable
 {
   public long uiBegin;

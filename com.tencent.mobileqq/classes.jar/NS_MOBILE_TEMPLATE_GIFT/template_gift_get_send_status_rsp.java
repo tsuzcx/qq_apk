@@ -11,9 +11,9 @@ public final class template_gift_get_send_status_rsp
 {
   static Map<String, String> cache_mapExt;
   static Map<Long, Integer> cache_map_birth_friend_list_state = new HashMap();
-  public Map<String, String> mapExt;
-  public Map<Long, Integer> map_birth_friend_list_state;
-  public long uin;
+  public Map<String, String> mapExt = null;
+  public Map<Long, Integer> map_birth_friend_list_state = null;
+  public long uin = 0L;
   
   static
   {

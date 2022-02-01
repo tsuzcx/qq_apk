@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class material_set_switch_rsp
   extends JceStruct
 {
-  public int iCode;
+  public int iCode = 0;
   public String strErrMsg = "";
   
   public material_set_switch_rsp() {}

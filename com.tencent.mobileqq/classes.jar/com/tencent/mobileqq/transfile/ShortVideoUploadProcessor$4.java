@@ -1,48 +1,26 @@
 package com.tencent.mobileqq.transfile;
 
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.StatictisInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.LogTag;
 
 class ShortVideoUploadProcessor$4
-  implements ITransactionCallback
+  extends MessageObserver
 {
-  ShortVideoUploadProcessor$4(ShortVideoUploadProcessor paramShortVideoUploadProcessor, String paramString, long paramLong) {}
+  ShortVideoUploadProcessor$4(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, StatictisInfo paramStatictisInfo)
   {
-    this.this$0.doOnSendFailed(paramInt, paramHashMap, this.val$startTime);
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    this.this$0.doOnSendSuccess(paramArrayOfByte, paramHashMap, this.val$combinePath, this.val$startTime);
-  }
-  
-  public void onSwitch2BackupChannel()
-  {
-    long l = SystemClock.uptimeMillis();
-    this.this$0.log("<BDH_LOG> onSwitch2BackupChannel()");
-    this.this$0.mReportInfo.put("param_switchChannel", String.valueOf(l - this.val$startTime));
-  }
-  
-  public void onTransStart()
-  {
-    this.this$0.log("<BDH_LOG> onTransStart()");
-    this.this$0.mStepTrans.startTime = 0L;
-    this.this$0.mStepTrans.logStartTime();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    ShortVideoUploadProcessor localShortVideoUploadProcessor = this.this$0;
-    FileMsg localFileMsg = this.this$0.file;
-    long l = paramInt;
-    localFileMsg.transferedSize = l;
-    localShortVideoUploadProcessor.mTransferedSize = l;
-    if ((paramInt < this.this$0.mFileSize) && (!this.this$0.mIsCancel) && (!this.this$0.mIsPause)) {
-      this.this$0.sendProgressMessage();
+    this.this$0.logRichMediaEvent("sendMsgFinish", "success:" + paramBoolean);
+    LogTag.a(String.valueOf(this.this$0.mUiRequest.mUniseq), "message", "sendMsgFinish isSuccess:" + paramBoolean + ",mr = " + this.this$0.mUiRequest.mRec.toString());
+    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
+    {
+      this.this$0.onSuccess();
+      return;
     }
+    this.this$0.onError();
   }
 }
 

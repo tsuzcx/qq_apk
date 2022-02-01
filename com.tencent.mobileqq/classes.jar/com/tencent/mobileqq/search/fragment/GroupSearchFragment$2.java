@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.search.fragment;
 
 import android.os.Handler;
-import bcha;
-import bclw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
 
 class GroupSearchFragment$2
   implements Runnable
@@ -15,14 +15,14 @@ class GroupSearchFragment$2
   {
     if (!this.this$0.d)
     {
-      this.this$0.jdField_a_of_type_Bclw.a();
+      this.this$0.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.a();
       this.this$0.d = true;
     }
     if (!GroupSearchFragment.a(this.this$0))
     {
-      bcha localbcha = (bcha)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MOST_USE_SEARCH_MANAGER);
-      if (localbcha != null) {
-        localbcha.a();
+      MostUsedSearchResultManager localMostUsedSearchResultManager = (MostUsedSearchResultManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MOST_USE_SEARCH_MANAGER);
+      if (localMostUsedSearchResultManager != null) {
+        localMostUsedSearchResultManager.a();
       }
       GroupSearchFragment.a(this.this$0, true);
     }
@@ -32,7 +32,7 @@ class GroupSearchFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.GroupSearchFragment.2
  * JD-Core Version:    0.7.0.1
  */

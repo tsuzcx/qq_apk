@@ -3,17 +3,17 @@ package com.tencent.mobileqq.activity.qwallet.utils;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import bgyr;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.util.CommonUtil;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
-public final class QWalletTools$4
+final class QWalletTools$4
   implements Runnable
 {
-  public QWalletTools$4(String paramString1, int paramInt1, String paramString2, AppRuntime paramAppRuntime, String paramString3, String paramString4, int paramInt2, String paramString5, long paramLong) {}
+  QWalletTools$4(String paramString1, int paramInt1, String paramString2, AppRuntime paramAppRuntime, String paramString3, String paramString4, int paramInt2, String paramString5, long paramLong) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public final class QWalletTools$4
     {
       localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getPackageManager().getPackageInfo(this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getPackageName(), 0).versionName);
       localStringBuilder.append("|");
-      localStringBuilder.append(bgyr.a());
+      localStringBuilder.append(CommonUtil.a());
       localStringBuilder.append("|");
       if ((!TextUtils.isEmpty(this.c)) || (!TextUtils.isEmpty(this.d)))
       {
@@ -62,7 +62,7 @@ public final class QWalletTools$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.4
  * JD-Core Version:    0.7.0.1
  */

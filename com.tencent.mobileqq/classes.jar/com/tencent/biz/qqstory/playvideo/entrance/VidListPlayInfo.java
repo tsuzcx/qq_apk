@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.playvideo.entrance;
 
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import zdl;
 
 public class VidListPlayInfo
   implements Serializable
@@ -60,7 +60,7 @@ public class VidListPlayInfo
     if (paramList1.size() == paramList2.size()) {}
     for (boolean bool = true;; bool = false)
     {
-      zdl.a(bool, "vid size not equal feedId size");
+      AssertUtils.a(bool, "vid size not equal feedId size");
       return;
     }
   }
@@ -72,7 +72,7 @@ public class VidListPlayInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo
  * JD-Core Version:    0.7.0.1
  */

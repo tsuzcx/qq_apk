@@ -5,9 +5,9 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import avop;
-import avoq;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.core.SystemEmotionPanelManager;
+import com.tencent.mobileqq.emoticonview.api.IPanelDependListener;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
@@ -16,17 +16,17 @@ import com.tencent.widget.ListView;
 import java.util.List;
 
 public class EmoticonPanelOnScrollListener
-  implements View.OnTouchListener, avoq, AbsListView.OnScrollListener
+  implements View.OnTouchListener, ScrollVelometer.SpeedListener, AbsListView.OnScrollListener
 {
   private static final int PULL_UP_THRESHOLD = 120;
   private static final String TAG = "EmotionPanelListView";
-  private float downY;
+  private float downY = 0.0F;
   private EmotionPanelListView emotionPanelListView;
   boolean isPanelOpen = false;
-  private boolean mDisUpdateAlpha;
+  private boolean mDisUpdateAlpha = false;
   private int mLastState = 0;
-  private int mLastTop;
-  private avop mScrollVelometer = new avop(120, this);
+  private int mLastTop = 0;
+  private ScrollVelometer mScrollVelometer = new ScrollVelometer(120, this);
   private int minAlphaLeft;
   private int minAlphaTop;
   private AbsListView.OnScrollListener onScrollListener;
@@ -39,8 +39,8 @@ public class EmoticonPanelOnScrollListener
     this.onScrollListener = paramOnScrollListener;
     this.emotionPanelListView = paramEmotionPanelListView;
     this.pullAndFastScrollListener = paramPullAndFastScrollListener;
-    this.spacing = ViewUtils.dip2px(5.0F);
-    this.mScrollVelometer.b(30);
+    this.spacing = ViewUtils.a(5.0F);
+    this.mScrollVelometer.setCheckTime(30);
   }
   
   private boolean isFirstCompletelyVisible(ListView paramListView)
@@ -134,7 +134,7 @@ public class EmoticonPanelOnScrollListener
     paramView.setAlpha(1.0F);
   }
   
-  public avop getScrollVelometer()
+  public ScrollVelometer getScrollVelometer()
   {
     return this.mScrollVelometer;
   }
@@ -144,7 +144,7 @@ public class EmoticonPanelOnScrollListener
     if ((paramBoolean) && (this.pullAndFastScrollListener != null))
     {
       this.pullAndFastScrollListener.onPullUp();
-      this.mScrollVelometer.a(false);
+      this.mScrollVelometer.switchOn(false);
     }
     if (QLog.isColorLevel()) {
       QLog.d("EmotionPanelListView", 2, "onCheckSpeed overSpeed :" + paramBoolean);
@@ -177,7 +177,7 @@ public class EmoticonPanelOnScrollListener
     if (i == 0)
     {
       this.downY = paramMotionEvent.getY();
-      this.mScrollVelometer.a(true);
+      this.mScrollVelometer.switchOn(true);
       if (this.pullAndFastScrollListener != null) {
         this.isPanelOpen = this.pullAndFastScrollListener.isPanelOpen();
       }
@@ -211,24 +211,24 @@ public class EmoticonPanelOnScrollListener
   
   public void updateViewAlpha(AbsListView paramAbsListView)
   {
+    boolean bool = true;
     if (this.mDisUpdateAlpha) {}
-    while ((!(paramAbsListView.getAdapter() instanceof SystemAndEmojiAdapter)) && (!(paramAbsListView.getAdapter() instanceof SmallEmotionDownloadedAdapter))) {
+    while ((!(paramAbsListView.getAdapter() instanceof SystemAndEmojiAdapter)) && ((SystemEmotionPanelManager.a().a() == null) || (!SystemEmotionPanelManager.a().a().isSmallEmotionDownloadedAdapter(paramAbsListView.getAdapter())))) {
       return;
     }
-    if (((this.pullAndFastScrollListener instanceof EmoticonMainPanel)) && (((EmoticonMainPanel)this.pullAndFastScrollListener).getEmoController().pageAdapter != null))
+    if (SystemEmotionPanelManager.a().a() != null)
     {
-      int i = EmoticonPanelController.sLastSelectedSecondTabIndex;
-      List localList = ((EmoticonMainPanel)this.pullAndFastScrollListener).getEmoController().panelDataList;
-      EmotionPanelViewPagerAdapter localEmotionPanelViewPagerAdapter = ((EmoticonMainPanel)this.pullAndFastScrollListener).getEmoController().pageAdapter;
+      int i = SystemEmotionPanelManager.a().a().getLastSelectedSecondTabIndex();
+      List localList = SystemEmotionPanelManager.a().a().getPanelDataList();
       if ((i >= 0) && (localList != null) && (i < localList.size()))
       {
-        Object localObject2 = localEmotionPanelViewPagerAdapter.getDeleteButtonFromCache(i);
+        Object localObject2 = SystemEmotionPanelManager.a().a().getDeleteButtonFromCache(i);
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = localObject2;
           if (i - 1 >= 0) {
-            localObject1 = localEmotionPanelViewPagerAdapter.getDeleteButtonFromCache(i - 1);
+            localObject1 = SystemEmotionPanelManager.a().a().getDeleteButtonFromCache(i - 1);
           }
         }
         localObject2 = localObject1;
@@ -236,7 +236,7 @@ public class EmoticonPanelOnScrollListener
         {
           localObject2 = localObject1;
           if (i + 1 < localList.size()) {
-            localObject2 = localEmotionPanelViewPagerAdapter.getDeleteButtonFromCache(i + 1);
+            localObject2 = SystemEmotionPanelManager.a().a().getDeleteButtonFromCache(i + 1);
           }
         }
         if ((localObject2 != null) && (((ImageButton)localObject2).getVisibility() == 0))
@@ -248,16 +248,17 @@ public class EmoticonPanelOnScrollListener
         }
       }
     }
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
       updateSystemSmallEmojiAlpha(paramAbsListView, bool);
       return;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelOnScrollListener
  * JD-Core Version:    0.7.0.1
  */

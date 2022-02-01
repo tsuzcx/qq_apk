@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.vas.updatesystem.business;
 
-import avyx;
-import bhuo;
+import com.tencent.mobileqq.jsonconverter.JSONConverter;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
 public class TroopNickNameBusiness
-  extends bhuo
+  extends QQVasUpdateBusiness
 {
-  public static TroopNickNameBusiness a = new TroopNickNameBusiness();
-  
   public static TroopNickNameBusiness.Config a(String paramString)
   {
     paramString = new File(paramString, "config.json");
     if (paramString.exists()) {
       try
       {
-        paramString = (TroopNickNameBusiness.Config)avyx.a(FileUtils.readFileToString(paramString), TroopNickNameBusiness.Config.class);
+        paramString = (TroopNickNameBusiness.Config)JSONConverter.a(FileUtils.b(paramString), TroopNickNameBusiness.Config.class);
         return paramString;
       }
       catch (IOException paramString)
@@ -28,9 +25,9 @@ public class TroopNickNameBusiness
     return null;
   }
   
-  public String a()
+  protected String a()
   {
-    return "newgroupnick.android.";
+    return "troopnick";
   }
   
   public void a(int paramInt)
@@ -38,9 +35,9 @@ public class TroopNickNameBusiness
     startDownload(a(paramInt));
   }
   
-  public String b()
+  protected String b()
   {
-    return "troopnick";
+    return "newgroupnick.android.";
   }
   
   public long getBid()
@@ -55,7 +52,7 @@ public class TroopNickNameBusiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.business.TroopNickNameBusiness
  * JD-Core Version:    0.7.0.1
  */

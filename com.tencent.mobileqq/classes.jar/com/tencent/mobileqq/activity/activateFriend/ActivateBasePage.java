@@ -17,9 +17,9 @@ public abstract class ActivateBasePage
   public static float a;
   LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   View jdField_a_of_type_AndroidViewView = null;
-  public Button a;
+  Button jdField_a_of_type_AndroidWidgetButton;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ActivateFriendGrid a;
+  ActivateFriendGrid jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid;
   TextView b;
   TextView c;
   TextView d;
@@ -69,7 +69,7 @@ public abstract class ActivateBasePage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateBasePage
  * JD-Core Version:    0.7.0.1
  */

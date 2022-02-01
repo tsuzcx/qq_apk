@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class stFloatingLayerCardStyle
   extends JceStruct
 {
-  public int cardType;
-  public boolean commentHidden;
-  public boolean dingHidden;
-  public boolean shareHidden;
+  public int cardType = 0;
+  public boolean commentHidden = false;
+  public boolean dingHidden = false;
+  public boolean shareHidden = false;
   
   public stFloatingLayerCardStyle() {}
   

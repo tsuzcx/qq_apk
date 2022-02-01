@@ -9,10 +9,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import asvs;
-import asvt;
-import asvu;
-import asvv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,41 +20,44 @@ public class HorseRaceLampVew
   extends RelativeLayout
   implements Runnable
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 3;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private asvs jdField_a_of_type_Asvs;
-  private asvv jdField_a_of_type_Asvv;
-  private ArrayList<asvt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private HorseRaceLampVew.onTagClickListner jdField_a_of_type_ComTencentMobileqqExtendfriendWigetHorseRaceLampHorseRaceLampVew$onTagClickListner;
+  private TagInfosAdapter jdField_a_of_type_ComTencentMobileqqExtendfriendWigetHorseRaceLampTagInfosAdapter;
+  private ArrayList<RaceLine> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 15;
-  public boolean b;
+  boolean jdField_b_of_type_Boolean = true;
   private float jdField_c_of_type_Float;
   private final int jdField_c_of_type_Int = 4;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private float jdField_d_of_type_Float;
   private final int jdField_d_of_type_Int = 20;
-  private float e;
+  private float jdField_e_of_type_Float;
+  private int jdField_e_of_type_Int = 4;
+  private int f = 21;
+  private int g = 16;
   
   public HorseRaceLampVew(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
     a(paramContext, null);
   }
   
   public HorseRaceLampVew(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
     a(paramContext, paramAttributeSet);
   }
   
   public HorseRaceLampVew(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
     a(paramContext, paramAttributeSet);
   }
   
@@ -69,7 +68,7 @@ public class HorseRaceLampVew
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((asvt)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
+        ((RaceLine)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
         i += 1;
       }
     }
@@ -79,7 +78,7 @@ public class HorseRaceLampVew
   {
     setFocusableInTouchMode(true);
     paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_Int = (-AIOUtils.dp2px(0.02F * this.jdField_b_of_type_Int, paramContext.getApp().getResources()));
+    this.jdField_a_of_type_Int = (-AIOUtils.a(0.02F * this.jdField_b_of_type_Int, paramContext.getApp().getResources()));
     if (this.jdField_a_of_type_Int == 0)
     {
       QLog.e("HorseRaceLampVew + horserace", 2, "mMovespeed is 0");
@@ -134,15 +133,15 @@ public class HorseRaceLampVew
             localObject = localView.getTag();
             n = k;
             i = m;
-            if ((localObject instanceof asvu))
+            if ((localObject instanceof Tag))
             {
               m += 1;
-              localObject = (asvu)localObject;
+              localObject = (Tag)localObject;
               n = k;
               i = m;
               if (localView.getWidth() != 0)
               {
-                ((asvu)localObject).c(localView.getMeasuredWidth());
+                ((Tag)localObject).d(localView.getMeasuredWidth());
                 n = k + 1;
                 i = m;
               }
@@ -157,7 +156,7 @@ public class HorseRaceLampVew
         i = i1;
         while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          ((asvt)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
+          ((RaceLine)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
           i += 1;
         }
         this.jdField_a_of_type_Boolean = true;
@@ -178,11 +177,11 @@ public class HorseRaceLampVew
             localView.setVisibility(0);
           }
           localObject = localView.getTag();
-          if ((localObject instanceof asvu))
+          if ((localObject instanceof Tag))
           {
-            localObject = (asvu)localObject;
-            j = ((asvu)localObject).a();
-            k = ((asvu)localObject).b();
+            localObject = (Tag)localObject;
+            j = ((Tag)localObject).a();
+            k = ((Tag)localObject).b();
             localView.setX(j);
             localView.setY(k);
           }
@@ -215,7 +214,7 @@ public class HorseRaceLampVew
       this.jdField_c_of_type_Float = 0.0F;
       this.jdField_b_of_type_Float = 0.0F;
       this.jdField_d_of_type_Float = paramMotionEvent.getX();
-      this.e = paramMotionEvent.getY();
+      this.jdField_e_of_type_Float = paramMotionEvent.getY();
       this.jdField_c_of_type_Boolean = true;
       this.jdField_b_of_type_Boolean = true;
       getParent().requestDisallowInterceptTouchEvent(true);
@@ -224,10 +223,10 @@ public class HorseRaceLampVew
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       this.jdField_b_of_type_Float += Math.abs(f1 - this.jdField_d_of_type_Float);
-      this.jdField_c_of_type_Float += Math.abs(f2 - this.e);
+      this.jdField_c_of_type_Float += Math.abs(f2 - this.jdField_e_of_type_Float);
       this.jdField_a_of_type_Float = (f1 - this.jdField_d_of_type_Float);
       this.jdField_d_of_type_Float = f1;
-      this.e = f2;
+      this.jdField_e_of_type_Float = f2;
       if (this.jdField_b_of_type_Float <= this.jdField_c_of_type_Float) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
@@ -247,12 +246,12 @@ public class HorseRaceLampVew
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -268,20 +267,35 @@ public class HorseRaceLampVew
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.jdField_b_of_type_Int);
   }
   
-  public void setAdapter(asvv paramasvv)
+  public void setAdapter(TagInfosAdapter paramTagInfosAdapter)
   {
-    this.jdField_a_of_type_Asvv = paramasvv;
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetHorseRaceLampTagInfosAdapter = paramTagInfosAdapter;
     d();
   }
   
-  public void setTagClickListner(asvs paramasvs)
+  public void setItemHorMarginDp(int paramInt)
   {
-    this.jdField_a_of_type_Asvs = paramasvs;
+    this.g = paramInt;
+  }
+  
+  public void setLineCount(int paramInt)
+  {
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public void setLineMarginDp(int paramInt)
+  {
+    this.f = paramInt;
+  }
+  
+  public void setTagClickListner(HorseRaceLampVew.onTagClickListner paramonTagClickListner)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetHorseRaceLampHorseRaceLampVew$onTagClickListner = paramonTagClickListner;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew
  * JD-Core Version:    0.7.0.1
  */

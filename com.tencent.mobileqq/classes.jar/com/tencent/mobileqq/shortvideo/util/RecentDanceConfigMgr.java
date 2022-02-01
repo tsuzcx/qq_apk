@@ -6,11 +6,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.util.Base64;
-import ayym;
-import bbgg;
-import bdeg;
-import bgzr;
-import bkvq;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
@@ -18,19 +13,23 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
+import com.tencent.mobileqq.olympic.utils.OlympicUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.util.JSONUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -42,8 +41,8 @@ import org.json.JSONObject;
 public class RecentDanceConfigMgr
 {
   private static AtomicReference<RecentDanceConfigMgr> a;
-  private static volatile boolean b;
-  private static boolean c;
+  private static volatile boolean b = false;
+  private static boolean c = false;
   public HashMap<String, RecentDanceConfigMgr.DItemInfo> a;
   public boolean a;
   
@@ -54,6 +53,7 @@ public class RecentDanceConfigMgr
   
   public RecentDanceConfigMgr()
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -76,7 +76,7 @@ public class RecentDanceConfigMgr
         if (paramQQAppInterface != null) {
           if (paramQQAppInterface.compress.get() == 1)
           {
-            paramQQAppInterface = ayym.a(paramQQAppInterface.content.get().toByteArray());
+            paramQQAppInterface = OlympicUtil.a(paramQQAppInterface.content.get().toByteArray());
             if (paramQQAppInterface == null) {}
           }
         }
@@ -174,9 +174,25 @@ public class RecentDanceConfigMgr
     }
   }
   
-  public static String a()
+  private static String a()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("video_dance_stage_name_cfg", 4).getString("video_dance_stage_name_key", "postureRecognizeStage");
+    Object localObject = new StringBuilder(AppConstants.SDCARD_PATH);
+    ((StringBuilder)localObject).append("sv_config_icon");
+    ((StringBuilder)localObject).append(File.separator);
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    localFile = new File((String)localObject + ".nomedia");
+    if (!localFile.exists()) {}
+    try
+    {
+      localFile.createNewFile();
+      return localObject;
+    }
+    catch (IOException localIOException) {}
+    return localObject;
   }
   
   private static String a(String paramString, RecentDanceConfigMgr.DItemInfo paramDItemInfo)
@@ -222,13 +238,13 @@ public class RecentDanceConfigMgr
           i = 0;
           if (i < paramString.length())
           {
-            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)bgzr.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
+            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)JSONUtils.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
             if (localDItemInfo == null) {
               break label492;
             }
             if ((localDItemInfo.icon_url != null) && (!"".equals(localDItemInfo.icon_url)))
             {
-              localObject = a(b(), localDItemInfo);
+              localObject = a(a(), localDItemInfo);
               if (new File((String)localObject).exists()) {
                 break label465;
               }
@@ -298,27 +314,6 @@ public class RecentDanceConfigMgr
     }
   }
   
-  private static String b()
-  {
-    Object localObject = new StringBuilder(AppConstants.SDCARD_PATH);
-    ((StringBuilder)localObject).append("sv_config_icon");
-    ((StringBuilder)localObject).append(File.separator);
-    localObject = ((StringBuilder)localObject).toString();
-    File localFile = new File((String)localObject);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    localFile = new File((String)localObject + ".nomedia");
-    if (!localFile.exists()) {}
-    try
-    {
-      localFile.createNewFile();
-      return localObject;
-    }
-    catch (IOException localIOException) {}
-    return localObject;
-  }
-  
   private static String b(String paramString)
   {
     try
@@ -330,7 +325,7 @@ public class RecentDanceConfigMgr
     {
       try
       {
-        paramString = bkvq.a(new File(paramString));
+        paramString = MD5FileUtil.a(new File(paramString));
         return paramString;
       }
       catch (Exception paramString) {}
@@ -365,7 +360,7 @@ public class RecentDanceConfigMgr
   
   private static boolean b()
   {
-    return new File(bbgg.a, "ptv_template_new.cfg").exists();
+    return new File(CapturePtvTemplateManager.a, "ptv_template_new.cfg").exists();
   }
   
   private static void c(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
@@ -373,14 +368,14 @@ public class RecentDanceConfigMgr
     Object localObject = Base64.decode(paramDItemInfo.icon_url, 0);
     if (localObject != null)
     {
-      FileUtils.writeFile((byte[])localObject, paramString);
+      FileUtils.a((byte[])localObject, paramString);
       if (new File(paramString).exists())
       {
         localObject = b(paramString);
         if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).equalsIgnoreCase(paramDItemInfo.icon_md5))) {
           break label68;
         }
-        FileUtils.deleteFile(paramString);
+        FileUtils.e(paramString);
       }
     }
     return;
@@ -391,17 +386,17 @@ public class RecentDanceConfigMgr
   private static void d(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
   {
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mCallback = new bdeg(paramDItemInfo, paramString);
+    localHttpNetReq.mCallback = new RecentDanceConfigMgr.2(paramDItemInfo, paramString);
     localHttpNetReq.mReqUrl = paramDItemInfo.icon_url;
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mOutPath = (paramString + "_temp");
-    localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+    localHttpNetReq.mContinuErrorLimit = NetworkUtil.a(NetworkCenter.getInstance().getNetType());
     try
     {
       paramString = BaseApplicationImpl.getApplication().getRuntime();
       if (QQAppInterface.class.isInstance(paramString))
       {
-        ((QQAppInterface)paramString).getNetEngine(0).sendReq(localHttpNetReq);
+        ((IHttpEngineService)((QQAppInterface)paramString).getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
         if (QLog.isColorLevel()) {
           QLog.i("RecentDanceConfigMgr", 2, "processNetWork url: " + paramDItemInfo.icon_url);
         }

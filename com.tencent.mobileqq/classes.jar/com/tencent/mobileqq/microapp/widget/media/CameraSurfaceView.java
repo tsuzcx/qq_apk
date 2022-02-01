@@ -12,11 +12,11 @@ import android.os.Build.VERSION;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import bdav;
-import bdaw;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager.a;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraAbility;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -186,7 +186,7 @@ public class CameraSurfaceView
   
   boolean a()
   {
-    return !bdaw.d(bdaw.a);
+    return !CameraCompatibleList.d(CameraCompatibleList.a);
   }
   
   public boolean a(Camera.Parameters paramParameters)
@@ -244,7 +244,7 @@ public class CameraSurfaceView
             bool1 = bool2;
           }
         }
-      } while (!bdav.a().a(paramString));
+      } while (!CameraAbility.a().a(paramString));
       localRuntimeException.setFocusMode(paramString);
       bool2 = a(localRuntimeException);
       bool1 = bool2;
@@ -287,7 +287,7 @@ public class CameraSurfaceView
       {
         a = Camera.open(0);
         int m = 90;
-        if (bdaw.d(bdaw.g)) {
+        if (CameraCompatibleList.d(CameraCompatibleList.g)) {
           m = 270;
         }
         a.setDisplayOrientation(m);

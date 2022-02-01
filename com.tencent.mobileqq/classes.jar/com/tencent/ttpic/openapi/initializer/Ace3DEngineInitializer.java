@@ -20,7 +20,7 @@ public class Ace3DEngineInitializer
   
   static
   {
-    modelFiles = new ModelInfo[] { new ModelInfo(true, "filament", "bloom_blur.filamat", 0), new ModelInfo(true, "filament", "bloom_mix.filamat", 0), new ModelInfo(true, "filament", "face_mesh.filamat", 0), new ModelInfo(true, "filament", "face_mesh_lit.filamat", 0), new ModelInfo(true, "filament", "filament_head.filamat", 0), new ModelInfo(true, "filament", "fur.filamat", 0), new ModelInfo(true, "filament", "fur_light.filamat", 0), new ModelInfo(true, "filament", "head_feather.filamat", 0), new ModelInfo(true, "filament", "head_index.txt", 0), new ModelInfo(true, "filament", "head_vertex.txt", 0), new ModelInfo(true, "filament", "location_init.filamat", 0), new ModelInfo(true, "filament", "reflection.filamat", 0), new ModelInfo(true, "filament", "disney_basic_opaque.filamat", 0), new ModelInfo(true, "filament", "disney_basic_masked.filamat", 0), new ModelInfo(true, "filament", "disney_basic_fade.filamat", 0), new ModelInfo(true, "filament", "disney_basic_transparent.filamat", 0), new ModelInfo(true, "filament", "disney_hair_opaque.filamat", 0), new ModelInfo(true, "filament", "disney_hair_masked.filamat", 0), new ModelInfo(true, "filament", "disney_hair_fade.filamat", 0), new ModelInfo(true, "filament", "disney_hair_transparent.filamat", 0), new ModelInfo(true, "filament", "kapu_custom_sp_opaque.filamat", 0), new ModelInfo(true, "filament", "kapu_custom_sp_masked.filamat", 0), new ModelInfo(true, "filament", "kapu_custom_sp_fade.filamat", 0), new ModelInfo(true, "filament", "kapu_custom_sp_transparent.filamat", 0), new ModelInfo(true, "filament", "kapu_custom_mr_opaque.filamat", 0), new ModelInfo(true, "filament", "kapu_custom_mr_masked.filamat", 0), new ModelInfo(true, "filament", "kapu_custom_mr_fade.filamat", 0), new ModelInfo(true, "filament", "kapu_custom_mr_transparent.filamat", 0), new ModelInfo(true, "filament", "kapu_standard_opaque.filamat", 0), new ModelInfo(true, "filament", "kapu_standard_masked.filamat", 0), new ModelInfo(true, "filament", "kapu_standard_fade.filamat", 0), new ModelInfo(true, "filament", "kapu_standard_transparent.filamat", 0), new ModelInfo(true, "filament", "kapu_makeup.filamat", 0), new ModelInfo(true, "filament", "hbao_noise.dat", 0) };
+    modelFiles = new ModelInfo[] { new ModelInfo(true, "filament", "bloom_blur.filamat", 0), new ModelInfo(true, "filament", "bloom_mix.filamat", 0), new ModelInfo(true, "filament", "face_mesh.filamat", 0), new ModelInfo(true, "filament", "face_mesh_lit.filamat", 0), new ModelInfo(true, "filament", "filament_head.filamat", 0), new ModelInfo(true, "filament", "fur.filamat", 0), new ModelInfo(true, "filament", "fur_light.filamat", 0), new ModelInfo(true, "filament", "head_feather.filamat", 0), new ModelInfo(true, "filament", "head_index.txt", 0), new ModelInfo(true, "filament", "head_vertex.txt", 0), new ModelInfo(true, "filament", "location_init.filamat", 0), new ModelInfo(true, "filament", "reflection.filamat", 0) };
   }
   
   private static boolean checkModelFilesExist(String paramString)
@@ -124,7 +124,7 @@ public class Ace3DEngineInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.Ace3DEngineInitializer
  * JD-Core Version:    0.7.0.1
  */

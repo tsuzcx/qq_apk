@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
-import aqfi;
 import com.tencent.qphone.base.util.QLog;
 
 public class VideoDrawableHandler$DecodeFrameTask
@@ -39,8 +38,8 @@ public class VideoDrawableHandler$DecodeFrameTask
           this.this$0.b = this.this$0.jdField_a_of_type_AndroidGraphicsBitmap;
           this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
           this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, 0, 0).sendToTarget();
-          if (this.this$0.jdField_a_of_type_Aqfi != null) {
-            this.this$0.jdField_a_of_type_Aqfi.a(this.a, i);
+          if (this.this$0.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler$OnGetFrameListener != null) {
+            this.this$0.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler$OnGetFrameListener.a(this.a, i);
           }
           if (QLog.isColorLevel()) {
             QLog.i("VideoDrawableHandler", 2, "task run at:" + this.a + " bmp:" + this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);

@@ -1,17 +1,5 @@
 package com.tencent.mobileqq.activity.weather;
 
-import aeox;
-import ahtp;
-import ahtq;
-import amdq;
-import amdr;
-import amds;
-import amdt;
-import amdu;
-import amdv;
-import amdy;
-import amdz;
-import ameb;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -34,35 +22,38 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvx;
-import aoqb;
-import aoqj;
-import aqcx;
-import asbg;
-import bheg;
-import bisl;
-import bofz;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.PublicFragmentActivityCallBackInterface;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider.Stub;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.app.message.messageclean.CleanMessageItemInfo;
+import com.tencent.mobileqq.app.message.messageclean.MessageCleanManager;
+import com.tencent.mobileqq.armap.INonMainProcAvatarLoader;
+import com.tencent.mobileqq.avatar.api.IQQNonMainProcAvatarLoaderApi;
+import com.tencent.mobileqq.drawable.EmptyDrawable;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.util.BinderWarpper;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import dov.com.qq.im.capture.CaptureContext;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SessionClearFragment
   extends PublicBaseFragment
-  implements aeox
+  implements PublicFragmentActivityCallBackInterface
 {
   private int jdField_a_of_type_Int = 0;
-  private ahtp jdField_a_of_type_Ahtp;
-  private ameb jdField_a_of_type_Ameb;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
@@ -73,24 +64,26 @@ public class SessionClearFragment
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aoqj jdField_a_of_type_Aoqj;
-  private aqcx jdField_a_of_type_Aqcx;
-  private bisl jdField_a_of_type_Bisl;
+  private IAIOImageProvider jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
+  private SessionClearFragment.SessionListAdapter jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter;
   private PeakAppInterface jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface;
-  List<aoqb> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
+  private MessageCleanManager jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager;
+  private INonMainProcAvatarLoader jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
+  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  List<CleanMessageItemInfo> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int = 0;
   private Button jdField_b_of_type_AndroidWidgetButton;
-  private aqcx jdField_b_of_type_Aqcx;
-  private int jdField_c_of_type_Int;
-  private aqcx jdField_c_of_type_Aqcx;
+  private INonMainProcAvatarLoader jdField_b_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
+  private int jdField_c_of_type_Int = 0;
+  private INonMainProcAvatarLoader jdField_c_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2)
   {
-    asbg localasbg = new asbg(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+    EmptyDrawable localEmptyDrawable = new EmptyDrawable(Color.rgb(214, 214, 214), paramInt1, paramInt2);
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localasbg, localasbg);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localEmptyDrawable, localEmptyDrawable);
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.downloadImediatly();
         }
@@ -103,19 +96,19 @@ public class SessionClearFragment
         }
       }
     }
-    return localasbg;
+    return localEmptyDrawable;
   }
   
   private void a(int paramInt)
   {
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(anvx.a(2131713304));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131713800));
     }
     for (;;)
     {
       this.jdField_a_of_type_Int = paramInt;
       return;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(anvx.a(2131713292));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131713788));
     }
   }
   
@@ -136,25 +129,25 @@ public class SessionClearFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377438));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377286));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377857));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377707));
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377907));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365489));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363733));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378320));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365650));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363829));
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366142));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366314));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Ameb = new ameb(this, new ArrayList());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ameb);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new amdu(this));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new amdv(this));
-    paramView.findViewById(2131364708).setOnClickListener(new amdy(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter = new SessionClearFragment.SessionListAdapter(this, new ArrayList());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new SessionClearFragment.5(this));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new SessionClearFragment.6(this));
+    paramView.findViewById(2131364824).setOnClickListener(new SessionClearFragment.7(this));
   }
   
   private void a(String paramString, int paramInt1, int paramInt2, ImageView paramImageView, int paramInt3)
   {
-    if (FileUtils.fileExistsAndNotEmpty(paramString))
+    if (FileUtils.b(paramString))
     {
       paramString = ShortVideoUtils.getThumbUrl(paramString);
       if (paramString != null)
@@ -178,21 +171,21 @@ public class SessionClearFragment
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     int i = 0;
-    if (i < this.jdField_a_of_type_Ameb.getItemCount())
+    if (i < this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.getItemCount())
     {
-      if (this.jdField_a_of_type_Ameb.a(i).a) {
-        localArrayList1.add(this.jdField_a_of_type_Ameb.a(i));
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a(i).a) {
+        localArrayList1.add(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a(i));
       }
       for (;;)
       {
         i += 1;
         break;
-        localArrayList2.add(this.jdField_a_of_type_Ameb.a(i));
+        localArrayList2.add(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a(i));
       }
     }
     if (localArrayList1.size() > 0)
     {
-      this.jdField_a_of_type_Aoqj.a(localArrayList1);
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager.a(localArrayList1);
       if ((localArrayList2 != null) && (localArrayList2.size() != 0)) {
         break label149;
       }
@@ -200,36 +193,36 @@ public class SessionClearFragment
     }
     for (;;)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131691456, 0).b(getResources().getDimensionPixelSize(2131299080));
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131691566, 0).b(getResources().getDimensionPixelSize(2131299166));
       return;
       label149:
-      this.jdField_a_of_type_Ameb.a(localArrayList2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a(localArrayList2);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       a(0);
     }
   }
   
-  public void a()
+  protected void a()
   {
-    if (this.jdField_a_of_type_Bisl == null) {
-      this.jdField_a_of_type_Bisl = new bisl(this.jdField_a_of_type_AndroidAppActivity, getResources().getDimensionPixelSize(2131299080));
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidAppActivity, getResources().getDimensionPixelSize(2131299166));
     }
-    this.jdField_a_of_type_Bisl.setCancelable(false);
-    this.jdField_a_of_type_Bisl.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bisl.a(anvx.a(2131713299));
-    this.jdField_a_of_type_Bisl.show();
-    this.jdField_a_of_type_Bisl.a(new amdz(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131713795));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new SessionClearFragment.8(this));
   }
   
-  public void a(List<aoqb> paramList)
+  public void a(List<CleanMessageItemInfo> paramList)
   {
-    this.jdField_a_of_type_Ameb.a(paramList);
+    this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a(paramList);
   }
   
   protected void b()
   {
-    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
-      this.jdField_a_of_type_Bisl.dismiss();
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
   }
   
@@ -260,41 +253,41 @@ public class SessionClearFragment
       }
       this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)bofz.a());
-    if (this.jdField_a_of_type_Ahtp == null)
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)CaptureContext.a());
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider == null)
     {
       paramBundle = (BinderWarpper)this.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
       if (paramBundle == null) {
-        break label336;
+        break label369;
       }
-      this.jdField_a_of_type_Ahtp = ahtq.a(paramBundle.a);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider = IAIOImageProvider.Stub.a(paramBundle.a);
       if (QLog.isColorLevel()) {
-        QLog.d("SessionClearFragment", 2, "IAIOImageProvider is " + this.jdField_a_of_type_Ahtp);
+        QLog.d("SessionClearFragment", 2, "IAIOImageProvider is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)bofz.a());
-    this.jdField_a_of_type_Aoqj = ((aoqj)this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface.getManager(4));
-    this.jdField_a_of_type_Aoqj.a(new amdq(this));
-    this.jdField_a_of_type_Aoqj.a(this.jdField_a_of_type_Ahtp);
-    this.jdField_a_of_type_Aqcx = new aqcx(this.jdField_a_of_type_AndroidAppActivity, 1);
-    this.jdField_a_of_type_Aqcx.a();
-    this.jdField_a_of_type_Aqcx.a(new amdr(this));
-    this.jdField_b_of_type_Aqcx = new aqcx(this.jdField_a_of_type_AndroidAppActivity, 4);
-    this.jdField_b_of_type_Aqcx.a();
-    this.jdField_b_of_type_Aqcx.a(new amds(this));
-    this.jdField_c_of_type_Aqcx = new aqcx(this.jdField_a_of_type_AndroidAppActivity, 101);
-    this.jdField_c_of_type_Aqcx.a();
-    this.jdField_c_of_type_Aqcx.a(new amdt(this));
-    this.jdField_a_of_type_Aoqj.b();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bheg.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)CaptureContext.a());
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager = ((MessageCleanManager)this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface.getManager(4));
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager.a(new SessionClearFragment.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider);
+    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.jdField_a_of_type_AndroidAppActivity, 1);
+    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
+    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(new SessionClearFragment.2(this));
+    this.jdField_b_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.jdField_a_of_type_AndroidAppActivity, 4);
+    this.jdField_b_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
+    this.jdField_b_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(new SessionClearFragment.3(this));
+    this.jdField_c_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.jdField_a_of_type_AndroidAppActivity, 101);
+    this.jdField_c_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
+    this.jdField_c_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(new SessionClearFragment.4(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager.b();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.c();
     return;
-    label336:
+    label369:
     throw new IllegalArgumentException("can't find Binder in Intent..");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562865, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131563012, paramViewGroup, false);
     a(paramLayoutInflater);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -303,19 +296,19 @@ public class SessionClearFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Aoqj.onDestroy();
-    this.jdField_a_of_type_Aqcx.b();
-    this.jdField_b_of_type_Aqcx.b();
-    this.jdField_c_of_type_Aqcx.b();
-    if (this.jdField_a_of_type_Bisl != null) {
-      this.jdField_a_of_type_Bisl.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager.onDestroy();
+    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.b();
+    this.jdField_b_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.b();
+    this.jdField_c_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
     this.jdField_a_of_type_AndroidAppActivity = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment
  * JD-Core Version:    0.7.0.1
  */

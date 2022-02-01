@@ -6,8 +6,8 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.RelativeLayout;
-import bnra;
-import bnrh;
+import dov.com.qq.im.ae.util.AECommonUtil;
+import dov.com.qq.im.ae.util.AEQLog;
 
 public class AECircleBottomWrapLayout
   extends RelativeLayout
@@ -15,8 +15,8 @@ public class AECircleBottomWrapLayout
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View jdField_a_of_type_AndroidViewView;
   private AEBottomListScrollView jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public AECircleBottomWrapLayout(Context paramContext)
   {
@@ -43,7 +43,7 @@ public class AECircleBottomWrapLayout
       this.b = false;
       this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
     }
-    if ((Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity()) > 100.0F) && (paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime() < 100L) && (bnra.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)) && (!this.jdField_a_of_type_Boolean))
+    if ((Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity()) > 100.0F) && (paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime() < 100L) && (AECommonUtil.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
       this.b = true;
@@ -51,15 +51,15 @@ public class AECircleBottomWrapLayout
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366963);
-    this.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView = ((AEBottomListScrollView)findViewById(2131377010));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367155);
+    this.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView = ((AEBottomListScrollView)findViewById(2131377419));
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
@@ -69,7 +69,7 @@ public class AECircleBottomWrapLayout
   {
     if (this.b)
     {
-      bnrh.a("AECircleBottomLayout", "in onInterceptTouchEvent true.");
+      AEQLog.a("AECircleBottomLayout", "in onInterceptTouchEvent true.");
       paramMotionEvent.setAction(0);
       this.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.dispatchTouchEvent(paramMotionEvent);
       this.b = false;
@@ -88,7 +88,7 @@ public class AECircleBottomWrapLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.bottom.AECircleBottomWrapLayout
  * JD-Core Version:    0.7.0.1
  */

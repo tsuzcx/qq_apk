@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bifb;
-import bifw;
-import bifx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.swift.WebViewPluginContainer;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QUA;
@@ -41,7 +41,7 @@ public class QzoneVipPaymentJsPlugin
   public static final String SET_NAVI_DECO = "SetNaviDeco";
   private static final String SUPER_VIP = "2";
   private static final String TAG = "QzoneVipPaymentJsPlugin";
-  private String payCallback;
+  private String payCallback = null;
   
   private String createPF(String paramString1, String paramString2)
   {
@@ -50,10 +50,10 @@ public class QzoneVipPaymentJsPlugin
   
   private int generateRequestCode(int paramInt)
   {
-    bifb localbifb = this.parentPlugin.mRuntime.a(this.parentPlugin.mRuntime.a());
+    WebUiBaseInterface localWebUiBaseInterface = this.parentPlugin.mRuntime.a(this.parentPlugin.mRuntime.a());
     int i = paramInt;
-    if ((localbifb instanceof bifx)) {
-      i = ((bifx)localbifb).switchRequestCode(this.parentPlugin, (byte)paramInt);
+    if ((localWebUiBaseInterface instanceof WebViewPluginContainer)) {
+      i = ((WebViewPluginContainer)localWebUiBaseInterface).switchRequestCode(this.parentPlugin, (byte)paramInt);
     }
     return i;
   }
@@ -70,14 +70,14 @@ public class QzoneVipPaymentJsPlugin
     } while (localAppInterface == null);
     Intent localIntent = new Intent(BaseApplication.getContext(), PayBridgeActivity.class);
     String str2 = VipUtils.a(paramString4);
-    String str1 = ((Activity)localObject2).getString(2131717537);
-    String str3 = ((Activity)localObject2).getString(2131717538);
+    String str1 = ((Activity)localObject2).getString(2131718032);
+    String str3 = ((Activity)localObject2).getString(2131718033);
     paramString4 = "";
     Object localObject1 = "";
     if ("1".equals(paramString3))
     {
       paramString4 = "xxjzgw";
-      str1 = ((Activity)localObject2).getString(2131717537);
+      str1 = ((Activity)localObject2).getString(2131718032);
       localObject1 = "1450000153";
     }
     for (;;)
@@ -121,7 +121,7 @@ public class QzoneVipPaymentJsPlugin
       if ("2".equals(paramString3))
       {
         paramString4 = "XXJZGHH";
-        str1 = ((Activity)localObject2).getString(2131717157);
+        str1 = ((Activity)localObject2).getString(2131717652);
         localObject1 = "1450001557";
       }
     }
@@ -330,7 +330,7 @@ public class QzoneVipPaymentJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneVipPaymentJsPlugin
  * JD-Core Version:    0.7.0.1
  */

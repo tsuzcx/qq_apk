@@ -1,13 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.click;
 
-import ppo;
-import ppq;
-import szd;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
-public class RIJListViewGroupHandlerClick$1
+class RIJListViewGroupHandlerClick$1
   implements Runnable
 {
-  public RIJListViewGroupHandlerClick$1(ppo paramppo, ppq paramppq) {}
+  RIJListViewGroupHandlerClick$1(RIJListViewGroupHandlerClick paramRIJListViewGroupHandlerClick, RIJListViewGroupHandlerClick.Builder paramBuilder) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public class RIJListViewGroupHandlerClick$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.click.RIJListViewGroupHandlerClick.1
  * JD-Core Version:    0.7.0.1
  */

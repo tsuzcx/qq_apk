@@ -6,7 +6,7 @@ public abstract interface NativePlugin
 {
   public abstract void onDestroy();
   
-  public abstract void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext);
+  public abstract void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext);
 }
 
 

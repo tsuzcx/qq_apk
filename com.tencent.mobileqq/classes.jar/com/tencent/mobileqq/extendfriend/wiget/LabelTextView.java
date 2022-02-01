@@ -7,17 +7,17 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import blfw;
-import blfx;
+import com.tencent.widget.ThemeImageWrapper;
+import com.tencent.widget.ThemeImageWrapper.DrawInterface;
 
 public class LabelTextView
   extends TextView
-  implements blfx
+  implements ThemeImageWrapper.DrawInterface
 {
   private int jdField_a_of_type_Int = 2147483647;
-  protected blfw a;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  protected ThemeImageWrapper a;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public LabelTextView(Context paramContext)
   {
@@ -48,27 +48,22 @@ public class LabelTextView
   
   private void b()
   {
-    this.jdField_a_of_type_Blfw = new blfw();
-    this.jdField_a_of_type_Blfw.a(true);
-    this.jdField_a_of_type_Blfw.a(blfw.c);
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
+    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper = new ThemeImageWrapper();
+    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.setSupportMaskView(true);
+    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.setMaskShape(ThemeImageWrapper.MODE_OTHER);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if ((this.b) && (this.jdField_a_of_type_Blfw != null))
+    if ((this.b) && (this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper != null))
     {
-      this.jdField_a_of_type_Blfw.a(paramCanvas, this);
+      this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.onDraw(paramCanvas, this);
       return;
     }
     super.draw(paramCanvas);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (this.jdField_a_of_type_Boolean)
@@ -106,10 +101,15 @@ public class LabelTextView
     localGradientDrawable.setCornerRadius(paramFloat);
     setBackgroundDrawable(localGradientDrawable);
   }
+  
+  public void superOnDraw(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.LabelTextView
  * JD-Core Version:    0.7.0.1
  */

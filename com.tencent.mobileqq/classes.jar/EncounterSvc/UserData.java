@@ -10,10 +10,10 @@ public final class UserData
   static byte[] cache_strCookie = (byte[])new byte[1];
   public int iLat = 900000000;
   public int iLon = 900000000;
-  public long lNextGrid;
-  public long lOriginGrid;
-  public int lTime;
-  public byte[] strCookie;
+  public long lNextGrid = 0L;
+  public long lOriginGrid = 0L;
+  public int lTime = 0;
+  public byte[] strCookie = null;
   public String strProvince = "";
   
   static

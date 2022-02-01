@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
-import bclw;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
 import mqq.os.MqqHandler;
 
 class BaseSearchFragment$2

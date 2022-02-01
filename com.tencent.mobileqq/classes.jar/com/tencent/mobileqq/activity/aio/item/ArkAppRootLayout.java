@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agpa;
-import agpb;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -12,9 +10,9 @@ import android.widget.RelativeLayout;
 public class ArkAppRootLayout
   extends RelativeLayout
 {
-  private agpb jdField_a_of_type_Agpb;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private boolean jdField_a_of_type_Boolean;
+  private ArkAppRootLayout.ArkSearchReportCallback jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout$ArkSearchReportCallback;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public ArkAppRootLayout(Context paramContext)
   {
@@ -36,7 +34,7 @@ public class ArkAppRootLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new agpa(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new ArkAppRootLayout.1(this));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -68,9 +66,9 @@ public class ArkAppRootLayout
     }
   }
   
-  public void setCallback(agpb paramagpb)
+  public void setCallback(ArkAppRootLayout.ArkSearchReportCallback paramArkSearchReportCallback)
   {
-    this.jdField_a_of_type_Agpb = paramagpb;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout$ArkSearchReportCallback = paramArkSearchReportCallback;
   }
   
   public void setDisableParentReturn(boolean paramBoolean)
@@ -80,7 +78,7 @@ public class ArkAppRootLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout
  * JD-Core Version:    0.7.0.1
  */

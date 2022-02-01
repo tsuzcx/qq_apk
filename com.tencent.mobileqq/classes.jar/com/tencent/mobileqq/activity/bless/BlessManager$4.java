@@ -1,31 +1,29 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aipw;
-
-public class BlessManager$4
+class BlessManager$4
   implements Runnable
 {
-  public BlessManager$4(aipw paramaipw) {}
+  BlessManager$4(BlessManager paramBlessManager) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Laipw;
+    //   1: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
     //   4: iconst_1
-    //   5: invokestatic 25	aipw:b	(Laipw;Z)Z
+    //   5: invokestatic 25	com/tencent/mobileqq/activity/bless/BlessManager:b	(Lcom/tencent/mobileqq/activity/bless/BlessManager;Z)Z
     //   8: pop
     //   9: aload_0
-    //   10: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Laipw;
-    //   13: invokevirtual 29	aipw:c	()Ljava/lang/String;
+    //   10: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
+    //   13: invokevirtual 29	com/tencent/mobileqq/activity/bless/BlessManager:c	()Ljava/lang/String;
     //   16: astore 6
     //   18: aload 6
     //   20: ifnonnull +13 -> 33
     //   23: aload_0
-    //   24: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Laipw;
+    //   24: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
     //   27: iconst_0
-    //   28: invokestatic 25	aipw:b	(Laipw;Z)Z
+    //   28: invokestatic 25	com/tencent/mobileqq/activity/bless/BlessManager:b	(Lcom/tencent/mobileqq/activity/bless/BlessManager;Z)Z
     //   31: pop
     //   32: return
     //   33: new 31	java/io/File
@@ -38,12 +36,12 @@ public class BlessManager$4
     //   51: dup
     //   52: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   55: aload_0
-    //   56: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Laipw;
-    //   59: getfield 44	aipw:b	Ljava/lang/String;
+    //   56: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
+    //   59: getfield 44	com/tencent/mobileqq/activity/bless/BlessManager:b	Ljava/lang/String;
     //   62: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: aload_0
-    //   66: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Laipw;
-    //   69: invokestatic 52	aipw:a	(Laipw;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   66: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
+    //   69: invokestatic 52	com/tencent/mobileqq/activity/bless/BlessManager:a	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
     //   72: getfield 57	com/tencent/mobileqq/activity/bless/BlessTask:starVideoCoverFolderName	Ljava/lang/String;
     //   75: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: getstatic 60	java/io/File:separator	Ljava/lang/String;
@@ -56,8 +54,8 @@ public class BlessManager$4
     //   95: aload_2
     //   96: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: aload_0
-    //   100: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Laipw;
-    //   103: invokestatic 52	aipw:a	(Laipw;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   100: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
+    //   103: invokestatic 52	com/tencent/mobileqq/activity/bless/BlessManager:a	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
     //   106: getfield 66	com/tencent/mobileqq/activity/bless/BlessTask:starVideoCoverFileName	Ljava/lang/String;
     //   109: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -121,8 +119,8 @@ public class BlessManager$4
     //   220: aload_2
     //   221: invokevirtual 107	java/io/BufferedOutputStream:flush	()V
     //   224: aload_0
-    //   225: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Laipw;
-    //   228: invokestatic 109	aipw:a	(Laipw;)V
+    //   225: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
+    //   228: invokestatic 109	com/tencent/mobileqq/activity/bless/BlessManager:a	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)V
     //   231: aload_2
     //   232: ifnull +7 -> 239
     //   235: aload_2
@@ -136,9 +134,9 @@ public class BlessManager$4
     //   253: ldc 124
     //   255: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   258: aload_0
-    //   259: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Laipw;
+    //   259: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
     //   262: iconst_0
-    //   263: invokestatic 25	aipw:b	(Laipw;Z)Z
+    //   263: invokestatic 25	com/tencent/mobileqq/activity/bless/BlessManager:b	(Lcom/tencent/mobileqq/activity/bless/BlessManager;Z)Z
     //   266: pop
     //   267: return
     //   268: astore_1
@@ -193,8 +191,8 @@ public class BlessManager$4
     //   368: invokevirtual 69	java/io/File:delete	()Z
     //   371: pop
     //   372: aload_0
-    //   373: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Laipw;
-    //   376: invokestatic 109	aipw:a	(Laipw;)V
+    //   373: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
+    //   376: invokestatic 109	com/tencent/mobileqq/activity/bless/BlessManager:a	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)V
     //   379: aload_2
     //   380: ifnull +7 -> 387
     //   383: aload_2
@@ -224,8 +222,8 @@ public class BlessManager$4
     //   436: aload_3
     //   437: astore_1
     //   438: aload_0
-    //   439: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Laipw;
-    //   442: invokestatic 109	aipw:a	(Laipw;)V
+    //   439: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
+    //   442: invokestatic 109	com/tencent/mobileqq/activity/bless/BlessManager:a	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)V
     //   445: aload_2
     //   446: ifnull +7 -> 453
     //   449: aload_2
@@ -297,7 +295,7 @@ public class BlessManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessManager.4
  * JD-Core Version:    0.7.0.1
  */

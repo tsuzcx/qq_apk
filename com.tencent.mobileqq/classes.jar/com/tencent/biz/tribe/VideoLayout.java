@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 public class VideoLayout
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   
   public VideoLayout(Context paramContext)
@@ -67,7 +67,7 @@ public class VideoLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.tribe.VideoLayout
  * JD-Core Version:    0.7.0.1
  */

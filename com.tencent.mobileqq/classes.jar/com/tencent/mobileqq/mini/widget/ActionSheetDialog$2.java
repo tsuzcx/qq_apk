@@ -2,7 +2,6 @@ package com.tencent.mobileqq.mini.widget;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ActionSheetDialog$2
   implements View.OnClickListener
@@ -12,7 +11,6 @@ class ActionSheetDialog$2
   public void onClick(View paramView)
   {
     this.this$0.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

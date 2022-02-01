@@ -4,10 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import blvs;
-import blwq;
-import blxh;
-import blxi;
+import com.tencent.biz.ProtoServlet;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,7 +14,6 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfoHelper;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfoHelper.PluginInfoParser;
-import com.tencent.mobileqq.startup.step.UpdatePluginVersion;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -29,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import mqq.app.NewIntent;
-import nta;
 import protocol.KQQConfig.GPS;
 import protocol.KQQConfig.ReqUserInfo;
 import tencent.im.plugin.ResourceConfig.GetResourceReqInfoV2;
@@ -42,7 +37,7 @@ public class PluginUpdater
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private blxi jdField_a_of_type_Blxi;
+  private PluginUpdater.OnPluginInfoUpdateListener jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener;
   private Map<String, PluginInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_a_of_type_Boolean;
   
@@ -51,52 +46,30 @@ public class PluginUpdater
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(paramHandler.getLooper(), this);
     paramContext = a(paramContext);
-    boolean bool = blwq.a(paramContext);
-    paramHandler = blwq.a(paramContext);
+    boolean bool = PluginInfoUtil.a(paramContext);
+    paramHandler = PluginInfoUtil.a(paramContext);
     if (paramHandler != null)
     {
-      int n = paramHandler.length;
+      int j = paramHandler.length;
       int i = 0;
-      if (i < n)
+      if (i < j)
       {
         File localFile = paramHandler[i];
-        Object localObject;
-        int j;
         if (localFile.isFile())
         {
           if (!bool) {
-            break label181;
+            break label99;
           }
-          int m = 0;
-          localObject = UpdatePluginVersion.a;
-          int i1 = localObject.length;
-          j = 0;
-          label102:
-          int k = m;
-          if (j < i1)
-          {
-            String str = localObject[j];
-            if (!localFile.getName().equals(str + ".cfg")) {
-              break label172;
-            }
-            localFile.delete();
-            k = 1;
-          }
-          if (k == 0) {
-            break label181;
-          }
+          localFile.delete();
         }
         for (;;)
         {
           i += 1;
           break;
-          label172:
-          j += 1;
-          break label102;
-          label181:
-          localObject = blwq.a(localFile);
-          if (localObject != null) {
-            this.jdField_a_of_type_JavaUtilMap.put(((PluginInfo)localObject).mID, localObject);
+          label99:
+          PluginInfo localPluginInfo = PluginInfoUtil.a(localFile);
+          if (localPluginInfo != null) {
+            this.jdField_a_of_type_JavaUtilMap.put(localPluginInfo.mID, localPluginInfo);
           } else {
             localFile.delete();
           }
@@ -104,7 +77,7 @@ public class PluginUpdater
       }
     }
     if (bool) {
-      blwq.a(paramContext);
+      PluginInfoUtil.a(paramContext);
     }
     QLog.d("plugin_tag", 1, "init plugin updater :" + this.jdField_a_of_type_JavaUtilMap.size());
   }
@@ -206,7 +179,7 @@ public class PluginUpdater
             localHashMap.put(((PluginInfo)localObject1).mID, localObject5);
             break label1169;
           }
-          if ((this.jdField_a_of_type_Blxi == null) || (!this.jdField_a_of_type_Blxi.a((PluginInfo)localObject1))) {
+          if ((this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener == null) || (!this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a((PluginInfo)localObject1))) {
             break label1161;
           }
           ((Map)localObject3).remove(((PluginInfo)localObject1).mID);
@@ -257,8 +230,8 @@ public class PluginUpdater
         }
         else
         {
-          if (this.jdField_a_of_type_Blxi != null) {
-            this.jdField_a_of_type_Blxi.a(true);
+          if (this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener != null) {
+            this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a(true);
           }
           if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
           {
@@ -294,7 +267,7 @@ public class PluginUpdater
     PluginInfo localPluginInfo2 = (PluginInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
     PluginInfo localPluginInfo1 = localPluginInfo2;
     if (localPluginInfo2 == null) {
-      localPluginInfo1 = blvs.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
+      localPluginInfo1 = BuiltinPluginManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
     }
     return localPluginInfo1;
   }
@@ -302,7 +275,7 @@ public class PluginUpdater
   public void a()
   {
     File localFile = a(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject = blwq.a(localFile);
+    Object localObject = PluginInfoUtil.a(localFile);
     if (localObject != null)
     {
       int i = 0;
@@ -314,13 +287,8 @@ public class PluginUpdater
     }
     localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (((Iterator)localObject).hasNext()) {
-      blwq.a((PluginInfo)((Iterator)localObject).next(), localFile);
+      PluginInfoUtil.a((PluginInfo)((Iterator)localObject).next(), localFile);
     }
-  }
-  
-  public void a(blxi paramblxi)
-  {
-    this.jdField_a_of_type_Blxi = paramblxi;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -360,12 +328,17 @@ public class PluginUpdater
     ((ResourceConfig.GetResourceReqV2)localObject2).pluginType.set(128);
     ((ResourceConfig.GetResourceReqV2)localObject2).reqVer.set(1);
     ((ResourceConfig.GetResourceReqV2)localObject2).resReqInfo.set((List)localObject1);
-    ((ResourceConfig.GetResourceReqV2)localObject2).revision.set("b8c39faf");
-    localObject1 = new NewIntent(BaseApplicationImpl.getApplication(), nta.class);
+    ((ResourceConfig.GetResourceReqV2)localObject2).revision.set("de12fadd");
+    localObject1 = new NewIntent(BaseApplicationImpl.getApplication(), ProtoServlet.class);
     ((NewIntent)localObject1).putExtra("cmd", "ResourceConfig.ClientReqV2");
     ((NewIntent)localObject1).putExtra("data", ((ResourceConfig.GetResourceReqV2)localObject2).toByteArray());
-    ((NewIntent)localObject1).setObserver(new blxh(this));
+    ((NewIntent)localObject1).setObserver(new PluginUpdater.1(this));
     paramQQAppInterface.startServlet((NewIntent)localObject1);
+  }
+  
+  public void a(PluginUpdater.OnPluginInfoUpdateListener paramOnPluginInfoUpdateListener)
+  {
+    this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener = paramOnPluginInfoUpdateListener;
   }
   
   public void a(boolean paramBoolean, int paramInt, ResourceConfig.GetResourceRespV2 paramGetResourceRespV2)
@@ -374,8 +347,8 @@ public class PluginUpdater
       QLog.d("plugin_tag", 2, "onGetPluginConfig: " + paramBoolean);
     }
     if (paramInt != 128) {
-      if (this.jdField_a_of_type_Blxi != null) {
-        this.jdField_a_of_type_Blxi.a(false);
+      if (this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener != null) {
+        this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a(false);
       }
     }
     do
@@ -384,8 +357,8 @@ public class PluginUpdater
       if ((paramBoolean) && (paramGetResourceRespV2 != null)) {
         break;
       }
-    } while (this.jdField_a_of_type_Blxi == null);
-    this.jdField_a_of_type_Blxi.a(false);
+    } while (this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener == null);
+    this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a(false);
     return;
     a(paramGetResourceRespV2);
     this.jdField_a_of_type_Boolean = false;
@@ -465,7 +438,7 @@ public class PluginUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.plugin.PluginUpdater
  * JD-Core Version:    0.7.0.1
  */

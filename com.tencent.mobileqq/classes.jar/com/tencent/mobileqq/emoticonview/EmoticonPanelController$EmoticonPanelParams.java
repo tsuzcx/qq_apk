@@ -2,11 +2,11 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
 
 class EmoticonPanelController$EmoticonPanelParams
 {
-  QQAppInterface app;
+  QQEmoticonMainPanelApp app;
   EmoticonCallback callback;
   String defaultEpId;
   int defaultPanelType;
@@ -41,9 +41,9 @@ class EmoticonPanelController$EmoticonPanelParams
         this.kanDianBiu = paramEmoticonMainPanel.kanDianBiu;
         this.app = paramEmoticonMainPanel.app;
         this.hasBigEmotion = paramEmoticonMainPanel.hasBigEmotion;
-        this.emoticonListProvider = EmoticonPanelController.access$500(paramEmoticonMainPanel);
+        this.emoticonListProvider = EmoticonPanelController.access$700(paramEmoticonMainPanel);
         this.mBaseChatPie = paramEmoticonMainPanel.mBaseChatPie;
-        this.isFilterSysFaceBeyond255 = EmoticonPanelController.access$600(paramEmoticonMainPanel);
+        this.isFilterSysFaceBeyond255 = EmoticonPanelController.access$800(paramEmoticonMainPanel);
         this.hideAllSettingTabs = paramEmoticonMainPanel.mHideAllSettingTabs;
         this.mIsOnlySysEmotion = paramEmoticonMainPanel.mIsOnlySysEmotion;
       }
@@ -65,9 +65,9 @@ class EmoticonPanelController$EmoticonPanelParams
     localEmoticonPanelController.kanDianBiu = this.kanDianBiu;
     localEmoticonPanelController.app = this.app;
     localEmoticonPanelController.hasBigEmotion = this.hasBigEmotion;
-    EmoticonPanelController.access$502(localEmoticonPanelController, this.emoticonListProvider);
+    EmoticonPanelController.access$702(localEmoticonPanelController, this.emoticonListProvider);
     localEmoticonPanelController.mBaseChatPie = this.mBaseChatPie;
-    EmoticonPanelController.access$602(localEmoticonPanelController, this.isFilterSysFaceBeyond255);
+    EmoticonPanelController.access$802(localEmoticonPanelController, this.isFilterSysFaceBeyond255);
     localEmoticonPanelController.mHideAllSettingTabs = this.hideAllSettingTabs;
     localEmoticonPanelController.mIsOnlySysEmotion = this.mIsOnlySysEmotion;
     localEmoticonPanelController.setCurType(this.sessionType);
@@ -75,7 +75,7 @@ class EmoticonPanelController$EmoticonPanelParams
   
   public EmoticonMainPanel create()
   {
-    this.emoticonMainPanel = ((EmoticonMainPanel)View.inflate(this.app.getApp(), 2131559158, null));
+    this.emoticonMainPanel = ((EmoticonMainPanel)View.inflate(this.app.getApp(), 2131559200, null));
     show();
     return this.emoticonMainPanel;
   }
@@ -91,7 +91,7 @@ class EmoticonPanelController$EmoticonPanelParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController.EmoticonPanelParams
  * JD-Core Version:    0.7.0.1
  */

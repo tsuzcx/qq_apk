@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.utils.ViolaDatongReportUtils;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.viola.annotation.JSMethod;
 import com.tencent.viola.core.ViolaInstance;
@@ -8,7 +9,6 @@ import com.tencent.viola.module.BaseModule;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.utils.ViolaUtils;
 import java.util.Map;
-import tzz;
 
 public class DtReportModule
   extends BaseModule
@@ -32,15 +32,12 @@ public class DtReportModule
     {
       return;
     }
-    localMap = tzz.a(paramObject.toString());
-    if (localMap.containsKey("dt_pgid")) {
-      VideoReport.setPageId(paramString2, ViolaUtils.getString(localMap.get("dt_pgid"), ""));
-    }
+    localMap = ViolaDatongReportUtils.a(paramObject.toString());
     if (localMap.containsKey("dt_eid")) {
       VideoReport.setElementId(paramString2, ViolaUtils.getString(localMap.get("dt_eid"), ""));
     }
     VideoReport.setElementParams(paramString2, localMap);
-    tzz.a(paramString1, paramObject, paramString2);
+    ViolaDatongReportUtils.a(paramString1, paramObject, paramString2);
   }
   
   public String getModuleName()
@@ -50,7 +47,7 @@ public class DtReportModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.DtReportModule
  * JD-Core Version:    0.7.0.1
  */

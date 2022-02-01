@@ -11,13 +11,13 @@ import java.util.HashMap;
 
 public class PanoramaConfig$Builder
 {
-  private boolean isNeedPieceLoad;
-  private boolean isOpenGyroscopeSensor;
-  private boolean isOpenTouchMove;
-  private boolean isShowGuideAnimate;
-  private boolean isShowLoadingProgress;
-  private boolean isShowPanoramaBall;
-  private boolean isTextureChange;
+  private boolean isNeedPieceLoad = false;
+  private boolean isOpenGyroscopeSensor = false;
+  private boolean isOpenTouchMove = false;
+  private boolean isShowGuideAnimate = false;
+  private boolean isShowLoadingProgress = false;
+  private boolean isShowPanoramaBall = false;
+  private boolean isTextureChange = false;
   private int modeType;
   private String originalUrl;
   private HashMap<String, String> panoramaExtra;
@@ -259,7 +259,7 @@ public class PanoramaConfig$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.panorama.util.PanoramaConfig.Builder
  * JD-Core Version:    0.7.0.1
  */

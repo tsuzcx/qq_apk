@@ -12,7 +12,6 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import wny;
 
 public class DotAnimationView
   extends View
@@ -20,8 +19,8 @@ public class DotAnimationView
   private static String jdField_a_of_type_JavaLangString = "DotAnimationView";
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private List<wny> jdField_a_of_type_JavaUtilList = new ArrayList(3);
-  private boolean jdField_a_of_type_Boolean;
+  private List<DotAnimationView.Dot> jdField_a_of_type_JavaUtilList = new ArrayList(3);
+  private boolean jdField_a_of_type_Boolean = false;
   private int b;
   private int c;
   private int d;
@@ -53,21 +52,21 @@ public class DotAnimationView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      wny localwny = (wny)localIterator.next();
-      paramCanvas.drawCircle(getWidth() / 2 + localwny.b, getHeight() / 2, localwny.a, this.jdField_a_of_type_AndroidGraphicsPaint);
+      DotAnimationView.Dot localDot = (DotAnimationView.Dot)localIterator.next();
+      paramCanvas.drawCircle(getWidth() / 2 + localDot.b, getHeight() / 2, localDot.a, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Int = UIUtils.dip2px(getContext(), -20.0F);
-    this.b = UIUtils.dip2px(getContext(), -50.0F);
-    this.c = UIUtils.dip2px(getContext(), -70.0F);
-    this.d = UIUtils.dip2px(getContext(), -95.0F);
-    this.e = UIUtils.dip2px(getContext(), 3.0F);
-    this.f = UIUtils.dip2px(getContext(), 6.0F);
-    this.g = UIUtils.dip2px(getContext(), 30.0F);
-    this.h = UIUtils.dip2px(getContext(), -20.0F);
+    this.jdField_a_of_type_Int = UIUtils.a(getContext(), -20.0F);
+    this.b = UIUtils.a(getContext(), -50.0F);
+    this.c = UIUtils.a(getContext(), -70.0F);
+    this.d = UIUtils.a(getContext(), -95.0F);
+    this.e = UIUtils.a(getContext(), 3.0F);
+    this.f = UIUtils.a(getContext(), 6.0F);
+    this.g = UIUtils.a(getContext(), 30.0F);
+    this.h = UIUtils.a(getContext(), -20.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#DDDEE2"));
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -75,7 +74,7 @@ public class DotAnimationView
     int i = 0;
     while (i < 3)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new wny(this, null));
+      this.jdField_a_of_type_JavaUtilList.add(new DotAnimationView.Dot(this, null));
       i += 1;
     }
   }
@@ -92,12 +91,12 @@ public class DotAnimationView
       i = 0;
       while (localIterator.hasNext())
       {
-        wny localwny = (wny)localIterator.next();
-        if ((localwny.a != 0.0F) || (localwny.b != 0.0F)) {
+        DotAnimationView.Dot localDot = (DotAnimationView.Dot)localIterator.next();
+        if ((localDot.a != 0.0F) || (localDot.b != 0.0F)) {
           i = 1;
         }
-        localwny.a = 0.0F;
-        localwny.b = 0.0F;
+        localDot.a = 0.0F;
+        localDot.b = 0.0F;
       }
     } while (i == 0);
     setTranslationY(0.0F);
@@ -111,17 +110,17 @@ public class DotAnimationView
     }
     this.jdField_a_of_type_Boolean = false;
     Object localObject;
-    wny localwny;
+    DotAnimationView.Dot localDot;
     if (paramFloat > this.jdField_a_of_type_Int)
     {
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        localwny = (wny)((Iterator)localObject).next();
-        localwny.a = 0.0F;
-        localwny.b = 0.0F;
+        localDot = (DotAnimationView.Dot)((Iterator)localObject).next();
+        localDot.a = 0.0F;
+        localDot.b = 0.0F;
       }
-      ((wny)this.jdField_a_of_type_JavaUtilList.get(1)).a = (this.f * (Math.abs(paramFloat) / Math.abs(this.jdField_a_of_type_Int)));
+      ((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(1)).a = (this.f * (Math.abs(paramFloat) / Math.abs(this.jdField_a_of_type_Int)));
     }
     for (;;)
     {
@@ -134,13 +133,13 @@ public class DotAnimationView
         label142:
         if (i < this.jdField_a_of_type_JavaUtilList.size())
         {
-          ((wny)this.jdField_a_of_type_JavaUtilList.get(i)).b = (((wny)this.jdField_a_of_type_JavaUtilList.get(i)).c * paramFloat);
+          ((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(i)).b = (((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(i)).c * paramFloat);
           if (i != 1) {
             break label242;
           }
         }
         label242:
-        for (((wny)this.jdField_a_of_type_JavaUtilList.get(i)).a = (this.f - (this.f - this.e) * paramFloat);; ((wny)this.jdField_a_of_type_JavaUtilList.get(i)).a = this.e)
+        for (((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(i)).a = (this.f - (this.f - this.e) * paramFloat);; ((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(i)).a = this.e)
         {
           i += 1;
           break label142;
@@ -152,9 +151,9 @@ public class DotAnimationView
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          localwny = (wny)((Iterator)localObject).next();
-          localwny.a = this.e;
-          localwny.b = localwny.c;
+          localDot = (DotAnimationView.Dot)((Iterator)localObject).next();
+          localDot.a = this.e;
+          localDot.b = localDot.c;
         }
       }
       else
@@ -162,66 +161,66 @@ public class DotAnimationView
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          localwny = (wny)((Iterator)localObject).next();
-          localwny.b = localwny.c;
+          localDot = (DotAnimationView.Dot)((Iterator)localObject).next();
+          localDot.b = localDot.c;
         }
         float f1 = this.c + (this.d - this.c) / 2;
         float f2 = this.d;
         if (paramFloat > f1)
         {
           paramFloat = (this.c - paramFloat) / (this.c - f1);
-          localObject = (wny)this.jdField_a_of_type_JavaUtilList.get(0);
-          localwny = (wny)this.jdField_a_of_type_JavaUtilList.get(2);
+          localObject = (DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(0);
+          localDot = (DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(2);
           paramFloat = this.e - paramFloat * this.e;
-          localwny.a = paramFloat;
-          ((wny)localObject).a = paramFloat;
-          ((wny)this.jdField_a_of_type_JavaUtilList.get(1)).a = this.e;
+          localDot.a = paramFloat;
+          ((DotAnimationView.Dot)localObject).a = paramFloat;
+          ((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(1)).a = this.e;
         }
         else if (paramFloat > f2)
         {
           paramFloat = (f1 - paramFloat) / (f1 - f2);
-          localObject = (wny)this.jdField_a_of_type_JavaUtilList.get(0);
-          ((wny)this.jdField_a_of_type_JavaUtilList.get(2)).a = 0.0F;
-          ((wny)localObject).a = 0.0F;
-          ((wny)this.jdField_a_of_type_JavaUtilList.get(1)).a = (this.e - paramFloat * this.e);
+          localObject = (DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(0);
+          ((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(2)).a = 0.0F;
+          ((DotAnimationView.Dot)localObject).a = 0.0F;
+          ((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(1)).a = (this.e - paramFloat * this.e);
         }
         else
         {
           localObject = this.jdField_a_of_type_JavaUtilList.iterator();
           while (((Iterator)localObject).hasNext()) {
-            ((wny)((Iterator)localObject).next()).a = 0.0F;
+            ((DotAnimationView.Dot)((Iterator)localObject).next()).a = 0.0F;
           }
         }
       }
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     a(paramCanvas);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      wny localwny = (wny)localIterator.next();
-      localwny.a = 0.0F;
-      localwny.b = 0.0F;
-      localwny.c = 0.0F;
+      DotAnimationView.Dot localDot = (DotAnimationView.Dot)localIterator.next();
+      localDot.a = 0.0F;
+      localDot.b = 0.0F;
+      localDot.c = 0.0F;
     }
     paramInt1 = this.g;
-    ((wny)this.jdField_a_of_type_JavaUtilList.get(0)).c = this.h;
-    ((wny)this.jdField_a_of_type_JavaUtilList.get(1)).c = 0.0F;
-    ((wny)this.jdField_a_of_type_JavaUtilList.get(2)).c = (-((wny)this.jdField_a_of_type_JavaUtilList.get(0)).c);
+    ((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(0)).c = this.h;
+    ((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(1)).c = 0.0F;
+    ((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(2)).c = (-((DotAnimationView.Dot)this.jdField_a_of_type_JavaUtilList.get(0)).c);
     this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView
  * JD-Core Version:    0.7.0.1
  */

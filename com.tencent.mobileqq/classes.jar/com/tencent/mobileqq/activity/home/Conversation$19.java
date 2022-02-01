@@ -23,7 +23,7 @@ class Conversation$19
         QLog.d("Q.recent", 2, "[status][mainTab] updateNickName() from: " + this.b + " nickName: " + this.a);
       }
       Conversation.a(this.this$0).setText(this.a);
-      Object localObject = Conversation.a(this.this$0).getTag(2131366231);
+      Object localObject = Conversation.a(this.this$0).getTag(2131366402);
       if (((localObject instanceof WeakReference)) && ((((WeakReference)localObject).get() instanceof TextView))) {}
       for (localObject = (TextView)((WeakReference)localObject).get(); localObject != null; localObject = null)
       {
@@ -35,7 +35,7 @@ class Conversation$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.19
  * JD-Core Version:    0.7.0.1
  */

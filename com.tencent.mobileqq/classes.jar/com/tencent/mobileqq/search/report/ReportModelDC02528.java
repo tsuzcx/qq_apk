@@ -4,7 +4,7 @@ public class ReportModelDC02528
   extends ReportModel
 {
   public String action = " ";
-  public int app_version;
+  public int app_version = 0;
   public String module = " ";
   public String obj1 = " ";
   public String obj2 = " ";
@@ -129,7 +129,7 @@ public class ReportModelDC02528
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.report.ReportModelDC02528
  * JD-Core Version:    0.7.0.1
  */

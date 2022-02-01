@@ -7,7 +7,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.HorizontalScrollView;
-import bily;
 
 public class AppShortcutBarScrollView
   extends HorizontalScrollView
@@ -15,7 +14,7 @@ public class AppShortcutBarScrollView
   protected float a;
   protected Rect a;
   protected View a;
-  protected bily a;
+  protected AppShortcutBarScrollView.OnScrollChangedListener a;
   protected boolean a;
   protected boolean b = true;
   
@@ -23,18 +22,21 @@ public class AppShortcutBarScrollView
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public AppShortcutBarScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public AppShortcutBarScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_Boolean = false;
   }
   
   private void a()
@@ -102,7 +104,7 @@ public class AppShortcutBarScrollView
     return (k == 0) || (i - j == k);
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     if (getChildCount() > 0) {
       this.jdField_a_of_type_AndroidViewView = getChildAt(0);
@@ -110,11 +112,11 @@ public class AppShortcutBarScrollView
     super.onFinishInflate();
   }
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Bily != null) {
-      this.jdField_a_of_type_Bily.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView$OnScrollChangedListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView$OnScrollChangedListener.a();
     }
   }
   
@@ -132,14 +134,14 @@ public class AppShortcutBarScrollView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScrollChangedListener(bily parambily)
+  public void setOnScrollChangedListener(AppShortcutBarScrollView.OnScrollChangedListener paramOnScrollChangedListener)
   {
-    this.jdField_a_of_type_Bily = parambily;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView$OnScrollChangedListener = paramOnScrollChangedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AppShortcutBarScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,19 +4,19 @@ import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import bnkb;
-import bnpr;
-import bnqq;
+import dov.com.qq.im.ae.data.AEMaterialManager;
 import dov.com.qq.im.ae.mode.AECaptureMode;
+import dov.com.qq.im.ae.mode.AECaptureModeChangingEvent;
+import dov.com.qq.im.ae.report.AEBaseReportParam;
 
 class AEPlayShowPart$7
-  implements Observer<bnpr>
+  implements Observer<AECaptureModeChangingEvent>
 {
   AEPlayShowPart$7(AEPlayShowPart paramAEPlayShowPart) {}
   
-  public void onChanged(@Nullable bnpr parambnpr)
+  public void onChanged(@Nullable AECaptureModeChangingEvent paramAECaptureModeChangingEvent)
   {
-    if (parambnpr == null) {}
+    if (paramAECaptureModeChangingEvent == null) {}
     do
     {
       do
@@ -24,29 +24,29 @@ class AEPlayShowPart$7
         do
         {
           return;
-          parambnpr = parambnpr.b;
-          if (parambnpr != AECaptureMode.NORMAL) {
+          paramAECaptureModeChangingEvent = paramAECaptureModeChangingEvent.b;
+          if (paramAECaptureModeChangingEvent != AECaptureMode.NORMAL) {
             break;
           }
-          if ((AEPlayShowGridAdapter.selectedMaterial == null) || (AEPlayShowGridAdapter.selectedMaterial != bnkb.a())) {
-            bnqq.a().g("none");
+          if ((AEPlayShowGridAdapter.selectedMaterial == null) || (AEPlayShowGridAdapter.selectedMaterial != AEMaterialManager.a())) {
+            AEBaseReportParam.a().j("none");
           }
         } while (!this.this$0.hasInflated());
         AEPlayShowPart.access$800(this.this$0).setVisibility(8);
         return;
-        if (parambnpr != AECaptureMode.GIF) {
+        if (paramAECaptureModeChangingEvent != AECaptureMode.GIF) {
           break;
         }
       } while (!this.this$0.hasInflated());
       AEPlayShowPart.access$800(this.this$0).setVisibility(8);
       return;
-    } while (parambnpr != AECaptureMode.PLAY);
+    } while (paramAECaptureModeChangingEvent != AECaptureMode.PLAY);
     AEPlayShowPart.access$900(this.this$0);
     if (AEPlayShowPart.access$700(this.this$0) != null)
     {
-      parambnpr = AEPlayShowPart.access$700(this.this$0).getLastMaterialTabId();
-      if ((!TextUtils.isEmpty(parambnpr)) && (!"-1".equals(parambnpr))) {
-        bnqq.a().g(parambnpr);
+      paramAECaptureModeChangingEvent = AEPlayShowPart.access$700(this.this$0).getLastMaterialTabId();
+      if ((!TextUtils.isEmpty(paramAECaptureModeChangingEvent)) && (!"-1".equals(paramAECaptureModeChangingEvent))) {
+        AEBaseReportParam.a().j(paramAECaptureModeChangingEvent);
       }
     }
     AEPlayShowPart.access$800(this.this$0).setVisibility(0);
@@ -55,7 +55,7 @@ class AEPlayShowPart$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEPlayShowPart.7
  * JD-Core Version:    0.7.0.1
  */

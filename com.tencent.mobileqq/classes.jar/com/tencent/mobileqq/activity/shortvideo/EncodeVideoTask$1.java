@@ -9,23 +9,23 @@ class EncodeVideoTask$1
 {
   EncodeVideoTask$1(EncodeVideoTask paramEncodeVideoTask, PublishVideoEntry paramPublishVideoEntry, String paramString, long paramLong) {}
   
-  public void onVideoCompositeFinish(int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (EncodeVideoTask.access$000(this.this$0)) {}
+    if (EncodeVideoTask.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask)) {}
     for (int i = -24;; i = paramInt)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("EncodeVideoTask", 2, "onVideoCompositeFinish isCancel:" + EncodeVideoTask.access$000(this.this$0) + ", errCode:" + paramInt);
+        QLog.i("EncodeVideoTask", 2, "onVideoCompositeFinish isCancel:" + EncodeVideoTask.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask) + ", errCode:" + paramInt);
       }
-      this.this$0.isEncodeFinish = true;
-      EncodeVideoTask.access$100(this.this$0).onStoryMergeCompleted(i, paramString1, this.val$publishVideoEntry, this.val$targetPath, this.val$startMergeTime);
+      this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask.a = true;
+      EncodeVideoTask.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask).a(i, paramString1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.1
  * JD-Core Version:    0.7.0.1
  */

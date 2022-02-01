@@ -1,18 +1,14 @@
 package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
-import bgbr;
-import bgcb;
-import bgce;
-
-public class LeftAppShortcutBarPanel$3$1
+class LeftAppShortcutBarPanel$3$1
   implements Runnable
 {
-  public LeftAppShortcutBarPanel$3$1(bgce parambgce) {}
+  LeftAppShortcutBarPanel$3$1(LeftAppShortcutBarPanel.3 param3) {}
   
   public void run()
   {
-    if (bgcb.a(this.a.a) != null) {
-      bgcb.a(this.a.a).b();
+    if (LeftAppShortcutBarPanel.a(this.a.a) != null) {
+      LeftAppShortcutBarPanel.a(this.a.a).b();
     }
   }
 }

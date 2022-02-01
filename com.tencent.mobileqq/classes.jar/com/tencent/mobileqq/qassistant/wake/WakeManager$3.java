@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.qassistant.wake;
 
-import banp;
-import banv;
-
-public class WakeManager$3
+class WakeManager$3
   implements Runnable
 {
-  public WakeManager$3(banp parambanp) {}
+  WakeManager$3(WakeManager paramWakeManager) {}
   
   public void run()
   {
-    banp.a(this.this$0).a(this.this$0.b);
+    WakeManager.a(this.this$0).a(this.this$0.b);
   }
 }
 

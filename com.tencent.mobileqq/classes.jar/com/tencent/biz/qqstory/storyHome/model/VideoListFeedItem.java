@@ -4,23 +4,22 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.SerializationPB.CommentLikeFeed;
 import com.tencent.biz.qqstory.base.SerializationPB.VideoListFeed;
+import com.tencent.biz.qqstory.model.item.IFeedOwner;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import wkw;
-import ydz;
 
-public abstract class VideoListFeedItem<T extends ydz, E extends wkw>
+public abstract class VideoListFeedItem<T extends StoryHomeFeed, E extends IFeedOwner>
   extends CommentLikeFeedItem<T, E>
 {
   public static final String TAG = "VideoListFeedItem";
-  public boolean isReportedAutoPlay;
-  public boolean mHasPublicVideo;
-  public boolean mHasTag;
-  public boolean mIsContribute;
+  public boolean isReportedAutoPlay = false;
+  public boolean mHasPublicVideo = false;
+  public boolean mHasTag = false;
+  public boolean mIsContribute = false;
   public boolean mIsVideoEnd;
-  public String mQimSyncWording;
+  public String mQimSyncWording = null;
   public String mVideoNextCookie = "";
   public int mVideoPullType = 0;
   public int mVideoSeq = -1;
@@ -216,7 +215,7 @@ public abstract class VideoListFeedItem<T extends ydz, E extends wkw>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem
  * JD-Core Version:    0.7.0.1
  */

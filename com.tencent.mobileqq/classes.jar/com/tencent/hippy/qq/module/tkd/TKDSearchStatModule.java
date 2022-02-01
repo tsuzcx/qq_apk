@@ -2,6 +2,7 @@ package com.tencent.hippy.qq.module.tkd;
 
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.ug.RIJUGJsonUtils;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -11,7 +12,6 @@ import com.tencent.mtt.hippy.utils.LogUtils;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import pqp;
 
 @HippyNativeModule(name="TKDStatisticModule")
 public class TKDSearchStatModule
@@ -87,7 +87,7 @@ public class TKDSearchStatModule
       paramHippyMap = hippyMapToStringMap(paramHippyMap);
       paramHippyMap.remove("eventName");
     } while (paramHippyMap.size() <= 0);
-    paramHippyMap.put("qua", pqp.c());
+    paramHippyMap.put("qua", RIJUGJsonUtils.c());
     paramHippyMap.put("qq", TKDAccountModule.getCurAccountInfo().qqNum);
     boolean bool1 = false;
     try
@@ -113,7 +113,7 @@ public class TKDSearchStatModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDSearchStatModule
  * JD-Core Version:    0.7.0.1
  */

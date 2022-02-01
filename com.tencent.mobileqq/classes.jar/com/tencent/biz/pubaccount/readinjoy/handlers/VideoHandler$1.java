@@ -1,24 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import qcn;
-import qdc;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
 
-public class VideoHandler$1
+class VideoHandler$1
   implements Runnable
 {
-  public VideoHandler$1(qdc paramqdc) {}
+  VideoHandler$1(VideoHandler paramVideoHandler) {}
   
   public void run()
   {
-    if ((qdc.a(this.this$0) != null) && (!((ReadInJoyXListView)qdc.a(this.this$0)).a())) {
-      qcn.a(qdc.a(this.this$0), true);
-    }
+    VideoVolumeControl.a().b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.handlers.VideoHandler.1
  * JD-Core Version:    0.7.0.1
  */

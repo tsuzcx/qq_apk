@@ -6,8 +6,8 @@ public class ProfileGameInfo$UserHeroInfo
   implements Serializable
 {
   public String heroIcon;
-  public long heroId;
-  public int skilledLevel;
+  public long heroId = 0L;
+  public int skilledLevel = 0;
   
   public ProfileGameInfo$UserHeroInfo(ProfileGameInfo paramProfileGameInfo, long paramLong, String paramString, int paramInt)
   {

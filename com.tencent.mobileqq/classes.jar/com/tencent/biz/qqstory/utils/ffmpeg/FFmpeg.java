@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.IntentFilter;
 import android.media.MediaMetadataRetriever;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryConstant;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.VideoUtils;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.io.BufferedWriter;
@@ -13,10 +16,6 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import vzh;
-import ykq;
-import zeb;
-import zfl;
 
 public class FFmpeg
 {
@@ -30,14 +29,14 @@ public class FFmpeg
   protected static final int RESULT_NOT_DONE = -9999;
   protected static final int RESULT_SUCCESS = 1;
   public static final String TAG = "Q.qqstory.ffmpeg.FFmpegCmd";
-  protected static volatile FFmpeg instance;
+  protected static volatile FFmpeg instance = null;
   public final Context context;
   public FFmpegExecuteAsyncTask ffmpegExecuteAsyncTask;
   public ArrayList<FFmpegCommandUnit> mCmdQueue = new ArrayList();
   public FFmpegCommandUnit mCurrentCommandUnit;
   public String mCurrentTaskUni;
-  public boolean mIsFFmpegingCloseScreen;
-  protected boolean mIsWorkThreadCallback;
+  public boolean mIsFFmpegingCloseScreen = false;
+  protected boolean mIsWorkThreadCallback = false;
   public int mLastTaskResult = -9999;
   public BroadcastReceiver mScreenActionReceiver = new FFmpeg.7(this);
   protected long timeout = 9223372036854775807L;
@@ -165,10 +164,10 @@ public class FFmpeg
     switch (i % 360)
     {
     default: 
-      ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "unSupport orientation:%s", new Object[] { paramString2 });
+      SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "unSupport orientation:%s", new Object[] { paramString2 });
       return;
     case 0: 
-      ykq.b("Q.qqstory.ffmpeg.FFmpegCmd", "no need rotate.");
+      SLog.b("Q.qqstory.ffmpeg.FFmpegCmd", "no need rotate.");
       return;
     case 90: 
       localArrayList.add("transpose=1");
@@ -193,10 +192,10 @@ public class FFmpeg
   
   public void clipAudio(String paramString1, String paramString2, int paramInt1, int paramInt2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio arguments: \n inAudio" + paramString1 + "\n outAudio:" + paramString2 + "\n start:" + paramInt1 + "\n duration:" + paramInt2);
-    if (!zeb.c(paramString1))
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio arguments: \n inAudio" + paramString1 + "\n outAudio:" + paramString2 + "\n start:" + paramInt1 + "\n duration:" + paramInt2);
+    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString1))
     {
-      ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio but inAudio file is not exist");
+      SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio but inAudio file is not exist");
       paramFFmpegExecuteResponseCallback.onFailure(String.valueOf(941001));
       paramFFmpegExecuteResponseCallback.onFinish(false);
       return;
@@ -313,17 +312,17 @@ public class FFmpeg
   
   public Clip combineAudioAndVideo(String paramString1, String paramString2, boolean paramBoolean, Clip paramClip, int paramInt, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "combineAudioAndVideo arguments: \n inVideo" + paramString1 + "\n inAudio:" + paramString2 + "\n outMedia:" + paramClip);
-    if (!zeb.c(paramString1))
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "combineAudioAndVideo arguments: \n inVideo" + paramString1 + "\n inAudio:" + paramString2 + "\n outMedia:" + paramClip);
+    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString1))
     {
-      ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio but inVideo file is not exist");
+      SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio but inVideo file is not exist");
       paramFFmpegExecuteResponseCallback.onFailure(String.valueOf(941002));
       paramFFmpegExecuteResponseCallback.onFinish(false);
       return paramClip;
     }
-    if (!zeb.c(paramString2))
+    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString2))
     {
-      ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio but inAudio file is not exist");
+      SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio but inAudio file is not exist");
       paramFFmpegExecuteResponseCallback.onFailure(String.valueOf(941002));
       paramFFmpegExecuteResponseCallback.onFinish(false);
       return paramClip;
@@ -372,7 +371,7 @@ public class FFmpeg
         localStringBuilder.append("file '").append(paramString1).append("'");
         paramInt += 1;
       }
-      com.tencent.mobileqq.utils.FileUtils.writeFile(str, localStringBuilder.toString());
+      com.tencent.mobileqq.utils.FileUtils.a(str, localStringBuilder.toString());
       localArrayList.add("-f");
       localArrayList.add("concat");
       localArrayList.add("-safe");
@@ -458,12 +457,12 @@ public class FFmpeg
   
   public void compressVideo(String paramString1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, String paramString2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    Object localObject = zfl.a(paramString1);
+    Object localObject = VideoUtils.a(paramString1);
     if (localObject == null)
     {
       paramFFmpegExecuteResponseCallback.onFailure("input path is null");
       paramFFmpegExecuteResponseCallback.onFinish(false);
-      ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", "compressVideo input path is null");
+      SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", "compressVideo input path is null");
       return;
     }
     int k = localObject[1];
@@ -498,7 +497,7 @@ public class FFmpeg
         m = k;
       }
       k = 1;
-      long l = zeb.a(paramString1);
+      long l = com.tencent.biz.qqstory.utils.FileUtils.a(paramString1);
       j = k;
       if (l != -1L)
       {
@@ -561,7 +560,7 @@ public class FFmpeg
   
   public void concatDifferentCodingMedia(List<String> paramList, String paramString, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatDifferentCodingMedia arguments: \n inMedias:" + paramList + "\n outMedia:" + paramString);
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatDifferentCodingMedia arguments: \n inMedias:" + paramList + "\n outMedia:" + paramString);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add("-y");
     StringBuilder localStringBuilder = new StringBuilder();
@@ -589,9 +588,9 @@ public class FFmpeg
   
   public void concatMedia(List<String> paramList, String paramString, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback, boolean paramBoolean)
   {
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMedia arguments: \n inMedias:" + paramList + "\n outMedia:" + paramString);
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMedia arguments: \n inMedias:" + paramList + "\n outMedia:" + paramString);
     new File(paramString);
-    File localFile = new File(vzh.k + "temp.txt");
+    File localFile = new File(QQStoryConstant.k + "temp.txt");
     if (localFile.exists()) {
       localFile.delete();
     }
@@ -663,14 +662,14 @@ public class FFmpeg
   
   public void concatMediaByTs(List<String> paramList, String paramString, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs arguments: \n inMedias:" + paramList + "\n outMedia:" + paramString);
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs arguments: \n inMedias:" + paramList + "\n outMedia:" + paramString);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramList.size())
     {
       localObject1 = (String)paramList.get(i);
       Object localObject2 = new File((String)localObject1).getName().split("\\.");
-      localObject2 = vzh.k + localObject2[0] + ".ts";
+      localObject2 = QQStoryConstant.k + localObject2[0] + ".ts";
       Object localObject3 = new File((String)localObject2);
       if (!((File)localObject3).getParentFile().exists()) {
         ((File)localObject3).getParentFile().mkdirs();
@@ -729,7 +728,7 @@ public class FFmpeg
     localArrayList.add("copy");
     localArrayList.add(new File(paramString2).getCanonicalPath());
     paramString1 = (String[])localArrayList.toArray(new String[0]);
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "extractAudioFromMp4 args: %s", new Object[] { Arrays.toString(paramString1) });
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "extractAudioFromMp4 args: %s", new Object[] { Arrays.toString(paramString1) });
     execute(paramString1, paramFFmpegExecuteResponseCallback);
   }
   
@@ -759,7 +758,7 @@ public class FFmpeg
     localArrayList.add("25");
     localArrayList.add(new File(paramString2).getCanonicalPath());
     paramString1 = (String[])localArrayList.toArray(new String[0]);
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "convertPicToVideo args: %s", new Object[] { Arrays.toString(paramString1) });
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "convertPicToVideo args: %s", new Object[] { Arrays.toString(paramString1) });
     execute(paramString1, paramFFmpegExecuteResponseCallback);
   }
   
@@ -795,28 +794,28 @@ public class FFmpeg
     localArrayList.add("25");
     localArrayList.add(new File(paramString2).getCanonicalPath());
     paramString1 = (String[])localArrayList.toArray(new String[0]);
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "convertPicToVideoWithTime args: %s", new Object[] { Arrays.toString(paramString1) });
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "convertPicToVideoWithTime args: %s", new Object[] { Arrays.toString(paramString1) });
     execute(paramString1, paramFFmpegExecuteResponseCallback);
   }
   
   public void emptyFFmengCmd(String paramString1, String paramString2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "fake ffmeng command. arguments: \n inMedia:" + paramString1 + "\n outMedia:" + paramString2);
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "fake ffmeng command. arguments: \n inMedia:" + paramString1 + "\n outMedia:" + paramString2);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       paramFFmpegExecuteResponseCallback.onFailure("input path is null");
-      ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", "fake ffmeng command. input path is null");
+      SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", "fake ffmeng command. input path is null");
       paramFFmpegExecuteResponseCallback.onFinish(false);
       return;
     }
-    boolean bool = zeb.a(this.context, paramString1, paramString2);
+    boolean bool = com.tencent.biz.qqstory.utils.FileUtils.a(this.context, paramString1, paramString2);
     if (bool) {
       paramFFmpegExecuteResponseCallback.onSuccess("copy_success");
     }
     for (;;)
     {
       paramFFmpegExecuteResponseCallback.onFinish(bool);
-      ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "copy video to album result is " + bool);
+      SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "copy video to album result is " + bool);
       return;
       paramFFmpegExecuteResponseCallback.onFailure("copy_fail");
     }
@@ -826,7 +825,7 @@ public class FFmpeg
   {
     if ((this.ffmpegExecuteAsyncTask != null) && (!this.ffmpegExecuteAsyncTask.isProcessCompleted()))
     {
-      ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", "FFmpeg command is already running");
+      SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", "FFmpeg command is already running");
       throw new FFmpegCommandAlreadyRunningException("FFmpeg command is already running, you are only allowed to run single command at a time");
     }
     if (paramArrayOfString.length != 0)
@@ -845,7 +844,7 @@ public class FFmpeg
       paramArrayOfString = (String[])Util.concatenate((String[])Util.concatenate(new String[] { FileUtils.getFFmpeg(this.context) }, paramArrayOfString), new String[] { FileUtils.getAVCodecSoFilePath(this.context) });
       this.ffmpegExecuteAsyncTask = new FFmpegExecuteAsyncTask(this.context, paramArrayOfString, this.timeout, this.mIsWorkThreadCallback, paramFFmpegExecuteResponseCallback);
       this.ffmpegExecuteAsyncTask.execute(new Void[0]);
-      ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "command execute: " + TextUtils.join(" ", paramArrayOfString));
+      SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "command execute: " + TextUtils.join(" ", paramArrayOfString));
       return;
     }
     throw new IllegalArgumentException("shell command cannot be empty");
@@ -868,13 +867,13 @@ public class FFmpeg
   public void insertFFmpegQueue(ArrayList<FFmpegCommandUnit> paramArrayList)
   {
     killRunningProcesses(false);
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "[insertFFmpegQueue][old] " + TextUtils.join(" ", paramArrayList.toArray()));
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "[insertFFmpegQueue][old] " + TextUtils.join(" ", paramArrayList.toArray()));
     if (this.mCurrentCommandUnit != null) {
       this.mCmdQueue.add(0, this.mCurrentCommandUnit);
     }
     this.mCmdQueue.addAll(0, paramArrayList);
     cmdFFmpegQueue(this.mCmdQueue);
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "[insertFFmpegQueue][new] " + TextUtils.join(" ", paramArrayList.toArray()));
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "[insertFFmpegQueue][new] " + TextUtils.join(" ", paramArrayList.toArray()));
   }
   
   public boolean isFFmpegCommandRunning()
@@ -902,10 +901,10 @@ public class FFmpeg
         {
           this.mCurrentCommandUnit.callback.onFailure("FFmpeg任务被强制Kill掉");
           this.mCurrentCommandUnit.callback.onFinish(false);
-          ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "FFmpeg任务被强制Kill掉");
+          SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "FFmpeg任务被强制Kill掉");
         }
       }
-      ykq.b("Q.qqstory.ffmpeg.FFmpegCmd", "KillFFmpeg!");
+      SLog.b("Q.qqstory.ffmpeg.FFmpegCmd", "KillFFmpeg!");
     }
   }
   
@@ -929,22 +928,22 @@ public class FFmpeg
         {
           this.mCurrentCommandUnit.callback.onFailure("FFmpeg任务被强制Kill掉");
           this.mCurrentCommandUnit.callback.onFinish(false);
-          ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "FFmpeg任务被强制Kill掉");
+          SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "FFmpeg任务被强制Kill掉");
         }
       }
-      ykq.b("Q.qqstory.ffmpeg.FFmpegCmd", "KillFFmpeg!");
+      SLog.b("Q.qqstory.ffmpeg.FFmpegCmd", "KillFFmpeg!");
     }
   }
   
   public void mp4Tots(String paramString1, String paramString2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "mp4Tots arguments: \n input:" + paramString1 + "\n outputPath:" + paramString2);
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "mp4Tots arguments: \n input:" + paramString1 + "\n outputPath:" + paramString2);
     this.tsFileList.add(paramString2);
-    if (zeb.c(paramString2))
+    if (com.tencent.biz.qqstory.utils.FileUtils.c(paramString2))
     {
       paramFFmpegExecuteResponseCallback.onSuccess("TS file exists");
       paramFFmpegExecuteResponseCallback.onFinish(true);
-      ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "TS file exists");
+      SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "TS file exists");
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -980,7 +979,7 @@ public class FFmpeg
     localArrayList.add("-metadata");
     localArrayList.add("title=" + System.currentTimeMillis());
     paramString1 = new StringBuilder();
-    paramString1.append("dev=").append(DeviceInfoUtil.getDeviceModel()).append("/").append("os=").append(DeviceInfoUtil.getDeviceOSVersion()).append("/").append("appVer=").append(AppSetting.a());
+    paramString1.append("dev=").append(DeviceInfoUtil.d()).append("/").append("os=").append(DeviceInfoUtil.e()).append("/").append("appVer=").append(AppSetting.a());
     localArrayList.add("-metadata");
     localArrayList.add("comment=" + paramString1.toString());
     if (paramInt != -1)
@@ -1016,24 +1015,24 @@ public class FFmpeg
   
   public void watermark(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermark arguments: \n inImage" + paramString1 + "\n inMedia:" + paramString2 + "\n outMedia:" + paramString3 + "\n videoWidth:" + paramInt1 + "\n videoHeight:" + paramInt2);
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermark arguments: \n inImage" + paramString1 + "\n inMedia:" + paramString2 + "\n outMedia:" + paramString3 + "\n videoWidth:" + paramInt1 + "\n videoHeight:" + paramInt2);
     if ((paramString2 == null) || (paramString3 == null))
     {
       paramFFmpegExecuteResponseCallback.onFailure("input path is null");
       paramFFmpegExecuteResponseCallback.onFinish(false);
-      ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermark input path is null");
+      SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermark input path is null");
       return;
     }
     if (paramString1 == null)
     {
-      boolean bool = zeb.a(this.context, paramString2, paramString3);
+      boolean bool = com.tencent.biz.qqstory.utils.FileUtils.a(this.context, paramString2, paramString3);
       if (bool) {
         paramFFmpegExecuteResponseCallback.onSuccess("copy_success");
       }
       for (;;)
       {
         paramFFmpegExecuteResponseCallback.onFinish(bool);
-        ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermark inImage == null, copy to DCIM result is " + bool);
+        SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermark inImage == null, copy to DCIM result is " + bool);
         return;
         paramFFmpegExecuteResponseCallback.onFailure("copy_fail");
       }
@@ -1052,24 +1051,24 @@ public class FFmpeg
   
   public void watermarkWithRotation(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermarkWithRotation arguments: \n inImage" + paramString1 + "\n inMedia:" + paramString2 + "\n outMedia:" + paramString3 + "\n videoWidth:" + paramInt1 + "\n videoHeight:" + paramInt2);
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermarkWithRotation arguments: \n inImage" + paramString1 + "\n inMedia:" + paramString2 + "\n outMedia:" + paramString3 + "\n videoWidth:" + paramInt1 + "\n videoHeight:" + paramInt2);
     if ((paramString2 == null) || (paramString3 == null))
     {
       paramFFmpegExecuteResponseCallback.onFailure("input path is null");
-      ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermarkWithRotation input path is null");
+      SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermarkWithRotation input path is null");
       paramFFmpegExecuteResponseCallback.onFinish(false);
       return;
     }
     if (paramString1 == null)
     {
-      boolean bool = zeb.a(this.context, paramString2, paramString3);
+      boolean bool = com.tencent.biz.qqstory.utils.FileUtils.a(this.context, paramString2, paramString3);
       if (bool) {
         paramFFmpegExecuteResponseCallback.onSuccess("copy_success");
       }
       for (;;)
       {
         paramFFmpegExecuteResponseCallback.onFinish(bool);
-        ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermarkWithRotation inImage == null, copy to DCIM result is " + bool);
+        SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "watermarkWithRotation inImage == null, copy to DCIM result is " + bool);
         return;
         paramFFmpegExecuteResponseCallback.onFailure("copy_fail");
       }
@@ -1088,7 +1087,7 @@ public class FFmpeg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg
  * JD-Core Version:    0.7.0.1
  */

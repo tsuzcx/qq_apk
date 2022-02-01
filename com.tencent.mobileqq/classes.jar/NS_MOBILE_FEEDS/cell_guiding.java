@@ -18,15 +18,15 @@ public final class cell_guiding
   public String action_url = "";
   public String button_icon = "";
   public String button_title = "";
-  public Map<String, String> extendInfo;
-  public int guiding_type;
-  public s_picdata picdata;
+  public Map<String, String> extendInfo = null;
+  public int guiding_type = 0;
+  public s_picdata picdata = null;
   public String strJsonClient = "";
   public String subsummary = "";
   public String summary = "";
   public String title = "";
-  public ArrayList<guide_button> vecButton;
-  public ArrayList<s_user> vecUsers;
+  public ArrayList<guide_button> vecButton = null;
+  public ArrayList<s_user> vecUsers = null;
   
   static
   {

@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import azqh;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -24,7 +23,7 @@ import tencent.im.label.comm.PersonalityTagComm.PraiseUserInfo;
 public class PersonalityLabelInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PersonalityLabelInfo> CREATOR = new azqh();
+  public static final Parcelable.Creator<PersonalityLabelInfo> CREATOR = new PersonalityLabelInfo.1();
   public static final String TAG = "PersonalityLabelInfo";
   int addTime = 0;
   public int bgColor = -16777216;
@@ -32,15 +31,15 @@ public class PersonalityLabelInfo
   int category = 0;
   String coverUrl = "";
   public int fgColor = -1;
-  public long id;
-  public long modTime;
+  public long id = 0L;
+  long modTime;
   public List<PersonalityLabelPhoto> personalityLabelPhotos;
-  public int photoCount = 0;
-  public long praiseCount = 0L;
-  public int praiseFlag;
+  int photoCount = 0;
+  long praiseCount = 0L;
+  int praiseFlag;
   public String text = "";
   long unreadPraiseCount = 0L;
-  public ArrayList<PersonalityLabelZan> zanUins;
+  ArrayList<PersonalityLabelZan> zanUins;
   
   public PersonalityLabelInfo()
   {
@@ -61,7 +60,7 @@ public class PersonalityLabelInfo
     this.zanUins = new ArrayList();
   }
   
-  public PersonalityLabelInfo(Parcel paramParcel)
+  protected PersonalityLabelInfo(Parcel paramParcel)
   {
     paramParcel.readInt();
     this.id = paramParcel.readLong();
@@ -284,7 +283,7 @@ public class PersonalityLabelInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(PersonalityLabel.CURRENT_VERSION);
+    paramParcel.writeInt(ProfilePersonalityLabelInfo.CURRENT_VERSION);
     paramParcel.writeLong(this.id);
     paramParcel.writeInt(this.addTime);
     paramParcel.writeInt(this.category);

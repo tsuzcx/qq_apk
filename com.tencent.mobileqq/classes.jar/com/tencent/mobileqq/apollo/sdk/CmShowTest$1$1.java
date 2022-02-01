@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import andq;
-import andr;
-
-public class CmShowTest$1$1
+class CmShowTest$1$1
   implements Runnable
 {
-  public CmShowTest$1$1(andr paramandr) {}
+  CmShowTest$1$1(CmShowTest.1 param1) {}
   
   public void run()
   {
-    andq.a(this.this$0.a);
+    CmShowTest.a(this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.CmShowTest.1.1
  * JD-Core Version:    0.7.0.1
  */

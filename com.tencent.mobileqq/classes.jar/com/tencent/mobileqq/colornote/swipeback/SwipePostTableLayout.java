@@ -11,39 +11,32 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import aqnq;
-import aqns;
-import aqnu;
-import aqoa;
-import aqoq;
-import aqos;
-import aqqs;
-import aqrn;
-import aqrt;
-import aqrv;
-import aqrw;
-import aqrx;
-import aqry;
-import aqrz;
-import aqsa;
-import bdla;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.colornote.ColorNoteConstants;
+import com.tencent.mobileqq.colornote.ColorNoteCurd;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.OnColorNoteCurdListener;
+import com.tencent.mobileqq.colornote.IServiceInfo;
 import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.data.ColorNoteUtils;
+import com.tencent.mobileqq.colornote.ipc.ColorNoteQIPCModule;
+import com.tencent.mobileqq.colornote.share.ColorNoteStateNotice;
+import com.tencent.mobileqq.colornote.smallscreen.IServiceSyncListener;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.DisplayUtil;
 
 public class SwipePostTableLayout
   extends SwipeBackLayout
-  implements aqsa
+  implements TranslucentConvertor.OnTranslucentConversionListener
 {
   private Vibrator jdField_a_of_type_AndroidOsVibrator;
-  private aqns jdField_a_of_type_Aqns;
-  private aqoa jdField_a_of_type_Aqoa;
-  private aqqs jdField_a_of_type_Aqqs;
-  private aqrn jdField_a_of_type_Aqrn = new aqrv(this);
-  private aqry jdField_a_of_type_Aqry;
-  private aqrz jdField_a_of_type_Aqrz;
+  private ColorNoteCurd jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd;
+  private IServiceInfo jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo;
+  private ColorNoteStateNotice jdField_a_of_type_ComTencentMobileqqColornoteShareColorNoteStateNotice;
+  private IServiceSyncListener jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenIServiceSyncListener = new SwipePostTableLayout.1(this);
   private PostTable jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable;
-  public boolean e;
+  private TouchStateDetector jdField_a_of_type_ComTencentMobileqqColornoteSwipebackTouchStateDetector;
+  private TranslucentConvertor jdField_a_of_type_ComTencentMobileqqColornoteSwipebackTranslucentConvertor;
+  public boolean e = false;
   public boolean f;
   private boolean g;
   private boolean h;
@@ -55,23 +48,25 @@ public class SwipePostTableLayout
   public SwipePostTableLayout(Context paramContext)
   {
     super(paramContext);
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
     this.jdField_h_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable = new PostTable(paramContext);
-    this.jdField_a_of_type_Aqry = new aqry(paramContext);
-    this.jdField_a_of_type_Aqns = new aqns();
-    this.jdField_a_of_type_Aqns.a(new aqnu());
-    this.jdField_a_of_type_Aqqs = new aqqs();
-    this.jdField_a_of_type_Aqqs.a(this.jdField_a_of_type_Aqns);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackTouchStateDetector = new TouchStateDetector(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd = new ColorNoteCurd();
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(new ColorNoteCurd.OnColorNoteCurdListener());
+    this.jdField_a_of_type_ComTencentMobileqqColornoteShareColorNoteStateNotice = new ColorNoteStateNotice();
+    this.jdField_a_of_type_ComTencentMobileqqColornoteShareColorNoteStateNotice.a(this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd);
     this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)paramContext.getSystemService("vibrator"));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aqrx(this));
-    aqos.a().a(this.jdField_a_of_type_Aqrn);
-    jdField_h_of_type_Int = DisplayUtil.dip2px(paramContext, 18.0F);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new SwipePostTableLayout.SwipeGestureDetector(this));
+    ColorNoteQIPCModule.a().a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenIServiceSyncListener);
+    jdField_h_of_type_Int = DisplayUtil.a(paramContext, 18.0F);
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_Aqqs.a();
+    this.jdField_a_of_type_ComTencentMobileqqColornoteShareColorNoteStateNotice.a();
   }
   
   public void a(Activity paramActivity)
@@ -86,7 +81,7 @@ public class SwipePostTableLayout
   public void b()
   {
     super.b();
-    this.jdField_a_of_type_Aqqs.b();
+    this.jdField_a_of_type_ComTencentMobileqqColornoteShareColorNoteStateNotice.b();
   }
   
   public void b(Activity paramActivity)
@@ -115,15 +110,14 @@ public class SwipePostTableLayout
   public void c()
   {
     super.c();
-    this.jdField_a_of_type_Aqqs.c();
   }
   
-  public void c_(boolean paramBoolean)
+  public void d_(boolean paramBoolean)
   {
     if (this.k)
     {
       this.k = false;
-      this.jdField_a_of_type_Aqrt.sendEmptyMessage(1);
+      this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackSwipeBackLayout$SwipeLayoutHandler.sendEmptyMessage(1);
     }
     if (this.l)
     {
@@ -134,31 +128,36 @@ public class SwipePostTableLayout
   
   public void i()
   {
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_a_of_type_Aqqs.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteShareColorNoteStateNotice.c();
   }
   
   public void j()
   {
+    this.jdField_h_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqColornoteShareColorNoteStateNotice.a(false);
+  }
+  
+  public void k()
+  {
     this.jdField_h_of_type_Boolean = true;
-    this.jdField_a_of_type_Aqqs.a(true);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteShareColorNoteStateNotice.a(true);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Aqns.b()) {
-      i();
+    if (!this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.b()) {
+      j();
     }
-    double d = this.jdField_a_of_type_Aqry.a(paramMotionEvent);
-    this.jdField_a_of_type_Aqns.a();
-    if (this.jdField_a_of_type_Aqoa == null) {
+    double d = this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackTouchStateDetector.a(paramMotionEvent);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo == null) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    ColorNote localColorNote = this.jdField_a_of_type_Aqoa.getColorNote();
+    ColorNote localColorNote = this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote();
     if ((localColorNote == null) || (this.jdField_a_of_type_AndroidViewView.getScrollX() == 0) || (TextUtils.isEmpty(localColorNote.mSubType))) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    boolean bool = this.jdField_a_of_type_Aqns.a(localColorNote.getServiceType(), localColorNote.getSubType());
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(localColorNote.getServiceType(), localColorNote.getSubType());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -175,7 +174,7 @@ public class SwipePostTableLayout
         if (this.jdField_a_of_type_Boolean)
         {
           m = n;
-          if (this.jdField_a_of_type_Aqry.a(paramMotionEvent, getContext()))
+          if (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackTouchStateDetector.a(paramMotionEvent, getContext()))
           {
             m = n;
             if (!bool)
@@ -184,23 +183,23 @@ public class SwipePostTableLayout
               if (localColorNote != null)
               {
                 m = n;
-                if (aqoq.a(localColorNote))
+                if (ColorNoteUtils.a(localColorNote))
                 {
-                  if (!this.jdField_a_of_type_Aqns.a()) {
+                  if (!this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a()) {
                     break label556;
                   }
-                  aqoq.a(localColorNote);
+                  ColorNoteUtils.a(localColorNote);
                   Bundle localBundle = localColorNote.parseBundle();
                   localBundle.putInt("color_note_curd_from_type", 1);
-                  this.jdField_a_of_type_Aqns.a(localBundle);
+                  this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(localBundle);
                   this.jdField_f_of_type_Boolean = true;
-                  if (this.jdField_a_of_type_Aqrw != null) {
-                    this.jdField_a_of_type_Aqrw.a();
+                  if (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackSwipePostTableLayout$OnPageSwipeListener != null) {
+                    this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackSwipePostTableLayout$OnPageSwipeListener.a();
                   }
                   if (QLog.isColorLevel()) {
                     QLog.d("SwipePostTableLayout", 1, "add colornote from swipe entrance:\n" + localColorNote.mServiceType + "\n" + localColorNote.mSubType + "\n" + localColorNote.mMainTitle + "\n" + localColorNote.mSubTitle + "\n" + localColorNote.mPicUrl);
                   }
-                  bdla.b(null, "dc00898", "", "", "0X800A742", "0X800A742", aqnq.a(this.jdField_a_of_type_Aqoa.getColorNote().mServiceType), 0, "", "", "", "");
+                  ReportController.b(null, "dc00898", "", "", "0X800A742", "0X800A742", ColorNoteConstants.a(this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote().mServiceType), 0, "", "", "", "");
                   m = 1;
                 }
               }
@@ -208,7 +207,7 @@ public class SwipePostTableLayout
           }
         }
       }
-      if (aqos.a().a().x < this.jdField_f_of_type_Int / 2) {
+      if (ColorNoteQIPCModule.a().a().x < this.jdField_f_of_type_Int / 2) {
         h();
       }
       if (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable != null)
@@ -219,24 +218,24 @@ public class SwipePostTableLayout
       if (paramMotionEvent.getRawX() - this.c >= this.jdField_f_of_type_Int / 2)
       {
         this.e = true;
-        if (this.jdField_a_of_type_Aqrw != null) {
-          this.jdField_a_of_type_Aqrw.a();
+        if (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackSwipePostTableLayout$OnPageSwipeListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackSwipePostTableLayout$OnPageSwipeListener.a();
         }
       }
       if (((m != 0) || (bool)) && (paramMotionEvent.getRawX() - this.c >= this.jdField_f_of_type_Int / 2))
       {
-        this.jdField_a_of_type_Aqrt.sendEmptyMessage(1);
+        this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackSwipeBackLayout$SwipeLayoutHandler.sendEmptyMessage(1);
         postInvalidate();
         return true;
         label556:
         this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.a(0.0D);
         g();
-        aqoq.a(getContext());
-        bdla.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
+        ColorNoteUtils.a(getContext());
+        ReportController.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
         return true;
-        if ((this.jdField_a_of_type_Boolean) && (aqoq.a(localColorNote)))
+        if ((this.jdField_a_of_type_Boolean) && (ColorNoteUtils.a(localColorNote)))
         {
-          if (!this.jdField_a_of_type_Aqry.a(paramMotionEvent, getContext()))
+          if (!this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackTouchStateDetector.a(paramMotionEvent, getContext()))
           {
             this.j = true;
             label645:
@@ -261,10 +260,10 @@ public class SwipePostTableLayout
               this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(0);
               this.jdField_g_of_type_Boolean = true;
             }
-            if (!this.jdField_a_of_type_Aqns.a()) {
+            if (!this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a()) {
               break label911;
             }
-            if (!this.jdField_a_of_type_Aqry.a(paramMotionEvent, getContext())) {
+            if (!this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackTouchStateDetector.a(paramMotionEvent, getContext())) {
               break label901;
             }
             this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.b();
@@ -275,7 +274,7 @@ public class SwipePostTableLayout
             if (!this.i) {
               break;
             }
-            bdla.b(null, "dc00898", "", "", "0X800A741", "0X800A741", aqnq.a(this.jdField_a_of_type_Aqoa.getColorNote().mServiceType), 0, "", "", "", "");
+            ReportController.b(null, "dc00898", "", "", "0X800A741", "0X800A741", ColorNoteConstants.a(this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote().mServiceType), 0, "", "", "", "");
             this.i = false;
             break;
             if ((!this.jdField_h_of_type_Boolean) || (!this.jdField_a_of_type_Boolean) || (!this.j) || (bool)) {
@@ -300,33 +299,38 @@ public class SwipePostTableLayout
     }
   }
   
-  public void setOnColorNoteCurdListener(aqnu paramaqnu)
+  public void setLeftScope(int paramInt)
   {
-    this.jdField_a_of_type_Aqns.a(paramaqnu);
+    this.jdField_g_of_type_Int = paramInt;
   }
   
-  public void setOnPageSwipeListener(aqrw paramaqrw)
+  public void setOnColorNoteCurdListener(ColorNoteCurd.OnColorNoteCurdListener paramOnColorNoteCurdListener)
   {
-    this.jdField_a_of_type_Aqrw = paramaqrw;
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(paramOnColorNoteCurdListener);
   }
   
-  public void setServiceInfo(aqoa paramaqoa)
+  public void setOnPageSwipeListener(SwipePostTableLayout.OnPageSwipeListener paramOnPageSwipeListener)
   {
-    if (paramaqoa != null)
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackSwipePostTableLayout$OnPageSwipeListener = paramOnPageSwipeListener;
+  }
+  
+  public void setServiceInfo(IServiceInfo paramIServiceInfo)
+  {
+    if (paramIServiceInfo != null)
     {
-      this.jdField_a_of_type_Aqoa = paramaqoa;
-      this.jdField_a_of_type_Aqqs.a(paramaqoa);
-      paramaqoa = paramaqoa.getColorNote();
-      if ((paramaqoa != null) && (paramaqoa.mServiceType == 16908288)) {
-        jdField_g_of_type_Int = jdField_h_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo = paramIServiceInfo;
+      this.jdField_a_of_type_ComTencentMobileqqColornoteShareColorNoteStateNotice.a(paramIServiceInfo);
+      paramIServiceInfo = paramIServiceInfo.getColorNote();
+      if ((paramIServiceInfo != null) && (paramIServiceInfo.mServiceType == 16908288)) {
+        this.jdField_g_of_type_Int = jdField_h_of_type_Int;
       }
     }
   }
   
-  public void setTranslucentConvertor(aqrz paramaqrz)
+  public void setTranslucentConvertor(TranslucentConvertor paramTranslucentConvertor)
   {
-    this.jdField_a_of_type_Aqrz = paramaqrz;
-    paramaqrz.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackTranslucentConvertor = paramTranslucentConvertor;
+    paramTranslucentConvertor.a(this);
   }
 }
 

@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.io.Serializable;
-import rrc;
 
 public class SocializeFeedsInfo$JumpInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<JumpInfo> CREATOR = new rrc();
+  public static final Parcelable.Creator<JumpInfo> CREATOR = new SocializeFeedsInfo.JumpInfo.1();
   private final long id;
   private final String jumpUrl;
   private final String wording;
@@ -21,7 +20,7 @@ public class SocializeFeedsInfo$JumpInfo
     this.jumpUrl = paramString2;
   }
   
-  public SocializeFeedsInfo$JumpInfo(Parcel paramParcel)
+  protected SocializeFeedsInfo$JumpInfo(Parcel paramParcel)
   {
     this.id = paramParcel.readLong();
     this.wording = paramParcel.readString();
@@ -68,7 +67,7 @@ public class SocializeFeedsInfo$JumpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo
  * JD-Core Version:    0.7.0.1
  */

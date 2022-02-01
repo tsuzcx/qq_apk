@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import agkb;
-import aqil;
+import com.tencent.mobileqq.activity.aio.helper.ShortcutBarAIOHelper;
+import com.tencent.mobileqq.bubble.ChatXListView.OnMeasureListener;
 
 class BaseChatPie$5$1
-  implements aqil
+  implements ChatXListView.OnMeasureListener
 {
-  BaseChatPie$5$1(BaseChatPie.5 param5, agkb paramagkb, int paramInt1, int paramInt2, int paramInt3) {}
+  BaseChatPie$5$1(BaseChatPie.5 param5, ShortcutBarAIOHelper paramShortcutBarAIOHelper, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onMeasure()
+  public void a()
   {
-    BaseChatPie.access$400(this.this$1.this$0, this.val$shortcutBarAIOHelper, this.val$finalnRobotPanelHeight, this.val$finalPendingPosition, this.val$finalPendingY);
+    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie$5.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperShortcutBarAIOHelper, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.5.1
  * JD-Core Version:    0.7.0.1
  */

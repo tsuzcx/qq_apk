@@ -1,15 +1,11 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ampv;
-import anbt;
-import anby;
-import ancc;
-import anch;
-import anck;
-import annn;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.IApolloRenderView;
+import com.tencent.mobileqq.apollo.api.ISpriteScriptManager;
+import com.tencent.mobileqq.apollo.api.impl.SpriteScriptManagerImpl;
+import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -17,22 +13,22 @@ import mqq.os.MqqHandler;
 class SpriteUIHandler$SpriteVisibleRunnable
   implements Runnable
 {
-  private ancc jdField_a_of_type_Ancc;
+  private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
-  public SpriteUIHandler$SpriteVisibleRunnable(ancc paramancc, boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public SpriteUIHandler$SpriteVisibleRunnable(SpriteContext paramSpriteContext, boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     this.b = paramBoolean1;
     this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Ancc = paramancc;
+    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ancc == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext == null)
     {
       QLog.e("cmshow_scripted_SpriteUIHandler", 1, "[onDoubleTap], mContext is null.");
       return;
@@ -41,28 +37,28 @@ class SpriteUIHandler$SpriteVisibleRunnable
     int i;
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject1 = this.jdField_a_of_type_Ancc;
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
       if (this.b)
       {
         i = 1;
         label37:
-        ((ancc)localObject1).d = i;
-        this.jdField_a_of_type_Ancc.a(this.b);
+        ((SpriteContext)localObject1).d = i;
+        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.e(this.b);
       }
     }
     Object localObject2;
     for (;;)
     {
-      localObject1 = this.jdField_a_of_type_Ancc.a();
-      localObject2 = this.jdField_a_of_type_Ancc.a();
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
       if (localObject2 == null) {
         break;
       }
-      QLog.d("cmshow_scripted_SpriteUIHandler", 1, new Object[] { "[showOrHideSprite], isHide:", Boolean.valueOf(this.b), ",from:", this.jdField_a_of_type_JavaLangString, ",surfaceView:", localObject1, ",canInit:", Boolean.valueOf(this.jdField_a_of_type_Ancc.jdField_a_of_type_Boolean), ",isViweReady:", Boolean.valueOf(this.jdField_a_of_type_Ancc.d()) });
+      QLog.d("cmshow_scripted_SpriteUIHandler", 1, new Object[] { "[showOrHideSprite], isHide:", Boolean.valueOf(this.b), ",from:", this.jdField_a_of_type_JavaLangString, ",surfaceView:", localObject1, ",canInit:", Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Boolean), ",isViweReady:", Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.f()) });
       if (this.b) {
-        break label367;
+        break label368;
       }
-      if ((localObject1 != null) || (this.jdField_a_of_type_Ancc.jdField_a_of_type_Boolean)) {
+      if ((localObject1 != null) || (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Boolean)) {
         break label220;
       }
       QLog.i("cmshow_scripted_SpriteUIHandler", 1, "surfaceView is going to be created in basechatpie, pls wait.");
@@ -70,40 +66,40 @@ class SpriteUIHandler$SpriteVisibleRunnable
       i = 0;
       break label37;
       if (this.jdField_a_of_type_JavaLangString != null) {
-        this.jdField_a_of_type_Ancc.a(this.jdField_a_of_type_JavaLangString, this.b);
+        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(this.jdField_a_of_type_JavaLangString, this.b);
       }
     }
     label220:
-    if ((localObject1 != null) && (!this.jdField_a_of_type_Ancc.d()))
+    if ((localObject1 != null) && (!this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.f()))
     {
       QLog.i("cmshow_scripted_SpriteUIHandler", 1, "surfaceView is being created but NOT yet ready, pls wait.");
       return;
     }
-    Object localObject3 = this.jdField_a_of_type_Ancc.a();
-    if ((localObject3 != null) && (((BaseChatPie)localObject3).mApolloViewObserver != null) && (((BaseChatPie)localObject3).mApolloViewObserver.c))
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+    if ((localObject3 != null) && (((BaseChatPie)localObject3).a != null) && (((BaseChatPie)localObject3).a.c))
     {
       QLog.i("cmshow_scripted_SpriteUIHandler", 1, "want to show apollo but AIO finish now");
       return;
     }
-    if ((localObject1 != null) && (this.jdField_a_of_type_Ancc.d())) {
-      ((anch)((QQAppInterface)localObject2).getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER)).a(this.jdField_a_of_type_Ancc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ancc.jdField_a_of_type_Int);
+    if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.f())) {
+      ((SpriteScriptManagerImpl)((QQAppInterface)localObject2).getRuntimeService(ISpriteScriptManager.class, "all")).onSurfaceReady(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int);
     }
     for (;;)
     {
-      ThreadManager.getUIHandler().post(new SpriteUIHandler.SpriteVisibleRunnable.1(this, (ampv)localObject1));
+      ThreadManager.getUIHandler().post(new SpriteUIHandler.SpriteVisibleRunnable.1(this, (IApolloRenderView)localObject1));
       return;
-      if ((localObject3 != null) && (this.jdField_a_of_type_Ancc.jdField_a_of_type_Boolean))
+      if ((localObject3 != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Boolean))
       {
-        ((BaseChatPie)localObject3).ifApolloFunAvailThenInit();
+        ((BaseChatPie)localObject3).b();
         continue;
-        label367:
-        localObject3 = anck.a((QQAppInterface)localObject2);
+        label368:
+        localObject3 = SpriteUtil.a((QQAppInterface)localObject2);
         if (localObject3 != null) {
-          ((anbt)localObject3).b(2);
+          ((SpriteActionScript)localObject3).b(2);
         }
-        localObject2 = ((anch)((QQAppInterface)localObject2).getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER)).a();
+        localObject2 = ((SpriteScriptManagerImpl)((QQAppInterface)localObject2).getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteBackgroundManager();
         if (localObject2 != null) {
-          ((anby)localObject2).e();
+          ((SpriteBackgroundManager)localObject2).e();
         }
       }
     }
@@ -111,7 +107,7 @@ class SpriteUIHandler$SpriteVisibleRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.SpriteVisibleRunnable
  * JD-Core Version:    0.7.0.1
  */

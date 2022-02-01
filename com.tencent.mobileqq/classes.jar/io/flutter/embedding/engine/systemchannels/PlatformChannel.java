@@ -1,6 +1,5 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.graphics.Rect;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
@@ -9,11 +8,8 @@ import io.flutter.plugin.common.JSONMethodCodec;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PlatformChannel
@@ -23,7 +19,7 @@ public class PlatformChannel
   public final MethodChannel channel;
   @NonNull
   @VisibleForTesting
-  protected final MethodChannel.MethodCallHandler parsingMethodCallHandler = new PlatformChannel.1(this);
+  final MethodChannel.MethodCallHandler parsingMethodCallHandler = new PlatformChannel.1(this);
   @Nullable
   private PlatformChannel.PlatformMessageHandler platformMessageHandler;
   
@@ -42,31 +38,6 @@ public class PlatformChannel
       i = j | 0xFF000000;
     }
     return new PlatformChannel.AppSwitcherDescription(i, paramJSONObject.getString("label"));
-  }
-  
-  @NonNull
-  private ArrayList<Rect> decodeExclusionRects(@NonNull JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramJSONArray.length())
-    {
-      JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-      try
-      {
-        int j = localJSONObject.getInt("top");
-        int k = localJSONObject.getInt("right");
-        int m = localJSONObject.getInt("bottom");
-        int n = localJSONObject.getInt("left");
-        localArrayList.add(new Rect(n, j, k, m));
-        i += 1;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        throw new JSONException("Incorrect JSON data shape. To set system gesture exclusion rects, \na JSONObject with top, right, bottom and left values need to be set to int values.");
-      }
-    }
-    return localArrayList;
   }
   
   private int decodeOrientations(@NonNull JSONArray paramJSONArray)
@@ -218,23 +189,6 @@ public class PlatformChannel
     return localArrayList;
   }
   
-  private ArrayList<HashMap<String, Integer>> encodeExclusionRects(List<Rect> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Rect localRect = (Rect)paramList.next();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("top", Integer.valueOf(localRect.top));
-      localHashMap.put("right", Integer.valueOf(localRect.right));
-      localHashMap.put("bottom", Integer.valueOf(localRect.bottom));
-      localHashMap.put("left", Integer.valueOf(localRect.left));
-      localArrayList.add(localHashMap);
-    }
-    return localArrayList;
-  }
-  
   public void setPlatformMessageHandler(@Nullable PlatformChannel.PlatformMessageHandler paramPlatformMessageHandler)
   {
     this.platformMessageHandler = paramPlatformMessageHandler;
@@ -242,7 +196,7 @@ public class PlatformChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public final class cell_comment_essence
   extends JceStruct
 {
   static ArrayList<s_commment> cache_commments = new ArrayList();
-  public ArrayList<s_commment> commments;
-  public int displayflag;
-  public int num;
+  public ArrayList<s_commment> commments = null;
+  public int displayflag = 0;
+  public int num = 0;
   
   static
   {

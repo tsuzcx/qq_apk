@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class MsgMoreView
   extends FrameLayout
 {
-  private static final int AVATAR_GAP = ViewUtils.dpToPx(24.0F);
+  private static final int AVATAR_GAP = ViewUtils.b(24.0F);
   private FrameLayout mAvatarListLayout;
   private Context mContext;
   private MQMsg mData;
@@ -43,40 +43,38 @@ public class MsgMoreView
   private void init(Context paramContext)
   {
     this.mContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131562420, this);
-    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363170));
+    LayoutInflater.from(paramContext).inflate(2131562560, this);
+    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363223));
     setOnClickListener(new MsgMoreView.1(this));
   }
   
   public void setData(MQMsg paramMQMsg, boolean paramBoolean)
   {
-    int j = 0;
     this.mData = paramMQMsg;
     paramMQMsg = paramMQMsg.bottomCell;
     if (paramMQMsg.userAvatar != null)
     {
       this.mAvatarListLayout.setVisibility(0);
       this.mAvatarListLayout.removeAllViews();
-      int i;
-      if (5 < paramMQMsg.userAvatar.size()) {
-        i = 5;
-      }
-      while (j < i)
+      if (5 < paramMQMsg.userAvatar.size()) {}
+      for (int i = 5;; i = paramMQMsg.userAvatar.size())
       {
-        UserListItemView localUserListItemView = new UserListItemView(this.mContext, 1, paramBoolean);
-        localUserListItemView.setUin((String)paramMQMsg.userAvatar.get(j));
-        localUserListItemView.setTranslationX(AVATAR_GAP * j);
-        if ((j == i - 1) && (paramMQMsg.total - i > 0)) {
-          localUserListItemView.showCover(true);
+        int j = 0;
+        while (j < i)
+        {
+          UserListItemView localUserListItemView = new UserListItemView(this.mContext, 1, paramBoolean, false);
+          localUserListItemView.setUin((String)paramMQMsg.userAvatar.get(j));
+          localUserListItemView.setTranslationX(AVATAR_GAP * j);
+          if ((j == i - 1) && (paramMQMsg.total - i > 0)) {
+            localUserListItemView.showCover(true);
+          }
+          this.mAvatarListLayout.addView(localUserListItemView, j);
+          j += 1;
         }
-        this.mAvatarListLayout.addView(localUserListItemView, j);
-        j += 1;
-        continue;
-        i = paramMQMsg.userAvatar.size();
       }
     }
     if (paramBoolean) {
-      ((TextView)findViewById(2131371581)).setTextColor(-7500397);
+      ((TextView)findViewById(2131371891)).setTextColor(-7500397);
     }
   }
   
@@ -87,7 +85,7 @@ public class MsgMoreView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgMoreView
  * JD-Core Version:    0.7.0.1
  */

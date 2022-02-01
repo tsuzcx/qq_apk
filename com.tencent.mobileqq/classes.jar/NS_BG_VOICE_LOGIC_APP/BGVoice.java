@@ -10,9 +10,9 @@ public final class BGVoice
   static BGFM cache_bgFmLists = new BGFM();
   static BGMusic cache_bgMusicLists = new BGMusic();
   static int cache_iTypeValue = 0;
-  public BGFM bgFmLists;
-  public BGMusic bgMusicLists;
-  public int iTypeValue;
+  public BGFM bgFmLists = null;
+  public BGMusic bgMusicLists = null;
+  public int iTypeValue = 0;
   
   public BGVoice() {}
   

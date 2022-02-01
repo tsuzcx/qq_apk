@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aioi;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 
@@ -11,8 +11,8 @@ class AfterSyncMsg$4
   
   public void run()
   {
-    if (this.this$0.a.app.getApplication() != null) {
-      aioi.a(this.this$0.a.app).a(this.this$0.a.app);
+    if (this.this$0.a.a.getApplication() != null) {
+      ZhituManager.a(this.this$0.a.a).a(this.this$0.a.a);
     }
   }
 }

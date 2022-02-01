@@ -8,11 +8,11 @@ public final class cluster_search_result
   extends JceStruct
 {
   public String categoryid = "";
-  public float confidence;
+  public float confidence = 0.0F;
   public String groupid = "";
-  public boolean has_identify;
+  public boolean has_identify = false;
   public String nickname = "";
-  public long uin;
+  public long uin = 0L;
   
   public cluster_search_result() {}
   

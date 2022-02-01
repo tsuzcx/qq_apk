@@ -10,10 +10,10 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public final class PlayFeedbackHelper$3
+final class PlayFeedbackHelper$3
   implements Runnable
 {
-  public PlayFeedbackHelper$3(HashMap paramHashMap) {}
+  PlayFeedbackHelper$3(HashMap paramHashMap) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public final class PlayFeedbackHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.playfeedback.PlayFeedbackHelper.3
  * JD-Core Version:    0.7.0.1
  */

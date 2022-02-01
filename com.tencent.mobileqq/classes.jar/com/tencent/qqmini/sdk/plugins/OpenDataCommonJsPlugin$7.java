@@ -1,81 +1,21 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetPotentialFriendListRsp;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StUserGameData;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot.Callback;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 class OpenDataCommonJsPlugin$7
-  implements AsyncResult
+  implements GetScreenshot.Callback
 {
-  OpenDataCommonJsPlugin$7(OpenDataCommonJsPlugin paramOpenDataCommonJsPlugin, RequestEvent paramRequestEvent) {}
+  OpenDataCommonJsPlugin$7(OpenDataCommonJsPlugin paramOpenDataCommonJsPlugin, String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Boolean paramBoolean, RequestEvent paramRequestEvent, String paramString7, String paramString8, int paramInt2, String paramString9, String paramString10) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onGetScreenshot(String paramString)
   {
-    QMLog.d("OpenDataCommonJsPlugin", "getPotentialFriendList receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
-    if (paramJSONObject == null)
-    {
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , ret == null");
-      this.val$req.fail();
-      return;
-    }
-    if (paramBoolean)
-    {
-      int i;
-      Object localObject1;
-      try
-      {
-        Object localObject2 = (CloudStorage.StGetPotentialFriendListRsp)paramJSONObject.get("response");
-        i = paramJSONObject.getInt("retCode");
-        localObject1 = paramJSONObject.getString("errMsg");
-        localObject2 = ((CloudStorage.StGetPotentialFriendListRsp)localObject2).data.get();
-        QMLog.d("OpenDataCommonJsPlugin", "getPotentialFriendList receive retCode= " + i + " errMsg=" + (String)localObject1);
-        paramJSONObject = new JSONObject();
-        if ((i != 0) || (localObject2 == null) || (((List)localObject2).size() <= 0)) {
-          break label306;
-        }
-        localObject1 = new JSONArray();
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          CloudStorage.StUserGameData localStUserGameData = (CloudStorage.StUserGameData)((Iterator)localObject2).next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("avatarUrl", localStUserGameData.avatarUrl.get());
-          localJSONObject.put("nickname", localStUserGameData.nickname.get());
-          localJSONObject.put("openid", localStUserGameData.openid.get());
-          ((JSONArray)localObject1).put(localJSONObject);
-        }
-        paramJSONObject.put("list", localObject1);
-      }
-      catch (Exception paramJSONObject)
-      {
-        QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error ", paramJSONObject);
-        this.val$req.fail(paramJSONObject.getMessage());
-        return;
-      }
-      this.val$req.ok(paramJSONObject);
-      return;
-      label306:
-      paramJSONObject.put("retErrMsg", localObject1);
-      paramJSONObject.put("errCode", i);
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , retCode!=0 or userGameDataList is empty");
-      this.val$req.fail(paramJSONObject, "retCode!=0 or userGameDataList is empty");
-      return;
-    }
-    QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , isSuc false");
-    this.val$req.fail("getPotentialFriendList failed.");
+    OpenDataCommonJsPlugin.access$500(this.this$0, this.val$key, this.val$opNum, this.val$operation, this.val$openid, this.val$nick, this.val$title, paramString, this.val$imageUrlId, this.val$quiet, this.val$req, this.val$action, this.val$object, this.val$ratio, this.val$appid, this.val$shareId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

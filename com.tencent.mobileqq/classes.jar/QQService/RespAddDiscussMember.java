@@ -10,8 +10,8 @@ public final class RespAddDiscussMember
   extends JceStruct
 {
   static Map<Long, Integer> cache_AddResult;
-  public Map<Long, Integer> AddResult;
-  public long DiscussUin;
+  public Map<Long, Integer> AddResult = null;
+  public long DiscussUin = 0L;
   
   public RespAddDiscussMember() {}
   

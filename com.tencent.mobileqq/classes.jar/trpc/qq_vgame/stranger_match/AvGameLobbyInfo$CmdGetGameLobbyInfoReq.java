@@ -2,11 +2,14 @@ package trpc.qq_vgame.stranger_match;
 
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public final class AvGameLobbyInfo$CmdGetGameLobbyInfoReq
   extends MessageMicro<CmdGetGameLobbyInfoReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[0], new String[0], new Object[0], CmdGetGameLobbyInfoReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "version" }, new Object[] { "" }, CmdGetGameLobbyInfoReq.class);
+  public final PBStringField version = PBField.initString("");
 }
 
 

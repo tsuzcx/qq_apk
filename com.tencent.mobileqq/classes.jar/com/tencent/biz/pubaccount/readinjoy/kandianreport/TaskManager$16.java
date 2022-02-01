@@ -1,8 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
-import olh;
+import com.tencent.mobileqq.qroute.QRoute;
 import org.json.JSONObject;
 
 class TaskManager$16
@@ -17,13 +18,13 @@ class TaskManager$16
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("version", TaskManager.scriptVersion + "");
     localJSONObject.put("info", paramArrayOfObject);
-    olh.a(null, "", paramJSContext, paramJSContext, 0, 0, "", "", "", localJSONObject.toString(), false);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramJSContext, paramJSContext, 0, 0, "", "", "", localJSONObject.toString(), false);
     return Integer.valueOf(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager.16
  * JD-Core Version:    0.7.0.1
  */

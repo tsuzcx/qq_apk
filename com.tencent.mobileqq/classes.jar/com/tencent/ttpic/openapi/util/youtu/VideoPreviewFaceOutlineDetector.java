@@ -20,10 +20,10 @@ import com.tencent.ttpic.openapi.initializer.Face3DLibInitializer;
 import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
 import com.tencent.ttpic.openapi.initializer.TNNTongueDetectIntializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.AgeDetector;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager.DATA_TYPE;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.youtu.ExpressionDetectorObject;
 import com.tencent.ttpic.util.youtu.VideoFaceDetector;
@@ -582,7 +582,7 @@ public class VideoPreviewFaceOutlineDetector
           }
           f2 = f3;
           if (FeatureManager.Features.TNN_TONGUE_DETECT.isFunctionReady()) {
-            f2 = FeatureManager.Features.TNN_TONGUE_DETECT.forward(paramArrayOfByte, paramInt1, paramInt2, VideoMaterialUtil.toFlatArray((List)localObject2));
+            f2 = FeatureManager.Features.TNN_TONGUE_DETECT.forward(paramArrayOfByte, paramInt1, paramInt2, VideoMaterial.toFlatArray((List)localObject2));
           }
         }
         f2 = f2 * 0.3F + this.lastTongueOut * 0.7F;
@@ -997,7 +997,7 @@ public class VideoPreviewFaceOutlineDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public final class enum_qzone_count_id
   implements Serializable
 {
-  public static final int LAST_COUNT_ID = 1010;
+  public static final int LAST_COUNT_ID = 1014;
   public static final int _ENUM_QZONE_NEW_MOBILE_INFO_LASTTIME = 1007;
   public static final int _ENUM_QZONE_TYPE_ACTIVE_COUNT_ID = 2;
   public static final int _ENUM_QZONE_TYPE_APP_COUNT_ID = 5;
@@ -22,10 +22,12 @@ public final class enum_qzone_count_id
   public static final int _ENUM_QZONE_TYPE_FRIEND_BIRTHDAY_COUNT_ID = 6;
   public static final int _ENUM_QZONE_TYPE_FRIEND_COUNT_ID = 4;
   public static final int _ENUM_QZONE_TYPE_GAME_BAR_ID = 12;
+  public static final int _ENUM_QZONE_TYPE_GET_BEST_PHOTO = 1011;
   public static final int _ENUM_QZONE_TYPE_GET_BIRTHDAY = 1005;
   public static final int _ENUM_QZONE_TYPE_GET_CERTIFIED_ACCOUNT = 1010;
   public static final int _ENUM_QZONE_TYPE_GET_MY_STORY_FEED = 1009;
   public static final int _ENUM_QZONE_TYPE_GET_PLUS_RECOM_MORE = 1008;
+  public static final int _ENUM_QZONE_TYPE_GET_UNREAD_FEED_RED_TOUCH = 1012;
   public static final int _ENUM_QZONE_TYPE_HAPPY_ROOM_ID = 16;
   public static final int _ENUM_QZONE_TYPE_HEADLINE = 22;
   public static final int _ENUM_QZONE_TYPE_MAIN_PAGE_COUNT_ID = 7;
@@ -52,6 +54,7 @@ public final class enum_qzone_count_id
   public static final int _ENUM_QZONE_TYPE_PLUS_VIP_SPACE_ID = 43;
   public static final int _ENUM_QZONE_TYPE_QZONE_VIP_ID = 11;
   public static final int _ENUM_QZONE_TYPE_READ_SPACE_COUNT_ID = 8;
+  public static final int _ENUM_QZONE_TYPE_RECOMM_FEED_RED_TOUCH = 1013;
   public static final int _ENUM_QZONE_TYPE_RECOMM_ID = 51;
   public static final int _ENUM_QZONE_TYPE_REFRESH_LOGIN_TIME_TMEM = 1002;
   public static final int _ENUM_QZONE_TYPE_REFRESH_MENU_ID = 999;

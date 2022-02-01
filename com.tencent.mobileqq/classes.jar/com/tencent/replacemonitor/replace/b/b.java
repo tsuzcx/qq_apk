@@ -35,13 +35,23 @@ public class b
     localMonitorTask.additionalId = paramCursor.getString(paramCursor.getColumnIndex("task_id"));
     localMonitorTask.traceId = paramCursor.getString(paramCursor.getColumnIndex("trace_id"));
     localMonitorTask.appType = paramCursor.getInt(paramCursor.getColumnIndex("app_type"));
-    localMonitorTask.lastStep = MonitorStep.values()[paramCursor.getInt(paramCursor.getColumnIndex("last_step"))];
-    if (paramCursor.getInt(paramCursor.getColumnIndex("is_tdownload")) == 1) {}
+    int i = paramCursor.getInt(paramCursor.getColumnIndex("last_step"));
+    if ((MonitorStep.values().length > i) && (i >= 0))
+    {
+      localMonitorTask.lastStep = MonitorStep.values()[i];
+      if (paramCursor.getInt(paramCursor.getColumnIndex("is_tdownload")) != 1) {
+        break label438;
+      }
+    }
     for (;;)
     {
       localMonitorTask.isTencentDownload = bool;
       localMonitorTask.externalParams = com.tencent.tmassistantbase.util.d.a(paramCursor.getString(paramCursor.getColumnIndex("external_param")), "&");
       return localMonitorTask;
+      localMonitorTask.lastStep = MonitorStep.DOWNLOADING;
+      ab.e("MonitorTaskTable", "Bad MonitorStep index:" + i);
+      break;
+      label438:
       bool = false;
     }
   }
@@ -264,7 +274,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,55 @@
 package dov.com.qq.im.ae.camera.ui;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import bheg;
-import bmuu;
-import bnbp;
-import com.tencent.mobileqq.utils.ViewUtils;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
+import java.util.ArrayList;
 
-public class VideoStoryPiecesPart$15
+class VideoStoryPiecesPart$15
   implements Runnable
 {
-  public VideoStoryPiecesPart$15(bnbp parambnbp) {}
+  VideoStoryPiecesPart$15(VideoStoryPiecesPart paramVideoStoryPiecesPart) {}
   
   public void run()
   {
-    try
+    Object localObject3 = (RelativeLayout)VideoStoryPiecesPart.e(this.this$0).findViewById(2131377202);
+    if (localObject3 != null)
     {
-      bnbp.a(this.this$0, bmuu.a(bnbp.i(this.this$0), true));
-      if ((bnbp.a(this.this$0) != null) && (!bnbp.a(this.this$0).isRecycled())) {
-        bnbp.a(this.this$0, bheg.b(bnbp.a(this.this$0), ViewUtils.dip2px(3.0F), bnbp.a(this.this$0).getWidth(), bnbp.a(this.this$0).getHeight()));
+      Object localObject1 = VideoStoryPiecesPart.a(this.this$0).getLayoutParams();
+      if ((localObject1 instanceof RelativeLayout.LayoutParams))
+      {
+        Object localObject2 = new ArrayList();
+        ((RelativeLayout)localObject3).findViewsWithText((ArrayList)localObject2, VideoStoryPiecesPart.i(this.this$0).getText(AECaptureMode.GIF.textId), 1);
+        if (((ArrayList)localObject2).size() == 1)
+        {
+          localObject3 = new Rect();
+          ((View)((ArrayList)localObject2).get(0)).getGlobalVisibleRect((Rect)localObject3);
+          int i = VideoStoryPiecesPart.a(this.this$0).getMeasuredWidth();
+          localObject2 = (RelativeLayout.LayoutParams)localObject1;
+          int j = ((Rect)localObject3).left;
+          ((RelativeLayout.LayoutParams)localObject2).leftMargin = ((((Rect)localObject3).right + j) / 2 - i / 2);
+          VideoStoryPiecesPart.a(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          VideoStoryPiecesPart.a(this.this$0).setVisibility(0);
+          localObject1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -15.0F);
+          ((TranslateAnimation)localObject1).setDuration(300L);
+          ((TranslateAnimation)localObject1).setRepeatCount(-1);
+          ((TranslateAnimation)localObject1).setRepeatMode(2);
+          VideoStoryPiecesPart.a(this.this$0).startAnimation((Animation)localObject1);
+        }
       }
-      bnbp.j(this.this$0).runOnUiThread(new VideoStoryPiecesPart.15.1(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.VideoStoryPiecesPart.15
  * JD-Core Version:    0.7.0.1
  */

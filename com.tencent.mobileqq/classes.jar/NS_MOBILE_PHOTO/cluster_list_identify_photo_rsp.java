@@ -9,8 +9,8 @@ public final class cluster_list_identify_photo_rsp
 {
   static faiss_search_result cache_result = new faiss_search_result();
   public String msg = "";
-  public faiss_search_result result;
-  public int ret;
+  public faiss_search_result result = null;
+  public int ret = 0;
   
   public cluster_list_identify_photo_rsp() {}
   

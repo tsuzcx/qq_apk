@@ -5,17 +5,15 @@ import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bpee;
-import bpef;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class SegmentPicker
   extends RelativeLayout
-  implements bpef
+  implements SegmentRangeView.SegmentRangeViewListener
 {
   private SegmentRangeView jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView;
-  private WeakReference<bpee> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<SegmentPicker.SegmentPickerListener> jdField_a_of_type_JavaLangRefWeakReference;
   
   public SegmentPicker(Context paramContext)
   {
@@ -37,34 +35,34 @@ public class SegmentPicker
   
   public void a(long paramLong)
   {
-    bpee localbpee = null;
+    SegmentPicker.SegmentPickerListener localSegmentPickerListener = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbpee = (bpee)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localSegmentPickerListener = (SegmentPicker.SegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbpee != null) {
-      localbpee.a(paramLong);
+    if (localSegmentPickerListener != null) {
+      localSegmentPickerListener.a(paramLong);
     }
   }
   
   public void a(List<Long> paramList)
   {
-    bpee localbpee = null;
+    SegmentPicker.SegmentPickerListener localSegmentPickerListener = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbpee = (bpee)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localSegmentPickerListener = (SegmentPicker.SegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbpee != null) {
-      localbpee.a(paramList);
+    if (localSegmentPickerListener != null) {
+      localSegmentPickerListener.a(paramList);
     }
   }
   
   public void b(long paramLong)
   {
-    bpee localbpee = null;
+    SegmentPicker.SegmentPickerListener localSegmentPickerListener = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbpee = (bpee)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localSegmentPickerListener = (SegmentPicker.SegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbpee != null) {
-      localbpee.b(paramLong);
+    if (localSegmentPickerListener != null) {
+      localSegmentPickerListener.b(paramLong);
     }
   }
   
@@ -77,7 +75,7 @@ public class SegmentPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker
  * JD-Core Version:    0.7.0.1
  */

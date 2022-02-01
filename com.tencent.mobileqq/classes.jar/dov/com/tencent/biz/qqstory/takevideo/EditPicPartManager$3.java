@@ -1,12 +1,11 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Activity;
-import bosh;
 
-public class EditPicPartManager$3
+class EditPicPartManager$3
   implements Runnable
 {
-  public EditPicPartManager$3(bosh parambosh, Activity paramActivity) {}
+  EditPicPartManager$3(EditPicPartManager paramEditPicPartManager, Activity paramActivity) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class EditPicPartManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditPicPartManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -15,11 +15,11 @@ public class TroopTipsEntity
   public String currentUin;
   public long expireTime;
   public String extra;
-  public int grayTipsRemindFlag;
+  public int grayTipsRemindFlag = 0;
   public String grayTipsSummary = "";
   public String highlightItems;
   public int highlightNum;
-  public boolean isOfflineMsg;
+  public boolean isOfflineMsg = false;
   public boolean isSupportImage = true;
   public long msgSeq;
   public String optActionData;
@@ -31,8 +31,8 @@ public class TroopTipsEntity
   public String optTitle;
   public String optUrl;
   public String optUrlP;
-  public boolean read;
-  public int repeatInterval;
+  public boolean read = false;
+  public int repeatInterval = 0;
   public String senderUin;
   public int serviceType;
   public long time;

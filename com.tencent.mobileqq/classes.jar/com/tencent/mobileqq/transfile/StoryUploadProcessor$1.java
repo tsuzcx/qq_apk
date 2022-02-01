@@ -4,6 +4,9 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryPic;
 import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.utils.NumberUtils;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
@@ -13,9 +16,6 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.utils.HexUtil;
 import java.util.HashMap;
-import ykq;
-import ykv;
-import zek;
 
 class StoryUploadProcessor$1
   implements ITransactionCallback
@@ -24,43 +24,42 @@ class StoryUploadProcessor$1
   
   public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = zek.a((String)paramHashMap.get("upFlow_WiFi"), -1L);
-    long l3 = zek.a((String)paramHashMap.get("dwFlow_WiFi"), -1L);
-    long l4 = zek.a((String)paramHashMap.get("upFlow_Xg"), -1L);
-    long l5 = zek.a((String)paramHashMap.get("dwFlow_Xg"), -1L);
+    long l = SystemClock.uptimeMillis();
+    NumberUtils.a((String)paramHashMap.get("upFlow_WiFi"), -1L);
+    NumberUtils.a((String)paramHashMap.get("dwFlow_WiFi"), -1L);
+    NumberUtils.a((String)paramHashMap.get("upFlow_Xg"), -1L);
+    NumberUtils.a((String)paramHashMap.get("dwFlow_Xg"), -1L);
     paramArrayOfByte = (String)paramHashMap.get("tc_p:");
     String str1 = (String)paramHashMap.get("rep_bdhTrans");
     String str2 = (String)paramHashMap.get("segspercnt");
     String str3 = (String)paramHashMap.get("param_conf_segSize");
     String str4 = (String)paramHashMap.get("param_conf_segNum");
     paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    ykq.c(StoryUploadProcessor.TAG, "Transaction End : Failed. take time:" + (l1 - this.val$startTime) + "ms");
+    SLog.c(StoryUploadProcessor.TAG, "Transaction End : Failed. take time:" + (l - this.val$startTime) + "ms");
     this.this$0.mReportInfo.put("X-piccachetime", paramArrayOfByte);
     this.this$0.mReportInfo.put("param_BdhTrans", str1);
     this.this$0.mReportInfo.put("param_segspercnt", str2);
     this.this$0.mReportInfo.put("param_conf_segSize", str3);
     this.this$0.mReportInfo.put("param_conf_segNum", str4);
     this.this$0.mReportInfo.put("param_conf_connNum", paramHashMap);
-    this.this$0.reportDataFlow(l2, l3, l4, l5);
     this.this$0.setError(paramInt, "OnFailed.", "", this.this$0.mStepTrans);
     this.this$0.onError();
   }
   
   public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    long l = SystemClock.uptimeMillis();
+    Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
     String str1 = (String)paramHashMap.get("tc_p:");
     String str2 = (String)paramHashMap.get("rep_bdhTrans");
     String str3 = (String)paramHashMap.get("segspercnt");
     String str4 = (String)paramHashMap.get("param_conf_segSize");
     String str5 = (String)paramHashMap.get("param_conf_segNum");
     paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    ykq.c(StoryUploadProcessor.TAG, "Transaction End : Success. New : SendTotalCost:" + (l1 - this.val$startTime) + "ms ,fileSize:" + this.this$0.file.fileSize + " transInfo:" + str2);
+    SLog.c(StoryUploadProcessor.TAG, "Transaction End : Success. New : SendTotalCost:" + (l - this.val$startTime) + "ms ,fileSize:" + this.this$0.file.fileSize + " transInfo:" + str2);
     this.this$0.mReportInfo.put("X-piccachetime", str1);
     this.this$0.mReportInfo.put("param_BdhTrans", str2);
     this.this$0.mReportInfo.put("param_segspercnt", str3);
@@ -70,13 +69,12 @@ class StoryUploadProcessor$1
     this.this$0.mStepTrans.logFinishTime();
     this.this$0.mStepTrans.result = 1;
     this.this$0.mTransferedSize = this.this$0.mFileSize;
-    ykq.c(StoryUploadProcessor.TAG, "ITransactionCallback.onSuccess()");
+    SLog.c(StoryUploadProcessor.TAG, "ITransactionCallback.onSuccess()");
     if (paramArrayOfByte == null) {
       this.this$0.onError();
     }
     for (;;)
     {
-      this.this$0.reportDataFlow(l2, l3, l4, l5);
       this.this$0.file.closeInputStream();
       return;
       int i;
@@ -88,12 +86,12 @@ class StoryUploadProcessor$1
           paramHashMap.mergeFrom(paramArrayOfByte);
           i = paramHashMap.retcode.get();
           if (i != 0) {
-            break label567;
+            break label548;
           }
           this.this$0.mPhotoUrl = paramHashMap.url.get().toStringUtf8();
-          ykq.a(StoryUploadProcessor.TAG, "upload file %s return url %s", this.this$0.mFileName, this.this$0.mPhotoUrl);
+          SLog.a(StoryUploadProcessor.TAG, "upload file %s return url %s", this.this$0.mFileName, this.this$0.mPhotoUrl);
           if (!TextUtils.isEmpty(this.this$0.mPhotoUrl)) {
-            break label557;
+            break label538;
           }
           this.this$0.errCode = 940010;
           this.this$0.errDesc = String.format("return illegal arg url:%s", new Object[] { this.this$0.mPhotoUrl });
@@ -104,18 +102,18 @@ class StoryUploadProcessor$1
           if (paramHashMap == null) {
             paramArrayOfByte = "";
           }
-          ykq.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
+          SLog.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
         }
         catch (InvalidProtocolBufferMicroException paramArrayOfByte)
         {
-          ykq.d(StoryUploadProcessor.TAG, "parser buffer exception");
+          SLog.d(StoryUploadProcessor.TAG, "parser buffer exception");
           this.this$0.onError();
         }
         continue;
-        label557:
+        label538:
         this.this$0.onSuccess();
         continue;
-        label567:
+        label548:
         this.this$0.errCode = i;
         this.this$0.errDesc = paramHashMap.msg.get().toStringUtf8();
         this.this$0.onError();
@@ -128,15 +126,15 @@ class StoryUploadProcessor$1
           paramHashMap.mergeFrom(paramArrayOfByte);
           i = paramHashMap.retcode.get();
           if (i != 0) {
-            break label875;
+            break label856;
           }
           this.this$0.mVideoUrl = paramHashMap.cdn_url.get().toStringUtf8();
           if (this.this$0.file.fileType == 196609) {
-            this.this$0.mVideoUrl = UIUtils.urlRemoveArg(this.this$0.mVideoUrl, "authkey");
+            this.this$0.mVideoUrl = UIUtils.a(this.this$0.mVideoUrl, "authkey");
           }
           this.this$0.mVid = paramHashMap.file_key.get().toStringUtf8();
           if ((!TextUtils.isEmpty(this.this$0.mVideoUrl)) && (!TextUtils.isEmpty(this.this$0.mVid))) {
-            break label865;
+            break label846;
           }
           this.this$0.errCode = 940010;
           this.this$0.errDesc = String.format("return illegal arg vid:%s, url:%s", new Object[] { this.this$0.mVid, this.this$0.mVideoUrl });
@@ -147,18 +145,18 @@ class StoryUploadProcessor$1
           if (paramHashMap == null) {
             paramArrayOfByte = "";
           }
-          ykq.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
+          SLog.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
         }
         catch (InvalidProtocolBufferMicroException paramArrayOfByte)
         {
-          ykq.d(StoryUploadProcessor.TAG, "parser buffer exception");
+          SLog.d(StoryUploadProcessor.TAG, "parser buffer exception");
           this.this$0.onError();
         }
         continue;
-        label865:
+        label846:
         this.this$0.onSuccess();
         continue;
-        label875:
+        label856:
         this.this$0.errCode = i;
         this.this$0.errDesc = paramHashMap.msg.get().toStringUtf8();
         this.this$0.onError();
@@ -175,14 +173,14 @@ class StoryUploadProcessor$1
   
   public void onTransStart()
   {
-    ykq.a(StoryUploadProcessor.TAG, "onTransStart %s", this.this$0.mUiRequest.mLocalPath);
+    SLog.a(StoryUploadProcessor.TAG, "onTransStart %s", this.this$0.mUiRequest.mLocalPath);
     long l1 = System.currentTimeMillis();
     long l2 = StoryUploadProcessor.access$000(this.this$0);
-    String str2 = ykv.a(BaseApplication.getContext());
+    String str2 = StoryReportor.a(BaseApplication.getContext());
     if (this.this$0.file.fileType == 196610) {}
     for (String str1 = "pic";; str1 = "video")
     {
-      ykv.b("publish_story", "publish_bdh", 0, 0, new String[] { "", String.valueOf(l1 - l2), str2, str1 });
+      StoryReportor.b("publish_story", "publish_bdh", 0, 0, new String[] { "", String.valueOf(l1 - l2), str2, str1 });
       this.this$0.mStepTrans.logStartTime();
       StoryUploadProcessor.access$102(this.this$0, System.currentTimeMillis());
       return;

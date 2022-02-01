@@ -1,9 +1,9 @@
 package dov.com.qq.im.capture.view;
 
 import android.widget.LinearLayout;
-import bono;
-import bpjt;
 import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.capture.util.QIMProviderViewBuilder;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 import mqq.os.MqqHandler;
 
 class QIMProviderContainerView$6
@@ -13,7 +13,7 @@ class QIMProviderContainerView$6
   {
     boolean bool2 = false;
     int j = this.this$0.a.getChildCount();
-    bpjt.a();
+    VideoFilterTools.a();
     int i = 0;
     for (;;)
     {
@@ -35,7 +35,7 @@ class QIMProviderContainerView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMProviderContainerView.6
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class BarrageDeco
   extends JceStruct
 {
   static QzmallCustomVip cache_stCustomVip = new QzmallCustomVip();
-  public QzmallCustomVip stCustomVip;
+  public QzmallCustomVip stCustomVip = null;
   
   public BarrageDeco() {}
   

@@ -2,6 +2,7 @@ package com.tencent.biz.richframework.network.request;
 
 import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoReq;
 import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -21,7 +22,15 @@ public class BatchGetMusicInfoRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CLIENT.StBatchGetMusicInfoRsp localStBatchGetMusicInfoRsp = new CLIENT.StBatchGetMusicInfoRsp();
-    localStBatchGetMusicInfoRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStBatchGetMusicInfoRsp.mergeFrom(paramArrayOfByte);
+      return localStBatchGetMusicInfoRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStBatchGetMusicInfoRsp;
   }
   
@@ -37,7 +46,7 @@ public class BatchGetMusicInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.BatchGetMusicInfoRequest
  * JD-Core Version:    0.7.0.1
  */

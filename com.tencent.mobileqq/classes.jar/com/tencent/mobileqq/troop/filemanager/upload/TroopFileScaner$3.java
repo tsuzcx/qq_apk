@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bfoc;
-
-public class TroopFileScaner$3
+class TroopFileScaner$3
   implements Runnable
 {
-  public TroopFileScaner$3(bfoc parambfoc, long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask) {}
+  TroopFileScaner$3(TroopFileScaner paramTroopFileScaner, long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask) {}
   
   public void run()
   {
-    bfoc.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScanTask);
+    TroopFileScaner.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScanTask);
   }
 }
 

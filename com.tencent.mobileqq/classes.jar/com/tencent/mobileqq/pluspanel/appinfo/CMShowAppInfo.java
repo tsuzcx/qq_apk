@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
-import amme;
 import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.apollo.api.IApolloManagerService;
+import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
+import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
+import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil.DtReportParamsBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.app.MobileQQ;
@@ -17,7 +19,7 @@ import mqq.app.MobileQQ;
 public class CMShowAppInfo
   extends PlusPanelAppInfo
 {
-  public CMShowAppInfo() {}
+  CMShowAppInfo() {}
   
   public CMShowAppInfo(int paramInt)
   {
@@ -26,7 +28,7 @@ public class CMShowAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130838479;
+    return 2130838552;
   }
   
   public int getAppID()
@@ -55,29 +57,30 @@ public class CMShowAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690488);
+    return BaseApplicationImpl.getContext().getString(2131690590);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
     boolean bool = localQQAppInterface.getApplication().getSharedPreferences(localQQAppInterface.getCurrentAccountUin(), 0).getBoolean("chat_tool_apollo_" + localQQAppInterface.getCurrentAccountUin(), false);
-    paramahvi.a("chat_tool_apollo", localQQAppInterface.getCurrentAccountUin());
+    paramPlusPanelViewModel.a("chat_tool_apollo", localQQAppInterface.getCurrentAccountUin());
     if (bool) {
-      paramahvi.b(paramBaseChatPie);
+      paramPlusPanelViewModel.b(paramBaseChatPie);
     }
     for (int i = 1;; i = 0)
     {
-      paramBaseChatPie.showApolloStatusPanel(0);
-      paramahvi = (amme)localQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
-      paramBaseChatPie = paramSessionInfo.curFriendUin;
-      int j = paramahvi.b(localQQAppInterface.getCurrentUin());
-      int k = ApolloUtil.h(amme.a(localQQAppInterface));
+      paramBaseChatPie.p(0);
+      paramPlusPanelViewModel = (IApolloManagerService)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
+      paramBaseChatPie = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      int j = paramPlusPanelViewModel.getApolloStatus(localQQAppInterface.getCurrentUin());
+      int k = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportUserResult(paramPlusPanelViewModel.getApolloUserStatus(localQQAppInterface));
       String str = "" + i;
-      if (paramSessionInfo.curType == 0) {}
-      for (paramahvi = "0";; paramahvi = "2")
+      if (paramSessionInfo.jdField_a_of_type_Int == 0) {}
+      for (paramPlusPanelViewModel = "0";; paramPlusPanelViewModel = "2")
       {
-        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "panel_enter_clk", paramBaseChatPie, j, k, new String[] { str, paramahvi, "", String.valueOf(System.currentTimeMillis() / 1000L) });
+        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "panel_enter_clk", paramBaseChatPie, j, k, new String[] { str, paramPlusPanelViewModel, "", String.valueOf(System.currentTimeMillis() / 1000L) });
+        ApolloDtReportUtil.a("aio", "plus_panel", "click", new ApolloDtReportUtil.DtReportParamsBuilder().a(ApolloDtReportUtil.a(localQQAppInterface)).b(ApolloDtReportUtil.a(paramSessionInfo.jdField_a_of_type_Int)).b(paramSessionInfo.jdField_a_of_type_JavaLangString).a());
         return;
       }
     }

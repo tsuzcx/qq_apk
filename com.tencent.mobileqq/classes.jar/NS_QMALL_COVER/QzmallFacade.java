@@ -9,8 +9,8 @@ public final class QzmallFacade
   extends JceStruct
 {
   static Facade cache_stFacade = new Facade();
-  public int iShowOnFriDyn;
-  public Facade stFacade;
+  public int iShowOnFriDyn = 0;
+  public Facade stFacade = null;
   
   public QzmallFacade() {}
   

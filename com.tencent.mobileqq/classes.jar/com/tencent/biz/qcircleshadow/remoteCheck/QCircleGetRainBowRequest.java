@@ -1,8 +1,9 @@
 package com.tencent.biz.qcircleshadow.remoteCheck;
 
-import com.tencent.biz.qcircleshadow.local.requests.QCircleBaseRequest;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qcircle.api.requests.QCircleBaseRequest;
 import qqcircle.QQCircleConfig.GetRainbowTableConfigReq;
 import qqcircle.QQCircleConfig.GetRainbowTableConfigRsp;
 
@@ -23,7 +24,15 @@ public class QCircleGetRainBowRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     QQCircleConfig.GetRainbowTableConfigRsp localGetRainbowTableConfigRsp = new QQCircleConfig.GetRainbowTableConfigRsp();
-    localGetRainbowTableConfigRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localGetRainbowTableConfigRsp.mergeFrom(paramArrayOfByte);
+      return localGetRainbowTableConfigRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localGetRainbowTableConfigRsp;
   }
   
@@ -39,7 +48,7 @@ public class QCircleGetRainBowRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.remoteCheck.QCircleGetRainBowRequest
  * JD-Core Version:    0.7.0.1
  */

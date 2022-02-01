@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bdxj;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
 import com.tencent.qphone.base.util.QLog;
 
 public class GetSubAccountSpecialCare
@@ -13,10 +13,10 @@ public class GetSubAccountSpecialCare
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "GetSubAccountSpecialCare step...");
     }
-    if ((this.b == 95) && ((bdxj.b(this.a.app, true)) || (bdxj.c(this.a.app, true)))) {
-      bdxj.a(this.a.app, false);
+    if ((this.b == 95) && ((SubAccountControll.b(this.a.a, true)) || (SubAccountControll.c(this.a.a, true)))) {
+      SubAccountControll.a(this.a.a, false);
     }
-    bdxj.b(this.a.app, true, null);
+    SubAccountControll.b(this.a.a, true, null);
     return 7;
   }
 }

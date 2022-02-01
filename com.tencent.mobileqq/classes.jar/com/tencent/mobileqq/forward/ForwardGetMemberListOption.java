@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.forward;
 
 import android.content.Intent;
-import aupt;
 
 public class ForwardGetMemberListOption
-  extends aupt
+  extends ForwardBaseOption
 {
   public ForwardGetMemberListOption(Intent paramIntent)
   {
@@ -13,7 +12,7 @@ public class ForwardGetMemberListOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardGetMemberListOption
  * JD-Core Version:    0.7.0.1
  */

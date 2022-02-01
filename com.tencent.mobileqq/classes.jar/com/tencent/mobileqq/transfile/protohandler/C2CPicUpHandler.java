@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
 import android.text.TextUtils;
-import anza;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -11,10 +11,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.mobileqq.transfile.RichMediaUtil;
+import com.tencent.mobileqq.transfile.TransFileUtil;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -70,7 +70,7 @@ public class C2CPicUpHandler
     localTryUpImgReq.uint32_pic_width.set(localPicUpReq.width);
     localTryUpImgReq.uint32_pic_height.set(localPicUpReq.height);
     localTryUpImgReq.uint32_pic_type.set(localPicUpReq.picType);
-    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(RichMediaUtil.getVersionCode()));
+    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(TransFileUtil.getVersionCode()));
     localTryUpImgReq.bool_reject_tryfast.set(false);
     localTryUpImgReq.uint32_srv_upload.set(localPicUpReq.typeHotPic);
     if (!TextUtils.isEmpty(localPicUpReq.transferUrl)) {
@@ -120,7 +120,7 @@ public class C2CPicUpHandler
     }
   }
   
-  protected void handleSucResp(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, anza paramanza, ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  protected void handleSucResp(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, StatictisInfo paramStatictisInfo, ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     try
     {
@@ -131,7 +131,7 @@ public class C2CPicUpHandler
     }
     catch (Exception paramFromServiceMsg)
     {
-      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramFromServiceMsg.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, paramRichProtoResp.resps);
+      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramFromServiceMsg.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramStatictisInfo, paramRichProtoResp.resps);
     }
     for (;;)
     {
@@ -156,7 +156,7 @@ public class C2CPicUpHandler
               break label298;
             }
             parseResp(paramProtoResp, localC2CPicUpResp);
-            setResult(0, 0, "", "", paramanza, localC2CPicUpResp);
+            setResult(0, 0, "", "", paramStatictisInfo, localC2CPicUpResp);
           }
           catch (Exception paramProtoResp) {}
         }
@@ -168,7 +168,7 @@ public class C2CPicUpHandler
             RichProto.RichProtoResp.C2CPicUpResp localC2CPicUpResp = null;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, localC2CPicUpResp);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramStatictisInfo, localC2CPicUpResp);
         continue;
         label298:
         if (shouldRetryByRetCode(i))
@@ -180,7 +180,7 @@ public class C2CPicUpHandler
             return;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramanza, localC2CPicUpResp);
+        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramStatictisInfo, localC2CPicUpResp);
       }
     }
   }
@@ -234,7 +234,7 @@ public class C2CPicUpHandler
   {
     if ((paramRichProtoReq != null) && (paramRichProtoReq.reqs != null) && (paramRichProtoReq.protoReqMgr != null))
     {
-      ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
+      ProtoReqManagerImpl.ProtoReq localProtoReq = new ProtoReqManagerImpl.ProtoReq();
       setSsoCmd(localProtoReq);
       localProtoReq.reqBody = constructReqBody(paramRichProtoReq.reqs);
       localProtoReq.busiData = paramRichProtoReq;
@@ -248,7 +248,7 @@ public class C2CPicUpHandler
     paramTryUpImgReq.uint32_bu_type.set(1);
   }
   
-  protected void setSsoCmd(ProtoReqManager.ProtoReq paramProtoReq)
+  protected void setSsoCmd(ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     paramProtoReq.ssoCmd = "LongConn.OffPicUp";
   }

@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.ar;
 
-import apfs;
-
-public class ArConfigService$6$3
+class ArConfigService$6$3
   implements Runnable
 {
-  public ArConfigService$6$3(apfs paramapfs) {}
+  ArConfigService$6$3(ArConfigService.6 param6) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ArConfigService$6$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.6.3
  * JD-Core Version:    0.7.0.1
  */

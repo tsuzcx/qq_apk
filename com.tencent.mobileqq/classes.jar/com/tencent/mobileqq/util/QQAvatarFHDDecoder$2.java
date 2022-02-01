@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.util;
 
 import android.text.TextUtils;
-import bhaf;
-import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.avatar.api.IQQAvatarHandlerService;
 import com.tencent.mobileqq.data.Setting;
 
-public class QQAvatarFHDDecoder$2
+class QQAvatarFHDDecoder$2
   implements Runnable
 {
-  public QQAvatarFHDDecoder$2(bhaf parambhaf, String paramString, boolean paramBoolean) {}
+  QQAvatarFHDDecoder$2(QQAvatarFHDDecoder paramQQAvatarFHDDecoder, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    if (bhaf.a(this.this$0)) {
+    if (QQAvatarFHDDecoder.a(this.this$0)) {
       return;
     }
-    Setting localSetting = bhaf.a(this.this$0).getQQHeadSettingFromDB(this.jdField_a_of_type_JavaLangString);
+    Setting localSetting = QQAvatarFHDDecoder.a(this.this$0).getQQHeadSettingFromDB(this.jdField_a_of_type_JavaLangString);
     if ((this.jdField_a_of_type_Boolean) || (localSetting == null) || (TextUtils.isEmpty(localSetting.url)) || (System.currentTimeMillis() - localSetting.updateTimestamp > 86400000L))
     {
-      bhaf.a(this.this$0).getCustomHead(this.jdField_a_of_type_JavaLangString);
+      ((IQQAvatarHandlerService)QQAvatarFHDDecoder.a(this.this$0).getRuntimeService(IQQAvatarHandlerService.class, "")).getCustomHead(this.jdField_a_of_type_JavaLangString);
       return;
     }
     this.this$0.a(localSetting);

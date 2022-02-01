@@ -1,12 +1,11 @@
 package cooperation.troop;
 
-import Override;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -21,7 +20,7 @@ public class TroopBaseProxyActivity
     {
       try
       {
-        paramActivity = new ReportDialog(paramActivity, 2131755829);
+        paramActivity = new ReportDialog(paramActivity, 2131755842);
         Activity localActivity = paramActivity;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
@@ -29,9 +28,9 @@ public class TroopBaseProxyActivity
         try
         {
           paramActivity.setCancelable(true);
-          paramActivity.setContentView(2131559607);
+          paramActivity.setContentView(2131559683);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131372740)).setText(anvx.a(2131714615));
+          ((TextView)paramActivity.findViewById(2131373066)).setText(HardCodeUtil.a(2131715110));
           localActivity = paramActivity;
           return localActivity;
         }
@@ -70,7 +69,7 @@ public class TroopBaseProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.troop.TroopBaseProxyActivity
  * JD-Core Version:    0.7.0.1
  */

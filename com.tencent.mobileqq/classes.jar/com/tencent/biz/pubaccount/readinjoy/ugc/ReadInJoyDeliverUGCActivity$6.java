@@ -7,12 +7,12 @@ import android.util.DisplayMetrics;
 import android.widget.EditText;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.ReadInJoyDraftboxContent;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxModule;
 import com.tencent.mobileqq.text.QQText;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import qhi;
 
 class ReadInJoyDeliverUGCActivity$6
   implements Runnable
@@ -68,7 +68,7 @@ class ReadInJoyDeliverUGCActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.6
  * JD-Core Version:    0.7.0.1
  */

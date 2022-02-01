@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.qassistant.core;
 
-import bakx;
-import banp;
+import com.tencent.mobileqq.qassistant.wake.WakeManager;
 
-public class VoiceAssistantManager$1
+class VoiceAssistantManager$1
   implements Runnable
 {
-  public VoiceAssistantManager$1(bakx parambakx) {}
+  VoiceAssistantManager$1(VoiceAssistantManager paramVoiceAssistantManager) {}
   
   public void run()
   {
-    banp.a().a("VoiceAssistantManager init()");
+    WakeManager.a().a("VoiceAssistantManager init()");
   }
 }
 

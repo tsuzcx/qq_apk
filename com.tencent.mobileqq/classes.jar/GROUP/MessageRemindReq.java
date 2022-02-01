@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class MessageRemindReq
   extends JceStruct
 {
-  public long dwAppId;
-  public long iGroupCode;
+  public long dwAppId = 0L;
+  public long iGroupCode = 0L;
   public String sKey = "";
   public String sKeyType = "";
-  public long uOwnerUin;
+  public long uOwnerUin = 0L;
   
   public MessageRemindReq() {}
   

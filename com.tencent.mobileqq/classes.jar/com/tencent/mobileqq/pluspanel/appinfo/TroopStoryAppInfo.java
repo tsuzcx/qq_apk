@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
 import android.content.Intent;
 import android.net.Uri;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.troop.TroopStoryUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.BaseApplication;
-import ykv;
-import zcl;
 
 public class TroopStoryAppInfo
   extends PlusPanelAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130842545;
+    return 2130842691;
   }
   
   public int getAppID()
@@ -31,16 +31,16 @@ public class TroopStoryAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697514);
+    return BaseApplicationImpl.getContext().getString(2131697768);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramahvi = zcl.a(null, this.url, paramSessionInfo.curFriendUin);
-    paramSessionInfo = new Intent(paramBaseChatPie.getActivity(), JumpActivity.class);
-    paramSessionInfo.setData(Uri.parse(paramahvi));
-    paramBaseChatPie.getActivity().startActivity(paramSessionInfo);
-    ykv.a("story_grp", "clk_entry", 0, 0, new String[] { "", "", "", "" });
+    paramPlusPanelViewModel = TroopStoryUtil.a(null, this.url, paramSessionInfo.a);
+    paramSessionInfo = new Intent(paramBaseChatPie.a(), JumpActivity.class);
+    paramSessionInfo.setData(Uri.parse(paramPlusPanelViewModel));
+    paramBaseChatPie.a().startActivity(paramSessionInfo);
+    StoryReportor.a("story_grp", "clk_entry", 0, 0, new String[] { "", "", "", "" });
   }
 }
 

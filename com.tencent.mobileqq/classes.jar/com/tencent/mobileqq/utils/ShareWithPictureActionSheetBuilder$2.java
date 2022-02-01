@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.utils;
 
-import bhhp;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
-public class ShareWithPictureActionSheetBuilder$2
+class ShareWithPictureActionSheetBuilder$2
   implements Runnable
 {
-  public ShareWithPictureActionSheetBuilder$2(bhhp parambhhp) {}
+  ShareWithPictureActionSheetBuilder$2(ShareWithPictureActionSheetBuilder paramShareWithPictureActionSheetBuilder) {}
   
   public void run()
   {
-    if (this.this$0.mScrollView1.getWidth() < this.this$0.mGridView1Length) {
-      this.this$0.mScrollView1.setMove(true);
+    if (this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.this$0.jdField_a_of_type_Int) {
+      this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
     }
-    while (this.this$0.mScrollView2.getWidth() < this.this$0.mGridView2Length)
+    while (this.this$0.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.this$0.jdField_b_of_type_Int)
     {
-      this.this$0.mScrollView2.setMove(true);
+      this.this$0.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
       return;
-      this.this$0.mScrollView1.setMove(false);
+      this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
     }
-    this.this$0.mScrollView2.setMove(false);
+    this.this$0.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
   }
 }
 

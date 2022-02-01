@@ -39,7 +39,7 @@ public class TriangleView
     return paramContext.getResources().getDisplayMetrics().densityDpi / 160.0F * paramFloat;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.firstDraw)
@@ -63,7 +63,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.TriangleView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ public final class opera_infomation
   extends JceStruct
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
-  public Map<Integer, String> busi_param;
-  public long feedUin;
+  public Map<Integer, String> busi_param = null;
+  public long feedUin = 0L;
   public String strFeedsKey = "";
   public String strOperaData = "";
   public String strSummary = "";

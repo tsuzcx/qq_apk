@@ -16,6 +16,7 @@ public class SendMessageHandler$SendMessageRunnable
   
   public SendMessageHandler$SendMessageRunnable()
   {
+    this.jdField_c_of_type_Boolean = false;
     this.jdField_c_of_type_Long = -1L;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];

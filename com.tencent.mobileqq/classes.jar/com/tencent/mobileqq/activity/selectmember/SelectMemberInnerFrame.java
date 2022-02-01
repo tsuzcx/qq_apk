@@ -12,10 +12,10 @@ import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 public abstract class SelectMemberInnerFrame
   extends InnerFrame
 {
-  public LayoutInflater a;
+  protected LayoutInflater a;
   protected InnerFrameManager a;
-  public SelectMemberActivity a;
-  public QQAppInterface a;
+  protected SelectMemberActivity a;
+  protected QQAppInterface a;
   
   public SelectMemberInnerFrame(Context paramContext)
   {
@@ -51,7 +51,7 @@ public abstract class SelectMemberInnerFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame
  * JD-Core Version:    0.7.0.1
  */

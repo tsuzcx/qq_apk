@@ -1,41 +1,36 @@
 package com.tencent.biz.richframework.animation.drawable;
 
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
-import com.tencent.qphone.base.util.QLog;
-import znn;
-import znq;
-import znr;
-import znw;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 
-public class AnimationDrawableFactory$1$1
+class AnimationDrawableFactory$1$1
   implements Runnable
 {
-  public AnimationDrawableFactory$1$1(znr paramznr, String[] paramArrayOfString) {}
+  AnimationDrawableFactory$1$1(AnimationDrawableFactory.1 param1, String[] paramArrayOfString) {}
   
   public void run()
   {
     QQAnimationDrawable localQQAnimationDrawable = new QQAnimationDrawable();
     localQQAnimationDrawable.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-    if (this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.a() != 0) {
-      localQQAnimationDrawable.a(this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.a());
+    if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.a() != 0) {
+      localQQAnimationDrawable.a(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.a());
     }
     for (;;)
     {
-      QLog.d("AnimationDrawableFactory", 1, "create animationDrawable success");
-      this.jdField_a_of_type_Znr.jdField_a_of_type_Znw.a(true, localQQAnimationDrawable);
-      if (this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.a()) {
-        znq.a(this.jdField_a_of_type_Znr.jdField_a_of_type_Znq, this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.a(), localQQAnimationDrawable);
+      RFLog.d("AnimationDrawableFactory", RFLog.USR, "create animationDrawable success");
+      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$CreateResultListener.a(true, localQQAnimationDrawable);
+      if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.a()) {
+        AnimationDrawableFactory.a(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory, this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.a(), localQQAnimationDrawable);
       }
       return;
-      if (this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.b() != 0) {
-        localQQAnimationDrawable.a(this.jdField_a_of_type_ArrayOfJavaLangString.length * this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.b());
+      if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.b() != 0) {
+        localQQAnimationDrawable.a(this.jdField_a_of_type_ArrayOfJavaLangString.length * this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.b());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.animation.drawable.AnimationDrawableFactory.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import ors;
-
-public class ReadInJoyNaviController$4
+class ReadInJoyNaviController$4
   implements Runnable
 {
-  public ReadInJoyNaviController$4(ors paramors) {}
+  ReadInJoyNaviController$4(ReadInJoyNaviController paramReadInJoyNaviController) {}
   
   public void run()
   {
-    ors.a(this.this$0, true);
+    ReadInJoyNaviController.a(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.4
  * JD-Core Version:    0.7.0.1
  */

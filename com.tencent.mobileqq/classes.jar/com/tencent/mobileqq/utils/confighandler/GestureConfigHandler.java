@@ -3,9 +3,9 @@ package com.tencent.mobileqq.utils.confighandler;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bdaa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload;
 
 public class GestureConfigHandler
   extends ConfigHandler<DownloadInfo>
@@ -27,7 +27,7 @@ public class GestureConfigHandler
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, DownloadInfo paramDownloadInfo)
   {
-    bdaa.a(paramQQAppInterface, paramString, paramDownloadInfo);
+    GestureMgrAppDownload.a(paramQQAppInterface, paramString, paramDownloadInfo);
   }
   
   public void saveConfig(String paramString, int paramInt)

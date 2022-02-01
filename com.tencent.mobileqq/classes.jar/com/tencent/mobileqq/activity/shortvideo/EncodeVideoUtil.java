@@ -11,9 +11,7 @@ import java.io.File;
 
 public class EncodeVideoUtil
 {
-  public static final String TAG = "EncodeVideoUtil";
-  
-  public static int adjustBitrate(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
+  public static int a(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
   {
     int i = 0;
     if ((paramPublishVideoEntry == null) || (paramPublishVideoEntry.videoMaxrate <= 0)) {
@@ -46,21 +44,7 @@ public class EncodeVideoUtil
     return 0;
   }
   
-  @NonNull
-  private static String getAudioPath(File paramFile)
-  {
-    paramFile = new File(paramFile.getAbsolutePath() + File.separator + "audio_data_cache");
-    if ((paramFile.exists()) && (paramFile.isDirectory()))
-    {
-      paramFile = paramFile.listFiles();
-      if ((paramFile != null) && (paramFile.length > 0)) {
-        return paramFile[0].getAbsolutePath();
-      }
-    }
-    return null;
-  }
-  
-  public static EncodeVideoUtil.VideoInfo getVideoInfoByPath(String paramString)
+  public static EncodeVideoUtil.VideoInfo a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
       try
@@ -69,14 +53,14 @@ public class EncodeVideoUtil
         EncodeVideoUtil.VideoInfo localVideoInfo = new EncodeVideoUtil.VideoInfo();
         if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
         {
-          String str = getVideoPath((File)localObject);
-          localObject = getAudioPath((File)localObject);
+          String str = a((File)localObject);
+          localObject = b((File)localObject);
           if (TextUtils.isEmpty(str)) {
             return null;
           }
-          localVideoInfo.videoPath = str;
-          localVideoInfo.audioPath = ((String)localObject);
-          localVideoInfo.sourcePath = paramString;
+          localVideoInfo.a = str;
+          localVideoInfo.b = ((String)localObject);
+          localVideoInfo.c = paramString;
           return localVideoInfo;
         }
       }
@@ -90,25 +74,8 @@ public class EncodeVideoUtil
     return null;
   }
   
-  public static String getVideoOutputPath(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      paramString = ShortVideoUtils.getShortVideoPath(new File(paramString).getParentFile());
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QZLog.i("EncodeVideoUtil", 1, "get target path error encode error", paramString);
-    }
-    return null;
-  }
-  
   @NonNull
-  private static String getVideoPath(File paramFile)
+  private static String a(File paramFile)
   {
     paramFile = paramFile.listFiles();
     if ((paramFile != null) && (paramFile.length > 0))
@@ -126,10 +93,41 @@ public class EncodeVideoUtil
     }
     return null;
   }
+  
+  public static String a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      paramString = ShortVideoUtils.getShortVideoPath(new File(paramString).getParentFile());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QZLog.i("EncodeVideoUtil", 1, "get target path error encode error", paramString);
+    }
+    return null;
+  }
+  
+  @NonNull
+  private static String b(File paramFile)
+  {
+    paramFile = new File(paramFile.getAbsolutePath() + File.separator + "audio_data_cache");
+    if ((paramFile.exists()) && (paramFile.isDirectory()))
+    {
+      paramFile = paramFile.listFiles();
+      if ((paramFile != null) && (paramFile.length > 0)) {
+        return paramFile[0].getAbsolutePath();
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.EncodeVideoUtil
  * JD-Core Version:    0.7.0.1
  */

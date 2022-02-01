@@ -1,25 +1,22 @@
 package dov.com.qq.im.aeeditor.module.aifilter;
 
 import android.content.Context;
-import bnvy;
-import bnwb;
-import bnwl;
 import java.util.List;
 
-public class SingleImageAIFilterProxy$1
+class SingleImageAIFilterProxy$1
   implements Runnable
 {
-  public SingleImageAIFilterProxy$1(bnwl parambnwl, List paramList, Context paramContext, bnwb parambnwb) {}
+  SingleImageAIFilterProxy$1(SingleImageAIFilterProxy paramSingleImageAIFilterProxy, List paramList, Context paramContext, AIFilterProxyBase.AIFilterProxyCallback paramAIFilterProxyCallback) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaUtilList = bnvy.a(this.jdField_a_of_type_JavaUtilList, bnwl.a(this.this$0));
-    this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bnwb);
+    this.this$0.jdField_a_of_type_JavaUtilList = AIFilterProxyBase.a(this.jdField_a_of_type_JavaUtilList, SingleImageAIFilterProxy.a(this.this$0));
+    this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAIFilterProxyBase$AIFilterProxyCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.aifilter.SingleImageAIFilterProxy.1
  * JD-Core Version:    0.7.0.1
  */

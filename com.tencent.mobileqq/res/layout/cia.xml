@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/iew" android:background="#0c000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.avgame.gameroom.seat.PkMemberItemView android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center" android:id="@id/moa" android:background="@drawable/qq_status_card_background" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip">
-        <TextView android:textSize="20.0dip" android:textColor="@color/skin_black" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="@string/wkt" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/aka" android:gravity="center|top" android:id="@id/nz5" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:lines="2" android:layout_below="@id/kbs" android:layout_centerHorizontal="true" />
-        <LinearLayout android:orientation="vertical" android:id="@id/fda" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_below="@id/nz5" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/ml2" android:paddingLeft="88.0dip" android:paddingRight="88.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_below="@id/fda">
-            <Button android:textSize="@dimen/i9" android:id="@id/aga" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="39.0dip" android:layout_marginRight="12.0dip" android:text="@string/wku" android:layout_weight="1.0" style="@style/e2" />
-            <Button android:id="@id/mkq" android:layout_width="0.0dip" android:layout_height="39.0dip" android:text="@string/dna" android:layout_weight="1.0" style="@style/et" />
-        </LinearLayout>
-        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/ml2" android:layout_centerHorizontal="true">
-            <TextView android:textColor="@color/aka" android:ellipsize="end" android:id="@id/mtu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-            <TextView android:textSize="14.0sp" android:textColor="@color/skin_online_status_link_color" android:id="@id/npf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:drawablePadding="4.0dip" />
-        </LinearLayout>
+    <RelativeLayout android:id="@id/n44" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.RoundCorneredRelativeLayout android:id="@id/jsv" android:padding="7.0dip" android:layout_width="88.0dip" android:layout_height="88.0dip" android:layout_centerInParent="true">
+            <ImageView android:id="@id/fnh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+            <ImageView android:id="@id/o2l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="27.0dip" android:scaleType="fitXY" android:layout_alignBottom="@id/fnh" />
+            <TextView android:textSize="13.0dip" android:textColor="#ffffffff" android:gravity="center|right" android:id="@id/ihn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="17.0dip" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" android:layout_marginBottom="2.0dip" android:text="" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+            <ImageView android:id="@id/ng8" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/common_loading2" android:layout_centerInParent="true" />
+        </com.tencent.mobileqq.widget.RoundCorneredRelativeLayout>
+        <com.tencent.avgame.gameroom.seat.TalkingEffectLayout android:id="@id/o8h" android:visibility="invisible" android:layout_width="105.0dip" android:layout_height="105.0dip" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/d31" android:layout_width="105.0dip" android:layout_height="105.0dip" android:layout_centerInParent="true" />
     </RelativeLayout>
-</FrameLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/f5e" android:layout_width="88.0dip" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="@string/wk6" android:maxLines="1" android:layout_below="@id/n44" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/obu" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/wlb" android:layout_below="@id/f5e" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/obt" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="18.88s" android:layout_below="@id/obu" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/obv" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="作答中" android:layout_below="@id/f5e" android:layout_centerHorizontal="true" />
+</com.tencent.avgame.gameroom.seat.PkMemberItemView>

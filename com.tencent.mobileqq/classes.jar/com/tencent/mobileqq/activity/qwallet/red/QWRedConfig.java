@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.red;
 
-import akyl;
-import albw;
-import alcc;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.IQWalletHelper;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -44,7 +44,7 @@ public class QWRedConfig
   
   private static String a(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = new StringBuilder(alcc.c).append(paramAppRuntime.getAccount()).append("/.config/");
+    paramAppRuntime = new StringBuilder(((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletInternalPath()).append(paramAppRuntime.getAccount()).append("/.config/");
     paramAppRuntime.append(".redConfig");
     return paramAppRuntime.toString();
   }
@@ -87,7 +87,7 @@ public class QWRedConfig
     String str = a(paramQQAppInterface);
     try
     {
-      QWRedConfig localQWRedConfig1 = (QWRedConfig)albw.a(str);
+      QWRedConfig localQWRedConfig1 = (QWRedConfig)QWalletTools.a(str);
       QWRedConfig localQWRedConfig2 = localQWRedConfig1;
       if (localQWRedConfig1 == null) {
         localQWRedConfig2 = new QWRedConfig();
@@ -135,74 +135,74 @@ public class QWRedConfig
     return QWRedConfig.RedInfo.transToReportStr(localLinkedList);
   }
   
-  public akyl getShowInfoByPath(String paramString)
+  public QWalletRedManager.ShowInfo getShowInfoByPath(String paramString)
   {
     paramString = a(paramString);
     if (paramString != null) {
       return paramString.getShowInfo();
     }
-    return new akyl(false, false, "", "");
+    return new QWalletRedManager.ShowInfo(false, false, "", "");
   }
   
   /* Error */
-  public void parseConfig(aktx paramaktx)
+  public void parseConfig(com.tencent.mobileqq.qwallet.config.IQWalletConfigApi.ConfigInfo paramConfigInfo)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
     //   3: ifnull +17 -> 20
-    //   6: ldc 210
+    //   6: ldc 216
     //   8: aload_1
-    //   9: getfield 213	aktx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12: invokevirtual 218	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   9: getfield 219	com/tencent/mobileqq/qwallet/config/IQWalletConfigApi$ConfigInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   12: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   15: istore_2
     //   16: iload_2
     //   17: ifne +6 -> 23
     //   20: aload_0
     //   21: monitorexit
     //   22: return
-    //   23: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   23: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   26: ifeq +55 -> 81
-    //   29: ldc 161
+    //   29: ldc 167
     //   31: iconst_2
     //   32: new 63	java/lang/StringBuilder
     //   35: dup
-    //   36: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   39: ldc 220
-    //   41: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokespecial 168	java/lang/StringBuilder:<init>	()V
+    //   39: ldc 226
+    //   41: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: aload_1
-    //   45: getfield 222	aktx:jdField_a_of_type_Long	J
-    //   48: invokevirtual 225	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   51: ldc 227
-    //   53: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: getfield 228	com/tencent/mobileqq/qwallet/config/IQWalletConfigApi$ConfigInfo:jdField_a_of_type_Long	J
+    //   48: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   51: ldc 233
+    //   53: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: aload_0
-    //   57: getfield 229	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
-    //   60: invokevirtual 225	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   63: ldc 227
-    //   65: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: getfield 235	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
+    //   60: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   63: ldc 233
+    //   65: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: aload_1
-    //   69: getfield 230	aktx:b	Ljava/lang/String;
-    //   72: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   69: getfield 236	com/tencent/mobileqq/qwallet/config/IQWalletConfigApi$ConfigInfo:b	Ljava/lang/String;
+    //   72: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   81: aload_1
-    //   82: getfield 222	aktx:jdField_a_of_type_Long	J
+    //   82: getfield 228	com/tencent/mobileqq/qwallet/config/IQWalletConfigApi$ConfigInfo:jdField_a_of_type_Long	J
     //   85: aload_0
-    //   86: getfield 229	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
+    //   86: getfield 235	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
     //   89: lcmp
     //   90: ifle -70 -> 20
     //   93: aload_0
     //   94: aload_1
-    //   95: getfield 230	aktx:b	Ljava/lang/String;
-    //   98: invokestatic 232	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:parseConfigToPathInfos	(Ljava/lang/String;)Ljava/util/List;
+    //   95: getfield 236	com/tencent/mobileqq/qwallet/config/IQWalletConfigApi$ConfigInfo:b	Ljava/lang/String;
+    //   98: invokestatic 238	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:parseConfigToPathInfos	(Ljava/lang/String;)Ljava/util/List;
     //   101: putfield 27	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:pathInfos	Ljava/util/List;
     //   104: aload_0
     //   105: aload_1
-    //   106: getfield 222	aktx:jdField_a_of_type_Long	J
-    //   109: putfield 229	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
+    //   106: getfield 228	com/tencent/mobileqq/qwallet/config/IQWalletConfigApi$ConfigInfo:jdField_a_of_type_Long	J
+    //   109: putfield 235	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:version	J
     //   112: aload_0
-    //   113: invokevirtual 235	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:saveConfig	()V
+    //   113: invokevirtual 241	com/tencent/mobileqq/activity/qwallet/red/QWRedConfig:saveConfig	()V
     //   116: goto -96 -> 20
     //   119: astore_1
     //   120: aload_0
@@ -212,7 +212,7 @@ public class QWRedConfig
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	124	0	this	QWRedConfig
-    //   0	124	1	paramaktx	aktx
+    //   0	124	1	paramConfigInfo	com.tencent.mobileqq.qwallet.config.IQWalletConfigApi.ConfigInfo
     //   15	2	2	bool	boolean
     // Exception table:
     //   from	to	target	type
@@ -233,7 +233,7 @@ public class QWRedConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.red.QWRedConfig
  * JD-Core Version:    0.7.0.1
  */

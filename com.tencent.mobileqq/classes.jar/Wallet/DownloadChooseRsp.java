@@ -9,7 +9,7 @@ public final class DownloadChooseRsp
   extends JceStruct
 {
   static ArrayList<ResInfo> cache_vecResInfo = new ArrayList();
-  public ArrayList<ResInfo> vecResInfo;
+  public ArrayList<ResInfo> vecResInfo = null;
   
   static
   {

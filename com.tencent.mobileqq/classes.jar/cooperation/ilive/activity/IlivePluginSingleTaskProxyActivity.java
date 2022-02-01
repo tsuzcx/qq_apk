@@ -1,6 +1,5 @@
 package cooperation.ilive.activity;
 
-import Override;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -38,7 +37,7 @@ public class IlivePluginSingleTaskProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.activity.IlivePluginSingleTaskProxyActivity
  * JD-Core Version:    0.7.0.1
  */

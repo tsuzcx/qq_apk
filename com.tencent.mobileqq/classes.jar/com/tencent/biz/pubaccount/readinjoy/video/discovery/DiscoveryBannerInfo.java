@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ssg;
 
 public class DiscoveryBannerInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DiscoveryBannerInfo> CREATOR = new ssg();
+  public static final Parcelable.Creator<DiscoveryBannerInfo> CREATOR = new DiscoveryBannerInfo.1();
   public int a;
   public long a;
   public String a;
@@ -17,7 +16,7 @@ public class DiscoveryBannerInfo
   
   public DiscoveryBannerInfo() {}
   
-  public DiscoveryBannerInfo(Parcel paramParcel)
+  protected DiscoveryBannerInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -47,7 +46,7 @@ public class DiscoveryBannerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo
  * JD-Core Version:    0.7.0.1
  */

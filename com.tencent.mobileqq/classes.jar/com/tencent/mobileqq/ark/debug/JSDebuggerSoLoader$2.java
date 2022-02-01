@@ -4,10 +4,10 @@ import com.tencent.ark.ArkDebugger;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
 
-public final class JSDebuggerSoLoader$2
+final class JSDebuggerSoLoader$2
   implements Runnable
 {
-  public JSDebuggerSoLoader$2(String paramString1, String paramString2) {}
+  JSDebuggerSoLoader$2(String paramString1, String paramString2) {}
   
   public void run()
   {

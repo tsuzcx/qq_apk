@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.screendetect;
 
 import android.content.Context;
-import bbxq;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -17,13 +16,13 @@ class ScreenShotDetector$1
       QLog.d("ScreenShotDetector", 2, "start screenshots, " + bool);
     }
     if (bool) {
-      bbxq.a((Context)ScreenShotDetector.a(this.this$0).get(), this.a, ScreenShotDetector.a(this.this$0));
+      ScreenShotHelper.a((Context)ScreenShotDetector.a(this.this$0).get(), this.a, ScreenShotDetector.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotDetector.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ public class MagicfaceDataPendantJason
   public static final String BELONG_TO_SENDER = "sender";
   public static final String TRIGGER_HIT = "hit";
   public static final String TRIGGER_MISS = "miss";
-  public String belongto;
+  public String belongto = null;
   public int duration = 3;
-  public boolean mirror;
-  public String name;
-  public int startframe;
-  public String trigger;
+  public boolean mirror = false;
+  public String name = null;
+  public int startframe = 0;
+  public String trigger = null;
   
   public String toString()
   {
@@ -21,7 +21,7 @@ public class MagicfaceDataPendantJason
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfaceDataPendantJason
  * JD-Core Version:    0.7.0.1
  */

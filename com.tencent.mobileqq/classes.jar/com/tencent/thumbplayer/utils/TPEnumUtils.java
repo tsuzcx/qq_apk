@@ -1,7 +1,5 @@
 package com.tencent.thumbplayer.utils;
 
-import com.tencent.thumbplayer.core.common.TPDecoderType;
-
 public class TPEnumUtils
 {
   public static int convertAudioFrameFormat2Inner(int paramInt)
@@ -148,28 +146,28 @@ public class TPEnumUtils
   {
     int i;
     if (101 == paramInt) {
-      i = TPDecoderType.TP_VIDEO_DECODER_FFMPEG;
+      i = 101;
     }
     do
     {
       return i;
       i = paramInt;
     } while (102 != paramInt);
-    return TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC;
+    return 102;
   }
   
   public static int convertDecoderType2Inner(int paramInt)
   {
     int i;
     if (101 == paramInt) {
-      i = TPDecoderType.TP_VIDEO_DECODER_FFMPEG;
+      i = 101;
     }
     do
     {
       return i;
       i = paramInt;
     } while (102 != paramInt);
-    return TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC;
+    return 102;
   }
   
   public static int convertHDRType2Inner(int paramInt)
@@ -285,7 +283,7 @@ public class TPEnumUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPEnumUtils
  * JD-Core Version:    0.7.0.1
  */

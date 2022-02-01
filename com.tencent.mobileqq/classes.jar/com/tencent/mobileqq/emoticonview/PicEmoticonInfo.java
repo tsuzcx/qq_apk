@@ -1,75 +1,80 @@
 package com.tencent.mobileqq.emoticonview;
 
-import admh;
-import ahbj;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.widget.EditText;
-import android.widget.ImageView;
-import asih;
-import awrh;
-import awsf;
-import awsw;
-import awyr;
-import bdla;
-import bhpl;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.core.SystemEmotionPanelManager;
 import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.emoticonview.api.IEmoticonPanelService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-import mqq.os.MqqHandler;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class PicEmoticonInfo
   extends EmoticonInfo
-  implements ICustomEmotionInfo
+  implements Parcelable, ICustomEmotionInfo
 {
+  public static final Parcelable.Creator<PicEmoticonInfo> CREATOR = new PicEmoticonInfo.1();
   public static final int DEFAULT_AUDIO_WAVE_BACKGROUND_COLOR = Color.parseColor("#21d9c6");
   public static final int DEFAULT_AUDIO_WAVE_FOREGROUND_COLOR = Color.parseColor("#ffffff");
-  public static final String ORIGINAL_EMOTION_COUNT_SP_FILE_NAME_ = "originalEmotionCountSp_";
+  public static final String ORIGINAL_EMOTION_COUNT_SP_FILE_NAME = "originalEmotionCountSp_";
   public static final int ORIGINAL_EMOTION_REWORD_COUNT = 21;
   private static final String TAG = "PicEmoticonInfo";
   public static final int TYPE_GIF = 3;
   public static final int TYPE_PNG = 2;
   public Emoticon emoticon;
   public int imageType;
-  public boolean isAPNG;
-  public boolean isDownLoad;
-  private Drawable mDefault;
+  public boolean isAPNG = false;
+  public boolean isDownLoad = false;
+  public Drawable mDefault = null;
   private ColorDrawable mEmptyDrawable = new ColorDrawable();
-  private Drawable mFIVE_INCH_DEFAULT;
-  private Drawable mFIVE_INCH_FAILED;
-  private Drawable mFailed;
-  public int reqHeight;
-  public int reqWidth;
+  public Drawable mFailed = null;
+  public Drawable mFiveInchDefault = null;
+  public Drawable mFiveInchFailed = null;
+  public int reqHeight = 0;
+  public int reqWidth = 0;
   public String roamingType;
-  private String uin;
+  public String uin;
+  
+  protected PicEmoticonInfo(Parcel paramParcel)
+  {
+    super(paramParcel);
+    this.emoticon = ((Emoticon)paramParcel.readSerializable());
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      this.isDownLoad = bool1;
+      this.reqWidth = paramParcel.readInt();
+      this.reqHeight = paramParcel.readInt();
+      this.imageType = paramParcel.readInt();
+      this.uin = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label143;
+      }
+    }
+    label143:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.isAPNG = bool1;
+      this.roamingType = paramParcel.readString();
+      return;
+      bool1 = false;
+      break;
+    }
+  }
   
   public PicEmoticonInfo(String paramString)
   {
@@ -77,9 +82,9 @@ public class PicEmoticonInfo
     if ((this.mDefault == null) || (this.mFailed == null)) {}
     try
     {
-      paramString = BaseApplication.getContext().getResources();
-      this.mDefault = paramString.getDrawable(2130838049);
-      this.mFailed = paramString.getDrawable(2130843819);
+      paramString = MobileQQ.sMobileQQ.getResources();
+      this.mDefault = paramString.getDrawable(2130850943);
+      this.mFailed = paramString.getDrawable(2130850948);
       return;
     }
     catch (Exception paramString)
@@ -95,11 +100,6 @@ public class PicEmoticonInfo
     }
   }
   
-  private static void asyncStartH5MagicPlayActivity(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Emoticon paramEmoticon)
-  {
-    ThreadManager.post(new PicEmoticonInfo.5(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon), 5, null, true);
-  }
-  
   public static String getFictionPath(Emoticon paramEmoticon)
   {
     if (paramEmoticon == null) {
@@ -108,240 +108,25 @@ public class PicEmoticonInfo
     return paramEmoticon.epId + "_" + paramEmoticon.eId;
   }
   
-  private void modifyDrawableByScreenSize()
+  public static void send(AppRuntime paramAppRuntime, Context paramContext, Parcelable paramParcelable, Emoticon paramEmoticon, Serializable paramSerializable)
   {
-    if ((this.emoticon.extensionWidth == 0) || (this.emoticon.extensionHeight == 0) || ((this.mFIVE_INCH_DEFAULT == null) || (this.mFIVE_INCH_FAILED == null))) {}
-    try
+    IPicEmoticonInfoSender localIPicEmoticonInfoSender = (IPicEmoticonInfoSender)SystemEmotionPanelManager.a().a(6);
+    if (localIPicEmoticonInfoSender == null)
     {
-      Resources localResources = BaseApplication.getContext().getResources();
-      this.mFIVE_INCH_DEFAULT = localResources.getDrawable(2130847121);
-      this.mFIVE_INCH_FAILED = localResources.getDrawable(2130847122);
-      this.mDefault = this.mFIVE_INCH_DEFAULT;
-      this.mFailed = this.mFIVE_INCH_FAILED;
+      QLog.e("PicEmoticonInfo", 1, "emotionInfoSender is null.");
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PicEmoticonInfo", 2, localException.getMessage());
-        }
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PicEmoticonInfo", 2, localOutOfMemoryError.getMessage());
-        }
-      }
-    }
+    localIPicEmoticonInfoSender.send(paramAppRuntime, paramContext, paramParcelable, paramEmoticon, paramSerializable);
   }
   
-  public static void send(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, EmojiStickerManager.StickerInfo paramStickerInfo)
+  public int describeContents()
   {
-    if (paramEmoticon == null)
-    {
-      bhpl.a("emotionType", "emotionActionSend", "1", "", "", "", "", "", "", "");
-      QLog.e("PicEmoticonInfo", 1, "send emotion + 1:emotion == null");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PicEmoticonInfo", 2, "emotion mall,epid=" + paramEmoticon.epId + ";jobtype=" + paramEmoticon.jobType);
-    }
-    if (paramEmoticon.isNewSoundEmoticon()) {
-      awyr.a(paramQQAppInterface, "0X800A932", paramSessionInfo.curType, paramEmoticon.epId);
-    }
-    if ((paramEmoticon.jobType == 2) && (((paramContext instanceof SplashActivity)) || ((paramContext instanceof ChatActivity))))
-    {
-      sendMagicEmoticon(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
-      return;
-    }
-    if ((paramEmoticon.jobType == 4) && (((paramContext instanceof SplashActivity)) || ((paramContext instanceof ChatActivity))))
-    {
-      sendH5MagicEmoticon(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
-      return;
-    }
-    sendStickerMsg(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
-  }
-  
-  private static void sendH5MagicEmoticon(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, EmojiStickerManager.StickerInfo paramStickerInfo)
-  {
-    Object localObject = paramContext.getSharedPreferences("emoticon_panel_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (localObject != null) {
-      ((SharedPreferences)localObject).edit().putLong("sp_key_send_h5_magic_face_time", System.currentTimeMillis()).apply();
-    }
-    bdla.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, paramEmoticon.epId, "", "", "");
-    localObject = (asih)paramQQAppInterface.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
-    ((awyr)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(paramEmoticon.epId, 0, new PicEmoticonInfo.4(paramContext, paramQQAppInterface, paramEmoticon, (asih)localObject, paramSessionInfo));
-    sendStickerMsg(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
-  }
-  
-  private static void sendMagicEmoticon(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, EmojiStickerManager.StickerInfo paramStickerInfo)
-  {
-    asih localasih = (asih)paramQQAppInterface.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
-    bdla.b(paramQQAppInterface, "CliOper", "", "", "MbFasong", "MbIDDianji", 0, 0, paramEmoticon.epId, "", "", "");
-    ((awyr)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(paramEmoticon.epId, -1, new PicEmoticonInfo.3(paramContext, paramQQAppInterface, paramEmoticon, localasih, paramSessionInfo, paramStickerInfo));
-  }
-  
-  private static void sendStickerMsg(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, EmojiStickerManager.StickerInfo paramStickerInfo)
-  {
-    admh.a(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
-    paramSessionInfo = "";
-    int j = -1;
-    paramContext = ((FragmentActivity)paramContext).getChatFragment();
-    int i = j;
-    if (paramContext != null)
-    {
-      paramContext = paramContext.a().getEmoPanel();
-      i = j;
-      if (paramContext != null) {
-        i = paramContext.getEmoticonTab(paramEmoticon.epId);
-      }
-    }
-    paramContext = paramSessionInfo;
-    if (i >= 0) {
-      paramContext = Integer.toString(i);
-    }
-    bdla.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057A9", 0, 0, paramEmoticon.epId, "", paramContext, paramEmoticon.eId);
-  }
-  
-  public static void startSoundDrawablePlay(URLDrawable paramURLDrawable)
-  {
-    Object localObject;
-    if (paramURLDrawable != null)
-    {
-      localObject = paramURLDrawable.getCurrDrawable();
-      if ((localObject != null) && ((localObject instanceof GifDrawable)))
-      {
-        localObject = ((GifDrawable)localObject).getImage();
-        if ((localObject == null) || (!(localObject instanceof VoiceGifImage))) {
-          break label73;
-        }
-        ((VoiceGifImage)localObject).stop();
-        ((VoiceGifImage)localObject).start();
-        paramURLDrawable.invalidateSelf();
-        if (QLog.isColorLevel()) {
-          QLog.d("PicEmoticonInfo", 2, "soundgif startSoundDrawablePlay start");
-        }
-      }
-    }
-    label73:
-    do
-    {
-      do
-      {
-        return;
-      } while ((localObject == null) || (!(localObject instanceof VoiceGifImageV2)));
-      ((VoiceGifImageV2)localObject).stop();
-      ((VoiceGifImageV2)localObject).start();
-      paramURLDrawable.invalidateSelf();
-    } while (!QLog.isColorLevel());
-    QLog.d("PicEmoticonInfo", 2, "soundgif startSoundDrawablePlay start");
-  }
-  
-  public static void stopSoundDrawablePlay(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null)
-    {
-      paramURLDrawable = paramURLDrawable.getCurrDrawable();
-      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof GifDrawable)))
-      {
-        paramURLDrawable = ((GifDrawable)paramURLDrawable).getImage();
-        if ((paramURLDrawable == null) || (!(paramURLDrawable instanceof VoiceGifImage))) {
-          break label62;
-        }
-        ((VoiceGifImage)paramURLDrawable).stop();
-        if (QLog.isColorLevel()) {
-          QLog.d("PicEmoticonInfo", 2, "soundgif stopSoundDrawablePlay stop");
-        }
-      }
-    }
-    label62:
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramURLDrawable == null) || (!(paramURLDrawable instanceof VoiceGifImageV2)));
-      ((VoiceGifImageV2)paramURLDrawable).stop();
-    } while (!QLog.isColorLevel());
-    QLog.d("PicEmoticonInfo", 2, "soundgif stopSoundDrawablePlay stop");
-  }
-  
-  private void tryApng(QQAppInterface paramQQAppInterface, URL paramURL, EmoticonPackage paramEmoticonPackage, boolean paramBoolean, URLDrawable paramURLDrawable)
-  {
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = (awyr)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER);
-      if ((paramEmoticonPackage == null) && (!paramBoolean) && (this.emoticon != null) && (!(paramURLDrawable.getCurrDrawable() instanceof ApngDrawable)))
-      {
-        paramURL = paramURL.toString();
-        paramQQAppInterface.a(this.emoticon.epId, new PicEmoticonInfo.1(this, paramURL));
-      }
-    }
+    return 0;
   }
   
   public URLDrawable getAioPreviewDrawable()
   {
-    Object localObject4 = null;
-    Object localObject1;
-    if (this.emoticon == null) {
-      localObject1 = localObject4;
-    }
-    for (;;)
-    {
-      return localObject1;
-      String str = EmoticonUtils.emoticonAIOPreviewPath.replace("[epId]", this.emoticon.epId).replace("[eId]", this.emoticon.eId);
-      localObject1 = localObject4;
-      if (str == null) {
-        continue;
-      }
-      try
-      {
-        localObject3 = new URL("emotion_pic", "fromAIO", getFictionPath(this.emoticon));
-        localObject1 = localObject4;
-        if (localObject3 == null) {
-          continue;
-        }
-        modifyDrawableByScreenSize();
-        localObject3 = URLDrawable.getDrawable((URL)localObject3, this.mDefault, this.mFailed, false);
-        localObject1 = localObject3;
-        if (((URLDrawable)localObject3).getStatus() == 1) {
-          continue;
-        }
-        ((URLDrawable)localObject3).setTag(this.emoticon);
-        ((URLDrawable)localObject3).addHeader("my_uin", this.uin);
-        localObject1 = localObject3;
-        if (!FileUtil.isFileExists(str)) {
-          continue;
-        }
-        try
-        {
-          ((URLDrawable)localObject3).downloadImediatly();
-          return localObject3;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          Object localObject2 = localObject3;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("PicEmoticonInfo", 2, "getBigDrawable oom,drawableID=" + this.drawableId);
-        return localObject3;
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          localMalformedURLException.printStackTrace();
-          Object localObject3 = null;
-        }
-      }
-    }
+    return ((IEmoticonPanelService)QRoute.api(IEmoticonPanelService.class)).getPicEmoticonAioPreviewDrawable(this);
   }
   
   public URLDrawable getBigDrawable(Context paramContext, float paramFloat)
@@ -403,176 +188,14 @@ public class PicEmoticonInfo
     return getLoadingDrawable(paramString, paramBoolean, false, null);
   }
   
-  public URLDrawable getLoadingDrawable(String paramString, boolean paramBoolean1, boolean paramBoolean2, ahbj paramahbj)
+  public <T> URLDrawable getLoadingDrawable(String paramString, boolean paramBoolean1, boolean paramBoolean2, T paramT)
   {
-    if (this.emoticon == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        paramString = new URL("emotion_pic", paramString, getFictionPath(this.emoticon));
-        if (paramString == null) {
-          continue;
-        }
-        modifyDrawableByScreenSize();
-        localObject1 = this.mDefault;
-        localObject1 = this.mFailed;
-        if (paramahbj != null)
-        {
-          localObject1 = paramahbj.e.getDrawable();
-          paramahbj = BaseApplicationImpl.getApplication().waitAppRuntime(null);
-          if ((paramahbj instanceof QQAppInterface))
-          {
-            paramahbj = (QQAppInterface)paramahbj;
-            localObject2 = URLDrawable.URLDrawableOptions.obtain();
-            ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
-            ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.mDefault;
-            ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
-            if (paramahbj != null)
-            {
-              localObject1 = (awyr)paramahbj.getManager(QQManagerFactory.EMOTICON_MANAGER);
-              if (this.emoticon != null)
-              {
-                localObject1 = ((awyr)localObject1).b(this.emoticon.epId, 0);
-                if (((localObject1 != null) && (((EmoticonPackage)localObject1).isAPNG == 2)) || (this.isAPNG) || (this.emoticon.isAPNG))
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("PicEmoticonInfo", 2, "getBigDrawable: APNG so loaded use apng image");
-                  }
-                  ((URLDrawable.URLDrawableOptions)localObject2).mUseApngImage = true;
-                  ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = false;
-                  ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "useAPNG";
-                  paramBoolean1 = true;
-                  ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.emoticon.extensionWidth;
-                  ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.emoticon.extensionHeight;
-                  localObject2 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject2);
-                  if (((URLDrawable)localObject2).getStatus() != 1)
-                  {
-                    ((URLDrawable)localObject2).setTag(this.emoticon);
-                    ((URLDrawable)localObject2).addHeader("my_uin", this.uin);
-                    ((URLDrawable)localObject2).addHeader("emo_type", String.valueOf(this.imageType));
-                    if (paramBoolean2)
-                    {
-                      ((URLDrawable)localObject2).addHeader("2g_use_gif", "true");
-                      if ((((URLDrawable)localObject2).getStatus() == 2) || (((URLDrawable)localObject2).getStatus() == 3)) {
-                        ((URLDrawable)localObject2).restartDownload();
-                      }
-                      return localObject2;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      catch (MalformedURLException paramString)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          QLog.e("PicEmoticonInfo", 1, "market face getLoadingDrawable", paramString);
-          paramString = null;
-          continue;
-          ((URLDrawable)localObject2).addHeader("2g_use_gif", "false");
-          continue;
-          tryApng(paramahbj, paramString, (EmoticonPackage)localObject1, paramBoolean1, (URLDrawable)localObject2);
-          continue;
-          paramBoolean1 = false;
-          continue;
-          Object localObject1 = null;
-          continue;
-          paramahbj = null;
-        }
-      }
-    }
+    return ((IEmoticonPanelService)QRoute.api(IEmoticonPanelService.class)).getPicEmoticonLoadingDrawable(this, paramString, paramBoolean1, paramBoolean2, paramT);
   }
   
-  public URLDrawable getLoadingDrawable(String paramString, boolean paramBoolean1, boolean paramBoolean2, ahbj paramahbj, int paramInt1, int paramInt2)
+  public <T> URLDrawable getLoadingDrawable(String paramString, boolean paramBoolean1, boolean paramBoolean2, T paramT, int paramInt1, int paramInt2)
   {
-    if (this.emoticon == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        paramString = new URL("emotion_pic", paramString, getFictionPath(this.emoticon));
-        if (paramString == null) {
-          continue;
-        }
-        modifyDrawableByScreenSize();
-        localObject1 = this.mDefault;
-        localObject1 = this.mFailed;
-        if (paramahbj != null)
-        {
-          localObject1 = paramahbj.e.getDrawable();
-          paramahbj = BaseApplicationImpl.getApplication().waitAppRuntime(null);
-          if ((paramahbj instanceof QQAppInterface))
-          {
-            paramahbj = (QQAppInterface)paramahbj;
-            localObject2 = URLDrawable.URLDrawableOptions.obtain();
-            ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
-            ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.mDefault;
-            ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
-            if (paramahbj != null)
-            {
-              localObject1 = (awyr)paramahbj.getManager(QQManagerFactory.EMOTICON_MANAGER);
-              if (this.emoticon != null)
-              {
-                localObject1 = ((awyr)localObject1).b(this.emoticon.epId, 0);
-                if (((localObject1 != null) && (((EmoticonPackage)localObject1).isAPNG == 2)) || (this.isAPNG) || (this.emoticon.isAPNG))
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("PicEmoticonInfo", 2, "getBigDrawable: APNG so loaded use apng image");
-                  }
-                  ((URLDrawable.URLDrawableOptions)localObject2).mUseApngImage = true;
-                  ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = false;
-                  ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "useAPNG";
-                  paramBoolean1 = true;
-                  ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.reqWidth;
-                  ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.reqHeight;
-                  localObject2 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject2);
-                  if (((URLDrawable)localObject2).getStatus() != 1)
-                  {
-                    ((URLDrawable)localObject2).setTag(this.emoticon);
-                    ((URLDrawable)localObject2).addHeader("my_uin", this.uin);
-                    ((URLDrawable)localObject2).addHeader("emo_type", String.valueOf(this.imageType));
-                    if (paramBoolean2)
-                    {
-                      ((URLDrawable)localObject2).addHeader("2g_use_gif", "true");
-                      if ((((URLDrawable)localObject2).getStatus() == 2) || (((URLDrawable)localObject2).getStatus() == 3)) {
-                        ((URLDrawable)localObject2).restartDownload();
-                      }
-                      return localObject2;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      catch (MalformedURLException paramString)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          QLog.e("PicEmoticonInfo", 1, "market face getLoadingDrawable", paramString);
-          paramString = null;
-          continue;
-          ((URLDrawable)localObject2).addHeader("2g_use_gif", "false");
-          continue;
-          tryApng(paramahbj, paramString, (EmoticonPackage)localObject1, paramBoolean1, (URLDrawable)localObject2);
-          continue;
-          paramBoolean1 = false;
-          continue;
-          Object localObject1 = null;
-          continue;
-          paramahbj = null;
-        }
-      }
-    }
+    return ((IEmoticonPanelService)QRoute.api(IEmoticonPanelService.class)).getPicEmoticonLoadingDrawable(this, paramString, paramBoolean1, paramBoolean2, paramT, paramInt1, paramInt2);
   }
   
   public String getPath()
@@ -666,7 +289,7 @@ public class PicEmoticonInfo
     Object localObject;
     if (this.emoticon.jobType == 1)
     {
-      localObject = EmoticonUtils.emoticonPreviewPath.replace("[epId]", this.emoticon.epId).replace("[eId]", this.emoticon.eId);
+      localObject = CommonEmoticonConstans.emoticonPreviewPath.replace("[epId]", this.emoticon.epId).replace("[eId]", this.emoticon.eId);
       label52:
       if (localObject == null) {
         break label112;
@@ -679,7 +302,7 @@ public class PicEmoticonInfo
     for (;;)
     {
       return bool;
-      localObject = EmoticonUtils.emoticonAIOPreviewPath.replace("[epId]", this.emoticon.epId).replace("[eId]", this.emoticon.eId);
+      localObject = CommonEmoticonConstans.emoticonAIOPreviewPath.replace("[epId]", this.emoticon.epId).replace("[eId]", this.emoticon.eId);
       break label52;
       label112:
       break;
@@ -697,7 +320,7 @@ public class PicEmoticonInfo
       bool1 = false;
       return bool1;
     }
-    Object localObject = EmoticonUtils.emoticonEncryptPath.replace("[epId]", this.emoticon.epId).replace("[eId]", this.emoticon.eId);
+    Object localObject = CommonEmoticonConstans.emoticonEncryptPath.replace("[epId]", this.emoticon.epId).replace("[eId]", this.emoticon.eId);
     if (localObject != null)
     {
       localObject = new File((String)localObject);
@@ -709,7 +332,7 @@ public class PicEmoticonInfo
     {
       if ((this.emoticon.isSound) && (bool1))
       {
-        localObject = EmoticonUtils.emoticonSoundPath.replace("[epId]", this.emoticon.epId).replace("[eId]", this.emoticon.eId);
+        localObject = CommonEmoticonConstans.emoticonSoundPath.replace("[epId]", this.emoticon.epId).replace("[eId]", this.emoticon.eId);
         if (localObject == null) {
           break label165;
         }
@@ -747,78 +370,25 @@ public class PicEmoticonInfo
     return (this.emoticon != null) && (this.emoticon.isSound);
   }
   
-  public void send(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  public void send(AppRuntime paramAppRuntime, Context paramContext, EditText paramEditText, Parcelable paramParcelable)
   {
-    send(paramQQAppInterface, paramContext, paramSessionInfo, this.emoticon, this.stickerInfo);
+    send(paramAppRuntime, paramContext, paramParcelable, this.emoticon, this.stickerInfo);
   }
   
-  public void send(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo, boolean paramBoolean)
+  public void send(AppRuntime paramAppRuntime, Context paramContext, EditText paramEditText, Parcelable paramParcelable, boolean paramBoolean)
   {
-    send(paramQQAppInterface, paramContext, paramEditText, paramSessionInfo, paramBoolean, 0);
+    send(paramAppRuntime, paramContext, paramEditText, paramParcelable, paramBoolean, 0);
   }
   
-  public void send(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo, boolean paramBoolean, int paramInt)
+  public void send(AppRuntime paramAppRuntime, Context paramContext, EditText paramEditText, Parcelable paramParcelable, boolean paramBoolean, int paramInt)
   {
-    if (this.emoticon == null)
+    IPicEmoticonInfoSender localIPicEmoticonInfoSender = (IPicEmoticonInfoSender)SystemEmotionPanelManager.a().a(6);
+    if (localIPicEmoticonInfoSender == null)
     {
-      bhpl.a("emotionType", "emotionActionSend", "1", "", "", "", "", "", "", "");
-      QLog.e("PicEmoticonInfo", 1, "send isFroward emotion = null");
+      QLog.e("PicEmoticonInfo", 1, "emotionInfoSender is null.");
+      return;
     }
-    label228:
-    label362:
-    label380:
-    do
-    {
-      do
-      {
-        return;
-        paramEditText = (asih)paramQQAppInterface.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
-        if ((this.emoticon.jobType != 2) || (!paramBoolean) || ((!(paramContext instanceof SplashActivity)) && (!(paramContext instanceof ChatActivity))) || (!awsw.a())) {
-          break label228;
-        }
-        if (paramEditText.a(this.emoticon.epId, Boolean.valueOf(false))) {
-          break;
-        }
-        ChatActivityUtils.a(paramContext, 2131689959, 0);
-        paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-      } while (paramQQAppInterface == null);
-      paramQQAppInterface.obtainMessage(10).sendToTarget();
-      paramQQAppInterface.obtainMessage(21).sendToTarget();
-      return;
-      paramInt = awsf.a(this.emoticon, 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicEmoticonInfo", 2, "forward,【maxInt:】" + paramInt);
-      }
-      paramInt = awrh.a(paramInt);
-      ((awyr)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(this.emoticon.epId, new PicEmoticonInfo.2(this, paramQQAppInterface, paramInt, paramContext, paramSessionInfo));
-      return;
-      if ((this.emoticon.jobType == 4) && (paramBoolean) && (((paramContext instanceof SplashActivity)) || ((paramContext instanceof ChatActivity))))
-      {
-        SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("emoticon_panel_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-        if (localSharedPreferences != null) {
-          localSharedPreferences.edit().putLong("sp_key_send_h5_magic_face_time", System.currentTimeMillis()).apply();
-        }
-        if (!paramEditText.b(this.emoticon.epId, true, true)) {
-          break label380;
-        }
-        if (!paramEditText.b()) {
-          break label362;
-        }
-        asyncStartH5MagicPlayActivity(paramContext, paramQQAppInterface, paramSessionInfo, this.emoticon);
-      }
-      for (;;)
-      {
-        admh.a(paramQQAppInterface, paramContext, paramSessionInfo, this.emoticon, paramInt);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("PicEmoticonInfo", 2, "forward not support h5magic");
-        }
-      }
-      ChatActivityUtils.a(paramContext, 2131689959, 0);
-      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.obtainMessage(10).sendToTarget();
-    paramQQAppInterface.obtainMessage(21).sendToTarget();
+    localIPicEmoticonInfoSender.send(this, paramAppRuntime, paramContext, paramEditText, paramParcelable, paramBoolean, paramInt);
   }
   
   public void setIsChecked(boolean paramBoolean)
@@ -833,10 +403,38 @@ public class PicEmoticonInfo
     }
     return "PicEmoticonInfo TYPE_BIG_EMOTICON and no emoticon";
   }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    int i = 1;
+    super.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeSerializable(this.emoticon);
+    if (this.isDownLoad)
+    {
+      paramInt = 1;
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeInt(this.reqWidth);
+      paramParcel.writeInt(this.reqHeight);
+      paramParcel.writeInt(this.imageType);
+      paramParcel.writeString(this.uin);
+      if (!this.isAPNG) {
+        break label92;
+      }
+    }
+    label92:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeString(this.roamingType);
+      return;
+      paramInt = 0;
+      break;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.PicEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,12 @@ public class FriendProfileCardActivity$ProfileTopGestureLayout
   {
     if ((this.a.a instanceof VasProfilePhotoView))
     {
-      View localView = this.a.a.a("map_key_qzonecover");
+      View localView = this.a.a.getChildView("map_key_qzonecover");
       if (((localView instanceof QzonePhotoView)) && (((QzonePhotoView)localView).a)) {
         return false;
       }
     }
-    else if (((this.a.a instanceof VasProfileTagView)) && (((VasProfileTagView)this.a.a).a))
+    else if (((this.a.a instanceof VasProfileTagView)) && (((VasProfileTagView)this.a.a).isDragging))
     {
       return false;
     }
@@ -35,7 +35,7 @@ public class FriendProfileCardActivity$ProfileTopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileCardActivity.ProfileTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

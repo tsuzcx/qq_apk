@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.profilecard.vas.component.header;
 
 import android.os.Message;
-import badm;
-import badp;
-import bkys;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.util.WeakReferenceHandler;
 
-public class AbsVasProfileHeaderComponent$4$1
+class AbsVasProfileHeaderComponent$4$1
   implements Runnable
 {
-  public AbsVasProfileHeaderComponent$4$1(badp parambadp, Card paramCard) {}
+  AbsVasProfileHeaderComponent$4$1(AbsVasProfileHeaderComponent.4 param4, Card paramCard) {}
   
   public void run()
   {
-    if (badm.b(this.jdField_a_of_type_Badp.a) == null) {
+    if (AbsVasProfileHeaderComponent.access$900(this.this$1.this$0) == null) {
       return;
     }
-    boolean bool = badm.a(this.jdField_a_of_type_Badp.a, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet, this.jdField_a_of_type_ComTencentMobileqqDataCard.diyComplicatedInfo, this.jdField_a_of_type_ComTencentMobileqqDataCard.cardId);
-    Message localMessage = badm.c(this.jdField_a_of_type_Badp.a).obtainMessage(13, Boolean.valueOf(bool));
-    badm.d(this.jdField_a_of_type_Badp.a).sendMessage(localMessage);
+    boolean bool = AbsVasProfileHeaderComponent.access$1000(this.this$1.this$0, (int)this.val$card.lCurrentStyleId, (int)this.val$card.lCurrentBgId, this.val$card.backgroundUrl, (int)this.val$card.backgroundColor, this.val$card.templateRet, this.val$card.diyComplicatedInfo, this.val$card.cardId);
+    Message localMessage = AbsVasProfileHeaderComponent.access$1100(this.this$1.this$0).obtainMessage(13, Boolean.valueOf(bool));
+    AbsVasProfileHeaderComponent.access$1200(this.this$1.this$0).sendMessage(localMessage);
   }
 }
 

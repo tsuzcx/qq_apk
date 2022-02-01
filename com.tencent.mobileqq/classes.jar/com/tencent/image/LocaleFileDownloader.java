@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -27,8 +28,8 @@ public class LocaleFileDownloader
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
         }
         return null;
       }

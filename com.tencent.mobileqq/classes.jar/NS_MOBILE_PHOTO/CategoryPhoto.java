@@ -11,10 +11,10 @@ public final class CategoryPhoto
   static ArrayList<PhotoFeedsData> cache_cover_photos;
   static ArrayList<PhotoFeedsData> cache_photos = new ArrayList();
   public String categoryid = "";
-  public ArrayList<PhotoFeedsData> cover_photos;
-  public boolean has_more;
+  public ArrayList<PhotoFeedsData> cover_photos = null;
+  public boolean has_more = false;
   public String photo_page_str = "";
-  public ArrayList<PhotoFeedsData> photos;
+  public ArrayList<PhotoFeedsData> photos = null;
   
   static
   {

@@ -2,13 +2,13 @@ package com.tencent.mobileqq.utils;
 
 public class ContactUtils$NameInfo
 {
-  public boolean isNeedDB;
-  public String name;
+  public String a;
+  public boolean a;
   
   ContactUtils$NameInfo(String paramString, boolean paramBoolean)
   {
-    this.name = paramString;
-    this.isNeedDB = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

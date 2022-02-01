@@ -18,7 +18,7 @@ public class PicMessageExtraData
   public String doutuSupplier = "";
   public String emojiId;
   public String emojiPkgId;
-  public int from;
+  public int from = 0;
   public String iconUrl;
   public int imageBizType;
   public String mAdEmoDescStr;
@@ -258,7 +258,7 @@ public class PicMessageExtraData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PicMessageExtraData
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,9 @@ public final class MovGroupMemReq
   extends JceStruct
 {
   static byte[] cache_vecBody;
-  public byte reqtype;
-  public long uin;
-  public byte[] vecBody;
+  public byte reqtype = 0;
+  public long uin = 0L;
+  public byte[] vecBody = null;
   
   public MovGroupMemReq() {}
   
@@ -42,7 +42,7 @@ public final class MovGroupMemReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.MovGroupMemReq
  * JD-Core Version:    0.7.0.1
  */

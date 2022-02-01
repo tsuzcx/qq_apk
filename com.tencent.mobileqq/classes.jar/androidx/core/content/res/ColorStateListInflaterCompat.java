@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.XmlRes;
-import c;
+import androidx.core.R.styleable;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -81,15 +81,15 @@ public final class ColorStateListInflaterCompat
         break;
       }
     } while ((i != 2) || (k > n) || (!paramXmlPullParser.getName().equals("item")));
-    Object localObject2 = obtainAttributes(paramResources, paramTheme, paramAttributeSet, c.jdField_a_of_type_ArrayOfInt);
-    int i1 = ((TypedArray)localObject2).getColor(c.jdField_a_of_type_Int, -65281);
+    Object localObject2 = obtainAttributes(paramResources, paramTheme, paramAttributeSet, R.styleable.jdField_a_of_type_ArrayOfInt);
+    int i1 = ((TypedArray)localObject2).getColor(R.styleable.jdField_a_of_type_Int, -65281);
     float f = 1.0F;
     label137:
     label162:
     int m;
-    if (((TypedArray)localObject2).hasValue(c.b))
+    if (((TypedArray)localObject2).hasValue(R.styleable.b))
     {
-      f = ((TypedArray)localObject2).getFloat(c.b, 1.0F);
+      f = ((TypedArray)localObject2).getFloat(R.styleable.b, 1.0F);
       ((TypedArray)localObject2).recycle();
       i = 0;
       int i2 = paramAttributeSet.getAttributeCount();
@@ -116,10 +116,10 @@ public final class ColorStateListInflaterCompat
     {
       k += 1;
       break label162;
-      if (!((TypedArray)localObject2).hasValue(c.c)) {
+      if (!((TypedArray)localObject2).hasValue(R.styleable.c)) {
         break label137;
       }
-      f = ((TypedArray)localObject2).getFloat(c.c, 1.0F);
+      f = ((TypedArray)localObject2).getFloat(R.styleable.c, 1.0F);
       break label137;
       m = -m;
       break label212;
@@ -152,7 +152,7 @@ public final class ColorStateListInflaterCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.content.res.ColorStateListInflaterCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.extendfriend.pulltorefresh;
 
 import android.view.animation.Interpolator;
-import assi;
-import assm;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.internal.ViewCompat;
 
 final class PullToRefreshBase$SmoothScrollRunnable
   implements Runnable
@@ -10,19 +9,19 @@ final class PullToRefreshBase$SmoothScrollRunnable
   private final int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
   private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private assi jdField_a_of_type_Assi;
+  private PullToRefreshBase.OnSmoothScrollFinishedListener jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$OnSmoothScrollFinishedListener;
   private boolean jdField_a_of_type_Boolean = true;
   private final int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = -1L;
   private int c = -1;
   
-  public PullToRefreshBase$SmoothScrollRunnable(PullToRefreshBase paramPullToRefreshBase, int paramInt1, int paramInt2, long paramLong, assi paramassi)
+  public PullToRefreshBase$SmoothScrollRunnable(PullToRefreshBase paramPullToRefreshBase, int paramInt1, int paramInt2, long paramLong, PullToRefreshBase.OnSmoothScrollFinishedListener paramOnSmoothScrollFinishedListener)
   {
     this.jdField_b_of_type_Int = paramInt1;
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_a_of_type_AndroidViewAnimationInterpolator = PullToRefreshBase.a(paramPullToRefreshBase);
     this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Assi = paramassi;
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$OnSmoothScrollFinishedListener = paramOnSmoothScrollFinishedListener;
   }
   
   public void a()
@@ -39,10 +38,10 @@ final class PullToRefreshBase$SmoothScrollRunnable
       if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == this.c)) {
         break label128;
       }
-      assm.a(this.this$0, this);
+      ViewCompat.a(this.this$0, this);
     }
     label128:
-    while (this.jdField_a_of_type_Assi == null)
+    while (this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$OnSmoothScrollFinishedListener == null)
     {
       return;
       long l = Math.max(Math.min((System.currentTimeMillis() - this.jdField_b_of_type_Long) * 1000L / this.jdField_a_of_type_Long, 1000L), 0L);
@@ -52,12 +51,12 @@ final class PullToRefreshBase$SmoothScrollRunnable
       this.this$0.a(this.c);
       break;
     }
-    this.jdField_a_of_type_Assi.a();
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$OnSmoothScrollFinishedListener.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.SmoothScrollRunnable
  * JD-Core Version:    0.7.0.1
  */

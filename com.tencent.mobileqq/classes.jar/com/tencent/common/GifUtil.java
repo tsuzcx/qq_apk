@@ -1,8 +1,8 @@
 package com.tencent.common;
 
-import bmwb;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
+import dov.com.qq.im.ae.AEKitForQQ;
 import java.io.File;
 
 public class GifUtil
@@ -11,7 +11,7 @@ public class GifUtil
   {
     try
     {
-      bmwb.a();
+      AEKitForQQ.a();
       System.load(new File(FeatureManager.getSoDir(), "libgiflossy.so").getPath());
       return;
     }

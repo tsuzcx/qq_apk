@@ -37,22 +37,22 @@ public class EmotionKeywordLayout
   public EmotionKeywordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.mHeight = AIOUtils.dp2px(81.0F, paramContext.getResources());
+    this.mHeight = AIOUtils.a(81.0F, paramContext.getResources());
   }
   
   private void initUIView()
   {
     if (this.mTitleContainer == null) {
-      this.mTitleContainer = ((LinearLayout)findViewById(2131366089));
+      this.mTitleContainer = ((LinearLayout)findViewById(2131366261));
     }
     if (this.mTitleView == null) {
-      this.mTitleView = ((TextView)findViewById(2131366088));
+      this.mTitleView = ((TextView)findViewById(2131366260));
     }
     if (this.mEmotionView == null) {
-      this.mEmotionView = ((EmotionKeywordHorizonListView)findViewById(2131366118));
+      this.mEmotionView = ((EmotionKeywordHorizonListView)findViewById(2131366290));
     }
     if (this.mAnimationContainer == null) {
-      this.mAnimationContainer = ((LinearLayout)findViewById(2131362709));
+      this.mAnimationContainer = ((LinearLayout)findViewById(2131362736));
     }
   }
   
@@ -61,7 +61,7 @@ public class EmotionKeywordLayout
     if (this.mTitleContainer.getVisibility() == 0) {}
     for (int i = 100;; i = 81)
     {
-      this.mHeight = AIOUtils.dp2px(i, getResources());
+      this.mHeight = AIOUtils.a(i, getResources());
       return;
     }
   }
@@ -134,7 +134,7 @@ public class EmotionKeywordLayout
       QLog.d("EmotionKeywordLayout", 2, "show");
     }
     initUIView();
-    if (StringUtil.isEmpty(paramString))
+    if (StringUtil.a(paramString))
     {
       this.mTitleView.setText("");
       this.mTitleContainer.setVisibility(8);
@@ -168,7 +168,7 @@ public class EmotionKeywordLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordLayout
  * JD-Core Version:    0.7.0.1
  */

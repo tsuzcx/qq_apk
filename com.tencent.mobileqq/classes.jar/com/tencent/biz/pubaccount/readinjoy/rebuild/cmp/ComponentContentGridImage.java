@@ -7,54 +7,47 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import anvx;
-import bfxp;
-import blfz;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJFrameworkReportManager;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.GalleryPGCFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.PGCFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.PGCPicInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCPicInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.WendaInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView.PicInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.GridView;
+import com.tencent.widget.TraceUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pqb;
-import pqw;
-import qfw;
-import rbo;
-import rbx;
-import rfw;
-import rgh;
-import rgi;
-import rgj;
-import rgk;
-import rgl;
-import rgm;
-import rqz;
-import rrl;
-import rrm;
-import rrq;
-import rrr;
-import rru;
-import szd;
-import teh;
 
 public class ComponentContentGridImage
   extends GridView
-  implements rbo
+  implements ComponentView
 {
   public int a;
-  public Object a;
-  private rfw jdField_a_of_type_Rfw;
-  private rgi jdField_a_of_type_Rgi;
-  private rgl jdField_a_of_type_Rgl;
-  private rgm jdField_a_of_type_Rgm;
-  private boolean jdField_a_of_type_Boolean;
+  private CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
+  private ComponentContentGridImage.Adapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$Adapter;
+  private ComponentContentGridImage.OnGalleryItemClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$OnGalleryItemClickListener;
+  private ComponentContentGridImage.OnNoItemClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$OnNoItemClickListener;
+  protected Object a;
+  private boolean jdField_a_of_type_Boolean = false;
   public int b;
   private int c;
   
@@ -66,8 +59,8 @@ public class ComponentContentGridImage
   public ComponentContentGridImage(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = AIOUtils.dp2px(12.0F, getResources());
-    this.jdField_b_of_type_Int = AIOUtils.dp2px(12.0F, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.a(12.0F, getResources());
+    this.jdField_b_of_type_Int = AIOUtils.a(12.0F, getResources());
     a(paramContext);
   }
   
@@ -94,6 +87,61 @@ public class ComponentContentGridImage
     return 1;
   }
   
+  public static ComponentContentGridImage.Model a(ArticleInfo paramArticleInfo)
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+    SocializeFeedsInfo.UGCPicInfo localUGCPicInfo;
+    if (paramArticleInfo.hasNext()) {
+      localUGCPicInfo = (SocializeFeedsInfo.UGCPicInfo)paramArticleInfo.next();
+    }
+    for (;;)
+    {
+      try
+      {
+        int i = localArrayList1.size();
+        if (i >= 9) {
+          return new ComponentContentGridImage.Model.Builder().a(localArrayList1).b(localArrayList2).a();
+        }
+        i = localUGCPicInfo.jdField_a_of_type_Int;
+        int j = localUGCPicInfo.jdField_b_of_type_Int;
+        URL localURL = new URL(localUGCPicInfo.jdField_c_of_type_JavaLangString);
+        if (localUGCPicInfo.jdField_c_of_type_Int != 1) {
+          break label207;
+        }
+        bool = true;
+        localArrayList1.add(new SquareCornerTextImageView.PicInfo(i, j, localURL, bool));
+        localArrayList2.add(new URL(localUGCPicInfo.jdField_b_of_type_JavaLangString));
+      }
+      catch (MalformedURLException localMalformedURLException) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ComponentContentGridImage", 2, "Malformed URL: " + localMalformedURLException.getMessage());
+      break;
+      label207:
+      boolean bool = false;
+    }
+  }
+  
+  public static ComponentContentGridImage.Model a(Object paramObject, int paramInt)
+  {
+    ComponentContentGridImage.Model.Builder localBuilder = new ComponentContentGridImage.Model.Builder();
+    if ((paramObject instanceof IReadInJoyModel))
+    {
+      paramObject = ((IReadInJoyModel)paramObject).a();
+      a(paramInt, localBuilder, paramObject);
+      if (paramObject != null)
+      {
+        a(localBuilder, paramObject);
+        b(localBuilder, paramObject);
+      }
+      localBuilder.a(paramInt);
+    }
+    return localBuilder.a();
+  }
+  
   private ArrayList<String> a(List<URL> paramList)
   {
     ArrayList localArrayList = new ArrayList();
@@ -110,79 +158,24 @@ public class ComponentContentGridImage
     return localArrayList;
   }
   
-  public static rgj a(ArticleInfo paramArticleInfo)
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.jdField_a_of_type_JavaUtilArrayList.iterator();
-    rrr localrrr;
-    if (paramArticleInfo.hasNext()) {
-      localrrr = (rrr)paramArticleInfo.next();
-    }
-    for (;;)
-    {
-      try
-      {
-        int i = localArrayList1.size();
-        if (i >= 9) {
-          return new rgk().a(localArrayList1).b(localArrayList2).a();
-        }
-        i = localrrr.jdField_a_of_type_Int;
-        int j = localrrr.jdField_b_of_type_Int;
-        URL localURL = new URL(localrrr.jdField_c_of_type_JavaLangString);
-        if (localrrr.jdField_c_of_type_Int != 1) {
-          break label207;
-        }
-        bool = true;
-        localArrayList1.add(new teh(i, j, localURL, bool));
-        localArrayList2.add(new URL(localrrr.jdField_b_of_type_JavaLangString));
-      }
-      catch (MalformedURLException localMalformedURLException) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ComponentContentGridImage", 2, "Malformed URL: " + localMalformedURLException.getMessage());
-      break;
-      label207:
-      boolean bool = false;
-    }
-  }
-  
-  public static rgj a(Object paramObject, int paramInt)
-  {
-    rgk localrgk = new rgk();
-    if ((paramObject instanceof qfw))
-    {
-      paramObject = ((qfw)paramObject).a();
-      a(paramInt, localrgk, paramObject);
-      if (paramObject != null)
-      {
-        a(localrgk, paramObject);
-        b(localrgk, paramObject);
-      }
-      localrgk.a(paramInt);
-    }
-    return localrgk.a();
-  }
-  
   private void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof qfw))
+    if ((this.jdField_a_of_type_JavaLangObject instanceof IReadInJoyModel))
     {
-      ArticleInfo localArticleInfo = ((qfw)this.jdField_a_of_type_JavaLangObject).a();
+      ArticleInfo localArticleInfo = ((IReadInJoyModel)this.jdField_a_of_type_JavaLangObject).a();
       if (localArticleInfo != null)
       {
-        pqb.a(localArticleInfo, paramInt1, paramInt2);
+        RIJFrameworkReportManager.a(localArticleInfo, paramInt1, paramInt2);
         paramInt2 = -1;
         paramInt1 = paramInt2;
-        if (this.jdField_a_of_type_Rfw != null)
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt != null)
         {
           paramInt1 = paramInt2;
-          if (this.jdField_a_of_type_Rfw.a != null) {
-            paramInt1 = this.jdField_a_of_type_Rfw.a.e();
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a != null) {
+            paramInt1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.e();
           }
         }
-        pqb.a(localArticleInfo, paramInt1);
+        RIJFrameworkReportManager.a(localArticleInfo, paramInt1);
       }
     }
     else
@@ -192,45 +185,7 @@ public class ComponentContentGridImage
     QLog.d("ComponentContentGridImage", 1, "ComponentContentGridImage report data, articleInfo is null!");
   }
   
-  private void a(int paramInt, List<URL> paramList)
-  {
-    String str1 = this.jdField_a_of_type_Rgi.a();
-    String str2 = this.jdField_a_of_type_Rgi.b();
-    ArticleInfo localArticleInfo = null;
-    if ((this.jdField_a_of_type_JavaLangObject instanceof qfw)) {
-      localArticleInfo = ((qfw)this.jdField_a_of_type_JavaLangObject).a();
-    }
-    if (pqw.m(localArticleInfo))
-    {
-      str1 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rru.f;
-      str2 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rru.jdField_b_of_type_JavaLangString;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.ui", 2, new Object[] { "ReadInJoy grid image show content url and title, articleUrl: " + str1, " articleTitle: " + str2 });
-    }
-    if ((localArticleInfo != null) && (localArticleInfo.isPGCShortContent())) {}
-    try
-    {
-      localArticleInfo.clickArea = a();
-      pqb.a(this.jdField_a_of_type_Rfw.a.a().a().getContext(), localArticleInfo, (int)localArticleInfo.mChannelID);
-      if ((this.jdField_a_of_type_Rfw != null) && (this.jdField_a_of_type_Rfw.a != null) && (this.jdField_a_of_type_Rfw.a.a() != null) && (this.jdField_a_of_type_Rfw.a.a().a() != null)) {
-        bfxp.a(this.jdField_a_of_type_Rfw.a.a().a(), paramInt, a(paramList), null, null, false, false, "4", 100, null, str1, str2, localArticleInfo, "");
-      }
-      if (paramList != null) {
-        a(paramInt, paramList.size());
-      }
-      return;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        QLog.e("ComponentContentGridImage", 2, localNullPointerException.getLocalizedMessage());
-      }
-    }
-  }
-  
-  static void a(int paramInt, rgk paramrgk, ArticleInfo paramArticleInfo)
+  static void a(int paramInt, ComponentContentGridImage.Model.Builder paramBuilder, ArticleInfo paramArticleInfo)
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
@@ -239,9 +194,9 @@ public class ComponentContentGridImage
     boolean bool2;
     boolean bool1;
     long l1;
-    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.jdField_a_of_type_JavaUtilArrayList != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      localArrayList3 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.jdField_a_of_type_JavaUtilArrayList;
+      localArrayList3 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList;
       i = localArrayList3.size();
       long l2 = 0L;
       bool2 = false;
@@ -255,11 +210,11 @@ public class ComponentContentGridImage
       }
       bool1 = bool2;
       l1 = l2;
-      if (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.jdField_a_of_type_Rqz == null) {
+      if (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo == null) {
         break label486;
       }
       bool1 = true;
-      l2 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.jdField_a_of_type_Rqz.a;
+      l2 = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.a;
       l1 = l2;
       if (i <= 0) {
         break label486;
@@ -277,53 +232,53 @@ public class ComponentContentGridImage
         int j = localArrayList2.size();
         if (j >= 9)
         {
-          paramrgk.b(localArrayList1);
-          paramrgk.a(localArrayList2);
+          paramBuilder.b(localArrayList1);
+          paramBuilder.a(localArrayList2);
           return;
         }
-        rrm localrrm = (rrm)localArrayList3.get(i);
-        if ((localrrm.jdField_b_of_type_JavaLangString == null) && (localrrm.jdField_c_of_type_JavaLangString == null)) {
+        SocializeFeedsInfo.PGCPicInfo localPGCPicInfo = (SocializeFeedsInfo.PGCPicInfo)localArrayList3.get(i);
+        if ((localPGCPicInfo.jdField_b_of_type_JavaLangString == null) && (localPGCPicInfo.jdField_c_of_type_JavaLangString == null)) {
           break label491;
         }
-        a(i, localrrm);
-        blfz.a("ComponentContentGridImage.setImageUrl");
-        label309:
+        a(i, localPGCPicInfo);
+        TraceUtils.traceBegin("ComponentContentGridImage.setImageUrl");
+        label308:
         int k;
-        if (localrrm.jdField_b_of_type_JavaLangString != null)
+        if (localPGCPicInfo.jdField_b_of_type_JavaLangString != null)
         {
-          paramArticleInfo = localrrm.jdField_b_of_type_JavaLangString;
+          paramArticleInfo = localPGCPicInfo.jdField_b_of_type_JavaLangString;
           URL localURL = new URL(paramArticleInfo);
-          if (localrrm.jdField_c_of_type_JavaLangString == null) {
-            break label448;
+          if (localPGCPicInfo.jdField_c_of_type_JavaLangString == null) {
+            break label447;
           }
-          paramArticleInfo = localrrm.jdField_c_of_type_JavaLangString;
+          paramArticleInfo = localPGCPicInfo.jdField_c_of_type_JavaLangString;
           paramArticleInfo = new URL(paramArticleInfo);
-          blfz.a();
+          TraceUtils.traceEnd();
           localArrayList1.add(localURL);
-          blfz.a("ComponentContentGridImage.PicInfo");
-          j = localrrm.jdField_a_of_type_Int;
-          k = localrrm.jdField_b_of_type_Int;
-          if (localrrm.jdField_c_of_type_Int != 1) {
-            break label457;
+          TraceUtils.traceBegin("ComponentContentGridImage.PicInfo");
+          j = localPGCPicInfo.jdField_a_of_type_Int;
+          k = localPGCPicInfo.jdField_b_of_type_Int;
+          if (localPGCPicInfo.jdField_c_of_type_Int != 1) {
+            break label456;
           }
         }
-        label448:
-        label457:
+        label447:
+        label456:
         for (bool2 = true;; bool2 = false)
         {
-          paramArticleInfo = new teh(j, k, paramArticleInfo, bool2);
+          paramArticleInfo = new SquareCornerTextImageView.PicInfo(j, k, paramArticleInfo, bool2);
           if ((bool1) && (i == paramInt - 1))
           {
             paramArticleInfo.b(bool1);
-            paramArticleInfo.a(l1 + anvx.a(2131701815));
+            paramArticleInfo.a(l1 + HardCodeUtil.a(2131702370));
           }
-          blfz.a();
+          TraceUtils.traceEnd();
           localArrayList2.add(paramArticleInfo);
           break label491;
-          paramArticleInfo = localrrm.jdField_c_of_type_JavaLangString;
+          paramArticleInfo = localPGCPicInfo.jdField_c_of_type_JavaLangString;
           break;
-          paramArticleInfo = localrrm.jdField_b_of_type_JavaLangString;
-          break label309;
+          paramArticleInfo = localPGCPicInfo.jdField_b_of_type_JavaLangString;
+          break label308;
         }
         QLog.d("Q.readinjoy.ui", 2, "url error");
       }
@@ -343,37 +298,75 @@ public class ComponentContentGridImage
     }
   }
   
-  private static void a(int paramInt, rrm paramrrm)
+  private static void a(int paramInt, SocializeFeedsInfo.PGCPicInfo paramPGCPicInfo)
   {
-    blfz.a("ComponentContentGridImage.log");
+    TraceUtils.traceBegin("ComponentContentGridImage.log");
     if (QLog.isColorLevel())
     {
-      if (paramrrm.jdField_b_of_type_JavaLangString != null) {
-        QLog.d("Q.readinjoy.ui", 2, "Grid Image url [" + paramInt + "]: " + paramrrm.jdField_b_of_type_JavaLangString);
+      if (paramPGCPicInfo.jdField_b_of_type_JavaLangString != null) {
+        QLog.d("Q.readinjoy.ui", 2, "Grid Image url [" + paramInt + "]: " + paramPGCPicInfo.jdField_b_of_type_JavaLangString);
       }
-      if (paramrrm.jdField_c_of_type_JavaLangString != null) {
-        QLog.d("Q.readinjoy.ui", 2, "Grid thumbNail Image url [" + paramInt + "]: " + paramrrm.jdField_c_of_type_JavaLangString);
+      if (paramPGCPicInfo.jdField_c_of_type_JavaLangString != null) {
+        QLog.d("Q.readinjoy.ui", 2, "Grid thumbNail Image url [" + paramInt + "]: " + paramPGCPicInfo.jdField_c_of_type_JavaLangString);
       }
     }
-    blfz.a();
+    TraceUtils.traceEnd();
   }
   
-  static void a(rgk paramrgk, ArticleInfo paramArticleInfo)
+  private void a(int paramInt, List<URL> paramList)
+  {
+    String str1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$Adapter.a();
+    String str2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$Adapter.b();
+    ArticleInfo localArticleInfo = null;
+    if ((this.jdField_a_of_type_JavaLangObject instanceof IReadInJoyModel)) {
+      localArticleInfo = ((IReadInJoyModel)this.jdField_a_of_type_JavaLangObject).a();
+    }
+    if (RIJFeedsType.m(localArticleInfo))
+    {
+      str1 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$WendaInfo.f;
+      str2 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$WendaInfo.jdField_b_of_type_JavaLangString;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.ui", 2, new Object[] { "ReadInJoy grid image show content url and title, articleUrl: " + str1, " articleTitle: " + str2 });
+    }
+    if ((localArticleInfo != null) && (localArticleInfo.isPGCShortContent())) {}
+    try
+    {
+      localArticleInfo.clickArea = a();
+      RIJFrameworkReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().a().getContext(), localArticleInfo, (int)localArticleInfo.mChannelID);
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().a() != null)) {
+        TroopNoticeJsHandler.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().a(), paramInt, a(paramList), null, null, false, false, "4", 100, null, str1, str2, localArticleInfo, "");
+      }
+      if (paramList != null) {
+        a(paramInt, paramList.size());
+      }
+      return;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      for (;;)
+      {
+        QLog.e("ComponentContentGridImage", 2, localNullPointerException.getLocalizedMessage());
+      }
+    }
+  }
+  
+  static void a(ComponentContentGridImage.Model.Builder paramBuilder, ArticleInfo paramArticleInfo)
   {
     if (!TextUtils.isEmpty(paramArticleInfo.mArticleContentUrl)) {
-      paramrgk.a(paramArticleInfo.mArticleContentUrl);
+      paramBuilder.a(paramArticleInfo.mArticleContentUrl);
     }
   }
   
-  static void b(rgk paramrgk, ArticleInfo paramArticleInfo)
+  static void b(ComponentContentGridImage.Model.Builder paramBuilder, ArticleInfo paramArticleInfo)
   {
-    if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl != null) && (!TextUtils.isEmpty(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.jdField_a_of_type_JavaLangString))) {
-      paramrgk.b(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.jdField_a_of_type_JavaLangString);
+    if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo != null) && (!TextUtils.isEmpty(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_JavaLangString))) {
+      paramBuilder.b(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_JavaLangString);
     }
     while (TextUtils.isEmpty(paramArticleInfo.mTitle)) {
       return;
     }
-    paramrgk.b(paramArticleInfo.mTitle);
+    paramBuilder.b(paramArticleInfo.mTitle);
   }
   
   protected int a()
@@ -383,52 +376,52 @@ public class ComponentContentGridImage
   
   public void a()
   {
-    setOnItemClickListener(new rgh(this));
+    setOnItemClickListener(new ComponentContentGridImage.1(this));
   }
   
   public void a(Context paramContext)
   {
     setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     setNumColumns(3);
-    setVerticalSpacing(AIOUtils.dp2px(1.0F, paramContext.getResources()));
-    setHorizontalSpacing(AIOUtils.dp2px(1.0F, paramContext.getResources()));
+    setVerticalSpacing(AIOUtils.a(1.0F, paramContext.getResources()));
+    setHorizontalSpacing(AIOUtils.a(1.0F, paramContext.getResources()));
     setSelector(17170445);
     a();
-    this.jdField_a_of_type_Rfw = new rfw();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
   }
   
-  public void a(View paramView)
+  protected void a(View paramView)
   {
     ((SquareCornerTextImageView)paramView).jdField_a_of_type_Boolean = false;
   }
   
+  public void a(FeedItemCell.CellListener paramCellListener) {}
+  
   public void a(Object paramObject)
   {
-    if (!(paramObject instanceof rgj))
+    if (!(paramObject instanceof ComponentContentGridImage.Model))
     {
       QLog.e("ComponentContentGridImage", 1, "unsupported model type.", new IllegalArgumentException());
       return;
     }
-    this.jdField_c_of_type_Int = ((rgj)paramObject).a();
-    if (this.jdField_a_of_type_Rgi == null)
+    this.jdField_c_of_type_Int = ((ComponentContentGridImage.Model)paramObject).a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$Adapter == null)
     {
-      this.jdField_a_of_type_Rgi = new rgi(this, (rgj)paramObject);
-      setAdapter(this.jdField_a_of_type_Rgi);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$Adapter = new ComponentContentGridImage.Adapter(this, (ComponentContentGridImage.Model)paramObject);
+      setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$Adapter);
     }
     for (;;)
     {
       b();
-      if ((this.jdField_a_of_type_Rfw == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof qfw))) {
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof IReadInJoyModel))) {
         break;
       }
-      this.jdField_a_of_type_Rfw.a((qfw)this.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a((IReadInJoyModel)this.jdField_a_of_type_JavaLangObject);
       return;
-      this.jdField_a_of_type_Rgi.a((rgj)paramObject);
-      this.jdField_a_of_type_Rgi.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$Adapter.a((ComponentContentGridImage.Model)paramObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$Adapter.notifyDataSetChanged();
     }
   }
-  
-  public void a(rbx paramrbx) {}
   
   public void b()
   {
@@ -464,8 +457,8 @@ public class ComponentContentGridImage
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
-      if ((pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()) == -1) && (paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Rgm != null)) {
-        this.jdField_a_of_type_Rgm.a();
+      if ((pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()) == -1) && (paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$OnNoItemClickListener != null)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$OnNoItemClickListener.a();
       }
       return super.dispatchTouchEvent(paramMotionEvent);
     }
@@ -479,9 +472,9 @@ public class ComponentContentGridImage
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  public void setGalleryClickListener(rgl paramrgl)
+  public void setGalleryClickListener(ComponentContentGridImage.OnGalleryItemClickListener paramOnGalleryItemClickListener)
   {
-    this.jdField_a_of_type_Rgl = paramrgl;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$OnGalleryItemClickListener = paramOnGalleryItemClickListener;
   }
   
   public void setMIReadInJoyModel(Object paramObject)
@@ -489,14 +482,14 @@ public class ComponentContentGridImage
     this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  public void setOnNoItemClickListener(rgm paramrgm)
+  public void setOnNoItemClickListener(ComponentContentGridImage.OnNoItemClickListener paramOnNoItemClickListener)
   {
-    this.jdField_a_of_type_Rgm = paramrgm;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$OnNoItemClickListener = paramOnNoItemClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage
  * JD-Core Version:    0.7.0.1
  */

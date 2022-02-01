@@ -21,7 +21,7 @@ public class EllipsizeLayout
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i1 = 1;
     int n = 0;
@@ -119,7 +119,7 @@ public class EllipsizeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.EllipsizeLayout
  * JD-Core Version:    0.7.0.1
  */

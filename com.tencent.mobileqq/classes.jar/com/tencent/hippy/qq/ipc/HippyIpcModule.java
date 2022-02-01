@@ -2,7 +2,9 @@ package com.tencent.hippy.qq.ipc;
 
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.hippy.qq.update.HippyUpdateManager;
 import com.tencent.hippy.qq.utils.HippyAccessHelper;
+import com.tencent.hippy.qq.utils.HippyAccessHelper.OpenHippyInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
@@ -11,6 +13,7 @@ import eipc.EIPCResult;
 public class HippyIpcModule
   extends QIPCModule
 {
+  public static final String ACTION_CANCLE_DOWNLOAD_TASK = "action_cancle_download_task";
   public static final String ACTION_PRELOAD_HIPPY = "action_preload_hippy";
   public static final String BUNDLE_HIPPY_INFO = "hippy_info";
   public static final String NAME = "module_hippy";
@@ -27,19 +30,19 @@ public class HippyIpcModule
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 26	com/tencent/hippy/qq/ipc/HippyIpcModule:mInstance	Lcom/tencent/hippy/qq/ipc/HippyIpcModule;
+    //   3: getstatic 29	com/tencent/hippy/qq/ipc/HippyIpcModule:mInstance	Lcom/tencent/hippy/qq/ipc/HippyIpcModule;
     //   6: ifnonnull +25 -> 31
     //   9: ldc 2
     //   11: monitorenter
-    //   12: getstatic 26	com/tencent/hippy/qq/ipc/HippyIpcModule:mInstance	Lcom/tencent/hippy/qq/ipc/HippyIpcModule;
+    //   12: getstatic 29	com/tencent/hippy/qq/ipc/HippyIpcModule:mInstance	Lcom/tencent/hippy/qq/ipc/HippyIpcModule;
     //   15: ifnonnull +13 -> 28
     //   18: new 2	com/tencent/hippy/qq/ipc/HippyIpcModule
     //   21: dup
-    //   22: invokespecial 28	com/tencent/hippy/qq/ipc/HippyIpcModule:<init>	()V
-    //   25: putstatic 26	com/tencent/hippy/qq/ipc/HippyIpcModule:mInstance	Lcom/tencent/hippy/qq/ipc/HippyIpcModule;
+    //   22: invokespecial 31	com/tencent/hippy/qq/ipc/HippyIpcModule:<init>	()V
+    //   25: putstatic 29	com/tencent/hippy/qq/ipc/HippyIpcModule:mInstance	Lcom/tencent/hippy/qq/ipc/HippyIpcModule;
     //   28: ldc 2
     //   30: monitorexit
-    //   31: getstatic 26	com/tencent/hippy/qq/ipc/HippyIpcModule:mInstance	Lcom/tencent/hippy/qq/ipc/HippyIpcModule;
+    //   31: getstatic 29	com/tencent/hippy/qq/ipc/HippyIpcModule:mInstance	Lcom/tencent/hippy/qq/ipc/HippyIpcModule;
     //   34: astore_0
     //   35: ldc 2
     //   37: monitorexit
@@ -78,23 +81,29 @@ public class HippyIpcModule
     if ("action_preload_hippy".equals(paramString))
     {
       paramString = paramBundle.getBundle("hippy_info");
-      if ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() == null) {
-        break label100;
+      if ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() != null)
+      {
+        HippyAccessHelper.checkAndPreloadHippyPage(new HippyAccessHelper.OpenHippyInfo(paramString));
+        callbackResult(paramInt, EIPCResult.createResult(0, new Bundle()));
       }
-      HippyAccessHelper.checkAndPreloadHippyPage(paramString);
     }
     for (;;)
     {
-      callbackResult(paramInt, EIPCResult.createResult(0, new Bundle()));
       return null;
-      label100:
       QLog.w("module_hippy", 1, "app is null");
+      break;
+      if ("action_cancle_download_task".equals(paramString))
+      {
+        paramString = paramBundle.getString("bundle_name");
+        paramInt = paramBundle.getInt("bundle_version");
+        HippyUpdateManager.getInstance().cancleDownloadTask(paramString, paramInt);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.ipc.HippyIpcModule
  * JD-Core Version:    0.7.0.1
  */

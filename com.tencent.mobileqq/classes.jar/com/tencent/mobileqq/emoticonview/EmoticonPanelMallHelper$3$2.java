@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.emoticonview;
 
-import avli;
-import bide;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.webview.util.WebProcessStartListener;
 
 class EmoticonPanelMallHelper$3$2
-  implements bide
+  implements WebProcessStartListener
 {
   EmoticonPanelMallHelper$3$2(EmoticonPanelMallHelper.3 param3) {}
   
@@ -17,7 +17,7 @@ class EmoticonPanelMallHelper$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.3.2
  * JD-Core Version:    0.7.0.1
  */

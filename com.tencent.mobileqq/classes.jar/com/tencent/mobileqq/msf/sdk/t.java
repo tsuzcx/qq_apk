@@ -3,8 +3,8 @@ package com.tencent.mobileqq.msf.sdk;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.mobileqq.msf.sdk.b.e.c;
 import com.tencent.mobileqq.msf.sdk.handler.IMsfProxy;
-import com.tencent.mobileqq.msf.sdk.report.e.c;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 

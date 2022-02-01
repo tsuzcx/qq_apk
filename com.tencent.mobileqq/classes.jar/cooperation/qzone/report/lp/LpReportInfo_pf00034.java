@@ -1,13 +1,10 @@
 package cooperation.qzone.report.lp;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.PlatformInfor;
-import cooperation.qzone.QUA;
-import cooperation.qzone.util.NetworkState;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReportInfo_pf00034
   implements LpReportInfo
@@ -21,7 +18,7 @@ public class LpReportInfo_pf00034
   private String deviceInfo;
   private String gatewayIp;
   private String imei;
-  public int isActivity;
+  public int isActivity = 0;
   public int loginFrom;
   public String loginSource;
   private String memory;
@@ -59,13 +56,13 @@ public class LpReportInfo_pf00034
     try
     {
       LpReportUtils.safePut(localHashMap, "app_id", "1000027");
-      LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      LpReportUtils.safePut(localHashMap, "uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
       LpReportUtils.safePut(localHashMap, "touin", this.toUin);
-      LpReportUtils.safePut(localHashMap, "network_type", NetworkState.getNetworkType());
-      LpReportUtils.safePut(localHashMap, "app_version", "8.4.10");
-      LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
+      LpReportUtils.safePut(localHashMap, "network_type", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getnetworkType());
+      LpReportUtils.safePut(localHashMap, "app_version", "8.5.5");
+      LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
       LpReportUtils.safePut(localHashMap, "platform", "android");
-      LpReportUtils.safePut(localHashMap, "device_info", PlatformInfor.g().getDeviceInfor());
+      LpReportUtils.safePut(localHashMap, "device_info", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getDeviceInfor());
       LpReportUtils.safePut(localHashMap, "login_from", this.loginFrom);
       LpReportUtils.safePut(localHashMap, "is_activity", this.isActivity);
       LpReportUtils.safePut(localHashMap, "test_id", this.testId);
@@ -81,7 +78,7 @@ public class LpReportInfo_pf00034
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_pf00034
  * JD-Core Version:    0.7.0.1
  */

@@ -2,26 +2,24 @@ package com.tencent.widget;
 
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
-import bkzi;
-import bkzn;
 
-public class ActionSheet$7
+class ActionSheet$7
   implements Runnable
 {
-  public ActionSheet$7(bkzi parambkzi) {}
+  ActionSheet$7(ActionSheet paramActionSheet) {}
   
   public void run()
   {
-    bkzi.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bkzi.a(this.this$0).getHeight()));
-    bkzi.a(this.this$0).setDuration(200L);
-    bkzi.a(this.this$0).setFillAfter(true);
-    bkzi.a(this.this$0).startAnimation(bkzi.a(this.this$0));
-    bkzi.a(this.this$0).setAnimationListener(new bkzn(this));
+    ActionSheet.access$402(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, ActionSheet.access$500(this.this$0).getHeight()));
+    ActionSheet.access$400(this.this$0).setDuration(200L);
+    ActionSheet.access$400(this.this$0).setFillAfter(true);
+    ActionSheet.access$500(this.this$0).startAnimation(ActionSheet.access$400(this.this$0));
+    ActionSheet.access$400(this.this$0).setAnimationListener(new ActionSheet.7.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ActionSheet.7
  * JD-Core Version:    0.7.0.1
  */

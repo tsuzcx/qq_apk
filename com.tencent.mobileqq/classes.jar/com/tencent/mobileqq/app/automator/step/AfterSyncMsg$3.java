@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nut;
 
 class AfterSyncMsg$3
   implements Runnable
@@ -11,8 +11,8 @@ class AfterSyncMsg$3
   
   public void run()
   {
-    if (!nut.a.get()) {
-      nut.a(BaseApplicationImpl.getContext());
+    if (!BmqqSegmentUtil.a.get()) {
+      BmqqSegmentUtil.a(BaseApplicationImpl.getContext());
     }
   }
 }

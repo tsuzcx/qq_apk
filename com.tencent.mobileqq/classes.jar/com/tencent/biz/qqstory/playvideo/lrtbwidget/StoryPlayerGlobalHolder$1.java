@@ -1,21 +1,18 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import xgv;
-import xgw;
-
-public class StoryPlayerGlobalHolder$1
+class StoryPlayerGlobalHolder$1
   implements Runnable
 {
-  public StoryPlayerGlobalHolder$1(xgv paramxgv) {}
+  StoryPlayerGlobalHolder$1(StoryPlayerGlobalHolder paramStoryPlayerGlobalHolder) {}
   
   public void run()
   {
-    xgv.a(this.this$0).a(this.this$0.a.c());
+    StoryPlayerGlobalHolder.a(this.this$0).a(this.this$0.a.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGlobalHolder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class QQPublishCommentFragment$EmotionUi
   
   QQPublishCommentFragment$EmotionUi(QQPublishCommentFragment paramQQPublishCommentFragment, Dialog paramDialog)
   {
-    this.vEmoButton = ((ImageView)paramDialog.findViewById(2131366054));
+    this.vEmoButton = ((ImageView)paramDialog.findViewById(2131366225));
     this.vEmoButton.setOnClickListener(this);
   }
   
@@ -57,7 +57,7 @@ class QQPublishCommentFragment$EmotionUi
   {
     ImageView localImageView = this.vEmoButton;
     if ((QQPublishCommentFragment.access$1900(this.this$0) == 2) && (QQPublishCommentFragment.access$1500(this.this$0) == 1)) {}
-    for (int i = 2130850667;; i = 2130850663)
+    for (int i = 2130851091;; i = 2130851087)
     {
       localImageView.setImageResource(i);
       return;
@@ -66,7 +66,7 @@ class QQPublishCommentFragment$EmotionUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.EmotionUi
  * JD-Core Version:    0.7.0.1
  */

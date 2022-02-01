@@ -2,7 +2,9 @@ package com.tencent.hippy.qq.module;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
+import com.tencent.common.app.AppInterface;
 import com.tencent.hippy.qq.app.HippyQQEngine;
+import com.tencent.hippy.qq.utils.HippyReporter;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.modules.Promise;
@@ -28,11 +30,16 @@ public class QQBaseModule
   
   public Activity getActivity()
   {
-    Fragment localFragment = getFragment();
-    if (localFragment == null) {
+    HippyQQEngine localHippyQQEngine = getHippyQQEngine();
+    if (localHippyQQEngine == null) {
       return null;
     }
-    return localFragment.getActivity();
+    return localHippyQQEngine.getActivity();
+  }
+  
+  protected AppInterface getAppInterface()
+  {
+    return HippyReporter.getAppInterface();
   }
   
   protected BaseActivity getBaseActivity()
@@ -50,11 +57,16 @@ public class QQBaseModule
   
   protected Fragment getFragment()
   {
-    HippyQQEngine localHippyQQEngine = HippyQQEngine.getEngineInstance(this.mContext.getEngineId());
+    HippyQQEngine localHippyQQEngine = getHippyQQEngine();
     if (localHippyQQEngine == null) {
       return null;
     }
     return localHippyQQEngine.getFragment();
+  }
+  
+  protected HippyQQEngine getHippyQQEngine()
+  {
+    return HippyQQEngine.getEngineInstance(this.mContext.getEngineId());
   }
   
   protected final int saveCallback(Promise paramPromise)
@@ -67,7 +79,7 @@ public class QQBaseModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQBaseModule
  * JD-Core Version:    0.7.0.1
  */

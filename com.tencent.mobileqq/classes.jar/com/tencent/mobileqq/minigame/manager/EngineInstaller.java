@@ -3,8 +3,9 @@ package com.tencent.mobileqq.minigame.manager;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anvx;
+import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
@@ -18,7 +19,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nwp;
 import org.json.JSONObject;
 
 public class EngineInstaller
@@ -28,7 +28,7 @@ public class EngineInstaller
   private static String SP_NAME = "x_mini_engine";
   private static volatile List<InstalledEngine> sInstalledEngine;
   private static File sRootDir;
-  private boolean isWorking;
+  private boolean isWorking = false;
   private List<EngineInstaller.Callback> mCallbacks = new ArrayList();
   private AbstractDownloader mDownloader;
   
@@ -43,43 +43,43 @@ public class EngineInstaller
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: new 62	java/io/File
+    //   3: new 64	java/io/File
     //   6: dup
     //   7: aload_0
     //   8: aload_1
-    //   9: invokevirtual 68	com/tencent/mobileqq/minigame/manager/EngineVersion:toFolderName	()Ljava/lang/String;
-    //   12: invokespecial 71	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   9: invokevirtual 70	com/tencent/mobileqq/minigame/manager/EngineVersion:toFolderName	()Ljava/lang/String;
+    //   12: invokespecial 73	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   15: astore_0
     //   16: ldc 8
     //   18: iconst_1
-    //   19: new 73	java/lang/StringBuilder
+    //   19: new 75	java/lang/StringBuilder
     //   22: dup
-    //   23: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   26: ldc 76
-    //   28: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   26: ldc 78
+    //   28: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   31: aload_0
-    //   32: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   35: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 92	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: invokevirtual 85	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   35: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokestatic 94	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   44: aload_0
-    //   45: invokevirtual 96	java/io/File:exists	()Z
+    //   45: invokevirtual 98	java/io/File:exists	()Z
     //   48: ifne +45 -> 93
     //   51: aload_0
-    //   52: invokevirtual 99	java/io/File:mkdirs	()Z
+    //   52: invokevirtual 101	java/io/File:mkdirs	()Z
     //   55: ifne +38 -> 93
     //   58: ldc 8
     //   60: iconst_1
-    //   61: new 73	java/lang/StringBuilder
+    //   61: new 75	java/lang/StringBuilder
     //   64: dup
-    //   65: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   68: ldc 101
-    //   70: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   68: ldc 103
+    //   70: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   73: aload_0
-    //   74: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   77: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   74: invokevirtual 85	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   77: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: invokestatic 106	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   86: aconst_null
     //   87: astore_0
     //   88: ldc 2
@@ -87,7 +87,7 @@ public class EngineInstaller
     //   91: aload_0
     //   92: areturn
     //   93: aload_0
-    //   94: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   94: invokevirtual 85	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   97: astore_0
     //   98: goto -10 -> 88
     //   101: astore_0
@@ -331,27 +331,27 @@ public class EngineInstaller
     //   2: monitorenter
     //   3: ldc 8
     //   5: iconst_1
-    //   6: ldc_w 339
-    //   9: invokestatic 92	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   12: invokestatic 345	java/lang/System:currentTimeMillis	()J
+    //   6: ldc_w 341
+    //   9: invokestatic 94	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   12: invokestatic 347	java/lang/System:currentTimeMillis	()J
     //   15: lstore 5
-    //   17: new 36	java/util/ArrayList
+    //   17: new 38	java/util/ArrayList
     //   20: dup
-    //   21: invokespecial 37	java/util/ArrayList:<init>	()V
+    //   21: invokespecial 39	java/util/ArrayList:<init>	()V
     //   24: astore 7
-    //   26: invokestatic 347	com/tencent/mobileqq/minigame/manager/EngineInstaller:getRootDir	()Ljava/io/File;
+    //   26: invokestatic 349	com/tencent/mobileqq/minigame/manager/EngineInstaller:getRootDir	()Ljava/io/File;
     //   29: astore 8
     //   31: aload 8
-    //   33: invokevirtual 96	java/io/File:exists	()Z
+    //   33: invokevirtual 98	java/io/File:exists	()Z
     //   36: ifeq +375 -> 411
     //   39: aload 8
-    //   41: invokevirtual 250	java/io/File:isDirectory	()Z
+    //   41: invokevirtual 252	java/io/File:isDirectory	()Z
     //   44: ifeq +367 -> 411
     //   47: aload 8
-    //   49: invokevirtual 254	java/io/File:listFiles	()[Ljava/io/File;
+    //   49: invokevirtual 256	java/io/File:listFiles	()[Ljava/io/File;
     //   52: ifnull +359 -> 411
     //   55: aload 8
-    //   57: invokevirtual 254	java/io/File:listFiles	()[Ljava/io/File;
+    //   57: invokevirtual 256	java/io/File:listFiles	()[Ljava/io/File;
     //   60: astore 8
     //   62: aload 8
     //   64: arraylength
@@ -366,22 +366,22 @@ public class EngineInstaller
     //   76: aaload
     //   77: astore 9
     //   79: aload 9
-    //   81: invokevirtual 96	java/io/File:exists	()Z
+    //   81: invokevirtual 98	java/io/File:exists	()Z
     //   84: ifeq +320 -> 404
     //   87: aload 9
-    //   89: invokevirtual 250	java/io/File:isDirectory	()Z
+    //   89: invokevirtual 252	java/io/File:isDirectory	()Z
     //   92: ifeq +312 -> 404
     //   95: aload 9
-    //   97: invokevirtual 254	java/io/File:listFiles	()[Ljava/io/File;
+    //   97: invokevirtual 256	java/io/File:listFiles	()[Ljava/io/File;
     //   100: astore 10
     //   102: aload 10
     //   104: ifnull +300 -> 404
     //   107: aload 9
-    //   109: invokevirtual 227	java/io/File:getName	()Ljava/lang/String;
-    //   112: invokestatic 352	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   109: invokevirtual 229	java/io/File:getName	()Ljava/lang/String;
+    //   112: invokestatic 354	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   115: istore_3
     //   116: aload 9
-    //   118: invokevirtual 254	java/io/File:listFiles	()[Ljava/io/File;
+    //   118: invokevirtual 256	java/io/File:listFiles	()[Ljava/io/File;
     //   121: astore 9
     //   123: aload 9
     //   125: arraylength
@@ -395,66 +395,66 @@ public class EngineInstaller
     //   138: iload_1
     //   139: aaload
     //   140: astore 10
-    //   142: ldc_w 353
+    //   142: ldc_w 355
     //   145: iconst_4
-    //   146: new 73	java/lang/StringBuilder
+    //   146: new 75	java/lang/StringBuilder
     //   149: dup
-    //   150: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   153: ldc_w 355
-    //   156: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   153: ldc_w 357
+    //   156: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: aload 10
-    //   161: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   164: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokestatic 358	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   173: new 128	com/tencent/mobileqq/minigame/manager/InstalledEngine
+    //   161: invokevirtual 85	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   164: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokestatic 360	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   173: new 130	com/tencent/mobileqq/minigame/manager/InstalledEngine
     //   176: dup
-    //   177: invokespecial 359	com/tencent/mobileqq/minigame/manager/InstalledEngine:<init>	()V
+    //   177: invokespecial 361	com/tencent/mobileqq/minigame/manager/InstalledEngine:<init>	()V
     //   180: astore 11
     //   182: aload 11
     //   184: iload_3
-    //   185: putfield 132	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineType	I
+    //   185: putfield 134	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineType	I
     //   188: aload 11
     //   190: aload 10
-    //   192: invokevirtual 227	java/io/File:getName	()Ljava/lang/String;
-    //   195: invokestatic 231	com/tencent/mobileqq/minigame/manager/EngineVersion:fromFolderName	(Ljava/lang/String;)Lcom/tencent/mobileqq/minigame/manager/EngineVersion;
-    //   198: putfield 300	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineVersion	Lcom/tencent/mobileqq/minigame/manager/EngineVersion;
+    //   192: invokevirtual 229	java/io/File:getName	()Ljava/lang/String;
+    //   195: invokestatic 233	com/tencent/mobileqq/minigame/manager/EngineVersion:fromFolderName	(Ljava/lang/String;)Lcom/tencent/mobileqq/minigame/manager/EngineVersion;
+    //   198: putfield 302	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineVersion	Lcom/tencent/mobileqq/minigame/manager/EngineVersion;
     //   201: aload 11
-    //   203: getfield 300	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineVersion	Lcom/tencent/mobileqq/minigame/manager/EngineVersion;
+    //   203: getfield 302	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineVersion	Lcom/tencent/mobileqq/minigame/manager/EngineVersion;
     //   206: ifnonnull +91 -> 297
-    //   209: new 361	java/lang/IllegalStateException
+    //   209: new 363	java/lang/IllegalStateException
     //   212: dup
-    //   213: new 73	java/lang/StringBuilder
+    //   213: new 75	java/lang/StringBuilder
     //   216: dup
-    //   217: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   220: ldc_w 363
-    //   223: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   220: ldc_w 365
+    //   223: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   226: aload 10
-    //   228: invokevirtual 227	java/io/File:getName	()Ljava/lang/String;
-    //   231: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   237: invokespecial 364	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   228: invokevirtual 229	java/io/File:getName	()Ljava/lang/String;
+    //   231: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   237: invokespecial 366	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   240: athrow
     //   241: astore 11
     //   243: ldc 8
     //   245: iconst_1
-    //   246: new 73	java/lang/StringBuilder
+    //   246: new 75	java/lang/StringBuilder
     //   249: dup
-    //   250: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   253: ldc_w 366
-    //   256: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   253: ldc_w 368
+    //   256: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   259: aload 10
-    //   261: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   264: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: invokevirtual 85	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   264: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   267: aload 11
-    //   269: invokestatic 372	com/tencent/mobileqq/mini/utils/DebugUtil:getPrintableStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   272: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: invokestatic 92	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   269: invokestatic 374	com/tencent/mobileqq/mini/utils/DebugUtil:getPrintableStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   272: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   278: invokestatic 94	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   281: aload 10
-    //   283: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   283: invokevirtual 85	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   286: iconst_0
-    //   287: invokestatic 378	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
+    //   287: invokestatic 380	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
     //   290: iload_1
     //   291: iconst_1
     //   292: iadd
@@ -462,19 +462,19 @@ public class EngineInstaller
     //   294: goto -164 -> 130
     //   297: aload 11
     //   299: aload 10
-    //   301: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   304: putfield 324	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineDir	Ljava/lang/String;
+    //   301: invokevirtual 85	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   304: putfield 326	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineDir	Ljava/lang/String;
     //   307: aload 11
     //   309: aload 11
-    //   311: invokestatic 382	com/tencent/mobileqq/minigame/manager/EngineInstaller:verifyEngine	(Lcom/tencent/mobileqq/minigame/manager/InstalledEngine;)Z
-    //   314: putfield 385	com/tencent/mobileqq/minigame/manager/InstalledEngine:isVerify	Z
+    //   311: invokestatic 384	com/tencent/mobileqq/minigame/manager/EngineInstaller:verifyEngine	(Lcom/tencent/mobileqq/minigame/manager/InstalledEngine;)Z
+    //   314: putfield 387	com/tencent/mobileqq/minigame/manager/InstalledEngine:isVerify	Z
     //   317: aload 11
-    //   319: getfield 385	com/tencent/mobileqq/minigame/manager/InstalledEngine:isVerify	Z
+    //   319: getfield 387	com/tencent/mobileqq/minigame/manager/InstalledEngine:isVerify	Z
     //   322: ifne +22 -> 344
-    //   325: new 361	java/lang/IllegalStateException
+    //   325: new 363	java/lang/IllegalStateException
     //   328: dup
-    //   329: ldc_w 387
-    //   332: invokespecial 364	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   329: ldc_w 389
+    //   332: invokespecial 366	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   335: athrow
     //   336: astore 7
     //   338: ldc 2
@@ -482,28 +482,28 @@ public class EngineInstaller
     //   341: aload 7
     //   343: athrow
     //   344: aload 11
-    //   346: getfield 132	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineType	I
+    //   346: getfield 134	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineType	I
     //   349: iconst_2
     //   350: if_icmpne +32 -> 382
     //   353: aload 11
-    //   355: ldc_w 389
-    //   358: putfield 392	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineName	Ljava/lang/String;
+    //   355: ldc_w 391
+    //   358: putfield 394	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineName	Ljava/lang/String;
     //   361: aload 11
     //   363: aload 10
-    //   365: invokestatic 247	com/tencent/mobileqq/minigame/manager/EngineInstaller:isPersistGameEngine	(Ljava/io/File;)Z
-    //   368: putfield 286	com/tencent/mobileqq/minigame/manager/InstalledEngine:isPersist	Z
+    //   365: invokestatic 249	com/tencent/mobileqq/minigame/manager/EngineInstaller:isPersistGameEngine	(Ljava/io/File;)Z
+    //   368: putfield 288	com/tencent/mobileqq/minigame/manager/InstalledEngine:isPersist	Z
     //   371: aload 7
     //   373: aload 11
-    //   375: invokevirtual 136	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   375: invokevirtual 138	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   378: pop
     //   379: goto -89 -> 290
     //   382: aload 11
-    //   384: getfield 132	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineType	I
+    //   384: getfield 134	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineType	I
     //   387: iconst_3
     //   388: if_icmpne -17 -> 371
     //   391: aload 11
-    //   393: ldc_w 394
-    //   396: putfield 392	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineName	Ljava/lang/String;
+    //   393: ldc_w 396
+    //   396: putfield 394	com/tencent/mobileqq/minigame/manager/InstalledEngine:engineName	Ljava/lang/String;
     //   399: goto -28 -> 371
     //   402: astore 9
     //   404: iload_0
@@ -512,26 +512,26 @@ public class EngineInstaller
     //   407: istore_0
     //   408: goto -340 -> 68
     //   411: aload 7
-    //   413: invokestatic 400	java/util/Collections:reverseOrder	()Ljava/util/Comparator;
-    //   416: invokestatic 404	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   413: invokestatic 402	java/util/Collections:reverseOrder	()Ljava/util/Comparator;
+    //   416: invokestatic 406	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   419: ldc 8
     //   421: iconst_1
-    //   422: new 73	java/lang/StringBuilder
+    //   422: new 75	java/lang/StringBuilder
     //   425: dup
-    //   426: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   429: ldc_w 406
-    //   432: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   435: invokestatic 345	java/lang/System:currentTimeMillis	()J
+    //   426: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   429: ldc_w 408
+    //   432: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   435: invokestatic 347	java/lang/System:currentTimeMillis	()J
     //   438: lload 5
     //   440: lsub
-    //   441: invokevirtual 409	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   444: ldc_w 411
-    //   447: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   441: invokevirtual 411	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   444: ldc_w 413
+    //   447: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   450: aload 7
-    //   452: invokevirtual 412	java/util/ArrayList:size	()I
-    //   455: invokevirtual 321	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   458: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   461: invokestatic 92	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   452: invokevirtual 414	java/util/ArrayList:size	()I
+    //   455: invokevirtual 323	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   458: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   461: invokestatic 94	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   464: ldc 2
     //   466: monitorexit
     //   467: aload 7
@@ -586,56 +586,56 @@ public class EngineInstaller
     //   7: monitorenter
     //   8: aload_1
     //   9: aload_3
-    //   10: invokestatic 415	com/tencent/mobileqq/minigame/manager/EngineInstaller:getInstallLibDir	(Ljava/io/File;Lcom/tencent/mobileqq/minigame/manager/EngineVersion;)Ljava/lang/String;
+    //   10: invokestatic 417	com/tencent/mobileqq/minigame/manager/EngineInstaller:getInstallLibDir	(Ljava/io/File;Lcom/tencent/mobileqq/minigame/manager/EngineVersion;)Ljava/lang/String;
     //   13: astore_1
     //   14: aload_1
     //   15: ifnonnull +26 -> 41
     //   18: aload_0
-    //   19: invokespecial 46	com/tencent/mobileqq/minigame/manager/EngineInstaller:workFinish	()V
+    //   19: invokespecial 48	com/tencent/mobileqq/minigame/manager/EngineInstaller:workFinish	()V
     //   22: aload 4
     //   24: iconst_1
-    //   25: invokestatic 378	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
+    //   25: invokestatic 380	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
     //   28: aload_0
-    //   29: invokespecial 46	com/tencent/mobileqq/minigame/manager/EngineInstaller:workFinish	()V
+    //   29: invokespecial 48	com/tencent/mobileqq/minigame/manager/EngineInstaller:workFinish	()V
     //   32: iload 9
     //   34: istore 7
     //   36: aload_0
     //   37: monitorexit
     //   38: iload 7
     //   40: ireturn
-    //   41: new 62	java/io/File
+    //   41: new 64	java/io/File
     //   44: dup
     //   45: aload_1
-    //   46: invokespecial 157	java/io/File:<init>	(Ljava/lang/String;)V
-    //   49: invokevirtual 96	java/io/File:exists	()Z
+    //   46: invokespecial 159	java/io/File:<init>	(Ljava/lang/String;)V
+    //   49: invokevirtual 98	java/io/File:exists	()Z
     //   52: ifeq +8 -> 60
     //   55: aload_1
     //   56: iconst_0
-    //   57: invokestatic 378	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
+    //   57: invokestatic 380	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
     //   60: aload_0
     //   61: fconst_1
-    //   62: ldc_w 416
-    //   65: invokestatic 422	anvx:a	(I)Ljava/lang/String;
-    //   68: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   62: ldc_w 418
+    //   65: invokestatic 424	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   68: invokespecial 54	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   71: aload 4
     //   73: aload_1
-    //   74: invokestatic 427	nwp:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   74: invokestatic 430	com/tencent/biz/common/util/ZipUtils:unZipFolder	(Ljava/lang/String;Ljava/lang/String;)I
     //   77: istore 6
     //   79: iload 6
     //   81: ifne +346 -> 427
-    //   84: ldc2_w 193
-    //   87: invokestatic 200	java/lang/Thread:sleep	(J)V
+    //   84: ldc2_w 195
+    //   87: invokestatic 202	java/lang/Thread:sleep	(J)V
     //   90: aload_0
     //   91: fconst_1
-    //   92: ldc_w 428
-    //   95: invokestatic 422	anvx:a	(I)Ljava/lang/String;
-    //   98: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
-    //   101: ldc2_w 193
-    //   104: invokestatic 200	java/lang/Thread:sleep	(J)V
+    //   92: ldc_w 431
+    //   95: invokestatic 424	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   98: invokespecial 54	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   101: ldc2_w 195
+    //   104: invokestatic 202	java/lang/Thread:sleep	(J)V
     //   107: aload_0
     //   108: aload 4
     //   110: aload_1
-    //   111: invokespecial 432	com/tencent/mobileqq/minigame/manager/EngineInstaller:verifyBaselib	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   111: invokespecial 435	com/tencent/mobileqq/minigame/manager/EngineInstaller:verifyBaselib	(Ljava/lang/String;Ljava/lang/String;)Z
     //   114: istore 8
     //   116: iload 6
     //   118: ifne +105 -> 223
@@ -643,42 +643,42 @@ public class EngineInstaller
     //   123: ifeq +100 -> 223
     //   126: ldc 8
     //   128: iconst_1
-    //   129: new 73	java/lang/StringBuilder
+    //   129: new 75	java/lang/StringBuilder
     //   132: dup
-    //   133: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   136: ldc_w 434
-    //   139: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   136: ldc_w 437
+    //   139: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   142: aload_2
-    //   143: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: ldc_w 436
-    //   149: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   146: ldc_w 439
+    //   149: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   152: aload_3
-    //   153: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   156: ldc_w 438
-    //   159: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   156: ldc_w 441
+    //   159: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   162: aload_1
-    //   163: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   169: invokestatic 92	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   172: invokestatic 109	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateInstalledEngine	()V
+    //   163: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   166: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   169: invokestatic 94	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   172: invokestatic 111	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateInstalledEngine	()V
     //   175: iconst_1
     //   176: istore 7
     //   178: aload 4
     //   180: iconst_1
-    //   181: invokestatic 378	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
+    //   181: invokestatic 380	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
     //   184: iload 7
     //   186: ifeq +25 -> 211
     //   189: iload 5
     //   191: ifeq +208 -> 399
     //   194: aload_0
     //   195: fconst_1
-    //   196: ldc_w 439
-    //   199: invokestatic 422	anvx:a	(I)Ljava/lang/String;
-    //   202: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
-    //   205: ldc2_w 193
-    //   208: invokestatic 200	java/lang/Thread:sleep	(J)V
+    //   196: ldc_w 442
+    //   199: invokestatic 424	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   202: invokespecial 54	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   205: ldc2_w 195
+    //   208: invokestatic 202	java/lang/Thread:sleep	(J)V
     //   211: aload_0
-    //   212: invokespecial 46	com/tencent/mobileqq/minigame/manager/EngineInstaller:workFinish	()V
+    //   212: invokespecial 48	com/tencent/mobileqq/minigame/manager/EngineInstaller:workFinish	()V
     //   215: goto -179 -> 36
     //   218: astore_1
     //   219: aload_0
@@ -687,61 +687,61 @@ public class EngineInstaller
     //   222: athrow
     //   223: ldc 8
     //   225: iconst_1
-    //   226: new 73	java/lang/StringBuilder
+    //   226: new 75	java/lang/StringBuilder
     //   229: dup
-    //   230: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   233: ldc_w 441
-    //   236: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   233: ldc_w 444
+    //   236: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   239: aload_2
-    //   240: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   243: ldc_w 436
-    //   246: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   240: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   243: ldc_w 439
+    //   246: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   249: aload_3
-    //   250: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   253: ldc_w 438
-    //   256: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   253: ldc_w 441
+    //   256: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   259: aload_1
-    //   260: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   263: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   266: invokestatic 92	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   260: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   263: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   266: invokestatic 94	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   269: aload_1
     //   270: iconst_0
-    //   271: invokestatic 378	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
+    //   271: invokestatic 380	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
     //   274: iload 6
     //   276: ifeq +83 -> 359
     //   279: aload_0
     //   280: fconst_0
-    //   281: ldc_w 442
-    //   284: invokestatic 422	anvx:a	(I)Ljava/lang/String;
-    //   287: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   281: ldc_w 445
+    //   284: invokestatic 424	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   287: invokespecial 54	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   290: iload 10
     //   292: istore 7
     //   294: goto -116 -> 178
     //   297: astore_1
     //   298: ldc 8
     //   300: iconst_1
-    //   301: new 73	java/lang/StringBuilder
+    //   301: new 75	java/lang/StringBuilder
     //   304: dup
-    //   305: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   308: ldc_w 444
-    //   311: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   305: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   308: ldc_w 447
+    //   311: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   314: aload_1
-    //   315: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   315: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   318: aload_1
-    //   319: invokestatic 372	com/tencent/mobileqq/mini/utils/DebugUtil:getPrintableStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   322: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   328: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   319: invokestatic 374	com/tencent/mobileqq/mini/utils/DebugUtil:getPrintableStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   322: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   325: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: invokestatic 106	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   331: aload_0
     //   332: fconst_0
-    //   333: ldc_w 445
-    //   336: invokestatic 422	anvx:a	(I)Ljava/lang/String;
-    //   339: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   333: ldc_w 448
+    //   336: invokestatic 424	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   339: invokespecial 54	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   342: aload 4
     //   344: iconst_1
-    //   345: invokestatic 378	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
+    //   345: invokestatic 380	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
     //   348: aload_0
-    //   349: invokespecial 46	com/tencent/mobileqq/minigame/manager/EngineInstaller:workFinish	()V
+    //   349: invokespecial 48	com/tencent/mobileqq/minigame/manager/EngineInstaller:workFinish	()V
     //   352: iload 9
     //   354: istore 7
     //   356: goto -320 -> 36
@@ -751,25 +751,25 @@ public class EngineInstaller
     //   365: ifne -187 -> 178
     //   368: aload_0
     //   369: fconst_0
-    //   370: ldc_w 446
-    //   373: invokestatic 422	anvx:a	(I)Ljava/lang/String;
-    //   376: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   370: ldc_w 449
+    //   373: invokestatic 424	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   376: invokespecial 54	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   379: iload 10
     //   381: istore 7
     //   383: goto -205 -> 178
     //   386: astore_1
     //   387: aload 4
     //   389: iconst_1
-    //   390: invokestatic 378	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
+    //   390: invokestatic 380	com/tencent/mobileqq/mini/utils/FileUtils:delete	(Ljava/lang/String;Z)V
     //   393: aload_0
-    //   394: invokespecial 46	com/tencent/mobileqq/minigame/manager/EngineInstaller:workFinish	()V
+    //   394: invokespecial 48	com/tencent/mobileqq/minigame/manager/EngineInstaller:workFinish	()V
     //   397: aload_1
     //   398: athrow
     //   399: aload_0
     //   400: fconst_1
-    //   401: ldc_w 447
-    //   404: invokestatic 422	anvx:a	(I)Ljava/lang/String;
-    //   407: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
+    //   401: ldc_w 450
+    //   404: invokestatic 424	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   407: invokespecial 54	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   410: goto -205 -> 205
     //   413: astore 11
     //   415: goto -325 -> 90
@@ -863,7 +863,7 @@ public class EngineInstaller
   
   private boolean verifyBaselib(String paramString1, String paramString2)
   {
-    long l1 = nwp.a(paramString1);
+    long l1 = ZipUtils.getUncompressedFileSize(paramString1);
     if (l1 <= 0L)
     {
       QLog.e("EngineInstaller", 1, "[MiniEng] getUncompressedFileSize error " + paramString1 + ", sz=" + l1);
@@ -1053,7 +1053,7 @@ public class EngineInstaller
       {
         workBegin();
         if (bool1) {
-          updateMessage(0.0F, anvx.a(2131703605) + paramBaseLibInfo.baseLibVersion + ")");
+          updateMessage(0.0F, HardCodeUtil.a(2131704153) + paramBaseLibInfo.baseLibVersion + ")");
         }
         for (;;)
         {
@@ -1064,7 +1064,7 @@ public class EngineInstaller
           QLog.i("EngineInstaller", 1, "[MiniEng] mkdir failed, is disk writable? " + localFile.getAbsolutePath());
           workFinish();
           break;
-          updateMessage(0.0F, anvx.a(2131703610) + paramBaseLibInfo.baseLibVersion + ")");
+          updateMessage(0.0F, HardCodeUtil.a(2131704158) + paramBaseLibInfo.baseLibVersion + ")");
         }
         label780:
         boolean bool2 = false;
@@ -1081,12 +1081,12 @@ public class EngineInstaller
         }
         try
         {
-          updateMessage(0.0F, anvx.a(2131703606));
+          updateMessage(0.0F, HardCodeUtil.a(2131704154));
           paramBaseLibInfo = getInstallLibDir(localFile, localEngineVersion);
           QLog.i("EngineInstaller", 1, "[MiniEng] installLocalEngine start url=" + (String)localObject + ",installBasePath=" + paramBaseLibInfo);
           if (TextUtils.isEmpty(paramBaseLibInfo))
           {
-            updateMessage(0.0F, anvx.a(2131703617));
+            updateMessage(0.0F, HardCodeUtil.a(2131704165));
             QLog.e("EngineInstaller", 1, "[MiniEng] installLocalEngine failed installBasePath=" + paramBaseLibInfo);
             workFinish();
             break;
@@ -1097,7 +1097,7 @@ public class EngineInstaller
       localObject = new File(paramBaseLibInfo);
       if ((!((File)localObject).exists()) && (!((File)localObject).mkdir()))
       {
-        updateMessage(0.0F, anvx.a(2131703609));
+        updateMessage(0.0F, HardCodeUtil.a(2131704157));
         QLog.e("EngineInstaller", 1, "[MiniEng] installLocalEngine failed targetPath=" + localObject);
         workFinish();
         break;
@@ -1108,13 +1108,13 @@ public class EngineInstaller
       {
         getSp().edit().putBoolean(paramBaseLibInfo, true).commit();
         updateInstalledEngine();
-        updateMessage(1.0F, anvx.a(2131703604));
+        updateMessage(1.0F, HardCodeUtil.a(2131704152));
       }
       for (;;)
       {
         workFinish();
         break;
-        updateMessage(0.0F, anvx.a(2131703615));
+        updateMessage(0.0F, HardCodeUtil.a(2131704163));
       }
       label1143:
       installedFromNetwork(paramBaseLibInfo, (String)localObject, l, localFile, localEngineVersion, bool1);

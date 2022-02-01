@@ -5,6 +5,8 @@ import NS_COMM.COMM.StCommonExt;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.studymode.StudyModeManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,16 +17,25 @@ class DesktopDataManager$2
   
   public void run()
   {
+    Object localObject;
     if (!DesktopDataManager.access$100(this.this$0, this.val$extInfo))
     {
-      String str = MiniAppUtils.getSpDesktopGdtCookie();
+      localObject = MiniAppUtils.getSpDesktopGdtCookie();
       COMM.Entry localEntry = new COMM.Entry();
       localEntry.key.set("gdt_cookie");
-      localEntry.value.set(str);
+      localEntry.value.set((String)localObject);
       this.val$extInfo.mapInfo.get().add(localEntry);
     }
     if (this.val$recommendAppList.isEmpty()) {
       this.val$recommendAppList.addAll(this.this$0.parseRecommendExposureFromSp());
+    }
+    if (StudyModeManager.a())
+    {
+      localObject = new COMM.Entry();
+      ((COMM.Entry)localObject).key.set("teenager");
+      ((COMM.Entry)localObject).value.set(String.valueOf(1));
+      this.val$extInfo.mapInfo.get().add(localObject);
+      QLog.d("DesktopDataManager", 1, "study mode is true");
     }
     DesktopDataManager.access$200(this.this$0, this.val$extInfo, this.val$recommendAppList, new ArrayList());
   }

@@ -9,8 +9,9 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class AvGameCommon$PKUserRankInfo
   extends MessageMicro<PKUserRankInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "rank", "uin" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L) }, PKUserRankInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "rank", "uin", "score" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, PKUserRankInfo.class);
   public final PBUInt32Field rank = PBField.initUInt32(0);
+  public final PBUInt32Field score = PBField.initUInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
 }
 

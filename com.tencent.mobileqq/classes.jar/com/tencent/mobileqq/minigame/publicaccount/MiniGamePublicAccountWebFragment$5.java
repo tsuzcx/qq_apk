@@ -21,11 +21,11 @@ class MiniGamePublicAccountWebFragment$5
   {
     this.this$0.parsePageEndTime = SystemClock.elapsedRealtime();
     super.onPageFinished(paramWebView, paramString);
-    MiniGamePublicAccountWebFragment.access$1300(this.this$0).setVisibility(0);
-    if (MiniGamePublicAccountWebFragment.access$1400(this.this$0) != null) {
-      MiniGamePublicAccountWebFragment.access$1400(this.this$0).setVisibility(8);
+    this.this$0.webView.setVisibility(0);
+    if (this.this$0.loadLayout != null) {
+      this.this$0.loadLayout.setVisibility(8);
     }
-    int i = MiniGamePublicAccountWebFragment.access$500(this.this$0);
+    int i = MiniGamePublicAccountWebFragment.access$100(this.this$0);
     this.this$0.notifyWebHeaderHeight(i);
   }
   

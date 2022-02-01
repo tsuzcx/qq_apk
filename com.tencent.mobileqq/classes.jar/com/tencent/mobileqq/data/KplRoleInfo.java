@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import afqz;
-import aift;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anvk;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -109,20 +109,20 @@ public class KplRoleInfo
   public static boolean isKplPie(BaseChatPie paramBaseChatPie)
   {
     boolean bool;
-    if (aift.a(paramBaseChatPie.mContext, paramBaseChatPie.sessionInfo.curType, false, false) != null) {
+    if (StrangerChatPie.a(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, false) != null) {
       bool = true;
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("KplMessage", 2, "isKplPie=" + bool + " friendUin=" + paramBaseChatPie.sessionInfo.curFriendUin);
+        QLog.d("KplMessage", 2, "isKplPie=" + bool + " friendUin=" + paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       }
       return bool;
-      if (paramBaseChatPie.sessionInfo.curType == 1022)
+      if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1022)
       {
-        List localList = paramBaseChatPie.listAdapter.a();
-        anvk localanvk = (anvk)paramBaseChatPie.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        if ((localList != null) && (localList.size() > 0) && (!localanvk.b(paramBaseChatPie.sessionInfo.curFriendUin)) && (!TextUtils.isEmpty(((ChatMessage)localList.get(localList.size() - 1)).getExtInfoFromExtStr("msg_ext_key"))))
+        List localList = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
+        FriendsManager localFriendsManager = (FriendsManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if ((localList != null) && (localList.size() > 0) && (!localFriendsManager.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(((ChatMessage)localList.get(localList.size() - 1)).getExtInfoFromExtStr("msg_ext_key"))))
         {
           bool = true;
           continue;
@@ -135,7 +135,7 @@ public class KplRoleInfo
   public static boolean isKplSession(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
   {
     boolean bool;
-    if (aift.a(paramContext, paramInt, false, false) != null) {
+    if (StrangerChatPie.a(paramContext, paramInt, false, false) != null) {
       bool = true;
     }
     for (;;)
@@ -144,8 +144,8 @@ public class KplRoleInfo
         QLog.d("KplMessage", 2, "isKplSession=" + bool + " friendUin=" + paramString + " sessionType=" + paramInt);
       }
       return bool;
-      paramContext = paramQQAppInterface.getMessageFacade().getAIOList(paramString, paramInt);
-      paramQQAppInterface = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      paramContext = paramQQAppInterface.getMessageFacade().a(paramString, paramInt);
+      paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if ((paramContext != null) && (paramContext.size() > 0) && (!paramQQAppInterface.b(paramString)) && (!TextUtils.isEmpty(((ChatMessage)paramContext.get(paramContext.size() - 1)).getExtInfoFromExtStr("msg_ext_key")))) {
         bool = true;
       } else {
@@ -254,7 +254,7 @@ public class KplRoleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.KplRoleInfo
  * JD-Core Version:    0.7.0.1
  */

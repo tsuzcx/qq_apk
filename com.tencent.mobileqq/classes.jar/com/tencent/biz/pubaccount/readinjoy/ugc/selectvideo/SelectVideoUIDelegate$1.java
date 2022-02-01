@@ -1,23 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo;
 
-import rsv;
-import sdh;
-import ssx;
+import com.tencent.biz.pubaccount.readinjoy.ugc.AlbumUtils.LocalMediaInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.player.ReadInjoyPlayer;
 
-public class SelectVideoUIDelegate$1
+class SelectVideoUIDelegate$1
   implements Runnable
 {
-  public SelectVideoUIDelegate$1(sdh paramsdh, rsv paramrsv) {}
+  SelectVideoUIDelegate$1(SelectVideoUIDelegate paramSelectVideoUIDelegate, AlbumUtils.LocalMediaInfo paramLocalMediaInfo) {}
   
   public void run()
   {
-    sdh.b(this.this$0);
-    sdh.a(this.this$0).a(10000, null, this.a.b, 0L, 0);
+    SelectVideoUIDelegate.b(this.this$0);
+    SelectVideoUIDelegate.a(this.this$0).a(10000, null, this.a.b, 0L, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoUIDelegate.1
  * JD-Core Version:    0.7.0.1
  */

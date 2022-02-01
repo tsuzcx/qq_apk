@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class TPraiseInfo
   extends JceStruct
 {
-  public int iIsPayed;
-  public long uCustomId;
+  public int iIsPayed = 0;
+  public long uCustomId = 0L;
   
   public TPraiseInfo() {}
   
@@ -32,7 +32,7 @@ public final class TPraiseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.TPraiseInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,8 @@ import android.graphics.Shader.TileMode;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
-import anvx;
-import bimh;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class CircleProgressBar
   extends View
@@ -27,7 +26,7 @@ public class CircleProgressBar
   public Paint a;
   public RectF a;
   public TextPaint a;
-  bimh a;
+  CircleProgressBar.RefreshHandler a;
   public String a;
   public boolean a;
   public float b;
@@ -70,8 +69,10 @@ public class CircleProgressBar
     this.jdField_a_of_type_JavaLangString = "10";
     this.jdField_h_of_type_Int = -90;
     this.jdField_i_of_type_Int = this.jdField_h_of_type_Int;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_Bimh = new bimh(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar$RefreshHandler = new CircleProgressBar.RefreshHandler(this);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CircleProgressBar);
     this.jdField_a_of_type_Int = paramContext.getColor(13, Color.parseColor("#999999"));
     this.jdField_b_of_type_Int = paramContext.getColor(10, Color.parseColor("#12b7f5"));
@@ -110,18 +111,18 @@ public class CircleProgressBar
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = false;
     postInvalidate();
-    this.jdField_a_of_type_Bimh.sendEmptyMessageDelayed(10000, 50L);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar$RefreshHandler.sendEmptyMessageDelayed(10000, 50L);
   }
   
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bimh.removeMessages(10000);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar$RefreshHandler.removeMessages(10000);
     postInvalidate();
   }
   
   @SuppressLint({"DrawAllocation"})
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.jdField_j_of_type_Int = (getWidth() / 2);
@@ -162,7 +163,7 @@ public class CircleProgressBar
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float / 4.0F);
       f3 = this.jdField_a_of_type_AndroidTextTextPaint.descent();
       f5 = this.jdField_a_of_type_AndroidTextTextPaint.ascent();
-      paramCanvas.drawText(anvx.a(2131701417), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.drawText(HardCodeUtil.a(2131701972), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.reset();
       return;
     }
@@ -235,7 +236,7 @@ public class CircleProgressBar
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float / 4.0F);
       f3 = this.jdField_a_of_type_AndroidTextTextPaint.descent();
       f5 = this.jdField_a_of_type_AndroidTextTextPaint.ascent();
-      paramCanvas.drawText(anvx.a(2131701418), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.drawText(HardCodeUtil.a(2131701973), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
       break;
     }
   }
@@ -268,7 +269,7 @@ public class CircleProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleProgressBar
  * JD-Core Version:    0.7.0.1
  */

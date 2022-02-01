@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.storyHome.discover.view;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
@@ -27,7 +26,7 @@ public class StoryDiscoverActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity
  * JD-Core Version:    0.7.0.1
  */

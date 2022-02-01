@@ -92,7 +92,7 @@ public class FixedSizeBitmapView
     this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(m / j, n / k);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
@@ -113,7 +113,7 @@ public class FixedSizeBitmapView
     paramCanvas.restoreToCount(i);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
   }
@@ -169,7 +169,7 @@ public class FixedSizeBitmapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.FixedSizeBitmapView
  * JD-Core Version:    0.7.0.1
  */

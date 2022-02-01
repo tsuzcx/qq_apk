@@ -1,7 +1,9 @@
 package cooperation.qqcircle.report;
 
-import bizw;
-import cooperation.qzone.QUA;
+import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
+import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class QCirclePluginQualityReporter$ReportData
 {
@@ -12,10 +14,10 @@ public class QCirclePluginQualityReporter$ReportData
   private String netWorkTyp = QCircleReportHelper.getNetworkType();
   private String pluginType = "";
   private long pluginVersion;
-  private String qua = QUA.getQUA3();
+  private String qua = QCircleServiceImpl.getQZoneService().getQUA3();
   private long retCode;
   private String timeCost = "";
-  private String uin = String.valueOf(bizw.a().a());
+  private String uin = String.valueOf(MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin());
   
   public String getClient_time()
   {
@@ -140,7 +142,7 @@ public class QCirclePluginQualityReporter$ReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData
  * JD-Core Version:    0.7.0.1
  */

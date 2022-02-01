@@ -12,13 +12,13 @@ public final class UniBusiUsingItem
   static ArrayList<String> cache_faceurl;
   static UniBusiItemDetail cache_stUniBusiItem = new UniBusiItemDetail();
   static ArrayList<UniBusiUsingUid> cache_stUniBusiUsingUidList;
-  public ArrayList<String> Nick;
-  public ArrayList<String> faceurl;
-  public int friendcnt;
-  public int groupcnt;
-  public int isglobal;
-  public UniBusiItemDetail stUniBusiItem;
-  public ArrayList<UniBusiUsingUid> stUniBusiUsingUidList;
+  public ArrayList<String> Nick = null;
+  public ArrayList<String> faceurl = null;
+  public int friendcnt = 0;
+  public int groupcnt = 0;
+  public int isglobal = 0;
+  public UniBusiItemDetail stUniBusiItem = null;
+  public ArrayList<UniBusiUsingUid> stUniBusiUsingUidList = null;
   
   static
   {

@@ -1,27 +1,26 @@
 package com.tencent.av.ui;
 
 import com.tencent.qphone.base.util.QLog;
-import mdy;
 
-public class EffectSettingUi$2$2
+class EffectSettingUi$2$2
   implements Runnable
 {
-  public EffectSettingUi$2$2(mdy parammdy, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
+  EffectSettingUi$2$2(EffectSettingUi.2 param2, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Mdy.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
+    if (this.jdField_a_of_type_ComTencentAvUiEffectSettingUi$2.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
     boolean bool;
     do
     {
       do
       {
         return;
-      } while (this.jdField_a_of_type_Mdy.a.jdField_a_of_type_AndroidWidgetLinearLayout == null);
-      this.jdField_a_of_type_Mdy.a.a(this.jdField_a_of_type_Long, false);
-      bool = this.jdField_a_of_type_Mdy.a.isShown();
+      } while (this.jdField_a_of_type_ComTencentAvUiEffectSettingUi$2.a.jdField_a_of_type_AndroidWidgetLinearLayout == null);
+      this.jdField_a_of_type_ComTencentAvUiEffectSettingUi$2.a.a(this.jdField_a_of_type_Long, false);
+      bool = this.jdField_a_of_type_ComTencentAvUiEffectSettingUi$2.a.isShown();
       if ((this.jdField_a_of_type_Boolean) && (bool)) {
-        this.jdField_a_of_type_Mdy.a.c(this.jdField_a_of_type_Long, true);
+        this.jdField_a_of_type_ComTencentAvUiEffectSettingUi$2.a.c(this.jdField_a_of_type_Long, true);
       }
     } while (!QLog.isDevelopLevel());
     QLog.d("AVRedBag", 1, "onStatusChanged, remoteHasVideo[" + this.b + "], peerSupportRedBag[" + this.c + "], isInGameMode[" + this.jdField_a_of_type_Boolean + "], isshow[" + bool + "], seq[" + this.jdField_a_of_type_Long + "]");
@@ -29,7 +28,7 @@ public class EffectSettingUi$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingUi.2.2
  * JD-Core Version:    0.7.0.1
  */

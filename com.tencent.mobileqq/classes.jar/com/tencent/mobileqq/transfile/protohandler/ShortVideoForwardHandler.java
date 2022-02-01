@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -12,9 +12,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -121,26 +121,26 @@ public class ShortVideoForwardHandler
     }
   }
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     Object localObject = paramProtoResp.resp;
     byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    anza localanza = paramProtoResp.statisInfo;
+    StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
     int i;
     if (((FromServiceMsg)localObject).getResultCode() != 1000)
     {
       i = ((FromServiceMsg)localObject).getResultCode();
       if ((i == 1002) || (i == 1013)) {
-        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject), "", localanza, localRichProtoResp.resps);
+        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject), "", localStatictisInfo, localRichProtoResp.resps);
       }
     }
     for (;;)
     {
       RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
       return;
-      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject), "", localanza, localRichProtoResp.resps);
+      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject), "", localStatictisInfo, localRichProtoResp.resps);
       continue;
       try
       {
@@ -152,7 +152,7 @@ public class ShortVideoForwardHandler
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localStatictisInfo, localRichProtoResp.resps);
       }
       continue;
       for (;;)
@@ -176,7 +176,7 @@ public class ShortVideoForwardHandler
               paramProtoResp.fileId = ((PttShortVideo.PttShortVideoRetweetResp)localObject).str_fileid.get();
               paramProtoResp.videoAttr = ((PttShortVideo.PttShortVideoRetweetResp)localObject).uint32_is_hot_file.get();
               paramProtoResp.videoKandianType = ((PttShortVideo.PttShortVideoRetweetResp)localObject).uint32_long_video_carry_watch_point_type.get();
-              setResult(0, 0, "", "", localanza, paramProtoResp);
+              setResult(0, 0, "", "", localStatictisInfo, paramProtoResp);
             }
             catch (Exception localException)
             {
@@ -191,7 +191,7 @@ public class ShortVideoForwardHandler
           paramProtoReq = null;
           continue;
         }
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, paramProtoReq);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localStatictisInfo, paramProtoReq);
         break;
         paramProtoReq = localException.bytes_ukey.get().toByteArray();
         if (((localException.rpt_same_area_out_addr.size() <= 0) && (localException.rpt_diff_area_out_addr.size() <= 0)) || (paramProtoReq == null) || (paramProtoReq.length == 0)) {
@@ -206,7 +206,7 @@ public class ShortVideoForwardHandler
       label494:
       if (i == -5100026)
       {
-        setResult(-1, -5100026, BaseTransProcessor.getUrlReason(i), "", localanza, paramProtoResp);
+        setResult(-1, -5100026, BaseTransProcessor.getUrlReason(i), "", localStatictisInfo, paramProtoResp);
       }
       else
       {
@@ -219,7 +219,7 @@ public class ShortVideoForwardHandler
             return;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localanza, paramProtoResp);
+        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localStatictisInfo, paramProtoResp);
       }
     }
   }
@@ -228,7 +228,7 @@ public class ShortVideoForwardHandler
   {
     if ((paramRichProtoReq != null) && (paramRichProtoReq.reqs != null) && (paramRichProtoReq.protoReqMgr != null))
     {
-      ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
+      ProtoReqManagerImpl.ProtoReq localProtoReq = new ProtoReqManagerImpl.ProtoReq();
       if (paramRichProtoReq.reqs.size() == 1)
       {
         localProtoReq.ssoCmd = "PttCenterSvr.ShortVideoRetweetReq";

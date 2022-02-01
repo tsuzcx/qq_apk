@@ -3,21 +3,18 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axwe;
-import axwq;
-import axwr;
 import java.util.ArrayList;
 
 public class VideoData
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoData> CREATOR = new axwr();
+  public static final Parcelable.Creator<VideoData> CREATOR = new VideoData.1();
   public int a;
   public long a;
-  public axwq a;
   public LocationInfo a;
+  public TopicInfo a;
   public String a;
-  public ArrayList<axwe> a;
+  public ArrayList<ImageData> a;
   public boolean a;
   public int b;
   public long b;
@@ -54,11 +51,15 @@ public class VideoData
   
   public VideoData()
   {
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   public VideoData(Parcel paramParcel)
   {
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -74,10 +75,10 @@ public class VideoData
       bool1 = true;
       this.jdField_a_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label219;
+        break label229;
       }
     }
-    label219:
+    label229:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_b_of_type_Boolean = bool1;

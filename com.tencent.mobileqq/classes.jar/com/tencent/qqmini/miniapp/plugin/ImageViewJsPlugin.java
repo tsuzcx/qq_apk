@@ -77,6 +77,55 @@ public class ImageViewJsPlugin
     }
   }
   
+  private void setIconPath(JSONObject paramJSONObject, String paramString, CoverImageView paramCoverImageView)
+  {
+    int j = 0;
+    if ((paramString.startsWith("http")) || (paramString.startsWith("https"))) {
+      if (paramJSONObject == null) {
+        break label154;
+      }
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        i = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
+        j = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
+        paramJSONObject = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getDrawable(this.mContext, paramString, i, j, null);
+        if (paramJSONObject != null) {
+          paramCoverImageView.setImageDrawable(paramJSONObject);
+        }
+        return;
+      }
+      catch (Throwable paramJSONObject)
+      {
+        QMLog.e("ImageViewJsPlugin", "URLDrawable error.", paramJSONObject);
+        return;
+      }
+      paramJSONObject = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
+      if (!StringUtil.isEmpty(paramJSONObject))
+      {
+        try
+        {
+          paramJSONObject = ImageUtil.getLocalBitmap(paramJSONObject);
+          if (paramJSONObject == null) {
+            continue;
+          }
+          paramCoverImageView.setImageBitmap(paramJSONObject);
+          return;
+        }
+        catch (Throwable paramJSONObject)
+        {
+          QMLog.e("ImageViewJsPlugin", "getLocalBitmap error.", paramJSONObject);
+          return;
+        }
+        label154:
+        i = 0;
+      }
+    }
+  }
+  
   private void setImageDrawable(String paramString, CoverImageView paramCoverImageView, int paramInt1, int paramInt2)
   {
     if ((StringUtil.isEmpty(paramString)) || ((paramString.startsWith("http")) || (paramString.startsWith("https")))) {}
@@ -258,14 +307,13 @@ public class ImageViewJsPlugin
     if ((paramString1 instanceof CoverImageView))
     {
       int n = getWindowHeight();
-      int i;
       Object localObject;
       if (paramJSONObject1 != null)
       {
         int j = (int)(this.density * paramJSONObject1.optInt("width") + 0.5F);
         int k = (int)(this.density * paramJSONObject1.optInt("height") + 0.5F);
         int m = (int)(this.density * paramJSONObject1.optInt("left") + 0.5F);
-        i = (int)(this.density * paramJSONObject1.optInt("top") + 0.5F);
+        int i = (int)(this.density * paramJSONObject1.optInt("top") + 0.5F);
         paramInt = i;
         if (k + i > n) {
           paramInt = n - k;
@@ -284,58 +332,20 @@ public class ImageViewJsPlugin
         }
         paramString1.setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
       }
-      if (!StringUtil.isEmpty(paramString2))
-      {
-        if ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https"))) {
-          break label380;
-        }
-        paramInt = 0;
-        i = 0;
-        if (paramJSONObject1 == null) {}
+      if (!StringUtil.isEmpty(paramString2)) {
+        setIconPath(paramJSONObject1, paramString2, (CoverImageView)paramString1);
       }
-      for (;;)
-      {
-        try
-        {
-          paramInt = (int)(this.density * paramJSONObject1.optInt("width") + 0.5F);
-          i = (int)(this.density * paramJSONObject1.optInt("height") + 0.5F);
-          paramJSONObject1 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getDrawable(this.mContext, paramString2, paramInt, i, null);
-          if (paramJSONObject1 != null) {
-            ((CoverImageView)paramString1).setImageDrawable(paramJSONObject1);
-          }
-        }
-        catch (Throwable paramJSONObject1)
-        {
-          QMLog.e("ImageViewJsPlugin", "URLDrawable error.", paramJSONObject1);
-          continue;
-        }
-        if (paramBoolean != null) {
-          paramString1.setClickable(paramBoolean.booleanValue());
-        }
-        return true;
-        label380:
-        paramJSONObject1 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString2);
-        if (!StringUtil.isEmpty(paramJSONObject1)) {
-          try
-          {
-            paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
-            if (paramJSONObject1 != null) {
-              ((CoverImageView)paramString1).setImageBitmap(paramJSONObject1);
-            }
-          }
-          catch (Throwable paramJSONObject1)
-          {
-            QMLog.e("ImageViewJsPlugin", "getLocalBitmap error.", paramJSONObject1);
-          }
-        }
+      if (paramBoolean != null) {
+        paramString1.setClickable(paramBoolean.booleanValue());
       }
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.ImageViewJsPlugin
  * JD-Core Version:    0.7.0.1
  */

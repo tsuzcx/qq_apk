@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout android:gravity="bottom" android:id="@id/nbo" android:layout_width="fill_parent" android:layout_height="fill_parent" app:umanoDragView="@id/nbx" app:umanoOverlay="true" app:umanoPanelHeight="@dimen/bb5" app:umanoParallaxOffset="100.0dip" app:umanoScrollableView="@id/nc0" app:umanoShadowHeight="4.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="vertical" android:id="@id/nby" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/nbx" android:layout_width="fill_parent" android:layout_height="@dimen/bb5">
-            <ImageView android:layout_gravity="center" android:id="@id/nbz" android:layout_width="45.0dip" android:layout_height="16.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/bij" android:scaleType="fitCenter" />
-            <dov.com.qq.im.aeeditor.lyric.widget.LyricViewSingleLine android:layout_gravity="center" android:id="@id/nc1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" app:aelvLyricHilightColor="@color/ff" app:aelvLyricHilightSize="14.0dip" app:aelvLyricHilightThinColor="@color/ff" app:aelvLyricLineHeight="14.0dip" app:aelvLyricLineMargin="14.0dip" app:aelvLyricLiteratim="false" app:aelvLyricScrollable="false" app:aelvLyricTextColor="@color/ff" app:aelvLyricTextFakeBold="false" app:aelvLyricTextSize="14.0dip" app:aelvLyricTextThinColor="@color/ff" />
-        </LinearLayout>
-        <dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView android:layout_gravity="center_horizontal" android:id="@id/nc0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="25.0dip" />
-    </LinearLayout>
-</dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout>
+<RelativeLayout android:layout_width="@dimen/bbt" android:layout_height="@dimen/bbt" android:layout_marginRight="20.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/mr2" android:layout_width="@dimen/bgt" android:layout_height="@dimen/bgt" android:scaleType="center" />
+    <View android:id="@id/ogs" android:background="@drawable/bi7" android:layout_width="@dimen/bbt" android:layout_height="@dimen/bbt" />
+</RelativeLayout>

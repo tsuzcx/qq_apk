@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
+import com.tencent.biz.common.offline.AsyncBack;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import nuw;
 
 class TaskOfflineUtils$TaskAsyncBack
-  implements nuw
+  implements AsyncBack
 {
   private final String bid;
   private final TaskOfflineUtils.OfflineCallBack callBack;
@@ -27,7 +27,7 @@ class TaskOfflineUtils$TaskAsyncBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskOfflineUtils.TaskAsyncBack
  * JD-Core Version:    0.7.0.1
  */

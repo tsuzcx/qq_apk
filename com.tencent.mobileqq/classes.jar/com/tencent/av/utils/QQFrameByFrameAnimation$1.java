@@ -1,13 +1,11 @@
 package com.tencent.av.utils;
 
 import android.os.Handler;
-import mty;
-import mtz;
 
-public class QQFrameByFrameAnimation$1
+class QQFrameByFrameAnimation$1
   implements Runnable
 {
-  public QQFrameByFrameAnimation$1(mtz parammtz) {}
+  QQFrameByFrameAnimation$1(QQFrameByFrameAnimation paramQQFrameByFrameAnimation) {}
   
   public void run()
   {
@@ -26,15 +24,15 @@ public class QQFrameByFrameAnimation$1
         }
         this.this$0.a();
         this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.this$0.jdField_a_of_type_Int);
-      } while (this.this$0.jdField_a_of_type_Mty == null);
-      this.this$0.jdField_a_of_type_Mty.c();
+      } while (this.this$0.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener == null);
+      this.this$0.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener.c();
     } while ((this.this$0.jdField_a_of_type_ArrayOfInt.length <= 0) || (this.this$0.c % this.this$0.jdField_a_of_type_ArrayOfInt.length != 0));
-    this.this$0.jdField_a_of_type_Mty.b();
+    this.this$0.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.QQFrameByFrameAnimation.1
  * JD-Core Version:    0.7.0.1
  */

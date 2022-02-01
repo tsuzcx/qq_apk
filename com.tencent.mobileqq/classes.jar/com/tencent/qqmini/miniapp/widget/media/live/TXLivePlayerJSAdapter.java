@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Surface;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.utils.JarReflectUtil;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.Iterator;
@@ -213,6 +214,66 @@ public class TXLivePlayerJSAdapter
   private boolean isBooleanValueKey(String paramString)
   {
     return (paramString.equalsIgnoreCase("hide")) || (paramString.equalsIgnoreCase("autoplay")) || (paramString.equalsIgnoreCase("muted")) || (paramString.equalsIgnoreCase("muteAudio")) || (paramString.equalsIgnoreCase("muteVideo")) || (paramString.equalsIgnoreCase("backgroundMute")) || (paramString.equalsIgnoreCase("needEvent")) || (paramString.equalsIgnoreCase("autoPauseIfNavigate")) || (paramString.equalsIgnoreCase("needAudioVolume")) || (paramString.equalsIgnoreCase("enableRecvMessage")) || (paramString.equalsIgnoreCase("autoPauseIfOpenNative")) || (paramString.equalsIgnoreCase("enableMetadata")) || (paramString.equalsIgnoreCase("debug"));
+  }
+  
+  private void onNetStatus(Object[] paramArrayOfObject)
+  {
+    if (paramArrayOfObject.length == 1)
+    {
+      paramArrayOfObject = (Bundle)paramArrayOfObject[0];
+      if (this.iWXLivePlayerOuterListener != null) {
+        this.iWXLivePlayerOuterListener.onNetStatus(paramArrayOfObject);
+      }
+      if (QMLog.isColorLevel())
+      {
+        paramArrayOfObject = String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { "CPU:" + paramArrayOfObject.getString("CPU_USAGE"), "RES:" + paramArrayOfObject.getInt("VIDEO_WIDTH") + "*" + paramArrayOfObject.getInt("VIDEO_HEIGHT"), "SPD:" + paramArrayOfObject.getInt("NET_SPEED") + "Kbps", "JIT:" + paramArrayOfObject.getInt("NET_JITTER"), "FPS:" + paramArrayOfObject.getInt("VIDEO_FPS"), "GOP:" + paramArrayOfObject.getInt("VIDEO_GOP") + "s", "ARA:" + paramArrayOfObject.getInt("AUDIO_BITRATE") + "Kbps", "QUE:" + paramArrayOfObject.getInt("AUDIO_CACHE") + " | " + paramArrayOfObject.getInt("VIDEO_CACHE") + "," + paramArrayOfObject.getInt("V_SUM_CACHE_SIZE") + "," + paramArrayOfObject.getInt("V_DEC_CACHE_SIZE") + " | " + paramArrayOfObject.getInt("AV_RECV_INTERVAL") + "," + paramArrayOfObject.getInt("AV_PLAY_INTERVAL") + "," + String.format("%.1f", new Object[] { Float.valueOf(paramArrayOfObject.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString(), "VRA:" + paramArrayOfObject.getInt("VIDEO_BITRATE") + "Kbps", "DRP:" + paramArrayOfObject.getInt("AUDIO_DROP") + "|" + paramArrayOfObject.getInt("VIDEO_DROP"), "SVR:" + paramArrayOfObject.getString("SERVER_IP"), "AUDIO:" + paramArrayOfObject.getString("AUDIO_PLAY_INFO") });
+        QMLog.d("TXLivePlayerJSAdapter", "onNetStatus:" + paramArrayOfObject);
+      }
+    }
+  }
+  
+  private void onPlayEvent(Object[] paramArrayOfObject)
+  {
+    Integer localInteger;
+    Bundle localBundle;
+    if (paramArrayOfObject.length == 2)
+    {
+      localInteger = (Integer)paramArrayOfObject[0];
+      localBundle = (Bundle)paramArrayOfObject[1];
+      if ((localInteger.equals(Integer.valueOf(2006))) || (localInteger.equals(Integer.valueOf(-2301)))) {
+        operateLivePlayer("stop", null);
+      }
+      if ((localInteger.intValue() == 2012) && (localBundle != null))
+      {
+        paramArrayOfObject = localBundle.getByteArray("EVT_GET_MSG");
+        if ((paramArrayOfObject == null) || (paramArrayOfObject.length <= 0)) {
+          break label184;
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramArrayOfObject = new String(paramArrayOfObject, "UTF-8");
+        localBundle.putString("EVT_MSG", paramArrayOfObject);
+        if ((this.mNeedEvent) && (this.iWXLivePlayerOuterListener != null)) {
+          this.iWXLivePlayerOuterListener.onPlayEvent(localInteger.intValue(), localBundle);
+        }
+        if (localBundle != null)
+        {
+          paramArrayOfObject = localBundle.getString("EVT_MSG");
+          QMLog.d("TXLivePlayerJSAdapter", "onPlayEvent: event = " + localInteger + " message = " + paramArrayOfObject);
+        }
+        return;
+      }
+      catch (UnsupportedEncodingException paramArrayOfObject)
+      {
+        paramArrayOfObject.printStackTrace();
+      }
+      label184:
+      paramArrayOfObject = "";
+    }
   }
   
   private void parseAndApplyParams(Bundle paramBundle, boolean paramBoolean)
@@ -754,7 +815,6 @@ public class TXLivePlayerJSAdapter
     }
     printJSParams("updateLivePlayer", paramBundle);
     parseAndApplyParams(paramBundle, false);
-    boolean bool = txLivePlayer_isPlaying();
     String str = paramBundle.getString("playUrl", this.mPlayerUrl);
     if ((str != null) && (!str.isEmpty()) && (this.mPlayerUrl != null) && (!this.mPlayerUrl.equalsIgnoreCase(str)) && (txLivePlayer_isPlaying()))
     {
@@ -770,6 +830,7 @@ public class TXLivePlayerJSAdapter
     }
     this.mPlayType = i;
     this.mAutoPlay = paramBundle.getBoolean("autoplay", this.mAutoPlay);
+    boolean bool = txLivePlayer_isPlaying();
     if (((this.mAutoPlay) || (bool)) && (this.mPlayerUrl != null) && (!this.mPlayerUrl.isEmpty()) && (!txLivePlayer_isPlaying()))
     {
       QMLog.d("TXLivePlayerJSAdapter", "updateLivePlayer: startPlay");
@@ -788,7 +849,7 @@ public class TXLivePlayerJSAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.live.TXLivePlayerJSAdapter
  * JD-Core Version:    0.7.0.1
  */

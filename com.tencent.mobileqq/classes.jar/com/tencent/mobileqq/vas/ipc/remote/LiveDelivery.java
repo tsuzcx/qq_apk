@@ -4,12 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bekc;
-import bheh;
-import bhey;
-import bhoy;
-import bhpu;
-import bhzd;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -18,6 +13,15 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.tianshu.data.TianShuAdPosItemData;
+import com.tencent.mobileqq.tianshu.data.TianShuReportData;
+import com.tencent.mobileqq.together.TogetherControlManager.EntryBannerInfo;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.mobileqq.vas.VasH5PayUtil;
+import com.tencent.mobileqq.vas.VasStatisticCollector;
+import com.tencent.mobileqq.vip.PbProtocol;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -29,9 +33,7 @@ import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import cooperation.vip.pb.TianShuAccess.MapEntry;
 import cooperation.vip.pb.TianShuAccess.RspEntry;
-import cooperation.vip.tianshu.TianShuAdPosItemData;
 import cooperation.vip.tianshu.TianShuManager;
-import cooperation.vip.tianshu.TianShuReportData;
 import eipc.EIPCModule;
 import eipc.EIPCResultCallback;
 import java.io.Serializable;
@@ -41,7 +43,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
-import uuc;
 
 public class LiveDelivery
   implements ILiveDelivery
@@ -51,7 +52,7 @@ public class LiveDelivery
   public void followUin(String paramString, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
     paramEIPCResultCallback = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    uuc.a(paramEIPCResultCallback, BaseApplicationImpl.getContext(), paramString, new LiveDelivery.3(this, paramEIPCModule, paramInt, paramEIPCResultCallback), false, 0, true);
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).followUin(paramEIPCResultCallback, BaseApplicationImpl.getContext(), paramString, new LiveDelivery.3(this, paramEIPCModule, paramInt, paramEIPCResultCallback), false, 0, true);
   }
   
   public long getAccount()
@@ -59,7 +60,7 @@ public class LiveDelivery
     return BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
   }
   
-  public bekc getAdsInfo(TianShuAccess.GetAdsRsp paramGetAdsRsp, int paramInt)
+  public TogetherControlManager.EntryBannerInfo getAdsInfo(TianShuAccess.GetAdsRsp paramGetAdsRsp, int paramInt)
   {
     if (paramGetAdsRsp == null) {
       return null;
@@ -96,12 +97,12 @@ public class LiveDelivery
           localHashMap.put(str, localObject2);
         }
       }
-      localObject1 = new bekc();
-      ((bekc)localObject1).jdField_a_of_type_JavaLangString = ((String)localHashMap.get("type"));
-      ((bekc)localObject1).c = ((String)localHashMap.get("pic"));
-      ((bekc)localObject1).b = ((String)localHashMap.get("url"));
-      ((bekc)localObject1).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
-      if (!TextUtils.isEmpty(((bekc)localObject1).c)) {}
+      localObject1 = new TogetherControlManager.EntryBannerInfo();
+      ((TogetherControlManager.EntryBannerInfo)localObject1).jdField_a_of_type_JavaLangString = ((String)localHashMap.get("type"));
+      ((TogetherControlManager.EntryBannerInfo)localObject1).c = ((String)localHashMap.get("pic"));
+      ((TogetherControlManager.EntryBannerInfo)localObject1).b = ((String)localHashMap.get("url"));
+      ((TogetherControlManager.EntryBannerInfo)localObject1).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
+      if (!TextUtils.isEmpty(((TogetherControlManager.EntryBannerInfo)localObject1).c)) {}
     }
     else
     {
@@ -112,7 +113,8 @@ public class LiveDelivery
   
   public boolean isFollowUin(String paramString)
   {
-    return uuc.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    return ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isFollowUin(localQQAppInterface, paramString);
   }
   
   public boolean isWxInstall()
@@ -123,7 +125,7 @@ public class LiveDelivery
   public void openChargePage()
   {
     QLog.e("LiveDelivery", 1, "openChargePage");
-    bhoy.a(BaseApplicationImpl.getApplication(), "https://h5.qzone.qq.com/live/chargedialog?_wv=17301507&from=ugc&_proxy=1&aid=zhiboczban");
+    VasH5PayUtil.a(BaseApplicationImpl.getApplication(), "https://h5.qzone.qq.com/live/chargedialog?_wv=17301507&from=ugc&_proxy=1&aid=zhiboczban");
   }
   
   public void openQQBrowser(String paramString)
@@ -151,7 +153,7 @@ public class LiveDelivery
         BaseApplicationImpl.getApplication().getApplicationContext().startActivity((Intent)localObject);
         return;
       }
-      paramString = bhey.a((QQAppInterface)localObject, BaseApplicationImpl.getApplication().getApplicationContext(), paramString);
+      paramString = JumpParser.a((QQAppInterface)localObject, BaseApplicationImpl.getApplication().getApplicationContext(), paramString);
       if (paramString != null)
       {
         paramString.a();
@@ -169,7 +171,7 @@ public class LiveDelivery
   
   public void reportStatistic(String paramString, HashMap<String, String> paramHashMap, long paramLong)
   {
-    bhpu.a(paramString, paramHashMap, paramLong);
+    VasStatisticCollector.a(paramString, paramHashMap, paramLong);
   }
   
   public void reportTianshu(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
@@ -181,14 +183,14 @@ public class LiveDelivery
       str = localAppRuntime.getAccount();
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localTianShuReportData.mTraceId = (str + "_" + l);
-    localTianShuReportData.mTraceNum = paramInt2;
-    localTianShuReportData.mAppId = paramString1;
-    localTianShuReportData.mPageId = paramString2;
-    localTianShuReportData.mItemId = paramString3;
-    localTianShuReportData.mActionId = paramInt1;
-    localTianShuReportData.mActionValue = 1;
-    localTianShuReportData.mOperTime = l;
+    localTianShuReportData.b = (str + "_" + l);
+    localTianShuReportData.jdField_a_of_type_Int = paramInt2;
+    localTianShuReportData.jdField_e_of_type_JavaLangString = paramString1;
+    localTianShuReportData.f = paramString2;
+    localTianShuReportData.g = paramString3;
+    localTianShuReportData.d = paramInt1;
+    localTianShuReportData.jdField_e_of_type_Int = 1;
+    localTianShuReportData.jdField_a_of_type_Long = l;
     TianShuManager.getInstance().report(localTianShuReportData);
   }
   
@@ -196,23 +198,23 @@ public class LiveDelivery
   {
     paramEIPCResultCallback = new ArrayList();
     TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-    localTianShuAdPosItemData.mPosId = paramInt1;
-    localTianShuAdPosItemData.mNeedCnt = paramInt2;
-    localTianShuAdPosItemData.mExtraData = ((HashMap)paramSerializable);
+    localTianShuAdPosItemData.jdField_a_of_type_Int = paramInt1;
+    localTianShuAdPosItemData.b = paramInt2;
+    localTianShuAdPosItemData.jdField_a_of_type_JavaUtilHashMap = ((HashMap)paramSerializable);
     paramEIPCResultCallback.add(localTianShuAdPosItemData);
     TianShuManager.getInstance().requestAdv(paramEIPCResultCallback, new LiveDelivery.5(this, paramInt1, paramEIPCModule, paramInt3));
   }
   
   public void requestPbMsfSSO(String paramString1, String paramString2, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
-    bhzd.a(paramString1, paramString2, new LiveDelivery.1(this, paramEIPCModule, paramInt));
+    PbProtocol.a(paramString1, paramString2, new LiveDelivery.1(this, paramEIPCModule, paramInt));
   }
   
   public void requestPbVSBase(String paramString1, String paramString2, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
     try
     {
-      bhzd.a(paramString1, bhzd.a(paramString2.getBytes("ISO8859_1")).toByteArray(), new LiveDelivery.2(this, paramEIPCModule, paramInt));
+      PbProtocol.a(paramString1, PbProtocol.a(paramString2.getBytes("ISO8859_1")).toByteArray(), new LiveDelivery.2(this, paramEIPCModule, paramInt));
       return;
     }
     catch (Exception paramString1)
@@ -223,22 +225,23 @@ public class LiveDelivery
   
   public void setAnchorIsLive(boolean paramBoolean)
   {
-    blvm.a = paramBoolean;
+    cooperation.ilive.util.IliveEntranceUtil.a = paramBoolean;
   }
   
   public void setAudienceIsLive(boolean paramBoolean)
   {
-    blvm.b = paramBoolean;
+    cooperation.ilive.util.IliveEntranceUtil.b = paramBoolean;
   }
   
   public void unfollowUin(String paramString, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
-    uuc.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext(), paramString, false, new LiveDelivery.4(this, paramEIPCModule, paramInt), true);
+    paramEIPCResultCallback = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).unfollowUin(paramEIPCResultCallback, BaseApplicationImpl.getContext(), paramString, false, new LiveDelivery.4(this, paramEIPCModule, paramInt), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.LiveDelivery
  * JD-Core Version:    0.7.0.1
  */

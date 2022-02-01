@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.ar.model;
 
-import apku;
-import apos;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
 
-public class QQARSession$20
+class QQARSession$20
   implements Runnable
 {
-  public QQARSession$20(apos paramapos) {}
+  QQARSession$20(QQARSession paramQQARSession) {}
   
   public void run()
   {
-    if ((apos.b(this.this$0)) && (this.this$0.a == 2) && (apos.a(this.this$0) != null)) {
-      apos.a(this.this$0).a();
+    if ((QQARSession.b(this.this$0)) && (this.this$0.a == 2) && (QQARSession.a(this.this$0) != null)) {
+      QQARSession.a(this.this$0).a();
     }
   }
 }

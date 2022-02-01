@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class s_user
   extends JceStruct
 {
-  public int from;
+  public int from = 0;
   public String logo = "";
   public String nickname = "";
-  public int timestamp;
-  public long uin;
+  public int timestamp = 0;
+  public long uin = 0L;
   public String uinkey = "";
   
   public s_user() {}

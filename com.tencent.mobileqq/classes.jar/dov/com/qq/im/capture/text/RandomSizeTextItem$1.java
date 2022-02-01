@@ -1,0 +1,22 @@
+package dov.com.qq.im.capture.text;
+
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+
+class RandomSizeTextItem$1
+  implements DynamicTextItem.PreHandleTextHandler
+{
+  RandomSizeTextItem$1(RandomSizeTextItem paramRandomSizeTextItem) {}
+  
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
+  {
+    return TroopFileUtils.b(paramString);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+ * Qualified Name:     dov.com.qq.im.capture.text.RandomSizeTextItem.1
+ * JD-Core Version:    0.7.0.1
+ */

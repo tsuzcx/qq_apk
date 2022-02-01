@@ -8,7 +8,7 @@ public final class ReqLastGameInfo
   extends JceStruct
 {
   public byte iVersion = 1;
-  public long lUin;
+  public long lUin = 0L;
   
   public ReqLastGameInfo() {}
   

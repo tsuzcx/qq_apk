@@ -79,7 +79,7 @@ public class GetCMShowInfoServlet
     Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
     ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
     ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.4.10");
+    ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.5.5");
     paramIntent = new WebSSOAgent.UniSsoServerReq();
     paramIntent.comm.set((MessageMicro)localObject2);
     localObject2 = new JSONObject();

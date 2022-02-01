@@ -1,40 +1,39 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.os.Handler;
-import bjum;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyOidbHelper;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qav.thread.ThreadManager;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ExecutorService;
-import qhj;
-import qxn;
-import qxp;
 import tencent.im.oidb.cmd0xef9.oidb_cmd0xef9.PrivilegeReqBody;
 import tencent.im.oidb.cmd0xef9.oidb_cmd0xef9.PrivilegeRspBody;
 import tencent.im.oidb.cmd0xef9.oidb_cmd0xef9.ReqBody;
 import tencent.im.oidb.cmd0xef9.oidb_cmd0xef9.RspBody;
 
 public class RIJUserLevelRequestModule
-  extends qhj
+  extends ReadInJoyEngineModule
 {
-  public RIJUserLevelRequestModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qxn paramqxn, Handler paramHandler)
+  public RIJUserLevelRequestModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
-    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqxn, paramHandler);
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
   }
   
   private void a(oidb_cmd0xef9.PrivilegeRspBody paramPrivilegeRspBody, long paramLong, int paramInt)
   {
-    bjum.a().post(new RIJUserLevelRequestModule.1(this, paramPrivilegeRspBody, paramLong, paramInt));
+    ThreadManager.a().post(new RIJUserLevelRequestModule.1(this, paramPrivilegeRspBody, paramLong, paramInt));
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     oidb_cmd0xef9.RspBody localRspBody = new oidb_cmd0xef9.RspBody();
-    int i = qxp.a(paramFromServiceMsg, paramObject, localRspBody);
+    int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, localRspBody);
     QLog.d("RIJUserLevelRequestModule", 1, "handleUserLevel, result=" + i);
     if ((i == 0) && (localRspBody.privilege_rsp.has()) && (localRspBody.privilege_rsp.get() != null))
     {
@@ -57,7 +56,7 @@ public class RIJUserLevelRequestModule
     localPrivilegeReqBody.uin.set(paramLong);
     localPrivilegeReqBody.oper_type.set(paramInt);
     ((oidb_cmd0xef9.ReqBody)localObject).privilege_req.set(localPrivilegeReqBody);
-    localObject = qxp.a("OidbSvc.0xef9", 3833, 1, ((oidb_cmd0xef9.ReqBody)localObject).toByteArray());
+    localObject = ReadInJoyOidbHelper.a("OidbSvc.0xef9", 3833, 1, ((oidb_cmd0xef9.ReqBody)localObject).toByteArray());
     ((ToServiceMsg)localObject).addAttribute("ope_user_info_uin", Long.valueOf(paramLong));
     ((ToServiceMsg)localObject).addAttribute("ope_user_info_type", Integer.valueOf(paramInt));
     a((ToServiceMsg)localObject);
@@ -72,7 +71,7 @@ public class RIJUserLevelRequestModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule
  * JD-Core Version:    0.7.0.1
  */

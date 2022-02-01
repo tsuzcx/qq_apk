@@ -1,32 +1,25 @@
 package com.tencent.mobileqq.model;
 
-import awyr;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
-public class EmoticonManager$7
+class EmoticonManager$7
   implements Runnable
 {
-  public EmoticonManager$7(awyr paramawyr, List paramList) {}
+  EmoticonManager$7(EmoticonManager paramEmoticonManager, String paramString1, String paramString2) {}
   
   public void run()
   {
-    EntityTransaction localEntityTransaction = this.this$0.a.getTransaction();
-    localEntityTransaction.begin();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    Emoticon localEmoticon = (Emoticon)this.this$0.a.find(Emoticon.class, "epId=? and eId=?", new String[] { this.a, this.b });
+    if (localEmoticon != null)
     {
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)localIterator.next();
-      if ((localEmoticonPackage != null) && (!awyr.a(this.this$0, localEmoticonPackage))) {
-        QLog.e("EmoticonManager", 1, "saveEmoticonPackages fail epId = " + localEmoticonPackage.epId);
+      this.this$0.b.put(localEmoticon.getMapKey(), localEmoticon);
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonManager", 2, "hit db, put into cache");
       }
     }
-    localEntityTransaction.commit();
-    localEntityTransaction.end();
   }
 }
 

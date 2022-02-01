@@ -4,10 +4,10 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable
+class MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable
   implements Runnable
 {
-  public MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
+  MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
   
   public void run()
   {
@@ -15,9 +15,9 @@ public class MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable
       QLog.d(this.this$0.d, 2, "AutoCheckVideoRunnable");
     }
     if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().al = true;
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().an = true;
     }
-    MultiVideoCtrlLayerUI4NewGroupChat.d(this.this$0);
+    MultiVideoCtrlLayerUI4NewGroupChat.e(this.this$0);
     if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
       this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.this$0.b);
     }
@@ -25,7 +25,7 @@ public class MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat.AutoCheckVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

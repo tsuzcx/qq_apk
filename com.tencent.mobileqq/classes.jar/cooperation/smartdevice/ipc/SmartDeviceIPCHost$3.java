@@ -1,13 +1,12 @@
 package cooperation.smartdevice.ipc;
 
 import android.os.Bundle;
-import bmip;
 import java.util.ArrayList;
 
-public class SmartDeviceIPCHost$3
+class SmartDeviceIPCHost$3
   implements Runnable
 {
-  public SmartDeviceIPCHost$3(bmip parambmip, Bundle paramBundle) {}
+  SmartDeviceIPCHost$3(SmartDeviceIPCHost paramSmartDeviceIPCHost, Bundle paramBundle) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class SmartDeviceIPCHost$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.smartdevice.ipc.SmartDeviceIPCHost.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
 package com.tencent.biz.pubaccount.ecshopassit.utils;
 
-import acam;
-import acmw;
-import bdnu;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtPreLoader;
+import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
 import com.tencent.qphone.base.util.QLog;
-import onq;
-import opg;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-public final class EcshopUtils$1
+final class EcshopUtils$1
   implements Runnable
 {
-  public EcshopUtils$1(QQAppInterface paramQQAppInterface, String paramString) {}
+  EcshopUtils$1(QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
@@ -52,13 +51,13 @@ public final class EcshopUtils$1
     } while ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade() == null));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, 1008, false);
     return;
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMsgForMsgTab(this.jdField_a_of_type_JavaLangString, 1008);
-    localObject3 = opg.a((MessageRecord)localObject1);
-    if ((localObject3 != null) && (((bdnu)localObject3).c != 100))
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, 1008);
+    localObject3 = EcshopUtils.a((MessageRecord)localObject1);
+    if ((localObject3 != null) && (((AbsStructMsgElement)localObject3).c != 100))
     {
-      localObject1 = onq.a((MessageRecord)localObject1);
+      localObject1 = EcShopAssistantManager.a((MessageRecord)localObject1);
       if (localObject1 != null) {
-        acam.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
+        GdtPreLoader.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
       }
     }
     while ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade() != null))
@@ -67,12 +66,12 @@ public final class EcshopUtils$1
       return;
       if ((localObject1 instanceof MessageForArkApp))
       {
-        localObject3 = opg.a((MessageRecord)localObject1);
+        localObject3 = EcshopUtils.a((MessageRecord)localObject1);
         if ((localObject3 != null) && (String.valueOf(1).equals(((JSONObject)localObject3).optString("action_type"))))
         {
-          localObject1 = onq.a((MessageRecord)localObject1);
+          localObject1 = EcShopAssistantManager.a((MessageRecord)localObject1);
           if (localObject1 != null) {
-            acam.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
+            GdtPreLoader.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
           }
         }
       }
@@ -81,7 +80,7 @@ public final class EcshopUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.utils.EcshopUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atig;
-import atlw;
+import com.tencent.mobileqq.filemanager.core.FileUploader;
 
-public class NewFileUploader$1
+class NewFileUploader$1
   implements Runnable
 {
-  public NewFileUploader$1(atig paramatig) {}
+  NewFileUploader$1(NewFileUploader paramNewFileUploader) {}
   
   public void run()
   {
-    if (atig.a(this.this$0) != null) {
-      atig.a(this.this$0).a(0L);
+    if (NewFileUploader.a(this.this$0) != null) {
+      NewFileUploader.a(this.this$0).a(0L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.NewFileUploader.1
  * JD-Core Version:    0.7.0.1
  */

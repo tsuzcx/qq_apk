@@ -3,12 +3,11 @@ package com.tencent.mobileqq.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ScrollView;
-import bitp;
 
 public class ObservableScrollView
   extends ScrollView
 {
-  private bitp a;
+  private ScrollViewListener a = null;
   
   public ObservableScrollView(Context paramContext)
   {
@@ -25,7 +24,7 @@ public class ObservableScrollView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.a != null) {
@@ -33,14 +32,14 @@ public class ObservableScrollView
     }
   }
   
-  public void setScrollViewListener(bitp parambitp)
+  public void setScrollViewListener(ScrollViewListener paramScrollViewListener)
   {
-    this.a = parambitp;
+    this.a = paramScrollViewListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ObservableScrollView
  * JD-Core Version:    0.7.0.1
  */

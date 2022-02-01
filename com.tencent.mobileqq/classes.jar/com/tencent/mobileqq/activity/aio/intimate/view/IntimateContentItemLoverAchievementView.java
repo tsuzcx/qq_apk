@@ -1,11 +1,5 @@
 package com.tencent.mobileqq.activity.aio.intimate.view;
 
-import agll;
-import agmd;
-import agml;
-import agmm;
-import agmn;
-import agmo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -22,11 +16,14 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
-import arau;
-import arav;
-import bdla;
+import com.tencent.mobileqq.activity.aio.intimate.BaseIntimateView;
+import com.tencent.mobileqq.activity.aio.intimate.info.LoveAchievementInfo;
+import com.tencent.mobileqq.config.business.FriendIntimateRelationshipBean;
+import com.tencent.mobileqq.config.business.FriendIntimateRelationshipConfProcessor;
 import com.tencent.mobileqq.data.IntimateInfo;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -34,11 +31,11 @@ import java.util.ArrayList;
 public class IntimateContentItemLoverAchievementView
   extends IntimateContentItemBaseView
 {
-  private agmn jdField_a_of_type_Agmn = new agml(this);
-  private agmo jdField_a_of_type_Agmo;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private RecyclerView jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView;
+  private IntimateContentItemLoverAchievementView.CoupleAchievementItemListener jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView$CoupleAchievementItemListener = new IntimateContentItemLoverAchievementView.1(this);
+  private IntimateContentItemLoverAchievementView.CoupleAchievementRvAdapter jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView$CoupleAchievementRvAdapter;
   
   public IntimateContentItemLoverAchievementView(Context paramContext)
   {
@@ -61,8 +58,8 @@ public class IntimateContentItemLoverAchievementView
     {
       paramString = new SpannableString(paramString);
       paramString.setSpan(new StyleSpan(0), paramInt1, paramInt1 + paramInt2, 33);
-      paramString.setSpan(new AbsoluteSizeSpan(ViewUtils.dip2px(14.0F)), paramInt1, paramInt1 + paramInt2, 33);
-      paramString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this.jdField_a_of_type_AndroidContentContext, 2131166830)), paramInt1, paramInt1 + paramInt2, 33);
+      paramString.setSpan(new AbsoluteSizeSpan(ViewUtils.a(14.0F)), paramInt1, paramInt1 + paramInt2, 33);
+      paramString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this.jdField_a_of_type_AndroidContentContext, 2131166833)), paramInt1, paramInt1 + paramInt2, 33);
       return paramString;
     }
     catch (Exception paramString)
@@ -76,21 +73,21 @@ public class IntimateContentItemLoverAchievementView
   
   private void m()
   {
-    bdla.b(null, "dc00898", "", "", "0X800B567", "0X800B567", 0, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800B567", "0X800B567", 0, 0, "", "", "", "");
   }
   
   protected void a()
   {
-    Object localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559316, this, true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131365273));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365275));
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)((View)localObject).findViewById(2131365274));
+    Object localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559381, this, true);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131365414));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365416));
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)((View)localObject).findViewById(2131365415));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(this);
-    this.jdField_a_of_type_Agmo = new agmo(this, null);
-    localObject = new agmm(this, this.jdField_a_of_type_Agll.a(), 3);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView$CoupleAchievementRvAdapter = new IntimateContentItemLoverAchievementView.CoupleAchievementRvAdapter(this, null);
+    localObject = new IntimateContentItemLoverAchievementView.2(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), 3);
     this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject);
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setAdapter(this.jdField_a_of_type_Agmo);
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView$CoupleAchievementRvAdapter);
   }
   
   protected void a(View paramView)
@@ -101,10 +98,10 @@ public class IntimateContentItemLoverAchievementView
     do
     {
       return;
-      paramView = arav.a().T;
+      paramView = FriendIntimateRelationshipConfProcessor.a().T;
     } while (TextUtils.isEmpty(paramView));
     m();
-    MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramView, 2064, null);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramView, 2064, null);
   }
   
   protected void a(IntimateInfo paramIntimateInfo, int paramInt)
@@ -112,18 +109,23 @@ public class IntimateContentItemLoverAchievementView
     if ((paramIntimateInfo != null) && (paramIntimateInfo.loveAchievementInfo != null) && (paramIntimateInfo.loveAchievementInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramIntimateInfo.loveAchievementInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       setVisibility(0);
-      SpannableString localSpannableString = a(String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693311), new Object[] { Integer.valueOf(paramIntimateInfo.loveAchievementInfo.b), Integer.valueOf(paramIntimateInfo.loveAchievementInfo.jdField_a_of_type_Int) }), 0, 3);
+      SpannableString localSpannableString = a(String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693463), new Object[] { Integer.valueOf(paramIntimateInfo.loveAchievementInfo.b), Integer.valueOf(paramIntimateInfo.loveAchievementInfo.jdField_a_of_type_Int) }), 0, 3);
       if (localSpannableString != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableString);
       }
-      if (paramIntimateInfo.loveAchievementInfo.jdField_a_of_type_JavaUtilArrayList.size() > 3) {
-        this.jdField_a_of_type_Agmo.a(paramIntimateInfo.loveAchievementInfo.jdField_a_of_type_JavaUtilArrayList.subList(0, 3));
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView$CoupleAchievementRvAdapter != null)
+      {
+        if (paramIntimateInfo.loveAchievementInfo.jdField_a_of_type_JavaUtilArrayList.size() <= 3) {
+          break label170;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView$CoupleAchievementRvAdapter.a(paramIntimateInfo.loveAchievementInfo.jdField_a_of_type_JavaUtilArrayList.subList(0, 3));
       }
       for (;;)
       {
-        bdla.b(null, "dc00898", "", "", "0X800B566", "0X800B566", 0, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800B566", "0X800B566", 0, 0, "", "", "", "");
         return;
-        this.jdField_a_of_type_Agmo.a(paramIntimateInfo.loveAchievementInfo.jdField_a_of_type_JavaUtilArrayList);
+        label170:
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView$CoupleAchievementRvAdapter.a(paramIntimateInfo.loveAchievementInfo.jdField_a_of_type_JavaUtilArrayList);
       }
     }
     setVisibility(8);
@@ -131,7 +133,7 @@ public class IntimateContentItemLoverAchievementView
   
   protected boolean a()
   {
-    boolean bool = arav.a().b;
+    boolean bool = FriendIntimateRelationshipConfProcessor.a().b;
     if ((this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.loveAchievementInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.loveAchievementInfo.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.loveAchievementInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {}
     for (int i = 1; (bool) && (this.jdField_a_of_type_Int == 1) && (i != 0); i = 0) {
       return true;
@@ -143,15 +145,19 @@ public class IntimateContentItemLoverAchievementView
   {
     if (this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView != null)
     {
+      this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setLayoutManager(null);
+      this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.removeAllViews();
       this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setAdapter(null);
       this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = null;
+      this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = null;
+      removeAllViews();
     }
     super.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemLoverAchievementView
  * JD-Core Version:    0.7.0.1
  */

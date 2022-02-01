@@ -1,18 +1,16 @@
 package dov.com.tencent.mobileqq.richmedia.capture.data;
 
-import bpnd;
-
-public class CaptureVideoFilterManager$2
+class CaptureVideoFilterManager$2
   implements Runnable
 {
   public void run()
   {
-    bpnd.a(this.this$0);
+    CaptureVideoFilterManager.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,16 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
-import xjk;
-import xjl;
 
 public class ExploreAnimalView
   extends RelativeLayout
 {
   protected AnimatorSet a;
-  public AlphaAnimation a;
+  protected AlphaAnimation a;
   protected TranslateAnimation a;
-  public LinearLayout a;
-  public EllipsizingTextView a;
-  public TranslateAnimation b;
+  protected LinearLayout a;
+  protected EllipsizingTextView a;
+  protected TranslateAnimation b;
   
   public ExploreAnimalView(Context paramContext)
   {
@@ -38,9 +36,9 @@ public class ExploreAnimalView
   public ExploreAnimalView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    RelativeLayout.inflate(getContext(), 2131561859, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131374682));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)super.findViewById(2131381058));
+    RelativeLayout.inflate(getContext(), 2131561991, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131375053));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)super.findViewById(2131381526));
   }
   
   public void a()
@@ -57,13 +55,13 @@ public class ExploreAnimalView
     this.b = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.2F, 1, 0.0F);
     this.b.setDuration(300L);
     this.b.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new xjk(this));
-    this.b.setAnimationListener(new xjl(this));
+    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new ExploreAnimalView.1(this));
+    this.b.setAnimationListener(new ExploreAnimalView.2(this));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
   
   @TargetApi(11)
-  public void a(View paramView, long paramLong)
+  protected void a(View paramView, long paramLong)
   {
     if (Build.VERSION.SDK_INT >= 11)
     {
@@ -128,7 +126,7 @@ public class ExploreAnimalView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView
  * JD-Core Version:    0.7.0.1
  */

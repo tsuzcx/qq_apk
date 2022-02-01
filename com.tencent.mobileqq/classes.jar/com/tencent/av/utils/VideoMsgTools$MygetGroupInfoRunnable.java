@@ -1,7 +1,7 @@
 package com.tencent.av.utils;
 
-import bhfy;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QAVGroupConfig;
 import java.lang.ref.WeakReference;
 
 class VideoMsgTools$MygetGroupInfoRunnable
@@ -22,13 +22,13 @@ class VideoMsgTools$MygetGroupInfoRunnable
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localQQAppInterface != null) {
-      bhfy.a("addGroupMember_" + this.jdField_a_of_type_Long, localQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      QAVGroupConfig.a("addGroupMember_" + this.jdField_a_of_type_Long, localQQAppInterface, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.VideoMsgTools.MygetGroupInfoRunnable
  * JD-Core Version:    0.7.0.1
  */

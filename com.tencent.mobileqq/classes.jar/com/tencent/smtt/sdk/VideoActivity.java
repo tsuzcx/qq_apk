@@ -1,6 +1,5 @@
 package com.tencent.smtt.sdk;
 
-import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -78,7 +77,7 @@ public class VideoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.VideoActivity
  * JD-Core Version:    0.7.0.1
  */

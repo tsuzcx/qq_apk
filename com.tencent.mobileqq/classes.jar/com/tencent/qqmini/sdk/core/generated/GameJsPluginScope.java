@@ -1,5 +1,6 @@
 package com.tencent.qqmini.sdk.core.generated;
 
+import com.tencent.qqmini.minigame.plugins.AudioRecorderJsPlugin;
 import com.tencent.qqmini.minigame.plugins.BlockAdPlugin;
 import com.tencent.qqmini.minigame.plugins.CustomButtonPlugin;
 import com.tencent.qqmini.minigame.plugins.GameDataJsPlugin;
@@ -10,6 +11,7 @@ import com.tencent.qqmini.minigame.plugins.LifecycleJsPlugin;
 import com.tencent.qqmini.minigame.plugins.MemoryJsPlugin;
 import com.tencent.qqmini.minigame.plugins.OrientationJsPlugin;
 import com.tencent.qqmini.minigame.plugins.ProfileJsPlugin;
+import com.tencent.qqmini.minigame.plugins.RaffleJsPlugin;
 import com.tencent.qqmini.minigame.plugins.UpdateManagerJsPlugin;
 import com.tencent.qqmini.minigame.plugins.VideoJsPlugin;
 import java.util.ArrayList;
@@ -27,10 +29,8 @@ public final class GameJsPluginScope
     EVENT_HANDLERS = new HashMap();
     PRELOAD_PLUGINS.add(LifecycleJsPlugin.class);
     PRELOAD_PLUGINS.add(ProfileJsPlugin.class);
-    PRELOAD_PLUGINS.add(OrientationJsPlugin.class);
     PRELOAD_PLUGINS.add(UpdateManagerJsPlugin.class);
-    EVENT_HANDLERS.put("registerProfile", ProfileJsPlugin.class);
-    EVENT_HANDLERS.put("timePerformanceResult", ProfileJsPlugin.class);
+    PRELOAD_PLUGINS.add(OrientationJsPlugin.class);
     EVENT_HANDLERS.put("getSystemInfo", GameSystemInfoPlugin.class);
     EVENT_HANDLERS.put("getSystemInfoSync", GameSystemInfoPlugin.class);
     EVENT_HANDLERS.put("downloadWithCache", GameFileJsPlugin.class);
@@ -39,6 +39,17 @@ public final class GameJsPluginScope
     EVENT_HANDLERS.put("updateBlockAdSize", BlockAdPlugin.class);
     EVENT_HANDLERS.put("setStatusBarStyle", ImmersiveJsPlugin.class);
     EVENT_HANDLERS.put("setMenuStyle", ImmersiveJsPlugin.class);
+    EVENT_HANDLERS.put("getRecorderManager", AudioRecorderJsPlugin.class);
+    EVENT_HANDLERS.put("operateRecorder", AudioRecorderJsPlugin.class);
+    EVENT_HANDLERS.put("getUpdateManager", UpdateManagerJsPlugin.class);
+    EVENT_HANDLERS.put("onUpdateCheckResult", UpdateManagerJsPlugin.class);
+    EVENT_HANDLERS.put("onUpdateDownloadResult", UpdateManagerJsPlugin.class);
+    EVENT_HANDLERS.put("updateApp", UpdateManagerJsPlugin.class);
+    EVENT_HANDLERS.put("onAppEnterForeground", LifecycleJsPlugin.class);
+    EVENT_HANDLERS.put("onAppEnterBackground", LifecycleJsPlugin.class);
+    EVENT_HANDLERS.put("onAppStop", LifecycleJsPlugin.class);
+    EVENT_HANDLERS.put("registerProfile", ProfileJsPlugin.class);
+    EVENT_HANDLERS.put("timePerformanceResult", ProfileJsPlugin.class);
     EVENT_HANDLERS.put("operateCustomButton", CustomButtonPlugin.class);
     EVENT_HANDLERS.put("insertVideoPlayer", VideoJsPlugin.class);
     EVENT_HANDLERS.put("updateVideoPlayer", VideoJsPlugin.class);
@@ -49,13 +60,8 @@ public final class GameJsPluginScope
     EVENT_HANDLERS.put("recordOffLineResourceState", GameDataJsPlugin.class);
     EVENT_HANDLERS.put("navigateToMiniProgramConfig", GameDataJsPlugin.class);
     EVENT_HANDLERS.put("getOpenDataUserInfo", GameDataJsPlugin.class);
-    EVENT_HANDLERS.put("getUpdateManager", UpdateManagerJsPlugin.class);
-    EVENT_HANDLERS.put("onUpdateCheckResult", UpdateManagerJsPlugin.class);
-    EVENT_HANDLERS.put("onUpdateDownloadResult", UpdateManagerJsPlugin.class);
-    EVENT_HANDLERS.put("updateApp", UpdateManagerJsPlugin.class);
-    EVENT_HANDLERS.put("onAppEnterForeground", LifecycleJsPlugin.class);
-    EVENT_HANDLERS.put("onAppEnterBackground", LifecycleJsPlugin.class);
-    EVENT_HANDLERS.put("onAppStop", LifecycleJsPlugin.class);
+    EVENT_HANDLERS.put("minigameRaffle", RaffleJsPlugin.class);
+    EVENT_HANDLERS.put("onRaffleShareSucNotice", RaffleJsPlugin.class);
   }
 }
 

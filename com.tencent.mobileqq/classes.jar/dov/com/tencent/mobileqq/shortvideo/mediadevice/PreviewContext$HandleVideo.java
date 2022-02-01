@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.shortvideo.mediadevice;
 
-import bdbf;
-import bdbl;
 import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -44,7 +44,7 @@ public class PreviewContext$HandleVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext.HandleVideo
  * JD-Core Version:    0.7.0.1
  */

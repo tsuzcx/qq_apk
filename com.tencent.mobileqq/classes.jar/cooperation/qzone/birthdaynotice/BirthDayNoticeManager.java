@@ -1,14 +1,14 @@
 package cooperation.qzone.birthdaynotice;
 
 import GIFT_MALL_PROTOCOL.DouFuInfo;
-import axlr;
-import bcrg;
-import bcva;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.mobileqq.mutualmark.MutualMarkDataCenter;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.servlet.BirthDayNoticeServlet;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.manager.MonitorManager;
 import java.lang.ref.WeakReference;
@@ -52,8 +52,8 @@ public class BirthDayNoticeManager
   
   public static boolean isBirthDayNoticeEnable(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (axlr.a(paramQQAppInterface, paramString, 5L, false) != null) {}
-    while ((axlr.a(paramQQAppInterface, paramString, 12L, false) != null) || (axlr.a(paramQQAppInterface, paramString, false) != null)) {
+    if (MutualMarkDataCenter.a(paramQQAppInterface, paramString, 5L, false) != null) {}
+    while ((MutualMarkDataCenter.a(paramQQAppInterface, paramString, 12L, false) != null) || (MutualMarkDataCenter.a(paramQQAppInterface, paramString, false) != null)) {
       return true;
     }
     return false;
@@ -61,18 +61,18 @@ public class BirthDayNoticeManager
   
   public static void requestBirthDayNotice(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    String str = paramSessionInfo.curFriendUin;
+    String str = paramSessionInfo.a;
     Set localSet = paramQQAppInterface.getMsgCache().a();
     long l1;
     long l3;
-    if ((localSet != null) && (localSet.contains(str)) && (isBirthDayNoticeEnable(paramQQAppInterface, paramSessionInfo.curFriendUin)))
+    if ((localSet != null) && (localSet.contains(str)) && (isBirthDayNoticeEnable(paramQQAppInterface, paramSessionInfo.a)))
     {
       l1 = paramQQAppInterface.getMsgCache().b();
       l3 = System.currentTimeMillis() / 1000L;
       if (l3 - l1 >= 86400L)
       {
         QLog.i("BirthDayNoticeManager", 2, "requestBirthDayNotice ");
-        paramSessionInfo = new NewIntent(BaseApplicationImpl.getApplication(), bcva.class);
+        paramSessionInfo = new NewIntent(BaseApplicationImpl.getApplication(), BirthDayNoticeServlet.class);
         l1 = 0L;
       }
     }
@@ -97,7 +97,7 @@ public class BirthDayNoticeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.birthdaynotice.BirthDayNoticeManager
  * JD-Core Version:    0.7.0.1
  */

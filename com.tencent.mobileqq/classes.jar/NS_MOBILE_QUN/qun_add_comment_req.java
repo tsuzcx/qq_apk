@@ -11,13 +11,13 @@ public final class qun_add_comment_req
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumId = "";
-  public Map<Integer, String> busi_param;
-  public int comment_type;
+  public Map<Integer, String> busi_param = null;
+  public int comment_type = 0;
   public String content = "";
-  public long ownuin;
+  public long ownuin = 0L;
   public String qunid = "";
   public String srcid = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

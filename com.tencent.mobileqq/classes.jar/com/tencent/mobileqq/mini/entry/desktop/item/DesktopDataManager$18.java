@@ -1,8 +1,12 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
+import android.util.Log;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
 class DesktopDataManager$18
   implements Runnable
@@ -11,44 +15,32 @@ class DesktopDataManager$18
   
   public void run()
   {
-    if ((this.val$miniAppInfo != null) && (DesktopDataManager.access$1600(this.this$0) != null)) {
-      switch (this.val$miniAppInfo.topType)
-      {
-      }
+    Object localObject = MiniAppUtils.getAppInterface();
+    if (localObject == null) {
+      QLog.e("DesktopDataManager", 1, "deleteEntity, app is null.");
     }
-    label241:
-    for (;;)
+    DeskTopAppEntity localDeskTopAppEntity;
+    do
     {
-      DesktopDataManager.access$1900(DesktopDataManager.access$1600(this.this$0));
-      if (DesktopDataManager.access$1500(this.this$0) != null) {
-        DesktopDataManager.access$1500(this.this$0).onDataChanged();
-      }
       return;
-      Object localObject = DesktopDataManager.access$1600(this.this$0).iterator();
-      DesktopItemInfo localDesktopItemInfo;
-      while (((Iterator)localObject).hasNext())
+      localDeskTopAppEntity = new DeskTopAppEntity(this.val$entity);
+      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    } while (localObject == null);
+    try
+    {
+      localDeskTopAppEntity.setStatus(1001);
+      if (((EntityManager)localObject).remove(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId }))
       {
-        localDesktopItemInfo = (DesktopItemInfo)((Iterator)localObject).next();
-        if (((localDesktopItemInfo instanceof DesktopAppInfo)) && (localDesktopItemInfo.getModuleType() == 3) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.equals(this.val$miniAppInfo))) {
-          ((Iterator)localObject).remove();
-        }
-      }
-      localObject = new DesktopAppInfo(3, this.val$miniAppInfo);
-      int i = 0;
-      for (;;)
-      {
-        if (i >= DesktopDataManager.access$1600(this.this$0).size()) {
-          break label241;
-        }
-        localDesktopItemInfo = (DesktopItemInfo)DesktopDataManager.access$1600(this.this$0).get(i);
-        if (((localDesktopItemInfo instanceof DesktopAppModuleInfo)) && (localDesktopItemInfo.getModuleType() == 3))
-        {
-          DesktopDataManager.access$1600(this.this$0).add(i + 1, localObject);
-          break;
-        }
-        i += 1;
+        QLog.d("DesktopDataManager", 2, "deleteEntity, delete " + localDeskTopAppEntity.name + " success from db");
+        return;
       }
     }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("DesktopDataManager", 1, "deleteEntity, Exception: " + Log.getStackTraceString(localThrowable));
+      return;
+    }
+    QLog.d("DesktopDataManager", 2, "deleteEntity, delete " + localThrowable.name + " fail from db");
   }
 }
 

@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.fts.entity;
 
 import android.text.TextUtils;
-import auzx;
-import auzy;
-import avaj;
-import avak;
+import com.tencent.mobileqq.fts.utils.SQLUtils;
+import com.tencent.mobileqq.fts.utils.SegmentUtils;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,12 +11,12 @@ import java.util.Set;
 
 public abstract class FTSEntity
 {
-  public String ext1;
-  public String ext2;
-  public String ext3;
-  @auzy
-  public byte[] exts;
-  @auzx
+  public String ext1 = null;
+  public String ext2 = null;
+  public String ext3 = null;
+  @notIndex
+  public byte[] exts = null;
+  @notColumn
   public Map<String, String> indexContentMap = new HashMap();
   
   protected void doDeserialize() {}
@@ -46,7 +44,7 @@ public abstract class FTSEntity
   {
     try
     {
-      Iterator localIterator = avaj.a(getClass()).iterator();
+      Iterator localIterator = SQLUtils.a(getClass()).iterator();
       while (localIterator.hasNext())
       {
         Field localField = (Field)localIterator.next();
@@ -55,7 +53,7 @@ public abstract class FTSEntity
           String str = (String)localField.get(this);
           if (!TextUtils.isEmpty(str))
           {
-            str = avak.a(str);
+            str = SegmentUtils.a(str);
             this.indexContentMap.put(localField.getName(), str);
           }
         }
@@ -70,7 +68,7 @@ public abstract class FTSEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fts.entity.FTSEntity
  * JD-Core Version:    0.7.0.1
  */

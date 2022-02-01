@@ -20,21 +20,21 @@ public final class cell_operation
   static Map<Integer, String> cache_recomm_cookie;
   static s_schema cache_schema_info;
   static s_outshare cache_share_info;
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String button_gif_url = "";
-  public Map<String, String> bypass_param;
-  public Map<Integer, Map<String, String>> click_stream_report;
-  public ArrayList<s_op_btn> custom_btn;
-  public Map<Integer, String> droplist_cookie;
-  public Map<Integer, String> feed_report_cookie;
+  public Map<String, String> bypass_param = null;
+  public Map<Integer, Map<String, String>> click_stream_report = null;
+  public ArrayList<s_op_btn> custom_btn = null;
+  public Map<Integer, String> droplist_cookie = null;
+  public Map<Integer, String> feed_report_cookie = null;
   public String generic_url = "";
-  public long offline_resource_bid;
+  public long offline_resource_bid = 0L;
   public String qboss_trace = "";
   public String qq_url = "";
-  public Map<Integer, String> rank_param;
-  public Map<Integer, String> recomm_cookie;
-  public s_schema schema_info;
-  public s_outshare share_info;
+  public Map<Integer, String> rank_param = null;
+  public Map<Integer, String> recomm_cookie = null;
+  public s_schema schema_info = null;
+  public s_outshare share_info = null;
   public String weixin_url = "";
   
   static

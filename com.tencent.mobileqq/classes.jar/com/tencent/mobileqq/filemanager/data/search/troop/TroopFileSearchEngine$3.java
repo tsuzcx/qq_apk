@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.filemanager.data.search.troop;
 
-import atqr;
-import atrj;
-import atrn;
-import bclx;
-import bfmo;
+import com.tencent.mobileqq.filemanager.data.search.ISearchViewBinder;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.troop.filemanager.data.TroopFileSearchItemData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TroopFileSearchEngine$3
+class TroopFileSearchEngine$3
   implements Runnable
 {
-  public TroopFileSearchEngine$3(atrj paramatrj, boolean paramBoolean, List paramList) {}
+  TroopFileSearchEngine$3(TroopFileSearchEngine paramTroopFileSearchEngine, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
-    if (atrj.a(this.this$0) == null) {
+    if (TroopFileSearchEngine.a(this.this$0) == null) {
       QLog.i("TroopFileSearchEngine<QFile>", 4, "notifyFileSearchFinish. listener is null");
     }
     Object localObject;
@@ -26,38 +24,38 @@ public class TroopFileSearchEngine$3
       localObject = new ArrayList();
       if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        if (atrj.a(this.this$0) == null) {
-          atrj.b(this.this$0, new ArrayList());
+        if (TroopFileSearchEngine.a(this.this$0) == null) {
+          TroopFileSearchEngine.b(this.this$0, new ArrayList());
         }
-        atrj.a(this.this$0).addAll(this.jdField_a_of_type_JavaUtilList);
-        Iterator localIterator = atrj.a(this.this$0).iterator();
+        TroopFileSearchEngine.a(this.this$0).addAll(this.jdField_a_of_type_JavaUtilList);
+        Iterator localIterator = TroopFileSearchEngine.a(this.this$0).iterator();
         while (localIterator.hasNext())
         {
-          bfmo localbfmo = (bfmo)localIterator.next();
-          ((List)localObject).add(new atrn(atrj.a(this.this$0), atrj.a(this.this$0), atrj.a(this.this$0), localbfmo));
+          TroopFileSearchItemData localTroopFileSearchItemData = (TroopFileSearchItemData)localIterator.next();
+          ((List)localObject).add(new TroopFileSearchResultModel(TroopFileSearchEngine.a(this.this$0), TroopFileSearchEngine.a(this.this$0), TroopFileSearchEngine.a(this.this$0), localTroopFileSearchItemData));
         }
       }
-      atrj.a(this.this$0).a((List)localObject, 1);
+      TroopFileSearchEngine.a(this.this$0).a((List)localObject, 1);
     }
     for (;;)
     {
-      long l = System.currentTimeMillis() - atrj.a(this.this$0);
-      localObject = atrj.a(this.this$0).b();
-      if ((!((String)localObject).equals(atrj.a(this.this$0))) && (l >= 800L))
+      long l = System.currentTimeMillis() - TroopFileSearchEngine.a(this.this$0);
+      localObject = TroopFileSearchEngine.a(this.this$0).b();
+      if ((!((String)localObject).equals(TroopFileSearchEngine.a(this.this$0))) && (l >= 800L))
       {
-        QLog.e("TroopFileSearchEngine<QFile>", 2, "notifyFileSearchFinish currentKeyword[" + (String)localObject + "] mLastKeyWord[" + atrj.a(this.this$0) + "] timeInterval[" + l + "]");
-        atrj.a(this.this$0);
-        atrj.a(this.this$0, (String)localObject);
-        atrj.a(this.this$0, atrj.a(this.this$0));
+        QLog.e("TroopFileSearchEngine<QFile>", 2, "notifyFileSearchFinish currentKeyword[" + (String)localObject + "] mLastKeyWord[" + TroopFileSearchEngine.a(this.this$0) + "] timeInterval[" + l + "]");
+        TroopFileSearchEngine.a(this.this$0);
+        TroopFileSearchEngine.a(this.this$0, (String)localObject);
+        TroopFileSearchEngine.a(this.this$0, TroopFileSearchEngine.a(this.this$0));
       }
       return;
-      atrj.a(this.this$0).a(new ArrayList(), 6);
+      TroopFileSearchEngine.a(this.this$0).a(new ArrayList(), 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchEngine.3
  * JD-Core Version:    0.7.0.1
  */

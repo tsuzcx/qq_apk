@@ -6,15 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import tqx;
-import tqy;
 
 public class ReadInJoySelectPositionHeader
   extends RelativeLayout
 {
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private tqy jdField_a_of_type_Tqy;
+  private ReadInJoySelectPositionHeader.ISelectCityListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader$ISelectCityListener;
   private TextView b;
   
   public ReadInJoySelectPositionHeader(Context paramContext)
@@ -37,11 +35,11 @@ public class ReadInJoySelectPositionHeader
   
   private void a(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2131560317, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377327));
-    this.b = ((TextView)localView.findViewById(2131367802));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367803));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new tqx(this, paramContext));
+    View localView = LayoutInflater.from(paramContext).inflate(2131560389, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377748));
+    this.b = ((TextView)localView.findViewById(2131368010));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131368011));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ReadInJoySelectPositionHeader.1(this, paramContext));
   }
   
   public void setGPSCity(String paramString)
@@ -49,9 +47,9 @@ public class ReadInJoySelectPositionHeader
     this.b.setText(paramString);
   }
   
-  public void setSelectCityListener(tqy paramtqy)
+  public void setSelectCityListener(ReadInJoySelectPositionHeader.ISelectCityListener paramISelectCityListener)
   {
-    this.jdField_a_of_type_Tqy = paramtqy;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader$ISelectCityListener = paramISelectCityListener;
   }
   
   public void setSelectedCity(String paramString)
@@ -61,7 +59,7 @@ public class ReadInJoySelectPositionHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoySelectPositionHeader
  * JD-Core Version:    0.7.0.1
  */

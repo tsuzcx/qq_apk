@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.teamwork;
 
-import becx;
-
-public final class TenDocWebPreLoadHelper$1
+final class TenDocWebPreLoadHelper$1
   implements Runnable
 {
-  public TenDocWebPreLoadHelper$1(String paramString) {}
+  TenDocWebPreLoadHelper$1(String paramString) {}
   
   public void run()
   {
-    becx.b(this.a);
+    TenDocWebPreLoadHelper.b(this.a);
   }
 }
 

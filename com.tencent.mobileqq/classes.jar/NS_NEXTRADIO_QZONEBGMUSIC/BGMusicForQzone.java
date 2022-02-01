@@ -8,7 +8,7 @@ public final class BGMusicForQzone
   extends JceStruct
 {
   public String showAudioUrl = "";
-  public int showDuration;
+  public int showDuration = 0;
   public String showID = "";
   public String showName = "";
   public String showPicurl = "";

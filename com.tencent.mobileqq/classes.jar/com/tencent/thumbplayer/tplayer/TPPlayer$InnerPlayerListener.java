@@ -24,6 +24,7 @@ import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 import com.tencent.thumbplayer.datatransport.ITPPlayManager;
+import com.tencent.thumbplayer.log.TPBaseLogger;
 import com.tencent.thumbplayer.utils.TPHashMapBuilder;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 import java.util.Map;
@@ -38,6 +39,11 @@ class TPPlayer$InnerPlayerListener
     return TPPlayer.access$1100(this.this$0).getAdvRemainTime();
   }
   
+  public String getContentType(int paramInt, String paramString)
+  {
+    return TPPlayer.access$1100(this.this$0).getContentType(paramInt, paramString);
+  }
+  
   public int getCurrentPlayClipNo()
   {
     return TPPlayer.access$1100(this.this$0).getCurrentPlayClipNo();
@@ -46,6 +52,16 @@ class TPPlayer$InnerPlayerListener
   public long getCurrentPosition()
   {
     return TPPlayer.access$1100(this.this$0).getCurrentPosition();
+  }
+  
+  public String getDataFilePath(int paramInt, String paramString)
+  {
+    return TPPlayer.access$1100(this.this$0).getDataFilePath(paramInt, paramString);
+  }
+  
+  public long getDataTotalSize(int paramInt, String paramString)
+  {
+    return TPPlayer.access$1100(this.this$0).getDataTotalSize(paramInt, paramString);
   }
   
   public Object getPlayInfo(long paramLong)
@@ -88,31 +104,31 @@ class TPPlayer$InnerPlayerListener
   
   public void onDownloadCdnUrlExpired(Map<String, String> paramMap)
   {
-    TPLogUtil.i(TPPlayer.access$700(this.this$0), "onDownloadCdnUrlExpired");
+    TPPlayer.access$700(this.this$0).info("onDownloadCdnUrlExpired");
     TPPlayer.access$1100(this.this$0).onDownloadCdnUrlExpired(paramMap);
   }
   
   public void onDownloadCdnUrlInfoUpdate(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    TPLogUtil.i(TPPlayer.access$700(this.this$0), "onDownloadCdnUrlInfoUpdate, url:" + paramString1 + ", cdnIp:" + paramString2 + ", uip:" + paramString3 + ", errorCodeStr:" + paramString4);
+    TPPlayer.access$700(this.this$0).info("onDownloadCdnUrlInfoUpdate, url:" + paramString1 + ", cdnIp:" + paramString2 + ", uip:" + paramString3 + ", errorCodeStr:" + paramString4);
     TPPlayer.access$1100(this.this$0).onDownloadCdnUrlInfoUpdate(paramString1, paramString2, paramString3, paramString4);
   }
   
   public void onDownloadCdnUrlUpdate(String paramString)
   {
-    TPLogUtil.i(TPPlayer.access$700(this.this$0), "onDownloadCdnUrlUpdate, url:" + paramString);
+    TPPlayer.access$700(this.this$0).info("onDownloadCdnUrlUpdate, url:" + paramString);
     TPPlayer.access$1100(this.this$0).onDownloadCdnUrlUpdate(paramString);
   }
   
   public void onDownloadError(int paramInt1, int paramInt2, String paramString)
   {
-    TPLogUtil.i(TPPlayer.access$700(this.this$0), "onDownloadError, moduleID:" + paramInt1 + ", errorCode:" + paramInt2 + ", extInfo:" + paramString);
+    TPPlayer.access$700(this.this$0).info("onDownloadError, moduleID:" + paramInt1 + ", errorCode:" + paramInt2 + ", extInfo:" + paramString);
     TPPlayer.access$1100(this.this$0).onDownloadError(4000, paramInt2, paramString);
   }
   
   public void onDownloadFinish()
   {
-    TPLogUtil.i(TPPlayer.access$700(this.this$0), "onDownloadFinish");
+    TPPlayer.access$700(this.this$0).info("onDownloadFinish");
     TPPlayer.access$1100(this.this$0).onDownloadFinish();
   }
   
@@ -123,7 +139,7 @@ class TPPlayer$InnerPlayerListener
   
   public void onDownloadProtocolUpdate(String paramString1, String paramString2)
   {
-    TPLogUtil.i(TPPlayer.access$700(this.this$0), "onDownloadProtocolUpdate, protocol:" + paramString1 + ", protocolVer:" + paramString2);
+    TPPlayer.access$700(this.this$0).info("onDownloadProtocolUpdate, protocol:" + paramString1 + ", protocolVer:" + paramString2);
     TPPlayer.access$1100(this.this$0).onDownloadProtocolUpdate(paramString1, paramString2);
   }
   
@@ -131,7 +147,7 @@ class TPPlayer$InnerPlayerListener
   {
     if (paramInt != TPPlayer.access$1200(this.this$0))
     {
-      TPLogUtil.i(TPPlayer.access$700(this.this$0), "onDownloadStatusUpdate, status:" + paramInt);
+      TPPlayer.access$700(this.this$0).info("onDownloadStatusUpdate, status:" + paramInt);
       TPPlayer.access$1202(this.this$0, paramInt);
     }
     TPPlayer.access$1100(this.this$0).onDownloadStatusUpdate(paramInt);
@@ -140,7 +156,7 @@ class TPPlayer$InnerPlayerListener
   public void onError(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
     Object localObject = TPPlayer.access$000(this.this$0).getPlayErrorCodeStr();
-    TPLogUtil.i(TPPlayer.access$700(this.this$0), "onError playerErrorCodeStr=" + (String)localObject);
+    TPPlayer.access$700(this.this$0).info("onError playerErrorCodeStr=" + (String)localObject);
     j = paramInt1;
     i = paramInt2;
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
@@ -153,13 +169,13 @@ class TPPlayer$InnerPlayerListener
     {
       for (;;)
       {
-        TPLogUtil.e(TPPlayer.access$700(this.this$0), "onError e=" + localException.getMessage());
+        TPPlayer.access$700(this.this$0).printException(localException);
         j = paramInt1;
         i = paramInt2;
       }
     }
     TPPlayer.access$800(this.this$0, j, i);
-    TPLogUtil.i(TPPlayer.access$700(this.this$0), "onError errorTypeReal=" + j + ", errorCodeReal=" + i);
+    TPPlayer.access$700(this.this$0).info("onError errorTypeReal=" + j + ", errorCodeReal=" + i);
     localObject = new TPThreadSwitchCommons.TPSwitchCommonParams();
     ((TPThreadSwitchCommons.TPSwitchCommonParams)localObject).arg1 = paramLong1;
     ((TPThreadSwitchCommons.TPSwitchCommonParams)localObject).arg2 = paramLong2;
@@ -227,6 +243,17 @@ class TPPlayer$InnerPlayerListener
     }
   }
   
+  public void onQuicDownloadStatusUpdate(String paramString)
+  {
+    TPLogUtil.i(TPPlayer.access$1300(this.this$0), "onQuicDownloadStatusUpdate, info:" + paramString);
+    TPPlayer.access$1100(this.this$0).onQuicDownloadStatusUpdate(paramString);
+  }
+  
+  public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return TPPlayer.access$1100(this.this$0).onReadData(paramInt, paramString, paramLong1, paramLong2);
+  }
+  
   public void onSeekComplete()
   {
     TPPlayer.access$900(this.this$0);
@@ -234,9 +261,19 @@ class TPPlayer$InnerPlayerListener
     TPPlayer.access$300(this.this$0, 263, 0, 0, null);
   }
   
+  public int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return TPPlayer.access$1100(this.this$0).onStartReadData(paramInt, paramString, paramLong1, paramLong2);
+  }
+  
   public void onStateChange(int paramInt1, int paramInt2)
   {
     TPPlayer.access$300(this.this$0, 277, paramInt1, paramInt2, null);
+  }
+  
+  public int onStopReadData(int paramInt1, String paramString, int paramInt2)
+  {
+    return TPPlayer.access$1100(this.this$0).onStopReadData(paramInt1, paramString, paramInt2);
   }
   
   public void onSubtitleData(TPSubtitleData paramTPSubtitleData)
@@ -276,7 +313,7 @@ class TPPlayer$InnerPlayerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer.InnerPlayerListener
  * JD-Core Version:    0.7.0.1
  */

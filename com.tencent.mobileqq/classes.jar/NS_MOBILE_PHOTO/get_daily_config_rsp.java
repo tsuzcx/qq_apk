@@ -9,10 +9,10 @@ public final class get_daily_config_rsp
 {
   static daily_config_eventcard cache_eventCard_conf = new daily_config_eventcard();
   static daily_recommend_status cache_recommend_status = new daily_recommend_status();
-  public daily_config_eventcard eventCard_conf;
-  public daily_recommend_status recommend_status;
+  public daily_config_eventcard eventCard_conf = null;
+  public daily_recommend_status recommend_status = null;
   public boolean remind_upload_on = true;
-  public long uin;
+  public long uin = 0L;
   
   public get_daily_config_rsp() {}
   

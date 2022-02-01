@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +11,8 @@ public class RichProto$RichProtoReq
   public int commandId;
   public byte[] extention;
   public String protoKey;
-  public ProtoReqManager.ProtoReq protoReq;
-  public ProtoReqManager protoReqMgr;
+  public ProtoReqManagerImpl.ProtoReq protoReq;
+  public IProtoReqManager protoReqMgr;
   public List<RichProto.RichProtoReq.ReqCommon> reqs = new ArrayList();
   RichProto.RichProtoResp resp = new RichProto.RichProtoResp();
   

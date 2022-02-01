@@ -11,17 +11,17 @@ public final class event_card_type
 {
   static Map<String, String> cache_element;
   static int cache_type = 0;
-  public int coverHeight;
+  public int coverHeight = 0;
   public String coverUrl = "";
-  public int coverWidth;
-  public Map<String, String> element;
+  public int coverWidth = 0;
+  public Map<String, String> element = null;
   public String h5Url = "";
-  public int headHeight;
+  public int headHeight = 0;
   public String headUrl = "";
-  public int headWidth;
+  public int headWidth = 0;
   public String subtitle = "";
   public String summery = "";
-  public int type;
+  public int type = 0;
   
   static
   {

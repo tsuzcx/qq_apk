@@ -23,13 +23,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.AnimationUtils;
-import bnrh;
-import bntb;
-import bntd;
-import bnte;
-import bntm;
-import bntn;
 import com.tencent.mobileqq.R.styleable;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -46,9 +41,9 @@ public class AESlidingUpPanelLayout
   private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private View jdField_a_of_type_AndroidViewView;
-  private bntm jdField_a_of_type_Bntm = new bntm();
-  private final bntn jdField_a_of_type_Bntn;
-  private final List<bnte> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private ScrollableViewHelper jdField_a_of_type_DovComQqImAeeditorLyricInteractionScrollableViewHelper = new ScrollableViewHelper();
+  private final ViewDragHelper jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper;
+  private final List<AESlidingUpPanelLayout.PanelSlideListener> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 1.0F;
   private int jdField_b_of_type_Int = 0;
@@ -69,7 +64,7 @@ public class AESlidingUpPanelLayout
   private boolean jdField_e_of_type_Boolean;
   private float jdField_f_of_type_Float;
   private int jdField_f_of_type_Int = -1;
-  private boolean jdField_f_of_type_Boolean;
+  private boolean jdField_f_of_type_Boolean = false;
   private int jdField_g_of_type_Int;
   private boolean jdField_g_of_type_Boolean = true;
   private int h;
@@ -90,7 +85,7 @@ public class AESlidingUpPanelLayout
     if (isInEditMode())
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-      this.jdField_a_of_type_Bntn = null;
+      this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper = null;
       return;
     }
     TypedArray localTypedArray;
@@ -122,14 +117,14 @@ public class AESlidingUpPanelLayout
         this.jdField_b_of_type_DovComQqImAeeditorLyricInteractionAESlidingUpPanelLayout$PanelState = AESlidingUpPanelLayout.PanelState.values()[localTypedArray.getInt(5, jdField_a_of_type_DovComQqImAeeditorLyricInteractionAESlidingUpPanelLayout$PanelState.ordinal())];
         paramInt = localTypedArray.getResourceId(9, -1);
         if (paramInt == -1) {
-          break label540;
+          break label545;
         }
         paramAttributeSet = AnimationUtils.loadInterpolator(paramContext, paramInt);
       }
       catch (Throwable paramAttributeSet)
       {
         float f1;
-        bnrh.a("SlidingUpPanelLayout", paramAttributeSet);
+        AEQLog.a("SlidingUpPanelLayout", paramAttributeSet);
         localTypedArray.recycle();
         paramAttributeSet = null;
         continue;
@@ -152,19 +147,19 @@ public class AESlidingUpPanelLayout
       {
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837909);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837933);
           setWillNotDraw(false);
-          this.jdField_a_of_type_Bntn = bntn.a(this, 0.5F, paramAttributeSet, new bntd(this, null));
-          this.jdField_a_of_type_Bntn.a(this.jdField_a_of_type_Int * f1);
+          this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper = ViewDragHelper.a(this, 0.5F, paramAttributeSet, new AESlidingUpPanelLayout.DragHelperCallback(this, null));
+          this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a(this.jdField_a_of_type_Int * f1);
           this.jdField_e_of_type_Boolean = true;
           return;
         }
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837934);
         continue;
       }
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
       continue;
-      label540:
+      label545:
       paramAttributeSet = null;
       continue;
       paramAttributeSet = null;
@@ -303,7 +298,7 @@ public class AESlidingUpPanelLayout
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((bnte)localIterator.next()).a(paramView, this.jdField_a_of_type_Float);
+      ((AESlidingUpPanelLayout.PanelSlideListener)localIterator.next()).a(paramView, this.jdField_a_of_type_Float);
     }
   }
   
@@ -311,15 +306,15 @@ public class AESlidingUpPanelLayout
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((bnte)localIterator.next()).a(paramView, paramPanelState1, paramPanelState2);
+      ((AESlidingUpPanelLayout.PanelSlideListener)localIterator.next()).a(paramView, paramPanelState1, paramPanelState2);
     }
     sendAccessibilityEvent(32);
   }
   
-  public void a(bnte parambnte)
+  public void a(AESlidingUpPanelLayout.PanelSlideListener paramPanelSlideListener)
   {
-    if (parambnte != null) {
-      this.jdField_a_of_type_JavaUtilList.add(parambnte);
+    if (paramPanelSlideListener != null) {
+      this.jdField_a_of_type_JavaUtilList.add(paramPanelSlideListener);
     }
   }
   
@@ -335,7 +330,7 @@ public class AESlidingUpPanelLayout
     {
       return false;
       paramInt = a(paramFloat);
-    } while (!this.jdField_a_of_type_Bntn.a(this.jdField_c_of_type_AndroidViewView, this.jdField_c_of_type_AndroidViewView.getLeft(), paramInt));
+    } while (!this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a(this.jdField_c_of_type_AndroidViewView, this.jdField_c_of_type_AndroidViewView.getLeft(), paramInt));
     c();
     ViewCompat.postInvalidateOnAnimation(this);
     return true;
@@ -351,7 +346,7 @@ public class AESlidingUpPanelLayout
     return i;
   }
   
-  public void b()
+  void b()
   {
     int i1 = 0;
     if (getChildCount() == 0) {
@@ -406,7 +401,7 @@ public class AESlidingUpPanelLayout
     }
   }
   
-  public void c()
+  void c()
   {
     int j = getChildCount();
     int i = 0;
@@ -420,17 +415,17 @@ public class AESlidingUpPanelLayout
     }
   }
   
-  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return ((paramLayoutParams instanceof AESlidingUpPanelLayout.LayoutParams)) && (super.checkLayoutParams(paramLayoutParams));
   }
   
   public void computeScroll()
   {
-    if ((this.jdField_a_of_type_Bntn != null) && (this.jdField_a_of_type_Bntn.a(true)))
+    if ((this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper != null) && (this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a(true)))
     {
       if (!isEnabled()) {
-        this.jdField_a_of_type_Bntn.b();
+        this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.b();
       }
     }
     else {
@@ -445,7 +440,7 @@ public class AESlidingUpPanelLayout
     int i = MotionEventCompat.getActionMasked(paramMotionEvent);
     if ((!isEnabled()) || (!a()) || ((this.jdField_d_of_type_Boolean) && (i != 0)))
     {
-      this.jdField_a_of_type_Bntn.b();
+      this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.b();
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     float f1 = paramMotionEvent.getX();
@@ -475,7 +470,7 @@ public class AESlidingUpPanelLayout
           i = 1;
         }
         while (i * f4 > 0.0F) {
-          if (this.jdField_a_of_type_Bntm.a(this.jdField_b_of_type_AndroidViewView, this.jdField_a_of_type_Boolean) > 0)
+          if (this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionScrollableViewHelper.a(this.jdField_b_of_type_AndroidViewView, this.jdField_a_of_type_Boolean) > 0)
           {
             this.jdField_f_of_type_Boolean = true;
             return super.dispatchTouchEvent(paramMotionEvent);
@@ -506,9 +501,9 @@ public class AESlidingUpPanelLayout
             this.jdField_f_of_type_Boolean = false;
             return onTouchEvent(paramMotionEvent);
           }
-          if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Bntn.a()))
+          if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a()))
           {
-            this.jdField_a_of_type_Bntn.a();
+            this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a();
             paramMotionEvent.setAction(0);
           }
           this.jdField_f_of_type_Boolean = true;
@@ -517,7 +512,7 @@ public class AESlidingUpPanelLayout
       }
       else if ((i == 1) && (this.jdField_f_of_type_Boolean))
       {
-        this.jdField_a_of_type_Bntn.a(0);
+        this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a(0);
       }
     }
   }
@@ -546,7 +541,7 @@ public class AESlidingUpPanelLayout
     }
   }
   
-  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     int i = paramCanvas.save();
     boolean bool2;
@@ -588,7 +583,7 @@ public class AESlidingUpPanelLayout
     }
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     return new AESlidingUpPanelLayout.LayoutParams();
   }
@@ -598,7 +593,7 @@ public class AESlidingUpPanelLayout
     return new AESlidingUpPanelLayout.LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     if ((paramLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
       return new AESlidingUpPanelLayout.LayoutParams((ViewGroup.MarginLayoutParams)paramLayoutParams);
@@ -606,19 +601,19 @@ public class AESlidingUpPanelLayout
     return new AESlidingUpPanelLayout.LayoutParams(paramLayoutParams);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_g_of_type_Boolean = true;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_g_of_type_Boolean = true;
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
     if (this.jdField_f_of_type_Int != -1) {
@@ -633,7 +628,7 @@ public class AESlidingUpPanelLayout
   {
     if ((this.jdField_f_of_type_Boolean) || (!a()))
     {
-      this.jdField_a_of_type_Bntn.b();
+      this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.b();
       return false;
     }
     int i = MotionEventCompat.getActionMasked(paramMotionEvent);
@@ -641,7 +636,7 @@ public class AESlidingUpPanelLayout
     float f2 = paramMotionEvent.getY();
     float f3 = Math.abs(f1 - this.jdField_e_of_type_Float);
     float f4 = Math.abs(f2 - this.jdField_f_of_type_Float);
-    int j = this.jdField_a_of_type_Bntn.b();
+    int j = this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.b();
     switch (i)
     {
     }
@@ -651,21 +646,21 @@ public class AESlidingUpPanelLayout
       {
         do
         {
-          return this.jdField_a_of_type_Bntn.a(paramMotionEvent);
+          return this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a(paramMotionEvent);
           this.jdField_d_of_type_Boolean = false;
           this.jdField_e_of_type_Float = f1;
           this.jdField_f_of_type_Float = f2;
         } while (a(this.jdField_a_of_type_AndroidViewView, (int)f1, (int)f2));
-        this.jdField_a_of_type_Bntn.a();
+        this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a();
         this.jdField_d_of_type_Boolean = true;
         return false;
       } while ((f4 <= j) || (f3 <= f4));
-      this.jdField_a_of_type_Bntn.a();
+      this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a();
       this.jdField_d_of_type_Boolean = true;
       return false;
-      if (this.jdField_a_of_type_Bntn.a())
+      if (this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a())
       {
-        this.jdField_a_of_type_Bntn.a(paramMotionEvent);
+        this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a(paramMotionEvent);
         return true;
       }
     } while ((f4 > j) || (f3 > j) || (this.jdField_a_of_type_Float <= 0.0F) || (a(this.jdField_c_of_type_AndroidViewView, (int)this.jdField_e_of_type_Float, (int)this.jdField_f_of_type_Float)) || (this.jdField_a_of_type_AndroidViewView$OnClickListener == null));
@@ -674,7 +669,7 @@ public class AESlidingUpPanelLayout
     return true;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = getPaddingLeft();
     paramInt4 = getPaddingTop();
@@ -682,7 +677,7 @@ public class AESlidingUpPanelLayout
     if (this.jdField_g_of_type_Boolean) {}
     label71:
     View localView;
-    switch (bntc.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_DovComQqImAeeditorLyricInteractionAESlidingUpPanelLayout$PanelState.ordinal()])
+    switch (AESlidingUpPanelLayout.2.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_DovComQqImAeeditorLyricInteractionAESlidingUpPanelLayout$PanelState.ordinal()])
     {
     default: 
       this.jdField_a_of_type_Float = 0.0F;
@@ -746,7 +741,7 @@ public class AESlidingUpPanelLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getMode(paramInt1);
     int m = View.MeasureSpec.getSize(paramInt1);
@@ -883,7 +878,7 @@ public class AESlidingUpPanelLayout
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramInt2 != paramInt4) {
@@ -902,7 +897,7 @@ public class AESlidingUpPanelLayout
       return bool;
       try
       {
-        this.jdField_a_of_type_Bntn.a(paramMotionEvent);
+        this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a(paramMotionEvent);
         paramMotionEvent = this.jdField_b_of_type_DovComQqImAeeditorLyricInteractionAESlidingUpPanelLayout$PanelState;
         AESlidingUpPanelLayout.PanelState localPanelState = AESlidingUpPanelLayout.PanelState.COLLAPSED;
         if (paramMotionEvent != localPanelState) {
@@ -941,7 +936,7 @@ public class AESlidingUpPanelLayout
       this.jdField_a_of_type_AndroidViewView.setClickable(true);
       this.jdField_a_of_type_AndroidViewView.setFocusable(false);
       this.jdField_a_of_type_AndroidViewView.setFocusableInTouchMode(false);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bntb(this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new AESlidingUpPanelLayout.1(this));
     }
   }
   
@@ -983,10 +978,10 @@ public class AESlidingUpPanelLayout
   
   public void setPanelState(AESlidingUpPanelLayout.PanelState paramPanelState)
   {
-    if (this.jdField_a_of_type_Bntn.a() == 2)
+    if (this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.a() == 2)
     {
       Log.d("SlidingUpPanelLayout", "View is settling. Aborting animation.");
-      this.jdField_a_of_type_Bntn.b();
+      this.jdField_a_of_type_DovComQqImAeeditorLyricInteractionViewDragHelper.b();
     }
     if ((paramPanelState == null) || (paramPanelState == AESlidingUpPanelLayout.PanelState.DRAGGING)) {
       throw new IllegalArgumentException("Panel state cannot be null or DRAGGING.");
@@ -1004,7 +999,7 @@ public class AESlidingUpPanelLayout
       this.jdField_c_of_type_AndroidViewView.setVisibility(0);
       requestLayout();
     }
-    switch (bntc.jdField_a_of_type_ArrayOfInt[paramPanelState.ordinal()])
+    switch (AESlidingUpPanelLayout.2.jdField_a_of_type_ArrayOfInt[paramPanelState.ordinal()])
     {
     default: 
       return;
@@ -1042,7 +1037,7 @@ public class AESlidingUpPanelLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout
  * JD-Core Version:    0.7.0.1
  */

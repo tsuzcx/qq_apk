@@ -2,10 +2,10 @@ package com.tencent.mobileqq.app.notification.struct;
 
 import java.util.ArrayList;
 
-public final class ProcessorFactory$1
+final class ProcessorFactory$1
   extends ArrayList<Integer>
 {
-  public ProcessorFactory$1()
+  ProcessorFactory$1()
   {
     add(Integer.valueOf(1009));
     add(Integer.valueOf(1001));
@@ -27,7 +27,7 @@ public final class ProcessorFactory$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.ProcessorFactory.1
  * JD-Core Version:    0.7.0.1
  */

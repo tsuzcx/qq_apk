@@ -1,6 +1,5 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,7 +26,7 @@ public class MX3FlowNewCameraActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.MX3FlowNewCameraActivity
  * JD-Core Version:    0.7.0.1
  */

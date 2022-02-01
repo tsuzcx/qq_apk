@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.musicgene;
 
-import axku;
 import java.util.TimerTask;
 
-public class MusicGeneWebViewPlugin$6
+class MusicGeneWebViewPlugin$6
   extends TimerTask
 {
-  public MusicGeneWebViewPlugin$6(axku paramaxku) {}
+  MusicGeneWebViewPlugin$6(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
   public void run()
   {
-    axku.a(this.this$0);
+    MusicGeneWebViewPlugin.a(this.this$0);
   }
 }
 

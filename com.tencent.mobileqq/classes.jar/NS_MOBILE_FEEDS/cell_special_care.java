@@ -10,17 +10,17 @@ public final class cell_special_care
   static s_picurl cache_icon_after_click = new s_picurl();
   static s_picurl cache_icon_before_click;
   static s_user cache_userinfo = new s_user();
-  public int comment_count;
+  public int comment_count = 0;
   public String desc_after_click = "";
   public String desc_before_click = "";
-  public s_picurl icon_after_click;
-  public s_picurl icon_before_click;
-  public int intimacy;
-  public int like_count;
-  public int rankpercent;
+  public s_picurl icon_after_click = null;
+  public s_picurl icon_before_click = null;
+  public int intimacy = 0;
+  public int like_count = 0;
+  public int rankpercent = 0;
   public String relation_content = "";
-  public s_user userinfo;
-  public int visit_count;
+  public s_user userinfo = null;
+  public int visit_count = 0;
   
   static
   {

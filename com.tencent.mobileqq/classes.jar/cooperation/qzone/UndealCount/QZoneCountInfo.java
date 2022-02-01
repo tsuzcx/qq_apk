@@ -9,15 +9,16 @@ import java.util.HashMap;
 
 public class QZoneCountInfo
 {
-  public long cTime;
+  public String actPageAttach = "";
+  public long cTime = 0L;
   public int countId;
   public boolean existDL;
   public ArrayList<QZoneCountUserInfo> friendList;
   public String friendMsg;
   public ArrayList<Long> friendUinList;
-  public boolean hasShow;
-  public int iControl;
-  public int iShowLevel;
+  public boolean hasShow = false;
+  public int iControl = 0;
+  public int iShowLevel = 0;
   public String iconUrl;
   public String pushMesssage = "";
   public String reportValue;
@@ -25,7 +26,7 @@ public class QZoneCountInfo
   public String strShowMsg;
   public int totalFriendUnread;
   public String trace_info;
-  public long uCount;
+  public long uCount = 0L;
   
   public QZoneCountInfo()
   {
@@ -57,6 +58,7 @@ public class QZoneCountInfo
     this.trace_info = paramQZoneCountInfo.trace_info;
     this.iconUrl = paramQZoneCountInfo.iconUrl;
     this.countId = paramQZoneCountInfo.countId;
+    this.actPageAttach = paramQZoneCountInfo.actPageAttach;
     this.strShowMsg = paramQZoneCountInfo.strShowMsg;
     this.reportValue = paramQZoneCountInfo.reportValue;
     this.cTime = paramQZoneCountInfo.cTime;
@@ -128,13 +130,14 @@ public class QZoneCountInfo
         localQZoneCountInfo.cTime = paramCursor.getLong(paramCursor.getColumnIndex("cTime"));
         localQZoneCountInfo.iShowLevel = paramCursor.getInt(paramCursor.getColumnIndex("iShowLevel"));
         if (paramCursor.getInt(paramCursor.getColumnIndex("hasShow")) != 1) {
-          break label526;
+          break label545;
         }
       }
-      label526:
+      label545:
       for (boolean bool = true;; bool = false)
       {
         localQZoneCountInfo.hasShow = bool;
+        localQZoneCountInfo.actPageAttach = paramCursor.getString(paramCursor.getColumnIndex("actPageAttach"));
         localHashMap.put(Integer.valueOf(j), localQZoneCountInfo);
         break;
         bool = false;
@@ -175,13 +178,14 @@ public class QZoneCountInfo
       localContentValues.put("cTime", Long.valueOf(this.cTime));
       localContentValues.put("iShowLevel", Integer.valueOf(this.iShowLevel));
       if (!this.hasShow) {
-        break label269;
+        break label280;
       }
     }
-    label269:
+    label280:
     for (int i = j;; i = 0)
     {
       localContentValues.put("hasShow", Integer.valueOf(i));
+      localContentValues.put("actPageAttach", this.actPageAttach);
       return localContentValues;
       i = 0;
       break;
@@ -191,7 +195,7 @@ public class QZoneCountInfo
   public boolean equals(QZoneCountInfo paramQZoneCountInfo)
   {
     if (paramQZoneCountInfo == null) {}
-    while (((this.trace_info != null) && (!this.trace_info.equals(paramQZoneCountInfo.trace_info))) || ((paramQZoneCountInfo.trace_info != null) && (!paramQZoneCountInfo.trace_info.equals(this.trace_info))) || ((this.pushMesssage != null) && (!this.pushMesssage.equals(paramQZoneCountInfo.pushMesssage))) || ((this.pushMesssage == null) && (paramQZoneCountInfo.pushMesssage != null)) || ((this.schema != null) && (!this.schema.equals(paramQZoneCountInfo.schema))) || ((this.schema == null) && (paramQZoneCountInfo.schema != null)) || (this.countId != paramQZoneCountInfo.countId) || (!String.valueOf(this.iconUrl).equals(String.valueOf(paramQZoneCountInfo.iconUrl))) || (!String.valueOf(this.strShowMsg).equals(String.valueOf(paramQZoneCountInfo.strShowMsg))) || (!String.valueOf(this.reportValue).equals(String.valueOf(this.reportValue))) || (this.cTime != paramQZoneCountInfo.cTime) || (this.uCount != paramQZoneCountInfo.uCount) || (!this.friendList.equals(paramQZoneCountInfo.friendList))) {
+    while (((this.trace_info != null) && (!this.trace_info.equals(paramQZoneCountInfo.trace_info))) || ((paramQZoneCountInfo.trace_info != null) && (!paramQZoneCountInfo.trace_info.equals(this.trace_info))) || ((this.pushMesssage != null) && (!this.pushMesssage.equals(paramQZoneCountInfo.pushMesssage))) || ((this.pushMesssage == null) && (paramQZoneCountInfo.pushMesssage != null)) || ((this.schema != null) && (!this.schema.equals(paramQZoneCountInfo.schema))) || ((this.schema == null) && (paramQZoneCountInfo.schema != null)) || (this.countId != paramQZoneCountInfo.countId) || (!String.valueOf(this.actPageAttach).equals(String.valueOf(paramQZoneCountInfo.actPageAttach))) || (!String.valueOf(this.iconUrl).equals(String.valueOf(paramQZoneCountInfo.iconUrl))) || (!String.valueOf(this.strShowMsg).equals(String.valueOf(paramQZoneCountInfo.strShowMsg))) || (!String.valueOf(this.reportValue).equals(String.valueOf(this.reportValue))) || (this.cTime != paramQZoneCountInfo.cTime) || (this.uCount != paramQZoneCountInfo.uCount) || (!this.friendList.equals(paramQZoneCountInfo.friendList))) {
       return false;
     }
     return true;
@@ -199,7 +203,7 @@ public class QZoneCountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.UndealCount.QZoneCountInfo
  * JD-Core Version:    0.7.0.1
  */

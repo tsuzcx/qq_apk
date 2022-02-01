@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GPSPoint
   extends JceStruct
 {
-  public int alt;
+  public int alt = 0;
   public int lat = 900000000;
   public int lon = 900000000;
   

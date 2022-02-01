@@ -8,7 +8,7 @@ public final class SetRichSigRes
   extends JceStruct
 {
   public byte cResult = -1;
-  public long dwTime;
+  public long dwTime = 0L;
   
   public SetRichSigRes() {}
   

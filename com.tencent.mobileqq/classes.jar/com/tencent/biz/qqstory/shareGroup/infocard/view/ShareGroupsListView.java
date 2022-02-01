@@ -2,14 +2,12 @@ package com.tencent.biz.qqstory.shareGroup.infocard.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import xsw;
-import xtg;
 
 public class ShareGroupsListView
   extends MyMemoriesListView
 {
-  public xsw a;
-  xtg a;
+  public ShareGroupsListAdapter a;
+  ShareGroupsListView.UIEventListener a;
   
   public ShareGroupsListView(Context paramContext)
   {
@@ -28,22 +26,22 @@ public class ShareGroupsListView
   
   protected void a() {}
   
-  public void setListAdapter(xsw paramxsw)
+  public void setListAdapter(ShareGroupsListAdapter paramShareGroupsListAdapter)
   {
-    super.setListAdapter(paramxsw);
-    this.jdField_a_of_type_Xsw = paramxsw;
+    super.setListAdapter(paramShareGroupsListAdapter);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter = paramShareGroupsListAdapter;
   }
   
-  public void setUIEventListener(xtg paramxtg)
+  public void setUIEventListener(ShareGroupsListView.UIEventListener paramUIEventListener)
   {
-    this.jdField_a_of_type_Xtg = paramxtg;
-    this.jdField_a_of_type_Xsw.a(paramxtg);
-    super.setListener(paramxtg, paramxtg);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView$UIEventListener = paramUIEventListener;
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.a(paramUIEventListener);
+    super.setListener(paramUIEventListener, paramUIEventListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView
  * JD-Core Version:    0.7.0.1
  */

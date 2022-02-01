@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.text.TextUtils;
-import bdka;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.statistics.DcReportUtil;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -32,7 +32,7 @@ class QWalletCommonJsPlugin$4
           str3 = "";
           l = 0L;
         }
-        bdka.a(null, "dc01021", "" + i + '|' + str3 + '|' + str1 + '|' + "2|" + this.val$appid + "|||" + l, false);
+        DcReportUtil.a(null, "dc01021", "" + i + '|' + str3 + '|' + str1 + '|' + "2|" + this.val$appid + "|||" + l, false);
         return;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -45,7 +45,7 @@ class QWalletCommonJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

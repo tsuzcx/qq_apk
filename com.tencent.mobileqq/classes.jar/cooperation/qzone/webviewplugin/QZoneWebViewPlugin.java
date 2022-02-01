@@ -3,12 +3,12 @@ package cooperation.qzone.webviewplugin;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bieh;
-import bifw;
-import bifx;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.MultiNameSpacePluginCompact;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.swift.WebViewPluginContainer;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QzoneStringMatcher;
 import cooperation.qzone.webviewplugin.famous.QzoneFamousShareJsPlugin;
@@ -20,19 +20,19 @@ import org.json.JSONObject;
 
 public class QZoneWebViewPlugin
   extends WebViewPlugin
-  implements bieh
+  implements MultiNameSpacePluginCompact
 {
   public static final int RESULT_OK = -1;
   private static final String TAG = "QZoneWebViewPlugin";
   private QzoneInternalWebViewPlugin[] insidePlugins;
   private boolean needClearHistory;
   
-  public static int generateRequestCode(WebViewPlugin paramWebViewPlugin, bifw parambifw, int paramInt)
+  public static int generateRequestCode(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, int paramInt)
   {
-    parambifw = parambifw.a(parambifw.a());
+    paramPluginRuntime = paramPluginRuntime.a(paramPluginRuntime.a());
     int i = paramInt;
-    if ((parambifw instanceof bifx)) {
-      i = ((bifx)parambifw).switchRequestCode(paramWebViewPlugin, (byte)paramInt);
+    if ((paramPluginRuntime instanceof WebViewPluginContainer)) {
+      i = ((WebViewPluginContainer)paramPluginRuntime).switchRequestCode(paramWebViewPlugin, (byte)paramInt);
     }
     return i;
   }
@@ -88,6 +88,25 @@ public class QZoneWebViewPlugin
   public String[] getMultiNameSpace()
   {
     return new String[] { "Qzone", "qzDynamicAlbum", "QZImagePicker", "qzlive", "qqexplive", "qzui", "QzoneUpload", "QzoneAudio", "Qzone", "checkin" };
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    if (("Qzone".equals(paramString)) || ("qzDynamicAlbum".equals(paramString)) || ("QZImagePicker".equals(paramString)) || ("checkin".equals(paramString)) || ("qzlive".equals(paramString))) {
+      return 8589934591L;
+    }
+    if ("gdtReportPlugin".equals(paramString)) {
+      return 2L;
+    }
+    return super.getWebViewEventByNameSpace(paramString);
+  }
+  
+  public long getWebViewSchemaByNameSpace(String paramString)
+  {
+    if (("Qzone".equals(paramString)) || ("qzDynamicAlbum".equals(paramString)) || ("QZImagePicker".equals(paramString)) || ("checkin".equals(paramString)) || ("qzlive".equals(paramString))) {
+      return 4294967295L;
+    }
+    return super.getWebViewSchemaByNameSpace(paramString);
   }
   
   public Object handleEvent(String paramString, long paramLong)
@@ -225,7 +244,7 @@ public class QZoneWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

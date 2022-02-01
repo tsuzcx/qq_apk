@@ -15,8 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aynf;
-import ayng;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 
@@ -27,11 +25,11 @@ public class AvatarWallViewPager
   protected int a;
   protected Context a;
   protected Drawable a;
-  public Handler a;
+  protected Handler a;
   protected LinearLayout.LayoutParams a;
   protected LinearLayout a;
-  public AvatarWallPagerAdapter a;
-  public AvatarWallViewPager.RollViewPager a;
+  protected AvatarWallPagerAdapter a;
+  protected AvatarWallViewPager.RollViewPager a;
   protected AvatarWallViewPager.RollerChangeListener a;
   protected boolean a;
   protected View[] a;
@@ -43,10 +41,10 @@ public class AvatarWallViewPager
   protected int c;
   protected boolean c;
   protected float d;
-  public int d = this.jdField_b_of_type_Int;
+  protected int d;
   protected boolean d;
-  public int e = this.jdField_c_of_type_Int;
-  public int f;
+  protected int e = this.jdField_c_of_type_Int;
+  protected int f;
   
   public AvatarWallViewPager(Context paramContext)
   {
@@ -56,10 +54,14 @@ public class AvatarWallViewPager
   public AvatarWallViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_Int = 500;
     this.jdField_c_of_type_Int = 4000;
-    this.jdField_a_of_type_AndroidOsHandler = new aynf(this, Looper.getMainLooper());
+    this.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler = new AvatarWallViewPager.1(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     c();
   }
@@ -69,7 +71,7 @@ public class AvatarWallViewPager
     View localView = new View(this.jdField_a_of_type_AndroidContentContext);
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
     {
-      int i = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      int i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 7.0F);
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(i, i);
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = i;
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = i;
@@ -77,7 +79,7 @@ public class AvatarWallViewPager
     if (paramBoolean)
     {
       if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.getTroopLevelBgDrawable(getResources(), Color.parseColor("#CC12B7F5"), getResources().getDrawable(2130843783));
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(getResources(), Color.parseColor("#CC12B7F5"), getResources().getDrawable(2130843954));
       }
       localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
       if (!paramBoolean) {
@@ -92,7 +94,7 @@ public class AvatarWallViewPager
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
         break;
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.getTroopLevelBgDrawable(getResources(), Color.parseColor("#66FFFFFF"), getResources().getDrawable(2130843783));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(getResources(), Color.parseColor("#66FFFFFF"), getResources().getDrawable(2130843954));
       break;
     }
   }
@@ -116,7 +118,7 @@ public class AvatarWallViewPager
   {
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(12);
-    localLayoutParams.bottomMargin = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+    localLayoutParams.bottomMargin = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
     return localLayoutParams;
   }
   
@@ -156,7 +158,7 @@ public class AvatarWallViewPager
     AvatarWallViewPager.RollerChangeListener localRollerChangeListener = new AvatarWallViewPager.RollerChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollerChangeListener = localRollerChangeListener;
     localRollViewPager.setOnPageChangeListener(localRollerChangeListener);
-    new ayng(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
+    new AvatarWallViewPager.RollScroller(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
   }
   
   protected void d()
@@ -194,7 +196,7 @@ public class AvatarWallViewPager
     this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollerChangeListener.jdField_a_of_type_Int = 0;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_Boolean = true;
@@ -228,7 +230,7 @@ public class AvatarWallViewPager
   public void setScrollInterpolator(Interpolator paramInterpolator)
   {
     if (paramInterpolator != null) {
-      new ayng(this, this.jdField_a_of_type_AndroidContentContext, paramInterpolator).a();
+      new AvatarWallViewPager.RollScroller(this, this.jdField_a_of_type_AndroidContentContext, paramInterpolator).a();
     }
   }
 }

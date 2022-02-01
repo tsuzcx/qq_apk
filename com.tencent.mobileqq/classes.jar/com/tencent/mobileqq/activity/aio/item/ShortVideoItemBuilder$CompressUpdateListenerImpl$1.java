@@ -1,35 +1,37 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahgj;
-import ahgk;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.customviews.VideoProgressView;
 import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ShortVideoItemBuilder$CompressUpdateListenerImpl$1
+class ShortVideoItemBuilder$CompressUpdateListenerImpl$1
   implements Runnable
 {
-  public ShortVideoItemBuilder$CompressUpdateListenerImpl$1(ahgj paramahgj, MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean, ahgk paramahgk) {}
+  ShortVideoItemBuilder$CompressUpdateListenerImpl$1(ShortVideoItemBuilder.CompressUpdateListenerImpl paramCompressUpdateListenerImpl, MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean, ShortVideoItemBuilder.Holder paramHolder) {}
   
   public void run()
   {
     String str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Ahgk.a.setDrawStatus(1);
-      this.jdField_a_of_type_Ahgk.a.setAnimProgress(anvx.a(2131713533), str);
-      this.jdField_a_of_type_Ahgk.a.e = 10;
-      this.jdField_a_of_type_Ahgk.a.setVideoCompressStatus(true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setDrawStatus(1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoItemBuilder", 2, "<MessageProgressView> CompressUpdateListenerImpl , onLaunch, run,  keyStr = " + str);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setAnimProgress(HardCodeUtil.a(2131714029), str);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.e = 10;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setVideoCompressStatus(true);
       return;
     }
-    this.jdField_a_of_type_Ahgk.a.a(str, 1.0F);
-    this.jdField_a_of_type_Ahgk.a.setAnimProgress(10, str);
-    this.jdField_a_of_type_Ahgk.a.setVideoCompressStatus(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.a(str, 1.0F);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setAnimProgress(10, str);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setVideoCompressStatus(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.CompressUpdateListenerImpl.1
  * JD-Core Version:    0.7.0.1
  */

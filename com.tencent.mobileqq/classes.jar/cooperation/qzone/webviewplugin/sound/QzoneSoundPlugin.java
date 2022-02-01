@@ -2,11 +2,11 @@ package cooperation.qzone.webviewplugin.sound;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import bifw;
 import com.tencent.component.network.DownloaderFactory;
 import com.tencent.component.network.downloader.Downloader;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.cache.QZoneFilePath;
@@ -231,7 +231,7 @@ public class QzoneSoundPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.sound.QzoneSoundPlugin
  * JD-Core Version:    0.7.0.1
  */

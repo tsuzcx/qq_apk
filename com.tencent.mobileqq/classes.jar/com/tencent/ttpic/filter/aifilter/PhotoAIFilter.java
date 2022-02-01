@@ -14,13 +14,13 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.facebeauty.FaceParam;
 import com.tencent.facebeauty.NormalizedFaceParam;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.encrypt.MD5Util;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.config.AdjustRealConfig.TYPE;
 import com.tencent.ttpic.openapi.offlineset.utils.FileOfflineUtil;
+import com.tencent.ttpic.openapi.util.AEStaticDetector;
 import com.tencent.ttpic.openapi.util.FaceDetectUtil;
 import com.tencent.ttpic.openapi.util.VideoTemplateParser;
 import com.tencent.ttpic.util.GsonUtils;
@@ -44,6 +44,7 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.light.device.LightDeviceUtils;
 
 public final class PhotoAIFilter
   extends AEChainI
@@ -543,7 +544,7 @@ public final class PhotoAIFilter
   
   private PhotoResult requestPhotoClassifyMulti(List<Bitmap> paramList, List<JSONArray> paramList1, ReportInfo paramReportInfo)
   {
-    if (!DeviceUtils.isNetworkAvailable(AEModule.getContext())) {
+    if (!LightDeviceUtils.isNetworkAvailable(AEModule.getContext())) {
       return null;
     }
     for (;;)
@@ -657,7 +658,7 @@ public final class PhotoAIFilter
   
   private PhotoResult requestPhotoClassifySingle(Bitmap paramBitmap, JSONArray paramJSONArray, ReportInfo paramReportInfo)
   {
-    if (!DeviceUtils.isNetworkAvailable(AEModule.getContext())) {
+    if (!LightDeviceUtils.isNetworkAvailable(AEModule.getContext())) {
       return null;
     }
     paramBitmap = BitmapUtils.getBase64FromBitmap(paramBitmap, 2, 90);
@@ -761,19 +762,7 @@ public final class PhotoAIFilter
   
   public final PTFaceAttr doFaceDetect(Bitmap paramBitmap)
   {
-    paramBitmap = FaceDetectUtil.detectFace(paramBitmap, 0.16666667163372D);
-    if (paramBitmap != null)
-    {
-      this.facePoints = paramBitmap.getAllFacePoints();
-      return paramBitmap;
-    }
-    this.facePoints = new ArrayList();
-    return paramBitmap;
-  }
-  
-  public final PTFaceAttr doFaceDetect(Bitmap paramBitmap, float paramFloat)
-  {
-    paramBitmap = FaceDetectUtil.detectFace(paramBitmap, paramFloat);
+    paramBitmap = AEStaticDetector.detectFace(paramBitmap);
     if (paramBitmap != null)
     {
       this.facePoints = paramBitmap.getAllFacePoints();
@@ -934,7 +923,7 @@ public final class PhotoAIFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.aifilter.PhotoAIFilter
  * JD-Core Version:    0.7.0.1
  */

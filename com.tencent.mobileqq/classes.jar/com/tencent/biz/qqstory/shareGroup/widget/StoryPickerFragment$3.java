@@ -1,0 +1,26 @@
+package com.tencent.biz.qqstory.shareGroup.widget;
+
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+
+class StoryPickerFragment$3
+  implements LoadingMoreHelper.OnLoadMoreListener
+{
+  StoryPickerFragment$3(StoryPickerFragment paramStoryPickerFragment) {}
+  
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a());
+    }
+    return true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment.3
+ * JD-Core Version:    0.7.0.1
+ */

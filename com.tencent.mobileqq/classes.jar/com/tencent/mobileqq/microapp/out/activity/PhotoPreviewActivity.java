@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.microapp.out.activity;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.app.BaseActivity;

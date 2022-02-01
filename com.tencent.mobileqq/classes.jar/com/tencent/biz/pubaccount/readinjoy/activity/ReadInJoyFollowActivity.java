@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
@@ -8,22 +7,21 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.Window;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import oqv;
-import otp;
-import sqp;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class ReadInJoyFollowActivity
   extends IphoneTitleBarActivity
 {
-  public oqv a;
+  protected ReadInJoyChannelViewController a = null;
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131376226);
-    this.a = new oqv(this);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131376619);
+    this.a = new ReadInJoyChannelViewController(this);
     this.a.a(70);
     this.a.b(0);
     this.a.a(localViewGroup);
@@ -49,13 +47,13 @@ public class ReadInJoyFollowActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    sqp.a().a(this);
+    VideoVolumeControl.a().a(this);
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2131560240);
+    setContentView(2131560312);
     getWindow().setBackgroundDrawable(null);
-    setClickableTitle("BB圈", new otp(this));
+    setClickableTitle("BB圈", new ReadInJoyFollowActivity.1(this));
     a();
     this.a.a();
     return true;
@@ -65,7 +63,7 @@ public class ReadInJoyFollowActivity
   {
     super.doOnDestroy();
     this.a.d();
-    sqp.a().b(this);
+    VideoVolumeControl.a().b(this);
   }
   
   public void doOnPause()
@@ -83,7 +81,7 @@ public class ReadInJoyFollowActivity
   public void doOnStart()
   {
     super.doOnStart();
-    bmhv.a(getAppRuntime());
+    ReadInJoyHelper.a(getAppRuntime());
     this.a.e();
   }
   
@@ -108,7 +106,7 @@ public class ReadInJoyFollowActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity
  * JD-Core Version:    0.7.0.1
  */

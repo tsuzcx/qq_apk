@@ -15,68 +15,23 @@ public class JsValueUtil
   
   public static Object convertJsValueString(String paramString)
   {
-    Object localObject4 = null;
-    Object localObject1;
+    String str = null;
     if ((paramString.startsWith("\"")) && (paramString.endsWith("\""))) {
-      localObject1 = paramString.substring(1, paramString.length() - 1);
+      str = paramString.substring(1, paramString.length() - 1);
     }
-    label124:
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return localObject1;
-            if ((!paramString.startsWith("{")) || (!paramString.endsWith("}"))) {
-              break label124;
-            }
-            try
-            {
-              localObject1 = new JSONObject(paramString);
-              paramString = (String)localObject1;
-            }
-            catch (JSONException localJSONException1)
-            {
-              for (;;)
-              {
-                Log.e("Utils", "unexpected json object notation " + paramString);
-                paramString = null;
-              }
-            }
-            localObject1 = localObject4;
-          } while (paramString == null);
-          localObject1 = localObject4;
-        } while (JSONObject.NULL.equals(paramString));
-        return convertJsonToMap(paramString, new HashMap());
-        if ((!paramString.startsWith("[")) || (!paramString.endsWith("]"))) {
-          break label202;
-        }
-        try
-        {
-          localObject2 = new JSONArray(paramString);
-          paramString = (String)localObject2;
-        }
-        catch (JSONException localJSONException2)
-        {
-          for (;;)
-          {
-            Object localObject2;
-            Log.e("Utils", "unexpected json array notation " + paramString);
-            paramString = null;
-          }
-        }
-        localObject2 = localObject4;
-      } while (paramString == null);
-      return putArray(paramString, new ArrayList());
+      return str;
+      if ((paramString.startsWith("{")) && (paramString.endsWith("}"))) {
+        return getMapObject(paramString);
+      }
+      if ((paramString.startsWith("[")) && (paramString.endsWith("]"))) {
+        return getArrayObject(paramString);
+      }
       if ((paramString.equals("true")) || (paramString.equals("false"))) {
         return Boolean.valueOf(paramString.equals("true"));
       }
-      Object localObject3 = localObject4;
     } while (paramString.equals("null"));
-    label202:
     if (paramString.matches("^-?\\d+"))
     {
       Logger.w("Utils", "javascript number not handled");
@@ -97,6 +52,56 @@ public class JsValueUtil
       }
     }
     return paramMap;
+  }
+  
+  private static Object getArrayObject(String paramString)
+  {
+    ArrayList localArrayList = null;
+    try
+    {
+      JSONArray localJSONArray = new JSONArray(paramString);
+      paramString = localJSONArray;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        Log.e("Utils", "unexpected json array notation " + paramString);
+        paramString = null;
+      }
+    }
+    if (paramString != null) {
+      localArrayList = putArray(paramString, new ArrayList());
+    }
+    return localArrayList;
+  }
+  
+  private static Object getMapObject(String paramString)
+  {
+    Object localObject2 = null;
+    try
+    {
+      localObject1 = new JSONObject(paramString);
+      paramString = (String)localObject1;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        Object localObject1;
+        Log.e("Utils", "unexpected json object notation " + paramString);
+        paramString = null;
+      }
+    }
+    localObject1 = localObject2;
+    if (paramString != null)
+    {
+      localObject1 = localObject2;
+      if (!JSONObject.NULL.equals(paramString)) {
+        localObject1 = convertJsonToMap(paramString, new HashMap());
+      }
+    }
+    return localObject1;
   }
   
   private static ArrayList putArray(JSONArray paramJSONArray, ArrayList paramArrayList)
@@ -228,7 +233,7 @@ public class JsValueUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.JsValueUtil
  * JD-Core Version:    0.7.0.1
  */

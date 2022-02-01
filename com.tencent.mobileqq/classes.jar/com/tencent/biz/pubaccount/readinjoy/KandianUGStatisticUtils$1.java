@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-public final class KandianUGStatisticUtils$1
+final class KandianUGStatisticUtils$1
   implements Runnable
 {
-  public KandianUGStatisticUtils$1(String paramString) {}
+  KandianUGStatisticUtils$1(String paramString) {}
   
   /* Error */
   public void run()
@@ -83,7 +83,7 @@ public final class KandianUGStatisticUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.KandianUGStatisticUtils.1
  * JD-Core Version:    0.7.0.1
  */

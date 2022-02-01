@@ -1,0 +1,9 @@
+package androidx.loader;
+
+public final class R$drawable {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     androidx.loader.R.drawable
+ * JD-Core Version:    0.7.0.1
+ */

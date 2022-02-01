@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apoh;
 
 public class ArAwardInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArAwardInfo> CREATOR = new apoh();
+  public static final Parcelable.Creator<ArAwardInfo> CREATOR = new ArAwardInfo.1();
   public int a;
   public String a;
   public int b;
@@ -20,7 +19,7 @@ public class ArAwardInfo
   
   public ArAwardInfo() {}
   
-  public ArAwardInfo(Parcel paramParcel)
+  protected ArAwardInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();

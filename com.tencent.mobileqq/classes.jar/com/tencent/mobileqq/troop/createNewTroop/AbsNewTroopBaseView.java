@@ -11,7 +11,7 @@ public abstract class AbsNewTroopBaseView
   extends FrameLayout
 {
   protected QQAppInterface a;
-  public NewTroopCreateActivity a;
+  protected NewTroopCreateActivity a;
   
   public AbsNewTroopBaseView(Context paramContext)
   {
@@ -43,7 +43,7 @@ public abstract class AbsNewTroopBaseView
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramNewTroopCreateActivity.app;
   }
   
-  public void a(boolean paramBoolean) {}
+  protected void a(boolean paramBoolean) {}
   
   protected boolean a()
   {

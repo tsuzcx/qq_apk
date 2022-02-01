@@ -3,9 +3,9 @@ package com.tencent.mobileqq.activity.photo.album;
 import android.content.Context;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.album.queryMedia.ICursor.FilterListener;
-import com.tencent.mobileqq.activity.photo.album.queryMedia.MediaQueryHelper;
-import com.tencent.mobileqq.activity.photo.album.queryMedia.MediaQueryHelper.Builder;
+import com.tencent.mobileqq.activity.photo.album.querymedia.ICursor.FilterListener;
+import com.tencent.mobileqq.activity.photo.album.querymedia.MediaQueryHelper;
+import com.tencent.mobileqq.activity.photo.album.querymedia.MediaQueryHelper.Builder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,7 +27,7 @@ public final class PhotoCommonBaseData<O extends OtherCommonData>
   public HashMap<String, LocalMediaInfo> allMediaInfoHashMap = new HashMap();
   public int currentQualityType = 0;
   public MediaFileFilter filter;
-  ICursor.FilterListener filterListener;
+  public ICursor.FilterListener filterListener;
   public boolean filterVideoGif = false;
   public LocalMediaInfo firstRecentInfo;
   public LocalMediaInfo firstVideoInfo;
@@ -101,12 +101,12 @@ public final class PhotoCommonBaseData<O extends OtherCommonData>
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 79	com/tencent/mobileqq/activity/photo/album/PhotoCommonBaseData:mOtherCommonData	Lcom/tencent/mobileqq/activity/photo/album/OtherCommonData;
+    //   1: getfield 121	com/tencent/mobileqq/activity/photo/album/PhotoCommonBaseData:mOtherCommonData	Lcom/tencent/mobileqq/activity/photo/album/OtherCommonData;
     //   4: ifnonnull +29 -> 33
     //   7: ldc 136
     //   9: monitorenter
     //   10: aload_0
-    //   11: getfield 79	com/tencent/mobileqq/activity/photo/album/PhotoCommonBaseData:mOtherCommonData	Lcom/tencent/mobileqq/activity/photo/album/OtherCommonData;
+    //   11: getfield 121	com/tencent/mobileqq/activity/photo/album/PhotoCommonBaseData:mOtherCommonData	Lcom/tencent/mobileqq/activity/photo/album/OtherCommonData;
     //   14: astore_2
     //   15: aload_2
     //   16: ifnonnull +14 -> 30
@@ -114,11 +114,11 @@ public final class PhotoCommonBaseData<O extends OtherCommonData>
     //   20: aload_1
     //   21: invokevirtual 148	java/lang/Class:newInstance	()Ljava/lang/Object;
     //   24: checkcast 136	com/tencent/mobileqq/activity/photo/album/OtherCommonData
-    //   27: putfield 79	com/tencent/mobileqq/activity/photo/album/PhotoCommonBaseData:mOtherCommonData	Lcom/tencent/mobileqq/activity/photo/album/OtherCommonData;
+    //   27: putfield 121	com/tencent/mobileqq/activity/photo/album/PhotoCommonBaseData:mOtherCommonData	Lcom/tencent/mobileqq/activity/photo/album/OtherCommonData;
     //   30: ldc 136
     //   32: monitorexit
     //   33: aload_0
-    //   34: getfield 79	com/tencent/mobileqq/activity/photo/album/PhotoCommonBaseData:mOtherCommonData	Lcom/tencent/mobileqq/activity/photo/album/OtherCommonData;
+    //   34: getfield 121	com/tencent/mobileqq/activity/photo/album/PhotoCommonBaseData:mOtherCommonData	Lcom/tencent/mobileqq/activity/photo/album/OtherCommonData;
     //   37: areturn
     //   38: astore_1
     //   39: aload_1
@@ -164,7 +164,7 @@ public final class PhotoCommonBaseData<O extends OtherCommonData>
   void createFilterListener()
   {
     if (this.filterListener == null) {
-      this.filterListener = new PhotoCommonBaseData.1(this);
+      this.filterListener = new PhotoCommonBaseData.MyFilterListener(this, null);
     }
   }
   
@@ -213,7 +213,7 @@ public final class PhotoCommonBaseData<O extends OtherCommonData>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData
  * JD-Core Version:    0.7.0.1
  */

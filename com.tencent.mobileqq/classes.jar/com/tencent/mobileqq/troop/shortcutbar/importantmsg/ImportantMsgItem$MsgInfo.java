@@ -12,11 +12,11 @@ public class ImportantMsgItem$MsgInfo
   public static final int NOT_SHOW_TYPE_TROOPNOTIFICATION_SHOWWINDOW = 4;
   private static final long serialVersionUID = 1L;
   int msgEnum;
-  public boolean msgNeedShow;
-  public int msgNotShowType;
+  boolean msgNeedShow;
+  int msgNotShowType;
   String msgSendUin;
   long msgSeq;
-  public String msgSummary;
+  String msgSummary;
   long msgTime;
   
   public ImportantMsgItem$MsgInfo()

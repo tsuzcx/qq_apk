@@ -1,15 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.model.handler;
 
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeResult;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import qis;
-import rpa;
 
-public class RIJDislikeArticleHandler$1
+class RIJDislikeArticleHandler$1
   implements Runnable
 {
-  public RIJDislikeArticleHandler$1(qis paramqis, int paramInt, List paramList) {}
+  RIJDislikeArticleHandler$1(RIJDislikeArticleHandler paramRIJDislikeArticleHandler, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -21,9 +20,9 @@ public class RIJDislikeArticleHandler$1
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        rpa localrpa = (rpa)((Iterator)localObject).next();
-        if (localrpa.jdField_a_of_type_Int != 0) {
-          QLog.e("RIJDislikeArticleHandler", 2, "dislike fail ,articleID : " + localrpa.jdField_a_of_type_Long + ", failCode : " + localrpa.jdField_a_of_type_Int + ",fialMessage : " + localrpa.jdField_a_of_type_JavaLangString);
+        DislikeResult localDislikeResult = (DislikeResult)((Iterator)localObject).next();
+        if (localDislikeResult.jdField_a_of_type_Int != 0) {
+          QLog.e("RIJDislikeArticleHandler", 2, "dislike fail ,articleID : " + localDislikeResult.jdField_a_of_type_Long + ", failCode : " + localDislikeResult.jdField_a_of_type_Int + ",fialMessage : " + localDislikeResult.jdField_a_of_type_JavaLangString);
         }
       }
     }
@@ -44,7 +43,7 @@ public class RIJDislikeArticleHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.handler.RIJDislikeArticleHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ public final class Conch
   static byte[] cache_params = (byte[])new byte[1];
   static TimeCtrl cache_time = new TimeCtrl();
   static TipsInfo cache_tips = new TipsInfo();
-  public int cmdId;
-  public int conchSeqno;
-  public byte[] params;
-  public TimeCtrl time;
-  public TipsInfo tips;
+  public int cmdId = 0;
+  public int conchSeqno = 0;
+  public byte[] params = null;
+  public TimeCtrl time = null;
+  public TipsInfo tips = null;
   
   static
   {

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.transfile.chatpic;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import avjd;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.haoliyou.orion.ZhuoXusManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class PicUploadExifInfoSwitch
@@ -15,7 +15,7 @@ public class PicUploadExifInfoSwitch
   
   public static boolean getSwitch()
   {
-    if (avjd.a().g()) {}
+    if (ZhuoXusManager.a().g()) {}
     do
     {
       return true;

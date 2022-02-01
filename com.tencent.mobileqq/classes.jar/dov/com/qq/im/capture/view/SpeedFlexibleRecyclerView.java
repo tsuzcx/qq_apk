@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.AttributeSet;
-import bopk;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -14,7 +13,7 @@ import java.lang.reflect.Method;
 public class SpeedFlexibleRecyclerView
   extends RecyclerView
 {
-  private bopk a;
+  private SpeedFlexibleRecyclerView.OnFlingListener a;
   
   public SpeedFlexibleRecyclerView(Context paramContext)
   {
@@ -32,7 +31,7 @@ public class SpeedFlexibleRecyclerView
   }
   
   @Nullable
-  public bopk a()
+  public SpeedFlexibleRecyclerView.OnFlingListener a()
   {
     return this.a;
   }
@@ -140,14 +139,14 @@ public class SpeedFlexibleRecyclerView
     }
   }
   
-  public void setOnFlingListener(@Nullable bopk parambopk)
+  public void setOnFlingListener(@Nullable SpeedFlexibleRecyclerView.OnFlingListener paramOnFlingListener)
   {
-    this.a = parambopk;
+    this.a = paramOnFlingListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView
  * JD-Core Version:    0.7.0.1
  */

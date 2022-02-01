@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.activity.main;
 
-import akam;
-import akbk;
-
-public class MainAssistObserver$5$1
+class MainAssistObserver$5$1
   implements Runnable
 {
-  public MainAssistObserver$5$1(akbk paramakbk) {}
+  MainAssistObserver$5$1(MainAssistObserver.5 param5) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class MainAssistObserver$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.5.1
  * JD-Core Version:    0.7.0.1
  */

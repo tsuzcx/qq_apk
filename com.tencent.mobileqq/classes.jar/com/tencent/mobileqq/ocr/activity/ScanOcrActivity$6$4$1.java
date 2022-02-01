@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import aytq;
-
 class ScanOcrActivity$6$4$1
   implements Runnable
 {
@@ -9,7 +7,7 @@ class ScanOcrActivity$6$4$1
   
   public void run()
   {
-    ScanOcrActivity.a(this.a.jdField_a_of_type_Aytq.a, this.a.jdField_a_of_type_JavaLangString, false);
+    ScanOcrActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a, this.a.jdField_a_of_type_JavaLangString, false);
   }
 }
 

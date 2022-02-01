@@ -2,13 +2,13 @@ package com.tencent.mobileqq.transfile;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.activity.photo.ImageInfo;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.OutputStream;
@@ -31,9 +31,9 @@ public class DataLineFaceDownloader
   
   private String compressImage(Context paramContext, String paramString)
   {
-    String str = bheg.a(paramContext, paramString, 0);
+    String str = ImageUtil.b(paramContext, paramString, 0);
     ImageInfo localImageInfo = new ImageInfo();
-    bheg.a(4, paramContext, paramString, str, true, localImageInfo, 0);
+    ImageUtil.a(4, paramContext, paramString, str, true, localImageInfo, 0);
     return localImageInfo.b;
   }
   
@@ -53,7 +53,7 @@ public class DataLineFaceDownloader
       if (localFile1.length() >= 1048576L)
       {
         String str = compressImage(this.application.getApplicationContext(), paramDownloadParams);
-        if (!FileUtils.fileExists(str)) {
+        if (!FileUtils.a(str)) {
           break label203;
         }
         localFile2 = new File(str);

@@ -1,6 +1,6 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import java.io.Serializable;
 
 public class QCircleTaskReportInfo
@@ -23,7 +23,7 @@ public class QCircleTaskReportInfo
   public long edited_video_mediaBitrate;
   public String feed_tag;
   public String feedid;
-  public boolean hasCompress;
+  public boolean hasCompress = false;
   public int is_video;
   public String lloc;
   public long mediaOriginBitrate;
@@ -34,6 +34,7 @@ public class QCircleTaskReportInfo
   public String place;
   public String place_name;
   public String prov_name;
+  public long retCode;
   public String shoot_model;
   public String shoot_place;
   public String shoot_product;
@@ -49,7 +50,8 @@ public class QCircleTaskReportInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("QCircleTaskReportInfo{\n");
-    localStringBuffer.append("up_source=").append(this.up_source).append('\n');
+    localStringBuffer.append("retCode=").append(this.retCode).append('\n');
+    localStringBuffer.append(", up_source=").append(this.up_source).append('\n');
     localStringBuffer.append(", up_type=").append(this.up_type).append('\n');
     localStringBuffer.append(", is_video=").append(this.is_video).append('\n');
     localStringBuffer.append(", txtinfo='").append(this.txtinfo).append('\'').append('\n');
@@ -58,7 +60,7 @@ public class QCircleTaskReportInfo
     localStringBuffer.append(", feedid='").append(this.feedid).append('\'').append('\n');
     localStringBuffer.append(", total_upload_num=").append(this.total_upload_num).append('\n');
     localStringBuffer.append(", shooting_time='").append(this.shooting_time).append('\'').append('\n');
-    if (QLog.isColorLevel())
+    if (RFLog.isColorLevel())
     {
       localStringBuffer.append(", place='").append(this.place).append('\'').append('\n');
       localStringBuffer.append(", up_place='").append(this.up_place).append('\'').append('\n');
@@ -97,7 +99,7 @@ public class QCircleTaskReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleTaskReportInfo
  * JD-Core Version:    0.7.0.1
  */

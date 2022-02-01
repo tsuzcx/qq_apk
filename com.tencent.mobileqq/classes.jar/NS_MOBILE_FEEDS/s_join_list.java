@@ -9,12 +9,12 @@ public final class s_join_list
   extends JceStruct
 {
   static ArrayList<s_user> cache_users = new ArrayList();
-  public int actionType;
+  public int actionType = 0;
   public String actionUrl = "";
   public String desc = "";
-  public int isjoined;
-  public int num;
-  public ArrayList<s_user> users;
+  public int isjoined = 0;
+  public int num = 0;
+  public ArrayList<s_user> users = null;
   
   static
   {

@@ -9,10 +9,10 @@ public final class ActionInfo
 {
   static int cache_action_attr = 0;
   static int cache_action_id = 0;
-  public int action_attr;
-  public int action_id;
-  public long action_value;
-  public long oper_time;
+  public int action_attr = 0;
+  public int action_id = 0;
+  public long action_value = 0L;
+  public long oper_time = 0L;
   
   public ActionInfo() {}
   

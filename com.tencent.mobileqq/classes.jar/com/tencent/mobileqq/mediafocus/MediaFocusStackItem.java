@@ -3,12 +3,11 @@ package com.tencent.mobileqq.mediafocus;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awvp;
 
 public class MediaFocusStackItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<MediaFocusStackItem> CREATOR = new awvp();
+  public static final Parcelable.Creator<MediaFocusStackItem> CREATOR = new MediaFocusStackItem.1();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
@@ -22,7 +21,7 @@ public class MediaFocusStackItem
     this.b = paramString2;
   }
   
-  public MediaFocusStackItem(Parcel paramParcel)
+  protected MediaFocusStackItem(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_Long = paramParcel.readLong();

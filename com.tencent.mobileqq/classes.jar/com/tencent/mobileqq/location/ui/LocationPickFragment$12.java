@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.location.ui;
 
-import awkt;
-
 class LocationPickFragment$12
   implements Runnable
 {

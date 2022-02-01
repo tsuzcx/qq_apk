@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class LikInfo
   extends JceStruct
 {
-  public int appid;
-  public int hasDoLik;
-  public long hostUin;
+  public int appid = 0;
+  public int hasDoLik = 0;
+  public long hostUin = 0L;
   public String likeKey = "";
-  public int totalLik;
+  public int totalLik = 0;
   
   public LikInfo() {}
   

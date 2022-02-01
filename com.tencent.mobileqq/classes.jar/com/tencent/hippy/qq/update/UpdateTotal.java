@@ -23,10 +23,14 @@ public class UpdateTotal
   
   boolean unzipFile(File paramFile)
   {
-    this.mModuleFilePath = HippyQQFileUtil.getModuleFile(this.mModule, this.mVersion).getAbsolutePath();
+    File localFile = HippyQQFileUtil.getModuleFile(this.mModule, this.mVersion);
+    if (localFile == null) {
+      return false;
+    }
+    this.mModuleFilePath = localFile.getAbsolutePath();
     try
     {
-      FileUtils.uncompressZip(paramFile.getAbsolutePath(), this.mModuleFilePath, false);
+      FileUtils.a(paramFile.getAbsolutePath(), this.mModuleFilePath, false);
       return true;
     }
     catch (Exception paramFile)
@@ -38,7 +42,7 @@ public class UpdateTotal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.update.UpdateTotal
  * JD-Core Version:    0.7.0.1
  */

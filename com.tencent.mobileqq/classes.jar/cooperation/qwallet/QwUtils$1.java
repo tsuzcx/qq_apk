@@ -1,0 +1,48 @@
+package cooperation.qwallet;
+
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
+
+final class QwUtils$1
+  implements WtTicketPromise
+{
+  QwUtils$1(QwUtils.AnsyListener paramAnsyListener, String paramString) {}
+  
+  public void Done(Ticket paramTicket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "get pskey async success!");
+    }
+    if (this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener != null) {
+      this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener.a(0, new String[] { QwUtils.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
+    }
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
+    }
+    if (this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener != null) {
+      this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
+    }
+    if (this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener != null) {
+      this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+ * Qualified Name:     cooperation.qwallet.QwUtils.1
+ * JD-Core Version:    0.7.0.1
+ */

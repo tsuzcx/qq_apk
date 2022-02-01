@@ -1,20 +1,30 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atlf;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class FileManagerDataCenter$3
+class FileManagerDataCenter$3
   implements Runnable
 {
-  public FileManagerDataCenter$3(atlf paramatlf) {}
+  FileManagerDataCenter$3(FileManagerDataCenter paramFileManagerDataCenter, Bundle paramBundle) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.getApp() != null) && (atlf.a(this.this$0) != null)) {
-      this.this$0.a.getApp().unregisterReceiver(atlf.a(this.this$0));
+    if (this.a == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "INTENT_ACTION_RENAME_FILENAME extra is null!!!");
+      }
+      return;
     }
-    atlf.a(this.this$0, null);
+    String str1 = this.a.getString("peerUin");
+    int i = this.a.getInt("peerType");
+    String str2 = this.a.getString("sourceStr");
+    String str3 = this.a.getString("filePath");
+    long l = this.a.getLong("dataLength");
+    int j = this.a.getInt("fileSourceId");
+    Bundle localBundle = this.a.getBundle("otherData");
+    this.this$0.a(str1, i, str3, l, j, str2, localBundle);
   }
 }
 

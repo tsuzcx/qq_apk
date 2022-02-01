@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import anri;
-import ansg;
-import baey;
-import bdxs;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.ConfigHandler;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.profilecard.api.IProfileProtocolService;
+import com.tencent.mobileqq.profilecard.utils.ProfileServiceUtils;
+import com.tencent.mobileqq.profilecommon.utils.ProfileCommonUtils;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -19,32 +20,29 @@ public class GetSelfInfo
 {
   public int a()
   {
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-    if (this.a.app.mFirstGetSubAccountName)
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+    if (this.a.a.mFirstGetSubAccountName)
     {
-      localObject = (bdxs)this.a.app.getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER);
+      localObject = (SubAccountManager)this.a.a.getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER);
       if (localObject == null) {
-        break label187;
+        break label177;
       }
     }
-    label187:
-    for (Object localObject = ((bdxs)localObject).a();; localObject = null)
+    label177:
+    for (Object localObject = ((SubAccountManager)localObject).a();; localObject = null)
     {
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
-        this.a.app.mFirstGetSubAccountName = false;
+        this.a.a.mFirstGetSubAccountName = false;
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
           localFriendListHandler.getFriendInfo((String)((Iterator)localObject).next());
         }
       }
-      localObject = (anri)this.a.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
-      if (localObject != null) {
-        ((anri)localObject).d();
-      }
-      baey.a(this.a.app);
-      ((ansg)this.a.app.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).e();
-      FaceDrawable.getUserFaceDrawable(this.a.app, this.a.app.getAccount(), (byte)3);
+      ProfileServiceUtils.getIProfileProtocolService(this.a.a).getProfileDetailForLogin();
+      ProfileCommonUtils.a(this.a.a);
+      ((ConfigHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).e();
+      FaceDrawable.getUserFaceDrawable(this.a.a, this.a.a.getAccount(), (byte)3);
       return 7;
     }
   }

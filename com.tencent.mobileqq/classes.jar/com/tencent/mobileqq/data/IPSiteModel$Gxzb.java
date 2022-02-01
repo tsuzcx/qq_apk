@@ -3,8 +3,7 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anvx;
-import artz;
+import mqq.app.MobileQQ;
 
 public class IPSiteModel$Gxzb
   implements Parcelable
@@ -12,8 +11,8 @@ public class IPSiteModel$Gxzb
   public static final String BACKGROUND;
   public static final String BUBBLE;
   public static final String CARD;
-  public static final Parcelable.Creator<Gxzb> CREATOR = new artz();
-  public static final String EMOJI = anvx.a(2131705329);
+  public static final Parcelable.Creator<Gxzb> CREATOR = new IPSiteModel.Gxzb.1();
+  public static final String EMOJI = MobileQQ.sMobileQQ.getString(2131719704);
   public static final String FONT;
   public static final String FUNCALL;
   public static final String PENDANT;
@@ -28,14 +27,14 @@ public class IPSiteModel$Gxzb
   
   static
   {
-    BUBBLE = anvx.a(2131705326);
-    THEME = anvx.a(2131705322);
-    PENDANT = anvx.a(2131705325);
-    FONT = anvx.a(2131705327);
-    BACKGROUND = anvx.a(2131705328);
-    FUNCALL = anvx.a(2131705321);
-    CARD = anvx.a(2131705323);
-    REDPACKT = anvx.a(2131705324);
+    BUBBLE = MobileQQ.sMobileQQ.getString(2131719701);
+    THEME = MobileQQ.sMobileQQ.getString(2131719712);
+    PENDANT = MobileQQ.sMobileQQ.getString(2131719708);
+    FONT = MobileQQ.sMobileQQ.getString(2131719706);
+    BACKGROUND = MobileQQ.sMobileQQ.getString(2131719700);
+    FUNCALL = MobileQQ.sMobileQQ.getString(2131719707);
+    CARD = MobileQQ.sMobileQQ.getString(2131719702);
+    REDPACKT = MobileQQ.sMobileQQ.getString(2131719710);
   }
   
   public IPSiteModel$Gxzb() {}
@@ -72,7 +71,7 @@ public class IPSiteModel$Gxzb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Gxzb
  * JD-Core Version:    0.7.0.1
  */

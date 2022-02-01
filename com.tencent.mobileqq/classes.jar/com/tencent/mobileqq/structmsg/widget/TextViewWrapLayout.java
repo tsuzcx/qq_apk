@@ -8,7 +8,7 @@ import android.widget.TextView;
 public class TextViewWrapLayout
   extends RelativeLayout
 {
-  private boolean a;
+  private boolean a = false;
   
   public TextViewWrapLayout(Context paramContext)
   {
@@ -32,15 +32,15 @@ public class TextViewWrapLayout
     invalidate();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     try
     {
       super.onMeasure(paramInt1, paramInt2);
       if (this.a)
       {
-        TextView localTextView1 = (TextView)findViewById(2131380210);
-        TextView localTextView2 = (TextView)findViewById(2131380183);
+        TextView localTextView1 = (TextView)findViewById(2131380651);
+        TextView localTextView2 = (TextView)findViewById(2131380624);
         if ((localTextView2 != null) && (localTextView1 != null) && (4 - localTextView1.getLineCount() > 0)) {
           localTextView2.setMaxLines(4 - localTextView1.getLineCount());
         }

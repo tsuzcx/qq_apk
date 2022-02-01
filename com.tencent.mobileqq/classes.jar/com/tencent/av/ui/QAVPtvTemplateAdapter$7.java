@@ -1,11 +1,9 @@
 package com.tencent.av.ui;
 
-import mhn;
-
-public class QAVPtvTemplateAdapter$7
+class QAVPtvTemplateAdapter$7
   implements Runnable
 {
-  public QAVPtvTemplateAdapter$7(mhn parammhn, String paramString, int paramInt) {}
+  QAVPtvTemplateAdapter$7(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class QAVPtvTemplateAdapter$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.QAVPtvTemplateAdapter.7
  * JD-Core Version:    0.7.0.1
  */

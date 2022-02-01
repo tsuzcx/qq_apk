@@ -9,11 +9,11 @@ public final class _LoginInfo
 {
   public String strAuthKey = "";
   public String strCookie = "";
-  public long uAuthOption;
-  public long uAuthType;
-  public long uHostUin;
-  public long uPtId;
-  public long uUserIpNet;
+  public long uAuthOption = 0L;
+  public long uAuthType = 0L;
+  public long uHostUin = 0L;
+  public long uPtId = 0L;
+  public long uUserIpNet = 0L;
   
   public _LoginInfo() {}
   
@@ -56,7 +56,7 @@ public final class _LoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     qz_groupphoto._LoginInfo
  * JD-Core Version:    0.7.0.1
  */

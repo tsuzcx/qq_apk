@@ -11,8 +11,8 @@ public final class DownloadChooseReq
   static ArrayList<ResInfo> cache_vecResInfo = new ArrayList();
   public int iActId = 1001;
   public int iPlatForm = 1;
-  public long iUin;
-  public ArrayList<ResInfo> vecResInfo;
+  public long iUin = 0L;
+  public ArrayList<ResInfo> vecResInfo = null;
   
   static
   {

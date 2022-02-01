@@ -9,9 +9,9 @@ public final class material_get_ugc_deco_qual_req
 {
   static int cache_eType = 0;
   static byte[] cache_vecBuf = (byte[])new byte[1];
-  public int eType;
-  public long lUin;
-  public byte[] vecBuf;
+  public int eType = 0;
+  public long lUin = 0L;
+  public byte[] vecBuf = null;
   
   static
   {

@@ -3,37 +3,42 @@ package com.tencent.mobileqq.msf.core.c;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class n
   extends JceStruct
 {
-  public long a = 0L;
-  public long b = 0L;
-  public long c = 0L;
-  public long d = 0L;
-  public long e = 0L;
-  public long f = 0L;
+  static Map d;
+  static Map e;
+  public String a = "";
+  public Map b = null;
+  public Map c = null;
   
   public n() {}
   
-  public n(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
+  public n(String paramString, Map paramMap1, Map paramMap2)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
-    this.f = paramLong6;
+    this.a = paramString;
+    this.b = paramMap1;
+    this.c = paramMap2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    this.a = paramJceInputStream.read(this.a, 1, true);
-    this.b = paramJceInputStream.read(this.b, 2, true);
-    this.c = paramJceInputStream.read(this.c, 3, true);
-    this.d = paramJceInputStream.read(this.d, 4, true);
-    this.e = paramJceInputStream.read(this.e, 5, true);
-    this.f = paramJceInputStream.read(this.f, 6, true);
+    this.a = paramJceInputStream.readString(1, true);
+    if (d == null)
+    {
+      d = new HashMap();
+      d.put("", Long.valueOf(0L));
+    }
+    this.b = ((Map)paramJceInputStream.read(d, 2, true));
+    if (e == null)
+    {
+      e = new HashMap();
+      e.put("", Long.valueOf(0L));
+    }
+    this.c = ((Map)paramJceInputStream.read(e, 3, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -41,9 +46,6 @@ public final class n
     paramJceOutputStream.write(this.a, 1);
     paramJceOutputStream.write(this.b, 2);
     paramJceOutputStream.write(this.c, 3);
-    paramJceOutputStream.write(this.d, 4);
-    paramJceOutputStream.write(this.e, 5);
-    paramJceOutputStream.write(this.f, 6);
   }
 }
 

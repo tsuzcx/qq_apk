@@ -8,7 +8,7 @@ public final class delete_active_album_rsp
   extends JceStruct
 {
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public delete_active_album_rsp() {}
   

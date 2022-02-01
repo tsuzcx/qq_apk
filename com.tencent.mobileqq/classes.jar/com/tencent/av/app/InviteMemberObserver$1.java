@@ -1,20 +1,18 @@
 package com.tencent.av.app;
 
-import les;
-
-public class InviteMemberObserver$1
+class InviteMemberObserver$1
   implements Runnable
 {
-  public InviteMemberObserver$1(les paramles, Object paramObject) {}
+  InviteMemberObserver$1(InviteMemberObserver paramInviteMemberObserver, Object paramObject) {}
   
   public void run()
   {
-    les.a(this.this$0, this.a);
+    InviteMemberObserver.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.app.InviteMemberObserver.1
  * JD-Core Version:    0.7.0.1
  */

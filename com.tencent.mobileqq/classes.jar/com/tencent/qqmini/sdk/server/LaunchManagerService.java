@@ -49,6 +49,29 @@ public class LaunchManagerService
   private final LinkedList<MiniProcessorConfig> mInternalProcessConfig = new LinkedList();
   private final IBinder mServiceBinder = new LaunchManagerService.ServiceBinder(this);
   
+  private void addProcessorInfo(MiniProcessorConfig paramMiniProcessorConfig)
+  {
+    QMLog.i("minisdk-start_LaunchManagerService", "registerProcessInfo " + paramMiniProcessorConfig);
+    switch (LaunchManagerService.5.$SwitchMap$com$tencent$qqmini$sdk$launcher$shell$ProcessType[paramMiniProcessorConfig.processType.ordinal()])
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (paramMiniProcessorConfig.appUIClass == null);
+        this.mAppProcessConfig.add(paramMiniProcessorConfig);
+        return;
+      } while (paramMiniProcessorConfig.appUIClass == null);
+      this.mGameProcessConfig.add(paramMiniProcessorConfig);
+      return;
+    } while (paramMiniProcessorConfig.appUIClass == null);
+    this.mInternalProcessConfig.add(paramMiniProcessorConfig);
+  }
+  
   private void checkMiniAppInfoCache()
   {
     ThreadManager.getSubThreadHandler().post(new LaunchManagerService.4(this));
@@ -79,7 +102,7 @@ public class LaunchManagerService
           localIntent.putExtra("startDuration", System.currentTimeMillis());
           localObject = EngineManager.g();
           if (paramMiniAppInfo.engineType != 1) {
-            break label360;
+            break label364;
           }
           i = 2;
           localIntent.putExtra("engineChannel", ((EngineManager)localObject).getChannelForType(i));
@@ -87,7 +110,7 @@ public class LaunchManagerService
             localIntent.putExtras(paramBundle);
           }
           if (paramActivity == null) {
-            break label366;
+            break label370;
           }
           paramActivity.startActivity(localIntent);
           QMLog.i("minisdk-start_LaunchManagerService", "---startApp----  appid:" + paramMiniAppInfo.appId + " appName:" + paramMiniAppInfo.name + " intent:" + localIntent);
@@ -107,10 +130,10 @@ public class LaunchManagerService
       {
         localIntent.putExtra("start_mode", 2);
         continue;
-        label360:
+        label364:
         i = 3;
         continue;
-        label366:
+        label370:
         if (paramResultReceiver != null)
         {
           paramActivity = new Bundle();
@@ -190,25 +213,25 @@ public class LaunchManagerService
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 366	com/tencent/qqmini/sdk/utils/QUAUtil:isQQMainApp	()Z
+    //   2: invokestatic 393	com/tencent/qqmini/sdk/utils/QUAUtil:isQQMainApp	()Z
     //   5: istore_1
     //   6: iload_1
     //   7: ifeq +6 -> 13
     //   10: aload_0
     //   11: monitorexit
     //   12: return
-    //   13: invokestatic 371	com/tencent/qqmini/sdk/manager/BaseLibManager:g	()Lcom/tencent/qqmini/sdk/manager/BaseLibManager;
-    //   16: new 373	com/tencent/qqmini/sdk/server/LaunchManagerService$3
+    //   13: invokestatic 398	com/tencent/qqmini/sdk/manager/BaseLibManager:g	()Lcom/tencent/qqmini/sdk/manager/BaseLibManager;
+    //   16: new 400	com/tencent/qqmini/sdk/server/LaunchManagerService$3
     //   19: dup
     //   20: aload_0
-    //   21: invokespecial 374	com/tencent/qqmini/sdk/server/LaunchManagerService$3:<init>	(Lcom/tencent/qqmini/sdk/server/LaunchManagerService;)V
-    //   24: invokevirtual 377	com/tencent/qqmini/sdk/manager/BaseLibManager:updateBaseLib	(Lcom/tencent/qqmini/sdk/manager/BaseLibManager$UpdateListener;)V
+    //   21: invokespecial 401	com/tencent/qqmini/sdk/server/LaunchManagerService$3:<init>	(Lcom/tencent/qqmini/sdk/server/LaunchManagerService;)V
+    //   24: invokevirtual 404	com/tencent/qqmini/sdk/manager/BaseLibManager:updateBaseLib	(Lcom/tencent/qqmini/sdk/manager/BaseLibManager$UpdateListener;)V
     //   27: goto -17 -> 10
     //   30: astore_2
     //   31: ldc 8
-    //   33: ldc_w 379
+    //   33: ldc_w 406
     //   36: aload_2
-    //   37: invokestatic 283	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   37: invokestatic 312	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   40: goto -30 -> 10
     //   43: astore_2
     //   44: aload_0
@@ -340,29 +363,8 @@ public class LaunchManagerService
       while (paramList.hasNext())
       {
         MiniProcessorConfig localMiniProcessorConfig = (MiniProcessorConfig)paramList.next();
-        if ((localMiniProcessorConfig != null) && (!TextUtils.isEmpty(localMiniProcessorConfig.processName)))
-        {
-          QMLog.i("minisdk-start_LaunchManagerService", "registerProcessInfo " + localMiniProcessorConfig);
-          switch (LaunchManagerService.5.$SwitchMap$com$tencent$qqmini$sdk$launcher$shell$ProcessType[localMiniProcessorConfig.processType.ordinal()])
-          {
-          default: 
-            break;
-          case 1: 
-            if (localMiniProcessorConfig.appUIClass != null) {
-              this.mAppProcessConfig.add(localMiniProcessorConfig);
-            }
-            break;
-          case 2: 
-            if (localMiniProcessorConfig.appUIClass != null) {
-              this.mGameProcessConfig.add(localMiniProcessorConfig);
-            }
-            break;
-          case 3: 
-            if (localMiniProcessorConfig.appUIClass != null) {
-              this.mInternalProcessConfig.add(localMiniProcessorConfig);
-            }
-            break;
-          }
+        if ((localMiniProcessorConfig != null) && (!TextUtils.isEmpty(localMiniProcessorConfig.processName))) {
+          addProcessorInfo(localMiniProcessorConfig);
         }
       }
     }
@@ -447,7 +449,7 @@ public class LaunchManagerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.LaunchManagerService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,31 @@
 package com.tencent.biz.pubaccount.Advertisement.manager;
 
 import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
-import ofd;
-import opx;
 
-public class AdvertisementVideoPreloadManager$5
+class AdvertisementVideoPreloadManager$5
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$5(ofd paramofd) {}
+  AdvertisementVideoPreloadManager$5(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
   
   public void run()
   {
-    opx localopx = ofd.a(this.this$0);
-    if (localopx != null)
+    PublicAccountEntityHelper localPublicAccountEntityHelper = AdvertisementVideoPreloadManager.a(this.this$0);
+    if (localPublicAccountEntityHelper != null)
     {
-      localopx.a(PAAdPreloadTask.class.getSimpleName());
-      Iterator localIterator = ofd.a(this.this$0).iterator();
+      localPublicAccountEntityHelper.a(PAAdPreloadTask.class.getSimpleName());
+      Iterator localIterator = AdvertisementVideoPreloadManager.a(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        localopx.a((PAAdPreloadTask)localIterator.next());
+        localPublicAccountEntityHelper.a((PAAdPreloadTask)localIterator.next());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.5
  * JD-Core Version:    0.7.0.1
  */

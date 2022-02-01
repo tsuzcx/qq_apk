@@ -3,22 +3,18 @@ package com.tencent.mobileqq.webview.swift;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import bifb;
-import bifv;
-import bifw;
-import bifx;
-import bigl;
-import bigr;
+import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nwo;
+import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 public class WebViewPlugin
@@ -41,11 +37,11 @@ public class WebViewPlugin
   public static final int TARGET_SYS_BACK = 3;
   public final String TAG = getClass().getSimpleName();
   AtomicBoolean inited = new AtomicBoolean(false);
-  public boolean isDestroy;
+  public boolean isDestroy = false;
   public HashMap<String, JsBridgeListener> mOpenApiListeners;
   public String mPluginNameSpace = "";
-  public bifw mRuntime;
-  public long pluginEventFlag;
+  public WebViewPlugin.PluginRuntime mRuntime;
+  public long pluginEventFlag = 0L;
   
   public static JSONObject getJsonFromJSBridge(String paramString)
   {
@@ -68,7 +64,7 @@ public class WebViewPlugin
   
   public static String toJsScript(String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    return "window.mqq && mqq.execEventCallback && mqq.execEventCallback(" + nwo.a(paramString) + "," + String.valueOf(paramJSONObject1) + "," + String.valueOf(paramJSONObject2) + ");";
+    return "window.mqq && mqq.execEventCallback && mqq.execEventCallback(" + Util.a(paramString) + "," + String.valueOf(paramJSONObject1) + "," + String.valueOf(paramJSONObject2) + ");";
   }
   
   public void addOpenApiListenerIfNeeded(String paramString, JsBridgeListener paramJsBridgeListener)
@@ -82,11 +78,11 @@ public class WebViewPlugin
     }
   }
   
-  final void bindFragment(WebViewFragment paramWebViewFragment)
+  final void bindWebViewProvider(WebViewProvider paramWebViewProvider)
   {
     if (this.mRuntime != null)
     {
-      this.mRuntime.a(paramWebViewFragment);
+      this.mRuntime.a(paramWebViewProvider);
       return;
     }
     throw new IllegalArgumentException("plugin runtime must be init");
@@ -183,12 +179,12 @@ public class WebViewPlugin
   {
     if (this.mRuntime != null)
     {
-      WebViewFragment localWebViewFragment = this.mRuntime.a();
-      if (localWebViewFragment != null) {
-        return localWebViewFragment.getComponentProvider().a(paramInt);
+      WebViewProvider localWebViewProvider = this.mRuntime.a();
+      if (localWebViewProvider != null) {
+        return localWebViewProvider.getComponentProvider().a(paramInt);
       }
-      if ((this.mRuntime.a() instanceof bigr)) {
-        return ((bigr)this.mRuntime.a()).getComponentProvider().a(paramInt);
+      if ((this.mRuntime.a() instanceof SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)) {
+        return ((SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)this.mRuntime.a()).getComponentProvider().a(paramInt);
       }
     }
     return null;
@@ -197,12 +193,27 @@ public class WebViewPlugin
   public int getRequestCode(byte paramByte)
   {
     if (this.mRuntime != null) {}
-    for (bifb localbifb = this.mRuntime.a(this.mRuntime.a()); (localbifb instanceof bifx); localbifb = null) {
-      return ((bifx)localbifb).switchRequestCode(this, paramByte);
+    for (WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a()); (localWebUiBaseInterface instanceof WebViewPluginContainer); localWebUiBaseInterface = null) {
+      return ((WebViewPluginContainer)localWebUiBaseInterface).switchRequestCode(this, paramByte);
     }
     if (QLog.isDevelopLevel()) {
       QLog.d(this.TAG, 4, "startActivityForResult not called, activity need implement Interface WebViewPluginContainer");
     }
+    return -1;
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 0L;
+  }
+  
+  public long getWebViewSchemaByNameSpace(String paramString)
+  {
+    return 0L;
+  }
+  
+  public int getWebViewSchemaListIndex()
+  {
     return -1;
   }
   
@@ -226,10 +237,10 @@ public class WebViewPlugin
     return false;
   }
   
-  final void initRuntime(Activity paramActivity, AppInterface paramAppInterface)
+  final void initRuntime(Activity paramActivity, AppRuntime paramAppRuntime)
   {
     if (this.inited.compareAndSet(false, true)) {
-      this.mRuntime = new bifw(paramActivity, paramAppInterface);
+      this.mRuntime = new WebViewPlugin.PluginRuntime(paramActivity, paramAppRuntime);
     }
   }
   
@@ -237,7 +248,7 @@ public class WebViewPlugin
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt) {}
   
-  public void onAppRuntimeReady(AppInterface paramAppInterface) {}
+  public void onAppRuntimeReady(AppRuntime paramAppRuntime) {}
   
   protected void onCreate() {}
   
@@ -249,7 +260,7 @@ public class WebViewPlugin
     }
   }
   
-  public void onPostPluginAsyncTask() {}
+  protected void onPostPluginAsyncTask() {}
   
   protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
@@ -260,7 +271,7 @@ public class WebViewPlugin
   
   public void postPluginAsyncTask(Runnable paramRunnable)
   {
-    ThreadManager.post(paramRunnable, 5, new bifv(this), false);
+    ThreadManager.post(paramRunnable, 5, new WebViewPlugin.1(this), false);
   }
   
   public WebViewPlugin setHandler(Handler paramHandler)
@@ -268,37 +279,37 @@ public class WebViewPlugin
     return this;
   }
   
-  public void setWebUiInterface(bifb parambifb)
+  public void setWebUiInterface(WebUiBaseInterface paramWebUiBaseInterface)
   {
-    if (parambifb != null) {
-      this.mRuntime.a(parambifb);
+    if (paramWebUiBaseInterface != null) {
+      this.mRuntime.a(paramWebUiBaseInterface);
     }
   }
   
   public void startActivityForResult(Intent paramIntent, byte paramByte)
   {
     Activity localActivity = null;
-    bifb localbifb;
+    WebUiBaseInterface localWebUiBaseInterface;
     if (this.mRuntime != null)
     {
-      localbifb = this.mRuntime.a(this.mRuntime.a());
+      localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
       if (this.mRuntime != null) {
         localActivity = this.mRuntime.a();
       }
-      if (!(localbifb instanceof bifx)) {
+      if (!(localWebUiBaseInterface instanceof WebViewPluginContainer)) {
         break label67;
       }
-      ((bifx)localbifb).pluginStartActivityForResult(this, paramIntent, paramByte);
+      ((WebViewPluginContainer)localWebUiBaseInterface).pluginStartActivityForResult(this, paramIntent, paramByte);
     }
     label67:
     do
     {
       return;
-      localbifb = null;
+      localWebUiBaseInterface = null;
       break;
-      if ((localActivity instanceof bifx))
+      if ((localActivity instanceof WebViewPluginContainer))
       {
-        ((bifx)localActivity).pluginStartActivityForResult(this, paramIntent, paramByte);
+        ((WebViewPluginContainer)localActivity).pluginStartActivityForResult(this, paramIntent, paramByte);
         return;
       }
     } while (!QLog.isDevelopLevel());
@@ -307,7 +318,7 @@ public class WebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

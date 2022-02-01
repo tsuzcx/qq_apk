@@ -9,8 +9,8 @@ public final class AcsSubNoticeRsp
 {
   static AcsMsg cache_msg = new AcsMsg();
   public String err_str = "";
-  public AcsMsg msg;
-  public int ret_code;
+  public AcsMsg msg = null;
+  public int ret_code = 0;
   
   public AcsSubNoticeRsp() {}
   

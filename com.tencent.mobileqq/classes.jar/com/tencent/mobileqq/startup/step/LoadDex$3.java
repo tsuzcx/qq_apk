@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import bhhr;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 class LoadDex$3
   implements Runnable
@@ -10,7 +10,7 @@ class LoadDex$3
   
   public void run()
   {
-    bhhr.b(BaseApplicationImpl.context);
+    SharedPreUtils.b(BaseApplicationImpl.context);
   }
 }
 

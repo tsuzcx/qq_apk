@@ -12,7 +12,7 @@ class EmotionSearchPanel$2
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (!StringUtil.isEmpty(paramEditable.toString())) {
+    if (!StringUtil.a(paramEditable.toString())) {
       this.this$0.searchCleanImg.setVisibility(0);
     }
   }
@@ -23,7 +23,7 @@ class EmotionSearchPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionSearchPanel.2
  * JD-Core Version:    0.7.0.1
  */

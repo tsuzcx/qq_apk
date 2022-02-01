@@ -1,5 +1,6 @@
 package com.tencent.thumbplayer.adapter;
 
+import android.text.TextUtils;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnAudioPcmOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnAudioProcessOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnCompletionListener;
@@ -14,6 +15,7 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFram
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoProcessOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import com.tencent.thumbplayer.api.TPCommonEnum.TPErrorType;
 import com.tencent.thumbplayer.api.TPPostProcessFrameBuffer;
 import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
@@ -22,7 +24,7 @@ import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 public class TPPlayerBaseListeners
   implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnAudioProcessOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnStateChangeListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnSubtitleFrameOutListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoProcessOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener
 {
-  private static String TAG = "TPPlayerListenerS";
+  private static final String TAG = "TPPlayerListenerS";
   private TPPlayerBaseListeners.TPPlayerListenersEmptyImpl EMPTY_LISTENERS;
   private ITPPlayerBaseListener.IOnAudioPcmOutListener mOnAudioFrameOutListener;
   private ITPPlayerBaseListener.IOnAudioProcessOutListener mOnAudioProcessFrameOutListener;
@@ -33,15 +35,16 @@ public class TPPlayerBaseListeners
   private ITPPlayerBaseListener.IOnSeekCompleteListener mOnSeekCompleteListener;
   private ITPPlayerBaseListener.IOnStateChangeListener mOnStateChangeListener;
   private ITPPlayerBaseListener.IOnSubtitleDataListener mOnSubtitleDataListener;
-  private ITPPlayerBaseListener.IOnSubtitleFrameOutListener mOnSubtitleFrameOutLisener;
+  private ITPPlayerBaseListener.IOnSubtitleFrameOutListener mOnSubtitleFrameOutListener;
   private ITPPlayerBaseListener.IOnVideoFrameOutListener mOnVideoFrameOutListener;
   private ITPPlayerBaseListener.IOnVideoProcessOutListener mOnVideoProcessFrameOutListener;
   private ITPPlayerBaseListener.IOnVideoSizeChangedListener mOnVideoSizeChangedListener;
+  private String mTag = "TPPlayerListenerS";
   
   public TPPlayerBaseListeners(String paramString)
   {
-    TAG = paramString;
-    this.EMPTY_LISTENERS = new TPPlayerBaseListeners.TPPlayerListenersEmptyImpl(null);
+    updateTag(paramString);
+    this.EMPTY_LISTENERS = new TPPlayerBaseListeners.TPPlayerListenersEmptyImpl(this.mTag);
     this.mOnPreparedListener = this.EMPTY_LISTENERS;
     this.mOnCompletionListener = this.EMPTY_LISTENERS;
     this.mOnInfoListener = this.EMPTY_LISTENERS;
@@ -51,7 +54,7 @@ public class TPPlayerBaseListeners
     this.mOnSubtitleDataListener = this.EMPTY_LISTENERS;
     this.mOnVideoFrameOutListener = this.EMPTY_LISTENERS;
     this.mOnAudioFrameOutListener = this.EMPTY_LISTENERS;
-    this.mOnSubtitleFrameOutLisener = this.EMPTY_LISTENERS;
+    this.mOnSubtitleFrameOutListener = this.EMPTY_LISTENERS;
     this.mOnVideoProcessFrameOutListener = this.EMPTY_LISTENERS;
     this.mOnAudioProcessFrameOutListener = this.EMPTY_LISTENERS;
   }
@@ -67,7 +70,7 @@ public class TPPlayerBaseListeners
     this.mOnSubtitleDataListener = this.EMPTY_LISTENERS;
     this.mOnVideoFrameOutListener = this.EMPTY_LISTENERS;
     this.mOnAudioFrameOutListener = this.EMPTY_LISTENERS;
-    this.mOnSubtitleFrameOutLisener = this.EMPTY_LISTENERS;
+    this.mOnSubtitleFrameOutListener = this.EMPTY_LISTENERS;
     this.mOnStateChangeListener = this.EMPTY_LISTENERS;
     this.mOnVideoProcessFrameOutListener = this.EMPTY_LISTENERS;
     this.mOnAudioProcessFrameOutListener = this.EMPTY_LISTENERS;
@@ -88,7 +91,7 @@ public class TPPlayerBaseListeners
     this.mOnCompletionListener.onCompletion();
   }
   
-  public void onError(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public void onError(@TPCommonEnum.TPErrorType int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
     this.mOnErrorListener.onError(paramInt1, paramInt2, paramLong1, paramLong2);
   }
@@ -120,7 +123,7 @@ public class TPPlayerBaseListeners
   
   public void onSubtitleFrameOut(TPSubtitleFrameBuffer paramTPSubtitleFrameBuffer)
   {
-    this.mOnSubtitleFrameOutLisener.onSubtitleFrameOut(paramTPSubtitleFrameBuffer);
+    this.mOnSubtitleFrameOutListener.onSubtitleFrameOut(paramTPSubtitleFrameBuffer);
   }
   
   public void onVideoFrameOut(TPVideoFrameBuffer paramTPVideoFrameBuffer)
@@ -219,13 +222,13 @@ public class TPPlayerBaseListeners
     this.mOnSubtitleDataListener = ((ITPPlayerBaseListener.IOnSubtitleDataListener)localObject);
   }
   
-  public void setOnSubtitleFrameOutLisener(ITPPlayerBaseListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener)
+  public void setOnSubtitleFrameOutListener(ITPPlayerBaseListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener)
   {
     Object localObject = paramIOnSubtitleFrameOutListener;
     if (paramIOnSubtitleFrameOutListener == null) {
       localObject = this.EMPTY_LISTENERS;
     }
-    this.mOnSubtitleFrameOutLisener = ((ITPPlayerBaseListener.IOnSubtitleFrameOutListener)localObject);
+    this.mOnSubtitleFrameOutListener = ((ITPPlayerBaseListener.IOnSubtitleFrameOutListener)localObject);
   }
   
   public void setOnVideoFrameOutListener(ITPPlayerBaseListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener)
@@ -254,10 +257,22 @@ public class TPPlayerBaseListeners
     }
     this.mOnVideoSizeChangedListener = ((ITPPlayerBaseListener.IOnVideoSizeChangedListener)localObject);
   }
+  
+  public void updateTag(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (this.mTag = "TPPlayerListenerS";; this.mTag = paramString)
+    {
+      if (this.EMPTY_LISTENERS != null) {
+        TPPlayerBaseListeners.TPPlayerListenersEmptyImpl.access$002(this.EMPTY_LISTENERS, this.mTag);
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlayerBaseListeners
  * JD-Core Version:    0.7.0.1
  */

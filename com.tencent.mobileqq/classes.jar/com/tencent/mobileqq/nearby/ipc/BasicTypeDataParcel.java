@@ -3,12 +3,11 @@ package com.tencent.mobileqq.nearby.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axuo;
 
 public class BasicTypeDataParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator<BasicTypeDataParcel> CREATOR = new axuo();
+  public static final Parcelable.Creator<BasicTypeDataParcel> CREATOR = new BasicTypeDataParcel.1();
   public int a;
   public Object[] a;
   
@@ -18,7 +17,7 @@ public class BasicTypeDataParcel
     this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
   }
   
-  public BasicTypeDataParcel(Parcel paramParcel)
+  protected BasicTypeDataParcel(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_ArrayOfJavaLangObject = paramParcel.readArray(Object.class.getClassLoader());

@@ -14,6 +14,7 @@ public class ExtendFriendUserInfo
   public int distance;
   public boolean enableQQCall;
   public int fromType;
+  public String matchSource;
   public String miniProfileMsg;
   public boolean showDistanceHLight;
   public int tagID;
@@ -73,12 +74,13 @@ public class ExtendFriendUserInfo
     localStringBuilder.append("showDistanceHLight:").append(this.showDistanceHLight).append(",");
     localStringBuilder.append("enableQQCall:").append(this.enableQQCall).append(",");
     localStringBuilder.append("fromType:").append(this.fromType).append(",");
+    localStringBuilder.append("matchSource:").append(this.matchSource).append(",");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ExtendFriendUserInfo
  * JD-Core Version:    0.7.0.1
  */

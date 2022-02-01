@@ -12,10 +12,10 @@ public final class SvcResponsePullDisGroupSeq
   implements Cloneable
 {
   static ArrayList<stDisGroupInfo> cache_vDisInfo;
-  public byte cReplyCode;
+  public byte cReplyCode = 0;
   public String strResult = "";
-  public long uUploadLimit;
-  public ArrayList<stDisGroupInfo> vDisInfo;
+  public long uUploadLimit = 0L;
+  public ArrayList<stDisGroupInfo> vDisInfo = null;
   
   static
   {

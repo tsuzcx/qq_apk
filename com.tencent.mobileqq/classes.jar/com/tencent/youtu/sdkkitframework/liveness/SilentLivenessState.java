@@ -6,6 +6,9 @@ import android.graphics.YuvImage;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.Size;
+import com.tencent.youtu.YTFaceTracker;
+import com.tencent.youtu.YTFaceTracker.Param;
+import com.tencent.youtu.YTFaceTracker.TrackedFace;
 import com.tencent.youtu.sdkkitframework.common.CommonUtils;
 import com.tencent.youtu.sdkkitframework.common.FileUtils;
 import com.tencent.youtu.sdkkitframework.common.TimeoutCounter;
@@ -17,16 +20,10 @@ import com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.ProcessHelper;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.StateNameHelper;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.StateNameHelper.StateClassName;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTBaseFunctionListener;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtFrameworkFireEventType;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKPlatformContext;
-import com.tencent.youtu.ytcommon.tools.YTFaceUtils;
-import com.tencent.youtu.ytfacetrack.YTFaceTrack;
-import com.tencent.youtu.ytfacetrack.YTFaceTrack.FaceStatus;
-import com.tencent.youtu.ytfacetrack.YTFaceTrack.YTImage;
-import com.tencent.youtu.ytfacetrack.param.YTFaceAlignParam;
-import com.tencent.youtu.ytfacetrack.param.YTFaceDetectParam;
-import com.tencent.youtu.ytfacetrack.param.YTFaceTrackParam;
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,84 +34,368 @@ public class SilentLivenessState
   extends YtFSMBaseState
 {
   private static final int CONTINUOUS_DETECT_COUNT = 3;
-  private static int FIX_EYE;
-  private static int FIX_EYEBROW_MOUTH;
-  private static int FIX_EYE_EYEBROW;
-  private static int FIX_EYE_EYEBROW_MOUTH;
-  private static int FIX_EYE_MOUTH;
-  private static int FIX_MOUTH;
-  private static int FIX_NONE;
-  private static int REFINE_CONFIG_ALL = 8198;
-  private static int REFINE_CONFIG_EYEMOUTH = 8199;
-  private static int REFINE_CONFIG_OFF;
   private static final String TAG = SilentLivenessState.class.getSimpleName();
-  private final int TARGET_MASK_HEIGHT = 1280;
-  private final int TARGET_MASK_WIDTH = 720;
+  private float bigFaceThresholdBuffer = 0.05F;
   private float bigfaceThreshold = 1.0F;
   private float blurDetectThreshold = 0.3F;
   private int cameraRotateState;
+  private String configIniName = "yt_model_config.ini";
   private int continueCloseEyeCount = 0;
   private int continueNoValidFaceCount = 0;
   private int continueNovalidFaceCountThreshold = 5;
+  private int continueShelterJudgeCount = 0;
   private TimeoutCounter countdowner = new TimeoutCounter("Liveness timeout counter");
+  private int currentAdviseTip = 0;
+  private int currentShelterJudge = -1;
   private int detectAvailableCount = 0;
   private int detectIntervalCount = 5;
+  private String extraTips = "";
   private float eyeOpenThreshold = 0.22F;
+  private int frameNum = 0;
+  private float inRectThreshold = 0.7F;
+  float intersectRatio = -1.0E+010F;
+  private int invalidPointCount;
   private boolean isFirstStablePass = false;
   private boolean isLoadResourceOnline = false;
   private float maskHeightRatio;
   private float maskWidthRatio;
-  private float maxEyeScore = -99999.0F;
-  private float minMouthScore = 99999.0F;
+  private float maxEyeScore = -1.0E+010F;
+  private float maxInRectRatio = -1.0E+010F;
+  private float maxMouthScore = -1.0E+010F;
+  private float maxShelterScore = -1.0E+010F;
+  private float minEyeScore = 1.0E+010F;
+  private float minMouthScore = 1.0E+010F;
   private boolean needBigFaceMode = true;
   private boolean needCheckEyeOpen = false;
+  private boolean needCheckMultiFaces = false;
   private boolean needCheckPose = false;
+  private boolean needCheckShelter = true;
   private boolean needManualTrigger = false;
   private boolean needTimeoutTimer = false;
   private int pitchThreshold = 30;
+  private float poseThresholdBuffer = 0.05F;
   private TimeoutCounter predetectCountdowner = new TimeoutCounter("Predetect timeout counter");
-  private SilentLivenessState.FacePreviewingAdvise prevAdvise = SilentLivenessState.FacePreviewingAdvise.ADVISE_NAN;
+  private int prevAdvise = -1;
   private int prevJudge = -1;
   private int previewHeight;
   private int previewWidth;
+  private Rect previousFaceRect = null;
+  private int previousShelterJudge = 0;
   private String resourceDownloadPath = "";
   private int rollThreshold = 25;
   private int sameFaceTipCount = 0;
+  private float smallFaceThresholdBuffer = 0.05F;
   private float smallfaceThreshold = 0.5F;
   private int stableCountNum = 5;
+  private int stableFaceCount = 0;
+  private float stableRoiThreshold = 0.9F;
   private boolean tipFilterFlag = true;
   private boolean triggerLiveBeginEventFlag = false;
+  private int unstableCount = 0;
   private int yawThreshold = 25;
+  private YTFaceTracker ytFaceTracker = null;
   
-  static
+  private void checkBestImage(YTFaceTracker.TrackedFace paramTrackedFace, YuvImage paramYuvImage)
   {
-    FIX_NONE = 0;
-    FIX_EYE = 1;
-    FIX_EYE_EYEBROW = 3;
-    FIX_MOUTH = 4;
-    FIX_EYE_MOUTH = 5;
-    FIX_EYEBROW_MOUTH = 6;
-    FIX_EYE_EYEBROW_MOUTH = 7;
-    REFINE_CONFIG_OFF = 8197;
-  }
-  
-  private void checkBestImage(YTFaceTrack.FaceStatus paramFaceStatus, YuvImage paramYuvImage)
-  {
-    float f1 = YtSDKKitCommon.ProcessHelper.calcEyeScore(paramFaceStatus.xys);
-    float f2 = YtSDKKitCommon.ProcessHelper.calcMouthScore(paramFaceStatus.xys);
-    if ((f1 > this.maxEyeScore) && (f2 < this.minMouthScore))
+    int i = 0;
+    float[] arrayOfFloat = YtSDKKitCommon.ProcessHelper.calcEyeScore(paramTrackedFace.faceShape);
+    float f2 = YtSDKKitCommon.ProcessHelper.calcMouthScore(paramTrackedFace.faceShape);
+    float f1 = 0.0F;
+    float f3 = arrayOfFloat[0];
+    f3 = arrayOfFloat[1] + f3;
+    while (i < paramTrackedFace.faceVisible.length)
     {
-      this.maxEyeScore = f1;
-      this.minMouthScore = f2;
-      this.stateData.put("best_image", paramYuvImage);
-      this.stateData.put("best_shape", paramFaceStatus.xys);
+      f1 += paramTrackedFace.faceVisible[i];
+      i += 1;
     }
+    if (this.stableFaceCount < this.stableCountNum) {
+      YtLogger.e(TAG, "stable count " + this.stableFaceCount);
+    }
+    do
+    {
+      return;
+      if (this.intersectRatio < this.maxInRectRatio - 0.05D) {
+        break label510;
+      }
+      this.maxInRectRatio = this.intersectRatio;
+      if (this.needCheckShelter)
+      {
+        if (this.maxShelterScore > f1) {
+          break;
+        }
+        this.maxShelterScore = f1;
+      }
+      YtLogger.d(TAG, "test2 shelter score " + f1 + " inRectThreshold " + this.intersectRatio + " eye " + f3 + " mouth " + f2);
+      if ((f3 >= this.maxEyeScore - 0.05D) && (f2 <= Math.max(this.minMouthScore, 15.0F)))
+      {
+        YtLogger.d(TAG, "best shelter score " + f1 + " inRectThreshold " + this.intersectRatio);
+        this.maxEyeScore = f3;
+        this.minMouthScore = f2;
+        this.stateData.put("best_image", paramYuvImage);
+        this.stateData.put("best_shape", paramTrackedFace.faceShape);
+        this.stateData.put("best_face_status", paramTrackedFace);
+      }
+      if (f3 < this.minEyeScore)
+      {
+        this.minEyeScore = f3;
+        this.stateData.put("closeeye_image", paramYuvImage);
+        this.stateData.put("closeeye_shape", paramTrackedFace.faceShape);
+        this.stateData.put("closeeye_face_status", paramTrackedFace);
+      }
+    } while (f2 <= this.maxMouthScore);
+    this.maxMouthScore = f2;
+    this.stateData.put("openmouth_image", paramYuvImage);
+    this.stateData.put("openmouth_shape", paramTrackedFace.faceShape);
+    this.stateData.put("openmouth_face_status", paramTrackedFace);
+    return;
+    YtLogger.d(TAG, "test1 shelter score " + f1 + " inRectThreshold " + this.intersectRatio + " eye " + f3 + " mouth " + f2);
+    return;
+    label510:
+    YtLogger.d(TAG, "test3 shelter score " + f1 + " inRectThreshold " + this.intersectRatio + " (" + this.maxInRectRatio + ") eye " + f3 + " mouth " + f2);
   }
   
-  private SilentLivenessState.FacePreviewingAdvise getFacePreviewAdvise(Rect paramRect1, Rect paramRect2, YTFaceTrack.FaceStatus paramFaceStatus)
+  private float[] convert130PtsTo90Pts(float[] paramArrayOfFloat)
   {
-    if (paramFaceStatus == null) {
-      return SilentLivenessState.FacePreviewingAdvise.ADVISE_NO_FACE;
+    float[] arrayOfFloat1 = new float['´'];
+    int[] arrayOfInt = new int[13];
+    int[] tmp15_13 = arrayOfInt;
+    tmp15_13[0] = 0;
+    int[] tmp19_15 = tmp15_13;
+    tmp19_15[1] = 4;
+    int[] tmp23_19 = tmp19_15;
+    tmp23_19[2] = 18;
+    int[] tmp28_23 = tmp23_19;
+    tmp28_23[3] = 19;
+    int[] tmp33_28 = tmp28_23;
+    tmp33_28[4] = 7;
+    int[] tmp38_33 = tmp33_28;
+    tmp38_33[5] = 8;
+    int[] tmp43_38 = tmp38_33;
+    tmp43_38[6] = 10;
+    int[] tmp49_43 = tmp43_38;
+    tmp49_43[7] = 11;
+    int[] tmp55_49 = tmp49_43;
+    tmp55_49[8] = 12;
+    int[] tmp61_55 = tmp55_49;
+    tmp61_55[9] = 14;
+    int[] tmp67_61 = tmp61_55;
+    tmp67_61[10] = 15;
+    int[] tmp73_67 = tmp67_61;
+    tmp73_67[11] = 21;
+    int[] tmp79_73 = tmp73_67;
+    tmp79_73[12] = 20;
+    tmp79_73;
+    int k = 0;
+    int i = 0;
+    int j = 0;
+    while (k < 32)
+    {
+      arrayOfFloat1[i] = paramArrayOfFloat[j];
+      j += 1;
+      k += 1;
+      i += 1;
+    }
+    k = 0;
+    while (k < 32)
+    {
+      arrayOfFloat1[i] = paramArrayOfFloat[j];
+      j += 1;
+      k += 1;
+      i += 1;
+    }
+    float[] arrayOfFloat2 = new float[44];
+    k = 0;
+    while (k < 44)
+    {
+      arrayOfFloat2[k] = paramArrayOfFloat[j];
+      k += 1;
+      j += 1;
+    }
+    arrayOfFloat2[16] = ((arrayOfFloat2[16] + arrayOfFloat2[18]) / 2.0F);
+    arrayOfFloat2[19] = ((arrayOfFloat2[19] + arrayOfFloat2[19]) / 2.0F);
+    arrayOfFloat2[28] = ((arrayOfFloat2[28] + arrayOfFloat2[26]) / 2.0F);
+    arrayOfFloat2[29] = ((arrayOfFloat2[29] + arrayOfFloat2[27]) / 2.0F);
+    k = 0;
+    while (k < 13)
+    {
+      int m = i + 1;
+      arrayOfFloat1[i] = arrayOfFloat2[(arrayOfInt[k] * 2)];
+      arrayOfFloat1[m] = arrayOfFloat2[(arrayOfInt[k] * 2 + 1)];
+      k += 1;
+      i = m + 1;
+    }
+    k = 0;
+    while (k < 44)
+    {
+      arrayOfFloat1[i] = paramArrayOfFloat[j];
+      j += 1;
+      k += 1;
+      i += 1;
+    }
+    k = 0;
+    if (k < 82)
+    {
+      if (k / 2 % 2 == 1) {}
+      for (;;)
+      {
+        j += 1;
+        k += 1;
+        break;
+        arrayOfFloat1[i] = paramArrayOfFloat[j];
+        i += 1;
+      }
+    }
+    k = 0;
+    while (k < 14)
+    {
+      k += 1;
+      j += 1;
+    }
+    k = 0;
+    while (k < 4)
+    {
+      arrayOfFloat1[i] = paramArrayOfFloat[j];
+      k += 1;
+      j += 1;
+      i += 1;
+    }
+    return arrayOfFloat1;
+  }
+  
+  private YTFaceTracker.TrackedFace[] convert130To90(YTFaceTracker.TrackedFace[] paramArrayOfTrackedFace)
+  {
+    if (paramArrayOfTrackedFace != null)
+    {
+      int i = 0;
+      while (i < paramArrayOfTrackedFace.length)
+      {
+        paramArrayOfTrackedFace[i].faceShape = convert130PtsTo90Pts(paramArrayOfTrackedFace[i].faceShape);
+        paramArrayOfTrackedFace[i].faceVisible = convert130VisTo90Vis(paramArrayOfTrackedFace[i].faceVisible);
+        i += 1;
+      }
+    }
+    return paramArrayOfTrackedFace;
+  }
+  
+  private float[] convert130VisTo90Vis(float[] paramArrayOfFloat)
+  {
+    float[] arrayOfFloat1 = new float[90];
+    int k = 0;
+    int i = 0;
+    int j = 0;
+    while (k < 16)
+    {
+      arrayOfFloat1[i] = paramArrayOfFloat[j];
+      j += 1;
+      k += 1;
+      i += 1;
+    }
+    k = 0;
+    while (k < 16)
+    {
+      arrayOfFloat1[i] = paramArrayOfFloat[j];
+      j += 1;
+      k += 1;
+      i += 1;
+    }
+    float[] arrayOfFloat2 = new float[22];
+    k = 0;
+    while (k < 22)
+    {
+      arrayOfFloat2[k] = paramArrayOfFloat[j];
+      k += 1;
+      j += 1;
+    }
+    arrayOfFloat2[8] = ((arrayOfFloat2[8] + arrayOfFloat2[9]) / 2.0F);
+    arrayOfFloat2[14] = ((arrayOfFloat2[14] + arrayOfFloat2[13]) / 2.0F);
+    k = 0;
+    while (k < 13)
+    {
+      arrayOfFloat1[i] = arrayOfFloat2[new int[] { 0, 4, 18, 19, 7, 8, 10, 11, 12, 14, 15, 21, 20 }[k]];
+      k += 1;
+      i += 1;
+    }
+    k = 0;
+    while (k < 22)
+    {
+      arrayOfFloat1[i] = paramArrayOfFloat[j];
+      j += 1;
+      k += 1;
+      i += 1;
+    }
+    k = 0;
+    if (k < 41)
+    {
+      if (k % 2 == 1) {}
+      for (;;)
+      {
+        j += 1;
+        k += 1;
+        break;
+        arrayOfFloat1[i] = paramArrayOfFloat[j];
+        i += 1;
+      }
+    }
+    k = 0;
+    while (k < 7)
+    {
+      k += 1;
+      j += 1;
+    }
+    k = 0;
+    while (k < 2)
+    {
+      arrayOfFloat1[i] = paramArrayOfFloat[j];
+      k += 1;
+      j += 1;
+      i += 1;
+    }
+    return arrayOfFloat1;
+  }
+  
+  public static String convertAdvise(int paramInt)
+  {
+    if ((paramInt == 0) || (paramInt == 9)) {
+      return "fl_pose_keep";
+    }
+    if (paramInt == 4) {
+      return "fl_pose_not_in_rect";
+    }
+    if (paramInt == 2) {
+      return "fl_pose_closer";
+    }
+    if (paramInt == 3) {
+      return "fl_pose_farer";
+    }
+    if (paramInt == 5) {
+      return "fl_pose_incorrect";
+    }
+    if (paramInt == 1) {
+      return "fl_no_face";
+    }
+    if (paramInt == 6) {
+      return "fl_pose_open_eye";
+    }
+    if (paramInt == 8) {
+      return "fl_incomplete_face";
+    }
+    if (paramInt == 7) {
+      return "fl_too_many_faces";
+    }
+    return "fl_act_silence";
+  }
+  
+  private int getFacePreviewAdvise(Rect paramRect1, Rect paramRect2, YTFaceTracker.TrackedFace paramTrackedFace)
+  {
+    int i = 1;
+    int j = 0;
+    if (paramTrackedFace == null)
+    {
+      this.currentAdviseTip = i;
+      if (j != 0) {
+        i = 9;
+      }
+      return i;
     }
     Rect localRect = new Rect(0, 0, 0, 0);
     YtLogger.d(TAG, "camera" + this.previewWidth + "x" + this.previewHeight + " ratio " + this.maskWidthRatio + "x" + this.maskHeightRatio);
@@ -123,9 +404,23 @@ public class SilentLivenessState
     localRect.right = ((int)(paramRect2.right * this.maskWidthRatio));
     localRect.top = ((int)(paramRect2.top * this.maskHeightRatio));
     localRect.bottom = ((int)(paramRect2.bottom * this.maskHeightRatio));
-    boolean bool = paramRect1.contains(localRect);
-    YtLogger.d(TAG, "faceInMask : " + localRect.left + " " + localRect.top + " " + localRect.right + " " + localRect.bottom + "in rect" + bool);
-    float f = (paramRect2.right - paramRect2.left) / (this.previewWidth * 1.0F);
+    this.invalidPointCount = 0;
+    i = 0;
+    int k;
+    while (i < paramTrackedFace.faceShape.length / 2)
+    {
+      k = (int)paramTrackedFace.faceShape[(i * 2)];
+      k = (int)paramTrackedFace.faceShape[(i * 2 + 1)];
+      if ((paramTrackedFace.faceShape[(i * 2)] > this.previewWidth) || (paramTrackedFace.faceShape[(i * 2)] < 0.0F) || (paramTrackedFace.faceShape[(i * 2 + 1)] < 0.0F) || (paramTrackedFace.faceShape[(i * 2 + 1)] > this.previewHeight)) {
+        this.invalidPointCount += 1;
+      }
+      i += 1;
+    }
+    paramRect1 = getIntersectionRect(paramRect1, localRect);
+    float f = paramRect1.width();
+    this.intersectRatio = Math.abs(paramRect1.height() * f / localRect.width() / localRect.height());
+    YtLogger.d(TAG, "faceInMask : " + localRect.left + " " + localRect.top + " " + localRect.right + " " + localRect.bottom + " in rect ratio" + this.intersectRatio);
+    f = Math.abs((paramRect2.right - paramRect2.left) / (this.previewWidth * 1.0F));
     paramRect1 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.ACTION_STATE));
     if (paramRect1 != null)
     {
@@ -136,24 +431,65 @@ public class SilentLivenessState
         if ((i != 3) && (i != 4)) {}
       }
     }
-    for (int i = 0;; i = 1)
+    for (i = 0;; i = 1)
     {
       YtLogger.d(TAG, "face area ratio:" + f);
-      if (f > this.bigfaceThreshold) {
-        return SilentLivenessState.FacePreviewingAdvise.ADVISE_TOO_CLOSE;
+      if (this.invalidPointCount >= 3)
+      {
+        YtLogger.w(TAG, "face incomplete invalid point count:" + this.invalidPointCount);
+        i = 8;
+        break;
       }
-      if (!bool) {
-        return SilentLivenessState.FacePreviewingAdvise.ADVISE_NOT_IN_RECT;
+      if (f > this.bigfaceThreshold)
+      {
+        YtLogger.w(TAG, "face too big:" + f);
+        if (f > this.bigfaceThreshold + this.bigFaceThresholdBuffer) {
+          break label1194;
+        }
+        j = 1;
+        i = 3;
+        break;
       }
-      if (f < this.smallfaceThreshold) {
-        return SilentLivenessState.FacePreviewingAdvise.ADVISE_TOO_FAR;
+      if (this.intersectRatio < this.inRectThreshold)
+      {
+        YtLogger.w(TAG, "face not in rect ratio:" + this.intersectRatio);
+        i = 4;
+        break;
       }
-      if ((i != 0) && ((Math.abs(paramFaceStatus.pitch) > this.pitchThreshold) || (Math.abs(paramFaceStatus.yaw) > this.yawThreshold) || (Math.abs(paramFaceStatus.roll) > this.rollThreshold))) {
-        return SilentLivenessState.FacePreviewingAdvise.ADVISE_INCORRECT_POSTURE;
+      if (f < this.smallfaceThreshold)
+      {
+        YtLogger.w(TAG, "face too small:" + f);
+        i = 2;
+        if (f < this.smallfaceThreshold - this.smallFaceThresholdBuffer) {
+          break label1191;
+        }
+        j = 1;
+        i = 2;
+        break;
+      }
+      if ((i != 0) && ((Math.abs(paramTrackedFace.pitch) > this.pitchThreshold) || (Math.abs(paramTrackedFace.yaw) > this.yawThreshold) || (Math.abs(paramTrackedFace.roll) > this.rollThreshold)))
+      {
+        YtLogger.w(TAG, "face pose not right (" + paramTrackedFace.pitch + "," + paramTrackedFace.yaw + "," + paramTrackedFace.roll + ")");
+        k = 5;
+        i = k;
+        if (Math.abs(paramTrackedFace.pitch) > this.pitchThreshold + this.poseThresholdBuffer) {
+          break label1191;
+        }
+        i = k;
+        if (Math.abs(paramTrackedFace.yaw) > this.yawThreshold + this.poseThresholdBuffer) {
+          break label1191;
+        }
+        i = k;
+        if (Math.abs(paramTrackedFace.roll) > this.rollThreshold + this.poseThresholdBuffer) {
+          break label1191;
+        }
+        j = 1;
+        i = 5;
+        break;
       }
       if ((this.needCheckEyeOpen) && (!isActionStage()))
       {
-        f = YtSDKKitCommon.ProcessHelper.preCheckCloseEyeScore(paramFaceStatus.xys);
+        f = YtSDKKitCommon.ProcessHelper.preCheckCloseEyeScore(paramTrackedFace.faceShape);
         YtLogger.d(TAG, "eye score:" + f + " cnt:" + this.continueCloseEyeCount);
         if (f < this.eyeOpenThreshold)
         {
@@ -162,42 +498,52 @@ public class SilentLivenessState
           if (this.detectAvailableCount < 0) {
             this.detectAvailableCount = 0;
           }
+          label1128:
           if (YtFSM.getInstance().getWorkMode() == YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_SILENT_TYPE) {
-            break label659;
+            break label1185;
           }
         }
       }
-      label659:
+      label1185:
       for (i = 10;; i = 4)
       {
         if (this.continueCloseEyeCount >= i)
         {
-          paramRect1 = SilentLivenessState.FacePreviewingAdvise.ADVISE_EYE_CLOSE;
+          i = 6;
           this.continueCloseEyeCount = 0;
-          return paramRect1;
-          this.continueCloseEyeCount = 0;
-          break;
         }
-        return SilentLivenessState.FacePreviewingAdvise.ADVISE_PASS;
-        return SilentLivenessState.FacePreviewingAdvise.ADVISE_PASS;
+        for (;;)
+        {
+          break;
+          this.continueCloseEyeCount = 0;
+          break label1128;
+          i = 0;
+        }
+        i = 0;
+        break;
       }
+      label1191:
+      break;
+      label1194:
+      i = 3;
+      break;
     }
   }
   
-  private Rect getFaceRect(YTFaceTrack.FaceStatus paramFaceStatus)
+  private Rect getFaceRect(YTFaceTracker.TrackedFace paramTrackedFace)
   {
-    float f4 = paramFaceStatus.xys[0];
-    float f3 = paramFaceStatus.xys[0];
-    float f2 = paramFaceStatus.xys[1];
-    float f1 = paramFaceStatus.xys[1];
+    float f4 = paramTrackedFace.faceShape[0];
+    float f3 = paramTrackedFace.faceShape[0];
+    float f2 = paramTrackedFace.faceShape[1];
+    float f1 = paramTrackedFace.faceShape[1];
     int i = 0;
     while (i < 180)
     {
-      f4 = Math.min(f4, paramFaceStatus.xys[i]);
-      f3 = Math.max(f3, paramFaceStatus.xys[i]);
+      f4 = Math.min(f4, paramTrackedFace.faceShape[i]);
+      f3 = Math.max(f3, paramTrackedFace.faceShape[i]);
       i += 1;
-      f2 = Math.min(f2, paramFaceStatus.xys[i]);
-      f1 = Math.max(f1, paramFaceStatus.xys[i]);
+      f2 = Math.min(f2, paramTrackedFace.faceShape[i]);
+      f1 = Math.max(f1, paramTrackedFace.faceShape[i]);
       i += 1;
     }
     float f5 = this.previewWidth - 1 - f4;
@@ -243,12 +589,12 @@ public class SilentLivenessState
       if (f2 > this.previewHeight - 1) {
         f5 = this.previewHeight - 1;
       }
-      paramFaceStatus = new Rect();
-      paramFaceStatus.left = ((int)f3);
-      paramFaceStatus.top = ((int)f1);
-      paramFaceStatus.right = ((int)f4);
-      paramFaceStatus.bottom = ((int)f5);
-      return paramFaceStatus;
+      paramTrackedFace = new Rect();
+      paramTrackedFace.left = ((int)f3);
+      paramTrackedFace.top = ((int)f1);
+      paramTrackedFace.right = ((int)f4);
+      paramTrackedFace.bottom = ((int)f5);
+      return paramTrackedFace;
       f4 = f2;
       break;
       f2 = f6;
@@ -256,22 +602,56 @@ public class SilentLivenessState
     }
   }
   
-  private SilentLivenessState.FacePreviewingAdvise getPoseJudge(YTFaceTrack.FaceStatus[] paramArrayOfFaceStatus)
+  private int getPoseJudge(YTFaceTracker.TrackedFace[] paramArrayOfTrackedFace)
   {
-    paramArrayOfFaceStatus = paramArrayOfFaceStatus[0];
-    Rect localRect = getFaceRect(paramArrayOfFaceStatus);
-    YtLogger.d(TAG, "rect is: " + localRect.left + ", " + localRect.top + ", " + localRect.right + ", " + localRect.bottom);
-    return getFacePreviewAdvise(YtSDKKitFramework.getInstance().getDetectRect(), localRect, paramArrayOfFaceStatus);
+    paramArrayOfTrackedFace = paramArrayOfTrackedFace[0];
+    Rect localRect1 = getFaceRect(paramArrayOfTrackedFace);
+    if (this.previousFaceRect == null)
+    {
+      this.previousFaceRect = localRect1;
+      this.stableFaceCount = 0;
+      YtLogger.d(TAG, "rect is: " + localRect1.left + ", " + localRect1.top + ", " + localRect1.right + ", " + localRect1.bottom);
+      return getFacePreviewAdvise(YtSDKKitFramework.getInstance().getDetectRect(), localRect1, paramArrayOfTrackedFace);
+    }
+    Rect localRect2 = getIntersectionRect(localRect1, this.previousFaceRect);
+    if ((localRect1.height() != 0) && (localRect1.width() != 0))
+    {
+      float f = localRect2.width();
+      f = Math.abs(localRect2.height() * f / localRect1.height() / localRect1.width());
+      YtLogger.d(TAG, "pose ratio " + f);
+      if (f >= this.stableRoiThreshold) {
+        break label219;
+      }
+      this.extraTips = "fl_act_screen_shaking";
+    }
+    for (this.stableFaceCount = 0;; this.stableFaceCount += 1)
+    {
+      this.previousFaceRect = localRect1;
+      break;
+      label219:
+      this.extraTips = "";
+    }
   }
   
-  private int getShelterJudge(YTFaceTrack.FaceStatus[] paramArrayOfFaceStatus)
+  private int getShelterJudge(YTFaceTracker.TrackedFace[] paramArrayOfTrackedFace)
   {
-    return YTFaceUtils.shelterJudge(paramArrayOfFaceStatus[0].pointsVis);
+    int i = shelterJudge(paramArrayOfTrackedFace[0].faceVisible);
+    if (this.currentShelterJudge != i)
+    {
+      this.continueShelterJudgeCount = 0;
+      this.currentShelterJudge = i;
+    }
+    while ((this.frameNum >= 7) && (this.continueShelterJudgeCount < 7))
+    {
+      return this.previousShelterJudge;
+      this.continueShelterJudgeCount += 1;
+    }
+    this.previousShelterJudge = this.currentShelterJudge;
+    return i;
   }
   
   private void initYoutuInstance()
   {
-    int j = 0;
     Context localContext = YtFSM.getInstance().getContext().currentAppContext;
     Object localObject = localContext.getFilesDir().getAbsolutePath();
     if (this.isLoadResourceOnline)
@@ -279,79 +659,44 @@ public class SilentLivenessState
       localObject = this.resourceDownloadPath;
       YtLogger.i(TAG, "Use online path:" + (String)localObject);
     }
-    String str1;
-    String str2;
     for (;;)
     {
-      arrayOfString = new String[4];
-      arrayOfString[0] = "net1_18.rpnmodel";
-      arrayOfString[1] = "net1_18_bin.rpnproto";
-      arrayOfString[2] = "net2_36.rpnmodel";
-      arrayOfString[3] = "net2_36_bin.rpnproto";
-      if (this.isLoadResourceOnline) {
-        break;
-      }
-      i = 0;
-      while (i < arrayOfString.length)
+      try
       {
-        str1 = arrayOfString[i];
-        str2 = (String)localObject + "/" + str1;
-        FileUtils.copyAsset(localContext.getAssets(), "FaceTrackModels/detector/" + str1, str2);
-        i += 1;
+        if (!this.isLoadResourceOnline)
+        {
+          YtLogger.i(TAG, "init from asset");
+          this.ytFaceTracker = new YTFaceTracker(localContext.getAssets(), "models/face-tracker-v001", this.configIniName);
+          localObject = this.ytFaceTracker.getParam();
+          YtLogger.i(TAG, "big face mode" + this.needBigFaceMode);
+          if (this.needBigFaceMode)
+          {
+            i = 1;
+            ((YTFaceTracker.Param)localObject).biggerFaceMode = i;
+            ((YTFaceTracker.Param)localObject).minFaceSize = Math.max(Math.min(this.previewWidth, this.previewHeight) / 5, 40);
+            ((YTFaceTracker.Param)localObject).detInterval = this.detectIntervalCount;
+            YTFaceTracker.getVersion();
+            YtLogger.i(TAG, "Detect version:" + YTFaceTracker.getVersion());
+            return;
+            YtLogger.i(TAG, "Use local path:" + (String)localObject);
+          }
+        }
+        else
+        {
+          YtLogger.i(TAG, "init from filesystem");
+          this.ytFaceTracker = new YTFaceTracker((String)localObject, this.configIniName);
+          continue;
+        }
+        int i = 0;
       }
-      YtLogger.i(TAG, "Use local path:" + (String)localObject);
-    }
-    String[] arrayOfString = new String[5];
-    arrayOfString[0] = "align.rpdm";
-    arrayOfString[1] = "align.stb";
-    arrayOfString[2] = "align_bin.rpdc";
-    arrayOfString[3] = "eye.rpdm";
-    arrayOfString[4] = "eye_bin.rpdc";
-    if (!this.isLoadResourceOnline)
-    {
-      i = 0;
-      while (i < arrayOfString.length)
+      catch (Exception localException)
       {
-        str1 = arrayOfString[i];
-        str2 = (String)localObject + "/" + str1;
-        FileUtils.copyAsset(localContext.getAssets(), "FaceTrackModels/ufa/" + str1, str2);
-        i += 1;
+        YtSDKStats.getInstance().reportError(300101, "模式初始化失败");
+        YtFSM.getInstance().sendFSMEvent(new SilentLivenessState.1(this));
+        localException.printStackTrace();
+        return;
       }
     }
-    arrayOfString = new String[1];
-    arrayOfString[0] = "rotBasis.bin";
-    if (!this.isLoadResourceOnline)
-    {
-      i = j;
-      while (i < arrayOfString.length)
-      {
-        str1 = arrayOfString[i];
-        str2 = (String)localObject + "/" + str1;
-        FileUtils.copyAsset(localContext.getAssets(), "FaceTrackModels/poseest/" + str1, str2);
-        i += 1;
-      }
-    }
-    int i = YTFaceTrack.GlobalInit((String)localObject + "/");
-    if (i != 0)
-    {
-      YtSDKStats.getInstance().reportError(300101, "模式初始化失败");
-      YtFSM.getInstance().sendFSMEvent(new SilentLivenessState.1(this, i));
-      return;
-    }
-    localObject = YTFaceTrack.getInstance().GetFaceAlignParam();
-    ((YTFaceAlignParam)localObject).net_fix_config = FIX_EYE_MOUTH;
-    ((YTFaceAlignParam)localObject).refine_config = REFINE_CONFIG_OFF;
-    YTFaceTrack.getInstance().SetFaceAlignParam((YTFaceAlignParam)localObject);
-    localObject = YTFaceTrack.getInstance().GetFaceDetectParam();
-    YtLogger.i(TAG, "big face mode" + this.needBigFaceMode);
-    ((YTFaceDetectParam)localObject).bigger_face_mode = this.needBigFaceMode;
-    ((YTFaceDetectParam)localObject).min_face_size = Math.max(Math.min(this.previewWidth, this.previewHeight) / 5, 40);
-    YTFaceTrack.getInstance().SetFaceDetectParam((YTFaceDetectParam)localObject);
-    localObject = YTFaceTrack.getInstance().GetFaceTrackParam();
-    ((YTFaceTrackParam)localObject).need_pose_estimate = true;
-    ((YTFaceTrackParam)localObject).detect_interval = this.detectIntervalCount;
-    YTFaceTrack.getInstance().SetFaceTrackParam((YTFaceTrackParam)localObject);
-    YtLogger.i(TAG, "Detect version:" + YTFaceTrack.Version);
   }
   
   private boolean isActionStage()
@@ -364,116 +709,306 @@ public class SilentLivenessState
     YtFSM.getInstance().sendFSMEvent(paramHashMap);
   }
   
-  private void sendFaceStatusUITips(SilentLivenessState.FacePreviewingAdvise paramFacePreviewingAdvise, int paramInt)
+  private void sendFaceStatusUITips(int paramInt1, int paramInt2)
   {
     HashMap localHashMap = new HashMap();
-    if ((paramFacePreviewingAdvise != SilentLivenessState.FacePreviewingAdvise.ADVISE_PASS) || (paramInt != 0))
+    if (((paramInt1 != 0) && (paramInt1 != 9)) || (paramInt2 != 0))
     {
       localHashMap.put("ui_action", "not_pass");
       this.detectAvailableCount = 0;
-      if ((paramFacePreviewingAdvise != this.prevAdvise) || (paramInt != this.prevJudge)) {
-        break label90;
+      if ((paramInt1 != this.prevAdvise) || (paramInt2 != this.prevJudge)) {
+        break label101;
       }
     }
-    label90:
+    label101:
     for (this.sameFaceTipCount += 1;; this.sameFaceTipCount = 0)
     {
-      if ((!this.tipFilterFlag) || (this.sameFaceTipCount <= 3)) {
-        break label98;
+      if ((!this.tipFilterFlag) || (this.sameFaceTipCount <= 3) || (this.currentAdviseTip != paramInt1)) {
+        break label109;
       }
       return;
       this.detectAvailableCount += 1;
       break;
     }
-    label98:
-    this.prevAdvise = paramFacePreviewingAdvise;
-    this.prevJudge = paramInt;
-    if (paramFacePreviewingAdvise == SilentLivenessState.FacePreviewingAdvise.ADVISE_PASS) {
-      if (paramInt == 1) {
+    label109:
+    this.prevAdvise = paramInt1;
+    this.prevJudge = paramInt2;
+    YtLogger.d(TAG, " tips:" + convertAdvise(this.currentAdviseTip));
+    if ((this.currentAdviseTip == 0) || (this.currentAdviseTip == 9)) {
+      if (paramInt2 == 1) {
         localHashMap.put("ui_tips", "fl_no_left_face");
       }
     }
     for (;;)
     {
+      if (this.extraTips != "") {
+        localHashMap.put("ui_extra_tips", this.extraTips);
+      }
       sendFSMEvent(localHashMap);
       return;
-      if (paramInt == 2)
+      if (paramInt2 == 2)
       {
         localHashMap.put("ui_tips", "fl_no_chin");
       }
-      else if (paramInt == 3)
+      else if (paramInt2 == 3)
       {
         localHashMap.put("ui_tips", "fl_no_mouth");
       }
-      else if (paramInt == 4)
+      else if (paramInt2 == 4)
       {
         localHashMap.put("ui_tips", "fl_no_right_face");
       }
-      else if (paramInt == 5)
+      else if (paramInt2 == 5)
       {
         localHashMap.put("ui_tips", "fl_no_nose");
       }
-      else if (paramInt == 6)
+      else if (paramInt2 == 6)
       {
         localHashMap.put("ui_tips", "fl_no_right_eye");
       }
-      else if (paramInt == 7)
+      else if (paramInt2 == 7)
       {
         localHashMap.put("ui_tips", "fl_no_left_eye");
       }
-      else if ((paramInt == 0) && (this.sameFaceTipCount > 2) && (this.sameFaceTipCount < 5))
+      else if ((paramInt2 == 0) && (this.sameFaceTipCount > 2) && (this.sameFaceTipCount < 5))
       {
         localHashMap.put("ui_tips", "fl_pose_keep");
         localHashMap.put("ui_action", "pass");
         continue;
-        if (paramFacePreviewingAdvise == SilentLivenessState.FacePreviewingAdvise.ADVISE_NOT_IN_RECT) {
-          localHashMap.put("ui_tips", "fl_pose_not_in_rect");
-        } else if (paramFacePreviewingAdvise == SilentLivenessState.FacePreviewingAdvise.ADVISE_TOO_FAR) {
-          localHashMap.put("ui_tips", "fl_pose_closer");
-        } else if (paramFacePreviewingAdvise == SilentLivenessState.FacePreviewingAdvise.ADVISE_TOO_CLOSE) {
-          localHashMap.put("ui_tips", "fl_pose_farer");
-        } else if (paramFacePreviewingAdvise == SilentLivenessState.FacePreviewingAdvise.ADVISE_INCORRECT_POSTURE) {
-          localHashMap.put("ui_tips", "fl_pose_incorrect");
-        } else if (paramFacePreviewingAdvise == SilentLivenessState.FacePreviewingAdvise.ADVISE_NO_FACE) {
-          localHashMap.put("ui_tips", "fl_no_face");
-        } else if (paramFacePreviewingAdvise == SilentLivenessState.FacePreviewingAdvise.ADVISE_EYE_CLOSE) {
-          localHashMap.put("ui_tips", "fl_pose_open_eye");
-        }
+        localHashMap.put("ui_tips", convertAdvise(this.currentAdviseTip));
       }
     }
   }
   
-  private void sendUITipEvent(YTFaceTrack.FaceStatus[] paramArrayOfFaceStatus)
+  private void sendUITipEvent(YTFaceTracker.TrackedFace[] paramArrayOfTrackedFace)
   {
+    int i = 1;
+    int j = -1;
     HashMap localHashMap = new HashMap();
-    if (paramArrayOfFaceStatus == null)
-    {
-      localHashMap.put("ui_tips", "fl_no_face");
-      localHashMap.put("ui_action", "not_pass");
-      this.detectAvailableCount = 0;
-      this.prevAdvise = SilentLivenessState.FacePreviewingAdvise.ADVISE_NO_FACE;
-    }
-    for (;;)
-    {
-      if (localHashMap.size() > 0) {
-        sendFSMEvent(localHashMap);
-      }
-      return;
-      if (paramArrayOfFaceStatus.length > 1)
-      {
-        localHashMap.put("ui_tips", "fl_too_many_faces");
-        localHashMap.put("ui_action", "not_pass");
-        localHashMap.put("ui_error", "Failed");
-        this.detectAvailableCount = 0;
-        this.prevAdvise = SilentLivenessState.FacePreviewingAdvise.ADVISE_TOO_MANY_FACE;
-      }
-      else
-      {
-        SilentLivenessState.FacePreviewingAdvise localFacePreviewingAdvise = getPoseJudge(paramArrayOfFaceStatus);
-        YtLogger.i(TAG, "advise " + localFacePreviewingAdvise);
-        sendFaceStatusUITips(localFacePreviewingAdvise, getShelterJudge(paramArrayOfFaceStatus));
+    if (paramArrayOfTrackedFace == null) {
+      if (YtFSM.getInstance().getContext().baseFunctionListener == null) {
+        break label509;
       }
     }
+    label391:
+    label499:
+    label504:
+    label509:
+    for (paramArrayOfTrackedFace = YtFSM.getInstance().getContext().baseFunctionListener.getFrameResult(null);; paramArrayOfTrackedFace = null)
+    {
+      if (paramArrayOfTrackedFace != null)
+      {
+        if (!paramArrayOfTrackedFace.containsKey("Advise")) {
+          break label504;
+        }
+        i = ((Integer)paramArrayOfTrackedFace.get("Advise")).intValue();
+        this.currentAdviseTip = i;
+      }
+      for (;;)
+      {
+        sendFaceStatusUITips(i, j);
+        if (localHashMap.size() > 0) {
+          sendFSMEvent(localHashMap);
+        }
+        return;
+        this.currentAdviseTip = 1;
+        continue;
+        if (paramArrayOfTrackedFace.length > 1)
+        {
+          localHashMap.put("ui_error", "Failed");
+          if (!this.needCheckMultiFaces) {
+            break label499;
+          }
+          this.detectAvailableCount = 0;
+          this.prevAdvise = 7;
+        }
+        for (i = 7;; i = -1)
+        {
+          this.currentAdviseTip = 7;
+          break;
+          if (YtFSM.getInstance().getContext().baseFunctionListener != null)
+          {
+            Object localObject1 = new SilentLivenessState.YtFaceStatus(this);
+            Object localObject2 = getFaceRect(paramArrayOfTrackedFace[0]);
+            ((SilentLivenessState.YtFaceStatus)localObject1).x = ((Rect)localObject2).left;
+            ((SilentLivenessState.YtFaceStatus)localObject1).y = ((Rect)localObject2).top;
+            ((SilentLivenessState.YtFaceStatus)localObject1).w = (((Rect)localObject2).right - ((Rect)localObject2).left);
+            ((SilentLivenessState.YtFaceStatus)localObject1).h = (((Rect)localObject2).bottom - ((Rect)localObject2).top);
+            ((SilentLivenessState.YtFaceStatus)localObject1).pitch = paramArrayOfTrackedFace[0].pitch;
+            ((SilentLivenessState.YtFaceStatus)localObject1).yaw = paramArrayOfTrackedFace[0].yaw;
+            ((SilentLivenessState.YtFaceStatus)localObject1).roll = paramArrayOfTrackedFace[0].roll;
+            ((SilentLivenessState.YtFaceStatus)localObject1).illuminationScore = 0;
+            localObject2 = YtSDKKitCommon.ProcessHelper.calcEyeScore(paramArrayOfTrackedFace[0].faceShape);
+            ((SilentLivenessState.YtFaceStatus)localObject1).leftEyeOpenScore = localObject2[0];
+            ((SilentLivenessState.YtFaceStatus)localObject1).rightEyeOpenScore = localObject2[1];
+            ((SilentLivenessState.YtFaceStatus)localObject1).mouthOpenScore = YtSDKKitCommon.ProcessHelper.calcMouthScore(paramArrayOfTrackedFace[0].faceShape);
+            ((SilentLivenessState.YtFaceStatus)localObject1).xys = paramArrayOfTrackedFace[0].faceShape;
+            ((SilentLivenessState.YtFaceStatus)localObject1).pointsVis = paramArrayOfTrackedFace[0].faceVisible;
+            localObject1 = YtFSM.getInstance().getContext().baseFunctionListener.getFrameResult(localObject1);
+            if (localObject1 != null) {
+              if (((HashMap)localObject1).containsKey("Advise"))
+              {
+                i = ((Integer)((HashMap)localObject1).get("Advise")).intValue();
+                if (((HashMap)localObject1).containsKey("Shelter")) {
+                  j = ((Integer)((HashMap)localObject1).get("Shelter")).intValue();
+                }
+              }
+            }
+          }
+          for (;;)
+          {
+            int k = i;
+            if (i == -1) {
+              k = getPoseJudge(paramArrayOfTrackedFace);
+            }
+            YtLogger.i(TAG, "advise " + k);
+            if (j == -1)
+            {
+              j = getShelterJudge(paramArrayOfTrackedFace);
+              i = k;
+              break;
+            }
+            i = k;
+            break;
+            j = -1;
+            continue;
+            i = -1;
+            break label391;
+            j = -1;
+            i = -1;
+          }
+        }
+        i = -1;
+      }
+    }
+  }
+  
+  public static int shelterJudge(float[] paramArrayOfFloat)
+  {
+    if (paramArrayOfFloat == null)
+    {
+      YtLogger.e(TAG, "[YTFaceTraceInterface.blockJudge] input pointsVis is null.");
+      return -1;
+    }
+    if (paramArrayOfFloat.length != 90)
+    {
+      YtLogger.e(TAG, "[YTFaceTraceInterface.blockJudge] input pointsVis.length != 90. current pointsVis.length: " + paramArrayOfFloat.length);
+      return -2;
+    }
+    int i = 33;
+    int k;
+    for (int j = 0; i <= 45; j = k)
+    {
+      k = j;
+      if (paramArrayOfFloat[(i - 1)] < 0.8F) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    if (j >= 4) {
+      return 5;
+    }
+    i = 46;
+    for (j = 0; i <= 67; j = k)
+    {
+      k = j;
+      if (paramArrayOfFloat[(i - 1)] < 0.8F) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    if (j >= 4) {
+      return 3;
+    }
+    j = 9;
+    for (i = 0; j <= 16; i = k)
+    {
+      k = i;
+      if (paramArrayOfFloat[(j - 1)] < 0.9F) {
+        k = i + 1;
+      }
+      j += 1;
+    }
+    j = 25;
+    while (j <= 32)
+    {
+      k = i;
+      if (paramArrayOfFloat[(j - 1)] < 0.9F) {
+        k = i + 1;
+      }
+      j += 1;
+      i = k;
+    }
+    j = i;
+    if (paramArrayOfFloat[89] < 0.7F) {
+      j = i + 1;
+    }
+    if (j >= 4) {
+      return 6;
+    }
+    j = 1;
+    for (i = 0; j <= 8; i = k)
+    {
+      k = i;
+      if (paramArrayOfFloat[(j - 1)] < 0.9F) {
+        k = i + 1;
+      }
+      j += 1;
+    }
+    j = 17;
+    while (j <= 24)
+    {
+      k = i;
+      if (paramArrayOfFloat[(j - 1)] < 0.9F) {
+        k = i + 1;
+      }
+      j += 1;
+      i = k;
+    }
+    j = i;
+    if (paramArrayOfFloat[88] < 0.9F) {
+      j = i + 1;
+    }
+    if (j >= 4) {
+      return 7;
+    }
+    i = 68;
+    for (j = 0; i < 74; j = k)
+    {
+      k = j;
+      if (paramArrayOfFloat[(i - 1)] < 0.95F) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    if (j >= 3) {
+      return 1;
+    }
+    i = 82;
+    for (j = 0; i <= 88; j = k)
+    {
+      k = j;
+      if (paramArrayOfFloat[(i - 1)] < 0.95F) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    if (j >= 3) {
+      return 4;
+    }
+    i = 75;
+    for (j = 0; i <= 81; j = k)
+    {
+      k = j;
+      if (paramArrayOfFloat[(i - 1)] < 0.95F) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    if (j >= 3) {
+      return 2;
+    }
+    return 0;
   }
   
   public void enter()
@@ -483,6 +1018,7 @@ public class SilentLivenessState
   
   public void enterFirst()
   {
+    this.stateData.put("detect_instance", this.ytFaceTracker);
     if (!this.needManualTrigger)
     {
       this.countdowner.start();
@@ -494,6 +1030,11 @@ public class SilentLivenessState
   public void exit()
   {
     super.exit();
+  }
+  
+  Rect getIntersectionRect(Rect paramRect1, Rect paramRect2)
+  {
+    return new Rect(Math.max(paramRect1.left, paramRect2.left), Math.max(paramRect1.top, paramRect2.top), Math.min(paramRect1.right, paramRect2.right), Math.min(paramRect1.bottom, paramRect2.bottom));
   }
   
   public void handleEvent(YtSDKKitFramework.YtFrameworkFireEventType paramYtFrameworkFireEventType, Object paramObject)
@@ -561,6 +1102,8 @@ public class SilentLivenessState
         if (paramJSONObject.has("manual_trigger")) {
           this.needManualTrigger = paramJSONObject.getBoolean("manual_trigger");
         }
+        this.configIniName = paramJSONObject.optString("model_config_ini_name", "yt_model_config.ini");
+        this.needCheckMultiFaces = paramJSONObject.optBoolean("need_check_multiface", false);
         updateSDKSetting(paramJSONObject);
       }
       catch (JSONException paramString)
@@ -573,7 +1116,7 @@ public class SilentLivenessState
         continue;
       }
       if (!this.isLoadResourceOnline) {
-        FileUtils.loadLibrary("YTFaceTrackPro");
+        FileUtils.loadLibrary("YTFaceTracker");
       }
       paramString = YtFSM.getInstance().getContext().currentCamera.getParameters().getPreviewSize();
       this.cameraRotateState = YtFSM.getInstance().getContext().currentRotateState;
@@ -594,14 +1137,13 @@ public class SilentLivenessState
   public void moveToNextState()
   {
     super.moveToNextState();
-    if ((this.needManualTrigger) && (((this.needCheckPose) && (this.prevAdvise != SilentLivenessState.FacePreviewingAdvise.ADVISE_PASS)) || (this.prevAdvise == SilentLivenessState.FacePreviewingAdvise.ADVISE_TOO_MANY_FACE) || (this.prevAdvise == SilentLivenessState.FacePreviewingAdvise.ADVISE_NO_FACE)))
+    if ((this.needManualTrigger) && (((this.needCheckPose) && (this.prevAdvise != 0) && (this.prevAdvise != 9)) || ((this.needCheckMultiFaces) && (this.prevAdvise == 7)) || (this.prevAdvise == 8) || (this.prevAdvise == 1)))
     {
       this.continueNoValidFaceCount += 1;
       if (this.continueNoValidFaceCount <= this.continueNovalidFaceCountThreshold) {
-        break label225;
+        break label221;
       }
-      Object localObject = "no valid face count > " + this.continueNovalidFaceCountThreshold;
-      YtSDKStats.getInstance().reportInfo((String)localObject);
+      Object localObject = convertAdvise(this.prevAdvise);
       String str = CommonUtils.makeMessageJson(4194304, (String)localObject, "action check failed");
       YtSDKStats.getInstance().reportError(4194304, (String)localObject);
       localObject = new HashMap();
@@ -614,7 +1156,7 @@ public class SilentLivenessState
       YtFSM.getInstance().sendFSMEvent((HashMap)localObject);
       YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.IDLE_STATE));
     }
-    label225:
+    label221:
     do
     {
       return;
@@ -656,17 +1198,27 @@ public class SilentLivenessState
   
   public void reset()
   {
-    this.prevAdvise = SilentLivenessState.FacePreviewingAdvise.ADVISE_NAN;
+    this.prevAdvise = -1;
     this.detectAvailableCount = 0;
     this.continueCloseEyeCount = 0;
+    this.frameNum = 0;
     this.triggerLiveBeginEventFlag = false;
     this.sameFaceTipCount = 0;
-    this.maxEyeScore = -99999.0F;
-    this.minMouthScore = 99999.0F;
+    this.maxEyeScore = -1.0E+010F;
+    this.minMouthScore = 1.0E+010F;
+    this.minEyeScore = 1.0E+010F;
+    this.maxMouthScore = -1.0E+010F;
+    this.maxShelterScore = -1.0E+010F;
     this.isFirstStablePass = false;
     this.continueNoValidFaceCount = 0;
+    this.invalidPointCount = 0;
+    this.unstableCount = 0;
+    this.maxInRectRatio = -1.0E+010F;
     this.countdowner.cancel();
     this.predetectCountdowner.cancel();
+    this.stableFaceCount = 0;
+    this.currentShelterJudge = -1;
+    this.previousFaceRect = null;
     if (!this.needManualTrigger) {
       this.countdowner.reset();
     }
@@ -686,65 +1238,101 @@ public class SilentLivenessState
   public void unload()
   {
     super.unload();
-    try
-    {
-      YTFaceTrack.GlobalRelease();
-      return;
+    if (this.ytFaceTracker != null) {
+      this.ytFaceTracker.destroy();
     }
-    catch (Exception localException)
-    {
-      YtLogger.e(TAG, "SDK inner bug");
-    }
+    this.ytFaceTracker = null;
   }
   
   public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
-    if ((this.countdowner.checkTimeout()) || ((this.needManualTrigger) && (this.predetectCountdowner.checkTimeout()))) {
-      moveToNextState();
-    }
-    do
+    if ((this.countdowner.checkTimeout()) || ((this.needManualTrigger) && (this.predetectCountdowner.checkTimeout())))
     {
+      moveToNextState();
       return;
-      YTFaceTrack localYTFaceTrack = YTFaceTrack.getInstance();
-      Object localObject = new YTFaceTrack.YTImage();
-      ((YTFaceTrack.YTImage)localObject).width = paramInt1;
-      ((YTFaceTrack.YTImage)localObject).height = paramInt2;
-      float[] arrayOfFloat = new float[1];
-      CommonUtils.benchMarkBegin("detect");
-      paramArrayOfByte = localYTFaceTrack.DoDetectionProcessYUVWithBlur(paramArrayOfByte, paramInt1, paramInt2, this.cameraRotateState, true, arrayOfFloat, (YTFaceTrack.YTImage)localObject);
+    }
+    byte[] arrayOfByte = (byte[])paramArrayOfByte.clone();
+    this.frameNum += 1;
+    float[] arrayOfFloat = new float[1];
+    CommonUtils.benchMarkBegin("detect");
+    Object localObject;
+    try
+    {
+      paramArrayOfByte = this.ytFaceTracker.track(0, paramArrayOfByte, paramInt1, paramInt2, this.cameraRotateState, true, arrayOfByte);
+      if (paramArrayOfByte != null)
+      {
+        localObject = paramArrayOfByte;
+        if (paramArrayOfByte.length != 0) {}
+      }
+      else
+      {
+        localObject = null;
+      }
+      paramArrayOfByte = convert130To90((YTFaceTracker.TrackedFace[])localObject);
       CommonUtils.benchMarkEnd("detect");
       YtLogger.d(TAG, CommonUtils.getBenchMarkTime("detect"));
       YtLogger.d(TAG, "Blur score:" + Arrays.toString(arrayOfFloat));
-      if (paramArrayOfByte != null) {
+      if (paramArrayOfByte != null)
+      {
         YtLogger.i(TAG, "face status count " + paramArrayOfByte.length);
+        if (paramArrayOfByte.length > 1)
+        {
+          int i = -2147483648;
+          k = 0;
+          paramInt3 = 0;
+          while (paramInt3 < paramArrayOfByte.length)
+          {
+            localObject = getFaceRect(paramArrayOfByte[paramInt3]);
+            int j = ((Rect)localObject).width();
+            int m = ((Rect)localObject).height() * j;
+            j = i;
+            if (m >= i)
+            {
+              k = paramInt3;
+              j = m;
+            }
+            paramInt3 += 1;
+            i = j;
+          }
+        }
       }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      int k;
       for (;;)
       {
-        sendUITipEvent(paramArrayOfByte);
-        this.stateData.put("blur_score", Float.valueOf(arrayOfFloat[0]));
-        this.stateData.put("face_status", paramArrayOfByte);
-        this.stateData.put("pose_state", this.prevAdvise);
-        this.stateData.put("shelter_state", Integer.valueOf(this.prevJudge));
-        this.stateData.put("continuous_detect_count", Integer.valueOf(this.detectAvailableCount));
-        if (((YTFaceTrack.YTImage)localObject).data != null) {
-          break;
-        }
-        YtLogger.e(TAG, "yuv image data is null");
-        return;
-        YtLogger.i(TAG, "face status is null");
+        YtLogger.e(TAG, paramArrayOfByte.getLocalizedMessage());
+        paramArrayOfByte.printStackTrace();
+        paramArrayOfByte = null;
       }
-      localObject = new YuvImage(((YTFaceTrack.YTImage)localObject).data, 17, paramInt2, paramInt1, null);
-      if ((!this.stateData.containsKey("last_frame")) && (this.detectAvailableCount > this.stableCountNum))
+      if (k != 0)
       {
-        this.stateData.put("last_face_status", paramArrayOfByte);
-        this.stateData.put("last_frame", localObject);
+        YtLogger.i(TAG, "Found max face id:" + k);
+        paramArrayOfByte[0] = paramArrayOfByte[k];
       }
-      if (this.prevAdvise == SilentLivenessState.FacePreviewingAdvise.ADVISE_PASS) {
+    }
+    for (;;)
+    {
+      sendUITipEvent(paramArrayOfByte);
+      this.stateData.put("pose_state", Integer.valueOf(this.prevAdvise));
+      this.stateData.put("shelter_state", Integer.valueOf(this.prevJudge));
+      this.stateData.put("face_status", paramArrayOfByte);
+      this.stateData.put("continuous_detect_count", Integer.valueOf(this.detectAvailableCount));
+      localObject = new YuvImage(arrayOfByte, 17, paramInt2, paramInt1, null);
+      this.stateData.put("last_face_status", paramArrayOfByte);
+      this.stateData.put("last_frame", localObject);
+      if ((this.prevAdvise == 0) || (this.prevAdvise == 9)) {
         checkBestImage(paramArrayOfByte[0], (YuvImage)localObject);
       }
-    } while ((this.needManualTrigger) && ((this.needManualTrigger != true) || (this.triggerLiveBeginEventFlag != true)));
-    moveToNextState();
+      if ((this.stateData.get("best_image") == null) || ((this.needManualTrigger) && ((this.needManualTrigger != true) || (this.triggerLiveBeginEventFlag != true)))) {
+        break;
+      }
+      moveToNextState();
+      return;
+      YtLogger.i(TAG, "face status is null");
+    }
   }
   
   public void updateSDKSetting(JSONObject paramJSONObject)
@@ -793,6 +1381,20 @@ public class SilentLivenessState
       if (paramJSONObject.has("novalid_face_count")) {
         this.continueNovalidFaceCountThreshold = paramJSONObject.getInt("novalid_face_count");
       }
+      if (paramJSONObject.has("in_rect_ratio_threshold")) {
+        this.inRectThreshold = ((float)paramJSONObject.getDouble("in_rect_ratio_threshold"));
+      }
+      if (paramJSONObject.has("need_check_shelter")) {
+        this.needCheckShelter = paramJSONObject.getBoolean("need_check_shelter");
+      }
+      if (paramJSONObject.has("stable_roi_threshold")) {
+        this.stableRoiThreshold = ((float)paramJSONObject.getDouble("stable_roi_threshold"));
+      }
+      this.bigFaceThresholdBuffer = ((float)paramJSONObject.optDouble("bigface_ratio_buffer", 0.0500000007450581D));
+      this.smallFaceThresholdBuffer = ((float)paramJSONObject.optDouble("smallface_ratio_buffer", 0.0500000007450581D));
+      this.poseThresholdBuffer = ((float)paramJSONObject.optDouble("pose_ratio_buffer", 0.0500000007450581D));
+      this.stableRoiThreshold = ((float)paramJSONObject.optDouble("stable_roi_threshold", 0.8999999761581421D));
+      this.needCheckMultiFaces = paramJSONObject.optBoolean("need_check_multiface", false);
       return;
     }
     catch (JSONException paramJSONObject)
@@ -804,7 +1406,7 @@ public class SilentLivenessState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.SilentLivenessState
  * JD-Core Version:    0.7.0.1
  */

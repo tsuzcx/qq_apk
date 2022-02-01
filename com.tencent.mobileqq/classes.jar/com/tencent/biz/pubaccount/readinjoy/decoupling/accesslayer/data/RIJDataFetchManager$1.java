@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data;
 
-import pvj;
-import qew;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.model.BannerInfoModule;
 
-public final class RIJDataFetchManager$1
+final class RIJDataFetchManager$1
   implements Runnable
 {
-  public RIJDataFetchManager$1(int paramInt) {}
+  RIJDataFetchManager$1(int paramInt) {}
   
   public void run()
   {
-    qew localqew = pvj.a().a();
-    if (localqew != null) {
-      localqew.b(this.a);
+    BannerInfoModule localBannerInfoModule = ReadInJoyLogicEngine.a().a();
+    if (localBannerInfoModule != null) {
+      localBannerInfoModule.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data.RIJDataFetchManager.1
  * JD-Core Version:    0.7.0.1
  */

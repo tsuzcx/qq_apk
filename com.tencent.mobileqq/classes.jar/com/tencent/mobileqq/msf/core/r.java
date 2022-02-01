@@ -1,6 +1,16 @@
 package com.tencent.mobileqq.msf.core;
 
-class r {}
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+
+final class r
+  implements ServiceConnection
+{
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder) {}
+  
+  public void onServiceDisconnected(ComponentName paramComponentName) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

@@ -41,7 +41,7 @@ public class TkdConstraintWidthLayout
     return new TkdConstraintWidthLayout.LayoutParams(this, paramLayoutParams);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     Object localObject1 = null;
@@ -74,7 +74,7 @@ public class TkdConstraintWidthLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TkdConstraintWidthLayout
  * JD-Core Version:    0.7.0.1
  */

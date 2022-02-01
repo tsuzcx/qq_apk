@@ -2,11 +2,11 @@ package dov.com.qq.im.ae.play;
 
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
-import bnrh;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
 import com.tencent.ttpic.videoshelf.model.edit.ShelfNode;
 import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +35,7 @@ class AEVideoShelfEditFragment$5
     AEVideoShelfEditFragment.access$800(this.this$0);
     if (AEVideoShelfEditFragment.access$900(this.this$0).isEmpty())
     {
-      bnrh.c("AEVideoShelfEditFrag", "init NodeGroup Error!");
+      AEQLog.c("AEVideoShelfEditFrag", "init NodeGroup Error!");
       return;
     }
     paramVoid = new ArrayList();
@@ -63,7 +63,7 @@ class AEVideoShelfEditFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoShelfEditFragment.5
  * JD-Core Version:    0.7.0.1
  */

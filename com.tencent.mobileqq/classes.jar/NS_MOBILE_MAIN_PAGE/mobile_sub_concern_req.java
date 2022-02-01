@@ -10,10 +10,10 @@ public final class mobile_sub_concern_req
   extends JceStruct
 {
   static Map<Integer, String> cache_map_ext = new HashMap();
-  public int isconcern;
-  public Map<Integer, String> map_ext;
-  public long objuin;
-  public int source;
+  public int isconcern = 0;
+  public Map<Integer, String> map_ext = null;
+  public long objuin = 0L;
+  public int source = 0;
   
   static
   {

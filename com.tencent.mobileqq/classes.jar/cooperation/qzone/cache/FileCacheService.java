@@ -17,7 +17,7 @@ public class FileCacheService
   private final String mName;
   private AtomicInteger mStorageCounter = new AtomicInteger(0);
   private FileCacheService.StorageHandler mStorageHandler;
-  private int version;
+  private int version = 0;
   
   public FileCacheService(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
@@ -184,7 +184,7 @@ public class FileCacheService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.cache.FileCacheService
  * JD-Core Version:    0.7.0.1
  */

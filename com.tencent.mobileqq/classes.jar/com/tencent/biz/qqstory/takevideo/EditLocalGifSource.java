@@ -8,12 +8,11 @@ import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import cooperation.qzone.util.gifCoderWnsConfig;
 import java.io.File;
 import java.util.ArrayList;
-import ylj;
 
 public class EditLocalGifSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalGifSource> CREATOR = new ylj();
+  public static final Parcelable.Creator<EditLocalGifSource> CREATOR = new EditLocalGifSource.1();
   @NonNull
   public int a;
   @NonNull
@@ -29,9 +28,10 @@ public class EditLocalGifSource
   @NonNull
   public ArrayList<String> b = new ArrayList();
   
-  public EditLocalGifSource(Parcel paramParcel)
+  protected EditLocalGifSource(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     paramParcel.readStringList(this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(LocalMediaInfo.class.getClassLoader()));
@@ -41,6 +41,7 @@ public class EditLocalGifSource
   public EditLocalGifSource(String paramString, ArrayList<String> paramArrayList, LocalMediaInfo paramLocalMediaInfo)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     paramString = paramLocalMediaInfo;
@@ -54,6 +55,7 @@ public class EditLocalGifSource
   public EditLocalGifSource(String paramString, ArrayList<String> paramArrayList, LocalMediaInfo paramLocalMediaInfo, long paramLong)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     paramString = paramLocalMediaInfo;
@@ -64,7 +66,23 @@ public class EditLocalGifSource
     this.jdField_a_of_type_Long = paramLong;
   }
   
-  public String checkParam()
+  public int a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
+  }
+  
+  @NonNull
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+  }
+  
+  public String b()
   {
     if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))) {
       return "sourcePath is empty";
@@ -86,22 +104,6 @@ public class EditLocalGifSource
     return 0;
   }
   
-  public int getHeight()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
-  }
-  
-  @NonNull
-  public String getSourcePath()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int getWidth()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
@@ -112,7 +114,7 @@ public class EditLocalGifSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditLocalGifSource
  * JD-Core Version:    0.7.0.1
  */

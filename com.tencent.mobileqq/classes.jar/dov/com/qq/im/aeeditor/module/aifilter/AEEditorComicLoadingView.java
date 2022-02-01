@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import bnrh;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.io.File;
 
 public class AEEditorComicLoadingView
@@ -29,17 +29,17 @@ public class AEEditorComicLoadingView
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString + b + File.separator;
+    return jdField_a_of_type_JavaLangString + c + File.separator;
   }
   
   public String b()
   {
-    return jdField_a_of_type_JavaLangString + c + File.separator;
+    return jdField_a_of_type_JavaLangString + d + File.separator;
   }
   
   public void setShowResult(boolean paramBoolean)
   {
-    bnrh.a("AEEditorComicLoadingView", "setShowResult: " + paramBoolean);
+    AEQLog.a("AEEditorComicLoadingView", "setShowResult: " + paramBoolean);
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.post(new AEEditorComicLoadingView.1(this));
@@ -50,7 +50,7 @@ public class AEEditorComicLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.aifilter.AEEditorComicLoadingView
  * JD-Core Version:    0.7.0.1
  */

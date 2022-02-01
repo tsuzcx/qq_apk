@@ -2,13 +2,13 @@ package com.tencent.mobileqq.richmediabrowser;
 
 import android.os.Handler;
 import android.os.Looper;
-import bbpz;
-import bbqx;
-import bdla;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
 import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import com.tencent.mobileqq.richmediabrowser.presenter.AIOBrowserBasePresenter;
+import com.tencent.mobileqq.richmediabrowser.view.AIOBrowserBaseView;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
@@ -16,21 +16,21 @@ import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
 public class ImmersionHelper
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private bbpz jdField_a_of_type_Bbpz;
   private ImmersionHelper.ImmersionTimerRunnable jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper$ImmersionTimerRunnable;
+  private AIOBrowserBasePresenter jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter;
   public boolean a;
   public boolean b;
   public boolean c;
   
-  public ImmersionHelper(bbpz parambbpz)
+  public ImmersionHelper(AIOBrowserBasePresenter paramAIOBrowserBasePresenter)
   {
-    this.jdField_a_of_type_Bbpz = parambbpz;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter = paramAIOBrowserBasePresenter;
     this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper$ImmersionTimerRunnable = new ImmersionHelper.ImmersionTimerRunnable(this, null);
   }
   
   private int a()
   {
-    Object localObject = this.jdField_a_of_type_Bbpz.getSelectedItem();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.getSelectedItem();
     if ((localObject == null) || (((RichMediaBrowserInfo)localObject).baseData == null)) {
       return -1;
     }
@@ -64,7 +64,7 @@ public class ImmersionHelper
   private int a(String paramString)
   {
     int k = 1;
-    Object localObject = this.jdField_a_of_type_Bbpz.getSelectedItem();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.getSelectedItem();
     if ((localObject == null) || (((RichMediaBrowserInfo)localObject).baseData == null)) {}
     label89:
     label106:
@@ -117,7 +117,7 @@ public class ImmersionHelper
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Bbpz.b())
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.b())
     {
       BrowserLogHelper.getInstance().getGalleryLog().d("ImmersionHelper", 2, "startImmersionTimer, immersion switch is not open");
       return;
@@ -140,8 +140,8 @@ public class ImmersionHelper
   
   public void c()
   {
-    this.b = this.jdField_a_of_type_Bbpz.a.a();
-    this.c = this.jdField_a_of_type_Bbpz.d();
+    this.b = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.a.a();
+    this.c = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.d();
   }
   
   public void d()
@@ -153,10 +153,10 @@ public class ImmersionHelper
   public void e()
   {
     int i = a("0X800A9B5");
-    if (this.jdField_a_of_type_Bbpz.c()) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.c()) {}
     for (String str = "1";; str = "2")
     {
-      bdla.b(null, "dc00898", "", "", "0X800A9B5", "0X800A9B5", i, 0, str, "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A9B5", "0X800A9B5", i, 0, str, "", "", "");
       return;
     }
   }
@@ -166,19 +166,19 @@ public class ImmersionHelper
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = 2;; i = 1)
     {
-      bdla.b(null, "dc00898", "", "", "0X800A99B", "0X800A99B", i, 0, "" + a("0X800A99B"), "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A99B", "0X800A99B", i, 0, "" + a("0X800A99B"), "", "", "");
       return;
     }
   }
   
   public void g()
   {
-    bdla.b(null, "dc00898", "", "", "0X800A9B4", "0X800A9B4", a(), 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A9B4", "0X800A9B4", a(), 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.ImmersionHelper
  * JD-Core Version:    0.7.0.1
  */

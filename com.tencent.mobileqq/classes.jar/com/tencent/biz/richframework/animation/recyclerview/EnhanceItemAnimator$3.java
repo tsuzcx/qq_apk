@@ -3,12 +3,11 @@ package com.tencent.biz.richframework.animation.recyclerview;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import java.util.ArrayList;
 import java.util.Iterator;
-import znz;
 
-public class EnhanceItemAnimator$3
+class EnhanceItemAnimator$3
   implements Runnable
 {
-  public EnhanceItemAnimator$3(znz paramznz, ArrayList paramArrayList) {}
+  EnhanceItemAnimator$3(EnhanceItemAnimator paramEnhanceItemAnimator, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -16,15 +15,15 @@ public class EnhanceItemAnimator$3
     while (localIterator.hasNext())
     {
       RecyclerView.ViewHolder localViewHolder = (RecyclerView.ViewHolder)localIterator.next();
-      znz.a(this.this$0, localViewHolder);
+      EnhanceItemAnimator.a(this.this$0, localViewHolder);
     }
     this.a.clear();
-    znz.c(this.this$0).remove(this.a);
+    EnhanceItemAnimator.c(this.this$0).remove(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.animation.recyclerview.EnhanceItemAnimator.3
  * JD-Core Version:    0.7.0.1
  */

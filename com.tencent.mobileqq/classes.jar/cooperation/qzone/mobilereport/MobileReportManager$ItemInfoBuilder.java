@@ -7,10 +7,11 @@ import java.util.ArrayList;
 public class MobileReportManager$ItemInfoBuilder
 {
   private ArrayList<ActionInfo> actionInfos = new ArrayList();
-  private String busiInfo;
-  private String itemId;
+  private String busiInfo = "";
+  private String itemId = "";
   private String itemType = "";
   private String moduleId = "";
+  private String subModuleId = "";
   
   public ItemInfoBuilder addActionInfo(ActionInfo paramActionInfo)
   {
@@ -26,6 +27,7 @@ public class MobileReportManager$ItemInfoBuilder
     localItemInfo.busi_info = this.busiInfo;
     localItemInfo.module_id = this.moduleId;
     localItemInfo.item_type = this.itemType;
+    localItemInfo.sub_module_id = this.subModuleId;
     return localItemInfo;
   }
   
@@ -52,10 +54,16 @@ public class MobileReportManager$ItemInfoBuilder
     this.moduleId = paramString;
     return this;
   }
+  
+  public ItemInfoBuilder setSubModuleId(String paramString)
+  {
+    this.subModuleId = paramString;
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.mobilereport.MobileReportManager.ItemInfoBuilder
  * JD-Core Version:    0.7.0.1
  */

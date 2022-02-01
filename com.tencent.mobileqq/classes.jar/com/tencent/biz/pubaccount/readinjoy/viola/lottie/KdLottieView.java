@@ -2,9 +2,9 @@ package com.tencent.biz.pubaccount.readinjoy.viola.lottie;
 
 import android.animation.Animator.AnimatorListener;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.text.TextUtils;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.adapter.HttpRequset;
 import com.tencent.viola.adapter.IHttpAdapter;
@@ -13,8 +13,6 @@ import com.tencent.viola.ui.component.VLottie.IVLottieLoadListener;
 import com.tencent.viola.ui.view.lottie.IVLottieViewProxy;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONObject;
-import tvj;
 
 public class KdLottieView
   extends DiniFlyAnimationView
@@ -36,7 +34,7 @@ public class KdLottieView
     localHttpRequset.paramMap = ((Map)localObject);
     localObject = ViolaSDKManager.getInstance().getHttpAdapter();
     if (localObject != null) {
-      ((IHttpAdapter)localObject).sendRequest(localHttpRequset, new tvj(this, paramString, paramIVLottieLoadListener), true);
+      ((IHttpAdapter)localObject).sendRequest(localHttpRequset, new KdLottieView.2(this, paramString, paramIVLottieLoadListener), true);
     }
   }
   
@@ -88,35 +86,17 @@ public class KdLottieView
       }
       try
       {
-        getContext().getAssets().open(paramString);
-        setAnimation(paramString);
-        playAnimation();
+        LottieComposition.Factory.fromJsonString(paramString, new KdLottieView.1(this, paramIVLottieLoadListener));
         return;
       }
-      catch (Exception paramIVLottieLoadListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("KdLottieView", 2, "v_setAnimation exception", paramIVLottieLoadListener);
-        }
-        try
-        {
-          paramIVLottieLoadListener = new JSONObject(paramString);
-          if (QLog.isColorLevel()) {
-            QLog.e("KdLottieView", 2, new Object[] { "v_setAnimation json length=", Integer.valueOf(paramIVLottieLoadListener.length()) });
-          }
-          setAnimationFromJson(paramString);
-          playAnimation();
-          return;
-        }
-        catch (Exception paramString) {}
-      }
+      catch (Exception paramString) {}
     } while (!QLog.isColorLevel());
     QLog.e("KdLottieView", 2, "v_setAnimation exception", paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView
  * JD-Core Version:    0.7.0.1
  */

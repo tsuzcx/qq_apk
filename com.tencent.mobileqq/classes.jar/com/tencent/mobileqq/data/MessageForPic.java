@@ -1,30 +1,22 @@
 package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
-import ahcj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anvx;
-import aoos;
-import aruv;
-import axcu;
-import axio;
-import azjx;
-import azke;
-import azkl;
-import azkn;
-import bcrn;
-import bhca;
-import bhfj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.GifDrawable;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.RecordForTest;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupRichTextParse;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -35,12 +27,22 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pic.LoggerInterface;
+import com.tencent.mobileqq.pic.PicDownloadInfo;
+import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.pic.PicUiInterface;
+import com.tencent.mobileqq.pic.PicUploadInfo;
 import com.tencent.mobileqq.pic.ReportInfo;
+import com.tencent.mobileqq.service.message.MessageConstants;
+import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.PicFowardDbRecordData;
 import com.tencent.mobileqq.transfile.TranDbRecord.PicDbRecord;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.ActionMsgUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.URL;
@@ -60,34 +62,34 @@ import tencent.im.msg.im_msg_body.RichText;
 
 public class MessageForPic
   extends MessageForRichText
-  implements Parcelable, axcu, azkl
+  implements Parcelable, MsgBackupRichTextParse, LoggerInterface, PicUiInterface
 {
   public static final String CHECK_IMAGE_TYPE = "check_image_type";
-  public static final Parcelable.Creator<MessageForPic> CREATOR = new aruv();
+  public static final Parcelable.Creator<MessageForPic> CREATOR = new MessageForPic.1();
   private static final String TAG = "MessageForPic";
   public static int defaultSuMsgId = -1;
-  public long DSKey;
+  public long DSKey = 0L;
   public String SpeedInfo;
   public String actMsgContentValue;
   public String action;
   public int aiofileType = -1;
-  public boolean bEnableEnc;
+  public boolean bEnableEnc = false;
   public String bigMsgUrl;
   public String bigThumbMsgUrl;
   public int busiType;
   public int fileSizeFlag;
-  public Map<azke, Integer> forwardId = new HashMap();
+  public Map<PicReq, Integer> forwardId = new HashMap();
   public long groupFileID;
   public long height;
   public int imageType;
-  public boolean isBlessPic;
+  public boolean isBlessPic = false;
   public boolean isInMixedMsg;
   public boolean isMixed;
-  public boolean isQzonePic;
+  public boolean isQzonePic = false;
   public boolean isRead;
-  public int isReport;
+  public int isReport = 0;
   public boolean isShareAppActionMsg;
-  public boolean isStoryPhoto;
+  public boolean isStoryPhoto = false;
   public String localUUID;
   public int mCurrlength;
   public int mDownloadLength;
@@ -95,7 +97,7 @@ public class MessageForPic
   public long mPresendTransferedSize;
   public int mShowLength;
   public String md5;
-  @aoos
+  @RecordForTest
   public msg_ctrl.MsgCtrl msgCtrl;
   public int msgVia;
   public String path;
@@ -115,7 +117,7 @@ public class MessageForPic
   public int subThumbHeight = -1;
   public int subThumbWidth = -1;
   public int subVersion = 5;
-  public boolean sync2Story;
+  public boolean sync2Story = false;
   public int thumbHeight;
   public String thumbMsgUrl;
   public int thumbSize = -1;
@@ -130,12 +132,33 @@ public class MessageForPic
     if (isSendFromLocal())
     {
       localObject = getPicUploadInfo();
-      ((azkn)localObject).jdField_e_of_type_JavaLangString = paramString;
-      return ((azkn)localObject).b();
+      ((PicUploadInfo)localObject).jdField_e_of_type_JavaLangString = paramString;
+      return ((PicUploadInfo)localObject).b();
     }
     Object localObject = getPicDownloadInfo();
-    ((azjx)localObject).jdField_e_of_type_JavaLangString = paramString;
-    return ((azjx)localObject).b();
+    ((PicDownloadInfo)localObject).jdField_e_of_type_JavaLangString = paramString;
+    return ((PicDownloadInfo)localObject).b();
+  }
+  
+  public void cachePicToDisk()
+  {
+    int i = 1;
+    if (this.md5 == null) {}
+    for (;;)
+    {
+      return;
+      if (this.fileSizeFlag == 1) {
+        i = 131075;
+      }
+      Object localObject = URLDrawableHelper.getURL(this.md5, i);
+      if (localObject != null) {}
+      for (localObject = ((URL)localObject).toString(); !AbsDownloader.hasFile((String)localObject); localObject = null)
+      {
+        localObject = AbsDownloader.getFilePath((String)localObject);
+        FileUtils.d(this.path, (String)localObject);
+        return;
+      }
+    }
   }
   
   public boolean checkGif()
@@ -192,7 +215,7 @@ public class MessageForPic
               QLog.d("MessageForPic", 4, "bytes_pb_reserved.has");
             }
             this.mIsParsed = true;
-            if (((this.extLong & 0x4) <= 0) || (!EmojiStickerManager.e)) {
+            if (((this.extLong & 0x4) <= 0) || (!EmojiStickerManager.f)) {
               break label1043;
             }
             System.currentTimeMillis();
@@ -206,15 +229,15 @@ public class MessageForPic
               if (localObject1 != null)
               {
                 ((EmojiStickerManager.StickerInfo)localObject1).isDisplayed = this.isread;
-                this.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject1);
+                this.stickerInfo = localObject1;
                 System.currentTimeMillis();
               }
             }
-            if (!"1".equals(getExtInfoFromExtStr(bcrn.m))) {
+            if (!"1".equals(getExtInfoFromExtStr(MessageConstants.m))) {
               break label1093;
             }
             this.sync2Story = true;
-            this.isQzonePic = "1".equals(getExtInfoFromExtStr(bcrn.r));
+            this.isQzonePic = "1".equals(getExtInfoFromExtStr(MessageConstants.r));
             return;
             localException2 = localException2;
             localException2.printStackTrace();
@@ -237,7 +260,7 @@ public class MessageForPic
           if (this.versionCode > 0) {
             this.msg = new String(this.msgData, "UTF-8");
           }
-          this.isShareAppActionMsg = bhca.a(this.msgtype);
+          this.isShareAppActionMsg = ActionMsgUtil.a(this.msgtype);
           if ((this.isShareAppActionMsg) || (this.msgtype == -3001) || (this.msgtype == -30002) || (this.msgtype == -30003) || (this.msgtype == -1032))
           {
             bool = true;
@@ -246,7 +269,7 @@ public class MessageForPic
             if (!this.isMixed) {
               break label1032;
             }
-            localObject4 = bhca.a(this.msg);
+            localObject4 = ActionMsgUtil.a(this.msg);
             this.action = ((MsgBody)localObject4).action;
             this.shareAppID = ((MsgBody)localObject4).shareAppID;
             localPicDbRecord.initFromMsg(((MsgBody)localObject4).msg);
@@ -291,7 +314,7 @@ public class MessageForPic
             if (localObject2 != null)
             {
               ((EmojiStickerManager.StickerInfo)localObject2).isDisplayed = this.isread;
-              this.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject2);
+              this.stickerInfo = localObject2;
               continue;
               this.sync2Story = false;
             }
@@ -374,115 +397,71 @@ public class MessageForPic
     if (isSendFromLocal())
     {
       localObject = getPicUploadInfo();
-      ((azkn)localObject).jdField_e_of_type_JavaLangString = paramString;
-      return ((azkn)localObject).c();
+      ((PicUploadInfo)localObject).jdField_e_of_type_JavaLangString = paramString;
+      return ((PicUploadInfo)localObject).c();
     }
     Object localObject = getPicDownloadInfo();
-    ((azjx)localObject).jdField_e_of_type_JavaLangString = paramString;
-    return ((azjx)localObject).c();
+    ((PicDownloadInfo)localObject).jdField_e_of_type_JavaLangString = paramString;
+    return ((PicDownloadInfo)localObject).c();
   }
   
-  public azjx getPicDownloadInfo()
+  public PicDownloadInfo getPicDownloadInfo()
   {
-    azjx localazjx = new azjx();
-    localazjx.jdField_a_of_type_Int = this.busiType;
-    localazjx.jdField_a_of_type_Long = this.uniseq;
-    SessionInfo localSessionInfo = axio.a().a();
-    boolean bool = bhfj.a(axio.a().b());
-    if ((this.isMultiMsg) && (!bool)) {
-      if (localSessionInfo != null) {
-        localazjx.jdField_b_of_type_Int = axio.a().a().curType;
-      }
-    }
-    for (;;)
+    PicDownloadInfo localPicDownloadInfo = new PicDownloadInfo();
+    localPicDownloadInfo.jdField_a_of_type_Int = this.busiType;
+    localPicDownloadInfo.jdField_a_of_type_Long = this.uniseq;
+    processSessionInfo(localPicDownloadInfo);
+    localPicDownloadInfo.jdField_c_of_type_Long = this.time;
+    localPicDownloadInfo.jdField_g_of_type_JavaLangString = this.uuid;
+    localPicDownloadInfo.f = this.md5;
+    localPicDownloadInfo.jdField_b_of_type_Long = this.groupFileID;
+    localPicDownloadInfo.h = this.thumbMsgUrl;
+    localPicDownloadInfo.k = this.bigThumbMsgUrl;
+    localPicDownloadInfo.i = this.bigMsgUrl;
+    localPicDownloadInfo.j = this.rawMsgUrl;
+    localPicDownloadInfo.jdField_g_of_type_Int = this.subMsgId;
+    localPicDownloadInfo.jdField_b_of_type_Boolean = this.isMixed;
+    if (localPicDownloadInfo.jdField_b_of_type_Boolean)
     {
-      localazjx.jdField_b_of_type_JavaLangString = this.selfuin;
-      if (this.isMultiMsg) {}
-      try
-      {
-        AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-        if ((localAppRuntime instanceof QQAppInterface)) {
-          localazjx.jdField_b_of_type_JavaLangString = localAppRuntime.getAccount();
-        }
-        label110:
-        if ((this.isMultiMsg) && (!bool)) {
-          if (localSessionInfo != null) {
-            localazjx.jdField_c_of_type_JavaLangString = axio.a().a().curFriendUin;
-          }
-        }
-        for (;;)
-        {
-          localazjx.jdField_c_of_type_Long = this.time;
-          localazjx.jdField_g_of_type_JavaLangString = this.uuid;
-          localazjx.f = this.md5;
-          localazjx.jdField_b_of_type_Long = this.groupFileID;
-          localazjx.h = this.thumbMsgUrl;
-          localazjx.k = this.bigThumbMsgUrl;
-          localazjx.i = this.bigMsgUrl;
-          localazjx.j = this.rawMsgUrl;
-          localazjx.jdField_g_of_type_Int = this.subMsgId;
-          localazjx.jdField_b_of_type_Boolean = this.isMixed;
-          if (localazjx.jdField_b_of_type_Boolean)
-          {
-            localazjx.l = this.action;
-            localazjx.m = this.actMsgContentValue;
-            localazjx.jdField_e_of_type_Long = this.shareAppID;
-          }
-          localazjx.jdField_e_of_type_Int = this.fileSizeFlag;
-          localazjx.jdField_c_of_type_Int = this.extraflag;
-          localazjx.jdField_a_of_type_JavaLangObject = this.picExtraObject;
-          localazjx.jdField_d_of_type_Int = this.subVersion;
-          localazjx.jdField_a_of_type_JavaLangString = this.localUUID;
-          localazjx.jdField_d_of_type_Long = this.size;
-          localazjx.jdField_d_of_type_Boolean = this.bEnableEnc;
-          if (this.reportInfo == null) {
-            this.reportInfo = new ReportInfo();
-          }
-          localazjx.jdField_a_of_type_ComTencentMobileqqPicReportInfo = this.reportInfo;
-          return localazjx;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.e("MessageForPic", 2, "currentSessionInfo is null while isMultiMsg is true");
-          break;
-          localazjx.jdField_b_of_type_Int = this.istroop;
-          break;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("MessageForPic", 2, "currentSessionInfo is null while isMultiMsg is true");
-            continue;
-            localazjx.jdField_c_of_type_JavaLangString = this.frienduin;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        break label110;
-      }
+      localPicDownloadInfo.l = this.action;
+      localPicDownloadInfo.m = this.actMsgContentValue;
+      localPicDownloadInfo.jdField_e_of_type_Long = this.shareAppID;
     }
+    localPicDownloadInfo.jdField_e_of_type_Int = this.fileSizeFlag;
+    localPicDownloadInfo.jdField_c_of_type_Int = this.extraflag;
+    localPicDownloadInfo.jdField_a_of_type_JavaLangObject = this.picExtraObject;
+    localPicDownloadInfo.jdField_d_of_type_Int = this.subVersion;
+    localPicDownloadInfo.jdField_a_of_type_JavaLangString = this.localUUID;
+    localPicDownloadInfo.jdField_d_of_type_Long = this.size;
+    localPicDownloadInfo.jdField_d_of_type_Boolean = this.bEnableEnc;
+    if (this.reportInfo == null) {
+      this.reportInfo = new ReportInfo();
+    }
+    localPicDownloadInfo.jdField_a_of_type_ComTencentMobileqqPicReportInfo = this.reportInfo;
+    return localPicDownloadInfo;
   }
   
-  public azkn getPicUploadInfo()
+  public PicUploadInfo getPicUploadInfo()
   {
-    azkn localazkn = new azkn();
-    localazkn.jdField_a_of_type_Int = this.busiType;
-    localazkn.jdField_a_of_type_Long = this.uniseq;
-    localazkn.jdField_b_of_type_Int = this.istroop;
-    localazkn.jdField_c_of_type_JavaLangString = this.frienduin;
-    localazkn.jdField_b_of_type_JavaLangString = this.selfuin;
-    localazkn.jdField_d_of_type_JavaLangString = this.senderuin;
-    localazkn.f = this.md5;
-    localazkn.jdField_g_of_type_JavaLangString = this.path;
-    localazkn.h = this.thumbMsgUrl;
-    localazkn.jdField_c_of_type_Int = this.picExtraFlag;
-    localazkn.jdField_a_of_type_JavaLangObject = this.picExtraObject;
-    localazkn.jdField_a_of_type_JavaLangString = this.localUUID;
-    localazkn.jdField_d_of_type_Int = this.subVersion;
-    localazkn.j = ((int)this.width);
-    localazkn.k = ((int)this.height);
-    localazkn.jdField_c_of_type_Long = ((int)this.size);
-    localazkn.m = this.imageType;
-    return localazkn;
+    PicUploadInfo localPicUploadInfo = new PicUploadInfo();
+    localPicUploadInfo.jdField_a_of_type_Int = this.busiType;
+    localPicUploadInfo.jdField_a_of_type_Long = this.uniseq;
+    localPicUploadInfo.jdField_b_of_type_Int = this.istroop;
+    localPicUploadInfo.jdField_c_of_type_JavaLangString = this.frienduin;
+    localPicUploadInfo.jdField_b_of_type_JavaLangString = this.selfuin;
+    localPicUploadInfo.jdField_d_of_type_JavaLangString = this.senderuin;
+    localPicUploadInfo.f = this.md5;
+    localPicUploadInfo.jdField_g_of_type_JavaLangString = this.path;
+    localPicUploadInfo.h = this.thumbMsgUrl;
+    localPicUploadInfo.jdField_c_of_type_Int = this.picExtraFlag;
+    localPicUploadInfo.jdField_a_of_type_JavaLangObject = this.picExtraObject;
+    localPicUploadInfo.jdField_a_of_type_JavaLangString = this.localUUID;
+    localPicUploadInfo.jdField_d_of_type_Int = this.subVersion;
+    localPicUploadInfo.j = ((int)this.width);
+    localPicUploadInfo.k = ((int)this.height);
+    localPicUploadInfo.jdField_c_of_type_Long = ((int)this.size);
+    localPicUploadInfo.m = this.imageType;
+    return localPicUploadInfo;
   }
   
   public ReportInfo getReportInfo()
@@ -736,17 +715,17 @@ public class MessageForPic
   
   public String getSummaryMsg()
   {
-    String str = bhfj.a(this);
+    String str = MsgUtils.a(this);
     if (str != null) {
       return str;
     }
-    return anvx.a(2131706080);
+    return HardCodeUtil.a(2131706620);
   }
   
   public ThumbWidthHeightDP getThumbWidthHeightDP(boolean paramBoolean)
   {
     if (this.thumbWidthHeightDP == null) {
-      if (ahcj.a(this)) {
+      if (PicItemBuilder.a(this)) {
         break label42;
       }
     }
@@ -788,9 +767,58 @@ public class MessageForPic
     serial();
   }
   
+  public void processSessionInfo(PicDownloadInfo paramPicDownloadInfo)
+  {
+    SessionInfo localSessionInfo = MultiMsgManager.a().a();
+    boolean bool = MessageRecordInfo.a(MultiMsgManager.a().b());
+    if ((this.isMultiMsg) && (!bool)) {
+      if (localSessionInfo != null) {
+        paramPicDownloadInfo.jdField_b_of_type_Int = MultiMsgManager.a().a().jdField_a_of_type_Int;
+      }
+    }
+    for (;;)
+    {
+      paramPicDownloadInfo.jdField_b_of_type_JavaLangString = this.selfuin;
+      if (this.isMultiMsg) {}
+      try
+      {
+        AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+        if ((localAppRuntime instanceof QQAppInterface)) {
+          paramPicDownloadInfo.jdField_b_of_type_JavaLangString = localAppRuntime.getAccount();
+        }
+        label86:
+        if ((this.isMultiMsg) && (!bool))
+        {
+          if (localSessionInfo != null) {
+            paramPicDownloadInfo.jdField_c_of_type_JavaLangString = MultiMsgManager.a().a().jdField_a_of_type_JavaLangString;
+          }
+          while (!QLog.isColorLevel())
+          {
+            return;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.e("MessageForPic", 2, "currentSessionInfo is null while isMultiMsg is true");
+            break;
+            paramPicDownloadInfo.jdField_b_of_type_Int = this.istroop;
+            break;
+          }
+          QLog.e("MessageForPic", 2, "currentSessionInfo is null while isMultiMsg is true");
+          return;
+        }
+        paramPicDownloadInfo.jdField_c_of_type_JavaLangString = this.frienduin;
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label86;
+      }
+    }
+  }
+  
   public void serial()
   {
-    this.isShareAppActionMsg = bhca.a(this.msgtype);
+    this.isShareAppActionMsg = ActionMsgUtil.a(this.msgtype);
     if ((this.isShareAppActionMsg) || (this.msgtype == -3001) || (this.msgtype == -30002) || (this.msgtype == -30003) || (this.msgtype == -1032)) {}
     for (boolean bool = true;; bool = false)
     {
@@ -828,7 +856,7 @@ public class MessageForPic
     {
       localObject = ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime((String)localObject)).getMessageFacade();
       this.msgData = getSerialPB().toByteArray();
-      ((QQMessageFacade)localObject).updateMsgContentByUniseq(this.frienduin, this.istroop, this.uniseq, this.msgData);
+      ((QQMessageFacade)localObject).a(this.frienduin, this.istroop, this.uniseq, this.msgData);
       return;
     }
     catch (Throwable localThrowable)
@@ -845,7 +873,7 @@ public class MessageForPic
     }
     try
     {
-      ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(str)).getMessageFacade().updateMsgFieldByUniseq(this.frienduin, this.istroop, this.uniseq, "extStr", this.extStr);
+      ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(str)).getMessageFacade().a(this.frienduin, this.istroop, this.uniseq, "extStr", this.extStr);
       return;
     }
     catch (Throwable localThrowable)
@@ -945,7 +973,7 @@ public class MessageForPic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPic
  * JD-Core Version:    0.7.0.1
  */

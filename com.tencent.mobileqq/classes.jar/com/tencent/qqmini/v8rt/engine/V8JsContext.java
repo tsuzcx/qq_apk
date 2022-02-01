@@ -5,15 +5,15 @@ import android.os.ConditionVariable;
 public class V8JsContext
 {
   public static final int DEFAULT_CONTEXT_ID = 0;
-  private final String LOG_TAG;
   private int contextId;
+  private final String sTAG;
   private V8JsRuntime v8JsRuntime;
   
   public V8JsContext(V8JsRuntime paramV8JsRuntime, int paramInt)
   {
     this.v8JsRuntime = paramV8JsRuntime;
     this.contextId = paramInt;
-    this.LOG_TAG = ("V8JsCt-" + paramV8JsRuntime.getId() + "-" + paramInt);
+    this.sTAG = ("V8JsCt-" + paramV8JsRuntime.getId() + "-" + paramInt);
   }
   
   private JsRuntimeThread getJsRunner()
@@ -30,7 +30,7 @@ public class V8JsContext
   {
     if (getJsRunner().isReleased())
     {
-      Logger.e(this.LOG_TAG, "convertPtrJsonString fail, thread released");
+      Logger.e(this.sTAG, "convertPtrJsonString fail, thread released");
       return Integer.valueOf(0);
     }
     ConditionVariable localConditionVariable = new ConditionVariable();
@@ -44,7 +44,7 @@ public class V8JsContext
   {
     if (getJsRunner().isReleased())
     {
-      Logger.e(this.LOG_TAG, "evaluateJsAsync fail, thread released");
+      Logger.e(this.sTAG, "evaluateJsAsync fail, thread released");
       return;
     }
     getJsRunner().run(this, new V8JsContext.2(this, paramString, paramCallback));
@@ -54,7 +54,7 @@ public class V8JsContext
   {
     if (getJsRunner().isReleased())
     {
-      Logger.e(this.LOG_TAG, "evaluateJsAsync fail, thread released");
+      Logger.e(this.sTAG, "evaluateJsAsync fail, thread released");
       return;
     }
     getJsRunner().run(this, new V8JsContext.5(this, paramString1, paramString2, paramString3, paramCallback));
@@ -69,7 +69,7 @@ public class V8JsContext
   {
     if (getJsRunner().isReleased())
     {
-      Logger.e(this.LOG_TAG, "evaluateJsAsyncWithReturnPtr fail, thread released");
+      Logger.e(this.sTAG, "evaluateJsAsyncWithReturnPtr fail, thread released");
       return;
     }
     getJsRunner().run(this, new V8JsContext.7(this, paramString, paramCallback));
@@ -79,7 +79,7 @@ public class V8JsContext
   {
     if (getJsRunner().isReleased())
     {
-      Logger.e(this.LOG_TAG, "evaluateJsSync fail, thread released");
+      Logger.e(this.sTAG, "evaluateJsSync fail, thread released");
       return;
     }
     ConditionVariable localConditionVariable = new ConditionVariable();
@@ -91,7 +91,7 @@ public class V8JsContext
   {
     if (getJsRunner().isReleased())
     {
-      Logger.e(this.LOG_TAG, "evaluateJsWithReturnSync fail, thread released");
+      Logger.e(this.sTAG, "evaluateJsWithReturnSync fail, thread released");
       return 0L;
     }
     ConditionVariable localConditionVariable = new ConditionVariable();
@@ -105,7 +105,7 @@ public class V8JsContext
   {
     if (getJsRunner().isReleased())
     {
-      Logger.e(this.LOG_TAG, "evaluateJsWithReturnSync fail, thread released");
+      Logger.e(this.sTAG, "evaluateJsWithReturnSync fail, thread released");
       return null;
     }
     ConditionVariable localConditionVariable = new ConditionVariable();
@@ -169,7 +169,7 @@ public class V8JsContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.V8JsContext
  * JD-Core Version:    0.7.0.1
  */

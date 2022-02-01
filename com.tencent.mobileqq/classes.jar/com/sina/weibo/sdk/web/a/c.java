@@ -1,6 +1,5 @@
 package com.sina.weibo.sdk.web.a;
 
-import Override;
 import android.graphics.Bitmap;
 import android.webkit.WebView;
 import com.sina.weibo.sdk.web.WebActivity;
@@ -23,7 +22,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.sina.weibo.sdk.web.a.c
  * JD-Core Version:    0.7.0.1
  */

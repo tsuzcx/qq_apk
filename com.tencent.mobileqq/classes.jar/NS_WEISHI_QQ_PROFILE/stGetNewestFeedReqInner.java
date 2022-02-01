@@ -10,9 +10,9 @@ public final class stGetNewestFeedReqInner
   extends JceStruct
 {
   static Map<String, String> cache_mapExtern = new HashMap();
-  public int cache_update_time;
-  public Map<String, String> mapExtern;
-  public long uin;
+  public int cache_update_time = 0;
+  public Map<String, String> mapExtern = null;
+  public long uin = 0L;
   
   static
   {

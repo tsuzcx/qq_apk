@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import bble;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -8,9 +7,9 @@ import java.util.List;
 class Mp4FlowReEncoder$HandleFrameListRunable
   implements Runnable
 {
-  private List<bble> a = new ArrayList();
+  private List<DecodedFrame> a = new ArrayList();
   
-  public Mp4FlowReEncoder$HandleFrameListRunable(List<bble> paramList)
+  public Mp4FlowReEncoder$HandleFrameListRunable(List<DecodedFrame> paramList)
   {
     Collection localCollection;
     this.a.addAll(localCollection);
@@ -23,7 +22,7 @@ class Mp4FlowReEncoder$HandleFrameListRunable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder.HandleFrameListRunable
  * JD-Core Version:    0.7.0.1
  */

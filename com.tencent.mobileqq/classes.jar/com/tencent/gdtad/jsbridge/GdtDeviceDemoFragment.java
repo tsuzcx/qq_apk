@@ -1,12 +1,5 @@
 package com.tencent.gdtad.jsbridge;
 
-import acgf;
-import acgg;
-import acgh;
-import acgi;
-import acho;
-import acim;
-import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -22,10 +15,13 @@ import android.widget.TextView;
 import com.tencent.ad.tangram.lbs.AdLocation;
 import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.util.GdtManager;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
+import com.tencent.mobileqq.soso.location.data.SosoLocation;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public final class GdtDeviceDemoFragment
@@ -35,11 +31,11 @@ public final class GdtDeviceDemoFragment
   
   public static void a(Activity paramActivity, Class<? extends PublicFragmentActivity> paramClass)
   {
-    acho.b("GdtDeviceDemoFragment", "start");
+    GdtLog.b("GdtDeviceDemoFragment", "start");
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-    aeow.a(paramActivity, localIntent, paramClass, GdtDeviceDemoFragment.class);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, paramClass, GdtDeviceDemoFragment.class);
   }
   
   private void a(String paramString)
@@ -47,7 +43,7 @@ public final class GdtDeviceDemoFragment
     AdThreadManager.INSTANCE.post(new GdtDeviceDemoFragment.5(this, paramString), 0);
   }
   
-  private static AdLocation b(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  private static AdLocation b(SosoLbsInfo paramSosoLbsInfo)
   {
     if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
@@ -81,21 +77,21 @@ public final class GdtDeviceDemoFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    acim.a().a(getActivity(), null);
+    GdtManager.a().a(getActivity(), null);
     this.a = new TextView(getActivity());
     a(String.format("processName:%s", new Object[] { AdProcessManager.INSTANCE.getCurrentProcessName(getActivity()) }));
     paramViewGroup = new Button(getActivity());
     paramViewGroup.setText("getDeviceInfo");
-    paramViewGroup.setOnClickListener(new acgf(this));
+    paramViewGroup.setOnClickListener(new GdtDeviceDemoFragment.1(this));
     paramBundle = new Button(getActivity());
     paramBundle.setText("AdLocationManager.getLocationCache");
-    paramBundle.setOnClickListener(new acgg(this));
+    paramBundle.setOnClickListener(new GdtDeviceDemoFragment.2(this));
     Button localButton1 = new Button(getActivity());
     localButton1.setText("LbsManagerService.getCachedLbsInfo");
-    localButton1.setOnClickListener(new acgh(this));
+    localButton1.setOnClickListener(new GdtDeviceDemoFragment.3(this));
     Button localButton2 = new Button(getActivity());
     localButton2.setText("LbsManagerService.startLocation");
-    localButton2.setOnClickListener(new acgi(this));
+    localButton2.setOnClickListener(new GdtDeviceDemoFragment.4(this));
     paramLayoutInflater = new LinearLayout(getActivity());
     paramLayoutInflater.setBackgroundColor(Color.parseColor("#DBDBDB"));
     paramLayoutInflater.setOrientation(1);
@@ -112,7 +108,7 @@ public final class GdtDeviceDemoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtDeviceDemoFragment
  * JD-Core Version:    0.7.0.1
  */

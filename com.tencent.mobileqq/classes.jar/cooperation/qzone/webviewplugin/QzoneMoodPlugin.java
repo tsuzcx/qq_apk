@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -33,7 +33,7 @@ public class QzoneMoodPlugin
   private static CopyOnWriteArrayList<QzoneMoodPlugin.FriendNickNames> listFriNickName = new CopyOnWriteArrayList();
   private static final Pattern patternEmo = Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]", 2);
   private static final String regEmo = "\\[em\\]e\\d{1,}\\[/em\\]";
-  private boolean mUseWechatSyncManager;
+  private boolean mUseWechatSyncManager = false;
   
   private void deleteTimerShuoShuo()
   {
@@ -59,196 +59,196 @@ public class QzoneMoodPlugin
   private QzoneMoodPlugin.FriendNickNames loadFriendListFromQQ()
   {
     // Byte code:
-    //   0: new 123	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames
+    //   0: new 125	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 126	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:<init>	(Lcooperation/qzone/webviewplugin/QzoneMoodPlugin;)V
+    //   5: invokespecial 128	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:<init>	(Lcooperation/qzone/webviewplugin/QzoneMoodPlugin;)V
     //   8: astore 8
     //   10: aload 8
     //   12: aload_0
-    //   13: getfield 65	cooperation/qzone/webviewplugin/QzoneMoodPlugin:parentPlugin	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;
-    //   16: getfield 71	com/tencent/mobileqq/webview/swift/WebViewPlugin:mRuntime	Lbifw;
-    //   19: invokevirtual 129	bifw:a	()Lcom/tencent/common/app/AppInterface;
-    //   22: invokevirtual 135	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   25: putfield 138	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:mainUin	Ljava/lang/String;
-    //   28: invokestatic 144	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   31: invokevirtual 150	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   34: new 152	java/lang/StringBuilder
+    //   13: getfield 67	cooperation/qzone/webviewplugin/QzoneMoodPlugin:parentPlugin	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;
+    //   16: getfield 73	com/tencent/mobileqq/webview/swift/WebViewPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   19: invokevirtual 131	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   22: invokevirtual 137	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   25: putfield 140	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:mainUin	Ljava/lang/String;
+    //   28: invokestatic 146	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   31: invokevirtual 152	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   34: new 154	java/lang/StringBuilder
     //   37: dup
-    //   38: invokespecial 153	java/lang/StringBuilder:<init>	()V
-    //   41: ldc 155
-    //   43: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   41: ldc 157
+    //   43: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   46: aload 8
-    //   48: getfield 138	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:mainUin	Ljava/lang/String;
-    //   51: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokestatic 168	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   48: getfield 140	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:mainUin	Ljava/lang/String;
+    //   51: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: invokestatic 170	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   60: iconst_3
-    //   61: anewarray 170	java/lang/String
+    //   61: anewarray 172	java/lang/String
     //   64: dup
     //   65: iconst_0
-    //   66: ldc 172
+    //   66: ldc 174
     //   68: aastore
     //   69: dup
     //   70: iconst_1
-    //   71: ldc 174
+    //   71: ldc 176
     //   73: aastore
     //   74: dup
     //   75: iconst_2
-    //   76: ldc 176
+    //   76: ldc 178
     //   78: aastore
     //   79: aconst_null
     //   80: aconst_null
     //   81: aconst_null
-    //   82: invokevirtual 182	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   82: invokevirtual 184	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   85: astore 5
     //   87: aload 5
     //   89: ifnull +112 -> 201
     //   92: aload 5
     //   94: astore 4
     //   96: aload 5
-    //   98: invokeinterface 188 1 0
+    //   98: invokeinterface 190 1 0
     //   103: ifeq +98 -> 201
     //   106: aload 5
     //   108: astore 4
     //   110: aload 5
-    //   112: ldc 172
-    //   114: invokeinterface 192 2 0
+    //   112: ldc 174
+    //   114: invokeinterface 194 2 0
     //   119: istore_1
     //   120: aload 5
     //   122: astore 4
     //   124: aload 5
-    //   126: ldc 174
-    //   128: invokeinterface 192 2 0
+    //   126: ldc 176
+    //   128: invokeinterface 194 2 0
     //   133: istore_2
     //   134: aload 5
     //   136: astore 4
     //   138: aload 5
-    //   140: ldc 176
-    //   142: invokeinterface 192 2 0
+    //   140: ldc 178
+    //   142: invokeinterface 194 2 0
     //   147: istore_3
     //   148: aload 5
     //   150: astore 4
     //   152: aload 5
     //   154: iload_1
-    //   155: invokeinterface 196 2 0
+    //   155: invokeinterface 198 2 0
     //   160: astore 6
     //   162: aload 5
     //   164: astore 4
     //   166: aload 6
-    //   168: invokestatic 202	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   168: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   171: ifeq +45 -> 216
     //   174: aload 5
     //   176: astore 4
     //   178: aload 5
-    //   180: invokeinterface 205 1 0
+    //   180: invokeinterface 207 1 0
     //   185: ifne -37 -> 148
     //   188: aload 5
     //   190: astore 4
     //   192: getstatic 35	cooperation/qzone/webviewplugin/QzoneMoodPlugin:listFriNickName	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   195: aload 8
-    //   197: invokevirtual 209	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
+    //   197: invokevirtual 211	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
     //   200: pop
     //   201: aload 5
     //   203: ifnull +10 -> 213
     //   206: aload 5
-    //   208: invokeinterface 212 1 0
+    //   208: invokeinterface 214 1 0
     //   213: aload 8
     //   215: areturn
     //   216: aload 5
     //   218: astore 4
-    //   220: new 170	java/lang/String
+    //   220: new 172	java/lang/String
     //   223: dup
     //   224: aload 6
-    //   226: invokevirtual 216	java/lang/String:getBytes	()[B
-    //   229: ldc 218
-    //   231: invokespecial 221	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   226: invokevirtual 218	java/lang/String:getBytes	()[B
+    //   229: ldc 220
+    //   231: invokespecial 223	java/lang/String:<init>	([BLjava/lang/String;)V
     //   234: iconst_0
-    //   235: invokestatic 227	com/tencent/mobileqq/utils/SecurityUtile:decode	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   235: invokestatic 229	com/tencent/mobileqq/utils/SecurityUtile:decode	(Ljava/lang/String;Z)Ljava/lang/String;
     //   238: astore 9
     //   240: aload 5
     //   242: astore 4
     //   244: aload 5
     //   246: iload_2
-    //   247: invokeinterface 196 2 0
+    //   247: invokeinterface 198 2 0
     //   252: astore 6
     //   254: aload 5
     //   256: astore 4
     //   258: aload 6
-    //   260: invokestatic 202	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   260: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   263: ifne +104 -> 367
     //   266: aload 5
     //   268: astore 4
-    //   270: new 170	java/lang/String
+    //   270: new 172	java/lang/String
     //   273: dup
     //   274: aload 6
-    //   276: invokevirtual 216	java/lang/String:getBytes	()[B
-    //   279: ldc 218
-    //   281: invokespecial 221	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   276: invokevirtual 218	java/lang/String:getBytes	()[B
+    //   279: ldc 220
+    //   281: invokespecial 223	java/lang/String:<init>	([BLjava/lang/String;)V
     //   284: iconst_0
-    //   285: invokestatic 227	com/tencent/mobileqq/utils/SecurityUtile:decode	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   285: invokestatic 229	com/tencent/mobileqq/utils/SecurityUtile:decode	(Ljava/lang/String;Z)Ljava/lang/String;
     //   288: astore 6
     //   290: aload 5
     //   292: astore 4
     //   294: aload 8
-    //   296: getfield 231	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:nickNamesMap	Ljava/util/HashMap;
+    //   296: getfield 233	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:nickNamesMap	Ljava/util/HashMap;
     //   299: aload 9
     //   301: aload 6
-    //   303: invokevirtual 237	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   303: invokevirtual 239	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   306: pop
     //   307: goto -133 -> 174
     //   310: astore 6
     //   312: aload 5
     //   314: astore 4
     //   316: ldc 8
-    //   318: new 152	java/lang/StringBuilder
+    //   318: new 154	java/lang/StringBuilder
     //   321: dup
-    //   322: invokespecial 153	java/lang/StringBuilder:<init>	()V
-    //   325: ldc 239
-    //   327: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   325: ldc 241
+    //   327: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   330: aload 6
-    //   332: invokestatic 245	cooperation/qzone/util/QZLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   335: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   338: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   341: invokestatic 248	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   332: invokestatic 247	cooperation/qzone/util/QZLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   335: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   338: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   341: invokestatic 250	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   344: aload 5
     //   346: astore 4
     //   348: aload 6
-    //   350: invokevirtual 251	java/lang/Throwable:printStackTrace	()V
+    //   350: invokevirtual 253	java/lang/Throwable:printStackTrace	()V
     //   353: aload 5
     //   355: ifnull +10 -> 365
     //   358: aload 5
-    //   360: invokeinterface 212 1 0
+    //   360: invokeinterface 214 1 0
     //   365: aconst_null
     //   366: areturn
     //   367: aload 5
     //   369: astore 4
     //   371: aload 5
     //   373: iload_3
-    //   374: invokeinterface 196 2 0
+    //   374: invokeinterface 198 2 0
     //   379: astore 6
     //   381: aload 5
     //   383: astore 4
     //   385: aload 6
-    //   387: invokestatic 202	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   387: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   390: ifne -216 -> 174
     //   393: aload 5
     //   395: astore 4
-    //   397: new 170	java/lang/String
+    //   397: new 172	java/lang/String
     //   400: dup
     //   401: aload 6
-    //   403: invokevirtual 216	java/lang/String:getBytes	()[B
-    //   406: ldc 218
-    //   408: invokespecial 221	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   403: invokevirtual 218	java/lang/String:getBytes	()[B
+    //   406: ldc 220
+    //   408: invokespecial 223	java/lang/String:<init>	([BLjava/lang/String;)V
     //   411: iconst_0
-    //   412: invokestatic 227	com/tencent/mobileqq/utils/SecurityUtile:decode	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   412: invokestatic 229	com/tencent/mobileqq/utils/SecurityUtile:decode	(Ljava/lang/String;Z)Ljava/lang/String;
     //   415: astore 7
     //   417: aload 7
     //   419: astore 6
     //   421: aload 5
     //   423: astore 4
     //   425: aload 7
-    //   427: invokevirtual 255	java/lang/String:length	()I
+    //   427: invokevirtual 257	java/lang/String:length	()I
     //   430: iconst_1
     //   431: if_icmple +47 -> 478
     //   434: aload 7
@@ -257,10 +257,10 @@ public class QzoneMoodPlugin
     //   440: astore 4
     //   442: aload 7
     //   444: aload 7
-    //   446: invokevirtual 255	java/lang/String:length	()I
+    //   446: invokevirtual 257	java/lang/String:length	()I
     //   449: iconst_1
     //   450: isub
-    //   451: invokevirtual 259	java/lang/String:charAt	(I)C
+    //   451: invokevirtual 261	java/lang/String:charAt	(I)C
     //   454: bipush 10
     //   456: if_icmpne +22 -> 478
     //   459: aload 5
@@ -268,18 +268,18 @@ public class QzoneMoodPlugin
     //   463: aload 7
     //   465: iconst_0
     //   466: aload 7
-    //   468: invokevirtual 255	java/lang/String:length	()I
+    //   468: invokevirtual 257	java/lang/String:length	()I
     //   471: iconst_1
     //   472: isub
-    //   473: invokevirtual 263	java/lang/String:substring	(II)Ljava/lang/String;
+    //   473: invokevirtual 265	java/lang/String:substring	(II)Ljava/lang/String;
     //   476: astore 6
     //   478: aload 5
     //   480: astore 4
     //   482: aload 8
-    //   484: getfield 231	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:nickNamesMap	Ljava/util/HashMap;
+    //   484: getfield 233	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:nickNamesMap	Ljava/util/HashMap;
     //   487: aload 9
     //   489: aload 6
-    //   491: invokevirtual 237	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   491: invokevirtual 239	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   494: pop
     //   495: goto -321 -> 174
     //   498: astore 6
@@ -290,7 +290,7 @@ public class QzoneMoodPlugin
     //   508: aload 5
     //   510: ifnull +10 -> 520
     //   513: aload 5
-    //   515: invokeinterface 212 1 0
+    //   515: invokeinterface 214 1 0
     //   520: aload 4
     //   522: athrow
     //   523: astore 4
@@ -604,7 +604,7 @@ public class QzoneMoodPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneMoodPlugin
  * JD-Core Version:    0.7.0.1
  */

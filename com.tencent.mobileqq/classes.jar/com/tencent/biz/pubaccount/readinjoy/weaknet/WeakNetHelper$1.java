@@ -1,24 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.weaknet;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import olh;
-import pkh;
 
-public final class WeakNetHelper$1
+final class WeakNetHelper$1
   implements Runnable
 {
-  public WeakNetHelper$1(String paramString1, String paramString2) {}
+  WeakNetHelper$1(String paramString1, String paramString2) {}
   
   public void run()
   {
-    String str = pkh.a();
+    String str = ReadInJoyUtils.a();
     QLog.d("WeakNetHelper", 1, new Object[] { "actionName = ", this.a, "\n", "r2 = ", str, " r5 = ", this.b });
-    olh.a(null, "", this.a, this.a, 0, 0, str, "", "", this.b, false);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", this.a, this.a, 0, 0, str, "", "", this.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.weaknet.WeakNetHelper.1
  * JD-Core Version:    0.7.0.1
  */

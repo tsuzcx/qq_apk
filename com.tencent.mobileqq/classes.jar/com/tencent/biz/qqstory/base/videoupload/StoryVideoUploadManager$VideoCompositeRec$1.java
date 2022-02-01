@@ -1,22 +1,18 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import wcn;
-import wcy;
-import wdi;
-
-public class StoryVideoUploadManager$VideoCompositeRec$1
+class StoryVideoUploadManager$VideoCompositeRec$1
   implements Runnable
 {
-  public StoryVideoUploadManager$VideoCompositeRec$1(wcy paramwcy, wcn paramwcn, wdi paramwdi) {}
+  StoryVideoUploadManager$VideoCompositeRec$1(StoryVideoUploadManager.VideoCompositeRec paramVideoCompositeRec, StoryVideoUploadManager paramStoryVideoUploadManager, VideoCompositeManager.CompositeVideoEvent paramCompositeVideoEvent) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wcn.a(this.jdField_a_of_type_Wdi.a, this.jdField_a_of_type_Wdi.b);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeManager$CompositeVideoEvent.a, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeManager$CompositeVideoEvent.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class LebaSearchMoreInfoActivity$2
   
   public void run()
   {
-    this.this$0.b(this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout).loadUrl(this.this$0.jdField_a_of_type_JavaLangString);
+    this.this$0.getWebView(this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout).loadUrl(this.this$0.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity.2
  * JD-Core Version:    0.7.0.1
  */

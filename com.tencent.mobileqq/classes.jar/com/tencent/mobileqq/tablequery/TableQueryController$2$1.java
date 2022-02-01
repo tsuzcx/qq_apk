@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.tablequery;
 
-import beac;
-
-public class TableQueryController$2$1
+class TableQueryController$2$1
   implements Runnable
 {
-  public TableQueryController$2$1(beac parambeac) {}
+  TableQueryController$2$1(TableQueryController.2 param2) {}
   
   public void run()
   {
-    beab.a = true;
+    TableQueryController.a = true;
   }
 }
 

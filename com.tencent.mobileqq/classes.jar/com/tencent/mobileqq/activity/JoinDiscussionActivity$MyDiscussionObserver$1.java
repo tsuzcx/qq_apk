@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aeem;
 import android.graphics.Bitmap;
-import antl;
+import com.tencent.mobileqq.app.DiscussionHandler;
 
-public class JoinDiscussionActivity$MyDiscussionObserver$1
+class JoinDiscussionActivity$MyDiscussionObserver$1
   implements Runnable
 {
-  public JoinDiscussionActivity$MyDiscussionObserver$1(aeem paramaeem) {}
+  JoinDiscussionActivity$MyDiscussionObserver$1(JoinDiscussionActivity.MyDiscussionObserver paramMyDiscussionObserver) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class JoinDiscussionActivity$MyDiscussionObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.MyDiscussionObserver.1
  * JD-Core Version:    0.7.0.1
  */

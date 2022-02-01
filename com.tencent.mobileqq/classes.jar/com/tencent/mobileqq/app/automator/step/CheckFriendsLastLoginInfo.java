@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import anvi;
-import aohv;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,16 +10,16 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class CheckFriendsLastLoginInfo
   extends AsyncStep
 {
-  private anvi a;
+  private FriendListObserver a;
   
   public int a()
   {
-    if (((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getLastLoginInfo())
+    if (((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getLastLoginInfo())
     {
-      if (this.jdField_a_of_type_Anvi == null)
+      if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null)
       {
-        this.jdField_a_of_type_Anvi = new aohv(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Anvi);
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new CheckFriendsLastLoginInfo.MyFriendListObserver(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
       }
       return 2;
     }
@@ -29,10 +28,10 @@ public class CheckFriendsLastLoginInfo
   
   public void c()
   {
-    if (this.jdField_a_of_type_Anvi != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anvi);
-      this.jdField_a_of_type_Anvi = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = null;
     }
   }
 }

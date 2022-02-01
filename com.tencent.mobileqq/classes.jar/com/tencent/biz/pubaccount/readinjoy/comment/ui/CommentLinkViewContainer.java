@@ -8,10 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData.CommentLinkData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentViewItem;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import java.util.Iterator;
 import java.util.List;
-import pdp;
 
 public class CommentLinkViewContainer
   extends LinearLayout
@@ -35,18 +35,18 @@ public class CommentLinkViewContainer
   
   private void a()
   {
-    inflate(this.a, 2131562740, this);
+    inflate(this.a, 2131562885, this);
     setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     setOrientation(1);
   }
   
-  public void a(pdp parampdp)
+  public void a(CommentViewItem paramCommentViewItem)
   {
-    if ((parampdp == null) || (parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
+    if ((paramCommentViewItem == null) || (paramCommentViewItem.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
     for (;;)
     {
       return;
-      Object localObject = parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentLinkDataList;
+      Object localObject = paramCommentViewItem.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentLinkDataList;
       if ((localObject != null) && (((List)localObject).size() != 0))
       {
         removeAllViews();
@@ -57,7 +57,7 @@ public class CommentLinkViewContainer
           if (localCommentLinkData != null)
           {
             CommentLinkItemView localCommentLinkItemView = new CommentLinkItemView(this.a);
-            localCommentLinkItemView.a(parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, localCommentLinkData);
+            localCommentLinkItemView.a(paramCommentViewItem.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramCommentViewItem.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, localCommentLinkData);
             addView(localCommentLinkItemView);
           }
         }
@@ -103,7 +103,7 @@ public class CommentLinkViewContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.ui.CommentLinkViewContainer
  * JD-Core Version:    0.7.0.1
  */

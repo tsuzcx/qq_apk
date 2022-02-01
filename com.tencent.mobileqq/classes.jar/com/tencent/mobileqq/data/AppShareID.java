@@ -18,8 +18,8 @@ public class AppShareID
   public String strPkgName;
   public String strResDesc;
   public String strResName;
-  public String strResURL_big;
-  public String strResURL_small;
+  public String strResURLBig;
+  public String strResURLSmall;
   public long uiNewVer;
   @unique
   public long uiResID;
@@ -34,7 +34,7 @@ public class AppShareID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.data.AppShareID
  * JD-Core Version:    0.7.0.1
  */

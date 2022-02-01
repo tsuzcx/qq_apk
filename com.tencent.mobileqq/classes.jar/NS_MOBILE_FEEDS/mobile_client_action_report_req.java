@@ -12,10 +12,10 @@ public final class mobile_client_action_report_req
   static Map<String, String> cache_extendinfo;
   static int cache_report_feed_type = 0;
   static int cache_user_action = 0;
-  public long action_subtype;
-  public Map<String, String> extendinfo;
-  public int report_feed_type;
-  public int user_action;
+  public long action_subtype = 0L;
+  public Map<String, String> extendinfo = null;
+  public int report_feed_type = 0;
+  public int user_action = 0;
   
   static
   {

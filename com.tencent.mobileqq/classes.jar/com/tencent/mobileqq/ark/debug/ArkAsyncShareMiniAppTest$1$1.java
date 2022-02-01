@@ -2,21 +2,20 @@ package com.tencent.mobileqq.ark.debug;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqah;
-import aqcd;
+import com.tencent.mobileqq.ark.share.IArkMessagePreprocessorCallback;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ArkAsyncShareMiniAppTest$1$1
+class ArkAsyncShareMiniAppTest$1$1
   implements Runnable
 {
-  public ArkAsyncShareMiniAppTest$1$1(aqah paramaqah, JSONObject paramJSONObject, aqcd paramaqcd, Object paramObject) {}
+  ArkAsyncShareMiniAppTest$1$1(ArkAsyncShareMiniAppTest.1 param1, JSONObject paramJSONObject, IArkMessagePreprocessorCallback paramIArkMessagePreprocessorCallback, Object paramObject) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_OrgJsonJSONObject == null) || (this.jdField_a_of_type_Aqcd == null) || (this.jdField_a_of_type_JavaLangObject == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof Bundle))) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process return callback=", this.jdField_a_of_type_Aqcd });
+    if ((this.jdField_a_of_type_OrgJsonJSONObject == null) || (this.jdField_a_of_type_ComTencentMobileqqArkShareIArkMessagePreprocessorCallback == null) || (this.jdField_a_of_type_JavaLangObject == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof Bundle))) {
+      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process return callback=", this.jdField_a_of_type_ComTencentMobileqqArkShareIArkMessagePreprocessorCallback });
     }
     do
     {
@@ -49,8 +48,8 @@ public class ArkAsyncShareMiniAppTest$1$1
         }
       }
       QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process isProcessed=", Boolean.valueOf(bool), ", msgJson=", this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-    } while (this.jdField_a_of_type_Aqcd == null);
-    this.jdField_a_of_type_Aqcd.a(bool, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangObject);
+    } while (this.jdField_a_of_type_ComTencentMobileqqArkShareIArkMessagePreprocessorCallback == null);
+    this.jdField_a_of_type_ComTencentMobileqqArkShareIArkMessagePreprocessorCallback.a(bool, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

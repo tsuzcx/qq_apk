@@ -8,11 +8,11 @@ public final class UserPersonalProfile
   extends JceStruct
 {
   static byte[] cache_vecBuff = (byte[])new byte[1];
-  public int isAnnualVip;
-  public int isLoversVip;
-  public byte[] vecBuff;
-  public int vip;
-  public int vipLevel;
+  public int isAnnualVip = 0;
+  public int isLoversVip = 0;
+  public byte[] vecBuff = null;
+  public int vip = 0;
+  public int vipLevel = 0;
   
   static
   {

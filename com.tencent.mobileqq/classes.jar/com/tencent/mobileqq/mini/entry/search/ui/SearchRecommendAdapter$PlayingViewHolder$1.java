@@ -12,7 +12,6 @@ import com.tencent.mobileqq.mini.entry.search.comm.SearchInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SearchRecommendAdapter$PlayingViewHolder$1
   implements View.OnClickListener
@@ -21,34 +20,28 @@ class SearchRecommendAdapter$PlayingViewHolder$1
   
   public void onClick(View paramView)
   {
-    for (;;)
+    try
     {
-      try
+      ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      paramView = this.val$activity;
+      MiniAppInfo localMiniAppInfo = this.val$miniAppInfo;
+      if (this.val$searchInfo.getType() == 4) {}
+      for (int i = 3029;; i = 3024)
       {
-        ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-        Object localObject = this.val$activity;
-        MiniAppInfo localMiniAppInfo = this.val$miniAppInfo;
-        if (this.val$searchInfo.getType() != 4) {
-          continue;
-        }
-        i = 3029;
-        MiniAppController.launchMiniAppByAppInfo((Activity)localObject, localMiniAppInfo, i);
-        localObject = new MiniAppConfig(this.val$miniAppInfo);
-        ((MiniAppConfig)localObject).launchParam.scene = 3024;
+        MiniAppController.launchMiniAppByAppInfo(paramView, localMiniAppInfo, i);
+        paramView = new MiniAppConfig(this.val$miniAppInfo);
+        paramView.launchParam.scene = 3024;
         if (this.val$searchInfo.getType() == 4) {
-          ((MiniAppConfig)localObject).launchParam.scene = 3029;
+          paramView.launchParam.scene = 3029;
         }
-        MiniProgramLpReportDC04239.reportAsync((MiniAppConfig)localObject, "desktop", "search", "click", this.val$miniAppInfo.name);
+        MiniProgramLpReportDC04239.reportAsync(paramView, "desktop", "search", "click", this.val$miniAppInfo.name);
+        return;
       }
-      catch (Exception localException)
-      {
-        int i;
-        QLog.e("SearchRecommendAdapter", 1, "HotSearchAdapter, start miniApp exception: " + Log.getStackTraceString(localException));
-        continue;
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      i = 3024;
+    }
+    catch (Exception paramView)
+    {
+      QLog.e("SearchRecommendAdapter", 1, "HotSearchAdapter, start miniApp exception: " + Log.getStackTraceString(paramView));
     }
   }
 }

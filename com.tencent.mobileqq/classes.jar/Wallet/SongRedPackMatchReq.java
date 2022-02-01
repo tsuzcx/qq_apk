@@ -11,21 +11,21 @@ public final class SongRedPackMatchReq
   static C2CVoiceInfo cache_c2cRecordVoiceInfo;
   static GroupVoiceInfo cache_gVoiceMixRecordInfo;
   static GroupVoiceInfo cache_gVoiceRecordInfo = new GroupVoiceInfo();
-  public long appid;
+  public long appid = 0L;
   public String billno = "";
-  public C2CVoiceInfo c2cRecordMixVoiceInfo;
-  public C2CVoiceInfo c2cRecordVoiceInfo;
-  public int earphoneStatus;
-  public int fromType;
-  public GroupVoiceInfo gVoiceMixRecordInfo;
-  public GroupVoiceInfo gVoiceRecordInfo;
-  public long grabUin;
-  public long makeUin;
-  public int platform;
+  public C2CVoiceInfo c2cRecordMixVoiceInfo = null;
+  public C2CVoiceInfo c2cRecordVoiceInfo = null;
+  public int earphoneStatus = 0;
+  public int fromType = 0;
+  public GroupVoiceInfo gVoiceMixRecordInfo = null;
+  public GroupVoiceInfo gVoiceRecordInfo = null;
+  public long grabUin = 0L;
+  public long makeUin = 0L;
+  public int platform = 0;
   public String qqVersion = "";
   public String sKey = "";
-  public int songId;
-  public int songType;
+  public int songId = 0;
+  public int songType = 0;
   
   static
   {

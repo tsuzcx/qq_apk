@@ -7,16 +7,16 @@ import com.qq.taf.jce.JceStruct;
 public final class ModifyGroupInfoReq
   extends JceStruct
 {
-  public long cGroupOption;
-  public long dwGroupClass;
-  public long dwGroupCode;
-  public long dwValidMask;
+  public long cGroupOption = 0L;
+  public long dwGroupClass = 0L;
+  public long dwGroupCode = 0L;
+  public long dwValidMask = 0L;
   public String strFingerMemo = "";
   public String strGroupMemo = "";
   public String strGroupName = "";
   public String strRichFingerMemo = "";
-  public int wGroupFace;
-  public int wVersion;
+  public int wGroupFace = 0;
+  public int wVersion = 0;
   
   public ModifyGroupInfoReq() {}
   
@@ -66,7 +66,7 @@ public final class ModifyGroupInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.ModifyGroupInfoReq
  * JD-Core Version:    0.7.0.1
  */

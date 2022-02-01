@@ -1,23 +1,20 @@
 package com.tencent.biz.qqstory.album.view;
 
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideProgressNotifier;
-import vza;
-import vzb;
-import vzc;
 
-public class AlbumGalleryCapturePart$12$1$1$1
+class AlbumGalleryCapturePart$12$1$1$1
   implements Runnable
 {
-  public AlbumGalleryCapturePart$12$1$1$1(vzc paramvzc) {}
+  AlbumGalleryCapturePart$12$1$1$1(AlbumGalleryCapturePart.12.1.1 param1) {}
   
   public void run()
   {
-    vza.a(this.a.a.a.a).b();
+    AlbumGalleryCapturePart.a(this.a.a.a.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1.1.1
  * JD-Core Version:    0.7.0.1
  */

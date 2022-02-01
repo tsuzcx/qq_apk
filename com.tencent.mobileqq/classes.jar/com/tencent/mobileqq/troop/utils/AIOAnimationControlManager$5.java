@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bggl;
+import com.tencent.mobileqq.vas.troopgift.TroopGiftData;
 
-public class AIOAnimationControlManager$5
+class AIOAnimationControlManager$5
   implements Runnable
 {
-  public AIOAnimationControlManager$5(bggl parambggl, boolean paramBoolean) {}
+  AIOAnimationControlManager$5(AIOAnimationControlManager paramAIOAnimationControlManager, TroopGiftData paramTroopGiftData) {}
   
   public void run()
   {
-    this.this$0.a = 1;
-    this.this$0.a(this.a);
+    this.this$0.a(this.a, true);
   }
 }
 

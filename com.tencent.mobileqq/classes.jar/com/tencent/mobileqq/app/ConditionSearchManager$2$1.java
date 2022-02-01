@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import anrz;
-import ansd;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,7 +11,7 @@ class ConditionSearchManager$2$1
   
   public void run()
   {
-    anrz.a(this.a.this$0, false);
+    ConditionSearchManager.a(this.a.this$0, false);
     if (this.a.this$0.c) {
       for (;;)
       {
@@ -28,17 +26,17 @@ class ConditionSearchManager$2$1
           if (!((Iterator)localObject).hasNext()) {
             continue;
           }
-          localansd = (ansd)((Iterator)localObject).next();
-          if (anrz.a(this.a.this$0) == null) {
+          localIConfigListener = (ConditionSearchManager.IConfigListener)((Iterator)localObject).next();
+          if (ConditionSearchManager.a(this.a.this$0) == null) {
             continue;
           }
           bool = true;
         }
         catch (Exception localException)
         {
-          ansd localansd;
+          ConditionSearchManager.IConfigListener localIConfigListener;
           QLog.e("ConditionSearch.Manager", 1, "updateLocal callback fail.", localException);
-          if ((!this.a.this$0.d) || (anrz.a(this.a.this$0) == null)) {
+          if ((!this.a.this$0.d) || (ConditionSearchManager.a(this.a.this$0) == null)) {
             continue;
           }
           this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard);
@@ -50,18 +48,18 @@ class ConditionSearchManager$2$1
           this.a.this$0.b(this.a.this$0.jdField_a_of_type_JavaLangObject);
           return;
         }
-        localansd.a(2, bool);
+        localIConfigListener.a(2, bool);
       }
     }
     if (QLog.isColorLevel()) {
       QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
     }
-    anrz.a(this.a.this$0, null);
+    ConditionSearchManager.a(this.a.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.2.1
  * JD-Core Version:    0.7.0.1
  */

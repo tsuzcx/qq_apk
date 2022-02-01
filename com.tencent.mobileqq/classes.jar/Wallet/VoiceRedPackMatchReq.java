@@ -10,17 +10,17 @@ public final class VoiceRedPackMatchReq
   static C2CVoiceInfo cache_c2cVoiceInfo = new C2CVoiceInfo();
   static GroupVoiceInfo cache_groupVoiceInfo = new GroupVoiceInfo();
   static VoiceMatchStatus cache_voiceMatchStatus = new VoiceMatchStatus();
-  public long appid;
+  public long appid = 0L;
   public String billno = "";
-  public C2CVoiceInfo c2cVoiceInfo;
-  public int fromType;
-  public long grabUin;
-  public GroupVoiceInfo groupVoiceInfo;
-  public long makeUin;
-  public int platform;
+  public C2CVoiceInfo c2cVoiceInfo = null;
+  public int fromType = 0;
+  public long grabUin = 0L;
+  public GroupVoiceInfo groupVoiceInfo = null;
+  public long makeUin = 0L;
+  public int platform = 0;
   public String qqVersion = "";
   public String sKey = "";
-  public VoiceMatchStatus voiceMatchStatus;
+  public VoiceMatchStatus voiceMatchStatus = null;
   public String voiceText = "";
   
   public VoiceRedPackMatchReq() {}

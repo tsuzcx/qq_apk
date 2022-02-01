@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
 import android.content.res.AssetManager;
-import bddx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -9,9 +8,9 @@ import java.io.File;
 public class NativeBridge
 {
   private static final String TAG = "TK_Config_NativeSoLoader";
-  private static boolean globalInitialized;
-  private static boolean loadSoSuccess;
-  public String basePath;
+  private static boolean globalInitialized = false;
+  private static boolean loadSoSuccess = false;
+  public String basePath = null;
   
   public NativeBridge(boolean paramBoolean, String paramString)
   {
@@ -31,7 +30,7 @@ public class NativeBridge
   private static boolean initSoEnvirontMent(String paramString)
   {
     boolean bool = false;
-    if (!bddx.a("TKGLRenderer"))
+    if (!NativeSoLoader.a("TKGLRenderer"))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ArConfig_ArNativeSoLoader", 2, "native so is not exist!");
@@ -43,7 +42,7 @@ public class NativeBridge
     }
     try
     {
-      int i = bddx.a("TKGLRenderer");
+      int i = NativeSoLoader.a("TKGLRenderer");
       setAssetManager(BaseApplicationImpl.getApplication().getAssets(), paramString + File.separator);
       if (i == 0) {
         bool = true;
@@ -111,63 +110,63 @@ public class NativeBridge
     // Byte code:
     //   0: aconst_null
     //   1: astore 6
-    //   3: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   6: ifeq +28 -> 34
     //   9: ldc 8
     //   11: iconst_2
-    //   12: new 39	java/lang/StringBuilder
+    //   12: new 47	java/lang/StringBuilder
     //   15: dup
-    //   16: invokespecial 40	java/lang/StringBuilder:<init>	()V
-    //   19: ldc 123
-    //   21: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   19: ldc 126
+    //   21: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   24: aload_1
-    //   25: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   31: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   34: invokestatic 127	java/lang/System:currentTimeMillis	()J
+    //   25: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   31: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   34: invokestatic 130	java/lang/System:currentTimeMillis	()J
     //   37: lstore_3
     //   38: aload_1
-    //   39: getstatic 49	java/io/File:separator	Ljava/lang/String;
-    //   42: invokevirtual 132	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   39: getstatic 57	java/io/File:separator	Ljava/lang/String;
+    //   42: invokevirtual 135	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   45: istore 5
     //   47: iload 5
     //   49: ifne +336 -> 385
-    //   52: invokestatic 33	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   55: invokevirtual 136	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   58: invokevirtual 139	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
-    //   61: new 39	java/lang/StringBuilder
+    //   52: invokestatic 41	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   55: invokevirtual 139	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   58: invokevirtual 142	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   61: new 47	java/lang/StringBuilder
     //   64: dup
-    //   65: invokespecial 40	java/lang/StringBuilder:<init>	()V
-    //   68: ldc 141
-    //   70: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: getstatic 49	java/io/File:separator	Ljava/lang/String;
-    //   76: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   68: ldc 144
+    //   70: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: getstatic 57	java/io/File:separator	Ljava/lang/String;
+    //   76: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: aload_1
-    //   80: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   86: invokevirtual 147	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   80: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   86: invokevirtual 150	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   89: astore 7
     //   91: aload 7
     //   93: astore 6
-    //   95: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   95: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   98: ifeq +32 -> 130
     //   101: aload 7
     //   103: astore 6
     //   105: ldc 8
     //   107: iconst_2
-    //   108: new 39	java/lang/StringBuilder
+    //   108: new 47	java/lang/StringBuilder
     //   111: dup
-    //   112: invokespecial 40	java/lang/StringBuilder:<init>	()V
-    //   115: ldc 149
-    //   117: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   115: ldc 152
+    //   117: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   120: aload_1
-    //   121: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   127: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   121: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   127: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   130: aload 7
     //   132: astore 6
     //   134: aload 6
-    //   136: invokestatic 155	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   136: invokestatic 158	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   139: astore 7
     //   141: aload 7
     //   143: astore 8
@@ -177,57 +176,57 @@ public class NativeBridge
     //   152: astore 8
     //   154: iload_2
     //   155: ifne +43 -> 198
-    //   158: new 157	android/graphics/Matrix
+    //   158: new 160	android/graphics/Matrix
     //   161: dup
-    //   162: invokespecial 158	android/graphics/Matrix:<init>	()V
+    //   162: invokespecial 161	android/graphics/Matrix:<init>	()V
     //   165: astore 8
     //   167: aload 8
     //   169: fconst_1
-    //   170: ldc 159
-    //   172: invokevirtual 163	android/graphics/Matrix:preScale	(FF)Z
+    //   170: ldc 162
+    //   172: invokevirtual 166	android/graphics/Matrix:preScale	(FF)Z
     //   175: pop
     //   176: aload 7
     //   178: iconst_0
     //   179: iconst_0
     //   180: aload 7
-    //   182: invokevirtual 169	android/graphics/Bitmap:getWidth	()I
+    //   182: invokevirtual 172	android/graphics/Bitmap:getWidth	()I
     //   185: aload 7
-    //   187: invokevirtual 172	android/graphics/Bitmap:getHeight	()I
+    //   187: invokevirtual 175	android/graphics/Bitmap:getHeight	()I
     //   190: aload 8
     //   192: iconst_1
-    //   193: invokestatic 176	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   193: invokestatic 179	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
     //   196: astore 8
     //   198: aload 8
     //   200: astore 9
     //   202: aload 6
     //   204: ifnull +12 -> 216
     //   207: aload 6
-    //   209: invokevirtual 181	java/io/InputStream:close	()V
+    //   209: invokevirtual 184	java/io/InputStream:close	()V
     //   212: aload 8
     //   214: astore 9
-    //   216: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   216: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   219: ifeq +51 -> 270
     //   222: ldc 8
     //   224: iconst_2
-    //   225: new 39	java/lang/StringBuilder
+    //   225: new 47	java/lang/StringBuilder
     //   228: dup
-    //   229: invokespecial 40	java/lang/StringBuilder:<init>	()V
-    //   232: ldc 123
-    //   234: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   232: ldc 126
+    //   234: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   237: aload_1
-    //   238: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: ldc 183
-    //   243: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: ldc 186
+    //   243: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   246: aload 9
-    //   248: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   251: ldc 188
-    //   253: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: invokestatic 127	java/lang/System:currentTimeMillis	()J
+    //   248: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   251: ldc 191
+    //   253: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   256: invokestatic 130	java/lang/System:currentTimeMillis	()J
     //   259: lload_3
     //   260: lsub
-    //   261: invokevirtual 191	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   264: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   267: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   261: invokevirtual 194	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   264: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   267: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   270: aload 9
     //   272: areturn
     //   273: astore 6
@@ -235,39 +234,39 @@ public class NativeBridge
     //   276: astore 7
     //   278: aload 7
     //   280: astore 6
-    //   282: new 39	java/lang/StringBuilder
+    //   282: new 47	java/lang/StringBuilder
     //   285: dup
-    //   286: invokespecial 40	java/lang/StringBuilder:<init>	()V
+    //   286: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   289: aload_0
-    //   290: getfield 193	com/tencent/mobileqq/shortvideo/util/NativeBridge:basePath	Ljava/lang/String;
-    //   293: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: getfield 27	com/tencent/mobileqq/shortvideo/util/NativeBridge:basePath	Ljava/lang/String;
+    //   293: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   296: aload_1
-    //   297: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   300: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   297: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   300: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   303: astore 8
     //   305: aload 7
     //   307: astore 6
-    //   309: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   309: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   312: ifeq +33 -> 345
     //   315: aload 7
     //   317: astore 6
     //   319: ldc 8
     //   321: iconst_2
-    //   322: new 39	java/lang/StringBuilder
+    //   322: new 47	java/lang/StringBuilder
     //   325: dup
-    //   326: invokespecial 40	java/lang/StringBuilder:<init>	()V
-    //   329: ldc 195
-    //   331: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   326: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   329: ldc 196
+    //   331: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   334: aload 8
-    //   336: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   339: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   342: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   336: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   342: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   345: aload 7
     //   347: astore 6
-    //   349: new 197	java/io/FileInputStream
+    //   349: new 198	java/io/FileInputStream
     //   352: dup
     //   353: aload 8
-    //   355: invokespecial 199	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   355: invokespecial 200	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   358: astore 8
     //   360: aload 8
     //   362: astore 6
@@ -276,20 +275,20 @@ public class NativeBridge
     //   369: aload 7
     //   371: astore 6
     //   373: aload 8
-    //   375: invokevirtual 200	java/io/FileNotFoundException:printStackTrace	()V
+    //   375: invokevirtual 201	java/io/FileNotFoundException:printStackTrace	()V
     //   378: aload 7
     //   380: astore 6
     //   382: goto -18 -> 364
-    //   385: new 197	java/io/FileInputStream
+    //   385: new 198	java/io/FileInputStream
     //   388: dup
     //   389: aload_1
-    //   390: invokespecial 199	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   390: invokespecial 200	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   393: astore 7
     //   395: aload 7
     //   397: astore 6
     //   399: aload 7
     //   401: astore 8
-    //   403: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   403: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   406: ifeq +36 -> 442
     //   409: aload 7
     //   411: astore 6
@@ -297,15 +296,15 @@ public class NativeBridge
     //   415: astore 8
     //   417: ldc 8
     //   419: iconst_2
-    //   420: new 39	java/lang/StringBuilder
+    //   420: new 47	java/lang/StringBuilder
     //   423: dup
-    //   424: invokespecial 40	java/lang/StringBuilder:<init>	()V
-    //   427: ldc 195
-    //   429: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   424: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   427: ldc 196
+    //   429: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   432: aload_1
-    //   433: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   436: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   439: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   433: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   436: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   439: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   442: aload 7
     //   444: astore 6
     //   446: goto -312 -> 134
@@ -317,19 +316,19 @@ public class NativeBridge
     //   458: aload 7
     //   460: astore 8
     //   462: aload 9
-    //   464: invokevirtual 200	java/io/FileNotFoundException:printStackTrace	()V
+    //   464: invokevirtual 201	java/io/FileNotFoundException:printStackTrace	()V
     //   467: aload 7
     //   469: astore 6
     //   471: goto -337 -> 134
     //   474: astore 7
     //   476: aload 7
-    //   478: invokevirtual 201	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   478: invokevirtual 202	java/lang/OutOfMemoryError:printStackTrace	()V
     //   481: aconst_null
     //   482: astore 7
     //   484: goto -343 -> 141
     //   487: astore 6
     //   489: aload 6
-    //   491: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   491: invokevirtual 203	java/io/IOException:printStackTrace	()V
     //   494: aload 8
     //   496: astore 9
     //   498: goto -282 -> 216
@@ -341,19 +340,19 @@ public class NativeBridge
     //   510: aload 9
     //   512: astore 6
     //   514: aload 8
-    //   516: invokevirtual 203	java/lang/Exception:printStackTrace	()V
+    //   516: invokevirtual 204	java/lang/Exception:printStackTrace	()V
     //   519: aload 6
     //   521: astore 9
     //   523: aload 7
     //   525: ifnull -309 -> 216
     //   528: aload 7
-    //   530: invokevirtual 181	java/io/InputStream:close	()V
+    //   530: invokevirtual 184	java/io/InputStream:close	()V
     //   533: aload 6
     //   535: astore 9
     //   537: goto -321 -> 216
     //   540: astore 7
     //   542: aload 7
-    //   544: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   544: invokevirtual 203	java/io/IOException:printStackTrace	()V
     //   547: aload 6
     //   549: astore 9
     //   551: goto -335 -> 216
@@ -363,12 +362,12 @@ public class NativeBridge
     //   558: aload 6
     //   560: ifnull +8 -> 568
     //   563: aload 6
-    //   565: invokevirtual 181	java/io/InputStream:close	()V
+    //   565: invokevirtual 184	java/io/InputStream:close	()V
     //   568: aload_1
     //   569: athrow
     //   570: astore 6
     //   572: aload 6
-    //   574: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   574: invokevirtual 203	java/io/IOException:printStackTrace	()V
     //   577: goto -9 -> 568
     //   580: astore_1
     //   581: goto -23 -> 558

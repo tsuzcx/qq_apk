@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import cooperation.qwallet.plugin.QWalletHelper;
+import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 import org.json.JSONObject;
 
 class TransactionActivity$3
@@ -12,7 +12,7 @@ class TransactionActivity$3
   {
     try
     {
-      JSONObject localJSONObject = QWalletHelper.loadUnifiedConfig(TransactionActivity.a(this.this$0));
+      JSONObject localJSONObject = QWalletHelperImpl.loadUnifiedConfig(TransactionActivity.a(this.this$0));
       if (localJSONObject != null)
       {
         localJSONObject = localJSONObject.optJSONObject("qpayment");
@@ -35,7 +35,7 @@ class TransactionActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.TransactionActivity.3
  * JD-Core Version:    0.7.0.1
  */

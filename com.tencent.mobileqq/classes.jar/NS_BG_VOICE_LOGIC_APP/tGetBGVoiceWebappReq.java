@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class tGetBGVoiceWebappReq
   extends JceStruct
 {
-  public long lLoginUin;
+  public long lLoginUin = 0L;
   public String strQUA = "";
   
   public tGetBGVoiceWebappReq() {}

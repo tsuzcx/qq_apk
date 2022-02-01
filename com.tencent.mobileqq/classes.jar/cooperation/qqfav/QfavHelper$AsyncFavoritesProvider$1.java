@@ -6,14 +6,13 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bmak;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public class QfavHelper$AsyncFavoritesProvider$1
+class QfavHelper$AsyncFavoritesProvider$1
   implements Runnable
 {
-  public QfavHelper$AsyncFavoritesProvider$1(bmak parambmak) {}
+  QfavHelper$AsyncFavoritesProvider$1(QfavHelper.AsyncFavoritesProvider paramAsyncFavoritesProvider) {}
   
   public void run()
   {

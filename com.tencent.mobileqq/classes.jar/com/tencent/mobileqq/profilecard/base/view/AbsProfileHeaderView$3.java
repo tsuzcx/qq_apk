@@ -2,11 +2,11 @@ package com.tencent.mobileqq.profilecard.base.view;
 
 import android.view.View;
 import android.widget.ImageView;
-import azrb;
-import bdfk;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.vas.avatar.AvatarLayout;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
@@ -19,7 +19,7 @@ class AbsProfileHeaderView$3
   
   public void run()
   {
-    Object localObject2 = (AvatarLayout)this.this$0.jdField_a_of_type_JavaUtilHashMap.get("map_key_face");
+    Object localObject2 = (AvatarLayout)this.this$0.mHeaderChildMap.get("map_key_face");
     Object localObject1;
     int i;
     if (localObject2 == null)
@@ -29,12 +29,12 @@ class AbsProfileHeaderView$3
       if (!(localObject1 instanceof DynamicAvatarView)) {
         break label208;
       }
-      ((AvatarLayout)localObject2).setFaceDrawable(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 200, true, true, true, false, 3);
-      localObject2 = (View)this.this$0.jdField_a_of_type_JavaUtilHashMap.get("map_key_face_stoke");
-      if ((this.this$0.jdField_a_of_type_Azrb == null) || (this.this$0.jdField_a_of_type_Azrb.a == null)) {
+      ((AvatarLayout)localObject2).setFaceDrawable(this.this$0.mApp, 1, this.val$allinone.a, 200, true, true, true, false, 3);
+      localObject2 = (View)this.this$0.mHeaderChildMap.get("map_key_face_stoke");
+      if ((this.this$0.mCardInfo == null) || (this.this$0.mCardInfo.a == null)) {
         break label229;
       }
-      if (!this.this$0.jdField_a_of_type_Azrb.a.isNoCover()) {
+      if (!this.this$0.mCardInfo.a.isNoCover()) {
         break label179;
       }
       i = 1;
@@ -44,17 +44,17 @@ class AbsProfileHeaderView$3
       label121:
       if (localObject2 != null)
       {
-        if ((i != 1) || (ThemeUtil.isNowThemeIsNight(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null))) {
+        if ((i != 1) || (ThemeUtil.isNowThemeIsNight(this.this$0.mApp, false, null))) {
           break label184;
         }
         ((View)localObject2).setVisibility(4);
       }
       for (;;)
       {
-        if (bdfk.b()) {
+        if (SimpleUIUtil.a()) {
           ((View)localObject2).setVisibility(4);
         }
-        AbsProfileHeaderView.a(this.this$0, (ImageView)localObject1);
+        AbsProfileHeaderView.access$200(this.this$0, (ImageView)localObject1);
         return;
         localObject1 = ((AvatarLayout)localObject2).a(0);
         break;
@@ -62,10 +62,10 @@ class AbsProfileHeaderView$3
         i = 0;
         break label121;
         label184:
-        ((View)localObject2).setVisibility(VasFaceManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+        ((View)localObject2).setVisibility(VasFaceManager.a(this.val$allinone.a, this.this$0.mApp));
       }
       label208:
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
+      this.this$0.updateAvatar(this.val$allinone, this.val$type, this.val$key, false);
       return;
       label229:
       i = 0;

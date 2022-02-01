@@ -1,23 +1,30 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.handler.TroopInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class TroopManager$11
-  implements Runnable
+  extends TroopBusinessObserver
 {
-  TroopManager$11(TroopManager paramTroopManager, String paramString) {}
+  TroopManager$11(TroopManager paramTroopManager) {}
   
-  public void run()
+  protected void onActiveExtTroop(boolean paramBoolean, String paramString)
   {
-    TroopInfo localTroopInfo = (TroopInfo)this.this$0.a.find(TroopInfo.class, this.a);
-    ThreadManager.getUIHandler().post(new TroopManager.11.1(this, localTroopInfo));
+    QLog.i("troop_ext", 1, "onActiveExtTroop success: " + paramBoolean + " troopUin: " + paramString);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      ((TroopInfoHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER)).b(paramString);
+    }
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    TroopManager.a(this.a, paramInt1, paramInt2, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.11
  * JD-Core Version:    0.7.0.1
  */

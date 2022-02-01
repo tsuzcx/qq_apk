@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/o8z" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <com.tencent.mobileqq.togetherui.writetogether.SavingAnimView android:id="@id/o95" android:visibility="gone" android:layout_width="@dimen/bft" android:layout_height="@dimen/bft" android:layout_marginRight="@dimen/bfs" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:saving_stroke_width="@dimen/bfu" app:saving_view_color="@color/skin_bar_text" />
-        <TextView android:textSize="@dimen/bg2" android:textColor="@color/skin_bar_text" android:gravity="left" android:id="@id/o92" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/o95" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/bg2" android:textColor="@color/skin_bar_text" android:gravity="left" android:id="@id/o94" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xxo" android:layout_toRightOf="@id/o95" android:layout_centerVertical="true" android:alpha="0.0" />
-        <com.tencent.mobileqq.togetherui.writetogether.SavingAnimView android:layout_width="@dimen/bft" android:layout_height="@dimen/bft" android:layout_marginLeft="@dimen/bfs" android:layout_toRightOf="@id/o94" android:layout_centerVertical="true" android:alpha="0.0" />
-    </RelativeLayout>
-    <TextView android:textSize="@dimen/bg2" android:textColor="@color/skin_bar_text" android:id="@id/o91" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/bg2" android:textColor="@color/skin_bar_text" android:id="@id/o90" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+<RelativeLayout android:id="@id/o67" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/o68" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
 </RelativeLayout>

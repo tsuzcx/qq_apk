@@ -1,23 +1,20 @@
 package dov.com.qq.im.capture.paster;
 
-import bojy;
-import bokb;
-import bokc;
-import bpba;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
 
-public class QIMInformationPasterManager$1
+class QIMInformationPasterManager$1
   implements Runnable
 {
-  public QIMInformationPasterManager$1(bojy parambojy, bpba parambpba, bokb parambokb) {}
+  QIMInformationPasterManager$1(QIMInformationPasterManager paramQIMInformationPasterManager, InfomationFacePackage.Item paramItem, QIMInformationPasterManager.IInformationPasterResDownloaderCallback paramIInformationPasterResDownloaderCallback) {}
   
   public void run()
   {
-    this.this$0.a.a(this.jdField_a_of_type_Bpba, this.jdField_a_of_type_Bokb);
+    this.this$0.a.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceInfomationFacePackage$Item, this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager$IInformationPasterResDownloaderCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.paster.QIMInformationPasterManager.1
  * JD-Core Version:    0.7.0.1
  */

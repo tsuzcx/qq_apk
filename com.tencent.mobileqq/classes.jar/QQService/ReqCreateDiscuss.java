@@ -11,10 +11,10 @@ public final class ReqCreateDiscuss
   static int cache_DiscussType;
   static ArrayList<AddDiscussMemberInfo> cache_Members;
   public int DiscussType = 0;
-  public ArrayList<AddDiscussMemberInfo> Members;
+  public ArrayList<AddDiscussMemberInfo> Members = null;
   public String Name = "";
   public String Nick = "";
-  public int Refer;
+  public int Refer = 0;
   
   public ReqCreateDiscuss() {}
   

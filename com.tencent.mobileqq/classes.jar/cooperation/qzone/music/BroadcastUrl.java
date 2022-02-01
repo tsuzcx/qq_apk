@@ -13,7 +13,7 @@ public class BroadcastUrl
   implements Parcelable
 {
   public static final Parcelable.Creator<BroadcastUrl> CREATOR = new BroadcastUrl.1();
-  public Map<Byte, String> mapBroadcastUrl;
+  public Map<Byte, String> mapBroadcastUrl = null;
   
   public BroadcastUrl() {}
   
@@ -87,7 +87,7 @@ public class BroadcastUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.music.BroadcastUrl
  * JD-Core Version:    0.7.0.1
  */

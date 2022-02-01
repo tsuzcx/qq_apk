@@ -10,7 +10,7 @@ public final class ReportRsp
   implements Cloneable
 {
   static ArrayList<ReportHeader> cache_headers;
-  public ArrayList<ReportHeader> headers;
+  public ArrayList<ReportHeader> headers = null;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

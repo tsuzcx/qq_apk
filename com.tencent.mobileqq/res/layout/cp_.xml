@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/gg6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="13.0dip" android:layout_marginBottom="14.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="55.0dip" android:layout_height="55.0dip" android:contentDescription="@string/q4v">
-        <View android:id="@id/rz" android:background="@drawable/a42" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/d0y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/dvf" android:layout_centerInParent="true" />
+    <View android:id="@id/a4f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/b8q" android:background="@drawable/bli" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.MaxHeightRecyclerView android:id="@id/ng2" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <View android:id="@id/bw1" android:background="#ffefeff0" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_below="@id/ng2" />
+        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/close" android:layout_width="fill_parent" android:layout_height="57.5dip" android:text="取消" android:layout_below="@id/bw1" android:layout_centerInParent="true" />
     </RelativeLayout>
-    <TextView android:textSize="12.0dip" android:textColor="#ffffddb2" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/nyr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="100.0dip" />
-</LinearLayout>
+</RelativeLayout>

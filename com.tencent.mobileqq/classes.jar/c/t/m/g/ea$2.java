@@ -69,7 +69,7 @@ final class ea$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     c.t.m.g.ea.2
  * JD-Core Version:    0.7.0.1
  */

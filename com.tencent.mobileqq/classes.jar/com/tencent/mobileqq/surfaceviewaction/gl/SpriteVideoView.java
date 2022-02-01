@@ -2,9 +2,6 @@ package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import bdyy;
-import bdzo;
-import bdzp;
 
 public class SpriteVideoView
   extends SpriteGLView
@@ -15,63 +12,65 @@ public class SpriteVideoView
   public SpriteVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 0;
     a(true);
   }
   
   public SpriteVideoView(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, 1);
+    this.jdField_a_of_type_Int = 0;
     a(paramBoolean);
   }
   
   public void a()
   {
-    this.a.j();
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.j();
   }
   
-  public void a(String paramString, int paramInt, bdyy parambdyy)
+  public void a(String paramString, int paramInt, FrameSprite.OnFrameEndListener paramOnFrameEndListener)
   {
-    this.a.a(paramString, paramInt);
-    this.a.a(parambdyy);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramString, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramOnFrameEndListener);
   }
   
-  public void a(String paramString, bdyy parambdyy)
+  public void a(String paramString, FrameSprite.OnFrameEndListener paramOnFrameEndListener)
   {
-    this.a.c(paramString);
-    this.a.a(parambdyy);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramOnFrameEndListener);
   }
   
   protected void a(boolean paramBoolean)
   {
-    this.a = new SpriteVideoView.1(this, this, getContext(), paramBoolean);
-    this.a.b = true;
-    this.a.c = true;
-    a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite = new SpriteVideoView.1(this, this, getContext(), paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b = true;
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c = true;
+    a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite);
   }
   
   public void setCenterCrop(boolean paramBoolean)
   {
-    this.a.d = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.d = paramBoolean;
   }
   
   public void setFilePath(String paramString)
   {
-    this.a.b(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b(paramString);
   }
   
   public void setLooping(boolean paramBoolean)
   {
-    this.a.a(paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramBoolean);
   }
   
-  public void setOnPlayedListener(bdzo parambdzo)
+  public void setOnPlayedListener(VideoSprite.OnOnPlayedListener paramOnOnPlayedListener)
   {
-    this.a.a(parambdzo);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramOnOnPlayedListener);
   }
   
-  public void setOnProgressChangedListener(bdzp parambdzp)
+  public void setOnProgressChangedListener(VideoSprite.OnProgressChangedListener paramOnProgressChangedListener)
   {
-    this.a.a(parambdzp);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramOnProgressChangedListener);
   }
 }
 

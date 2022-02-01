@@ -4,8 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import aqqb;
-import aqqh;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +12,7 @@ public class ColorNoteSettingBaseSection
   extends LinearLayout
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private aqqb jdField_a_of_type_Aqqb;
+  private BaseSectionAdapter jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   
   public ColorNoteSettingBaseSection(Context paramContext)
@@ -37,15 +35,15 @@ public class ColorNoteSettingBaseSection
   
   private void b()
   {
-    inflate(getContext(), 2131558953, this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131377264));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363432));
+    inflate(getContext(), 2131558994, this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131377685));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363517));
   }
   
   public void a()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    Iterator localIterator = this.jdField_a_of_type_Aqqb.a(getContext()).iterator();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter.a(getContext()).iterator();
     while (localIterator.hasNext())
     {
       HistoryFormItem localHistoryFormItem = (HistoryFormItem)localIterator.next();
@@ -53,10 +51,17 @@ public class ColorNoteSettingBaseSection
     }
   }
   
-  public void setAdapter(aqqb paramaqqb)
+  public void setAdapter(BaseSectionAdapter paramBaseSectionAdapter)
   {
-    this.jdField_a_of_type_Aqqb = paramaqqb;
-    this.jdField_a_of_type_Aqqb.a(new aqqh(this));
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter = paramBaseSectionAdapter;
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter.a(new ColorNoteSettingBaseSection.1(this));
+  }
+  
+  public void setBgType(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setBgType(paramInt);
+    }
   }
   
   public void setContentDescription(CharSequence paramCharSequence)

@@ -4,14 +4,13 @@ import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bbfl;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class RevokeMsgInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RevokeMsgInfo> CREATOR = new bbfl();
+  public static final Parcelable.Creator<RevokeMsgInfo> CREATOR = new RevokeMsgInfo.1();
   public int a;
   public long a;
   public String a;
@@ -28,16 +27,18 @@ public class RevokeMsgInfo
   public String e;
   public int f;
   public String f;
-  public int g;
+  public int g = 0;
   
   public RevokeMsgInfo()
   {
+    this.jdField_f_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_f_of_type_JavaLangString = "";
   }
   
   public RevokeMsgInfo(MessageRecord paramMessageRecord)
   {
+    this.jdField_f_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_f_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = paramMessageRecord.istroop;
@@ -99,7 +100,7 @@ public class RevokeMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.revokemsg.RevokeMsgInfo
  * JD-Core Version:    0.7.0.1
  */

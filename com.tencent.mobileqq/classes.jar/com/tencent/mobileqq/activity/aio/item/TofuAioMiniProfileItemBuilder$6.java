@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahjq;
 import cooperation.qzone.QZoneHelper;
 
-public class TofuAioMiniProfileItemBuilder$6
+class TofuAioMiniProfileItemBuilder$6
   implements Runnable
 {
-  public TofuAioMiniProfileItemBuilder$6(ahjq paramahjq) {}
+  TofuAioMiniProfileItemBuilder$6(TofuAioMiniProfileItemBuilder paramTofuAioMiniProfileItemBuilder) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class TofuAioMiniProfileItemBuilder$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuAioMiniProfileItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

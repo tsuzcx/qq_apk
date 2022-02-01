@@ -11,11 +11,11 @@ public final class event_group
   static ArrayList<event_card> cache_cards;
   static ArrayList<event_cloud_card> cache_cloudCards;
   static ArrayList<event_card_type> cache_types = new ArrayList();
-  public ArrayList<event_card> cards;
-  public ArrayList<event_cloud_card> cloudCards;
+  public ArrayList<event_card> cards = null;
+  public ArrayList<event_cloud_card> cloudCards = null;
   public String groupid = "";
-  public int type;
-  public ArrayList<event_card_type> types;
+  public int type = 0;
+  public ArrayList<event_card_type> types = null;
   
   static
   {

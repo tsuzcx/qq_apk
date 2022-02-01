@@ -6,8 +6,8 @@ public final class BuildConfig
   public static final String BUILD_TYPE = "release";
   public static final boolean DEBUG = Boolean.parseBoolean("true");
   public static final String FLAVOR = "";
-  public static final int VERSION_CODE = 1840;
-  public static final String VERSION_NAME = "";
+  public static final int VERSION_CODE = 1808;
+  public static final String VERSION_NAME = "1.8.8.1-mobileqq";
 }
 
 

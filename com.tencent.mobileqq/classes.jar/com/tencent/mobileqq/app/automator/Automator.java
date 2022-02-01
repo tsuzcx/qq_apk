@@ -4,13 +4,12 @@ import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import anqj;
-import aohn;
-import aohp;
-import bcug;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.AutomatorObserver;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.profile.CheckUpdateItemInterface;
 import com.tencent.mobileqq.startup.step.StartService;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -33,13 +32,15 @@ public class Automator
   public int a;
   public long a;
   public SharedPreferences a;
-  private LinearGroup jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
-  private HashMap<Integer, bcug> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+  public AppInterface a;
+  public QQAppInterface a;
+  private LinearGroup jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup = null;
+  private HashMap<Integer, CheckUpdateItemInterface> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
   protected LinkedList<AsyncStep> a;
   public ConcurrentHashMap<String, Long> a;
   public boolean a;
   public int b;
-  private LinkedList<LinearGroup> b = new LinkedList();
+  private LinkedList<LinearGroup> b;
   public boolean b;
   protected int c;
   public boolean c;
@@ -49,20 +50,28 @@ public class Automator
   {
     super(paramQQAppInterface);
     this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.jdField_b_of_type_JavaUtilLinkedList = new LinkedList();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(16);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQQAppInterface;
   }
   
   private void a(LinearGroup paramLinearGroup)
   {
     boolean bool = true;
-    if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.a)) {
-      this.b.clear();
+    if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,115,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.a)) {
+      this.jdField_b_of_type_JavaUtilLinkedList.clear();
     }
     do
     {
       if (bool) {
-        this.b.add(paramLinearGroup);
+        this.jdField_b_of_type_JavaUtilLinkedList.add(paramLinearGroup);
       }
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "addWaitingMode_Locked " + paramLinearGroup.a + " " + bool);
@@ -73,12 +82,12 @@ public class Automator
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup == null);
     bool = d();
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilLinkedList.iterator();
     label122:
     if (localIterator.hasNext())
     {
       AsyncStep localAsyncStep = (AsyncStep)localIterator.next();
-      if ((!"{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(localAsyncStep.a)) && (!localAsyncStep.a.equals(paramLinearGroup.a))) {
+      if ((!"{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,115,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(localAsyncStep.a)) && (!localAsyncStep.a.equals(paramLinearGroup.a))) {
         break label240;
       }
       bool = false;
@@ -91,11 +100,11 @@ public class Automator
       if (!"{{4,3,5,6},44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57}".equals(paramLinearGroup.a)) {
         break;
       }
-      localIterator = this.b.iterator();
+      localIterator = this.jdField_b_of_type_JavaUtilLinkedList.iterator();
       bool = true;
       if (localIterator.hasNext())
       {
-        if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(((AsyncStep)localIterator.next()).a)) {
+        if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,113,108,44,45,115,114,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(((AsyncStep)localIterator.next()).a)) {
           bool = false;
         }
         for (;;)
@@ -111,7 +120,7 @@ public class Automator
   {
     LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
     if (localLinearGroup != null) {
-      return aohp.a(localLinearGroup, false);
+      return StepFactory.a(localLinearGroup, false);
     }
     if (this.d) {
       return 1;
@@ -119,12 +128,12 @@ public class Automator
     return -1;
   }
   
-  public bcug a(int paramInt)
+  public CheckUpdateItemInterface a(int paramInt)
   {
-    return (bcug)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    return (CheckUpdateItemInterface)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
   }
   
-  public HashMap<Integer, bcug> a()
+  public HashMap<Integer, CheckUpdateItemInterface> a()
   {
     return this.jdField_a_of_type_JavaUtilHashMap;
   }
@@ -134,9 +143,9 @@ public class Automator
     notifyUI(0, true, null);
   }
   
-  public void a(int paramInt, bcug parambcug)
+  public void a(int paramInt, CheckUpdateItemInterface paramCheckUpdateItemInterface)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), parambcug);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramCheckUpdateItemInterface);
   }
   
   @TargetApi(9)
@@ -146,7 +155,7 @@ public class Automator
       QLog.d("QQInitHandler", 2, "start " + ???.a);
     }
     LinearGroup localLinearGroup = (LinearGroup)???;
-    synchronized (this.b)
+    synchronized (this.jdField_b_of_type_JavaUtilLinkedList)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup == null)
       {
@@ -156,7 +165,7 @@ public class Automator
         }
         if (jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null)
         {
-          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new aohn(null));
+          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new Automator.MyThreadFactory(null));
           if (Build.VERSION.SDK_INT > 8) {
             jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.allowCoreThreadTimeOut(true);
           }
@@ -175,7 +184,7 @@ public class Automator
       this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("isFriendlistok", false).commit();
     }
     if (paramLong != 0L) {
-      this.app.getPreferences().edit().putLong(Constants.Key.SvcRegister_timeStamp.toString(), paramLong).commit();
+      this.appRuntime.getPreferences().edit().putLong(Constants.Key.SvcRegister_timeStamp.toString(), paramLong).commit();
     }
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
@@ -190,13 +199,13 @@ public class Automator
     {
       localStringBuilder = new StringBuilder().append("{");
       if (!paramBoolean1) {
-        break label195;
+        break label197;
       }
     }
-    label195:
+    label197:
     for (int i = 7;; i = 8)
     {
-      a(aohp.a(this, i + "}"));
+      a(StepFactory.a(this, i + "}"));
       return;
     }
   }
@@ -208,7 +217,7 @@ public class Automator
       int i;
       synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
       {
-        this.c -= 1;
+        this.jdField_c_of_type_Int -= 1;
         if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
         {
           if (paramArrayOfAsyncStep != null)
@@ -239,12 +248,12 @@ public class Automator
   
   public boolean a()
   {
-    if (!StartService.a) {
+    if (!StartService.jdField_a_of_type_Boolean) {
       return false;
     }
     LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
     if (localLinearGroup != null) {
-      return aohp.a(localLinearGroup);
+      return StepFactory.a(localLinearGroup);
     }
     return true;
   }
@@ -260,7 +269,7 @@ public class Automator
       LinkedList localLinkedList;
       if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup != null)
       {
-        localLinkedList = this.b;
+        localLinkedList = this.jdField_b_of_type_JavaUtilLinkedList;
         bool1 = bool2;
       }
       try
@@ -273,7 +282,7 @@ public class Automator
         if (!bool1) {
           continue;
         }
-        a(aohp.a(this, "{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}"));
+        a(StepFactory.a(this, "{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}"));
         return;
       }
       finally {}
@@ -285,12 +294,12 @@ public class Automator
   {
     synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
-      if (this.c < 3)
+      if (this.jdField_c_of_type_Int < 3)
       {
-        this.c += 1;
+        this.jdField_c_of_type_Int += 1;
         if (jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null)
         {
-          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new aohn(null));
+          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new Automator.MyThreadFactory(null));
           if (Build.VERSION.SDK_INT > 8) {
             jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.allowCoreThreadTimeOut(true);
           }
@@ -306,7 +315,7 @@ public class Automator
   {
     LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
     if (localLinearGroup != null) {
-      if (aohp.a(localLinearGroup, true) != 0) {}
+      if (StepFactory.a(localLinearGroup, true) != 0) {}
     }
     while (!this.d)
     {
@@ -318,14 +327,14 @@ public class Automator
   
   public void c()
   {
-    a(aohp.a(this, "{15,18,21,58,60,24}"));
+    a(StepFactory.a(this, "{15,18,21,58,60,24}"));
   }
   
   public boolean c()
   {
     LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
     if (localLinearGroup != null) {
-      return aohp.b(localLinearGroup);
+      return StepFactory.b(localLinearGroup);
     }
     return true;
   }
@@ -339,14 +348,14 @@ public class Automator
   {
     LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
     if (localLinearGroup != null) {
-      return aohp.c(localLinearGroup);
+      return StepFactory.c(localLinearGroup);
     }
     return true;
   }
   
   public Class<? extends BusinessObserver> observerClass()
   {
-    return anqj.class;
+    return AutomatorObserver.class;
   }
   
   public void onDestroy()
@@ -357,11 +366,11 @@ public class Automator
     synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
       this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      this.c = 0;
+      this.jdField_c_of_type_Int = 0;
     }
-    synchronized (this.b)
+    synchronized (this.jdField_b_of_type_JavaUtilLinkedList)
     {
-      this.b.clear();
+      this.jdField_b_of_type_JavaUtilLinkedList.clear();
       if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup != null)
       {
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup.a(8);
@@ -387,7 +396,7 @@ public class Automator
     }
     for (;;)
     {
-      synchronized (this.b)
+      synchronized (this.jdField_b_of_type_JavaUtilLinkedList)
       {
         if (!this.d)
         {
@@ -395,16 +404,16 @@ public class Automator
           this.d = true;
         }
         if (i != 0) {
-          aohp.a(this, "2").run();
+          StepFactory.a(this, "2").run();
         }
         ??? = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
         if (??? != null) {
           ((AsyncStep)???).run();
         }
       }
-      synchronized (this.b)
+      synchronized (this.jdField_b_of_type_JavaUtilLinkedList)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup = ((LinearGroup)this.b.poll());
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup = ((LinearGroup)this.jdField_b_of_type_JavaUtilLinkedList.poll());
         if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup == null)
         {
           return;

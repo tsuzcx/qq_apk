@@ -1,23 +1,21 @@
 package com.tencent.tbs.one.impl.common.statistic;
 
-import android.content.Context;
-import com.tencent.tbs.log.TBSLog;
-import com.tencent.tbs.one.impl.base.Logging;
+import com.tencent.tbs.one.impl.a.f;
+import com.tencent.tbs.one.impl.a.l;
 
 final class StatisticReport$3
-  implements Runnable
+  extends l<Integer>
 {
-  StatisticReport$3(Context paramContext) {}
+  StatisticReport$3(StatisticReport paramStatisticReport) {}
   
-  public void run()
+  public final void a(int paramInt, String paramString, Throwable paramThrowable)
   {
-    Logging.d("Start packaging log files, log path: %s", new Object[] { TBSLog.getLogPath() });
-    new LogPackingJob(TBSLog.getLogPath()).start(new StatisticReport.3.1(this));
+    f.c(paramString, new Object[] { paramThrowable });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tbs.one.impl.common.statistic.StatisticReport.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.troop.honor;
 
-import aqxe;
-import bfwu;
-import bfxd;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.troop.honor.config.TroopHonorConfig;
 
-public class TroopHonorManager$1
+class TroopHonorManager$1
   implements Runnable
 {
-  public TroopHonorManager$1(bfwu parambfwu) {}
+  TroopHonorManager$1(TroopHonorManager paramTroopHonorManager) {}
   
   public void run()
   {
-    bfxd localbfxd = (bfxd)aqxe.a().a(544);
-    this.this$0.a(localbfxd, true);
+    TroopHonorConfig localTroopHonorConfig = (TroopHonorConfig)QConfigManager.a().a(544);
+    this.this$0.a(localTroopHonorConfig, true);
   }
 }
 

@@ -6,21 +6,20 @@ import android.text.TextUtils;
 import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ab;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.ap;
-import com.tencent.mobileqq.msf.core.auth.b;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.ai;
 import com.tencent.mobileqq.msf.core.auth.l;
-import com.tencent.mobileqq.msf.core.c.f;
-import com.tencent.mobileqq.msf.core.c.f.a;
+import com.tencent.mobileqq.msf.core.c.d;
+import com.tencent.mobileqq.msf.core.c.e.a;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.core.i;
+import com.tencent.mobileqq.msf.core.net.k;
 import com.tencent.mobileqq.msf.core.net.k.b;
 import com.tencent.mobileqq.msf.core.net.n;
+import com.tencent.mobileqq.msf.core.o;
 import com.tencent.mobileqq.msf.core.push.RegPushReason;
 import com.tencent.mobileqq.msf.core.push.a;
 import com.tencent.mobileqq.msf.core.push.g;
-import com.tencent.mobileqq.msf.core.q;
-import com.tencent.mobileqq.msf.core.w;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
@@ -79,7 +78,7 @@ public class r
                 QLog.d(a, 1, "get infoLogin, but not register push, register now");
                 localObject3 = paramContext.getPackageName();
                 if (localObject3 == null) {
-                  break label819;
+                  break label823;
                 }
                 localObject2 = new ToServiceMsg("", paramToServiceMsg.getUin(), "push.register");
                 ((ToServiceMsg)localObject2).setMsfCommand(MsfCommand.registerPush);
@@ -88,7 +87,7 @@ public class r
                 MsfSdkUtils.addToMsgProcessName((String)localObject3, (ToServiceMsg)localObject2);
                 localObject3 = (a)MsfService.core.pushManager.i.get(localObject3);
                 if (localObject3 == null) {
-                  break label687;
+                  break label691;
                 }
                 aa.a((ToServiceMsg)localObject2, ((a)localObject3).k);
                 MsfService.core.pushManager.a((ToServiceMsg)localObject2, RegPushReason.fillRegProxy);
@@ -258,7 +257,7 @@ public class r
                 return;
                 MsfService.core.getNetFlowStore().a(paramToServiceMsg);
                 return;
-                paramContext = aj.o();
+                paramContext = ac.q();
                 localObject2 = u.a(paramToServiceMsg);
                 ((FromServiceMsg)localObject2).addAttribute(paramToServiceMsg.getServiceCmd(), paramContext);
                 ((FromServiceMsg)localObject2).setMsgSuccess();
@@ -277,7 +276,7 @@ public class r
                 default: 
                   return;
                 }
-                com.tencent.mobileqq.msf.core.net.k.a(k.b.a);
+                k.a(k.b.a);
                 return;
                 paramInt = ((Integer)paramToServiceMsg.getAttribute("cmd")).intValue();
                 paramContext = new WirelessPsw.CWirelessPswReq();
@@ -286,7 +285,7 @@ public class r
                 paramContext.uin.set(Long.parseLong(paramToServiceMsg.getUin()));
                 try
                 {
-                  localObject1 = InetAddress.getByName(aj.o());
+                  localObject1 = InetAddress.getByName(ac.q());
                   localObject2 = ((InetAddress)localObject1).getAddress();
                   if ((localObject2.length > 4) || (localObject2.length <= 0))
                   {
@@ -327,7 +326,7 @@ public class r
                 paramContext.uin.set(Long.parseLong(paramToServiceMsg.getUin()));
                 try
                 {
-                  localObject1 = InetAddress.getByName(aj.o());
+                  localObject1 = InetAddress.getByName(ac.q());
                   localObject2 = ((InetAddress)localObject1).getAddress();
                   if ((localObject2.length > 4) || (localObject2.length <= 0))
                   {
@@ -352,7 +351,7 @@ public class r
           paramContext.ip.set(0x0 | (i & 0xFF) << 24 | (j & 0xFF) << 16 | (k & 0xFF) << 8 | m & 0xFF);
           Object localObject1 = MsfService.getCore().getAccountCenter().f();
           paramContext.ksid.set(ByteStringMicro.copyFrom((byte[])localObject1));
-          paramContext.imei.set(w.d());
+          paramContext.imei.set(o.d());
           paramContext.guid.set(ByteStringMicro.copyFrom(l.a()));
           Object localObject2 = paramContext.toByteArray();
           long l = localObject2.length;
@@ -411,13 +410,15 @@ public class r
           return;
           MsfService.core.wt_GetStViaSMSVerifyLogin(paramToServiceMsg);
           return;
+          MsfService.core.wt_QuickLoginByGateway(paramToServiceMsg);
+          return;
           MsfService.core.sendSsoMsg(paramToServiceMsg);
           paramContext = String.valueOf(paramToServiceMsg.getAttribute("stype", Integer.valueOf(0)));
           localObject1 = new HashMap();
           ((HashMap)localObject1).put("MsgType", paramToServiceMsg.toString());
           ((HashMap)localObject1).put("SharpType", paramContext);
           MsfService.core.getStatReporter().a("dim.Msf.RecvVideoS2CACK", false, 0L, 0L, (Map)localObject1, true, false);
-          f.a().a(f.a.i, paramToServiceMsg.getWupBuffer(), 0);
+          com.tencent.mobileqq.msf.core.c.e.a().a(e.a.i, paramToServiceMsg.getWupBuffer(), 0);
           return;
           paramContext = paramToServiceMsg.getUin();
           paramToServiceMsg = (String)paramToServiceMsg.getAttributes().get("src");
@@ -441,12 +442,12 @@ public class r
           return;
           MsfService.core.refreshDA2(paramToServiceMsg);
           return;
-          ab.a((String)localObject1, paramToServiceMsg);
+          com.tencent.mobileqq.msf.core.u.a((String)localObject1, paramToServiceMsg);
           return;
           try
           {
             l = ((Long)paramToServiceMsg.getAttribute("infoSync_timestamp")).longValue();
-            ap.a(paramToServiceMsg.getUin(), l);
+            ai.a(paramToServiceMsg.getUin(), l);
             QLog.d(a, 1, "recv infoSync timestamp:" + l);
             return;
           }
@@ -456,19 +457,19 @@ public class r
         return;
         try
         {
-          w.a((String)paramToServiceMsg.getAttribute("geoginfo_lontitude"), (String)paramToServiceMsg.getAttribute("geoginfo_latitude"), NetConnInfoCenter.getServerTime());
+          o.a((String)paramToServiceMsg.getAttribute("geoginfo_lontitude"), (String)paramToServiceMsg.getAttribute("geoginfo_latitude"), NetConnInfoCenter.getServerTime());
           return;
         }
         catch (Exception paramContext) {}
       } while (!QLog.isColorLevel());
       QLog.d(a, 2, "failed to save geog info ", paramContext);
       return;
-      i.a(((Integer)paramToServiceMsg.getAttribute("opType")).intValue(), ((Integer)paramToServiceMsg.getAttribute("manualLogLevel")).intValue());
+      com.tencent.qphone.base.util.log.a.b.a(((Integer)paramToServiceMsg.getAttribute("opType")).intValue(), ((Integer)paramToServiceMsg.getAttribute("manualLogLevel")).intValue());
       return;
       paramInt = ((Integer)paramToServiceMsg.getAttribute("localeId")).intValue();
     } while (MsfCore.sCore == null);
-    label687:
-    label819:
+    label691:
+    label823:
     if (QLog.isColorLevel()) {
       QLog.d(a, 2, "msf_update_localeId, localeId = " + paramInt);
     }
@@ -476,7 +477,7 @@ public class r
     return;
     MsfService.core.updateBatteryStatus(paramToServiceMsg);
     return;
-    q.a().a(paramToServiceMsg);
+    i.a().a(paramToServiceMsg);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.surfaceviewaction.gl;
 class GLTextureView$RenderThreadRunnable
   implements Runnable
 {
-  public boolean a;
+  public boolean a = false;
   
   private GLTextureView$RenderThreadRunnable(GLTextureView paramGLTextureView) {}
   
@@ -13,18 +13,18 @@ class GLTextureView$RenderThreadRunnable
     // Byte code:
     //   0: iconst_0
     //   1: istore_2
-    //   2: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2: invokestatic 34	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   5: ifeq +11 -> 16
-    //   8: ldc 34
+    //   8: ldc 36
     //   10: iconst_2
-    //   11: ldc 36
-    //   13: invokestatic 40	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   16: ldc 42
+    //   11: ldc 38
+    //   13: invokestatic 42	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   16: ldc 44
     //   18: monitorenter
     //   19: aload_0
     //   20: iconst_1
-    //   21: putfield 44	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:a	Z
-    //   24: ldc 42
+    //   21: putfield 19	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:a	Z
+    //   24: ldc 44
     //   26: monitorexit
     //   27: aload_0
     //   28: getfield 14	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:this$0	Lcom/tencent/mobileqq/surfaceviewaction/gl/GLTextureView;
@@ -50,7 +50,7 @@ class GLTextureView$RenderThreadRunnable
     //   72: invokestatic 55	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/GLTextureView;)Ljava/util/List;
     //   75: iload_1
     //   76: invokeinterface 65 2 0
-    //   81: checkcast 67	bdza
+    //   81: checkcast 67	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$OnSurfaceChangedListener
     //   84: invokeinterface 69 1 0
     //   89: iload_1
     //   90: iconst_1
@@ -58,12 +58,12 @@ class GLTextureView$RenderThreadRunnable
     //   92: istore_1
     //   93: goto -41 -> 52
     //   96: astore 7
-    //   98: ldc 42
+    //   98: ldc 44
     //   100: monitorexit
     //   101: aload 7
     //   103: athrow
     //   104: astore 7
-    //   106: ldc 34
+    //   106: ldc 36
     //   108: iconst_2
     //   109: new 71	java/lang/StringBuilder
     //   112: dup
@@ -87,7 +87,7 @@ class GLTextureView$RenderThreadRunnable
     //   154: invokestatic 104	java/lang/System:currentTimeMillis	()J
     //   157: lstore_3
     //   158: aload_0
-    //   159: getfield 44	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:a	Z
+    //   159: getfield 19	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:a	Z
     //   162: ifeq +303 -> 465
     //   165: aload_0
     //   166: getfield 14	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:this$0	Lcom/tencent/mobileqq/surfaceviewaction/gl/GLTextureView;
@@ -151,10 +151,10 @@ class GLTextureView$RenderThreadRunnable
     //   301: invokeinterface 133 1 0
     //   306: aload 7
     //   308: monitorexit
-    //   309: ldc 42
+    //   309: ldc 44
     //   311: monitorenter
     //   312: aload_0
-    //   313: getfield 44	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:a	Z
+    //   313: getfield 19	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:a	Z
     //   316: ifeq +20 -> 336
     //   319: aload_0
     //   320: getfield 14	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:this$0	Lcom/tencent/mobileqq/surfaceviewaction/gl/GLTextureView;
@@ -163,7 +163,7 @@ class GLTextureView$RenderThreadRunnable
     //   329: aload_0
     //   330: getfield 14	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:this$0	Lcom/tencent/mobileqq/surfaceviewaction/gl/GLTextureView;
     //   333: invokestatic 138	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView:c	(Lcom/tencent/mobileqq/surfaceviewaction/gl/GLTextureView;)V
-    //   336: ldc 42
+    //   336: ldc 44
     //   338: monitorexit
     //   339: aload_0
     //   340: getfield 14	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$RenderThreadRunnable:this$0	Lcom/tencent/mobileqq/surfaceviewaction/gl/GLTextureView;
@@ -182,9 +182,9 @@ class GLTextureView$RenderThreadRunnable
     //   373: aload 8
     //   375: athrow
     //   376: astore 7
-    //   378: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   378: invokestatic 34	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   381: ifeq -45 -> 336
-    //   384: ldc 34
+    //   384: ldc 36
     //   386: iconst_2
     //   387: new 71	java/lang/StringBuilder
     //   390: dup
@@ -198,7 +198,7 @@ class GLTextureView$RenderThreadRunnable
     //   410: invokestatic 89	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   413: goto -77 -> 336
     //   416: astore 7
-    //   418: ldc 42
+    //   418: ldc 44
     //   420: monitorexit
     //   421: aload 7
     //   423: athrow
@@ -270,7 +270,7 @@ class GLTextureView$RenderThreadRunnable
     //   567: invokestatic 55	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/GLTextureView;)Ljava/util/List;
     //   570: iload_1
     //   571: invokeinterface 65 2 0
-    //   576: checkcast 67	bdza
+    //   576: checkcast 67	com/tencent/mobileqq/surfaceviewaction/gl/GLTextureView$OnSurfaceChangedListener
     //   579: invokeinterface 155 1 0
     //   584: iload_1
     //   585: iconst_1

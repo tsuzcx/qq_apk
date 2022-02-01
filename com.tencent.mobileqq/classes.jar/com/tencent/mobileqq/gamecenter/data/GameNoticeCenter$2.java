@@ -9,13 +9,13 @@ class GameNoticeCenter$2
   
   public void run()
   {
-    GameNoticeCenter.access$000(this.this$0);
+    GameNoticeCenter.access$000(this.this$0, true);
     GameNoticeCenter.access$100(this.this$0).set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameNoticeCenter.2
  * JD-Core Version:    0.7.0.1
  */

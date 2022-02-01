@@ -24,24 +24,24 @@ public class NativeApngDecoder
   private static final int IMAGE_INFO_INDEX_WIDTH = 0;
   public static final int PRE_LOAD_NEXT_FRAME = 2;
   public static final String TAG = "NativeApngDecoder";
-  private long curFrameBegin;
+  private long curFrameBegin = 0L;
   protected int currentFrameDelay;
   private int currentTotalDelay;
   private HandlerThread decodeThread;
   int decryptType;
-  private boolean hasPreLoad;
-  public int height;
+  private boolean hasPreLoad = false;
+  public int height = 0;
   protected int mCurBitmapBufferIndex = -1;
   protected Bitmap mCurrentFrameBitmap;
-  private int mFrameCount;
+  private int mFrameCount = 0;
   private Handler mHandler;
   int[] mImageInfo = new int[7];
   protected Bitmap mNextFrameBitmap;
-  private volatile long nativeFrameInfoInstance;
+  private volatile long nativeFrameInfoInstance = 0L;
   long nativeImageInstance;
   private Paint paint = new Paint();
   private Paint paintTransparentBlack = new Paint();
-  public int width;
+  public int width = 0;
   
   public NativeApngDecoder(File paramFile)
   {
@@ -268,7 +268,7 @@ public class NativeApngDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.image.NativeApngDecoder
  * JD-Core Version:    0.7.0.1
  */

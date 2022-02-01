@@ -4,34 +4,35 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Looper;
+import com.tencent.avcore.data.AVCoreSystemInfo;
+import com.tencent.avcore.engine.mav.IMavAdapter;
+import com.tencent.avcore.engine.mav.IMavEventListener;
+import com.tencent.avcore.engine.mav.MavEventId;
+import com.tencent.avcore.engine.mav.MavNativeEventParams;
 import com.tencent.avcore.jni.data.SDKConfigInfo;
-import nbp;
-import nca;
-import ncc;
-import ncd;
-import nch;
-import nci;
-import ncl;
-import ncn;
+import com.tencent.avcore.netchannel.IMavNetCallback;
+import com.tencent.avcore.netchannel.IMavNetChannel;
+import com.tencent.avcore.util.AVCoreLog;
+import com.tencent.avcore.util.AVNativeEventProcessor;
 
 public class MavEngineJni
-  implements nch
+  implements MavEventId, IMavNetCallback
 {
   static final String TAG = "MavEngineJni";
-  protected final nca mAdapter;
+  protected final IMavAdapter mAdapter;
   private int mAppId;
-  protected ncn mEventCallback;
+  protected AVNativeEventProcessor mEventCallback;
   protected MavEngineJni.NativeEventHandler mEventHandler;
-  protected ncc mEventListener;
-  protected nci mNetChannel;
-  protected final nbp mSysInfo;
+  protected IMavEventListener mEventListener;
+  protected IMavNetChannel mNetChannel;
+  protected final AVCoreSystemInfo mSysInfo;
   
-  MavEngineJni(nbp paramnbp, nca paramnca)
+  MavEngineJni(AVCoreSystemInfo paramAVCoreSystemInfo, IMavAdapter paramIMavAdapter)
   {
-    this.mSysInfo = paramnbp;
-    this.mAdapter = paramnca;
+    this.mSysInfo = paramAVCoreSystemInfo;
+    this.mAdapter = paramIMavAdapter;
     this.mEventCallback = this.mAdapter.getNativeEventProcessor();
-    ncl.c("MavEngineJni", "MavEngineJni, callback[" + this.mEventCallback + "]");
+    AVCoreLog.e("MavEngineJni", "MavEngineJni, callback[" + this.mEventCallback + "]");
   }
   
   private String getAppId()
@@ -44,8 +45,8 @@ public class MavEngineJni
     }
     catch (Exception localException)
     {
-      while (!ncl.c()) {}
-      ncl.a("MavEngineJni", "getAppId", localException);
+      while (!AVCoreLog.isColorLevel()) {}
+      AVCoreLog.e("MavEngineJni", "getAppId", localException);
     }
     return str;
     return "";
@@ -61,14 +62,14 @@ public class MavEngineJni
   
   private String getDeviceName()
   {
-    return nbp.b();
+    return AVCoreSystemInfo.getDeviceName();
   }
   
   private int getOsType()
   {
     if (this.mSysInfo != null)
     {
-      int j = this.mSysInfo.d();
+      int j = this.mSysInfo.getOsType();
       int i = j;
       if (j == 200)
       {
@@ -138,24 +139,24 @@ public class MavEngineJni
     while (this.mEventHandler == null) {
       return;
     }
-    ncd localncd = new ncd();
-    localncd.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    localncd.jdField_a_of_type_Long = paramLong2;
-    localncd.jdField_b_of_type_Long = paramLong1;
-    localncd.c = paramInt2;
-    localncd.jdField_a_of_type_Int = paramInt3;
-    localncd.jdField_b_of_type_Int = paramInt4;
+    MavNativeEventParams localMavNativeEventParams = new MavNativeEventParams();
+    localMavNativeEventParams.detail = paramArrayOfByte;
+    localMavNativeEventParams.info = paramLong2;
+    localMavNativeEventParams.groupId = paramLong1;
+    localMavNativeEventParams.relationType = paramInt2;
+    localMavNativeEventParams.multiAVType = paramInt3;
+    localMavNativeEventParams.multiSubType = paramInt4;
     if (paramArrayOfByte == null) {}
     for (paramInt2 = 0;; paramInt2 = paramArrayOfByte.length)
     {
-      localncd.d = paramInt2;
-      localncd.e = paramInt6;
+      localMavNativeEventParams.bufferLen = paramInt2;
+      localMavNativeEventParams.flag = paramInt6;
       paramArrayOfByte = this.mEventHandler.obtainMessage();
       if (paramArrayOfByte == null) {
         break;
       }
       paramArrayOfByte.what = paramInt1;
-      paramArrayOfByte.obj = localncd;
+      paramArrayOfByte.obj = localMavNativeEventParams;
       this.mEventHandler.sendMessage(paramArrayOfByte);
       return;
     }
@@ -168,15 +169,15 @@ public class MavEngineJni
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 33	com/tencent/avcore/jni/mav/MavEngineJni:mAdapter	Lnca;
+    //   3: getfield 35	com/tencent/avcore/jni/mav/MavEngineJni:mAdapter	Lcom/tencent/avcore/engine/mav/IMavAdapter;
     //   6: ifnull +25 -> 31
     //   9: aload_0
-    //   10: getfield 33	com/tencent/avcore/jni/mav/MavEngineJni:mAdapter	Lnca;
-    //   13: invokeinterface 180 1 0
+    //   10: getfield 35	com/tencent/avcore/jni/mav/MavEngineJni:mAdapter	Lcom/tencent/avcore/engine/mav/IMavAdapter;
+    //   13: invokeinterface 187 1 0
     //   18: astore_1
     //   19: aload_1
-    //   20: invokestatic 185	nbo:a	(Landroid/content/Context;)Lnbo;
-    //   23: invokevirtual 187	nbo:a	()Ljava/lang/String;
+    //   20: invokestatic 193	com/tencent/avcore/config/CameraConfigHelper:getInstance	(Landroid/content/Context;)Lcom/tencent/avcore/config/CameraConfigHelper;
+    //   23: invokevirtual 196	com/tencent/avcore/config/CameraConfigHelper:getCameraParameters	()Ljava/lang/String;
     //   26: astore_1
     //   27: aload_0
     //   28: monitorexit
@@ -206,13 +207,15 @@ public class MavEngineJni
   private void sendGAudioCMD(long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
     if (this.mNetChannel != null) {
-      this.mNetChannel.a(paramLong1, paramLong2, paramArrayOfByte);
+      this.mNetChannel.sendMultiVideoMsg(paramLong1, paramLong2, paramArrayOfByte);
     }
   }
   
   static native void setAndroidPath(String paramString);
   
   native int accept(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  
+  native void checkScreenShareAvaliable();
   
   native int commonRequest(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString, int paramInt7, byte[] paramArrayOfByte, int paramInt8);
   
@@ -254,7 +257,7 @@ public class MavEngineJni
   
   native int ignore(int paramInt1, long paramLong, int paramInt2);
   
-  native void init(Context paramContext, long paramLong, int paramInt, String paramString, SDKConfigInfo paramSDKConfigInfo);
+  native void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3);
   
   native int invite(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3);
   
@@ -293,7 +296,7 @@ public class MavEngineJni
   
   native int registerTRAE(int paramInt);
   
-  native int request(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  native int request(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7);
   
   native int requestCamera(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4);
   
@@ -326,15 +329,15 @@ public class MavEngineJni
   
   native int setAudioOutputMode(int paramInt);
   
-  public void setEventListener(ncc paramncc)
+  public void setEventListener(IMavEventListener paramIMavEventListener)
   {
-    this.mEventListener = paramncc;
+    this.mEventListener = paramIMavEventListener;
     Looper localLooper2 = Looper.getMainLooper();
     Looper localLooper1 = localLooper2;
     if (localLooper2 == null) {
       localLooper1 = Looper.myLooper();
     }
-    this.mEventHandler = new MavEngineJni.NativeEventHandler(localLooper1, paramncc, this.mEventCallback);
+    this.mEventHandler = new MavEngineJni.NativeEventHandler(localLooper1, paramIMavEventListener, this.mEventCallback);
   }
   
   native int setHowlingDetectEnable(boolean paramBoolean);
@@ -343,10 +346,10 @@ public class MavEngineJni
   
   native boolean setMicMode(int paramInt);
   
-  public void setNetChannel(nci paramnci)
+  public void setNetChannel(IMavNetChannel paramIMavNetChannel)
   {
-    this.mNetChannel = paramnci;
-    this.mNetChannel.a(this);
+    this.mNetChannel = paramIMavNetChannel;
+    this.mNetChannel.setNetCallback(this);
   }
   
   native int setNetIPAndPort(String paramString, int paramInt);
@@ -401,7 +404,7 @@ public class MavEngineJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avcore.jni.mav.MavEngineJni
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bijj;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniAppUtils$4
@@ -18,13 +18,13 @@ final class MiniAppUtils$4
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((paramMessage.obj instanceof bijj))
+    if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
-      bijj localbijj = (bijj)paramMessage.obj;
-      if (localbijj.c == 0)
+      WebSoCgiService.WebSoCgiState localWebSoCgiState = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
+      if (localWebSoCgiState.c == 0)
       {
         QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
-        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localbijj.d);
+        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localWebSoCgiState.d);
       }
     }
   }

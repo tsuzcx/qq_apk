@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.relation;
 
 import android.os.Bundle;
-import aunc;
-import aund;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.SpecialCareInfo;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -13,10 +11,10 @@ import eipc.EIPCResult;
 import io.flutter.plugin.common.MethodChannel.Result;
 import mqq.os.MqqHandler;
 
-public class SCFChannel$1$3
+class SCFChannel$1$3
   implements Runnable
 {
-  public SCFChannel$1$3(aund paramaund, String paramString, MethodChannel.Result paramResult) {}
+  SCFChannel$1$3(SCFChannel.1 param1, String paramString, MethodChannel.Result paramResult) {}
   
   public void run()
   {
@@ -41,7 +39,7 @@ public class SCFChannel$1$3
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Aund.a.b(), "Care", "RedShow", "", 1, 0, 0, null, null, null);
+        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelRelationSCFChannel$1.a.b(), "Care", "RedShow", "", 1, 0, 0, null, null, null);
       }
       if (QLog.isColorLevel()) {
         QLog.d("flutter.SCFSettingChannel", 2, String.format("getSCFSwitchs, from main process: %s, isVoiceNewFlag: %s", new Object[] { localSpecialCareInfo, Boolean.valueOf(bool) }));
@@ -57,7 +55,7 @@ public class SCFChannel$1$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1.3
  * JD-Core Version:    0.7.0.1
  */

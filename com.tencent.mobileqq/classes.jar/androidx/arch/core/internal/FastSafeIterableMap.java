@@ -5,7 +5,7 @@ import androidx.annotation.RestrictTo;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 public class FastSafeIterableMap<K, V>
   extends SafeIterableMap<K, V>
 {
@@ -48,7 +48,7 @@ public class FastSafeIterableMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.arch.core.internal.FastSafeIterableMap
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ public final class SCPushStreamMsg
 {
   static StreamData cache_stStreamData;
   static StreamInfo cache_stStreamInfo;
-  public long bubbleID;
-  public long diyAddonId;
-  public int iSeq;
-  public long lKey;
-  public short shVersion;
-  public StreamData stStreamData;
-  public StreamInfo stStreamInfo;
-  public long subBubbleId;
-  public long uPcQQStatus;
+  public long bubbleID = 0L;
+  public long diyAddonId = 0L;
+  public int iSeq = 0;
+  public long lKey = 0L;
+  public short shVersion = 0;
+  public StreamData stStreamData = null;
+  public StreamInfo stStreamInfo = null;
+  public long subBubbleId = 0L;
+  public long uPcQQStatus = 0L;
   
   public SCPushStreamMsg() {}
   

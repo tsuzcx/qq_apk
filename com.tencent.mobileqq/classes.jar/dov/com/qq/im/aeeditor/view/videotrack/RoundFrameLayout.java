@@ -13,7 +13,7 @@ import android.widget.FrameLayout;
 public class RoundFrameLayout
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   
@@ -39,7 +39,7 @@ public class RoundFrameLayout
     this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, Path.Direction.CW);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     paramCanvas.save();
     paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
@@ -47,7 +47,7 @@ public class RoundFrameLayout
     paramCanvas.restore();
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     a(paramInt1, paramInt2);
@@ -62,7 +62,7 @@ public class RoundFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.videotrack.RoundFrameLayout
  * JD-Core Version:    0.7.0.1
  */

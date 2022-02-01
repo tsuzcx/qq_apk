@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.colornote.data;
 
 import android.os.Bundle;
-import aqoi;
-import aqoq;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.Arrays;
 
+@KeepClassConstructor
 public class ColorNote
   extends Entity
   implements Serializable, Cloneable
@@ -64,24 +64,24 @@ public class ColorNote
     this.mPicUrl = paramBundle.getString("param_pic_url");
     this.mReserve = paramBundle.getByteArray("param_reserve");
     this.mExtLong = paramBundle.getLong("param_extra_flag", 0L);
-    if (((this.mServiceType == -1) || (StringUtil.isEmpty(this.mSubType))) && (QLog.isColorLevel())) {
+    if (((this.mServiceType == -1) || (StringUtil.a(this.mSubType))) && (QLog.isColorLevel())) {
       QLog.d("ColorNote", 2, "Illegal param mServiceType = " + this.mServiceType + ", mSubType = " + this.mSubType);
     }
   }
   
-  public ColorNote(aqoi paramaqoi)
+  public ColorNote(ColorNote.Builder paramBuilder)
   {
-    this.mServiceType = paramaqoi.jdField_a_of_type_Int;
-    this.mSubType = paramaqoi.jdField_a_of_type_JavaLangString;
-    this.mSubTitle = paramaqoi.c;
-    this.mMainTitle = paramaqoi.jdField_b_of_type_JavaLangString;
-    this.mPicUrl = paramaqoi.d;
-    this.mReserve = paramaqoi.jdField_a_of_type_ArrayOfByte;
-    this.mExtra = paramaqoi.jdField_b_of_type_Int;
-    this.mExtLong = paramaqoi.jdField_a_of_type_Long;
-    this.mUniKey = (paramaqoi.jdField_a_of_type_Int + paramaqoi.jdField_a_of_type_JavaLangString + paramaqoi.jdField_b_of_type_Int);
+    this.mServiceType = paramBuilder.jdField_a_of_type_Int;
+    this.mSubType = paramBuilder.jdField_a_of_type_JavaLangString;
+    this.mSubTitle = paramBuilder.c;
+    this.mMainTitle = paramBuilder.jdField_b_of_type_JavaLangString;
+    this.mPicUrl = paramBuilder.d;
+    this.mReserve = paramBuilder.jdField_a_of_type_ArrayOfByte;
+    this.mExtra = paramBuilder.jdField_b_of_type_Int;
+    this.mExtLong = paramBuilder.jdField_a_of_type_Long;
+    this.mUniKey = (paramBuilder.jdField_a_of_type_Int + paramBuilder.jdField_a_of_type_JavaLangString + paramBuilder.jdField_b_of_type_Int);
     this.mTime = NetConnInfoCenter.getServerTime();
-    if (((this.mServiceType == -1) || (StringUtil.isEmpty(this.mSubType))) && (QLog.isColorLevel())) {
+    if (((this.mServiceType == -1) || (StringUtil.a(this.mSubType))) && (QLog.isColorLevel())) {
       QLog.d("ColorNote", 2, "Illegal param mServiceType = " + this.mServiceType + ", mSubType = " + this.mSubType);
     }
   }
@@ -120,7 +120,7 @@ public class ColorNote
     {
       return false;
       paramObject = (ColorNote)paramObject;
-    } while ((this.mServiceType != paramObject.getServiceType()) || (!aqoq.a(this.mSubType, paramObject.getSubType())) || (!aqoq.a(this.mMainTitle, paramObject.getMainTitle())) || (!aqoq.a(this.mSubTitle, paramObject.getSubTitle())) || (this.mExtra != paramObject.mExtra));
+    } while ((this.mServiceType != paramObject.getServiceType()) || (!ColorNoteUtils.a(this.mSubType, paramObject.getSubType())) || (!ColorNoteUtils.a(this.mMainTitle, paramObject.getMainTitle())) || (!ColorNoteUtils.a(this.mSubTitle, paramObject.getSubTitle())) || (this.mExtra != paramObject.mExtra));
     return true;
   }
   
@@ -181,7 +181,7 @@ public class ColorNote
   
   public boolean isTitleAndPicValid()
   {
-    return (!StringUtil.isEmpty(this.mMainTitle)) && (!StringUtil.isEmpty(this.mSubTitle)) && (!StringUtil.isEmpty(this.mPicUrl));
+    return (!StringUtil.a(this.mMainTitle)) && (!StringUtil.a(this.mSubTitle)) && (!StringUtil.a(this.mPicUrl));
   }
   
   public Bundle parseBundle()

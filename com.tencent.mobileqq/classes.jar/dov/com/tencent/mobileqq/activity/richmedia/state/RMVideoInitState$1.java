@@ -1,12 +1,11 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import bpke;
-import bptb;
+import dov.com.tencent.mobileqq.shortvideo.util.AudioDataCache;
 
-public class RMVideoInitState$1
+class RMVideoInitState$1
   implements Runnable
 {
-  public RMVideoInitState$1(bpke parambpke, RMVideoStateMgr paramRMVideoStateMgr) {}
+  RMVideoInitState$1(RMVideoInitState paramRMVideoInitState, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class RMVideoInitState$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.1
  * JD-Core Version:    0.7.0.1
  */

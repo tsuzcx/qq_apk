@@ -1,8 +1,8 @@
 package cooperation.qzone.api;
 
-import agab;
-import ager;
 import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.core.FriendChatPie;
+import com.tencent.mobileqq.activity.aio.drawer.BaseChatDrawer;
 import cooperation.qzone.util.QZLog;
 
 public class QZoneEventHandler
@@ -17,15 +17,15 @@ public class QZoneEventHandler
     default: 
       return false;
     }
-    if (((paramObject instanceof agab)) && (((agab)paramObject).mChatDrawer != null)) {
-      ((agab)paramObject).mChatDrawer.a(paramInt1, paramInt2, paramIntent);
+    if (((paramObject instanceof FriendChatPie)) && (((FriendChatPie)paramObject).a != null)) {
+      ((FriendChatPie)paramObject).a.a(paramInt1, paramInt2, paramIntent);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.api.QZoneEventHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package cooperation.qzone.webviewplugin.personalize;
 
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
-import bieh;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.MultiNameSpacePluginCompact;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class QZonePersonalizePlugin
   extends WebViewPlugin
-  implements bieh
+  implements MultiNameSpacePluginCompact
 {
   public static final String CARDTAG = "QZoneCardLogic";
   public static final String TAG = "QZonePersonalizePlugin";
@@ -22,6 +22,14 @@ public class QZonePersonalizePlugin
   public String[] getMultiNameSpace()
   {
     return new String[] { "qzcardstorre", "QzAvatar", "QzFloat" };
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    if (("qzcardstorre".equals(paramString)) || ("QzAvatar".equals(paramString)) || ("QzFloat".equals(paramString))) {
+      return 2L;
+    }
+    return super.getWebViewEventByNameSpace(paramString);
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -119,7 +127,7 @@ public class QZonePersonalizePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZonePersonalizePlugin
  * JD-Core Version:    0.7.0.1
  */

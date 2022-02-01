@@ -11,7 +11,7 @@ public class FlutterActivity$CachedEngineIntentBuilder
   private final String cachedEngineId;
   private boolean destroyEngineWithActivity = false;
   
-  protected FlutterActivity$CachedEngineIntentBuilder(@NonNull Class<? extends FlutterActivity> paramClass, @NonNull String paramString)
+  public FlutterActivity$CachedEngineIntentBuilder(@NonNull Class<? extends FlutterActivity> paramClass, @NonNull String paramString)
   {
     this.activityClass = paramClass;
     this.cachedEngineId = paramString;
@@ -38,7 +38,7 @@ public class FlutterActivity$CachedEngineIntentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterActivity.CachedEngineIntentBuilder
  * JD-Core Version:    0.7.0.1
  */

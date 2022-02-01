@@ -57,12 +57,12 @@ public class RatioLayout
     }
   }
   
-  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return paramLayoutParams instanceof RatioLayout.LayoutParams;
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     return new RatioLayout.LayoutParams(-2, -2, 0.0F, 0.0F);
   }
@@ -72,7 +72,7 @@ public class RatioLayout
     return new RatioLayout.LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt2 = getChildCount();
     paramInt1 = 0;
@@ -92,7 +92,7 @@ public class RatioLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int n = getChildCount();
     if (this.a)
@@ -151,7 +151,7 @@ public class RatioLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RatioLayout
  * JD-Core Version:    0.7.0.1
  */

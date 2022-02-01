@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import bhqa;
-import bhrj;
-import bhvc;
-import bifw;
+import com.etrump.mixlayout.VasFontIPCModule;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.theme.diy.ThemeBackground;
+import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper;
+import com.tencent.mobileqq.vas.qid.VipQidHelper;
 import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
+import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService.WallpaperConfig;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResultCallback;
-import gk;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
@@ -33,7 +33,7 @@ public class VipClubJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      if (bhrj.a()) {}
+      if (GLDrawableWraper.a()) {}
       for (String str = "0";; str = "1")
       {
         localJSONObject.put("result", str);
@@ -88,7 +88,7 @@ public class VipClubJsPlugin
           paramObject = this.mRuntime.a();
           if (i == 1)
           {
-            bhqa.a(paramObject, bool);
+            VipQidHelper.a(paramObject, bool);
             paramObject = new JSONObject();
             paramObject.put("result", "0");
             super.callJs(paramString, new String[] { paramObject.toString() });
@@ -146,7 +146,7 @@ public class VipClubJsPlugin
       ((JSONObject)localObject).put("msg", "收到刷新请求");
       super.callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
       localObject = new VipClubJsPlugin.1(this);
-      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gk.l, null, (EIPCResultCallback)localObject);
+      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.l, null, (EIPCResultCallback)localObject);
       return;
     }
     catch (Exception localException)
@@ -161,9 +161,9 @@ public class VipClubJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      bhvc localbhvc = VipWallpaperService.a(this.mRuntime.a(), true);
+      VipWallpaperService.WallpaperConfig localWallpaperConfig = VipWallpaperService.a(this.mRuntime.a(), true);
       localJSONObject.put("result", "0");
-      localJSONObject.put("id", localbhvc.a);
+      localJSONObject.put("id", localWallpaperConfig.a);
       super.callJs(paramString, new String[] { localJSONObject.toString() });
       return;
     }
@@ -183,7 +183,7 @@ public class VipClubJsPlugin
         paramString3 = new JSONObject();
         if ("0".equals(paramString2))
         {
-          VipWallpaperService.a(this.mRuntime.a(), new bhvc(), null);
+          VipWallpaperService.a(this.mRuntime.a(), new VipWallpaperService.WallpaperConfig(), null);
           paramString3.put("result", "0");
           paramString3.put("msg", "恢复系统壁纸");
           super.callJs(paramString1, new String[] { paramString3.toString() });
@@ -193,7 +193,7 @@ public class VipClubJsPlugin
         if (new File(str).exists())
         {
           AtomicBoolean localAtomicBoolean = new AtomicBoolean();
-          paramString2 = new bhvc(paramString2, str, "");
+          paramString2 = new VipWallpaperService.WallpaperConfig(paramString2, str, "");
           VipWallpaperService.a(this.mRuntime.a(), paramString2, localAtomicBoolean);
           paramString3.put("result", "0");
           paramString3.put("msg", "设置成功");
@@ -232,7 +232,7 @@ public class VipClubJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VipClubJsPlugin
  * JD-Core Version:    0.7.0.1
  */

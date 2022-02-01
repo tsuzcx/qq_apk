@@ -3,18 +3,17 @@ package com.tencent.mobileqq.mini.reuse;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import anri;
-import arbv;
-import arbw;
-import bkpw;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.config.business.MiniAppConfBean;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
@@ -29,6 +28,7 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.MiniSdkUtil;
 import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
 import eipc.EIPCResult;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -127,10 +127,10 @@ public class MiniAppTransferModule
     if (paramBoolean)
     {
       long l = NetConnInfoCenter.getServerTime();
-      ((anri)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a((int)(l + 3600L), "", "not_disturb_from_miniapp");
+      ((CardHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a((int)(l + 3600L), "", "not_disturb_from_miniapp");
       return;
     }
-    ((anri)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(0, "", "not_disturb_from_miniapp");
+    ((CardHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(0, "", "not_disturb_from_miniapp");
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -154,7 +154,7 @@ public class MiniAppTransferModule
           {
             paramString = new JSONObject(paramString);
             paramBundle = paramString.optString("command");
-            if (arbw.c())
+            if (MiniAppConfProcessor.c())
             {
               ((DesktopDataManager)((AppRuntime)localObject).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).updateEntryList(paramString);
               return null;
@@ -179,7 +179,7 @@ public class MiniAppTransferModule
             paramString = paramBundle.getString("appid");
             i = paramBundle.getInt("topType");
             int j = paramBundle.getInt("verType");
-            if (arbw.c())
+            if (MiniAppConfProcessor.c())
             {
               ThreadManager.getUIHandler().post(new MiniAppTransferModule.1(this, (AppRuntime)localObject, paramString, i, paramInt, j));
               return null;
@@ -210,7 +210,7 @@ public class MiniAppTransferModule
           {
             paramString = paramBundle.getString("appid");
             i = paramBundle.getInt("verType");
-            if (arbw.c())
+            if (MiniAppConfProcessor.c())
             {
               paramBundle = (DesktopDataManager)((AppRuntime)localObject).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
               if ((paramBundle != null) && (!TextUtils.isEmpty(paramString))) {
@@ -225,7 +225,7 @@ public class MiniAppTransferModule
                     {
                       paramString.putParcelable("miniappinfo", paramBundle);
                       paramString.putInt("topType", 1);
-                      paramBundle = arbw.a().a();
+                      paramBundle = MiniAppConfProcessor.a().a();
                       if (paramBundle != null) {
                         paramString.putIntegerArrayList("backHomeSceneList", paramBundle);
                       }
@@ -257,7 +257,7 @@ public class MiniAppTransferModule
                     {
                       paramString.putParcelable("miniappinfo", paramBundle);
                       paramString.putInt("topType", 1);
-                      paramBundle = arbw.a().a();
+                      paramBundle = MiniAppConfProcessor.a().a();
                       if (paramBundle != null) {
                         paramString.putIntegerArrayList("backHomeSceneList", paramBundle);
                       }
@@ -341,7 +341,7 @@ public class MiniAppTransferModule
                 str1 = paramBundle.getString("reserves");
                 String str2 = paramBundle.getString("app_type");
                 boolean bool = paramBundle.getBoolean("x5_enable");
-                paramBundle = bkpw.a(localMiniAppInfo);
+                paramBundle = MiniSdkUtil.a(localMiniAppInfo);
                 if (paramBundle == null) {
                   continue;
                 }
@@ -358,7 +358,7 @@ public class MiniAppTransferModule
                 paramBundle.setClassLoader(SDKMiniProgramLpReportDC04239.class.getClassLoader());
                 paramString = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("app_config");
                 long l = paramBundle.getLong("add_duration_ms");
-                paramString = bkpw.a(paramString);
+                paramString = MiniSdkUtil.a(paramString);
                 if (paramString != null)
                 {
                   MiniAppReportManager.recordDuration(paramString, l);
@@ -377,7 +377,7 @@ public class MiniAppTransferModule
         try
         {
           paramString = new Bundle();
-          paramString.putBoolean("hasCreateOrManageTroop", TroopUtils.hasCreateOrManageTroop());
+          paramString.putBoolean("hasCreateOrManageTroop", TroopUtils.a());
           callbackResult(paramInt, EIPCResult.createResult(0, paramString));
           return null;
         }

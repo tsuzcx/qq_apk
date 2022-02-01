@@ -4,10 +4,10 @@ import android.content.Context;
 import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
 import com.tencent.qphone.base.util.QLog;
 
-public final class BadgeUtils$1
+final class BadgeUtils$1
   implements Runnable
 {
-  public BadgeUtils$1(int paramInt1, Context paramContext, int paramInt2) {}
+  BadgeUtils$1(int paramInt1, Context paramContext, int paramInt2) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public final class BadgeUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.util.BadgeUtils.1
  * JD-Core Version:    0.7.0.1
  */

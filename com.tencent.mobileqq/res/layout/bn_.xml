@@ -4,6 +4,6 @@
     <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
     <ProgressBar android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/b08" android:indeterminateBehavior="repeat" />
     <Space android:layout_width="4.0dip" android:layout_height="0.0dip" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:id="@id/bwo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="内容加载中，请稍后..." />
+    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:id="@id/bwo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="内容加载中，请稍候..." />
     <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
 </LinearLayout>

@@ -8,7 +8,7 @@ public final class GetKuolieRecomListReq
   extends JceStruct
 {
   static CommonInfo cache_commInfo = new CommonInfo();
-  public CommonInfo commInfo;
+  public CommonInfo commInfo = null;
   public String userId = "";
   
   public GetKuolieRecomListReq() {}

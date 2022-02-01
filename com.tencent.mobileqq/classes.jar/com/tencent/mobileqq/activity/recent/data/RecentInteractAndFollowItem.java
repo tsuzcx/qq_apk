@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acmw;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,7 +14,7 @@ public class RecentInteractAndFollowItem
   extends RecentMsgBoxItem
 {
   public static final String TAG = "Q.msg_box.RecentInteractAndFollowItem";
-  private int messageType;
+  private int messageType = 0;
   
   public RecentInteractAndFollowItem(MessageRecord paramMessageRecord)
   {
@@ -34,7 +34,7 @@ public class RecentInteractAndFollowItem
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    Object localObject1 = paramQQAppInterface.getMessageFacade().getLastMsgForMsgTab(this.mData.senderuin, this.mData.istroop);
+    Object localObject1 = paramQQAppInterface.getMessageFacade().b(this.mData.senderuin, this.mData.istroop);
     if ((localObject1 instanceof MessageForInteractAndFollow)) {}
     for (localObject1 = (MessageForInteractAndFollow)localObject1;; localObject1 = null)
     {
@@ -50,7 +50,7 @@ public class RecentInteractAndFollowItem
       this.messageType = ((MessageForInteractAndFollow)localObject1).type;
       if (((MessageForInteractAndFollow)localObject1).type == 1)
       {
-        this.mTitleName = paramContext.getString(2131694132);
+        this.mTitleName = paramContext.getString(2131694334);
         label92:
         this.mUnreadFlag = 3;
         this.mDisplayTime = ((MessageForInteractAndFollow)localObject1).timeStamp;
@@ -58,12 +58,12 @@ public class RecentInteractAndFollowItem
         if (localObject2 == null) {
           break label329;
         }
-        this.mUnreadNum = ((acmw)localObject2).a(((MessageForInteractAndFollow)localObject1).frienduin, ((MessageForInteractAndFollow)localObject1).istroop);
+        this.mUnreadNum = ((ConversationFacade)localObject2).a(((MessageForInteractAndFollow)localObject1).frienduin, ((MessageForInteractAndFollow)localObject1).istroop);
         label133:
         localObject2 = getMsgSummaryTemp();
         ((MsgSummary)localObject2).strContent = ((MessageForInteractAndFollow)localObject1).context;
         extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-        if (!AppSetting.c) {
+        if (!AppSetting.d) {
           break;
         }
         paramQQAppInterface = new StringBuilder(24);
@@ -82,12 +82,12 @@ public class RecentInteractAndFollowItem
         return;
         if (((MessageForInteractAndFollow)localObject1).type == 2)
         {
-          this.mTitleName = paramContext.getString(2131694131);
+          this.mTitleName = paramContext.getString(2131694333);
           break label92;
         }
         if (((MessageForInteractAndFollow)localObject1).type == 3)
         {
-          this.mTitleName = paramContext.getString(2131694133);
+          this.mTitleName = paramContext.getString(2131694335);
           break label92;
         }
         if (!QLog.isColorLevel()) {
@@ -112,7 +112,7 @@ public class RecentInteractAndFollowItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentInteractAndFollowItem
  * JD-Core Version:    0.7.0.1
  */

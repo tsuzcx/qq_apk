@@ -9,17 +9,17 @@ public final class CKV_MusicInfo
   extends JceStruct
 {
   static ArrayList<CKV_SingerInfo> cache_vSingerList = new ArrayList();
-  public int iAccess;
-  public long iAddTime;
-  public long iDuration;
-  public long iModifyTime;
-  public long iState;
+  public int iAccess = 0;
+  public long iAddTime = 0L;
+  public long iDuration = 0L;
+  public long iModifyTime = 0L;
+  public long iState = 0L;
   public String sAlbumName = "";
   public String sPic = "";
   public String sSongId = "";
   public String sSongName = "";
   public String sSongUrl = "";
-  public ArrayList<CKV_SingerInfo> vSingerList;
+  public ArrayList<CKV_SingerInfo> vSingerList = null;
   
   static
   {

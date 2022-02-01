@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import bisl;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
 
 class LoginView$13
   implements Runnable
 {
-  LoginView$13(LoginView paramLoginView, String paramString, bisl parambisl) {}
+  LoginView$13(LoginView paramLoginView) {}
   
   public void run()
   {
-    LoginView.a(this.this$0, this.jdField_a_of_type_JavaLangString, false);
-    if (this.this$0.a != null) {
-      this.this$0.a.runOnUiThread(new LoginView.13.1(this));
+    QLog.d("LoginActivity.LoginView", 1, new Object[] { "onClick findPass valid=", Boolean.valueOf(LoginView.a(this.this$0)) });
+    if (LoginView.a(this.this$0)) {
+      LoginView.a(this.this$0).setClickable(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.13
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,21 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import bfzt;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class AtPanel$3
-  implements Runnable
+class AtPanel$3
+  implements View.OnTouchListener
 {
-  public AtPanel$3(bfzt parambfzt) {}
+  AtPanel$3(AtPanel paramAtPanel, View paramView1, View paramView2) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.this$0.a();
+    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
+    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
+      return true;
+    }
+    return false;
   }
 }
 

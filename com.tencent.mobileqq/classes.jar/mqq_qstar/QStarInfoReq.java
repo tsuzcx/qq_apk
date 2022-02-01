@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class QStarInfoReq
   extends JceStruct
 {
-  public int cmd;
+  public int cmd = 0;
   public String mqqver = "";
   public String osver = "";
-  public int platform;
-  public int seq;
-  public long touin;
-  public long uin;
-  public int ver;
+  public int platform = 0;
+  public int seq = 0;
+  public long touin = 0L;
+  public long uin = 0L;
+  public int ver = 0;
   
   public QStarInfoReq() {}
   
@@ -60,7 +60,7 @@ public final class QStarInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     mqq_qstar.QStarInfoReq
  * JD-Core Version:    0.7.0.1
  */

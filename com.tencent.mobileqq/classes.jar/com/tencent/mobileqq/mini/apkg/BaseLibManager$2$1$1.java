@@ -18,7 +18,7 @@ class BaseLibManager$2$1$1
     BaseLibInfo localBaseLibInfo1 = BaseLibInfo.fromJSON(this.val$obj.optJSONObject(BaseLibInfo.getKey(2)));
     JSONObject localJSONObject = this.val$obj.optJSONObject(BaseLibInfo.getKey(3));
     BaseLibInfo localBaseLibInfo2 = BaseLibInfo.fromJSON(localJSONObject);
-    boolean bool = NetworkUtil.isWifiConnected(BaseApplicationImpl.getApplication());
+    boolean bool = NetworkUtil.h(BaseApplicationImpl.getApplication());
     QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] gameEngineLib " + localBaseLibInfo1 + ", miniAppEnginLib " + localJSONObject + " isWifi:" + bool);
     if (localBaseLibInfo1 != null) {
       EngineManager.g().installBaseLib(localBaseLibInfo1, null);

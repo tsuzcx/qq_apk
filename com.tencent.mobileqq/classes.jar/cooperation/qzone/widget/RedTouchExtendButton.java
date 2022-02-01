@@ -30,9 +30,9 @@ public class RedTouchExtendButton
   public String imgUrl = "";
   private Rect mTextBounds = new Rect();
   private Handler mUiHandler;
-  private int realRedSizePix = dipToPixels(10);
-  private int redImageSizePix = dipToPixels(24);
-  private int redPointSizePix = dipToPixels(10);
+  private int realRedSizePix = 0;
+  private int redImageSizePix = 0;
+  private int redPointSizePix = 0;
   private String redText = "";
   private int redType = 100;
   
@@ -65,7 +65,7 @@ public class RedTouchExtendButton
       int i = getStartX() - dipToPixels(2);
       if (this.redType == 0)
       {
-        this.currentDrawable = getResources().getDrawable(2130850427);
+        this.currentDrawable = getResources().getDrawable(2130850830);
         this.currentDrawable.setBounds(i, j, this.realRedSizePix + i, this.realRedSizePix + j);
         this.currentDrawable.draw(paramCanvas);
       }
@@ -87,7 +87,7 @@ public class RedTouchExtendButton
         localRect.right = (m + j);
         float f1 = dipToPixels(0) + k;
         float f2 = ((Paint.FontMetrics)localObject2).top;
-        localObject2 = getResources().getDrawable(2130850427);
+        localObject2 = getResources().getDrawable(2130850830);
         ((Drawable)localObject2).getBounds();
         ((Drawable)localObject2).setBounds(j, k, localRect.right, localRect.bottom);
         ((Drawable)localObject2).draw(paramCanvas);
@@ -96,7 +96,7 @@ public class RedTouchExtendButton
       }
       if (this.redType == 3)
       {
-        localObject1 = getResources().getDrawable(2130848505);
+        localObject1 = getResources().getDrawable(2130848885);
         i += dipToPixels(2);
         j = getHeight() / 2 - ((Drawable)localObject1).getIntrinsicHeight() / 2;
         ((Drawable)localObject1).setBounds(i, j, ((Drawable)localObject1).getIntrinsicWidth() + i, ((Drawable)localObject1).getIntrinsicHeight() + j);
@@ -399,7 +399,7 @@ public class RedTouchExtendButton
     this.mUiHandler.post(new RedTouchExtendButton.1(this));
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
@@ -415,7 +415,7 @@ public class RedTouchExtendButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.RedTouchExtendButton
  * JD-Core Version:    0.7.0.1
  */

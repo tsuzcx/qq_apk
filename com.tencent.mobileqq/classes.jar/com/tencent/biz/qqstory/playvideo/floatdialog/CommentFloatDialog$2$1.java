@@ -1,12 +1,9 @@
 package com.tencent.biz.qqstory.playvideo.floatdialog;
 
-import xeg;
-import xei;
-
-public class CommentFloatDialog$2$1
+class CommentFloatDialog$2$1
   implements Runnable
 {
-  public CommentFloatDialog$2$1(xei paramxei) {}
+  CommentFloatDialog$2$1(CommentFloatDialog.2 param2) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class CommentFloatDialog$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2.1
  * JD-Core Version:    0.7.0.1
  */

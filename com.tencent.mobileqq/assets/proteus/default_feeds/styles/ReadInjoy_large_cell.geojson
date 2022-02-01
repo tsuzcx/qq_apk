@@ -324,7 +324,31 @@
                     "setNumberOfLinesString:":"2"
                 }
             },
-
+            {
+                "view_type":"PTSRichTextView",
+                "view_id": "id_article_richtext_title",
+                "margin_left":"12",
+                "margin_top":"4",
+                "height":{
+                    "type":"wrap_content"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"351"
+                },
+                "attributes":{
+                    "setBackgroundColorString:" :"#00000000",
+                    "setRichData:":[
+                     {
+                        "name":"div",
+                        "attrs":{
+                            "style":"font-size:18px;line-height: 25px; width:351rpx;color: #242424;-webkit-line-clamp:${rich_text_line}"
+                        },
+                        "children":"$rich_text_info"
+                     }
+                   ]
+                }
+            },
             {"$includeComponet":"componet/article_main_body.geojson"},
             {"$includeComponet":"componet/column_bar.geojson"},
             {"$includeComponet":"componet/info_bar.geojson"},

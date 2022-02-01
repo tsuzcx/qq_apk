@@ -11,26 +11,26 @@ public final class Video
 {
   static Map<Integer, String> cache_cover;
   static Map<Integer, String> cache_map_urls = new HashMap();
-  public int appid;
-  public Map<Integer, String> cover;
+  public int appid = 0;
+  public Map<Integer, String> cover = null;
   public String desc = "";
-  public int file_size;
-  public int height;
+  public int file_size = 0;
+  public int height = 0;
   public String lloc = "";
-  public Map<Integer, String> map_urls;
-  public long play_time;
-  public int play_type;
-  public int rights;
-  public long status;
+  public Map<Integer, String> map_urls = null;
+  public long play_time = 0L;
+  public int play_type = 0;
+  public int rights = 0;
+  public long status = 0L;
   public String subid = "";
   public String tid = "";
-  public long timestamp;
+  public long timestamp = 0L;
   public String toast = "";
   public String ugckey = "";
-  public long uin;
+  public long uin = 0L;
   public String vid = "";
-  public int visitor_num;
-  public int width;
+  public int visitor_num = 0;
+  public int width = 0;
   
   static
   {

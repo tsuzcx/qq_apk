@@ -1,30 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import olh;
-import spk;
-import sqd;
-import sut;
-import suu;
+import com.tencent.biz.pubaccount.readinjoy.video.report.VideoR5;
+import com.tencent.biz.pubaccount.readinjoy.video.report.VideoR5.Builder;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class VideoUIManager$9
+class VideoUIManager$9
   implements Runnable
 {
-  public VideoUIManager$9(sqd paramsqd, int paramInt) {}
+  VideoUIManager$9(VideoUIManager paramVideoUIManager, int paramInt) {}
   
   public void run()
   {
-    if ((sqd.a(this.this$0) != null) && (sqd.a(this.this$0).a != null))
+    if ((VideoUIManager.a(this.this$0) != null) && (VideoUIManager.a(this.this$0).a != null))
     {
-      suu localsuu = new suu("", "", sqd.a(this.this$0).a.mVideoVid, sqd.a(this.this$0).a.innerUniqueID).a((int)sqd.a(this.this$0).a.mChannelID);
-      olh.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", localsuu.a().a(), false);
-      olh.a(null, "", "0X8009B57", "0X8009B57", 0, 0, String.valueOf(this.a), "", "", localsuu.a().a(), false);
+      VideoR5.Builder localBuilder = new VideoR5.Builder("", "", VideoUIManager.a(this.this$0).a.mVideoVid, VideoUIManager.a(this.this$0).a.innerUniqueID).a((int)VideoUIManager.a(this.this$0).a.mChannelID);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", localBuilder.a().a(), false);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009B57", "0X8009B57", 0, 0, String.valueOf(this.a), "", "", localBuilder.a().a(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager.9
  * JD-Core Version:    0.7.0.1
  */

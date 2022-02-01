@@ -1,30 +1,23 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import bdyn;
-import bfkl;
-import bfko;
-import bfkp;
-import bfkq;
-import bfks;
-import bfku;
-import bfkv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
-public class TroopEnterEffectController$3
+class TroopEnterEffectController$3
   implements Runnable
 {
-  public TroopEnterEffectController$3(bfkl parambfkl, bfku parambfku) {}
+  TroopEnterEffectController$3(TroopEnterEffectController paramTroopEnterEffectController, TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
       return;
     }
-    bfkl.b();
+    TroopEnterEffectController.b();
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    new bdyn().a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getWidth()).a(bfkl.jdField_a_of_type_JavaLangString + this.a.a).a(new bfks(this)).a(new bfkv(this.this$0, localQQAppInterface, this.a)).a(new bfkq(this, localQQAppInterface)).a(new bfkp(this)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, new bfko(this));
+    new SceneBuilder().a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getWidth()).a(TroopEnterEffectController.jdField_a_of_type_JavaLangString + this.a.a).a(new TroopEnterEffectController.3.4(this)).a(new TroopEnterEffectController.TroopEnterEffectLabelTextHandle(this.this$0, localQQAppInterface, this.a)).a(new TroopEnterEffectController.3.3(this, localQQAppInterface)).a(new TroopEnterEffectController.3.2(this)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, new TroopEnterEffectController.3.1(this));
   }
 }
 

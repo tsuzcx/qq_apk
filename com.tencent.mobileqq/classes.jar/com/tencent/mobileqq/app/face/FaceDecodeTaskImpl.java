@@ -1,17 +1,19 @@
 package com.tencent.mobileqq.app.face;
 
 import android.util.Pair;
-import antl;
-import aoep;
-import aqeq;
-import bheg;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.avatar.api.IQQAvatarCompatibleService;
+import com.tencent.mobileqq.avatar.api.IQQAvatarDataService;
+import com.tencent.mobileqq.avatar.api.IQQDynamicAvatarService;
+import com.tencent.mobileqq.avatar.utils.AvatarUtil;
 import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.IDiscussionHandlerService;
+import com.tencent.mobileqq.troop.api.IHotChatService;
+import com.tencent.mobileqq.troop.api.ITroopHandlerService;
+import com.tencent.mobileqq.troop.api.ITroopUtilApi;
+import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -19,12 +21,12 @@ public class FaceDecodeTaskImpl
   extends FaceDecodeTask
 {
   private static final String TAG = "Q.qqhead.FaceDecodeTaskImpl";
-  QQAppInterface app;
+  AppInterface app;
   
-  public FaceDecodeTaskImpl(QQAppInterface paramQQAppInterface, FaceInfo paramFaceInfo, FaceDecodeTask.DecodeCompletionListener paramDecodeCompletionListener)
+  public FaceDecodeTaskImpl(AppInterface paramAppInterface, FaceInfo paramFaceInfo, DecodeCompletionListener paramDecodeCompletionListener)
   {
-    super(paramQQAppInterface, paramFaceInfo, paramDecodeCompletionListener);
-    this.app = paramQQAppInterface;
+    super(paramAppInterface, paramFaceInfo, paramDecodeCompletionListener);
+    this.app = paramAppInterface;
   }
   
   protected void doDecodeBitmap()
@@ -95,9 +97,9 @@ public class FaceDecodeTaskImpl
     }
     if (this.faceInfo.jdField_a_of_type_Int != 101)
     {
-      localPair = this.app.getQQHeadSetting(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, this.faceInfo.jdField_b_of_type_Int);
+      localPair = ((IQQAvatarDataService)this.app.getRuntimeService(IQQAvatarDataService.class, "")).getQQHeadSetting(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, this.faceInfo.jdField_b_of_type_Int);
       if ((localPair == null) || (!((Boolean)localPair.first).booleanValue())) {
-        break label331;
+        break label355;
       }
       this.faceInfo.jdField_b_of_type_Byte = 1;
       FaceDecoder.requestDownloadFace(this.app, this.faceInfo);
@@ -106,7 +108,7 @@ public class FaceDecodeTaskImpl
     {
       for (;;)
       {
-        this.bitmap = this.app.getFaceBitmap(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, (byte)this.faceInfo.c, this.faceInfo.d, false, this.faceInfo.a(), this.faceInfo.jdField_b_of_type_Int);
+        this.bitmap = ((IQQAvatarCompatibleService)this.app.getRuntimeService(IQQAvatarCompatibleService.class, "")).getFaceBitmap(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, (byte)this.faceInfo.c, this.faceInfo.d, false, this.faceInfo.a(), this.faceInfo.jdField_b_of_type_Int);
         if ((QLog.isColorLevel()) && (this.bitmap == null)) {
           QLog.d("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap fail. uin=" + this.faceInfo.jdField_a_of_type_JavaLangString);
         }
@@ -125,18 +127,14 @@ public class FaceDecodeTaskImpl
           return;
         }
       }
-      label331:
-      if ((this.faceInfo.jdField_a_of_type_Boolean) && (localException2 != null) && ((this.faceInfo.jdField_a_of_type_Int == 1) || (this.faceInfo.jdField_a_of_type_Int == 32)))
+      label355:
+      if ((this.faceInfo.jdField_a_of_type_Boolean) && (localException2 != null) && ((this.faceInfo.jdField_a_of_type_Int == 1) || (this.faceInfo.jdField_a_of_type_Int == 32)) && (((IQQDynamicAvatarService)this.app.getRuntimeService(IQQDynamicAvatarService.class, "")).isNeed2UpdateSettingInfo(this.faceInfo, (Setting)localException2.second, this.faceInfo.jdField_a_of_type_Int)))
       {
-        aqeq localaqeq = (aqeq)this.app.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER);
-        if (localaqeq.a(localaqeq.b(this.faceInfo.jdField_b_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString), (Setting)localException2.second, this.faceInfo.jdField_a_of_type_Int))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.dynamicAvatar", 2, "FaceDecodeTaskImpl isNeed2UpdateSettingInfo.");
-          }
-          this.faceInfo.jdField_b_of_type_Byte = 1;
-          FaceDecoder.requestDownloadFace(this.app, this.faceInfo);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqhead.FaceDecodeTaskImpl", 2, "FaceDecodeTaskImpl isNeed2UpdateSettingInfo.");
         }
+        this.faceInfo.jdField_b_of_type_Byte = 1;
+        FaceDecoder.requestDownloadFace(this.app, this.faceInfo);
       }
     }
     try
@@ -157,7 +155,7 @@ public class FaceDecodeTaskImpl
   
   protected boolean isExpired()
   {
-    return (this.app == null) || (this.app.isReleased);
+    return this.app == null;
   }
   
   public boolean isFaceNotNeedDecode()
@@ -165,55 +163,60 @@ public class FaceDecodeTaskImpl
     Object localObject;
     if ((this.faceInfo.jdField_a_of_type_Int == 101) || (this.faceInfo.jdField_a_of_type_Int == 1001))
     {
-      localObject = (antl)this.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
+      localObject = (IDiscussionHandlerService)this.app.getRuntimeService(IDiscussionHandlerService.class, "");
       if (this.faceInfo.jdField_a_of_type_Int == 1001)
       {
-        this.bitmap = ((antl)localObject).a(GroupIconHelper.a(this.faceInfo.jdField_a_of_type_JavaLangString), false);
+        this.bitmap = ((IDiscussionHandlerService)localObject).getDiscussionFaceIcon(AvatarUtil.c(this.faceInfo.jdField_a_of_type_JavaLangString), false);
         this.needDownload = false;
       }
     }
-    label254:
+    label286:
+    label347:
     do
     {
+      IQQAvatarDataService localIQQAvatarDataService;
+      String str;
       do
       {
         return true;
-        this.bitmap = ((antl)localObject).a(this.faceInfo.jdField_a_of_type_JavaLangString, false);
+        this.bitmap = ((IDiscussionHandlerService)localObject).getDiscussionFaceIcon(this.faceInfo.jdField_a_of_type_JavaLangString, false);
         break;
         if ((this.faceInfo.jdField_a_of_type_Int != 4) && (this.faceInfo.jdField_a_of_type_Int != 113)) {
-          break label302;
+          break label347;
         }
-        if (!((HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(this.faceInfo.jdField_a_of_type_JavaLangString)) {
-          break label254;
+        localObject = (IHotChatService)this.app.getRuntimeService(IHotChatService.class, "");
+        if (!((IHotChatService)localObject).isHotChat(this.faceInfo.jdField_a_of_type_JavaLangString)) {
+          break label286;
         }
-        localObject = this.app.getFaceBitmapCacheKey(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, (byte)this.faceInfo.c, this.faceInfo.jdField_b_of_type_Int, this.faceInfo.d, false);
-        this.bitmap = this.app.getBitmapFromCache((String)localObject);
+        localIQQAvatarDataService = (IQQAvatarDataService)this.app.getRuntimeService(IQQAvatarDataService.class, "");
+        str = localIQQAvatarDataService.getFaceBitmapCacheKey(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, (byte)this.faceInfo.c, this.faceInfo.jdField_b_of_type_Int, this.faceInfo.d, false);
+        this.bitmap = localIQQAvatarDataService.getBitmapFromCache(str);
       } while (this.bitmap != null);
-      int i = HotChatManager.a(this.faceInfo.jdField_a_of_type_JavaLangString, this.app);
-      this.bitmap = bheg.a(BaseApplicationImpl.sApplication.getResources(), i);
-      this.app.putBitmapToCache((String)localObject, this.bitmap, (byte)1);
+      int i = ((IHotChatService)localObject).getHotChatDrawableID(this.faceInfo.jdField_a_of_type_JavaLangString, this.app);
+      this.bitmap = BaseImageUtil.a(BaseApplication.getContext().getResources(), i);
+      localIQQAvatarDataService.putBitmapToCache(str, this.bitmap, (byte)1);
       return true;
-      if (!TroopUtils.hasSetTroopHead(this.faceInfo.jdField_a_of_type_JavaLangString))
+      if (!((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).hasSetTroopHead(this.faceInfo.jdField_a_of_type_JavaLangString))
       {
-        this.bitmap = ((aoep)this.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(this.faceInfo.jdField_a_of_type_JavaLangString, false);
+        this.bitmap = ((ITroopHandlerService)this.app.getRuntimeService(ITroopHandlerService.class, "")).getGroupFaceIcon(this.faceInfo.jdField_a_of_type_JavaLangString, false);
         this.needDownload = false;
         return true;
       }
-      if ((Setting)this.app.getQQHeadSetting(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, this.faceInfo.jdField_b_of_type_Int).second != null) {
-        break label383;
+      localObject = (IQQAvatarDataService)this.app.getRuntimeService(IQQAvatarDataService.class, "");
+      if ((Setting)((IQQAvatarDataService)localObject).getQQHeadSetting(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, this.faceInfo.jdField_b_of_type_Int).second != null) {
+        break label442;
       }
       this.needDownload = true;
     } while (!QLog.isColorLevel());
-    label302:
     QLog.d("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap, needdown-settingNull, faceInfo=" + this.faceInfo.toString());
     return true;
-    label383:
-    if (!this.app.isFaceFileExist(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, this.faceInfo.jdField_b_of_type_Int, this.faceInfo.d)) {}
+    label442:
+    if (!((IQQAvatarDataService)localObject).isFaceFileExist(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, this.faceInfo.jdField_b_of_type_Int, this.faceInfo.d)) {}
     for (boolean bool = true;; bool = false)
     {
       this.needDownload = bool;
       if (!this.needDownload) {
-        break label480;
+        break label537;
       }
       if (!QLog.isColorLevel()) {
         break;
@@ -221,13 +224,13 @@ public class FaceDecodeTaskImpl
       QLog.d("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap, needdown-fileNotExit, faceInfo=" + this.faceInfo.toString());
       return true;
     }
-    label480:
+    label537:
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecodeTaskImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,57 @@
 package com.tencent.mobileqq.config.business;
 
 import android.text.TextUtils;
-import anjy;
-import aqxa;
-import aqxe;
-import arek;
-import arem;
-import blqp;
+import com.tencent.mobileqq.apollo.api.uitls.IApolloConfigHelper;
+import com.tencent.mobileqq.config.QConfItem;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.VipComicHelper;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class QQComicConfBean
 {
-  private arek jdField_a_of_type_Arek = new arek();
-  public arem a;
+  private QQComicConfBean.BoodoHippyConfig jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$BoodoHippyConfig = new QQComicConfBean.BoodoHippyConfig();
+  private QQComicConfBean.ComicReaderConfig jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ComicReaderConfig = new QQComicConfBean.ComicReaderConfig();
   private QQComicConfBean.IPExpressionConfig jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$IPExpressionConfig = new QQComicConfBean.IPExpressionConfig();
+  private QQComicConfBean.ServiceAccountConfig jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ServiceAccountConfig = new QQComicConfBean.ServiceAccountConfig();
+  public QQComicConfBean.WebBundleConfig a;
   public Map<String, String> a;
   
   public QQComicConfBean()
   {
-    this.jdField_a_of_type_Arem = new arem(this);
+    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$WebBundleConfig = new QQComicConfBean.WebBundleConfig(this);
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public static arek a()
+  public static QQComicConfBean.BoodoHippyConfig a()
   {
-    return ((QQComicConfBean)aqxe.a().a(534)).jdField_a_of_type_Arek;
+    return ((QQComicConfBean)QConfigManager.a().a(534)).jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$BoodoHippyConfig;
+  }
+  
+  public static QQComicConfBean.ComicReaderConfig a()
+  {
+    return ((QQComicConfBean)QConfigManager.a().a(534)).jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ComicReaderConfig;
   }
   
   public static QQComicConfBean.IPExpressionConfig a()
   {
-    return ((QQComicConfBean)aqxe.a().a(534)).jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$IPExpressionConfig;
+    return ((QQComicConfBean)QConfigManager.a().a(534)).jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$IPExpressionConfig;
   }
   
-  public static QQComicConfBean a(aqxa[] paramArrayOfaqxa)
+  public static QQComicConfBean.ServiceAccountConfig a()
   {
-    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length == 0)) {
+    return ((QQComicConfBean)QConfigManager.a().a(534)).jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ServiceAccountConfig;
+  }
+  
+  public static QQComicConfBean a(QConfItem[] paramArrayOfQConfItem)
+  {
+    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0)) {
       return null;
     }
     if (QLog.isColorLevel()) {
@@ -48,33 +60,62 @@ public class QQComicConfBean
     QQComicConfBean localQQComicConfBean;
     int i;
     Object localObject2;
+    int j;
+    int m;
     Object localObject3;
     try
     {
       localQQComicConfBean = new QQComicConfBean();
-      int k = paramArrayOfaqxa.length;
+      int k = paramArrayOfQConfItem.length;
       i = 0;
       if (i >= k) {
-        break label618;
+        break label962;
       }
-      localObject1 = paramArrayOfaqxa[i];
-      if (TextUtils.isEmpty(((aqxa)localObject1).jdField_a_of_type_JavaLangString)) {
-        break label659;
+      localObject1 = paramArrayOfQConfItem[i];
+      if (TextUtils.isEmpty(((QConfItem)localObject1).jdField_a_of_type_JavaLangString)) {
+        break label1005;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("QQComicConfBean", 2, new Object[] { "parse, content=", ((aqxa)localObject1).jdField_a_of_type_JavaLangString });
+        QLog.d("QQComicConfBean", 2, new Object[] { "parse, content=", ((QConfItem)localObject1).jdField_a_of_type_JavaLangString });
       }
-      localObject1 = new JSONObject(((aqxa)localObject1).jdField_a_of_type_JavaLangString);
+      localObject1 = new JSONObject(((QConfItem)localObject1).jdField_a_of_type_JavaLangString);
+      if (((JSONObject)localObject1).has("hippyConfig"))
+      {
+        localObject1 = ((JSONObject)localObject1).optJSONObject("hippyConfig");
+        if (localObject1 == null) {
+          break label1005;
+        }
+        localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$BoodoHippyConfig.mHippyStatus = ((JSONObject)localObject1).optInt("hippyStatus");
+        localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$BoodoHippyConfig.mMainModuleName = ((JSONObject)localObject1).optString("mainModuleName");
+        localObject2 = ((JSONObject)localObject1).optJSONArray("preloadModules");
+        localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$BoodoHippyConfig.mPreloadModules.clear();
+        j = 0;
+        m = ((JSONArray)localObject2).length();
+        while (j < m)
+        {
+          localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$BoodoHippyConfig.mPreloadModules.add(((JSONArray)localObject2).optString(j));
+          j += 1;
+        }
+        localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$BoodoHippyConfig.mAllModules.clear();
+        localObject1 = ((JSONObject)localObject1).optJSONArray("allModules");
+        j = 0;
+        m = ((JSONArray)localObject1).length();
+        while (j < m)
+        {
+          localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$BoodoHippyConfig.mAllModules.add(((JSONArray)localObject1).optString(j));
+          j += 1;
+        }
+      }
       if (((JSONObject)localObject1).has("ipEmoji"))
       {
         localObject1 = ((JSONObject)localObject1).optJSONObject("ipEmoji");
         if (localObject1 == null) {
-          break label659;
+          break label1005;
         }
         localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$IPExpressionConfig.mPrefixUrl = ((JSONObject)localObject1).optString("url");
         localObject1 = ((JSONObject)localObject1).optJSONObject("matchList");
         if (localObject1 == null) {
-          break label659;
+          break label1005;
         }
         localObject2 = ((JSONObject)localObject1).keys();
         while (((Iterator)localObject2).hasNext())
@@ -84,28 +125,26 @@ public class QQComicConfBean
         }
       }
       if (!((JSONObject)localObject1).has("webbundle")) {
-        break label338;
+        break label520;
       }
     }
-    catch (Exception paramArrayOfaqxa)
+    catch (Exception paramArrayOfQConfItem)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("QQComicConfBean", 1, new Object[] { "parse e:", paramArrayOfaqxa.toString() });
+        QLog.e("QQComicConfBean", 1, new Object[] { "parse e:", paramArrayOfQConfItem.toString() });
       }
       return null;
     }
     Object localObject1 = ((JSONObject)localObject1).optJSONObject("webbundle");
-    label338:
-    int m;
-    int j;
     if (localObject1 != null)
     {
       localObject1 = ((JSONObject)localObject1).optJSONObject("qqcomic");
       if (localObject1 != null)
       {
-        localQQComicConfBean.jdField_a_of_type_Arem.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("enable", false);
-        localQQComicConfBean.jdField_a_of_type_Arem.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("preload_url", "");
-        break label659;
+        localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$WebBundleConfig.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("enable", false);
+        localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$WebBundleConfig.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("preload_url", "");
+        break label1005;
+        label520:
         if (((JSONObject)localObject1).has("urlConfig"))
         {
           localObject3 = ((JSONObject)localObject1).optJSONArray("urlConfig");
@@ -124,9 +163,11 @@ public class QQComicConfBean
         JSONObject localJSONObject = ((JSONArray)localObject3).getJSONObject(j);
         String str = localJSONObject.optString("bizName");
         if (TextUtils.isEmpty(str)) {
-          break label666;
+          break label1012;
         }
-        if (anjy.a("8.4.10", localJSONObject.optString("minVersion"), localJSONObject.optString("maxVersion")))
+        localObject1 = localJSONObject.optString("minVersion");
+        localObject2 = localJSONObject.optString("maxVersion");
+        if (((IApolloConfigHelper)QRoute.api(IApolloConfigHelper.class)).isTargetVersion("8.5.5", (String)localObject1, (String)localObject2))
         {
           localObject2 = localJSONObject.optString("androidUrl");
           localObject1 = localObject2;
@@ -134,33 +175,56 @@ public class QQComicConfBean
             localObject1 = localJSONObject.optString("url");
           }
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label666;
+            break label1012;
           }
           localQQComicConfBean.jdField_a_of_type_JavaUtilMap.put(str, localObject1);
           QLog.d("QQComicConfBean", 1, new Object[] { "parse, urlConfig, bizName=", str, ", url=", localObject1 });
-          break label666;
+          break label1012;
         }
         QLog.d("QQComicConfBean", 1, new Object[] { "parse, urlConfig, bizName=", str, ", version not match" });
-        break label666;
+        break label1012;
         if (((JSONObject)localObject1).has("serviceAccount"))
         {
           localObject1 = ((JSONObject)localObject1).optJSONObject("serviceAccount");
           if (localObject1 != null)
           {
-            arek.a(localQQComicConfBean.jdField_a_of_type_Arek, ((JSONObject)localObject1).optString("uin"));
-            arek.b(localQQComicConfBean.jdField_a_of_type_Arek, ((JSONObject)localObject1).optString("url"));
-            break label659;
-            label618:
-            blqp.a((String)localQQComicConfBean.jdField_a_of_type_JavaUtilMap.get("danmuAnswerUrl"));
-            QLog.d("QQComicConfBean", 1, new Object[] { "parse, confBean=", localQQComicConfBean });
-            return localQQComicConfBean;
+            QQComicConfBean.ServiceAccountConfig.a(localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ServiceAccountConfig, ((JSONObject)localObject1).optString("uin"));
+            QQComicConfBean.ServiceAccountConfig.b(localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ServiceAccountConfig, ((JSONObject)localObject1).optString("url"));
+          }
+        }
+        else if (((JSONObject)localObject1).has("comicReader"))
+        {
+          localObject2 = ((JSONObject)localObject1).optJSONObject("comicReader");
+          if (localObject2 != null)
+          {
+            localObject1 = ((JSONObject)localObject2).optJSONObject("newVersion");
+            if (localObject1 != null)
+            {
+              localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ComicReaderConfig.enableNewVersion = ((JSONObject)localObject1).optBoolean("enable");
+              localObject3 = ((JSONObject)localObject1).optJSONObject("preload");
+              if (localObject3 != null)
+              {
+                localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ComicReaderConfig.enablePreload = ((JSONObject)localObject3).optBoolean("enable");
+                localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ComicReaderConfig.preloadNum = ((JSONObject)localObject3).optInt("maxNum");
+              }
+            }
+            localObject2 = ((JSONObject)localObject2).optJSONObject("preRead");
+            if (localObject1 != null)
+            {
+              localQQComicConfBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ComicReaderConfig.enablePreRead = ((JSONObject)localObject2).optBoolean("enable");
+              break label1005;
+              label962:
+              VipComicHelper.a((String)localQQComicConfBean.jdField_a_of_type_JavaUtilMap.get("danmuAnswerUrl"));
+              QLog.d("QQComicConfBean", 1, new Object[] { "parse, confBean=", localQQComicConfBean });
+              return localQQComicConfBean;
+            }
           }
         }
       }
-      label659:
+      label1005:
       i += 1;
       break;
-      label666:
+      label1012:
       j += 1;
     }
   }
@@ -168,9 +232,9 @@ public class QQComicConfBean
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("qqComicConfig:").append(this.jdField_a_of_type_Arem);
+    localStringBuilder.append("qqComicConfig:").append(this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$WebBundleConfig);
     localStringBuilder.append(" ,urlConfigMap:").append(this.jdField_a_of_type_JavaUtilMap);
-    localStringBuilder.append(" ,serviceAccountConfig:").append(this.jdField_a_of_type_Arek);
+    localStringBuilder.append(" ,serviceAccountConfig:").append(this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQComicConfBean$ServiceAccountConfig);
     return localStringBuilder.toString();
   }
 }

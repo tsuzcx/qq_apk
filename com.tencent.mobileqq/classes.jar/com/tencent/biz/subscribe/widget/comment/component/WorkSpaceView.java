@@ -1,6 +1,5 @@
 package com.tencent.biz.subscribe.widget.comment.component;
 
-import aabi;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -19,10 +18,10 @@ public class WorkSpaceView
   private static final double jdField_a_of_type_Double = Math.tan(Math.toRadians(30.0D));
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 0;
-  private aabi jdField_a_of_type_Aabi;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
+  private WorkSpaceView.OnScreenChangeListener jdField_a_of_type_ComTencentBizSubscribeWidgetCommentComponentWorkSpaceView$OnScreenChangeListener;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = -1;
@@ -76,8 +75,8 @@ public class WorkSpaceView
       }
       paramInt = getWidth() * i - getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
-      if (this.jdField_a_of_type_Aabi != null) {
-        this.jdField_a_of_type_Aabi.a(i);
+      if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommentComponentWorkSpaceView$OnScreenChangeListener != null) {
+        this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommentComponentWorkSpaceView$OnScreenChangeListener.a(i);
       }
       invalidate();
       return;
@@ -172,7 +171,7 @@ public class WorkSpaceView
     return false;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt4 = getChildCount();
     paramInt1 = 0;
@@ -190,7 +189,7 @@ public class WorkSpaceView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int j = getChildCount();
@@ -299,14 +298,14 @@ public class WorkSpaceView
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  public void setOnScreenChangeListener(aabi paramaabi)
+  public void setOnScreenChangeListener(WorkSpaceView.OnScreenChangeListener paramOnScreenChangeListener)
   {
-    this.jdField_a_of_type_Aabi = paramaabi;
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommentComponentWorkSpaceView$OnScreenChangeListener = paramOnScreenChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.comment.component.WorkSpaceView
  * JD-Core Version:    0.7.0.1
  */

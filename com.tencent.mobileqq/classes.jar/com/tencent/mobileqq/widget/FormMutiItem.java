@@ -116,8 +116,8 @@ public class FormMutiItem
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(b(getResources(), this.jdField_a_of_type_Int));
-    int j = getResources().getDimensionPixelSize(2131296764);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(FormResHelper.a(getResources(), this.jdField_a_of_type_Int));
+    int j = getResources().getDimensionPixelSize(2131296784);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, j);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -135,8 +135,8 @@ public class FormMutiItem
     }
     for (;;)
     {
-      j = getResources().getDimensionPixelSize(2131296773);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(b(getResources(), this.g));
+      j = getResources().getDimensionPixelSize(2131296793);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(FormResHelper.a(getResources(), this.g));
       this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, j);
       this.jdField_b_of_type_AndroidWidgetTextView.setGravity(19);
       if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangCharSequence)) {
@@ -144,20 +144,20 @@ public class FormMutiItem
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       localObject = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelOffset(2131296748);
+      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelOffset(2131296767);
       if (!this.c) {
-        ((LinearLayout.LayoutParams)localObject).bottomMargin = getResources().getDimensionPixelOffset(2131296754);
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = getResources().getDimensionPixelOffset(2131296773);
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131367206);
-      ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131367208);
+      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131367391);
+      ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131367393);
       ((RelativeLayout.LayoutParams)localObject).addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
-      setCustomHeight(getResources().getDimensionPixelSize(2131298282));
+      setCustomHeight(getResources().getDimensionPixelSize(2131298368));
       return;
       this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(false);
-      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(2131296758);
+      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(2131296778);
     }
   }
   
@@ -239,7 +239,7 @@ public class FormMutiItem
     }
     label63:
     label69:
-    for (int j = getResources().getDimensionPixelSize(2131298282);; j = getResources().getDimensionPixelSize(2131298198))
+    for (int j = getResources().getDimensionPixelSize(2131298368);; j = getResources().getDimensionPixelSize(2131298278))
     {
       setCustomHeight(j);
       return;
@@ -252,7 +252,7 @@ public class FormMutiItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormMutiItem
  * JD-Core Version:    0.7.0.1
  */

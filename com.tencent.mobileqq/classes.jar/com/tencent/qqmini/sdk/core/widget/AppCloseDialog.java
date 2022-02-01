@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
+import android.graphics.Typeface;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.ViewGroup;
@@ -123,6 +124,12 @@ public class AppCloseDialog
     this.bodyLayout.setLayoutParams(localLayoutParams);
   }
   
+  public void setButtonTextBold()
+  {
+    this.lBtn.setTypeface(Typeface.DEFAULT, 1);
+    this.rBtn.setTypeface(Typeface.DEFAULT, 1);
+  }
+  
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
@@ -185,6 +192,11 @@ public class AppCloseDialog
     return this;
   }
   
+  public void setTextSingleLine(boolean paramBoolean)
+  {
+    this.title.setSingleLine(paramBoolean);
+  }
+  
   public AppCloseDialog setTitle(String paramString)
   {
     if (paramString != null)
@@ -195,6 +207,16 @@ public class AppCloseDialog
     }
     this.title.setVisibility(8);
     return this;
+  }
+  
+  public void setTitleHeight(int paramInt)
+  {
+    this.title.setHeight(paramInt);
+  }
+  
+  public void setTitleTextBold()
+  {
+    this.title.setTypeface(Typeface.DEFAULT, 1);
   }
   
   public AppCloseDialog setView(View paramView)
@@ -214,7 +236,7 @@ public class AppCloseDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.AppCloseDialog
  * JD-Core Version:    0.7.0.1
  */

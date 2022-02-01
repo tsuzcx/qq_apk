@@ -30,49 +30,40 @@ import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import trd;
-import tre;
-import trf;
-import trg;
-import trh;
-import trk;
-import trl;
-import trm;
-import trn;
 
 public class TabLayoutCompat
   extends HorizontalScrollView
 {
-  private static final Pools.Pool<trk> jdField_a_of_type_AndroidSupportV4UtilPools$Pool = new Pools.SynchronizedPool(16);
+  private static final Pools.Pool<TabLayoutCompat.Tab> jdField_a_of_type_AndroidSupportV4UtilPools$Pool = new Pools.SynchronizedPool(16);
   private static final int[] jdField_a_of_type_ArrayOfInt = { 16842901, 16842904 };
-  public float a;
-  public int a;
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  public ColorStateList a;
+  ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
   private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter;
+  private TabLayoutCompat.AdapterChangeListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$AdapterChangeListener;
+  private TabLayoutCompat.OnTabSelectedListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$OnTabSelectedListener;
+  private TabLayoutCompat.PagerAdapterObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$PagerAdapterObserver;
+  private final TabLayoutCompat.SlidingTabStrip jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip;
+  private TabLayoutCompat.Tab jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$Tab;
   private TabLayoutCompat.TabLayoutOnPageChangeListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabLayoutOnPageChangeListener;
-  public ViewPagerCompat a;
-  private final ArrayList<trk> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private tre jdField_a_of_type_Tre;
-  private trf jdField_a_of_type_Trf;
-  private trg jdField_a_of_type_Trg;
-  private final trh jdField_a_of_type_Trh;
-  private trk jdField_a_of_type_Trk;
-  private trn jdField_a_of_type_Trn;
+  private TabLayoutCompat.ViewPagerTabEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$ViewPagerTabEventListener;
+  ViewPagerCompat jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat;
+  private final ArrayList<TabLayoutCompat.Tab> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
-  public float b;
-  public int b;
-  private final Pools.Pool<trl> jdField_b_of_type_AndroidSupportV4UtilPools$Pool = new Pools.SimplePool(12);
-  private final ArrayList<trf> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private trf jdField_b_of_type_Trf;
+  float jdField_b_of_type_Float;
+  int jdField_b_of_type_Int;
+  private final Pools.Pool<TabLayoutCompat.TabView> jdField_b_of_type_AndroidSupportV4UtilPools$Pool = new Pools.SimplePool(12);
+  private TabLayoutCompat.OnTabSelectedListener jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$OnTabSelectedListener;
+  private final ArrayList<TabLayoutCompat.OnTabSelectedListener> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_b_of_type_Boolean;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g = 2147483647;
-  public int h;
-  public int i;
+  int c;
+  int d;
+  int e;
+  int f;
+  int g = 2147483647;
+  int h;
+  int i;
   private final int j;
   private final int k;
   private int l;
@@ -93,10 +84,10 @@ public class TabLayoutCompat
   {
     super(paramContext, paramAttributeSet, paramInt);
     setHorizontalScrollBarEnabled(false);
-    this.jdField_a_of_type_Trh = new trh(this, paramContext);
-    super.addView(this.jdField_a_of_type_Trh, 0, new FrameLayout.LayoutParams(-2, -1));
-    this.jdField_a_of_type_Trh.b(DisplayUtil.dip2px(paramContext, 2.0F));
-    this.jdField_a_of_type_Trh.a(-1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip = new TabLayoutCompat.SlidingTabStrip(this, paramContext);
+    super.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip, 0, new FrameLayout.LayoutParams(-2, -1));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.b(DisplayUtil.a(paramContext, 2.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.a(-1);
     this.d = 0;
     this.c = 0;
     this.jdField_b_of_type_Int = 0;
@@ -105,15 +96,15 @@ public class TabLayoutCompat
     this.jdField_b_of_type_Int = 0;
     this.c = 0;
     this.d = 0;
-    this.jdField_a_of_type_Float = DisplayUtil.sp2px(paramContext, 12.0F);
+    this.jdField_a_of_type_Float = DisplayUtil.c(paramContext, 12.0F);
     this.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(-1979711488);
     this.f = 0;
     this.m = 0;
     this.n = 0;
     this.i = 1;
     this.h = 1;
-    this.jdField_b_of_type_Float = DisplayUtil.dip2px(paramContext, 12.0F);
-    this.l = DisplayUtil.dip2px(paramContext, 72.0F);
+    this.jdField_b_of_type_Float = DisplayUtil.a(paramContext, 12.0F);
+    this.l = DisplayUtil.a(paramContext, 72.0F);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.TabLayoutCompat);
     this.j = paramContext.getDimensionPixelSize(7, -1);
     this.k = paramContext.getDimensionPixelSize(6, -1);
@@ -133,11 +124,11 @@ public class TabLayoutCompat
     View localView1;
     if (this.i == 0)
     {
-      localView2 = this.jdField_a_of_type_Trh.getChildAt(paramInt);
-      if (paramInt + 1 >= this.jdField_a_of_type_Trh.getChildCount()) {
+      localView2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getChildAt(paramInt);
+      if (paramInt + 1 >= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getChildCount()) {
         break label119;
       }
-      localView1 = this.jdField_a_of_type_Trh.getChildAt(paramInt + 1);
+      localView1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getChildAt(paramInt + 1);
       if (localView2 == null) {
         break label125;
       }
@@ -183,30 +174,30 @@ public class TabLayoutCompat
     return localLayoutParams;
   }
   
-  private trl a(@NonNull trk paramtrk)
+  private TabLayoutCompat.TabView a(@NonNull TabLayoutCompat.Tab paramTab)
   {
     if (this.jdField_b_of_type_AndroidSupportV4UtilPools$Pool != null) {}
-    for (trl localtrl1 = (trl)this.jdField_b_of_type_AndroidSupportV4UtilPools$Pool.acquire();; localtrl1 = null)
+    for (TabLayoutCompat.TabView localTabView1 = (TabLayoutCompat.TabView)this.jdField_b_of_type_AndroidSupportV4UtilPools$Pool.acquire();; localTabView1 = null)
     {
-      trl localtrl2 = localtrl1;
-      if (localtrl1 == null) {
-        localtrl2 = new trl(this, getContext());
+      TabLayoutCompat.TabView localTabView2 = localTabView1;
+      if (localTabView1 == null) {
+        localTabView2 = new TabLayoutCompat.TabView(this, getContext());
       }
-      localtrl2.a(paramtrk);
-      localtrl2.setFocusable(true);
-      localtrl2.setMinimumWidth(f());
-      return localtrl2;
+      localTabView2.a(paramTab);
+      localTabView2.setFocusable(true);
+      localTabView2.setMinimumWidth(f());
+      return localTabView2;
     }
   }
   
   private void a(int paramInt)
   {
-    trl localtrl = (trl)this.jdField_a_of_type_Trh.getChildAt(paramInt);
-    this.jdField_a_of_type_Trh.removeViewAt(paramInt);
-    if (localtrl != null)
+    TabLayoutCompat.TabView localTabView = (TabLayoutCompat.TabView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getChildAt(paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.removeViewAt(paramInt);
+    if (localTabView != null)
     {
-      localtrl.a();
-      this.jdField_b_of_type_AndroidSupportV4UtilPools$Pool.release(localtrl);
+      localTabView.a();
+      this.jdField_b_of_type_AndroidSupportV4UtilPools$Pool.release(localTabView);
     }
     requestLayout();
   }
@@ -223,6 +214,25 @@ public class TabLayoutCompat
     paramLayoutParams.weight = 0.0F;
   }
   
+  private void a(TabLayoutCompat.Tab paramTab)
+  {
+    TabLayoutCompat.TabView localTabView = paramTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabView;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.addView(localTabView, paramTab.a(), a());
+  }
+  
+  private void a(TabLayoutCompat.Tab paramTab, int paramInt)
+  {
+    paramTab.a(paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramTab);
+    int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
+    paramInt += 1;
+    while (paramInt < i1)
+    {
+      ((TabLayoutCompat.Tab)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a(paramInt);
+      paramInt += 1;
+    }
+  }
+  
   private void a(@Nullable ViewPagerCompat paramViewPagerCompat, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat != null)
@@ -230,14 +240,14 @@ public class TabLayoutCompat
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabLayoutOnPageChangeListener != null) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.removeOnPageChangeListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabLayoutOnPageChangeListener);
       }
-      if (this.jdField_a_of_type_Tre != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.b(this.jdField_a_of_type_Tre);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$AdapterChangeListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$AdapterChangeListener);
       }
     }
-    if (this.jdField_b_of_type_Trf != null)
+    if (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$OnTabSelectedListener != null)
     {
-      b(this.jdField_b_of_type_Trf);
-      this.jdField_b_of_type_Trf = null;
+      b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$OnTabSelectedListener);
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$OnTabSelectedListener = null;
     }
     if (paramViewPagerCompat != null)
     {
@@ -247,17 +257,17 @@ public class TabLayoutCompat
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabLayoutOnPageChangeListener.a();
       paramViewPagerCompat.addOnPageChangeListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabLayoutOnPageChangeListener);
-      this.jdField_b_of_type_Trf = new trm(paramViewPagerCompat);
-      a(this.jdField_b_of_type_Trf);
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$OnTabSelectedListener = new TabLayoutCompat.ViewPagerOnTabSelectedListener(paramViewPagerCompat);
+      a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$OnTabSelectedListener);
       PagerAdapter localPagerAdapter = paramViewPagerCompat.getAdapter();
       if (localPagerAdapter != null) {
         a(localPagerAdapter, paramBoolean1);
       }
-      if (this.jdField_a_of_type_Tre == null) {
-        this.jdField_a_of_type_Tre = new tre(this);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$AdapterChangeListener == null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$AdapterChangeListener = new TabLayoutCompat.AdapterChangeListener(this);
       }
-      this.jdField_a_of_type_Tre.a(paramBoolean1);
-      paramViewPagerCompat.a(this.jdField_a_of_type_Tre);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$AdapterChangeListener.a(paramBoolean1);
+      paramViewPagerCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$AdapterChangeListener);
       setScrollPosition(paramViewPagerCompat.getCurrentItem(), 0.0F, true);
     }
     for (;;)
@@ -269,31 +279,12 @@ public class TabLayoutCompat
     }
   }
   
-  private void a(trk paramtrk)
-  {
-    trl localtrl = paramtrk.jdField_a_of_type_Trl;
-    this.jdField_a_of_type_Trh.addView(localtrl, paramtrk.a(), a());
-  }
-  
-  private void a(trk paramtrk, int paramInt)
-  {
-    paramtrk.a(paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramtrk);
-    int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
-    paramInt += 1;
-    while (paramInt < i1)
-    {
-      ((trk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a(paramInt);
-      paramInt += 1;
-    }
-  }
-  
   private void b(int paramInt)
   {
     if (paramInt == -1) {
       return;
     }
-    if ((getWindowToken() == null) || (!ViewCompat.isLaidOut(this)) || (this.jdField_a_of_type_Trh.a()))
+    if ((getWindowToken() == null) || (!ViewCompat.isLaidOut(this)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.a()))
     {
       setScrollPosition(paramInt, 0.0F, true);
       return;
@@ -306,15 +297,15 @@ public class TabLayoutCompat
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { i1, i2 });
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
-    this.jdField_a_of_type_Trh.b(paramInt, 300);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.b(paramInt, 300);
   }
   
-  private void b(@NonNull trk paramtrk)
+  private void b(@NonNull TabLayoutCompat.Tab paramTab)
   {
     int i1 = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
     while (i1 >= 0)
     {
-      ((trf)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).a(paramtrk);
+      ((TabLayoutCompat.OnTabSelectedListener)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).a(paramTab);
       i1 -= 1;
     }
   }
@@ -323,19 +314,19 @@ public class TabLayoutCompat
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((trk)localIterator.next()).c();
+      ((TabLayoutCompat.Tab)localIterator.next()).c();
     }
   }
   
   private void c(int paramInt)
   {
-    int i2 = this.jdField_a_of_type_Trh.getChildCount();
+    int i2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getChildCount();
     if (paramInt < i2)
     {
       int i1 = 0;
       if (i1 < i2)
       {
-        View localView = this.jdField_a_of_type_Trh.getChildAt(i1);
+        View localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getChildAt(i1);
         if (i1 == paramInt) {}
         for (boolean bool = true;; bool = false)
         {
@@ -347,19 +338,19 @@ public class TabLayoutCompat
     }
   }
   
-  private void c(@NonNull trk paramtrk)
+  private void c(@NonNull TabLayoutCompat.Tab paramTab)
   {
     int i1 = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
     while (i1 >= 0)
     {
-      ((trf)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).b(paramtrk);
+      ((TabLayoutCompat.OnTabSelectedListener)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).b(paramTab);
       i1 -= 1;
     }
   }
   
   private int d()
   {
-    return Math.max(0, this.jdField_a_of_type_Trh.getWidth() - getWidth() - getPaddingLeft() - getPaddingRight());
+    return Math.max(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getWidth() - getWidth() - getPaddingLeft() - getPaddingRight());
   }
   
   private void d()
@@ -369,7 +360,7 @@ public class TabLayoutCompat
       this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new FastOutSlowInInterpolator());
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new trd(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new TabLayoutCompat.1(this));
     }
   }
   
@@ -379,8 +370,8 @@ public class TabLayoutCompat
     int i1 = 0;
     if (i1 < i2)
     {
-      trk localtrk = (trk)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if ((localtrk == null) || (localtrk.a() == null) || (TextUtils.isEmpty(localtrk.a()))) {}
+      TabLayoutCompat.Tab localTab = (TabLayoutCompat.Tab)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+      if ((localTab == null) || (localTab.a() == null) || (TextUtils.isEmpty(localTab.a()))) {}
     }
     for (i1 = 1;; i1 = 0)
     {
@@ -403,7 +394,7 @@ public class TabLayoutCompat
       i2 = Math.max(0, this.m - this.jdField_a_of_type_Int);
       i1 = Math.max(0, this.n - this.c);
     }
-    ViewCompat.setPaddingRelative(this.jdField_a_of_type_Trh, i2, 0, i1, 0);
+    ViewCompat.setPaddingRelative(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip, i2, 0, i1, 0);
     switch (this.i)
     {
     }
@@ -411,9 +402,9 @@ public class TabLayoutCompat
     {
       a(true);
       return;
-      this.jdField_a_of_type_Trh.setGravity(1);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.setGravity(1);
       continue;
-      this.jdField_a_of_type_Trh.setGravity(8388611);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.setGravity(8388611);
     }
   }
   
@@ -428,12 +419,12 @@ public class TabLayoutCompat
     return 0;
   }
   
-  private void f(@NonNull trk paramtrk)
+  private void f(@NonNull TabLayoutCompat.Tab paramTab)
   {
     int i1 = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
     while (i1 >= 0)
     {
-      ((trf)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).c(paramtrk);
+      ((TabLayoutCompat.OnTabSelectedListener)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).c(paramTab);
       i1 -= 1;
     }
   }
@@ -443,39 +434,39 @@ public class TabLayoutCompat
     return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public int a(int paramInt)
+  int a(int paramInt)
   {
     return Math.round(getResources().getDisplayMetrics().density * paramInt);
   }
   
   @NonNull
-  public trk a()
+  public TabLayoutCompat.Tab a()
   {
-    trk localtrk2 = (trk)jdField_a_of_type_AndroidSupportV4UtilPools$Pool.acquire();
-    trk localtrk1 = localtrk2;
-    if (localtrk2 == null) {
-      localtrk1 = new trk();
+    TabLayoutCompat.Tab localTab2 = (TabLayoutCompat.Tab)jdField_a_of_type_AndroidSupportV4UtilPools$Pool.acquire();
+    TabLayoutCompat.Tab localTab1 = localTab2;
+    if (localTab2 == null) {
+      localTab1 = new TabLayoutCompat.Tab();
     }
-    localtrk1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = this;
-    localtrk1.jdField_a_of_type_Trl = a(localtrk1);
-    if (this.jdField_a_of_type_Trn != null) {
-      localtrk1.a(this.jdField_a_of_type_Trn.a(localtrk1.jdField_a_of_type_Trl));
+    localTab1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = this;
+    localTab1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabView = a(localTab1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$ViewPagerTabEventListener != null) {
+      localTab1.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$ViewPagerTabEventListener.a(localTab1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabView));
     }
-    return localtrk1;
+    return localTab1;
   }
   
   @Nullable
-  public trk a(int paramInt)
+  public TabLayoutCompat.Tab a(int paramInt)
   {
     if ((paramInt < 0) || (paramInt >= a())) {
       return null;
     }
-    return (trk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return (TabLayoutCompat.Tab)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
   
   public void a()
   {
-    int i1 = this.jdField_a_of_type_Trh.getChildCount() - 1;
+    int i1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getChildCount() - 1;
     while (i1 >= 0)
     {
       a(i1);
@@ -484,23 +475,23 @@ public class TabLayoutCompat
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      trk localtrk = (trk)localIterator.next();
+      TabLayoutCompat.Tab localTab = (TabLayoutCompat.Tab)localIterator.next();
       localIterator.remove();
-      localtrk.d();
-      jdField_a_of_type_AndroidSupportV4UtilPools$Pool.release(localtrk);
+      localTab.d();
+      jdField_a_of_type_AndroidSupportV4UtilPools$Pool.release(localTab);
     }
-    this.jdField_a_of_type_Trk = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$Tab = null;
   }
   
   void a(int paramInt, float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i1 = Math.round(paramInt + paramFloat);
-    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_Trh.getChildCount())) {}
+    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getChildCount())) {}
     do
     {
       return;
       if (paramBoolean2) {
-        this.jdField_a_of_type_Trh.a(paramInt, paramFloat);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.a(paramInt, paramFloat);
       }
       if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
         this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
@@ -510,53 +501,53 @@ public class TabLayoutCompat
     c(i1);
   }
   
-  public void a(@Nullable PagerAdapter paramPagerAdapter, boolean paramBoolean)
+  void a(@Nullable PagerAdapter paramPagerAdapter, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter != null) && (this.jdField_a_of_type_Trg != null)) {
-      this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Trg);
+    if ((this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$PagerAdapterObserver != null)) {
+      this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.unregisterDataSetObserver(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$PagerAdapterObserver);
     }
     this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = paramPagerAdapter;
     if (paramPagerAdapter != null)
     {
-      if (this.jdField_a_of_type_Trg == null) {
-        this.jdField_a_of_type_Trg = new trg(this);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$PagerAdapterObserver == null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$PagerAdapterObserver = new TabLayoutCompat.PagerAdapterObserver(this);
       }
-      this.jdField_a_of_type_Trg.a(paramBoolean);
-      paramPagerAdapter.registerDataSetObserver(this.jdField_a_of_type_Trg);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$PagerAdapterObserver.a(paramBoolean);
+      paramPagerAdapter.registerDataSetObserver(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$PagerAdapterObserver);
     }
     b();
   }
   
-  public void a(@NonNull trf paramtrf)
+  public void a(@NonNull TabLayoutCompat.OnTabSelectedListener paramOnTabSelectedListener)
   {
-    if (!this.jdField_b_of_type_JavaUtilArrayList.contains(paramtrf)) {
-      this.jdField_b_of_type_JavaUtilArrayList.add(paramtrf);
+    if (!this.jdField_b_of_type_JavaUtilArrayList.contains(paramOnTabSelectedListener)) {
+      this.jdField_b_of_type_JavaUtilArrayList.add(paramOnTabSelectedListener);
     }
   }
   
-  public void a(@NonNull trk paramtrk, int paramInt, boolean paramBoolean)
+  public void a(@NonNull TabLayoutCompat.Tab paramTab, int paramInt, boolean paramBoolean)
   {
-    if (paramtrk.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat != this) {
+    if (paramTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat != this) {
       throw new IllegalArgumentException("Tab belongs to a different TabLayout.");
     }
-    a(paramtrk, paramInt);
-    a(paramtrk);
+    a(paramTab, paramInt);
+    a(paramTab);
     if (paramBoolean) {
-      paramtrk.a();
+      paramTab.a();
     }
   }
   
-  public void a(@NonNull trk paramtrk, boolean paramBoolean)
+  public void a(@NonNull TabLayoutCompat.Tab paramTab, boolean paramBoolean)
   {
-    a(paramtrk, this.jdField_a_of_type_JavaUtilArrayList.size(), paramBoolean);
+    a(paramTab, this.jdField_a_of_type_JavaUtilArrayList.size(), paramBoolean);
   }
   
-  public void a(boolean paramBoolean)
+  void a(boolean paramBoolean)
   {
     int i1 = 0;
-    while (i1 < this.jdField_a_of_type_Trh.getChildCount())
+    while (i1 < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getChildCount())
     {
-      View localView = this.jdField_a_of_type_Trh.getChildAt(i1);
+      View localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.getChildAt(i1);
       localView.setMinimumWidth(f());
       a((LinearLayout.LayoutParams)localView.getLayoutParams());
       if (paramBoolean) {
@@ -588,13 +579,13 @@ public class TabLayoutCompat
   
   public int b()
   {
-    if (this.jdField_a_of_type_Trk != null) {
-      return this.jdField_a_of_type_Trk.a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$Tab != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$Tab.a();
     }
     return -1;
   }
   
-  public void b()
+  void b()
   {
     a();
     if (this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter != null)
@@ -616,31 +607,31 @@ public class TabLayoutCompat
     }
   }
   
-  public void b(@NonNull trf paramtrf)
+  public void b(@NonNull TabLayoutCompat.OnTabSelectedListener paramOnTabSelectedListener)
   {
-    this.jdField_b_of_type_JavaUtilArrayList.remove(paramtrf);
+    this.jdField_b_of_type_JavaUtilArrayList.remove(paramOnTabSelectedListener);
   }
   
-  void b(trk paramtrk, boolean paramBoolean)
+  void b(TabLayoutCompat.Tab paramTab, boolean paramBoolean)
   {
-    trk localtrk = this.jdField_a_of_type_Trk;
-    if (localtrk == paramtrk)
+    TabLayoutCompat.Tab localTab = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$Tab;
+    if (localTab == paramTab)
     {
-      if (localtrk != null)
+      if (localTab != null)
       {
-        f(paramtrk);
-        b(paramtrk.a());
+        f(paramTab);
+        b(paramTab.a());
       }
       return;
     }
     int i1;
-    if (paramtrk != null)
+    if (paramTab != null)
     {
-      i1 = paramtrk.a();
+      i1 = paramTab.a();
       label40:
       if (paramBoolean)
       {
-        if (((localtrk != null) && (localtrk.a() != -1)) || (i1 == -1)) {
+        if (((localTab != null) && (localTab.a() != -1)) || (i1 == -1)) {
           break label111;
         }
         setScrollPosition(i1, 0.0F, true);
@@ -651,14 +642,14 @@ public class TabLayoutCompat
       if (i1 != -1) {
         c(i1);
       }
-      if (localtrk != null) {
-        c(localtrk);
+      if (localTab != null) {
+        c(localTab);
       }
-      this.jdField_a_of_type_Trk = paramtrk;
-      if (paramtrk == null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$Tab = paramTab;
+      if (paramTab == null) {
         break;
       }
-      b(paramtrk);
+      b(paramTab);
       return;
       i1 = -1;
       break label40;
@@ -667,28 +658,28 @@ public class TabLayoutCompat
     }
   }
   
-  public int c()
+  int c()
   {
     return this.g;
   }
   
-  public void c(trk paramtrk, boolean paramBoolean)
+  void c(TabLayoutCompat.Tab paramTab, boolean paramBoolean)
   {
-    trk localtrk = this.jdField_a_of_type_Trk;
-    if (localtrk == paramtrk)
+    TabLayoutCompat.Tab localTab = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$Tab;
+    if (localTab == paramTab)
     {
-      if (localtrk != null) {
-        b(paramtrk.a());
+      if (localTab != null) {
+        b(paramTab.a());
       }
       return;
     }
     int i1;
-    if (paramtrk != null)
+    if (paramTab != null)
     {
-      i1 = paramtrk.a();
+      i1 = paramTab.a();
       if (paramBoolean)
       {
-        if (((localtrk != null) && (localtrk.a() != -1)) || (i1 == -1)) {
+        if (((localTab != null) && (localTab.a() != -1)) || (i1 == -1)) {
           break label86;
         }
         setScrollPosition(i1, 0.0F, true);
@@ -699,7 +690,7 @@ public class TabLayoutCompat
       if (i1 != -1) {
         c(i1);
       }
-      this.jdField_a_of_type_Trk = paramtrk;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$Tab = paramTab;
       return;
       i1 = -1;
       break;
@@ -708,14 +699,14 @@ public class TabLayoutCompat
     }
   }
   
-  public void d(@NonNull trk paramtrk)
+  public void d(@NonNull TabLayoutCompat.Tab paramTab)
   {
-    a(paramtrk, this.jdField_a_of_type_JavaUtilArrayList.isEmpty());
+    a(paramTab, this.jdField_a_of_type_JavaUtilArrayList.isEmpty());
   }
   
-  public void e(trk paramtrk)
+  void e(TabLayoutCompat.Tab paramTab)
   {
-    b(paramtrk, true);
+    b(paramTab, true);
   }
   
   public FrameLayout.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
@@ -723,7 +714,7 @@ public class TabLayoutCompat
     return generateDefaultLayoutParams();
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat == null)
@@ -735,7 +726,7 @@ public class TabLayoutCompat
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_Boolean)
@@ -745,7 +736,7 @@ public class TabLayoutCompat
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i2 = 1;
     int i1 = a(e()) + getPaddingTop() + getPaddingBottom();
@@ -810,14 +801,14 @@ public class TabLayoutCompat
   }
   
   @Deprecated
-  public void setOnTabSelectedListener(@Nullable trf paramtrf)
+  public void setOnTabSelectedListener(@Nullable TabLayoutCompat.OnTabSelectedListener paramOnTabSelectedListener)
   {
-    if (this.jdField_a_of_type_Trf != null) {
-      b(this.jdField_a_of_type_Trf);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$OnTabSelectedListener != null) {
+      b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$OnTabSelectedListener);
     }
-    this.jdField_a_of_type_Trf = paramtrf;
-    if (paramtrf != null) {
-      a(paramtrf);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$OnTabSelectedListener = paramOnTabSelectedListener;
+    if (paramOnTabSelectedListener != null) {
+      a(paramOnTabSelectedListener);
     }
   }
   
@@ -838,27 +829,27 @@ public class TabLayoutCompat
   
   public void setSelectedTabIndicatorColor(@ColorInt int paramInt)
   {
-    this.jdField_a_of_type_Trh.a(paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.a(paramInt);
   }
   
   public void setSelectedTabIndicatorHeight(int paramInt)
   {
-    this.jdField_a_of_type_Trh.b(paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.b(paramInt);
   }
   
   public void setSelectedTabIndicatorPaddingBottom(int paramInt)
   {
-    this.jdField_a_of_type_Trh.e(paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.e(paramInt);
   }
   
   public void setSelectedTabIndicatorPaddingLeft(int paramInt)
   {
-    this.jdField_a_of_type_Trh.c(paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.c(paramInt);
   }
   
   public void setSelectedTabIndicatorPaddingRight(int paramInt)
   {
-    this.jdField_a_of_type_Trh.d(paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$SlidingTabStrip.d(paramInt);
   }
   
   public void setTabBackgroundResId(int paramInt)
@@ -869,9 +860,9 @@ public class TabLayoutCompat
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        trk localtrk = (trk)localIterator.next();
-        if (localtrk.jdField_a_of_type_Trl != null) {
-          localtrk.jdField_a_of_type_Trl.setBackgroundResource(this.f);
+        TabLayoutCompat.Tab localTab = (TabLayoutCompat.Tab)localIterator.next();
+        if (localTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabView != null) {
+          localTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabView.setBackgroundResource(this.f);
         }
       }
     }
@@ -917,9 +908,9 @@ public class TabLayoutCompat
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        trk localtrk = (trk)localIterator.next();
-        if ((localtrk.jdField_a_of_type_Trl != null) && (trl.a(localtrk.jdField_a_of_type_Trl) != null)) {
-          trl.a(localtrk.jdField_a_of_type_Trl).setTextSize(this.jdField_a_of_type_Float);
+        TabLayoutCompat.Tab localTab = (TabLayoutCompat.Tab)localIterator.next();
+        if ((localTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabView != null) && (TabLayoutCompat.TabView.a(localTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabView) != null)) {
+          TabLayoutCompat.TabView.a(localTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$TabView).setTextSize(this.jdField_a_of_type_Float);
         }
       }
     }
@@ -931,9 +922,9 @@ public class TabLayoutCompat
     a(paramPagerAdapter, false);
   }
   
-  public void setViewPagerTabEventListener(trn paramtrn)
+  public void setViewPagerTabEventListener(TabLayoutCompat.ViewPagerTabEventListener paramViewPagerTabEventListener)
   {
-    this.jdField_a_of_type_Trn = paramtrn;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat$ViewPagerTabEventListener = paramViewPagerTabEventListener;
   }
   
   public void setupWithViewPager(@Nullable ViewPagerCompat paramViewPagerCompat)
@@ -953,7 +944,7 @@ public class TabLayoutCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat
  * JD-Core Version:    0.7.0.1
  */

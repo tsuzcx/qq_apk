@@ -10,8 +10,8 @@ public final class GetConciseThemeRsp
 {
   static CommonRsp cache_stRet = new CommonRsp();
   static ArrayList<ItemDisDetail> cache_vItems = new ArrayList();
-  public CommonRsp stRet;
-  public ArrayList<ItemDisDetail> vItems;
+  public CommonRsp stRet = null;
+  public ArrayList<ItemDisDetail> vItems = null;
   
   static
   {

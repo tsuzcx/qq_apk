@@ -10,8 +10,8 @@ public final class photo_adapt_req
 {
   static ArrayList<String> cache_photoUrls;
   static int cache_reqSource = 0;
-  public ArrayList<String> photoUrls;
-  public int reqSource;
+  public ArrayList<String> photoUrls = null;
+  public int reqSource = 0;
   
   static
   {

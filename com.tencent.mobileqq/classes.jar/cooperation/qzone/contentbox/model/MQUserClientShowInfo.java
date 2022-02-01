@@ -2,10 +2,10 @@ package cooperation.qzone.contentbox.model;
 
 import NS_CLIENT_SHOW_ALL_INFO.AllInfo;
 import NS_COMM_VIP_GROWTH.UserClientShowInfo;
-import bmka;
-import bmpa;
 import cooperation.qzone.util.QZLog;
+import cooperation.vip.JceEncoder;
 import cooperation.vip.vipcomponent.QQUnionIconInfo;
+import cooperation.vip.vipcomponent.util.VipResources;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -13,13 +13,13 @@ public class MQUserClientShowInfo
   implements Serializable
 {
   public static final String TAG = "MsgVip.MQUserClientShowInfo";
-  public int iIsUseVipIcon;
-  public int iKeepVipDays;
-  public int iLevel;
-  public int iScore;
-  public int iSpeed;
-  public int iVip;
-  public int iVipRatio;
+  public int iIsUseVipIcon = 0;
+  public int iKeepVipDays = 0;
+  public int iLevel = 0;
+  public int iScore = 0;
+  public int iSpeed = 0;
+  public int iVip = 0;
+  public int iVipRatio = 0;
   public String strUid = "";
   public int unionIconHeight;
   public int unionIconWidth;
@@ -58,10 +58,10 @@ public class MQUserClientShowInfo
     if (paramArrayOfByte == null) {
       return null;
     }
-    paramArrayOfByte = (AllInfo)bmka.a(AllInfo.class, paramArrayOfByte);
+    paramArrayOfByte = (AllInfo)JceEncoder.a(AllInfo.class, paramArrayOfByte);
     if (paramArrayOfByte != null)
     {
-      Object localObject = (UserClientShowInfo)bmka.a(UserClientShowInfo.class, paramArrayOfByte.vecQQBigVipInfo);
+      Object localObject = (UserClientShowInfo)JceEncoder.a(UserClientShowInfo.class, paramArrayOfByte.vecQQBigVipInfo);
       if (localObject == null) {
         return null;
       }
@@ -74,7 +74,7 @@ public class MQUserClientShowInfo
       paramArrayOfByte.iSpeed = ((UserClientShowInfo)localObject).iSpeed;
       paramArrayOfByte.iScore = ((UserClientShowInfo)localObject).iScore;
       paramArrayOfByte.iIsUseVipIcon = ((UserClientShowInfo)localObject).iIsUseVipIcon;
-      localObject = bmpa.a(8, (UserClientShowInfo)localObject);
+      localObject = VipResources.a(8, (UserClientShowInfo)localObject);
       if (localObject != null)
       {
         paramArrayOfByte.unionVipUrl = ((QQUnionIconInfo)localObject).mIconUrl;
@@ -113,7 +113,7 @@ public class MQUserClientShowInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQUserClientShowInfo
  * JD-Core Version:    0.7.0.1
  */

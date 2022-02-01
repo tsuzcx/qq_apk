@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
@@ -10,9 +10,9 @@ import org.json.JSONObject;
 class SetAvatarNativePlugin$AvatarResultCallback
   implements EIPCResultCallback
 {
-  NativePlugin.JSContext mJsContext;
+  JSContext mJsContext;
   
-  SetAvatarNativePlugin$AvatarResultCallback(SetAvatarNativePlugin paramSetAvatarNativePlugin, NativePlugin.JSContext paramJSContext)
+  SetAvatarNativePlugin$AvatarResultCallback(SetAvatarNativePlugin paramSetAvatarNativePlugin, JSContext paramJSContext)
   {
     this.mJsContext = paramJSContext;
   }
@@ -58,7 +58,7 @@ class SetAvatarNativePlugin$AvatarResultCallback
       ((JSONObject)localObject).put("param_result_code", i);
       ((JSONObject)localObject).put("param_result_desc", paramEIPCResult);
       label235:
-      NativePlugin.JSContext localJSContext = this.mJsContext;
+      JSContext localJSContext = this.mJsContext;
       if (i == 0) {}
       for (boolean bool = true;; bool = false)
       {

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.cmgame;
 
-import com.tencent.mobileqq.apollo.data.CmGamePushItem;
-import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.apollo.api.model.ApolloGameData;
+import com.tencent.mobileqq.apollo.api.model.CmGamePushItem;
 import java.io.Serializable;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -36,14 +36,14 @@ public class CmGameStartChecker$StartCheckParam
   public int gameId;
   public int gameMode;
   public String gameName;
-  public int gameTypeForRedPacket;
+  public int gameTypeForRedPacket = 0;
   public int gender;
   public boolean isCreator;
   public boolean isEnableMSAA;
   public boolean isGameRscExist;
-  public boolean isNeedConfInfo;
+  public boolean isNeedConfInfo = false;
   public boolean isPatch;
-  public boolean isRequestConf;
+  public boolean isRequestConf = false;
   public boolean isRunning;
   public boolean isWhiteUsr;
   public boolean launchNewGame;
@@ -177,7 +177,7 @@ public class CmGameStartChecker$StartCheckParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam
  * JD-Core Version:    0.7.0.1
  */

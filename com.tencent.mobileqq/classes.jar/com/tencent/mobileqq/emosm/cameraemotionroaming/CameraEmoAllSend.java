@@ -1,32 +1,37 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import anua;
-import aoho;
-import bofz;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FavEmoRoamingHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
+import com.tencent.mobileqq.app.automator.IResultListener;
 import com.tencent.mobileqq.app.automator.LinearGroup;
 import com.tencent.mobileqq.data.CameraEmotionData;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.CaptureContext;
 import java.util.Iterator;
 import java.util.List;
 
 public class CameraEmoAllSend
   extends LinearGroup
-  implements aoho
+  implements IResultListener
 {
   public static boolean a;
-  public static boolean b;
+  public static boolean b = false;
   private List<CustomEmotionBase> a;
-  private boolean c;
+  private boolean c = false;
   private int d;
   private int f;
   private int g;
   private int h;
+  
+  static
+  {
+    jdField_a_of_type_Boolean = false;
+  }
   
   public int a()
   {
@@ -74,7 +79,7 @@ public class CameraEmoAllSend
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    anua localanua = (anua)((QQAppInterface)bofz.a()).getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER);
+    FavEmoRoamingHandler localFavEmoRoamingHandler = (FavEmoRoamingHandler)((QQAppInterface)CaptureContext.a()).getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER);
     if ((paramInt3 < paramInt2) || ((paramInt4 > 0) && (paramInt5 > 0))) {
       if (paramInt3 == 0) {
         paramInt1 = 5;
@@ -82,7 +87,7 @@ public class CameraEmoAllSend
     }
     for (;;)
     {
-      localanua.notifyUI(2, false, Integer.valueOf(paramInt1));
+      localFavEmoRoamingHandler.notifyUI(2, false, Integer.valueOf(paramInt1));
       return;
       paramInt1 = 6;
       continue;
@@ -145,7 +150,7 @@ public class CameraEmoAllSend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend
  * JD-Core Version:    0.7.0.1
  */

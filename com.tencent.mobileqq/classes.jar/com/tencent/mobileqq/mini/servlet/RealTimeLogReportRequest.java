@@ -6,6 +6,7 @@ import NS_MINI_REALTIMELOG.REALTIMELOG.StReportLogRsp;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.model.RealTimeLogItem;
@@ -41,6 +42,7 @@ public class RealTimeLogReportRequest
       paramString3.log_level.set(paramString2.level);
       paramString3.log_time.set(paramString2.time);
       paramString3.msg.set(paramString2.msg);
+      this.req.logs.add(paramString3);
     }
   }
   

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import bgzv;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.util.NearbyProfileUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -13,7 +13,7 @@ class NearbyPeopleProfileActivity$3
   
   public void run()
   {
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {}
+    if (!NetworkUtil.d(BaseApplication.getContext())) {}
     byte[] arrayOfByte;
     long l;
     do
@@ -26,11 +26,11 @@ class NearbyPeopleProfileActivity$3
       l = NearbyPeopleProfileActivity.a(this.this$0).feedPreviewTime;
       if (NearbyPeopleProfileActivity.a(this.this$0).isHostSelf)
       {
-        bgzv.a(this.this$0.jdField_a_of_type_Axqt, this.this$0.app, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.d, arrayOfByte, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+        NearbyProfileUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.this$0.app, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.d, arrayOfByte, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
         return;
       }
     } while (this.this$0.jdField_a_of_type_Long <= 0L);
-    bgzv.a(this.this$0.jdField_a_of_type_Axqt, this.this$0.app, this.this$0.jdField_a_of_type_Long, null, this.this$0.d, arrayOfByte, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+    NearbyProfileUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.this$0.app, this.this$0.jdField_a_of_type_Long, null, this.this$0.d, arrayOfByte, l, true, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
   }
 }
 

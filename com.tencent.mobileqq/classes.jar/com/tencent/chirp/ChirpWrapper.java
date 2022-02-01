@@ -8,7 +8,7 @@ import java.io.File;
 
 public class ChirpWrapper
 {
-  private static boolean jdField_a_of_type_Boolean;
+  private static boolean jdField_a_of_type_Boolean = false;
   private int jdField_a_of_type_Int;
   
   public static boolean a()
@@ -60,48 +60,48 @@ public class ChirpWrapper
     //   2: monitorenter
     //   3: aconst_null
     //   4: astore_1
-    //   5: new 19	java/lang/StringBuilder
+    //   5: new 20	java/lang/StringBuilder
     //   8: dup
-    //   9: invokespecial 20	java/lang/StringBuilder:<init>	()V
-    //   12: invokestatic 26	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   15: invokevirtual 32	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   18: invokevirtual 38	java/io/File:getParent	()Ljava/lang/String;
-    //   21: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: ldc 83
-    //   26: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   9: invokespecial 21	java/lang/StringBuilder:<init>	()V
+    //   12: invokestatic 27	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   15: invokevirtual 33	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   18: invokevirtual 39	java/io/File:getParent	()Ljava/lang/String;
+    //   21: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: ldc 84
+    //   26: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   32: astore_2
     //   33: aload_2
     //   34: astore_1
     //   35: aload_0
     //   36: aload_2
     //   37: iconst_0
-    //   38: invokestatic 89	com/tencent/mobileqq/utils/FileUtils:uncompressZip	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   38: invokestatic 89	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;Ljava/lang/String;Z)V
     //   41: ldc 2
     //   43: monitorexit
     //   44: iconst_1
     //   45: ireturn
     //   46: astore_0
-    //   47: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   47: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   50: ifeq +12 -> 62
-    //   53: ldc 67
+    //   53: ldc 68
     //   55: iconst_2
     //   56: ldc 91
     //   58: aload_0
-    //   59: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   62: new 34	java/io/File
+    //   59: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   62: new 35	java/io/File
     //   65: dup
-    //   66: new 19	java/lang/StringBuilder
+    //   66: new 20	java/lang/StringBuilder
     //   69: dup
-    //   70: invokespecial 20	java/lang/StringBuilder:<init>	()V
+    //   70: invokespecial 21	java/lang/StringBuilder:<init>	()V
     //   73: aload_1
-    //   74: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: ldc 93
-    //   79: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: ldc 46
-    //   84: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: invokespecial 52	java/io/File:<init>	(Ljava/lang/String;)V
+    //   79: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: ldc 47
+    //   84: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   90: invokespecial 53	java/io/File:<init>	(Ljava/lang/String;)V
     //   93: invokevirtual 96	java/io/File:delete	()Z
     //   96: pop
     //   97: ldc 2
@@ -114,13 +114,13 @@ public class ChirpWrapper
     //   106: aload_0
     //   107: athrow
     //   108: astore_0
-    //   109: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   109: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   112: ifeq -15 -> 97
-    //   115: ldc 67
+    //   115: ldc 68
     //   117: iconst_2
     //   118: ldc 98
     //   120: aload_0
-    //   121: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   121: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   124: goto -27 -> 97
     // Local variable table:
     //   start	length	slot	name	signature
@@ -212,7 +212,7 @@ public class ChirpWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.chirp.ChirpWrapper
  * JD-Core Version:    0.7.0.1
  */

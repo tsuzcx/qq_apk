@@ -15,12 +15,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.ArrayList;
 
 public class AuthDetailDialog
-  extends ReportDialog
+  extends Dialog
   implements View.OnClickListener
 {
   private static final String TAG = "AuthDialog";
@@ -37,7 +35,7 @@ public class AuthDetailDialog
   
   public AuthDetailDialog(@NonNull Activity paramActivity, INTERFACE.StSubscribeMessage paramStSubscribeMessage, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramActivity, 2131755232);
+    super(paramActivity, 2131755237);
     this.mContext = paramActivity;
     this.mCurSubMsg = paramStSubscribeMessage;
     setCanceledOnTouchOutside(true);
@@ -66,20 +64,20 @@ public class AuthDetailDialog
   
   private void initBottomDialog(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559428, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559495, null);
     setContentView(paramContext);
-    this.ivBack = ((ImageView)paramContext.findViewById(2131369316));
-    this.tvTitle = ((TextView)paramContext.findViewById(2131379778));
-    this.lvDetail = ((ListView)paramContext.findViewById(2131370583));
+    this.ivBack = ((ImageView)paramContext.findViewById(2131369571));
+    this.tvTitle = ((TextView)paramContext.findViewById(2131380206));
+    this.lvDetail = ((ListView)paramContext.findViewById(2131370871));
   }
   
   private void initCenterDialog(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559429, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559496, null);
     setContentView(paramContext);
-    this.tvTitle = ((TextView)paramContext.findViewById(2131379778));
-    this.tvCenterConfirm = ((TextView)paramContext.findViewById(2131379853));
-    this.lvDetail = ((ListView)paramContext.findViewById(2131370583));
+    this.tvTitle = ((TextView)paramContext.findViewById(2131380206));
+    this.tvCenterConfirm = ((TextView)paramContext.findViewById(2131380281));
+    this.lvDetail = ((ListView)paramContext.findViewById(2131370871));
   }
   
   private void initDetailList()
@@ -97,13 +95,10 @@ public class AuthDetailDialog
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      dismiss();
     }
+    dismiss();
   }
   
   public void show()

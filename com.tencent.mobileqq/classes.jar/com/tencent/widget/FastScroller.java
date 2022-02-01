@@ -21,141 +21,168 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
-import blcj;
 import com.tencent.util.VersionUtils;
 
 class FastScroller
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = new int[0];
-  private static final int[] jdField_c_of_type_ArrayOfInt = { 16843609, 16843574, 16843577, 16843575, 16843576, 16843578 };
-  private static int jdField_d_of_type_Int = 4;
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  private SectionIndexer jdField_a_of_type_AndroidWidgetSectionIndexer;
-  AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
-  private FastScroller.ScrollFade jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new FastScroller.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
-  int jdField_b_of_type_Int;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_c_of_type_Boolean;
-  private Drawable jdField_d_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private Drawable jdField_e_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
-  private int jdField_g_of_type_Int;
-  private boolean jdField_g_of_type_Boolean;
-  private int h = -1;
-  private int i;
-  private int j;
-  private int k;
-  private int l;
+  private static final int[] ATTRS = { 16843609, 16843574, 16843577, 16843575, 16843576, 16843578 };
+  private static final int[] DEFAULT_STATES;
+  private static final int FADE_TIMEOUT = 1500;
+  private static int MIN_PAGES = 4;
+  private static final int OVERLAY_AT_THUMB = 1;
+  private static final int OVERLAY_FLOATING = 0;
+  private static final int OVERLAY_POSITION = 5;
+  private static final int PENDING_DRAG_DELAY = 180;
+  private static final int[] PRESSED_STATES = { 16842919 };
+  private static final int PREVIEW_BACKGROUND_LEFT = 3;
+  private static final int PREVIEW_BACKGROUND_RIGHT = 4;
+  private static final int STATE_DRAGGING = 3;
+  private static final int STATE_ENTER = 1;
+  private static final int STATE_EXIT = 4;
+  private static final int STATE_NONE = 0;
+  private static final int STATE_VISIBLE = 2;
+  private static final String TAG = "FastScroller";
+  private static final int TEXT_COLOR = 0;
+  private static final int THUMB_DRAWABLE = 1;
+  private static final int TRACK_DRAWABLE = 2;
+  private boolean mAlwaysShow;
+  private boolean mChangedBounds;
+  private final Runnable mDeferStartDrag = new FastScroller.1(this);
+  private boolean mDrawOverlay;
+  private Handler mHandler = new Handler();
+  float mInitialTouchY;
+  private int mItemCount = -1;
+  AbsListView mList;
+  BaseAdapter mListAdapter;
+  private int mListOffset;
+  private boolean mLongList;
+  private boolean mMatchDragPosition;
+  private Drawable mOverlayDrawable;
+  private Drawable mOverlayDrawableLeft;
+  private Drawable mOverlayDrawableRight;
+  private RectF mOverlayPos;
+  private int mOverlayPosition;
+  private int mOverlaySize;
+  private Paint mPaint;
+  boolean mPendingDrag;
+  private int mPosition;
+  private int mScaledTouchSlop;
+  boolean mScrollCompleted;
+  private FastScroller.ScrollFade mScrollFade;
+  private SectionIndexer mSectionIndexer;
+  private String mSectionText;
+  private Object[] mSections;
+  private int mState;
+  private Drawable mThumbDrawable;
+  int mThumbH;
+  int mThumbW;
+  int mThumbY;
+  private final Rect mTmpRect = new Rect();
+  private Drawable mTrackDrawable;
+  private int mVisibleItem;
+  
+  static
+  {
+    DEFAULT_STATES = new int[0];
+  }
   
   public FastScroller(Context paramContext, AbsListView paramAbsListView)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView = paramAbsListView;
-    a(paramContext);
+    this.mList = paramAbsListView;
+    init(paramContext);
   }
   
-  private int a(int paramInt1, int paramInt2, int paramInt3)
+  private void cancelFling()
   {
-    int m = 0;
-    if ((this.jdField_a_of_type_AndroidWidgetSectionIndexer == null) || (this.jdField_a_of_type_AndroidWidgetBaseAdapter == null)) {
-      b();
+    MotionEvent localMotionEvent = MotionEvent.obtain(0L, 0L, 3, 0.0F, 0.0F, 0);
+    this.mList.onTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+  }
+  
+  private int getThumbPositionForListPosition(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i = 0;
+    if ((this.mSectionIndexer == null) || (this.mListAdapter == null)) {
+      getSectionsFromIndexer();
     }
-    if ((this.jdField_a_of_type_AndroidWidgetSectionIndexer == null) || (!this.jdField_g_of_type_Boolean)) {
-      paramInt1 = (this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight() - this.jdField_a_of_type_Int) * paramInt1 / (paramInt3 - paramInt2);
+    if ((this.mSectionIndexer == null) || (!this.mMatchDragPosition)) {
+      paramInt1 = (this.mList.getHeight() - this.mThumbH) * paramInt1 / (paramInt3 - paramInt2);
     }
-    int n;
+    int j;
     do
     {
       return paramInt1;
-      n = paramInt1 - this.jdField_g_of_type_Int;
-      paramInt1 = m;
-    } while (n < 0);
-    int i1 = this.jdField_g_of_type_Int;
-    int i2 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight() - this.jdField_a_of_type_Int;
-    paramInt1 = this.jdField_a_of_type_AndroidWidgetSectionIndexer.getSectionForPosition(n);
-    m = this.jdField_a_of_type_AndroidWidgetSectionIndexer.getPositionForSection(paramInt1);
-    int i3 = this.jdField_a_of_type_AndroidWidgetSectionIndexer.getPositionForSection(paramInt1 + 1);
-    int i4 = this.jdField_a_of_type_ArrayOfJavaLangObject.length;
-    View localView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0);
+      j = paramInt1 - this.mListOffset;
+      paramInt1 = i;
+    } while (j < 0);
+    int k = this.mListOffset;
+    int m = this.mList.getHeight() - this.mThumbH;
+    paramInt1 = this.mSectionIndexer.getSectionForPosition(j);
+    i = this.mSectionIndexer.getPositionForSection(paramInt1);
+    int n = this.mSectionIndexer.getPositionForSection(paramInt1 + 1);
+    int i1 = this.mSections.length;
+    View localView = this.mList.getChildAt(0);
     if (localView == null) {}
-    for (float f1 = 0.0F;; f1 = (this.jdField_a_of_type_ComTencentWidgetAbsListView.getPaddingTop() - localView.getTop()) / localView.getHeight() + f1)
+    for (float f1 = 0.0F;; f1 = (this.mList.getPaddingTop() - localView.getTop()) / localView.getHeight() + f1)
     {
-      m = (int)(((f1 - m) / (i3 - m) + paramInt1) / i4 * i2);
-      paramInt1 = m;
-      if (n <= 0) {
+      i = (int)(((f1 - i) / (n - i) + paramInt1) / i1 * m);
+      paramInt1 = i;
+      if (j <= 0) {
         break;
       }
-      paramInt1 = m;
-      if (n + paramInt2 != paramInt3 - i1) {
+      paramInt1 = i;
+      if (j + paramInt2 != paramInt3 - k) {
         break;
       }
-      localView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(paramInt2 - 1);
-      f1 = (this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight() - this.jdField_a_of_type_ComTencentWidgetAbsListView.getPaddingBottom() - localView.getTop()) / localView.getHeight();
-      float f2 = m;
-      return (int)((i2 - m) * f1 + f2);
-      f1 = n;
+      localView = this.mList.getChildAt(paramInt2 - 1);
+      f1 = (this.mList.getHeight() - this.mList.getPaddingBottom() - localView.getTop()) / localView.getHeight();
+      float f2 = i;
+      return (int)((m - i) * f1 + f2);
+      f1 = j;
     }
   }
   
   @TargetApi(11)
-  private void a(Context paramContext)
+  private void init(Context paramContext)
   {
     boolean bool = true;
-    int m = 0;
-    TypedArray localTypedArray = paramContext.getTheme().obtainStyledAttributes(jdField_c_of_type_ArrayOfInt);
+    int i = 0;
+    TypedArray localTypedArray = paramContext.getTheme().obtainStyledAttributes(ATTRS);
     for (;;)
     {
       try
       {
-        a(paramContext, localTypedArray.getDrawable(1));
-        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = localTypedArray.getDrawable(2);
-        this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = localTypedArray.getDrawable(3);
-        this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = localTypedArray.getDrawable(4);
-        this.k = localTypedArray.getInt(5, 0);
-        this.jdField_a_of_type_Boolean = true;
-        b();
-        this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297007);
-        this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-        this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade = new FastScroller.ScrollFade(this);
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_e_of_type_Int / 2);
-        int n = localTypedArray.getColorStateList(0).getDefaultColor();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(n);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        if ((this.jdField_a_of_type_ComTencentWidgetAbsListView.getWidth() > 0) && (this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight() > 0)) {
-          a(this.jdField_a_of_type_ComTencentWidgetAbsListView.getWidth(), this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight(), 0, 0);
+        useThumbDrawable(paramContext, localTypedArray.getDrawable(1));
+        this.mTrackDrawable = localTypedArray.getDrawable(2);
+        this.mOverlayDrawableLeft = localTypedArray.getDrawable(3);
+        this.mOverlayDrawableRight = localTypedArray.getDrawable(4);
+        this.mOverlayPosition = localTypedArray.getInt(5, 0);
+        this.mScrollCompleted = true;
+        getSectionsFromIndexer();
+        this.mOverlaySize = paramContext.getResources().getDimensionPixelSize(2131297028);
+        this.mOverlayPos = new RectF();
+        this.mScrollFade = new FastScroller.ScrollFade(this);
+        this.mPaint = new Paint();
+        this.mPaint.setAntiAlias(true);
+        this.mPaint.setTextAlign(Paint.Align.CENTER);
+        this.mPaint.setTextSize(this.mOverlaySize / 2);
+        int j = localTypedArray.getColorStateList(0).getDefaultColor();
+        this.mPaint.setColor(j);
+        this.mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        if ((this.mList.getWidth() > 0) && (this.mList.getHeight() > 0)) {
+          onSizeChanged(this.mList.getWidth(), this.mList.getHeight(), 0, 0);
         }
-        this.i = 0;
-        g();
+        this.mState = 0;
+        refreshDrawableState();
         localTypedArray.recycle();
-        this.l = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+        this.mScaledTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
         if (paramContext.getApplicationInfo().targetSdkVersion >= 11)
         {
-          this.jdField_g_of_type_Boolean = bool;
-          if (VersionUtils.isHoneycomb()) {
-            m = this.jdField_a_of_type_ComTencentWidgetAbsListView.getVerticalScrollbarPosition();
+          this.mMatchDragPosition = bool;
+          if (VersionUtils.e()) {
+            i = this.mList.getVerticalScrollbarPosition();
           }
-          a(m);
+          setScrollbarPosition(i);
           return;
         }
       }
@@ -167,383 +194,315 @@ class FastScroller
     }
   }
   
-  private void a(Context paramContext, Drawable paramDrawable)
+  private void refreshDrawableState()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if ((paramDrawable instanceof NinePatchDrawable)) {
-      this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297009);
-    }
-    for (this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297008);; this.jdField_a_of_type_Int = paramDrawable.getIntrinsicHeight())
+    if (this.mState == 3) {}
+    for (int[] arrayOfInt = PRESSED_STATES;; arrayOfInt = DEFAULT_STATES)
     {
-      this.jdField_e_of_type_Boolean = true;
-      return;
-      this.jdField_b_of_type_Int = paramDrawable.getIntrinsicWidth();
-    }
-  }
-  
-  private void g()
-  {
-    if (this.i == 3) {}
-    for (int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;; arrayOfInt = jdField_b_of_type_ArrayOfInt)
-    {
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.isStateful())) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
+      if ((this.mThumbDrawable != null) && (this.mThumbDrawable.isStateful())) {
+        this.mThumbDrawable.setState(arrayOfInt);
       }
-      if ((this.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.isStateful())) {
-        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
+      if ((this.mTrackDrawable != null) && (this.mTrackDrawable.isStateful())) {
+        this.mTrackDrawable.setState(arrayOfInt);
       }
       return;
     }
   }
   
-  private void h()
+  private void resetThumbPos()
   {
-    int m = this.jdField_a_of_type_ComTencentWidgetAbsListView.getWidth();
-    switch (this.j)
+    int i = this.mList.getWidth();
+    switch (this.mPosition)
     {
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(208);
+      this.mThumbDrawable.setAlpha(208);
       return;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(m - this.jdField_b_of_type_Int, 0, m, this.jdField_a_of_type_Int);
+      this.mThumbDrawable.setBounds(i - this.mThumbW, 0, i, this.mThumbH);
       continue;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+      this.mThumbDrawable.setBounds(0, 0, this.mThumbW, this.mThumbH);
     }
   }
   
-  private void i()
+  private void useThumbDrawable(Context paramContext, Drawable paramDrawable)
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(0L, 0L, 3, 0.0F, 0.0F, 0);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.onTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  void a()
-  {
-    b(0);
-  }
-  
-  void a(float paramFloat)
-  {
-    int i6 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getCount();
-    this.jdField_a_of_type_Boolean = false;
-    float f1 = 1.0F / i6 / 8.0F;
-    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-    int i7;
-    int n;
-    int m;
-    int i1;
-    int i4;
-    if ((arrayOfObject != null) && (arrayOfObject.length > 1))
-    {
-      i7 = arrayOfObject.length;
-      n = (int)(i7 * paramFloat);
-      m = n;
-      if (n >= i7) {
-        m = i7 - 1;
-      }
-      i1 = this.jdField_a_of_type_AndroidWidgetSectionIndexer.getPositionForSection(m);
-      i4 = m + 1;
-      if (m >= i7 - 1) {
-        break label622;
-      }
+    this.mThumbDrawable = paramDrawable;
+    if ((paramDrawable instanceof NinePatchDrawable)) {
+      this.mThumbW = paramContext.getResources().getDimensionPixelSize(2131297030);
     }
-    label587:
-    label590:
-    label593:
-    label622:
-    for (int i3 = this.jdField_a_of_type_AndroidWidgetSectionIndexer.getPositionForSection(m + 1);; i3 = i6)
+    for (this.mThumbH = paramContext.getResources().getDimensionPixelSize(2131297029);; this.mThumbH = paramDrawable.getIntrinsicHeight())
     {
-      int i2;
-      if (i3 == i1)
-      {
-        n = i1;
-        i2 = m;
-        if (i2 > 0)
-        {
-          i2 -= 1;
-          n = this.jdField_a_of_type_AndroidWidgetSectionIndexer.getPositionForSection(i2);
-          if (n != i1)
-          {
-            i1 = n;
-            n = i2;
-          }
-        }
-      }
-      for (;;)
-      {
-        int i5 = i4 + 1;
-        for (;;)
-        {
-          if ((i5 < i7) && (this.jdField_a_of_type_AndroidWidgetSectionIndexer.getPositionForSection(i5) == i3))
-          {
-            i5 += 1;
-            i4 += 1;
-            continue;
-            if (i2 != 0) {
-              break label593;
-            }
-            i5 = 0;
-            i2 = m;
-            i1 = n;
-            n = i5;
-            break;
-          }
-        }
-        float f2 = i2 / i7;
-        float f3 = i4 / i7;
-        if ((i2 == m) && (paramFloat - f2 < f1))
-        {
-          m = i1;
-          if (m <= i6 - 1) {
-            break label590;
-          }
-          m = i6 - 1;
-        }
-        for (;;)
-        {
-          Object localObject;
-          if ((this.jdField_a_of_type_ComTencentWidgetAbsListView instanceof ExpandableListView))
-          {
-            localObject = (ExpandableListView)this.jdField_a_of_type_ComTencentWidgetAbsListView;
-            ((ExpandableListView)localObject).setSelectionFromTop(((ExpandableListView)localObject).a(ExpandableListView.b(m + this.jdField_g_of_type_Int)), 0);
-          }
-          boolean bool;
-          for (;;)
-          {
-            if (n >= 0)
-            {
-              localObject = arrayOfObject[n].toString();
-              this.jdField_a_of_type_JavaLangString = ((String)localObject);
-              if (((((String)localObject).length() != 1) || (((String)localObject).charAt(0) != ' ')) && (n < arrayOfObject.length))
-              {
-                bool = true;
-                label379:
-                this.jdField_d_of_type_Boolean = bool;
-                return;
-                m = (int)((i3 - i1) * (paramFloat - f2) / (f3 - f2)) + i1;
-                break;
-                if ((this.jdField_a_of_type_ComTencentWidgetAbsListView instanceof ListView))
-                {
-                  ((ListView)this.jdField_a_of_type_ComTencentWidgetAbsListView).setSelectionFromTop(m + this.jdField_g_of_type_Int, 0);
-                  continue;
-                }
-                this.jdField_a_of_type_ComTencentWidgetAbsListView.setSelection(m + this.jdField_g_of_type_Int);
-                continue;
-                m = (int)(i6 * paramFloat);
-                if (m <= i6 - 1) {
-                  break label587;
-                }
-                m = i6 - 1;
-              }
-            }
-          }
-          for (;;)
-          {
-            if ((this.jdField_a_of_type_ComTencentWidgetAbsListView instanceof ExpandableListView))
-            {
-              localObject = (ExpandableListView)this.jdField_a_of_type_ComTencentWidgetAbsListView;
-              ((ExpandableListView)localObject).setSelectionFromTop(((ExpandableListView)localObject).a(ExpandableListView.b(m + this.jdField_g_of_type_Int)), 0);
-            }
-            for (;;)
-            {
-              n = -1;
-              break;
-              if ((this.jdField_a_of_type_ComTencentWidgetAbsListView instanceof ListView)) {
-                ((ListView)this.jdField_a_of_type_ComTencentWidgetAbsListView).setSelectionFromTop(m + this.jdField_g_of_type_Int, 0);
-              } else {
-                this.jdField_a_of_type_ComTencentWidgetAbsListView.setSelection(m + this.jdField_g_of_type_Int);
-              }
-            }
-            bool = false;
-            break label379;
-            this.jdField_d_of_type_Boolean = false;
-            return;
-          }
-        }
-        break;
-        i1 = n;
-        n = m;
-        i2 = m;
-        continue;
-        i2 = m;
-        n = m;
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.j = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_e_of_type_AndroidGraphicsDrawableDrawable;
+      this.mChangedBounds = true;
       return;
-    }
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_f_of_type_Boolean) {
-      this.jdField_c_of_type_Boolean = true;
+      this.mThumbW = paramDrawable.getIntrinsicWidth();
     }
   }
   
-  void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  void beginDrag()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      switch (this.j)
-      {
-      default: 
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramInt1 - this.jdField_b_of_type_Int, 0, paramInt1, this.jdField_a_of_type_Int);
-      }
+    setState(3);
+    if ((this.mListAdapter == null) && (this.mList != null)) {
+      getSectionsFromIndexer();
     }
-    for (;;)
+    if (this.mList != null)
     {
-      if (this.k == 0)
-      {
-        RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-        localRectF.left = ((paramInt1 - this.jdField_e_of_type_Int) / 2);
-        localRectF.right = (localRectF.left + this.jdField_e_of_type_Int);
-        localRectF.top = (paramInt2 / 10);
-        localRectF.bottom = (localRectF.top + this.jdField_e_of_type_Int);
-        if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom);
-        }
-      }
-      return;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+      this.mList.requestDisallowInterceptTouchEvent(true);
+      this.mList.reportScrollStateChange(1);
+      cancelFling();
     }
   }
   
-  public void a(Canvas paramCanvas)
+  void cancelPendingDrag()
   {
-    if (this.i == 0) {}
-    int i1;
-    int i2;
+    this.mList.removeCallbacks(this.mDeferStartDrag);
+    this.mPendingDrag = false;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (this.mState == 0) {}
+    int k;
     int m;
+    int i;
     do
     {
       return;
-      i1 = this.jdField_c_of_type_Int;
-      i2 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getWidth();
-      Object localObject1 = this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade;
-      m = -1;
-      int n;
-      if (this.i == 4)
+      k = this.mThumbY;
+      m = this.mList.getWidth();
+      Object localObject1 = this.mScrollFade;
+      i = -1;
+      int j;
+      if (this.mState == 4)
       {
-        n = ((FastScroller.ScrollFade)localObject1).a();
-        if (n < 104) {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(n * 2);
+        j = ((FastScroller.ScrollFade)localObject1).getAlpha();
+        if (j < 104) {
+          this.mThumbDrawable.setAlpha(j * 2);
         }
       }
-      switch (this.j)
+      switch (this.mPosition)
       {
       default: 
-        m = 0;
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(m, 0, this.jdField_b_of_type_Int + m, this.jdField_a_of_type_Int);
-        this.jdField_e_of_type_Boolean = true;
-        m = n;
-        if (this.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null)
+        i = 0;
+        this.mThumbDrawable.setBounds(i, 0, this.mThumbW + i, this.mThumbH);
+        this.mChangedBounds = true;
+        i = j;
+        if (this.mTrackDrawable != null)
         {
-          localObject1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds();
-          int i4 = ((Rect)localObject1).left;
-          n = (((Rect)localObject1).bottom - ((Rect)localObject1).top) / 2;
-          int i3 = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-          i4 = i4 + this.jdField_b_of_type_Int / 2 - i3 / 2;
-          this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(i4, n, i3 + i4, this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight() - n);
-          this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+          localObject1 = this.mThumbDrawable.getBounds();
+          int i1 = ((Rect)localObject1).left;
+          j = (((Rect)localObject1).bottom - ((Rect)localObject1).top) / 2;
+          int n = this.mTrackDrawable.getIntrinsicWidth();
+          i1 = i1 + this.mThumbW / 2 - n / 2;
+          this.mTrackDrawable.setBounds(i1, j, n + i1, this.mList.getHeight() - j);
+          this.mTrackDrawable.draw(paramCanvas);
         }
-        paramCanvas.translate(0.0F, i1);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-        paramCanvas.translate(0.0F, -i1);
-        if ((this.i != 3) || (!this.jdField_d_of_type_Boolean)) {
+        paramCanvas.translate(0.0F, k);
+        this.mThumbDrawable.draw(paramCanvas);
+        paramCanvas.translate(0.0F, -k);
+        if ((this.mState != 3) || (!this.mDrawOverlay)) {
           continue;
         }
-        if (this.k == 1) {
-          switch (this.j)
+        if (this.mOverlayPosition == 1) {
+          switch (this.mPosition)
           {
           }
         }
         break;
       }
-      for (m = Math.max(0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().left - this.jdField_b_of_type_Int - this.jdField_e_of_type_Int);; m = Math.min(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().right + this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentWidgetAbsListView.getWidth() - this.jdField_e_of_type_Int))
+      for (i = Math.max(0, this.mThumbDrawable.getBounds().left - this.mThumbW - this.mOverlaySize);; i = Math.min(this.mThumbDrawable.getBounds().right + this.mThumbW, this.mList.getWidth() - this.mOverlaySize))
       {
-        n = Math.max(0, Math.min((this.jdField_a_of_type_Int - this.jdField_e_of_type_Int) / 2 + i1, this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight() - this.jdField_e_of_type_Int));
-        localObject1 = this.jdField_a_of_type_AndroidGraphicsRectF;
-        ((RectF)localObject1).left = m;
-        ((RectF)localObject1).right = (((RectF)localObject1).left + this.jdField_e_of_type_Int);
-        ((RectF)localObject1).top = n;
-        ((RectF)localObject1).bottom = (((RectF)localObject1).top + this.jdField_e_of_type_Int);
-        if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)((RectF)localObject1).left, (int)((RectF)localObject1).top, (int)((RectF)localObject1).right, (int)((RectF)localObject1).bottom);
+        j = Math.max(0, Math.min((this.mThumbH - this.mOverlaySize) / 2 + k, this.mList.getHeight() - this.mOverlaySize));
+        localObject1 = this.mOverlayPos;
+        ((RectF)localObject1).left = i;
+        ((RectF)localObject1).right = (((RectF)localObject1).left + this.mOverlaySize);
+        ((RectF)localObject1).top = j;
+        ((RectF)localObject1).bottom = (((RectF)localObject1).top + this.mOverlaySize);
+        if (this.mOverlayDrawable != null) {
+          this.mOverlayDrawable.setBounds((int)((RectF)localObject1).left, (int)((RectF)localObject1).top, (int)((RectF)localObject1).right, (int)((RectF)localObject1).bottom);
         }
-        if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        if (this.mOverlayDrawable != null) {
+          this.mOverlayDrawable.draw(paramCanvas);
         }
-        localObject1 = this.jdField_a_of_type_AndroidGraphicsPaint;
+        localObject1 = this.mPaint;
         float f1 = ((Paint)localObject1).descent();
-        RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-        Object localObject2 = this.jdField_a_of_type_AndroidGraphicsRect;
-        if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getPadding((Rect)localObject2);
+        RectF localRectF = this.mOverlayPos;
+        Object localObject2 = this.mTmpRect;
+        if (this.mOverlayDrawable != null) {
+          this.mOverlayDrawable.getPadding((Rect)localObject2);
         }
-        m = (((Rect)localObject2).right - ((Rect)localObject2).left) / 2;
-        n = (((Rect)localObject2).bottom - ((Rect)localObject2).top) / 2;
-        localObject2 = this.jdField_a_of_type_JavaLangString;
-        float f2 = (int)(localRectF.left + localRectF.right) / 2 - m;
+        i = (((Rect)localObject2).right - ((Rect)localObject2).left) / 2;
+        j = (((Rect)localObject2).bottom - ((Rect)localObject2).top) / 2;
+        localObject2 = this.mSectionText;
+        float f2 = (int)(localRectF.left + localRectF.right) / 2 - i;
         float f3 = localRectF.bottom;
-        paramCanvas.drawText((String)localObject2, f2, (int)(localRectF.top + f3) / 2 + this.jdField_e_of_type_Int / 4 - f1 - n, (Paint)localObject1);
+        paramCanvas.drawText((String)localObject2, f2, (int)(localRectF.top + f3) / 2 + this.mOverlaySize / 4 - f1 - j, (Paint)localObject1);
         return;
-        m = i2 - this.jdField_b_of_type_Int * n / 208;
+        i = m - this.mThumbW * j / 208;
         break;
-        m = -this.jdField_b_of_type_Int + this.jdField_b_of_type_Int * n / 208;
+        i = -this.mThumbW + this.mThumbW * j / 208;
         break;
       }
-    } while (this.i != 4);
-    if (m == 0)
+    } while (this.mState != 4);
+    if (i == 0)
     {
-      b(0);
+      setState(0);
       return;
     }
-    if (this.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (this.mTrackDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.invalidate(i2 - this.jdField_b_of_type_Int, 0, i2, this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight());
+      this.mList.invalidate(m - this.mThumbW, 0, m, this.mList.getHeight());
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.invalidate(i2 - this.jdField_b_of_type_Int, i1, i2, this.jdField_a_of_type_Int + i1);
+    this.mList.invalidate(m - this.mThumbW, k, m, this.mThumbH + k);
   }
   
-  void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  SectionIndexer getSectionIndexer()
+  {
+    return this.mSectionIndexer;
+  }
+  
+  Object[] getSections()
+  {
+    if ((this.mListAdapter == null) && (this.mList != null)) {
+      getSectionsFromIndexer();
+    }
+    return this.mSections;
+  }
+  
+  void getSectionsFromIndexer()
+  {
+    Object localObject2 = this.mList.getAdapter();
+    this.mSectionIndexer = null;
+    Object localObject1 = localObject2;
+    if ((localObject2 instanceof HeaderViewListAdapter))
+    {
+      this.mListOffset = ((HeaderViewListAdapter)localObject2).getHeadersCount();
+      localObject1 = ((HeaderViewListAdapter)localObject2).getWrappedAdapter();
+    }
+    if ((localObject1 instanceof ExpandableListConnector))
+    {
+      localObject2 = ((ExpandableListConnector)localObject1).getAdapter();
+      if ((localObject2 instanceof SectionIndexer))
+      {
+        this.mSectionIndexer = ((SectionIndexer)localObject2);
+        this.mListAdapter = ((BaseAdapter)localObject1);
+        this.mSections = this.mSectionIndexer.getSections();
+      }
+    }
+    do
+    {
+      return;
+      if (!(localObject1 instanceof SectionIndexer)) {
+        break;
+      }
+      this.mListAdapter = ((BaseAdapter)localObject1);
+      this.mSectionIndexer = ((SectionIndexer)localObject1);
+      this.mSections = this.mSectionIndexer.getSections();
+    } while (this.mSections != null);
+    this.mSections = new String[] { " " };
+    return;
+    this.mListAdapter = ((BaseAdapter)localObject1);
+    this.mSections = new String[] { " " };
+  }
+  
+  public int getState()
+  {
+    return this.mState;
+  }
+  
+  public int getWidth()
+  {
+    return this.mThumbW;
+  }
+  
+  public boolean isAlwaysShowEnabled()
+  {
+    return this.mAlwaysShow;
+  }
+  
+  boolean isPointInside(float paramFloat1, float paramFloat2)
+  {
+    int i;
+    switch (this.mPosition)
+    {
+    default: 
+      if (paramFloat1 > this.mList.getWidth() - this.mThumbW) {
+        i = 1;
+      }
+      break;
+    }
+    while ((i != 0) && ((this.mTrackDrawable != null) || ((paramFloat2 >= this.mThumbY) && (paramFloat2 <= this.mThumbY + this.mThumbH))))
+    {
+      return true;
+      i = 0;
+      continue;
+      if (paramFloat1 < this.mThumbW) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+    }
+    return false;
+  }
+  
+  boolean isVisible()
+  {
+    return this.mState != 0;
+  }
+  
+  boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((this.mState > 0) && (isPointInside(paramMotionEvent.getX(), paramMotionEvent.getY())))
+      {
+        if (!this.mList.isInScrollingContainer())
+        {
+          beginDrag();
+          return true;
+        }
+        this.mInitialTouchY = paramMotionEvent.getY();
+        startPendingDrag();
+        continue;
+        cancelPendingDrag();
+      }
+    }
+  }
+  
+  void onItemCountChanged(int paramInt1, int paramInt2)
+  {
+    if (this.mAlwaysShow) {
+      this.mLongList = true;
+    }
+  }
+  
+  void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     boolean bool;
-    if ((this.h != paramInt3) && (paramInt2 > 0))
+    if ((this.mItemCount != paramInt3) && (paramInt2 > 0))
     {
-      this.h = paramInt3;
-      if (this.h / paramInt2 >= jdField_d_of_type_Int)
+      this.mItemCount = paramInt3;
+      if (this.mItemCount / paramInt2 >= MIN_PAGES)
       {
         bool = true;
-        this.jdField_c_of_type_Boolean = bool;
+        this.mLongList = bool;
       }
     }
     else
     {
-      if (this.jdField_f_of_type_Boolean) {
-        this.jdField_c_of_type_Boolean = true;
+      if (this.mAlwaysShow) {
+        this.mLongList = true;
       }
-      if (this.jdField_c_of_type_Boolean) {
+      if (this.mLongList) {
         break label78;
       }
-      if (this.i != 0) {
-        b(0);
+      if (this.mState != 0) {
+        setState(0);
       }
     }
     label78:
@@ -556,311 +515,385 @@ class FastScroller
           return;
           bool = false;
           break;
-          if ((paramInt3 - paramInt2 > 0) && (this.i != 3))
+          if ((paramInt3 - paramInt2 > 0) && (this.mState != 3))
           {
-            this.jdField_c_of_type_Int = a(paramInt1, paramInt2, paramInt3);
-            if (this.jdField_e_of_type_Boolean)
+            this.mThumbY = getThumbPositionForListPosition(paramInt1, paramInt2, paramInt3);
+            if (this.mChangedBounds)
             {
-              h();
-              this.jdField_e_of_type_Boolean = false;
+              resetThumbPos();
+              this.mChangedBounds = false;
             }
           }
-          this.jdField_a_of_type_Boolean = true;
-        } while (paramInt1 == this.jdField_f_of_type_Int);
-        this.jdField_f_of_type_Int = paramInt1;
-      } while (this.i == 3);
-      b(2);
-    } while (this.jdField_f_of_type_Boolean);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade, 1500L);
+          this.mScrollCompleted = true;
+        } while (paramInt1 == this.mVisibleItem);
+        this.mVisibleItem = paramInt1;
+      } while (this.mState == 3);
+      setState(2);
+    } while (this.mAlwaysShow);
+    this.mHandler.postDelayed(this.mScrollFade, 1500L);
   }
   
-  public void a(boolean paramBoolean)
+  public void onSectionsChanged()
   {
-    this.jdField_f_of_type_Boolean = paramBoolean;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade);
-      b(2);
-    }
-    while (this.i != 2) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade, 1500L);
+    this.mListAdapter = null;
   }
   
-  public boolean a()
+  void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return this.jdField_f_of_type_Boolean;
-  }
-  
-  boolean a(float paramFloat1, float paramFloat2)
-  {
-    int m;
-    switch (this.j)
-    {
-    default: 
-      if (paramFloat1 > this.jdField_a_of_type_ComTencentWidgetAbsListView.getWidth() - this.jdField_b_of_type_Int) {
-        m = 1;
+    if (this.mThumbDrawable != null) {
+      switch (this.mPosition)
+      {
+      default: 
+        this.mThumbDrawable.setBounds(paramInt1 - this.mThumbW, 0, paramInt1, this.mThumbH);
       }
-      break;
-    }
-    while ((m != 0) && ((this.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null) || ((paramFloat2 >= this.jdField_c_of_type_Int) && (paramFloat2 <= this.jdField_c_of_type_Int + this.jdField_a_of_type_Int))))
-    {
-      return true;
-      m = 0;
-      continue;
-      if (paramFloat1 < this.jdField_b_of_type_Int) {
-        m = 1;
-      } else {
-        m = 0;
-      }
-    }
-    return false;
-  }
-  
-  boolean a(MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
     }
     for (;;)
     {
-      return false;
-      if ((this.i > 0) && (a(paramMotionEvent.getX(), paramMotionEvent.getY())))
+      if (this.mOverlayPosition == 0)
       {
-        if (!this.jdField_a_of_type_ComTencentWidgetAbsListView.isInScrollingContainer())
-        {
-          f();
-          return true;
+        RectF localRectF = this.mOverlayPos;
+        localRectF.left = ((paramInt1 - this.mOverlaySize) / 2);
+        localRectF.right = (localRectF.left + this.mOverlaySize);
+        localRectF.top = (paramInt2 / 10);
+        localRectF.bottom = (localRectF.top + this.mOverlaySize);
+        if (this.mOverlayDrawable != null) {
+          this.mOverlayDrawable.setBounds((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom);
         }
-        this.jdField_a_of_type_Float = paramMotionEvent.getY();
-        e();
-        continue;
-        d();
       }
-    }
-  }
-  
-  public int b()
-  {
-    return this.i;
-  }
-  
-  void b()
-  {
-    Object localObject2 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getAdapter();
-    this.jdField_a_of_type_AndroidWidgetSectionIndexer = null;
-    Object localObject1 = localObject2;
-    if ((localObject2 instanceof blcj))
-    {
-      this.jdField_g_of_type_Int = ((blcj)localObject2).a();
-      localObject1 = ((blcj)localObject2).getWrappedAdapter();
-    }
-    if ((localObject1 instanceof ExpandableListConnector))
-    {
-      localObject2 = ((ExpandableListConnector)localObject1).a();
-      if ((localObject2 instanceof SectionIndexer))
-      {
-        this.jdField_a_of_type_AndroidWidgetSectionIndexer = ((SectionIndexer)localObject2);
-        this.jdField_a_of_type_AndroidWidgetBaseAdapter = ((BaseAdapter)localObject1);
-        this.jdField_a_of_type_ArrayOfJavaLangObject = this.jdField_a_of_type_AndroidWidgetSectionIndexer.getSections();
-      }
-    }
-    do
-    {
       return;
-      if (!(localObject1 instanceof SectionIndexer)) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter = ((BaseAdapter)localObject1);
-      this.jdField_a_of_type_AndroidWidgetSectionIndexer = ((SectionIndexer)localObject1);
-      this.jdField_a_of_type_ArrayOfJavaLangObject = this.jdField_a_of_type_AndroidWidgetSectionIndexer.getSections();
-    } while (this.jdField_a_of_type_ArrayOfJavaLangObject != null);
-    this.jdField_a_of_type_ArrayOfJavaLangObject = new String[] { " " };
-    return;
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = ((BaseAdapter)localObject1);
-    this.jdField_a_of_type_ArrayOfJavaLangObject = new String[] { " " };
-  }
-  
-  public void b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.i = paramInt;
-      g();
-      return;
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade);
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.invalidate();
-      continue;
-      if (this.i != 2) {
-        h();
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade);
-      continue;
-      int m = this.jdField_a_of_type_ComTencentWidgetAbsListView.getWidth();
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.invalidate(m - this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, m, this.jdField_c_of_type_Int + this.jdField_a_of_type_Int);
+      this.mThumbDrawable.setBounds(0, 0, this.mThumbW, this.mThumbH);
     }
   }
   
-  boolean b()
+  boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.i != 0;
-  }
-  
-  boolean b(MotionEvent paramMotionEvent)
-  {
-    int m = 0;
-    if (this.i == 0) {}
-    int n;
-    int i1;
+    int i = 0;
+    if (this.mState == 0) {}
+    int j;
+    int k;
     label221:
     do
     {
       do
       {
         return false;
-        n = paramMotionEvent.getAction();
-        if (n != 0) {
+        j = paramMotionEvent.getAction();
+        if (j != 0) {
           break;
         }
-      } while (!a(paramMotionEvent.getX(), paramMotionEvent.getY()));
-      if (!this.jdField_a_of_type_ComTencentWidgetAbsListView.isInScrollingContainer())
+      } while (!isPointInside(paramMotionEvent.getX(), paramMotionEvent.getY()));
+      if (!this.mList.isInScrollingContainer())
       {
-        f();
+        beginDrag();
         return true;
       }
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      e();
+      this.mInitialTouchY = paramMotionEvent.getY();
+      startPendingDrag();
       return false;
-      if (n == 1)
+      if (j == 1)
       {
-        if (this.jdField_b_of_type_Boolean)
+        if (this.mPendingDrag)
         {
-          f();
-          i1 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight();
-          n = (int)paramMotionEvent.getY() - this.jdField_a_of_type_Int + 10;
-          if (n >= 0) {
+          beginDrag();
+          k = this.mList.getHeight();
+          j = (int)paramMotionEvent.getY() - this.mThumbH + 10;
+          if (j >= 0) {
             break label221;
           }
-          m = 0;
+          i = 0;
         }
         for (;;)
         {
-          this.jdField_c_of_type_Int = m;
-          a(this.jdField_c_of_type_Int / (i1 - this.jdField_a_of_type_Int));
-          d();
-          if (this.i != 3) {
+          this.mThumbY = i;
+          scrollTo(this.mThumbY / (k - this.mThumbH));
+          cancelPendingDrag();
+          if (this.mState != 3) {
             break;
           }
-          if (this.jdField_a_of_type_ComTencentWidgetAbsListView != null)
+          if (this.mList != null)
           {
-            this.jdField_a_of_type_ComTencentWidgetAbsListView.requestDisallowInterceptTouchEvent(false);
-            this.jdField_a_of_type_ComTencentWidgetAbsListView.reportScrollStateChange(0);
-            b(2);
+            this.mList.requestDisallowInterceptTouchEvent(false);
+            this.mList.reportScrollStateChange(0);
+            setState(2);
           }
-          paramMotionEvent = this.jdField_a_of_type_AndroidOsHandler;
-          paramMotionEvent.removeCallbacks(this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade);
-          if (!this.jdField_f_of_type_Boolean) {
-            paramMotionEvent.postDelayed(this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade, 1000L);
+          paramMotionEvent = this.mHandler;
+          paramMotionEvent.removeCallbacks(this.mScrollFade);
+          if (!this.mAlwaysShow) {
+            paramMotionEvent.postDelayed(this.mScrollFade, 1000L);
           }
-          if (this.jdField_a_of_type_ComTencentWidgetAbsListView != null) {
-            this.jdField_a_of_type_ComTencentWidgetAbsListView.invalidate();
+          if (this.mList != null) {
+            this.mList.invalidate();
           }
           return true;
-          m = n;
-          if (this.jdField_a_of_type_Int + n > i1) {
-            m = i1 - this.jdField_a_of_type_Int;
+          i = j;
+          if (this.mThumbH + j > k) {
+            i = k - this.mThumbH;
           }
         }
       }
-      if (n != 2) {
+      if (j != 2) {
         break;
       }
-      if ((this.jdField_b_of_type_Boolean) && (Math.abs(paramMotionEvent.getY() - this.jdField_a_of_type_Float) > this.l))
+      if ((this.mPendingDrag) && (Math.abs(paramMotionEvent.getY() - this.mInitialTouchY) > this.mScaledTouchSlop))
       {
-        b(3);
-        if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter == null) && (this.jdField_a_of_type_ComTencentWidgetAbsListView != null)) {
-          b();
+        setState(3);
+        if ((this.mListAdapter == null) && (this.mList != null)) {
+          getSectionsFromIndexer();
         }
-        if (this.jdField_a_of_type_ComTencentWidgetAbsListView != null)
+        if (this.mList != null)
         {
-          this.jdField_a_of_type_ComTencentWidgetAbsListView.requestDisallowInterceptTouchEvent(true);
-          this.jdField_a_of_type_ComTencentWidgetAbsListView.reportScrollStateChange(1);
-          i();
-          d();
+          this.mList.requestDisallowInterceptTouchEvent(true);
+          this.mList.reportScrollStateChange(1);
+          cancelFling();
+          cancelPendingDrag();
         }
       }
-    } while (this.i != 3);
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView != null)
+    } while (this.mState != 3);
+    if (this.mList != null)
     {
-      n = this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight();
+      j = this.mList.getHeight();
       label355:
-      i1 = (int)paramMotionEvent.getY() - this.jdField_a_of_type_Int + 10;
-      if (i1 >= 0) {
+      k = (int)paramMotionEvent.getY() - this.mThumbH + 10;
+      if (k >= 0) {
         break label395;
       }
     }
     for (;;)
     {
-      if (Math.abs(this.jdField_c_of_type_Int - m) < 2)
+      if (Math.abs(this.mThumbY - i) < 2)
       {
         return true;
-        n = 0;
+        j = 0;
         break label355;
         label395:
-        if (this.jdField_a_of_type_Int + i1 <= n) {
+        if (this.mThumbH + k <= j) {
           break label458;
         }
-        m = n - this.jdField_a_of_type_Int;
+        i = j - this.mThumbH;
         continue;
       }
-      this.jdField_c_of_type_Int = m;
-      if (this.jdField_a_of_type_Boolean) {
-        a(this.jdField_c_of_type_Int / (n - this.jdField_a_of_type_Int));
+      this.mThumbY = i;
+      if (this.mScrollCompleted) {
+        scrollTo(this.mThumbY / (j - this.mThumbH));
       }
       return true;
-      if (n != 3) {
+      if (j != 3) {
         break;
       }
-      d();
+      cancelPendingDrag();
       return false;
       label458:
-      m = i1;
+      i = k;
     }
   }
   
-  public void c()
+  void scrollTo(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = null;
-  }
-  
-  void d()
-  {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  void e()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 180L);
-  }
-  
-  void f()
-  {
-    b(3);
-    if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter == null) && (this.jdField_a_of_type_ComTencentWidgetAbsListView != null)) {
-      b();
-    }
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView != null)
+    int i3 = this.mList.getCount();
+    this.mScrollCompleted = false;
+    float f1 = 1.0F / i3 / 8.0F;
+    Object[] arrayOfObject = this.mSections;
+    int i4;
+    int j;
+    int i;
+    int k;
+    int i1;
+    if ((arrayOfObject != null) && (arrayOfObject.length > 1))
     {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.requestDisallowInterceptTouchEvent(true);
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.reportScrollStateChange(1);
-      i();
+      i4 = arrayOfObject.length;
+      j = (int)(i4 * paramFloat);
+      i = j;
+      if (j >= i4) {
+        i = i4 - 1;
+      }
+      k = this.mSectionIndexer.getPositionForSection(i);
+      i1 = i + 1;
+      if (i >= i4 - 1) {
+        break label622;
+      }
     }
+    label587:
+    label590:
+    label593:
+    label622:
+    for (int n = this.mSectionIndexer.getPositionForSection(i + 1);; n = i3)
+    {
+      int m;
+      if (n == k)
+      {
+        j = k;
+        m = i;
+        if (m > 0)
+        {
+          m -= 1;
+          j = this.mSectionIndexer.getPositionForSection(m);
+          if (j != k)
+          {
+            k = j;
+            j = m;
+          }
+        }
+      }
+      for (;;)
+      {
+        int i2 = i1 + 1;
+        for (;;)
+        {
+          if ((i2 < i4) && (this.mSectionIndexer.getPositionForSection(i2) == n))
+          {
+            i2 += 1;
+            i1 += 1;
+            continue;
+            if (m != 0) {
+              break label593;
+            }
+            i2 = 0;
+            m = i;
+            k = j;
+            j = i2;
+            break;
+          }
+        }
+        float f2 = m / i4;
+        float f3 = i1 / i4;
+        if ((m == i) && (paramFloat - f2 < f1))
+        {
+          i = k;
+          if (i <= i3 - 1) {
+            break label590;
+          }
+          i = i3 - 1;
+        }
+        for (;;)
+        {
+          Object localObject;
+          if ((this.mList instanceof ExpandableListView))
+          {
+            localObject = (ExpandableListView)this.mList;
+            ((ExpandableListView)localObject).setSelectionFromTop(((ExpandableListView)localObject).getFlatListPosition(ExpandableListView.getPackedPositionForGroup(i + this.mListOffset)), 0);
+          }
+          boolean bool;
+          for (;;)
+          {
+            if (j >= 0)
+            {
+              localObject = arrayOfObject[j].toString();
+              this.mSectionText = ((String)localObject);
+              if (((((String)localObject).length() != 1) || (((String)localObject).charAt(0) != ' ')) && (j < arrayOfObject.length))
+              {
+                bool = true;
+                label379:
+                this.mDrawOverlay = bool;
+                return;
+                i = (int)((n - k) * (paramFloat - f2) / (f3 - f2)) + k;
+                break;
+                if ((this.mList instanceof ListView))
+                {
+                  ((ListView)this.mList).setSelectionFromTop(i + this.mListOffset, 0);
+                  continue;
+                }
+                this.mList.setSelection(i + this.mListOffset);
+                continue;
+                i = (int)(i3 * paramFloat);
+                if (i <= i3 - 1) {
+                  break label587;
+                }
+                i = i3 - 1;
+              }
+            }
+          }
+          for (;;)
+          {
+            if ((this.mList instanceof ExpandableListView))
+            {
+              localObject = (ExpandableListView)this.mList;
+              ((ExpandableListView)localObject).setSelectionFromTop(((ExpandableListView)localObject).getFlatListPosition(ExpandableListView.getPackedPositionForGroup(i + this.mListOffset)), 0);
+            }
+            for (;;)
+            {
+              j = -1;
+              break;
+              if ((this.mList instanceof ListView)) {
+                ((ListView)this.mList).setSelectionFromTop(i + this.mListOffset, 0);
+              } else {
+                this.mList.setSelection(i + this.mListOffset);
+              }
+            }
+            bool = false;
+            break label379;
+            this.mDrawOverlay = false;
+            return;
+          }
+        }
+        break;
+        k = j;
+        j = i;
+        m = i;
+        continue;
+        m = i;
+        j = i;
+      }
+    }
+  }
+  
+  public void setAlwaysShow(boolean paramBoolean)
+  {
+    this.mAlwaysShow = paramBoolean;
+    if (paramBoolean)
+    {
+      this.mHandler.removeCallbacks(this.mScrollFade);
+      setState(2);
+    }
+    while (this.mState != 2) {
+      return;
+    }
+    this.mHandler.postDelayed(this.mScrollFade, 1500L);
+  }
+  
+  public void setScrollbarPosition(int paramInt)
+  {
+    this.mPosition = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      this.mOverlayDrawable = this.mOverlayDrawableRight;
+      return;
+    }
+    this.mOverlayDrawable = this.mOverlayDrawableLeft;
+  }
+  
+  public void setState(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.mState = paramInt;
+      refreshDrawableState();
+      return;
+      this.mHandler.removeCallbacks(this.mScrollFade);
+      this.mList.invalidate();
+      continue;
+      if (this.mState != 2) {
+        resetThumbPos();
+      }
+      this.mHandler.removeCallbacks(this.mScrollFade);
+      continue;
+      int i = this.mList.getWidth();
+      this.mList.invalidate(i - this.mThumbW, this.mThumbY, i, this.mThumbY + this.mThumbH);
+    }
+  }
+  
+  void startPendingDrag()
+  {
+    this.mPendingDrag = true;
+    this.mList.postDelayed(this.mDeferStartDrag, 180L);
+  }
+  
+  void stop()
+  {
+    setState(0);
   }
 }
 

@@ -3,20 +3,19 @@ package com.tencent.mobileqq.emosm.web;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import ashe;
-import bhgy;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MessengerService$IncomingHandler$7
+class MessengerService$IncomingHandler$7
   implements Runnable
 {
-  public MessengerService$IncomingHandler$7(ashe paramashe, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  MessengerService$IncomingHandler$7(MessengerService.IncomingHandler paramIncomingHandler, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
-    Bitmap localBitmap = bhgy.a(this.jdField_a_of_type_JavaLangString, this.b, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    Bitmap localBitmap = QQUtils.a(this.jdField_a_of_type_JavaLangString, this.b, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     Bundle localBundle = new Bundle();
     if (localBitmap != null)
     {
@@ -24,8 +23,8 @@ public class MessengerService$IncomingHandler$7
       ((Map)localObject).put("starHomeUrl", this.c);
       ((Map)localObject).put("nickname", this.d);
       ((Map)localObject).put("starId", this.b);
-      localObject = bhgy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sid", (Map)localObject);
-      bhgy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject, this.d, localBitmap);
+      localObject = QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sid", (Map)localObject);
+      QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject, this.d, localBitmap);
       localBundle.putInt("ret", 0);
     }
     for (;;)
@@ -39,7 +38,7 @@ public class MessengerService$IncomingHandler$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.7
  * JD-Core Version:    0.7.0.1
  */

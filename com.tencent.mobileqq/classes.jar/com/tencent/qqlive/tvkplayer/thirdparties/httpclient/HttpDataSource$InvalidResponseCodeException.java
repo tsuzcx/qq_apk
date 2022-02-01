@@ -22,7 +22,7 @@ public final class HttpDataSource$InvalidResponseCodeException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.HttpDataSource.InvalidResponseCodeException
  * JD-Core Version:    0.7.0.1
  */

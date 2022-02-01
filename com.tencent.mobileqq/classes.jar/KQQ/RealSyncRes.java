@@ -9,8 +9,8 @@ public final class RealSyncRes
   extends JceStruct
 {
   static ArrayList<InfoItem> cache_vecResPkg;
-  public byte result;
-  public ArrayList<InfoItem> vecResPkg;
+  public byte result = 0;
+  public ArrayList<InfoItem> vecResPkg = null;
   
   public RealSyncRes() {}
   

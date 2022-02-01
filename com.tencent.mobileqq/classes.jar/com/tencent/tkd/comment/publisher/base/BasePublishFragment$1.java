@@ -13,6 +13,12 @@ class BasePublishFragment$1
     super(paramContext, paramInt);
   }
   
+  public void cancel()
+  {
+    super.cancel();
+    this.this$0.onDialogCancel();
+  }
+  
   public void dismiss()
   {
     CommonUtil.hideInputMethod(this.this$0.getActivity(), getCurrentFocus());
@@ -21,7 +27,7 @@ class BasePublishFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.base.BasePublishFragment.1
  * JD-Core Version:    0.7.0.1
  */

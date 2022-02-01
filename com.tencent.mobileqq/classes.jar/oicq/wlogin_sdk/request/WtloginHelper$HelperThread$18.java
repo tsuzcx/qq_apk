@@ -1,12 +1,11 @@
 package oicq.wlogin_sdk.request;
 
-import oicq.wlogin_sdk.tools.ErrMsg;
 import oicq.wlogin_sdk.tools.util;
 
 class WtloginHelper$HelperThread$18
   implements Runnable
 {
-  WtloginHelper$HelperThread$18(WtloginHelper.HelperThread paramHelperThread, int paramInt) {}
+  WtloginHelper$HelperThread$18(WtloginHelper.HelperThread paramHelperThread, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -16,10 +15,15 @@ class WtloginHelper$HelperThread$18
     }
     if (WtloginHelper.access$100(this.this$1.mHelper) == null)
     {
-      util.LOGW("login helper listener is null", this.this$1.mUserAccount);
+      util.LOGW("quickLoginByGateway helper listener is null", this.this$1.mUserAccount);
       return;
     }
-    WtloginHelper.access$100(this.this$1.mHelper).OnException(new ErrMsg(), this.this$1.mReqType, this.this$1.mUserSigInfo);
+    async_context localasync_context = t.b(this.this$1.mUserSigInfo._seqence);
+    WtloginHelper.HelperThread.access$600(this.this$1, localasync_context);
+    WtloginHelper.HelperThread.access$700(this.this$1, localasync_context, this.val$ret);
+    WtloginHelper.HelperThread.access$2200(this.this$1, localasync_context);
+    util.LOGW("quickLoginByGateway helper listener uin" + this.this$1.mUserSigInfo.uin, this.this$1.mUserAccount);
+    WtloginHelper.access$100(this.this$1.mHelper).onLoginByGateway(this.val$ret, this.this$1.mUserSigInfo, this.this$1.mUserSigInfo.uin, localasync_context._last_err_msg, null);
   }
 }
 

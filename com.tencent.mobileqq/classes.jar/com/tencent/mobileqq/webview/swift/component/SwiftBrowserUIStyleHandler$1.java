@@ -3,10 +3,10 @@ package com.tencent.mobileqq.webview.swift.component;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.widget.TextView;
-import anvx;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 class SwiftBrowserUIStyleHandler$1
   implements TouchWebView.OnOverScrollHandler
@@ -15,42 +15,42 @@ class SwiftBrowserUIStyleHandler$1
   
   public void onBack()
   {
-    this.this$0.isWebViewOverScroll = false;
-    this.val$fRefreshView.onBack();
-    this.this$0.setBottomBarVisible(true);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a = false;
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.onBack();
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b(true);
   }
   
   public void onOverScroll(int paramInt)
   {
     Object localObject;
-    if (!this.this$0.isWebViewOverScroll)
+    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a)
     {
-      this.this$0.isWebViewOverScroll = true;
-      localObject = this.val$webview.getUrl();
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a = true;
+      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
       if (TextUtils.isEmpty((CharSequence)localObject)) {}
     }
     try
     {
       localObject = Uri.parse((String)localObject);
       if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
-        this.this$0.urlText.setText(anvx.a(2131714076) + ((Uri)localObject).getHost() + anvx.a(2131714069));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.setText(HardCodeUtil.a(2131714570) + ((Uri)localObject).getHost() + HardCodeUtil.a(2131714565));
       }
-      this.this$0.urlText.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.setVisibility(0);
     }
     catch (Exception localException)
     {
       for (;;)
       {
         localException.printStackTrace();
-        this.this$0.urlText.setVisibility(8);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.setVisibility(8);
       }
     }
-    this.val$fRefreshView.onOverScroll(paramInt);
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.onOverScroll(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.1
  * JD-Core Version:    0.7.0.1
  */

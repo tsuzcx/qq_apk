@@ -2,7 +2,7 @@ package com.tencent.open.appcommon;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bjnn;
+import com.tencent.open.downloadnew.MyAppApi;
 
 class AppClient$3$1
   implements Runnable
@@ -11,12 +11,12 @@ class AppClient$3$1
   
   public void run()
   {
-    bjnn.a().a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.a, this.this$0.jdField_a_of_type_Boolean, false);
+    MyAppApi.a().a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.a, this.this$0.jdField_a_of_type_Boolean, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appcommon.AppClient.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,17 @@
 package com.tencent.mobileqq.ar.ARPromotionMgr;
 
 import android.text.TextUtils;
-import apbx;
-import apcc;
-import apcn;
-import apco;
-import apct;
-import apcx;
-import apjs;
-import apmm;
-import bhjo;
+import com.tencent.mobileqq.ar.ARPromotion.ARPromotionConstant;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorConfigInfo;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudMarkerJsonParser;
+import com.tencent.mobileqq.ar.arengine.ARResouceDir;
 import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 import com.tencent.mobileqq.ar.model.ArModelResource;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.confighandler.ConfigHandler;
 import com.tencent.mobileqq.utils.confighandler.ConfigInfo;
+import com.tencent.mobileqq.utils.configsp.ARPromotionConfigSP;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -32,21 +28,21 @@ import org.json.JSONObject;
 public class PromotionConfigInfo
   extends ConfigInfo
 {
-  public static final String TAG = apcx.jdField_a_of_type_JavaLangString;
+  static final String TAG = PromotionUtil.jdField_a_of_type_JavaLangString;
   public static final int zipIndex_0 = 0;
   public static final int zipIndex_1 = 1;
   public static final int zipIndex_2 = 2;
   public static final int zipIndex_3 = 3;
-  public String activityid = "-1";
-  public long config364Version;
+  String activityid = "-1";
+  public long config364Version = 0L;
   ArCloudConfigInfo mArCloudConfigInfo = null;
-  public boolean mainswitch = false;
-  public TreeMap<String, apcn> operationInfos = new TreeMap();
-  public boolean showInTopView;
-  public boolean showOnce;
+  boolean mainswitch = false;
+  TreeMap<String, PromotionConfigInfo.PromotionItem> operationInfos = new TreeMap();
+  public boolean showInTopView = false;
+  public boolean showOnce = false;
   String version = "-1";
   
-  static boolean set364ZipItem(ArCloudConfigInfo paramArCloudConfigInfo, apcn paramapcn)
+  static boolean set364ZipItem(ArCloudConfigInfo paramArCloudConfigInfo, PromotionConfigInfo.PromotionItem paramPromotionItem)
   {
     int k = 0;
     int j = 0;
@@ -55,56 +51,56 @@ public class PromotionConfigInfo
       QLog.w(TAG, 1, "setZipItem，没有364信息");
       return false;
     }
-    apcn.a(paramapcn, paramArCloudConfigInfo);
+    PromotionConfigInfo.PromotionItem.a(paramPromotionItem, paramArCloudConfigInfo);
     int i = k;
-    apco localapco;
-    if (paramArCloudConfigInfo.jdField_a_of_type_Apcc != null)
+    PromotionConfigInfo.ZipItem localZipItem;
+    if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null)
     {
       i = k;
-      if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_Apcc.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_JavaLangString))
       {
         i = k;
-        if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_Apcc.jdField_b_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString))
         {
           i = j;
-          if (paramArCloudConfigInfo.jdField_a_of_type_Apcc.jdField_a_of_type_Int == 1) {
+          if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_Int == 1) {
             i = 1;
           }
-          localapco = new apco(paramapcn.jdField_a_of_type_JavaLangString, 1);
-          localapco.jdField_b_of_type_Int = i;
-          localapco.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_Apcc.jdField_a_of_type_JavaLangString;
-          localapco.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_Apcc.jdField_b_of_type_JavaLangString;
-          localapco.c = (apbx.b() + localapco.jdField_b_of_type_JavaLangString + ".zip");
-          localapco.d = (apbx.b() + localapco.jdField_b_of_type_JavaLangString + File.separator);
-          apcn.a(paramapcn).put(Integer.valueOf(localapco.jdField_a_of_type_Int), localapco);
+          localZipItem = new PromotionConfigInfo.ZipItem(paramPromotionItem.jdField_a_of_type_JavaLangString, 1);
+          localZipItem.jdField_b_of_type_Int = i;
+          localZipItem.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_JavaLangString;
+          localZipItem.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString;
+          localZipItem.c = (ARPromotionConstant.b() + localZipItem.jdField_b_of_type_JavaLangString + ".zip");
+          localZipItem.d = (ARPromotionConstant.b() + localZipItem.jdField_b_of_type_JavaLangString + File.separator);
+          PromotionConfigInfo.PromotionItem.a(paramPromotionItem).put(Integer.valueOf(localZipItem.jdField_a_of_type_Int), localZipItem);
         }
       }
     }
     if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString)))
     {
-      localapco = new apco(paramapcn.jdField_a_of_type_JavaLangString, 2);
-      localapco.jdField_b_of_type_Int = i;
-      localapco.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-      localapco.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-      localapco.c = (apbx.a() + localapco.jdField_b_of_type_JavaLangString + apbx.jdField_a_of_type_JavaLangString);
-      localapco.d = (apbx.a() + localapco.jdField_b_of_type_JavaLangString + File.separator);
-      apcn.a(paramapcn).put(Integer.valueOf(localapco.jdField_a_of_type_Int), localapco);
+      localZipItem = new PromotionConfigInfo.ZipItem(paramPromotionItem.jdField_a_of_type_JavaLangString, 2);
+      localZipItem.jdField_b_of_type_Int = i;
+      localZipItem.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
+      localZipItem.jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
+      localZipItem.c = (ARPromotionConstant.a() + localZipItem.jdField_b_of_type_JavaLangString + ARPromotionConstant.jdField_a_of_type_JavaLangString);
+      localZipItem.d = (ARPromotionConstant.a() + localZipItem.jdField_b_of_type_JavaLangString + File.separator);
+      PromotionConfigInfo.PromotionItem.a(paramPromotionItem).put(Integer.valueOf(localZipItem.jdField_a_of_type_Int), localZipItem);
     }
     return true;
   }
   
-  public apcn getActivityItem()
+  public PromotionConfigInfo.PromotionItem getActivityItem()
   {
-    apcn localapcn = getItem(this.activityid);
-    if ((localapcn != null) && (apcx.a(localapcn.jdField_a_of_type_Long, localapcn.jdField_b_of_type_Long))) {
-      return localapcn;
+    PromotionConfigInfo.PromotionItem localPromotionItem = getItem(this.activityid);
+    if ((localPromotionItem != null) && (PromotionUtil.a(localPromotionItem.jdField_a_of_type_Long, localPromotionItem.jdField_b_of_type_Long))) {
+      return localPromotionItem;
     }
     return null;
   }
   
-  public apcn getItem(String paramString)
+  public PromotionConfigInfo.PromotionItem getItem(String paramString)
   {
-    return (apcn)this.operationInfos.get(paramString);
+    return (PromotionConfigInfo.PromotionItem)this.operationInfos.get(paramString);
   }
   
   int loadResConfig()
@@ -120,19 +116,19 @@ public class PromotionConfigInfo
       do
       {
         return i;
-        j = bhjo.a(this.mUin);
-        str = bhjo.a(this.mUin);
+        j = ARPromotionConfigSP.a(this.mUin);
+        str = ARPromotionConfigSP.a(this.mUin);
         if (str != null) {
           break;
         }
-      } while (!AudioHelper.f());
+      } while (!AudioHelper.e());
       QLog.w(TAG, 1, "loadResConfig, 没有json");
       return -1;
-      this.mArCloudConfigInfo = apjs.a(str);
+      this.mArCloudConfigInfo = ARCloudMarkerJsonParser.a(str);
       if (this.mArCloudConfigInfo != null) {
         break;
       }
-    } while (!AudioHelper.f());
+    } while (!AudioHelper.e());
     QLog.w(TAG, 1, "loadResConfig, 没有arCloudConfigInfo");
     return -1;
     if (this.mArCloudConfigInfo.jdField_b_of_type_JavaLangString == null) {
@@ -142,9 +138,9 @@ public class PromotionConfigInfo
     this.mArCloudConfigInfo.d = 8;
     this.mArCloudConfigInfo.c = 2;
     this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = new ArFeatureInfo();
-    this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d = (apmm.a() + "ar_cloud_marker_model/" + this.mArCloudConfigInfo.d + File.separator);
-    if (this.mArCloudConfigInfo.jdField_a_of_type_Apcc != null) {
-      this.mArCloudConfigInfo.jdField_a_of_type_Apcc.jdField_a_of_type_Boolean = true;
+    this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d = (ARResouceDir.a() + "ar_cloud_marker_model/" + this.mArCloudConfigInfo.d + File.separator);
+    if (this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null) {
+      this.mArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_Boolean = true;
     }
     this.config364Version = j;
     return j;
@@ -180,13 +176,13 @@ public class PromotionConfigInfo
           if (i < paramJSONObject.length())
           {
             JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-            apcn localapcn = new apcn();
-            localapcn.jdField_a_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("begin")).getTime();
-            localapcn.jdField_b_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("end")).getTime();
-            localapcn.c = Integer.valueOf(localJSONObject.getString("recoglizeMask")).intValue();
-            localapcn.jdField_a_of_type_JavaLangString = localJSONObject.getString("id");
-            localapcn.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
-            localapcn.jdField_a_of_type_Boolean = localJSONObject.optBoolean("need364");
+            PromotionConfigInfo.PromotionItem localPromotionItem = new PromotionConfigInfo.PromotionItem();
+            localPromotionItem.jdField_a_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("begin")).getTime();
+            localPromotionItem.jdField_b_of_type_Long = localSimpleDateFormat.parse(localJSONObject.optString("end")).getTime();
+            localPromotionItem.c = Integer.valueOf(localJSONObject.getString("recoglizeMask")).intValue();
+            localPromotionItem.jdField_a_of_type_JavaLangString = localJSONObject.getString("id");
+            localPromotionItem.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
+            localPromotionItem.jdField_a_of_type_Boolean = localJSONObject.optBoolean("need364");
             int j = 1;
             for (;;)
             {
@@ -198,23 +194,23 @@ public class PromotionConfigInfo
               }
               else
               {
-                localObject = new apco(localapcn.jdField_a_of_type_JavaLangString, 0);
-                ((apco)localObject).jdField_a_of_type_JavaLangString = localJSONObject.getString("urlEntry");
-                ((apco)localObject).jdField_b_of_type_JavaLangString = localJSONObject.getString("md5Entry");
-                ((apco)localObject).c = apct.a(((apco)localObject).e, 0, ((apco)localObject).jdField_b_of_type_JavaLangString);
-                ((apco)localObject).d = apct.b(((apco)localObject).e, 0, ((apco)localObject).jdField_b_of_type_JavaLangString);
-                apmm.a(((apco)localObject).d + ".nomedia");
-                apcn.a(localapcn).put(Integer.valueOf(((apco)localObject).jdField_a_of_type_Int), localObject);
-                if (localapcn.jdField_a_of_type_Boolean)
+                localObject = new PromotionConfigInfo.ZipItem(localPromotionItem.jdField_a_of_type_JavaLangString, 0);
+                ((PromotionConfigInfo.ZipItem)localObject).jdField_a_of_type_JavaLangString = localJSONObject.getString("urlEntry");
+                ((PromotionConfigInfo.ZipItem)localObject).jdField_b_of_type_JavaLangString = localJSONObject.getString("md5Entry");
+                ((PromotionConfigInfo.ZipItem)localObject).c = PromotionPath.a(((PromotionConfigInfo.ZipItem)localObject).e, 0, ((PromotionConfigInfo.ZipItem)localObject).jdField_b_of_type_JavaLangString);
+                ((PromotionConfigInfo.ZipItem)localObject).d = PromotionPath.b(((PromotionConfigInfo.ZipItem)localObject).e, 0, ((PromotionConfigInfo.ZipItem)localObject).jdField_b_of_type_JavaLangString);
+                ARResouceDir.a(((PromotionConfigInfo.ZipItem)localObject).d + ".nomedia");
+                PromotionConfigInfo.PromotionItem.a(localPromotionItem).put(Integer.valueOf(((PromotionConfigInfo.ZipItem)localObject).jdField_a_of_type_Int), localObject);
+                if (localPromotionItem.jdField_a_of_type_Boolean)
                 {
                   loadResConfig();
-                  set364ZipItem(this.mArCloudConfigInfo, localapcn);
+                  set364ZipItem(this.mArCloudConfigInfo, localPromotionItem);
                 }
-                this.operationInfos.put(localapcn.jdField_a_of_type_JavaLangString, localapcn);
+                this.operationInfos.put(localPromotionItem.jdField_a_of_type_JavaLangString, localPromotionItem);
                 i += 1;
                 break;
               }
-              localapcn.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
+              localPromotionItem.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
               j += 1;
             }
           }
@@ -233,16 +229,16 @@ public class PromotionConfigInfo
   public String toString()
   {
     Iterator localIterator = this.operationInfos.values().iterator();
-    apcn localapcn;
-    for (String str = ""; localIterator.hasNext(); str = str + "\n" + localapcn) {
-      localapcn = (apcn)localIterator.next();
+    PromotionConfigInfo.PromotionItem localPromotionItem;
+    for (String str = ""; localIterator.hasNext(); str = str + "\n" + localPromotionItem) {
+      localPromotionItem = (PromotionConfigInfo.PromotionItem)localIterator.next();
     }
     return "task_id[" + this.task_id + "], _parseRet[" + this._parseRet + "], mUin[" + this.mUin + "], version[" + this.version + "], enable[" + this.mainswitch + "], activityid[" + this.activityid + "], config364Version[" + this.config364Version + "], Items[" + str + "\n]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,20 +16,20 @@ class LivePlayerEmbeddedWidgetClient$2
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("VIDEO_BITRATE", paramBundle.get("VIDEO_BITRATE"));
-      localJSONObject2.put("AUDIO_BITRATE", paramBundle.get("AUDIO_BITRATE"));
-      localJSONObject2.put("VIDEO_FPS", paramBundle.get("VIDEO_FPS"));
-      localJSONObject2.put("VIDEO_GOP", paramBundle.get("VIDEO_GOP"));
-      localJSONObject2.put("NET_SPEED", paramBundle.get("NET_SPEED"));
-      localJSONObject2.put("NET_JITTER", paramBundle.get("NET_JITTER"));
-      localJSONObject2.put("VIDEO_WIDTH", paramBundle.get("VIDEO_WIDTH"));
-      localJSONObject2.put("VIDEO_HEIGHT", paramBundle.get("VIDEO_HEIGHT"));
-      localJSONObject1.put("viewId", LivePlayerEmbeddedWidgetClient.access$000(this.this$0));
-      localJSONObject1.put("info", localJSONObject2);
-      LivePlayerEmbeddedWidgetClient.access$200(this.this$0, "onXWebLivePlayerNetStatus", localJSONObject1.toString(), LivePlayerEmbeddedWidgetClient.access$100(this.this$0));
-      QMLog.e("miniapp-embedded-live-player", "operate start evaluateSubcribeJS onLivePlayerNetStatus = " + localJSONObject1.toString());
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("VIDEO_BITRATE", paramBundle.get("VIDEO_BITRATE"));
+      localJSONObject.put("AUDIO_BITRATE", paramBundle.get("AUDIO_BITRATE"));
+      localJSONObject.put("VIDEO_FPS", paramBundle.get("VIDEO_FPS"));
+      localJSONObject.put("VIDEO_GOP", paramBundle.get("VIDEO_GOP"));
+      localJSONObject.put("NET_SPEED", paramBundle.get("NET_SPEED"));
+      localJSONObject.put("NET_JITTER", paramBundle.get("NET_JITTER"));
+      localJSONObject.put("VIDEO_WIDTH", paramBundle.get("VIDEO_WIDTH"));
+      localJSONObject.put("VIDEO_HEIGHT", paramBundle.get("VIDEO_HEIGHT"));
+      paramBundle = new JSONObject();
+      paramBundle.put("viewId", LivePlayerEmbeddedWidgetClient.access$000(this.this$0));
+      paramBundle.put("info", localJSONObject);
+      LivePlayerEmbeddedWidgetClient.access$200(this.this$0, "onXWebLivePlayerNetStatus", paramBundle.toString(), LivePlayerEmbeddedWidgetClient.access$100(this.this$0));
+      QMLog.e("miniapp-embedded-live-player", "operate start evaluateSubcribeJS onLivePlayerNetStatus = " + paramBundle.toString());
       return;
     }
     catch (JSONException paramBundle)
@@ -80,7 +80,7 @@ class LivePlayerEmbeddedWidgetClient$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePlayerEmbeddedWidgetClient.2
  * JD-Core Version:    0.7.0.1
  */

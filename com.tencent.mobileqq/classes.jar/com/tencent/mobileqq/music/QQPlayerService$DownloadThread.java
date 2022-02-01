@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 
-public class QQPlayerService$DownloadThread
+class QQPlayerService$DownloadThread
   extends Thread
 {
   public int a;
@@ -20,6 +20,9 @@ public class QQPlayerService$DownloadThread
   
   public QQPlayerService$DownloadThread(QQPlayerService paramQQPlayerService, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
     setName("QQPlayerService-DownloadThread");
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
@@ -53,191 +56,191 @@ public class QQPlayerService$DownloadThread
   public void run()
   {
     // Byte code:
-    //   0: invokestatic 104	com/tencent/mobileqq/utils/DeviceInfoUtil:getSDCardMemory	()[J
+    //   0: invokestatic 109	com/tencent/mobileqq/utils/DeviceInfoUtil:b	()[J
     //   3: astore 5
     //   5: aload 5
     //   7: ifnull +39 -> 46
     //   10: aload 5
     //   12: iconst_1
     //   13: laload
-    //   14: ldc2_w 105
+    //   14: ldc2_w 110
     //   17: lcmp
     //   18: ifgt +28 -> 46
-    //   21: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   21: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   24: ifeq +11 -> 35
-    //   27: ldc 79
+    //   27: ldc 85
     //   29: iconst_2
-    //   30: ldc 108
-    //   32: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   30: ldc 113
+    //   32: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   35: aload_0
     //   36: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
-    //   39: invokevirtual 117	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
-    //   42: invokestatic 120	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
+    //   39: invokevirtual 122	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
+    //   42: invokestatic 125	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
     //   45: return
     //   46: aload_0
     //   47: aload_0
-    //   48: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   51: invokespecial 122	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:a	(Ljava/lang/String;)Ljava/io/File;
+    //   48: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   51: invokespecial 127	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:a	(Ljava/lang/String;)Ljava/io/File;
     //   54: astore 10
     //   56: aload_0
     //   57: iconst_1
-    //   58: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   58: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   61: aconst_null
     //   62: astore 5
-    //   64: new 126	java/io/RandomAccessFile
+    //   64: new 129	java/io/RandomAccessFile
     //   67: dup
     //   68: aload 10
-    //   70: invokevirtual 129	java/io/File:getPath	()Ljava/lang/String;
-    //   73: ldc 131
-    //   75: invokespecial 134	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   70: invokevirtual 132	java/io/File:getPath	()Ljava/lang/String;
+    //   73: ldc 134
+    //   75: invokespecial 137	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   78: astore 6
     //   80: aload 6
     //   82: astore 5
-    //   84: ldc 136
+    //   84: ldc 139
     //   86: aload_0
-    //   87: getfield 30	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   90: invokestatic 142	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:insertMtype	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   87: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   90: invokestatic 145	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:insertMtype	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   93: astore 9
     //   95: aload 6
     //   97: astore 5
-    //   99: new 144	java/net/URL
+    //   99: new 147	java/net/URL
     //   102: dup
     //   103: aload 9
-    //   105: invokespecial 145	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   105: invokespecial 148	java/net/URL:<init>	(Ljava/lang/String;)V
     //   108: astore 8
     //   110: aload 6
     //   112: astore 5
-    //   114: invokestatic 148	com/tencent/mobileqq/music/QQPlayerService:d	()Lcom/tencent/mobileqq/music/SongInfo;
+    //   114: invokestatic 151	com/tencent/mobileqq/music/QQPlayerService:d	()Lcom/tencent/mobileqq/music/SongInfo;
     //   117: astore 7
     //   119: aload 7
     //   121: ifnonnull +74 -> 195
     //   124: aload 6
     //   126: astore 5
-    //   128: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   128: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   131: ifeq +15 -> 146
     //   134: aload 6
     //   136: astore 5
-    //   138: ldc 79
+    //   138: ldc 85
     //   140: iconst_2
-    //   141: ldc 150
-    //   143: invokestatic 153	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   141: ldc 153
+    //   143: invokestatic 156	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   146: aload_0
     //   147: iconst_0
-    //   148: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   148: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   151: aload 6
     //   153: ifnull +8 -> 161
     //   156: aload 6
-    //   158: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   158: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   161: aload_0
-    //   162: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   162: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   165: aload_0
-    //   166: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   166: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   169: if_icmpge -124 -> 45
     //   172: aload_0
-    //   173: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   173: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   176: ifle -131 -> 45
     //   179: aload_0
-    //   180: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   180: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   183: aload_0
-    //   184: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   184: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   187: aload_0
-    //   188: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   191: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   188: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   191: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   194: return
     //   195: aload 6
     //   197: astore 5
     //   199: aload 7
-    //   201: getfield 164	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   201: getfield 167	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   204: astore 11
     //   206: aload 6
     //   208: astore 5
     //   210: aload 11
-    //   212: invokestatic 170	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   212: invokestatic 173	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   215: ifne +3103 -> 3318
     //   218: aload 6
     //   220: astore 5
     //   222: aload 11
-    //   224: ldc 172
-    //   226: invokevirtual 178	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   224: ldc 175
+    //   226: invokevirtual 181	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   229: ifeq +3089 -> 3318
     //   232: aload 6
     //   234: astore 5
     //   236: aload_0
-    //   237: getfield 30	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   237: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   240: aload_0
     //   241: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
     //   244: aload 11
-    //   246: invokestatic 181	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;Ljava/lang/String;)Ljava/lang/String;
-    //   249: invokevirtual 185	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   246: invokestatic 184	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;Ljava/lang/String;)Ljava/lang/String;
+    //   249: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   252: istore_3
     //   253: aload 6
     //   255: astore 5
     //   257: aload 7
-    //   259: getfield 164	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   259: getfield 167	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   262: aload_0
-    //   263: getfield 30	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   266: invokevirtual 185	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   263: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   266: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   269: ifne +7 -> 276
     //   272: iload_3
     //   273: ifeq +3050 -> 3323
     //   276: aload 6
     //   278: astore 5
     //   280: aload_0
-    //   281: getfield 22	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:d	Z
+    //   281: getfield 28	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:d	Z
     //   284: ifeq +3039 -> 3323
     //   287: aload 6
     //   289: astore 5
     //   291: aload_0
-    //   292: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   292: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   295: i2f
     //   296: aload_0
-    //   297: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   297: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   300: i2f
     //   301: aload_0
     //   302: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
-    //   305: getfield 188	com/tencent/mobileqq/music/QQPlayerService:a	F
+    //   305: getfield 191	com/tencent/mobileqq/music/QQPlayerService:a	F
     //   308: fmul
     //   309: fcmpl
     //   310: ifle +594 -> 904
     //   313: aload 6
     //   315: astore 5
-    //   317: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   317: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   320: ifeq +15 -> 335
     //   323: aload 6
     //   325: astore 5
-    //   327: ldc 79
+    //   327: ldc 85
     //   329: iconst_2
-    //   330: ldc 190
-    //   332: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   330: ldc 193
+    //   332: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   335: aload 6
     //   337: astore 5
-    //   339: invokestatic 193	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
-    //   342: invokevirtual 198	android/media/MediaPlayer:reset	()V
+    //   339: invokestatic 196	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   342: invokevirtual 201	android/media/MediaPlayer:reset	()V
     //   345: aload 6
     //   347: astore 5
-    //   349: invokestatic 193	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   349: invokestatic 196	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
     //   352: aload 10
-    //   354: invokevirtual 201	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   357: invokevirtual 204	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
+    //   354: invokevirtual 204	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   357: invokevirtual 207	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
     //   360: aload 6
     //   362: astore 5
-    //   364: invokestatic 193	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
-    //   367: invokevirtual 207	android/media/MediaPlayer:prepare	()V
+    //   364: invokestatic 196	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   367: invokevirtual 210	android/media/MediaPlayer:prepare	()V
     //   370: aload 6
     //   372: astore 5
-    //   374: invokestatic 193	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
-    //   377: invokevirtual 210	android/media/MediaPlayer:start	()V
+    //   374: invokestatic 196	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   377: invokevirtual 213	android/media/MediaPlayer:start	()V
     //   380: aload 6
     //   382: astore 5
     //   384: aload_0
     //   385: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
     //   388: iconst_2
-    //   389: invokestatic 213	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
+    //   389: invokestatic 216	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
     //   392: aload 6
     //   394: astore 5
     //   396: aload_0
     //   397: iconst_0
-    //   398: putfield 22	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:d	Z
+    //   398: putfield 28	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:d	Z
     //   401: goto +2922 -> 3323
     //   404: iload_2
     //   405: ifgt +2906 -> 3311
@@ -247,178 +250,178 @@ public class QQPlayerService$DownloadThread
     //   413: aload 6
     //   415: astore 5
     //   417: aload 8
-    //   419: invokevirtual 217	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   422: checkcast 219	java/net/HttpURLConnection
+    //   419: invokevirtual 220	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   422: checkcast 222	java/net/HttpURLConnection
     //   425: astore 7
     //   427: aload 6
     //   429: astore 5
     //   431: aload 7
     //   433: iconst_0
-    //   434: invokevirtual 223	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
+    //   434: invokevirtual 226	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
     //   437: aload 6
     //   439: astore 5
     //   441: aload 7
-    //   443: ldc 225
-    //   445: ldc 227
-    //   447: invokevirtual 230	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   443: ldc 228
+    //   445: ldc 230
+    //   447: invokevirtual 233	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   450: aload 6
     //   452: astore 5
     //   454: aload_0
-    //   455: getfield 34	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
+    //   455: getfield 40	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
     //   458: ifeq +63 -> 521
     //   461: aload 6
     //   463: astore 5
     //   465: aload_0
-    //   466: getfield 34	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
+    //   466: getfield 40	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
     //   469: aload_0
-    //   470: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   470: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   473: if_icmple +48 -> 521
     //   476: aload 6
     //   478: astore 5
     //   480: aload 7
-    //   482: ldc 232
-    //   484: new 60	java/lang/StringBuilder
+    //   482: ldc 235
+    //   484: new 66	java/lang/StringBuilder
     //   487: dup
-    //   488: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   491: ldc 234
-    //   493: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   488: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   491: ldc 237
+    //   493: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   496: aload_0
-    //   497: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
-    //   500: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   503: ldc 239
-    //   505: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   497: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   500: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   503: ldc 242
+    //   505: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   508: aload_0
-    //   509: getfield 34	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
-    //   512: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   515: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   518: invokevirtual 230	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   509: getfield 40	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
+    //   512: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   515: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   518: invokevirtual 233	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   521: aload 6
     //   523: astore 5
     //   525: aload 8
-    //   527: invokevirtual 242	java/net/URL:getHost	()Ljava/lang/String;
+    //   527: invokevirtual 245	java/net/URL:getHost	()Ljava/lang/String;
     //   530: astore 11
     //   532: aload 6
     //   534: astore 5
     //   536: aload 11
-    //   538: invokestatic 170	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   538: invokestatic 173	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   541: ifne +266 -> 807
     //   544: aload 6
     //   546: astore 5
     //   548: aload 11
-    //   550: ldc 244
-    //   552: invokevirtual 247	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   550: ldc 247
+    //   552: invokevirtual 250	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   555: ifeq +252 -> 807
     //   558: aload 6
     //   560: astore 5
-    //   562: invokestatic 253	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   565: invokevirtual 257	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   562: invokestatic 256	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   565: invokevirtual 260	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   568: iconst_2
-    //   569: invokevirtual 263	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
-    //   572: checkcast 265	mqq/manager/TicketManager
+    //   569: invokevirtual 266	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
+    //   572: checkcast 268	mqq/manager/TicketManager
     //   575: astore 12
     //   577: aload 6
     //   579: astore 5
-    //   581: invokestatic 253	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   584: invokevirtual 257	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   587: invokevirtual 268	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
+    //   581: invokestatic 256	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   584: invokevirtual 260	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   587: invokevirtual 271	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
     //   590: astore 11
     //   592: aload 6
     //   594: astore 5
     //   596: aload 12
     //   598: aload 11
-    //   600: ldc2_w 269
+    //   600: ldc2_w 272
     //   603: iconst_1
-    //   604: anewarray 174	java/lang/String
+    //   604: anewarray 177	java/lang/String
     //   607: dup
     //   608: iconst_0
-    //   609: ldc 244
+    //   609: ldc 247
     //   611: aastore
     //   612: aconst_null
-    //   613: invokeinterface 274 6 0
+    //   613: invokeinterface 277 6 0
     //   618: astore 12
     //   620: aload 12
     //   622: ifnull +457 -> 1079
     //   625: aload 6
     //   627: astore 5
     //   629: aload 12
-    //   631: getfield 280	oicq/wlogin_sdk/request/Ticket:_pskey_map	Ljava/util/Map;
+    //   631: getfield 283	oicq/wlogin_sdk/request/Ticket:_pskey_map	Ljava/util/Map;
     //   634: ifnull +445 -> 1079
     //   637: aload 6
     //   639: astore 5
     //   641: aload 12
-    //   643: getfield 280	oicq/wlogin_sdk/request/Ticket:_pskey_map	Ljava/util/Map;
-    //   646: ldc 244
-    //   648: invokeinterface 286 2 0
+    //   643: getfield 283	oicq/wlogin_sdk/request/Ticket:_pskey_map	Ljava/util/Map;
+    //   646: ldc 247
+    //   648: invokeinterface 289 2 0
     //   653: ifnull +426 -> 1079
     //   656: aload 6
     //   658: astore 5
-    //   660: ldc 79
+    //   660: ldc 85
     //   662: iconst_1
-    //   663: ldc_w 288
-    //   666: invokestatic 153	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   663: ldc_w 291
+    //   666: invokestatic 156	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   669: aload 6
     //   671: astore 5
-    //   673: new 174	java/lang/String
+    //   673: new 177	java/lang/String
     //   676: dup
     //   677: aload 12
-    //   679: getfield 280	oicq/wlogin_sdk/request/Ticket:_pskey_map	Ljava/util/Map;
-    //   682: ldc 244
-    //   684: invokeinterface 286 2 0
-    //   689: checkcast 290	[B
-    //   692: invokespecial 293	java/lang/String:<init>	([B)V
+    //   679: getfield 283	oicq/wlogin_sdk/request/Ticket:_pskey_map	Ljava/util/Map;
+    //   682: ldc 247
+    //   684: invokeinterface 289 2 0
+    //   689: checkcast 293	[B
+    //   692: invokespecial 296	java/lang/String:<init>	([B)V
     //   695: astore 12
     //   697: aload 6
     //   699: astore 5
-    //   701: new 60	java/lang/StringBuilder
+    //   701: new 66	java/lang/StringBuilder
     //   704: dup
-    //   705: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   708: ldc_w 295
-    //   711: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   705: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   708: ldc_w 298
+    //   711: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   714: aload 12
-    //   716: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   719: ldc_w 297
-    //   722: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   716: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   719: ldc_w 300
+    //   722: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   725: aload 11
-    //   727: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   730: ldc_w 299
-    //   733: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   736: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   727: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   730: ldc_w 302
+    //   733: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   736: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   739: astore 11
     //   741: aload 6
     //   743: astore 5
-    //   745: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   745: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   748: ifeq +45 -> 793
     //   751: aload 6
     //   753: astore 5
-    //   755: ldc 79
+    //   755: ldc 85
     //   757: iconst_1
-    //   758: new 60	java/lang/StringBuilder
+    //   758: new 66	java/lang/StringBuilder
     //   761: dup
-    //   762: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   765: ldc_w 301
-    //   768: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   762: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   765: ldc_w 304
+    //   768: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   771: aload 9
-    //   773: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   776: ldc_w 303
-    //   779: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   773: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   776: ldc_w 306
+    //   779: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   782: aload 11
-    //   784: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   787: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   790: invokestatic 306	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   784: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   787: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   790: invokestatic 309	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   793: aload 6
     //   795: astore 5
     //   797: aload 7
-    //   799: ldc_w 308
+    //   799: ldc_w 311
     //   802: aload 11
-    //   804: invokevirtual 230	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   804: invokevirtual 233	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   807: aload 6
     //   809: astore 5
     //   811: aload 7
-    //   813: invokevirtual 311	java/net/HttpURLConnection:connect	()V
+    //   813: invokevirtual 314	java/net/HttpURLConnection:connect	()V
     //   816: aload 6
     //   818: astore 5
     //   820: aload 7
-    //   822: invokevirtual 315	java/net/HttpURLConnection:getResponseCode	()I
+    //   822: invokevirtual 318	java/net/HttpURLConnection:getResponseCode	()I
     //   825: sipush 302
     //   828: if_icmpne +335 -> 1163
     //   831: iload_1
@@ -427,165 +430,165 @@ public class QQPlayerService$DownloadThread
     //   834: istore_1
     //   835: aload 6
     //   837: astore 5
-    //   839: new 144	java/net/URL
+    //   839: new 147	java/net/URL
     //   842: dup
     //   843: aload 7
-    //   845: ldc_w 317
-    //   848: invokevirtual 321	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   851: invokespecial 145	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   845: ldc_w 320
+    //   848: invokevirtual 324	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   851: invokespecial 148	java/net/URL:<init>	(Ljava/lang/String;)V
     //   854: astore 8
     //   856: aload 6
     //   858: astore 5
-    //   860: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   860: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   863: ifeq +2441 -> 3304
     //   866: aload 6
     //   868: astore 5
-    //   870: ldc 79
+    //   870: ldc 85
     //   872: iconst_1
-    //   873: new 60	java/lang/StringBuilder
+    //   873: new 66	java/lang/StringBuilder
     //   876: dup
-    //   877: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   880: ldc_w 323
-    //   883: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   877: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   880: ldc_w 326
+    //   883: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   886: aload 8
-    //   888: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   891: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   894: invokestatic 306	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   888: invokevirtual 329	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   891: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   894: invokestatic 309	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   897: aload 7
     //   899: astore 5
     //   901: goto -497 -> 404
     //   904: aload 6
     //   906: astore 5
-    //   908: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   908: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   911: ifeq +16 -> 927
     //   914: aload 6
     //   916: astore 5
-    //   918: ldc 79
+    //   918: ldc 85
     //   920: iconst_2
-    //   921: ldc_w 328
-    //   924: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   921: ldc_w 331
+    //   924: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   927: aload 6
     //   929: astore 5
     //   931: aload_0
     //   932: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
     //   935: iconst_1
-    //   936: invokestatic 213	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
+    //   936: invokestatic 216	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
     //   939: goto +2384 -> 3323
     //   942: astore 7
     //   944: aload 6
     //   946: astore 5
     //   948: aload 7
     //   950: astore 6
-    //   952: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   952: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   955: ifeq +35 -> 990
-    //   958: ldc 79
+    //   958: ldc 85
     //   960: iconst_2
-    //   961: new 60	java/lang/StringBuilder
+    //   961: new 66	java/lang/StringBuilder
     //   964: dup
-    //   965: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   968: ldc_w 330
-    //   971: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   965: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   968: ldc_w 333
+    //   971: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   974: aload 6
-    //   976: invokevirtual 331	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   979: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   982: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   976: invokevirtual 334	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   979: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   982: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   985: aload 6
-    //   987: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   987: invokestatic 93	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   990: aload_0
     //   991: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
-    //   994: invokevirtual 117	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
-    //   997: invokestatic 120	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
+    //   994: invokevirtual 122	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
+    //   997: invokestatic 125	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
     //   1000: aload_0
     //   1001: iconst_0
-    //   1002: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   1002: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   1005: aload 5
     //   1007: ifnull +8 -> 1015
     //   1010: aload 5
-    //   1012: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   1012: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   1015: aload_0
-    //   1016: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1016: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1019: aload_0
-    //   1020: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1020: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   1023: if_icmpge +25 -> 1048
     //   1026: aload_0
-    //   1027: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1027: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   1030: ifle +18 -> 1048
     //   1033: aload_0
-    //   1034: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1034: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   1037: aload_0
-    //   1038: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1038: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1041: aload_0
-    //   1042: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1045: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   1042: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1045: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   1048: aload_0
-    //   1049: getfield 333	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Boolean	Z
+    //   1049: getfield 24	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Boolean	Z
     //   1052: ifeq +6 -> 1058
-    //   1055: invokestatic 335	bhfk:a	()V
+    //   1055: invokestatic 336	com/tencent/mobileqq/utils/MusicCacheManager:a	()V
     //   1058: aload_0
     //   1059: iconst_0
-    //   1060: putfield 333	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Boolean	Z
-    //   1063: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1060: putfield 24	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Boolean	Z
+    //   1063: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1066: ifeq -1021 -> 45
-    //   1069: ldc 79
+    //   1069: ldc 85
     //   1071: iconst_2
-    //   1072: ldc_w 337
-    //   1075: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1072: ldc_w 338
+    //   1075: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1078: return
     //   1079: aload 6
     //   1081: astore 5
-    //   1083: ldc 79
-    //   1085: ldc_w 339
-    //   1088: invokestatic 344	cooperation/qzone/util/QZLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1083: ldc 85
+    //   1085: ldc_w 340
+    //   1088: invokestatic 345	cooperation/qzone/util/QZLog:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   1091: iload_1
     //   1092: iconst_1
     //   1093: iadd
     //   1094: istore_1
     //   1095: aload 6
     //   1097: astore 5
-    //   1099: ldc2_w 345
-    //   1102: invokestatic 350	java/lang/Thread:sleep	(J)V
+    //   1099: ldc2_w 346
+    //   1102: invokestatic 351	java/lang/Thread:sleep	(J)V
     //   1105: aload 7
     //   1107: astore 5
     //   1109: goto -705 -> 404
     //   1112: astore 11
     //   1114: aload 6
     //   1116: astore 5
-    //   1118: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1118: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1121: ifeq +2212 -> 3333
     //   1124: aload 6
     //   1126: astore 5
-    //   1128: ldc 79
+    //   1128: ldc 85
     //   1130: iconst_2
-    //   1131: new 60	java/lang/StringBuilder
+    //   1131: new 66	java/lang/StringBuilder
     //   1134: dup
-    //   1135: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   1138: ldc_w 352
-    //   1141: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1135: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   1138: ldc_w 353
+    //   1141: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1144: aload 11
-    //   1146: invokevirtual 353	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
-    //   1149: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1152: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1146: invokevirtual 354	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
+    //   1149: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1152: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1155: aload 11
-    //   1157: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1157: invokestatic 93	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1160: goto +2173 -> 3333
     //   1163: aload 6
     //   1165: astore 5
-    //   1167: ldc 79
+    //   1167: ldc 85
     //   1169: iconst_1
-    //   1170: new 60	java/lang/StringBuilder
+    //   1170: new 66	java/lang/StringBuilder
     //   1173: dup
-    //   1174: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   1177: ldc_w 355
-    //   1180: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1174: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   1177: ldc_w 356
+    //   1180: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1183: aload 7
-    //   1185: invokevirtual 315	java/net/HttpURLConnection:getResponseCode	()I
-    //   1188: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1191: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1194: invokestatic 153	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1185: invokevirtual 318	java/net/HttpURLConnection:getResponseCode	()I
+    //   1188: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1191: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1194: invokestatic 156	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1197: aload 6
     //   1199: astore 5
     //   1201: aload 7
-    //   1203: invokevirtual 358	java/net/HttpURLConnection:getContentLength	()I
+    //   1203: invokevirtual 359	java/net/HttpURLConnection:getContentLength	()I
     //   1206: istore_2
     //   1207: iload_2
     //   1208: ifle +92 -> 1300
@@ -593,47 +596,47 @@ public class QQPlayerService$DownloadThread
     //   1212: ifgt +273 -> 1485
     //   1215: aload 6
     //   1217: astore 5
-    //   1219: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1219: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1222: ifeq +16 -> 1238
     //   1225: aload 6
     //   1227: astore 5
-    //   1229: ldc 79
+    //   1229: ldc 85
     //   1231: iconst_2
-    //   1232: ldc_w 360
-    //   1235: invokestatic 306	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1232: ldc_w 361
+    //   1235: invokestatic 309	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1238: aload 6
     //   1240: astore 5
     //   1242: aload_0
     //   1243: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
     //   1246: bipush 7
-    //   1248: invokestatic 213	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
+    //   1248: invokestatic 216	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
     //   1251: aload_0
     //   1252: iconst_0
-    //   1253: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   1253: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   1256: aload 6
     //   1258: ifnull +8 -> 1266
     //   1261: aload 6
-    //   1263: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   1263: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   1266: aload_0
-    //   1267: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1267: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1270: aload_0
-    //   1271: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1271: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   1274: if_icmpge -1229 -> 45
     //   1277: aload_0
-    //   1278: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1278: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   1281: ifle -1236 -> 45
     //   1284: aload_0
-    //   1285: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1285: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   1288: aload_0
-    //   1289: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1289: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1292: aload_0
-    //   1293: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1296: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   1293: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1296: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   1299: return
     //   1300: aload 6
     //   1302: astore 5
-    //   1304: ldc2_w 345
-    //   1307: invokestatic 350	java/lang/Thread:sleep	(J)V
+    //   1304: ldc2_w 346
+    //   1307: invokestatic 351	java/lang/Thread:sleep	(J)V
     //   1310: iload_1
     //   1311: iconst_1
     //   1312: iadd
@@ -644,92 +647,92 @@ public class QQPlayerService$DownloadThread
     //   1321: astore 11
     //   1323: aload 6
     //   1325: astore 5
-    //   1327: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1327: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1330: ifeq -20 -> 1310
     //   1333: aload 6
     //   1335: astore 5
-    //   1337: ldc 79
+    //   1337: ldc 85
     //   1339: iconst_2
-    //   1340: new 60	java/lang/StringBuilder
+    //   1340: new 66	java/lang/StringBuilder
     //   1343: dup
-    //   1344: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   1347: ldc_w 352
-    //   1350: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1344: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   1347: ldc_w 353
+    //   1350: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1353: aload 11
-    //   1355: invokevirtual 353	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
-    //   1358: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1361: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1355: invokevirtual 354	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
+    //   1358: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1361: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1364: aload 11
-    //   1366: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1366: invokestatic 93	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1369: goto -59 -> 1310
     //   1372: astore 7
     //   1374: aload 6
     //   1376: astore 5
     //   1378: aload_0
     //   1379: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
-    //   1382: invokevirtual 117	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
-    //   1385: invokestatic 120	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
+    //   1382: invokevirtual 122	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
+    //   1385: invokestatic 125	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
     //   1388: aload 6
     //   1390: astore 5
-    //   1392: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1392: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1395: ifeq +39 -> 1434
     //   1398: aload 6
     //   1400: astore 5
-    //   1402: ldc 79
+    //   1402: ldc 85
     //   1404: iconst_2
-    //   1405: new 60	java/lang/StringBuilder
+    //   1405: new 66	java/lang/StringBuilder
     //   1408: dup
-    //   1409: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   1412: ldc_w 362
-    //   1415: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1409: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   1412: ldc_w 363
+    //   1415: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1418: aload 7
-    //   1420: invokevirtual 363	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
-    //   1423: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1426: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1420: invokevirtual 364	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
+    //   1423: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1426: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1429: aload 7
-    //   1431: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1431: invokestatic 93	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1434: aload_0
     //   1435: iconst_0
-    //   1436: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   1436: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   1439: aload 6
     //   1441: ifnull +8 -> 1449
     //   1444: aload 6
-    //   1446: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   1446: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   1449: aload_0
-    //   1450: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1450: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1453: aload_0
-    //   1454: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1454: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   1457: if_icmpge -409 -> 1048
     //   1460: aload_0
-    //   1461: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1461: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   1464: ifle -416 -> 1048
     //   1467: aload_0
-    //   1468: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1468: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   1471: aload_0
-    //   1472: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1472: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1475: aload_0
-    //   1476: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1479: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   1476: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1479: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   1482: goto -434 -> 1048
     //   1485: iload_2
     //   1486: istore_1
     //   1487: aload 6
     //   1489: astore 5
     //   1491: aload_0
-    //   1492: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1492: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1495: ifle +14 -> 1509
     //   1498: aload 6
     //   1500: astore 5
     //   1502: iload_2
     //   1503: aload_0
-    //   1504: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1504: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1507: iadd
     //   1508: istore_1
     //   1509: aload 6
     //   1511: astore 5
     //   1513: aload_0
     //   1514: iload_1
-    //   1515: putfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1515: putfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   1518: iload_1
     //   1519: istore_2
     //   1520: aload 7
@@ -737,7 +740,7 @@ public class QQPlayerService$DownloadThread
     //   1524: aload 6
     //   1526: astore 5
     //   1528: aload_0
-    //   1529: getfield 34	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
+    //   1529: getfield 40	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
     //   1532: ifeq +246 -> 1778
     //   1535: iload_1
     //   1536: istore_2
@@ -746,151 +749,151 @@ public class QQPlayerService$DownloadThread
     //   1541: aload 6
     //   1543: astore 5
     //   1545: aload_0
-    //   1546: getfield 34	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
+    //   1546: getfield 40	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
     //   1549: iload_1
     //   1550: if_icmpeq +228 -> 1778
     //   1553: aload 6
     //   1555: astore 5
-    //   1557: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1557: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1560: ifeq +46 -> 1606
     //   1563: aload 6
     //   1565: astore 5
-    //   1567: ldc 79
+    //   1567: ldc 85
     //   1569: iconst_2
-    //   1570: new 60	java/lang/StringBuilder
+    //   1570: new 66	java/lang/StringBuilder
     //   1573: dup
-    //   1574: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   1577: ldc_w 365
-    //   1580: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1574: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   1577: ldc_w 366
+    //   1580: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1583: aload_0
-    //   1584: getfield 34	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
-    //   1587: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1590: ldc_w 367
-    //   1593: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1584: getfield 40	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
+    //   1587: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1590: ldc_w 368
+    //   1593: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1596: iload_1
-    //   1597: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1600: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1603: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1597: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1600: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1603: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1606: aload 6
     //   1608: astore 5
     //   1610: aload_0
     //   1611: iconst_0
-    //   1612: putfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1612: putfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1615: aload 6
     //   1617: astore 5
     //   1619: aload_0
     //   1620: iconst_1
-    //   1621: putfield 22	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:d	Z
+    //   1621: putfield 28	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:d	Z
     //   1624: aload 6
     //   1626: astore 5
     //   1628: aload 8
-    //   1630: invokevirtual 217	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   1633: checkcast 219	java/net/HttpURLConnection
+    //   1630: invokevirtual 220	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   1633: checkcast 222	java/net/HttpURLConnection
     //   1636: astore 9
     //   1638: aload 6
     //   1640: astore 5
     //   1642: aload 9
     //   1644: iconst_1
-    //   1645: invokevirtual 223	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
+    //   1645: invokevirtual 226	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
     //   1648: aload 6
     //   1650: astore 5
     //   1652: aload 9
-    //   1654: ldc 225
-    //   1656: ldc 227
-    //   1658: invokevirtual 230	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1654: ldc 228
+    //   1656: ldc 230
+    //   1658: invokevirtual 233	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   1661: aload 6
     //   1663: astore 5
     //   1665: aload 9
-    //   1667: invokevirtual 311	java/net/HttpURLConnection:connect	()V
+    //   1667: invokevirtual 314	java/net/HttpURLConnection:connect	()V
     //   1670: aload 6
     //   1672: astore 5
     //   1674: aload 9
-    //   1676: invokevirtual 358	java/net/HttpURLConnection:getContentLength	()I
+    //   1676: invokevirtual 359	java/net/HttpURLConnection:getContentLength	()I
     //   1679: istore_2
     //   1680: iload_2
     //   1681: ifge +88 -> 1769
     //   1684: aload 6
     //   1686: astore 5
-    //   1688: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1688: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1691: ifeq +16 -> 1707
     //   1694: aload 6
     //   1696: astore 5
-    //   1698: ldc 79
+    //   1698: ldc 85
     //   1700: iconst_2
-    //   1701: ldc_w 369
-    //   1704: invokestatic 306	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1701: ldc_w 370
+    //   1704: invokestatic 309	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1707: aload 6
     //   1709: astore 5
     //   1711: aload_0
     //   1712: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
     //   1715: bipush 7
-    //   1717: invokestatic 213	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
+    //   1717: invokestatic 216	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
     //   1720: aload_0
     //   1721: iconst_0
-    //   1722: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   1722: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   1725: aload 6
     //   1727: ifnull +8 -> 1735
     //   1730: aload 6
-    //   1732: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   1732: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   1735: aload_0
-    //   1736: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1736: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1739: aload_0
-    //   1740: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1740: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   1743: if_icmpge -1698 -> 45
     //   1746: aload_0
-    //   1747: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1747: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   1750: ifle -1705 -> 45
     //   1753: aload_0
-    //   1754: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1754: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   1757: aload_0
-    //   1758: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1758: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1761: aload_0
-    //   1762: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1765: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   1762: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1765: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   1768: return
     //   1769: aload 6
     //   1771: astore 5
     //   1773: aload_0
     //   1774: iload_2
-    //   1775: putfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1775: putfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   1778: aload 6
     //   1780: astore 5
     //   1782: aload 6
     //   1784: iload_2
     //   1785: i2l
-    //   1786: invokevirtual 372	java/io/RandomAccessFile:setLength	(J)V
+    //   1786: invokevirtual 373	java/io/RandomAccessFile:setLength	(J)V
     //   1789: aload 6
     //   1791: astore 5
-    //   1793: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1793: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1796: ifeq +62 -> 1858
     //   1799: aload 6
     //   1801: astore 5
-    //   1803: ldc 79
+    //   1803: ldc 85
     //   1805: iconst_2
-    //   1806: new 60	java/lang/StringBuilder
+    //   1806: new 66	java/lang/StringBuilder
     //   1809: dup
-    //   1810: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   1813: ldc_w 374
-    //   1816: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1810: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   1813: ldc_w 375
+    //   1816: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1819: aload_0
-    //   1820: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
-    //   1823: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1826: ldc_w 376
-    //   1829: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1820: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1823: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1826: ldc_w 377
+    //   1829: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1832: aload_0
-    //   1833: getfield 34	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
-    //   1836: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1839: ldc_w 378
-    //   1842: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1833: getfield 40	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
+    //   1836: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1839: ldc_w 379
+    //   1842: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1845: aload_0
-    //   1846: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1849: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1852: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1855: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1846: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1849: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1852: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1855: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1858: aload 6
     //   1860: astore 5
     //   1862: aload 9
-    //   1864: invokevirtual 382	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   1864: invokevirtual 383	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   1867: astore 7
     //   1869: aload 6
     //   1871: astore 5
@@ -901,216 +904,216 @@ public class QQPlayerService$DownloadThread
     //   1882: astore 5
     //   1884: aload 6
     //   1886: aload_0
-    //   1887: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1887: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1890: i2l
-    //   1891: invokevirtual 385	java/io/RandomAccessFile:seek	(J)V
+    //   1891: invokevirtual 386	java/io/RandomAccessFile:seek	(J)V
     //   1894: aload 6
     //   1896: astore 5
     //   1898: aload_0
-    //   1899: getfield 34	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
+    //   1899: getfield 40	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
     //   1902: ifne +22 -> 1924
     //   1905: aload 6
     //   1907: astore 5
     //   1909: aload_0
-    //   1910: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1910: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   1913: aload_0
-    //   1914: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1914: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   1917: aload_0
-    //   1918: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1921: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   1918: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1921: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   1924: iconst_0
     //   1925: istore_2
     //   1926: iload_2
     //   1927: istore_1
     //   1928: aload 6
     //   1930: astore 5
-    //   1932: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1932: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1935: ifeq +51 -> 1986
     //   1938: aload 6
     //   1940: astore 5
-    //   1942: ldc 79
+    //   1942: ldc 85
     //   1944: iconst_2
-    //   1945: new 60	java/lang/StringBuilder
+    //   1945: new 66	java/lang/StringBuilder
     //   1948: dup
-    //   1949: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   1952: ldc_w 387
-    //   1955: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1949: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   1952: ldc_w 388
+    //   1955: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1958: aload_0
-    //   1959: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
-    //   1962: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1965: ldc_w 378
-    //   1968: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1959: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   1962: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1965: ldc_w 379
+    //   1968: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1971: aload_0
-    //   1972: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   1975: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1978: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1981: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1972: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   1975: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1978: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1981: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1984: iload_2
     //   1985: istore_1
     //   1986: aload 6
     //   1988: astore 5
     //   1990: aload_0
-    //   1991: getfield 389	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Boolean	Z
+    //   1991: getfield 22	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Boolean	Z
     //   1994: ifne +858 -> 2852
     //   1997: aload 6
     //   1999: astore 5
     //   2001: aload_0
-    //   2002: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2002: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2005: aload_0
-    //   2006: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2006: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   2009: if_icmpge +843 -> 2852
     //   2012: iload_1
     //   2013: bipush 10
     //   2015: if_icmpge +837 -> 2852
     //   2018: aload 6
     //   2020: astore 5
-    //   2022: invokestatic 148	com/tencent/mobileqq/music/QQPlayerService:d	()Lcom/tencent/mobileqq/music/SongInfo;
+    //   2022: invokestatic 151	com/tencent/mobileqq/music/QQPlayerService:d	()Lcom/tencent/mobileqq/music/SongInfo;
     //   2025: astore 9
     //   2027: aload 9
     //   2029: ifnonnull +74 -> 2103
     //   2032: aload 6
     //   2034: astore 5
-    //   2036: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2036: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2039: ifeq +15 -> 2054
     //   2042: aload 6
     //   2044: astore 5
-    //   2046: ldc 79
+    //   2046: ldc 85
     //   2048: iconst_2
-    //   2049: ldc 150
-    //   2051: invokestatic 153	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2049: ldc 153
+    //   2051: invokestatic 156	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   2054: aload_0
     //   2055: iconst_0
-    //   2056: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   2056: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   2059: aload 6
     //   2061: ifnull +8 -> 2069
     //   2064: aload 6
-    //   2066: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   2066: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   2069: aload_0
-    //   2070: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2070: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2073: aload_0
-    //   2074: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2074: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   2077: if_icmpge -2032 -> 45
     //   2080: aload_0
-    //   2081: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2081: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   2084: ifle -2039 -> 45
     //   2087: aload_0
-    //   2088: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2088: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   2091: aload_0
-    //   2092: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2092: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2095: aload_0
-    //   2096: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   2099: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   2096: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2099: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   2102: return
     //   2103: aload 6
     //   2105: astore 5
     //   2107: aload_0
-    //   2108: getfield 22	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:d	Z
+    //   2108: getfield 28	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:d	Z
     //   2111: ifeq +191 -> 2302
     //   2114: aload 6
     //   2116: astore 5
     //   2118: aload 9
-    //   2120: getfield 164	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2120: getfield 167	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   2123: aload_0
-    //   2124: getfield 30	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2127: invokevirtual 185	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2124: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2127: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2130: ifne +7 -> 2137
     //   2133: iload_3
     //   2134: ifeq +168 -> 2302
     //   2137: aload 6
     //   2139: astore 5
     //   2141: aload_0
-    //   2142: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2142: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2145: i2f
     //   2146: aload_0
-    //   2147: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2147: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   2150: i2f
     //   2151: aload_0
     //   2152: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
-    //   2155: getfield 188	com/tencent/mobileqq/music/QQPlayerService:a	F
+    //   2155: getfield 191	com/tencent/mobileqq/music/QQPlayerService:a	F
     //   2158: fmul
     //   2159: fcmpl
     //   2160: ifle +142 -> 2302
     //   2163: aload 6
     //   2165: astore 5
-    //   2167: invokestatic 193	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
-    //   2170: invokevirtual 198	android/media/MediaPlayer:reset	()V
+    //   2167: invokestatic 196	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   2170: invokevirtual 201	android/media/MediaPlayer:reset	()V
     //   2173: aload 6
     //   2175: astore 5
-    //   2177: invokestatic 193	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   2177: invokestatic 196	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
     //   2180: aload 10
-    //   2182: invokevirtual 201	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   2185: invokevirtual 204	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
+    //   2182: invokevirtual 204	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   2185: invokevirtual 207	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
     //   2188: aload 6
     //   2190: astore 5
-    //   2192: invokestatic 193	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
-    //   2195: invokevirtual 207	android/media/MediaPlayer:prepare	()V
+    //   2192: invokestatic 196	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   2195: invokevirtual 210	android/media/MediaPlayer:prepare	()V
     //   2198: aload 6
     //   2200: astore 5
-    //   2202: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2202: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2205: ifeq +52 -> 2257
     //   2208: aload 6
     //   2210: astore 5
-    //   2212: ldc 79
+    //   2212: ldc 85
     //   2214: iconst_2
-    //   2215: new 60	java/lang/StringBuilder
+    //   2215: new 66	java/lang/StringBuilder
     //   2218: dup
-    //   2219: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   2222: ldc_w 391
-    //   2225: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2219: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   2222: ldc_w 390
+    //   2225: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2228: aload_0
-    //   2229: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
-    //   2232: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2235: ldc_w 393
-    //   2238: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2229: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2232: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2235: ldc_w 392
+    //   2238: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2241: aload_0
     //   2242: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
-    //   2245: invokestatic 396	com/tencent/mobileqq/music/QQPlayerService:b	(Lcom/tencent/mobileqq/music/QQPlayerService;)Z
-    //   2248: invokevirtual 399	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2251: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2254: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2245: invokestatic 395	com/tencent/mobileqq/music/QQPlayerService:b	(Lcom/tencent/mobileqq/music/QQPlayerService;)Z
+    //   2248: invokevirtual 398	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2251: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2254: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2257: aload 6
     //   2259: astore 5
     //   2261: aload_0
     //   2262: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
-    //   2265: invokestatic 396	com/tencent/mobileqq/music/QQPlayerService:b	(Lcom/tencent/mobileqq/music/QQPlayerService;)Z
+    //   2265: invokestatic 395	com/tencent/mobileqq/music/QQPlayerService:b	(Lcom/tencent/mobileqq/music/QQPlayerService;)Z
     //   2268: ifne +25 -> 2293
     //   2271: aload 6
     //   2273: astore 5
-    //   2275: invokestatic 193	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
-    //   2278: invokevirtual 210	android/media/MediaPlayer:start	()V
+    //   2275: invokestatic 196	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   2278: invokevirtual 213	android/media/MediaPlayer:start	()V
     //   2281: aload 6
     //   2283: astore 5
     //   2285: aload_0
     //   2286: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
     //   2289: iconst_2
-    //   2290: invokestatic 213	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
+    //   2290: invokestatic 216	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
     //   2293: aload 6
     //   2295: astore 5
     //   2297: aload_0
     //   2298: iconst_0
-    //   2299: putfield 22	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:d	Z
+    //   2299: putfield 28	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:d	Z
     //   2302: aload 6
     //   2304: astore 5
     //   2306: aload 7
     //   2308: aload 8
-    //   2310: invokevirtual 405	java/io/InputStream:read	([B)I
+    //   2310: invokevirtual 404	java/io/InputStream:read	([B)I
     //   2313: istore_2
     //   2314: iload_2
     //   2315: ifgt +392 -> 2707
     //   2318: aload 6
     //   2320: astore 5
-    //   2322: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2322: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2325: ifeq +16 -> 2341
     //   2328: aload 6
     //   2330: astore 5
-    //   2332: ldc 79
+    //   2332: ldc 85
     //   2334: iconst_2
-    //   2335: ldc_w 407
-    //   2338: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2335: ldc_w 406
+    //   2338: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2341: aload 6
     //   2343: astore 5
-    //   2345: ldc2_w 345
-    //   2348: invokestatic 350	java/lang/Thread:sleep	(J)V
+    //   2345: ldc2_w 346
+    //   2348: invokestatic 351	java/lang/Thread:sleep	(J)V
     //   2351: iload_1
     //   2352: iconst_1
     //   2353: iadd
@@ -1119,47 +1122,47 @@ public class QQPlayerService$DownloadThread
     //   2358: astore 9
     //   2360: aload 6
     //   2362: astore 5
-    //   2364: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2364: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2367: ifeq -16 -> 2351
     //   2370: aload 6
     //   2372: astore 5
-    //   2374: ldc 79
+    //   2374: ldc 85
     //   2376: iconst_2
-    //   2377: new 60	java/lang/StringBuilder
+    //   2377: new 66	java/lang/StringBuilder
     //   2380: dup
-    //   2381: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   2384: ldc_w 409
-    //   2387: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2381: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   2384: ldc_w 408
+    //   2387: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2390: aload 9
-    //   2392: invokevirtual 353	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
-    //   2395: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2398: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2392: invokevirtual 354	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
+    //   2395: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2398: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2401: aload 9
-    //   2403: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2403: invokestatic 93	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   2406: goto -55 -> 2351
     //   2409: astore 7
     //   2411: aload 6
     //   2413: astore 5
-    //   2415: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2415: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2418: ifeq +39 -> 2457
     //   2421: aload 6
     //   2423: astore 5
-    //   2425: ldc 79
+    //   2425: ldc 85
     //   2427: iconst_2
-    //   2428: new 60	java/lang/StringBuilder
+    //   2428: new 66	java/lang/StringBuilder
     //   2431: dup
-    //   2432: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   2435: ldc_w 411
-    //   2438: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2432: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   2435: ldc_w 410
+    //   2438: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2441: aload 7
-    //   2443: invokevirtual 84	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   2446: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2449: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2443: invokevirtual 90	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   2446: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2449: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2452: aload 7
-    //   2454: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2454: invokestatic 93	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   2457: aload 6
     //   2459: astore 5
-    //   2461: invokestatic 148	com/tencent/mobileqq/music/QQPlayerService:d	()Lcom/tencent/mobileqq/music/SongInfo;
+    //   2461: invokestatic 151	com/tencent/mobileqq/music/QQPlayerService:d	()Lcom/tencent/mobileqq/music/SongInfo;
     //   2464: astore 7
     //   2466: iconst_0
     //   2467: istore 4
@@ -1168,106 +1171,106 @@ public class QQPlayerService$DownloadThread
     //   2474: aload 6
     //   2476: astore 5
     //   2478: aload 7
-    //   2480: getfield 164	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2480: getfield 167	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   2483: astore 8
     //   2485: iload 4
     //   2487: istore_3
     //   2488: aload 6
     //   2490: astore 5
     //   2492: aload 8
-    //   2494: invokestatic 170	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2494: invokestatic 173	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   2497: ifne +44 -> 2541
     //   2500: iload 4
     //   2502: istore_3
     //   2503: aload 6
     //   2505: astore 5
     //   2507: aload 8
-    //   2509: ldc 172
-    //   2511: invokevirtual 178	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   2509: ldc 175
+    //   2511: invokevirtual 181	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   2514: ifeq +27 -> 2541
     //   2517: aload 6
     //   2519: astore 5
     //   2521: aload_0
-    //   2522: getfield 30	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2522: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   2525: aload_0
     //   2526: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
     //   2529: aload 7
-    //   2531: getfield 164	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   2534: invokestatic 181	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;Ljava/lang/String;)Ljava/lang/String;
-    //   2537: invokevirtual 185	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2531: getfield 167	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2534: invokestatic 184	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;Ljava/lang/String;)Ljava/lang/String;
+    //   2537: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2540: istore_3
     //   2541: aload 6
     //   2543: astore 5
-    //   2545: invokestatic 193	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   2545: invokestatic 196	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
     //   2548: ifnull +49 -> 2597
     //   2551: aload 6
     //   2553: astore 5
     //   2555: aload_0
-    //   2556: getfield 30	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2556: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   2559: aload 7
-    //   2561: getfield 164	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   2564: invokevirtual 185	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2561: getfield 167	com/tencent/mobileqq/music/SongInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2564: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2567: ifne +7 -> 2574
     //   2570: iload_3
     //   2571: ifeq +26 -> 2597
     //   2574: aload 6
     //   2576: astore 5
-    //   2578: invokestatic 193	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
-    //   2581: invokevirtual 198	android/media/MediaPlayer:reset	()V
+    //   2578: invokestatic 196	com/tencent/mobileqq/music/QQPlayerService:a	()Landroid/media/MediaPlayer;
+    //   2581: invokevirtual 201	android/media/MediaPlayer:reset	()V
     //   2584: aload 6
     //   2586: astore 5
     //   2588: aload_0
     //   2589: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
     //   2592: bipush 6
-    //   2594: invokestatic 213	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
+    //   2594: invokestatic 216	com/tencent/mobileqq/music/QQPlayerService:a	(Lcom/tencent/mobileqq/music/QQPlayerService;I)V
     //   2597: aload 6
     //   2599: astore 5
-    //   2601: invokestatic 414	com/tencent/mobileqq/music/QQPlayerService:b	()[Lcom/tencent/mobileqq/music/SongInfo;
+    //   2601: invokestatic 413	com/tencent/mobileqq/music/QQPlayerService:b	()[Lcom/tencent/mobileqq/music/SongInfo;
     //   2604: ifnull +52 -> 2656
     //   2607: aload 6
     //   2609: astore 5
-    //   2611: invokestatic 414	com/tencent/mobileqq/music/QQPlayerService:b	()[Lcom/tencent/mobileqq/music/SongInfo;
+    //   2611: invokestatic 413	com/tencent/mobileqq/music/QQPlayerService:b	()[Lcom/tencent/mobileqq/music/SongInfo;
     //   2614: arraylength
     //   2615: iconst_1
     //   2616: if_icmpne +40 -> 2656
     //   2619: aload 6
     //   2621: astore 5
-    //   2623: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2623: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2626: ifeq +16 -> 2642
     //   2629: aload 6
     //   2631: astore 5
-    //   2633: ldc 79
+    //   2633: ldc 85
     //   2635: iconst_2
-    //   2636: ldc_w 416
-    //   2639: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2636: ldc_w 415
+    //   2639: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2642: aload 6
     //   2644: astore 5
     //   2646: aload_0
     //   2647: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
-    //   2650: invokevirtual 117	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
-    //   2653: invokestatic 120	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
+    //   2650: invokevirtual 122	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
+    //   2653: invokestatic 125	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
     //   2656: aload_0
     //   2657: iconst_0
-    //   2658: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   2658: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   2661: aload 6
     //   2663: ifnull +8 -> 2671
     //   2666: aload 6
-    //   2668: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   2668: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   2671: aload_0
-    //   2672: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2672: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2675: aload_0
-    //   2676: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2676: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   2679: if_icmpge -1631 -> 1048
     //   2682: aload_0
-    //   2683: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2683: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   2686: ifle -1638 -> 1048
     //   2689: aload_0
-    //   2690: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2690: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   2693: aload_0
-    //   2694: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2694: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2697: aload_0
-    //   2698: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   2701: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   2698: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2701: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   2704: goto -1656 -> 1048
     //   2707: iconst_0
     //   2708: istore_1
@@ -1275,221 +1278,221 @@ public class QQPlayerService$DownloadThread
     //   2711: astore 5
     //   2713: aload_0
     //   2714: aload_0
-    //   2715: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2715: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2718: iload_2
     //   2719: iadd
-    //   2720: putfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2720: putfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2723: aload 6
     //   2725: astore 5
     //   2727: aload 6
     //   2729: aload 8
     //   2731: iconst_0
     //   2732: iload_2
-    //   2733: invokevirtual 420	java/io/RandomAccessFile:write	([BII)V
+    //   2733: invokevirtual 419	java/io/RandomAccessFile:write	([BII)V
     //   2736: goto -750 -> 1986
     //   2739: astore 7
     //   2741: aload 6
     //   2743: astore 5
     //   2745: aload_0
     //   2746: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
-    //   2749: invokevirtual 117	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
-    //   2752: invokestatic 120	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
+    //   2749: invokevirtual 122	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
+    //   2752: invokestatic 125	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
     //   2755: aload 6
     //   2757: astore 5
-    //   2759: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2759: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2762: ifeq +39 -> 2801
     //   2765: aload 6
     //   2767: astore 5
-    //   2769: ldc 79
+    //   2769: ldc 85
     //   2771: iconst_2
-    //   2772: new 60	java/lang/StringBuilder
+    //   2772: new 66	java/lang/StringBuilder
     //   2775: dup
-    //   2776: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   2779: ldc_w 422
-    //   2782: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2776: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   2779: ldc_w 421
+    //   2782: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2785: aload 7
-    //   2787: invokevirtual 423	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
-    //   2790: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2793: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2787: invokevirtual 422	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
+    //   2790: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2793: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2796: aload 7
-    //   2798: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2798: invokestatic 93	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   2801: aload_0
     //   2802: iconst_0
-    //   2803: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   2803: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   2806: aload 6
     //   2808: ifnull +8 -> 2816
     //   2811: aload 6
-    //   2813: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   2813: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   2816: aload_0
-    //   2817: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2817: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2820: aload_0
-    //   2821: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2821: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   2824: if_icmpge -1776 -> 1048
     //   2827: aload_0
-    //   2828: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2828: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   2831: ifle -1783 -> 1048
     //   2834: aload_0
-    //   2835: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2835: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   2838: aload_0
-    //   2839: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2839: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2842: aload_0
-    //   2843: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   2846: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   2843: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2846: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   2849: goto -1801 -> 1048
     //   2852: aload 6
     //   2854: astore 5
-    //   2856: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2856: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2859: ifeq +72 -> 2931
     //   2862: aload 6
     //   2864: astore 5
-    //   2866: ldc 79
+    //   2866: ldc 85
     //   2868: iconst_2
-    //   2869: new 60	java/lang/StringBuilder
+    //   2869: new 66	java/lang/StringBuilder
     //   2872: dup
-    //   2873: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   2876: ldc_w 425
-    //   2879: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2873: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   2876: ldc_w 424
+    //   2879: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2882: aload_0
-    //   2883: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
-    //   2886: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2889: ldc_w 427
-    //   2892: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2883: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2886: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2889: ldc_w 426
+    //   2892: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2895: iload_1
-    //   2896: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2899: ldc_w 378
-    //   2902: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2896: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2899: ldc_w 379
+    //   2902: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2905: aload_0
-    //   2906: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   2909: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2912: ldc_w 376
-    //   2915: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2906: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2909: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2912: ldc_w 377
+    //   2915: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2918: aload_0
-    //   2919: getfield 34	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
-    //   2922: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2925: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2928: invokestatic 111	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2919: getfield 40	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Int	I
+    //   2922: invokevirtual 240	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2925: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2928: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2931: aload 7
     //   2933: ifnull +12 -> 2945
     //   2936: aload 6
     //   2938: astore 5
     //   2940: aload 7
-    //   2942: invokevirtual 428	java/io/InputStream:close	()V
+    //   2942: invokevirtual 427	java/io/InputStream:close	()V
     //   2945: aload 6
     //   2947: astore 5
     //   2949: aload_0
-    //   2950: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2950: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   2953: aload_0
-    //   2954: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2954: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   2957: if_icmpne +25 -> 2982
     //   2960: aload 6
     //   2962: astore 5
     //   2964: aload_0
-    //   2965: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   2965: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   2968: ifle +14 -> 2982
     //   2971: aload 6
     //   2973: astore 5
     //   2975: aload_0
-    //   2976: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   2979: invokestatic 430	bhfk:a	(Ljava/lang/String;)V
+    //   2976: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2979: invokestatic 429	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;)V
     //   2982: aload_0
     //   2983: iconst_0
-    //   2984: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   2984: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   2987: aload 6
     //   2989: ifnull +8 -> 2997
     //   2992: aload 6
-    //   2994: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   2994: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   2997: aload_0
-    //   2998: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   2998: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   3001: aload_0
-    //   3002: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   3002: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   3005: if_icmpge -1957 -> 1048
     //   3008: aload_0
-    //   3009: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   3009: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   3012: ifle -1964 -> 1048
     //   3015: aload_0
-    //   3016: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   3016: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   3019: aload_0
-    //   3020: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   3020: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   3023: aload_0
-    //   3024: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   3027: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   3024: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   3027: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   3030: goto -1982 -> 1048
     //   3033: astore 7
     //   3035: aconst_null
     //   3036: astore 6
     //   3038: aload 6
     //   3040: astore 5
-    //   3042: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3042: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3045: ifeq +39 -> 3084
     //   3048: aload 6
     //   3050: astore 5
-    //   3052: ldc 79
+    //   3052: ldc 85
     //   3054: iconst_2
-    //   3055: new 60	java/lang/StringBuilder
+    //   3055: new 66	java/lang/StringBuilder
     //   3058: dup
-    //   3059: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   3062: ldc_w 432
-    //   3065: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3059: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   3062: ldc_w 431
+    //   3065: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3068: aload 7
-    //   3070: invokevirtual 433	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   3073: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3076: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3070: invokevirtual 432	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   3073: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3076: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3079: aload 7
-    //   3081: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   3081: invokestatic 93	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   3084: aload 6
     //   3086: astore 5
     //   3088: aload_0
     //   3089: getfield 17	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:this$0	Lcom/tencent/mobileqq/music/QQPlayerService;
-    //   3092: invokevirtual 117	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
-    //   3095: invokestatic 120	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
+    //   3092: invokevirtual 122	com/tencent/mobileqq/music/QQPlayerService:getApplicationContext	()Landroid/content/Context;
+    //   3095: invokestatic 125	com/tencent/mobileqq/music/QQPlayerService:c	(Landroid/content/Context;)V
     //   3098: aload_0
     //   3099: iconst_0
-    //   3100: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   3100: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   3103: aload 6
     //   3105: ifnull +8 -> 3113
     //   3108: aload 6
-    //   3110: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   3110: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   3113: aload_0
-    //   3114: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   3114: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   3117: aload_0
-    //   3118: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   3118: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   3121: if_icmpge -2073 -> 1048
     //   3124: aload_0
-    //   3125: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   3125: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   3128: ifle -2080 -> 1048
     //   3131: aload_0
-    //   3132: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   3132: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   3135: aload_0
-    //   3136: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   3136: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   3139: aload_0
-    //   3140: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   3143: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   3140: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   3143: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   3146: goto -2098 -> 1048
     //   3149: astore 6
     //   3151: aconst_null
     //   3152: astore 5
     //   3154: aload_0
     //   3155: iconst_0
-    //   3156: putfield 124	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
+    //   3156: putfield 26	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_c_of_type_Boolean	Z
     //   3159: aload 5
     //   3161: ifnull +8 -> 3169
     //   3164: aload 5
-    //   3166: invokevirtual 156	java/io/RandomAccessFile:close	()V
+    //   3166: invokevirtual 159	java/io/RandomAccessFile:close	()V
     //   3169: aload_0
-    //   3170: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   3170: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   3173: aload_0
-    //   3174: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   3174: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   3177: if_icmpge +25 -> 3202
     //   3180: aload_0
-    //   3181: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   3181: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
     //   3184: ifle +18 -> 3202
     //   3187: aload_0
-    //   3188: getfield 32	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   3188: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   3191: aload_0
-    //   3192: getfield 38	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
+    //   3192: getfield 44	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_a_of_type_Int	I
     //   3195: aload_0
-    //   3196: getfield 36	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
-    //   3199: invokestatic 161	bhfk:a	(Ljava/lang/String;II)V
+    //   3196: getfield 42	com/tencent/mobileqq/music/QQPlayerService$DownloadThread:jdField_b_of_type_Int	I
+    //   3199: invokestatic 164	com/tencent/mobileqq/utils/MusicCacheManager:a	(Ljava/lang/String;II)V
     //   3202: aload 6
     //   3204: athrow
     //   3205: astore 5

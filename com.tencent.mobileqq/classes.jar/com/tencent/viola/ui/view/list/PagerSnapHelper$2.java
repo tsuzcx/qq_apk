@@ -19,7 +19,7 @@ class PagerSnapHelper$2
   
   public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
   {
-    return PagerSnapHelper.access$2100(this.this$0) / paramDisplayMetrics.densityDpi;
+    return PagerSnapHelper.access$2200(this.this$0) / paramDisplayMetrics.densityDpi;
   }
   
   public int calculateTimeForDeceleration(int paramInt)
@@ -39,7 +39,7 @@ class PagerSnapHelper$2
   
   public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
   {
-    paramView = PagerSnapHelper.access$1800(this.this$0, this.val$layoutManager, paramView);
+    paramView = PagerSnapHelper.access$1900(this.this$0, this.val$layoutManager, paramView);
     int i = paramView[0];
     int j = paramView[1];
     int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
@@ -48,12 +48,12 @@ class PagerSnapHelper$2
       paramAction.update(i, j, k, this.mDecelerateInterpolator);
       return;
     }
-    PagerSnapHelper.TouchEventProcessor.access$2000(PagerSnapHelper.access$1900(this.this$0));
+    PagerSnapHelper.TouchEventProcessor.access$2100(PagerSnapHelper.access$2000(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.PagerSnapHelper.2
  * JD-Core Version:    0.7.0.1
  */

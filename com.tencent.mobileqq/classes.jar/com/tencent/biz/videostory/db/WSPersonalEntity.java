@@ -8,7 +8,7 @@ public class WSPersonalEntity
 {
   @unique
   public String uin;
-  public byte[] weiShiPersonalRsp;
+  public byte[] weiShiPersonalRsp = null;
   
   public void updateWeiShiFeedListEntity(String paramString, byte[] paramArrayOfByte)
   {
@@ -21,7 +21,7 @@ public class WSPersonalEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.videostory.db.WSPersonalEntity
  * JD-Core Version:    0.7.0.1
  */

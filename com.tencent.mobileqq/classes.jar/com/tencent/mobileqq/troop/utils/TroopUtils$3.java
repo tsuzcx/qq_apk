@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgua;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
 
 final class TroopUtils$3
   implements Runnable
 {
-  TroopUtils$3(bgua parambgua, TroopInfoData paramTroopInfoData) {}
+  TroopUtils$3(TroopShareUtility paramTroopShareUtility, TroopInfoData paramTroopInfoData) {}
   
   public void run()
   {
-    if (this.val$mTroopShareUtility != null) {
-      this.val$mTroopShareUtility.a(this.val$troopInfoData);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility.a(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
     }
   }
 }

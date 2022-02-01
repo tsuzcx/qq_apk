@@ -11,9 +11,9 @@ public final class UniLoginCheckRsp
   static ArrayList<HamletCheck> cache_stHamletList = new ArrayList();
   static GetUsrKeyWordInfoRsp cache_stKeyWord = new GetUsrKeyWordInfoRsp();
   public String errmsg = "";
-  public int ret;
-  public ArrayList<HamletCheck> stHamletList;
-  public GetUsrKeyWordInfoRsp stKeyWord;
+  public int ret = 0;
+  public ArrayList<HamletCheck> stHamletList = null;
+  public GetUsrKeyWordInfoRsp stKeyWord = null;
   
   static
   {

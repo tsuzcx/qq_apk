@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.content.Context;
-import aprm;
-import aprx;
-import bdla;
-import bhdj;
+import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import cooperation.wadl.ipc.WadlParams;
 
-public class ArkAppDownloadModule$9
+class ArkAppDownloadModule$9
   implements Runnable
 {
-  public ArkAppDownloadModule$9(aprm paramaprm, Context paramContext, WadlParams paramWadlParams) {}
+  ArkAppDownloadModule$9(ArkAppDownloadModule paramArkAppDownloadModule, Context paramContext, WadlParams paramWadlParams) {}
   
   public void run()
   {
-    bhdj.a(BaseActivity.sTopActivity, 230, null, this.jdField_a_of_type_AndroidContentContext.getString(2131690175), null, this.jdField_a_of_type_AndroidContentContext.getString(2131690179), new aprx(this), null).show();
-    bdla.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "5", "", this.jdField_a_of_type_CooperationWadlIpcWadlParams.a, "");
+    DialogUtil.a(BaseActivity.sTopActivity, 230, null, this.jdField_a_of_type_AndroidContentContext.getString(2131690232), null, this.jdField_a_of_type_AndroidContentContext.getString(2131690236), new ArkAppDownloadModule.9.1(this), null).show();
+    ReportController.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "5", "", this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.a, "");
   }
 }
 

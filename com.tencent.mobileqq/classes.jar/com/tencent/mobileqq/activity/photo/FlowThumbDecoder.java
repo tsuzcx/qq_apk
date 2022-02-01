@@ -12,25 +12,21 @@ import android.graphics.Rect;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore.Video.Thumbnails;
 import android.util.DisplayMetrics;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
 import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import java.util.HashMap;
 
 public class FlowThumbDecoder
+  extends BaseThumbDecoder
   implements BitmapDecoder
 {
   static final int SCALE_MODE_BY_HEIGHT = 2;
   static final int SCALE_MODE_BY_WIDTH = 1;
   static final int SCALE_MODE_DEFAULT = 0;
   static final int SCALE_MODE_ERROR = -1;
-  private static final String TAG = "FlowThumbDecoder";
+  static final String TAG = "FlowThumbDecoder";
   public static float sFlowItemHeight;
   public static float sFlowItemMaxWidth;
   public static float sFlowItemMinWidth;
@@ -44,9 +40,9 @@ public class FlowThumbDecoder
   {
     Resources localResources = paramContext.getResources();
     this.mDensity = localResources.getDisplayMetrics().density;
-    sFlowItemHeight = localResources.getDimension(2131297099);
-    sFlowItemMaxWidth = localResources.getDimension(2131297097);
-    sFlowItemMinWidth = localResources.getDimension(2131297098);
+    sFlowItemHeight = localResources.getDimension(2131297120);
+    sFlowItemMaxWidth = localResources.getDimension(2131297118);
+    sFlowItemMinWidth = localResources.getDimension(2131297119);
     sRatioMax = sFlowItemMaxWidth / sFlowItemHeight;
     sRatioMin = sFlowItemMinWidth / sFlowItemHeight;
     if (sFlowItemHeight == 0.0F) {
@@ -110,6 +106,35 @@ public class FlowThumbDecoder
     paramLocalMediaInfo.thumbHeight = ((int)sFlowItemMaxWidth);
   }
   
+  private static Rect getRect(LocalMediaInfo paramLocalMediaInfo, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    Rect localRect = null;
+    if (paramInt1 == 1) {
+      if ((paramInt4 == 90) || (paramInt4 == 270))
+      {
+        paramInt1 = paramLocalMediaInfo.thumbWidth * paramInt3 / paramLocalMediaInfo.thumbHeight;
+        paramInt2 = (paramInt2 - paramInt1) / 2;
+        localRect = new Rect(paramInt2, 0, paramInt1 + paramInt2, paramInt3);
+      }
+    }
+    while (paramInt1 != 2)
+    {
+      return localRect;
+      paramInt1 = paramLocalMediaInfo.thumbHeight * paramInt2 / paramLocalMediaInfo.thumbWidth;
+      paramInt3 = (paramInt3 - paramInt1) / 2;
+      return new Rect(0, paramInt3, paramInt2, paramInt1 + paramInt3);
+    }
+    if ((paramInt4 == 90) || (paramInt4 == 270))
+    {
+      paramInt1 = paramLocalMediaInfo.thumbHeight * paramInt2 / paramLocalMediaInfo.thumbWidth;
+      paramInt3 = (paramInt3 - paramInt1) / 2;
+      return new Rect(0, paramInt3, paramInt2, paramInt1 + paramInt3);
+    }
+    paramInt1 = paramLocalMediaInfo.thumbWidth * paramInt3 / paramLocalMediaInfo.thumbHeight;
+    paramInt2 = (paramInt2 - paramInt1) / 2;
+    return new Rect(paramInt2, 0, paramInt1 + paramInt2, paramInt3);
+  }
+  
   public static int getScaleMode(LocalMediaInfo paramLocalMediaInfo, int paramInt1, int paramInt2)
   {
     if ((paramInt1 == 0) || (paramInt2 == 0)) {
@@ -127,155 +152,62 @@ public class FlowThumbDecoder
   
   public static Bitmap getScaledBitmap(Context paramContext, LocalMediaInfo paramLocalMediaInfo, BitmapFactory.Options paramOptions, int paramInt)
   {
-    Object localObject = null;
     if (paramInt == 1) {
       paramOptions.inSampleSize = calcSampleSizeByShortSide(paramOptions.outWidth, paramLocalMediaInfo.thumbWidth);
     }
-    int j;
-    int k;
-    int i;
-    try
+    for (;;)
     {
-      for (;;)
+      Object localObject = null;
+      try
       {
-        paramOptions = getThumb(paramContext, paramLocalMediaInfo, paramOptions);
-        if (paramOptions != null) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("ThumbDecoder", 2, "decode bitmap return null,maybe oom");
-        }
-        paramLocalMediaInfo = paramOptions;
-        return paramLocalMediaInfo;
-        if (paramInt == 2) {
-          paramOptions.inSampleSize = calcSampleSizeByShortSide(paramOptions.outHeight, paramLocalMediaInfo.thumbHeight);
-        } else {
+        paramContext = getThumb(paramContext, paramLocalMediaInfo, paramOptions);
+        if (paramContext == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ThumbDecoder", 2, "decode bitmap return null,maybe oom");
+          }
+          return paramContext;
+          if (paramInt == 2)
+          {
+            paramOptions.inSampleSize = calcSampleSizeByShortSide(paramOptions.outHeight, paramLocalMediaInfo.thumbHeight);
+            continue;
+          }
           paramOptions.inSampleSize = calcSampleSizeByShortSide(paramOptions.outWidth, paramLocalMediaInfo.thumbWidth);
         }
       }
-    }
-    catch (OutOfMemoryError paramContext)
-    {
-      for (;;)
+      catch (OutOfMemoryError paramContext)
       {
-        paramContext.printStackTrace();
-        paramOptions = null;
-      }
-      j = paramOptions.getWidth();
-      k = paramOptions.getHeight();
-      i = paramLocalMediaInfo.orientation;
-      if ((paramInt == 0) && (i == 0) && (j == paramLocalMediaInfo.thumbWidth) && (k == paramLocalMediaInfo.thumbHeight) && (paramOptions.getConfig() == Bitmap.Config.RGB_565)) {
-        return paramOptions;
-      }
-      if (paramInt != 1) {
-        break label389;
-      }
-    }
-    if ((i == 90) || (i == 270))
-    {
-      paramInt = paramLocalMediaInfo.thumbWidth * k / paramLocalMediaInfo.thumbHeight;
-      j = (j - paramInt) / 2;
-      paramContext = new Rect(j, 0, paramInt + j, k);
-    }
-    for (;;)
-    {
-      label218:
-      Rect localRect = new Rect(0, 0, paramLocalMediaInfo.thumbWidth, paramLocalMediaInfo.thumbHeight);
-      Bitmap localBitmap = Bitmap.createBitmap(paramLocalMediaInfo.thumbWidth, paramLocalMediaInfo.thumbHeight, Bitmap.Config.RGB_565);
-      paramLocalMediaInfo = localObject;
-      if (localBitmap == null) {
-        break;
-      }
-      new Canvas(localBitmap).drawBitmap(paramOptions, paramContext, localRect, new Paint(6));
-      paramOptions.recycle();
-      if (i != 0) {}
-      for (paramOptions = rotate(localBitmap, i);; paramOptions = localBitmap)
-      {
-        paramLocalMediaInfo = paramOptions;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("FlowThumbDecoder", 2, "FlowThumbDecoder src " + paramContext + ", dst " + localRect);
-        return paramOptions;
-        paramInt = paramLocalMediaInfo.thumbHeight * j / paramLocalMediaInfo.thumbWidth;
-        k = (k - paramInt) / 2;
-        paramContext = new Rect(0, k, j, paramInt + k);
-        break label218;
-        label389:
-        if (paramInt != 2) {
-          break label497;
-        }
-        if ((i == 90) || (i == 270))
+        for (;;)
         {
-          paramInt = paramLocalMediaInfo.thumbHeight * j / paramLocalMediaInfo.thumbWidth;
-          k = (k - paramInt) / 2;
-          paramContext = new Rect(0, k, j, paramInt + k);
-          break label218;
+          paramContext.printStackTrace();
+          paramContext = localObject;
         }
-        paramInt = paramLocalMediaInfo.thumbWidth * k / paramLocalMediaInfo.thumbHeight;
-        j = (j - paramInt) / 2;
-        paramContext = new Rect(j, 0, paramInt + j, k);
-        break label218;
       }
-      label497:
-      paramContext = null;
     }
+    return scaleBitmap(paramLocalMediaInfo, paramInt, paramContext);
   }
   
   protected static Bitmap getThumb(Context paramContext, LocalMediaInfo paramLocalMediaInfo, BitmapFactory.Options paramOptions)
   {
     int i = QAlbumUtil.getMediaType(paramLocalMediaInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowThumbDecoder", 2, "[getThumb] type = " + i);
-    }
+    Object localObject = null;
     if (i == 0) {
-      try
-      {
-        paramContext = new SafeBitmapFactory.SafeDecodeOption();
-        paramContext.inOptions = paramOptions;
-        paramContext.inNeedFlashBackTest = true;
-        paramLocalMediaInfo = SafeBitmapFactory.safeDecode(paramLocalMediaInfo.path, paramContext);
-        if (QLog.isColorLevel()) {
-          QLog.d("FlowThumbDecoder", 2, "FlowThumbDecoder regionDecodeInfo:" + paramContext.toString());
-        }
-        if ((!paramContext.isInJustDecodeBounds) && (paramContext.needRegionDecode))
-        {
-          paramOptions = paramContext.getInfo();
-          paramOptions.put("from", "FlowThumbDecoder");
-          StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-          boolean bool = paramContext.isGetBitmap;
-          long l = paramContext.runTime;
-          i = paramContext.rawHeight;
-          localStatisticCollector.collectPerformance(null, "safeDecode", bool, l, paramContext.rawWidth * i, paramOptions, "");
-        }
-        return paramLocalMediaInfo;
-      }
-      catch (OutOfMemoryError paramContext)
-      {
-        paramContext = paramContext;
-        return null;
-      }
-      finally {}
+      localObject = realDecodeBitmap(paramLocalMediaInfo, paramOptions, "FlowThumbDecoder");
     }
-    if (i == 1)
+    while (i != 1) {
+      return localObject;
+    }
+    if (paramLocalMediaInfo.isSystemMeidaStore) {}
+    for (paramContext = MediaStore.Video.Thumbnails.getThumbnail(paramContext.getContentResolver(), paramLocalMediaInfo._id, 1, paramOptions);; paramContext = ThumbnailUtils.createVideoThumbnail(paramLocalMediaInfo.path, 1))
     {
-      if (paramLocalMediaInfo.isSystemMeidaStore) {}
-      for (paramContext = MediaStore.Video.Thumbnails.getThumbnail(paramContext.getContentResolver(), paramLocalMediaInfo._id, 1, paramOptions);; paramContext = ThumbnailUtils.createVideoThumbnail(paramLocalMediaInfo.path, 1))
-      {
-        paramLocalMediaInfo = paramContext;
-        if (paramOptions == null) {
-          break;
-        }
-        paramLocalMediaInfo = paramContext;
-        if (paramContext == null) {
-          break;
-        }
-        paramOptions.outHeight = paramContext.getHeight();
-        paramOptions.outWidth = paramContext.getWidth();
-        return paramContext;
+      localObject = paramContext;
+      if (paramContext == null) {
+        break;
       }
+      paramOptions.outHeight = paramContext.getHeight();
+      paramOptions.outWidth = paramContext.getWidth();
+      return paramContext;
     }
-    return null;
   }
   
   public static Bitmap rotate(Bitmap paramBitmap, int paramInt)
@@ -311,6 +243,33 @@ public class FlowThumbDecoder
     }
   }
   
+  private static Bitmap scaleBitmap(LocalMediaInfo paramLocalMediaInfo, int paramInt, Bitmap paramBitmap)
+  {
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    int k = paramLocalMediaInfo.orientation;
+    if ((paramInt == 0) && (checkBitmapValid(paramLocalMediaInfo, paramBitmap, k))) {
+      return paramBitmap;
+    }
+    Rect localRect1 = getRect(paramLocalMediaInfo, paramInt, i, j, k);
+    Rect localRect2 = new Rect(0, 0, paramLocalMediaInfo.thumbWidth, paramLocalMediaInfo.thumbHeight);
+    Bitmap localBitmap = Bitmap.createBitmap(paramLocalMediaInfo.thumbWidth, paramLocalMediaInfo.thumbHeight, Bitmap.Config.RGB_565);
+    if (localBitmap != null)
+    {
+      new Canvas(localBitmap).drawBitmap(paramBitmap, localRect1, localRect2, new Paint(6));
+      paramBitmap.recycle();
+      paramLocalMediaInfo = localBitmap;
+      if (k != 0) {
+        paramLocalMediaInfo = rotate(localBitmap, k);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("FlowThumbDecoder", 2, "FlowThumbDecoder src " + localRect1 + ", dst " + localRect2);
+      }
+      return paramLocalMediaInfo;
+    }
+    return null;
+  }
+  
   public Bitmap getBitmap(URL paramURL)
   {
     paramURL = this.mContext;
@@ -318,9 +277,7 @@ public class FlowThumbDecoder
     int i = URLDrawableHelper.getExifRotation(localLocalMediaInfo.path);
     if ((i != 0) && (i != localLocalMediaInfo.orientation))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FlowThumbDecoder", 2, "FlowThumbDecoder rotation not same, rotation:" + i + " info orientation: " + localLocalMediaInfo.orientation);
-      }
+      QLog.w("FlowThumbDecoder", 1, "FlowThumbDecoder rotation not same, rotation:" + i + " info orientation: " + localLocalMediaInfo.orientation);
       localLocalMediaInfo.orientation = i;
     }
     if ((i == 90) || (i == 270)) {
@@ -351,7 +308,7 @@ public class FlowThumbDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.FlowThumbDecoder
  * JD-Core Version:    0.7.0.1
  */

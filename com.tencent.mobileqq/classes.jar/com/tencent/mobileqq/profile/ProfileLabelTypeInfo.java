@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.profile;
 
+import com.tencent.mobileqq.profilecard.entity.ProfileLabelInfo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

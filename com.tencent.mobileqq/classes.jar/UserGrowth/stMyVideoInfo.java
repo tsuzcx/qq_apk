@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stMyVideoInfo
   extends JceStruct
 {
-  public int flag;
+  public int flag = 0;
   public String jumpurl = "";
   
   public stMyVideoInfo() {}

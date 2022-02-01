@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public abstract interface ShortVideoConstants
 {
@@ -17,6 +17,8 @@ public abstract interface ShortVideoConstants
   public static final int CODEC_STOP_RECODER = 3;
   public static final int CODEC_VIEW_INIT = 5;
   public static final int CUSTOM_CAMERA = 1;
+  public static final String[] DEBUG_BITRATES = { "1000", "2000", "4000", "8000" };
+  public static final String[] DEBUG_RESOLUTIONS;
   public static final String DEFAULT_CAMERA_MODE = "default_camera_mode";
   public static final String DEFAULT_DEAL_TYPE = "default_deal_type";
   public static final String DEFAULT_MEDIACODEC_SWITCH = "bless_mediacodec_switch";
@@ -169,9 +171,9 @@ public abstract interface ShortVideoConstants
   public static final int MAX_LENGTH_DEFAULT = 1280;
   public static final long MAX_SIZE_DEFAULT = 754974720L;
   public static final String MEDIA_INFO = "media_info";
-  public static final String MESSAGEFORSHORTVIDEO_MSG = anvx.a(2131713484);
+  public static final String MESSAGEFORSHORTVIDEO_MSG = HardCodeUtil.a(2131713980);
   public static final String MESSAGE_CLICK_START = "message_click_start";
-  public static final String MESSAGE_FOR_SHORT_VIDEO_PTV = anvx.a(2131713510);
+  public static final String MESSAGE_FOR_SHORT_VIDEO_PTV = HardCodeUtil.a(2131714006);
   public static final long MIN_BITRATE_DEFAULT = 1048576L;
   public static final double MIN_DENSITY_DEFAULT = 0.067D;
   public static final String MP_VIDEO_COVER = "video_cover";
@@ -306,10 +308,15 @@ public abstract interface ShortVideoConstants
   public static final int VIDEO_TYPE_SLIDE_SHOW = 2;
   public static final int VIDEO_TYPE_TEXT = 3;
   public static final String VIDEO_URL = "video_url";
+  
+  static
+  {
+    DEBUG_RESOLUTIONS = new String[] { "1920*1080", "1280*720", "960*720", "640*480" };
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoConstants
  * JD-Core Version:    0.7.0.1
  */

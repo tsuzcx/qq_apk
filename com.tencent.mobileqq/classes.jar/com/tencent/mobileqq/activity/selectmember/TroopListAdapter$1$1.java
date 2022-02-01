@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alzc;
-import alzd;
 import android.os.Bundle;
 import android.os.Handler;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
@@ -15,15 +14,14 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import ntf;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspBody;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
 
-public class TroopListAdapter$1$1
+class TroopListAdapter$1$1
   implements Runnable
 {
-  public TroopListAdapter$1$1(alzd paramalzd, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
+  TroopListAdapter$1$1(TroopListAdapter.1 param1, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
   
   public void run()
   {
@@ -59,7 +57,7 @@ public class TroopListAdapter$1$1
       localArrayList = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("TroopList");
       if (localArrayList != null)
       {
-        alzc.a((QQAppInterface)alzc.a(this.jdField_a_of_type_Alzd.a).b.get(), alzc.a(this.jdField_a_of_type_Alzd.a), localArrayList);
+        TroopListAdapter.a((QQAppInterface)TroopListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopListAdapter$1.a).b.get(), TroopListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopListAdapter$1.a), localArrayList);
         return;
       }
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopListAdapter.1.1.1(this));
@@ -68,7 +66,7 @@ public class TroopListAdapter$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.vas;
 
 import android.os.Handler;
-import bhmb;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ColorNickManager$2
+class ColorNickManager$2
   implements Runnable
 {
-  public ColorNickManager$2(bhmb parambhmb, int paramInt) {}
+  ColorNickManager$2(ColorNickManager paramColorNickManager, int paramInt) {}
   
   public void run()
   {
-    Object localObject = new File(bhmb.a(String.valueOf(this.a)));
+    Object localObject = new File(ColorNickManager.a(String.valueOf(this.a)));
     if (((File)localObject).exists())
     {
-      localObject = bhmb.a(this.this$0, (File)localObject, this.a);
+      localObject = ColorNickManager.a(this.this$0, (File)localObject, this.a);
       if (localObject != null)
       {
         this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.a), localObject);
@@ -25,12 +24,12 @@ public class ColorNickManager$2
       }
       return;
     }
-    bhmb.a(this.this$0, this.a);
+    ColorNickManager.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickManager.2
  * JD-Core Version:    0.7.0.1
  */

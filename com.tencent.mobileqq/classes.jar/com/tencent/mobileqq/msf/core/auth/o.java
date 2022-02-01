@@ -2,6 +2,7 @@ package com.tencent.mobileqq.msf.core.auth;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.List;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import oicq.wlogin_sdk.request.WFastLoginInfo;
@@ -305,6 +306,17 @@ class o
     QLog.d("MSF.C.WTLoginCenter", 1, "OnRegCheckDownloadMsg found unknown userSigInfo " + paramWUserSigInfo);
   }
   
+  public void OnRegCheckIframe(WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, Object paramObject)
+  {
+    p localp = n.b(paramWUserSigInfo);
+    if (localp != null)
+    {
+      localp.a(paramWUserSigInfo, paramArrayOfByte, paramObject);
+      return;
+    }
+    QLog.d("MSF.C.WTLoginCenter", 1, "OnRegCheckIframe found unknown userSigInfo " + paramWUserSigInfo);
+  }
+  
   public void OnRegCheckUploadMsg(WUserSigInfo paramWUserSigInfo, String paramString)
   {
     p localp = n.b(paramWUserSigInfo);
@@ -452,7 +464,7 @@ class o
     p localp = n.b(paramWUserSigInfo);
     if (localp != null)
     {
-      localp.a(paramString1, paramString2, paramInt, paramErrMsg);
+      localp.a(paramString1, paramString2, paramWUserSigInfo, paramInt, paramErrMsg);
       return;
     }
     QLog.d("MSF.C.WTLoginCenter", 1, "OnVerifySMSVerifyLoginAccount found unknown userSigInfo " + paramWUserSigInfo);
@@ -467,6 +479,24 @@ class o
       return;
     }
     QLog.d("MSF.C.WTLoginCenter", 1, "onGetA1WithA1 found unknown userSigInfo " + paramWUserSigInfo);
+  }
+  
+  public void onLoginByGateway(int paramInt, WUserSigInfo paramWUserSigInfo, String paramString, ErrMsg paramErrMsg, HashMap paramHashMap)
+  {
+    if (QLog.isDevelopLevel())
+    {
+      QLog.d("WtloginCenterCallback", 4, "onLoginByGateway ret =" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("WtloginCenterCallback", 4, "onLoginByGateway errMsg =" + paramErrMsg.getMessage());
+      }
+    }
+    p localp = n.b(paramWUserSigInfo);
+    if (localp != null)
+    {
+      localp.a(paramInt, paramWUserSigInfo, paramString, paramErrMsg, paramHashMap);
+      return;
+    }
+    QLog.d("MSF.C.WTLoginCenter", 1, "onLoginByGateway found unknown userSigInfo " + paramWUserSigInfo);
   }
 }
 

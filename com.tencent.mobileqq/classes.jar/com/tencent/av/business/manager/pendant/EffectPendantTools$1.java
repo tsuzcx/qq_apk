@@ -1,20 +1,19 @@
 package com.tencent.av.business.manager.pendant;
 
+import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import lid;
-import nwp;
 
-public class EffectPendantTools$1
+class EffectPendantTools$1
   implements Runnable
 {
-  public EffectPendantTools$1(lid paramlid, File paramFile, PendantItem paramPendantItem) {}
+  EffectPendantTools$1(EffectPendantTools paramEffectPendantTools, File paramFile, PendantItem paramPendantItem) {}
   
   public void run()
   {
     try
     {
-      nwp.a(this.jdField_a_of_type_JavaIoFile, this.this$0.b(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem));
+      ZipUtils.unZipFile(this.jdField_a_of_type_JavaIoFile, this.this$0.b(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem));
       return;
     }
     catch (Exception localException)
@@ -26,7 +25,7 @@ public class EffectPendantTools$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTools.1
  * JD-Core Version:    0.7.0.1
  */

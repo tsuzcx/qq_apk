@@ -2,13 +2,14 @@ package com.tencent.thumbplayer.api;
 
 public class TPOptionalParam
 {
-  public static final int TP_OPTIONAL_RARAM_TYPE_BOOLEAN = 1;
-  public static final int TP_OPTIONAL_RARAM_TYPE_FLOAT = 6;
-  public static final int TP_OPTIONAL_RARAM_TYPE_LONG = 2;
-  public static final int TP_OPTIONAL_RARAM_TYPE_QUEUE_INT = 4;
-  public static final int TP_OPTIONAL_RARAM_TYPE_QUEUE_STRING = 5;
-  public static final int TP_OPTIONAL_RARAM_TYPE_STRING = 3;
-  public static final int TP_OPTIONAL_RARAM_TYPE_UNKNOW = -1;
+  public static final int TP_OPTIONAL_PARAM_TYPE_BOOLEAN = 1;
+  public static final int TP_OPTIONAL_PARAM_TYPE_FLOAT = 6;
+  public static final int TP_OPTIONAL_PARAM_TYPE_LONG = 2;
+  public static final int TP_OPTIONAL_PARAM_TYPE_QUEUE_INT = 4;
+  public static final int TP_OPTIONAL_PARAM_TYPE_QUEUE_STRING = 5;
+  public static final int TP_OPTIONAL_PARAM_TYPE_STRING = 3;
+  public static final int TP_OPTIONAL_PARAM_TYPE_UNKNOWN = -1;
+  @TPCommonEnum.TPOptionalId
   private int key;
   private TPOptionalParam.OptionalParamBoolean paramBoolean;
   private TPOptionalParam.OptionalParamFloat paramFloat;
@@ -18,7 +19,7 @@ public class TPOptionalParam
   private TPOptionalParam.OptionalParamString paramString;
   private int paramType = -1;
   
-  public TPOptionalParam buildBoolean(int paramInt, boolean paramBoolean1)
+  public TPOptionalParam buildBoolean(@TPCommonEnum.TPOptionalId int paramInt, boolean paramBoolean1)
   {
     this.paramType = 1;
     this.key = paramInt;
@@ -27,7 +28,7 @@ public class TPOptionalParam
     return this;
   }
   
-  public TPOptionalParam buildFloat(int paramInt, float paramFloat1)
+  public TPOptionalParam buildFloat(@TPCommonEnum.TPOptionalId int paramInt, float paramFloat1)
   {
     this.paramType = 6;
     this.key = paramInt;
@@ -36,7 +37,7 @@ public class TPOptionalParam
     return this;
   }
   
-  public TPOptionalParam buildFloat(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
+  public TPOptionalParam buildFloat(@TPCommonEnum.TPOptionalId int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     this.paramType = 6;
     this.key = paramInt;
@@ -47,7 +48,7 @@ public class TPOptionalParam
     return this;
   }
   
-  public TPOptionalParam buildLong(int paramInt, long paramLong1)
+  public TPOptionalParam buildLong(@TPCommonEnum.TPOptionalId int paramInt, long paramLong1)
   {
     this.paramType = 2;
     this.key = paramInt;
@@ -56,7 +57,7 @@ public class TPOptionalParam
     return this;
   }
   
-  public TPOptionalParam buildLong(int paramInt, long paramLong1, long paramLong2, long paramLong3)
+  public TPOptionalParam buildLong(@TPCommonEnum.TPOptionalId int paramInt, long paramLong1, long paramLong2, long paramLong3)
   {
     this.paramType = 2;
     this.key = paramInt;
@@ -67,7 +68,7 @@ public class TPOptionalParam
     return this;
   }
   
-  public TPOptionalParam buildQueueInt(int paramInt, int[] paramArrayOfInt)
+  public TPOptionalParam buildQueueInt(@TPCommonEnum.TPOptionalId int paramInt, int[] paramArrayOfInt)
   {
     this.paramType = 4;
     this.key = paramInt;
@@ -76,7 +77,7 @@ public class TPOptionalParam
     return this;
   }
   
-  public TPOptionalParam buildQueueString(int paramInt, String[] paramArrayOfString)
+  public TPOptionalParam buildQueueString(@TPCommonEnum.TPOptionalId int paramInt, String[] paramArrayOfString)
   {
     this.paramType = 5;
     this.key = paramInt;
@@ -85,7 +86,7 @@ public class TPOptionalParam
     return this;
   }
   
-  public TPOptionalParam buildString(int paramInt, String paramString1)
+  public TPOptionalParam buildString(@TPCommonEnum.TPOptionalId int paramInt, String paramString1)
   {
     this.paramType = 3;
     this.key = paramInt;
@@ -94,7 +95,7 @@ public class TPOptionalParam
     return this;
   }
   
-  public TPOptionalParam buildString(int paramInt, String paramString1, String paramString2, String paramString3)
+  public TPOptionalParam buildString(@TPCommonEnum.TPOptionalId int paramInt, String paramString1, String paramString2, String paramString3)
   {
     this.paramType = 3;
     this.key = paramInt;
@@ -105,6 +106,7 @@ public class TPOptionalParam
     return this;
   }
   
+  @TPCommonEnum.TPOptionalId
   public int getKey()
   {
     return this.key;
@@ -153,20 +155,20 @@ public class TPOptionalParam
     switch (this.paramType)
     {
     default: 
-      localStringBuilder.append("type:unkonw");
+      localStringBuilder.append("type:unknown");
     }
     for (;;)
     {
       return localStringBuilder.toString();
-      localStringBuilder.append("type:long, , key:" + this.key + ", value:" + this.paramBoolean.value);
+      localStringBuilder.append("type:long, key:" + this.key + ", value:" + this.paramBoolean.value);
       continue;
-      localStringBuilder.append("type:long, , key:" + this.key + ", value:" + this.paramLong.value + "param1, :" + this.paramLong.param1 + ", param2:" + this.paramLong.param2);
+      localStringBuilder.append("type:long, key:" + this.key + ", value:" + this.paramLong.value + ", param1:" + this.paramLong.param1 + ", param2:" + this.paramLong.param2);
       continue;
-      localStringBuilder.append("type:float, , key:" + this.key + ", value:" + this.paramFloat.value + "param1, :" + this.paramFloat.param1 + ", param2:" + this.paramFloat.param2);
+      localStringBuilder.append("type:float, key:" + this.key + ", value:" + this.paramFloat.value + ", param1:" + this.paramFloat.param1 + ", param2:" + this.paramFloat.param2);
       continue;
-      localStringBuilder.append("type:string, , key:" + this.key + ", value:" + this.paramString.value + "param1, :" + this.paramString.param1 + ", param2:" + this.paramString.param2);
+      localStringBuilder.append("type:string, key:" + this.key + ", value:" + this.paramString.value + ", param1:" + this.paramString.param1 + ", param2:" + this.paramString.param2);
       continue;
-      localStringBuilder.append("type:quint_int, , key:" + this.key + ", value:");
+      localStringBuilder.append("type:quint_int, key:" + this.key + ", value:");
       if (this.paramQueueInt.queueValue != null)
       {
         Object localObject = this.paramQueueInt.queueValue;
@@ -178,7 +180,7 @@ public class TPOptionalParam
           localStringBuilder.append(k + ", ");
           i += 1;
         }
-        localStringBuilder.append("type:quint_string, , key:" + this.key + ", value:");
+        localStringBuilder.append("type:quint_string, key:" + this.key + ", value:");
         if (this.paramQueueString.queueValue != null)
         {
           localObject = this.paramQueueString.queueValue;
@@ -197,7 +199,7 @@ public class TPOptionalParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPOptionalParam
  * JD-Core Version:    0.7.0.1
  */

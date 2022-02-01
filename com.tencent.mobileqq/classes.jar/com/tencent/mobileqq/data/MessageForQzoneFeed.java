@@ -43,8 +43,8 @@ public class MessageForQzoneFeed
   public int gender = 0;
   public boolean hasExposed;
   public int imageCount;
-  public boolean isFirstMsgWithNewFriend;
-  public boolean isOldStructMsg;
+  public boolean isFirstMsgWithNewFriend = false;
+  public boolean isOldStructMsg = false;
   public String lbsInfo;
   public HashMap<String, String> mapExt;
   public ArrayList<MessageForQzoneFeed.MediaData> mediaDatas;
@@ -157,7 +157,7 @@ public class MessageForQzoneFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQzoneFeed
  * JD-Core Version:    0.7.0.1
  */

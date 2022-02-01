@@ -10,31 +10,31 @@ public class MarkFaceMessage
 {
   public static final long serialVersionUID = 102222L;
   public String backColor;
-  public long beginTime;
+  public long beginTime = 0L;
   public int cFaceInfo = 1;
   public int cSubType = 3;
   public String copywritingContent;
-  public int copywritingType;
+  public int copywritingType = 0;
   public int dwMSGItemType = 6;
   public int dwTabID;
-  public long endTime;
-  public String faceName;
+  public long endTime = 0L;
+  public String faceName = null;
   public String from;
-  public boolean hasIpProduct;
-  public int imageHeight;
-  public int imageWidth;
-  public long index;
-  public boolean isAPNG;
-  public boolean isReword;
+  public boolean hasIpProduct = false;
+  public int imageHeight = 0;
+  public int imageWidth = 0;
+  public long index = 0L;
+  public boolean isAPNG = false;
+  public boolean isReword = false;
   public String jumpUrl;
-  public int mediaType;
+  public int mediaType = 0;
   public byte[] mobileparam;
   public byte[] resvAttr;
   public byte[] sbfKey;
   public byte[] sbufID;
-  public boolean shouldDisplay;
-  public boolean showIpProduct;
-  public EmojiStickerManager.StickerInfo stickerInfo;
+  public boolean shouldDisplay = false;
+  public boolean showIpProduct = false;
+  public EmojiStickerManager.StickerInfo stickerInfo = null;
   public List<Integer> voicePrintItems;
   public String volumeColor;
   public int wSize = 37;
@@ -46,7 +46,7 @@ public class MarkFaceMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MarkFaceMessage
  * JD-Core Version:    0.7.0.1
  */

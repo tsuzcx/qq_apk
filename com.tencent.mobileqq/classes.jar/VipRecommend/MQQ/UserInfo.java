@@ -9,7 +9,7 @@ public final class UserInfo
 {
   public String aid = "";
   public String clientIp = "";
-  public int isIOSJailbreak;
+  public int isIOSJailbreak = 0;
   public String platform = "";
   public String type = "";
   public String uin = "";

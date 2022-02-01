@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.managers;
 
 import android.text.TextUtils;
-import awtd;
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class CUOpenCardGuideMng$CUOpenCardClickableSpan$1
+class CUOpenCardGuideMng$CUOpenCardClickableSpan$1
   implements Runnable
 {
-  public CUOpenCardGuideMng$CUOpenCardClickableSpan$1(awtd paramawtd) {}
+  CUOpenCardGuideMng$CUOpenCardClickableSpan$1(CUOpenCardGuideMng.CUOpenCardClickableSpan paramCUOpenCardClickableSpan) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class CUOpenCardGuideMng$CUOpenCardClickableSpan$1
     for (;;)
     {
       if (!TextUtils.isEmpty(str)) {
-        bdla.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
       }
       return;
       if (this.this$0.a == 2) {

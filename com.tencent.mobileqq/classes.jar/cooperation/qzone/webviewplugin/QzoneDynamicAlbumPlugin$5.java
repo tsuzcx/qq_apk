@@ -1,6 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,10 @@ import java.util.List;
 class QzoneDynamicAlbumPlugin$5
   extends Handler
 {
-  QzoneDynamicAlbumPlugin$5(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
+  QzoneDynamicAlbumPlugin$5(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
   public void handleMessage(Message paramMessage)
   {
@@ -27,7 +31,7 @@ class QzoneDynamicAlbumPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin.5
  * JD-Core Version:    0.7.0.1
  */

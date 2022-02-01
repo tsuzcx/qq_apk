@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.apollo;
 
-import android.widget.PopupWindow;
+import android.widget.EditText;
 
 final class ApolloRender$23
   implements Runnable
 {
-  ApolloRender$23(ApolloRender paramApolloRender) {}
+  ApolloRender$23(ApolloRender paramApolloRender, String paramString) {}
   
   public void run()
   {
-    if (this.a.mShowEditWindow)
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.getText().toString().compareToIgnoreCase(this.jdField_a_of_type_JavaLangString) != 0))
     {
-      this.a.mEditWindow.dismiss();
-      this.a.mShowEditWindow = false;
-      ApolloRender.sIsKeyBoardDissmiss = true;
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setText(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setSelection(this.jdField_a_of_type_JavaLangString.length());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.23
  * JD-Core Version:    0.7.0.1
  */

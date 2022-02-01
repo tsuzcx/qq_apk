@@ -5,55 +5,51 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.widget.QQUIDelegate;
 
 public class ThemeURLImageView
   extends URLImageView
 {
-  public static String a;
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
-  boolean jdField_a_of_type_Boolean = true;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "1000";
-  }
+  public static String CUR_THEMEID = "1000";
+  boolean isSupportMaskView = true;
+  Paint mPaint;
   
   public ThemeURLImageView(Context paramContext)
   {
     super(paramContext);
-    a();
+    init();
   }
   
   public ThemeURLImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    init();
   }
   
   public ThemeURLImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    init();
   }
   
-  private void a()
+  private void init()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
+    this.mPaint = new Paint();
+    this.mPaint.setAntiAlias(true);
+    this.mPaint.setColorFilter(QQTheme.a);
   }
   
   public static void setCurThemeId(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    CUR_THEMEID = paramString;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_Boolean) && (ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId)))
+    if ((this.isSupportMaskView) && (QQUIDelegate.b()))
     {
-      paramCanvas.saveLayer(null, this.jdField_a_of_type_AndroidGraphicsPaint, 31);
+      paramCanvas.saveLayer(null, this.mPaint, 31);
       super.onDraw(paramCanvas);
       paramCanvas.restore();
       return;
@@ -63,12 +59,12 @@ public class ThemeURLImageView
   
   public void setSupportMaskView(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.isSupportMaskView = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ThemeURLImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.studyroom.download;
 
-import bdwi;
-import bdwk;
 import com.tencent.hlyyb.downloader.DownloaderTask;
 
-public class DownloadTaskListenerBridge$1
+class DownloadTaskListenerBridge$1
   implements Runnable
 {
-  public DownloadTaskListenerBridge$1(bdwi parambdwi, DownloaderTask paramDownloaderTask) {}
+  DownloadTaskListenerBridge$1(DownloadTaskListenerBridge paramDownloadTaskListenerBridge, DownloaderTask paramDownloaderTask) {}
   
   public void run()
   {
-    if (bdwi.a(this.this$0) != null) {
-      bdwi.a(this.this$0).c(this.a);
+    if (DownloadTaskListenerBridge.a(this.this$0) != null) {
+      DownloadTaskListenerBridge.a(this.this$0).c(this.a);
     }
   }
 }

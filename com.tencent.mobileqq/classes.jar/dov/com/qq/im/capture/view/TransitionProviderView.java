@@ -7,77 +7,73 @@ import android.os.Looper;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
-import anvx;
-import bivb;
-import bkys;
-import bogd;
-import bohj;
-import boiw;
-import boje;
-import boop;
-import boph;
-import bopi;
-import bopo;
-import boun;
-import bpjt;
-import bpju;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowConfigManager;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowConfigManager.Music;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
 import com.tencent.image.ApngImage;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.mobileqq.widget.bounce.BounceViewPager;
+import com.tencent.mobileqq.widget.bounce.BounceViewPager.PageChangedObserver;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import dov.com.qq.im.capture.QIMManager;
 import dov.com.qq.im.capture.adapter.TransitionProviderPagerAdapter;
+import dov.com.qq.im.capture.data.CaptureComboManager;
 import dov.com.qq.im.capture.data.FilterCategory;
 import dov.com.qq.im.capture.data.TransitionCategoryItem;
+import dov.com.qq.im.capture.music.MusicDownloadListener;
 import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.music.QimMusicPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoTransfer;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools.ComboFilterData;
 import java.util.ArrayList;
 import java.util.List;
-import ykv;
-import yzw;
-import yzx;
-import yzz;
 
 public class TransitionProviderView
   extends ProviderView
-  implements Handler.Callback, bivb, boph, AdapterView.OnItemClickListener
+  implements Handler.Callback, BounceViewPager.PageChangedObserver, AdapterView.OnItemClickListener, QIMSlidingTabView.IOnTabCheckListener
 {
   public int a;
-  public bkys a;
-  boiw jdField_a_of_type_Boiw = new bopo(this);
   public MusicItemInfo a;
   private BounceViewPager jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager;
+  WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
   private TransitionProviderPagerAdapter jdField_a_of_type_DovComQqImCaptureAdapterTransitionProviderPagerAdapter;
+  MusicDownloadListener jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener = new TransitionProviderView.1(this);
   public ArrayList<FilterCategory> a;
-  public int b;
+  public int b = -1;
+  public int c = 0;
   
   public TransitionProviderView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Bkys = new bkys(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Int = 0;
   }
   
   private void a(MusicItemInfo paramMusicItemInfo)
   {
-    boje localboje;
+    QimMusicPlayer localQimMusicPlayer;
     if (paramMusicItemInfo != null)
     {
-      localboje = (boje)bogd.a().c(8);
-      if ((localboje == null) || (!localboje.b(paramMusicItemInfo))) {
+      localQimMusicPlayer = (QimMusicPlayer)QIMManager.a().c(8);
+      if ((localQimMusicPlayer == null) || (!localQimMusicPlayer.b(paramMusicItemInfo))) {
         break label52;
       }
-      localboje.a(paramMusicItemInfo);
-      if (this.jdField_a_of_type_Boop != null) {
-        this.jdField_a_of_type_Boop.c(true);
+      localQimMusicPlayer.a(paramMusicItemInfo);
+      if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener != null) {
+        this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.c(true);
       }
     }
     label52:
-    while (localboje == null) {
+    while (localQimMusicPlayer == null) {
       return;
     }
-    localboje.a(paramMusicItemInfo, this.jdField_a_of_type_Boiw);
+    localQimMusicPlayer.a(paramMusicItemInfo, this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener);
   }
   
   protected int a()
@@ -85,17 +81,17 @@ public class TransitionProviderView
     return 0;
   }
   
-  public ArrayList<bopi> a()
+  public ArrayList<QIMSlidingTabView.TabIcon> a()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      bopi localbopi = new bopi();
-      localbopi.jdField_a_of_type_JavaLangString = ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
-      localbopi.jdField_a_of_type_Boolean = false;
-      localbopi.b = (anvx.a(2131714426) + localbopi.jdField_a_of_type_JavaLangString + anvx.a(2131714427));
-      localArrayList.add(localbopi);
+      QIMSlidingTabView.TabIcon localTabIcon = new QIMSlidingTabView.TabIcon();
+      localTabIcon.jdField_a_of_type_JavaLangString = ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
+      localTabIcon.jdField_a_of_type_Boolean = false;
+      localTabIcon.b = (HardCodeUtil.a(2131714921) + localTabIcon.jdField_a_of_type_JavaLangString + HardCodeUtil.a(2131714922));
+      localArrayList.add(localTabIcon);
       i += 1;
     }
     return localArrayList;
@@ -127,11 +123,11 @@ public class TransitionProviderView
     super.a(paramBundle);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     if (this.jdField_a_of_type_AndroidViewView == null) {}
-    for (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)LayoutInflater.from(getContext()).inflate(2131560921, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)this.jdField_a_of_type_AndroidViewView))
+    for (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)LayoutInflater.from(getContext()).inflate(2131561010, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)this.jdField_a_of_type_AndroidViewView))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.a(this);
       a(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager);
-      paramBundle = ((bohj)bogd.a(5)).a;
+      paramBundle = ((CaptureComboManager)QIMManager.a(5)).a;
       if (paramBundle != null) {
         break;
       }
@@ -198,18 +194,18 @@ public class TransitionProviderView
           break;
         }
         paramView = (TransitionCategoryItem)paramAdapterView.jdField_a_of_type_JavaUtilList.get(paramInt);
-        if ((paramView != null) && (!paramView.equals(bpjt.a().a())))
+        if ((paramView != null) && (!paramView.equals(VideoFilterTools.a().a())))
         {
-          bpjt.a().a(paramView);
+          VideoFilterTools.a().a(paramView);
           g();
-          if (this.jdField_a_of_type_Boop != null)
+          if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener != null)
           {
             paramInt = Integer.parseInt(paramView.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_Boop.d(paramInt);
+            this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.d(paramInt);
           }
-          ykv.a("video_edit_transition", "clk_effects", boun.a(this.jdField_a_of_type_Int), 0, new String[] { paramView.k, paramView.n, paramView.l, paramView.m });
+          StoryReportor.a("video_edit_transition", "clk_effects", EditVideoTransfer.a(this.b), 0, new String[] { paramView.k, paramView.n, paramView.l, paramView.m });
         }
-        if (yzz.a().b() == 22)
+        if (SlideShowPhotoListManager.a().b() == 22)
         {
           if ((paramView == null) || (Integer.valueOf(paramView.jdField_a_of_type_JavaLangString).intValue() >= 0)) {
             break label307;
@@ -220,11 +216,11 @@ public class TransitionProviderView
         {
           paramAdapterView = new MusicItemInfo();
           paramAdapterView.mType = 2;
-          paramView = yzw.a(getContext()).a(paramView.k);
+          paramView = SlideShowConfigManager.a(getContext()).a(paramView.k);
           if ((paramView == null) || (paramView.size() <= 0)) {
             break label372;
           }
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = ((QIMMusicConfigManager)bogd.a(2)).a(((yzx)paramView.get(0)).jdField_a_of_type_Int, ((yzx)paramView.get(0)).b);
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = ((QIMMusicConfigManager)QIMManager.a(2)).a(((SlideShowConfigManager.Music)paramView.get(0)).jdField_a_of_type_Int, ((SlideShowConfigManager.Music)paramView.get(0)).b);
           if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) {
             break label366;
           }
@@ -268,14 +264,14 @@ public class TransitionProviderView
       this.jdField_a_of_type_DovComQqImCaptureAdapterTransitionProviderPagerAdapter.a(this);
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setAdapter(this.jdField_a_of_type_DovComQqImCaptureAdapterTransitionProviderPagerAdapter);
       this.jdField_a_of_type_DovComQqImCaptureAdapterTransitionProviderPagerAdapter.notifyDataSetChanged();
-    } while (this.jdField_a_of_type_JavaUtilArrayList.size() <= this.b);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setCurrentItem(this.b);
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.onTabChecked(this.b);
+    } while (this.jdField_a_of_type_JavaUtilArrayList.size() <= this.c);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setCurrentItem(this.c);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.onTabChecked(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.capture.view.TransitionProviderView
  * JD-Core Version:    0.7.0.1
  */

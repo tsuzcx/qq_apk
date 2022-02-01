@@ -3,8 +3,8 @@ package cooperation.qzone.webviewplugin;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
-import bifw;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import cooperation.qzone.util.QZLog;
 
 public class QzoneWanbaJsPlugin
@@ -16,7 +16,7 @@ public class QzoneWanbaJsPlugin
   public static final String KEY_RESULT = "ret";
   private static final String TAG = "QzoneWanbaJsPlugin";
   BroadcastReceiver mReceiver = new QzoneWanbaJsPlugin.1(this);
-  private volatile boolean mReceiverRegistered;
+  private volatile boolean mReceiverRegistered = false;
   
   private void registerBroadcast()
   {
@@ -156,8 +156,8 @@ public class QzoneWanbaJsPlugin
     //   123: invokespecial 152	cooperation/qzone/webviewplugin/QzoneWanbaJsPlugin:registerBroadcast	()V
     //   126: aload_0
     //   127: getfield 59	cooperation/qzone/webviewplugin/QzoneWanbaJsPlugin:parentPlugin	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;
-    //   130: getfield 65	com/tencent/mobileqq/webview/swift/WebViewPlugin:mRuntime	Lbifw;
-    //   133: invokevirtual 71	bifw:a	()Landroid/app/Activity;
+    //   130: getfield 65	com/tencent/mobileqq/webview/swift/WebViewPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   133: invokevirtual 71	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
     //   136: aload_3
     //   137: invokestatic 158	cooperation/qzone/QZoneHelper:launchQZoneEncourageAdvActivity	(Landroid/app/Activity;Ljava/lang/String;)V
     //   140: goto -44 -> 96
@@ -196,7 +196,7 @@ public class QzoneWanbaJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneWanbaJsPlugin
  * JD-Core Version:    0.7.0.1
  */

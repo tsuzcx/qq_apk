@@ -32,6 +32,8 @@ public class TPProxyEnumUtils
       return 9;
     case 10: 
       return 10;
+    case 11: 
+      return 11;
     }
     return 12;
   }
@@ -78,7 +80,7 @@ public class TPProxyEnumUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPProxyEnumUtils
  * JD-Core Version:    0.7.0.1
  */

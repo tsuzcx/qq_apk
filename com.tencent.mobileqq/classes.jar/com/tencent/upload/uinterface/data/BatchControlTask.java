@@ -128,7 +128,7 @@ public class BatchControlTask
           ((DumpBussinessReq)localObject2).IMEI = localAbstractUploadTask.sDevIMEI;
           ((Map)localObject1).put(Integer.valueOf(1), localObject2);
         }
-        localObject1 = new FileControlRequest(this.iUin + "", this.mAppid, localAuthToken, this.mChecksum, this.mCheckType, l, this.mStEnv, this.mModel, "", this.mNeedIpRedirect, true, localAbstractUploadTask.iSync, (Map)localObject1);
+        localObject1 = new FileControlRequest(this.iUin + "", this.mAppid, localAuthToken, this.mChecksum, this.mCheckType, l, this.mStEnv, this.mModel, "", this.mNeedIpRedirect, true, localAbstractUploadTask.iSync, (Map)localObject1, localAbstractUploadTask.mExtend_info);
         localObject2 = localAbstractUploadTask.buildExtra();
         if (localObject2 == null)
         {
@@ -298,7 +298,7 @@ public class BatchControlTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.BatchControlTask
  * JD-Core Version:    0.7.0.1
  */

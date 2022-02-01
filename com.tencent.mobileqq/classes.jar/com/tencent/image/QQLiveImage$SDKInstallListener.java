@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -11,35 +12,35 @@ class QQLiveImage$SDKInstallListener
 {
   public void onInstallProgress(float paramFloat)
   {
-    QQLiveImage.access$100().set(false);
-    if (QLog.isDevelopLevel()) {
-      QLog.d(QQLiveImage.TAG, 4, "[SDKInstallListener] onInstallProgress(): v= " + paramFloat);
+    QQLiveImage.access$400().set(false);
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.d(QQLiveImage.TAG, 4, "[SDKInstallListener] onInstallProgress(): v= " + paramFloat);
     }
   }
   
   public void onInstalledFailed(int paramInt)
   {
-    QQLiveImage.access$100().set(false);
-    if (QLog.isColorLevel()) {
-      QLog.e(QQLiveImage.TAG, 2, "[SDKInstallListener] onInstalledFailed():");
+    QQLiveImage.access$400().set(false);
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.e(QQLiveImage.TAG, 2, "[SDKInstallListener] onInstalledFailed():");
     }
   }
   
   public void onInstalledSuccessed()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(QQLiveImage.TAG, 2, "[SDKInstallListener] onInstalledSuccessed():");
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.d(QQLiveImage.TAG, 2, "[SDKInstallListener] onInstalledSuccessed():");
     }
-    QQLiveImage.access$100().set(false);
+    QQLiveImage.access$400().set(false);
     try
     {
       QQLiveImage.mLockForImageList.lock();
-      if (QQLiveImage.access$200() != null)
+      if (QQLiveImage.access$000() != null)
       {
         int i = 0;
-        while (i < QQLiveImage.access$200().size())
+        while (i < QQLiveImage.access$000().size())
         {
-          QQLiveImage localQQLiveImage = (QQLiveImage)QQLiveImage.access$200().get(i);
+          QQLiveImage localQQLiveImage = (QQLiveImage)QQLiveImage.access$000().get(i);
           if ((localQQLiveImage != null) && (localQQLiveImage.mParams != null)) {
             localQQLiveImage.initAndStartPlayer(localQQLiveImage.mParams.mStartPosi);
           }
@@ -50,8 +51,8 @@ class QQLiveImage$SDKInstallListener
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(QQLiveImage.TAG, 2, "[SDKInstallListener] onInstalledSuccessed()", localException);
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.e(QQLiveImage.TAG, 2, "[SDKInstallListener] onInstalledSuccessed()", localException);
       }
       return;
     }

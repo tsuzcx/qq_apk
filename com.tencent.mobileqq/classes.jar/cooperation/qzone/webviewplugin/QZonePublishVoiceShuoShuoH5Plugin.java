@@ -9,9 +9,9 @@ public class QZonePublishVoiceShuoShuoH5Plugin
 {
   public static final String NAMESPACE = "Qzone";
   public static final String TAG = "QZonePublishVoiceShuoShuoH5Plugin";
-  private static int count;
-  public static QZonePublishVoiceShuoShuoH5Plugin my;
-  private String voicePanelCallback;
+  private static int count = 0;
+  public static QZonePublishVoiceShuoShuoH5Plugin my = null;
+  private String voicePanelCallback = null;
   
   public QZonePublishVoiceShuoShuoH5Plugin()
   {
@@ -55,7 +55,7 @@ public class QZonePublishVoiceShuoShuoH5Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZonePublishVoiceShuoShuoH5Plugin
  * JD-Core Version:    0.7.0.1
  */

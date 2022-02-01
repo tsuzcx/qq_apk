@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.forward;
 
-import aasr;
-import aaua;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -15,35 +13,16 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anvx;
-import aupn;
-import aupt;
-import auql;
-import auti;
-import autj;
-import autk;
-import autl;
-import autm;
-import autn;
-import auto;
-import autp;
-import autq;
-import auuc;
-import auui;
-import auuv;
-import bdny;
-import bdof;
-import bhdj;
-import bisl;
-import bjgx;
-import bjha;
-import bjhd;
-import bjme;
 import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.common.util.SubString;
+import com.tencent.biz.common.util.Util;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.biz.widgets.ShareResultDialog;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.activity.aio.MessageShareActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -51,8 +30,16 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.CGILoader;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.open.agent.AgentActivity;
+import com.tencent.open.agent.report.ReportCenter;
+import com.tencent.open.agent.report.ReportDef;
+import com.tencent.open.agent.report.ReportDef.RepUtil;
+import com.tencent.open.business.viareport.OpenSdkStatic;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqfav.util.HandlerPlus;
@@ -66,37 +53,35 @@ import java.util.List;
 import java.util.Set;
 import mqq.manager.TicketManager;
 import mqq.observer.BusinessObserver;
-import nwn;
-import nwo;
 
 public abstract class ForwardSdkBaseOption
-  extends aupt
-  implements bjha
+  extends ForwardBaseOption
+  implements ReportDef
 {
-  public static final Object a;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new auti(this);
-  public Handler a;
-  public aupn a;
-  autp jdField_a_of_type_Autp = new autp(this);
-  public autq a;
-  public AbsShareMsg a;
+  protected static final Object a;
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ForwardSdkBaseOption.1(this);
+  protected Handler a;
+  protected AppInfo a;
+  ForwardSdkBaseOption.MySSOAccountObserver jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption$MySSOAccountObserver = new ForwardSdkBaseOption.MySSOAccountObserver(this);
+  protected ForwardSdkBaseOption.PreStructViewHolder a;
+  protected AbsShareMsg a;
   private HandlerPlus jdField_a_of_type_CooperationQqfavUtilHandlerPlus = new HandlerPlus(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
   protected BusinessObserver a;
   public long b;
-  protected aaua b;
   @SuppressLint({"HandlerLeak"})
   private Handler b;
-  public long c;
+  protected ShareResultDialog b;
+  protected long c;
   public int e;
-  public String h;
+  protected String h;
   protected String i;
-  protected boolean i;
-  protected String j = "";
-  public boolean j;
-  public String k;
-  public boolean k;
-  public boolean l;
-  public boolean m;
+  protected String j;
+  protected boolean j;
+  protected String k;
+  protected boolean k;
+  protected boolean l = false;
+  protected boolean m;
+  protected boolean n = false;
   
   static
   {
@@ -106,15 +91,19 @@ public abstract class ForwardSdkBaseOption
   public ForwardSdkBaseOption(Intent paramIntent)
   {
     super(paramIntent);
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new autl(this);
-    this.jdField_b_of_type_AndroidOsHandler = new auto(this);
+    this.jdField_k_of_type_Boolean = false;
+    this.jdField_j_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_k_of_type_JavaLangString = null;
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new ForwardSdkBaseOption.3(this);
+    this.jdField_b_of_type_AndroidOsHandler = new ForwardSdkBaseOption.6(this);
   }
   
   private void N()
   {
     try
     {
-      bjme.a().a(0, "SHARE_TO_QQ", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), String.valueOf(this.jdField_b_of_type_Long), "4", Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, null);
+      OpenSdkStatic.a().a(0, "SHARE_TO_QQ", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), String.valueOf(this.jdField_b_of_type_Long), "4", Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, null);
       return;
     }
     catch (Exception localException) {}
@@ -277,14 +266,14 @@ public abstract class ForwardSdkBaseOption
   private void a(String paramString, Bundle paramBundle, boolean paramBoolean)
   {
     if (this.jdField_c_of_type_Boolean) {
-      auuv.a(paramString, paramBundle, paramBoolean);
+      ForwardStatisticsReporter.a(paramString, paramBundle, paramBoolean);
     }
   }
   
   private void e(String paramString)
   {
     if (this.jdField_c_of_type_Boolean) {
-      auuv.a(paramString);
+      ForwardStatisticsReporter.a(paramString);
     }
   }
   
@@ -309,12 +298,12 @@ public abstract class ForwardSdkBaseOption
       }
     }
     localObject3 = localObject1;
-    if (nwn.a((String)localObject1, "UTF-8") > 80) {
-      localObject3 = nwn.a((String)localObject1, 80, "UTF-8", null);
+    if (SubString.a((String)localObject1, "UTF-8") > 80) {
+      localObject3 = SubString.a((String)localObject1, 80, "UTF-8", null);
     }
     localObject1 = localObject2;
-    if (nwn.a((String)localObject2, "UTF-8") > 130) {
-      localObject1 = nwn.a((String)localObject2, 130, "UTF-8", null);
+    if (SubString.a((String)localObject2, "UTF-8") > 130) {
+      localObject1 = SubString.a((String)localObject2, 130, "UTF-8", null);
     }
     if ((localObject3 != null) && (!((String)localObject3).endsWith("...")) && (!((String)localObject3).equals(this.jdField_a_of_type_AndroidOsBundle.getString("title")))) {}
     for (localObject2 = (String)localObject3 + "...";; localObject2 = localObject3)
@@ -342,13 +331,13 @@ public abstract class ForwardSdkBaseOption
       if (!TextUtils.isEmpty(str))
       {
         this.jdField_k_of_type_JavaLangString = str;
-        this.m = true;
+        this.n = true;
         QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "-->getQQAccountSKey--use TicketManager cache, account = ", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() });
         return;
       }
     }
     e("KEY_SSO_GET_TICKET_NO_PASSWD");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.ssoGetTicketNoPasswd(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4096, this.jdField_a_of_type_Autp);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.ssoGetTicketNoPasswd(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4096, this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption$MySSOAccountObserver);
   }
   
   void K()
@@ -356,28 +345,28 @@ public abstract class ForwardSdkBaseOption
     if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
-    if ((this.jdField_a_of_type_Aaua != null) && (this.jdField_a_of_type_Aaua.isShowing())) {
-      this.jdField_a_of_type_Aaua.dismiss();
+    if ((this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog != null) && (this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
     }
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardSdkBaseOption", 2, "asyncUploadImageAndSendToBuddy mForwardSubType=" + this.jdField_e_of_type_Int);
     }
-    if (this.j != null) {
-      this.jdField_a_of_type_AndroidOsBundle.putString("share_comment_message", this.j);
+    if (this.jdField_j_of_type_JavaLangString != null) {
+      this.jdField_a_of_type_AndroidOsBundle.putString("share_comment_message", this.jdField_j_of_type_JavaLangString);
     }
     if (this.jdField_e_of_type_Int != 5)
     {
       String str = this.jdField_a_of_type_AndroidOsBundle.getString("detail_url");
-      if (!bdny.a(str))
+      if (!CGILoader.a(str))
       {
         M();
         return;
       }
-      a(2131692060);
+      a(2131692191);
       ThreadManager.post(new ForwardSdkBaseOption.7(this, str), 8, null, false);
       return;
     }
-    a(2131692060);
+    a(2131692191);
     a("ForwardOption.ForwardSdkBaseOption", "ThreadManager.post asyncUploadImageAndSendToBuddy");
     ThreadManager.post(a(), 8, null, false);
   }
@@ -401,9 +390,9 @@ public abstract class ForwardSdkBaseOption
       if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("forward_type", -1) != 2) {
         break;
       }
-      localObject1 = bdof.a(this.jdField_a_of_type_AndroidOsBundle);
+      localObject1 = StructMsgFactory.a(this.jdField_a_of_type_AndroidOsBundle);
       ((AbsStructMsg)localObject1).forwardID = this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_MSG_FORWARD_ID", 0);
-      if (i())
+      if (j())
       {
         localObject2 = this.jdField_a_of_type_AndroidOsBundle.getParcelableArrayList("forward_multi_target").iterator();
         while (((Iterator)localObject2).hasNext())
@@ -413,37 +402,37 @@ public abstract class ForwardSdkBaseOption
         }
       }
       localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      n = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
+      i1 = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
       Object localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin");
-      AbsShareMsg.sendSdkShareMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (AbsShareMsg)localObject1, (String)localObject2, n, (String)localObject3);
+      AbsShareMsg.sendSdkShareMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (AbsShareMsg)localObject1, (String)localObject2, i1, (String)localObject3);
       localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      n = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
+      i1 = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
       this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin");
       StatisticCollector.getInstance(BaseApplication.getContext()).reportToAds(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sha_share2qq", 1, "", "", String.valueOf(this.jdField_b_of_type_Long));
       if (this.jdField_e_of_type_Int != 5) {
         break label653;
       }
       localObject1 = "connect_sharepic";
-      nwo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, (String)localObject1, "send", this.jdField_b_of_type_Long, f(), String.valueOf(n));
+      Util.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, (String)localObject1, "send", this.jdField_b_of_type_Long, f(), String.valueOf(i1));
       a(0, "", "");
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("report_type", "102");
       ((Bundle)localObject1).putString("act_type", "83");
-      ((Bundle)localObject1).putString("intext_1", "" + bjhd.a(this.jdField_e_of_type_Int));
-      ((Bundle)localObject1).putString("intext_2", "" + bjhd.a(n, (String)localObject2));
+      ((Bundle)localObject1).putString("intext_1", "" + ReportDef.RepUtil.a(this.jdField_e_of_type_Int));
+      ((Bundle)localObject1).putString("intext_2", "" + ReportDef.RepUtil.a(i1, (String)localObject2));
       ((Bundle)localObject1).putString("intext_3", "0");
-      bjgx.a().a((Bundle)localObject1, "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.jdField_c_of_type_Boolean);
+      ReportCenter.a().a((Bundle)localObject1, "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.jdField_c_of_type_Boolean);
       localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("detail_url");
     } while ((!this.jdField_c_of_type_Boolean) || (TextUtils.isEmpty((CharSequence)localObject1)));
     Object localObject1 = new Bundle();
     ((Bundle)localObject1).putString("report_type", "102");
     ((Bundle)localObject1).putString("act_type", "55");
-    if (this.jdField_a_of_type_Aupn == null) {}
-    for (int n = 0;; n = this.jdField_a_of_type_Aupn.a())
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo == null) {}
+    for (int i1 = 0;; i1 = this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.a())
     {
-      ((Bundle)localObject1).putString("intext_1", "" + n);
+      ((Bundle)localObject1).putString("intext_1", "" + i1);
       ((Bundle)localObject1).putString("app_id", "" + this.jdField_b_of_type_Long);
-      bjgx.a().a((Bundle)localObject1, "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.jdField_c_of_type_Boolean);
+      ReportCenter.a().a((Bundle)localObject1, "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.jdField_c_of_type_Boolean);
       return;
       localObject1 = new Intent(this.jdField_a_of_type_AndroidAppActivity, MessageShareActivity.class);
       localObject2 = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
@@ -472,40 +461,40 @@ public abstract class ForwardSdkBaseOption
     }
     z();
     if ((paramInt2 == jdField_e_of_type_JavaLangInteger.intValue()) && (paramInt1 == 0)) {
-      this.jdField_k_of_type_Boolean = true;
+      this.l = true;
     }
-    if (this.jdField_a_of_type_Aaua == null)
+    if (this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog == null)
     {
-      this.jdField_a_of_type_Aaua = new aaua(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_Aaua.a(new autj(this));
+      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog = new ShareResultDialog(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(new ForwardSdkBaseOption.10(this));
     }
     for (;;)
     {
-      String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131690676);
+      String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131690778);
       Object localObject = str;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString("app_name"))) {
         localObject = str + this.jdField_a_of_type_AndroidOsBundle.getString("app_name");
       }
-      this.jdField_a_of_type_Aaua.a((String)localObject, c());
-      this.jdField_a_of_type_Aaua.a(2131692052);
-      localObject = this.jdField_a_of_type_Aaua;
+      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a((String)localObject, c());
+      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(2131692183);
+      localObject = this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog;
       boolean bool;
       if (paramInt1 == 0)
       {
         bool = true;
         label181:
-        ((aaua)localObject).a(bool);
+        ((ShareResultDialog)localObject).a(bool);
         if (paramInt1 != 0) {
           break label227;
         }
         N();
-        this.jdField_a_of_type_Aaua.b(null, null);
+        this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.b(null, null);
       }
       try
       {
-        this.jdField_a_of_type_Aaua.show();
+        this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.show();
         return;
-        this.jdField_a_of_type_Aaua.dismiss();
+        this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
         continue;
         bool = false;
         break label181;
@@ -517,10 +506,10 @@ public abstract class ForwardSdkBaseOption
         }
         for (;;)
         {
-          this.jdField_a_of_type_Aaua.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131718063), c());
+          this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131718556), c());
           break;
           if (paramInt1 == 1003) {
-            this.jdField_a_of_type_Aaua.a(2131692055);
+            this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(2131692186);
           } else if (paramInt1 == 1004)
           {
             if (QLog.isColorLevel()) {
@@ -552,7 +541,7 @@ public abstract class ForwardSdkBaseOption
     do
     {
       return;
-      if (!t())
+      if (!u())
       {
         super.a(paramInt, paramBundle);
         if (paramInt == g.intValue()) {
@@ -563,13 +552,13 @@ public abstract class ForwardSdkBaseOption
     Bundle localBundle = new Bundle();
     localBundle.putString("report_type", "102");
     localBundle.putString("act_type", "81");
-    localBundle.putString("intext_1", "" + bjhd.a(this.jdField_e_of_type_Int));
-    localBundle.putString("intext_2", "" + bjhd.a(paramBundle.getInt("uintype"), paramBundle.getString("uin")));
+    localBundle.putString("intext_1", "" + ReportDef.RepUtil.a(this.jdField_e_of_type_Int));
+    localBundle.putString("intext_2", "" + ReportDef.RepUtil.a(paramBundle.getInt("uintype"), paramBundle.getString("uin")));
     localBundle.putString("intext_3", "0");
-    bjgx.a().a(localBundle, "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.jdField_c_of_type_Boolean);
+    ReportCenter.a().a(localBundle, "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.jdField_c_of_type_Boolean);
   }
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  protected void a(int paramInt, String paramString1, String paramString2)
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", paramInt);
@@ -580,7 +569,7 @@ public abstract class ForwardSdkBaseOption
     if ((this.jdField_a_of_type_AndroidAppActivity instanceof SplashActivity)) {
       z();
     }
-    while (i()) {
+    while (j()) {
       return;
     }
     this.jdField_a_of_type_AndroidAppActivity.finish();
@@ -602,20 +591,20 @@ public abstract class ForwardSdkBaseOption
     ((Bundle)localObject).putString("act_type", "52");
     ((Bundle)localObject).putString("intext_3", "0");
     ((Bundle)localObject).putString("stringext_1", paramString1);
-    bjgx.a().a((Bundle)localObject, "", paramString2, false, this.jdField_c_of_type_Boolean);
-    auuv.a("batch_url_exchange");
+    ReportCenter.a().a((Bundle)localObject, "", paramString2, false, this.jdField_c_of_type_Boolean);
+    ForwardStatisticsReporter.a("batch_url_exchange");
     paramHashMap = HttpUtil.batchUrlExchange(BaseApplication.getContext(), paramString2, this.jdField_k_of_type_JavaLangString, 1, paramHashMap, localBundle);
     localObject = new HashMap();
     ((HashMap)localObject).put("param_ret_code", Integer.toString(localBundle.getInt("retcode", -1)));
-    auuv.a("batch_url_exchange", paramString2, (HashMap)localObject, localBundle.getBoolean("isSuccess"));
+    ForwardStatisticsReporter.a("batch_url_exchange", paramString2, (HashMap)localObject, localBundle.getBoolean("isSuccess"));
     l1 = System.currentTimeMillis() - l1;
     if ((paramHashMap != null) && (paramHashMap.size() > 0) && (((String)paramHashMap.get(paramHashMap.keySet().iterator().next())).contains("url.cn"))) {}
-    for (int n = 0;; n = 1)
+    for (int i1 = 0;; i1 = 1)
     {
       if (QLog.isColorLevel())
       {
-        localObject = "batchUrlExchange for IMAGE_SHARE, isFailed = " + n + ", cost = " + l1;
-        if ((n != 1) && (l1 <= 3000L)) {
+        localObject = "batchUrlExchange for IMAGE_SHARE, isFailed = " + i1 + ", cost = " + l1;
+        if ((i1 != 1) && (l1 <= 3000L)) {
           break label609;
         }
         QLog.e("ForwardOption.ForwardSdkBaseOption", 2, (String)localObject);
@@ -626,13 +615,13 @@ public abstract class ForwardSdkBaseOption
         ((Bundle)localObject).putString("report_type", "102");
         ((Bundle)localObject).putString("act_type", "12");
         ((Bundle)localObject).putString("intext_3", "0");
-        ((Bundle)localObject).putString("intext_1", "" + n);
+        ((Bundle)localObject).putString("intext_1", "" + i1);
         ((Bundle)localObject).putString("intext_2", "" + localBundle.getInt("retcode", 0));
         ((Bundle)localObject).putString("intext_5", "" + l1);
-        if (n == 1) {
+        if (i1 == 1) {
           ((Bundle)localObject).putString("stringext_1", paramString1);
         }
-        bjgx.a().a((Bundle)localObject, "", paramString2, false, this.jdField_c_of_type_Boolean);
+        ReportCenter.a().a((Bundle)localObject, "", paramString2, false, this.jdField_c_of_type_Boolean);
         if (paramHashMap != null)
         {
           if (paramHashMap.containsKey("imageUrl"))
@@ -661,54 +650,54 @@ public abstract class ForwardSdkBaseOption
     }
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  protected void a(String paramString, boolean paramBoolean)
   {
     QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "AppinfoObserver onReceive show forbidden dialog");
     String str = this.jdField_a_of_type_AndroidOsBundle.getString("app_name");
-    QQCustomDialog localQQCustomDialog = bhdj.b(this.jdField_a_of_type_AndroidAppActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_AndroidAppActivity.getString(2131718771));
+    QQCustomDialog localQQCustomDialog = DialogUtil.b(this.jdField_a_of_type_AndroidAppActivity, 230);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_AndroidAppActivity.getString(2131719296));
     Object localObject;
     if (paramBoolean)
     {
       localObject = paramString;
       if (TextUtils.isEmpty(paramString)) {
-        localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131718774);
+        localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131719299);
       }
       localQQCustomDialog.setMessageWithUrl((String)localObject);
     }
     for (;;)
     {
-      localObject = localQQCustomDialog.setPositiveButton(2131718625, new autn(this));
-      StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_AndroidAppActivity.getString(2131690676));
+      localObject = localQQCustomDialog.setPositiveButton(2131719149, new ForwardSdkBaseOption.5(this));
+      StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_AndroidAppActivity.getString(2131690778));
       paramString = str;
       if (TextUtils.isEmpty(str)) {
         paramString = "";
       }
-      ((QQCustomDialog)localObject).setNegativeButton(paramString, new autm(this));
+      ((QQCustomDialog)localObject).setNegativeButton(paramString, new ForwardSdkBaseOption.4(this));
       localQQCustomDialog.setCancelable(false);
       localQQCustomDialog.show();
       return;
-      localQQCustomDialog.setMessage(2131718774);
+      localQQCustomDialog.setMessage(2131719299);
     }
   }
   
   public boolean a()
   {
     super.a();
-    this.j = "";
-    this.jdField_i_of_type_Boolean = "login".equals(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("jfrom"));
+    this.jdField_j_of_type_JavaLangString = "";
+    this.jdField_j_of_type_Boolean = "login".equals(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("jfrom"));
     long l1 = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
     if ((TextUtils.isEmpty(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("pkg_name"))) && (!"1103584836".equals(String.valueOf(this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id")))) && (!"101735437".equals(String.valueOf(this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id"))))) {
       this.jdField_a_of_type_AndroidOsBundle.putLong("req_share_id", 65520L);
     }
     this.jdField_b_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
     this.h = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("open_id");
-    this.jdField_i_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("share_uin");
+    this.i = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("share_uin");
     this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("req_type", 2147483647);
     String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("detail_url");
     String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("image_url");
     Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("image_url_remote");
-    long l2 = ForwardUtils.parseLong(this.jdField_a_of_type_AndroidOsBundle.getString("chSrc"));
+    long l2 = ForwardUtils.a(this.jdField_a_of_type_AndroidOsBundle.getString("chSrc"));
     QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "preloadData subType=", Integer.valueOf(this.jdField_e_of_type_Int), ",targetUrl=", str2, ",remoteImg=", localObject2, ",localImg=", str1 });
     Object localObject1 = localObject2;
     if (!TextUtils.isEmpty(str2))
@@ -745,23 +734,23 @@ public abstract class ForwardSdkBaseOption
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("report_type", "102");
       ((Bundle)localObject2).putString("act_type", "80");
-      ((Bundle)localObject2).putString("intext_1", "" + bjhd.a(this.jdField_e_of_type_Int));
+      ((Bundle)localObject2).putString("intext_1", "" + ReportDef.RepUtil.a(this.jdField_e_of_type_Int));
       ((Bundle)localObject2).putString("intext_3", "0");
-      bjgx.a().a((Bundle)localObject2, "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.jdField_c_of_type_Boolean);
+      ReportCenter.a().a((Bundle)localObject2, "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.jdField_c_of_type_Boolean);
       if ((this.jdField_e_of_type_Int == 5) && (TextUtils.isEmpty(str1)) && (TextUtils.isEmpty((CharSequence)localObject1)))
       {
         if (QLog.isColorLevel()) {
           QLog.e("ForwardOption.ForwardSdkBaseOption", 2, "-->preloadData--is image share type, but imageUrl and remoteImageUrl are both empty");
         }
-        a(-1, anvx.a(2131704277), anvx.a(2131704289));
+        a(-1, HardCodeUtil.a(2131704825), HardCodeUtil.a(2131704837));
       }
       try
       {
-        bjme.a().a(1, "SHARE_CHECK_AGENT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), String.valueOf(this.jdField_b_of_type_Long), null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "分享的图片不存在");
+        OpenSdkStatic.a().a(1, "SHARE_CHECK_AGENT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), String.valueOf(this.jdField_b_of_type_Long), null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "分享的图片不存在");
         return false;
         localObject1 = null;
         continue;
-        if (((auuc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SDK_SHARE)).a().a())
+        if (((ForwardSdkStatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SDK_SHARE)).a().a())
         {
           b("KEY_STAGE_1_TOTAL", true);
           QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "-->preloadData-- null != mAppInfo");
@@ -770,7 +759,7 @@ public abstract class ForwardSdkBaseOption
         if ((l1 > 0L) && (!"101735437".equals(String.valueOf(l1))))
         {
           this.jdField_c_of_type_Long = System.currentTimeMillis();
-          this.l = true;
+          this.m = true;
           long l3 = System.currentTimeMillis() / 1000L;
           localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("pkg_name");
           if (TextUtils.isEmpty((CharSequence)localObject2))
@@ -779,12 +768,12 @@ public abstract class ForwardSdkBaseOption
             QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "-->sdk_share, getting appinfo in construct. sign: ", localObject1 });
             if (!(this instanceof ForwardSdkShareOption))
             {
-              a(2131718186);
-              this.jdField_b_of_type_Bisl.setCancelable(false);
+              a(2131718690);
+              this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
             }
-            long l4 = auui.a();
+            long l4 = ForwardShareByServerHelper.a();
             e("KEY_GET_APP_INFO");
-            aasr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), l1, (String)localObject1, l2, l3, this.jdField_a_of_type_MqqObserverBusinessObserver, (String)localObject2, l4, true);
+            Share.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), l1, (String)localObject1, l2, l3, this.jdField_a_of_type_MqqObserverBusinessObserver, (String)localObject2, l4, true);
             return true;
           }
           localObject1 = AgentActivity.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject2, l3 + "");
@@ -799,23 +788,23 @@ public abstract class ForwardSdkBaseOption
     }
   }
   
-  public void b(String paramString, boolean paramBoolean)
+  protected void b(String paramString, boolean paramBoolean)
   {
     if (this.jdField_c_of_type_Boolean) {
-      auuv.a(paramString, paramBoolean);
+      ForwardStatisticsReporter.a(paramString, paramBoolean);
     }
   }
   
   protected boolean d()
   {
-    if ((!this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_Aupn == null)) {}
+    if ((!this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo == null)) {}
     do
     {
       return false;
       str = this.jdField_a_of_type_AndroidOsBundle.getString("image_url");
       localObject = this.jdField_a_of_type_AndroidOsBundle.getString("image_url_remote");
     } while ((!TextUtils.isEmpty(str)) || (!TextUtils.isEmpty((CharSequence)localObject)));
-    String str = this.jdField_a_of_type_Aupn.e();
+    String str = this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.e();
     this.jdField_a_of_type_AndroidOsBundle.putString("image_url_remote", str);
     if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
     {
@@ -830,30 +819,30 @@ public abstract class ForwardSdkBaseOption
     for (str = "1";; str = "0")
     {
       ((Bundle)localObject).putString("intext_1", str);
-      bjgx.a().a((Bundle)localObject, "" + this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false, this.jdField_c_of_type_Boolean);
+      ReportCenter.a().a((Bundle)localObject, "" + this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false, this.jdField_c_of_type_Boolean);
       return true;
     }
   }
   
-  public void e()
+  protected void e()
   {
-    if (this.jdField_a_of_type_Aupn.a())
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.a())
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aupn.a())) {
-        this.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", this.jdField_a_of_type_Aupn.a());
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.a())) {
+        this.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.a());
       }
-      String str = this.jdField_a_of_type_Aupn.e();
+      String str = this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.e();
       if (!TextUtils.isEmpty(str)) {
         this.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon_big", str);
       }
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_Aupn.b())) && (this.jdField_b_of_type_Long != Long.parseLong("1103584836"))) {
-        this.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", this.jdField_a_of_type_Aupn.b());
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.b())) && (this.jdField_b_of_type_Long != Long.parseLong("1103584836"))) {
+        this.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.b());
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aupn.c())) {
-        this.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_name", this.jdField_a_of_type_Aupn.c());
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.c())) {
+        this.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_name", this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.c());
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aupn.d())) {
-        this.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_a_action_data", this.jdField_a_of_type_Aupn.d());
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.d())) {
+        this.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_a_action_data", this.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.d());
       }
       if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
       {
@@ -876,9 +865,9 @@ public abstract class ForwardSdkBaseOption
     return 0;
   }
   
-  public void o()
+  protected void o()
   {
-    if (this.jdField_k_of_type_Boolean) {
+    if (this.l) {
       a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", this.jdField_b_of_type_Long);
     }
     for (;;)
@@ -893,7 +882,7 @@ public abstract class ForwardSdkBaseOption
     }
   }
   
-  public void p()
+  protected void p()
   {
     if (QLog.isColorLevel()) {
       QLog.i("ForwardOption.ForwardSdkBaseOption", 2, "send call");
@@ -902,20 +891,20 @@ public abstract class ForwardSdkBaseOption
     Bundle localBundle = new Bundle();
     localBundle.putString("report_type", "102");
     localBundle.putString("act_type", "82");
-    localBundle.putString("intext_1", "" + bjhd.a(this.jdField_e_of_type_Int));
-    localBundle.putString("intext_2", "" + bjhd.a(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"), this.jdField_a_of_type_AndroidOsBundle.getString("uin")));
+    localBundle.putString("intext_1", "" + ReportDef.RepUtil.a(this.jdField_e_of_type_Int));
+    localBundle.putString("intext_2", "" + ReportDef.RepUtil.a(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"), this.jdField_a_of_type_AndroidOsBundle.getString("uin")));
     localBundle.putString("intext_3", "0");
-    bjgx.a().a(localBundle, "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.jdField_c_of_type_Boolean);
+    ReportCenter.a().a(localBundle, "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, this.jdField_c_of_type_Boolean);
   }
   
-  protected boolean t()
+  protected boolean u()
   {
     String str = this.jdField_a_of_type_AndroidOsBundle.getString("image_url");
-    int n = this.jdField_a_of_type_AndroidOsBundle.getInt("req_type");
-    QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "QQShare find local image shareType:", Integer.valueOf(n) });
-    if ((n == 5) && (!TextUtils.isEmpty(str)) && (!str.startsWith("http://")) && (!str.startsWith("https://")))
+    int i1 = this.jdField_a_of_type_AndroidOsBundle.getInt("req_type");
+    QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "QQShare find local image shareType:", Integer.valueOf(i1) });
+    if ((i1 == 5) && (!TextUtils.isEmpty(str)) && (!str.startsWith("http://")) && (!str.startsWith("https://")))
     {
-      boolean bool = ForwardUtils.hasSDPermission(this.jdField_a_of_type_AndroidContentContext);
+      boolean bool = ForwardUtils.a(this.jdField_a_of_type_AndroidContentContext);
       Object localObject = this.jdField_a_of_type_AndroidContentContext.getExternalFilesDir(null);
       if (localObject != null) {}
       for (localObject = ((File)localObject).getAbsolutePath();; localObject = "")
@@ -924,15 +913,15 @@ public abstract class ForwardSdkBaseOption
         if ((bool) || (TextUtils.isEmpty((CharSequence)localObject)) || (str.contains((CharSequence)localObject)) || (this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
           break;
         }
-        localObject = new autk(this);
-        bhdj.a(this.jdField_a_of_type_AndroidAppActivity, 233, anvx.a(2131719342), anvx.a(2131718773), -1, 2131718772, (DialogInterface.OnClickListener)localObject, null).show();
+        localObject = new ForwardSdkBaseOption.2(this);
+        DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 233, HardCodeUtil.a(2131719900), HardCodeUtil.a(2131719298), -1, 2131719297, (DialogInterface.OnClickListener)localObject, null).show();
         return true;
       }
     }
     return false;
   }
   
-  protected boolean u()
+  protected boolean v()
   {
     return true;
   }
@@ -940,11 +929,11 @@ public abstract class ForwardSdkBaseOption
   public void y()
   {
     super.y();
-    if ((this.jdField_a_of_type_Aaua != null) && (this.jdField_a_of_type_Aaua.isShowing())) {
-      this.jdField_a_of_type_Aaua.dismiss();
+    if ((this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog != null) && (this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
     }
-    if ((this.jdField_b_of_type_Aaua != null) && (this.jdField_b_of_type_Aaua.isShowing())) {
-      this.jdField_b_of_type_Aaua.dismiss();
+    if ((this.jdField_b_of_type_ComTencentBizWidgetsShareResultDialog != null) && (this.jdField_b_of_type_ComTencentBizWidgetsShareResultDialog.isShowing())) {
+      this.jdField_b_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -958,7 +947,7 @@ public abstract class ForwardSdkBaseOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import bhyk;
 import com.tencent.hippy.qq.view.tkd.doublescrollview.HippyTKDDoubleScrollView;
 import com.tencent.hippy.qq.view.tkd.doublescrollview.IDoubleScroll;
+import com.tencent.mobileqq.vip.CUKingCardHelper;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyRootView;
 import com.tencent.mtt.hippy.common.HippyArray;
@@ -31,14 +31,14 @@ public class HippyTKDListView
   public static final int DEFAULT_REFRESH_TYPE = 1;
   public static final int HippyNoPicModeChange = 1002;
   public static final int HippySkinChange = 1001;
-  private boolean isFirstFrame;
+  private boolean isFirstFrame = false;
   boolean mEnableFooter = true;
   boolean mEnableRefresh = false;
-  private boolean mEnableScrollToContentOffset;
-  private boolean mHasInitialListEventDone;
-  private int mInitialContentOffset;
-  private int mInitialListSize;
-  private boolean mIsResponseToDoubleScroll;
+  private boolean mEnableScrollToContentOffset = false;
+  private boolean mHasInitialListEventDone = false;
+  private int mInitialContentOffset = 0;
+  private int mInitialListSize = 0;
+  private boolean mIsResponseToDoubleScroll = false;
   protected IHippyTKDRefreshHeader mQBRefreshHeader;
   HippyArray mRefreshColors = null;
   private boolean mScrollEnabled = true;
@@ -73,7 +73,7 @@ public class HippyTKDListView
   
   public static boolean isKingCardMobileNetWork()
   {
-    return bhyk.a() == 1;
+    return CUKingCardHelper.a() == 1;
   }
   
   private void traversalChildViewForNoPicChange(View paramView)
@@ -193,7 +193,7 @@ public class HippyTKDListView
   
   public int getAutoScrollVelocity()
   {
-    return ImmersiveUtils.a(3.0F);
+    return ImmersiveUtils.dpToPx(3.0F);
   }
   
   protected HippyTKDListView.ExposureForReport getExposureForReport(int paramInt1, int paramInt2)
@@ -237,7 +237,7 @@ public class HippyTKDListView
   
   public int getSpringBackMaxDistance()
   {
-    return ImmersiveUtils.a(40.0F);
+    return ImmersiveUtils.dpToPx(40.0F);
   }
   
   public HippyMap getVisibleItems()
@@ -699,7 +699,7 @@ public class HippyTKDListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDListView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.qflutter.qqface;
 
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
+import com.qflutter.qqface.data.QQFaceFlutterData;
 import com.qflutter.qqface.data.QQFaceParam;
 import com.qflutter.qqface.loader.QQFaceLoader;
 import io.flutter.Log;
-import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
 import io.flutter.plugin.common.MethodCall;
@@ -24,15 +24,19 @@ public class QQFacePlugin
   private static final String PARAM_DATA_FORMAT = "data_format";
   private static final String PARAM_FACE_ID = "face_id";
   private static final String TAG = "QQFacePlugin";
+  private MethodChannel mMethodChannel;
   
   public void onAttachedToEngine(@NonNull FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
   {
-    paramFlutterPluginBinding = new MethodChannel(paramFlutterPluginBinding.getFlutterEngine().getDartExecutor(), "QQ_FACE_CHANNEL");
-    paramFlutterPluginBinding.setMethodCallHandler(new QQFacePlugin());
-    QQFaceLoader.instance().setMethodChannel(paramFlutterPluginBinding);
+    this.mMethodChannel = new MethodChannel(paramFlutterPluginBinding.getBinaryMessenger(), "QQ_FACE_CHANNEL");
+    this.mMethodChannel.setMethodCallHandler(new QQFacePlugin());
+    QQFaceLoader.instance().onAttachedToEngine(this);
   }
   
-  public void onDetachedFromEngine(@NonNull FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding) {}
+  public void onDetachedFromEngine(@NonNull FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
+  {
+    QQFaceLoader.instance().onDetachedFromEngine(this);
+  }
   
   public void onMethodCall(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
   {
@@ -64,10 +68,17 @@ public class QQFacePlugin
     }
     paramResult.notImplemented();
   }
+  
+  public void updateHead(QQFaceFlutterData paramQQFaceFlutterData)
+  {
+    if (this.mMethodChannel != null) {
+      this.mMethodChannel.invokeMethod("onNativeUpdate", paramQQFaceFlutterData.toMap(), null);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.qqface.QQFacePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,30 @@
+package com.tencent.mobileqq.intervideo.groupvideo;
+
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
+
+class GroupVideoManager$6
+  implements INetEventHandler
+{
+  GroupVideoManager$6(GroupVideoManager paramGroupVideoManager) {}
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    if (GroupVideoManager.a(this.a) == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + GroupVideoManager.a(this.a).isMSFConnect);
+      }
+    } while (!paramBoolean);
+    this.a.a(false);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.6
+ * JD-Core Version:    0.7.0.1
+ */

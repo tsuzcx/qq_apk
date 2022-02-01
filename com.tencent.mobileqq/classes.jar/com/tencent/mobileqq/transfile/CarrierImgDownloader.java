@@ -4,10 +4,10 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.util.DisplayMetrics;
-import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.utils.ImageUtil;
 import java.io.File;
 import java.io.OutputStream;
 import java.net.URL;
@@ -30,7 +30,7 @@ public class CarrierImgDownloader
     try
     {
       paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramURLDrawableHandler);
-      return bheg.c(bheg.b(paramFile), 70, 70);
+      return ImageUtil.c(ImageUtil.b(paramFile), 70, 70);
     }
     catch (OutOfMemoryError paramFile)
     {

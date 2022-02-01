@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -66,7 +66,7 @@ class QfileLocalFileMediaTabView$1
       break;
       if ("QQ".equalsIgnoreCase((String)localObject))
       {
-        localObject = anvx.a(2131709128);
+        localObject = HardCodeUtil.a(2131709644);
         continue;
         QfileLocalFileMediaTabView.a(this.this$0, new QfileLocalFileMediaTabView.1.1(this, localArrayList, localHashMap2, localHashMap1, localLinkedHashMap));
         return;
@@ -76,7 +76,7 @@ class QfileLocalFileMediaTabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView.1
  * JD-Core Version:    0.7.0.1
  */

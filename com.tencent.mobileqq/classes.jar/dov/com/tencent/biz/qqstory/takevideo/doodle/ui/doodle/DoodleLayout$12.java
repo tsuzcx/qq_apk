@@ -1,10 +1,9 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bovv;
-import bowd;
-import bowi;
-import bozd;
-import bpdg;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 import java.util.Map;
 
 class DoodleLayout$12
@@ -14,33 +13,33 @@ class DoodleLayout$12
   
   public void run()
   {
-    bpdg localbpdg;
+    GestureHelper.ZoomItem localZoomItem;
     if ((this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b != null) && (this.a != null))
     {
-      localbpdg = this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b;
-      if (!(localbpdg instanceof bovv)) {
+      localZoomItem = this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b;
+      if (!(localZoomItem instanceof FaceLayer.FaceItem)) {
         break label97;
       }
-      ((bovv)localbpdg).a = this.a;
+      ((FaceLayer.FaceItem)localZoomItem).a = this.a;
     }
     for (;;)
     {
-      localbpdg.i = 3;
+      localZoomItem.i = 3;
       this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b = null;
-      if (this.this$0.jdField_a_of_type_Bozd != null) {
-        this.this$0.jdField_a_of_type_Bozd.h();
+      if (this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null) {
+        this.this$0.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.q();
       }
       return;
       label97:
-      if ((localbpdg instanceof bowi)) {
-        ((bowi)localbpdg).a = this.a;
+      if ((localZoomItem instanceof TextLayer.TextItem)) {
+        ((TextLayer.TextItem)localZoomItem).a = this.a;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.12
  * JD-Core Version:    0.7.0.1
  */

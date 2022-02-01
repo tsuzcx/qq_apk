@@ -1,5 +1,7 @@
 package com.tencent.qqmini.minigame.plugins;
 
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+
 class BlockAdPlugin$4
   implements Runnable
 {
@@ -7,12 +9,15 @@ class BlockAdPlugin$4
   
   public void run()
   {
-    BlockAdPlugin.access$700(this.this$0, this.val$compId);
+    boolean bool = this.this$0.hideBlockAd(this.val$compId);
+    if (QMLog.isColorLevel()) {
+      QMLog.i("BlockAdPlugin", "hideBlockAd " + bool);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.BlockAdPlugin.4
  * JD-Core Version:    0.7.0.1
  */

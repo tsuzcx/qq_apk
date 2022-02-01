@@ -1,27 +1,26 @@
 package cooperation.qqfav.globalsearch;
 
-import bclx;
-import bcmk;
-import bmbc;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
 import java.util.List;
 
 class FavoriteSearchEngine$SearchRunnable
   implements Runnable
 {
-  bclx<bmbc> jdField_a_of_type_Bclx;
-  bcmk jdField_a_of_type_Bcmk;
+  ISearchListener<FavoriteSearchResultModel> jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener;
+  SearchRequest jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
   
   private FavoriteSearchEngine$SearchRunnable(FavoriteSearchEngine paramFavoriteSearchEngine) {}
   
   public void run()
   {
-    bcmk localbcmk = this.jdField_a_of_type_Bcmk;
-    String str = this.jdField_a_of_type_Bcmk.a;
-    List localList = this.this$0.a(localbcmk);
+    SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
+    String str = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a;
+    List localList = this.this$0.a(localSearchRequest);
     try
     {
-      if ((this.jdField_a_of_type_Bclx != null) && (localbcmk == this.jdField_a_of_type_Bcmk) && (str.equals(this.jdField_a_of_type_Bcmk.a))) {
-        this.jdField_a_of_type_Bclx.a(localList, 1);
+      if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a))) {
+        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
       }
       return;
     }
@@ -30,7 +29,7 @@ class FavoriteSearchEngine$SearchRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchEngine.SearchRunnable
  * JD-Core Version:    0.7.0.1
  */

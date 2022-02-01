@@ -1,7 +1,5 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaap;
-import aaau;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -12,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import com.tencent.biz.subscribe.beans.ShareInfoBean;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -22,7 +21,6 @@ import com.tencent.smtt.utils.Md5Utils;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import zsf;
 
 public abstract class AbsSubscribeShareCardView
   extends FrameLayout
@@ -35,8 +33,8 @@ public abstract class AbsSubscribeShareCardView
   public float a;
   protected Bitmap a;
   protected View a;
+  protected ShareInfoBean a;
   protected ArrayList<String> a;
-  protected zsf a;
   protected View b;
   protected ArrayList<ImageView> b;
   private volatile int f;
@@ -136,7 +134,15 @@ public abstract class AbsSubscribeShareCardView
     }
   }
   
-  protected void a(ArrayList<String> paramArrayList, ArrayList<ImageView> paramArrayList1, aaap paramaaap)
+  public void a(ShareInfoBean paramShareInfoBean, Bitmap paramBitmap, AbsSubscribeShareCardView.ShareDataBindListener paramShareDataBindListener)
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean = paramShareInfoBean;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    measure(c, e);
+    layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
+  }
+  
+  protected void a(ArrayList<String> paramArrayList, ArrayList<ImageView> paramArrayList1, AbsSubscribeShareCardView.ShareDataBindListener paramShareDataBindListener)
   {
     int i = 0;
     if ((paramArrayList != null) && (paramArrayList.size() == paramArrayList1.size()))
@@ -144,36 +150,28 @@ public abstract class AbsSubscribeShareCardView
       this.f = 0;
       if (i < paramArrayList.size())
       {
-        String str = aaau.a + Md5Utils.getMD5((String)paramArrayList.get(i)) + ".png";
+        String str = SubscribeQRCodeShareHelper.a + Md5Utils.getMD5((String)paramArrayList.get(i)) + ".png";
         if (new File(str).exists())
         {
           ((ImageView)paramArrayList1.get(i)).setImageBitmap(SafeBitmapFactory.decodeFile(str));
           this.f += 1;
           if (this.f == paramArrayList.size()) {
-            ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.1(this, paramaaap));
+            ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.1(this, paramShareDataBindListener));
           }
         }
         for (;;)
         {
           i += 1;
           break;
-          ThreadManagerV2.executeOnFileThread(new AbsSubscribeShareCardView.2(this, paramArrayList1, i, str, paramArrayList, paramaaap));
+          ThreadManagerV2.executeOnFileThread(new AbsSubscribeShareCardView.2(this, paramArrayList1, i, str, paramArrayList, paramShareDataBindListener));
         }
       }
     }
   }
-  
-  public void a(zsf paramzsf, Bitmap paramBitmap, aaap paramaaap)
-  {
-    this.jdField_a_of_type_Zsf = paramzsf;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    measure(c, e);
-    layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView
  * JD-Core Version:    0.7.0.1
  */

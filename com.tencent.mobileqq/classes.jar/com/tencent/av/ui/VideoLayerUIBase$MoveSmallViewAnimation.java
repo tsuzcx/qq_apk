@@ -6,9 +6,9 @@ import com.tencent.av.app.VideoAppInterface;
 class VideoLayerUIBase$MoveSmallViewAnimation
   implements Runnable
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private float jdField_b_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
+  private int jdField_a_of_type_Int = 0;
+  private float jdField_b_of_type_Float = 0.0F;
   private int jdField_b_of_type_Int = 1;
   private final int c = 9;
   
@@ -47,7 +47,7 @@ class VideoLayerUIBase$MoveSmallViewAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUIBase.MoveSmallViewAnimation
  * JD-Core Version:    0.7.0.1
  */

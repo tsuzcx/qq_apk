@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class UniBusinessItem
   extends JceStruct
 {
-  public int appid;
+  public int appid = 0;
   public String hashid = "";
-  public int itemid;
+  public int itemid = 0;
   
   public UniBusinessItem() {}
   

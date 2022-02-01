@@ -13,10 +13,10 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
   public void onDismiss()
   {
     QMLog.i("SDK_MiniInterstitialAd", "onDismiss");
-    if (InterstitialAdPlugin.MiniInterstitialAd.access$800(this.this$1) != null)
+    if (InterstitialAdPlugin.MiniInterstitialAd.access$700(this.this$1) != null)
     {
-      JSONObject localJSONObject = InterstitialAdPlugin.MiniInterstitialAd.access$900(this.this$1, this.val$compId, -1);
-      InterstitialAdPlugin.MiniInterstitialAd.access$800(this.this$1).evaluateSubscribeJS("onInterstitialAdClose", localJSONObject.toString(), 0);
+      JSONObject localJSONObject = InterstitialAdPlugin.MiniInterstitialAd.access$800(this.this$1, this.val$compId, -1);
+      InterstitialAdPlugin.MiniInterstitialAd.access$700(this.this$1).evaluateSubscribeJS("onInterstitialAdClose", localJSONObject.toString(), 0);
     }
   }
   
@@ -24,14 +24,14 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
   {
     QMLog.i("SDK_MiniInterstitialAd", "onError, errCode = " + paramInt + ", errMsg = " + paramString);
     InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, false, "operateInterstitialAd", this.val$compId, paramInt, this.val$callbackId);
-    InterstitialAdPlugin.MiniInterstitialAd.access$702(this.this$1, false);
+    InterstitialAdPlugin.MiniInterstitialAd.access$602(this.this$1, false);
   }
   
   public void onLoad()
   {
     QMLog.i("SDK_MiniInterstitialAd", "onLoad");
     InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, true, "operateInterstitialAd", this.val$compId, 0, this.val$callbackId);
-    InterstitialAdPlugin.MiniInterstitialAd.access$702(this.this$1, false);
+    InterstitialAdPlugin.MiniInterstitialAd.access$602(this.this$1, false);
   }
   
   public void onShow()
@@ -41,7 +41,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InterstitialAdPlugin.MiniInterstitialAd.2
  * JD-Core Version:    0.7.0.1
  */

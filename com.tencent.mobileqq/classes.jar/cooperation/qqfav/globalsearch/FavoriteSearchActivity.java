@@ -1,12 +1,10 @@
 package cooperation.qqfav.globalsearch;
 
-import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import anvx;
-import bmbc;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -22,14 +20,14 @@ public class FavoriteSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  public BaseSearchFragment<bmbc> a()
+  public BaseSearchFragment<FavoriteSearchResultModel> a()
   {
     return new FavoriteSearchFragment();
   }
   
   public String a()
   {
-    return anvx.a(2131703861);
+    return HardCodeUtil.a(2131704409);
   }
   
   @Override
@@ -45,7 +43,7 @@ public class FavoriteSearchActivity
   {
     super.doOnResume();
     if ((getIntent() != null) && (UniteSearchActivity.class.getSimpleName().equals(getIntent().getStringExtra("preAct")))) {
-      overridePendingTransition(2130771992, 2130771993);
+      overridePendingTransition(2130771994, 2130771995);
     }
   }
   
@@ -58,7 +56,7 @@ public class FavoriteSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchActivity
  * JD-Core Version:    0.7.0.1
  */

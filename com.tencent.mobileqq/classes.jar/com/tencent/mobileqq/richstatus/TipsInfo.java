@@ -16,7 +16,7 @@ public class TipsInfo
   public String titleWording;
   public int type = -1;
   public String url;
-  public boolean valid;
+  public boolean valid = false;
   public int vipMonth;
   public String vipType;
   public String wording;
@@ -28,7 +28,7 @@ public class TipsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.TipsInfo
  * JD-Core Version:    0.7.0.1
  */

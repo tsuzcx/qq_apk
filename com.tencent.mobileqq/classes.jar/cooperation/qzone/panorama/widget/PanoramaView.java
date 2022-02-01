@@ -2,7 +2,7 @@ package cooperation.qzone.panorama.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import com.tencent.mobileqq.apollo.GLTextureView;
+import com.tencent.mobileqq.apollo.view.opengl.GLTextureView;
 import cooperation.qzone.panorama.callback.OnPanoramaClickListener;
 import cooperation.qzone.panorama.callback.OnPanoramaLoadingListener;
 import cooperation.qzone.panorama.callback.PanoramaTouchListener;
@@ -127,7 +127,7 @@ public class PanoramaView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaView
  * JD-Core Version:    0.7.0.1
  */

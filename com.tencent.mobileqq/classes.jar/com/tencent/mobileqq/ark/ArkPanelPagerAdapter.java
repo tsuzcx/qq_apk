@@ -11,15 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anvx;
-import apyt;
-import apzl;
-import apzm;
-import bgyd;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
+import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
 import java.util.ArrayList;
@@ -33,7 +30,7 @@ public class ArkPanelPagerAdapter
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   PanelRecycleBin jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin;
-  ArrayList<apyt> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<ArkAppManagerPanel.ArkAppPanelData> jdField_a_of_type_JavaUtilArrayList;
   int b = 2;
   private int c;
   
@@ -41,53 +38,53 @@ public class ArkPanelPagerAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin = new PanelRecycleBin();
-    this.c = AIOUtils.dp2px(50.0F, paramContext.getResources());
+    this.c = AIOUtils.a(50.0F, paramContext.getResources());
   }
   
-  private void a(int paramInt, apzl paramapzl)
+  private void a(int paramInt, ArkPanelPagerAdapter.IconLinearLayout paramIconLinearLayout)
   {
     int n = this.jdField_a_of_type_Int;
     int i1 = this.b;
-    paramapzl.a(paramInt);
+    paramIconLinearLayout.a(paramInt);
     int i = 0;
     int j = 0;
     while (j < this.b)
     {
-      LinearLayout localLinearLayout = (LinearLayout)paramapzl.getChildAt(j);
+      LinearLayout localLinearLayout = (LinearLayout)paramIconLinearLayout.getChildAt(j);
       int k = 0;
       if (k < this.jdField_a_of_type_Int)
       {
         View localView = localLinearLayout.getChildAt(k);
-        apzm localapzm = (apzm)localView.getTag();
+        ArkPanelPagerAdapter.ViewHolder localViewHolder = (ArkPanelPagerAdapter.ViewHolder)localView.getTag();
         int m = n * i1 * paramInt + i;
-        apyt localapyt;
+        ArkAppManagerPanel.ArkAppPanelData localArkAppPanelData;
         label159:
         Object localObject;
         if (m < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          localapyt = (apyt)this.jdField_a_of_type_JavaUtilArrayList.get(m);
-          localapzm.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          if ((m == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) && (localapyt.jdField_a_of_type_Boolean))
+          localArkAppPanelData = (ArkAppManagerPanel.ArkAppPanelData)this.jdField_a_of_type_JavaUtilArrayList.get(m);
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          if ((m == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) && (localArkAppPanelData.jdField_a_of_type_Boolean))
           {
-            localapzm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localView.getResources().getDrawable(2130838698));
-            localapzm.jdField_a_of_type_AndroidWidgetTextView.setText(localapyt.jdField_b_of_type_JavaLangString);
-            localObject = localapzm.b;
-            if (!localapyt.jdField_b_of_type_Boolean) {
+            localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localView.getResources().getDrawable(2130838766));
+            localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localArkAppPanelData.jdField_b_of_type_JavaLangString);
+            localObject = localViewHolder.b;
+            if (!localArkAppPanelData.jdField_b_of_type_Boolean) {
               break label347;
             }
             m = 0;
             label190:
             ((ImageView)localObject).setVisibility(m);
-            localapzm.jdField_a_of_type_JavaLangString = localapyt.jdField_a_of_type_JavaLangString;
-            localView.setContentDescription(localapyt.jdField_b_of_type_JavaLangString + anvx.a(2131700216));
+            localViewHolder.jdField_a_of_type_JavaLangString = localArkAppPanelData.jdField_a_of_type_JavaLangString;
+            localView.setContentDescription(localArkAppPanelData.jdField_b_of_type_JavaLangString + HardCodeUtil.a(2131700794));
             localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             localView.setEnabled(true);
-            bgyd.a(localView, true);
+            AccessibilityUtil.a(localView, true);
           }
         }
         for (;;)
         {
-          bgyd.a(localapzm.jdField_a_of_type_AndroidWidgetTextView, false);
+          AccessibilityUtil.a(localViewHolder.jdField_a_of_type_AndroidWidgetTextView, false);
           i += 1;
           k += 1;
           break;
@@ -98,19 +95,19 @@ public class ArkPanelPagerAdapter
           m = this.c;
           ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = m;
           ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = m;
-          localapzm.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(localapyt.c, (URLDrawable.URLDrawableOptions)localObject));
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(localArkAppPanelData.c, (URLDrawable.URLDrawableOptions)localObject));
           break label159;
           label347:
           m = 8;
           break label190;
-          localapzm.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-          localapzm.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
-          localapzm.jdField_a_of_type_AndroidWidgetTextView.setText(null);
-          localapzm.b.setVisibility(8);
-          localapzm.jdField_a_of_type_JavaLangString = null;
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
+          localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(null);
+          localViewHolder.b.setVisibility(8);
+          localViewHolder.jdField_a_of_type_JavaLangString = null;
           localView.setOnClickListener(null);
           localView.setEnabled(false);
-          bgyd.a(localView, false);
+          AccessibilityUtil.a(localView, false);
         }
       }
       j += 1;
@@ -133,10 +130,10 @@ public class ArkPanelPagerAdapter
         int i = 0;
         while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
         {
-          apzl localapzl = (apzl)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-          if ((localapzl != null) && (paramInt == localapzl.jdField_a_of_type_Int))
+          ArkPanelPagerAdapter.IconLinearLayout localIconLinearLayout = (ArkPanelPagerAdapter.IconLinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+          if ((localIconLinearLayout != null) && (paramInt == localIconLinearLayout.jdField_a_of_type_Int))
           {
-            a(paramInt, localapzl);
+            a(paramInt, localIconLinearLayout);
             return;
           }
           i += 1;
@@ -150,7 +147,7 @@ public class ArkPanelPagerAdapter
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public void a(ArrayList<apyt> paramArrayList)
+  public void a(ArrayList<ArkAppManagerPanel.ArkAppPanelData> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -162,9 +159,9 @@ public class ArkPanelPagerAdapter
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    apzl localapzl = (apzl)paramObject;
-    ((ViewGroup)paramView).removeView(localapzl);
-    localapzl.a();
+    ArkPanelPagerAdapter.IconLinearLayout localIconLinearLayout = (ArkPanelPagerAdapter.IconLinearLayout)paramObject;
+    ((ViewGroup)paramView).removeView(localIconLinearLayout);
+    localIconLinearLayout.a();
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.addScrapView((View)paramObject);
   }
   
@@ -178,7 +175,7 @@ public class ArkPanelPagerAdapter
   
   public int getItemPosition(Object paramObject)
   {
-    if (((paramObject instanceof apzl)) && (((apzl)paramObject).jdField_a_of_type_Int >= getCount())) {
+    if (((paramObject instanceof ArkPanelPagerAdapter.IconLinearLayout)) && (((ArkPanelPagerAdapter.IconLinearLayout)paramObject).jdField_a_of_type_Int >= getCount())) {
       return -2;
     }
     return super.getItemPosition(paramObject);
@@ -189,27 +186,27 @@ public class ArkPanelPagerAdapter
     if (QLog.isColorLevel()) {
       QLog.d("ArkPanelPagerAdapter", 2, "instantiateItem position=" + paramInt);
     }
-    apzl localapzl = (apzl)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.getScrapView();
+    ArkPanelPagerAdapter.IconLinearLayout localIconLinearLayout = (ArkPanelPagerAdapter.IconLinearLayout)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.getScrapView();
     Object localObject;
-    if (localapzl != null)
+    if (localIconLinearLayout != null)
     {
-      localObject = localapzl.getTag();
-      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localapzl.getTag()).intValue() != XPanelContainer.d))
+      localObject = localIconLinearLayout.getTag();
+      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localIconLinearLayout.getTag()).intValue() != XPanelContainer.d))
       {
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.clearScrapViews();
-        localapzl = null;
+        localIconLinearLayout = null;
       }
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
-      localObject = localapzl;
-      if (localapzl == null) {
-        localObject = new apzl(this, this.jdField_a_of_type_AndroidContentContext, null);
+      localObject = localIconLinearLayout;
+      if (localIconLinearLayout == null) {
+        localObject = new ArkPanelPagerAdapter.IconLinearLayout(this, this.jdField_a_of_type_AndroidContentContext, null);
       }
-      ((apzl)localObject).a(paramInt);
-      a(paramInt, (apzl)localObject);
-      if ((((apzl)localObject).getParent() != paramView) && (paramInt < getCount())) {
+      ((ArkPanelPagerAdapter.IconLinearLayout)localObject).a(paramInt);
+      a(paramInt, (ArkPanelPagerAdapter.IconLinearLayout)localObject);
+      if ((((ArkPanelPagerAdapter.IconLinearLayout)localObject).getParent() != paramView) && (paramInt < getCount())) {
         ((ViewGroup)paramView).addView((View)localObject);
       }
       return localObject;

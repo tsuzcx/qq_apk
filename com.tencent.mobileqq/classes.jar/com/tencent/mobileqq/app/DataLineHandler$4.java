@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import ansr;
 import java.util.TimerTask;
 
-public class DataLineHandler$4
+class DataLineHandler$4
   extends TimerTask
 {
-  public DataLineHandler$4(ansr paramansr) {}
+  DataLineHandler$4(DataLineHandler paramDataLineHandler) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class DataLineHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.4
  * JD-Core Version:    0.7.0.1
  */

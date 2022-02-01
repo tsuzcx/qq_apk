@@ -15,8 +15,8 @@ public class CommodityBean
   public static final Parcelable.Creator<CommodityBean> CREATOR = new CommodityBean.1();
   public String mAlias = "";
   public String mImg = "";
-  public long mItemID;
-  public long mPrice;
+  public long mItemID = 0L;
+  public long mPrice = 0L;
   public String mTitle = "";
   public String mUrl = "";
   
@@ -86,7 +86,7 @@ public class CommodityBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityBean
  * JD-Core Version:    0.7.0.1
  */

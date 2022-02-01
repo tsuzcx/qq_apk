@@ -4,21 +4,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anvx;
-import bisl;
-import biyn;
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.biz.subscribe.beans.SerializableMap;
+import com.tencent.biz.webviewplugin.Share;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.ark.ArkAppCenterUtil;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
 import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneShareManager;
 import cooperation.qzone.mobilereport.MobileReportManager;
@@ -33,7 +35,6 @@ import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import znl;
 
 public class IliveShareHelper
 {
@@ -48,9 +49,10 @@ public class IliveShareHelper
   private String mCurrentNickName;
   private Bundle mDataBundle;
   public Activity mHostActivity;
-  private bisl mLoadingDialog;
+  private QQProgressDialog mLoadingDialog;
+  private Share mShare;
   private String mWXTransaction;
-  private biyn wxShareListener;
+  private WXShareHelper.WXShareListener wxShareListener;
   
   public IliveShareHelper(Activity paramActivity, Bundle paramBundle)
   {
@@ -177,7 +179,7 @@ public class IliveShareHelper
           if (localJSONObject != null) {
             localIntent.putExtra("forward_ark_app_config", localJSONObject.toString());
           }
-          localIntent.putExtra("scale", ArkAppCenterUtil.getDensity());
+          localIntent.putExtra("scale", ArkAppCenterUtil.a());
           localIntent.putExtra("appName", str1);
           localIntent.putExtra("appView", str2);
           localIntent.putExtra("appMinVersion", str5);
@@ -222,7 +224,7 @@ public class IliveShareHelper
   private void initLoadingDialog(Activity paramActivity)
   {
     if (this.mLoadingDialog == null) {
-      this.mLoadingDialog = new bisl(paramActivity);
+      this.mLoadingDialog = new QQProgressDialog(paramActivity);
     }
   }
   
@@ -323,7 +325,7 @@ public class IliveShareHelper
     reportAction("qq_live", "room_page", "", "share_platform", "", 102, getFollowInfo("3", "", "", "", ""));
     if (localIntent == null) {
       if (this.mHostActivity != null) {
-        QQToast.a(this.mHostActivity, anvx.a(2131714024), 0).a();
+        QQToast.a(this.mHostActivity, HardCodeUtil.a(2131714520), 0).a();
       }
     }
     while ((localIntent == null) || (this.mHostActivity == null)) {
@@ -422,7 +424,7 @@ public class IliveShareHelper
       if ((str1 != null) && (!str1.isEmpty())) {
         break label405;
       }
-      QQToast.a(this.mHostActivity, 1, anvx.a(2131714021), 0).a();
+      QQToast.a(this.mHostActivity, 1, HardCodeUtil.a(2131714517), 0).a();
       return;
       reportAction("qq_live", "room_page", "", "share_platform", "", 102, getFollowInfo("4", "", "", "", ""));
       break;
@@ -431,14 +433,14 @@ public class IliveShareHelper
     }
     label405:
     if (!WXShareHelper.a().a()) {
-      i = 2131720175;
+      i = 2131720753;
     }
     while (i != -1)
     {
-      znl.a(0, i);
+      QRUtils.a(0, i);
       return;
       if (!WXShareHelper.a().b()) {
-        i = 2131720176;
+        i = 2131720754;
       }
     }
     initWXShareListenenr();
@@ -449,7 +451,7 @@ public class IliveShareHelper
       return;
     }
     initLoadingDialog(this.mHostActivity);
-    this.mLoadingDialog.c(2131693769);
+    this.mLoadingDialog.c(2131693940);
     this.mLoadingDialog.show();
     ThreadManager.post(new IliveShareHelper.5(this, (Map)localObject2, (Runnable)localObject1), 8, null, false);
   }
@@ -531,6 +533,18 @@ public class IliveShareHelper
     }
   }
   
+  public void setShare(Share paramShare)
+  {
+    this.mShare = paramShare;
+    if (this.mShare != null)
+    {
+      this.mDataBundle.putString("share_cover_url", paramShare.a());
+      this.mDataBundle.putString("share_title", paramShare.b());
+      this.mDataBundle.putString("share_content", paramShare.c());
+      this.mDataBundle.putString("share_cover_url", paramShare.d());
+    }
+  }
+  
   public void showActionSheet()
   {
     if (this.mActionSheet == null) {
@@ -547,7 +561,7 @@ public class IliveShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.share.IliveShareHelper
  * JD-Core Version:    0.7.0.1
  */

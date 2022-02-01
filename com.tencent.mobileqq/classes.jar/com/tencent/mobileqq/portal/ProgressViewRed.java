@@ -20,10 +20,10 @@ public class ProgressViewRed
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  private int[] jdField_a_of_type_ArrayOfInt = { 2130845511, 2130845512, 2130845513, 2130845514, 2130845515, 2130845516, 2130845517, 2130845518, 2130845519, 2130845520, 2130845521, 2130845522, 2130845523, 2130845524, 2130845525, 2130845526, 2130845527, 2130845528, 2130845529, 2130845530 };
+  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = null;
+  private int jdField_b_of_type_Int = 0;
+  private long jdField_b_of_type_Long = 0L;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   
   public ProgressViewRed(Context paramContext)
@@ -62,6 +62,11 @@ public class ProgressViewRed
     }
   }
   
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
   public void a(long paramLong1, long paramLong2, CharSequence paramCharSequence)
   {
     this.jdField_a_of_type_Long = paramLong2;
@@ -82,6 +87,7 @@ public class ProgressViewRed
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, n, m);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
+    int j;
     int i;
     int i1;
     Bitmap localBitmap;
@@ -89,29 +95,39 @@ public class ProgressViewRed
     {
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(n, 0, k, m);
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      int j = this.jdField_b_of_type_Int;
+      j = this.jdField_b_of_type_Int;
       i = j;
       if (j >= this.jdField_a_of_type_ArrayOfInt.length) {
         i = j % this.jdField_a_of_type_ArrayOfInt.length;
       }
-      j = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getWidth();
-      i1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getHeight();
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, j, i1);
-      if (j > k - n) {
-        break label224;
+      i1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getWidth();
+      j = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getHeight();
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, i1, j);
+      if (i1 > k - n) {
+        break label228;
       }
       localBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i];
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(n, 0.0F, j + n, m);
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(n, 0.0F, i1 + n, m);
     }
     for (;;)
     {
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+      if (localBitmap != null) {
+        paramCanvas.drawBitmap(localBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+      }
       this.jdField_b_of_type_Int += 1;
       super.draw(paramCanvas);
       return;
-      label224:
-      localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i], 0, 0, k - n, i1, null, false);
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(n, 0.0F, k, m);
+      label228:
+      i1 = k - n;
+      if (i1 > 0)
+      {
+        localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i], 0, 0, i1, j, null, false);
+        this.jdField_a_of_type_AndroidGraphicsRectF.set(n, 0.0F, k, m);
+      }
+      else
+      {
+        localBitmap = null;
+      }
     }
   }
   

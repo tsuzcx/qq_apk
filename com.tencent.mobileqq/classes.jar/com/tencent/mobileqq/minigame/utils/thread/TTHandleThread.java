@@ -45,6 +45,11 @@ public class TTHandleThread
   {
     handler.postDelayed(paramRunnable, paramLong);
   }
+  
+  public final void remove(Runnable paramRunnable)
+  {
+    handler.removeCallbacks(paramRunnable);
+  }
 }
 
 

@@ -18,11 +18,11 @@ public class FeedsItemData$TopCardInfo
   public String msgId;
   public List<String> priorities;
   public int prioritiesIconFlag;
-  public boolean showTopCard;
+  public boolean showTopCard = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,15 @@ package com.tencent.mobileqq.minigame.manager;
 
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import bkoh;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
+import com.tencent.qqmini.proxyimpl.HttpUtil;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener.DownloadResult;
+import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.LameMp3SoDownloadListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.WebAudioDownloadListener;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
@@ -59,16 +60,24 @@ public class FileDownloadManager
   
   private static boolean downloadWithDownloader(String paramString1, Map<String, String> paramMap, String paramString2, int paramInt, Downloader.DownloadMode paramDownloadMode, DownloaderProxy.DownloadListener paramDownloadListener)
   {
-    MiniappDownloadUtil.getInstance().download(paramString1, paramString2, false, new FileDownloadManager.2(paramDownloadListener, paramString2, paramString1), paramDownloadMode, bkoh.a(paramMap));
+    MiniappDownloadUtil.getInstance().download(paramString1, paramString2, false, new FileDownloadManager.2(paramDownloadListener, paramString2, paramString1), paramDownloadMode, HttpUtil.a(paramMap));
     return true;
   }
   
   private static boolean downloadWithOkhttp(String paramString1, Map<String, String> paramMap, String paramString2, int paramInt, DownloaderProxy.DownloadListener paramDownloadListener)
   {
-    paramMap = MiniOkHttpClientFactory.getDownloadClient(true).newCall(bkoh.a(paramString1, paramMap, "GET", null, null));
+    paramMap = MiniOkHttpClientFactory.getDownloadClient(true).newCall(HttpUtil.a(paramString1, paramMap, "GET", null, null));
     paramMap.enqueue(new FileDownloadManager.1(paramString1, paramDownloadListener, paramString2, SystemClock.uptimeMillis()));
     taskMap.put(paramString1, paramMap);
     return true;
+  }
+  
+  public static void getLameMp3SoDownloadPath(DownloaderProxy.LameMp3SoDownloadListener paramLameMp3SoDownloadListener)
+  {
+    if (paramLameMp3SoDownloadListener == null) {
+      return;
+    }
+    QzoneModuleManager.getInstance().downloadModule("libminigame_lamemp3.so", new FileDownloadManager.4(paramLameMp3SoDownloadListener));
   }
   
   public static void getWebAudioDownloadPath(DownloaderProxy.WebAudioDownloadListener paramWebAudioDownloadListener)

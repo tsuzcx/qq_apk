@@ -1,24 +1,21 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apje;
-import apjg;
-
-public class ARCamera$ARCameraHandler$1
+class ARCamera$ARCameraHandler$1
   implements Runnable
 {
-  public ARCamera$ARCameraHandler$1(apjg paramapjg) {}
+  ARCamera$ARCameraHandler$1(ARCamera.ARCameraHandler paramARCameraHandler) {}
   
   public void run()
   {
-    apje localapje = this.a.a;
-    int j = apje.a(this.a.a) / 2;
-    int k = apje.b(this.a.a) / 2;
-    int m = apje.a(this.a.a);
-    int n = apje.b(this.a.a);
-    if (!apje.a(this.a.a)) {}
-    for (int i = apje.g();; i = apje.a(this.a.a) * 3 / 4)
+    ARCamera localARCamera = this.a.a;
+    int j = ARCamera.a(this.a.a) / 2;
+    int k = ARCamera.b(this.a.a) / 2;
+    int m = ARCamera.a(this.a.a);
+    int n = ARCamera.b(this.a.a);
+    if (!ARCamera.a(this.a.a)) {}
+    for (int i = ARCamera.g();; i = ARCamera.a(this.a.a) * 3 / 4)
     {
-      apje.a(localapje, j, k, m, n, i);
+      ARCamera.a(localARCamera, j, k, m, n, i);
       return;
     }
   }

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat android:id="@id/o8s" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/o88" android:layout_width="fill_parent" android:layout_height="60.0dip">
-        <ImageView android:id="@id/o7s" android:paddingLeft="@dimen/mp" android:paddingTop="@dimen/mp" android:paddingRight="@dimen/mp" android:paddingBottom="@dimen/mp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dtr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout android:id="@id/o8a" android:layout_width="120.0dip" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/o7v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/crg" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <RelativeLayout android:id="@id/o86" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="52.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/o84" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/com" />
-            <ImageView android:id="@id/o7z" android:background="@drawable/dql" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignRight="@id/o84" />
+<FrameLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/bdz">
+        <ImageView android:id="@id/nkz" android:layout_width="@dimen/bds" android:layout_height="@dimen/bds" android:layout_marginRight="@dimen/be2" android:src="@drawable/eqi" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/wwm" />
+        <ImageView android:id="@id/nl2" android:layout_width="@dimen/bes" android:layout_height="@dimen/beq" android:layout_marginTop="@dimen/be3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/wwm" />
+        <RelativeLayout android:id="@id/nky" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/be0" android:layout_below="@id/nl2" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/nl0" android:visibility="gone" android:layout_width="@dimen/bdu" android:layout_height="@dimen/bdt" android:contentDescription="@string/wwm" />
+            <ImageView android:id="@id/nl1" android:layout_width="@dimen/bdu" android:layout_height="@dimen/bdt" android:contentDescription="@string/wwm" />
+            <ImageView android:id="@id/nl3" android:layout_width="@dimen/bdu" android:layout_height="@dimen/bdt" android:layout_marginTop="@dimen/be1" android:layout_below="@id/nl1" android:contentDescription="@string/wwm" />
         </RelativeLayout>
-        <View android:id="@id/o8b" android:background="#33979797" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="@dimen/bdx" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/nkx" android:layout_width="@dimen/bdy" android:layout_height="@dimen/bdv" android:layout_marginTop="@dimen/bdw" android:text="@string/wys" android:layout_below="@id/nky" android:layout_centerHorizontal="true" />
     </RelativeLayout>
-    <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/o8u" android:layout="@layout/cmy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mw" android:layout_marginRight="@dimen/mw" android:layout_marginBottom="@dimen/n5" />
-    <ViewStub android:id="@id/o82" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:layout_gravity="center|right|top" android:id="@id/o8t" android:layout="@layout/cmx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" />
 </FrameLayout>

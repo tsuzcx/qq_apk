@@ -15,14 +15,13 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import aqxe;
-import bimg;
+import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.util.VersionUtils;
 
 public class BubbleVideoView
   extends BubbleImageView
 {
-  private static bimg a;
+  private static BubbleVideoView.DrawListener a;
   private Bitmap b;
   private boolean c;
   
@@ -43,14 +42,14 @@ public class BubbleVideoView
   
   private void b(Canvas paramCanvas)
   {
-    if (jdField_a_of_type_Bimg != null) {
-      jdField_a_of_type_Bimg.a(this, paramCanvas);
+    if (jdField_a_of_type_ComTencentMobileqqWidgetBubbleVideoView$DrawListener != null) {
+      jdField_a_of_type_ComTencentMobileqqWidgetBubbleVideoView$DrawListener.a(this, paramCanvas);
     }
   }
   
-  public static void setDrawListener(bimg parambimg)
+  public static void setDrawListener(BubbleVideoView.DrawListener paramDrawListener)
   {
-    jdField_a_of_type_Bimg = parambimg;
+    jdField_a_of_type_ComTencentMobileqqWidgetBubbleVideoView$DrawListener = paramDrawListener;
   }
   
   protected void a()
@@ -124,7 +123,7 @@ public class BubbleVideoView
   {
     this.e = f;
     int i;
-    if (VersionUtils.isHoneycomb())
+    if (VersionUtils.e())
     {
       this.jdField_a_of_type_Int = 1;
       a();
@@ -132,7 +131,7 @@ public class BubbleVideoView
       if (Build.VERSION.SDK_INT >= 28)
       {
         this.g = true;
-        Object localObject = (String)aqxe.a().a(462);
+        Object localObject = (String)QConfigManager.a().a(462);
         if ((localObject != null) && (((String)localObject).length() > 0))
         {
           localObject = ((String)localObject).split("\\|");
@@ -206,7 +205,7 @@ public class BubbleVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BubbleVideoView
  * JD-Core Version:    0.7.0.1
  */

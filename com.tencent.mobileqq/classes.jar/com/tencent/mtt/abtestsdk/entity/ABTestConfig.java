@@ -78,7 +78,7 @@ public class ABTestConfig
       this.mCustomProfiles.remove(paramString);
       return;
     }
-    ABTestLog.error("remove profiles error. [" + paramString + "]" + "is not exist.", new Object[0]);
+    ABTestLog.error("remove profiles error. [" + paramString + "]is not exist.", new Object[0]);
   }
   
   public void setAppId(String paramString)
@@ -185,7 +185,7 @@ public class ABTestConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.entity.ABTestConfig
  * JD-Core Version:    0.7.0.1
  */

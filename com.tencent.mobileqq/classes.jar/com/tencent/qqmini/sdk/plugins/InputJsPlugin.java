@@ -45,6 +45,11 @@ public class InputJsPlugin
   private SoftKeyboardStateHelper.SoftKeyboardStateListener mListener = new InputJsPlugin.1(this);
   private SoftKeyboardStateHelper mSoftKeyboardStateHelper;
   
+  private void addTextChangedListener(RequestEvent paramRequestEvent, EditText paramEditText)
+  {
+    paramEditText.addTextChangedListener(new InputJsPlugin.6(this, paramRequestEvent));
+  }
+  
   private void handleHideKeyboard(RequestEvent paramRequestEvent, KeyboardLayout paramKeyboardLayout)
   {
     try
@@ -76,9 +81,9 @@ public class InputJsPlugin
       EditText localEditText = paramKeyboardLayout.getInputET();
       Button localButton = paramKeyboardLayout.getConfirmBT();
       showSoftInput(localContext, localEditText);
-      localEditText.addTextChangedListener(new InputJsPlugin.5(this, paramRequestEvent));
-      localEditText.setOnEditorActionListener(new InputJsPlugin.6(this, localEditText, paramRequestEvent, paramKeyboardLayout, localContext));
-      localButton.setOnClickListener(new InputJsPlugin.7(this, localEditText, paramRequestEvent, paramKeyboardLayout, localContext));
+      addTextChangedListener(paramRequestEvent, localEditText);
+      setOnEditorActionListener(paramRequestEvent, paramKeyboardLayout, localContext, localEditText);
+      setOnClickListener(paramRequestEvent, paramKeyboardLayout, localContext, localEditText, localButton);
       paramRequestEvent.ok(ApiUtil.wrapCallbackOk("showKeyboard", null));
       return;
     }
@@ -112,6 +117,16 @@ public class InputJsPlugin
       paramContext.hideSoftInputFromWindow(paramEditText.getWindowToken(), 0);
     }
     paramEditText.clearFocus();
+  }
+  
+  private void setOnClickListener(RequestEvent paramRequestEvent, KeyboardLayout paramKeyboardLayout, Context paramContext, EditText paramEditText, Button paramButton)
+  {
+    paramButton.setOnClickListener(new InputJsPlugin.5(this, paramEditText, paramRequestEvent, paramKeyboardLayout, paramContext));
+  }
+  
+  private void setOnEditorActionListener(RequestEvent paramRequestEvent, KeyboardLayout paramKeyboardLayout, Context paramContext, EditText paramEditText)
+  {
+    paramEditText.setOnEditorActionListener(new InputJsPlugin.7(this, paramEditText, paramRequestEvent, paramKeyboardLayout, paramContext));
   }
   
   private void showSoftInput(Context paramContext, EditText paramEditText)
@@ -218,7 +233,7 @@ public class InputJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InputJsPlugin
  * JD-Core Version:    0.7.0.1
  */

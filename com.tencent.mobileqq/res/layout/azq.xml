@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/di" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n2e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="28.0dip" android:layout_marginBottom="45.0dip" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/n2f" android:layout_width="205.0dip" android:layout_height="79.0dip" android:layout_marginTop="79.0dip" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/nz2" android:background="@drawable/b45" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="34.0dip" android:text="@string/wkd" android:layout_alignParentBottom="true" />
+<RelativeLayout android:id="@id/olx" android:layout_width="100.0dip" android:layout_height="105.0dip" android:layout_marginLeft="-10.0dip" android:layout_marginRight="-10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mpz" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" app:qqArMapGuideRadius="3">
+        <com.tencent.image.URLImageView android:id="@id/e16" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minWidth="70.0dip" android:minHeight="70.0dip" />
+        <ImageView android:id="@id/o3w" android:background="@drawable/ftt" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/g5m" android:scaleType="center" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/eld" android:background="@drawable/ftt" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:layout_width="23.5dip" android:layout_height="23.5dip" android:layout_marginTop="16.899994dip" android:src="@drawable/hke" />
+            <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0999756dip" android:text="@string/q5j" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="right" android:id="@id/mux" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/fta" />
+        <ImageView android:layout_gravity="right" android:id="@id/muw" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/ft_" />
+        <ImageView android:layout_gravity="right" android:id="@id/ef9" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/fta" />
+        <ImageView android:layout_gravity="right" android:id="@id/nfe" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/ftn" />
+        <dov.com.qq.im.ae.view.AEDownLoadingView android:layout_gravity="right" android:id="@id/g2d" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
 </RelativeLayout>

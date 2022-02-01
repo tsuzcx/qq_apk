@@ -4,9 +4,9 @@ import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import anqh;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.pannel.viewbinder.ApolloViewBinder;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class ApolloPanelAdapter
   Context jdField_a_of_type_AndroidContentContext;
   SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   public BaseChatPie a;
-  private List<anqh> jdField_a_of_type_JavaUtilList;
+  private List<ApolloViewBinder> jdField_a_of_type_JavaUtilList;
   
   public ApolloPanelAdapter(Context paramContext)
   {
@@ -33,7 +33,7 @@ public class ApolloPanelAdapter
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
-  public void a(List<anqh> paramList)
+  public void a(List<ApolloViewBinder> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     super.notifyDataSetChanged();
@@ -65,16 +65,16 @@ public class ApolloPanelAdapter
     if (QLog.isColorLevel()) {
       QLog.d("ApolloPanelAdapter", 2, "instantiateItem position = " + paramInt);
     }
-    anqh localanqh = null;
-    Object localObject = localanqh;
+    ApolloViewBinder localApolloViewBinder = null;
+    Object localObject = localApolloViewBinder;
     if (paramInt >= 0)
     {
-      localObject = localanqh;
+      localObject = localApolloViewBinder;
       if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
       {
-        localanqh = (anqh)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localObject = localanqh.b();
-        localanqh.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+        localApolloViewBinder = (ApolloViewBinder)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localObject = localApolloViewBinder.c();
+        localApolloViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
       }
     }
     if ((localObject != null) && (((View)localObject).getParent() != paramViewGroup) && (paramInt < getCount())) {
@@ -90,7 +90,7 @@ public class ApolloPanelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.pannel.ApolloPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

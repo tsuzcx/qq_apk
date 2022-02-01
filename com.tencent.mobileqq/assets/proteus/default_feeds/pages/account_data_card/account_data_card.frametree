@@ -59,7 +59,7 @@
                             "attributes": {
                                 "viewID": "3",
                                 "id": "bg-image",
-                                "src": "http://pub.idqqimg.com/pc/misc/files/20200904/e0d7f0e948924c8dad4c10c427337fc3.png",
+                                "src": "https://pub.idqqimg.com/pc/misc/files/20200904/e0d7f0e948924c8dad4c10c427337fc3.png",
                                 "mode": "scaleToFill"
                             },
                             "styles": {
@@ -93,7 +93,7 @@
                                     "attributes": {
                                         "viewID": "6",
                                         "id": "title-image",
-                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200904/6013882897474d018c2f1883f471b99a.png"
+                                        "src": "https://pub.idqqimg.com/pc/misc/files/20200904/6013882897474d018c2f1883f471b99a.png"
                                     },
                                     "styles": {
                                         "position": "absolute",

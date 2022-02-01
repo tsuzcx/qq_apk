@@ -27,10 +27,11 @@ public class CircleFileStateView
   private int jdField_a_of_type_Int = -1;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
+  private boolean jdField_a_of_type_Boolean = false;
+  private float jdField_b_of_type_Float = 0.0F;
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  private boolean jdField_b_of_type_Boolean = false;
   private int c;
   private int d = -16776961;
   private int e = -16776961;
@@ -40,7 +41,7 @@ public class CircleFileStateView
   private int i = -3355444;
   private int j;
   private int k = 3;
-  private int l;
+  private int l = 0;
   private int m;
   private int n;
   
@@ -85,8 +86,8 @@ public class CircleFileStateView
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
       setClickable(true);
       return;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130844236);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130844237);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130844426);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130844427);
     }
   }
   
@@ -114,7 +115,7 @@ public class CircleFileStateView
     invalidate();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.n);
@@ -164,7 +165,7 @@ public class CircleFileStateView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.j = Math.min(View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt1));
@@ -253,7 +254,7 @@ public class CircleFileStateView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleFileStateView
  * JD-Core Version:    0.7.0.1
  */

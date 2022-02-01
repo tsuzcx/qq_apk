@@ -6,11 +6,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.biz.pubaccount.VideoInfo;
-import sfb;
 
 public class VideoFeedsTiktokFollowBtn
   extends ImageView
-  implements sfb
+  implements IVideoFeedsFollowButton
 {
   public VideoFeedsTiktokFollowBtn(Context paramContext)
   {
@@ -41,7 +40,7 @@ public class VideoFeedsTiktokFollowBtn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTiktokFollowBtn
  * JD-Core Version:    0.7.0.1
  */

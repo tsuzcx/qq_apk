@@ -3,10 +3,10 @@ package com.tencent.mobileqq.apollo.game;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
-public final class ApolloFragmentManager$1
+final class ApolloFragmentManager$1
   implements Runnable
 {
-  public ApolloFragmentManager$1(FragmentActivity paramFragmentActivity, ApolloWebViewFragment paramApolloWebViewFragment) {}
+  ApolloFragmentManager$1(FragmentActivity paramFragmentActivity, ApolloWebViewFragment paramApolloWebViewFragment) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public final class ApolloFragmentManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloFragmentManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ public final class s_tab_list_item
   public boolean is_custom = true;
   public String jump_url = "";
   public boolean need_clear_red = true;
-  public int red_id_mainpage;
-  public int red_id_undelcount;
-  public int tab_id;
+  public int red_id_mainpage = 0;
+  public int red_id_undelcount = 0;
+  public int tab_id = 0;
   public String text = "";
   
   public s_tab_list_item() {}

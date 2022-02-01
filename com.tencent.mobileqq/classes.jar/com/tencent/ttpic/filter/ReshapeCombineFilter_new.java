@@ -8,7 +8,7 @@ import com.tencent.aekit.openrender.UniformParam.TextureParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.openapi.filter.ReshapeType;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.util.Map;
 
 public class ReshapeCombineFilter_new
@@ -72,7 +72,7 @@ public class ReshapeCombineFilter_new
   
   public void setInitMesh(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    mFullscreenVerticesPortrait = VideoMaterialUtil.toFlatArray(VideoMaterialUtil.genFullScreenVertices(66, 66, 0.0F, 1.0F, 0.0F, 1.0F));
+    mFullscreenVerticesPortrait = VideoMaterial.toFlatArray(VideoMaterial.genFullScreenVertices(66, 66, 0.0F, 1.0F, 0.0F, 1.0F));
     mInitTextureCoordinatesPortrait = mFullscreenVerticesPortrait;
   }
   
@@ -113,13 +113,13 @@ public class ReshapeCombineFilter_new
     if (positionArray == null) {
       positionArray = new float[mFullscreenVerticesPortrait.length];
     }
-    VideoMaterialUtil.genFullScreenVertices(positionArray, 66, 66, paramFloat1 - (paramFloat2 - paramFloat1) / 64.0F, paramFloat2 + (paramFloat2 - paramFloat1) / 64.0F, paramFloat3 - (paramFloat4 - paramFloat3) / 64.0F, paramFloat4 + (paramFloat4 - paramFloat3) / 64.0F);
+    VideoMaterial.genFullScreenVertices(positionArray, 66, 66, paramFloat1 - (paramFloat2 - paramFloat1) / 64.0F, paramFloat2 + (paramFloat2 - paramFloat1) / 64.0F, paramFloat3 - (paramFloat4 - paramFloat3) / 64.0F, paramFloat4 + (paramFloat4 - paramFloat3) / 64.0F);
     setPositions(positionArray, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.ReshapeCombineFilter_new
  * JD-Core Version:    0.7.0.1
  */

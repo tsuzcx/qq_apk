@@ -222,7 +222,7 @@ public class Switch
     animateThumbToCheckedState(isChecked());
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
@@ -280,7 +280,7 @@ public class Switch
     return this.mTrackDrawable;
   }
   
-  protected int[] onCreateDrawableState(int paramInt)
+  public int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
     if (isChecked()) {
@@ -289,7 +289,7 @@ public class Switch
     return arrayOfInt;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int k = this.mSwitchLeft;
@@ -329,7 +329,7 @@ public class Switch
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     setThumbPosition(isChecked());
@@ -579,14 +579,14 @@ public class Switch
     setTrackDrawable(getContext().getResources().getDrawable(paramInt));
   }
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public boolean verifyDrawable(Drawable paramDrawable)
   {
     return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.mThumbDrawable) || (paramDrawable == this.mTrackDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.widget.Switch
  * JD-Core Version:    0.7.0.1
  */

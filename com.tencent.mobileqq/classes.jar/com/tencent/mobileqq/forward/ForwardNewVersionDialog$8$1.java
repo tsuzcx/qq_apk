@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import aurs;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -21,31 +20,31 @@ class ForwardNewVersionDialog$8$1
   
   public void run()
   {
-    int k = aurs.a(this.a.this$0, aurs.a(this.a.this$0));
-    int m = aurs.a(this.a.this$0, aurs.a(this.a.this$0));
-    int n = aurs.a(this.a.this$0).getHeight();
+    int k = ForwardNewVersionDialog.a(this.a.this$0, ForwardNewVersionDialog.a(this.a.this$0));
+    int m = ForwardNewVersionDialog.a(this.a.this$0, ForwardNewVersionDialog.a(this.a.this$0));
+    int n = ForwardNewVersionDialog.a(this.a.this$0).getHeight();
     int i1 = ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext());
     int i;
     int j;
     StringBuilder localStringBuilder;
     if (k - (m + n) > 0)
     {
-      i = aurs.a(this.a.this$0).getHeight() / 2;
+      i = ForwardNewVersionDialog.a(this.a.this$0).getHeight() / 2;
       Object localObject = this.a.this$0.getWindow().getAttributes();
       ((WindowManager.LayoutParams)localObject).y = (-i);
       this.a.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject);
       if (i > m - i1)
       {
-        localObject = aurs.a(this.a.this$0).getLayoutParams();
+        localObject = ForwardNewVersionDialog.a(this.a.this$0).getLayoutParams();
         if (localObject != null)
         {
-          ((ViewGroup.LayoutParams)localObject).height = (k - ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext()) - ViewUtils.dip2px(10.0F));
-          aurs.a(this.a.this$0).requestLayout();
+          ((ViewGroup.LayoutParams)localObject).height = (k - ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext()) - ViewUtils.a(10.0F));
+          ForwardNewVersionDialog.a(this.a.this$0).requestLayout();
         }
       }
       if (QLog.isColorLevel())
       {
-        localObject = (Context)aurs.a(this.a.this$0).get();
+        localObject = (Context)ForwardNewVersionDialog.a(this.a.this$0).get();
         j = 0;
         if (localObject != null) {
           j = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
@@ -68,7 +67,7 @@ class ForwardNewVersionDialog$8$1
         i = m - i;
         break;
       }
-      i = m + n - k + ViewUtils.dip2px(10.0F);
+      i = m + n - k + ViewUtils.a(10.0F);
       break;
       label388:
       localStringBuilder.append("|context is not null");
@@ -77,7 +76,7 @@ class ForwardNewVersionDialog$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog.8.1
  * JD-Core Version:    0.7.0.1
  */

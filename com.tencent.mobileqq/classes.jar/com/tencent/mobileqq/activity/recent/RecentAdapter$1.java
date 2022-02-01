@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.recent;
 
-import algc;
 import java.util.ArrayList;
 
-public class RecentAdapter$1
+class RecentAdapter$1
   extends ArrayList<Integer>
 {
-  public RecentAdapter$1(algc paramalgc, int paramInt)
+  RecentAdapter$1(RecentAdapter paramRecentAdapter, int paramInt)
   {
     super(paramInt);
     add(Integer.valueOf(0));
@@ -33,7 +32,7 @@ public class RecentAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.1
  * JD-Core Version:    0.7.0.1
  */

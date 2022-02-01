@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel android:id="@id/emoview" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/mjx" android:background="#ff8d66ff" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="80.0dip" android:minHeight="80.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.emoticonview.EmotionPanelListView android:id="@id/mqc" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageButton android:id="@id/bfq" android:background="@drawable/ho" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="7.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="@string/br7" />
-</com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel>
+    <TextView android:textSize="16.0dip" android:textColor="#fffeffff" android:ellipsize="end" android:id="@id/mk9" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="21.0dip" android:layout_marginTop="13.0dip" android:text="房间号" android:singleLine="true" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/mk_" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="人数" android:singleLine="true" android:layout_alignBaseline="@id/mk9" android:layout_alignParentRight="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mk8" android:layout_width="fill_parent" android:layout_height="25.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="15.0dip" android:layout_below="@id/mk9" android:layout_alignLeft="@id/mk9" />
+</RelativeLayout>

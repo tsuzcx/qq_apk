@@ -10,7 +10,8 @@ import android.graphics.drawable.Drawable.ConstantState;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.io.RandomAccessFile;
 
@@ -104,20 +105,20 @@ public class ApngDrawable
     int j;
     Object localObject;
     int k;
-    if ((!QLog.isColorLevel()) || (this.reCalculateRects)) {
+    if ((!URLDrawable.depImp.mLog.isColorLevel()) || (this.reCalculateRects)) {
       if (this.useRect)
       {
         i = this.mApngState.mApng.width;
         j = this.mApngState.mApng.height;
         if ((j <= 0) || (i <= 0)) {
-          break label308;
+          break label316;
         }
         localObject = getBounds();
         if (this.chatWindowHeight < ((Rect)localObject).height()) {
           this.chatWindowHeight = ((Rect)localObject).height();
         }
         if (this.chatWindowHeight / ((Rect)localObject).width() < j / i) {
-          break label251;
+          break label259;
         }
         k = ((Rect)localObject).width() * j / this.chatWindowHeight;
         int m = (int)((i - k) * 0.5D);
@@ -138,12 +139,12 @@ public class ApngDrawable
       }
       ((ApngImage)localObject).draw(paramCanvas, localRect, this.mDstRect, this.mApngState.mPaint, this.mUseAnimation);
       return;
-      label251:
+      label259:
       k = ((Rect)localObject).height() * i / ((Rect)localObject).width();
       j = (int)((j - this.chatWindowHeight * i / ((Rect)localObject).width()) * 0.5D);
       this.drawRect = new Rect(0, j, i, k + j);
       continue;
-      label308:
+      label316:
       this.drawRect = null;
     }
   }

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.Map;
 
+@Deprecated
 public final class CacheManager
 {
   @Deprecated
@@ -57,7 +58,7 @@ public final class CacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.CacheManager
  * JD-Core Version:    0.7.0.1
  */

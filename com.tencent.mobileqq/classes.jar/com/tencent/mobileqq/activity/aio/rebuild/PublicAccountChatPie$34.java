@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aido;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PublicAccountMenuEntity;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 
-public class PublicAccountChatPie$34
+class PublicAccountChatPie$34
   implements Runnable
 {
-  public PublicAccountChatPie$34(aido paramaido, SharedPreferences paramSharedPreferences, String paramString) {}
+  PublicAccountChatPie$34(PublicAccountChatPie paramPublicAccountChatPie, SharedPreferences paramSharedPreferences, String paramString) {}
   
   public void run()
   {
     try
     {
-      EntityManager localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
-      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localEntityManager.find(PublicAccountMenuEntity.class, this.this$0.sessionInfo.curFriendUin);
+      EntityManager localEntityManager = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localEntityManager.find(PublicAccountMenuEntity.class, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       if (localPublicAccountMenuEntity != null) {
         localEntityManager.remove(localPublicAccountMenuEntity);
       }
@@ -31,7 +30,7 @@ public class PublicAccountChatPie$34
       for (;;)
       {
         if (QLog.isDevelopLevel()) {
-          QLog.d(this.this$0.tag, 4, localException.getMessage());
+          QLog.d(this.this$0.b, 4, localException.getMessage());
         }
       }
     }
@@ -40,7 +39,7 @@ public class PublicAccountChatPie$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.34
  * JD-Core Version:    0.7.0.1
  */

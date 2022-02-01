@@ -1,27 +1,25 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apji;
-import apkv;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class ARCloudControl$3
+class ARCloudControl$3
   implements Runnable
 {
-  public ARCloudControl$3(apji paramapji, byte[] paramArrayOfByte) {}
+  ARCloudControl$3(ARCloudControl paramARCloudControl, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     if (this.a == null)
     {
-      apji.a(this.this$0, true);
-      apji.b(this.this$0, true);
+      ARCloudControl.a(this.this$0, true);
+      ARCloudControl.b(this.this$0, true);
     }
     while (this.this$0.a.recognitions == null) {
       return;
     }
-    apkv.a().a();
-    apkv.a().a = System.currentTimeMillis();
-    apji.a(this.this$0, this.a, this.this$0.a.recognitions);
+    ARFaceDataCollector.a().a();
+    ARFaceDataCollector.a().a = System.currentTimeMillis();
+    ARCloudControl.a(this.this$0, this.a, this.this$0.a.recognitions);
   }
 }
 

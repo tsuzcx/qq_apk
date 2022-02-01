@@ -2,23 +2,23 @@ package com.tencent.mobileqq.utils;
 
 import android.content.Context;
 import android.os.SystemClock;
-import bahq;
-import baij;
-import bail;
-import bhhd;
-import com.tencent.mobileqq.transfile.PttInfoCollector;
+import com.tencent.mobileqq.qqaudio.QQAudioReporter;
+import com.tencent.mobileqq.qqaudio.QQAudioUtils;
+import com.tencent.mobileqq.qqaudio.audioprocessor.AudioComponentProcessor;
+import com.tencent.mobileqq.qqaudio.audioprocessor.IAudioProcessor.ProcessData;
+import com.tencent.mobileqq.qqaudio.silk.SilkSoLoader;
 import com.tencent.qphone.base.util.QLog;
 import java.io.PipedInputStream;
 
 public final class SilkCodecWrapper
-  extends bail
+  extends AudioComponentProcessor
 {
-  private static boolean jdField_b_of_type_Boolean;
+  private static boolean jdField_b_of_type_Boolean = false;
   long jdField_a_of_type_Long;
   boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int;
   long jdField_b_of_type_Long;
-  private int jdField_c_of_type_Int;
+  private int jdField_c_of_type_Int = 0;
   long jdField_c_of_type_Long;
   
   public SilkCodecWrapper(Context paramContext)
@@ -37,7 +37,7 @@ public final class SilkCodecWrapper
   {
     if (!jdField_b_of_type_Boolean)
     {
-      bahq.a(this.jdField_a_of_type_AndroidContentContext, "codecsilk");
+      SilkSoLoader.a(this.jdField_a_of_type_AndroidContentContext, "codecsilk");
       jdField_b_of_type_Boolean = true;
     }
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -79,7 +79,7 @@ public final class SilkCodecWrapper
     return 0;
   }
   
-  public baij a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public IAudioProcessor.ProcessData a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     long l = SystemClock.uptimeMillis();
     paramArrayOfByte = super.a(paramArrayOfByte, paramInt1, paramInt2);
@@ -106,11 +106,11 @@ public final class SilkCodecWrapper
       if (this.jdField_a_of_type_Boolean) {}
       for (this.jdField_a_of_type_Long = SilkEncoderNew(paramInt1, paramInt2);; this.jdField_a_of_type_Long = SilkDecoderNew(paramInt1, paramInt2))
       {
-        this.jdField_a_of_type_Int = bhhd.a(paramInt1);
+        this.jdField_a_of_type_Int = QQAudioUtils.a(paramInt1);
         this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
         this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
         this.jdField_c_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-        this.jdField_a_of_type_Baij = new baij(this.jdField_c_of_type_ArrayOfByte, 0);
+        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData = new IAudioProcessor.ProcessData(this.jdField_c_of_type_ArrayOfByte, 0);
         return;
       }
     }
@@ -137,7 +137,7 @@ public final class SilkCodecWrapper
         if (!this.jdField_a_of_type_Boolean) {
           break label62;
         }
-        PttInfoCollector.reportSoundProcessCost(this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, 0);
+        QQAudioReporter.a(this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, 0);
       }
     }
     for (;;)
@@ -145,7 +145,7 @@ public final class SilkCodecWrapper
       this.jdField_a_of_type_Long = 0L;
       return;
       label62:
-      PttInfoCollector.reportSoundProcessCost(this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, 1);
+      QQAudioReporter.a(this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, 1);
     }
   }
   
@@ -172,7 +172,7 @@ public final class SilkCodecWrapper
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_c_of_type_Int = encode(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
     }
-    bhhd.a(this.jdField_c_of_type_Int, paramArrayOfByte, paramInt1);
+    QQAudioUtils.a(this.jdField_c_of_type_Int, paramArrayOfByte, paramInt1);
     System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, paramInt1 + 2, this.jdField_c_of_type_Int);
     return this.jdField_c_of_type_Int + 2;
   }

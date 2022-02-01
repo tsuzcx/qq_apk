@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.troopgift;
 
-import bdyd;
-import bdyf;
-import bdzd;
-import bgrx;
-import bgry;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.DelayAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.Label;
 
-public class TroopGiftToAllSurfaceView$5
+class TroopGiftToAllSurfaceView$5
   implements Runnable
 {
   TroopGiftToAllSurfaceView$5(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    TroopGiftToAllSurfaceView.a(this.this$0, new bdzd(this.this$0, this.this$0.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
+    TroopGiftToAllSurfaceView.a(this.this$0, new Label(this.this$0, this.this$0.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
     TroopGiftToAllSurfaceView.a(this.this$0).a(TroopGiftToAllSurfaceView.a(this.this$0).jdField_a_of_type_Int / 2, TroopGiftToAllSurfaceView.a(this.this$0).b * TroopGiftToAllSurfaceView.a(this.this$0).f / 100);
     this.this$0.a(TroopGiftToAllSurfaceView.a(this.this$0));
     TroopGiftToAllSurfaceView.a(this.this$0).jdField_a_of_type_Int = 0;
-    bdyf localbdyf = new bdyf(500);
-    localbdyf.a(new bgrx(this));
-    TroopGiftToAllSurfaceView.a(this.this$0).a(new bdyd[] { localbdyf });
+    DelayAction localDelayAction = new DelayAction(500);
+    localDelayAction.a(new TroopGiftToAllSurfaceView.5.1(this));
+    TroopGiftToAllSurfaceView.a(this.this$0).a(new Action[] { localDelayAction });
   }
 }
 

@@ -8,15 +8,15 @@ import android.text.style.TypefaceSpan;
 public class VasProfileWZRYView$CustomTypefaceSpan
   extends TypefaceSpan
 {
-  Typeface a;
+  Typeface mTypeface;
   
   public VasProfileWZRYView$CustomTypefaceSpan(String paramString, Typeface paramTypeface)
   {
     super(paramString);
-    this.a = paramTypeface;
+    this.mTypeface = paramTypeface;
   }
   
-  private void a(Paint paramPaint, Typeface paramTypeface)
+  private void apply(Paint paramPaint, Typeface paramTypeface)
   {
     Typeface localTypeface = paramPaint.getTypeface();
     if (localTypeface == null) {}
@@ -36,9 +36,9 @@ public class VasProfileWZRYView$CustomTypefaceSpan
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (this.a != null)
+    if (this.mTypeface != null)
     {
-      a(paramTextPaint, this.a);
+      apply(paramTextPaint, this.mTypeface);
       return;
     }
     super.updateDrawState(paramTextPaint);
@@ -46,9 +46,9 @@ public class VasProfileWZRYView$CustomTypefaceSpan
   
   public void updateMeasureState(TextPaint paramTextPaint)
   {
-    if (this.a != null)
+    if (this.mTypeface != null)
     {
-      a(paramTextPaint, this.a);
+      apply(paramTextPaint, this.mTypeface);
       return;
     }
     super.updateMeasureState(paramTextPaint);

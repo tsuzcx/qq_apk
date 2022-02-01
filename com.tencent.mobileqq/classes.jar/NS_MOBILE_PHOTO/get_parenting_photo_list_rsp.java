@@ -21,19 +21,19 @@ public final class get_parenting_photo_list_rsp
   static s_outshare cache_shareinfo;
   static ArrayList<TimeEvent> cache_timeevent;
   static ArrayList<TimeLine> cache_timeline;
-  public Album albuminfo;
-  public int appid;
+  public Album albuminfo = null;
+  public int appid = 0;
   public String attach_info = "";
-  public Map<Integer, String> busi_param;
-  public Map<Integer, byte[]> features;
-  public int hasmore;
+  public Map<Integer, String> busi_param = null;
+  public Map<Integer, byte[]> features = null;
+  public int hasmore = 0;
   public int photo_search_status = 1;
-  public ArrayList<s_picdata> photolist;
-  public ArrayList<Album> recommand_album;
-  public RecommendPhotos recommend_photos;
-  public s_outshare shareinfo;
-  public ArrayList<TimeEvent> timeevent;
-  public ArrayList<TimeLine> timeline;
+  public ArrayList<s_picdata> photolist = null;
+  public ArrayList<Album> recommand_album = null;
+  public RecommendPhotos recommend_photos = null;
+  public s_outshare shareinfo = null;
+  public ArrayList<TimeEvent> timeevent = null;
+  public ArrayList<TimeLine> timeline = null;
   
   static
   {

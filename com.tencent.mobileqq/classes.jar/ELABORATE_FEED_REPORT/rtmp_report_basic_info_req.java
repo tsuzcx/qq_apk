@@ -13,9 +13,9 @@ public final class rtmp_report_basic_info_req
   static ArrayList<rtmp_report_basic_info> cache_basic_infos;
   static rtmp_report_comm_info cache_comm_info = new rtmp_report_comm_info();
   static Map<String, String> cache_ext_info;
-  public ArrayList<rtmp_report_basic_info> basic_infos;
-  public rtmp_report_comm_info comm_info;
-  public Map<String, String> ext_info;
+  public ArrayList<rtmp_report_basic_info> basic_infos = null;
+  public rtmp_report_comm_info comm_info = null;
+  public Map<String, String> ext_info = null;
   
   static
   {

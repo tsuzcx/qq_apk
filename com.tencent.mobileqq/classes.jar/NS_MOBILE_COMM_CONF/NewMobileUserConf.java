@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class NewMobileUserConf
   extends JceStruct
 {
-  public long uBeginTime;
-  public long uEndTime;
-  public long version;
+  public long uBeginTime = 0L;
+  public long uEndTime = 0L;
+  public long version = 0L;
   
   public NewMobileUserConf() {}
   

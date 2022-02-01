@@ -5,9 +5,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcsc;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -566,7 +566,7 @@ public class RemoteRequestSender
     {
       localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", paramArrayList);
       localBundle.putInt("key_quality", i);
-      paramString2 = String.valueOf(bcsc.a());
+      paramString2 = String.valueOf(MessageUtils.a());
       localBundle.putString("key_upload_client_key", paramString2);
       paramString3 = QZoneHelper.UserInfo.getInstance();
       paramString3.qzone_uin = paramString1;
@@ -598,7 +598,7 @@ public class RemoteRequestSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.remote.logic.RemoteRequestSender
  * JD-Core Version:    0.7.0.1
  */

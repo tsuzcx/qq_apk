@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
 import android.os.Bundle;
-import bfoh;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
-public class TroopFileUploadMgr$4
+class TroopFileUploadMgr$4
   implements Runnable
 {
-  public TroopFileUploadMgr$4(bfoh parambfoh, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
+  TroopFileUploadMgr$4(TroopFileUploadMgr paramTroopFileUploadMgr, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
   
   public void run()
   {
-    bfoh.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle);
+    TroopFileUploadMgr.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

@@ -10,8 +10,8 @@ public final class VideoBanner
 {
   static ArrayList<OneVideoInfo> cache_videos = new ArrayList();
   public String nick = "";
-  public long uUin;
-  public ArrayList<OneVideoInfo> videos;
+  public long uUin = 0L;
+  public ArrayList<OneVideoInfo> videos = null;
   
   static
   {

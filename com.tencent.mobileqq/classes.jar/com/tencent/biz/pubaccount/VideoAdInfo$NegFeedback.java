@@ -6,19 +6,18 @@ import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import olz;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.NegFeedback;
 
 public class VideoAdInfo$NegFeedback
   implements Parcelable
 {
-  public static final Parcelable.Creator<NegFeedback> CREATOR = new olz();
+  public static final Parcelable.Creator<NegFeedback> CREATOR = new VideoAdInfo.NegFeedback.1();
   public long a;
   public String a;
   
   public VideoAdInfo$NegFeedback() {}
   
-  public VideoAdInfo$NegFeedback(Parcel paramParcel)
+  protected VideoAdInfo$NegFeedback(Parcel paramParcel)
   {
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -43,7 +42,7 @@ public class VideoAdInfo$NegFeedback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback
  * JD-Core Version:    0.7.0.1
  */

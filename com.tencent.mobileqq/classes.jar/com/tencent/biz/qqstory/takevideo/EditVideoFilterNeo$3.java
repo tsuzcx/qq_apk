@@ -3,14 +3,12 @@ package com.tencent.biz.qqstory.takevideo;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
-import win;
-import ync;
-import ynw;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
 
-public class EditVideoFilterNeo$3
+class EditVideoFilterNeo$3
   implements Runnable
 {
-  public EditVideoFilterNeo$3(ync paramync, win paramwin) {}
+  EditVideoFilterNeo$3(EditVideoFilterNeo paramEditVideoFilterNeo, AddressDataProvider.AddressInfo paramAddressInfo) {}
   
   public void run()
   {
@@ -23,7 +21,7 @@ public class EditVideoFilterNeo$3
     }
     for (;;)
     {
-      this.this$0.a.a.mExtra.putString("extra_local_address_city_name", str);
+      this.this$0.a.a.a.putString("extra_local_address_city_name", str);
       return;
       str = this.a.b;
       continue;
@@ -33,7 +31,7 @@ public class EditVideoFilterNeo$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.3
  * JD-Core Version:    0.7.0.1
  */

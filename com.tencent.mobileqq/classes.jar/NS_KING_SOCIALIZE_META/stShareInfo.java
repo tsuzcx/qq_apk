@@ -13,20 +13,20 @@ public final class stShareInfo
   static Map<Integer, stShareBody> cache_haibao_body_map;
   static stSqArk cache_sq_ark_info;
   static stWxMiniProg cache_wx_mini_program;
-  public int activity_type;
+  public int activity_type = 0;
   public String background_title_color = "";
   public String background_url = "";
-  public Map<Integer, stShareBody> body_map;
+  public Map<Integer, stShareBody> body_map = null;
   public String feed_cover_updtime = "";
-  public Map<Integer, stShareBody> haibao_body_map;
+  public Map<Integer, stShareBody> haibao_body_map = null;
   public String haibao_desc = "";
   public String haibao_jump_url = "";
   public String jump_url = "";
   public String share_icon_title = "";
   public String share_icon_url = "";
-  public int share_num;
-  public stSqArk sq_ark_info;
-  public stWxMiniProg wx_mini_program;
+  public int share_num = 0;
+  public stSqArk sq_ark_info = null;
+  public stWxMiniProg wx_mini_program = null;
   
   static
   {

@@ -6,6 +6,17 @@
       "stickerGroupName": "默认",
       "stickers": [
         {
+          "stickerID":"qiukuolie",
+          "stickerName":"qiukuolie",
+          "thumbURL":"https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_qiukuolie.png",
+          "preDownload":1,
+          "resourceMD5":"ee77879e3d4b48159da30ed6530f623e",
+          "resourceURL":"https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/qiukuolie.zip",
+          "badgeURL":"https://wezone-theme.cdn-go.cn/url-resource/latest/defaultmode/855/editor_sticker_badge/editor_sticker_badge_interaction.png",
+          "backgroundColorAdjustable":0,
+          "fontID": "font_miaowu"
+        },
+        {
           "stickerID":"blur",
           "stickerName":"blur",
           "thumbURL":"https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_blur.png",

@@ -11,10 +11,10 @@ public final class operation_comm_req
 {
   static Map<String, String> cache_mapEx;
   static byte[] cache_message = (byte[])new byte[1];
-  public int appid;
-  public Map<String, String> mapEx;
-  public byte[] message;
-  public long opuin;
+  public int appid = 0;
+  public Map<String, String> mapEx = null;
+  public byte[] message = null;
+  public long opuin = 0L;
   
   static
   {

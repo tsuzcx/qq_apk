@@ -1,24 +1,24 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnaz;
+import dov.com.qq.im.ae.camera.filter.AEFilterProcessTex;
 
 public class AEFilterManagerHolder
 {
-  private static bnaz instance;
+  private static AEFilterProcessTex instance;
   
-  public static bnaz getAEFilterManager()
+  public static AEFilterProcessTex getAEFilterManager()
   {
     return instance;
   }
   
-  public static void setFilterProcess(bnaz parambnaz)
+  public static void setFilterProcess(AEFilterProcessTex paramAEFilterProcessTex)
   {
-    instance = parambnaz;
+    instance = paramAEFilterProcessTex;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AEFilterManagerHolder
  * JD-Core Version:    0.7.0.1
  */

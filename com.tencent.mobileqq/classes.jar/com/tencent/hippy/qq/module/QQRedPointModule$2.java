@@ -1,10 +1,10 @@
 package com.tencent.hippy.qq.module;
 
 import android.os.Bundle;
-import ascz;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 
 class QQRedPointModule$2
-  extends ascz
+  extends Client.OnRemoteRespObserver
 {
   QQRedPointModule$2(QQRedPointModule paramQQRedPointModule) {}
   
@@ -21,7 +21,7 @@ class QQRedPointModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQRedPointModule.2
  * JD-Core Version:    0.7.0.1
  */

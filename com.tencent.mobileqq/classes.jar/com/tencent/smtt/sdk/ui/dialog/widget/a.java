@@ -72,7 +72,7 @@ public class a
     this.h = new float[] { paramFloat1, paramFloat1, paramFloat1, paramFloat1, 0.0F, 0.0F, 0.0F, 0.0F };
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.translate(0.0F, 0.0F);
@@ -100,13 +100,13 @@ public class a
     paramCanvas.drawPath(this.e, this.c);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(a(paramInt1), a(paramInt2));
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.a = paramInt1;
@@ -119,7 +119,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.widget.a
  * JD-Core Version:    0.7.0.1
  */

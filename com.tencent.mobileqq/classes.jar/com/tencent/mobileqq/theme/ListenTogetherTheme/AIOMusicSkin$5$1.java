@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
-import behu;
-import bhrs;
 import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.vas.quickupdate.MusicThemeCallback;
 import java.util.concurrent.ConcurrentHashMap;
 
 class AIOMusicSkin$5$1
@@ -12,18 +11,18 @@ class AIOMusicSkin$5$1
   
   public void run()
   {
-    behu.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0, this.jdField_a_of_type_Boolean);
-    if ((behu.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0) != null) && (behu.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) && (behu.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null))
+    AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0, this.jdField_a_of_type_Boolean);
+    if ((AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0) != null) && (AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) && (AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null))
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        Object localObject = bhrs.a;
-        localObject = ((bhrs)localObject).getDir(behu.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).getActivity(), ((bhrs)localObject).getScid(behu.b(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0)));
+        Object localObject = MusicThemeCallback.sInstance;
+        localObject = ((MusicThemeCallback)localObject).getDir(AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).getActivity(), ((MusicThemeCallback)localObject).getScid(AIOMusicSkin.b(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0)));
         this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0.a((String)localObject);
-        behu.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).put(Integer.valueOf(behu.b(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0)), localObject);
+        AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).put(Integer.valueOf(AIOMusicSkin.b(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0)), localObject);
       }
-      behu.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0, behu.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
-      this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0.a(behu.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_AndroidContentContext, behu.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+      AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0, AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+      this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0.a(AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_AndroidContentContext, AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
     }
   }
 }

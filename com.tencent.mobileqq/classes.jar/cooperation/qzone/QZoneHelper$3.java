@@ -1,33 +1,24 @@
 package cooperation.qzone;
 
-import android.graphics.Bitmap;
-import bjkv;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.route.Router.OnCompleteListener;
 import com.tencent.qphone.base.util.QLog;
 
 final class QZoneHelper$3
-  implements Runnable
+  implements Router.OnCompleteListener
 {
-  QZoneHelper$3(Bitmap paramBitmap, QQAppInterface paramQQAppInterface, String paramString1, long paramLong, String paramString2) {}
-  
-  public void run()
+  public void onError(int paramInt)
   {
-    try
-    {
-      QZoneHelper.access$000(this.val$albumCoverBmp, this.val$app, this.val$albumId, this.val$ownerUin, this.val$albumName);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("QZoneHelper", 2, "createAlbumShortCut error! exception e = " + localException.getMessage());
-      bjkv.a().a(2131690086);
-    }
+    QLog.i("QZoneHelper", 2, "start SendHbActivity onError");
+  }
+  
+  public void onSuccess()
+  {
+    QLog.i("QZoneHelper", 2, "start SendHbActivity onSuccess");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.3
  * JD-Core Version:    0.7.0.1
  */

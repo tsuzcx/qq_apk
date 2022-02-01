@@ -1,6 +1,5 @@
 package dov.com.qq.im;
 
-import Override;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.Lifecycle.Event;
 import android.arch.lifecycle.LifecycleOwner;
@@ -149,7 +148,7 @@ public class BaseVMPeakActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.BaseVMPeakActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -15,46 +15,50 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import anvx;
-import aseg;
-import asiy;
-import avli;
-import awyr;
-import bdla;
-import bhhy;
+import com.tencent.mobileqq.abtest.ABTestController;
+import com.tencent.mobileqq.abtest.ExpEntityInfo;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.apollo.statistics.product.ApolloCmEmojiReportUtil;
+import com.tencent.mobileqq.apollo.utils.CmShowWnsUtils;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmotionPanelPayBackListenerManager;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerProxy;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
 import com.tencent.mobileqq.model.QueryTask;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.mobilereport.MobileReportManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.MobileQQ;
 
 public class EmoticonPanelController
-  implements ViewPager.OnPageChangeListener, EmotionPanelListView.PullAndFastScrollListener
+  implements ViewPager.OnPageChangeListener, EmotionPanelListView.PullAndFastScrollListener, IEmoticonPanelController
 {
   private static final String LOG_TAG = "EmoticonPanelController";
   static boolean sIsRecommendExist = true;
-  static int sLastSelectedSecondTabIndex = -1;
+  public static int sLastSelectedSecondTabIndex = -1;
   static boolean sOpenFirstTimeInProcess = true;
   static int sRecommendEmoticonViewPoSition = 3;
   List<EmoticonPackage> addEmoPkgList = new ArrayList();
-  QQAppInterface app;
+  QQEmoticonMainPanelApp app;
   int businessType = 0;
-  EmoticonCallback callback;
+  protected EmoticonCallback callback;
   RelativeLayout contentLayout;
   public final Context context;
   float density;
@@ -62,13 +66,14 @@ public class EmoticonPanelController
   private StickerGestureDetector gestureDetector;
   boolean hasBigEmotion = true;
   boolean isClickNoChangeTab = false;
-  private boolean isFilterSysFaceBeyond255Enable;
+  private boolean isFilterSysFaceBeyond255Enable = false;
   public boolean isNeedResetX = true;
   boolean isResumed = false;
-  public boolean kanDianBiu;
+  public boolean kanDianBiu = false;
   BaseChatPie mBaseChatPie;
   int mDeleteLeftPkgCount = 0;
   private EmoticonListProvider mEmoticonListProvider;
+  protected EmoticonPanelCmshowHelper mEmoticonPanelCmshowHelper;
   EmoticonTabAdapter mEmoticonTabAdapter;
   HorizontalListViewEx mEmoticonTabs;
   private EmoticonHelperProvider mHelperProvider;
@@ -91,8 +96,8 @@ public class EmoticonPanelController
   protected EmoticonPanelTabSortHelper mPanelTabSortHelper;
   EmoticonPanelController.EmoticonPanelParams mParams;
   View mSecondTabContainer;
-  private int[] mSysEmotionOrder;
-  avli mWebPreloadHitSession = new avli("emoticon_panel", "com.tencent.mobileqq:tool");
+  private int[] mSysEmotionOrder = null;
+  PreloadProcHitSession mWebPreloadHitSession = new PreloadProcHitSession("emoticon_panel", "com.tencent.mobileqq:tool");
   EmotionPanelViewPagerAdapter pageAdapter;
   List<EmotionPanelInfo> panelDataList;
   int sessionType = 0;
@@ -116,11 +121,60 @@ public class EmoticonPanelController
     this.mPanelSettingHelper = ((EmoticonPanelSettingHelper)getHelper(6));
     this.mPanelTabSortHelper = ((EmoticonPanelTabSortHelper)getHelper(8));
     this.mPanelHotPicSearchHelper = ((EmoticonPanelHotPicSearchHelper)getHelper(7));
+    this.mEmoticonPanelCmshowHelper = ((EmoticonPanelCmshowHelper)getHelper(9));
   }
   
   private int findTabIndexByEpId(String paramString)
   {
     return this.mPanelMallHelper.findTabIndexByEpId(this.app, paramString, this.panelDataList);
+  }
+  
+  private void hideCmShowItemIfNeed(List<EmotionPanelInfo> paramList)
+  {
+    int i = 1;
+    int j = 0;
+    if (paramList == null) {}
+    label26:
+    label40:
+    label87:
+    label89:
+    label96:
+    label99:
+    for (;;)
+    {
+      return;
+      if ((this.app != null) && (this.app.getQQAppInterface() == null))
+      {
+        if (i == 0) {
+          break label87;
+        }
+        int k = paramList.size();
+        i = j;
+        if (i >= k) {
+          break label96;
+        }
+        if (((EmotionPanelInfo)paramList.get(i)).type != 15) {
+          break label89;
+        }
+      }
+      for (;;)
+      {
+        if (i == -1) {
+          break label99;
+        }
+        paramList.remove(i);
+        return;
+        if (!CmShowWnsUtils.d()) {
+          break label26;
+        }
+        i = 0;
+        break label26;
+        break;
+        i += 1;
+        break label40;
+        i = -1;
+      }
+    }
   }
   
   private void initGestureDetector()
@@ -131,9 +185,9 @@ public class EmoticonPanelController
       if (this.mBaseChatPie != null)
       {
         int i = j;
-        if (this.mBaseChatPie.mAIORootView != null)
+        if (this.mBaseChatPie.c != null)
         {
-          GestureDetector localGestureDetector = ((TopGestureLayout)this.mBaseChatPie.mAIORootView).getGestureDetector();
+          GestureDetector localGestureDetector = ((TopGestureLayout)this.mBaseChatPie.c).getGestureDetector();
           i = j;
           if ((localGestureDetector instanceof StickerGestureDetector))
           {
@@ -143,15 +197,22 @@ public class EmoticonPanelController
         }
         if (i == 0)
         {
-          this.gestureDetector = new StickerGestureDetector(this.context, ((TopGestureLayout)this.mBaseChatPie.mAIORootView).getGestureListener(), this.mBaseChatPie);
-          ((TopGestureLayout)this.mBaseChatPie.mAIORootView).setGestureDetector(this.gestureDetector);
+          this.gestureDetector = new StickerGestureDetector(this.context, ((TopGestureLayout)this.mBaseChatPie.c).getGestureListener(), this.mBaseChatPie);
+          ((TopGestureLayout)this.mBaseChatPie.c).setGestureDetector(this.gestureDetector);
         }
       }
       return;
     }
     this.gestureDetector.enteredAIO = false;
     this.gestureDetector.isFirstUpInvoked = false;
-    this.gestureDetector.mBottom = this.mBaseChatPie.mAIORootView.getBottom();
+    this.gestureDetector.mBottom = this.mBaseChatPie.c.getBottom();
+  }
+  
+  private void registerOtherProcessCallback()
+  {
+    if ((!QQEmoticonMainPanelApp.isMainProcess()) && (this.app != null)) {
+      this.app.registerOtherProcessCallback();
+    }
   }
   
   private void setViewPagerAdapter(long paramLong, int paramInt)
@@ -193,7 +254,7 @@ public class EmoticonPanelController
     }
     for (;;)
     {
-      bhhy.a("AIO_EmoticonPanel_EnterSecond", null);
+      StartupTracker.a("AIO_EmoticonPanel_EnterSecond", null);
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelController", 2, "[Performance] switchTabMode to , duration:" + (System.currentTimeMillis() - paramLong) + ",mSecondTabInited:" + this.mMainPanel.mSecondTabInited);
       }
@@ -252,15 +313,15 @@ public class EmoticonPanelController
     {
       localEmotionPanelInfo = (EmotionPanelInfo)this.panelDataList.get(sLastSelectedSecondTabIndex);
       if (localEmotionPanelInfo.type != 7) {
-        break label106;
+        break label109;
       }
-      bdla.b(this.app, "dc00898", "", "", "0X800A845", "0X800A845", 1, 0, "", "", "", "");
+      ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", "0X800A845", "0X800A845", 1, 0, "", "", "", "");
     }
-    label106:
+    label109:
     while (localEmotionPanelInfo.type != 10) {
       return;
     }
-    bdla.b(this.app, "dc00898", "", "", "0X800A845", "0X800A845", 2, 0, "", "", "", "");
+    ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", "0X800A845", "0X800A845", 2, 0, "", "", "", "");
   }
   
   void dispatchDraw(Canvas paramCanvas)
@@ -279,7 +340,7 @@ public class EmoticonPanelController
       paramCanvas.put("panelMode", "2");
       paramCanvas.put("duration", String.valueOf(l));
       ThreadManager.post(new EmoticonPanelController.5(this, i, l, paramCanvas), 5, null, true);
-      bhhy.a("AIO_EmoticonPanel_OpenDuration", null);
+      StartupTracker.a("AIO_EmoticonPanel_OpenDuration", null);
       if (QLog.isColorLevel())
       {
         QLog.d("EmoticonPanelController", 2, "[Performance] dispatchDraw over, duration=" + l + ",openCondition=" + i + ",panelMode=" + "2");
@@ -313,6 +374,11 @@ public class EmoticonPanelController
         i += 1;
       }
     }
+  }
+  
+  public BaseChatPie getAIOObj()
+  {
+    return this.mBaseChatPie;
   }
   
   public int getEmoticonTab(String paramString)
@@ -349,9 +415,19 @@ public class EmoticonPanelController
     return this.mHelperProvider.getHelper(paramInt);
   }
   
+  public EmotionPanelViewPagerAdapter getPageAdapter()
+  {
+    return this.pageAdapter;
+  }
+  
   public EmoticonMainPanel getPanel()
   {
     return this.mMainPanel;
+  }
+  
+  public List<EmotionPanelInfo> getPanelDataList()
+  {
+    return this.panelDataList;
   }
   
   public void hideAllTabs()
@@ -361,7 +437,7 @@ public class EmoticonPanelController
     do
     {
       return;
-      localView = this.mMainPanel.findViewById(2131378438);
+      localView = this.mMainPanel.findViewById(2131378869);
     } while (localView == null);
     localView.setVisibility(8);
   }
@@ -369,25 +445,26 @@ public class EmoticonPanelController
   public void init()
   {
     this.mHelperProvider.dispatchLifeCycle(1);
-    this.viewPager = ((EmoticonPanelViewPager)this.mMainPanel.findViewById(2131381118));
+    this.viewPager = ((EmoticonPanelViewPager)this.mMainPanel.findViewById(2131381588));
     this.viewPager.setOnPageChangeListener(this);
     this.pageAdapter = new EmotionPanelViewPagerAdapter(this.app, this.context, this.callback, this.mBaseChatPie, this.businessType, this.kanDianBiu);
     this.pageAdapter.isOnlySysEmotion = this.mParams.mIsOnlySysEmotion;
     this.pageAdapter.sysEmotionOrder = this.mSysEmotionOrder;
     this.pageAdapter.isFilterSysFaceBeyond255 = isFilterSysFaceBeyond255Enable();
-    this.contentLayout = ((RelativeLayout)this.mMainPanel.findViewById(2131366127));
-    this.mSecondTabContainer = this.mMainPanel.findViewById(2131365150);
-    this.mEmoticonTabs = ((HorizontalListViewEx)this.mMainPanel.findViewById(2131378425));
+    this.contentLayout = ((RelativeLayout)this.mMainPanel.findViewById(2131366299));
+    this.mSecondTabContainer = this.mMainPanel.findViewById(2131365287);
+    this.mEmoticonTabs = ((HorizontalListViewEx)this.mMainPanel.findViewById(2131378854));
     this.mMainPanel.mEmoticonTabs = this.mEmoticonTabs;
     this.mEmoticonTabs.setOnItemClickListener(this.mPanelMallHelper.tabItemClickListener);
     this.mEmoticonTabAdapter = new EmoticonTabAdapter(this.app, this.context, this.businessType);
     this.mEmoticonTabAdapter.setAIOShowStyleChange(isShowExtendPanel());
+    this.mEmoticonTabAdapter.setGifEntranceIconUrl(this.mPanelTabSortHelper.getGifEntranceIconUrl());
     this.mEmoticonTabs.setTabAnimateEnable(isShowExtendPanel());
     this.mEmoticonTabs.setAdapter(this.mEmoticonTabAdapter);
-    this.mNewFlag = ((ImageView)this.mMainPanel.findViewById(2131366093));
-    this.contentLayout.setBackgroundColor(this.context.getResources().getColor(2131165637));
-    this.mSecondTabContainer.setBackgroundColor(this.context.getResources().getColor(2131165636));
-    this.mMainPanel.findViewById(2131378391).setBackgroundColor(this.context.getResources().getColor(2131165635));
+    this.mNewFlag = ((ImageView)this.mMainPanel.findViewById(2131366265));
+    this.contentLayout.setBackgroundColor(this.context.getResources().getColor(2131165639));
+    this.mSecondTabContainer.setBackgroundColor(this.context.getResources().getColor(2131165638));
+    this.mMainPanel.findViewById(2131378819).setBackgroundColor(this.context.getResources().getColor(2131165637));
     this.mOpenFirstTimeInAIO = true;
     if (this.mParams.defaultPanelType != -1) {
       initEmoticonView(this.mParams.defaultPanelType);
@@ -395,6 +472,7 @@ public class EmoticonPanelController
     for (;;)
     {
       this.mHelperProvider.dispatchLifeCycle(2);
+      registerOtherProcessCallback();
       return;
       initEmoticonView(this.mParams.defaultEpId);
     }
@@ -425,10 +503,10 @@ public class EmoticonPanelController
     initGestureDetector();
     this.mMainPanel.isHiden = false;
     long l = System.currentTimeMillis();
-    Object localObject = (aseg)this.app.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER);
+    Object localObject = (CameraEmoRoamingManagerProxy)this.app.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER);
     int j;
     String str;
-    if ((localObject != null) && (this.mEmoticonTabAdapter != null) && (((aseg)localObject).c()) && (i == findIndexByPanelType(11)))
+    if ((localObject != null) && (this.mEmoticonTabAdapter != null) && (((CameraEmoRoamingManagerProxy)localObject).isShowCameraEmoInApp()) && (i == findIndexByPanelType(11)))
     {
       j = 1;
       if (!EmoticonUtils.shouldDisplayBigEmoticon(this.sessionType))
@@ -439,7 +517,7 @@ public class EmoticonPanelController
       localObject = this.context.getSharedPreferences("mobileQQ", 0);
       str = ((SharedPreferences)localObject).getString("LAST_ADD_EMO_PACKAGE", "");
       if (TextUtils.isEmpty(str)) {
-        break label317;
+        break label335;
       }
       this.mMainPanel.mSecondTabInited = false;
       this.mMarketPgkDownloaded = false;
@@ -448,12 +526,12 @@ public class EmoticonPanelController
       paramInt = 0;
       label231:
       if (paramString == null) {
-        break label359;
+        break label377;
       }
       localObject = paramString;
       label238:
       if ((j == 0) || (paramString != null)) {
-        break label377;
+        break label395;
       }
       paramString = null;
     }
@@ -461,10 +539,12 @@ public class EmoticonPanelController
     {
       new QueryTask(new EmoticonPanelController.6(this, i), new EmoticonPanelController.7(this, l)).a(paramString);
       VasWebviewUtil.reportCommercialDrainage(this.app.getCurrentUin(), "ep_mall", "show_mine", "", 0, 0, 0, "", "", "");
+      ABTestController.a("exp_qq_msg_marketface_recommendtab_2").a();
+      ABTestController.a("exp_qq_msg_marketface_gif_icon").a();
       return;
       j = 0;
       break;
-      label317:
+      label335:
       if ((this.hasBigEmotion) && (this.mMarketPgkDownloaded))
       {
         if (QLog.isColorLevel()) {
@@ -474,14 +554,14 @@ public class EmoticonPanelController
       }
       paramInt = i;
       break label231;
-      label359:
+      label377:
       localObject = str;
       if (!TextUtils.isEmpty(str)) {
         break label238;
       }
       localObject = null;
       break label238;
-      label377:
+      label395:
       paramString = (String)localObject;
       i = paramInt;
     }
@@ -506,6 +586,7 @@ public class EmoticonPanelController
     {
       return;
       l = System.currentTimeMillis();
+      hideCmShowItemIfNeed(this.panelDataList);
       localList = this.panelDataList;
     } while ((localList == null) || (localList.size() == 0));
     if (paramInt == sRecommendEmoticonViewPoSition) {
@@ -515,7 +596,6 @@ public class EmoticonPanelController
     int j = localList.size();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    label101:
     Object localObject2;
     EmoticonTabAdapter.EmoticonTabItem localEmoticonTabItem;
     if (i < j)
@@ -524,7 +604,7 @@ public class EmoticonPanelController
       localEmoticonTabItem = new EmoticonTabAdapter.EmoticonTabItem();
       localEmoticonTabItem.type = ((EmotionPanelInfo)localObject2).type;
       if (((EmotionPanelInfo)localObject2).type == 8) {
-        localObject1 = anvx.a(2131703529);
+        localObject1 = HardCodeUtil.a(2131704077);
       }
     }
     for (;;)
@@ -532,28 +612,28 @@ public class EmoticonPanelController
       localEmoticonTabItem.description = ((String)localObject1);
       localArrayList.add(localEmoticonTabItem);
       i += 1;
-      break label101;
+      break;
       if (((EmotionPanelInfo)localObject2).type == 9)
       {
-        localObject1 = anvx.a(2131703531);
+        localObject1 = HardCodeUtil.a(2131704079);
       }
       else if (((EmotionPanelInfo)localObject2).type == 4)
       {
-        localObject1 = anvx.a(2131703553);
+        localObject1 = HardCodeUtil.a(2131704101);
       }
       else if (((EmotionPanelInfo)localObject2).type == 7)
       {
-        localObject1 = anvx.a(2131703552);
+        localObject1 = HardCodeUtil.a(2131704100);
       }
       else if ((((EmotionPanelInfo)localObject2).type == 6) || (((EmotionPanelInfo)localObject2).type == 10))
       {
         if (((EmotionPanelInfo)localObject2).emotionPkg != null)
         {
           EmoticonPackage localEmoticonPackage = ((EmotionPanelInfo)localObject2).emotionPkg;
-          localObject2 = localEmoticonPackage.name + anvx.a(2131703572);
+          localObject2 = localEmoticonPackage.name + HardCodeUtil.a(2131704120);
           localObject1 = localObject2;
           if (localEmoticonPackage.status != 2) {
-            localObject1 = (String)localObject2 + anvx.a(2131703574);
+            localObject1 = (String)localObject2 + HardCodeUtil.a(2131704122);
           }
           localEmoticonTabItem.epId = localEmoticonPackage.epId;
           localEmoticonTabItem.subType = localEmoticonPackage.subType;
@@ -567,19 +647,23 @@ public class EmoticonPanelController
       }
       else if (((EmotionPanelInfo)localObject2).type == 11)
       {
-        localObject1 = anvx.a(2131703517);
+        localObject1 = HardCodeUtil.a(2131704065);
       }
       else if (((EmotionPanelInfo)localObject2).type == 13)
       {
-        localObject1 = this.context.getResources().getString(2131691891);
+        localObject1 = this.context.getResources().getString(2131692016);
       }
       else if (((EmotionPanelInfo)localObject2).type == 14)
       {
-        localObject1 = this.context.getResources().getString(2131691899);
+        localObject1 = this.context.getResources().getString(2131692024);
       }
       else if (((EmotionPanelInfo)localObject2).type == 12)
       {
-        localObject1 = this.context.getResources().getString(2131689904);
+        localObject1 = this.context.getResources().getString(2131689945);
+      }
+      else if (((EmotionPanelInfo)localObject2).type == 15)
+      {
+        localObject1 = this.context.getResources().getString(2131690590);
         continue;
         if (localArrayList.size() > 0)
         {
@@ -590,13 +674,25 @@ public class EmoticonPanelController
           this.mEmoticonTabAdapter.updateData(localArrayList);
         }
         this.mMainPanel.mSecondTabInited = true;
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonPanelController", 2, "[Performance] initSecondTabView duration:" + (System.currentTimeMillis() - l));
         }
-        QLog.d("EmoticonPanelController", 2, "[Performance] initSecondTabView duration:" + (System.currentTimeMillis() - l));
+        MobileReportManager.getInstance().reportAction("+", "4", "platform898", "6", "1", 101, 1, System.currentTimeMillis());
         return;
       }
     }
+  }
+  
+  public boolean isEmoticonOnShow(int paramInt)
+  {
+    if ((this.panelDataList != null) && (sLastSelectedSecondTabIndex >= 0) && (sLastSelectedSecondTabIndex < this.panelDataList.size()))
+    {
+      EmotionPanelInfo localEmotionPanelInfo = (EmotionPanelInfo)this.panelDataList.get(sLastSelectedSecondTabIndex);
+      if ((localEmotionPanelInfo != null) && (localEmotionPanelInfo.type == paramInt)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean isFilterSysFaceBeyond255Enable()
@@ -626,7 +722,7 @@ public class EmoticonPanelController
     }
     this.mHelperProvider.dispatchLifeCycle(8);
     HorizontalListViewEx.destroyCacheView();
-    asiy.a().a();
+    EmotionPanelPayBackListenerManager.a().a();
     if (this.pageAdapter != null) {
       this.pageAdapter.onDestroy();
     }
@@ -646,26 +742,29 @@ public class EmoticonPanelController
         }
         ThreadManagerV2.excute(new EmoticonPanelController.3(this, (SharedPreferences)localObject), 64, null, true);
       }
-      localObject = (awyr)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER);
+      localObject = (EmoticonManagerProxy)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER);
       if (localObject != null) {
-        ((awyr)localObject).f();
+        ((EmoticonManagerProxy)localObject).pushRecommendExposeInfoToSP();
       }
     }
     this.mWebPreloadHitSession.d();
     this.callback = null;
-    if ((this.gestureDetector != null) && (this.mBaseChatPie != null) && (this.mBaseChatPie.mAIORootView != null))
+    if ((this.gestureDetector != null) && (this.mBaseChatPie != null) && (this.mBaseChatPie.c != null))
     {
-      localObject = (TopGestureLayout)this.mBaseChatPie.mAIORootView;
+      localObject = (TopGestureLayout)this.mBaseChatPie.c;
       GestureDetector localGestureDetector = ((TopGestureLayout)localObject).getGestureDetector();
       if ((localGestureDetector instanceof StickerGestureDetector))
       {
         ThreadManagerV2.getUIHandlerV2().post(new EmoticonPanelController.4(this, (TopGestureLayout)localObject, localGestureDetector));
         com.tencent.mobileqq.emoticon.EmojiStickerManager.a = false;
-        this.mBaseChatPie.stickerEditMode(false);
-        this.mBaseChatPie.stickerEditMode(false);
+        this.mBaseChatPie.o(false);
+        this.mBaseChatPie.o(false);
       }
       ((TopGestureLayout)localObject).restoreGestureDetector();
       this.gestureDetector = null;
+    }
+    if (ApolloCmEmojiReportUtil.a.a()) {
+      ApolloCmEmojiReportUtil.a.a(this.mBaseChatPie);
     }
   }
   
@@ -680,6 +779,9 @@ public class EmoticonPanelController
   public void onHide(boolean paramBoolean)
   {
     this.mHelperProvider.dispatchLifeCycle(4, -1, paramBoolean);
+    if (ApolloCmEmojiReportUtil.a.a()) {
+      ApolloCmEmojiReportUtil.a.a(this.mBaseChatPie);
+    }
   }
   
   public void onMeasureMainPanel()
@@ -720,7 +822,7 @@ public class EmoticonPanelController
   public void onPageSelected(int paramInt)
   {
     long l = System.currentTimeMillis();
-    bhhy.a(null, "AIO_EmoticonPanel_PageScroll");
+    StartupTracker.a(null, "AIO_EmoticonPanel_PageScroll");
     Object localObject = this.panelDataList;
     if (localObject == null) {
       break label22;
@@ -735,7 +837,7 @@ public class EmoticonPanelController
     {
       this.pageAdapter.onPageSelected((EmotionPanelInfo)localObject);
       if (((EmotionPanelInfo)localObject).type != 7) {
-        break label336;
+        break label339;
       }
       i = 1;
     }
@@ -743,7 +845,7 @@ public class EmoticonPanelController
     {
       label80:
       if (i > 0) {
-        bdla.b(this.app, "dc00898", "", "", "0x800a572", "0x800a572", 0, 0, i + "", i + "", i + "", "");
+        ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", "0x800a572", "0x800a572", 0, 0, i + "", i + "", i + "", "");
       }
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelController", 2, "onPageSelected, position=" + paramInt + "panelInfo = " + localObject);
@@ -760,13 +862,13 @@ public class EmoticonPanelController
       {
         sLastSelectedSecondTabIndex = paramInt;
         this.mHelperProvider.dispatchLifeCycle(3, paramInt, false);
-        bhhy.a("AIO_EmoticonPanel_PageScroll", null);
+        StartupTracker.a("AIO_EmoticonPanel_PageScroll", null);
         if (!QLog.isColorLevel()) {
           break;
         }
         QLog.d("EmoticonPanelController", 2, "[Performance] onPageSelected, handle duration=" + (System.currentTimeMillis() - l));
         return;
-        label336:
+        label339:
         if ((((EmotionPanelInfo)localObject).type == 5) || (((EmotionPanelInfo)localObject).type == 4))
         {
           i = 2;
@@ -787,20 +889,20 @@ public class EmoticonPanelController
           i = 5;
           break label80;
         }
-        if ((((EmotionPanelInfo)localObject).emotionPkg == null) || (StringUtil.isEmpty(((EmotionPanelInfo)localObject).emotionPkg.epId))) {
-          break label535;
+        if ((((EmotionPanelInfo)localObject).emotionPkg == null) || (StringUtil.a(((EmotionPanelInfo)localObject).emotionPkg.epId))) {
+          break label541;
         }
         i = 6;
         break label80;
         if ((localObject != null) && (((EmotionPanelInfo)localObject).type == 8))
         {
-          bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X8005813", 0, 0, "", paramInt + "", "", "");
+          ReportController.b(this.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "0X8005813", 0, 0, "", paramInt + "", "", "");
           if (QLog.isColorLevel()) {
             QLog.d("EmoticonPanelController", 2, "view times report. cur page:" + paramInt);
           }
         }
       }
-      label535:
+      label541:
       i = -1;
     }
   }
@@ -817,16 +919,22 @@ public class EmoticonPanelController
   public void onPullDown()
   {
     this.mPanelExtendHelper.onPullDown();
+    if (this.mEmoticonPanelCmshowHelper != null) {
+      this.mEmoticonPanelCmshowHelper.onPullDown();
+    }
   }
   
   public void onPullUp()
   {
     this.mPanelExtendHelper.onPullUp();
+    if (this.mEmoticonPanelCmshowHelper != null) {
+      this.mEmoticonPanelCmshowHelper.onPullUp();
+    }
   }
   
   public void onResume()
   {
-    bhhy.a(null, "AIO_EmoticonPanel_OnResume");
+    StartupTracker.a(null, "AIO_EmoticonPanel_OnResume");
     this.isResumed = true;
     if ((this.mMainPanel.getVisibility() == 0) && (this.mNeedUpdate))
     {
@@ -842,7 +950,7 @@ public class EmoticonPanelController
     for (;;)
     {
       this.mHelperProvider.dispatchLifeCycle(6);
-      bhhy.a("AIO_EmoticonPanel_OnResume", null);
+      StartupTracker.a("AIO_EmoticonPanel_OnResume", null);
       return;
       if (this.mMainPanel.isShown())
       {
@@ -928,7 +1036,7 @@ public class EmoticonPanelController
   {
     this.mIsOnlySysEmotion = paramBoolean;
     if (this.pageAdapter != null) {
-      this.pageAdapter.isOnlySysEmotion = this.mParams.mIsOnlySysEmotion;
+      this.pageAdapter.isOnlySysEmotion = paramBoolean;
     }
   }
   
@@ -993,7 +1101,7 @@ public class EmoticonPanelController
     do
     {
       return;
-      localView = this.mMainPanel.findViewById(2131378438);
+      localView = this.mMainPanel.findViewById(2131378869);
     } while (localView == null);
     localView.setVisibility(0);
   }
@@ -1031,7 +1139,7 @@ public class EmoticonPanelController
       return;
     }
     long l = System.currentTimeMillis();
-    bhhy.a(null, "AIO_EmoticonPanel_EnterSecond");
+    StartupTracker.a(null, "AIO_EmoticonPanel_EnterSecond");
     if (!this.mMainPanel.mSecondTabInited)
     {
       this.mPanelMallHelper.asyncInitPanelDataList(this.hasBigEmotion, new EmoticonPanelController.2(this, paramInt, l));
@@ -1046,7 +1154,8 @@ public class EmoticonPanelController
     while (this.mEmoticonListProvider == null) {
       return;
     }
-    this.panelDataList = this.mPanelTabSortHelper.getSortEmotionPanelInfoList(this.mEmoticonListProvider.getEmotionPanelInfo(paramBoolean, this.mParams.onlySysAndEmoji));
+    List localList = this.mEmoticonListProvider.getEmotionPanelInfo(paramBoolean, this.mParams.onlySysAndEmoji);
+    this.panelDataList = this.mPanelTabSortHelper.getSortEmotionPanelInfoList(localList);
   }
   
   public void updateFavEmoticonPanel()
@@ -1071,7 +1180,7 @@ public class EmoticonPanelController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController
  * JD-Core Version:    0.7.0.1
  */

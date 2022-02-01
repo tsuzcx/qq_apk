@@ -11,10 +11,10 @@ public final class CommInteractive
 {
   static Map<Integer, String> cache_ext;
   static stOperaData cache_opData = new stOperaData();
-  public Map<Integer, String> ext;
-  public int iRet;
-  public int interactiveType;
-  public stOperaData opData;
+  public Map<Integer, String> ext = null;
+  public int iRet = 0;
+  public int interactiveType = 0;
+  public stOperaData opData = null;
   public String strErrToast = "";
   
   static

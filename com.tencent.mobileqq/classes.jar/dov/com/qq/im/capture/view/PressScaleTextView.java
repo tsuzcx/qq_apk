@@ -5,12 +5,11 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import book;
 
 public class PressScaleTextView
   extends TextView
 {
-  private final book a = new book(this);
+  private final PressScaleAnimDelegate a = new PressScaleAnimDelegate(this);
   
   public PressScaleTextView(Context paramContext)
   {
@@ -27,7 +26,7 @@ public class PressScaleTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.a.a())
     {
@@ -54,7 +53,7 @@ public class PressScaleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.view.PressScaleTextView
  * JD-Core Version:    0.7.0.1
  */

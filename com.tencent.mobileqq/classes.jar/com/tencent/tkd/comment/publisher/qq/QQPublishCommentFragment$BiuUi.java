@@ -24,8 +24,8 @@ class QQPublishCommentFragment$BiuUi
   
   QQPublishCommentFragment$BiuUi(QQPublishCommentFragment paramQQPublishCommentFragment, Dialog paramDialog)
   {
-    this.vBiuImageView = ((ImageView)paramDialog.findViewById(2131364918));
-    this.vBiuLayout = ((LinearLayout)paramDialog.findViewById(2131363631));
+    this.vBiuImageView = ((ImageView)paramDialog.findViewById(2131365055));
+    this.vBiuLayout = ((LinearLayout)paramDialog.findViewById(2131363722));
     this.vBiuLayout.setVisibility(8);
   }
   
@@ -33,17 +33,17 @@ class QQPublishCommentFragment$BiuUi
   {
     if (this.hasPicData)
     {
-      TkdQQToast.show(this.this$0.getActivity().getString(2131719361), 0);
+      TkdQQToast.show(this.this$0.getActivity().getString(2131719924), 0);
       return;
     }
     if (!this.isSelected) {
-      this.vBiuImageView.setImageResource(2130850659);
+      this.vBiuImageView.setImageResource(2130851083);
     }
     for (this.isSelected = true;; this.isSelected = false)
     {
       reportClickBiu();
       return;
-      this.vBiuImageView.setImageResource(2130850658);
+      this.vBiuImageView.setImageResource(2130851082);
     }
   }
   
@@ -71,7 +71,7 @@ class QQPublishCommentFragment$BiuUi
       this.vBiuLayout.setVisibility(0);
       this.vBiuLayout.setOnClickListener(this);
     } while (!QQPublishCommentFragment.access$1200(this.this$0).selectBiu);
-    this.vBiuImageView.setImageResource(2130850659);
+    this.vBiuImageView.setImageResource(2130851083);
     this.isSelected = true;
   }
   
@@ -88,7 +88,7 @@ class QQPublishCommentFragment$BiuUi
     this.hasPicData = false;
     this.vBiuImageView.setClickable(true);
     if (paramBoolean) {
-      this.vBiuImageView.setImageResource(2130850659);
+      this.vBiuImageView.setImageResource(2130851083);
     }
   }
   
@@ -96,7 +96,7 @@ class QQPublishCommentFragment$BiuUi
   {
     this.hasPicData = true;
     if (this.isSelected) {
-      this.vBiuImageView.setImageResource(2130850658);
+      this.vBiuImageView.setImageResource(2130851082);
     }
     return this.isSelected;
   }
@@ -126,7 +126,7 @@ class QQPublishCommentFragment$BiuUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.BiuUi
  * JD-Core Version:    0.7.0.1
  */

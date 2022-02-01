@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aftr;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -11,6 +10,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -66,11 +66,11 @@ public class FastImagePreviewLayout
   public void showFastImage()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(TAG, 2, "showFastImage called, path = " + aftr.b);
+      QLog.d(TAG, 2, "showFastImage called, path = " + PlusPanelUtils.b);
     }
     removeAllViews();
-    Object localObject = inflate(this.context, 2131558618, null);
-    ((ImageView)((View)localObject).findViewById(2131366441)).setImageDrawable(this.fastImgDrawable);
+    Object localObject = inflate(this.context, 2131558642, null);
+    ((ImageView)((View)localObject).findViewById(2131366610)).setImageDrawable(this.fastImgDrawable);
     addView((View)localObject);
     setVisibility(0);
     localObject = new AlphaAnimation(0.0F, 1.0F);
@@ -82,7 +82,7 @@ public class FastImagePreviewLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FastImagePreviewLayout
  * JD-Core Version:    0.7.0.1
  */

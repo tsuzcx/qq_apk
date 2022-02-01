@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.managers;
 
-import awtm;
-import baiw;
+import com.tencent.mobileqq.pushnotice.PushNoticeUtil;
 
-public class PushNoticeManager$1
+class PushNoticeManager$1
   implements Runnable
 {
-  public PushNoticeManager$1(awtm paramawtm, int paramInt) {}
+  PushNoticeManager$1(PushNoticeManager paramPushNoticeManager, int paramInt) {}
   
   public void run()
   {
-    baiw.a(this.a, 2);
+    PushNoticeUtil.a(this.a, 2);
   }
 }
 

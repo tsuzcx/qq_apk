@@ -9,8 +9,8 @@ public final class GPicInfo
 {
   static byte[] cache_vHost;
   static byte[] cache_vPath;
-  public byte[] vHost;
-  public byte[] vPath;
+  public byte[] vHost = null;
+  public byte[] vPath = null;
   
   public GPicInfo() {}
   

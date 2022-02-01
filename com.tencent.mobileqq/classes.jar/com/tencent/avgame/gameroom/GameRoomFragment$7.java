@@ -1,0 +1,29 @@
+package com.tencent.avgame.gameroom;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class GameRoomFragment$7
+  implements View.OnClickListener
+{
+  GameRoomFragment$7(GameRoomFragment paramGameRoomFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    View localView1 = GameRoomFragment.a(this.a).findViewById(2131363258);
+    View localView2 = GameRoomFragment.a(this.a).findViewById(2131363259);
+    localView1.setVisibility(8);
+    localView2.setVisibility(8);
+    GameRoomFragment.a(this.a).setBackgroundColor(-1308622848);
+    GameRoomFragment.a(this.a, paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.avgame.gameroom.GameRoomFragment.7
+ * JD-Core Version:    0.7.0.1
+ */

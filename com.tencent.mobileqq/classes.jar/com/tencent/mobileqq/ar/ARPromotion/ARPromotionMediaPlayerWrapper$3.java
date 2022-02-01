@@ -1,34 +1,32 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import apby;
-import apbz;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
 
-public class ARPromotionMediaPlayerWrapper$3
+class ARPromotionMediaPlayerWrapper$3
   implements Runnable
 {
-  public ARPromotionMediaPlayerWrapper$3(apby paramapby) {}
+  ARPromotionMediaPlayerWrapper$3(ARPromotionMediaPlayerWrapper paramARPromotionMediaPlayerWrapper) {}
   
   public void run()
   {
-    if (apby.b(this.this$0)) {
-      apby.c(this.this$0);
+    if (ARPromotionMediaPlayerWrapper.b(this.this$0)) {
+      ARPromotionMediaPlayerWrapper.c(this.this$0);
     }
-    QLog.d("ARWorldCupMediaPlayerWrapper", 1, "onCompletion, mNeedAddPlayCount=" + apby.b(this.this$0) + " mCurrentPlayTimes=" + apby.d(this.this$0) + "|" + apby.e(this.this$0));
-    if ((apby.d(this.this$0) < apby.e(this.this$0)) && (apby.a(this.this$0) != null) && (!apby.a(this.this$0))) {}
+    QLog.d("ARWorldCupMediaPlayerWrapper", 1, "onCompletion, mNeedAddPlayCount=" + ARPromotionMediaPlayerWrapper.b(this.this$0) + " mCurrentPlayTimes=" + ARPromotionMediaPlayerWrapper.d(this.this$0) + "|" + ARPromotionMediaPlayerWrapper.e(this.this$0));
+    if ((ARPromotionMediaPlayerWrapper.d(this.this$0) < ARPromotionMediaPlayerWrapper.e(this.this$0)) && (ARPromotionMediaPlayerWrapper.a(this.this$0) != null) && (!ARPromotionMediaPlayerWrapper.a(this.this$0))) {}
     do
     {
       try
       {
-        apby.a(this.this$0).stop();
-        apby.a(this.this$0).setOutputMute(apby.c(this.this$0));
-        apby.a(this.this$0, apby.a(this.this$0));
-        apby.a(this.this$0, false);
-        if ((apby.d(this.this$0)) && (apby.a(this.this$0) != null) && (apby.a(this.this$0) != null)) {
-          apby.a(this.this$0).a(apby.b(this.this$0), 1, apby.e(this.this$0) - apby.d(this.this$0));
+        ARPromotionMediaPlayerWrapper.a(this.this$0).stop();
+        ARPromotionMediaPlayerWrapper.a(this.this$0).setOutputMute(ARPromotionMediaPlayerWrapper.c(this.this$0));
+        ARPromotionMediaPlayerWrapper.a(this.this$0, ARPromotionMediaPlayerWrapper.a(this.this$0));
+        ARPromotionMediaPlayerWrapper.a(this.this$0, false);
+        if ((ARPromotionMediaPlayerWrapper.d(this.this$0)) && (ARPromotionMediaPlayerWrapper.a(this.this$0) != null) && (ARPromotionMediaPlayerWrapper.a(this.this$0) != null)) {
+          ARPromotionMediaPlayerWrapper.a(this.this$0).a(ARPromotionMediaPlayerWrapper.b(this.this$0), 1, ARPromotionMediaPlayerWrapper.e(this.this$0) - ARPromotionMediaPlayerWrapper.d(this.this$0));
         }
-        QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer. restart remian times:" + (apby.e(this.this$0) - apby.d(this.this$0)) + "video resources:" + apby.a(this.this$0));
+        QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer. restart remian times:" + (ARPromotionMediaPlayerWrapper.e(this.this$0) - ARPromotionMediaPlayerWrapper.d(this.this$0)) + "video resources:" + ARPromotionMediaPlayerWrapper.a(this.this$0));
         return;
       }
       catch (Exception localException)
@@ -41,17 +39,17 @@ public class ARPromotionMediaPlayerWrapper$3
           QLog.d("ARWorldCupMediaPlayerWrapper", 1, "onCompletion, stop, exception=" + localException.getMessage());
         }
       }
-      apby.a(this.this$0, 0);
-      apby.b(this.this$0, 1);
-      apby.a(this.this$0, true);
+      ARPromotionMediaPlayerWrapper.a(this.this$0, 0);
+      ARPromotionMediaPlayerWrapper.b(this.this$0, 1);
+      ARPromotionMediaPlayerWrapper.a(this.this$0, true);
       QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer.onCompletion");
-    } while ((apby.a(this.this$0) == null) || (apby.a(this.this$0) == null));
-    apby.a(this.this$0).a(apby.b(this.this$0), 1, 0);
+    } while ((ARPromotionMediaPlayerWrapper.a(this.this$0) == null) || (ARPromotionMediaPlayerWrapper.a(this.this$0) == null));
+    ARPromotionMediaPlayerWrapper.a(this.this$0).a(ARPromotionMediaPlayerWrapper.b(this.this$0), 1, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionMediaPlayerWrapper.3
  * JD-Core Version:    0.7.0.1
  */

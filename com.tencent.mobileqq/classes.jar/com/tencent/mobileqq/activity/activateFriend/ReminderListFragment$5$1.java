@@ -2,48 +2,44 @@ package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsDelMsgRsp;
 import Wallet.AcsMsg;
-import afmn;
-import afnb;
-import afnc;
-import afnf;
-import afno;
 import android.os.Bundle;
-import anvx;
-import bdla;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.reminder.api.IQQReminderDataService;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class ReminderListFragment$5$1
+class ReminderListFragment$5$1
   implements Runnable
 {
-  public ReminderListFragment$5$1(afnb paramafnb, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  ReminderListFragment$5$1(ReminderListFragment.5 param5, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 2001)
     {
       if (!this.jdField_a_of_type_Boolean) {
-        break label158;
+        break label160;
       }
       AcsDelMsgRsp localAcsDelMsgRsp = (AcsDelMsgRsp)this.jdField_a_of_type_AndroidOsBundle.getSerializable("rsp");
       if ((localAcsDelMsgRsp != null) && (localAcsDelMsgRsp.ret_code == 0))
       {
-        bdla.b(ReminderListFragment.a(this.jdField_a_of_type_Afnb.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment), "P_CliOper", "QQnotice", "", "", "QQnotice.set.delete", 0, 0, "", "", this.jdField_a_of_type_Afnb.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_Afnb.jdField_a_of_type_WalletAcsMsg.msg_id);
-        ReminderListFragment.a(this.jdField_a_of_type_Afnb.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).a(this.jdField_a_of_type_Afnb.jdField_a_of_type_JavaLangString);
-        ReminderListFragment.a(this.jdField_a_of_type_Afnb.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).a(afmn.a(this.jdField_a_of_type_Afnb.jdField_a_of_type_WalletAcsMsg), new afnc(this));
+        ReportController.b(ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment), "P_CliOper", "QQnotice", "", "", "QQnotice.set.delete", 0, 0, "", "", this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_WalletAcsMsg.msg_id);
+        ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_JavaLangString);
+        ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).deleteReminderByMsgId(QQNotifyHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_WalletAcsMsg), new ReminderListFragment.5.1.1(this));
       }
     }
     else
     {
       return;
     }
-    ReminderListFragment.a(this.jdField_a_of_type_Afnb.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, anvx.a(2131712837));
+    ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, HardCodeUtil.a(2131713333));
     return;
-    label158:
-    ReminderListFragment.a(this.jdField_a_of_type_Afnb.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, anvx.a(2131712834));
+    label160:
+    ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, HardCodeUtil.a(2131713330));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1
  * JD-Core Version:    0.7.0.1
  */

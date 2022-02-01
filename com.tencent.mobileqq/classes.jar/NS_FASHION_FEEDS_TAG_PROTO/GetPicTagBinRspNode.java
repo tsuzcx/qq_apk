@@ -8,7 +8,7 @@ public final class GetPicTagBinRspNode
   extends JceStruct
 {
   static PicTagInfo cache_stPicTagInfo = new PicTagInfo();
-  public PicTagInfo stPicTagInfo;
+  public PicTagInfo stPicTagInfo = null;
   
   public GetPicTagBinRspNode() {}
   

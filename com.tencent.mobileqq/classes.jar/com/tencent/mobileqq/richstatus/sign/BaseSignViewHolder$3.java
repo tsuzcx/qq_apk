@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.richstatus.sign;
 
-import bbwj;
-
-public class BaseSignViewHolder$3
+class BaseSignViewHolder$3
   implements Runnable
 {
-  public BaseSignViewHolder$3(bbwj parambbwj) {}
+  BaseSignViewHolder$3(BaseSignViewHolder paramBaseSignViewHolder) {}
   
   public void run()
   {
@@ -17,7 +15,7 @@ public class BaseSignViewHolder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.BaseSignViewHolder.3
  * JD-Core Version:    0.7.0.1
  */

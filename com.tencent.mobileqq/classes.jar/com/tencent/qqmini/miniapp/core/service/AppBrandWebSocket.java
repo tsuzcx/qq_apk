@@ -287,8 +287,10 @@ public class AppBrandWebSocket
       {
         localObject1 = (String)localObject1 + "__qqConfig.useXWebVideo=" + this.mEmbeddedState.isEnableEmbeddedVideo() + ";";
         QMLog.d("miniapp-embedded", "x5 service enableEmbeddedVideo : " + this.mEmbeddedState.isEnableEmbeddedVideo());
-        localObject2 = (String)localObject1 + "__qqConfig.useXWebLive=" + this.mEmbeddedState.isEnableEmbeddedLive() + ";";
+        localObject1 = (String)localObject1 + "__qqConfig.useXWebLive=" + this.mEmbeddedState.isEnableEmbeddedLive() + ";";
         QMLog.d("miniapp-embedded", "x5 service enableEmbeddedLive : " + this.mEmbeddedState.isEnableEmbeddedLive());
+        localObject2 = (String)localObject1 + "__qqConfig.useXWebElement=" + this.mEmbeddedState.isEnableEmbeddedElement() + ";";
+        QMLog.d("miniapp-embedded", "x5 service enableEmbeddedElement : " + this.mEmbeddedState.isEnableEmbeddedElement());
       }
       localObject1 = (String)localObject2 + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};";
       return localObject1;
@@ -525,7 +527,7 @@ public class AppBrandWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppBrandWebSocket
  * JD-Core Version:    0.7.0.1
  */

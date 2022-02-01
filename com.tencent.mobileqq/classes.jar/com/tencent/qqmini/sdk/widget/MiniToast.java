@@ -120,6 +120,14 @@ public class MiniToast
     return -452984832;
   }
   
+  private static long getDelay(TextView paramTextView)
+  {
+    if ((paramTextView != null) && (paramTextView.getText().length() < 6)) {
+      return 900L;
+    }
+    return 1900L;
+  }
+  
   public static int getIconColor(int paramInt)
   {
     switch (paramInt)
@@ -160,6 +168,11 @@ public class MiniToast
     return Build.BOARD.contains("mx2");
   }
   
+  private static boolean isMeizuPhone()
+  {
+    return ((Build.BRAND.equals("Meizu")) && (Build.MODEL.equals("U20"))) || ((Build.BRAND.equals("Meizu")) && (Build.MODEL.equals("M3s")));
+  }
+  
   @TargetApi(19)
   public static int isNotificationEnabled(Context paramContext)
   {
@@ -177,10 +190,6 @@ public class MiniToast
       {
         QMLog.d("PushOpenNotify", "isNotificationEnabled,  isEnabled, " + bool);
         break;
-        AppOpsManager localAppOpsManager = (AppOpsManager)paramContext.getSystemService("appops");
-        ApplicationInfo localApplicationInfo = paramContext.getApplicationInfo();
-        paramContext = paramContext.getApplicationContext().getPackageName();
-        int j = localApplicationInfo.uid;
         if (sAppOpsClass == null) {
           sAppOpsClass = Class.forName(AppOpsManager.class.getName());
         }
@@ -190,7 +199,10 @@ public class MiniToast
         if (sOpPostNotification == null) {
           sOpPostNotification = sAppOpsClass.getDeclaredField("OP_POST_NOTIFICATION");
         }
+        int j = paramContext.getApplicationInfo().uid;
         int k = ((Integer)sOpPostNotification.get(Integer.class)).intValue();
+        AppOpsManager localAppOpsManager = (AppOpsManager)paramContext.getSystemService("appops");
+        paramContext = paramContext.getApplicationContext().getPackageName();
         j = ((Integer)sCheckOpNoThrow.invoke(localAppOpsManager, new Object[] { Integer.valueOf(k), Integer.valueOf(j), paramContext })).intValue();
         if (j == 0) {
           bool = true;
@@ -241,9 +253,31 @@ public class MiniToast
     return makeText(paramContext, 0, paramCharSequence, paramInt);
   }
   
+  private void setGravity(int paramInt, Toast paramToast)
+  {
+    if (useIOSLikeUI())
+    {
+      paramToast.setGravity(55, 0, 0);
+      return;
+    }
+    if (paramInt == 6316128)
+    {
+      paramToast.setGravity(55, 0, getStatusBarHeight());
+      return;
+    }
+    paramToast.setGravity(55, 0, getTitleBarHeight());
+  }
+  
+  private void setOnTouchListener(View.OnTouchListener paramOnTouchListener, Toast paramToast, View paramView)
+  {
+    if (useIOSLikeUI()) {
+      paramView.setOnTouchListener(new MiniToast.1(this, paramToast, paramOnTouchListener));
+    }
+  }
+  
   public static boolean useIOSLikeUI()
   {
-    return ((!Build.BRAND.equals("Meizu")) || (!Build.MODEL.equals("U20"))) && ((!Build.BRAND.equals("Meizu")) || (!Build.MODEL.equals("M3s"))) && ((!Build.BRAND.equals("xiaolajiao")) || (!Build.MODEL.equals("HLJ-GM-Q1"))) && ((!Build.BRAND.equals("UOOGOU")) || (!Build.MODEL.equals("UOOGOU"))) && ((!Build.BRAND.equals("samsung")) || (!Build.MODEL.equals("SM-A9000")));
+    return (!isMeizuPhone()) && ((!Build.BRAND.equals("xiaolajiao")) || (!Build.MODEL.equals("HLJ-GM-Q1"))) && ((!Build.BRAND.equals("UOOGOU")) || (!Build.MODEL.equals("UOOGOU"))) && ((!Build.BRAND.equals("samsung")) || (!Build.MODEL.equals("SM-A9000")));
   }
   
   public void cancel()
@@ -272,6 +306,9 @@ public class MiniToast
       localObject = (ImageView)localView.findViewById(R.id.toast_icon);
       ((ImageView)localObject).setImageDrawable(this.icon);
       ((ImageView)localObject).setColorFilter(getIconColor(this.mToastType), PorterDuff.Mode.MULTIPLY);
+    }
+    for (;;)
+    {
       if (this.message != null)
       {
         localObject = (TextView)localView.findViewById(R.id.toast_msg);
@@ -294,27 +331,12 @@ public class MiniToast
           }
         }
       }
-      if (!useIOSLikeUI()) {
-        break label377;
-      }
-      localProtectedToast.setGravity(55, 0, 0);
-    }
-    for (;;)
-    {
+      setGravity(paramInt1, localProtectedToast);
       localProtectedToast.setView(localView);
       localProtectedToast.setDuration(this.mDuration);
-      if (useIOSLikeUI()) {
-        localView.setOnTouchListener(new MiniToast.1(this, localProtectedToast, paramOnTouchListener));
-      }
+      setOnTouchListener(paramOnTouchListener, localProtectedToast, localView);
       return localProtectedToast;
       ((ImageView)localView.findViewById(R.id.toast_icon)).setVisibility(8);
-      break;
-      label377:
-      if (paramInt1 == 6316128) {
-        localProtectedToast.setGravity(55, 0, getStatusBarHeight());
-      } else {
-        localProtectedToast.setGravity(55, 0, getTitleBarHeight());
-      }
     }
   }
   
@@ -412,7 +434,7 @@ public class MiniToast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniToast
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ public final class VideoLayerUserAction
   extends JceStruct
   implements Comparable<VideoLayerUserAction>
 {
-  public int appid;
-  public boolean has_comment;
-  public boolean has_follow;
-  public boolean has_forward;
-  public boolean has_like;
-  public int index;
+  public int appid = 0;
+  public boolean has_comment = false;
+  public boolean has_follow = false;
+  public boolean has_forward = false;
+  public boolean has_like = false;
+  public int index = 0;
   public String mkey = "";
-  public long video_duration;
-  public int video_integrity;
+  public long video_duration = 0L;
+  public int video_integrity = 0;
   
   public VideoLayerUserAction() {}
   

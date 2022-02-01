@@ -2,6 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.mobileqq.utils.FileUtils;
 
 class ForwardImageProcessor$1
@@ -28,9 +29,9 @@ class ForwardImageProcessor$1
       return;
       ForwardImageProcessor.access$200(this.this$0);
       continue;
-      if (FileUtils.fileExistsAndNotEmpty(ForwardImageProcessor.access$300(this.this$0)))
+      if (FileUtils.b(ForwardImageProcessor.access$300(this.this$0)))
       {
-        ForwardImageProcessor.access$400(this.this$0).getTransFileController().removeHandle(this);
+        ((ITransFileController)ForwardImageProcessor.access$400(this.this$0).getRuntimeService(ITransFileController.class)).removeHandle(this);
         ForwardImageProcessor.access$500(this.this$0);
       }
       else

@@ -35,7 +35,7 @@ public class QzoneTranslucentBrowserFragment
       localLayoutParams.rightMargin = dpToPx(15.0F);
       localLayoutParams.addRule(11);
       paramRelativeLayout.addView(localImageView, localLayoutParams);
-      localImageView.setImageDrawable(getResources().getDrawable(2130848599));
+      localImageView.setImageDrawable(getResources().getDrawable(2130848979));
       localImageView.setOnClickListener(new QzoneTranslucentBrowserFragment.1(this));
     }
   }
@@ -60,7 +60,7 @@ public class QzoneTranslucentBrowserFragment
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
     if (this.mUIStyleHandler != null) {
-      this.mUIStyleHandler.disableProgress = true;
+      this.mUIStyleHandler.d = true;
     }
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
     if (this.intent != null)
@@ -82,7 +82,7 @@ public class QzoneTranslucentBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzoneTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

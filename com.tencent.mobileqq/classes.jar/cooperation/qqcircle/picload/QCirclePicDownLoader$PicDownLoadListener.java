@@ -1,5 +1,6 @@
 package cooperation.qqcircle.picload;
 
+import com.tencent.mobileqq.qcircle.api.data.Option;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class QCirclePicDownLoader$PicDownLoadListener
@@ -15,7 +16,7 @@ public abstract class QCirclePicDownLoader$PicDownLoadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.picload.QCirclePicDownLoader.PicDownLoadListener
  * JD-Core Version:    0.7.0.1
  */

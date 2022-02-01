@@ -4,12 +4,11 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import yvj;
 
 public class ClipboardEditText
   extends EditText
 {
-  private yvj a;
+  private ClipboardEditText.IClipboardCallBack a;
   
   public ClipboardEditText(Context paramContext)
   {
@@ -56,14 +55,14 @@ public class ClipboardEditText
     }
   }
   
-  public void setClipboardCallBack(yvj paramyvj)
+  public void setClipboardCallBack(ClipboardEditText.IClipboardCallBack paramIClipboardCallBack)
   {
-    this.a = paramyvj;
+    this.a = paramIClipboardCallBack;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText
  * JD-Core Version:    0.7.0.1
  */

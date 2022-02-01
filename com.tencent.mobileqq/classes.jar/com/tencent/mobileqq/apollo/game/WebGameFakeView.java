@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.apollo.game;
 
-import amsm;
-import amth;
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -28,12 +25,12 @@ import org.json.JSONObject;
 public class WebGameFakeView
 {
   public static AtomicBoolean a;
-  public amth a;
   public Context a;
   public Bundle a;
   private View a;
   public Window a;
   public ApolloFragment a;
+  public IApolloGameInterface a;
   public WebGameFakeView.Director a;
   public CmGameInitParams a;
   public boolean a;
@@ -81,20 +78,20 @@ public class WebGameFakeView
     ImageView localImageView;
     if ((this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director != null) && (this.jdField_a_of_type_AndroidViewView != null))
     {
-      localRelativeLayout1 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362786);
-      localRelativeLayout2 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365153);
-      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362785);
+      localRelativeLayout1 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362818);
+      localRelativeLayout2 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365290);
+      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362817);
       localTextView.setVisibility(0);
-      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362787);
+      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362819);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director.frontColor))
       {
         if (!this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director.frontColor.trim().toLowerCase().equals("#000000")) {
           break label234;
         }
-        localImageView.setImageResource(2130840277);
+        localImageView.setImageResource(2130840381);
         localRelativeLayout2.setBackgroundResource(0);
-        if (ImmersiveUtils.a()) {
-          ImmersiveUtils.a(this.jdField_a_of_type_AndroidViewWindow, false);
+        if (ImmersiveUtils.supportStatusBarDarkMode()) {
+          ImmersiveUtils.setStatusBarDarkMode(this.jdField_a_of_type_AndroidViewWindow, false);
         }
       }
     }
@@ -111,10 +108,10 @@ public class WebGameFakeView
       label234:
       if (this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director.frontColor.trim().toLowerCase().equals("#ffffff"))
       {
-        localImageView.setImageResource(2130847716);
-        localRelativeLayout2.setBackgroundResource(2130838536);
-        if (ImmersiveUtils.a()) {
-          ImmersiveUtils.a(this.jdField_a_of_type_AndroidViewWindow, true);
+        localImageView.setImageResource(2130848073);
+        localRelativeLayout2.setBackgroundResource(2130838605);
+        if (ImmersiveUtils.supportStatusBarDarkMode()) {
+          ImmersiveUtils.setStatusBarDarkMode(this.jdField_a_of_type_AndroidViewWindow, true);
         }
       }
     }
@@ -141,22 +138,17 @@ public class WebGameFakeView
     }
   }
   
-  public void a(amth paramamth)
-  {
-    this.jdField_a_of_type_Amth = paramamth;
-  }
-  
   public void a(Intent paramIntent)
   {
     ImageView localImageView;
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362787);
-      if (amsm.a().a() <= 1) {
+      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362819);
+      if (ApolloFragmentManager.a().a() <= 1) {
         break label83;
       }
       localImageView.setVisibility(0);
-      localImageView.setOnClickListener(new amtj(this, localImageView));
+      localImageView.setOnClickListener(new WebGameFakeView.1(this, localImageView));
     }
     for (;;)
     {
@@ -180,10 +172,10 @@ public class WebGameFakeView
     if ((this.jdField_a_of_type_Boolean) && (paramView != null))
     {
       this.jdField_a_of_type_AndroidViewView = paramView;
-      TextView localTextView = (TextView)paramView.findViewById(2131362785);
-      paramView = (FrameLayout)paramView.findViewById(2131367562);
+      TextView localTextView = (TextView)paramView.findViewById(2131362817);
+      paramView = (FrameLayout)paramView.findViewById(2131367753);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-      localLayoutParams.addRule(3, 2131362786);
+      localLayoutParams.addRule(3, 2131362818);
       paramView.setLayoutParams(localLayoutParams);
       paramView.requestLayout();
       localTextView.setVisibility(0);
@@ -196,25 +188,30 @@ public class WebGameFakeView
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidViewWindow.getContext();
   }
   
+  public void a(IApolloGameInterface paramIApolloGameInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface = paramIApolloGameInterface;
+  }
+  
   public void a(CmGameInitParams paramCmGameInitParams)
   {
     this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = paramCmGameInitParams;
-    if (this.jdField_a_of_type_Amth != null) {
-      this.jdField_a_of_type_Amth.a(paramCmGameInitParams);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface.a(paramCmGameInitParams);
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Amth != null) {
-      this.jdField_a_of_type_Amth.b(paramString1, paramString2);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface.b(paramString1, paramString2);
     }
   }
   
   public void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_AndroidViewWindow = null;
-    this.jdField_a_of_type_Amth = null;
+    this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface = null;
     this.jdField_a_of_type_AndroidOsBundle = null;
     this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = null;
     this.jdField_a_of_type_AndroidViewView = null;
@@ -233,8 +230,8 @@ public class WebGameFakeView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Amth != null) {
-      this.jdField_a_of_type_Amth.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface.b();
     }
   }
   
@@ -247,42 +244,42 @@ public class WebGameFakeView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Amth != null) {
-      this.jdField_a_of_type_Amth.c();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface.c();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Amth != null) {
-      this.jdField_a_of_type_Amth.e();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface.e();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Amth != null) {
-      this.jdField_a_of_type_Amth.d();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface.d();
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Amth != null) {
-      this.jdField_a_of_type_Amth.f();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface.f();
     }
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Amth != null) {
-      this.jdField_a_of_type_Amth.g();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.WebGameFakeView
  * JD-Core Version:    0.7.0.1
  */

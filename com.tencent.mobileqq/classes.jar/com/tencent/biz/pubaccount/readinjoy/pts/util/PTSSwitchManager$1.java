@@ -4,14 +4,13 @@ import android.os.Build;
 import android.text.TextUtils;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader;
 import com.tencent.qphone.base.util.QLog;
-import qzc;
-import rak;
 
-public class PTSSwitchManager$1
+class PTSSwitchManager$1
   implements Runnable
 {
-  public PTSSwitchManager$1(rak paramrak) {}
+  PTSSwitchManager$1(PTSSwitchManager paramPTSSwitchManager) {}
   
   public void run()
   {
@@ -25,13 +24,13 @@ public class PTSSwitchManager$1
     }
     for (;;)
     {
-      rak.a(this.this$0, bool1);
-      QLog.i("PTSSwitchManager", 1, "[init], ptsJSCEnabled = " + rak.a(this.this$0));
+      PTSSwitchManager.a(this.this$0, bool1);
+      QLog.i("PTSSwitchManager", 1, "[init], ptsJSCEnabled = " + PTSSwitchManager.a(this.this$0));
       label111:
       int i;
-      if (rak.a(this.this$0))
+      if (PTSSwitchManager.a(this.this$0))
       {
-        qzc.a().a();
+        PTSJSCLoader.a().a();
         localObject = Build.CPU_ABI;
         if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains("armeabi"))) {
           break label283;
@@ -72,10 +71,10 @@ public class PTSSwitchManager$1
             }
             QLog.i("PTSSwitchManager", 1, "[init], pageEnabledTmp = " + bool2 + ", viewEnabledTmp = " + bool3 + ", isArm = " + bool1);
             if ((bool2) || (bool3)) {
-              rak.a(this.this$0);
+              PTSSwitchManager.a(this.this$0);
             }
-            rak.b(this.this$0, bool2);
-            rak.c(this.this$0, bool3);
+            PTSSwitchManager.b(this.this$0, bool2);
+            PTSSwitchManager.c(this.this$0, bool3);
             return;
             bool1 = false;
             break;
@@ -99,7 +98,7 @@ public class PTSSwitchManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.util.PTSSwitchManager.1
  * JD-Core Version:    0.7.0.1
  */

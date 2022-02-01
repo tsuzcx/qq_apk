@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.teamwork;
 
-import becr;
-import bect;
-
-public class TeamWorkUtils$TDFileQIPCModule$1
+class TeamWorkUtils$TDFileQIPCModule$1
   implements Runnable
 {
-  public TeamWorkUtils$TDFileQIPCModule$1(bect parambect, String paramString) {}
+  TeamWorkUtils$TDFileQIPCModule$1(TeamWorkUtils.TDFileQIPCModule paramTDFileQIPCModule, String paramString) {}
   
   public void run()
   {
-    becr.a(this.a);
+    TeamWorkUtils.a(this.a);
   }
 }
 

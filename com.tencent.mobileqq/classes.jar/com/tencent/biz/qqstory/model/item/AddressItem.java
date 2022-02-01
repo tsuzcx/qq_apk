@@ -1,9 +1,11 @@
 package com.tencent.biz.qqstory.model.item;
 
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.Address;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -12,12 +14,10 @@ import com.tencent.mobileqq.troop.data.TroopBarPOI;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vzk;
-import ykq;
 
 public class AddressItem
   extends BaseUIItem
-  implements vzk
+  implements Copyable
 {
   public String building;
   public String city;
@@ -44,7 +44,7 @@ public class AddressItem
       localJSONObject.put("latitude", paramAddressItem.latitude);
       localJSONObject.put("coordinate", paramAddressItem.coordinate);
       localJSONObject.put("district", paramAddressItem.district);
-      ykq.b("AddressItem convertFromItem: ", localJSONObject.toString());
+      SLog.b("AddressItem convertFromItem: ", localJSONObject.toString());
       return localJSONObject.toString();
     }
     catch (JSONException paramAddressItem)
@@ -114,7 +114,7 @@ public class AddressItem
       }
       return localAddressItem;
     }
-    ykq.b("AddressItem :getAddressFromProtoObject()", "address is null");
+    SLog.b("AddressItem :getAddressFromProtoObject()", "address is null");
     return null;
   }
   
@@ -249,7 +249,7 @@ public class AddressItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.AddressItem
  * JD-Core Version:    0.7.0.1
  */

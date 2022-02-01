@@ -1,228 +1,38 @@
 package com.tencent.mobileqq.msf.core.c;
 
-public class h
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+
+public final class h
+  extends JceStruct
 {
-  public static final String A = "dim.Msf.WifiNoConnection";
-  public static final String B = "dim.Msf.ConnClose";
-  public static final String C = "dim.Msf.BG.ConnClose";
-  public static final String D = "dim.Msf.PackageSendTime";
-  public static final String E = "dim.Msf.PackageRecvTime";
-  public static final String F = "dim.Msf.TokenExpired";
-  public static final String G = "dim.Msf.RenewToken_3";
-  public static final String H = "dim.Msf.GetTicketResult_4";
-  public static final String I = "Msf.CommonLogin";
-  public static final String J = "Msf.LoginRespTimeout";
-  public static final String K = "dim.Msf.UserGrayfail";
-  public static final String L = "dim.Msf.RigisterPushResult";
-  public static final String M = "dim.Msf.UnRigisterPushResult";
-  public static final String N = "dim.Msf.BG.RigisterPushResult";
-  public static final String O = "dim.Msf.BG.UnRigisterPushResult";
-  public static final String P = "dim.Msf.PushQueryResult";
-  public static final String Q = "dim.Msf.BG.PushQueryResult";
-  public static final String R = "dim.Msf.AUTOBOTTING";
-  public static final String S = "dim.Msf.WEAKNET_SENDCHATMSG_NEW";
-  public static final String T = "dim.Msf.WEAKNET_SENDCHATMSG4";
-  public static final String U = "dim.Msf.WEAKNET_INFOLOGIN4";
-  public static final String V = "dim.Msf.QuickSendEffect";
-  public static final String W = "dim.Msf.ConnectWiFiSSID";
-  public static final String X = "evt_net_test_result";
-  public static final String Y = "dim.Msf.NetTestResult";
-  public static final String Z = "dim.Msf.DecPack_trunk_test";
-  public static final String a = "Msf.RegInterTime";
-  public static final String aA = "ReqQualityStatExceptTemp";
-  public static final String aB = "ReqQualitySendError";
-  public static final String aC = "OneSecEffect";
-  public static final String aD = "dim.Msf.IMEIReading";
-  public static final String aE = "dim.Msf.LoadPushTimes";
-  public static final String aF = "dim.Msf.RecordStanbyModeCMD1";
-  public static final String aG = "dim.Msf.QuickSend";
-  public static final String aH = "dim.Msf.QuickSendDetect";
-  public static final String aI = "msf_send_quick_hb";
-  public static final String aJ = "ReportStandbyTestFlow";
-  public static final String aK = "ReportStandbyAllFlow";
-  public static final String aL = "dim.Msf.PushSendFail";
-  public static final String aM = "dim.Msf.PushRecvEvent";
-  public static final String aN = "dim.Msf.PushRecvFail";
-  public static final int aO = 3000;
-  public static final int aP = 4015;
-  public static final int aQ = 3100;
-  public static final int aR = 3200;
-  public static final int aS = 3300;
-  public static final int aT = 4500;
-  public static final String aU = "900";
-  public static final int aV = 4570;
-  public static final int aW = 4571;
-  public static final int aX = 4572;
-  public static final int aY = 4580;
-  public static final int aZ = 4581;
-  public static final String aa = "dim.Msf.ForkProcFailed";
-  public static final String ab = "dim.Msf.OneDayNetworkInfo";
-  public static final String ac = "dim.Msf.ForceQuitParseFail";
-  public static final String ad = "dim.Msf.ConnRequestAllFail";
-  public static final String ae = "dim.Msf.ConnRequestAllFailDetect3";
-  public static final String af = "dim.Msf.ConnRequestAllFailDetect_Special";
-  public static final String ag = "dim.Msf.ConnRequestAllFailDetect_Special1";
-  public static final String ah = "dim.Msf.hwSending";
-  public static final String ai = "dim.Msf.hwSendingExTimeout";
-  public static final String aj = "dim.Msf.hwExcept";
-  public static final String ak = "dim.Msf.hwHeartbeat";
-  public static final String al = "dim.Msf.NmSending";
-  public static final String am = "dim.Msf.NmSendingExTimeout";
-  public static final String an = "dim.Msf.NmHeartbeat";
-  public static final String ao = "dim.Msf.SendNullMsg";
-  public static final String ap = "dim.Msf.SOReplaceFail";
-  public static final String aq = "dim.Msf.SingleCmdTimeout";
-  public static final String ar = "dim.Msf.HeartBeatTimeout";
-  public static final String as = "dim.Msf.PCActiveEcho";
-  public static final String at = "dim.Msf.PCActiveSuccResult";
-  public static final String au = "dim.Msf.PCActiveQQResult";
-  public static final String av = "dim.Msf.PCActiveStartEvent";
-  public static final String aw = "dim.Msf.PCActiveDidStartEvent";
-  public static final String ax = "dim.Msf.StandbyModeEnter";
-  public static final String ay = "dim.Msf.StandbyModeExit";
-  public static final String az = "ReqQualityStatTemp";
-  public static final String b = "dim.Msf.MutilConnDefaultElapsedTime";
-  public static final int bA = 4621;
-  public static final int bB = 4622;
-  public static final int bC = 4623;
-  public static final int bD = 4624;
-  public static final int bE = 4625;
-  public static final int bF = 4630;
-  public static final int bG = 4631;
-  public static final int bH = 4632;
-  public static final int bI = 4633;
-  public static final int bJ = 4634;
-  public static final int bK = 4640;
-  public static final int bL = 4641;
-  public static final int bM = 4642;
-  public static final int bN = 4643;
-  public static final int bO = 4644;
-  public static final int bP = 4645;
-  public static final int bQ = 4650;
-  public static final int bR = 4651;
-  public static final int bS = 4660;
-  public static final int bT = 4661;
-  public static final int bU = 4662;
-  public static final int bV = 4663;
-  public static final int bW = 4900;
-  public static final int bX = 5000;
-  public static final int bY = 1000;
-  public static final int bZ = 1;
-  public static final int ba = 4582;
-  public static final int bb = 4583;
-  public static final int bc = 4590;
-  public static final int bd = 4591;
-  public static final int be = 4592;
-  public static final int bf = 4600;
-  public static final int bg = 4601;
-  public static final int bh = 4602;
-  public static final int bi = 4603;
-  public static final int bj = 4604;
-  public static final int bk = 4605;
-  public static final int bl = 4606;
-  public static final int bm = 4607;
-  public static final int bn = 4608;
-  public static final int bo = 4609;
-  public static final int bp = 4610;
-  public static final int bq = 4611;
-  public static final int br = 4612;
-  public static final int bs = 4613;
-  public static final int bt = 4614;
-  public static final int bu = 4615;
-  public static final int bv = 4616;
-  public static final int bw = 4617;
-  public static final int bx = 4618;
-  public static final int by = 4619;
-  public static final int bz = 4620;
-  public static final String c = "dim.Msf.MutilConnElapsedTime";
-  public static final String cA = "msf.core.EvtTxlibSoExist";
-  public static final String cB = "msf.core.EvtLoadUseTxlib";
-  public static final String cC = "msf.core.EvtWeaknetXgHttpSendError";
-  public static final String cD = "msf.core.EvtWorkerHeld";
-  public static final String cE = "msf.event.NetConnDontMatched";
-  public static final String cF = "msf.core.DeadObjectException";
-  public static final String cG = "msf.cmd.Evt10008";
-  public static final String cH = "monitor_IllegalMonitorStateException";
-  public static final String cI = "msf_monitor_invalidSocket";
-  public static final String cJ = "msf_sendMsgToApp_processIsNull";
-  public static final String cK = "msf_core_EvtMsfThreadHeldKillMSF";
-  public static final String cL = "EvtDozeWhiteList";
-  public static final String cM = "EvtJobPullMsfAlive";
-  public static final String cN = "EvtMSFServiceBoot";
-  public static final String cO = "EvtMSFStartTimes";
-  public static final String cP = "EvtDozePushReport";
-  public static final String cQ = "EvtSetCfgRenameReport";
-  public static final String cR = "EvtRemoveCfgRenameReport";
-  public static final String cS = "EvtLodCfgTempFileReport";
-  public static final String cT = "EvtPacketLossRat";
-  public static final String cU = "EvtPacketLossRatV4";
-  public static final String cV = "EvtPacketLossRatV6";
-  public static final String cW = "EvtRegisterProxySucc";
-  public static final String cX = "EvtRegisterProxySuccV4";
-  public static final String cY = "EvtRegisterProxySuccV6";
-  public static final String cZ = "EvtDeepSleep";
-  public static final int ca = 2;
-  public static final int cb = 3;
-  public static final int cc = 11;
-  public static final int cd = 12;
-  public static final int ce = 13;
-  public static final int cf = 14;
-  public static final int cg = 21;
-  public static final int ch = 22;
-  public static final int ci = 23;
-  public static final int cj = 24;
-  public static final int ck = 25;
-  public static final int cl = 31;
-  public static final int cm = 32;
-  public static final int cn = 34;
-  public static final int co = 35;
-  public static final int cp = 50;
-  public static final int cq = 51;
-  public static final int cr = 52;
-  public static final String cs = "dim.msf.deviceidle_status";
-  public static final String ct = "dim.msf.readexp_event";
-  public static final String cu = "dim.msf.closeconn_event";
-  public static final String cv = "dim.msf.ServiceInitToConnedCost";
-  public static final String cw = "dim.msf.EvtWeakNetworkNetConnQuality";
-  public static final String cx = "dim.msf.EvtWeakNetworkNetChatMsgCost";
-  public static final String cy = "dim.msf.EvtWeakNetworkXGDonotRestore";
-  public static final String cz = "msf.core.EvtMsfLoadSoError";
-  public static final String d = "dim.Msf.ConnDefaultElapsedTime";
-  public static final String da = "EvtIPC";
-  public static final String db = "EvtIPCTransport";
-  public static final String dc = "msf_fork_process_fail";
-  public static final String dd = "EvtConn";
-  public static final String de = "EvtConnV4";
-  public static final String df = "EvtConnV6";
-  public static final String dg = "EvtDual";
-  public static final String dh = "msf_send_msg";
-  public static final String di = "msf_IPv4_send_msg";
-  public static final String dj = "msf_IPv6_send_msg";
-  public static final String dk = "msf_close_socket_by_deep_sleep";
-  public static final String dl = "msf_enable_retry_by_deep_sleep";
-  public static final String dm = "msf_send_can_retry_msg";
-  public static final String e = "dim.Msf.ConnElapsedTime";
-  public static final String f = "msf_connAndRecv";
-  public static final String g = "msf_connAndRecv_ipv6";
-  public static final String h = "msf_connAndRecv_ipv4";
-  public static final String i = "msf_justGetSSOListButCannotConn";
-  public static final String j = "msf_netStateWhileSSOListCannotConnBDOK5";
-  public static final String k = "msf_connectContinuanceTime";
-  public static final String l = "dim.Msf.BG.ConnDefaultElapsedTime";
-  public static final String m = "dim.Msf.BG.ConnElapsedTime";
-  public static final String n = "dim.Msf.ConnFailByUnreachable";
-  public static final String o = "dim.Msf.BG.ConnFailByUnreachable";
-  public static final String p = "dim.Msf.ConnFailByPermission";
-  public static final String q = "dim.Msf.BG.ConnFailByPermission";
-  public static final String r = "dim.Msf.MutilConnDefaultResult";
-  public static final String s = "dim.Msf.MutilConnResult";
-  public static final String t = "dim.Msf.ConnDefaultResult";
-  public static final String u = "dim.Msf.ConnResult";
-  public static final String v = "dim.Msf.BG.ConnDefaultResult";
-  public static final String w = "dim.Msf.BG.ConnResult";
-  public static final String x = "dim.Msf.NoNetInfoConnSucc";
-  public static final String y = "dim.Msf.invaildAppCall";
-  public static final String z = "dim.Msf.BG.NoNetInfoConnSucc";
+  static ArrayList b;
+  public ArrayList a = null;
+  
+  public h() {}
+  
+  public h(ArrayList paramArrayList)
+  {
+    this.a = paramArrayList;
+  }
+  
+  public void readFrom(JceInputStream paramJceInputStream)
+  {
+    if (b == null)
+    {
+      b = new ArrayList();
+      i locali = new i();
+      b.add(locali);
+    }
+    this.a = ((ArrayList)paramJceInputStream.read(b, 1, true));
+  }
+  
+  public void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 1);
+  }
 }
 
 

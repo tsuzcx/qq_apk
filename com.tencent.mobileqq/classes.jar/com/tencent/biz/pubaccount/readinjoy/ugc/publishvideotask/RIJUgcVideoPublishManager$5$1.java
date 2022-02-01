@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import sad;
 
 class RIJUgcVideoPublishManager$5$1
   implements Runnable
@@ -13,13 +12,13 @@ class RIJUgcVideoPublishManager$5$1
     if (this.a.a.status == UgcVideo.STATUS_FINISH)
     {
       this.a.this$0.a(this.a.a);
-      sad.a(this.a.this$0, this.a.a);
+      RIJUgcVideoPublishManager.a(this.a.this$0, this.a.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.RIJUgcVideoPublishManager.5.1
  * JD-Core Version:    0.7.0.1
  */

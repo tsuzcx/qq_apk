@@ -14,6 +14,7 @@ public class PlatformViewsChannel$PlatformViewTouch
   public final Number eventTime;
   public final int flags;
   public final int metaState;
+  public final long motionEventId;
   public final int pointerCount;
   @NonNull
   public final Object rawPointerCoords;
@@ -24,7 +25,7 @@ public class PlatformViewsChannel$PlatformViewTouch
   public final float xPrecision;
   public final float yPrecision;
   
-  PlatformViewsChannel$PlatformViewTouch(int paramInt1, @NonNull Number paramNumber1, @NonNull Number paramNumber2, int paramInt2, int paramInt3, @NonNull Object paramObject1, @NonNull Object paramObject2, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
+  public PlatformViewsChannel$PlatformViewTouch(int paramInt1, @NonNull Number paramNumber1, @NonNull Number paramNumber2, int paramInt2, int paramInt3, @NonNull Object paramObject1, @NonNull Object paramObject2, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, int paramInt6, int paramInt7, int paramInt8, int paramInt9, long paramLong)
   {
     this.viewId = paramInt1;
     this.downTime = paramNumber1;
@@ -41,11 +42,12 @@ public class PlatformViewsChannel$PlatformViewTouch
     this.edgeFlags = paramInt7;
     this.source = paramInt8;
     this.flags = paramInt9;
+    this.motionEventId = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewTouch
  * JD-Core Version:    0.7.0.1
  */

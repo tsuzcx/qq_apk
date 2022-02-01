@@ -11,27 +11,27 @@ public final class MobileContactsNotFriendInfo
   static int cache_conType;
   static int cache_eNetworkType;
   static byte[] cache_personalSign;
-  public byte[] MobileNoMask;
+  public byte[] MobileNoMask = null;
   public int accountAbi = 0;
-  public int age;
-  public long bindingDate;
+  public int age = 0;
+  public long bindingDate = 0L;
   public int conType = 0;
   public String contactsInfoEncrypt = "";
-  public byte detalStatusFlag;
+  public byte detalStatusFlag = 0;
   public int eNetworkType = 0;
-  public int iTermType;
-  public boolean isHide;
-  public boolean isNew;
-  public long isRecommend;
+  public int iTermType = 0;
+  public boolean isHide = false;
+  public boolean isNew = false;
+  public long isRecommend = 0L;
   public boolean isUpdateSign = true;
   public String nickname = "";
-  public long originBinder;
-  public byte[] personalSign;
-  public long richTime;
-  public int sameFriend;
-  public int sex;
+  public long originBinder = 0L;
+  public byte[] personalSign = null;
+  public long richTime = 0L;
+  public int sameFriend = 0;
+  public int sex = 0;
   public String strTermDesc = "";
-  public long uAbiFlag;
+  public long uAbiFlag = 0L;
   
   static
   {

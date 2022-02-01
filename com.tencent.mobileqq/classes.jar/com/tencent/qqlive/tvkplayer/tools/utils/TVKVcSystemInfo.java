@@ -89,7 +89,7 @@ public class TVKVcSystemInfo
   public static final int RECORD_LEVEL_1 = 1;
   public static final int RECORD_LEVEL_2 = 2;
   public static final int RECORD_LEVEL_3 = 3;
-  public static final String TAG = "MediaPlayerMgr";
+  public static final String TAG = "MediaPlayerMgr[TVKVcSystemInfo.java]";
   public static final int TYPE_CMNET = 2;
   public static final int TYPE_CMWAP = 3;
   public static final int TYPE_ETHERNET = 5;
@@ -153,7 +153,9 @@ public class TVKVcSystemInfo
     sMacAddr = "";
     sTotalMem = 0L;
     GUID_PHONE_PATH = Environment.getDataDirectory() + "/data/";
-    cpuPerfList = new String[][] { { "MSM7227", "MSM7627", "MSM7227T", "MSM7627T", "MSM7227A", "MSM7627A", "QSD8250", "QSD8650", "MSM7230", "MSM7630", "APQ8055", "MSM8255", "MSM8655", "MSM8255T", "MSM8655T", "MSM8225", "MSM8625", "MSM8260", "MSM8660", "MSM8x25Q", "MSM8x26", "MSM8x10", "MSM8x12", "MSM8x30", "MSM8260A", "MSM8660A", "MSM8960", "MSM8208", "MSM8916", "MSM8960T", "MSM8909", "MSM8916v2", "MSM8936", "MSM8909v2", "MSM8917", "APQ8064", "APQ8064T", "MSM8920", "MSM8939", "MSM8937", "MSM8939v2", "MSM8940", "MSM8952", "MSM8974", "MSM8x74AA", "MSM8x74AB", "MSM8x74AC", "MSM8953", "APQ8084", "MSM8953Pro", "MSM8992", "MSM8956", "MSM8976", "MSM8976Pro", "MSM8994", "MSM8996", "MSM8996Pro" }, { "MT6516", "MT6513", "MT6573", "MT6515M", "MT6515", "MT6575", "MT6572", "MT6577", "MT6589", "MT6582", "MT6592", "MT6595", "MT6735", "MT6750", "MT6753", "MT6752", "MT6755", "MT6755", "MT6755T", "MT6795", "MT6757", "MT675x", "MT6797", "MT6797T" }, { "K3V2", "K3V2E", "K3V2+", "Kirin910", "Kirin920", "Kirin925", "Kirin928", "Kirin620", "Kirin650", "Kirin655", "Kirin930", "Kirin935", "Kirin950", "Kirin955", "Kirin960" }, { "S5L8900", "S5PC100", "Exynos3110", "Exynos3475", "Exynos4210", "Exynos4212", "SMDK4x12", "Exynos4412", "Exynos5250", "Exynos5260", "Exynos5410", "Exynos5420", "Exynos5422", "Exynos5430", "Exynos5800", "Exynos5433", "Exynos7580", "Exynos7870", "Exynos7870", "Exynos7420", "Exynos8890" } };
+    String[] arrayOfString1 = { "MT6516", "MT6513", "MT6573", "MT6515M", "MT6515", "MT6575", "MT6572", "MT6577", "MT6589", "MT6582", "MT6592", "MT6595", "MT6735", "MT6750", "MT6753", "MT6752", "MT6755", "MT6755", "MT6755T", "MT6795", "MT6757", "MT675x", "MT6797", "MT6797T" };
+    String[] arrayOfString2 = { "S5L8900", "S5PC100", "Exynos3110", "Exynos3475", "Exynos4210", "Exynos4212", "SMDK4x12", "Exynos4412", "Exynos5250", "Exynos5260", "Exynos5410", "Exynos5420", "Exynos5422", "Exynos5430", "Exynos5800", "Exynos5433", "Exynos7580", "Exynos7870", "Exynos7870", "Exynos7420", "Exynos8890" };
+    cpuPerfList = new String[][] { { "MSM7227", "MSM7627", "MSM7227T", "MSM7627T", "MSM7227A", "MSM7627A", "QSD8250", "QSD8650", "MSM7230", "MSM7630", "APQ8055", "MSM8255", "MSM8655", "MSM8255T", "MSM8655T", "MSM8225", "MSM8625", "MSM8260", "MSM8660", "MSM8x25Q", "MSM8x26", "MSM8x10", "MSM8x12", "MSM8x30", "MSM8260A", "MSM8660A", "MSM8960", "MSM8208", "MSM8916", "MSM8960T", "MSM8909", "MSM8916v2", "MSM8936", "MSM8909v2", "MSM8917", "APQ8064", "APQ8064T", "MSM8920", "MSM8939", "MSM8937", "MSM8939v2", "MSM8940", "MSM8952", "MSM8974", "MSM8x74AA", "MSM8x74AB", "MSM8x74AC", "MSM8953", "APQ8084", "MSM8953Pro", "MSM8992", "MSM8956", "MSM8976", "MSM8976Pro", "MSM8994", "MSM8996", "MSM8996Pro" }, arrayOfString1, { "K3V2", "K3V2E", "K3V2+", "Kirin910", "Kirin920", "Kirin925", "Kirin928", "Kirin620", "Kirin650", "Kirin655", "Kirin930", "Kirin935", "Kirin950", "Kirin955", "Kirin960" }, arrayOfString2 };
     mPackageName = "";
     maxCpuFreq = -1L;
     currentCpuFreq = -1L;
@@ -228,7 +230,7 @@ public class TVKVcSystemInfo
     if (i < j)
     {
       label51:
-      TVKLogUtil.e("MediaPlayerMgr", localException1);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", localException1);
       bool2 = bool1;
     }
     return bool2;
@@ -328,7 +330,7 @@ public class TVKVcSystemInfo
     }
     catch (Throwable paramContext)
     {
-      TVKLogUtil.e("MediaPlayerMgr", paramContext);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
     }
     return "";
   }
@@ -743,7 +745,7 @@ public class TVKVcSystemInfo
     }
     catch (Throwable paramContext)
     {
-      TVKLogUtil.e("MediaPlayerMgr", paramContext);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
     }
     return 0L;
   }
@@ -1315,7 +1317,7 @@ public class TVKVcSystemInfo
       }
       catch (Throwable paramContext)
       {
-        TVKLogUtil.e("MediaPlayerMgr", paramContext);
+        TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
         return "";
       }
       return getLowerMarshmallowDeviceMacAddr(paramContext);
@@ -1355,7 +1357,7 @@ public class TVKVcSystemInfo
       {
         for (;;)
         {
-          TVKLogUtil.e("MediaPlayerMgr", paramContext);
+          TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
           paramContext = (Context)localObject;
         }
       }
@@ -1397,7 +1399,7 @@ public class TVKVcSystemInfo
         paramContext = "";
       }
     }
-    TVKLogUtil.e("MediaPlayerMgr", localException1);
+    TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", localException1);
     return paramContext;
   }
   
@@ -1426,7 +1428,7 @@ public class TVKVcSystemInfo
     }
     catch (Throwable paramContext)
     {
-      TVKLogUtil.e("MediaPlayerMgr", paramContext);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
     }
     return "";
   }
@@ -1451,7 +1453,7 @@ public class TVKVcSystemInfo
     }
     catch (Throwable paramContext)
     {
-      TVKLogUtil.e("MediaPlayerMgr", paramContext);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
     }
     return 0;
   }
@@ -1476,7 +1478,7 @@ public class TVKVcSystemInfo
     }
     catch (Throwable paramContext)
     {
-      TVKLogUtil.e("MediaPlayerMgr", paramContext);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
     }
     return 0;
   }
@@ -1965,7 +1967,7 @@ public class TVKVcSystemInfo
     }
     catch (Throwable paramContext)
     {
-      TVKLogUtil.e("MediaPlayerMgr", paramContext);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
       return 0;
     }
     label99:
@@ -1996,7 +1998,7 @@ public class TVKVcSystemInfo
     {
       for (;;)
       {
-        TVKLogUtil.e("MediaPlayerMgr", paramContext);
+        TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
         continue;
         mNetWorkType = 2;
         if ((paramContext.getExtraInfo() != null) && (!"cmnet".equalsIgnoreCase(paramContext.getExtraInfo())))
@@ -2041,7 +2043,7 @@ public class TVKVcSystemInfo
       }
       catch (Exception paramContext)
       {
-        TVKLogUtil.e("MediaPlayerMgr", paramContext);
+        TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
       }
       break;
       mNetWorkType = 1;
@@ -2109,7 +2111,7 @@ public class TVKVcSystemInfo
     {
       for (;;)
       {
-        TVKLogUtil.e("MediaPlayerMgr", paramContext);
+        TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
         mNetWorkClass = 0;
         continue;
         mNetWorkClass = 1;
@@ -2134,13 +2136,13 @@ public class TVKVcSystemInfo
         return numOfCores;
       }
       numOfCores = arrayOfFile.length;
-      TVKLogUtil.i("MediaPlayerMgr", "core num " + numOfCores);
+      TVKLogUtil.i("MediaPlayerMgr[TVKVcSystemInfo.java]", "core num " + numOfCores);
       int i = numOfCores;
       return i;
     }
     catch (Exception localException)
     {
-      TVKLogUtil.e("MediaPlayerMgr", localException);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", localException);
       numOfCores = 1;
     }
     return 1;
@@ -2161,7 +2163,7 @@ public class TVKVcSystemInfo
     {
       for (;;)
       {
-        TVKLogUtil.e("MediaPlayerMgr", paramContext);
+        TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
       }
     }
     return mOpenGLVersion;
@@ -2210,8 +2212,8 @@ public class TVKVcSystemInfo
   
   public static int getRecordLevel()
   {
-    TVKLogUtil.i("MediaPlayerMgr", "[getRecordLevel], numCores = " + getNumCores() + ", totalMem = " + getTotalMem(TVideoMgr.getApplicationContext()));
-    TVKLogUtil.i("MediaPlayerMgr", "[getRecordLevel], mCpuHWProducter = " + mCpuHWProducter + ", getMaxCpuFreq() = " + getMaxCpuFreq() + " mCpuHWProductIdx=" + mCpuHWProductIdx);
+    TVKLogUtil.i("MediaPlayerMgr[TVKVcSystemInfo.java]", "[getRecordLevel], numCores = " + getNumCores() + ", totalMem = " + getTotalMem(TVideoMgr.getApplicationContext()));
+    TVKLogUtil.i("MediaPlayerMgr[TVKVcSystemInfo.java]", "[getRecordLevel], mCpuHWProducter = " + mCpuHWProducter + ", getMaxCpuFreq() = " + getMaxCpuFreq() + " mCpuHWProductIdx=" + mCpuHWProductIdx);
     if (-1 != mRecordLevel) {
       return mRecordLevel;
     }
@@ -2312,7 +2314,7 @@ public class TVKVcSystemInfo
     }
     catch (Throwable paramContext)
     {
-      TVKLogUtil.e("MediaPlayerMgr", paramContext);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
     }
     return "";
   }
@@ -2404,7 +2406,7 @@ public class TVKVcSystemInfo
     {
       for (;;)
       {
-        TVKLogUtil.e("MediaPlayerMgr", paramString1);
+        TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramString1);
         float f1 = f2;
       }
     }
@@ -2527,7 +2529,7 @@ public class TVKVcSystemInfo
     }
     catch (Throwable localThrowable)
     {
-      TVKLogUtil.e("MediaPlayerMgr", localThrowable);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", localThrowable);
     }
     return "wlan0";
   }
@@ -2555,7 +2557,7 @@ public class TVKVcSystemInfo
       catch (Exception localException)
       {
         int i;
-        TVKLogUtil.e("MediaPlayerMgr", localException);
+        TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", localException);
         continue;
       }
       if (externalStorageMounted == 1) {
@@ -2635,7 +2637,7 @@ public class TVKVcSystemInfo
     }
     catch (Exception paramContext)
     {
-      TVKLogUtil.e("MediaPlayerMgr", paramContext);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
     }
     return true;
   }
@@ -2703,7 +2705,7 @@ public class TVKVcSystemInfo
     //   84: ifle -46 -> 38
     //   87: aload_3
     //   88: astore 4
-    //   90: new 202	java/lang/String
+    //   90: new 200	java/lang/String
     //   93: dup
     //   94: aload 7
     //   96: invokespecial 1169	java/lang/String:<init>	([C)V
@@ -2933,7 +2935,7 @@ public class TVKVcSystemInfo
     catch (Throwable paramContext)
     {
       int i;
-      TVKLogUtil.e("MediaPlayerMgr", paramContext);
+      TVKLogUtil.e("MediaPlayerMgr[TVKVcSystemInfo.java]", paramContext);
       try
       {
         paramContext = NetworkInterface.getNetworkInterfaces();
@@ -3025,7 +3027,7 @@ public class TVKVcSystemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.TVKVcSystemInfo
  * JD-Core Version:    0.7.0.1
  */

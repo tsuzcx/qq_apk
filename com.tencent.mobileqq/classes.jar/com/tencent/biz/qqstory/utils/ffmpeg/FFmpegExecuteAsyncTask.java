@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedReader;
@@ -12,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.concurrent.TimeoutException;
-import ykq;
 
 class FFmpegExecuteAsyncTask
   extends AsyncTask<Void, String, CommandResult>
@@ -20,8 +20,8 @@ class FFmpegExecuteAsyncTask
   public static final String TAG = "Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask";
   public final String[] cmd;
   public final FFmpegExecuteResponseCallback ffmpegExecuteResponseHandler;
-  public boolean isFFmpegExecutable;
-  public boolean isWorkThread;
+  public boolean isFFmpegExecutable = false;
+  public boolean isWorkThread = false;
   public Context mContext;
   public Boolean mIsDebug = Boolean.valueOf(false);
   public Process mProcess;
@@ -135,7 +135,7 @@ class FFmpegExecuteAsyncTask
       if (!this.isFFmpegExecutable) {
         this.isFFmpegExecutable = Util.setFileExecutable(new File(FileUtils.getFFmpeg(this.mContext)));
       }
-      ykq.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute start cmd=" + Arrays.toString(this.cmd));
+      SLog.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute start cmd=" + Arrays.toString(this.cmd));
       this.mProcess = this.shellCommand.run(this.cmd);
       paramVarArgs = this.mProcess;
       if (paramVarArgs == null)
@@ -162,19 +162,19 @@ class FFmpegExecuteAsyncTask
     }
     catch (TimeoutException paramVarArgs)
     {
-      ykq.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "FFmpeg timed out", paramVarArgs);
+      SLog.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "FFmpeg timed out", paramVarArgs);
       paramVarArgs = new CommandResult(false, paramVarArgs.getMessage());
       return paramVarArgs;
     }
     catch (Exception paramVarArgs)
     {
-      ykq.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "Error running FFmpeg", paramVarArgs);
+      SLog.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "Error running FFmpeg", paramVarArgs);
       return getFailCommandResult();
     }
     finally
     {
       Util.destroyProcess(this.mProcess);
-      ykq.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute end cmd=" + Arrays.toString(this.cmd));
+      SLog.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute end cmd=" + Arrays.toString(this.cmd));
     }
   }
   
@@ -217,7 +217,7 @@ class FFmpegExecuteAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteAsyncTask
  * JD-Core Version:    0.7.0.1
  */

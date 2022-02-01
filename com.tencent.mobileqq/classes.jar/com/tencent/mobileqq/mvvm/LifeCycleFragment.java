@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mvvm;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.ViewModelStore;
-import android.arch.lifecycle.ViewModelStoreOwner;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle.Event;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LifecycleRegistry;
+import androidx.lifecycle.ViewModelStore;
+import androidx.lifecycle.ViewModelStoreOwner;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import java.util.HashMap;
@@ -17,23 +17,31 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "Landroid/support/v4/app/Fragment;", "Landroid/arch/lifecycle/LifecycleOwner;", "Landroid/arch/lifecycle/ViewModelStoreOwner;", "()V", "mLifecycleRegistry", "Landroid/arch/lifecycle/LifecycleRegistry;", "mViewModelStore", "Landroid/arch/lifecycle/ViewModelStore;", "dispatchLifeCycleEvent", "", "event", "Landroid/arch/lifecycle/Lifecycle$Event;", "getLifecycle", "Landroid/arch/lifecycle/Lifecycle;", "getViewModelStore", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "Landroid/support/v4/app/Fragment;", "Landroidx/lifecycle/LifecycleOwner;", "Landroidx/lifecycle/ViewModelStoreOwner;", "()V", "mLifecycleRegistry", "Landroidx/lifecycle/LifecycleRegistry;", "mViewModelStore", "Landroidx/lifecycle/ViewModelStore;", "dispatchLifeCycleEvent", "", "event", "Landroidx/lifecycle/Lifecycle$Event;", "getLifecycle", "Landroidx/lifecycle/Lifecycle;", "getViewModelStore", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class LifeCycleFragment
   extends ReportV4Fragment
   implements LifecycleOwner, ViewModelStoreOwner
 {
-  private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry;
-  private final ViewModelStore jdField_a_of_type_AndroidArchLifecycleViewModelStore = new ViewModelStore();
+  private LifecycleRegistry jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
+  private final ViewModelStore jdField_a_of_type_AndroidxLifecycleViewModelStore = new ViewModelStore();
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   
-  private final void a(Lifecycle.Event paramEvent)
+  public void a()
   {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+  }
+  
+  public final void a(@NotNull Lifecycle.Event paramEvent)
+  {
+    Intrinsics.checkParameterIsNotNull(paramEvent, "event");
     try
     {
-      if (this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry == null) {
-        this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry((LifecycleOwner)this);
+      if (this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry == null) {
+        this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry((LifecycleOwner)this);
       }
-      LifecycleRegistry localLifecycleRegistry = this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry;
+      LifecycleRegistry localLifecycleRegistry = this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
       if (localLifecycleRegistry != null) {
         localLifecycleRegistry.handleLifecycleEvent(paramEvent);
       }
@@ -48,20 +56,13 @@ public class LifeCycleFragment
     }
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-  }
-  
   @NotNull
   public Lifecycle getLifecycle()
   {
-    if (this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry == null) {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry((LifecycleOwner)this);
+    if (this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry == null) {
+      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry((LifecycleOwner)this);
     }
-    LifecycleRegistry localLifecycleRegistry = this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry;
+    LifecycleRegistry localLifecycleRegistry = this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
     if (localLifecycleRegistry == null) {
       Intrinsics.throwNpe();
     }
@@ -71,7 +72,7 @@ public class LifeCycleFragment
   @NotNull
   public ViewModelStore getViewModelStore()
   {
-    return this.jdField_a_of_type_AndroidArchLifecycleViewModelStore;
+    return this.jdField_a_of_type_AndroidxLifecycleViewModelStore;
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
@@ -95,7 +96,7 @@ public class LifeCycleFragment
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        this.jdField_a_of_type_AndroidArchLifecycleViewModelStore.clear();
+        this.jdField_a_of_type_AndroidxLifecycleViewModelStore.clear();
       }
       return;
     }

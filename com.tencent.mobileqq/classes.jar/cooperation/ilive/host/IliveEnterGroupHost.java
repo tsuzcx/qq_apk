@@ -100,13 +100,13 @@ public class IliveEnterGroupHost
     }
     paramString1 = TroopInfoActivity.a(paramString1, 4);
     paramString1.putInt("troop_info_from", 30);
-    TroopUtils.openTroopInfoActivity(BaseApplicationImpl.getContext(), paramString1, 2);
+    TroopUtils.a(BaseApplicationImpl.getContext(), paramString1, 2);
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.host.IliveEnterGroupHost
  * JD-Core Version:    0.7.0.1
  */

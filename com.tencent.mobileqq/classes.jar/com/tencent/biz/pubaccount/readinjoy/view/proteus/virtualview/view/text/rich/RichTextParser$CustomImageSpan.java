@@ -10,10 +10,11 @@ import android.support.annotation.Nullable;
 import android.text.style.ImageSpan;
 import java.lang.ref.WeakReference;
 
-class RichTextParser$CustomImageSpan
+public class RichTextParser$CustomImageSpan
   extends ImageSpan
 {
   static final int ALIGN_VERTICAL_CENTER = 101;
+  public boolean isSingleLine = false;
   private WeakReference<Drawable> mDrawableRef;
   
   RichTextParser$CustomImageSpan(@NonNull Drawable paramDrawable, int paramInt)
@@ -37,33 +38,19 @@ class RichTextParser$CustomImageSpan
     return localObject;
   }
   
+  private static int getTextAreaHeight(Paint paramPaint)
+  {
+    paramPaint = paramPaint.getFontMetricsInt();
+    return paramPaint.bottom - paramPaint.top;
+  }
+  
   public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
     paramCharSequence = getCachedDrawable();
     paramCanvas.save();
-    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
-    if (this.mVerticalAlignment == 1) {
-      paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
-    }
-    for (;;)
-    {
-      paramCanvas.translate(paramFloat, paramInt1);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
-      if (this.mVerticalAlignment == 101)
-      {
-        paramInt3 = paramInt5 / 2 - paramCharSequence.getBounds().bottom / 2 - RichTextParser.access$000() / 2;
-        paramInt1 = paramInt3;
-        if (paramInt3 <= 0) {
-          paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
-        }
-      }
-      else
-      {
-        paramInt1 = paramInt2;
-      }
-    }
+    paramCanvas.translate(paramFloat, (getTextAreaHeight(paramPaint) - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
   
   public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
@@ -81,7 +68,7 @@ class RichTextParser$CustomImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.RichTextParser.CustomImageSpan
  * JD-Core Version:    0.7.0.1
  */

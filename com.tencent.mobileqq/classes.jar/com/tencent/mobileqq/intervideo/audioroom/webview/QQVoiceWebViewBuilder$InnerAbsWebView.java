@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bidf;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.AbsWebView;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
 
 class QQVoiceWebViewBuilder$InnerAbsWebView
-  extends bidf
+  extends AbsWebView
 {
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public QQVoiceWebViewBuilder$InnerAbsWebView(QQVoiceWebViewBuilder paramQQVoiceWebViewBuilder, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
@@ -78,7 +78,7 @@ class QQVoiceWebViewBuilder$InnerAbsWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.webview.QQVoiceWebViewBuilder.InnerAbsWebView
  * JD-Core Version:    0.7.0.1
  */

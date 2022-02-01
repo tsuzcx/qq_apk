@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import adtz;
-import cooperation.qqcircle.QCircleConfig;
-
-public class ConversationTitleBtnCtrl$8
+class ConversationTitleBtnCtrl$8
   implements Runnable
 {
-  public ConversationTitleBtnCtrl$8(adtz paramadtz) {}
+  ConversationTitleBtnCtrl$8(ConversationTitleBtnCtrl paramConversationTitleBtnCtrl) {}
   
   public void run()
   {
-    QCircleConfig.getInstance().tryGetSplashVideoAsync();
+    this.this$0.a(false);
+    if ((!ConversationTitleBtnCtrl.c(this.this$0)) && (!ConversationTitleBtnCtrl.d(this.this$0))) {
+      ConversationTitleBtnCtrl.a(this.this$0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationTitleBtnCtrl.8
  * JD-Core Version:    0.7.0.1
  */

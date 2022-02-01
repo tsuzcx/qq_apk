@@ -270,12 +270,12 @@ public class VideoPlayerProxy
           this.mPlayer.setLoopback(this.mVideoParam.mIsLoop, 0L, this.mVideoParam.mMaxPlayTimeMs);
           this.mPlayer.setOutputMute(this.mVideoParam.mIsMute);
           if (!this.mVideoParam.mIsLocal) {
-            break label251;
+            break label257;
           }
           if (this.mVideoParam.mVideoPath != null)
           {
             SuperPlayerVideoInfo localSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForUrl(this.mVideoParam.mVideoPath, this.mVideoParam.mVideoFormat, this.mVideoParam.mFileID);
-            this.mPlayer.openMediaPlayer(this.mContext, localSuperPlayerVideoInfo, 0L);
+            this.mPlayer.openMediaPlayer(this.mContext, localSuperPlayerVideoInfo, this.mVideoParam.mStartPlayPosMs);
             this.mVideoParam.mLastPlayPosMs = 0L;
             LogUtil.d(getLogTag(), 2, "openPlayer, videoPath = " + this.mVideoParam.mVideoPath);
           }
@@ -288,10 +288,10 @@ public class VideoPlayerProxy
         }
       }
       finally {}
-      label251:
+      label257:
       Object localObject2 = SuperPlayerFactory.createVideoInfoForUrl(this.mVideoParam.mUrls, this.mVideoParam.mVideoFormat, this.mVideoParam.mFileID, this.mVideoParam.mSavePath);
       ((SuperPlayerVideoInfo)localObject2).setCookies(this.mVideoParam.mCookies);
-      this.mPlayer.openMediaPlayer(this.mContext, (SuperPlayerVideoInfo)localObject2, 0L);
+      this.mPlayer.openMediaPlayer(this.mContext, (SuperPlayerVideoInfo)localObject2, this.mVideoParam.mStartPlayPosMs);
       this.mVideoParam.mLastPlayPosMs = 0L;
       if (LogUtil.isColorLevel())
       {
@@ -741,7 +741,7 @@ public class VideoPlayerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlayerProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import aoqc;
 import com.tencent.qphone.base.util.QLog;
 
-public class FileCleanManager$2
+class FileCleanManager$2
   implements Runnable
 {
-  public FileCleanManager$2(aoqc paramaoqc) {}
+  FileCleanManager$2(FileCleanManager paramFileCleanManager) {}
   
   public void run()
   {
-    aoqc.d(this.this$0);
-    aoqc.b(this.this$0, true);
+    FileCleanManager.d(this.this$0);
+    FileCleanManager.b(this.this$0, true);
     if (QLog.isColorLevel()) {
       QLog.e("FileCleanManager", 2, "load qq files finish");
     }
-    aoqc.c(this.this$0);
+    FileCleanManager.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.FileCleanManager.2
  * JD-Core Version:    0.7.0.1
  */

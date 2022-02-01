@@ -12,7 +12,7 @@ final class b
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (StringUtil.isEmpty(paramIntent.getAction())) {}
+    if (StringUtil.a(paramIntent.getAction())) {}
     while (a.a(this.a) == null) {
       return;
     }

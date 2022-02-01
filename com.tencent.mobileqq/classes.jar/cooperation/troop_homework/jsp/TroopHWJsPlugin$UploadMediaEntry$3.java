@@ -1,12 +1,11 @@
 package cooperation.troop_homework.jsp;
 
-import bmjg;
-import bmjq;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
 
-public class TroopHWJsPlugin$UploadMediaEntry$3
+class TroopHWJsPlugin$UploadMediaEntry$3
   implements Runnable
 {
-  public TroopHWJsPlugin$UploadMediaEntry$3(bmjq parambmjq) {}
+  TroopHWJsPlugin$UploadMediaEntry$3(TroopHWJsPlugin.UploadMediaEntry paramUploadMediaEntry) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class TroopHWJsPlugin$UploadMediaEntry$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.3
  * JD-Core Version:    0.7.0.1
  */

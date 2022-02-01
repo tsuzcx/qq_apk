@@ -1,6 +1,7 @@
 package com.tencent.biz.subscribe.utils;
 
 import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -15,7 +16,8 @@ final class EvilReportUtil$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    EvilReportUtil.access$000(this.val$context, this.val$reportParams, "Jbq0Dm55FudiaTa26UjP071XduhCyIKRYaK6MCcYzZA");
+    QLog.d("QCircleEvilReport", 1, "repose is failed jump to h5");
+    EvilReportUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizSubscribeUtilsEvilReportUtil$EvilReportParams, "Jbq0Dm55FudiaTa26UjP071XduhCyIKRYaK6MCcYzZA");
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
@@ -23,18 +25,20 @@ final class EvilReportUtil$1
     try
     {
       paramCall = new JSONObject(paramResponse.body().string()).optString("key");
-      EvilReportUtil.access$000(this.val$context, this.val$reportParams, paramCall);
+      QLog.d("QCircleEvilReport", 1, "response is success jump to h5");
+      EvilReportUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizSubscribeUtilsEvilReportUtil$EvilReportParams, paramCall);
       return;
     }
     catch (Throwable paramCall)
     {
+      QLog.d("QCircleEvilReport", 1, "response is failed" + paramCall);
       paramCall.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.EvilReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

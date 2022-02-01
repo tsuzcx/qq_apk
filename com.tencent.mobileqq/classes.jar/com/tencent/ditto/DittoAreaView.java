@@ -314,7 +314,7 @@ public class DittoAreaView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = paramCanvas.getSaveCount();
@@ -326,7 +326,7 @@ public class DittoAreaView
     paramCanvas.restoreToCount(i);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     try
     {
@@ -347,7 +347,7 @@ public class DittoAreaView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     for (;;)
     {
@@ -508,7 +508,7 @@ public class DittoAreaView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ditto.DittoAreaView
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ public final class mobile_auth_get_hb_rsp
 {
   static callback_info cache_hb_info = new callback_info();
   static Map<Long, String> cache_uin_nick = new HashMap();
-  public int auth_res;
-  public long channel;
+  public int auth_res = 0;
+  public long channel = 0L;
   public String encryp_key = "";
   public String err_msg = "";
-  public callback_info hb_info;
-  public int operate_type;
-  public Map<Long, String> uin_nick;
+  public callback_info hb_info = null;
+  public int operate_type = 0;
+  public Map<Long, String> uin_nick = null;
   
   static
   {

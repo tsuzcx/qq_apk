@@ -381,6 +381,23 @@ public class ViewDragHelper
     return paramInt1;
   }
   
+  private boolean handlePastSlop(int paramInt1, int paramInt2, View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      int i = paramView.getLeft();
+      paramInt1 = this.mCallback.clampViewPositionHorizontal(paramView, i + paramInt1, paramInt1);
+      int j = paramView.getTop();
+      paramInt2 = this.mCallback.clampViewPositionVertical(paramView, j + paramInt2, paramInt2);
+      int k = this.mCallback.getViewHorizontalDragRange(paramView);
+      int m = this.mCallback.getViewVerticalDragRange(paramView);
+      if (((k == 0) || ((k > 0) && (paramInt1 == i))) && ((m == 0) || ((m > 0) && (paramInt2 == j)))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   private void handleProcessDownEvent(MotionEvent paramMotionEvent)
   {
     float f1 = paramMotionEvent.getX();
@@ -533,17 +550,17 @@ public class ViewDragHelper
     if ((this.mInitialMotionX == null) || (this.mInitialMotionY == null)) {
       return;
     }
-    int k = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getPointerCount();
     int i = 0;
-    int m;
+    int k;
     float f3;
     float f4;
     View localView;
-    int j;
-    while (i < k)
+    boolean bool;
+    while (i < j)
     {
-      m = paramMotionEvent.getPointerId(i);
-      if (!isValidPointerForActionMove(m))
+      k = paramMotionEvent.getPointerId(i);
+      if (!isValidPointerForActionMove(k))
       {
         i += 1;
       }
@@ -551,27 +568,12 @@ public class ViewDragHelper
       {
         float f1 = paramMotionEvent.getX(i);
         float f2 = paramMotionEvent.getY(i);
-        f3 = f1 - this.mInitialMotionX[m];
-        f4 = f2 - this.mInitialMotionY[m];
+        f3 = f1 - this.mInitialMotionX[k];
+        f4 = f2 - this.mInitialMotionY[k];
         localView = findTopChildUnder((int)f1, (int)f2);
-        if ((localView == null) || (!checkTouchSlop(localView, f3, f4))) {
-          break label253;
-        }
-        j = 1;
-        label124:
-        if (j == 0) {
-          break label259;
-        }
-        int n = localView.getLeft();
-        int i1 = (int)f3;
-        i1 = this.mCallback.clampViewPositionHorizontal(localView, i1 + n, (int)f3);
-        int i2 = localView.getTop();
-        int i3 = (int)f4;
-        i3 = this.mCallback.clampViewPositionVertical(localView, i3 + i2, (int)f4);
-        int i4 = this.mCallback.getViewHorizontalDragRange(localView);
-        int i5 = this.mCallback.getViewVerticalDragRange(localView);
-        if (((i4 != 0) && ((i4 <= 0) || (i1 != n))) || ((i5 != 0) && ((i5 <= 0) || (i3 != i2)))) {
-          break label259;
+        bool = checkTouchSlop(localView, f3, f4);
+        if (!handlePastSlop((int)f3, (int)f4, localView, bool)) {
+          break label138;
         }
       }
     }
@@ -579,13 +581,10 @@ public class ViewDragHelper
     {
       saveLastMotion(paramMotionEvent);
       return;
-      label253:
-      j = 0;
-      break label124;
-      label259:
-      reportNewEdgeDrags(f3, f4, m);
+      label138:
+      reportNewEdgeDrags(f3, f4, k);
       if (this.mDragState != 1) {
-        if ((j == 0) || (!tryCaptureViewForDrag(localView, m))) {
+        if ((!bool) || (!tryCaptureViewForDrag(localView, k))) {
           break;
         }
       }
@@ -1116,7 +1115,7 @@ public class ViewDragHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.swipe.ViewDragHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package cooperation.qzone;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.support.v4.app.FragmentActivity;
-import assp;
+import com.tencent.mobileqq.extendfriend.utils.CampusHelper;
 
 final class QZoneNavigateToQQTransparentFragment$3
   implements DialogInterface.OnClickListener
@@ -13,19 +13,19 @@ final class QZoneNavigateToQQTransparentFragment$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (this.val$hasWriteSchoolName) {
-      assp.a(this.val$activity, this.val$idx, this.val$schoolName, this.val$schoolID);
+      CampusHelper.a(this.val$activity, this.val$idx, this.val$schoolName, this.val$schoolID);
     }
     for (;;)
     {
       paramDialogInterface.dismiss();
       return;
-      assp.a(this.val$activity, this.val$schoolName);
+      CampusHelper.a(this.val$activity, this.val$schoolName);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneNavigateToQQTransparentFragment.3
  * JD-Core Version:    0.7.0.1
  */

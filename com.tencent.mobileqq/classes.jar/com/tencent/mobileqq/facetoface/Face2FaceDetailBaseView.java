@@ -17,9 +17,6 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import asxe;
-import asxf;
-import asxg;
 import com.tencent.mobileqq.utils.StackBlur;
 import com.tencent.qphone.base.util.QLog;
 
@@ -31,14 +28,14 @@ public abstract class Face2FaceDetailBaseView
   long a;
   protected Canvas a;
   protected View a;
-  public asxg a;
-  public Face2FaceFriendBubbleView a;
+  protected Face2FaceDetailBaseView.IFace2faceContext a;
+  protected Face2FaceFriendBubbleView a;
   protected boolean a;
   protected final int b;
   protected View b;
   private boolean b;
   protected final int c;
-  public View c;
+  protected View c;
   protected View d;
   protected View e;
   
@@ -46,10 +43,12 @@ public abstract class Face2FaceDetailBaseView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Float = 1.5F;
+    this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 8;
     this.jdField_c_of_type_Int = 10;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
     d();
   }
   
@@ -80,7 +79,7 @@ public abstract class Face2FaceDetailBaseView
   private void d()
   {
     this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-    this.jdField_a_of_type_Int = 2130840141;
+    this.jdField_a_of_type_Int = 2130840232;
   }
   
   public View a()
@@ -106,7 +105,7 @@ public abstract class Face2FaceDetailBaseView
         localBitmap.recycle();
       }
       long l4 = System.currentTimeMillis();
-      StackBlur.fastblur(paramView, 8);
+      StackBlur.a(paramView, 8);
       long l5 = System.currentTimeMillis();
       if (paramView != null) {
         this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable(new BitmapDrawable(getResources(), paramView));
@@ -140,7 +139,7 @@ public abstract class Face2FaceDetailBaseView
   public void a(View paramView, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView)
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Asxg.a();
+    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceDetailBaseView$IFace2faceContext.a();
     this.d = paramView;
     this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView = paramFace2FaceFriendBubbleView;
     a(this.d);
@@ -159,8 +158,8 @@ public abstract class Face2FaceDetailBaseView
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidViewView.clearAnimation();
     setVisibility(0);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367377);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367378);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367564);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367565);
     int i = this.jdField_a_of_type_AndroidViewView.getLeft();
     int j = ((View)localObject1).getLeft();
     int k = ((View)localObject2).getLeft();
@@ -174,7 +173,7 @@ public abstract class Face2FaceDetailBaseView
     localObject2 = new AlphaAnimation(0.0F, 1.0F);
     ((AlphaAnimation)localObject2).setDuration(200L);
     ((AlphaAnimation)localObject2).setStartOffset(150L);
-    ((AlphaAnimation)localObject2).setAnimationListener(new asxe(this));
+    ((AlphaAnimation)localObject2).setAnimationListener(new Face2FaceDetailBaseView.1(this));
     AlphaAnimation localAlphaAnimation1 = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation1.setDuration(150L);
     localAlphaAnimation1.setStartOffset(350L);
@@ -208,8 +207,8 @@ public abstract class Face2FaceDetailBaseView
     }
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Boolean = false;
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367377);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367378);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367564);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367565);
     int i = this.jdField_a_of_type_AndroidViewView.getLeft();
     int j = ((View)localObject1).getLeft();
     int k = ((View)localObject2).getLeft();
@@ -220,8 +219,8 @@ public abstract class Face2FaceDetailBaseView
     int i3 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.getTop();
     float f = ((View)localObject1).getWidth() * 1.0F / this.jdField_a_of_type_AndroidViewView.getWidth();
     localObject1 = b(i - (j + k + m), n - (i2 + i1 + i3), f, f);
-    this.jdField_a_of_type_Asxg.c();
-    ((AnimationSet)localObject1).setAnimationListener(new asxf(this));
+    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceDetailBaseView$IFace2faceContext.c();
+    ((AnimationSet)localObject1).setAnimationListener(new Face2FaceDetailBaseView.2(this));
     localObject2 = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject2).setDuration(200L);
     ((AlphaAnimation)localObject2).setFillAfter(true);
@@ -237,7 +236,7 @@ public abstract class Face2FaceDetailBaseView
     this.e.startAnimation(localAlphaAnimation2);
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
     a();
@@ -245,14 +244,14 @@ public abstract class Face2FaceDetailBaseView
     addView(this.jdField_c_of_type_AndroidViewView, 0, new RelativeLayout.LayoutParams(-1, -1));
   }
   
-  public void setInfc(asxg paramasxg)
+  public void setInfc(Face2FaceDetailBaseView.IFace2faceContext paramIFace2faceContext)
   {
-    this.jdField_a_of_type_Asxg = paramasxg;
+    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceDetailBaseView$IFace2faceContext = paramIFace2faceContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView
  * JD-Core Version:    0.7.0.1
  */

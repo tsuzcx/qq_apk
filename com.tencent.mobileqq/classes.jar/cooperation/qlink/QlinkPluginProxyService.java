@@ -2,10 +2,10 @@ package cooperation.qlink;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import blvy;
-import blwh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.plugin.PluginInfo;
 import mqq.app.AppRuntime;
 
@@ -17,20 +17,20 @@ public class QlinkPluginProxyService
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QlinkPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
     localIntent.putExtra("userQqResources", 2);
-    blwh localblwh = new blwh(0);
-    localblwh.b = QlinkPluginProxyActivity.a();
-    localblwh.d = PluginInfo.c;
-    localblwh.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localblwh.e = "com.tencent.qlink.service.QlinkService";
-    localblwh.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localblwh.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.b = QlinkPluginProxyActivity.a();
+    localPluginParams.e = PluginInfo.c;
+    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localPluginParams.f = "com.tencent.qlink.service.QlinkService";
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
     QLog.d("QLinkLog", 4, "Bind Qlink Service");
-    blvy.c(paramAppRuntime.getApplication(), localblwh);
+    IPluginManager.c(paramAppRuntime.getApplication(), localPluginParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qlink.QlinkPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

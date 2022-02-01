@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atni;
-
-public class OnlineFileSessionCenter$3
+class OnlineFileSessionCenter$3
   implements Runnable
 {
-  public OnlineFileSessionCenter$3(atni paramatni, int paramInt) {}
+  OnlineFileSessionCenter$3(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt) {}
   
   public void run()
   {

@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.dating;
 
-import algc;
-import arxn;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 
-public class BaseMsgBoxActivity$1$1
+class BaseMsgBoxActivity$1$1
   implements Runnable
 {
-  public BaseMsgBoxActivity$1$1(arxn paramarxn, boolean paramBoolean, String paramString) {}
+  BaseMsgBoxActivity$1$1(BaseMsgBoxActivity.1 param1, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Arxn.a.jdField_a_of_type_Algc != null)) {
-      this.jdField_a_of_type_Arxn.a.jdField_a_of_type_Algc.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arxn.a.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$1.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$1.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$1.a.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

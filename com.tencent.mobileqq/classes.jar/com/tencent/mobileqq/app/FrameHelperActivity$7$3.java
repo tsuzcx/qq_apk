@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import bkxw;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.util.DrawerCoverUtil;
 
 class FrameHelperActivity$7$3
   implements Runnable
@@ -12,14 +12,14 @@ class FrameHelperActivity$7$3
   {
     if (FrameHelperActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$7.this$0) >= 0)
     {
-      bkxw.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$7.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
+      DrawerCoverUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$7.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
       FrameHelperActivity.c(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$7.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.7.3
  * JD-Core Version:    0.7.0.1
  */

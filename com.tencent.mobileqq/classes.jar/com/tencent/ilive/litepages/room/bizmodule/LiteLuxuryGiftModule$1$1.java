@@ -1,0 +1,27 @@
+package com.tencent.ilive.litepages.room.bizmodule;
+
+import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.OnQueryLGInfoListener;
+import com.tencent.ilivesdk.giftservice_interface.GiftServiceInterface.OnQueryGiftInfoCallback;
+import com.tencent.ilivesdk.giftservice_interface.model.GiftInfo;
+
+class LiteLuxuryGiftModule$1$1
+  implements GiftServiceInterface.OnQueryGiftInfoCallback
+{
+  LiteLuxuryGiftModule$1$1(LiteLuxuryGiftModule.1 param1, OnQueryLGInfoListener paramOnQueryLGInfoListener) {}
+  
+  public void onFail(int paramInt, String paramString) {}
+  
+  public void onGetGiftInfo(GiftInfo paramGiftInfo)
+  {
+    paramGiftInfo = LiteLuxuryGiftModule.access$600(this.this$1.this$0, paramGiftInfo);
+    if (this.val$onQueryLGInfoLIstener != null) {
+      this.val$onQueryLGInfoLIstener.onGetLuxuryGiftInfo(paramGiftInfo);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule.1.1
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.push.RIJMergeKanDianMessage;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.List;
-import prr;
-import pwb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import uuc;
 
-public final class ReadinjoySPEventReport$17
+final class ReadinjoySPEventReport$17
   implements Runnable
 {
-  public ReadinjoySPEventReport$17(int paramInt) {}
+  ReadinjoySPEventReport$17(int paramInt) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public final class ReadinjoySPEventReport$17
       int i;
       try
       {
-        if (!pwb.b(61)) {
+        if (!ReadinjoySPEventReport.b(61)) {
           return;
         }
         j = -1;
@@ -36,17 +36,17 @@ public final class ReadinjoySPEventReport$17
         {
           localObject1 = (SplashActivity)localObject1;
           i = j;
-          if (SplashActivity.a == 1)
+          if (SplashActivity.currentFragment == 1)
           {
-            i = ((SplashActivity)localObject1).a();
-            if (i != MainFragment.h) {
-              break label266;
+            i = ((SplashActivity)localObject1).getCurrentTab();
+            if (i != FrameControllerUtil.g) {
+              break label276;
             }
             i = 3;
           }
         }
         if (this.a != 22) {
-          break label302;
+          break label312;
         }
         j = 1;
         Object localObject2 = new oidb_cmd0x80a.AttributeList();
@@ -60,7 +60,7 @@ public final class ReadinjoySPEventReport$17
         localObject1 = new ArrayList();
         ((List)localObject1).add(localObject2);
         ((List)localObject1).add(localAttributeList);
-        localObject2 = prr.a(1008);
+        localObject2 = RIJMergeKanDianMessage.a(1008);
         if ((i == 1) && (!TextUtils.isEmpty((CharSequence)localObject2)))
         {
           localAttributeList = new oidb_cmd0x80a.AttributeList();
@@ -69,7 +69,7 @@ public final class ReadinjoySPEventReport$17
           localAttributeList.att_value.set((String)localObject2);
           ((List)localObject1).add(localAttributeList);
         }
-        uuc.a(61, (List)localObject1);
+        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPushEffectEvent(61, (List)localObject1);
         return;
       }
       catch (Throwable localThrowable)
@@ -77,20 +77,20 @@ public final class ReadinjoySPEventReport$17
         localThrowable.fillInStackTrace();
         return;
       }
-      label266:
-      if (i == MainFragment.d)
+      label276:
+      if (i == FrameControllerUtil.c)
       {
         i = 2;
       }
-      else if (i == MainFragment.b)
+      else if (i == FrameControllerUtil.a)
       {
         i = 1;
       }
-      else if (i == MainFragment.e)
+      else if (i == FrameControllerUtil.d)
       {
         i = 4;
         continue;
-        label302:
+        label312:
         if (this.a == 23)
         {
           j = 2;
@@ -114,7 +114,7 @@ public final class ReadinjoySPEventReport$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.17
  * JD-Core Version:    0.7.0.1
  */

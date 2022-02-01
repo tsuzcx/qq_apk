@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -17,15 +18,11 @@ import java.util.Iterator;
 public class WXPayHelper
   implements IWXAPIEventHandler
 {
-  private static WXPayHelper jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper;
+  private static WXPayHelper jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper = null;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication().getApplicationContext(), "wxf0a80d0ac2e82aa7", true);
+  private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication().getApplicationContext(), this.jdField_a_of_type_JavaLangString, true);
+  private String jdField_a_of_type_JavaLangString = "wx76a769350165bcff";
   private ArrayList<Handler> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-  
-  private WXPayHelper()
-  {
-    registerApp();
-  }
   
   public static WXPayHelper getInstance()
   {
@@ -103,6 +100,11 @@ public class WXPayHelper
     this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.registerApp("wxf0a80d0ac2e82aa7");
   }
   
+  public void registerApp(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.registerApp(paramString);
+  }
+  
   public void removeObserver(Handler paramHandler)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
@@ -117,7 +119,12 @@ public class WXPayHelper
   public void sendReq(Bundle paramBundle)
   {
     PayReq localPayReq = new PayReq();
-    localPayReq.appId = "wxf0a80d0ac2e82aa7";
+    String str2 = paramBundle.getString("appid");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "wxf0a80d0ac2e82aa7";
+    }
+    localPayReq.appId = str1;
     localPayReq.partnerId = paramBundle.getString("partnerid");
     localPayReq.prepayId = paramBundle.getString("prepayid");
     localPayReq.nonceStr = paramBundle.getString("noncestr");
@@ -134,7 +141,7 @@ public class WXPayHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.WXPayHelper
  * JD-Core Version:    0.7.0.1
  */

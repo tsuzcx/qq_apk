@@ -1,6 +1,5 @@
 package cooperation.qlink;
 
-import Override;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -10,14 +9,14 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anvx;
-import bisl;
-import blvy;
-import blwh;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.plugin.PluginInfo;
 import java.util.Iterator;
 import java.util.List;
@@ -40,21 +39,21 @@ public class QlinkPluginProxyActivity
     return paramIntent.getStringExtra("qlink_plugin_activity_name");
   }
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, bisl parambisl)
+  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, QQProgressDialog paramQQProgressDialog)
   {
     paramIntent.putExtra("userQqResources", 2);
-    blwh localblwh = new blwh(0);
-    localblwh.jdField_b_of_type_JavaLangString = "qlink_plugin.apk";
-    localblwh.d = PluginInfo.c;
-    localblwh.jdField_a_of_type_JavaLangString = paramString;
-    localblwh.e = a(paramIntent);
-    localblwh.jdField_a_of_type_JavaLangClass = QlinkPluginProxyActivity.class;
-    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localblwh.jdField_b_of_type_Int = paramInt;
-    localblwh.jdField_a_of_type_AndroidAppDialog = parambisl;
-    localblwh.c = 10000;
-    localblwh.f = null;
-    blvy.a(paramActivity, localblwh);
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.b = "qlink_plugin.apk";
+    localPluginParams.e = PluginInfo.c;
+    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
+    localPluginParams.f = a(paramIntent);
+    localPluginParams.jdField_a_of_type_JavaLangClass = QlinkPluginProxyActivity.class;
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localPluginParams.c = paramInt;
+    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramQQProgressDialog;
+    localPluginParams.d = 10000;
+    localPluginParams.g = null;
+    IPluginManager.a(paramActivity, localPluginParams);
   }
   
   public static void a(Intent paramIntent, String paramString)
@@ -112,7 +111,7 @@ public class QlinkPluginProxyActivity
     for (;;)
     {
       paramBundle = paramBundle.getString("pluginsdk_launchActivity");
-      StringBuffer localStringBuffer = new StringBuffer(anvx.a(2131709343));
+      StringBuffer localStringBuffer = new StringBuffer(HardCodeUtil.a(2131709859));
       localStringBuffer.append(paramBundle).append(" ").append(this.mCreateErrorInfo);
       QLog.e("QLinkLog", 1, localStringBuffer.toString());
       return;
@@ -123,7 +122,7 @@ public class QlinkPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qlink.QlinkPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,8 @@ package com.tencent.mobileqq.transfile;
 import android.annotation.TargetApi;
 import android.net.SSLCertificateSocketFactory;
 import android.os.Build.VERSION;
+import com.tencent.mobileqq.qqutils.api.IQQUtilsApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
@@ -52,13 +54,14 @@ public class TlsSniSocketFactory
     }
     paramSocket = (SSLSocket)this.sslSocketFactory.createSocket(paramSocket, paramString, paramInt, paramBoolean);
     paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-    int i = 10;
+    int i;
     if (Build.VERSION.SDK_INT >= 17)
     {
       if (QLog.isColorLevel()) {
         QLog.i("SNISocketFactory", 2, "Setting SNI hostname");
       }
       this.sslSocketFactory.setHostname(paramSocket, paramString);
+      i = 10;
     }
     for (;;)
     {
@@ -66,33 +69,29 @@ public class TlsSniSocketFactory
       if (HOSTNAME_VERIFIER.verify(paramString, localSSLSession)) {
         break;
       }
-      HttpDownloader.reportHttpsSniMethod(i + 4, paramString, paramInt, this.mBusiness);
+      ((IQQUtilsApi)QRoute.api(IQQUtilsApi.class)).reportHttpsSniMethod(i + 4, paramString, paramInt, this.mBusiness);
       paramSocket.close();
       throw new SSLPeerUnverifiedException("Cannot verify hostname: " + paramString);
       if (QLog.isColorLevel()) {
         QLog.i("SNISocketFactory", 2, "No documented SNI support on Android <4.2, trying with reflection");
       }
-      i = 20;
-      int j;
       try
       {
         paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { paramString });
+        i = 20;
       }
       catch (Exception localException)
       {
-        j = 30;
-        i = j;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("SNISocketFactory", 2, "SNI not useable");
-        i = j;
+        if (QLog.isColorLevel()) {
+          QLog.i("SNISocketFactory", 2, "SNI not useable");
+        }
+        i = 30;
       }
     }
     if (QLog.isColorLevel()) {
       QLog.i("SNISocketFactory", 2, "Established " + localException.getProtocol() + " connection with " + localException.getPeerHost() + " using " + localException.getCipherSuite());
     }
-    HttpDownloader.reportHttpsSniMethod(i, paramString, paramInt, this.mBusiness);
+    ((IQQUtilsApi)QRoute.api(IQQUtilsApi.class)).reportHttpsSniMethod(i, paramString, paramInt, this.mBusiness);
     return paramSocket;
   }
   

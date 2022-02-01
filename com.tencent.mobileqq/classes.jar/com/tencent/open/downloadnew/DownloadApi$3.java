@@ -1,21 +1,20 @@
 package com.tencent.open.downloadnew;
 
 import android.os.Bundle;
-import bjnn;
 
-public final class DownloadApi$3
+final class DownloadApi$3
   implements Runnable
 {
-  public DownloadApi$3(Bundle paramBundle) {}
+  DownloadApi$3(Bundle paramBundle) {}
   
   public void run()
   {
-    bjnn.a().b(this.a);
+    MyAppApi.a().b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.3
  * JD-Core Version:    0.7.0.1
  */

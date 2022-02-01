@@ -1,33 +1,30 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import bhhr;
-import bjkj;
-import bjko;
-import bjmt;
-import bjnn;
-import bjny;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.open.base.APNUtil;
+import com.tencent.open.base.LogUtility;
 import mqq.os.MqqHandler;
 
-public class MyAppApi$17
+class MyAppApi$17
   implements Runnable
 {
-  public MyAppApi$17(bjnn parambjnn, Activity paramActivity, String paramString) {}
+  MyAppApi$17(MyAppApi paramMyAppApi, Activity paramActivity, String paramString) {}
   
   public void run()
   {
-    bjko.c("MyAppApi", "---isAutoInstall:" + bjmt.c() + " url:" + bjmt.a() + " interval:" + bjmt.a());
-    if ((bjkj.b(this.jdField_a_of_type_AndroidAppActivity)) && (bjkj.c(this.jdField_a_of_type_AndroidAppActivity)))
+    LogUtility.c("MyAppApi", "---isAutoInstall:" + ControlPolicyUtil.c() + " url:" + ControlPolicyUtil.a() + " interval:" + ControlPolicyUtil.a());
+    if ((APNUtil.b(this.jdField_a_of_type_AndroidAppActivity)) && (APNUtil.c(this.jdField_a_of_type_AndroidAppActivity)))
     {
-      boolean bool1 = bjmt.b();
-      boolean bool2 = bjmt.j();
-      String str = bhhr.k(this.jdField_a_of_type_AndroidAppActivity, "wifiAutoPreDown");
+      boolean bool1 = ControlPolicyUtil.b();
+      boolean bool2 = ControlPolicyUtil.j();
+      String str = SharedPreUtils.k(this.jdField_a_of_type_AndroidAppActivity, "wifiAutoPreDown");
       if ((!this.this$0.b()) && (bool1) && (bool2) && ("true".equals(str)))
       {
         ThreadManager.getUIHandler().post(new MyAppApi.17.1(this));
-        bjko.c("MyAppApi", "---startDownloadYYB---");
-        this.this$0.a = new bjny(this.this$0);
+        LogUtility.c("MyAppApi", "---startDownloadYYB---");
+        this.this$0.a = new MyAppApi.InstallParams(this.this$0);
         this.this$0.a.jdField_a_of_type_Boolean = true;
         this.this$0.a.b = false;
         this.this$0.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
@@ -40,7 +37,7 @@ public class MyAppApi$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.17
  * JD-Core Version:    0.7.0.1
  */

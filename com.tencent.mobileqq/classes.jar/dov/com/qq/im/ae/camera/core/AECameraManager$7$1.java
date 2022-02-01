@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.camera.core;
 
-import alsn;
 import android.graphics.Rect;
-import bdbf;
-import bdbk;
+import com.tencent.mobileqq.activity.richmedia.Size;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraAutoFocusCallBack;
 
 class AECameraManager$7$1
-  implements bdbk
+  implements CameraProxy.CameraAutoFocusCallBack
 {
   AECameraManager$7$1(AECameraManager.7 param7) {}
   
@@ -17,7 +17,7 @@ class AECameraManager$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraManager.7.1
  * JD-Core Version:    0.7.0.1
  */

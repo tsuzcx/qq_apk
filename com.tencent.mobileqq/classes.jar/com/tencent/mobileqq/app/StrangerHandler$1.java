@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.app;
 
-import aoeb;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Stranger;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StrangerHandler$1
+class StrangerHandler$1
   implements Runnable
 {
-  public StrangerHandler$1(aoeb paramaoeb) {}
+  StrangerHandler$1(StrangerHandler paramStrangerHandler) {}
   
   public void run()
   {
-    Object localObject = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    Object localObject = StrangerHandler.a(this.this$0).getEntityManagerFactory().createEntityManager();
     List localList = ((EntityManager)localObject).query(Stranger.class);
     ((EntityManager)localObject).close();
     localObject = localList;
@@ -26,7 +25,7 @@ public class StrangerHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.StrangerHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.friends.intimate;
 
 import android.app.Activity;
-import auzq;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class MiniGamePlayTogetherHandler$1$1
+class MiniGamePlayTogetherHandler$1$1
   implements Runnable
 {
-  public MiniGamePlayTogetherHandler$1$1(auzq paramauzq, Activity paramActivity, String paramString) {}
+  MiniGamePlayTogetherHandler$1$1(MiniGamePlayTogetherHandler.1 param1, Activity paramActivity, String paramString) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class MiniGamePlayTogetherHandler$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.MiniGamePlayTogetherHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

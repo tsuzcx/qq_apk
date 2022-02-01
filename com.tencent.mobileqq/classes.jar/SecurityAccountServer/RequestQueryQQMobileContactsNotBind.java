@@ -8,11 +8,11 @@ public final class RequestQueryQQMobileContactsNotBind
   extends JceStruct
 {
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public boolean Compressd;
+  public boolean Compressd = false;
   public String MobileUniqueNo = "";
-  public long nextFlag;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   
   static
   {

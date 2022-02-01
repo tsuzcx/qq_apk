@@ -1,29 +1,39 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahit;
-import ahjb;
 import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceReportUtil;
 import com.tencent.mobileqq.util.DisplayUtil;
 
-public class TextItemBuilder$3
+class TextItemBuilder$3
   implements Runnable
 {
-  public TextItemBuilder$3(ahit paramahit, ahjb paramahjb, ChatMessage paramChatMessage1, ChatMessage paramChatMessage2) {}
+  TextItemBuilder$3(TextItemBuilder paramTextItemBuilder, TextItemBuilder.Holder paramHolder, ChatMessage paramChatMessage1, ChatMessage paramChatMessage2) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Ahjb.jdField_a_of_type_AndroidViewView.getMeasuredWidth() < DisplayUtil.dip2px(this.this$0.a, 70.0F)) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend()))
-    {
-      ahit.a(this.this$0, this.jdField_a_of_type_Ahjb.d);
-      return;
+    String str = null;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_AndroidViewView.getMeasuredWidth() < DisplayUtil.a(this.this$0.jdField_a_of_type_AndroidContentContext, 70.0F)) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend())) {
+      TextItemBuilder.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d);
     }
-    this.this$0.a(this.jdField_a_of_type_Ahjb.d, this.jdField_a_of_type_Ahjb.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, null, this.b, 0, null);
+    for (;;)
+    {
+      QQAppInterface localQQAppInterface = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d;
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        str = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      }
+      TroopEssenceReportUtil.a(localQQAppInterface, localView, str);
+      return;
+      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, null, this.b, 0, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

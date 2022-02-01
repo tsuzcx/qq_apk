@@ -9,9 +9,9 @@ public final class HostGetLikeRsp
 {
   static CommRsp cache_errInfo = new CommRsp();
   public boolean canLike = true;
-  public CommRsp errInfo;
+  public CommRsp errInfo = null;
   public boolean hasLiked = true;
-  public long iTotal;
+  public long iTotal = 0L;
   
   public HostGetLikeRsp() {}
   

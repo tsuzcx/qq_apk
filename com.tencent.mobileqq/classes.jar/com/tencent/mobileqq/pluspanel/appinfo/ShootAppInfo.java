@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import abgm;
-import aftr;
-import ahvi;
-import aifq;
-import bdfk;
-import bdla;
-import bdvn;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.RobotChatPie;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import nty;
 
 public class ShootAppInfo
   extends PlusPanelAppInfo
 {
-  public ShootAppInfo() {}
+  ShootAppInfo() {}
   
   public ShootAppInfo(int paramInt)
   {
@@ -28,7 +28,7 @@ public class ShootAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839197;
+    return 2130839266;
   }
   
   public int getAppID()
@@ -57,47 +57,47 @@ public class ShootAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690792);
+    return BaseApplicationImpl.getContext().getString(2131690897);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if ((bdfk.b()) || ((paramBaseChatPie instanceof aifq)) || (bdvn.a()))
+    if ((SimpleUIUtil.a()) || ((paramBaseChatPie instanceof RobotChatPie)) || (StudyModeManager.a()))
     {
-      paramBaseChatPie.onPanelIconClick(Integer.valueOf(6));
+      paramBaseChatPie.a(Integer.valueOf(6));
       if (QLog.isColorLevel()) {
         QLog.d("ShootAppInfo", 2, "pluspanel onclick called with plus from simple!");
       }
-      if (bdfk.b()) {
-        bdla.b(null, "dc00898", "", "", "0X800A114", "0X800A114", 0, 0, "", "", "", "");
+      if (SimpleUIUtil.a()) {
+        ReportController.b(null, "dc00898", "", "", "0X800A114", "0X800A114", 0, 0, "", "", "", "");
       }
-      if ((paramBaseChatPie instanceof aifq)) {
-        bdla.b(null, "dc00898", "", "", "0X800A488", "0X800A488", 0, 0, "", "", "", "");
+      if ((paramBaseChatPie instanceof RobotChatPie)) {
+        ReportController.b(null, "dc00898", "", "", "0X800A488", "0X800A488", 0, 0, "", "", "", "");
       }
       return;
     }
     int i = 0;
-    if (paramSessionInfo.curType == 9501) {}
+    if (paramSessionInfo.jdField_a_of_type_Int == 9501) {}
     for (;;)
     {
       try
       {
-        paramahvi = abgm.a(paramBaseChatPie.app, Long.parseLong(paramSessionInfo.curFriendUin));
-        if (paramahvi != null) {
-          i = paramahvi.productId;
+        paramPlusPanelViewModel = SmartDeviceProxyMgr.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString));
+        if (paramPlusPanelViewModel != null) {
+          i = paramPlusPanelViewModel.productId;
         }
-        paramahvi = paramBaseChatPie.app;
-        aftr.a(paramahvi, paramBaseChatPie.mActivity, paramBaseChatPie.getActivity(), paramSessionInfo, i, 0);
-        bdla.b(paramahvi, "CliOper", "", "", "0X800407A", "0X800407A", 0, 0, "", "", "", "");
-        if (!nty.a().a(paramSessionInfo.curFriendUin)) {
+        paramPlusPanelViewModel = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        PlusPanelUtils.a(paramPlusPanelViewModel, paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBaseChatPie.a(), paramSessionInfo, i, 0);
+        ReportController.b(paramPlusPanelViewModel, "CliOper", "", "", "0X800407A", "0X800407A", 0, 0, "", "", "", "");
+        if (!AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
           break;
         }
-        bdla.b(paramahvi, "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_shoot", 0, 0, paramSessionInfo.curFriendUin, "", "", "");
+        ReportController.b(paramPlusPanelViewModel, "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_shoot", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
         return;
       }
-      catch (Exception paramahvi)
+      catch (Exception paramPlusPanelViewModel)
       {
-        QLog.d("ShootAppInfo", 1, paramahvi, new Object[0]);
+        QLog.d("ShootAppInfo", 1, paramPlusPanelViewModel, new Object[0]);
       }
       i = 0;
     }

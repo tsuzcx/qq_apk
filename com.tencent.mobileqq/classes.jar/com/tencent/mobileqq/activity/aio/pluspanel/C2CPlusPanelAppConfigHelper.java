@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.aio.pluspanel;
 
 import android.util.SparseIntArray;
-import aqwt;
-import aqxe;
-import azly;
-import bdfk;
-import bdvn;
+import com.tencent.mobileqq.config.IQConfigProcessor;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.pluspanel.AIOPlusPanelAppInfoOrderConfigProcessor.Config;
 import com.tencent.mobileqq.pluspanel.appinfo.AVGameAppInfo;
 import com.tencent.mobileqq.pluspanel.appinfo.ArkAppManagerAppInfo;
 import com.tencent.mobileqq.pluspanel.appinfo.ArkSampleAppInfo;
@@ -33,6 +31,8 @@ import com.tencent.mobileqq.pluspanel.appinfo.TransferAppInfo;
 import com.tencent.mobileqq.pluspanel.appinfo.TroopDingYueAppInfo;
 import com.tencent.mobileqq.pluspanel.appinfo.TroopTouPiaoAppInfo;
 import com.tencent.mobileqq.pluspanel.appinfo.VideoCallAppInfo;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
+import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,23 +54,23 @@ public enum C2CPlusPanelAppConfigHelper
     try
     {
       Object localObject;
-      if (bdvn.a())
+      if (StudyModeManager.a())
       {
-        localObject = (azly)aqxe.a().a(611);
+        localObject = (AIOPlusPanelAppInfoOrderConfigProcessor.Config)QConfigManager.a().a(611);
         if (localObject != null) {
-          return ((azly)localObject).a;
+          return ((AIOPlusPanelAppInfoOrderConfigProcessor.Config)localObject).a;
         }
       }
       else
       {
-        boolean bool = bdfk.b();
-        localObject = (azly)aqxe.a().a(495);
+        boolean bool = SimpleUIUtil.a();
+        localObject = (AIOPlusPanelAppInfoOrderConfigProcessor.Config)QConfigManager.a().a(495);
         if (localObject != null)
         {
           if (bool) {
-            return ((azly)localObject).b;
+            return ((AIOPlusPanelAppInfoOrderConfigProcessor.Config)localObject).b;
           }
-          localObject = ((azly)localObject).a;
+          localObject = ((AIOPlusPanelAppInfoOrderConfigProcessor.Config)localObject).a;
           return localObject;
         }
       }
@@ -106,7 +106,7 @@ public enum C2CPlusPanelAppConfigHelper
     }
   }
   
-  public aqwt genProcess(int paramInt)
+  public IQConfigProcessor genProcess(int paramInt)
   {
     PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.entities;
     int j = arrayOfPlusPanelAppInfo.length;
@@ -152,7 +152,7 @@ public enum C2CPlusPanelAppConfigHelper
         {
           Object localObject2 = localObject1[i];
           if ((localObject2 != null) && (localObject2.getManageConfigID() > 0)) {
-            aqxe.a().a(localObject2.getManageConfigID());
+            QConfigManager.a().a(localObject2.getManageConfigID());
           }
         }
         else
@@ -244,7 +244,7 @@ public enum C2CPlusPanelAppConfigHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.C2CPlusPanelAppConfigHelper
  * JD-Core Version:    0.7.0.1
  */

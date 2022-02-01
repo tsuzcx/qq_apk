@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.recent.config.menu;
 
-import com.tencent.mobileqq.activity.recent.config.IRecentProcessor;
+import com.tencent.mobileqq.activity.recent.config.IRecentBaseDataProcessor;
 
 public abstract class AbsMenuFlag
-  implements IRecentProcessor
+  implements IRecentBaseDataProcessor
 {
-  public int compareTo(IRecentProcessor paramIRecentProcessor)
+  public int a()
   {
     return 0;
   }
   
-  public int priority()
+  public int a(IRecentBaseDataProcessor paramIRecentBaseDataProcessor)
   {
     return 0;
   }

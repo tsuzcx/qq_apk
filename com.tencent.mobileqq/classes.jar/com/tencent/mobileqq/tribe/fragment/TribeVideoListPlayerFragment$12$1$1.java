@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.view.View;
-import beso;
 
 class TribeVideoListPlayerFragment$12$1$1
   implements Runnable

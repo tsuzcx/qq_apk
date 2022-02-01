@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import ajqj;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -16,7 +15,7 @@ class FaceUnblockCameraJsApiPlugin$2$1
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("retCode", 0);
       localJSONObject.put("base64", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFaceunlockFaceUnblockCameraJsApiPlugin$2.this$0.callJs(ajqj.a(this.jdField_a_of_type_ComTencentMobileqqActivityFaceunlockFaceUnblockCameraJsApiPlugin$2.this$0), new String[] { localJSONObject.toString() });
+      this.jdField_a_of_type_ComTencentMobileqqActivityFaceunlockFaceUnblockCameraJsApiPlugin$2.this$0.callJs(FaceUnblockCameraJsApiPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityFaceunlockFaceUnblockCameraJsApiPlugin$2.this$0), new String[] { localJSONObject.toString() });
       return;
     }
     catch (Exception localException)
@@ -27,7 +26,7 @@ class FaceUnblockCameraJsApiPlugin$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.faceunlock.FaceUnblockCameraJsApiPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

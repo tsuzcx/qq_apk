@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ayfx;
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class NearbyProfileDisplayTribePanel$28
+class NearbyProfileDisplayTribePanel$28
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$28(ayfx paramayfx, int paramInt) {}
+  NearbyProfileDisplayTribePanel$28(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel, int paramInt) {}
   
   public void run()
   {
-    bdla.b(this.this$0.a.app, "CliOper", "", "", ayfx.b[(this.a - 1)], ayfx.b[(this.a - 1)], 0, 0, "", "", "", "");
-    bdla.b(this.this$0.a.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
+    ReportController.b(this.this$0.a.app, "CliOper", "", "", NearbyProfileDisplayTribePanel.b[(this.a - 1)], NearbyProfileDisplayTribePanel.b[(this.a - 1)], 0, 0, "", "", "", "");
+    ReportController.b(this.this$0.a.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
   }
 }
 

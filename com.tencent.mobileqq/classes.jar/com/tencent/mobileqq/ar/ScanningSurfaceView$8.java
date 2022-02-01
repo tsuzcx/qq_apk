@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.ar;
 
-import apgq;
-import aphs;
-import ayxa;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class ScanningSurfaceView$8
+class ScanningSurfaceView$8
   implements Runnable
 {
   ScanningSurfaceView$8(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData1, ScanningData paramScanningData2) {}
@@ -32,7 +30,7 @@ public class ScanningSurfaceView$8
         QLog.d("ScanningSurfaceView", 2, "5=" + this.b.a);
       }
       this.b.c = true;
-      this.this$0.a.a.a(3, this.b.g, this.b.h, new aphs(this));
+      this.this$0.a.a.a(3, this.b.g, this.b.h, new ScanningSurfaceView.8.1(this));
       ScanningSurfaceView.a(this.this$0, this.b);
     }
   }

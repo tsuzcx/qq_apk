@@ -2,8 +2,8 @@ package com.tencent.mobileqq.msf.core.auth;
 
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.am;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.af;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
 import com.tencent.mobileqq.msf.service.u;
@@ -472,7 +472,7 @@ public class j
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, UniPacket paramUniPacket, k paramk)
   {
-    am.a(paramFromServiceMsg);
+    af.a(paramFromServiceMsg);
     VerifyCodeInfo localVerifyCodeInfo = new VerifyCodeInfo();
     localVerifyCodeInfo.ssoSeq = paramFromServiceMsg.getRequestSsoSeq();
     localVerifyCodeInfo.wupSeq = paramUniPacket.getRequestId();
@@ -571,7 +571,7 @@ public class j
       byte[] arrayOfByte6 = locala.k();
       CodecWarpper.nativeSetAccountKey(paramk, new byte[0], arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5, arrayOfByte6, new byte[0], null);
       this.n.m(locala.d());
-      aj.a(locala.d(), false);
+      ac.a(locala.d(), false);
     }
     for (;;)
     {

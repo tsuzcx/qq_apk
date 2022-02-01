@@ -3,18 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRecommendUGInfo;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tgb;
-import tjl;
 
-public class WebFastAdapter$7
+class WebFastAdapter$7
   implements Runnable
 {
-  public WebFastAdapter$7(tgb paramtgb, List paramList) {}
+  WebFastAdapter$7(WebFastAdapter paramWebFastAdapter, List paramList) {}
   
   public void run()
   {
@@ -32,8 +31,8 @@ public class WebFastAdapter$7
           JSONObject localJSONObject = ((ProteusItemData)localObject).c;
           if ((localJSONObject != null) && (localJSONObject.optString("kd_ug_rsp_info") != null))
           {
-            localObject = new tjl(localJSONObject.optString("kd_ug_rsp_info"), tgb.a(localJSONObject));
-            if ((!TextUtils.isEmpty(((tjl)localObject).b)) && (((tjl)localObject).b.equals(localDownloadInfo.d)))
+            localObject = new FastWebRecommendUGInfo(localJSONObject.optString("kd_ug_rsp_info"), WebFastAdapter.a(localJSONObject));
+            if ((!TextUtils.isEmpty(((FastWebRecommendUGInfo)localObject).b)) && (((FastWebRecommendUGInfo)localObject).b.equals(localDownloadInfo.d)))
             {
               int j = i;
               try
@@ -45,7 +44,7 @@ public class WebFastAdapter$7
                   j = k;
                   localJSONObject = localJSONObject.getJSONObject("id_recommend_category_txt");
                   j = k;
-                  localJSONObject.put("text", ((tjl)localObject).h + localDownloadInfo.f + "%");
+                  localJSONObject.put("text", ((FastWebRecommendUGInfo)localObject).h + localDownloadInfo.f + "%");
                   j = k;
                   localJSONObject.put("label_ug_progress_progress", localDownloadInfo.f);
                 }
@@ -67,7 +66,7 @@ public class WebFastAdapter$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.7
  * JD-Core Version:    0.7.0.1
  */

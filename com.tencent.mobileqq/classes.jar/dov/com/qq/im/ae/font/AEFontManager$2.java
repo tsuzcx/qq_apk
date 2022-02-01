@@ -1,34 +1,28 @@
 package dov.com.qq.im.ae.font;
 
-import android.graphics.Typeface;
 import android.text.TextUtils;
-import bnlh;
-import bnrh;
-import boaf;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorResourceManager;
+import org.light.FontAsset;
+import org.light.LightEngine;
 
-public class AEFontManager$2
+class AEFontManager$2
   implements Runnable
 {
-  public AEFontManager$2(bnlh parambnlh, String paramString) {}
+  AEFontManager$2(AEFontManager paramAEFontManager, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject = boaf.a().a(this.a, 1);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
-    {
+    String str = AEEditorResourceManager.a().a(this.a, 1);
+    if (TextUtils.isEmpty(str)) {
       return;
-      bnlh.a().a(this.a, (String)localObject);
-      localObject = bnlh.a().a(this.a);
-    } while (localObject == Typeface.DEFAULT);
-    bnrh.b("AEFontManager", "LogicDataManager putTypeface--by load: " + this.a);
-    LogicDataManager.getInstance().putTypeface(this.a, (Typeface)localObject);
+    }
+    LightEngine.RegisterFont(new FontAsset(this.b, "Regular"), str);
+    AEFontManager.a().a(this.a, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.font.AEFontManager.2
  * JD-Core Version:    0.7.0.1
  */

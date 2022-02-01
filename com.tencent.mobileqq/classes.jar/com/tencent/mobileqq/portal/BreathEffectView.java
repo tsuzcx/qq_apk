@@ -8,13 +8,14 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import azmr;
+import com.tencent.qphone.base.util.QLog;
 
 public class BreathEffectView
   extends ImageView
   implements Animation.AnimationListener
 {
-  ObjectAnimator a;
+  private int jdField_a_of_type_Int;
+  ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
   
   public BreathEffectView(Context paramContext)
   {
@@ -26,24 +27,37 @@ public class BreathEffectView
     super(paramContext, paramAttributeSet);
   }
   
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
   public void a()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("BreathEffectView", 2, "yure yellow");
+    }
     g();
-    setImageResource(2130845235);
+    setImageResource(2130845402);
     d();
+    this.jdField_a_of_type_Int = 1;
   }
   
   public void b()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("BreathEffectView", 2, "formal red");
+    }
     g();
-    setImageResource(2130845236);
+    setImageResource(2130845403);
     d();
+    this.jdField_a_of_type_Int = 2;
   }
   
   public void c()
   {
     g();
-    setImageResource(2130846639);
+    setImageResource(2130846982);
     e();
   }
   
@@ -61,21 +75,21 @@ public class BreathEffectView
   public void e()
   {
     setVisibility(0);
-    this.a = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F, 0.5F, 1.0F, 0.0F });
-    this.a.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.a.addUpdateListener(new azmr(this));
-    this.a.setDuration(4000L);
-    this.a.setRepeatCount(0);
-    this.a.start();
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F, 0.5F, 1.0F, 0.0F });
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new BreathEffectView.1(this));
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(4000L);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatCount(0);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
   
   public void f()
   {
-    if (this.a != null)
+    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null)
     {
-      this.a.end();
-      this.a.cancel();
-      this.a = null;
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.end();
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
     }
   }
   
@@ -89,6 +103,7 @@ public class BreathEffectView
       clearAnimation();
     }
     setImageDrawable(null);
+    this.jdField_a_of_type_Int = 0;
   }
   
   public void onAnimationEnd(Animation paramAnimation) {}

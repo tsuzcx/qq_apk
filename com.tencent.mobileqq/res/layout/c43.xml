@@ -2,7 +2,7 @@
 <RelativeLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mobileqq.widget.TipsBar android:id="@id/l5h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <com.tencent.mobileqq.banner.TipsBar android:id="@id/l5h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
     <com.weiyun.plugin.cloudalbum.dialog.OperationBarLayout android:orientation="horizontal" android:id="@id/ac1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/sf" android:layout_alignParentBottom="true" />
     <LinearLayout android:orientation="vertical" android:id="@id/b8q" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ac1" android:layout_below="@id/l5h" />
     <RelativeLayout android:id="@id/ko4" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />

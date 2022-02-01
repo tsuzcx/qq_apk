@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import avcd;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 import org.json.JSONObject;
@@ -13,7 +12,7 @@ public class PadFaceAd
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<PadFaceAd> CREATOR = new avcd();
+  public static final Parcelable.Creator<PadFaceAd> CREATOR = new PadFaceAd.1();
   public String appName;
   public String appVersion;
   public String appView;
@@ -26,7 +25,7 @@ public class PadFaceAd
   
   public PadFaceAd() {}
   
-  public PadFaceAd(Parcel paramParcel)
+  protected PadFaceAd(Parcel paramParcel)
   {
     this.padFaceId = paramParcel.readInt();
     this.redPointId = paramParcel.readInt();
@@ -85,7 +84,7 @@ public class PadFaceAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.PadFaceAd
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class RespSetCardSwitch
   extends JceStruct
 {
   static RespHead cache_stHeader;
-  public RespHead stHeader;
+  public RespHead stHeader = null;
   public long uCloseNeighborVote = 2L;
   public long uCloseTimeGateVote = 2L;
   

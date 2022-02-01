@@ -3,13 +3,13 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bizw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
@@ -37,7 +37,7 @@ class PreloadingFragment$7
     label298:
     label438:
     label746:
-    for (paramJSONObject = this.this$0.getString(2131718057);; paramJSONObject = (JSONObject)localObject1)
+    for (paramJSONObject = this.this$0.getString(2131718550);; paramJSONObject = (JSONObject)localObject1)
     {
       if (PreloadingFragment.access$300(this.this$0) != null)
       {
@@ -70,7 +70,7 @@ class PreloadingFragment$7
           if ((((MiniAppInfo)localObject2).verType != 3) && (((MiniAppInfo)localObject2).verType != 1)) {
             paramJSONObject.forceReroad = 3;
           }
-          if ((((MiniAppInfo)localObject2).clearAuths == 1) && (bizw.a().a() > 0L)) {
+          if ((((MiniAppInfo)localObject2).clearAuths == 1) && (CommonDataAdapter.a().a() > 0L)) {
             paramJSONObject.config.clearAuths = 0;
           }
         }

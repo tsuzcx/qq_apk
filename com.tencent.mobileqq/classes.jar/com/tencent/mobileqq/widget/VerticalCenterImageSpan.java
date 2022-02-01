@@ -13,8 +13,8 @@ import androidx.annotation.NonNull;
 public class VerticalCenterImageSpan
   extends ImageSpan
 {
-  private int mLeftPadding;
-  private int mRightPadding;
+  private int mLeftPadding = 0;
+  private int mRightPadding = 0;
   
   public VerticalCenterImageSpan(Context paramContext, Bitmap paramBitmap)
   {
@@ -68,7 +68,7 @@ public class VerticalCenterImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.VerticalCenterImageSpan
  * JD-Core Version:    0.7.0.1
  */

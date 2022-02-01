@@ -4,48 +4,41 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import blfw;
-import blfx;
 
 public class ThemeImageView
   extends ImageView
-  implements blfx
+  implements ThemeImageWrapper.DrawInterface
 {
-  public blfw a;
+  public ThemeImageWrapper themeImageWrapper;
   
   public ThemeImageView(Context paramContext)
   {
     super(paramContext);
-    a();
+    init();
   }
   
   public ThemeImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    init();
   }
   
   public ThemeImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    init();
   }
   
-  protected void a()
+  protected void init()
   {
     setSupportMaskView(true);
   }
   
-  public void a(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    super.onDraw(paramCanvas);
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    if (this.a != null)
+    if (this.themeImageWrapper != null)
     {
-      this.a.a(paramCanvas, this);
+      this.themeImageWrapper.onDraw(paramCanvas, this);
       return;
     }
     super.onDraw(paramCanvas);
@@ -53,8 +46,8 @@ public class ThemeImageView
   
   public void setMaskShape(int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(paramInt);
+    if (this.themeImageWrapper != null) {
+      this.themeImageWrapper.setMaskShape(paramInt);
     }
   }
   
@@ -62,20 +55,25 @@ public class ThemeImageView
   {
     if (paramBoolean)
     {
-      if (this.a == null) {
-        this.a = new blfw();
+      if (this.themeImageWrapper == null) {
+        this.themeImageWrapper = new ThemeImageWrapper();
       }
-      this.a.a(true);
+      this.themeImageWrapper.setSupportMaskView(true);
     }
-    while (this.a == null) {
+    while (this.themeImageWrapper == null) {
       return;
     }
-    this.a.a(false);
+    this.themeImageWrapper.setSupportMaskView(false);
+  }
+  
+  public void superOnDraw(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ThemeImageView
  * JD-Core Version:    0.7.0.1
  */

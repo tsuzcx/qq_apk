@@ -12,8 +12,8 @@ public final class CLIENT_NBP_REPORT_REQ
 {
   static Map<String, String> cache_extra_info;
   static ArrayList<String> cache_report_info = new ArrayList();
-  public Map<String, String> extra_info;
-  public ArrayList<String> report_info;
+  public Map<String, String> extra_info = null;
+  public ArrayList<String> report_info = null;
   public String strABTestId = "";
   
   static

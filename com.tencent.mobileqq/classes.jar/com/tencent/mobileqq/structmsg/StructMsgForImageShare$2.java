@@ -5,9 +5,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.widget.TextView;
-import bdpx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
 
 class StructMsgForImageShare$2
   implements Runnable
@@ -16,8 +16,8 @@ class StructMsgForImageShare$2
   
   public void run()
   {
-    BitmapDrawable localBitmapDrawable = new BitmapDrawable(bdpx.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-    localBitmapDrawable.setBounds(0, 0, AIOUtils.dp2px(14.0F, this.jdField_a_of_type_AndroidContentResResources), AIOUtils.dp2px(14.0F, this.jdField_a_of_type_AndroidContentResResources));
+    BitmapDrawable localBitmapDrawable = new BitmapDrawable(StructMsgItemCover.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+    localBitmapDrawable.setBounds(0, 0, AIOUtils.a(14.0F, this.jdField_a_of_type_AndroidContentResResources), AIOUtils.a(14.0F, this.jdField_a_of_type_AndroidContentResResources));
     ThreadManagerV2.getUIHandlerV2().post(new StructMsgForImageShare.2.1(this, localBitmapDrawable));
   }
 }

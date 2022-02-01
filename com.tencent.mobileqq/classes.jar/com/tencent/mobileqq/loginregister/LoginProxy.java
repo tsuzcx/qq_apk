@@ -1,0 +1,175 @@
+package com.tencent.mobileqq.loginregister;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.qroute.annotation.ConfigInject;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+
+public class LoginProxy
+  implements ILoginAction, ILoginResult
+{
+  @ConfigInject(configPath="Business/qqlogin-api/src/main/resources/Inject_login_register_config.yml", version=1)
+  private static ArrayList<Class<? extends ILoginAction>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  @ConfigInject(configPath="Business/qqlogin-api/src/main/resources/Inject_login_register_config.yml", version=1)
+  private static ArrayList<Class<? extends ILoginResult>> jdField_b_of_type_JavaUtilArrayList;
+  private List<ILoginAction> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<ILoginResult> jdField_b_of_type_JavaUtilList = new ArrayList();
+  
+  static
+  {
+    jdField_a_of_type_JavaUtilArrayList.add(AlbumLoginAction.class);
+    jdField_a_of_type_JavaUtilArrayList.add(QZoneLoginAction.class);
+    jdField_a_of_type_JavaUtilArrayList.add(NotifyLoginAction.class);
+    jdField_a_of_type_JavaUtilArrayList.add(OpenSdkLoginAction.class);
+    jdField_a_of_type_JavaUtilArrayList.add(CheckAuthLoginAction.class);
+    jdField_a_of_type_JavaUtilArrayList.add(UpdateLoginAction.class);
+    jdField_a_of_type_JavaUtilArrayList.add(MessageLoginAction.class);
+    jdField_a_of_type_JavaUtilArrayList.add(KandianLoginAction.class);
+    jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_b_of_type_JavaUtilArrayList.add(AccountLoginResult.class);
+    jdField_b_of_type_JavaUtilArrayList.add(MiniLoginResult.class);
+    jdField_b_of_type_JavaUtilArrayList.add(JumpLoginResult.class);
+    jdField_b_of_type_JavaUtilArrayList.add(InitLoginResult.class);
+    jdField_b_of_type_JavaUtilArrayList.add(PatternLockResult.class);
+  }
+  
+  public LoginProxy()
+  {
+    QLog.d("LoginProxy", 1, new Object[] { "sLoginActionClasses size : ", Integer.valueOf(jdField_a_of_type_JavaUtilArrayList.size()) });
+    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject1 = (Class)localIterator.next();
+      try
+      {
+        localObject1 = (ILoginAction)((Class)localObject1).newInstance();
+        this.jdField_a_of_type_JavaUtilList.add(localObject1);
+      }
+      catch (Exception localException1)
+      {
+        QLog.e("LoginProxy", 1, "ILoginAction newInstance", localException1);
+      }
+    }
+    QLog.d("LoginProxy", 1, new Object[] { "sLoginResultClasses size : ", Integer.valueOf(jdField_b_of_type_JavaUtilArrayList.size()) });
+    localIterator = jdField_b_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject2 = (Class)localIterator.next();
+      try
+      {
+        localObject2 = (ILoginResult)((Class)localObject2).newInstance();
+        this.jdField_b_of_type_JavaUtilList.add(localObject2);
+      }
+      catch (Exception localException2)
+      {
+        QLog.e("LoginProxy", 1, "ILoginResult newInstance", localException2);
+      }
+    }
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginAction)localIterator.next()).a();
+    }
+  }
+  
+  public void a(Activity paramActivity, Bundle paramBundle)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginAction)localIterator.next()).a(paramActivity, paramBundle);
+    }
+  }
+  
+  public void a(Activity paramActivity, String paramString)
+  {
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginResult)localIterator.next()).a(paramActivity, paramString);
+    }
+  }
+  
+  public void a(Activity paramActivity, AppRuntime paramAppRuntime, String paramString)
+  {
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginResult)localIterator.next()).a(paramActivity, paramAppRuntime, paramString);
+    }
+  }
+  
+  public void a(Context paramContext)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginAction)localIterator.next()).a(paramContext);
+    }
+  }
+  
+  public void a(QBaseActivity paramQBaseActivity, int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginAction)localIterator.next()).a(paramQBaseActivity, paramInt);
+    }
+  }
+  
+  public void a(QBaseActivity paramQBaseActivity, Bundle paramBundle)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginAction)localIterator.next()).a(paramQBaseActivity, paramBundle);
+    }
+  }
+  
+  public void a(QBaseActivity paramQBaseActivity, String paramString, boolean paramBoolean)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginAction)localIterator.next()).a(paramQBaseActivity, paramString, paramBoolean);
+    }
+  }
+  
+  public void a(QBaseActivity paramQBaseActivity, AppRuntime paramAppRuntime, LoginErrorInfo paramLoginErrorInfo)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginAction)localIterator.next()).a(paramQBaseActivity, paramAppRuntime, paramLoginErrorInfo);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginAction)localIterator.next()).a(paramString);
+    }
+  }
+  
+  public boolean a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString)
+  {
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    for (boolean bool = true; localIterator.hasNext(); bool = ((ILoginResult)localIterator.next()).a(paramAppRuntime, paramActivity, paramString) & bool) {}
+    return bool;
+  }
+  
+  public boolean a(AppRuntime paramAppRuntime, Class<?> paramClass, long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (boolean bool = false; localIterator.hasNext(); bool = ((ILoginAction)localIterator.next()).a(paramAppRuntime, paramClass, paramLong) | bool) {}
+    return bool;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.loginregister.LoginProxy
+ * JD-Core Version:    0.7.0.1
+ */

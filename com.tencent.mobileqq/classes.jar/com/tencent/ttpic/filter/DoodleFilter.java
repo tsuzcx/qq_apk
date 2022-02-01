@@ -3,9 +3,9 @@ package com.tencent.ttpic.filter;
 import android.graphics.PointF;
 import android.opengl.GLES20;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -33,7 +33,7 @@ public class DoodleFilter
     while (localIterator.hasNext())
     {
       List localList = (List)localIterator.next();
-      setPositions(VideoMaterialUtil.toFlatArray(localList));
+      setPositions(VideoMaterial.toFlatArray(localList));
       OnDrawFrameGLSL();
       GLES20.glLineWidth(10.0F);
       GLES20.glDrawArrays(3, 0, localList.size());
@@ -69,7 +69,7 @@ public class DoodleFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.DoodleFilter
  * JD-Core Version:    0.7.0.1
  */

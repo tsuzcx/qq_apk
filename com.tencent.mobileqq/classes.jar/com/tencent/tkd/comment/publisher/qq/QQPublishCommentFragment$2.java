@@ -9,12 +9,14 @@ class QQPublishCommentFragment$2
   
   public void run()
   {
-    CommonUtil.showInputMethod(this.this$0.getActivity(), QQPublishCommentFragment.access$300(this.this$0));
+    if (this.this$0.getActivity() != null) {
+      CommonUtil.showInputMethod(this.this$0.getActivity(), QQPublishCommentFragment.access$300(this.this$0));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.2
  * JD-Core Version:    0.7.0.1
  */

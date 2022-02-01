@@ -1,15 +1,18 @@
 package com.tencent.biz.pubaccount.util.monitor;
 
 import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 class StackSampler
 {
-  private StackSampler.SampleRunnable jdField_a_of_type_ComTencentBizPubaccountUtilMonitorStackSampler$SampleRunnable;
-  private Map<Long, String> jdField_a_of_type_JavaUtilMap;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private StackSampler.SampleRunnable jdField_a_of_type_ComTencentBizPubaccountUtilMonitorStackSampler$SampleRunnable = new StackSampler.SampleRunnable(this, null);
+  private Map<Long, String> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private volatile boolean jdField_a_of_type_Boolean = false;
   
   private void a()
   {
@@ -29,10 +32,27 @@ class StackSampler
     }
     this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(System.nanoTime()), localStringBuilder.toString());
   }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      long l = ((Long)localEntry.getKey()).longValue();
+      if ((l > paramLong1) && (l < paramLong2)) {
+        localStringBuilder.append((String)localEntry.getValue()).append("\n");
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FPSMonitor", 2, "printStackTrace: " + localStringBuilder.toString());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.StackSampler
  * JD-Core Version:    0.7.0.1
  */

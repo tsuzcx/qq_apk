@@ -27,10 +27,10 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
       return i;
     }
     getActivity().getWindow().setFlags(1024, 1024);
-    this.mUIStyleHandler.mLoadingProgressBar.setVisibility(8);
-    this.mUIStyle.isFullScreen = true;
+    this.mUIStyleHandler.a.setVisibility(8);
+    this.mUIStyle.a = true;
     hideVirtualNavBar();
-    doShowTitleBar(false);
+    showTitleBar(false);
     return i;
   }
   
@@ -38,15 +38,15 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
     if ((getIntent() != null) && (getIntent().getBooleanExtra("flag_hide_float_bar", false))) {
-      this.mUIStyle.mFloatBarRulesFromUrl = 0L;
+      this.mUIStyle.c = 0L;
     }
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167296);
-    if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
-      ((RefreshView)this.mUIStyleHandler.webviewWrapper).a(false);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167305);
+    if ((this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
+      ((RefreshView)this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).a(false);
     }
-    if (this.mUIStyleHandler.mBrowserTips != null) {
-      this.mUIStyleHandler.mBrowserTips.setVisibility(8);
+    if (this.mUIStyleHandler.jdField_c_of_type_AndroidViewView != null) {
+      this.mUIStyleHandler.jdField_c_of_type_AndroidViewView.setVisibility(8);
     }
     if (this.webView.getX5WebViewExtension() != null) {}
     for (;;)
@@ -77,7 +77,7 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

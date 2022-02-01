@@ -1,16 +1,19 @@
 package com.tencent.mobileqq.troop.widget;
 
-import akjf;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
+import android.view.WindowManager;
 import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.photo.AvatarInfo;
 import com.tencent.widget.GridView;
 
 public class AvatarGridView
   extends GridView
 {
-  protected int a = 4;
+  protected int a;
+  protected WindowManager a;
+  protected boolean a;
   
   public AvatarGridView(Context paramContext)
   {
@@ -25,10 +28,13 @@ public class AvatarGridView
   public AvatarGridView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_AndroidViewWindowManager = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 4;
     setChildrenDrawingOrderEnabled(true);
   }
   
-  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
+  public int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     ListAdapter localListAdapter = getAdapter();
     Object localObject2 = null;
@@ -36,13 +42,13 @@ public class AvatarGridView
     if (localListAdapter != null)
     {
       localObject1 = localObject2;
-      if ((getAdapter().getItem(paramInt1 - 1) instanceof akjf)) {
-        localObject1 = (akjf)getAdapter().getItem(paramInt1 - 1);
+      if ((getAdapter().getItem(paramInt1 - 1) instanceof AvatarInfo)) {
+        localObject1 = (AvatarInfo)getAdapter().getItem(paramInt1 - 1);
       }
     }
     int i;
     if (localObject1 != null) {
-      if ((((akjf)localObject1).b != 0) && (((akjf)localObject1).b == 4)) {
+      if ((((AvatarInfo)localObject1).b != 0) && (((AvatarInfo)localObject1).b == 4)) {
         i = paramInt1 - 1;
       }
     }
@@ -72,7 +78,7 @@ public class AvatarGridView
   
   public int getNumColumns()
   {
-    return this.a;
+    return this.jdField_a_of_type_Int;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
@@ -82,7 +88,7 @@ public class AvatarGridView
   
   public void setNumColumns(int paramInt)
   {
-    this.a = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
     super.setNumColumns(paramInt);
   }
 }

@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class DomainIpInfo
   extends JceStruct
 {
-  public int uIp;
-  public int uPort;
+  public int uIp = 0;
+  public int uPort = 0;
   
   public DomainIpInfo() {}
   

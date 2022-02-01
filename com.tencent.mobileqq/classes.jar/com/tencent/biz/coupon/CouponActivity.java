@@ -1,15 +1,14 @@
 package com.tencent.biz.coupon;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class CouponActivity
-  extends PublicAccountBrowser
+  extends QQBrowserActivity
 {
   static String a;
   public int a;
@@ -21,7 +20,7 @@ public class CouponActivity
   
   public CouponActivity()
   {
-    this.jdField_a_of_type_JavaLangClass = CouponActivity.CouponWebViewFragment.class;
+    this.mFragmentClass = CouponActivity.CouponWebViewFragment.class;
   }
   
   @Override
@@ -48,7 +47,7 @@ public class CouponActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.coupon.CouponActivity
  * JD-Core Version:    0.7.0.1
  */

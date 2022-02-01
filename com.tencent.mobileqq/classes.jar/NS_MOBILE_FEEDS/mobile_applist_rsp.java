@@ -17,24 +17,24 @@ public final class mobile_applist_rsp
   static Map<String, byte[]> cache_mapEx;
   static single_feed cache_share_album;
   static s_memory_seal_off cache_stMemoryInfo;
-  public last_album_area_info album_area_info;
-  public int album_count;
-  public ArrayList<single_feed> all_applist_data;
+  public last_album_area_info album_area_info = null;
+  public int album_count = 0;
+  public ArrayList<single_feed> all_applist_data = null;
   public String attach_info = "";
-  public int auto_load;
-  public int dailyShuoShuoCount;
-  public Map<String, String> extend_info;
-  public int hasmore;
-  public int kantu_album_count;
-  public s_life_moment life_moment_info;
-  public int lossy_service;
-  public Map<String, byte[]> mapEx;
-  public int photo_count;
-  public int remain_count;
-  public single_feed share_album;
-  public int shuoshuo_timer_unpublished_count;
-  public s_memory_seal_off stMemoryInfo;
-  public int video_count;
+  public int auto_load = 0;
+  public int dailyShuoShuoCount = 0;
+  public Map<String, String> extend_info = null;
+  public int hasmore = 0;
+  public int kantu_album_count = 0;
+  public s_life_moment life_moment_info = null;
+  public int lossy_service = 0;
+  public Map<String, byte[]> mapEx = null;
+  public int photo_count = 0;
+  public int remain_count = 0;
+  public single_feed share_album = null;
+  public int shuoshuo_timer_unpublished_count = 0;
+  public s_memory_seal_off stMemoryInfo = null;
+  public int video_count = 0;
   
   static
   {

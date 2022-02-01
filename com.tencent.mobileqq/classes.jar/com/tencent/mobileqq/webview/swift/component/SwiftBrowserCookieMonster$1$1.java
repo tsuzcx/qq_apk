@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bigw;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.common.util.Util;
+import com.tencent.mobileqq.webview.cookie.SetCookiesCallback;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import nwo;
+import mqq.app.MobileQQ;
 
 class SwiftBrowserCookieMonster$1$1
   implements Runnable
@@ -23,20 +23,20 @@ class SwiftBrowserCookieMonster$1$1
       Object localObject3 = (String)localIterator.next();
       Object localObject2 = (CopyOnWriteArrayList)this.a.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject3);
       if (this.a.a == null) {}
-      for (Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();; localObject1 = this.a.a)
+      for (Object localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);; localObject1 = this.a.a)
       {
         localObject1 = this.a.this$0.a((String)localObject3, (AppRuntime)localObject1);
         localObject2 = ((CopyOnWriteArrayList)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (bigw)((Iterator)localObject2).next();
+          localObject3 = (SetCookiesCallback)((Iterator)localObject2).next();
           if (QLog.isColorLevel()) {
-            QLog.i("SwiftBrowserCookieMonster", 2, "post callback onSetCookiesFinished " + nwo.b((String)localObject1, new String[0]) + ", errorCode: " + this.a.this$0.jdField_a_of_type_Long);
+            QLog.i("SwiftBrowserCookieMonster", 2, "post callback onSetCookiesFinished " + Util.b((String)localObject1, new String[0]) + ", errorCode: " + this.a.this$0.jdField_a_of_type_Long);
           }
           if (this.a.this$0.b) {
-            QLog.i("SwiftBrowserCookieMonster", 1, "cookie is wrong, need do jump ptlogin! " + nwo.b((String)localObject1, new String[0]));
+            QLog.i("SwiftBrowserCookieMonster", 1, "cookie is wrong, need do jump ptlogin! " + Util.b((String)localObject1, new String[0]));
           }
-          ((bigw)localObject3).onSetCookiesFinished((String)localObject1, null, this.a.this$0.jdField_a_of_type_Long);
+          ((SetCookiesCallback)localObject3).a((String)localObject1, null, this.a.this$0.jdField_a_of_type_Long);
         }
         break;
       }
@@ -51,7 +51,7 @@ class SwiftBrowserCookieMonster$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.1.1
  * JD-Core Version:    0.7.0.1
  */

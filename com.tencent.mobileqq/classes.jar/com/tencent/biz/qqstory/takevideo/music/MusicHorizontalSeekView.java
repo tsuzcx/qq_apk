@@ -9,9 +9,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import bhdz;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.qphone.base.util.QLog;
-import yxi;
 
 public class MusicHorizontalSeekView
   extends View
@@ -25,41 +24,48 @@ public class MusicHorizontalSeekView
   float a;
   protected Paint a;
   protected Rect a;
-  protected yxi a;
+  protected MusicHorizontalSeekView.SeekListener a;
   protected boolean a;
   protected Paint b;
   protected Paint c;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
-  protected int h;
-  protected int i;
-  protected int j;
-  protected int k;
-  protected int l;
-  protected int m;
-  protected int n;
+  protected int d = 0;
+  protected int e = 0;
+  protected int f = 0;
+  protected int g = 0;
+  protected int h = 0;
+  protected int i = 0;
+  protected int j = 0;
+  protected int k = 0;
+  protected int l = 0;
+  protected int m = 0;
+  protected int n = 0;
   
   static
   {
     jdField_a_of_type_ArrayOfInt = new int[] { 6, 8, 10, 12, 12, 10, 8, 6 };
     jdField_a_of_type_Int = jdField_a_of_type_ArrayOfInt.length;
+    jdField_b_of_type_Int = 0;
     jdField_b_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
+    jdField_c_of_type_Int = 0;
   }
   
   public MusicHorizontalSeekView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener = null;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_b_of_type_AndroidGraphicsPaint = null;
+    this.jdField_c_of_type_AndroidGraphicsPaint = null;
     this.jdField_a_of_type_Float = 0.0F;
-    this.m = ((int)bhdz.a(paramContext, 2.0F));
-    this.n = ((int)bhdz.a(paramContext, 1.0F));
-    jdField_b_of_type_Int = (int)bhdz.a(paramContext, 10.0F);
-    jdField_c_of_type_Int = (int)bhdz.a(paramContext, 21.0F);
-    int i1 = 0;
+    this.m = ((int)DisplayUtils.a(paramContext, 2.0F));
+    this.n = ((int)DisplayUtils.a(paramContext, 1.0F));
+    jdField_b_of_type_Int = (int)DisplayUtils.a(paramContext, 10.0F);
+    jdField_c_of_type_Int = (int)DisplayUtils.a(paramContext, 21.0F);
     while (i1 < jdField_a_of_type_Int)
     {
-      jdField_b_of_type_ArrayOfInt[i1] = ((int)bhdz.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
+      jdField_b_of_type_ArrayOfInt[i1] = ((int)DisplayUtils.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
       i1 += 1;
     }
     paramContext = paramContext.getResources();
@@ -68,10 +74,10 @@ public class MusicHorizontalSeekView
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131165559));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166505));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166508));
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166507));
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166510));
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.n);
     super.setOnTouchListener(this);
   }
@@ -172,7 +178,7 @@ public class MusicHorizontalSeekView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.k = super.getMeasuredWidth();
@@ -181,8 +187,8 @@ public class MusicHorizontalSeekView
     this.j = ((this.k - this.f) / 2);
     paramInt1 = (this.l - jdField_c_of_type_Int) / 2;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.j, paramInt1, this.j + this.d * jdField_b_of_type_Int, jdField_c_of_type_Int + paramInt1);
-    if (this.jdField_a_of_type_Yxi != null) {
-      this.jdField_a_of_type_Yxi.a(this.j, this.f);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.a(this.j, this.f);
     }
   }
   
@@ -201,10 +207,10 @@ public class MusicHorizontalSeekView
         return bool;
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        if (this.jdField_a_of_type_Yxi == null) {
+        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener == null) {
           break;
         }
-        this.jdField_a_of_type_Yxi.a(this.g, this.f, this.h);
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.a(this.g, this.f, this.h);
         break;
         f1 = paramMotionEvent.getX();
       } while (Math.abs(f1 - this.jdField_a_of_type_Float) < 2.0F);
@@ -216,8 +222,8 @@ public class MusicHorizontalSeekView
         {
           this.h = 0;
           super.invalidate();
-          if (this.jdField_a_of_type_Yxi != null) {
-            this.jdField_a_of_type_Yxi.b(this.g, this.f, this.h);
+          if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
+            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.b(this.g, this.f, this.h);
           }
           this.jdField_a_of_type_Float = f1;
           return false;
@@ -227,22 +233,22 @@ public class MusicHorizontalSeekView
       {
         this.h = (this.g - this.f);
         super.invalidate();
-        if (this.jdField_a_of_type_Yxi != null) {
-          this.jdField_a_of_type_Yxi.b(this.g, this.f, this.h);
+        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.b(this.g, this.f, this.h);
         }
         this.jdField_a_of_type_Float = f1;
         return false;
       }
       super.invalidate();
-      if (this.jdField_a_of_type_Yxi != null) {
-        this.jdField_a_of_type_Yxi.b(this.g, this.f, this.h);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.b(this.g, this.f, this.h);
       }
       this.jdField_a_of_type_Float = f1;
       continue;
       this.jdField_a_of_type_Boolean = false;
       super.invalidate();
-      if (this.jdField_a_of_type_Yxi != null) {
-        this.jdField_a_of_type_Yxi.c(this.g, this.f, this.h);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.c(this.g, this.f, this.h);
       }
     }
   }
@@ -255,9 +261,9 @@ public class MusicHorizontalSeekView
     this.g = (jdField_b_of_type_Int * this.e);
   }
   
-  public void setOnSeekListener(yxi paramyxi)
+  public void setOnSeekListener(MusicHorizontalSeekView.SeekListener paramSeekListener)
   {
-    this.jdField_a_of_type_Yxi = paramyxi;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener = paramSeekListener;
   }
   
   public void setPlayedPosition(int paramInt)
@@ -268,7 +274,7 @@ public class MusicHorizontalSeekView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.music.MusicHorizontalSeekView
  * JD-Core Version:    0.7.0.1
  */

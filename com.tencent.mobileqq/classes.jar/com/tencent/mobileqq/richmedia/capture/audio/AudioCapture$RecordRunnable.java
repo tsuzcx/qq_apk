@@ -2,9 +2,7 @@ package com.tencent.mobileqq.richmedia.capture.audio;
 
 import android.media.AudioRecord;
 import android.os.Process;
-import bbgd;
-import bbgf;
-import bbmt;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWAudioEncoder;
 import com.tencent.qphone.base.util.QLog;
 
 class AudioCapture$RecordRunnable
@@ -87,8 +85,8 @@ class AudioCapture$RecordRunnable
       QLog.d("AudioCapture", 2, "RecordRunnable record run");
     }
     this.jdField_a_of_type_Boolean = true;
-    this.this$0.jdField_a_of_type_Bbgf = new bbgf(AudioCapture.a(this.this$0));
-    this.this$0.jdField_a_of_type_Bbgf.a();
+    this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioDataCache = new AudioDataCache(AudioCapture.a(this.this$0));
+    this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioDataCache.a();
     int i = 0;
     label529:
     label544:
@@ -121,7 +119,7 @@ class AudioCapture$RecordRunnable
       catch (Exception localException1)
       {
         QLog.e("AudioCapture", 1, "audio, run exception: ", localException1);
-        this.this$0.jdField_a_of_type_Bbgf.a();
+        this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioDataCache.a();
         return;
       }
       QLog.d("AudioCapture", 2, "RecordRunnable exit, error param");
@@ -156,15 +154,15 @@ class AudioCapture$RecordRunnable
           j = this.this$0.a(this.this$0.b, i);
           this.this$0.a(this.this$0.b, i - j);
         }
-        this.this$0.jdField_a_of_type_Bbgf.a();
-        if (this.this$0.jdField_a_of_type_Bbmt != null) {
-          this.this$0.jdField_a_of_type_Bbmt.c();
+        this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioDataCache.a();
+        if (this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWAudioEncoder != null) {
+          this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWAudioEncoder.c();
         }
         if (QLog.isColorLevel()) {
           QLog.d("AudioCapture", 2, new Object[] { "audio, run out, isRecording:", Boolean.valueOf(this.jdField_a_of_type_Boolean), " mIsVoiceRecognizerStat:", Boolean.valueOf(AudioCapture.c(this.this$0)) });
         }
         if ((!this.jdField_a_of_type_Boolean) && (AudioCapture.a(this.this$0) != null)) {
-          AudioCapture.a(this.this$0).onAudioCaptured(this.this$0.jdField_a_of_type_Bbgf.b());
+          AudioCapture.a(this.this$0).onAudioCaptured(this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioDataCache.b());
         }
         AudioCapture.a(this.this$0);
         return;
@@ -175,7 +173,7 @@ class AudioCapture$RecordRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.audio.AudioCapture.RecordRunnable
  * JD-Core Version:    0.7.0.1
  */

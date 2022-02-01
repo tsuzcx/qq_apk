@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import boov;
 import com.tencent.qphone.base.util.QLog;
 
 public class QIMLoadingViewWithRetry
@@ -19,7 +18,7 @@ public class QIMLoadingViewWithRetry
   protected int c;
   protected Paint c;
   protected int d;
-  protected int e;
+  protected int e = 0;
   
   public QIMLoadingViewWithRetry(Context paramContext)
   {
@@ -63,11 +62,11 @@ public class QIMLoadingViewWithRetry
     super.b();
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.e = 2130844560;
+    this.e = 2130844739;
     a(this.e);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if ((this.jdField_b_of_type_Long == -1L) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
     {
@@ -93,9 +92,9 @@ public class QIMLoadingViewWithRetry
       this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_b_of_type_AndroidGraphicsRectF, 270.0F, f);
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
     } while (!this.jdField_c_of_type_Boolean);
-    if ((this.jdField_b_of_type_Long != this.jdField_a_of_type_Long) && (this.jdField_a_of_type_Boov != null))
+    if ((this.jdField_b_of_type_Long != this.jdField_a_of_type_Long) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress != null))
     {
-      setProgress(Math.round(this.jdField_a_of_type_Boov.a() * (float)this.jdField_a_of_type_Long));
+      setProgress(Math.round(this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress.a() * (float)this.jdField_a_of_type_Long));
       return;
     }
     this.jdField_c_of_type_Boolean = false;
@@ -103,7 +102,7 @@ public class QIMLoadingViewWithRetry
   
   public void setProgress(long paramLong)
   {
-    if ((paramLong == 0L) && (this.jdField_a_of_type_Boov != null) && (this.jdField_a_of_type_Boov.a == 3))
+    if ((paramLong == 0L) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingProgress.a == 3))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QIMLoadingViewWithRetry", 2, "progress=" + paramLong);
@@ -117,7 +116,7 @@ public class QIMLoadingViewWithRetry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMLoadingViewWithRetry
  * JD-Core Version:    0.7.0.1
  */

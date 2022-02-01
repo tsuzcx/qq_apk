@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import akfg;
 import com.tencent.qphone.base.util.QLog;
 
-public class MiniPie$4
+class MiniPie$4
   implements Runnable
 {
-  public MiniPie$4(akfg paramakfg) {}
+  MiniPie$4(MiniPie paramMiniPie) {}
   
   public void run()
   {
     if (!this.this$0.jdField_a_of_type_Boolean) {
-      akfg.a(this.this$0);
+      MiniPie.a(this.this$0);
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -21,7 +20,7 @@ public class MiniPie$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.4
  * JD-Core Version:    0.7.0.1
  */

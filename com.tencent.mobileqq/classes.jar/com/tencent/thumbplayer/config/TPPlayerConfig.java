@@ -16,7 +16,7 @@ public class TPPlayerConfig
   private static final String HOST_CONFIG_KEY = "host_config";
   public static final boolean ISOTT = false;
   private static final String TAG = "TPPlayerConfig";
-  public static final String VERSION = "2.8.0.1104";
+  public static final String VERSION = "2.9.0.1112";
   private static String appVersion = "";
   private static String appVersionName;
   public static String beacon_log_host;
@@ -27,7 +27,7 @@ public class TPPlayerConfig
   private static String mOutNetIp;
   private static int mPlatform;
   private static SparseArray<String> mProxyCacheDirs = new SparseArray(1);
-  private static SparseArray<String> mProxyConfigStrs;
+  private static String mProxyConfigStr;
   private static SparseArray<String> mProxyDataDirs = new SparseArray(1);
   private static int mProxyServiceType;
   private static boolean mUseP2P;
@@ -38,7 +38,7 @@ public class TPPlayerConfig
   
   static
   {
-    mProxyConfigStrs = new SparseArray(1);
+    mProxyConfigStr = "";
     mProxyServiceType = -1;
     mUserUpc = "";
     mUserUpcState = 0;
@@ -53,11 +53,6 @@ public class TPPlayerConfig
   public static void addProxyCacheDir(int paramInt, String paramString)
   {
     mProxyCacheDirs.put(paramInt, paramString);
-  }
-  
-  public static void addProxyConfigStr(int paramInt, String paramString)
-  {
-    mProxyConfigStrs.put(paramInt, paramString);
   }
   
   public static void addProxyDataDir(int paramInt, String paramString)
@@ -170,9 +165,9 @@ public class TPPlayerConfig
     }
   }
   
-  public static String getProxyConfigStr(int paramInt)
+  public static String getProxyConfigStr()
   {
-    return (String)mProxyConfigStrs.get(paramInt);
+    return mProxyConfigStr;
   }
   
   public static String getProxyDataDir(int paramInt)
@@ -276,6 +271,11 @@ public class TPPlayerConfig
     mPlatform = paramInt;
   }
   
+  public static void setProxyConfigStr(String paramString)
+  {
+    mProxyConfigStr = paramString;
+  }
+  
   public static void setProxyServiceType(int paramInt)
   {
     mProxyServiceType = paramInt;
@@ -308,7 +308,7 @@ public class TPPlayerConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.config.TPPlayerConfig
  * JD-Core Version:    0.7.0.1
  */

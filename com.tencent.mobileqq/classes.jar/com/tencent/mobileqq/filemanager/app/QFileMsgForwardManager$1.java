@@ -1,14 +1,10 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.text.TextUtils;
-import atiy;
-import atjs;
-import atju;
-import atjv;
-import atqd;
-import auea;
-import bdla;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.msgforward.QFileMsgForwardRequest;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.text.DecimalFormat;
@@ -17,14 +13,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-public class QFileMsgForwardManager$1
+class QFileMsgForwardManager$1
   implements Runnable
 {
-  public QFileMsgForwardManager$1(atiy paramatiy, atqd paramatqd) {}
+  QFileMsgForwardManager$1(QFileMsgForwardManager paramQFileMsgForwardManager, QFileMsgForwardRequest paramQFileMsgForwardRequest) {}
   
   public void run()
   {
-    boolean bool = NetworkUtil.isNetworkAvailable(null);
+    boolean bool = NetworkUtil.g(null);
     if (QLog.isColorLevel()) {
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, "isNetworkAvailable:" + bool);
     }
@@ -37,7 +33,7 @@ public class QFileMsgForwardManager$1
       this.a.a(0, new ArrayList(), new ArrayList());
       return;
     }
-    atjv localatjv = new atjv(this.this$0, str1, this.a, localHashMap);
+    QFileMsgForwardManager.QFileUploadRequest localQFileUploadRequest = new QFileMsgForwardManager.QFileUploadRequest(this.this$0, str1, this.a, localHashMap);
     Iterator localIterator1 = localHashMap.keySet().iterator();
     long l1 = 0L;
     if (localIterator1.hasNext())
@@ -51,15 +47,15 @@ public class QFileMsgForwardManager$1
           break;
         }
         Object localObject = (MessageRecord)localIterator2.next();
-        if ((auea.a((MessageRecord)localObject)) && (atiy.a(this.this$0, (MessageRecord)localObject)))
+        if ((FileManagerUtil.a((MessageRecord)localObject)) && (QFileMsgForwardManager.a(this.this$0, (MessageRecord)localObject)))
         {
-          atjs localatjs = atiy.a(this.this$0, str2, i, str1, (MessageRecord)localObject);
-          if (localatjs == null) {
+          QFileMsgForwardManager.FileUploadTask localFileUploadTask = QFileMsgForwardManager.a(this.this$0, str2, i, str1, (MessageRecord)localObject);
+          if (localFileUploadTask == null) {
             break label301;
           }
-          localatjv.a(localatjs);
+          localQFileUploadRequest.a(localFileUploadTask);
           if (!bool) {
-            localatjs.a.a("", true);
+            localFileUploadTask.a.a("", true);
           }
           localObject = ((MessageRecord)localObject).getExtInfoFromExtStr("_m_ForwardSize");
           if (!TextUtils.isEmpty((CharSequence)localObject)) {
@@ -72,15 +68,15 @@ public class QFileMsgForwardManager$1
       this.a.a(1, new ArrayList(), new ArrayList());
       return;
     }
-    if (localatjv.a() > 0)
+    if (localQFileUploadRequest.a() > 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : forwardMsgSeq[" + str1 + "] toUin[" + str2 + "] toType[" + i + "] uploadCount[" + localatjv.a() + "]");
+        QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : forwardMsgSeq[" + str1 + "] toUin[" + str2 + "] toType[" + i + "] uploadCount[" + localQFileUploadRequest.a() + "]");
       }
       str2 = new DecimalFormat("0.00").format(l1 / 1024.0D / 1024.0D);
-      bdla.b(atiy.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str2, "");
-      atiy.a(this.this$0).put(str1, localatjv);
-      localatjv.a();
+      ReportController.b(QFileMsgForwardManager.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str2, "");
+      QFileMsgForwardManager.a(this.this$0).put(str1, localQFileUploadRequest);
+      localQFileUploadRequest.a();
       return;
     }
     this.a.a(0, new ArrayList(), new ArrayList());
@@ -88,7 +84,7 @@ public class QFileMsgForwardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.1
  * JD-Core Version:    0.7.0.1
  */

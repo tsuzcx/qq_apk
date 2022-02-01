@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.vas;
 
 import android.os.Bundle;
-import behn;
-import beho;
-import bhob;
-import bhod;
-import bhoe;
-import bhof;
-import bhro;
-import bhry;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.theme.IDownloadListener;
+import com.tencent.mobileqq.theme.IDownloadListener.Stub;
+import com.tencent.mobileqq.vas.quickupdate.BaseUpdateCallback;
+import com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector;
+import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
+import com.tencent.mobileqq.vas.updatesystem.callback.QueryItemCallback;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BinderWarpper;
 import eipc.EIPCResult;
@@ -43,7 +40,7 @@ public class QuickUpdateIPCModule
     finally {}
   }
   
-  public static void a(int paramInt, String paramString, boolean paramBoolean, bhob parambhob)
+  public static void a(int paramInt, String paramString, boolean paramBoolean, QueryItemCallback paramQueryItemCallback)
   {
     QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
     localParams.intVal = paramInt;
@@ -51,14 +48,14 @@ public class QuickUpdateIPCModule
     localParams.strVal1 = paramString;
     paramString = new Bundle();
     paramString.putSerializable("params", localParams);
-    QIPCClientHelper.getInstance().callServer("QuickUpdateIPCModule", b, paramString, new bhoe(parambhob));
+    QIPCClientHelper.getInstance().callServer("QuickUpdateIPCModule", b, paramString, new QuickUpdateIPCModule.2(paramQueryItemCallback));
   }
   
-  public static void a(long paramLong, String paramString, behn parambehn)
+  public static void a(long paramLong, String paramString, IDownloadListener paramIDownloadListener)
   {
     Bundle localBundle = new Bundle();
-    if (parambehn != null) {
-      localBundle.putParcelable("binder", new BinderWarpper(parambehn.asBinder()));
+    if (paramIDownloadListener != null) {
+      localBundle.putParcelable("binder", new BinderWarpper(paramIDownloadListener.asBinder()));
     }
     localBundle.putLong("bid", paramLong);
     localBundle.putString("scid", paramString);
@@ -75,10 +72,10 @@ public class QuickUpdateIPCModule
       localObject = paramBundle.getString("scid");
       paramString = null;
       if (paramBundle.containsKey("binder")) {
-        paramString = new bhof(l, (String)localObject, beho.asInterface(((BinderWarpper)paramBundle.getParcelable("binder")).a), null);
+        paramString = new QuickUpdateIPCModule.RemoteListener(l, (String)localObject, IDownloadListener.Stub.asInterface(((BinderWarpper)paramBundle.getParcelable("binder")).a), null);
       }
       QLog.e("QuickUpdateIPCModule", 1, "download listener: " + paramString);
-      bhry.a(l).download(null, l, (String)localObject, paramString, false);
+      UpdateCallbackSelector.getCallback(l).download(l, (String)localObject, paramString, false);
     }
     for (;;)
     {
@@ -94,7 +91,7 @@ public class QuickUpdateIPCModule
         }
         else
         {
-          ((VasQuickUpdateManager)((QQAppInterface)((BaseApplicationImpl)localObject).getRuntime()).getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).queryItemVersion(paramString.intVal, paramString.strVal1, paramString.boolVal, false, 10000L, new bhod(this, paramInt));
+          ((IVasQuickUpdateService)((QQAppInterface)((BaseApplicationImpl)localObject).getRuntime()).getRuntimeService(IVasQuickUpdateService.class, "")).queryItemVersion(paramString.intVal, paramString.strVal1, paramString.boolVal, false, 10000L, new QuickUpdateIPCModule.1(this, paramInt));
         }
       }
     }
@@ -102,7 +99,7 @@ public class QuickUpdateIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.QuickUpdateIPCModule
  * JD-Core Version:    0.7.0.1
  */

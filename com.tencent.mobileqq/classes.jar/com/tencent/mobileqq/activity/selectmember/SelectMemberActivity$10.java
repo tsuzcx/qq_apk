@@ -8,8 +8,8 @@ import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 class SelectMemberActivity$10
   implements View.OnTouchListener
 {
-  float x = 0.0F;
-  float y = 0.0F;
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
   SelectMemberActivity$10(SelectMemberActivity paramSelectMemberActivity) {}
   
@@ -18,21 +18,21 @@ class SelectMemberActivity$10
     int i = paramMotionEvent.getAction();
     if (i == 0)
     {
-      this.x = paramMotionEvent.getRawX();
-      this.y = paramMotionEvent.getRawY();
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
     }
     for (;;)
     {
       return false;
-      if ((i == 2) && ((paramMotionEvent.getRawX() - this.x > 10.0F) || (paramMotionEvent.getRawY() - this.y > 10.0F))) {
-        this.this$0.mSelectedAndSearchBar.b();
+      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.b();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.10
  * JD-Core Version:    0.7.0.1
  */

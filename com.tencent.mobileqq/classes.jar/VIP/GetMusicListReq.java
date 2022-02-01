@@ -8,11 +8,11 @@ public final class GetMusicListReq
   extends JceStruct
 {
   static SourceInfo cache_stSource = new SourceInfo();
-  public int iMode;
-  public long iNum;
-  public long iUin;
+  public int iMode = 0;
+  public long iNum = 0L;
+  public long iUin = 0L;
   public String sCookie = "";
-  public SourceInfo stSource;
+  public SourceInfo stSource = null;
   
   public GetMusicListReq() {}
   

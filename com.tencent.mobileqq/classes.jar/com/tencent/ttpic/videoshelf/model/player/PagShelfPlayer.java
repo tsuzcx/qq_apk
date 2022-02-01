@@ -10,7 +10,7 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.report.ReportUtil;
-import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
+import com.tencent.ttpic.openapi.offlineset.AEOfflineConfig;
 import com.tencent.ttpic.videoshelf.libpag.PagNotSupportSystemException;
 import com.tencent.ttpic.videoshelf.libpag.PagUtil;
 import com.tencent.ttpic.videoshelf.utils.TTPTLogger;
@@ -64,7 +64,7 @@ public class PagShelfPlayer
       throw new PagNotSupportSystemException("PagShelfPlayer");
     }
     this.mPagRender = new PAGRenderer();
-    if (OfflineConfig.isNeedSoftDecode()) {
+    if (AEOfflineConfig.isNeedSoftDecode()) {
       PagUtil.useSoftDecode();
     }
     this.mPlayTask = new PagShelfPlayer.PagPlayTimerTask(this, null);
@@ -102,11 +102,11 @@ public class PagShelfPlayer
         this.mPlayTask.reset();
       }
       this.mPagRender.setFile(paramPAGFile);
-    } while (!OfflineConfig.isNeedScale());
+    } while (!AEOfflineConfig.isNeedScale());
     Log.i("PagShelfPlayer", "使用低尺度的PAG文件进行预览。");
     TTPTLogger.i("PagShelfPlayer", "使用低尺度的PAG文件进行预览。");
     this.mPagRender.setMaxFrameRate(-1.0F);
-    this.mPagRender.setCacheScale(OfflineConfig.getPagPlayScale());
+    this.mPagRender.setCacheScale(AEOfflineConfig.getPagPlayScale());
   }
   
   private void setTimeCount()
@@ -576,7 +576,7 @@ public class PagShelfPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.player.PagShelfPlayer
  * JD-Core Version:    0.7.0.1
  */

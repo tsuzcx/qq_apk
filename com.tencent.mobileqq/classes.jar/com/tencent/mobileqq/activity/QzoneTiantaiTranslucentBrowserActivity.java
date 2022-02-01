@@ -1,27 +1,25 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bmpf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
+import cooperation.vip.webview.controller.BaseTranslucentController;
 import mqq.app.AppRuntime;
 
 public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
-  private static volatile long jdField_a_of_type_Long;
-  private bmpf jdField_a_of_type_Bmpf;
+  private static volatile long jdField_a_of_type_Long = 0L;
+  private BaseTranslucentController jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController;
   
-  private bmpf a()
+  private BaseTranslucentController a()
   {
     Intent localIntent = getIntent();
     if (localIntent != null)
@@ -29,11 +27,11 @@ public class QzoneTiantaiTranslucentBrowserActivity
       switch (localIntent.getIntExtra("translucent_controller", 0))
       {
       default: 
-        return new bmpf(this);
+        return new BaseTranslucentController(this);
       }
-      return new bmpf(this);
+      return new BaseTranslucentController(this);
     }
-    return new bmpf(this);
+    return new BaseTranslucentController(this);
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -50,30 +48,23 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public static void b(QQAppInterface paramQQAppInterface)
   {
     QLog.i("WebLog_QQBrowserActivity", 1, "preloadToolsProcessImpl running");
-    Object localObject = null;
     if (paramQQAppInterface == null)
     {
-      paramQQAppInterface = localObject;
-      if (BaseApplicationImpl.getApplication() != null)
-      {
-        paramQQAppInterface = localObject;
-        if (BaseApplicationImpl.getApplication().getRuntime() == null) {}
+      if ((BaseApplicationImpl.getApplication() == null) || (BaseApplicationImpl.getApplication().getRuntime() == null)) {
+        break label72;
       }
+      paramQQAppInterface = (IWebProcessManagerService)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IWebProcessManagerService.class, "multi");
     }
-    for (paramQQAppInterface = (WebProcessManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.WEBPROCESS_MANAGER);; paramQQAppInterface = (WebProcessManager)paramQQAppInterface.getManager(QQManagerFactory.WEBPROCESS_MANAGER))
+    for (;;)
     {
       if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(1);
+        paramQQAppInterface.startWebProcess(1, null);
       }
       return;
-    }
-  }
-  
-  public void a(WebView paramWebView, String paramString)
-  {
-    super.a(paramWebView, paramString);
-    if (this.jdField_a_of_type_Bmpf != null) {
-      this.jdField_a_of_type_Bmpf.e();
+      paramQQAppInterface = (IWebProcessManagerService)paramQQAppInterface.getRuntimeService(IWebProcessManagerService.class, "");
+      continue;
+      label72:
+      paramQQAppInterface = null;
     }
   }
   
@@ -88,7 +79,7 @@ public class QzoneTiantaiTranslucentBrowserActivity
   
   public void doOnBackPressed()
   {
-    if ((this.jdField_a_of_type_Bmpf != null) && (this.jdField_a_of_type_Bmpf.a())) {
+    if ((this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController != null) && (this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController.a())) {
       super.doOnBackPressed();
     }
   }
@@ -96,8 +87,8 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    if (this.jdField_a_of_type_Bmpf != null) {
-      this.jdField_a_of_type_Bmpf.a();
+    if (this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController != null) {
+      this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController.a();
     }
     return bool;
   }
@@ -105,24 +96,24 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bmpf != null) {
-      this.jdField_a_of_type_Bmpf.d();
+    if (this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController != null) {
+      this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController.d();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bmpf != null) {
-      this.jdField_a_of_type_Bmpf.b();
+    if (this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController != null) {
+      this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController.b();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Bmpf != null) {
-      this.jdField_a_of_type_Bmpf.c();
+    if (this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController != null) {
+      this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController.c();
     }
   }
   
@@ -135,13 +126,21 @@ public class QzoneTiantaiTranslucentBrowserActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bmpf = a();
+    this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController = a();
     super.onCreate(paramBundle);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    if (this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController != null) {
+      this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

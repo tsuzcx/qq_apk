@@ -3,13 +3,12 @@ package cooperation.qqreader.host.advertisement;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tianshu.data.TianShuGetAdvCallback;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import cooperation.vip.pb.TianShuAccess.MapEntry;
 import cooperation.vip.pb.TianShuAccess.RspEntry;
-import cooperation.vip.tianshu.TianShuGetAdvCallback;
-import cooperation.vip.tianshu.TianShuManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,8 +30,8 @@ class ReaderTianShuSdk$ReaderTianShuGetAdvCallback
   {
     ArrayList localArrayList = new ArrayList();
     if ((!paramBoolean) || (paramGetAdsRsp == null)) {}
-    label274:
-    label279:
+    label266:
+    label271:
     for (;;)
     {
       if (this.jdField_a_of_type_CooperationQqreaderHostAdvertisementReaderTianShuSdk$RequestListener != null) {
@@ -59,13 +58,13 @@ class ReaderTianShuSdk$ReaderTianShuGetAdvCallback
       for (;;)
       {
         if ((paramGetAdsRsp == null) || (paramGetAdsRsp.value == null)) {
-          break label279;
+          break label271;
         }
         paramGetAdsRsp = paramGetAdsRsp.value.lst.get().iterator();
         for (;;)
         {
           if (!paramGetAdsRsp.hasNext()) {
-            break label274;
+            break label266;
           }
           localObject = (TianShuAccess.AdItem)paramGetAdsRsp.next();
           HashMap localHashMap = new HashMap();
@@ -87,7 +86,6 @@ class ReaderTianShuSdk$ReaderTianShuGetAdvCallback
             localHashMap.put("iAdId", String.valueOf(((TianShuAccess.AdItem)localObject).iAdId.get()));
           }
           localArrayList.add(localHashMap);
-          TianShuManager.getInstance().cacheTraceInfo((TianShuAccess.AdItem)localObject);
         }
         break;
         paramGetAdsRsp = null;
@@ -97,7 +95,7 @@ class ReaderTianShuSdk$ReaderTianShuGetAdvCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderTianShuSdk.ReaderTianShuGetAdvCallback
  * JD-Core Version:    0.7.0.1
  */

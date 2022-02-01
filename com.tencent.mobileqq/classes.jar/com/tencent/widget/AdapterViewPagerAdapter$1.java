@@ -9,7 +9,7 @@ class AdapterViewPagerAdapter$1
   
   public void onChanged()
   {
-    this.this$0.notifyDataSetChanged();
+    this.a.notifyDataSetChanged();
   }
   
   public void onInvalidated()

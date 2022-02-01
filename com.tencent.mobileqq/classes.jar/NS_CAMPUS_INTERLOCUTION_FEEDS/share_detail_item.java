@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class share_detail_item
   extends JceStruct
 {
-  public int action_type;
+  public int action_type = 0;
   public String action_url = "";
-  public long answer_num;
+  public long answer_num = 0L;
   public String content = "";
   public String module_name = "";
   public String nick = "";
@@ -18,10 +18,10 @@ public final class share_detail_item
   public String portrait = "";
   public String school_name = "";
   public String share_content = "";
-  public int type;
-  public long uin;
-  public long user_type;
-  public long visit_num;
+  public int type = 0;
+  public long uin = 0L;
+  public long user_type = 0L;
+  public long visit_num = 0L;
   
   public share_detail_item() {}
   

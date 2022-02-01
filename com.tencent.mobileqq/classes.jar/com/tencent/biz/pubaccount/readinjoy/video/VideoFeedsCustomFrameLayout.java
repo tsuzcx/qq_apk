@@ -11,7 +11,7 @@ public class VideoFeedsCustomFrameLayout
   private float jdField_a_of_type_Float;
   private boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   
   public VideoFeedsCustomFrameLayout(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class VideoFeedsCustomFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCustomFrameLayout
  * JD-Core Version:    0.7.0.1
  */

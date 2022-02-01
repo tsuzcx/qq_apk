@@ -8,7 +8,7 @@ public class ApplyJoinShareAlbum
   extends JceStruct
 {
   public String albumid = "";
-  public long owner;
+  public long owner = 0L;
   
   public ApplyJoinShareAlbum() {}
   

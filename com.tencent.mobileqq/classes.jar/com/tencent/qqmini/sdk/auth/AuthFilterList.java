@@ -118,6 +118,7 @@ public class AuthFilterList
       sEventLocalBlackList.add("operateXWebLivePusher");
       sEventLocalBlackList.add("shareAppPictureMessage");
       sEventLocalBlackList.add("shareAppPictureMessageDirectly");
+      sEventLocalBlackList.add("getPhoneNumber");
       sEventLocalBlackList.add("wnsRequest");
       sEventLocalBlackList.add("getQua");
       sEventLocalBlackList.add("notifyNative");
@@ -140,6 +141,8 @@ public class AuthFilterList
       sEventLocalBlackList.add("updateBookshelfReadTime");
       sEventLocalBlackList.add("navigateToBookshelf");
       sEventLocalBlackList.add("addRecentColorSign");
+      sEventLocalBlackList.add("detectAbnormalLog");
+      sEventLocalBlackList.add("minigameRaffle");
       return;
     }
   }

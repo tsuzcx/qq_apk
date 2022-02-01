@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import avtb;
 import java.util.List;
 
 class GroupVideoManager$7$1
@@ -10,18 +9,18 @@ class GroupVideoManager$7$1
   
   public void run()
   {
-    avtb localavtb = this.this$0.a;
+    GroupVideoManager.CheckListener localCheckListener = this.this$0.a;
     if ((this.a != null) && (this.a.size() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      localavtb.a(bool);
+      localCheckListener.a(bool);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.7.1
  * JD-Core Version:    0.7.0.1
  */

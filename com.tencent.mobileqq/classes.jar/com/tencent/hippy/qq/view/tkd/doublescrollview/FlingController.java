@@ -13,7 +13,7 @@ public class FlingController
   private IDoubleScroll flingListener;
   private int fps = 50;
   private Handler handler = new FlingController.1(this);
-  public boolean isFling;
+  public boolean isFling = false;
   private int mVelocity;
   private FlingController.MyVelocity myVelocity = new FlingController.MyVelocity();
   
@@ -32,7 +32,7 @@ public class FlingController
   public int computeDistance()
   {
     int i = this.mVelocity - this.a;
-    int j = ImmersiveUtils.b(this.mVelocity + i >> 1);
+    int j = ImmersiveUtils.PxToDp(this.mVelocity + i >> 1);
     this.mVelocity = i;
     if ((Math.abs(-j) < 5) || (Math.abs(this.mVelocity) < 10)) {
       finish();
@@ -69,7 +69,7 @@ public class FlingController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.doublescrollview.FlingController
  * JD-Core Version:    0.7.0.1
  */

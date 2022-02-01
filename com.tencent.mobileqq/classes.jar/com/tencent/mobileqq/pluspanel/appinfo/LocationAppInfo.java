@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
-import awjp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.location.pluspanel.LocationSheet;
 import com.tencent.mobileqq.startup.step.CheckPermission;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class LocationAppInfo
   extends PlusPanelAppInfo
 {
-  public LocationAppInfo() {}
+  LocationAppInfo() {}
   
   public LocationAppInfo(int paramInt)
   {
@@ -21,7 +21,7 @@ public class LocationAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839209;
+    return 2130839278;
   }
   
   public int getAppID()
@@ -50,17 +50,17 @@ public class LocationAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719444);
+    return BaseApplicationImpl.getContext().getString(2131720008);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (!CheckPermission.isHasStoragePermission(paramBaseChatPie.getActivity()))
+    if (!CheckPermission.isHasStoragePermission(paramBaseChatPie.a()))
     {
-      CheckPermission.requestSDCardPermission(paramBaseChatPie.getActivity(), null);
+      CheckPermission.requestSDCardPermission(paramBaseChatPie.a(), null);
       return;
     }
-    new awjp(paramBaseChatPie.app, paramBaseChatPie).a();
+    new LocationSheet(paramBaseChatPie.a, paramBaseChatPie).a();
   }
 }
 

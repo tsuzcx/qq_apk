@@ -99,7 +99,7 @@ public class BrowserBaseScene
   public AnimationView createAnimationView()
   {
     AnimationView localAnimationView = new AnimationView(this.mContext, null);
-    localAnimationView.setId(2131362714);
+    localAnimationView.setId(2131362741);
     localAnimationView.setVisibility(4);
     return localAnimationView;
   }
@@ -111,7 +111,7 @@ public class BrowserBaseScene
   
   protected RelativeLayout createLayout()
   {
-    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131558785, null);
+    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131558825, null);
   }
   
   protected AbstractProgressView createProgressBar()
@@ -244,9 +244,9 @@ public class BrowserBaseScene
     }
     for (;;)
     {
-      this.rootView = this.mRoot.findViewById(2131376947);
-      this.recyclerView = ((BrowserRecyclerView)this.mRoot.findViewById(2131376421));
-      this.bgView = this.mRoot.findViewById(2131363339);
+      this.rootView = this.mRoot.findViewById(2131377356);
+      this.recyclerView = ((BrowserRecyclerView)this.mRoot.findViewById(2131376814));
+      this.bgView = this.mRoot.findViewById(2131363419);
       this.progressView = createProgressBar();
       if (this.progressView != null) {
         this.progressView.init(this.mContext, this);
@@ -371,7 +371,7 @@ public class BrowserBaseScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.BrowserBaseScene
  * JD-Core Version:    0.7.0.1
  */

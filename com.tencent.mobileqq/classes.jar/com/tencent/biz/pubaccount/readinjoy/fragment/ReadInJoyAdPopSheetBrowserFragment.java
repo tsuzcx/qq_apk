@@ -7,13 +7,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bieo;
-import biur;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.widget.WebViewProgressBarController;
 import com.tencent.qphone.base.util.QLog;
-import pxo;
-import ung;
 
 public class ReadInJoyAdPopSheetBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
@@ -40,22 +39,22 @@ public class ReadInJoyAdPopSheetBrowserFragment
       getActivity().finish();
       return;
     }
-    localObject = ung.a(getActivity(), this.b, this.c, this.d);
-    ((ung)localObject).a(new pxo(this));
-    ((ung)localObject).show();
+    localObject = ReadInJoyAdPopSheetDialog.a(getActivity(), this.b, this.c, this.d);
+    ((ReadInJoyAdPopSheetDialog)localObject).a(new ReadInJoyAdPopSheetBrowserFragment.1(this));
+    ((ReadInJoyAdPopSheetDialog)localObject).show();
   }
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_Final(paramBundle);
-    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.titleContainer != null)) {
-      this.mSwiftTitleUI.titleContainer.setVisibility(8);
+    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.a != null)) {
+      this.mSwiftTitleUI.a.setVisibility(8);
     }
     if (this.mSystemBarComp != null) {
       this.mSystemBarComp.setVisibility(8);
     }
-    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.mProgressBarController != null)) {
-      this.mUIStyleHandler.mProgressBarController.a(false);
+    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.a != null)) {
+      this.mUIStyleHandler.a.a(false);
     }
     getActivity().getWindow().getDecorView().setSystemUiVisibility(514);
     return i;
@@ -69,7 +68,7 @@ public class ReadInJoyAdPopSheetBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdPopSheetBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

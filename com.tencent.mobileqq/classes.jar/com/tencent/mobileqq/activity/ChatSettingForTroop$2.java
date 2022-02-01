@@ -16,12 +16,12 @@ class ChatSettingForTroop$2
       QLog.w("Q.chatopttroop", 2, "-->preForward--fetch openid timeout");
     }
     this.this$0.n = true;
-    this.this$0.q();
+    this.this$0.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.2
  * JD-Core Version:    0.7.0.1
  */

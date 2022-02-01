@@ -5,14 +5,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 import javax.annotation.concurrent.GuardedBy;
 
-public class SingleThreadExecutor
+class SingleThreadExecutor
   extends ThreadManagerExecutor
 {
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   @GuardedBy("lock")
   private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue = new LinkedList();
   @GuardedBy("lock")
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   
   SingleThreadExecutor(int paramInt)
   {
@@ -36,7 +36,7 @@ public class SingleThreadExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SingleThreadExecutor
  * JD-Core Version:    0.7.0.1
  */

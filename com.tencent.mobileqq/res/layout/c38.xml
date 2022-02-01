@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center_vertical" android:layout_width="@dimen/bbd" android:layout_height="@dimen/bbd" android:layout_marginRight="@dimen/bea"
+<dov.com.qq.im.ae.view.AETouchNotifyRelativeLayout android:id="@id/cg_" android:background="@color/dg" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/o24" android:background="@drawable/bhc" android:layout_width="@dimen/bbd" android:layout_height="@dimen/bbd" />
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/mn_" android:layout_width="@dimen/be_" android:layout_height="@dimen/be_" android:scaleType="center" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <dov.com.qq.im.ae.view.NoScrollViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <dov.com.qq.im.ae.view.TabLayout android:id="@id/o84" android:layout_width="fill_parent" android:layout_height="@dimen/b_g" android:layout_marginLeft="@dimen/b_l" android:layout_marginTop="@dimen/b_i" android:layout_marginRight="@dimen/b_l" android:layout_marginBottom="@dimen/b_h" android:layout_alignParentBottom="true" />
+</dov.com.qq.im.ae.view.AETouchNotifyRelativeLayout>

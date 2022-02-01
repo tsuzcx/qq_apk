@@ -4,19 +4,19 @@ import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class MarketFaceItemBuilder$13
+final class MarketFaceItemBuilder$13
   implements Runnable
 {
-  public MarketFaceItemBuilder$13(Context paramContext, String paramString) {}
+  MarketFaceItemBuilder$13(Context paramContext, String paramString) {}
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299080));
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299166));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.13
  * JD-Core Version:    0.7.0.1
  */

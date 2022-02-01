@@ -10,8 +10,8 @@ public final class custom_list_switch_set_rsp
   extends JceStruct
 {
   static Map<String, String> cache_mapExtInfo = new HashMap();
-  public int iCode;
-  public Map<String, String> mapExtInfo;
+  public int iCode = 0;
+  public Map<String, String> mapExtInfo = null;
   
   static
   {

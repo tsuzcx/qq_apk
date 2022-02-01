@@ -9,19 +9,19 @@ public final class TrafficResultInfo
 {
   static PopupImgInfo cache_popInfo = new PopupImgInfo();
   static ToastImgInfo cache_toasInfo = new ToastImgInfo();
-  public int bUpdate;
-  public int iDrawerEnable;
-  public int iDrawerTextId;
-  public int iGuideEnable;
-  public int iImsiInterval;
-  public int iReportInterval;
-  public int iWkOrderState1;
-  public int iWkOrderState2;
-  public PopupImgInfo popInfo;
+  public int bUpdate = 0;
+  public int iDrawerEnable = 0;
+  public int iDrawerTextId = 0;
+  public int iGuideEnable = 0;
+  public int iImsiInterval = 0;
+  public int iReportInterval = 0;
+  public int iWkOrderState1 = 0;
+  public int iWkOrderState2 = 0;
+  public PopupImgInfo popInfo = null;
   public String sDrawerText = "";
   public String sDrawerUrl = "";
   public String sGuideUrl = "";
-  public ToastImgInfo toasInfo;
+  public ToastImgInfo toasInfo = null;
   
   public TrafficResultInfo() {}
   

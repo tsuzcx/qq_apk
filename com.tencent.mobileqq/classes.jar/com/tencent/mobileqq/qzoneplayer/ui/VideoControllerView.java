@@ -58,7 +58,7 @@ public class VideoControllerView
   protected View mRoot;
   private SeekBar.OnSeekBarChangeListener mSeekBarChangeListener;
   protected SeekBar.OnSeekBarChangeListener mSeekListener = new VideoControllerView.6(this);
-  public volatile boolean mShowing;
+  protected volatile boolean mShowing;
   private View.OnClickListener mStreamSelectListener;
   private ImageButton mSwitchLandscapeButton;
   protected View.OnClickListener mSwitchLandscapeListener = new VideoControllerView.5(this);
@@ -285,7 +285,7 @@ public class VideoControllerView
     return this.mRoot;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
   }

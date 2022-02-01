@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.sdk;
 
-import com.tencent.mobileqq.msf.core.c.f;
-import com.tencent.mobileqq.msf.core.c.f.a;
+import com.tencent.mobileqq.msf.core.c.e;
+import com.tencent.mobileqq.msf.core.c.e.a;
 import com.tencent.mobileqq.msf.sdk.handler.IAuthHandler;
 import com.tencent.mobileqq.msf.sdk.handler.IMsfHandler;
 import com.tencent.mobileqq.msf.sdk.handler.IMsfMsgHandler;
@@ -180,7 +180,7 @@ public class MsfRespHandleUtil
         bool1 = true;
         continue;
         if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-          f.a().a(f.a.b, paramFromServiceMsg.getWupBuffer(), 18);
+          e.a().a(e.a.b, paramFromServiceMsg.getWupBuffer(), 18);
         }
         return false;
       }

@@ -1,33 +1,26 @@
 package com.tencent.mobileqq.apollo;
 
-import anln;
-import anlq;
+import android.view.View;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.apollo.api.render.IRenderRunner;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpResponseCallback;
+import java.util.Map;
 
 final class ApolloRender$10
-  implements Runnable
+  implements ApolloHttpResponseCallback
 {
-  ApolloRender$10(String paramString1, String paramString2, String[] paramArrayOfString, anln paramanln, boolean paramBoolean, String paramString3, String paramString4, String paramString5) {}
+  ApolloRender$10(View paramView, long paramLong, String paramString1, String paramString2, ApolloRender paramApolloRender) {}
   
-  public void run()
+  public void a(int paramInt, @NonNull Map<String, String> paramMap, @NonNull byte[] paramArrayOfByte)
   {
-    String str = this.jdField_a_of_type_JavaLangString.toUpperCase();
-    if (str.equals("GET")) {
-      anlq.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Anln);
+    if ((this.jdField_a_of_type_AndroidViewView instanceof IRenderRunner)) {
+      ((IRenderRunner)this.jdField_a_of_type_AndroidViewView).runRenderTask(new ApolloRender.10.1(this, paramMap, paramInt, paramArrayOfByte));
     }
-    while (!str.equals("POST")) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      anlq.a(this.b, this.c, this.d, this.e, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Anln);
-      return;
-    }
-    anlq.a(this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Anln);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.10
  * JD-Core Version:    0.7.0.1
  */

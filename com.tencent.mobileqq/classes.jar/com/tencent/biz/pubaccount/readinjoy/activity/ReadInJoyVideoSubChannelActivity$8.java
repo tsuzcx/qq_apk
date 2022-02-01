@@ -1,8 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import olh;
-import omx;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class ReadInJoyVideoSubChannelActivity$8
   implements Runnable
@@ -16,16 +17,17 @@ class ReadInJoyVideoSubChannelActivity$8
     {
       str1 = "0";
       if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo.mIsTopic) {
-        break label119;
+        break label131;
       }
+      localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
       if (!this.jdField_a_of_type_Boolean) {
-        break label113;
+        break label125;
       }
     }
-    label113:
+    label125:
     for (String str2 = "1";; str2 = "2")
     {
-      olh.a(null, "", "0X80088BC", "0X80088BC", 0, 0, str2, str1, "", omx.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X80088BC", "0X80088BC", 0, 0, str2, str1, "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
       return;
       if (ReadInJoyVideoSubChannelActivity.b(this.this$0) == 8)
       {
@@ -38,18 +40,19 @@ class ReadInJoyVideoSubChannelActivity$8
       str1 = "2";
       break;
     }
-    label119:
+    label131:
+    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
     if (this.jdField_a_of_type_Boolean) {}
     for (str2 = "1";; str2 = "2")
     {
-      olh.a(null, "", "0X8007BFE", "0X8007BFE", 0, 0, str2, str1, "", omx.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X8007BFE", "0X8007BFE", 0, 0, str2, str1, "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity.8
  * JD-Core Version:    0.7.0.1
  */

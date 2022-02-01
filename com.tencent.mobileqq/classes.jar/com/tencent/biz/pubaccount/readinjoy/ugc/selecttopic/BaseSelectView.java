@@ -12,6 +12,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.mvp.ListContract.IListView;
+import com.tencent.biz.pubaccount.readinjoy.mvp.ListPresenter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -21,60 +23,55 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qjl;
-import qjt;
-import sby;
-import sbz;
-import sca;
-import scb;
-import scc;
-import scd;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectView;", "BEAN", "HOLDER", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/IOnActivityResult;", "Lcom/tencent/biz/pubaccount/readinjoy/mvp/ListContract$IListView;", "context", "Landroid/app/Activity;", "listPresenter", "Lcom/tencent/biz/pubaccount/readinjoy/mvp/ListPresenter;", "(Landroid/app/Activity;Lcom/tencent/biz/pubaccount/readinjoy/mvp/ListPresenter;)V", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter;", "getAdapter", "()Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter;", "errorLayout", "Landroid/view/View;", "isLoadingMore", "", "listView", "Landroid/widget/ListView;", "loadingLayout", "onScrollListener", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectView$onScrollListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectView$onScrollListener$1;", "rightActionBtn", "Landroid/widget/TextView;", "rightActionText", "", "getRightActionText", "()Ljava/lang/String;", "selectCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "bean", "", "getSelectCallback", "()Lkotlin/jvm/functions/Function1;", "setSelectCallback", "(Lkotlin/jvm/functions/Function1;)V", "selectTip", "getSelectTip", "selectTipView", "addItemToTop", "(Ljava/lang/Object;)V", "handleRightActionClick", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttachedToWindow", "onDetachedFromWindow", "setCenterEmpty", "setCenterError", "errorCode", "errorMsg", "setCenterHide", "setCenterLoading", "setFooterError", "setFooterHasMore", "setFooterHide", "setFooterLoading", "setFooterNoMore", "setHeaderError", "setHeaderLoading", "setHeaderSuccess", "setListData", "allList", "", "isAppend", "setTotal", "total", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract class BaseSelectView<BEAN, HOLDER extends sbz>
+public abstract class BaseSelectView<BEAN, HOLDER extends BaseSelectAdapter.BaseSelectViewHolder>
   extends RelativeLayout
-  implements qjl<BEAN>
+  implements ListContract.IListView<BEAN>, IOnActivityResult
 {
   private View jdField_a_of_type_AndroidViewView;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final ListPresenter<BEAN, ListContract.IListView<BEAN>> jdField_a_of_type_ComTencentBizPubaccountReadinjoyMvpListPresenter;
+  private BaseSelectView.onScrollListener.1 jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicBaseSelectView$onScrollListener$1;
   @NotNull
   private final String jdField_a_of_type_JavaLangString;
   @Nullable
   private Function1<? super BEAN, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  private final qjt<BEAN, qjl<BEAN>> jdField_a_of_type_Qjt;
-  private scd jdField_a_of_type_Scd;
   private boolean jdField_a_of_type_Boolean;
   private View jdField_b_of_type_AndroidViewView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   @NotNull
   private final String jdField_b_of_type_JavaLangString;
   
-  public BaseSelectView(@NotNull Activity paramActivity, @NotNull qjt<BEAN, qjl<BEAN>> paramqjt)
+  public BaseSelectView(@NotNull Activity paramActivity, @NotNull ListPresenter<BEAN, ListContract.IListView<BEAN>> paramListPresenter)
   {
     super((Context)paramActivity);
-    this.jdField_a_of_type_Qjt = paramqjt;
-    this.jdField_a_of_type_Scd = new scd(this);
-    LayoutInflater.from((Context)paramActivity).inflate(2131560319, (ViewGroup)this, true);
-    paramActivity = findViewById(2131377284);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMvpListPresenter = paramListPresenter;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicBaseSelectView$onScrollListener$1 = new BaseSelectView.onScrollListener.1(this);
+    LayoutInflater.from((Context)paramActivity).inflate(2131560391, (ViewGroup)this, true);
+    paramActivity = findViewById(2131377705);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.selectTipView)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity);
-    paramActivity = findViewById(2131366236);
+    paramActivity = findViewById(2131366407);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.errorLayout)");
     this.jdField_a_of_type_AndroidViewView = paramActivity;
-    paramActivity = findViewById(2131376664);
+    paramActivity = findViewById(2131377059);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.rightActionBtn)");
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity);
-    paramActivity = findViewById(2131370187);
+    paramActivity = findViewById(2131370459);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.listView)");
     this.jdField_a_of_type_AndroidWidgetListView = ((ListView)paramActivity);
-    paramActivity = findViewById(2131370448);
+    paramActivity = findViewById(2131370725);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.loadingLayout)");
     this.jdField_b_of_type_AndroidViewView = paramActivity;
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)new sca(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)new BaseSelectView.1(this));
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
   }
+  
+  @NotNull
+  public abstract BaseSelectAdapter<BEAN, HOLDER> a();
   
   @NotNull
   public String a()
@@ -87,9 +84,6 @@ public abstract class BaseSelectView<BEAN, HOLDER extends sbz>
   {
     return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
   }
-  
-  @NotNull
-  public abstract sby<BEAN, HOLDER> a();
   
   public void a() {}
   
@@ -110,7 +104,7 @@ public abstract class BaseSelectView<BEAN, HOLDER extends sbz>
     return this.jdField_b_of_type_JavaLangString;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)a());
@@ -120,20 +114,20 @@ public abstract class BaseSelectView<BEAN, HOLDER extends sbz>
       if (i != 0)
       {
         this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)b());
-        this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)new scb(this));
+        this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)new BaseSelectView.onAttachedToWindow.1(this));
       }
       this.jdField_a_of_type_AndroidWidgetListView.setAdapter((ListAdapter)a());
-      this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener((AdapterView.OnItemClickListener)new scc(this));
-      this.jdField_a_of_type_AndroidWidgetListView.setOnScrollListener((AbsListView.OnScrollListener)this.jdField_a_of_type_Scd);
-      this.jdField_a_of_type_Qjt.a((qjl)this);
-      this.jdField_a_of_type_Qjt.b();
+      this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener((AdapterView.OnItemClickListener)new BaseSelectView.onAttachedToWindow.2(this));
+      this.jdField_a_of_type_AndroidWidgetListView.setOnScrollListener((AbsListView.OnScrollListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicBaseSelectView$onScrollListener$1);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMvpListPresenter.a((ListContract.IListView)this);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMvpListPresenter.b();
       return;
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
-    this.jdField_a_of_type_Qjt.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMvpListPresenter.a();
     super.onDetachedFromWindow();
   }
   
@@ -207,7 +201,7 @@ public abstract class BaseSelectView<BEAN, HOLDER extends sbz>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView
  * JD-Core Version:    0.7.0.1
  */

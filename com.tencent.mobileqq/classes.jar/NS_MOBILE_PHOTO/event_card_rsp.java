@@ -12,11 +12,11 @@ public final class event_card_rsp
 {
   static Map<String, String> cache_ext;
   static ArrayList<event_group> cache_groups = new ArrayList();
-  public Map<String, String> ext;
-  public ArrayList<event_group> groups;
-  public int reset;
+  public Map<String, String> ext = null;
+  public ArrayList<event_group> groups = null;
+  public int reset = 0;
   public String start_cardid = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

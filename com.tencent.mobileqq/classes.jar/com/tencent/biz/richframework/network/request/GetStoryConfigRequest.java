@@ -2,6 +2,7 @@ package com.tencent.biz.richframework.network.request;
 
 import NS_QQ_STORY_CONFIG.CONFIG.StGetStoryConfigReq;
 import NS_QQ_STORY_CONFIG.CONFIG.StGetStoryConfigRsp;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 
 public class GetStoryConfigRequest
@@ -12,7 +13,15 @@ public class GetStoryConfigRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CONFIG.StGetStoryConfigRsp localStGetStoryConfigRsp = new CONFIG.StGetStoryConfigRsp();
-    localStGetStoryConfigRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStGetStoryConfigRsp.mergeFrom(paramArrayOfByte);
+      return localStGetStoryConfigRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStGetStoryConfigRsp;
   }
   
@@ -28,7 +37,7 @@ public class GetStoryConfigRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.GetStoryConfigRequest
  * JD-Core Version:    0.7.0.1
  */

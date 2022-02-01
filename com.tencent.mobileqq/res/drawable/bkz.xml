@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/i4k" />
-    <item android:drawable="@drawable/i4o" />
-</selector>
+    <gradient android:startColor="#ff6c5cfc" android:endColor="#ffb373ff" android:angle="180.0" android:type="linear" />
+    <corners android:radius="12.0dip" />
+</shape>

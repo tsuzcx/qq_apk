@@ -9,7 +9,7 @@ public class QVipBigTroopExpiredConfig
   public int mNotifyDialogExpiredIntervalDay = 1;
   public int mNotifyDialogMaxCount = 2;
   public int mNotifyDialogMaxDay = 7;
-  public int mNotifyDialogMinDay;
+  public int mNotifyDialogMinDay = 0;
   public int mNotifyDialogPerDay = 1;
   public int mNotifyTipsMaxCloseCount = 2;
   public int mNotifyTipsMaxCount = 2;

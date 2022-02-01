@@ -1,10 +1,12 @@
 package com.tencent.qqmini.sdk.plugins;
 
+import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.manager.VoIPManager;
 import com.tencent.qqmini.sdk.core.manager.VoIPManager.IdResult;
 import com.tencent.qqmini.sdk.core.manager.VoIPManager.RoomConfig;
@@ -49,6 +51,11 @@ public class VoIPJsPlugin
     return (!TextUtils.isEmpty(paramRoomConfig.nonceStr)) && (!TextUtils.isEmpty(paramRoomConfig.groupId)) && (!TextUtils.isEmpty(paramRoomConfig.signature)) && (paramRoomConfig.timeStamp > 0);
   }
   
+  private void joinRoom(VoIPManager.IdResult paramIdResult, VoIPManager.RoomConfig paramRoomConfig, RequestEvent paramRequestEvent)
+  {
+    VoIPManager.getInstance().joinRoom(paramIdResult, paramRoomConfig.muteConfig, getSig(this.mMiniAppContext.getMiniAppInfo().appId, paramRoomConfig), new VoIPJsPlugin.3(this, paramRequestEvent));
+  }
+  
   private VoIPManager.IdResult parseIdResult(JSONObject paramJSONObject)
   {
     return (VoIPManager.IdResult)new VoIPJsPlugin.JSONParser().parse(paramJSONObject, VoIPManager.IdResult.class);
@@ -57,6 +64,11 @@ public class VoIPJsPlugin
   private VoIPManager.RoomConfig parseRoomConfig(String paramString)
   {
     return (VoIPManager.RoomConfig)new VoIPJsPlugin.JSONParser().parse(paramString, VoIPManager.RoomConfig.class);
+  }
+  
+  private void transForRoodId(RequestEvent paramRequestEvent, VoIPManager.RoomConfig paramRoomConfig, String paramString)
+  {
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).transForRoomId(this.mMiniAppContext.getMiniAppInfo().appId, paramString, new VoIPJsPlugin.2(this, paramRequestEvent, paramRoomConfig));
   }
   
   @JsEvent({"exitVoIPChat"})
@@ -105,8 +117,7 @@ public class VoIPJsPlugin
         for (;;)
         {
           return "";
-          String str = localJSONObject.groupId;
-          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).transForRoomId(this.mMiniAppContext.getMiniAppInfo().appId, str, new VoIPJsPlugin.2(this, paramRequestEvent, localJSONObject));
+          transForRoodId(paramRequestEvent, localJSONObject, localJSONObject.groupId);
         }
       }
       catch (JSONException localJSONException2)
@@ -135,8 +146,7 @@ public class VoIPJsPlugin
       localJSONObject.put("errCode", 2);
       localJSONObject.put("errMsg", "进入后台或关闭");
       sendSubscribeEvent("onVoIPChatInterrupted", localJSONObject.toString());
-      VoIPManager.getInstance().exitRoom();
-      VoIPManager.getInstance().setEventListener(null);
+      ThreadManager.getSubThreadHandler().post(new VoIPJsPlugin.4(this));
       super.onPause();
       return;
     }
@@ -167,7 +177,7 @@ public class VoIPJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.VoIPJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class operation_play_on_wifi_rsp
   extends JceStruct
 {
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public operation_play_on_wifi_rsp() {}
   

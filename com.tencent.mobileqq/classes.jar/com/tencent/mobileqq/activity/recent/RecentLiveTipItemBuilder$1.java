@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.activity.recent;
 
-import alhh;
-import axny;
-import bdlf;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
+import com.tencent.mobileqq.statistics.ReportTask;
 
-public class RecentLiveTipItemBuilder$1
+class RecentLiveTipItemBuilder$1
   implements Runnable
 {
-  public RecentLiveTipItemBuilder$1(alhh paramalhh, QQAppInterface paramQQAppInterface, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, axny paramaxny) {}
+  RecentLiveTipItemBuilder$1(RecentLiveTipItemBuilder paramRecentLiveTipItemBuilder, QQAppInterface paramQQAppInterface, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, NearbyCardManager paramNearbyCardManager) {}
   
   public void run()
   {
-    bdlf localbdlf = new bdlf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("msg_box");
+    ReportTask localReportTask = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("msg_box");
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving)
     {
       str = "exp_livepush";
-      localbdlf = localbdlf.d(str).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - AppConstants.NOW_LIVE_TIP_UIN_BASE));
+      localReportTask = localReportTask.d(str).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - AppConstants.NOW_LIVE_TIP_UIN_BASE));
       if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving) {
         break label125;
       }
@@ -26,7 +25,7 @@ public class RecentLiveTipItemBuilder$1
     label125:
     for (String str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.startLiveWordingType);; str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.endLiveWordingType))
     {
-      localbdlf.a(new String[] { str, String.valueOf(this.jdField_a_of_type_Axny.b()) }).a();
+      localReportTask.a(new String[] { str, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyCardManager.b()) }).a();
       return;
       str = "exp_relivepush";
       break;
@@ -35,7 +34,7 @@ public class RecentLiveTipItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentLiveTipItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

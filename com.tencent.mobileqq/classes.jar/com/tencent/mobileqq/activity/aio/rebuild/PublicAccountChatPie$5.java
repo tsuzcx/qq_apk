@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aido;
 import android.os.Handler;
-import aoan;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 
-public class PublicAccountChatPie$5
+class PublicAccountChatPie$5
   implements Runnable
 {
-  public PublicAccountChatPie$5(aido paramaido) {}
+  PublicAccountChatPie$5(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    Object localObject = (aoan)this.this$0.app.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+    Object localObject = (PublicAccountDataManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
     if (localObject != null) {}
-    for (localObject = ((aoan)localObject).b(this.this$0.sessionInfo.curFriendUin);; localObject = null)
+    for (localObject = ((PublicAccountDataManager)localObject).b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
     {
       if (localObject != null) {
-        this.this$0.a.sendEmptyMessage(1);
+        this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
       }
       return;
     }
@@ -27,7 +26,7 @@ public class PublicAccountChatPie$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.5
  * JD-Core Version:    0.7.0.1
  */

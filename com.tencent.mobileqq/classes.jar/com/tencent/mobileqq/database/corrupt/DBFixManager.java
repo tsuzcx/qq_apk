@@ -6,8 +6,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import arvy;
-import bcrg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,6 +18,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import mqq.app.AppRuntime.Status;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
@@ -61,6 +63,8 @@ public class DBFixManager
     jdField_e_of_type_JavaLangString = "dbfix_count";
     jdField_a_of_type_Int = 5;
     jdField_a_of_type_Long = -1L;
+    jdField_a_of_type_Boolean = false;
+    jdField_b_of_type_Int = 0;
     jdField_c_of_type_Int = 5;
     jdField_f_of_type_JavaLangString = "key_dbfixso_load_count";
     g = "dbcorrupt_flag";
@@ -80,14 +84,29 @@ public class DBFixManager
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
   }
   
-  public void a()
+  public static void a()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, DBFixDialogActivity.class);
-    localIntent.addFlags(268435456);
-    localIntent.addFlags(536870912);
-    localIntent.addFlags(67108864);
-    localIntent.addFlags(131072);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface)))
+    {
+      localObject1 = (QQAppInterface)localObject1;
+      Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences(((QQAppInterface)localObject1).getCurrentAccountUin(), 0);
+      localObject1 = ((SharedPreferences)localObject2).edit();
+      ((SharedPreferences.Editor)localObject1).remove("getMsgV4_vSyncCookie");
+      ((SharedPreferences.Editor)localObject1).remove("getlastMessageTime");
+      ((SharedPreferences.Editor)localObject1).remove("getMsgV4_vPubAccountCookie");
+      ((SharedPreferences.Editor)localObject1).remove("getTroopDiscMsgLastTime");
+      localObject2 = ((SharedPreferences)localObject2).getAll().entrySet().iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        String str = (String)((Map.Entry)((Iterator)localObject2).next()).getKey();
+        if ((!TextUtils.isEmpty(str)) && ((str.startsWith("getTroopLastMessageTime")) || (str.startsWith("getDiscussionLastMessageTime")))) {
+          ((SharedPreferences.Editor)localObject1).remove(str);
+        }
+      }
+      ((SharedPreferences.Editor)localObject1).commit();
+      QLog.e(o, 1, "clearAllMsgSyncFlags");
+    }
   }
   
   public void a(Context paramContext)
@@ -125,7 +144,7 @@ public class DBFixManager
     paramContext.commit();
     return;
     if (paramBoolean) {
-      a();
+      b();
     }
     for (;;)
     {
@@ -140,7 +159,7 @@ public class DBFixManager
       paramContext.commit();
       QLog.d(o, 1, new Object[] { "onCorruptionInstant, start activity and write sp ", Integer.valueOf(i1), " onCorrupt: ", Boolean.valueOf(paramBoolean) });
       return;
-      new arvy(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
+      new DBFixDialogUI(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
     }
   }
   
@@ -198,28 +217,22 @@ public class DBFixManager
   
   public void b()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (!TextUtils.isEmpty(str))
-    {
-      QLog.d(o, 1, "clearLocalSPFlag, remove sp");
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(jdField_b_of_type_JavaLangString, 0).edit();
-      localEditor.remove(str + jdField_d_of_type_JavaLangString);
-      localEditor.remove(str + jdField_e_of_type_JavaLangString);
-      localEditor.commit();
-    }
-    bcrg.j();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("acc_info" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putBoolean("isFriendlistok", false).commit();
-    QLog.d(o, 1, "cleared friendlist flag");
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, DBFixDialogActivity.class);
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    localIntent.addFlags(131072);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
   }
   
   public void b(boolean paramBoolean)
   {
     Object localObject = this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db");
     long l1 = ((File)localObject).length();
-    FileUtils.deleteFile(((File)localObject).getPath());
-    FileUtils.deleteFile(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db-journal").getPath());
-    FileUtils.deleteFile(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + "-wal").getPath());
-    FileUtils.deleteFile(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + "-shm").getPath());
+    FileUtils.e(((File)localObject).getPath());
+    FileUtils.e(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db-journal").getPath());
+    FileUtils.e(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + "-wal").getPath());
+    FileUtils.e(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + "-shm").getPath());
     if (!paramBoolean)
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(jdField_b_of_type_JavaLangString, 0);
@@ -235,10 +248,26 @@ public class DBFixManager
   
   public boolean b()
   {
-    return arvy.a != null;
+    return DBFixDialogUI.a != null;
   }
   
   public void c()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    if (!TextUtils.isEmpty(str))
+    {
+      QLog.d(o, 1, "clearLocalSPFlag, remove sp");
+      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(jdField_b_of_type_JavaLangString, 0).edit();
+      localEditor.remove(str + jdField_d_of_type_JavaLangString);
+      localEditor.remove(str + jdField_e_of_type_JavaLangString);
+      localEditor.commit();
+    }
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("acc_info" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putBoolean("isFriendlistok", false).commit();
+    QLog.d(o, 1, "cleared friendlist flag");
+  }
+  
+  public void d()
   {
     QLog.d(o, 1, "exitQQMainProcess");
     a(false);
@@ -261,7 +290,7 @@ public class DBFixManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixManager
  * JD-Core Version:    0.7.0.1
  */

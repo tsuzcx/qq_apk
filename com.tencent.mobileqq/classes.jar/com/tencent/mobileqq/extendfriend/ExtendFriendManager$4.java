@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.extendfriend;
 
-import aslo;
-import asrl;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatResourceUtil;
 
-public class ExtendFriendManager$4
+class ExtendFriendManager$4
   implements Runnable
 {
-  public ExtendFriendManager$4(aslo paramaslo, boolean paramBoolean) {}
+  ExtendFriendManager$4(ExtendFriendManager paramExtendFriendManager, boolean paramBoolean) {}
   
   public void run()
   {
-    aslo.b(this.this$0);
-    aslo.c(this.this$0);
+    ExtendFriendManager.b(this.this$0);
+    ExtendFriendManager.c(this.this$0);
     if (this.a) {
-      asrl.a();
+      ExtendFriendLimitChatResourceUtil.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.ExtendFriendManager.4
  * JD-Core Version:    0.7.0.1
  */

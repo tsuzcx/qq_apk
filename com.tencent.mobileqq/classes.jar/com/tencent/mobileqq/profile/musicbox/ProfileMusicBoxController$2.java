@@ -1,17 +1,14 @@
 package com.tencent.mobileqq.profile.musicbox;
 
-import aztn;
-import aztp;
-
-public class ProfileMusicBoxController$2
+class ProfileMusicBoxController$2
   implements Runnable
 {
-  public ProfileMusicBoxController$2(aztn paramaztn) {}
+  ProfileMusicBoxController$2(ProfileMusicBoxController paramProfileMusicBoxController) {}
   
   public void run()
   {
-    if (aztn.a(this.this$0) != null) {
-      aztn.a(this.this$0).a(2);
+    if (ProfileMusicBoxController.a(this.this$0) != null) {
+      ProfileMusicBoxController.a(this.this$0).a(2);
     }
     this.this$0.m();
   }

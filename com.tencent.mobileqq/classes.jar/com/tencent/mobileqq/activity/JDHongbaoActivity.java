@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import aeef;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -19,12 +17,12 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import annn;
-import anvx;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -38,14 +36,14 @@ public class JDHongbaoActivity
 {
   long jdField_a_of_type_Long = 0L;
   private View jdField_a_of_type_AndroidViewView;
-  public AlphaAnimation a;
+  AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
@@ -62,25 +60,25 @@ public class JDHongbaoActivity
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376823));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377230));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369356));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131369457));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379756));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379754));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379753));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379755));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379825));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379963));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131376801));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369611));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131369716));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380184));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380182));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380181));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380183));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380253));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380392));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131377205));
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 2, -1.0F, 2, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new aeef(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new JDHongbaoActivity.MyOvershotInterpolator(this));
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(800L);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131368275);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131368489);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 0.7F);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(350L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
@@ -91,8 +89,8 @@ public class JDHongbaoActivity
     if (QLog.isColorLevel()) {
       QLog.d("JDHongbaoActivity", 2, "showHongbaoResult jumpUrl " + paramString);
     }
-    if (!NetworkUtil.isNetSupport(this)) {
-      QQToast.a(this, anvx.a(2131705347), 1).a();
+    if (!NetworkUtil.d(this)) {
+      QQToast.a(this, HardCodeUtil.a(2131705890), 1).a();
     }
     while (paramString == null) {
       return;
@@ -129,12 +127,12 @@ public class JDHongbaoActivity
       this.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_e_of_type_JavaLangString + ">");
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-      annn.a(134247337, this.app);
+      ChatApolloViewListener.a(134247337, this.app);
     }
     for (;;)
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getApplicationContext().getResources().getDrawable(2130844899);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getApplicationContext().getResources().getDrawable(2130845060);
       localObject = URLDrawable.getDrawable(this.jdField_f_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
       if ((this.jdField_a_of_type_ComTencentImageURLImageView != null) && (localObject != null)) {
         this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
@@ -143,7 +141,7 @@ public class JDHongbaoActivity
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_e_of_type_JavaLangString);
-      annn.a(134247333, this.app);
+      ChatApolloViewListener.a(134247333, this.app);
     }
   }
   
@@ -171,7 +169,7 @@ public class JDHongbaoActivity
       finish();
       return false;
     }
-    setContentView(2131558695);
+    setContentView(2131558723);
     a();
     b();
     c();
@@ -195,25 +193,25 @@ public class JDHongbaoActivity
       a(this.g);
       if (this.jdField_a_of_type_Boolean)
       {
-        annn.a(134247339, this.app);
+        ChatApolloViewListener.a(134247339, this.app);
       }
       else
       {
-        annn.a(134247335, this.app);
+        ChatApolloViewListener.a(134247335, this.app);
         continue;
-        annn.a(134247334, this.app);
+        ChatApolloViewListener.a(134247334, this.app);
         a(this.h);
         continue;
-        annn.a(134247338, this.app);
+        ChatApolloViewListener.a(134247338, this.app);
         a(this.h);
         continue;
         if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 2000L)
         {
           finish();
           if (this.jdField_a_of_type_Boolean) {
-            annn.a(134247340, this.app);
+            ChatApolloViewListener.a(134247340, this.app);
           } else {
-            annn.a(134247336, this.app);
+            ChatApolloViewListener.a(134247336, this.app);
           }
         }
       }
@@ -243,7 +241,7 @@ public class JDHongbaoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JDHongbaoActivity
  * JD-Core Version:    0.7.0.1
  */

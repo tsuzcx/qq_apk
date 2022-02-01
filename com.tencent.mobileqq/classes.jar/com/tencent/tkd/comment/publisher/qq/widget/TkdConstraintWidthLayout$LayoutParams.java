@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.LinearLayout.LayoutParams;
-import bkxm;
+import com.tencent.tkd.comment.publisher.qq.R.styleable;
 
 public class TkdConstraintWidthLayout$LayoutParams
   extends LinearLayout.LayoutParams
@@ -26,8 +26,8 @@ public class TkdConstraintWidthLayout$LayoutParams
   public TkdConstraintWidthLayout$LayoutParams(TkdConstraintWidthLayout paramTkdConstraintWidthLayout, Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramTkdConstraintWidthLayout = paramContext.obtainStyledAttributes(paramAttributeSet, bkxm.jdField_a_of_type_ArrayOfInt);
-    this.constrainedWidth = paramTkdConstraintWidthLayout.getBoolean(bkxm.jdField_a_of_type_Int, false);
+    paramTkdConstraintWidthLayout = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_a_of_type_ArrayOfInt);
+    this.constrainedWidth = paramTkdConstraintWidthLayout.getBoolean(R.styleable.jdField_a_of_type_Int, false);
     paramTkdConstraintWidthLayout.recycle();
   }
   
@@ -56,7 +56,7 @@ public class TkdConstraintWidthLayout$LayoutParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TkdConstraintWidthLayout.LayoutParams
  * JD-Core Version:    0.7.0.1
  */

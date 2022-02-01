@@ -9,12 +9,12 @@ public final class daily_config_eventcard
 {
   static feeds_video_actalbum_config cache_vid_alb_config = new feeds_video_actalbum_config();
   static int cache_yy_type = 0;
-  public long end_time;
-  public long start_time;
-  public long trigger_end_time;
-  public long trigger_start_time;
-  public feeds_video_actalbum_config vid_alb_config;
-  public int yy_type;
+  public long end_time = 0L;
+  public long start_time = 0L;
+  public long trigger_end_time = 0L;
+  public long trigger_start_time = 0L;
+  public feeds_video_actalbum_config vid_alb_config = null;
+  public int yy_type = 0;
   
   public daily_config_eventcard() {}
   

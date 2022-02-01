@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aofu;
-import bhbx;
+import com.tencent.mobileqq.app.TroopBusinessObserver;
+import com.tencent.mobileqq.data.troop.TroopClipPic;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class TroopPhotoController$9
-  extends aofu
+  extends TroopBusinessObserver
 {
   TroopPhotoController$9(TroopPhotoController paramTroopPhotoController) {}
   
   public void onCmdTroopAvatar(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
   {
-    if (!bhbx.a(paramString1, this.this$0.mTroopUin)) {
+    if (!Utils.a(paramString1, this.this$0.mTroopUin)) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -29,7 +30,7 @@ class TroopPhotoController$9
       do
       {
         return;
-      } while ((!paramBoolean) || (!bhbx.a(paramString1, this.this$0.mTroopUin)));
+      } while ((!paramBoolean) || (!Utils.a(paramString1, this.this$0.mTroopUin)));
       if (QLog.isColorLevel()) {
         QLog.i("TroopPhotoController", 2, String.format("onGetTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
       }
@@ -39,7 +40,7 @@ class TroopPhotoController$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.TroopPhotoController.9
  * JD-Core Version:    0.7.0.1
  */

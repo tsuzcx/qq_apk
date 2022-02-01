@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry.desktop.widget;
 
-import anvx;
-import arbw;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
@@ -12,7 +12,7 @@ class DragAdapter$6
   
   public void run()
   {
-    QQToast.a(DragAdapter.access$600(this.this$0), anvx.a(2131702998) + arbw.a() + anvx.a(2131702997), 0).a();
+    QQToast.a(DragAdapter.access$600(this.this$0), HardCodeUtil.a(2131703546) + MiniAppConfProcessor.a() + HardCodeUtil.a(2131703545), 0).a();
     if (this.val$overTopTargetIndex != -1)
     {
       this.this$0.mData.remove(this.val$overTopTargetIndex);

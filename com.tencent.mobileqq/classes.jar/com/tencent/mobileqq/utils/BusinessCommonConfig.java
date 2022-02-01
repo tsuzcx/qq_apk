@@ -6,24 +6,25 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import anvx;
-import apcq;
-import apcx;
-import ayym;
-import bczy;
-import bhcx;
+import com.tencent.av.ManageConfig.QAVConfig;
+import com.tencent.av.so.ResDownloadControl;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionMgr;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionUtil;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ConfigSeq;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespGetConfig;
+import com.tencent.mobileqq.olympic.utils.OlympicUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
 import com.tencent.mobileqq.utils.confighandler.ARPromotionConfigHandler.ARPromotionEntryHandler;
 import com.tencent.mobileqq.utils.confighandler.ARPromotionConfigHandler.ARPromotionResHandler;
 import com.tencent.mobileqq.utils.confighandler.ConfigHandler;
@@ -34,8 +35,6 @@ import com.tencent.mobileqq.utils.confighandler.QAVSoConfigHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
-import lbt;
-import mai;
 import mqq.app.AppRuntime;
 import mqq.manager.Manager;
 
@@ -44,7 +43,7 @@ public class BusinessCommonConfig
 {
   public static final String BusinessNotify_QQ_to_SubProcess = "tencent.businessnotify.qq.to.subprocess";
   public static final String BusinessNotify_SubProcess_to_QQ = "tencent.businessnotify.subprocess.to.qq";
-  public final String TAG = "BusinessCommonConfig_" + AudioHelper.b();
+  final String TAG = "BusinessCommonConfig_" + AudioHelper.b();
   ARPromotionConfigHandler.ARPromotionEntryHandler mARPromotionEntryHandler = null;
   ARPromotionConfigHandler.ARPromotionResHandler mARPromotionResHandler = null;
   QQAppInterface mApp;
@@ -80,7 +79,7 @@ public class BusinessCommonConfig
     {
       paramSharedPreferences = localObject;
       bool1 = bool2;
-      if (AudioHelper.f())
+      if (AudioHelper.e())
       {
         paramSharedPreferences = "md5不一样，sp_md5[" + str + "], configMd5[" + paramString3 + "]";
         bool1 = bool2;
@@ -89,18 +88,18 @@ public class BusinessCommonConfig
     for (;;)
     {
       bool2 = bool1;
-      if (!AudioHelper.f()) {
+      if (!AudioHelper.e()) {
         break;
       }
       QLog.w(paramString1, 1, "isResReady, md5Key[" + paramString2 + "], ready[" + bool1 + "], " + paramSharedPreferences);
       return bool1;
-      if (!FileUtils.fileExists(paramString4))
+      if (!FileUtils.a(paramString4))
       {
         paramSharedPreferences = localObject;
         bool1 = bool2;
-        if (AudioHelper.f())
+        if (AudioHelper.e())
         {
-          paramSharedPreferences = anvx.a(2131700771) + paramString4 + "]";
+          paramSharedPreferences = HardCodeUtil.a(2131701349) + paramString4 + "]";
           bool1 = bool2;
         }
       }
@@ -135,13 +134,13 @@ public class BusinessCommonConfig
     default: 
       return;
     case 2: 
-      apcx.a(paramQQAppInterface).a(paramQQAppInterface, str);
+      PromotionUtil.a(paramQQAppInterface).a(paramQQAppInterface, str);
       return;
     case 1: 
-      bczy.a();
+      GestureMgr.a();
       return;
     }
-    mai.a().a(str);
+    ResDownloadControl.a().a(str);
   }
   
   public static void saveMd5(String paramString1, SharedPreferences paramSharedPreferences, String paramString2, String paramString3)
@@ -199,7 +198,7 @@ public class BusinessCommonConfig
         localConfigHandler = getConfigHandler(paramInt);
         if (localConfigHandler == null)
         {
-          AudioHelper.c(anvx.a(2131700757) + paramInt);
+          AudioHelper.c(HardCodeUtil.a(2131701335) + paramInt);
           return Boolean.valueOf(false);
         }
         str = localConfigHandler.getTag();
@@ -231,7 +230,7 @@ public class BusinessCommonConfig
       catch (Exception paramQQAppInterface)
       {
         QLog.w(this.TAG, 1, "decodeConfig, Exception", paramQQAppInterface);
-        if (!AudioHelper.e()) {}
+        if (!AudioHelper.d()) {}
       }
       for (;;)
       {
@@ -265,10 +264,10 @@ public class BusinessCommonConfig
         }
       }
       QLog.w(str, 1, "new 实例失败1, cls[" + paramIntent + "]", localThrowable2);
-      if (AudioHelper.e())
+      if (AudioHelper.d())
       {
         throw new IllegalArgumentException(str + "new 实例失败1, cls[" + paramIntent + "]");
-        throw new IllegalArgumentException(anvx.a(2131700759));
+        throw new IllegalArgumentException(HardCodeUtil.a(2131701337));
         localThrowable2 = null;
         i = 0;
         localObject4 = null;
@@ -284,7 +283,7 @@ public class BusinessCommonConfig
             {
               if (paramIntent.compress.get() == 1)
               {
-                localObject5 = ayym.a(((ByteStringMicro)localObject1).toByteArray());
+                localObject5 = OlympicUtil.a(((ByteStringMicro)localObject1).toByteArray());
                 if (localObject5 == null) {}
               }
               for (;;)
@@ -345,7 +344,7 @@ public class BusinessCommonConfig
                   }
                   try
                   {
-                    AudioHelper.c(str + anvx.a(2131700748));
+                    AudioHelper.c(str + HardCodeUtil.a(2131701326));
                     localObject4 = localObject1;
                     localObject1 = localObject5;
                     QLog.w(str, 1, "handleResp_Config, index[" + i + "], task_id[" + m + "], downloadInfo[" + localObject1 + "], jsonContent[" + paramIntent + "]");
@@ -370,14 +369,14 @@ public class BusinessCommonConfig
                   }
                   paramIntent = paramIntent;
                   paramIntent.printStackTrace();
-                  localObject1 = anvx.a(2131700742) + paramIntent.getMessage();
+                  localObject1 = HardCodeUtil.a(2131701320) + paramIntent.getMessage();
                   paramIntent = null;
                   continue;
                 }
                 catch (OutOfMemoryError paramIntent)
                 {
                   paramIntent.printStackTrace();
-                  localObject1 = anvx.a(2131700745) + paramIntent.getMessage();
+                  localObject1 = HardCodeUtil.a(2131701323) + paramIntent.getMessage();
                   System.gc();
                   try
                   {
@@ -386,7 +385,7 @@ public class BusinessCommonConfig
                   catch (Throwable localThrowable1)
                   {
                     paramIntent = null;
-                    localObject2 = anvx.a(2131700740) + localThrowable1.getMessage();
+                    localObject2 = HardCodeUtil.a(2131701318) + localThrowable1.getMessage();
                   }
                   continue;
                 }
@@ -395,14 +394,14 @@ public class BusinessCommonConfig
                 if (bool) {
                   break label939;
                 }
-                localObject2 = anvx.a(2131700764);
+                localObject2 = HardCodeUtil.a(2131701342);
                 paramIntent = null;
                 continue;
                 paramIntent = ((ByteStringMicro)localObject2).toStringUtf8();
-                localObject2 = anvx.a(2131700760);
+                localObject2 = HardCodeUtil.a(2131701338);
               }
               QLog.w(str, 1, "new 实例失败2, cls[" + localObject4 + "]", (Throwable)localObject5);
-              if (AudioHelper.e())
+              if (AudioHelper.d())
               {
                 throw new IllegalArgumentException(str + "new 实例失败2, cls[" + localObject4 + "]");
                 label939:
@@ -456,7 +455,7 @@ public class BusinessCommonConfig
         localConfigHandler = getConfigHandler(paramInt);
         if (localConfigHandler == null)
         {
-          AudioHelper.c(anvx.a(2131700741) + paramInt);
+          AudioHelper.c(HardCodeUtil.a(2131701319) + paramInt);
           return Boolean.valueOf(false);
         }
         str1 = localConfigHandler.getTag();
@@ -474,20 +473,20 @@ public class BusinessCommonConfig
         ConfigInfo localConfigInfo;
         Object localObject2;
         QLog.w(this.TAG, 1, "decodeConfig, Exception", paramQQAppInterface);
-        if (!AudioHelper.e()) {
+        if (!AudioHelper.d()) {
           continue;
         }
-        throw new IllegalArgumentException(anvx.a(2131700769));
+        throw new IllegalArgumentException(HardCodeUtil.a(2131701347));
       }
       try
       {
         localConfigInfo = (ConfigInfo)((Class)localObject1).newInstance();
         localConfigInfo.setUin(paramQQAppInterface.getAccount());
-        localConfigInfo.serverVer = lbt.a(paramInt);
+        localConfigInfo.serverVer = QAVConfig.a(paramInt);
         localObject1 = localConfigInfo;
         if (!localConfigInfo.tryParse(str1, paramString))
         {
-          AudioHelper.c(str1 + anvx.a(2131700758));
+          AudioHelper.c(str1 + HardCodeUtil.a(2131701336));
           localObject1 = null;
         }
       }
@@ -495,7 +494,7 @@ public class BusinessCommonConfig
       {
         QLog.w(str1, 1, "new 实例失败2, cls[" + str2 + "]", localException);
         localObject2 = localObject3;
-        if (!AudioHelper.e()) {
+        if (!AudioHelper.d()) {
           continue;
         }
         throw new IllegalArgumentException(str1 + "new 实例失败2, cls[" + str2 + "]");
@@ -649,7 +648,7 @@ public class BusinessCommonConfig
   
   boolean registReceiverToReceSubProcessNotify(QQAppInterface paramQQAppInterface)
   {
-    this.mBroadcastReceiver = new bhcx(this, paramQQAppInterface);
+    this.mBroadcastReceiver = new BusinessCommonConfig.1(this, paramQQAppInterface);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.businessnotify.subprocess.to.qq");
     return paramQQAppInterface.getApp().registerReceiver(this.mBroadcastReceiver, localIntentFilter) != null;

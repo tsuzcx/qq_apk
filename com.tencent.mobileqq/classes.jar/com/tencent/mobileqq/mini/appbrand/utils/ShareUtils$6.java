@@ -41,7 +41,7 @@ final class ShareUtils$6
       {
         paramJSONObject = URLDrawable.URLDrawableOptions.obtain();
         if (this.val$activity != null) {
-          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130848424);
+          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130848781);
         }
         Bitmap localBitmap = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(this.val$sharePicUrl, paramJSONObject).getCurrDrawable());
         paramJSONObject = localBitmap;
@@ -72,7 +72,7 @@ final class ShareUtils$6
         for (;;)
         {
           QLog.e("ShareUtils", 1, "startShareToWeChat. get an exception when handling URLbmp:" + paramJSONObject);
-          paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130848424));
+          paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130848781));
           continue;
           if (this.val$shareType == 4) {
             WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), "QQ小程序 · " + this.val$apkgInfo.apkgName + ": " + this.val$finalDescription, paramJSONObject, "", str);

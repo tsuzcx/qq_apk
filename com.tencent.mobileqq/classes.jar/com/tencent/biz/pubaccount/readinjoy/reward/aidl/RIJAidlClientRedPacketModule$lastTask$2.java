@@ -5,11 +5,9 @@ import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
-import rkw;
-import rle;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "invoke"}, k=3, mv={1, 1, 16})
-public final class RIJAidlClientRedPacketModule$lastTask$2
+final class RIJAidlClientRedPacketModule$lastTask$2
   extends Lambda
   implements Function0<RIJRewardTask>
 {
@@ -23,16 +21,16 @@ public final class RIJAidlClientRedPacketModule$lastTask$2
   @Nullable
   public final RIJRewardTask invoke()
   {
-    rkw localrkw = rle.a(rle.a);
-    if (localrkw != null) {
-      return localrkw.b();
+    IRIJAidlInterfaceForRewardTask localIRIJAidlInterfaceForRewardTask = RIJAidlClientRedPacketModule.a(RIJAidlClientRedPacketModule.a);
+    if (localIRIJAidlInterfaceForRewardTask != null) {
+      return localIRIJAidlInterfaceForRewardTask.b();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.lastTask.2
  * JD-Core Version:    0.7.0.1
  */

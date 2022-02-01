@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class HostGetLikeReq
   extends JceStruct
 {
-  public long iUin;
+  public long iUin = 0L;
   
   public HostGetLikeReq() {}
   

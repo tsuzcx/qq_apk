@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import aqrq;
+import com.tencent.mobileqq.colornote.swipeback.OnColorNoteAnimFinishListener;
 
 class GameActivity1$2
-  implements aqrq
+  implements OnColorNoteAnimFinishListener
 {
   GameActivity1$2(GameActivity1 paramGameActivity1) {}
   

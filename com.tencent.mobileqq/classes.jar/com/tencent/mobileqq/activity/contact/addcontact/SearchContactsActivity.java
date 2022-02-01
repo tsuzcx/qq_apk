@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import Override;
-import aitz;
-import aiua;
-import aiub;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -18,14 +14,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import anvx;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebView;
-import usu;
 
 public class SearchContactsActivity
   extends SearchBaseActivity
@@ -34,7 +31,7 @@ public class SearchContactsActivity
   
   public SearchContactsActivity()
   {
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new aiub(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new SearchContactsActivity.ShowInputKeyboardHandler(this);
   }
   
   private void a(String paramString)
@@ -76,7 +73,7 @@ public class SearchContactsActivity
     {
       if (this.i == 12)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anvx.a(2131713071) + usu.a(this.app, getApplicationContext()) + anvx.a(2131713070));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131713567) + ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(this.app, getApplicationContext()) + HardCodeUtil.a(2131713566));
         this.jdField_a_of_type_AndroidWidgetEditText.setText(str1);
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
         this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
@@ -85,33 +82,33 @@ public class SearchContactsActivity
     else
     {
       if (this.h == 1) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anvx.a(2131713078));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131713574));
       }
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aitz(this, bool));
-      String str2 = getResources().getString(2131690697);
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new SearchContactsActivity.1(this, bool));
+      String str2 = getResources().getString(2131690800);
       this.jdField_a_of_type_AndroidWidgetButton.setText(str2);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aiua(this));
-      if (AppSetting.c)
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new SearchContactsActivity.2(this));
+      if (AppSetting.d)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(str2);
         if (this.i != 12) {
-          break label263;
+          break label274;
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(anvx.a(2131713080));
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(HardCodeUtil.a(2131713576));
       }
     }
     for (;;)
     {
       if ((TextUtils.isEmpty(str1)) || (getIntent().getBooleanExtra("auto_add_and_prohibit_auto_search", false))) {
-        break label278;
+        break label290;
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(anvx.a(2131713077));
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131713573));
       break;
-      label263:
-      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(anvx.a(2131713076));
+      label274:
+      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(HardCodeUtil.a(2131713572));
     }
-    label278:
+    label290:
     Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
   }
   
@@ -148,7 +145,7 @@ public class SearchContactsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity
  * JD-Core Version:    0.7.0.1
  */

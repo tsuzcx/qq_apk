@@ -9,12 +9,13 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Rect;
 import android.os.Build;
 import android.text.TextUtils;
-import apno;
-import bdcu;
-import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.shortvideo.qmcf.QmcfDevicesStrategy;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -31,8 +32,8 @@ public class RecogUtil
   public static String SP_FILE_MINIRECOG = "sp_file_minirecog";
   public static String SP_KEY_DETECT_INIT_ERROR = "sp_key_detect_init_error_";
   public static final String TAG = "MiniRecog";
-  private static boolean s_bHasSupportReported;
-  private static Boolean s_isX86VM;
+  private static boolean s_bHasSupportReported = false;
+  private static Boolean s_isX86VM = null;
   
   static
   {
@@ -82,38 +83,38 @@ public class RecogUtil
     //   4: astore 6
     //   6: iconst_0
     //   7: istore 4
-    //   9: new 46	java/io/File
+    //   9: new 50	java/io/File
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 50	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore_0
-    //   18: new 46	java/io/File
+    //   18: new 50	java/io/File
     //   21: dup
     //   22: aload_1
-    //   23: invokespecial 50	java/io/File:<init>	(Ljava/lang/String;)V
+    //   23: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
     //   26: astore_1
     //   27: aload_0
-    //   28: invokevirtual 54	java/io/File:exists	()Z
+    //   28: invokevirtual 58	java/io/File:exists	()Z
     //   31: ifeq +8 -> 39
     //   34: aload_0
-    //   35: invokevirtual 151	java/io/File:delete	()Z
+    //   35: invokevirtual 157	java/io/File:delete	()Z
     //   38: pop
-    //   39: new 153	java/io/FileInputStream
+    //   39: new 159	java/io/FileInputStream
     //   42: dup
     //   43: aload_1
-    //   44: invokespecial 156	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   44: invokespecial 162	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   47: astore_1
-    //   48: new 158	java/io/FileOutputStream
+    //   48: new 164	java/io/FileOutputStream
     //   51: dup
     //   52: aload_0
-    //   53: invokespecial 159	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   53: invokespecial 165	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   56: astore_0
     //   57: sipush 2048
     //   60: newarray byte
     //   62: astore 5
     //   64: aload_1
     //   65: aload 5
-    //   67: invokevirtual 163	java/io/FileInputStream:read	([B)I
+    //   67: invokevirtual 169	java/io/FileInputStream:read	([B)I
     //   70: istore_2
     //   71: iload_2
     //   72: iconst_m1
@@ -122,7 +123,7 @@ public class RecogUtil
     //   77: aload 5
     //   79: iconst_0
     //   80: iload_2
-    //   81: invokevirtual 167	java/io/FileOutputStream:write	([BII)V
+    //   81: invokevirtual 173	java/io/FileOutputStream:write	([BII)V
     //   84: goto -20 -> 64
     //   87: astore 6
     //   89: aload_0
@@ -134,51 +135,51 @@ public class RecogUtil
     //   97: aload 6
     //   99: astore 5
     //   101: aload 5
-    //   103: invokevirtual 170	java/lang/Exception:printStackTrace	()V
+    //   103: invokevirtual 176	java/lang/Exception:printStackTrace	()V
     //   106: aload_1
     //   107: ifnull +7 -> 114
     //   110: aload_1
-    //   111: invokevirtual 173	java/io/FileOutputStream:close	()V
+    //   111: invokevirtual 179	java/io/FileOutputStream:close	()V
     //   114: iload 4
     //   116: istore_3
     //   117: aload_0
     //   118: ifnull +10 -> 128
     //   121: aload_0
-    //   122: invokevirtual 174	java/io/FileInputStream:close	()V
+    //   122: invokevirtual 180	java/io/FileInputStream:close	()V
     //   125: iload 4
     //   127: istore_3
     //   128: iload_3
     //   129: ireturn
     //   130: aload_0
-    //   131: invokevirtual 177	java/io/FileOutputStream:flush	()V
+    //   131: invokevirtual 183	java/io/FileOutputStream:flush	()V
     //   134: iconst_1
     //   135: istore_3
     //   136: aload_0
     //   137: ifnull +7 -> 144
     //   140: aload_0
-    //   141: invokevirtual 173	java/io/FileOutputStream:close	()V
+    //   141: invokevirtual 179	java/io/FileOutputStream:close	()V
     //   144: aload_1
     //   145: ifnull -17 -> 128
     //   148: aload_1
-    //   149: invokevirtual 174	java/io/FileInputStream:close	()V
+    //   149: invokevirtual 180	java/io/FileInputStream:close	()V
     //   152: iconst_1
     //   153: ireturn
     //   154: astore_0
     //   155: aload_0
-    //   156: invokevirtual 170	java/lang/Exception:printStackTrace	()V
+    //   156: invokevirtual 176	java/lang/Exception:printStackTrace	()V
     //   159: iconst_1
     //   160: ireturn
     //   161: astore_0
     //   162: aload_0
-    //   163: invokevirtual 170	java/lang/Exception:printStackTrace	()V
+    //   163: invokevirtual 176	java/lang/Exception:printStackTrace	()V
     //   166: goto -22 -> 144
     //   169: astore_1
     //   170: aload_1
-    //   171: invokevirtual 170	java/lang/Exception:printStackTrace	()V
+    //   171: invokevirtual 176	java/lang/Exception:printStackTrace	()V
     //   174: goto -60 -> 114
     //   177: astore_0
     //   178: aload_0
-    //   179: invokevirtual 170	java/lang/Exception:printStackTrace	()V
+    //   179: invokevirtual 176	java/lang/Exception:printStackTrace	()V
     //   182: iconst_0
     //   183: ireturn
     //   184: astore_0
@@ -187,20 +188,20 @@ public class RecogUtil
     //   187: aload 5
     //   189: ifnull +8 -> 197
     //   192: aload 5
-    //   194: invokevirtual 173	java/io/FileOutputStream:close	()V
+    //   194: invokevirtual 179	java/io/FileOutputStream:close	()V
     //   197: aload_1
     //   198: ifnull +7 -> 205
     //   201: aload_1
-    //   202: invokevirtual 174	java/io/FileInputStream:close	()V
+    //   202: invokevirtual 180	java/io/FileInputStream:close	()V
     //   205: aload_0
     //   206: athrow
     //   207: astore 5
     //   209: aload 5
-    //   211: invokevirtual 170	java/lang/Exception:printStackTrace	()V
+    //   211: invokevirtual 176	java/lang/Exception:printStackTrace	()V
     //   214: goto -17 -> 197
     //   217: astore_1
     //   218: aload_1
-    //   219: invokevirtual 170	java/lang/Exception:printStackTrace	()V
+    //   219: invokevirtual 176	java/lang/Exception:printStackTrace	()V
     //   222: goto -17 -> 205
     //   225: astore_0
     //   226: goto -39 -> 187
@@ -370,11 +371,11 @@ public class RecogUtil
       i = -2;
       return i;
     }
-    int m = bdcu.a();
-    int k = bdcu.b();
+    int m = QmcfDevicesStrategy.a();
+    int k = QmcfDevicesStrategy.b();
     if (!s_bHasSupportReported)
     {
-      apno.c(m, k);
+      MiniScanReport.c(m, k);
       s_bHasSupportReported = true;
     }
     if (k > 0) {}
@@ -406,7 +407,7 @@ public class RecogUtil
     boolean bool2;
     if (s_isX86VM == null)
     {
-      bool2 = FlatBuffersParser.c();
+      bool2 = DeviceInfoUtil.e();
       if (!bool2) {
         break label179;
       }
@@ -447,7 +448,7 @@ public class RecogUtil
     if (QLog.isColorLevel()) {
       QLog.i("MiniRecog", 2, String.format("jumpMiniCode result=%s", new Object[] { paramString }));
     }
-    MiniAppLauncher.launchAppByMiniCode(paramContext, paramString, 1048, null);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchAppByMiniCode(paramContext, paramString, 1048, null);
   }
   
   public static void markMiniScanError(boolean paramBoolean)

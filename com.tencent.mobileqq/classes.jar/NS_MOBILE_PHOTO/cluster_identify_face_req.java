@@ -10,11 +10,11 @@ public final class cluster_identify_face_req
 {
   static ArrayList<Float> cache_feature = new ArrayList();
   static int cache_mode = 0;
-  public ArrayList<Float> feature;
+  public ArrayList<Float> feature = null;
   public String img = "";
-  public boolean is_demo;
+  public boolean is_demo = false;
   public int mode = 0;
-  public long op_uin;
+  public long op_uin = 0L;
   
   static
   {

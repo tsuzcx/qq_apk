@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class s_PolyPraise
   extends JceStruct
 {
-  public int iItemId;
-  public int itype;
-  public int pokeLikeCombo;
-  public int resourceId;
+  public int iItemId = 0;
+  public int itype = 0;
+  public int pokeLikeCombo = 0;
+  public int resourceId = 0;
   public String strPicUrl = "";
   public String strText = "";
   

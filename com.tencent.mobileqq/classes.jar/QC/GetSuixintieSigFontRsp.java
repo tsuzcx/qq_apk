@@ -10,10 +10,10 @@ public final class GetSuixintieSigFontRsp
 {
   static CommonRsp cache_stRet = new CommonRsp();
   static ArrayList<UniBusiSimpleItemDetail> cache_vItems = new ArrayList();
-  public int isEnd;
-  public CommonRsp stRet;
+  public int isEnd = 0;
+  public CommonRsp stRet = null;
   public String strAttachInfo = "";
-  public ArrayList<UniBusiSimpleItemDetail> vItems;
+  public ArrayList<UniBusiSimpleItemDetail> vItems = null;
   
   static
   {

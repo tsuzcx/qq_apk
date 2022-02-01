@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.confess;
 
-import aqvd;
-import aqve;
-
-public class ConfessManager$3
+class ConfessManager$3
   implements Runnable
 {
-  public ConfessManager$3(aqvd paramaqvd, String paramString, aqve paramaqve) {}
+  ConfessManager$3(ConfessManager paramConfessManager, String paramString, ConfessManager.FrdChatExtra paramFrdChatExtra) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqve);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager$FrdChatExtra);
   }
 }
 

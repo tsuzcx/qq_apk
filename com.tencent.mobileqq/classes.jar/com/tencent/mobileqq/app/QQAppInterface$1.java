@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.MobileQQ;
 
 class QQAppInterface$1
   implements Runnable

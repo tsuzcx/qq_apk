@@ -1,18 +1,15 @@
 package com.tencent.mobileqq.dating;
 
 import android.util.Pair;
-import arxx;
-import aryu;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.avatar.api.IQQAvatarHandlerService;
 import java.util.Set;
 import mqq.os.MqqHandler;
 
-public class StrangerHdHeadUrlFetcher$1
+class StrangerHdHeadUrlFetcher$1
   implements Runnable
 {
-  public StrangerHdHeadUrlFetcher$1(aryu paramaryu, String paramString1, int paramInt, boolean paramBoolean, String paramString2) {}
+  StrangerHdHeadUrlFetcher$1(StrangerHdHeadUrlFetcher paramStrangerHdHeadUrlFetcher, String paramString1, int paramInt, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
@@ -22,16 +19,16 @@ public class StrangerHdHeadUrlFetcher$1
     {
       if ((bool) && (this.jdField_a_of_type_Boolean))
       {
-        localObject1 = (FriendListHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+        localObject1 = (IQQAvatarHandlerService)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarHandlerService.class, "");
         if (localObject1 != null)
         {
           this.this$0.jdField_a_of_type_Long = System.currentTimeMillis();
-          synchronized (aryu.a(this.this$0))
+          synchronized (StrangerHdHeadUrlFetcher.a(this.this$0))
           {
             if (!this.this$0.jdField_a_of_type_Boolean)
             {
               this.this$0.jdField_a_of_type_Boolean = true;
-              this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(aryu.a(this.this$0), true);
+              this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(StrangerHdHeadUrlFetcher.a(this.this$0), true);
             }
           }
         }
@@ -41,7 +38,7 @@ public class StrangerHdHeadUrlFetcher$1
         synchronized (this.this$0.jdField_a_of_type_JavaUtilSet)
         {
           this.this$0.jdField_a_of_type_JavaUtilSet.add(this.b);
-          ((FriendListHandler)localObject1).getStrangerHead(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (byte)1, (byte)2);
+          ((IQQAvatarHandlerService)localObject1).getStrangerHead(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (byte)1, (byte)2);
           if (!this.this$0.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1)) {
             this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 60000L);
           }
@@ -50,14 +47,14 @@ public class StrangerHdHeadUrlFetcher$1
           throw localObject2;
         }
       }
-      arxx.a("StrangerHdHeadUrlFetcher", new Object[] { "flh is null" });
+      DatingUtil.a("StrangerHdHeadUrlFetcher", new Object[] { "flh is null" });
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.StrangerHdHeadUrlFetcher.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.utils;
 
-import bheh;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-
-public class JumpAction$4
-  implements Runnable
+class JumpAction$4
+  implements JumpAction.AsyncShareCallback
 {
-  public JumpAction$4(bheh parambheh) {}
+  JumpAction$4(JumpAction paramJumpAction) {}
   
-  public void run()
+  public boolean a()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131698917, 0).a();
+    return JumpAction.c(this.a);
   }
 }
 

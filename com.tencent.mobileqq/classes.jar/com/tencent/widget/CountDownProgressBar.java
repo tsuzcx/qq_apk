@@ -11,8 +11,6 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import blaq;
-import blar;
 
 public class CountDownProgressBar
   extends View
@@ -21,9 +19,9 @@ public class CountDownProgressBar
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler = new blaq(this);
-  private blar jdField_a_of_type_Blar;
-  private float jdField_b_of_type_Float;
+  private Handler jdField_a_of_type_AndroidOsHandler = new CountDownProgressBar.1(this);
+  private CountDownProgressBar.OnCountDownLinstener jdField_a_of_type_ComTencentWidgetCountDownProgressBar$OnCountDownLinstener;
+  private float jdField_b_of_type_Float = 0.0F;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = 1000L;
   private int c;
@@ -48,11 +46,11 @@ public class CountDownProgressBar
   public CountDownProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131166398);
-    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131166395);
-    this.c = paramContext.getResources().getColor(2131166399);
+    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131166401);
+    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131166398);
+    this.c = paramContext.getResources().getColor(2131166402);
     this.e = paramContext.getResources().getColor(2131165442);
-    this.l = paramContext.getResources().getColor(2131166396);
+    this.l = paramContext.getResources().getColor(2131166399);
     float f1 = paramContext.getResources().getDisplayMetrics().density;
     this.f = ((int)(21.0F * f1 + 0.5F));
     this.d = ((int)(2.0F * f1 + 0.5F));
@@ -78,7 +76,7 @@ public class CountDownProgressBar
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (getWidth() > getHeight()) {}
@@ -121,9 +119,9 @@ public class CountDownProgressBar
     }
   }
   
-  public void setOnCountDownLinstener(blar paramblar)
+  public void setOnCountDownLinstener(CountDownProgressBar.OnCountDownLinstener paramOnCountDownLinstener)
   {
-    this.jdField_a_of_type_Blar = paramblar;
+    this.jdField_a_of_type_ComTencentWidgetCountDownProgressBar$OnCountDownLinstener = paramOnCountDownLinstener;
   }
   
   public void setTotalMills(long paramLong)
@@ -146,7 +144,7 @@ public class CountDownProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.CountDownProgressBar
  * JD-Core Version:    0.7.0.1
  */

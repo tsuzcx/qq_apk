@@ -5,6 +5,10 @@ import android.view.ViewGroup;
 import com.tencent.qqmini.sdk.launcher.core.action.Action;
 import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot.Callback;
 import com.tencent.qqmini.sdk.launcher.core.plugins.engine.IJsPluginEngine;
+import com.tencent.qqmini.sdk.launcher.core.utils.ICaptureImageCallback;
+import com.tencent.qqmini.sdk.launcher.model.AdReportData;
+import com.tencent.qqmini.sdk.launcher.model.EntryModel;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.ShareState;
 import java.util.HashMap;
@@ -19,14 +23,51 @@ public abstract class BaseRuntime
   public static final int LOADING_AD_DONE = 3;
   public static final int LOADING_AD_SELECTING = 1;
   public static final int LOADING_AD_SHOWING = 2;
+  protected long lastStayTime;
   protected IRuntimeLifecycleListener mLifecycleListener;
   private int mLoadingAdStatus = 0;
   protected Map<Class, Object> mManagerMap = new HashMap();
   protected BaseRuntime.RuntimeMsgObserver mRuntimeObserver;
+  protected long onResumeTime;
+  protected long startTime;
+  
+  private String getSceneSn(MiniAppInfo paramMiniAppInfo)
+  {
+    try
+    {
+      if (paramMiniAppInfo.launchParam.entryModel != null) {
+        return String.valueOf(paramMiniAppInfo.launchParam.entryModel.uin);
+      }
+      paramMiniAppInfo = paramMiniAppInfo.launchParam.fromMiniAppId;
+      return paramMiniAppInfo;
+    }
+    catch (Exception paramMiniAppInfo) {}
+    return "";
+  }
   
   public boolean canLaunchApp()
   {
     return false;
+  }
+  
+  public void captureImage(ICaptureImageCallback paramICaptureImageCallback) {}
+  
+  public AdReportData getAdReportData()
+  {
+    long l1 = System.currentTimeMillis();
+    AdReportData localAdReportData = new AdReportData();
+    localAdReportData.lastOnResumeTime = this.onResumeTime;
+    long l2 = this.lastStayTime;
+    localAdReportData.stayTime = (l1 - this.onResumeTime + l2);
+    localAdReportData.startTime = this.startTime;
+    localAdReportData.baseLibVersion = getBaseLibVersion();
+    MiniAppInfo localMiniAppInfo = getMiniAppInfo();
+    if ((localMiniAppInfo != null) && (localMiniAppInfo.launchParam != null))
+    {
+      localAdReportData.scene = localMiniAppInfo.launchParam.scene;
+      localAdReportData.scene_sn = getSceneSn(localMiniAppInfo);
+    }
+    return localAdReportData;
   }
   
   public long getCurrentDrawCount()
@@ -131,7 +172,7 @@ public abstract class BaseRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.BaseRuntime
  * JD-Core Version:    0.7.0.1
  */

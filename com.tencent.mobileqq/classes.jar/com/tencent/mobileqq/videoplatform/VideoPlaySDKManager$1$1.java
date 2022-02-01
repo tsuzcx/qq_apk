@@ -12,7 +12,7 @@ class VideoPlaySDKManager$1$1
   
   public void run()
   {
-    VideoPlaySDKManager.access$100(this.this$1.this$0, this.this$1.val$context);
+    VideoPlaySDKManager.access$100(this.this$1.this$0, this.this$1.val$context, this.this$1.val$option);
     RegisterTVideoUtil.registerTVideo();
     VideoPlaySDKManager.access$200(this.this$1.this$0).set(2);
     if (VideoPlaySDKManager.access$300(this.this$1.this$0) != null)
@@ -27,7 +27,7 @@ class VideoPlaySDKManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlaySDKManager.1.1
  * JD-Core Version:    0.7.0.1
  */

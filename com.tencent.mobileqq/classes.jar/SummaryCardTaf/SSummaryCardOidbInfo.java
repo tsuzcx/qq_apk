@@ -8,7 +8,7 @@ public final class SSummaryCardOidbInfo
   extends JceStruct
 {
   public String bgurl = "";
-  public long styleid;
+  public long styleid = 0L;
   public String version = "";
   
   public SSummaryCardOidbInfo() {}
@@ -40,7 +40,7 @@ public final class SSummaryCardOidbInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SSummaryCardOidbInfo
  * JD-Core Version:    0.7.0.1
  */

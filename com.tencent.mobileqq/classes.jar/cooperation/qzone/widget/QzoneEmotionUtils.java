@@ -2,7 +2,7 @@ package cooperation.qzone.widget;
 
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.emoticon.QQEmojiUtil;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import common.config.service.QzoneConfig;
@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
 
 public class QzoneEmotionUtils
 {
-  public static final String EMO_GIRL = anvx.a(2131711210);
-  public static final String EMO_MONEY = anvx.a(2131711207);
+  public static final String EMO_GIRL = HardCodeUtil.a(2131711725);
+  public static final String EMO_MONEY = HardCodeUtil.a(2131711722);
   public static final String EMO_PREFIX = "[em]";
   public static final String EMO_TAIL = "[/em]";
   public static final String SIGN_ICON_URL_END = ".gif";
@@ -26,6 +26,12 @@ public class QzoneEmotionUtils
   public static final Pattern patternSpecialEmo = Pattern.compile("\\[/美女\\]|\\[/钱\\]");
   private static Pattern qzoneEmoPattern = Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]");
   private static final String regSpecialEmo = "\\[/美女\\]|\\[/钱\\]";
+  
+  static
+  {
+    bInit = false;
+    pattern = null;
+  }
   
   public static String EmoCode2Text(String paramString)
   {
@@ -203,7 +209,7 @@ public class QzoneEmotionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneEmotionUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package cooperation.qzone.report.lp;
 
-import cooperation.qzone.QUA;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class LpreportInfo_dc02910
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", QUA.getQUA3());
+    localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
     localHashMap.put("uin", String.valueOf(this.uin));
     localHashMap.put("traceinfo", String.valueOf(this.traceInfo));
     localHashMap.put("idx", String.valueOf(this.index));
@@ -32,7 +33,7 @@ public class LpreportInfo_dc02910
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpreportInfo_dc02910
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import bhqp;
-import biqb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.avatar.AvatarLayout;
 import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import com.tencent.mobileqq.vas.avatar.VasAvatarLoader;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.mobileqq.widget.MosaicEffect;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloVasAvatar
@@ -43,16 +43,6 @@ public class ApolloVasAvatar
     }
   }
   
-  public void b(Canvas paramCanvas)
-  {
-    super.b(paramCanvas);
-  }
-  
-  public void c(Canvas paramCanvas)
-  {
-    super.c(paramCanvas);
-  }
-  
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
@@ -78,16 +68,26 @@ public class ApolloVasAvatar
     super.setImageDrawable(paramDrawable);
   }
   
-  public void setLoader(AvatarLayout paramAvatarLayout, bhqp parambhqp)
+  public void setLoader(AvatarLayout paramAvatarLayout, VasAvatarLoader paramVasAvatarLoader)
   {
-    super.setLoader(paramAvatarLayout, parambhqp);
+    super.setLoader(paramAvatarLayout, paramVasAvatarLoader);
   }
   
-  public void setMosaicEffect(biqb parambiqb) {}
+  public void setMosaicEffect(MosaicEffect paramMosaicEffect) {}
+  
+  public void superDrawMosaic(Canvas paramCanvas)
+  {
+    super.superDrawMosaic(paramCanvas);
+  }
+  
+  public void superOnDrawMosaic(Canvas paramCanvas)
+  {
+    super.superOnDrawMosaic(paramCanvas);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.apollo.aio.ApolloVasAvatar
  * JD-Core Version:    0.7.0.1
  */

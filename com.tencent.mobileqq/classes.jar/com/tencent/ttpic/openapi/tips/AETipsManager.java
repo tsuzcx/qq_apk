@@ -3,15 +3,12 @@ package com.tencent.ttpic.openapi.tips;
 import android.os.Handler;
 import android.util.Log;
 import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import com.tencent.ttpic.device.DeviceUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.AR_MATERIAL_TYPE;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.SHADER_TYPE;
 import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
 import java.util.HashMap;
@@ -53,9 +50,9 @@ public class AETipsManager
   public void checkVideoShowBodyView()
   {
     boolean bool;
-    if ((this.mVideoMaterial != null) && (VideoMaterialUtil.isBodyDetectMaterial(this.mVideoMaterial)))
+    if ((this.mVideoMaterial != null) && (this.mVideoMaterial.needBodyDetect()))
     {
-      if ((this.mVideoMaterial == null) || ((!this.mVideoMaterial.isSegmentRequired()) && (!this.mVideoMaterial.isNeedFreezeFrame()) && (!this.mVideoMaterial.hasMultiViewer()))) {
+      if ((this.mVideoMaterial == null) || ((!this.mVideoMaterial.needBodySegment()) && (!this.mVideoMaterial.isNeedFreezeFrame()) && (!this.mVideoMaterial.hasMultiViewer()))) {
         break label72;
       }
       bool = this.isShowBody;
@@ -77,15 +74,15 @@ public class AETipsManager
   {
     boolean bool2 = true;
     boolean bool1 = true;
-    if ((this.mVideoMaterial != null) && (VideoMaterialUtil.isBodyDetectMaterial(this.mVideoMaterial))) {
+    if ((this.mVideoMaterial != null) && (this.mVideoMaterial.needBodyDetect())) {
       return;
     }
     if (this.mVideoMaterial != null) {
       this.mIsVideoItemEnabled = true;
     }
-    label82:
+    label66:
     Object localObject;
-    while ((this.mVideoMaterial != null) && (getFaceDetector() != null) && (this.mVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_MORPHING.value)) {
+    while ((this.mVideoMaterial != null) && (getFaceDetector() != null)) {
       if (!getFaceDetector().detectExpression(PTFaceAttr.PTExpression.FACE_DETECT.value))
       {
         bool1 = true;
@@ -97,20 +94,20 @@ public class AETipsManager
       {
         localObject = getFaceDetector().getFaceAngles(0);
         if ((localObject == null) || (localObject.length < 2)) {
-          break label786;
+          break label719;
         }
       }
     }
-    label776:
-    label779:
-    label786:
+    label709:
+    label712:
+    label719:
     for (bool1 = PTFaceAttr.isPositiveFace((float[])localObject, getFaceDetector().getAllPoints(0), this.width, this.height, this.faceDetScale);; bool1 = false)
     {
       if (!bool1)
       {
         bool1 = true;
-        break label82;
-        if ((this.mVideoMaterial != null) && ((this.mVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_SWITCH_DUP.value) || (this.mVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_SWITCH.value)))
+        break label66;
+        if (this.mVideoMaterial != null)
         {
           if ((getFaceDetector() != null) && (!getFaceDetector().detectExpression(PTFaceAttr.PTExpression.FACE_DETECT.value))) {}
           for (;;)
@@ -120,11 +117,11 @@ public class AETipsManager
             bool1 = false;
           }
         }
-        if ((this.mVideoMaterial != null) && (this.mVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.NORMAL.value))
+        if (this.mVideoMaterial != null)
         {
           localObject = this.mVideoMaterial.getItemList();
           if (localObject == null) {
-            break label776;
+            break label709;
           }
           localObject = ((List)localObject).iterator();
           do
@@ -137,7 +134,7 @@ public class AETipsManager
         for (int i = 1;; i = 0)
         {
           if (i == 0) {
-            break label779;
+            break label712;
           }
           if ((getFaceDetector() != null) && (!getFaceDetector().detectExpression(PTFaceAttr.PTExpression.FACE_DETECT.value))) {}
           for (bool1 = bool2;; bool1 = false)
@@ -192,7 +189,7 @@ public class AETipsManager
             this.uiHandler.removeMessages(1004);
             this.uiHandler.sendEmptyMessage(1018);
           }
-          if ((this.uiHandler == null) || (!VideoMaterialUtil.isCpValueMaterial(this.mVideoMaterial))) {
+          if ((this.uiHandler == null) || (this.mVideoMaterial == null)) {
             break;
           }
           if (i < 2)
@@ -215,7 +212,7 @@ public class AETipsManager
         break;
       }
       bool1 = false;
-      break label82;
+      break label66;
     }
   }
   
@@ -263,7 +260,7 @@ public class AETipsManager
   public void pickUpTheBestTips(VideoMaterial paramVideoMaterial)
   {
     this.mVideoMaterial = paramVideoMaterial;
-    if ((VideoMaterialUtil.isCosFunMaterial(this.mVideoMaterial)) && (this.mVideoMaterial.getCosFun().getTipsAnim() != null))
+    if ((this.mVideoMaterial != null) && (this.mVideoMaterial.isCosFunMaterial()) && (this.mVideoMaterial.getCosFun().getTipsAnim() != null))
     {
       this.customTipText = "";
       this.customTipIcon = "";
@@ -277,22 +274,12 @@ public class AETipsManager
       this.customTipIcon = "";
       return;
     }
-    if (((this.mVideoMaterial.getTipsIcon() != null) && (!this.mVideoMaterial.getTipsIcon().equals(""))) || ((this.mVideoMaterial.getTipsText() != null) && (!this.mVideoMaterial.getTipsText().equals(""))))
+    if (this.mVideoMaterial.getTipsIcon() != null)
     {
       this.customTipIcon = this.mVideoMaterial.getTipsIcon();
       this.customTipText = this.mVideoMaterial.getTipsText();
       return;
     }
-    int j = this.mVideoMaterial.getTriggerType();
-    int i = j;
-    if (j <= 0)
-    {
-      i = j;
-      if (this.mVideoMaterial.getArParticleType() == VideoMaterialUtil.AR_MATERIAL_TYPE.CLICKABLE.value) {
-        i = PTFaceAttr.PTExpression.TRY_CLICK_SCREEN.value;
-      }
-    }
-    this.customTipText = getActionTipString(i);
     this.customTipIcon = "";
   }
   
@@ -380,7 +367,7 @@ public class AETipsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.tips.AETipsManager
  * JD-Core Version:    0.7.0.1
  */

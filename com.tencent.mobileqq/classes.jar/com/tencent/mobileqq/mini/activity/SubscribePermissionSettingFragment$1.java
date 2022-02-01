@@ -3,7 +3,6 @@ package com.tencent.mobileqq.mini.activity;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SubscribePermissionSettingFragment$1
   implements View.OnClickListener
@@ -12,10 +11,9 @@ class SubscribePermissionSettingFragment$1
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369231) {
+    if (paramView.getId() == 2131369487) {
       this.this$0.getActivity().finish();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

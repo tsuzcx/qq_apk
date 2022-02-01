@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,15 +11,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import bhbr;
-import bhhy;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.mobileqq.startup.step.SetSplash;
+import com.tencent.mobileqq.utils.StartupTrackerForAio;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqperf.opt.threadpriority.ThreadPriorityManager;
+import com.tencent.qqperf.opt.threadpriority.ThreadRegulator;
 
 public class ChatActivity
   extends FragmentActivity
@@ -64,14 +63,14 @@ public class ChatActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     ThreadRegulator.a().a(1);
-    bhhy.b(null, "AIO_Start_cost");
+    StartupTrackerForAio.a(null, "AIO_Start_cost");
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnCreate strat ");
     }
-    bhbr.a(true);
+    ThreadPriorityManager.a(true);
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    if (AIOUtils.beforeEnterAIO(this, this.app, true, getIntent())) {
+    if (AIOUtils.a(this, this.app, true, getIntent())) {
       return false;
     }
     if (this.jdField_a_of_type_AndroidViewView != null) {
@@ -127,12 +126,12 @@ public class ChatActivity
   public void doOnNewIntent(Intent paramIntent)
   {
     ThreadRegulator.a().a(1);
-    bhhy.b(null, "AIO_Start_cost");
+    StartupTrackerForAio.a(null, "AIO_Start_cost");
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnNewIntent start ");
     }
     super.doOnNewIntent(paramIntent);
-    if (AIOUtils.beforeEnterAIO(this, this.app, false, getIntent())) {}
+    if (AIOUtils.a(this, this.app, false, getIntent())) {}
     for (;;)
     {
       return;
@@ -230,7 +229,7 @@ public class ChatActivity
     Object localObject = getSupportFragmentManager();
     Fragment localFragment = ((FragmentManager)localObject).findFragmentByTag(MainFragment.class.getName());
     if (localFragment != null) {
-      ((MainFragment)localFragment).i();
+      ((MainFragment)localFragment).h();
     }
     localObject = ((FragmentManager)localObject).findFragmentByTag(ChatFragment.class.getName());
     if (localObject != null) {
@@ -264,10 +263,10 @@ public class ChatActivity
   public boolean showPreview()
   {
     SetSplash.a(this, null, true);
-    getWindow().setFeatureInt(7, 2131559063);
+    getWindow().setFeatureInt(7, 2131559104);
     try
     {
-      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131366860).getParent());
+      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131367050).getParent());
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return true;
     }
@@ -280,7 +279,7 @@ public class ChatActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivity
  * JD-Core Version:    0.7.0.1
  */

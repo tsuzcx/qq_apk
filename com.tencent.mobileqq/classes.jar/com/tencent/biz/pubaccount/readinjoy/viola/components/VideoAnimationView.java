@@ -2,46 +2,69 @@ package com.tencent.biz.pubaccount.readinjoy.viola.components;
 
 import android.content.Context;
 import android.graphics.SurfaceTexture;
+import android.text.TextUtils;
 import android.view.TextureView;
-import bicl;
-import bicm;
-import bico;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.mobileqq.vpng.glrenderer.Renderable;
+import com.tencent.mobileqq.vpng.glrenderer.VPNGRenderer;
+import com.tencent.mobileqq.vpng.glrenderer.VPNGRendererManager;
 import com.tencent.mobileqq.vpng.view.VPNGImageView;
 import com.tencent.viola.ui.view.IVView;
 import cooperation.liveroom.LiveRoomGiftCallback;
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import kotlin.Metadata;
 import kotlin.Pair;
 import kotlin.TuplesKt;
+import kotlin.TypeCastException;
 import kotlin.collections.MapsKt;
 import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tuz;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/components/VideoAnimationView;", "Lcom/tencent/mobileqq/vpng/view/VPNGImageView;", "Lcom/tencent/viola/ui/view/IVView;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/components/VideoAnimationComponent;", "Lcooperation/liveroom/LiveRoomGiftCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "componentWeakRef", "Ljava/lang/ref/WeakReference;", "currentState", "", "isAutoPlay", "", "bindComponent", "", "component", "destroy", "fireStateChange", "state", "getComponent", "init", "autoPlay", "src", "", "loop", "onCall", "type", "args", "onSurfaceTextureAvailable", "surface", "Landroid/graphics/SurfaceTexture;", "width", "height", "pause", "play", "playOnSubThread", "resume", "stop", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/components/VideoAnimationView;", "Lcom/tencent/mobileqq/vpng/view/VPNGImageView;", "Lcom/tencent/viola/ui/view/IVView;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/components/VideoAnimationComponent;", "Lcooperation/liveroom/LiveRoomGiftCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "componentWeakRef", "Ljava/lang/ref/WeakReference;", "currentState", "", "isAutoPlay", "", "bindComponent", "", "component", "destroy", "fireStateChange", "state", "getComponent", "getFilePath", "", "src", "init", "autoPlay", "loop", "onCall", "type", "args", "onSurfaceTextureAvailable", "surface", "Landroid/graphics/SurfaceTexture;", "width", "height", "pause", "play", "playOnSubThread", "resume", "setupVideo", "stop", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class VideoAnimationView
   extends VPNGImageView
   implements IVView<VideoAnimationComponent>, LiveRoomGiftCallback
 {
+  public static final VideoAnimationView.Companion a;
   @NotNull
   private static final Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = MapsKt.mutableMapOf(new Pair[] { TuplesKt.to(Integer.valueOf(1), Integer.valueOf(1)), TuplesKt.to(Integer.valueOf(2), Integer.valueOf(2)), TuplesKt.to(Integer.valueOf(3), Integer.valueOf(3)) });
-  public static final tuz a;
   private int jdField_a_of_type_Int;
   private WeakReference<VideoAnimationComponent> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean = true;
   
   static
   {
-    jdField_a_of_type_Tuz = new tuz(null);
+    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaComponentsVideoAnimationView$Companion = new VideoAnimationView.Companion(null);
   }
   
   public VideoAnimationView(@NotNull Context paramContext)
   {
     super(paramContext);
+  }
+  
+  private final String a(String paramString)
+  {
+    int i = StringsKt.lastIndexOf$default((CharSequence)paramString, '/', 0, false, 6, null);
+    if (i != -1)
+    {
+      int j = paramString.length();
+      if (paramString == null) {
+        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+      }
+      paramString = paramString.substring(i + 1, j);
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      if (!TextUtils.isEmpty((CharSequence)paramString)) {
+        return VFSAssistantUtils.getSDKPrivatePath(new StringBuilder().append(AppConstants.SDCARD_PATH).append(".readInjoy/resource/video_animation/").toString()) + paramString;
+      }
+    }
+    return "";
   }
   
   private final void a(int paramInt)
@@ -50,6 +73,22 @@ public final class VideoAnimationView
     if (localVideoAnimationComponent != null) {
       localVideoAnimationComponent.fireEvent("stateChange", new JSONObject().put("state", paramInt));
     }
+  }
+  
+  private final void a(String paramString, boolean paramBoolean)
+  {
+    String str = a(paramString);
+    if (!TextUtils.isEmpty((CharSequence)str))
+    {
+      File localFile = new File(str);
+      if (localFile.exists())
+      {
+        setVideo(str, paramBoolean, 1, (LiveRoomGiftCallback)this);
+        return;
+      }
+      ThreadManagerV2.executeOnSubThread((Runnable)new VideoAnimationView.setupVideo.1(paramString, localFile));
+    }
+    setVideo(paramString, paramBoolean, 1, (LiveRoomGiftCallback)this);
   }
   
   private final void f()
@@ -61,12 +100,13 @@ public final class VideoAnimationView
     if (!this.jdField_a_of_type_Boolean)
     {
       this.mVPNGRenderer.a(getWidth(), getHeight());
-      bicm localbicm = this.mVPNGRenderer;
+      VPNGRenderer localVPNGRenderer = this.mVPNGRenderer;
       TextureView localTextureView = this.mTextureView;
       Intrinsics.checkExpressionValueIsNotNull(localTextureView, "mTextureView");
-      localbicm.a(localTextureView.getSurfaceTexture());
+      localVPNGRenderer.a(localTextureView.getSurfaceTexture());
     }
-    ThreadManagerV2.executeOnSubThread((Runnable)new VideoAnimationView.playOnSubThread.1(this));
+    playRender();
+    a(1);
   }
   
   @Nullable
@@ -96,7 +136,8 @@ public final class VideoAnimationView
   {
     Intrinsics.checkParameterIsNotNull(paramString, "src");
     this.jdField_a_of_type_Boolean = paramBoolean1;
-    setVideo(paramString, paramBoolean2, 1, (LiveRoomGiftCallback)this);
+    setPlayOnSubThread(true);
+    a(paramString, paramBoolean2);
   }
   
   public final void b()
@@ -168,7 +209,7 @@ public final class VideoAnimationView
   {
     if (this.mVPNGRenderer == null)
     {
-      this.mVPNGRenderer = bico.a().a((bicl)this, this.mWidth, this.mHeight);
+      this.mVPNGRenderer = VPNGRendererManager.a().a((Renderable)this, this.mWidth, this.mHeight);
       if (this.mVPNGRenderer != null)
       {
         this.mVPNGRenderer.a(this.mVideoPath, this.mAlign, this.mCallback);
@@ -188,7 +229,7 @@ public final class VideoAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.components.VideoAnimationView
  * JD-Core Version:    0.7.0.1
  */

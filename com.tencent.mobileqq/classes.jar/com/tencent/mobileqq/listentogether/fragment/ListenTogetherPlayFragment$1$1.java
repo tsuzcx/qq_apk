@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.listentogether.fragment;
 
-import awgj;
 import com.tencent.mobileqq.listentogether.data.ISong;
 
-public class ListenTogetherPlayFragment$1$1
+class ListenTogetherPlayFragment$1$1
   implements Runnable
 {
-  public ListenTogetherPlayFragment$1$1(awgj paramawgj, String paramString, int paramInt1, int paramInt2) {}
+  ListenTogetherPlayFragment$1$1(ListenTogetherPlayFragment.1 param1, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Awgj.a.a.d())) {
-      ListenTogetherPlayFragment.a(this.jdField_a_of_type_Awgj.a, this.jdField_a_of_type_Int, this.b, false);
+    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherPlayFragment$1.a.a.d())) {
+      ListenTogetherPlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherPlayFragment$1.a, this.jdField_a_of_type_Int, this.b, false);
     }
   }
 }

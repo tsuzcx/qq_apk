@@ -1,13 +1,12 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedData;
 import java.util.List;
-import xzx;
-import ycz;
 
-public class ProfileFeedPresenter$2
+class ProfileFeedPresenter$2
   implements Runnable
 {
-  public ProfileFeedPresenter$2(xzx paramxzx, ycz paramycz) {}
+  ProfileFeedPresenter$2(ProfileFeedPresenter paramProfileFeedPresenter, HomeFeedData paramHomeFeedData) {}
   
   public void run()
   {
@@ -16,14 +15,14 @@ public class ProfileFeedPresenter$2
       this.this$0.b(this.a);
       return;
     }
-    xzx.a(this.this$0, this.a);
-    xzx.a(this.this$0).remove(xzx.a());
-    xzx.a(this.this$0);
+    ProfileFeedPresenter.a(this.this$0, this.a);
+    ProfileFeedPresenter.a(this.this$0).remove(ProfileFeedPresenter.a());
+    ProfileFeedPresenter.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter.2
  * JD-Core Version:    0.7.0.1
  */

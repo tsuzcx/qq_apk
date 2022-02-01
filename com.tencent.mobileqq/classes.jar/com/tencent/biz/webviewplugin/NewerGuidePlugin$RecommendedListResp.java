@@ -1,6 +1,5 @@
 package com.tencent.biz.webviewplugin;
 
-import aarb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +9,7 @@ import java.util.List;
 public final class NewerGuidePlugin$RecommendedListResp
   implements Parcelable
 {
-  public static final Parcelable.Creator<RecommendedListResp> CREATOR = new aarb();
+  public static final Parcelable.Creator<RecommendedListResp> CREATOR = new NewerGuidePlugin.RecommendedListResp.1();
   public int a;
   public long a;
   public List<NewerGuidePlugin.PhoneInfo> a;
@@ -21,7 +20,7 @@ public final class NewerGuidePlugin$RecommendedListResp
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public NewerGuidePlugin$RecommendedListResp(Parcel paramParcel)
+  protected NewerGuidePlugin$RecommendedListResp(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -45,7 +44,7 @@ public final class NewerGuidePlugin$RecommendedListResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp
  * JD-Core Version:    0.7.0.1
  */

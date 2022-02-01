@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import bmjg;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
 
 class ArithmeticViewHolder$ArithmeticImageView$2
   implements Runnable
 {
-  ArithmeticViewHolder$ArithmeticImageView$2(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView, bmjg parambmjg) {}
+  ArithmeticViewHolder$ArithmeticImageView$2(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView, TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bmjg.a();
+    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
   }
 }
 

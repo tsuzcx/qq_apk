@@ -2,19 +2,18 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import bkrx;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QzoneVideoSoDownloadModule;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
 
-public final class VideoJsProxyImpl$1
+final class VideoJsProxyImpl$1
   implements Runnable
 {
   public void run()
   {
-    Object localObject1 = QzoneVideoSoDownloadModule.getReceiverForSending(new bkrx(this));
+    Object localObject1 = QzoneVideoSoDownloadModule.getReceiverForSending(new VideoJsProxyImpl.1.1(this));
     Object localObject2 = new Bundle();
     ((Bundle)localObject2).putParcelable("key_download_result_receiver", (Parcelable)localObject1);
     localObject1 = QIPCClientHelper.getInstance().getClient().callServer("QzoneVideoSoDownloadModule", "action_download_avcodec", (Bundle)localObject2);

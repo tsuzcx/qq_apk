@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import aefl;
-import aefm;
-import aefn;
 import android.app.Dialog;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import axqc;
-import bgys;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.util.CustomDialogFactory;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -24,7 +20,7 @@ public class LbsBaseActivity
   
   private boolean a()
   {
-    return axqc.a(getAppInterface().getAccount());
+    return NearbySPUtil.a(getAppInterface().getAccount());
   }
   
   private void c(Runnable paramRunnable)
@@ -34,21 +30,18 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new aefl(this, paramRunnable);
-    this.b = bgys.a(this, 2131691915, a(), 2131691771, 2131691768, new aefm(this), new aefn(this));
+    paramRunnable = new LbsBaseActivity.4(this, paramRunnable);
+    this.b = CustomDialogFactory.a(this, 2131692043, a(), 2131691888, 2131691885, new LbsBaseActivity.5(this), new LbsBaseActivity.6(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
   protected int a()
   {
-    return 2131691913;
+    return 2131692041;
   }
   
-  public void a()
-  {
-    finish();
-  }
+  protected void a() {}
   
   public void a(int paramInt, String paramString)
   {
@@ -62,17 +55,17 @@ public class LbsBaseActivity
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 102	android/app/Dialog:dismiss	()V
+    //   1: invokevirtual 101	android/app/Dialog:dismiss	()V
     //   4: aload_1
-    //   5: invokestatic 106	acxo:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 105	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_2
     //   10: aload_1
-    //   11: invokestatic 106	acxo:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 105	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 106	acxo:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 105	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   20: aload_2
     //   21: athrow
     // Local variable table:
@@ -92,6 +85,8 @@ public class LbsBaseActivity
     c(paramRunnable);
   }
   
+  protected void b() {}
+  
   protected void b(Runnable paramRunnable)
   {
     if (a())
@@ -100,6 +95,11 @@ public class LbsBaseActivity
       return;
     }
     d(paramRunnable);
+  }
+  
+  protected void c()
+  {
+    finish();
   }
   
   @Override
@@ -140,7 +140,7 @@ public class LbsBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LbsBaseActivity
  * JD-Core Version:    0.7.0.1
  */

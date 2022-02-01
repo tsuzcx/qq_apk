@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.app.Activity;
-import apoo;
-import bdla;
+import com.tencent.mobileqq.ar.model.CameraProxy;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class OCRScanEntryView$1
   implements Runnable
@@ -13,11 +13,11 @@ class OCRScanEntryView$1
   
   public void run()
   {
-    String str = apoo.a().a();
-    if (FileUtil.isFileExists(str))
+    String str = CameraProxy.a().a();
+    if (FileUtil.a(str))
     {
       OCRPerformFragment.a((Activity)this.this$0.a, str, 0, -1008, null);
-      bdla.b(null, "dc00898", "", "", "0X800AE06", "0X800AE06", 1, 0, "", "0", "0", "");
+      ReportController.b(null, "dc00898", "", "", "0X800AE06", "0X800AE06", 1, 0, "", "0", "0", "");
     }
     OCRScanEntryView.a(this.this$0, false);
   }

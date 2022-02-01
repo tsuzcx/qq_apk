@@ -6,14 +6,12 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bhsf;
-import bhsh;
-import bhsk;
 import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.util.QQVipHelper;
 
 public class QQVipArkHeaderView
   extends RelativeLayout
-  implements bhsh
+  implements IHeaderView
 {
   private int jdField_a_of_type_Int;
   private QQVipMsgInfo jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo;
@@ -22,10 +20,10 @@ public class QQVipArkHeaderView
   public QQVipArkHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2131559634, this);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView = ((QvipArkView)findViewById(2131374514));
+    LayoutInflater.from(getContext()).inflate(2131559710, this);
+    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView = ((QvipArkView)findViewById(2131374884));
     this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView.setmQqVipArkHeaderView(this);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView.addOnLayoutChangeListener(new bhsk(this));
+    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView.addOnLayoutChangeListener(new QQVipArkHeaderView.1(this));
   }
   
   public void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt)
@@ -38,7 +36,7 @@ public class QQVipArkHeaderView
     }
     try
     {
-      bhsf.a(117, paramQQVipMsgInfo, paramInt);
+      QQVipHelper.a(117, paramQQVipMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramQQVipMsgInfo)
@@ -54,7 +52,7 @@ public class QQVipArkHeaderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.QQVipArkHeaderView
  * JD-Core Version:    0.7.0.1
  */

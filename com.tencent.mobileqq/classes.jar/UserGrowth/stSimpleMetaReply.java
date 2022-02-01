@@ -10,12 +10,12 @@ public final class stSimpleMetaReply
   static stSimpleMetaPerson cache_poster = new stSimpleMetaPerson();
   static stSimpleMetaPerson cache_receiver = new stSimpleMetaPerson();
   public String beReplyReplyId = "";
-  public int createtime;
+  public int createtime = 0;
   public String id = "";
-  public int mask;
-  public stSimpleMetaPerson poster;
-  public stSimpleMetaPerson receiver;
-  public int robotMode;
+  public int mask = 0;
+  public stSimpleMetaPerson poster = null;
+  public stSimpleMetaPerson receiver = null;
+  public int robotMode = 0;
   public String wording = "";
   
   public stSimpleMetaReply() {}

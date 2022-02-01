@@ -7,9 +7,9 @@ import com.tencent.mobileqq.persistence.unique;
 public class EnterpriseQQMenuEntity
   extends Entity
 {
-  public byte[] data;
-  public long savedDateTime;
-  public int seqno;
+  public byte[] data = null;
+  public long savedDateTime = 0L;
+  public int seqno = 0;
   @unique
   public String uin;
   
@@ -25,7 +25,7 @@ public class EnterpriseQQMenuEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.enterpriseqq.EnterpriseQQMenuEntity
  * JD-Core Version:    0.7.0.1
  */

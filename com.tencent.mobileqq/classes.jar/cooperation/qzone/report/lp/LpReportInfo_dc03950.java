@@ -1,15 +1,13 @@
 package cooperation.qzone.report.lp;
 
-import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QUA;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReportInfo_dc03950
   implements LpReportInfo
@@ -91,20 +89,9 @@ public class LpReportInfo_dc03950
     this.extraInfoMap = paramHashMap;
   }
   
-  public static String getReportUserType(QQAppInterface paramQQAppInterface)
+  public static String getReportUserType(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    if (paramQQAppInterface != null)
-    {
-      SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
-      if (localSharedPreferences != null)
-      {
-        if (localSharedPreferences.getInt("love_state_for_current_uin" + paramQQAppInterface.getCurrentUin(), 0) == 1) {
-          return "1";
-        }
-        return "2";
-      }
-    }
-    return "2";
+    return ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getReportUserType(paramBaseQQAppInterface);
   }
   
   public static void report(LpReportInfo_dc03950 paramLpReportInfo_dc03950)
@@ -120,9 +107,9 @@ public class LpReportInfo_dc03950
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
+    LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
     if (this.uin == 0L) {}
-    for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
+    for (String str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();; str = String.valueOf(this.uin))
     {
       LpReportUtils.safePut(localHashMap, "uin", str);
       LpReportUtils.safePut(localHashMap, "actiontype", this.actiontype);
@@ -141,7 +128,7 @@ public class LpReportInfo_dc03950
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc03950
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,14 @@
+package com.tencent.biz.subscribe.bizdapters;
+
+import android.graphics.drawable.Drawable;
+
+public abstract interface AnimationDrawableFactory$CreateDrawableResultListener
+{
+  public abstract void a(boolean paramBoolean, Drawable paramDrawable);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.biz.subscribe.bizdapters.AnimationDrawableFactory.CreateDrawableResultListener
+ * JD-Core Version:    0.7.0.1
+ */

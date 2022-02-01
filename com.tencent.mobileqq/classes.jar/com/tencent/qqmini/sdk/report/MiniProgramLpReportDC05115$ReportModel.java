@@ -58,10 +58,10 @@ public class MiniProgramLpReportDC05115$ReportModel
   private String pkgDownloadResult;
   private String qua = QUAUtil.getPlatformQUA();
   private long relaunchCost;
-  private String sdk_version = QUAUtil.getQUA();
-  private String source_app = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId();
-  private String source_uin_platform = QUAUtil.getLoginType();
-  private String source_version = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
+  private String sdkVersion = QUAUtil.getQUA();
+  private String sourceApp = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId();
+  private String sourceUinPlatform = QUAUtil.getLoginType();
+  private String sourceVersion = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
   private String x5Version = "1.0";
   
   public MiniProgramLpReportDC05115$ReportModel(MiniAppInfo paramMiniAppInfo)
@@ -324,7 +324,7 @@ public class MiniProgramLpReportDC05115$ReportModel
     {
       localStringBuilder2.append((String)localObject).append('|').append(this.x5Version).append('|').append(this.devicePlatform).append('|').append(this.deviceManufacturer).append('|').append(this.deviceModel).append('|').append(this.deviceVersion).append('|').append(this.networkGateWayIP).append('|').append(this.networkSSID).append('|').append(this.androidID).append('|').append(this.openID);
       if (!QUAUtil.isQQApp()) {
-        localStringBuilder1.append("|").append(this.sdk_version).append("|").append(this.source_app).append("|").append(this.source_version).append("|").append(this.source_uin_platform);
+        localStringBuilder1.append("|").append(this.sdkVersion).append("|").append(this.sourceApp).append("|").append(this.sourceVersion).append("|").append(this.sourceUinPlatform);
       }
       return localStringBuilder1.toString();
       localObject = "null";
@@ -342,12 +342,12 @@ public class MiniProgramLpReportDC05115$ReportModel
   
   public String toString()
   {
-    return "ReportModel{launchFlag=" + this.launchFlag + ", launchCost=" + this.launchCost + ", relaunchCost=" + this.relaunchCost + ", pkgDownloadCost=" + this.pkgDownloadCost + ", pkgDownloadResult='" + this.pkgDownloadResult + '\'' + ", gamePrepareCost=" + this.gamePrepareCost + ", fpsAVG=" + this.fpsAVG + ", fpsVARI=" + this.fpsVARI + ", cpuAVG=" + this.cpuAVG + ", memAVG=" + this.memAVG + ", memINC=" + this.memINC + ", httpRequestCost=" + this.httpRequestCost + ", httpRequestNum=" + this.httpRequestNum + ", httpRequestErrorNum=" + this.httpRequestErrorNum + ", httpRequestLength=" + this.httpRequestLength + ", downloadRequestCost=" + this.downloadRequestCost + ", downloadRequestNum=" + this.downloadRequestNum + ", downloadRequestErrorNum=" + this.downloadRequestErrorNum + ", downloadRequestLength=" + this.downloadRequestLength + ", jsErrorNum=" + this.jsErrorNum + ", oomErrorNum=" + this.oomErrorNum + ", crashErrorNum=" + this.crashErrorNum + ", launchResult='" + this.launchResult + '\'' + ", gameUseTime=" + this.gameUseTime + ", x5Version='" + this.x5Version + '\'' + ", openID='" + this.openID + '\'' + ", clientVersion='" + this.clientVersion + '\'' + ", devicePlatform='" + this.devicePlatform + '\'' + ", deviceManufacturer='" + this.deviceManufacturer + '\'' + ", deviceModel='" + this.deviceModel + '\'' + ", deviceVersion='" + this.deviceVersion + '\'' + ", qua='" + this.qua + '\'' + ", networkType='" + this.networkType + '\'' + ", networkGateWayIP='" + this.networkGateWayIP + '\'' + ", networkSSID='" + this.networkSSID + '\'' + ", androidID='" + this.androidID + '\'' + ", sdk_version='" + this.sdk_version + '\'' + ", source_app='" + this.source_app + '\'' + ", source_version='" + this.source_version + '\'' + ", source_uin_platform='" + this.source_uin_platform + '\'' + '}';
+    return "ReportModel{launchFlag=" + this.launchFlag + ", launchCost=" + this.launchCost + ", relaunchCost=" + this.relaunchCost + ", pkgDownloadCost=" + this.pkgDownloadCost + ", pkgDownloadResult='" + this.pkgDownloadResult + '\'' + ", gamePrepareCost=" + this.gamePrepareCost + ", fpsAVG=" + this.fpsAVG + ", fpsVARI=" + this.fpsVARI + ", cpuAVG=" + this.cpuAVG + ", memAVG=" + this.memAVG + ", memINC=" + this.memINC + ", httpRequestCost=" + this.httpRequestCost + ", httpRequestNum=" + this.httpRequestNum + ", httpRequestErrorNum=" + this.httpRequestErrorNum + ", httpRequestLength=" + this.httpRequestLength + ", downloadRequestCost=" + this.downloadRequestCost + ", downloadRequestNum=" + this.downloadRequestNum + ", downloadRequestErrorNum=" + this.downloadRequestErrorNum + ", downloadRequestLength=" + this.downloadRequestLength + ", jsErrorNum=" + this.jsErrorNum + ", oomErrorNum=" + this.oomErrorNum + ", crashErrorNum=" + this.crashErrorNum + ", launchResult='" + this.launchResult + '\'' + ", gameUseTime=" + this.gameUseTime + ", x5Version='" + this.x5Version + '\'' + ", openID='" + this.openID + '\'' + ", clientVersion='" + this.clientVersion + '\'' + ", devicePlatform='" + this.devicePlatform + '\'' + ", deviceManufacturer='" + this.deviceManufacturer + '\'' + ", deviceModel='" + this.deviceModel + '\'' + ", deviceVersion='" + this.deviceVersion + '\'' + ", qua='" + this.qua + '\'' + ", networkType='" + this.networkType + '\'' + ", networkGateWayIP='" + this.networkGateWayIP + '\'' + ", networkSSID='" + this.networkSSID + '\'' + ", androidID='" + this.androidID + '\'' + ", sdk_version='" + this.sdkVersion + '\'' + ", source_app='" + this.sourceApp + '\'' + ", source_version='" + this.sourceVersion + '\'' + ", source_uin_platform='" + this.sourceUinPlatform + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramLpReportDC05115.ReportModel
  * JD-Core Version:    0.7.0.1
  */

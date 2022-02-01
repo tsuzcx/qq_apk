@@ -11,7 +11,7 @@ public final class GetCategoryMaterialReq
 {
   static ArrayList<MetaSdkInfo> cache_SdkInfos = new ArrayList();
   public String ETag = "";
-  public ArrayList<MetaSdkInfo> SdkInfos;
+  public ArrayList<MetaSdkInfo> SdkInfos = null;
   public String ServiceId = "";
   
   static
@@ -51,7 +51,7 @@ public final class GetCategoryMaterialReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialReq
  * JD-Core Version:    0.7.0.1
  */

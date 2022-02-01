@@ -6,29 +6,30 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Handler.Callback;
-import bhtc;
-import bhuc;
+import android.text.TextUtils;
 import com.qflutter.resource_loader.NinePatchChunk;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.VasResEngine.AbsVasRes;
 import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
+import com.tencent.mobileqq.vas.ui.VasNinePathBitmap;
 import kotlin.Triple;
 
 public class TroopNickResDrawable
   extends VasResDrawable
-  implements Handler.Callback
+  implements Handler.Callback, AbsVasRes
 {
   private PointF jdField_a_of_type_AndroidGraphicsPointF;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private bhtc jdField_a_of_type_Bhtc;
-  private bhuc jdField_a_of_type_Bhuc = new bhuc();
-  private boolean e;
+  private TroopNickResDrawable.UpdateDrawablePadding jdField_a_of_type_ComTencentMobileqqVasTroopnickTroopNickResDrawable$UpdateDrawablePadding;
+  private VasNinePathBitmap jdField_a_of_type_ComTencentMobileqqVasUiVasNinePathBitmap = new VasNinePathBitmap();
+  private boolean e = false;
   int j = 0;
-  private int k;
+  private int k = 0;
   
   public TroopNickResDrawable(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    this.jdField_a_of_type_Bhub = new bhuc();
+    this.jdField_a_of_type_ComTencentMobileqqVasUiINinePathBitmap = new VasNinePathBitmap();
     this.k = paramInt;
   }
   
@@ -39,16 +40,18 @@ public class TroopNickResDrawable
   
   public Drawable a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Bhuc.a()) {
-      ThreadManagerV2.executeOnSubThread(new TroopNickResDrawable.1(this, paramString2));
+    if (TextUtils.isEmpty(paramString2)) {}
+    while (!this.jdField_a_of_type_ComTencentMobileqqVasUiVasNinePathBitmap.a()) {
+      return null;
     }
+    ThreadManagerV2.executeOnSubThread(new TroopNickResDrawable.1(this, paramString2));
     return null;
   }
   
   public void a(@android.support.annotation.NonNull Canvas paramCanvas)
   {
     if (this.d) {
-      this.jdField_a_of_type_Bhuc.a(paramCanvas, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_ComTencentMobileqqVasUiVasNinePathBitmap.a(paramCanvas, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
@@ -63,7 +66,7 @@ public class TroopNickResDrawable
     Object localObject1;
     if ((this.jdField_a_of_type_AndroidGraphicsPointF != null) && (this.e))
     {
-      localObject1 = (bhuc)this.jdField_a_of_type_Bhub;
+      localObject1 = (VasNinePathBitmap)this.jdField_a_of_type_ComTencentMobileqqVasUiINinePathBitmap;
       if (localObject1 != null) {
         break label29;
       }
@@ -75,10 +78,10 @@ public class TroopNickResDrawable
       do
       {
         return;
-        localObject2 = ((bhuc)localObject1).a();
+        localObject2 = ((VasNinePathBitmap)localObject1).a();
       } while (localObject2 == null);
       localObject2 = NinePatchChunk.deserialize((byte[])localObject2).mPaddings;
-      localObject1 = bhuc.a(((bhuc)localObject1).a(), ((bhuc)localObject1).b(), this.jdField_a_of_type_AndroidGraphicsRect);
+      localObject1 = VasNinePathBitmap.a(((VasNinePathBitmap)localObject1).a(), ((VasNinePathBitmap)localObject1).b(), this.jdField_a_of_type_AndroidGraphicsRect);
       if ((((Boolean)((Triple)localObject1).getFirst()).booleanValue()) || (((Boolean)((Triple)localObject1).getSecond()).booleanValue()))
       {
         float f = ((Float)((Triple)localObject1).getThird()).floatValue();
@@ -91,13 +94,13 @@ public class TroopNickResDrawable
       }
       this.e = false;
       this.j = paramRect.right;
-    } while (this.jdField_a_of_type_Bhtc == null);
-    this.jdField_a_of_type_Bhtc.a((Rect)localObject2);
+    } while (this.jdField_a_of_type_ComTencentMobileqqVasTroopnickTroopNickResDrawable$UpdateDrawablePadding == null);
+    this.jdField_a_of_type_ComTencentMobileqqVasTroopnickTroopNickResDrawable$UpdateDrawablePadding.a((Rect)localObject2);
   }
   
-  public void a(bhtc parambhtc)
+  public void a(TroopNickResDrawable.UpdateDrawablePadding paramUpdateDrawablePadding)
   {
-    this.jdField_a_of_type_Bhtc = parambhtc;
+    this.jdField_a_of_type_ComTencentMobileqqVasTroopnickTroopNickResDrawable$UpdateDrawablePadding = paramUpdateDrawablePadding;
   }
   
   public void draw(@android.support.annotation.NonNull Canvas paramCanvas)
@@ -125,7 +128,7 @@ public class TroopNickResDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickResDrawable
  * JD-Core Version:    0.7.0.1
  */

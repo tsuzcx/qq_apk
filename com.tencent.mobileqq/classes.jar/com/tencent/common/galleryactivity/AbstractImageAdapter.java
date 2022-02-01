@@ -1,7 +1,5 @@
 package com.tencent.common.galleryactivity;
 
-import aavo;
-import aavw;
 import android.view.View;
 import android.widget.BaseAdapter;
 import com.tencent.image.URLDrawable;
@@ -9,13 +7,13 @@ import com.tencent.image.URLDrawable;
 public abstract class AbstractImageAdapter
   extends BaseAdapter
 {
-  aavo jdField_a_of_type_Aavo;
-  private aavw jdField_a_of_type_Aavw;
+  AbstractImageListModel jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
+  private AbstractProgressView jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
   
-  private aavw a(int paramInt)
+  private AbstractProgressView a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Aavo != null) && (paramInt == this.jdField_a_of_type_Aavo.b())) {
-      return this.jdField_a_of_type_Aavw;
+    if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel != null) && (paramInt == this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.b())) {
+      return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
     }
     return null;
   }
@@ -51,61 +49,61 @@ public abstract class AbstractImageAdapter
     }
   }
   
-  public aavo a()
+  public AbstractImageListModel a()
   {
-    return this.jdField_a_of_type_Aavo;
+    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    aavw localaavw = a(paramInt1);
-    if (localaavw != null) {
-      localaavw.a(paramInt2);
+    AbstractProgressView localAbstractProgressView = a(paramInt1);
+    if (localAbstractProgressView != null) {
+      localAbstractProgressView.a(paramInt2);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    aavw localaavw = a(paramInt);
-    if (localaavw != null) {
-      localaavw.c();
+    AbstractProgressView localAbstractProgressView = a(paramInt);
+    if (localAbstractProgressView != null) {
+      localAbstractProgressView.c();
     }
-  }
-  
-  public void a(aavo paramaavo)
-  {
-    this.jdField_a_of_type_Aavo = paramaavo;
-  }
-  
-  public void a(aavw paramaavw)
-  {
-    this.jdField_a_of_type_Aavw = paramaavw;
   }
   
   public abstract void a(View paramView, int paramInt);
   
+  public void a(AbstractImageListModel paramAbstractImageListModel)
+  {
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel = paramAbstractImageListModel;
+  }
+  
+  public void a(AbstractProgressView paramAbstractProgressView)
+  {
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView = paramAbstractProgressView;
+  }
+  
   public void b(int paramInt1, int paramInt2)
   {
-    aavw localaavw = a(paramInt1);
-    if ((localaavw != null) && (localaavw.a())) {
-      localaavw.a(paramInt2);
+    AbstractProgressView localAbstractProgressView = a(paramInt1);
+    if ((localAbstractProgressView != null) && (localAbstractProgressView.a())) {
+      localAbstractProgressView.a(paramInt2);
     }
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Aavo == null) {
+    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Aavo.a();
+    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_Aavo == null) {
+    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel == null) {
       return null;
     }
-    return this.jdField_a_of_type_Aavo.a(paramInt);
+    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a(paramInt);
   }
   
   public long getItemId(int paramInt)

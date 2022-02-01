@@ -13,7 +13,15 @@ public enum AdProgressDialog
   
   private AdProgressDialog() {}
   
-  public static void dismiss()
+  private AdProgressDialogAdapter getAdapter()
+  {
+    if (this.adapter != null) {
+      return (AdProgressDialogAdapter)this.adapter.get();
+    }
+    return null;
+  }
+  
+  public void dismiss()
   {
     AdProgressDialogAdapter localAdProgressDialogAdapter = getAdapter();
     if (localAdProgressDialogAdapter != null) {
@@ -21,30 +29,31 @@ public enum AdProgressDialog
     }
   }
   
-  private static AdProgressDialogAdapter getAdapter()
+  public boolean isShowing(Context paramContext)
   {
-    if (INSTANCE.adapter != null) {
-      return (AdProgressDialogAdapter)INSTANCE.adapter.get();
+    AdProgressDialogAdapter localAdProgressDialogAdapter = getAdapter();
+    if (localAdProgressDialogAdapter != null) {}
+    for (paramContext = Boolean.valueOf(localAdProgressDialogAdapter.isShowing(paramContext));; paramContext = null) {
+      return paramContext.booleanValue();
     }
-    return null;
   }
   
-  public static void setAdapter(WeakReference<AdProgressDialogAdapter> paramWeakReference)
+  public void setAdapter(WeakReference<AdProgressDialogAdapter> paramWeakReference)
   {
-    INSTANCE.adapter = paramWeakReference;
+    this.adapter = paramWeakReference;
   }
   
-  public static void show(Context paramContext, int paramInt)
+  public void show(Context paramContext, AdProgressDialog.Params paramParams)
   {
     AdProgressDialogAdapter localAdProgressDialogAdapter = getAdapter();
     if (localAdProgressDialogAdapter != null) {
-      localAdProgressDialogAdapter.show(paramContext, paramInt);
+      localAdProgressDialogAdapter.show(paramContext, paramParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.dialog.AdProgressDialog
  * JD-Core Version:    0.7.0.1
  */

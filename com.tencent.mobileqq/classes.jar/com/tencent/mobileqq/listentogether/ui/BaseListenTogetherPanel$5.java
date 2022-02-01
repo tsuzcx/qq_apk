@@ -4,10 +4,10 @@ import android.graphics.Rect;
 import android.view.TouchDelegate;
 import android.view.View;
 
-public final class BaseListenTogetherPanel$5
+final class BaseListenTogetherPanel$5
   implements Runnable
 {
-  public BaseListenTogetherPanel$5(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  BaseListenTogetherPanel$5(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {

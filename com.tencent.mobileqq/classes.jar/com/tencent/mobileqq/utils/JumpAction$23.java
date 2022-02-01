@@ -1,25 +1,56 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bheh;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.HashMap;
 
-public class JumpAction$23
+class JumpAction$23
   implements Runnable
 {
-  public JumpAction$23(bheh parambheh) {}
+  JumpAction$23(JumpAction paramJumpAction, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (this.this$0.a == null) {}
-    String str;
-    do
+    Object localObject = new StringBuffer();
+    String[] arrayOfString = this.a.split(";");
+    int i = 0;
+    while (i < arrayOfString.length)
     {
+      String str = URLDecoder.decode(arrayOfString[i]);
+      if (!TextUtils.isEmpty(str))
+      {
+        str = FileUtils.a(this.this$0.jdField_a_of_type_AndroidContentContext, str, "opensdk_tmp");
+        if (!TextUtils.isEmpty(str))
+        {
+          ((StringBuffer)localObject).append(URLEncoder.encode(str));
+          if (i != arrayOfString.length - 1) {
+            ((StringBuffer)localObject).append(";");
+          }
+        }
+      }
+      i += 1;
+    }
+    try
+    {
+      localObject = new String(Base64Util.encode(((StringBuffer)localObject).toString().getBytes("UTF-8"), 0));
+      this.this$0.jdField_a_of_type_JavaUtilHashMap.put("image_url", localObject);
+      JumpAction.a(this.this$0, this.b, false);
+      if (((this.this$0.jdField_a_of_type_AndroidContentContext instanceof GesturePWDUnlockActivity)) && (this.this$0.g)) {
+        ((GesturePWDUnlockActivity)this.this$0.jdField_a_of_type_AndroidContentContext).finish();
+      }
       return;
-      str = this.this$0.a.getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.c(str, System.currentTimeMillis());
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
+      {
+        QLog.i("JumpAction", 1, "gotoShareMsgCheck put exception:", localUnsupportedEncodingException);
+      }
+    }
   }
 }
 

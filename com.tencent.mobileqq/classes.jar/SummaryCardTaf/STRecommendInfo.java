@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class STRecommendInfo
   extends JceStruct
 {
-  public long iRecomCard;
+  public long iRecomCard = 0L;
   public String strDesc = "";
   public String strRecomUrl = "";
   
@@ -40,7 +40,7 @@ public final class STRecommendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.STRecommendInfo
  * JD-Core Version:    0.7.0.1
  */

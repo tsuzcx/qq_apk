@@ -7,13 +7,13 @@ public class MiniAppReportManager2$AppLaunchState
   public static final int LAUNCHING = 0;
   public static final int LAUNCH_FAIL = 2;
   public static final int LAUNCH_SUCESS = 1;
-  public static boolean hasX5;
+  public static boolean hasX5 = false;
   public long activeTime;
   public String appId;
   public long clickTime;
   public int engineType;
-  public boolean flutterMode;
-  public boolean hasPkg;
+  public boolean flutterMode = false;
+  public boolean hasPkg = false;
   public long hideTime;
   public String jsError;
   public String launchId;

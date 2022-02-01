@@ -5,24 +5,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import anvk;
-import anvx;
-import aupp;
-import aupt;
-import bhbx;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nwu;
 
 public class ForwardH5PTVOption
-  extends aupt
+  extends ForwardBaseOption
 {
   protected ResultReceiver a;
   
@@ -35,16 +33,16 @@ public class ForwardH5PTVOption
   public List<RecentUser> a(List<RecentUser> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    anvk localanvk = (anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("choose_friend_h5_type", 0);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(aupp.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
-        if ((localRecentUser.getType() == 0) && (!bhbx.a(localRecentUser.uin)) && (!bhbx.c(localRecentUser.uin)) && (!nwu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
+      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
+        if ((localRecentUser.getType() == 0) && (!Utils.a(localRecentUser.uin)) && (!Utils.c(localRecentUser.uin)) && (!CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
         {
-          if ((localanvk != null) && (localanvk.b(localRecentUser.uin)) && ((i == 1) || (i == 13))) {
+          if ((localFriendsManager != null) && (localFriendsManager.b(localRecentUser.uin)) && ((i == 1) || (i == 13))) {
             localArrayList.add(localRecentUser);
           }
         }
@@ -60,36 +58,6 @@ public class ForwardH5PTVOption
       }
     }
     return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_qqfriends", true);
-    this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_contacts", false);
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("choose_friend_h5_type", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("h5ptv", 2, "bType=" + i);
-    }
-    if ((i == 1) && (q())) {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
-    }
-    if (i == 4) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (i == 8) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (i == 13)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (i == 12)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
   }
   
   public void a(int paramInt, Bundle paramBundle)
@@ -162,14 +130,44 @@ public class ForwardH5PTVOption
     String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("choose_friend_title");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = anvx.a(2131704238);
+      str1 = HardCodeUtil.a(2131704786);
     }
     return str1;
+  }
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_qqfriends", true);
+    this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_contacts", false);
+    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("choose_friend_h5_type", 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("h5ptv", 2, "bType=" + i);
+    }
+    if ((i == 1) && (r())) {
+      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
+    }
+    if (i == 4) {
+      this.jdField_a_of_type_JavaUtilSet.add(c);
+    }
+    if (i == 8) {
+      this.jdField_a_of_type_JavaUtilSet.add(d);
+    }
+    if (i == 13)
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
+      this.jdField_a_of_type_JavaUtilSet.add(c);
+      this.jdField_a_of_type_JavaUtilSet.add(d);
+    }
+    if (i == 12)
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(c);
+      this.jdField_a_of_type_JavaUtilSet.add(d);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardH5PTVOption
  * JD-Core Version:    0.7.0.1
  */

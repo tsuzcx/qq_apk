@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.microapp.sdk;
 
-import albn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +7,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
@@ -59,7 +59,7 @@ public class MiniAppLauncher
         if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
           return openMiniApp(paramContext, paramLaunchParam);
         }
-        albn.a(paramLaunchParam, null);
+        ComIPCUtils.a(paramLaunchParam, null);
         return true;
       }
     }

@@ -10,16 +10,16 @@ public final class RequestQueryQQMobileContactsV3
   static int cache_bindState = 0;
   static int cache_queryFlag;
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public boolean Compressd;
-  public long MaxsignTimeStamp;
+  public boolean Compressd = false;
+  public long MaxsignTimeStamp = 0L;
   public String MobileUniqueNo = "";
-  public boolean OmitOffline;
+  public boolean OmitOffline = false;
   public int bindState = 0;
-  public long nextFlag;
-  public int queryFlag;
-  public long queryFrom;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public long nextFlag = 0L;
+  public int queryFlag = 0;
+  public long queryFrom = 0L;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   
   static
   {

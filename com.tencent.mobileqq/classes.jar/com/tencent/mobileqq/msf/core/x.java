@@ -1,98 +1,39 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.os.Handler;
-import android.os.HandlerThread;
+import com.tencent.qphone.base.util.QLog;
 
-public class x
+class x
+  extends Thread
 {
-  public static final String a = "MsfCoreMsgSender";
-  public static final String b = "MsfCoreSocketReaderNew";
-  public static final String c = "LightSender";
-  public static final String d = "LightTcpSenderThread";
-  public static final String e = "MSFSubHandlerThread";
-  private static HandlerThread f = null;
-  private static Handler g = null;
-  private static HandlerThread h = null;
-  private static Handler i = null;
-  private static HandlerThread j = null;
-  private static Handler k = null;
+  x(u paramu) {}
   
-  public static HandlerThread a()
+  public void run()
   {
-    if (f == null) {}
-    try
+    u.b(this.a, true);
+    int i = 0;
+    while (i < u.b(this.a).h)
     {
-      HandlerThread localHandlerThread = new HandlerThread("MSF_StatReportThread");
-      localHandlerThread.start();
-      f = localHandlerThread;
-      return f;
-    }
-    finally {}
-  }
-  
-  public static Handler b()
-  {
-    if (g == null) {}
-    try
-    {
-      if (g == null) {
-        g = new Handler(a().getLooper());
+      i += 1;
+      if (u.c(this.a))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQWiFiScanManager", 2, "accScan, launch count=" + i);
+        }
+        try
+        {
+          Thread.sleep(u.b(this.a).i);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          localInterruptedException.printStackTrace();
+        }
       }
-      return g;
-    }
-    finally {}
-  }
-  
-  public static HandlerThread c()
-  {
-    if (j == null) {}
-    try
-    {
-      HandlerThread localHandlerThread = new HandlerThread("MSFNetHandlerThread");
-      localHandlerThread.start();
-      j = localHandlerThread;
-      return j;
-    }
-    finally {}
-  }
-  
-  public static Handler d()
-  {
-    if (k == null) {}
-    try
-    {
-      if (k == null) {
-        k = new Handler(c().getLooper());
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("QQWiFiScanManager", 2, "accScan, count=" + i + ", stopped");
       }
-      return k;
     }
-    finally {}
-  }
-  
-  public static HandlerThread e()
-  {
-    if (h == null) {}
-    try
-    {
-      HandlerThread localHandlerThread = new HandlerThread("MSFSubHandlerThread");
-      localHandlerThread.start();
-      h = localHandlerThread;
-      return h;
-    }
-    finally {}
-  }
-  
-  public static Handler f()
-  {
-    if (i == null) {}
-    try
-    {
-      if (i == null) {
-        i = new Handler(e().getLooper());
-      }
-      return i;
-    }
-    finally {}
+    u.b(this.a, false);
   }
 }
 

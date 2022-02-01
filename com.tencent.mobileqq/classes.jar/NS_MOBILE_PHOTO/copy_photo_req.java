@@ -12,9 +12,9 @@ public final class copy_photo_req
   public String desc = "";
   public String dstAlbumType = "";
   public String dstAlbumid = "";
-  public ArrayList<st_copy_photo> photos;
+  public ArrayList<st_copy_photo> photos = null;
   public String reqSource = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

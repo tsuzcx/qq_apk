@@ -1,47 +1,26 @@
 package com.tencent.avgame.gameroom.stage.guesspicture;
 
-import android.os.Handler;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.gameroom.stage.IGameStageView.SwitchTopicClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class GuessPictureStageView$1
-  implements Runnable
+  implements View.OnClickListener
 {
   GuessPictureStageView$1(GuessPictureStageView paramGuessPictureStageView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.this$0.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.jdField_b_of_type_JavaLangRunnable);
-      if (this.this$0.jdField_a_of_type_Int < this.this$0.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        if ((this.this$0.jdField_b_of_type_AndroidViewView != null) && (this.this$0.jdField_b_of_type_AndroidViewView.getVisibility() == 8))
-        {
-          this.this$0.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.this$0.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        }
-        this.this$0.a((String)((Pair)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int)).second);
-        if (this.this$0.jdField_a_of_type_Int < this.this$0.jdField_a_of_type_JavaUtilArrayList.size() - 1)
-        {
-          Handler localHandler = ThreadManager.getUIHandlerV2();
-          ArrayList localArrayList = this.this$0.jdField_a_of_type_JavaUtilArrayList;
-          GuessPictureStageView localGuessPictureStageView = this.this$0;
-          int i = localGuessPictureStageView.jdField_a_of_type_Int + 1;
-          localGuessPictureStageView.jdField_a_of_type_Int = i;
-          localHandler.postDelayed(this, (((Integer)((Pair)localArrayList.get(i)).first).intValue() - ((Integer)((Pair)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int - 1)).first).intValue()) * 1000);
-        }
-      }
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mtt.abtestsdk.entity;
 
-import org.json.JSONException;
+import com.tencent.mtt.abtestsdk.utils.ABTestLog;
 import org.json.JSONObject;
 
 public class RomaStrategyEntity
@@ -54,18 +54,21 @@ public class RomaStrategyEntity
   {
     try
     {
-      this.enableReport = paramJSONObject.getBoolean("enableReport");
-      this.refreshDuration = paramJSONObject.getInt("refreshDuration");
-      this.reportType = paramJSONObject.getString("reportType");
-      paramJSONObject = paramJSONObject.getJSONObject("reportConfig");
+      this.enableReport = paramJSONObject.optBoolean("enableReport");
+      this.refreshDuration = paramJSONObject.optInt("refreshDuration");
+      this.reportType = paramJSONObject.optString("reportType");
+      paramJSONObject = paramJSONObject.optJSONObject("reportConfig");
       if (paramJSONObject != null)
       {
-        this.reportId = paramJSONObject.getString("id");
-        this.reportToken = paramJSONObject.getString("token");
+        this.reportId = paramJSONObject.optString("id");
+        this.reportToken = paramJSONObject.optString("token");
       }
       return;
     }
-    catch (JSONException paramJSONObject) {}
+    catch (Exception paramJSONObject)
+    {
+      ABTestLog.error("readFromJson failed: " + paramJSONObject.getMessage(), new Object[0]);
+    }
   }
   
   public void setEnableReport(boolean paramBoolean)
@@ -100,7 +103,7 @@ public class RomaStrategyEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.entity.RomaStrategyEntity
  * JD-Core Version:    0.7.0.1
  */

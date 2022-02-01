@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class BubbleReq
   extends JceStruct
 {
-  public int bubbleID;
+  public int bubbleID = 0;
   
   public BubbleReq() {}
   

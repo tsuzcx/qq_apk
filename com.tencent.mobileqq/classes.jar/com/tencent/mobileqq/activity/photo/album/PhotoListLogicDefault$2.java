@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import akmi;
-import akmj;
 import android.content.Intent;
-import bdla;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 import java.util.ArrayList;
 
-public class PhotoListLogicDefault$2
+class PhotoListLogicDefault$2
   implements Runnable
 {
-  public PhotoListLogicDefault$2(akmj paramakmj, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
+  PhotoListLogicDefault$2(PhotoListLogicDefault paramPhotoListLogicDefault, boolean paramBoolean, Intent paramIntent, ArrayList paramArrayList, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -19,8 +17,8 @@ public class PhotoListLogicDefault$2
     }
     for (;;)
     {
-      bdla.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-      bcwz.b = System.currentTimeMillis();
+      ReportController.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
+      com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.b = System.currentTimeMillis();
       return;
       PhotoUtils.sendPhoto(this.this$0.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.mPhotoCommonData.currentQualityType, this.this$0.a.jdField_a_of_type_Boolean);
     }
@@ -28,7 +26,7 @@ public class PhotoListLogicDefault$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListLogicDefault.2
  * JD-Core Version:    0.7.0.1
  */

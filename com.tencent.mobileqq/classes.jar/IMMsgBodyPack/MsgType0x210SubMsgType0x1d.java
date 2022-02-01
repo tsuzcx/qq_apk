@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class MsgType0x210SubMsgType0x1d
   extends JceStruct
 {
-  public long dwID;
-  public long dwOpType;
-  public long dwUin;
+  public long dwID = 0L;
+  public long dwOpType = 0L;
+  public long dwUin = 0L;
   public String strValue = "";
   
   public MsgType0x210SubMsgType0x1d() {}

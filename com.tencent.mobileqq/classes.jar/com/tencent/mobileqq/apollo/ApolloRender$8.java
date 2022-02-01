@@ -1,21 +1,23 @@
 package com.tencent.mobileqq.apollo;
 
-import anln;
-import anlq;
+import android.view.View;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
 
 final class ApolloRender$8
-  implements Runnable
+  extends ApolloHttpCallBack
 {
-  ApolloRender$8(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, anln paramanln) {}
+  ApolloRender$8(View paramView, long paramLong) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    anlq.a(this.jdField_a_of_type_JavaLangString.toUpperCase(), this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Anln);
+    if ((this.jdField_a_of_type_AndroidViewView instanceof ApolloSurfaceView)) {
+      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).runRenderTask(new ApolloRender.8.1(this, paramInt, paramArrayOfByte));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.8
  * JD-Core Version:    0.7.0.1
  */

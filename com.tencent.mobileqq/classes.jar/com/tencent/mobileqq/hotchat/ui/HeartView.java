@@ -22,22 +22,22 @@ public class HeartView
   public HeartView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130845278;
-    this.jdField_b_of_type_Int = 2130845277;
+    this.jdField_a_of_type_Int = 2130845593;
+    this.jdField_b_of_type_Int = 2130845592;
   }
   
   public HeartView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130845278;
-    this.jdField_b_of_type_Int = 2130845277;
+    this.jdField_a_of_type_Int = 2130845593;
+    this.jdField_b_of_type_Int = 2130845592;
   }
   
   public HeartView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 2130845278;
-    this.jdField_b_of_type_Int = 2130845277;
+    this.jdField_a_of_type_Int = 2130845593;
+    this.jdField_b_of_type_Int = 2130845592;
   }
   
   public static Bitmap a(int paramInt1, int paramInt2)
@@ -198,12 +198,12 @@ public class HeartView
       super.setImageBitmap(localBitmap);
       return;
     }
-    super.setImageResource(2130845278);
+    super.setImageResource(2130845593);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.HeartView
  * JD-Core Version:    0.7.0.1
  */

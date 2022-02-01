@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
+import com.tencent.biz.qqstory.utils.BitmapUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
 import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
 import com.tencent.qphone.base.util.QLog;
-import zdr;
 
 class WxShareHelperFromReadInjoy$1
   implements Runnable
@@ -38,7 +38,7 @@ class WxShareHelperFromReadInjoy$1
       j *= 4;
       if (this.c.startsWith("/pages/index/index?share=1&share_type=1"))
       {
-        localObject1 = zdr.a(zdr.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true), BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841784), true);
+        localObject1 = BitmapUtils.a(BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true), BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841928), true);
         if (localObject1 != null)
         {
           i = ((Bitmap)localObject1).getWidth();
@@ -62,7 +62,7 @@ class WxShareHelperFromReadInjoy$1
       ((SendMessageToWX.Req)localObject1).scene = 0;
       WxShareHelperFromReadInjoy.a(this.this$0, (SendMessageToWX.Req)localObject1);
       return;
-      localObject1 = zdr.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true);
+      localObject1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true);
       break;
       if (QLog.isColorLevel()) {
         QLog.e("WxShareHelperFromReadInjoy", 2, "shareToMiniProgramWithPathAndId, error icon == null! title" + this.d + ", description = " + this.e + ", path = " + this.c + ", webPageUrl = " + this.jdField_a_of_type_JavaLangString + ", id = " + this.b);
@@ -72,7 +72,7 @@ class WxShareHelperFromReadInjoy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy.1
  * JD-Core Version:    0.7.0.1
  */

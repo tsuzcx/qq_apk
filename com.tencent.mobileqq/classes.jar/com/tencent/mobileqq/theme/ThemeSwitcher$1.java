@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.theme;
 
-import beik;
-import bjkl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.theme.api.ThemeLocator;
+import com.tencent.open.base.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -21,7 +21,7 @@ class ThemeSwitcher$1
     if (!ThemeSwitcher.a(this.this$0).a().b())
     {
       QLog.e("ThemeSwitcher", 1, "unzip diy: " + ThemeSwitcher.a(this.this$0).d());
-      bjkl.a(localQQAppInterface.getApp(), "999_540", ThemeSwitcher.a(this.this$0).d());
+      FileUtils.a(localQQAppInterface.getApp(), "999_540", ThemeSwitcher.a(this.this$0).d());
       i = ThemeUtil.getFileNumInFile(new File(ThemeSwitcher.a(this.this$0).d()));
       ThemeUtil.ThemeInfo localThemeInfo = new ThemeUtil.ThemeInfo();
       if (i <= 0) {

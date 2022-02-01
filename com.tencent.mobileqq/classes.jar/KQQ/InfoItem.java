@@ -8,11 +8,11 @@ public final class InfoItem
   extends JceStruct
 {
   static byte[] cache_vecValue;
-  public byte cOperType;
-  public byte cResult;
-  public long qwServiceId;
-  public long qwTimeStamp;
-  public byte[] vecValue;
+  public byte cOperType = 0;
+  public byte cResult = 0;
+  public long qwServiceId = 0L;
+  public long qwTimeStamp = 0L;
+  public byte[] vecValue = null;
   
   public InfoItem() {}
   

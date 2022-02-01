@@ -5,20 +5,23 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
 import android.util.Log;
+import com.qflutter.qqface.QQFacePlugin;
 import com.qflutter.qqface.cache.BitmapCache;
 import com.qflutter.qqface.data.QQFaceFlutterData;
 import com.qflutter.qqface.data.QQFaceNativeData;
 import com.qflutter.qqface.data.QQFaceParam;
 import com.tencent.nativebmp.NativeBitmap;
-import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.Result;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class QQFaceLoader
 {
   public static final String TAG = "QQFaceLoader";
   private BitmapCache mBitmapCache;
-  private MethodChannel mMethodChannel;
   private QQFaceInterface mQQFaceInterface;
+  private Set<QQFacePlugin> mQQFacePlugins;
   private HandlerThread mQQFaceThread = new HandlerThread("QQFaceLoader");
   private Handler mSubHandler;
   private Handler mUIHandler;
@@ -29,6 +32,7 @@ public class QQFaceLoader
     this.mUIHandler = new Handler();
     this.mSubHandler = new Handler(this.mQQFaceThread.getLooper());
     this.mBitmapCache = new BitmapCache();
+    this.mQQFacePlugins = new HashSet();
   }
   
   private QQFaceFlutterData buildFlutterDate(String paramString, QQFaceNativeData paramQQFaceNativeData, boolean paramBoolean)
@@ -124,6 +128,12 @@ public class QQFaceLoader
     NativeBitmap.init(paramQQFaceInterface.getLibPath());
   }
   
+  public void onAttachedToEngine(QQFacePlugin paramQQFacePlugin)
+  {
+    Log.d("QQFaceLoader", "onAttachedToEngine");
+    this.mQQFacePlugins.add(paramQQFacePlugin);
+  }
+  
   public void onDestroy()
   {
     if (this.mQQFaceInterface != null) {
@@ -131,30 +141,31 @@ public class QQFaceLoader
     }
   }
   
+  public void onDetachedFromEngine(QQFacePlugin paramQQFacePlugin)
+  {
+    Log.d("QQFaceLoader", "onDetachedFromEngine");
+    if (this.mQQFacePlugins.contains(paramQQFacePlugin)) {
+      this.mQQFacePlugins.remove(paramQQFacePlugin);
+    }
+  }
+  
   public void onUpdate(String paramString, QQFaceNativeData paramQQFaceNativeData)
   {
     paramString = buildFlutterDate(paramString, paramQQFaceNativeData, true);
-    if (this.mMethodChannel != null)
-    {
-      this.mMethodChannel.invokeMethod("onNativeUpdate", paramString.toMap(), null);
-      return;
+    paramQQFaceNativeData = this.mQQFacePlugins.iterator();
+    while (paramQQFaceNativeData.hasNext()) {
+      ((QQFacePlugin)paramQQFaceNativeData.next()).updateHead(paramString);
     }
-    Log.d("QQFaceLoader", "onUpdate mMethodChannel == NULL");
   }
   
   public void removeCache(String paramString, int paramInt)
   {
     this.mBitmapCache.removeCache(paramString, paramInt);
   }
-  
-  public void setMethodChannel(MethodChannel paramMethodChannel)
-  {
-    this.mMethodChannel = paramMethodChannel;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.qqface.loader.QQFaceLoader
  * JD-Core Version:    0.7.0.1
  */

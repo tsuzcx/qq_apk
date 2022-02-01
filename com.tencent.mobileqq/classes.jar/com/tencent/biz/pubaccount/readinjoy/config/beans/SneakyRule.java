@@ -9,7 +9,7 @@ import java.util.Set;
 public class SneakyRule
   implements AladdinConfigBean
 {
-  private boolean enable;
+  private boolean enable = false;
   private Set<String> fingerprintSet = new HashSet();
   private List<String> props = new ArrayList();
   
@@ -35,7 +35,7 @@ public class SneakyRule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.config.beans.SneakyRule
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,59 @@
 package com.tencent.mobileqq.statistics;
 
-import aclo;
-import aohi;
-import aoog;
-import avty;
-import avub;
-import awoi;
-import bbnu;
-import bdhp;
-import bdkc;
-import bdki;
-import bdlg;
-import biis;
+import com.tencent.biz.qqstory.utils.StoryDebugUtils.StoryExceptionCallback;
+import com.tencent.hotpatch.PatchDownloadManager;
+import com.tencent.imcore.message.msgproxy.MsgProxyUtilsCallback;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 import com.tencent.mobileqq.activity.aio.ChatItemAnimLayout;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerInitialler;
-import com.tencent.mobileqq.javahook.BGLocateMonitor;
+import com.tencent.mobileqq.app.message.MsgHelper;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.ConversationInfo;
+import com.tencent.mobileqq.data.ConversationInfoErrorReporter;
+import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher;
+import com.tencent.mobileqq.intervideo.huayang.HuayangPluginNewDownloader;
+import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.mobileqq.mutualmark.MutualMarkBusinessLogicHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.ShortVideoExceptionReporter;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 import com.tencent.mobileqq.utils.SecurityUtile;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.widget.SingleLineTextView;
 import java.util.HashSet;
-import zfc;
 
-public final class CaughtExceptionReport$1
+final class CaughtExceptionReport$1
   extends HashSet<String>
 {
-  public CaughtExceptionReport$1(int paramInt)
+  CaughtExceptionReport$1(int paramInt)
   {
     super(paramInt);
     add(BaseActivity.class.getName());
-    add(bdkc.class.getName());
-    add(biis.class.getName());
-    add(bdhp.class.getName());
-    add(zfc.class.getName());
-    add(bbnu.class.getName());
-    add(aclo.class.getName());
+    add(FDStats.class.getName());
+    add(SwiftWebAccelerator.TbsAccelerator.class.getName());
+    add(StoryDebugUtils.StoryExceptionCallback.class.getName());
+    add(ShortVideoExceptionReporter.class.getName());
+    add(PatchDownloadManager.class.getName());
     add(SingleLineTextView.class.getName());
     add(BaseBubbleBuilder.class.getName());
     add(ChatItemAnimLayout.class.getName());
     add(SecurityUtile.class.getName());
-    add(aoog.class.getName());
-    add(avub.class.getName());
-    add(avty.class.getName());
-    add(awoi.class.getName());
-    add(bdki.class.getName());
+    add(MsgHelper.class.getName());
+    add(ConversationInfo.class.getName());
+    add(HuayangPluginNewDownloader.class.getName());
+    add(HuayangPluginLauncher.class.getName());
+    add(ReportLog.class.getName());
+    add(FightReporter.class.getName());
     add(ThreadManagerInitialler.class.getName());
-    add(bdlg.class.getName());
+    add(RichMediaBugReport.class.getName());
     add(MD5Utils.class.getName());
-    add(aohi.class.getName());
-    add(BGLocateMonitor.class.getName());
+    add(RecentUserProxy.class.getName());
+    add(((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getBGLocateMonitorClassName());
+    add(MutualMarkBusinessLogicHelper.class.getName());
+    add(ConversationInfoErrorReporter.class.getName());
+    add(MsgProxyUtilsCallback.class.getName());
   }
 }
 

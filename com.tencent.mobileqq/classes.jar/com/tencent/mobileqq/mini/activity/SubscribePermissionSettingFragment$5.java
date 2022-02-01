@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.activity;
 
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class SubscribePermissionSettingFragment$5
   implements Runnable
@@ -12,11 +12,11 @@ class SubscribePermissionSettingFragment$5
   public void run()
   {
     if (SubscribePermissionSettingFragment.access$700(this.this$0) == null) {
-      SubscribePermissionSettingFragment.access$702(this.this$0, new bisl(this.this$0.getActivity()));
+      SubscribePermissionSettingFragment.access$702(this.this$0, new QQProgressDialog(this.this$0.getActivity()));
     }
     if (!SubscribePermissionSettingFragment.access$700(this.this$0).isShowing())
     {
-      SubscribePermissionSettingFragment.access$700(this.this$0).a(this.this$0.getActivity().getResources().getString(2131694454));
+      SubscribePermissionSettingFragment.access$700(this.this$0).a(this.this$0.getActivity().getResources().getString(2131694671));
       SubscribePermissionSettingFragment.access$700(this.this$0).show();
     }
   }

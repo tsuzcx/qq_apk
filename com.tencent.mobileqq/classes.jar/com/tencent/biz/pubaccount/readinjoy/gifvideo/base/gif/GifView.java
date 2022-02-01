@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.widget.FrameLayout;
 import android.widget.ImageView.ScaleType;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.ImageBase;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -18,9 +19,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicLong;
-import pjr;
-import qbv;
-import qbw;
 
 public class GifView
   extends FrameLayout
@@ -35,10 +33,10 @@ public class GifView
   private URLImageView mGifImageView;
   private String mGifUrl;
   private int mGifWidth;
-  private boolean mIsBigImg;
+  private boolean mIsBigImg = false;
   private NativeReadInjoyImageView mStaticZImageView;
-  public int mTryCounts = 1;
-  private boolean needGifUrl;
+  int mTryCounts = 1;
+  private boolean needGifUrl = false;
   
   public GifView(Context paramContext)
   {
@@ -61,7 +59,7 @@ public class GifView
   private static Drawable getLoadingDrawable()
   {
     if (mLoadingDrawable == null) {
-      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841740);
+      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841881);
     }
     return mLoadingDrawable;
   }
@@ -82,10 +80,10 @@ public class GifView
       l = System.currentTimeMillis();
       localAtomicLong3 = new AtomicLong(l);
       localAtomicLong4 = new AtomicLong(0L);
-      paramURLDrawable.setDownloadListener(new qbv(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
+      paramURLDrawable.setDownloadListener(new GifView.1(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
     } while (this.mGifImageView == null);
     StringBuilder localStringBuilder = new StringBuilder();
-    this.mGifImageView.setURLDrawableDownListener(new qbw(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, localStringBuilder, paramURLDrawable));
+    this.mGifImageView.setURLDrawableDownListener(new GifView.2(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, localStringBuilder, paramURLDrawable));
   }
   
   private void hideGifAnim()
@@ -129,7 +127,7 @@ public class GifView
     localURLDrawableOptions.mRequestWidth = this.mGifWidth;
     localURLDrawableOptions.mRequestHeight = this.mGifHeight;
     if ((this.mContext != null) && (this.mContext.getResources() != null)) {
-      localURLDrawableOptions.mLoadingDrawable = this.mContext.getResources().getDrawable(2130841740);
+      localURLDrawableOptions.mLoadingDrawable = this.mContext.getResources().getDrawable(2130841881);
     }
     paramString = URLDrawable.getDrawable(new URL(paramString), localURLDrawableOptions);
     this.mStaticZImageView.setImageDrawable(paramString);
@@ -137,6 +135,7 @@ public class GifView
   
   private boolean willBitmapCut()
   {
+    QLog.d("gifvideo.GifView", 2, "mGifHeight: + " + this.mGifHeight + " mGifWidth: " + this.mGifWidth);
     return (this.mGifHeight >= 2048) || (this.mGifWidth >= 2048);
   }
   
@@ -190,7 +189,7 @@ public class GifView
     if ((this.mCoverImageView != null) && (paramString != null)) {}
     try
     {
-      pjr.a(this.mCoverImageView, new URL(this.mCoverUrl), getContext());
+      ReadInJoyDisplayUtils.a(this.mCoverImageView, new URL(this.mCoverUrl), getContext());
       return;
     }
     catch (MalformedURLException paramString)
@@ -256,7 +255,7 @@ public class GifView
           useURLDrawable(paramString);
           return;
         }
-        pjr.a(this.mStaticZImageView, new URL(paramString), getContext());
+        ReadInJoyDisplayUtils.a(this.mStaticZImageView, new URL(paramString), getContext());
         return;
       }
       catch (MalformedURLException paramString)
@@ -268,7 +267,7 @@ public class GifView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView
  * JD-Core Version:    0.7.0.1
  */

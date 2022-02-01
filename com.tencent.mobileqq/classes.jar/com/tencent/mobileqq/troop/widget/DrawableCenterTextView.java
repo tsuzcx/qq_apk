@@ -25,7 +25,7 @@ public class DrawableCenterTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     Object localObject = getCompoundDrawables();
     if (localObject != null)

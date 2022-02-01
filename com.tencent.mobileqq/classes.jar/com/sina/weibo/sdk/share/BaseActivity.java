@@ -1,6 +1,5 @@
 package com.sina.weibo.sdk.share;
 
-import Override;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -95,7 +94,7 @@ public class BaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.sina.weibo.sdk.share.BaseActivity
  * JD-Core Version:    0.7.0.1
  */

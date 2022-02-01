@@ -1,0 +1,37 @@
+package cooperation.qqreader;
+
+import android.os.Handler.Callback;
+import android.os.Message;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
+
+final class QRBridgeUtil$2
+  extends WtloginObserver
+{
+  QRBridgeUtil$2(Handler.Callback paramCallback) {}
+  
+  public void onException(String paramString, int paramInt)
+  {
+    paramString = Message.obtain();
+    paramString.what = 1001;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
+    }
+  }
+  
+  public void onGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    paramString = Message.obtain();
+    paramString.what = 1000;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+ * Qualified Name:     cooperation.qqreader.QRBridgeUtil.2
+ * JD-Core Version:    0.7.0.1
+ */

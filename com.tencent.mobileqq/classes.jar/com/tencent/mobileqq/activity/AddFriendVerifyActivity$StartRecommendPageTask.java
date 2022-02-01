@@ -2,14 +2,14 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import avzm;
+import com.tencent.mobileqq.jsp.EventApiPlugin;
 import java.util.ArrayList;
 
-public class AddFriendVerifyActivity$StartRecommendPageTask
+class AddFriendVerifyActivity$StartRecommendPageTask
   implements Runnable
 {
   private long jdField_a_of_type_Long = System.currentTimeMillis();
-  private String jdField_a_of_type_JavaLangString;
+  private String jdField_a_of_type_JavaLangString = null;
   
   public AddFriendVerifyActivity$StartRecommendPageTask(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString)
   {
@@ -25,7 +25,7 @@ public class AddFriendVerifyActivity$StartRecommendPageTask
     {
       localObject = new ArrayList(1);
       ((ArrayList)localObject).add("admin.qun.qq.com");
-      avzm.a("closeJoinWebView", null, (ArrayList)localObject, null);
+      EventApiPlugin.a("closeJoinWebView", null, (ArrayList)localObject, null);
     }
     Object localObject = new Intent();
     ((Intent)localObject).setAction("start_recomend_page");
@@ -36,14 +36,14 @@ public class AddFriendVerifyActivity$StartRecommendPageTask
     ((Intent)localObject).putExtra("show_right_close_button", true);
     ((Intent)localObject).putExtra("finish_animation_up_down", true);
     this.this$0.startActivity((Intent)localObject);
-    this.this$0.overridePendingTransition(2130771997, 2130771990);
+    this.this$0.overridePendingTransition(2130771999, 2130771992);
     AddFriendVerifyActivity.a(this.this$0, false);
     this.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.StartRecommendPageTask
  * JD-Core Version:    0.7.0.1
  */

@@ -44,7 +44,7 @@ public class CornerImageView
   
   public void a()
   {
-    if (!VersionUtils.isKITKAT()) {
+    if (!VersionUtils.i()) {
       setLayerType(1, null);
     }
   }
@@ -53,7 +53,7 @@ public class CornerImageView
   
   protected void b(Canvas paramCanvas) {}
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     int k = 0;
     super.drawableStateChanged();
@@ -95,7 +95,7 @@ public class CornerImageView
     ((Drawable)localObject).invalidateSelf();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();
@@ -109,9 +109,9 @@ public class CornerImageView
       localPath.reset();
       localPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
       paramCanvas.clipPath(localPath);
-      a(paramCanvas);
-      super.onDraw(paramCanvas);
       b(paramCanvas);
+      super.onDraw(paramCanvas);
+      a(paramCanvas);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)

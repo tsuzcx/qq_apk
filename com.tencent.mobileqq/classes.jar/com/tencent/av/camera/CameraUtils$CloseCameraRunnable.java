@@ -9,6 +9,7 @@ class CameraUtils$CloseCameraRunnable
   CameraUtils$CloseCameraRunnable(CameraUtils paramCameraUtils)
   {
     this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 0L;
   }
   
   public void a(boolean paramBoolean)
@@ -28,7 +29,7 @@ class CameraUtils$CloseCameraRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.camera.CameraUtils.CloseCameraRunnable
  * JD-Core Version:    0.7.0.1
  */

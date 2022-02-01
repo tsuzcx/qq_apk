@@ -1,5 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.share.watchword.mvp;
 
+import com.tencent.biz.pubaccount.readinjoy.share.watchword.RIJWatchWordShareManager;
+import com.tencent.biz.pubaccount.readinjoy.share.watchword.RIJWatchWordShareManager.Companion;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function3;
@@ -7,18 +9,13 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import rlt;
-import rlu;
-import rma;
-import rmb;
-import rmn;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "watchWord", "", "jumpUrl", "isOpen", "", "invoke"}, k=3, mv={1, 1, 16})
-public final class RIJWriteWatchWordPresenter$fetchVideoWatchWord$1
+final class RIJWriteWatchWordPresenter$fetchVideoWatchWord$1
   extends Lambda
   implements Function3<String, String, Boolean, Unit>
 {
-  public RIJWriteWatchWordPresenter$fetchVideoWatchWord$1(rmn paramrmn, String paramString1, String paramString2)
+  RIJWriteWatchWordPresenter$fetchVideoWatchWord$1(RIJWriteWatchWordPresenter paramRIJWriteWatchWordPresenter, String paramString1, String paramString2)
   {
     super(3);
   }
@@ -35,18 +32,18 @@ public final class RIJWriteWatchWordPresenter$fetchVideoWatchWord$1
         if (i != 1) {
           break label125;
         }
-        localObject = rmn.a(this.this$0);
+        localObject = RIJWriteWatchWordPresenter.a(this.this$0);
         if (localObject != null) {
-          ((rmb)localObject).showSuccessToast(rmn.a(this.this$0).a());
+          ((IRIJWriteWatchWordShareContract.IView)localObject).showSuccessToast(RIJWriteWatchWordPresenter.a(this.this$0).a());
         }
-        rma localrma = rmn.a(this.this$0);
+        IRIJWriteWatchWordShareContract.IModel localIModel = RIJWriteWatchWordPresenter.a(this.this$0);
         localObject = this.$title;
         if (localObject == null) {
           break label118;
         }
         label84:
-        localrma.a(paramString1, paramString2, (String)localObject, paramBoolean, 1);
-        rlt.a.a().a(paramString1, this.$url);
+        localIModel.a(paramString1, paramString2, (String)localObject, paramBoolean, 1);
+        RIJWatchWordShareManager.a.a().a(paramString1, this.$url);
       }
     }
     label118:
@@ -58,14 +55,14 @@ public final class RIJWriteWatchWordPresenter$fetchVideoWatchWord$1
       break;
       localObject = "";
       break label84;
-      paramString1 = rmn.a(this.this$0);
+      paramString1 = RIJWriteWatchWordPresenter.a(this.this$0);
     } while (paramString1 == null);
-    paramString1.showFailedToast(rmn.a(this.this$0).b());
+    paramString1.showFailedToast(RIJWriteWatchWordPresenter.a(this.this$0).b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.share.watchword.mvp.RIJWriteWatchWordPresenter.fetchVideoWatchWord.1
  * JD-Core Version:    0.7.0.1
  */

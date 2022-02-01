@@ -8,9 +8,9 @@ public final class operation_like_rsp
   extends JceStruct
 {
   static cmshow_active_result cache_cmshow_act_result = new cmshow_active_result();
-  public cmshow_active_result cmshow_act_result;
+  public cmshow_active_result cmshow_act_result = null;
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public operation_like_rsp() {}
   

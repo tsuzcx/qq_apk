@@ -258,7 +258,7 @@ public class AdCanvasPageView
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
@@ -296,7 +296,7 @@ public class AdCanvasPageView
     }
   }
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     onLocationChanged();
@@ -370,7 +370,7 @@ public class AdCanvasPageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasPageView
  * JD-Core Version:    0.7.0.1
  */

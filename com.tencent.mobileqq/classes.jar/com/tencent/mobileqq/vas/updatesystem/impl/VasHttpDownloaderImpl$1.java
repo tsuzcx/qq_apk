@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.vas.updatesystem.impl;
 
 import android.os.Bundle;
-import bhuu;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.vas.update.callback.listener.IDownloadListener;
 import com.tencent.vas.update.entity.DownloadInfoParams;
 
-public class VasHttpDownloaderImpl$1
+class VasHttpDownloaderImpl$1
   implements Runnable
 {
-  public VasHttpDownloaderImpl$1(bhuu parambhuu, DownloadInfoParams paramDownloadInfoParams, IDownloadListener paramIDownloadListener) {}
+  VasHttpDownloaderImpl$1(VasHttpDownloaderImpl paramVasHttpDownloaderImpl, DownloadInfoParams paramDownloadInfoParams, IDownloadListener paramIDownloadListener) {}
   
   public void run()
   {
@@ -24,7 +23,7 @@ public class VasHttpDownloaderImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasHttpDownloaderImpl.1
  * JD-Core Version:    0.7.0.1
  */

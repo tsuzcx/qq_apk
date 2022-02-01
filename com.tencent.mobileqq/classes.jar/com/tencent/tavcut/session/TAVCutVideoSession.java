@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.TextureView;
 import android.view.ViewGroup;
@@ -48,12 +47,13 @@ import com.tencent.tavsticker.utils.CollectionUtil;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.weseevideo.composition.VideoRenderChainConfigure;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
-import com.tencent.weseevideo.composition.VideoRenderChainManager.IStickerContextInterface;
 import com.tencent.weseevideo.composition.builder.MediaBuilderFactory;
+import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
 import com.tencent.weseevideo.composition.effectnode.CropEffectNode;
 import com.tencent.weseevideo.editor.sticker.StickerController;
 import com.tencent.weseevideo.editor.sticker.utils.StickerConverter;
 import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.ModelExtKt;
 import com.tencent.weseevideo.model.WSTemplateManager;
 import com.tencent.weseevideo.model.data.MusicData;
 import com.tencent.weseevideo.model.data.MusicMaterialMetaDataBean;
@@ -67,17 +67,25 @@ import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.resource.VideoConfigurationModel;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
 import com.tencent.weseevideo.model.template.MediaTemplateModel;
+import com.tencent.weseevideo.model.template.light.LightMediaTemplateModel;
+import com.tencent.weseevideo.model.template.light.LightTemplate;
+import com.tencent.weseevideo.model.utils.AudioUtils;
+import com.tencent.weseevideo.model.utils.AudioUtils.AudioSymbol;
+import com.tencent.weseevideo.model.utils.MusicMaterialMataDataBeanUtils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.light.AudioPlaceHolder;
+import org.light.MovieController;
 
 public class TAVCutVideoSession
   extends TAVCutSession
   implements MoviePlayer.onVideoProgressListener
 {
+  private MediaBuilderOutput mediaBuilderOutput;
   private List<MoviePlayer> players = new ArrayList();
   private boolean preIsPlaying = false;
   protected TAVCutVideoView tavCutVideoView;
@@ -92,7 +100,9 @@ public class TAVCutVideoSession
     Object localObject2 = new VideoResourceModel();
     ((VideoResourceModel)localObject2).setPath(this.videoPath);
     ((VideoResourceModel)localObject2).setType(1);
-    ((VideoResourceModel)localObject2).setSourceTimeDuration(DecoderUtils.getDuration(this.videoPath) / 1000L);
+    long l = DecoderUtils.getDuration(this.videoPath);
+    ((VideoResourceModel)localObject2).setSourceTimeDurationUs(l);
+    ((VideoResourceModel)localObject2).setSelectTimeDurationUs(l);
     if ((this.sessionConfig != null) && (this.sessionConfig.getVideoInitCropConfig() != null))
     {
       localObject3 = this.sessionConfig.getVideoInitCropConfig();
@@ -116,6 +126,28 @@ public class TAVCutVideoSession
     ((MediaResourceModel)localObject1).setVideos(localArrayList);
     localMediaModel.setMediaResourceModel((MediaResourceModel)localObject1);
     this.mediaModels.add(localMediaModel);
+  }
+  
+  private boolean correctMediaResourceIgnoreSpeedInner(long paramLong)
+  {
+    if ((getMediaModel() == null) || (getMediaModel().getMediaResourceModel().getVideos().size() < 1)) {
+      return false;
+    }
+    List localList = getMediaModel().getMediaResourceModel().getVideos();
+    int i = 0;
+    if (i < localList.size())
+    {
+      MediaClipModel localMediaClipModel = (MediaClipModel)localList.get(i);
+      if (localMediaClipModel == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        localMediaClipModel.getResource().setScaleDuration(localMediaClipModel.getResource().getSelectTimeDuration());
+      }
+    }
+    correctMediaResource(paramLong);
+    return true;
   }
   
   private CropConfig findMultiCutCropByIndex(int paramInt)
@@ -203,19 +235,26 @@ public class TAVCutVideoSession
     return null;
   }
   
-  private boolean isAutoTemplate()
+  private void mediaBuild(StickerController paramStickerController, VideoRenderChainConfigure paramVideoRenderChainConfigure, boolean paramBoolean, Runnable paramRunnable)
   {
-    return (getMediaModel() != null) && (!getMediaModel().getMediaTemplateModel().isAutoTemplateEmpty());
-  }
-  
-  private void mediaBuild(StickerController paramStickerController, VideoRenderChainConfigure paramVideoRenderChainConfigure, boolean paramBoolean)
-  {
-    MediaBuilderFactory.mediaBuilderAsync(getMediaModel(), this.context, paramStickerController, paramVideoRenderChainConfigure, new TAVCutVideoSession.11(this, paramBoolean));
+    MediaBuilderFactory.mediaBuilderAsync(getMediaModel(), this.context, paramStickerController, paramVideoRenderChainConfigure, new TAVCutVideoSession.11(this, paramBoolean, paramStickerController, paramRunnable));
   }
   
   private void refreshRenderTemplate()
   {
     initPlayer();
+  }
+  
+  private CGSize setRenderSizeCompat(VideoRenderChainManager paramVideoRenderChainManager, CGSize paramCGSize)
+  {
+    CGSize localCGSize = paramCGSize;
+    if (ModelExtKt.isLightTemplate(getMediaModel()))
+    {
+      float f = Math.max(paramCGSize.width, paramCGSize.height);
+      localCGSize = new CGSize(9.0F * f / 16.0F, f);
+    }
+    paramVideoRenderChainManager.getComposition().setRenderSize(localCGSize);
+    return localCGSize;
   }
   
   private void setVideoChangeConfigureRenderSize(VideoRenderChainConfigure paramVideoRenderChainConfigure)
@@ -233,11 +272,6 @@ public class TAVCutVideoSession
       return;
     }
     paramVideoRenderChainConfigure.setRenderSize(getCroppedMultiCutRenderSize(((MediaModel)localObject1).getMediaResourceModel().getVideos()));
-  }
-  
-  private void updateComposition(MediaModel paramMediaModel)
-  {
-    MediaBuilderFactory.mediaBuilderAsync(paramMediaModel, this.context, null, new TAVCutVideoSession.15(this));
   }
   
   private void updateMultiCutCropModel(TAVComposition paramTAVComposition)
@@ -273,13 +307,23 @@ public class TAVCutVideoSession
   
   private void updatePlayer(MediaModel paramMediaModel, boolean paramBoolean)
   {
+    updatePlayer(paramMediaModel, paramBoolean, false);
+  }
+  
+  private void updatePlayer(MediaModel paramMediaModel, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 0;
     if (getStickerController() != null) {
       getStickerController().destroy();
     }
     StickerController localStickerController = createStickerController();
     this.stickerControllers.put(0, localStickerController);
-    new VideoRenderChainConfigure(true).setSceneType(0);
-    MediaBuilderFactory.mediaBuilderAsync(paramMediaModel, this.context, localStickerController, new TAVCutVideoSession.14(this, paramBoolean));
+    VideoRenderChainConfigure localVideoRenderChainConfigure = new VideoRenderChainConfigure(true);
+    if (ModelExtKt.isLightTemplate(paramMediaModel)) {
+      i = 4;
+    }
+    localVideoRenderChainConfigure.setSceneType(i);
+    MediaBuilderFactory.mediaBuilderAsync(paramMediaModel, this.context, localStickerController, localVideoRenderChainConfigure, new TAVCutVideoSession.13(this, paramBoolean1), paramBoolean2);
     if (this.tavCutVideoView != null)
     {
       this.tavCutVideoView.getStickerContainer().removeAllViews();
@@ -294,32 +338,29 @@ public class TAVCutVideoSession
   
   private void updateTemplateRenderChain(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
+    updateTemplateRenderChain(paramInt, paramBoolean1, paramBoolean2, null);
+  }
+  
+  private void updateTemplateRenderChain(int paramInt, boolean paramBoolean1, boolean paramBoolean2, Runnable paramRunnable)
+  {
     if (this.renderChainManagers.size() > 0) {
       ((VideoRenderChainManager)this.renderChainManagers.get(0)).release();
     }
-    StickerController localStickerController;
-    VideoRenderChainConfigure localVideoRenderChainConfigure;
-    if (this.stickerControllers.size() > 0)
+    StickerController localStickerController = getStickerController();
+    if ((localStickerController != null) && (localStickerController.getStickerContext() != null) && (localStickerController.getStickerContext().getCurrentStickerEditView() != null))
     {
-      localStickerController = (StickerController)this.stickerControllers.get(0);
-      if ((localStickerController.getStickerContext() != null) && (localStickerController.getStickerContext().getCurrentStickerEditView() != null))
-      {
-        Log.d("sticker_size", "updateTemplateRenderChain: h=" + localStickerController.getStickerContext().getCurrentStickerEditView().getMeasuredHeight());
-        Log.d("sticker_size", "updateTemplateRenderChain: w=" + localStickerController.getStickerContext().getCurrentStickerEditView().getMeasuredWidth());
-      }
-      localVideoRenderChainConfigure = new VideoRenderChainConfigure(true);
-      setVideoChangeConfigureRenderSize(localVideoRenderChainConfigure);
-      if (!paramBoolean1) {
-        break label176;
-      }
-      localVideoRenderChainConfigure.setSceneType(paramInt);
+      Logger.d("sticker_size", "updateTemplateRenderChain: h=" + localStickerController.getStickerContext().getCurrentStickerEditView().getMeasuredHeight());
+      Logger.d("sticker_size", "updateTemplateRenderChain: w=" + localStickerController.getStickerContext().getCurrentStickerEditView().getMeasuredWidth());
     }
+    VideoRenderChainConfigure localVideoRenderChainConfigure = new VideoRenderChainConfigure(true);
+    setVideoChangeConfigureRenderSize(localVideoRenderChainConfigure);
+    if (paramBoolean1) {}
     for (;;)
     {
-      mediaBuild(localStickerController, localVideoRenderChainConfigure, paramBoolean2);
+      localVideoRenderChainConfigure.setSceneType(paramInt);
+      mediaBuild(localStickerController, localVideoRenderChainConfigure, paramBoolean2, paramRunnable);
       return;
-      label176:
-      localVideoRenderChainConfigure.setSceneType(0);
+      paramInt = 0;
     }
   }
   
@@ -332,11 +373,11 @@ public class TAVCutVideoSession
     if (paramInt == 2)
     {
       localSize = BitmapUtil.getImageSize(paramString);
-      localVideoResourceModel.setSelectTimeDuration(TimeUtil.second2Ms(2.0F));
-      localVideoResourceModel.setSourceTimeDuration(3000L);
+      localVideoResourceModel.setSelectTimeDurationUs(2000000L);
+      localVideoResourceModel.setSourceTimeDurationUs(3000000L);
       localVideoResourceModel.setPath(paramString);
       localVideoResourceModel.setType(paramInt);
-      localVideoResourceModel.setSelectTimeStart(0L);
+      localVideoResourceModel.setSelectTimeStartUs(0L);
       localVideoResourceModel.setScaleDuration(((float)localVideoResourceModel.getSelectTimeDuration() / 1.0F));
       localVideoResourceModel.setWidth(localSize.getWidth());
       localVideoResourceModel.setHeight(localSize.getHeight());
@@ -347,10 +388,10 @@ public class TAVCutVideoSession
       }
       localMediaClipModel.setConfig(paramString);
       if ((this.mediaModels == null) || (this.mediaModels.size() <= 0)) {
-        break label271;
+        break label266;
       }
     }
-    label271:
+    label266:
     for (paramString = ((MediaModel)this.mediaModels.get(0)).getMediaResourceModel().getVideos();; paramString = new ArrayList())
     {
       paramString.add(localMediaClipModel);
@@ -364,9 +405,9 @@ public class TAVCutVideoSession
       recordInitMediaModelsMD5();
       return;
       localSize = VideoUtil.getVideoSize(paramString);
-      long l = DecoderUtils.getDuration(paramString) / 1000L;
-      localVideoResourceModel.setSelectTimeDuration(l);
-      localVideoResourceModel.setSourceTimeDuration(l);
+      long l = DecoderUtils.getDuration(paramString);
+      localVideoResourceModel.setSelectTimeDurationUs(l);
+      localVideoResourceModel.setSourceTimeDurationUs(l);
       break;
     }
   }
@@ -425,29 +466,29 @@ public class TAVCutVideoSession
       {
         f = 1.0F;
         paramLong = ((VideoResourceModel)localObject).getScaleDuration() - (l2 - paramLong);
-        ((MediaClipModel)localList.get(i)).getResource().setSelectTimeDuration((f * (float)paramLong), true);
+        ((MediaClipModel)localList.get(i)).getResource().setSelectTimeDurationUs((f * (float)paramLong * 1000.0F));
         ((MediaClipModel)localList.get(i)).getResource().setScaleDuration(paramLong);
         i += 1;
-        label217:
+        label220:
         if (i >= localList.size()) {
-          break label298;
+          break label300;
         }
         localObject = (MediaClipModel)localList.get(i);
         if (localObject != null) {
-          break label276;
+          break label279;
         }
       }
       for (;;)
       {
         i += 1;
-        break label217;
+        break label220;
         f = 1.0F * (float)((VideoResourceModel)localObject).getSelectTimeDuration() / (float)((VideoResourceModel)localObject).getScaleDuration();
         break;
-        label276:
-        ((MediaClipModel)localObject).getResource().setSelectTimeDuration(0L, true);
+        label279:
+        ((MediaClipModel)localObject).getResource().setSelectTimeDurationUs(0L);
         ((MediaClipModel)localObject).getResource().setScaleDuration(0L);
       }
-      label298:
+      label300:
       return true;
       i = -1;
       l2 = l1;
@@ -490,7 +531,7 @@ public class TAVCutVideoSession
     TAVSourceImageGenerator localTAVSourceImageGenerator = new TAVSourceImageGenerator(new TAVCompositionBuilder(getTAVComposition()).buildSource(), getRenderChainManager().getComposition().getRenderSize());
     localTAVSourceImageGenerator.getAssetImageGenerator().setForceUseFbo(true);
     localTAVSourceImageGenerator.getAssetImageGenerator().setApertureMode(AssetImageGenerator.ApertureMode.aspectFill);
-    localTAVSourceImageGenerator.generateThumbnailAtTime(new CMTime((float)paramLong / 1000.0F), new TAVCutVideoSession.16(this, paramInt, localTAVSourceImageGenerator, paramFrameExtractCallback));
+    localTAVSourceImageGenerator.generateThumbnailAtTime(new CMTime((float)paramLong / 1000.0F), new TAVCutVideoSession.14(this, paramInt, localTAVSourceImageGenerator, paramFrameExtractCallback));
   }
   
   public Size getExportMaxMediaSize()
@@ -508,23 +549,36 @@ public class TAVCutVideoSession
     if (localObject != null)
     {
       localObject = ((MediaModel)localObject).getMediaTemplateModel();
-      if (((MediaTemplateModel)localObject).isAutoTemplateEmpty()) {
+      if (((MediaTemplateModel)localObject).isLightTemplateEmpty()) {
         break label78;
       }
-      localVideoRenderChainConfigure.setSceneType(2);
+      localVideoRenderChainConfigure.setSceneType(4);
       setVideoChangeConfigureRenderSize(localVideoRenderChainConfigure);
     }
     for (;;)
     {
-      MediaBuilderFactory.mediaBuilderAsync(getMediaModel(), this.context, null, localVideoRenderChainConfigure, new TAVCutVideoSession.13(this, localVideoExporter, paramVideoExportConfig));
+      MediaBuilderFactory.mediaBuilderAsync(getMediaModel(), this.context, null, localVideoRenderChainConfigure, new TAVCutVideoSession.12(this, localVideoExporter, paramVideoExportConfig));
       return localVideoExporter;
       label78:
-      if (!((MediaTemplateModel)localObject).isMovieTemplateEmpty()) {
+      if (!((MediaTemplateModel)localObject).isAutoTemplateEmpty())
+      {
+        localVideoRenderChainConfigure.setSceneType(2);
+        setVideoChangeConfigureRenderSize(localVideoRenderChainConfigure);
+      }
+      else if (!((MediaTemplateModel)localObject).isMovieTemplateEmpty())
+      {
         localVideoRenderChainConfigure.setSceneType(1);
-      } else {
+      }
+      else
+      {
         localVideoRenderChainConfigure.setSceneType(0);
       }
     }
+  }
+  
+  public MediaBuilderOutput getMediaBuilderOutput()
+  {
+    return this.mediaBuilderOutput;
   }
   
   public MediaModel getMediaModel()
@@ -809,6 +863,49 @@ public class TAVCutVideoSession
     runTask(new TAVCutVideoSession.10(this, paramList));
   }
   
+  public boolean restoreTemplateMusic(float paramFloat1, float paramFloat2)
+  {
+    if (!ModelExtKt.isLightTemplate(getMediaModel())) {}
+    for (;;)
+    {
+      return false;
+      if ((this.mediaBuilderOutput != null) && (this.mediaBuilderOutput.getLightTemplate() != null))
+      {
+        Object localObject2 = this.mediaBuilderOutput.getLightTemplate().getMovieController().getAudioPlaceHolders();
+        if ((localObject2 != null) && (localObject2.length != 0))
+        {
+          int j = localObject2.length;
+          int i = 0;
+          while (i < j)
+          {
+            Object localObject1 = localObject2[i];
+            if (!TextUtils.isEmpty(localObject1.path))
+            {
+              localObject2 = new MusicMaterialMetaDataBean();
+              ((MusicMaterialMetaDataBean)localObject2).id = localObject1.musicID;
+              ((MusicMaterialMetaDataBean)localObject2).path = localObject1.path;
+              ((MusicMaterialMetaDataBean)localObject2).startTime = ((int)TimeUtil.us2Milli(localObject1.startOffset));
+              ((MusicMaterialMetaDataBean)localObject2).mTotalTimeMs = AudioUtils.getDuration(localObject1.path);
+              MusicMaterialMataDataBeanUtils.setStartInTime((MusicMaterialMetaDataBean)localObject2, TimeUtil.us2Milli(localObject1.fadeInDuration));
+              MusicMaterialMataDataBeanUtils.setEndOutTime((MusicMaterialMetaDataBean)localObject2, TimeUtil.us2Milli(localObject1.fadeOutDuration));
+              getMediaModel().getMediaEffectModel().getMusicModel().setMetaDataBean((MusicMaterialMetaDataBean)localObject2);
+              getMediaModel().getMediaEffectModel().getMusicModel().setBgmVolume(localObject1.volume);
+              if ((((MusicMaterialMetaDataBean)localObject2).mTotalTimeMs > 0L) && (getTAVComposition() != null))
+              {
+                AudioUtils.updateCompositionAudiosBySymbol(getTAVComposition(), AudioUtils.getBGMAudioClips(TimeUtil.us2Milli(getTAVComposition().getDuration().getTimeUs()), (MusicMaterialMetaDataBean)localObject2, ((MusicMaterialMetaDataBean)localObject2).volume), AudioUtils.AudioSymbol.BGM);
+                updatePlayer(getMediaModel(), true);
+                setMainVolume(paramFloat1);
+                setBgmVolume(paramFloat2);
+              }
+              return true;
+            }
+            i += 1;
+          }
+        }
+      }
+    }
+  }
+  
   public SubtitleModel saveLyricSticker()
   {
     return getStickerController().saveLyricSticker();
@@ -821,45 +918,39 @@ public class TAVCutVideoSession
       paramMusicData = getMediaModel().getMediaEffectModel().getMusicModel();
       paramMusicData.setMetaDataBean(null);
       paramMusicData.setUserMetaDataBean(null);
-      paramMusicData.setVolume(paramFloat1);
-      paramMusicData.setBgmVolume(paramFloat2);
+      if (!ModelExtKt.isLightTemplate(getMediaModel()))
+      {
+        paramMusicData.setVolume(paramFloat1);
+        paramMusicData.setBgmVolume(paramFloat2);
+      }
       updatePlayer(getMediaModel(), paramBoolean);
-      return;
+      if (ModelExtKt.isLightTemplate(getMediaModel()))
+      {
+        setMainVolume(paramFloat1);
+        setBgmVolume(paramFloat2);
+      }
     }
-    MusicMaterialMetaDataBean localMusicMaterialMetaDataBean = new MusicMaterialMetaDataBean();
-    localMusicMaterialMetaDataBean.startTime = paramMusicData.getStartTime();
-    localMusicMaterialMetaDataBean.mTotalTime = (paramMusicData.getTotalTime() / 1000);
-    localMusicMaterialMetaDataBean.segDuration = paramMusicData.getSegDuration();
-    localMusicMaterialMetaDataBean.path = paramMusicData.getPath();
-    paramMusicData = getMediaModel().getMediaEffectModel().getMusicModel();
-    paramMusicData.setVolume(paramFloat1);
-    paramMusicData.setBgmVolume(paramFloat2);
-    paramMusicData.setUserMetaDataBean(localMusicMaterialMetaDataBean);
-    paramMusicData.setMetaDataBean(localMusicMaterialMetaDataBean);
-    updatePlayer(getMediaModel(), paramBoolean);
-  }
-  
-  public void setBgmMusicForMultiCut(MusicData paramMusicData, float paramFloat1, float paramFloat2, boolean paramBoolean)
-  {
-    if (paramMusicData == null)
+    do
     {
-      paramMusicData = getMediaModel().getMediaEffectModel().getMusicModel();
-      paramMusicData.setMetaDataBean(null);
-      paramMusicData.setUserMetaDataBean(null);
-      paramMusicData.setVolume(paramFloat1);
-      paramMusicData.setBgmVolume(paramFloat2);
       return;
-    }
-    MusicMaterialMetaDataBean localMusicMaterialMetaDataBean = new MusicMaterialMetaDataBean();
-    localMusicMaterialMetaDataBean.startTime = paramMusicData.getStartTime();
-    localMusicMaterialMetaDataBean.mTotalTime = (paramMusicData.getTotalTime() / 1000);
-    localMusicMaterialMetaDataBean.segDuration = paramMusicData.getSegDuration();
-    localMusicMaterialMetaDataBean.path = paramMusicData.getPath();
-    paramMusicData = getMediaModel().getMediaEffectModel().getMusicModel();
-    paramMusicData.setVolume(paramFloat1);
-    paramMusicData.setBgmVolume(paramFloat2);
-    paramMusicData.setUserMetaDataBean(localMusicMaterialMetaDataBean);
-    paramMusicData.setMetaDataBean(localMusicMaterialMetaDataBean);
+      MusicMaterialMetaDataBean localMusicMaterialMetaDataBean = new MusicMaterialMetaDataBean();
+      localMusicMaterialMetaDataBean.startTime = paramMusicData.getStartTime();
+      localMusicMaterialMetaDataBean.mTotalTimeMs = paramMusicData.getTotalTime();
+      localMusicMaterialMetaDataBean.mTotalTime = (paramMusicData.getTotalTime() / 1000);
+      localMusicMaterialMetaDataBean.segDuration = paramMusicData.getSegDuration();
+      localMusicMaterialMetaDataBean.path = paramMusicData.getPath();
+      paramMusicData = getMediaModel().getMediaEffectModel().getMusicModel();
+      paramMusicData.setUserMetaDataBean(localMusicMaterialMetaDataBean);
+      paramMusicData.setMetaDataBean(localMusicMaterialMetaDataBean);
+      if (!ModelExtKt.isLightTemplate(getMediaModel()))
+      {
+        paramMusicData.setVolume(paramFloat1);
+        paramMusicData.setBgmVolume(paramFloat2);
+      }
+      updatePlayer(getMediaModel(), paramBoolean, true);
+    } while (!ModelExtKt.isLightTemplate(getMediaModel()));
+    setMainVolume(paramFloat1);
+    setBgmVolume(paramFloat2);
   }
   
   public void setBgmRange(int paramInt1, int paramInt2)
@@ -874,21 +965,31 @@ public class TAVCutVideoSession
   
   public void setBgmVolume(float paramFloat)
   {
-    getMediaModel().getMediaEffectModel().getMusicModel().setBgmVolume(paramFloat);
-    Object localObject = getTAVComposition();
-    if (localObject != null) {}
-    for (localObject = ((TAVComposition)localObject).getAudios();; localObject = null)
+    if (ModelExtKt.isLightTemplate(getMediaModel())) {
+      if (getRenderChainManager() != null) {
+        getRenderChainManager().updateBgmVolume(paramFloat);
+      }
+    }
+    label102:
+    for (;;)
     {
-      if (!CollectionUtils.isEmpty((Collection)localObject))
+      return;
+      getMediaModel().getMediaEffectModel().getMusicModel().setBgmVolume(paramFloat);
+      Object localObject = getTAVComposition();
+      if (localObject != null) {}
+      for (localObject = ((TAVComposition)localObject).getAudios();; localObject = null)
       {
+        if (CollectionUtils.isEmpty((Collection)localObject)) {
+          break label102;
+        }
         int i = 0;
         while (i < ((List)localObject).size())
         {
           ((TAVAudio)((List)localObject).get(i)).getAudioConfiguration().setVolume(paramFloat);
           i += 1;
         }
+        break;
       }
-      return;
     }
   }
   
@@ -902,8 +1003,8 @@ public class TAVCutVideoSession
     if ((paramLong1 != null) && (paramLong2 != null))
     {
       MediaClipModel localMediaClipModel = (MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0);
-      localMediaClipModel.getResource().setSelectTimeStart(paramLong1.longValue());
-      localMediaClipModel.getResource().setSelectTimeDuration(paramLong2.longValue());
+      localMediaClipModel.getResource().setSelectTimeStartUs(paramLong1.longValue() * 1000L);
+      localMediaClipModel.getResource().setSelectTimeDurationUs(paramLong2.longValue() * 1000L);
     }
     for (;;)
     {
@@ -913,8 +1014,8 @@ public class TAVCutVideoSession
       return;
       paramLong1 = (MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0);
       long l = paramLong1.getResource().getSourceTimeDuration();
-      paramLong1.getResource().setSelectTimeStart(0L);
-      paramLong1.getResource().setSelectTimeDuration(l);
+      paramLong1.getResource().setSelectTimeStartUs(0L);
+      paramLong1.getResource().setSelectTimeDurationUs(l * 1000L);
     }
   }
   
@@ -930,24 +1031,31 @@ public class TAVCutVideoSession
   
   public void setMainVolume(float paramFloat)
   {
-    getMediaModel().getMediaEffectModel().getMusicModel().setVolume(paramFloat);
-    Object localObject = getTAVComposition();
-    if (localObject == null) {}
+    if (ModelExtKt.isLightTemplate(getMediaModel())) {
+      if (getRenderChainManager() != null) {
+        getRenderChainManager().updateVideoVolume(paramFloat);
+      }
+    }
     for (;;)
     {
       return;
-      localObject = ((TAVComposition)localObject).getAudioChannels();
-      if ((!((List)localObject).isEmpty()) && (!((List)((List)localObject).get(0)).isEmpty()))
+      getMediaModel().getMediaEffectModel().getMusicModel().setVolume(paramFloat);
+      Object localObject = getTAVComposition();
+      if (localObject != null)
       {
-        localObject = (List)((List)localObject).get(0);
-        if (localObject != null)
+        localObject = ((TAVComposition)localObject).getAudioChannels();
+        if ((!((List)localObject).isEmpty()) && (!((List)((List)localObject).get(0)).isEmpty()))
         {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
+          localObject = (List)((List)localObject).get(0);
+          if (localObject != null)
           {
-            TAVTransitionableAudio localTAVTransitionableAudio = (TAVTransitionableAudio)((Iterator)localObject).next();
-            if ((localTAVTransitionableAudio instanceof TAVClip)) {
-              localTAVTransitionableAudio.getAudioConfiguration().setVolume(paramFloat);
+            localObject = ((List)localObject).iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              TAVTransitionableAudio localTAVTransitionableAudio = (TAVTransitionableAudio)((Iterator)localObject).next();
+              if ((localTAVTransitionableAudio instanceof TAVClip)) {
+                localTAVTransitionableAudio.getAudioConfiguration().setVolume(paramFloat);
+              }
             }
           }
         }
@@ -986,7 +1094,8 @@ public class TAVCutVideoSession
     do
     {
       return;
-      ((MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().setSpeed(paramFloat);
+      MediaClipModel localMediaClipModel = (MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0);
+      localMediaClipModel.getResource().setScaleDuration(((float)localMediaClipModel.getResource().getSelectTimeDuration() / paramFloat));
     } while (!paramBoolean);
     updatePlayer(getMediaModel(), true);
   }
@@ -1013,16 +1122,22 @@ public class TAVCutVideoSession
     this.tavCutVideoView = paramTAVCutVideoView;
   }
   
-  public void setTemplate(int paramInt, String paramString, boolean paramBoolean, String... paramVarArgs)
+  public void setTemplate(int paramInt, String paramString, boolean paramBoolean, Runnable paramRunnable, String... paramVarArgs)
   {
+    correctMediaResourceIgnoreSpeedInner(60000L);
     WSTemplateManager.updateTemplate(getMediaModel(), paramInt, paramString, paramBoolean, paramVarArgs);
     if (!TextUtils.isEmpty(paramString)) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      updateTemplateRenderChain(paramInt, paramBoolean, true);
+      updateTemplateRenderChain(paramInt, paramBoolean, true, paramRunnable);
       refreshRenderTemplate();
       return;
     }
+  }
+  
+  public void setTemplate(int paramInt, String paramString, boolean paramBoolean, String... paramVarArgs)
+  {
+    setTemplate(paramInt, paramString, paramBoolean, null, paramVarArgs);
   }
   
   public void setVideoPath(String paramString)
@@ -1035,18 +1150,21 @@ public class TAVCutVideoSession
     runTask(new TAVCutVideoSession.2(this, paramBoolean));
   }
   
-  public void updateComposition()
-  {
-    if (this.stickerControllers.size() < 1) {
-      return;
-    }
-    MediaBuilderFactory.mediaBuilderAsync(getMediaModel(), this.context, (VideoRenderChainManager.IStickerContextInterface)this.stickerControllers.get(0), new TAVCutVideoSession.12(this));
-  }
-  
   public void updateTemplateComposition(boolean paramBoolean)
   {
-    updateTemplateRenderChain(2, true, paramBoolean);
-    refreshRenderTemplate();
+    if (ModelExtKt.isLightTemplate(getMediaModel()))
+    {
+      LightMediaTemplateModel localLightMediaTemplateModel = getMediaModel().getMediaTemplateModel().getLightMediaTemplateModel();
+      localLightMediaTemplateModel.setClipPlaceHolders(null);
+      localLightMediaTemplateModel.setSegmentModels(new ArrayList());
+      updateTemplateRenderChain(4, true, paramBoolean);
+    }
+    for (;;)
+    {
+      refreshRenderTemplate();
+      return;
+      updateTemplateRenderChain(2, true, paramBoolean);
+    }
   }
   
   public void updateVideoProgress(long paramLong)
@@ -1056,7 +1174,7 @@ public class TAVCutVideoSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession
  * JD-Core Version:    0.7.0.1
  */

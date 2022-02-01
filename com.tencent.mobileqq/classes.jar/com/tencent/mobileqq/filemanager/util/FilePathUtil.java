@@ -1,0 +1,228 @@
+package com.tencent.mobileqq.filemanager.util;
+
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
+import android.media.MediaScannerConnection;
+import android.media.MediaScannerConnection.OnScanCompletedListener;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore.Images.Media;
+import android.provider.MediaStore.Video.Media;
+import com.dataline.util.file.MediaStoreUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.transfile.filebrowser.MimeTypesTools;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+
+public class FilePathUtil
+{
+  private static File a(String paramString1, String paramString2)
+  {
+    paramString1 = FileManagerUtil.a(paramString1);
+    FileManagerUtil.a(paramString1);
+    File localFile = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+    localFile = new File(localFile.getAbsolutePath() + "/QQ/");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    paramString1 = new File(FileManagerUtil.b(localFile.getAbsolutePath() + "/" + paramString1 + paramString2));
+    try
+    {
+      paramString1.createNewFile();
+      return paramString1;
+    }
+    catch (IOException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (!FileUtils.b(paramString)) {
+      paramString = null;
+    }
+    String str2;
+    Object localObject4;
+    String str1;
+    Object localObject3;
+    int i;
+    Object localObject2;
+    do
+    {
+      return paramString;
+      str2 = FileManagerUtil.a(paramString);
+      localObject4 = "";
+      Object localObject1 = localObject4;
+      str1 = str2;
+      localObject3 = localObject4;
+      try
+      {
+        if (str2.indexOf('.') < 0)
+        {
+          localObject3 = localObject4;
+          localObject1 = "." + FileUtils.b(paramString);
+          localObject3 = localObject1;
+          str1 = str2 + (String)localObject1;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("FilePathUtil<FileAssistant>", 1, "copyMediaFileToMediaStorage: get file ext error");
+          localObject2 = localObject3;
+          str1 = str2;
+        }
+        localObject3 = BaseApplicationImpl.getContext();
+        str2 = MimeTypesTools.getMimeType((Context)localObject3, str1);
+        int j = MediaStoreUtil.a(paramString);
+        localObject4 = new ContentValues();
+        ((ContentValues)localObject4).put("title", str1);
+        ((ContentValues)localObject4).put("_display_name", str1);
+        ((ContentValues)localObject4).put("description", str1);
+        ((ContentValues)localObject4).put("mime_type", str2);
+        localObject2 = a(paramString, (String)localObject2);
+        if (localObject2 != null) {
+          continue;
+        }
+        return null;
+        if (!new File(paramString).renameTo((File)localObject2)) {
+          continue;
+        }
+        QLog.i("FilePathUtil<FileAssistant>", 1, "rename :" + paramString + " to:" + ((File)localObject2).getAbsolutePath());
+        localObject2 = ((File)localObject2).getAbsolutePath();
+        ((ContentValues)localObject4).put("_data", (String)localObject2);
+        if (i != 0) {
+          continue;
+        }
+        ((ContentValues)localObject4).put("datetaken", Long.valueOf(System.currentTimeMillis()));
+        ((ContentValues)localObject4).put("orientation", Integer.valueOf(j));
+        ((Context)localObject3).getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, (ContentValues)localObject4);
+        return localObject2;
+        paramString = (String)localObject2;
+      }
+      i = FileManagerUtil.a(str1);
+      if ((i != 2) && (i != 0))
+      {
+        QLog.w("FilePathUtil<FileAssistant>", 1, "unsupport type:" + i);
+        return null;
+      }
+    } while (i != 2);
+    long l = ShortVideoUtils.getDuration((String)localObject2);
+    ((ContentValues)localObject4).put("datetaken", Long.valueOf(System.currentTimeMillis()));
+    ((ContentValues)localObject4).put("duration", Long.valueOf(l));
+    ((Context)localObject3).getContentResolver().insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, (ContentValues)localObject4);
+    return localObject2;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return FileUtils.b(c(paramString));
+  }
+  
+  public static String b(String paramString)
+  {
+    if (!FileUtils.b(paramString)) {}
+    Object localObject4;
+    String str2;
+    Object localObject2;
+    int i;
+    Object localObject1;
+    int j;
+    ContentValues localContentValues;
+    do
+    {
+      return null;
+      localObject4 = FileManagerUtil.a(paramString);
+      str2 = "";
+      String str1 = str2;
+      localObject3 = localObject4;
+      localObject2 = str2;
+      try
+      {
+        if (((String)localObject4).indexOf('.') < 0)
+        {
+          localObject2 = str2;
+          str1 = "." + FileUtils.b(paramString);
+          localObject2 = str1;
+          localObject3 = (String)localObject4 + str1;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("FilePathUtil<FileAssistant>", 1, "copyMediaFileToMediaStorage: get file ext error");
+          localObject1 = localObject2;
+          localObject3 = localObject4;
+        }
+        localObject2 = BaseApplicationImpl.getContext();
+        str2 = MimeTypesTools.getMimeType((Context)localObject2, (String)localObject3);
+        j = MediaStoreUtil.a(paramString);
+        localContentValues = new ContentValues();
+        localContentValues.put("title", (String)localObject3);
+        localContentValues.put("_display_name", (String)localObject3);
+        localContentValues.put("description", (String)localObject3);
+        localContentValues.put("mime_type", str2);
+        localObject4 = a(paramString, (String)localObject1);
+      }
+      i = FileManagerUtil.a((String)localObject3);
+      if ((i != 2) && (i != 0))
+      {
+        QLog.w("FilePathUtil<FileAssistant>", 1, "unsupport type:" + i);
+        return null;
+      }
+    } while (localObject4 == null);
+    Object localObject3 = ((File)localObject4).getAbsolutePath();
+    localContentValues.put("_data", (String)localObject3);
+    if (i == 0)
+    {
+      localContentValues.put("datetaken", Long.valueOf(System.currentTimeMillis()));
+      localContentValues.put("orientation", Integer.valueOf(j));
+      localObject1 = ((Context)localObject2).getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues);
+    }
+    for (;;)
+    {
+      if (QFileUtils.a((Context)localObject2, paramString, (Uri)localObject1))
+      {
+        paramString = ((File)localObject4).getAbsolutePath();
+        localObject1 = new FilePathUtil.1();
+        MediaScannerConnection.scanFile((Context)localObject2, new String[] { paramString }, new String[] { str2 }, (MediaScannerConnection.OnScanCompletedListener)localObject1);
+      }
+      return localObject3;
+      if (i == 2)
+      {
+        long l = ShortVideoUtils.getDuration(paramString);
+        localContentValues.put("datetaken", Long.valueOf(System.currentTimeMillis()));
+        localContentValues.put("duration", Long.valueOf(l));
+        localObject1 = ((Context)localObject2).getContentResolver().insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, localContentValues);
+      }
+      else
+      {
+        localObject1 = null;
+      }
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    return FileUtils.a(c(paramString));
+  }
+  
+  public static String c(String paramString)
+  {
+    return paramString;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.filemanager.util.FilePathUtil
+ * JD-Core Version:    0.7.0.1
+ */

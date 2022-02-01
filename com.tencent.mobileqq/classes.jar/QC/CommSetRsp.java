@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class CommSetRsp
   extends JceStruct
 {
-  public int ret;
+  public int ret = 0;
   public String strRsp = "";
   
   public CommSetRsp() {}

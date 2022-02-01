@@ -9,9 +9,9 @@ public final class TCampusCircleInfo
 {
   static int cache_eStatus = 0;
   static TCampusSchoolInfo cache_stSchoolInfo = new TCampusSchoolInfo();
-  public int eStatus;
-  public int iIsSigned;
-  public TCampusSchoolInfo stSchoolInfo;
+  public int eStatus = 0;
+  public int iIsSigned = 0;
+  public TCampusSchoolInfo stSchoolInfo = null;
   public String strAcademy = "";
   public String strName = "";
   
@@ -52,7 +52,7 @@ public final class TCampusCircleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.TCampusCircleInfo
  * JD-Core Version:    0.7.0.1
  */

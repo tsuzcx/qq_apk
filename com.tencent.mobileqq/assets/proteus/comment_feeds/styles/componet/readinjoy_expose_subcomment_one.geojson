@@ -102,18 +102,13 @@
                               ]
                             },
                             {
-                                "name": "text",
+                                "name": "div",
                                 "attrs": {
                                     "class": "div_class",
                                     "style": "line-height: 24px; color: #000000;font-size:15px;",
                                     "ratio": "$subcomment_one_ratio"
                                 },
-                                "children": [
-                                    {
-                                        "type": "text",
-                                        "text": "$subcomment_one_text"
-                                    }
-                                ]
+                                "children": "$subcomment_one_rpt_data_info"
                             }
                         ]
                     }

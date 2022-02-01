@@ -14,13 +14,13 @@ class HiBoomTextView$2
   public void run()
   {
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getMessageFacade().updateMsgFieldByUniseq(HiBoomTextView.a(this.this$0).curFriendUin, HiBoomTextView.a(this.this$0).curType, HiBoomTextView.a(this.this$0).uniseq, "extStr", HiBoomTextView.a(this.this$0).extStr);
+      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getMessageFacade().a(HiBoomTextView.a(this.this$0).jdField_a_of_type_JavaLangString, HiBoomTextView.a(this.this$0).jdField_a_of_type_Int, HiBoomTextView.a(this.this$0).uniseq, "extStr", HiBoomTextView.a(this.this$0).extStr);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomTextView.2
  * JD-Core Version:    0.7.0.1
  */

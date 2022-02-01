@@ -27,6 +27,31 @@ public class tlv_t544
     return get_buf();
   }
   
+  public byte[] get_common_tlv544(long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte)
+  {
+    Object localObject;
+    try
+    {
+      ByteData.getInstance().setDataEx(paramLong3, "0x0A");
+      byte[] arrayOfByte = ByteData.getInstance().getCode(1L, paramLong3, paramLong1, paramLong2, "", "", "", paramArrayOfByte, "0x0A");
+      localObject = new RegTLV(1);
+      ((RegTLV)localObject).setData(paramArrayOfByte, paramArrayOfByte.length);
+      paramArrayOfByte = new RegTLV(2);
+      paramArrayOfByte.setData(arrayOfByte, arrayOfByte.length);
+      arrayOfByte = new byte[((RegTLV)localObject).getBuf().length + paramArrayOfByte.getBuf().length];
+      System.arraycopy(((RegTLV)localObject).getBuf(), 0, arrayOfByte, 0, ((RegTLV)localObject).getBuf().length);
+      System.arraycopy(paramArrayOfByte.getBuf(), 0, arrayOfByte, ((RegTLV)localObject).getBuf().length, paramArrayOfByte.getBuf().length);
+      paramArrayOfByte = makeByte(arrayOfByte, arrayOfByte.length);
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      localObject = errInfo((byte)1);
+      paramArrayOfByte.printStackTrace();
+    }
+    return localObject;
+  }
+  
   public byte[] get_tlv_544(Context paramContext, long paramLong, int paramInt1, byte[] paramArrayOfByte, int paramInt2, String paramString, int paramInt3)
   {
     if (paramString == null) {
@@ -41,7 +66,7 @@ public class tlv_t544
       {
         label16:
         byte[] arrayOfByte = new byte[paramInt2 + 6 + 2 + paramInt1 + 4];
-        String str = util.buf_to_string(paramArrayOfByte, paramInt2);
+        util.buf_to_string(paramArrayOfByte, paramInt2);
         if (paramString == null) {}
         for (paramContext = "".getBytes();; paramContext = paramString.getBytes())
         {
@@ -54,7 +79,7 @@ public class tlv_t544
           System.arraycopy(paramContext, 0, arrayOfByte, paramInt2, paramInt1);
           util.int32_to_buf(arrayOfByte, paramInt2 + paramInt1, paramInt3);
           ByteData.getInstance().setDataEx(paramLong, "0x0A");
-          paramContext = ByteData.getInstance().getCode(1L, 0L, paramLong, paramInt3, "", paramString, str, arrayOfByte, "0x0A");
+          paramContext = ByteData.getInstance().getCode(1L, paramLong, 2064L, paramInt3, "", "", "", arrayOfByte, "0x0A");
           return makeByte(paramContext, paramContext.length);
           paramInt1 = paramString.length();
           break;

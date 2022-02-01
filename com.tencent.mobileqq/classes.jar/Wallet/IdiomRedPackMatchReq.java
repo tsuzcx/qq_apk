@@ -8,18 +8,18 @@ public final class IdiomRedPackMatchReq
   extends JceStruct
 {
   static int cache_subchannel = 0;
-  public long appid;
+  public long appid = 0L;
   public String billno = "";
-  public int fromType;
-  public long grabUin;
+  public int fromType = 0;
+  public long grabUin = 0L;
   public String groupid = "";
   public String hbIdiom = "";
   public String inputIdiom = "";
-  public long makeUin;
-  public int platform;
+  public long makeUin = 0L;
+  public int platform = 0;
   public String qqVersion = "";
   public String sKey = "";
-  public int subchannel;
+  public int subchannel = 0;
   
   public IdiomRedPackMatchReq() {}
   

@@ -27,7 +27,6 @@ public abstract interface ProtocolDownloaderConstants
   public static final String PROTOCAL_WEB_COVER = "webcover";
   public static final String PROTOCOL_AIO_FLOWER = "aioflower";
   public static final String PROTOCOL_AIO_THUMB = "aiothumb";
-  public static final String PROTOCOL_ALBUM_THUMB = "albumthumb";
   public static final String PROTOCOL_ALBUM_THUMB_PREVIEW = "albumthumbpreview";
   public static final String PROTOCOL_CHAT_IMAGE = "chatimg";
   public static final String PROTOCOL_CHAT_RAW = "chatraw";
@@ -45,7 +44,6 @@ public abstract interface ProtocolDownloaderConstants
   public static final String PROTOCOL_READ_INJOY_SKIN_GIF = "readinjoy_skin_gif";
   public static final String PROTOCOL_REGIONAL_THUMB = "regionalthumb";
   public static final String PROTOCOL_RES_DRAWABLE = "resdrawable";
-  public static final String PROTOCOL_VIDEO_COVER = "videocover";
   public static final String PROTOCOL_VIDEO_THUMB = "videothumb";
   public static final String TRUE = "true";
 }

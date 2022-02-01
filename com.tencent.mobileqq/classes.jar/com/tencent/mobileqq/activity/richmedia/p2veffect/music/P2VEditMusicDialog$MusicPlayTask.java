@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia.p2veffect.music;
 
-import altb;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
@@ -12,7 +11,7 @@ public class P2VEditMusicDialog$MusicPlayTask
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Altb.a() != null)
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog$IP2VMusicEditListener.a() != null)
     {
       P2VEditMusicDialog localP2VEditMusicDialog = this.this$0;
       localP2VEditMusicDialog.b += 1;
@@ -23,7 +22,7 @@ public class P2VEditMusicDialog$MusicPlayTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.MusicPlayTask
  * JD-Core Version:    0.7.0.1
  */

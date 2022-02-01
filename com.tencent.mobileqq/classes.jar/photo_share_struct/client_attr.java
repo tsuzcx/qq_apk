@@ -9,11 +9,11 @@ public final class client_attr
 {
   static int cache_action = 0;
   static uin_attr cache_attr = new uin_attr();
-  public int action;
-  public uin_attr attr;
-  public long gender;
+  public int action = 0;
+  public uin_attr attr = null;
+  public long gender = 0L;
   public String qq_nick = "";
-  public long uin;
+  public long uin = 0L;
   
   public client_attr() {}
   
@@ -50,7 +50,7 @@ public final class client_attr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     photo_share_struct.client_attr
  * JD-Core Version:    0.7.0.1
  */

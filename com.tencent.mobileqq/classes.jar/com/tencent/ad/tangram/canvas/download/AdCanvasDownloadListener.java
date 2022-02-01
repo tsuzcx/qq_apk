@@ -2,6 +2,7 @@ package com.tencent.ad.tangram.canvas.download;
 
 import android.support.annotation.Keep;
 import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
+import com.tencent.ad.tangram.downloader.IAdDownloader.Callback;
 import java.lang.ref.WeakReference;
 
 @Keep
@@ -73,7 +74,7 @@ public enum AdCanvasDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListener
  * JD-Core Version:    0.7.0.1
  */

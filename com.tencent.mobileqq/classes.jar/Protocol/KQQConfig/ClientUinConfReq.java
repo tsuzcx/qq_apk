@@ -9,9 +9,9 @@ public final class ClientUinConfReq
 {
   static ClientGetUinConfReq cache_clientGetUinConfReq;
   static ClientSetUinConfReq cache_clientSetUinConfReq;
-  public ClientGetUinConfReq clientGetUinConfReq;
-  public ClientSetUinConfReq clientSetUinConfReq;
-  public int iUinCmdType;
+  public ClientGetUinConfReq clientGetUinConfReq = null;
+  public ClientSetUinConfReq clientSetUinConfReq = null;
+  public int iUinCmdType = 0;
   
   public ClientUinConfReq() {}
   
@@ -48,7 +48,7 @@ public final class ClientUinConfReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     protocol.KQQConfig.ClientUinConfReq
  * JD-Core Version:    0.7.0.1
  */

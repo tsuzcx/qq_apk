@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import anzu;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 
-public class PPCLoginAuthHandler$1
+class PPCLoginAuthHandler$1
   implements Runnable
 {
-  public PPCLoginAuthHandler$1(anzu paramanzu) {}
+  PPCLoginAuthHandler$1(PPCLoginAuthHandler paramPPCLoginAuthHandler) {}
   
   public void run()
   {
@@ -31,7 +30,7 @@ public class PPCLoginAuthHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PPCLoginAuthHandler.1
  * JD-Core Version:    0.7.0.1
  */

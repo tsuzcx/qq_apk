@@ -10,6 +10,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +32,7 @@ public class RedTouchUI
   public RedTouchUI(Context paramContext, View paramView)
   {
     super(paramContext, paramView);
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedAppInfo = null;
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
   }
   
@@ -190,7 +192,7 @@ public class RedTouchUI
     return localObject;
   }
   
-  protected ImageView a(int paramInt)
+  public ImageView a(int paramInt)
   {
     if (this.x == -1) {
       throw new RuntimeException("must set the redpoint imageresource");
@@ -202,7 +204,7 @@ public class RedTouchUI
     return localImageView;
   }
   
-  protected TextView a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public TextView a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     if (this.y == -1) {
       throw new RuntimeException("must set the redpoint imageresource");
@@ -274,7 +276,7 @@ public class RedTouchUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchUI
  * JD-Core Version:    0.7.0.1
  */

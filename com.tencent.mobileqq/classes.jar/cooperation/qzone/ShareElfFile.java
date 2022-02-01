@@ -30,10 +30,10 @@ public class ShareElfFile
   public static final int FILE_TYPE_ODEX = 0;
   public static final int FILE_TYPE_OTHERS = -1;
   private static final String TAG = "ShareElfFile";
-  public ShareElfFile.ElfHeader elfHeader;
+  public ShareElfFile.ElfHeader elfHeader = null;
   private final FileInputStream fis;
-  public ShareElfFile.ProgramHeader[] programHeaders;
-  public ShareElfFile.SectionHeader[] sectionHeaders;
+  public ShareElfFile.ProgramHeader[] programHeaders = null;
+  public ShareElfFile.SectionHeader[] sectionHeaders = null;
   private final Map<String, ShareElfFile.SectionHeader> sectionNameToHeaderMap = new HashMap();
   
   public ShareElfFile(File paramFile)
@@ -101,9 +101,9 @@ public class ShareElfFile
         paramFile = new ShareElfFile(paramFile);
         if (paramFile == null) {}
       }
-      catch (IOException localIOException1)
+      catch (IOException localIOException)
       {
-        paramFile = localIOException1.getMessage();
+        paramFile = localIOException.getMessage();
         if (paramFile == null) {
           continue;
         }
@@ -111,7 +111,7 @@ public class ShareElfFile
           continue;
         }
         i = -1;
-        Pair localPair = new Pair(Integer.valueOf(i), localIOException1);
+        Pair localPair = new Pair(Integer.valueOf(i), localIOException);
         paramFile = localPair;
         if (0 == 0) {
           continue;
@@ -185,13 +185,13 @@ public class ShareElfFile
     {
       throw new NullPointerException();
       label232:
-      throw paramFile;
+      throw localObject;
     }
-    catch (IOException localIOException2)
+    catch (IOException paramFile)
     {
       for (;;)
       {
-        QZLog.e("ShareElfFile", "", localIOException2);
+        QZLog.e("ShareElfFile", "", paramFile);
       }
     }
   }
@@ -205,10 +205,10 @@ public class ShareElfFile
     //   2: iconst_4
     //   3: newarray byte
     //   5: astore 4
-    //   7: new 59	java/io/FileInputStream
+    //   7: new 65	java/io/FileInputStream
     //   10: dup
     //   11: aload_0
-    //   12: invokespecial 61	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 67	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   15: astore_3
     //   16: aload_3
     //   17: aload 4
@@ -389,7 +389,7 @@ public class ShareElfFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.ShareElfFile
  * JD-Core Version:    0.7.0.1
  */

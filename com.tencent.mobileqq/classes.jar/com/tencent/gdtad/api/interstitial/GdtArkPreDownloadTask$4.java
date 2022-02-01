@@ -1,23 +1,21 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acbv;
-import acbx;
-import acho;
+import com.tencent.gdtad.log.GdtLog;
 import java.lang.ref.WeakReference;
 
-public class GdtArkPreDownloadTask$4
+class GdtArkPreDownloadTask$4
   implements Runnable
 {
-  public GdtArkPreDownloadTask$4(acbv paramacbv, int paramInt) {}
+  GdtArkPreDownloadTask$4(GdtArkPreDownloadTask paramGdtArkPreDownloadTask, int paramInt) {}
   
   public void run()
   {
-    if ((acbv.a(this.this$0) != null) && (acbv.a(this.this$0).get() != null)) {}
+    if ((GdtArkPreDownloadTask.a(this.this$0) != null) && (GdtArkPreDownloadTask.a(this.this$0).get() != null)) {}
     for (boolean bool = true;; bool = false)
     {
-      acho.b("GdtArkPreDownloadTask", String.format("notifyStatusChanged listener:%b status:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.a) }));
-      if ((acbv.a(this.this$0) != null) && (acbv.a(this.this$0).get() != null)) {
-        ((acbx)acbv.a(this.this$0).get()).a(acbv.a(this.this$0), this.a);
+      GdtLog.b("GdtArkPreDownloadTask", String.format("notifyStatusChanged listener:%b status:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.a) }));
+      if ((GdtArkPreDownloadTask.a(this.this$0) != null) && (GdtArkPreDownloadTask.a(this.this$0).get() != null)) {
+        ((GdtArkPreDownloadTask.Listener)GdtArkPreDownloadTask.a(this.this$0).get()).a(GdtArkPreDownloadTask.a(this.this$0), this.a);
       }
       return;
     }
@@ -25,7 +23,7 @@ public class GdtArkPreDownloadTask$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.4
  * JD-Core Version:    0.7.0.1
  */

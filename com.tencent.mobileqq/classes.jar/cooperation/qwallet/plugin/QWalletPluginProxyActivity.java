@@ -1,6 +1,5 @@
 package cooperation.qwallet.plugin;
 
-import Override;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -10,21 +9,20 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anvx;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qwallet.plugin.proxy.BuscardLoadNFCProxyActivity;
-import cooperation.qwallet.plugin.proxy.QWalletNFCProxyActivity;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class QWalletPluginProxyActivity
   extends PluginProxyActivity
+  implements IQWalletPluginProxyActivity
 {
   public static final String ACTION_KEY_EVENT = "action_key_event";
   public static final String ACTION_QWALLET_PATTERN_LOCK_COLSEALL = "pluginsdk_QWallet_PatternLock_closeAll";
@@ -35,17 +33,17 @@ public class QWalletPluginProxyActivity
   public static final String PARAM_IS_USE_QWALLET_PATTERN_LOCK = "pluginsdk_is_Use_QWallet_PatternLock";
   public static final String PARAM_QWALLET_PLOCK_BG_INTVERAL_TIME = "pluginsdk_is_QWallet_PLock_Bg_interval_time";
   private static final String TAG = "QWalletPluginProxyActivity";
-  public static boolean mIsEnterPayBridge;
+  public static boolean mIsEnterPayBridge = false;
   protected static long mQWalletPLockBgIntervalTime = -1L;
   public static int sEnterQWalletPluginCount;
   public static long sReporteSeq;
   private long lastTipsTime;
-  protected boolean mIsPause;
-  protected boolean mIsStartTouchEvent;
-  protected boolean mIsStop;
+  protected boolean mIsPause = false;
+  protected boolean mIsStartTouchEvent = false;
+  protected boolean mIsStop = false;
   protected long mQWalletPLockLastBgTime;
   public IPluginActivity mRealActivity;
-  protected long mResumeStartTime;
+  protected long mResumeStartTime = 0L;
   protected QWalletPluginProxyActivity.MyBroadcastReceiver myReceiver;
   protected QWalletPluginProxyActivity.TouchEventReceiver touchEventReceiver;
   protected QWalletPluginProxyActivity.TouchEventStartReceiver touchEventStartReceiver;
@@ -78,94 +76,94 @@ public class QWalletPluginProxyActivity
     //   0: iconst_0
     //   1: istore_1
     //   2: aload_0
-    //   3: invokevirtual 124	cooperation/qwallet/plugin/QWalletPluginProxyActivity:getIntent	()Landroid/content/Intent;
-    //   6: ldc 126
-    //   8: invokevirtual 132	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   3: invokevirtual 134	cooperation/qwallet/plugin/QWalletPluginProxyActivity:getIntent	()Landroid/content/Intent;
+    //   6: ldc 136
+    //   8: invokevirtual 142	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
     //   11: astore_2
     //   12: aload_2
     //   13: ifnull +31 -> 44
-    //   16: getstatic 59	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
+    //   16: getstatic 63	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
     //   19: lconst_0
     //   20: lcmp
     //   21: ifge +15 -> 36
     //   24: aload_2
-    //   25: ldc 29
-    //   27: ldc2_w 56
-    //   30: invokevirtual 138	android/os/Bundle:getLong	(Ljava/lang/String;J)J
-    //   33: putstatic 59	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
+    //   25: ldc 31
+    //   27: ldc2_w 60
+    //   30: invokevirtual 148	android/os/Bundle:getLong	(Ljava/lang/String;J)J
+    //   33: putstatic 63	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
     //   36: aload_2
-    //   37: ldc 26
+    //   37: ldc 28
     //   39: iconst_0
-    //   40: invokevirtual 142	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
+    //   40: invokevirtual 152	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
     //   43: istore_1
     //   44: iload_1
     //   45: ifne +14 -> 59
     //   48: aload_0
-    //   49: invokevirtual 124	cooperation/qwallet/plugin/QWalletPluginProxyActivity:getIntent	()Landroid/content/Intent;
-    //   52: ldc 26
+    //   49: invokevirtual 134	cooperation/qwallet/plugin/QWalletPluginProxyActivity:getIntent	()Landroid/content/Intent;
+    //   52: ldc 28
     //   54: iconst_0
-    //   55: invokevirtual 145	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   55: invokevirtual 155	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
     //   58: pop
-    //   59: getstatic 59	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
+    //   59: getstatic 63	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
     //   62: lconst_0
     //   63: lcmp
     //   64: ifge +18 -> 82
     //   67: aload_0
-    //   68: invokevirtual 124	cooperation/qwallet/plugin/QWalletPluginProxyActivity:getIntent	()Landroid/content/Intent;
-    //   71: ldc 29
-    //   73: ldc2_w 56
-    //   76: invokevirtual 148	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-    //   79: putstatic 59	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
+    //   68: invokevirtual 134	cooperation/qwallet/plugin/QWalletPluginProxyActivity:getIntent	()Landroid/content/Intent;
+    //   71: ldc 31
+    //   73: ldc2_w 60
+    //   76: invokevirtual 158	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   79: putstatic 63	cooperation/qwallet/plugin/QWalletPluginProxyActivity:mQWalletPLockBgIntervalTime	J
     //   82: aload_0
-    //   83: new 150	cooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver
+    //   83: new 160	cooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver
     //   86: dup
     //   87: aload_0
     //   88: aconst_null
-    //   89: invokespecial 153	cooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver:<init>	(Lcooperation/qwallet/plugin/QWalletPluginProxyActivity;Lcooperation/qwallet/plugin/QWalletPluginProxyActivity$1;)V
-    //   92: putfield 155	cooperation/qwallet/plugin/QWalletPluginProxyActivity:myReceiver	Lcooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver;
-    //   95: new 157	android/content/IntentFilter
+    //   89: invokespecial 163	cooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver:<init>	(Lcooperation/qwallet/plugin/QWalletPluginProxyActivity;Lcooperation/qwallet/plugin/QWalletPluginProxyActivity$1;)V
+    //   92: putfield 165	cooperation/qwallet/plugin/QWalletPluginProxyActivity:myReceiver	Lcooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver;
+    //   95: new 167	android/content/IntentFilter
     //   98: dup
-    //   99: invokespecial 158	android/content/IntentFilter:<init>	()V
+    //   99: invokespecial 168	android/content/IntentFilter:<init>	()V
     //   102: astore_2
     //   103: aload_2
-    //   104: ldc 11
-    //   106: invokevirtual 161	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   104: ldc 13
+    //   106: invokevirtual 171	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   109: aload_0
     //   110: aload_0
-    //   111: getfield 155	cooperation/qwallet/plugin/QWalletPluginProxyActivity:myReceiver	Lcooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver;
+    //   111: getfield 165	cooperation/qwallet/plugin/QWalletPluginProxyActivity:myReceiver	Lcooperation/qwallet/plugin/QWalletPluginProxyActivity$MyBroadcastReceiver;
     //   114: aload_2
-    //   115: invokevirtual 165	cooperation/qwallet/plugin/QWalletPluginProxyActivity:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   115: invokevirtual 175	cooperation/qwallet/plugin/QWalletPluginProxyActivity:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
     //   118: pop
     //   119: return
     //   120: astore_2
-    //   121: getstatic 170	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
+    //   121: getstatic 180	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
     //   124: ifeq -42 -> 82
-    //   127: ldc 172
-    //   129: ldc 174
+    //   127: ldc 182
+    //   129: ldc 184
     //   131: aload_2
-    //   132: invokestatic 178	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   132: invokestatic 188	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   135: goto -53 -> 82
     //   138: astore_2
-    //   139: getstatic 170	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
+    //   139: getstatic 180	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
     //   142: ifeq +11 -> 153
-    //   145: ldc 172
-    //   147: ldc 174
+    //   145: ldc 182
+    //   147: ldc 184
     //   149: aload_2
-    //   150: invokestatic 178	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   153: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   150: invokestatic 188	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   153: invokestatic 194	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   156: ifeq -74 -> 82
-    //   159: ldc 185
+    //   159: ldc 195
     //   161: iconst_2
-    //   162: ldc 187
-    //   164: invokestatic 191	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   162: ldc 197
+    //   164: invokestatic 201	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   167: goto -85 -> 82
     //   170: astore_2
-    //   171: getstatic 170	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
+    //   171: getstatic 180	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
     //   174: ifeq -55 -> 119
-    //   177: ldc 172
-    //   179: ldc 193
+    //   177: ldc 182
+    //   179: ldc 203
     //   181: aload_2
-    //   182: invokestatic 178	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   182: invokestatic 188	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   185: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -256,7 +254,7 @@ public class QWalletPluginProxyActivity
         if (l - this.lastTipsTime > 3000L)
         {
           this.lastTipsTime = l;
-          QQToast.a(this, anvx.a(2131710900), 0).a();
+          QQToast.a(this, HardCodeUtil.a(2131711415), 0).a();
         }
         return;
       }
@@ -290,12 +288,6 @@ public class QWalletPluginProxyActivity
   
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    if ("com.tenpay.android.qqplugin.activity.BusCardActivity".equals(paramString)) {
-      return QWalletNFCProxyActivity.class;
-    }
-    if ("com.tenpay.android.qqplugin.activity.RedepositActivity".equals(paramString)) {
-      return BuscardLoadNFCProxyActivity.class;
-    }
     return QWalletPluginProxyActivity.class;
   }
   
@@ -512,7 +504,7 @@ public class QWalletPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

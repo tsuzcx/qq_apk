@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
-import aqxe;
-import argl;
-import arhh;
-import bejv;
-import beki;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.config.business.TogetherConfigureBean;
+import com.tencent.mobileqq.config.business.WatchTogetherBean;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.together.TogetherControlManager;
+import com.tencent.mobileqq.together.TogetherUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ public class WatchTogetherAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130839234;
+    return 2130839303;
   }
   
   public int getAppID()
@@ -44,13 +44,13 @@ public class WatchTogetherAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698279);
+    return BaseApplicationImpl.getContext().getString(2131698556);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if ((paramBaseChatPie == null) || (paramBaseChatPie.getActivity() == null)) {}
-    argl localargl;
+    if ((paramBaseChatPie == null) || (paramBaseChatPie.a() == null)) {}
+    TogetherConfigureBean localTogetherConfigureBean;
     QQAppInterface localQQAppInterface;
     TroopInfo localTroopInfo;
     do
@@ -58,46 +58,46 @@ public class WatchTogetherAppInfo
       do
       {
         return;
-      } while (paramSessionInfo.curType != 1);
-      localargl = (argl)aqxe.a().a(535);
-      if ((localargl == null) || (localargl.a == null))
+      } while (paramSessionInfo.jdField_a_of_type_Int != 1);
+      localTogetherConfigureBean = (TogetherConfigureBean)QConfigManager.a().a(535);
+      if ((localTogetherConfigureBean == null) || (localTogetherConfigureBean.a == null))
       {
-        QQToast.a(paramBaseChatPie.getActivity(), 0, 2131692995, 0).a();
+        QQToast.a(paramBaseChatPie.a(), 0, 2131693140, 0).a();
         return;
       }
-      localQQAppInterface = paramBaseChatPie.app;
-      localTroopInfo = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.curFriendUin);
+      localQQAppInterface = paramBaseChatPie.a;
+      localTroopInfo = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
     } while (localTroopInfo == null);
-    bejv localbejv = (bejv)localQQAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
-    boolean bool = localbejv.a(2, 1, localTroopInfo.uin);
-    paramSessionInfo = beki.a(bool, localTroopInfo.isTroopOwner(localQQAppInterface.getCurrentAccountUin()), localTroopInfo.isAdmin(), localTroopInfo.troopowneruin, paramSessionInfo.curFriendUin, 0);
-    switch (localargl.a.a())
+    TogetherControlManager localTogetherControlManager = (TogetherControlManager)localQQAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
+    boolean bool = localTogetherControlManager.a(2, 1, localTroopInfo.uin);
+    paramSessionInfo = TogetherUtils.a(bool, localTroopInfo.isTroopOwner(localQQAppInterface.getCurrentAccountUin()), localTroopInfo.isAdmin(), localTroopInfo.troopowneruin, paramSessionInfo.jdField_a_of_type_JavaLangString, 0);
+    switch (localTogetherConfigureBean.a.a())
     {
     default: 
-      if (localbejv.a(paramBaseChatPie.getActivity(), 2, localTroopInfo.troopuin, 0)) {
+      if (localTogetherControlManager.a(paramBaseChatPie.a(), 2, localTroopInfo.troopuin, 0)) {
         if (QLog.isColorLevel()) {
           QLog.d("WatchTogetherAppInfo", 2, new Object[] { "start serviceType=", Integer.valueOf(2), " fail because of other together business exist, from=", Integer.valueOf(0) });
         }
       }
       break;
     }
-    while (beki.a(localQQAppInterface, "SP_KEY_WATCH_TOGETHER_TROOP_AIO_RED_DOT_SHOW", true, false))
+    while (TogetherUtils.a(localQQAppInterface, "SP_KEY_WATCH_TOGETHER_TROOP_AIO_RED_DOT_SHOW", true, false))
     {
-      beki.a(localQQAppInterface, "SP_KEY_WATCH_TOGETHER_TROOP_AIO_RED_DOT_SHOW", false, false);
-      paramahvi.b(paramBaseChatPie);
+      TogetherUtils.a(localQQAppInterface, "SP_KEY_WATCH_TOGETHER_TROOP_AIO_RED_DOT_SHOW", false, false);
+      paramPlusPanelViewModel.b(paramBaseChatPie);
       return;
-      QQToast.a(paramBaseChatPie.getActivity(), 0, 2131692995, 0).a();
+      QQToast.a(paramBaseChatPie.a(), 0, 2131693140, 0).a();
       continue;
       if (bool)
       {
-        localbejv.b(paramBaseChatPie.getActivity(), localTroopInfo.troopuin, 1, 2, 0, paramSessionInfo);
+        localTogetherControlManager.b(paramBaseChatPie.a(), localTroopInfo.troopuin, 1, 2, 0, paramSessionInfo);
       }
       else
       {
-        localbejv.a(paramBaseChatPie.getActivity(), localTroopInfo.troopuin, 1, 2, 0, paramSessionInfo);
+        localTogetherControlManager.a(paramBaseChatPie.a(), localTroopInfo.troopuin, 1, 2, 0, paramSessionInfo);
         continue;
-        localbejv.a("video_tab", "clk_panelvideo", 0, localTroopInfo.troopuin);
-        beki.a(localQQAppInterface, localargl.a.b(), localargl.a.a(), localargl.a.b(), paramSessionInfo, 1);
+        localTogetherControlManager.a("video_tab", "clk_panelvideo", 0, localTroopInfo.troopuin);
+        TogetherUtils.a(localQQAppInterface, localTogetherConfigureBean.a.b(), localTogetherConfigureBean.a.a(), localTogetherConfigureBean.a.b(), paramSessionInfo, 1);
       }
     }
   }

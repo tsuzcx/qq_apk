@@ -13,18 +13,18 @@ public final class cell_lucky_money
   static Map<String, String> cache_extendinfo;
   static ArrayList<s_user> cache_getLuckyMoneyMen = new ArrayList();
   public String actionUrl = "";
-  public Map<String, String> extendinfo;
-  public ArrayList<s_user> getLuckyMoneyMen;
-  public int isGeted;
-  public int isGrabEnd;
-  public int luckyMoneyAllocType;
+  public Map<String, String> extendinfo = null;
+  public ArrayList<s_user> getLuckyMoneyMen = null;
+  public int isGeted = 0;
+  public int isGrabEnd = 0;
+  public int luckyMoneyAllocType = 0;
   public String luckyMoneyId = "";
   public String luckyMoneyPayId = "";
-  public int luckyMoneyType;
-  public int num;
-  public int paswdShowComment;
-  public long uiHbCreateTime;
-  public long uiHbHostUin;
+  public int luckyMoneyType = 0;
+  public int num = 0;
+  public int paswdShowComment = 0;
+  public long uiHbCreateTime = 0L;
+  public long uiHbHostUin = 0L;
   
   static
   {

@@ -21,68 +21,68 @@ public final class FriendInfo
   static byte[] cache_vecMutualMarkData;
   static byte[] cache_vecPoiInfo;
   static byte[] cache_vecRing;
-  public byte cApolloFlag;
-  public byte cCentiShow3DFlag;
-  public byte cKingOfGloryFlag;
-  public byte cNetwork;
-  public byte cNewLoverDiamondFlag;
-  public byte cOlympicTorch;
-  public byte cSex;
-  public byte cShowNameplate;
-  public byte cSpecialFlag;
-  public byte detalStatusFlag;
+  public byte cApolloFlag = 0;
+  public byte cCentiShow3DFlag = 0;
+  public byte cKingOfGloryFlag = 0;
+  public byte cNetwork = 0;
+  public byte cNewLoverDiamondFlag = 0;
+  public byte cOlympicTorch = 0;
+  public byte cSex = 0;
+  public byte cShowNameplate = 0;
+  public byte cSpecialFlag = 0;
+  public byte detalStatusFlag = 0;
   public int eIconType = 0;
   public int eNetworkType = 0;
-  public short faceId;
-  public long friendUin;
-  public byte groupId;
-  public int iBatteryStatus;
-  public int iTermType;
-  public byte isIphoneOnline;
-  public byte isMqqOnLine;
-  public byte isRemark;
-  public byte memberLevel;
+  public short faceId = 0;
+  public long friendUin = 0L;
+  public byte groupId = 0;
+  public int iBatteryStatus = 0;
+  public int iTermType = 0;
+  public byte isIphoneOnline = 0;
+  public byte isMqqOnLine = 0;
+  public byte isRemark = 0;
+  public byte memberLevel = 0;
   public String nick = "";
-  public VipBaseInfo oVipInfo;
+  public VipBaseInfo oVipInfo = null;
   public String remark = "";
   public String sDOVId = "";
   public String sShowName = "";
-  public byte sqqOnLineState;
-  public byte sqqOnLineStateV2;
-  public byte sqqtype;
+  public byte sqqOnLineState = 0;
+  public byte sqqOnLineStateV2 = 0;
+  public byte sqqtype = 0;
   public byte status = 20;
   public String strEimId = "";
   public String strEimMobile = "";
   public String strMasterUin = "";
   public String strTermDesc = "";
-  public long uAbiFlag;
-  public long uApolloSignTime;
-  public long uApolloTimestamp;
-  public long uBothFlag;
-  public long uColorRing;
-  public long uExtOnlineStatus;
-  public long uFaceStoreId;
-  public long uFontEffect;
-  public long uFounderFont;
-  public long uGameAppid;
-  public long uGameLastLoginTime;
-  public long uLastMedalUpdateTime;
-  public long uLaviUin;
-  public long uTagUpdateTime;
-  public long uVipFont;
-  public long ulBitSet;
-  public long ulFaceAddonId;
-  public long ulKingOfGloryRank;
-  public byte[] vecCardID;
-  public byte[] vecExtOnlineBusinessInfo;
-  public byte[] vecExtSnsFrdData;
-  public byte[] vecIMGroupID;
-  public byte[] vecIntimateInfo;
-  public byte[] vecMSFGroupID;
-  public byte[] vecMusicInfo;
-  public byte[] vecMutualMarkData;
-  public byte[] vecPoiInfo;
-  public byte[] vecRing;
+  public long uAbiFlag = 0L;
+  public long uApolloSignTime = 0L;
+  public long uApolloTimestamp = 0L;
+  public long uBothFlag = 0L;
+  public long uColorRing = 0L;
+  public long uExtOnlineStatus = 0L;
+  public long uFaceStoreId = 0L;
+  public long uFontEffect = 0L;
+  public long uFounderFont = 0L;
+  public long uGameAppid = 0L;
+  public long uGameLastLoginTime = 0L;
+  public long uLastMedalUpdateTime = 0L;
+  public long uLaviUin = 0L;
+  public long uTagUpdateTime = 0L;
+  public long uVipFont = 0L;
+  public long ulBitSet = 0L;
+  public long ulFaceAddonId = 0L;
+  public long ulKingOfGloryRank = 0L;
+  public byte[] vecCardID = null;
+  public byte[] vecExtOnlineBusinessInfo = null;
+  public byte[] vecExtSnsFrdData = null;
+  public byte[] vecIMGroupID = null;
+  public byte[] vecIntimateInfo = null;
+  public byte[] vecMSFGroupID = null;
+  public byte[] vecMusicInfo = null;
+  public byte[] vecMutualMarkData = null;
+  public byte[] vecPoiInfo = null;
+  public byte[] vecRing = null;
   
   static
   {
@@ -348,7 +348,7 @@ public final class FriendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.FriendInfo
  * JD-Core Version:    0.7.0.1
  */

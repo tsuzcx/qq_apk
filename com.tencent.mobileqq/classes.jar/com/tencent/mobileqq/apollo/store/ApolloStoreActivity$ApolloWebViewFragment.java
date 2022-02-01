@@ -12,15 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import anfk;
-import bieo;
-import bkyc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.smtt.sdk.WebView;
+import com.tencent.util.MqqWeakReferenceHandler;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import mqq.os.MqqHandler;
 
@@ -28,19 +27,19 @@ public class ApolloStoreActivity$ApolloWebViewFragment
   extends WebViewFragment
   implements Handler.Callback
 {
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   private String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkyc(Looper.getMainLooper(), this);
-  private long b;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
+  private long b = 0L;
   
   public int doCreateLoopStep_InitUIFrame(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_InitUIFrame(paramBundle);
-    this.mSwiftTitleUI.titleContainer.setClickable(false);
-    this.mSwiftTitleUI.titleContainer.setOnTouchListener(null);
-    this.mSwiftTitleUI.leftView.setVisibility(8);
+    this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setClickable(false);
+    this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(null);
+    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     if (getActivity() != null) {
-      ImmersiveUtils.a(getActivity().getWindow(), true);
+      ImmersiveUtils.clearCoverForStatus(getActivity().getWindow(), true);
     }
     return i;
   }
@@ -64,7 +63,7 @@ public class ApolloStoreActivity$ApolloWebViewFragment
   
   public void onClick(View paramView)
   {
-    if ((paramView == this.mSwiftTitleUI.leftView) && ((getActivity() instanceof ApolloStoreActivity))) {
+    if ((paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView) && ((getActivity() instanceof ApolloStoreActivity))) {
       ((ApolloStoreActivity)getActivity()).a();
     }
     for (;;)
@@ -129,7 +128,7 @@ public class ApolloStoreActivity$ApolloWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity.ApolloWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

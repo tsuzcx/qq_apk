@@ -11,20 +11,18 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import blin;
-import bljb;
-import bljf;
+import com.tencent.widget.pull2refresh.HeaderSpanSizeLookup;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
+import com.tencent.widget.pull2refresh.RecyclerViewHeaderViewAdapter;
+import com.tencent.widget.pull2refresh.RecyclerViewHeaderViewAdapter.ContentDataObserver;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import tdy;
-import tdz;
 
 public class RecyclerViewWithHeaderFooterFix
   extends RecyclerViewCompat
 {
-  private bljf jdField_a_of_type_Bljf;
+  private RecyclerViewHeaderViewAdapter.ContentDataObserver jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$ContentDataObserver;
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
   private final List<View> b = new ArrayList();
@@ -32,19 +30,22 @@ public class RecyclerViewWithHeaderFooterFix
   public RecyclerViewWithHeaderFooterFix(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public RecyclerViewWithHeaderFooterFix(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public RecyclerViewWithHeaderFooterFix(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
+  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
   
   public void a(View paramView)
   {
@@ -88,23 +89,23 @@ public class RecyclerViewWithHeaderFooterFix
     }
     else
     {
-      localObject = new tdy(this, paramAdapter);
+      localObject = new RecyclerViewWithHeaderFooterFix.1(this, paramAdapter);
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((bljb)localObject).a((View)localIterator.next());
+        ((RecyclerViewHeaderViewAdapter)localObject).a((View)localIterator.next());
       }
       localIterator = this.b.iterator();
       while (localIterator.hasNext()) {
-        ((bljb)localObject).c((View)localIterator.next());
+        ((RecyclerViewHeaderViewAdapter)localObject).c((View)localIterator.next());
       }
-      ((bljb)localObject).setHasStableIds(paramAdapter.hasStableIds());
+      ((RecyclerViewHeaderViewAdapter)localObject).setHasStableIds(paramAdapter.hasStableIds());
       if ((getLayoutManager() instanceof GridLayoutManager))
       {
         paramAdapter = (GridLayoutManager)getLayoutManager();
-        paramAdapter.setSpanSizeLookup(new blin((bljb)localObject, paramAdapter));
+        paramAdapter.setSpanSizeLookup(new HeaderSpanSizeLookup((RecyclerViewHeaderViewAdapter)localObject, paramAdapter));
       }
-      if (this.jdField_a_of_type_Bljf != null) {
-        ((bljb)localObject).a(this.jdField_a_of_type_Bljf);
+      if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$ContentDataObserver != null) {
+        ((RecyclerViewHeaderViewAdapter)localObject).a(this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$ContentDataObserver);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
@@ -113,14 +114,14 @@ public class RecyclerViewWithHeaderFooterFix
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
   {
     super.setLayoutManager(paramLayoutManager);
-    if ((getAdapter() != null) && ((getAdapter() instanceof bljb)))
+    if ((getAdapter() != null) && ((getAdapter() instanceof RecyclerViewHeaderViewAdapter)))
     {
-      Object localObject = (bljb)getAdapter();
+      Object localObject = (RecyclerViewHeaderViewAdapter)getAdapter();
       if ((getLayoutManager() instanceof GridLayoutManager))
       {
         paramLayoutManager = (GridLayoutManager)getLayoutManager();
-        localObject = new blin((bljb)localObject, paramLayoutManager);
-        ((blin)localObject).a(paramLayoutManager.getSpanSizeLookup());
+        localObject = new HeaderSpanSizeLookup((RecyclerViewHeaderViewAdapter)localObject, paramLayoutManager);
+        ((HeaderSpanSizeLookup)localObject).a(paramLayoutManager.getSpanSizeLookup());
         paramLayoutManager.setSpanSizeLookup((GridLayoutManager.SpanSizeLookup)localObject);
       }
     }
@@ -128,12 +129,12 @@ public class RecyclerViewWithHeaderFooterFix
   
   public void setRecycledViewPool(RecyclerView.RecycledViewPool paramRecycledViewPool)
   {
-    super.setRecycledViewPool(new tdz(this));
+    super.setRecycledViewPool(new RecyclerViewWithHeaderFooterFix.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,9 @@ public final class material_pay_live_item_req
   extends JceStruct
 {
   static LiveInfo cache_stLiveInfo = new LiveInfo();
-  public int iAppid;
-  public long lUin;
-  public LiveInfo stLiveInfo;
+  public int iAppid = 0;
+  public long lUin = 0L;
+  public LiveInfo stLiveInfo = null;
   public String strItemId = "";
   public String strQua = "";
   public String strSerialNo = "";

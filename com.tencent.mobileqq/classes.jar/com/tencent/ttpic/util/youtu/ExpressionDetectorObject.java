@@ -3,7 +3,7 @@ package com.tencent.ttpic.util.youtu;
 import android.graphics.PointF;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.EXPRESSION_TYPE;
+import com.tencent.ttpic.openapi.model.VideoMaterial.EXPRESSION_TYPE;
 import com.tencent.ttpic.util.AlgoUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -574,7 +574,7 @@ public class ExpressionDetectorObject
   
   public static boolean needSaveDetectedExpression(int paramInt)
   {
-    return (paramInt == VideoMaterialUtil.EXPRESSION_TYPE.JUMP_EYE_BROW.value) || (paramInt == VideoMaterialUtil.EXPRESSION_TYPE.WINK.value) || (paramInt == VideoMaterialUtil.EXPRESSION_TYPE.SHOOK_HEAD.value) || (paramInt == VideoMaterialUtil.EXPRESSION_TYPE.RIGHT_EYE_WINK.value) || (paramInt == VideoMaterialUtil.EXPRESSION_TYPE.LEFT_EYE_WINK.value) || (paramInt == VideoMaterialUtil.EXPRESSION_TYPE.NOD.value) || (paramInt == VideoMaterialUtil.EXPRESSION_TYPE.SHAKE_HEAD.value);
+    return (paramInt == VideoMaterial.EXPRESSION_TYPE.JUMP_EYE_BROW.value) || (paramInt == VideoMaterial.EXPRESSION_TYPE.WINK.value) || (paramInt == VideoMaterial.EXPRESSION_TYPE.SHOOK_HEAD.value) || (paramInt == VideoMaterial.EXPRESSION_TYPE.RIGHT_EYE_WINK.value) || (paramInt == VideoMaterial.EXPRESSION_TYPE.LEFT_EYE_WINK.value) || (paramInt == VideoMaterial.EXPRESSION_TYPE.NOD.value) || (paramInt == VideoMaterial.EXPRESSION_TYPE.SHAKE_HEAD.value);
   }
   
   private float pointPairToBearingDegrees(PointF paramPointF1, PointF paramPointF2)
@@ -843,7 +843,7 @@ public class ExpressionDetectorObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.util.youtu.ExpressionDetectorObject
  * JD-Core Version:    0.7.0.1
  */

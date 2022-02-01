@@ -8,15 +8,15 @@ public final class MobileContactsDetailInfoEncrypt
   extends JceStruct
 {
   static byte[] cache_MobileNoMask;
-  public byte[] MobileNoMask;
+  public byte[] MobileNoMask = null;
   public String QQ = "";
   public int accountAbi = 0;
-  public long bindingDate;
+  public long bindingDate = 0L;
   public String contactsInfoEncrypt = "";
-  public long isRecommend;
+  public long isRecommend = 0L;
   public String nickname = "";
-  public long originBinder;
-  public short rmdScore;
+  public long originBinder = 0L;
+  public short rmdScore = 0;
   
   public MobileContactsDetailInfoEncrypt() {}
   

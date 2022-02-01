@@ -10,10 +10,8 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anvk;
-import bheg;
-import bhid;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
@@ -22,6 +20,8 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -64,7 +64,7 @@ public class QzoneSearchResultView
     }
     setVisibility(0);
     this.resultItem = paramResultItem;
-    Object localObject1 = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(getUin());
+    Object localObject1 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(getUin());
     paramQQAppInterface = "";
     if (localObject1 != null) {
       paramQQAppInterface = ((Friends)localObject1).name;
@@ -75,7 +75,7 @@ public class QzoneSearchResultView
     localObject1 = paramResultItem.pic_url_list.get();
     int i = paramResultItem.total_pic_num.get();
     long l = paramResultItem.ftime.get();
-    CharSequence localCharSequence = bhid.a(getContext(), 3, 1000L * l, false);
+    CharSequence localCharSequence = TimeFormatterUtils.a(getContext(), 3, 1000L * l, false);
     localObject3 = paramSearchBaseFragment.a(80000004, (String)localObject3);
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
@@ -138,15 +138,15 @@ public class QzoneSearchResultView
     return String.valueOf(this.resultItem.uin.get());
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
-    this.avartaView = ((ImageView)findViewById(2131368094));
-    this.firstNameView = ((TextView)findViewById(2131366839));
-    this.publishTimeView = ((TextView)findViewById(2131373371));
-    this.titleView = ((TextView)findViewById(2131379001));
-    this.summaryView = ((TextView)findViewById(2131378299));
-    this.container = ((QzoneImagesContainer)findViewById(2131368571));
+    this.avartaView = ((ImageView)findViewById(2131368314));
+    this.firstNameView = ((TextView)findViewById(2131367028));
+    this.publishTimeView = ((TextView)findViewById(2131373689));
+    this.titleView = ((TextView)findViewById(2131379432));
+    this.summaryView = ((TextView)findViewById(2131378725));
+    this.container = ((QzoneImagesContainer)findViewById(2131368801));
   }
   
   public void setAvartaView(Bitmap paramBitmap)
@@ -158,12 +158,12 @@ public class QzoneSearchResultView
       return;
     }
     this.avartaView.setVisibility(0);
-    this.avartaView.setImageBitmap(bheg.a());
+    this.avartaView.setImageBitmap(ImageUtil.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneSearchResultView
  * JD-Core Version:    0.7.0.1
  */

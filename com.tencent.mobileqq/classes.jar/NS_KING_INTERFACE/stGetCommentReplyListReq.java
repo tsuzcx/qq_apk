@@ -12,7 +12,7 @@ public final class stGetCommentReplyListReq
 {
   public String attach_info = "";
   public String commentId = "";
-  public int direction;
+  public int direction = 0;
   public String feed_id = "";
   
   static

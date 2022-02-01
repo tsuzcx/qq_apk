@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.phone;
 
-import Override;
-import ajcr;
-import akix;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,10 +7,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import anvx;
-import azip;
-import bdla;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.contact.phonecontact.permission.PermissionChecker;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -22,16 +20,16 @@ public class PhoneLaunchActivity
   implements View.OnClickListener
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
-  public azip a;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
-  private boolean e;
+  public ContactBindObserver a;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
+  private boolean c = false;
+  private boolean d = false;
+  private boolean e = false;
   
   private void b()
   {
-    ContactUtils.setBindPath(2);
+    ContactUtils.a(2);
     Intent localIntent = new Intent(this, BindNumberActivity.class);
     if (getIntent().getIntExtra("kSrouce", -1) == 8) {
       localIntent.putExtra("kSrouce", 8);
@@ -42,8 +40,8 @@ public class PhoneLaunchActivity
   public void a()
   {
     PhoneLaunchActivity.1 local1 = new PhoneLaunchActivity.1(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new akix(this));
-    ajcr.a(this, this.app, local1, localDenyRunnable);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this, new PhoneLaunchActivity.2(this));
+    PermissionChecker.a(this, this.app, local1, localDenyRunnable);
   }
   
   @Override
@@ -87,20 +85,20 @@ public class PhoneLaunchActivity
     }
     if (!this.jdField_a_of_type_Boolean) {
       if (getIntent().getStringExtra("leftViewText") == null) {
-        getIntent().putExtra("leftViewText", anvx.a(2131707465));
+        getIntent().putExtra("leftViewText", HardCodeUtil.a(2131707992));
       }
     }
     for (;;)
     {
-      setContentView(2131559594);
-      setTitle(anvx.a(2131707461));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372609));
+      setContentView(2131559670);
+      setTitle(HardCodeUtil.a(2131707988));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372922));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (getIntent().getBooleanExtra("k_start_number", false)) {
         b();
       }
       return true;
-      getIntent().putExtra("leftViewText", anvx.a(2131707467));
+      getIntent().putExtra("leftViewText", HardCodeUtil.a(2131707994));
     }
   }
   
@@ -108,7 +106,7 @@ public class PhoneLaunchActivity
   {
     super.finish();
     if (!this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130771990, 2130772301);
+      overridePendingTransition(2130771992, 2130772316);
     }
   }
   
@@ -122,7 +120,7 @@ public class PhoneLaunchActivity
       {
         b();
         if (this.d) {
-          bdla.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
+          ReportController.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
         }
       }
     }
@@ -143,7 +141,7 @@ public class PhoneLaunchActivity
         a();
         break;
       }
-      a(anvx.a(2131707463), anvx.a(2131707462));
+      a(HardCodeUtil.a(2131707990), HardCodeUtil.a(2131707989));
       break;
       finish();
     }
@@ -158,7 +156,7 @@ public class PhoneLaunchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneLaunchActivity
  * JD-Core Version:    0.7.0.1
  */

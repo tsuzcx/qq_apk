@@ -1,36 +1,28 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import asrl;
-import asvg;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.mini.ui.RoundImageView;
 
-public class MatchingView$1
-  implements Runnable
+class MatchingView$1
+  implements DecodeTaskCompletionListener
 {
-  MatchingView$1(MatchingView paramMatchingView) {}
+  MatchingView$1(MatchingView paramMatchingView, String paramString) {}
   
-  public void run()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    Object localObject = asrl.a("expend_match_ellipisis.json");
-    try
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
     {
-      localObject = new BufferedInputStream(new FileInputStream((String)localObject));
-      LottieComposition.Factory.fromInputStream(this.this$0.getContext(), (InputStream)localObject, new asvg(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("MatchingView", 1, "loadEllipsisAnimation fail.", localException);
+      paramString = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.getResources(), paramBitmap);
+      MatchingView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView).setImageDrawable(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.MatchingView.1
  * JD-Core Version:    0.7.0.1
  */

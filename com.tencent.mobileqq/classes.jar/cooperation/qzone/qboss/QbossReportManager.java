@@ -2,20 +2,20 @@ package cooperation.qzone.qboss;
 
 import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
 import android.os.Bundle;
-import ayrb;
-import bcvx;
-import bcvy;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.mobileqq.servlet.QbossErrorReportServlet;
+import com.tencent.mobileqq.servlet.QbossReportServlet;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QUA;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 
 public class QbossReportManager
-  extends ayrb
+  extends QZoneObserver
 {
   private static final String TAG = "QbossReportManager";
-  private static QbossReportManager instance;
+  private static QbossReportManager instance = null;
   
   public static QbossReportManager getInstance()
   {
@@ -108,7 +108,7 @@ public class QbossReportManager
       QLog.d("QbossReportManager", 1, "Type:sendErrorReport, code:" + paramInt3 + " errorMessage = " + paramString);
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bcvx.class);
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), QbossErrorReportServlet.class);
     try
     {
       localNewIntent.putExtra("uin", Long.parseLong(localAppRuntime.getAccount()));
@@ -131,7 +131,7 @@ public class QbossReportManager
   public void sendReport(String paramString1, String paramString2, int paramInt)
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bcvy.class);
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), QbossReportServlet.class);
     try
     {
       localNewIntent.putExtra("uin", Long.parseLong(localAppRuntime.getAccount()));
@@ -154,7 +154,7 @@ public class QbossReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.qboss.QbossReportManager
  * JD-Core Version:    0.7.0.1
  */

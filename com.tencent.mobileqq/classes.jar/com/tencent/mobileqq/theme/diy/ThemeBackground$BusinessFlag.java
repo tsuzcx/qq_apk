@@ -3,12 +3,12 @@ package com.tencent.mobileqq.theme.diy;
 public class ThemeBackground$BusinessFlag
 {
   private final String type;
-  public boolean use3D;
-  public boolean useAETC;
-  public boolean useApng;
-  public boolean useEffect;
-  public boolean useStatic;
-  public boolean useVideo;
+  public boolean use3D = false;
+  public boolean useAETC = false;
+  public boolean useApng = false;
+  public boolean useEffect = false;
+  public boolean useStatic = false;
+  public boolean useVideo = false;
   
   public ThemeBackground$BusinessFlag(String paramString)
   {

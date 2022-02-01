@@ -14,12 +14,12 @@ import java.util.Iterator;
 public class ShareActionSheetV2$MyResultReceiver
   extends ResultReceiver
 {
-  private WeakReference<ShareActionSheetV2> mRef;
+  private WeakReference<ShareActionSheetV2> a;
   
   public ShareActionSheetV2$MyResultReceiver(ShareActionSheetV2 paramShareActionSheetV2)
   {
     super(new Handler(Looper.getMainLooper()));
-    this.mRef = new WeakReference(paramShareActionSheetV2);
+    this.a = new WeakReference(paramShareActionSheetV2);
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
@@ -28,7 +28,7 @@ public class ShareActionSheetV2$MyResultReceiver
     if (QLog.isColorLevel()) {
       QLog.d("ShareActionSheetV2", 2, "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "] #this = " + Integer.toHexString(System.identityHashCode(this)));
     }
-    ShareActionSheetV2 localShareActionSheetV2 = (ShareActionSheetV2)this.mRef.get();
+    ShareActionSheetV2 localShareActionSheetV2 = (ShareActionSheetV2)this.a.get();
     if ((localShareActionSheetV2 != null) && (paramBundle != null))
     {
       paramBundle.setClassLoader(ShareActionSheetV2.class.getClassLoader());
@@ -49,8 +49,8 @@ public class ShareActionSheetV2$MyResultReceiver
             }
           }
         }
-        ShareActionSheetV2.access$1600(localShareActionSheetV2, paramBundle);
-        ShareActionSheetV2.access$1702(localShareActionSheetV2, null);
+        ShareActionSheetV2.a(localShareActionSheetV2, paramBundle);
+        ShareActionSheetV2.a(localShareActionSheetV2, null);
       }
     }
     label192:
@@ -60,12 +60,12 @@ public class ShareActionSheetV2$MyResultReceiver
       ResultRecord localResultRecord;
       return;
     }
-    ShareActionSheetV2.access$1702(localShareActionSheetV2, (ResultReceiver)paramBundle.getParcelable("receiver"));
+    ShareActionSheetV2.a(localShareActionSheetV2, (ResultReceiver)paramBundle.getParcelable("receiver"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

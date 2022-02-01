@@ -11,13 +11,13 @@ class SelectMemberActivity$3
   
   public void onClick(View paramView)
   {
-    this.this$0.finish();
+    this.a.finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.3
  * JD-Core Version:    0.7.0.1
  */

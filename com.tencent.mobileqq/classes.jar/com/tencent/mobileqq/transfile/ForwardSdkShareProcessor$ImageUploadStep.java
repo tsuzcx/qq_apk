@@ -2,16 +2,16 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import auuv;
-import azlg;
-import bjgx;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.io.File;
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 class ForwardSdkShareProcessor$ImageUploadStep
   extends ForwardSdkShareProcessor.ForwardStep
 {
-  private int retryCount;
+  private int retryCount = 0;
   
   ForwardSdkShareProcessor$ImageUploadStep(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
   {
@@ -39,8 +39,8 @@ class ForwardSdkShareProcessor$ImageUploadStep
     String str = this.this$0.app.getCurrentUin();
     paramString = new CompressInfo(paramString, 0);
     paramString.f = 0;
-    auuv.a("compress_local_image");
-    auuv.a("compress_local_image", str, azlg.b(paramString));
+    ForwardStatisticsReporter.a("compress_local_image");
+    ForwardStatisticsReporter.a("compress_local_image", str, CompressOperator.b(paramString));
     if (!TextUtils.isEmpty(paramString.e)) {
       this.this$0.mLocalImgUrl = paramString.e;
     }
@@ -50,20 +50,20 @@ class ForwardSdkShareProcessor$ImageUploadStep
     if (paramString.exists())
     {
       l = paramString.length();
-      paramString = FileUtils.calcMd5(this.this$0.mLocalImgUrl);
+      paramString = FileUtils.c(this.this$0.mLocalImgUrl);
       if ((l <= 0L) || (TextUtils.isEmpty(paramString))) {
         break label544;
       }
       paramString = String.format("https://cgi.connect.qq.com/qqconnectopen/query_share_image?key=%s&size=%d&short_url=0", new Object[] { paramString, Long.valueOf(l) });
-      auuv.a("query_image");
-      paramString = HttpUtil.queryImageByIP(NetworkUtil.toDirectIpUrl(paramString, 1007), str, ForwardSdkShareProcessor.access$200(this.this$0));
+      ForwardStatisticsReporter.a("query_image");
+      paramString = HttpUtil.queryImageByIP(NetworkUtil.a(paramString, 1007), str, ForwardSdkShareProcessor.access$200(this.this$0));
       localObject2 = new HashMap();
       if (paramString != null) {
         break label441;
       }
       ((HashMap)localObject2).put("param_ret_code", "-1");
       ((HashMap)localObject2).put("param_need_upload", "0");
-      auuv.a("query_image", str, (HashMap)localObject2, false);
+      ForwardStatisticsReporter.a("query_image", str, (HashMap)localObject2, false);
     }
     for (;;)
     {
@@ -84,7 +84,7 @@ class ForwardSdkShareProcessor$ImageUploadStep
         {
           ((Bundle)localObject1).putString("intext_2", i);
           ((Bundle)localObject1).putString("intext_5", "" + paramLong);
-          bjgx.a().a((Bundle)localObject1, "", str, false, this.this$0.isSdkShare());
+          ReportCenter.a().a((Bundle)localObject1, "", str, false, this.this$0.isSdkShare());
           return paramString;
           l = 0L;
           break;
@@ -102,7 +102,7 @@ class ForwardSdkShareProcessor$ImageUploadStep
           label520:
           for (boolean bool = true;; bool = false)
           {
-            auuv.a("query_image", str, (HashMap)localObject2, bool);
+            ForwardStatisticsReporter.a("query_image", str, (HashMap)localObject2, bool);
             break;
             localObject1 = "1";
             break label473;
@@ -153,16 +153,16 @@ class ForwardSdkShareProcessor$ImageUploadStep
     ((Bundle)localObject1).putString("act_type", "51");
     ((Bundle)localObject1).putString("intext_3", "0");
     ((Bundle)localObject1).putString("stringext_1", this.this$0.mTargetUrl);
-    bjgx.a().a((Bundle)localObject1, "", str, false, this.this$0.isSdkShare());
+    ReportCenter.a().a((Bundle)localObject1, "", str, false, this.this$0.isSdkShare());
     HashMap localHashMap1 = new HashMap();
     localHashMap1.put("param_is_ip_direct", "1");
-    auuv.a("upload_local_thumb_image");
-    Object localObject2 = HttpUtil.uploadImageWithHttps(NetworkUtil.toDirectIpUrl("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", 1007), "cgi.connect.qq.com", str, ForwardSdkShareProcessor.access$200(this.this$0), null, localHashMap3, localHashMap2, false);
+    ForwardStatisticsReporter.a("upload_local_thumb_image");
+    Object localObject2 = HttpUtil.uploadImageWithHttps(NetworkUtil.a("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", 1007), "cgi.connect.qq.com", str, ForwardSdkShareProcessor.access$200(this.this$0), null, localHashMap3, localHashMap2, false);
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      auuv.a("upload_local_thumb_image", str, localHashMap1, false);
-      auuv.a("upload_local_thumb_image");
+      ForwardStatisticsReporter.a("upload_local_thumb_image", str, localHashMap1, false);
+      ForwardStatisticsReporter.a("upload_local_thumb_image");
       localObject1 = HttpUtil.uploadImageWithHttps("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", "cgi.connect.qq.com", str, ForwardSdkShareProcessor.access$200(this.this$0), null, localHashMap3, localHashMap2, true);
       localHashMap1.put("param_is_ip_direct", "0");
     }
@@ -198,7 +198,7 @@ class ForwardSdkShareProcessor$ImageUploadStep
         }
         i = j;
         localHashMap1.put("param_ret_code", Integer.toString(i));
-        auuv.a("upload_local_thumb_image", str, bool1);
+        ForwardStatisticsReporter.a("upload_local_thumb_image", str, bool1);
         paramLong = System.currentTimeMillis() - paramLong;
         if (QLog.isColorLevel())
         {
@@ -228,7 +228,7 @@ class ForwardSdkShareProcessor$ImageUploadStep
           ((Bundle)localObject1).putString("stringext_2", this.this$0.mLocalImgUrl);
           ((Bundle)localObject1).putString("stringext_1", this.this$0.mTargetUrl);
         }
-        bjgx.a().a((Bundle)localObject1, "", str, false, this.this$0.isSdkShare());
+        ReportCenter.a().a((Bundle)localObject1, "", str, false, this.this$0.isSdkShare());
         return new Pair(Integer.valueOf(i), Boolean.valueOf(bool1));
       }
       catch (JSONException localJSONException)

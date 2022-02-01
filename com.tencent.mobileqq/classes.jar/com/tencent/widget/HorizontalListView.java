@@ -28,7 +28,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListAdapter;
-import bldq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -45,7 +44,7 @@ public class HorizontalListView
   protected static final int INSERT_AT_START_OF_LIST = 0;
   private static final int INVALID_POINTER = -1;
   public static final String TAG = "HorizontalListView";
-  public static final int TAG_VIEW_TYPE = 2131690119;
+  public static final int TAG_VIEW_TYPE = 2131690175;
   static final int TOUCH_MODE_DONE_WAITING = 2;
   static final int TOUCH_MODE_DOWN = 0;
   static final int TOUCH_MODE_FLING = 4;
@@ -55,39 +54,39 @@ public class HorizontalListView
   static final int TOUCH_MODE_SCROLL = 3;
   static final int TOUCH_MODE_TAP = 1;
   public int MIN_SPACE = 50;
-  protected boolean isFromRightToLeft;
+  protected boolean isFromRightToLeft = false;
   private int mActivePointerId = -1;
   protected ListAdapter mAdapter;
   private DataSetObserver mAdapterDataObserver;
-  private ContextMenu.ContextMenuInfo mContextMenuInfo;
+  private ContextMenu.ContextMenuInfo mContextMenuInfo = null;
   protected int mCurrentScrollState = 4097;
   protected int mCurrentX;
   public int mCurrentlySelectedAdapterIndex;
-  protected boolean mDataChanged;
+  protected boolean mDataChanged = false;
   private Runnable mDelayedLayout = new HorizontalListView.1(this);
   protected int mDisplayOffset;
-  private Drawable mDivider;
-  protected int mDividerWidth;
+  private Drawable mDivider = null;
+  protected int mDividerWidth = 0;
   private Runnable mFlingRunnable;
-  private boolean mHasNotifiedRunningLowOnData;
+  private boolean mHasNotifiedRunningLowOnData = false;
   private int mHeight;
   private int mHeightMeasureSpec;
-  private boolean mIsBeingDragged;
+  private boolean mIsBeingDragged = false;
   private int mLastAccessibilityScrollEventFromIndex;
   private int mLastAccessibilityScrollEventToIndex;
   private float mLastMotionX;
   protected int mLeftViewAdapterIndex;
   protected int mMaxX = 2147483647;
   private int mMaximumVelocity;
-  protected int mMinX;
+  protected int mMinX = 0;
   private int mMinimumVelocity;
   private int mMotionPosition;
   private int mMotionX;
   private int mMotionY;
   protected int mNextX;
-  private HorizontalListView.OnItemScrollEventListener mOnItemScrollEventListener;
-  private HorizontalListView.OnScrollLinstener mOnScrollLinstener;
-  private HorizontalListView.OnScrollStateChangedListener mOnScrollStateChangedListener;
+  private HorizontalListView.OnItemScrollEventListener mOnItemScrollEventListener = null;
+  private HorizontalListView.OnScrollLinstener mOnScrollLinstener = null;
+  private HorizontalListView.OnScrollStateChangedListener mOnScrollStateChangedListener = null;
   private HorizontalListView.CheckForLongPress mPendingCheckForLongPress;
   private Runnable mPendingCheckForTap;
   private HorizontalListView.PerformClick mPerformClick;
@@ -96,19 +95,19 @@ public class HorizontalListView
   private Rect mRect = new Rect();
   private HorizontalListView.RecycleListener mRecycleListener;
   private List<Queue<View>> mRemovedViewsCache = new ArrayList();
-  private Integer mRestoreX;
+  private Integer mRestoreX = null;
   protected int mRightViewAdapterIndex;
-  private HorizontalListView.RunningOutOfDataListener mRunningOutOfDataListener;
-  private int mRunningOutOfDataThreshold;
-  protected bldq mScroller;
-  protected boolean mStayDisplayOffsetZero;
+  private HorizontalListView.RunningOutOfDataListener mRunningOutOfDataListener = null;
+  private int mRunningOutOfDataThreshold = 0;
+  protected OverScroller mScroller;
+  protected boolean mStayDisplayOffsetZero = false;
   private Rect mTouchFrame;
   int mTouchMode = -1;
   private Runnable mTouchModeReset;
   protected int mTouchSlop;
-  private boolean mTransTouchState2Parent;
+  private boolean mTransTouchState2Parent = false;
   private VelocityTracker mVelocityTracker;
-  private View mViewBeingTouched;
+  private View mViewBeingTouched = null;
   private int mWidth;
   
   public HorizontalListView(Context paramContext)
@@ -292,7 +291,7 @@ public class HorizontalListView
     {
       paramInt = this.mAdapter.getItemViewType(paramInt);
       if ((paramView != null) && (isItemViewTypeValid(paramInt))) {
-        paramView.setTag(2131690119, Integer.valueOf(paramInt));
+        paramView.setTag(TAG_VIEW_TYPE, Integer.valueOf(paramInt));
       }
       return;
     }
@@ -383,7 +382,7 @@ public class HorizontalListView
   private View obtainView(int paramInt)
   {
     View localView1 = getRecycledView(paramInt);
-    setTag(2131368306, Boolean.valueOf(true));
+    setTag(2131368523, Boolean.valueOf(true));
     View localView2 = this.mAdapter.getView(paramInt, localView1, this);
     markViewType(localView2, paramInt);
     if ((localView1 != null) && (localView2 != localView1)) {
@@ -398,7 +397,7 @@ public class HorizontalListView
   private View obtainView(int paramInt, boolean paramBoolean)
   {
     View localView1 = getRecycledView(paramInt);
-    setTag(2131368306, Boolean.valueOf(paramBoolean));
+    setTag(2131368523, Boolean.valueOf(paramBoolean));
     View localView2 = this.mAdapter.getView(paramInt, localView1, this);
     markViewType(localView2, paramInt);
     if ((localView1 != null) && (localView2 != localView1)) {
@@ -654,7 +653,7 @@ public class HorizontalListView
       if (this.mDisplayOffset <= -(k / 2 + 0.5D)) {
         i = j + k;
       }
-    } while (!this.mScroller.a(this.mNextX + getScrollX(), 0, i, i, 0, 0));
+    } while (!this.mScroller.springBack(this.mNextX + getScrollX(), 0, i, i, 0, 0));
     if (DEBUG) {
       log("checkScrollToChild", new Object[] { Integer.valueOf(this.mTouchMode), Integer.valueOf(i) });
     }
@@ -664,11 +663,11 @@ public class HorizontalListView
   
   public void computeScroll()
   {
-    if (this.mScroller.b())
+    if (this.mScroller.computeScrollOffset())
     {
       i = getScrollX();
       int k = this.mNextX + i;
-      int m = this.mScroller.a();
+      int m = this.mScroller.getCurrX();
       int n = this.mNextX;
       if (DEBUG) {
         log("computeScroll", new Object[] { "MOVING", Integer.valueOf(k), Integer.valueOf(m) });
@@ -697,8 +696,8 @@ public class HorizontalListView
           if (i == 0) {
             break label289;
           }
-          this.mScroller.a();
-          this.mScroller.a(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0);
+          this.mScroller.abortAnimation();
+          this.mScroller.springBack(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0);
           label210:
           if (m >= i2) {
             break label344;
@@ -840,7 +839,7 @@ public class HorizontalListView
     catch (Exception paramCanvas) {}
   }
   
-  protected void dispatchSetPressed(boolean paramBoolean) {}
+  public void dispatchSetPressed(boolean paramBoolean) {}
   
   protected void fillList(int paramInt)
   {
@@ -1041,7 +1040,7 @@ public class HorizontalListView
     setCurrentScrollState(4099);
     if (getChildCount() > 0)
     {
-      this.mScroller.a(this.mNextX + getScrollX(), 0, getFlingVelocity(paramInt), 0, this.mMinX, this.mMaxX, 0, 0, Math.max(0, getWidth() / 2), 0);
+      this.mScroller.fling(this.mNextX + getScrollX(), 0, getFlingVelocity(paramInt), 0, this.mMinX, this.mMaxX, 0, 0, Math.max(0, getWidth() / 2), 0);
       requestLayout();
     }
   }
@@ -1059,7 +1058,7 @@ public class HorizontalListView
     return null;
   }
   
-  protected ContextMenu.ContextMenuInfo getContextMenuInfo()
+  public ContextMenu.ContextMenuInfo getContextMenuInfo()
   {
     return this.mContextMenuInfo;
   }
@@ -1155,8 +1154,8 @@ public class HorizontalListView
   @TargetApi(9)
   protected void initView(boolean paramBoolean)
   {
-    this.mScroller = new bldq(getContext());
-    this.mScroller.a(getScrollerFriction());
+    this.mScroller = new OverScroller(getContext());
+    this.mScroller.setFriction(getScrollerFriction());
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
     this.mTouchSlop = localViewConfiguration.getScaledTouchSlop();
     this.mMinimumVelocity = localViewConfiguration.getScaledMinimumFlingVelocity();
@@ -1215,7 +1214,7 @@ public class HorizontalListView
     return (this.mTransTouchState2Parent) && ((getParent() instanceof View));
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     try
     {
@@ -1300,7 +1299,7 @@ public class HorizontalListView
               this.mActivePointerId = paramMotionEvent.getPointerId(0);
               initOrResetVelocityTracker();
               this.mVelocityTracker.addMovement(paramMotionEvent);
-              if (!this.mScroller.a()) {}
+              if (!this.mScroller.isFinished()) {}
               for (bool1 = true;; bool1 = false)
               {
                 this.mIsBeingDragged = bool1;
@@ -1310,7 +1309,7 @@ public class HorizontalListView
               this.mIsBeingDragged = false;
               this.mActivePointerId = -1;
               recycleVelocityTracker();
-              if (this.mScroller.a(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0))
+              if (this.mScroller.springBack(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0))
               {
                 this.mTouchMode = 6;
                 setCurrentScrollState(4099);
@@ -1332,7 +1331,7 @@ public class HorizontalListView
   }
   
   @SuppressLint({"WrongCall"})
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mAdapter == null) {}
@@ -1389,11 +1388,11 @@ public class HorizontalListView
         onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
         return;
       }
-    } while (this.mScroller.a());
+    } while (this.mScroller.isFinished());
     ViewCompat.postOnAnimation(this, this.mDelayedLayout);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int m = View.MeasureSpec.getMode(paramInt1);
@@ -1458,7 +1457,7 @@ public class HorizontalListView
     }
   }
   
-  protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super.scrollTo(paramInt1, paramInt2);
     awakenScrollBars();
@@ -1516,7 +1515,7 @@ public class HorizontalListView
               this.mTouchMode = 5;
               this.mMotionX = ((int)paramMotionEvent.getX());
               this.mMotionY = ((int)paramMotionEvent.getY());
-              if (this.mScroller.a()) {
+              if (this.mScroller.isFinished()) {
                 break label434;
               }
             }
@@ -1530,8 +1529,8 @@ public class HorizontalListView
                   ((ViewParent)localObject).requestDisallowInterceptTouchEvent(true);
                 }
               }
-              if (!this.mScroller.a()) {
-                this.mScroller.a();
+              if (!this.mScroller.isFinished()) {
+                this.mScroller.abortAnimation();
               }
               this.mLastMotionX = paramMotionEvent.getX();
               this.mActivePointerId = paramMotionEvent.getPointerId(0);
@@ -1674,7 +1673,7 @@ public class HorizontalListView
           return true;
           f1 = ((VelocityTracker)localObject).getXVelocity();
           break label753;
-          if (this.mScroller.a(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0))
+          if (this.mScroller.springBack(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0))
           {
             this.mTouchMode = 6;
             setCurrentScrollState(4099);
@@ -1761,7 +1760,7 @@ public class HorizontalListView
         unpressTouchedView();
         if ((this.mIsBeingDragged) && (getChildCount() > 0))
         {
-          if (!this.mScroller.a(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0)) {
+          if (!this.mScroller.springBack(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0)) {
             break label1501;
           }
           this.mTouchMode = 6;
@@ -1819,7 +1818,7 @@ public class HorizontalListView
     return true;
   }
   
-  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     int k = getOverScrollMode();
     int i;
@@ -2049,7 +2048,7 @@ public class HorizontalListView
   {
     try
     {
-      Object localObject = paramView.getTag(2131690119);
+      Object localObject = paramView.getTag(TAG_VIEW_TYPE);
       if ((localObject instanceof Integer))
       {
         i = ((Integer)localObject).intValue();
@@ -2178,7 +2177,7 @@ public class HorizontalListView
     if (i > this.mMaxX) {
       return 1;
     }
-    this.mScroller.a(this.mNextX, 0, paramInt, 0, 20);
+    this.mScroller.startScroll(this.mNextX, 0, paramInt, 0, 20);
     setCurrentScrollState(4098);
     requestLayout();
     return 0;
@@ -2366,12 +2365,12 @@ public class HorizontalListView
     this.mTouchMode = 4;
     setCurrentScrollState(4099);
     int i = this.mCurrentX;
-    if (this.mScroller.a())
+    if (this.mScroller.isFinished())
     {
       i = getScrollX();
       i = this.mNextX + i;
     }
-    this.mScroller.a(i, 0, -paramInt1, 0, paramInt2);
+    this.mScroller.startScroll(i, 0, -paramInt1, 0, paramInt2);
     this.mLastMotionX = 0.0F;
     recycleVelocityTracker();
     ViewCompat.postInvalidateOnAnimation(this);
@@ -2411,7 +2410,7 @@ public class HorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView
  * JD-Core Version:    0.7.0.1
  */

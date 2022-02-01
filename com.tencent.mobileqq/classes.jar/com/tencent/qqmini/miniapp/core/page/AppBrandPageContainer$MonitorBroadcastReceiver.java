@@ -25,7 +25,7 @@ class AppBrandPageContainer$MonitorBroadcastReceiver
     for (paramContext = "show";; paramContext = "hide")
     {
       QMLog.d("minisdk-start-AppBrandPageContainer", paramContext + " monitor view!");
-      if (AppBrandPageContainer.access$400(this.this$0) != bool) {
+      if (AppBrandPageContainer.access$500(this.this$0) != bool) {
         this.this$0.toggleMonitorPanel();
       }
       return;
@@ -34,7 +34,7 @@ class AppBrandPageContainer$MonitorBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.MonitorBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

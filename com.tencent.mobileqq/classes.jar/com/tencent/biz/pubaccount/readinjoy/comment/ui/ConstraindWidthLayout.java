@@ -55,7 +55,7 @@ public final class ConstraindWidthLayout
     return (LinearLayout.LayoutParams)new ConstraindWidthLayout.LayoutParams(paramLayoutParams);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     Object localObject1 = (View)null;
@@ -93,7 +93,7 @@ public final class ConstraindWidthLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.ui.ConstraindWidthLayout
  * JD-Core Version:    0.7.0.1
  */

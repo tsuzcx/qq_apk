@@ -28,7 +28,7 @@ public class DrawableCenterTextView
     setGravity(16);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     Object localObject2 = getCompoundDrawables();
     Object localObject1;
@@ -80,7 +80,7 @@ public class DrawableCenterTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DrawableCenterTextView
  * JD-Core Version:    0.7.0.1
  */

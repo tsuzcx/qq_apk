@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 
 class TroopNativeUtils
 {
-  public boolean a;
+  public boolean a = false;
   
   private TroopNativeUtils()
   {

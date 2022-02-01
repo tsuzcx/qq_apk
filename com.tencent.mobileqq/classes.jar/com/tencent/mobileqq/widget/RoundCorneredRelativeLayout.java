@@ -20,7 +20,7 @@ public class RoundCorneredRelativeLayout
   extends RelativeLayout
 {
   private static final float PRESS_ALPHA = 0.5F;
-  private boolean mEnablePressEffect;
+  private boolean mEnablePressEffect = false;
   private Paint mPaint = new Paint();
   private float[] mRadii = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
   
@@ -45,7 +45,7 @@ public class RoundCorneredRelativeLayout
     this.mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     int i = paramCanvas.getWidth();
     int j = paramCanvas.getHeight();
@@ -99,7 +99,7 @@ public class RoundCorneredRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RoundCorneredRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.pushdialog;
 
 import android.database.sqlite.SQLiteException;
-import bait;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.Date;
 
-public class PushDialogDbUtil$3
+class PushDialogDbUtil$3
   implements Runnable
 {
-  public PushDialogDbUtil$3(bait parambait, EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate) {}
+  PushDialogDbUtil$3(PushDialogDbUtil paramPushDialogDbUtil, EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate) {}
   
   public void run()
   {
-    synchronized (bait.a(this.this$0))
+    synchronized (PushDialogDbUtil.a(this.this$0))
     {
       try
       {

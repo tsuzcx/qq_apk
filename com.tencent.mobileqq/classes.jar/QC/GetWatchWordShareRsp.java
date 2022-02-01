@@ -12,8 +12,8 @@ public final class GetWatchWordShareRsp
   public String itemmsg = "";
   public String itemname = "";
   public String itemtype = "";
-  public int portrait;
-  public int ret;
+  public int portrait = 0;
+  public int ret = 0;
   public String sharemsg = "";
   public String shareuinnick = "";
   public String thumbnailurl = "";

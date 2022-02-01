@@ -2,6 +2,7 @@ package com.tencent.litetransfersdk;
 
 public class FileControl
 {
+  public boolean bool_file_assist;
   String str_msg;
   public int uint32_batchID;
   public int uint32_code;
@@ -13,7 +14,7 @@ public class FileControl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.FileControl
  * JD-Core Version:    0.7.0.1
  */

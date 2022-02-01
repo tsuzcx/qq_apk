@@ -26,6 +26,7 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
+@Deprecated
 public class Fragment
   implements ComponentCallbacks, View.OnCreateContextMenuListener
 {

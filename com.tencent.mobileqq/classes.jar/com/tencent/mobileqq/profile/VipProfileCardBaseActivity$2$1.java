@@ -2,20 +2,19 @@ package com.tencent.mobileqq.profile;
 
 import android.os.Handler;
 import android.os.Message;
-import azsa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
-public class VipProfileCardBaseActivity$2$1
+class VipProfileCardBaseActivity$2$1
   implements Runnable
 {
-  public VipProfileCardBaseActivity$2$1(azsa paramazsa, Card paramCard, HashMap paramHashMap, String paramString) {}
+  VipProfileCardBaseActivity$2$1(VipProfileCardBaseActivity.2 param2, Card paramCard, HashMap paramHashMap, String paramString) {}
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_Azsa.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet);
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet);
     HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
     if (bool) {}
     for (Object localObject = "0";; localObject = "-102")
@@ -24,14 +23,14 @@ public class VipProfileCardBaseActivity$2$1
       if (bool != true) {
         break;
       }
-      StatisticCollector.getInstance(this.jdField_a_of_type_Azsa.a.app.getApp()).collectPerformance(this.jdField_a_of_type_JavaLangString, "profileCardSet", true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-      localObject = this.jdField_a_of_type_Azsa.a.a.obtainMessage(5);
-      this.jdField_a_of_type_Azsa.a.a.sendMessage((Message)localObject);
+      StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.app.getApp()).collectPerformance(this.jdField_a_of_type_JavaLangString, "profileCardSet", true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.a.obtainMessage(5);
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.a.sendMessage((Message)localObject);
       return;
     }
-    StatisticCollector.getInstance(this.jdField_a_of_type_Azsa.a.app.getApp()).collectPerformance(this.jdField_a_of_type_JavaLangString, "profileCardSet", false, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-    localObject = this.jdField_a_of_type_Azsa.a.a.obtainMessage(6);
-    this.jdField_a_of_type_Azsa.a.a.sendMessage((Message)localObject);
+    StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.app.getApp()).collectPerformance(this.jdField_a_of_type_JavaLangString, "profileCardSet", false, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.a.obtainMessage(6);
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity$2.a.a.sendMessage((Message)localObject);
   }
 }
 

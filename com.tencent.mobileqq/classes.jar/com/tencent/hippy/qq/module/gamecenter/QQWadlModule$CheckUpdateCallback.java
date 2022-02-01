@@ -1,16 +1,16 @@
 package com.tencent.hippy.qq.module.gamecenter;
 
-import bjog;
-import bjoh;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.mtt.hippy.common.HippyArray;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
+import com.tencent.open.downloadnew.UpdateManager;
+import com.tencent.open.downloadnew.UpdateManager.OnCheckUpdateListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 class QQWadlModule$CheckUpdateCallback
-  implements bjoh
+  implements UpdateManager.OnCheckUpdateListener
 {
   private final Promise callback;
   private final String guid;
@@ -28,7 +28,7 @@ class QQWadlModule$CheckUpdateCallback
     paramString.pushString("guid", this.guid);
     paramString.pushInt("r", -1);
     this.callback.resolve(paramString);
-    bjog.a().b(this);
+    UpdateManager.a().b(this);
   }
   
   public void onResult(ArrayList<ApkUpdateDetail> paramArrayList)
@@ -59,12 +59,12 @@ class QQWadlModule$CheckUpdateCallback
     paramArrayList.pushInt("r", 0);
     paramArrayList.pushArray("data", localHippyArray);
     this.callback.resolve(paramArrayList);
-    bjog.a().b(this);
+    UpdateManager.a().b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.gamecenter.QQWadlModule.CheckUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class GetTextDraftJob$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setTextDraft(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGetTextDraftJob$1.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGetTextDraftJob$1.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GetTextDraftJob.1.1
  * JD-Core Version:    0.7.0.1
  */

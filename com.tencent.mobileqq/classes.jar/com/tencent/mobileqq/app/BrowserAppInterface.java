@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import aioi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.ComponentName;
@@ -12,44 +11,52 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anrd;
-import anre;
-import aozq;
-import avxi;
-import avzm;
-import axqp;
-import bgko;
-import bgyd;
-import bhhy;
-import bhon;
-import bhyq;
-import biij;
-import blsk;
-import bmfv;
-import com.tencent.common.app.AppInterface;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.offline.util.MyLog;
+import com.tencent.biz.common.offline.util.OfflineDownloader;
+import com.tencent.biz.common.util.QQThreadManager;
+import com.tencent.biz.game.GamePushServlet;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.common.app.business.BaseToolAppInterface;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.mobileqq.app.utils.BrowserService;
+import com.tencent.mobileqq.dpc.api.IDPCApi;
+import com.tencent.mobileqq.dpc.enumname.DPCNames;
+import com.tencent.mobileqq.intervideo.yiqikan.TogetherWatchFloatingUtil;
+import com.tencent.mobileqq.jsp.EventApiPlugin;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.nearby.OldBigDataChannelManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.service.MobileQQServiceBase;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.NetEngineFactory;
+import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.mobileqq.troop.utils.TroopGiftManager;
 import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.StartupTracker;
+import com.tencent.mobileqq.vas.URLInterceptManager;
 import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webprocess.WebCoreService;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.webview.api.IWebProcessPreload;
+import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.TbsDownloader;
-import cooperation.ilive.IliveAppInterface;
+import cooperation.comic.utils.QQComicRedTouchManager;
+import cooperation.qqreader.redtouch.ReaderRedTouchManager;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -62,34 +69,27 @@ import mqq.app.MSFServlet;
 import mqq.app.TicketManagerImpl;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import nuz;
-import nvp;
-import nvq;
-import nwl;
-import nxe;
-import ook;
-import pvp;
 
 public class BrowserAppInterface
-  extends AppInterface
+  extends BaseToolAppInterface
   implements IToolProcEventListener
 {
+  public static final String a;
   public static final AtomicBoolean a;
   public static final AtomicBoolean b;
   public static final AtomicBoolean c;
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
-  public Intent a;
-  aozq jdField_a_of_type_Aozq = new aozq(this);
-  protected axqp a;
-  public bhon a;
+  Intent jdField_a_of_type_AndroidContentIntent;
+  protected ReadInJoyLogicManager a;
+  BrowserService jdField_a_of_type_ComTencentMobileqqAppUtilsBrowserService = new BrowserService(this);
+  protected OldBigDataChannelManager a;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
-  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
+  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
+  public URLInterceptManager a;
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
-  protected pvp a;
-  public boolean a;
-  private BusinessHandler[] jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler = new BusinessHandler[1];
-  public int b;
+  boolean jdField_a_of_type_Boolean = false;
+  int b;
   public boolean b;
   private int c;
   public boolean c;
@@ -99,34 +99,39 @@ public class BrowserAppInterface
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    jdField_a_of_type_JavaLangString = EcshopReportHandler.class.getName();
   }
   
   public BrowserAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
-    this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyOldBigDataChannelManager = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyLogicManager = null;
   }
   
   private void a()
   {
-    QbSdk.setTbsLogClient(new anrd(this, BaseApplicationImpl.getContext()));
+    QbSdk.setTbsLogClient(new BrowserAppInterface.2(this, BaseApplicationImpl.getContext()));
   }
   
   public static void a(int paramInt)
   {
-    String str1 = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.RemoveSessionConfig.name());
+    String str1 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.RemoveSessionConfig.name());
     for (;;)
     {
       int i;
       try
       {
         if (TextUtils.isEmpty(str1)) {
-          break label162;
+          break label169;
         }
         i = Integer.parseInt(str1);
         if ((i & paramInt) != paramInt) {
-          break label147;
+          break label154;
         }
         if (Build.VERSION.SDK_INT < 21)
         {
@@ -136,7 +141,7 @@ public class BrowserAppInterface
             CookieManager.getInstance().removeAllCookie();
             CookieSyncManager.getInstance().sync();
             if (1 != paramInt) {
-              break label168;
+              break label175;
             }
             str1 = "all";
             QLog.e("BrowserAppInterface", 1, String.format("Remove %s cookies", new Object[] { str1 }));
@@ -149,7 +154,7 @@ public class BrowserAppInterface
           continue;
         }
         if (1 != paramInt) {
-          break label132;
+          break label139;
         }
       }
       catch (Exception localException)
@@ -159,20 +164,20 @@ public class BrowserAppInterface
       }
       CookieManager.getInstance().removeAllCookies(null);
       continue;
-      label132:
+      label139:
       if (2 == paramInt)
       {
         CookieManager.getInstance().removeSessionCookies(null);
         continue;
-        label147:
+        label154:
         if (QLog.isColorLevel()) {
           QLog.d("BrowserAppInterface", 2, "Not required remove cookies");
         }
         return;
-        label162:
+        label169:
         i = 15;
         continue;
-        label168:
+        label175:
         String str2 = "session";
       }
     }
@@ -215,9 +220,6 @@ public class BrowserAppInterface
     if (str == null) {
       return false;
     }
-    if (IliveAppInterface.a()) {
-      return true;
-    }
     QLog.e("BrowserAppInterface", 1, "exitBrowserRunTime: receiveAction: " + str);
     if (str.equals("com.tencent.process.exit"))
     {
@@ -253,7 +255,7 @@ public class BrowserAppInterface
         if ((paramContext != null) && (paramContext.a())) {
           return true;
         }
-        if ((!avxi.a()) && (paramIntent.getBooleanExtra("qq_mode_foreground", false)))
+        if ((!TogetherWatchFloatingUtil.a()) && (paramIntent.getBooleanExtra("qq_mode_foreground", false)))
         {
           if (QLog.isColorLevel()) {
             QLog.d("BrowserAppInterface", 2, " has floating window， not exit tool process");
@@ -281,7 +283,7 @@ public class BrowserAppInterface
   
   private boolean a(Intent paramIntent)
   {
-    boolean bool3 = WebProcessManager.b();
+    boolean bool3 = ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isPreloadWebProcess();
     int i = BaseApplicationImpl.getApplication().getRuntime().getRunningModuleSize();
     boolean bool1;
     boolean bool2;
@@ -290,40 +292,40 @@ public class BrowserAppInterface
       bool1 = true;
       boolean bool4 = BaseApplicationImpl.getApplication().getRuntime().isModuleRunning("modular_web");
       if (WebAccelerateHelper.isWebViewCache) {
-        break label161;
+        break label172;
       }
       bool2 = true;
-      label55:
+      label66:
       if (QLog.isColorLevel()) {
         QLog.d("BrowserAppInterface", 2, String.format("qq_mode_foreground= %b, runningModuleSize: %d, isPreloadWebProcess: %b, isWebModuleExit: %b, isPreloadSucess: %b", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool2) }));
       }
       if (!bool1) {
-        break label262;
+        break label273;
       }
       if ((!bool3) || (!bool4) || (!bool2) || (i > 1)) {
-        break label167;
+        break label178;
       }
       if (QLog.isColorLevel()) {
         QLog.d("BrowserAppInterface", 2, "don't need kill web process!");
       }
     }
-    label161:
-    label167:
+    label172:
+    label178:
     do
     {
       return true;
       bool1 = false;
       break;
       bool2 = false;
-      break label55;
+      break label66;
       if ((!SnapshotService.a()) || (this.jdField_c_of_type_Int >= 10)) {
-        break label235;
+        break label246;
       }
       this.jdField_c_of_type_Int += 1;
     } while (!QLog.isColorLevel());
     QLog.d("BrowserAppInterface", 2, "don't kill web process for debug snapshot, " + this.jdField_c_of_type_Int + "times");
     return true;
-    label235:
+    label246:
     if (QLog.isColorLevel()) {
       QLog.d("BrowserAppInterface", 2, "try restart web process");
     }
@@ -332,7 +334,7 @@ public class BrowserAppInterface
     for (;;)
     {
       return false;
-      label262:
+      label273:
       if (QLog.isColorLevel()) {
         QLog.d("BrowserAppInterface", 2, "exit web process");
       }
@@ -342,59 +344,25 @@ public class BrowserAppInterface
     }
   }
   
-  private BusinessHandler b(int paramInt)
+  public ReadInJoyLogicManager a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyLogicManager == null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyLogicManager = new ReadInJoyLogicManager(this);
     }
-    return new ook(this);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyLogicManager;
   }
   
-  public axqp a()
+  public OldBigDataChannelManager a()
   {
-    if (this.jdField_a_of_type_Axqp == null) {
-      this.jdField_a_of_type_Axqp = new axqp(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyOldBigDataChannelManager == null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyOldBigDataChannelManager = new OldBigDataChannelManager(this);
     }
-    return this.jdField_a_of_type_Axqp;
-  }
-  
-  public BusinessHandler a(int paramInt)
-  {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler[paramInt];
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    synchronized (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler)
-    {
-      BusinessHandler localBusinessHandler = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler[paramInt];
-      localObject1 = localBusinessHandler;
-      if (localBusinessHandler == null)
-      {
-        localBusinessHandler = b(paramInt);
-        localObject1 = localBusinessHandler;
-        if (localBusinessHandler != null)
-        {
-          this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler[paramInt] = localBusinessHandler;
-          localObject1 = localBusinessHandler;
-        }
-      }
-      return localObject1;
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyOldBigDataChannelManager;
   }
   
   public String a()
   {
     return null;
-  }
-  
-  public pvp a()
-  {
-    if (this.jdField_a_of_type_Pvp == null) {
-      this.jdField_a_of_type_Pvp = new pvp(this);
-    }
-    return this.jdField_a_of_type_Pvp;
   }
   
   public void a(boolean paramBoolean)
@@ -429,7 +397,7 @@ public class BrowserAppInterface
         QbSdk.setUploadCode(BaseApplication.getContext(), 154);
         long l = System.currentTimeMillis();
         localObject = ((Context)localObject).getSharedPreferences(((Context)localObject).getPackageName() + "_preferences", 4);
-        QbSdk.setTbsListener(new anre(this, (SharedPreferences)localObject, l));
+        QbSdk.setTbsListener(new BrowserAppInterface.3(this, (SharedPreferences)localObject, l));
         QLog.d("TBS_update", 1, "tbs start download");
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("tbs_downloading", true);
@@ -476,7 +444,7 @@ public class BrowserAppInterface
   public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = new QQEntityManagerFactory(getAccount());
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
     }
     return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   }
@@ -492,7 +460,7 @@ public class BrowserAppInterface
       {
         if (paramInt == QQManagerFactory.DOWNLOADER_FACTORY)
         {
-          localObject1 = new bhyq(this);
+          localObject1 = new DownloaderFactory(this);
           if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) == null) {
             break label215;
           }
@@ -504,7 +472,7 @@ public class BrowserAppInterface
           return localObject1;
         }
         if (paramInt == QQManagerFactory.TROOP_GIFT_MANAGER) {
-          localObject1 = new bgko(this);
+          localObject1 = new TroopGiftManager(this);
         }
       }
       Object localObject3;
@@ -514,7 +482,7 @@ public class BrowserAppInterface
       }
       else if (paramInt == QQManagerFactory.COMIC_RED_TOUCH_MANAGER)
       {
-        localObject3 = new blsk(this);
+        localObject3 = new QQComicRedTouchManager(this);
       }
       else if (paramInt == QQManagerFactory.PATH_TRACE_MANAGER)
       {
@@ -522,11 +490,11 @@ public class BrowserAppInterface
       }
       else if (paramInt == QQManagerFactory.ZHITU_MANAGER)
       {
-        localObject3 = new aioi(this);
+        localObject3 = new ZhituManager(this);
       }
       else if (paramInt == QQManagerFactory.READER_RED_TOUCH_MANAGER)
       {
-        localObject3 = new bmfv();
+        localObject3 = new ReaderRedTouchManager();
         continue;
         label215:
         localObject4 = localObject3;
@@ -546,7 +514,12 @@ public class BrowserAppInterface
   
   public Class<? extends MSFServlet>[] getMessagePushServlets()
   {
-    return new Class[] { nxe.class };
+    return new Class[] { GamePushServlet.class };
+  }
+  
+  public MobileQQServiceBase getMobileQQService()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppUtilsBrowserService;
   }
   
   public String getModuleId()
@@ -554,21 +527,13 @@ public class BrowserAppInterface
     return "modular_web";
   }
   
-  public INetEngine getNetEngine(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = new NetEngineFactory();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.getEngineInstance(this, paramInt);
-  }
-  
   public void onBeforeExitProc()
   {
     if (QLog.isColorLevel()) {
       QLog.i("BrowserAppInterface", 2, "onBeforeExitProc, now it will exit web process!");
     }
-    boolean bool = WebProcessManager.b();
-    WebProcessManager.b(false);
+    boolean bool = ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isPreloadWebProcess();
+    ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).setPreloadWebProcess(false);
     if (this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Boolean = false;
@@ -588,7 +553,7 @@ public class BrowserAppInterface
   
   public void onCreate(Bundle paramBundle)
   {
-    bhhy.a(null, "web_browserAppinterface_onCreate");
+    StartupTracker.a(null, "web_browserAppinterface_onCreate");
     super.onCreate(paramBundle);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     try
@@ -596,22 +561,22 @@ public class BrowserAppInterface
       if (Build.VERSION.SDK_INT >= 28) {
         android.webkit.WebView.setDataDirectorySuffix("tool");
       }
-      biij.a(this);
+      SwiftBrowserIdleTaskHelper.a(this);
       a();
       str = getAccount();
       if (TextUtils.isEmpty(str))
       {
         paramBundle = null;
         QbSdk.setCurrentID(paramBundle);
-        nuz.a(new nwl());
-        nuz.a(new nvq());
-        nuz.a(new nvp());
-        nuz.a(BaseApplicationImpl.getContext());
+        HtmlOffline.a(new QQThreadManager());
+        HtmlOffline.a(new OfflineDownloader());
+        HtmlOffline.a(new MyLog());
+        HtmlOffline.a(BaseApplicationImpl.getContext());
         if (getLongAccountUin() % 10L != 6L) {
           break label261;
         }
         bool = true;
-        nuz.jdField_a_of_type_Boolean = bool;
+        HtmlOffline.jdField_a_of_type_Boolean = bool;
         if (!jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
         {
           if (QLog.isColorLevel()) {
@@ -623,8 +588,8 @@ public class BrowserAppInterface
         if (!paramBundle.getBoolean("is_set", false)) {
           paramBundle.edit().putBoolean("hide_back_text", true).putBoolean("is_set", true).commit();
         }
-        bihv.A = SystemClock.elapsedRealtime();
-        bhhy.a("web_browserAppinterface_onCreate", null);
+        com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.B = SystemClock.elapsedRealtime();
+        StartupTracker.a("web_browserAppinterface_onCreate", null);
       }
     }
     catch (Throwable paramBundle)
@@ -645,11 +610,11 @@ public class BrowserAppInterface
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Axqp != null) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyOldBigDataChannelManager != null) {}
     try
     {
-      this.jdField_a_of_type_Axqp.onDestroy();
-      this.jdField_a_of_type_Axqp = null;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyOldBigDataChannelManager.onDestroy();
+      this.jdField_a_of_type_ComTencentMobileqqNearbyOldBigDataChannelManager = null;
       if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory != null) {
         this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.onDestroy();
       }
@@ -664,7 +629,7 @@ public class BrowserAppInterface
         {
           Object localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet();
           if ((localObject1 == null) || (((Set)localObject1).size() <= 0)) {
-            break label196;
+            break label180;
           }
           localObject1 = ((Set)localObject1).iterator();
           do
@@ -673,7 +638,7 @@ public class BrowserAppInterface
             {
               boolean bool = ((Iterator)localObject1).hasNext();
               if (!bool) {
-                break label196;
+                break label180;
               }
               try
               {
@@ -699,39 +664,17 @@ public class BrowserAppInterface
         {
           localException2.printStackTrace();
         }
-        label196:
+        label180:
         this.jdField_a_of_type_JavaUtilMap.clear();
-      }
-    }
-    for (;;)
-    {
-      int i;
-      synchronized (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler)
-      {
-        BusinessHandler[] arrayOfBusinessHandler2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler;
-        int j = arrayOfBusinessHandler2.length;
-        i = 0;
-        if (i < j)
-        {
-          BusinessHandler localBusinessHandler = arrayOfBusinessHandler2[i];
-          if (localBusinessHandler != null) {
-            localBusinessHandler.onDestroy();
-          }
+        if (InnerDns.mInstance != null) {
+          InnerDns.getInstance().onAppDestroy();
         }
-        else
-        {
-          if (InnerDns.mInstance != null) {
-            InnerDns.getInstance().onAppDestroy();
-          }
-          avzm.a();
-          UiApiPlugin.f();
-          if (this.jdField_a_of_type_Pvp != null) {
-            this.jdField_a_of_type_Pvp.b();
-          }
-          return;
+        EventApiPlugin.a();
+        UiApiPlugin.e();
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyLogicManager != null) {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyLogicManager.b();
         }
       }
-      i += 1;
     }
   }
   
@@ -761,17 +704,17 @@ public class BrowserAppInterface
     if (bool) {
       getHandler(BrowserAppInterface.class).postDelayed(new BrowserAppInterface.4(this), 3000L);
     }
-    if ((WebCoreService.jdField_a_of_type_Boolean) && (DeviceInfoUtil.getSystemAvaialbeMemory() >>> 20 < 20L)) {
+    if ((WebCoreService.jdField_a_of_type_Boolean) && (DeviceInfoUtil.e() >>> 20 < 20L)) {
       WebCoreService.b();
     }
     try
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.getSystemTotalMemory()));
-      localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.getSystemAvaialbeMemory()));
-      localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.getCpuNumber()));
-      localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.getCpuFrequency()));
+      localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.a()));
+      localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.e()));
+      localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.b()));
+      localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.b()));
       localHashMap.put("param_releaseType", String.valueOf(1));
       if (QLog.isColorLevel()) {
         QLog.d("BrowserAppInterface", 2, "releaseWebCoreServiceReport:" + localHashMap.toString());
@@ -787,17 +730,12 @@ public class BrowserAppInterface
     super.onRunningForeground();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentIntent = null;
-    bgyd.a(getApp());
-  }
-  
-  public void sendToService(ToServiceMsg paramToServiceMsg)
-  {
-    this.jdField_a_of_type_Aozq.a(paramToServiceMsg);
+    AccessibilityUtil.a(getApp());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BrowserAppInterface
  * JD-Core Version:    0.7.0.1
  */

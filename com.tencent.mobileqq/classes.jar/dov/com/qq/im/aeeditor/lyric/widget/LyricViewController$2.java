@@ -1,23 +1,22 @@
 package dov.com.qq.im.aeeditor.lyric.widget;
 
-import bnub;
 import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager.TimerTaskRunnable;
 
-public class LyricViewController$2
+class LyricViewController$2
   extends TimerTaskManager.TimerTaskRunnable
 {
-  public LyricViewController$2(bnub parambnub) {}
+  LyricViewController$2(LyricViewController paramLyricViewController) {}
   
   public void a()
   {
     if (!a()) {
-      bnub.a(this.this$0, 0, false);
+      LyricViewController.a(this.this$0, 0, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.widget.LyricViewController.2
  * JD-Core Version:    0.7.0.1
  */

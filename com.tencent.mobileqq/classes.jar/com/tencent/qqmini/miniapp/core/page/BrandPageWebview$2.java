@@ -1,63 +1,106 @@
 package com.tencent.qqmini.miniapp.core.page;
 
-import Override;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.FrameLayout;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.qqmini.miniapp.util.IPV6OnlyUtils;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
 
 class BrandPageWebview$2
-  extends WebViewClient
+  extends WebChromeClient
 {
   BrandPageWebview$2(BrandPageWebview paramBrandPageWebview) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    super.onPageFinished(paramWebView, paramString);
-    this.this$0.setCurrState(BrandPageWebview.access$300(this.this$0));
+    if (paramConsoleMessage != null)
+    {
+      if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
+        break label80;
+      }
+      QMLog.e("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber() + "  page:" + BrandPageWebview.access$200(this.this$0));
+    }
+    for (;;)
+    {
+      return super.onConsoleMessage(paramConsoleMessage);
+      label80:
+      if (paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.WARNING) {
+        QMLog.w("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber() + "  page:" + BrandPageWebview.access$200(this.this$0));
+      } else {
+        QMLog.i("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message());
+      }
+    }
+  }
+  
+  public void onHideCustomView()
+  {
+    QMLog.d("miniapp-embedded", "onHideCustomView " + Thread.currentThread());
+    if (this.this$0.customViewCallback == null) {
+      return;
+    }
+    BrandPageWebview.access$400(this.this$0).postDelayed(new BrandPageWebview.2.1(this), 200L);
   }
   
   @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
   }
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  @Override
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    QMLog.i("TAG_CHROMIUM", "shouldInterceptRequest: " + paramWebResourceRequest.getUrl());
-    Object localObject1;
-    if (paramWebResourceRequest.getUrl() != null)
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    super.onProgressChanged(paramWebView, paramInt);
+  }
+  
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    QMLog.d("miniapp-embedded", "onShowCustomView ： " + paramView + "; " + Thread.currentThread());
+    if (this.this$0.customViewCallback != null)
     {
-      localObject1 = paramWebResourceRequest.getUrl().toString();
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && ((((String)localObject1).startsWith("https://appservice.qq.com/")) || (((String)localObject1).startsWith("wxfile://")))) {
-        localObject1 = BrandPageWebview.access$200(this.this$0, paramWebView, paramWebResourceRequest.getUrl().toString());
+      paramCustomViewCallback.onCustomViewHidden();
+      return;
+    }
+    QMLog.d("miniapp-embedded", "onShowCustomView begin");
+    if ((this.this$0.customContainer == null) && (BrandPageWebview.access$300(this.this$0) != null))
+    {
+      this.this$0.customContainer = new FrameLayout(BrandPageWebview.access$300(this.this$0).getContext());
+      this.this$0.customContainer.setBackgroundColor(-16777216);
+      Activity localActivity = BrandPageWebview.access$300(this.this$0).getAttachedActivity();
+      if (localActivity != null) {
+        ((ViewGroup)localActivity.getWindow().getDecorView()).addView(this.this$0.customContainer, new ViewGroup.LayoutParams(-1, -1));
       }
     }
-    do
+    if (this.this$0.customContainer != null)
     {
-      Object localObject2;
-      do
-      {
-        return localObject1;
-        localObject2 = null;
-        localObject1 = localObject2;
-      } while (paramWebResourceRequest.getUrl() == null);
-      localObject1 = localObject2;
-    } while (!IPV6OnlyUtils.isIPV6Enable(paramWebResourceRequest.getUrl().toString()));
-    return this.this$0.doIPV6OnlyRequest(paramWebView, paramWebResourceRequest);
+      this.this$0.customContainer.addView(paramView);
+      this.this$0.customContainer.setVisibility(0);
+    }
+    this.this$0.mFullscreenView = paramView;
+    this.this$0.customViewCallback = paramCustomViewCallback;
+    this.this$0.isFullScreen = true;
+    QMLog.d("miniapp-embedded", "onShowCustomView end");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.BrandPageWebview.2
  * JD-Core Version:    0.7.0.1
  */

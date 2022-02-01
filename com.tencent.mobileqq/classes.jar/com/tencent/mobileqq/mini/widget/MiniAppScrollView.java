@@ -34,7 +34,7 @@ public class MiniAppScrollView
     setOverScrollMode(2);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(getResources().getDisplayMetrics().heightPixels / 2, -2147483648));
   }

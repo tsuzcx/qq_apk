@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahlw;
-import ahma;
 import android.view.View;
 
-public class TroopSignItemBuilder$TroopSignVideoItemBuilder$2$1
+class TroopSignItemBuilder$TroopSignVideoItemBuilder$2$1
   implements Runnable
 {
-  public TroopSignItemBuilder$TroopSignVideoItemBuilder$2$1(ahlw paramahlw) {}
+  TroopSignItemBuilder$TroopSignVideoItemBuilder$2$1(TroopSignItemBuilder.TroopSignVideoItemBuilder.2 param2) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public class TroopSignItemBuilder$TroopSignVideoItemBuilder$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.2.1
  * JD-Core Version:    0.7.0.1
  */

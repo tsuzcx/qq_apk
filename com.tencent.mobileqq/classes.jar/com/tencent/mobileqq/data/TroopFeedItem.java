@@ -31,7 +31,7 @@ public class TroopFeedItem
   public int orginType;
   public String picPath = "";
   public String publishUin = "";
-  public boolean read;
+  public boolean read = false;
   public long shareExpire;
   public String shareFromUin;
   public String tag = "";
@@ -46,8 +46,8 @@ public class TroopFeedItem
   
   public boolean isVaild()
   {
-    if ((StringUtil.isEmpty(this.tag)) || (StringUtil.isEmpty(this.title))) {}
-    while (((this.type == 0) || (this.type == 131)) && (StringUtil.isEmpty(this.content))) {
+    if ((StringUtil.a(this.tag)) || (StringUtil.a(this.title))) {}
+    while (((this.type == 0) || (this.type == 131)) && (StringUtil.a(this.content))) {
       return false;
     }
     return true;
@@ -55,7 +55,7 @@ public class TroopFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFeedItem
  * JD-Core Version:    0.7.0.1
  */

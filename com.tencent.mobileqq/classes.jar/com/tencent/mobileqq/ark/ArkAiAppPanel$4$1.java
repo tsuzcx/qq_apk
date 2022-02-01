@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.ark;
 
-import admh;
-import agnw;
 import android.text.TextUtils;
-import anvx;
-import apwn;
-import apwq;
-import apyp;
-import apzn;
 import com.tencent.ark.open.ArkAppCacheMgr;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
@@ -27,22 +23,22 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
-public class ArkAiAppPanel$4$1
+class ArkAiAppPanel$4$1
   implements Runnable
 {
-  public ArkAiAppPanel$4$1(apwq paramapwq, String paramString) {}
+  ArkAiAppPanel$4$1(ArkAiAppPanel.4 param4, String paramString) {}
   
   public void run()
   {
     try
     {
-      if ((apwn.a(this.jdField_a_of_type_Apwq.a) == null) || (apwn.a(this.jdField_a_of_type_Apwq.a).size() <= 0) || (apwn.a(this.jdField_a_of_type_Apwq.a) >= apwn.a(this.jdField_a_of_type_Apwq.a).size())) {
+      if ((ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a) == null) || (ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).size() <= 0) || (ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a) >= ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).size())) {
         return;
       }
-      if (apwn.a(this.jdField_a_of_type_Apwq.a).get(apwn.a(this.jdField_a_of_type_Apwq.a)) == null) {
+      if (ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).get(ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a)) == null) {
         return;
       }
-      localObject1 = ((agnw)apwn.a(this.jdField_a_of_type_Apwq.a).get(apwn.a(this.jdField_a_of_type_Apwq.a))).getViewShare();
+      localObject1 = ((ArkAioContainerWrapper)ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).get(ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a))).getViewShare();
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return;
       }
@@ -60,12 +56,12 @@ public class ArkAiAppPanel$4$1
         return;
       }
       localJSONObject = new JSONObject();
-      if (!apzn.a(((Node)localObject1).getFirstChild(), localJSONObject)) {
+      if (!ArkRecommendController.a(((Node)localObject1).getFirstChild(), localJSONObject)) {
         return;
       }
       localObject1 = new ArkAppMessage();
       ((ArkAppMessage)localObject1).appMinVersion = "0.0.0.1";
-      ((ArkAppMessage)localObject1).appName = ((agnw)apwn.a(this.jdField_a_of_type_Apwq.a).get(apwn.a(this.jdField_a_of_type_Apwq.a))).getAppName();
+      ((ArkAppMessage)localObject1).appName = ((ArkAioContainerWrapper)ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).get(ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a))).getAppName();
       if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appName)) {
         return;
       }
@@ -82,7 +78,7 @@ public class ArkAiAppPanel$4$1
       if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appDesc)) {
         ((ArkAppMessage)localObject1).appDesc = ((ArkAppMessage)localObject1).appName;
       }
-      ((ArkAppMessage)localObject1).promptText = String.format(anvx.a(2131700142), new Object[] { ((ArkAppMessage)localObject1).appDesc });
+      ((ArkAppMessage)localObject1).promptText = String.format(HardCodeUtil.a(2131700720), new Object[] { ((ArkAppMessage)localObject1).appDesc });
       localObject2 = MessageForArkApp.getConfigFromXml((Document)localObject2);
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         break label579;
@@ -113,14 +109,14 @@ public class ArkAiAppPanel$4$1
         localException.config = ((JSONObject)localObject2).toString();
       }
     }
-    if (apwn.a(this.jdField_a_of_type_Apwq.a) != null)
+    if (ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a) != null)
     {
-      localObject2 = apwn.a(this.jdField_a_of_type_Apwq.a).getSessionInfo();
+      localObject2 = ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).a();
       if (localObject2 != null) {
-        admh.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject2, (ArkAppMessage)localObject1);
+        ChatActivityFacade.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject2, (ArkAppMessage)localObject1);
       }
     }
-    apyp.a(null, this.jdField_a_of_type_JavaLangString, "AIOInputSendMessage", 0, 0, 0L, 0L, 0L, ((ArkAppMessage)localObject1).appName, "");
+    ArkAppDataReport.a(null, this.jdField_a_of_type_JavaLangString, "AIOInputSendMessage", 0, 0, 0L, 0L, 0L, ((ArkAppMessage)localObject1).appName, "");
     return;
   }
 }

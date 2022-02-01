@@ -8,10 +8,10 @@ public final class Nudge
   extends JceStruct
 {
   public String customtext = "";
-  public int effectid;
-  public int ischangecustomtext;
-  public int ischangeswitch;
-  public int isclose;
+  public int effectid = 0;
+  public int ischangecustomtext = 0;
+  public int ischangeswitch = 0;
+  public int isclose = 0;
   
   public Nudge() {}
   

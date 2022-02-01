@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.player.manager;
 
-import amvy;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
@@ -12,13 +11,13 @@ public final class CMSBornPlayerManager$logScheduler$1
 {
   public void run()
   {
-    QLog.e("cmshow_scripted_[CMSPlayer]CMSBornPlayerManager", 1, "currentActionState\n " + amvy.a(amvy.a));
+    QLog.e("cmshow_scripted_[CMSPlayer]CMSBornPlayerManager", 1, "currentActionState\n " + CMSBornPlayerManager.a(CMSBornPlayerManager.a));
     ThreadManager.getSubThreadHandler().postDelayed((Runnable)this, 10000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.manager.CMSBornPlayerManager.logScheduler.1
  * JD-Core Version:    0.7.0.1
  */

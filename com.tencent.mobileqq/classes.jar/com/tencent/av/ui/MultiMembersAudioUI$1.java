@@ -1,0 +1,51 @@
+package com.tencent.av.ui;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.utils.MultiVideoMembersClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+
+class MultiMembersAudioUI$1
+  implements View.OnClickListener
+{
+  MultiMembersAudioUI$1(MultiMembersAudioUI paramMultiMembersAudioUI) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      MultiMembersUI.Holder localHolder = (MultiMembersUI.Holder)paramView.getTag();
+      if (localHolder == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MultiMembersAudioUI", 2, "onItemClick-->holder is null");
+        }
+      }
+      else
+      {
+        if (localHolder.c) {}
+        for (int i = 7;; i = this.a.a(localHolder.jdField_a_of_type_Long))
+        {
+          if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 8) || ((this.a.jdField_a_of_type_Int != 1) && (this.a.jdField_a_of_type_Int != 2))) {
+            break label134;
+          }
+          this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(localHolder.jdField_a_of_type_Long, localHolder.jdField_a_of_type_Int, i, true);
+          break;
+        }
+        label134:
+        this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(localHolder.jdField_a_of_type_Long, localHolder.jdField_a_of_type_Int, i, false);
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.av.ui.MultiMembersAudioUI.1
+ * JD-Core Version:    0.7.0.1
+ */

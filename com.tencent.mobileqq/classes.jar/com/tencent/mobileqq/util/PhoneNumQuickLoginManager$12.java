@@ -1,0 +1,26 @@
+package com.tencent.mobileqq.util;
+
+import android.app.Dialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+final class PhoneNumQuickLoginManager$12
+  implements Animation.AnimationListener
+{
+  PhoneNumQuickLoginManager$12(Dialog paramDialog) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.dismiss();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.12
+ * JD-Core Version:    0.7.0.1
+ */

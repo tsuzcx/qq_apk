@@ -45,6 +45,24 @@ public final class a
     return true;
   }
   
+  public boolean canLaunchAppAfterInstalled()
+  {
+    if (!isValid()) {}
+    for (;;)
+    {
+      return false;
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101056) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+  }
+  
   public boolean disableAutoDownload()
   {
     return false;
@@ -407,6 +425,36 @@ public final class a
     return null;
   }
   
+  public boolean isAppPreOrder()
+  {
+    if (!isValid()) {
+      return false;
+    }
+    if ((!isAppXiJing()) && (!isAppXiJingFengling())) {
+      return false;
+    }
+    if (this.info.ext != null) {
+      return this.info.ext.is_app_preorder;
+    }
+    if (TextUtils.isEmpty(this.info.ext_json)) {
+      return false;
+    }
+    try
+    {
+      qq_ad_get.QQAdGetRsp.AdInfo.Ext localExt = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(new JSONObject(this.info.ext_json));
+      if (localExt == null) {
+        return false;
+      }
+      boolean bool = localExt.is_app_preorder;
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      AdLog.e("AdImplementation", "isAppPreOder", localThrowable);
+    }
+    return false;
+  }
+  
   public boolean isAppProductType()
   {
     return getProductType() == 12;
@@ -420,6 +468,11 @@ public final class a
   public boolean isAppXiJingDefault()
   {
     return (isAppProductType()) && (getDestType() == 0);
+  }
+  
+  public boolean isAppXiJingFengling()
+  {
+    return (isAppProductType()) && (getDestType() == 4);
   }
   
   public boolean isAppXiJingOffline()
@@ -443,60 +496,6 @@ public final class a
       while (i < localList.size())
       {
         if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 95837) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean isHitPreloadCanvasJsonExp()
-  {
-    if (!isValid()) {}
-    for (;;)
-    {
-      return false;
-      List localList = getExpMap();
-      int i = 0;
-      while (i < localList.size())
-      {
-        if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101766) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean isHitRelationTargetInstallExp()
-  {
-    if (!isValid()) {}
-    for (;;)
-    {
-      return false;
-      List localList = getExpMap();
-      int i = 0;
-      while (i < localList.size())
-      {
-        if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 94735) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean isHitWithoutInstallSuccessPage()
-  {
-    if (!isValid()) {}
-    for (;;)
-    {
-      return false;
-      List localList = getExpMap();
-      int i = 0;
-      while (i < localList.size())
-      {
-        if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101056) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
           return true;
         }
         i += 1;
@@ -552,7 +551,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.a
  * JD-Core Version:    0.7.0.1
  */

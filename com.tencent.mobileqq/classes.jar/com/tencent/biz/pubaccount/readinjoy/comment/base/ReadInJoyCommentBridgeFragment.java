@@ -9,22 +9,22 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bmhv;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import pcp;
+import cooperation.readinjoy.ReadInJoyHelper;
+import org.jetbrains.annotations.Nullable;
 
 public class ReadInJoyCommentBridgeFragment
   extends PublicBaseFragment
 {
   private ReadInJoyCommentComponentFragment jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment;
-  private boolean jdField_a_of_type_Boolean = bmhv.g();
+  private final boolean jdField_a_of_type_Boolean = ReadInJoyHelper.h();
   
   private void a()
   {
     FragmentActivity localFragmentActivity = getActivity();
-    new pcp(localFragmentActivity, localFragmentActivity.getIntent()).a();
+    new ReadInJoyCommentEntrance(localFragmentActivity, localFragmentActivity.getIntent()).a();
   }
   
   private boolean a(FragmentManager paramFragmentManager)
@@ -55,7 +55,7 @@ public class ReadInJoyCommentBridgeFragment
       localObject = getActivity();
     } while (localObject == null);
     Object localObject = ((FragmentActivity)localObject).getSupportFragmentManager().beginTransaction();
-    ((FragmentTransaction)localObject).add(2131367244, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment, "ReadInJoyCommentComponentFragment");
+    ((FragmentTransaction)localObject).add(2131367430, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment, "ReadInJoyCommentComponentFragment");
     ((FragmentTransaction)localObject).commitAllowingStateLoss();
   }
   
@@ -106,6 +106,7 @@ public class ReadInJoyCommentBridgeFragment
     return super.onBackEvent();
   }
   
+  @Nullable
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     if (this.jdField_a_of_type_Boolean) {
@@ -128,7 +129,7 @@ public class ReadInJoyCommentBridgeFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.base.ReadInJoyCommentBridgeFragment
  * JD-Core Version:    0.7.0.1
  */

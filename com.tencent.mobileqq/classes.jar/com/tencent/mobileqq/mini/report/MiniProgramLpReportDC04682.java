@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.report;
 
 import NS_COMM.COMM.Entry;
-import bizw;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.open.adapter.CommonDataAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
@@ -19,7 +19,7 @@ public class MiniProgramLpReportDC04682
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(MiniProgramReportHelper.newEntry("platform", "android"));
-    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(bizw.a().a())));
+    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(CommonDataAdapter.a().a())));
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null))
     {
       localArrayList.add(MiniProgramReportHelper.newEntry("appid", paramMiniAppConfig.config.appId));

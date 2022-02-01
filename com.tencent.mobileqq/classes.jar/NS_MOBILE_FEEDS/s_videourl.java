@@ -8,8 +8,8 @@ public final class s_videourl
   extends JceStruct
 {
   public String url = "";
-  public byte videoprior;
-  public int videorate;
+  public byte videoprior = 0;
+  public int videorate = 0;
   
   public s_videourl() {}
   

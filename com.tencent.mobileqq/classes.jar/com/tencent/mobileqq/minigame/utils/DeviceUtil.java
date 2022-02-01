@@ -13,15 +13,15 @@ public class DeviceUtil
       if (Build.VERSION.SDK_INT < 18) {
         return 0;
       }
-      int k = DeviceInfoUtil.getCpuNumber();
+      int k = DeviceInfoUtil.b();
       if (k <= 0) {
         return -1;
       }
-      int m = (int)(DeviceInfoUtil.getCpuMaxFreq() / 100000L);
+      int m = (int)(DeviceInfoUtil.c() / 100000L);
       if (m <= 0) {
         return -1;
       }
-      int n = (int)(DeviceInfoUtil.getSystemTotalMemory() / 1048576L);
+      int n = (int)(DeviceInfoUtil.a() / 1048576L);
       if (n <= 0) {
         return -1;
       }

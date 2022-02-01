@@ -5,8 +5,7 @@ import android.os.Looper;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.mobileqq.app.asyncdb.BaseCacheManager;
 import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.MsgProxyUtils;
+import com.tencent.mobileqq.imcore.proxy.msg.MsgProxyUtilsProxy;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
+import mqq.app.AppRuntime;
 import mqq.manager.Manager;
 
 public class BaseProxyManager
@@ -25,15 +25,15 @@ public class BaseProxyManager
   private static final int STATE_SAVE_DELAY = 0;
   private static final int STATE_SAVE_IMMEDIATELY = 1;
   private static final String TAG = "Q.msg.MsgProxy";
-  private static int WRITE_THREAD_TIME_INTERVAL_MAX = 10000;
-  private static int WRITE_THREAD_TIME_INTERVAL_MIN;
+  private static final int WRITE_THREAD_TIME_INTERVAL_MAX = 10000;
+  private static final int WRITE_THREAD_TIME_INTERVAL_MIN = 2000;
   private static int checkAppMemoryCount;
   private static int mWriteThreadInterval = 10000;
-  private IMCoreAppRuntime app;
+  protected AppRuntime app;
   protected SQLiteDatabase db;
   private DBDelayManager dbDelayManager;
   volatile boolean isDestroyed;
-  private boolean isSaveDBAtOnceFlag = false;
+  boolean isSaveDBAtOnceFlag = false;
   private ArrayList<ProxyObserver> listenerArray = new ArrayList();
   protected Vector<MsgQueueItem> msgQueue;
   protected final Object msgQueueLock = new Object();
@@ -41,18 +41,13 @@ public class BaseProxyManager
   private Thread writeThread;
   private long writeThreadStartTime;
   
-  static
-  {
-    WRITE_THREAD_TIME_INTERVAL_MIN = 2000;
-  }
-  
   @Deprecated
   BaseProxyManager() {}
   
-  public BaseProxyManager(IMCoreAppRuntime paramIMCoreAppRuntime)
+  public BaseProxyManager(AppRuntime paramAppRuntime)
   {
-    this.app = paramIMCoreAppRuntime;
-    this.dbDelayManager = this.app.getCacheManager().getDBDelayManager();
+    this.app = paramAppRuntime;
+    this.dbDelayManager = this.app.getCacheManagerInner().getDBDelayManager();
     this.msgQueue = new Vector();
     doOnCreate();
   }
@@ -70,49 +65,14 @@ public class BaseProxyManager
         break label86;
       }
       mWriteThreadInterval /= 2;
-      mWriteThreadInterval = Math.max(mWriteThreadInterval, WRITE_THREAD_TIME_INTERVAL_MIN);
+      mWriteThreadInterval = Math.max(mWriteThreadInterval, 2000);
     }
     label86:
     while (f >= 0.5D) {
       return;
     }
     mWriteThreadInterval += 2000;
-    mWriteThreadInterval = Math.min(mWriteThreadInterval, WRITE_THREAD_TIME_INTERVAL_MAX);
-  }
-  
-  private boolean isSaveDBAtOnce()
-  {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    int i;
-    if (!this.isSaveDBAtOnceFlag)
-    {
-      i = getSaveInDBState();
-      if (i != 0) {
-        break label78;
-      }
-      if (System.currentTimeMillis() - this.writeThreadStartTime > 30000L)
-      {
-        this.isSaveDBAtOnceFlag = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.MsgProxy", 2, "isSaveDBAtOnce timeout30s isSaveDBAtOnceFlag:" + this.isSaveDBAtOnceFlag);
-        }
-      }
-      bool1 = false;
-    }
-    label78:
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (i != 1);
-      this.isSaveDBAtOnceFlag = true;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.MsgProxy", 2, "isSaveDBAtOnce unActionLoginB isSaveDBAtOnceFlag:" + this.isSaveDBAtOnceFlag);
-    return true;
+    mWriteThreadInterval = Math.min(mWriteThreadInterval, 10000);
   }
   
   public void addMsgQueue(String arg1, int paramInt1, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, int paramInt2, ProxyListener paramProxyListener)
@@ -239,7 +199,7 @@ public class BaseProxyManager
     this.isDestroyed = false;
   }
   
-  protected SQLiteDatabase getDatabase()
+  SQLiteDatabase getDatabase()
   {
     if (this.db == null) {
       this.db = this.app.getWritableDatabase();
@@ -263,6 +223,41 @@ public class BaseProxyManager
   }
   
   protected void init() {}
+  
+  boolean isSaveDBAtOnce()
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    int i;
+    if (!this.isSaveDBAtOnceFlag)
+    {
+      i = getSaveInDBState();
+      if (i != 0) {
+        break label78;
+      }
+      if (System.currentTimeMillis() - this.writeThreadStartTime > 30000L)
+      {
+        this.isSaveDBAtOnceFlag = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.MsgProxy", 2, "isSaveDBAtOnce timeout30s isSaveDBAtOnceFlag:" + this.isSaveDBAtOnceFlag);
+        }
+      }
+      bool1 = false;
+    }
+    label78:
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (i != 1);
+      this.isSaveDBAtOnceFlag = true;
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.msg.MsgProxy", 2, "isSaveDBAtOnce unActionLoginB isSaveDBAtOnceFlag:" + this.isSaveDBAtOnceFlag);
+    return true;
+  }
   
   protected void notifyEvent(int paramInt)
   {
@@ -331,33 +326,33 @@ public class BaseProxyManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 62	com/tencent/mobileqq/app/proxy/BaseProxyManager:transSaveLock	Ljava/lang/Object;
+    //   1: getfield 60	com/tencent/mobileqq/app/proxy/BaseProxyManager:transSaveLock	Ljava/lang/Object;
     //   4: astore_2
     //   5: aload_2
     //   6: monitorenter
     //   7: aload_0
-    //   8: getfield 58	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueueLock	Ljava/lang/Object;
+    //   8: getfield 56	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueueLock	Ljava/lang/Object;
     //   11: astore_3
     //   12: aload_3
     //   13: monitorenter
-    //   14: invokestatic 157	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   14: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   17: ifeq +35 -> 52
     //   20: ldc 17
     //   22: iconst_2
-    //   23: new 159	java/lang/StringBuilder
+    //   23: new 165	java/lang/StringBuilder
     //   26: dup
-    //   27: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   30: ldc_w 334
-    //   33: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokespecial 166	java/lang/StringBuilder:<init>	()V
+    //   30: ldc_w 328
+    //   33: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: aload_0
-    //   37: getfield 90	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
-    //   40: invokevirtual 337	java/util/Vector:size	()I
-    //   43: invokevirtual 340	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   37: getfield 88	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
+    //   40: invokevirtual 331	java/util/Vector:size	()I
+    //   43: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   52: aload_0
-    //   53: getfield 90	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
-    //   56: invokevirtual 341	java/util/Vector:isEmpty	()Z
+    //   53: getfield 88	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
+    //   56: invokevirtual 335	java/util/Vector:isEmpty	()Z
     //   59: ifeq +8 -> 67
     //   62: aload_3
     //   63: monitorexit
@@ -365,21 +360,21 @@ public class BaseProxyManager
     //   65: monitorexit
     //   66: return
     //   67: aload_0
-    //   68: getfield 90	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
+    //   68: getfield 88	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
     //   71: astore 4
     //   73: aload_0
-    //   74: new 87	java/util/Vector
+    //   74: new 85	java/util/Vector
     //   77: dup
-    //   78: invokespecial 88	java/util/Vector:<init>	()V
-    //   81: putfield 90	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
+    //   78: invokespecial 86	java/util/Vector:<init>	()V
+    //   81: putfield 88	com/tencent/mobileqq/app/proxy/BaseProxyManager:msgQueue	Ljava/util/Vector;
     //   84: aload_3
     //   85: monitorexit
     //   86: aload_0
     //   87: aload_1
     //   88: aload 4
-    //   90: invokevirtual 345	com/tencent/mobileqq/app/proxy/BaseProxyManager:transSaveToDatabaseIndeed	(Lcom/tencent/mobileqq/persistence/EntityManager;Ljava/util/List;)V
+    //   90: invokevirtual 339	com/tencent/mobileqq/app/proxy/BaseProxyManager:transSaveToDatabaseIndeed	(Lcom/tencent/mobileqq/persistence/EntityManager;Ljava/util/List;)V
     //   93: aload_0
-    //   94: invokevirtual 347	com/tencent/mobileqq/app/proxy/BaseProxyManager:doAfterTransSaveToDatabase	()V
+    //   94: invokevirtual 341	com/tencent/mobileqq/app/proxy/BaseProxyManager:doAfterTransSaveToDatabase	()V
     //   97: aload_2
     //   98: monitorexit
     //   99: return
@@ -427,7 +422,7 @@ public class BaseProxyManager
         while (localIterator.hasNext())
         {
           MsgQueueItem localMsgQueueItem = (MsgQueueItem)localIterator.next();
-          if ((IMCoreProxyRoute.MsgProxyUtils.isSaveConversation(localMsgQueueItem.frindUin, paramString, localMsgQueueItem.type, paramInt)) && ((localMsgQueueItem.action == 1) || (localMsgQueueItem.action == 2) || (localMsgQueueItem.action == 0))) {
+          if ((MsgProxyUtilsProxy.isSaveConversation(localMsgQueueItem.frindUin, paramString, localMsgQueueItem.type, paramInt)) && ((localMsgQueueItem.action == 1) || (localMsgQueueItem.action == 2) || (localMsgQueueItem.action == 0))) {
             localArrayList.add(localMsgQueueItem);
           }
         }

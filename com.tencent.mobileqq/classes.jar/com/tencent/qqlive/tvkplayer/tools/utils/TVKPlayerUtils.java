@@ -415,13 +415,13 @@ public class TVKPlayerUtils
         return true;
       }
       if (((Build.MODEL.equals("MI PAD")) && (Build.MANUFACTURER.equals("Xiaomi")) && (Build.VERSION.RELEASE.equals("4.4.4"))) || ((Build.MODEL.equals("VPad-A107")) && (Build.MANUFACTURER.equals("KTE")))) {
-        break label256;
+        break label258;
       }
       if (Build.MANUFACTURER.equals("OPPO"))
       {
         boolean bool = oppoHevcBlackArrayList.contains(Build.MODEL);
         if (bool) {
-          break label256;
+          break label258;
         }
       }
     }
@@ -429,11 +429,11 @@ public class TVKPlayerUtils
     {
       for (;;)
       {
-        localException.printStackTrace();
+        TVKLogUtil.e("MediaPlayerMgr[TVKPlayerUtils.java]", localException);
       }
     }
     return false;
-    label256:
+    label258:
     return true;
   }
   
@@ -453,7 +453,7 @@ public class TVKPlayerUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.TVKPlayerUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,6 @@ package com.tencent.biz.qqstory.takevideo;
 
 import com.tencent.image.URLImageView;
 import cooperation.qzone.widget.FastAnimationDrawable;
-import ymj;
-import ynw;
 
 class EditGifImage$2
   implements Runnable
@@ -19,12 +17,12 @@ class EditGifImage$2
     this.this$0.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
     this.this$0.b = localFastAnimationDrawable;
     this.this$0.d = true;
-    this.this$0.jdField_a_of_type_Ynw.a.a(true, true);
+    this.this$0.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditGifImage.2
  * JD-Core Version:    0.7.0.1
  */

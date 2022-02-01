@@ -3,19 +3,18 @@ package cooperation.comic.webbundle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdla;
-import bihv;
-import blss;
+import com.tencent.biz.common.util.Util;
 import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
 import com.tencent.webbundle.sdk.IWebBundleWebView;
 import com.tencent.webbundle.sdk.WebBundleClient;
 import cooperation.comic.ui.QQComicFragment;
-import nwo;
 
 public class WebBundleFragment
   extends QQComicFragment
 {
-  private WebBundleClient jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient;
+  private WebBundleClient jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient = null;
   private String jdField_a_of_type_JavaLangString = "";
   private String b = "";
   
@@ -26,10 +25,10 @@ public class WebBundleFragment
       IWebBundleWebView localIWebBundleWebView = this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient.getValidWebView(super.getActivity(), this.b);
       if ((localIWebBundleWebView instanceof TouchWebView))
       {
-        blss.a(this.jdField_a_of_type_JavaLangString, true, blss.jdField_a_of_type_JavaLangString);
+        WebBundleReportUtils.a(this.jdField_a_of_type_JavaLangString, true, WebBundleReportUtils.jdField_a_of_type_JavaLangString);
         return (TouchWebView)localIWebBundleWebView;
       }
-      blss.a(this.jdField_a_of_type_JavaLangString, false, blss.d);
+      WebBundleReportUtils.a(this.jdField_a_of_type_JavaLangString, false, WebBundleReportUtils.d);
     }
     return super.createCustomWebView();
   }
@@ -47,29 +46,29 @@ public class WebBundleFragment
   
   public void startLoadUrl()
   {
-    nwo.a("Web_readyToLoadUrl");
+    Util.a("Web_readyToLoadUrl");
     if (this.webView == null) {
       return;
     }
     initFinish();
     if ((this.mStatistics.i) && (this.mStatistics.k > 0L))
     {
-      bdla.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.c);
+      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.c);
       this.mStatistics.k = 0L;
     }
-    this.mStatistics.q = System.currentTimeMillis();
-    long l = this.mStatistics.q;
+    this.mStatistics.r = System.currentTimeMillis();
+    long l = this.mStatistics.r;
     l = this.mStatistics.b;
     if (((this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient == null) || (!this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient.interceptLoadUrl(this.intent))) && (!TextUtils.isEmpty(this.mUrl))) {
       this.webView.loadUrl(this.mUrl);
     }
-    nwo.b("Web_readyToLoadUrl");
+    Util.b("Web_readyToLoadUrl");
     this.mStatistics.a(this.webView, this.mUrl, 0, 0, 0, 0, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.comic.webbundle.WebBundleFragment
  * JD-Core Version:    0.7.0.1
  */

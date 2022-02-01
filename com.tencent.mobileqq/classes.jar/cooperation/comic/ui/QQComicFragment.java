@@ -10,24 +10,16 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
-import bieo;
-import bigl;
-import blqp;
-import blrb;
-import blrp;
-import blrs;
-import blrt;
-import blru;
-import blse;
-import blsg;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -36,11 +28,17 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.WebView;
+import com.tencent.util.LiuHaiUtils;
 import com.tencent.webbundle.sdk.IWebBundleRuntime;
 import com.tencent.webbundle.sdk.WebBundleManager;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import cooperation.comic.VipComicHelper;
+import cooperation.comic.VipComicReportUtils;
+import cooperation.comic.jsp.QQComicJsPlugin;
+import cooperation.comic.jsp.QQComicJsPluginProxy;
+import cooperation.comic.utils.FirstInObservable;
+import cooperation.comic.utils.QQComicPluginBridge;
 import cooperation.comic.webbundle.WebBundleFragment;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Observer;
@@ -51,7 +49,7 @@ public class QQComicFragment
   extends WebViewFragment
 {
   private long jdField_a_of_type_Long;
-  private blrp jdField_a_of_type_Blrp;
+  private QQComicJsPlugin jdField_a_of_type_CooperationComicJspQQComicJsPlugin;
   private Observer jdField_a_of_type_JavaUtilObserver;
   
   public static WebViewFragment a(Intent paramIntent)
@@ -71,20 +69,20 @@ public class QQComicFragment
       try
       {
         localObject2 = new URL((String)localObject2);
-        blqp.c = ((URL)localObject2).getPath().substring(((URL)localObject2).getPath().lastIndexOf("/") + 1);
-        blqp.a = i + "";
-        if ((TextUtils.isEmpty(blqp.a)) || ("NULL".equalsIgnoreCase(blqp.a))) {
+        VipComicHelper.c = ((URL)localObject2).getPath().substring(((URL)localObject2).getPath().lastIndexOf("/") + 1);
+        VipComicHelper.a = i + "";
+        if ((TextUtils.isEmpty(VipComicHelper.a)) || ("NULL".equalsIgnoreCase(VipComicHelper.a))) {
           QLog.e("WebLog_WebViewFragment", 1, "[webFragment] from is null");
         }
         for (;;)
         {
-          blqp.b = paramIntent.getStringExtra("reportActionFrom");
-          blqp.a();
+          VipComicHelper.b = paramIntent.getStringExtra("reportActionFrom");
+          VipComicHelper.a();
           return localObject1;
           localObject1 = new QQComicFragment();
           break;
           if (QLog.isColorLevel()) {
-            QLog.d("WebLog_WebViewFragment", 2, "[webFragment] from is " + blqp.a);
+            QLog.d("WebLog_WebViewFragment", 2, "[webFragment] from is " + VipComicHelper.a);
           }
         }
         return localObject1;
@@ -104,8 +102,8 @@ public class QQComicFragment
   {
     long l = System.currentTimeMillis();
     CookieManager localCookieManager = CookieManager.getInstance();
-    String str1 = blrb.a();
-    if (str1.isEmpty()) {
+    String str1 = VipComicReportUtils.a();
+    if (TextUtils.isEmpty(str1)) {
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_WebViewFragment", 2, "the qimei is null");
       }
@@ -189,18 +187,18 @@ public class QQComicFragment
     }
   }
   
-  public blrp a()
+  public QQComicJsPlugin a()
   {
-    if (this.jdField_a_of_type_Blrp != null) {
-      return this.jdField_a_of_type_Blrp;
+    if (this.jdField_a_of_type_CooperationComicJspQQComicJsPlugin != null) {
+      return this.jdField_a_of_type_CooperationComicJspQQComicJsPlugin;
     }
     if ((getWebView() != null) && (getWebView().getPluginEngine() != null))
     {
       WebViewPlugin localWebViewPlugin = getWebView().getPluginEngine().a("comic");
-      if ((localWebViewPlugin instanceof blrp))
+      if ((localWebViewPlugin instanceof QQComicJsPlugin))
       {
-        this.jdField_a_of_type_Blrp = ((blrp)localWebViewPlugin);
-        return this.jdField_a_of_type_Blrp;
+        this.jdField_a_of_type_CooperationComicJspQQComicJsPlugin = ((QQComicJsPlugin)localWebViewPlugin);
+        return this.jdField_a_of_type_CooperationComicJspQQComicJsPlugin;
       }
     }
     return null;
@@ -208,24 +206,24 @@ public class QQComicFragment
   
   public boolean a()
   {
-    blrp localblrp = a();
+    QQComicJsPlugin localQQComicJsPlugin = a();
     JSONObject localJSONObject1;
-    if (localblrp != null)
+    if (localQQComicJsPlugin != null)
     {
-      localblrp = (blrp)localblrp;
+      localQQComicJsPlugin = (QQComicJsPlugin)localQQComicJsPlugin;
       localJSONObject1 = new JSONObject();
     }
     try
     {
       JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("status", localblrp.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      localJSONObject2.put("status", localQQComicJsPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
       localJSONObject1.put("data", localJSONObject2);
       label54:
       if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "notifySecretModeChange. status=" + localblrp.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        QLog.d("WebLog_WebViewFragment", 2, "notifySecretModeChange. status=" + localQQComicJsPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
       }
-      if (!TextUtils.isEmpty(localblrp.b)) {
-        getWebView().callJs(localblrp.b, new String[] { localJSONObject1.toString() });
+      if (!TextUtils.isEmpty(localQQComicJsPlugin.b)) {
+        getWebView().callJs(localQQComicJsPlugin.b, new String[] { localJSONObject1.toString() });
       }
       return true;
     }
@@ -235,13 +233,13 @@ public class QQComicFragment
     }
   }
   
-  public String[] a()
+  String[] a()
   {
     String[] arrayOfString = new String[5];
     Object localObject = a();
-    if ((localObject != null) && (((blrp)localObject).jdField_a_of_type_Blrs != null))
+    if ((localObject != null) && (((QQComicJsPlugin)localObject).jdField_a_of_type_CooperationComicJspQQComicJsPluginProxy != null))
     {
-      localObject = ((blrp)localObject).jdField_a_of_type_Blrs.a();
+      localObject = ((QQComicJsPlugin)localObject).jdField_a_of_type_CooperationComicJspQQComicJsPluginProxy.a();
       if (localObject != null)
       {
         arrayOfString[0] = ((String)((HashMap)localObject).get("page_id"));
@@ -262,9 +260,9 @@ public class QQComicFragment
     }
     int j = paramInt1;
     int k = paramInt2;
-    if (!this.mUIStyleHandler.mUIStyle.isTransparentTitle)
+    if (!this.mUIStyleHandler.a.b)
     {
-      if (!this.mUIStyle.isTransparentTitleAndClickable) {
+      if (!this.mUIStyle.m) {
         break label60;
       }
       k = paramInt2;
@@ -290,9 +288,9 @@ public class QQComicFragment
     }
   }
   
-  public bigl createComponentsProvider()
+  public SwiftBrowserComponentsProvider createComponentsProvider()
   {
-    return new bigl(this, 127, new blru(this));
+    return new SwiftBrowserComponentsProvider(this, 127, new QQComicFragment.2(this));
   }
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
@@ -324,12 +322,6 @@ public class QQComicFragment
     return super.doCreateLoopStep_InitWebView(paramBundle);
   }
   
-  public void doShowTitleBar(boolean paramBoolean)
-  {
-    super.doShowTitleBar(paramBoolean);
-    d();
-  }
-  
   public String getUAMark()
   {
     return "VipComic";
@@ -343,9 +335,9 @@ public class QQComicFragment
   
   public void onClick(View paramView)
   {
-    if (((paramView == this.mSwiftTitleUI.rightViewImg) || (paramView == this.mSwiftTitleUI.rightHighLView)) && (this.mSwiftTitleUI.mShowRightCornerRedDot))
+    if (((paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.mSwiftTitleUI.d)) && (this.mSwiftTitleUI.jdField_a_of_type_Boolean))
     {
-      this.mSwiftTitleUI.showRightCornerRedDot(false);
+      this.mSwiftTitleUI.d(false);
       if ((this.browserApp != null) && (this.browserApp.getApp() != null)) {
         this.browserApp.getApp().getSharedPreferences("boodo_" + this.browserApp.getCurrentAccountUin(), 0).edit().putBoolean("private_read_red_dot", true).apply();
       }
@@ -362,17 +354,18 @@ public class QQComicFragment
       getActivity().setResult(0, (Intent)paramBundle);
     }
     a();
-    blqp.a(this.mApp);
-    blqp.a(getHostActivity());
+    VipComicHelper.a(this.mApp);
+    VipComicHelper.a(getHostActivity());
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    blsg.c(this.jdField_a_of_type_JavaUtilObserver);
+    QQComicPluginBridge.c(this.jdField_a_of_type_JavaUtilObserver);
     this.jdField_a_of_type_JavaUtilObserver = null;
     FragmentActivity localFragmentActivity = getActivity();
-    if ((localFragmentActivity != null) && (localFragmentActivity.isFinishing()) && (localFragmentActivity == WebBundleManager.getInstance("comic").getRuntime().getContext()))
+    IWebBundleRuntime localIWebBundleRuntime = WebBundleManager.getInstance("comic").getRuntime();
+    if ((localFragmentActivity != null) && (localFragmentActivity.isFinishing()) && (localIWebBundleRuntime != null) && (localFragmentActivity == localIWebBundleRuntime.getContext()))
     {
       WebBundleManager.getInstance("comic").destroy();
       QLog.w("WebLog_WebViewFragment", 1, "activity finish and destroy webBundle");
@@ -383,21 +376,21 @@ public class QQComicFragment
   {
     super.onPageFinished(paramWebView, paramString);
     QLog.d("WebLog_WebViewFragment", 4, "QQComicFragment onPageFinished ");
-    if (blsg.a != null)
+    if (QQComicPluginBridge.a != null)
     {
       QLog.d("WebLog_WebViewFragment", 4, "QQComicPluginBridge sFirstInObservable is not null ");
-      blsg.a.a(paramWebView.getContext());
+      QQComicPluginBridge.a.a(paramWebView.getContext());
     }
-    this.jdField_a_of_type_JavaUtilObserver = new blrt(this, paramWebView);
-    blsg.b(this.jdField_a_of_type_JavaUtilObserver);
+    this.jdField_a_of_type_JavaUtilObserver = new QQComicFragment.1(this, paramWebView);
+    QQComicPluginBridge.b(this.jdField_a_of_type_JavaUtilObserver);
   }
   
   public void onStop()
   {
     super.onStop();
-    blrp localblrp = a();
-    if (localblrp != null) {
-      localblrp.a();
+    QQComicJsPlugin localQQComicJsPlugin = a();
+    if (localQQComicJsPlugin != null) {
+      localQQComicJsPlugin.a();
     }
   }
   
@@ -406,10 +399,16 @@ public class QQComicFragment
     super.setImmersiveStatus(paramBoolean);
     d();
   }
+  
+  public void showTitleBar(boolean paramBoolean)
+  {
+    super.showTitleBar(paramBoolean);
+    d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.comic.ui.QQComicFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import acnh;
 import android.text.TextUtils;
-import aokx;
-import bdof;
+import com.tencent.imcore.message.MsgProxyUtils;
+import com.tencent.mobileqq.app.fms.MessageSearchUtils;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 
@@ -14,7 +14,7 @@ public class MessageForStructing
   extends MessageForRichText
 {
   @notColumn
-  public boolean bDynicMsg;
+  public boolean bDynicMsg = false;
   public AbsStructMsg structingMsg;
   
   public MessageForStructing() {}
@@ -79,13 +79,13 @@ public class MessageForStructing
     this.time = paramMessageRecord.time;
     this.versionCode = paramMessageRecord.versionCode;
     this.vipBubbleID = paramMessageRecord.vipBubbleID;
-    this.structingMsg = bdof.a(this.msgData);
+    this.structingMsg = StructMsgFactory.a(this.msgData);
   }
   
   protected void doParse()
   {
     if (!this.bDynicMsg) {
-      this.structingMsg = bdof.a(this.msgData);
+      this.structingMsg = StructMsgFactory.a(this.msgData);
     }
   }
   
@@ -100,7 +100,7 @@ public class MessageForStructing
     String str1 = str2;
     if (this.structingMsg != null)
     {
-      boolean bool = aokx.a(String.valueOf(this.structingMsg.mMsgServiceID));
+      boolean bool = MessageSearchUtils.a(String.valueOf(this.structingMsg.mMsgServiceID));
       str1 = str2;
       if ((this.structingMsg instanceof AbsShareMsg))
       {
@@ -144,7 +144,7 @@ public class MessageForStructing
   
   public boolean isSupportFTS()
   {
-    return acnh.x(this.istroop);
+    return MsgProxyUtils.m(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -175,7 +175,7 @@ public class MessageForStructing
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForStructing
  * JD-Core Version:    0.7.0.1
  */

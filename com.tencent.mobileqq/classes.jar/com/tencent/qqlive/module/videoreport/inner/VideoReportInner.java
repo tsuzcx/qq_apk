@@ -24,6 +24,9 @@ import com.tencent.qqlive.module.videoreport.PageParams;
 import com.tencent.qqlive.module.videoreport.SessionChangeReason;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.constants.ClickPolicy;
+import com.tencent.qqlive.module.videoreport.constants.EndExposurePolicy;
+import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
 import com.tencent.qqlive.module.videoreport.data.DataRWProxy;
 import com.tencent.qqlive.module.videoreport.data.IElementDynamicParams;
@@ -34,6 +37,7 @@ import com.tencent.qqlive.module.videoreport.dtreport.audio.AudioEventReporter;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.IEventParamsBuilder;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventCode;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventParamChecker;
+import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoBaseEntity;
 import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoEntity;
 import com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoReportManager;
 import com.tencent.qqlive.module.videoreport.lazy.LazyInitObserver;
@@ -53,8 +57,10 @@ import com.tencent.qqlive.module.videoreport.report.element.ElementClickReporter
 import com.tencent.qqlive.module.videoreport.report.element.ElementExposureEndReporter;
 import com.tencent.qqlive.module.videoreport.report.element.ElementExposureReporter;
 import com.tencent.qqlive.module.videoreport.report.element.ExposureElementInfo;
+import com.tencent.qqlive.module.videoreport.report.element.ExposurePolicyHelper;
 import com.tencent.qqlive.module.videoreport.report.element.IExposureRecorder;
 import com.tencent.qqlive.module.videoreport.report.element.IExposureRecorder.Factory;
+import com.tencent.qqlive.module.videoreport.report.element.ReportPolicyOperator;
 import com.tencent.qqlive.module.videoreport.report.element.ReversedDataCollector;
 import com.tencent.qqlive.module.videoreport.report.scroll.ScrollableViewObserver;
 import com.tencent.qqlive.module.videoreport.reportdata.DataBuilderFactory;
@@ -83,7 +89,6 @@ public class VideoReportInner
   private static final String TAG = "VideoReportInner";
   private Configuration mConfiguration;
   private boolean mDebugMode;
-  private boolean mEnablePageLink;
   private IEventDynamicParams mEventDynamicParams;
   private Set<IInnerReporter> mInnerReporters = new HashSet();
   private PageInfoCacheController mPageInfoCacheCtrl = new PageInfoCacheController();
@@ -91,11 +96,6 @@ public class VideoReportInner
   private Set<IReporter> mReporters = new HashSet();
   private boolean mTestMode;
   private Collection<IReporter> mUnmodifiableReporters = Collections.unmodifiableCollection(this.mReporters);
-  
-  private boolean checkElementObjectArgument(Object paramObject)
-  {
-    return ((paramObject instanceof Dialog)) || ((paramObject instanceof View));
-  }
   
   private boolean checkPageObjectArgument(Object paramObject)
   {
@@ -222,6 +222,11 @@ public class VideoReportInner
     VideoReportManager.getInstance().bindVideoInfo(paramObject, paramVideoEntity);
   }
   
+  public boolean checkElementObjectArgument(Object paramObject)
+  {
+    return ((paramObject instanceof Dialog)) || ((paramObject instanceof View));
+  }
+  
   public void clearElementExposure(View paramView, boolean paramBoolean)
   {
     if (isDebugMode()) {
@@ -242,7 +247,7 @@ public class VideoReportInner
   
   public void doAppOutReport()
   {
-    AppEventReporter.getInstance().appOutDataSender(true);
+    AppEventReporter.getInstance().appOutDataSender();
   }
   
   public PageInfo findOwnerPage(View paramView)
@@ -261,11 +266,27 @@ public class VideoReportInner
     return this.mConfiguration;
   }
   
+  public ClickPolicy getElementClickPolicy(Object paramObject)
+  {
+    return (ClickPolicy)ReportPolicyOperator.getReportPolicy(paramObject, "element_click_policy", ClickPolicy.class);
+  }
+  
+  public EndExposurePolicy getElementEndExposePolicy(Object paramObject)
+  {
+    return (EndExposurePolicy)ReportPolicyOperator.getReportPolicy(paramObject, "element_end_expose_policy", EndExposurePolicy.class);
+  }
+  
+  public ExposurePolicy getElementExposePolicy(Object paramObject)
+  {
+    return (ExposurePolicy)ReportPolicyOperator.getReportPolicy(paramObject, "element_expose_policy", ExposurePolicy.class);
+  }
+  
   public Map<String, ?> getElementParams(Object paramObject)
   {
     return DataRWProxy.getElementParams(paramObject);
   }
   
+  @Deprecated
   public ReportPolicy getElementReportPolicy(Object paramObject)
   {
     if (isDebugMode()) {
@@ -381,12 +402,12 @@ public class VideoReportInner
   @Nullable
   public Map<String, Object> pageInfoForView(View paramView)
   {
-    paramView = findOwnerPage(paramView);
-    if (paramView == null) {}
-    for (paramView = null; paramView == null; paramView = paramView.getPage()) {
+    PageInfo localPageInfo = findOwnerPage(paramView);
+    if (localPageInfo == null) {}
+    for (paramView = null; paramView == null; paramView = localPageInfo.getPage()) {
       return null;
     }
-    return PageUtils.getPageInfo(paramView);
+    return PageUtils.getPageInfo(localPageInfo.getPageHashCode());
   }
   
   public void pageLogicDestroy(Object paramObject)
@@ -403,6 +424,7 @@ public class VideoReportInner
     setPageId(paramObject, null);
     setPageContentId(paramObject, null, true);
     resetPageParams(paramObject);
+    ExposurePolicyHelper.clearEleExposureMap(paramObject);
   }
   
   @Nullable
@@ -649,6 +671,11 @@ public class VideoReportInner
     DetectionPolicy.setDetectionMode(paramInt);
   }
   
+  public void setElementClickPolicy(Object paramObject, ClickPolicy paramClickPolicy)
+  {
+    ReportPolicyOperator.setReportPolicy(paramObject, paramClickPolicy, "element_click_policy");
+  }
+  
   public void setElementDynamicParams(Object paramObject, IElementDynamicParams paramIElementDynamicParams)
   {
     if (isDebugMode()) {
@@ -657,6 +684,16 @@ public class VideoReportInner
     if (checkElementObjectArgument(paramObject)) {
       DataRWProxy.setElementDynamicParam(paramObject, paramIElementDynamicParams);
     }
+  }
+  
+  public void setElementEndExposePolicy(Object paramObject, EndExposurePolicy paramEndExposurePolicy)
+  {
+    ReportPolicyOperator.setReportPolicy(paramObject, paramEndExposurePolicy, "element_end_expose_policy");
+  }
+  
+  public void setElementExposePolicy(Object paramObject, ExposurePolicy paramExposurePolicy)
+  {
+    ReportPolicyOperator.setReportPolicy(paramObject, paramExposurePolicy, "element_expose_policy");
   }
   
   public void setElementExposureDetectionEnabled(Object paramObject, boolean paramBoolean)
@@ -719,13 +756,41 @@ public class VideoReportInner
     }
   }
   
+  @Deprecated
   public void setElementReportPolicy(Object paramObject, ReportPolicy paramReportPolicy)
   {
     if (isDebugMode()) {
       Log.i("VideoReportInner", "setElementReportPolicy: object=" + paramObject + ", policy=" + paramReportPolicy.name());
     }
-    if (checkElementObjectArgument(paramObject)) {
+    if (checkElementObjectArgument(paramObject))
+    {
+      if (!paramReportPolicy.reportClick) {
+        break label113;
+      }
+      localObject = ClickPolicy.REPORT_ALL;
+      setElementClickPolicy(paramObject, (ClickPolicy)localObject);
+      if (!paramReportPolicy.reportExposure) {
+        break label120;
+      }
+      localObject = ExposurePolicy.REPORT_ALL;
+      label81:
+      setElementExposePolicy(paramObject, (ExposurePolicy)localObject);
+      if (!paramReportPolicy.reportExposure) {
+        break label127;
+      }
+    }
+    label113:
+    label120:
+    label127:
+    for (Object localObject = EndExposurePolicy.REPORT_ALL;; localObject = EndExposurePolicy.REPORT_NONE)
+    {
+      setElementEndExposePolicy(paramObject, (EndExposurePolicy)localObject);
       DataRWProxy.setInnerParam(paramObject, "element_report_policy", paramReportPolicy);
+      return;
+      localObject = ClickPolicy.REPORT_NONE;
+      break;
+      localObject = ExposurePolicy.REPORT_NONE;
+      break label81;
     }
   }
   
@@ -898,6 +963,7 @@ public class VideoReportInner
       paramApplication.registerActivityLifecycleCallbacks(EventCollector.getInstance());
       ReportUtils.setContext(paramApplication);
       ThreadUtils.injectTaskInterceptor(LazyInitObserver.getInstance());
+      ReportUtils.initCrashReport(paramApplication);
       initiateComponent();
       LazyInitObserver.getInstance().onInitialized();
     }
@@ -975,6 +1041,11 @@ public class VideoReportInner
   public void unbindVideoPlayerInfo(@NonNull Object paramObject)
   {
     VideoReportManager.getInstance().unbindVideoInfo(paramObject);
+  }
+  
+  public void updateVideoPlayerInfo(@NonNull Object paramObject, @NonNull VideoBaseEntity paramVideoBaseEntity)
+  {
+    VideoReportManager.getInstance().updateVideoInfo(paramObject, paramVideoBaseEntity);
   }
   
   @Nullable

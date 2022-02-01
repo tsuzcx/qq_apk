@@ -5,13 +5,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
-import puk;
-import pum;
 
-public class DynamicChannelDataModule$6$1
+class DynamicChannelDataModule$6$1
   implements Runnable
 {
-  public DynamicChannelDataModule$6$1(pum parampum, Bundle paramBundle, JSONObject paramJSONObject) {}
+  DynamicChannelDataModule$6$1(DynamicChannelDataModule.6 param6, Bundle paramBundle, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -23,12 +21,12 @@ public class DynamicChannelDataModule$6$1
       if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
         break label97;
       }
-      localObject = puk.a(this.jdField_a_of_type_Pum.jdField_a_of_type_Puk, this.jdField_a_of_type_Pum.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle);
+      localObject = DynamicChannelDataModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDynamicChannelDataModule$6.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDynamicChannelDataModule, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDynamicChannelDataModule$6.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle);
     }
     for (;;)
     {
       if ((localObject == null) || (((List)localObject).size() == 0)) {
-        puk.a(this.jdField_a_of_type_Pum.jdField_a_of_type_Puk, bool, this.jdField_a_of_type_Pum.jdField_a_of_type_Int, false, false, null);
+        DynamicChannelDataModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDynamicChannelDataModule$6.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDynamicChannelDataModule, bool, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDynamicChannelDataModule$6.jdField_a_of_type_Int, false, false, null);
       }
       return;
       bool = false;
@@ -40,7 +38,7 @@ public class DynamicChannelDataModule$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DynamicChannelDataModule.6.1
  * JD-Core Version:    0.7.0.1
  */

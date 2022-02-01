@@ -8,7 +8,7 @@ public final class ReqCommonCard
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public ReqHead stHeader;
+  public ReqHead stHeader = null;
   public int uFaceTimeStamp = -1;
   
   public ReqCommonCard() {}

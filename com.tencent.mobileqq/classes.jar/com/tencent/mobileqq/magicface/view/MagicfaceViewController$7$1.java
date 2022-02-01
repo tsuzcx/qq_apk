@@ -2,29 +2,27 @@ package com.tencent.mobileqq.magicface.view;
 
 import android.view.View;
 import android.widget.TextView;
-import awrn;
-import awsw;
-import awsz;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
 
-public class MagicfaceViewController$7$1
+class MagicfaceViewController$7$1
   implements Runnable
 {
-  public MagicfaceViewController$7$1(awsz paramawsz, awrn paramawrn) {}
+  MagicfaceViewController$7$1(MagicfaceViewController.7 param7, ActionGlobalData paramActionGlobalData) {}
   
   public void run()
   {
     
-    if (this.jdField_a_of_type_Awsz.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Awsz.jdField_a_of_type_Awsw.c();
+    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.c();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Awsz.jdField_a_of_type_Awsw.a.setText("");
-      this.jdField_a_of_type_Awsz.jdField_a_of_type_Awsw.jdField_b_of_type_AndroidWidgetTextView.setText("");
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setText("");
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_b_of_type_AndroidWidgetTextView.setText("");
       return;
-      ((View)this.jdField_a_of_type_Awsz.jdField_a_of_type_Awsw.jdField_b_of_type_Awss).setBackgroundColor(this.jdField_a_of_type_Awrn.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Awsz.jdField_a_of_type_Awsw.d();
+      ((View)this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.d();
     }
   }
 }

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stUserConfigReq
   extends JceStruct
 {
-  public int config_set;
+  public int config_set = 0;
   public boolean is_auth = true;
   
   public stUserConfigReq() {}

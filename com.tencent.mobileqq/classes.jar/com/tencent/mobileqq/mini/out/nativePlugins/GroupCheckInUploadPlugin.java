@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ public class GroupCheckInUploadPlugin
 {
   public static final String PLUGIN_NAME = "checkin_uploadRes";
   public static final String TAG = "GroupCheckInUploadPlugin";
-  NativePlugin.JSContext mContext;
+  JSContext mContext;
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
@@ -52,7 +52,7 @@ public class GroupCheckInUploadPlugin
             if (k != 1) {
               break label280;
             }
-            ((NativePlugin.JSContext)localObject).evaluateCallback(bool, paramEIPCResult, "");
+            ((JSContext)localObject).evaluateCallback(bool, paramEIPCResult, "");
             return;
           }
           paramEIPCResult.put("error", ((Bundle)localObject).getString("error"));
@@ -86,7 +86,7 @@ public class GroupCheckInUploadPlugin
     QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_CANCEL", null, null);
   }
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     int i = 1;
     this.mContext = paramJSContext;
@@ -103,7 +103,7 @@ public class GroupCheckInUploadPlugin
         break label158;
       }
       str = MiniAppFileManager.getInstance().getAbsolutePath(paramJSONObject.optString("cover"));
-      if ((FileUtils.fileExists(paramJSContext)) && (FileUtils.fileExists(str))) {
+      if ((FileUtils.a(paramJSContext)) && (FileUtils.a(str))) {
         break;
       }
       return;
@@ -120,7 +120,7 @@ public class GroupCheckInUploadPlugin
       QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_VIDEO", localBundle, this);
       return;
       label158:
-      if (!FileUtils.fileExists(paramJSContext)) {
+      if (!FileUtils.a(paramJSContext)) {
         break;
       }
       localBundle.putString("BUNDLE_NAME_FILEPATH", paramJSContext);

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 class MiniAppInterface$2
   extends BroadcastReceiver

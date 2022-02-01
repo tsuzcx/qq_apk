@@ -22,8 +22,8 @@ import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import java.io.File;
@@ -113,7 +113,7 @@ public class DynamicNumFilter
       float f1 = (localPointF.x + ((PointF)localObject).x) / 2.0F;
       float f2 = ((PointF)localObject).y;
       localPointF = new PointF(f1, (((PointF)localObject).y + f2) / 2.0F);
-      if (VideoMaterialUtil.isFaceItem(this.item))
+      if (VideoMaterial.isFaceItem(this.item))
       {
         localPointF.x = ((float)(localPointF.x * (1.0D / this.mFaceDetScale)));
         localPointF.y = ((float)(localPointF.y * (1.0D / this.mFaceDetScale)));
@@ -136,13 +136,13 @@ public class DynamicNumFilter
       this.mAnchor.x = (localPointF.x - this.canvasCenter.x);
       this.mAnchor.y = (this.canvasCenter.y - localPointF.y);
       paramString = new PointF(((PointF)this.mFacePoints.get(this.item.scalePivots[0])).x, ((PointF)this.mFacePoints.get(this.item.scalePivots[0])).y);
-      if (VideoMaterialUtil.isFaceItem(this.item))
+      if (VideoMaterial.isFaceItem(this.item))
       {
         paramString.x = ((float)(paramString.x * (1.0D / this.mFaceDetScale)));
         paramString.y = ((float)(paramString.y * (1.0D / this.mFaceDetScale)));
       }
       localPointF = new PointF(((PointF)this.mFacePoints.get(this.item.scalePivots[1])).x, ((PointF)this.mFacePoints.get(this.item.scalePivots[1])).y);
-      if (VideoMaterialUtil.isFaceItem(this.item))
+      if (VideoMaterial.isFaceItem(this.item))
       {
         localPointF.x = ((float)(localPointF.x * (1.0D / this.mFaceDetScale)));
         localPointF.y = ((float)(localPointF.y * (1.0D / this.mFaceDetScale)));
@@ -424,7 +424,7 @@ public class DynamicNumFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.DynamicNumFilter
  * JD-Core Version:    0.7.0.1
  */

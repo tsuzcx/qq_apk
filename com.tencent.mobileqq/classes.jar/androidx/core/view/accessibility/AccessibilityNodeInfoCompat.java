@@ -257,14 +257,14 @@ public class AccessibilityNodeInfoCompat
     if (localSparseArray2 == null)
     {
       localSparseArray1 = new SparseArray();
-      paramView.setTag(2131378448, localSparseArray1);
+      paramView.setTag(2131378879, localSparseArray1);
     }
     return localSparseArray1;
   }
   
   private SparseArray<WeakReference<ClickableSpan>> getSpansFromViewTags(View paramView)
   {
-    return (SparseArray)paramView.getTag(2131378448);
+    return (SparseArray)paramView.getTag(2131378879);
   }
   
   private boolean hasSpans()
@@ -407,7 +407,7 @@ public class AccessibilityNodeInfoCompat
       ClickableSpan[] arrayOfClickableSpan = getClickableSpans(paramCharSequence);
       if ((arrayOfClickableSpan != null) && (arrayOfClickableSpan.length > 0))
       {
-        getExtras().putInt("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ACTION_ID_KEY", 2131361824);
+        getExtras().putInt("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ACTION_ID_KEY", 2131361823);
         paramView = getOrCreateSpansFromViewTags(paramView);
         int i = 0;
         while ((arrayOfClickableSpan != null) && (i < arrayOfClickableSpan.length))
@@ -1530,7 +1530,7 @@ public class AccessibilityNodeInfoCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.view.accessibility.AccessibilityNodeInfoCompat
  * JD-Core Version:    0.7.0.1
  */

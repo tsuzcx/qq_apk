@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.multicard;
 
-import axgc;
 import java.util.List;
 import java.util.Map;
 

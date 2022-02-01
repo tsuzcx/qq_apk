@@ -3,13 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import android.text.TextUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
 import org.jetbrains.annotations.NotNull;
-import row;
-import rza;
 import tencent.kandian.ugc.topic_info.TopicInfo;
 import tencent.kandian.ugc.topic_info.TopicInfoExt;
 
@@ -17,20 +16,20 @@ public class ColumnInfo
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ColumnInfo> CREATOR = new row();
+  public static final Parcelable.Creator<ColumnInfo> CREATOR = new ColumnInfo.1();
   public static final int SOURCE_UGC = 5;
   public static final int TYPE_ALLOW_SUBMIT = 1;
   public static final int TYPE_FORBID_SUBMIT = 0;
-  public int columnID;
-  public int commentCount;
+  public int columnID = 0;
+  public int commentCount = 0;
   public String coverUrl = "";
   public String intro = "";
-  public int source;
-  public int submitPermission;
-  public int subscribeCount;
+  public int source = 0;
+  public int submitPermission = 0;
+  public int subscribeCount = 0;
   public String title = "";
-  private long uid;
-  public int videoCount;
+  private long uid = 0L;
+  public int videoCount = 0;
   
   public ColumnInfo() {}
   
@@ -43,7 +42,7 @@ public class ColumnInfo
     this.submitPermission = paramInt2;
   }
   
-  public ColumnInfo(Parcel paramParcel)
+  protected ColumnInfo(Parcel paramParcel)
   {
     this.columnID = paramParcel.readInt();
     this.coverUrl = paramParcel.readString();
@@ -55,36 +54,6 @@ public class ColumnInfo
     this.subscribeCount = paramParcel.readInt();
     this.commentCount = paramParcel.readInt();
     this.videoCount = paramParcel.readInt();
-  }
-  
-  public ColumnInfo(rza paramrza)
-  {
-    if (paramrza.jdField_a_of_type_JavaLangString != null)
-    {
-      str = paramrza.jdField_a_of_type_JavaLangString;
-      this.coverUrl = str;
-      if (paramrza.b == null) {
-        break label88;
-      }
-      str = paramrza.b;
-      label51:
-      this.title = str;
-      if (paramrza.c == null) {
-        break label94;
-      }
-    }
-    label88:
-    label94:
-    for (String str = paramrza.c;; str = "")
-    {
-      this.intro = str;
-      this.submitPermission = paramrza.jdField_a_of_type_Int;
-      return;
-      str = "";
-      break;
-      str = "";
-      break label51;
-    }
   }
   
   public ColumnInfo(topic_info.TopicInfo paramTopicInfo)
@@ -163,6 +132,11 @@ public class ColumnInfo
     return "ColumnInfo{columnID='" + this.columnID + '\'' + ", coverUrl='" + this.coverUrl + '\'' + ", title='" + this.title + '\'' + ", intro='" + this.intro + '\'' + ", submitPermission='" + this.submitPermission + '\'' + ", source='" + this.source + '\'' + ", uid='" + this.uid + '\'' + ", subscribeCount='" + this.subscribeCount + '\'' + ", commentCount='" + this.commentCount + '\'' + ", videoCount='" + this.videoCount + '\'' + '}';
   }
   
+  public boolean valid()
+  {
+    return (!TextUtils.isEmpty(this.title)) && (this.columnID != 0);
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.columnID);
@@ -179,7 +153,7 @@ public class ColumnInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.hotpic;
 
-import avod;
-
-public class PresenceInterfaceImpl$6
+class PresenceInterfaceImpl$6
   implements Runnable
 {
-  public PresenceInterfaceImpl$6(avod paramavod) {}
+  PresenceInterfaceImpl$6(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
   public void run()
   {
@@ -15,7 +13,7 @@ public class PresenceInterfaceImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.6
  * JD-Core Version:    0.7.0.1
  */

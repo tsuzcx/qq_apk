@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import anvk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.richstatus.ExtensionRichStatus;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 
@@ -20,14 +20,14 @@ final class SignatureManager$2
       {
         QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
         RichStatus localRichStatus = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
-        Object localObject1 = (anvk)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        boolean bool = ((anvk)localObject1).b(this.jdField_a_of_type_JavaLangString);
+        Object localObject1 = (FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        boolean bool = ((FriendsManager)localObject1).b(this.jdField_a_of_type_JavaLangString);
         if (!bool) {
           return;
         }
         if (localRichStatus == null)
         {
-          localObject1 = ((anvk)localObject1).a(this.jdField_a_of_type_JavaLangString);
+          localObject1 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_JavaLangString);
           if (localObject1 == null) {
             return;
           }
@@ -35,7 +35,7 @@ final class SignatureManager$2
           if (bool) {
             return;
           }
-          localRichStatus = ((ExtensionInfo)localObject1).getRichStatus();
+          localRichStatus = ExtensionRichStatus.a((ExtensionInfo)localObject1);
           bool = SignatureManager.a(localRichStatus);
           if (bool) {
             return;
@@ -75,7 +75,7 @@ final class SignatureManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SignatureManager.2
  * JD-Core Version:    0.7.0.1
  */

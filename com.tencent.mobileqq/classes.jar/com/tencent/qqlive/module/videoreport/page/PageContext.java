@@ -4,13 +4,15 @@ import com.tencent.qqlive.module.videoreport.data.DataEntity;
 
 class PageContext
 {
+  final DataEntity curPageData;
   final int pageStep;
   final DataEntity refPageData;
   
-  PageContext(int paramInt, DataEntity paramDataEntity)
+  PageContext(int paramInt, DataEntity paramDataEntity1, DataEntity paramDataEntity2)
   {
     this.pageStep = paramInt;
-    this.refPageData = paramDataEntity;
+    this.curPageData = paramDataEntity1;
+    this.refPageData = paramDataEntity2;
   }
 }
 

@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class JoinShareAlbumRsp
   extends JceStruct
 {
-  public boolean isAutoJoin;
+  public boolean isAutoJoin = false;
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public JoinShareAlbumRsp() {}
   

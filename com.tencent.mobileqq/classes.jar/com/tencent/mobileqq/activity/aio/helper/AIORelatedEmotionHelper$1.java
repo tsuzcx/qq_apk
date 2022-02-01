@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aggg;
-import aqyd;
+import com.tencent.mobileqq.config.business.AIORelatedEmotionConfProcessor;
 
-public class AIORelatedEmotionHelper$1
+class AIORelatedEmotionHelper$1
   implements Runnable
 {
-  public AIORelatedEmotionHelper$1(aggg paramaggg) {}
+  AIORelatedEmotionHelper$1(AIORelatedEmotionHelper paramAIORelatedEmotionHelper) {}
   
   public void run()
   {
-    aqyd.a();
+    AIORelatedEmotionConfProcessor.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIORelatedEmotionHelper.1
  * JD-Core Version:    0.7.0.1
  */

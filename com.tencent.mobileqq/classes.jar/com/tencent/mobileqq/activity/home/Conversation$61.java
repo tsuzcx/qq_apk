@@ -1,25 +1,29 @@
 package com.tencent.mobileqq.activity.home;
 
-import bisl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusObserver;
+import com.tencent.qphone.base.util.QLog;
 
 class Conversation$61
-  implements Runnable
+  extends OnlineStatusObserver
 {
   Conversation$61(Conversation paramConversation) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((Conversation.a(this.this$0) != null) && (Conversation.a(this.this$0).isShowing()))
+    if (this.a.a != null)
     {
-      Conversation.a(this.this$0).dismiss();
-      QQToast.a(this.this$0.a(), 2, this.this$0.a(2131719075), 1).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, new Object[] { "onSetOnlineStatus, isSuccess", Boolean.valueOf(paramBoolean) });
+      }
+      this.a.a.a("OnlineStatusObserver.onSetOnlineStatus");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.61
  * JD-Core Version:    0.7.0.1
  */

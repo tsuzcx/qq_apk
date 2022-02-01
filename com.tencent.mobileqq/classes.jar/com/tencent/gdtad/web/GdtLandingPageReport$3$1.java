@@ -1,21 +1,18 @@
 package com.tencent.gdtad.web;
 
-import acld;
-import aclf;
-
-public class GdtLandingPageReport$3$1
+class GdtLandingPageReport$3$1
   implements Runnable
 {
-  public GdtLandingPageReport$3$1(aclf paramaclf, String paramString) {}
+  GdtLandingPageReport$3$1(GdtLandingPageReport.3 param3, String paramString) {}
   
   public void run()
   {
-    acld.a(this.jdField_a_of_type_Aclf.a, this.jdField_a_of_type_JavaLangString);
+    GdtLandingPageReport.a(this.jdField_a_of_type_ComTencentGdtadWebGdtLandingPageReport$3.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.web.GdtLandingPageReport.3.1
  * JD-Core Version:    0.7.0.1
  */

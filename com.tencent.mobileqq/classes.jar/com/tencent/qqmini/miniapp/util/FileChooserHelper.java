@@ -83,6 +83,26 @@ public class FileChooserHelper
     }
   }
   
+  private String getCapture(String paramString1, String paramString2)
+  {
+    if (paramString1.contains("image/")) {
+      paramString2 = "camera";
+    }
+    do
+    {
+      return paramString2;
+      if (paramString1.contains("video/")) {
+        return "camcorder";
+      }
+    } while (!paramString1.contains("audio/"));
+    return "microphone";
+  }
+  
+  private boolean isCaptureCorrect(String paramString)
+  {
+    return ("camera".equals(paramString)) || ("camcorder".equals(paramString)) || ("microphone".equals(paramString));
+  }
+  
   private void openCamcorder(Activity paramActivity)
   {
     Object localObject = new File(ShortVideoUtil.getCameraPath() + "photo/");
@@ -163,7 +183,7 @@ public class FileChooserHelper
       if (this.mFilePathCallback != null)
       {
         if (-1 != paramInt2) {
-          break label192;
+          break label186;
         }
         localObject2 = this.mFileGenerationUri;
         localObject1 = localObject2;
@@ -190,7 +210,7 @@ public class FileChooserHelper
       if (this.mFilePathCallBackForLollipop != null)
       {
         if (-1 != paramInt2) {
-          break label186;
+          break label180;
         }
         localObject2 = this.mFileGenerationUri;
         localObject1 = localObject2;
@@ -215,16 +235,13 @@ public class FileChooserHelper
           localObject1 = null;
           break label124;
         }
-        if (!QMLog.isColorLevel()) {
-          break;
-        }
         QMLog.w("FileChooserHelper", "Caution: mFilePathCallback should not be null!");
         break;
         return false;
-        label186:
+        label180:
         localObject1 = null;
       }
-      label192:
+      label186:
       localObject1 = null;
     }
   }
@@ -267,7 +284,7 @@ public class FileChooserHelper
     if ((paramActivity == null) || ((paramValueCallback == null) && (this.mFilePathCallBackForLollipop == null))) {
       return;
     }
-    if ((QMLog.isColorLevel()) && (this.mFilePathCallback != null)) {
+    if (this.mFilePathCallback != null) {
       QMLog.w("FileChooserHelper", "Caution: mFilePathCallback not null, Plz call doOnActivityResult in the onActivityResult method of caller");
     }
     this.mRequestCode = paramInt;
@@ -277,55 +294,33 @@ public class FileChooserHelper
     {
       paramString1 = paramString1.toLowerCase();
       if (paramString2 == null) {
-        break label98;
+        break label92;
       }
     }
-    label98:
+    label92:
     for (paramValueCallback = paramString2.toLowerCase();; paramValueCallback = "")
     {
       if (!TextUtils.isEmpty(paramValueCallback)) {
-        break label105;
+        break label99;
       }
       openFileChooser(paramActivity, paramString1);
       return;
       paramString1 = "";
       break;
     }
-    label105:
-    if (("camera".equals(paramValueCallback)) || ("camcorder".equals(paramValueCallback)) || ("microphone".equals(paramValueCallback)))
+    label99:
+    boolean bool = isCaptureCorrect(paramValueCallback);
+    if (!bool)
     {
-      paramInt = 1;
-      if (paramInt != 0) {
-        break label215;
-      }
-      if (!paramString1.contains("image/")) {
-        break label171;
-      }
-      paramValueCallback = "camera";
-      paramInt = 1;
+      paramValueCallback = getCapture(paramString1, paramValueCallback);
+      bool = true;
     }
-    label171:
-    label215:
     for (;;)
     {
-      if (paramInt != 0)
+      if (bool)
       {
         doCaptureCorrect(paramActivity, paramString1, paramValueCallback);
         return;
-        paramInt = 0;
-        break;
-        if (paramString1.contains("video/"))
-        {
-          paramValueCallback = "camcorder";
-          paramInt = 1;
-          continue;
-        }
-        if (!paramString1.contains("audio/")) {
-          break label215;
-        }
-        paramValueCallback = "microphone";
-        paramInt = 1;
-        continue;
       }
       openFileChooser(paramActivity, paramString1);
       return;
@@ -334,7 +329,7 @@ public class FileChooserHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.FileChooserHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package cooperation.qzone.font;
 
 import android.text.TextUtils;
-import asbp;
-import awqn;
 import com.etrump.mixlayout.ETEngine;
 import com.etrump.mixlayout.FontSoLoader;
+import com.etrump.mixlayout.VasFontIPCModule;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.earlydownload.EarlyDownloadManager.EarlyDownLoadListener;
+import com.tencent.mobileqq.lyric.util.Singleton;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -14,7 +15,6 @@ import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.cache.CacheManager;
 import cooperation.qzone.cache.FileCacheService;
 import cooperation.qzone.util.NetworkState;
-import gk;
 import java.io.File;
 import java.io.FileFilter;
 import java.lang.ref.WeakReference;
@@ -32,7 +32,7 @@ public class FontManager
   public static final String FONT_SUFFIX_TTF = ".ttf";
   static final String TAG = "FontManager";
   private static FileCacheService mFileCache;
-  private static final awqn<FontManager, Void> sSingleton = new FontManager.1();
+  private static final Singleton<FontManager, Void> sSingleton = new FontManager.1();
   private ConcurrentHashMap<Integer, FontInfo> catchFontInfoMap = new ConcurrentHashMap();
   private ConcurrentHashMap<Integer, ArrayList<FontManager.DownLoadFontTask>> downloadingFontIDs;
   private String fontDir;
@@ -660,7 +660,7 @@ public class FontManager
   
   public boolean ETEngineLoaded()
   {
-    return FontSoLoader.isVipFontSoLoaded();
+    return FontSoLoader.b();
   }
   
   public FontManager.DefaultBarrageEffectInfo getDefaultBarrageEffectInfo(long paramLong)
@@ -732,10 +732,10 @@ public class FontManager
   {
     boolean bool = true;
     ETEngine localETEngine = null;
-    if ((!FontSoLoader.isVipFontSoLoaded()) && (FontSoLoader.isVipFontSoDownloaded())) {
-      bool = FontSoLoader.loadSoLib();
+    if ((!FontSoLoader.b()) && (FontSoLoader.a())) {
+      bool = FontSoLoader.c();
     }
-    while (FontSoLoader.isVipFontSoDownloaded())
+    while (FontSoLoader.a())
     {
       if (bool) {
         localETEngine = ETEngine.getInstanceForSpace();
@@ -850,15 +850,15 @@ public class FontManager
     LocalMultiProcConfig.putString4Uin("qzone_super_font_save_data", (String)localObject, paramLong);
   }
   
-  public void startFontSoDownload(asbp paramasbp)
+  public void startFontSoDownload(EarlyDownloadManager.EarlyDownLoadListener paramEarlyDownLoadListener)
   {
-    paramasbp = new FontManager.2(this);
-    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gk.a, null, paramasbp);
+    paramEarlyDownLoadListener = new FontManager.2(this);
+    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.a, null, paramEarlyDownLoadListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.font.FontManager
  * JD-Core Version:    0.7.0.1
  */

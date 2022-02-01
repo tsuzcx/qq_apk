@@ -15,13 +15,13 @@ public final class ReqUserInfo
   static ArrayList<Cell> cache_vCells;
   static byte[] cache_vLBSKeyData;
   static ArrayList<Long> cache_vMacs;
-  public int ePosType;
-  public GPS stGps;
+  public int ePosType = 0;
+  public GPS stGps = null;
   public String strAuthName = "";
   public String strAuthPassword = "";
-  public ArrayList<Cell> vCells;
-  public byte[] vLBSKeyData;
-  public ArrayList<Long> vMacs;
+  public ArrayList<Cell> vCells = null;
+  public byte[] vLBSKeyData = null;
+  public ArrayList<Long> vMacs = null;
   
   public ReqUserInfo() {}
   

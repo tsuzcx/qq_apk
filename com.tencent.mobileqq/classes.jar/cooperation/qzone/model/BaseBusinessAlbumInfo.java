@@ -10,10 +10,10 @@ public class BaseBusinessAlbumInfo
   public int allow_share;
   public String individualCover;
   public boolean isAlbumExist = true;
-  public boolean isFake;
-  public boolean isIndividualityAlbum;
-  public int isShare;
-  public int isSharingOwner;
+  public boolean isFake = false;
+  public boolean isIndividualityAlbum = false;
+  public int isShare = 0;
+  public int isSharingOwner = 0;
   public String mAlbumId;
   public int mAlbumType;
   public int mAnonymity;
@@ -25,7 +25,7 @@ public class BaseBusinessAlbumInfo
   public int mTotal;
   public long mUin;
   public int opmask;
-  public int sortType;
+  public int sortType = 0;
   
   public BaseBusinessAlbumInfo() {}
   
@@ -178,7 +178,7 @@ public class BaseBusinessAlbumInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.BaseBusinessAlbumInfo
  * JD-Core Version:    0.7.0.1
  */

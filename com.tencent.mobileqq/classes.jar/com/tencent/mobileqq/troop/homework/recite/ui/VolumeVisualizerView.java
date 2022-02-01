@@ -21,11 +21,11 @@ public class VolumeVisualizerView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean = true;
   public int[] a;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
+  private int c = 0;
+  private int d = 0;
+  private int e = 0;
+  private int f = 0;
+  private int g = 0;
   
   public VolumeVisualizerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -59,7 +59,7 @@ public class VolumeVisualizerView
     invalidate();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = this.f - 1;
@@ -92,7 +92,7 @@ public class VolumeVisualizerView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt1 = this.c;
     paramInt2 = this.d;
@@ -100,7 +100,7 @@ public class VolumeVisualizerView
     setMeasuredDimension(paramInt1 * 2 * paramInt2 + getPaddingLeft() + getPaddingRight(), i * 10 + getPaddingTop() + getPaddingBottom());
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.g = (paramInt2 / 2);

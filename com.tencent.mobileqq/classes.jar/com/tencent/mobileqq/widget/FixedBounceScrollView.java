@@ -18,9 +18,6 @@ import android.view.animation.Interpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ScrollView;
-import bion;
-import bioo;
-import biop;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -34,8 +31,8 @@ public class FixedBounceScrollView
   private View jdField_a_of_type_AndroidViewView;
   private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private bioo jdField_a_of_type_Bioo;
-  private biop jdField_a_of_type_Biop;
+  private FixedBounceScrollView.OnOverScrollListener jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnOverScrollListener;
+  private FixedBounceScrollView.OnScrollListener jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnScrollListener;
   boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -44,7 +41,7 @@ public class FixedBounceScrollView
   private int jdField_c_of_type_Int;
   private boolean jdField_c_of_type_Boolean;
   private float jdField_d_of_type_Float = -1.0F;
-  private int jdField_d_of_type_Int;
+  private int jdField_d_of_type_Int = 0;
   private float e = -1.0F;
   private float f = -1.0F;
   
@@ -76,7 +73,7 @@ public class FixedBounceScrollView
       this.jdField_a_of_type_Int = paramContext.getInt(4, 20);
       paramContext.recycle();
       if (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewAnimationInterpolator = new bion(null);
+        this.jdField_a_of_type_AndroidViewAnimationInterpolator = new FixedBounceScrollView.DefaultQuartOutInterpolator(null);
       }
       setmCustomBottomFadingEdgeScale(0.0F);
       setmCustomTopFadingEdgeScale(0.0F);
@@ -204,7 +201,7 @@ public class FixedBounceScrollView
     return !this.jdField_b_of_type_Boolean;
   }
   
-  protected float getBottomFadingEdgeStrength()
+  public float getBottomFadingEdgeStrength()
   {
     if (getChildCount() == 0) {
       return 0.0F;
@@ -222,7 +219,7 @@ public class FixedBounceScrollView
     return 1.0F;
   }
   
-  protected float getLeftFadingEdgeStrength()
+  public float getLeftFadingEdgeStrength()
   {
     if (this.e != -1.0F) {
       return this.e;
@@ -233,7 +230,7 @@ public class FixedBounceScrollView
     return 0.0F;
   }
   
-  protected float getRightFadingEdgeStrength()
+  public float getRightFadingEdgeStrength()
   {
     if (this.f != -1.0F) {
       return this.f;
@@ -244,7 +241,7 @@ public class FixedBounceScrollView
     return 0.0F;
   }
   
-  protected float getTopFadingEdgeStrength()
+  public float getTopFadingEdgeStrength()
   {
     if (getChildCount() == 0) {
       return 0.0F;
@@ -259,7 +256,7 @@ public class FixedBounceScrollView
     return 1.0F;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if ((this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null) && (!this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.hasEnded())) {
@@ -267,7 +264,7 @@ public class FixedBounceScrollView
     }
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
     if (getChildCount() > 0) {
@@ -308,7 +305,7 @@ public class FixedBounceScrollView
     return false;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.jdField_d_of_type_Int > 0) {
       paramInt2 = View.MeasureSpec.makeMeasureSpec(this.jdField_d_of_type_Int, -2147483648);
@@ -358,11 +355,11 @@ public class FixedBounceScrollView
     }
   }
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Biop != null) {
-      this.jdField_a_of_type_Biop.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnScrollListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnScrollListener.a(paramInt1, paramInt2);
     }
   }
   
@@ -412,22 +409,22 @@ public class FixedBounceScrollView
         this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom());
       }
       label353:
-      bioo localbioo;
+      FixedBounceScrollView.OnOverScrollListener localOnOverScrollListener;
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft() - j, this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight() - j, this.jdField_a_of_type_AndroidViewView.getBottom());
-        if (this.jdField_a_of_type_Bioo == null) {
+        if (this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnOverScrollListener == null) {
           break;
         }
         this.jdField_c_of_type_Int += j;
-        localbioo = this.jdField_a_of_type_Bioo;
+        localOnOverScrollListener = this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnOverScrollListener;
         if (this.jdField_c_of_type_Int > 0) {
           break label476;
         }
       }
       for (;;)
       {
-        localbioo.a(bool, Math.abs(this.jdField_c_of_type_Int));
+        localOnOverScrollListener.a(bool, Math.abs(this.jdField_c_of_type_Int));
         break;
         f1 = paramMotionEvent.getY();
         break label66;
@@ -491,14 +488,14 @@ public class FixedBounceScrollView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnOverScrollListener(bioo parambioo)
+  public void setOnOverScrollListener(FixedBounceScrollView.OnOverScrollListener paramOnOverScrollListener)
   {
-    this.jdField_a_of_type_Bioo = parambioo;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnOverScrollListener = paramOnOverScrollListener;
   }
   
-  public void setOnScrollListener(biop parambiop)
+  public void setOnScrollListener(FixedBounceScrollView.OnScrollListener paramOnScrollListener)
   {
-    this.jdField_a_of_type_Biop = parambiop;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnScrollListener = paramOnScrollListener;
   }
   
   public void setScrollHorizontally(boolean paramBoolean)
@@ -535,7 +532,7 @@ public class FixedBounceScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FixedBounceScrollView
  * JD-Core Version:    0.7.0.1
  */

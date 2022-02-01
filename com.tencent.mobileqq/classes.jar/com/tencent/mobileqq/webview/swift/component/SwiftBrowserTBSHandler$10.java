@@ -7,10 +7,10 @@ import com.tencent.smtt.sdk.WebView;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class SwiftBrowserTBSHandler$10
+final class SwiftBrowserTBSHandler$10
   implements Runnable
 {
-  public SwiftBrowserTBSHandler$10(String paramString1, String paramString2, WebView paramWebView, int paramInt1, int paramInt2, String paramString3) {}
+  SwiftBrowserTBSHandler$10(String paramString1, String paramString2, WebView paramWebView, int paramInt1, int paramInt2, String paramString3) {}
   
   public void run()
   {
@@ -36,7 +36,7 @@ public final class SwiftBrowserTBSHandler$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
 package com.tencent.open.downloadnew;
 
-import bjkv;
-import bjnn;
+import com.tencent.open.base.ToastUtil;
 
-public class MyAppApi$4
+class MyAppApi$4
   implements Runnable
 {
-  public MyAppApi$4(bjnn parambjnn) {}
+  MyAppApi$4(MyAppApi paramMyAppApi) {}
   
   public void run()
   {
-    bjkv.a().a(this.this$0.a);
+    ToastUtil.a().a(this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.4
  * JD-Core Version:    0.7.0.1
  */

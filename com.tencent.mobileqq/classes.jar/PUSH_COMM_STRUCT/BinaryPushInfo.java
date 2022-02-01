@@ -8,9 +8,9 @@ public final class BinaryPushInfo
   extends JceStruct
 {
   static byte[] cache_pushBuffer = (byte[])new byte[1];
-  public long compressType;
-  public byte[] pushBuffer;
-  public long pushType;
+  public long compressType = 0L;
+  public byte[] pushBuffer = null;
+  public long pushType = 0L;
   
   static
   {

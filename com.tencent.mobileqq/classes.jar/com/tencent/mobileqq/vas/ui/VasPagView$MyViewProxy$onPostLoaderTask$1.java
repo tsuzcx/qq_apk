@@ -4,10 +4,10 @@ import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
-public final class VasPagView$MyViewProxy$onPostLoaderTask$1
+final class VasPagView$MyViewProxy$onPostLoaderTask$1
   implements Runnable
 {
-  public VasPagView$MyViewProxy$onPostLoaderTask$1(Function0 paramFunction0) {}
+  VasPagView$MyViewProxy$onPostLoaderTask$1(Function0 paramFunction0) {}
   
   public final void run()
   {
@@ -16,7 +16,7 @@ public final class VasPagView$MyViewProxy$onPostLoaderTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.VasPagView.MyViewProxy.onPostLoaderTask.1
  * JD-Core Version:    0.7.0.1
  */

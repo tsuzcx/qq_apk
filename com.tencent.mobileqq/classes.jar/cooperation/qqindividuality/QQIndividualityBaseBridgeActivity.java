@@ -1,27 +1,26 @@
 package cooperation.qqindividuality;
 
-import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.MotionEvent;
-import bdla;
-import bkyc;
-import blvy;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.MqqWeakReferenceHandler;
+import cooperation.plugin.IPluginManager;
 
 public abstract class QQIndividualityBaseBridgeActivity
   extends IphoneTitleBarActivity
   implements Handler.Callback
 {
-  protected bkyc a;
-  protected blvy a;
+  protected MqqWeakReferenceHandler a;
+  protected IPluginManager a;
   
   public abstract void a();
   
@@ -32,7 +31,7 @@ public abstract class QQIndividualityBaseBridgeActivity
       if (QLog.isColorLevel()) {
         QLog.d("QQIndividuality", 2, "handlePluginInfo null == pluginInfo");
       }
-      this.jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1000, 200L);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -44,17 +43,17 @@ public abstract class QQIndividualityBaseBridgeActivity
     default: 
       return;
     case -2: 
-      this.jdField_a_of_type_Bkyc.sendEmptyMessage(1001);
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1001);
       return;
     case 0: 
-      this.jdField_a_of_type_Blvy.a("qqindividuality_plugin.apk");
-      this.jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_CooperationPluginIPluginManager.d("qqindividuality_plugin.apk");
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1000, 200L);
     case 1: 
     case 2: 
-      this.jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1000, 200L);
       return;
     case 3: 
-      this.jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1000, 200L);
       return;
     }
     b();
@@ -74,20 +73,20 @@ public abstract class QQIndividualityBaseBridgeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Bkyc = new bkyc(this);
-    this.jdField_a_of_type_Blvy = ((blvy)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
-    this.jdField_a_of_type_Bkyc.postDelayed(new QQIndividualityBaseBridgeActivity.1(this), 300L);
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
+    this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new QQIndividualityBaseBridgeActivity.1(this), 300L);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bkyc != null)
+    if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null)
     {
-      this.jdField_a_of_type_Bkyc.removeMessages(1000);
-      this.jdField_a_of_type_Bkyc.removeMessages(200);
-      this.jdField_a_of_type_Bkyc.removeMessages(1001);
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1000);
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(200);
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1001);
     }
   }
   
@@ -101,10 +100,10 @@ public abstract class QQIndividualityBaseBridgeActivity
       return true;
       if (!isFinishing())
       {
-        a("qqindividuality_plugin.apk", this.jdField_a_of_type_Blvy.a("qqindividuality_plugin.apk"));
+        a("qqindividuality_plugin.apk", this.jdField_a_of_type_CooperationPluginIPluginManager.a("qqindividuality_plugin.apk"));
         continue;
         QLog.e("QQIndividuality", 2, "install plugin action error");
-        bdla.b(null, "CliOper", "", "", "ep_mall", "0X8006A99", 0, 0, "", "", "", "");
+        ReportController.b(null, "CliOper", "", "", "ep_mall", "0X8006A99", 0, 0, "", "", "", "");
       }
     }
   }
@@ -118,7 +117,7 @@ public abstract class QQIndividualityBaseBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityBaseBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

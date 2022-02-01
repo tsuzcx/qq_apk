@@ -1,26 +1,28 @@
 package dov.com.qq.im.ae;
 
-import bhdj;
-import bmxa;
-import bmxl;
-import bmxm;
-import borh;
+import dov.com.qq.im.ae.camera.ui.tips.AETipsViewController;
+import dov.com.qq.im.ae.part.VideoStoryCapturePartManager;
 
-public class AEPituCameraUnit$33
+class AEPituCameraUnit$33
   implements Runnable
 {
-  public AEPituCameraUnit$33(bmxa parambmxa, String paramString) {}
+  AEPituCameraUnit$33(AEPituCameraUnit paramAEPituCameraUnit) {}
   
   public void run()
   {
-    bmxl localbmxl = new bmxl(this);
-    bmxm localbmxm = new bmxm(this);
-    bhdj.a(this.this$0.a.a(), null, this.a, localbmxl, localbmxl, localbmxm);
+    if (AEPituCameraUnit.a(this.this$0) != null) {
+      AEPituCameraUnit.a(this.this$0).d();
+    }
+    if (this.this$0.a != null)
+    {
+      this.this$0.a.a(196611, new Object[] { Boolean.valueOf(this.this$0.g()) });
+      this.this$0.a.a(327685, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.33
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.intervideo.audioroom.colornote;
 
-import aqoa;
+import com.tencent.mobileqq.colornote.IServiceInfo;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 class QQVoiceColorNoteProxy$2
-  implements aqoa
+  implements IServiceInfo
 {
   QQVoiceColorNoteProxy$2(QQVoiceColorNoteProxy paramQQVoiceColorNoteProxy, IQQVoiceServiceInfo paramIQQVoiceServiceInfo) {}
   
@@ -15,7 +15,7 @@ class QQVoiceColorNoteProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.colornote.QQVoiceColorNoteProxy.2
  * JD-Core Version:    0.7.0.1
  */

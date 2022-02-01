@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import qhn;
 
 public class ReadInJoyUserInfoModule$Request0xb81Params
 {
@@ -12,14 +11,14 @@ public class ReadInJoyUserInfoModule$Request0xb81Params
   private int d;
   private int e;
   
-  private ReadInJoyUserInfoModule$Request0xb81Params(qhn paramqhn)
+  private ReadInJoyUserInfoModule$Request0xb81Params(ReadInJoyUserInfoModule.Request0xb81Params.Builder paramBuilder)
   {
-    this.jdField_a_of_type_Int = qhn.a(paramqhn);
-    this.b = qhn.b(paramqhn);
-    this.c = qhn.c(paramqhn);
-    this.d = qhn.d(paramqhn);
-    this.jdField_a_of_type_JavaUtilList = qhn.a(paramqhn);
-    this.e = qhn.e(paramqhn);
+    this.jdField_a_of_type_Int = ReadInJoyUserInfoModule.Request0xb81Params.Builder.a(paramBuilder);
+    this.b = ReadInJoyUserInfoModule.Request0xb81Params.Builder.b(paramBuilder);
+    this.c = ReadInJoyUserInfoModule.Request0xb81Params.Builder.c(paramBuilder);
+    this.d = ReadInJoyUserInfoModule.Request0xb81Params.Builder.d(paramBuilder);
+    this.jdField_a_of_type_JavaUtilList = ReadInJoyUserInfoModule.Request0xb81Params.Builder.a(paramBuilder);
+    this.e = ReadInJoyUserInfoModule.Request0xb81Params.Builder.e(paramBuilder);
   }
   
   public String toString()
@@ -40,7 +39,7 @@ public class ReadInJoyUserInfoModule$Request0xb81Params
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params
  * JD-Core Version:    0.7.0.1
  */

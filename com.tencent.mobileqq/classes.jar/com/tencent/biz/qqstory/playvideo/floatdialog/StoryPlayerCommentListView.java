@@ -6,10 +6,18 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import anvx;
+import com.tencent.biz.qqstory.base.StoryDispatcher;
+import com.tencent.biz.qqstory.comment.FeedInfoChangeEvent;
+import com.tencent.biz.qqstory.comment.StoryFailCommentCacher;
 import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.IFeedOwner;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
 import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.qqstory.view.segment.SegmentView;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.AdapterView;
@@ -20,32 +28,16 @@ import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import wad;
-import wgy;
-import whi;
-import wkw;
-import xep;
-import xez;
-import xfa;
-import xfb;
-import xff;
-import xfg;
-import xfh;
-import xfi;
-import xwc;
-import ykq;
-import ykv;
-import zgz;
 
 public class StoryPlayerCommentListView
   extends SegmentList
   implements View.OnTouchListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener
 {
   public int a;
-  private List<zgz> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private xep jdField_a_of_type_Xep;
-  private xfh jdField_a_of_type_Xfh;
-  private xfi jdField_a_of_type_Xfi;
+  private CommentFloatDialogController jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
+  private StoryPlayerCommentListView.CommentListViewStateChangeListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
+  private StoryPlayerCommentListView.ListViewOnDataChangeListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$ListViewOnDataChangeListener;
+  private List<SegmentView> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public StoryPlayerCommentListView(Context paramContext)
   {
@@ -67,29 +59,29 @@ public class StoryPlayerCommentListView
   
   private void a(int paramInt, CommentEntry paramCommentEntry)
   {
-    xwc localxwc = this.jdField_a_of_type_Xep.a();
-    if ((localxwc == null) || (localxwc.a == null))
+    DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a();
+    if ((localDetailFeedItem == null) || (localDetailFeedItem.a == null))
     {
-      ykq.d("Q.qqstory.player.StoryPlayerCommentListView", "feed item null , notify feed info change error!");
+      SLog.d("Q.qqstory.player.StoryPlayerCommentListView", "feed item null , notify feed info change error!");
       return;
     }
-    wgy localwgy;
+    FeedInfoChangeEvent localFeedInfoChangeEvent;
     if ((paramInt == 2) || (paramInt == 1))
     {
-      localwgy = new wgy(2, paramCommentEntry.feedId, paramInt);
-      localwgy.c = paramCommentEntry.commentId;
+      localFeedInfoChangeEvent = new FeedInfoChangeEvent(2, paramCommentEntry.feedId, paramInt);
+      localFeedInfoChangeEvent.c = paramCommentEntry.commentId;
     }
-    for (paramCommentEntry = localwgy;; paramCommentEntry = new wgy(2, localxwc.a.feedId, paramInt, localxwc.a))
+    for (paramCommentEntry = localFeedInfoChangeEvent;; paramCommentEntry = new FeedInfoChangeEvent(2, localDetailFeedItem.a.feedId, paramInt, localDetailFeedItem.a))
     {
-      paramCommentEntry.a = localxwc.a;
-      wad.a().dispatch(paramCommentEntry);
+      paramCommentEntry.a = localDetailFeedItem.a;
+      StoryDispatcher.a().dispatch(paramCommentEntry);
       return;
     }
   }
   
   private void b()
   {
-    setOnLoadMoreListener("CommentFloatDialog", new xfg(this));
+    setOnLoadMoreListener("CommentFloatDialog", new StoryPlayerCommentListView.1(this));
     setLoadMoreComplete("CommentFloatDialog", true, false);
     setOnTouchListener(this);
     super.setOverScrollHeader(null);
@@ -98,12 +90,12 @@ public class StoryPlayerCommentListView
   public int a()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    zgz localzgz;
-    for (int i = 0;; i = localzgz.a() + i) {
+    SegmentView localSegmentView;
+    for (int i = 0;; i = localSegmentView.a() + i) {
       if (localIterator.hasNext())
       {
-        localzgz = (zgz)localIterator.next();
-        if (!(localzgz instanceof xfb)) {}
+        localSegmentView = (SegmentView)localIterator.next();
+        if (!(localSegmentView instanceof PlayerCommentSegment)) {}
       }
       else
       {
@@ -115,17 +107,17 @@ public class StoryPlayerCommentListView
   public void a()
   {
     super.setActTAG("list_qqstory_detail");
-    Object localObject = new xff(getContext());
-    xfb localxfb = new xfb(getContext());
-    xfa localxfa = new xfa(getContext());
-    xez localxez = new xez(getContext(), 30);
+    Object localObject = new PlayerDoubleTabSegment(getContext());
+    PlayerCommentSegment localPlayerCommentSegment = new PlayerCommentSegment(getContext());
+    PlayerCommentEmptySegment localPlayerCommentEmptySegment = new PlayerCommentEmptySegment(getContext());
+    EmptyPlaceHolderSegment localEmptyPlaceHolderSegment = new EmptyPlaceHolderSegment(getContext(), 30);
     this.jdField_a_of_type_JavaUtilList.add(localObject);
-    this.jdField_a_of_type_JavaUtilList.add(localxez);
-    this.jdField_a_of_type_JavaUtilList.add(localxfb);
-    this.jdField_a_of_type_JavaUtilList.add(localxfa);
+    this.jdField_a_of_type_JavaUtilList.add(localEmptyPlaceHolderSegment);
+    this.jdField_a_of_type_JavaUtilList.add(localPlayerCommentSegment);
+    this.jdField_a_of_type_JavaUtilList.add(localPlayerCommentEmptySegment);
     localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      a((zgz)((Iterator)localObject).next());
+      a((SegmentView)((Iterator)localObject).next());
     }
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
@@ -135,32 +127,32 @@ public class StoryPlayerCommentListView
   
   public void a(CommentEntry paramCommentEntry, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Xep.a(paramCommentEntry, paramBoolean);
-    whi.a().a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a(paramCommentEntry, paramBoolean);
+    StoryFailCommentCacher.a().a();
     p();
-    QQToast.a(BaseApplication.getContext(), 2, anvx.a(2131713932), 0).a();
+    QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131714428), 0).a();
     a(2, paramCommentEntry);
   }
   
-  public void a(@NonNull xep paramxep, xfh paramxfh, int paramInt)
+  public void a(@NonNull CommentFloatDialogController paramCommentFloatDialogController, StoryPlayerCommentListView.CommentListViewStateChangeListener paramCommentListViewStateChangeListener, int paramInt)
   {
     super.j();
-    this.jdField_a_of_type_Xfh = paramxfh;
-    this.jdField_a_of_type_Xep = paramxep;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener = paramCommentListViewStateChangeListener;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController = paramCommentFloatDialogController;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Xfi = new xfi(this, null);
-    this.jdField_a_of_type_Xep.a(this.jdField_a_of_type_Xfi);
-    xfb localxfb = (xfb)a("PlayerCommentSegment");
-    if (localxfb != null) {
-      localxfb.a(paramxep, paramxfh, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$ListViewOnDataChangeListener = new StoryPlayerCommentListView.ListViewOnDataChangeListener(this, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$ListViewOnDataChangeListener);
+    PlayerCommentSegment localPlayerCommentSegment = (PlayerCommentSegment)a("PlayerCommentSegment");
+    if (localPlayerCommentSegment != null) {
+      localPlayerCommentSegment.a(paramCommentFloatDialogController, paramCommentListViewStateChangeListener, this.jdField_a_of_type_Int);
     }
-    paramxfh = (xfa)a("PlayerCommentEmptySegment");
-    if (paramxfh != null) {
-      paramxfh.a(paramxep);
+    paramCommentListViewStateChangeListener = (PlayerCommentEmptySegment)a("PlayerCommentEmptySegment");
+    if (paramCommentListViewStateChangeListener != null) {
+      paramCommentListViewStateChangeListener.a(paramCommentFloatDialogController);
     }
-    paramxfh = (xff)a("PlayerDoubleTabSegment");
-    if (paramxfh != null) {
-      paramxfh.a(paramxep);
+    paramCommentListViewStateChangeListener = (PlayerDoubleTabSegment)a("PlayerDoubleTabSegment");
+    if (paramCommentListViewStateChangeListener != null) {
+      paramCommentListViewStateChangeListener.a(paramCommentFloatDialogController);
     }
   }
   
@@ -178,12 +170,12 @@ public class StoryPlayerCommentListView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
-    zgz localzgz;
+    SegmentView localSegmentView;
     if (localIterator.hasNext())
     {
-      localzgz = (zgz)localIterator.next();
-      if ((localzgz instanceof xfb)) {
-        i = localzgz.a() + i;
+      localSegmentView = (SegmentView)localIterator.next();
+      if ((localSegmentView instanceof PlayerCommentSegment)) {
+        i = localSegmentView.a() + i;
       }
     }
     for (;;)
@@ -191,7 +183,7 @@ public class StoryPlayerCommentListView
       if (i == 0)
       {
         return 0;
-        i = localzgz.a() + i;
+        i = localSegmentView.a() + i;
         break;
       }
       return i;
@@ -205,19 +197,19 @@ public class StoryPlayerCommentListView
     {
       return;
       paramInt -= a();
-      paramAdapterView = ((xfb)a("PlayerCommentSegment")).a(paramInt);
+      paramAdapterView = ((PlayerCommentSegment)a("PlayerCommentSegment")).a(paramInt);
       if (paramAdapterView == null)
       {
-        ykq.e("Q.qqstory.player.StoryPlayerCommentListView", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
+        SLog.e("Q.qqstory.player.StoryPlayerCommentListView", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
         return;
       }
       if (paramAdapterView.type == 1)
       {
-        this.jdField_a_of_type_Xep.a(this.jdField_a_of_type_Xep.a());
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
         return;
       }
-    } while (this.jdField_a_of_type_Xfh == null);
-    this.jdField_a_of_type_Xfh.a(paramAdapterView, paramInt, this.jdField_a_of_type_Xep.a());
+    } while (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener == null);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener.a(paramAdapterView, paramInt, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
   }
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -226,13 +218,13 @@ public class StoryPlayerCommentListView
       return false;
     }
     paramInt -= a();
-    paramView = ((xfb)a("PlayerCommentSegment")).a(paramInt);
+    paramView = ((PlayerCommentSegment)a("PlayerCommentSegment")).a(paramInt);
     if (paramView == null)
     {
-      ykq.e("Q.qqstory.player.StoryPlayerCommentListView", "the long clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
+      SLog.e("Q.qqstory.player.StoryPlayerCommentListView", "the long clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
       return false;
     }
-    paramAdapterView = this.jdField_a_of_type_Xep.a();
+    paramAdapterView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a();
     if ((paramAdapterView != null) && (paramAdapterView.a != null)) {
       if (!paramAdapterView.a.getOwner().isMe()) {
         break label147;
@@ -241,23 +233,23 @@ public class StoryPlayerCommentListView
     label147:
     for (paramAdapterView = "2";; paramAdapterView = "1")
     {
-      ykv.a("home_page", "press_reply", 0, 0, new String[] { paramAdapterView, ykv.a(this.jdField_a_of_type_Int) });
+      StoryReportor.a("home_page", "press_reply", 0, 0, new String[] { paramAdapterView, StoryReportor.a(this.jdField_a_of_type_Int) });
       if (paramView.type != 1) {
         break;
       }
-      this.jdField_a_of_type_Xep.a(this.jdField_a_of_type_Xep.a());
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
       return true;
     }
-    if (this.jdField_a_of_type_Xfh != null) {
-      this.jdField_a_of_type_Xfh.b(paramView, paramInt, this.jdField_a_of_type_Xep.a());
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener.b(paramView, paramInt, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
     }
     return true;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Xfh != null) {
-      return this.jdField_a_of_type_Xfh.a(paramMotionEvent);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener != null) {
+      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener.a(paramMotionEvent);
     }
     return false;
   }
@@ -265,15 +257,15 @@ public class StoryPlayerCommentListView
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     super.onViewCompleteVisableAndReleased(paramInt, paramView, paramListView);
-    if (this.jdField_a_of_type_Xfh != null) {
-      this.jdField_a_of_type_Xfh.a();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener.a();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView
  * JD-Core Version:    0.7.0.1
  */

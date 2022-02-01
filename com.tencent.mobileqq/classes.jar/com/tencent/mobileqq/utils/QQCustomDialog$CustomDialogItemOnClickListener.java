@@ -8,22 +8,22 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class QQCustomDialog$CustomDialogItemOnClickListener
   implements View.OnClickListener
 {
-  int i;
+  int jdField_a_of_type_Int;
   
   public QQCustomDialog$CustomDialogItemOnClickListener(QQCustomDialog paramQQCustomDialog, int paramInt)
   {
-    this.i = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void onClick(View paramView)
   {
-    if (this.this$0.onArrayItemClick != null) {
-      this.this$0.onArrayItemClick.onClick(this.this$0, this.this$0.customWhichToCallBack(this.i));
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick != null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.customWhichToCallBack(this.jdField_a_of_type_Int));
     }
     try
     {
-      if (this.this$0.isShowing()) {
-        this.this$0.dismiss();
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       }
       label54:
       EventCollector.getInstance().onViewClicked(paramView);

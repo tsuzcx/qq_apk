@@ -9,7 +9,7 @@ public final class VipUserInfo
   extends JceStruct
 {
   static ArrayList<Long> cache_vSendList = new ArrayList();
-  public int bUpdate;
+  public int bUpdate = 0;
   public int iCanUseRed = -1;
   public int iCheckFreq = -1;
   public int iGrowthSpeed = -1;
@@ -26,7 +26,7 @@ public final class VipUserInfo
   public String sGrayTail = "";
   public String sRedPackRemard = "";
   public String sUri = "";
-  public ArrayList<Long> vSendList;
+  public ArrayList<Long> vSendList = null;
   
   static
   {

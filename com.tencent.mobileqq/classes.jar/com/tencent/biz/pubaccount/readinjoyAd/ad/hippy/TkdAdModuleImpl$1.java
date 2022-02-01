@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.hippy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mtt.hippy.modules.Promise;
-import uhe;
 
-public class TkdAdModuleImpl$1
+class TkdAdModuleImpl$1
   implements Runnable
 {
-  public TkdAdModuleImpl$1(uhe paramuhe, String paramString, int paramInt, Promise paramPromise) {}
+  TkdAdModuleImpl$1(TkdAdModuleImpl paramTkdAdModuleImpl, String paramString, int paramInt, Promise paramPromise) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class TkdAdModuleImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.hippy.TkdAdModuleImpl.1
  * JD-Core Version:    0.7.0.1
  */

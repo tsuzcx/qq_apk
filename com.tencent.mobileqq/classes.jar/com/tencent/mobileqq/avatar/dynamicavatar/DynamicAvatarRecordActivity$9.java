@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import bdbv;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -18,7 +18,7 @@ class DynamicAvatarRecordActivity$9
       if (QLog.isColorLevel()) {
         QLog.i("DynamicAvatarRecordActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
       }
-      bdbv.a().a().recordSubmit();
+      RecordManager.a().a().recordSubmit();
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)

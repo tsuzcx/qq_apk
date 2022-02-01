@@ -3,33 +3,34 @@ package com.tencent.mobileqq.troop.activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqeh;
-import bevz;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
 import org.json.JSONObject;
 
 public class MediaPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MediaPreviewInfo> CREATOR = new bevz();
+  public static final Parcelable.Creator<MediaPreviewInfo> CREATOR = new MediaPreviewInfo.1();
   public int a;
   public String a;
-  public String b;
-  public String c;
+  public String b = null;
+  public String c = null;
   
   public MediaPreviewInfo()
   {
     this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = null;
   }
   
   public MediaPreviewInfo(JSONObject paramJSONObject)
   {
     this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = null;
     if (paramJSONObject != null)
     {
       this.jdField_a_of_type_Int = paramJSONObject.optInt("type", -1);
       this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("image");
       this.b = paramJSONObject.optString("video");
-      this.c = aqeh.b(this.b);
+      this.c = DynamicAvatarDownloadManager.b(this.b);
     }
   }
   

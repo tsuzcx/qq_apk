@@ -1,7 +1,7 @@
 package com.tencent.sharp.jni;
 
 import android.media.AudioManager;
-import lbd;
+import com.tencent.av.AVLog;
 
 class TraeAudioManager$headsetSwitchThread
   extends TraeAudioManager.SwitchThread
@@ -47,7 +47,7 @@ class TraeAudioManager$headsetSwitchThread
         {
           for (;;)
           {
-            lbd.h(this.jdField_a_of_type_JavaLangString, localInterruptedException.getMessage());
+            AVLog.printErrorLog(this.jdField_a_of_type_JavaLangString, localInterruptedException.getMessage());
           }
         }
       }
@@ -58,7 +58,7 @@ class TraeAudioManager$headsetSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioManager.headsetSwitchThread
  * JD-Core Version:    0.7.0.1
  */

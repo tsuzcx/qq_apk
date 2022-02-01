@@ -1,7 +1,5 @@
 package dov.com.qq.im.ae.play;
 
-import aeow;
-import aeox;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -40,21 +38,16 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bisa;
-import bkyq;
-import bmwf;
-import bmws;
-import bmwt;
-import bnqm;
-import bnrf;
-import bnrh;
-import bptd;
+import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.PublicFragmentActivityCallBackInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForPeak;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.utils.PermissionUtils;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
@@ -62,7 +55,6 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
-import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
 import com.tencent.ttpic.util.CosFunUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.videoshelf.libpag.PagNotSupportSystemException;
@@ -74,6 +66,14 @@ import com.tencent.ttpic.videoshelf.model.template.MaskNodeGroup;
 import com.tencent.ttpic.videoshelf.model.template.MaskNodeItem;
 import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
 import com.tencent.ttpic.videoshelf.parser.TemplateParser;
+import com.tencent.util.UiThreadUtil;
+import dov.com.qq.im.ae.AEPath;
+import dov.com.qq.im.ae.AEPath.PLAY.CACHE;
+import dov.com.qq.im.ae.AEPath.PLAY.FILES;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.util.AEFastClickThrottle;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.tencent.mobileqq.shortvideo.util.HwVideoMerge;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,11 +84,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Timer;
-import zeb;
+import org.light.device.OfflineConfig;
 
 public class AEVideoShelfEditFragment
   extends PublicBaseFragment
-  implements aeox, View.OnClickListener, EditTextViewer.OnDownloadDialogListener, EditTextViewer.OnSaveTextInfoListener, FaceImageViewer.OnSaveScrollInfoListener, ScaleMoveImageViewer.OnSaveScrollInfoListener
+  implements View.OnClickListener, PublicFragmentActivityCallBackInterface, EditTextViewer.OnDownloadDialogListener, EditTextViewer.OnSaveTextInfoListener, FaceImageViewer.OnSaveScrollInfoListener, ScaleMoveImageViewer.OnSaveScrollInfoListener
 {
   private static int AUDIO_UPDATE_PROGRESS_TIME = 200;
   private static final long INTERVAL_UPDATE_PROGRESS = 200L;
@@ -111,9 +111,9 @@ public class AEVideoShelfEditFragment
   private View mButtonChangeImage;
   private TextView mButtonOk;
   private RelativeLayout mCenterView;
-  private int mCenterViewHeight;
-  private int mCenterViewWidth;
-  private int mCurrentFaceImageViewerNodeId;
+  private int mCenterViewHeight = 0;
+  private int mCenterViewWidth = 0;
+  private int mCurrentFaceImageViewerNodeId = 0;
   private Dialog mDialog;
   private VideoShelfEngine mEngine;
   private HashSet<FaceImageViewer> mFaceImageViewerSet = new HashSet();
@@ -128,8 +128,8 @@ public class AEVideoShelfEditFragment
   private List<NodeGroup> mNodeGroupList = new ArrayList();
   private SparseIntArray mNodeSourceMap = new SparseIntArray();
   private VideoListAdapter.OnVideoNodeClickedListener mOnVideoNodeClickedListener = new AEVideoShelfEditFragment.20(this);
-  private int mPrePos;
-  private double mProgress;
+  private int mPrePos = 0;
+  private double mProgress = 0.0D;
   private Map<String, Bitmap> mSourceBitmaps = new HashMap();
   private ArrayList<String> mSourcePhotoList;
   private String mTakeSameName;
@@ -140,7 +140,7 @@ public class AEVideoShelfEditFragment
   private VideoListAdapter mVideoListAdapter;
   private String outputDir;
   private String playShowTabName;
-  bisa ppd;
+  ProgressPieDrawable ppd;
   
   private void checkJumpToPreview(Intent paramIntent)
   {
@@ -176,21 +176,21 @@ public class AEVideoShelfEditFragment
     }
   }
   
-  private bisa createProgressPie()
+  private ProgressPieDrawable createProgressPie()
   {
-    bisa localbisa = new bisa(getActivity());
-    localbisa.a(AIOUtils.dp2px(50.0F, getActivity().getResources()));
-    localbisa.a(true);
-    localbisa.c(false);
-    localbisa.g(-1);
-    localbisa.f(0);
-    localbisa.d(-15550475);
-    localbisa.i(3);
-    localbisa.jdField_f_of_type_Boolean = true;
-    localbisa.jdField_f_of_type_Int = 2;
-    localbisa.e(true);
-    localbisa.a(new AEVideoShelfEditFragment.3(this));
-    return localbisa;
+    ProgressPieDrawable localProgressPieDrawable = new ProgressPieDrawable(getActivity());
+    localProgressPieDrawable.a(AIOUtils.a(50.0F, getActivity().getResources()));
+    localProgressPieDrawable.a(true);
+    localProgressPieDrawable.c(false);
+    localProgressPieDrawable.g(-1);
+    localProgressPieDrawable.f(0);
+    localProgressPieDrawable.d(-15550475);
+    localProgressPieDrawable.i(3);
+    localProgressPieDrawable.jdField_f_of_type_Boolean = true;
+    localProgressPieDrawable.jdField_f_of_type_Int = 2;
+    localProgressPieDrawable.e(true);
+    localProgressPieDrawable.a(new AEVideoShelfEditFragment.3(this));
+    return localProgressPieDrawable;
   }
   
   private void detectFaceInternal(FaceImageViewer paramFaceImageViewer, Bitmap paramBitmap)
@@ -211,7 +211,7 @@ public class AEVideoShelfEditFragment
       ((FaceParam)localObject3).angles = ((FaceInfo)localObject2).angles;
       ((List)localObject1).add(localObject3);
     }
-    bnrh.a("AEVideoShelfEditFrag", "[PlayShow] onFaceImageChanged faceCount = " + i);
+    AEQLog.a("AEVideoShelfEditFrag", "[PlayShow] onFaceImageChanged faceCount = " + i);
     if (i >= 1)
     {
       paramBitmap = (FaceParam)((List)localObject1).get(0);
@@ -229,9 +229,9 @@ public class AEVideoShelfEditFragment
     for (;;)
     {
       break;
-      bkyq.a(new AEVideoShelfEditFragment.10(this, paramFaceImageViewer, paramBitmap));
+      UiThreadUtil.a(new AEVideoShelfEditFragment.10(this, paramFaceImageViewer, paramBitmap));
       return;
-      bkyq.a(new AEVideoShelfEditFragment.11(this));
+      UiThreadUtil.a(new AEVideoShelfEditFragment.11(this));
       return;
     }
   }
@@ -279,7 +279,7 @@ public class AEVideoShelfEditFragment
         if (!bool) {
           break label290;
         }
-        localObject1 = bmwf.a(bmwf.a());
+        localObject1 = AEPath.a(AEPath.a());
         localStringBuilder = new StringBuilder().append("outputDir: ").append((String)localObject1);
         if (!new File((String)localObject1).exists()) {
           break label319;
@@ -289,15 +289,15 @@ public class AEVideoShelfEditFragment
       label319:
       for (Object localObject2 = " exist";; localObject2 = " not exist")
       {
-        bnrh.b("AEVideoShelfEditFrag", (String)localObject2);
+        AEQLog.b("AEVideoShelfEditFrag", (String)localObject2);
         this.mTimer = new Timer();
         this.mTimer.schedule(new AEVideoShelfEditFragment.16(this), 0L, AUDIO_UPDATE_PROGRESS_TIME);
-        if (bptd.a(this.mEngine.getOutputVideoPath(), this.mAudioPath, (String)localObject1, 0) == 0)
+        if (HwVideoMerge.a(this.mEngine.getOutputVideoPath(), this.mAudioPath, (String)localObject1, 0) == 0)
         {
           localObject2 = new File(this.mEngine.getOutputVideoPath());
           if (((File)localObject2).exists())
           {
-            bnrh.b("AEVideoShelfEditFrag", "finishAudioVideoMerge done!");
+            AEQLog.b("AEVideoShelfEditFrag", "finishAudioVideoMerge done!");
             ((File)localObject2).delete();
           }
           this.mFinalVideoPath = ((String)localObject1);
@@ -307,9 +307,9 @@ public class AEVideoShelfEditFragment
         if ((!bool) || (this.mFinalVideoPath == null)) {
           break;
         }
-        zeb.a(BaseApplication.getContext(), new File(this.mFinalVideoPath));
+        FileUtils.a(BaseApplication.getContext(), new File(this.mFinalVideoPath));
         return;
-        localObject1 = bmwf.a(bmwt.e + File.separator);
+        localObject1 = AEPath.a(AEPath.PLAY.FILES.f + File.separator);
         break label108;
       }
     }
@@ -546,7 +546,7 @@ public class AEVideoShelfEditFragment
       }
     } while (!(paramImageView instanceof EditTextViewer));
     ((EditTextViewer)paramImageView).updateMatrix(Math.abs(paramInt1 - i), Math.abs(paramInt2 - j));
-    paramInt1 = getResources().getDimensionPixelSize(2131296720);
+    paramInt1 = getResources().getDimensionPixelSize(2131296739);
     ((EditTextViewer)paramImageView).setActionBarHeight(paramInt1);
   }
   
@@ -723,7 +723,7 @@ public class AEVideoShelfEditFragment
     this.mTemplate = TemplateParser.parse(getActivity(), this.mTemplatePath);
     if (this.mTemplate == null)
     {
-      bnrh.c("AEVideoShelfEditFrag", "parse template Error!");
+      AEQLog.c("AEVideoShelfEditFrag", "parse template Error!");
       return;
     }
     try
@@ -731,7 +731,7 @@ public class AEVideoShelfEditFragment
       this.mEngine = new VideoShelfEngine(this.mTemplate.getVersion());
       if (this.mEngine == null)
       {
-        bnrh.c("AEVideoShelfEditFrag", "init Engine Error!");
+        AEQLog.c("AEVideoShelfEditFrag", "init Engine Error!");
         return;
       }
     }
@@ -740,8 +740,8 @@ public class AEVideoShelfEditFragment
       for (;;)
       {
         this.mEngine = null;
-        bnrh.d("AEVideoShelfEditFrag", localPagNotSupportSystemException.getMessage());
-        bkyq.a(new AEVideoShelfEditFragment.4(this), 2000L);
+        AEQLog.d("AEVideoShelfEditFrag", localPagNotSupportSystemException.getMessage());
+        UiThreadUtil.a(new AEVideoShelfEditFragment.4(this), 2000L);
       }
       new AEVideoShelfEditFragment.5(this).execute(new Void[0]);
     }
@@ -842,11 +842,11 @@ public class AEVideoShelfEditFragment
       }
     }
     this.mDialog.requestWindowFeature(1);
-    this.mDialog.setContentView(2131561862);
-    localObject = (ImageView)this.mDialog.findViewById(2131373219);
+    this.mDialog.setContentView(2131561994);
+    localObject = (ImageView)this.mDialog.findViewById(2131373545);
     this.ppd = createProgressPie();
     ((ImageView)localObject).setImageDrawable(this.ppd);
-    ((TextView)this.mDialog.findViewById(2131371598)).setText(2131689785);
+    ((TextView)this.mDialog.findViewById(2131371908)).setText(2131689825);
     this.mDialog.setCancelable(true);
     this.mDialog.setCanceledOnTouchOutside(false);
     this.mDialog.setOnCancelListener(new AEVideoShelfEditFragment.2(this));
@@ -880,15 +880,15 @@ public class AEVideoShelfEditFragment
   
   private void initView()
   {
-    this.mButtonCancel = getActivity().findViewById(2131363323);
-    this.mButtonOk = ((TextView)getActivity().findViewById(2131364020));
-    this.mButtonOk.setText(2131689771);
+    this.mButtonCancel = getActivity().findViewById(2131363402);
+    this.mButtonOk = ((TextView)getActivity().findViewById(2131364119));
+    this.mButtonOk.setText(2131689811);
     this.mButtonOk.setOnClickListener(this);
     this.mButtonCancel.setOnClickListener(this);
-    this.mButtonChangeImage = getActivity().findViewById(2131365963);
+    this.mButtonChangeImage = getActivity().findViewById(2131366128);
     this.mButtonChangeImage.setOnClickListener(this);
-    this.mCenterView = ((RelativeLayout)getActivity().findViewById(2131364419));
-    this.mBoxRecycleView = ((RecyclerView)getActivity().findViewById(2131363729));
+    this.mCenterView = ((RelativeLayout)getActivity().findViewById(2131364526));
+    this.mBoxRecycleView = ((RecyclerView)getActivity().findViewById(2131363825));
     LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getActivity());
     localLinearLayoutManager.setOrientation(0);
     this.mBoxRecycleView.addItemDecoration(new AEVideoShelfEditFragment.SpacesItemDecoration(this, dp2px(getActivity(), 12.0F)));
@@ -922,7 +922,7 @@ public class AEVideoShelfEditFragment
     localIntent.putStringArrayListExtra("PhotoList", paramArrayList);
     localIntent.putExtra("jump_in_from", paramInt);
     localIntent.putExtra("loc_play_show_take_same_name", paramString5);
-    aeow.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class);
+    PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class);
   }
   
   public static void jumpToMeForResult(Activity paramActivity, int paramInt1, String paramString1, String paramString2, String paramString3, ArrayList<String> paramArrayList, int paramInt2)
@@ -933,13 +933,13 @@ public class AEVideoShelfEditFragment
     localIntent.putExtra("MaterialName", paramString3);
     localIntent.putStringArrayListExtra("PhotoList", paramArrayList);
     localIntent.putExtra("jump_in_from", paramInt2);
-    aeow.a(paramActivity, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class, paramInt1);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class, paramInt1);
   }
   
   private void jumpToPagRealtimePreview()
   {
     Log.i("AEVideoShelfEditFrag", "未合成视频，将直接实时预览。");
-    bnrh.b("AEVideoShelfEditFrag", "未合成视频，将直接实时预览。");
+    AEQLog.b("AEVideoShelfEditFrag", "未合成视频，将直接实时预览。");
     if (this.mTemplate == null) {
       return;
     }
@@ -952,7 +952,7 @@ public class AEVideoShelfEditFragment
     {
       wakeLock = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(536870918, AEVideoShelfEditFragment.class.getSimpleName());
       wakeLock.acquire();
-      bnrh.b("AEVideoShelfEditFrag", "keepScreenOn!");
+      AEQLog.b("AEVideoShelfEditFrag", "keepScreenOn!");
       return;
     }
     if (wakeLock != null)
@@ -960,7 +960,7 @@ public class AEVideoShelfEditFragment
       wakeLock.release();
       wakeLock = null;
     }
-    bnrh.b("AEVideoShelfEditFrag", "keepScreenOff!");
+    AEQLog.b("AEVideoShelfEditFrag", "keepScreenOff!");
   }
   
   private static void layoutView(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -1089,30 +1089,30 @@ public class AEVideoShelfEditFragment
   private String saveMyBitmap(int paramInt, Bitmap paramBitmap)
   {
     // Byte code:
-    //   0: new 523	java/lang/StringBuilder
+    //   0: new 524	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 524	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 525	java/lang/StringBuilder:<init>	()V
     //   7: aload_0
-    //   8: getfield 371	dov/com/qq/im/ae/play/AEVideoShelfEditFragment:outputDir	Ljava/lang/String;
-    //   11: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14: getstatic 673	java/io/File:separator	Ljava/lang/String;
-    //   17: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8: getfield 373	dov/com/qq/im/ae/play/AEVideoShelfEditFragment:outputDir	Ljava/lang/String;
+    //   11: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: getstatic 675	java/io/File:separator	Ljava/lang/String;
+    //   17: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   20: ldc_w 1480
-    //   23: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: invokestatic 1486	java/lang/System:currentTimeMillis	()J
     //   29: invokevirtual 1489	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   32: ldc_w 1491
-    //   35: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: iload_1
-    //   39: invokevirtual 533	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 534	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   42: ldc_w 1493
-    //   45: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 538	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   51: astore 4
-    //   53: new 369	java/io/File
+    //   53: new 371	java/io/File
     //   56: dup
     //   57: aload 4
-    //   59: invokespecial 373	java/io/File:<init>	(Ljava/lang/String;)V
+    //   59: invokespecial 375	java/io/File:<init>	(Ljava/lang/String;)V
     //   62: astore_3
     //   63: aload_3
     //   64: invokevirtual 1496	java/io/File:createNewFile	()Z
@@ -1136,31 +1136,31 @@ public class AEVideoShelfEditFragment
     //   98: areturn
     //   99: astore 5
     //   101: ldc 33
-    //   103: new 523	java/lang/StringBuilder
+    //   103: new 524	java/lang/StringBuilder
     //   106: dup
-    //   107: invokespecial 524	java/lang/StringBuilder:<init>	()V
+    //   107: invokespecial 525	java/lang/StringBuilder:<init>	()V
     //   110: ldc_w 1519
-    //   113: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: aload 5
     //   118: invokevirtual 1520	java/io/IOException:toString	()Ljava/lang/String;
-    //   121: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   127: invokestatic 1026	bnrh:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   121: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: invokevirtual 538	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   127: invokestatic 1028	dov/com/qq/im/ae/util/AEQLog:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   130: goto -62 -> 68
     //   133: astore_3
     //   134: aload_3
     //   135: invokevirtual 1523	java/io/FileNotFoundException:printStackTrace	()V
     //   138: ldc 33
-    //   140: new 523	java/lang/StringBuilder
+    //   140: new 524	java/lang/StringBuilder
     //   143: dup
-    //   144: invokespecial 524	java/lang/StringBuilder:<init>	()V
+    //   144: invokespecial 525	java/lang/StringBuilder:<init>	()V
     //   147: ldc_w 1525
-    //   150: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   153: aload_3
     //   154: invokevirtual 1526	java/io/FileNotFoundException:toString	()Ljava/lang/String;
-    //   157: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: invokestatic 1026	bnrh:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   157: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: invokevirtual 538	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokestatic 1028	dov/com/qq/im/ae/util/AEQLog:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   166: aconst_null
     //   167: astore_3
     //   168: goto -91 -> 77
@@ -1168,47 +1168,47 @@ public class AEVideoShelfEditFragment
     //   172: aload_2
     //   173: invokevirtual 1527	java/lang/Exception:printStackTrace	()V
     //   176: ldc 33
-    //   178: new 523	java/lang/StringBuilder
+    //   178: new 524	java/lang/StringBuilder
     //   181: dup
-    //   182: invokespecial 524	java/lang/StringBuilder:<init>	()V
+    //   182: invokespecial 525	java/lang/StringBuilder:<init>	()V
     //   185: ldc_w 1529
-    //   188: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   191: aload_2
     //   192: invokevirtual 1530	java/lang/Exception:toString	()Ljava/lang/String;
-    //   195: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: invokestatic 1026	bnrh:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   195: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: invokevirtual 538	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   201: invokestatic 1028	dov/com/qq/im/ae/util/AEQLog:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   204: aconst_null
     //   205: areturn
     //   206: astore_2
     //   207: aload_2
     //   208: invokevirtual 1531	java/io/IOException:printStackTrace	()V
     //   211: ldc 33
-    //   213: new 523	java/lang/StringBuilder
+    //   213: new 524	java/lang/StringBuilder
     //   216: dup
-    //   217: invokespecial 524	java/lang/StringBuilder:<init>	()V
+    //   217: invokespecial 525	java/lang/StringBuilder:<init>	()V
     //   220: ldc_w 1533
-    //   223: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   226: aload_2
     //   227: invokevirtual 1520	java/io/IOException:toString	()Ljava/lang/String;
-    //   230: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   236: invokestatic 1026	bnrh:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   230: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: invokevirtual 538	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: invokestatic 1028	dov/com/qq/im/ae/util/AEQLog:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   239: goto -147 -> 92
     //   242: astore_2
     //   243: aload_2
     //   244: invokevirtual 1531	java/io/IOException:printStackTrace	()V
     //   247: ldc 33
-    //   249: new 523	java/lang/StringBuilder
+    //   249: new 524	java/lang/StringBuilder
     //   252: dup
-    //   253: invokespecial 524	java/lang/StringBuilder:<init>	()V
+    //   253: invokespecial 525	java/lang/StringBuilder:<init>	()V
     //   256: ldc_w 1535
-    //   259: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   262: aload_2
     //   263: invokevirtual 1520	java/io/IOException:toString	()Ljava/lang/String;
-    //   266: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   269: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   272: invokestatic 1026	bnrh:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   266: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: invokevirtual 538	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   272: invokestatic 1028	dov/com/qq/im/ae/util/AEQLog:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   275: aload 4
     //   277: areturn
     // Local variable table:
@@ -1400,12 +1400,12 @@ public class AEVideoShelfEditFragment
     {
       if (this.mLoadingDialog == null)
       {
-        this.mLoadingDialog = new ReportDialog((Context)localObject, 2131755829);
+        this.mLoadingDialog = new ReportDialog((Context)localObject, 2131755842);
         this.mLoadingDialog.setCancelable(false);
         this.mLoadingDialog.setCanceledOnTouchOutside(false);
-        this.mLoadingDialog.setContentView(2131559607);
+        this.mLoadingDialog.setContentView(2131559683);
       }
-      localObject = (TextView)this.mLoadingDialog.findViewById(2131372740);
+      localObject = (TextView)this.mLoadingDialog.findViewById(2131373066);
       if (TextUtils.isEmpty(paramString)) {
         break label98;
       }
@@ -1416,7 +1416,7 @@ public class AEVideoShelfEditFragment
       this.mLoadingDialog.show();
       return;
       label98:
-      ((TextView)localObject).setText(2131694653);
+      ((TextView)localObject).setText(2131694890);
     }
   }
   
@@ -1432,7 +1432,7 @@ public class AEVideoShelfEditFragment
     if (!paramBoolean)
     {
       Log.i("AEVideoShelfEditFrag", "已经合成完视频，不进行实时预览。");
-      bnrh.b("AEVideoShelfEditFrag", "已经合成完视频，不进行实时预览。");
+      AEQLog.b("AEVideoShelfEditFrag", "已经合成完视频，不进行实时预览。");
       if ((this.mTemplate == null) || (this.mFinalVideoPath == null)) {
         return;
       }
@@ -1501,29 +1501,29 @@ public class AEVideoShelfEditFragment
   
   public void onCancelCompleted()
   {
-    bnrh.b("AEVideoShelfEditFrag", "Merge Video step onCancelCompleted");
+    AEQLog.b("AEVideoShelfEditFrag", "Merge Video step onCancelCompleted");
     this.mGenerateBegin = 0L;
-    bkyq.a(new AEVideoShelfEditFragment.18(this));
+    UiThreadUtil.a(new AEVideoShelfEditFragment.18(this));
   }
   
   public void onClick(View paramView)
   {
-    if (bnrf.a(paramView)) {}
+    if (AEFastClickThrottle.a(paramView)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       int i = paramView.getId();
-      if (i == 2131363323)
+      if (i == 2131363402)
       {
         onBackPressed();
       }
-      else if (i == 2131364020)
+      else if (i == 2131364119)
       {
         goNext();
-        bnqm.a().g();
+        AEBaseDataReporter.a().g();
       }
-      else if (i == 2131365963)
+      else if (i == 2131366128)
       {
         onFirstImageViewClick(paramView);
       }
@@ -1537,13 +1537,13 @@ public class AEVideoShelfEditFragment
   
   public void onCompleted()
   {
-    bnrh.b("AEVideoShelfEditFrag", "Merge Video step onCompleted");
+    AEQLog.b("AEVideoShelfEditFrag", "Merge Video step onCompleted");
     if (this.mGenerateBegin > 0L) {}
     for (long l = System.currentTimeMillis() - this.mGenerateBegin;; l = 0L)
     {
       this.mGenerateBegin = 0L;
       finishAudioVideoMerge();
-      bkyq.a(new AEVideoShelfEditFragment.15(this, l));
+      UiThreadUtil.a(new AEVideoShelfEditFragment.15(this, l));
       startVideoTemplateSaveActivity(false);
       return;
     }
@@ -1551,7 +1551,7 @@ public class AEVideoShelfEditFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558504, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558512, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -1614,8 +1614,8 @@ public class AEVideoShelfEditFragment
   public void onError(int paramInt1, int paramInt2, String paramString)
   {
     this.mGenerateBegin = 0L;
-    bkyq.a(new AEVideoShelfEditFragment.17(this));
-    bnrh.c("AEVideoShelfEditFrag", "Merge Video step onError");
+    UiThreadUtil.a(new AEVideoShelfEditFragment.17(this));
+    AEQLog.c("AEVideoShelfEditFrag", "Merge Video step onError");
   }
   
   public void onNewIntent(Intent paramIntent)
@@ -1673,7 +1673,7 @@ public class AEVideoShelfEditFragment
     long l = System.currentTimeMillis();
     if (l - this.mLastUpdateProgressTimeMs > 200L)
     {
-      bkyq.a(new AEVideoShelfEditFragment.14(this, paramInt));
+      UiThreadUtil.a(new AEVideoShelfEditFragment.14(this, paramInt));
       this.mLastUpdateProgressTimeMs = l;
     }
   }
@@ -1758,9 +1758,9 @@ public class AEVideoShelfEditFragment
   
   public void onStartGenerate()
   {
-    bnrh.b("AEVideoShelfEditFrag", "Merge Video step onStartGenerate");
+    AEQLog.b("AEVideoShelfEditFrag", "Merge Video step onStartGenerate");
     this.mGenerateBegin = System.currentTimeMillis();
-    bkyq.a(new AEVideoShelfEditFragment.13(this));
+    UiThreadUtil.a(new AEVideoShelfEditFragment.13(this));
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -1768,7 +1768,7 @@ public class AEVideoShelfEditFragment
     initData();
     initView();
     initSoftInputMode();
-    this.outputDir = bmws.c;
+    this.outputDir = AEPath.PLAY.CACHE.c;
     paramView = new File(this.outputDir);
     if (!paramView.exists()) {
       paramView.mkdirs();
@@ -1777,12 +1777,12 @@ public class AEVideoShelfEditFragment
   
   public void showDownloadDialog()
   {
-    showLoading(getResources().getString(2131689780));
+    showLoading(getResources().getString(2131689820));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoShelfEditFragment
  * JD-Core Version:    0.7.0.1
  */

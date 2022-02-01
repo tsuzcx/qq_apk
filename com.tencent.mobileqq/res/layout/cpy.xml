@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:id="@id/mri" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="28.0dip" android:layout_marginBottom="12.0dip"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/myk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gul" android:layout_centerVertical="true" />
-    <TextView android:id="@id/nyk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="00:00" android:layout_toRightOf="@id/myk" android:layout_centerVertical="true" />
-    <SeekBar android:id="@id/ilm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:maxHeight="2.0dip" android:progressDrawable="@drawable/e79" android:minHeight="2.0dip" android:thumb="@drawable/e7a" android:layout_toLeftOf="@id/nyo" android:layout_toRightOf="@id/nyk" android:layout_centerVertical="true" />
-    <TextView android:id="@id/nyo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:50" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:id="@id/n__" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+</FrameLayout>

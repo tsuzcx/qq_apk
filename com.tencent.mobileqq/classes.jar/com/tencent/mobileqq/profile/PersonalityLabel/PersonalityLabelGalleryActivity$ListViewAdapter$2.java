@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import azpy;
-
-public class PersonalityLabelGalleryActivity$ListViewAdapter$2
+class PersonalityLabelGalleryActivity$ListViewAdapter$2
   implements Runnable
 {
-  public PersonalityLabelGalleryActivity$ListViewAdapter$2(azpy paramazpy) {}
+  PersonalityLabelGalleryActivity$ListViewAdapter$2(PersonalityLabelGalleryActivity.ListViewAdapter paramListViewAdapter) {}
   
   public void run()
   {

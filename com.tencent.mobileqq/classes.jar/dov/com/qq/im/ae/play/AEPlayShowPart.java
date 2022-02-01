@@ -16,29 +16,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.RelativeLayout.LayoutParams;
-import bczs;
-import bmwt;
-import bmxa;
-import bmxz;
-import bnjq;
-import bnka;
-import bnkb;
-import bnke;
-import bnpz;
-import bnqb;
-import bnqc;
-import bnqq;
-import bnrh;
-import bogd;
-import bopi;
 import com.tencent.mobileqq.activity.PreloadWebService;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.shortvideo.common.Observer;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import dov.com.qq.im.ae.AEPath.PLAY.FILES;
+import dov.com.qq.im.ae.AEPituCameraUnit;
+import dov.com.qq.im.ae.AEViewModelProviders;
+import dov.com.qq.im.ae.config.CameraOperationHelper;
+import dov.com.qq.im.ae.data.AEMaterialCategory;
+import dov.com.qq.im.ae.data.AEMaterialManager;
+import dov.com.qq.im.ae.data.AEMaterialMetaData;
 import dov.com.qq.im.ae.mode.AECaptureMode;
+import dov.com.qq.im.ae.mode.AEVideoStoryCaptureModeViewModel;
+import dov.com.qq.im.ae.part.VideoStoryBasePart;
+import dov.com.qq.im.ae.part.VideoStoryCapturePartManager;
+import dov.com.qq.im.ae.report.AEBaseReportParam;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.view.QIMSlidingTabView.TabIcon;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -46,15 +46,15 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public class AEPlayShowPart
-  extends bnqb
-  implements bczs
+  extends VideoStoryBasePart
+  implements Observer
 {
   public static final int ANIMATION_DURATION = 200;
   private static final String TAG = "AEPlayShowPart";
-  private bnpz mCaptureModeViewModel;
-  private bnkb mMidMaterialManager;
+  private AEVideoStoryCaptureModeViewModel mCaptureModeViewModel;
+  private AEMaterialManager mMidMaterialManager;
   private AEPlayShowMaterialManager mPsMaterialManager;
-  private bmxa mUnit;
+  private AEPituCameraUnit mUnit;
   private View progressView;
   private AEPlayShowTabView tabView;
   private View tvRetryBtn;
@@ -64,12 +64,12 @@ public class AEPlayShowPart
   private PlayViewPagerAdapter viewPagerAdapter;
   private ViewStub vsNoData;
   
-  public AEPlayShowPart(Activity paramActivity, ViewStub paramViewStub, bnqc parambnqc)
+  public AEPlayShowPart(Activity paramActivity, ViewStub paramViewStub, VideoStoryCapturePartManager paramVideoStoryCapturePartManager)
   {
-    super(paramActivity, paramViewStub, parambnqc);
-    this.mUnit = ((bmxa)parambnqc.a(65537, new Object[0]));
-    this.mPsMaterialManager = ((AEPlayShowMaterialManager)bogd.a().c(19));
-    this.mMidMaterialManager = ((bnkb)bogd.a().c(18));
+    super(paramActivity, paramViewStub, paramVideoStoryCapturePartManager);
+    this.mUnit = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
+    this.mPsMaterialManager = ((AEPlayShowMaterialManager)QIMManager.a().c(19));
+    this.mMidMaterialManager = ((AEMaterialManager)QIMManager.a().c(18));
     ThreadManager.getFileThreadHandler().postAtFrontOfQueue(new AEPlayShowPart.1(this));
     this.mPsMaterialManager.addObserver(this, 1);
     this.mMidMaterialManager.a(this, 116);
@@ -92,8 +92,8 @@ public class AEPlayShowPart
     Object localObject = this.viewPagerAdapter.getmCategoryList();
     if (localObject != null)
     {
-      bnka localbnka;
-      bnke localbnke;
+      AEMaterialCategory localAEMaterialCategory;
+      AEMaterialMetaData localAEMaterialMetaData;
       do
       {
         localObject = ((List)localObject).iterator();
@@ -105,13 +105,13 @@ public class AEPlayShowPart
             if (!((Iterator)localObject).hasNext()) {
               break;
             }
-            localbnka = (bnka)((Iterator)localObject).next();
-          } while ((localbnka == null) || (localbnka.jdField_a_of_type_JavaUtilList == null));
-          localIterator = localbnka.jdField_a_of_type_JavaUtilList.iterator();
+            localAEMaterialCategory = (AEMaterialCategory)((Iterator)localObject).next();
+          } while ((localAEMaterialCategory == null) || (localAEMaterialCategory.jdField_a_of_type_JavaUtilList == null));
+          localIterator = localAEMaterialCategory.jdField_a_of_type_JavaUtilList.iterator();
         }
-        localbnke = (bnke)localIterator.next();
-      } while ((localbnke == null) || (paramString == null) || (!paramString.equals(localbnke.jdField_a_of_type_JavaLangString)));
-      return localbnka.jdField_a_of_type_JavaLangString;
+        localAEMaterialMetaData = (AEMaterialMetaData)localIterator.next();
+      } while ((localAEMaterialMetaData == null) || (paramString == null) || (!paramString.equals(localAEMaterialMetaData.jdField_a_of_type_JavaLangString)));
+      return localAEMaterialCategory.jdField_a_of_type_JavaLangString;
     }
     return "";
   }
@@ -121,12 +121,12 @@ public class AEPlayShowPart
     ArrayList localArrayList = this.tabView.getDataList();
     int i = this.tabView.getCurIndex();
     if ((localArrayList != null) && (i < localArrayList.size())) {
-      return ((bopi)localArrayList.get(i)).jdField_a_of_type_JavaLangString;
+      return ((QIMSlidingTabView.TabIcon)localArrayList.get(i)).jdField_a_of_type_JavaLangString;
     }
     return "";
   }
   
-  private bnka getCurrentTabMaterial(String paramString)
+  private AEMaterialCategory getCurrentTabMaterial(String paramString)
   {
     Object localObject = this.viewPagerAdapter.getmCategoryList();
     if (localObject != null)
@@ -134,9 +134,9 @@ public class AEPlayShowPart
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        bnka localbnka = (bnka)((Iterator)localObject).next();
-        if ((localbnka != null) && (paramString != null) && (paramString.equals(localbnka.b))) {
-          return localbnka;
+        AEMaterialCategory localAEMaterialCategory = (AEMaterialCategory)((Iterator)localObject).next();
+        if ((localAEMaterialCategory != null) && (paramString != null) && (paramString.equals(localAEMaterialCategory.b))) {
+          return localAEMaterialCategory;
         }
       }
     }
@@ -152,7 +152,7 @@ public class AEPlayShowPart
   }
   
   @NonNull
-  private List<bnka> getPlayShowCategories()
+  private List<AEMaterialCategory> getPlayShowCategories()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowPart", 4, "getPlayShowCategories");
@@ -168,7 +168,7 @@ public class AEPlayShowPart
     return "";
   }
   
-  private ArrayList<bopi> getTabDataList(List<bnka> paramList)
+  private ArrayList<QIMSlidingTabView.TabIcon> getTabDataList(List<AEMaterialCategory> paramList)
   {
     if (paramList == null) {
       paramList = null;
@@ -182,10 +182,10 @@ public class AEPlayShowPart
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
-          bnka localbnka = (bnka)paramList.next();
-          bopi localbopi = new bopi();
-          localbopi.jdField_a_of_type_JavaLangString = localbnka.b;
-          localArrayList.add(localbopi);
+          AEMaterialCategory localAEMaterialCategory = (AEMaterialCategory)paramList.next();
+          QIMSlidingTabView.TabIcon localTabIcon = new QIMSlidingTabView.TabIcon();
+          localTabIcon.jdField_a_of_type_JavaLangString = localAEMaterialCategory.b;
+          localArrayList.add(localTabIcon);
         }
         paramList = localArrayList;
       }
@@ -200,8 +200,8 @@ public class AEPlayShowPart
       Object localObject1 = this.viewPagerAdapter.getmCategoryList();
       if (localObject1 != null)
       {
-        bnka localbnka;
-        bnke localbnke;
+        AEMaterialCategory localAEMaterialCategory;
+        AEMaterialMetaData localAEMaterialMetaData;
         do
         {
           localObject1 = ((List)localObject1).iterator();
@@ -215,28 +215,28 @@ public class AEPlayShowPart
                 if (!((Iterator)localObject1).hasNext()) {
                   break;
                 }
-                localbnka = (bnka)((Iterator)localObject1).next();
-              } while (localbnka == null);
-              localObject2 = localbnka.jdField_a_of_type_JavaUtilList;
+                localAEMaterialCategory = (AEMaterialCategory)((Iterator)localObject1).next();
+              } while (localAEMaterialCategory == null);
+              localObject2 = localAEMaterialCategory.jdField_a_of_type_JavaUtilList;
             } while (localObject2 == null);
             localObject2 = ((List)localObject2).iterator();
           }
-          localbnke = (bnke)((Iterator)localObject2).next();
-        } while ((localbnke == null) || (paramString == null) || (!paramString.equals(localbnke.jdField_a_of_type_JavaLangString)));
-        return localbnka.b;
+          localAEMaterialMetaData = (AEMaterialMetaData)((Iterator)localObject2).next();
+        } while ((localAEMaterialMetaData == null) || (paramString == null) || (!paramString.equals(localAEMaterialMetaData.jdField_a_of_type_JavaLangString)));
+        return localAEMaterialCategory.b;
       }
     }
     return "";
   }
   
-  private void initNoDataView(List<bnka> paramList, List<bopi> paramList1)
+  private void initNoDataView(List<AEMaterialCategory> paramList, List<QIMSlidingTabView.TabIcon> paramList1)
   {
     if ((CollectionUtils.isEmpty(paramList)) || (CollectionUtils.isEmpty(paramList1)))
     {
       if (this.vgNoData == null)
       {
         this.vgNoData = ((ViewGroup)this.vsNoData.inflate());
-        this.tvRetryBtn = this.vgNoData.findViewById(2131379740);
+        this.tvRetryBtn = this.vgNoData.findViewById(2131380167);
         this.tvRetryBtn.setOnClickListener(new AEPlayShowPart.9(this));
       }
       this.vgNoData.setVisibility(0);
@@ -249,9 +249,9 @@ public class AEPlayShowPart
   
   private void initViewModel()
   {
-    this.mCaptureModeViewModel = ((bnpz)bmxz.a(this.mUnit).get(bnpz.class));
+    this.mCaptureModeViewModel = ((AEVideoStoryCaptureModeViewModel)AEViewModelProviders.a(this.mUnit).get(AEVideoStoryCaptureModeViewModel.class));
     this.mCaptureModeViewModel.a.observe(this.mUnit, new AEPlayShowPart.7(this));
-    bnjq.b().observe(this.mUnit, new AEPlayShowPart.8(this));
+    CameraOperationHelper.b().observe(this.mUnit, new AEPlayShowPart.8(this));
   }
   
   private void preLoadWebView(@Nullable String paramString)
@@ -297,13 +297,13 @@ public class AEPlayShowPart
       Object localObject3 = getPositionFlag("KEY_CURRENT_TYPE");
       localObject2 = getPositionFlag("KEY_CURRENT_TAB");
       String str2 = getTabIdByMaterialId((String)localObject1);
-      bnka localbnka = getCurrentTabMaterial(str2);
+      AEMaterialCategory localAEMaterialCategory = getCurrentTabMaterial(str2);
       localObject3 = new StringBuilder().append("chooseId: ").append((String)localObject1).append(" typeId: ").append((String)localObject3).append(" posTabName: ").append(str2).append(" isMaterial null: ");
-      if (localbnka == null) {}
+      if (localAEMaterialCategory == null) {}
       for (boolean bool = true;; bool = false)
       {
-        bnrh.a("AEPlayShowPart", bool);
-        if ((localbnka == null) || (!AECaptureMode.PLAY.name.equals(localObject2))) {
+        AEQLog.a("AEPlayShowPart", bool);
+        if ((localAEMaterialCategory == null) || (!AECaptureMode.PLAY.name.equals(localObject2))) {
           break;
         }
         send(655364, new Object[] { str2, localObject1 });
@@ -339,8 +339,8 @@ public class AEPlayShowPart
         if (i >= paramString1.size()) {
           break label88;
         }
-        bnke localbnke = (bnke)paramString1.get(i);
-        if ((localbnke != null) && (paramString2 != null) && (paramString2.equals(localbnke.jdField_a_of_type_JavaLangString)))
+        AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)paramString1.get(i);
+        if ((localAEMaterialMetaData != null) && (paramString2 != null) && (paramString2.equals(localAEMaterialMetaData.jdField_a_of_type_JavaLangString)))
         {
           paramString1 = this.viewPagerAdapter.getCurrentPageView();
           if (paramString1 == null) {
@@ -371,7 +371,7 @@ public class AEPlayShowPart
   {
     if (this.progressView == null)
     {
-      this.progressView = LayoutInflater.from(this.mActivity).inflate(2131559607, this.vgContainer, false);
+      this.progressView = LayoutInflater.from(this.mActivity).inflate(2131559683, this.vgContainer, false);
       this.vgContainer.addView(this.progressView);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.progressView.getLayoutParams();
       localLayoutParams.addRule(13);
@@ -388,9 +388,9 @@ public class AEPlayShowPart
   public void initAfterInflation(View paramView)
   {
     this.vgContainer = ((ViewGroup)paramView);
-    this.tabView = ((AEPlayShowTabView)this.vgContainer.findViewById(2131372939));
-    this.viewPager = ((ViewPager)this.vgContainer.findViewById(2131381317));
-    this.vsNoData = ((ViewStub)this.vgContainer.findViewById(2131381322));
+    this.tabView = ((AEPlayShowTabView)this.vgContainer.findViewById(2131373262));
+    this.viewPager = ((ViewPager)this.vgContainer.findViewById(2131381780));
+    this.vsNoData = ((ViewStub)this.vgContainer.findViewById(2131381785));
     this.tabView.setTabCheckListener(new AEPlayShowPart.2(this));
     this.viewPagerAdapter = new PlayViewPagerAdapter(this.mActivity, this.mPartManager, getPlayShowCategories());
     this.viewPager.setAdapter(this.viewPagerAdapter);
@@ -404,7 +404,7 @@ public class AEPlayShowPart
   {
     if (paramInt == 1)
     {
-      bnrh.b("AEPlayShowPart", "notify, eventId=AEPlayShowMaterialManager.EVENT_MATERIAL_LIST_UPDATED");
+      AEQLog.b("AEPlayShowPart", "notify, eventId=AEPlayShowMaterialManager.EVENT_MATERIAL_LIST_UPDATED");
       if (hasInflated()) {
         ThreadManager.getUIHandler().post(new AEPlayShowPart.5(this));
       }
@@ -412,7 +412,7 @@ public class AEPlayShowPart
     while (paramInt != 116) {
       return;
     }
-    bnrh.b("AEPlayShowPart", "notify, eventId=AEMaterialManager.TEMPLATE_INFO_LIST_UPDATE");
+    AEQLog.b("AEPlayShowPart", "notify, eventId=AEMaterialManager.TEMPLATE_INFO_LIST_UPDATE");
     this.mPsMaterialManager.refresh();
   }
   
@@ -433,19 +433,18 @@ public class AEPlayShowPart
   
   public void send(int paramInt, Object... paramVarArgs)
   {
-    int i = 0;
-    Object localObject1;
-    Object localObject2;
+    String str;
+    Object localObject;
     if (paramInt == 655361) {
-      if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof bnke)))
+      if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof AEMaterialMetaData)))
       {
-        paramVarArgs = (bnke)paramVarArgs[0];
+        paramVarArgs = (AEMaterialMetaData)paramVarArgs[0];
         if (paramVarArgs.equals(AEPlayShowGridAdapter.selectedMaterial))
         {
-          localObject1 = bmwt.b + File.separator + paramVarArgs.jdField_a_of_type_JavaLangString;
-          localObject2 = findTabNameById(paramVarArgs.jdField_a_of_type_JavaLangString);
-          bnqq.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
-          AETemplateInfoFragment.jumpToMe(this.mActivity, (String)localObject2, (String)localObject1, paramVarArgs.jdField_a_of_type_JavaLangString, paramVarArgs.f, paramVarArgs.i);
+          str = AEPath.PLAY.FILES.b + File.separator + paramVarArgs.jdField_a_of_type_JavaLangString;
+          localObject = findTabNameById(paramVarArgs.jdField_a_of_type_JavaLangString);
+          AEBaseReportParam.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
+          AETemplateInfoFragment.jumpToMe(this.mActivity, (String)localObject, str, paramVarArgs.jdField_a_of_type_JavaLangString, paramVarArgs.f, paramVarArgs.i);
         }
       }
     }
@@ -454,58 +453,55 @@ public class AEPlayShowPart
       return;
       if (paramInt == 655362)
       {
-        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof bnke)))
+        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof AEMaterialMetaData)))
         {
-          paramVarArgs = (bnke)paramVarArgs[0];
+          paramVarArgs = (AEMaterialMetaData)paramVarArgs[0];
           if (paramVarArgs.equals(AEPlayShowGridAdapter.selectedMaterial))
           {
-            bnqq.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
-            localObject1 = findTabNameById(paramVarArgs.jdField_a_of_type_JavaLangString);
-            localObject2 = new Intent(this.mActivity, QQBrowserActivity.class);
-            ((Intent)localObject2).addFlags(536870912);
-            ((Intent)localObject2).addFlags(67108864);
-            ((Intent)localObject2).putExtra("url", paramVarArgs.n);
-            ((Intent)localObject2).putExtra("loc_play_show_tab_name", (String)localObject1);
-            ((Intent)localObject2).putExtra("loc_play_show_material_id", paramVarArgs.jdField_a_of_type_JavaLangString);
-            ((Intent)localObject2).putExtra("key_camera_material_name", paramVarArgs.i);
-            ((Intent)localObject2).putExtra("VIDEO_STORY_FROM_TYPE", AETemplateInfoFragment.getFromType(this.mActivity));
-            this.mActivity.startActivity((Intent)localObject2);
+            AEBaseReportParam.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
+            str = findTabNameById(paramVarArgs.jdField_a_of_type_JavaLangString);
+            localObject = new Intent(this.mActivity, QQBrowserActivity.class);
+            ((Intent)localObject).addFlags(536870912);
+            ((Intent)localObject).addFlags(67108864);
+            ((Intent)localObject).putExtra("url", paramVarArgs.q);
+            ((Intent)localObject).putExtra("loc_play_show_tab_name", str);
+            ((Intent)localObject).putExtra("loc_play_show_material_id", paramVarArgs.jdField_a_of_type_JavaLangString);
+            ((Intent)localObject).putExtra("key_camera_material_name", paramVarArgs.i);
+            ((Intent)localObject).putExtra("VIDEO_STORY_FROM_TYPE", AETemplateInfoFragment.getFromType(this.mActivity));
+            this.mActivity.startActivity((Intent)localObject);
           }
         }
       }
       else if (paramInt == 655363)
       {
-        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof bnke)))
+        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof AEMaterialMetaData)))
         {
-          paramVarArgs = (bnke)paramVarArgs[0];
+          paramVarArgs = (AEMaterialMetaData)paramVarArgs[0];
           if (paramVarArgs.equals(AEPlayShowGridAdapter.selectedMaterial))
           {
-            bnqq.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
-            localObject1 = new LaunchParam();
-            ((LaunchParam)localObject1).miniAppId = paramVarArgs.o;
-            ((LaunchParam)localObject1).scene = 2083;
-            MiniAppController.startAppByAppid(this.mActivity, ((LaunchParam)localObject1).miniAppId, null, null, (LaunchParam)localObject1, null);
+            AEBaseReportParam.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
+            ((IMiniAppService)QRoute.api(IMiniAppService.class)).startAppByAppid(this.mActivity, paramVarArgs.r, null, null, 2083, null);
           }
         }
       }
       else if ((paramInt == 655364) && (paramVarArgs != null) && (paramVarArgs.length == 2) && ((paramVarArgs[0] instanceof String)) && ((paramVarArgs[1] instanceof String)))
       {
         ensureInflate();
-        localObject1 = (String)paramVarArgs[0];
+        str = (String)paramVarArgs[0];
         paramVarArgs = (String)paramVarArgs[1];
         if (this.tabView != null)
         {
-          localObject2 = this.tabView.getDataList();
-          if (localObject2 != null)
+          localObject = this.tabView.getDataList();
+          if (localObject != null)
           {
-            paramInt = i;
-            while (paramInt < ((List)localObject2).size())
+            paramInt = 0;
+            while (paramInt < ((List)localObject).size())
             {
-              bopi localbopi = (bopi)((List)localObject2).get(paramInt);
-              if ((localbopi != null) && (((String)localObject1).equals(localbopi.jdField_a_of_type_JavaLangString)))
+              QIMSlidingTabView.TabIcon localTabIcon = (QIMSlidingTabView.TabIcon)((List)localObject).get(paramInt);
+              if ((localTabIcon != null) && (str.equals(localTabIcon.jdField_a_of_type_JavaLangString)))
               {
                 switchToTab(paramInt);
-                this.viewPager.post(new AEPlayShowPart.4(this, (String)localObject1, paramVarArgs));
+                this.viewPager.post(new AEPlayShowPart.4(this, str, paramVarArgs));
                 return;
               }
               paramInt += 1;
@@ -518,7 +514,7 @@ public class AEPlayShowPart
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEPlayShowPart
  * JD-Core Version:    0.7.0.1
  */

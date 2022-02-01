@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.qassistant.wake;
 
-import bakl;
-import bang;
-import banp;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.qassistant.core.AssistantUtils;
 
-public class WakeManager$2
+class WakeManager$2
   implements Runnable
 {
-  public WakeManager$2(banp parambanp, BaseActivity paramBaseActivity) {}
+  WakeManager$2(WakeManager paramWakeManager, BaseActivity paramBaseActivity) {}
   
   public void run()
   {
     try
     {
-      new bang(this.a).show();
+      new QQAssistantGuider(this.a).show();
       return;
     }
     catch (Exception localException)
     {
-      bakl.a("HelloQQWake", "show guider error: " + localException.getMessage());
-      bang.a();
+      AssistantUtils.a("HelloQQWake", "show guider error: " + localException.getMessage());
+      QQAssistantGuider.a();
     }
   }
 }

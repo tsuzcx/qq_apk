@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.photo.album;
 import android.content.Intent;
 import android.view.View;
 
-public abstract interface PhotoListLogic$IitemClickCallback
+abstract interface PhotoListLogic$IitemClickCallback
 {
   public abstract void caseCamera(View paramView, int paramInt);
   
@@ -15,7 +15,7 @@ public abstract interface PhotoListLogic$IitemClickCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListLogic.IitemClickCallback
  * JD-Core Version:    0.7.0.1
  */

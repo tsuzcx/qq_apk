@@ -4,15 +4,13 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import rbp;
-import syp;
-import syr;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
 
 public class ReadInJoyLifeCycleLinearLayout
   extends LinearLayout
-  implements syp
+  implements IReadInJoyLifeCycleView
 {
-  private boolean a;
+  private boolean a = false;
   
   public ReadInJoyLifeCycleLinearLayout(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -22,11 +20,11 @@ public class ReadInJoyLifeCycleLinearLayout
   public void a()
   {
     Object localObject = getTag();
-    if ((localObject instanceof rbp))
+    if ((localObject instanceof FeedItemCell))
     {
-      localObject = ((rbp)localObject).a();
-      if ((localObject instanceof syr)) {
-        ((syr)localObject).a();
+      localObject = ((FeedItemCell)localObject).a();
+      if ((localObject instanceof IReadInJoyListItemLifeCycle)) {
+        ((IReadInJoyListItemLifeCycle)localObject).a();
       }
     }
   }
@@ -39,11 +37,11 @@ public class ReadInJoyLifeCycleLinearLayout
   public void b()
   {
     Object localObject = getTag();
-    if ((localObject instanceof rbp))
+    if ((localObject instanceof FeedItemCell))
     {
-      localObject = ((rbp)localObject).a();
-      if ((localObject instanceof syr)) {
-        ((syr)localObject).b();
+      localObject = ((FeedItemCell)localObject).a();
+      if ((localObject instanceof IReadInJoyListItemLifeCycle)) {
+        ((IReadInJoyListItemLifeCycle)localObject).b();
       }
     }
   }
@@ -55,7 +53,7 @@ public class ReadInJoyLifeCycleLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyLifeCycleLinearLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package mqq.manager;
 
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import oicq.wlogin_sdk.tools.ErrMsg;
 
@@ -12,11 +14,13 @@ public class VerifyDevLockManager$VerifyDevLockObserver
     return this.mSeq;
   }
   
-  public void onReceive(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt, Object paramObject) {}
+  public void onReceive(int paramInt1, int paramInt2, Object paramObject) {}
   
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo) {}
+  public void onRecvNotice(int paramInt1, int paramInt2, String paramString, int paramInt3, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo) {}
   
   public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg) {}
+  
+  public void onVerifySuccess(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
   
   public void setSeq(int paramInt)
   {

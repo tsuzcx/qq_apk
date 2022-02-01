@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
-import amgl;
+import com.tencent.mobileqq.adapter.ContactBindedAdapter;
 import java.util.List;
 
 class PhoneContactManagerImp$7
@@ -12,7 +12,7 @@ class PhoneContactManagerImp$7
   {
     if ((this.a != null) && (!this.a.isEmpty()))
     {
-      this.this$0.a = amgl.a(this.a, null, true);
+      this.this$0.a = ContactBindedAdapter.a(this.a, null, true);
       return;
     }
     this.this$0.a = null;
@@ -20,7 +20,7 @@ class PhoneContactManagerImp$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.7
  * JD-Core Version:    0.7.0.1
  */

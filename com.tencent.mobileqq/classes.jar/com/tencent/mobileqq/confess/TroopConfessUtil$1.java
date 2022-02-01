@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.confess;
 
-import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class TroopConfessUtil$1
+final class TroopConfessUtil$1
   implements Runnable
 {
-  public TroopConfessUtil$1(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  TroopConfessUtil$1(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public final class TroopConfessUtil$1
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin().equals(this.jdField_a_of_type_JavaLangString))
       {
         i = 1;
-        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800956F", "0X800956F", i, 0, "", "", "", "");
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800956F", "0X800956F", i, 0, "", "", "", "");
       }
     }
     else {
@@ -27,7 +27,7 @@ public final class TroopConfessUtil$1
     label95:
     for (String str = "0X8009302";; str = "0X8009303")
     {
-      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
       return;
       i = 2;
       break;
@@ -36,7 +36,7 @@ public final class TroopConfessUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TroopConfessUtil.1
  * JD-Core Version:    0.7.0.1
  */

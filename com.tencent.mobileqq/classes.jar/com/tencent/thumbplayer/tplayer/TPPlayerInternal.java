@@ -7,6 +7,7 @@ import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import android.view.Surface;
 import android.view.SurfaceHolder;
+import com.tencent.thumbplayer.api.ITPSurface;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
 import com.tencent.thumbplayer.api.TPCaptureParams;
 import com.tencent.thumbplayer.api.TPOptionalParam;
@@ -33,6 +34,7 @@ public class TPPlayerInternal
   private static final int MSG_ADD_SUBTITLE_SOURCE = 6;
   private static final int MSG_CAPTURE_VIDEO = 30;
   private static final int MSG_DESELECT_TRACK = 36;
+  private static final int MSG_DOWNLOAD_QUIC_STATUS_UPDATE = 200;
   private static final int MSG_DOWN_LOAD_CDN_INFO_UPDATE = 73;
   private static final int MSG_DOWN_LOAD_CDN_URL_EXPERIED = 76;
   private static final int MSG_DOWN_LOAD_CDN_URL_UPDATE = 72;
@@ -44,6 +46,7 @@ public class TPPlayerInternal
   private static final int MSG_DOWN_LOAD_PROTOCOL_UPDATE = 75;
   private static final int MSG_DOWN_LOAD_STATUS_UPDATE = 74;
   private static final int MSG_DOWN_LOAD_STRING_GET_PLAY_INFO = 84;
+  private static final int MSG_GET_PLAYER_STATE = 43;
   private static final int MSG_GET_PLAYER_TYPE = 40;
   private static final int MSG_GET_PROGRAMINFO = 33;
   private static final int MSG_GET_PROPERTY_LONG = 27;
@@ -55,6 +58,12 @@ public class TPPlayerInternal
   private static final int MSG_PAUSE = 12;
   private static final int MSG_PAUSE_DOWNLOAD = 41;
   private static final int MSG_PREPARE_ASYNC = 10;
+  private static final int MSG_PROXY_CANCEL_READ_DATA = 87;
+  private static final int MSG_PROXY_GET_CONTENT_TYPE = 90;
+  private static final int MSG_PROXY_GET_DATA_FILE_PATH = 89;
+  private static final int MSG_PROXY_GET_DATA_TOTAL_SIZE = 88;
+  private static final int MSG_PROXY_READ_DATA = 86;
+  private static final int MSG_PROXY_START_READ_DATA = 85;
   private static final int MSG_RELEASE = 15;
   private static final int MSG_RESET = 14;
   private static final int MSG_RESUME_DOWNLOAD = 42;
@@ -71,6 +80,7 @@ public class TPPlayerInternal
   private static final int MSG_SET_SPEED_RATIO = 19;
   private static final int MSG_SET_SURFACE = 4;
   private static final int MSG_SET_SURFACE_HOLDER = 39;
+  private static final int MSG_SET_TP_SURFACE = 44;
   private static final int MSG_SET_VIDEO_INFO = 29;
   private static final int MSG_START = 11;
   private static final int MSG_STOP = 13;
@@ -78,15 +88,22 @@ public class TPPlayerInternal
   private static final int MSG_SWITCH_DEF = 31;
   private static final int MSG_UPDATE_VIDEO_INFO = 34;
   private static final String TAG = "TPThumbPlayer[TPPlayerInternal.java]";
+  private String mContentType;
+  private String mDataFilePath;
+  private long mDataTotalSize;
   private TPPlayerInternal.EventHandler mEventHandler;
   private TPReadWriteLock mLock;
   private Object mLongPlayinfo;
   private Looper mLooper;
   private Object mPlayBackResult;
+  private int mPlayerStateResult;
   private int mPlayerTypeResult;
   private TPThreadSwitchCommons.TPProgramInfoResult mProgramInfoResult;
   private long mPropertyLongResult;
   private String mPropertyStringResult;
+  private int mReadData;
+  private int mStartReadData;
+  private int mStopReadData;
   private Object mStringPlayinfo;
   private TPPlayerInternal.ITPPlayerSwitchThreadListener mTPSwitchThreadListener;
   private TPThreadSwitchCommons.TPTrackInfoResult mTrackInfoResult;
@@ -125,6 +142,8 @@ public class TPPlayerInternal
       this.mProgramInfoResult.programInfos = this.mTPSwitchThreadListener.handleGetProgramInfo();
       continue;
       this.mPlayerTypeResult = this.mTPSwitchThreadListener.handleGetPlayerType();
+      continue;
+      this.mPlayerStateResult = this.mTPSwitchThreadListener.handleGetCurrentState();
     }
   }
   
@@ -135,48 +154,11 @@ public class TPPlayerInternal
     }
     switch (paramMessage.what)
     {
-    case 2: 
-    case 3: 
-    case 9: 
-    case 24: 
-    case 25: 
-    case 26: 
-    case 34: 
-    case 43: 
-    case 44: 
-    case 45: 
-    case 46: 
-    case 47: 
-    case 48: 
-    case 49: 
-    case 50: 
-    case 51: 
-    case 52: 
-    case 53: 
-    case 54: 
-    case 55: 
-    case 56: 
-    case 57: 
-    case 58: 
-    case 59: 
-    case 60: 
-    case 61: 
-    case 62: 
-    case 63: 
-    case 64: 
-    case 65: 
-    case 66: 
-    case 67: 
-    case 68: 
-    case 69: 
-    case 78: 
-    case 79: 
-    case 80: 
-    case 81: 
     default: 
     case 1: 
     case 4: 
     case 39: 
+    case 44: 
     case 5: 
     case 29: 
     case 30: 
@@ -215,6 +197,8 @@ public class TPPlayerInternal
               this.mTPSwitchThreadListener.handleSetSurface((Surface)paramMessage.obj);
               return;
               this.mTPSwitchThreadListener.handleSetSurfaceHolder((SurfaceHolder)paramMessage.obj);
+              return;
+              this.mTPSwitchThreadListener.handleSetTPSurface((ITPSurface)paramMessage.obj);
               return;
               this.mTPSwitchThreadListener.handleSetDataSource((TPThreadSwitchCommons.TPDataSourceParams)paramMessage.obj);
               return;
@@ -291,6 +275,7 @@ public class TPPlayerInternal
     case 28: 
     case 33: 
     case 40: 
+    case 43: 
       handleCommonGetMessage(paramMessage.what, paramMessage.arg1, paramBoolean);
       return;
     case 70: 
@@ -308,6 +293,9 @@ public class TPPlayerInternal
       return;
     case 74: 
       this.mTPSwitchThreadListener.handleOnDownloadStatusUpdate(paramMessage.arg1);
+      return;
+    case 200: 
+      this.mTPSwitchThreadListener.handleOnDownloadQuicStatusUpdate((String)paramMessage.obj);
       return;
     case 75: 
       paramMessage = (TPPlayerMsg.TPProtocolInfo)paramMessage.obj;
@@ -329,8 +317,34 @@ public class TPPlayerInternal
       paramMessage = (TPPlayerMsg.TPDownLoadProgressInfo)paramMessage.obj;
       this.mTPSwitchThreadListener.handleOnDownloadProgressUpdate((int)paramMessage.playableDurationMS, paramMessage.downloadSpeedKBps, paramMessage.currentDownloadSize, paramMessage.totalFileSize, paramMessage.extraInfo);
       return;
+    case 84: 
+      this.mStringPlayinfo = this.mTPSwitchThreadListener.handleGetPlayInfo((String)paramMessage.obj);
+      unWriteLockAndConditionIfFromEventHandler(paramBoolean);
+      return;
+    case 85: 
+      paramMessage = (TPThreadSwitchCommons.TPOnStartReadDataParams)paramMessage.obj;
+      this.mStartReadData = this.mTPSwitchThreadListener.handleStartReadData(paramMessage.fileId, paramMessage.fileKey, paramMessage.requestStart, paramMessage.requestEnd);
+      unWriteLockAndConditionIfFromEventHandler(paramBoolean);
+      return;
+    case 86: 
+      paramMessage = (TPThreadSwitchCommons.TPOnReadDataParams)paramMessage.obj;
+      this.mReadData = this.mTPSwitchThreadListener.handleReadData(paramMessage.fileId, paramMessage.fileKey, paramMessage.offset, paramMessage.length);
+      unWriteLockAndConditionIfFromEventHandler(paramBoolean);
+      return;
+    case 87: 
+      this.mStopReadData = this.mTPSwitchThreadListener.handleStopReadData(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
+      unWriteLockAndConditionIfFromEventHandler(paramBoolean);
+      return;
+    case 88: 
+      this.mDataTotalSize = this.mTPSwitchThreadListener.handleGetDataTotalSize(paramMessage.arg1, (String)paramMessage.obj);
+      unWriteLockAndConditionIfFromEventHandler(paramBoolean);
+      return;
+    case 89: 
+      this.mDataFilePath = this.mTPSwitchThreadListener.handleGetDataFilePath(paramMessage.arg1, (String)paramMessage.obj);
+      unWriteLockAndConditionIfFromEventHandler(paramBoolean);
+      return;
     }
-    this.mStringPlayinfo = this.mTPSwitchThreadListener.handleGetPlayInfo((String)paramMessage.obj);
+    this.mContentType = this.mTPSwitchThreadListener.handleGetContentType(paramMessage.arg1, (String)paramMessage.obj);
     unWriteLockAndConditionIfFromEventHandler(paramBoolean);
   }
   
@@ -412,7 +426,6 @@ public class TPPlayerInternal
     case 26: 
     case 34: 
     case 40: 
-    case 43: 
     case 44: 
     case 45: 
     case 46: 
@@ -442,6 +455,17 @@ public class TPPlayerInternal
     case 70: 
     case 71: 
     case 72: 
+    case 74: 
+    case 75: 
+    case 76: 
+    case 77: 
+    case 78: 
+    case 79: 
+    case 80: 
+    case 81: 
+    case 82: 
+    case 83: 
+    case 84: 
     default: 
       return "[tpPlayer] -> " + paramInt;
     case 1: 
@@ -498,6 +522,8 @@ public class TPPlayerInternal
       return "[tpPlayer] -> get property long";
     case 28: 
       return "[tpPlayer] -> get property string";
+    case 43: 
+      return "[tpPlayer] -> get current player state";
     case 29: 
       return "[tpPlayer] -> set video info";
     case 30: 
@@ -512,8 +538,20 @@ public class TPPlayerInternal
       return "[tpPlayer] -> set loopback with param";
     case 73: 
       return "[tpPlayer] -> cdn info update";
+    case 37: 
+      return "[tpPlayer] -> stopAsync";
+    case 85: 
+      return "[tpPlayer] -> start read data";
+    case 86: 
+      return "[tpPlayer] -> read data";
+    case 87: 
+      return "[tpPlayer] -> stop read data";
+    case 88: 
+      return "[tpPlayer] -> get data total size";
+    case 89: 
+      return "[tpPlayer] -> get data file path";
     }
-    return "[tpPlayer] -> stopAsync";
+    return "[tpPlayer] -> get content type";
   }
   
   private void readLockIfNeed()
@@ -633,6 +671,15 @@ public class TPPlayerInternal
     return 0;
   }
   
+  public String getContentType(int paramInt, String paramString)
+  {
+    writeLockIfNeed();
+    internalMessage(90, paramInt, 0, paramString, false, false, 0L);
+    internalWLockWait("getContentType", 500L);
+    unWriteLockIfNeed();
+    return this.mContentType;
+  }
+  
   public int getCurrentPlayClipNo()
   {
     try
@@ -664,6 +711,34 @@ public class TPPlayerInternal
       TPLogUtil.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
     }
     return 0L;
+  }
+  
+  int getCurrentState()
+  {
+    writeLockIfNeed();
+    this.mPlayerStateResult = 1;
+    internalMessage(43, 0, 0, null, false, false, 0L);
+    internalWLockWait("get current state", 500L);
+    unWriteLockIfNeed();
+    return this.mPlayerStateResult;
+  }
+  
+  public String getDataFilePath(int paramInt, String paramString)
+  {
+    writeLockIfNeed();
+    internalMessage(89, paramInt, 0, paramString, false, false, 0L);
+    internalWLockWait("getDataFilePath", 500L);
+    unWriteLockIfNeed();
+    return this.mDataFilePath;
+  }
+  
+  public long getDataTotalSize(int paramInt, String paramString)
+  {
+    writeLockIfNeed();
+    internalMessage(88, paramInt, 0, paramString, false, false, 0L);
+    internalWLockWait("getDataTotalSize", 500L);
+    unWriteLockIfNeed();
+    return this.mDataTotalSize;
   }
   
   long getDurationMs()
@@ -873,6 +948,48 @@ public class TPPlayerInternal
     return this.mPlayBackResult;
   }
   
+  public void onQuicDownloadStatusUpdate(String paramString)
+  {
+    internalMessage(200, 0, 0, paramString, false, false, 0L);
+  }
+  
+  public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    writeLockIfNeed();
+    TPThreadSwitchCommons.TPOnReadDataParams localTPOnReadDataParams = new TPThreadSwitchCommons.TPOnReadDataParams();
+    localTPOnReadDataParams.fileId = paramInt;
+    localTPOnReadDataParams.fileKey = paramString;
+    localTPOnReadDataParams.offset = paramLong1;
+    localTPOnReadDataParams.length = paramLong2;
+    internalMessage(86, 0, 0, localTPOnReadDataParams, false, false, 0L);
+    internalWLockWait("onReadData", 500L);
+    unWriteLockIfNeed();
+    return this.mReadData;
+  }
+  
+  public int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    writeLockIfNeed();
+    TPThreadSwitchCommons.TPOnStartReadDataParams localTPOnStartReadDataParams = new TPThreadSwitchCommons.TPOnStartReadDataParams();
+    localTPOnStartReadDataParams.fileId = paramInt;
+    localTPOnStartReadDataParams.fileKey = paramString;
+    localTPOnStartReadDataParams.requestStart = paramLong1;
+    localTPOnStartReadDataParams.requestEnd = paramLong2;
+    internalMessage(85, 0, 0, localTPOnStartReadDataParams, false, false, 0L);
+    internalWLockWait("onStartReadData", 500L);
+    unWriteLockIfNeed();
+    return this.mStartReadData;
+  }
+  
+  public int onStopReadData(int paramInt1, String paramString, int paramInt2)
+  {
+    writeLockIfNeed();
+    internalMessage(87, paramInt1, paramInt2, paramString, false, false, 0L);
+    internalWLockWait("onStopReadData", 500L);
+    unWriteLockIfNeed();
+    return this.mStopReadData;
+  }
+  
   void pause()
   {
     internalMessage(12, 0, 0, null, false, false, 0L);
@@ -1009,6 +1126,11 @@ public class TPPlayerInternal
     internalMessage(39, 0, 0, paramSurfaceHolder, false, false, 0L);
   }
   
+  void setTPSurface(ITPSurface paramITPSurface)
+  {
+    internalMessage(44, 0, 0, paramITPSurface, false, false, 0L);
+  }
+  
   public void setVideoInfo(TPVideoInfo paramTPVideoInfo)
   {
     internalMessage(29, 0, 0, paramTPVideoInfo, true, false, 0L);
@@ -1061,7 +1183,7 @@ public class TPPlayerInternal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayerInternal
  * JD-Core Version:    0.7.0.1
  */

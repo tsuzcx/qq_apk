@@ -1,10 +1,11 @@
 package cooperation.qzone.report.lp;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import com.tencent.util.QQDeviceInfo;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReportInfo_dc00307
   implements LpReportInfo
@@ -56,8 +57,8 @@ public class LpReportInfo_dc00307
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (BaseApplicationImpl.getApplication().getRuntime().getAccount() != null)) {
-      LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    if (!TextUtils.isEmpty(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount())) {
+      LpReportUtils.safePut(localHashMap, "uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
     }
     if (this.page_id >= 0) {
       LpReportUtils.safePut(localHashMap, "page_id", this.page_id);
@@ -68,7 +69,7 @@ public class LpReportInfo_dc00307
     LpReportUtils.safePut(localHashMap, "act_id", this.act_id);
     LpReportUtils.safePut(localHashMap, "act_type", this.act_type);
     LpReportUtils.safePut(localHashMap, "platform_id", 2);
-    LpReportUtils.safePut(localHashMap, "qq_version", "8.4.10.4875");
+    LpReportUtils.safePut(localHashMap, "qq_version", "8.5.5.5105");
     LpReportUtils.safePut(localHashMap, "imei", QQDeviceInfo.getIMEI("52b7f2"));
     LpReportUtils.safePut(localHashMap, "module_id", this.module_id);
     LpReportUtils.safePut(localHashMap, "data_timestamp", String.valueOf(System.currentTimeMillis()));
@@ -85,7 +86,7 @@ public class LpReportInfo_dc00307
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc00307
  * JD-Core Version:    0.7.0.1
  */

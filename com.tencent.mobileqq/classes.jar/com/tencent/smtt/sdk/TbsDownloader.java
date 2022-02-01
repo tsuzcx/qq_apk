@@ -266,7 +266,7 @@ public class TbsDownloader
         ((JSONObject)localObject3).put("APPVN", a(localTbsDownloadConfig.mPreferences.getString("app_versionname", null)));
         ((JSONObject)localObject3).put("APPVC", localTbsDownloadConfig.mPreferences.getInt("app_versioncode", 0));
         ((JSONObject)localObject3).put("APPMETA", a(localTbsDownloadConfig.mPreferences.getString("app_metadata", null)));
-        ((JSONObject)localObject3).put("TBSSDKV", 43957);
+        ((JSONObject)localObject3).put("TBSSDKV", 43973);
         ((JSONObject)localObject3).put("TBSV", m);
         if (!paramBoolean3) {
           break label1138;
@@ -2221,7 +2221,7 @@ public class TbsDownloader
       localObject1 = TbsDownloadUpload.getInstance(c);
       ((TbsDownloadUpload)localObject1).a.put("tbs_needdownload_code", Integer.valueOf(144));
       ((TbsDownloadUpload)localObject1).commit();
-      if ((QbSdk.n == null) || (!QbSdk.n.containsKey(QbSdk.KEY_SET_SENDREQUEST_AND_UPLOAD)) || (!QbSdk.n.get(QbSdk.KEY_SET_SENDREQUEST_AND_UPLOAD).equals("false"))) {
+      if ((QbSdk.n == null) || (!QbSdk.n.containsKey("SET_SENDREQUEST_AND_UPLOAD")) || (!QbSdk.n.get("SET_SENDREQUEST_AND_UPLOAD").equals("false"))) {
         break label204;
       }
       TbsLog.i("TbsDownload", "[TbsDownloader.sendRequest] -- SET_SENDREQUEST_AND_UPLOAD is false");
@@ -3140,7 +3140,7 @@ public class TbsDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloader
  * JD-Core Version:    0.7.0.1
  */

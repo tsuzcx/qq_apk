@@ -8,9 +8,9 @@ public final class TicketForQQ
   extends JceStruct
 {
   static byte[] cache_A2 = (byte[])new byte[1];
-  public byte[] A2;
-  public long appId;
-  public long uin;
+  public byte[] A2 = null;
+  public long appId = 0L;
+  public long uin = 0L;
   
   static
   {

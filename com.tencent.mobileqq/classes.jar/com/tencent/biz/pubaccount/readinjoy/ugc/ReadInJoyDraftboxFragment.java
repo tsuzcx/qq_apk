@@ -11,9 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import anvx;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxModule;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -26,17 +29,13 @@ import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ptj;
-import pvj;
-import qhi;
-import rum;
 
 public class ReadInJoyDraftboxFragment
   extends IphoneTitleBarFragment
 {
+  private ReadInJoyDraftboxModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxModule = ReadInJoyLogicEngine.a().a();
+  private ReadInJoyDraftboxAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter;
   private List<ReadInJoyDraftboxItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private qhi jdField_a_of_type_Qhi = pvj.a().a();
-  private rum jdField_a_of_type_Rum;
   
   private void b()
   {
@@ -57,7 +56,7 @@ public class ReadInJoyDraftboxFragment
     if ((localFragmentActivity.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       localFragmentActivity.getWindow().addFlags(67108864);
-      ImmersiveUtils.a(localFragmentActivity.getWindow(), localFragmentActivity.isClearCoverLayer);
+      ImmersiveUtils.clearCoverForStatus(localFragmentActivity.getWindow(), localFragmentActivity.isClearCoverLayer);
       if (localFragmentActivity.mSystemBarComp == null) {
         localFragmentActivity.mSystemBarComp = new SystemBarCompact(localFragmentActivity, true, -1);
       }
@@ -65,7 +64,7 @@ public class ReadInJoyDraftboxFragment
       if (!ThemeUtil.isInNightMode(localFragmentActivity.app)) {
         break label166;
       }
-      if ((SystemUtil.isMIUI()) || (SystemUtil.isFlyme())) {
+      if ((SystemUtil.b()) || (SystemUtil.d())) {
         break label146;
       }
       localFragmentActivity.mSystemBarComp.setStatusBarColor(-7829368);
@@ -73,7 +72,7 @@ public class ReadInJoyDraftboxFragment
     for (;;)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130849537);
+      this.leftView.setBackgroundResource(2130849916);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -84,12 +83,12 @@ public class ReadInJoyDraftboxFragment
       localFragmentActivity.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label166:
-      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
       {
         localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
         localFragmentActivity.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!SystemUtil.isFlyme())
+      else if (!SystemUtil.d())
       {
         localFragmentActivity.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -104,32 +103,32 @@ public class ReadInJoyDraftboxFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Rum = new rum(getActivity(), this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter = new ReadInJoyDraftboxAdapter(getActivity(), this.jdField_a_of_type_JavaUtilList);
     if (this.mContentView != null)
     {
-      paramLayoutInflater = (SwipListView)this.mContentView.findViewById(2131365879);
-      paramLayoutInflater.setAdapter(this.jdField_a_of_type_Rum);
+      paramLayoutInflater = (SwipListView)this.mContentView.findViewById(2131366046);
+      paramLayoutInflater.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter);
       paramLayoutInflater.setDragEnable(true);
       paramLayoutInflater.setDivider(new ColorDrawable(Color.parseColor("#FFF2F2F2")));
-      paramLayoutInflater.setDividerHeight(ViewUtils.dip2px(0.5F));
-      paramLayoutInflater.setEmptyView(this.mContentView.findViewById(2131365878));
+      paramLayoutInflater.setDividerHeight(ViewUtils.a(0.5F));
+      paramLayoutInflater.setEmptyView(this.mContentView.findViewById(2131366045));
     }
-    setTitle(anvx.a(2131712453));
+    setTitle(HardCodeUtil.a(2131712957));
     if (this.leftView != null) {
-      this.leftView.setText(anvx.a(2131712454));
+      this.leftView.setText(HardCodeUtil.a(2131712958));
     }
     a();
   }
   
   public int getContentLayoutId()
   {
-    return 2131560215;
+    return 2131560292;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    ptj.a.a(getActivity(), "109");
+    RIJDtReportHelper.a.a(getActivity(), "109");
   }
   
   public void onResume()
@@ -140,7 +139,7 @@ public class ReadInJoyDraftboxFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment
  * JD-Core Version:    0.7.0.1
  */

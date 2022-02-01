@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.freshnews;
 
 import android.widget.ImageView;
-import anvx;
-import bkxz;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import com.tencent.util.InputMethodUtil;
 
 class QQInputView$2
   implements Runnable
@@ -14,16 +14,16 @@ class QQInputView$2
   public void run()
   {
     QQInputView.a(this.this$0).setVisibility(8);
-    QQInputView.a(this.this$0).setImageResource(2130847907);
-    if (AppSetting.c) {
-      QQInputView.a(this.this$0).setContentDescription(anvx.a(2131709852));
+    QQInputView.a(this.this$0).setImageResource(2130848264);
+    if (AppSetting.d) {
+      QQInputView.a(this.this$0).setContentDescription(HardCodeUtil.a(2131710368));
     }
-    bkxz.a(QQInputView.a(this.this$0));
+    InputMethodUtil.a(QQInputView.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.QQInputView.2
  * JD-Core Version:    0.7.0.1
  */

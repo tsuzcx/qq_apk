@@ -5,7 +5,7 @@
     <com.tencent.image.URLImageView android:id="@id/a3c" android:layout_width="46.0dip" android:layout_height="54.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:layout_centerVertical="true" />
     <RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toRightOf="@id/a3c" android:layout_centerVertical="true">
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bnk" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="15.0sp" android:textColor="@color/skin_black" android:id="@id/bnj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rfa" android:singleLine="true" />
+            <TextView android:textSize="15.0sp" android:textColor="@color/bp" android:id="@id/bnj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rfa" android:singleLine="true" />
             <ImageView android:id="@id/j8r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/bhl" android:scaleType="fitCenter" />
         </LinearLayout>
         <TextView android:textSize="14.0sp" android:textColor="#ff888888" android:id="@id/bnh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/rf_" android:singleLine="true" android:layout_below="@id/bnk" />

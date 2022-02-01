@@ -7,6 +7,7 @@ import com.tencent.mobileqq.highway.api.RequestOps;
 import com.tencent.mobileqq.highway.api.TransactionOps;
 import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.config.HwNetSegConf;
+import com.tencent.mobileqq.highway.config.HwServlet;
 import com.tencent.mobileqq.highway.conn.ConnManager;
 import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
 import com.tencent.mobileqq.highway.netprobe.WeakNetLearner;
@@ -82,6 +83,7 @@ public class HwEngine
     this.mRequestWorker.onDestroy();
     this.mConnManager.onDestroy();
     this.mWeakNetLearner.onDestroy();
+    HwServlet.resetStartMask();
     this.mContext = null;
     this.app = null;
   }

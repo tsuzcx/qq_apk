@@ -10,10 +10,10 @@ public final class BroadcastForQzone
 {
   static BroadcastAudio cache_broadcastAudioUrl = new BroadcastAudio();
   static ArrayList<BroadcastOneShow> cache_showList = new ArrayList();
-  public BroadcastAudio broadcastAudioUrl;
+  public BroadcastAudio broadcastAudioUrl = null;
   public String broadcastID = "";
   public String broadcastName = "";
-  public ArrayList<BroadcastOneShow> showList;
+  public ArrayList<BroadcastOneShow> showList = null;
   
   static
   {

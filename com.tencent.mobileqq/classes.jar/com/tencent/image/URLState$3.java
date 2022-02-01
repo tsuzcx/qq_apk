@@ -1,7 +1,8 @@
 package com.tencent.image;
 
 import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.net.URL;
 import org.apache.http.HttpException;
 
@@ -14,14 +15,14 @@ class URLState$3
   {
     super.onFileDownloadFailed(paramInt);
     this.val$handler.onFileDownloadFailed(paramInt);
-    URLState.access$300(this.this$0, new HttpException(" http error code " + paramInt));
+    URLState.access$000(this.this$0, new HttpException(" http error code " + paramInt));
   }
   
   public void onFileDownloadSucceed(long paramLong)
   {
     super.onFileDownloadSucceed(paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.i("URLDrawable_", 2, "async onFileDownloadSucceed.");
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.i("URLDrawable_", 2, "async onFileDownloadSucceed.");
     }
     try
     {
@@ -34,7 +35,7 @@ class URLState$3
         }
         Object localObject = this.this$0.loadImage(this.val$url, this.val$handler);
         this.val$handler.onFileDownloadSucceed(paramLong);
-        URLState.access$200().post(new URLState.3.1(this, localObject));
+        URLState.access$100().post(new URLState.3.1(this, localObject));
         return;
       }
     }

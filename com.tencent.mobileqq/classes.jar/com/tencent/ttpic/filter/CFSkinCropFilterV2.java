@@ -6,8 +6,8 @@ import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
 import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.FaceDetectUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.List;
@@ -50,14 +50,14 @@ public class CFSkinCropFilterV2
   
   public void setFacePointsInfo(List<PointF> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramList = VideoMaterialUtil.copyList(paramList);
+    paramList = VideoMaterial.copyList(paramList);
     setPositions(FaceOffUtil.initFacePositionsFaceAverage(paramList, paramInt1, paramInt2, this.positions, paramInt3));
     setTexCords(FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(paramList, paramInt1, paramInt2, this.texVertices, paramInt3));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.CFSkinCropFilterV2
  * JD-Core Version:    0.7.0.1
  */

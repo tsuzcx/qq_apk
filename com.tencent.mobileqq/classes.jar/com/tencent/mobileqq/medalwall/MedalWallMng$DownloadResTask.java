@@ -3,20 +3,19 @@ package com.tencent.mobileqq.medalwall;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import awux;
-import bkys;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import java.io.File;
 
 public class MedalWallMng$DownloadResTask
   implements Runnable
 {
-  final awux a;
+  final MedalWallMng.NeedGuideMedal a;
   
-  public MedalWallMng$DownloadResTask(MedalWallMng paramMedalWallMng, awux paramawux)
+  public MedalWallMng$DownloadResTask(MedalWallMng paramMedalWallMng, MedalWallMng.NeedGuideMedal paramNeedGuideMedal)
   {
-    this.a = paramawux;
+    this.a = paramNeedGuideMedal;
   }
   
   public void run()
@@ -34,7 +33,7 @@ public class MedalWallMng$DownloadResTask
       ((Message)localObject).what = 2;
       ((Message)localObject).arg1 = ((int)l2);
       ((Message)localObject).obj = this.a;
-      this.this$0.jdField_a_of_type_Bkys.sendMessage((Message)localObject);
+      this.this$0.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage((Message)localObject);
       return;
       long l1 = l2;
       try

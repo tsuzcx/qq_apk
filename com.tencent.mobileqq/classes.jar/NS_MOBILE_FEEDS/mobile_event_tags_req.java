@@ -8,8 +8,8 @@ public final class mobile_event_tags_req
   extends JceStruct
 {
   public String content = "";
-  public int count;
-  public int recom_type;
+  public int count = 0;
+  public int recom_type = 0;
   
   public mobile_event_tags_req() {}
   

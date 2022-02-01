@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 public class ExcitingTransferUploadReqInfo
 {
-  public boolean bSupportHttps;
+  public boolean bSupportHttps = false;
   public String strSSLCName;
   public ExcitingTransferHostInfo[] vecSrvIpAndPorts;
   
@@ -34,7 +34,7 @@ public class ExcitingTransferUploadReqInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadReqInfo
  * JD-Core Version:    0.7.0.1
  */

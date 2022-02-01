@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import azvk;
 
 public class CircularProgressBar
   extends View
@@ -18,8 +17,8 @@ public class CircularProgressBar
   private int jdField_a_of_type_Int = 60;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Handler jdField_a_of_type_AndroidOsHandler = new azvk(this);
-  private boolean jdField_a_of_type_Boolean;
+  private Handler jdField_a_of_type_AndroidOsHandler = new CircularProgressBar.1(this);
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 5;
   private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
   private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
@@ -27,8 +26,8 @@ public class CircularProgressBar
   private int d = -1442840576;
   private int e = -1428300323;
   private int f = 2;
-  private int g;
-  private int h;
+  private int g = 0;
+  private int h = 0;
   
   public CircularProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,7 +52,7 @@ public class CircularProgressBar
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, getLayoutParams().width - this.jdField_b_of_type_Int, getLayoutParams().height - this.jdField_b_of_type_Int);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 360.0F, 360.0F, false, this.jdField_b_of_type_AndroidGraphicsPaint);
@@ -65,7 +64,7 @@ public class CircularProgressBar
     paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, -90.0F, this.h, false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     b();

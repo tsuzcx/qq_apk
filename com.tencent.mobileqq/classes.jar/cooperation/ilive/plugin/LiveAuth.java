@@ -1,10 +1,10 @@
 package cooperation.ilive.plugin;
 
-import blvl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.ilive.manager.IliveAuthManager;
 import cooperation.ilive.manager.IliveAuthManager.Callback;
+import cooperation.ilive.util.ElapseStat;
 
 public class LiveAuth
 {
@@ -26,12 +26,12 @@ public class LiveAuth
   {
     mSource = paramInt;
     QLog.i("IliveAuth", 1, "start LiveAuth");
-    IliveAuthManager.getInstance().getStAuth(mCallback);
+    IliveAuthManager.getInstance().getStAuth(mCallback, false);
   }
   
   public static void liveToken(String paramString1, String paramString2)
   {
-    blvl.a("liveToken");
+    ElapseStat.a("liveToken");
     ThreadManagerV2.executeOnSubThread(new LiveAuth.2(paramString1, paramString2, System.currentTimeMillis()));
   }
   
@@ -362,7 +362,7 @@ public class LiveAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.plugin.LiveAuth
  * JD-Core Version:    0.7.0.1
  */

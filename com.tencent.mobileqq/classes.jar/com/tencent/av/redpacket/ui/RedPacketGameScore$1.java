@@ -1,11 +1,9 @@
 package com.tencent.av.redpacket.ui;
 
-import lvl;
-
-public class RedPacketGameScore$1
+class RedPacketGameScore$1
   implements Runnable
 {
-  public RedPacketGameScore$1(lvl paramlvl) {}
+  RedPacketGameScore$1(RedPacketGameScore paramRedPacketGameScore) {}
   
   public void run()
   {
@@ -15,7 +13,7 @@ public class RedPacketGameScore$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketGameScore.1
  * JD-Core Version:    0.7.0.1
  */

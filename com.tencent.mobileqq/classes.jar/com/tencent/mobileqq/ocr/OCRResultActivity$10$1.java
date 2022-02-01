@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.ocr;
 
-import ayrw;
-import ayvn;
+import com.tencent.mobileqq.ocr.view.TDProgressDialog;
 
-public class OCRResultActivity$10$1
+class OCRResultActivity$10$1
   implements Runnable
 {
-  public OCRResultActivity$10$1(ayrw paramayrw) {}
+  OCRResultActivity$10$1(OCRResultActivity.10 param10) {}
   
   public void run()
   {

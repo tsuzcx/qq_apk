@@ -10,11 +10,11 @@ public final class action_flow
   extends JceStruct
 {
   static Map<Integer, String> cache_mapExtend = new HashMap();
-  public long lTime;
-  public Map<Integer, String> mapExtend;
-  public int uActionHierarchy;
-  public long uDurationTime;
-  public int uPageType;
+  public long lTime = 0L;
+  public Map<Integer, String> mapExtend = null;
+  public int uActionHierarchy = 0;
+  public long uDurationTime = 0L;
+  public int uPageType = 0;
   
   static
   {

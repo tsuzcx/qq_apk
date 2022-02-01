@@ -90,7 +90,7 @@ class WebView$b
     super.computeScroll();
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     try
     {
@@ -159,7 +159,7 @@ class WebView$b
     super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
   }
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (this.a.mWebViewCallbackClient != null)
     {
@@ -215,7 +215,7 @@ class WebView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.b
  * JD-Core Version:    0.7.0.1
  */

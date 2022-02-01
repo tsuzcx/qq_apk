@@ -13,11 +13,11 @@ import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.SwitchFaceUtil;
 import com.tencent.ttpic.openapi.util.SwitchFaceUtil.FEATURE_TYPE;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -156,12 +156,12 @@ public class SwitchFaceFilter
         i = 0;
         while (i < this.mFaceLists.size() / 2)
         {
-          localList = SwitchFaceUtil.getFullCoords(VideoMaterialUtil.copyList((List)this.mFaceLists.get(i * 2)));
-          paramSet = SwitchFaceUtil.getFullCoords(VideoMaterialUtil.copyList((List)this.mFaceLists.get(i * 2 + 1)));
+          localList = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get(i * 2)));
+          paramSet = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get(i * 2 + 1)));
           localList = faceSwapFacePoint(localList);
           paramSet = faceSwapFacePoint(paramSet);
-          VideoMaterialUtil.flipYPoints(localList, (int)(this.height * this.mFaceDetScale));
-          VideoMaterialUtil.flipYPoints(paramSet, (int)(this.height * this.mFaceDetScale));
+          VideoMaterial.flipYPoints(localList, (int)(this.height * this.mFaceDetScale));
+          VideoMaterial.flipYPoints(paramSet, (int)(this.height * this.mFaceDetScale));
           setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(localList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.texVertices));
           setPositions(SwitchFaceUtil.initFacePositions(paramSet, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
           setCoordNum(138);
@@ -180,12 +180,12 @@ public class SwitchFaceFilter
         i = 0;
         while (i < this.mFaceLists.size())
         {
-          localList = SwitchFaceUtil.getFullCoords(VideoMaterialUtil.copyList((List)this.mFaceLists.get(i % this.mFaceLists.size())));
-          paramSet = SwitchFaceUtil.getFullCoords(VideoMaterialUtil.copyList((List)this.mFaceLists.get((i + 1) % this.mFaceLists.size())));
+          localList = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get(i % this.mFaceLists.size())));
+          paramSet = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get((i + 1) % this.mFaceLists.size())));
           localList = faceSwapFacePoint(localList);
           paramSet = faceSwapFacePoint(paramSet);
-          VideoMaterialUtil.flipYPoints(localList, (int)(this.height * this.mFaceDetScale));
-          VideoMaterialUtil.flipYPoints(paramSet, (int)(this.height * this.mFaceDetScale));
+          VideoMaterial.flipYPoints(localList, (int)(this.height * this.mFaceDetScale));
+          VideoMaterial.flipYPoints(paramSet, (int)(this.height * this.mFaceDetScale));
           setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(localList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.texVertices));
           setPositions(SwitchFaceUtil.initFacePositions(paramSet, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
           setCoordNum(138);
@@ -212,7 +212,7 @@ public class SwitchFaceFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.SwitchFaceFilter
  * JD-Core Version:    0.7.0.1
  */

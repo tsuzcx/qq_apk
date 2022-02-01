@@ -1,13 +1,10 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class MiniAppDesktopAdapter$ModuleGuideViewHolder
   extends RecyclerView.ViewHolder
@@ -18,20 +15,14 @@ public class MiniAppDesktopAdapter$ModuleGuideViewHolder
   public MiniAppDesktopAdapter$ModuleGuideViewHolder(View paramView)
   {
     super(paramView);
-    this.emptyGuideLayout = ((RelativeLayout)paramView.findViewById(2131371185));
-    this.emptyGuideTextView = ((TextView)paramView.findViewById(2131371186));
+    this.emptyGuideLayout = ((RelativeLayout)paramView.findViewById(2131371464));
+    this.emptyGuideTextView = ((TextView)paramView.findViewById(2131371465));
   }
   
   public void update()
   {
-    if (MiniAppUtils.getAppInterface() != null)
-    {
-      if (this.emptyGuideLayout != null) {
-        this.emptyGuideLayout.setBackgroundResource(2130841015);
-      }
-      if (this.emptyGuideTextView != null) {
-        this.emptyGuideTextView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131167110));
-      }
+    if ((MiniAppUtils.getAppInterface() != null) && (this.emptyGuideLayout != null)) {
+      this.emptyGuideLayout.setBackgroundResource(2130841147);
     }
   }
 }

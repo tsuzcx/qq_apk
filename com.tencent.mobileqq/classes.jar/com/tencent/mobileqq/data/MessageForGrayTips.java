@@ -7,12 +7,11 @@ import android.graphics.drawable.Drawable.Callback;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import arur;
-import axma;
-import axmd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.mutualmark.MutualMarkUtils;
+import com.tencent.mobileqq.mutualmark.UrlBottomImageSpan;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class MessageForGrayTips
     if ((str.startsWith("http://")) || (str.startsWith("https://"))) {
       if (paramBoolean)
       {
-        paramContext = new arur(paramContext, 0, str, 32);
+        paramContext = new MessageForGrayTips.UrlCenterImageSpan(paramContext, 0, str, 32);
         paramContext.a(paramCallback);
         paramSpannableStringBuilder.setSpan(paramContext, paramHighlightItem.start, paramHighlightItem.end, 33);
         if (QLog.isColorLevel()) {
@@ -50,18 +49,18 @@ public class MessageForGrayTips
     for (;;)
     {
       return;
-      paramContext = new arur(paramContext, 0, str);
+      paramContext = new MessageForGrayTips.UrlCenterImageSpan(paramContext, 0, str);
       paramContext.a(paramCallback);
       paramContext.a(paramMessageRecord);
       paramSpannableStringBuilder.setSpan(paramContext, paramHighlightItem.start, paramHighlightItem.end, 33);
       break;
-      if (axma.a(str))
+      if (MutualMarkUtils.a(str))
       {
-        paramMessageRecord = axma.b(str);
+        paramMessageRecord = MutualMarkUtils.a(str);
         if (!TextUtils.isEmpty(paramMessageRecord))
         {
           if (paramBoolean) {}
-          for (paramContext = new axmd(paramContext, 0, paramMessageRecord, ViewUtils.dpToPx(16.0F), paramCallback);; paramContext = new axmd(paramContext, 0, paramMessageRecord, paramCallback))
+          for (paramContext = new UrlBottomImageSpan(paramContext, 0, paramMessageRecord, ViewUtils.b(16.0F), paramCallback);; paramContext = new UrlBottomImageSpan(paramContext, 0, paramMessageRecord, paramCallback))
           {
             paramSpannableStringBuilder.setSpan(paramContext, paramHighlightItem.start, paramHighlightItem.end, 33);
             if (!QLog.isColorLevel()) {
@@ -78,10 +77,10 @@ public class MessageForGrayTips
         if (i != -1)
         {
           paramCallback = str.substring(0, i);
-          if (!axma.b.containsKey(paramCallback)) {
+          if (!MutualMarkUtils.b.containsKey(paramCallback)) {
             break label390;
           }
-          i = ((Integer)axma.b.get(paramCallback)).intValue();
+          i = ((Integer)MutualMarkUtils.b.get(paramCallback)).intValue();
           if (i != 0)
           {
             if (!paramBoolean) {
@@ -159,21 +158,21 @@ public class MessageForGrayTips
         case 5: 
           paramBundle = paramBundle + ",icon";
           if (str3 == null) {
-            break label809;
+            break label805;
           }
           paramBundle = paramBundle + ",1," + str3;
           if (str2 == null) {
-            break label833;
+            break label829;
           }
           paramBundle = paramBundle + ",1," + str2;
           paramBundle = paramBundle + ",color";
           if (str1 == null) {
-            break label857;
+            break label853;
           }
           paramBundle = paramBundle + ",1," + str1;
           paramInt1 = this.msg.indexOf("                    ##**##");
           if (paramInt1 != -1) {
-            break label881;
+            break label877;
           }
           this.msg = (this.msg + "                    ##**##" + "1" + paramBundle);
           return;
@@ -222,16 +221,16 @@ public class MessageForGrayTips
       paramBundle = paramBundle.getString("key_action_DATA");
       paramBundle = str4 + "," + paramBundle;
       continue;
-      label809:
+      label805:
       paramBundle = paramBundle + ",0";
       continue;
-      label833:
+      label829:
       paramBundle = paramBundle + ",0";
       continue;
-      label857:
+      label853:
       paramBundle = paramBundle + ",0";
       continue;
-      label881:
+      label877:
       str1 = this.msg.substring(0, paramInt1);
       str3 = this.msg.substring(paramInt1 + "                    ##**##".length(), this.msg.length());
       paramInt1 = str3.indexOf(',');
@@ -873,7 +872,7 @@ public class MessageForGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips
  * JD-Core Version:    0.7.0.1
  */

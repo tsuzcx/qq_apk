@@ -38,19 +38,19 @@ public class EntryDebugFragment
     this.mContentView.setBackgroundColor(-1);
     paramLayoutInflater = new int[7];
     LayoutInflater tmp21_20 = paramLayoutInflater;
-    tmp21_20[0] = 2131373355;
+    tmp21_20[0] = 2131373673;
     LayoutInflater tmp26_21 = tmp21_20;
-    tmp26_21[1] = 2131378244;
+    tmp26_21[1] = 2131378670;
     LayoutInflater tmp31_26 = tmp26_21;
-    tmp31_26[2] = 2131378242;
+    tmp31_26[2] = 2131378668;
     LayoutInflater tmp36_31 = tmp31_26;
-    tmp36_31[3] = 2131378245;
+    tmp36_31[3] = 2131378671;
     LayoutInflater tmp41_36 = tmp36_31;
-    tmp41_36[4] = 2131363483;
+    tmp41_36[4] = 2131363570;
     LayoutInflater tmp46_41 = tmp41_36;
-    tmp46_41[5] = 2131364112;
+    tmp46_41[5] = 2131364215;
     LayoutInflater tmp51_46 = tmp46_41;
-    tmp51_46[6] = 2131376640;
+    tmp51_46[6] = 2131377035;
     tmp51_46;
     int j = paramLayoutInflater.length;
     int i = 0;
@@ -66,7 +66,7 @@ public class EntryDebugFragment
   
   public int getContentLayoutId()
   {
-    return 2131560685;
+    return 2131560775;
   }
   
   public void onClick(View paramView)

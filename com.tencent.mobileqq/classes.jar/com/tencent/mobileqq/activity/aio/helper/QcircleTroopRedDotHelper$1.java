@@ -1,23 +1,30 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afok;
-import afqz;
-import agju;
+import com.tencent.mobileqq.activity.aio.AIOTroopQcircleRedDotManager;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
-public class QcircleTroopRedDotHelper$1
+class QcircleTroopRedDotHelper$1
   implements Runnable
 {
-  public QcircleTroopRedDotHelper$1(agju paramagju) {}
+  QcircleTroopRedDotHelper$1(QcircleTroopRedDotHelper paramQcircleTroopRedDotHelper) {}
   
   public void run()
   {
-    afok.a().c(this.this$0.a.getCurTroopUin(), this.this$0.a, this.this$0.a.listAdapter.a());
+    if ((this.this$0.a == null) || (this.this$0.a.a == null) || (this.this$0.a.a.a() == null)) {}
+    do
+    {
+      return;
+      if (AIOTroopQcircleRedDotManager.a()) {
+        AIOTroopQcircleRedDotManager.a().c(this.this$0.a.d(), this.this$0.a, this.this$0.a.a.a());
+      }
+    } while (!AIOTroopQcircleRedDotManager.b());
+    AIOTroopQcircleRedDotManager.a().a(this.this$0.a, this.this$0.a.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QcircleTroopRedDotHelper.1
  * JD-Core Version:    0.7.0.1
  */

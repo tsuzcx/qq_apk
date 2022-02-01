@@ -2,32 +2,30 @@ package com.tencent.biz.pubaccount.util;
 
 import android.content.Context;
 import android.graphics.Rect;
+import com.tencent.biz.ui.ISwipeBackCallBack;
 import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import uvq;
 
 public class PublicAccountCompactSwipeBackLayout
   extends SwipePostTableLayout
+  implements ISwipeBackCallBack
 {
-  protected WebViewFragment a;
-  protected uvq a;
+  protected ReadinjoyH5ElementManager a = new ReadinjoyH5ElementManager();
   private boolean g = true;
-  private boolean h;
+  private boolean h = false;
   
   public PublicAccountCompactSwipeBackLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Uvq = new uvq();
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_Uvq.a(paramString);
+    this.a.a(paramString);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Uvq.a(paramString, new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
+    this.a.a(paramString, new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
   }
   
   public void a(boolean paramBoolean)
@@ -39,15 +37,10 @@ public class PublicAccountCompactSwipeBackLayout
   {
     this.h = paramBoolean;
   }
-  
-  public void setWebViewFragment(WebViewFragment paramWebViewFragment)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment = paramWebViewFragment;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountCompactSwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.app.automator;
 
-import aoho;
-
 public class ParallGroup
   extends StepGroup
-  implements aoho
+  implements IResultListener
 {
   protected int d;
   

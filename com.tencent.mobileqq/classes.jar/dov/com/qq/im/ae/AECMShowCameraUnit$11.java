@@ -1,24 +1,20 @@
 package dov.com.qq.im.ae;
 
-import bmvk;
-import com.tencent.aekit.api.standard.filter.AEFilterManager;
-import com.tencent.aekit.plugin.core.AEDetectorType;
+import dov.com.qq.im.ae.cmshow.AECMShowLoadingView;
 
-public class AECMShowCameraUnit$11
+class AECMShowCameraUnit$11
   implements Runnable
 {
-  public AECMShowCameraUnit$11(bmvk parambmvk) {}
+  AECMShowCameraUnit$11(AECMShowCameraUnit paramAECMShowCameraUnit, int paramInt) {}
   
   public void run()
   {
-    if (bmvk.a(this.this$0) != null) {
-      bmvk.a(this.this$0).setAIParam(AEDetectorType.VOICE_RECOGNIZE.value, "extrawords", "shoot");
-    }
+    AECMShowCameraUnit.a(this.this$0).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.AECMShowCameraUnit.11
  * JD-Core Version:    0.7.0.1
  */

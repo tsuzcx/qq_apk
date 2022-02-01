@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mok" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/moi" android:layout_width="300.0dip" android:layout_height="300.0dip" android:layout_centerInParent="true" />
+    <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/mh" android:gravity="center" android:layout_gravity="top" android:id="@id/jt2" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/bc0" android:text="@string/wa0" />
+    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/o8k" android:background="@drawable/g9p" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/nmq" android:layout_below="@id/jt2" />
+    <RelativeLayout android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_above="@id/nmq">
+        <ImageView android:id="@id/n9g" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/g5d" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/n9i" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/g5l" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu android:id="@id/nmq" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b_q" android:layout_alignParentBottom="true" />
 </RelativeLayout>

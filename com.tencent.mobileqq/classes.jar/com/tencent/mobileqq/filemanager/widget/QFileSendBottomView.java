@@ -23,20 +23,20 @@ public class QFileSendBottomView
   public QFileSendBottomView(Context paramContext)
   {
     super(paramContext, null);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560834, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560925, this);
     b();
   }
   
   public QFileSendBottomView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560834, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560925, this, true);
     b();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377340));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377760));
   }
   
   public View a(int paramInt)
@@ -53,10 +53,10 @@ public class QFileSendBottomView
     }
     if (!ThemeUtil.isDefaultOrDIYTheme(false))
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844212);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844402);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131380650));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131381097));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(this.jdField_a_of_type_ComTencentWidgetListView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
@@ -73,14 +73,14 @@ public class QFileSendBottomView
   {
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
-    localRelativeLayout.addView(new View(getContext()), new RelativeLayout.LayoutParams(-1, AIOUtils.dp2px(50.0F, getResources())));
+    localRelativeLayout.addView(new View(getContext()), new RelativeLayout.LayoutParams(-1, AIOUtils.a(50.0F, getResources())));
     paramListView.addFooterView(localRelativeLayout);
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileSendBottomView
  * JD-Core Version:    0.7.0.1
  */

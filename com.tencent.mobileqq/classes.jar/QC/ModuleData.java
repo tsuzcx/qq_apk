@@ -13,8 +13,8 @@ public final class ModuleData
   static Map<String, String> cache_extModParams;
   static ArrayList<ItemDisDetail> cache_vitem = new ArrayList();
   public String cname = "";
-  public Map<String, String> extModParams;
-  public ArrayList<ItemDisDetail> vitem;
+  public Map<String, String> extModParams = null;
+  public ArrayList<ItemDisDetail> vitem = null;
   
   static
   {

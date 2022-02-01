@@ -1,14 +1,13 @@
 package com.tencent.open.downloadnew;
 
-import anvx;
-import bjko;
-import bjna;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.open.base.LogUtility;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
-public class DownloadManager$6
+class DownloadManager$6
   implements Runnable
 {
-  public DownloadManager$6(bjna parambjna, DownloadInfo paramDownloadInfo) {}
+  DownloadManager$6(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -19,13 +18,13 @@ public class DownloadManager$6
     this.a.j = this.this$0.a(this.a);
     if (this.a.j != 0)
     {
-      bjko.a("DownloadManager_", anvx.a(2131702970));
+      LogUtility.a("DownloadManager_", HardCodeUtil.a(2131703518));
       this.a.e = -2;
       this.a.f = 100;
       this.this$0.a(this.a, this.a.j, null);
       return;
     }
-    bjko.a("DownloadManager_", anvx.a(2131702995));
+    LogUtility.a("DownloadManager_", HardCodeUtil.a(2131703543));
     this.a.e = 4;
     this.a.f = 100;
     this.this$0.b(this.a);
@@ -33,7 +32,7 @@ public class DownloadManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.6
  * JD-Core Version:    0.7.0.1
  */

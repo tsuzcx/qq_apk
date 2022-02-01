@@ -21,7 +21,7 @@ class RecommendFriendFragment$3
       }
     }
     label252:
-    for (int i = (this.this$0.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - Math.max(this.this$0.b - this.this$0.jdField_a_of_type_Int, 0) - this.this$0.c.getMeasuredHeight()) / 2;; i = AIOUtils.dp2px(68.0F, this.this$0.getResources()))
+    for (int i = (this.this$0.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - Math.max(this.this$0.b - this.this$0.jdField_a_of_type_Int, 0) - this.this$0.c.getMeasuredHeight()) / 2;; i = AIOUtils.a(68.0F, this.this$0.getResources()))
     {
       if (i != localLayoutParams.topMargin)
       {
@@ -37,7 +37,7 @@ class RecommendFriendFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.RecommendFriendFragment.3
  * JD-Core Version:    0.7.0.1
  */

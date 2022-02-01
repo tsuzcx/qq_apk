@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.filemanager.activity.favfile;
 
 import android.content.Context;
-import atbx;
-import atcb;
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class QfileFavVideoFileTabView
   extends QfileFavFileTabView
 {
-  public QfileFavVideoFileTabView(Context paramContext, atcb paramatcb, atbx paramatbx)
+  public QfileFavVideoFileTabView(Context paramContext, QfileFavFileRecordProvider paramQfileFavFileRecordProvider, QfileBaseFavFileTabView.ITabBarViewProxy paramITabBarViewProxy)
   {
-    super(paramContext, paramatcb, paramatbx);
+    super(paramContext, paramQfileFavFileRecordProvider, paramITabBarViewProxy);
   }
   
   protected void a(boolean paramBoolean)
   {
-    bdla.b(this.a, "dc00898", "", "", "0X800AFAB", "0X800AFAB", 0, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800AFAB", "0X800AFAB", 0, 0, "", "", "", "");
   }
   
   protected int b()
@@ -25,7 +23,7 @@ public class QfileFavVideoFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavVideoFileTabView
  * JD-Core Version:    0.7.0.1
  */

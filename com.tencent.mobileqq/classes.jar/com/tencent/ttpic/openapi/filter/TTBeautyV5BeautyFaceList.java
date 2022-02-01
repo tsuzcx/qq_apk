@@ -14,7 +14,7 @@ import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.factory.TTPicFilterFactoryLocal;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FaceOffUtil;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -221,7 +221,7 @@ public class TTBeautyV5BeautyFaceList
     List localList;
     if (i < paramList.size())
     {
-      localList = VideoMaterialUtil.copyList((List)paramList.get(i));
+      localList = VideoMaterial.copyList((List)paramList.get(i));
       FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(localList, 5.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices);
       if (paramList1.size() <= i) {
         break label1515;
@@ -643,7 +643,7 @@ public class TTBeautyV5BeautyFaceList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTBeautyV5BeautyFaceList
  * JD-Core Version:    0.7.0.1
  */

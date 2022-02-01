@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqRichInfo
   extends JceStruct
 {
-  public long dwTime;
-  public long lUin;
+  public long dwTime = 0L;
+  public long lUin = 0L;
   
   public ReqRichInfo() {}
   

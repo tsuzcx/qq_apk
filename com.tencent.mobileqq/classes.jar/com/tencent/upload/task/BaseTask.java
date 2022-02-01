@@ -369,7 +369,7 @@ public abstract class BaseTask
       }
       catch (Throwable localThrowable)
       {
-        UploadLog.e("BaseTask", "taskId:" + getTaskId() + " onRun has Exception:", localThrowable);
+        UploadLog.e("BaseTask", "taskId:" + getTaskId() + " onRun has Exception:" + localThrowable.getMessage());
         if (this.mRetCode != 0) {
           continue;
         }
@@ -501,7 +501,7 @@ public abstract class BaseTask
     //   104: ldc 10
     //   106: ldc_w 260
     //   109: aload_2
-    //   110: invokestatic 262	com/tencent/upload/utils/UploadLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   110: invokestatic 263	com/tencent/upload/utils/UploadLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   113: goto -95 -> 18
     //   116: astore_2
     //   117: aload_0
@@ -510,9 +510,9 @@ public abstract class BaseTask
     //   120: athrow
     //   121: astore_2
     //   122: ldc 10
-    //   124: ldc_w 264
+    //   124: ldc_w 265
     //   127: aload_2
-    //   128: invokestatic 206	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   128: invokestatic 267	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   131: goto -113 -> 18
     //   134: aload_2
     //   135: invokeinterface 152 1 0
@@ -524,15 +524,15 @@ public abstract class BaseTask
     //   150: new 96	java/lang/StringBuilder
     //   153: dup
     //   154: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   157: ldc_w 266
+    //   157: ldc_w 269
     //   160: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: aload_0
     //   164: invokevirtual 106	com/tencent/upload/task/BaseTask:getTaskId	()I
     //   167: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   170: ldc_w 268
+    //   170: ldc_w 271
     //   173: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: invokestatic 274	com/tencent/upload/utils/pool/UploadThreadManager:getInstance	()Lcom/tencent/upload/utils/pool/UploadThreadManager;
-    //   179: invokevirtual 275	com/tencent/upload/utils/pool/UploadThreadManager:toString	()Ljava/lang/String;
+    //   176: invokestatic 277	com/tencent/upload/utils/pool/UploadThreadManager:getInstance	()Lcom/tencent/upload/utils/pool/UploadThreadManager;
+    //   179: invokevirtual 278	com/tencent/upload/utils/pool/UploadThreadManager:toString	()Ljava/lang/String;
     //   182: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   185: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   188: invokestatic 123	com/tencent/upload/utils/UploadLog:i	(Ljava/lang/String;Ljava/lang/String;)V
@@ -570,7 +570,7 @@ public abstract class BaseTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.upload.task.BaseTask
  * JD-Core Version:    0.7.0.1
  */

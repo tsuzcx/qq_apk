@@ -5,12 +5,11 @@ import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import java.io.File;
-import yma;
 
 public class EditRecordVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new yma();
+  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new EditRecordVideoSource.1();
   public final float a;
   public final int a;
   public final long a;
@@ -25,7 +24,7 @@ public class EditRecordVideoSource
   public final int f;
   public final int g;
   
-  public EditRecordVideoSource(Parcel paramParcel)
+  protected EditRecordVideoSource(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -60,13 +59,29 @@ public class EditRecordVideoSource
     this.jdField_a_of_type_Float = paramFloat;
     this.jdField_b_of_type_JavaLangString = paramString2;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    paramString1 = checkParam();
+    paramString1 = b();
     if (paramString1 != null) {
       throw new IllegalArgumentException(paramString1);
     }
   }
   
-  public String checkParam()
+  public int a()
+  {
+    return this.c;
+  }
+  
+  @NonNull
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.d;
+  }
+  
+  public String b()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return "sourcePath is empty";
@@ -83,22 +98,6 @@ public class EditRecordVideoSource
   public int describeContents()
   {
     return hashCode();
-  }
-  
-  public int getHeight()
-  {
-    return this.d;
-  }
-  
-  @NonNull
-  public String getSourcePath()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int getWidth()
-  {
-    return this.c;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -124,7 +123,7 @@ public class EditRecordVideoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditRecordVideoSource
  * JD-Core Version:    0.7.0.1
  */

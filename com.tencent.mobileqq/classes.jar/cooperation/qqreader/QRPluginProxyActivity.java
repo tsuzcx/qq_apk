@@ -1,6 +1,5 @@
 package cooperation.qqreader;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
@@ -12,6 +11,8 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class QRPluginProxyActivity
   extends PluginProxyActivity
 {
+  public static boolean a = false;
+  
   public static Class<? extends PluginProxyActivity> a(String paramString)
   {
     if ("com.qqreader.pureader.SSReaderActivity".equals(paramString)) {
@@ -63,7 +64,7 @@ public class QRPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.QRPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

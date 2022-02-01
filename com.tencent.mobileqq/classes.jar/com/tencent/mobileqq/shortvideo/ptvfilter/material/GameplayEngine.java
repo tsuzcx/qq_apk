@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
 import android.content.res.AssetManager;
-import bdcp;
-import bdcq;
 
 public class GameplayEngine
 {
   private long jdField_a_of_type_Long = 0L;
-  private bdcp jdField_a_of_type_Bdcp = new bdcp(new Game3DNativeEvent());
+  private GameEventConsumer jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialGameEventConsumer = new GameEventConsumer(new Game3DNativeEvent());
   
   private native int createEngineContext(AssetManager paramAssetManager);
   
@@ -19,9 +17,9 @@ public class GameplayEngine
   
   private native int onSurfaceOperateNative(long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
-  public void a(bdcq parambdcq)
+  public void a(GameEventConsumer.MotionEventData paramMotionEventData)
   {
-    this.jdField_a_of_type_Bdcp.a(parambdcq, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialGameEventConsumer.a(paramMotionEventData, this.jdField_a_of_type_Long);
   }
 }
 

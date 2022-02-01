@@ -1,12 +1,9 @@
 package com.tencent.biz.subscribe.comment;
 
-import zuu;
-import zuv;
-
-public class CommentInputPopupWindow$1$1
+class CommentInputPopupWindow$1$1
   implements Runnable
 {
-  public CommentInputPopupWindow$1$1(zuv paramzuv) {}
+  CommentInputPopupWindow$1$1(CommentInputPopupWindow.1 param1) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class CommentInputPopupWindow$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1
  * JD-Core Version:    0.7.0.1
  */

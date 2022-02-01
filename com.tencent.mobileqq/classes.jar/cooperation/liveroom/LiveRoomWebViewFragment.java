@@ -11,16 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import ashz;
-import bicy;
-import bieb;
-import bijc;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
+import com.tencent.mobileqq.webprocess.PreloadService;
+import com.tencent.mobileqq.webview.WebViewDirector;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.utils.WebStateReporter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.FragmentCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment;
@@ -34,15 +34,15 @@ public class LiveRoomWebViewFragment
   private static final String TAG = "LiveRoomWebViewFragment";
   private long clickTime;
   private LiveRoomInterfaceProxy mApp;
-  public View mExtendView;
-  public ViewGroup mGiftView;
-  protected Intent mIntent;
+  public View mExtendView = null;
+  public ViewGroup mGiftView = null;
+  protected Intent mIntent = null;
   private boolean mIsWebViewCache;
   private long mOnCreateMilliTimeStamp;
   private long mPluginFinishedTime;
-  public ArrayList<WebViewPlugin> mPluginList;
-  private FrameLayout mRootLayout;
-  public LiveRoomWebViewBuilder mWebViewBuilder;
+  public ArrayList<WebViewPlugin> mPluginList = null;
+  private FrameLayout mRootLayout = null;
+  public LiveRoomWebViewBuilder mWebViewBuilder = null;
   private long onCreateTime;
   
   public static LiveRoomWebViewFragment newInstance(Intent paramIntent)
@@ -108,7 +108,7 @@ public class LiveRoomWebViewFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     QLog.d("LiveRoomWebViewFragment", 1, "onCreateView");
-    if (bicy.d) {
+    if (PreloadService.e) {
       this.mIsWebViewCache = true;
     }
     this.mRootLayout = new FrameLayout(getActivity());
@@ -139,7 +139,7 @@ public class LiveRoomWebViewFragment
       this.mIntent.putExtra("webview_hide_progress", true);
       this.mWebViewBuilder = new LiveRoomWebViewBuilder(getActivity(), getActivity(), this.mIntent, this.mApp);
       paramLayoutInflater = null;
-      paramViewGroup = new bieb(this.mWebViewBuilder);
+      paramViewGroup = new WebViewDirector(this.mWebViewBuilder);
       if (this.mPluginList != null)
       {
         paramLayoutInflater = new VasCommonJsPlugin();
@@ -150,8 +150,8 @@ public class LiveRoomWebViewFragment
       if ((paramLayoutInflater != null) && (paramLayoutInflater.mRuntime != null)) {
         setVasUIInterface(paramLayoutInflater, paramViewGroup);
       }
-      if (!ashz.a().a()) {
-        ashz.a().a().doBindService(this.mApp.getApplication());
+      if (!WebIPCOperator.a().a()) {
+        WebIPCOperator.a().a().doBindService(this.mApp.getApplication());
       }
       if (this.mWebViewBuilder.getContainer().getParent() != null) {
         QLog.d("LiveRoomWebViewFragment", 1, "ViewRoot 's parent " + this.mWebViewBuilder.getContainer().getParent().hashCode());
@@ -237,14 +237,14 @@ public class LiveRoomWebViewFragment
     }
   }
   
-  public void setVasUIInterface(VasCommonJsPlugin paramVasCommonJsPlugin, bieb parambieb)
+  public void setVasUIInterface(VasCommonJsPlugin paramVasCommonJsPlugin, WebViewDirector paramWebViewDirector)
   {
-    paramVasCommonJsPlugin.setUiInterface(new LiveRoomWebViewFragment.1(this, parambieb));
+    paramVasCommonJsPlugin.setUiInterface(new LiveRoomWebViewFragment.1(this, paramWebViewDirector));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

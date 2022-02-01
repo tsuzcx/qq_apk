@@ -8,7 +8,7 @@ public final class UniCheckForQzoneReq
   extends JceStruct
 {
   static LoginInfo cache_stLogin = new LoginInfo();
-  public LoginInfo stLogin;
+  public LoginInfo stLogin = null;
   public String strSuixintieCheckInfo = "";
   
   public UniCheckForQzoneReq() {}

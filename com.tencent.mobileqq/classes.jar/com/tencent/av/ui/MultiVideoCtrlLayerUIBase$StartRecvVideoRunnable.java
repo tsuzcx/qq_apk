@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 class MultiVideoCtrlLayerUIBase$StartRecvVideoRunnable
   implements Runnable
 {
-  public String a;
+  public String a = null;
   
   MultiVideoCtrlLayerUIBase$StartRecvVideoRunnable(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
@@ -19,7 +19,7 @@ class MultiVideoCtrlLayerUIBase$StartRecvVideoRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.StartRecvVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.managers;
 
-import awtq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class TempMsgManager$3
+class TempMsgManager$3
   implements Runnable
 {
-  public TempMsgManager$3(awtq paramawtq, String paramString) {}
+  TempMsgManager$3(TempMsgManager paramTempMsgManager, String paramString) {}
   
   public void run()
   {
-    QQToast.a(awtq.a(this.this$0).getApp(), this.a, 1).a();
+    QQToast.a(TempMsgManager.a(this.this$0).getApp(), this.a, 1).a();
   }
 }
 

@@ -4,24 +4,24 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import axny;
-import bgzv;
-import bkye;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.util.NearbyProfileUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.ProfilePerformanceReport;
 
 class NearbyPeopleProfileActivity$2
   implements Runnable
 {
-  NearbyPeopleProfileActivity$2(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, bkye parambkye) {}
+  NearbyPeopleProfileActivity$2(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ProfilePerformanceReport paramProfilePerformanceReport) {}
   
   public void run()
   {
@@ -52,7 +52,7 @@ class NearbyPeopleProfileActivity$2
         if (localObject2 == null)
         {
           localObject1 = localObject2;
-          if (!StringUtil.isEmpty(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
+          if (!StringUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
           {
             localObject1 = (NearbyPeopleCard)((EntityManager)localObject3).find(NearbyPeopleCard.class, "uin=?", new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString });
             break label716;
@@ -100,7 +100,7 @@ class NearbyPeopleProfileActivity$2
           ((NearbyPeopleCard)localObject1).aioDistanceAndTime = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_b_of_type_JavaLangString;
         }
         this.this$0.jdField_a_of_type_JavaLangString = ((NearbyPeopleCard)localObject1).uin;
-        localObject3 = (axny)this.this$0.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
+        localObject3 = (NearbyCardManager)this.this$0.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
         String str = this.this$0.app.getCurrentAccountUin();
         boolean bool3 = this.this$0.n;
         if (this.this$0.j != -1) {
@@ -108,7 +108,7 @@ class NearbyPeopleProfileActivity$2
         }
         bool2 = true;
         label553:
-        bool2 = ((axny)localObject3).a((NearbyPeopleCard)localObject1, str, bool3, bool2, this.this$0.d, bool1);
+        bool2 = ((NearbyCardManager)localObject3).a((NearbyPeopleCard)localObject1, str, bool3, bool2, this.this$0.d, bool1);
         localObject3 = this.this$0.getIntent();
         bool1 = bool2;
         if (localObject3 != null)
@@ -129,7 +129,7 @@ class NearbyPeopleProfileActivity$2
     }
     for (;;)
     {
-      if ((!NetworkUtil.isNetSupport(BaseApplication.getContext())) && (bool1))
+      if ((!NetworkUtil.d(BaseApplication.getContext())) && (bool1))
       {
         this.this$0.runOnUiThread(new NearbyPeopleProfileActivity.2.1(this));
         label716:
@@ -161,13 +161,13 @@ class NearbyPeopleProfileActivity$2
           }
           if (this.this$0.jdField_a_of_type_Long > 0L)
           {
-            bgzv.a(this.this$0.jdField_a_of_type_Axqt, this.this$0.app, this.this$0.jdField_a_of_type_Long, null, this.this$0.d, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+            NearbyProfileUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.this$0.app, this.this$0.jdField_a_of_type_Long, null, this.this$0.d, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
             return;
           }
-          bgzv.a(this.this$0.jdField_a_of_type_Axqt, this.this$0.app, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.d, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+          NearbyProfileUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.this$0.app, 0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.this$0.d, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
           return;
         }
-        bgzv.a(this.this$0.jdField_a_of_type_Axqt, this.this$0.app, 0L, this.this$0.app.getCurrentAccountUin(), this.this$0.d, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
+        NearbyProfileUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.this$0.app, 0L, this.this$0.app.getCurrentAccountUin(), this.this$0.d, (byte[])localObject1, l, false, i, NearbyPeopleProfileActivity.a(this.this$0.j), NearbyPeopleProfileActivity.a(this.this$0), NearbyPeopleProfileActivity.a(this.this$0));
         return;
       }
       label1062:

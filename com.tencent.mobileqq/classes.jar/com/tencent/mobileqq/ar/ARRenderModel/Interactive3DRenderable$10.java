@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
 import android.text.TextUtils;
-import apbp;
-import apew;
+import com.tencent.mobileqq.ar.ARMusicController;
 
-public class Interactive3DRenderable$10
+class Interactive3DRenderable$10
   implements Runnable
 {
-  public Interactive3DRenderable$10(apew paramapew, String paramString) {}
+  Interactive3DRenderable$10(Interactive3DRenderable paramInteractive3DRenderable, String paramString) {}
   
   public void run()
   {
-    if ((apew.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a))) {
-      apew.a(this.this$0).a(apew.a(this.this$0) + this.a, true);
+    if ((Interactive3DRenderable.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a))) {
+      Interactive3DRenderable.a(this.this$0).a(Interactive3DRenderable.a(this.this$0) + this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.10
  * JD-Core Version:    0.7.0.1
  */

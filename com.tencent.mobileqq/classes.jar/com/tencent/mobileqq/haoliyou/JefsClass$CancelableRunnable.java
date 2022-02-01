@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.haoliyou;
 
-import avil;
 import com.tencent.mobileqq.bigbrother.WeakOuterRefRunnable;
 import com.tencent.qphone.base.util.QLog;
 
 public class JefsClass$CancelableRunnable
-  implements Runnable
+  implements JefsClass.IdSetter, Runnable
 {
-  WeakOuterRefRunnable a;
-  public boolean a;
+  WeakOuterRefRunnable jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable;
+  boolean jdField_a_of_type_Boolean = false;
   
   JefsClass$CancelableRunnable(WeakOuterRefRunnable paramWeakOuterRefRunnable)
   {
-    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable = paramWeakOuterRefRunnable;
   }
   
-  public avil a()
+  public JefsClass.Cancelable a()
   {
-    return new avil(this);
+    return new JefsClass.Cancelable(this);
   }
   
   public void a(int paramInt)
@@ -44,7 +42,7 @@ public class JefsClass$CancelableRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable
  * JD-Core Version:    0.7.0.1
  */

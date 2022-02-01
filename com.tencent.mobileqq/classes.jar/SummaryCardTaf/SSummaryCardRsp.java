@@ -16,30 +16,30 @@ public final class SSummaryCardRsp
   static STRecommendInfo cache_stRecom;
   static ArrayList<summaryCardWzryInfo> cache_wzryInfo;
   public String aid = "";
-  public long bgid;
-  public ArrayList<Integer> bgtype;
+  public long bgid = 0L;
+  public ArrayList<Integer> bgtype = null;
   public String bgurl = "";
-  public int cardType;
-  public long cardid;
-  public long color;
-  public int dynamicCardFlag;
+  public int cardType = 0;
+  public long cardid = 0L;
+  public long color = 0L;
+  public int dynamicCardFlag = 0;
   public String emsg = "";
   public String extInfo = "";
-  public SUserLabel label;
-  public int payType;
-  public int profileid;
-  public int res;
-  public cardDiyComplicatedInfo stDiyComplicated;
-  public cardDiyTextInfo stDiyText;
-  public STRecommendInfo stRecom;
+  public SUserLabel label = null;
+  public int payType = 0;
+  public int profileid = 0;
+  public int res = 0;
+  public cardDiyComplicatedInfo stDiyComplicated = null;
+  public cardDiyTextInfo stDiyText = null;
+  public STRecommendInfo stRecom = null;
   public String strActiveCardUrl = "";
   public String strDiyDefaultText = "";
   public String strDrawerCard = "";
   public String strWzryHeroUrl = "";
   public String strZipUrl = "";
-  public long styleid;
+  public long styleid = 0L;
   public String urlprefix = "";
-  public ArrayList<summaryCardWzryInfo> wzryInfo;
+  public ArrayList<summaryCardWzryInfo> wzryInfo = null;
   
   static
   {
@@ -176,7 +176,7 @@ public final class SSummaryCardRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SSummaryCardRsp
  * JD-Core Version:    0.7.0.1
  */

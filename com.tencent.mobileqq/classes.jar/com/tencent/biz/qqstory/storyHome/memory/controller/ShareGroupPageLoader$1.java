@@ -1,42 +1,40 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.StoryDispatcher;
+import com.tencent.biz.qqstory.model.MemoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.List;
-import wad;
-import wjf;
-import wjs;
-import yai;
-import yaj;
-import ykq;
 
-public class ShareGroupPageLoader$1
+class ShareGroupPageLoader$1
   implements Runnable
 {
   public void run()
   {
-    ??? = ((wjf)wjs.a(19)).b(this.this$0.a);
-    yaj localyaj = new yaj(new ErrorMessage(), yai.a(this.this$0));
-    localyaj.b = true;
-    localyaj.jdField_a_of_type_Boolean = true;
-    localyaj.c = true;
-    localyaj.jdField_a_of_type_JavaUtilList = ((List)???);
-    localyaj.jdField_a_of_type_Int = ((List)???).size();
+    ??? = ((MemoryManager)SuperManager.a(19)).b(this.this$0.jdField_b_of_type_JavaLangString);
+    ShareGroupPageLoader.GetShareGroupListEvent localGetShareGroupListEvent = new ShareGroupPageLoader.GetShareGroupListEvent(new ErrorMessage(), ShareGroupPageLoader.a(this.this$0));
+    localGetShareGroupListEvent.jdField_b_of_type_Boolean = true;
+    localGetShareGroupListEvent.jdField_a_of_type_Boolean = true;
+    localGetShareGroupListEvent.c = true;
+    localGetShareGroupListEvent.jdField_a_of_type_JavaUtilList = ((List)???);
+    localGetShareGroupListEvent.jdField_a_of_type_Int = ((List)???).size();
     synchronized (this.this$0)
     {
-      if (!this.this$0.b)
+      if (!this.this$0.jdField_b_of_type_Boolean)
       {
-        wad.a().dispatch(localyaj);
-        ykq.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from cache: %s", localyaj);
+        StoryDispatcher.a().dispatch(localGetShareGroupListEvent);
+        SLog.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from cache: %s", localGetShareGroupListEvent);
         return;
       }
-      ykq.d("Q.qqstory.memories:ShareGroupPageLoader", "load cache data later than load from network");
+      SLog.d("Q.qqstory.memories:ShareGroupPageLoader", "load cache data later than load from network");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.ShareGroupPageLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class CategoryRecommend
   extends JceStruct
 {
   static ArrayList<CategoryRecommendItem> cache_items = new ArrayList();
-  public ArrayList<CategoryRecommendItem> items;
+  public ArrayList<CategoryRecommendItem> items = null;
   
   static
   {

@@ -1,13 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import bbxu;
-import bbxw;
-import bbyf;
-import bdla;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.scribble.ScribbleDownloader;
+import com.tencent.mobileqq.scribble.ScribbleMsgUtils;
+import com.tencent.mobileqq.scribble.ScribbleUtils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
+import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -17,14 +20,14 @@ public class ScribblePicDownloadProcessor
 {
   public static final String TAG = "ScribblePicDownloadProcessor";
   private ArrayList<String> ipListFromInnerDns;
-  private int mIpIndex;
+  private int mIpIndex = 0;
   MessageForScribble mMsg;
-  private int mTotalRetryTime;
+  private int mTotalRetryTime = 0;
   String url = "";
   
-  public ScribblePicDownloadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public ScribblePicDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
   }
   
   private void spliteCombineFile()
@@ -32,14 +35,14 @@ public class ScribblePicDownloadProcessor
     if (this.mMsg == null) {
       return;
     }
-    String str = bbyf.a(this.mUiRequest.mOutFilePath);
+    String str = ScribbleUtils.a(this.mUiRequest.mOutFilePath);
     if (str.equalsIgnoreCase(this.mMsg.combineFileMd5))
     {
       if (this.mMsg != null) {
         this.mMsg.mExistInfo.mCombineFileExist = true;
       }
-      int i = bbxw.b(this.mMsg);
-      if (i == bbxw.d)
+      int i = ScribbleMsgUtils.b(this.mMsg);
+      if (i == ScribbleMsgUtils.d)
       {
         if (this.mMsg != null)
         {
@@ -73,7 +76,7 @@ public class ScribblePicDownloadProcessor
     if (paramMessageForScribble != null)
     {
       paramMessageForScribble.prewrite();
-      this.app.getMessageFacade().updateMsgContentByUniseq(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
+      this.app.getMessageFacade().a(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
     }
   }
   
@@ -92,7 +95,7 @@ public class ScribblePicDownloadProcessor
       onError();
       return -1;
     }
-    this.mUiRequest.mOutFilePath = bbxw.a(this.mMsg);
+    this.mUiRequest.mOutFilePath = ScribbleMsgUtils.a(this.mMsg);
     if (TextUtils.isEmpty(this.mUiRequest.mOutFilePath))
     {
       setError(9302, getExpStackString(new Exception("combineFileMd5 illegal " + this.mMsg.combineFileMd5)));
@@ -110,20 +113,20 @@ public class ScribblePicDownloadProcessor
     }
     updateMsg(this.mMsg);
     sendMessageToUpdate(2005);
-    bbxu localbbxu = this.app.getScribbleDownloader();
-    if (localbbxu != null)
+    ScribbleDownloader localScribbleDownloader = this.app.getScribbleDownloader();
+    if (localScribbleDownloader != null)
     {
       if (this.mMsg == null) {
         break label90;
       }
-      localbbxu.a(this.mMsg);
+      localScribbleDownloader.a(this.mMsg);
     }
     for (;;)
     {
-      bdla.b(this.app, "CliOper", "", "", "0X800945B", "0X800945B", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "CliOper", "", "", "0X800945B", "0X800945B", 0, 0, "", "", "", "");
       return;
       label90:
-      localbbxu.a(null);
+      localScribbleDownloader.a(null);
     }
   }
   
@@ -203,20 +206,20 @@ public class ScribblePicDownloadProcessor
     }
     updateMsg(this.mMsg);
     sendMessageToUpdate(2003);
-    bbxu localbbxu = this.app.getScribbleDownloader();
-    if (localbbxu != null)
+    ScribbleDownloader localScribbleDownloader = this.app.getScribbleDownloader();
+    if (localScribbleDownloader != null)
     {
       if (this.mMsg == null) {
         break label92;
       }
-      localbbxu.a(this.mMsg);
+      localScribbleDownloader.a(this.mMsg);
     }
     for (;;)
     {
-      bdla.b(this.app, "CliOper", "", "", "0X800945C", "0X800945C", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "CliOper", "", "", "0X800945C", "0X800945C", 0, 0, "", "", "", "");
       return;
       label92:
-      localbbxu.a(null);
+      localScribbleDownloader.a(null);
     }
   }
   
@@ -249,11 +252,11 @@ public class ScribblePicDownloadProcessor
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        bdla.b(this.app, "CliOper", "", "", "0X800945D", "0X800945D", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X800945D", "0X800945D", 0, 0, "", "", "", "");
       }
       for (;;)
       {
-        str2 = RichMediaUtil.getIpOrDomainFromURL(str1);
+        str2 = TransFileUtil.getIpOrDomainFromURL(str1);
         if (QLog.isColorLevel()) {
           QLog.i("ScribblePicDownloadProcessor", 2, "httpDownRespDomain: " + str2 + "reqUrl : " + str1 + " " + localHttpNetReq.mReqUrl + " uuid:" + this.mUiRequest.mServerPath + " downOffset:" + localHttpNetReq.mStartDownOffset);
         }
@@ -262,7 +265,7 @@ public class ScribblePicDownloadProcessor
           break;
         }
         return;
-        bdla.b(this.app, "CliOper", "", "", "0X800945E", "0X800945E", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X800945E", "0X800945E", 0, 0, "", "", "", "");
       }
       this.mNetReq = localHttpNetReq;
       setMtype();
@@ -312,7 +315,7 @@ public class ScribblePicDownloadProcessor
         QLog.i("ScribblePicDownloadProcessor", 2, str);
       }
     }
-    bdla.b(this.app, "CliOper", "", "", "0X800945A", "0X800945A", 0, 0, "", "", "", "");
+    ReportController.b(this.app, "CliOper", "", "", "0X800945A", "0X800945A", 0, 0, "", "", "", "");
     recieveFile();
   }
 }

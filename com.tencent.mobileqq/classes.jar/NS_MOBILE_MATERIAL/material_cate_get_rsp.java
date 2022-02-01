@@ -11,10 +11,10 @@ public final class material_cate_get_rsp
 {
   static Map<String, String> cache_mapExtInfo;
   static MaterialCate cache_stCate = new MaterialCate();
-  public int iCode;
-  public int iHasMore;
-  public Map<String, String> mapExtInfo;
-  public MaterialCate stCate;
+  public int iCode = 0;
+  public int iHasMore = 0;
+  public Map<String, String> mapExtInfo = null;
+  public MaterialCate stCate = null;
   public String strAttachInfo = "";
   
   static

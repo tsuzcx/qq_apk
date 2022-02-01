@@ -2,12 +2,12 @@ package com.tencent.mobileqq.troop.utils;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import auez;
-import bfif;
-import bfjs;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.util.IForwardCallBack;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.security.MessageDigest;
@@ -34,56 +34,26 @@ public class TroopFileTransferManager$Item
   public transient long StatusUpdateTimeMs;
   public transient boolean ThumbnailDownloading_Large;
   public transient boolean ThumbnailDownloading_Middle;
-  public transient boolean ThumbnailDownloading_Middle_Fail;
+  public transient boolean ThumbnailDownloading_Middle_Fail = false;
   public transient boolean ThumbnailDownloading_Small;
   public transient String TmpFile;
   public transient String UploadIp;
   public transient int W2MPause;
-  public transient boolean bExtfTransfer;
+  public transient boolean bExtfTransfer = false;
   public transient String cookieValue;
   public transient String downUrlStr4Report;
-  public transient boolean genThumb_Middle_OnGettedLargeOrOrigPic;
+  public transient boolean genThumb_Middle_OnGettedLargeOrOrigPic = false;
   public transient boolean isFileExist;
   public transient String mExcitingSpeed;
-  public auez mForwardCallback;
-  public transient int retryTimes;
+  public IForwardCallBack mForwardCallback = null;
+  public transient int retryTimes = 0;
   public transient String rspHeadStr;
   public transient int thumbInvalidCode;
-  public transient long transferBeginTime;
-  public transient long transferedSize;
+  public transient long transferBeginTime = 0L;
+  public transient long transferedSize = 0L;
   public transient String uploadUrl;
   
   public TroopFileTransferManager$Item() {}
-  
-  public TroopFileTransferManager$Item(bfif parambfif)
-  {
-    this.Id = parambfif.jdField_a_of_type_JavaUtilUUID;
-    this.LocalFile = parambfif.jdField_i_of_type_JavaLangString;
-    this.Status = parambfif.jdField_e_of_type_Int;
-    this.FilePath = parambfif.jdField_b_of_type_JavaLangString;
-    this.FileName = parambfif.jdField_c_of_type_JavaLangString;
-    this.ProgressTotal = parambfif.jdField_a_of_type_Long;
-    this.UploadTime = parambfif.a();
-    this.BusId = parambfif.jdField_a_of_type_Int;
-    if ((parambfif.jdField_j_of_type_JavaLangString != null) && (parambfif.jdField_j_of_type_JavaLangString.length() > 0))
-    {
-      bool1 = true;
-      this.HasThumbnailFile_Small = bool1;
-      if ((parambfif.k == null) || (parambfif.k.length() <= 0)) {
-        break label140;
-      }
-    }
-    label140:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.HasThumbnailFile_Large = bool1;
-      this.NickName = parambfif.o;
-      this.mParentId = parambfif.jdField_g_of_type_JavaLangString;
-      return;
-      bool1 = false;
-      break;
-    }
-  }
   
   public TroopFileTransferManager$Item(TroopFileTansferItemEntity paramTroopFileTansferItemEntity)
   {
@@ -132,6 +102,36 @@ public class TroopFileTransferManager$Item
     this.apkSafeLevel = paramTroopFileTansferItemEntity.apkSafeLevel;
     this.apkSafeMsg = paramTroopFileTansferItemEntity.apkSafeMsg;
     this.apkSafeDetailUrl = paramTroopFileTansferItemEntity.apkSafeDetailUrl;
+  }
+  
+  public TroopFileTransferManager$Item(TroopFileInfo paramTroopFileInfo)
+  {
+    this.Id = paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID;
+    this.LocalFile = paramTroopFileInfo.jdField_i_of_type_JavaLangString;
+    this.Status = paramTroopFileInfo.jdField_e_of_type_Int;
+    this.FilePath = paramTroopFileInfo.jdField_b_of_type_JavaLangString;
+    this.FileName = paramTroopFileInfo.jdField_c_of_type_JavaLangString;
+    this.ProgressTotal = paramTroopFileInfo.jdField_a_of_type_Long;
+    this.UploadTime = paramTroopFileInfo.a();
+    this.BusId = paramTroopFileInfo.jdField_a_of_type_Int;
+    if ((paramTroopFileInfo.jdField_j_of_type_JavaLangString != null) && (paramTroopFileInfo.jdField_j_of_type_JavaLangString.length() > 0))
+    {
+      bool1 = true;
+      this.HasThumbnailFile_Small = bool1;
+      if ((paramTroopFileInfo.k == null) || (paramTroopFileInfo.k.length() <= 0)) {
+        break label175;
+      }
+    }
+    label175:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.HasThumbnailFile_Large = bool1;
+      this.NickName = paramTroopFileInfo.o;
+      this.mParentId = paramTroopFileInfo.jdField_g_of_type_JavaLangString;
+      return;
+      bool1 = false;
+      break;
+    }
   }
   
   public final boolean canFetchThumbnailFile(int paramInt)
@@ -199,43 +199,43 @@ public class TroopFileTransferManager$Item
     new File(getThumbnailFile(paramLong, 640)).delete();
   }
   
-  public final bfjs getInfo(long paramLong)
+  public final TroopFileStatusInfo getInfo(long paramLong)
   {
-    bfjs localbfjs = new bfjs();
-    localbfjs.jdField_b_of_type_Long = paramLong;
-    localbfjs.jdField_a_of_type_JavaUtilUUID = this.Id;
-    localbfjs.jdField_d_of_type_Long = this.ProgressValue;
-    localbfjs.jdField_b_of_type_Int = this.Status;
-    localbfjs.jdField_a_of_type_Boolean = this.IsNewStatus;
-    localbfjs.jdField_c_of_type_Int = this.ErrorCode;
-    localbfjs.jdField_h_of_type_Int = this.BusId;
+    TroopFileStatusInfo localTroopFileStatusInfo = new TroopFileStatusInfo();
+    localTroopFileStatusInfo.jdField_b_of_type_Long = paramLong;
+    localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID = this.Id;
+    localTroopFileStatusInfo.jdField_d_of_type_Long = this.ProgressValue;
+    localTroopFileStatusInfo.jdField_b_of_type_Int = this.Status;
+    localTroopFileStatusInfo.jdField_a_of_type_Boolean = this.IsNewStatus;
+    localTroopFileStatusInfo.jdField_c_of_type_Int = this.ErrorCode;
+    localTroopFileStatusInfo.jdField_h_of_type_Int = this.BusId;
     if (this.HasThumbnailFile_Small)
     {
       str = getThumbnailFile(paramLong, 128);
-      localbfjs.jdField_b_of_type_JavaLangString = str;
+      localTroopFileStatusInfo.jdField_b_of_type_JavaLangString = str;
       if (!this.HasThumbnailFile_Large) {
         break label403;
       }
       str = getThumbnailFile(paramLong, 640);
       label107:
-      localbfjs.jdField_c_of_type_JavaLangString = str;
+      localTroopFileStatusInfo.jdField_c_of_type_JavaLangString = str;
       if (!this.HasThumbnailFile_Middle) {
         break label425;
       }
       str = getThumbnailFile(paramLong, 383);
       label129:
-      localbfjs.jdField_d_of_type_JavaLangString = str;
-      localbfjs.jdField_c_of_type_Long = this.ProgressTotal;
-      localbfjs.jdField_d_of_type_Int = this.UploadTime;
-      localbfjs.jdField_e_of_type_JavaLangString = this.FilePath;
+      localTroopFileStatusInfo.jdField_d_of_type_JavaLangString = str;
+      localTroopFileStatusInfo.jdField_c_of_type_Long = this.ProgressTotal;
+      localTroopFileStatusInfo.jdField_d_of_type_Int = this.UploadTime;
+      localTroopFileStatusInfo.jdField_e_of_type_JavaLangString = this.FilePath;
       if ((TextUtils.isEmpty(this.NameForSave)) || (this.SafeCheckRes != 2)) {
         break label447;
       }
-      localbfjs.jdField_g_of_type_JavaLangString = this.NameForSave;
+      localTroopFileStatusInfo.jdField_g_of_type_JavaLangString = this.NameForSave;
       label189:
-      localbfjs.jdField_a_of_type_JavaLangString = this.LocalFile;
-      localbfjs.jdField_h_of_type_JavaLangString = this.NickName;
-      localbfjs.jdField_e_of_type_Long = this.entrySessionID;
+      localTroopFileStatusInfo.jdField_a_of_type_JavaLangString = this.LocalFile;
+      localTroopFileStatusInfo.jdField_h_of_type_JavaLangString = this.NickName;
+      localTroopFileStatusInfo.jdField_e_of_type_Long = this.entrySessionID;
       if (!TextUtils.isEmpty(this.mParentId)) {
         break label459;
       }
@@ -246,24 +246,24 @@ public class TroopFileTransferManager$Item
     label459:
     for (String str = "/";; str = this.mParentId)
     {
-      localbfjs.jdField_i_of_type_JavaLangString = str;
-      localbfjs.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
-      if ((localbfjs.jdField_b_of_type_Boolean) && (!FileUtil.fileExistsAndNotEmpty(localbfjs.jdField_d_of_type_JavaLangString))) {
-        localbfjs.jdField_d_of_type_JavaLangString = null;
+      localTroopFileStatusInfo.jdField_i_of_type_JavaLangString = str;
+      localTroopFileStatusInfo.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
+      if ((localTroopFileStatusInfo.jdField_b_of_type_Boolean) && (!FileUtil.b(localTroopFileStatusInfo.jdField_d_of_type_JavaLangString))) {
+        localTroopFileStatusInfo.jdField_d_of_type_JavaLangString = null;
       }
-      localbfjs.jdField_e_of_type_Int = this.width;
-      localbfjs.f = this.height;
-      localbfjs.jdField_g_of_type_Int = this.duration;
-      localbfjs.jdField_j_of_type_JavaLangString = this.mExcitingSpeed;
-      localbfjs.jdField_j_of_type_Int = this.thumbInvalidCode;
-      localbfjs.jdField_c_of_type_Boolean = this.genThumb_Middle_OnGettedLargeOrOrigPic;
-      localbfjs.k = this.yybApkPackageName;
-      localbfjs.l = this.yybApkName;
-      localbfjs.m = this.yybApkIconUrl;
-      localbfjs.jdField_i_of_type_Int = this.apkSafeLevel;
-      localbfjs.n = this.apkSafeMsg;
-      localbfjs.o = this.apkSafeDetailUrl;
-      return localbfjs;
+      localTroopFileStatusInfo.jdField_e_of_type_Int = this.width;
+      localTroopFileStatusInfo.f = this.height;
+      localTroopFileStatusInfo.jdField_g_of_type_Int = this.duration;
+      localTroopFileStatusInfo.jdField_j_of_type_JavaLangString = this.mExcitingSpeed;
+      localTroopFileStatusInfo.jdField_j_of_type_Int = this.thumbInvalidCode;
+      localTroopFileStatusInfo.jdField_c_of_type_Boolean = this.genThumb_Middle_OnGettedLargeOrOrigPic;
+      localTroopFileStatusInfo.k = this.yybApkPackageName;
+      localTroopFileStatusInfo.l = this.yybApkName;
+      localTroopFileStatusInfo.m = this.yybApkIconUrl;
+      localTroopFileStatusInfo.jdField_i_of_type_Int = this.apkSafeLevel;
+      localTroopFileStatusInfo.n = this.apkSafeMsg;
+      localTroopFileStatusInfo.o = this.apkSafeDetailUrl;
+      return localTroopFileStatusInfo;
       if (canFetchThumbnailFile(128))
       {
         str = null;
@@ -285,7 +285,7 @@ public class TroopFileTransferManager$Item
       }
       str = "";
       break label129;
-      localbfjs.jdField_g_of_type_JavaLangString = this.FileName;
+      localTroopFileStatusInfo.jdField_g_of_type_JavaLangString = this.FileName;
       break label189;
     }
   }

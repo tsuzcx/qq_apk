@@ -1,13 +1,22 @@
 package com.tencent.mobileqq.transfile;
 
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+
 class ShortVideoUploadProcessor$3
-  implements Runnable
+  implements ITransCallbackForReport
 {
-  ShortVideoUploadProcessor$3(ShortVideoUploadProcessor paramShortVideoUploadProcessor, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  ShortVideoUploadProcessor$3(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
-  public void run()
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    this.this$0.reportDataFlow(this.val$upFlow_Wifi, this.val$dwFlow_Wifi, this.val$upFlow_Xg, this.val$dwFlow_Xg, 3);
+    ShortVideoUploadProcessor localShortVideoUploadProcessor = this.this$0;
+    String str2 = this.this$0.mFileName;
+    if (this.this$0.mResid == null) {}
+    for (String str1 = this.this$0.mUuid;; str1 = this.this$0.mResid)
+    {
+      localShortVideoUploadProcessor.reportForServerMonitor("actRichMediaNetMonitor_videoUp", false, paramInt, paramString1, paramString2, str2, str1, this.this$0.mReportBusiType + "");
+      return;
+    }
   }
 }
 

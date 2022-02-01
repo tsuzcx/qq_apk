@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
 import android.widget.EditText;
-import begb;
-import begh;
 
-public class TroopTeamWorkFileSearchDialog$6$1
+class TroopTeamWorkFileSearchDialog$6$1
   implements Runnable
 {
-  public TroopTeamWorkFileSearchDialog$6$1(begh parambegh) {}
+  TroopTeamWorkFileSearchDialog$6$1(TroopTeamWorkFileSearchDialog.6 param6) {}
   
   public void run()
   {

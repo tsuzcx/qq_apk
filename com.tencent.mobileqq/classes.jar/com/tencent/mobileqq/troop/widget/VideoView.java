@@ -11,7 +11,7 @@ public class VideoView
     super(paramContext);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(paramInt1, paramInt2);
   }

@@ -2,8 +2,7 @@ package com.tencent.mobileqq.forward;
 
 import android.text.TextUtils;
 import android.util.Pair;
-import antp;
-import ausq;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -16,14 +15,14 @@ import java.util.List;
 import java.util.Map;
 import mqq.os.MqqHandler;
 
-public class ForwardPreviewTroopMemberController$1
+class ForwardPreviewTroopMemberController$1
   implements Runnable
 {
-  public ForwardPreviewTroopMemberController$1(ausq paramausq, String paramString) {}
+  ForwardPreviewTroopMemberController$1(ForwardPreviewTroopMemberController paramForwardPreviewTroopMemberController, String paramString) {}
   
   public void run()
   {
-    Object localObject1 = ((antp)ausq.a(this.this$0).getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.a);
+    Object localObject1 = ((DiscussionManager)ForwardPreviewTroopMemberController.a(this.this$0).getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.a);
     ArrayList localArrayList = new ArrayList();
     if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
     {
@@ -52,7 +51,7 @@ public class ForwardPreviewTroopMemberController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.1
  * JD-Core Version:    0.7.0.1
  */

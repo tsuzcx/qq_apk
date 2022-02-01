@@ -134,15 +134,15 @@ public class h
   
   byte[] a(int paramInt)
   {
-    Object localObject1 = ByteBuffer.allocate("6.0.0.2438".length() + 24 + 2 + 2 + 1 + 4);
+    Object localObject1 = ByteBuffer.allocate("6.0.0.2463".length() + 24 + 2 + 2 + 1 + 4);
     Object localObject2 = t.b(this.a.h);
     ((ByteBuffer)localObject1).put(t.ag);
     ((ByteBuffer)localObject1).putInt((int)((async_context)localObject2)._sappid);
     ((ByteBuffer)localObject1).putInt((int)((async_context)localObject2)._sub_appid);
     ((ByteBuffer)localObject1).putShort((short)0);
     ((ByteBuffer)localObject1).putLong(this.a.f);
-    ((ByteBuffer)localObject1).putShort((short)"6.0.0.2438".length());
-    ((ByteBuffer)localObject1).put("6.0.0.2438".getBytes());
+    ((ByteBuffer)localObject1).putShort((short)"6.0.0.2463".length());
+    ((ByteBuffer)localObject1).put("6.0.0.2463".getBytes());
     ((ByteBuffer)localObject1).putShort((short)this.b);
     ((ByteBuffer)localObject1).putShort((short)this.c);
     if (paramInt == -1000) {}

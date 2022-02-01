@@ -3,7 +3,15 @@ package com.tencent.biz.pubaccount.readinjoy.viola.comment;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.comment.RIJCommentResultDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentHelper.ISecondCommentViewStateListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentItemHeightHelper.OnScrollYOffsetListener;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment.OnCreateViewListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentViewItem;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.ReadInJoyCommentDataManager.OnDataChangeListener;
+import com.tencent.util.Pair;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.ui.baseComponent.VComponentContainer;
@@ -19,16 +27,10 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pac;
-import paq;
-import pat;
-import pbg;
-import pdp;
-import pfh;
 
 public class KdCommentList
   extends VDiv
-  implements paq, pat, pbg, pfh
+  implements ReadInJoyCommentHelper.ISecondCommentViewStateListener, ReadInJoyCommentItemHeightHelper.OnScrollYOffsetListener, ReadInJoyCommentListFragment.OnCreateViewListener, ReadInJoyCommentDataManager.OnDataChangeListener
 {
   public static final String EVENT_CHANGE = "change";
   public static final String EVENT_COMMENT_CHANGE = "commentChange";
@@ -140,7 +142,7 @@ public class KdCommentList
   public void onActivityDestroy()
   {
     super.onActivityDestroy();
-    pac.a().b(this);
+    RIJCommentResultDispatcher.a().b(this);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -151,17 +153,19 @@ public class KdCommentList
     }
   }
   
-  public void onCommentCreate(boolean paramBoolean, pdp parampdp, List<pdp> paramList, int paramInt)
+  public void onCommentBlock(int paramInt, boolean paramBoolean, Pair<List<BaseCommentData>, List<BaseCommentData>> paramPair) {}
+  
+  public void onCommentCreate(boolean paramBoolean, CommentViewItem paramCommentViewItem, List<CommentViewItem> paramList, int paramInt)
   {
     if (!this.mAppendEvents.contains("change")) {}
     while (!paramBoolean) {
       return;
     }
-    parampdp = new JSONObject();
+    paramCommentViewItem = new JSONObject();
     try
     {
-      parampdp.put("commentChange", 1);
-      fireCommentListEvent(parampdp);
+      paramCommentViewItem.put("commentChange", 1);
+      fireCommentListEvent(paramCommentViewItem);
       return;
     }
     catch (JSONException paramList)
@@ -173,19 +177,19 @@ public class KdCommentList
     }
   }
   
-  public void onCommentCreate(boolean paramBoolean1, pdp parampdp, boolean paramBoolean2, List<pdp> paramList, int paramInt) {}
+  public void onCommentCreate(boolean paramBoolean1, CommentViewItem paramCommentViewItem, boolean paramBoolean2, List<CommentViewItem> paramList, int paramInt) {}
   
-  public void onCommentDelete(int paramInt1, boolean paramBoolean, pdp parampdp, int paramInt2)
+  public void onCommentDelete(int paramInt1, boolean paramBoolean, CommentViewItem paramCommentViewItem, int paramInt2)
   {
     if (!this.mAppendEvents.contains("change")) {}
     while (!paramBoolean) {
       return;
     }
-    parampdp = new JSONObject();
+    paramCommentViewItem = new JSONObject();
     try
     {
-      parampdp.put("commentChange", -1);
-      fireCommentListEvent(parampdp);
+      paramCommentViewItem.put("commentChange", -1);
+      fireCommentListEvent(paramCommentViewItem);
       return;
     }
     catch (JSONException localJSONException)
@@ -197,13 +201,15 @@ public class KdCommentList
     }
   }
   
-  public void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2) {}
+  public void onCommentLikeOrDislike(boolean paramBoolean, BaseCommentData paramBaseCommentData, int paramInt1, int paramInt2) {}
   
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<pdp> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<CommentViewItem> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
   
-  public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<pdp> paramList, boolean paramBoolean2, int paramInt2) {}
+  public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<CommentViewItem> paramList, boolean paramBoolean2, int paramInt2) {}
   
-  public void onCommentReply(boolean paramBoolean, pdp parampdp) {}
+  public void onCommentReply(boolean paramBoolean, CommentViewItem paramCommentViewItem) {}
+  
+  public void onCommentReport(int paramInt, boolean paramBoolean, String paramString1, String paramString2) {}
   
   public void onCommentStateError(int paramInt) {}
   
@@ -268,7 +274,7 @@ public class KdCommentList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.comment.KdCommentList
  * JD-Core Version:    0.7.0.1
  */

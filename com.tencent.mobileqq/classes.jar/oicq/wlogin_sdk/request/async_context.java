@@ -59,6 +59,7 @@ public class async_context
   public tlv_t tlv528;
   public tlv_t tlv530;
   public tlv_t tlv540;
+  public tlv_t543 tlv543In119;
   
   public boolean ifQQLoginInQim(long paramLong)
   {

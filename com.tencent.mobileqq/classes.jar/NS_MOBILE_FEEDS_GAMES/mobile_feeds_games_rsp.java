@@ -13,10 +13,10 @@ public final class mobile_feeds_games_rsp
   static st_Games_MarketData cache_mkData;
   static st_Games_OpData cache_opData;
   static st_Games_OrderData cache_orderData = new st_Games_OrderData();
-  public Map<Integer, String> mapRsp;
-  public st_Games_MarketData mkData;
-  public st_Games_OpData opData;
-  public st_Games_OrderData orderData;
+  public Map<Integer, String> mapRsp = null;
+  public st_Games_MarketData mkData = null;
+  public st_Games_OpData opData = null;
+  public st_Games_OrderData orderData = null;
   
   static
   {

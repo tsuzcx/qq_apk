@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stAlbumAbiInfo
   extends JceStruct
 {
-  public long dwFriendUin;
+  public long dwFriendUin = 0L;
   
   public stAlbumAbiInfo() {}
   
@@ -28,7 +28,7 @@ public final class stAlbumAbiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.stAlbumAbiInfo
  * JD-Core Version:    0.7.0.1
  */

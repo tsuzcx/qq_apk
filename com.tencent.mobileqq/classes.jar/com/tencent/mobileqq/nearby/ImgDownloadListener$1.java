@@ -2,21 +2,20 @@ package com.tencent.mobileqq.nearby;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import axnq;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public class ImgDownloadListener$1
+class ImgDownloadListener$1
   implements Runnable
 {
-  public ImgDownloadListener$1(axnq paramaxnq, long paramLong) {}
+  ImgDownloadListener$1(ImgDownloadListener paramImgDownloadListener, long paramLong) {}
   
   public void run()
   {
-    long l = SystemClock.elapsedRealtime() - axnq.a(this.this$0);
-    Object localObject2 = NetworkUtil.getApn(axnq.a(this.this$0));
+    long l = SystemClock.elapsedRealtime() - ImgDownloadListener.a(this.this$0);
+    Object localObject2 = NetworkUtil.a(ImgDownloadListener.a(this.this$0));
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = "wifi";
@@ -25,8 +24,8 @@ public class ImgDownloadListener$1
     ((HashMap)localObject2).put("fileSize", String.valueOf(this.a));
     ((HashMap)localObject2).put("costTime", String.valueOf(l));
     ((HashMap)localObject2).put("apn", localObject1);
-    ((HashMap)localObject2).put("param_NetType", NetworkUtil.getSystemNetwork(null) + "");
-    StatisticCollector.getInstance(axnq.a(this.this$0)).collectPerformance("", axnq.a(this.this$0), true, l, 0L, (HashMap)localObject2, "", true);
+    ((HashMap)localObject2).put("param_NetType", NetworkUtil.a(null) + "");
+    StatisticCollector.getInstance(ImgDownloadListener.a(this.this$0)).collectPerformance("", ImgDownloadListener.a(this.this$0), true, l, 0L, (HashMap)localObject2, "", true);
     if (QLog.isColorLevel()) {
       QLog.d("ImgDownloadListener", 2, "onFileDownloadSucceed, fileSize=" + this.a);
     }

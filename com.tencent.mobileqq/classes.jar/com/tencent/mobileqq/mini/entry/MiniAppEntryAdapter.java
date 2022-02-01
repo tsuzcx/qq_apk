@@ -15,26 +15,25 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-import anvx;
-import arbw;
-import bhbx;
-import bhcw;
-import bhjq;
-import blas;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.cache.MiniCacheFreeManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.BubblePopupWindow;
+import com.tencent.widget.CustomWidgetUtil;
 import com.tencent.widget.ThemeImageView;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,8 +44,8 @@ import java.util.Map;
 public class MiniAppEntryAdapter
   extends RecyclerView.Adapter<MiniAppEntryAdapter.MicroAppViewHolder>
 {
-  private static final String DEVELOP = anvx.a(2131706278);
-  private static final String EXPERIENCE = anvx.a(2131706273);
+  private static final String DEVELOP = HardCodeUtil.a(2131706818);
+  private static final String EXPERIENCE = HardCodeUtil.a(2131706813);
   public static final int REFER_CONTACTS = 1;
   public static final int REFER_CONVERSATION = 0;
   public static final int REFER_LEBA = 2;
@@ -65,7 +64,7 @@ public class MiniAppEntryAdapter
   private List<MiniAppInfo> mSpecialData = new ArrayList();
   private List<MiniAppInfo> mTopData = new ArrayList();
   View.OnClickListener onMenuItemSelected = new MiniAppEntryAdapter.3(this);
-  private int topAppNum;
+  private int topAppNum = 0;
   
   public MiniAppEntryAdapter(Activity paramActivity, int paramInt)
   {
@@ -95,15 +94,15 @@ public class MiniAppEntryAdapter
       if (paramMiniAppInfo.topType != 0) {
         break label55;
       }
-      localArrayList.add(localResources.getString(2131694007));
-      localArrayList.add(localResources.getString(2131693962));
+      localArrayList.add(localResources.getString(2131694209));
+      localArrayList.add(localResources.getString(2131694164));
     }
     label55:
     while (paramMiniAppInfo.topType != 1) {
       return localArrayList;
     }
-    localArrayList.add(localResources.getString(2131693961));
-    localArrayList.add(localResources.getString(2131693962));
+    localArrayList.add(localResources.getString(2131694163));
+    localArrayList.add(localResources.getString(2131694164));
     return localArrayList;
   }
   
@@ -132,7 +131,7 @@ public class MiniAppEntryAdapter
       {
         localMiniAppConfig = new MiniAppConfig(paramMiniAppInfo);
         localMiniAppConfig.launchParam.scene = i;
-        if (!bhbx.a(paramString, localResources.getString(2131693962))) {
+        if (!Utils.a(paramString, localResources.getString(2131694164))) {
           break;
         }
         deleteMiniApp(paramMiniAppInfo);
@@ -144,7 +143,7 @@ public class MiniAppEntryAdapter
           i = 2007;
         }
       }
-      if (bhbx.a(paramString, localResources.getString(2131694007)))
+      if (Utils.a(paramString, localResources.getString(2131694209)))
       {
         if (((this.mSpecialData != null) || (this.mTopData != null)) && (this.topAppNum >= 11))
         {
@@ -155,7 +154,7 @@ public class MiniAppEntryAdapter
         MiniProgramLpReportDC04239.reportDropDown(localMiniAppConfig, str, "settop_on");
         return;
       }
-    } while (!bhbx.a(paramString, localResources.getString(2131693961)));
+    } while (!Utils.a(paramString, localResources.getString(2131694163)));
     setTopMiniApp(paramMiniAppInfo);
     MiniProgramLpReportDC04239.reportDropDown(localMiniAppConfig, str, "settop_off");
   }
@@ -176,12 +175,12 @@ public class MiniAppEntryAdapter
         if (!MiniAppUtils.isNightMode()) {
           break label36;
         }
-        paramViewGroup.setImageResource(2130841035);
+        paramViewGroup.setImageResource(2130841168);
       }
     }
     return;
     label36:
-    paramViewGroup.setImageResource(2130848419);
+    paramViewGroup.setImageResource(2130848776);
   }
   
   private void setTopMiniApp(MiniAppInfo paramMiniAppInfo)
@@ -241,14 +240,14 @@ public class MiniAppEntryAdapter
     paramMiniAppInfo = getMenuItems(paramMiniAppInfo);
     if ((paramMiniAppInfo != null) && (paramMiniAppInfo.size() > 0))
     {
-      bhjq localbhjq = new bhjq();
+      QQCustomMenu localQQCustomMenu = new QQCustomMenu();
       int i = 0;
       while (i < paramMiniAppInfo.size())
       {
-        localbhjq.a(paramInt, (String)paramMiniAppInfo.get(i));
+        localQQCustomMenu.a(paramInt, (String)paramMiniAppInfo.get(i));
         i += 1;
       }
-      this.mMenuPop = bhcw.a(paramView, localbhjq, this.onMenuItemSelected, null);
+      this.mMenuPop = BubbleContextMenu.a(paramView, localQQCustomMenu, this.onMenuItemSelected, null);
     }
   }
   
@@ -257,7 +256,6 @@ public class MiniAppEntryAdapter
     if (this.mData.size() <= 0)
     {
       QLog.e("MiniAppEntryAdapter", 1, "[MiniAppUserAppInfoListManager].onBindViewHolder, size = " + this.mData.size());
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramMicroAppViewHolder, paramInt, getItemId(paramInt));
       return;
     }
     MiniAppInfo localMiniAppInfo = (MiniAppInfo)this.mData.get(paramInt);
@@ -267,35 +265,35 @@ public class MiniAppEntryAdapter
     Object localObject2 = MiniAppUtils.getAppInterface();
     if (localObject2 != null)
     {
-      paramMicroAppViewHolder.textView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131167033));
+      paramMicroAppViewHolder.textView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131167040));
       if ((paramMicroAppViewHolder.imageView instanceof ThemeImageView)) {
         ((ThemeImageView)paramMicroAppViewHolder.imageView).setSupportMaskView(true);
       }
     }
-    label217:
+    label204:
+    label251:
     Object localObject1;
-    label264:
-    label313:
-    label443:
+    label300:
+    label430:
     int i;
     if (localMiniAppInfo.isSpecialMiniApp())
     {
       paramMicroAppViewHolder.itemView.setTag(Integer.valueOf(3));
       if ((localMiniAppInfo.verType != 0) && (localMiniAppInfo.verType != 4)) {
-        break label700;
+        break label687;
       }
       paramMicroAppViewHolder.versionTypeMark.setVisibility(0);
       paramMicroAppViewHolder.versionTypeMark.setText(DEVELOP);
       if (localMiniAppInfo.recommend != 1) {
-        break label755;
+        break label742;
       }
       paramMicroAppViewHolder.recommendBadge.setVisibility(0);
       if (TextUtils.isEmpty(localMiniAppInfo.recommendAppIconUrl)) {
-        break label742;
+        break label729;
       }
       paramMicroAppViewHolder.recommendBadge.setImageDrawable(MiniAppUtils.getRecommendIconDrawable(this.mActivity, localMiniAppInfo.recommendAppIconUrl));
       if ((this.topAppNum <= 0) || (paramInt != this.topAppNum - 1) || (this.mData.size() <= this.topAppNum)) {
-        break label767;
+        break label754;
       }
       paramMicroAppViewHolder.dividerLine.setVisibility(0);
       setDividerLineColor(paramMicroAppViewHolder.dividerLine);
@@ -304,15 +302,15 @@ public class MiniAppEntryAdapter
         QLog.d("MiniAppEntryAdapter", 1, "onBindViewHolder, canShowRedDot: " + this.mCanShowRedDot + ", redDotNum : " + localObject1 + ", name : " + localMiniAppInfo.name);
       }
       if ((!this.mCanShowRedDot) || (this.mRedDotSwitchState != 1) || (localObject1 == null) || (((Integer)localObject1).intValue() <= 0)) {
-        break label779;
+        break label766;
       }
       paramMicroAppViewHolder.redDot.setVisibility(0);
-      blas.a(paramMicroAppViewHolder.redDot, 7, ((Integer)localObject1).intValue(), 0);
+      CustomWidgetUtil.a(paramMicroAppViewHolder.redDot, 7, ((Integer)localObject1).intValue(), 0);
       if (this.mRefer != 0) {
-        break label791;
+        break label778;
       }
       if (localMiniAppInfo.recommend != 1) {
-        break label962;
+        break label947;
       }
       localMiniAppInfo.via = "1001_1";
       i = 1001;
@@ -351,28 +349,28 @@ public class MiniAppEntryAdapter
             }
             paramMicroAppViewHolder.itemView.setTag(Integer.valueOf(1));
             break;
-            label700:
+            label687:
             if (localMiniAppInfo.verType == 1)
             {
               paramMicroAppViewHolder.versionTypeMark.setVisibility(0);
               paramMicroAppViewHolder.versionTypeMark.setText(EXPERIENCE);
-              break label217;
+              break label204;
             }
             paramMicroAppViewHolder.versionTypeMark.setVisibility(8);
-            break label217;
+            break label204;
+            label729:
+            paramMicroAppViewHolder.recommendBadge.setImageResource(2130841173);
+            break label251;
             label742:
-            paramMicroAppViewHolder.recommendBadge.setImageResource(2130841040);
-            break label264;
-            label755:
             paramMicroAppViewHolder.recommendBadge.setVisibility(8);
-            break label264;
-            label767:
+            break label251;
+            label754:
             paramMicroAppViewHolder.dividerLine.setVisibility(8);
-            break label313;
-            label779:
+            break label300;
+            label766:
             paramMicroAppViewHolder.redDot.setVisibility(8);
-            break label443;
-            label791:
+            break label430;
+            label778:
             if (this.mRefer == 1)
             {
               if (localMiniAppInfo.recommend == 1) {
@@ -390,7 +388,7 @@ public class MiniAppEntryAdapter
               }
             }
             if (this.mRefer != 2) {
-              break label962;
+              break label947;
             }
             if (localMiniAppInfo.recommend == 1) {
               localMiniAppInfo.via = "2007_1";
@@ -411,15 +409,15 @@ public class MiniAppEntryAdapter
       }
       paramMicroAppViewHolder.itemView.setOnClickListener(new MiniAppEntryAdapter.1(this));
       paramMicroAppViewHolder.itemView.setOnLongClickListener(new MiniAppEntryAdapter.2(this));
-      break;
-      label962:
+      return;
+      label947:
       i = 1001;
     }
   }
   
   public MiniAppEntryAdapter.MicroAppViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MiniAppEntryAdapter.MicroAppViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562404, paramViewGroup, false));
+    return new MiniAppEntryAdapter.MicroAppViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562542, paramViewGroup, false));
   }
   
   public void setData(List<MiniAppInfo> paramList, Map<String, Integer> paramMap)
@@ -461,7 +459,7 @@ public class MiniAppEntryAdapter
     this.topAppNum = (this.mSpecialData.size() + this.mTopData.size());
     this.mRedDotData.clear();
     this.mRedDotData.putAll(paramMap);
-    this.mCanShowRedDot = arbw.d();
+    this.mCanShowRedDot = MiniAppConfProcessor.d();
   }
   
   public void setRedDotSwitchState(int paramInt)

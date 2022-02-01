@@ -6,7 +6,7 @@
     </RelativeLayout>
     <com.tencent.widget.SwipListView android:id="@id/irn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:layout_below="@id/hrl" />
     <FrameLayout android:layout_width="fill_parent" android:layout_height="41.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentBottom="true">
-        <ImageView android:id="@id/mjy" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/mmn" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <Button android:textSize="17.0sp" android:textColor="@color/a5w" android:id="@id/aef" android:background="@drawable/apz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/gcf" />
     </FrameLayout>
 </RelativeLayout>

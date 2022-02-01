@@ -9,8 +9,8 @@ public final class GetRecvMsgStateRsp
   implements Cloneable
 {
   public String reason = "";
-  public int result;
-  public int state;
+  public int result = 0;
+  public int state = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -30,7 +30,7 @@ public final class GetRecvMsgStateRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.jce.GetRecvMsgStateRsp
  * JD-Core Version:    0.7.0.1
  */

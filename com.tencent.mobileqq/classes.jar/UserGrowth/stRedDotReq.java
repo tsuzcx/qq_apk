@@ -10,9 +10,9 @@ public final class stRedDotReq
 {
   static ArrayList<Integer> cache_exposedType;
   static int cache_reddotAction = 0;
-  public ArrayList<Integer> exposedType;
-  public int reddotAction;
-  public int reddotType;
+  public ArrayList<Integer> exposedType = null;
+  public int reddotAction = 0;
+  public int reddotType = 0;
   
   static
   {

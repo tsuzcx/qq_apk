@@ -8,23 +8,23 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
-import bfzx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class AtPanelTouchController
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 1;
+  private View jdField_a_of_type_AndroidViewView = null;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private bfzx jdField_a_of_type_Bfzx;
+  private AtPanelTouchController.AtPanelTouchListener jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener;
   boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean = false;
   private boolean c = true;
-  private boolean d;
-  private boolean e;
+  private boolean d = false;
+  private boolean e = false;
   
   public AtPanelTouchController(@NonNull Context paramContext)
   {
@@ -110,7 +110,7 @@ public class AtPanelTouchController
     int j;
     for (float f = 0.0F;; f = 20.0F)
     {
-      i = AIOUtils.dp2px(f, getContext().getResources());
+      i = AIOUtils.a(f, getContext().getResources());
       j = (int)(getScrollY() + paramFloat);
       if (j >= i) {
         break;
@@ -119,8 +119,8 @@ public class AtPanelTouchController
     }
     if (j >= i)
     {
-      if (this.jdField_a_of_type_Bfzx != null) {
-        this.jdField_a_of_type_Bfzx.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener.a();
       }
       return i - getScrollY();
     }
@@ -164,8 +164,8 @@ public class AtPanelTouchController
         return;
       } while (!this.e);
       this.e = false;
-    } while (this.jdField_a_of_type_Bfzx == null);
-    this.jdField_a_of_type_Bfzx.a(this.jdField_a_of_type_Int);
+    } while (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener == null);
+    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener.a(this.jdField_a_of_type_Int);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -198,9 +198,9 @@ public class AtPanelTouchController
         if (Math.abs(f2) > 5.0F) {
           this.d = true;
         }
-        if (this.jdField_a_of_type_Bfzx != null)
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener != null)
         {
-          paramMotionEvent = this.jdField_a_of_type_Bfzx;
+          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener;
           if (getScrollY() > 0) {
             bool = true;
           }
@@ -228,7 +228,7 @@ public class AtPanelTouchController
         break;
       }
       label303:
-      if (this.jdField_a_of_type_Bfzx != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener != null)
       {
         this.e = true;
         a(-this.jdField_b_of_type_Int);
@@ -241,9 +241,9 @@ public class AtPanelTouchController
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setAtPanelTouchListener(bfzx parambfzx)
+  public void setAtPanelTouchListener(AtPanelTouchController.AtPanelTouchListener paramAtPanelTouchListener)
   {
-    this.jdField_a_of_type_Bfzx = parambfzx;
+    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelTouchController$AtPanelTouchListener = paramAtPanelTouchListener;
   }
   
   public void setControlLitTongue(boolean paramBoolean)

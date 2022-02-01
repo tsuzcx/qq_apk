@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.qassistant.statemachine;
 
-import bamc;
-import bamm;
 import com.tencent.qphone.base.util.QLog;
 
-public class ShowVoicePanelState$1
+class ShowVoicePanelState$1
   implements Runnable
 {
-  public ShowVoicePanelState$1(bamc parambamc) {}
+  ShowVoicePanelState$1(ShowVoicePanelState paramShowVoicePanelState) {}
   
   public void run()
   {
-    bamc.a(this.this$0, this.this$0.a());
+    ShowVoicePanelState.a(this.this$0, this.this$0.a());
     if (QLog.isColorLevel()) {
-      QLog.d("ShowVoicePanelState", 2, "enterResult = " + bamc.a(this.this$0));
+      QLog.d("ShowVoicePanelState", 2, "enterResult = " + ShowVoicePanelState.a(this.this$0));
     }
-    if (bamc.a(this.this$0) != null) {
-      bamc.a(this.this$0).a(3);
+    if (ShowVoicePanelState.a(this.this$0) != null) {
+      ShowVoicePanelState.a(this.this$0).a(3);
     }
   }
 }

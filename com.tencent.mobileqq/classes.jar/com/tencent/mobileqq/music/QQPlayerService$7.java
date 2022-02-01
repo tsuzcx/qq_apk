@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.music;
 
-import axkk;
-
 class QQPlayerService$7
   implements Runnable
 {
-  QQPlayerService$7(QQPlayerService paramQQPlayerService, axkk paramaxkk, int paramInt) {}
+  QQPlayerService$7(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axkk.onPlayStateChanged(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlayStateChanged(this.jdField_a_of_type_Int);
   }
 }
 

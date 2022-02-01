@@ -1,21 +1,21 @@
 package cooperation.qqcircle.picload.avatar;
 
-import cooperation.qqcircle.picload.Option;
-import cooperation.qqcircle.picload.QCircleFeedPicLoader;
-import cooperation.qqcircle.picload.QCircleFeedPicLoader.QCirclePicStateListener;
+import com.tencent.mobileqq.qcircle.api.data.Option;
+import com.tencent.mobileqq.qcircle.api.interfaces.QCirclePicStateListener;
+import com.tencent.mobileqq.qcircle.tempapi.avatar.QCircleAvatarInfo;
 
 class QCircleAvatarLoader$QCircleAvatarCheckTask$2
-  extends QCircleFeedPicLoader.QCirclePicStateListener
+  extends QCirclePicStateListener
 {
   QCircleAvatarLoader$QCircleAvatarCheckTask$2(QCircleAvatarLoader.QCircleAvatarCheckTask paramQCircleAvatarCheckTask, QCircleAvatarInfo paramQCircleAvatarInfo) {}
   
   public void onStateChang(int paramInt, Option paramOption)
   {
     super.onStateChang(paramInt, paramOption);
-    if (paramInt == QCircleFeedPicLoader.STATE_SUCCESS) {
+    if (paramInt == 6) {
       QCircleAvatarLoader.QCircleAvatarCheckTask.access$700(this.this$1, this.val$info.getUin(), paramOption);
     }
-    while ((paramInt != QCircleFeedPicLoader.STATE_DECODE_FAILED) && (paramInt != QCircleFeedPicLoader.STATE_DOWN_FAILED)) {
+    while ((paramInt != 8) && (paramInt != 7)) {
       return;
     }
     QCircleAvatarLoader.QCircleAvatarCheckTask.access$600(this.this$1, this.val$info.getUin(), paramOption);
@@ -23,7 +23,7 @@ class QCircleAvatarLoader$QCircleAvatarCheckTask$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.picload.avatar.QCircleAvatarLoader.QCircleAvatarCheckTask.2
  * JD-Core Version:    0.7.0.1
  */

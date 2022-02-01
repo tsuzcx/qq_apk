@@ -9,10 +9,10 @@ public final class GetGroupRedPackListRsp
   extends JceStruct
 {
   static ArrayList<RedPackGrapInfo> cache_vecRedPackList = new ArrayList();
-  public int iRedPackNum;
-  public int iRetCode;
-  public long lFailureTime;
-  public ArrayList<RedPackGrapInfo> vecRedPackList;
+  public int iRedPackNum = 0;
+  public int iRetCode = 0;
+  public long lFailureTime = 0L;
+  public ArrayList<RedPackGrapInfo> vecRedPackList = null;
   
   static
   {

@@ -13,9 +13,9 @@ public final class UniPayResponse
   implements Cloneable
 {
   static Map<String, String> cache_mapResponse;
-  public int iShowOpen;
-  public int iUniPayType;
-  public Map<String, String> mapResponse;
+  public int iShowOpen = 0;
+  public int iUniPayType = 0;
+  public Map<String, String> mapResponse = null;
   public String sProductID = "";
   public String sUin = "";
   

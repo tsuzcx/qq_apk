@@ -2,22 +2,21 @@ package com.tencent.av.utils;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mtf;
 
-public class PhoneStatusMonitor$3
+class PhoneStatusMonitor$3
   implements Runnable
 {
-  public PhoneStatusMonitor$3(mtf parammtf) {}
+  PhoneStatusMonitor$3(PhoneStatusMonitor paramPhoneStatusMonitor) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PhoneStatusMonitor", 2, "checkEndCallTask, calling[" + mtf.a(this.this$0) + "], tillEnd[" + mtf.a(this.this$0).get() + "]");
+      QLog.i("PhoneStatusMonitor", 2, "checkEndCallTask, calling[" + PhoneStatusMonitor.a(this.this$0) + "], tillEnd[" + PhoneStatusMonitor.a(this.this$0).get() + "]");
     }
-    if (!mtf.a(this.this$0)) {
+    if (!PhoneStatusMonitor.a(this.this$0)) {
       this.this$0.d();
     }
-    while (!mtf.a(this.this$0).get()) {
+    while (!PhoneStatusMonitor.a(this.this$0).get()) {
       return;
     }
     this.this$0.c();

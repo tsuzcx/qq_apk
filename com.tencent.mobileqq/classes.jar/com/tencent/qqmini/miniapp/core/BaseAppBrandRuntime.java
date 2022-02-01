@@ -263,6 +263,7 @@ public abstract class BaseAppBrandRuntime
     if (this.jsPluginEngine != null) {
       this.jsPluginEngine.onPause();
     }
+    this.lastStayTime += System.currentTimeMillis() - this.onResumeTime;
   }
   
   public void onRuntimeResume()
@@ -274,6 +275,10 @@ public abstract class BaseAppBrandRuntime
     }
     if (this.jsPluginEngine != null) {
       this.jsPluginEngine.onResume();
+    }
+    this.onResumeTime = System.currentTimeMillis();
+    if (this.startTime == 0L) {
+      this.startTime = this.onResumeTime;
     }
   }
   
@@ -303,7 +308,7 @@ public abstract class BaseAppBrandRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.BaseAppBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

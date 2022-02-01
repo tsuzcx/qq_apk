@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import alal;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
@@ -21,13 +20,13 @@ class DrawRedpacketPannelPreviewFragment$11
       }
       String str = DrawRedpacketPannelPreviewFragment.a(DrawRedpacketPannelPreviewFragment.a(this.this$0), File.separator + System.currentTimeMillis() + ".png", DrawRedpacketPannelPreviewFragment.a(this.this$0));
       Message localMessage = Message.obtain();
-      alal localalal = new alal(null);
-      localalal.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localalal.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localalal.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localalal.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localalal.c = str;
-      localMessage.obj = localalal;
+      DrawRedpacketPannelPreviewFragment.SendImageToAIO localSendImageToAIO = new DrawRedpacketPannelPreviewFragment.SendImageToAIO(null);
+      localSendImageToAIO.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localSendImageToAIO.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localSendImageToAIO.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localSendImageToAIO.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localSendImageToAIO.c = str;
+      localMessage.obj = localSendImageToAIO;
       localMessage.what = 1001;
       DrawRedpacketPannelPreviewFragment.a(this.this$0).sendMessage(localMessage);
       return;
@@ -40,7 +39,7 @@ class DrawRedpacketPannelPreviewFragment$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AddPhoneNumberFragment$1
   implements View.OnClickListener
@@ -12,12 +11,15 @@ class AddPhoneNumberFragment$1
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131371268) && (this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing()))
+    if (paramView.getId() == 2131371548)
     {
-      this.this$0.getActivity().setResult(0);
-      this.this$0.getActivity().finish();
+      paramView = this.this$0.getActivity();
+      if ((paramView != null) && (!paramView.isFinishing()))
+      {
+        paramView.setResult(0);
+        paramView.finish();
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -9,7 +9,7 @@ public final class MsgType0x210SubMsgType0x24
   extends JceStruct
 {
   static ArrayList<PluginNum> cache_vPluginNumList;
-  public ArrayList<PluginNum> vPluginNumList;
+  public ArrayList<PluginNum> vPluginNumList = null;
   
   public MsgType0x210SubMsgType0x24() {}
   

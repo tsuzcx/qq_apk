@@ -3,40 +3,39 @@ package com.tencent.mobileqq.widget;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
 import android.view.View;
-import bise;
 import com.enrique.stackblur.StackBlurManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class QQBlur$1
+class QQBlur$1
   implements Runnable
 {
   private int jdField_a_of_type_Int = -1;
   
-  public QQBlur$1(bise parambise, StackBlurManager paramStackBlurManager) {}
+  QQBlur$1(QQBlur paramQQBlur, StackBlurManager paramStackBlurManager) {}
   
   private void a()
   {
-    if (bise.a(this.this$0)) {}
+    if (QQBlur.a(this.this$0)) {}
     for (;;)
     {
       return;
       long l1 = SystemClock.elapsedRealtime();
-      if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != bise.jdField_a_of_type_Int)) {
-        bise.a(this.this$0, this.jdField_a_of_type_Int, bise.jdField_a_of_type_Int);
+      if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != QQBlur.jdField_a_of_type_Int)) {
+        QQBlur.a(this.this$0, this.jdField_a_of_type_Int, QQBlur.jdField_a_of_type_Int);
       }
-      this.jdField_a_of_type_Int = bise.jdField_a_of_type_Int;
-      int i = bise.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = QQBlur.jdField_a_of_type_Int;
+      int i = QQBlur.jdField_a_of_type_Int;
       try
       {
-        Object localObject1 = this.jdField_a_of_type_ComEnriqueStackblurStackBlurManager.process(bise.a(this.this$0));
+        Object localObject1 = this.jdField_a_of_type_ComEnriqueStackblurStackBlurManager.process(QQBlur.a(this.this$0));
         if (localObject1 != null)
         {
-          bise.a(this.this$0, (Bitmap)localObject1);
+          QQBlur.a(this.this$0, (Bitmap)localObject1);
           long l2 = SystemClock.elapsedRealtime();
-          bise.a(this.this$0);
-          bise.a(this.this$0, l2 - l1 + bise.b(this.this$0));
-          localObject1 = bise.a(this.this$0);
-          if ((localObject1 == null) || (!bise.b(this.this$0))) {
+          QQBlur.a(this.this$0);
+          QQBlur.a(this.this$0, l2 - l1 + QQBlur.b(this.this$0));
+          localObject1 = QQBlur.a(this.this$0);
+          if ((localObject1 == null) || (!QQBlur.b(this.this$0))) {
             continue;
           }
           ((View)localObject1).postInvalidate();
@@ -63,7 +62,7 @@ public class QQBlur$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQBlur.1
  * JD-Core Version:    0.7.0.1
  */

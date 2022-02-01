@@ -17,7 +17,7 @@ public final class CircleTaskCenterStorage$FuelRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     circletaskcenter.CircleTaskCenterStorage.FuelRecord
  * JD-Core Version:    0.7.0.1
  */

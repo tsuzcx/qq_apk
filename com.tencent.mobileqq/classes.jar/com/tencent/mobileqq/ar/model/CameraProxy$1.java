@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.ar.model;
 
-import apje;
-import apoo;
+import com.tencent.mobileqq.ar.arengine.ARCamera;
 import com.tencent.qphone.base.util.QLog;
 
-public class CameraProxy$1
+class CameraProxy$1
   implements Runnable
 {
-  public CameraProxy$1(apoo paramapoo, int paramInt) {}
+  CameraProxy$1(CameraProxy paramCameraProxy, int paramInt) {}
   
   public void run()
   {
-    if ((apoo.a(this.this$0) != 1) || (apoo.a(this.this$0) == null))
+    if ((CameraProxy.a(this.this$0) != 1) || (CameraProxy.a(this.this$0) == null))
     {
-      QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + apoo.a(this.this$0));
+      QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + CameraProxy.a(this.this$0));
       return;
     }
     int i;
@@ -28,22 +27,22 @@ public class CameraProxy$1
         {
           QLog.i("CameraProxy", 2, "openCameraAync.");
           i = -3;
-          if (apoo.b(this.this$0) >= 10) {
+          if (CameraProxy.b(this.this$0) >= 10) {
             break;
           }
-          apoo.c(this.this$0);
+          CameraProxy.c(this.this$0);
           System.currentTimeMillis();
-          if (apoo.b(this.this$0) == 1)
+          if (CameraProxy.b(this.this$0) == 1)
           {
-            i = apoo.a(this.this$0).a(this.a);
-            QLog.i("CameraProxy", 2, "try to open camera. mCurOpenCameraTryTimes = " + apoo.b(this.this$0) + ", MAX_OPEN_CAMERA_TRY_TIMES = " + 10);
-            if (apoo.a(this.this$0) == null) {
+            i = CameraProxy.a(this.this$0).a(this.a);
+            QLog.i("CameraProxy", 2, "try to open camera. mCurOpenCameraTryTimes = " + CameraProxy.b(this.this$0) + ", MAX_OPEN_CAMERA_TRY_TIMES = " + 10);
+            if (CameraProxy.a(this.this$0) == null) {
               break label474;
             }
-            if (apoo.a(this.this$0) == 1) {
+            if (CameraProxy.a(this.this$0) == 1) {
               break label480;
             }
-            QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + apoo.a(this.this$0));
+            QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + CameraProxy.a(this.this$0));
             return;
           }
         }
@@ -51,33 +50,33 @@ public class CameraProxy$1
         {
           localInterruptedException.printStackTrace();
           QLog.i("CameraProxy", 1, "InterruptedException = " + localInterruptedException.getMessage());
-          apoo.a(this.this$0, 0);
-          QLog.i("CameraProxy", 2, "openCameraAync failed. mCurCameraState = " + apoo.a(this.this$0));
+          CameraProxy.a(this.this$0, 0);
+          QLog.i("CameraProxy", 2, "openCameraAync failed. mCurCameraState = " + CameraProxy.a(this.this$0));
           return;
         }
-        i = apoo.a(this.this$0).e();
+        i = CameraProxy.a(this.this$0).e();
       }
       if (i != 0) {
         break;
       }
-      apoo.a(this.this$0, 2);
-      QLog.i("CameraProxy", 2, "openCameraAync successfully. mCurCameraState = " + apoo.a(this.this$0));
+      CameraProxy.a(this.this$0, 2);
+      QLog.i("CameraProxy", 2, "openCameraAync successfully. mCurCameraState = " + CameraProxy.a(this.this$0));
       return;
       Thread.currentThread();
-      Thread.sleep(apoo.a(this.this$0));
-    } while (apoo.a(this.this$0) == 1);
-    QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + apoo.a(this.this$0));
+      Thread.sleep(CameraProxy.a(this.this$0));
+    } while (CameraProxy.a(this.this$0) == 1);
+    QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + CameraProxy.a(this.this$0));
     return;
-    apoo.a(this.this$0, 0);
-    QLog.i("CameraProxy", 2, "openCameraAync failed. retCode = " + i + ", mCurCameraState = " + apoo.a(this.this$0));
+    CameraProxy.a(this.this$0, 0);
+    QLog.i("CameraProxy", 2, "openCameraAync failed. retCode = " + i + ", mCurCameraState = " + CameraProxy.a(this.this$0));
     if (i == -1)
     {
-      apoo.a(this.this$0, false, 0, 1);
+      CameraProxy.a(this.this$0, false, 0, 1);
       return;
     }
     for (;;)
     {
-      apoo.a(this.this$0, false, 0, 2);
+      CameraProxy.a(this.this$0, false, 0, 2);
       return;
       label474:
       i = -3;

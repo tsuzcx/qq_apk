@@ -336,7 +336,7 @@ public class VImageView2
     this.borderRadius = FlexConvertUtils.getFloatByViewport(localStyle.get("borderRadius"), i);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (getComponent() != null) {
@@ -508,7 +508,7 @@ public class VImageView2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.image.VImageView2
  * JD-Core Version:    0.7.0.1
  */

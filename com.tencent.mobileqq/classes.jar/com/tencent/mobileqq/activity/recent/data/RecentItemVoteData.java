@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import bhid;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
 
 public class RecentItemVoteData
   extends AbsRecentUserBusinessBaseData
@@ -19,7 +19,7 @@ public class RecentItemVoteData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);
@@ -50,12 +50,12 @@ public class RecentItemVoteData
   {
     this.mTitleName = paramString;
     this.time = paramLong;
-    this.mShowTime = bhid.a(paramLong, true, "yyyy-MM-dd");
+    this.mShowTime = TimeFormatterUtils.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemVoteData
  * JD-Core Version:    0.7.0.1
  */

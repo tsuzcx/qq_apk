@@ -9,9 +9,9 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.util.MQLruCache;
 import android.util.Pair;
-import bhaa;
-import bhbx;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GlobalImageCache;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -23,8 +23,8 @@ class VipProfileCardPreviewActivity$6
   public void run()
   {
     long l = SystemClock.elapsedRealtime();
-    Bitmap localBitmap1 = this.this$0.a(bhaa.a(this.this$0.jdField_a_of_type_AndroidContentContext, (String)this.jdField_a_of_type_JavaUtilList.get(1)), true);
-    Bitmap localBitmap2 = this.this$0.a(bhaa.a(this.this$0.jdField_a_of_type_AndroidContentContext, (String)this.jdField_a_of_type_JavaUtilList.get(0)), true);
+    Bitmap localBitmap1 = this.this$0.a(ProfileCardUtil.a(this.this$0.jdField_a_of_type_AndroidContentContext, (String)this.jdField_a_of_type_JavaUtilList.get(1)), true);
+    Bitmap localBitmap2 = this.this$0.a(ProfileCardUtil.a(this.this$0.jdField_a_of_type_AndroidContentContext, (String)this.jdField_a_of_type_JavaUtilList.get(0)), true);
     if (QLog.isColorLevel()) {
       QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "ANIMATION_SCROLL time " + (SystemClock.elapsedRealtime() - l));
     }
@@ -41,8 +41,8 @@ class VipProfileCardPreviewActivity$6
     }
     if (localObject1 != null)
     {
-      localObject1 = new Pair(localObject1, Integer.valueOf(bhbx.a(localBitmap1) + bhbx.a(localBitmap2)));
-      BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaLangString, localObject1);
+      localObject1 = new Pair(localObject1, Integer.valueOf(Utils.a(localBitmap1) + Utils.a(localBitmap2)));
+      GlobalImageCache.a.put(this.jdField_a_of_type_JavaLangString, localObject1);
       localObject1 = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage();
       ((Message)localObject1).what = 29;
       ((Message)localObject1).arg1 = this.jdField_a_of_type_Int;

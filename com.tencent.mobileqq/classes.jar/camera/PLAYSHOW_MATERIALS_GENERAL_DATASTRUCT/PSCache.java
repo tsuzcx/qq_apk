@@ -9,8 +9,8 @@ public final class PSCache
   extends JceStruct
 {
   static ArrayList<PSMetaCategory> cache_categories = new ArrayList();
-  public ArrayList<PSMetaCategory> categories;
-  public int createTime;
+  public ArrayList<PSMetaCategory> categories = null;
+  public int createTime = 0;
   
   static
   {
@@ -42,7 +42,7 @@ public final class PSCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSCache
  * JD-Core Version:    0.7.0.1
  */

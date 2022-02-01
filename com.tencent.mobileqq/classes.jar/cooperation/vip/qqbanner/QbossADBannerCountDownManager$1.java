@@ -1,14 +1,12 @@
 package cooperation.vip.qqbanner;
 
-import alfw;
 import android.widget.TextView;
-import bmob;
-import bmoc;
+import com.tencent.mobileqq.activity.recent.QbossADBannerConfigInfo;
 
-public class QbossADBannerCountDownManager$1
+class QbossADBannerCountDownManager$1
   implements Runnable
 {
-  public QbossADBannerCountDownManager$1(bmoc parambmoc, alfw paramalfw) {}
+  QbossADBannerCountDownManager$1(QbossADBannerCountDownManager paramQbossADBannerCountDownManager, QbossADBannerConfigInfo paramQbossADBannerConfigInfo) {}
   
   public void run()
   {
@@ -18,22 +16,22 @@ public class QbossADBannerCountDownManager$1
       do
       {
         return;
-      } while (!(this.a instanceof bmob));
-      bmoc.a(this.this$0, (bmob)this.a);
-      bmoc.a(this.this$0).setText(bmoc.a(this.this$0, bmoc.a(this.this$0).e));
-      bmoc.b(this.this$0).setText(bmoc.b(this.this$0, bmoc.a(this.this$0).f));
-      bmoc.a(this.this$0).setTextColor(bmoc.a(this.this$0, bmoc.a(this.this$0).g));
-      bmoc.b(this.this$0).setTextColor(bmoc.b(this.this$0, bmoc.a(this.this$0).g));
-      bmoc.a(this.this$0, bmoc.a(this.this$0));
-      bmoc.c(this.this$0).setBackgroundDrawable(bmoc.a(this.this$0, bmoc.a(this.this$0).h));
-      bmoc.c(this.this$0).setTextColor(bmoc.c(this.this$0, bmoc.a(this.this$0).i));
-    } while (bmoc.a(this.this$0).d != 1);
-    bmoc.a(this.this$0);
+      } while (!(this.a instanceof QbossADBannerCountDownInfo));
+      QbossADBannerCountDownManager.a(this.this$0, (QbossADBannerCountDownInfo)this.a);
+      QbossADBannerCountDownManager.a(this.this$0).setText(QbossADBannerCountDownManager.a(this.this$0, QbossADBannerCountDownManager.a(this.this$0).f));
+      QbossADBannerCountDownManager.b(this.this$0).setText(QbossADBannerCountDownManager.b(this.this$0, QbossADBannerCountDownManager.a(this.this$0).g));
+      QbossADBannerCountDownManager.a(this.this$0).setTextColor(QbossADBannerCountDownManager.a(this.this$0, QbossADBannerCountDownManager.a(this.this$0).h));
+      QbossADBannerCountDownManager.b(this.this$0).setTextColor(QbossADBannerCountDownManager.b(this.this$0, QbossADBannerCountDownManager.a(this.this$0).h));
+      QbossADBannerCountDownManager.a(this.this$0, QbossADBannerCountDownManager.a(this.this$0));
+      QbossADBannerCountDownManager.c(this.this$0).setBackgroundDrawable(QbossADBannerCountDownManager.a(this.this$0, QbossADBannerCountDownManager.a(this.this$0).i));
+      QbossADBannerCountDownManager.c(this.this$0).setTextColor(QbossADBannerCountDownManager.c(this.this$0, QbossADBannerCountDownManager.a(this.this$0).j));
+    } while (QbossADBannerCountDownManager.a(this.this$0).d != 1);
+    QbossADBannerCountDownManager.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.qqbanner.QbossADBannerCountDownManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.troop.activity;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 
-public class TroopAvatarWallPreviewActivity$2
+class TroopAvatarWallPreviewActivity$2
   implements Runnable
 {
   TroopAvatarWallPreviewActivity$2(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, Bundle paramBundle) {}

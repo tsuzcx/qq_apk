@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class material_report_rsp
   extends JceStruct
 {
-  public int iCode;
+  public int iCode = 0;
   public String strErrMsg = "";
   
   public material_report_rsp() {}

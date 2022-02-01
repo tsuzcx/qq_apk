@@ -11,17 +11,16 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.IDownloadStyle;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ufa;
-import ufm;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJHorizontalProgress;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/IProgressView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "progressView", "Landroid/widget/ProgressBar;", "getProgressView", "()Landroid/widget/ProgressBar;", "setProgressView", "(Landroid/widget/ProgressBar;)V", "textView", "Landroid/widget/TextView;", "getTextView", "()Landroid/widget/TextView;", "setTextView", "(Landroid/widget/TextView;)V", "viewRoot", "Landroid/view/View;", "getViewRoot", "()Landroid/view/View;", "setViewRoot", "(Landroid/view/View;)V", "pause", "", "setProgress", "pro", "", "setProgressStyle", "style", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "setProgressText", "text", "", "start", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class RIJHorizontalProgress
   extends RelativeLayout
-  implements ufm
+  implements IProgressView
 {
   @Nullable
   private View jdField_a_of_type_AndroidViewView;
@@ -41,14 +40,14 @@ public final class RIJHorizontalProgress
     paramAttributeSet = (LayoutInflater)paramContext;
     paramContext = localObject;
     if (paramAttributeSet != null) {
-      paramContext = paramAttributeSet.inflate(2131560103, (ViewGroup)this);
+      paramContext = paramAttributeSet.inflate(2131560182, (ViewGroup)this);
     }
     this.jdField_a_of_type_AndroidViewView = paramContext;
     paramContext = this.jdField_a_of_type_AndroidViewView;
     if (paramContext != null)
     {
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131372506));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131380086));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131372816));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131380525));
     }
   }
   
@@ -64,9 +63,9 @@ public final class RIJHorizontalProgress
     }
   }
   
-  public void setProgressStyle(@Nullable ufa paramufa)
+  public void setProgressStyle(@Nullable IDownloadStyle paramIDownloadStyle)
   {
-    if (!(paramufa instanceof HorizontalProgressStyle)) {}
+    if (!(paramIDownloadStyle instanceof HorizontalProgressStyle)) {}
     Object localObject;
     do
     {
@@ -75,19 +74,19 @@ public final class RIJHorizontalProgress
         return;
         localObject = this.jdField_a_of_type_AndroidWidgetTextView;
         if (localObject != null) {
-          ((TextView)localObject).setTextColor(Color.parseColor(((HorizontalProgressStyle)paramufa).getProgressTextColor()));
+          ((TextView)localObject).setTextColor(Color.parseColor(((HorizontalProgressStyle)paramIDownloadStyle).getProgressTextColor()));
         }
         localObject = this.jdField_a_of_type_AndroidWidgetTextView;
         if (localObject != null) {
-          ((TextView)localObject).setTextSize(((HorizontalProgressStyle)paramufa).getProgressTextSize());
+          ((TextView)localObject).setTextSize(((HorizontalProgressStyle)paramIDownloadStyle).getProgressTextSize());
         }
-      } while (((HorizontalProgressStyle)paramufa).getProgressDrawable() == -1);
+      } while (((HorizontalProgressStyle)paramIDownloadStyle).getProgressDrawable() == -1);
       localObject = getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-      paramufa = ((Context)localObject).getResources().getDrawable(((HorizontalProgressStyle)paramufa).getProgressDrawable());
+      paramIDownloadStyle = ((Context)localObject).getResources().getDrawable(((HorizontalProgressStyle)paramIDownloadStyle).getProgressDrawable());
       localObject = this.jdField_a_of_type_AndroidWidgetProgressBar;
     } while (localObject == null);
-    ((ProgressBar)localObject).setProgressDrawable(paramufa);
+    ((ProgressBar)localObject).setProgressDrawable(paramIDownloadStyle);
   }
   
   public void setProgressText(@Nullable String paramString)
@@ -115,7 +114,7 @@ public final class RIJHorizontalProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJHorizontalProgress
  * JD-Core Version:    0.7.0.1
  */

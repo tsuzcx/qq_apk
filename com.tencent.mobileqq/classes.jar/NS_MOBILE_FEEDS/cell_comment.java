@@ -11,14 +11,14 @@ public final class cell_comment
   static ArrayList<s_commment> cache_commments = new ArrayList();
   static s_commment cache_main_comment = new s_commment();
   static s_plug_in_comment cache_plug_in_info = new s_plug_in_comment();
-  public int actiontype;
-  public ArrayList<s_commment> commments;
-  public int displayflag;
-  public int iRealCount;
-  public s_commment main_comment;
-  public int num;
-  public s_plug_in_comment plug_in_info;
-  public int unreadCnt;
+  public int actiontype = 0;
+  public ArrayList<s_commment> commments = null;
+  public int displayflag = 0;
+  public int iRealCount = 0;
+  public s_commment main_comment = null;
+  public int num = 0;
+  public s_plug_in_comment plug_in_info = null;
+  public int unreadCnt = 0;
   
   static
   {

@@ -1,13 +1,12 @@
 package com.tencent.biz.qqstory.utils.pngquant;
 
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.offline.OfflineEnvHelper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
-import nuz;
-import nvf;
-import zfs;
 
 public final class PngQuantUtils
 {
@@ -15,15 +14,15 @@ public final class PngQuantUtils
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    nuz.b("1017", paramAppRuntime, true, new zfs());
+    HtmlOffline.b("1017", paramAppRuntime, true, new PngQuantUtils.1());
   }
   
   public static boolean a()
   {
-    if ((!a.get()) && (nuz.c("1017")) && (nuz.a("1017", "https://libpngquantandroid.so")))
+    if ((!a.get()) && (HtmlOffline.c("1017")) && (HtmlOffline.a("1017", "https://libpngquantandroid.so")))
     {
-      String str = nvf.a("1017") + "1017" + File.separator + "libpngquantandroid.so";
-      if (FileUtils.fileExists(str))
+      String str = OfflineEnvHelper.a("1017") + "1017" + File.separator + "libpngquantandroid.so";
+      if (FileUtils.a(str))
       {
         System.load(str);
         a.set(true);
@@ -56,7 +55,7 @@ public final class PngQuantUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package mqq.app;
 
-import Override;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -160,7 +159,6 @@ public class BaseActivity
     if (!isLatecyWaitRuntime()) {
       waitAppRuntime();
     }
-    Foreground.onCreate(this);
     if (isActivityLocaleUpdated(getResources().getConfiguration().locale))
     {
       paramBundle = getResources();
@@ -194,7 +192,6 @@ public class BaseActivity
     if (QLog.isColorLevel()) {
       QLog.i("mqq", 2, "[Activity]" + getClass().getSimpleName() + " onDestroy");
     }
-    Foreground.onDestroy(this);
     this.mqq.removeActivity(this);
     this.mqq = null;
   }
@@ -209,7 +206,6 @@ public class BaseActivity
     if (!this.mIsShadow) {
       super.onPause();
     }
-    Foreground.onPause(this.mProcRuntime);
     this.isResume = false;
   }
   
@@ -263,7 +259,6 @@ public class BaseActivity
     if (!this.mIsShadow) {
       super.onResume();
     }
-    Foreground.onResume(this.mProcRuntime);
     this.isResume = true;
   }
   
@@ -274,7 +269,6 @@ public class BaseActivity
       super.onStart();
       recreateOnLocaleUpdate();
     }
-    Foreground.onStart(this.mProcRuntime, this);
   }
   
   protected void onStop()
@@ -285,7 +279,6 @@ public class BaseActivity
     if (!this.mIsShadow) {
       super.onStop();
     }
-    Foreground.onStop(this.mProcRuntime);
   }
   
   @TargetApi(24)

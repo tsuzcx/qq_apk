@@ -14,7 +14,7 @@ import com.tencent.ttpic.openapi.manager.TriggerStateManager;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
 import com.tencent.ttpic.openapi.model.TriggerStateItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.trigger.TriggerTimeUpdater;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -126,7 +126,7 @@ public class VideoFilterInputFreeze
     }
     int j = -1;
     int i;
-    if (VideoMaterialUtil.isFaceTriggerType(this.mFreezeFrameTriggleType))
+    if (VideoMaterial.isFaceTriggerType(this.mFreezeFrameTriggleType))
     {
       paramMap = (FaceActionCounter)paramMap.get(Integer.valueOf(this.mFreezeFrameTriggleType));
       if (paramMap != null)
@@ -563,7 +563,7 @@ public class VideoFilterInputFreeze
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.VideoFilterInputFreeze
  * JD-Core Version:    0.7.0.1
  */

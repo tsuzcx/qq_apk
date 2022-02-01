@@ -1,23 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import pbm;
-import pfi;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentObserver;
 
-public class ReadInJoyCommentPBModule$3
+class ReadInJoyCommentPBModule$3
   implements Runnable
 {
-  public ReadInJoyCommentPBModule$3(pfi parampfi) {}
+  ReadInJoyCommentPBModule$3(ReadInJoyCommentPBModule paramReadInJoyCommentPBModule) {}
   
   public void run()
   {
-    if (pfi.a(this.this$0) != null) {
-      pfi.a(this.this$0).a(1001);
+    if (ReadInJoyCommentPBModule.a(this.this$0) != null) {
+      ReadInJoyCommentPBModule.a(this.this$0).a(1001);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.data.ReadInJoyCommentPBModule.3
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,16 @@ class MultiVideoCtrlLayerUIBase$RefreshDisplayNameRunnable
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.this$0.d, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
-    this.this$0.jdField_b_of_type_JavaLangString = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695116);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.this$0.d, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
+    this.this$0.jdField_b_of_type_JavaLangString = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695359);
     if (this.this$0.e == 2)
     {
       this.this$0.jdField_b_of_type_JavaLangString = this.this$0.a((String)localObject, this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.this$0.e, String.valueOf(this.this$0.jdField_a_of_type_Long)), this.this$0.jdField_a_of_type_AndroidWidgetTextView);
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_b_of_type_JavaLangString);
-      if (this.this$0.j != 2131695252) {
+      if (this.this$0.j != 2131695492) {
         break label258;
       }
-      this.this$0.A();
+      this.this$0.C();
     }
     for (;;)
     {
@@ -52,7 +52,7 @@ class MultiVideoCtrlLayerUIBase$RefreshDisplayNameRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.RefreshDisplayNameRunnable
  * JD-Core Version:    0.7.0.1
  */

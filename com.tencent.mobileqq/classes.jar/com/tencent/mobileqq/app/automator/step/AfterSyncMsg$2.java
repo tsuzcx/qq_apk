@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import axcw;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
 
 class AfterSyncMsg$2
   implements Runnable

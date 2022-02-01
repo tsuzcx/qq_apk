@@ -1,19 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report;
 
 import android.content.Context;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
-import olh;
 import org.json.JSONObject;
 
-public final class RIJStatisticCollectorReport$1
+final class RIJStatisticCollectorReport$1
   implements Runnable
 {
-  public RIJStatisticCollectorReport$1(HashMap paramHashMap, boolean paramBoolean, Context paramContext, String paramString) {}
+  RIJStatisticCollectorReport$1(HashMap paramHashMap, boolean paramBoolean, Context paramContext, String paramString) {}
   
   public void run()
   {
@@ -41,7 +42,8 @@ public final class RIJStatisticCollectorReport$1
       {
         try
         {
-          olh.a(null, null, "0X80096D9", "0X80096D9", 0, 0, "", "", "", new JSONObject(this.jdField_a_of_type_JavaUtilHashMap).toString(), false);
+          localObject = new JSONObject(this.jdField_a_of_type_JavaUtilHashMap);
+          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X80096D9", "0X80096D9", 0, 0, "", "", "", ((JSONObject)localObject).toString(), false);
           return;
         }
         catch (Throwable localThrowable2)
@@ -56,7 +58,7 @@ public final class RIJStatisticCollectorReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJStatisticCollectorReport.1
  * JD-Core Version:    0.7.0.1
  */

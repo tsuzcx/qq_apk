@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import agfg;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.forward.MergeForwardRevokeHelper;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class MultiForwardActivity
   extends ChatActivity
 {
-  public agfg a = new agfg();
+  public MergeForwardRevokeHelper a = new MergeForwardRevokeHelper();
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -37,7 +36,7 @@ public class MultiForwardActivity
     for (localObject = ((ChatFragment)localObject).a();; localObject = null)
     {
       if (localObject != null) {
-        ((BaseChatPie)localObject).doOnDestroy();
+        ((BaseChatPie)localObject).J();
       }
       this.a.c(this);
       super.doOnDestroy();
@@ -62,7 +61,7 @@ public class MultiForwardActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MultiForwardActivity
  * JD-Core Version:    0.7.0.1
  */

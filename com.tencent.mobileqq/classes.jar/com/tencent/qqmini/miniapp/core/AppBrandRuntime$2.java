@@ -1,56 +1,25 @@
 package com.tencent.qqmini.miniapp.core;
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot.Callback;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
+import com.tencent.qqmini.sdk.launcher.core.utils.ICaptureImageCallback;
 import com.tencent.qqmini.sdk.utils.SaveCaptureImageUitl;
 
 class AppBrandRuntime$2
-  implements AbsVideoPlayer.OnCaptureImageListener
+  implements ICaptureImageCallback
 {
-  AppBrandRuntime$2(AppBrandRuntime paramAppBrandRuntime, ViewGroup paramViewGroup, GetScreenshot.Callback paramCallback, View paramView) {}
+  AppBrandRuntime$2(AppBrandRuntime paramAppBrandRuntime, GetScreenshot.Callback paramCallback) {}
   
-  public void onCaptureImageFailed()
+  public void onResult(Bitmap paramBitmap)
   {
-    AppBrandRuntime.access$100(this.this$0, this.val$callback, this.val$contentLayout);
-    this.this$0.isGettingScreenShot = false;
-  }
-  
-  public void onCaptureImageSucceed(Bitmap paramBitmap)
-  {
-    Bitmap localBitmap;
-    if (paramBitmap != null)
-    {
-      localBitmap = SaveCaptureImageUitl.buildBitmapFromView(this.val$contentLayout);
-      if ((localBitmap == null) || (localBitmap.isRecycled()))
-      {
-        if (this.val$callback != null) {
-          this.val$callback.onGetScreenshot(null);
-        }
-        this.this$0.isGettingScreenShot = false;
-      }
-    }
-    for (;;)
-    {
-      this.this$0.isGettingScreenShot = false;
-      return;
-      Canvas localCanvas = new Canvas(localBitmap);
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.val$nativeVideoView.getLayoutParams();
-      localCanvas.drawBitmap(paramBitmap, localMarginLayoutParams.leftMargin, localMarginLayoutParams.topMargin, null);
-      ThreadManager.executeOnDiskIOThreadPool(new AppBrandRuntime.2.1(this, localBitmap));
-      break;
-      AppBrandRuntime.access$100(this.this$0, this.val$callback, this.val$contentLayout);
+    if (paramBitmap != null) {
+      this.val$callback.onGetScreenshot(SaveCaptureImageUitl.cutAndSaveShareScreenshot(this.this$0, paramBitmap));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.AppBrandRuntime.2
  * JD-Core Version:    0.7.0.1
  */

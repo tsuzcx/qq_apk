@@ -1,12 +1,12 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.av.camera.CameraUtils;
+import com.tencent.avgame.qav.AVGameBusinessCtrl;
+import com.tencent.avgame.session.AVGameSession;
+import com.tencent.avgame.util.AVGameQualityCameraReportUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import nnm;
-import nof;
-import nqd;
 
 class AVGameControlUIImpl$CheckCameraTask
   implements Runnable
@@ -14,7 +14,7 @@ class AVGameControlUIImpl$CheckCameraTask
   public void run()
   {
     boolean bool1 = true;
-    Object localObject = nnm.b();
+    Object localObject = AVGameBusinessCtrl.b();
     if (localObject == null) {
       if (QLog.isColorLevel()) {
         QLog.i("AVGameControlUIImpl", 2, "CheckCameraTask ctrl is null.");
@@ -23,7 +23,7 @@ class AVGameControlUIImpl$CheckCameraTask
     for (;;)
     {
       return;
-      localObject = ((nnm)localObject).a();
+      localObject = ((AVGameBusinessCtrl)localObject).a();
       if (localObject == null)
       {
         if (QLog.isColorLevel()) {
@@ -33,14 +33,14 @@ class AVGameControlUIImpl$CheckCameraTask
       else
       {
         long l = AudioHelper.b();
-        boolean bool2 = ((nof)localObject).a(1);
+        boolean bool2 = ((AVGameSession)localObject).a(1);
         if (bool2)
         {
           localObject = CameraUtils.a(BaseApplicationImpl.getApplication());
           if ((!((CameraUtils)localObject).b(l)) && (!((CameraUtils)localObject).a(l)))
           {
             ((CameraUtils)localObject).a(l);
-            nqd.a(4);
+            AVGameQualityCameraReportUtil.a(4);
           }
         }
         while (QLog.isColorLevel())
@@ -55,7 +55,7 @@ class AVGameControlUIImpl$CheckCameraTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.CheckCameraTask
  * JD-Core Version:    0.7.0.1
  */

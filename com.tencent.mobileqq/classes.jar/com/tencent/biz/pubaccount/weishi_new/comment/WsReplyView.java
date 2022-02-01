@@ -16,29 +16,29 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvx;
-import bgyp;
-import bheg;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.biz.subscribe.comment.CommentUIConfig;
+import com.tencent.biz.subscribe.comment.DateUtils;
+import com.tencent.biz.subscribe.comment.LocalHeadFetchUtils;
+import com.tencent.biz.subscribe.comment.OnCommentElementClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.util.BitmapManager.BitmapDecodeResult;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import mqq.app.AppRuntime;
-import zvo;
-import zvr;
-import zwc;
-import zwe;
 
 public class WsReplyView
   extends RelativeLayout
   implements View.OnClickListener
 {
   private static final String jdField_a_of_type_JavaLangString = WsReplyView.class.getName();
-  private static final String jdField_b_of_type_JavaLangString = anvx.a(2131712871);
+  private static final String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713367);
   private int jdField_a_of_type_Int;
   private stSimpleMetaComment jdField_a_of_type_UserGrowthStSimpleMetaComment;
   private stSimpleMetaReply jdField_a_of_type_UserGrowthStSimpleMetaReply;
@@ -49,8 +49,8 @@ public class WsReplyView
   TextView jdField_a_of_type_AndroidWidgetTextView;
   FeedRichTextView jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView;
   RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
-  private zwe jdField_a_of_type_Zwe;
-  private boolean jdField_a_of_type_Boolean;
+  private OnCommentElementClickListener jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener;
+  private boolean jdField_a_of_type_Boolean = false;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   TextView c;
   private TextView d;
@@ -75,17 +75,17 @@ public class WsReplyView
   
   private void a()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560046, this, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131369321));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(10.0F));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376550));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)localView.findViewById(2131376548));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376549));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131376543));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376542));
-    this.c = ((TextView)localView.findViewById(2131376544));
-    this.d = ((TextView)localView.findViewById(2131376552));
-    this.e = ((TextView)localView.findViewById(2131376551));
+    View localView = LayoutInflater.from(getContext()).inflate(2131560123, this, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131369576));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.dpToPx(10.0F));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376943));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)localView.findViewById(2131376941));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376942));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131376936));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376935));
+    this.c = ((TextView)localView.findViewById(2131376937));
+    this.d = ((TextView)localView.findViewById(2131376945));
+    this.e = ((TextView)localView.findViewById(2131376944));
     setPadding(0, 0, 0, Utils.dp2px(5.0D));
   }
   
@@ -105,11 +105,11 @@ public class WsReplyView
     switch (paramView.getId())
     {
     default: 
-      if ((((paramView instanceof WsReplyView)) || (paramView.getId() == 2131364013)) && (this.jdField_a_of_type_Zwe != null))
+      if ((((paramView instanceof WsReplyView)) || (paramView.getId() == 2131364112)) && (this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener != null))
       {
         localstSimpleMetaComment = this.jdField_a_of_type_UserGrowthStSimpleMetaComment;
         localstSimpleMetaReply = this.jdField_a_of_type_UserGrowthStSimpleMetaReply;
-        this.jdField_a_of_type_Zwe.a(paramView, 7, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, localstSimpleMetaReply });
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener.a(paramView, 7, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, localstSimpleMetaReply });
       }
       break;
     }
@@ -117,21 +117,21 @@ public class WsReplyView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((this.jdField_a_of_type_Zwe != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaReply != null))
+      if ((this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaReply != null))
       {
-        this.jdField_a_of_type_Zwe.a(paramView, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaReply.poster);
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener.a(paramView, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaReply.poster);
         continue;
-        if (this.jdField_a_of_type_Zwe != null)
+        if (this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener != null)
         {
           localstSimpleMetaComment = this.jdField_a_of_type_UserGrowthStSimpleMetaComment;
           localstSimpleMetaReply = this.jdField_a_of_type_UserGrowthStSimpleMetaReply;
-          this.jdField_a_of_type_Zwe.a(paramView, 7, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, localstSimpleMetaReply });
+          this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener.a(paramView, 7, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, localstSimpleMetaReply });
           continue;
-          if (this.jdField_a_of_type_Zwe != null)
+          if (this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener != null)
           {
             localstSimpleMetaComment = this.jdField_a_of_type_UserGrowthStSimpleMetaComment;
             localstSimpleMetaReply = this.jdField_a_of_type_UserGrowthStSimpleMetaReply;
-            this.jdField_a_of_type_Zwe.a(paramView, 77, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, localstSimpleMetaReply });
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener.a(paramView, 77, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, localstSimpleMetaReply });
           }
         }
       }
@@ -147,23 +147,23 @@ public class WsReplyView
     }
     if (paramstSimpleMetaReply.poster != null)
     {
-      if ((!BaseApplicationImpl.getApplication().getRuntime().getAccount().equals(paramstSimpleMetaReply.poster.id)) || (!StringUtil.isEmpty(paramstSimpleMetaReply.poster.avatar))) {
+      if ((!BaseApplicationImpl.getApplication().getRuntime().getAccount().equals(paramstSimpleMetaReply.poster.id)) || (!StringUtil.a(paramstSimpleMetaReply.poster.avatar))) {
         break label357;
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(bheg.c(zwc.a(zwc.a(null, 1, paramstSimpleMetaReply.poster.id, 0)).a, 50, 50));
+        this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(ImageUtil.c(LocalHeadFetchUtils.a(LocalHeadFetchUtils.a(null, 1, paramstSimpleMetaReply.poster.id, 0)).a, 50, 50));
       }
-      UIUtils.setRoundCornerViewByURL(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, "", UIUtils.dip2px(getContext(), 20.0F), UIUtils.dip2px(getContext(), 20.0F), UIUtils.dip2px(getContext(), 10.0F), this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable, null);
+      UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, "", UIUtils.a(getContext(), 20.0F), UIUtils.a(getContext(), 20.0F), UIUtils.a(getContext(), 10.0F), this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable, null);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramstSimpleMetaReply.poster.nick);
       if (!paramstSimpleMetaReply.poster.id.equals(paramString)) {
         break label405;
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850950);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(21.0F), ImmersiveUtils.a(12.0F));
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130851384);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.dpToPx(21.0F), ImmersiveUtils.dpToPx(12.0F));
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(ImmersiveUtils.a(2.0F));
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(ImmersiveUtils.dpToPx(2.0F));
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
       label241:
       if (paramstSimpleMetaReply.receiver != null)
@@ -178,16 +178,16 @@ public class WsReplyView
     }
     label301:
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView.setText(paramstSimpleMetaReply.wording);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(zvr.a(paramstSimpleMetaReply.createtime * 1000L));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(DateUtils.a(paramstSimpleMetaReply.createtime * 1000L));
     this.jdField_a_of_type_Boolean = false;
     paramstSimpleMetaComment = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-    if (!zvo.a()) {}
+    if (!CommentUIConfig.a()) {}
     for (int i = 0;; i = 8)
     {
       paramstSimpleMetaComment.setVisibility(i);
       return;
       label357:
-      UIUtils.setRoundCornerViewByURL(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, paramstSimpleMetaReply.poster.avatar, UIUtils.dip2px(getContext(), 20.0F), UIUtils.dip2px(getContext(), 20.0F), UIUtils.dip2px(getContext(), 10.0F), bheg.b(), null);
+      UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, paramstSimpleMetaReply.poster.avatar, UIUtils.a(getContext(), 20.0F), UIUtils.a(getContext(), 20.0F), UIUtils.a(getContext(), 10.0F), ImageUtil.c(), null);
       break;
       label405:
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
@@ -200,9 +200,9 @@ public class WsReplyView
     }
   }
   
-  public void setOnCommentElementClickListener(zwe paramzwe)
+  public void setOnCommentElementClickListener(OnCommentElementClickListener paramOnCommentElementClickListener)
   {
-    this.jdField_a_of_type_Zwe = paramzwe;
+    this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener = paramOnCommentElementClickListener;
   }
   
   public void setPosition(int paramInt)
@@ -212,7 +212,7 @@ public class WsReplyView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsReplyView
  * JD-Core Version:    0.7.0.1
  */

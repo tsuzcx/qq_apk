@@ -5,24 +5,19 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.ArrayList;
 import java.util.List;
-import yhc;
-import ykq;
-import zhe;
-import zhf;
-import zhg;
-import zhh;
-import zhi;
 
 public class InnerListView
   extends LinearLayout
 {
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<yhc> jdField_a_of_type_JavaUtilList;
-  private zhg jdField_a_of_type_Zhg;
-  private zhh jdField_a_of_type_Zhh;
-  private zhi jdField_a_of_type_Zhi;
+  private InnerListView.OnItemClickListener jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView$OnItemClickListener;
+  private InnerListView.OnItemLongClickListener jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView$OnItemLongClickListener;
+  private InnerListViewAdapter jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter;
+  private List<BaseViewHolder> jdField_a_of_type_JavaUtilList;
   private List<View> b;
   
   public InnerListView(Context paramContext)
@@ -57,11 +52,11 @@ public class InnerListView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Zhi != null)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter != null)
     {
-      if ((this.jdField_a_of_type_Zhi.a() != null) && (!this.jdField_a_of_type_Zhi.a().isEmpty()))
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a() != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a().isEmpty()))
       {
-        int j = this.jdField_a_of_type_Zhi.a().size();
+        int j = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a().size();
         if (j < getChildCount() - a()) {
           removeViews(j, getChildCount() - j - a());
         }
@@ -70,20 +65,20 @@ public class InnerListView
         {
           Object localObject;
           if (this.jdField_a_of_type_JavaUtilList.size() - 1 >= i) {
-            localObject = (yhc)this.jdField_a_of_type_JavaUtilList.get(i);
+            localObject = (BaseViewHolder)this.jdField_a_of_type_JavaUtilList.get(i);
           }
           for (;;)
           {
-            this.jdField_a_of_type_Zhi.a(i, (yhc)localObject);
-            localObject = ((yhc)localObject).a();
+            this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a(i, (BaseViewHolder)localObject);
+            localObject = ((BaseViewHolder)localObject).a();
             if (((View)localObject).getParent() == null) {
               addView((View)localObject, getChildCount() - a());
             }
-            ((View)localObject).setOnClickListener(new zhe(this, i));
-            ((View)localObject).setOnLongClickListener(new zhf(this, i));
+            ((View)localObject).setOnClickListener(new InnerListView.1(this, i));
+            ((View)localObject).setOnLongClickListener(new InnerListView.2(this, i));
             i += 1;
             break;
-            localObject = new yhc(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_Zhi.a(), this, false));
+            localObject = new BaseViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a(), this, false));
             this.jdField_a_of_type_JavaUtilList.add(localObject);
           }
         }
@@ -103,11 +98,11 @@ public class InnerListView
     int i = 0;
     while (i < paramInt2)
     {
-      yhc localyhc = new yhc(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt1, this, false));
-      this.jdField_a_of_type_JavaUtilList.add(localyhc);
+      BaseViewHolder localBaseViewHolder = new BaseViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt1, this, false));
+      this.jdField_a_of_type_JavaUtilList.add(localBaseViewHolder);
       i += 1;
     }
-    ykq.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    SLog.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
   }
   
   public void a(View paramView)
@@ -119,9 +114,9 @@ public class InnerListView
     addView(paramView);
   }
   
-  public void setAdapter(zhi paramzhi)
+  public void setAdapter(InnerListViewAdapter paramInnerListViewAdapter)
   {
-    this.jdField_a_of_type_Zhi = paramzhi;
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter = paramInnerListViewAdapter;
     a();
   }
   
@@ -138,19 +133,19 @@ public class InnerListView
     addView(paramView, paramInt);
   }
   
-  public void setOnItemClickListener(zhg paramzhg)
+  public void setOnItemClickListener(InnerListView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_Zhg = paramzhg;
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView$OnItemClickListener = paramOnItemClickListener;
   }
   
-  public void setOnItemLongClickListener(zhh paramzhh)
+  public void setOnItemLongClickListener(InnerListView.OnItemLongClickListener paramOnItemLongClickListener)
   {
-    this.jdField_a_of_type_Zhh = paramzhh;
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView$OnItemLongClickListener = paramOnItemLongClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.InnerListView
  * JD-Core Version:    0.7.0.1
  */

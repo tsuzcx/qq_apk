@@ -1,32 +1,27 @@
 package com.tencent.biz.qcircleshadow.lib;
 
 import android.graphics.Typeface;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.text.TextUtils;
-import anvk;
-import aocj;
-import auog;
-import bcvh;
-import bpnk;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.qcircleshadow.local.QCircleShadow;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import com.tencent.component.network.utils.thread.PriorityThreadPool.Priority;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.activity.photo.MimeHelper;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.jump.api.IJumpApi;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
+import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
+import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
+import com.tencent.mobileqq.qcircle.tempapi.interfaces.AccountIdentityCallBack;
+import com.tencent.mobileqq.qcircle.tempapi.interfaces.FlutterInstallCallBack;
+import com.tencent.mobileqq.tianshu.api.IRedTouchServer;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.tools.DeviceInfoUtils;
 import com.tencent.theme.TextHook;
 import com.tencent.tmassistantbase.network.NetworkMonitorReceiver;
-import cooperation.qqcircle.utils.QCircleCommonUtil;
 import mqq.app.AppRuntime;
-import vvq;
+import mqq.app.MobileQQ;
 
 public class HostStaticInvokeHelper
 {
@@ -34,18 +29,41 @@ public class HostStaticInvokeHelper
   
   public static void addNetwortChangedObserver(HostStaticInvokeHelper.NetworkChangedObserver paramNetworkChangedObserver)
   {
-    paramNetworkChangedObserver = new HostStaticInvokeHelper.4(paramNetworkChangedObserver);
+    paramNetworkChangedObserver = new HostStaticInvokeHelper.2(paramNetworkChangedObserver);
     NetworkMonitorReceiver.getInstance().addNetworkChangedObserver(paramNetworkChangedObserver);
   }
   
-  private static AppInterface getAppInterface()
+  public static String getDeviceInfoBSSID()
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject != null)
+    Object localObject1 = (WifiManager)MobileQQ.sMobileQQ.getSystemService("wifi");
+    if (localObject1 == null) {
+      localObject1 = null;
+    }
+    for (;;)
     {
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if ((localObject instanceof AppInterface)) {
-        return (AppInterface)localObject;
+      return localObject1;
+      try
+      {
+        localObject1 = ((WifiManager)localObject1).getConnectionInfo();
+        if (localObject1 == null) {
+          return null;
+        }
+      }
+      catch (Exception localException)
+      {
+        Object localObject2;
+        for (;;)
+        {
+          localObject2 = null;
+        }
+        String str = localObject2.getBSSID();
+        if ((!"N/A".equals(str)) && (!"00:00:00:00:00:00".equals(str)))
+        {
+          localObject2 = str;
+          if (!"FF:FF:FF:FF:FF:FF".equalsIgnoreCase(str)) {
+            continue;
+          }
+        }
       }
     }
     return null;
@@ -56,33 +74,14 @@ public class HostStaticInvokeHelper
     return MimeHelper.getMimeType(paramString);
   }
   
-  public static String getNickName(String paramString)
-  {
-    Object localObject = getAppInterface();
-    String str = paramString;
-    if (localObject != null)
-    {
-      localObject = ((anvk)((AppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
-      str = paramString;
-      if (localObject != null)
-      {
-        str = paramString;
-        if (!TextUtils.isEmpty(((Friends)localObject).getFriendNick())) {
-          str = ((Friends)localObject).getFriendNick();
-        }
-      }
-    }
-    return str;
-  }
-  
   public static String getPluginQua()
   {
-    return vvq.a().a();
+    return QCircleShadow.a().a();
   }
   
   public static String getQCircleSchemeFromJumpUtil(String paramString1, String paramString2)
   {
-    return bpnk.a(paramString1, paramString2);
+    return QCircleServiceImpl.getJumpApi().getQCircleSchemeFromJumpUtil(paramString1, paramString2);
   }
   
   public static long getServerTimeMillis()
@@ -97,7 +96,7 @@ public class HostStaticInvokeHelper
   
   public static Bundle getTroopProfileExtra(String paramString)
   {
-    return TroopInfoActivity.a(paramString, 0);
+    return QCircleServiceImpl.getQQService().getTroopProfileExtra(paramString);
   }
   
   public static String insertMtypeByMsfSdkUtils(String paramString1, String paramString2)
@@ -105,39 +104,28 @@ public class HostStaticInvokeHelper
     return MsfSdkUtils.insertMtype(paramString1, paramString2);
   }
   
-  public static void installQFlutter(HostStaticInvokeHelper.FlutterInstallCallBack paramFlutterInstallCallBack)
+  public static void installQFlutter(FlutterInstallCallBack paramFlutterInstallCallBack)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = QCircleCommonUtil.getQQAppInterface();
-      if (localQQAppInterface == null) {
-        return;
-      }
-      auog.a(localQQAppInterface, new HostStaticInvokeHelper.2(paramFlutterInstallCallBack));
-      return;
-    }
-    catch (Exception paramFlutterInstallCallBack)
-    {
-      QLog.e("HostStaticInvokeHelper", 1, "[preloadFlutter] ", paramFlutterInstallCallBack);
-    }
+    QCircleServiceImpl.getQQService().installQFlutter(paramFlutterInstallCallBack);
+  }
+  
+  public static boolean isLowPerfDevice()
+  {
+    return DeviceInfoUtils.b();
   }
   
   public static void nativeSetMaxPhotoFrameCount(int paramInt)
   {
-    VideoSourceHelper.nativeSetMaxPhotoFrameCount(paramInt);
+    QCircleServiceImpl.getQQService().nativeSetMaxPhotoFrameCount(paramInt);
   }
   
   public static void redPointHandlerSendRedpointReq(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = getAppInterface();
-    if (localObject != null)
+    IRedTouchServer localIRedTouchServer = (IRedTouchServer)QCircleServiceImpl.getAppRunTime().getRuntimeService(IRedTouchServer.class, "");
+    if (localIRedTouchServer != null)
     {
-      localObject = (aocj)((AppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.REDPOINT_HANDER);
-      if (localObject != null)
-      {
-        QLog.i("HostStaticInvokeHelper", 1, "redPointHandlerSendRedpointReq");
-        ((aocj)localObject).a(paramBoolean1, paramBoolean2, 0);
-      }
+      QLog.i("HostStaticInvokeHelper", 1, "redPointHandlerSendRedpointReq");
+      localIRedTouchServer.sendRedpointReq(paramBoolean1, paramBoolean2, 0);
     }
   }
   
@@ -146,17 +134,14 @@ public class HostStaticInvokeHelper
     NetworkMonitorReceiver.getInstance().registerReceiver();
   }
   
-  public static void sendQCircleAccountIdentityRequest(HostStaticInvokeHelper.AccountIdentityCallBack paramAccountIdentityCallBack)
+  public static void sendQCircleAccountIdentityRequest(AccountIdentityCallBack paramAccountIdentityCallBack)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      bcvh.b((QQAppInterface)localAppRuntime, new HostStaticInvokeHelper.1(paramAccountIdentityCallBack));
-    }
+    QCircleServiceImpl.getQQService().sendQCircleAccountIdentityRequest(paramAccountIdentityCallBack);
   }
   
   public static void summitHighPriortyJob(HostStaticInvokeHelper.InvokeNormalCallBack paramInvokeNormalCallBack)
   {
-    PriorityThreadPool.getDefault().submit(new HostStaticInvokeHelper.3(paramInvokeNormalCallBack), PriorityThreadPool.Priority.HIGH);
+    PriorityThreadPool.getDefault().submit(new HostStaticInvokeHelper.1(paramInvokeNormalCallBack), PriorityThreadPool.Priority.HIGH);
   }
   
   public static boolean validateVideoType(String paramString)
@@ -166,7 +151,7 @@ public class HostStaticInvokeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.HostStaticInvokeHelper
  * JD-Core Version:    0.7.0.1
  */

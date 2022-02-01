@@ -1,24 +1,20 @@
 package com.tencent.biz.qqstory.base.download;
 
-import wao;
-import wav;
-import wax;
-
-public class DownloadUrlManager$1$1
+class DownloadUrlManager$1$1
   implements Runnable
 {
-  public DownloadUrlManager$1$1(wao paramwao, wav paramwav) {}
+  DownloadUrlManager$1$1(DownloadUrlManager.1 param1, DownloadUrlManager.DownloadUrlQueryResult paramDownloadUrlQueryResult) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Wao.a != null) {
-      this.jdField_a_of_type_Wao.a.a(this.jdField_a_of_type_Wav);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager$1.a != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager$1.a.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager$DownloadUrlQueryResult);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager.1.1
  * JD-Core Version:    0.7.0.1
  */

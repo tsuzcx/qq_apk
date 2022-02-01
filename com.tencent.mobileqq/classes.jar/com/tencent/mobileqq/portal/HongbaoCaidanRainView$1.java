@@ -4,9 +4,11 @@ import android.graphics.BitmapFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class HongbaoCaidanRainView$1
+class HongbaoCaidanRainView$1
   implements Runnable
 {
+  HongbaoCaidanRainView$1(HongbaoCaidanRainView paramHongbaoCaidanRainView, String[] paramArrayOfString) {}
+  
   public void run()
   {
     HongbaoCaidanRainView.a(this.this$0).clear();

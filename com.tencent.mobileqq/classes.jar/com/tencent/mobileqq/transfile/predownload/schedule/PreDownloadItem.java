@@ -7,22 +7,22 @@ public class PreDownloadItem
   public String businessEngName;
   public int businessID;
   public String businessName;
-  public int businessPriority;
+  public int businessPriority = 0;
   public String department;
   public String downNetWork;
-  public long downloadSize;
-  public long downloadTime;
+  public long downloadSize = 0L;
+  public long downloadTime = 0L;
   public String downloadUrl;
   public String fileKey;
   public String filePath;
-  public int innerPriority;
-  public int reqCondition;
-  public int reqNetWork;
-  public long reqTime;
+  public int innerPriority = 0;
+  public int reqCondition = 0;
+  public int reqNetWork = 0;
+  public long reqTime = 0L;
   public boolean saveOnSD;
-  public int startCondition;
-  public long startTime;
-  public int state;
+  public int startCondition = 0;
+  public long startTime = 0L;
+  public int state = 0;
   public AbsPreDownloadTask task;
 }
 

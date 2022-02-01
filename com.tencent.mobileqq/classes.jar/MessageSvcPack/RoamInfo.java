@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class RoamInfo
   extends JceStruct
 {
-  public byte cValue;
-  public long lFriendUin;
+  public byte cValue = 0;
+  public long lFriendUin = 0L;
   
   public RoamInfo() {}
   

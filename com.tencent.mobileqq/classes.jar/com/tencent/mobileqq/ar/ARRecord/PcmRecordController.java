@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
 import android.os.SystemClock;
-import apdr;
-import apdx;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -10,14 +8,14 @@ public class PcmRecordController
   extends AudioRecordController
 {
   private long jdField_a_of_type_Long;
-  private apdr jdField_a_of_type_Apdr;
+  private AudioGenerator jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator;
   private String jdField_a_of_type_JavaLangString;
   private volatile boolean jdField_a_of_type_Boolean;
   private volatile boolean b;
   
-  public PcmRecordController(apdx paramapdx, String paramString)
+  public PcmRecordController(VideoRecordController paramVideoRecordController, String paramString)
   {
-    super(paramapdx);
+    super(paramVideoRecordController);
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -25,14 +23,14 @@ public class PcmRecordController
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     while (this.jdField_a_of_type_Boolean) {
-      if ((this.jdField_a_of_type_Apdr != null) && (this.jdField_a_of_type_Long > 0L) && (!this.b)) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator != null) && (this.jdField_a_of_type_Long > 0L) && (!this.b)) {
         try
         {
           long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-          byte[] arrayOfByte = this.jdField_a_of_type_Apdr.a(l);
-          apdx localapdx = (apdx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (localapdx != null) {
-            localapdx.a(arrayOfByte, SystemClock.elapsedRealtimeNanos());
+          byte[] arrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator.a(l);
+          VideoRecordController localVideoRecordController = (VideoRecordController)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localVideoRecordController != null) {
+            localVideoRecordController.a(arrayOfByte, SystemClock.elapsedRealtimeNanos());
           }
           if (QLog.isColorLevel()) {
             QLog.d("PcmRecordController", 2, String.format("record audio duration: %s, buffer length: %s", new Object[] { Long.valueOf(l), Integer.valueOf(arrayOfByte.length) }));
@@ -53,8 +51,8 @@ public class PcmRecordController
   {
     try
     {
-      if (this.jdField_a_of_type_Apdr == null) {
-        this.jdField_a_of_type_Apdr = new apdr(this.jdField_a_of_type_JavaLangString, 48000, 1, 16);
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator == null) {
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator = new AudioGenerator(this.jdField_a_of_type_JavaLangString, 48000, 1, 16);
       }
       if (!this.jdField_a_of_type_Boolean)
       {
@@ -79,10 +77,10 @@ public class PcmRecordController
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Apdr != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator != null)
       {
-        this.jdField_a_of_type_Apdr.a();
-        this.jdField_a_of_type_Apdr = null;
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator.a();
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioGenerator = null;
       }
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Long = 0L;
@@ -94,7 +92,7 @@ public class PcmRecordController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.PcmRecordController
  * JD-Core Version:    0.7.0.1
  */

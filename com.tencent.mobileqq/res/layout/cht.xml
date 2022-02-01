@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/edw" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.extendfriend.wiget.RoundCorneredFrameLayout android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/content" android:layout_width="251.0dip" android:layout_height="200.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" app:qqArMapGuideRadius="16">
-        <RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.image.URLImageView android:id="@id/mj_" android:layout_width="fill_parent" android:layout_height="131.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-            <com.tencent.image.URLImageView android:id="@id/n50" android:layout_width="125.5dip" android:layout_height="131.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-            <com.tencent.image.URLImageView android:id="@id/nn3" android:layout_width="125.5dip" android:layout_height="131.0dip" android:scaleType="centerCrop" android:layout_toRightOf="@id/n50" android:layout_alignParentTop="true" />
-            <TextView android:textSize="16.0dip" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/e_3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="142.0dip" android:layout_marginRight="16.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-            <TextView android:textSize="12.0dip" android:textColor="#ff878b99" android:id="@id/e_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="7.0dip" android:singleLine="true" android:layout_below="@id/e_3" android:layout_alignParentLeft="true" />
-            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/jmp" android:background="@drawable/bjn" android:paddingLeft="8.0dip" android:paddingTop="0.0dip" android:paddingRight="8.0dip" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="103.5dip" android:layout_marginRight="10.0dip" android:text="xxx" android:singleLine="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <View android:id="@id/enc" android:background="#66000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </com.tencent.mobileqq.extendfriend.wiget.RoundCorneredFrameLayout>
-</FrameLayout>
+<RelativeLayout android:id="@id/mgb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/mga" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.dataline.util.widget.AsyncImageView android:gravity="center" android:id="@id/mg_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/n0c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true">
+            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wip" />
+            <View android:layout_gravity="center" android:background="@drawable/gf2" android:layout_width="4.0dip" android:layout_height="8.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="1.0dip" />
+        </LinearLayout>
+        <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="left" android:id="@id/npi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="2.0dip" android:singleLine="true" android:layout_above="@id/n0c" />
+        <com.dataline.util.widget.AsyncImageView android:gravity="left" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="4.0dip" android:adjustViewBounds="true" android:layout_above="@id/npi" />
+    </RelativeLayout>
+</RelativeLayout>

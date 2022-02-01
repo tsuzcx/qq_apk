@@ -2,10 +2,10 @@ package com.tencent.mobileqq.utils;
 
 import java.util.HashMap;
 
-public final class PhoneCodeUtils$1
+final class PhoneCodeUtils$1
   extends HashMap<String, String>
 {
-  public PhoneCodeUtils$1(int paramInt)
+  PhoneCodeUtils$1(int paramInt)
   {
     super(paramInt);
     put("460", "86");

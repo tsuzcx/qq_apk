@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.aifilter;
 
-import android.widget.Button;
+import android.view.View;
 
 class AEEditorAILoadingView$2
   implements Runnable
@@ -15,7 +15,7 @@ class AEEditorAILoadingView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView.2
  * JD-Core Version:    0.7.0.1
  */

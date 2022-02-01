@@ -102,7 +102,7 @@ public class RoundAngleFrameLayout
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     paramCanvas.saveLayer(new RectF(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight()), this.jdField_b_of_type_AndroidGraphicsPaint, 31);
     super.dispatchDraw(paramCanvas);
@@ -131,7 +131,7 @@ public class RoundAngleFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout
  * JD-Core Version:    0.7.0.1
  */

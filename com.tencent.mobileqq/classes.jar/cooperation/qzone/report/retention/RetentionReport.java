@@ -1,7 +1,6 @@
 package cooperation.qzone.report.retention;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.report.lp.LpReport_Retention_dc03208;
@@ -9,6 +8,7 @@ import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class RetentionReport
 {
@@ -67,7 +67,7 @@ public class RetentionReport
       {
         paramHashMap = new HashMap();
         paramHashMap.put("function_id", paramString);
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, "qzone_retention_" + paramString, true, 0L, 0L, paramHashMap, null);
+        StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance(null, "qzone_retention_" + paramString, true, 0L, 0L, paramHashMap, null);
         return;
       }
       catch (Exception paramString)
@@ -113,7 +113,7 @@ public class RetentionReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.retention.RetentionReport
  * JD-Core Version:    0.7.0.1
  */

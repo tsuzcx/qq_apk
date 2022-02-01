@@ -1,0 +1,84 @@
+package dov.com.qq.im.capture.view;
+
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.music.MusicPlayerSceneListener;
+import dov.com.qq.im.capture.music.QimMusicPlayer;
+import java.util.concurrent.atomic.AtomicInteger;
+
+class MusicFragmentProviderView$2
+  implements MusicPlayerSceneListener
+{
+  MusicFragmentProviderView$2(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  
+  public void a()
+  {
+    this.a.i();
+  }
+  
+  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    if (paramInt != -1)
+    {
+      this.a.a(paramInt);
+      MusicFragmentProviderView.a(this.a).set(-1);
+      this.a.j();
+      return;
+    }
+    this.a.i();
+  }
+  
+  public void a(MusicItemInfo paramMusicItemInfo)
+  {
+    if (this.a.a != null)
+    {
+      if (paramMusicItemInfo.mType == 2) {
+        this.a.a.a(true);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(false);
+  }
+  
+  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    this.a.a(paramInt);
+    if (paramInt != -1)
+    {
+      MusicFragmentProviderView.a(this.a).set(-1);
+      this.a.j();
+    }
+    for (;;)
+    {
+      if (MusicFragmentProviderView.a(this.a) != null) {
+        MusicFragmentProviderView.a(this.a).d();
+      }
+      return;
+      this.a.i();
+    }
+  }
+  
+  public void b(MusicItemInfo paramMusicItemInfo) {}
+  
+  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    if (paramInt != -1)
+    {
+      this.a.j();
+      return;
+    }
+    this.a.i();
+  }
+  
+  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    this.a.i();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+ * Qualified Name:     dov.com.qq.im.capture.view.MusicFragmentProviderView.2
+ * JD-Core Version:    0.7.0.1
+ */

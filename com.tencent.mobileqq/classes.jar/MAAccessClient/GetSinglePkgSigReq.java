@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class GetSinglePkgSigReq
   extends JceStruct
 {
-  public int marketVer;
+  public int marketVer = 0;
   public String pkgName = "";
-  public int sysVer;
-  public int versionCode;
+  public int sysVer = 0;
+  public int versionCode = 0;
   
   public GetSinglePkgSigReq() {}
   

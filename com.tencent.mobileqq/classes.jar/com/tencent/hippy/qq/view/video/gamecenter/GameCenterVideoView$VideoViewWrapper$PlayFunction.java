@@ -10,12 +10,15 @@ class GameCenterVideoView$VideoViewWrapper$PlayFunction
   
   public void execute(HippyArray paramHippyArray, Promise paramPromise)
   {
-    GameCenterVideoView.access$1800(this.this$1.this$0, new GameCenterVideoView.VideoViewWrapper.PlayFunction.1(this));
+    if (GameCenterVideoView.VideoViewWrapper.access$1800(this.this$1)) {
+      return;
+    }
+    GameCenterVideoView.access$1900(this.this$1.this$0, new GameCenterVideoView.VideoViewWrapper.PlayFunction.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView.VideoViewWrapper.PlayFunction
  * JD-Core Version:    0.7.0.1
  */

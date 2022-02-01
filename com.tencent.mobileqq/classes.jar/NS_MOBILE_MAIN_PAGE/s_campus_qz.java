@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class s_campus_qz
   extends JceStruct
 {
-  public int is_campus_qz_bar;
-  public int num_feeds;
-  public int num_msg;
+  public int is_campus_qz_bar = 0;
+  public int num_feeds = 0;
+  public int num_msg = 0;
   
   public s_campus_qz() {}
   

@@ -1,20 +1,17 @@
 package com.tencent.mobileqq.mini.widget;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 class MiniLoadingAdLayout$2
-  implements View.OnClickListener
+  implements Runnable
 {
-  MiniLoadingAdLayout$2(MiniLoadingAdLayout paramMiniLoadingAdLayout, MiniLoadingAdLayout.OnDismissListener paramOnDismissListener) {}
+  MiniLoadingAdLayout$2(MiniLoadingAdLayout paramMiniLoadingAdLayout) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    MiniLoadingAdLayout.report(MiniLoadingAdLayout.access$400(this.this$0, MiniLoadingAdLayout.access$200(this.this$0), MiniLoadingAdLayout.access$000(this.this$0).getUrlForClick(), 9));
-    this.this$0.dismiss(true, this.val$onDismissListener);
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f = ViewUtils.b(70.0F);
+    ObjectAnimator.ofFloat(MiniLoadingAdLayout.access$300(this.this$0), "translationY", new float[] { 0.0F, -f }).setDuration(500L).start();
   }
 }
 

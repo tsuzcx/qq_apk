@@ -11,7 +11,7 @@ class ConfessMsgListFragment$2
   
   public void run()
   {
-    this.this$0.a.getMessageFacade().setBoxReaded(AppConstants.CONFESS_UIN, 1032);
+    this.this$0.a.getMessageFacade().d(AppConstants.CONFESS_UIN, 1032);
   }
 }
 

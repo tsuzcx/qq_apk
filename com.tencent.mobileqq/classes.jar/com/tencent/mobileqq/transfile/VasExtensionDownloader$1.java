@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import asfk;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
 import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
 import com.tencent.mobileqq.mqsafeedit.MD5;
 import com.tencent.qphone.base.util.QLog;
@@ -25,8 +25,8 @@ class VasExtensionDownloader$1
     do
     {
       return;
-      localObject = (asfk)((AppInterface)localObject).getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
-      localCustomEmotionData = (CustomEmotionData)((asfk)localObject).a(this.val$info.url);
+      localObject = (FavroamingDBManager)((AppInterface)localObject).getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
+      localCustomEmotionData = (CustomEmotionData)((FavroamingDBManager)localObject).a(this.val$info.url);
     } while ((localCustomEmotionData == null) || (!new File(this.val$info.path).exists()));
     if ("needDownload".equals(localCustomEmotionData.RomaingType)) {
       localCustomEmotionData.RomaingType = "isUpdate";
@@ -46,7 +46,7 @@ class VasExtensionDownloader$1
       if ("needDel".equals(localCustomEmotionData.RomaingType)) {
         break;
       }
-      ((asfk)localObject).b(localCustomEmotionData);
+      ((FavroamingDBManager)localObject).b(localCustomEmotionData);
       return;
       if ("overflow".equals(localCustomEmotionData.RomaingType)) {
         localCustomEmotionData.RomaingType = "overflow_downloaded";

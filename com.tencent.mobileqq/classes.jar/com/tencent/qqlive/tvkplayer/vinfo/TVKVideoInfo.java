@@ -28,9 +28,12 @@ public class TVKVideoInfo
   private String[] backPlayUrl;
   private String bitrate;
   private int cgiCode = 0;
+  private String ckc;
   private String[] clipUrl;
   private int downloadType;
   private String drmToken = "";
+  private int drmType = 0;
+  private int enc = 0;
   private String errMsg;
   private String exInfo;
   private String exMsg;
@@ -44,9 +47,6 @@ public class TVKVideoInfo
   private int logWidth;
   private int logX;
   private int logY;
-  private String mCkc;
-  private int mDrmType = 0;
-  private int mEnc = 0;
   private boolean mIsLogShow;
   private boolean mVideoEncryption = false;
   private int modelCode = 0;
@@ -119,7 +119,7 @@ public class TVKVideoInfo
   
   public String getCkc()
   {
-    return this.mCkc;
+    return this.ckc;
   }
   
   public String[] getClipUrl()
@@ -144,7 +144,7 @@ public class TVKVideoInfo
   
   public int getDrm()
   {
-    return this.mDrmType;
+    return this.drmType;
   }
   
   public int getDuration()
@@ -154,7 +154,7 @@ public class TVKVideoInfo
   
   public int getEnc()
   {
-    return this.mEnc;
+    return this.enc;
   }
   
   public boolean getEncryptionVideo()
@@ -449,7 +449,7 @@ public class TVKVideoInfo
   
   public void setCkc(String paramString)
   {
-    this.mCkc = paramString;
+    this.ckc = paramString;
   }
   
   public void setClipUrl(String[] paramArrayOfString)
@@ -479,7 +479,7 @@ public class TVKVideoInfo
   
   public void setDrm(int paramInt)
   {
-    this.mDrmType = paramInt;
+    this.drmType = paramInt;
   }
   
   public void setDuration(int paramInt)
@@ -489,7 +489,7 @@ public class TVKVideoInfo
   
   public void setEnc(int paramInt)
   {
-    this.mEnc = paramInt;
+    this.enc = paramInt;
   }
   
   public void setEncryptionVideo(boolean paramBoolean)
@@ -734,7 +734,7 @@ public class TVKVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKVideoInfo
  * JD-Core Version:    0.7.0.1
  */

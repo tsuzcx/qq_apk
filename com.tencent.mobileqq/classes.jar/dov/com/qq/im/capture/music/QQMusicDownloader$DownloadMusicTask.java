@@ -1,12 +1,11 @@
 package dov.com.qq.im.capture.music;
 
 import android.os.SystemClock;
-import bhbx;
-import bhyo;
-import bhyq;
-import boiw;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.sveffects.SdkContext;
 import com.tencent.sveffects.SvEffectSdkInitor.QQSpecialAVFilterResource;
@@ -15,24 +14,24 @@ import java.io.File;
 class QQMusicDownloader$DownloadMusicTask
   implements Runnable
 {
-  bhyo jdField_a_of_type_Bhyo;
-  boiw jdField_a_of_type_Boiw;
+  DownloadTask jdField_a_of_type_ComTencentMobileqqVipDownloadTask;
+  MusicDownloadListener jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener;
   
-  public QQMusicDownloader$DownloadMusicTask(bhyo parambhyo, boiw paramboiw)
+  public QQMusicDownloader$DownloadMusicTask(DownloadTask paramDownloadTask, MusicDownloadListener paramMusicDownloadListener)
   {
-    this.jdField_a_of_type_Bhyo = parambhyo;
-    this.jdField_a_of_type_Boiw = paramboiw;
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = paramDownloadTask;
+    this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener = paramMusicDownloadListener;
   }
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQMusicDownloader", 2, "begin download " + this.jdField_a_of_type_Bhyo.a);
+      QLog.d("QQMusicDownloader", 2, "begin download " + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a);
     }
-    if ((bhbx.a()) && (bhbx.b() < 20971520L))
+    if ((Utils.a()) && (Utils.b() < 20971520L))
     {
-      if (this.jdField_a_of_type_Boiw != null) {
-        this.jdField_a_of_type_Boiw.onStart(this.jdField_a_of_type_Bhyo.a, false);
+      if (this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener != null) {
+        this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a, false);
       }
       QLog.e("QQMusicDownloader", 1, "download err no space");
     }
@@ -42,7 +41,7 @@ class QQMusicDownloader$DownloadMusicTask
     do
     {
       return;
-      String str = SvEffectSdkInitor.QQSpecialAVFilterResource.STORAGE_DIR;
+      String str = SvEffectSdkInitor.QQSpecialAVFilterResource.a;
       Object localObject = str;
       if (SdkContext.getInstance() != null)
       {
@@ -64,15 +63,15 @@ class QQMusicDownloader$DownloadMusicTask
         ((File)localObject).mkdirs();
       }
       l1 = SystemClock.uptimeMillis();
-      i = bhyq.a(this.jdField_a_of_type_Bhyo, null, null);
+      i = DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, null, null);
       l2 = SystemClock.uptimeMillis();
     } while (!QLog.isColorLevel());
-    QLog.i("QQMusicDownloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + this.jdField_a_of_type_Bhyo.a);
+    QLog.i("QQMusicDownloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QQMusicDownloader.DownloadMusicTask
  * JD-Core Version:    0.7.0.1
  */

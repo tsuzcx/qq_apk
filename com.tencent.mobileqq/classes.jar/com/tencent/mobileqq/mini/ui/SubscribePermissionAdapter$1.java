@@ -2,7 +2,6 @@ package com.tencent.mobileqq.mini.ui;
 
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SubscribePermissionAdapter$1
   implements CompoundButton.OnCheckedChangeListener
@@ -14,7 +13,6 @@ class SubscribePermissionAdapter$1
     if (SubscribePermissionAdapter.access$000(this.this$0) != null) {
       SubscribePermissionAdapter.access$000(this.this$0).onCheckedChange(this.val$index, paramBoolean);
     }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

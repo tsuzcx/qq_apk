@@ -18,7 +18,7 @@ public class FunnyFaceMessage
   public static final int FACE_ID_TURNTABLE = 1;
   private static int VERSION = 1;
   public FunnyFaceMessage.Bomb bomb;
-  public int faceId;
+  public int faceId = 0;
   public boolean playAnimation = true;
   public FunnyFaceMessage.Turntable turntable;
   
@@ -195,7 +195,7 @@ public class FunnyFaceMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.FunnyFaceMessage
  * JD-Core Version:    0.7.0.1
  */

@@ -100,7 +100,7 @@ public class CircleImageView
       return;
       paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.CircleImageView);
     } while (paramAttributeSet == null);
-    this.a = paramAttributeSet.getDimensionPixelSize(0, 0);
+    this.a = paramAttributeSet.getDimensionPixelSize(5, 0);
     paramAttributeSet.recycle();
   }
   
@@ -119,7 +119,7 @@ public class CircleImageView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     Object localObject = getDrawable();
     if ((localObject != null) && (getWidth() != 0) && (getHeight() != 0)) {}
@@ -150,7 +150,7 @@ public class CircleImageView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i;
     int j;

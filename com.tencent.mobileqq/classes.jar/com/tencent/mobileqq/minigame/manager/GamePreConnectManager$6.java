@@ -11,7 +11,7 @@ final class GamePreConnectManager$6
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(GameWnsUtils.downloaderPreConnectHost());
-    MiniappDownloadUtil.getInstance().preConnectHost(localArrayList);
+    MiniappDownloadUtil.getInstance().preConnectHost(localArrayList, GameWnsUtils.getPreconnectMethod());
   }
 }
 

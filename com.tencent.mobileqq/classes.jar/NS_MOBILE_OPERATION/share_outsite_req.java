@@ -11,16 +11,16 @@ public final class share_outsite_req
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumid = "";
-  public int appid;
+  public int appid = 0;
   public String batchid = "";
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String cellid = "";
-  public int iIsShareTo;
+  public int iIsShareTo = 0;
   public String lloc = "";
-  public int shareScene;
+  public int shareScene = 0;
   public String strMd5Key = "";
-  public long uHostUin;
-  public int ugc_type;
+  public long uHostUin = 0L;
+  public int ugc_type = 0;
   
   static
   {

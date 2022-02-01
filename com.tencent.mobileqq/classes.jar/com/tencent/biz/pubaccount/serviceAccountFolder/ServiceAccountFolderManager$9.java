@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import uot;
 
-public class ServiceAccountFolderManager$9
+class ServiceAccountFolderManager$9
   implements Runnable
 {
-  public ServiceAccountFolderManager$9(uot paramuot, QQAppInterface paramQQAppInterface, String paramString) {}
+  ServiceAccountFolderManager$9(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class ServiceAccountFolderManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.9
  * JD-Core Version:    0.7.0.1
  */

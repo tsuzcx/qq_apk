@@ -12,12 +12,12 @@ public final class ListAllCategoryRspItem
 {
   static Map<String, CategoryPhoto> cache_categoryid_photos;
   static ArrayList<SummaryInfo> cache_categoryid_summaryinfos = new ArrayList();
-  public Map<String, CategoryPhoto> categoryid_photos;
-  public ArrayList<SummaryInfo> categoryid_summaryinfos;
-  public boolean has_more;
+  public Map<String, CategoryPhoto> categoryid_photos = null;
+  public ArrayList<SummaryInfo> categoryid_summaryinfos = null;
+  public boolean has_more = false;
   public String page_str = "";
-  public int ret;
-  public long total;
+  public int ret = 0;
+  public long total = 0L;
   
   static
   {

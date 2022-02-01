@@ -2,11 +2,11 @@ package com.tencent.av.ui;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import bheg;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -43,7 +43,7 @@ class VideoLayerUIBase$MyRunnable
     {
       try
       {
-        boolean bool = FileUtil.writeBitmapToFile(localBitmap, localFile.getAbsolutePath());
+        boolean bool = FileUtil.a(localBitmap, localFile.getAbsolutePath());
         QLog.w(this.jdField_a_of_type_JavaLangString, 1, "tryScreenShot, screenShotFlag[" + this.jdField_a_of_type_Long + "], Exception", localException1);
       }
       catch (Exception localException1)
@@ -52,7 +52,7 @@ class VideoLayerUIBase$MyRunnable
         {
           QLog.w(this.jdField_a_of_type_JavaLangString, 1, "tryScreenShot, writeBitmapToFile, ret[" + bool + "]");
           if (bool) {
-            bheg.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+            ImageUtil.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
           }
           localObject = (VideoLayerUIBase)this.jdField_a_of_type_JavaLangRefWeakReference.get();
           if (localObject != null)
@@ -78,7 +78,7 @@ class VideoLayerUIBase$MyRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUIBase.MyRunnable
  * JD-Core Version:    0.7.0.1
  */

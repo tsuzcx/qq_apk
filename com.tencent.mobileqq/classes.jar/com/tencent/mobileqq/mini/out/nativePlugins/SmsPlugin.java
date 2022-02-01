@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -23,7 +23,7 @@ public class SmsPlugin
   
   public void onDestroy() {}
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     QLog.d("SmsPlugin", 1, "start onInvoke");
     paramJSContext = paramJSContext.getActivity();

@@ -1,10 +1,8 @@
 package com.tencent.open.agent;
 
-import auuv;
-import bdla;
-import bjcg;
-import bjff;
-import bjqa;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.open.virtual.OpenSdkVirtualManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,18 +28,18 @@ class OpenSelectPermissionFragment$3
     }
     ArrayList localArrayList = new ArrayList();
     localObject1 = ((List)localObject1).iterator();
-    bjcg localbjcg1;
+    CardContainer.Permission localPermission1;
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
-      localbjcg1 = (bjcg)((Iterator)localObject1).next();
-      localObject2 = new bjcg();
-      ((bjcg)localObject2).jdField_a_of_type_Int = localbjcg1.jdField_a_of_type_Int;
-      ((bjcg)localObject2).jdField_b_of_type_JavaLangString = localbjcg1.jdField_b_of_type_JavaLangString;
-      ((bjcg)localObject2).jdField_b_of_type_Int = localbjcg1.jdField_b_of_type_Int;
-      ((bjcg)localObject2).jdField_a_of_type_Boolean = localbjcg1.jdField_a_of_type_Boolean;
-      ((bjcg)localObject2).jdField_a_of_type_JavaLangString = localbjcg1.jdField_a_of_type_JavaLangString;
-      ((bjcg)localObject2).jdField_b_of_type_Boolean = true;
+      localPermission1 = (CardContainer.Permission)((Iterator)localObject1).next();
+      localObject2 = new CardContainer.Permission();
+      ((CardContainer.Permission)localObject2).jdField_a_of_type_Int = localPermission1.jdField_a_of_type_Int;
+      ((CardContainer.Permission)localObject2).jdField_b_of_type_JavaLangString = localPermission1.jdField_b_of_type_JavaLangString;
+      ((CardContainer.Permission)localObject2).jdField_b_of_type_Int = localPermission1.jdField_b_of_type_Int;
+      ((CardContainer.Permission)localObject2).jdField_a_of_type_Boolean = localPermission1.jdField_a_of_type_Boolean;
+      ((CardContainer.Permission)localObject2).jdField_a_of_type_JavaLangString = localPermission1.jdField_a_of_type_JavaLangString;
+      ((CardContainer.Permission)localObject2).jdField_b_of_type_Boolean = true;
       localArrayList.add(localObject2);
     }
     localObject1 = OpenSelectPermissionFragment.a(this.this$0).a();
@@ -50,13 +48,13 @@ class OpenSelectPermissionFragment$3
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localbjcg1 = (bjcg)((Iterator)localObject1).next();
+        localPermission1 = (CardContainer.Permission)((Iterator)localObject1).next();
         localObject2 = localArrayList.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          bjcg localbjcg2 = (bjcg)((Iterator)localObject2).next();
-          if (localbjcg1.jdField_b_of_type_Int == localbjcg2.jdField_b_of_type_Int) {
-            localbjcg2.jdField_b_of_type_Boolean = localbjcg1.jdField_b_of_type_Boolean;
+          CardContainer.Permission localPermission2 = (CardContainer.Permission)((Iterator)localObject2).next();
+          if (localPermission1.jdField_b_of_type_Int == localPermission2.jdField_b_of_type_Int) {
+            localPermission2.jdField_b_of_type_Boolean = localPermission1.jdField_b_of_type_Boolean;
           }
         }
       }
@@ -65,7 +63,7 @@ class OpenSelectPermissionFragment$3
     if (OpenSelectPermissionFragment.a(this.this$0))
     {
       i = 2;
-      auuv.a("KEY_AUTHORIZE_REQUEST");
+      ForwardStatisticsReporter.a("KEY_AUTHORIZE_REQUEST");
       if (0L != OpenSelectPermissionFragment.a(this.this$0)) {
         break label392;
       }
@@ -80,7 +78,7 @@ class OpenSelectPermissionFragment$3
     label406:
     for (localObject1 = "0X800A117";; localObject1 = "0X800A116")
     {
-      bdla.b(null, "dc00898", "", "", (String)localObject1, (String)localObject1, i, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", (String)localObject1, (String)localObject1, i, 0, "", "", "", "");
       return;
       i = 1;
       break;
@@ -91,7 +89,7 @@ class OpenSelectPermissionFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.OpenSelectPermissionFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,12 @@ package com.tencent.mobileqq.widget;
 
 import android.os.Handler;
 import android.os.Message;
-import bilu;
 import java.util.TimerTask;
 
-public class AntiphingToast$3
+class AntiphingToast$3
   extends TimerTask
 {
-  public AntiphingToast$3(bilu parambilu) {}
+  AntiphingToast$3(AntiphingToast paramAntiphingToast) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class AntiphingToast$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AntiphingToast.3
  * JD-Core Version:    0.7.0.1
  */

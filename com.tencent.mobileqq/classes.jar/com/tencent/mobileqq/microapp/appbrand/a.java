@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.microapp.appbrand;
 
 import Wallet.ApkgConfig;
-import albn;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Base64;
-import bhhn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
@@ -21,6 +20,7 @@ import com.tencent.mobileqq.microapp.sdk.LaunchParam;
 import com.tencent.mobileqq.microapp.sdk.MiniAppException;
 import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
+import com.tencent.mobileqq.utils.ShareMsgHelper;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
@@ -244,7 +244,7 @@ public final class a
       }
     }
     paramString2 = ((JSONObject)localObject2).toString();
-    bhhn.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
+    ShareMsgHelper.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -347,7 +347,7 @@ public final class a
   
   public void f()
   {
-    albn.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
+    ComIPCUtils.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
   }
   
   public void onServiceEvent(String paramString1, String paramString2, int[] paramArrayOfInt)
@@ -406,7 +406,7 @@ public final class a
         if ((!com.tencent.mobileqq.microapp.a.c.a(this.c)) || (!paramString1.startsWith("page/QQ/forward.html"))) {
           break label407;
         }
-        boolean bool = StringUtil.isEmpty(paramString2);
+        boolean bool = StringUtil.a(paramString2);
         if (bool) {
           break label407;
         }

@@ -22,6 +22,7 @@ public final class AvGameNotify$NotifyPKUserFail
   public AvGameNotify.PKDrawRes draw_res = new AvGameNotify.PKDrawRes();
   public final PBBoolField has_consolation_award = PBField.initBool(false);
   public final PBUInt32Field rank = PBField.initUInt32(0);
+  public final PBUInt32Field score = PBField.initUInt32(0);
   public final PBUInt32Field total = PBField.initUInt32(0);
   
   static
@@ -30,7 +31,7 @@ public final class AvGameNotify$NotifyPKUserFail
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 64, 74, 82, 88 }, new String[] { "rank", "total", "has_consolation_award", "award_str", "award_url", "award_delay", "award_url_str", "delay_award", "delay_award_tip", "draw_res", "both_lose" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), localByteStringMicro3, Boolean.valueOf(false), localByteStringMicro4, null, Boolean.valueOf(false) }, NotifyPKUserFail.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 64, 74, 82, 88, 96 }, new String[] { "rank", "total", "has_consolation_award", "award_str", "award_url", "award_delay", "award_url_str", "delay_award", "delay_award_tip", "draw_res", "both_lose", "score" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), localByteStringMicro3, Boolean.valueOf(false), localByteStringMicro4, null, Boolean.valueOf(false), Integer.valueOf(0) }, NotifyPKUserFail.class);
   }
 }
 

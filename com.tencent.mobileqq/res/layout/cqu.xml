@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="vertical" android:id="@id/okl" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView android:id="@id/iir" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/okk" android:visibility="gone" android:layout="@layout/cqt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/oki" android:visibility="gone" android:layout="@layout/cqq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/okj" android:visibility="gone" android:layout="@layout/cqr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/okm" android:visibility="gone" android:layout="@layout/cqv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
 </FrameLayout>

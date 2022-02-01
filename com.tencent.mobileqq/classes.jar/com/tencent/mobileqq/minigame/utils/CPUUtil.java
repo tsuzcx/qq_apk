@@ -5,8 +5,8 @@ import android.os.SystemProperties;
 
 public class CPUUtil
 {
-  public static volatile boolean sARMv7Compatible;
-  public static volatile boolean sIsX86Emulator;
+  public static volatile boolean sARMv7Compatible = false;
+  public static volatile boolean sIsX86Emulator = false;
   
   static
   {

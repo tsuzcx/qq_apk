@@ -4,19 +4,18 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bjko;
-import bjob;
+import com.tencent.open.base.LogUtility;
 
-public class MyAppDialog$1
+class MyAppDialog$1
   implements Runnable
 {
-  public MyAppDialog$1(bjob parambjob, int paramInt1, int paramInt2) {}
+  MyAppDialog$1(MyAppDialog paramMyAppDialog, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     int j = 100;
     int i = this.a;
-    bjko.c("MyAppApi", "updateView--progress--" + i + " state = " + this.b);
+    LogUtility.c("MyAppApi", "updateView--progress--" + i + " state = " + this.b);
     Object localObject = this.this$0.getContext().getResources();
     switch (this.b)
     {
@@ -44,16 +43,16 @@ public class MyAppDialog$1
       this.this$0.a.setProgress(j);
       this.this$0.e.setText((CharSequence)localObject);
       return;
-      localObject = ((Resources)localObject).getString(2131691572, new Object[] { Integer.valueOf(i) });
+      localObject = ((Resources)localObject).getString(2131691688, new Object[] { Integer.valueOf(i) });
       break;
-      localObject = ((Resources)localObject).getString(2131691598);
+      localObject = ((Resources)localObject).getString(2131691714);
       break;
-      localObject = ((Resources)localObject).getString(2131691582, new Object[] { Integer.valueOf(i) });
+      localObject = ((Resources)localObject).getString(2131691698, new Object[] { Integer.valueOf(i) });
       break;
-      localObject = ((Resources)localObject).getString(2131691567);
+      localObject = ((Resources)localObject).getString(2131691683);
       i = 100;
       break;
-      localObject = ((Resources)localObject).getString(2131691582);
+      localObject = ((Resources)localObject).getString(2131691698);
       break;
       if (i > 100) {
         break label124;
@@ -67,7 +66,7 @@ public class MyAppDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppDialog.1
  * JD-Core Version:    0.7.0.1
  */

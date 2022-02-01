@@ -13,8 +13,8 @@ public final class ReqFavorite
   public int cOpType = 0;
   public int emSource = 65535;
   public int iCount = 1;
-  public long lMID;
-  public ReqHead stHeader;
+  public long lMID = 0L;
+  public ReqHead stHeader = null;
   
   public ReqFavorite() {}
   

@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apok;
 
 public class ArLBSActivity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArLBSActivity> CREATOR = new apok();
+  public static final Parcelable.Creator<ArLBSActivity> CREATOR = new ArLBSActivity.1();
   public String a = "";
   public String b = "";
   public String c = "";
@@ -20,7 +19,7 @@ public class ArLBSActivity
   
   public ArLBSActivity() {}
   
-  public ArLBSActivity(Parcel paramParcel)
+  protected ArLBSActivity(Parcel paramParcel)
   {
     this.a = paramParcel.readString();
     this.b = paramParcel.readString();

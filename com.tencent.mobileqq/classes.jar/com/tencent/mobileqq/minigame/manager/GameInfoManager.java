@@ -11,7 +11,6 @@ import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.minigame.utils.PathUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.minigame.MiniAppInfoReportManager;
 import cooperation.qzone.util.QZLog;
 import org.json.JSONObject;
 
@@ -268,15 +267,6 @@ public class GameInfoManager
   public void setMiniGamePkg(MiniGamePkg paramMiniGamePkg)
   {
     this.miniGamePkg = paramMiniGamePkg;
-    try
-    {
-      MiniAppInfoReportManager.setMiniAppInfo(getMiniAppSimpleInfo());
-      return;
-    }
-    catch (Throwable paramMiniGamePkg)
-    {
-      QZLog.e(this.TAG, "MiniAppInfoReportManager.setMiniAppInfo() error", paramMiniGamePkg);
-    }
   }
   
   public void updateMiniAppConfig(MiniAppConfig paramMiniAppConfig)

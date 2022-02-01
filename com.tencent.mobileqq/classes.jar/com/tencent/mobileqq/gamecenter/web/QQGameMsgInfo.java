@@ -1,14 +1,8 @@
 package com.tencent.mobileqq.gamecenter.web;
 
 import android.text.TextUtils;
-import apau;
-import aver;
-import aves;
-import bdnu;
-import bdnv;
-import bdpx;
-import bdry;
-import bdsv;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountMessageUtil;
+import com.tencent.mobileqq.applets.PublicAccountEventReport;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForPubAccount;
@@ -16,15 +10,21 @@ import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
+import com.tencent.mobileqq.gamecenter.util.QQGameConstant;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
+import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutDefault;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import usd;
 
 public class QQGameMsgInfo
   implements Serializable
@@ -32,30 +32,33 @@ public class QQGameMsgInfo
   public static final int MSG_TYPE_ARK = 1;
   public static final int MSG_TYPE_IMGHEADER = 2;
   public static final int MSG_TYPE_TEXTHEADER = 3;
-  public String actionUrl;
-  public String advId;
-  public String arkAppConfig;
-  public String arkAppMinVersion;
-  public String arkAppName;
-  public String arkAppView;
-  public String arkMetaList;
-  public String contentText;
-  public String coverUrl;
-  public String dateTitle;
-  public String extJson;
-  public String frienduin;
-  public FullPopData fullPopData;
-  public String gameAppId;
-  public String limitText;
+  public String actionUrl = "";
+  public String advId = "";
+  public String arkAppConfig = "";
+  public String arkAppMinVersion = "";
+  public String arkAppName = "";
+  public String arkAppView = "";
+  public int arkHeight;
+  public String arkMetaList = "";
+  public int arkWidth;
+  public String contentText = "";
+  public String coverUrl = "";
+  public String dateTitle = "";
+  public String desc = "";
+  public String extJson = "";
+  public String frienduin = "";
+  public String gameAppId = "";
+  public String icon = "";
+  public String limitText = "";
   public long msgTime;
   public int msgType;
-  public String paMsgid;
-  public String sortedConfigs;
-  public String taskId;
-  public String title;
-  public String triggerInfo;
+  public String paMsgid = "";
+  public String sortedConfigs = "";
+  public String taskId = "";
+  public String title = "";
+  public String triggerInfo = "";
   public long uniseq;
-  public String url;
+  public String url = "";
   
   private static void a(MessageRecord paramMessageRecord, QQGameMsgInfo paramQQGameMsgInfo)
   {
@@ -67,12 +70,12 @@ public class QQGameMsgInfo
       paramMessageRecord = (MessageForStructing)paramMessageRecord;
     } while (!(paramMessageRecord.structingMsg instanceof StructMsgForGeneralShare));
     paramMessageRecord = (StructMsgForGeneralShare)paramMessageRecord.structingMsg;
-    bdry localbdry = (bdry)((ArrayList)paramMessageRecord.getStructMsgItemLists()).get(1);
+    StructMsgItemLayoutDefault localStructMsgItemLayoutDefault = (StructMsgItemLayoutDefault)((ArrayList)paramMessageRecord.getStructMsgItemLists()).get(1);
     paramQQGameMsgInfo.url = paramMessageRecord.mMsgUrl;
-    paramQQGameMsgInfo.title = ((bdsv)localbdry.a.get(1)).ai;
-    paramQQGameMsgInfo.dateTitle = ((bdsv)localbdry.a.get(0)).ai;
-    paramQQGameMsgInfo.contentText = ((bdsv)localbdry.a.get(2)).ai;
-    paramQQGameMsgInfo.limitText = ((bdsv)localbdry.a.get(3)).ai;
+    paramQQGameMsgInfo.title = ((StructMsgItemSummary)localStructMsgItemLayoutDefault.a.get(1)).ai;
+    paramQQGameMsgInfo.dateTitle = ((StructMsgItemSummary)localStructMsgItemLayoutDefault.a.get(0)).ai;
+    paramQQGameMsgInfo.contentText = ((StructMsgItemSummary)localStructMsgItemLayoutDefault.a.get(2)).ai;
+    paramQQGameMsgInfo.limitText = ((StructMsgItemSummary)localStructMsgItemLayoutDefault.a.get(3)).ai;
   }
   
   private static void b(MessageRecord paramMessageRecord, QQGameMsgInfo paramQQGameMsgInfo)
@@ -93,9 +96,9 @@ public class QQGameMsgInfo
         int n;
         int j;
         if (m < paramMessageRecord.size()) {
-          if ((paramMessageRecord.get(m) instanceof bdnv))
+          if ((paramMessageRecord.get(m) instanceof AbsStructMsgItem))
           {
-            localArrayList = ((bdnv)paramMessageRecord.get(m)).a;
+            localArrayList = ((AbsStructMsgItem)paramMessageRecord.get(m)).a;
             n = 0;
             j = 0;
           }
@@ -119,7 +122,7 @@ public class QQGameMsgInfo
               break label222;
             }
             i1 = j;
-            paramQQGameMsgInfo.url = ((bdnu)paramMessageRecord.get(m)).b;
+            paramQQGameMsgInfo.url = ((AbsStructMsgElement)paramMessageRecord.get(m)).b;
             if ((k != 0) && (i1 != 0)) {
               break;
             }
@@ -127,9 +130,9 @@ public class QQGameMsgInfo
             break label40;
             break;
             k = i;
-            if ((localArrayList.get(n) instanceof bdpx))
+            if ((localArrayList.get(n) instanceof StructMsgItemCover))
             {
-              paramQQGameMsgInfo.coverUrl = ((bdpx)localArrayList.get(n)).ac;
+              paramQQGameMsgInfo.coverUrl = ((StructMsgItemCover)localArrayList.get(n)).ac;
               j = 1;
               k = i;
             }
@@ -139,7 +142,7 @@ public class QQGameMsgInfo
       }
     } while (!(paramMessageRecord instanceof MessageForPubAccount));
     paramMessageRecord = (MessageForPubAccount)paramMessageRecord;
-    paramMessageRecord.mPAMessage = usd.a(paramMessageRecord.msgData);
+    paramMessageRecord.mPAMessage = ((IPublicAccountMessageUtil)QRoute.api(IPublicAccountMessageUtil.class)).fromByteArray(paramMessageRecord.msgData);
     paramQQGameMsgInfo.coverUrl = ((PAMessage.Item)paramMessageRecord.mPAMessage.items.get(0)).cover;
     paramQQGameMsgInfo.title = ((PAMessage.Item)paramMessageRecord.mPAMessage.items.get(0)).title;
     paramQQGameMsgInfo.url = ((PAMessage.Item)paramMessageRecord.mPAMessage.items.get(0)).url;
@@ -148,26 +151,45 @@ public class QQGameMsgInfo
   private static void c(MessageRecord paramMessageRecord, QQGameMsgInfo paramQQGameMsgInfo)
   {
     paramQQGameMsgInfo.msgType = 1;
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      paramMessageRecord = (MessageForArkApp)paramMessageRecord;
-    }
-    try
-    {
-      paramQQGameMsgInfo.arkAppMinVersion = paramMessageRecord.ark_app_message.appMinVersion;
-      paramQQGameMsgInfo.arkAppName = paramMessageRecord.ark_app_message.appName;
-      paramQQGameMsgInfo.arkAppView = paramMessageRecord.ark_app_message.appView;
-      paramQQGameMsgInfo.arkMetaList = paramMessageRecord.ark_app_message.metaList;
-      return;
-    }
-    catch (Throwable paramMessageRecord)
-    {
-      QLog.e("QQGameMsgInfo", 1, "MessageForArkApp error =" + paramMessageRecord.toString());
+    if ((paramMessageRecord instanceof MessageForArkApp)) {}
+    label191:
+    for (paramMessageRecord = (MessageForArkApp)paramMessageRecord;; paramMessageRecord = "") {
+      try
+      {
+        paramQQGameMsgInfo.arkAppMinVersion = paramMessageRecord.ark_app_message.appMinVersion;
+        paramQQGameMsgInfo.arkAppName = paramMessageRecord.ark_app_message.appName;
+        paramQQGameMsgInfo.arkAppView = paramMessageRecord.ark_app_message.appView;
+        paramQQGameMsgInfo.arkMetaList = paramMessageRecord.ark_app_message.metaList;
+        JSONObject localJSONObject = new JSONObject(paramMessageRecord.ark_app_message.metaList);
+        Object localObject = localJSONObject.keys();
+        int i = 0;
+        for (paramMessageRecord = ""; ((Iterator)localObject).hasNext(); paramMessageRecord = (String)((Iterator)localObject).next())
+        {
+          i += 1;
+          if (i != 1) {
+            break label191;
+          }
+        }
+        if (!TextUtils.isEmpty(paramMessageRecord))
+        {
+          localObject = localJSONObject.optJSONObject(paramMessageRecord);
+          ((JSONObject)localObject).put("nativeScene", "gamePubAccount");
+          localJSONObject.put(paramMessageRecord, localObject);
+          paramQQGameMsgInfo.arkMetaList = localJSONObject.toString();
+        }
+        return;
+      }
+      catch (Throwable paramMessageRecord)
+      {
+        QLog.e("QQGameMsgInfo", 1, "MessageForArkApp error =" + paramMessageRecord.toString());
+        return;
+      }
     }
   }
   
   public static QQGameMsgInfo parseMessageRecord(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null)
+    if (!validMsgType(paramMessageRecord))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQGameMsgInfo", 1, "parseMessageRecord-->record is null");
@@ -179,7 +201,6 @@ public class QQGameMsgInfo
     localQQGameMsgInfo.frienduin = paramMessageRecord.frienduin;
     localQQGameMsgInfo.msgTime = paramMessageRecord.time;
     parseQGameInfo(paramMessageRecord, localQQGameMsgInfo);
-    localQQGameMsgInfo.fullPopData = aves.a(paramMessageRecord);
     if ((paramMessageRecord instanceof MessageForArkApp))
     {
       c(paramMessageRecord, localQQGameMsgInfo);
@@ -194,7 +215,7 @@ public class QQGameMsgInfo
       {
         localArrayList1 = (ArrayList)((StructMsgForGeneralShare)((MessageForStructing)paramMessageRecord).structingMsg).getStructMsgItemLists();
         if (localArrayList1 != null) {
-          break label306;
+          break label302;
         }
         return null;
       }
@@ -206,10 +227,10 @@ public class QQGameMsgInfo
       }
       if (n < localArrayList1.size())
       {
-        if (!(localArrayList1.get(n) instanceof bdnv)) {
-          break label327;
+        if (!(localArrayList1.get(n) instanceof AbsStructMsgItem)) {
+          break label323;
         }
-        localArrayList2 = ((bdnv)localArrayList1.get(n)).a;
+        localArrayList2 = ((AbsStructMsgItem)localArrayList1.get(n)).a;
         k = i;
         i = j;
         i1 = 0;
@@ -217,7 +238,7 @@ public class QQGameMsgInfo
         k = j;
         m = i;
         if (i1 >= localArrayList2.size()) {
-          break label332;
+          break label328;
         }
         if ((localArrayList2.get(i1) instanceof StructMsgItemTitle))
         {
@@ -231,7 +252,7 @@ public class QQGameMsgInfo
         else
         {
           k = i;
-          if (!(localArrayList2.get(i1) instanceof bdpx)) {
+          if (!(localArrayList2.get(i1) instanceof StructMsgItemCover)) {
             continue;
           }
           j = 1;
@@ -253,7 +274,7 @@ public class QQGameMsgInfo
           return localQQGameMsgInfo;
         }
         return null;
-        label306:
+        label302:
         n = 0;
         i = 0;
         j = 0;
@@ -262,10 +283,10 @@ public class QQGameMsgInfo
       i1 += 1;
       int i = k;
       continue;
-      label327:
+      label323:
       int m = j;
       int k = i;
-      label332:
+      label328:
       n += 1;
       int j = m;
       i = k;
@@ -276,20 +297,26 @@ public class QQGameMsgInfo
   {
     Object localObject2 = paramMessageRecord.extStr;
     Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = paramMessageRecord.mExJsonObject.toString();
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localObject1 = localObject2;
+      if (paramMessageRecord.mExJsonObject != null) {
+        localObject1 = paramMessageRecord.mExJsonObject.toString();
+      }
     }
-    paramQQGameMsgInfo.paMsgid = aver.a(paramMessageRecord);
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    do
+    paramQQGameMsgInfo.paMsgid = QQGameConstant.a(paramMessageRecord);
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       try
       {
+        if (QLog.isColorLevel()) {
+          QLog.i("QQGameMsgInfo", 2, "parseQGameInfo -> extStr：" + (String)localObject1);
+        }
         localObject1 = new JSONObject((String)localObject1).optString("report_key_bytes_oac_msg_extend", "");
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
           paramQQGameMsgInfo.triggerInfo = ((String)localObject1);
-          localObject2 = apau.a((String)localObject1);
+          localObject2 = PublicAccountEventReport.a((String)localObject1);
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
             paramQQGameMsgInfo.advId = ((String)localObject2);
           }
@@ -305,37 +332,62 @@ public class QQGameMsgInfo
               paramQQGameMsgInfo.taskId = ((JSONArray)localObject2).optJSONObject(1).optString("task_id", "");
             }
             paramQQGameMsgInfo.extJson = ((JSONObject)localObject1).optString("ext_json", "");
-            return;
+            try
+            {
+              if (!TextUtils.isEmpty(paramQQGameMsgInfo.extJson))
+              {
+                localObject1 = new JSONObject(paramQQGameMsgInfo.extJson);
+                paramQQGameMsgInfo.desc = ((JSONObject)localObject1).optString("desc");
+                paramQQGameMsgInfo.icon = ((JSONObject)localObject1).optString("icon");
+                paramQQGameMsgInfo.arkWidth = ((JSONObject)localObject1).optInt("w");
+                paramQQGameMsgInfo.arkHeight = ((JSONObject)localObject1).optInt("h");
+              }
+              if (!TextUtils.isEmpty(paramQQGameMsgInfo.gameAppId)) {
+                return;
+              }
+            }
+            catch (Throwable localThrowable1)
+            {
+              for (;;)
+              {
+                QLog.e("QQGameMsgInfo", 1, localThrowable1, new Object[0]);
+              }
+            }
           }
         }
+        if (!(paramMessageRecord instanceof MessageForArkApp)) {
+          break label504;
+        }
       }
-      catch (Throwable localThrowable)
+      catch (Throwable localThrowable2)
       {
-        localThrowable.printStackTrace();
+        localThrowable2.printStackTrace();
         if (QLog.isColorLevel()) {
-          QLog.d("QQGameMsgInfo", 1, "get getGameMsgInfoByMsg  msg err= " + localThrowable.getMessage());
+          QLog.d("QQGameMsgInfo", 1, "get getGameMsgInfoByMsg  msg err= " + localThrowable2.getMessage());
         }
       }
-      if ((paramMessageRecord instanceof MessageForArkApp))
+    }
+    else
+    {
+      paramMessageRecord = (MessageForArkApp)paramMessageRecord;
+      try
       {
-        paramMessageRecord = (MessageForArkApp)paramMessageRecord;
-        try
-        {
-          paramQQGameMsgInfo.gameAppId = paramMessageRecord.ark_app_message.mSourceName;
-          paramQQGameMsgInfo.arkAppMinVersion = paramMessageRecord.ark_app_message.appMinVersion;
-          paramQQGameMsgInfo.arkAppName = paramMessageRecord.ark_app_message.appName;
-          paramQQGameMsgInfo.arkAppView = paramMessageRecord.ark_app_message.appView;
-          paramQQGameMsgInfo.arkMetaList = paramMessageRecord.ark_app_message.metaList;
-          paramQQGameMsgInfo.arkAppConfig = paramMessageRecord.ark_app_message.config;
-          return;
-        }
-        catch (Throwable paramMessageRecord)
-        {
-          QLog.e("QQGameMsgInfo", 1, "MessageForArkApp error =" + paramMessageRecord.toString());
-          return;
-        }
+        paramQQGameMsgInfo.gameAppId = paramMessageRecord.ark_app_message.mSourceName;
+        paramQQGameMsgInfo.arkAppMinVersion = paramMessageRecord.ark_app_message.appMinVersion;
+        paramQQGameMsgInfo.arkAppName = paramMessageRecord.ark_app_message.appName;
+        paramQQGameMsgInfo.arkAppView = paramMessageRecord.ark_app_message.appView;
+        paramQQGameMsgInfo.arkMetaList = paramMessageRecord.ark_app_message.metaList;
+        paramQQGameMsgInfo.arkAppConfig = paramMessageRecord.ark_app_message.config;
+        return;
       }
-    } while (!(paramMessageRecord instanceof MessageForStructing));
+      catch (Throwable paramMessageRecord)
+      {
+        QLog.e("QQGameMsgInfo", 1, "MessageForArkApp error =" + paramMessageRecord.toString());
+        return;
+      }
+    }
+    label504:
+    if ((paramMessageRecord instanceof MessageForStructing)) {}
     for (;;)
     {
       ArrayList localArrayList;
@@ -349,31 +401,31 @@ public class QQGameMsgInfo
         paramMessageRecord = (StructMsgForGeneralShare)((MessageForStructing)paramMessageRecord).structingMsg;
         localArrayList = (ArrayList)paramMessageRecord.getStructMsgItemLists();
         if (localArrayList == null) {
-          break;
+          break label724;
         }
         n = 0;
         j = 0;
         i = 0;
         if (n >= localArrayList.size()) {
-          break label566;
+          break label704;
         }
-        if (!(localArrayList.get(n) instanceof bdnv)) {
-          break label599;
+        if (!(localArrayList.get(n) instanceof AbsStructMsgItem)) {
+          break label737;
         }
-        localObject2 = ((bdnv)localArrayList.get(n)).a;
+        localObject2 = ((AbsStructMsgItem)localArrayList.get(n)).a;
         i1 = 0;
         k = j;
         m = i;
         if (i1 >= ((ArrayList)localObject2).size()) {
-          break label605;
+          break label743;
         }
         if ((((ArrayList)localObject2).get(i1) instanceof StructMsgItemTitle))
         {
           k = 1;
           if ((k == 0) || (j == 0)) {
-            break label587;
+            break label725;
           }
-          paramQQGameMsgInfo.gameAppId = aver.a(((bdnu)localArrayList.get(n)).b);
+          paramQQGameMsgInfo.gameAppId = QQGameConstant.a(((AbsStructMsgElement)localArrayList.get(n)).b);
           return;
         }
       }
@@ -383,35 +435,40 @@ public class QQGameMsgInfo
         return;
       }
       int k = i;
-      if ((((ArrayList)localObject2).get(i1) instanceof bdpx))
+      if ((((ArrayList)localObject2).get(i1) instanceof StructMsgItemCover))
       {
         j = 1;
         k = i;
         continue;
-        label566:
-        if (localArrayList.size() != 2) {
-          break;
+        label704:
+        if (localArrayList.size() == 2) {
+          paramQQGameMsgInfo.gameAppId = QQGameConstant.a(paramMessageRecord.mMsgUrl);
         }
-        paramQQGameMsgInfo.gameAppId = aver.a(paramMessageRecord.mMsgUrl);
+        label724:
         return;
-        label587:
+        label725:
         i1 += 1;
         i = k;
         continue;
-        label599:
+        label737:
         m = i;
         k = j;
-        label605:
+        label743:
         n += 1;
         i = m;
         j = k;
       }
     }
   }
+  
+  public static boolean validMsgType(MessageRecord paramMessageRecord)
+  {
+    return ((paramMessageRecord instanceof MessageForArkApp)) || ((paramMessageRecord instanceof MessageForPubAccount)) || ((paramMessageRecord instanceof MessageForStructing));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo
  * JD-Core Version:    0.7.0.1
  */

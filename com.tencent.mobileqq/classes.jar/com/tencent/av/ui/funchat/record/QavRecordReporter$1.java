@@ -6,10 +6,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Locale;
 
-public final class QavRecordReporter$1
+final class QavRecordReporter$1
   implements Runnable
 {
-  public QavRecordReporter$1(int paramInt1, int paramInt2, long paramLong1, long paramLong2, int paramInt3, long paramLong3, long paramLong4, int paramInt4, int paramInt5) {}
+  QavRecordReporter$1(int paramInt1, int paramInt2, long paramLong1, long paramLong2, int paramInt3, long paramLong3, long paramLong4, int paramInt4, int paramInt5) {}
   
   public void run()
   {
@@ -42,7 +42,7 @@ public final class QavRecordReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavRecordReporter.1
  * JD-Core Version:    0.7.0.1
  */

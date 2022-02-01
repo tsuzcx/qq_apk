@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.nearby;
 
-import avux;
-import axpp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager;
 
-public class NearbyProxy$3
+class NearbyProxy$3
   implements Runnable
 {
-  public NearbyProxy$3(axpp paramaxpp) {}
+  NearbyProxy$3(NearbyProxy paramNearbyProxy) {}
   
   public void run()
   {
-    ((avux)this.this$0.a.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).a();
+    ((DynamicNowManager)this.this$0.a.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).a();
   }
 }
 

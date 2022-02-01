@@ -3,13 +3,12 @@ package com.tencent.mobileqq.troop.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bffh;
 import java.util.ArrayList;
 
 public class InviteToGroupInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<InviteToGroupInfo> CREATOR = new bffh();
+  public static final Parcelable.Creator<InviteToGroupInfo> CREATOR = new InviteToGroupInfo.1();
   public int a;
   public String a;
   public ArrayList<InviteToGroupInfo.UinInfo> a;
@@ -21,7 +20,7 @@ public class InviteToGroupInfo
     this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public InviteToGroupInfo(Parcel paramParcel)
+  protected InviteToGroupInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();

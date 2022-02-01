@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.statistics;
 public class VarianceStatistics
   implements Statistic
 {
-  private int mIndex;
+  private int mIndex = 0;
   private final float[] mSamples;
   
   public VarianceStatistics(int paramInt)

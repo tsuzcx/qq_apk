@@ -33,7 +33,6 @@ import com.tencent.ttpic.openapi.model.FaceStyleItem.StyleChangeType;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.offlineset.utils.FileOfflineUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FrameUtil;
 import com.tencent.ttpic.util.GsonUtils;
@@ -318,7 +317,7 @@ public class StyleChildFilter
     if (paramList == null) {
       return null;
     }
-    List localList = VideoMaterialUtil.copyList(paramList);
+    List localList = VideoMaterial.copyList(paramList);
     int i = 0;
     while (i < paramList.size())
     {
@@ -663,7 +662,7 @@ public class StyleChildFilter
         label442:
         localFrame1 = paramFrame;
         if (paramFrame == this.frameTmp2) {
-          break label774;
+          break label787;
         }
         this.frameTmp2.unlock();
       }
@@ -698,13 +697,14 @@ public class StyleChildFilter
       }
       else if (this.faceStyleItem.returnPostProcessTexture)
       {
-        this.styleChildPostRender.render(this.cropFrame, localFrame1, false, true);
+        FrameUtil.clearFrame(localFrame1, 0.0F, 0.0F, 0.0F, 0.0F, localFrame1.width, localFrame1.height);
+        this.styleChildPostRender.render(paramFrame, localFrame1, false, true);
         paramFrame = localFrame1;
       }
       else
       {
         this.styleChildPostRender.render(paramFrame, localFrame1, false, false);
-        label774:
+        label787:
         paramFrame = localFrame1;
       }
     }
@@ -796,9 +796,9 @@ public class StyleChildFilter
     int i = ((Frame)localObject1).getTextureId();
     int j = ((Frame)localObject1).width;
     int k = ((Frame)localObject1).height;
-    Object localObject2 = VideoMaterialUtil.copyList(paramFrame);
-    List localList = VideoMaterialUtil.copyList(paramFrame);
-    paramFrame = VideoMaterialUtil.copyList(paramFrame);
+    Object localObject2 = VideoMaterial.copyList(paramFrame);
+    List localList = VideoMaterial.copyList(paramFrame);
+    paramFrame = VideoMaterial.copyList(paramFrame);
     scale(paramFrame, 1.0D / paramDouble);
     scale((List)localObject2, 1.0D / paramDouble);
     FaceOffUtil.getFullCoords(paramFrame, 2.5F);
@@ -963,7 +963,7 @@ public class StyleChildFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.StyleChildFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -2,27 +2,24 @@ package com.tencent.open.wadl;
 
 import android.app.Activity;
 import android.content.Context;
-import anvx;
-import bhdj;
-import bjlq;
-import bjqp;
-import bjqv;
-import bjqw;
-import bjqx;
+import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
+import com.tencent.gamecenter.wadl.util.WLog;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.business.base.IJsCallBack;
 import com.tencent.smtt.sdk.WebView;
-import cooperation.wadl.ipc.WadlParams;
 
-public class WadlJsBridgeCallBack$2
+class WadlJsBridgeCallBack$2
   implements Runnable
 {
-  public WadlJsBridgeCallBack$2(bjqv parambjqv, WadlParams paramWadlParams) {}
+  WadlJsBridgeCallBack$2(WadlJsBridgeCallBack paramWadlJsBridgeCallBack, WadlParams paramWadlParams) {}
   
   public void run()
   {
     Object localObject = null;
-    if (bjqv.a(this.this$0) != null) {
-      localObject = bjqv.a(this.this$0).getWebview();
+    if (WadlJsBridgeCallBack.a(this.this$0) != null) {
+      localObject = WadlJsBridgeCallBack.a(this.this$0).getWebview();
     }
     if (localObject != null)
     {
@@ -35,18 +32,18 @@ public class WadlJsBridgeCallBack$2
     }
     try
     {
-      bhdj.a((Context)localObject, 230, null, "主人的手机空间不足咯，继续下载可能导致本次下载出现异常哦~\n建议主人手动清理手机空间，帮助本次下载顺利完成。", anvx.a(2131716232), anvx.a(2131716231), new bjqw(this), new bjqx(this)).show();
+      DialogUtil.a((Context)localObject, 230, null, "主人的手机空间不足咯，继续下载可能导致本次下载出现异常哦~\n建议主人手动清理手机空间，帮助本次下载顺利完成。", HardCodeUtil.a(2131716698), HardCodeUtil.a(2131716697), new WadlJsBridgeCallBack.2.1(this), new WadlJsBridgeCallBack.2.2(this)).show();
       return;
     }
     catch (Exception localException)
     {
-      bjqp.a(bjqv.a, "showDialog exception", localException);
+      WLog.a(WadlJsBridgeCallBack.a, "showDialog exception", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.wadl.WadlJsBridgeCallBack.2
  * JD-Core Version:    0.7.0.1
  */

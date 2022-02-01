@@ -8,8 +8,8 @@ public final class material_get_my_item_rsp
   extends JceStruct
 {
   static MaterialUserInfo cache_stUserItemInfo = new MaterialUserInfo();
-  public int iCode;
-  public MaterialUserInfo stUserItemInfo;
+  public int iCode = 0;
+  public MaterialUserInfo stUserItemInfo = null;
   public String strErrMsg = "";
   
   public material_get_my_item_rsp() {}

@@ -10,10 +10,10 @@ public final class cell_operation_region
 {
   static ArrayList<stRegionData> cache_vcRegion = new ArrayList();
   public String gestureLineColor = "";
-  public int gestureRadius;
-  public int gestureStartTime;
-  public int interactiveType;
-  public ArrayList<stRegionData> vcRegion;
+  public int gestureRadius = 0;
+  public int gestureStartTime = 0;
+  public int interactiveType = 0;
+  public ArrayList<stRegionData> vcRegion = null;
   
   static
   {

@@ -12,7 +12,8 @@ public abstract interface GLGestureListener
   public static final int PRIORITY_MAX_VALUE = 2147483647;
   public static final int PRIORITY_MIN_VALUE = 0;
   public static final int PRIORITY_MOVIE = 1050;
-  public static final int PRIORITY_SWITCH_FILTER = 1002;
+  public static final int PRIORITY_SWITCH_CAMERA = 1011;
+  public static final int PRIORITY_SWITCH_FILTER = 1012;
   public static final int PRIORITY_TOUCH_TRIGGER = 1010;
   public static final int PROVIDER_VIEW_DISSMISS = 1060;
   public static final String TAG = "GLGestureListener";
@@ -23,7 +24,7 @@ public abstract interface GLGestureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.GLGestureListener
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ScanEntryProviderContainerView$5
@@ -10,7 +10,7 @@ class ScanEntryProviderContainerView$5
   
   public void run()
   {
-    QQToast localQQToast = QQToast.a(this.this$0.a, anvx.a(2131712967), 1);
+    QQToast localQQToast = QQToast.a(this.this$0.a, HardCodeUtil.a(2131713463), 1);
     localQQToast.a();
     localQQToast.a();
   }

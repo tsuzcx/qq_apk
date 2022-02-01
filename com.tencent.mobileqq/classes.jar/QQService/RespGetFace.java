@@ -11,9 +11,9 @@ public final class RespGetFace
   static RespHead cache_stHeader;
   static UserCntlData cache_stUserData;
   static ArrayList<FaceInfo> cache_vFaceInfo;
-  public RespHead stHeader;
-  public UserCntlData stUserData;
-  public ArrayList<FaceInfo> vFaceInfo;
+  public RespHead stHeader = null;
+  public UserCntlData stUserData = null;
+  public ArrayList<FaceInfo> vFaceInfo = null;
   
   public RespGetFace() {}
   

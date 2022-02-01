@@ -37,14 +37,14 @@ public class HighLightMaskView
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     }
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    if (VersionUtils.isHoneycomb()) {
+    if (VersionUtils.e()) {
       setLayerType(1, null);
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawColor(-1728053248);

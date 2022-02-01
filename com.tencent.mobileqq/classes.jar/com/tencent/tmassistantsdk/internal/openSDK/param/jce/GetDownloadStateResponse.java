@@ -46,7 +46,7 @@ public final class GetDownloadStateResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.GetDownloadStateResponse
  * JD-Core Version:    0.7.0.1
  */

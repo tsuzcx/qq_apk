@@ -1,30 +1,29 @@
 package com.tencent.biz.lebasearch;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
-import bbyl;
-import bcfj;
-import bcfs;
-import bmaf;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
+import com.tencent.biz.qqstory.boundaries.StoryApi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.search.FunctionModuleConfigManager;
+import com.tencent.mobileqq.search.model.ISearchResultModel;
+import com.tencent.mobileqq.search.model.NetSearchTemplateBaseItem;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qwallet.plugin.QWalletHelper;
+import cooperation.qqfav.QfavHelper;
+import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.QzonePluginProxyActivity;
-import osg;
-import weg;
 
 public class LebaSearchTransparentJumpActivity
   extends IphoneTitleBarActivity
@@ -54,12 +53,12 @@ public class LebaSearchTransparentJumpActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bbyl localbbyl = (bbyl)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER);
-    if (localbbyl.jdField_a_of_type_Bcfj != null) {
-      localbbyl.jdField_a_of_type_Bcfj = null;
+    FunctionModuleConfigManager localFunctionModuleConfigManager = (FunctionModuleConfigManager)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER);
+    if (localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel != null) {
+      localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel = null;
     }
-    if (localbbyl.jdField_a_of_type_Bcfs != null) {
-      localbbyl.jdField_a_of_type_Bcfs = null;
+    if (localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem != null) {
+      localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem = null;
     }
   }
   
@@ -75,9 +74,9 @@ public class LebaSearchTransparentJumpActivity
     {
       finish();
       return;
-      weg.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
+      StoryApi.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
       continue;
-      QWalletHelper.launchQWalletAct(this, this.app, true, false);
+      QWalletHelperImpl.launchQWalletAct(this, this.app, true, false);
       continue;
       localObject1 = new Intent();
       ((Intent)localObject1).putExtra("newflag", true);
@@ -86,8 +85,8 @@ public class LebaSearchTransparentJumpActivity
       ((Intent)localObject1).addFlags(805306368);
       QZoneHelper.forwardFromSearchToFriendFeed(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
       continue;
-      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131690676));
-      bmaf.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
+      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131690778));
+      QfavHelper.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
       continue;
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
       try
@@ -97,7 +96,7 @@ public class LebaSearchTransparentJumpActivity
         String str = this.app.getCurrentNickname();
         localObject1 = str;
         if (TextUtils.isEmpty(str)) {
-          localObject1 = ContactUtils.getAccountNickName(this.app, String.valueOf(l));
+          localObject1 = ContactUtils.h(this.app, String.valueOf(l));
         }
         localUserInfo.nickname = ((String)localObject1);
         QZoneHelper.forwardFromSearchToPersonalAlbum(this, localUserInfo, Long.valueOf(l), 0, false, -1);
@@ -108,7 +107,7 @@ public class LebaSearchTransparentJumpActivity
         return;
       }
       int i = localException1.getIntExtra("tab_tab_index", 0);
-      osg.a(this.app, this, 1, i);
+      ReadInJoyActivityHelper.a(this.app, this, 1, i);
       continue;
       Object localObject2 = new Intent(this, PhoneUnityBindInfoActivity.class);
       ((Intent)localObject2).putExtra("kSrouce", 18);
@@ -122,11 +121,11 @@ public class LebaSearchTransparentJumpActivity
       try
       {
         i = Integer.valueOf(localObject2[1]).intValue();
-        localObject2 = ((bbyl)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER)).jdField_a_of_type_Bcfj;
+        localObject2 = ((FunctionModuleConfigManager)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER)).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel;
         if (localObject2 != null)
         {
-          this.a.setTag(2131381184, Integer.valueOf(i));
-          ((bcfj)localObject2).a(this.a);
+          this.a.setTag(2131381652, Integer.valueOf(i));
+          ((ISearchResultModel)localObject2).a(this.a);
         }
       }
       catch (Exception localException2)
@@ -143,7 +142,7 @@ public class LebaSearchTransparentJumpActivity
         QLog.d("kueenie", 2, "result model is null");
       }
       continue;
-      ((bbyl)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER)).jdField_a_of_type_Bcfs.a(this.a);
+      ((FunctionModuleConfigManager)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER)).jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem.a(this.a);
     }
   }
   
@@ -156,7 +155,7 @@ public class LebaSearchTransparentJumpActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchTransparentJumpActivity
  * JD-Core Version:    0.7.0.1
  */

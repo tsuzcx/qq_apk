@@ -10,13 +10,14 @@ public class PTSConstant
   public static final String VNT_IMAGE = "img";
   public static final String VNT_LIST = "list";
   public static final String VNT_PAGE = "page";
+  public static final String VNT_RICH_TEXT = "rich-text";
   public static final String VNT_SWIPER = "swiper";
   public static final String VNT_SWIPER_ITEM = "swiper-item";
   public static final String VNT_TEXT = "text";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.pts.utils.PTSConstant
  * JD-Core Version:    0.7.0.1
  */

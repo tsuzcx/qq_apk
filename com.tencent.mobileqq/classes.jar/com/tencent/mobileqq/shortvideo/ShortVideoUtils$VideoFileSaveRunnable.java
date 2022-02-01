@@ -34,7 +34,7 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   10: ifne +13 -> 23
     //   13: aload_0
     //   14: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
-    //   17: invokestatic 54	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   17: invokestatic 54	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
     //   20: ifne +47 -> 67
     //   23: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   26: ifeq +31 -> 57
@@ -62,7 +62,7 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   72: getfield 30	com/tencent/mobileqq/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:mVideoPath	Ljava/lang/String;
     //   75: invokespecial 90	java/io/File:<init>	(Ljava/lang/String;)V
     //   78: astore 6
-    //   80: invokestatic 95	com/tencent/util/VersionUtils:isrFroyo	()Z
+    //   80: invokestatic 95	com/tencent/util/VersionUtils:b	()Z
     //   83: ifeq +74 -> 157
     //   86: getstatic 100	android/os/Environment:DIRECTORY_MOVIES	Ljava/lang/String;
     //   89: invokestatic 104	android/os/Environment:getExternalStoragePublicDirectory	(Ljava/lang/String;)Ljava/io/File;
@@ -298,7 +298,7 @@ public class ShortVideoUtils$VideoFileSaveRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable
  * JD-Core Version:    0.7.0.1
  */

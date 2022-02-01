@@ -15,7 +15,6 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import aynd;
 import com.tencent.qphone.base.util.QLog;
 
 public class AutoScrollImageView
@@ -70,7 +69,7 @@ public class AutoScrollImageView
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aynd(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new AutoScrollImageView.1(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
     if (this.jdField_a_of_type_Int == 0)
@@ -109,7 +108,7 @@ public class AutoScrollImageView
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
@@ -117,7 +116,7 @@ public class AutoScrollImageView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_Boolean)
     {

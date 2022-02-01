@@ -8,9 +8,9 @@ public final class ReqHYCommonCard
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public byte bReqType;
-  public long lUIN;
-  public ReqHead stHeader;
+  public byte bReqType = 0;
+  public long lUIN = 0L;
+  public ReqHead stHeader = null;
   public int uFaceTimeStamp = -1;
   
   public ReqHYCommonCard() {}

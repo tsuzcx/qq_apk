@@ -11,7 +11,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
-import bleq;
 import com.tencent.qphone.base.util.QLog;
 
 public class PullToZoomListView
@@ -33,12 +32,13 @@ public class PullToZoomListView
   
   static
   {
-    jdField_a_of_type_AndroidViewAnimationInterpolator = new bleq();
+    jdField_a_of_type_AndroidViewAnimationInterpolator = new PullToZoomListView.1();
   }
   
   public PullToZoomListView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_b_of_type_Float = -1.0F;
@@ -50,6 +50,7 @@ public class PullToZoomListView
   public PullToZoomListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_b_of_type_Float = -1.0F;
@@ -61,6 +62,7 @@ public class PullToZoomListView
   public PullToZoomListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_b_of_type_Float = -1.0F;
@@ -143,7 +145,7 @@ public class PullToZoomListView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((this.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_AndroidViewView != null))
@@ -230,7 +232,7 @@ public class PullToZoomListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.PullToZoomListView
  * JD-Core Version:    0.7.0.1
  */

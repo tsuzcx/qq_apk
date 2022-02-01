@@ -9,10 +9,10 @@ public final class UserInfo
 {
   static byte[] cache_sig;
   public String MobileNick = "";
-  public long lMobileUin;
+  public long lMobileUin = 0L;
   public String nickname = "";
   public String sKey = "";
-  public byte[] sig;
+  public byte[] sig = null;
   
   public UserInfo() {}
   

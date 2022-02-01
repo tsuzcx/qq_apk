@@ -1,30 +1,36 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class AIOEmotionFragment$11
   implements Runnable
 {
-  AIOEmotionFragment$11(AIOEmotionFragment paramAIOEmotionFragment, String paramString1, String paramString2, int paramInt, AudioPlayerBase paramAudioPlayerBase) {}
+  AIOEmotionFragment$11(AIOEmotionFragment paramAIOEmotionFragment, List paramList, EmoticonPreviewData paramEmoticonPreviewData) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.b))
+    boolean bool = false;
+    this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionAdapter.a(this.jdField_a_of_type_JavaUtilList);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionAdapter.notifyDataSetChanged();
+    if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData != null) {}
+    for (int i = this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData);; i = 0)
     {
-      float f = this.jdField_a_of_type_Int / this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayerBase.b();
-      if (f > 0.0F)
+      this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setSelection(i);
+      if (QLog.isColorLevel())
       {
-        QLog.i("AIOEmotionFragment", 2, "AudioPlayer on onProgressChanged, playPosition = " + f);
-        this.this$0.a.setProgress(f);
+        if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData == null) {
+          bool = true;
+        }
+        QLog.d("AIOEmotionFragment", 2, new Object[] { "mGallery setSelection pos:", Integer.valueOf(i), " dataIsNull:", Boolean.valueOf(bool) });
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.11
  * JD-Core Version:    0.7.0.1
  */

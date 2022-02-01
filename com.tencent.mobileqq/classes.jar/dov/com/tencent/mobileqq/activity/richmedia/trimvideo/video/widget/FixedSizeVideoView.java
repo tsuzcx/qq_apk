@@ -4,15 +4,12 @@ import android.content.Context;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.util.AttributeSet;
 import android.widget.VideoView;
-import bpkp;
-import bpkq;
-import bpkr;
 
 public class FixedSizeVideoView
   extends VideoView
 {
   private int jdField_a_of_type_Int = -1;
-  public bpkr a;
+  FixedSizeVideoView.OnTrimVDPlayCompelteListener jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener;
   private Runnable jdField_a_of_type_JavaLangRunnable = new FixedSizeVideoView.1(this);
   private int b;
   private int c;
@@ -20,13 +17,13 @@ public class FixedSizeVideoView
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new bpkp(this));
+    super.setOnCompletionListener(new FixedSizeVideoView.2(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new bpkq(this));
+    super.setOnCompletionListener(new FixedSizeVideoView.3(this));
   }
   
   public void pause()
@@ -40,10 +37,10 @@ public class FixedSizeVideoView
     throw new RuntimeException("Stub!");
   }
   
-  public void setOnFixVDPlayCompelteListener(bpkr parambpkr)
+  public void setOnFixVDPlayCompelteListener(FixedSizeVideoView.OnTrimVDPlayCompelteListener paramOnTrimVDPlayCompelteListener)
   {
-    if (parambpkr != null) {
-      this.jdField_a_of_type_Bpkr = parambpkr;
+    if (paramOnTrimVDPlayCompelteListener != null) {
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener = paramOnTrimVDPlayCompelteListener;
     }
   }
   
@@ -87,7 +84,7 @@ public class FixedSizeVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView
  * JD-Core Version:    0.7.0.1
  */

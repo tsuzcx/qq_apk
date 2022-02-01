@@ -14,15 +14,15 @@ public final class MaterialTab
   static byte[] cache_strExtFields;
   static ArrayList<OperBanner> cache_vecBanner = new ArrayList();
   static ArrayList<MaterialCate> cache_vecCate;
-  public int iTabId;
-  public Map<String, String> mapExtInfo;
-  public byte[] strExtFields;
+  public int iTabId = 0;
+  public Map<String, String> mapExtInfo = null;
+  public byte[] strExtFields = null;
   public String strTabKey = "";
   public String strTabName = "";
   public String strTraceInfo = "";
-  public long uiSettleTime;
-  public ArrayList<OperBanner> vecBanner;
-  public ArrayList<MaterialCate> vecCate;
+  public long uiSettleTime = 0L;
+  public ArrayList<OperBanner> vecBanner = null;
+  public ArrayList<MaterialCate> vecCate = null;
   
   static
   {

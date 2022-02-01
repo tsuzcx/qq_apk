@@ -10,8 +10,8 @@ public final class UniCheckRsp
 {
   static ArrayList<UniBusinessCheckItem> cache_uniBusinessItemList = new ArrayList();
   public String errmsg = "";
-  public int ret;
-  public ArrayList<UniBusinessCheckItem> uniBusinessItemList;
+  public int ret = 0;
+  public ArrayList<UniBusinessCheckItem> uniBusinessItemList = null;
   
   static
   {

@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import acnh;
-import ahfa;
-import ahfl;
 import android.content.Context;
 import android.os.Bundle;
-import arts;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.HasSourceMessage;
 import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 import com.tencent.mobileqq.data.MessageForText;
@@ -22,10 +20,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
 
-public final class ReplyTextItemBuilder$5
+final class ReplyTextItemBuilder$5
   implements Runnable
 {
-  public ReplyTextItemBuilder$5(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, ahfl paramahfl, Context paramContext, ChatThumbView paramChatThumbView) {}
+  ReplyTextItemBuilder$5(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, ReplyTextItemBuilder.SourceMessagePulledCallBack paramSourceMessagePulledCallBack, Context paramContext, ChatThumbView paramChatThumbView) {}
   
   public void run()
   {
@@ -33,11 +31,11 @@ public final class ReplyTextItemBuilder$5
     Object localObject1;
     Object localObject4;
     boolean bool;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof arts))
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof HasSourceMessage))
     {
-      localObject1 = (arts)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localObject4 = ((arts)localObject1).getSourceMsgInfo();
-      bool = ((arts)localObject1).getHasPulledSourceMsg();
+      localObject1 = (HasSourceMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localObject4 = ((HasSourceMessage)localObject1).getSourceMsgInfo();
+      bool = ((HasSourceMessage)localObject1).getHasPulledSourceMsg();
     }
     for (;;)
     {
@@ -47,24 +45,24 @@ public final class ReplyTextItemBuilder$5
       if (0 == 0) {}
       label452:
       Object localObject3;
-      for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByShmsgseq(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq);; localObject3 = null)
+      for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq);; localObject3 = null)
       {
         Object localObject5;
         if ((localObject1 == null) && (!bool) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin != null))
         {
-          if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof arts)) {
-            ((arts)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setPulledSourceMsg();
+          if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof HasSourceMessage)) {
+            ((HasSourceMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setPulledSourceMsg();
           }
           Bundle localBundle = new Bundle();
           QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
           localObject5 = new ArrayList();
-          int j = localQQMessageFacade.pullCounter.addAndGet(1);
+          int j = localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
           localBundle.putInt("counter", j);
           localBundle.putBoolean("success", false);
-          localQQMessageFacade.pullCache.put(Integer.valueOf(j), localObject5);
+          localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(j), localObject5);
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq, true, localBundle, 0);
-          localQQMessageFacade.autoPullCache.put(acnh.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop), Boolean.valueOf(false));
-          if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext())) {}
+          localQQMessageFacade.b.put(UinTypeUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop), Boolean.valueOf(false));
+          if (!NetworkUtil.g(BaseApplication.getContext())) {}
         }
         label458:
         label468:
@@ -83,7 +81,7 @@ public final class ReplyTextItemBuilder$5
                 break label458;
               }
               localObject5 = new StringBuilder();
-              localObject4 = ahfa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, (StringBuilder)localObject5);
+              localObject4 = ReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, (StringBuilder)localObject5);
               if (localObject4 == null) {
                 break label458;
               }
@@ -116,7 +114,7 @@ public final class ReplyTextItemBuilder$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

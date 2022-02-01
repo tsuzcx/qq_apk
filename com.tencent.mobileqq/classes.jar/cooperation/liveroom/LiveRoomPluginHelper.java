@@ -5,24 +5,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bieb;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper;
+import com.tencent.biz.pubaccount.readinjoy.viola.so.ViolaSoLoaderManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.so.ViolaSoLoaderManager.Companion;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
+import com.tencent.mobileqq.webview.WebViewDirector;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.commons.IReportDelegate;
 import mqq.app.AppRuntime;
-import osg;
-import pvu;
-import tto;
 
 public class LiveRoomPluginHelper
 {
   private static final String TAG = "LiveRoomPluginHelper";
-  private static boolean violaSoLoaded;
+  private static boolean violaSoLoaded = false;
   
   public static void backToReadInJoy(Context paramContext)
   {
-    osg.a(paramContext, 11);
+    ReadInJoyActivityHelper.a(paramContext, 11);
   }
   
   public static LiveRoomWebViewBuilder createWebView(Activity paramActivity, Intent paramIntent)
@@ -33,7 +34,7 @@ public class LiveRoomPluginHelper
       paramIntent.putExtra("window_no_title", false);
       paramIntent.putExtra("webview_hide_progress", true);
       paramActivity = new LiveRoomWebViewBuilder(paramActivity, paramActivity, paramIntent, localLiveRoomInterfaceProxy);
-      new bieb(paramActivity).a(null, localLiveRoomInterfaceProxy, paramIntent);
+      new WebViewDirector(paramActivity).a(null, localLiveRoomInterfaceProxy, paramIntent);
       return paramActivity;
     }
     QLog.e("LiveRoomPluginHelper", 2, "createWebView: app should be AppInterface");
@@ -48,7 +49,7 @@ public class LiveRoomPluginHelper
     Intent localIntent = new Intent();
     localIntent.setClass(paramContext, SplashActivity.class);
     localIntent.setFlags(67108864);
-    localIntent.putExtra("tab_index", MainFragment.b);
+    localIntent.putExtra("tab_index", FrameControllerUtil.a);
     localIntent.putExtra("fragment_id", 1);
     localIntent.putExtra("banner_activityName", "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginActivity");
     localIntent.putExtra("banner_businessCategory", "LiveRoom");
@@ -67,7 +68,7 @@ public class LiveRoomPluginHelper
     if (!violaSoLoaded)
     {
       violaSoLoaded = true;
-      pvu.a("LiveRoomPluginHelper", new LiveRoomPluginHelper.1(paramInitViolaListener, paramAppRuntime, paramString, paramIReportDelegate));
+      ViolaSoLoaderManager.a.a().a("LiveRoomPluginHelper", new LiveRoomPluginHelper.1(paramInitViolaListener, paramAppRuntime, paramString, paramIReportDelegate));
       return;
     }
     initViolaSDKEngine(paramAppRuntime, paramString, paramIReportDelegate, paramInitViolaListener);
@@ -91,12 +92,12 @@ public class LiveRoomPluginHelper
     while ((i != 2) || (TextUtils.isEmpty(paramBundle))) {
       return;
     }
-    tto.a(paramActivity, str, paramBundle, null);
+    ViolaAccessHelper.a(paramActivity, str, paramBundle, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomPluginHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,13 @@ public final class s_yytag
   extends JceStruct
 {
   static ArrayList<Integer> cache_beginEndSeconds = new ArrayList();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public ArrayList<Integer> beginEndSeconds;
+  public ArrayList<Integer> beginEndSeconds = null;
   public String content = "";
-  public int displaytype;
+  public int displaytype = 0;
   public String logo = "";
-  public int scene;
+  public int scene = 0;
   
   static
   {

@@ -13,11 +13,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bnri;
-import bnse;
-import bnsf;
-import bnsg;
-import bnsh;
+import dov.com.qq.im.ae.util.AEThemeUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,12 +24,12 @@ public class TabLayout
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private View jdField_a_of_type_AndroidViewView = new View(getContext());
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
-  private bnsg jdField_a_of_type_Bnsg;
-  private List<bnsh> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = bnri.a();
+  private TabLayout.OnTabSelectedCallback jdField_a_of_type_DovComQqImAeViewTabLayout$OnTabSelectedCallback;
+  private List<TabLayout.TabView> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean = AEThemeUtil.a();
   @DrawableRes
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   
   public TabLayout(Context paramContext)
   {
@@ -62,7 +58,7 @@ public class TabLayout
   
   private void a()
   {
-    this.jdField_b_of_type_Int = 2130837702;
+    this.jdField_b_of_type_Int = 2130837710;
     this.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_b_of_type_Int);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(a(getContext(), 7.0F), a(getContext(), 7.0F));
     localLayoutParams.addRule(12);
@@ -71,19 +67,19 @@ public class TabLayout
   
   private void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Bnsg != null) {
-      this.jdField_a_of_type_Bnsg.a(paramInt);
+    if (this.jdField_a_of_type_DovComQqImAeViewTabLayout$OnTabSelectedCallback != null) {
+      this.jdField_a_of_type_DovComQqImAeViewTabLayout$OnTabSelectedCallback.a(paramInt);
     }
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      bnsh localbnsh = (bnsh)this.jdField_a_of_type_JavaUtilList.get(i);
+      TabLayout.TabView localTabView = (TabLayout.TabView)this.jdField_a_of_type_JavaUtilList.get(i);
       if (paramInt == 0)
       {
         if (paramInt == i) {}
         for (bool = true;; bool = false)
         {
-          localbnsh.a(bool, false);
+          localTabView.a(bool, false);
           i += 1;
           break;
         }
@@ -91,7 +87,7 @@ public class TabLayout
       if (paramInt == i) {}
       for (boolean bool = true;; bool = false)
       {
-        localbnsh.a(bool, this.jdField_b_of_type_Boolean);
+        localTabView.a(bool, this.jdField_b_of_type_Boolean);
         break;
       }
     }
@@ -106,7 +102,7 @@ public class TabLayout
       }
       return;
       if (this.jdField_b_of_type_Boolean) {
-        i = 2130837701;
+        i = 2130837709;
       } else {
         i = this.jdField_b_of_type_Int;
       }
@@ -116,8 +112,8 @@ public class TabLayout
   private void c(int paramInt)
   {
     float f1 = this.jdField_a_of_type_AndroidViewView.getX();
-    float f2 = ((bnsh)this.jdField_a_of_type_JavaUtilList.get(paramInt)).getX();
-    float f3 = ((bnsh)this.jdField_a_of_type_JavaUtilList.get(paramInt)).getWidth() / 2.0F;
+    float f2 = ((TabLayout.TabView)this.jdField_a_of_type_JavaUtilList.get(paramInt)).getX();
+    float f3 = ((TabLayout.TabView)this.jdField_a_of_type_JavaUtilList.get(paramInt)).getWidth() / 2.0F;
     float f4 = this.jdField_a_of_type_AndroidViewView.getWidth() / 2.0F;
     ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "x", new float[] { f1, f3 + f2 - f4 }).setDuration(250L).start();
   }
@@ -128,9 +124,9 @@ public class TabLayout
     while (paramInt == this.jdField_a_of_type_Int) {
       return;
     }
-    if ((this.jdField_a_of_type_Bnsg != null) && (!this.jdField_a_of_type_Bnsg.a(paramInt)))
+    if ((this.jdField_a_of_type_DovComQqImAeViewTabLayout$OnTabSelectedCallback != null) && (!this.jdField_a_of_type_DovComQqImAeViewTabLayout$OnTabSelectedCallback.a(paramInt)))
     {
-      this.jdField_a_of_type_Bnsg.a(paramInt);
+      this.jdField_a_of_type_DovComQqImAeViewTabLayout$OnTabSelectedCallback.a(paramInt);
       return;
     }
     this.jdField_a_of_type_Int = paramInt;
@@ -141,7 +137,7 @@ public class TabLayout
   public void a(ViewPager paramViewPager)
   {
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
-    paramViewPager.setOnPageChangeListener(new bnsf(this));
+    paramViewPager.setOnPageChangeListener(new TabLayout.3(this));
   }
   
   public void a(boolean paramBoolean)
@@ -150,13 +146,13 @@ public class TabLayout
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      bnsh localbnsh = (bnsh)this.jdField_a_of_type_JavaUtilList.get(i);
+      TabLayout.TabView localTabView = (TabLayout.TabView)this.jdField_a_of_type_JavaUtilList.get(i);
       if (this.jdField_a_of_type_Int == 0)
       {
         if (this.jdField_a_of_type_Int == i) {}
         for (paramBoolean = true;; paramBoolean = false)
         {
-          localbnsh.a(paramBoolean, false);
+          localTabView.a(paramBoolean, false);
           i += 1;
           break;
         }
@@ -164,7 +160,7 @@ public class TabLayout
       if (this.jdField_a_of_type_Int == i) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
-        localbnsh.a(paramBoolean, this.jdField_b_of_type_Boolean);
+        localTabView.a(paramBoolean, this.jdField_b_of_type_Boolean);
         break;
       }
     }
@@ -176,16 +172,16 @@ public class TabLayout
       this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
       return;
       if (this.jdField_b_of_type_Boolean) {
-        i = 2130837701;
+        i = 2130837709;
       } else {
         i = this.jdField_b_of_type_Int;
       }
     }
   }
   
-  public void setTabSelectedCallback(bnsg parambnsg)
+  public void setTabSelectedCallback(TabLayout.OnTabSelectedCallback paramOnTabSelectedCallback)
   {
-    this.jdField_a_of_type_Bnsg = parambnsg;
+    this.jdField_a_of_type_DovComQqImAeViewTabLayout$OnTabSelectedCallback = paramOnTabSelectedCallback;
   }
   
   public void setTabs(List<String> paramList, int paramInt)
@@ -199,24 +195,24 @@ public class TabLayout
       int i = 0;
       if (i < j)
       {
-        bnsh localbnsh = new bnsh(getContext(), this.jdField_a_of_type_Boolean);
-        localbnsh.a().setText((CharSequence)paramList.get(i));
+        TabLayout.TabView localTabView = new TabLayout.TabView(getContext(), this.jdField_a_of_type_Boolean);
+        localTabView.a().setText((CharSequence)paramList.get(i));
         if (paramInt == i) {}
         for (boolean bool = true;; bool = false)
         {
-          localbnsh.a(bool, this.jdField_b_of_type_Boolean);
+          localTabView.a(bool, this.jdField_b_of_type_Boolean);
           LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
           localLayoutParams.weight = 1.0F;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localbnsh, localLayoutParams);
-          this.jdField_a_of_type_JavaUtilList.add(localbnsh);
-          localbnsh.setOnClickListener(new bnse(this, i));
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localTabView, localLayoutParams);
+          this.jdField_a_of_type_JavaUtilList.add(localTabView);
+          localTabView.setOnClickListener(new TabLayout.1(this, i));
           i += 1;
           break;
         }
       }
       a();
       if (paramList.size() > 1) {
-        ((bnsh)this.jdField_a_of_type_JavaUtilList.get(0)).post(new TabLayout.2(this, paramInt));
+        ((TabLayout.TabView)this.jdField_a_of_type_JavaUtilList.get(0)).post(new TabLayout.2(this, paramInt));
       }
       this.jdField_a_of_type_Int = paramInt;
     } while (this.jdField_a_of_type_Int == 0);
@@ -225,7 +221,7 @@ public class TabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.view.TabLayout
  * JD-Core Version:    0.7.0.1
  */

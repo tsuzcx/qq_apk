@@ -8,7 +8,7 @@ public abstract interface CustomizedToast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.customized_interface.CustomizedToast
  * JD-Core Version:    0.7.0.1
  */

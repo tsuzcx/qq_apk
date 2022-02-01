@@ -2,14 +2,13 @@ package com.tencent.av.random;
 
 import android.content.Context;
 import android.os.Handler;
-import bdla;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.PopupDialog;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import lsw;
 
-public class RandomController$5
+class RandomController$5
   implements Runnable
 {
   RandomController$5(RandomController paramRandomController) {}
@@ -19,7 +18,7 @@ public class RandomController$5
     if (!this.this$0.c)
     {
       Context localContext = RandomController.a(this.this$0).getApp().getApplicationContext();
-      PopupDialog.b(localContext, 230, localContext.getString(2131695482), localContext.getString(2131695483), 0, 2131695367, new lsw(this), null);
+      PopupDialog.b(localContext, 230, localContext.getString(2131695723), localContext.getString(2131695724), 0, 2131695607, new RandomController.5.1(this), null);
       this.this$0.c = true;
     }
   }
@@ -31,14 +30,14 @@ public class RandomController$5
     }
     RandomController.a(this.this$0).b();
     a();
-    bdla.b(null, "CliOper", "", "", "0X8007430", "0X8007430", 0, 0, "", "", "", "");
+    ReportController.b(null, "CliOper", "", "", "0X8007430", "0X8007430", 0, 0, "", "", "", "");
     RandomController.a(this.this$0).a().removeCallbacks(RandomController.a(this.this$0));
     RandomController.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.random.RandomController.5
  * JD-Core Version:    0.7.0.1
  */

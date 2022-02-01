@@ -17,7 +17,7 @@ final class PhoneContactManagerImp$23
     Object localObject = null;
     try
     {
-      Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130844976);
+      Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130845136);
       localObject = localBitmap;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -44,7 +44,7 @@ final class PhoneContactManagerImp$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.23
  * JD-Core Version:    0.7.0.1
  */

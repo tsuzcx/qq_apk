@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="20.0dip" />
-    <solid android:color="#66000000" />
-</shape>
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/ba4" />
+            <stroke android:width="@dimen/b_x" android:color="@color/al3" />
+        </shape>
+    </item>
+    <item android:state_selected="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/ba4" />
+            <stroke android:width="@dimen/b_x" android:color="@color/ajr" />
+        </shape>
+    </item>
+</selector>

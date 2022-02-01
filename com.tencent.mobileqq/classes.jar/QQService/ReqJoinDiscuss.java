@@ -10,7 +10,7 @@ public final class ReqJoinDiscuss
   extends JceStruct
   implements Cloneable
 {
-  public int From;
+  public int From = 0;
   public String Signature = "";
   
   static

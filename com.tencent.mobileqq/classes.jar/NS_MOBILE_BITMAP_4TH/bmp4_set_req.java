@@ -9,8 +9,8 @@ public final class bmp4_set_req
 {
   static bmp4_values cache_map_kv = new bmp4_values();
   public int bitmap_id = 4;
-  public bmp4_values map_kv;
-  public long uin;
+  public bmp4_values map_kv = null;
+  public long uin = 0L;
   
   public bmp4_set_req() {}
   

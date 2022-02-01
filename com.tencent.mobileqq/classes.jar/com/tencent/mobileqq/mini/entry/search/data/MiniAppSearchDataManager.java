@@ -47,8 +47,8 @@ public class MiniAppSearchDataManager
   private static final String MINI_APP_NATIVE_SEARCH = "mini_app_native_search";
   public static final String TAG = "MiniAppSearchDataManager";
   private volatile boolean isFinished = true;
-  private volatile boolean isLoading;
-  private volatile boolean isNoResult;
+  private volatile boolean isLoading = false;
+  private volatile boolean isNoResult = false;
   private volatile COMM.StCommonExt mExtInfo;
   private LinkedList<String> mHistorySearchList = new LinkedList();
   private MiniAppSearchDataManager.HotSearchDataChangedListener mHotSearchDataChangedListener;
@@ -82,7 +82,7 @@ public class MiniAppSearchDataManager
   
   private void checkNetwork()
   {
-    if ((!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) && (this.mResultDataChangedListener != null))
+    if ((!NetworkUtil.a(BaseApplicationImpl.getContext())) && (this.mResultDataChangedListener != null))
     {
       this.mSearchResultList.clear();
       this.mResultDataChangedListener.onResultDataChanged();
@@ -170,7 +170,7 @@ public class MiniAppSearchDataManager
       {
         localObject4 = (STORE_APP_CLIENT.StoreAppInfo)((Iterator)localObject3).next();
         if ((localObject4 == null) || (((STORE_APP_CLIENT.StoreAppInfo)localObject4).userAppInfo.get() == null)) {
-          break label710;
+          break label711;
         }
         localObject4 = new SearchInfo((STORE_APP_CLIENT.StoreAppInfo)localObject4);
         ((SearchInfo)localObject4).setPosition(i);
@@ -178,8 +178,8 @@ public class MiniAppSearchDataManager
         i += 1;
       }
     }
-    label670:
-    label710:
+    label671:
+    label711:
     for (;;)
     {
       break;
@@ -234,7 +234,7 @@ public class MiniAppSearchDataManager
           ((List)localObject3).addAll((Collection)localObject1);
           continue;
           if (???.sort.get() != 2) {
-            break label670;
+            break label671;
           }
           ((List)localObject3).addAll(localArrayList1);
           ((List)localObject3).addAll((Collection)localObject1);

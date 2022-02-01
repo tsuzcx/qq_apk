@@ -13,20 +13,20 @@ class QQSettingMe$2
   public void run()
   {
     this.this$0.a(Boolean.valueOf(false));
-    QQSettingMe.a(this.this$0).setImageResource(2130846041);
-    QQSettingMe.b(this.this$0).setImageResource(2130846057);
+    QQSettingMe.a(this.this$0).setImageResource(2130846362);
+    QQSettingMe.b(this.this$0).setImageResource(2130846378);
     this.this$0.a.setTextColor(-16777216);
     if (this.this$0.b != null) {
       this.this$0.b.setTextColor(-16777216);
     }
-    TextView localTextView = (TextView)this.this$0.e.findViewById(2131376649);
+    TextView localTextView = (TextView)this.this$0.e.findViewById(2131377044);
     localTextView.setTextColor(Color.parseColor("#FFB0B3BF"));
-    ((ImageView)this.this$0.e.findViewById(2131368398)).setColorFilter(localTextView.getCurrentTextColor());
+    ((ImageView)this.this$0.e.findViewById(2131368620)).setColorFilter(localTextView.getCurrentTextColor());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.2
  * JD-Core Version:    0.7.0.1
  */

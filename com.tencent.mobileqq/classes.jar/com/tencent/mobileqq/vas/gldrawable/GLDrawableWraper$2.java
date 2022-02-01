@@ -2,29 +2,27 @@ package com.tencent.mobileqq.vas.gldrawable;
 
 import android.media.MediaCodecInfo;
 import android.os.Build.VERSION;
-import bhpu;
-import bhrj;
-import bhrl;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.vas.VasStatisticCollector;
+import com.tencent.qqperf.tools.DeviceInfoUtils;
 import java.util.ArrayList;
 import kotlin.Pair;
 
-public class GLDrawableWraper$2
+class GLDrawableWraper$2
   implements Runnable
 {
-  public GLDrawableWraper$2(bhrj parambhrj) {}
+  GLDrawableWraper$2(GLDrawableWraper paramGLDrawableWraper) {}
   
   public void run()
   {
     Object localObject1;
-    if ((bhpu.a()) && (Build.VERSION.SDK_INT >= 16))
+    if ((VasStatisticCollector.a()) && (Build.VERSION.SDK_INT >= 16))
     {
-      localObject1 = bhrl.a("video/avc");
+      localObject1 = Utils.a("video/avc");
       if (((ArrayList)localObject1).size() <= 0) {
         break label136;
       }
       localObject1 = ((MediaCodecInfo)((ArrayList)localObject1).get(0)).getName();
-      localObject2 = bhrl.a("video/hevc");
+      localObject2 = Utils.a("video/hevc");
       if (((ArrayList)localObject2).size() <= 0) {
         break label142;
       }
@@ -33,7 +31,7 @@ public class GLDrawableWraper$2
     label142:
     for (Object localObject2 = ((MediaCodecInfo)((ArrayList)localObject2).get(0)).getName();; localObject2 = "")
     {
-      bhpu.a("gldrawable_video_codec", new Pair[] { new Pair("avc", localObject1), new Pair("hevc", localObject2), new Pair("api", String.valueOf(Build.VERSION.SDK_INT)), new Pair("level", String.valueOf(DeviceInfoUtil.getPerfLevel())) });
+      VasStatisticCollector.a("gldrawable_video_codec", new Pair[] { new Pair("avc", localObject1), new Pair("hevc", localObject2), new Pair("api", String.valueOf(Build.VERSION.SDK_INT)), new Pair("level", String.valueOf(DeviceInfoUtils.a())) });
       return;
       localObject1 = "";
       break;
@@ -42,7 +40,7 @@ public class GLDrawableWraper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper.2
  * JD-Core Version:    0.7.0.1
  */

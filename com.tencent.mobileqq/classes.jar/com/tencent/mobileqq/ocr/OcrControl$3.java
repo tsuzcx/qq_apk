@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.ocr;
 
-import apkm;
-import apkn;
-import aytd;
-import aytf;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
 
-public class OcrControl$3
+class OcrControl$3
   implements Runnable
 {
-  public OcrControl$3(aytd paramaytd, String paramString, apkm paramapkm) {}
+  OcrControl$3(OcrControl paramOcrControl, String paramString, ARCloudReqFileInfo paramARCloudReqFileInfo) {}
   
   public void run()
   {
-    apkn localapkn = aytd.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-    if ((localapkn != null) && (aytd.a(this.this$0) != null))
+    ARCloudReqInfo localARCloudReqInfo = OcrControl.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    if ((localARCloudReqInfo != null) && (OcrControl.a(this.this$0) != null))
     {
       long l1 = System.currentTimeMillis();
-      long l2 = localapkn.c;
-      aytd.a(this.this$0).a(4, null, this.jdField_a_of_type_Apkm.b, l1 - l2);
+      long l2 = localARCloudReqInfo.c;
+      OcrControl.a(this.this$0).a(4, null, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.b, l1 - l2);
     }
   }
 }

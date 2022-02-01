@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.biz.ProtoServlet;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.RequestBody;
@@ -14,19 +15,17 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import mqq.app.NewIntent;
-import nta;
-import nyn;
-import nyo;
-import nyp;
 
 public class SearchProtocol
 {
-  public static void a(AppInterface paramAppInterface, Context paramContext, nyp paramnyp)
+  public static int a = 0;
+  
+  public static void a(AppInterface paramAppInterface, Context paramContext, SearchProtocol.SearchObserver paramSearchObserver)
   {
-    if ((paramAppInterface == null) || (paramnyp == null)) {
+    if ((paramAppInterface == null) || (paramSearchObserver == null)) {
       return;
     }
-    paramContext = new nyn(Looper.getMainLooper(), paramnyp);
+    paramContext = new SearchProtocol.1(Looper.getMainLooper(), paramSearchObserver);
     if (HttpUtil.getNetWorkType() == 0)
     {
       paramAppInterface = paramContext.obtainMessage();
@@ -34,17 +33,17 @@ public class SearchProtocol
       paramContext.sendMessage(paramAppInterface);
       return;
     }
-    paramnyp = new NewIntent(paramAppInterface.getApp(), nta.class);
-    paramnyp.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
+    paramSearchObserver = new NewIntent(paramAppInterface.getApp(), ProtoServlet.class);
+    paramSearchObserver.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
     mobileqq_dynamic_search.RequestBody localRequestBody = new mobileqq_dynamic_search.RequestBody();
     localRequestBody.cmd.set(1);
     mobileqq_dynamic_search.RootSearcherRequest localRootSearcherRequest = new mobileqq_dynamic_search.RootSearcherRequest();
     localRootSearcherRequest.business.set(128);
     localRequestBody.search_request.set(localRootSearcherRequest);
-    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.4.10"));
-    paramnyp.putExtra("data", localRequestBody.toByteArray());
-    paramnyp.setObserver(new nyo(paramContext));
-    paramAppInterface.startServlet(paramnyp);
+    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.5.5"));
+    paramSearchObserver.putExtra("data", localRequestBody.toByteArray());
+    paramSearchObserver.setObserver(new SearchProtocol.2(paramContext));
+    paramAppInterface.startServlet(paramSearchObserver);
   }
   
   private static int b(String paramString)
@@ -63,7 +62,7 @@ public class SearchProtocol
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.SearchProtocol
  * JD-Core Version:    0.7.0.1
  */

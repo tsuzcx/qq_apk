@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajvt;
-
-public class ChatHistoryTroopMemberFragment$ListAdapter$1
+class ChatHistoryTroopMemberFragment$ListAdapter$1
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$ListAdapter$1(ajvt paramajvt) {}
+  ChatHistoryTroopMemberFragment$ListAdapter$1(ChatHistoryTroopMemberFragment.ListAdapter paramListAdapter) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ChatHistoryTroopMemberFragment$ListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.ListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

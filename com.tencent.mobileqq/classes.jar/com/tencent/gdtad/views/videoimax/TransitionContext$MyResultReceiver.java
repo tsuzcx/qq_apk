@@ -1,9 +1,9 @@
 package com.tencent.gdtad.views.videoimax;
 
-import acho;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import com.tencent.gdtad.log.GdtLog;
 import java.lang.ref.WeakReference;
 
 final class TransitionContext$MyResultReceiver
@@ -20,7 +20,7 @@ final class TransitionContext$MyResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    acho.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    GdtLog.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
     TransitionContext localTransitionContext = (TransitionContext)this.a.get();
     if (localTransitionContext != null)
     {
@@ -45,7 +45,7 @@ final class TransitionContext$MyResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.TransitionContext.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

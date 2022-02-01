@@ -3,16 +3,15 @@ package com.tencent.mobileqq.redtouch;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bbbn;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RedDisplayInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RedDisplayInfo> CREATOR = new bbbn();
-  private RedTypeInfo a;
-  public ArrayList<RedTypeInfo> a;
+  public static final Parcelable.Creator<RedDisplayInfo> CREATOR = new RedDisplayInfo.1();
+  private RedTypeInfo jdField_a_of_type_ComTencentMobileqqRedtouchRedTypeInfo;
+  ArrayList<RedTypeInfo> jdField_a_of_type_JavaUtilArrayList;
   
   public RedTypeInfo a()
   {
@@ -47,7 +46,7 @@ public class RedDisplayInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedDisplayInfo
  * JD-Core Version:    0.7.0.1
  */

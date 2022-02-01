@@ -960,7 +960,7 @@ public class NestedScrollView
     }
   }
   
-  protected float getBottomFadingEdgeStrength()
+  public float getBottomFadingEdgeStrength()
   {
     if (getChildCount() == 0) {
       return 0.0F;
@@ -1001,7 +1001,7 @@ public class NestedScrollView
     return 0;
   }
   
-  protected float getTopFadingEdgeStrength()
+  public float getTopFadingEdgeStrength()
   {
     if (getChildCount() == 0) {
       return 0.0F;
@@ -1039,13 +1039,13 @@ public class NestedScrollView
     return this.mSmoothScrollingEnabled;
   }
   
-  protected void measureChild(View paramView, int paramInt1, int paramInt2)
+  public void measureChild(View paramView, int paramInt1, int paramInt2)
   {
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
     paramView.measure(getChildMeasureSpec(paramInt1, getPaddingLeft() + getPaddingRight(), localLayoutParams.width), View.MeasureSpec.makeMeasureSpec(0, 0));
   }
   
-  protected void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
     paramInt1 = getChildMeasureSpec(paramInt1, getPaddingLeft() + getPaddingRight() + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin + paramInt2, localMarginLayoutParams.width);
@@ -1169,7 +1169,7 @@ public class NestedScrollView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = 0;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -1206,7 +1206,7 @@ public class NestedScrollView
     this.mIsLaidOut = true;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (!this.mFillViewport) {}
@@ -1279,12 +1279,12 @@ public class NestedScrollView
     startNestedScroll(2, paramInt2);
   }
   
-  protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super.scrollTo(paramInt1, paramInt2);
   }
   
-  protected boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
+  public boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
   {
     int i;
     View localView;
@@ -1317,7 +1317,7 @@ public class NestedScrollView
     return localView.requestFocus(i, paramRect);
   }
   
-  protected void onRestoreInstanceState(Parcelable paramParcelable)
+  public void onRestoreInstanceState(Parcelable paramParcelable)
   {
     if (!(paramParcelable instanceof NestedScrollView.SavedState))
     {
@@ -1330,14 +1330,14 @@ public class NestedScrollView
     requestLayout();
   }
   
-  protected Parcelable onSaveInstanceState()
+  public Parcelable onSaveInstanceState()
   {
     NestedScrollView.SavedState localSavedState = new NestedScrollView.SavedState(super.onSaveInstanceState());
     localSavedState.scrollPosition = getScrollY();
     return localSavedState;
   }
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mOnScrollChangeListener != null) {
@@ -1345,7 +1345,7 @@ public class NestedScrollView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     View localView = findFocus();
@@ -1796,7 +1796,7 @@ public class NestedScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.widget.NestedScrollView
  * JD-Core Version:    0.7.0.1
  */

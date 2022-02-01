@@ -1,12 +1,11 @@
 package com.tencent.gdtad.jsbridge;
 
-import acbz;
-import acgt;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialAd;
 
-public class GdtInterstitialFragmentForJS$3$1
+class GdtInterstitialFragmentForJS$3$1
   implements Runnable
 {
-  public GdtInterstitialFragmentForJS$3$1(acgt paramacgt) {}
+  GdtInterstitialFragmentForJS$3$1(GdtInterstitialFragmentForJS.3 param3) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class GdtInterstitialFragmentForJS$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS.3.1
  * JD-Core Version:    0.7.0.1
  */

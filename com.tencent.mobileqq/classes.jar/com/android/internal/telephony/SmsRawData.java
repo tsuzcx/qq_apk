@@ -1,6 +1,5 @@
 package com.android.internal.telephony;
 
-import ae;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +7,7 @@ import android.os.Parcelable.Creator;
 public class SmsRawData
   implements Parcelable
 {
-  public static final Parcelable.Creator<SmsRawData> CREATOR = new ae();
+  public static final Parcelable.Creator<SmsRawData> CREATOR = new SmsRawData.1();
   byte[] a;
   
   public SmsRawData(byte[] paramArrayOfByte)
@@ -29,7 +28,7 @@ public class SmsRawData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.android.internal.telephony.SmsRawData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import amxx;
-import ankt;
+import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation;
 
-public class CmGameSubProcessHandler$9
+class CmGameSubProcessHandler$9
   implements Runnable
 {
-  public CmGameSubProcessHandler$9(amxx paramamxx) {}
+  CmGameSubProcessHandler$9(CmGameSubProcessHandler paramCmGameSubProcessHandler) {}
   
   public void run()
   {
-    if (amxx.a(this.this$0) != null) {
-      amxx.a(this.this$0).a();
+    if (CmGameSubProcessHandler.a(this.this$0) != null) {
+      CmGameSubProcessHandler.a(this.this$0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.9
  * JD-Core Version:    0.7.0.1
  */

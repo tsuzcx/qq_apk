@@ -150,7 +150,7 @@ class VipProfileCardPreviewActivity$7
     //   292: aload 7
     //   294: astore 6
     //   296: aload 8
-    //   298: invokestatic 167	bhbx:a	(Landroid/graphics/Bitmap;)I
+    //   298: invokestatic 167	com/tencent/mobileqq/util/Utils:a	(Landroid/graphics/Bitmap;)I
     //   301: istore_2
     //   302: aload 7
     //   304: astore 6
@@ -173,43 +173,43 @@ class VipProfileCardPreviewActivity$7
     //   341: ifnull +34 -> 375
     //   344: aload 7
     //   346: astore 6
-    //   348: getstatic 188	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   348: getstatic 187	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
     //   351: aload_0
     //   352: getfield 19	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:b	Ljava/lang/String;
-    //   355: new 190	android/util/Pair
+    //   355: new 189	android/util/Pair
     //   358: dup
     //   359: aload 8
-    //   361: invokevirtual 194	android/graphics/drawable/BitmapDrawable:getConstantState	()Landroid/graphics/drawable/Drawable$ConstantState;
+    //   361: invokevirtual 193	android/graphics/drawable/BitmapDrawable:getConstantState	()Landroid/graphics/drawable/Drawable$ConstantState;
     //   364: iload_2
-    //   365: invokestatic 200	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   368: invokespecial 203	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   371: invokevirtual 209	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   365: invokestatic 199	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   368: invokespecial 202	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   371: invokevirtual 208	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   374: pop
     //   375: aload 7
     //   377: astore 6
     //   379: aload_0
     //   380: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
     //   383: aload 8
-    //   385: putfield 212	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   385: putfield 211	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
     //   388: aload 7
     //   390: astore 6
     //   392: aload_0
     //   393: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
-    //   396: getfield 212	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   396: getfield 211	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
     //   399: ifnull +34 -> 433
     //   402: aload 7
     //   404: astore 6
     //   406: aload_0
     //   407: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
-    //   410: getfield 215	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   410: getfield 214	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   413: ifnull +20 -> 433
     //   416: aload 7
     //   418: astore 6
     //   420: aload_0
     //   421: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
-    //   424: getfield 215	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   424: getfield 214	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   427: bipush 27
-    //   429: invokevirtual 221	android/os/Handler:sendEmptyMessage	(I)Z
+    //   429: invokevirtual 220	android/os/Handler:sendEmptyMessage	(I)Z
     //   432: pop
     //   433: aload 7
     //   435: ifnull -297 -> 138
@@ -230,12 +230,12 @@ class VipProfileCardPreviewActivity$7
     //   464: iconst_0
     //   465: iload 4
     //   467: iload 5
-    //   469: invokestatic 225	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    //   469: invokestatic 224	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
     //   472: astore 9
     //   474: aload 7
     //   476: astore 6
     //   478: aload 8
-    //   480: invokevirtual 228	android/graphics/Bitmap:recycle	()V
+    //   480: invokevirtual 227	android/graphics/Bitmap:recycle	()V
     //   483: aload 7
     //   485: astore 6
     //   487: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -244,7 +244,7 @@ class VipProfileCardPreviewActivity$7
     //   495: astore 6
     //   497: ldc 105
     //   499: iconst_2
-    //   500: ldc 230
+    //   500: ldc 229
     //   502: invokestatic 162	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   505: aload 9
     //   507: astore 8
@@ -263,10 +263,10 @@ class VipProfileCardPreviewActivity$7
     //   534: new 140	java/lang/StringBuilder
     //   537: dup
     //   538: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   541: ldc 232
+    //   541: ldc 231
     //   543: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   546: aload 8
-    //   548: invokevirtual 235	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   548: invokevirtual 234	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   551: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   554: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   557: invokestatic 162	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -296,10 +296,10 @@ class VipProfileCardPreviewActivity$7
     //   606: new 140	java/lang/StringBuilder
     //   609: dup
     //   610: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   613: ldc 237
+    //   613: ldc 236
     //   615: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   618: aload 8
-    //   620: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   620: invokevirtual 237	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   623: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   626: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   629: invokestatic 162	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V

@@ -6,7 +6,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.emoticon.QQEmojiUtil;
+import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import com.tencent.mobileqq.troop.widget.ExpandableTextView;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
@@ -21,10 +22,10 @@ class VisitorTroopCardFragment$6
     {
       int i = this.this$0.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView.a().getLayout().getLineEnd(0);
       Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mRichFingerMemo.substring(0, i);
-      if ((QQText.containsEmoji((String)localObject)) || (QQText.containsExpression((String)localObject)))
+      if ((QQEmojiUtil.containsEmoji((String)localObject)) || (QQSysFaceUtil.containsExpression((String)localObject)))
       {
         localObject = (RelativeLayout.LayoutParams)this.this$0.e.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).topMargin += AIOUtils.dp2px(1.5F, this.this$0.getResources());
+        ((RelativeLayout.LayoutParams)localObject).topMargin += AIOUtils.a(1.5F, this.this$0.getResources());
         this.this$0.e.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }

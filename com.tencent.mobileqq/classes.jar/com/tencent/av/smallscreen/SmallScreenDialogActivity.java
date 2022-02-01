@@ -1,20 +1,16 @@
 package com.tencent.av.smallscreen;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import lzd;
-import lze;
-import maf;
 import mqq.app.BaseActivity;
 
 public class SmallScreenDialogActivity
   extends BaseActivity
 {
-  private lzd a;
+  private DialogModelBase a = null;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -38,14 +34,14 @@ public class SmallScreenDialogActivity
     super.requestWindowFeature(1);
     int i = getIntent().getIntExtra("tag_model", 0);
     if (i == 0) {
-      this.a = new lze(this);
+      this.a = new FloatWindowPrivacyModel(this);
     }
     while (this.a != null)
     {
       this.a.a(paramBundle);
       return;
       if (1 == i) {
-        this.a = new maf(this);
+        this.a = new WTDialogModel(this);
       } else {
         this.a = null;
       }
@@ -87,7 +83,7 @@ public class SmallScreenDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenDialogActivity
  * JD-Core Version:    0.7.0.1
  */

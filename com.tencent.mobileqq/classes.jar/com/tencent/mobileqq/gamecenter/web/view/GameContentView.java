@@ -4,15 +4,14 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import avgy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.gamecenter.view.GameSessionView;
 
 public class GameContentView
   extends LinearLayout
 {
-  private avgy jdField_a_of_type_Avgy;
   GameSessionView jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView;
+  private GameContentView.UiRefresh jdField_a_of_type_ComTencentMobileqqGamecenterWebViewGameContentView$UiRefresh;
   
   public GameContentView(Context paramContext)
   {
@@ -39,7 +38,7 @@ public class GameContentView
   private void e()
   {
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.a(BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_Avgy);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.a(BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewGameContentView$UiRefresh);
   }
   
   public int a()
@@ -54,7 +53,7 @@ public class GameContentView
   
   public void a()
   {
-    this.jdField_a_of_type_Avgy = null;
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewGameContentView$UiRefresh = null;
   }
   
   public void b()
@@ -65,18 +64,18 @@ public class GameContentView
   public void c()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.b();
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.c();
     }
   }
   
-  public void setUiRefresh(avgy paramavgy)
+  public void setUiRefresh(GameContentView.UiRefresh paramUiRefresh)
   {
-    this.jdField_a_of_type_Avgy = paramavgy;
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewGameContentView$UiRefresh = paramUiRefresh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.view.GameContentView
  * JD-Core Version:    0.7.0.1
  */

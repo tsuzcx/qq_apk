@@ -12,15 +12,15 @@ public final class MetaMaterial
   static Map<String, String> cache_additionalFields;
   static MetaAdditionalPackage cache_additionalPackage = new MetaAdditionalPackage();
   static MetaSdkInfo cache_sdkInfo = new MetaSdkInfo();
-  public Map<String, String> additionalFields;
-  public MetaAdditionalPackage additionalPackage;
+  public Map<String, String> additionalFields = null;
+  public MetaAdditionalPackage additionalPackage = null;
   public String id = "";
   public String packageMd5 = "";
   public String packageUrl = "";
-  public MetaSdkInfo sdkInfo;
-  public int thumbHeight;
+  public MetaSdkInfo sdkInfo = null;
+  public int thumbHeight = 0;
   public String thumbUrl = "";
-  public int thumbWidth;
+  public int thumbWidth = 0;
   
   static
   {
@@ -85,7 +85,7 @@ public final class MetaMaterial
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial
  * JD-Core Version:    0.7.0.1
  */

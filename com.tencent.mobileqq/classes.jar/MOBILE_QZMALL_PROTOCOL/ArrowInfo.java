@@ -8,7 +8,7 @@ public final class ArrowInfo
   extends JceStruct
 {
   static LocationInfo cache_stLocationInfo = new LocationInfo();
-  public LocationInfo stLocationInfo;
+  public LocationInfo stLocationInfo = null;
   public String strUrl = "";
   
   public ArrowInfo() {}

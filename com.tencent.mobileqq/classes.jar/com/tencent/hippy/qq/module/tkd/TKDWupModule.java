@@ -4,11 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import aogi;
-import aogk;
-import bhcu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.UniteSearchHandler;
+import com.tencent.mobileqq.app.UniteSearchObserver;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyGlobalConfigs;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
@@ -25,7 +25,7 @@ public class TKDWupModule
   private static final String TAG = "HippyQQWupModule";
   protected QQAppInterface app;
   protected BroadcastReceiver mAccountChangedReceiver = new TKDWupModule.2(this);
-  protected aogk mUniteSearchObserver = new TKDWupModule.1(this);
+  protected UniteSearchObserver mUniteSearchObserver = new TKDWupModule.1(this);
   private Integer requestId;
   private TKDWupModule.HippyWupCallbackManager wupCallbackManager;
   
@@ -67,14 +67,14 @@ public class TKDWupModule
     if (localObject == null) {
       paramHippyMap = "";
     }
-    paramHippyMap = bhcu.decode(paramHippyMap, 0);
+    paramHippyMap = Base64Util.decode(paramHippyMap, 0);
     Object localObject = new TKDWupUniPacket();
     ((TKDWupUniPacket)localObject).setServantName(str1);
     ((TKDWupUniPacket)localObject).setFuncName(str2);
     ((TKDWupUniPacket)localObject).setEncodeName("UTF-8");
     ((TKDWupUniPacket)localObject).setRequestId(this.requestId.intValue());
     ((TKDWupUniPacket)localObject).putRawRequestData(str3, str4, paramHippyMap);
-    new aogi((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(((TKDWupUniPacket)localObject).encode(), this.wupCallbackManager, this.requestId);
+    new UniteSearchHandler((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(((TKDWupUniPacket)localObject).encode(), this.wupCallbackManager, this.requestId);
   }
   
   public void destroy()
@@ -113,7 +113,7 @@ public class TKDWupModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDWupModule
  * JD-Core Version:    0.7.0.1
  */

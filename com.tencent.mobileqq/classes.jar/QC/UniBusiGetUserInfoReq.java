@@ -9,11 +9,11 @@ public final class UniBusiGetUserInfoReq
 {
   static UniBusiUsingUid cache_relateUIDInfo = new UniBusiUsingUid();
   static LoginInfo cache_stLogin = new LoginInfo();
-  public int appid;
-  public int pageSize;
-  public UniBusiUsingUid relateUIDInfo;
-  public LoginInfo stLogin;
-  public int startIndex;
+  public int appid = 0;
+  public int pageSize = 0;
+  public UniBusiUsingUid relateUIDInfo = null;
+  public LoginInfo stLogin = null;
+  public int startIndex = 0;
   
   public UniBusiGetUserInfoReq() {}
   

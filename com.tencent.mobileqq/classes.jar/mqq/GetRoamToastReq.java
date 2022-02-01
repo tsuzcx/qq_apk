@@ -8,7 +8,7 @@ public final class GetRoamToastReq
   extends JceStruct
 {
   public String sKey = "";
-  public long uUin;
+  public long uUin = 0L;
   
   public GetRoamToastReq() {}
   

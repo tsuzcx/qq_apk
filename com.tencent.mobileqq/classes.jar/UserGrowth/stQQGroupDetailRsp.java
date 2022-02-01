@@ -10,7 +10,7 @@ public final class stQQGroupDetailRsp
   public String msg = "";
   public String schema = "";
   public String signature = "";
-  public int status;
+  public int status = 0;
   
   public stQQGroupDetailRsp() {}
   

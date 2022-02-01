@@ -1,30 +1,29 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahri;
 import android.app.Activity;
 import android.util.Pair;
 import android.util.SparseArray;
-import bdla;
+import com.tencent.biz.qrcode.activity.ScannerUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zmk;
 
-public class AIOGalleryScene$21
+class AIOGalleryScene$21
   implements Runnable
 {
-  public AIOGalleryScene$21(ahri paramahri, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
+  AIOGalleryScene$21(AIOGalleryScene paramAIOGalleryScene, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if ((ahri.y(this.this$0) == null) || (ahri.z(this.this$0).isFinishing())) {
+    if ((AIOGalleryScene.y(this.this$0) == null) || (AIOGalleryScene.z(this.this$0).isFinishing())) {
       return;
     }
     Object localObject;
     String str1;
     String str2;
-    if (zmk.a(this.jdField_a_of_type_Int))
+    if (ScannerUtils.a(this.jdField_a_of_type_Int))
     {
       localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
       if (!(localObject instanceof Pair)) {
@@ -55,9 +54,9 @@ public class AIOGalleryScene$21
             if (localObject == null)
             {
               localObject = "";
-              ahri.a(this.this$0, 2131692682, 2130840219, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-              bdla.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
-              if (zmk.b(this.jdField_a_of_type_Int))
+              AIOGalleryScene.a(this.this$0, 2131692820, 2130840310, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+              ReportController.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
+              if (ScannerUtils.b(this.jdField_a_of_type_Int))
               {
                 localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
                 if (!(localObject instanceof String)) {
@@ -92,8 +91,8 @@ public class AIOGalleryScene$21
             break label285;
           }
           localObject = "";
-          ahri.a(this.this$0, 2131692681, 2130840218, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-          bdla.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
+          AIOGalleryScene.a(this.this$0, 2131692819, 2130840309, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+          ReportController.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
           this.this$0.a.updateUI();
           return;
         }
@@ -112,7 +111,7 @@ public class AIOGalleryScene$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.21
  * JD-Core Version:    0.7.0.1
  */

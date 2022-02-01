@@ -26,6 +26,7 @@ public class ActivityResultManager
   public static final int ACTION_REQUEST_OPEN_GROUP_SELECTMEMBERS = 10;
   public static final int ACTION_REQUEST_PERMISSION = 9527;
   public static final int ACTION_REQUEST_PERMISSION_ACCESS_FINE_LOCATION = 9528;
+  public static final int ACTION_REQUEST_REDENVELOPE_CLOSEWEBVIEW = 11007;
   public static final int ACTION_REQUEST_SELECT_PHOTO = 8;
   public static final int ACTION_REQUEST_SHARE = 7;
   public static final String TAG = "ActivityResultManager";

@@ -1,24 +1,32 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
-import bmux;
-import com.tencent.common.app.BaseApplicationImpl;
-import qdc;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-public class VideoHandler$8
-  implements Runnable
+class VideoHandler$8
+  extends AnimatorListenerAdapter
 {
-  public VideoHandler$8(qdc paramqdc) {}
+  VideoHandler$8(VideoHandler paramVideoHandler) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (BaseApplicationImpl.sProcessId != 9) {
-      bmux.a(BaseApplicationImpl.getContext());
+    super.onAnimationEnd(paramAnimator);
+    VideoHandler.a(this.a).setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
     }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.handlers.VideoHandler.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package cooperation.qqreader.host.colornote;
 
 import android.content.Context;
-import aqnv;
-import aqos;
-import aqrl;
+import com.tencent.mobileqq.colornote.ColorNoteHelper;
+import com.tencent.mobileqq.colornote.ipc.ColorNoteQIPCModule;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
 
 public class ReaderColorNoteUtils
 {
@@ -12,22 +12,22 @@ public class ReaderColorNoteUtils
   
   public static void deleteColorNote(int paramInt, String paramString)
   {
-    aqnv.b(paramInt, paramString);
+    ColorNoteHelper.b(paramInt, paramString);
   }
   
   public static boolean getSyncState()
   {
-    return aqos.a().b();
+    return ColorNoteQIPCModule.a().b();
   }
   
   public static void sendUpdateSmallScreenStateBroadcast(Context paramContext, boolean paramBoolean)
   {
-    aqrl.a(paramContext, 2, paramBoolean);
+    ColorNoteSmallScreenUtil.a(paramContext, 2, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.colornote.ReaderColorNoteUtils
  * JD-Core Version:    0.7.0.1
  */

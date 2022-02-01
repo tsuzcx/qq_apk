@@ -4,11 +4,11 @@ import android.graphics.Canvas;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import blhu;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.itemtouchhelper.ItemTouchHelper.Callback;
 
 class DragRecyclerView$4
-  extends blhu
+  extends ItemTouchHelper.Callback
 {
   DragRecyclerView$4(DragRecyclerView paramDragRecyclerView) {}
   

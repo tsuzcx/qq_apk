@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
-import baij;
-import baim;
-import bhhd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.transaction.Transaction;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qqaudio.audioprocessor.AudioCompositeProcessor;
+import com.tencent.mobileqq.qqaudio.audioprocessor.IAudioProcessor.ProcessData;
+import com.tencent.mobileqq.utils.RecordParams;
 import com.tencent.mobileqq.utils.SilkCodecWrapper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -30,17 +30,17 @@ public class PttSliceUploadProcessor
   private static final float BYTES_MSECOND = 32.0F;
   private static final int BYTES_SECOND = 32000;
   public static final int COMMAND_ID_PTT_SLICE_TRANS = 68;
-  private static final byte[] HEAD = bhhd.a(1, 16000);
+  private static final byte[] HEAD = RecordParams.a(1, 16000);
   private static final int SIMPLE_RATE = 16000;
   public static final String TAG = "PttSliceUploadProcessor";
   private SmartPttTranHelper.PttSliceInfoBean mCurInfo;
-  private int offset;
+  private int offset = 0;
   private String pcmPath;
-  private baim processor;
+  private AudioCompositeProcessor processor;
   private String result = "";
   private Transaction trans;
-  private long vadSegEndPos;
-  private long vadSegStartPos;
+  private long vadSegEndPos = 0L;
+  private long vadSegStartPos = 0L;
   private String voiceID;
   
   public PttSliceUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
@@ -80,7 +80,7 @@ public class PttSliceUploadProcessor
       Object localObject = new byte[(int)(this.vadSegEndPos - this.vadSegStartPos)];
       paramInt = this.mRaf.read((byte[])localObject, 0, (int)(this.vadSegEndPos - this.vadSegStartPos));
       localObject = this.processor.a((byte[])localObject, 0, paramInt);
-      if ((localObject == null) || (((baij)localObject).jdField_a_of_type_Int == 0))
+      if ((localObject == null) || (((IAudioProcessor.ProcessData)localObject).jdField_a_of_type_Int == 0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("PttSliceUploadProcessor", 2, "last p silk len is 0 ");
@@ -243,7 +243,7 @@ public class PttSliceUploadProcessor
           localPttSliceInfoBean.isLast = false;
           checkNextDataIsValid(localPttSliceInfoBean, i);
           localObject = this.processor.a((byte[])localObject, 0, i);
-          if ((localObject != null) && (((baij)localObject).jdField_a_of_type_Int != 0)) {
+          if ((localObject != null) && (((IAudioProcessor.ProcessData)localObject).jdField_a_of_type_Int != 0)) {
             break;
           }
           checkIsLast(localPttSliceInfoBean.isLast, false);
@@ -284,7 +284,7 @@ public class PttSliceUploadProcessor
   }
   
   /* Error */
-  private void writeToTmpFile(SmartPttTranHelper.PttSliceInfoBean paramPttSliceInfoBean, baij parambaij)
+  private void writeToTmpFile(SmartPttTranHelper.PttSliceInfoBean paramPttSliceInfoBean, IAudioProcessor.ProcessData paramProcessData)
   {
     // Byte code:
     //   0: aconst_null
@@ -314,21 +314,21 @@ public class PttSliceUploadProcessor
     //   47: invokevirtual 470	java/io/FileOutputStream:write	([B)V
     //   50: aload_0
     //   51: aload_0
-    //   52: getfield 129	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
+    //   52: getfield 60	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
     //   55: aload_2
-    //   56: getfield 125	baij:jdField_a_of_type_Int	I
+    //   56: getfield 127	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:jdField_a_of_type_Int	I
     //   59: getstatic 45	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:HEAD	[B
     //   62: arraylength
     //   63: iadd
     //   64: iadd
-    //   65: putfield 129	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
+    //   65: putfield 60	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
     //   68: aload_3
     //   69: aload_2
-    //   70: getfield 472	baij:jdField_a_of_type_ArrayOfByte	[B
+    //   70: getfield 472	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:jdField_a_of_type_ArrayOfByte	[B
     //   73: aload_2
-    //   74: getfield 475	baij:b	I
+    //   74: getfield 475	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:b	I
     //   77: aload_2
-    //   78: getfield 125	baij:jdField_a_of_type_Int	I
+    //   78: getfield 127	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:jdField_a_of_type_Int	I
     //   81: invokevirtual 478	java/io/FileOutputStream:write	([BII)V
     //   84: aload_3
     //   85: invokevirtual 481	java/io/FileOutputStream:flush	()V
@@ -338,15 +338,15 @@ public class PttSliceUploadProcessor
     //   93: invokevirtual 484	java/io/FileOutputStream:close	()V
     //   96: return
     //   97: aload_1
-    //   98: getfield 96	com/tencent/mobileqq/transfile/SmartPttTranHelper$PttSliceInfoBean:isLast	Z
+    //   98: getfield 102	com/tencent/mobileqq/transfile/SmartPttTranHelper$PttSliceInfoBean:isLast	Z
     //   101: ifne -33 -> 68
     //   104: aload_0
     //   105: aload_0
-    //   106: getfield 129	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
+    //   106: getfield 60	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
     //   109: aload_2
-    //   110: getfield 125	baij:jdField_a_of_type_Int	I
+    //   110: getfield 127	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:jdField_a_of_type_Int	I
     //   113: iadd
-    //   114: putfield 129	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
+    //   114: putfield 60	com/tencent/mobileqq/transfile/PttSliceUploadProcessor:offset	I
     //   117: goto -49 -> 68
     //   120: astore_2
     //   121: aload_3
@@ -397,7 +397,7 @@ public class PttSliceUploadProcessor
     //   start	length	slot	name	signature
     //   0	190	0	this	PttSliceUploadProcessor
     //   0	190	1	paramPttSliceInfoBean	SmartPttTranHelper.PttSliceInfoBean
-    //   0	190	2	parambaij	baij
+    //   0	190	2	paramProcessData	IAudioProcessor.ProcessData
     //   14	157	3	localObject1	Object
     //   175	4	3	localObject2	Object
     //   1	184	4	localObject3	Object
@@ -467,7 +467,7 @@ public class PttSliceUploadProcessor
     //   45: invokevirtual 510	java/io/FileInputStream:close	()V
     //   48: aload_1
     //   49: astore_3
-    //   50: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   50: invokestatic 86	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   53: ifeq +32 -> 85
     //   56: ldc 22
     //   58: iconst_2
@@ -480,7 +480,7 @@ public class PttSliceUploadProcessor
     //   73: invokestatic 518	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   76: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   82: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   85: aload_3
     //   86: areturn
     //   87: astore_3
@@ -503,7 +503,7 @@ public class PttSliceUploadProcessor
     //   117: aload 4
     //   119: astore_3
     //   120: aload 7
-    //   122: invokestatic 523	bkvq:a	(Ljava/io/File;)Ljava/lang/String;
+    //   122: invokestatic 523	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
     //   125: astore_1
     //   126: aload_1
     //   127: ifnull +14 -> 141
@@ -527,7 +527,7 @@ public class PttSliceUploadProcessor
     //   160: astore_1
     //   161: aload_1
     //   162: astore_3
-    //   163: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   163: invokestatic 86	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   166: ifeq +32 -> 198
     //   169: aload_1
     //   170: astore_3
@@ -541,7 +541,7 @@ public class PttSliceUploadProcessor
     //   187: aload 5
     //   189: invokevirtual 382	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   192: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   195: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   195: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   198: aload 6
     //   200: astore_3
     //   201: aload_1
@@ -644,7 +644,7 @@ public class PttSliceUploadProcessor
     } while (localFile == null);
     this.mFileSize = localFile.length();
     this.voiceID = this.mMd5Str;
-    this.processor = new baim();
+    this.processor = new AudioCompositeProcessor();
     this.processor.a(new SilkCodecWrapper(BaseApplication.getContext()));
     try
     {

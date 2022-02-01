@@ -10,7 +10,7 @@ public final class guest_mainpage_rsp
 {
   static sweet_rsp_comm cache_rsp_comm = new sweet_rsp_comm();
   public String jump_url = "";
-  public sweet_rsp_comm rsp_comm;
+  public sweet_rsp_comm rsp_comm = null;
   
   public guest_mainpage_rsp() {}
   

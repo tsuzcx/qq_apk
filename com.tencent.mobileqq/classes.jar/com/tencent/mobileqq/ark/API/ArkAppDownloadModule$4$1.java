@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.ark.API;
 
-import aprm;
-import aprs;
-
-public class ArkAppDownloadModule$4$1
+class ArkAppDownloadModule$4$1
   implements Runnable
 {
-  public ArkAppDownloadModule$4$1(aprs paramaprs) {}
+  ArkAppDownloadModule$4$1(ArkAppDownloadModule.4 param4) {}
   
   public void run()
   {
-    aprm.a(this.a.jdField_a_of_type_Aprm, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Double, this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
+    ArkAppDownloadModule.a(this.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDownloadModule, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Double, this.a.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams);
   }
 }
 

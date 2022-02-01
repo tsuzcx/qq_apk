@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.os.Bundle;
-import bisg;
 import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.widget.QQBlur.OnDrawBgListener;
 
 class BaseChatPie$6
-  implements bisg
+  implements QQBlur.OnDrawBgListener
 {
   BaseChatPie$6(BaseChatPie paramBaseChatPie) {}
   
-  public void afterDraw(Bundle paramBundle)
+  public void a(Bundle paramBundle)
   {
-    this.this$0.listView.b(true);
+    this.a.a.b(false);
   }
   
-  public void beforeDraw(Bundle paramBundle)
+  public void b(Bundle paramBundle)
   {
-    this.this$0.listView.b(false);
+    this.a.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.6
  * JD-Core Version:    0.7.0.1
  */

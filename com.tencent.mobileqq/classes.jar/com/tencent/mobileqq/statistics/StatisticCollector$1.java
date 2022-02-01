@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 class StatisticCollector$1
   implements Runnable
@@ -19,7 +19,7 @@ class StatisticCollector$1
     Object localObject1;
     if (i > 0)
     {
-      localObject1 = BaseApplicationImpl.sApplication;
+      localObject1 = MobileQQ.sMobileQQ;
       if (localObject1 == null) {}
     }
     try
@@ -28,7 +28,7 @@ class StatisticCollector$1
       if ((localObject1 != null) && (((PackageInfo)localObject1).versionName != null))
       {
         localObject1 = ((PackageInfo)localObject1).versionName + "." + (((PackageInfo)localObject1).versionCode + i);
-        CrashReport.setProductVersion(BaseApplicationImpl.getApplication(), (String)localObject1);
+        CrashReport.setProductVersion(MobileQQ.sMobileQQ, (String)localObject1);
       }
       return;
     }

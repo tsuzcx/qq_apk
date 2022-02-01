@@ -4,18 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import biiq;
+import com.tencent.biz.AuthorizeConfig;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.qphone.base.util.QLog;
-import nro;
 
-public class SwiftWebAccelerator$5
+class SwiftWebAccelerator$5
   implements Runnable
 {
-  public SwiftWebAccelerator$5(biiq parambiiq, long paramLong, Bundle paramBundle) {}
+  SwiftWebAccelerator$5(SwiftWebAccelerator paramSwiftWebAccelerator, long paramLong, Bundle paramBundle) {}
   
   public void run()
   {
@@ -25,17 +24,17 @@ public class SwiftWebAccelerator$5
     InnerDns.getInstance();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:init inner-dns cost " + (l - this.jdField_a_of_type_Long) + "ms.");
     l = System.currentTimeMillis();
-    nro localnro = nro.a(false);
-    localnro.a("https://www.qq.com/", "foo.bar");
-    localnro.a("skey");
-    localnro.a("pskey");
-    localnro.a("pt4_token");
-    localnro.a("a1");
-    localnro.a("a2");
-    localnro.b("https://www.qq.com/");
-    localnro.a();
-    localnro.b();
-    localnro.e();
+    AuthorizeConfig localAuthorizeConfig = AuthorizeConfig.a(false);
+    localAuthorizeConfig.a("https://www.qq.com/", "foo.bar");
+    localAuthorizeConfig.a("skey");
+    localAuthorizeConfig.a("pskey");
+    localAuthorizeConfig.a("pt4_token");
+    localAuthorizeConfig.a("a1");
+    localAuthorizeConfig.a("a2");
+    localAuthorizeConfig.a("https://www.qq.com/");
+    localAuthorizeConfig.a();
+    localAuthorizeConfig.b();
+    localAuthorizeConfig.e();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:load domain white list config, cost " + (System.currentTimeMillis() - l) + "ms.");
     l = System.currentTimeMillis();
     if (WebAccelerateHelper.getInstance().isPreGetKey()) {
@@ -51,7 +50,7 @@ public class SwiftWebAccelerator$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.5
  * JD-Core Version:    0.7.0.1
  */

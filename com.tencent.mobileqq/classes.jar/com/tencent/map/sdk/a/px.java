@@ -25,7 +25,7 @@ public final class px
     setSurfaceTextureListener(this);
   }
   
-  protected final boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
+  public final boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
     if ((this.a != null) && (this.a.a(paramMotionEvent))) {
       return true;
@@ -149,7 +149,7 @@ public final class px
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.px
  * JD-Core Version:    0.7.0.1
  */

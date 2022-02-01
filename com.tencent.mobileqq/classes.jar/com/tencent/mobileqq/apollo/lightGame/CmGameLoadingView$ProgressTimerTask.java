@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.lightGame;
 
 import android.os.Message;
-import bkys;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import java.util.TimerTask;
 
 public class CmGameLoadingView$ProgressTimerTask
@@ -34,7 +34,7 @@ public class CmGameLoadingView$ProgressTimerTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.ProgressTimerTask
  * JD-Core Version:    0.7.0.1
  */

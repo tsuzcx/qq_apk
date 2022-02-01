@@ -11,20 +11,20 @@ class ReadInJoyNewFeedsActivity$16
   {
     if (this.a <= 0)
     {
-      this.this$0.a.setText(2131719161);
+      this.this$0.a.setText(2131719718);
       return;
     }
     if (this.a > 99)
     {
-      this.this$0.a.setText(String.format("%s(%d+)", new Object[] { this.this$0.getString(2131719161), Integer.valueOf(99) }));
+      this.this$0.a.setText(String.format("%s(%d+)", new Object[] { this.this$0.getString(2131719718), Integer.valueOf(99) }));
       return;
     }
-    this.this$0.a.setText(String.format("%s(%d)", new Object[] { this.this$0.getString(2131719161), Integer.valueOf(this.a) }));
+    this.this$0.a.setText(String.format("%s(%d)", new Object[] { this.this$0.getString(2131719718), Integer.valueOf(this.a) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.16
  * JD-Core Version:    0.7.0.1
  */

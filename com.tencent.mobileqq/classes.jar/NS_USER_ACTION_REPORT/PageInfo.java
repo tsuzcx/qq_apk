@@ -10,7 +10,7 @@ public final class PageInfo
 {
   static ArrayList<ItemInfo> cache_item_infos = new ArrayList();
   public String appid = "";
-  public ArrayList<ItemInfo> item_infos;
+  public ArrayList<ItemInfo> item_infos = null;
   public String page_id = "";
   
   static

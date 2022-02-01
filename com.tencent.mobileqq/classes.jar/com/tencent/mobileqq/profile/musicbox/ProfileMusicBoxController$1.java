@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.profile.musicbox;
 
-import aztn;
 import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
 
-public class ProfileMusicBoxController$1
+class ProfileMusicBoxController$1
   implements Runnable
 {
-  public ProfileMusicBoxController$1(aztn paramaztn, boolean paramBoolean) {}
+  ProfileMusicBoxController$1(ProfileMusicBoxController paramProfileMusicBoxController, boolean paramBoolean) {}
   
   public void run()
   {
-    if (aztn.a(this.this$0) != null) {
-      aztn.b(this.this$0).setPlayState(this.a);
+    if (ProfileMusicBoxController.a(this.this$0) != null) {
+      ProfileMusicBoxController.b(this.this$0).setPlayState(this.a);
     }
   }
 }

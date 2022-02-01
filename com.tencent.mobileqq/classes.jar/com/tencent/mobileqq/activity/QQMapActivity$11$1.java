@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aeqr;
-
-public class QQMapActivity$11$1
+class QQMapActivity$11$1
   implements Runnable
 {
-  public QQMapActivity$11$1(aeqr paramaeqr) {}
+  QQMapActivity$11$1(QQMapActivity.11 param11) {}
   
   public void run()
   {
@@ -15,7 +13,7 @@ public class QQMapActivity$11$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.11.1
  * JD-Core Version:    0.7.0.1
  */

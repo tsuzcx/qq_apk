@@ -1,11 +1,10 @@
 package cooperation.qzone.report.lp;
 
 import android.os.Build;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.PlatformInfor;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReportInfo_dc04171
   implements LpReportInfo
@@ -47,13 +46,13 @@ public class LpReportInfo_dc04171
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    LpReportUtils.safePut(localHashMap, "uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
     LpReportUtils.safePut(localHashMap, "appid", this.mAppid);
     LpReportUtils.safePut(localHashMap, "subappid", this.mSubAppid);
     LpReportUtils.safePut(localHashMap, "os_type", "Android");
     LpReportUtils.safePut(localHashMap, "app_name", "QQ");
     LpReportUtils.safePut(localHashMap, "device_name", Build.MODEL);
-    LpReportUtils.safePut(localHashMap, "imei", PlatformInfor.g().getIMEI());
+    LpReportUtils.safePut(localHashMap, "imei", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getIMEI());
     LpReportUtils.safePut(localHashMap, "guid", this.mGuid);
     LpReportUtils.safePut(localHashMap, "url", this.mUrl);
     LpReportUtils.safePut(localHashMap, "qq_pf_to", this.mQQPfTo);
@@ -68,7 +67,7 @@ public class LpReportInfo_dc04171
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc04171
  * JD-Core Version:    0.7.0.1
  */

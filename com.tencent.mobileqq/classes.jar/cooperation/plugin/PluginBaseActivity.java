@@ -1,6 +1,5 @@
 package cooperation.plugin;
 
-import Override;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -11,11 +10,11 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class PluginBaseActivity
   extends BasePluginActivity
 {
-  public boolean u = true;
+  public boolean v = true;
   
   protected String a()
   {
-    return getString(2131690676);
+    return getString(2131690778);
   }
   
   protected boolean a()
@@ -34,7 +33,7 @@ public class PluginBaseActivity
   
   public int g()
   {
-    return getResources().getDimensionPixelSize(2131299080);
+    return getResources().getDimensionPixelSize(2131299166);
   }
   
   public final Activity getActivity()
@@ -51,7 +50,7 @@ public class PluginBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.plugin.PluginBaseActivity
  * JD-Core Version:    0.7.0.1
  */

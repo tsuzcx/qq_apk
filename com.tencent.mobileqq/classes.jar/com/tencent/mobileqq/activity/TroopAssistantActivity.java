@@ -1,29 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import afbi;
-import afbj;
-import afbk;
-import afbl;
-import afbm;
-import afbn;
-import afbo;
-import afbp;
-import afbq;
-import afbr;
-import afbs;
-import afbt;
-import afbu;
-import afbv;
-import afbw;
-import afbx;
-import afby;
-import afbz;
-import alfv;
-import algc;
-import alik;
-import alje;
-import amkn;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -51,61 +27,76 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anrb;
-import anrc;
-import anvi;
-import anvk;
-import anvx;
-import anyz;
-import aofu;
-import awtz;
-import bdla;
-import bdlf;
-import bdls;
-import bgqj;
-import bgyd;
-import bhbx;
-import bhhi;
-import biso;
-import bjxa;
-import bkzi;
-import bkzz;
-import bleh;
-import blek;
 import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.gaudio.AVObserver;
+import com.tencent.biz.ProtoUtils;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.biz.qqstory.boundaries.StoryApi;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGetGroupDynamicEntrancePicture;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.troop.TroopDynamicConfig;
+import com.tencent.biz.qqstory.troop.TroopStoryManager;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.recent.OnRecentUserOpsListener;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.RecentUtil;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
 import com.tencent.mobileqq.activity.recent.data.RecentTroopAssistantItem;
+import com.tencent.mobileqq.adapter.TroopMessageSettingSingleAdapter;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopBusinessObserver;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.TroopAssistantData;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.statistics.StatisticTroopAssist;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
 import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 import com.tencent.mobileqq.transfile.C2CPttDownloadProcessor;
 import com.tencent.mobileqq.transfile.ForwardImageProcessor;
 import com.tencent.mobileqq.transfile.GroupPttDownloadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
+import com.tencent.mobileqq.troop.widget.TroopUsingTimeReport;
+import com.tencent.mobileqq.util.AccessibilityUtil;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.RoamSettingController;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.qidian.QidianManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
+import com.tencent.widget.PopupMenuDialog;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
 import com.tencent.widget.XListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
@@ -115,107 +106,99 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.ConcurrentHashMap;
-import lng;
 import mqq.os.MqqHandler;
-import ntb;
-import nwu;
-import weg;
-import wjp;
-import wjs;
-import wke;
-import ykv;
-import zci;
-import zcj;
+import mqq.util.WeakReference;
 
 public class TroopAssistantActivity
   extends IphoneTitleBarActivity
-  implements alfv, alje, GestureDetector.OnGestureListener, View.OnTouchListener, Observer
+  implements GestureDetector.OnGestureListener, View.OnTouchListener, OnRecentUserOpsListener, DragFrameLayout.OnDragModeChangedListener, Observer
 {
   public static final String a;
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  public long a;
-  public algc a;
-  public amkn a;
+  protected long a;
   GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   protected View a;
   protected Button a;
-  public ImageView a;
+  protected ImageView a;
   protected TextView a;
-  protected anrc a;
-  protected anvi a;
-  protected anyz a;
-  protected aofu a;
-  protected bgqj a;
-  public bhhi a;
-  public biso a;
-  protected bleh a;
+  private AVObserver jdField_a_of_type_ComTencentAvGaudioAVObserver = new TroopAssistantActivity.6(this);
+  protected RecentAdapter a;
   protected DragFrameLayout a;
-  ThreadExcutor.IThreadListener jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener = new afbp(this);
+  protected TroopMessageSettingSingleAdapter a;
+  protected BizTroopObserver a;
+  protected FriendListObserver a;
+  protected MessageObserver a;
+  ThreadExcutor.IThreadListener jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener = new TroopAssistantActivity.17(this);
+  protected TroopBusinessObserver a;
   protected TransProcessorHandler a;
+  protected TroopUsingTimeReport a;
+  protected RoamSettingController a;
+  protected QQProgressNotifier a;
+  protected PopupMenuDialog a;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
-  Comparator<RecentBaseData> jdField_a_of_type_JavaUtilComparator = new afbs(this);
-  public List<Long> a;
-  private lng jdField_a_of_type_Lng = new afbx(this);
-  public MqqHandler a;
+  Comparator<RecentBaseData> jdField_a_of_type_JavaUtilComparator = new TroopAssistantActivity.21(this);
+  protected List<Long> a;
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new TroopAssistantActivity.16(this);
   boolean jdField_a_of_type_Boolean;
   protected View b;
-  public Button b;
+  protected Button b;
   XListView b;
-  public String b;
+  protected String b;
   protected boolean b;
   protected View c;
-  public boolean c;
+  boolean c;
   protected View d;
-  public boolean d;
+  protected boolean d;
   protected boolean e;
   protected boolean f = true;
-  private boolean g;
-  private boolean h;
+  private boolean g = false;
+  private boolean h = false;
   private boolean i = true;
   
   static
   {
-    jdField_a_of_type_JavaLangString = weg.a("StoryGroupSvc.get_dynamic_entrance_info");
+    jdField_a_of_type_JavaLangString = StoryApi.a("StoryGroupSvc.get_dynamic_entrance_info");
   }
   
   public TroopAssistantActivity()
   {
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new afby(this);
-    this.jdField_a_of_type_Anyz = new afbz(this);
-    this.jdField_a_of_type_Anrc = new afbi(this);
-    this.jdField_a_of_type_Anvi = new afbj(this);
-    this.jdField_a_of_type_Aofu = new afbk(this);
-    this.jdField_a_of_type_MqqOsMqqHandler = new afbo(this);
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new TroopAssistantActivity.7(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new TroopAssistantActivity.8(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new TroopAssistantActivity.9(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new TroopAssistantActivity.10(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver = new TroopAssistantActivity.11(this);
   }
   
   private void a(String paramString1, String paramString2)
   {
     Resources localResources = getResources();
-    bkzi localbkzi = (bkzi)bkzz.a(this, null);
-    localbkzi.a(localResources.getString(2131719206, new Object[] { paramString2 }));
-    localbkzi.a(localResources.getString(2131697392), false);
-    localbkzi.a(localResources.getString(2131697397), false);
-    localbkzi.a(localResources.getString(2131697393), false);
-    localbkzi.a(localResources.getString(2131697389), false);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
+    localActionSheet.setMainTitle(localResources.getString(2131719761, new Object[] { paramString2 }));
+    localActionSheet.addRadioButton(localResources.getString(2131697646), false);
+    localActionSheet.addRadioButton(localResources.getString(2131697651), false);
+    localActionSheet.addRadioButton(localResources.getString(2131697647), false);
+    localActionSheet.addRadioButton(localResources.getString(2131697643), false);
     int j = this.app.getTroopMask(String.valueOf(paramString1));
     switch (j)
     {
     }
     for (;;)
     {
-      localbkzi.c(2131690697);
-      localbkzi.a(new afbr(this, j, paramString1, localbkzi));
-      localbkzi.show();
+      localActionSheet.addCancelButton(2131690800);
+      localActionSheet.setOnButtonClickListener(new TroopAssistantActivity.20(this, j, paramString1, localActionSheet));
+      localActionSheet.show();
       return;
-      localbkzi.d(0);
+      localActionSheet.setRadioButtonChecked(0);
       continue;
-      localbkzi.d(1);
+      localActionSheet.setRadioButtonChecked(1);
       continue;
-      localbkzi.d(2);
+      localActionSheet.setRadioButtonChecked(2);
       continue;
-      localbkzi.d(3);
+      localActionSheet.setRadioButtonChecked(3);
     }
   }
   
@@ -228,7 +211,7 @@ public class TroopAssistantActivity
       View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(j);
       if (localView != null)
       {
-        localView = localView.findViewById(2131380501);
+        localView = localView.findViewById(2131380944);
         if ((localView != null) && (localView.getVisibility() == 0))
         {
           this.jdField_b_of_type_Boolean = false;
@@ -244,11 +227,11 @@ public class TroopAssistantActivity
   private void e()
   {
     QLog.e("TroopAssistantActivity", 2, "initContentView");
-    if (awtz.a().c(this.app))
+    if (TroopAssistantManager.a().c(this.app))
     {
       QLog.e("TroopAssistantActivity", 2, "initContentView, initContentViewSettingModal");
       g();
-      bdla.b(this.app, "dc00899", "Grp_msg", "", "helper-guide", "exp_guide", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "dc00899", "Grp_msg", "", "helper-guide", "exp_guide", 0, 0, "", "", "", "");
       return;
     }
     QLog.e("TroopAssistantActivity", 2, "initContentView, initContentViewNormalModal");
@@ -258,29 +241,29 @@ public class TroopAssistantActivity
   private void f()
   {
     this.jdField_b_of_type_JavaLangString = "normal";
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379525));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131379421);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379948));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379844);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     if (!this.g)
     {
-      this.jdField_b_of_type_AndroidViewView = View.inflate(this, 2131562975, null);
+      this.jdField_b_of_type_AndroidViewView = View.inflate(this, 2131563124, null);
       ViewCompat.setImportantForAccessibility(this.jdField_b_of_type_AndroidViewView, 2);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131379418);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131379417);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376696));
+      this.jdField_d_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131379841);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131379840);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377091));
       this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.jdField_b_of_type_AndroidViewView);
-      View localView = View.inflate(this, 2131558961, null);
+      View localView = View.inflate(this, 2131559002, null);
       this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(localView);
-      this.jdField_a_of_type_Algc = new algc(this, this.app, this.jdField_a_of_type_ComTencentWidgetXListView, this, 1);
-      this.jdField_a_of_type_Algc.a(4);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Algc);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = new RecentAdapter(this, this.app, this.jdField_a_of_type_ComTencentWidgetXListView, this, 1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(4);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(this);
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
       }
-      this.jdField_a_of_type_Algc.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
       this.g = true;
     }
     h();
@@ -289,49 +272,48 @@ public class TroopAssistantActivity
   private void g()
   {
     this.jdField_b_of_type_JavaLangString = "batch_setting";
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379525));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131379421);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379948));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379844);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     Object localObject = new DisplayMetrics();
     getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
     int j = ((DisplayMetrics)localObject).heightPixels;
-    int k = AIOUtils.dp2px(154.0F, getBaseContext().getResources());
+    int k = AIOUtils.a(154.0F, getBaseContext().getResources());
     int m = getTitleBarHeight();
     int n = ImmersiveUtils.getStatusBarHeight(getBaseContext());
-    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379422));
+    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379845));
     this.jdField_b_of_type_ComTencentWidgetXListView.setMaxHeight(j - k - m - n);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379416);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131379417);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379418);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376696));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379839);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131379840);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379841);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377091));
     localObject = (TextView)this.jdField_d_of_type_AndroidViewView;
-    ((TextView)localObject).setText(2131719487);
+    ((TextView)localObject).setText(2131720051);
     ((TextView)localObject).setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131379419));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131379415));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new afbq(this));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new afbt(this));
-    this.jdField_a_of_type_Amkn = new amkn(this, this.app, null);
-    this.jdField_b_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Amkn);
-    localObject = awtz.a();
-    ((awtz)localObject).a(this.app, new afbu(this, (awtz)localObject));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131379842));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131379838));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new TroopAssistantActivity.2(this));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new TroopAssistantActivity.3(this));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingSingleAdapter = new TroopMessageSettingSingleAdapter(this, this.app, null);
+    this.jdField_b_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingSingleAdapter);
+    TroopAssistantManager.a().a(this.app, new TroopAssistantActivity.TroopProtocolObserver(new WeakReference(this)));
     h();
   }
   
   private void h()
   {
-    Object localObject = (zcj)this.app.getManager(QQManagerFactory.TROOP_STORY_MANAGER);
-    if ((localObject != null) && (((zcj)localObject).a != null) && (((zcj)localObject).a.jdField_a_of_type_Boolean))
+    Object localObject = (TroopStoryManager)this.app.getManager(QQManagerFactory.TROOP_STORY_MANAGER);
+    if ((localObject != null) && (((TroopStoryManager)localObject).a != null) && (((TroopStoryManager)localObject).a.jdField_a_of_type_Boolean))
     {
       this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new afbv(this));
+      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new TroopAssistantActivity.4(this));
       if (this.jdField_a_of_type_AndroidWidgetImageView != null)
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         localObject = new qqstory_group.ReqGetGroupDynamicEntrancePicture();
-        ((qqstory_group.ReqGetGroupDynamicEntrancePicture)localObject).version.set(ByteStringMicro.copyFromUtf8("8.4.10"));
-        ntb.a(this.app, new afbw(this), ((qqstory_group.ReqGetGroupDynamicEntrancePicture)localObject).toByteArray(), jdField_a_of_type_JavaLangString);
+        ((qqstory_group.ReqGetGroupDynamicEntrancePicture)localObject).version.set(ByteStringMicro.copyFromUtf8("8.5.5"));
+        ProtoUtils.a(this.app, new TroopAssistantActivity.5(this), ((qqstory_group.ReqGetGroupDynamicEntrancePicture)localObject).toByteArray(), jdField_a_of_type_JavaLangString);
       }
       return;
     }
@@ -348,77 +330,77 @@ public class TroopAssistantActivity
   private void j()
   {
     this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BuddyTransfileProcessor.class, C2CPicUploadProcessor.class, GroupPttDownloadProcessor.class, C2CPttDownloadProcessor.class, ForwardImageProcessor.class });
-    this.app.getTransFileController().addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+    ((ITransFileController)this.app.getRuntimeService(ITransFileController.class)).addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
   }
   
   private void k()
   {
     QLog.e("TroopAssistantActivity", 2, "initTitleBar");
-    setTitle(2131719501);
+    setTitle(2131720065);
     Object localObject = this.rightViewImg;
-    int j = 2130840365;
+    int j = 2130840478;
     if (this.e)
     {
-      ((TextView)findViewById(2131369278)).setTextColor(getResources().getColorStateList(2131167024));
-      j = 2130843770;
+      ((TextView)findViewById(2131369534)).setTextColor(getResources().getColorStateList(2131167031));
+      j = 2130843941;
     }
     ((ImageView)localObject).setImageResource(j);
-    ((ImageView)localObject).setContentDescription(getString(2131719733));
-    ((ImageView)localObject).setOnClickListener(new afbl(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369269));
+    ((ImageView)localObject).setContentDescription(getString(2131720311));
+    ((ImageView)localObject).setOnClickListener(new TroopAssistantActivity.12(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369525));
     b();
     if ("batch_setting".equals(this.jdField_b_of_type_JavaLangString)) {
       ((ImageView)localObject).setVisibility(8);
     }
     for (;;)
     {
-      localObject = (RelativeLayout)findViewById(2131376760);
+      localObject = (RelativeLayout)findViewById(2131377159);
       if (!this.e) {
         break;
       }
-      ((RelativeLayout)localObject).setBackgroundResource(2130850110);
+      ((RelativeLayout)localObject).setBackgroundResource(2130850508);
       return;
       ((ImageView)localObject).setVisibility(0);
     }
-    ((RelativeLayout)localObject).setBackgroundResource(2130850109);
+    ((RelativeLayout)localObject).setBackgroundResource(2130850507);
   }
   
   private void l()
   {
-    this.jdField_d_of_type_Boolean = awtz.a().b();
+    this.jdField_d_of_type_Boolean = TroopAssistantManager.a().b();
     Object localObject;
     if (this.jdField_d_of_type_Boolean) {
-      localObject = getString(2131719728);
+      localObject = getString(2131720306);
     }
-    for (int j = 2130842532;; j = 2130842533)
+    for (int j = 2130842678;; j = 2130842679)
     {
-      String str = getString(2131719734);
+      String str = getString(2131720312);
       ArrayList localArrayList = new ArrayList();
-      blek localblek = new blek();
-      localblek.jdField_a_of_type_Int = 0;
-      localblek.jdField_a_of_type_JavaLangString = ((String)localObject);
-      localblek.c = localblek.jdField_a_of_type_JavaLangString;
-      localblek.b = j;
-      localArrayList.add(localblek);
-      localObject = new blek();
-      ((blek)localObject).jdField_a_of_type_Int = 1;
-      ((blek)localObject).jdField_a_of_type_JavaLangString = str;
-      ((blek)localObject).c = ((blek)localObject).jdField_a_of_type_JavaLangString;
-      ((blek)localObject).b = 2130842530;
+      PopupMenuDialog.MenuItem localMenuItem = new PopupMenuDialog.MenuItem();
+      localMenuItem.jdField_a_of_type_Int = 0;
+      localMenuItem.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localMenuItem.c = localMenuItem.jdField_a_of_type_JavaLangString;
+      localMenuItem.b = j;
+      localArrayList.add(localMenuItem);
+      localObject = new PopupMenuDialog.MenuItem();
+      ((PopupMenuDialog.MenuItem)localObject).jdField_a_of_type_Int = 1;
+      ((PopupMenuDialog.MenuItem)localObject).jdField_a_of_type_JavaLangString = str;
+      ((PopupMenuDialog.MenuItem)localObject).c = ((PopupMenuDialog.MenuItem)localObject).jdField_a_of_type_JavaLangString;
+      ((PopupMenuDialog.MenuItem)localObject).b = 2130842676;
       localArrayList.add(localObject);
-      this.jdField_a_of_type_Bleh = bleh.a(this, localArrayList, new afbm(this), new afbn(this));
+      this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.a(this, localArrayList, new TroopAssistantActivity.13(this), new TroopAssistantActivity.14(this));
       localObject = super.getTitleBarView();
-      this.jdField_a_of_type_Bleh.showAsDropDown((View)localObject, ((View)localObject).getWidth() - getResources().getDimensionPixelSize(2131298811) - getResources().getDimensionPixelSize(2131298807), getResources().getDimensionPixelSize(2131298808));
-      bgyd.b(findViewById(2131379112), false);
+      this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.showAsDropDown((View)localObject, ((View)localObject).getWidth() - getResources().getDimensionPixelSize(2131298898) - getResources().getDimensionPixelSize(2131298894), getResources().getDimensionPixelSize(2131298895));
+      AccessibilityUtil.b(findViewById(2131379546), false);
       return;
-      localObject = getString(2131719729);
+      localObject = getString(2131720307);
     }
   }
   
   protected List<RecentBaseData> a()
   {
     QLog.e("TroopAssistantActivity", 2, "makeRecetBaseData");
-    List localList = awtz.a().b(this.app);
+    List localList = TroopAssistantManager.a().b(this.app);
     int j;
     ArrayList localArrayList;
     HashSet localHashSet;
@@ -472,18 +454,18 @@ public class TroopAssistantActivity
   
   public void a()
   {
-    if (awtz.a().a(this.app) == true) {
-      awtz.a().a(this.app.getEntityManagerFactory().createEntityManager(), this.app);
+    if (TroopAssistantManager.a().a(this.app) == true) {
+      TroopAssistantManager.a().a(this.app.getEntityManagerFactory().createEntityManager(), this.app);
     }
-    addObserver(this.jdField_a_of_type_Anvi);
-    addObserver(this.jdField_a_of_type_Anyz);
-    addObserver(this.jdField_a_of_type_Aofu);
-    addObserver(this.jdField_a_of_type_Anrc);
+    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
     this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
     this.app.getMessageFacade().addObserver(this);
-    this.app.getAVNotifyCenter().addObserver(this.jdField_a_of_type_Lng);
-    if (this.jdField_a_of_type_Algc != null) {
-      this.jdField_a_of_type_Algc.a(this.app);
+    this.app.getAVNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentAvGaudioAVObserver);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.app);
     }
   }
   
@@ -503,11 +485,11 @@ public class TroopAssistantActivity
     String str = ((TroopManager)localObject).d(paramRecentBaseData.getRecentUserUin());
     if (!TextUtils.isEmpty(str))
     {
-      localanrb = (anrb)this.app.getBusinessHandler(BusinessHandlerFactory.BIZ_TROOP_HANDLER);
+      localBizTroopHandler = (BizTroopHandler)this.app.getBusinessHandler(BusinessHandlerFactory.BIZ_TROOP_HANDLER);
       if (paramBoolean)
       {
         paramInt = 0;
-        if (localanrb.a(str, paramInt)) {
+        if (localBizTroopHandler.a(str, paramInt)) {
           break label72;
         }
       }
@@ -517,7 +499,7 @@ public class TroopAssistantActivity
     {
       for (;;)
       {
-        anrb localanrb;
+        BizTroopHandler localBizTroopHandler;
         return;
         paramInt = 1;
       }
@@ -527,7 +509,7 @@ public class TroopAssistantActivity
       {
       default: 
         paramInt = 0;
-        localObject = new bdlf(this.app).a("P_CliOper").b("Grp_msg").c("Msglist").d("Clk_top_right");
+        localObject = new ReportTask(this.app).a("P_CliOper").b("Grp_msg").c("Msglist").d("Clk_top_right");
         str = paramRecentBaseData.getRecentUserUin();
         if (!paramBoolean) {
           break;
@@ -535,7 +517,7 @@ public class TroopAssistantActivity
       }
       for (paramRecentBaseData = "0";; paramRecentBaseData = "1")
       {
-        ((bdlf)localObject).a(new String[] { str, String.valueOf(paramInt), paramRecentBaseData }).a();
+        ((ReportTask)localObject).a(new String[] { str, String.valueOf(paramInt), paramRecentBaseData }).a();
         return;
         paramInt = 1;
         break;
@@ -573,34 +555,34 @@ public class TroopAssistantActivity
     {
       return;
       j = paramView.getId();
-      if (j == 2131379421)
+      if (j == 2131379844)
       {
         this.jdField_c_of_type_Boolean = false;
-        if (this.jdField_a_of_type_Algc != null)
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null)
         {
-          this.jdField_a_of_type_Algc.a(4);
+          this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(4);
           d();
-          this.jdField_a_of_type_Algc.notifyDataSetChanged();
+          this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.notifyDataSetChanged();
         }
         paramView = new Intent(this, TroopAssisSettingActivity.class);
         paramView.setFlags(67108864);
         startActivity(paramView);
-        if (awtz.a().c()) {
-          awtz.a().f(this.app);
+        if (TroopAssistantManager.a().c()) {
+          TroopAssistantManager.a().f(this.app);
         }
-        bdla.b(this.app, "P_CliOper", "Grp_msg", "", "help_nav", "Clk_set", 0, 0, "", "", "", "");
+        ReportController.b(this.app, "P_CliOper", "Grp_msg", "", "help_nav", "Clk_set", 0, 0, "", "", "", "");
         return;
       }
-    } while (j != 2131379420);
+    } while (j != 2131379843);
     this.jdField_c_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Algc != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null)
     {
-      this.jdField_a_of_type_Algc.a(4);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(4);
       d();
-      this.jdField_a_of_type_Algc.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.notifyDataSetChanged();
       c();
     }
-    awtz.a().f(this.app);
+    TroopAssistantManager.a().f(this.app);
   }
   
   public void a(RecentBaseData paramRecentBaseData, String paramString)
@@ -613,20 +595,20 @@ public class TroopAssistantActivity
   
   void a(String paramString)
   {
-    awtz.a().b(paramString, this.app);
+    TroopAssistantManager.a().b(paramString, this.app);
     c();
-    alik.b(this.app, paramString, 1);
-    this.app.getMessageFacade().setReaded(paramString, 1);
+    RecentUtil.b(this.app, paramString, 1);
+    this.app.getMessageFacade().c(paramString, 1);
     paramString = this.app.getHandler(Conversation.class);
     if (paramString != null) {
       paramString.sendEmptyMessage(1014);
     }
   }
   
-  public void a(String paramString, int paramInt)
+  protected void a(String paramString, int paramInt)
   {
-    awtz.a().a(this.app, paramString, paramInt);
-    this.jdField_a_of_type_Bhhi.c.put(paramString, Boolean.valueOf(true));
+    TroopAssistantManager.a().a(this.app, paramString, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsRoamSettingController.c.put(paramString, Boolean.valueOf(true));
   }
   
   void a(String paramString1, int paramInt, String paramString2)
@@ -648,15 +630,15 @@ public class TroopAssistantActivity
       localIntent.putExtra("uintype", paramInt);
       localIntent.putExtra("uinname", paramString2);
       startActivity(localIntent);
-      this.jdField_a_of_type_Bgqj.b();
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport.b();
       return;
       if (paramInt == 0)
       {
-        paramString1 = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString1 + "");
+        paramString1 = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString1 + "");
         if (paramString1 != null)
         {
           localIntent.putExtra("cSpecialFlag", paramString1.cSpecialFlag);
-          if ((nwu.a(paramString1.cSpecialFlag)) || (bjxa.b(paramString1.cSpecialFlag)))
+          if ((CrmUtils.a(paramString1.cSpecialFlag)) || (QidianManager.b(paramString1.cSpecialFlag)))
           {
             localIntent.setClass(this, ChatActivity.class);
             localIntent.putExtra("chat_subType", 1);
@@ -672,16 +654,16 @@ public class TroopAssistantActivity
     paramString2 = getResources();
     int j = paramRecentBaseData.getRecentUserType();
     if (j == 1) {
-      if (bhbx.a(paramString1, paramString2.getString(alhd.a[2]))) {
+      if (Utils.a(paramString1, paramString2.getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.a[2]))) {
         a(j, paramRecentBaseData, false);
       }
     }
-    while ((paramRecentBaseData.getRecentUserType() != 1) || (!bhbx.a(paramString2.getString(alhd.a[1]), paramString1)))
+    while ((paramRecentBaseData.getRecentUserType() != 1) || (!Utils.a(paramString2.getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.a[1]), paramString1)))
     {
       do
       {
         return;
-      } while (!bhbx.a(paramString1, paramString2.getString(alhd.a[3])));
+      } while (!Utils.a(paramString1, paramString2.getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.a[3])));
       a(j, paramRecentBaseData, true);
       return;
     }
@@ -691,7 +673,7 @@ public class TroopAssistantActivity
   public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
     if (paramBoolean) {
-      bdla.b(this.app, "CliOper", "", "", "0X800419E", "0X800419E", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "CliOper", "", "", "0X800419E", "0X800419E", 0, 0, "", "", "", "");
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1)) {
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
@@ -711,7 +693,6 @@ public class TroopAssistantActivity
   void b()
   {
     if ((this.leftView == null) || (this.mLeftBackText == null) || (this.mLeftBackText == null)) {}
-    label102:
     do
     {
       return;
@@ -721,26 +702,23 @@ public class TroopAssistantActivity
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.leftView.setVisibility(8);
       this.mLeftBackIcon.setVisibility(0);
-      this.mLeftBackIcon.setContentDescription(anvx.a(2131714566));
+      this.mLeftBackIcon.setContentDescription(HardCodeUtil.a(2131715061));
       this.mLeftBackText.setVisibility(0);
       localObject1 = this.mLeftBackText;
       a((View)localObject1, 0, 0, 0, (int)(30.0F * this.mDensity + 0.5F));
-      if (localObject1 == null) {
-        break label307;
-      }
       localObject2 = this.app.getMessageFacade();
     } while (localObject2 == null);
-    ThreadManager.post(new TroopAssistantActivity.16(this, (QQMessageFacade)localObject2, (TextView)localObject1), 8, null, true);
+    ThreadManager.post(new TroopAssistantActivity.15(this, (QQMessageFacade)localObject2, (TextView)localObject1), 8, null, true);
     return;
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.leftView.setVisibility(0);
-    Object localObject1 = getResources().getColorStateList(2131167023);
+    Object localObject1 = getResources().getColorStateList(2131167030);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject1);
     Object localObject2 = (GradientDrawable)this.jdField_a_of_type_AndroidWidgetTextView.getBackground();
     if (localObject2 != null)
     {
       if (Build.VERSION.SDK_INT < 21) {
-        break label309;
+        break label305;
       }
       ((GradientDrawable)localObject2).setColor((ColorStateList)localObject1);
     }
@@ -750,19 +728,17 @@ public class TroopAssistantActivity
       if (!ThemeUtil.isNowThemeIsSimple(this.app, false, null))
       {
         localObject1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.dp2px(28.0F, getResources());
+        ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.a(28.0F, getResources());
         this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
         localObject1 = (RelativeLayout.LayoutParams)this.leftView.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.dp2px(5.0F, getResources());
+        ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.a(5.0F, getResources());
         this.leftView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       }
       this.mLeftBackIcon.setVisibility(8);
       this.mLeftBackText.setVisibility(8);
       localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
-      break label102;
-      label307:
       break;
-      label309:
+      label305:
       ((GradientDrawable)localObject2).setColor(((ColorStateList)localObject1).getDefaultColor());
     }
   }
@@ -772,21 +748,21 @@ public class TroopAssistantActivity
     return this.jdField_a_of_type_Int == -1;
   }
   
-  public void c()
+  void c()
   {
     QLog.e("TroopAssistantActivity", 2, "refreshTroopList:" + new Exception("this is a log").getStackTrace());
     QLog.e("TroopAssistantActivity", 2, "mIsRefreshing:" + this.h);
     if (this.h) {
       return;
     }
-    ThreadManager.excute(new TroopAssistantActivity.19(this), 32, this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
+    ThreadManager.excute(new TroopAssistantActivity.18(this), 32, this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
   }
   
-  public void d()
+  protected void d()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.jdField_a_of_type_Algc != null) && (this.jdField_d_of_type_AndroidViewView != null))
+    if ((this.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (this.jdField_d_of_type_AndroidViewView != null))
     {
-      if (!this.jdField_a_of_type_Algc.b()) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.b()) {
         break label41;
       }
       this.jdField_d_of_type_AndroidViewView.setVisibility(8);
@@ -821,20 +797,20 @@ public class TroopAssistantActivity
     this.jdField_a_of_type_Float = (ViewConfiguration.get(this).getScaledTouchSlop() * 2);
     try
     {
-      super.setContentView(2131562973);
+      super.setContentView(2131563122);
       getWindow().setBackgroundDrawable(null);
       setStatusBarBlue();
       this.e = ThemeUtil.isDefaultOrDIYTheme(false);
       this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this);
-      paramBundle = (LinearLayout)findViewById(2131379598);
+      paramBundle = (LinearLayout)findViewById(2131380024);
       paramBundle.setOnTouchListener(this);
       paramBundle.setLongClickable(true);
       e();
       k();
       a();
       j();
-      ykv.a("grp_help", "exp", 0, 0, new String[] { "", "", "", "" });
-      this.jdField_a_of_type_Bgqj = new bgqj(this.app, null, "Grp_time", "helper", "visit_time");
+      StoryReportor.a("grp_help", "exp", 0, 0, new String[] { "", "", "", "" });
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport = new TroopUsingTimeReport(this.app, null, "Grp_time", "helper", "visit_time");
       return true;
     }
     catch (Exception paramBundle)
@@ -847,34 +823,34 @@ public class TroopAssistantActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Bgqj != null) {
-      this.jdField_a_of_type_Bgqj.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport.b();
     }
     super.doOnDestroy();
     if (this.app == null) {
       return;
     }
-    this.app.getTransFileController().removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-    this.app.getAVNotifyCenter().deleteObserver(this.jdField_a_of_type_Lng);
-    removeObserver(this.jdField_a_of_type_Anvi);
-    removeObserver(this.jdField_a_of_type_Aofu);
-    removeObserver(this.jdField_a_of_type_Anyz);
-    removeObserver(this.jdField_a_of_type_Anrc);
+    ((ITransFileController)this.app.getRuntimeService(ITransFileController.class)).removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+    this.app.getAVNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentAvGaudioAVObserver);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
     if (this.app.getMessageFacade() != null) {
       this.app.getMessageFacade().deleteObserver(this);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this);
     }
-    if (this.jdField_a_of_type_Algc != null) {
-      this.jdField_a_of_type_Algc.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.b();
     }
     if (this.jdField_a_of_type_ComTencentWidgetXListView != null) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(null);
     }
-    this.jdField_a_of_type_Algc = null;
-    ((wjp)wjs.a(5)).c();
-    ((wke)wjs.a(2)).d();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = null;
+    ((StoryManager)SuperManager.a(5)).c();
+    ((UserManager)SuperManager.a(2)).d();
   }
   
   public void doOnPause()
@@ -883,16 +859,16 @@ public class TroopAssistantActivity
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a();
     }
-    if ((this.app != null) && (this.jdField_a_of_type_Algc != null))
+    if ((this.app != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null))
     {
-      Object localObject = this.jdField_a_of_type_Algc.getItem(0);
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.getItem(0);
       if ((localObject instanceof RecentBaseData))
       {
         localObject = (RecentBaseData)localObject;
-        localObject = this.app.getMessageFacade().getLastMessage(((RecentBaseData)localObject).getRecentUserUin(), ((RecentBaseData)localObject).getRecentUserType());
+        localObject = this.app.getMessageFacade().a(((RecentBaseData)localObject).getRecentUserUin(), ((RecentBaseData)localObject).getRecentUserType());
         if (localObject != null)
         {
-          awtz.a().a(this.app, ((QQMessageFacade.Message)localObject).time);
+          TroopAssistantManager.a().a(this.app, ((Message)localObject).time);
           localObject = this.app.getHandler(Conversation.class);
           if (localObject != null) {
             ((MqqHandler)localObject).sendEmptyMessage(1009);
@@ -907,7 +883,7 @@ public class TroopAssistantActivity
     QLog.e("TroopAssistantActivity", 2, "doOnResume");
     super.doOnResume();
     c();
-    this.jdField_a_of_type_Bgqj.a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport.a();
   }
   
   public boolean isWrapContent()
@@ -918,16 +894,16 @@ public class TroopAssistantActivity
   public boolean onBackEvent()
   {
     if (!this.jdField_a_of_type_Boolean) {
-      bdls.e(this, this.app.getCurrentAccountUin());
+      StatisticTroopAssist.e(this, this.app.getCurrentAccountUin());
     }
     for (;;)
     {
       return super.onBackEvent();
       c();
       if (this.jdField_b_of_type_Boolean) {
-        bdls.c(this, this.app.getCurrentAccountUin());
+        StatisticTroopAssist.c(this, this.app.getCurrentAccountUin());
       } else {
-        bdls.d(this, this.app.getCurrentAccountUin());
+        StatisticTroopAssist.d(this, this.app.getCurrentAccountUin());
       }
     }
   }
@@ -1045,7 +1021,7 @@ public class TroopAssistantActivity
     {
       paramObservable = (MessageRecord)paramObject;
       if (!paramObservable.isSendFromLocal()) {
-        runOnUiThread(new TroopAssistantActivity.20(this));
+        runOnUiThread(new TroopAssistantActivity.19(this));
       }
       if ((paramObservable.isSendFromLocal()) && (paramObservable.msgtype == -2002)) {
         return;
@@ -1057,7 +1033,7 @@ public class TroopAssistantActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity
  * JD-Core Version:    0.7.0.1
  */

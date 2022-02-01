@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.confess;
 
-import aqvp;
-
-public final class ConfessMsgUtil$2
+final class ConfessMsgUtil$2
   implements Runnable
 {
-  public ConfessMsgUtil$2(aqvp paramaqvp) {}
+  ConfessMsgUtil$2(FrdConfessInfo paramFrdConfessInfo) {}
   
   public void run()
   {

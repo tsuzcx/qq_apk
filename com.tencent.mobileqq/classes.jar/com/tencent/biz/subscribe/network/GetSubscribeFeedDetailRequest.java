@@ -6,6 +6,7 @@ import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailReq;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
 import NS_COMM.COMM.StCommonExt;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -47,7 +48,15 @@ public class GetSubscribeFeedDetailRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CertifiedAccountRead.StGetFeedDetailRsp localStGetFeedDetailRsp = new CertifiedAccountRead.StGetFeedDetailRsp();
-    localStGetFeedDetailRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStGetFeedDetailRsp.mergeFrom(paramArrayOfByte);
+      return localStGetFeedDetailRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStGetFeedDetailRsp;
   }
   
@@ -63,7 +72,7 @@ public class GetSubscribeFeedDetailRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest
  * JD-Core Version:    0.7.0.1
  */

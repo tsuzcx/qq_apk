@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.together.clockin;
 
 import android.graphics.drawable.Drawable;
-import beld;
 import com.tencent.mobileqq.activity.aio.item.RoundRectUrlImageView;
 
 class NoClockInView$1$1
@@ -11,8 +10,8 @@ class NoClockInView$1$1
   
   public void run()
   {
-    if ((beld.a(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView$1.this$0) != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
-      beld.a(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView$1.this$0).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if ((NoClockInView.a(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView$1.this$0) != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
+      NoClockInView.a(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView$1.this$0).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
   }
 }

@@ -4,7 +4,7 @@ public class SparseArrayCompat<E>
   implements Cloneable
 {
   private static final Object DELETED = new Object();
-  private boolean mGarbage;
+  private boolean mGarbage = false;
   private int[] mKeys;
   private int mSize;
   private Object[] mValues;
@@ -297,7 +297,7 @@ public class SparseArrayCompat<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v4.util.SparseArrayCompat
  * JD-Core Version:    0.7.0.1
  */

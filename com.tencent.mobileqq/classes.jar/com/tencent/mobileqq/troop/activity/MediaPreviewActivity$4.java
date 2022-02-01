@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.activity;
 
-import axno;
-import axny;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.nearby.FaceScoreUtils;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
 import java.util.ArrayList;
 
 class MediaPreviewActivity$4
@@ -17,7 +17,7 @@ class MediaPreviewActivity$4
     String str1;
     if (this.this$0.app != null)
     {
-      int j = ((axny)this.this$0.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).b();
+      int j = ((NearbyCardManager)this.this$0.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).b();
       if ((this.this$0.b <= 0) || (((MediaPreviewInfo)this.this$0.a.get(0)).a != 2)) {
         break label109;
       }
@@ -36,7 +36,7 @@ class MediaPreviewActivity$4
     label120:
     for (String str2 = "2";; str2 = "1")
     {
-      axno.a("clk_detail", "", new String[] { "", str1, "", str2 });
+      FaceScoreUtils.a("clk_detail", "", new String[] { "", str1, "", str2 });
       return;
       i = 0;
       break;

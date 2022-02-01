@@ -9,9 +9,9 @@ public final class cell_diss
   extends JceStruct
 {
   static ArrayList<s_likeman> cache_dissmans = new ArrayList();
-  public ArrayList<s_likeman> dissmans;
-  public int isdissed;
-  public int num;
+  public ArrayList<s_likeman> dissmans = null;
+  public int isdissed = 0;
+  public int num = 0;
   
   static
   {

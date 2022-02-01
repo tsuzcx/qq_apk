@@ -65,11 +65,8 @@ public final class PTSNodeVideo
             }
             break;
           case 1780884992: 
-            if (paramString.equals("pts-video:video-url"))
-            {
-              localObject1 = (PTSVideoView)getView();
-              Intrinsics.checkExpressionValueIsNotNull(localObject1, "view");
-              ((PTSVideoView)localObject1).setVideoUrl(String.valueOf(paramObject));
+            if (paramString.equals("pts-video:video-url")) {
+              ((PTSVideoView)getView()).setVideoUrl(String.valueOf(paramObject));
             }
             break;
           case 608867309: 
@@ -112,13 +109,13 @@ public final class PTSNodeVideo
     if (localObject2 != null)
     {
       i = ((Number)localObject2).intValue();
-      label520:
+      label509:
       localObject1 = StringsKt.toIntOrNull((String)((List)localObject1).get(1));
       if (localObject1 == null) {
-        break label807;
+        break label796;
       }
     }
-    label807:
+    label796:
     for (int j = ((Number)localObject1).intValue(); (i != -1) && (j != -1); j = -1)
     {
       ((PTSVideoView)getView()).setPlayIconSize(i, j);
@@ -159,13 +156,13 @@ public final class PTSNodeVideo
       ((PTSVideoView)getView()).setPlayIconUrl(String.valueOf(paramObject));
       break;
       i = -1;
-      break label520;
+      break label509;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeVideo
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ public final class RefreshVerifyCode
   extends JceStruct
 {
   static byte[] cache_vEncryptUsrInfo;
-  public byte bType;
-  public byte[] vEncryptUsrInfo;
+  public byte bType = 0;
+  public byte[] vEncryptUsrInfo = null;
   
   public RefreshVerifyCode() {}
   

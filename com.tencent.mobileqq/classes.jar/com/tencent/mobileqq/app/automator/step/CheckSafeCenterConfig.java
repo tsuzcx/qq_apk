@@ -10,13 +10,13 @@ public class CheckSafeCenterConfig
   public int a()
   {
     if (this.b == 97) {
-      ScConfigManager.a().a(this.a.app, "SecCenterConfig");
+      ScConfigManager.a().a(this.a.a, "SecCenterConfig");
     }
     for (;;)
     {
       return 7;
       if (this.b == 98) {
-        ScConfigManager.a().a(this.a.app, "SecCenterConfig", true);
+        ScConfigManager.a().a(this.a.a, "SecCenterConfig", true);
       }
     }
   }

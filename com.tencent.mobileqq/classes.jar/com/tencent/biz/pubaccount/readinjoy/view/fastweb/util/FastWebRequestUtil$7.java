@@ -2,7 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import android.os.Bundle;
 import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJItemViewType;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyFeedbackPopupWindow.FeedbackCallback;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -10,15 +14,11 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import pkh;
-import ppe;
-import sfq;
-import tpy;
 
-public final class FastWebRequestUtil$7
+final class FastWebRequestUtil$7
   implements Runnable
 {
-  public FastWebRequestUtil$7(ArticleInfo paramArticleInfo, tpy paramtpy) {}
+  FastWebRequestUtil$7(ArticleInfo paramArticleInfo, ReadInJoyFeedbackPopupWindow.FeedbackCallback paramFeedbackCallback) {}
   
   public void run()
   {
@@ -26,15 +26,15 @@ public final class FastWebRequestUtil$7
     {
       try
       {
-        localObject2 = pkh.a();
-        str2 = ((TicketManager)((QQAppInterface)pkh.a()).getManager(2)).getSkey((String)localObject2);
+        localObject2 = ReadInJoyUtils.a();
+        str2 = ((TicketManager)((QQAppInterface)ReadInJoyUtils.a()).getManager(2)).getSkey((String)localObject2);
         localBundle1 = new Bundle();
         localBundle1.putString("type", "1");
         localBundle1.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.publishUin));
-        if (ppe.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+        if (RIJItemViewType.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
           break label360;
         }
-        if (!ppe.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+        if (!RIJItemViewType.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
           break label367;
         }
       }
@@ -46,7 +46,7 @@ public final class FastWebRequestUtil$7
         Object localObject1;
         Bundle localBundle2;
         int i;
-        if (this.jdField_a_of_type_Tpy == null) {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyFeedbackPopupWindow$FeedbackCallback == null) {
           continue;
         }
         ThreadManager.getUIHandler().post(new FastWebRequestUtil.7.2(this, localException));
@@ -72,13 +72,13 @@ public final class FastWebRequestUtil$7
         localObject1 = new JSONObject((String)localObject1).getJSONObject("result");
         i = ((JSONObject)localObject1).getInt("retCode");
         localObject1 = ((JSONObject)localObject1).getString("retMsg");
-        if (this.jdField_a_of_type_Tpy != null) {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyFeedbackPopupWindow$FeedbackCallback != null) {
           ThreadManager.getUIHandler().post(new FastWebRequestUtil.7.1(this, i, (String)localObject1));
         }
       }
       else
       {
-        localObject1 = sfq.a(str2);
+        localObject1 = ReadInJoyWebDataManager.a(str2);
         continue;
         label360:
         str1 = "1";
@@ -92,7 +92,7 @@ public final class FastWebRequestUtil$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.tips.TipsUtil;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lfe;
-import mbf;
 
-public class DoubleVideoCtrlUI$1
+class DoubleVideoCtrlUI$1
   implements Runnable
 {
   DoubleVideoCtrlUI$1(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
@@ -26,7 +26,7 @@ public class DoubleVideoCtrlUI$1
         }
         this.this$0.k(l);
         this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(106), Long.valueOf(l) });
-        mbf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1021);
+        TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1021);
       }
       this.this$0.i(l, 16777215);
     } while (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().g);
@@ -35,7 +35,7 @@ public class DoubleVideoCtrlUI$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.1
  * JD-Core Version:    0.7.0.1
  */

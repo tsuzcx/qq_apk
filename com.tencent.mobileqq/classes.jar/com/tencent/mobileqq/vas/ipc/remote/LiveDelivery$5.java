@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vas.ipc.remote;
 
 import android.os.Bundle;
-import bekc;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tianshu.data.TianShuGetAdvCallback;
+import com.tencent.mobileqq.together.TogetherControlManager.EntryBannerInfo;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import cooperation.vip.tianshu.TianShuGetAdvCallback;
 import eipc.EIPCModule;
 import eipc.EIPCResult;
 
@@ -33,7 +33,7 @@ class LiveDelivery$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.LiveDelivery.5
  * JD-Core Version:    0.7.0.1
  */

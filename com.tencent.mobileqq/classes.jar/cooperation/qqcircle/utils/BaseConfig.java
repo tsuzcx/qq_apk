@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
 
 public class BaseConfig
 {
@@ -22,7 +22,8 @@ public class BaseConfig
   static
   {
     isAppFeedReport = true;
-    Object localObject = BaseApplication.getContext().getResources().getDisplayMetrics();
+    isAccessibilityEnable = false;
+    Object localObject = MobileQQ.sMobileQQ.getApplicationContext().getResources().getDisplayMetrics();
     mDensity = ((DisplayMetrics)localObject).density;
     screenWidth = ((DisplayMetrics)localObject).widthPixels;
     screenHeight = ((DisplayMetrics)localObject).heightPixels;
@@ -44,12 +45,12 @@ public class BaseConfig
   
   public static int getScreenHeight()
   {
-    return BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
+    return MobileQQ.sMobileQQ.getApplicationContext().getResources().getDisplayMetrics().heightPixels;
   }
   
   public static int getScreenWidth()
   {
-    return ViewUtils.getScreenWidth();
+    return ViewUtils.a();
   }
   
   public static boolean isAccessibilityEnable()
@@ -59,7 +60,7 @@ public class BaseConfig
   
   public static void onConfigChange()
   {
-    DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
+    DisplayMetrics localDisplayMetrics = MobileQQ.sMobileQQ.getApplicationContext().getResources().getDisplayMetrics();
     screenWidth = localDisplayMetrics.widthPixels;
     screenHeight = localDisplayMetrics.heightPixels;
   }
@@ -84,7 +85,7 @@ public class BaseConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.utils.BaseConfig
  * JD-Core Version:    0.7.0.1
  */

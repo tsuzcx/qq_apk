@@ -33,10 +33,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import axlx;
-import bhdz;
-import com.tencent.mobileqq.R.styleable;
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.qqui.R.styleable;
+import com.tencent.mobileqq.text.style.EmoticonSpan;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.ISkinSetTypeface;
 import java.util.ArrayList;
@@ -53,14 +52,14 @@ public class SingleLineTextView
   private static final int MSG_INVALIDATE = 2;
   private static final BoringLayout.Metrics UNKNOWN_BORING = new BoringLayout.Metrics();
   private static final int VERY_WIDE = 16384;
-  private boolean mBlockRelayout;
+  private boolean mBlockRelayout = false;
   private BoringLayout.Metrics mBoring;
   private int mCompoundLeft;
   private int mCompoundRight;
   private int mCurTextColor;
   private int mDefaultTextColor = -16777216;
   private SingleLineTextView.Drawables mDrawables;
-  private TextUtils.TruncateAt mEllipsize;
+  private TextUtils.TruncateAt mEllipsize = null;
   private final SingleLineTextView.ExtendText[] mExtendTexts;
   private int mGravity = 16;
   private final Handler mHandler;
@@ -68,7 +67,7 @@ public class SingleLineTextView
   private int mIconDrawableGap;
   ArrayList<SingleLineTextView.IconDrawableInfo> mIconDrawableInfos;
   private int mIconDrawablePadding;
-  private SingleLineTextView.IconDrawable[] mIconDrawables;
+  protected SingleLineTextView.IconDrawable[] mIconDrawables;
   private boolean mIncludePad = true;
   protected Layout mLayout;
   private int mMaxWidth = 2147483647;
@@ -81,7 +80,7 @@ public class SingleLineTextView
   private final TextPaint mTextPaint;
   private TransformationMethod mTransformation;
   private CharSequence mTransformed;
-  private boolean needCheckIconDrawablesWhenMeasure;
+  protected boolean needCheckIconDrawablesWhenMeasure = false;
   
   public SingleLineTextView(Context paramContext)
   {
@@ -114,15 +113,15 @@ public class SingleLineTextView
     this.mCurTextColor = this.mTextColor.getDefaultColor();
     if (paramAttributeSet != null)
     {
-      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SingleLineTextView);
-      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)bhdz.a(paramContext, 12.0F));
-      paramContext = paramAttributeSet.getColorStateList(1);
-      localObject = paramAttributeSet.getString(3);
-      this.mMaxWidth = paramAttributeSet.getDimensionPixelSize(2, 2147483647);
+      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aH);
+      paramInt = paramAttributeSet.getDimensionPixelSize(R.styleable.O, (int)DisplayUtils.a(paramContext, 12.0F));
+      paramContext = paramAttributeSet.getColorStateList(R.styleable.P);
+      localObject = paramAttributeSet.getString(R.styleable.R);
+      this.mMaxWidth = paramAttributeSet.getDimensionPixelSize(R.styleable.Q, 2147483647);
       this.mTextPaint.setTextSize(paramInt);
       setTextColor(paramContext);
       setText((CharSequence)localObject);
-      this.mIncludePad = paramAttributeSet.getBoolean(4, true);
+      this.mIncludePad = paramAttributeSet.getBoolean(R.styleable.S, true);
       paramAttributeSet.recycle();
     }
   }
@@ -168,9 +167,9 @@ public class SingleLineTextView
     if (i > 0)
     {
       bool1 = bool2;
-      if (i > (int)bhdz.a(getContext(), 105.0F))
+      if (i > (int)DisplayUtils.a(getContext(), 105.0F))
       {
-        k = Math.min(getDesiredWidth(), getResources().getDimensionPixelSize(2131296810));
+        k = Math.min(getDesiredWidth(), getResources().getDimensionPixelSize(2131296830));
         bool1 = bool2;
         if (paramInt < k)
         {
@@ -350,7 +349,7 @@ public class SingleLineTextView
     }
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     int j = 0;
     super.drawableStateChanged();
@@ -366,6 +365,9 @@ public class SingleLineTextView
       }
       if ((((SingleLineTextView.Drawables)localObject1).mDrawableRight != null) && (((SingleLineTextView.Drawables)localObject1).mDrawableRight.isStateful())) {
         ((SingleLineTextView.Drawables)localObject1).mDrawableRight.setState(arrayOfInt);
+      }
+      if ((((SingleLineTextView.Drawables)localObject1).mDrawableRightExt != null) && (((SingleLineTextView.Drawables)localObject1).mDrawableRightExt.isStateful())) {
+        ((SingleLineTextView.Drawables)localObject1).mDrawableRightExt.setState(arrayOfInt);
       }
       if ((((SingleLineTextView.Drawables)localObject1).mDrawableRight2 != null) && (((SingleLineTextView.Drawables)localObject1).mDrawableRight2.isStateful())) {
         ((SingleLineTextView.Drawables)localObject1).mDrawableRight2.setState(arrayOfInt);
@@ -448,44 +450,38 @@ public class SingleLineTextView
   
   public int getCompoundPaddingRight()
   {
-    int i = getPaddingRight();
+    int j = getPaddingRight();
     Object localObject = this.mDrawables;
-    int j = i;
-    if (localObject != null)
-    {
-      j = i;
-      if (((SingleLineTextView.Drawables)localObject).mDrawableRight != null) {
-        j = i + (((SingleLineTextView.Drawables)localObject).mDrawablePadding + ((SingleLineTextView.Drawables)localObject).mDrawableSizeRight + ((SingleLineTextView.Drawables)localObject).mDrawablePadding);
-      }
-    }
-    i = j;
+    int i = j;
     if (localObject != null)
     {
       i = j;
+      if (((SingleLineTextView.Drawables)localObject).mDrawableRight != null)
+      {
+        if (((SingleLineTextView.Drawables)localObject).mDrawableRightExt == null) {
+          break label198;
+        }
+        i = j + (((SingleLineTextView.Drawables)localObject).mDrawablePadding + ((SingleLineTextView.Drawables)localObject).mDrawableSizeRight + ((SingleLineTextView.Drawables)localObject).mDrawablePadding + ((SingleLineTextView.Drawables)localObject).mDrawableSizeRightExt + ((SingleLineTextView.Drawables)localObject).mDrawablePadding);
+      }
+    }
+    j = i;
+    if (localObject != null)
+    {
+      j = i;
       if (((SingleLineTextView.Drawables)localObject).mDrawableRight2 != null)
       {
         if (((SingleLineTextView.Drawables)localObject).mDrawableRight == null) {
-          break label178;
+          break label221;
         }
-        i = ((SingleLineTextView.Drawables)localObject).mDrawableSizeRight2;
+        j = ((SingleLineTextView.Drawables)localObject).mDrawableSizeRight2;
       }
     }
-    label178:
+    label198:
+    label221:
     int k;
-    for (i = j + (((SingleLineTextView.Drawables)localObject).mDrawablePadding + i);; i = j + (((SingleLineTextView.Drawables)localObject).mDrawablePadding + (i + k)))
+    for (j = i + (((SingleLineTextView.Drawables)localObject).mDrawablePadding + j);; j = i + (((SingleLineTextView.Drawables)localObject).mDrawablePadding + (j + k)))
     {
       localObject = this.mExtendTexts[2];
-      j = i;
-      if (localObject != null)
-      {
-        j = i;
-        if (!((SingleLineTextView.ExtendText)localObject).mEmpty)
-        {
-          j = ((SingleLineTextView.ExtendText)localObject).mPadding;
-          j = i + (((SingleLineTextView.ExtendText)localObject).getDesiredWith() + j);
-        }
-      }
-      localObject = this.mExtendTexts[0];
       i = j;
       if (localObject != null)
       {
@@ -496,8 +492,21 @@ public class SingleLineTextView
           i = j + (((SingleLineTextView.ExtendText)localObject).getDesiredWith() + i);
         }
       }
-      return i + getIconDrawablesWidth();
-      i = ((SingleLineTextView.Drawables)localObject).mDrawablePadding;
+      localObject = this.mExtendTexts[0];
+      j = i;
+      if (localObject != null)
+      {
+        j = i;
+        if (!((SingleLineTextView.ExtendText)localObject).mEmpty)
+        {
+          j = ((SingleLineTextView.ExtendText)localObject).mPadding;
+          j = i + (((SingleLineTextView.ExtendText)localObject).getDesiredWith() + j);
+        }
+      }
+      return j + getIconDrawablesWidth();
+      i = j + (((SingleLineTextView.Drawables)localObject).mDrawablePadding + ((SingleLineTextView.Drawables)localObject).mDrawableSizeRight + ((SingleLineTextView.Drawables)localObject).mDrawablePadding);
+      break;
+      j = ((SingleLineTextView.Drawables)localObject).mDrawablePadding;
       k = ((SingleLineTextView.Drawables)localObject).mDrawableSizeRight2;
     }
   }
@@ -567,39 +576,9 @@ public class SingleLineTextView
     return j + (k - m) / 2;
   }
   
-  public Drawable getIconDrawableWithStatus(Context paramContext, SingleLineTextView.IconDrawableInfo paramIconDrawableInfo)
+  protected Drawable getIconDrawableWithStatus(Context paramContext, SingleLineTextView.IconDrawableInfo paramIconDrawableInfo)
   {
-    Object localObject2 = null;
-    axlx localaxlx = null;
-    Object localObject1 = localObject2;
-    if (paramContext != null)
-    {
-      localObject1 = localObject2;
-      if (paramIconDrawableInfo != null)
-      {
-        if (TextUtils.isEmpty(paramIconDrawableInfo.iconDynamicUrl)) {
-          break label92;
-        }
-        localaxlx = new axlx(paramContext, paramIconDrawableInfo.iconDynamicUrl, this);
-      }
-    }
-    for (;;)
-    {
-      localObject1 = localaxlx;
-      if (localaxlx != null)
-      {
-        localObject1 = localaxlx.mutate();
-        ((Drawable)localObject1).setAlpha((int)(paramIconDrawableInfo.icon_status_alpha * 255.0F));
-        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
-      }
-      return localObject1;
-      label92:
-      if (!TextUtils.isEmpty(paramIconDrawableInfo.icon_static_url)) {
-        localaxlx = new axlx(paramContext, paramIconDrawableInfo.icon_static_url, this);
-      } else if (paramIconDrawableInfo.iconResId != 0) {
-        localaxlx = new axlx(paramContext, paramIconDrawableInfo.iconResId);
-      }
-    }
+    return null;
   }
   
   public int getLineHeight()
@@ -649,129 +628,126 @@ public class SingleLineTextView
   
   public void invalidateDrawable(Drawable paramDrawable)
   {
-    int m = 0;
+    int i2 = 0;
     Object localObject1;
-    int i;
-    int j;
-    Object localObject2;
-    int k;
-    int i1;
-    int i2;
-    int n;
+    int m;
     if (verifyDrawable(paramDrawable))
     {
       localObject1 = paramDrawable.getBounds();
-      i = getScrollX();
-      j = getScrollY();
-      localObject2 = this.mDrawables;
-      if (localObject2 == null) {
-        break label625;
-      }
-      if (paramDrawable == ((SingleLineTextView.Drawables)localObject2).mDrawableLeft)
-      {
-        k = getCompoundPaddingTop();
-        i1 = getCompoundPaddingBottom();
-        i2 = getHeight();
-        n = getPaddingLeft();
-        i1 = (i2 - i1 - k - ((SingleLineTextView.Drawables)localObject2).mDrawableHeightLeft) / 2;
-        i += n;
-        j += i1 + k;
-      }
-    }
-    label615:
-    label622:
-    label625:
-    for (;;)
-    {
-      localObject2 = this.mIconDrawables;
-      i1 = j;
-      n = i;
-      Object localObject3;
+      m = getScrollX();
+      int k = getScrollY();
+      Object localObject2 = this.mDrawables;
+      int j = k;
+      int i = m;
       if (localObject2 != null)
       {
-        localObject3 = this.mExtendTexts[0];
-        k = getWidth() - getPaddingRight() - this.mIconDrawableGap;
-        if ((localObject3 == null) || (((SingleLineTextView.ExtendText)localObject3).mEmpty)) {
-          break label622;
+        if (paramDrawable != ((SingleLineTextView.Drawables)localObject2).mDrawableLeft) {
+          break label369;
         }
-        n = ((SingleLineTextView.ExtendText)localObject3).getDesiredWith();
-        k -= ((SingleLineTextView.ExtendText)localObject3).mPadding + n;
+        j = getCompoundPaddingTop();
+        n = getCompoundPaddingBottom();
+        i1 = getHeight();
+        i = m + getPaddingLeft();
+        j = k + ((i1 - n - j - ((SingleLineTextView.Drawables)localObject2).mDrawableHeightLeft) / 2 + j);
       }
+      int i3;
+      int i4;
       for (;;)
       {
+        localObject2 = this.mIconDrawables;
         i1 = j;
         n = i;
-        if (m < localObject2.length)
+        if (localObject2 == null) {
+          break label535;
+        }
+        Object localObject3 = this.mExtendTexts[0];
+        n = getWidth() - getPaddingRight() - this.mIconDrawableGap;
+        k = n;
+        m = i2;
+        if (localObject3 != null)
         {
-          if ((paramDrawable == localObject2[m].mDrawable) || (((localObject2[m].mDrawable instanceof axlx)) && (((axlx)localObject2[m].mDrawable).a() == paramDrawable)))
+          k = n;
+          m = i2;
+          if (!((SingleLineTextView.ExtendText)localObject3).mEmpty)
           {
-            localObject3 = localObject2[m].mCompoundRect;
-            paramDrawable.copyBounds((Rect)localObject3);
-            localObject2[m].mDrawableSize = ((Rect)localObject3).width();
-            localObject2[m].mDrawableHeight = ((Rect)localObject3).height();
-            i2 = getCompoundPaddingTop();
-            int i3 = getCompoundPaddingBottom();
-            int i4 = getHeight();
-            i1 = m + 1;
-            n = k;
-            k = i;
-            i = i1;
-            for (;;)
-            {
-              if (i < localObject2.length)
-              {
-                i1 = n;
-                if (localObject2[i].mDrawable != null) {
-                  i1 = n - (localObject2[i].mDrawableSize - this.mIconDrawablePadding);
-                }
-                k += i1 - localObject2[m].mDrawableSize - this.mIconDrawablePadding;
-                i += 1;
-                n = i1;
-                continue;
-                if (paramDrawable == ((SingleLineTextView.Drawables)localObject2).mDrawableRight)
-                {
-                  n = this.mDrawables.mDrawableRightPosition[0];
-                  k = this.mDrawables.mDrawableRightPosition[1];
-                  i += n;
-                  j += k;
-                  break;
-                }
-                if (paramDrawable != ((SingleLineTextView.Drawables)localObject2).mDrawableRight2) {
-                  break label625;
-                }
-                n = this.mDrawables.mDrawableRight2Position[0];
-                k = this.mDrawables.mDrawableRight2Position[1];
-                i += n;
-                j += k;
-                break;
-              }
-            }
-            n = k + (n - localObject2[m].mDrawableSize - this.mIconDrawablePadding);
-            i1 = j + ((i4 - i3 - i2 - localObject2[m].mDrawableHeight) / 2 + i2);
+            k = ((SingleLineTextView.ExtendText)localObject3).getDesiredWith();
+            k = n - (((SingleLineTextView.ExtendText)localObject3).mPadding + k);
+            m = i2;
           }
+        }
+        i1 = j;
+        n = i;
+        if (m >= localObject2.length) {
+          break label535;
+        }
+        if (!isSameDrawable(paramDrawable, localObject2[m])) {
+          break label626;
+        }
+        localObject3 = localObject2[m].mCompoundRect;
+        paramDrawable.copyBounds((Rect)localObject3);
+        localObject2[m].mDrawableSize = ((Rect)localObject3).width();
+        localObject2[m].mDrawableHeight = ((Rect)localObject3).height();
+        i2 = getCompoundPaddingTop();
+        i3 = getCompoundPaddingBottom();
+        i4 = getHeight();
+        i1 = m + 1;
+        n = k;
+        k = i1;
+        while (k < localObject2.length)
+        {
+          i1 = n;
+          if (localObject2[k].mDrawable != null) {
+            i1 = n - (localObject2[k].mDrawableSize - this.mIconDrawablePadding);
+          }
+          i += i1 - localObject2[m].mDrawableSize - this.mIconDrawablePadding;
+          k += 1;
+          n = i1;
+        }
+        label369:
+        if (paramDrawable == ((SingleLineTextView.Drawables)localObject2).mDrawableRight)
+        {
+          i = m + this.mDrawables.mDrawableRightPosition[0];
+          j = k + this.mDrawables.mDrawableRightPosition[1];
+        }
+        else if (paramDrawable == ((SingleLineTextView.Drawables)localObject2).mDrawableRightExt)
+        {
+          i = m + this.mDrawables.mDrawableRight2ExtPosition[0];
+          j = k + this.mDrawables.mDrawableRight2ExtPosition[1];
         }
         else
         {
-          if ((n == 0) && (i1 == 0)) {
-            break label615;
-          }
-          invalidate(((Rect)localObject1).left + n, ((Rect)localObject1).top + i1, n + ((Rect)localObject1).right, i1 + ((Rect)localObject1).bottom);
-        }
-        for (;;)
-        {
-          if (ViewCompat.isAttachedToWindow(this))
+          j = k;
+          i = m;
+          if (paramDrawable == ((SingleLineTextView.Drawables)localObject2).mDrawableRight2)
           {
-            localObject1 = this.mHandler.obtainMessage(2);
-            ((Message)localObject1).obj = paramDrawable;
-            this.mHandler.removeMessages(2);
-            this.mHandler.sendMessageDelayed((Message)localObject1, 100L);
+            i = m + this.mDrawables.mDrawableRight2Position[0];
+            j = k + this.mDrawables.mDrawableRight2Position[1];
           }
-          return;
-          m += 1;
-          break;
-          invalidate();
         }
       }
+      int n = n - localObject2[m].mDrawableSize - this.mIconDrawablePadding + i;
+      int i1 = j + ((i4 - i3 - i2 - localObject2[m].mDrawableHeight) / 2 + i2);
+      label535:
+      if ((n == 0) && (i1 == 0)) {
+        break label635;
+      }
+      invalidate(((Rect)localObject1).left + n, ((Rect)localObject1).top + i1, n + ((Rect)localObject1).right, i1 + ((Rect)localObject1).bottom);
+    }
+    for (;;)
+    {
+      if (ViewCompat.isAttachedToWindow(this))
+      {
+        localObject1 = this.mHandler.obtainMessage(2);
+        ((Message)localObject1).obj = paramDrawable;
+        this.mHandler.removeMessages(2);
+        this.mHandler.sendMessageDelayed((Message)localObject1, 100L);
+      }
+      return;
+      label626:
+      m += 1;
+      break;
+      label635:
+      invalidate();
     }
   }
   
@@ -781,7 +757,7 @@ public class SingleLineTextView
     if ((localObject1 instanceof Spannable))
     {
       localObject1 = (Spannable)localObject1;
-      localObject1 = (QQText.EmoticonSpan[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), QQText.EmoticonSpan.class);
+      localObject1 = (EmoticonSpan[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), EmoticonSpan.class);
       if ((localObject1 != null) && (localObject1.length > 0))
       {
         this.mBlockRelayout = true;
@@ -798,6 +774,11 @@ public class SingleLineTextView
         this.mBlockRelayout = false;
       }
     }
+  }
+  
+  protected boolean isSameDrawable(Drawable paramDrawable, SingleLineTextView.IconDrawable paramIconDrawable)
+  {
+    return paramDrawable == paramIconDrawable.mDrawable;
   }
   
   protected void makeSingleLayout(int paramInt1, BoringLayout.Metrics paramMetrics, int paramInt2)
@@ -863,13 +844,13 @@ public class SingleLineTextView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.mHandler.removeCallbacksAndMessages(null);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int m = getCompoundPaddingLeft();
@@ -891,13 +872,14 @@ public class SingleLineTextView
         i = 0;
       }
       if (!this.mHorizontallyScrolling) {
-        break label1228;
+        break label1384;
       }
     }
-    label1207:
-    label1214:
-    label1221:
-    label1228:
+    label1360:
+    label1363:
+    label1370:
+    label1377:
+    label1384:
     for (int j = 16384;; j = i)
     {
       makeSingleLayout(j, UNKNOWN_BORING, i);
@@ -905,12 +887,12 @@ public class SingleLineTextView
       int i11 = getExtendedPaddingBottom();
       int i3 = n - i10 - k - i1;
       int i8 = this.mLayout.getLineTop(1) - this.mLayout.getLineDescent(0);
-      k = 0;
       j = 0;
+      k = 0;
       i = 0;
       if ((this.mGravity & 0x70) != 48)
       {
-        j = getVerticalOffset();
+        k = getVerticalOffset();
         i = getVerticalOffset();
       }
       Object localObject1 = getDrawableState();
@@ -931,7 +913,7 @@ public class SingleLineTextView
       if ((localObject3 != null) && (!((SingleLineTextView.ExtendText)localObject3).mEmpty))
       {
         paramCanvas.save();
-        paramCanvas.translate(i4 + m - ((SingleLineTextView.ExtendText)localObject3).getDesiredWith(), i7 + j);
+        paramCanvas.translate(i4 + m - ((SingleLineTextView.ExtendText)localObject3).getDesiredWith(), i7 + k);
         localFontMetrics = ((SingleLineTextView.ExtendText)localObject3).getFontMetrics();
         f2 = i8;
         f1 = f2;
@@ -950,28 +932,28 @@ public class SingleLineTextView
       this.mTextPaint.drawableState = getDrawableState();
       paramCanvas.save();
       paramCanvas.clipRect(m + i4, i7 + i2, i5 - i6 - i9 + i4, n - i10 - i11 + i2);
-      paramCanvas.translate(m, i7 + j);
-      ((Layout)localObject3).draw(paramCanvas, null, null, i - j);
+      paramCanvas.translate(m, i7 + k);
+      ((Layout)localObject3).draw(paramCanvas, null, null, i - k);
       paramCanvas.restore();
       localObject3 = this.mExtendTexts[2];
-      i = k;
+      i = j;
       if (localObject3 != null)
       {
-        i = k;
+        i = j;
         if (!((SingleLineTextView.ExtendText)localObject3).mEmpty)
         {
           paramCanvas.save();
           i = getDesiredWidth() + 0 + ((SingleLineTextView.ExtendText)localObject3).mPadding;
           m = i4 + i5 - i6 - i9 + 0;
-          k = 0 + (((SingleLineTextView.ExtendText)localObject3).getDesiredWith() + ((SingleLineTextView.ExtendText)localObject3).mPadding);
+          j = 0 + (((SingleLineTextView.ExtendText)localObject3).getDesiredWith() + ((SingleLineTextView.ExtendText)localObject3).mPadding);
           if (m <= i) {
-            break label1221;
+            break label1377;
           }
         }
       }
       for (;;)
       {
-        paramCanvas.translate(i, i7 + j);
+        paramCanvas.translate(i, i7 + k);
         localFontMetrics = ((SingleLineTextView.ExtendText)localObject3).getFontMetrics();
         f2 = i8;
         f1 = f2;
@@ -984,19 +966,19 @@ public class SingleLineTextView
         }
         ((SingleLineTextView.ExtendText)localObject3).draw(paramCanvas, (int[])localObject1, 0.0F, f1);
         paramCanvas.restore();
-        i = k;
-        k = i;
+        i = j;
+        j = i;
         if (localObject2 != null)
         {
-          k = i;
+          j = i;
           if (((SingleLineTextView.Drawables)localObject2).mDrawableRight2 != null)
           {
             paramCanvas.save();
             m = getDesiredWidth() + i + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
             n = i4 + i5 - i6 - i9 + i + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
-            k = i + (((SingleLineTextView.Drawables)localObject2).mDrawableSizeRight2 + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding);
+            j = i + (((SingleLineTextView.Drawables)localObject2).mDrawableSizeRight2 + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding);
             if (n <= m) {
-              break label1214;
+              break label1370;
             }
           }
         }
@@ -1008,70 +990,96 @@ public class SingleLineTextView
           ((SingleLineTextView.Drawables)localObject2).mDrawableRight2Position[1] = m;
           ((SingleLineTextView.Drawables)localObject2).mDrawableRight2.draw(paramCanvas);
           paramCanvas.restore();
-          if ((localObject2 != null) && (((SingleLineTextView.Drawables)localObject2).mDrawableRight != null))
+          i = j;
+          if (localObject2 != null)
           {
-            paramCanvas.save();
-            i = getDesiredWidth() + k + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
-            k = i4 + i5 - i6 - i9 + k + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
-            m = ((SingleLineTextView.Drawables)localObject2).mDrawableSizeRight;
-            m = ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
-            if (k <= i) {
-              break label1207;
+            i = j;
+            if (((SingleLineTextView.Drawables)localObject2).mDrawableRight != null)
+            {
+              paramCanvas.save();
+              i = getDesiredWidth() + j + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
+              m = i4 + i5 - i6 - i9 + j + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
+              j += ((SingleLineTextView.Drawables)localObject2).mDrawableSizeRight + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
+              if (m <= i) {
+                break label1363;
+              }
             }
           }
           for (;;)
           {
-            k = i2 + i1 + (i3 - ((SingleLineTextView.Drawables)localObject2).mDrawableHeightRight) / 2;
-            paramCanvas.translate(i, k);
+            m = i2 + i1 + (i3 - ((SingleLineTextView.Drawables)localObject2).mDrawableHeightRight) / 2;
+            paramCanvas.translate(i, m);
             ((SingleLineTextView.Drawables)localObject2).mDrawableRightPosition[0] = i;
-            ((SingleLineTextView.Drawables)localObject2).mDrawableRightPosition[1] = k;
+            ((SingleLineTextView.Drawables)localObject2).mDrawableRightPosition[1] = m;
             ((SingleLineTextView.Drawables)localObject2).mDrawableRight.draw(paramCanvas);
             paramCanvas.restore();
-            localObject2 = this.mExtendTexts[0];
-            k = 0;
-            i = k;
-            if (localObject2 != null)
+            i = j;
+            if ((localObject2 != null) && (((SingleLineTextView.Drawables)localObject2).mDrawableRightExt != null))
             {
-              i = k;
-              if (!((SingleLineTextView.ExtendText)localObject2).mEmpty)
-              {
-                paramCanvas.save();
-                paramCanvas.translate(i4 + i5 - i6 - ((SingleLineTextView.ExtendText)localObject2).getDesiredWith() - getPaddingRight(), j + i7);
-                ((SingleLineTextView.ExtendText)localObject2).draw(paramCanvas, (int[])localObject1, 0.0F, i8);
-                paramCanvas.restore();
-                i = ((SingleLineTextView.ExtendText)localObject2).getDesiredWith();
+              paramCanvas.save();
+              j = getDesiredWidth() + i + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
+              i = i4 + i5 - i6 - i9 + i + ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
+              m = ((SingleLineTextView.Drawables)localObject2).mDrawableSizeRightExt;
+              m = ((SingleLineTextView.Drawables)localObject2).mDrawablePadding;
+              if (i <= j) {
+                break label1360;
               }
+              i = j;
             }
-            localObject1 = this.mIconDrawables;
-            if (localObject1 != null)
+            for (;;)
             {
-              j = getPaddingRight();
-              m = this.mIconDrawableGap;
-              k = localObject1.length;
-              j = i4 + i5 - i6 - i - j - m;
-              i = k - 1;
-              while (i >= 0)
+              j = i2 + i1 + (i3 - ((SingleLineTextView.Drawables)localObject2).mDrawableHeightRightExt) / 2;
+              paramCanvas.translate(i, j);
+              ((SingleLineTextView.Drawables)localObject2).mDrawableRight2ExtPosition[0] = i;
+              ((SingleLineTextView.Drawables)localObject2).mDrawableRight2ExtPosition[1] = j;
+              ((SingleLineTextView.Drawables)localObject2).mDrawableRightExt.draw(paramCanvas);
+              paramCanvas.restore();
+              localObject2 = this.mExtendTexts[0];
+              j = 0;
+              i = j;
+              if (localObject2 != null)
               {
-                k = j;
-                if (localObject1[i].mDrawable != null)
+                i = j;
+                if (!((SingleLineTextView.ExtendText)localObject2).mEmpty)
+                {
+                  paramCanvas.save();
+                  paramCanvas.translate(i4 + i5 - i6 - ((SingleLineTextView.ExtendText)localObject2).getDesiredWith() - getPaddingRight(), k + i7);
+                  ((SingleLineTextView.ExtendText)localObject2).draw(paramCanvas, (int[])localObject1, 0.0F, i8);
+                  paramCanvas.restore();
+                  i = ((SingleLineTextView.ExtendText)localObject2).getDesiredWith();
+                }
+              }
+              localObject1 = this.mIconDrawables;
+              if (localObject1 != null)
+              {
+                j = getPaddingRight();
+                m = this.mIconDrawableGap;
+                k = localObject1.length;
+                j = i4 + i5 - i6 - i - j - m;
+                i = k - 1;
+                while (i >= 0)
                 {
                   k = j;
-                  if (localObject1[i].mDrawableSize != 0)
+                  if (localObject1[i].mDrawable != null)
                   {
-                    paramCanvas.save();
-                    k = j - this.mIconDrawablePadding - localObject1[i].mDrawableSize;
-                    j = (i3 - localObject1[i].mDrawableHeight) / 2;
-                    paramCanvas.translate(k, i2 + i1 + j);
-                    localObject1[i].mDrawable.draw(paramCanvas);
-                    paramCanvas.restore();
+                    k = j;
+                    if (localObject1[i].mDrawableSize != 0)
+                    {
+                      paramCanvas.save();
+                      k = j - this.mIconDrawablePadding - localObject1[i].mDrawableSize;
+                      j = (i3 - localObject1[i].mDrawableHeight) / 2;
+                      paramCanvas.translate(k, i2 + i1 + j);
+                      localObject1[i].mDrawable.draw(paramCanvas);
+                      paramCanvas.restore();
+                    }
                   }
+                  i -= 1;
+                  j = k;
                 }
-                i -= 1;
-                j = k;
               }
+              return;
             }
-            return;
-            i = k;
+            i = m;
           }
         }
         i = m;
@@ -1079,7 +1087,7 @@ public class SingleLineTextView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int k = 0;
     if (Build.VERSION.SDK_INT < 21) {
@@ -1228,18 +1236,23 @@ public class SingleLineTextView
   
   public void setCompoundDrawables(Drawable paramDrawable1, Drawable paramDrawable2)
   {
+    setCompoundDrawables(paramDrawable1, paramDrawable2, null);
+  }
+  
+  public void setCompoundDrawables(Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3)
+  {
     Object localObject2 = this.mDrawables;
     int i;
     if ((paramDrawable1 != null) || (paramDrawable2 != null))
     {
       i = 1;
       if (i != 0) {
-        break label137;
+        break label175;
       }
       if (localObject2 != null)
       {
         if (((SingleLineTextView.Drawables)localObject2).mDrawablePadding != 0) {
-          break label64;
+          break label67;
         }
         this.mDrawables = null;
       }
@@ -1252,7 +1265,7 @@ public class SingleLineTextView
       return;
       i = 0;
       break;
-      label64:
+      label67:
       if (((SingleLineTextView.Drawables)localObject2).mDrawableLeft != null) {
         ((SingleLineTextView.Drawables)localObject2).mDrawableLeft.setCallback(null);
       }
@@ -1261,12 +1274,18 @@ public class SingleLineTextView
         ((SingleLineTextView.Drawables)localObject2).mDrawableRight.setCallback(null);
       }
       ((SingleLineTextView.Drawables)localObject2).mDrawableRight = null;
+      if (((SingleLineTextView.Drawables)localObject2).mDrawableRightExt != null) {
+        ((SingleLineTextView.Drawables)localObject2).mDrawableRightExt.setCallback(null);
+      }
+      ((SingleLineTextView.Drawables)localObject2).mDrawableRightExt = null;
       ((SingleLineTextView.Drawables)localObject2).mDrawableHeightLeft = 0;
       ((SingleLineTextView.Drawables)localObject2).mDrawableSizeLeft = 0;
       ((SingleLineTextView.Drawables)localObject2).mDrawableHeightRight = 0;
       ((SingleLineTextView.Drawables)localObject2).mDrawableSizeRight = 0;
+      ((SingleLineTextView.Drawables)localObject2).mDrawableHeightRightExt = 0;
+      ((SingleLineTextView.Drawables)localObject2).mDrawableSizeRightExt = 0;
       continue;
-      label137:
+      label175:
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -1281,6 +1300,10 @@ public class SingleLineTextView
         ((SingleLineTextView.Drawables)localObject1).mDrawableRight.setCallback(null);
       }
       ((SingleLineTextView.Drawables)localObject1).mDrawableRight = paramDrawable2;
+      if ((((SingleLineTextView.Drawables)localObject1).mDrawableRightExt != paramDrawable3) && (((SingleLineTextView.Drawables)localObject1).mDrawableRightExt != null)) {
+        ((SingleLineTextView.Drawables)localObject1).mDrawableRightExt.setCallback(null);
+      }
+      ((SingleLineTextView.Drawables)localObject1).mDrawableRightExt = paramDrawable3;
       localObject2 = ((SingleLineTextView.Drawables)localObject1).mCompoundRect;
       int[] arrayOfInt = getDrawableState();
       if (paramDrawable1 != null)
@@ -1290,24 +1313,37 @@ public class SingleLineTextView
         paramDrawable1.setCallback(this);
         ((SingleLineTextView.Drawables)localObject1).mDrawableSizeLeft = ((Rect)localObject2).width();
         ((SingleLineTextView.Drawables)localObject1).mDrawableHeightLeft = ((Rect)localObject2).height();
-      }
-      for (;;)
-      {
+        label351:
         if (paramDrawable2 == null) {
-          break label341;
+          break label453;
         }
         paramDrawable2.setState(arrayOfInt);
         paramDrawable2.copyBounds((Rect)localObject2);
         paramDrawable2.setCallback(this);
         ((SingleLineTextView.Drawables)localObject1).mDrawableSizeRight = ((Rect)localObject2).width();
         ((SingleLineTextView.Drawables)localObject1).mDrawableHeightRight = ((Rect)localObject2).height();
+      }
+      for (;;)
+      {
+        if (paramDrawable3 == null) {
+          break label468;
+        }
+        paramDrawable3.setState(arrayOfInt);
+        paramDrawable3.copyBounds((Rect)localObject2);
+        paramDrawable3.setCallback(this);
+        ((SingleLineTextView.Drawables)localObject1).mDrawableSizeRightExt = ((Rect)localObject2).width();
+        ((SingleLineTextView.Drawables)localObject1).mDrawableHeightRightExt = ((Rect)localObject2).height();
         break;
         ((SingleLineTextView.Drawables)localObject1).mDrawableHeightLeft = 0;
         ((SingleLineTextView.Drawables)localObject1).mDrawableSizeLeft = 0;
+        break label351;
+        label453:
+        ((SingleLineTextView.Drawables)localObject1).mDrawableHeightRight = 0;
+        ((SingleLineTextView.Drawables)localObject1).mDrawableSizeRight = 0;
       }
-      label341:
-      ((SingleLineTextView.Drawables)localObject1).mDrawableHeightRight = 0;
-      ((SingleLineTextView.Drawables)localObject1).mDrawableSizeRight = 0;
+      label468:
+      ((SingleLineTextView.Drawables)localObject1).mDrawableHeightRightExt = 0;
+      ((SingleLineTextView.Drawables)localObject1).mDrawableSizeRightExt = 0;
     }
   }
   
@@ -1587,7 +1623,7 @@ public class SingleLineTextView
         i = 0;
         while (i < localObject1.length)
         {
-          localObject1[i] = new SingleLineTextView.IconDrawable(null);
+          localObject1[i] = new SingleLineTextView.IconDrawable();
           i += 1;
         }
       }
@@ -1753,7 +1789,7 @@ public class SingleLineTextView
           break;
         }
         paramCharSequence = (Spannable)getText();
-        paramCharSequence = (QQText.EmoticonSpan[])paramCharSequence.getSpans(0, paramCharSequence.length(), QQText.EmoticonSpan.class);
+        paramCharSequence = (EmoticonSpan[])paramCharSequence.getSpans(0, paramCharSequence.length(), EmoticonSpan.class);
         if (i >= paramCharSequence.length) {
           break;
         }
@@ -1829,14 +1865,14 @@ public class SingleLineTextView
     }
   }
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public boolean verifyDrawable(Drawable paramDrawable)
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.SingleLineTextView
  * JD-Core Version:    0.7.0.1
  */

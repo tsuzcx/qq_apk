@@ -10,9 +10,9 @@ public final class RespGetEntrance
 {
   static ArrayList<EntranceContent> cache_entrance_list = new ArrayList();
   static ArrayList<String> cache_xml_list;
-  public ArrayList<EntranceContent> entrance_list;
+  public ArrayList<EntranceContent> entrance_list = null;
   public long interval = 300L;
-  public ArrayList<String> xml_list;
+  public ArrayList<String> xml_list = null;
   
   static
   {

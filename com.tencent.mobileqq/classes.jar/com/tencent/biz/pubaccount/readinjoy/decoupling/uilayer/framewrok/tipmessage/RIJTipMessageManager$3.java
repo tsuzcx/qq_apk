@@ -1,20 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.tipmessage;
 
-import pqk;
-
-public class RIJTipMessageManager$3
+class RIJTipMessageManager$3
   implements Runnable
 {
-  public RIJTipMessageManager$3(pqk parampqk) {}
+  RIJTipMessageManager$3(RIJTipMessageManager paramRIJTipMessageManager) {}
   
   public void run()
   {
-    pqk.a(this.this$0);
+    RIJTipMessageManager.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.tipmessage.RIJTipMessageManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class NewFlowCameraActivity$11
@@ -11,13 +11,13 @@ class NewFlowCameraActivity$11
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), anvx.a(2131706907), 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131707446), 1).a();
     this.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.11
  * JD-Core Version:    0.7.0.1
  */

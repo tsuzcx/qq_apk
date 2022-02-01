@@ -10,12 +10,12 @@ final class VideoMsgTools$4
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.addMessage(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.selfuin);
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.selfuin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.VideoMsgTools.4
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ public final class CustomTrackAction
 {
   static Map<String, String> cache_ExtendInfo = new HashMap();
   public String Button = "";
-  public Map<String, String> ExtendInfo;
+  public Map<String, String> ExtendInfo = null;
   public String ID = "";
   public String Name = "";
-  public int Type;
+  public int Type = 0;
   public String Url = "";
-  public int is_block;
+  public int is_block = 0;
   
   static
   {

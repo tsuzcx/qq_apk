@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aese;
-
-public class QQSettingMe$38$1
+class QQSettingMe$38$1
   implements Runnable
 {
-  public QQSettingMe$38$1(aese paramaese) {}
+  QQSettingMe$38$1(QQSettingMe.38 param38) {}
   
   public void run()
   {
-    QQSettingMe.h(this.a.a);
+    this.a.a.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.38.1
  * JD-Core Version:    0.7.0.1
  */

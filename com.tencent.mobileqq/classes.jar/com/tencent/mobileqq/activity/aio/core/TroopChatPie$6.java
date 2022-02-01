@@ -1,96 +1,42 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import acnf;
-import acnh;
-import afrc;
-import android.os.SystemClock;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import mqq.os.MqqHandler;
 
 class TroopChatPie$6
   implements Runnable
 {
-  TroopChatPie$6(TroopChatPie paramTroopChatPie) {}
+  TroopChatPie$6(TroopChatPie paramTroopChatPie, boolean paramBoolean) {}
   
   public void run()
   {
-    int j = 0;
-    Object localObject = this.this$0.app.getMessageProxy(this.this$0.sessionInfo.curType).f(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType);
-    int k;
-    int i;
-    label92:
-    int m;
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    try
     {
-      if (((List)localObject).size() > 3) {
-        break label165;
+      Thread.sleep(700L);
+      if ((!this.this$0.ae) && (!this.a) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopMask(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar == null) || (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar.a())))
+      {
+        this.this$0.ae = true;
+        this.this$0.jdField_a_of_type_MqqOsMqqHandler.post(new TroopChatPie.6.1(this));
       }
-      k = ((List)localObject).size();
-      Iterator localIterator = ((List)localObject).iterator();
-      i = 0;
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
       for (;;)
       {
-        if (localIterator.hasNext())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-          if (localMessageRecord != null) {
-            if (localMessageRecord.msgtype == -2058)
-            {
-              m = j + 1;
-              j = i;
-              i = m;
-              label140:
-              if (j < k) {
-                break label183;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i(this.this$0.tag, 2, "AIO has more than 3 normal message, so return!");
-              }
-            }
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(localInterruptedException));
         }
       }
     }
-    label165:
-    label183:
-    do
-    {
-      do
-      {
-        return;
-        k = 3;
-        break;
-        m = i + 1;
-        i = j;
-        j = m;
-        break label140;
-        m = j;
-        j = i;
-        i = m;
-        break label92;
-      } while (j <= ((List)localObject).size() / 2);
-      if (QLog.isColorLevel()) {
-        QLog.i(this.this$0.tag, 2, "now pull more message for troop!");
-      }
-      this.this$0.pullReqTime = SystemClock.uptimeMillis();
-      ((afrc)this.this$0.refreshMessageContext.context).a(this.this$0.pullReqTime);
-      this.this$0.refreshMessageContext.needAutoNavigateTop = acnh.c((List)localObject);
-      this.this$0.refreshMessageContext.needNotifyUI = true;
-    } while (this.this$0.refreshMessageContext.repullStickerMsgIndex != 0);
-    localObject = this.this$0.refreshMessageContext;
-    ((QQMessageFacade.RefreshMessageContext)localObject).repullStickerMsgIndex += 1;
-    this.this$0.app.getMessageFacade().refreshMessageListHead(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, 15, this.this$0.refreshMessageContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:width="0.5dip" android:color="#ffaaaaaa" />
-</shape>
+    <item android:duration="50" android:drawable="@drawable/iar" />
+    <item android:duration="50" android:drawable="@drawable/ias" />
+    <item android:duration="50" android:drawable="@drawable/iat" />
+    <item android:duration="50" android:drawable="@drawable/iau" />
+    <item android:duration="50" android:drawable="@drawable/iav" />
+    <item android:duration="50" android:drawable="@drawable/iaw" />
+    <item android:duration="50" android:drawable="@drawable/iax" />
+    <item android:duration="50" android:drawable="@drawable/iay" />
+    <item android:duration="50" android:drawable="@drawable/iaz" />
+    <item android:duration="50" android:drawable="@drawable/ib0" />
+    <item android:duration="50" android:drawable="@drawable/ib1" />
+    <item android:duration="50" android:drawable="@drawable/ib2" />
+    <item android:duration="50" android:drawable="@drawable/ib3" />
+    <item android:duration="50" android:drawable="@drawable/ib4" />
+    <item android:duration="50" android:drawable="@drawable/ib5" />
+</animation-list>

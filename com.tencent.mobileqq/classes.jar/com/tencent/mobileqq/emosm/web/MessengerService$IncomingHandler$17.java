@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import ashe;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class MessengerService$IncomingHandler$17
+class MessengerService$IncomingHandler$17
   implements Runnable
 {
-  public MessengerService$IncomingHandler$17(ashe paramashe, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  MessengerService$IncomingHandler$17(MessengerService.IncomingHandler paramIncomingHandler, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   /* Error */
   public void run()
@@ -95,7 +94,7 @@ public class MessengerService$IncomingHandler$17
     //   164: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   167: aload 7
     //   169: iconst_2
-    //   170: invokestatic 113	bhcu:encodeToString	([BI)Ljava/lang/String;
+    //   170: invokestatic 113	com/tencent/mobileqq/utils/Base64Util:encodeToString	([BI)Ljava/lang/String;
     //   173: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   179: astore 7
@@ -257,7 +256,7 @@ public class MessengerService$IncomingHandler$17
     //   550: aload 13
     //   552: iconst_0
     //   553: iconst_0
-    //   554: invokestatic 179	com/tencent/mobileqq/utils/ContactUtils:getDisplayName	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+    //   554: invokestatic 178	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
     //   557: astore 5
     //   559: goto -302 -> 257
     //   562: aload_0
@@ -266,7 +265,7 @@ public class MessengerService$IncomingHandler$17
     //   568: aload 13
     //   570: iconst_1
     //   571: iconst_0
-    //   572: invokestatic 179	com/tencent/mobileqq/utils/ContactUtils:getDisplayName	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+    //   572: invokestatic 178	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
     //   575: astore 5
     //   577: goto -320 -> 257
     //   580: aload_0
@@ -275,7 +274,7 @@ public class MessengerService$IncomingHandler$17
     //   586: aload 13
     //   588: iconst_2
     //   589: iconst_0
-    //   590: invokestatic 179	com/tencent/mobileqq/utils/ContactUtils:getDisplayName	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+    //   590: invokestatic 178	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
     //   593: astore 5
     //   595: goto -338 -> 257
     //   598: astore 6
@@ -363,7 +362,7 @@ public class MessengerService$IncomingHandler$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.17
  * JD-Core Version:    0.7.0.1
  */

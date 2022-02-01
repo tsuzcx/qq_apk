@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.gamecenter.share;
 
-import aqxe;
-import avef;
-import aveg;
+import com.tencent.mobileqq.config.QConfigManager;
 
-public final class GameShareConfProcessor$1
+final class GameShareConfProcessor$1
   implements Runnable
 {
   public void run()
   {
-    aveg.a((avef)aqxe.a().a(617));
+    GameShareConfProcessor.a((GameShareConfBean)QConfigManager.a().a(617));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.share.GameShareConfProcessor.1
  * JD-Core Version:    0.7.0.1
  */

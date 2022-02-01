@@ -13,21 +13,25 @@ public final class VideoResourceModelKt$Companion
   {
     Intrinsics.checkParameterIsNotNull(paramVideoResourceModel, "it");
     String str = paramVideoResourceModel.getPath();
-    Intrinsics.checkExpressionValueIsNotNull(str, "it.path");
-    int i = paramVideoResourceModel.getType();
-    long l1 = paramVideoResourceModel.getScaleDuration();
-    long l2 = paramVideoResourceModel.getSourceTimeStart();
-    long l3 = paramVideoResourceModel.getSourceTimeStartUs();
-    long l4 = paramVideoResourceModel.getSourceTimeDuration();
-    long l5 = paramVideoResourceModel.getSourceTimeDurationUs();
-    long l6 = paramVideoResourceModel.getSelectTimeStart();
-    long l7 = paramVideoResourceModel.getSelectTimeStartUs();
-    return new VideoResourceModelKt(str, i, l1, l2, l4, l3, l5, l6, paramVideoResourceModel.getSelectTimeDuration(), l7, paramVideoResourceModel.getSelectTimeDurationUs(), paramVideoResourceModel.getCutTimeStart(), paramVideoResourceModel.getCutTimeDuration(), paramVideoResourceModel.getWidth(), paramVideoResourceModel.getHeight(), paramVideoResourceModel.getRotate());
+    if (str != null) {}
+    for (;;)
+    {
+      int i = paramVideoResourceModel.getType();
+      long l1 = paramVideoResourceModel.getScaleDuration();
+      long l2 = paramVideoResourceModel.getSourceTimeStart();
+      long l3 = paramVideoResourceModel.getSourceTimeStartUs();
+      long l4 = paramVideoResourceModel.getSourceTimeDuration();
+      long l5 = paramVideoResourceModel.getSourceTimeDurationUs();
+      long l6 = paramVideoResourceModel.getSelectTimeStart();
+      long l7 = paramVideoResourceModel.getSelectTimeStartUs();
+      return new VideoResourceModelKt(str, i, l1, l2, l4, l3, l5, l6, paramVideoResourceModel.getSelectTimeDuration(), l7, paramVideoResourceModel.getSelectTimeDurationUs(), paramVideoResourceModel.getCutTimeStart(), paramVideoResourceModel.getCutTimeDuration(), paramVideoResourceModel.getWidth(), paramVideoResourceModel.getHeight(), paramVideoResourceModel.getRotate());
+      str = "";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt.Companion
  * JD-Core Version:    0.7.0.1
  */

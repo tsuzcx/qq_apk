@@ -1,39 +1,56 @@
 package com.tencent.av.wtogether.media;
 
+import com.tencent.av.wtogether.callback.WatchTogetherMediaPlayerStatusCallback;
+import com.tencent.av.wtogether.data.WTFileInfo;
+import com.tencent.av.wtogether.data.WTogetherPlayInfo;
+import com.tencent.av.wtogether.util.WatchTogetherDataReportHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISuperPlayer;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
-import myk;
 
 class WatchTogetherMediaPlayCtrl$4
   implements Runnable
 {
-  WatchTogetherMediaPlayCtrl$4(WatchTogetherMediaPlayCtrl paramWatchTogetherMediaPlayCtrl, int paramInt, long paramLong1, long paramLong2, Object paramObject) {}
+  WatchTogetherMediaPlayCtrl$4(WatchTogetherMediaPlayCtrl paramWatchTogetherMediaPlayCtrl, ISuperPlayer paramISuperPlayer) {}
   
   public void run()
   {
-    switch (this.jdField_a_of_type_Int)
-    {
+    if (WatchTogetherMediaPlayCtrl.a(this.this$0) == null) {
+      return;
     }
-    for (;;)
+    long l1 = this.a.getDurationMs();
+    long l2 = this.a.getCurrentPositionMs();
+    WatchTogetherMediaPlayCtrl.a(this.this$0, (int)l1);
+    Object localObject = WatchTogetherMediaPlayCtrl.a(this.this$0).a;
+    WatchTogetherMediaPlayCtrl.a(this.this$0).a(((WTFileInfo)localObject).c(), WatchTogetherMediaPlayCtrl.a(this.this$0));
+    localObject = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Iterator localIterator = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((myk)localWeakReference.get()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b, this.jdField_a_of_type_JavaLangObject);
-        }
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((WatchTogetherMediaPlayerStatusCallback)localWeakReference.get()).a((int)l1);
       }
-      WatchTogetherMediaPlayCtrl.b(this.this$0, 3);
-      continue;
-      WatchTogetherMediaPlayCtrl.b(this.this$0, 11);
     }
+    if (l1 - l2 <= 60000L)
+    {
+      QLog.d("WatchTogetherMediaPlayCtrl", 1, "onVideoPrepared, video less than 1 min, seek to 0");
+      WatchTogetherMediaPlayCtrl.a(this.this$0).seekTo(0);
+    }
+    WatchTogetherMediaPlayCtrl.a(this.this$0).start();
+    WatchTogetherMediaPlayCtrl.a(this.this$0, 5);
+    localObject = WatchTogetherMediaPlayCtrl.b(this.this$0).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((Runnable)((Iterator)localObject).next()).run();
+    }
+    WatchTogetherMediaPlayCtrl.b(this.this$0).clear();
+    WatchTogetherMediaPlayCtrl.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl.4
  * JD-Core Version:    0.7.0.1
  */

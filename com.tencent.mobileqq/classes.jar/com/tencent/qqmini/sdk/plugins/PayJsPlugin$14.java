@@ -17,18 +17,18 @@ class PayJsPlugin$14
   {
     Object localObject = new Bundle();
     ((Bundle)localObject).putString("payparmas_callback_sn", this.val$callbackSn);
-    ((Bundle)localObject).putString("payparmas_json", PayJsPlugin.access$1700(this.this$0, this.val$payJson));
+    ((Bundle)localObject).putString("payparmas_json", PayJsPlugin.access$1800(this.this$0, this.val$payJson));
     ((Bundle)localObject).putInt("payparmas_paytype", 1);
     ((Bundle)localObject).putLong("payparmas_h5_start", System.currentTimeMillis());
     ((Bundle)localObject).putInt("payparmas_request_code", 6);
-    ((Bundle)localObject).putString("payparmas_sdk_pf", PayJsPlugin.access$1800(this.this$0, this.val$payJson));
+    ((Bundle)localObject).putString("payparmas_sdk_pf", PayJsPlugin.access$1900(this.this$0, this.val$payJson));
     PayProxy localPayProxy = (PayProxy)ProxyManager.get(PayProxy.class);
     if (localPayProxy == null)
     {
       PayJsPlugin.access$700(this.this$0, this.val$req, null, "not support pay");
       return;
     }
-    localObject = localPayProxy.midasPay(this.val$activity, PayJsPlugin.access$1700(this.this$0, this.val$payJson), new PayJsPlugin.14.1(this), (Bundle)localObject);
+    localObject = localPayProxy.midasPay(this.val$activity, PayJsPlugin.access$1800(this.this$0, this.val$payJson), PayJsPlugin.access$2000(this.this$0, this.val$req, this.val$toolConsume, this.val$callbackSn), (Bundle)localObject);
     if (localObject != null) {}
     for (int i = ((Bundle)localObject).getInt("retCode", 0);; i = 0)
     {
@@ -46,7 +46,7 @@ class PayJsPlugin$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PayJsPlugin.14
  * JD-Core Version:    0.7.0.1
  */

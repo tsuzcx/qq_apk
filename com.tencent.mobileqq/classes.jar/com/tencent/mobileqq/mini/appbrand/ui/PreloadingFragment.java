@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import bkyp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -34,7 +33,7 @@ import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.util.URLUtil;
 import common.config.service.QzoneConfig;
 import java.util.List;
 import java.util.Map;
@@ -56,9 +55,9 @@ public class PreloadingFragment
   private static final boolean mEnableDBCache;
   private static LruCache<String, PreloadingFragment.MiniAppConfigCache> sMiniAppConfigCache;
   private Bundle mBundle;
-  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131370465);
+  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131370745);
   private ResultReceiver mResultReceiver;
-  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559442, null);
+  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559509, null);
   private Handler mUIHandler;
   
   static
@@ -188,7 +187,7 @@ public class PreloadingFragment
         if (MiniAppLauncher.isMiniAppSchemeV2(paramString1)) {
           try
           {
-            localObject = (String)bkyp.a(paramString1).get("_mappid");
+            localObject = (String)URLUtil.a(paramString1).get("_mappid");
             QLog.d("PreloadingFragment", 4, "scheme: appid:  " + (String)localObject);
             if (!TextUtils.isEmpty((CharSequence)localObject))
             {
@@ -219,7 +218,7 @@ public class PreloadingFragment
         if (MiniAppLauncher.isMiniAppSchemeV2(paramString1)) {
           try
           {
-            paramString2 = (String)bkyp.a(paramString1).get("_mappid");
+            paramString2 = (String)URLUtil.a(paramString1).get("_mappid");
             QLog.d("PreloadingFragment", 4, "scheme: appid:  " + paramString2);
             if (!TextUtils.isEmpty(paramString2))
             {
@@ -709,12 +708,10 @@ public class PreloadingFragment
     QLog.i("miniapp-start", 1, "LoadingFragment onCreateView");
     if (this.mRootView == null)
     {
-      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559442, null);
-      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131370465));
+      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559509, null);
+      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131370745));
     }
-    paramLayoutInflater = this.mRootView;
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-    return paramLayoutInflater;
+    return this.mRootView;
   }
   
   public void onDestroy()

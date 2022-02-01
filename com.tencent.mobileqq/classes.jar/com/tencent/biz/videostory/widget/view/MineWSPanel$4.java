@@ -1,35 +1,34 @@
 package com.tencent.biz.videostory.widget.view;
 
 import WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp;
-import aaoj;
 import android.text.TextUtils;
 import com.tencent.biz.videostory.db.WSPersonalEntity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 
-public class MineWSPanel$4
+class MineWSPanel$4
   implements Runnable
 {
-  public MineWSPanel$4(aaoj paramaaoj) {}
+  MineWSPanel$4(MineWSPanel paramMineWSPanel) {}
   
   public void run()
   {
-    if (TextUtils.isEmpty(aaoj.a(this.this$0))) {
+    if (TextUtils.isEmpty(MineWSPanel.a(this.this$0))) {
       QLog.i("MineWSPanel", 2, "mUin is invalid");
     }
     do
     {
       return;
-      if (aaoj.a(this.this$0) == null)
+      if (MineWSPanel.a(this.this$0) == null)
       {
         QLog.i("MineWSPanel", 2, "mBaseActivity is null");
         return;
       }
-      Object localObject = aaoj.a(this.this$0).app.getEntityManagerFactory().createEntityManager();
-      WSPersonalEntity localWSPersonalEntity = (WSPersonalEntity)((EntityManager)localObject).find(WSPersonalEntity.class, aaoj.a(this.this$0));
+      Object localObject = MineWSPanel.a(this.this$0).app.getEntityManagerFactory().createEntityManager();
+      WSPersonalEntity localWSPersonalEntity = (WSPersonalEntity)((EntityManager)localObject).find(WSPersonalEntity.class, MineWSPanel.a(this.this$0));
       ((EntityManager)localObject).close();
       if (localWSPersonalEntity == null) {
         break;
@@ -38,8 +37,8 @@ public class MineWSPanel$4
       try
       {
         ((WEISHI.stGetPersonalPageRsp)localObject).mergeFrom(localWSPersonalEntity.weiShiPersonalRsp);
-        if ((localObject != null) && (aaoj.a(this.this$0) != null)) {
-          aaoj.a(this.this$0).runOnUiThread(new MineWSPanel.4.1(this, (WEISHI.stGetPersonalPageRsp)localObject));
+        if ((localObject != null) && (MineWSPanel.a(this.this$0) != null)) {
+          MineWSPanel.a(this.this$0).runOnUiThread(new MineWSPanel.4.1(this, (WEISHI.stGetPersonalPageRsp)localObject));
         }
         this.this$0.a();
         return;
@@ -53,7 +52,7 @@ public class MineWSPanel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.MineWSPanel.4
  * JD-Core Version:    0.7.0.1
  */

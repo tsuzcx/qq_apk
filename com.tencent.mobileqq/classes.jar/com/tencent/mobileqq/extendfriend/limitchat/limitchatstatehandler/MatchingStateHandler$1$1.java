@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler;
 
-import asne;
-import asry;
-import asrz;
-import assa;
+import com.tencent.mobileqq.extendfriend.bean.MatchInfo;
 
 class MatchingStateHandler$1$1
   implements Runnable
@@ -12,29 +9,29 @@ class MatchingStateHandler$1$1
   
   public void run()
   {
-    if (this.a.this$0.jdField_a_of_type_Asry != null)
+    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatLimitchatstatehandlerLimitChatProtoStateMachine != null)
     {
-      this.a.this$0.jdField_a_of_type_Asry.a(100, null);
-      if (this.a.this$0.jdField_a_of_type_Asry.a != null)
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatLimitchatstatehandlerLimitChatProtoStateMachine.a(100, null);
+      if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatLimitchatstatehandlerLimitChatProtoStateMachine.a != null)
       {
         String str2 = "";
         String str1 = str2;
-        if (this.a.this$0.jdField_a_of_type_Asne != null)
+        if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMatchInfo != null)
         {
           str1 = str2;
-          if (this.a.this$0.jdField_a_of_type_Asne.d != null) {
-            str1 = this.a.this$0.jdField_a_of_type_Asne.d;
+          if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMatchInfo.d != null) {
+            str1 = this.a.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMatchInfo.d;
           }
         }
-        this.a.this$0.jdField_a_of_type_Asry.a.a(0, this.a.this$0.jdField_a_of_type_Asne, str1, "");
+        this.a.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatLimitchatstatehandlerLimitChatProtoStateMachine.a.a(0, this.a.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMatchInfo, str1, "");
       }
-      assa.a(this.a.this$0);
+      MatchingStateHandler.a(this.a.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler.MatchingStateHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

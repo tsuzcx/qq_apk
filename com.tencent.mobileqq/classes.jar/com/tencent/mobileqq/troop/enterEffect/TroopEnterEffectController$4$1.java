@@ -1,24 +1,21 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import bfkl;
-import bfkt;
-import bfku;
 import com.tencent.qphone.base.util.QLog;
 
-public class TroopEnterEffectController$4$1
+class TroopEnterEffectController$4$1
   implements Runnable
 {
-  public TroopEnterEffectController$4$1(bfkt parambfkt, int paramInt, bfku parambfku) {}
+  TroopEnterEffectController$4$1(TroopEnterEffectController.4 param4, int paramInt, TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData) {}
   
   public void run()
   {
-    QLog.d("TroopEnterEffect.Controller", 2, "download Res isAIO = " + this.jdField_a_of_type_Bfkt.a.a);
-    if (this.jdField_a_of_type_Bfkt.a.a)
+    QLog.d("TroopEnterEffect.Controller", 2, "download Res isAIO = " + this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$4.a.a);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$4.a.a)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + this.jdField_a_of_type_Int + " showAnimation");
       }
-      this.jdField_a_of_type_Bfkt.a.a(this.jdField_a_of_type_Bfku);
+      this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$4.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$TroopEnterEffectData);
     }
   }
 }

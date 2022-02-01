@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import bdmt;
+import com.tencent.qqperf.monitor.network.NetworkMonitor;
 
 class LoadDex$6
   implements Runnable
@@ -9,7 +9,7 @@ class LoadDex$6
   
   public void run()
   {
-    bdmt.a();
+    NetworkMonitor.a();
   }
 }
 

@@ -7,10 +7,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public abstract class AlbumListLogic<K extends AbstractAlbumListFragment, O extends OtherCommonData>
 {
-  protected AlbumListLogic.IalbumListAdapterCallBack mAlbumListAdapterCallBack = null;
+  AlbumListLogic.IalbumListAdapterCallBack mAlbumListAdapterCallBack = null;
   protected AlbumListBaseData mAlbumListData;
   public K mFragment;
-  public O mOtherCommonData;
+  protected O mOtherCommonData;
   protected PhotoCommonBaseData<O> mPhotoCommonData;
   
   protected AlbumListLogic(K paramK)
@@ -48,11 +48,11 @@ public abstract class AlbumListLogic<K extends AbstractAlbumListFragment, O exte
   
   protected abstract boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent);
   
-  protected abstract void postInitUI();
+  abstract void postInitUI();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AlbumListLogic
  * JD-Core Version:    0.7.0.1
  */

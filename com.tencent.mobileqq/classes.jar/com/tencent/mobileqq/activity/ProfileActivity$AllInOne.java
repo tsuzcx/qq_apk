@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import aenp;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 public class ProfileActivity$AllInOne
   implements Parcelable
 {
-  public static final Parcelable.Creator<AllInOne> CREATOR = new aenp();
+  public static final Parcelable.Creator<AllInOne> CREATOR = new ProfileActivity.AllInOne.1();
   public byte a;
   public int a;
   public long a;
@@ -37,7 +36,7 @@ public class ProfileActivity$AllInOne
   public String e;
   public int f;
   public String f;
-  public int g;
+  public int g = 0;
   public String g;
   public int h;
   public String h;
@@ -60,9 +59,15 @@ public class ProfileActivity$AllInOne
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_Byte = -1;
     this.jdField_a_of_type_Short = -1;
+    this.jdField_b_of_type_Byte = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_Byte = 0;
     this.jdField_f_of_type_JavaLangString = "";
     this.jdField_e_of_type_Int = -1;
     this.jdField_h_of_type_Int = 999;
+    this.jdField_j_of_type_Int = 0;
+    this.jdField_k_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_AndroidOsBundle = new Bundle();
     this.jdField_b_of_type_AndroidOsBundle = new Bundle();
   }
@@ -72,9 +77,15 @@ public class ProfileActivity$AllInOne
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_Byte = -1;
     this.jdField_a_of_type_Short = -1;
+    this.jdField_b_of_type_Byte = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_Byte = 0;
     this.jdField_f_of_type_JavaLangString = "";
     this.jdField_e_of_type_Int = -1;
     this.jdField_h_of_type_Int = 999;
+    this.jdField_j_of_type_Int = 0;
+    this.jdField_k_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_AndroidOsBundle = new Bundle();
     this.jdField_b_of_type_AndroidOsBundle = new Bundle();
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -300,7 +311,7 @@ public class ProfileActivity$AllInOne
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileActivity.AllInOne
  * JD-Core Version:    0.7.0.1
  */

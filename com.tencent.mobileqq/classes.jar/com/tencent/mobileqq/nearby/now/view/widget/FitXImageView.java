@@ -19,26 +19,26 @@ public class FitXImageView
   extends View
 {
   private static final Matrix.ScaleToFit[] jdField_a_of_type_ArrayOfAndroidGraphicsMatrix$ScaleToFit = { Matrix.ScaleToFit.FILL, Matrix.ScaleToFit.START, Matrix.ScaleToFit.CENTER, Matrix.ScaleToFit.END };
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = null;
   private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   private Uri jdField_a_of_type_AndroidNetUri;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int[] jdField_a_of_type_ArrayOfInt = null;
   private int jdField_b_of_type_Int = 2147483647;
   private Matrix jdField_b_of_type_AndroidGraphicsMatrix;
   private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int = 2147483647;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private int jdField_d_of_type_Int = 255;
-  private boolean jdField_d_of_type_Boolean;
+  private boolean jdField_d_of_type_Boolean = false;
   private int jdField_e_of_type_Int = 256;
   private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
+  private int jdField_f_of_type_Int = 0;
+  private boolean jdField_f_of_type_Boolean = false;
   private int g;
   private int h;
   
@@ -125,191 +125,191 @@ public class FitXImageView
     //   0: aconst_null
     //   1: astore_1
     //   2: aload_0
-    //   3: getfield 119	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   3: getfield 64	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
     //   6: ifnull +4 -> 10
     //   9: return
     //   10: aload_0
-    //   11: invokevirtual 169	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:getResources	()Landroid/content/res/Resources;
+    //   11: invokevirtual 183	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:getResources	()Landroid/content/res/Resources;
     //   14: astore_2
     //   15: aload_2
     //   16: ifnull -7 -> 9
     //   19: aload_0
-    //   20: getfield 171	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_Int	I
+    //   20: getfield 47	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_Int	I
     //   23: ifeq +58 -> 81
     //   26: aload_2
     //   27: aload_0
-    //   28: getfield 171	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_Int	I
-    //   31: invokevirtual 177	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   28: getfield 47	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_Int	I
+    //   31: invokevirtual 189	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
     //   34: astore_2
     //   35: aload_2
     //   36: astore_1
     //   37: aload_0
     //   38: aload_1
-    //   39: invokespecial 179	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	(Landroid/graphics/drawable/Drawable;)V
+    //   39: invokespecial 191	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	(Landroid/graphics/drawable/Drawable;)V
     //   42: return
     //   43: astore_2
-    //   44: ldc 181
-    //   46: new 183	java/lang/StringBuilder
+    //   44: ldc 193
+    //   46: new 195	java/lang/StringBuilder
     //   49: dup
-    //   50: invokespecial 184	java/lang/StringBuilder:<init>	()V
-    //   53: ldc 186
-    //   55: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: invokespecial 196	java/lang/StringBuilder:<init>	()V
+    //   53: ldc 198
+    //   55: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: aload_0
-    //   59: getfield 171	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_Int	I
-    //   62: invokevirtual 193	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   65: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: getfield 47	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_Int	I
+    //   62: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   68: aload_2
-    //   69: invokestatic 203	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   69: invokestatic 215	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   72: pop
     //   73: aload_0
     //   74: aconst_null
-    //   75: putfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   75: putfield 217	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
     //   78: goto -41 -> 37
     //   81: aload_0
-    //   82: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   82: getfield 217	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
     //   85: ifnull -76 -> 9
     //   88: aload_0
-    //   89: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   92: invokevirtual 210	android/net/Uri:getScheme	()Ljava/lang/String;
+    //   89: getfield 217	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   92: invokevirtual 222	android/net/Uri:getScheme	()Ljava/lang/String;
     //   95: astore_1
-    //   96: ldc 212
+    //   96: ldc 224
     //   98: aload_1
-    //   99: invokevirtual 218	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   99: invokevirtual 230	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   102: ifne +12 -> 114
-    //   105: ldc 220
+    //   105: ldc 232
     //   107: aload_1
-    //   108: invokevirtual 218	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   111: ifeq +167 -> 278
+    //   108: invokevirtual 230	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   111: ifeq +168 -> 279
     //   114: aload_0
-    //   115: getfield 64	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   118: invokevirtual 224	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   115: getfield 84	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   118: invokevirtual 236	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   121: aload_0
-    //   122: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   125: invokevirtual 230	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   122: getfield 217	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   125: invokevirtual 242	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
     //   128: astore_2
     //   129: aload_2
     //   130: astore_1
     //   131: aload_2
     //   132: aconst_null
-    //   133: invokestatic 234	android/graphics/drawable/Drawable:createFromStream	(Ljava/io/InputStream;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
+    //   133: invokestatic 246	android/graphics/drawable/Drawable:createFromStream	(Ljava/io/InputStream;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
     //   136: astore_3
     //   137: aload_3
     //   138: astore_1
     //   139: aload_2
     //   140: ifnull +9 -> 149
     //   143: aload_2
-    //   144: invokevirtual 239	java/io/InputStream:close	()V
+    //   144: invokevirtual 251	java/io/InputStream:close	()V
     //   147: aload_3
     //   148: astore_1
     //   149: aload_1
-    //   150: ifnonnull +36 -> 186
-    //   153: getstatic 245	java/lang/System:out	Ljava/io/PrintStream;
-    //   156: new 183	java/lang/StringBuilder
+    //   150: ifnonnull +37 -> 187
+    //   153: getstatic 257	java/lang/System:out	Ljava/io/PrintStream;
+    //   156: new 195	java/lang/StringBuilder
     //   159: dup
-    //   160: invokespecial 184	java/lang/StringBuilder:<init>	()V
-    //   163: ldc 247
-    //   165: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: aload_0
-    //   169: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   172: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokevirtual 256	java/io/PrintStream:println	(Ljava/lang/String;)V
-    //   181: aload_0
-    //   182: aconst_null
-    //   183: putfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   186: goto -149 -> 37
-    //   189: astore_1
-    //   190: aload_1
-    //   191: invokevirtual 259	java/io/IOException:printStackTrace	()V
-    //   194: aload_3
-    //   195: astore_1
-    //   196: goto -47 -> 149
-    //   199: astore_3
-    //   200: aconst_null
-    //   201: astore_2
-    //   202: aload_2
-    //   203: astore_1
-    //   204: ldc 181
-    //   206: new 183	java/lang/StringBuilder
-    //   209: dup
-    //   210: invokespecial 184	java/lang/StringBuilder:<init>	()V
-    //   213: ldc_w 261
-    //   216: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: aload_0
-    //   220: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   223: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   226: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   229: aload_3
-    //   230: invokestatic 203	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   233: pop
-    //   234: aload_2
-    //   235: ifnull +65 -> 300
-    //   238: aload_2
-    //   239: invokevirtual 239	java/io/InputStream:close	()V
-    //   242: aconst_null
-    //   243: astore_1
-    //   244: goto -95 -> 149
-    //   247: astore_1
-    //   248: aload_1
-    //   249: invokevirtual 259	java/io/IOException:printStackTrace	()V
-    //   252: aconst_null
-    //   253: astore_1
-    //   254: goto -105 -> 149
-    //   257: astore_2
-    //   258: aconst_null
-    //   259: astore_1
-    //   260: aload_1
-    //   261: ifnull +7 -> 268
-    //   264: aload_1
-    //   265: invokevirtual 239	java/io/InputStream:close	()V
-    //   268: aload_2
-    //   269: athrow
-    //   270: astore_1
-    //   271: aload_1
-    //   272: invokevirtual 259	java/io/IOException:printStackTrace	()V
-    //   275: goto -7 -> 268
-    //   278: aload_0
-    //   279: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   282: invokevirtual 262	android/net/Uri:toString	()Ljava/lang/String;
-    //   285: invokestatic 266	android/graphics/drawable/Drawable:createFromPath	(Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
-    //   288: astore_1
-    //   289: goto -140 -> 149
-    //   292: astore_2
-    //   293: goto -33 -> 260
-    //   296: astore_3
-    //   297: goto -95 -> 202
-    //   300: aconst_null
-    //   301: astore_1
-    //   302: goto -153 -> 149
+    //   160: invokespecial 196	java/lang/StringBuilder:<init>	()V
+    //   163: ldc_w 259
+    //   166: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: aload_0
+    //   170: getfield 217	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   173: invokevirtual 262	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   176: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   179: invokevirtual 268	java/io/PrintStream:println	(Ljava/lang/String;)V
+    //   182: aload_0
+    //   183: aconst_null
+    //   184: putfield 217	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   187: goto -150 -> 37
+    //   190: astore_1
+    //   191: aload_1
+    //   192: invokevirtual 271	java/io/IOException:printStackTrace	()V
+    //   195: aload_3
+    //   196: astore_1
+    //   197: goto -48 -> 149
+    //   200: astore_3
+    //   201: aconst_null
+    //   202: astore_2
+    //   203: aload_2
+    //   204: astore_1
+    //   205: ldc 193
+    //   207: new 195	java/lang/StringBuilder
+    //   210: dup
+    //   211: invokespecial 196	java/lang/StringBuilder:<init>	()V
+    //   214: ldc_w 273
+    //   217: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: aload_0
+    //   221: getfield 217	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   224: invokevirtual 262	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   227: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   230: aload_3
+    //   231: invokestatic 215	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   234: pop
+    //   235: aload_2
+    //   236: ifnull +65 -> 301
+    //   239: aload_2
+    //   240: invokevirtual 251	java/io/InputStream:close	()V
+    //   243: aconst_null
+    //   244: astore_1
+    //   245: goto -96 -> 149
+    //   248: astore_1
+    //   249: aload_1
+    //   250: invokevirtual 271	java/io/IOException:printStackTrace	()V
+    //   253: aconst_null
+    //   254: astore_1
+    //   255: goto -106 -> 149
+    //   258: astore_2
+    //   259: aconst_null
+    //   260: astore_1
+    //   261: aload_1
+    //   262: ifnull +7 -> 269
+    //   265: aload_1
+    //   266: invokevirtual 251	java/io/InputStream:close	()V
+    //   269: aload_2
+    //   270: athrow
+    //   271: astore_1
+    //   272: aload_1
+    //   273: invokevirtual 271	java/io/IOException:printStackTrace	()V
+    //   276: goto -7 -> 269
+    //   279: aload_0
+    //   280: getfield 217	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   283: invokevirtual 274	android/net/Uri:toString	()Ljava/lang/String;
+    //   286: invokestatic 278	android/graphics/drawable/Drawable:createFromPath	(Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
+    //   289: astore_1
+    //   290: goto -141 -> 149
+    //   293: astore_2
+    //   294: goto -33 -> 261
+    //   297: astore_3
+    //   298: goto -95 -> 203
+    //   301: aconst_null
+    //   302: astore_1
+    //   303: goto -154 -> 149
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	305	0	this	FitXImageView
+    //   0	306	0	this	FitXImageView
     //   1	149	1	localObject1	java.lang.Object
-    //   189	2	1	localIOException1	java.io.IOException
-    //   195	49	1	localObject2	java.lang.Object
-    //   247	2	1	localIOException2	java.io.IOException
-    //   253	12	1	localObject3	java.lang.Object
-    //   270	2	1	localIOException3	java.io.IOException
-    //   288	14	1	localDrawable1	Drawable
+    //   190	2	1	localIOException1	java.io.IOException
+    //   196	49	1	localObject2	java.lang.Object
+    //   248	2	1	localIOException2	java.io.IOException
+    //   254	12	1	localObject3	java.lang.Object
+    //   271	2	1	localIOException3	java.io.IOException
+    //   289	14	1	localDrawable1	Drawable
     //   14	22	2	localObject4	java.lang.Object
     //   43	26	2	localException1	Exception
-    //   128	111	2	localInputStream	java.io.InputStream
-    //   257	12	2	localObject5	java.lang.Object
-    //   292	1	2	localObject6	java.lang.Object
-    //   136	59	3	localDrawable2	Drawable
-    //   199	31	3	localException2	Exception
-    //   296	1	3	localException3	Exception
+    //   128	112	2	localInputStream	java.io.InputStream
+    //   258	12	2	localObject5	java.lang.Object
+    //   293	1	2	localObject6	java.lang.Object
+    //   136	60	3	localDrawable2	Drawable
+    //   200	31	3	localException2	Exception
+    //   297	1	3	localException3	Exception
     // Exception table:
     //   from	to	target	type
     //   26	35	43	java/lang/Exception
-    //   143	147	189	java/io/IOException
-    //   114	129	199	java/lang/Exception
-    //   238	242	247	java/io/IOException
-    //   114	129	257	finally
-    //   264	268	270	java/io/IOException
-    //   131	137	292	finally
-    //   204	234	292	finally
-    //   131	137	296	java/lang/Exception
+    //   143	147	190	java/io/IOException
+    //   114	129	200	java/lang/Exception
+    //   239	243	248	java/io/IOException
+    //   114	129	258	finally
+    //   265	269	271	java/io/IOException
+    //   131	137	293	finally
+    //   205	235	293	finally
+    //   131	137	297	java/lang/Exception
   }
   
   private void c()
@@ -401,7 +401,7 @@ public class FitXImageView
     }
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -435,7 +435,7 @@ public class FitXImageView
     d();
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     Drawable localDrawable;
@@ -465,7 +465,7 @@ public class FitXImageView
     return mergeDrawableStates(super.onCreateDrawableState(this.jdField_a_of_type_ArrayOfInt.length + paramInt), this.jdField_a_of_type_ArrayOfInt);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
@@ -473,7 +473,7 @@ public class FitXImageView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {}
@@ -509,7 +509,7 @@ public class FitXImageView
     paramCanvas.restoreToCount(i);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     b();
     int m = 0;
@@ -753,7 +753,7 @@ public class FitXImageView
     }
   }
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public boolean verifyDrawable(Drawable paramDrawable)
   {
     return (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == paramDrawable) || (super.verifyDrawable(paramDrawable));
   }

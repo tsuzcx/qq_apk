@@ -1,39 +1,38 @@
 package com.tencent.mobileqq.profilecard.bussiness.troop;
 
-import aagb;
 import android.text.TextUtils;
-import anvx;
-import azrb;
-import bacf;
+import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-public class ProfileTroopMemInfoComponent$3
+class ProfileTroopMemInfoComponent$3
   implements Runnable
 {
-  public ProfileTroopMemInfoComponent$3(bacf parambacf, azrb paramazrb) {}
+  ProfileTroopMemInfoComponent$3(ProfileTroopMemInfoComponent paramProfileTroopMemInfoComponent, ProfileCardInfo paramProfileCardInfo) {}
   
   public void run()
   {
-    Object localObject = bacf.a(this.this$0, this.a);
+    Object localObject = ProfileTroopMemInfoComponent.access$3800(this.this$0, this.val$cardInfo);
     if (localObject != null)
     {
-      localObject = anvx.a(2131707907) + aagb.a(((MessageRecord)localObject).time, true, false, true).toString();
+      localObject = HardCodeUtil.a(2131708434) + TroopNewGuidePopWindow.a(((MessageRecord)localObject).time, true, false, true).toString();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.a.b = ((String)localObject);
+        this.val$cardInfo.b = ((String)localObject);
       }
-      if (bacf.h(this.this$0) != null) {
+      if (ProfileTroopMemInfoComponent.access$3900(this.this$0) != null) {
         break label82;
       }
     }
     label82:
-    while (!bacf.i(this.this$0).isResume())
+    while (!ProfileTroopMemInfoComponent.access$4000(this.this$0).isResume())
     {
       return;
       localObject = null;
       break;
     }
-    bacf.l(this.this$0).runOnUiThread(new ProfileTroopMemInfoComponent.3.1(this));
+    ProfileTroopMemInfoComponent.access$4500(this.this$0).runOnUiThread(new ProfileTroopMemInfoComponent.3.1(this));
   }
 }
 

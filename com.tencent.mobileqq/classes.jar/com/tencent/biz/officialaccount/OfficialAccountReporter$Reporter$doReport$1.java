@@ -11,10 +11,10 @@ import kotlin.jvm.internal.Intrinsics;
 import mqq.app.AppRuntime;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
-public final class OfficialAccountReporter$Reporter$doReport$1
+final class OfficialAccountReporter$Reporter$doReport$1
   implements Runnable
 {
-  public OfficialAccountReporter$Reporter$doReport$1(HashMap paramHashMap, String paramString) {}
+  OfficialAccountReporter$Reporter$doReport$1(HashMap paramHashMap, String paramString) {}
   
   public final void run()
   {
@@ -48,7 +48,7 @@ public final class OfficialAccountReporter$Reporter$doReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.officialaccount.OfficialAccountReporter.Reporter.doReport.1
  * JD-Core Version:    0.7.0.1
  */

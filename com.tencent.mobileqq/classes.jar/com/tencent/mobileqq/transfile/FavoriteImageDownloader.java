@@ -8,16 +8,16 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import auds;
-import auea;
-import bman;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavReport;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -88,9 +88,9 @@ public class FavoriteImageDownloader
       if (GifDrawable.isGifFile(paramFile)) {
         return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
       }
-      if (5 == auea.a(paramFile.getName()))
+      if (5 == FileManagerUtil.a(paramFile.getName()))
       {
-        localObject = auds.a(this.application, paramFile.getPath());
+        localObject = FileCategoryUtil.a(this.application, paramFile.getPath());
         if (localObject != null)
         {
           if ((localObject instanceof BitmapDrawable)) {
@@ -194,7 +194,7 @@ public class FavoriteImageDownloader
       new File(str1).delete();
       j = i;
     }
-    if ((j != 0) && (NetworkUtil.isNetworkAvailable(this.application.getApplicationContext())))
+    if ((j != 0) && (NetworkUtil.g(this.application.getApplicationContext())))
     {
       localObject = paramDownloadParams.url;
       str2 = paramDownloadParams.urlStr;
@@ -229,10 +229,10 @@ public class FavoriteImageDownloader
         localFile = new File(str1);
         if (!paramURLDrawableHandler.renameTo(localFile))
         {
-          FileUtils.copyFile(paramURLDrawableHandler, localFile);
+          FileUtils.a(paramURLDrawableHandler, localFile);
           paramURLDrawableHandler.delete();
         }
-        bman.a(this.application.waitAppRuntime(null), false, new File(str1).length());
+        QfavReport.a(this.application.waitAppRuntime(null), false, new File(str1).length());
         paramDownloadParams.url = ((URL)localObject);
         paramDownloadParams.urlStr = str2;
         paramOutputStream = new File(str1);

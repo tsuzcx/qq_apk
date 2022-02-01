@@ -1,20 +1,18 @@
 package com.tencent.qidian;
 
-import bjxa;
-
-public class QidianManager$1
+class QidianManager$1
   implements Runnable
 {
-  public QidianManager$1(bjxa parambjxa) {}
+  QidianManager$1(QidianManager paramQidianManager) {}
   
   public void run()
   {
-    bjxa.a(this.this$0);
+    QidianManager.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.QidianManager.1
  * JD-Core Version:    0.7.0.1
  */

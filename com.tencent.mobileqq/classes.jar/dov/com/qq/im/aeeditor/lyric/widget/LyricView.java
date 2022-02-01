@@ -8,29 +8,25 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
-import bntx;
-import bnty;
-import bntz;
-import bnua;
 import com.tencent.mobileqq.R.styleable;
 
 public class LyricView
   extends FrameLayout
 {
-  public PointF a;
+  protected PointF a;
   private Handler a;
   protected View.OnClickListener a;
-  protected bnty a;
-  public bntz a;
-  protected bnua a;
+  protected LyricView.OnLineClickListener a;
+  protected LyricView.OnLyricViewLongClickListener a;
+  protected LyricViewAttribute a;
   protected LyricViewInternalBase a;
   protected LyricViewScroll a;
   protected boolean a;
-  public PointF b;
+  protected PointF b;
   protected boolean b;
-  protected boolean c;
+  protected boolean c = false;
   protected boolean d = true;
-  public boolean e;
+  protected boolean e = false;
   
   public LyricView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,10 +34,10 @@ public class LyricView
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
     this.jdField_b_of_type_AndroidGraphicsPointF = new PointF();
-    this.jdField_a_of_type_AndroidOsHandler = new bntx(this);
+    this.jdField_a_of_type_AndroidOsHandler = new LyricView.1(this);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AELyricView, 0, 0);
-    this.jdField_a_of_type_Bnua = new bnua();
-    this.jdField_a_of_type_Bnua.a(paramContext);
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewAttribute = new LyricViewAttribute();
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewAttribute.a(paramContext);
     this.jdField_a_of_type_Boolean = paramContext.getBoolean(19, false);
     paramContext.recycle();
   }
@@ -90,11 +86,11 @@ public class LyricView
         if ((!this.e) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.x - f1) < 10.0F) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.y - f2) < 10.0F) && (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) && (this.c)) {
           this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this);
         }
-        if ((!this.e) && (this.d) && (this.jdField_a_of_type_Bnty != null))
+        if ((!this.e) && (this.d) && (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricView$OnLineClickListener != null))
         {
           i = (int)(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.getScrollY() + f2);
           i = this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewInternalBase.c(i);
-          this.jdField_a_of_type_Bnty.a(i);
+          this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricView$OnLineClickListener.a(i);
         }
         this.d = true;
         this.e = false;
@@ -118,19 +114,19 @@ public class LyricView
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public void setOnLineClickListener(bnty parambnty)
+  public void setOnLineClickListener(LyricView.OnLineClickListener paramOnLineClickListener)
   {
-    this.jdField_a_of_type_Bnty = parambnty;
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricView$OnLineClickListener = paramOnLineClickListener;
   }
   
-  public void setOnLyricViewLongClickListener(bntz parambntz)
+  public void setOnLyricViewLongClickListener(LyricView.OnLyricViewLongClickListener paramOnLyricViewLongClickListener)
   {
-    this.jdField_a_of_type_Bntz = parambntz;
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricView$OnLyricViewLongClickListener = paramOnLyricViewLongClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.widget.LyricView
  * JD-Core Version:    0.7.0.1
  */

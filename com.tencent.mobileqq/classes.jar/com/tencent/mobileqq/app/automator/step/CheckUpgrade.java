@@ -8,7 +8,7 @@ public class CheckUpgrade
 {
   public int a()
   {
-    if (this.a.app != null) {}
+    if (this.a.a != null) {}
     return 7;
   }
 }

@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.model;
 
-import awyr;
 import com.tencent.mobileqq.data.EmoticonTab;
 import com.tencent.mobileqq.persistence.EntityManager;
 
-public class EmoticonManager$14
+class EmoticonManager$14
   implements Runnable
 {
-  public EmoticonManager$14(awyr paramawyr, String paramString) {}
+  EmoticonManager$14(EmoticonManager paramEmoticonManager, String paramString) {}
   
   public void run()
   {
     EmoticonTab localEmoticonTab = (EmoticonTab)this.this$0.a.find(EmoticonTab.class, this.a);
     if (localEmoticonTab != null) {}
-    for (localEmoticonTab.aioHave = true;; localEmoticonTab.aioHave = true)
+    for (localEmoticonTab.kandianHave = true;; localEmoticonTab.kandianHave = true)
     {
-      awyr.a(this.this$0, localEmoticonTab);
+      EmoticonManager.a(this.this$0, localEmoticonTab);
       return;
       localEmoticonTab = new EmoticonTab();
       localEmoticonTab.epId = this.a;

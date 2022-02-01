@@ -11,10 +11,10 @@ public final class SingleMsg
 {
   static Map<String, String> cache_data = new HashMap();
   static byte[] cache_extBuffer;
-  public long addTime;
-  public Map<String, String> data;
-  public byte[] extBuffer;
-  public long opUin;
+  public long addTime = 0L;
+  public Map<String, String> data = null;
+  public byte[] extBuffer = null;
+  public long opUin = 0L;
   
   static
   {

@@ -12,8 +12,8 @@ public final class BGFM
 {
   static ArrayList<BroadcastForQzone> cache_stFmBroadcast;
   static ArrayList<BGMusicForQzone> cache_stFmLists = new ArrayList();
-  public ArrayList<BroadcastForQzone> stFmBroadcast;
-  public ArrayList<BGMusicForQzone> stFmLists;
+  public ArrayList<BroadcastForQzone> stFmBroadcast = null;
+  public ArrayList<BGMusicForQzone> stFmLists = null;
   
   static
   {

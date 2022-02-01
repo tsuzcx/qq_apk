@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import aisr;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import java.util.Iterator;
 import java.util.List;
 
-public class ClassificationSearchActivity$15$1
+class ClassificationSearchActivity$15$1
   implements Runnable
 {
-  public ClassificationSearchActivity$15$1(aisr paramaisr) {}
+  ClassificationSearchActivity$15$1(ClassificationSearchActivity.15 param15) {}
   
   public void run()
   {
@@ -35,7 +34,7 @@ public class ClassificationSearchActivity$15$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1
  * JD-Core Version:    0.7.0.1
  */

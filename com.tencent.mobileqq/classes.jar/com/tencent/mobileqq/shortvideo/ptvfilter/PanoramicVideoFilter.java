@@ -17,8 +17,8 @@ import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.filter.StaticStickerFilter;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.recorder.ActVideoDecoder;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
 import java.io.File;
 
 public class PanoramicVideoFilter
@@ -80,7 +80,7 @@ public class PanoramicVideoFilter
   {
     int i = 0;
     this.isImageReady = false;
-    if (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
+    if (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE)
     {
       PanoramicLogUtil.performanceLog("begin decodeFrame");
       this.mVideoDecoder.decodeFrame(paramInt);

@@ -1,7 +1,7 @@
 package com.tencent.avgame.app;
 
-import nfc;
-import nnm;
+import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.qav.AVGameBusinessCtrl;
 
 class AVGameAppInterface$2
   implements Runnable
@@ -10,13 +10,13 @@ class AVGameAppInterface$2
   
   public void run()
   {
-    nnm.a();
-    nfc.a().a();
+    AVGameBusinessCtrl.a();
+    GameEngine.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.app.AVGameAppInterface.2
  * JD-Core Version:    0.7.0.1
  */

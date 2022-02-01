@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 class FaceDownloader$FaceDownloadRunnable
   implements Runnable
 {
-  private int index;
+  private int index = 0;
   private boolean isRunning = true;
   
   public FaceDownloader$FaceDownloadRunnable(FaceDownloader paramFaceDownloader, int paramInt)
@@ -101,7 +101,7 @@ class FaceDownloader$FaceDownloadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDownloader.FaceDownloadRunnable
  * JD-Core Version:    0.7.0.1
  */

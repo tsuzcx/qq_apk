@@ -9,8 +9,8 @@ import android.util.Xml;
 import androidx.annotation.ArrayRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.core.R.styleable;
 import androidx.core.provider.FontRequest;
-import c;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -110,13 +110,13 @@ public class FontResourcesParserCompat
   @Nullable
   private static FontResourcesParserCompat.FamilyResourceEntry readFamily(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
-    Object localObject = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), c.b);
-    String str1 = ((TypedArray)localObject).getString(c.d);
-    String str2 = ((TypedArray)localObject).getString(c.h);
-    String str3 = ((TypedArray)localObject).getString(c.i);
-    int i = ((TypedArray)localObject).getResourceId(c.e, 0);
-    int j = ((TypedArray)localObject).getInteger(c.f, 1);
-    int k = ((TypedArray)localObject).getInteger(c.g, 500);
+    Object localObject = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), R.styleable.b);
+    String str1 = ((TypedArray)localObject).getString(R.styleable.d);
+    String str2 = ((TypedArray)localObject).getString(R.styleable.h);
+    String str3 = ((TypedArray)localObject).getString(R.styleable.i);
+    int i = ((TypedArray)localObject).getResourceId(R.styleable.e, 0);
+    int j = ((TypedArray)localObject).getInteger(R.styleable.f, 1);
+    int k = ((TypedArray)localObject).getInteger(R.styleable.g, 500);
     ((TypedArray)localObject).recycle();
     if ((str1 != null) && (str2 != null) && (str3 != null))
     {
@@ -144,7 +144,7 @@ public class FontResourcesParserCompat
   private static FontResourcesParserCompat.FontFileResourceEntry readFont(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
     boolean bool = true;
-    paramResources = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), c.c);
+    paramResources = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), R.styleable.c);
     int k;
     label53:
     label63:
@@ -152,28 +152,28 @@ public class FontResourcesParserCompat
     int j;
     label91:
     String str1;
-    if (paramResources.hasValue(c.r))
+    if (paramResources.hasValue(R.styleable.r))
     {
-      i = c.r;
+      i = R.styleable.r;
       k = paramResources.getInt(i, 400);
-      if (!paramResources.hasValue(c.p)) {
+      if (!paramResources.hasValue(R.styleable.p)) {
         break label162;
       }
-      i = c.p;
+      i = R.styleable.p;
       if (1 != paramResources.getInt(i, 0)) {
         break label169;
       }
-      if (!paramResources.hasValue(c.s)) {
+      if (!paramResources.hasValue(R.styleable.s)) {
         break label175;
       }
-      i = c.s;
-      if (!paramResources.hasValue(c.q)) {
+      i = R.styleable.s;
+      if (!paramResources.hasValue(R.styleable.q)) {
         break label182;
       }
-      j = c.q;
+      j = R.styleable.q;
       str1 = paramResources.getString(j);
       j = paramResources.getInt(i, 0);
-      if (!paramResources.hasValue(c.o)) {
+      if (!paramResources.hasValue(R.styleable.o)) {
         break label189;
       }
     }
@@ -184,7 +184,7 @@ public class FontResourcesParserCompat
     label175:
     label182:
     label189:
-    for (int i = c.o;; i = c.j)
+    for (int i = R.styleable.o;; i = R.styleable.j)
     {
       m = paramResources.getResourceId(i, 0);
       str2 = paramResources.getString(i);
@@ -192,15 +192,15 @@ public class FontResourcesParserCompat
       while (paramXmlPullParser.next() != 3) {
         skip(paramXmlPullParser);
       }
-      i = c.k;
+      i = R.styleable.k;
       break;
-      i = c.l;
+      i = R.styleable.l;
       break label53;
       bool = false;
       break label63;
-      i = c.m;
+      i = R.styleable.m;
       break label77;
-      j = c.n;
+      j = R.styleable.n;
       break label91;
     }
     return new FontResourcesParserCompat.FontFileResourceEntry(str2, k, bool, str1, j, m);
@@ -238,7 +238,7 @@ public class FontResourcesParserCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.content.res.FontResourcesParserCompat
  * JD-Core Version:    0.7.0.1
  */

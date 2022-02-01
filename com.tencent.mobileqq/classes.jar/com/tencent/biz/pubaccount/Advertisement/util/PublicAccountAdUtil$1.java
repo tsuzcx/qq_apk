@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.Advertisement.util;
 
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementCoverPreloadManager;
 import java.util.ArrayList;
-import oex;
 
-public final class PublicAccountAdUtil$1
+final class PublicAccountAdUtil$1
   implements Runnable
 {
-  public PublicAccountAdUtil$1(ArrayList paramArrayList) {}
+  PublicAccountAdUtil$1(ArrayList paramArrayList) {}
   
   public void run()
   {
-    oex.a().a(this.a);
+    AdvertisementCoverPreloadManager.a().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.util.PublicAccountAdUtil.1
  * JD-Core Version:    0.7.0.1
  */

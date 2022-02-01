@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aggs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShakeWindow;
 
-public class AIOShakeHelper$4
+class AIOShakeHelper$4
   implements Runnable
 {
-  public AIOShakeHelper$4(aggs paramaggs, MessageForShakeWindow paramMessageForShakeWindow) {}
+  AIOShakeHelper$4(AIOShakeHelper paramAIOShakeHelper, MessageForShakeWindow paramMessageForShakeWindow) {}
   
   public void run()
   {
     this.this$0.a();
-    aggs.a(this.this$0).vibratorAndAudioForShake(this.a.frienduin, true);
+    AIOShakeHelper.a(this.this$0).vibratorAndAudioForShake(this.a.frienduin, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.4
  * JD-Core Version:    0.7.0.1
  */

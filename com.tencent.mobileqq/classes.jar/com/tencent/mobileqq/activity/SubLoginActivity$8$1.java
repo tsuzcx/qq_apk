@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aezw;
 import com.tencent.mobileqq.widget.ClearableEditText;
 
-public class SubLoginActivity$8$1
+class SubLoginActivity$8$1
   implements Runnable
 {
-  public SubLoginActivity$8$1(aezw paramaezw) {}
+  SubLoginActivity$8$1(SubLoginActivity.8 param8) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class SubLoginActivity$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubLoginActivity.8.1
  * JD-Core Version:    0.7.0.1
  */

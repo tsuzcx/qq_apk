@@ -8,15 +8,15 @@ public final class ReqGetGroupInArea
   extends JceStruct
 {
   static byte[] cache_vClientVersion = (byte[])new byte[1];
-  public long dwGroupStartIdx;
-  public int iCount;
-  public int iFilterId;
-  public int iLat;
-  public int iLon;
+  public long dwGroupStartIdx = 0L;
+  public int iCount = 0;
+  public int iFilterId = 0;
+  public int iLat = 0;
+  public int iLon = 0;
   public String strAreaName = "";
-  public long uiClientType;
-  public long uiLabelStyle;
-  public byte[] vClientVersion;
+  public long uiClientType = 0L;
+  public long uiLabelStyle = 0L;
+  public byte[] vClientVersion = null;
   
   static
   {

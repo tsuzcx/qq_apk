@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.msgbox;
 
-import algc;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import java.util.List;
 
@@ -20,7 +20,7 @@ class TempMsgBoxFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxFragment.3
  * JD-Core Version:    0.7.0.1
  */

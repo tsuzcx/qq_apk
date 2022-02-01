@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akjf;
-import bgio;
+import com.tencent.mobileqq.data.troop.TroopClipPic;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 class TroopPhotoController$3
   implements Runnable
 {
-  TroopPhotoController$3(TroopPhotoController paramTroopPhotoController, akjf paramakjf, String paramString) {}
+  TroopPhotoController$3(TroopPhotoController paramTroopPhotoController, AvatarInfo paramAvatarInfo, String paramString) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ class TroopPhotoController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.TroopPhotoController.3
  * JD-Core Version:    0.7.0.1
  */

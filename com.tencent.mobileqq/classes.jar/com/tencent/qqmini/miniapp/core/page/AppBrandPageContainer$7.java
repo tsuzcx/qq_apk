@@ -1,34 +1,23 @@
 package com.tencent.qqmini.miniapp.core.page;
 
-import com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.launcher.utils.ColorUtils;
-import org.json.JSONObject;
+import com.tencent.qqmini.miniapp.R.string;
+import com.tencent.qqmini.sdk.core.utils.DialogUtil;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.widget.MiniCustomDialog;
 
 class AppBrandPageContainer$7
   implements Runnable
 {
-  AppBrandPageContainer$7(AppBrandPageContainer paramAppBrandPageContainer, NativeViewRequestEvent paramNativeViewRequestEvent) {}
+  AppBrandPageContainer$7(AppBrandPageContainer paramAppBrandPageContainer, boolean paramBoolean) {}
   
   public void run()
   {
-    try
-    {
-      String str = new JSONObject(this.val$req.jsonParams).optString("backgroundColor", "#FFFFFF");
-      this.this$0.setBackgroundColor(ColorUtils.parseColor(str));
-      this.val$req.ok();
-      return;
-    }
-    catch (Exception localException)
-    {
-      this.val$req.fail();
-      QMLog.e("minisdk-start-AppBrandPageContainer", this.val$req.event + " error.", localException);
-    }
+    DialogUtil.createCustomDialog(AppBrandPageContainer.access$200(this.this$0).getAttachedActivity(), 230, "重启后生效", null, R.string.mini_sdk_cancel, R.string.mini_sdk_ok, new AppBrandPageContainer.7.1(this), null).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.7
  * JD-Core Version:    0.7.0.1
  */

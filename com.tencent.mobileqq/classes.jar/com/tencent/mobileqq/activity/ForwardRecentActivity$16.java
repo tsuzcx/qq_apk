@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.activity;
 
-import amhc;
 import android.view.View;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.adapter.ForwardRecentListAdapter.IForwardRecentListAdapterCallback;
+import com.tencent.qphone.base.util.QLog;
 
 class ForwardRecentActivity$16
-  implements Runnable
+  implements ForwardRecentListAdapter.IForwardRecentListAdapterCallback
 {
   ForwardRecentActivity$16(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    int j = ForwardRecentActivity.a(this.this$0).getChildCount();
-    int i = 0;
-    while (i < j)
+    boolean bool = ForwardRecentActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onItemViewClicked" + bool);
+    }
+    if (bool)
     {
-      View localView = ForwardRecentActivity.a(this.this$0).getChildAt(i);
-      if ((localView instanceof ForwardRecentItemView)) {
-        ((ForwardRecentItemView)localView).b(150L);
-      }
-      i += 1;
+      ForwardRecentActivity.a(this.a, paramView);
+      return;
     }
-    this.this$0.a.b(150L);
-    if (ForwardRecentActivity.a(this.this$0) != null) {
-      ForwardRecentActivity.a(this.this$0).a(false);
-    }
+    this.a.a(paramView);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardRecentActivity.a(this.a, paramString, paramInt);
   }
 }
 

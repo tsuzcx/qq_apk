@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.c.f.a;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.e.a;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.msf.boot.config.NativeConfigStore;
@@ -110,7 +110,7 @@ public class e
         QLog.e("MSF.S.AppProcessManager", 2, "find null processName msg to app " + paramToServiceMsg + " " + paramFromServiceMsg);
       }
       if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-        com.tencent.mobileqq.msf.core.c.f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 7);
+        com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 7);
       }
       return;
     }
@@ -151,7 +151,7 @@ public class e
       d.a();
       return;
       if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-        com.tencent.mobileqq.msf.core.c.f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 8);
+        com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 8);
       }
       QLog.e("MSF.S.AppProcessManager", 1, "can not find " + paramString + " to receive msg to:" + paramToServiceMsg + " from:" + paramFromServiceMsg);
       break;

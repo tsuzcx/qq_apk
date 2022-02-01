@@ -1,17 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import olh;
 import org.json.JSONObject;
 
-public final class RIJKanDianTabReport$2
+final class RIJKanDianTabReport$2
   implements Runnable
 {
-  public RIJKanDianTabReport$2(QQAppInterface paramQQAppInterface) {}
+  RIJKanDianTabReport$2(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -30,7 +31,7 @@ public final class RIJKanDianTabReport$2
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("tab_status", 3);
             localJSONObject.put("reddot_num", ((KandianMsgBoxRedPntInfo)localObject).mMsgCnt);
-            olh.a(null, "CliOper", "", "", "0X80091DC", "0X80091DC", 0, 0, "0", "", "", localJSONObject.toString(), false);
+            ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80091DC", "0X80091DC", 0, 0, "0", "", "", localJSONObject.toString(), false);
           }
         }
       }
@@ -44,7 +45,7 @@ public final class RIJKanDianTabReport$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJKanDianTabReport.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,11 @@ public final class CGetChiefReq
 {
   static Map<String, String> cache_mParams;
   static LoginInfo cache_stLogin = new LoginInfo();
-  public int appid;
-  public long lUid;
-  public int locationtype;
-  public Map<String, String> mParams;
-  public LoginInfo stLogin;
+  public int appid = 0;
+  public long lUid = 0L;
+  public int locationtype = 0;
+  public Map<String, String> mParams = null;
+  public LoginInfo stLogin = null;
   
   static
   {

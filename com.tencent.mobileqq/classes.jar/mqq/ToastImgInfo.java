@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class ToastImgInfo
   extends JceStruct
 {
-  public int iOpen;
-  public int iShowTime;
-  public int iToastVer;
+  public int iOpen = 0;
+  public int iShowTime = 0;
+  public int iToastVer = 0;
   public String sShortText = "";
   public String sText = "";
   

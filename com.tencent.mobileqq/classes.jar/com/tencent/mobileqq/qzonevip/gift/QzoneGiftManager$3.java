@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.qzonevip.gift;
 
-import aqxe;
-import argw;
-import bazk;
-import bmmh;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
 
-public class QzoneGiftManager$3
-  implements Runnable
+class QzoneGiftManager$3
+  extends AnimatorListenerAdapter
 {
-  public QzoneGiftManager$3(bazk parambazk, String paramString1, String paramString2) {}
+  QzoneGiftManager$3(QzoneGiftManager paramQzoneGiftManager) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    argw localargw = (argw)aqxe.a().a(499);
-    bazk.a(this.this$0, localargw, this.a, this.b);
-    bmmh.a().b(localargw);
+    if (QzoneGiftManager.a(this.a) != null) {
+      QzoneGiftManager.a(this.a).c();
+    }
+    QzoneGiftManager.a(this.a, 8);
   }
 }
 

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import aocx;
-import bhhi;
 import com.tencent.commonsdk.cache.QQHashMap;
 import com.tencent.mobileqq.data.RoamSetting;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.utils.RoamSettingController;
 import java.util.ArrayList;
 import java.util.concurrent.locks.Lock;
 
-public class RoamSettingManager$1
+class RoamSettingManager$1
   implements Runnable
 {
-  public RoamSettingManager$1(aocx paramaocx) {}
+  RoamSettingManager$1(RoamSettingManager paramRoamSettingManager) {}
   
   public void run()
   {
@@ -27,7 +26,7 @@ public class RoamSettingManager$1
         if (i < localArrayList.size())
         {
           RoamSetting localRoamSetting = (RoamSetting)localArrayList.get(i);
-          if (bhhi.a(localRoamSetting.path) == 1) {
+          if (RoamSettingController.a(localRoamSetting.path) == 1) {
             this.this$0.b.put(localRoamSetting.path, localRoamSetting);
           } else {
             this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(localRoamSetting.path, localRoamSetting);
@@ -47,7 +46,7 @@ public class RoamSettingManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RoamSettingManager.1
  * JD-Core Version:    0.7.0.1
  */

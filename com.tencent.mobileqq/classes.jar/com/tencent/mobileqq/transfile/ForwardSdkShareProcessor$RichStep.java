@@ -2,9 +2,9 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bjgx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -42,7 +42,7 @@ class ForwardSdkShareProcessor$RichStep
       if (paramInt1 != 0) {
         ((Bundle)localObject).putString("stringext_1", this.this$0.mTargetUrl);
       }
-      bjgx.a().a((Bundle)localObject, "", this.this$0.app.getCurrentAccountUin(), false, this.this$0.isSdkShare());
+      ReportCenter.a().a((Bundle)localObject, "", this.this$0.app.getCurrentAccountUin(), false, this.this$0.isSdkShare());
       if (QLog.isColorLevel())
       {
         localObject = "RichStep|run|ret=" + paramInt1 + ",lack=" + ForwardSdkShareProcessor.access$000(this.this$0) + ",cost=" + paramLong;
@@ -65,7 +65,7 @@ class ForwardSdkShareProcessor$RichStep
     localBundle.putString("intext_3", "0");
     localBundle.putString("intext_2", "" + ForwardSdkShareProcessor.access$000(this.this$0));
     localBundle.putString("stringext_1", this.this$0.mTargetUrl);
-    bjgx.a().a(localBundle, "", this.this$0.app.getCurrentAccountUin(), false, this.this$0.isSdkShare());
+    ReportCenter.a().a(localBundle, "", this.this$0.app.getCurrentAccountUin(), false, this.this$0.isSdkShare());
   }
   
   /* Error */
@@ -94,7 +94,7 @@ class ForwardSdkShareProcessor$RichStep
     //   37: getfield 16	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor$RichStep:this$0	Lcom/tencent/mobileqq/transfile/ForwardSdkShareProcessor;
     //   40: getfield 117	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   43: invokevirtual 122	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   46: invokestatic 179	bjkq:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/Object;
+    //   46: invokestatic 179	com/tencent/open/base/ShareProcessorUtil:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/Object;
     //   49: astore 11
     //   51: iload_2
     //   52: istore_1
@@ -265,7 +265,7 @@ class ForwardSdkShareProcessor$RichStep
     //   365: getfield 16	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor$RichStep:this$0	Lcom/tencent/mobileqq/transfile/ForwardSdkShareProcessor;
     //   368: getfield 219	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
     //   371: getfield 232	com/tencent/mobileqq/transfile/TransferRequest:mUniseq	J
-    //   374: invokevirtual 238	com/tencent/imcore/message/QQMessageFacade:queryMsgItemByUniseq	(Ljava/lang/String;IJ)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   374: invokevirtual 238	com/tencent/imcore/message/QQMessageFacade:b	(Ljava/lang/String;IJ)Lcom/tencent/mobileqq/data/MessageRecord;
     //   377: astore 9
     //   379: iload 4
     //   381: istore_1
@@ -298,7 +298,7 @@ class ForwardSdkShareProcessor$RichStep
     //   440: getfield 16	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor$RichStep:this$0	Lcom/tencent/mobileqq/transfile/ForwardSdkShareProcessor;
     //   443: getfield 195	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor:mShareTitle	Ljava/lang/String;
     //   446: iconst_0
-    //   447: invokestatic 251	bcsc:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   447: invokestatic 251	com/tencent/mobileqq/service/message/MessageUtils:a	(Ljava/lang/String;Z)Ljava/lang/String;
     //   450: pop
     //   451: iload 4
     //   453: istore_1
@@ -312,7 +312,7 @@ class ForwardSdkShareProcessor$RichStep
     //   468: getfield 16	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor$RichStep:this$0	Lcom/tencent/mobileqq/transfile/ForwardSdkShareProcessor;
     //   471: getfield 202	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor:mShareSummary	Ljava/lang/String;
     //   474: iconst_0
-    //   475: invokestatic 251	bcsc:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   475: invokestatic 251	com/tencent/mobileqq/service/message/MessageUtils:a	(Ljava/lang/String;Z)Ljava/lang/String;
     //   478: pop
     //   479: iload 4
     //   481: istore_1
@@ -347,13 +347,13 @@ class ForwardSdkShareProcessor$RichStep
     //   548: getfield 232	com/tencent/mobileqq/transfile/TransferRequest:mUniseq	J
     //   551: aload 9
     //   553: invokevirtual 259	com/tencent/mobileqq/structmsg/AbsShareMsg:getBytes	()[B
-    //   556: invokevirtual 263	com/tencent/imcore/message/QQMessageFacade:updateMsgContentByUniseq	(Ljava/lang/String;IJ[B)V
+    //   556: invokevirtual 262	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;IJ[B)V
     //   559: iload 4
     //   561: istore_1
     //   562: aload_0
     //   563: getfield 16	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor$RichStep:this$0	Lcom/tencent/mobileqq/transfile/ForwardSdkShareProcessor;
     //   566: sipush 1002
-    //   569: invokevirtual 266	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor:sendMessageToUpdate	(I)V
+    //   569: invokevirtual 265	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor:sendMessageToUpdate	(I)V
     //   572: iload 4
     //   574: istore_1
     //   575: iload_1
@@ -367,7 +367,7 @@ class ForwardSdkShareProcessor$RichStep
     //   588: lsub
     //   589: iload 5
     //   591: iload_3
-    //   592: invokespecial 268	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor$RichStep:reportAfter	(IJII)V
+    //   592: invokespecial 267	com/tencent/mobileqq/transfile/ForwardSdkShareProcessor$RichStep:reportAfter	(IJII)V
     //   595: iload 4
     //   597: ireturn
     //   598: astore 9
@@ -379,12 +379,12 @@ class ForwardSdkShareProcessor$RichStep
     //   606: istore_3
     //   607: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   610: ifeq -30 -> 580
-    //   613: ldc_w 270
+    //   613: ldc_w 269
     //   616: iconst_4
     //   617: aload 9
     //   619: iconst_0
-    //   620: anewarray 272	java/lang/Object
-    //   623: invokestatic 275	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   620: anewarray 271	java/lang/Object
+    //   623: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   626: iload_1
     //   627: istore 4
     //   629: iload_2
@@ -476,7 +476,7 @@ class ForwardSdkShareProcessor$RichStep
     if (this.needRich.get())
     {
       this.retryCount.set(0);
-      ThreadManager.post(new ForwardSdkShareProcessor.RichStep.1(this), 5, null, true);
+      ThreadManager.excute(new ForwardSdkShareProcessor.RichStep.1(this), 128, null, true);
       return;
     }
     doNextStep();

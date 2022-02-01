@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afpn;
 import android.text.TextUtils;
 import com.tencent.mobileqq.data.AppGuideTipsConfig;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -8,17 +7,17 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class AppGuideTipsManager$1
+class AppGuideTipsManager$1
   implements Runnable
 {
-  public AppGuideTipsManager$1(afpn paramafpn) {}
+  AppGuideTipsManager$1(AppGuideTipsManager paramAppGuideTipsManager) {}
   
   public void run()
   {
-    afpn.a(this.this$0);
+    AppGuideTipsManager.a(this.this$0);
     this.this$0.c();
-    afpn.a(this.this$0).clear();
-    ArrayList localArrayList = (ArrayList)afpn.a(this.this$0).query(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
+    AppGuideTipsManager.a(this.this$0).clear();
+    ArrayList localArrayList = (ArrayList)AppGuideTipsManager.a(this.this$0).query(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
     if ((localArrayList == null) || (localArrayList.size() <= 0)) {}
     for (;;)
     {
@@ -51,15 +50,15 @@ public class AppGuideTipsManager$1
         label174:
         j += 1;
         break label137;
-        afpn.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
+        AppGuideTipsManager.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
         i += 1;
         break label71;
-        afpn.a(this.this$0, true);
+        AppGuideTipsManager.a(this.this$0, true);
         this.this$0.b();
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(afpn.a, 2, "loadConfig, mTipsMap size=" + afpn.a(this.this$0).size());
+        QLog.d(AppGuideTipsManager.a, 2, "loadConfig, mTipsMap size=" + AppGuideTipsManager.a(this.this$0).size());
         return;
       }
       catch (Exception localException)
@@ -71,7 +70,7 @@ public class AppGuideTipsManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AppGuideTipsManager.1
  * JD-Core Version:    0.7.0.1
  */

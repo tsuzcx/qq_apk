@@ -2,14 +2,13 @@ package com.tencent.mobileqq.systemmsg;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdzy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public class GroupSystemMsgController$4
+class GroupSystemMsgController$4
   implements Runnable
 {
-  public GroupSystemMsgController$4(bdzy parambdzy, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  GroupSystemMsgController$4(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
   public void run()
   {

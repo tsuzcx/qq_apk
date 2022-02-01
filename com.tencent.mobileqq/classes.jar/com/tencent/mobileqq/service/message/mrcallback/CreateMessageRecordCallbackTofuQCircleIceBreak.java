@@ -1,0 +1,23 @@
+package com.tencent.mobileqq.service.message.mrcallback;
+
+import com.tencent.imcore.message.core.CreateMessageRecordCallback;
+import com.tencent.mobileqq.data.MessageForQCircleIceBreak;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class CreateMessageRecordCallbackTofuQCircleIceBreak
+  implements CreateMessageRecordCallback
+{
+  public MessageRecord a(int paramInt)
+  {
+    if (paramInt == -7013) {
+      return new MessageForQCircleIceBreak();
+    }
+    return null;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.service.message.mrcallback.CreateMessageRecordCallbackTofuQCircleIceBreak
+ * JD-Core Version:    0.7.0.1
+ */

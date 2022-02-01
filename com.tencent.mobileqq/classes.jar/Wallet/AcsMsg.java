@@ -10,7 +10,7 @@ public final class AcsMsg
   implements Comparable<AcsMsg>
 {
   public String applet_jump_url = "";
-  public int banner_type;
+  public int banner_type = 0;
   public String banner_url = "";
   public String btn_text = "";
   public String busi_icon = "";
@@ -20,13 +20,13 @@ public final class AcsMsg
   public String content = "";
   public String flag_text = "";
   public String jump_url = "";
-  public int mn_appid;
+  public int mn_appid = 0;
   public String mn_reserved = "";
   public String msg_id = "";
-  public long notice_time;
-  public long sub_time;
+  public long notice_time = 0L;
+  public long sub_time = 0L;
   public String title = "";
-  public int type;
+  public int type = 0;
   
   public AcsMsg() {}
   

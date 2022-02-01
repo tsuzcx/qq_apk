@@ -3,11 +3,10 @@ package com.tencent.mobileqq.forward;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aupn;
-import azlg;
 import com.tencent.mobileqq.activity.photo.ImageInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -23,9 +22,9 @@ class ForwardSdkBaseOption$8
     int i = 0;
     for (;;)
     {
-      if ((i >= 3) || ((this.this$0.m) && (this.this$0.jdField_a_of_type_Aupn != null)))
+      if ((i >= 3) || ((this.this$0.n) && (this.this$0.jdField_a_of_type_ComTencentMobileqqForwardAppInfo != null)))
       {
-        if ((this.this$0.b != 65520L) && (!this.this$0.u())) {
+        if ((this.this$0.b != 65520L) && (!this.this$0.v())) {
           this.this$0.L();
         }
       }
@@ -45,7 +44,7 @@ class ForwardSdkBaseOption$8
         }
       }
     }
-    if ((!this.this$0.m) || (TextUtils.isEmpty(this.this$0.k)))
+    if ((!this.this$0.n) || (TextUtils.isEmpty(this.this$0.k)))
     {
       this.this$0.a("ForwardOption.ForwardSdkBaseOption", "-->asyncUploadImageAndSendToBuddy--skey not ready");
       this.this$0.J();
@@ -53,19 +52,19 @@ class ForwardSdkBaseOption$8
       this.this$0.L();
       return;
     }
-    if (this.this$0.jdField_a_of_type_Aupn != null)
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqForwardAppInfo != null)
     {
-      if ((this.this$0.jdField_a_of_type_Aupn.b() != null) && (this.this$0.b != Long.parseLong("1103584836"))) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", this.this$0.jdField_a_of_type_Aupn.b());
+      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.b() != null) && (this.this$0.b != Long.parseLong("1103584836"))) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", this.this$0.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.b());
       }
-      if (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Aupn.a())) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", this.this$0.jdField_a_of_type_Aupn.a());
+      if (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.a())) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", this.this$0.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.a());
       }
-      if (this.this$0.jdField_a_of_type_Aupn.c() != null) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_name", this.this$0.jdField_a_of_type_Aupn.c());
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.c() != null) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_name", this.this$0.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.c());
       }
-      if (this.this$0.jdField_a_of_type_Aupn.d() != null) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_a_action_data", this.this$0.jdField_a_of_type_Aupn.d());
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.d() != null) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_a_action_data", this.this$0.jdField_a_of_type_ComTencentMobileqqForwardAppInfo.d());
       }
     }
     String str1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
@@ -91,7 +90,7 @@ class ForwardSdkBaseOption$8
     for (;;)
     {
       localObject2 = new CompressInfo((String)localObject1, 0);
-      azlg.b((CompressInfo)localObject2);
+      CompressOperator.b((CompressInfo)localObject2);
       if (((CompressInfo)localObject2).jdField_e_of_type_JavaLangString != null)
       {
         this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("struct_share_key_thumb_height", ((CompressInfo)localObject2).jdField_e_of_type_Int);
@@ -110,7 +109,7 @@ class ForwardSdkBaseOption$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.8
  * JD-Core Version:    0.7.0.1
  */

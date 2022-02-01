@@ -19,19 +19,19 @@ public final class PrivExtV2Rsp
   static QQValueInfoItem cache_qq_value = new QQValueInfoItem();
   static TrafficResultInfo cache_trafficResult;
   static VipUserInfo cache_vipInfo = new VipUserInfo();
-  public DataReturnFlag data_flag;
+  public DataReturnFlag data_flag = null;
   public int iSyncFreq = -1;
-  public int isAuditVersion;
-  public int isQQLivePgc;
-  public ItemCfgList itemCfgList;
-  public Map<Integer, MenumItem> map_menum;
-  public VipMedalList medalInfoList;
-  public PayRuleCfg payRule;
-  public QidInfoItem qid_info;
-  public QqLiveMsg qqLiveMsg;
-  public QQValueInfoItem qq_value;
-  public TrafficResultInfo trafficResult;
-  public VipUserInfo vipInfo;
+  public int isAuditVersion = 0;
+  public int isQQLivePgc = 0;
+  public ItemCfgList itemCfgList = null;
+  public Map<Integer, MenumItem> map_menum = null;
+  public VipMedalList medalInfoList = null;
+  public PayRuleCfg payRule = null;
+  public QidInfoItem qid_info = null;
+  public QqLiveMsg qqLiveMsg = null;
+  public QQValueInfoItem qq_value = null;
+  public TrafficResultInfo trafficResult = null;
+  public VipUserInfo vipInfo = null;
   
   static
   {

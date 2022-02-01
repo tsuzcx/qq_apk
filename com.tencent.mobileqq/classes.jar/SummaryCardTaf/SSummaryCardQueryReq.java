@@ -10,10 +10,10 @@ public final class SSummaryCardQueryReq
   static int cache_cmd;
   static int cache_src;
   public int cmd = 1;
-  public long platform;
-  public long queryuin;
-  public int src;
-  public long uin;
+  public long platform = 0L;
+  public long queryuin = 0L;
+  public int src = 0;
+  public long uin = 0L;
   public String version = "4.7.0";
   
   public SSummaryCardQueryReq() {}
@@ -52,7 +52,7 @@ public final class SSummaryCardQueryReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SSummaryCardQueryReq
  * JD-Core Version:    0.7.0.1
  */

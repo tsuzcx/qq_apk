@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -40,13 +39,13 @@ public class PhoneUnityVerifyActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561332);
-    super.setTitle(getString(2131694577));
+    super.setContentView(2131561438);
+    super.setTitle(getString(2131694798));
     this.leftView.setVisibility(8);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131692996);
+    this.rightViewText.setText(2131693141);
     this.rightViewText.setOnClickListener(this);
-    paramBundle = (Button)super.findViewById(2131372641);
+    paramBundle = (Button)super.findViewById(2131372961);
     if (paramBundle != null) {
       paramBundle.setOnClickListener(this);
     }
@@ -61,7 +60,7 @@ public class PhoneUnityVerifyActivity
   {
     super.setResult(-1, new Intent());
     super.finish();
-    super.overridePendingTransition(0, 2130772001);
+    super.overridePendingTransition(0, 2130772003);
     return false;
   }
   
@@ -87,7 +86,7 @@ public class PhoneUnityVerifyActivity
       continue;
       super.setResult(-1, new Intent());
       super.finish();
-      super.overridePendingTransition(0, 2130772001);
+      super.overridePendingTransition(0, 2130772003);
     }
   }
   
@@ -100,7 +99,7 @@ public class PhoneUnityVerifyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityVerifyActivity
  * JD-Core Version:    0.7.0.1
  */

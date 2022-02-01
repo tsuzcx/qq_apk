@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.book;
 
-import aiqt;
-import aiqu;
 import android.content.Context;
 import android.text.InputFilter;
 import android.util.AttributeSet;
@@ -12,9 +10,9 @@ public class BookEditText
   extends EditText
 {
   private int jdField_a_of_type_Int = 80;
-  private aiqu jdField_a_of_type_Aiqu;
-  private boolean jdField_a_of_type_Boolean;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new aiqt(this) };
+  private BookEditText.BookEditTextInputListener jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText$BookEditTextInputListener;
+  private boolean jdField_a_of_type_Boolean = false;
+  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new BookEditText.1(this) };
   
   public BookEditText(Context paramContext)
   {
@@ -52,9 +50,9 @@ public class BookEditText
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setInputListener(aiqu paramaiqu)
+  public void setInputListener(BookEditText.BookEditTextInputListener paramBookEditTextInputListener)
   {
-    this.jdField_a_of_type_Aiqu = paramaiqu;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText$BookEditTextInputListener = paramBookEditTextInputListener;
   }
   
   public void setTextLengthLimit(int paramInt)
@@ -64,7 +62,7 @@ public class BookEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.book.BookEditText
  * JD-Core Version:    0.7.0.1
  */

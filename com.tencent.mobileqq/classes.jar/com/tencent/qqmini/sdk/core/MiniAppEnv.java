@@ -270,7 +270,7 @@ public class MiniAppEnv
     processConfiguration(paramConfiguration);
     bindFields();
     this.miniAppInterface.onCreate(paramContext, paramConfiguration);
-    QMLog.i("MiniAppEnv", "Init MiniAppEnv. MiniSdkVersion:1.9.0_75_e0f9b31 QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
+    QMLog.i("MiniAppEnv", "Init MiniAppEnv. MiniSdkVersion:1.12.1_153_3c46116 QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
   }
   
   public void setApkgLoader(ApkgLoader paramApkgLoader)

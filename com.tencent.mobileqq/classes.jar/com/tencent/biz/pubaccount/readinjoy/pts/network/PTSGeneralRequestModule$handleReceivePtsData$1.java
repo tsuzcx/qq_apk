@@ -4,10 +4,10 @@ import com.tencent.pts.core.PTSComposer;
 import kotlin.Metadata;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
-public final class PTSGeneralRequestModule$handleReceivePtsData$1
+final class PTSGeneralRequestModule$handleReceivePtsData$1
   implements Runnable
 {
-  public PTSGeneralRequestModule$handleReceivePtsData$1(PTSComposer paramPTSComposer, String paramString) {}
+  PTSGeneralRequestModule$handleReceivePtsData$1(PTSComposer paramPTSComposer, String paramString) {}
   
   public final void run()
   {
@@ -19,7 +19,7 @@ public final class PTSGeneralRequestModule$handleReceivePtsData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.network.PTSGeneralRequestModule.handleReceivePtsData.1
  * JD-Core Version:    0.7.0.1
  */

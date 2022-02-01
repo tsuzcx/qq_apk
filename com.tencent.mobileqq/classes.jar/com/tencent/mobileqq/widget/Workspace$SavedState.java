@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
-import biuy;
 
 public class Workspace$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = new biuy();
+  public static final Parcelable.Creator<SavedState> CREATOR = new Workspace.SavedState.1();
   int currentScreen = -1;
   
   private Workspace$SavedState(Parcel paramParcel)
@@ -31,7 +30,7 @@ public class Workspace$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.Workspace.SavedState
  * JD-Core Version:    0.7.0.1
  */

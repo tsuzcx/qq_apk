@@ -1,20 +1,17 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
-import anvx;
-import bkrk;
-import bkrl;
-import bkrn;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public final class ShortcutUtils$4
+final class ShortcutUtils$4
   implements Runnable
 {
-  public ShortcutUtils$4(Activity paramActivity) {}
+  ShortcutUtils$4(Activity paramActivity) {}
   
   public void run()
   {
-    if (bkrn.a()) {
-      bkrn.a(this.a, anvx.a(2131713465), anvx.a(2131713471), anvx.a(2131713452), new bkrk(this), new bkrl(this)).show();
+    if (ShortcutUtils.PermissionDialog.a()) {
+      ShortcutUtils.PermissionDialog.a(this.a, HardCodeUtil.a(2131713961), HardCodeUtil.a(2131713967), HardCodeUtil.a(2131713948), new ShortcutUtils.4.1(this), new ShortcutUtils.4.2(this)).show();
     }
   }
 }

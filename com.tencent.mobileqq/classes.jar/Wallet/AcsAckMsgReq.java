@@ -10,9 +10,9 @@ public final class AcsAckMsgReq
 {
   static AcsHead cache_head = new AcsHead();
   static ArrayList<String> cache_msg_id_list = new ArrayList();
-  public AcsHead head;
-  public ArrayList<String> msg_id_list;
-  public long uin;
+  public AcsHead head = null;
+  public ArrayList<String> msg_id_list = null;
+  public long uin = 0L;
   
   static
   {

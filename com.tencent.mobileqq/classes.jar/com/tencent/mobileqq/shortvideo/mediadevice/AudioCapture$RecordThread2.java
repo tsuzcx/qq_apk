@@ -2,7 +2,6 @@ package com.tencent.mobileqq.shortvideo.mediadevice;
 
 import android.media.AudioRecord;
 import android.os.Process;
-import bdbt;
 import com.tencent.qphone.base.util.QLog;
 
 class AudioCapture$RecordThread2
@@ -35,7 +34,7 @@ class AudioCapture$RecordThread2
             k = 1;
             j = i;
             i = k;
-            if (!bdbt.jdField_a_of_type_Boolean) {
+            if (!Lock.jdField_a_of_type_Boolean) {
               break label542;
             }
             if ((this.this$0.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.this$0.jdField_a_of_type_ArrayOfByte == null) || (this.this$0.jdField_b_of_type_ArrayOfByte == null)) {

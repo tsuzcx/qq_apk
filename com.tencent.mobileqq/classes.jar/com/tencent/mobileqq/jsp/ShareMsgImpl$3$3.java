@@ -1,0 +1,53 @@
+package com.tencent.mobileqq.jsp;
+
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+
+class ShareMsgImpl$3$3
+  implements TroopMemberApiClient.Callback
+{
+  ShareMsgImpl$3$3(ShareMsgImpl.3 param3, Bitmap paramBitmap) {}
+  
+  public void callback(Bundle paramBundle)
+  {
+    int j = 0;
+    int i = 0;
+    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
+    {
+      paramBundle = WxShareHelperFromReadInjoy.a();
+      str1 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.this$0.b;
+      str2 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.d;
+      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      str3 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.e;
+      str4 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.b;
+      if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.a)) {}
+      for (;;)
+      {
+        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
+        return;
+        i = 1;
+      }
+    }
+    paramBundle = WXShareHelper.a();
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.this$0.b;
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.d;
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    String str3 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.e;
+    String str4 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.b;
+    if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.a)) {}
+    for (i = j;; i = 1)
+    {
+      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
+      return;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.jsp.ShareMsgImpl.3.3
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,16 +1,15 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import boiu;
-import bpqs;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
 import java.io.File;
 import java.util.List;
 
-public class QIMPtvTemplateManager$5
+class QIMPtvTemplateManager$5
   implements Runnable
 {
-  public QIMPtvTemplateManager$5(bpqs parambpqs, File paramFile) {}
+  QIMPtvTemplateManager$5(QIMPtvTemplateManager paramQIMPtvTemplateManager, File paramFile) {}
   
   public void run()
   {
@@ -24,7 +23,7 @@ public class QIMPtvTemplateManager$5
       this.this$0.jdField_a_of_type_JavaUtilList.clear();
       this.this$0.jdField_a_of_type_JavaUtilList.addAll(localList);
       if (this.this$0.getApp() != null) {
-        this.this$0.getApp().notifyObservers(boiu.class, 3, true, null);
+        this.this$0.getApp().notifyObservers(CaptureConfigUpdateObserver.class, 3, true, null);
       }
       if (QLog.isDevelopLevel()) {
         QLog.d("QIMPtvTemplateManager", 4, String.format("rebuildTemplateInfos, [%s] finished", new Object[] { Integer.valueOf(hashCode()) }));
@@ -35,7 +34,7 @@ public class QIMPtvTemplateManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager.5
  * JD-Core Version:    0.7.0.1
  */

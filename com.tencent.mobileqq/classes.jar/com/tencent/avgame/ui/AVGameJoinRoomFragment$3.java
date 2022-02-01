@@ -1,7 +1,7 @@
 package com.tencent.avgame.ui;
 
+import com.tencent.avgame.adapter.DigitsProviderAdapter;
 import java.util.ArrayList;
-import ncs;
 
 class AVGameJoinRoomFragment$3
   implements Runnable
@@ -11,13 +11,13 @@ class AVGameJoinRoomFragment$3
   public void run()
   {
     this.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.this$0.jdField_a_of_type_Ncs.a(this.this$0.jdField_a_of_type_JavaUtilArrayList);
-    this.this$0.jdField_a_of_type_Ncs.notifyDataSetChanged();
+    this.this$0.jdField_a_of_type_ComTencentAvgameAdapterDigitsProviderAdapter.a(this.this$0.jdField_a_of_type_JavaUtilArrayList);
+    this.this$0.jdField_a_of_type_ComTencentAvgameAdapterDigitsProviderAdapter.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameJoinRoomFragment.3
  * JD-Core Version:    0.7.0.1
  */

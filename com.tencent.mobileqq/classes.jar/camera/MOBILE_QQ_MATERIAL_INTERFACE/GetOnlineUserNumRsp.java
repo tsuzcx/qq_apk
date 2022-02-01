@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GetOnlineUserNumRsp
   extends JceStruct
 {
-  public int Code;
-  public int OnlineUserNum;
+  public int Code = 0;
+  public int OnlineUserNum = 0;
   
   public GetOnlineUserNumRsp() {}
   
@@ -32,7 +32,7 @@ public final class GetOnlineUserNumRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetOnlineUserNumRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/nez" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView android:id="@id/mr5" android:background="@drawable/bjo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_above="@id/o0z" />
+    <RelativeLayout android:id="@id/o0z" android:background="@color/m7" android:layout_width="fill_parent" android:layout_height="@dimen/b_p" android:layout_alignParentBottom="true">
+        <android.support.v7.widget.RecyclerView android:id="@id/o6k" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
+        <android.support.v7.widget.RecyclerView android:id="@id/o6l" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/bbx" android:layout_below="@id/o6k" android:paddingStart="@dimen/bbz" android:paddingEnd="@dimen/bbz" />
+    </RelativeLayout>
+</RelativeLayout>

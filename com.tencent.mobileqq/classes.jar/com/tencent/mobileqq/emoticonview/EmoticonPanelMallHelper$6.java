@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -7,19 +8,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import anvx;
-import bdla;
-import bhhy;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import mqq.app.MobileQQ;
 
 class EmoticonPanelMallHelper$6
   implements AdapterView.OnItemClickListener
@@ -28,9 +29,9 @@ class EmoticonPanelMallHelper$6
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QQAppInterface localQQAppInterface = this.this$0.mPanelController.app;
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = this.this$0.mPanelController.app;
     long l = System.currentTimeMillis();
-    bhhy.a(null, "AIO_EmoticonPanel_TabClick");
+    StartupTracker.a(null, "AIO_EmoticonPanel_TabClick");
     Object localObject1 = this.this$0.mPanelController.panelDataList;
     if (localObject1 == null) {}
     while ((paramInt >= ((List)localObject1).size()) || (((EmoticonPanelTabSortHelper)this.this$0.mPanelController.getHelper(8)).setSelection(paramInt)))
@@ -61,25 +62,25 @@ class EmoticonPanelMallHelper$6
       localObject6 = "";
       localObject4 = "";
       if (((EmotionPanelInfo)localObject2).type != 8) {
-        break label594;
+        break label601;
       }
-      localObject2 = anvx.a(2131703556);
-      localObject1 = (ImageView)paramView.findViewById(2131376444);
+      localObject2 = HardCodeUtil.a(2131704104);
+      localObject1 = (ImageView)paramView.findViewById(2131376837);
       bool = false;
       if (localObject1 != null)
       {
         if (((ImageView)localObject1).getVisibility() != 0) {
-          break label581;
+          break label588;
         }
         bool = true;
         ((ImageView)localObject1).setVisibility(8);
       }
-      localObject1 = localQQAppInterface.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0);
+      localObject1 = localQQEmoticonMainPanelApp.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0);
       ((SharedPreferences)localObject1).edit().putBoolean("isClickRecommendRedpoint", true).putBoolean("is_red_when_click_recommend", bool).apply();
       i = ((SharedPreferences)localObject1).getInt("recommendRuleId", -1);
-      localObject3 = localQQAppInterface.getCurrentUin();
+      localObject3 = localQQEmoticonMainPanelApp.getCurrentUin();
       if (!bool) {
-        break label587;
+        break label594;
       }
       localObject1 = "1";
       label339:
@@ -92,20 +93,20 @@ class EmoticonPanelMallHelper$6
     {
       i = this.this$0.mPanelController.getFromType(bool);
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (i != 0)) {
-        bdla.b(localQQAppInterface, "dc00898", "", "", (String)localObject1, (String)localObject1, i, 0, "1", "", "", "");
+        ReportController.b(localQQEmoticonMainPanelApp.getQQAppInterface(), "dc00898", "", "", (String)localObject1, (String)localObject1, i, 0, "1", "", "", "");
       }
       if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        bdla.b(localQQAppInterface, "CliOper", "", "", "ep_mall", (String)localObject3, 0, 0, (String)localObject6, "", (String)localObject4, "");
+        ReportController.b(localQQEmoticonMainPanelApp.getQQAppInterface(), "CliOper", "", "", "ep_mall", (String)localObject3, 0, 0, (String)localObject6, "", (String)localObject4, "");
       }
       if (EmoticonPanelController.sLastSelectedSecondTabIndex == paramInt) {
         break;
       }
       EmoticonPanelController.sLastSelectedSecondTabIndex = paramInt;
       this.this$0.mPanelController.showPanelByTabIndex(paramInt);
-      if (AppSetting.c) {
+      if (AppSetting.d) {
         QQAppInterface.speak((String)localObject2);
       }
-      bhhy.a("AIO_EmoticonPanel_TabClick", null);
+      StartupTracker.a("AIO_EmoticonPanel_TabClick", null);
       this.this$0.mPanelController.isClickNoChangeTab = true;
       if (!QLog.isColorLevel()) {
         break;
@@ -114,24 +115,24 @@ class EmoticonPanelMallHelper$6
       break;
       bool = false;
       break label185;
-      label581:
+      label588:
       bool = false;
       break label262;
-      label587:
+      label594:
       localObject1 = "";
       break label339;
-      label594:
+      label601:
       if (((EmotionPanelInfo)localObject2).type == 9)
       {
         localObject1 = "0X800AE0D";
         bool = false;
-        localObject2 = anvx.a(2131703545);
+        localObject2 = HardCodeUtil.a(2131704093);
         localObject3 = "0X8005797";
       }
       else if (((EmotionPanelInfo)localObject2).type == 4)
       {
-        localObject2 = anvx.a(2131703518);
-        bdla.b(localQQAppInterface, "dc00898", "", "", "0x800a56e", "0x800a56e", 0, 0, "", "", "", "");
+        localObject2 = HardCodeUtil.a(2131704066);
+        ReportController.b(localQQEmoticonMainPanelApp.getQQAppInterface(), "dc00898", "", "", "0x800a56e", "0x800a56e", 0, 0, "", "", "", "");
         ((EmoticonPanelFavHelper)this.this$0.mPanelController.getHelper(2)).doSyncFavEmotion();
         bool = true;
         localObject1 = "0X800AE08";
@@ -140,33 +141,33 @@ class EmoticonPanelMallHelper$6
       else
       {
         if (((EmotionPanelInfo)localObject2).type != 7) {
-          break label739;
+          break label749;
         }
         localObject1 = "0X800AE07";
-        localObject2 = anvx.a(2131703565);
+        localObject2 = HardCodeUtil.a(2131704113);
         bool = true;
         localObject3 = "0X800579A";
       }
     }
-    label739:
+    label749:
     Object localObject5;
     if (((EmotionPanelInfo)localObject2).type == 6)
     {
       localObject4 = ((EmotionPanelInfo)localObject2).emotionPkg;
       if (localObject4 == null) {
-        break label1152;
+        break label1175;
       }
       localObject2 = ((EmoticonPackage)localObject4).epId;
       if (((EmoticonPackage)localObject4).status == 2)
       {
         localObject1 = "0X800584E";
-        label782:
+        label792:
         localObject3 = Integer.toString(this.this$0.mPanelController.getEmoticonTab((String)localObject2));
-        localObject6 = anvx.a(2131703525) + ((EmoticonPackage)localObject4).name + anvx.a(2131703542);
+        localObject6 = HardCodeUtil.a(2131704073) + ((EmoticonPackage)localObject4).name + HardCodeUtil.a(2131704090);
         if (((EmoticonPackage)localObject4).status == 2) {
-          break label1125;
+          break label1148;
         }
-        localObject6 = (String)localObject6 + anvx.a(2131703568);
+        localObject6 = (String)localObject6 + HardCodeUtil.a(2131704116);
         localObject5 = localObject3;
         localObject4 = localObject1;
         localObject1 = localObject6;
@@ -186,20 +187,20 @@ class EmoticonPanelMallHelper$6
       localObject4 = localObject5;
       break;
       localObject1 = "0X80059B8";
-      break label782;
+      break label792;
       if (((EmotionPanelInfo)localObject2).type == 11)
       {
-        localObject2 = anvx.a(2131703566);
-        localObject1 = (ImageView)paramView.findViewById(2131376444);
+        localObject2 = HardCodeUtil.a(2131704114);
+        localObject1 = (ImageView)paramView.findViewById(2131376837);
         if (localObject1 != null)
         {
           ((ImageView)localObject1).setVisibility(8);
           localObject1 = this.this$0.mPanelController.mBaseChatPie;
-          if ((localObject1 != null) && (((BaseChatPie)localObject1).panelicons != null)) {
-            ((BaseChatPie)localObject1).panelicons.setShowRed(3, false);
+          if ((localObject1 != null) && (((BaseChatPie)localObject1).a != null)) {
+            ((BaseChatPie)localObject1).a.setShowRed(3, false);
           }
         }
-        bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A36D", "0X800A36D", 0, 0, "", "", "", "");
+        ReportController.b(localQQEmoticonMainPanelApp.getQQAppInterface(), "dc00898", "", "", "0X800A36D", "0X800A36D", 0, 0, "", "", "", "");
         bool = true;
         localObject1 = "0X800AE0A";
         localObject3 = "";
@@ -221,11 +222,12 @@ class EmoticonPanelMallHelper$6
         localObject3 = "";
         break;
       }
+      if (((EmotionPanelInfo)localObject2).type == 15) {}
       bool = true;
       localObject3 = "";
       localObject2 = "";
       break;
-      label1125:
+      label1148:
       localObject4 = localObject2;
       localObject5 = localObject1;
       localObject1 = localObject6;
@@ -233,7 +235,7 @@ class EmoticonPanelMallHelper$6
       localObject3 = localObject4;
       localObject4 = localObject5;
       continue;
-      label1152:
+      label1175:
       localObject1 = "";
       localObject4 = "";
       localObject3 = "";
@@ -243,7 +245,7 @@ class EmoticonPanelMallHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.6
  * JD-Core Version:    0.7.0.1
  */

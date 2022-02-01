@@ -14,8 +14,9 @@ import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageButton;
-import bgyo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GlobalImageCache;
+import com.tencent.mobileqq.util.BitmapManager;
 
 @TargetApi(14)
 public class PressDarkImageButton
@@ -26,7 +27,7 @@ public class PressDarkImageButton
   public int a;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   public float b;
   public int b;
   private boolean b;
@@ -34,7 +35,7 @@ public class PressDarkImageButton
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 16843210, 16843211, 2131034431 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 16843210, 16843211, 2131034433 };
   }
   
   public PressDarkImageButton(Context paramContext)
@@ -52,6 +53,9 @@ public class PressDarkImageButton
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_b_of_type_Float = 0.5F;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = false;
     Object localObject1 = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
     this.jdField_a_of_type_Float = ((TypedArray)localObject1).getFloat(0, this.jdField_a_of_type_Float);
     this.jdField_b_of_type_Float = ((TypedArray)localObject1).getFloat(1, this.jdField_b_of_type_Float);
@@ -78,11 +82,11 @@ public class PressDarkImageButton
       {
         localObject1 = paramContext;
         localObject2 = paramContext;
-        if (BaseApplicationImpl.sImageCache != null)
+        if (GlobalImageCache.a != null)
         {
           localObject1 = paramContext;
           localObject2 = paramContext;
-          this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)BaseApplicationImpl.sImageCache.get("IMAGE_CACHE_KEY"));
+          this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)GlobalImageCache.a.get("IMAGE_CACHE_KEY"));
         }
         localObject1 = paramContext;
         localObject2 = paramContext;
@@ -90,18 +94,18 @@ public class PressDarkImageButton
         {
           localObject1 = paramContext;
           localObject2 = paramContext;
-          this.jdField_a_of_type_AndroidGraphicsBitmap = bgyo.b(BaseApplicationImpl.getApplication().getResources(), 2130846499);
+          this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846842);
           localObject1 = paramContext;
           localObject2 = paramContext;
           if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
           {
             localObject1 = paramContext;
             localObject2 = paramContext;
-            if (BaseApplicationImpl.sImageCache != null)
+            if (GlobalImageCache.a != null)
             {
               localObject1 = paramContext;
               localObject2 = paramContext;
-              BaseApplicationImpl.sImageCache.put("IMAGE_CACHE_KEY", this.jdField_a_of_type_AndroidGraphicsBitmap);
+              GlobalImageCache.a.put("IMAGE_CACHE_KEY", this.jdField_a_of_type_AndroidGraphicsBitmap);
             }
           }
         }
@@ -152,7 +156,7 @@ public class PressDarkImageButton
     }
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     if (!this.c) {
@@ -235,7 +239,7 @@ public class PressDarkImageButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.PressDarkImageButton
  * JD-Core Version:    0.7.0.1
  */

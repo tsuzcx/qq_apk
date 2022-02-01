@@ -9,7 +9,7 @@ public final class ResponeQueryNewUserRecommendedList
   extends JceStruct
 {
   static ArrayList<RecommendedContactInfo> cache_RecommendedContacts = new ArrayList();
-  public ArrayList<RecommendedContactInfo> RecommendedContacts;
+  public ArrayList<RecommendedContactInfo> RecommendedContacts = null;
   public long lastUsedFlag = 1L;
   public String mobileNo = "";
   public String nationCode = "";

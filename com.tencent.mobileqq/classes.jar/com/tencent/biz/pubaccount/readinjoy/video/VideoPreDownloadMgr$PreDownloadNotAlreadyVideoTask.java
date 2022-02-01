@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.Set;
 
-public class VideoPreDownloadMgr$PreDownloadNotAlreadyVideoTask
+class VideoPreDownloadMgr$PreDownloadNotAlreadyVideoTask
   implements Runnable
 {
-  private boolean a;
+  private boolean a = false;
   
   public VideoPreDownloadMgr$PreDownloadNotAlreadyVideoTask(VideoPreDownloadMgr paramVideoPreDownloadMgr, boolean paramBoolean)
   {
@@ -30,7 +30,7 @@ public class VideoPreDownloadMgr$PreDownloadNotAlreadyVideoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask
  * JD-Core Version:    0.7.0.1
  */

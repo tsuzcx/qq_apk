@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.app.utils;
 
-import apag;
-
-public class PokeBigResHandler$NetEngine$1
+class PokeBigResHandler$NetEngine$1
   implements Runnable
 {
-  public PokeBigResHandler$NetEngine$1(apag paramapag, String paramString) {}
+  PokeBigResHandler$NetEngine$1(PokeBigResHandler.NetEngine paramNetEngine, String paramString) {}
   
   public void run()
   {
@@ -15,7 +13,7 @@ public class PokeBigResHandler$NetEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.PokeBigResHandler.NetEngine.1
  * JD-Core Version:    0.7.0.1
  */

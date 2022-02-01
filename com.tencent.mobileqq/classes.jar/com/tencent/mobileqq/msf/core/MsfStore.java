@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msf.core;
 
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;

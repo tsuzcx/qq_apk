@@ -8,7 +8,7 @@ public final class RequestQueryNewUserRecommendedListNotBind
   extends JceStruct
 {
   public String MobileUniqueNo = "";
-  public long WantNum;
+  public long WantNum = 0L;
   
   public RequestQueryNewUserRecommendedListNotBind() {}
   

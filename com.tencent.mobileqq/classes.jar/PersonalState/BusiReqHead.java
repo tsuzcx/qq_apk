@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class BusiReqHead
   extends JceStruct
 {
-  public int iSeq;
-  public short shVersion;
+  public int iSeq = 0;
+  public short shVersion = 0;
   
   public BusiReqHead() {}
   

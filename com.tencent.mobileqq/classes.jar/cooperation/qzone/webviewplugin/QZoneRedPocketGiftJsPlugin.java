@@ -3,11 +3,11 @@ package cooperation.qzone.webviewplugin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anvx;
-import bifw;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -26,7 +26,7 @@ public class QZoneRedPocketGiftJsPlugin
   private static final String TAG = "QZoneRedPocketGiftJsPlugin";
   private String sendRedPocketGiftCallback;
   
-  private void handleSendRedPocketGift(WebViewPlugin paramWebViewPlugin, bifw parambifw, String... paramVarArgs)
+  private void handleSendRedPocketGift(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
@@ -52,7 +52,7 @@ public class QZoneRedPocketGiftJsPlugin
       }
       catch (Exception paramWebViewPlugin)
       {
-        onJSCallBack(this.sendRedPocketGiftCallback, null, anvx.a(2131711756), -1);
+        onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712271), -1);
         QLog.e("QZoneRedPocketGiftJsPlugin", 1, paramWebViewPlugin.getMessage());
         return;
       }
@@ -67,9 +67,9 @@ public class QZoneRedPocketGiftJsPlugin
       }
       RemoteHandleManager.getInstance().getSender().setRedKeyData(l, str1);
       Object localObject = QZoneHelper.UserInfo.getInstance();
-      String str2 = ((TicketManager)parambifw.a().getManager(2)).getSkey(parambifw.a().getAccount());
-      int i = QZoneHelper.generateRequestCode(paramWebViewPlugin, parambifw, 8);
-      QZoneHelper.forwardToRedPocket(parambifw.a(), (QZoneHelper.UserInfo)localObject, str2, l, paramVarArgs, str1, i);
+      String str2 = ((TicketManager)paramPluginRuntime.a().getManager(2)).getSkey(paramPluginRuntime.a().getAccount());
+      int i = QZoneHelper.generateRequestCode(paramWebViewPlugin, paramPluginRuntime, 8);
+      QZoneHelper.forwardToRedPocket(paramPluginRuntime.a(), (QZoneHelper.UserInfo)localObject, str2, l, paramVarArgs, str1, i);
     }
   }
   
@@ -98,10 +98,10 @@ public class QZoneRedPocketGiftJsPlugin
     }
     if ((paramInt == -1) && (paramIntent != null))
     {
-      onJSCallBack(this.sendRedPocketGiftCallback, null, anvx.a(2131711754), 0);
+      onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712269), 0);
       return;
     }
-    onJSCallBack(this.sendRedPocketGiftCallback, null, anvx.a(2131711757), -1);
+    onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712272), -1);
   }
   
   public void onDestroy()
@@ -117,7 +117,7 @@ public class QZoneRedPocketGiftJsPlugin
       if (TextUtils.isEmpty(paramString1))
       {
         paramInt = -1;
-        paramString3 = anvx.a(2131711755);
+        paramString3 = HardCodeUtil.a(2131712270);
       }
       localJSONObject = new JSONObject();
     }
@@ -155,15 +155,15 @@ public class QZoneRedPocketGiftJsPlugin
     } while (!"cmd.qzoneSendRedPocketGift".equals(paramString));
     if (TextUtils.isEmpty(this.sendRedPocketGiftCallback))
     {
-      onJSCallBack(this.sendRedPocketGiftCallback, null, anvx.a(2131711753), -1);
+      onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712268), -1);
       return;
     }
-    onJSCallBack(this.sendRedPocketGiftCallback, null, anvx.a(2131711758), 0);
+    onJSCallBack(this.sendRedPocketGiftCallback, null, HardCodeUtil.a(2131712273), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneRedPocketGiftJsPlugin
  * JD-Core Version:    0.7.0.1
  */

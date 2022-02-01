@@ -1,30 +1,30 @@
 package com.tencent.util;
 
 import android.widget.ImageView.ScaleType;
-import blgc;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.widget.RandomCoverView;
+import com.tencent.widget.UpSideDownDrawable;
 
-public final class DrawerCoverUtil$4
+final class DrawerCoverUtil$4
   implements Runnable
 {
-  public DrawerCoverUtil$4(RandomCoverView paramRandomCoverView, blgc paramblgc, boolean paramBoolean) {}
+  DrawerCoverUtil$4(RandomCoverView paramRandomCoverView, UpSideDownDrawable paramUpSideDownDrawable, boolean paramBoolean) {}
   
   public void run()
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(this.jdField_a_of_type_Blgc);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Blgc.d();
+      this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.d();
       return;
     }
-    this.jdField_a_of_type_Blgc.b();
+    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.util.DrawerCoverUtil.4
  * JD-Core Version:    0.7.0.1
  */

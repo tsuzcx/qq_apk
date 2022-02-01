@@ -1,21 +1,20 @@
 package com.tencent.widget;
 
-import bkzi;
 import com.tencent.image.URLDrawable;
 
-public class ActionSheet$5
+class ActionSheet$5
   implements Runnable
 {
-  public ActionSheet$5(bkzi parambkzi, URLDrawable paramURLDrawable) {}
+  ActionSheet$5(ActionSheet paramActionSheet, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    this.a.startDownload();
+    this.val$urlDrawable.startDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ActionSheet.5
  * JD-Core Version:    0.7.0.1
  */

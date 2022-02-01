@@ -13,7 +13,6 @@ public class NativePluginManager
     pluginList.add(new NativePluginManager.PluginInfo("weiyunDownload", "com.tencent.mobileqq.mini.out.nativePlugins.WeiyunDownloadFilePlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("refreshQzoneFeed", "com.tencent.mobileqq.mini.out.nativePlugins.RefreshQzoneFeedPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("getMultiMemList", "com.tencent.mobileqq.mini.out.nativePlugins.GroupPlugin"));
-    pluginList.add(new NativePluginManager.PluginInfo("checkin_invokeGYCamera", "com.tencent.mobileqq.mini.out.nativePlugins.LaunchCameraPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("requestWebSSO", "com.tencent.mobileqq.mini.out.nativePlugins.WebSsoJsPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("checkin_qzoneUploadAndPublish", "com.tencent.mobileqq.mini.out.nativePlugins.QzonePublishPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("checkin_uploadRes", "com.tencent.mobileqq.mini.out.nativePlugins.GroupCheckInUploadPlugin"));

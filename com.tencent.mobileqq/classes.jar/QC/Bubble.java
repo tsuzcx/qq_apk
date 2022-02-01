@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class Bubble
   extends JceStruct
 {
-  public int deltype;
+  public int deltype = 0;
   public String strDiyJson = "";
   
   public Bubble() {}

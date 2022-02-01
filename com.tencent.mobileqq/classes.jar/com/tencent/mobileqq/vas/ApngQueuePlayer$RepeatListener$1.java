@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.vas;
 
-import bhle;
-import bhli;
-
-public class ApngQueuePlayer$RepeatListener$1
+class ApngQueuePlayer$RepeatListener$1
   implements Runnable
 {
-  public ApngQueuePlayer$RepeatListener$1(bhli parambhli) {}
+  ApngQueuePlayer$RepeatListener$1(ApngQueuePlayer.RepeatListener paramRepeatListener) {}
   
   public void run()
   {
-    bhle.a(this.a.a);
+    ApngQueuePlayer.a(this.a.a);
   }
 }
 

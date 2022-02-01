@@ -1,14 +1,11 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import com.tencent.qqmini.sdk.core.manager.VoIPManager;
 import com.tencent.qqmini.sdk.core.manager.VoIPManager.RoomConfig;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.core.utils.ApiUtil;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,7 +26,7 @@ class VoIPJsPlugin$2
     {
       QMLog.i("[mini] VoIPJsPlugin", String.format("succ: %s ret:%s", new Object[] { Boolean.valueOf(paramBoolean), localObject1 }));
       if (!paramBoolean) {
-        break label394;
+        break label362;
       }
       localObject1 = VoIPJsPlugin.access$000(this.this$0, paramJSONObject);
       if (localObject1 == null)
@@ -95,9 +92,9 @@ class VoIPJsPlugin$2
         }
       }
     }
-    VoIPManager.getInstance().joinRoom(localJSONException2, this.val$roomConfig.muteConfig, VoIPJsPlugin.access$200(this.this$0, VoIPJsPlugin.access$100(this.this$0).getMiniAppInfo().appId, this.val$roomConfig), new VoIPJsPlugin.2.1(this));
+    VoIPJsPlugin.access$100(this.this$0, localJSONException2, this.val$roomConfig, this.val$req);
     return;
-    label394:
+    label362:
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -125,7 +122,7 @@ class VoIPJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.VoIPJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

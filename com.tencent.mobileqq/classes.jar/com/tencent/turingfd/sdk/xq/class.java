@@ -168,10 +168,10 @@ public class class
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(String.format(Locale.getDefault(), "TuringFD v%d", new Object[] { Integer.valueOf(50) }));
-    localStringBuilder.append(" (l719B089857F3C1FE");
+    localStringBuilder.append(" (lC70462E1A7E7D017");
     localStringBuilder.append(", xqFull");
     localStringBuilder.append(", tss");
-    localStringBuilder.append(String.format(Locale.getDefault(), ", compiled %s)", new Object[] { "2020_06_23_17_06_44" }));
+    localStringBuilder.append(String.format(Locale.getDefault(), ", compiled %s)", new Object[] { "2020_10_13_18_43_48" }));
     return localStringBuilder.toString();
   }
   
@@ -188,7 +188,7 @@ public class class
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.class
  * JD-Core Version:    0.7.0.1
  */

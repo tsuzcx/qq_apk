@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import acnh;
-import bhfj;
+import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
 public class QCallRecent
@@ -21,31 +21,31 @@ public class QCallRecent
   public static final int DOUBLE_STATE_OHTER_TERMINAL_CAHTING = 7;
   public static final String TABLE_NAME = "recent_call";
   public String bindId;
-  public int bindType;
+  public int bindType = 0;
   public String businessLogo;
   public String businessName;
   public String businessSeId;
   public int callType = 0;
   public int contactId = -1;
   public String displayName;
-  public int extraType;
-  public boolean isLastCallRealMissed;
-  public int isSystemCall;
-  public int isVideo;
+  public int extraType = 0;
+  public boolean isLastCallRealMissed = false;
+  public int isSystemCall = 0;
+  public int isVideo = 0;
   public String lastCallMsg;
   public long lastCallTime;
   public byte[] lightalkSig;
-  public long memberCount;
-  public int missedCallCount;
-  public String phoneNumber;
-  public String pstnInfo;
-  public long readTime;
+  public long memberCount = 0L;
+  public int missedCallCount = 0;
+  public String phoneNumber = null;
+  public String pstnInfo = null;
+  public long readTime = 0L;
   public int sendFlag;
   public String senderUin;
-  public int state;
+  public int state = 0;
   public long time;
   public String troopUin;
-  public int type;
+  public int type = 0;
   public String uin;
   
   public boolean equals(Object paramObject)
@@ -87,9 +87,9 @@ public class QCallRecent
           bool1 = bool3;
         } while (!this.uin.equals(paramObject.uin));
         bool1 = bool3;
-      } while (!acnh.d(this.type));
+      } while (!UinTypeUtil.b(this.type));
       bool1 = bool3;
-    } while (!acnh.d(paramObject.type));
+    } while (!UinTypeUtil.b(paramObject.type));
     return true;
   }
   
@@ -110,7 +110,7 @@ public class QCallRecent
   
   public boolean isSend()
   {
-    return bhfj.a(this.sendFlag);
+    return MessageRecordInfo.a(this.sendFlag);
   }
   
   public boolean isVideo()
@@ -125,7 +125,7 @@ public class QCallRecent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QCallRecent
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,19 @@ class AbsProfileHeaderView$4
   
   public void run()
   {
-    AvatarLayout localAvatarLayout = (AvatarLayout)this.this$0.a.get("map_key_face");
+    AvatarLayout localAvatarLayout = (AvatarLayout)this.this$0.mHeaderChildMap.get("map_key_face");
     if (localAvatarLayout == null) {}
     for (Object localObject = null;; localObject = localAvatarLayout.a(0))
     {
       localObject = (ImageView)localObject;
       if (localObject != null)
       {
-        if (this.a != null)
+        if (this.val$faceBitMap != null)
         {
-          QLog.d("Q.qqhead.freq", 1, "ProfileHeaderView updateAvatar, bitmap: " + this.a);
-          localAvatarLayout.setStaticAvatar(this.a);
+          QLog.d("Q.qqhead.freq", 1, "ProfileHeaderView updateAvatar, bitmap: " + this.val$faceBitMap);
+          localAvatarLayout.setStaticAvatar(this.val$faceBitMap);
         }
-        AbsProfileHeaderView.a(this.this$0, (ImageView)localObject);
+        AbsProfileHeaderView.access$200(this.this$0, (ImageView)localObject);
       }
       return;
     }

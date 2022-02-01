@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Scroller;
 import com.tencent.mobileqq.util.DisplayUtil;
-import ofp;
-import ofq;
 
 public class VerticalPagerView
   extends ViewGroup
@@ -16,21 +14,27 @@ public class VerticalPagerView
   protected float a;
   protected int a;
   protected Scroller a;
-  protected ofp a;
-  protected ofq a;
+  protected VerticalPagerView.OnInterceptTouchListener a;
+  protected VerticalPagerView.OnPagerChangedListener a;
   protected boolean a;
   protected float b;
   protected int b;
   protected boolean b;
   protected float c;
   public int c;
-  protected float d;
-  protected float e;
-  protected float f;
+  protected float d = 0.0F;
+  protected float e = 0.0F;
+  protected float f = 0.0F;
   
   public VerticalPagerView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Float = 0.0F;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(super.getContext());
   }
@@ -38,14 +42,20 @@ public class VerticalPagerView
   public VerticalPagerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Float = 0.0F;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(super.getContext());
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Ofq = null;
-    this.jdField_a_of_type_Ofp = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener = null;
   }
   
   public void a(int paramInt) {}
@@ -90,8 +100,8 @@ public class VerticalPagerView
       if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != this.jdField_c_of_type_Int))
       {
         a(this.jdField_c_of_type_Int);
-        if (this.jdField_a_of_type_Ofq != null) {
-          this.jdField_a_of_type_Ofq.a(this, super.getChildAt(this.jdField_c_of_type_Int), this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener != null) {
+          this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener.a(this, super.getChildAt(this.jdField_c_of_type_Int), this.jdField_c_of_type_Int);
         }
         this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
       }
@@ -121,7 +131,7 @@ public class VerticalPagerView
       } while (i != 2);
       float f1 = Math.abs(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float);
       float f2 = Math.abs(this.d - this.jdField_b_of_type_Float);
-      if ((f2 < DisplayUtil.dip2px(super.getContext(), 10.0F)) || (f2 < f1))
+      if ((f2 < DisplayUtil.a(super.getContext(), 10.0F)) || (f2 < f1))
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
         return false;
@@ -129,19 +139,19 @@ public class VerticalPagerView
       i = (int)(paramMotionEvent.getY() - this.jdField_a_of_type_Int);
       if (i > 0)
       {
-        if (this.jdField_a_of_type_Ofp != null) {
-          return this.jdField_a_of_type_Ofp.b(this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener != null) {
+          return this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener.b(this.jdField_c_of_type_Int);
         }
         return b(this.jdField_c_of_type_Int);
       }
     } while (i >= 0);
-    if (this.jdField_a_of_type_Ofp != null) {
-      return this.jdField_a_of_type_Ofp.a(this.jdField_c_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener.a(this.jdField_c_of_type_Int);
     }
     return a(this.jdField_c_of_type_Int);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int k = super.getChildCount();
     int i = 0;
@@ -157,7 +167,7 @@ public class VerticalPagerView
     setCurrentPage(this.jdField_c_of_type_Int);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int j = super.getChildCount();
@@ -185,7 +195,7 @@ public class VerticalPagerView
     {
       this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getY() - this.jdField_a_of_type_Int));
       i = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-      if (Math.abs(this.d - this.jdField_b_of_type_Float) < DisplayUtil.dip2px(super.getContext(), 10.0F))
+      if (Math.abs(this.d - this.jdField_b_of_type_Float) < DisplayUtil.a(super.getContext(), 10.0F))
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
         this.f = (this.d - this.e);
@@ -195,8 +205,8 @@ public class VerticalPagerView
       if (i < 0)
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-        if (this.jdField_a_of_type_Ofq != null) {
-          this.jdField_a_of_type_Ofq.a(false, this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener != null) {
+          this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener.a(false, this.jdField_c_of_type_Int);
         }
         this.f = (this.d - this.e);
         this.e = this.d;
@@ -205,8 +215,8 @@ public class VerticalPagerView
       if (i > (super.getChildCount() - 1) * super.getHeight())
       {
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-        if (this.jdField_a_of_type_Ofq != null) {
-          this.jdField_a_of_type_Ofq.a(false, this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener != null) {
+          this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener.a(false, this.jdField_c_of_type_Int);
         }
         this.f = (this.d - this.e);
         this.e = this.d;
@@ -215,8 +225,8 @@ public class VerticalPagerView
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, this.jdField_a_of_type_AndroidWidgetScroller.getFinalY(), 0, -this.jdField_a_of_type_Int, 0);
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
       super.invalidate();
-      if (this.jdField_a_of_type_Ofq != null) {
-        this.jdField_a_of_type_Ofq.a(true, this.jdField_c_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener.a(true, this.jdField_c_of_type_Int);
       }
     }
     while ((i != 1) && (i != 3))
@@ -228,7 +238,7 @@ public class VerticalPagerView
     float f1 = Math.abs(this.f);
     this.e = this.d;
     i = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY() - this.jdField_c_of_type_Int * super.getHeight();
-    if ((i > super.getHeight() / 4) || ((i > 0) && (f1 > DisplayUtil.dip2px(super.getContext(), 7.0F))))
+    if ((i > super.getHeight() / 4) || ((i > 0) && (f1 > DisplayUtil.a(super.getContext(), 7.0F))))
     {
       this.jdField_c_of_type_Int += 1;
       if (this.jdField_c_of_type_Int >= super.getChildCount()) {
@@ -240,12 +250,12 @@ public class VerticalPagerView
       a(0, this.jdField_c_of_type_Int * super.getHeight());
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Ofq == null) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener == null) {
         break;
       }
-      this.jdField_a_of_type_Ofq.a(false, this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener.a(false, this.jdField_c_of_type_Int);
       break;
-      if ((i < -super.getHeight() / 4) || ((i < 0) && (f1 > DisplayUtil.dip2px(super.getContext(), 5.0F))))
+      if ((i < -super.getHeight() / 4) || ((i < 0) && (f1 > DisplayUtil.a(super.getContext(), 5.0F))))
       {
         this.jdField_c_of_type_Int -= 1;
         if (this.jdField_c_of_type_Int < 0) {
@@ -272,19 +282,19 @@ public class VerticalPagerView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnInterceptTouchListener(ofp paramofp)
+  public void setOnInterceptTouchListener(VerticalPagerView.OnInterceptTouchListener paramOnInterceptTouchListener)
   {
-    this.jdField_a_of_type_Ofp = paramofp;
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener = paramOnInterceptTouchListener;
   }
   
-  public void setOnPagerChangedListener(ofq paramofq)
+  public void setOnPagerChangedListener(VerticalPagerView.OnPagerChangedListener paramOnPagerChangedListener)
   {
-    this.jdField_a_of_type_Ofq = paramofq;
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener = paramOnPagerChangedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.ark;
 
 import android.view.View;
-import apwn;
 import com.tencent.widget.HorizontalListView;
 
-public class ArkAiAppPanel$2
+class ArkAiAppPanel$2
   implements Runnable
 {
-  public ArkAiAppPanel$2(apwn paramapwn) {}
+  ArkAiAppPanel$2(ArkAiAppPanel paramArkAiAppPanel) {}
   
   public void run()
   {
-    View localView = apwn.a(this.this$0).getSelectedView();
+    View localView = ArkAiAppPanel.a(this.this$0).getSelectedView();
     if (localView != null) {
       localView.setSelected(true);
     }

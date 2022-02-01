@@ -1,7 +1,5 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import accm;
-import acdi;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -10,11 +8,11 @@ import kotlin.reflect.KDeclarationContainer;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "p1", "Lcom/tencent/gdtad/api/motivebrowsing/MotiveBrowsingData;", "Lkotlin/ParameterName;", "name", "browsingData", "invoke"}, k=3, mv={1, 1, 16})
-public final class GdtMotiveBrowsingDialog$initData$1
+final class GdtMotiveBrowsingDialog$initData$1
   extends FunctionReference
-  implements Function1<acdi, Unit>
+  implements Function1<MotiveBrowsingData, Unit>
 {
-  public GdtMotiveBrowsingDialog$initData$1(accm arg1) {}
+  GdtMotiveBrowsingDialog$initData$1(GdtMotiveBrowsingDialog arg1) {}
   
   public final String getName() {}
   
@@ -22,11 +20,11 @@ public final class GdtMotiveBrowsingDialog$initData$1
   
   public final String getSignature() {}
   
-  public final void invoke(@NotNull acdi arg1) {}
+  public final void invoke(@NotNull MotiveBrowsingData arg1) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingDialog.initData.1
  * JD-Core Version:    0.7.0.1
  */

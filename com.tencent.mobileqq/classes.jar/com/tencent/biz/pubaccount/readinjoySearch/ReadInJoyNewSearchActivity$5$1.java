@@ -3,17 +3,16 @@ package com.tencent.biz.pubaccount.readinjoySearch;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import java.util.Iterator;
 import java.util.List;
-import uoe;
 
-public class ReadInJoyNewSearchActivity$5$1
+class ReadInJoyNewSearchActivity$5$1
   implements Runnable
 {
-  public ReadInJoyNewSearchActivity$5$1(uoe paramuoe) {}
+  ReadInJoyNewSearchActivity$5$1(ReadInJoyNewSearchActivity.5 param5) {}
   
   public void run()
   {
@@ -35,7 +34,7 @@ public class ReadInJoyNewSearchActivity$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

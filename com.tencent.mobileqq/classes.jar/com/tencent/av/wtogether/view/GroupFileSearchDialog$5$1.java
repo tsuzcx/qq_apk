@@ -1,13 +1,11 @@
 package com.tencent.av.wtogether.view;
 
 import android.widget.EditText;
-import nah;
-import nal;
 
-public class GroupFileSearchDialog$5$1
+class GroupFileSearchDialog$5$1
   implements Runnable
 {
-  public GroupFileSearchDialog$5$1(nal paramnal) {}
+  GroupFileSearchDialog$5$1(GroupFileSearchDialog.5 param5) {}
   
   public void run()
   {
@@ -31,7 +29,7 @@ public class GroupFileSearchDialog$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.5.1
  * JD-Core Version:    0.7.0.1
  */

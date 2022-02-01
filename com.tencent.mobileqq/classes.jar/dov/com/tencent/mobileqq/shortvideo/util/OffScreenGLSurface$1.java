@@ -1,21 +1,20 @@
 package dov.com.tencent.mobileqq.shortvideo.util;
 
-import bptl;
 import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
-public class OffScreenGLSurface$1
+class OffScreenGLSurface$1
   implements Runnable
 {
-  public OffScreenGLSurface$1(bptl parambptl) {}
+  OffScreenGLSurface$1(OffScreenGLSurface paramOffScreenGLSurface) {}
   
   public void run()
   {
-    bptl.a(this.this$0).sendFirstFrameMsg();
+    OffScreenGLSurface.a(this.this$0).sendFirstFrameMsg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.OffScreenGLSurface.1
  * JD-Core Version:    0.7.0.1
  */

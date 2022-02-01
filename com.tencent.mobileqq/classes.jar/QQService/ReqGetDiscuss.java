@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqGetDiscuss
   extends JceStruct
 {
-  public long Uin;
+  public long Uin = 0L;
   
   public ReqGetDiscuss() {}
   

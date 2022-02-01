@@ -14,12 +14,14 @@ public class JsBridgeListener
   
   public JsBridgeListener(WebView paramWebView, long paramLong, String paramString)
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
     this.jdField_a_of_type_Long = paramLong;
   }
   
   public JsBridgeListener(WebView paramWebView, long paramLong, boolean paramBoolean)
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -118,7 +120,7 @@ public class JsBridgeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.JsBridgeListener
  * JD-Core Version:    0.7.0.1
  */

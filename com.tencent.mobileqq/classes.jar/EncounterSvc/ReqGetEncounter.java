@@ -11,9 +11,9 @@ public final class ReqGetEncounter
   static UserData cache_stUserData;
   static ReqUserInfo cache_stUserInfo;
   public int iListSize = -1;
-  public ReqHeader stHeader;
-  public UserData stUserData;
-  public ReqUserInfo stUserInfo;
+  public ReqHeader stHeader = null;
+  public UserData stUserData = null;
+  public ReqUserInfo stUserInfo = null;
   
   public ReqGetEncounter() {}
   

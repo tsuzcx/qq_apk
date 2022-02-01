@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agld;
-import aoep;
-import bghs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.troop.utils.RobotUtils;
 
-public class TroopRobotHelper$4
+class TroopRobotHelper$4
   implements Runnable
 {
-  public TroopRobotHelper$4(agld paramagld, long paramLong) {}
+  TroopRobotHelper$4(TroopRobotHelper paramTroopRobotHelper, long paramLong) {}
   
   public void run()
   {
@@ -21,15 +20,15 @@ public class TroopRobotHelper$4
       do
       {
         return;
-      } while (!bghs.d((QQAppInterface)localObject));
-      localObject = (aoep)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+      } while (!RobotUtils.d((QQAppInterface)localObject));
+      localObject = (TroopHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
     } while (localObject == null);
-    ((aoep)localObject).f(this.a);
+    ((TroopHandler)localObject).f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.4
  * JD-Core Version:    0.7.0.1
  */

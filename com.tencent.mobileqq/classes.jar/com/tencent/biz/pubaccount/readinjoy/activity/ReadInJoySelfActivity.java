@@ -1,198 +1,103 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import Override;
-import android.content.Intent;
+import android.app.Activity;
 import android.content.res.Configuration;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import anvx;
-import bdvn;
-import bmhv;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.OnTabRedNumsChangeListenner;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfCenterViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import mqq.os.MqqHandler;
-import pkh;
-import pvd;
-import sfq;
-import uuq;
 
 public class ReadInJoySelfActivity
   extends IphoneTitleBarActivity
-  implements pvd
+  implements KandianMergeManager.OnTabRedNumsChangeListenner
 {
   protected KandianMergeManager a;
   protected ReadInJoyBaseFragment a;
   protected QQAppInterface a;
-  private boolean a;
-  private boolean b;
-  private boolean c;
   
-  public ReadInJoySelfActivity()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private void c()
+  private void a()
   {
     this.app = ((QQAppInterface)super.getAppRuntime());
     if (this.app == null) {
       return;
     }
-    sfq.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    Object localObject1;
+    ReadInJoyWebDataManager.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     Object localObject2;
     int i;
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null)
     {
-      localObject1 = sfq.a();
+      localObject1 = ReadInJoyWebDataManager.a();
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.i())
       {
         i = 0;
-        ((sfq)localObject1).a((String)localObject2, i);
+        ((ReadInJoyWebDataManager)localObject1).a((String)localObject2, i);
       }
     }
     else
     {
-      this.b = bmhv.B(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      setContentView(2131558458);
-      d();
-      localObject1 = getIntent();
-      if (localObject1 != null) {
-        this.c = ((Intent)localObject1).getBooleanExtra("redTouch", false);
-      }
+      setContentView(2131558459);
+      c();
       localObject2 = getSupportFragmentManager().beginTransaction();
-      if (!Aladdin.getConfig(322).getString("page_type", "1").equals("2")) {
-        break label211;
+      if (!StudyModeManager.a()) {
+        break label153;
       }
-      if (!bdvn.a()) {
-        break label205;
-      }
-      localObject1 = "3";
-      label148:
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment = ReadInJoySelfCenterViolaFragment.a("https://viola.qq.com/js/usercenter.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=6&v_bundleName=usercenter&v_bid=3740&jump_source=" + (String)localObject1);
     }
-    for (;;)
+    label153:
+    for (Object localObject1 = "3";; localObject1 = "1")
     {
-      ((FragmentTransaction)localObject2).add(2131367244, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment = ReadInJoySelfCenterViolaFragment.a("https://viola.qq.com/js/usercenter.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=6&v_bundleName=usercenter&v_bid=3740&jump_source=" + (String)localObject1);
+      ((FragmentTransaction)localObject2).add(2131367430, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment);
       ((FragmentTransaction)localObject2).show(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment);
       ((FragmentTransaction)localObject2).commit();
       return;
       i = 1;
       break;
-      label205:
-      localObject1 = "1";
-      break label148;
-      label211:
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment = new ReadInJoySelfFragment();
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putInt("from_type", 1);
-      ((Bundle)localObject1).putBoolean("show_type", this.b);
-      ((Bundle)localObject1).putBoolean("redTouch", this.c);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment.setArguments((Bundle)localObject1);
     }
   }
   
-  private void d()
-  {
-    if (this.b)
-    {
-      hideTitleBar();
-      setImmersiveStatus();
-      this.titleRoot = ((RelativeLayout)findViewById(2131379112));
-      if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
-      {
-        super.getWindow().addFlags(67108864);
-        ImmersiveUtils.a(getWindow(), this.isClearCoverLayer);
-        this.titleRoot.setFitsSystemWindows(false);
-        this.titleRoot.setPadding(0, 0, 0, 0);
-        if (this.mSystemBarComp == null) {
-          this.mSystemBarComp = new SystemBarCompact(this, true, -1);
-        }
-        this.mSystemBarComp.init();
-        this.mSystemBarComp.setStatusBarColor(0);
-        this.mSystemBarComp.setStatusBarDarkMode(true);
-      }
-      return;
-    }
-    setTitle(anvx.a(2131712548));
-    this.leftView.setText(anvx.a(2131712323));
-    a();
-  }
+  public static void a(Activity paramActivity) {}
   
-  public void E_()
+  private void c()
   {
-    ThreadManager.getUIHandler().post(new ReadInJoySelfActivity.1(this));
-  }
-  
-  public void a()
-  {
+    hideTitleBar();
+    setImmersiveStatus();
+    this.titleRoot = ((RelativeLayout)findViewById(2131379546));
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       super.getWindow().addFlags(67108864);
-      ImmersiveUtils.a(getWindow(), this.isClearCoverLayer);
+      ImmersiveUtils.clearCoverForStatus(getWindow(), this.isClearCoverLayer);
+      this.titleRoot.setFitsSystemWindows(false);
+      this.titleRoot.setPadding(0, 0, 0, 0);
       if (this.mSystemBarComp == null) {
         this.mSystemBarComp = new SystemBarCompact(this, true, -1);
       }
       this.mSystemBarComp.init();
-      if (!ThemeUtil.isInNightMode(this.app)) {
-        break label161;
-      }
-      if ((SystemUtil.isMIUI()) || (SystemUtil.isFlyme())) {
-        break label140;
-      }
-      this.mSystemBarComp.setStatusBarColor(-7829368);
-    }
-    for (;;)
-    {
-      this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130849537);
-      if (this.centerView != null) {
-        this.centerView.setTextColor(-16777216);
-      }
-      this.vg.setBackgroundColor(-1);
-      return;
-      label140:
-      this.mSystemBarComp.setStatusBarColor(-7829368);
+      this.mSystemBarComp.setStatusBarColor(0);
       this.mSystemBarComp.setStatusBarDarkMode(true);
-      continue;
-      label161:
-      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme()))
-      {
-        getWindow().getDecorView().setSystemUiVisibility(9216);
-        this.mSystemBarComp.setStatusBarColor(-1);
-      }
-      else if (!SystemUtil.isFlyme())
-      {
-        this.mSystemBarComp.setStatusBarColor(-2368549);
-      }
-      else
-      {
-        this.mSystemBarComp.setStatusBarColor(-1);
-        this.mSystemBarComp.setStatusBarDarkMode(true);
-      }
     }
+  }
+  
+  public void ai_()
+  {
+    ThreadManager.getUIHandler().post(new ReadInJoySelfActivity.1(this));
   }
   
   @Override
@@ -207,10 +112,10 @@ public class ReadInJoySelfActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)pkh.a());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ReadInJoyUtils.a());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.a(this);
-    c();
+    a();
     return true;
   }
   
@@ -219,19 +124,6 @@ public class ReadInJoySelfActivity
     super.doOnDestroy();
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b(this);
-    }
-  }
-  
-  public void doOnPause()
-  {
-    super.doOnPause();
-  }
-  
-  public void doOnResume()
-  {
-    super.doOnResume();
-    if (!this.jdField_a_of_type_Boolean) {
-      uuq.a("self_tab_cost", null);
     }
   }
   
@@ -244,7 +136,7 @@ public class ReadInJoySelfActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity
  * JD-Core Version:    0.7.0.1
  */

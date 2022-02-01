@@ -11,13 +11,13 @@ public final class ExtraAppInfo
   static ArrayList<FuncallOp> cache_funcallOplist;
   static ArrayList<Integer> cache_usableScene = new ArrayList();
   public String desc = "";
-  public int fontType;
-  public ArrayList<FuncallOp> funcallOplist;
+  public int fontType = 0;
+  public ArrayList<FuncallOp> funcallOplist = null;
   public String hideWordName = "";
-  public int ringid;
-  public int specialType;
-  public int styleid;
-  public ArrayList<Integer> usableScene;
+  public int ringid = 0;
+  public int specialType = 0;
+  public int styleid = 0;
+  public ArrayList<Integer> usableScene = null;
   
   static
   {

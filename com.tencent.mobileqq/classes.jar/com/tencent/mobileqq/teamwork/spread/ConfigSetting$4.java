@@ -2,19 +2,18 @@ package com.tencent.mobileqq.teamwork.spread;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anvx;
-import audr;
-import bedz;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public class ConfigSetting$4
+class ConfigSetting$4
   implements Runnable
 {
   public void run()
   {
-    this.this$0.a.getApp().getSharedPreferences(this.this$0.a.getCurrentAccountUin() + "_m_str_teamwork_tips_sp", 0).edit().putInt("file_str_key_max_count_local", bedz.a(this.this$0)).commit();
-    audr.d(anvx.a(2131701929));
+    this.this$0.a.getApp().getSharedPreferences(this.this$0.a.getCurrentAccountUin() + "_m_str_teamwork_tips_sp", 0).edit().putInt("file_str_key_max_count_local", ConfigSetting.a(this.this$0)).commit();
+    FMToastUtil.d(HardCodeUtil.a(2131702484));
   }
 }
 

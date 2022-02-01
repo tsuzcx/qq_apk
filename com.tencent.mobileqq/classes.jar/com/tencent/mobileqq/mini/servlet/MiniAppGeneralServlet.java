@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.mini.servlet;
 
-import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportReq;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhjl;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -33,7 +31,7 @@ public class MiniAppGeneralServlet
       {
         if (paramFromServiceMsg.isSuccess())
         {
-          paramFromServiceMsg = bhjl.b(paramFromServiceMsg.getWupBuffer());
+          paramFromServiceMsg = WupUtil.b(paramFromServiceMsg.getWupBuffer());
           localBundle.putLong("retCode", 0L);
           localBundle.putString("errMsg", "");
           localBundle.putByteArray("key_response_data", paramFromServiceMsg);
@@ -68,39 +66,27 @@ public class MiniAppGeneralServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     paramIntent.getIntExtra("key_index", -1);
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_request_data");
+    byte[] arrayOfByte2 = paramIntent.getByteArrayExtra("key_request_data");
     String str1 = paramIntent.getStringExtra("key_cmd_string");
     if (str1.equals("LightAppSvc.mini_app_report_transfer.DataReport")) {
       setShouldPerformDCReport(false);
     }
     String str2 = getTraceId();
-    if (arrayOfByte == null) {
+    if (arrayOfByte2 == null) {
       throw new RuntimeException("req data is null!");
     }
     if (TextUtils.isEmpty(str1)) {
       throw new RuntimeException("cmd_string is null!");
     }
-    Object localObject = new APP_REPORT_TRANSFER.StDataReportReq();
-    try
-    {
-      ((APP_REPORT_TRANSFER.StDataReportReq)localObject).mergeFrom(arrayOfByte);
-      QLog.e("MiniAppGetLoginCodeServlet", 2, "wesley test, dc: " + ((APP_REPORT_TRANSFER.StDataReportReq)localObject).dcdata.get());
-      label124:
-      localObject = arrayOfByte;
-      if (arrayOfByte == null) {
-        localObject = new byte[4];
-      }
-      QLog.e("MiniAppGetLoginCodeServlet", 2, "wesley: cmdString:" + str1 + "  traceId:" + str2);
-      paramPacket.setSSOCommand(str1);
-      paramPacket.putSendData(bhjl.a((byte[])localObject));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
+    byte[] arrayOfByte1 = arrayOfByte2;
+    if (arrayOfByte2 == null) {
+      arrayOfByte1 = new byte[4];
     }
-    catch (Exception localException)
-    {
-      break label124;
-    }
+    QLog.e("MiniAppGetLoginCodeServlet", 2, " cmdString:" + str1 + "  traceId:" + str2);
+    paramPacket.setSSOCommand(str1);
+    paramPacket.putSendData(WupUtil.a(arrayOfByte1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 

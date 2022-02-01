@@ -1,13 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyMedalInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
-import orr;
-import pdn;
-import pdo;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.ActivityLevel;
 
 public abstract class BaseCommentData
@@ -16,7 +15,7 @@ public abstract class BaseCommentData
   public static final int MAIN_COMMENT = 1;
   public static final int SUB_COMMENT = 2;
   public static final String TAG = "BaseCommentData";
-  public pdn accountLevelInfo;
+  public BaseCommentData.AccountLevelInfo accountLevelInfo;
   public long activityCfgID;
   public String activityJumpUrl;
   public oidb_cmd0xc46.ActivityLevel activityLevel;
@@ -28,9 +27,11 @@ public abstract class BaseCommentData
   public String avatar;
   public String avatarPendantUrl;
   public int awesome;
+  public int commentApp;
   public String commentContent;
   public String commentId;
   public List<BaseCommentData.CommentLinkData> commentLinkDataList;
+  public List<BaseCommentData.CommentRptData> commentRptDataList;
   public long commentTime;
   public int contentSrc;
   public int createSrc;
@@ -41,6 +42,7 @@ public abstract class BaseCommentData
   public boolean isAd;
   public boolean isAnchor;
   public int isApproved;
+  public boolean isAuthorBottom;
   public boolean isAuthorLike;
   public int isAuthorReply;
   public boolean isAuthorSticky;
@@ -53,14 +55,16 @@ public abstract class BaseCommentData
   public int like;
   public int likeCnt;
   public int maxLine = 9;
-  public orr medalInfo;
-  public List<pdo> mediaDataList;
+  public ReadInJoyMedalInfo medalInfo;
+  public List<BaseCommentData.MediaData> mediaDataList;
   public int myself;
   public String nickName;
   public String passthrough;
   public int rank;
   public String rowKey;
   public int secondMaxLine = 6;
+  public String shareUrl;
+  public boolean shouldShowFollowButton;
   public String styleData;
   public String uin;
   public String userTitle;
@@ -80,12 +84,25 @@ public abstract class BaseCommentData
   {
     if ((this.mediaDataList != null) && (this.mediaDataList.size() > 0))
     {
-      pdo localpdo = (pdo)this.mediaDataList.get(0);
-      if (localpdo != null) {
-        return localpdo.e;
+      BaseCommentData.MediaData localMediaData = (BaseCommentData.MediaData)this.mediaDataList.get(0);
+      if (localMediaData != null) {
+        return localMediaData.e;
       }
     }
     return 0;
+  }
+  
+  public String getWholeStringContent()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(this.commentContent);
+    if (this.commentRptDataList != null)
+    {
+      Iterator localIterator = this.commentRptDataList.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((BaseCommentData.CommentRptData)localIterator.next()).a);
+      }
+    }
+    return localStringBuilder.toString();
   }
   
   public boolean hasLinkData()
@@ -126,6 +143,12 @@ public abstract class BaseCommentData
   public boolean isBanner()
   {
     return this.isBanner;
+  }
+  
+  public boolean isComment()
+  {
+    int i = this.level;
+    return (i == 1) || (i == 2);
   }
   
   public boolean isDisliked()
@@ -180,12 +203,12 @@ public abstract class BaseCommentData
   
   public String toString()
   {
-    return "BaseCommentData{level=" + this.level + ", commentId='" + this.commentId + '\'' + ", commentContent='" + this.commentContent + '\'' + ", commentTime=" + this.commentTime + ", uin='" + this.uin + '\'' + ", nickName='" + this.nickName + '\'' + ", avatar='" + this.avatar + '\'' + ", homepage='" + this.homepage + '\'' + ", myself=" + this.myself + ", like=" + this.like + ", disLike=" + this.disLike + ", likeCnt=" + this.likeCnt + ", anonymous=" + this.anonymous + ", authorSelection=" + this.authorSelection + ", authorComment='" + this.authorComment + '\'' + ", rank=" + this.rank + ", awesome=" + this.awesome + ", rowKey='" + this.rowKey + '\'' + ", contentSrc=" + this.contentSrc + ", passthrough='" + this.passthrough + '\'' + ", isAnchor=" + this.isAnchor + ", isDelete=" + this.isDelete + ", maxLine=" + this.maxLine + ", secondMaxLine=" + this.secondMaxLine + ", isStar=" + this.isStar + ", isApproved=" + this.isApproved + ", flowGuidePtsData='" + this.flowGuidePtsData + '\'' + ", createSrc=" + this.createSrc + ", isActivity=" + this.isActivity + ", activityPicUrl='" + this.activityPicUrl + '\'' + ", activityJumpUrl='" + this.activityJumpUrl + '\'' + ", activityCfgID=" + this.activityCfgID + ", isBanner=" + this.isBanner + ", medalInfo=" + this.medalInfo + ", mediaDataList=" + this.mediaDataList + ", isAuthorReply=" + this.isAuthorReply + ", userTitle='" + this.userTitle + '\'' + ", isAuthorLike=" + this.isAuthorLike + ", isFollowing=" + this.isFollowing + ", isAuthorSticky=" + this.isAuthorSticky + ", avatarPendantUrl='" + this.avatarPendantUrl + '\'' + ", ksHomePage='" + this.ksHomePage + '\'' + ", styleData='" + this.styleData + '\'' + ", accountLevelInfo=" + this.accountLevelInfo + ", isAd=" + this.isAd + ", advertisementInfo=" + this.advertisementInfo + ", commentLinkDataList=" + this.commentLinkDataList + '}';
+    return "BaseCommentData{level=" + this.level + ", commentId='" + this.commentId + '\'' + ", commentContent='" + this.commentContent + '\'' + ", commentTime=" + this.commentTime + ", uin='" + this.uin + '\'' + ", nickName='" + this.nickName + '\'' + ", avatar='" + this.avatar + '\'' + ", homepage='" + this.homepage + '\'' + ", myself=" + this.myself + ", like=" + this.like + ", disLike=" + this.disLike + ", likeCnt=" + this.likeCnt + ", anonymous=" + this.anonymous + ", authorSelection=" + this.authorSelection + ", authorComment='" + this.authorComment + '\'' + ", rank=" + this.rank + ", awesome=" + this.awesome + ", rowKey='" + this.rowKey + '\'' + ", contentSrc=" + this.contentSrc + ", passthrough='" + this.passthrough + '\'' + ", isAnchor=" + this.isAnchor + ", isDelete=" + this.isDelete + ", maxLine=" + this.maxLine + ", secondMaxLine=" + this.secondMaxLine + ", isStar=" + this.isStar + ", isApproved=" + this.isApproved + ", flowGuidePtsData='" + this.flowGuidePtsData + '\'' + ", createSrc=" + this.createSrc + ", isActivity=" + this.isActivity + ", activityPicUrl='" + this.activityPicUrl + '\'' + ", activityJumpUrl='" + this.activityJumpUrl + '\'' + ", activityCfgID=" + this.activityCfgID + ", isBanner=" + this.isBanner + ", medalInfo=" + this.medalInfo + ", mediaDataList=" + this.mediaDataList + ", isAuthorReply=" + this.isAuthorReply + ", userTitle='" + this.userTitle + '\'' + ", isAuthorLike=" + this.isAuthorLike + ", isFollowing=" + this.isFollowing + ", isAuthorSticky=" + this.isAuthorSticky + ", isAuthorBottom=" + this.isAuthorBottom + ", avatarPendantUrl='" + this.avatarPendantUrl + '\'' + ", ksHomePage='" + this.ksHomePage + '\'' + ", styleData='" + this.styleData + '\'' + ", accountLevelInfo=" + this.accountLevelInfo + ", isAd=" + this.isAd + ", advertisementInfo=" + this.advertisementInfo + ", commentLinkDataList=" + this.commentLinkDataList + ", commentRptDataList=" + this.commentRptDataList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData
  * JD-Core Version:    0.7.0.1
  */

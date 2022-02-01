@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.apkg;
 
 import android.widget.Toast;
-import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 class ApkgBaseInfo$2
   implements Runnable
@@ -11,7 +11,7 @@ class ApkgBaseInfo$2
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + anvx.a(2131699785) + this.val$requestDomainConfig, 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + HardCodeUtil.a(2131700363) + this.val$requestDomainConfig, 1).show();
   }
 }
 

@@ -1,7 +1,5 @@
 package dov.com.qq.im.ae.play;
 
-import aeow;
-import aeox;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -27,45 +25,45 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bisa;
-import bkyq;
-import bmwf;
-import bmwt;
-import bnlb;
-import bnqm;
-import bnrf;
-import bnrh;
-import bove;
-import bptd;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.PublicFragmentActivityCallBackInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForPeak;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.smtt.utils.Md5Utils;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.videoshelf.libpag.PagNotSupportSystemException;
 import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
 import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayer;
 import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayerListener;
 import com.tencent.ttpic.videoshelf.model.player.PagShelfPlayer;
 import com.tencent.ttpic.videoshelf.ui.VideoShelfPlayView;
+import com.tencent.util.UiThreadUtil;
 import cooperation.qzone.QzoneFeedsPluginProxyActivity;
+import dov.com.qq.im.ae.AEPath;
+import dov.com.qq.im.ae.AEPath.PLAY.FILES;
+import dov.com.qq.im.ae.entry.AECameraEntry;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.util.AEFastClickThrottle;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.tencent.biz.qqstory.takevideo.ShortVideoForwardManager;
+import dov.com.tencent.mobileqq.shortvideo.util.HwVideoMerge;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
-import zeb;
 
 public class AEVideoShelfPreviewFragment
   extends PublicBaseFragment
-  implements aeox, View.OnClickListener, IVideoShelfPlayerListener
+  implements View.OnClickListener, PublicFragmentActivityCallBackInterface, IVideoShelfPlayerListener
 {
   private static final int AUDIO_UPDATE_PROGRESS_TIME = 200;
   public static final String FROM = "from";
@@ -81,36 +79,36 @@ public class AEVideoShelfPreviewFragment
   private static final int VIDEO_DEFAULT_WIDTH = 540;
   private static PowerManager.WakeLock wakeLock;
   private Button editButton;
-  private boolean isFromNewVideo;
+  private boolean isFromNewVideo = false;
   private String mAudioPath;
-  private volatile boolean mCancelGenerateByUser;
+  private volatile boolean mCancelGenerateByUser = false;
   private Dialog mDialog;
   private VideoShelfEngine mEngine;
   private long mGenerateBegin;
-  private boolean mHadEncodedStart;
+  private boolean mHadEncodedStart = false;
   private String mInputVideo;
   private boolean mIsFirstVideoPlay = true;
-  private boolean mIsNeedEditBtn;
-  private boolean mIsNeedShowdialog;
-  private boolean mIsPagPreview;
-  private boolean mIsVideoComplete;
+  private boolean mIsNeedEditBtn = false;
+  private boolean mIsNeedShowdialog = false;
+  private boolean mIsPagPreview = false;
+  private boolean mIsVideoComplete = false;
   private int mJumpFrom;
-  private long mLastUpdateProgressTimeMs;
+  private long mLastUpdateProgressTimeMs = 0L;
   private String mMaterialId;
   private String mMaterialName;
   private int mOutVideoHeight;
   private int mOutVideoWidth;
   private HashMap<String, int[]> mPagSettings;
   private TextView mPlayerRateView;
-  private double mSaveDialogProcessLowValue;
-  private double mSaveDialogProgress;
+  private double mSaveDialogProcessLowValue = 0.0D;
+  private double mSaveDialogProgress = 0.0D;
   private ArrayList<String> mSelectedPhotoList;
   private String mTakeSameName;
   private String mTemplatePath;
   private Timer mTimer;
   private String mVideoPath;
   private View playButton;
-  bisa ppd;
+  ProgressPieDrawable ppd;
   private int status = 0;
   private View videoGroup;
   private VideoShelfPlayView videoView;
@@ -163,21 +161,21 @@ public class AEVideoShelfPreviewFragment
     }
   }
   
-  private bisa createProgressPie()
+  private ProgressPieDrawable createProgressPie()
   {
-    bisa localbisa = new bisa(getActivity());
-    localbisa.a(AIOUtils.dp2px(50.0F, getActivity().getResources()));
-    localbisa.a(true);
-    localbisa.c(false);
-    localbisa.g(-1);
-    localbisa.f(0);
-    localbisa.d(-15550475);
-    localbisa.i(3);
-    localbisa.jdField_f_of_type_Boolean = true;
-    localbisa.jdField_f_of_type_Int = 2;
-    localbisa.e(true);
-    localbisa.a(new AEVideoShelfPreviewFragment.3(this));
-    return localbisa;
+    ProgressPieDrawable localProgressPieDrawable = new ProgressPieDrawable(getActivity());
+    localProgressPieDrawable.a(AIOUtils.a(50.0F, getActivity().getResources()));
+    localProgressPieDrawable.a(true);
+    localProgressPieDrawable.c(false);
+    localProgressPieDrawable.g(-1);
+    localProgressPieDrawable.f(0);
+    localProgressPieDrawable.d(-15550475);
+    localProgressPieDrawable.i(3);
+    localProgressPieDrawable.jdField_f_of_type_Boolean = true;
+    localProgressPieDrawable.jdField_f_of_type_Int = 2;
+    localProgressPieDrawable.e(true);
+    localProgressPieDrawable.a(new AEVideoShelfPreviewFragment.3(this));
+    return localProgressPieDrawable;
   }
   
   private void dismissProgressDialog()
@@ -206,7 +204,7 @@ public class AEVideoShelfPreviewFragment
           if (!bool) {
             break label274;
           }
-          localObject1 = bmwf.a(bmwf.a());
+          localObject1 = AEPath.a(AEPath.a());
           str = TAG;
           localStringBuilder = new StringBuilder().append("outputDir: ").append((String)localObject1);
           if (!new File((String)localObject1).exists()) {
@@ -217,15 +215,15 @@ public class AEVideoShelfPreviewFragment
         label303:
         for (Object localObject2 = " exist";; localObject2 = " not exist")
         {
-          bnrh.b(str, (String)localObject2);
+          AEQLog.b(str, (String)localObject2);
           this.mTimer = new Timer();
           this.mTimer.schedule(new AEVideoShelfPreviewFragment.7(this), 0L, 200L);
-          if (bptd.a(this.mEngine.getOutputVideoPath(), this.mAudioPath, (String)localObject1, 0) == 0)
+          if (HwVideoMerge.a(this.mEngine.getOutputVideoPath(), this.mAudioPath, (String)localObject1, 0) == 0)
           {
             localObject2 = new File(this.mEngine.getOutputVideoPath());
             if (((File)localObject2).exists())
             {
-              bnrh.b(TAG, "finishAudioVideoMerge done");
+              AEQLog.b(TAG, "finishAudioVideoMerge done");
               ((File)localObject2).delete();
             }
             this.mVideoPath = ((String)localObject1);
@@ -235,9 +233,9 @@ public class AEVideoShelfPreviewFragment
           if ((!bool) || (this.mVideoPath == null)) {
             break;
           }
-          zeb.a(BaseApplication.getContext(), new File(this.mVideoPath));
+          com.tencent.biz.qqstory.utils.FileUtils.a(BaseApplication.getContext(), new File(this.mVideoPath));
           return;
-          localObject1 = bmwf.a(bmwt.e + File.separator);
+          localObject1 = AEPath.a(AEPath.PLAY.FILES.f + File.separator);
           break label87;
         }
       }
@@ -289,11 +287,11 @@ public class AEVideoShelfPreviewFragment
       }
     }
     this.mDialog.requestWindowFeature(1);
-    this.mDialog.setContentView(2131561862);
-    localObject = (ImageView)this.mDialog.findViewById(2131373219);
+    this.mDialog.setContentView(2131561994);
+    localObject = (ImageView)this.mDialog.findViewById(2131373545);
     this.ppd = createProgressPie();
     ((ImageView)localObject).setImageDrawable(this.ppd);
-    ((TextView)this.mDialog.findViewById(2131371598)).setText(2131689785);
+    ((TextView)this.mDialog.findViewById(2131371908)).setText(2131689825);
     this.mDialog.setCancelable(true);
     this.mDialog.setCanceledOnTouchOutside(false);
     this.mDialog.setOnCancelListener(new AEVideoShelfPreviewFragment.2(this));
@@ -309,21 +307,21 @@ public class AEVideoShelfPreviewFragment
         ((Window)localObject).setStatusBarColor(-16777216);
       }
     }
-    this.mPlayerRateView = ((TextView)getActivity().findViewById(2131372953));
+    this.mPlayerRateView = ((TextView)getActivity().findViewById(2131373279));
     this.mPlayerRateView.setText("0(fps)");
     this.mPlayerRateView.setTextColor(-65536);
-    this.videoGroup = getActivity().findViewById(2131380789);
+    this.videoGroup = getActivity().findViewById(2131381237);
     this.videoGroup.setOnClickListener(this);
-    this.videoView = ((VideoShelfPlayView)this.videoGroup.findViewById(2131380797));
+    this.videoView = ((VideoShelfPlayView)this.videoGroup.findViewById(2131381245));
     this.videoView.setOnPlayerListener(this);
-    this.playButton = this.videoGroup.findViewById(2131372915);
-    this.editButton = ((Button)getActivity().findViewById(2131365963));
+    this.playButton = this.videoGroup.findViewById(2131373242);
+    this.editButton = ((Button)getActivity().findViewById(2131366128));
     this.editButton.setOnClickListener(this);
     this.videoView.getViewTreeObserver().addOnGlobalLayoutListener(new AEVideoShelfPreviewFragment.1(this));
-    getActivity().findViewById(2131363323).setOnClickListener(this);
-    Object localObject = (TextView)getActivity().findViewById(2131364020);
+    getActivity().findViewById(2131363402).setOnClickListener(this);
+    Object localObject = (TextView)getActivity().findViewById(2131364119);
     ((TextView)localObject).setOnClickListener(this);
-    ((TextView)localObject).setText(2131689772);
+    ((TextView)localObject).setText(2131689812);
     initProgressDialog();
   }
   
@@ -340,7 +338,7 @@ public class AEVideoShelfPreviewFragment
   public static void jumpToMe(Context paramContext, Intent paramIntent, int paramInt)
   {
     paramIntent.putExtra("jump_in_from", paramInt);
-    aeow.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, AEVideoShelfPreviewFragment.class);
+    PublicFragmentActivity.Launcher.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, AEVideoShelfPreviewFragment.class);
   }
   
   public static void keepScreenOn(Context paramContext, boolean paramBoolean)
@@ -349,7 +347,7 @@ public class AEVideoShelfPreviewFragment
     {
       wakeLock = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(536870922, TAG);
       wakeLock.acquire();
-      bnrh.b(TAG, "keepScreenOn!");
+      AEQLog.b(TAG, "keepScreenOn!");
       return;
     }
     if (wakeLock != null)
@@ -357,12 +355,12 @@ public class AEVideoShelfPreviewFragment
       wakeLock.release();
       wakeLock = null;
     }
-    bnrh.b(TAG, "keepScreenOff!");
+    AEQLog.b(TAG, "keepScreenOff!");
   }
   
   private void onCancelCompleted()
   {
-    bnrh.b(TAG, "Merge Video step onCancelCompleted");
+    AEQLog.b(TAG, "Merge Video step onCancelCompleted");
     this.mGenerateBegin = 0L;
     this.mHadEncodedStart = false;
     this.mIsNeedShowdialog = false;
@@ -373,16 +371,16 @@ public class AEVideoShelfPreviewFragment
       if (((File)localObject).exists())
       {
         ((File)localObject).delete();
-        bnrh.b(TAG, "onCancelCompleted---delete temp video because user cancel");
+        AEQLog.b(TAG, "onCancelCompleted---delete temp video because user cancel");
       }
     }
-    bkyq.a(new AEVideoShelfPreviewFragment.10(this));
+    UiThreadUtil.a(new AEVideoShelfPreviewFragment.10(this));
     this.mIsVideoComplete = false;
   }
   
   private void onError(int paramInt1, int paramInt2, String paramString)
   {
-    bnrh.c(TAG, "Merge Video step onError");
+    AEQLog.c(TAG, "Merge Video step onError");
     this.mGenerateBegin = 0L;
     onError(paramInt1, paramString, null);
     this.mHadEncodedStart = false;
@@ -394,23 +392,23 @@ public class AEVideoShelfPreviewFragment
     long l = System.currentTimeMillis();
     if (l - this.mLastUpdateProgressTimeMs > 200L)
     {
-      bkyq.a(new AEVideoShelfPreviewFragment.9(this, paramInt));
+      UiThreadUtil.a(new AEVideoShelfPreviewFragment.9(this, paramInt));
       this.mLastUpdateProgressTimeMs = l;
     }
   }
   
   private void onStartGenerate()
   {
-    bnrh.b(TAG, "Merge Video step onStartGenerate");
+    AEQLog.b(TAG, "Merge Video step onStartGenerate");
     this.mGenerateBegin = System.currentTimeMillis();
-    bkyq.a(new AEVideoShelfPreviewFragment.8(this));
+    UiThreadUtil.a(new AEVideoShelfPreviewFragment.8(this));
   }
   
   private boolean pagFileInit(Intent paramIntent)
   {
     if ((paramIntent == null) || (this.videoView == null))
     {
-      bnrh.c(TAG, "pagFileInit error");
+      AEQLog.c(TAG, "pagFileInit error");
       return false;
     }
     this.mInputVideo = paramIntent.getStringExtra("pagFilePath");
@@ -439,7 +437,7 @@ public class AEVideoShelfPreviewFragment
       this.mOutVideoWidth = paramIntent.getIntExtra("videoOutWidth", 540);
       this.mOutVideoHeight = paramIntent.getIntExtra("videoOutHeight", 960);
       return true;
-      bnrh.c(TAG, "pagFileInit Asset Path error");
+      AEQLog.c(TAG, "pagFileInit Asset Path error");
       return false;
       if (!TextUtils.isEmpty(this.mAudioPath)) {
         this.videoView.setAudioPath(this.mAudioPath);
@@ -449,7 +447,7 @@ public class AEVideoShelfPreviewFragment
       }
       this.videoView.setVideoFilePath(this.mInputVideo);
     }
-    bnrh.c(TAG, "pagFileInit not Asset Path error");
+    AEQLog.c(TAG, "pagFileInit not Asset Path error");
     return false;
   }
   
@@ -498,15 +496,15 @@ public class AEVideoShelfPreviewFragment
       catch (PagNotSupportSystemException localPagNotSupportSystemException)
       {
         this.mEngine = null;
-        bnrh.d(TAG, localPagNotSupportSystemException.getMessage());
-        bkyq.a(new AEVideoShelfPreviewFragment.11(this), 2000L);
+        AEQLog.d(TAG, localPagNotSupportSystemException.getMessage());
+        UiThreadUtil.a(new AEVideoShelfPreviewFragment.11(this), 2000L);
       }
     }
   }
   
   private void showDialogIfNeed()
   {
-    bkyq.a(new AEVideoShelfPreviewFragment.6(this));
+    UiThreadUtil.a(new AEVideoShelfPreviewFragment.6(this));
   }
   
   private void showProgressDialog()
@@ -541,11 +539,11 @@ public class AEVideoShelfPreviewFragment
   public String getThumbPath()
   {
     Bitmap localBitmap = getVideoThumbnail(this.mVideoPath, 300, 1);
-    Object localObject = new File(bmwt.d);
+    Object localObject = new File(AEPath.PLAY.FILES.e);
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    localObject = bmwt.d + File.separator + Md5Utils.getMD5(this.mVideoPath) + ".jpg";
+    localObject = AEPath.PLAY.FILES.e + File.separator + Md5Utils.getMD5(this.mVideoPath) + ".jpg";
     try
     {
       FileOutputStream localFileOutputStream = new FileOutputStream(new File((String)localObject));
@@ -598,9 +596,9 @@ public class AEVideoShelfPreviewFragment
       {
         return;
       } while (paramInt1 != 21);
-      bnqm.a().a(this.mMaterialId);
+      AEBaseDataReporter.a().a(this.mMaterialId);
     } while (paramInt2 != -1);
-    if ((bnlb.b(getActivity())) || (bnlb.d(getActivity().getIntent()))) {}
+    if ((AECameraEntry.b(getActivity())) || (AECameraEntry.d(getActivity().getIntent()))) {}
     for (paramIntent = new Intent(getActivity(), QzoneFeedsPluginProxyActivity.class);; paramIntent = new Intent(getActivity(), SplashActivity.class))
     {
       paramIntent.addFlags(67108864);
@@ -613,14 +611,14 @@ public class AEVideoShelfPreviewFragment
   public void onBackPressed()
   {
     getActivity().finish();
-    bnqm.a().d();
+    AEBaseDataReporter.a().d();
   }
   
   public void onChangVideoSize(int paramInt1, int paramInt2) {}
   
   public void onClick(View paramView)
   {
-    if (bnrf.a(paramView)) {}
+    if (AEFastClickThrottle.a(paramView)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
@@ -629,13 +627,13 @@ public class AEVideoShelfPreviewFragment
       {
       default: 
         break;
-      case 2131363323: 
+      case 2131363402: 
         onBackPressed();
         break;
-      case 2131380789: 
+      case 2131381237: 
         toggleVideoStatus();
         break;
-      case 2131364020: 
+      case 2131364119: 
         if (!this.mIsVideoComplete)
         {
           pauseVideo();
@@ -648,12 +646,12 @@ public class AEVideoShelfPreviewFragment
         }
         else
         {
-          bove.a(getActivity(), this.mVideoPath, getThumbPath(), bnlb.b(getActivity()), "caller_aecamera");
+          ShortVideoForwardManager.a(getActivity(), this.mVideoPath, getThumbPath(), AECameraEntry.b(getActivity()), "caller_aecamera");
         }
         break;
-      case 2131365963: 
+      case 2131366128: 
         jumpToEditFragment();
-        bnqm.a().e();
+        AEBaseDataReporter.a().e();
       }
     }
   }
@@ -665,17 +663,17 @@ public class AEVideoShelfPreviewFragment
     {
       this.mGenerateBegin = 0L;
       finishAudioVideoMerge();
-      bkyq.a(new AEVideoShelfPreviewFragment.5(this, l));
+      UiThreadUtil.a(new AEVideoShelfPreviewFragment.5(this, l));
       this.mHadEncodedStart = false;
       this.mIsVideoComplete = true;
-      bnrh.b(TAG, "Merge Video step onCompletion");
+      AEQLog.b(TAG, "Merge Video step onCompletion");
       return;
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558506, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558514, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -721,14 +719,14 @@ public class AEVideoShelfPreviewFragment
     if (this.mInputVideo == null) {}
     for (;;)
     {
-      bnrh.d(TAG, "Fun video videoShelfPlayView onError: what: " + paramInt + ", extra: " + paramString + ", FilePath: " + this.mInputVideo + ", FileSize: " + l1 + " dirInfo: " + i);
+      AEQLog.d(TAG, "Fun video videoShelfPlayView onError: what: " + paramInt + ", extra: " + paramString + ", FilePath: " + this.mInputVideo + ", FileSize: " + l1 + " dirInfo: " + i);
       return false;
       if (this.mInputVideo.contains(File.separator))
       {
         paramObject = this.mInputVideo.substring(0, this.mInputVideo.lastIndexOf(File.separator));
         if (new File(paramObject).exists())
         {
-          if (DeviceUtils.canWriteFile(paramObject, false)) {
+          if (com.tencent.ttpic.baseutils.io.FileUtils.canWriteFile(paramObject, false)) {
             i = 0;
           } else {
             i = 3;
@@ -801,7 +799,7 @@ public class AEVideoShelfPreviewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

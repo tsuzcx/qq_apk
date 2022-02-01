@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import com.qq.jce.wup.UniPacket;
+import com.tencent.av.AVPathUtil;
+import com.tencent.av.VideoRecoveryReporter;
+import com.tencent.av.ui.funchat.record.QavRecordDpc;
 import com.tencent.avcore.jni.log.ClientLogReportJni;
 import com.tencent.avcore.jni.log.IClientLogReport;
 import com.tencent.common.app.AppInterface;
@@ -18,9 +21,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import lbh;
-import ldb;
-import moo;
 
 public class ClientLogReport
   implements IClientLogReport
@@ -41,11 +41,11 @@ public class ClientLogReport
   private static final String ServerFilterKey = "video_log";
   private static final String TAG = "ClientLogReport";
   private static final String UdpCheckResultServerFilterKey = "video_udpcheck_log";
-  private static ClientLogReport instance;
+  private static ClientLogReport instance = null;
   private int mAppId;
   private AppInterface mAppInterface;
   private Context mContext;
-  private boolean mInit;
+  private boolean mInit = false;
   private final ClientLogReportJni mJni = new ClientLogReportJni(this);
   private MsfServiceSdk mMsfSub;
   private Map<Integer, ClientLogReport.ReportRecord> mReportRecordCache = new ConcurrentHashMap();
@@ -68,7 +68,7 @@ public class ClientLogReport
       QLog.e("ClientLogReport", 1, "checkLocalReportRecord mInit is false.");
       return;
     }
-    if (!NetworkUtil.isNetworkAvailable(this.mContext))
+    if (!NetworkUtil.g(this.mContext))
     {
       QLog.e("ClientLogReport", 1, "checkLocalReportRecord network is invalid.");
       return;
@@ -96,7 +96,7 @@ public class ClientLogReport
         if (!bool1) {
           break label171;
         }
-        ldb.a(bool2);
+        VideoRecoveryReporter.a(bool2);
       }
     }
     for (;;)
@@ -111,7 +111,7 @@ public class ClientLogReport
           paramFromServiceMsg.mkdirs();
         }
         paramIntent.writeToFile(new File(REPORT_FAIL_LOG_DIR, String.valueOf(paramIntent.mTimestamp)));
-        ldb.c();
+        VideoRecoveryReporter.c();
       }
     }
   }
@@ -123,7 +123,7 @@ public class ClientLogReport
       this.mContext = paramContext;
       this.mAppId = paramInt;
       this.mMsfSub = MsfServiceSdk.get();
-      if (moo.a().q != 1) {
+      if (QavRecordDpc.a().q != 1) {
         break label76;
       }
     }
@@ -246,7 +246,7 @@ public class ClientLogReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.video.call.ClientLogReport
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import android.text.TextUtils;
 class WatchActivityManager$ScreenKeyReceiver
   extends BroadcastReceiver
 {
-  private String action;
+  private String action = null;
   
   private WatchActivityManager$ScreenKeyReceiver(WatchActivityManager paramWatchActivityManager) {}
   
@@ -31,7 +31,7 @@ class WatchActivityManager$ScreenKeyReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.WatchActivityManager.ScreenKeyReceiver
  * JD-Core Version:    0.7.0.1
  */

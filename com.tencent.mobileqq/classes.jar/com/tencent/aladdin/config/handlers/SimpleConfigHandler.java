@@ -1,5 +1,6 @@
 package com.tencent.aladdin.config.handlers;
 
+import android.support.annotation.CallSuper;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.aladdin.config.utils.Log;
@@ -9,6 +10,7 @@ public class SimpleConfigHandler
 {
   private static final String TAG = "SimpleConfigHandler";
   
+  @CallSuper
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
     Log.d("SimpleConfigHandler", "onReceiveConfig: id=" + paramInt1 + ", version=" + paramInt2);
@@ -18,6 +20,7 @@ public class SimpleConfigHandler
     return Aladdin.getConfig(paramInt1).update(paramString);
   }
   
+  @CallSuper
   public void onWipeConfig(int paramInt)
   {
     Log.d("SimpleConfigHandler", "onWipeConfig: id=" + paramInt);
@@ -26,7 +29,7 @@ public class SimpleConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aladdin.config.handlers.SimpleConfigHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -12,23 +12,23 @@ public final class MsgType0x210SubMsgType0xa
   static byte[] cache_vMd5;
   static byte[] cache_vTokenKey;
   static byte[] cache_vUrlNotify;
-  public long lSessionId;
-  public byte[] strFileName;
-  public byte[] strOriginfile_md5;
-  public long uDstAppId;
-  public long uDstInstId;
-  public long uDstUin;
-  public long uFileLen;
-  public long uOriginfiletype;
-  public long uSeq;
-  public long uServerIp;
-  public long uServerPort;
-  public long uSrcAppId;
-  public long uSrcInstId;
-  public long uType;
-  public byte[] vMd5;
-  public byte[] vTokenKey;
-  public byte[] vUrlNotify;
+  public long lSessionId = 0L;
+  public byte[] strFileName = null;
+  public byte[] strOriginfile_md5 = null;
+  public long uDstAppId = 0L;
+  public long uDstInstId = 0L;
+  public long uDstUin = 0L;
+  public long uFileLen = 0L;
+  public long uOriginfiletype = 0L;
+  public long uSeq = 0L;
+  public long uServerIp = 0L;
+  public long uServerPort = 0L;
+  public long uSrcAppId = 0L;
+  public long uSrcInstId = 0L;
+  public long uType = 0L;
+  public byte[] vMd5 = null;
+  public byte[] vTokenKey = null;
+  public byte[] vUrlNotify = null;
   
   public MsgType0x210SubMsgType0xa() {}
   

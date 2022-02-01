@@ -10,12 +10,12 @@ public final class stSimpleComment
 {
   static stSchema cache_dingSchema = new stSchema();
   static stMetaPerson cache_poster = new stMetaPerson();
-  public long dingNum;
-  public stSchema dingSchema;
+  public long dingNum = 0L;
+  public stSchema dingSchema = null;
   public String feedId = "";
   public String id = "";
-  public int isDing;
-  public stMetaPerson poster;
+  public int isDing = 0;
+  public stMetaPerson poster = null;
   public String posterId = "";
   public String wording = "";
   

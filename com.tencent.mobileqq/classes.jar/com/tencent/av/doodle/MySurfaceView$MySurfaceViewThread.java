@@ -7,7 +7,7 @@ class MySurfaceView$MySurfaceViewThread
   extends Thread
 {
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private boolean b = true;
   
   public MySurfaceView$MySurfaceViewThread(MySurfaceView paramMySurfaceView)
@@ -32,24 +32,24 @@ class MySurfaceView$MySurfaceViewThread
     //   4: iconst_1
     //   5: invokevirtual 65	com/tencent/av/doodle/MySurfaceView:a	(Z)V
     //   8: aload_0
-    //   9: getfield 31	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_Boolean	Z
+    //   9: getfield 19	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_Boolean	Z
     //   12: ifeq +313 -> 325
     //   15: aload_0
-    //   16: getfield 27	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   16: getfield 29	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
     //   19: aconst_null
     //   20: invokeinterface 71 2 0
     //   25: astore 6
     //   27: aload 6
     //   29: astore 5
     //   31: aload_0
-    //   32: getfield 27	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   32: getfield 29	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
     //   35: astore 7
     //   37: aload 6
     //   39: astore 5
     //   41: aload 7
     //   43: monitorenter
     //   44: aload_0
-    //   45: getfield 19	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:b	Z
+    //   45: getfield 21	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:b	Z
     //   48: ifeq +33 -> 81
     //   51: invokestatic 77	android/os/SystemClock:elapsedRealtime	()J
     //   54: lstore_1
@@ -78,7 +78,7 @@ class MySurfaceView$MySurfaceViewThread
     //   98: aload 6
     //   100: ifnull -92 -> 8
     //   103: aload_0
-    //   104: getfield 27	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   104: getfield 29	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
     //   107: aload 6
     //   109: invokeinterface 89 2 0
     //   114: goto -106 -> 8
@@ -125,7 +125,7 @@ class MySurfaceView$MySurfaceViewThread
     //   208: aload 6
     //   210: ifnull -202 -> 8
     //   213: aload_0
-    //   214: getfield 27	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   214: getfield 29	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
     //   217: aload 6
     //   219: invokeinterface 89 2 0
     //   224: goto -216 -> 8
@@ -150,7 +150,7 @@ class MySurfaceView$MySurfaceViewThread
     //   269: aload 5
     //   271: ifnull +14 -> 285
     //   274: aload_0
-    //   275: getfield 27	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   275: getfield 29	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
     //   278: aload 5
     //   280: invokeinterface 89 2 0
     //   285: aload 6
@@ -223,7 +223,7 @@ class MySurfaceView$MySurfaceViewThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.doodle.MySurfaceView.MySurfaceViewThread
  * JD-Core Version:    0.7.0.1
  */

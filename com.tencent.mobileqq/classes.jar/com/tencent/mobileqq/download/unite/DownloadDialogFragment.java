@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.download.unite;
 
-import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -12,20 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import asao;
-import asap;
-import asaq;
-import asar;
-import asas;
-import asat;
-import asbb;
-import azcl;
-import bhdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.download.unite.config.DownloadConfigBean;
+import com.tencent.mobileqq.download.unite.config.DownloadConfigProcessor;
+import com.tencent.mobileqq.download.unite.util.UniteDownloadUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.onlinestatus.ReportHelperKt;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.StringUtil;
@@ -43,7 +39,7 @@ public class DownloadDialogFragment
     if (localFragmentActivity == null) {
       return;
     }
-    Handler localHandler = asbb.a();
+    Handler localHandler = UniteDownloadUtil.a();
     if (localHandler != null)
     {
       Message localMessage = localHandler.obtainMessage(1);
@@ -54,10 +50,10 @@ public class DownloadDialogFragment
     localFragmentActivity.finish();
     if (paramInt != 1)
     {
-      localFragmentActivity.overridePendingTransition(2130771994, 2130771995);
+      localFragmentActivity.overridePendingTransition(2130771996, 2130771997);
       return;
     }
-    localFragmentActivity.overridePendingTransition(0, 2130771993);
+    localFragmentActivity.overridePendingTransition(0, 2130771995);
   }
   
   public static void a(DownloadInfo paramDownloadInfo, long paramLong)
@@ -69,7 +65,7 @@ public class DownloadDialogFragment
     localIntent.putExtra("big_brother_source_key", paramDownloadInfo.m);
     localIntent.putExtra("key_url", paramDownloadInfo.d);
     localIntent.putExtra("key_appid", paramDownloadInfo.c);
-    aeow.a(BaseApplicationImpl.sApplication, localIntent, PublicTransFragmentActivity.class, DownloadDialogFragment.class);
+    PublicFragmentActivity.Launcher.a(BaseApplicationImpl.sApplication, localIntent, PublicTransFragmentActivity.class, DownloadDialogFragment.class);
   }
   
   private static void b(Activity paramActivity)
@@ -77,12 +73,12 @@ public class DownloadDialogFragment
     String str1 = AppSetting.f();
     String str2 = AppSetting.f();
     int i = Build.VERSION.SDK_INT;
-    int j = NetworkUtil.getNetworkType(paramActivity);
+    int j = NetworkUtil.b(paramActivity);
     String str3 = QQDeviceInfo.getIMEI("0");
     String str4 = paramActivity.getIntent().getStringExtra("big_brother_source_key");
     String str5 = paramActivity.getIntent().getStringExtra("key_url");
     Object localObject = paramActivity.getIntent().getStringExtra("key_appid");
-    str5 = StringUtil.substring(str5, 0, 50);
+    str5 = StringUtil.a(str5, 0, 50);
     str4 = "source=" + str4 + ",url=" + str5 + ",appid=" + (String)localObject;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("clientInfo=").append(str1).append("&clientVersion=").append(str2).append("&osVersion=").append(String.valueOf(i)).append("&os=").append("android").append("&netType=").append(String.valueOf(j)).append("&imei=").append(str3).append("&customInfo=").append(str4);
@@ -94,13 +90,13 @@ public class DownloadDialogFragment
   
   public void a()
   {
-    Object localObject = asat.a();
-    localObject = bhdj.a(getActivity(), 0, ((asas)localObject).a, ((asas)localObject).b, ((asas)localObject).d, ((asas)localObject).c, ((asas)localObject).e, new asao(this), new asap(this), new asaq(this));
-    ((QQCustomDialog)localObject).setOnCancelListener(new asar(this));
+    Object localObject = DownloadConfigProcessor.a();
+    localObject = DialogUtil.a(getActivity(), 0, ((DownloadConfigBean)localObject).a, ((DownloadConfigBean)localObject).b, ((DownloadConfigBean)localObject).d, ((DownloadConfigBean)localObject).c, ((DownloadConfigBean)localObject).e, new DownloadDialogFragment.1(this), new DownloadDialogFragment.2(this), new DownloadDialogFragment.3(this));
+    ((QQCustomDialog)localObject).setOnCancelListener(new DownloadDialogFragment.4(this));
     try
     {
       ((QQCustomDialog)localObject).show();
-      azcl.a("0X800B53B");
+      ReportHelperKt.a("0X800B53B");
       return;
     }
     catch (Throwable localThrowable)
@@ -136,9 +132,9 @@ public class DownloadDialogFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559357, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559423, null);
     paramLayoutInflater.setAlpha(0.5F);
-    getActivity().overridePendingTransition(2130771994, 2130771995);
+    getActivity().overridePendingTransition(2130771996, 2130771997);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -151,7 +147,7 @@ public class DownloadDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.DownloadDialogFragment
  * JD-Core Version:    0.7.0.1
  */

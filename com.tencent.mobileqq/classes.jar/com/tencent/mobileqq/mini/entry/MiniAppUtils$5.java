@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.entry;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bhcu;
-import bijj;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import org.json.JSONException;
@@ -21,37 +21,37 @@ final class MiniAppUtils$5
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    bijj localbijj;
-    if ((paramMessage.obj instanceof bijj))
+    WebSoCgiService.WebSoCgiState localWebSoCgiState;
+    if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
-      localbijj = (bijj)paramMessage.obj;
-      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localbijj });
-      if (localbijj.jdField_c_of_type_Int == 0) {
+      localWebSoCgiState = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
+      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localWebSoCgiState });
+      if (localWebSoCgiState.jdField_c_of_type_Int == 0) {
         for (;;)
         {
           JSONObject localJSONObject;
           try
           {
             localJSONObject = new JSONObject();
-            if (localbijj.d == null) {
+            if (localWebSoCgiState.d == null) {
               break label194;
             }
             if (this.val$returnAsJSON)
             {
-              localJSONObject.put("data", new JSONObject(localbijj.d));
-              localJSONObject.put("statusCode", localbijj.b);
-              localJSONObject.put("wnsCode", localbijj.jdField_c_of_type_Int);
-              localJSONObject.put("header", localbijj.jdField_c_of_type_JavaLangString);
+              localJSONObject.put("data", new JSONObject(localWebSoCgiState.d));
+              localJSONObject.put("statusCode", localWebSoCgiState.b);
+              localJSONObject.put("wnsCode", localWebSoCgiState.jdField_c_of_type_Int);
+              localJSONObject.put("header", localWebSoCgiState.jdField_c_of_type_JavaLangString);
               this.val$listener.onReceiveResult(true, localJSONObject);
               return;
             }
-            if (localbijj.a)
+            if (localWebSoCgiState.a)
             {
-              paramMessage = bhcu.encodeToString(localbijj.d.getBytes(), 0);
+              paramMessage = Base64Util.encodeToString(localWebSoCgiState.d.getBytes(), 0);
               localJSONObject.put("data", paramMessage);
               continue;
             }
-            paramMessage = localbijj.d;
+            paramMessage = localWebSoCgiState.d;
           }
           catch (JSONException paramMessage)
           {
@@ -68,7 +68,7 @@ final class MiniAppUtils$5
     }
     try
     {
-      paramMessage.put("wnsCode", localbijj.jdField_c_of_type_Int);
+      paramMessage.put("wnsCode", localWebSoCgiState.jdField_c_of_type_Int);
       label225:
       this.val$listener.onReceiveResult(false, paramMessage);
       return;

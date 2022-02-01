@@ -8,7 +8,6 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import azbu;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -19,11 +18,9 @@ public class OnlineStatusListLayout
   extends ViewGroup
 {
   private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private OnlineStatusPanelParams jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams;
+  private int b;
+  private int c;
   private int d;
   private int e;
   private int f;
@@ -34,25 +31,22 @@ public class OnlineStatusListLayout
   public OnlineStatusListLayout(Context paramContext)
   {
     super(paramContext);
-    a();
   }
   
   public OnlineStatusListLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
   }
   
   public OnlineStatusListLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
   }
   
   private int a(int paramInt)
   {
-    int j = (paramInt + 1) / 4;
-    if ((paramInt + 1) % 4 == 0) {}
+    int j = (paramInt + 1) / this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams.c;
+    if ((paramInt + 1) % this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams.c == 0) {}
     for (paramInt = 0;; paramInt = 1) {
       return paramInt + j;
     }
@@ -72,20 +66,10 @@ public class OnlineStatusListLayout
     return null;
   }
   
-  private void a()
+  public static boolean a(OnlineStatusItem paramOnlineStatusItem1, OnlineStatusItem paramOnlineStatusItem2)
   {
-    this.d = AIOUtils.dp2px(14.0F, getResources());
-    this.e = AIOUtils.dp2px(9.0F, getResources());
-    this.f = AIOUtils.dp2px(39.0F, getResources());
-    setPadding(this.d, this.e, this.d, this.f);
-    this.jdField_b_of_type_Int = AIOUtils.dp2px(9.0F, getResources());
-    this.jdField_c_of_type_Int = AIOUtils.dp2px(9.0F, getResources());
-  }
-  
-  public static boolean a(azbu paramazbu1, azbu paramazbu2)
-  {
-    if ((paramazbu1 == null) || (paramazbu2 == null) || (paramazbu1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramazbu2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
-    while (paramazbu1.jdField_a_of_type_Long != paramazbu2.jdField_a_of_type_Long) {
+    if ((paramOnlineStatusItem1 == null) || (paramOnlineStatusItem2 == null) || (paramOnlineStatusItem1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramOnlineStatusItem2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
+    while (paramOnlineStatusItem1.jdField_a_of_type_Long != paramOnlineStatusItem2.jdField_a_of_type_Long) {
       return false;
     }
     return true;
@@ -102,10 +86,8 @@ public class OnlineStatusListLayout
     while (j < paramInt)
     {
       OnlineStatusItemView localOnlineStatusItemView = new OnlineStatusItemView(getContext());
-      localOnlineStatusItemView.setMultiMode(this.jdField_b_of_type_Boolean);
-      localOnlineStatusItemView.setUseWhiteBg(this.jdField_a_of_type_Boolean);
-      localOnlineStatusItemView.setUseLightNightBg(this.jdField_c_of_type_Boolean);
-      localOnlineStatusItemView.a();
+      localOnlineStatusItemView.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams);
+      localOnlineStatusItemView.setItemWidth(this.jdField_a_of_type_Int);
       localOnlineStatusItemView.setOnClickListener(paramOnClickListener);
       localOnlineStatusItemView.setVisibility(4);
       addView(localOnlineStatusItemView, new ViewGroup.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int));
@@ -113,7 +95,18 @@ public class OnlineStatusListLayout
     }
   }
   
-  public void a(List<azbu> paramList, ArrayList<azbu> paramArrayList)
+  public void a(OnlineStatusPanelParams paramOnlineStatusPanelParams)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams = paramOnlineStatusPanelParams;
+    this.d = AIOUtils.a(paramOnlineStatusPanelParams.g, getResources());
+    this.e = AIOUtils.a(paramOnlineStatusPanelParams.d, getResources());
+    this.f = AIOUtils.a(paramOnlineStatusPanelParams.e, getResources());
+    setPadding(this.d, this.e, this.d, this.f);
+    this.b = AIOUtils.a(paramOnlineStatusPanelParams.f, getResources());
+    this.c = AIOUtils.a(paramOnlineStatusPanelParams.f, getResources());
+  }
+  
+  public void a(List<OnlineStatusItem> paramList, ArrayList<OnlineStatusItem> paramArrayList)
   {
     int j = 0;
     while (j < getChildCount())
@@ -136,15 +129,15 @@ public class OnlineStatusListLayout
     }
     Object localObject = (OnlineStatusItemView)localObject;
     ((OnlineStatusItemView)localObject).setVisibility(0);
-    azbu localazbu = (azbu)paramList.get(j);
-    ((OnlineStatusItemView)localObject).a(localazbu);
-    ((OnlineStatusItemView)localObject).setTag(localazbu);
+    OnlineStatusItem localOnlineStatusItem = (OnlineStatusItem)paramList.get(j);
+    ((OnlineStatusItemView)localObject).a(localOnlineStatusItem);
+    ((OnlineStatusItemView)localObject).setTag(localOnlineStatusItem);
     int k = 0;
     for (;;)
     {
       if (k < paramArrayList.size())
       {
-        if (a(localazbu, (azbu)paramArrayList.get(k))) {
+        if (a(localOnlineStatusItem, (OnlineStatusItem)paramArrayList.get(k))) {
           ((OnlineStatusItemView)localObject).a(true);
         }
       }
@@ -169,7 +162,7 @@ public class OnlineStatusListLayout
         int k = localView.getBottom();
         int m = localView.getRight();
         int n = localView.getTop();
-        int i1 = this.jdField_c_of_type_Int;
+        int i1 = this.c;
         int i2 = this.g;
         int i3 = this.h;
         if (this.jdField_a_of_type_Int + m >= getRight()) {}
@@ -180,14 +173,14 @@ public class OnlineStatusListLayout
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt1 = 0;
     paramInt2 = getChildCount();
     while (paramInt1 < paramInt2)
     {
-      paramInt3 = this.d + paramInt1 % 4 * (this.jdField_a_of_type_Int + this.jdField_b_of_type_Int);
-      paramInt4 = this.e + (a(paramInt1) - 1) * (this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
+      paramInt3 = this.d + paramInt1 % this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams.c * (this.jdField_a_of_type_Int + this.b);
+      paramInt4 = this.e + (a(paramInt1) - 1) * (this.jdField_a_of_type_Int + this.c);
       getChildAt(paramInt1).layout(paramInt3, paramInt4, this.jdField_a_of_type_Int + paramInt3, this.jdField_a_of_type_Int + paramInt4);
       if (QLog.isColorLevel()) {
         QLog.d("OnlineStatusListLayout", 2, "onLayout : startX -> " + paramInt3 + ", startY -> " + paramInt4 + ", getRowByChildIndex(i) -> " + a(paramInt1));
@@ -196,11 +189,11 @@ public class OnlineStatusListLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int j = getChildCount();
     if (View.MeasureSpec.getMode(paramInt2) == 1073741824) {}
-    for (j = View.MeasureSpec.getSize(paramInt2);; j = a(j - 1) * (this.jdField_a_of_type_Int + this.jdField_c_of_type_Int) - this.jdField_c_of_type_Int)
+    for (j = View.MeasureSpec.getSize(paramInt2);; j = a(j - 1) * (this.jdField_a_of_type_Int + this.c) - this.c)
     {
       setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), paramInt1), j);
       measureChildren(paramInt1, View.MeasureSpec.makeMeasureSpec(j, View.MeasureSpec.getMode(paramInt2)));
@@ -218,35 +211,14 @@ public class OnlineStatusListLayout
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setItemMargin(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
   public void setItemWidth(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setMultiMode(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
   public void setPageIndex(int paramInt)
   {
     this.i = paramInt;
-  }
-  
-  public void setUseLightNightBg(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public void setUseWhiteBg(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

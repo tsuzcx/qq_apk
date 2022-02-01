@@ -17,15 +17,15 @@ class NativeAppBrandRuntime$2$4
     if ("invokeMiniProgramAPI".equals(paramMap))
     {
       int i = ((Integer)paramReply.get("pageID")).intValue();
-      NativeAppBrandRuntime.access$200(this.this$1.this$0).onWebViewEvent("onWebInvokeAppService", (String)paramReply.get("param"), i);
+      NativeAppBrandRuntime.access$300(this.this$1.this$0).onWebViewEvent("onWebInvokeAppService", (String)paramReply.get("param"), i);
     }
     paramReply = new JSONObject(paramReply).toString();
-    NativeAppBrandRuntime.access$300(this.this$1.this$0).onWebViewNativeRequest(paramMap, paramReply, this.this$1.this$0.getJsService(), 0);
+    NativeAppBrandRuntime.access$400(this.this$1.this$0).onWebViewNativeRequest(paramMap, paramReply, this.this$1.this$0.getJsService(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.NativeAppBrandRuntime.2.4
  * JD-Core Version:    0.7.0.1
  */

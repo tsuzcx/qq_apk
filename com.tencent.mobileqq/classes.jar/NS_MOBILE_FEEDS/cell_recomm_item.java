@@ -17,10 +17,10 @@ public final class cell_recomm_item
   public String content = "";
   public String desc_after_click = "";
   public String desc_before_click = "";
-  public Map<String, String> extendinfo;
-  public s_picurl icon_after_click;
-  public s_picurl icon_before_click;
-  public s_user userinfo;
+  public Map<String, String> extendinfo = null;
+  public s_picurl icon_after_click = null;
+  public s_picurl icon_before_click = null;
+  public s_user userinfo = null;
   
   static
   {

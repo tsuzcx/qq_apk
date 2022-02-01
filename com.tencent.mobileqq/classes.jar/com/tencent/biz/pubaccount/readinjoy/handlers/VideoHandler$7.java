@@ -1,22 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
-import qdc;
-import sge;
+import com.tencent.common.app.BaseApplicationImpl;
+import dov.com.qq.im.QIMShortVideoUtils;
 
-public class VideoHandler$7
+class VideoHandler$7
   implements Runnable
 {
-  public VideoHandler$7(qdc paramqdc) {}
+  VideoHandler$7(VideoHandler paramVideoHandler) {}
   
   public void run()
   {
-    qdc.a(this.this$0).a(false);
-    this.this$0.b(qdc.a(this.this$0), 0);
+    if (BaseApplicationImpl.sProcessId != 9) {
+      QIMShortVideoUtils.a(BaseApplicationImpl.getContext());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.handlers.VideoHandler.7
  * JD-Core Version:    0.7.0.1
  */

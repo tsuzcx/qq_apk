@@ -2,134 +2,107 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.data;
 
 import UserGrowth.stSimpleGetFeedListRsp;
 import UserGrowth.stSimpleMetaFeed;
-import acho;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushVideoModel;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager;
+import com.tencent.biz.pubaccount.weishi_new.WSUserAuthDialog;
+import com.tencent.biz.pubaccount.weishi_new.config.WSGlobalConfig;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleEventBus;
+import com.tencent.biz.pubaccount.weishi_new.event.WSUserAuthEvent;
+import com.tencent.biz.pubaccount.weishi_new.net.RspHeaderBean;
+import com.tencent.biz.pubaccount.weishi_new.net.common.WSNetService;
+import com.tencent.biz.pubaccount.weishi_new.net.common.WSRequest;
+import com.tencent.biz.pubaccount.weishi_new.net.common.WSServiceErrorInfo;
+import com.tencent.biz.pubaccount.weishi_new.report.WSRecommendReportManager;
+import com.tencent.biz.pubaccount.weishi_new.request.newreq.WSRecommendRequest;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.module.IFetchDataModule;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.module.WSFetchDataModuleFactory;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.AbsWSVerticalPagePresenter;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.vip.web.VasAdvWebManager;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pws;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import uzf;
-import vau;
-import vfh;
-import vfk;
-import vfo;
-import vfr;
-import vkc;
-import vkk;
-import vli;
-import vmg;
-import vmp;
-import vnd;
-import vos;
-import vpd;
-import vpe;
-import vpf;
-import vpg;
-import vph;
-import vpi;
-import vpj;
-import vpk;
-import vrx;
 
 public class WSVerticalDataManager
 {
-  private static String a;
+  private static String a = "";
   private volatile String b = "";
   private volatile String c = "";
+  private volatile String d = "";
   
-  static
+  private WSVerticalDataManager.ResponseModel a(WSRequest<stSimpleGetFeedListRsp> paramWSRequest, stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, RspHeaderBean paramRspHeaderBean, boolean paramBoolean1, IVerticalRspListener paramIVerticalRspListener, boolean paramBoolean2, Object paramObject, long paramLong)
   {
-    jdField_a_of_type_JavaLangString = "";
+    long l = System.currentTimeMillis();
+    WSLog.a("weishi-beacon", "请求播放页（推荐)耗时：" + (l - paramLong) + "毫秒");
+    if (paramBoolean1) {
+      if (paramWSRequest == null) {
+        break label236;
+      }
+    }
+    label236:
+    for (int i = paramWSRequest.getRequestScene();; i = 2)
+    {
+      a(paramstSimpleGetFeedListRsp, paramIVerticalRspListener, i);
+      this.c = paramstSimpleGetFeedListRsp.attach_info;
+      this.b = paramstSimpleGetFeedListRsp.session;
+      if (!TextUtils.isEmpty(paramstSimpleGetFeedListRsp.gdt_args))
+      {
+        a(paramstSimpleGetFeedListRsp.gdt_args);
+        b(paramstSimpleGetFeedListRsp.gdt_args);
+      }
+      if (paramRspHeaderBean != null) {
+        WSRecommendReportManager.a().a(paramstSimpleGetFeedListRsp.trace_id, paramRspHeaderBean.a);
+      }
+      paramWSRequest = paramstSimpleGetFeedListRsp.feeds;
+      a(paramWSRequest);
+      paramWSRequest = WSVerticalDataUtil.a(paramWSRequest, false);
+      WSLog.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] itemDataList size:" + paramWSRequest.size() + ", isRefresh:" + paramBoolean2 + ", isFirst:" + paramBoolean1 + ", mAttachInfo:" + this.c + ", mLastSession:" + this.b + ", gdtArgs:" + a);
+      return new WSVerticalDataManager.ResponseModel(paramWSRequest, paramBoolean2, paramBoolean1, paramObject);
+    }
   }
   
   public static WSVerticalDataManager a()
   {
-    return vpi.a();
+    return WSVerticalDataManager.SingletonHolder.a();
   }
   
-  private String a(boolean paramBoolean)
+  private void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, IVerticalRspListener paramIVerticalRspListener, int paramInt)
   {
-    if (!paramBoolean) {
-      return "";
-    }
-    WSRedDotPushMsg localWSRedDotPushMsg = vnd.a();
-    pws localpws = vnd.a();
-    if (localpws != null) {
-      localpws.a(null);
-    }
-    if (localWSRedDotPushMsg == null) {
-      return "";
-    }
-    return localWSRedDotPushMsg.mMsgData;
-  }
-  
-  private ArrayList<String> a(boolean paramBoolean, List<vpj> paramList, String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((TextUtils.equals(paramString, "aio_home_page")) && (paramBoolean))
+    if ((paramIVerticalRspListener instanceof AbsWSVerticalPagePresenter))
     {
-      paramList = b();
-      if (!TextUtils.isEmpty(paramList)) {
-        localArrayList.add(paramList);
+      paramIVerticalRspListener = ((AbsWSVerticalPagePresenter)paramIVerticalRspListener).a();
+      if (!(paramIVerticalRspListener instanceof WSVerticalPageFragment)) {
+        break label60;
       }
     }
-    for (;;)
+    label60:
+    for (paramIVerticalRspListener = (WSVerticalPageFragment)paramIVerticalRspListener;; paramIVerticalRspListener = null)
     {
-      return localArrayList;
-      if ((paramList != null) && (paramBoolean))
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          paramString = (vpj)paramList.next();
-          if ((paramString != null) && ((paramString.a() instanceof stSimpleMetaFeed))) {
-            localArrayList.add(((stSimpleMetaFeed)paramString.a()).id);
-          }
-        }
-      }
-    }
-  }
-  
-  private void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, vos paramvos, int paramInt)
-  {
-    if ((paramvos instanceof vrx))
-    {
-      paramvos = ((vrx)paramvos).a();
-      if (!(paramvos instanceof WSVerticalPageFragment)) {
-        break label82;
-      }
-    }
-    label82:
-    for (paramvos = (WSVerticalPageFragment)paramvos;; paramvos = null)
-    {
-      if ((paramvos != null) && (paramvos.getActivity() != null))
-      {
-        if (!paramvos.getActivity().isFinishing()) {
-          vau.a().a(paramInt, paramstSimpleGetFeedListRsp.config);
-        }
-        if (TextUtils.equals(paramvos.a(), "aio_home_page")) {
-          vau.a().b(paramstSimpleGetFeedListRsp.config);
-        }
+      if ((paramIVerticalRspListener != null) && (paramIVerticalRspListener.getActivity() != null) && (!paramIVerticalRspListener.getActivity().isFinishing())) {
+        WSGlobalConfig.a().a(paramInt, paramstSimpleGetFeedListRsp.config);
       }
       return;
     }
+  }
+  
+  private void a(WSVerticalDataManager.ResponseModel paramResponseModel, IVerticalRspListener paramIVerticalRspListener)
+  {
+    if (paramResponseModel == null) {}
+    do
+    {
+      return;
+      if ((paramResponseModel.b) && (WSUserAuthDialog.a())) {
+        WSSimpleEventBus.a().a(new WSUserAuthEvent());
+      }
+    } while (paramIVerticalRspListener == null);
+    paramIVerticalRspListener.a(paramResponseModel.jdField_a_of_type_JavaUtilList, paramResponseModel.jdField_a_of_type_Boolean, paramResponseModel.b, paramResponseModel.jdField_a_of_type_JavaLangObject);
   }
   
   public static void a(String paramString)
@@ -139,7 +112,7 @@ public class WSVerticalDataManager
       {
         paramString = new JSONObject();
         paramString.put("gdt_pageindex", 0);
-        jdField_a_of_type_JavaLangString = paramString.toString();
+        a = paramString.toString();
         String str = LocalMultiProcConfig.getString("cache_key_gdt_args", "");
         if (!TextUtils.isEmpty(str))
         {
@@ -149,125 +122,71 @@ public class WSVerticalDataManager
       }
       catch (JSONException paramString)
       {
-        acho.d("WSVerticalDataManagerLog", "setGdtArgs", paramString);
+        GdtLog.d("WSVerticalDataManagerLog", "setGdtArgs", paramString);
       }
     }
     for (;;)
     {
-      ThreadManager.executeOnSubThread(new WSVerticalDataManager.5());
+      ThreadManager.executeOnSubThread(new WSVerticalDataManager.2());
       return;
-      jdField_a_of_type_JavaLangString = paramString;
+      a = paramString;
     }
-  }
-  
-  private void a(String paramString, boolean paramBoolean, vos paramvos)
-  {
-    if ((!paramBoolean) || (!TextUtils.equals(paramString, "aio_home_page"))) {
-      return;
-    }
-    paramString = vnd.a();
-    if (paramString != null)
-    {
-      a(paramvos, paramString);
-      return;
-    }
-    a(paramvos);
   }
   
   private void a(ArrayList<stSimpleMetaFeed> paramArrayList)
   {
-    if (CollectionUtils.isEmpty(paramArrayList)) {}
-    pws localpws;
-    do
-    {
-      return;
-      pws.b((stSimpleMetaFeed)paramArrayList.get(0));
-      paramArrayList = vmg.a(paramArrayList);
-      localpws = vnd.a();
-    } while ((localpws == null) || (paramArrayList == null));
-    vmp.a("WSVerticalDataManagerLog", "saveLastFeedInfo");
-    localpws.a(paramArrayList);
-  }
-  
-  private void a(vfr paramvfr, boolean paramBoolean1, vos paramvos, boolean paramBoolean2, Object paramObject, Subscriber<? super vph> paramSubscriber, String paramString, long paramLong)
-  {
-    paramLong = System.currentTimeMillis() - paramLong;
-    vmp.a("weishi-beacon", "请求播放页（推荐)耗时：" + paramLong + "毫秒");
-    vkk.a().a(paramLong, paramvfr.jdField_a_of_type_Vfo, "fullscreen_videoplay", paramBoolean1);
-    if (!paramvfr.a())
-    {
-      vmp.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] failed code:" + paramvfr.jdField_a_of_type_Int + ", msg:" + paramvfr.jdField_a_of_type_JavaLangString);
-      paramSubscriber.onError(new WSVerticalDataManager.ResponseThrowable(paramvfr.jdField_a_of_type_Int, paramvfr.jdField_a_of_type_JavaLangString));
-      vkk.a().a(paramLong, paramvfr.jdField_a_of_type_Vfo, paramvfr.jdField_a_of_type_Int, paramvfr.jdField_a_of_type_JavaLangString);
+    if (CollectionUtils.isEmpty(paramArrayList)) {
       return;
     }
-    if ((paramvfr.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedListRsp))
+    WeishiManager.b((stSimpleMetaFeed)paramArrayList.get(0));
+  }
+  
+  private void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean2) || (paramBoolean1))
     {
-      stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = (stSimpleGetFeedListRsp)paramvfr.jdField_a_of_type_JavaLangObject;
-      if (paramBoolean1) {
-        if (paramvfr.jdField_a_of_type_Vfo == null) {
-          break label381;
-        }
-      }
-      label381:
-      for (int i = paramvfr.jdField_a_of_type_Vfo.b();; i = 2)
+      this.c = "";
+      a = "";
+      this.b = "";
+      this.d = "";
+    }
+    if (TextUtils.isEmpty(a)) {
+      a("");
+    }
+  }
+  
+  private void a(boolean paramBoolean1, boolean paramBoolean2, WSServiceErrorInfo paramWSServiceErrorInfo, IVerticalRspListener paramIVerticalRspListener)
+  {
+    if (paramIVerticalRspListener != null) {
+      paramIVerticalRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a(), paramBoolean1, paramBoolean2);
+    }
+  }
+  
+  private void b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        a(localstSimpleGetFeedListRsp, paramvos, i);
-        this.c = localstSimpleGetFeedListRsp.attach_info;
-        this.b = localstSimpleGetFeedListRsp.session;
-        if (!TextUtils.isEmpty(localstSimpleGetFeedListRsp.gdt_args)) {
-          a(localstSimpleGetFeedListRsp.gdt_args);
+        paramString = new JSONObject(paramString).optJSONObject("h5_render_param");
+        if (paramString != null) {}
+        for (paramString = paramString.optString("h5_url");; paramString = "")
+        {
+          this.d = paramString;
+          WSLog.f("WSVerticalDataManagerLog", "h5 url from gdt_args: " + this.d);
+          if (TextUtils.isEmpty(this.d)) {
+            break;
+          }
+          VasAdvWebManager.a.b();
+          return;
         }
-        if (paramvfr.jdField_a_of_type_Vfh != null) {
-          vkc.a().a(localstSimpleGetFeedListRsp.trace_id, paramvfr.jdField_a_of_type_Vfh.a);
-        }
-        paramvfr = localstSimpleGetFeedListRsp.feeds;
-        a(paramvfr);
-        paramvfr = a(paramvfr, paramString, false);
-        vmp.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] itemDataList size:" + paramvfr.size() + ", isRefresh:" + paramBoolean2 + ", isFirst:" + paramBoolean1 + ", mAttachInfo:" + this.c + ", mLastSession:" + this.b + ", gdtArgs:" + jdField_a_of_type_JavaLangString);
-        paramSubscriber.onNext(new vph(paramvfr, paramBoolean2, paramBoolean1, paramObject));
         return;
       }
-    }
-    vmp.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
-    paramSubscriber.onError(new WSVerticalDataManager.ResponseThrowable(paramvfr.jdField_a_of_type_Int, paramvfr.jdField_a_of_type_JavaLangString));
-    vkk.a().a(paramLong, paramvfr.jdField_a_of_type_Vfo, -1, "数据无法解析或为空");
-  }
-  
-  private void a(vfr paramvfr, boolean paramBoolean1, boolean paramBoolean2, vos paramvos, Object paramObject, String paramString, long paramLong)
-  {
-    Observable.create(new vpg(this, paramvfr, paramBoolean2, paramvos, paramBoolean1, paramObject, paramString, paramLong)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new vpf(this, paramvos));
-  }
-  
-  private void a(vos paramvos)
-  {
-    vmp.a("WSVerticalDataManagerLog", "fetchVerticalListDataFromLocal");
-    uzf.a().c(new vpe(this, paramvos));
-  }
-  
-  private void a(vos paramvos, WSRedDotPushMsg paramWSRedDotPushMsg)
-  {
-    IWSPushBaseStrategy localIWSPushBaseStrategy = paramWSRedDotPushMsg.mStrategyInfo;
-    if (TextUtils.isEmpty(paramWSRedDotPushMsg.mFeedIds)) {}
-    do
-    {
-      do
+      catch (Exception paramString)
       {
-        return;
-      } while ((localIWSPushBaseStrategy == null) || (localIWSPushBaseStrategy.getType() == 2) || (((WSPushStrategyInfo)localIWSPushBaseStrategy).mWSPushVideoModel == null) || (TextUtils.isEmpty(((WSPushStrategyInfo)localIWSPushBaseStrategy).mWSPushVideoModel.jdField_a_of_type_JavaLangString)));
-      paramWSRedDotPushMsg = ((WSPushStrategyInfo)localIWSPushBaseStrategy).mWSPushVideoModel.a(paramWSRedDotPushMsg.mFeedIds);
-    } while (paramvos == null);
-    paramvos.a(a(Arrays.asList(new stSimpleMetaFeed[] { paramWSRedDotPushMsg })), false, true, null);
-  }
-  
-  private String b()
-  {
-    pws localpws = vnd.a();
-    String str = "";
-    if (localpws != null) {
-      str = localpws.c();
+        this.d = "";
+        GdtLog.d("WSVerticalDataManagerLog", "Error when get conf from gdt_args", paramString);
+      }
     }
-    return str;
   }
   
   private static void b(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
@@ -279,94 +198,69 @@ public class WSVerticalDataManager
     {
       paramJSONObject1.put("deep_link_version", 1);
       paramJSONObject2.put("device_info", paramJSONObject1);
-      jdField_a_of_type_JavaLangString = paramJSONObject2.toString();
+      a = paramJSONObject2.toString();
       return;
     }
     catch (JSONException paramJSONObject1)
     {
-      acho.d("WSVerticalDataManagerLog", "onResult", paramJSONObject1);
+      GdtLog.d("WSVerticalDataManagerLog", "onResult", paramJSONObject1);
     }
   }
   
-  public List<vpj> a(List paramList)
+  public String a()
   {
-    return a(paramList, "", false);
+    return this.d;
   }
   
-  public List<vpj> a(List paramList, String paramString, boolean paramBoolean)
+  public void a(WSVerticalRequestParams paramWSVerticalRequestParams, IVerticalRspListener paramIVerticalRspListener)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (!CollectionUtils.isEmpty(paramList))
-    {
-      int i = 0;
-      while (i < paramList.size())
-      {
-        if ((paramList.get(i) instanceof stSimpleMetaFeed))
-        {
-          stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.get(i);
-          if ((paramBoolean) && (i == paramList.size() - 1)) {
-            localstSimpleMetaFeed.isLoop = true;
-          }
-          vpj localvpj = new vpj();
-          if ((localstSimpleMetaFeed.gdt_ad_type == 1) && (localstSimpleMetaFeed.gdt_ad_info != null))
-          {
-            vpk.a(localstSimpleMetaFeed);
-            vpk.a(BaseApplicationImpl.getContext(), localstSimpleMetaFeed, paramString);
-            localvpj.a(vpk.a(localstSimpleMetaFeed));
-          }
-          localvpj.a(localstSimpleMetaFeed);
-          localArrayList.add(localvpj);
-        }
-        i += 1;
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.c = "";
-    this.b = "";
-    jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString, List<vpj> paramList, vos paramvos, Object paramObject)
-  {
-    vmp.e("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][fetchVerticalListData] scene:" + paramInt + ", isRefresh:" + paramBoolean1 + ", isFirst:" + paramBoolean2 + ", from:" + paramString + ", attachInfo:" + this.c + ", lastSession" + this.b + ", gdtArgs:" + jdField_a_of_type_JavaLangString);
-    a(paramString, paramBoolean2, paramvos);
-    paramList = a(paramBoolean2, paramList, paramString);
-    String str = a(paramBoolean2);
-    paramvos = new vpd(this, paramBoolean1, paramBoolean2, paramvos, paramObject, paramString, System.currentTimeMillis());
+    int i = paramWSVerticalRequestParams.a();
+    boolean bool1 = paramWSVerticalRequestParams.a();
+    boolean bool2 = paramWSVerticalRequestParams.b();
+    String str1 = paramWSVerticalRequestParams.a();
+    String str2 = paramWSVerticalRequestParams.b();
+    Object localObject = paramWSVerticalRequestParams.a();
+    ArrayList localArrayList = paramWSVerticalRequestParams.a();
+    long l = System.currentTimeMillis();
+    a(bool1, bool2);
+    WSLog.d("WSVerticalDataManagerLog", "[WSVerticalDataManager.java][fetchVerticalListData] " + paramWSVerticalRequestParams + ", attachInfo:" + this.c + ", lastSession:" + this.b + ", gdtArgs:" + a);
     byte b1;
-    if (paramBoolean1)
+    if (bool1)
     {
-      paramString = "";
-      if (!paramBoolean1) {
-        break label224;
+      paramWSVerticalRequestParams = "";
+      if (!bool1) {
+        break label200;
       }
       b1 = 1;
-      label157:
-      if (!paramBoolean2) {
-        break label230;
+      label132:
+      if (!bool2) {
+        break label205;
       }
     }
-    label224:
-    label230:
+    label200:
+    label205:
     for (byte b2 = 1;; b2 = 0)
     {
-      paramString = new vfr(new vli(paramString, b1, b2, paramList, paramInt, jdField_a_of_type_JavaLangString, "", this.b, str), null, paramvos, 1001);
-      vfk.a().a(paramString);
+      WSNetService.a(new WSRecommendRequest(paramWSVerticalRequestParams, b1, b2, localArrayList, i, a, "", this.b, str2, str1)).a(new WSVerticalDataManager.1(this, bool2, paramIVerticalRspListener, bool1, localObject, l));
       return;
-      paramString = this.c;
+      paramWSVerticalRequestParams = this.c;
       break;
       b1 = 0;
-      break label157;
+      break label132;
     }
+  }
+  
+  public void a(boolean paramBoolean, IVerticalRspListener paramIVerticalRspListener)
+  {
+    if (!paramBoolean) {
+      return;
+    }
+    WSFetchDataModuleFactory.a().a(paramIVerticalRspListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager
  * JD-Core Version:    0.7.0.1
  */

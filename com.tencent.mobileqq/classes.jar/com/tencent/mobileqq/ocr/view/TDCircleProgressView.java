@@ -86,7 +86,7 @@ public class TDCircleProgressView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     RectF localRectF = new RectF(this.jdField_a_of_type_Float / 2.0F, this.jdField_a_of_type_Float / 2.0F, getWidth() - this.jdField_a_of_type_Float / 2.0F, getHeight() - this.jdField_a_of_type_Float / 2.0F);
     paramCanvas.drawArc(localRectF, 0.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -95,7 +95,7 @@ public class TDCircleProgressView
     paramCanvas.drawText(this.jdField_a_of_type_Int + "%", getWidth() / 2, getHeight() / 2 + a(this.jdField_a_of_type_AndroidContentContext, 4.0F), this.jdField_c_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);

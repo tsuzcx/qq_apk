@@ -10,6 +10,10 @@ import java.lang.ref.WeakReference;
 public final class b
 {
   public static final int ACTION_MOBILEAPP_AD_APP_DOWN_PAUSED = 238;
+  public static final int ACTION_MOBILEAPP_APP_SUBSCRIBE_ALERT_CLICK = 319;
+  public static final int ACTION_MOBILEAPP_APP_SUBSCRIBE_ALERT_IMPRESSION = 318;
+  public static final int ACTION_MOBILEAPP_APP_SUBSCRIBE_FINISH_PUSH = 317;
+  public static final int ACTION_MOBILEAPP_APP_SUBSCRIBE_START_PUSH = 316;
   public static final int ACTION_MOBILEAPP_DEEPLINK_APP_ALREADY_INSTALLED = 247;
   public static final int ACTION_MOBILEAPP_DEEPLINK_APP_NOT_INSTALLED = 248;
   public static final int ACTION_MOBILEAPP_DEEPLINK_CAN_NOT_GET_APP_INSTALL_INFO = 249;
@@ -60,7 +64,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.statistics.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.util.PanoramaUtil;
-import cooperation.qzone.util.XMPCoreUtil;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,13 +17,6 @@ public class LocalMediaInfo
   public static final int PHOTO_SELECTED = 1;
   public static final int PHOTO_UNSELECTED = 2;
   public static int REDBAG_TYPE_GET = 1;
-  public static final String SVR_PANORAMA_BALL = "2";
-  public static final String SVR_PANORAMA_CYLINDER = "1";
-  public static final String SVR_PANORAMA_NORMAL = "0";
-  public static final int TYPE_PANORAMA_BALL = 2;
-  public static final int TYPE_PANORAMA_CYLINDER = 1;
-  public static final String TYPE_PANORAMA_NAME = "panorama_type";
-  public static final int TYPE_PANORAMA_NORMAL = 3;
   public long _id;
   public long addedDate;
   public ArrayList<String> aiTextLabel;
@@ -36,31 +27,39 @@ public class LocalMediaInfo
   public int index;
   public boolean isMakeVideo;
   public boolean isRecord;
-  public boolean isRegionThumbUseNewDecoder;
+  public boolean isRegionThumbUseNewDecoder = false;
   public boolean isSyncToWeishi;
   public boolean isSystemMeidaStore = true;
   public boolean isVideoReady = true;
-  public int latitude;
+  public int latitude = 0;
   public int listViewPosition = -1;
-  public int longitude;
+  public int longitude = 0;
   public String mAlbumName;
   public String mAudioPath;
   public boolean mChecked;
   public String mCloudPhotoId = "";
   public String mCloudPhotoOwnerAlbumId = "";
-  public long mCloudPhotoOwnerUin;
+  public long mCloudPhotoOwnerUin = 0L;
   public long mDuration;
-  public boolean mHasAudioTrack;
-  public boolean mIsUploadOrigin;
+  public boolean mHasAudioTrack = false;
+  public ArrayList<String> mHashTagList = new ArrayList();
+  public boolean mIsUploadOrigin = false;
+  public float mKuolieCenterX = 0.0F;
+  public float mKuolieCenterY = 0.0F;
+  public float mKuolieHeightScale = 0.0F;
+  public String mKuolieId = "";
+  public float mKuolieRotate = 0.0F;
+  public float mKuolieWidthScale = 0.0F;
   public int mMediaType;
   public String mMimeType;
+  public ArrayList<String> mOriginPath = null;
   public int mSampleRate = 1;
   public long mStartTime;
   public int mTextId = -1;
   public String mTextStr;
   public long mTotalDuration;
   public String mTransId;
-  public ArrayList<Long> mTransferPosList;
+  public ArrayList<Long> mTransferPosList = null;
   public int mVideoType;
   public String materialID = "";
   public String materialName = "";
@@ -75,17 +74,17 @@ public class LocalMediaInfo
   public long modifiedDate;
   public boolean needProcess;
   public int orientation;
-  public int panoramaPhotoType;
+  public int panoramaPhotoType = 0;
   public String path;
   public Integer position = Integer.valueOf(-1);
   public int redBagType;
-  public int rotation;
+  public int rotation = 0;
   public String scheme = "";
   public int selectStatus;
-  public int showCircleTakeSame;
-  public int specialVideoType;
+  public int showCircleTakeSame = 0;
+  public int specialVideoType = 0;
   public int thumbHeight;
-  public Rect thumbRect;
+  public Rect thumbRect = null;
   public int thumbSize;
   public int thumbWidth;
   public String thumbnailPath;
@@ -155,46 +154,9 @@ public class LocalMediaInfo
     return 0;
   }
   
-  public boolean isPanoramaPhoto()
-  {
-    if (!PanoramaUtil.getInstance().isNeedShowPanorama()) {}
-    do
-    {
-      return false;
-      if ((this.panoramaPhotoType == 1) || (this.panoramaPhotoType == 2)) {
-        return true;
-      }
-    } while (this.panoramaPhotoType != 3);
-    return false;
-  }
-  
-  public void setPanoramaType()
-  {
-    if ((this.panoramaPhotoType != 0) || (!PanoramaUtil.getInstance().isNeedShowPanorama())) {}
-    while ((this.mediaWidth == 0) || (this.mediaHeight == 0)) {
-      return;
-    }
-    if ((this.mediaHeight >= 1000) && (this.mediaWidth / this.mediaHeight == 2.0F))
-    {
-      if (XMPCoreUtil.getInstance().isPanorama(this.path))
-      {
-        this.panoramaPhotoType = 2;
-        return;
-      }
-      this.panoramaPhotoType = 3;
-      return;
-    }
-    if ((this.mediaHeight >= 512) && (this.mediaWidth / this.mediaHeight >= 4.0F))
-    {
-      this.panoramaPhotoType = 1;
-      return;
-    }
-    this.panoramaPhotoType = 3;
-  }
-  
   public String toString()
   {
-    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", mediaBitrate=" + this.mediaBitrate + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + ", mediaType=" + this.mMediaType + ", isVideoReady=" + this.isVideoReady + ", videoInfo=" + this.materialID + ", materialName=" + this.materialName + ", filterID=" + this.filterID + ", scheme=" + this.scheme + ", showCircleTakeSame=" + this.showCircleTakeSame + ", missionID=" + this.missionID + ", thumbnailProgress=" + this.thumbnailProgress + ", mediaOriginWidth=" + this.mediaOriginWidth + ", mediaOriginHeight=" + this.mediaOriginHeight + ", mediaOriginSize=" + this.mediaOriginSize + ", mediaOriginBitrate=" + this.mediaOriginBitrate + '}';
+    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", mediaBitrate=" + this.mediaBitrate + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + ", mediaType=" + this.mMediaType + ", isVideoReady=" + this.isVideoReady + ", videoInfo=" + this.materialID + ", materialName=" + this.materialName + ", filterID=" + this.filterID + ", scheme=" + this.scheme + ", showCircleTakeSame=" + this.showCircleTakeSame + ", missionID=" + this.missionID + ", thumbnailProgress=" + this.thumbnailProgress + ", mediaOriginWidth=" + this.mediaOriginWidth + ", mediaOriginHeight=" + this.mediaOriginHeight + ", mediaOriginSize=" + this.mediaOriginSize + ", mediaOriginBitrate=" + this.mediaOriginBitrate + ", mOriginPath=" + this.mOriginPath + ", mKuolieId=" + this.mKuolieId + ", mKuolieCenterX=" + this.mKuolieCenterX + ", mKuolieCenterY=" + this.mKuolieCenterY + ", mKuolieRotate=" + this.mKuolieRotate + ", mKuolieWidthScale=" + this.mKuolieWidthScale + ", mKuolieHeightScale=" + this.mKuolieHeightScale + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -228,13 +190,13 @@ public class LocalMediaInfo
       paramParcel.writeLong(this.mediaOriginSize);
       paramParcel.writeLong(this.mediaOriginBitrate);
       if (!this.isSystemMeidaStore) {
-        break label375;
+        break label439;
       }
       paramInt = 1;
       label213:
       paramParcel.writeByte((byte)paramInt);
       if (!this.isRegionThumbUseNewDecoder) {
-        break label380;
+        break label444;
       }
       paramInt = 1;
       label228:
@@ -246,10 +208,12 @@ public class LocalMediaInfo
       paramParcel.writeString(this.mCloudPhotoOwnerAlbumId);
       paramParcel.writeString(this.mCloudPhotoId);
       if (!this.isVideoReady) {
-        break label385;
+        break label449;
       }
     }
-    label385:
+    label439:
+    label444:
+    label449:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -262,13 +226,19 @@ public class LocalMediaInfo
       paramParcel.writeList(this.mTransferPosList);
       paramParcel.writeList(this.aiTextLabel);
       paramParcel.writeFloat(this.thumbnailProgress);
+      paramParcel.writeList(this.mOriginPath);
+      paramParcel.writeString(this.mKuolieId);
+      paramParcel.writeFloat(this.mKuolieCenterX);
+      paramParcel.writeFloat(this.mKuolieCenterY);
+      paramParcel.writeFloat(this.mKuolieRotate);
+      paramParcel.writeFloat(this.mKuolieWidthScale);
+      paramParcel.writeFloat(this.mKuolieHeightScale);
+      paramParcel.writeList(this.mHashTagList);
       return;
       paramInt = 0;
       break;
-      label375:
       paramInt = 0;
       break label213;
-      label380:
       paramInt = 0;
       break label228;
     }
@@ -276,7 +246,7 @@ public class LocalMediaInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.LocalMediaInfo
  * JD-Core Version:    0.7.0.1
  */

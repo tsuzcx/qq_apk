@@ -14,19 +14,19 @@ class SelectMemberActivity$5
   
   public void onClick(View paramView)
   {
-    if (this.this$0.mEntrance == 27)
+    if (this.a.d == 27)
     {
-      this.this$0.mIntent.putParcelableArrayListExtra("result_set", this.this$0.mResultList);
-      ((InputMethodManager)this.this$0.getSystemService("input_method")).hideSoftInputFromWindow(this.this$0.getWindow().peekDecorView().getWindowToken(), 0);
-      this.this$0.setResult(-1, this.this$0.mIntent);
+      this.a.a.putParcelableArrayListExtra("result_set", this.a.e);
+      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
+      this.a.setResult(-1, this.a.a);
     }
-    this.this$0.finish();
+    this.a.finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.5
  * JD-Core Version:    0.7.0.1
  */

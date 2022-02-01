@@ -12,10 +12,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import anvx;
 import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
@@ -27,7 +28,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import wad;
 
 public abstract class QQStoryBaseFragment
   extends IphoneTitleBarFragment
@@ -39,7 +39,7 @@ public abstract class QQStoryBaseFragment
   public AppInterface a;
   protected Map<Subscriber, String> a;
   protected final boolean b = false;
-  protected boolean c;
+  protected boolean c = false;
   
   public QQStoryBaseFragment()
   {
@@ -60,8 +60,8 @@ public abstract class QQStoryBaseFragment
     if (paramOnClickListener != null) {
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
-    if (AppSetting.c) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + anvx.a(2131710258));
+    if (AppSetting.d) {
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + HardCodeUtil.a(2131710774));
     }
   }
   
@@ -85,7 +85,7 @@ public abstract class QQStoryBaseFragment
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
       localObject2 = (String)((Map.Entry)localObject2).getValue();
-      wad.a().registerSubscriber((String)localObject2, localSubscriber);
+      StoryDispatcher.a().registerSubscriber((String)localObject2, localSubscriber);
     }
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.c = true;
@@ -116,7 +116,7 @@ public abstract class QQStoryBaseFragment
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-      wad.a().unRegisterSubscriber(localSubscriber);
+      StoryDispatcher.a().unRegisterSubscriber(localSubscriber);
     }
     super.onDestroyView();
   }
@@ -129,7 +129,7 @@ public abstract class QQStoryBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment
  * JD-Core Version:    0.7.0.1
  */

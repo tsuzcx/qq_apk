@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class QQVideoInfo
   extends JceStruct
 {
-  public long uHollywoodLevel;
-  public long uVipFlag;
+  public long uHollywoodLevel = 0L;
+  public long uVipFlag = 0L;
   
   public QQVideoInfo() {}
   
@@ -32,7 +32,7 @@ public final class QQVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.QQVideoInfo
  * JD-Core Version:    0.7.0.1
  */

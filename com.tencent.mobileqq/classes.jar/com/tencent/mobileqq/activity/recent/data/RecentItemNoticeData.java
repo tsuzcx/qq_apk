@@ -2,11 +2,11 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import android.content.Intent;
-import bhbx;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.util.Utils;
 import java.util.Locale;
 
 public class RecentItemNoticeData
@@ -35,7 +35,7 @@ public class RecentItemNoticeData
     this.time = paramLong2;
     this.mDisplayTime = paramLong2;
     this.mTitleName = String.format(Locale.getDefault(), "%s:%s", new Object[] { paramString3, paramString1 });
-    this.mShowTime = TimeManager.getInstance().getMsgDisplayTime(getRecentUserUin(), this.mDisplayTime);
+    this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
   }
   
   public void a(Intent paramIntent)
@@ -46,7 +46,7 @@ public class RecentItemNoticeData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);
@@ -76,7 +76,7 @@ public class RecentItemNoticeData
   public boolean a(int paramInt, long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2)
   {
     if (this.type != paramInt) {}
-    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!bhbx.a(this.wording, paramString1)) || (!bhbx.a(this.url, paramString2)) || (!bhbx.a(this.from, paramString3))) {
+    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!Utils.a(this.wording, paramString1)) || (!Utils.a(this.url, paramString2)) || (!Utils.a(this.from, paramString3))) {
       return false;
     }
     return true;
@@ -84,7 +84,7 @@ public class RecentItemNoticeData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNoticeData
  * JD-Core Version:    0.7.0.1
  */

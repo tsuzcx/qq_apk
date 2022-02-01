@@ -7,8 +7,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListAdapter;
-import birb;
-import birc;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
@@ -19,13 +17,13 @@ public class PinnedDividerListView
   implements AbsListView.OnScrollListener
 {
   private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private birb jdField_a_of_type_Birb;
-  private birc jdField_a_of_type_Birc;
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+  private Context jdField_a_of_type_AndroidContentContext = null;
+  private View jdField_a_of_type_AndroidViewView = null;
+  private PinnedDividerListView.DividerAdapter jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter = null;
+  private PinnedDividerListView.OnLayoutListener jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$OnLayoutListener = null;
+  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = null;
   private LinkedList<View> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private int b;
+  private int b = 0;
   
   public PinnedDividerListView(Context paramContext)
   {
@@ -51,9 +49,9 @@ public class PinnedDividerListView
     super.setOnScrollListener(this);
   }
   
-  protected birb a()
+  protected PinnedDividerListView.DividerAdapter a()
   {
-    return this.jdField_a_of_type_Birb;
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter;
   }
   
   public void addHeaderView(View paramView)
@@ -83,12 +81,12 @@ public class PinnedDividerListView
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
       i = getFirstVisiblePosition() - this.jdField_a_of_type_JavaUtilLinkedList.size();
-      if ((i < 0) || (this.jdField_a_of_type_Birb.a(this.jdField_a_of_type_AndroidViewView, i))) {
+      if ((i < 0) || (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, i))) {
         break label161;
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.layout(0, -this.b, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - this.b);
-      this.jdField_a_of_type_Birb.a(this.jdField_a_of_type_AndroidViewView, i);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, i);
     }
     for (;;)
     {
@@ -105,8 +103,8 @@ public class PinnedDividerListView
       label161:
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     }
-    if (this.jdField_a_of_type_Birc != null) {
-      this.jdField_a_of_type_Birc.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$OnLayoutListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$OnLayoutListener.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -124,12 +122,12 @@ public class PinnedDividerListView
     int j;
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      if ((paramInt1 < this.jdField_a_of_type_JavaUtilLinkedList.size()) || (this.jdField_a_of_type_Birb.a(this.jdField_a_of_type_AndroidViewView, paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size()))) {
+      if ((paramInt1 < this.jdField_a_of_type_JavaUtilLinkedList.size()) || (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size()))) {
         break label359;
       }
       i = paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size();
-      this.jdField_a_of_type_Birb.a(this.jdField_a_of_type_AndroidViewView, i);
-      if (this.jdField_a_of_type_Birb.a(i))
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, i);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(i))
       {
         this.jdField_a_of_type_Int = 0;
         paramInt1 = 1;
@@ -164,7 +162,7 @@ public class PinnedDividerListView
           paramInt1 = 0;
           break;
         }
-        if (this.jdField_a_of_type_Birb.a(i + 1))
+        if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(i + 1))
         {
           this.jdField_a_of_type_Int = 1;
           paramInt1 = 0;
@@ -208,10 +206,10 @@ public class PinnedDividerListView
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
       j = this.jdField_a_of_type_JavaUtilLinkedList.size();
       i = paramInt1;
-      if (this.jdField_a_of_type_Birb.getCount() > 0)
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.getCount() > 0)
       {
         i = paramInt1;
-        if (this.jdField_a_of_type_Birb.a(0))
+        if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(0))
         {
           i = paramInt1;
           if (j >= paramInt1)
@@ -246,25 +244,25 @@ public class PinnedDividerListView
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((paramListAdapter instanceof birb))
+    if ((paramListAdapter instanceof PinnedDividerListView.DividerAdapter))
     {
-      this.jdField_a_of_type_Birb = ((birb)paramListAdapter);
-      int i = this.jdField_a_of_type_Birb.a();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter = ((PinnedDividerListView.DividerAdapter)paramListAdapter);
+      int i = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a();
       if (i != 0)
       {
         this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, this, false);
         requestLayout();
       }
-      super.setAdapter(this.jdField_a_of_type_Birb);
+      super.setAdapter(this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter);
       return;
     }
-    this.jdField_a_of_type_Birb = null;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter = null;
     super.setAdapter(paramListAdapter);
   }
   
-  public void setOnLayoutListener(birc parambirc)
+  public void setOnLayoutListener(PinnedDividerListView.OnLayoutListener paramOnLayoutListener)
   {
-    this.jdField_a_of_type_Birc = parambirc;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$OnLayoutListener = paramOnLayoutListener;
   }
   
   public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
@@ -274,7 +272,7 @@ public class PinnedDividerListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PinnedDividerListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.js;
 
-import bjko;
+import com.tencent.open.base.LogUtility;
 import com.tencent.smtt.sdk.WebView;
 import java.util.List;
 
@@ -17,9 +17,9 @@ class BaseInterface$2
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
       label58:
-      bjko.b("BaseInterface", "Response<callBatch> AsyncInterface result : " + str);
+      LogUtility.b("BaseInterface", "Response<callBatch> AsyncInterface result : " + str);
       return;
-      bjko.e("BaseInterface", "Response<callBatch> AsyncInterface result : webview is null !!!");
+      LogUtility.e("BaseInterface", "Response<callBatch> AsyncInterface result : webview is null !!!");
       return;
     }
     catch (Exception localException)
@@ -30,7 +30,7 @@ class BaseInterface$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseInterface.2
  * JD-Core Version:    0.7.0.1
  */

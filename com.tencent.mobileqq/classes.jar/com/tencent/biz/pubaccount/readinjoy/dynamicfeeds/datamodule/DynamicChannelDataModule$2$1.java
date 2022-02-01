@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import java.util.List;
-import pui;
 
 class DynamicChannelDataModule$2$1
   implements Runnable
@@ -10,12 +9,12 @@ class DynamicChannelDataModule$2$1
   
   public void run()
   {
-    pui.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDynamicChannelDataModule$2.a, this.jdField_a_of_type_JavaUtilList);
+    DataEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDynamicfeedsDatamoduleDynamicChannelDataModule$2.a, this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DynamicChannelDataModule.2.1
  * JD-Core Version:    0.7.0.1
  */

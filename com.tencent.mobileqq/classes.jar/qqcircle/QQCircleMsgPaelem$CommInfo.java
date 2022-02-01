@@ -25,7 +25,7 @@ public final class QQCircleMsgPaelem$CommInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     qqcircle.QQCircleMsgPaelem.CommInfo
  * JD-Core Version:    0.7.0.1
  */

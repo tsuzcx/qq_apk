@@ -9,16 +9,16 @@ class ApolloGuestsStateActivity$2
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.mPraiseNumberText != null)
     {
-      this.this$0.a.setText(String.valueOf(this.a));
-      this.this$0.c = this.a;
+      this.this$0.mPraiseNumberText.setText(String.valueOf(this.a));
+      this.this$0.praiseNumber = this.a;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,16 +9,16 @@ public final class MobileContactsDetailInfo
 {
   public String QQ = "";
   public int accountAbi = 0;
-  public long bindingDate;
-  public long isRecommend;
+  public long bindingDate = 0L;
+  public long isRecommend = 0L;
   public String mobileCode = "";
   public String mobileNo = "";
   public String name = "";
   public String nationCode = "";
   public String nickname = "";
-  public long originBinder;
+  public long originBinder = 0L;
   public String originMobileNo = "";
-  public short rmdScore;
+  public short rmdScore = 0;
   
   public MobileContactsDetailInfo() {}
   

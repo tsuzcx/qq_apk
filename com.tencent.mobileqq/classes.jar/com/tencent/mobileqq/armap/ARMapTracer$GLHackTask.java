@@ -7,7 +7,7 @@ import java.lang.ref.WeakReference;
 public class ARMapTracer$GLHackTask
   implements Runnable
 {
-  private static int jdField_a_of_type_Int;
+  private static int jdField_a_of_type_Int = 0;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   private static GLHackTask b;
   private GLHackTask jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$GLHackTask;

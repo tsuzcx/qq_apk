@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ptt;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 class LSRecordPanel$10
   implements Runnable
@@ -9,7 +9,7 @@ class LSRecordPanel$10
   
   public void run()
   {
-    LSRecordPanel.a(this.this$0, anvx.a(2131705875));
+    LSRecordPanel.a(this.this$0, HardCodeUtil.a(2131706415));
     LSRecordPanel.b(this.this$0, false);
   }
 }

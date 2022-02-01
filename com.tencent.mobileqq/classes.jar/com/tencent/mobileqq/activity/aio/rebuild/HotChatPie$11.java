@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aibs;
-import arph;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
 
-public class HotChatPie$11
+class HotChatPie$11
   implements Runnable
 {
-  public HotChatPie$11(aibs paramaibs) {}
+  HotChatPie$11(HotChatPie paramHotChatPie) {}
   
   public void run()
   {
-    arph.a(this.this$0.app, this.this$0.app.getAccount(), -1);
+    ConfigServlet.a(this.this$0.a, this.this$0.a.getAccount(), -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.11
  * JD-Core Version:    0.7.0.1
  */

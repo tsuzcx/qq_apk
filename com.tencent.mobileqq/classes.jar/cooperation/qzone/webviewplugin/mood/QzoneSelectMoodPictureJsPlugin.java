@@ -3,9 +3,9 @@ package cooperation.qzone.webviewplugin.mood;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import org.json.JSONObject;
@@ -83,7 +83,7 @@ public class QzoneSelectMoodPictureJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.mood.QzoneSelectMoodPictureJsPlugin
  * JD-Core Version:    0.7.0.1
  */

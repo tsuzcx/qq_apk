@@ -14,9 +14,9 @@ public final class stAction
   static int cache_type;
   public String argb = "";
   public String icon = "";
-  public stScheme scheme;
+  public stScheme scheme = null;
   public String text = "";
-  public int type;
+  public int type = 0;
   
   static
   {

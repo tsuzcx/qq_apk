@@ -69,57 +69,32 @@ public class ServiceCreateTask
     }
   }
   
+  private boolean onV8ServiceCreateTaskSuc()
+  {
+    try
+    {
+      QMLog.i("ServiceCreateTask", "AppV8JsService create start");
+      onServiceCreateSucc(new AppV8JsService(this.appBrandRuntime));
+      reportServiceType(650, "v8");
+      return true;
+    }
+    catch (Exception localException)
+    {
+      QMLog.i("ServiceCreateTask", "run service by v8 failed", localException);
+      MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 151, "0", "", "", "", Log.getStackTraceString(localException));
+    }
+    return false;
+  }
+  
   private void reportServiceType(int paramInt, String paramString)
   {
     ThreadManager.getSubThreadHandler().post(new ServiceCreateTask.3(this, paramInt, paramString));
   }
   
-  public void executeAsync()
+  private void tbsServiceCreate()
   {
-    QMLog.i("ServiceCreateTask", "ServiceCreateTask executeAsync");
-    if (this.appBrandRuntime != null)
-    {
-      localObject = this.appBrandRuntime.getMiniAppInfo();
-      MiniReportManager.reportEventType((MiniAppInfo)localObject, 100, "0");
-      this.startTimestamp = System.currentTimeMillis();
-      localObject = (RuntimeCreateTask)getRuntimeLoader().getTask(RuntimeCreateTask.class);
-      if (localObject == null) {
-        break label131;
-      }
-    }
-    int i;
-    int j;
-    label131:
-    for (Object localObject = ((RuntimeCreateTask)localObject).getAppBrandRuntime();; localObject = null)
-    {
-      this.appBrandRuntime = ((BaseRuntime)localObject);
-      i = QbSdk.getTbsVersion(getContext());
-      j = QbSdk.getTmpDirTbsVersion(getContext());
-      bool = V8Utils.checkEnableV8();
-      if (!canDebug(this.appBrandRuntime)) {
-        break label137;
-      }
-      QMLog.i("ServiceCreateTask", "AppBrandRemoteService create start");
-      onServiceCreateSucc(new AppBrandRemoteService(this.appBrandRuntime, null));
-      return;
-      localObject = null;
-      break;
-    }
-    label137:
-    if (bool) {
-      try
-      {
-        QMLog.i("ServiceCreateTask", "AppV8JsService create start");
-        onServiceCreateSucc(new AppV8JsService(this.appBrandRuntime));
-        reportServiceType(650, "v8");
-        return;
-      }
-      catch (Exception localException)
-      {
-        QMLog.i("ServiceCreateTask", "run service by v8 failed", localException);
-        MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 151, "0", "", "", "", Log.getStackTraceString(localException));
-      }
-    }
+    int i = QbSdk.getTbsVersion(getContext());
+    int j = QbSdk.getTmpDirTbsVersion(getContext());
     boolean bool = isTbsFallback(getContext());
     QMLog.i("ServiceCreateTask", "tbsVersion=" + i + " tmpDirTbsVersion=" + j + ",isTbsFallback:" + Boolean.valueOf(bool));
     if (((i > 0) || (j > 0)) && (!isTbsFallback(getContext()))) {
@@ -139,6 +114,43 @@ public class ServiceCreateTask
     }
     QMLog.i("ServiceCreateTask", "createWebviewService create start");
     new Handler(Looper.getMainLooper()).post(new ServiceCreateTask.2(this));
+  }
+  
+  public void executeAsync()
+  {
+    QMLog.i("ServiceCreateTask", "ServiceCreateTask executeAsync");
+    Object localObject;
+    label60:
+    boolean bool;
+    if (this.appBrandRuntime != null)
+    {
+      localObject = this.appBrandRuntime.getMiniAppInfo();
+      MiniReportManager.reportEventType((MiniAppInfo)localObject, 100, "0");
+      this.startTimestamp = System.currentTimeMillis();
+      localObject = (RuntimeCreateTask)getRuntimeLoader().getTask(RuntimeCreateTask.class);
+      if (localObject == null) {
+        break label109;
+      }
+      localObject = ((RuntimeCreateTask)localObject).getAppBrandRuntime();
+      this.appBrandRuntime = ((BaseRuntime)localObject);
+      bool = V8Utils.checkEnableV8();
+      if (!canDebug(this.appBrandRuntime)) {
+        break label114;
+      }
+      QMLog.i("ServiceCreateTask", "AppBrandRemoteService create start");
+      onServiceCreateSucc(new AppBrandRemoteService(this.appBrandRuntime, null));
+    }
+    label109:
+    label114:
+    while ((bool) && (onV8ServiceCreateTaskSuc()))
+    {
+      return;
+      localObject = null;
+      break;
+      localObject = null;
+      break label60;
+    }
+    tbsServiceCreate();
   }
   
   public long getCreateTime()
@@ -194,7 +206,7 @@ public class ServiceCreateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.ServiceCreateTask
  * JD-Core Version:    0.7.0.1
  */

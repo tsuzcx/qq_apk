@@ -4,19 +4,18 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
-import axea;
-import axem;
-import axen;
 import com.enrique.stackblur.StackBlurManager;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.multiaio.presenter.MultiAioContext;
+import com.tencent.mobileqq.multiaio.utils.GC;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 
-public final class MultiAIOStarter$2
+final class MultiAIOStarter$2
   implements Runnable
 {
-  public MultiAIOStarter$2(BaseActivity paramBaseActivity, axem paramaxem) {}
+  MultiAIOStarter$2(BaseActivity paramBaseActivity, MultiAioContext paramMultiAioContext) {}
   
   public void run()
   {
@@ -29,9 +28,9 @@ public final class MultiAIOStarter$2
       if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {
         return;
       }
-      Bitmap localBitmap1 = this.jdField_a_of_type_Axem.a();
-      this.jdField_a_of_type_Axem.a(null);
-      localBitmap2 = axea.a(localBitmap1, this.jdField_a_of_type_Axem.b(), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      Bitmap localBitmap1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.a();
+      this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.a(null);
+      localBitmap2 = MultiAIOHelper.a(localBitmap1, this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.b(), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
       if (localBitmap2 == null)
       {
         QLog.e("MultiAIOStarter", 1, "run: decorViewBitmap == null");
@@ -41,10 +40,10 @@ public final class MultiAIOStarter$2
     catch (Throwable localThrowable)
     {
       QLog.e("MultiAIOStarter", 1, "run: ", localThrowable);
-      axen.a();
+      GC.a();
       return;
     }
-    this.jdField_a_of_type_Axem.b(localBitmap2);
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.b(localBitmap2);
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
     if (localQQAppInterface != null)
     {
@@ -55,14 +54,14 @@ public final class MultiAIOStarter$2
       if (localBitmap2 == null)
       {
         QLog.e("MultiAIOStarter", 1, "run: scaledBitmap == null");
-        axen.a();
+        GC.a();
         return;
       }
       localObject = new StackBlurManager(localBitmap2).process(4);
       if (localObject == null)
       {
         QLog.e("MultiAIOStarter", 1, "run: blured bitmap is null");
-        axen.a();
+        GC.a();
         return;
       }
       Canvas localCanvas = new Canvas(localBitmap2);
@@ -75,7 +74,7 @@ public final class MultiAIOStarter$2
       for (;;)
       {
         localCanvas.setBitmap(null);
-        this.jdField_a_of_type_Axem.c(localBitmap2);
+        this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.c(localBitmap2);
         localObject = new Bundle();
         ((Bundle)localObject).putParcelable("KEY_AIO_BITMAP_BLURED", localBitmap2);
         localQQAppInterface.notifyObservers(MultiAIOFragment.class, 1, true, (Bundle)localObject);

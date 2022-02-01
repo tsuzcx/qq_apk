@@ -1,33 +1,31 @@
 package dov.com.qq.im.aeeditor.lyric.widget;
 
-import bnrh;
-import bntu;
-import bnub;
+import dov.com.qq.im.ae.util.AEQLog;
 
-public class LyricViewController$6
+class LyricViewController$6
   implements Runnable
 {
-  public LyricViewController$6(bnub parambnub, int paramInt1, int paramInt2) {}
+  LyricViewController$6(LyricViewController paramLyricViewController, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Bntu != null) {
-      this.this$0.jdField_a_of_type_Bntu.a(this.a, this.b);
+    if (this.this$0.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricBaseInternalViewInterface != null) {
+      this.this$0.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricBaseInternalViewInterface.a(this.a, this.b);
     }
-    if ((this.this$0.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll != null) && (this.this$0.jdField_a_of_type_Bntu != null))
+    if ((this.this$0.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll != null) && (this.this$0.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricBaseInternalViewInterface != null))
     {
-      if (!bnub.a(this.this$0)) {
+      if (!LyricViewController.a(this.this$0)) {
         break label68;
       }
-      bnrh.a("ModuleController", "current is selecting lyric. not auto scroll.");
+      AEQLog.a("ModuleController", "current is selecting lyric. not auto scroll.");
     }
     label68:
     int i;
     do
     {
       return;
-      i = this.this$0.jdField_a_of_type_Bntu.a();
-    } while (bnub.a(this.this$0) == i);
+      i = this.this$0.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricBaseInternalViewInterface.a();
+    } while (LyricViewController.a(this.this$0) == i);
     if (i == 0)
     {
       this.this$0.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.b(i);
@@ -38,7 +36,7 @@ public class LyricViewController$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.widget.LyricViewController.6
  * JD-Core Version:    0.7.0.1
  */

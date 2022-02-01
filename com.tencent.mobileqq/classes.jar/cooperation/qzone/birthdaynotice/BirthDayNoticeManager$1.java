@@ -1,11 +1,11 @@
 package cooperation.qzone.birthdaynotice;
 
 import GIFT_MALL_PROTOCOL.DouFuInfo;
-import afqy;
-import bcrg;
+import com.tencent.mobileqq.activity.aio.BeancurdManager;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -23,20 +23,20 @@ final class BirthDayNoticeManager$1
       long l2 = System.currentTimeMillis();
       if (Math.abs(l1 - l2) > 432000000L)
       {
-        afqy localafqy = (afqy)this.val$app.getManager(QQManagerFactory.BEANCURD_MANAGER);
+        BeancurdManager localBeancurdManager = (BeancurdManager)this.val$app.getManager(QQManagerFactory.BEANCURD_MANAGER);
         BeancurdMsg localBeancurdMsg = new BeancurdMsg();
         localBeancurdMsg.buffer = this.val$jsonOb.toString();
         localBeancurdMsg.busiid = 6;
         localBeancurdMsg.frienduin = String.valueOf(str);
         localBeancurdMsg.isNeedDelHistory = true;
         localBeancurdMsg.ispush = false;
-        localBeancurdMsg.startTime = bcrg.a();
+        localBeancurdMsg.startTime = MessageCache.a();
         localBeancurdMsg.validTime = 432000L;
         localBeancurdMsg.token = this.val$token;
         if (QLog.isColorLevel()) {
           QLog.i("BirthDayNoticeManager", 2, "addBirthDayFeedMessage receiveBeancurd:" + String.valueOf(localBeancurdMsg));
         }
-        localafqy.a(localBeancurdMsg);
+        localBeancurdManager.a(localBeancurdMsg);
         this.val$app.getMsgCache().d(String.valueOf(str), l2);
       }
     }
@@ -44,7 +44,7 @@ final class BirthDayNoticeManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.birthdaynotice.BirthDayNoticeManager.1
  * JD-Core Version:    0.7.0.1
  */

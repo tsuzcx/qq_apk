@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apem;
 import com.tencent.qphone.base.util.QLog;
 
-public class ARTransferPromotionRenderable$1
+class ARTransferPromotionRenderable$1
   implements Runnable
 {
-  public ARTransferPromotionRenderable$1(apem paramapem) {}
+  ARTransferPromotionRenderable$1(ARTransferPromotionRenderable paramARTransferPromotionRenderable) {}
   
   public void run()
   {
-    apem.a(this.this$0, new ARTransferPromotionRenderable.1.1(this));
+    ARTransferPromotionRenderable.a(this.this$0, new ARTransferPromotionRenderable.1.1(this));
     QLog.d("ARTransferPromotionRenderable", 2, "post mRepeatCheckRunnable ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.1
  * JD-Core Version:    0.7.0.1
  */

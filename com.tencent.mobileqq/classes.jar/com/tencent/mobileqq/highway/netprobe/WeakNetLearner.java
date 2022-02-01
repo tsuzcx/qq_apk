@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.os.SystemClock;
+import com.tencent.mobileqq.highway.IHwManager;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class WeakNetLearner
+  implements IHwManager
 {
   private static final long REPORT_INTERVAL = 600000L;
   public static final String REPORT_TAG_NAME = "actWeaknetProbe";
@@ -122,10 +124,14 @@ public class WeakNetLearner
       doAfterOverflow();
       this.doneNum = null;
     }
-    this.probeHandler = null;
+    if (this.probeHandler != null) {
+      this.probeHandler.sendEmptyMessage(2);
+    }
     this.reports.clear();
     mContext = null;
   }
+  
+  public void onInit() {}
   
   public void onTaskFinish(ProbeTask paramProbeTask)
   {
@@ -163,10 +169,13 @@ public class WeakNetLearner
     {
       this.repeactTaskMonitor.put(paramProbeTask.getKey(), Long.valueOf(l));
       paramProbeTask.learner = new WeakReference(this);
-      ??? = this.probeHandler.obtainMessage();
-      ((Message)???).what = 1;
-      ((Message)???).obj = paramProbeTask;
-      this.probeHandler.sendMessage((Message)???);
+      if (this.probeHandler != null)
+      {
+        ??? = this.probeHandler.obtainMessage();
+        ((Message)???).what = 1;
+        ((Message)???).obj = paramProbeTask;
+        this.probeHandler.sendMessage((Message)???);
+      }
       return true;
     }
   }

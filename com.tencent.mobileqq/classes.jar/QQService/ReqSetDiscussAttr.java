@@ -10,8 +10,8 @@ public final class ReqSetDiscussAttr
   extends JceStruct
 {
   static Map<Integer, MemberAttrInfo> cache_Attr;
-  public Map<Integer, MemberAttrInfo> Attr;
-  public long DiscussUin;
+  public Map<Integer, MemberAttrInfo> Attr = null;
+  public long DiscussUin = 0L;
   
   public ReqSetDiscussAttr() {}
   

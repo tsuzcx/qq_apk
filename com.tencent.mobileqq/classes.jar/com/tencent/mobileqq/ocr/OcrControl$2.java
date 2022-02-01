@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.ocr;
 
-import apkn;
-import aytd;
-import aytf;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
 import java.util.HashMap;
 
-public class OcrControl$2
+class OcrControl$2
   implements Runnable
 {
-  public OcrControl$2(aytd paramaytd, String paramString) {}
+  OcrControl$2(OcrControl paramOcrControl, String paramString) {}
   
   public void run()
   {
-    if (((apkn)this.this$0.a.get(this.a) != null) && (aytd.a(this.this$0) != null)) {
-      aytd.a(this.this$0).a();
+    if (((ARCloudReqInfo)this.this$0.a.get(this.a) != null) && (OcrControl.a(this.this$0) != null)) {
+      OcrControl.a(this.this$0).a();
     }
   }
 }

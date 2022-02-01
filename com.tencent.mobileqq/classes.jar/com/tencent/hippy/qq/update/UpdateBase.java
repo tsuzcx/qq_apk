@@ -27,16 +27,16 @@ public abstract class UpdateBase
     this.mUpdateListener = paramPackageUpdateListener;
   }
   
-  void checkAndResetLocalVersion()
+  public static void checkAndResetLocalVersion(String paramString, int paramInt)
   {
-    int i = UpdateSetting.getInstance().getModuleVersion(this.mModule);
-    if ((i > 0) && (i < this.mVersion)) {
-      cleanHistoryVersion(HippyQQFileUtil.getModuleFile(this.mModule, -1), i);
+    int i = UpdateSetting.getInstance().getModuleVersion(paramString);
+    if ((i > 0) && (i < paramInt)) {
+      cleanHistoryVersion(HippyQQFileUtil.getModuleFile(paramString, -1), i);
     }
-    UpdateSetting.getInstance().setModuleVersion(this.mModule, this.mVersion);
+    UpdateSetting.getInstance().setModuleVersion(paramString, paramInt);
   }
   
-  void cleanHistoryVersion(File paramFile, int paramInt)
+  public static void cleanHistoryVersion(File paramFile, int paramInt)
   {
     int i = 0;
     if ((paramFile == null) || (!paramFile.exists()) || (!paramFile.isDirectory())) {}
@@ -56,18 +56,18 @@ public abstract class UpdateBase
       try
       {
         if (Integer.parseInt(str) < paramInt) {
-          FileUtils.delete(localObject.getAbsolutePath(), false);
+          FileUtils.a(localObject.getAbsolutePath(), false);
         }
-        label91:
+        label89:
         i += 1;
       }
       catch (Exception localException)
       {
-        break label91;
+        break label89;
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        break label91;
+        break label89;
       }
     }
   }
@@ -79,7 +79,7 @@ public abstract class UpdateBase
       if (patch(paramFile)) {
         if (unzipFile(paramFile))
         {
-          checkAndResetLocalVersion();
+          checkAndResetLocalVersion(this.mModule, this.mVersion);
           i = 0;
         }
       }
@@ -114,7 +114,7 @@ public abstract class UpdateBase
   
   abstract boolean patch(File paramFile);
   
-  void startDownload()
+  public void startDownload()
   {
     try
     {
@@ -136,7 +136,7 @@ public abstract class UpdateBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.update.UpdateBase
  * JD-Core Version:    0.7.0.1
  */

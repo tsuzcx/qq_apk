@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class PopupImgInfo
   extends JceStruct
 {
-  public int iOpen;
-  public int iPopupVer;
-  public int iRate;
-  public int iRateType;
+  public int iOpen = 0;
+  public int iPopupVer = 0;
+  public int iRate = 0;
+  public int iRateType = 0;
   public String sContinueText = "";
   public String sPopupImgUrl = "";
   public String sPopupText = "";

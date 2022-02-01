@@ -122,7 +122,7 @@ public class e
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     setLayoutParams(getMarginLayoutParams());
     getViewTreeObserver().addOnGlobalLayoutListener(this);
@@ -139,7 +139,7 @@ public class e
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (Build.VERSION.SDK_INT >= 16)
@@ -247,7 +247,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.e
  * JD-Core Version:    0.7.0.1
  */

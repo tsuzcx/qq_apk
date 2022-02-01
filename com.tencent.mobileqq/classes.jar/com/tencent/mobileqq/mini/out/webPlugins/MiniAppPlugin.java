@@ -8,13 +8,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
-import anvx;
-import ascz;
-import asdd;
-import ashz;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.mini.share.MiniArkShareModelBuilder;
 import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
@@ -22,8 +21,10 @@ import com.tencent.mobileqq.minigame.ui.PayForFriendView;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.webview.swift.IPreCreatePluginChecker;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import common.config.service.QzoneConfig;
@@ -37,6 +38,7 @@ import org.json.JSONObject;
 
 public class MiniAppPlugin
   extends WebViewPlugin
+  implements IPreCreatePluginChecker
 {
   public static final String ACTION_RETURN_ADDRESS_TO_MINIAPP = "action_return_address_to_miniapp";
   public static final String KEY_MINIAPP_ADDRESS_INFO = "key_miniapp_address_info";
@@ -49,7 +51,7 @@ public class MiniAppPlugin
   private static final String URL_PREFIX_HTTP_MINIAPP_REAL_HEAD_URL = "https://mqqapi//microapp/open?";
   private static final String URL_PREFIX_MINIGAME_PAY_BY_H5 = "https://h5.qzone.qq.com/miniapp/act/midasPay";
   private static final int canOpenApp = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-  private ascz remoteRespObserver = new MiniAppPlugin.3(this);
+  private Client.OnRemoteRespObserver remoteRespObserver = new MiniAppPlugin.3(this);
   
   public MiniAppPlugin()
   {
@@ -148,6 +150,11 @@ public class MiniAppPlugin
     return MiniAppLauncher.isMiniAppUrl(paramString);
   }
   
+  public long getWebViewSchemaByNameSpace(String paramString)
+  {
+    return 3L;
+  }
+  
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     try
@@ -204,23 +211,25 @@ public class MiniAppPlugin
       return false;
     }
     if (paramString3.equals("openApp")) {}
-    label773:
-    label1159:
-    label1162:
-    label1165:
+    label804:
+    label1347:
+    label1350:
+    label1353:
     for (;;)
     {
+      String str1;
       try
       {
         paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
         if (paramJsBridgeListener != null) {
-          break label1165;
+          break label1353;
         }
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
         paramString1 = null;
         paramString2 = null;
         paramString3 = null;
         paramVarArgs = null;
+        str1 = null;
         if (paramJsBridgeListener.has("appid")) {
           paramString1 = paramJsBridgeListener.optString("appid");
         }
@@ -232,6 +241,9 @@ public class MiniAppPlugin
         }
         if (paramJsBridgeListener.has("callback")) {
           paramVarArgs = paramJsBridgeListener.optString("callback");
+        }
+        if (paramJsBridgeListener.has("path")) {
+          str1 = paramJsBridgeListener.optString("path");
         }
         if (canOpenApp != 1)
         {
@@ -245,7 +257,8 @@ public class MiniAppPlugin
         paramJsBridgeListener.putString("miniapp_appid", paramString1);
         paramJsBridgeListener.putString("miniapp_type", paramString2);
         paramJsBridgeListener.putString("miniapp_via", paramString3);
-        sendRemoteReq(asdd.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
+        paramJsBridgeListener.putString("miniapp_path", str1);
+        sendRemoteReq(DataFactory.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
       }
       catch (Throwable paramJsBridgeListener)
       {
@@ -332,7 +345,7 @@ public class MiniAppPlugin
             break;
           }
           if (!paramString3.equals("closeFriendPaymentH5")) {
-            break label773;
+            break label804;
           }
         }
         catch (Throwable paramJsBridgeListener)
@@ -356,18 +369,19 @@ public class MiniAppPlugin
       }
       for (;;)
       {
+        int i;
         try
         {
           paramString2 = paramString1.getString("prepayId");
-          int i = paramString1.optInt("setEnv", 0);
+          i = paramString1.optInt("setEnv", 0);
           paramJsBridgeListener = paramString1.optString("title");
           paramString1 = paramString1.optString("imageUrl");
           if (!TextUtils.isEmpty(paramJsBridgeListener)) {
-            break label1162;
+            break label1350;
           }
           paramJsBridgeListener = GameWnsUtils.defaultPayShareTitle();
           if (!TextUtils.isEmpty(paramString1)) {
-            break label1159;
+            break label1347;
           }
           paramString1 = GameWnsUtils.defaultPayShareImg();
           paramString3 = new COMM.StCommonExt();
@@ -383,7 +397,7 @@ public class MiniAppPlugin
           {
             paramString2 = (PayForFriendView)this.mRuntime.a();
             paramVarArgs = paramString2.getAppId();
-            String str1 = paramString2.getAppName();
+            str1 = paramString2.getAppName();
             String str2 = paramString2.getAppIconUrl();
             String str3 = paramString2.getAppVersionId();
             i = paramString2.getAppVerType();
@@ -395,9 +409,39 @@ public class MiniAppPlugin
         {
           QLog.e("MiniAppPlugin", 1, "shareFriendPayment error.", paramJsBridgeListener);
         }
-        return false;
+        do
+        {
+          return false;
+        } while (!paramString3.equals("closeWebview"));
+        try
+        {
+          paramString1 = WebViewPlugin.getJsonFromJSBridge(paramString1);
+          if ("closeWebview" + paramString1 != null) {}
+          for (paramJsBridgeListener = paramString1.toString();; paramJsBridgeListener = "")
+          {
+            QLog.i("MiniAppPlugin", 1, paramJsBridgeListener);
+            paramJsBridgeListener = new Intent();
+            i = paramString1.optInt("allClose", -1);
+            if (i == -1) {
+              QLog.e("MiniAppPlugin", 1, "no allClose back from h5");
+            }
+            paramJsBridgeListener.putExtra("allCloseState", i);
+            if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
+              break;
+            }
+            this.mRuntime.a().setResult(-1, paramJsBridgeListener);
+            this.mRuntime.a().finish();
+            break;
+          }
+        }
+        catch (Throwable paramJsBridgeListener)
+        {
+          QLog.e("MiniAppPlugin", 1, "closeWebview error.", paramJsBridgeListener);
+          break;
+        }
       }
     }
+    return true;
     return true;
   }
   
@@ -420,33 +464,38 @@ public class MiniAppPlugin
     return super.handleSchemaRequest(paramString1, paramString2);
   }
   
+  public boolean isNeedPreCreatePlugin(Intent paramIntent, String paramString1, String paramString2)
+  {
+    return (paramString1.contains("sou.qq.com")) || (isUrlBelongToMiniAppShare(paramString1));
+  }
+  
   public void onCreate()
   {
     super.onCreate();
-    ashz.a().a(this.remoteRespObserver);
+    WebIPCOperator.a().a(this.remoteRespObserver);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ashz.a().b(this.remoteRespObserver);
+    WebIPCOperator.a().b(this.remoteRespObserver);
   }
   
   protected void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!ashz.a().a())
+    if (!WebIPCOperator.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(this.mRuntime.a().getApplicationContext(), anvx.a(2131706303), 0).show();
+        Toast.makeText(this.mRuntime.a().getApplicationContext(), HardCodeUtil.a(2131706843), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      ashz.a().b(paramBundle);
+      WebIPCOperator.a().b(paramBundle);
       return;
     }
-    ashz.a().a(paramBundle);
+    WebIPCOperator.a().a(paramBundle);
   }
 }
 

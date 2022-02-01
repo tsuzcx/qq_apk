@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.view;
 
-import apcn;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo.PromotionItem;
 
 class ScanEntryProviderContainerView$4
   implements Runnable
 {
-  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, apcn paramapcn) {}
+  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, PromotionConfigInfo.PromotionItem paramPromotionItem) {}
   
   public void run()
   {

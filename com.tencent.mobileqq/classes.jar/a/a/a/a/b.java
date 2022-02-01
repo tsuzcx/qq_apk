@@ -1,6 +1,6 @@
 package a.a.a.a;
 
-import a.a.a.b.i;
+import a.a.a.b.h;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.ApplicationInfo;
@@ -167,6 +167,18 @@ public class b
     //   51	60	72	finally
   }
   
+  public static String a(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    byte[] arrayOfByte = new byte[paramArrayOfByte.length];
+    while (i < paramArrayOfByte.length)
+    {
+      arrayOfByte[i] = ((byte)(paramArrayOfByte[i] ^ new byte[] { 69, 16, -45, 32, 78, 91, 23, -99, 0, 0, 0, 0, 0, 0, 0, 0 }[(i % 8)]));
+      i += 1;
+    }
+    return new String(arrayOfByte);
+  }
+  
   public static void a(InputStream paramInputStream, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     if (paramInt2 == 0) {}
@@ -222,11 +234,11 @@ public class b
         }
         if ((paramString != null) && (paramString.exists()))
         {
-          if (i.a(paramString, null)) {
+          if (h.a(paramString, null)) {
             break label283;
           }
           paramString.delete();
-          bool1 = i.a(a(paramContext, str, (String)localObject2), null);
+          bool1 = h.a(a(paramContext, str, (String)localObject2), null);
           if (bool1) {
             break label283;
           }

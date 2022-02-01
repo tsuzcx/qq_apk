@@ -4,6 +4,7 @@ import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.security.InvalidParameterException;
 import java.util.HashMap;
@@ -69,7 +70,7 @@ public class HttpInterfaceForTVKImp
           }
           ??? = new HashMap();
           if (this.result != 0) {
-            break label289;
+            break label295;
           }
         }
         ???.put("param_ErrorCode", String.valueOf(this.errorCode));
@@ -77,9 +78,9 @@ public class HttpInterfaceForTVKImp
         ???.put("param_HttpCode", String.valueOf(this.mHttpCode));
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "HttpInterfaceForTVKImp", true, 0L, 0L, ???, "");
         return this.result;
-        ((QQAppInterface)???).getNetEngine(0).sendReq(localHttpNetReq);
+        ((IHttpEngineService)((QQAppInterface)???).getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
       }
-      label289:
+      label295:
       ???.put("param_isSuccess", "0");
     }
   }

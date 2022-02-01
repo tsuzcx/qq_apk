@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afsr;
 import android.graphics.Bitmap;
 import android.support.v4.app.FragmentActivity;
 
-public class IntimateInfoShareHelper$3
+class IntimateInfoShareHelper$3
   implements Runnable
 {
-  public IntimateInfoShareHelper$3(afsr paramafsr, Bitmap paramBitmap, int paramInt) {}
+  IntimateInfoShareHelper$3(IntimateInfoShareHelper paramIntimateInfoShareHelper, Bitmap paramBitmap, int paramInt) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {}
     Bitmap localBitmap2;
-    for (Bitmap localBitmap1 = this.this$0.a(afsr.a(this.this$0));; localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap)
+    for (Bitmap localBitmap1 = this.this$0.a(IntimateInfoShareHelper.a(this.this$0));; localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap)
     {
       if (this.jdField_a_of_type_Int != 3)
       {
@@ -24,10 +23,10 @@ public class IntimateInfoShareHelper$3
       {
         localBitmap2 = this.this$0.a(localBitmap1);
       }
-      if ((localBitmap2 != null) && (!localBitmap2.isRecycled()) && (afsr.a(this.this$0) != null) && (!afsr.a(this.this$0).isFinishing())) {
+      if ((localBitmap2 != null) && (!localBitmap2.isRecycled()) && (IntimateInfoShareHelper.a(this.this$0) != null) && (!IntimateInfoShareHelper.a(this.this$0).isFinishing())) {
         break;
       }
-      afsr.a(this.this$0, 1, 2131693351);
+      IntimateInfoShareHelper.a(this.this$0, 1, 2131693503);
       return;
     }
     switch (this.jdField_a_of_type_Int)
@@ -35,25 +34,25 @@ public class IntimateInfoShareHelper$3
     }
     for (;;)
     {
-      afsr.a(this.this$0);
+      IntimateInfoShareHelper.a(this.this$0);
       return;
-      afsr.a(this.this$0, localBitmap2);
+      IntimateInfoShareHelper.a(this.this$0, localBitmap2);
       continue;
-      afsr.b(this.this$0, localBitmap2);
+      IntimateInfoShareHelper.b(this.this$0, localBitmap2);
       continue;
-      afsr.c(this.this$0, localBitmap2);
+      IntimateInfoShareHelper.c(this.this$0, localBitmap2);
       continue;
-      afsr.a(this.this$0, localBitmap2, this.jdField_a_of_type_Int);
+      IntimateInfoShareHelper.a(this.this$0, localBitmap2, this.jdField_a_of_type_Int);
       continue;
-      afsr.a(this.this$0, localBitmap2, this.jdField_a_of_type_Int);
+      IntimateInfoShareHelper.a(this.this$0, localBitmap2, this.jdField_a_of_type_Int);
       continue;
-      afsr.d(this.this$0, localBitmap2);
+      IntimateInfoShareHelper.d(this.this$0, localBitmap2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoShareHelper.3
  * JD-Core Version:    0.7.0.1
  */

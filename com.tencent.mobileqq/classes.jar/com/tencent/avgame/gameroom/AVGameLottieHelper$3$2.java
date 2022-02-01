@@ -1,13 +1,11 @@
 package com.tencent.avgame.gameroom;
 
 import com.tencent.mobileqq.dinifly.LottieDrawable;
-import nhx;
-import nhz;
 
-public class AVGameLottieHelper$3$2
+class AVGameLottieHelper$3$2
   implements Runnable
 {
-  public AVGameLottieHelper$3$2(nhx paramnhx, LottieDrawable paramLottieDrawable) {}
+  AVGameLottieHelper$3$2(AVGameLottieHelper.3 param3, LottieDrawable paramLottieDrawable) {}
   
   public void run()
   {
@@ -18,7 +16,7 @@ public class AVGameLottieHelper$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.AVGameLottieHelper.3.2
  * JD-Core Version:    0.7.0.1
  */

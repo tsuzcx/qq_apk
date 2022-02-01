@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import akxc;
 import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qwallet.preload.IPreloadService.OnGetPathListener;
+import com.tencent.mobileqq.qwallet.preload.IPreloadService.PathResult;
 
 class MiniGamePublicAccountWebFragment$4
-  implements akxc
+  implements IPreloadService.OnGetPathListener
 {
   MiniGamePublicAccountWebFragment$4(MiniGamePublicAccountWebFragment paramMiniGamePublicAccountWebFragment, View paramView) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onResult(int paramInt, IPreloadService.PathResult paramPathResult)
   {
     ThreadManagerV2.getUIHandlerV2().post(new MiniGamePublicAccountWebFragment.4.1(this, paramInt, paramPathResult));
   }

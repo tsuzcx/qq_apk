@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Bundle;
-import bhce;
 
-public class AntiFraudConfigFileUtil$1
+class AntiFraudConfigFileUtil$1
   implements Runnable
 {
-  public AntiFraudConfigFileUtil$1(bhce parambhce, String paramString) {}
+  AntiFraudConfigFileUtil$1(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString) {}
   
   public void run()
   {
-    if (!bhce.a(this.this$0).containsKey(this.a)) {
-      bhce.a(this.this$0, this.a);
+    if (!AntiFraudConfigFileUtil.a(this.this$0).containsKey(this.a)) {
+      AntiFraudConfigFileUtil.a(this.this$0, this.a);
     }
   }
 }

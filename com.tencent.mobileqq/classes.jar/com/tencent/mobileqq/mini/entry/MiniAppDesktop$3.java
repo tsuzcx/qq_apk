@@ -4,8 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.view.ViewGroup;
-import aqco;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
+import com.tencent.mobileqq.armap.ConversationActivePendantHolderBase;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -23,19 +23,19 @@ class MiniAppDesktop$3
   public void onAnimationEnd(Animator paramAnimator)
   {
     MiniAppDesktop.access$1202(this.this$0, true);
-    if (MiniAppDesktop.access$600(this.this$0) != MainFragment.b) {
+    if (MiniAppDesktop.access$600(this.this$0) != FrameControllerUtil.a) {
       this.this$0.hideMiniAppEntry(-1);
     }
     MiniAppDesktop.access$300(this.this$0).desktopOpened();
     MiniAppDesktop.access$1300(this.this$0, 2);
     if (MiniAppDesktop.access$500(this.this$0).b != null) {
-      MiniAppDesktop.access$500(this.this$0).b.d();
+      MiniAppDesktop.access$500(this.this$0).b.g();
     }
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (MiniAppDesktop.access$600(this.this$0) != MainFragment.b)
+    if (MiniAppDesktop.access$600(this.this$0) != FrameControllerUtil.a)
     {
       paramAnimator.cancel();
       this.this$0.hideMiniAppEntry(-1);
@@ -47,7 +47,7 @@ class MiniAppDesktop$3
       paramAnimator = (Activity)MiniAppDesktop.access$800(this.this$0).get();
       if (paramAnimator != null)
       {
-        ImmersiveUtils.a(true, paramAnimator.getWindow());
+        ImmersiveUtils.setStatusTextColor(true, paramAnimator.getWindow());
         MiniAppDesktop.access$902(this.this$0, true);
         if (QLog.isColorLevel()) {
           QLog.d("MiniAppDesktop", 2, "animateOpen, set status bar text color.");

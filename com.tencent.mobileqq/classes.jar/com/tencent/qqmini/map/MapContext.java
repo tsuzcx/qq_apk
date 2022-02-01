@@ -126,7 +126,7 @@ public class MapContext
     this.markerMaxSize = ((int)(this.density * 50.0F + 0.5D));
     try
     {
-      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841211);
+      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841347);
       this.markerSparseArray = new SparseArray();
       this.circleArrayList = new ArrayList();
       this.polylineArrayList = new ArrayList();
@@ -251,7 +251,7 @@ public class MapContext
         paramJSONObject = Drawable.createFromPath(paramJSONObject);
         localObject = paramJSONObject;
         if (paramJSONObject == null) {
-          localObject = this.context.getResources().getDrawable(2130841272);
+          localObject = this.context.getResources().getDrawable(2130841409);
         }
         localImageView.setImageDrawable((Drawable)localObject);
         if (this.mTencentMap == null) {
@@ -315,7 +315,7 @@ public class MapContext
           localObject1 = Drawable.createFromPath((String)localObject1);
           localObject3 = localObject1;
           if (localObject1 == null) {
-            localObject3 = this.context.getResources().getDrawable(2130841272);
+            localObject3 = this.context.getResources().getDrawable(2130841409);
           }
           localObject1 = createMarkerView(k, m);
           ((ImageView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(k, m));
@@ -344,23 +344,15 @@ public class MapContext
   
   private void addPolyline(JSONObject paramJSONObject)
   {
-    Object localObject1;
-    Object localObject2;
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder().append("addPolyline params=");
     String str1;
-    if (QMLog.isColorLevel())
+    if (paramJSONObject != null)
     {
-      localObject1 = TAG;
-      localObject2 = new StringBuilder().append("addPolyline params=");
-      if (paramJSONObject != null)
-      {
-        str1 = paramJSONObject.toString();
-        QMLog.d((String)localObject1, str1);
-      }
-    }
-    else
-    {
+      str1 = paramJSONObject.toString();
+      QMLog.d((String)localObject1, str1);
       if (paramJSONObject != null) {
-        break label64;
+        break label58;
       }
     }
     for (;;)
@@ -368,7 +360,7 @@ public class MapContext
       return;
       str1 = "empty";
       break;
-      label64:
+      label58:
       localObject2 = paramJSONObject.optJSONArray("points");
       String str2 = paramJSONObject.optString("color", "");
       float f1 = ViewUtils.dip2px((float)paramJSONObject.optDouble("width", 0.0D));
@@ -395,7 +387,7 @@ public class MapContext
       try
       {
         paramJSONObject.color(ColorUtils.parseColor(str2));
-        label261:
+        label255:
         if (bool1)
         {
           localObject2 = new ArrayList();
@@ -415,14 +407,14 @@ public class MapContext
         }
         catch (OutOfMemoryError localOutOfMemoryError)
         {
-          label384:
-          break label384;
+          label378:
+          break label378;
         }
         if (!TextUtils.isEmpty(str1)) {}
         try
         {
           paramJSONObject.borderColor(ColorUtils.parseColor(str1));
-          label402:
+          label396:
           if (f2 > 0.0F) {
             paramJSONObject.borderWidth(f2);
           }
@@ -435,12 +427,12 @@ public class MapContext
         }
         catch (IllegalArgumentException localIllegalArgumentException1)
         {
-          break label402;
+          break label396;
         }
       }
       catch (IllegalArgumentException localIllegalArgumentException2)
       {
-        break label261;
+        break label255;
       }
     }
   }
@@ -1172,7 +1164,7 @@ public class MapContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.map.MapContext
  * JD-Core Version:    0.7.0.1
  */

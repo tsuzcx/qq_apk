@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import ajvr;
 import android.os.Handler;
 import android.os.Message;
-import bfzz;
-import bgal;
-import bgam;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.ATroopMember;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -25,10 +22,11 @@ public class AIOAtSearchManager$AtSearchRunnable
   private List<TroopMemberInfo> jdField_a_of_type_JavaUtilList;
   public volatile boolean a;
   private boolean b;
-  private boolean c;
+  private boolean c = false;
   
   public AIOAtSearchManager$AtSearchRunnable(String paramString, List<TroopMemberInfo> paramList, Handler paramHandler, QQAppInterface paramQQAppInterface, boolean paramBoolean1, SessionInfo paramSessionInfo, boolean paramBoolean2)
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
@@ -38,14 +36,14 @@ public class AIOAtSearchManager$AtSearchRunnable
     this.b = paramBoolean2;
   }
   
-  private ArrayList<ajvr> a(List<TroopMemberInfo> paramList)
+  private ArrayList<ChatHistoryTroopMemberFragment.ATroopMember> a(List<TroopMemberInfo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)paramList.next();
-      localArrayList.add(bfzz.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localTroopMemberInfo));
+      localArrayList.add(AtUtil.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localTroopMemberInfo));
     }
     return localArrayList;
   }
@@ -58,18 +56,18 @@ public class AIOAtSearchManager$AtSearchRunnable
     if (this.jdField_a_of_type_Boolean) {}
     do
     {
-      bgam localbgam;
+      SearchTask.SearchResult localSearchResult;
       do
       {
         do
         {
           return;
         } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
-        localbgam = new bgal(a(this.jdField_a_of_type_JavaUtilList)).a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.b);
+        localSearchResult = new SearchTask(a(this.jdField_a_of_type_JavaUtilList)).a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.b);
       } while (this.jdField_a_of_type_Boolean);
       Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
       localMessage.what = 1;
-      localMessage.obj = localbgam;
+      localMessage.obj = localSearchResult;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
     } while (!QLog.isColorLevel());
     QLog.e("AIOAtSearchManager", 2, "taa AtSearchRunnable end: " + System.currentTimeMillis());

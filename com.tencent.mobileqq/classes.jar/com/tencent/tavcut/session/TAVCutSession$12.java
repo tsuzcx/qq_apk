@@ -1,6 +1,5 @@
 package com.tencent.tavcut.session;
 
-import android.os.Handler;
 import android.util.SparseArray;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
 import com.tencent.weseevideo.editor.sticker.StickerController;
@@ -32,14 +31,11 @@ class TAVCutSession$12
       i += 1;
     }
     this.this$0.stickerControllers.clear();
-    if (this.this$0.handler != null) {
-      this.this$0.handler.post(new TAVCutSession.12.1(this));
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutSession.12
  * JD-Core Version:    0.7.0.1
  */

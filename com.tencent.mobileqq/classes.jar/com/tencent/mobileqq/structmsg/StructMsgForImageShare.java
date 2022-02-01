@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.structmsg;
 
-import acnh;
-import admg;
-import aftk;
-import agfe;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -20,40 +16,35 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import aqvh;
-import azix;
-import aziy;
-import azkl;
-import azla;
-import bcpt;
-import bcsa;
-import bdla;
-import bdnt;
-import bdnu;
-import bdnv;
-import bdoe;
-import bdow;
-import bdpl;
-import bdpx;
-import bdqa;
-import bdsv;
-import bheg;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawable;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.UinTypeUtil;
+import com.tencent.mobileqq.activity.ChatActivityConstants;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.activity.aio.forward.ForwardOrderManager;
 import com.tencent.mobileqq.activity.photo.ImageInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.confess.ConfessMsgUtil;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.PicUiInterface;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.service.MobileQQService;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemImage;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.widget.BubbleImageView;
 import com.tencent.qphone.base.util.MD5;
@@ -66,47 +57,46 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nwh;
 
 public class StructMsgForImageShare
   extends AbsShareMsg
 {
   public static final int SHARE_IMAGE_FREVIEW_MAX_SZIE = 140;
-  private static View.OnClickListener a = new bdow();
+  private static View.OnClickListener a = new StructMsgForImageShare.1();
   public String bigUrl;
   public int height;
-  public int mImageBizType;
+  public int mImageBizType = 0;
   public int mIsSend = 1;
-  public int mMsgType;
-  public long mUniseq;
+  public int mMsgType = 0;
+  public long mUniseq = 0L;
   public String rawUrl;
   public int thumbHeight;
   public String thumbUrl;
   public int thumbWidth;
   public int width;
   
-  public StructMsgForImageShare()
+  StructMsgForImageShare()
   {
     this.mMsgServiceID = 5;
   }
   
-  public StructMsgForImageShare(Bundle paramBundle)
+  StructMsgForImageShare(Bundle paramBundle)
   {
     super(paramBundle);
     if (paramBundle.getInt("req_type", 1) != 5) {
       return;
     }
     this.mMsgServiceID = 5;
-    bdnv localbdnv = bdoe.a(0);
-    localbdnv.b(paramBundle.getString("image_url"));
-    this.mStructMsgItemLists.add(localbdnv);
+    AbsStructMsgItem localAbsStructMsgItem = StructMsgElementFactory.a(0);
+    localAbsStructMsgItem.b(paramBundle.getString("image_url"));
+    this.mStructMsgItemLists.add(localAbsStructMsgItem);
     this.thumbWidth = paramBundle.getInt("struct_share_key_thumb_width", 0);
     this.thumbHeight = paramBundle.getInt("struct_share_key_thumb_height", 0);
   }
   
-  public StructMsgForImageShare(bdpl parambdpl)
+  StructMsgForImageShare(StructMsgNode paramStructMsgNode)
   {
-    super(parambdpl);
+    super(paramStructMsgNode);
   }
   
   public static boolean resendAndUploadImageShare(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, StructMsgForImageShare paramStructMsgForImageShare)
@@ -123,8 +113,8 @@ public class StructMsgForImageShare
     QLog.d("StructMsg", 2, "handleAppShareAction firstImageElement NULL!!!");
     return false;
     String str = paramQQAppInterface.getCurrentAccountUin();
-    MessageRecord localMessageRecord = bcsa.a(paramMessageRecord);
-    paramQQAppInterface.getMessageFacade().addMessage(localMessageRecord, str);
+    MessageRecord localMessageRecord = MessageRecordFactory.a(paramMessageRecord);
+    paramQQAppInterface.getMessageFacade().a(localMessageRecord, str);
     TransferRequest localTransferRequest = new TransferRequest();
     localTransferRequest.mSelfUin = str;
     localTransferRequest.mPeerUin = paramMessageRecord.frienduin;
@@ -134,7 +124,7 @@ public class StructMsgForImageShare
     localTransferRequest.mIsUp = true;
     localTransferRequest.mBusiType = 1030;
     localTransferRequest.mLocalPath = paramStructMsgForImageShare.ac;
-    paramQQAppInterface.getTransFileController().transferAsync(localTransferRequest, localMessageRecord);
+    ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
     return true;
   }
   
@@ -199,7 +189,7 @@ public class StructMsgForImageShare
         str1 = str2;
         str2 = AbsStructMsg.ar + System.currentTimeMillis() + ".jpg";
         str1 = str2;
-        bool = bheg.a(4, paramContext, paramString, str2, true, paramImageInfo, paramInt);
+        bool = com.tencent.mobileqq.utils.ImageUtil.a(4, paramContext, paramString, str2, true, paramImageInfo, paramInt);
         paramContext = str2;
         if (!bool) {
           paramContext = paramString;
@@ -233,7 +223,7 @@ public class StructMsgForImageShare
     return sendAndUploadImageShare(paramQQAppInterface, paramStructMsgForImageShare, paramString1, paramInt1, paramString2, paramInt2, null, false);
   }
   
-  public static boolean sendAndUploadImageShare(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, String paramString1, int paramInt1, String paramString2, int paramInt2, azla paramazla, boolean paramBoolean)
+  public static boolean sendAndUploadImageShare(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, String paramString1, int paramInt1, String paramString2, int paramInt2, UpCallBack paramUpCallBack, boolean paramBoolean)
   {
     if (paramStructMsgForImageShare == null) {
       return false;
@@ -245,16 +235,16 @@ public class StructMsgForImageShare
       }
       return false;
     }
-    bdqa localbdqa = paramStructMsgForImageShare.getFirstImageElement();
-    if (localbdqa == null)
+    StructMsgItemImage localStructMsgItemImage = paramStructMsgForImageShare.getFirstImageElement();
+    if (localStructMsgItemImage == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StructMsg", 2, "handleAppShareAction firstImageElement NULL!!!");
       }
       return false;
     }
-    int i = bcpt.a;
-    bcpt.a = i + 1;
+    int i = MobileQQService.seq;
+    MobileQQService.seq = i + 1;
     long l = i;
     String str = paramQQAppInterface.getCurrentAccountUin();
     if (((paramInt1 != 1000) && (paramInt1 != 1020) && (paramInt1 != 1004)) || (TextUtils.isEmpty(paramString2))) {
@@ -262,18 +252,18 @@ public class StructMsgForImageShare
     }
     for (;;)
     {
-      localbdqa.d = 0L;
-      paramString2 = bcsa.a(paramQQAppInterface, str, paramString1, paramString2, paramInt1, l, paramStructMsgForImageShare);
-      agfe.a().a(paramString2.uniseq, paramStructMsgForImageShare.uniseq, paramStructMsgForImageShare.forwardID);
-      if (acnh.a(paramInt1) == 1032) {
-        aqvh.a(paramQQAppInterface, paramString2, paramString1, paramInt1, paramInt2);
+      localStructMsgItemImage.d = 0L;
+      paramString2 = MessageRecordFactory.a(paramQQAppInterface, str, paramString1, paramString2, paramInt1, l, paramStructMsgForImageShare);
+      ForwardOrderManager.a().a(paramString2.uniseq, paramStructMsgForImageShare.uniseq, paramStructMsgForImageShare.forwardID);
+      if (UinTypeUtil.a(paramInt1) == 1032) {
+        ConfessMsgUtil.a(paramQQAppInterface, paramString2, paramString1, paramInt1, paramInt2);
       }
       if (!paramStructMsgForImageShare.checkImageSharePic(paramQQAppInterface.getApp())) {
         return false;
       }
-      if (FileUtils.isLocalPath(localbdqa.ac))
+      if (FileUtils.c(localStructMsgItemImage.ac))
       {
-        paramStructMsgForImageShare = HexUtil.bytes2HexStr(MD5.getFileMd5(localbdqa.ac));
+        paramStructMsgForImageShare = HexUtil.bytes2HexStr(MD5.getFileMd5(localStructMsgItemImage.ac));
         if (paramStructMsgForImageShare == null)
         {
           if (QLog.isColorLevel()) {
@@ -281,16 +271,16 @@ public class StructMsgForImageShare
           }
           return false;
         }
-        localbdqa.ae = paramStructMsgForImageShare;
+        localStructMsgItemImage.ae = paramStructMsgForImageShare;
         paramStructMsgForImageShare = URLDrawableHelper.getURL(paramStructMsgForImageShare, 1);
         if (paramStructMsgForImageShare != null) {
-          break label362;
+          break label369;
         }
         paramStructMsgForImageShare = null;
         if (!AbsDownloader.hasFile(paramStructMsgForImageShare))
         {
           paramStructMsgForImageShare = AbsDownloader.getFilePath(paramStructMsgForImageShare);
-          FileUtils.copyFile(localbdqa.ac, paramStructMsgForImageShare);
+          FileUtils.d(localStructMsgItemImage.ac, paramStructMsgForImageShare);
         }
       }
       paramStructMsgForImageShare = new TransferRequest();
@@ -301,8 +291,8 @@ public class StructMsgForImageShare
       paramStructMsgForImageShare.mUniseq = paramString2.uniseq;
       paramStructMsgForImageShare.mIsUp = true;
       paramStructMsgForImageShare.mBusiType = 1030;
-      paramStructMsgForImageShare.mLocalPath = localbdqa.ac;
-      paramStructMsgForImageShare.mUpCallBack = paramazla;
+      paramStructMsgForImageShare.mLocalPath = localStructMsgItemImage.ac;
+      paramStructMsgForImageShare.mUpCallBack = paramUpCallBack;
       if (paramBoolean)
       {
         paramStructMsgForImageShare.needSendMsg = false;
@@ -310,104 +300,30 @@ public class StructMsgForImageShare
       }
       for (;;)
       {
-        paramQQAppInterface.getTransFileController().transferAsync(paramStructMsgForImageShare);
+        ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(paramStructMsgForImageShare);
         return true;
-        label362:
+        label369:
         paramStructMsgForImageShare = paramStructMsgForImageShare.toString();
         break;
-        paramQQAppInterface.getMessageFacade().addMessage(paramString2, str);
-      }
-    }
-  }
-  
-  public static boolean sendAndUploadImageShareHotPic(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, String paramString1, int paramInt1, String paramString2, aziy paramaziy, int paramInt2)
-  {
-    if (paramStructMsgForImageShare == null) {
-      return false;
-    }
-    if ((paramString1 == null) || (paramInt1 < 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsg", 2, "handleAppShareAction toUin is NULL!!!");
-      }
-      return false;
-    }
-    bdqa localbdqa = paramStructMsgForImageShare.getFirstImageElement();
-    if (localbdqa == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsg", 2, "handleAppShareAction firstImageElement NULL!!!");
-      }
-      return false;
-    }
-    int i = bcpt.a;
-    bcpt.a = i + 1;
-    long l = i;
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    if (((paramInt1 != 1000) && (paramInt1 != 1020) && (paramInt1 != 1004)) || (TextUtils.isEmpty(paramString2))) {
-      paramString2 = str;
-    }
-    for (;;)
-    {
-      localbdqa.d = 0L;
-      paramString2 = bcsa.a(paramQQAppInterface, str, paramString1, paramString2, paramInt1, l, paramStructMsgForImageShare);
-      azix.a(paramString2, paramaziy);
-      if (acnh.a(paramInt1) == 1032) {
-        aqvh.a(paramQQAppInterface, paramString2, paramString1, paramInt1, paramInt2);
-      }
-      paramQQAppInterface.getMessageFacade().addMessage(paramString2, str);
-      if (FileUtils.isLocalPath(localbdqa.ac))
-      {
-        paramStructMsgForImageShare = HexUtil.bytes2HexStr(MD5.getFileMd5(localbdqa.ac));
-        if (paramStructMsgForImageShare == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, "handleAppShareAction MD5 NULL!!!");
-          }
-          return false;
-        }
-        paramStructMsgForImageShare = URLDrawableHelper.getURL(paramStructMsgForImageShare, 1);
-        if (paramStructMsgForImageShare != null) {
-          break label323;
-        }
-      }
-      label323:
-      for (paramStructMsgForImageShare = null;; paramStructMsgForImageShare = paramStructMsgForImageShare.toString())
-      {
-        if (!AbsDownloader.hasFile(paramStructMsgForImageShare))
-        {
-          paramStructMsgForImageShare = AbsDownloader.getFilePath(paramStructMsgForImageShare);
-          FileUtils.copyFile(localbdqa.ac, paramStructMsgForImageShare);
-        }
-        paramStructMsgForImageShare = new TransferRequest();
-        paramStructMsgForImageShare.mSelfUin = str;
-        paramStructMsgForImageShare.mPeerUin = paramString1;
-        paramStructMsgForImageShare.mUinType = paramInt1;
-        paramStructMsgForImageShare.mFileType = 1;
-        paramStructMsgForImageShare.mUniseq = paramString2.uniseq;
-        paramStructMsgForImageShare.mIsUp = true;
-        paramStructMsgForImageShare.mBusiType = 1030;
-        paramStructMsgForImageShare.mLocalPath = localbdqa.ac;
-        paramQQAppInterface.getTransFileController().transferAsync(paramStructMsgForImageShare, paramString2);
-        return true;
+        paramQQAppInterface.getMessageFacade().a(paramString2, str);
       }
     }
   }
   
   public boolean checkImageSharePic(Context paramContext)
   {
-    bdqa localbdqa = getFirstImageElement();
-    if (localbdqa != null)
+    StructMsgItemImage localStructMsgItemImage = getFirstImageElement();
+    if (localStructMsgItemImage != null)
     {
-      if (localbdqa.a == null) {
-        localbdqa.a = this;
+      if (localStructMsgItemImage.a == null) {
+        localStructMsgItemImage.a = this;
       }
-      Object localObject2 = localbdqa.a();
-      URLDrawable localURLDrawable = ForwardUtils.generateForwardImage(paramContext, (MessageForPic)localObject2);
+      Object localObject2 = localStructMsgItemImage.a();
+      URLDrawable localURLDrawable = ForwardUtils.a(paramContext, (MessageForPic)localObject2);
       if (new File(((MessageForPic)localObject2).path).exists())
       {
-        localbdqa.ac = ((MessageForPic)localObject2).path;
-        if (TextUtils.isEmpty(localbdqa.ac))
+        localStructMsgItemImage.ac = ((MessageForPic)localObject2).path;
+        if (TextUtils.isEmpty(localStructMsgItemImage.ac))
         {
           if (QLog.isColorLevel()) {
             QLog.d("StructMsg", 2, "StructingMsgItemBuilder onMenuItemClicked forward imageElement.mShareImageUrl is null!!!");
@@ -433,9 +349,9 @@ public class StructMsgForImageShare
         }
         for (;;)
         {
-          localbdqa.ac = paramContext;
+          localStructMsgItemImage.ac = paramContext;
           break;
-          localObject2 = AbsDownloader.getFile(URLDrawableHelper.getURL((azkl)localObject2, 65537).toString());
+          localObject2 = AbsDownloader.getFile(URLDrawableHelper.getURL((PicUiInterface)localObject2, 65537).toString());
           paramContext = localObject1;
           if (localObject2 != null)
           {
@@ -457,25 +373,25 @@ public class StructMsgForImageShare
     return false;
   }
   
-  public bdqa getFirstImageElement()
+  public StructMsgItemImage getFirstImageElement()
   {
     if (this.mStructMsgItemLists != null)
     {
       int i = 0;
       while (i < this.mStructMsgItemLists.size())
       {
-        Object localObject = (bdnu)this.mStructMsgItemLists.get(i);
-        if ((localObject instanceof bdnv))
+        Object localObject = (AbsStructMsgElement)this.mStructMsgItemLists.get(i);
+        if ((localObject instanceof AbsStructMsgItem))
         {
-          localObject = (bdnv)localObject;
-          if (((bdnv)localObject).a != null)
+          localObject = (AbsStructMsgItem)localObject;
+          if (((AbsStructMsgItem)localObject).a != null)
           {
             int j = 0;
-            while (j < ((bdnv)localObject).a.size())
+            while (j < ((AbsStructMsgItem)localObject).a.size())
             {
-              bdnu localbdnu = (bdnu)((bdnv)localObject).a.get(j);
-              if ((localbdnu != null) && ((localbdnu instanceof bdqa))) {
-                return (bdqa)localbdnu;
+              AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((AbsStructMsgItem)localObject).a.get(j);
+              if ((localAbsStructMsgElement != null) && ((localAbsStructMsgElement instanceof StructMsgItemImage))) {
+                return (StructMsgItemImage)localAbsStructMsgElement;
               }
               j += 1;
             }
@@ -505,20 +421,20 @@ public class StructMsgForImageShare
     ((LinearLayout.LayoutParams)localObject2).gravity = 17;
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     paramView.setMinimumHeight(i * 120);
-    if (admg.a) {
-      paramView.setContentDescription(paramContext.getString(2131717463));
+    if (ChatActivityConstants.a) {
+      paramView.setContentDescription(paramContext.getString(2131717958));
     }
-    paramContext = ((Resources)localObject1).getDrawable(2130850491);
+    paramContext = ((Resources)localObject1).getDrawable(2130850894);
     localObject1 = getFirstImageElement();
-    if ((localObject1 != null) && (((bdqa)localObject1).ac != null))
+    if ((localObject1 != null) && (((StructMsgItemImage)localObject1).ac != null))
     {
-      localObject2 = ((bdqa)localObject1).ac;
+      localObject2 = ((StructMsgItemImage)localObject1).ac;
       if ((!((String)localObject2).startsWith("http://")) && (!((String)localObject2).startsWith("https://")))
       {
-        localObject2 = nwh.a(((bdqa)localObject1).ac, i * 140);
+        localObject2 = com.tencent.biz.common.util.ImageUtil.a(((StructMsgItemImage)localObject1).ac, i * 140);
         if (localObject2 != null)
         {
-          paramView.setImageBitmap(bheg.a((Bitmap)localObject2, new File(((bdqa)localObject1).ac)));
+          paramView.setImageBitmap(com.tencent.mobileqq.utils.ImageUtil.a((Bitmap)localObject2, new File(((StructMsgItemImage)localObject1).ac)));
           return paramView;
         }
         paramView.setImageDrawable(paramContext);
@@ -542,27 +458,27 @@ public class StructMsgForImageShare
     return this.mMsgBrief;
   }
   
-  public View getView(Context paramContext, View paramView, aftk paramaftk, Bundle paramBundle)
+  public View getView(Context paramContext, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, Bundle paramBundle)
   {
     if (this.mMsgException)
     {
-      paramContext = getVersionExceptionView(paramContext, paramView, paramaftk, paramBundle);
-      paramContext.setId(2131378157);
-      paramContext.setTag(2131378157, this);
+      paramContext = getVersionExceptionView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle);
+      paramContext.setId(2131378578);
+      paramContext.setTag(2131378578, this);
       return paramContext;
     }
-    paramaftk = (ViewGroup)super.getView(paramContext, paramView, paramaftk, paramBundle);
-    bdqa localbdqa = getFirstImageElement();
-    if (localbdqa != null)
+    paramOnLongClickAndTouchListener = (ViewGroup)super.getView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle);
+    StructMsgItemImage localStructMsgItemImage = getFirstImageElement();
+    if (localStructMsgItemImage != null)
     {
-      localbdqa.a = this;
-      if ((paramaftk.getChildCount() == 1) && ((paramaftk.getChildAt(0) instanceof BubbleImageView)) && (localbdqa.a())) {
-        localbdqa.a(paramContext, paramaftk.getChildAt(0), paramBundle);
+      localStructMsgItemImage.a = this;
+      if ((paramOnLongClickAndTouchListener.getChildCount() == 1) && ((paramOnLongClickAndTouchListener.getChildAt(0) instanceof BubbleImageView)) && (localStructMsgItemImage.a())) {
+        localStructMsgItemImage.a(paramContext, paramOnLongClickAndTouchListener.getChildAt(0), paramBundle);
       }
     }
     else
     {
-      paramContext = paramaftk.getLayoutParams();
+      paramContext = paramOnLongClickAndTouchListener.getLayoutParams();
       if (paramContext != null) {
         break label168;
       }
@@ -570,12 +486,12 @@ public class StructMsgForImageShare
     }
     for (;;)
     {
-      paramaftk.setLayoutParams(paramContext);
-      paramaftk.setBackgroundDrawable(null);
-      paramaftk.setId(2131378157);
-      paramaftk.setTag(2131378157, this);
-      return paramaftk;
-      paramaftk.addView(localbdqa.a(paramContext, paramView, paramBundle));
+      paramOnLongClickAndTouchListener.setLayoutParams(paramContext);
+      paramOnLongClickAndTouchListener.setBackgroundDrawable(null);
+      paramOnLongClickAndTouchListener.setId(2131378578);
+      paramOnLongClickAndTouchListener.setTag(2131378578, this);
+      return paramOnLongClickAndTouchListener;
+      paramOnLongClickAndTouchListener.addView(localStructMsgItemImage.a(paramContext, paramView, paramBundle));
       break;
       label168:
       paramContext.height = -2;
@@ -583,40 +499,40 @@ public class StructMsgForImageShare
     }
   }
   
-  protected boolean parseContentNode(bdpl parambdpl)
+  protected boolean parseContentNode(StructMsgNode paramStructMsgNode)
   {
     boolean bool2 = false;
     boolean bool1;
-    if (parambdpl == null)
+    if (paramStructMsgNode == null)
     {
       bool1 = true;
       return bool1;
     }
-    if ("item".equals(parambdpl.b)) {}
-    for (Object localObject = parambdpl.a("layout");; localObject = bdoe.a(parambdpl.b))
+    if ("item".equals(paramStructMsgNode.b)) {}
+    for (Object localObject = paramStructMsgNode.a("layout");; localObject = StructMsgElementFactory.a(paramStructMsgNode.b))
     {
       try
       {
         if (!TextUtils.isEmpty((CharSequence)localObject)) {}
         for (int i = Integer.parseInt((String)localObject);; i = 0)
         {
-          localObject = bdoe.a(i);
+          localObject = StructMsgElementFactory.a(i);
           bool1 = bool2;
           if (localObject == null) {
             break;
           }
           bool1 = bool2;
-          if (!((bdnu)localObject).a(parambdpl)) {
+          if (!((AbsStructMsgElement)localObject).a(paramStructMsgNode)) {
             break;
           }
-          addItem((bdnu)localObject);
+          addItem((AbsStructMsgElement)localObject);
           return true;
         }
         if (!QLog.isColorLevel()) {
           break;
         }
       }
-      catch (NumberFormatException parambdpl)
+      catch (NumberFormatException paramStructMsgNode)
       {
         bool1 = bool2;
       }
@@ -651,11 +567,11 @@ public class StructMsgForImageShare
           this.mContentCover = paramObjectInput.readUTF();
           this.mContentTitle = paramObjectInput.readUTF();
           this.mContentSummary = paramObjectInput.readUTF();
-          localObject = bdoe.a(this.mContentLayout);
-          ((bdnv)localObject).a(new bdpx(this.mContentCover));
-          ((bdnv)localObject).a(new StructMsgItemTitle(this.mContentTitle));
-          ((bdnv)localObject).a(new bdsv(this.mContentSummary));
-          addItem((bdnu)localObject);
+          localObject = StructMsgElementFactory.a(this.mContentLayout);
+          ((AbsStructMsgItem)localObject).a(new StructMsgItemCover(this.mContentCover));
+          ((AbsStructMsgItem)localObject).a(new StructMsgItemTitle(this.mContentTitle));
+          ((AbsStructMsgItem)localObject).a(new StructMsgItemSummary(this.mContentSummary));
+          addItem((AbsStructMsgElement)localObject);
           this.mSourceAppid = paramObjectInput.readLong();
           this.mSourceIcon = paramObjectInput.readUTF();
           this.mSourceName = paramObjectInput.readUTF();
@@ -689,33 +605,33 @@ public class StructMsgForImageShare
           localObject = paramObjectInput.readUTF();
           if ("item".equals(localObject))
           {
-            localObject = bdoe.a(paramObjectInput.readInt());
+            localObject = StructMsgElementFactory.a(paramObjectInput.readInt());
             j = i;
             if (localObject == null) {
               break label1000;
             }
-            ((bdnu)localObject).a(paramObjectInput);
+            ((AbsStructMsgElement)localObject).a(paramObjectInput);
             j = i;
-            if (!TextUtils.isEmpty(((bdnu)localObject).c))
+            if (!TextUtils.isEmpty(((AbsStructMsgElement)localObject).c))
             {
-              ((bdnu)localObject).aa = String.valueOf(i);
+              ((AbsStructMsgElement)localObject).aa = String.valueOf(i);
               j = i + 1;
             }
-            ((bdnu)localObject).ab = this.uin;
-            addItem((bdnu)localObject);
+            ((AbsStructMsgElement)localObject).ab = this.uin;
+            addItem((AbsStructMsgElement)localObject);
             break label1000;
           }
-          bdnu localbdnu = bdoe.a((String)localObject);
-          localObject = localbdnu;
-          if (localbdnu == null) {
+          AbsStructMsgElement localAbsStructMsgElement = StructMsgElementFactory.a((String)localObject);
+          localObject = localAbsStructMsgElement;
+          if (localAbsStructMsgElement == null) {
             continue;
           }
-          localObject = localbdnu;
-          if (!bdnv.class.isInstance(localbdnu)) {
+          localObject = localAbsStructMsgElement;
+          if (!AbsStructMsgItem.class.isInstance(localAbsStructMsgElement)) {
             continue;
           }
           paramObjectInput.readInt();
-          localObject = localbdnu;
+          localObject = localAbsStructMsgElement;
           continue;
         }
         this.mSourceAppid = paramObjectInput.readLong();
@@ -750,9 +666,9 @@ public class StructMsgForImageShare
         i = m;
         while (i < this.mStructMsgItemLists.size())
         {
-          localObject = (bdnu)this.mStructMsgItemLists.get(i);
-          ((bdnu)localObject).a = this.msgId;
-          ((bdnu)localObject).n = this.mPromotionType;
+          localObject = (AbsStructMsgElement)this.mStructMsgItemLists.get(i);
+          ((AbsStructMsgElement)localObject).a = this.msgId;
+          ((AbsStructMsgElement)localObject).n = this.mPromotionType;
           i += 1;
         }
         if (n >= 5)
@@ -801,23 +717,23 @@ public class StructMsgForImageShare
   
   public void report(Object paramObject)
   {
-    bdqa localbdqa = getFirstImageElement();
-    if ((localbdqa == null) || (!localbdqa.a())) {}
+    StructMsgItemImage localStructMsgItemImage = getFirstImageElement();
+    if ((localStructMsgItemImage == null) || (!localStructMsgItemImage.a())) {}
     do
     {
       do
       {
         return;
       } while (!(paramObject instanceof Long));
-      bdla.b(null, "dc00898", "", "", "0X800A426", "0X800A426", 0, 0, "", ForwardUtils.toTypeSimple(this.uinType), String.valueOf(this.mSourceAppid), getTitleFromBrief());
+      ReportController.b(null, "dc00898", "", "", "0X800A426", "0X800A426", 0, 0, "", ForwardUtils.b(this.uinType), String.valueOf(this.mSourceAppid), getTitleFromBrief());
     } while (!QLog.isColorLevel());
     QLog.d("StructMsg", 2, new Object[] { "大图曝光=", "0X800A426", ", appid=", Long.valueOf(this.mSourceAppid), ", getTitleFromBrief=", getTitleFromBrief() });
   }
   
   protected void setCompoundDrawable(TextView paramTextView, Drawable paramDrawable, Resources paramResources)
   {
-    bdqa localbdqa = getFirstImageElement();
-    if ((localbdqa == null) || (!localbdqa.a()))
+    StructMsgItemImage localStructMsgItemImage = getFirstImageElement();
+    if ((localStructMsgItemImage == null) || (!localStructMsgItemImage.a()))
     {
       super.setCompoundDrawable(paramTextView, paramDrawable, paramResources);
       return;
@@ -825,11 +741,11 @@ public class StructMsgForImageShare
     ThreadManagerV2.executeOnSubThread(new StructMsgForImageShare.2(this, paramDrawable, paramResources, paramTextView));
   }
   
-  protected void toContentXml(bdnt parambdnt)
+  protected void toContentXml(AbsStructMsg.XmlSerializerWithFilter paramXmlSerializerWithFilter)
   {
     Iterator localIterator = iterator();
     while (localIterator.hasNext()) {
-      ((bdnu)localIterator.next()).a(parambdnt);
+      ((AbsStructMsgElement)localIterator.next()).a(paramXmlSerializerWithFilter);
     }
   }
   
@@ -881,7 +797,7 @@ public class StructMsgForImageShare
       paramObjectOutput.writeInt(getItemCount());
       localObject = iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((bdnu)((Iterator)localObject).next()).a(paramObjectOutput);
+        ((AbsStructMsgElement)((Iterator)localObject).next()).a(paramObjectOutput);
       }
       localObject = this.mMsgAction;
       break;

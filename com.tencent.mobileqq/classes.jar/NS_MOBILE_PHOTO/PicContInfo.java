@@ -8,7 +8,7 @@ public final class PicContInfo
   extends JceStruct
 {
   public String md5 = "";
-  public long size;
+  public long size = 0L;
   
   public PicContInfo() {}
   

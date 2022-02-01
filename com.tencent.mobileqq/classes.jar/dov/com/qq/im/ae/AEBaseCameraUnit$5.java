@@ -1,12 +1,11 @@
 package dov.com.qq.im.ae;
 
-import bmvf;
-import borg;
+import dov.com.qq.im.setting.ICameraEntrance;
 
-public class AEBaseCameraUnit$5
+class AEBaseCameraUnit$5
   implements Runnable
 {
-  public AEBaseCameraUnit$5(bmvf parambmvf) {}
+  AEBaseCameraUnit$5(AEBaseCameraUnit paramAEBaseCameraUnit) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class AEBaseCameraUnit$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.AEBaseCameraUnit.5
  * JD-Core Version:    0.7.0.1
  */

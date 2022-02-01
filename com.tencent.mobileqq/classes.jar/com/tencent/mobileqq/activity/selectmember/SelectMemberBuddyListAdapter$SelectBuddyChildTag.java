@@ -1,0 +1,16 @@
+package com.tencent.mobileqq.activity.selectmember;
+
+import android.view.View;
+
+public class SelectMemberBuddyListAdapter$SelectBuddyChildTag
+  extends SelectMemberBuddyListAdapter.ViewTag
+{
+  public long a;
+  public View a;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter.SelectBuddyChildTag
+ * JD-Core Version:    0.7.0.1
+ */

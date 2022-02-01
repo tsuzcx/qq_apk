@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.view;
 
-import agkb;
-import amos;
 import android.annotation.TargetApi;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.ShortcutBarAIOHelper;
+import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
 import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import java.lang.ref.WeakReference;
 
@@ -32,11 +32,11 @@ public class InputGlobalLayoutListener
     paramView = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (paramView != null)
     {
-      if (paramView.mCustomTitleView != null) {
-        paramInt1 = paramView.mCustomTitleView.getHeight();
+      if (paramView.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO != null) {
+        paramInt1 = paramView.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.getHeight();
       }
-      if (paramView.mApolloViewController != null) {
-        paramView.mApolloViewController.b(paramInt1);
+      if (paramView.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController != null) {
+        paramView.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.a(paramInt1, paramView);
       }
     }
   }
@@ -44,16 +44,16 @@ public class InputGlobalLayoutListener
   public void run()
   {
     BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseChatPie == null) || (localBaseChatPie.mApolloViewController == null)) {}
+    if ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController == null)) {}
     for (;;)
     {
       return;
-      localBaseChatPie.mApolloViewController.d(this.jdField_a_of_type_Int);
-      agkb localagkb = (agkb)localBaseChatPie.getHelper(52);
-      if ((localagkb != null) && (localagkb.b())) {}
+      localBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.c(this.jdField_a_of_type_Int);
+      ShortcutBarAIOHelper localShortcutBarAIOHelper = (ShortcutBarAIOHelper)localBaseChatPie.a(52);
+      if ((localShortcutBarAIOHelper != null) && (localShortcutBarAIOHelper.b())) {}
       for (int i = 1; i == 0; i = 0)
       {
-        localBaseChatPie.mApolloViewController.e(this.jdField_a_of_type_Int);
+        localBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.d(this.jdField_a_of_type_Int);
         return;
       }
     }
@@ -61,7 +61,7 @@ public class InputGlobalLayoutListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.InputGlobalLayoutListener
  * JD-Core Version:    0.7.0.1
  */

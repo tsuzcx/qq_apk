@@ -114,7 +114,7 @@ public class TPPlayerDecoderCapability
   
   public static boolean isVCodecCapabilitySupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    if (TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC == paramInt1)
+    if (102 == paramInt1)
     {
       String str = "";
       switch (paramInt2)
@@ -160,7 +160,7 @@ public class TPPlayerDecoderCapability
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPPlayerDecoderCapability
  * JD-Core Version:    0.7.0.1
  */

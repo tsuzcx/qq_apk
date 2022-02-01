@@ -1,17 +1,17 @@
 package com.tencent.avcore.jni.dav;
 
 import android.content.Context;
+import com.tencent.avcore.data.AVCoreSystemInfo;
+import com.tencent.avcore.engine.dav.IDavAdapter;
+import com.tencent.avcore.engine.dav.IDavEngine;
+import com.tencent.avcore.engine.dav.IDavEventListener;
 import com.tencent.avcore.jni.data.AVCorePbInfo;
 import com.tencent.avcore.jni.data.NetAddr;
 import com.tencent.avcore.jni.data.SDKConfigInfo;
-import nbp;
-import nbx;
-import nby;
-import nbz;
-import ncg;
+import com.tencent.avcore.netchannel.IDavNetChannel;
 
 public class DavEngineProxy
-  implements nby
+  implements IDavEngine
 {
   private DavEngineJni mJniImpl;
   
@@ -107,9 +107,9 @@ public class DavEngineProxy
     return this.mJniImpl.ignore(paramLong);
   }
   
-  public int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13)
+  public int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15)
   {
-    return this.mJniImpl.init(paramContext, paramLong, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramInt, paramString12, paramSDKConfigInfo, paramBoolean1, paramBoolean2, paramString13);
+    return this.mJniImpl.init(paramContext, paramLong, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramInt, paramString12, paramSDKConfigInfo, paramBoolean1, paramBoolean2, paramString13, paramString14, paramString15);
   }
   
   public void initContext()
@@ -117,9 +117,9 @@ public class DavEngineProxy
     this.mJniImpl.initContext();
   }
   
-  public void initEngine(nbp paramnbp, ncg paramncg, nbx paramnbx, nbz paramnbz)
+  public void initEngine(AVCoreSystemInfo paramAVCoreSystemInfo, IDavNetChannel paramIDavNetChannel, IDavAdapter paramIDavAdapter, IDavEventListener paramIDavEventListener)
   {
-    this.mJniImpl = new DavEngineJni(paramnbp, paramncg, paramnbx, paramnbz);
+    this.mJniImpl = new DavEngineJni(paramAVCoreSystemInfo, paramIDavNetChannel, paramIDavAdapter, paramIDavEventListener);
   }
   
   public boolean isEnableLoopback()
@@ -429,7 +429,7 @@ public class DavEngineProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avcore.jni.dav.DavEngineProxy
  * JD-Core Version:    0.7.0.1
  */

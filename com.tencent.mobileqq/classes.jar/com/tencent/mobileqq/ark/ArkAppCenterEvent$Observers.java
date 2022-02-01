@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.ark;
 
-import apyn;
 import java.util.HashMap;
 
 public class ArkAppCenterEvent$Observers
-  extends HashMap<String, apyn>
+  extends HashMap<String, ArkAppCenterEvent.Callback>
 {}
 
 

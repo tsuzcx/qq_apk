@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.smtt.utils.TbsLog;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -81,7 +80,7 @@ public class e
         return null;
       }
     }
-    catch (IOException paramString)
+    catch (Exception paramString)
     {
       TbsLog.e(a, "Http exception: " + paramString.getMessage());
     }
@@ -99,7 +98,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.e
  * JD-Core Version:    0.7.0.1
  */

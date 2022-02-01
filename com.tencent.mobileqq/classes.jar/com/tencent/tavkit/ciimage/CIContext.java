@@ -1,5 +1,6 @@
 package com.tencent.tavkit.ciimage;
 
+import android.opengl.GLES20;
 import android.support.annotation.NonNull;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMSampleBuffer;
@@ -28,11 +29,21 @@ public class CIContext
     return newTextureInfo((int)paramFloat1, (int)paramFloat2);
   }
   
-  @NonNull
   public static TextureInfo newTextureInfo(int paramInt1, int paramInt2)
+  {
+    return newTextureInfo(paramInt1, paramInt2, false);
+  }
+  
+  @NonNull
+  public static TextureInfo newTextureInfo(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     TextureInfo localTextureInfo = new TextureInfo(RenderContext.createTexture(3553), 3553, paramInt1, paramInt2, null, 0);
     localTextureInfo.setFormat(6408);
+    if (paramBoolean)
+    {
+      GLES20.glBindTexture(3553, localTextureInfo.textureID);
+      GLES20.glTexImage2D(3553, 0, localTextureInfo.getFormat(), localTextureInfo.width, localTextureInfo.height, 0, localTextureInfo.getFormat(), 5121, null);
+    }
     return localTextureInfo;
   }
   
@@ -109,7 +120,7 @@ public class CIContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.CIContext
  * JD-Core Version:    0.7.0.1
  */

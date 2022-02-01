@@ -14,12 +14,11 @@ import android.util.DisplayMetrics;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
-import bhmw;
-import bhoo;
-import bhop;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
+import com.tencent.mobileqq.vas.apng.api.VasApngFactory.Options;
 import com.tencent.qphone.base.util.QLog;
 
 public class CoolTextView
@@ -28,8 +27,8 @@ public class CoolTextView
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private bhmw jdField_a_of_type_Bhmw = new bhmw();
   URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private CoolTextView.CoolBuilder jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder = new CoolTextView.CoolBuilder();
   int jdField_b_of_type_Int;
   Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
   URLDrawable jdField_b_of_type_ComTencentImageURLDrawable;
@@ -79,22 +78,22 @@ public class CoolTextView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     a(paramCanvas);
     super.onDraw(paramCanvas);
-    paramCanvas.drawText(this.jdField_a_of_type_Bhmw.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_Float, getPaint());
+    paramCanvas.drawText(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_Float, getPaint());
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    float f = Layout.getDesiredWidth(this.jdField_a_of_type_Bhmw.jdField_d_of_type_JavaLangString, getPaint());
-    setMeasuredDimension(this.jdField_a_of_type_Int + (int)f + ViewUtils.dip2px(7.5F), Math.max(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int));
+    float f = Layout.getDesiredWidth(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_d_of_type_JavaLangString, getPaint());
+    setMeasuredDimension(this.jdField_a_of_type_Int + (int)f + ViewUtils.a(7.5F), Math.max(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int));
     paramInt1 = Math.abs(this.jdField_b_of_type_Int - this.jdField_c_of_type_Int);
     paramInt2 = this.jdField_c_of_type_Int + paramInt1;
     int i = this.jdField_a_of_type_Int;
-    i = (int)f + i + ViewUtils.dip2px(7.5F);
+    i = (int)f + i + ViewUtils.a(7.5F);
     this.jdField_b_of_type_AndroidGraphicsRect.left = 10;
     this.jdField_b_of_type_AndroidGraphicsRect.right = i;
     this.jdField_b_of_type_AndroidGraphicsRect.top = (paramInt1 - this.jdField_d_of_type_Int);
@@ -107,45 +106,54 @@ public class CoolTextView
     this.jdField_a_of_type_Float = ((localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.bottom + this.jdField_a_of_type_AndroidGraphicsRect.centerY());
   }
   
-  public void setCoolBuilder(bhmw parambhmw)
+  public void setCoolBuilder(CoolTextView.CoolBuilder paramCoolBuilder)
   {
-    if (parambhmw != null) {
-      this.jdField_a_of_type_Bhmw = parambhmw;
+    if (paramCoolBuilder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder = paramCoolBuilder;
     }
-    this.jdField_a_of_type_Int = ViewUtils.dip2px(this.jdField_a_of_type_Bhmw.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = ViewUtils.dip2px(this.jdField_a_of_type_Bhmw.jdField_b_of_type_Int);
-    this.jdField_c_of_type_Int = ViewUtils.dip2px(this.jdField_a_of_type_Bhmw.jdField_c_of_type_Int);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bhmw.jdField_b_of_type_JavaLangString))
+    this.jdField_a_of_type_Int = ViewUtils.a(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_a_of_type_Int);
+    this.jdField_b_of_type_Int = ViewUtils.a(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_b_of_type_Int);
+    this.jdField_c_of_type_Int = ViewUtils.a(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_c_of_type_Int);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_b_of_type_JavaLangString))
     {
-      parambhmw = new bhop();
-      parambhmw.a(URLDrawableHelper.TRANSPARENT);
-      parambhmw.a(new int[] { 9 });
-      this.jdField_a_of_type_ComTencentImageURLDrawable = bhoo.a(this.jdField_a_of_type_Bhmw.jdField_b_of_type_JavaLangString, parambhmw);
+      paramCoolBuilder = new VasApngFactory.Options();
+      paramCoolBuilder.a(URLDrawableHelper.TRANSPARENT);
+      paramCoolBuilder.a(new int[] { 9 });
+      this.jdField_a_of_type_ComTencentImageURLDrawable = VasApngFactory.a(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_b_of_type_JavaLangString, paramCoolBuilder);
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bhmw.jdField_c_of_type_JavaLangString)) {
-      this.jdField_b_of_type_ComTencentImageURLDrawable = VasApngUtil.getRegionUrlDrawable(this.jdField_a_of_type_Bhmw.jdField_c_of_type_JavaLangString, getResources().getDisplayMetrics().densityDpi);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_c_of_type_JavaLangString)) {
+      this.jdField_b_of_type_ComTencentImageURLDrawable = VasApngUtil.getRegionUrlDrawable(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_c_of_type_JavaLangString, getResources().getDisplayMetrics().densityDpi);
     }
-    setTextSize(1, this.jdField_a_of_type_Bhmw.jdField_d_of_type_Int);
-    try
+    for (;;)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bhmw.jdField_a_of_type_JavaLangString)) {
-        setTextColor(Color.parseColor(this.jdField_a_of_type_Bhmw.jdField_a_of_type_JavaLangString));
-      }
-      a();
-      return;
-    }
-    catch (Exception parambhmw)
-    {
-      for (;;)
+      setTextSize(1, this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_d_of_type_Int);
+      try
       {
-        QLog.d("CoolTextView", 2, "QID_LOG,color_parse," + parambhmw.getMessage());
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_a_of_type_JavaLangString)) {
+          setTextColor(Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqVasCoolTextView$CoolBuilder.jdField_a_of_type_JavaLangString));
+        }
+        for (;;)
+        {
+          a();
+          return;
+          this.jdField_b_of_type_ComTencentImageURLDrawable = null;
+          break;
+          setTextColor(getResources().getColor(2131167033));
+        }
+      }
+      catch (Exception paramCoolBuilder)
+      {
+        for (;;)
+        {
+          QLog.d("CoolTextView", 2, "QID_LOG,color_parse," + paramCoolBuilder.getMessage());
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.CoolTextView
  * JD-Core Version:    0.7.0.1
  */

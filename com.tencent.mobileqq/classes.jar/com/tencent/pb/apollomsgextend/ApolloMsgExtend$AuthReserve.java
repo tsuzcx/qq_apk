@@ -17,6 +17,7 @@ public final class ApolloMsgExtend$AuthReserve
   public ApolloMsgExtend.ThreeDBaseInfo act3d = new ApolloMsgExtend.ThreeDBaseInfo();
   public final PBUInt32Field action_type = PBField.initUInt32(0);
   public final PBInt64Field action_ver = PBField.initInt64(0L);
+  public final PBInt64Field cur_used_id_type = PBField.initInt64(0L);
   public final PBInt64Field diy_voice_begin_ts = PBField.initInt64(0L);
   public final PBUInt32Field diy_voice_id = PBField.initUInt32(0);
   public final PBBytesField extend_json = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -44,12 +45,12 @@ public final class ApolloMsgExtend$AuthReserve
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 66, 72, 80, 90, 96, 104, 112, 120, 130, 136, 146, 154, 160, 168, 176, 184 }, new String[] { "diy_voice_id", "diy_voice_begin_ts", "sign_ts", "sub_type", "game_id", "room_id", "img_type", "game_text", "game_ver", "action_ver", "game_name", "game_mode", "slave_action_id", "slave_uin_list", "action_type", "extend_json", "game_ver_735", "game_share_ark_json", "act3d", "sticker_width", "sticker_height", "welcome_id", "uin_list" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L) }, AuthReserve.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 66, 72, 80, 90, 96, 104, 112, 120, 130, 136, 146, 154, 160, 168, 176, 184, 192 }, new String[] { "diy_voice_id", "diy_voice_begin_ts", "sign_ts", "sub_type", "game_id", "room_id", "img_type", "game_text", "game_ver", "action_ver", "game_name", "game_mode", "slave_action_id", "slave_uin_list", "action_type", "extend_json", "game_ver_735", "game_share_ark_json", "act3d", "sticker_width", "sticker_height", "welcome_id", "uin_list", "cur_used_id_type" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, AuthReserve.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.pb.apollomsgextend.ApolloMsgExtend.AuthReserve
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import bnrh;
-import bnsw;
-import bnye;
 import com.tencent.tavcut.session.TAVCutImageSession;
 import com.tencent.tavcut.view.TAVCutImageView;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.aeeditor.data.AEEditorImageInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,26 +21,26 @@ public class AEEditorImagePagerAdapter
   extends PagerAdapter
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorImagePagerAdapter.class.getSimpleName();
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray;
-  private bnye jdField_a_of_type_Bnye;
   private TAVCutImageSession jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
-  private HashMap<String, bnsw> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private AEEditorImagePagerAdapter.ImagePagerAdapterCallback jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImagePagerAdapter$ImagePagerAdapterCallback;
+  private HashMap<String, AEEditorImageInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   private HashMap<Integer, Boolean> b = new HashMap();
   
-  public AEEditorImagePagerAdapter(TAVCutImageSession paramTAVCutImageSession, List<String> paramList, List<bnsw> paramList1, SparseArray<String> paramSparseArray, bnye parambnye)
+  public AEEditorImagePagerAdapter(TAVCutImageSession paramTAVCutImageSession, List<String> paramList, List<AEEditorImageInfo> paramList1, SparseArray<String> paramSparseArray, AEEditorImagePagerAdapter.ImagePagerAdapterCallback paramImagePagerAdapterCallback)
   {
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession = paramTAVCutImageSession;
     this.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
-    this.jdField_a_of_type_Bnye = parambnye;
+    this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImagePagerAdapter$ImagePagerAdapterCallback = paramImagePagerAdapterCallback;
     if (paramList != null) {
       this.jdField_a_of_type_JavaUtilList = paramList;
     }
     paramTAVCutImageSession = paramList1.iterator();
     while (paramTAVCutImageSession.hasNext())
     {
-      paramList = (bnsw)paramTAVCutImageSession.next();
+      paramList = (AEEditorImageInfo)paramTAVCutImageSession.next();
       this.jdField_a_of_type_JavaUtilHashMap.put(paramList.jdField_a_of_type_JavaLangString, paramList);
     }
   }
@@ -49,10 +48,10 @@ public class AEEditorImagePagerAdapter
   private void a(ViewGroup paramViewGroup, int paramInt, TAVCutImageView paramTAVCutImageView)
   {
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.setTAVCutImageView(paramInt, paramTAVCutImageView);
-    if (this.jdField_a_of_type_Bnye != null) {
-      this.jdField_a_of_type_Bnye.a(paramInt);
+    if (this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImagePagerAdapter$ImagePagerAdapterCallback != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImagePagerAdapter$ImagePagerAdapterCallback.a(paramInt);
     }
-    bnrh.b(jdField_a_of_type_JavaLangString, "render position = " + paramInt);
+    AEQLog.b(jdField_a_of_type_JavaLangString, "render position = " + paramInt);
   }
   
   public void a()
@@ -82,8 +81,8 @@ public class AEEditorImagePagerAdapter
   @NonNull
   public Object instantiateItem(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558560, null);
-    TAVCutImageView localTAVCutImageView = (TAVCutImageView)localView.findViewById(2131378515);
+    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558581, null);
+    TAVCutImageView localTAVCutImageView = (TAVCutImageView)localView.findViewById(2131378946);
     localTAVCutImageView.setTag(Integer.valueOf(paramInt));
     this.b.put(Integer.valueOf(paramInt), Boolean.valueOf(true));
     AEEditorImagePagerAdapter.1 local1 = new AEEditorImagePagerAdapter.1(this, paramViewGroup, paramInt, localTAVCutImageView);
@@ -105,7 +104,7 @@ public class AEEditorImagePagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.AEEditorImagePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

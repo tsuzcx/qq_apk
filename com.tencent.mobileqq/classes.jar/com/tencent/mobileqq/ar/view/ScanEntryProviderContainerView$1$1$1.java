@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.os.Bundle;
-import apqq;
-import apqr;
 
-public class ScanEntryProviderContainerView$1$1$1
+class ScanEntryProviderContainerView$1$1$1
   implements Runnable
 {
-  public ScanEntryProviderContainerView$1$1$1(apqr paramapqr) {}
+  ScanEntryProviderContainerView$1$1$1(ScanEntryProviderContainerView.1.1 param1) {}
   
   public void run()
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("fromSource", 1);
-    this.a.jdField_a_of_type_Apqq.a.a(this.a.jdField_a_of_type_JavaLangInteger.intValue(), localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView$1.a.a(this.a.jdField_a_of_type_JavaLangInteger.intValue(), localBundle);
   }
 }
 

@@ -1,13 +1,12 @@
 package dov.com.qq.im.ae;
 
-import bmxa;
-import borh;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import com.tencent.util.LiuHaiUtils;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
-public class AEPituCameraUnit$12
+class AEPituCameraUnit$12
   implements Runnable
 {
-  public AEPituCameraUnit$12(bmxa parambmxa) {}
+  AEPituCameraUnit$12(AEPituCameraUnit paramAEPituCameraUnit) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class AEPituCameraUnit$12
     }
     for (;;)
     {
-      this.this$0.ab();
+      this.this$0.aa();
       return;
       LiuHaiUtils.c(this.this$0.a.a());
     }
@@ -26,7 +25,7 @@ public class AEPituCameraUnit$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.12
  * JD-Core Version:    0.7.0.1
  */

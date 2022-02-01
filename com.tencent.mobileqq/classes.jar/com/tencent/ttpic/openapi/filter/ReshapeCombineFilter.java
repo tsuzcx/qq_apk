@@ -5,7 +5,7 @@ import com.tencent.aekit.openrender.UniformParam.FloatsParam;
 import com.tencent.aekit.openrender.UniformParam.TextureParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.filter.BaseFilter;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.util.Map;
 
 public class ReshapeCombineFilter
@@ -77,13 +77,13 @@ public class ReshapeCombineFilter
     if (positionArray == null) {
       positionArray = new float[mFullscreenVerticesPortrait.length];
     }
-    VideoMaterialUtil.genFullScreenVertices(positionArray, 128, 128, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    VideoMaterial.genFullScreenVertices(positionArray, 128, 128, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
     setPositions(positionArray, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.ReshapeCombineFilter
  * JD-Core Version:    0.7.0.1
  */

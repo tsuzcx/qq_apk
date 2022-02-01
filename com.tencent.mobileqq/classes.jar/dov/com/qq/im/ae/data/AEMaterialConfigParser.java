@@ -1,9 +1,6 @@
 package dov.com.qq.im.ae.data;
 
 import android.text.TextUtils;
-import bnka;
-import bnkb;
-import bnke;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaAdditionalPackage;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
@@ -11,11 +8,11 @@ import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 import com.google.gson.Gson;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.device.GpuScopeAttrs;
 import com.tencent.ttpic.baseutils.device.GpuScopeAttrs.GpuBean.DeviceModel;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import com.tencent.ttpic.openapi.util.VideoSDKMaterialParser;
+import com.tencent.ttpic.device.DeviceUtils;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.aeeditor.module.params.ParamsUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -33,22 +30,17 @@ public class AEMaterialConfigParser
     jdField_a_of_type_Int = 5;
   }
   
-  public static VideoMaterial a(String paramString)
-  {
-    return VideoSDKMaterialParser.parseVideoMaterial(paramString, "params");
-  }
-  
-  public static ArrayList<bnka> a(String paramString)
+  public static ArrayList<AEMaterialCategory> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {
       return localArrayList;
     }
-    Object localObject1 = new Gson();
+    Object localObject = new Gson();
     try
     {
-      localObject1 = (GetCategoryMaterialRsp)((Gson)localObject1).fromJson(paramString, GetCategoryMaterialRsp.class);
-      if ((localObject1 == null) || (((GetCategoryMaterialRsp)localObject1).Categories == null)) {
+      paramString = (GetCategoryMaterialRsp)((Gson)localObject).fromJson(paramString, GetCategoryMaterialRsp.class);
+      if ((paramString == null) || (paramString.Categories == null)) {
         return localArrayList;
       }
     }
@@ -57,113 +49,140 @@ public class AEMaterialConfigParser
       QLog.d(jdField_a_of_type_JavaLangString, 4, "###  parseMaterialListFromConfig exception = " + paramString.getMessage());
       throw new AEMaterialConfigParser.AEMaterialConfigParseException("parseMaterialListFromConfig error");
     }
-    paramString = new HashMap();
-    localObject1 = ((GetCategoryMaterialRsp)localObject1).Categories.iterator();
+    localObject = new HashMap();
+    Iterator localIterator1 = paramString.Categories.iterator();
     for (;;)
     {
-      bnka localbnka;
-      Object localObject3;
-      bnke localbnke;
+      AEMaterialCategory localAEMaterialCategory;
+      label175:
+      MetaMaterial localMetaMaterial;
+      AEMaterialMetaData localAEMaterialMetaData;
       Map localMap;
-      if (((Iterator)localObject1).hasNext())
+      if (localIterator1.hasNext())
       {
-        Object localObject2 = (MetaCategory)((Iterator)localObject1).next();
-        localbnka = new bnka();
-        localbnka.b = ((MetaCategory)localObject2).name;
-        localbnka.a = new ArrayList();
-        localObject2 = ((MetaCategory)localObject2).materials.iterator();
-        for (;;)
+        paramString = (MetaCategory)localIterator1.next();
+        localAEMaterialCategory = new AEMaterialCategory();
+        localAEMaterialCategory.b = paramString.name;
+        try
         {
-          if (((Iterator)localObject2).hasNext())
+          localAEMaterialCategory.jdField_a_of_type_Int = Integer.parseInt(paramString.id);
+          localAEMaterialCategory.jdField_a_of_type_JavaUtilList = new ArrayList();
+          Iterator localIterator2 = paramString.materials.iterator();
+          for (;;)
           {
-            localObject3 = (MetaMaterial)((Iterator)localObject2).next();
-            if (((!((MetaMaterial)localObject3).id.contains("_3DFaceFila")) || (bnkb.b())) && ((!((MetaMaterial)localObject3).id.contains("_haircolor")) || ((DeviceUtils.hasDeviceNormal(BaseApplicationImpl.getContext())) && ((GpuScopeAttrs.getInstance().getDeviceModel() == null) || (GpuScopeAttrs.getInstance().getDeviceModel().hairColor))))) {
-              if ((paramString.containsKey(((MetaMaterial)localObject3).id)) && (paramString.get(((MetaMaterial)localObject3).id) != null))
-              {
-                localObject3 = (bnke)paramString.get(((MetaMaterial)localObject3).id);
-                localbnka.a.add(localObject3);
+            if (!localIterator2.hasNext()) {
+              break label755;
+            }
+            localMetaMaterial = (MetaMaterial)localIterator2.next();
+            if (((!localMetaMaterial.id.contains("_3DFaceFila")) || (AEMaterialManager.b())) && ((!localMetaMaterial.id.contains("_haircolor")) || ((DeviceUtils.hasDeviceNormal(BaseApplicationImpl.getContext())) && ((GpuScopeAttrs.getInstance().getDeviceModel() == null) || (GpuScopeAttrs.getInstance().getDeviceModel().hairColor)))))
+            {
+              if ((!((Map)localObject).containsKey(localMetaMaterial.id)) || (((Map)localObject).get(localMetaMaterial.id) == null)) {
+                break;
               }
-              else
-              {
-                localbnke = new bnke();
-                localbnke.jdField_c_of_type_JavaLangString = ((MetaMaterial)localObject3).thumbUrl;
-                localMap = ((MetaMaterial)localObject3).additionalFields;
-                if (localMap == null) {
-                  break;
-                }
-              }
+              paramString = (AEMaterialMetaData)((Map)localObject).get(localMetaMaterial.id);
+              localAEMaterialCategory.jdField_a_of_type_JavaUtilList.add(paramString);
             }
           }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            AEQLog.d(jdField_a_of_type_JavaLangString, "categoryid is not integer " + paramString.id);
+          }
+          localAEMaterialMetaData = new AEMaterialMetaData();
+          localAEMaterialMetaData.jdField_c_of_type_JavaLangString = localMetaMaterial.thumbUrl;
+          localMap = localMetaMaterial.additionalFields;
+          if (localMap == null) {}
         }
       }
       try
       {
-        localbnke.jdField_c_of_type_Int = Integer.parseInt((String)localMap.get("kind"));
+        localAEMaterialMetaData.jdField_c_of_type_Int = Integer.parseInt((String)localMap.get("kind"));
         try
         {
           for (;;)
           {
-            label357:
-            localbnke.jdField_d_of_type_Int = Integer.parseInt((String)localMap.get("displayType"));
-            label377:
-            localbnke.g = ((String)localMap.get("qq_camera_top_title"));
-            localbnke.h = ((String)localMap.get("qq_camera_scheme"));
-            localbnke.l = ((String)localMap.get("playshow_cover_img"));
-            localbnke.m = ((String)localMap.get("playshow_display_text"));
-            localbnke.i = ((String)localMap.get("takeSameName"));
+            label401:
+            localAEMaterialMetaData.jdField_d_of_type_Int = Integer.parseInt((String)localMap.get("displayType"));
+            label421:
+            localAEMaterialMetaData.jdField_g_of_type_JavaLangString = ((String)localMap.get("qq_camera_top_title"));
+            localAEMaterialMetaData.h = ((String)localMap.get("qq_camera_scheme"));
+            localAEMaterialMetaData.o = ((String)localMap.get("playshow_cover_img"));
+            localAEMaterialMetaData.p = ((String)localMap.get("playshow_display_text"));
+            localAEMaterialMetaData.i = ((String)localMap.get("takeSameName"));
+            localAEMaterialMetaData.j = ((String)localMap.get("minimum_device_level"));
+            localAEMaterialMetaData.k = ((String)localMap.get("shield_devices"));
             try
             {
               if (!TextUtils.isEmpty((String)localMap.get("showCircleTakeSame"))) {}
-              for (localbnke.jdField_f_of_type_Int = Integer.valueOf((String)localMap.get("showCircleTakeSame")).intValue();; localbnke.jdField_f_of_type_Int = 0)
+              for (localAEMaterialMetaData.jdField_f_of_type_Int = Integer.valueOf((String)localMap.get("showCircleTakeSame")).intValue();; localAEMaterialMetaData.jdField_f_of_type_Int = 0)
               {
-                label503:
-                localbnke.j = ((String)localMap.get("showEntry"));
-                localbnke.jdField_a_of_type_JavaLangString = ((MetaMaterial)localObject3).id;
-                a(localbnke, (MetaMaterial)localObject3);
-                localbnke.jdField_f_of_type_JavaLangString = ((MetaMaterial)localObject3).id;
-                localbnka.a.add(localbnke);
-                paramString.put(((MetaMaterial)localObject3).id, localbnke);
+                label581:
+                localAEMaterialMetaData.m = ((String)localMap.get("showEntry"));
+                paramString = null;
+                if (localMap != null) {
+                  paramString = (String)localMap.get("topic");
+                }
+                if (!TextUtils.isEmpty(paramString)) {
+                  localAEMaterialMetaData.l = paramString;
+                }
+                localAEMaterialMetaData.jdField_a_of_type_JavaLangString = localMetaMaterial.id;
+                localAEMaterialMetaData.jdField_g_of_type_Boolean = a(localAEMaterialMetaData);
+                if (localAEMaterialMetaData.jdField_g_of_type_Boolean) {
+                  break label708;
+                }
+                QLog.d(jdField_a_of_type_JavaLangString, 4, "can not show material id :" + localAEMaterialMetaData.jdField_a_of_type_JavaLangString);
                 break;
               }
             }
-            catch (Throwable localThrowable1)
+            catch (Throwable paramString)
             {
-              break label503;
+              break label581;
+              label708:
+              a(localAEMaterialMetaData, localMetaMaterial);
+              localAEMaterialMetaData.jdField_f_of_type_JavaLangString = localMetaMaterial.id;
+              localAEMaterialCategory.jdField_a_of_type_JavaUtilList.add(localAEMaterialMetaData);
+              ((Map)localObject).put(localMetaMaterial.id, localAEMaterialMetaData);
             }
           }
-          localArrayList.add(localbnka);
+          break label175;
+          label755:
+          localArrayList.add(localAEMaterialCategory);
           continue;
           return localArrayList;
         }
-        catch (Throwable localThrowable2)
+        catch (Throwable paramString)
         {
-          break label377;
+          break label421;
         }
       }
-      catch (Throwable localThrowable3)
+      catch (Throwable paramString)
       {
-        break label357;
+        break label401;
       }
     }
   }
   
-  private static void a(bnke parambnke, MetaMaterial paramMetaMaterial)
+  private static void a(AEMaterialMetaData paramAEMaterialMetaData, MetaMaterial paramMetaMaterial)
   {
     if (paramMetaMaterial.additionalPackage == null)
     {
-      parambnke.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
-      parambnke.e = paramMetaMaterial.packageMd5;
+      paramAEMaterialMetaData.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
+      paramAEMaterialMetaData.e = paramMetaMaterial.packageMd5;
     }
     for (;;)
     {
-      if ((paramMetaMaterial.packageUrl != null) && (!paramMetaMaterial.packageUrl.equals(parambnke.jdField_d_of_type_JavaLangString))) {
-        parambnke.jdField_d_of_type_Boolean = true;
+      if ((paramMetaMaterial.packageUrl != null) && (!paramMetaMaterial.packageUrl.equals(paramAEMaterialMetaData.jdField_d_of_type_JavaLangString)))
+      {
+        paramAEMaterialMetaData.jdField_d_of_type_Boolean = true;
+        AEQLog.a(jdField_a_of_type_JavaLangString, "[parseDowngradeInfo][material_downgrade] 降级完成 : " + paramAEMaterialMetaData.jdField_d_of_type_JavaLangString);
       }
       return;
       if ((TextUtils.isEmpty(paramMetaMaterial.additionalPackage.superLowPackageUrl)) && (TextUtils.isEmpty(paramMetaMaterial.additionalPackage.lowPackageUrl)) && (TextUtils.isEmpty(paramMetaMaterial.additionalPackage.midPackageUrl)) && (TextUtils.isEmpty(paramMetaMaterial.additionalPackage.highPackageUrl)))
       {
-        parambnke.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
-        parambnke.e = paramMetaMaterial.packageMd5;
+        paramAEMaterialMetaData.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
+        paramAEMaterialMetaData.e = paramMetaMaterial.packageMd5;
       }
       else
       {
@@ -183,8 +202,8 @@ public class AEMaterialConfigParser
         int i = j;
         if (!TextUtils.isEmpty(arrayOfString1[j]))
         {
-          parambnke.jdField_d_of_type_JavaLangString = arrayOfString1[j];
-          parambnke.e = arrayOfString2[j];
+          paramAEMaterialMetaData.jdField_d_of_type_JavaLangString = arrayOfString1[j];
+          paramAEMaterialMetaData.e = arrayOfString2[j];
         }
         else
         {
@@ -195,16 +214,37 @@ public class AEMaterialConfigParser
               break;
             }
           } while (TextUtils.isEmpty(arrayOfString1[i]));
-          parambnke.jdField_d_of_type_JavaLangString = arrayOfString1[i];
-          parambnke.e = arrayOfString2[i];
+          paramAEMaterialMetaData.jdField_d_of_type_JavaLangString = arrayOfString1[i];
+          paramAEMaterialMetaData.e = arrayOfString2[i];
         }
       }
     }
   }
+  
+  private static boolean a(AEMaterialMetaData paramAEMaterialMetaData)
+  {
+    if (paramAEMaterialMetaData == null) {}
+    String str;
+    do
+    {
+      do
+      {
+        return true;
+        if (ParamsUtil.a(paramAEMaterialMetaData.j) > ParamsUtil.a())
+        {
+          AEQLog.a(jdField_a_of_type_JavaLangString, "can not show level :" + paramAEMaterialMetaData.j);
+          return false;
+        }
+      } while (paramAEMaterialMetaData.k == null);
+      str = ParamsUtil.b();
+      AEQLog.a(jdField_a_of_type_JavaLangString, "can not show curModel :" + str);
+    } while (!paramAEMaterialMetaData.k.contains(str));
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.data.AEMaterialConfigParser
  * JD-Core Version:    0.7.0.1
  */

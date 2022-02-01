@@ -17,7 +17,7 @@ public class MaskURLImageView
   extends URLImageView
 {
   private float moreIconSize;
-  private boolean needSowPlayIcon;
+  private boolean needSowPlayIcon = false;
   private int num;
   private float paddingSize;
   Paint paint;
@@ -71,7 +71,7 @@ public class MaskURLImageView
     float f2 = ((Paint.FontMetrics)localObject).top;
     f1 = (getHeight() - (f1 - f2)) / 2.0F;
     f2 = ((Paint.FontMetrics)localObject).top;
-    localObject = getResources().getDrawable(2130847711);
+    localObject = getResources().getDrawable(2130848068);
     assert (localObject != null);
     ((Drawable)localObject).setBounds(j, k, m, n);
     ((Drawable)localObject).draw(paramCanvas);
@@ -82,7 +82,7 @@ public class MaskURLImageView
   {
     int i = (int)((getWidth() - this.playIconSize) / 2.0F);
     int j = (int)((getHeight() - this.playIconSize) / 2.0F);
-    Drawable localDrawable = getResources().getDrawable(2130848326);
+    Drawable localDrawable = getResources().getDrawable(2130848683);
     if (localDrawable != null)
     {
       localDrawable.setBounds(i, j, (int)(i + this.playIconSize), (int)(j + this.playIconSize));
@@ -104,7 +104,7 @@ public class MaskURLImageView
     this.paint.setTextAlign(Paint.Align.RIGHT);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     drawMask(paramCanvas);
@@ -139,7 +139,7 @@ public class MaskURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.MaskURLImageView
  * JD-Core Version:    0.7.0.1
  */

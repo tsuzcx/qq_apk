@@ -9,11 +9,11 @@ public final class FontInfo
 {
   static ItemBase cache_item = new ItemBase();
   public String btn = "";
-  public int engine;
-  public int feeType;
-  public ItemBase item;
-  public int linkBubbleID;
-  public int month;
+  public int engine = 0;
+  public int feeType = 0;
+  public ItemBase item = null;
+  public int linkBubbleID = 0;
+  public int month = 0;
   public String msg = "";
   public String name = "";
   public String payUrl = "";

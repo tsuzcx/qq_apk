@@ -2,28 +2,26 @@ package com.tencent.mobileqq.teamwork;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anvx;
-import bece;
-import becu;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import org.json.JSONObject;
 
-public class TenDocOCRExportHandler$1
+class TenDocOCRExportHandler$1
   implements Runnable
 {
-  public TenDocOCRExportHandler$1(becu parambecu, String paramString) {}
+  TenDocOCRExportHandler$1(TenDocOCRExportHandler paramTenDocOCRExportHandler, String paramString) {}
   
   public void run()
   {
-    if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a))) {
+    if ((TenDocOCRExportHandler.a(this.this$0) == null) || (TextUtils.isEmpty(this.a))) {
       return;
     }
-    becu localbecu = (becu)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_OCR_EXPORT_HANDLER);
-    JSONObject localJSONObject = bece.a(this.this$0.app, this.a, this.this$0.app.getCurrentAccountUin());
+    TenDocOCRExportHandler localTenDocOCRExportHandler = (TenDocOCRExportHandler)TenDocOCRExportHandler.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_OCR_EXPORT_HANDLER);
+    JSONObject localJSONObject = TeamWorkHttpUtils.a(TenDocOCRExportHandler.a(this.this$0), this.a, TenDocOCRExportHandler.a(this.this$0).getCurrentAccountUin());
     if (localJSONObject != null)
     {
       String str = localJSONObject.optString("url");
@@ -35,21 +33,21 @@ public class TenDocOCRExportHandler$1
         {
           Bundle localBundle = new Bundle();
           localBundle.putString("url", str);
-          localbecu.notifyUI(3, true, new Object[] { localJSONObject });
+          localTenDocOCRExportHandler.notifyUI(3, true, new Object[] { localJSONObject });
           QIPCClientHelper.getInstance().callServer("Module_TDFileChangeNameQIPCModule", "Action_url_2_fmdb", localBundle);
           return;
         }
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        localbecu.notifyUI(1, true, new Object[] { anvx.a(2131714222), this.a });
+        localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131714718), this.a });
         localUnsupportedEncodingException.printStackTrace();
         return;
       }
-      localbecu.notifyUI(1, true, new Object[] { anvx.a(2131714221), this.a });
+      localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131714717), this.a });
       return;
     }
-    localbecu.notifyUI(1, true, new Object[] { anvx.a(2131714220), this.a });
+    localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131714716), this.a });
   }
 }
 

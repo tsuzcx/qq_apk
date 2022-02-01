@@ -8,9 +8,9 @@ public final class operation_comm_rsp
   extends JceStruct
 {
   static byte[] cache_message = (byte[])new byte[1];
-  public byte[] message;
+  public byte[] message = null;
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   static
   {

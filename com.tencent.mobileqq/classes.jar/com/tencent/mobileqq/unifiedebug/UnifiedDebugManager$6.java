@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.unifiedebug;
 
 import android.app.Application;
-import bguw;
 
-public final class UnifiedDebugManager$6
+final class UnifiedDebugManager$6
   implements Runnable
 {
-  public UnifiedDebugManager$6(Application paramApplication) {}
+  UnifiedDebugManager$6(Application paramApplication) {}
   
   public void run()
   {
-    bguw.a(this.a);
+    UnifiedDebugManager.a(this.a);
   }
 }
 

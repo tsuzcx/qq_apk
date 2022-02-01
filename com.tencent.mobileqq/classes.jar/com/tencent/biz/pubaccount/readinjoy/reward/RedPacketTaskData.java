@@ -8,7 +8,7 @@ public class RedPacketTaskData
   extends Entity
 {
   public static final String TABLE_NAME = RedPacketTaskData.class.getSimpleName();
-  public long insertTime;
+  public long insertTime = 0L;
   @unique
   @NonNull
   public String rowKey = "";
@@ -21,7 +21,7 @@ public class RedPacketTaskData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.reward.RedPacketTaskData
  * JD-Core Version:    0.7.0.1
  */

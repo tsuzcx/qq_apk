@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import aeys;
-import aeyt;
-import aeyu;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,10 +9,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bhdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.manager.ServerConfigManager.ConfigType;
@@ -24,7 +20,7 @@ import mqq.manager.ServerConfigManager.ConfigType;
 public class SpaceLowNoticeActiviy
   extends BaseActivity
 {
-  private QQCustomDialog a;
+  private QQCustomDialog a = null;
   
   public static long a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
@@ -76,15 +72,15 @@ public class SpaceLowNoticeActiviy
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559556);
+    super.setContentView(2131559628);
     if ((this.a != null) && (this.a.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
-    this.a = bhdj.a(this, 230);
-    this.a.setContentView(2131559019);
-    this.a.setTitle(getString(2131698400)).setMessage(getString(2131698401)).setPositiveButton(2131698818, new aeyt(this)).setNegativeButton(2131690697, new aeys(this));
-    this.a.setOnKeyListener(new aeyu(this));
+    this.a = DialogUtil.a(this, 230);
+    this.a.setContentView(2131559060);
+    this.a.setTitle(getString(2131698680)).setMessage(getString(2131698681)).setPositiveButton(2131699131, new SpaceLowNoticeActiviy.2(this)).setNegativeButton(2131690800, new SpaceLowNoticeActiviy.1(this));
+    this.a.setOnKeyListener(new SpaceLowNoticeActiviy.3(this));
     this.a.show();
     return false;
   }
@@ -109,7 +105,7 @@ public class SpaceLowNoticeActiviy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SpaceLowNoticeActiviy
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import ascz;
-import asdd;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
 
 class ThemeJsPlugin$1
   implements Runnable
@@ -34,13 +34,13 @@ class ThemeJsPlugin$1
       localBundle.putString("r5", this.val$r5);
       localBundle.putString("path", this.val$path);
     }
-    localBundle = asdd.a("reportTheme", "", this.this$0.mOnRemoteResp.key, localBundle);
+    localBundle = DataFactory.a("reportTheme", "", this.this$0.mOnRemoteResp.key, localBundle);
     this.this$0.sendRemoteReq(localBundle, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

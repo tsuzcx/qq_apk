@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.readinjoy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bmhv;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.List;
 
 class ReadInJoyManager$2
@@ -37,7 +37,7 @@ class ReadInJoyManager$2
       Object localObject = ReadInJoyManager.a(this.this$0).edit();
       ((SharedPreferences.Editor)localObject).putString("config_new_channel_id_list", str);
       ((SharedPreferences.Editor)localObject).putInt("config_new_channel_notify_flag", 1);
-      bmhv.a((SharedPreferences.Editor)localObject, true);
+      ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
       ReadInJoyManager.b(this.this$0);
       return;
     }
@@ -45,7 +45,7 @@ class ReadInJoyManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.readinjoy.ReadInJoyManager.2
  * JD-Core Version:    0.7.0.1
  */

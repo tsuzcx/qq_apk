@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.flutter.launch;
 
-import auox;
-import aupl;
+import com.tencent.mobileqq.flutter.report.QFlutterReporter;
 
-public class LaunchTrace$1
+class LaunchTrace$1
   implements Runnable
 {
-  public LaunchTrace$1(auox paramauox) {}
+  LaunchTrace$1(LaunchTrace paramLaunchTrace) {}
   
   public void run()
   {
-    aupl.a(auox.a(this.this$0), this.this$0.d, this.this$0.a, this.this$0.b, this.this$0.c, auox.a(this.this$0), auox.b(this.this$0), auox.c(this.this$0));
+    QFlutterReporter.a(LaunchTrace.a(this.this$0), this.this$0.e, this.this$0.jdField_a_of_type_Long, this.this$0.b, this.this$0.d, LaunchTrace.a(this.this$0), LaunchTrace.b(this.this$0), LaunchTrace.c(this.this$0), this.this$0.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.LaunchTrace.1
  * JD-Core Version:    0.7.0.1
  */

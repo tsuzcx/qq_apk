@@ -2,10 +2,10 @@ package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.model.PublishEventTag;
 import java.util.ArrayList;
@@ -61,7 +61,7 @@ class QzoneMoodPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneMoodPlugin.1
  * JD-Core Version:    0.7.0.1
  */

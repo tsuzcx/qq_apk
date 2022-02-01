@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import atki;
-import aues;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
 
-public class OfflineFileBubbleModel$1
+class OfflineFileBubbleModel$1
   implements Runnable
 {
-  public OfflineFileBubbleModel$1(atki paramatki, FileManagerEntity paramFileManagerEntity) {}
+  OfflineFileBubbleModel$1(OfflineFileBubbleModel paramOfflineFileBubbleModel, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    aues.b(this.a);
+    FilePicURLDrawlableHelper.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.OfflineFileBubbleModel.1
  * JD-Core Version:    0.7.0.1
  */

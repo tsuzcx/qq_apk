@@ -1,6 +1,5 @@
 package cooperation.qzone.webviewplugin;
 
-import aasr;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -9,29 +8,30 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Base64;
-import anvx;
-import aupt;
-import bhbx;
-import bifw;
-import biki;
-import bisl;
-import biyn;
-import bjkk;
-import bjkv;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.webviewplugin.Share;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.activity.DirectForwardActivity;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebShareInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.open.base.BitmapUtil;
+import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.QZoneHelper;
@@ -62,7 +62,7 @@ public class QZoneSharePictureJsPlugin
   private static final String ARG_SUPPORT_MULTI_PIECES_CALLBACK = "supportMultiPiecesCallback";
   private static final String ARG_USE_ORIGIN = "useSample";
   private static final String ARG_USE_PATH = "usePath";
-  private static final String DISK_FULL_MSG = anvx.a(2131711786);
+  private static final String DISK_FULL_MSG = HardCodeUtil.a(2131712301);
   private static final String NAMESPACE = "Qzone";
   private static final int RESULT_CANCEL = 1;
   private static final int RESULT_FAILURE = -1;
@@ -75,7 +75,7 @@ public class QZoneSharePictureJsPlugin
   public static final String TEMP_FILE_NAME_PREFIX = "tempfile_";
   static final Pattern pattern = Pattern.compile("@\\{uin:(\\d+),nick:(.+?)\\}");
   private String callback;
-  biyn wezoneWxShareListener = new QZoneSharePictureJsPlugin.9(this);
+  WXShareHelper.WXShareListener wezoneWxShareListener = new QZoneSharePictureJsPlugin.9(this);
   WXShareFromQZHelper.WXShareListener wxShareListener = new QZoneSharePictureJsPlugin.8(this);
   
   /* Error */
@@ -83,7 +83,7 @@ public class QZoneSharePictureJsPlugin
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
+    //   1: astore_2
     //   2: new 137	java/io/BufferedWriter
     //   5: dup
     //   6: new 139	java/io/OutputStreamWriter
@@ -95,67 +95,75 @@ public class QZoneSharePictureJsPlugin
     //   16: invokespecial 144	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
     //   19: invokespecial 147	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
     //   22: invokespecial 150	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   25: astore_2
-    //   26: aload_2
-    //   27: astore_0
-    //   28: aload_2
-    //   29: aload_1
-    //   30: invokevirtual 153	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   33: aload_2
-    //   34: invokestatic 159	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   37: pop
-    //   38: iconst_1
-    //   39: ireturn
-    //   40: astore_3
-    //   41: aconst_null
-    //   42: astore_1
-    //   43: aload_1
-    //   44: astore_0
-    //   45: ldc 46
-    //   47: iconst_1
-    //   48: aload_3
-    //   49: iconst_0
-    //   50: anewarray 161	java/lang/Object
-    //   53: invokestatic 167	cooperation/qzone/util/QZLog:w	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   56: aload_1
-    //   57: invokestatic 159	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   60: pop
-    //   61: iconst_0
-    //   62: ireturn
-    //   63: astore_0
-    //   64: aload_3
-    //   65: astore_1
-    //   66: aload_1
-    //   67: invokestatic 159	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   70: pop
-    //   71: aload_0
-    //   72: athrow
-    //   73: astore_2
-    //   74: aload_0
-    //   75: astore_1
-    //   76: aload_2
-    //   77: astore_0
-    //   78: goto -12 -> 66
-    //   81: astore_3
-    //   82: aload_2
-    //   83: astore_1
-    //   84: goto -41 -> 43
+    //   25: astore_0
+    //   26: aload_0
+    //   27: aload_1
+    //   28: invokevirtual 153	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   31: ldc 155
+    //   33: invokestatic 161	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   36: checkcast 155	com/tencent/qzonehub/api/IDataUtils
+    //   39: aload_0
+    //   40: invokeinterface 165 2 0
+    //   45: pop
+    //   46: iconst_1
+    //   47: ireturn
+    //   48: astore_1
+    //   49: aconst_null
+    //   50: astore_0
+    //   51: ldc 46
+    //   53: iconst_1
+    //   54: aload_1
+    //   55: iconst_0
+    //   56: anewarray 167	java/lang/Object
+    //   59: invokestatic 173	cooperation/qzone/util/QZLog:w	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   62: ldc 155
+    //   64: invokestatic 161	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   67: checkcast 155	com/tencent/qzonehub/api/IDataUtils
+    //   70: aload_0
+    //   71: invokeinterface 165 2 0
+    //   76: pop
+    //   77: iconst_0
+    //   78: ireturn
+    //   79: astore_0
+    //   80: aload_2
+    //   81: astore_1
+    //   82: ldc 155
+    //   84: invokestatic 161	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   87: checkcast 155	com/tencent/qzonehub/api/IDataUtils
+    //   90: aload_1
+    //   91: invokeinterface 165 2 0
+    //   96: pop
+    //   97: aload_0
+    //   98: athrow
+    //   99: astore_1
+    //   100: aload_0
+    //   101: astore_2
+    //   102: aload_1
+    //   103: astore_0
+    //   104: aload_2
+    //   105: astore_1
+    //   106: goto -24 -> 82
+    //   109: astore_2
+    //   110: aload_0
+    //   111: astore_1
+    //   112: aload_2
+    //   113: astore_0
+    //   114: goto -32 -> 82
+    //   117: astore_1
+    //   118: goto -67 -> 51
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	87	0	paramString1	String
-    //   0	87	1	paramString2	String
-    //   25	9	2	localBufferedWriter	java.io.BufferedWriter
-    //   73	10	2	localObject1	Object
-    //   1	1	3	localObject2	Object
-    //   40	25	3	localException1	Exception
-    //   81	1	3	localException2	Exception
+    //   0	121	0	paramString1	String
+    //   0	121	1	paramString2	String
+    //   1	104	2	str	String
+    //   109	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	26	40	java/lang/Exception
-    //   2	26	63	finally
-    //   28	33	73	finally
-    //   45	56	73	finally
-    //   28	33	81	java/lang/Exception
+    //   2	26	48	java/lang/Exception
+    //   2	26	79	finally
+    //   26	31	99	finally
+    //   51	62	109	finally
+    //   26	31	117	java/lang/Exception
   }
   
   private void callJS(String paramString1, int paramInt, String paramString2)
@@ -217,11 +225,14 @@ public class QZoneSharePictureJsPlugin
       catch (OutOfMemoryError paramString2)
       {
         QLog.e("QZoneSharePictureJsPlugin", 1, "callJS OutOfMemoryError 内存不足", paramString2);
+        if (QZLog.isDevelopLevel()) {
+          ToastUtil.a().a(HardCodeUtil.a(2131712291));
+        }
         try
         {
           paramString2 = new JSONObject();
           paramString2.put("retCode", -1);
-          paramString2.put("msg", anvx.a(2131711788));
+          paramString2.put("msg", HardCodeUtil.a(2131712303));
           paramString2 = paramString2.toString();
           if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null))
           {
@@ -251,42 +262,42 @@ public class QZoneSharePictureJsPlugin
   public static byte[] compressToBytes(Bitmap paramBitmap, int paramInt)
   {
     // Byte code:
-    //   0: new 290	java/io/ByteArrayOutputStream
+    //   0: new 307	java/io/ByteArrayOutputStream
     //   3: dup
     //   4: sipush 8192
-    //   7: invokespecial 293	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   7: invokespecial 310	java/io/ByteArrayOutputStream:<init>	(I)V
     //   10: astore_3
     //   11: aload_3
     //   12: astore_2
     //   13: aload_0
-    //   14: invokevirtual 298	android/graphics/Bitmap:hasAlpha	()Z
+    //   14: invokevirtual 315	android/graphics/Bitmap:hasAlpha	()Z
     //   17: ifeq +32 -> 49
     //   20: aload_3
     //   21: astore_2
     //   22: aload_0
-    //   23: getstatic 304	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   23: getstatic 321	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   26: iload_1
     //   27: aload_3
-    //   28: invokevirtual 308	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   28: invokevirtual 325	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   31: pop
     //   32: aload_3
     //   33: astore_2
     //   34: aload_3
-    //   35: invokevirtual 312	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   35: invokevirtual 329	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   38: astore_0
     //   39: aload_3
-    //   40: invokevirtual 315	java/io/ByteArrayOutputStream:flush	()V
+    //   40: invokevirtual 332	java/io/ByteArrayOutputStream:flush	()V
     //   43: aload_3
-    //   44: invokevirtual 318	java/io/ByteArrayOutputStream:close	()V
+    //   44: invokevirtual 335	java/io/ByteArrayOutputStream:close	()V
     //   47: aload_0
     //   48: areturn
     //   49: aload_3
     //   50: astore_2
     //   51: aload_0
-    //   52: getstatic 321	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   52: getstatic 338	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   55: iload_1
     //   56: aload_3
-    //   57: invokevirtual 308	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   57: invokevirtual 325	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   60: pop
     //   61: goto -29 -> 32
     //   64: astore_0
@@ -295,28 +306,28 @@ public class QZoneSharePictureJsPlugin
     //   67: ldc 46
     //   69: iconst_1
     //   70: aload_0
-    //   71: invokevirtual 322	java/lang/Exception:toString	()Ljava/lang/String;
-    //   74: invokestatic 184	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   71: invokevirtual 339	java/lang/Exception:toString	()Ljava/lang/String;
+    //   74: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   77: aload_3
-    //   78: invokevirtual 315	java/io/ByteArrayOutputStream:flush	()V
+    //   78: invokevirtual 332	java/io/ByteArrayOutputStream:flush	()V
     //   81: aload_3
-    //   82: invokevirtual 318	java/io/ByteArrayOutputStream:close	()V
+    //   82: invokevirtual 335	java/io/ByteArrayOutputStream:close	()V
     //   85: aconst_null
     //   86: areturn
     //   87: astore_0
     //   88: ldc 46
     //   90: iconst_1
     //   91: aload_0
-    //   92: invokevirtual 322	java/lang/Exception:toString	()Ljava/lang/String;
-    //   95: invokestatic 184	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   92: invokevirtual 339	java/lang/Exception:toString	()Ljava/lang/String;
+    //   95: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   98: aconst_null
     //   99: areturn
     //   100: astore_2
     //   101: ldc 46
     //   103: iconst_1
     //   104: aload_2
-    //   105: invokevirtual 322	java/lang/Exception:toString	()Ljava/lang/String;
-    //   108: invokestatic 184	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   105: invokevirtual 339	java/lang/Exception:toString	()Ljava/lang/String;
+    //   108: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   111: aload_0
     //   112: areturn
     //   113: astore_0
@@ -327,37 +338,37 @@ public class QZoneSharePictureJsPlugin
     //   118: ldc 46
     //   120: iconst_1
     //   121: aload_0
-    //   122: invokevirtual 323	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   125: invokestatic 184	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   122: invokevirtual 340	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
+    //   125: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   128: aload_3
-    //   129: invokevirtual 315	java/io/ByteArrayOutputStream:flush	()V
+    //   129: invokevirtual 332	java/io/ByteArrayOutputStream:flush	()V
     //   132: aload_3
-    //   133: invokevirtual 318	java/io/ByteArrayOutputStream:close	()V
+    //   133: invokevirtual 335	java/io/ByteArrayOutputStream:close	()V
     //   136: aconst_null
     //   137: areturn
     //   138: astore_0
     //   139: ldc 46
     //   141: iconst_1
     //   142: aload_0
-    //   143: invokevirtual 322	java/lang/Exception:toString	()Ljava/lang/String;
-    //   146: invokestatic 184	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   143: invokevirtual 339	java/lang/Exception:toString	()Ljava/lang/String;
+    //   146: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   149: aconst_null
     //   150: areturn
     //   151: astore_0
     //   152: aconst_null
     //   153: astore_2
     //   154: aload_2
-    //   155: invokevirtual 315	java/io/ByteArrayOutputStream:flush	()V
+    //   155: invokevirtual 332	java/io/ByteArrayOutputStream:flush	()V
     //   158: aload_2
-    //   159: invokevirtual 318	java/io/ByteArrayOutputStream:close	()V
+    //   159: invokevirtual 335	java/io/ByteArrayOutputStream:close	()V
     //   162: aload_0
     //   163: athrow
     //   164: astore_2
     //   165: ldc 46
     //   167: iconst_1
     //   168: aload_2
-    //   169: invokevirtual 322	java/lang/Exception:toString	()Ljava/lang/String;
-    //   172: invokestatic 184	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   169: invokevirtual 339	java/lang/Exception:toString	()Ljava/lang/String;
+    //   172: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   175: goto -13 -> 162
     //   178: astore_0
     //   179: goto -25 -> 154
@@ -403,7 +414,7 @@ public class QZoneSharePictureJsPlugin
   
   public static byte[] compressToBytesForWX(String paramString)
   {
-    Bitmap localBitmap1 = bjkk.a(paramString, 120, 120, false);
+    Bitmap localBitmap1 = BitmapUtil.a(paramString, 120, 120, false);
     if (localBitmap1 == null) {
       return null;
     }
@@ -464,7 +475,7 @@ public class QZoneSharePictureJsPlugin
       paramString = ((JSONObject)localObject).optString("callback");
       if (TextUtils.isEmpty(paramString))
       {
-        bjkv.a().a("callback is null");
+        ToastUtil.a().a("callback is null");
         QLog.e("QZoneSharePictureJsPlugin", 1, "doAppendTempFile ,callback is null");
         return;
       }
@@ -496,12 +507,12 @@ public class QZoneSharePictureJsPlugin
     File localFile = new File(str2);
     if (!localFile.exists())
     {
-      callJS(paramString, -1, anvx.a(2131711782));
+      callJS(paramString, -1, HardCodeUtil.a(2131712297));
       return;
     }
     if (!localFile.canWrite())
     {
-      callJS(paramString, -1, anvx.a(2131711785));
+      callJS(paramString, -1, HardCodeUtil.a(2131712300));
       return;
     }
     if (appendFileContent(str2, (String)localObject)) {
@@ -520,7 +531,7 @@ public class QZoneSharePictureJsPlugin
         return;
       }
     }
-    callJS(paramString, -1, anvx.a(2131711791));
+    callJS(paramString, -1, HardCodeUtil.a(2131712306));
   }
   
   private void doCreateTempFile(String paramString)
@@ -539,7 +550,7 @@ public class QZoneSharePictureJsPlugin
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           break label113;
         }
-        bjkv.a().a("callback is null");
+        ToastUtil.a().a("callback is null");
         QLog.e("QZoneSharePictureJsPlugin", 1, "doCreateTempFile arg=" + paramString + ",callback is null");
         return;
       }
@@ -558,13 +569,13 @@ public class QZoneSharePictureJsPlugin
     paramString = CacheManager.getWebviewOfflineFileCacheService().getDir();
     if (TextUtils.isEmpty(paramString))
     {
-      callJS(localObject2, -1, anvx.a(2131711784));
+      callJS(localObject2, -1, HardCodeUtil.a(2131712299));
       return;
     }
     try
     {
       localObject1 = new File(paramString);
-      if ((!FileUtil.isFileExists(paramString)) && (!((File)localObject1).mkdirs()))
+      if ((!FileUtil.a(paramString)) && (!((File)localObject1).mkdirs()))
       {
         QLog.e("QZoneSharePictureJsPlugin", 1, DISK_FULL_MSG);
         callJS(localObject2, -1, DISK_FULL_MSG);
@@ -594,7 +605,7 @@ public class QZoneSharePictureJsPlugin
           QLog.e("QZoneSharePictureJsPlugin", 1, "create file fail", paramString);
           return;
         }
-        long l = bhbx.a((File)localObject1);
+        long l = Utils.a((File)localObject1);
         if (l < QzoneConfig.getInstance().getConfig("QzoneCover", "gif_cover_min_disk_size", 2097152))
         {
           QLog.e("QZoneSharePictureJsPlugin", 1, "手机存储空间已满，请清理后重试。 spaceLen=" + l + ",dir=" + paramString);
@@ -603,7 +614,7 @@ public class QZoneSharePictureJsPlugin
         }
         QLog.i("QZoneSharePictureJsPlugin", 1, "saxon spaceLen=" + l);
       }
-      callJS(localObject2, -1, anvx.a(2131711805));
+      callJS(localObject2, -1, HardCodeUtil.a(2131712320));
       return;
     }
   }
@@ -643,7 +654,7 @@ public class QZoneSharePictureJsPlugin
         return;
       }
       String str2 = CacheManager.getWebviewOfflineFileCacheService().getPath(str1);
-      boolean bool = FileUtil.deleteFile(str2);
+      boolean bool = FileUtil.c(str2);
       localJSONObject.put(str1, bool);
       QZLog.i("QZoneSharePictureJsPlugin", "delete file " + str2 + ", ret=" + bool);
       label248:
@@ -688,10 +699,10 @@ public class QZoneSharePictureJsPlugin
     }
   }
   
-  private void handleGenerateGif(bifw parambifw, String... paramVarArgs)
+  private void handleGenerateGif(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     QLog.i("QZoneSharePictureJsPlugin", 1, "saxon handleGenerateGif start");
-    if ((parambifw == null) || (paramVarArgs == null) || (paramVarArgs.length < 1))
+    if ((paramPluginRuntime == null) || (paramVarArgs == null) || (paramVarArgs.length < 1))
     {
       QLog.d("QZoneSharePictureJsPlugin", 1, "QzoneWidgetAI.handleGenerateGif args is empty");
       return;
@@ -752,17 +763,17 @@ public class QZoneSharePictureJsPlugin
             break label791;
           }
           k = QzoneConfig.getInstance().getConfig("QzoneCover", "gif_cover_callback_piece_size", 1048576);
-          parambifw = file2Base64(new File((String)localObject1));
-          if (!TextUtils.isEmpty(parambifw)) {
+          paramPluginRuntime = file2Base64(new File((String)localObject1));
+          if (!TextUtils.isEmpty(paramPluginRuntime)) {
             break label463;
           }
           callJS(this.callback, -2, "gif文件转base64失败", (JSONObject)localObject2);
           return;
         }
       }
-      catch (Throwable parambifw)
+      catch (Throwable paramPluginRuntime)
       {
-        QLog.e("QZoneSharePictureJsPlugin", 1, "handleGenerateGif fail, compressGIFTask exception.", parambifw);
+        QLog.e("QZoneSharePictureJsPlugin", 1, "handleGenerateGif fail, compressGIFTask exception.", paramPluginRuntime);
         return;
       }
       boolean bool1 = false;
@@ -771,28 +782,28 @@ public class QZoneSharePictureJsPlugin
     if (!bool3)
     {
       QLog.i("QZoneSharePictureJsPlugin", 1, "saxon 不分片callback ");
-      genGifCallback(this.callback, i, paramVarArgs, 1, 0, parambifw, parambifw.length());
+      genGifCallback(this.callback, i, paramVarArgs, 1, 0, paramPluginRuntime, paramPluginRuntime.length());
       return;
     }
-    if (parambifw.length() <= k)
+    if (paramPluginRuntime.length() <= k)
     {
-      QLog.i("QZoneSharePictureJsPlugin", 1, "saxon 不分片callback len=" + parambifw.length());
-      genGifCallback(this.callback, i, paramVarArgs, 1, 0, parambifw, parambifw.length());
+      QLog.i("QZoneSharePictureJsPlugin", 1, "saxon 不分片callback len=" + paramPluginRuntime.length());
+      genGifCallback(this.callback, i, paramVarArgs, 1, 0, paramPluginRuntime, paramPluginRuntime.length());
       return;
     }
-    int m = parambifw.length() / k;
-    if (parambifw.length() % k == 0) {
+    int m = paramPluginRuntime.length() / k;
+    if (paramPluginRuntime.length() % k == 0) {
       j = 0;
     }
     for (;;)
     {
       m += j;
-      QLog.i("QZoneSharePictureJsPlugin", 1, "saxon 分片callback pcount＝" + m + ",filelen=" + parambifw.length());
+      QLog.i("QZoneSharePictureJsPlugin", 1, "saxon 分片callback pcount＝" + m + ",filelen=" + paramPluginRuntime.length());
       j = 0;
       label623:
       if (j < m - 1)
       {
-        genGifCallback(this.callback, i, paramVarArgs, m, j, parambifw.substring(j * k, (j + 1) * k), parambifw.length());
+        genGifCallback(this.callback, i, paramVarArgs, m, j, paramPluginRuntime.substring(j * k, (j + 1) * k), paramPluginRuntime.length());
         QLog.i("QZoneSharePictureJsPlugin", 1, "saxon 分片callback ,i=" + j);
         try
         {
@@ -810,23 +821,23 @@ public class QZoneSharePictureJsPlugin
         }
       }
     }
-    genGifCallback(this.callback, i, paramVarArgs, m, m - 1, parambifw.substring((m - 1) * k), parambifw.length());
+    genGifCallback(this.callback, i, paramVarArgs, m, m - 1, paramPluginRuntime.substring((m - 1) * k), paramPluginRuntime.length());
     QLog.i("QZoneSharePictureJsPlugin", 1, "saxon 分片callback last piece,i=" + (m - 1));
     return;
     label791:
     callJS(this.callback, i, paramVarArgs, (JSONObject)localObject2);
     paramVarArgs = QZoneHelper.UserInfo.getInstance();
-    QZoneHelper.forwardToPublishMood(parambifw.a(), paramVarArgs, (String)localObject1, anvx.a(2131711799), localInterruptedException, -1);
+    QZoneHelper.forwardToPublishMood(paramPluginRuntime.a(), paramVarArgs, (String)localObject1, HardCodeUtil.a(2131712314), localInterruptedException, -1);
   }
   
-  private void handleSharePicture(bifw parambifw, String... paramVarArgs)
+  private void handleSharePicture(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     int i = 0;
     Object localObject2;
     Object localObject3;
     label221:
     int j;
-    if ((this.parentPlugin != null) && (parambifw != null) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    if ((this.parentPlugin != null) && (paramPluginRuntime != null) && (paramVarArgs != null) && (paramVarArgs.length > 0))
     {
       String str;
       try
@@ -847,27 +858,27 @@ public class QZoneSharePictureJsPlugin
           if (TextUtils.isEmpty((CharSequence)localObject3))
           {
             QLog.i("QZoneSharePictureJsPlugin", 1, "saveByteBufferToLocalFile catch exception");
-            makeText(anvx.a(2131711797));
+            makeText(HardCodeUtil.a(2131712312));
             return;
           }
         }
-        catch (Exception parambifw)
+        catch (Exception paramPluginRuntime)
         {
-          QLog.w("QZoneSharePictureJsPlugin", 1, "Base64.decode Exception: " + parambifw.toString());
-          makeText(anvx.a(2131711775));
+          QLog.w("QZoneSharePictureJsPlugin", 1, "Base64.decode Exception: " + paramPluginRuntime.toString());
+          makeText(HardCodeUtil.a(2131712290));
           return;
         }
         if (!QLog.isColorLevel()) {
           break label221;
         }
       }
-      catch (Exception parambifw)
+      catch (Exception paramPluginRuntime)
       {
-        QLog.w("QZoneSharePictureJsPlugin", 1, "handleSharePicture catch an exception in disPatchMethod", parambifw);
+        QLog.w("QZoneSharePictureJsPlugin", 1, "handleSharePicture catch an exception in disPatchMethod", paramPluginRuntime);
         return;
       }
       QLog.d("QZoneSharePictureJsPlugin", 1, "the filePath is " + (String)localObject3);
-      if ((!TextUtils.isEmpty(str)) && (parambifw != null) && (parambifw.a() != null)) {
+      if ((!TextUtils.isEmpty(str)) && (paramPluginRuntime != null) && (paramPluginRuntime.a() != null)) {
         QLog.i("QZoneSharePictureJsPlugin", 1, "share type is " + str);
       }
       try
@@ -891,23 +902,23 @@ public class QZoneSharePictureJsPlugin
         paramVarArgs.putBoolean("forward_photo_shortvideo_is_edited", true);
         localObject1 = new Intent();
         ((Intent)localObject1).putExtras(paramVarArgs);
-        i = QZoneHelper.generateRequestCode(this.parentPlugin, parambifw, 21);
+        i = QZoneHelper.generateRequestCode(this.parentPlugin, paramPluginRuntime, 21);
         paramVarArgs = ForwardRecentActivity.class;
         localObject2 = ((JSONObject)localObject2).optString("extJson");
         bool = TextUtils.isEmpty((CharSequence)localObject2);
         if (bool) {
-          break label870;
+          break label873;
         }
       }
       switch (i)
       {
       default: 
-        parambifw = parambifw.a(parambifw.a());
-        if ((parambifw != null) && ((parambifw instanceof biki)))
+        paramPluginRuntime = paramPluginRuntime.a(paramPluginRuntime.a());
+        if ((paramPluginRuntime != null) && ((paramPluginRuntime instanceof WebUiUtils.WebShareInterface)))
         {
-          parambifw = ((biki)parambifw).getShare().a();
-          if ((parambifw != null) && (parambifw.isShowing())) {
-            parambifw.dismiss();
+          paramPluginRuntime = ((Share)((WebUiUtils.WebShareInterface)paramPluginRuntime).getShare()).a();
+          if ((paramPluginRuntime != null) && (paramPluginRuntime.isShowing())) {
+            paramPluginRuntime.dismiss();
           }
         }
         QLog.i("QZoneSharePictureJsPlugin", 1, "WebView share picture call jsbridge successful!");
@@ -931,14 +942,14 @@ public class QZoneSharePictureJsPlugin
           ((Intent)localObject1).putExtra("nickName", (String)localObject3);
           paramVarArgs = DirectForwardActivity.class;
         }
-        aupt.a(parambifw.a(), (Intent)localObject1, paramVarArgs, i, -1, "");
+        ForwardBaseOption.a(paramPluginRuntime.a(), (Intent)localObject1, paramVarArgs, i, -1, "");
       }
       catch (JSONException paramVarArgs)
       {
         QLog.e("QZoneSharePictureJsPlugin", 1, "share to qq: parse extJson error!", paramVarArgs);
-        break label870;
+        break label873;
       }
-      writeMood((JSONObject)localObject2, (String)localObject3, parambifw);
+      writeMood((JSONObject)localObject2, (String)localObject3, paramPluginRuntime);
       break;
       if (WXShareFromQZHelper.getInstance().isWXinstalled())
       {
@@ -953,10 +964,10 @@ public class QZoneSharePictureJsPlugin
         WXShareFromQZHelper.getInstance().shareImage(BaseApplicationImpl.getContext(), (String)localObject3, (byte[])localObject1, 0);
         break;
       }
-      if (parambifw.a() == null) {
+      if (paramPluginRuntime.a() == null) {
         break;
       }
-      parambifw.a().post(new QZoneSharePictureJsPlugin.5(this, parambifw));
+      paramPluginRuntime.a().post(new QZoneSharePictureJsPlugin.5(this, paramPluginRuntime));
       break;
       if (WXShareFromQZHelper.getInstance().isWXinstalled())
       {
@@ -970,12 +981,12 @@ public class QZoneSharePictureJsPlugin
         WXShareFromQZHelper.getInstance().shareImage(BaseApplicationImpl.getContext(), (String)localObject3, null, 1);
         break;
       }
-      if (parambifw.a() == null) {
+      if (paramPluginRuntime.a() == null) {
         break;
       }
-      parambifw.a().post(new QZoneSharePictureJsPlugin.6(this, parambifw));
+      paramPluginRuntime.a().post(new QZoneSharePictureJsPlugin.6(this, paramPluginRuntime));
       break;
-      if (parambifw == null)
+      if (paramPluginRuntime == null)
       {
         QLog.i("QZoneSharePictureJsPlugin", 1, "runtime is null");
         return;
@@ -989,7 +1000,7 @@ public class QZoneSharePictureJsPlugin
         QLog.i("QZoneSharePictureJsPlugin", 1, "args.length = 0");
       }
       return;
-      label870:
+      label873:
       paramVarArgs = ForwardRecentActivity.class;
     }
   }
@@ -1008,7 +1019,7 @@ public class QZoneSharePictureJsPlugin
     if (j == 0)
     {
       i = 0;
-      paramBaseResp = anvx.a(2131711807);
+      paramBaseResp = HardCodeUtil.a(2131712322);
       makeText(paramBaseResp);
     }
     for (;;)
@@ -1017,12 +1028,12 @@ public class QZoneSharePictureJsPlugin
       return;
       if (j == -2)
       {
-        paramBaseResp = anvx.a(2131711798);
+        paramBaseResp = HardCodeUtil.a(2131712313);
         makeText(paramBaseResp);
       }
       else
       {
-        paramBaseResp = anvx.a(2131711795);
+        paramBaseResp = HardCodeUtil.a(2131712310);
         QLog.e("QZoneSharePictureJsPlugin", 1, "wx share fail:" + j);
         i = j;
       }
@@ -1035,58 +1046,58 @@ public class QZoneSharePictureJsPlugin
     // Byte code:
     //   0: aconst_null
     //   1: astore 7
-    //   3: new 227	java/lang/StringBuilder
+    //   3: new 233	java/lang/StringBuilder
     //   6: dup
-    //   7: invokespecial 228	java/lang/StringBuilder:<init>	()V
-    //   10: getstatic 961	cooperation/qzone/share/WXShareFromQZHelper:PHOTO_PATH	Ljava/lang/String;
-    //   13: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   16: invokestatic 492	java/lang/System:currentTimeMillis	()J
-    //   19: invokestatic 965	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   22: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: ldc_w 967
-    //   28: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   7: invokespecial 234	java/lang/StringBuilder:<init>	()V
+    //   10: getstatic 968	cooperation/qzone/share/WXShareFromQZHelper:PHOTO_PATH	Ljava/lang/String;
+    //   13: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: invokestatic 499	java/lang/System:currentTimeMillis	()J
+    //   19: invokestatic 972	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   22: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: ldc_w 974
+    //   28: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: invokevirtual 246	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   34: astore_3
-    //   35: new 437	java/io/File
+    //   35: new 445	java/io/File
     //   38: dup
-    //   39: getstatic 961	cooperation/qzone/share/WXShareFromQZHelper:PHOTO_PATH	Ljava/lang/String;
-    //   42: invokespecial 438	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: getstatic 968	cooperation/qzone/share/WXShareFromQZHelper:PHOTO_PATH	Ljava/lang/String;
+    //   42: invokespecial 446	java/io/File:<init>	(Ljava/lang/String;)V
     //   45: astore 4
     //   47: aload 4
-    //   49: invokevirtual 441	java/io/File:exists	()Z
+    //   49: invokevirtual 449	java/io/File:exists	()Z
     //   52: ifne +9 -> 61
     //   55: aload 4
-    //   57: invokevirtual 477	java/io/File:mkdirs	()Z
+    //   57: invokevirtual 484	java/io/File:mkdirs	()Z
     //   60: pop
-    //   61: new 437	java/io/File
+    //   61: new 445	java/io/File
     //   64: dup
     //   65: aload_3
-    //   66: invokespecial 438	java/io/File:<init>	(Ljava/lang/String;)V
+    //   66: invokespecial 446	java/io/File:<init>	(Ljava/lang/String;)V
     //   69: astore 4
     //   71: aload 4
-    //   73: invokevirtual 441	java/io/File:exists	()Z
+    //   73: invokevirtual 449	java/io/File:exists	()Z
     //   76: ifne +9 -> 85
     //   79: aload 4
-    //   81: invokevirtual 500	java/io/File:createNewFile	()Z
+    //   81: invokevirtual 507	java/io/File:createNewFile	()Z
     //   84: pop
     //   85: new 141	java/io/FileOutputStream
     //   88: dup
     //   89: aload 4
-    //   91: invokespecial 970	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   91: invokespecial 977	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   94: astore 6
     //   96: aload 6
     //   98: astore_3
     //   99: aload 6
     //   101: aload_1
-    //   102: invokevirtual 973	java/io/FileOutputStream:write	([B)V
+    //   102: invokevirtual 980	java/io/FileOutputStream:write	([B)V
     //   105: aload 6
     //   107: astore_3
     //   108: aload 6
-    //   110: invokevirtual 974	java/io/FileOutputStream:flush	()V
+    //   110: invokevirtual 981	java/io/FileOutputStream:flush	()V
     //   113: aload 6
     //   115: ifnull +205 -> 320
     //   118: aload 6
-    //   120: invokevirtual 975	java/io/FileOutputStream:close	()V
+    //   120: invokevirtual 982	java/io/FileOutputStream:close	()V
     //   123: iconst_1
     //   124: istore_2
     //   125: aload 7
@@ -1094,22 +1105,22 @@ public class QZoneSharePictureJsPlugin
     //   128: iload_2
     //   129: ifeq +9 -> 138
     //   132: aload 4
-    //   134: invokevirtual 978	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   134: invokevirtual 985	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   137: astore_1
     //   138: aload_1
     //   139: areturn
     //   140: astore_1
     //   141: ldc 46
     //   143: iconst_1
-    //   144: new 227	java/lang/StringBuilder
+    //   144: new 233	java/lang/StringBuilder
     //   147: dup
-    //   148: invokespecial 228	java/lang/StringBuilder:<init>	()V
-    //   151: ldc_w 980
-    //   154: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: invokespecial 234	java/lang/StringBuilder:<init>	()V
+    //   151: ldc_w 987
+    //   154: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   157: aload_1
-    //   158: invokevirtual 983	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   161: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   164: invokestatic 369	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   158: invokevirtual 990	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   161: invokevirtual 246	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   164: invokestatic 384	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   167: iconst_1
     //   168: istore_2
     //   169: goto -44 -> 125
@@ -1122,34 +1133,34 @@ public class QZoneSharePictureJsPlugin
     //   180: astore_3
     //   181: ldc 46
     //   183: iconst_1
-    //   184: new 227	java/lang/StringBuilder
+    //   184: new 233	java/lang/StringBuilder
     //   187: dup
-    //   188: invokespecial 228	java/lang/StringBuilder:<init>	()V
-    //   191: ldc_w 985
-    //   194: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: invokespecial 234	java/lang/StringBuilder:<init>	()V
+    //   191: ldc_w 992
+    //   194: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   197: aload 5
-    //   199: invokevirtual 983	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   202: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 369	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   199: invokevirtual 990	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   202: invokevirtual 246	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   205: invokestatic 384	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   208: aload_1
     //   209: ifnull +106 -> 315
     //   212: aload_1
-    //   213: invokevirtual 975	java/io/FileOutputStream:close	()V
+    //   213: invokevirtual 982	java/io/FileOutputStream:close	()V
     //   216: iconst_0
     //   217: istore_2
     //   218: goto -93 -> 125
     //   221: astore_1
     //   222: ldc 46
     //   224: iconst_1
-    //   225: new 227	java/lang/StringBuilder
+    //   225: new 233	java/lang/StringBuilder
     //   228: dup
-    //   229: invokespecial 228	java/lang/StringBuilder:<init>	()V
-    //   232: ldc_w 980
-    //   235: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: invokespecial 234	java/lang/StringBuilder:<init>	()V
+    //   232: ldc_w 987
+    //   235: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   238: aload_1
-    //   239: invokevirtual 983	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   242: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   245: invokestatic 369	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   239: invokevirtual 990	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   242: invokevirtual 246	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   245: invokestatic 384	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   248: iconst_0
     //   249: istore_2
     //   250: goto -125 -> 125
@@ -1159,21 +1170,21 @@ public class QZoneSharePictureJsPlugin
     //   256: aload_3
     //   257: ifnull +7 -> 264
     //   260: aload_3
-    //   261: invokevirtual 975	java/io/FileOutputStream:close	()V
+    //   261: invokevirtual 982	java/io/FileOutputStream:close	()V
     //   264: aload_1
     //   265: athrow
     //   266: astore_3
     //   267: ldc 46
     //   269: iconst_1
-    //   270: new 227	java/lang/StringBuilder
+    //   270: new 233	java/lang/StringBuilder
     //   273: dup
-    //   274: invokespecial 228	java/lang/StringBuilder:<init>	()V
-    //   277: ldc_w 980
-    //   280: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   274: invokespecial 234	java/lang/StringBuilder:<init>	()V
+    //   277: ldc_w 987
+    //   280: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   283: aload_3
-    //   284: invokevirtual 983	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   287: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   290: invokestatic 369	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   284: invokevirtual 990	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   287: invokevirtual 246	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   290: invokestatic 384	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   293: goto -29 -> 264
     //   296: astore_1
     //   297: goto -41 -> 256
@@ -1232,9 +1243,9 @@ public class QZoneSharePictureJsPlugin
     new BaseHandler(Looper.getMainLooper()).post(new QZoneSharePictureJsPlugin.11(this, paramInt, paramString));
   }
   
-  private void writeMood(JSONObject paramJSONObject, String paramString, bifw parambifw)
+  private void writeMood(JSONObject paramJSONObject, String paramString, WebViewPlugin.PluginRuntime paramPluginRuntime)
   {
-    ThreadManager.getSubThreadHandler().post(new QZoneSharePictureJsPlugin.7(this, paramJSONObject, paramString, parambifw));
+    ThreadManager.getSubThreadHandler().post(new QZoneSharePictureJsPlugin.7(this, paramJSONObject, paramString, paramPluginRuntime));
   }
   
   /* Error */
@@ -1243,45 +1254,45 @@ public class QZoneSharePictureJsPlugin
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: new 1022	java/io/BufferedInputStream
+    //   3: new 1029	java/io/BufferedInputStream
     //   6: dup
-    //   7: new 1024	java/io/FileInputStream
+    //   7: new 1031	java/io/FileInputStream
     //   10: dup
     //   11: aload_1
-    //   12: invokespecial 1025	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   15: invokespecial 1028	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   12: invokespecial 1032	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   15: invokespecial 1035	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   18: astore_2
     //   19: aload_2
     //   20: astore_1
     //   21: aload_2
-    //   22: invokevirtual 1031	java/io/BufferedInputStream:available	()I
+    //   22: invokevirtual 1038	java/io/BufferedInputStream:available	()I
     //   25: newarray byte
     //   27: astore_3
     //   28: aload_2
     //   29: astore_1
     //   30: aload_2
     //   31: aload_3
-    //   32: invokevirtual 1035	java/io/BufferedInputStream:read	([B)I
+    //   32: invokevirtual 1042	java/io/BufferedInputStream:read	([B)I
     //   35: pop
     //   36: aload_2
     //   37: astore_1
     //   38: aload_3
     //   39: iconst_0
-    //   40: invokestatic 1039	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   40: invokestatic 1046	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
     //   43: astore_3
     //   44: aload_3
     //   45: astore_1
     //   46: aload_2
     //   47: ifnull +9 -> 56
     //   50: aload_2
-    //   51: invokevirtual 1040	java/io/BufferedInputStream:close	()V
+    //   51: invokevirtual 1047	java/io/BufferedInputStream:close	()V
     //   54: aload_3
     //   55: astore_1
     //   56: aload_1
     //   57: areturn
     //   58: astore_1
     //   59: aload_1
-    //   60: invokevirtual 1043	java/io/IOException:printStackTrace	()V
+    //   60: invokevirtual 1050	java/io/IOException:printStackTrace	()V
     //   63: aload_3
     //   64: areturn
     //   65: astore_3
@@ -1291,20 +1302,20 @@ public class QZoneSharePictureJsPlugin
     //   69: astore_1
     //   70: ldc 46
     //   72: iconst_1
-    //   73: ldc_w 458
+    //   73: ldc_w 466
     //   76: aload_3
-    //   77: invokestatic 1045	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   77: invokestatic 1052	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   80: aload 4
     //   82: astore_1
     //   83: aload_2
     //   84: ifnull -28 -> 56
     //   87: aload_2
-    //   88: invokevirtual 1040	java/io/BufferedInputStream:close	()V
+    //   88: invokevirtual 1047	java/io/BufferedInputStream:close	()V
     //   91: aconst_null
     //   92: areturn
     //   93: astore_1
     //   94: aload_1
-    //   95: invokevirtual 1043	java/io/IOException:printStackTrace	()V
+    //   95: invokevirtual 1050	java/io/IOException:printStackTrace	()V
     //   98: aconst_null
     //   99: areturn
     //   100: astore_3
@@ -1314,20 +1325,20 @@ public class QZoneSharePictureJsPlugin
     //   104: astore_1
     //   105: ldc 46
     //   107: iconst_1
-    //   108: ldc_w 458
+    //   108: ldc_w 466
     //   111: aload_3
-    //   112: invokestatic 1045	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   112: invokestatic 1052	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   115: aload 4
     //   117: astore_1
     //   118: aload_2
     //   119: ifnull -63 -> 56
     //   122: aload_2
-    //   123: invokevirtual 1040	java/io/BufferedInputStream:close	()V
+    //   123: invokevirtual 1047	java/io/BufferedInputStream:close	()V
     //   126: aconst_null
     //   127: areturn
     //   128: astore_1
     //   129: aload_1
-    //   130: invokevirtual 1043	java/io/IOException:printStackTrace	()V
+    //   130: invokevirtual 1050	java/io/IOException:printStackTrace	()V
     //   133: aconst_null
     //   134: areturn
     //   135: astore_3
@@ -1337,20 +1348,20 @@ public class QZoneSharePictureJsPlugin
     //   139: astore_1
     //   140: ldc 46
     //   142: iconst_1
-    //   143: ldc_w 458
+    //   143: ldc_w 466
     //   146: aload_3
-    //   147: invokestatic 1045	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   147: invokestatic 1052	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   150: aload 4
     //   152: astore_1
     //   153: aload_2
     //   154: ifnull -98 -> 56
     //   157: aload_2
-    //   158: invokevirtual 1040	java/io/BufferedInputStream:close	()V
+    //   158: invokevirtual 1047	java/io/BufferedInputStream:close	()V
     //   161: aconst_null
     //   162: areturn
     //   163: astore_1
     //   164: aload_1
-    //   165: invokevirtual 1043	java/io/IOException:printStackTrace	()V
+    //   165: invokevirtual 1050	java/io/IOException:printStackTrace	()V
     //   168: aconst_null
     //   169: areturn
     //   170: astore_2
@@ -1359,12 +1370,12 @@ public class QZoneSharePictureJsPlugin
     //   173: aload_1
     //   174: ifnull +7 -> 181
     //   177: aload_1
-    //   178: invokevirtual 1040	java/io/BufferedInputStream:close	()V
+    //   178: invokevirtual 1047	java/io/BufferedInputStream:close	()V
     //   181: aload_2
     //   182: athrow
     //   183: astore_1
     //   184: aload_1
-    //   185: invokevirtual 1043	java/io/IOException:printStackTrace	()V
+    //   185: invokevirtual 1050	java/io/IOException:printStackTrace	()V
     //   188: goto -7 -> 181
     //   191: astore_2
     //   192: goto -19 -> 173
@@ -1476,7 +1487,7 @@ public class QZoneSharePictureJsPlugin
     if (paramInt == -1) {
       paramInt = 0;
     }
-    for (paramIntent = anvx.a(2131711813);; paramIntent = anvx.a(2131711779))
+    for (paramIntent = HardCodeUtil.a(2131712328);; paramIntent = HardCodeUtil.a(2131712294))
     {
       callJS(this.callback, paramInt, paramIntent);
       return;
@@ -1494,7 +1505,7 @@ public class QZoneSharePictureJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin
  * JD-Core Version:    0.7.0.1
  */

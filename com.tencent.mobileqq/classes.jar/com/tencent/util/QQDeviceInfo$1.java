@@ -1,18 +1,17 @@
 package com.tencent.util;
 
 import android.content.Intent;
-import bkyf;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class QQDeviceInfo$1
+final class QQDeviceInfo$1
   implements Runnable
 {
   public void run()
   {
-    bkyf localbkyf = new bkyf(this);
+    QQDeviceInfo.1.1 local1 = new QQDeviceInfo.1.1(this);
     Intent localIntent = new Intent("com.uodis.opendevice.OPENIDS_SERVICE");
     localIntent.setPackage("com.huawei.hwid");
-    BaseApplicationImpl.getApplication().bindService(localIntent, localbkyf, 1);
+    BaseApplication.getContext().bindService(localIntent, local1, 1);
   }
 }
 

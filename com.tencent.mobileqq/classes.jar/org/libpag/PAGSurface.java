@@ -19,7 +19,6 @@ public class PAGSurface
   {
     LibraryLoadUtils.loadLibrary("libpag");
     nativeInit();
-    PAGFont.loadSystemFonts();
     if (LibraryLoadUtils.getAppContext() != null) {
       AVReportCenter.getInstance().init(LibraryLoadUtils.getAppContext());
     }
@@ -111,6 +110,8 @@ public class PAGSurface
   
   private native void nativeRelease();
   
+  public native boolean clearAll();
+  
   protected void finalize()
   {
     nativeFinalize();
@@ -133,7 +134,7 @@ public class PAGSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     org.libpag.PAGSurface
  * JD-Core Version:    0.7.0.1
  */

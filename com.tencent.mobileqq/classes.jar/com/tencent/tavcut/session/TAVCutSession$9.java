@@ -13,41 +13,41 @@ class TAVCutSession$9
   
   public void run()
   {
-    Iterator localIterator = this.this$0.mediaModels.iterator();
-    label34:
-    label108:
-    label111:
+    Iterator localIterator1 = this.this$0.mediaModels.iterator();
+    label122:
     for (;;)
     {
       MediaModel localMediaModel;
-      int i;
-      if (localIterator.hasNext())
+      List localList;
+      StickerModel localStickerModel;
+      if (localIterator1.hasNext())
       {
-        localMediaModel = (MediaModel)localIterator.next();
-        i = 0;
-        if (i >= localMediaModel.getMediaEffectModel().getStickerModelList().size()) {
-          break label108;
-        }
-        if (!((StickerModel)localMediaModel.getMediaEffectModel().getStickerModelList().get(i)).getUniqueId().equals(this.val$uniqueId)) {}
+        localMediaModel = (MediaModel)localIterator1.next();
+        localList = localMediaModel.getMediaEffectModel().getStickerModelList();
+        Iterator localIterator2 = localList.iterator();
+        do
+        {
+          if (!localIterator2.hasNext()) {
+            break;
+          }
+          localStickerModel = (StickerModel)localIterator2.next();
+        } while (!localStickerModel.getUniqueId().equals(this.val$uniqueId));
       }
-      for (;;)
+      for (int i = localList.indexOf(localStickerModel);; i = -1)
       {
         if (i < 0) {
-          break label111;
+          break label122;
         }
         localMediaModel.getMediaEffectModel().getStickerModelList().remove(i);
         break;
-        i += 1;
-        break label34;
         return;
-        i = -1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutSession.9
  * JD-Core Version:    0.7.0.1
  */

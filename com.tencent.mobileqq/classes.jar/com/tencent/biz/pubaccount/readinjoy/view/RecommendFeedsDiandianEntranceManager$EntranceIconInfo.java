@@ -4,41 +4,42 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import tdv;
-import tso;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.IEntranceButtonDataSource;
 
 public class RecommendFeedsDiandianEntranceManager$EntranceIconInfo
-  implements Parcelable, tso
+  implements Parcelable, IEntranceButtonDataSource
 {
-  public static final Parcelable.Creator<EntranceIconInfo> CREATOR = new tdv();
+  public static final Parcelable.Creator<EntranceIconInfo> CREATOR = new RecommendFeedsDiandianEntranceManager.EntranceIconInfo.1();
   public int a;
   public RecommendFeedsDiandianEntranceManager.ExtraInfo a;
   public String a;
   public boolean a;
   public int b;
-  public String b = "";
+  public String b;
   public String c = "";
   public String d = "";
   
   public RecommendFeedsDiandianEntranceManager$EntranceIconInfo()
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
   }
   
   public RecommendFeedsDiandianEntranceManager$EntranceIconInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.b = paramParcel.readString();
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.c = paramParcel.readString();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$ExtraInfo = ((RecommendFeedsDiandianEntranceManager.ExtraInfo)paramParcel.readParcelable(RecommendFeedsDiandianEntranceManager.ExtraInfo.class.getClassLoader()));
-      return;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$ExtraInfo = ((RecommendFeedsDiandianEntranceManager.ExtraInfo)paramParcel.readParcelable(RecommendFeedsDiandianEntranceManager.ExtraInfo.class.getClassLoader()));
   }
   
   public static EntranceIconInfo a(int paramInt)
@@ -76,7 +77,7 @@ public class RecommendFeedsDiandianEntranceManager$EntranceIconInfo
   
   public boolean d()
   {
-    return !TextUtils.isEmpty(this.b);
+    return !TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
   }
   
   public int describeContents()
@@ -86,19 +87,19 @@ public class RecommendFeedsDiandianEntranceManager$EntranceIconInfo
   
   public String e()
   {
-    return this.b;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
   public String toString()
   {
-    return "RecommendFeedsDiandianEntranceManager EntranceIconInfo {feedsType : " + this.jdField_a_of_type_Int + "\nmsgIconUrl :" + this.jdField_a_of_type_JavaLangString + "\ndefaultIconUrl :" + this.b + "\njumpSchema :" + this.c + "\nextraInfo : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$ExtraInfo + "\n}";
+    return "RecommendFeedsDiandianEntranceManager EntranceIconInfo {feedsType : " + this.jdField_a_of_type_Int + "\nmsgIconUrl :" + this.jdField_a_of_type_JavaLangString + "\ndefaultIconUrl :" + this.jdField_b_of_type_JavaLangString + "\njumpSchema :" + this.c + "\nextraInfo : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecommendFeedsDiandianEntranceManager$ExtraInfo + "\n}";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeString(this.c);
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = 1;; i = 0)
@@ -111,7 +112,7 @@ public class RecommendFeedsDiandianEntranceManager$EntranceIconInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo
  * JD-Core Version:    0.7.0.1
  */

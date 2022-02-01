@@ -10,19 +10,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import anvx;
-import bhdf;
-import bhdj;
-import bifw;
-import bifz;
-import bjkv;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
 import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.swift.WebViewPluginFactory;
+import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -46,7 +46,7 @@ public class QzoneQunFeedJsPlugin
   public static final String NAMESPACE = "Qzone";
   public static final String TAG = "QzoneQunFeedJsPlugin";
   private static String pickCallBack = "";
-  private String cacheArgs;
+  private String cacheArgs = null;
   private Handler handler = new Handler();
   long lastClickTime = 0L;
   Dialog mDownloadingDialog;
@@ -67,14 +67,14 @@ public class QzoneQunFeedJsPlugin
       String str = "";
       if (paramInt1 > 0)
       {
-        str = String.format(localActivity.getString(2131717409), new Object[] { Integer.valueOf(paramInt1) }) + "，";
-        str = str + paramString + anvx.a(2131711744);
+        str = String.format(localActivity.getString(2131717904), new Object[] { Integer.valueOf(paramInt1) }) + "，";
+        str = str + paramString + HardCodeUtil.a(2131712259);
       }
-      paramString = str + String.format(localActivity.getString(2131717402), new Object[] { Integer.valueOf(paramInt2) });
-      bhdj.a(localActivity, 232).setMessage(paramString).setNegativeButton(2131717407, new QzoneQunFeedJsPlugin.5(this)).show();
+      paramString = str + String.format(localActivity.getString(2131717897), new Object[] { Integer.valueOf(paramInt2) });
+      DialogUtil.a(localActivity, 232).setMessage(paramString).setNegativeButton(2131717902, new QzoneQunFeedJsPlugin.5(this)).show();
       return;
     }
-    bjkv.a().a(localActivity.getString(2131717410) + paramString + anvx.a(2131711743));
+    ToastUtil.a().a(localActivity.getString(2131717905) + paramString + HardCodeUtil.a(2131712258));
   }
   
   private void cancelDownload(String paramString)
@@ -249,18 +249,18 @@ public class QzoneQunFeedJsPlugin
     RemoteHandleManager.getInstance().addWebEventListener(new QzoneQunFeedJsPlugin.2(this, paramVarArgs));
     if (!isSdcardWorking())
     {
-      bjkv.a().a(anvx.a(2131711742));
+      ToastUtil.a().a(HardCodeUtil.a(2131712257));
       return;
     }
     if (!NetworkState.isNetSupport())
     {
-      bjkv.a().a(anvx.a(2131711739));
+      ToastUtil.a().a(HardCodeUtil.a(2131712254));
       return;
     }
     if (!NetworkState.isWifiConn())
     {
       Activity localActivity = this.parentPlugin.mRuntime.a();
-      bhdj.a(localActivity, 230).setTitle(localActivity.getString(2131717406)).setMessage(localActivity.getString(2131717408)).setPositiveButton(localActivity.getString(2131717405), new QzoneQunFeedJsPlugin.4(this, paramVarArgs)).setNegativeButton(localActivity.getString(2131717404), new QzoneQunFeedJsPlugin.3(this)).show();
+      DialogUtil.a(localActivity, 230).setTitle(localActivity.getString(2131717901)).setMessage(localActivity.getString(2131717903)).setPositiveButton(localActivity.getString(2131717900), new QzoneQunFeedJsPlugin.4(this, paramVarArgs)).setNegativeButton(localActivity.getString(2131717899), new QzoneQunFeedJsPlugin.3(this)).show();
       return;
     }
     doDownloadPicture(paramVarArgs[0]);
@@ -282,10 +282,10 @@ public class QzoneQunFeedJsPlugin
         localIntent.putExtra("url", paramVarArgs);
         localIntent.putExtra("fromQZone", true);
         localIntent.putExtra("injectrecommend", true);
-        if (bifz.a.containsKey("Qzone")) {
+        if (WebViewPluginFactory.a.containsKey("Qzone")) {
           localIntent.putExtra("insertPluginsArray", new String[] { "Qzone" });
         }
-        localIntent.putExtra("source_name", this.parentPlugin.mRuntime.a().getString(2131717211));
+        localIntent.putExtra("source_name", this.parentPlugin.mRuntime.a().getString(2131717706));
         localIntent.setData(Uri.parse(paramVarArgs));
         this.parentPlugin.startActivityForResult(localIntent, (byte)0);
         return;
@@ -401,7 +401,7 @@ public class QzoneQunFeedJsPlugin
       try
       {
         int i = new JSONObject(paramVarArgs[0]).getInt("groupCode");
-        i = bhdf.a(this.parentPlugin.mRuntime.a().getAccount(), "troop_photo_message", String.valueOf(i));
+        i = DBUtils.a(this.parentPlugin.mRuntime.a().getAccount(), "troop_photo_message", String.valueOf(i));
         if (QLog.isDevelopLevel()) {
           QLog.d("QzoneQunFeedJsPlugin", 4, "handleStartQunRedPointNotify data=" + i);
         }
@@ -561,7 +561,7 @@ public class QzoneQunFeedJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin
  * JD-Core Version:    0.7.0.1
  */

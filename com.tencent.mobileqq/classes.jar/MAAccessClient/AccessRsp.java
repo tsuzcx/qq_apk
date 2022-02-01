@@ -9,9 +9,9 @@ public final class AccessRsp
 {
   static byte[] cache_body = (byte[])new byte[1];
   static Tips cache_tips = new Tips();
-  public byte[] body;
-  public int ret;
-  public Tips tips;
+  public byte[] body = null;
+  public int ret = 0;
+  public Tips tips = null;
   
   static
   {

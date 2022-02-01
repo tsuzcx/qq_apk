@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import bcrg;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,20 +11,20 @@ public class DataLineMsgSet
   implements Cloneable
 {
   public static String TAG = "dataline.DataLineMsgSet";
-  private int groupId;
-  private int groupType;
-  public boolean isReportPause;
+  private int groupId = 0;
+  private int groupType = 0;
+  public boolean isReportPause = false;
   private ArrayList<DataLineMsgRecord> mComeList = new ArrayList();
-  private long mFirstArriveTime;
-  private DataLineMsgRecord mFirstCome;
-  private boolean mIsNewCome;
-  private boolean mIsPaused;
-  private long mLastArriveTime;
-  private DataLineMsgRecord[] mSet;
-  public long mUpdateMutiViewTick;
-  public long mUpdateProcessTick;
-  private long nFirstId;
-  private long nLastId;
+  private long mFirstArriveTime = 0L;
+  private DataLineMsgRecord mFirstCome = null;
+  private boolean mIsNewCome = false;
+  private boolean mIsPaused = false;
+  private long mLastArriveTime = 0L;
+  private DataLineMsgRecord[] mSet = null;
+  public long mUpdateMutiViewTick = 0L;
+  public long mUpdateProcessTick = 0L;
+  private long nFirstId = 0L;
+  private long nLastId = 0L;
   
   public DataLineMsgSet(int paramInt)
   {
@@ -34,7 +34,7 @@ public class DataLineMsgSet
   public static boolean isCanReciveOrResend(DataLineMsgRecord paramDataLineMsgRecord)
   {
     if ((!paramDataLineMsgRecord.issuc) || (paramDataLineMsgRecord.fileMsgStatus == 1L) || (paramDataLineMsgRecord.fileMsgStatus == 2L)) {}
-    while ((paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!FileUtil.isFileExists(paramDataLineMsgRecord.path)))) {
+    while ((paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!FileUtil.a(paramDataLineMsgRecord.path)))) {
       return true;
     }
     return false;
@@ -466,7 +466,7 @@ public class DataLineMsgSet
   
   public boolean isTimeOut()
   {
-    return bcrg.a() - this.mLastArriveTime > 90L;
+    return MessageCache.a() - this.mLastArriveTime > 90L;
   }
   
   public void printlog()
@@ -614,7 +614,7 @@ public class DataLineMsgSet
   
   public void setTimeOut()
   {
-    this.mLastArriveTime = (bcrg.a() - 95L);
+    this.mLastArriveTime = (MessageCache.a() - 95L);
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "设置timeOut, mLastArriveTime[" + this.mLastArriveTime);
     }
@@ -654,7 +654,7 @@ public class DataLineMsgSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DataLineMsgSet
  * JD-Core Version:    0.7.0.1
  */

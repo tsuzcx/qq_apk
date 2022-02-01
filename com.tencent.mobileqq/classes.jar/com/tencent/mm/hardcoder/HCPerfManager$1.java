@@ -1,20 +1,18 @@
 package com.tencent.mm.hardcoder;
 
-import aczu;
-
-public class HCPerfManager$1
+class HCPerfManager$1
   implements Runnable
 {
-  public HCPerfManager$1(aczu paramaczu) {}
+  HCPerfManager$1(HCPerfManager paramHCPerfManager) {}
   
   public void run()
   {
-    aczu.a(this.this$0);
+    HCPerfManager.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HCPerfManager.1
  * JD-Core Version:    0.7.0.1
  */

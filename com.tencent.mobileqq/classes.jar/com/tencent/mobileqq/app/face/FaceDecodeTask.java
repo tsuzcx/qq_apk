@@ -3,14 +3,11 @@ package com.tencent.mobileqq.app.face;
 import android.graphics.Bitmap;
 import android.os.Looper;
 import android.text.TextUtils;
-import aoem;
-import aokm;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.opt.threadpriority.ThreadOptimizer;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
@@ -29,12 +26,12 @@ public abstract class FaceDecodeTask
   protected static Looper mainLooper;
   public static ArrayList<FaceDecodeTask> sPendingResultList = new ArrayList(100);
   private AppInterface app;
-  protected Bitmap bitmap;
-  protected FaceInfo faceInfo;
-  protected WeakReference<FaceDecodeTask.DecodeCompletionListener> mDecodeCompletionListenerWrf;
+  protected Bitmap bitmap = null;
+  protected FaceInfo faceInfo = null;
+  protected WeakReference<DecodeCompletionListener> mDecodeCompletionListenerWrf;
   protected boolean needDownload;
   
-  public FaceDecodeTask(AppInterface paramAppInterface, FaceInfo paramFaceInfo, FaceDecodeTask.DecodeCompletionListener paramDecodeCompletionListener)
+  public FaceDecodeTask(AppInterface paramAppInterface, FaceInfo paramFaceInfo, DecodeCompletionListener paramDecodeCompletionListener)
   {
     this.faceInfo = paramFaceInfo;
     this.mDecodeCompletionListenerWrf = new WeakReference(paramDecodeCompletionListener);
@@ -118,17 +115,20 @@ public abstract class FaceDecodeTask
     }
   }
   
-  public static FaceDecodeTask getFaceDecodeTask(AppInterface paramAppInterface, FaceInfo paramFaceInfo, FaceDecodeTask.DecodeCompletionListener paramDecodeCompletionListener)
+  public static void executeTask(AppInterface paramAppInterface, FaceInfo paramFaceInfo, DecodeCompletionListener paramDecodeCompletionListener)
   {
-    if (paramAppInterface == null) {}
-    do
-    {
+    execute(getFaceDecodeTask(paramAppInterface, paramFaceInfo, paramDecodeCompletionListener));
+  }
+  
+  public static FaceDecodeTask getFaceDecodeTask(AppInterface paramAppInterface, FaceInfo paramFaceInfo, DecodeCompletionListener paramDecodeCompletionListener)
+  {
+    if (paramAppInterface == null) {
       return null;
-      if ((paramAppInterface instanceof QQAppInterface)) {
-        return new FaceDecodeTaskImpl((QQAppInterface)paramAppInterface, paramFaceInfo, paramDecodeCompletionListener);
-      }
-    } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new aokm((NearbyAppInterface)paramAppInterface, paramFaceInfo, paramDecodeCompletionListener);
+    }
+    if ("module_nearby".equals(paramAppInterface.getModuleId())) {
+      return new NearByFaceDecodeTask(paramAppInterface, paramFaceInfo, paramDecodeCompletionListener);
+    }
+    return new FaceDecodeTaskImpl(paramAppInterface, paramFaceInfo, paramDecodeCompletionListener);
   }
   
   public static FaceDecodeTask.FaceDecodeThreadInfo getNearbyFaceDecodeThreadInfo()
@@ -158,7 +158,7 @@ public abstract class FaceDecodeTask
           if (mDecodeThreads == null)
           {
             initHandler();
-            String str = BaseApplicationImpl.processName;
+            String str = BaseApplication.processName;
             initFaceDecodeThreadInfo();
             if (mThreadInfo.maxThreadCount != -2147483648) {
               MAX_THREAD_COUNT = mThreadInfo.maxThreadCount;
@@ -176,7 +176,7 @@ public abstract class FaceDecodeTask
               {
                 mDecodeRunnables[i] = new FaceDecodeTask.FaceDecodeRunnable(null);
                 mDecodeThreads[i] = ThreadManager.newFreeThread(mDecodeRunnables[i], "FaceDecodeThread", 5);
-                if (aoem.a().c()) {
+                if (ThreadOptimizer.a().c()) {
                   mDecodeThreads[i].setPriority(1);
                 }
                 if (mDecodeThreads[i].getState() != Thread.State.NEW) {
@@ -207,11 +207,11 @@ public abstract class FaceDecodeTask
   
   private static void initFaceDecodeThreadInfo()
   {
-    if (TextUtils.isEmpty(BaseApplicationImpl.processName)) {}
+    if (TextUtils.isEmpty(BaseApplication.processName)) {}
     for (;;)
     {
       return;
-      if (BaseApplicationImpl.processName.equals("com.tencent.mobileqq:tool")) {}
+      if (BaseApplication.processName.equals("com.tencent.mobileqq:tool")) {}
       for (mThreadInfo = getNearbyFaceDecodeThreadInfo(); QLog.isColorLevel(); mThreadInfo = new FaceDecodeTask.FaceDecodeThreadInfo())
       {
         QLog.i("Q.qqhead.FaceDecodeTask", 2, "initFaceDecodeThreadInfo, maxThreadCount=" + mThreadInfo.maxThreadCount + ",priority=" + mThreadInfo.priority);
@@ -232,7 +232,7 @@ public abstract class FaceDecodeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecodeTask
  * JD-Core Version:    0.7.0.1
  */

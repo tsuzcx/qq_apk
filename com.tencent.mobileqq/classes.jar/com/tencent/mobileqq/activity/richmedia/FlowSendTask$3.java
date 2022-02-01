@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alpy;
 import android.app.Activity;
 
-public class FlowSendTask$3
+class FlowSendTask$3
   implements Runnable
 {
-  public FlowSendTask$3(alpy paramalpy) {}
+  FlowSendTask$3(FlowSendTask paramFlowSendTask) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class FlowSendTask$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.FlowSendTask.3
  * JD-Core Version:    0.7.0.1
  */

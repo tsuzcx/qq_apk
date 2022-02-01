@@ -1,8 +1,8 @@
 package com.tencent.biz.common.offline;
 
 import android.os.Handler;
+import com.tencent.biz.common.offline.util.IOfflineDownloader;
 import com.tencent.qphone.base.util.QLog;
-import nvn;
 
 class BidDownloader$4
   implements Runnable
@@ -11,7 +11,7 @@ class BidDownloader$4
   
   public void run()
   {
-    int i = BidDownloader.jdField_a_of_type_Nvn.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.this$0.c);
+    int i = BidDownloader.jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.this$0.c);
     if (QLog.isColorLevel()) {
       QLog.i(BidDownloader.d, 2, "state = " + i);
     }
@@ -22,7 +22,7 @@ class BidDownloader$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.BidDownloader.4
  * JD-Core Version:    0.7.0.1
  */

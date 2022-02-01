@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import antl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class DiscussionHandler$1
+class DiscussionHandler$1
   implements Runnable
 {
-  public DiscussionHandler$1(antl paramantl, String paramString) {}
+  DiscussionHandler$1(DiscussionHandler paramDiscussionHandler, String paramString) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class DiscussionHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DiscussionHandler.1
  * JD-Core Version:    0.7.0.1
  */

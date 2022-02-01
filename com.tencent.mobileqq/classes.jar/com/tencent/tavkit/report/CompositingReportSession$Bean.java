@@ -19,7 +19,7 @@ final class CompositingReportSession$Bean
   
   public CompositingReportSession$Bean()
   {
-    super("TAVKit_Android", "android_tavkit_compositing", "1.3.5.6-qq_8.4.8");
+    super("TAVKit_Android", "android_tavkit_compositing", "1.5.0.14-beta");
   }
   
   public Map<String, Long> toMap()
@@ -36,7 +36,7 @@ final class CompositingReportSession$Bean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.report.CompositingReportSession.Bean
  * JD-Core Version:    0.7.0.1
  */

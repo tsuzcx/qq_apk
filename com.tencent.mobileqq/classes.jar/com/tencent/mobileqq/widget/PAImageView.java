@@ -30,7 +30,7 @@ public class PAImageView
   Paint jdField_a_of_type_AndroidGraphicsPaint;
   Path jdField_a_of_type_AndroidGraphicsPath;
   RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   float[] jdField_a_of_type_ArrayOfFloat;
   private int b;
   private int jdField_c_of_type_Int;
@@ -141,7 +141,7 @@ public class PAImageView
   @TargetApi(11)
   public void f()
   {
-    if (VersionUtils.isHoneycomb())
+    if (VersionUtils.e())
     {
       this.jdField_c_of_type_Int = 2;
       if (this.jdField_c_of_type_Int != 1) {
@@ -172,7 +172,7 @@ public class PAImageView
     this.jdField_c_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramBoolean) && (this.jdField_c_of_type_Int == 1)) {
@@ -205,7 +205,7 @@ public class PAImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAImageView
  * JD-Core Version:    0.7.0.1
  */

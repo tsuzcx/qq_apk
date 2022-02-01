@@ -8,9 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anvx;
-import aupt;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -45,8 +45,10 @@ public class MiniProgramShareUtils
   public static final int MINI_APP_SHARE_FROM_PAY = 13;
   public static final String MINI_APP_SHARE_IS_COMPLETE = "miniAppShareIsComplete";
   public static final String MINI_APP_SHARE_SCENE = "miniAppShareScene";
+  public static final String MINI_APP_SHARE_SUB_SCENE = "miniAppShareSubScene";
   public static final String MINI_APP_SHARE_TEMPLATE_ID = "miniAppShareTemplateId";
   public static final String MINI_APP_SHARE_TYPE = "miniAppShareType";
+  public static final String MINI_APP_SHARE_UPDATABLE_MSG_FROM = "miniAppShareUpdatableMsgFrom";
   public static final long SHARE_APPID_MISMATCHING = -1000710003L;
   public static final long SHARE_OUT_OF_LIMIT = -100070004L;
   private static final String SHARE_PATH_DETAIL = "openMiniApp/detail";
@@ -79,7 +81,7 @@ public class MiniProgramShareUtils
       }
     }
     label77:
-    for (paramJSONObject = anvx.a(2131706343);; paramJSONObject = anvx.a(2131706344))
+    for (paramJSONObject = HardCodeUtil.a(2131706883);; paramJSONObject = HardCodeUtil.a(2131706884))
     {
       paramJSONObject = paramJSONObject + "]" + paramMiniArkShareModel.getTitle();
       return paramJSONObject;
@@ -235,10 +237,10 @@ public class MiniProgramShareUtils
     }
     int j = 0;
     int i = j;
-    if (!StringUtil.isEmpty(paramMiniArkShareModel.getTemplateId()))
+    if (!StringUtil.a(paramMiniArkShareModel.getTemplateId()))
     {
       i = j;
-      if (!StringUtil.isEmpty(paramMiniArkShareModel.getTemplateData())) {
+      if (!StringUtil.a(paramMiniArkShareModel.getTemplateData())) {
         i = 2;
       }
     }
@@ -279,47 +281,38 @@ public class MiniProgramShareUtils
     }
     Intent localIntent = new Intent(paramActivity, TroopCreateLogicActivity.class);
     localIntent.putExtra("key_share_from_screen_need_finish", true);
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       localIntent.putExtra("type", 9);
-      if (paramInt1 != 0) {
-        break label188;
-      }
-      paramBundle.putInt("uintype", 0);
     }
     for (;;)
     {
+      paramBundle.putInt("uintype", paramInt1);
       paramBundle.putString("uin", String.valueOf(paramString1));
       paramBundle.putString("uinname", paramString2);
       paramBundle.putInt("miniAppShareDestType", paramInt1);
       paramBundle.putString("miniAppShareDestId", paramString1);
       localIntent.putExtras(paramBundle);
       if (paramInt2 == -1) {
-        break label204;
+        break;
       }
       paramActivity.startActivityForResult(localIntent, paramInt2);
       return;
       localIntent.putExtra("type", 10);
-      break;
-      label188:
-      if (paramInt1 == 1) {
-        paramBundle.putInt("uintype", 1);
-      }
     }
-    label204:
     paramActivity.startActivity(localIntent);
   }
   
-  public static void shareUpdatableMsg(Context paramContext, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
+  public static void shareUpdatableMsg(Context paramContext, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3)
   {
     Intent localIntent = new Intent(paramContext, ForwardRecentActivity.class);
     localIntent.putExtra("forward_type", 44);
     localIntent.putExtra("miniAppShareAppid", paramString1);
-    localIntent.putExtra("miniAppShareAppType", paramInt1);
+    localIntent.putExtra("miniAppShareUpdatableMsgFrom", paramInt1);
     localIntent.putExtra("miniAppShareTemplateId", paramString2);
     localIntent.putExtra("miniAppShareEvent", paramString3);
     localIntent.putExtra("miniAppShareCallbackId", paramInt2);
-    aupt.a(paramContext, localIntent);
+    localIntent.putExtra("miniAppShareSubScene", paramInt3);
+    ForwardBaseOption.a(paramContext, localIntent);
   }
   
   public static String updateImagePathToArkMeta(String paramString1, String paramString2)

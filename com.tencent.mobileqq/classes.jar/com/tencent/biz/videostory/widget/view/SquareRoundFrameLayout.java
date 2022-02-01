@@ -12,8 +12,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import bhbg;
-import bhbj;
+import com.tencent.mobileqq.util.SquareRoundImageUtils;
+import com.tencent.mobileqq.util.SquareRoundImageUtils.SquareRoundColorDrawable;
 
 public class SquareRoundFrameLayout
   extends FrameLayout
@@ -49,14 +49,14 @@ public class SquareRoundFrameLayout
   private void b()
   {
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    Object localObject = new bhbj(getResources().getColor(2131165377), getWidth(), getHeight());
+    Object localObject = new SquareRoundImageUtils.SquareRoundColorDrawable(getResources().getColor(2131165377), getWidth(), getHeight());
     localStateListDrawable.addState(new int[] { 16842919, 16842910 }, (Drawable)localObject);
     localObject = new ColorDrawable(0);
     localStateListDrawable.addState(new int[0], (Drawable)localObject);
     setForeground(localStateListDrawable);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     try
     {
@@ -72,17 +72,17 @@ public class SquareRoundFrameLayout
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != 0) && (paramInt2 != 0) && ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))) {
-      this.a = bhbg.a(paramInt1, paramInt2);
+      this.a = SquareRoundImageUtils.a(paramInt1, paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.SquareRoundFrameLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
-import bomw;
-import bomx;
 import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.MusicCallBack;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.util.CaptureFreqMonitor;
+import dov.com.qq.im.capture.util.CaptureFreqMonitorItem;
 import java.io.File;
-import ykv;
 
 final class FFmpegUtils$15
   extends ExecuteBinResponseCallback
@@ -15,10 +15,10 @@ final class FFmpegUtils$15
   
   public void onFailure(String paramString)
   {
-    ykv.a("music_composite", "video_music_composite", 0, 1, new String[0]);
+    StoryReportor.a("music_composite", "video_music_composite", 0, 1, new String[0]);
     this.val$endCallback.onFailure(paramString);
     if ((this.val$endCallback instanceof VideoCompositeHelper.MusicCallBack)) {
-      ((VideoCompositeHelper.MusicCallBack)this.val$endCallback).setErrorCode(941007);
+      ((VideoCompositeHelper.MusicCallBack)this.val$endCallback).a(941007);
     }
     QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " combineVideoAndAudio failed msg：" + paramString);
   }
@@ -54,9 +54,9 @@ final class FFmpegUtils$15
   public void onSuccess(String paramString)
   {
     String str = String.valueOf(System.currentTimeMillis() - this.startime);
-    ykv.a("music_composite", "video_music_composite", 0, 0, new String[] { str });
-    if (bomw.c) {
-      bomw.g.a(1, System.currentTimeMillis() - this.val$mergeStartTime);
+    StoryReportor.a("music_composite", "video_music_composite", 0, 0, new String[] { str });
+    if (CaptureFreqMonitor.c) {
+      CaptureFreqMonitor.g.a(1, System.currentTimeMillis() - this.val$mergeStartTime);
     }
     this.val$endCallback.onSuccess(paramString);
     QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " combineVideoAndAudio end cost time：" + str);
@@ -65,7 +65,7 @@ final class FFmpegUtils$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils.15
  * JD-Core Version:    0.7.0.1
  */

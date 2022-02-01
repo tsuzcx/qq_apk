@@ -1,10 +1,10 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReport_UserInfo_dc02148
   implements LpReportInfo
@@ -40,13 +40,13 @@ public class LpReport_UserInfo_dc02148
     HashMap localHashMap = new HashMap();
     if (this.uin <= 1000L)
     {
-      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
       localHashMap.put("uin", str);
       if (!TextUtils.isEmpty(this.client_time)) {
-        break label235;
+        break label239;
       }
     }
-    label235:
+    label239:
     for (String str = String.valueOf(System.currentTimeMillis());; str = this.client_time)
     {
       localHashMap.put("client_time", str);
@@ -70,7 +70,7 @@ public class LpReport_UserInfo_dc02148
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_UserInfo_dc02148
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class setUserFlagReq
   extends JceStruct
 {
-  public int flag;
-  public int implat;
+  public int flag = 0;
+  public int implat = 0;
   public String qqver = "";
   
   public setUserFlagReq() {}

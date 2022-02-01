@@ -1,4 +1,19 @@
-// INTERNAL ERROR //
+package com.tencent.mobileqq.nearby.profilecard;
+
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.Card;
+
+class NearbyProfileDisplayTribePanel$13$1
+  implements Runnable
+{
+  NearbyProfileDisplayTribePanel$13$1(NearbyProfileDisplayTribePanel.13 param13, Card paramCard) {}
+  
+  public void run()
+  {
+    NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).setOnClickListener(new NearbyProfileDisplayTribePanel.13.1.1(this));
+  }
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13.1

@@ -2,46 +2,46 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
 import android.content.Context;
 import android.text.TextUtils;
-import anvx;
-import bgip;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJItemViewType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BuluoInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
+import com.tencent.biz.pubaccount.readinjoy.viewmodels.ArticleViewModel;
+import com.tencent.biz.pubaccount.readinjoy.viewmodels.Observable;
+import com.tencent.biz.pubaccount.readinjoy.viewmodels.Observer;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import ppe;
-import pqw;
-import qfw;
-import qvw;
-import qvx;
-import rfw;
-import rqw;
-import rqx;
-import ttb;
-import ttc;
-import ttd;
 
 public class NativeCommentView
   extends ReadInJoyYAFolderTextView
-  implements IView, ttd<CharSequence>
+  implements IView, Observer<CharSequence>
 {
   protected int a;
   protected long a;
+  protected CmpCtxt a;
+  protected Observable<CharSequence> a;
   protected String a;
-  public rfw a;
-  protected ttc<CharSequence> a;
   public boolean a;
   public boolean b;
   
   public NativeCommentView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Rfw = new rfw();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
     setShouldCallClick(true);
   }
   
@@ -49,18 +49,18 @@ public class NativeCommentView
   {
     ArticleInfo localArticleInfo;
     Object localObject;
-    if ((this.jdField_a_of_type_Rfw.a != null) && (this.jdField_a_of_type_Rfw.a.a() != null) && (this.jdField_a_of_type_Rfw.a.a().mSocialFeedInfo != null))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().mSocialFeedInfo != null))
     {
-      localArticleInfo = this.jdField_a_of_type_Rfw.a.a();
-      this.jdField_a_of_type_Ttc = localArticleInfo.articleViewModel.a();
+      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable = localArticleInfo.articleViewModel.a();
       a(localArticleInfo);
-      this.jdField_a_of_type_Ttc.a(this);
-      localObject = (CharSequence)this.jdField_a_of_type_Ttc.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.a(this);
+      localObject = (CharSequence)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.a();
       QLog.d("NativeCommentView", 2, "setDesc: " + localObject);
-      if ((localArticleInfo.mFeedType != 30) && ((localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rqw == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rqw.b.longValue() != 30L)) && ((localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rqx == null) || (TextUtils.isEmpty(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rqx.c)))) {
+      if ((localArticleInfo.mFeedType != 30) && ((localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.b.longValue() != 30L)) && ((localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BuluoInfo == null) || (TextUtils.isEmpty(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BuluoInfo.c)))) {
         break label553;
       }
-      localObject = new QQText(bgip.a(((CharSequence)this.jdField_a_of_type_Ttc.a()).toString().replaceAll("\024", "")), 3, 16);
+      localObject = new QQText(TroopBarUtils.a(((CharSequence)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.a()).toString().replaceAll("\024", "")), 3, 16);
     }
     label553:
     for (;;)
@@ -75,15 +75,15 @@ public class NativeCommentView
         setText((CharSequence)localObject);
         return;
       }
-      if ((ppe.a(this.jdField_a_of_type_Rfw.a.a())) || (ppe.i(this.jdField_a_of_type_Rfw.a.a())) || (ppe.h(this.jdField_a_of_type_Rfw.a.a())))
+      if ((RIJItemViewType.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a())) || (RIJItemViewType.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a())) || (RIJItemViewType.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a())))
       {
-        setMaxLines(a(this.jdField_a_of_type_Rfw.a.a()));
+        setMaxLines(a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a()));
         if (localArticleInfo.mArticleType == BaseArticleInfo.TYPE_ARTICLE_NOVEL) {
-          setSpanText(BaseApplication.getContext().getString(2131717836));
+          setSpanText(BaseApplication.getContext().getString(2131718337));
         }
         for (;;)
         {
-          setMoreSpan(new qvw(this, this.jdField_b_of_type_Int, 16777215, 860716207));
+          setMoreSpan(new NativeCommentView.1(this, this.jdField_b_of_type_Int, 16777215, 860716207));
           setCustomViewLinkTextColor(this.jdField_b_of_type_Int);
           if (!this.jdField_b_of_type_Boolean) {
             break;
@@ -91,16 +91,16 @@ public class NativeCommentView
           setHeight(0);
           return;
           if (localArticleInfo.isPGCShortContent()) {
-            setSpanText(anvx.a(2131706543));
+            setSpanText(HardCodeUtil.a(2131707084));
           }
         }
         setText((CharSequence)localObject);
         return;
       }
-      if (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq != null)
+      if (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo != null)
       {
-        setMaxLines(a(this.jdField_a_of_type_Rfw.a.a()));
-        if (((pqw.l(localArticleInfo)) || (pqw.m(localArticleInfo))) && (this.jdField_a_of_type_Rfw.a.a().mChannelID != 0L))
+        setMaxLines(a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a()));
+        if (((RIJFeedsType.l(localArticleInfo)) || (RIJFeedsType.m(localArticleInfo))) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().mChannelID != 0L))
         {
           setSpanText("");
           setMoreSpan(null);
@@ -109,7 +109,7 @@ public class NativeCommentView
         {
           setText((CharSequence)localObject);
           return;
-          setMoreSpan(new qvx(this, this.jdField_b_of_type_Int, 16777215, 860716207, localArticleInfo));
+          setMoreSpan(new NativeCommentView.2(this, this.jdField_b_of_type_Int, 16777215, 860716207, localArticleInfo));
           setCustomViewLinkTextColor(this.jdField_b_of_type_Int);
         }
         setVisibility(8);
@@ -124,9 +124,9 @@ public class NativeCommentView
   {
     StringBuilder localStringBuilder = new StringBuilder().append("current text: ");
     Object localObject;
-    if (this.jdField_a_of_type_Ttc != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable != null)
     {
-      localObject = (CharSequence)this.jdField_a_of_type_Ttc.a();
+      localObject = (CharSequence)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.a();
       QLog.d("NativeCommentView", 1, localObject);
       if ((paramArticleInfo != null) && (paramArticleInfo.articleViewModel != null))
       {
@@ -138,12 +138,12 @@ public class NativeCommentView
         }
       }
       localObject = new StringBuilder().append("current text: ");
-      if (this.jdField_a_of_type_Ttc == null) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable == null) {
         break label158;
       }
     }
     label158:
-    for (paramArticleInfo = (CharSequence)this.jdField_a_of_type_Ttc.a();; paramArticleInfo = null)
+    for (paramArticleInfo = (CharSequence)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.a();; paramArticleInfo = null)
     {
       QLog.d("NativeCommentView", 1, paramArticleInfo);
       return;
@@ -152,17 +152,17 @@ public class NativeCommentView
     }
   }
   
-  public void a(ttc<CharSequence> paramttc)
+  public void a(Observable<CharSequence> paramObservable)
   {
-    paramttc = (CharSequence)paramttc.a();
-    ThreadManager.getUIHandler().post(new NativeCommentView.3(this, paramttc));
+    paramObservable = (CharSequence)paramObservable.a();
+    ThreadManager.getUIHandler().post(new NativeCommentView.3(this, paramObservable));
   }
   
   public void a(boolean paramBoolean)
   {
     QLog.d("NativeCommentView", 1, "showPreCommentText: " + paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_JavaLangString = (anvx.a(2131718073) + "：");
+      this.jdField_a_of_type_JavaLangString = (HardCodeUtil.a(2131718566) + "：");
     }
   }
   
@@ -196,11 +196,11 @@ public class NativeCommentView
     measure(paramInt1, paramInt2);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Ttc != null) {
-      this.jdField_a_of_type_Ttc.b(this);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.b(this);
     }
   }
   
@@ -212,15 +212,15 @@ public class NativeCommentView
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    if (this.jdField_a_of_type_Ttc != null) {
-      this.jdField_a_of_type_Ttc.b(this);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.b(this);
     }
   }
   
-  public void setModel(qfw paramqfw)
+  public void setModel(IReadInJoyModel paramIReadInJoyModel)
   {
-    this.jdField_a_of_type_Rfw.a(paramqfw);
-    switch (paramqfw.a())
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramIReadInJoyModel);
+    switch (paramIReadInJoyModel.a())
     {
     }
     for (;;)
@@ -246,7 +246,7 @@ public class NativeCommentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView
  * JD-Core Version:    0.7.0.1
  */

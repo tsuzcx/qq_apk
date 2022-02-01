@@ -12,9 +12,9 @@ public class MostUsedSearch
   implements Serializable
 {
   private static String a = "MostUsedSearch";
-  public ArrayList<MostUsedSearchItem> items = new ArrayList();
-  public long latestUsedTime = -1L;
-  public String orgKey = "";
+  ArrayList<MostUsedSearchItem> items = new ArrayList();
+  long latestUsedTime = -1L;
+  String orgKey = "";
   
   public static MostUsedSearch fromJson(String paramString)
   {
@@ -128,7 +128,7 @@ public class MostUsedSearch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.mostused.MostUsedSearch
  * JD-Core Version:    0.7.0.1
  */

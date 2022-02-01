@@ -9,8 +9,8 @@ public final class SCPullConchs
   extends JceStruct
 {
   static ArrayList<ConchTask> cache_conchTaskList = new ArrayList();
-  public ArrayList<ConchTask> conchTaskList;
-  public int result;
+  public ArrayList<ConchTask> conchTaskList = null;
+  public int result = 0;
   
   static
   {

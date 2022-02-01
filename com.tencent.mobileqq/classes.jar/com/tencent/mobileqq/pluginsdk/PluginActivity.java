@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.pluginsdk;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;

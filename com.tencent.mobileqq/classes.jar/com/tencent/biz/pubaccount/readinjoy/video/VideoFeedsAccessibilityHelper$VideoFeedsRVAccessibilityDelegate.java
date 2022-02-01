@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerViewAccessibilityDelegate;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelegate
   extends RecyclerViewAccessibilityDelegate
@@ -21,7 +21,7 @@ public class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelegate
   {
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     AccessibilityEventCompat.asRecord(paramAccessibilityEvent).setItemCount(0);
-    paramView.setContentDescription(anvx.a(2131715548));
+    paramView.setContentDescription(HardCodeUtil.a(2131716014));
   }
   
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
@@ -32,7 +32,7 @@ public class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper.VideoFeedsRVAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

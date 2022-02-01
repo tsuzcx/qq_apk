@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import aizi;
-import ajbn;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendManager;
+import com.tencent.mobileqq.activity.contact.newfriend.msg.NewFriendMessage;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -28,10 +28,10 @@ public class RecentItemNewFriendMsgData
       QLog.d("RecentItemNewFriendMsgData", 2, "RecentItemNewFriendMsgData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    aizi localaizi = (aizi)paramQQAppInterface.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
-    ajbn localajbn = localaizi.a();
+    NewFriendManager localNewFriendManager = (NewFriendManager)paramQQAppInterface.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
+    NewFriendMessage localNewFriendMessage = localNewFriendManager.a();
     this.mTitleName = paramContext.getString(this.mTilteId);
-    if (localajbn == null)
+    if (localNewFriendMessage == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RecentItemNewFriendMsgData", 2, "isFirstShow = " + this.isFirstShow);
@@ -41,7 +41,7 @@ public class RecentItemNewFriendMsgData
       this.mMsgExtroInfo = "";
       this.mDisplayTime = 0L;
       this.mShowTime = "";
-      if (AppSetting.c)
+      if (AppSetting.d)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName).append(",");
@@ -59,15 +59,15 @@ public class RecentItemNewFriendMsgData
       this.mContentDesc = paramQQAppInterface.toString();
       return;
       this.mMsgExtroInfo = "";
-      if (localajbn.a(paramQQAppInterface) != null) {}
-      for (paramQQAppInterface = localajbn.a(paramQQAppInterface);; paramQQAppInterface = this.mLastMsg)
+      if (localNewFriendMessage.a(paramQQAppInterface) != null) {}
+      for (paramQQAppInterface = localNewFriendMessage.a(paramQQAppInterface);; paramQQAppInterface = this.mLastMsg)
       {
         this.mLastMsg = paramQQAppInterface;
-        this.mUnreadNum = localaizi.d();
-        if (this.mDisplayTime < localajbn.a) {
-          this.mDisplayTime = localajbn.a;
+        this.mUnreadNum = localNewFriendManager.d();
+        if (this.mDisplayTime < localNewFriendMessage.a) {
+          this.mDisplayTime = localNewFriendMessage.a;
         }
-        this.mShowTime = TimeManager.getInstance().getMsgDisplayTime(getRecentUserUin(), this.mDisplayTime);
+        this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
         break;
       }
       label301:
@@ -83,7 +83,7 @@ public class RecentItemNewFriendMsgData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,7 @@ package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anvk;
-import ashe;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
@@ -11,23 +10,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class MessengerService$IncomingHandler$8
+class MessengerService$IncomingHandler$8
   implements Runnable
 {
-  public MessengerService$IncomingHandler$8(ashe paramashe, QQAppInterface paramQQAppInterface, ArrayList paramArrayList, Bundle paramBundle, MessengerService paramMessengerService) {}
+  MessengerService$IncomingHandler$8(MessengerService.IncomingHandler paramIncomingHandler, QQAppInterface paramQQAppInterface, ArrayList paramArrayList, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
     Bundle localBundle = new Bundle();
     HashMap localHashMap = new HashMap();
-    anvk localanvk = (anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localanvk != null)
+    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localFriendsManager != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        Friends localFriends = localanvk.e(str);
+        Friends localFriends = localFriendsManager.e(str);
         if (localFriends != null)
         {
           if (!TextUtils.isEmpty(localFriends.remark)) {
@@ -50,7 +49,7 @@ public class MessengerService$IncomingHandler$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.8
  * JD-Core Version:    0.7.0.1
  */

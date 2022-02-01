@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.filter;
 
-import lgx;
+import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
 
 public class FilterItem
-  extends lgx
+  extends EffectConfigBase.ItemBase
 {
   private String desc;
   private String filterid;
@@ -101,7 +101,7 @@ public class FilterItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.filter.FilterItem
  * JD-Core Version:    0.7.0.1
  */

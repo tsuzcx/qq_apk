@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import bhfd;
+import com.tencent.mobileqq.utils.LogTag;
 
 class AlbumListLogicBase$1
   implements Runnable
@@ -9,14 +9,14 @@ class AlbumListLogicBase$1
   
   public void run()
   {
-    bhfd.a();
+    LogTag.a();
     this.this$0.mAlbumListAdapterCallBack.queryAlbumList(-1);
-    bhfd.a("PEAK", "queryAlbumList");
+    LogTag.a("PEAK", "queryAlbumList");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AlbumListLogicBase.1
  * JD-Core Version:    0.7.0.1
  */

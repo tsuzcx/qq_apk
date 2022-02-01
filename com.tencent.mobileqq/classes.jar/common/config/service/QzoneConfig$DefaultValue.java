@@ -60,7 +60,7 @@ public class QzoneConfig$DefaultValue
   public static final String DEFAULT_CATEGORY_SCANNER_FRONT_CAM_BLACKLIST = "N1T";
   public static final int DEFAULT_CATEGORY_SCANNER_SWITCH = 1;
   public static final int DEFAULT_CLOSE_ALL_SELECT_BTN = 1;
-  public static final String DEFAULT_CONTEXTBOX_LOAD_NUM = "1_1_1";
+  public static final String DEFAULT_CONTEXTBOX_LOAD_NUM = "10_10_10";
   public static final String DEFAULT_CREATE_ALBUM_ORDER = "0-0";
   public static final int DEFAULT_CREATE_GIF_FILE_MAX_SIZE = 10;
   public static final int DEFAULT_CREATE_GIF_PHOTO_FRAME_TIME1 = 200;
@@ -86,6 +86,7 @@ public class QzoneConfig$DefaultValue
   public static final int DEFAULT_ENABLE_APPINFO_DB_CACHE = 1;
   public static final int DEFAULT_ENABLE_DB_CACHE = 0;
   public static final int DEFAULT_ENABLE_HW_TRIM = 1;
+  public static final int DEFAULT_ENABLE_NEW_PARAMS = 1;
   public static final int DEFAULT_ENABLE_SHUOSHUO_SYNC_TO_FRIEND = 1;
   public static final int DEFAULT_ENABLE_SUPER_RESOLUTION = 1;
   public static final int DEFAULT_ENABLE_SUPPORT_MULTITHREAD = 1;
@@ -272,10 +273,13 @@ public class QzoneConfig$DefaultValue
   public static final String DEFAULT_MINI_GAME_PAY_SHARE_IMG = "https://sola.gtimg.cn/aoi/sola/20200615194538_YYA1zqPM8t.png";
   public static final String DEFAULT_MINI_GAME_PAY_SHARE_TITLE = "亲爱的，拜托你帮我代付一笔订单～";
   public static final int DEFAULT_MINI_GAME_PERSISTENT_DEBUG_VERSION_ENABLE = 1;
+  public static final String DEFAULT_MINI_GAME_PRECONNECT_METHOD = "HEAD";
+  public static final long DEFAULT_MINI_GAME_PRECONNECT_TIME_INTERVAL_SECOND = 43200L;
   public static final int DEFAULT_MINI_GAME_PRELOAD_BASELIB_ENABLE = 1;
   public static final int DEFAULT_MINI_GAME_PRESENT_DETECT_INTERVAL = 1000;
   public static final String DEFAULT_MINI_GAME_PRE_CONNECT_BLACK_APPID_LIST = "1110244087";
   public static final int DEFAULT_MINI_GAME_PRE_CONNECT_NUM = 5;
+  public static final int DEFAULT_MINI_GAME_PUBLIC_ACCOUNT_ARK_MSG_GRAY = 0;
   public static final int DEFAULT_MINI_GAME_PUBLIC_ACCOUNT_ENABLE_WEB = 0;
   public static final String DEFAULT_MINI_GAME_PUBLIC_ACCOUNT_GAME_STORE_URL = "mqqapi://miniapp/open?_atype=0&_mappid=1108291530&_mvid=&_path=pages%2Fgame-list%2Fgame-list%3Fmode%3Dchengzaiye&_vt=3&via=2015_5_11&_sig=1248527088";
   public static final int DEFAULT_MINI_GAME_PUBLIC_ACCOUNT_MSG_LIST_COUNT = 4;
@@ -640,7 +644,7 @@ public class QzoneConfig$DefaultValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     common.config.service.QzoneConfig.DefaultValue
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
+import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.mobileqq.widget.BounceScrollView;
 
 public class AccountDetailBounceScrollView
@@ -19,6 +20,7 @@ public class AccountDetailBounceScrollView
   public AccountDetailBounceScrollView(Context paramContext)
   {
     super(paramContext);
+    AccessibilityUtil.a(this, false);
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_Int = ((int)(320.0F * this.jdField_a_of_type_Float));
     this.jdField_b_of_type_Int = 0;
@@ -71,7 +73,7 @@ public class AccountDetailBounceScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetailBounceScrollView
  * JD-Core Version:    0.7.0.1
  */

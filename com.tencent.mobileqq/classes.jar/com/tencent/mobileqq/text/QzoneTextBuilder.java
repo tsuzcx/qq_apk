@@ -4,18 +4,14 @@ import android.text.Editable.Factory;
 import android.text.TextUtils;
 import com.tencent.mobileqq.emoticon.QQEmojiUtil;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
+import com.tencent.mobileqq.text.style.EmoticonSpan;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 
 public class QzoneTextBuilder
   extends QQTextBuilder
 {
-  public static Editable.Factory EMOCTATION_FACORY = new QzoneTextBuilder.1();
-  
-  public QzoneTextBuilder(int paramInt)
-  {
-    super(paramInt);
-  }
+  public static Editable.Factory a = new QzoneTextBuilder.1();
   
   public QzoneTextBuilder(CharSequence paramCharSequence, int paramInt)
   {
@@ -27,32 +23,6 @@ public class QzoneTextBuilder
     super(paramCharSequence, paramInt1, paramInt2);
   }
   
-  public <T> T getNextSpan(int paramInt1, int paramInt2, Class<T> paramClass)
-  {
-    int i = 1;
-    int j = 0;
-    paramInt1 = nextSpanTransition(paramInt1, paramInt2, paramClass);
-    if (paramInt1 >= paramInt2) {
-      return null;
-    }
-    paramClass = getSpans(paramInt1, paramInt2, paramClass);
-    if (paramClass.length >= 1)
-    {
-      int k = getSpanStart(paramClass[0]);
-      paramInt2 = j;
-      paramInt1 = i;
-      while (paramInt1 < paramClass.length)
-      {
-        if (getSpanStart(paramClass[paramInt1]) < k) {
-          paramInt2 = paramInt1;
-        }
-        paramInt1 += 1;
-      }
-      return paramClass[paramInt2];
-    }
-    return null;
-  }
-  
   public String toPlainText()
   {
     int j = 0;
@@ -60,7 +30,7 @@ public class QzoneTextBuilder
     char[] arrayOfChar = new char[m];
     getChars(0, m, arrayOfChar, 0);
     StringBuilder localStringBuilder = new StringBuilder(m);
-    QQText.EmoticonSpan[] arrayOfEmoticonSpan = (QQText.EmoticonSpan[])getSpans(0, m, QQText.EmoticonSpan.class);
+    EmoticonSpan[] arrayOfEmoticonSpan = (EmoticonSpan[])getSpans(0, m, EmoticonSpan.class);
     Arrays.sort(arrayOfEmoticonSpan, new QzoneTextBuilder.SpanComparator(this));
     int n = arrayOfEmoticonSpan.length;
     int i = 0;
@@ -84,7 +54,7 @@ public class QzoneTextBuilder
     if (i1 > j) {
       localStringBuilder.append(arrayOfChar, j, i1 - j);
     }
-    switch (((QQText.EmoticonSpan)localObject).emojiType)
+    switch (((EmoticonSpan)localObject).emojiType)
     {
     }
     for (;;)
@@ -92,7 +62,7 @@ public class QzoneTextBuilder
       i += 1;
       j = k;
       break;
-      j = QQEmojiUtil.getEmojiUnicode(((QQText.EmoticonSpan)localObject).index);
+      j = QQEmojiUtil.getEmojiUnicode(((EmoticonSpan)localObject).index);
       if (j != -1)
       {
         localStringBuilder.append(String.valueOf(Character.toChars(j)));

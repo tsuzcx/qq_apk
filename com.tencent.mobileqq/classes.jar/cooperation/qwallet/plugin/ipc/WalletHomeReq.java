@@ -2,18 +2,18 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbbq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeRspBody;
-import cooperation.qwallet.plugin.QWalletHelper;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.TimeRspBody;
+import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -193,9 +193,9 @@ public class WalletHomeReq
   
   protected void getRedTouch(QQAppInterface paramQQAppInterface)
   {
-    bbbq localbbbq = (bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
+    RedTouchManager localRedTouchManager = (RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
     ArrayList localArrayList = new ArrayList();
-    paramQQAppInterface = localbbbq.a();
+    paramQQAppInterface = localRedTouchManager.a();
     if (paramQQAppInterface == null)
     {
       onGetRedTouch(null);
@@ -264,7 +264,7 @@ public class WalletHomeReq
         i += 1;
       }
     }
-    int i = localbbbq.a("100007.102000", 100);
+    int i = localRedTouchManager.a("100007.102000", 100);
     if (i > 0) {
       localArrayList.add(new QWalletRedTouchInfo("100007.102000", 5, null, null, i + ""));
     }
@@ -289,7 +289,7 @@ public class WalletHomeReq
   
   public void onReceive()
   {
-    QQAppInterface localQQAppInterface = QWalletHelper.getAppInterface();
+    QQAppInterface localQQAppInterface = QWalletHelperImpl.getAppInterface();
     if (localQQAppInterface == null)
     {
       onGetRedTouch(null);
@@ -310,7 +310,7 @@ public class WalletHomeReq
   protected void reportRedTouch(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null) {
-      ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(this.redTouchPath);
+      ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(this.redTouchPath);
     }
   }
   
@@ -325,7 +325,7 @@ public class WalletHomeReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.WalletHomeReq
  * JD-Core Version:    0.7.0.1
  */

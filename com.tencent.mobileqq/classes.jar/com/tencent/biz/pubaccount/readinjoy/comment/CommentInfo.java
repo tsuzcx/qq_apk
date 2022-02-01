@@ -4,61 +4,58 @@ import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import anvx;
-import bcsc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.service.message.EmotionCodecUtils;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
-import oyl;
-import oym;
-import oyn;
 
 public class CommentInfo
-  extends oyn
+  extends CommentInfoConstants
   implements Serializable
 {
   public static final int HOT_AREA = 1;
   public static final int NEW_AREA = 2;
-  public boolean anonymous;
-  public int area;
-  public transient ArticleInfo articleInfo;
+  public boolean anonymous = false;
+  public int area = 0;
+  public transient ArticleInfo articleInfo = null;
   public String authorAvatar = "";
   public String authorComment = "";
-  public long authorCreateTime;
+  public long authorCreateTime = 0L;
   public String authorHomepage = "";
   public String authorNickName = "";
-  public transient SpannableStringBuilder authorRealCommentSpanSb;
-  public int authorSelection;
+  public transient SpannableStringBuilder authorRealCommentSpanSb = null;
+  public int authorSelection = 0;
   public String authorUin = "";
   public int awesome;
-  public boolean commentByMyself;
+  public boolean commentByMyself = false;
   public String commentContent = "";
-  public int commentCount;
+  public int commentCount = 0;
   public String commentId = "";
-  public long commentTime;
-  public int commentType;
-  public transient QQText decodedCommentContent;
-  public int disLikeCount;
-  public boolean disLiked;
-  public transient JSONArray giftList;
+  public long commentTime = 0L;
+  public int commentType = 0;
+  public transient QQText decodedCommentContent = null;
+  public int disLikeCount = 0;
+  public boolean disLiked = false;
+  public transient JSONArray giftList = null;
   public boolean hasNextPage = true;
-  public boolean hasTarget;
-  public int level;
-  public int likeCount;
-  public boolean liked;
+  public boolean hasTarget = false;
+  public int level = 0;
+  public int likeCount = 0;
+  public boolean liked = false;
   public List<CommentInfo> mCommentItemLists = new ArrayList();
   public int nowPageNum = 1;
-  public int page;
+  public int page = 0;
   public int rank = -1;
   public String retMsg = "";
-  public transient List<SpannableStringBuilder> secondLevelCommentSpanSbList;
+  public transient List<SpannableStringBuilder> secondLevelCommentSpanSbList = null;
   public String subComments = "";
-  public int subCommentsTotal;
+  public int subCommentsTotal = 0;
   public String toNickName = "";
   public String toUin = "";
   public String uuid = "";
@@ -66,9 +63,9 @@ public class CommentInfo
   public void createDecodedCommentContent()
   {
     if ((TextUtils.isEmpty(this.commentContent)) && (this.giftList == null)) {
-      this.commentContent = anvx.a(2131701682);
+      this.commentContent = HardCodeUtil.a(2131702237);
     }
-    this.decodedCommentContent = new QQText(bcsc.b(this.commentContent), 7, 16);
+    this.decodedCommentContent = new QQText(EmotionCodecUtils.b(this.commentContent), 7, 16);
   }
   
   public void createProcessedAuthorComment()
@@ -78,7 +75,7 @@ public class CommentInfo
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       localSpannableStringBuilder.append("作者回复：");
       localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 0, localSpannableStringBuilder.length(), 33);
-      localSpannableStringBuilder.append(new QQText(bcsc.b(this.authorComment), 7, 16));
+      localSpannableStringBuilder.append(new QQText(EmotionCodecUtils.b(this.authorComment), 7, 16));
       this.authorRealCommentSpanSb = localSpannableStringBuilder;
     }
   }
@@ -117,18 +114,18 @@ public class CommentInfo
       if (!TextUtils.isEmpty(localCommentInfo.authorNickName))
       {
         localSpannableStringBuilder.append(localCommentInfo.authorNickName);
-        localSpannableStringBuilder.setSpan(new oyl(this, localCommentInfo, paramBaseActivity), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new CommentInfo.1(this, localCommentInfo, paramBaseActivity), 0, localSpannableStringBuilder.length(), 33);
       }
       if ((localCommentInfo.hasTarget) && (!TextUtils.isEmpty(localCommentInfo.toNickName)))
       {
         localSpannableStringBuilder.append(" 回复 ");
         int k = localSpannableStringBuilder.length();
         localSpannableStringBuilder.append(localCommentInfo.toNickName);
-        localSpannableStringBuilder.setSpan(new oym(this, localCommentInfo, paramBaseActivity), k, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new CommentInfo.2(this, localCommentInfo, paramBaseActivity), k, localSpannableStringBuilder.length(), 33);
       }
       localSpannableStringBuilder.append("：");
       if (!TextUtils.isEmpty(localCommentInfo.commentContent)) {
-        localSpannableStringBuilder.append(new QQText(bcsc.b(localCommentInfo.commentContent), 7, 16));
+        localSpannableStringBuilder.append(new QQText(EmotionCodecUtils.b(localCommentInfo.commentContent), 7, 16));
       }
       this.secondLevelCommentSpanSbList.add(localSpannableStringBuilder);
     }
@@ -141,10 +138,10 @@ public class CommentInfo
     {
       localStringBuilder = new StringBuilder().append(paramString).append("CommentInfo  info: article id=");
       if (this.articleInfo == null) {
-        break label270;
+        break label278;
       }
     }
-    label270:
+    label278:
     for (paramString = Long.valueOf(this.articleInfo.mArticleID);; paramString = "null")
     {
       QLog.d("CommentInfo", 2, paramString + " uuid=" + this.uuid + " commentid=" + this.commentId + " commentcontent=" + this.commentContent + " commentTime=" + this.commentTime + " retMsg=" + this.retMsg + " likecount=" + this.likeCount + " liked=" + this.liked + " anonymous=" + this.anonymous + " level=" + this.level + " commentByMyself" + this.commentByMyself + " authorhome=" + this.authorHomepage + " authoruin" + this.authorUin + " authornickname" + this.authorNickName + " authorAvater=" + this.authorAvatar + " author_select=" + this.authorSelection + "  hastarget=" + this.hasTarget + "  toNick`name" + this.toNickName);
@@ -154,7 +151,7 @@ public class CommentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo
  * JD-Core Version:    0.7.0.1
  */

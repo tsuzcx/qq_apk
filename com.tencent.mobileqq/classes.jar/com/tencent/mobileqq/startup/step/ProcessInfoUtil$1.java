@@ -2,22 +2,21 @@ package com.tencent.mobileqq.startup.step;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdiw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
-public final class ProcessInfoUtil$1
+final class ProcessInfoUtil$1
   implements Runnable
 {
-  public ProcessInfoUtil$1(String paramString) {}
+  ProcessInfoUtil$1(String paramString) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = bdiw.a();
+    SharedPreferences localSharedPreferences = ProcessInfoUtil.a();
     int i;
     if (localSharedPreferences != null)
     {
-      i = bdiw.a(BaseApplicationImpl.getContext(), this.a);
+      i = ProcessInfoUtil.a(BaseApplicationImpl.getContext(), this.a);
       if (i != -1) {
         break label27;
       }

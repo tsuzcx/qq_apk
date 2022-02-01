@@ -3,10 +3,9 @@ package com.tencent.mobileqq.ocr;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
-import apiu;
-import ayre;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload;
 import com.tencent.mobileqq.ocr.data.TranslateResult;
 import java.util.HashMap;
 
@@ -14,33 +13,33 @@ public class TranslateController
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private apiu jdField_a_of_type_Apiu;
-  private ayre jdField_a_of_type_Ayre;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ARCloudFileUpload jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload;
+  private OCRHandler jdField_a_of_type_ComTencentMobileqqOcrOCRHandler;
   HashMap<String, TranslateController.ImageTranslateTask> jdField_a_of_type_JavaUtilHashMap;
   
   public TranslateController(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Apiu = new apiu(paramQQAppInterface);
-    this.jdField_a_of_type_Apiu.a();
+    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload = new ARCloudFileUpload(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a();
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("TranslateFileUpload_" + System.currentTimeMillis());
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Ayre = ((ayre)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.OCR_HANDLER));
+    this.jdField_a_of_type_ComTencentMobileqqOcrOCRHandler = ((OCRHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.OCR_HANDLER));
   }
   
   private void a(boolean paramBoolean, String paramString, TranslateResult arg3)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (this.jdField_a_of_type_Ayre == null) {
+    while (this.jdField_a_of_type_ComTencentMobileqqOcrOCRHandler == null) {
       return;
     }
     if (??? != null) {
       ???.c = paramString;
     }
-    this.jdField_a_of_type_Ayre.notifyUI(2, paramBoolean, new Object[] { Integer.valueOf(2), ??? });
+    this.jdField_a_of_type_ComTencentMobileqqOcrOCRHandler.notifyUI(2, paramBoolean, new Object[] { Integer.valueOf(2), ??? });
     synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
       this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
@@ -60,18 +59,18 @@ public class TranslateController
       this.jdField_a_of_type_AndroidOsHandlerThread.quit();
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
     }
-    if (this.jdField_a_of_type_Apiu != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload != null)
     {
-      this.jdField_a_of_type_Apiu.a();
-      this.jdField_a_of_type_Apiu.b();
-      this.jdField_a_of_type_Apiu = null;
+      this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a();
+      this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.b();
+      this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload = null;
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_Ayre != null) {
-      this.jdField_a_of_type_Ayre.a(paramString1, paramString2, paramString3);
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrOCRHandler != null) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrOCRHandler.a(paramString1, paramString2, paramString3);
     }
   }
   
@@ -84,23 +83,23 @@ public class TranslateController
     //   2: aload_0
     //   3: getfield 76	com/tencent/mobileqq/ocr/TranslateController:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   6: aload_1
-    //   7: invokevirtual 148	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   7: invokevirtual 147	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   10: ifeq +21 -> 31
-    //   13: ldc 150
+    //   13: ldc 149
     //   15: iconst_1
-    //   16: ldc 152
+    //   16: ldc 151
     //   18: iconst_0
     //   19: anewarray 4	java/lang/Object
-    //   22: invokestatic 158	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   25: invokestatic 164	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   22: invokestatic 157	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   25: invokestatic 163	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   28: aload_0
     //   29: monitorexit
     //   30: return
-    //   31: invokestatic 167	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   31: invokestatic 166	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   34: ifeq +38 -> 72
-    //   37: ldc 150
+    //   37: ldc 149
     //   39: iconst_2
-    //   40: ldc 169
+    //   40: ldc 168
     //   42: iconst_4
     //   43: anewarray 4	java/lang/Object
     //   46: dup
@@ -118,18 +117,18 @@ public class TranslateController
     //   58: dup
     //   59: iconst_3
     //   60: iload 4
-    //   62: invokestatic 174	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   62: invokestatic 173	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   65: aastore
-    //   66: invokestatic 158	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   69: invokestatic 164	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   72: new 176	com/tencent/mobileqq/ocr/TranslateController$ImageTranslateTask
+    //   66: invokestatic 157	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   69: invokestatic 163	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   72: new 175	com/tencent/mobileqq/ocr/TranslateController$ImageTranslateTask
     //   75: dup
     //   76: aload_0
     //   77: aload_1
     //   78: aload_2
     //   79: aload_3
     //   80: iload 4
-    //   82: invokespecial 179	com/tencent/mobileqq/ocr/TranslateController$ImageTranslateTask:<init>	(Lcom/tencent/mobileqq/ocr/TranslateController;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+    //   82: invokespecial 178	com/tencent/mobileqq/ocr/TranslateController$ImageTranslateTask:<init>	(Lcom/tencent/mobileqq/ocr/TranslateController;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
     //   85: astore_3
     //   86: aload_0
     //   87: getfield 76	com/tencent/mobileqq/ocr/TranslateController:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
@@ -140,14 +139,14 @@ public class TranslateController
     //   94: getfield 76	com/tencent/mobileqq/ocr/TranslateController:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   97: aload_1
     //   98: aload_3
-    //   99: invokevirtual 183	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   99: invokevirtual 182	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   102: pop
     //   103: aload_2
     //   104: monitorexit
     //   105: aload_0
     //   106: getfield 71	com/tencent/mobileqq/ocr/TranslateController:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   109: aload_3
-    //   110: invokevirtual 187	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   110: invokevirtual 186	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   113: pop
     //   114: goto -86 -> 28
     //   117: astore_1

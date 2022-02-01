@@ -9,8 +9,8 @@ public final class ReqUpgradeSettings
   extends JceStruct
 {
   static ArrayList<Setting> cache_Settings;
-  public ArrayList<Setting> Settings;
-  public int Type;
+  public ArrayList<Setting> Settings = null;
+  public int Type = 0;
   
   public ReqUpgradeSettings() {}
   

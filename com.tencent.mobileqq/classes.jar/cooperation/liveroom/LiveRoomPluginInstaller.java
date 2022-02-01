@@ -13,10 +13,10 @@ import java.lang.ref.WeakReference;
 
 public class LiveRoomPluginInstaller
 {
-  private static LiveRoomPluginInstaller INSTANCE;
+  private static LiveRoomPluginInstaller INSTANCE = null;
   private static final String TAG = "LiveRoomPluginInstaller";
-  private WeakReference<OnPluginInstallListener> mInstallistener;
-  private boolean pluginDownloading;
+  private WeakReference<OnPluginInstallListener> mInstallistener = null;
+  private boolean pluginDownloading = false;
   
   public static LiveRoomPluginInstaller getInstance()
   {
@@ -86,7 +86,7 @@ public class LiveRoomPluginInstaller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomPluginInstaller
  * JD-Core Version:    0.7.0.1
  */

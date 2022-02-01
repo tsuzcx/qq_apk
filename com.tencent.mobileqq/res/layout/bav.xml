@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/e2b" android:background="@color/mi" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:mobileqq="http://schemas.android.com/apk/res-auto">
     <RelativeLayout android:id="@id/gmo" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <ProgressBar android:id="@id/i6i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="5.0dip" android:max="100" android:progressDrawable="@drawable/ana" android:minHeight="5.0dip" style="?android:progressBarStyleHorizontal" />
         <TextView android:textSize="@dimen/ayp" android:textColor="@color/a3r" android:gravity="center" android:id="@id/an9" android:background="@drawable/b2f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="17.0dip" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/i6i" android:layout_alignParentLeft="true" />

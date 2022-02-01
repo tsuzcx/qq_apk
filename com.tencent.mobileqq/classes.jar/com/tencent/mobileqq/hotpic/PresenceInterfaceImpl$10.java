@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.app.Dialog;
-import avod;
-import avoe;
-import bhdj;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
-public class PresenceInterfaceImpl$10
+class PresenceInterfaceImpl$10
   implements Runnable
 {
-  public PresenceInterfaceImpl$10(avod paramavod, String paramString) {}
+  PresenceInterfaceImpl$10(PresenceInterfaceImpl paramPresenceInterfaceImpl, String paramString) {}
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = bhdj.a(this.this$0.a, 232, null, this.a, new avoe(this), null);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.this$0.a, 232, null, this.a, new PresenceInterfaceImpl.10.1(this), null);
     try
     {
       localQQCustomDialog.show();
@@ -29,7 +27,7 @@ public class PresenceInterfaceImpl$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.10
  * JD-Core Version:    0.7.0.1
  */

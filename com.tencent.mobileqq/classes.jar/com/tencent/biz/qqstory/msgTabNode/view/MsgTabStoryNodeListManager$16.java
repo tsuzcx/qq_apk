@@ -1,11 +1,9 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
-import woo;
-
-public class MsgTabStoryNodeListManager$16
+class MsgTabStoryNodeListManager$16
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$16(woo paramwoo) {}
+  MsgTabStoryNodeListManager$16(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class MsgTabStoryNodeListManager$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.16
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaap;
-
 class AbsSubscribeShareCardView$1
   implements Runnable
 {
-  AbsSubscribeShareCardView$1(AbsSubscribeShareCardView paramAbsSubscribeShareCardView, aaap paramaaap) {}
+  AbsSubscribeShareCardView$1(AbsSubscribeShareCardView paramAbsSubscribeShareCardView, AbsSubscribeShareCardView.ShareDataBindListener paramShareDataBindListener) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ class AbsSubscribeShareCardView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.1
  * JD-Core Version:    0.7.0.1
  */

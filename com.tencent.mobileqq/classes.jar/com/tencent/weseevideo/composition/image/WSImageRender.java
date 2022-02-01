@@ -40,6 +40,20 @@ public class WSImageRender
     this.imageGenerator.generateCGImagesAsynchronouslyForTimes(localArrayList, new WSImageRender.1(this, paramImageRenderCallback));
   }
   
+  public void setCurrent(int paramInt)
+  {
+    if (this.imageGenerator != null) {
+      this.imageGenerator.setCurrent(paramInt);
+    }
+  }
+  
+  public void setMineIndex(int paramInt)
+  {
+    if (this.imageGenerator != null) {
+      this.imageGenerator.setIndex(paramInt);
+    }
+  }
+  
   public void update(Asset paramAsset, CGSize paramCGSize)
   {
     if (this.imageGenerator != null) {
@@ -49,7 +63,7 @@ public class WSImageRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.composition.image.WSImageRender
  * JD-Core Version:    0.7.0.1
  */

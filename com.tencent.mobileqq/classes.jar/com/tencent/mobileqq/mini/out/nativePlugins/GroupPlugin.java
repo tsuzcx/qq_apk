@@ -2,13 +2,13 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import anvx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
@@ -20,7 +20,7 @@ public class GroupPlugin
 {
   public static final String GROUP_GETMULTIMEMLIST = "getMultiMemList";
   public static final String TAG = "GroupPlugin";
-  NativePlugin.JSContext mJsContext;
+  JSContext mJsContext;
   GroupPlugin.MyActivityResultListener myActivityResultListener;
   
   private static void gotoSelectMembers(int paramInt, String paramString1, BaseActivity paramBaseActivity, String paramString2)
@@ -38,12 +38,12 @@ public class GroupPlugin
     localIntent.putExtra("group_name", paramString1);
     localIntent.putExtra("param_exit_animation", 3);
     paramBaseActivity.startActivityForResult(localIntent, 10);
-    paramBaseActivity.overridePendingTransition(2130771997, 0);
+    paramBaseActivity.overridePendingTransition(2130771999, 0);
   }
   
   private void gotoSelectMembers(String paramString1, int paramInt, String paramString2)
   {
-    NativePlugin.JSContext localJSContext = this.mJsContext;
+    JSContext localJSContext = this.mJsContext;
     if (localJSContext == null) {
       return;
     }
@@ -57,7 +57,7 @@ public class GroupPlugin
       gotoSelectMembers(paramInt, paramString2, localBaseActivity, paramString1);
       return;
     }
-    localJSContext.evaluateCallback(false, new JSONObject(), anvx.a(2131704835));
+    localJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131705378));
   }
   
   public void onDestroy()
@@ -67,7 +67,7 @@ public class GroupPlugin
     }
   }
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     Object localObject = null;
     int j = 0;
@@ -102,7 +102,7 @@ public class GroupPlugin
       int i;
       if ((TextUtils.isEmpty((CharSequence)localObject)) || (j < 1) || (j > 3))
       {
-        paramJSContext.evaluateCallback(false, new JSONObject(), anvx.a(2131704837));
+        paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131705380));
         return;
         if (!QLog.isColorLevel()) {
           break;
@@ -127,7 +127,7 @@ public class GroupPlugin
           gotoSelectMembers((String)localObject, i, paramJSONObject);
           return;
         }
-        paramJSContext.evaluateCallback(false, new JSONObject(), anvx.a(2131704836));
+        paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131705379));
         return;
         if (localJSONObject != null) {
           break label146;

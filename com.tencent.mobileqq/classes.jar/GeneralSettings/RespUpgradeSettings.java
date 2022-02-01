@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class RespUpgradeSettings
   extends JceStruct
 {
-  public int Result;
+  public int Result = 0;
   
   public RespUpgradeSettings() {}
   

@@ -13,6 +13,7 @@ public class CountdownTimeTask
   {
     this.jdField_a_of_type_Long = 1000L;
     this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaLangRunnable = null;
     this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
     a(paramInt);
   }

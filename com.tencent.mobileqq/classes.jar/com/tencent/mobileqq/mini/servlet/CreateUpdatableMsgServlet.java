@@ -3,11 +3,11 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhjl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -19,6 +19,7 @@ public class CreateUpdatableMsgServlet
   public static final String KEY_SCENE = "key_scene";
   public static final String KEY_SERVICE_TYPE = "key_service_type";
   public static final String KEY_SIG = "key_sig";
+  public static final String KEY_SUB_SCENE = "key_sub_scene";
   public static final String KEY_TEMPLATE_ID = "key_template_id";
   public static final String KEY_UIN = "key_uin";
   public static final String TAG = "[mini] CreateUpdatableMsgServlet";
@@ -38,7 +39,7 @@ public class CreateUpdatableMsgServlet
           continue;
         }
         Object localObject = new PROTOCAL.StQWebRsp();
-        ((PROTOCAL.StQWebRsp)localObject).mergeFrom(bhjl.b(paramFromServiceMsg.getWupBuffer()));
+        ((PROTOCAL.StQWebRsp)localObject).mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)((PROTOCAL.StQWebRsp)localObject).Seq.get());
         long l = ((PROTOCAL.StQWebRsp)localObject).retCode.get();
         localObject = ((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8();
@@ -73,13 +74,13 @@ public class CreateUpdatableMsgServlet
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    byte[] arrayOfByte2 = new CreateUpdatableMsgRequest(paramIntent.getStringExtra("key_appid"), paramIntent.getStringExtra("key_template_id"), paramIntent.getIntExtra("key_from", -1), paramIntent.getIntExtra("key_scene", -1), paramIntent.getStringExtra("key_uin"), paramIntent.getIntExtra("key_service_type", 0), paramIntent.getByteArrayExtra("key_sig")).encode(paramIntent, paramIntent.getIntExtra("key_index", -1), getTraceId());
+    byte[] arrayOfByte2 = new CreateUpdatableMsgRequest(paramIntent.getStringExtra("key_appid"), paramIntent.getStringExtra("key_template_id"), paramIntent.getIntExtra("key_from", -1), paramIntent.getIntExtra("key_scene", -1), paramIntent.getIntExtra("key_sub_scene", -1), paramIntent.getStringExtra("key_uin"), paramIntent.getIntExtra("key_service_type", 0), paramIntent.getByteArrayExtra("key_sig")).encode(paramIntent, paramIntent.getIntExtra("key_index", -1), getTraceId());
     byte[] arrayOfByte1 = arrayOfByte2;
     if (arrayOfByte2 == null) {
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_updatablemsg.CreateUpdatableMsg");
-    paramPacket.putSendData(bhjl.a(arrayOfByte1));
+    paramPacket.putSendData(WupUtil.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

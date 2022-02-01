@@ -3,20 +3,19 @@ package com.tencent.open.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjpq;
 import java.util.ArrayList;
 
 public class GetVirtualListResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<GetVirtualListResult> CREATOR = new bjpq();
+  public static final Parcelable.Creator<GetVirtualListResult> CREATOR = new GetVirtualListResult.1();
   public int a;
   public long a;
   public ArrayList<VirtualInfo> a;
   
   public GetVirtualListResult() {}
   
-  public GetVirtualListResult(Parcel paramParcel)
+  protected GetVirtualListResult(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_Long = paramParcel.readLong();
@@ -51,7 +50,7 @@ public class GetVirtualListResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.model.GetVirtualListResult
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,6 @@ import android.opengl.GLES20;
 import android.opengl.GLES31;
 import android.opengl.Matrix;
 import android.util.Log;
-import bblu;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
 import com.tencent.ttpic.openapi.filter.TextureRender;
 import java.nio.ByteBuffer;
@@ -49,7 +48,7 @@ public class GlUtil
   
   public static int createTexture31FromBmp(Bitmap paramBitmap)
   {
-    int i = bblu.a(3553, paramBitmap);
+    int i = com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.GlUtil.a(3553, paramBitmap);
     TextureRender localTextureRender = new TextureRender();
     paramBitmap = new RenderBuffer(paramBitmap.getHeight(), paramBitmap.getWidth(), 33987, true);
     float[] arrayOfFloat = new float[16];

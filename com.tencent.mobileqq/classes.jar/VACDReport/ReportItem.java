@@ -8,13 +8,13 @@ public final class ReportItem
   extends JceStruct
   implements Cloneable, Comparable<ReportItem>
 {
-  public long costTime;
-  public long createTime;
+  public long costTime = 0L;
+  public long createTime = 0L;
   public String failReason = "";
-  public boolean isNormalEnd;
+  public boolean isNormalEnd = false;
   public String params = "";
-  public int result;
-  public long seqno;
+  public int result = 0;
+  public long seqno = 0L;
   public String step = "";
   
   public int compareTo(ReportItem paramReportItem)

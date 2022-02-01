@@ -4,11 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qroute.annotation.PluginInterface;
 
+@PluginInterface
 public class ResultRecord
   implements Parcelable
 {
   public static final Parcelable.Creator<ResultRecord> CREATOR = new ResultRecord.1();
+  public String gameLevelIcon;
   public String groupUin;
   public boolean isNewTroop;
   public long lastChooseTime;
@@ -33,6 +36,7 @@ public class ResultRecord
     for (;;)
     {
       this.isNewTroop = bool;
+      this.gameLevelIcon = paramParcel.readString();
       return;
       bool = false;
     }
@@ -56,6 +60,7 @@ public class ResultRecord
       localResultRecord.phone = paramResultRecord.phone;
       localResultRecord.uinType = paramResultRecord.uinType;
       localResultRecord.isNewTroop = paramResultRecord.isNewTroop;
+      localResultRecord.gameLevelIcon = paramResultRecord.gameLevelIcon;
     }
     return localResultRecord;
   }
@@ -79,6 +84,9 @@ public class ResultRecord
   
   public int getUinType()
   {
+    if ((this.uinType == -1) && (this.type == 4)) {
+      return 1006;
+    }
     return this.uinType;
   }
   
@@ -91,6 +99,7 @@ public class ResultRecord
     this.phone = paramString4;
     this.lastChooseTime = 0L;
     this.isNewTroop = false;
+    this.gameLevelIcon = "";
   }
   
   public String toString()
@@ -118,6 +127,7 @@ public class ResultRecord
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
+      paramParcel.writeString(this.gameLevelIcon);
       return;
     }
   }

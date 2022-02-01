@@ -12,82 +12,45 @@ public class AnimationView$Player
   implements Handler.Callback
 {
   public static final int MSG_PLAY = 1;
-  final int STATE_PLAYING = 1;
-  final int STATE_READY = 0;
-  final int STATE_STOP = 2;
-  int mCurCycle = 0;
-  int mCurFrame = 0;
-  protected Handler mHandler;
-  boolean mInvokeAnimStartEvent = false;
-  int mState = 0;
-  protected WeakReference<AnimationView> playViewRef;
+  final int a;
+  protected Handler a;
+  protected WeakReference<AnimationView> a;
+  final int jdField_b_of_type_Int = 1;
+  boolean jdField_b_of_type_Boolean = false;
+  final int c = 2;
+  int d = 0;
+  int e = 0;
+  int f = 0;
   
   public AnimationView$Player(AnimationView paramAnimationView)
   {
-    this.playViewRef = new WeakReference(paramAnimationView);
-    this.mHandler = new Handler(this);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAnimationView);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
   }
   
-  protected void autoPlay()
+  protected Drawable a(AnimationView paramAnimationView)
   {
-    Object localObject = (AnimationView)this.playViewRef.get();
-    if ((localObject == null) || (this.mState == 2)) {
-      return;
-    }
-    Drawable localDrawable = getNextFrame((AnimationView)localObject);
-    if (localDrawable != null) {
-      ((AnimationView)localObject).setImageDrawable(localDrawable);
-    }
-    if (((AnimationView)localObject).mListener != null)
+    if ((paramAnimationView == null) || (paramAnimationView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo == null))
     {
-      if ((this.mCurFrame != 1) || (this.mCurCycle <= 0)) {
-        break label98;
-      }
-      ((AnimationView)localObject).mListener.onAnimationRepeat((AnimationView)localObject);
-    }
-    for (;;)
-    {
-      int i = getNextFrameDelay((AnimationView)localObject);
-      localObject = this.mHandler.obtainMessage(1);
-      this.mHandler.sendMessageDelayed((Message)localObject, i);
-      return;
-      label98:
-      if ((this.mCurFrame == 1) && (this.mCurCycle == 0))
-      {
-        if (!this.mInvokeAnimStartEvent)
-        {
-          this.mInvokeAnimStartEvent = true;
-          ((AnimationView)localObject).mListener.onAnimationStart((AnimationView)localObject);
-        }
-      }
-      else if (this.mState == 2) {
-        ((AnimationView)localObject).mListener.onAnimationEnd((AnimationView)localObject);
-      }
-    }
-  }
-  
-  protected Drawable getNextFrame(AnimationView paramAnimationView)
-  {
-    if ((paramAnimationView == null) || (paramAnimationView.mAnimationInfo == null))
-    {
-      this.mState = 2;
+      this.d = 2;
       return null;
     }
-    paramAnimationView = paramAnimationView.mAnimationInfo;
-    if (this.mState == 2) {
+    paramAnimationView = paramAnimationView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+    if (this.d == 2) {
       return null;
     }
     if (paramAnimationView.mOneCycleFrames.size() <= 0)
     {
-      this.mState = 2;
+      this.d = 2;
       return null;
     }
-    if ((this.mCurFrame < 0) || (this.mCurFrame > paramAnimationView.mOneCycleFrames.size()))
+    if ((this.e < 0) || (this.e > paramAnimationView.mOneCycleFrames.size()))
     {
-      this.mState = 2;
+      this.d = 2;
       return null;
     }
-    int k = this.mCurFrame + 1;
+    int k = this.e + 1;
     int m = 0;
     int j = m;
     int i = k;
@@ -101,7 +64,7 @@ public class AnimationView$Player
         i = k;
         if (paramAnimationView.mInfiniteToInOnCycle > paramAnimationView.mInfiniteFromInOnCycle)
         {
-          if (this.mCurFrame != paramAnimationView.mInfiniteToInOnCycle) {
+          if (this.e != paramAnimationView.mInfiniteToInOnCycle) {
             break label285;
           }
           i = paramAnimationView.mInfiniteFromInOnCycle;
@@ -114,11 +77,11 @@ public class AnimationView$Player
       if (i > paramAnimationView.mOneCycleFrames.size())
       {
         if (paramAnimationView.mCycle < 0) {}
-        for (this.mState = 2; this.mState == 2; this.mState = 2)
+        for (this.d = 2; this.d == 2; this.d = 2)
         {
           label173:
           return null;
-          if ((paramAnimationView.mCycle == 0) || (this.mCurCycle < paramAnimationView.mCycle)) {
+          if ((paramAnimationView.mCycle == 0) || (this.f < paramAnimationView.mCycle)) {
             break label173;
           }
         }
@@ -126,7 +89,7 @@ public class AnimationView$Player
       }
       for (;;)
       {
-        this.mCurFrame = k;
+        this.e = k;
         i = ((Integer)paramAnimationView.mOneCycleFrames.get(k - 1)).intValue();
         return (Drawable)paramAnimationView.mFrames.get(i);
         k = i;
@@ -135,7 +98,7 @@ public class AnimationView$Player
           k = i;
           if (j == 0)
           {
-            this.mCurCycle += 1;
+            this.f += 1;
             k = i;
           }
         }
@@ -146,15 +109,53 @@ public class AnimationView$Player
     }
   }
   
+  protected void a()
+  {
+    Object localObject = (AnimationView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localObject == null) || (this.d == 2)) {
+      return;
+    }
+    Drawable localDrawable = a((AnimationView)localObject);
+    if (localDrawable != null) {
+      ((AnimationView)localObject).setImageDrawable(localDrawable);
+    }
+    if (((AnimationView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener != null)
+    {
+      if ((this.e != 1) || (this.f <= 0)) {
+        break label98;
+      }
+      ((AnimationView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener.onAnimationRepeat((AnimationView)localObject);
+    }
+    for (;;)
+    {
+      int i = getNextFrameDelay((AnimationView)localObject);
+      localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, i);
+      return;
+      label98:
+      if ((this.e == 1) && (this.f == 0))
+      {
+        if (!this.jdField_b_of_type_Boolean)
+        {
+          this.jdField_b_of_type_Boolean = true;
+          ((AnimationView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener.onAnimationStart((AnimationView)localObject);
+        }
+      }
+      else if (this.d == 2) {
+        ((AnimationView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener.onAnimationEnd((AnimationView)localObject);
+      }
+    }
+  }
+  
   public int getNextFrameDelay(AnimationView paramAnimationView)
   {
-    if ((paramAnimationView == null) || (paramAnimationView.mAnimationInfo == null)) {
+    if ((paramAnimationView == null) || (paramAnimationView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo == null)) {
       return 100;
     }
-    if (this.mCurFrame >= paramAnimationView.mAnimationInfo.mOneCycleFrames.size()) {
-      return paramAnimationView.mAnimationInfo.mDelay;
+    if (this.e >= paramAnimationView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo.mOneCycleFrames.size()) {
+      return paramAnimationView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo.mDelay;
     }
-    return paramAnimationView.mAnimationInfo.mInterval;
+    return paramAnimationView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo.mInterval;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -165,7 +166,7 @@ public class AnimationView$Player
     for (;;)
     {
       return false;
-      autoPlay();
+      a();
     }
   }
   
@@ -177,40 +178,40 @@ public class AnimationView$Player
   public void play()
   {
     reset();
-    this.mState = 1;
-    autoPlay();
+    this.d = 1;
+    a();
   }
   
   public void reset()
   {
-    this.mCurFrame = 0;
-    this.mCurCycle = 0;
-    this.mState = 0;
-    this.mInvokeAnimStartEvent = false;
+    this.e = 0;
+    this.f = 0;
+    this.d = 0;
+    this.jdField_b_of_type_Boolean = false;
   }
   
   public void resume()
   {
-    AnimationView localAnimationView = (AnimationView)this.playViewRef.get();
-    if ((this.mState == 1) || (localAnimationView == null)) {}
+    AnimationView localAnimationView = (AnimationView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((this.d == 1) || (localAnimationView == null)) {}
     do
     {
       return;
-      this.mState = 1;
-      autoPlay();
-    } while (localAnimationView.mListener == null);
-    localAnimationView.mListener.onAnimationStart(localAnimationView);
+      this.d = 1;
+      a();
+    } while (localAnimationView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener == null);
+    localAnimationView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener.onAnimationStart(localAnimationView);
   }
   
   public void stop()
   {
-    this.mState = 2;
-    this.mHandler.removeCallbacksAndMessages(null);
+    this.d = 2;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView.Player
  * JD-Core Version:    0.7.0.1
  */

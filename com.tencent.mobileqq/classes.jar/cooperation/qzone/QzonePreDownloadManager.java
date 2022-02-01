@@ -9,12 +9,12 @@ import java.util.Vector;
 
 public class QzonePreDownloadManager
 {
-  private static QzonePreDownloadManager mInstance;
+  private static QzonePreDownloadManager mInstance = null;
   private Context context = BaseApplicationImpl.getContext();
   private QzonePreDownloadManager.DownloadEnty currentEnty;
   private Vector<QzonePreDownloadManager.DownloadEnty> downloadList = new Vector();
   private boolean isDownloading;
-  private Downloader mImageDownloader;
+  private Downloader mImageDownloader = null;
   
   /* Error */
   private Downloader getDownloader()
@@ -23,10 +23,10 @@ public class QzonePreDownloadManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 53	cooperation/qzone/QzonePreDownloadManager:mImageDownloader	Lcom/tencent/component/network/downloader/Downloader;
+    //   3: getfield 27	cooperation/qzone/QzonePreDownloadManager:mImageDownloader	Lcom/tencent/component/network/downloader/Downloader;
     //   6: ifnull +12 -> 18
     //   9: aload_0
-    //   10: getfield 53	cooperation/qzone/QzonePreDownloadManager:mImageDownloader	Lcom/tencent/component/network/downloader/Downloader;
+    //   10: getfield 27	cooperation/qzone/QzonePreDownloadManager:mImageDownloader	Lcom/tencent/component/network/downloader/Downloader;
     //   13: astore_1
     //   14: aload_0
     //   15: monitorexit
@@ -35,26 +35,26 @@ public class QzonePreDownloadManager
     //   18: aconst_null
     //   19: astore_1
     //   20: aload_0
-    //   21: getfield 29	cooperation/qzone/QzonePreDownloadManager:context	Landroid/content/Context;
-    //   24: invokestatic 59	com/tencent/component/network/DownloaderFactory:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/DownloaderFactory;
-    //   27: invokevirtual 62	com/tencent/component/network/DownloaderFactory:getCommonDownloader	()Lcom/tencent/component/network/downloader/Downloader;
+    //   21: getfield 35	cooperation/qzone/QzonePreDownloadManager:context	Landroid/content/Context;
+    //   24: invokestatic 62	com/tencent/component/network/DownloaderFactory:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/DownloaderFactory;
+    //   27: invokevirtual 65	com/tencent/component/network/DownloaderFactory:getCommonDownloader	()Lcom/tencent/component/network/downloader/Downloader;
     //   30: astore_2
     //   31: aload_2
     //   32: astore_1
     //   33: aload_2
-    //   34: invokevirtual 67	com/tencent/component/network/downloader/Downloader:enableResumeTransfer	()V
+    //   34: invokevirtual 70	com/tencent/component/network/downloader/Downloader:enableResumeTransfer	()V
     //   37: aload_2
     //   38: astore_1
     //   39: aload_0
     //   40: aload_1
-    //   41: putfield 53	cooperation/qzone/QzonePreDownloadManager:mImageDownloader	Lcom/tencent/component/network/downloader/Downloader;
+    //   41: putfield 27	cooperation/qzone/QzonePreDownloadManager:mImageDownloader	Lcom/tencent/component/network/downloader/Downloader;
     //   44: aload_0
-    //   45: getfield 53	cooperation/qzone/QzonePreDownloadManager:mImageDownloader	Lcom/tencent/component/network/downloader/Downloader;
+    //   45: getfield 27	cooperation/qzone/QzonePreDownloadManager:mImageDownloader	Lcom/tencent/component/network/downloader/Downloader;
     //   48: ifnonnull +26 -> 74
-    //   51: new 69	java/lang/RuntimeException
+    //   51: new 72	java/lang/RuntimeException
     //   54: dup
-    //   55: ldc 71
-    //   57: invokespecial 74	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   55: ldc 74
+    //   57: invokespecial 77	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   60: athrow
     //   61: astore_1
     //   62: aload_0
@@ -63,10 +63,10 @@ public class QzonePreDownloadManager
     //   65: athrow
     //   66: astore_2
     //   67: aload_2
-    //   68: invokevirtual 77	java/lang/Throwable:printStackTrace	()V
+    //   68: invokevirtual 80	java/lang/Throwable:printStackTrace	()V
     //   71: goto -32 -> 39
     //   74: aload_0
-    //   75: getfield 53	cooperation/qzone/QzonePreDownloadManager:mImageDownloader	Lcom/tencent/component/network/downloader/Downloader;
+    //   75: getfield 27	cooperation/qzone/QzonePreDownloadManager:mImageDownloader	Lcom/tencent/component/network/downloader/Downloader;
     //   78: astore_1
     //   79: goto -65 -> 14
     // Local variable table:
@@ -208,7 +208,7 @@ public class QzonePreDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzonePreDownloadManager
  * JD-Core Version:    0.7.0.1
  */

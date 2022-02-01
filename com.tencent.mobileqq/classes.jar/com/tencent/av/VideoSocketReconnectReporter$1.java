@@ -4,10 +4,10 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public final class VideoSocketReconnectReporter$1
+final class VideoSocketReconnectReporter$1
   implements Runnable
 {
-  public VideoSocketReconnectReporter$1(int paramInt1, int paramInt2) {}
+  VideoSocketReconnectReporter$1(int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public final class VideoSocketReconnectReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.VideoSocketReconnectReporter.1
  * JD-Core Version:    0.7.0.1
  */

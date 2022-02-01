@@ -3,16 +3,15 @@ package com.tencent.mobileqq.dating;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anvx;
 import appoint.define.appoint_define.LocaleInfo;
-import arxt;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.io.UnsupportedEncodingException;
 
 public class DatingFilters
   implements Parcelable
 {
-  public static final Parcelable.Creator<DatingFilters> CREATOR = new arxt();
+  public static final Parcelable.Creator<DatingFilters> CREATOR = new DatingFilters.1();
   public static final int[] a;
   public static final String[] a;
   public static final int[] b;
@@ -24,20 +23,21 @@ public class DatingFilters
   public int c;
   public int d;
   public int e;
-  public int f;
+  public int f = 0;
   public int g;
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { anvx.a(2131702340), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131702888), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
     jdField_a_of_type_ArrayOfInt = new int[] { 0, 22, 26, 35, 120 };
     jdField_b_of_type_ArrayOfInt = new int[] { 0, 18, 23, 27, 36 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { anvx.a(2131702338), anvx.a(2131702344), anvx.a(2131702343), anvx.a(2131702341), anvx.a(2131702339) };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { anvx.a(2131702346), anvx.a(2131702348), anvx.a(2131702345), anvx.a(2131702342), anvx.a(2131702337), anvx.a(2131702347) };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131702886), HardCodeUtil.a(2131702892), HardCodeUtil.a(2131702891), HardCodeUtil.a(2131702889), HardCodeUtil.a(2131702887) };
+    jdField_c_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131702894), HardCodeUtil.a(2131702896), HardCodeUtil.a(2131702893), HardCodeUtil.a(2131702890), HardCodeUtil.a(2131702885), HardCodeUtil.a(2131702895) };
   }
   
   private DatingFilters(Parcel paramParcel)
   {
+    this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo = null;
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_b_of_type_Int = paramParcel.readInt();
     this.jdField_c_of_type_Int = paramParcel.readInt();
@@ -151,7 +151,7 @@ public class DatingFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingFilters
  * JD-Core Version:    0.7.0.1
  */

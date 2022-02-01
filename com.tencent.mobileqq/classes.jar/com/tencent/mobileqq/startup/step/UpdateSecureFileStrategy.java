@@ -4,14 +4,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
 import android.support.v4.util.SparseArrayCompat;
-import aozx;
-import aozy;
-import bdjq;
-import blsp;
-import bmdw;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.utils.DiySecureFileHelper.CustomBackground;
+import com.tencent.mobileqq.app.utils.DiySecureFileHelper.QQFavoriteSecurityFileHelper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.utils.VipComicSecurityFileHelper;
+import cooperation.qqreader.QQReaderSecurityFileHelper;
 import java.io.File;
 import mqq.app.ISecurityFileHelper;
 import mqq.app.SecurityFileFrameworkManagerImpl;
@@ -24,10 +23,10 @@ public class UpdateSecureFileStrategy
   
   public UpdateSecureFileStrategy()
   {
-    a(0, new bmdw());
-    a(1, new aozy());
-    a(2, new aozx());
-    a(3, new blsp());
+    a(0, new QQReaderSecurityFileHelper());
+    a(1, new DiySecureFileHelper.QQFavoriteSecurityFileHelper());
+    a(2, new DiySecureFileHelper.CustomBackground());
+    a(3, new VipComicSecurityFileHelper());
   }
   
   private int a()
@@ -56,7 +55,7 @@ public class UpdateSecureFileStrategy
     if (!((File)localObject1).exists()) {
       ((File)localObject1).mkdirs();
     }
-    localObject2 = localFile.listFiles(new bdjq(this));
+    localObject2 = localFile.listFiles(new UpdateSecureFileStrategy.1(this));
     if (localObject2 == null) {
       return 4;
     }
@@ -69,7 +68,7 @@ public class UpdateSecureFileStrategy
         break;
       }
       localFile = localObject2[j];
-      FileUtils.quickMove(localFile.getAbsolutePath(), ((File)localObject1).getAbsolutePath() + File.separator + localFile.getName());
+      FileUtils.a(localFile.getAbsolutePath(), ((File)localObject1).getAbsolutePath() + File.separator + localFile.getName());
       j += 1;
     }
   }

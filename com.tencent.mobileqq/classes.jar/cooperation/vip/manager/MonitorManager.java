@@ -7,7 +7,6 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bmnw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -24,7 +23,7 @@ import mqq.os.MqqHandler;
 public class MonitorManager
   extends BroadcastReceiver
 {
-  private static MonitorManager jdField_a_of_type_CooperationVipManagerMonitorManager;
+  private static MonitorManager jdField_a_of_type_CooperationVipManagerMonitorManager = null;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private List<mobile_monitor_report.ExceptionReport> jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -108,7 +107,7 @@ public class MonitorManager
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      bmnw.a(localArrayList);
+      MonitorServlet.a(localArrayList);
       return;
     }
   }
@@ -130,7 +129,7 @@ public class MonitorManager
     localTraceReport.page_id.set(str);
     paramString1 = new ArrayList();
     paramString1.add(localTraceReport);
-    bmnw.b(paramString1);
+    MonitorServlet.b(paramString1);
   }
   
   private void b(int paramInt1, int paramInt2, String arg3, boolean paramBoolean)
@@ -190,7 +189,7 @@ public class MonitorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.manager.MonitorManager
  * JD-Core Version:    0.7.0.1
  */

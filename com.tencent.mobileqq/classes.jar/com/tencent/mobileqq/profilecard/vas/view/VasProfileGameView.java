@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import azpb;
-import azrb;
-import azri;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import com.tencent.mobileqq.profile.DataTag;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
 import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
 import com.tencent.mobileqq.vas.avatar.AvatarLayout;
 import com.tencent.mobileqq.widget.ProfileNameView;
@@ -22,122 +22,122 @@ import org.jetbrains.annotations.NotNull;
 public class VasProfileGameView
   extends AbsProfileHeaderView
 {
-  public VasProfileGameView(BaseActivity paramBaseActivity, azrb paramazrb)
+  public VasProfileGameView(BaseActivity paramBaseActivity, ProfileCardInfo paramProfileCardInfo)
   {
-    super(paramBaseActivity, paramazrb);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseActivity.app;
-    this.jdField_a_of_type_Azrb = paramazrb;
+    super(paramBaseActivity, paramProfileCardInfo);
+    this.mActivity = paramBaseActivity;
+    this.mApp = paramBaseActivity.app;
+    this.mCardInfo = paramProfileCardInfo;
   }
   
   @NotNull
-  private View a(azrb paramazrb, Context paramContext)
+  private View initMainView(ProfileCardInfo paramProfileCardInfo, Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131562043, this, true);
-    azri.a((LinearLayout)paramContext.findViewById(2131368832), "background", paramazrb.jdField_a_of_type_Azri, "gameHeadInfoBackground");
+    paramContext = LayoutInflater.from(paramContext).inflate(2131562181, this, true);
+    ProfileCardTemplate.a((LinearLayout)paramContext.findViewById(2131369064), "background", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "gameHeadInfoBackground");
     return paramContext;
   }
   
-  private void a(View paramView)
+  private void updateAvatarArea(ProfileCardInfo paramProfileCardInfo, Context paramContext, View paramView)
   {
-    paramView = (LinearLayout)paramView.findViewById(2131368872);
-    this.jdField_a_of_type_JavaUtilHashMap.put("map_key_tips", paramView);
-  }
-  
-  private void a(azrb paramazrb, Context paramContext, View paramView)
-  {
-    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131368826);
+    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131369058);
     localAvatarLayout.setVisibility(0);
-    azri.a((ImageView)paramView.findViewById(2131368827), "src", paramazrb.jdField_a_of_type_Azri, "commonFaceBackground");
-    azpb localazpb = new azpb(1, null);
-    localAvatarLayout.setTag(localazpb);
-    localAvatarLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (paramazrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {}
-    for (paramContext = paramContext.getString(2131691169);; paramContext = paramContext.getString(2131691168))
+    ProfileCardTemplate.a((ImageView)paramView.findViewById(2131369059), "src", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "commonFaceBackground");
+    DataTag localDataTag = new DataTag(1, null);
+    localAvatarLayout.setTag(localDataTag);
+    localAvatarLayout.setOnClickListener(this.mOnClickListener);
+    if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {}
+    for (paramContext = paramContext.getString(2131691276);; paramContext = paramContext.getString(2131691275))
     {
       localAvatarLayout.setContentDescription(paramContext);
-      localAvatarLayout.a(0, localAvatarLayout.findViewById(2131363426), false);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_face", localAvatarLayout);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_face_stoke", paramView.findViewById(2131368827));
-      super.a(paramazrb.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-      paramContext = (ImageView)paramView.findViewById(2131368659);
+      localAvatarLayout.a(0, localAvatarLayout.findViewById(2131363511), false);
+      this.mHeaderChildMap.put("map_key_face", localAvatarLayout);
+      this.mHeaderChildMap.put("map_key_face_stoke", paramView.findViewById(2131369059));
+      super.updateAvatar(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+      paramContext = (ImageView)paramView.findViewById(2131368891);
       paramContext.setVisibility(4);
-      paramContext.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramContext.setTag(localazpb);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_avatar_pendant", paramContext);
-      super.b(paramazrb, true);
+      paramContext.setOnClickListener(this.mOnClickListener);
+      paramContext.setTag(localDataTag);
+      this.mHeaderChildMap.put("map_key_avatar_pendant", paramContext);
+      super.updateAvatarPendantImage(paramProfileCardInfo, true);
       return;
     }
   }
   
-  private void a(azrb paramazrb, View paramView)
+  private void updateBaseInfoArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    VoteView localVoteView = (VoteView)paramView.findViewById(2131381304);
-    paramView = (HeartLayout)paramView.findViewById(2131368178);
-    paramView.setEnabled(false);
-    localVoteView.setHeartLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView);
-    this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", localVoteView);
-    super.h(paramazrb);
+    paramView = (TextView)paramView.findViewById(2131369065);
+    ProfileCardTemplate.a(paramView, "color", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "gameAddressColor");
+    this.mHeaderChildMap.put("map_key_sex_age_area", paramView);
+    super.updateSexAgeArea(paramProfileCardInfo);
   }
   
-  private void b(azrb paramazrb, View paramView)
+  private void updateHeadArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131368871);
-    this.jdField_a_of_type_JavaUtilHashMap.put("map_key_sign_common_topic", localLinearLayout);
-    paramView = (TextView)paramView.findViewById(2131368870);
-    azri.a(paramView, "color", paramazrb.jdField_a_of_type_Azri, "gameSignColor");
-    this.jdField_a_of_type_JavaUtilHashMap.put("map_key_sign", paramView);
-    f(paramazrb);
-  }
-  
-  private void c(azrb paramazrb, View paramView)
-  {
-    paramView = (TextView)paramView.findViewById(2131368833);
-    azri.a(paramView, "color", paramazrb.jdField_a_of_type_Azri, "gameAddressColor");
-    this.jdField_a_of_type_JavaUtilHashMap.put("map_key_sex_age_area", paramView);
-    super.d(paramazrb);
-  }
-  
-  private void d(azrb paramazrb, View paramView)
-  {
-    paramView = (ProfileNameView)paramView.findViewById(2131368841);
-    azri.a(paramView, "color", paramazrb.jdField_a_of_type_Azri, "gameNickNameColor");
+    paramView = (ProfileNameView)paramView.findViewById(2131369073);
+    ProfileCardTemplate.a(paramView, "color", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "gameNickNameColor");
     paramView.setVisibility(0);
     paramView.setClickable(true);
-    paramView.setClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", paramView);
-    super.c(paramazrb);
+    paramView.setClickListener(this.mOnClickListener);
+    this.mHeaderChildMap.put("map_key_profile_nick_name", paramView);
+    super.updateHead(paramProfileCardInfo);
   }
   
-  public void a(azrb paramazrb)
+  private void updateLikeArea(ProfileCardInfo paramProfileCardInfo, View paramView)
+  {
+    VoteView localVoteView = (VoteView)paramView.findViewById(2131381767);
+    paramView = (HeartLayout)paramView.findViewById(2131368400);
+    paramView.setEnabled(false);
+    localVoteView.setHeartLayout(this.mApp, paramView);
+    this.mHeaderChildMap.put("map_key_like", localVoteView);
+    super.updateLike(paramProfileCardInfo);
+  }
+  
+  private void updateSignArea(ProfileCardInfo paramProfileCardInfo, View paramView)
+  {
+    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131369103);
+    this.mHeaderChildMap.put("map_key_sign_common_topic", localLinearLayout);
+    paramView = (TextView)paramView.findViewById(2131369102);
+    ProfileCardTemplate.a(paramView, "color", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "gameSignColor");
+    this.mHeaderChildMap.put("map_key_sign", paramView);
+    updateSign(paramProfileCardInfo);
+  }
+  
+  private void updateTipArea(View paramView)
+  {
+    paramView = (LinearLayout)paramView.findViewById(2131369104);
+    this.mHeaderChildMap.put("map_key_tips", paramView);
+  }
+  
+  public void onInit(ProfileCardInfo paramProfileCardInfo)
   {
     Context localContext = getContext();
-    View localView = a(paramazrb, localContext);
-    a(paramazrb, localContext, localView);
-    d(paramazrb, localView);
-    c(paramazrb, localView);
-    b(paramazrb, localView);
-    a(paramazrb, localView);
-    a(localView);
-    super.a(paramazrb);
-    super.b(paramazrb);
+    View localView = initMainView(paramProfileCardInfo, localContext);
+    updateAvatarArea(paramProfileCardInfo, localContext, localView);
+    updateHeadArea(paramProfileCardInfo, localView);
+    updateBaseInfoArea(paramProfileCardInfo, localView);
+    updateSignArea(paramProfileCardInfo, localView);
+    updateLikeArea(paramProfileCardInfo, localView);
+    updateTipArea(localView);
+    super.onInit(paramProfileCardInfo);
+    super.updateJueban(paramProfileCardInfo);
   }
   
-  public void a(azrb paramazrb, boolean paramBoolean)
+  public void onResume()
   {
-    super.h(paramazrb);
-    super.c(paramazrb);
-    super.d(paramazrb);
-    f(paramazrb);
-    super.b(paramazrb, false);
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_Azrb != null) {
-      super.b(this.jdField_a_of_type_Azrb, false);
+    super.onResume();
+    if (this.mCardInfo != null) {
+      super.updateAvatarPendantImage(this.mCardInfo, false);
     }
+  }
+  
+  public void onUpdate(ProfileCardInfo paramProfileCardInfo, boolean paramBoolean)
+  {
+    super.updateLike(paramProfileCardInfo);
+    super.updateHead(paramProfileCardInfo);
+    super.updateSexAgeArea(paramProfileCardInfo);
+    updateSign(paramProfileCardInfo);
+    super.updateAvatarPendantImage(paramProfileCardInfo, false);
   }
 }
 

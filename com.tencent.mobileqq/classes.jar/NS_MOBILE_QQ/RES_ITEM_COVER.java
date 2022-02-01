@@ -10,7 +10,7 @@ public final class RES_ITEM_COVER
   extends JceStruct
 {
   static Map<String, String> cache_extendinfo = new HashMap();
-  public Map<String, String> extendinfo;
+  public Map<String, String> extendinfo = null;
   public String strJumpQzone = "";
   
   static

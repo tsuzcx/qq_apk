@@ -13,8 +13,8 @@ public final class RespGetDiscuss
 {
   static ArrayList<DiscussInfo> cache_DiscussList;
   static ArrayList<DiscussInfo> cache_FavoriteDiscussList;
-  public ArrayList<DiscussInfo> DiscussList;
-  public ArrayList<DiscussInfo> FavoriteDiscussList;
+  public ArrayList<DiscussInfo> DiscussList = null;
+  public ArrayList<DiscussInfo> FavoriteDiscussList = null;
   
   static
   {

@@ -18,7 +18,7 @@ final class GuideViewPager$1
   {
     try
     {
-      if (FileUtil.isFileExists(this.jdField_a_of_type_JavaLangString))
+      if (FileUtil.a(this.jdField_a_of_type_JavaLangString))
       {
         Object localObject = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;

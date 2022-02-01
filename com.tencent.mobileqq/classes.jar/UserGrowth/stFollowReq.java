@@ -8,7 +8,7 @@ public final class stFollowReq
   extends JceStruct
 {
   static int cache_action = 0;
-  public int action;
+  public int action = 0;
   public String personId = "";
   
   public stFollowReq() {}

@@ -10,8 +10,8 @@ public final class stPostFeedDingReq
   extends JceStruct
 {
   static ArrayList<stMetaReportDataItem> cache_data = new ArrayList();
-  public ArrayList<stMetaReportDataItem> data;
-  public int dingAction;
+  public ArrayList<stMetaReportDataItem> data = null;
+  public int dingAction = 0;
   public String feed_id = "";
   
   static

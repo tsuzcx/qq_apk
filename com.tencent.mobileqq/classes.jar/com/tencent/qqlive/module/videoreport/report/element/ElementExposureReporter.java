@@ -14,6 +14,7 @@ import com.tencent.qqlive.module.videoreport.page.PageManager.IPageListener;
 import com.tencent.qqlive.module.videoreport.report.AppEventReporter;
 import com.tencent.qqlive.module.videoreport.report.AppEventReporter.IAppEventListener;
 import com.tencent.qqlive.module.videoreport.trace.SimpleTracer;
+import com.tencent.qqlive.module.videoreport.utils.DelayedIdleHandler;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
 import java.lang.ref.WeakReference;
@@ -30,7 +31,11 @@ import java.util.Set;
 public class ElementExposureReporter
   implements PageManager.IPageListener, AppEventReporter.IAppEventListener
 {
+  private static final long DETECT_DELAY_FROM_IDLE = 0L;
+  private static final long DETECT_DELAY_FROM_POST = 320L;
   private static final String TAG = "ElementExposureReporter";
+  private DelayedIdleHandler mDelayedIdleHandler = new DelayedIdleHandler();
+  private ElementExposureReporter.DetectionTask mDetectionTask = new ElementExposureReporter.DetectionTask(this);
   private final Map<Long, String> mExposedIds = new ArrayMap();
   private IExposureRecorder mExposureRecorder = IExposureRecorder.Factory.getInstance();
   private PageInfo mFrontPageInfo;
@@ -64,6 +69,18 @@ public class ElementExposureReporter
     }
   }
   
+  private void dispatchElementReport(PageInfo paramPageInfo, int paramInt)
+  {
+    this.mDelayedIdleHandler.remove(this.mDetectionTask);
+    ElementExposureReporter.DetectionTask.access$002(this.mDetectionTask, paramPageInfo);
+    if (paramInt == 0) {}
+    for (long l = 0L;; l = 320L)
+    {
+      this.mDelayedIdleHandler.post(this.mDetectionTask, l);
+      return;
+    }
+  }
+  
   private void elementReport(PageInfo paramPageInfo)
   {
     SimpleTracer.begin("ElementExposureReporter.elementReport");
@@ -89,7 +106,7 @@ public class ElementExposureReporter
   
   public static ElementExposureReporter getInstance()
   {
-    return ElementExposureReporter.InstanceHolder.access$000();
+    return ElementExposureReporter.InstanceHolder.access$100();
   }
   
   private void init()
@@ -193,12 +210,12 @@ public class ElementExposureReporter
     this.mExposureRecorder.clearExposure();
   }
   
-  public void onPageIn(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet)
+  public void onPageIn(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet, int paramInt)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("ElementExposureReporter", "onPageIn: pageInfo = " + paramPageInfo);
     }
-    elementReport(paramPageInfo);
+    dispatchElementReport(paramPageInfo, paramInt);
   }
   
   public void onPageOut(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet, boolean paramBoolean)
@@ -212,12 +229,12 @@ public class ElementExposureReporter
     }
   }
   
-  public void onPageUpdate(PageInfo paramPageInfo)
+  public void onPageUpdate(PageInfo paramPageInfo, int paramInt)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("ElementExposureReporter", "onPageUpdate: pageInfo = " + paramPageInfo);
     }
-    elementReport(paramPageInfo);
+    dispatchElementReport(paramPageInfo, paramInt);
   }
   
   public void registerTraverseListener(OnElementTraverseListener paramOnElementTraverseListener)

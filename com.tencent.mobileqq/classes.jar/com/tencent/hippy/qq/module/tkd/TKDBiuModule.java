@@ -1,10 +1,10 @@
 package com.tencent.hippy.qq.module.tkd;
 
 import android.app.Activity;
-import bhcu;
 import com.tencent.hippy.qq.module.QQBaseLifecycleModule;
 import com.tencent.hippy.qq.utils.tkd.TKDCommentDispatcher;
 import com.tencent.hippy.qq.utils.tkd.TKDCommentDispatcher.HippyCommentEvent;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -42,7 +42,7 @@ public final class TKDBiuModule
     Object localObject = paramHippyMap.getString("comment");
     if (localObject != null)
     {
-      localObject = bhcu.decode((String)localObject, 0);
+      localObject = Base64Util.decode((String)localObject, 0);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "Base64Util.decode(params…: \"\", Base64Util.DEFAULT)");
       localObject = new String((byte[])localObject, Charsets.UTF_8);
       paramHippyMap.getInt("biuTime");
@@ -53,7 +53,7 @@ public final class TKDBiuModule
     }
     for (;;)
     {
-      paramHippyMap = bhcu.decode(paramHippyMap, 0);
+      paramHippyMap = Base64Util.decode(paramHippyMap, 0);
       Intrinsics.checkExpressionValueIsNotNull(paramHippyMap, "Base64Util.decode(params…: \"\", Base64Util.DEFAULT)");
       paramHippyMap = new String(paramHippyMap, Charsets.UTF_8);
       TKDCommentDispatcher.INSTANCE.getEvent().biuComment((TKDBiuModule.ParamsFetcher)new TKDBiuModule.openBiuEditor.1(paramActivity, (String)localObject, l, paramHippyMap));
@@ -74,7 +74,7 @@ public final class TKDBiuModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDBiuModule
  * JD-Core Version:    0.7.0.1
  */

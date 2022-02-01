@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import qhi;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxModule;
 
 class ReadInJoyDeliverUGCActivity$7
   implements Runnable
@@ -14,7 +14,7 @@ class ReadInJoyDeliverUGCActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.7
  * JD-Core Version:    0.7.0.1
  */

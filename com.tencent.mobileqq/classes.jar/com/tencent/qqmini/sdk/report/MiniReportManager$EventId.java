@@ -23,6 +23,7 @@ public class MiniReportManager$EventId
   public static final int APP_LOAD_START = 104;
   public static final int APP_LOAD_SUCC = 608;
   public static final int APP_LOAD_TIMEOUT = 610;
+  public static final int APP_ON_WEBVIEW_READY = 120;
   public static final int APP_ROUTE_DONE = 121;
   public static final int APP_STAY_DURATION = 644;
   public static final int APP_UNZIP_END = 622;
@@ -110,6 +111,7 @@ public class MiniReportManager$EventId
   public static final int RUNTIME_INIT_TASK_END = 203;
   public static final int RUNTIME_INIT_TASK_START = 202;
   public static final int RUNTIME_INIT_TASK_START_REAL_TIME = 222;
+  public static final int SDK_EMBEDDED_ELEMENT = 772;
   public static final int SDK_EMBEDDED_LIVE_PLAYER = 771;
   public static final int SDK_EMBEDDED_SUPPORT_RESULT = 780;
   public static final int SDK_EMBEDDED_UPDATE_RESULT = 781;
@@ -161,7 +163,7 @@ public class MiniReportManager$EventId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniReportManager.EventId
  * JD-Core Version:    0.7.0.1
  */

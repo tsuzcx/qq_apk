@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import azjj;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.dpc.api.IDPCApi;
+import com.tencent.mobileqq.dpc.enumname.DPCNames;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pic.DownCallBack;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.ipv6.IpStrategy;
 import com.tencent.mobileqq.transfile.ipv6.IpStrategyFactory;
 import com.tencent.qphone.base.util.QLog;
@@ -22,8 +24,8 @@ public class BaseDownloadProcessor
   private static int mPicDownloadPort;
   private static boolean sPicDownloadPortInited;
   QQAppInterface app;
-  protected boolean mDirectMsgUrlDown;
-  ArrayList<azjj> mDownCallBacks = new ArrayList();
+  protected boolean mDirectMsgUrlDown = false;
+  public ArrayList<DownCallBack> mDownCallBacks = new ArrayList();
   String mDownDomain;
   public boolean mHasIpv6List;
   ArrayList<ServerAddr> mIpList = new ArrayList();
@@ -36,12 +38,14 @@ public class BaseDownloadProcessor
   int mReqUrlCount = 0;
   String mRespUrl = null;
   String mStorageSource = null;
+  protected OldEngineDPCProfile mTimeoutProfile;
   long mTotolLen = 0L;
   String mUrlPath;
   
   static
   {
     boolean bool = true;
+    sPicDownloadPortInited = false;
     mPicDownloadPort = 80;
     if (BaseApplicationImpl.sProcessId == 1) {}
     for (;;)
@@ -54,9 +58,9 @@ public class BaseDownloadProcessor
   
   public BaseDownloadProcessor() {}
   
-  public BaseDownloadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public BaseDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     this.app = ((QQAppInterface)this.app);
     if (paramTransferRequest.mDownCallBack != null) {}
     try
@@ -101,7 +105,7 @@ public class BaseDownloadProcessor
     if (!sPicDownloadPortInited) {}
     try
     {
-      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_config.name(), "");
+      Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_config.name(), "");
       if (QLog.isColorLevel()) {
         QLog.d("BaseTransProcessor", 2, "getPicDownloadPort:" + (String)localObject);
       }
@@ -136,11 +140,11 @@ public class BaseDownloadProcessor
     super.accountChanged();
   }
   
-  public void addDownCallback(azjj paramazjj)
+  public void addDownCallback(DownCallBack paramDownCallBack)
   {
     try
     {
-      this.mDownCallBacks.add(paramazjj);
+      this.mDownCallBacks.add(paramDownCallBack);
       return;
     }
     finally {}
@@ -197,16 +201,48 @@ public class BaseDownloadProcessor
     return bytesFromHexString(paramString2);
   }
   
-  public void removeDownCallBack(azjj paramazjj)
+  protected boolean isUploadProcessor()
+  {
+    return false;
+  }
+  
+  public void removeDownCallBack(DownCallBack paramDownCallBack)
   {
     try
     {
       if (this.mDownCallBacks != null) {
-        this.mDownCallBacks.remove(paramazjj);
+        this.mDownCallBacks.remove(paramDownCallBack);
       }
       return;
     }
     finally {}
+  }
+  
+  public void reportForIpv6(boolean paramBoolean, long paramLong)
+  {
+    int j = 1;
+    if (this.mIpv6First) {
+      this.mReportInfo.put("param_is_ipv6", String.valueOf(1));
+    }
+    HashMap localHashMap = this.mReportInfo;
+    if (this.mHasIpv6List)
+    {
+      i = 1;
+      localHashMap.put("param_hasV6List", String.valueOf(i));
+      localHashMap = this.mReportInfo;
+      if (!this.mIpv6First) {
+        break label99;
+      }
+    }
+    label99:
+    for (int i = j;; i = 0)
+    {
+      localHashMap.put("param_ipv6First", String.valueOf(i));
+      super.reportForIpv6(paramBoolean, paramLong);
+      return;
+      i = 0;
+      break;
+    }
   }
   
   protected void reportForServerMonitor(NetResp paramNetResp, boolean paramBoolean, String paramString1, String paramString2)

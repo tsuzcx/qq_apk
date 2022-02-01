@@ -9,9 +9,9 @@ public final class QQHeadUrlReq
   extends JceStruct
 {
   static ArrayList<DestQQHeadInfo> cache_destUserInfo;
-  public ArrayList<DestQQHeadInfo> destUserInfo;
-  public byte dstUsrType;
-  public long myUin;
+  public ArrayList<DestQQHeadInfo> destUserInfo = null;
+  public byte dstUsrType = 0;
+  public long myUin = 0L;
   
   public QQHeadUrlReq() {}
   

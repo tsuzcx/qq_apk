@@ -3,7 +3,6 @@ package com.tencent.biz.pubaccount.readinjoy.notecard;
 import android.media.AudioRecord;
 import android.os.Handler;
 import android.os.Looper;
-import qjx;
 
 public class SoundCheckRunnable
   implements Runnable
@@ -13,7 +12,7 @@ public class SoundCheckRunnable
   private int jdField_a_of_type_Int = AudioRecord.getMinBufferSize(8000, 2, 2);
   private AudioRecord jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, 8000, 2, 2, this.jdField_a_of_type_Int);
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private qjx jdField_a_of_type_Qjx;
+  private SoundCheckRunnable.OnSoundActionListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable$OnSoundActionListener;
   private boolean jdField_a_of_type_Boolean = true;
   
   public void a()
@@ -21,9 +20,9 @@ public class SoundCheckRunnable
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(qjx paramqjx)
+  public void a(SoundCheckRunnable.OnSoundActionListener paramOnSoundActionListener)
   {
-    this.jdField_a_of_type_Qjx = paramqjx;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable$OnSoundActionListener = paramOnSoundActionListener;
   }
   
   public boolean a()
@@ -164,7 +163,7 @@ public class SoundCheckRunnable
     //   241: fcmpl
     //   242: ifle -215 -> 27
     //   245: aload_0
-    //   246: getfield 62	com/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable:jdField_a_of_type_Qjx	Lqjx;
+    //   246: getfield 62	com/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable:jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable$OnSoundActionListener	Lcom/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable$OnSoundActionListener;
     //   249: astore 10
     //   251: aload 10
     //   253: ifnull +21 -> 274
@@ -174,7 +173,7 @@ public class SoundCheckRunnable
     //   263: dup
     //   264: aload_0
     //   265: aload 10
-    //   267: invokespecial 161	com/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable$1:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable;Lqjx;)V
+    //   267: invokespecial 161	com/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable$1:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable;Lcom/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable$OnSoundActionListener;)V
     //   270: invokevirtual 165	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   273: pop
     //   274: aload 9
@@ -206,7 +205,7 @@ public class SoundCheckRunnable
     //   300	1	8	localException2	java.lang.Exception
     //   22	253	9	localLinkedList	java.util.LinkedList
     //   112	3	10	localInterruptedException	java.lang.InterruptedException
-    //   249	17	10	localqjx	qjx
+    //   249	17	10	localOnSoundActionListener	SoundCheckRunnable.OnSoundActionListener
     // Exception table:
     //   from	to	target	type
     //   0	7	91	java/lang/Exception
@@ -216,7 +215,7 @@ public class SoundCheckRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.notecard.SoundCheckRunnable
  * JD-Core Version:    0.7.0.1
  */

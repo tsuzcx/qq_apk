@@ -11,12 +11,12 @@ public final class GetLbsCombinRsp_V2
   static GPS_V2 cache_stGps = new GPS_V2();
   static GetPoiInfoRsp_V2 cache_stPoiInfo = new GetPoiInfoRsp_V2();
   static WeatherInfo_V2 cache_stWeather = new WeatherInfo_V2();
-  public int iMood;
+  public int iMood = 0;
   public String request_id = "";
-  public GeoInfo_V2 stGeoInfo;
-  public GPS_V2 stGps;
-  public GetPoiInfoRsp_V2 stPoiInfo;
-  public WeatherInfo_V2 stWeather;
+  public GeoInfo_V2 stGeoInfo = null;
+  public GPS_V2 stGps = null;
+  public GetPoiInfoRsp_V2 stPoiInfo = null;
+  public WeatherInfo_V2 stWeather = null;
   
   public GetLbsCombinRsp_V2() {}
   

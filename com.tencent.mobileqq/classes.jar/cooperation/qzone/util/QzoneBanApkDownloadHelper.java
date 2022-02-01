@@ -40,39 +40,47 @@ public class QzoneBanApkDownloadHelper
   public static boolean isDomainInBlackList(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
+    String str1;
     String[] arrayOfString;
     do
     {
       do
       {
         return false;
-        paramString = Utils.getDomin(paramString);
-      } while (TextUtils.isEmpty(paramString));
-      paramString = paramString.toLowerCase();
+        str1 = Utils.getDomin(paramString);
+      } while (TextUtils.isEmpty(str1));
+      str1 = str1.toLowerCase();
       arrayOfString = getApkBanlistDomainArray();
     } while ((arrayOfString == null) || (arrayOfString.length == 0));
     int j = arrayOfString.length;
     int i = 0;
-    label44:
-    String str;
+    label48:
+    String str2;
     if (i < j)
     {
-      str = arrayOfString[i];
-      if (!TextUtils.isEmpty(str)) {
-        break label69;
+      str2 = arrayOfString[i];
+      if (!TextUtils.isEmpty(str2)) {
+        break label74;
       }
     }
-    label69:
+    label74:
     do
     {
       i += 1;
-      break label44;
+      break label48;
       break;
-      str = str.toLowerCase();
-      if (paramString.endsWith("." + str)) {
+      str2 = str2.toLowerCase();
+      if (str1.endsWith("." + str2))
+      {
+        if (QZLog.isDevelopLevel()) {
+          QZLog.d("QzoneBanApkDownloadHelper", 4, "match domain:" + str1 + ",webviewUrl=" + paramString);
+        }
         return true;
       }
-    } while (!paramString.equals(str));
+    } while (!str1.equals(str2));
+    if (QZLog.isDevelopLevel()) {
+      QZLog.d("QzoneBanApkDownloadHelper", 4, "match domain:" + str1 + ",webviewUrl=" + paramString);
+    }
     return true;
   }
   
@@ -93,12 +101,12 @@ public class QzoneBanApkDownloadHelper
           break;
         }
         String str = paramString2.optString(i);
-        if (!TextUtils.isEmpty(str))
+        if ((!TextUtils.isEmpty(str)) && (QzoneStringMatcher.isMatch(paramString1, str)))
         {
-          boolean bool = QzoneStringMatcher.isMatch(paramString1, str);
-          if (bool) {
-            return true;
+          if (QZLog.isDevelopLevel()) {
+            QZLog.i("QzoneBanApkDownloadHelper", 1, "isUrlInRegList match url:" + paramString1 + " ,reg=" + str);
           }
+          return true;
         }
       }
       catch (JSONException paramString1)
@@ -117,7 +125,7 @@ public class QzoneBanApkDownloadHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.QzoneBanApkDownloadHelper
  * JD-Core Version:    0.7.0.1
  */

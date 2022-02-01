@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bkxz;
+import com.tencent.util.InputMethodUtil;
 
 class AbsPublishActivity$5
   implements Runnable
@@ -9,7 +9,7 @@ class AbsPublishActivity$5
   
   public void run()
   {
-    bkxz.a(this.this$0.b);
+    InputMethodUtil.a(this.this$0.b);
   }
 }
 

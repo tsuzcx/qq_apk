@@ -1,17 +1,17 @@
 package cooperation.troop;
 
-import Override;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import anvx;
-import blvy;
-import blwh;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import java.util.ArrayList;
 
 public class TroopFileProxyActivity
@@ -28,25 +28,26 @@ public class TroopFileProxyActivity
   
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt, String paramString)
   {
+    QLog.i("TroopFileBrowserActivity", 1, "openTroopFileBrowserActivity:" + paramInt);
     a(paramActivity, paramIntent, null, "com.tencent.mobileqq.troop.activity.TroopFileBroswerActivity", paramString, paramInt);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
-    blwh localblwh = new blwh(0);
-    localblwh.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
-    localblwh.d = anvx.a(2131714694);
-    localblwh.jdField_a_of_type_JavaLangString = paramString2;
-    localblwh.e = paramString1;
-    localblwh.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
-    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localblwh.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.b = "troop_plugin.apk";
+    localPluginParams.e = HardCodeUtil.a(2131715189);
+    localPluginParams.jdField_a_of_type_JavaLangString = paramString2;
+    localPluginParams.f = paramString1;
+    localPluginParams.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localblwh.jdField_b_of_type_Int = paramInt;
-    localblwh.c = 10000;
-    localblwh.f = null;
-    blvy.a(paramActivity, localblwh);
+    localPluginParams.c = paramInt;
+    localPluginParams.d = 10000;
+    localPluginParams.g = null;
+    IPluginManager.a(paramActivity, localPluginParams);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, String paramString)
@@ -87,7 +88,7 @@ public class TroopFileProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.troop.TroopFileProxyActivity
  * JD-Core Version:    0.7.0.1
  */

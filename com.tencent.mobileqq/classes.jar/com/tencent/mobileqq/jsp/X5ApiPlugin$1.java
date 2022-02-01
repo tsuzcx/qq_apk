@@ -1,30 +1,28 @@
 package com.tencent.mobileqq.jsp;
 
-import awcr;
-import awcs;
-import bihz;
-import biio;
-import biip;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
+import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils.OfflineData;
 import com.tencent.smtt.sdk.WebView;
 
-public class X5ApiPlugin$1
+class X5ApiPlugin$1
   implements Runnable
 {
-  public X5ApiPlugin$1(awcr paramawcr, awcs paramawcs, WebView paramWebView) {}
+  X5ApiPlugin$1(X5ApiPlugin paramX5ApiPlugin, X5ApiPlugin.PreloadTask paramPreloadTask, WebView paramWebView) {}
   
   public void run()
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (biio.a(this.jdField_a_of_type_Awcs.a))
+    if (SwiftOfflineDataUtils.a(this.jdField_a_of_type_ComTencentMobileqqJspX5ApiPlugin$PreloadTask.a))
     {
-      biip localbiip = biio.a(this.jdField_a_of_type_Awcs.a);
+      SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.a(this.jdField_a_of_type_ComTencentMobileqqJspX5ApiPlugin$PreloadTask.a);
       localObject1 = localObject2;
-      if (localbiip != null) {
-        localObject1 = localbiip.b;
+      if (localOfflineData != null) {
+        localObject1 = localOfflineData.b;
       }
     }
-    bihz.a(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Awcs.a, (String)localObject1);
+    SwiftBrowserTBSHandler.a(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_ComTencentMobileqqJspX5ApiPlugin$PreloadTask.a, (String)localObject1);
   }
 }
 

@@ -1,48 +1,60 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.os.Handler;
-import android.os.Message;
-import bfjz;
-import bgkf;
-import bhbu;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.AIOTipsListener;
+import com.tencent.mobileqq.activity.aio.helper.AVGameHelper;
+import com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper;
+import com.tencent.mobileqq.activity.aio.helper.TogetherControlHelper;
+import com.tencent.mobileqq.activity.aio.tips.StudyRoomTipBarHelper;
+import com.tencent.mobileqq.activity.aio.tips.TipsBarTask;
+import com.tencent.mobileqq.listentogether.ui.TroopListenTogetherPanel;
+import cooperation.ilive.group.IliveGroupTipsBarHelper;
 
 class TroopChatPie$35
-  implements Runnable
+  implements AIOTipsController.AIOTipsListener
 {
   TroopChatPie$35(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void a(TipsBarTask paramTipsBarTask)
   {
-    this.this$0.l();
-    Object localObject1 = ((bgkf)this.this$0.app.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(this.this$0.sessionInfo.curFriendUin, true);
-    Object localObject2 = this.this$0.b.obtainMessage(2);
-    ((Message)localObject2).obj = localObject1;
-    this.this$0.b.sendMessage((Message)localObject2);
-    localObject1 = ((TroopManager)this.this$0.app.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.this$0.sessionInfo.curFriendUin);
-    int i = this.this$0.app.getTroopMask(this.this$0.sessionInfo.curFriendUin);
-    localObject2 = this.this$0.app.getMessageFacade().getTroopMessageManager();
-    int j = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext());
-    if (((i == 1) || (i == 4) || ((i == -1) && (((bfjz)localObject2).c > 0))) && (((bfjz)localObject2).jdField_a_of_type_Boolean) && (localObject1 != null) && (((TroopInfo)localObject1).wMemberNum < ((bfjz)localObject2).b) && ((j == 4) || (j == 1))) {
-      ((bfjz)localObject2).c(this.this$0.sessionInfo.curFriendUin, Math.min(this.this$0.e, ((bfjz)localObject2).jdField_a_of_type_Int));
+    Object localObject = (TroopListenTogetherPanel)this.a.a(33);
+    boolean bool1 = ((TroopListenTogetherPanel)localObject).c();
+    TogetherControlHelper localTogetherControlHelper = (TogetherControlHelper)this.a.a(43);
+    boolean bool2 = localTogetherControlHelper.c();
+    StudyRoomTipBarHelper localStudyRoomTipBarHelper = (StudyRoomTipBarHelper)this.a.a(75);
+    boolean bool3 = localStudyRoomTipBarHelper.d();
+    IliveGroupTipsBarHelper localIliveGroupTipsBarHelper = (IliveGroupTipsBarHelper)this.a.a(81);
+    boolean bool4 = localIliveGroupTipsBarHelper.d();
+    if (bool1) {
+      ((TroopListenTogetherPanel)localObject).b(1, paramTipsBarTask);
     }
-    this.this$0.uiHandler.obtainMessage(85).sendToTarget();
-    if ((localObject1 != null) && (((TroopInfo)localObject1).isGameBind())) {
-      bhbu.a("Grp_game", "Grp_AIO", "aio_exp", 0, 0, new String[] { this.this$0.sessionInfo.curFriendUin });
+    for (;;)
+    {
+      localObject = (AVGameHelper)this.a.a(71);
+      if (localObject != null) {
+        ((AVGameHelper)localObject).a(false);
+      }
+      ((QQGamePubAIOHelper)this.a.a(90)).a(paramTipsBarTask);
+      return;
+      if (bool2) {
+        localTogetherControlHelper.a(1, paramTipsBarTask);
+      } else if (bool3) {
+        localStudyRoomTipBarHelper.a(paramTipsBarTask);
+      } else if (bool4) {
+        localIliveGroupTipsBarHelper.a(paramTipsBarTask);
+      }
     }
+  }
+  
+  public void a(TipsBarTask paramTipsBarTask1, TipsBarTask paramTipsBarTask2)
+  {
+    ((TroopListenTogetherPanel)this.a.a(33)).a(1, paramTipsBarTask2);
+    ((TogetherControlHelper)this.a.a(43)).b(1, paramTipsBarTask2);
+    ((QQGamePubAIOHelper)this.a.a(90)).a(paramTipsBarTask1, paramTipsBarTask2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.35
  * JD-Core Version:    0.7.0.1
  */

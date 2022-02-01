@@ -10,6 +10,7 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.StringUtil;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot;
+import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot.Callback;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
@@ -40,6 +41,7 @@ public class ShareJsPlugin
   extends BaseJsPlugin
 {
   private static final int ACTION_SHEET_DEFAULT_TYPE = 0;
+  private static final int ACTION_SHEET_SHARE_PANEL_TYPE = 1;
   public static final String API_OPEN_QZONE_PUBLISH = "openQzonePublish";
   public static final int ERRCODE_INVITE_CANCEL = 1;
   public static final int ERRCODE_INVITE_REQUIRE = 2;
@@ -56,8 +58,24 @@ public class ShareJsPlugin
   public static final int SHARE_MENU_STATE_UNDEFINED = -1;
   private static final String TAG = "ShareJsPlugin";
   public static final int UNDEFINED = -1;
-  private final int ACTION_SHEET_SHARE_PANEL_TYPE = 1;
   private ShareProxy mShareProxy = (ShareProxy)ProxyManager.get(ShareProxy.class);
+  
+  private void doShareAppPictureMessage(String paramString1, boolean paramBoolean1, String paramString2, boolean paramBoolean2, InnerShareData.Builder paramBuilder, ShareChatModel paramShareChatModel)
+  {
+    if (paramBoolean1) {
+      paramBuilder.setSharePicPath(paramString1).setShareChatModel(paramShareChatModel).build().shareAppPictureMessage(this.mMiniAppContext);
+    }
+    do
+    {
+      return;
+      if ((StringUtil.isEmpty(paramString1)) || ((!paramBoolean1) && (!paramBoolean2)))
+      {
+        handleShareAppWithDefaultPic(paramBuilder, paramShareChatModel);
+        return;
+      }
+    } while ((paramBoolean1) || (!paramBoolean2));
+    paramBuilder.setSharePicPath(paramString2).setShareChatModel(paramShareChatModel).setIsLocalPic(true).build().shareAppPictureMessage(this.mMiniAppContext);
+  }
   
   private String fixPath(String paramString)
   {
@@ -72,6 +90,11 @@ public class ShareJsPlugin
       return str;
     }
     return this.mApkgInfo.getAppConfigInfo().entryPagePath;
+  }
+  
+  private GetScreenshot.Callback getScreenShotCallback(InnerShareData.Builder paramBuilder)
+  {
+    return new ShareJsPlugin.1(this, paramBuilder);
   }
   
   private ShareChatModel getShareChatModel(int paramInt, JSONObject paramJSONObject, ShareState paramShareState)
@@ -157,6 +180,29 @@ public class ShareJsPlugin
     return -1;
   }
   
+  private void handleShareAppWithDefaultPic(InnerShareData.Builder paramBuilder, ShareChatModel paramShareChatModel)
+  {
+    if (this.mMiniAppContext.isMiniGame()) {
+      if (this.mMiniAppInfo != null) {
+        paramBuilder.setSharePicPath(this.mMiniAppInfo.iconUrl).setShareChatModel(paramShareChatModel).build().shareAppPictureMessage(this.mMiniAppContext);
+      }
+    }
+    ShareState localShareState;
+    do
+    {
+      return;
+      QMLog.e("ShareJsPlugin", "startShareNetworkPicMessage with iconUrl failed, mini app info is null");
+      return;
+      localShareState = GetShareState.obtain(this.mMiniAppContext);
+    } while (localShareState == null);
+    if (localShareState.isGettingScreenShot)
+    {
+      QMLog.e("ShareJsPlugin", "sharePicMessage getScreenshot isGettingScreenShot now, return directly !");
+      return;
+    }
+    GetScreenshot.obtain(this.mMiniAppContext, new ShareJsPlugin.3(this, paramBuilder, paramShareChatModel));
+  }
+  
   private int handleShareDirectly(RequestEvent paramRequestEvent, int paramInt1, int paramInt2, ShareState paramShareState)
   {
     int j = 0;
@@ -169,16 +215,16 @@ public class ShareJsPlugin
     else
     {
       if (paramInt2 != -1) {
-        break label75;
+        break label76;
       }
       paramInt1 = this.mShareProxy.getDefaultShareTarget();
       if (!MoreItem.isValidExtendedItemId(paramInt1)) {
-        break label67;
+        break label68;
       }
       paramInt2 = 6;
     }
-    label67:
-    label75:
+    label68:
+    label76:
     for (;;)
     {
       paramShareState.fromShareMenuBtn = paramInt2;
@@ -199,46 +245,44 @@ public class ShareJsPlugin
     return paramJSONObject;
   }
   
+  private boolean isLocalResourceExists(String paramString1, String paramString2)
+  {
+    return (!TextUtils.isEmpty(paramString1)) && (new File(paramString2).exists());
+  }
+  
+  private boolean isNetworkImageUrl(String paramString)
+  {
+    return (URLUtil.isHttpUrl(paramString)) || (URLUtil.isHttpsUrl(paramString));
+  }
+  
+  private boolean isParamEmpty(RequestEvent paramRequestEvent)
+  {
+    return (paramRequestEvent.jsonParams == null) || ("null".equals(paramRequestEvent.jsonParams)) || ("{}".equals(paramRequestEvent.jsonParams));
+  }
+  
   private void shareToQQ(String paramString, InnerShareData.Builder paramBuilder)
   {
-    boolean bool3 = false;
     MiniAppFileManager localMiniAppFileManager = (MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class);
-    boolean bool1;
-    if ((URLUtil.isHttpUrl(paramString)) || (URLUtil.isHttpsUrl(paramString)))
+    boolean bool1 = isNetworkImageUrl(paramString);
+    boolean bool2 = isLocalResourceExists(paramString, localMiniAppFileManager.getAbsolutePath(paramString));
+    if ((StringUtil.isEmpty(paramString)) || ((!bool1) && (!bool2)))
     {
-      bool1 = true;
-      boolean bool2 = bool3;
-      if (!TextUtils.isEmpty(paramString))
+      if (this.mMiniAppContext.isMiniGame())
       {
-        bool2 = bool3;
-        if (new File(localMiniAppFileManager.getAbsolutePath(paramString)).exists()) {
-          bool2 = true;
-        }
+        paramBuilder.setSharePicPath(WnsUtil.defaultShareImg()).build().shareAppMessage();
+        QMLog.e("ShareJsPlugin", "shareAppMessageDirectly fail, [isNetworkImageUrl=" + bool1 + "] [isLocalResourceExists=" + bool2 + "] [imageUrl=" + paramString + "], use default share image");
       }
-      if ((!StringUtil.isEmpty(paramString)) && ((bool1) || (bool2))) {
-        break label220;
+      while (GetShareState.obtain(this.mMiniAppContext) == null) {
+        return;
       }
-      if (!this.mMiniAppContext.isMiniGame()) {
-        break label171;
+      if (GetShareState.obtain(this.mMiniAppContext).isGettingScreenShot)
+      {
+        QMLog.e("ShareJsPlugin", "getScreenshot isGettingScreenShot now, return directly !");
+        return;
       }
-      paramBuilder.setSharePicPath(WnsUtil.defaultShareImg()).build().shareAppMessage();
-      QMLog.e("ShareJsPlugin", "shareAppMessageDirectly fail, [isNetworkImageUrl=" + bool1 + "] [isLocalResourceExists=" + bool2 + "] [imageUrl=" + paramString + "], use default share image");
-    }
-    label171:
-    while (GetShareState.obtain(this.mMiniAppContext) == null)
-    {
-      return;
-      bool1 = false;
-      break;
-    }
-    if (GetShareState.obtain(this.mMiniAppContext).isGettingScreenShot)
-    {
-      QMLog.e("ShareJsPlugin", "getScreenshot isGettingScreenShot now, return directly !");
+      GetScreenshot.obtain(this.mMiniAppContext, getScreenShotCallback(paramBuilder));
       return;
     }
-    GetScreenshot.obtain(this.mMiniAppContext, new ShareJsPlugin.1(this, paramBuilder));
-    return;
-    label220:
     if ((paramString.startsWith("http")) || (paramString.startsWith("https")))
     {
       paramBuilder.setSharePicPath(paramString).build().shareAppMessage();
@@ -290,319 +334,310 @@ public class ShareJsPlugin
     // Byte code:
     //   0: iconst_0
     //   1: istore 8
-    //   3: new 384	java/util/HashMap
+    //   3: new 428	java/util/HashMap
     //   6: dup
-    //   7: invokespecial 385	java/util/HashMap:<init>	()V
+    //   7: invokespecial 429	java/util/HashMap:<init>	()V
     //   10: astore 9
-    //   12: aload_1
-    //   13: getfield 388	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
-    //   16: ifnull +29 -> 45
-    //   19: ldc_w 390
-    //   22: aload_1
-    //   23: getfield 388	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
-    //   26: invokevirtual 152	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   29: ifne +16 -> 45
-    //   32: ldc_w 392
-    //   35: aload_1
-    //   36: getfield 388	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
-    //   39: invokevirtual 152	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   42: ifeq +89 -> 131
-    //   45: new 131	org/json/JSONObject
-    //   48: dup
-    //   49: invokespecial 393	org/json/JSONObject:<init>	()V
-    //   52: ldc_w 395
-    //   55: ldc_w 397
-    //   58: invokevirtual 401	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   61: pop
-    //   62: aload_1
-    //   63: invokevirtual 332	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
-    //   66: pop
-    //   67: ldc 43
-    //   69: new 154	java/lang/StringBuilder
-    //   72: dup
-    //   73: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   76: aload_1
-    //   77: getfield 209	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
-    //   80: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: ldc_w 403
-    //   86: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: invokestatic 170	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   95: return
-    //   96: astore 9
-    //   98: ldc 43
-    //   100: new 154	java/lang/StringBuilder
-    //   103: dup
-    //   104: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   107: aload_1
-    //   108: getfield 209	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
-    //   111: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: ldc_w 405
-    //   117: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   123: aload 9
-    //   125: invokestatic 408	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   128: goto -61 -> 67
-    //   131: new 131	org/json/JSONObject
-    //   134: dup
-    //   135: aload_1
-    //   136: getfield 388	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
-    //   139: invokespecial 224	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   142: ldc_w 410
-    //   145: invokevirtual 414	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
-    //   148: checkcast 323	org/json/JSONArray
-    //   151: astore 10
-    //   153: aload 10
-    //   155: ifnonnull +444 -> 599
-    //   158: new 131	org/json/JSONObject
-    //   161: dup
-    //   162: invokespecial 393	org/json/JSONObject:<init>	()V
-    //   165: ldc_w 395
-    //   168: ldc_w 416
-    //   171: invokevirtual 401	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   174: pop
-    //   175: aload_1
-    //   176: invokevirtual 332	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
-    //   179: pop
-    //   180: ldc 43
-    //   182: new 154	java/lang/StringBuilder
-    //   185: dup
-    //   186: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   189: aload_1
-    //   190: getfield 209	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
-    //   193: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: ldc_w 418
-    //   199: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 170	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   12: aload_0
+    //   13: aload_1
+    //   14: invokespecial 431	com/tencent/qqmini/sdk/plugins/ShareJsPlugin:isParamEmpty	(Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;)Z
+    //   17: ifeq +89 -> 106
+    //   20: new 171	org/json/JSONObject
+    //   23: dup
+    //   24: invokespecial 432	org/json/JSONObject:<init>	()V
+    //   27: ldc_w 434
+    //   30: ldc_w 436
+    //   33: invokevirtual 440	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   36: pop
+    //   37: aload_1
+    //   38: invokevirtual 376	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
+    //   41: pop
+    //   42: ldc 44
+    //   44: new 194	java/lang/StringBuilder
+    //   47: dup
+    //   48: invokespecial 195	java/lang/StringBuilder:<init>	()V
+    //   51: aload_1
+    //   52: getfield 276	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   55: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: ldc_w 442
+    //   61: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokestatic 210	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   70: return
+    //   71: astore 9
+    //   73: ldc 44
+    //   75: new 194	java/lang/StringBuilder
+    //   78: dup
+    //   79: invokespecial 195	java/lang/StringBuilder:<init>	()V
+    //   82: aload_1
+    //   83: getfield 276	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   86: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: ldc_w 444
+    //   92: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: aload 9
+    //   100: invokestatic 447	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   103: goto -61 -> 42
+    //   106: new 171	org/json/JSONObject
+    //   109: dup
+    //   110: aload_1
+    //   111: getfield 313	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
+    //   114: invokespecial 291	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   117: ldc_w 449
+    //   120: invokevirtual 453	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   123: checkcast 367	org/json/JSONArray
+    //   126: astore 10
+    //   128: aload 10
+    //   130: ifnonnull +444 -> 574
+    //   133: new 171	org/json/JSONObject
+    //   136: dup
+    //   137: invokespecial 432	org/json/JSONObject:<init>	()V
+    //   140: ldc_w 434
+    //   143: ldc_w 455
+    //   146: invokevirtual 440	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   149: pop
+    //   150: aload_1
+    //   151: invokevirtual 376	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
+    //   154: pop
+    //   155: ldc 44
+    //   157: new 194	java/lang/StringBuilder
+    //   160: dup
+    //   161: invokespecial 195	java/lang/StringBuilder:<init>	()V
+    //   164: aload_1
+    //   165: getfield 276	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   168: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: ldc_w 457
+    //   174: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   180: invokestatic 210	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   183: return
+    //   184: astore 9
+    //   186: aload 9
+    //   188: invokevirtual 460	org/json/JSONException:printStackTrace	()V
+    //   191: ldc 44
+    //   193: aload 9
+    //   195: invokevirtual 463	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   198: aload 9
+    //   200: invokestatic 447	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   203: aload_1
+    //   204: invokevirtual 376	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
+    //   207: pop
     //   208: return
     //   209: astore 9
-    //   211: aload 9
-    //   213: invokevirtual 421	org/json/JSONException:printStackTrace	()V
-    //   216: ldc 43
-    //   218: aload 9
-    //   220: invokevirtual 424	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   223: aload 9
-    //   225: invokestatic 408	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   228: aload_1
-    //   229: invokevirtual 332	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
-    //   232: pop
-    //   233: return
-    //   234: astore 9
-    //   236: ldc 43
-    //   238: new 154	java/lang/StringBuilder
-    //   241: dup
-    //   242: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   245: aload_1
-    //   246: getfield 209	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
-    //   249: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   252: ldc_w 405
-    //   255: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   258: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   261: aload 9
-    //   263: invokestatic 408	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   266: goto -86 -> 180
-    //   269: iload 6
-    //   271: aload 10
-    //   273: invokevirtual 326	org/json/JSONArray:length	()I
-    //   276: if_icmpge +127 -> 403
-    //   279: aload 10
-    //   281: iload 6
-    //   283: invokevirtual 427	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   286: astore 11
-    //   288: aload 11
-    //   290: ldc 27
-    //   292: invokevirtual 430	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   295: ifeq +20 -> 315
-    //   298: aload 9
-    //   300: ldc_w 432
-    //   303: iload 6
-    //   305: invokestatic 438	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   308: invokevirtual 441	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   311: pop
-    //   312: iconst_1
-    //   313: istore 5
-    //   315: aload 11
-    //   317: ldc 30
-    //   319: invokevirtual 430	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   322: ifeq +20 -> 342
-    //   325: aload 9
-    //   327: ldc_w 443
-    //   330: iload 6
-    //   332: invokestatic 438	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   335: invokevirtual 441	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   338: pop
-    //   339: iconst_1
-    //   340: istore 4
-    //   342: aload 11
-    //   344: ldc 33
-    //   346: invokevirtual 430	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   349: ifeq +19 -> 368
-    //   352: aload 9
-    //   354: ldc_w 445
-    //   357: iload 6
-    //   359: invokestatic 438	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   362: invokevirtual 441	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   365: pop
-    //   366: iconst_1
-    //   367: istore_3
-    //   368: aload 11
-    //   370: ldc 36
-    //   372: invokevirtual 430	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   375: ifeq +19 -> 394
-    //   378: aload 9
-    //   380: ldc_w 447
-    //   383: iload 6
-    //   385: invokestatic 438	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   388: invokevirtual 441	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   391: pop
-    //   392: iconst_1
-    //   393: istore_2
-    //   394: iload 6
-    //   396: iconst_1
-    //   397: iadd
+    //   211: ldc 44
+    //   213: new 194	java/lang/StringBuilder
+    //   216: dup
+    //   217: invokespecial 195	java/lang/StringBuilder:<init>	()V
+    //   220: aload_1
+    //   221: getfield 276	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   224: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   227: ldc_w 444
+    //   230: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: aload 9
+    //   238: invokestatic 447	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   241: goto -86 -> 155
+    //   244: iload 6
+    //   246: aload 10
+    //   248: invokevirtual 370	org/json/JSONArray:length	()I
+    //   251: if_icmpge +127 -> 378
+    //   254: aload 10
+    //   256: iload 6
+    //   258: invokevirtual 466	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   261: astore 11
+    //   263: aload 11
+    //   265: ldc 28
+    //   267: invokevirtual 469	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   270: ifeq +20 -> 290
+    //   273: aload 9
+    //   275: ldc_w 471
+    //   278: iload 6
+    //   280: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   283: invokevirtual 480	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   286: pop
+    //   287: iconst_1
+    //   288: istore 5
+    //   290: aload 11
+    //   292: ldc 31
+    //   294: invokevirtual 469	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   297: ifeq +20 -> 317
+    //   300: aload 9
+    //   302: ldc_w 482
+    //   305: iload 6
+    //   307: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   310: invokevirtual 480	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   313: pop
+    //   314: iconst_1
+    //   315: istore 4
+    //   317: aload 11
+    //   319: ldc 34
+    //   321: invokevirtual 469	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   324: ifeq +19 -> 343
+    //   327: aload 9
+    //   329: ldc_w 484
+    //   332: iload 6
+    //   334: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   337: invokevirtual 480	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   340: pop
+    //   341: iconst_1
+    //   342: istore_3
+    //   343: aload 11
+    //   345: ldc 37
+    //   347: invokevirtual 469	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   350: ifeq +19 -> 369
+    //   353: aload 9
+    //   355: ldc_w 486
+    //   358: iload 6
+    //   360: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   363: invokevirtual 480	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   366: pop
+    //   367: iconst_1
+    //   368: istore_2
+    //   369: iload 6
+    //   371: iconst_1
+    //   372: iadd
+    //   373: istore 6
+    //   375: goto -131 -> 244
+    //   378: iload 5
+    //   380: iconst_m1
+    //   381: if_icmpne +190 -> 571
+    //   384: iconst_0
+    //   385: istore 5
+    //   387: iload 4
+    //   389: istore 6
+    //   391: iload 4
+    //   393: iconst_m1
+    //   394: if_icmpne +6 -> 400
+    //   397: iconst_0
     //   398: istore 6
-    //   400: goto -131 -> 269
-    //   403: iload 5
-    //   405: iconst_m1
-    //   406: if_icmpne +190 -> 596
-    //   409: iconst_0
-    //   410: istore 5
-    //   412: iload 4
-    //   414: istore 6
-    //   416: iload 4
-    //   418: iconst_m1
-    //   419: if_icmpne +6 -> 425
-    //   422: iconst_0
-    //   423: istore 6
-    //   425: iload_3
-    //   426: istore 4
-    //   428: iload_3
-    //   429: iconst_m1
-    //   430: if_icmpne +6 -> 436
-    //   433: iconst_0
-    //   434: istore 4
-    //   436: iload_2
-    //   437: istore_3
-    //   438: iload_2
-    //   439: iconst_m1
-    //   440: if_icmpne +5 -> 445
-    //   443: iconst_0
-    //   444: istore_3
-    //   445: aload_0
-    //   446: getfield 83	com/tencent/qqmini/sdk/plugins/ShareJsPlugin:mMiniAppContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   449: invokestatic 290	com/tencent/qqmini/sdk/action/GetShareState:obtain	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;)Lcom/tencent/qqmini/sdk/launcher/model/ShareState;
-    //   452: astore 10
-    //   454: aload 10
-    //   456: iconst_1
-    //   457: putfield 450	com/tencent/qqmini/sdk/launcher/model/ShareState:launchFrom	I
-    //   460: iload 5
-    //   462: iconst_1
-    //   463: if_icmpne +115 -> 578
-    //   466: iconst_1
-    //   467: istore 7
-    //   469: aload 10
-    //   471: iload 7
-    //   473: putfield 453	com/tencent/qqmini/sdk/launcher/model/ShareState:withShareQQ	Z
-    //   476: iload 6
-    //   478: iconst_1
-    //   479: if_icmpne +105 -> 584
-    //   482: iconst_1
-    //   483: istore 7
-    //   485: aload 10
-    //   487: iload 7
-    //   489: putfield 456	com/tencent/qqmini/sdk/launcher/model/ShareState:withShareQzone	Z
-    //   492: iload 4
-    //   494: iconst_1
-    //   495: if_icmpne +95 -> 590
-    //   498: iconst_1
-    //   499: istore 7
-    //   501: aload 10
-    //   503: iload 7
-    //   505: putfield 459	com/tencent/qqmini/sdk/launcher/model/ShareState:withShareWeChatFriend	Z
-    //   508: iload 8
-    //   510: istore 7
-    //   512: iload_3
-    //   513: iconst_1
-    //   514: if_icmpne +6 -> 520
-    //   517: iconst_1
-    //   518: istore 7
-    //   520: aload 10
-    //   522: iload 7
-    //   524: putfield 462	com/tencent/qqmini/sdk/launcher/model/ShareState:withShareWeChatMoment	Z
-    //   527: aload 10
-    //   529: iconst_1
-    //   530: putfield 465	com/tencent/qqmini/sdk/launcher/model/ShareState:withShareOthers	Z
+    //   400: iload_3
+    //   401: istore 4
+    //   403: iload_3
+    //   404: iconst_m1
+    //   405: if_icmpne +6 -> 411
+    //   408: iconst_0
+    //   409: istore 4
+    //   411: iload_2
+    //   412: istore_3
+    //   413: iload_2
+    //   414: iconst_m1
+    //   415: if_icmpne +5 -> 420
+    //   418: iconst_0
+    //   419: istore_3
+    //   420: aload_0
+    //   421: getfield 81	com/tencent/qqmini/sdk/plugins/ShareJsPlugin:mMiniAppContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   424: invokestatic 251	com/tencent/qqmini/sdk/action/GetShareState:obtain	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;)Lcom/tencent/qqmini/sdk/launcher/model/ShareState;
+    //   427: astore 10
+    //   429: aload 10
+    //   431: iconst_1
+    //   432: putfield 489	com/tencent/qqmini/sdk/launcher/model/ShareState:launchFrom	I
+    //   435: iload 5
+    //   437: iconst_1
+    //   438: if_icmpne +115 -> 553
+    //   441: iconst_1
+    //   442: istore 7
+    //   444: aload 10
+    //   446: iload 7
+    //   448: putfield 492	com/tencent/qqmini/sdk/launcher/model/ShareState:withShareQQ	Z
+    //   451: iload 6
+    //   453: iconst_1
+    //   454: if_icmpne +105 -> 559
+    //   457: iconst_1
+    //   458: istore 7
+    //   460: aload 10
+    //   462: iload 7
+    //   464: putfield 495	com/tencent/qqmini/sdk/launcher/model/ShareState:withShareQzone	Z
+    //   467: iload 4
+    //   469: iconst_1
+    //   470: if_icmpne +95 -> 565
+    //   473: iconst_1
+    //   474: istore 7
+    //   476: aload 10
+    //   478: iload 7
+    //   480: putfield 498	com/tencent/qqmini/sdk/launcher/model/ShareState:withShareWeChatFriend	Z
+    //   483: iload 8
+    //   485: istore 7
+    //   487: iload_3
+    //   488: iconst_1
+    //   489: if_icmpne +6 -> 495
+    //   492: iconst_1
+    //   493: istore 7
+    //   495: aload 10
+    //   497: iload 7
+    //   499: putfield 501	com/tencent/qqmini/sdk/launcher/model/ShareState:withShareWeChatMoment	Z
+    //   502: aload 10
+    //   504: iconst_1
+    //   505: putfield 504	com/tencent/qqmini/sdk/launcher/model/ShareState:withShareOthers	Z
+    //   508: aload 10
+    //   510: aload 9
+    //   512: putfield 508	com/tencent/qqmini/sdk/launcher/model/ShareState:tapIndexMap	Ljava/util/HashMap;
+    //   515: aload 10
+    //   517: aload_1
+    //   518: getfield 276	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   521: putfield 511	com/tencent/qqmini/sdk/launcher/model/ShareState:shareEvent	Ljava/lang/String;
+    //   524: aload 10
+    //   526: aload_1
+    //   527: getfield 514	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:callbackId	I
+    //   530: putfield 517	com/tencent/qqmini/sdk/launcher/model/ShareState:shareCallbackId	I
     //   533: aload 10
-    //   535: aload 9
-    //   537: putfield 469	com/tencent/qqmini/sdk/launcher/model/ShareState:tapIndexMap	Ljava/util/HashMap;
-    //   540: aload 10
-    //   542: aload_1
-    //   543: getfield 209	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
-    //   546: putfield 472	com/tencent/qqmini/sdk/launcher/model/ShareState:shareEvent	Ljava/lang/String;
-    //   549: aload 10
-    //   551: aload_1
-    //   552: getfield 475	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:callbackId	I
-    //   555: putfield 478	com/tencent/qqmini/sdk/launcher/model/ShareState:shareCallbackId	I
-    //   558: aload 10
-    //   560: aload_1
-    //   561: putfield 482	com/tencent/qqmini/sdk/launcher/model/ShareState:requestEvent	Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;
-    //   564: aload_0
-    //   565: getfield 63	com/tencent/qqmini/sdk/plugins/ShareJsPlugin:mShareProxy	Lcom/tencent/qqmini/sdk/launcher/core/proxy/ShareProxy;
-    //   568: aload_0
-    //   569: getfield 83	com/tencent/qqmini/sdk/plugins/ShareJsPlugin:mMiniAppContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   572: invokeinterface 486 2 0
-    //   577: return
-    //   578: iconst_0
-    //   579: istore 7
-    //   581: goto -112 -> 469
-    //   584: iconst_0
-    //   585: istore 7
-    //   587: goto -102 -> 485
-    //   590: iconst_0
-    //   591: istore 7
-    //   593: goto -92 -> 501
-    //   596: goto -184 -> 412
-    //   599: iconst_0
-    //   600: istore 6
-    //   602: iconst_m1
-    //   603: istore_2
-    //   604: iconst_m1
-    //   605: istore_3
-    //   606: iconst_m1
-    //   607: istore 4
-    //   609: iconst_m1
-    //   610: istore 5
-    //   612: goto -343 -> 269
+    //   535: aload_1
+    //   536: putfield 521	com/tencent/qqmini/sdk/launcher/model/ShareState:requestEvent	Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;
+    //   539: aload_0
+    //   540: getfield 61	com/tencent/qqmini/sdk/plugins/ShareJsPlugin:mShareProxy	Lcom/tencent/qqmini/sdk/launcher/core/proxy/ShareProxy;
+    //   543: aload_0
+    //   544: getfield 81	com/tencent/qqmini/sdk/plugins/ShareJsPlugin:mMiniAppContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   547: invokeinterface 524 2 0
+    //   552: return
+    //   553: iconst_0
+    //   554: istore 7
+    //   556: goto -112 -> 444
+    //   559: iconst_0
+    //   560: istore 7
+    //   562: goto -102 -> 460
+    //   565: iconst_0
+    //   566: istore 7
+    //   568: goto -92 -> 476
+    //   571: goto -184 -> 387
+    //   574: iconst_0
+    //   575: istore 6
+    //   577: iconst_m1
+    //   578: istore_2
+    //   579: iconst_m1
+    //   580: istore_3
+    //   581: iconst_m1
+    //   582: istore 4
+    //   584: iconst_m1
+    //   585: istore 5
+    //   587: goto -343 -> 244
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	615	0	this	ShareJsPlugin
-    //   0	615	1	paramRequestEvent	RequestEvent
-    //   393	211	2	i	int
-    //   367	239	3	j	int
-    //   340	268	4	k	int
-    //   313	298	5	m	int
-    //   269	332	6	n	int
-    //   467	125	7	bool1	boolean
-    //   1	508	8	bool2	boolean
+    //   0	590	0	this	ShareJsPlugin
+    //   0	590	1	paramRequestEvent	RequestEvent
+    //   368	211	2	i	int
+    //   342	239	3	j	int
+    //   315	268	4	k	int
+    //   288	298	5	m	int
+    //   244	332	6	n	int
+    //   442	125	7	bool1	boolean
+    //   1	483	8	bool2	boolean
     //   10	1	9	localHashMap	java.util.HashMap
-    //   96	28	9	localJSONException1	JSONException
-    //   209	15	9	localJSONException2	JSONException
-    //   234	302	9	localJSONException3	JSONException
-    //   151	408	10	localObject	Object
-    //   286	83	11	str	String
+    //   71	28	9	localJSONException1	JSONException
+    //   184	15	9	localJSONException2	JSONException
+    //   209	302	9	localJSONException3	JSONException
+    //   126	408	10	localObject	Object
+    //   261	83	11	str	String
     // Exception table:
     //   from	to	target	type
-    //   45	67	96	org/json/JSONException
-    //   131	153	209	org/json/JSONException
-    //   180	208	209	org/json/JSONException
-    //   236	266	209	org/json/JSONException
-    //   269	288	209	org/json/JSONException
-    //   288	312	209	org/json/JSONException
-    //   315	339	209	org/json/JSONException
-    //   342	366	209	org/json/JSONException
-    //   368	392	209	org/json/JSONException
-    //   158	180	234	org/json/JSONException
+    //   20	42	71	org/json/JSONException
+    //   106	128	184	org/json/JSONException
+    //   155	183	184	org/json/JSONException
+    //   211	241	184	org/json/JSONException
+    //   244	263	184	org/json/JSONException
+    //   263	287	184	org/json/JSONException
+    //   290	314	184	org/json/JSONException
+    //   317	341	184	org/json/JSONException
+    //   343	367	184	org/json/JSONException
+    //   133	155	209	org/json/JSONException
   }
   
   @JsEvent({"hideShareMenu"})
@@ -698,7 +733,7 @@ public class ShareJsPlugin
       try
       {
         if (!"shareAppMessageDirectly".equals(paramRequestEvent.event)) {
-          break label393;
+          break label445;
         }
         i = 1;
         localObject1 = new JSONObject(paramRequestEvent.jsonParams);
@@ -713,6 +748,11 @@ public class ShareJsPlugin
         localShareState.shareEvent = paramRequestEvent.event;
         localShareState.shareCallbackId = paramRequestEvent.callbackId;
         localShareState.requestEvent = paramRequestEvent;
+        paramRequestEvent = ((JSONObject)localObject1).optString("shareActionName");
+        if (!TextUtils.isEmpty(paramRequestEvent)) {
+          localShareState.shareEvent = paramRequestEvent;
+        }
+        QMLog.d("ShareJsPlugin", "shareAppMessage param: " + ((JSONObject)localObject1).toString());
         Object localObject2 = handleStagingShareJsonParams((JSONObject)localObject1, localShareState);
         localObject1 = ((JSONObject)localObject2).optString("path");
         paramRequestEvent = (RequestEvent)localObject1;
@@ -725,7 +765,7 @@ public class ShareJsPlugin
         paramRequestEvent = fixPath(paramRequestEvent);
         InnerShareData.Builder localBuilder = new InnerShareData.Builder();
         if (i == 0) {
-          break label398;
+          break label450;
         }
         i = 11;
         paramRequestEvent = localBuilder.setShareSource(i).setShareTarget(j).setTitle(this.mMiniAppInfo.name).setSummary(str3).setEntryPath(paramRequestEvent).setWebUrl((String)localObject2).setTemplateId(str1).setTemplateData(str2).setEntryModel(localEntryModel).setShareChatModel(localShareChatModel).setWithShareTicket(localShareState.withShareTicket).setMiniAppInfo(this.mMiniAppInfo).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setShareInMiniProcess(localShareState.isShareInMiniProcess);
@@ -748,10 +788,10 @@ public class ShareJsPlugin
       }
       shareToQQ((String)localObject1, paramRequestEvent);
       return;
-      label393:
+      label445:
       int i = 0;
       continue;
-      label398:
+      label450:
       i = 12;
     }
   }
@@ -771,101 +811,53 @@ public class ShareJsPlugin
   @JsEvent({"shareAppPictureMessage"})
   public void shareAppPictureMessage(RequestEvent paramRequestEvent)
   {
-    Object localObject1;
-    int j;
-    int i;
-    Object localObject2;
-    try
+    int k = 0;
+    label281:
+    for (;;)
     {
-      localObject1 = new JSONObject(paramRequestEvent.jsonParams);
-      j = ((JSONObject)localObject1).optInt("shareTarget", -1);
-      k = getShareType(j);
-      localShareState = GetShareState.obtain(this.mMiniAppContext);
-      i = j;
-      if ("shareAppPictureMessageDirectly".equals(paramRequestEvent.event))
+      try
       {
-        i = j;
-        j = k;
-        if (k == -1)
+        JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+        int i = localJSONObject.optInt("shareTarget", -1);
+        int m = getShareType(i);
+        ShareState localShareState = GetShareState.obtain(this.mMiniAppContext);
+        int j = i;
+        if ("shareAppPictureMessageDirectly".equals(paramRequestEvent.event))
         {
+          if (m != -1) {
+            break label281;
+          }
           i = this.mShareProxy.getDefaultShareTarget();
-          if (!MoreItem.isValidExtendedItemId(i)) {
-            break label479;
-          }
-          j = 6;
-        }
-        localShareState.fromShareMenuBtn = j;
-      }
-      j = localShareState.fromShareMenuBtn;
-      localShareState.shareEvent = paramRequestEvent.event;
-      localShareState.shareCallbackId = paramRequestEvent.callbackId;
-      localShareState.requestEvent = paramRequestEvent;
-      localObject2 = ((JSONObject)localObject1).optString("title");
-      paramRequestEvent = ((JSONObject)localObject1).optString("imageUrl");
-      if (URLUtil.isHttpUrl(paramRequestEvent)) {
-        break label473;
-      }
-      if (!URLUtil.isHttpsUrl(paramRequestEvent)) {
-        break label486;
-      }
-    }
-    catch (JSONException paramRequestEvent)
-    {
-      ShareState localShareState;
-      label157:
-      paramRequestEvent.printStackTrace();
-      return;
-    }
-    String str = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramRequestEvent);
-    if ((!TextUtils.isEmpty(paramRequestEvent)) && (new File(str).exists())) {}
-    for (int k = 1;; k = 0)
-    {
-      localObject2 = new InnerShareData.Builder().setShareSource(11).setShareTarget(i).setTitle(this.mMiniAppInfo.name).setSummary((String)localObject2).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setMiniAppInfo(this.mMiniAppInfo).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setShareInMiniProcess(localShareState.isShareInMiniProcess);
-      localObject1 = getShareChatModel(i, (JSONObject)localObject1, localShareState);
-      if (j != 0)
-      {
-        ((InnerShareData.Builder)localObject2).setSharePicPath(paramRequestEvent).setShareChatModel((ShareChatModel)localObject1).build().shareAppPictureMessage(this.mMiniAppContext);
-        return;
-      }
-      if ((StringUtil.isEmpty(paramRequestEvent)) || ((j == 0) && (k == 0)))
-      {
-        if (this.mMiniAppContext.isMiniGame())
-        {
-          if (this.mMiniAppInfo != null)
+          if (MoreItem.isValidExtendedItemId(i))
           {
-            ((InnerShareData.Builder)localObject2).setSharePicPath(this.mMiniAppInfo.iconUrl).setShareChatModel((ShareChatModel)localObject1).build().shareAppPictureMessage(this.mMiniAppContext);
-            return;
+            j = 6;
+            localShareState.fromShareMenuBtn = j;
+            j = i;
           }
-          QMLog.e("ShareJsPlugin", "startShareNetworkPicMessage with iconUrl failed, mini app info is null");
+        }
+        else
+        {
+          i = localShareState.fromShareMenuBtn;
+          localShareState.shareEvent = paramRequestEvent.event;
+          localShareState.shareCallbackId = paramRequestEvent.callbackId;
+          localShareState.requestEvent = paramRequestEvent;
+          paramRequestEvent = localJSONObject.optString("title");
+          String str1 = localJSONObject.optString("imageUrl");
+          boolean bool = isNetworkImageUrl(str1);
+          String str2 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str1);
+          doShareAppPictureMessage(str1, bool, str2, isLocalResourceExists(str1, str2), new InnerShareData.Builder().setShareSource(11).setShareTarget(j).setTitle(this.mMiniAppInfo.name).setSummary(paramRequestEvent).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setMiniAppInfo(this.mMiniAppInfo).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setShareInMiniProcess(localShareState.isShareInMiniProcess), getShareChatModel(j, localJSONObject, localShareState));
           return;
         }
-        paramRequestEvent = GetShareState.obtain(this.mMiniAppContext);
-        if (paramRequestEvent != null)
-        {
-          if (paramRequestEvent.isGettingScreenShot)
-          {
-            QMLog.e("ShareJsPlugin", "sharePicMessage getScreenshot isGettingScreenShot now, return directly !");
-            return;
-          }
-          GetScreenshot.obtain(this.mMiniAppContext, new ShareJsPlugin.3(this, (InnerShareData.Builder)localObject2, (ShareChatModel)localObject1));
-        }
+        i = 0;
+        j = k;
+        continue;
+        j = m;
       }
-      else if ((j == 0) && (k != 0))
+      catch (JSONException paramRequestEvent)
       {
-        ((InnerShareData.Builder)localObject2).setSharePicPath(str).setShareChatModel((ShareChatModel)localObject1).setIsLocalPic(true).build().shareAppPictureMessage(this.mMiniAppContext);
+        paramRequestEvent.printStackTrace();
         return;
-        label473:
-        j = 1;
-        break label157;
       }
-      return;
-      label479:
-      j = 0;
-      i = 0;
-      break;
-      label486:
-      j = 0;
-      break label157;
     }
   }
   
@@ -887,7 +879,7 @@ public class ShareJsPlugin
     localShareState.shareEvent = paramRequestEvent.event;
     localShareState.shareCallbackId = paramRequestEvent.callbackId;
     localShareState.requestEvent = paramRequestEvent;
-    new InnerShareData.Builder().setShareSource(11).setShareTarget(7).setTemplateId("657667B4D8C04B3F84E4AAA3D046A903").setMiniAppInfo(this.mMiniAppInfo).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setEvent(paramRequestEvent.event).setCallbackId(paramRequestEvent.callbackId).build().shareAppMessage();
+    new InnerShareData.Builder().setShareSource(11).setShareTarget(7).setTemplateId("657667B4D8C04B3F84E4AAA3D046A903").setMiniAppInfo(this.mMiniAppInfo).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setEvent(paramRequestEvent.event).setSubScene(4023).setCallbackId(paramRequestEvent.callbackId).build().shareAppMessage();
   }
   
   @JsEvent({"showActionSheet"})
@@ -902,7 +894,7 @@ public class ShareJsPlugin
     boolean bool3 = false;
     int n;
     Object localObject;
-    if ((paramRequestEvent.jsonParams == null) || ("null".equals(paramRequestEvent.jsonParams)) || ("{}".equals(paramRequestEvent.jsonParams)))
+    if (isParamEmpty(paramRequestEvent))
     {
       i = 1;
       n = 1;
@@ -911,26 +903,25 @@ public class ShareJsPlugin
       bool1 = false;
       localObject = GetShareState.obtain(this.mMiniAppContext);
       if (j != 1) {
-        break label431;
+        break label406;
       }
       bool2 = true;
-      label66:
+      label41:
       ((ShareState)localObject).withShareQQ = bool2;
       if (k != 1) {
-        break label437;
+        break label412;
       }
       bool2 = true;
-      label82:
+      label57:
       ((ShareState)localObject).withShareQzone = bool2;
       if (n != 1) {
-        break label443;
+        break label418;
       }
     }
-    label267:
-    label283:
-    label431:
-    label437:
-    label443:
+    label258:
+    label406:
+    label412:
+    label418:
     for (bool2 = true;; bool2 = false)
     {
       ((ShareState)localObject).withShareWeChatFriend = bool2;
@@ -945,6 +936,7 @@ public class ShareJsPlugin
       return;
       for (;;)
       {
+        label242:
         int i3;
         for (;;)
         {
@@ -959,7 +951,7 @@ public class ShareJsPlugin
             String str;
             int i1;
             int i2;
-            label341:
+            label316:
             m = -1;
             k = -1;
             j = -1;
@@ -1013,7 +1005,7 @@ public class ShareJsPlugin
           catch (JSONException localJSONException3)
           {
             bool1 = bool2;
-            break label400;
+            break label375;
             break;
           }
           try
@@ -1027,8 +1019,8 @@ public class ShareJsPlugin
           catch (JSONException localJSONException4)
           {
             bool1 = bool2;
-            break label400;
-            break label267;
+            break label375;
+            break label242;
           }
           try
           {
@@ -1041,8 +1033,8 @@ public class ShareJsPlugin
           catch (JSONException localJSONException5)
           {
             bool1 = bool2;
-            break label400;
-            break label283;
+            break label375;
+            break label258;
           }
           try
           {
@@ -1055,9 +1047,9 @@ public class ShareJsPlugin
           catch (JSONException localJSONException6)
           {
             bool1 = bool2;
-            break label400;
+            break label375;
             i3 = i;
-            break label341;
+            break label316;
           }
         }
       }
@@ -1070,7 +1062,7 @@ public class ShareJsPlugin
         i2 = 0;
       }
       if (i != -1) {
-        break label504;
+        break label479;
       }
       i3 = 0;
       n = i3;
@@ -1087,6 +1079,7 @@ public class ShareJsPlugin
       j = i1;
       bool1 = bool2;
       break;
+      label375:
       localJSONException1.printStackTrace();
       QMLog.e("ShareJsPlugin", localJSONException1.getMessage(), localJSONException1);
       paramRequestEvent.fail();
@@ -1094,9 +1087,9 @@ public class ShareJsPlugin
       i = m;
       break;
       bool2 = false;
-      break label66;
+      break label41;
       bool2 = false;
-      break label82;
+      break label57;
     }
   }
   
@@ -1119,7 +1112,7 @@ public class ShareJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ShareJsPlugin
  * JD-Core Version:    0.7.0.1
  */

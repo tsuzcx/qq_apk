@@ -7,7 +7,7 @@ public class UtilProxy
 {
   public static void setStatusTextColor(boolean paramBoolean, Window paramWindow)
   {
-    ImmersiveUtils.a(paramBoolean, paramWindow);
+    ImmersiveUtils.setStatusTextColor(paramBoolean, paramWindow);
   }
 }
 

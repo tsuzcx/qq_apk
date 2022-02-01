@@ -20,7 +20,7 @@ class AppStateManager$3
   public void run()
   {
     long l = System.currentTimeMillis();
-    if (AppStateManager.access$200(this.this$0, l, this.val$type, this.val$baseRuntime)) {
+    if (AppStateManager.access$300(this.this$0, l, this.val$type, this.val$baseRuntime)) {
       return;
     }
     int i = QbSdk.getTbsVersion(this.val$activity);
@@ -30,7 +30,7 @@ class AppStateManager$3
       QMLog.e("minisdk-start_RuntimeState", "whitescreen without x5, start x5 guide");
       try
       {
-        AppStateManager.access$302(true);
+        AppStateManager.access$402(true);
         BaseRuntime localBaseRuntime = AppStateManager.access$000(this.this$0).getRuntime();
         ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).startDownloadX5(localBaseRuntime);
         return;
@@ -51,7 +51,7 @@ class AppStateManager$3
       str = str + "\n是否需要清理当前小程序缓存，并重新启动小程序？";
       QMLog.e("minisdk-start_RuntimeState", "show Dialig :" + str);
       DialogUtil.createCustomDialog(this.val$activity, 230, "小程序启动", str, R.string.mini_sdk_cancel, R.string.mini_sdk_ok, new AppStateManager.3.1(this), new AppStateManager.3.2(this)).show();
-      AppStateManager.access$402(this.this$0, true);
+      AppStateManager.access$502(this.this$0, true);
       return;
       if (this.val$type == 2) {
         str = "小程序启动可能碰到了问题.";
@@ -61,7 +61,7 @@ class AppStateManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppStateManager.3
  * JD-Core Version:    0.7.0.1
  */

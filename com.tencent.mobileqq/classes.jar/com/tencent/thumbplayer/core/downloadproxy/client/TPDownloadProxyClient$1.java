@@ -15,6 +15,11 @@ class TPDownloadProxyClient$1
     return this.val$playListener.getAdvRemainTime();
   }
   
+  public String getContentType(int paramInt, String paramString)
+  {
+    return this.val$playListener.getContentType(paramInt, paramString);
+  }
+  
   public int getCurrentPlayClipNo()
   {
     return this.val$playListener.getCurrentPlayClipNo();
@@ -23,6 +28,16 @@ class TPDownloadProxyClient$1
   public long getCurrentPosition()
   {
     return this.val$playListener.getCurrentPosition();
+  }
+  
+  public String getDataFilePath(int paramInt, String paramString)
+  {
+    return this.val$playListener.getDataFilePath(paramInt, paramString);
+  }
+  
+  public long getDataTotalSize(int paramInt, String paramString)
+  {
+    return this.val$playListener.getDataTotalSize(paramInt, paramString);
   }
   
   public String getPlayInfo(String paramString)
@@ -118,10 +133,30 @@ class TPDownloadProxyClient$1
     }
     return ((Integer)localObject).intValue();
   }
+  
+  public void onQuicDownloadStatusUpdate(String paramString)
+  {
+    this.val$playListener.onQuicDownloadStatusUpdate(paramString);
+  }
+  
+  public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return this.val$playListener.onReadData(paramInt, paramString, paramLong1, paramLong2);
+  }
+  
+  public int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return this.val$playListener.onStartReadData(paramInt, paramString, paramLong1, paramLong2);
+  }
+  
+  public int onStopReadData(int paramInt1, String paramString, int paramInt2)
+  {
+    return this.val$playListener.onStopReadData(paramInt1, paramString, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.client.TPDownloadProxyClient.1
  * JD-Core Version:    0.7.0.1
  */

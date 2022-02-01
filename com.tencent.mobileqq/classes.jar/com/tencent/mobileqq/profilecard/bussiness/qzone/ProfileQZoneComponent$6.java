@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.profilecard.bussiness.qzone;
 
 import android.os.Message;
-import anvk;
-import azrb;
-import baca;
-import bkys;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.util.WeakReferenceHandler;
 
-public class ProfileQZoneComponent$6
+class ProfileQZoneComponent$6
   implements Runnable
 {
-  public ProfileQZoneComponent$6(baca parambaca) {}
+  ProfileQZoneComponent$6(ProfileQZoneComponent paramProfileQZoneComponent) {}
   
   public void run()
   {
     int j = 0;
-    azrb localazrb = (azrb)baca.a(this.this$0);
-    Object localObject = (anvk)baca.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
+    ProfileCardInfo localProfileCardInfo = (ProfileCardInfo)ProfileQZoneComponent.access$100(this.this$0);
+    Object localObject = (FriendsManager)ProfileQZoneComponent.access$200(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject == null)
     {
       localObject = null;
@@ -38,16 +37,16 @@ public class ProfileQZoneComponent$6
       if (i != 0) {}
       for (localMessage.what = 6;; localMessage.what = 5)
       {
-        if (baca.a(this.this$0) != null) {
-          baca.a(this.this$0).sendMessage(localMessage);
+        if (ProfileQZoneComponent.access$300(this.this$0) != null) {
+          ProfileQZoneComponent.access$300(this.this$0).sendMessage(localMessage);
         }
         i = j;
-        if (localazrb.a != null) {
-          i = localazrb.a.h;
+        if (localProfileCardInfo.a != null) {
+          i = localProfileCardInfo.a.h;
         }
-        baca.a(this.this$0, i);
+        ProfileQZoneComponent.access$400(this.this$0, i);
         return;
-        localObject = ((anvk)localObject).b(localazrb.a.a);
+        localObject = ((FriendsManager)localObject).a(localProfileCardInfo.a.a);
         break;
       }
     }

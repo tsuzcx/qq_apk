@@ -2,9 +2,9 @@ package cooperation.qzone.util;
 
 import QMF_PROTOCAL.QmfBusiControl;
 import QMF_PROTOCAL.QmfDownstream;
-import bhjl;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.WNSStream;
 
@@ -33,7 +33,7 @@ public class ProtocolUtils
     {
       try
       {
-        paramArrayOfByte = ((WNSStream)localObject1).unpack(bhjl.b(paramArrayOfByte));
+        paramArrayOfByte = ((WNSStream)localObject1).unpack(WupUtil.b(paramArrayOfByte));
         if ((paramArrayOfByte != null) && (paramArrayOfByte.WnsCode == 0))
         {
           localObject1 = new UniAttribute();
@@ -173,7 +173,7 @@ public class ProtocolUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.ProtocolUtils
  * JD-Core Version:    0.7.0.1
  */

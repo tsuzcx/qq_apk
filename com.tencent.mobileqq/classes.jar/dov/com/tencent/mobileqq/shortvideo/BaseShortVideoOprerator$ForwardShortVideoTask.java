@@ -1,21 +1,20 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import azjq;
-import bpra;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.pic.Logger;
 import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 
 class BaseShortVideoOprerator$ForwardShortVideoTask
   implements Runnable
 {
-  bpra a;
+  ShortVideoForwardInfo a;
   
-  public BaseShortVideoOprerator$ForwardShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bpra parambpra)
+  public BaseShortVideoOprerator$ForwardShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, ShortVideoForwardInfo paramShortVideoForwardInfo)
   {
-    this.a = parambpra;
+    this.a = paramShortVideoForwardInfo;
   }
   
   public void run()
@@ -24,12 +23,12 @@ class BaseShortVideoOprerator$ForwardShortVideoTask
     for (;;)
     {
       return;
-      bpra localbpra = this.a;
+      ShortVideoForwardInfo localShortVideoForwardInfo = this.a;
       Object localObject;
       int i;
-      if (localbpra.k == 3)
+      if (localShortVideoForwardInfo.k == 3)
       {
-        localObject = this.this$0.a(localbpra);
+        localObject = this.this$0.a(localShortVideoForwardInfo);
         i = 1;
       }
       while (localObject != null)
@@ -41,30 +40,30 @@ class BaseShortVideoOprerator$ForwardShortVideoTask
         localTransferRequest.mPeerUin = ((MessageRecord)localObject).frienduin;
         localTransferRequest.mUinType = ((MessageRecord)localObject).istroop;
         localTransferRequest.mFileType = 20;
-        localTransferRequest.mExtraObj = localbpra;
+        localTransferRequest.mExtraObj = localShortVideoForwardInfo;
         localTransferRequest.mUniseq = ((MessageRecord)localObject).uniseq;
         localTransferRequest.mIsUp = true;
         localTransferRequest.mBusiType = 0;
-        localTransferRequest.mMd5 = localbpra.e;
-        localTransferRequest.mLocalPath = (localbpra.h + "QQ_&_MoblieQQ_&_QQ" + localbpra.i + "QQ_&_MoblieQQ_&_QQ" + localbpra.j + "QQ_&_MoblieQQ_&_QQ" + localbpra.g);
+        localTransferRequest.mMd5 = localShortVideoForwardInfo.e;
+        localTransferRequest.mLocalPath = (localShortVideoForwardInfo.h + "QQ_&_MoblieQQ_&_QQ" + localShortVideoForwardInfo.i + "QQ_&_MoblieQQ_&_QQ" + localShortVideoForwardInfo.j + "QQ_&_MoblieQQ_&_QQ" + localShortVideoForwardInfo.g);
         localTransferRequest.mUpCallBack = this.this$0;
         localTransferRequest.mRec = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
+        ((ITransFileController)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
         if (i != 0) {
           this.this$0.a((MessageRecord)localObject);
         }
-        azjq.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo", "cost:" + (System.currentTimeMillis() - l));
-        azjq.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo.start", "TransferRequest: " + localTransferRequest.toString());
+        Logger.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo", "cost:" + (System.currentTimeMillis() - l));
+        Logger.a(this.this$0.b, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo.start", "TransferRequest: " + localTransferRequest.toString());
         return;
-        if (localbpra.k == 4)
+        if (localShortVideoForwardInfo.k == 4)
         {
-          localObject = (MessageForShortVideo)localbpra.a;
+          localObject = (MessageForShortVideo)localShortVideoForwardInfo.a;
           i = 0;
         }
         else
         {
-          localObject = null;
           i = 0;
+          localObject = null;
         }
       }
     }
@@ -72,7 +71,7 @@ class BaseShortVideoOprerator$ForwardShortVideoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator.ForwardShortVideoTask
  * JD-Core Version:    0.7.0.1
  */

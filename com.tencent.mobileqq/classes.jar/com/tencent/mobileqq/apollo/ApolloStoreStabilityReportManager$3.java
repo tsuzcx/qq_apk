@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import amol;
 import android.os.Build.VERSION;
+import com.tencent.biz.ProtoServlet;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.WebSsoBody.STServiceMonitItem;
 import com.tencent.mobileqq.WebSsoBody.STServiceMonitReq;
@@ -20,29 +20,28 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.NewIntent;
-import nta;
 
-public class ApolloStoreStabilityReportManager$3
+class ApolloStoreStabilityReportManager$3
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$3(amol paramamol) {}
+  ApolloStoreStabilityReportManager$3(ApolloStoreStabilityReportManager paramApolloStoreStabilityReportManager) {}
   
   public void run()
   {
-    if ((amol.a(this.this$0) == null) || (amol.a(this.this$0).size() == 0)) {
+    if ((ApolloStoreStabilityReportManager.a(this.this$0) == null) || (ApolloStoreStabilityReportManager.a(this.this$0).size() == 0)) {
       QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "mApolloStoreStabilityWatchQueue is empty");
     }
     do
     {
       return;
-      ArrayList localArrayList = new ArrayList(amol.a(this.this$0));
-      amol.a(this.this$0);
+      ArrayList localArrayList = new ArrayList(ApolloStoreStabilityReportManager.a(this.this$0));
+      ApolloStoreStabilityReportManager.a(this.this$0);
       try
       {
         localObject2 = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.4.10");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.5.5");
         localObject1 = new WebSSOAgent.UniSsoServerReq();
         ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
         if ((localArrayList == null) || (localArrayList.size() == 0))
@@ -79,11 +78,11 @@ public class ApolloStoreStabilityReportManager$3
         i += 1;
       }
       ((WebSSOAgent.UniSsoServerReq)localObject1).pbReqData.set(ByteStringMicro.copyFrom(((WebSsoBody.STServiceMonitReq)localObject2).toByteArray()));
-      localObject2 = amol.a();
+      localObject2 = ApolloStoreStabilityReportManager.a();
       if (localObject2 == null) {
         break;
       }
-      Object localObject3 = new NewIntent(((AppInterface)localObject2).getApp().getApplicationContext(), nta.class);
+      Object localObject3 = new NewIntent(((AppInterface)localObject2).getApp().getApplicationContext(), ProtoServlet.class);
       ((NewIntent)localObject3).putExtra("cmd", "apollo_dc_report.service_monit");
       ((NewIntent)localObject3).putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
       ((NewIntent)localObject3).setObserver(this.this$0);
@@ -99,7 +98,7 @@ public class ApolloStoreStabilityReportManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.3
  * JD-Core Version:    0.7.0.1
  */

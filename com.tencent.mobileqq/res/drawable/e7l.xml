@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="false">
-        <shape android:shape="rectangle">
-            <corners android:radius="4.0dip" />
-            <solid android:color="@color/skin_wt_template_item_bg_noselected" />
-        </shape>
-    </item>
-    <item android:state_selected="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="4.0dip" />
-            <solid android:color="@color/skin_wt_template_item_bg_selected" />
-        </shape>
-    </item>
-</selector>
+    <corners android:radius="3.0dip" />
+    <solid android:color="#4d000000" />
+</shape>

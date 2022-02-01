@@ -11,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.utils.UIUtils;
-import zha;
 
 public abstract class AbsEmptyView
   extends FrameLayout
@@ -71,8 +70,8 @@ public abstract class AbsEmptyView
         this.jdField_c_of_type_AndroidViewView.setVisibility(0);
         this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131381472));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131381457));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131381933));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131381918));
         return;
       }
       if (paramInt == 2)
@@ -80,8 +79,8 @@ public abstract class AbsEmptyView
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
         this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378963));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363648));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379394));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363741));
         return;
       }
     } while (paramInt != 4);
@@ -93,15 +92,15 @@ public abstract class AbsEmptyView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561777, this);
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370465);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131378956);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131378955);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131376618));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378963));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363648));
-    this.d = super.findViewById(2131379448);
-    this.jdField_a_of_type_Int = UIUtils.getWindowScreenWidth(getContext());
+    LayoutInflater.from(paramContext).inflate(2131561909, this);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370745);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131379387);
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131379386);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131377014));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379394));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363741));
+    this.d = super.findViewById(2131379871);
+    this.jdField_a_of_type_Int = UIUtils.a(getContext());
     this.jdField_b_of_type_Int = a();
     a(0, true);
     super.postDelayed(new AbsEmptyView.2(this), 500L);
@@ -114,7 +113,7 @@ public abstract class AbsEmptyView
     a(paramInt, false);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int, 1073741824), View.MeasureSpec.makeMeasureSpec(this.jdField_b_of_type_Int, 1073741824));
   }
@@ -126,12 +125,12 @@ public abstract class AbsEmptyView
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(null);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new zha(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new AbsEmptyView.1(this, paramOnClickListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.AbsEmptyView
  * JD-Core Version:    0.7.0.1
  */

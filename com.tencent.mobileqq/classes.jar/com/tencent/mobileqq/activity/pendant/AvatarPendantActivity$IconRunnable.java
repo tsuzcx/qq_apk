@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.pendant;
 
 import android.os.Bundle;
-import bhcs;
-import bhyn;
-import bhyo;
-import bhyq;
-import bhyt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -15,12 +15,12 @@ import java.lang.ref.WeakReference;
 class AvatarPendantActivity$IconRunnable
   implements Runnable
 {
-  WeakReference<bhyn> a;
+  WeakReference<DownloadListener> a;
   WeakReference<QQAppInterface> b;
   
-  AvatarPendantActivity$IconRunnable(AvatarPendantActivity paramAvatarPendantActivity, bhyn parambhyn, QQAppInterface paramQQAppInterface)
+  AvatarPendantActivity$IconRunnable(AvatarPendantActivity paramAvatarPendantActivity, DownloadListener paramDownloadListener, QQAppInterface paramQQAppInterface)
   {
-    this.a = new WeakReference(parambhyn);
+    this.a = new WeakReference(paramDownloadListener);
     this.b = new WeakReference(paramQQAppInterface);
   }
   
@@ -31,21 +31,21 @@ class AvatarPendantActivity$IconRunnable
     }
     if ((this.b.get() != null) && (this.a.get() != null))
     {
-      bhyt localbhyt = ((bhyq)((QQAppInterface)this.b.get()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
-      if (localbhyt.a(bhcs.a) == null)
+      DownloaderInterface localDownloaderInterface = ((DownloaderFactory)((QQAppInterface)this.b.get()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+      if (localDownloaderInterface.a(AvatarPendantUtil.a) == null)
       {
-        Object localObject = new File(bhcs.b + "/icon.zip");
-        localObject = new bhyo(bhcs.a, (File)localObject);
-        ((bhyo)localObject).p = false;
+        Object localObject = new File(AvatarPendantUtil.b + "/icon.zip");
+        localObject = new DownloadTask(AvatarPendantUtil.a, (File)localObject);
+        ((DownloadTask)localObject).p = false;
         Bundle localBundle = new Bundle();
-        localbhyt.a((bhyo)localObject, (bhyn)this.a.get(), localBundle);
+        localDownloaderInterface.a((DownloadTask)localObject, (DownloadListener)this.a.get(), localBundle);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.IconRunnable
  * JD-Core Version:    0.7.0.1
  */

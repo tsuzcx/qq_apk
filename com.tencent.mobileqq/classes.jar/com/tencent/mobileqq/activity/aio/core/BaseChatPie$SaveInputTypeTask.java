@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import anvk;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
@@ -11,41 +11,41 @@ import java.lang.ref.WeakReference;
 public class BaseChatPie$SaveInputTypeTask
   implements Runnable
 {
-  private WeakReference<QQAppInterface> appWeakref;
-  private Entity mInfo;
+  private Entity jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
   public BaseChatPie$SaveInputTypeTask(Entity paramEntity, QQAppInterface paramQQAppInterface)
   {
-    this.mInfo = paramEntity;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
     if (paramQQAppInterface != null) {
-      this.appWeakref = new WeakReference(paramQQAppInterface);
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     }
   }
   
   public void run()
   {
-    if (this.appWeakref == null) {}
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
     Object localObject;
     do
     {
       do
       {
         return;
-        localObject = (QQAppInterface)this.appWeakref.get();
+        localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       } while (localObject == null);
-      localObject = (anvk)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if ((this.mInfo instanceof ExtensionInfo))
+      localObject = (FriendsManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof ExtensionInfo))
       {
-        ((anvk)localObject).a((ExtensionInfo)this.mInfo);
+        ((FriendsManager)localObject).a((ExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity);
         return;
       }
-    } while (!(this.mInfo instanceof NoC2CExtensionInfo));
-    ((anvk)localObject).a((NoC2CExtensionInfo)this.mInfo, true);
+    } while (!(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof NoC2CExtensionInfo));
+    ((FriendsManager)localObject).a((NoC2CExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.SaveInputTypeTask
  * JD-Core Version:    0.7.0.1
  */

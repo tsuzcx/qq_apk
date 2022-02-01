@@ -2,22 +2,21 @@ package com.tencent.mobileqq.data;
 
 import NS_MOBILE_NEWEST_FEEDS.feed_info;
 import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import aesy;
-import afqy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aoxz;
-import artr;
-import arvg;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.QZoneFeedsObserver;
+import com.tencent.mobileqq.activity.aio.BeancurdManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.qzone.FeedInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneConversationStatusRequest;
@@ -45,9 +44,9 @@ public class FeedsManager
   private QQAppInterface app;
   private EntityManager em;
   Map<String, FeedInfo> feedInfoCache = new ConcurrentHashMap();
-  private volatile boolean hasRequest;
-  private volatile boolean inited;
-  public long serverTimeDiv;
+  private volatile boolean hasRequest = false;
+  private volatile boolean inited = false;
+  public long serverTimeDiv = 0L;
   
   public FeedsManager(QQAppInterface paramQQAppInterface)
   {
@@ -96,7 +95,7 @@ public class FeedsManager
     if (TextUtils.isEmpty(paramString)) {
       return 0L;
     }
-    paramString = this.app.getMessageFacade().getAllMessages(paramString, 0, new int[] { -2015 });
+    paramString = this.app.getMessageFacade().a(paramString, 0, new int[] { -2015 });
     if ((paramString != null) && (paramString.size() > 0))
     {
       paramString = (MessageForQzoneFeed)paramString.get(paramString.size() - 1);
@@ -172,7 +171,7 @@ public class FeedsManager
   
   private void intCache()
   {
-    ThreadManagerV2.excute(new FeedsManager.1(this), 32, new artr(this), true);
+    ThreadManagerV2.excute(new FeedsManager.1(this), 32, new FeedsManager.2(this), true);
   }
   
   public static boolean isShowStatus(String paramString)
@@ -220,7 +219,7 @@ public class FeedsManager
       }
     }
     if (!this.feedInfoCache.isEmpty()) {
-      this.app.notifyObservers(aesy.class, 10000, true, null);
+      this.app.notifyObservers(QZoneFeedsObserver.class, 10000, true, null);
     }
   }
   
@@ -229,7 +228,7 @@ public class FeedsManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   1: getfield 62	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   4: invokevirtual 405	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   7: invokevirtual 410	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   10: aload_1
@@ -243,37 +242,37 @@ public class FeedsManager
     //   30: checkcast 321	com/tencent/mobileqq/data/qzone/FeedInfo
     //   33: astore_2
     //   34: aload_0
-    //   35: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   35: getfield 62	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   38: aload_2
     //   39: invokevirtual 414	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   42: goto -27 -> 15
     //   45: astore_1
     //   46: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   49: ifeq +12 -> 61
-    //   52: ldc 162
+    //   52: ldc 164
     //   54: iconst_2
-    //   55: ldc 164
+    //   55: ldc 166
     //   57: aload_1
     //   58: invokestatic 416	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   61: aload_0
-    //   62: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   62: getfield 62	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   65: invokevirtual 405	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   68: invokevirtual 418	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   71: iconst_0
     //   72: ireturn
     //   73: aload_0
-    //   74: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   74: getfield 62	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   77: invokevirtual 405	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   80: invokevirtual 421	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   83: aload_0
-    //   84: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   84: getfield 62	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   87: invokevirtual 405	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   90: invokevirtual 418	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   93: iconst_1
     //   94: ireturn
     //   95: astore_1
     //   96: aload_0
-    //   97: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   97: getfield 62	com/tencent/mobileqq/data/FeedsManager:em	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   100: invokevirtual 405	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   103: invokevirtual 418	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   106: aload_1
@@ -331,7 +330,7 @@ public class FeedsManager
       QLog.w("FeedsManager", 1, "wns  下发的最大请求个数是 大于100，取值100");
       j = 100;
     }
-    Object localObject = this.app.getProxyManager().a().getRecentList(true, false);
+    Object localObject = this.app.getProxyManager().a().a(true, false);
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = ((List)localObject).iterator();
@@ -425,7 +424,7 @@ public class FeedsManager
       paramString.isExpose = true;
       paramString = new LpReportInfo_pf00064(722, 1, 1);
       LpReportManager.getInstance().reportToPF00064(paramString, false, false);
-      paramString = (afqy)this.app.getManager(QQManagerFactory.BEANCURD_MANAGER);
+      paramString = (BeancurdManager)this.app.getManager(QQManagerFactory.BEANCURD_MANAGER);
       if (paramString != null) {
         paramString.a(1, 2);
       }
@@ -496,7 +495,7 @@ public class FeedsManager
           localHashMap.put(localLong, Long.valueOf(l));
         }
       }
-      localObject = new QzoneCommonIntent(this.app.getApp(), arvg.class);
+      localObject = new QzoneCommonIntent(this.app.getApp(), QZoneCommonServlet.class);
     }
     catch (Throwable localThrowable)
     {
@@ -515,7 +514,7 @@ public class FeedsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.FeedsManager
  * JD-Core Version:    0.7.0.1
  */

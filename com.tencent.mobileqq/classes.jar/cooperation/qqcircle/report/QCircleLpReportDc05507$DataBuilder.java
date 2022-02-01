@@ -30,7 +30,7 @@ public class QCircleLpReportDc05507$DataBuilder
   private String feedUrl = "";
   private int ffPageId = -1;
   private int height;
-  private boolean isAutoPlay;
+  private boolean isAutoPlay = false;
   private String itemDetail = "";
   private String lloc = "";
   private int pageId;
@@ -633,7 +633,7 @@ public class QCircleLpReportDc05507$DataBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05507.DataBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -19,6 +19,7 @@ import com.tencent.qqmini.sdk.annotation.JsPlugin;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.utils.JSONUtil;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
@@ -27,6 +28,8 @@ import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.IPayResultCallBack;
+import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.PayResponse;
 import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.EntryModel;
@@ -42,6 +45,7 @@ import com.tencent.qqmini.sdk.utils.GameWnsUtils;
 import com.tencent.qqmini.sdk.utils.QUAUtil;
 import java.util.HashMap;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -83,6 +87,25 @@ public class PayJsPlugin
     return paramString;
   }
   
+  private void checkWxPayUrl(RequestEvent paramRequestEvent, String paramString1, String paramString2, String paramString3)
+  {
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).checkWxPayUrl(paramString3, paramString1, new PayJsPlugin.3(this, paramString1, paramString2, paramRequestEvent));
+  }
+  
+  @NotNull
+  private PayProxy.IPayResultCallBack getIPayResultCallBack(RequestEvent paramRequestEvent, boolean paramBoolean, String paramString)
+  {
+    return new PayJsPlugin.15(this, paramRequestEvent, paramBoolean, paramString);
+  }
+  
+  private int getPayChannel(PayProxy.PayResponse paramPayResponse)
+  {
+    if (paramPayResponse.getPayChannel() == 8) {
+      return 2;
+    }
+    return 3;
+  }
+  
   private String getSDKH5Url(String paramString)
   {
     String str1 = paramString;
@@ -90,11 +113,11 @@ public class PayJsPlugin
     {
       str1 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName();
       if ((this.mMiniAppInfo == null) || (this.mMiniAppInfo.launchParam == null)) {
-        break label174;
+        break label184;
       }
       str1 = str1 + "_" + this.mMiniAppInfo.launchParam.scene;
     }
-    label174:
+    label184:
     for (;;)
     {
       String str2 = LoginManager.getInstance().getAccount();
@@ -160,6 +183,12 @@ public class PayJsPlugin
       return "qq_m_wx-20031-android-2011-" + this.mMiniAppInfo.appId + "-" + paramString + "-" + (String)localObject1 + "-" + (String)localObject2;
     }
     return "";
+  }
+  
+  @NotNull
+  private PayJsPlugin.IStarQueryListener getStarQueryListener(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, RequestEvent paramRequestEvent)
+  {
+    return new PayJsPlugin.16(this, paramRequestEvent, paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
   }
   
   private void handleMidasGoodsPay(Activity paramActivity, JSONObject paramJSONObject, RequestEvent paramRequestEvent)
@@ -267,6 +296,21 @@ public class PayJsPlugin
     }
   }
   
+  private void handlePayResultSuc(JSONObject paramJSONObject, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, RequestEvent paramRequestEvent)
+  {
+    if (paramBoolean)
+    {
+      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramInt3 != -1) && (paramInt2 != -1) && (paramInt1 != -1) && (paramInt5 != -1))
+      {
+        invokeMidasConsume(paramRequestEvent, paramString1, paramString2, paramInt3, paramInt1, paramInt2, paramInt5, paramInt4);
+        return;
+      }
+      QMLog.i("PayJsPlugin", "handleRechargeGame onPayCallBack, , consumeAppid = " + paramString1 + ", consumePrepayId = " + paramString2 + ", consumeStarCurrency = " + paramInt3 + ", consumeTopupAmount = " + paramInt2 + ", consumeBalanceAmount = " + paramInt1 + ", payChannel = " + paramInt5);
+      return;
+    }
+    handleNativeResponseOk(paramRequestEvent, paramJSONObject);
+  }
+  
   private void handleQQPay(RequestEvent paramRequestEvent)
   {
     Object localObject1 = new JSONObject(paramRequestEvent.jsonParams);
@@ -295,7 +339,7 @@ public class PayJsPlugin
     for (localObject1 = this.mMiniAppContext.getAttachedActivity();; localObject1 = null)
     {
       if (localObject1 == null) {
-        break label363;
+        break label364;
       }
       localObject4 = (PayProxy)ProxyManager.get(PayProxy.class);
       if (localObject4 != null) {
@@ -304,7 +348,7 @@ public class PayJsPlugin
       handleNativeResponseFail(paramRequestEvent, null, "not support pay");
       return;
     }
-    label363:
+    label364:
     for (localObject1 = ((PayProxy)localObject4).midasPay((Activity)localObject1, ((JSONObject)localObject2).toString(), new PayJsPlugin.13(this, paramRequestEvent), (Bundle)localObject3);; localObject1 = null)
     {
       if (localObject1 != null) {}
@@ -314,6 +358,37 @@ public class PayJsPlugin
         return;
       }
       break;
+    }
+  }
+  
+  private void onPlayCallback(PayProxy.PayResponse paramPayResponse, RequestEvent paramRequestEvent)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("resultCode", paramPayResponse.getResultCode());
+      String str = paramPayResponse.getExtendInfo();
+      if ((!TextUtils.isEmpty(str)) && (JSONUtil.isJson(str))) {
+        localJSONObject.put("data", new JSONObject(str).optJSONObject("data"));
+      }
+      label65:
+      if ((paramPayResponse.getResultCode() == 0) && (paramPayResponse.getPayState() == 0)) {
+        handleNativeResponseOk(paramRequestEvent, localJSONObject);
+      }
+      for (;;)
+      {
+        QMLog.i("PayJsPlugin", "handleMidasGoodsPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
+        return;
+        if ((paramPayResponse.getResultCode() == 2) || (paramPayResponse.getPayState() == 1)) {
+          handleNativeResponseCancel(paramRequestEvent, localJSONObject);
+        } else {
+          handleNativeResponseFail(paramRequestEvent, localJSONObject, paramPayResponse.getResultMsg());
+        }
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      break label65;
     }
   }
   
@@ -365,24 +440,24 @@ public class PayJsPlugin
       }
       str3 = str2.replace("{prepayId}", str11).replace("{starCurrency}", i + "").replace("{offerId}", str12).replace("{setEnv}", k + "").replace("{appid}", this.mMiniAppInfo.appId).replace("{acctType}", str14).replace("{zoneId}", str13).replace("{buyQuantity}", j + "");
       if (!bool1) {
-        break label499;
+        break label500;
       }
       str2 = "1";
-      label390:
+      label391:
       str3 = str3.replace("{isCanChange}", str2).replace("{currencyType}", str8).replace("{platform}", str9).replace("{remark}", str10);
       if (!bool2) {
-        break label507;
+        break label508;
       }
     }
-    label499:
-    label507:
+    label500:
+    label508:
     for (str2 = "1";; str2 = "0")
     {
       return str3.replace("{numberVisible}", str2).replace("{other}", str5).replace("{aid}", str4).replace("{firstRefer}", str6).replace("{firstVia}", str7).replace("{refer}", paramJSONObject).replace("{via}", str1);
       i = 0;
       break;
       str2 = "0";
-      break label390;
+      break label391;
     }
   }
   
@@ -415,13 +490,13 @@ public class PayJsPlugin
     try
     {
       paramJSONObject.put("aid", paramString1);
-      label120:
+      label125:
       QMLog.d("PayJsPlugin", "putAid, aid = " + paramString1);
       return;
     }
     catch (JSONException paramJSONObject)
     {
-      break label120;
+      break label125;
     }
   }
   
@@ -493,26 +568,49 @@ public class PayJsPlugin
     }
   }
   
+  private void reportWithGroupId(String paramString)
+  {
+    String str = "";
+    if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.launchParam != null) && (this.mMiniAppInfo.launchParam.entryModel != null))
+    {
+      int i = this.mMiniAppInfo.launchParam.entryModel.type;
+      long l = this.mMiniAppInfo.launchParam.entryModel.uin;
+      if (i == 1)
+      {
+        str = String.valueOf(l);
+        QMLog.i("PayJsPlugin", "report 4329 type=" + i + ", uin=" + l);
+      }
+    }
+    for (;;)
+    {
+      SDKMiniProgramLpReportDC04239.reportWithGroupId(this.mMiniAppInfo, "wechat_pay", "launch_wechatpay", "", paramString, str);
+      return;
+      str = "";
+      break;
+      QMLog.i("PayJsPlugin", "no groupId");
+    }
+  }
+  
   @JsEvent({"requestWxPayment"})
   private void requestWxPayment(RequestEvent paramRequestEvent)
   {
-    String str2;
+    Object localObject;
     try
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      str2 = ((JSONObject)localObject).optString("url");
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      String str = ((JSONObject)localObject).optString("url");
       localObject = ((JSONObject)localObject).optString("referer");
-      QMLog.i("PayJsPlugin", "handleWxPayment, url=" + str2);
-      if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty((CharSequence)localObject)))
+      QMLog.i("PayJsPlugin", "handleWxPayment, url=" + str);
+      if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject)))
       {
         paramRequestEvent.fail("url or referer is empty, please check!");
-        QMLog.i("PayJsPlugin", "handleWxPayment, url=" + str2 + ", referer=" + (String)localObject);
+        QMLog.i("PayJsPlugin", "handleWxPayment, url=" + str + ", referer=" + (String)localObject);
         return;
       }
-      if ((!URLUtil.isHttpsUrl(str2)) && (!URLUtil.isHttpUrl(str2)))
+      if ((!URLUtil.isHttpsUrl(str)) && (!URLUtil.isHttpUrl(str)))
       {
         paramRequestEvent.fail("url is not http url, please check!");
-        QMLog.i("PayJsPlugin", "handleWxPayment, url=" + str2);
+        QMLog.i("PayJsPlugin", "handleWxPayment, url=" + str);
         return;
       }
     }
@@ -522,30 +620,8 @@ public class PayJsPlugin
       paramRequestEvent.fail();
       return;
     }
-    String str3 = this.mMiniAppInfo.appId;
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).checkWxPayUrl(str3, str2, new PayJsPlugin.3(this, str2, localException, paramRequestEvent));
-    String str1 = "";
-    int i;
-    long l;
-    if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.launchParam != null) && (this.mMiniAppInfo.launchParam.entryModel != null))
-    {
-      i = this.mMiniAppInfo.launchParam.entryModel.type;
-      l = this.mMiniAppInfo.launchParam.entryModel.uin;
-      if (i != 1) {
-        break label369;
-      }
-    }
-    label369:
-    for (str1 = String.valueOf(l);; str1 = "")
-    {
-      QMLog.i("PayJsPlugin", "report 4329 type=" + i + ", uin=" + l);
-      for (;;)
-      {
-        SDKMiniProgramLpReportDC04239.reportWithGroupId(this.mMiniAppInfo, "wechat_pay", "launch_wechatpay", "", str2, str1);
-        return;
-        QMLog.i("PayJsPlugin", "no groupId");
-      }
-    }
+    checkWxPayUrl(paramRequestEvent, localException, (String)localObject, this.mMiniAppInfo.appId);
+    reportWithGroupId(localException);
   }
   
   private void setCookieIfNeed(Bundle paramBundle)
@@ -982,7 +1058,7 @@ public class PayJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PayJsPlugin
  * JD-Core Version:    0.7.0.1
  */

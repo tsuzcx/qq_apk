@@ -9,12 +9,10 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zef;
-import zeg;
 
 public class JsonORM
 {
-  private static final Map<Class, zeg[]> a = new IdentityHashMap();
+  private static final Map<Class, JsonORM.ColumnInfo[]> a = new IdentityHashMap();
   
   public static int a(Class<?> paramClass)
   {
@@ -48,7 +46,7 @@ public class JsonORM
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (zeg[])a.get(paramClass);
+    Object localObject2 = (JsonORM.ColumnInfo[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -123,7 +121,7 @@ public class JsonORM
       throw new IllegalArgumentException("object should not be null");
     }
     Class localClass = paramObject.getClass();
-    Object localObject2 = (zeg[])a.get(localClass);
+    Object localObject2 = (JsonORM.ColumnInfo[])a.get(localClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -264,22 +262,35 @@ public class JsonORM
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class<?> paramClass, ArrayList<zeg> paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<JsonORM.ColumnInfo> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
     if (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      zef localzef = (zef)localField.getAnnotation(zef.class);
-      if (localzef == null) {}
+      JsonORM.Column localColumn = (JsonORM.Column)localField.getAnnotation(JsonORM.Column.class);
+      if (localColumn == null) {}
       for (;;)
       {
         i += 1;
         break;
-        paramArrayList.add(new zeg(localzef.a(), a(localField.getType()), localField));
+        paramArrayList.add(new JsonORM.ColumnInfo(localColumn.a(), a(localField.getType()), localField));
       }
     }
+  }
+  
+  private static JsonORM.ColumnInfo[] a(Class<?> paramClass)
+  {
+    ArrayList localArrayList = new ArrayList();
+    while (paramClass != null)
+    {
+      a(paramClass, localArrayList);
+      paramClass = paramClass.getSuperclass();
+    }
+    paramClass = new JsonORM.ColumnInfo[localArrayList.size()];
+    localArrayList.toArray(paramClass);
+    return paramClass;
   }
   
   @NonNull
@@ -309,23 +320,10 @@ public class JsonORM
     }
     return arrayOfObject;
   }
-  
-  private static zeg[] a(Class<?> paramClass)
-  {
-    ArrayList localArrayList = new ArrayList();
-    while (paramClass != null)
-    {
-      a(paramClass, localArrayList);
-      paramClass = paramClass.getSuperclass();
-    }
-    paramClass = new zeg[localArrayList.size()];
-    localArrayList.toArray(paramClass);
-    return paramClass;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.JsonORM
  * JD-Core Version:    0.7.0.1
  */

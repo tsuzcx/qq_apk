@@ -2,9 +2,9 @@ package com.tencent.open.business.base.appreport;
 
 import android.content.Context;
 import android.content.Intent;
-import bjlu;
-import bjok;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.YybHandleUtil;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 
@@ -60,7 +60,7 @@ class AppReportReceiver$1
         if (bool) {}
         try
         {
-          bjlu.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), localThrowable);
+          StaticAnalyz.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), localThrowable);
           label166:
           while ((BaseApplicationImpl.isCurrentVersionFirstLaunch) && (QLog.isColorLevel()))
           {
@@ -80,7 +80,7 @@ class AppReportReceiver$1
                 if (QLog.isColorLevel()) {
                   QLog.d("AppReportReceiver", 2, "mobileqq ACTION_PACKAGE_REPLACED deleteYYBApkPackage");
                 }
-                bjok.a();
+                YybHandleUtil.a();
                 return;
               }
             }

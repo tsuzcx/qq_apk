@@ -116,7 +116,7 @@ public final class g
   
   public String a(String paramString)
   {
-    if (StringUtil.isEmpty(paramString)) {
+    if (StringUtil.a(paramString)) {
       return "";
     }
     String str2 = c.n(paramString);

@@ -135,7 +135,7 @@ public class CanvasView
       }
       localObject2 = ((JSONArray)localObject3).optString(0);
       localObject1 = localObject2;
-      if (!StringUtil.isEmpty((String)localObject2))
+      if (!StringUtil.a((String)localObject2))
       {
         if (!((String)localObject2).startsWith("wxfile")) {
           break label327;
@@ -146,7 +146,7 @@ public class CanvasView
       if (QLog.isColorLevel()) {
         QLog.i("drawCanvas", 2, "dataPath: " + (String)localObject1);
       }
-      if (!StringUtil.isEmpty((String)localObject1))
+      if (!StringUtil.a((String)localObject1))
       {
         localObject1 = c.q((String)localObject1);
         if (localObject1 != null)
@@ -533,7 +533,7 @@ public class CanvasView
     ThreadManagerV2.executeOnSubThread(new a(this, paramJSONObject, paramWebviewContainer, paramString, paramInt));
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (QLog.isColorLevel()) {

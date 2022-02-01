@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import addi;
-import bdir;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.abtest.ABTestController;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.tfm.metrics.api.Metrics;
 import com.tencent.tfm.metrics.api.MetricsApi;
@@ -17,8 +16,8 @@ public class MetricSdkInit
     if (paramBaseApplicationImpl == null) {
       return;
     }
-    addi.a("MetricsSDKInit", "metrics sdk init async..");
-    paramString = new bdir(paramBaseApplicationImpl);
+    ABTestController.a("MetricsSDKInit", "metrics sdk init async..");
+    paramString = new MetricSdkInit.BeaconReporterImpl(paramBaseApplicationImpl);
     paramString = MetricsConfig.builder().setReporter(paramString).setLogEnable(false).setChannel("1001").setReportInterval(5000L).build();
     MetricsApi.getDefault().start(paramBaseApplicationImpl, paramString);
   }

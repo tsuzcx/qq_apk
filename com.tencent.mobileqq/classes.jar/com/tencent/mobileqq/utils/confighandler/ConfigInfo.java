@@ -8,8 +8,8 @@ public abstract class ConfigInfo
 {
   public int _parseRet = -1;
   public String mUin;
-  public long serverVer;
-  public int task_id;
+  public long serverVer = 0L;
+  public int task_id = 0;
   
   protected abstract boolean parse(JSONObject paramJSONObject);
   

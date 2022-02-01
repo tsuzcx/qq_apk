@@ -2,11 +2,11 @@ package com.qflutter.log.qflutter_log;
 
 public final class R$string
 {
-  public static final int status_bar_notification_info_overflow = 2131427368;
+  public static final int status_bar_notification_info_overflow = 2131492904;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.log.qflutter_log.R.string
  * JD-Core Version:    0.7.0.1
  */

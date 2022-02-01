@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahbl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.MessageForMedalNews;
 
-public class MedalNewsItemBuilder$2
+class MedalNewsItemBuilder$2
   implements Runnable
 {
-  public MedalNewsItemBuilder$2(ahbl paramahbl, MessageForMedalNews paramMessageForMedalNews) {}
+  MedalNewsItemBuilder$2(MedalNewsItemBuilder paramMedalNewsItemBuilder, MessageForMedalNews paramMessageForMedalNews) {}
   
   public void run()
   {
-    ahbl.a(this.this$0, this.a.frienduin, this.this$0.a.curFriendNick, this.a.level, this.a.id, this.a.ts, this.a.seq);
+    MedalNewsItemBuilder.a(this.this$0, this.a.frienduin, this.this$0.a.d, this.a.level, this.a.id, this.a.ts, this.a.seq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
-import lfe;
 
 class DoubleVideoCtrlUI$8$1
   implements Runnable
@@ -13,9 +13,9 @@ class DoubleVideoCtrlUI$8$1
   {
     if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a != null) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a() != null))
     {
-      lfe locallfe = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a();
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.d, 1, "StartGlassCheck, lCurrent[" + this.jdField_a_of_type_Long + "], lLastTickFinal[" + this.b + "], VideoGlassWaitTime[" + locallfe.S + "], DefaultTimeOutRule[" + locallfe.T + "], GlassSwitch[" + locallfe.R + "]");
-      if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a(locallfe.T)) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a().R != 0)) {
+      SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a();
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.d, 1, "StartGlassCheck, lCurrent[" + this.jdField_a_of_type_Long + "], lLastTickFinal[" + this.b + "], VideoGlassWaitTime[" + localSessionInfo.S + "], DefaultTimeOutRule[" + localSessionInfo.T + "], GlassSwitch[" + localSessionInfo.R + "]");
+      if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a(localSessionInfo.T)) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a().R != 0)) {
         DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0, false);
       }
     }
@@ -23,7 +23,7 @@ class DoubleVideoCtrlUI$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.8.1
  * JD-Core Version:    0.7.0.1
  */

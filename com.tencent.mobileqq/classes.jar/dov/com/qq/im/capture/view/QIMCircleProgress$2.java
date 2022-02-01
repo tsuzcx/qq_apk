@@ -1,0 +1,45 @@
+package dov.com.qq.im.capture.view;
+
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import com.tencent.qphone.base.util.QLog;
+
+class QIMCircleProgress$2
+  extends AnimatorListenerAdapter
+{
+  QIMCircleProgress$2(QIMCircleProgress paramQIMCircleProgress) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.a = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+    if ((this.a.c) && (this.a.b != null)) {
+      this.a.b.start();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+ * Qualified Name:     dov.com.qq.im.capture.view.QIMCircleProgress.2
+ * JD-Core Version:    0.7.0.1
+ */

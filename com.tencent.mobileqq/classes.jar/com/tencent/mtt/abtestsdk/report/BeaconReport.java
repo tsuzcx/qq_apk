@@ -34,7 +34,7 @@ public class BeaconReport
           isSupportMultiChannel = true;
         }
         ABTestLog.debug("static initializer -> QIMEI:" + getQIMEI() + "  SDKVersion:" + sdkVersion, new Object[0]);
-        registerTunnel("JS0B558T33E4YJ", "1.1.1.0", "10000000");
+        registerTunnel("JS0B558T33E4YJ", "1.1.1.1", "10000000");
         return;
       }
       catch (Exception localException2)
@@ -157,7 +157,7 @@ public class BeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.report.BeaconReport
  * JD-Core Version:    0.7.0.1
  */

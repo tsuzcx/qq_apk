@@ -5,8 +5,6 @@ import android.os.Bundle;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
-import com.tencent.mobileqq.transfile.ShortVideoUploadABTest;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -35,19 +33,10 @@ class SendVideoActivity$SendTask
       QLog.d("SendVideoActivity", 2, "#SendTask# run(): start");
     }
     SendVideoActivity.a(this.jdField_a_of_type_AndroidContentIntent);
-    CodecParam.mRecordFrames = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
-    CodecParam.mRecordTime = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
-    long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("ab_test_send_btn_click_time", 0L);
-    long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("ab_test_generate_thumb_cost_time", 0L);
-    if (ShortVideoUploadABTest.isEnableAbTest())
-    {
-      ShortVideoUploadABTest._ABTestOldClickTime = l1;
-      ShortVideoUploadABTest._ABTestOldRecordTime = CodecParam.mRecordTime;
-      ShortVideoUploadABTest._ABTestOldThumbCost = l2;
-    }
-    com.tencent.mobileqq.transfile.ShortVideoPresendStats.lOldClickTime = l1;
+    com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mRecordFrames = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
+    com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mRecordTime = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
     String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_send_path");
-    if (FileUtils.fileExistsAndNotEmpty(str))
+    if (FileUtils.b(str))
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       localObject = URLDrawable.getDrawable(new File(str), (URLDrawable.URLDrawableOptions)localObject);
@@ -76,7 +65,7 @@ class SendVideoActivity$SendTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendTask
  * JD-Core Version:    0.7.0.1
  */

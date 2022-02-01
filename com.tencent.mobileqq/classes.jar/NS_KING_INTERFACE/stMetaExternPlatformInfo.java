@@ -14,13 +14,13 @@ public final class stMetaExternPlatformInfo
 {
   static stAction cache_action;
   static Map<Integer, String> cache_reserve;
-  public stAction action;
-  public int count;
+  public stAction action = null;
+  public int count = 0;
   public String icon = "";
   public String infoName = "";
   public String name = "";
-  public Map<Integer, String> reserve;
-  public int show;
+  public Map<Integer, String> reserve = null;
+  public int show = 0;
   
   static
   {

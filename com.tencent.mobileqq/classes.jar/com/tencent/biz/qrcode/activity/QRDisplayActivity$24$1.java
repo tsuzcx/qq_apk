@@ -2,7 +2,7 @@ package com.tencent.biz.qrcode.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import aupt;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
 class QRDisplayActivity$24$1
   implements Runnable
@@ -24,15 +24,15 @@ class QRDisplayActivity$24$1
     localIntent.putExtras(localBundle);
     if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$24.this$0.c == 1)
     {
-      aupt.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$24.this$0, localIntent, 21, 100500, "biz_src_jc_gxl_ctcshare");
+      ForwardBaseOption.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$24.this$0, localIntent, 21, 100500, "biz_src_jc_gxl_ctcshare");
       return;
     }
-    aupt.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$24.this$0, localIntent, 21);
+    ForwardBaseOption.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$24.this$0, localIntent, 21);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.24.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.data;
 
-import acnh;
-import ahfa;
 import android.text.TextUtils;
-import apab;
-import axcx;
-import bcsa;
-import bdnu;
-import bdnv;
-import bdsv;
-import bgcz;
-import bgls;
-import bhbx;
-import biyt;
-import bmar;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.imcore.message.MsgProxyUtils;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
 import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
+import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
+import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager;
+import com.tencent.mobileqq.util.MessageRecordUtil;
+import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -46,12 +46,12 @@ public class MessageForMixedMsg
 {
   private static final String TAG = "MessageForMixedMsg";
   public int forwardID;
-  public MessageForText.AtTroopMemberInfo mAtInfo;
+  public AtTroopMemberInfo mAtInfo;
   public int mForwardFromIsTroop;
   public String mForwardFromUin;
   public long mForwardFromUniSeq;
-  protected boolean mHasReplyText;
-  public boolean mIsResend;
+  protected boolean mHasReplyText = false;
+  public boolean mIsResend = false;
   public int mRichTextLength;
   public List<MessageRecord> msgElemList;
   public Object msgElemListSyncLock = new Object();
@@ -395,23 +395,23 @@ public class MessageForMixedMsg
                   {
                     return localObject1.toString();
                   } while (!(??? instanceof MessageForStructing));
-                  if (!bmar.a(???)) {
+                  if (!QfavUtil.a(???)) {
                     return "";
                   }
                   ??? = (MessageForStructing)???;
                 } while (!(???.structingMsg instanceof AbsShareMsg));
                 ??? = (AbsShareMsg)???.structingMsg;
               } while ((???.mStructMsgItemLists == null) || (???.mStructMsgItemLists.size() <= 0));
-              ??? = (bdnu)???.mStructMsgItemLists.get(0);
-            } while ((??? == null) || (!(??? instanceof bdnv)));
-            ??? = ((bdnv)???).a.iterator();
+              ??? = (AbsStructMsgElement)???.mStructMsgItemLists.get(0);
+            } while ((??? == null) || (!(??? instanceof AbsStructMsgItem)));
+            ??? = ((AbsStructMsgItem)???).a.iterator();
             i = 0;
             do
             {
               if (!???.hasNext()) {
                 break;
               }
-              localObject2 = (bdnu)???.next();
+              localObject2 = (AbsStructMsgElement)???.next();
               if (!(localObject2 instanceof StructMsgItemTitle)) {
                 break label679;
               }
@@ -431,7 +431,7 @@ public class MessageForMixedMsg
             break label586;
             break;
             label679:
-            if (!(localObject2 instanceof bdsv)) {}
+            if (!(localObject2 instanceof StructMsgItemSummary)) {}
           }
         }
       }
@@ -558,7 +558,7 @@ public class MessageForMixedMsg
           }
           if ((??? instanceof MessageForPic))
           {
-            ??? = axcx.a((MessageForPic)???, paramList1, paramList2);
+            ??? = AIOShareActionSheet.a((MessageForPic)???, paramList1, paramList2);
             if (??? != null) {
               localStringBuilder.append(???);
             }
@@ -611,7 +611,7 @@ public class MessageForMixedMsg
         if (!(localObject3 instanceof MessageForPic)) {
           break label508;
         }
-        localObject3 = axcx.a((MessageForPic)localObject3, paramList1, paramList2);
+        localObject3 = AIOShareActionSheet.a((MessageForPic)localObject3, paramList1, paramList2);
         if (localObject3 == null) {
           break label508;
         }
@@ -619,7 +619,7 @@ public class MessageForMixedMsg
         break label508;
         if ((localObject2 instanceof MessageForPic))
         {
-          localObject2 = axcx.a((MessageForPic)localObject2, paramList1, paramList2);
+          localObject2 = AIOShareActionSheet.a((MessageForPic)localObject2, paramList1, paramList2);
           if (localObject2 != null)
           {
             localStringBuilder.append((String)localObject2);
@@ -824,7 +824,7 @@ public class MessageForMixedMsg
           try
           {
             localObject3 = new MessageForReplyText();
-            ((MessageForReplyText)localObject3).mSourceMsgInfo = ((MessageForReplyText.SourceMsgInfo)apab.a(HexUtil.hexStr2Bytes(((MixedMsg.Elem)localObject6).sourceMsgInfo.get())));
+            ((MessageForReplyText)localObject3).mSourceMsgInfo = ((MessageForReplyText.SourceMsgInfo)MessagePkgUtils.a(HexUtil.hexStr2Bytes(((MixedMsg.Elem)localObject6).sourceMsgInfo.get())));
             if (((MixedMsg.Elem)localObject6).textMsg.has())
             {
               ((MessageForReplyText)localObject3).msg = ((MixedMsg.Elem)localObject6).textMsg.get();
@@ -895,11 +895,11 @@ public class MessageForMixedMsg
               }
               localObject6 = ((JSONObject)localObject2).optJSONArray("" + k);
               if ((localObject6 != null) && (!TextUtils.isEmpty(((JSONArray)localObject6).toString()))) {
-                bgcz.a(3000, ((JSONArray)localObject6).toString(), (ChatMessage)localObject4);
+                AtTroopMemberSpan.a(3000, ((JSONArray)localObject6).toString(), (ChatMessage)localObject4);
               }
             }
             ((MessageForText)localObject4).doParse(true);
-            bgls.a((MessageRecord)localObject4);
+            TroopRobotManager.a((MessageRecord)localObject4);
             localArrayList.add(localObject4);
             localStringBuilder1.append(((MessageForText)localObject4).msg);
             if (!TextUtils.isEmpty(((MessageForText)localObject4).msg2))
@@ -919,7 +919,7 @@ public class MessageForMixedMsg
               if ((localObject6 == null) || (TextUtils.isEmpty(((JSONArray)localObject6).toString()))) {
                 break label941;
               }
-              bgcz.a(1, ((JSONArray)localObject6).toString(), (ChatMessage)localObject4);
+              AtTroopMemberSpan.a(1, ((JSONArray)localObject6).toString(), (ChatMessage)localObject4);
               break label941;
               localStringBuilder2.append(((MessageForText)localObject4).msg);
             }
@@ -1009,7 +1009,7 @@ public class MessageForMixedMsg
             localException1.printStackTrace();
             bool1 = bool2;
           }
-          biyt.a(this, this.msgElemList, bool1, HexUtil.hexStr2Bytes(localException1));
+          MQPSensitiveMsgUtil.a(this, this.msgElemList, bool1, HexUtil.hexStr2Bytes(localException1));
           try
           {
             this.mRobotFlag = Integer.parseInt(getExtInfoFromExtStr("is_to_robot"));
@@ -1061,7 +1061,7 @@ public class MessageForMixedMsg
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.i("MessageForMixedMsg", 2, "MessageForMixedMsg.getContentForSearch msg is " + bhbx.a(localThrowable.toString()));
+      QLog.i("MessageForMixedMsg", 2, "MessageForMixedMsg.getContentForSearch msg is " + MessageRecordUtil.a(localThrowable.toString()));
     }
     String str = localThrowable.toString();
     return str;
@@ -1093,7 +1093,7 @@ public class MessageForMixedMsg
       if ((localMessageRecord instanceof MessageForReplyText))
       {
         if (((MessageForReplyText)localMessageRecord).getSourceMessage() == null) {
-          ahfa.a(paramQQAppInterface, this.frienduin, this.istroop, localMessageRecord, ((MessageForReplyText)localMessageRecord).mSourceMsgInfo);
+          ReplyTextItemBuilder.a(paramQQAppInterface, this.frienduin, this.istroop, localMessageRecord, ((MessageForReplyText)localMessageRecord).mSourceMsgInfo);
         }
         return (MessageForReplyText)localMessageRecord;
       }
@@ -1121,7 +1121,7 @@ public class MessageForMixedMsg
   
   public boolean isSupportFTS()
   {
-    return acnh.x(this.istroop);
+    return MsgProxyUtils.m(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -1209,7 +1209,7 @@ public class MessageForMixedMsg
               if (((MessageForReplyText)localObject1).mSourceMsgInfo != null) {
                 ((MessageForReplyText)localObject1).mSourceMsgInfo.packSourceMsg(MessageForReplyText.getAppInterface(), ((MessageForReplyText)localObject1).getSourceMessage());
               }
-              localObject1 = apab.a(((MessageForReplyText)localObject1).mSourceMsgInfo);
+              localObject1 = MessagePkgUtils.a(((MessageForReplyText)localObject1).mSourceMsgInfo);
               localElem.sourceMsgInfo.set(HexUtil.bytes2HexStr((byte[])localObject1));
             }
             catch (Exception localException)
@@ -1271,7 +1271,7 @@ public class MessageForMixedMsg
               break;
             }
           }
-          localObject2 = (MessageForText)bcsa.a(-1000);
+          localObject2 = (MessageForText)MessageRecordFactory.a(-1000);
           ((MessageForText)localObject2).msgtype = -1000;
           ((MessageForText)localObject2).msg = localStringBuffer.toString();
           localStringBuffer.delete(0, localStringBuffer.length());
@@ -1302,14 +1302,14 @@ public class MessageForMixedMsg
           break;
         }
       }
-      localObject2 = (MessageForText)bcsa.a(-1000);
+      localObject2 = (MessageForText)MessageRecordFactory.a(-1000);
       ((MessageForText)localObject2).msgtype = -1000;
       ((MessageForText)localObject2).msg = localStringBuffer.toString();
       localStringBuffer.delete(0, localStringBuffer.length());
       localArrayList1.add(localObject2);
       localArrayList2.clear();
     }
-    Object localObject2 = (MessageForMixedMsg)bcsa.a(-1035);
+    Object localObject2 = (MessageForMixedMsg)MessageRecordFactory.a(-1035);
     copyMessageRecordBaseField((MessageRecord)localObject2, this);
     ((MessageForMixedMsg)localObject2).msgtype = -1035;
     ((MessageForMixedMsg)localObject2).msgElemList = localArrayList1;
@@ -1352,7 +1352,7 @@ public class MessageForMixedMsg
             if (((MessageForReplyText)localObject3).mSourceMsgInfo != null) {
               ((MessageForReplyText)localObject3).mSourceMsgInfo.packSourceMsg(MessageForReplyText.getAppInterface(), ((MessageForReplyText)localObject3).getSourceMessage());
             }
-            localObject1 = apab.a(((MessageForReplyText)localObject3).mSourceMsgInfo);
+            localObject1 = MessagePkgUtils.a(((MessageForReplyText)localObject3).mSourceMsgInfo);
             localElem.sourceMsgInfo.set(HexUtil.bytes2HexStr((byte[])localObject1));
           }
           catch (Exception localException)
@@ -1416,7 +1416,7 @@ public class MessageForMixedMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForMixedMsg
  * JD-Core Version:    0.7.0.1
  */

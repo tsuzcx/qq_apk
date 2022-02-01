@@ -1,28 +1,27 @@
 package com.tencent.qidian;
 
-import azrb;
-import bdfk;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.qidian.data.CompanyShowCaseInfo;
 
 class QidianProfileCardActivity$11
-  implements Runnable
+  implements PhotoWallViewForQiDianProfile.PhotoWallCallback
 {
   QidianProfileCardActivity$11(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void run()
+  public void a(CompanyShowCaseInfo paramCompanyShowCaseInfo)
   {
-    if (bdfk.b()) {}
-    for (this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.this$0.app.getFaceBitmap(this.this$0.jdField_a_of_type_Azrb.a.a, (byte)2, true);; this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.this$0.app.getFaceBitmap(this.this$0.jdField_a_of_type_Azrb.a.a, true))
+    if (paramCompanyShowCaseInfo != null)
     {
-      this.this$0.c();
-      return;
+      paramCompanyShowCaseInfo = paramCompanyShowCaseInfo.b;
+      if (!TextUtils.isEmpty(paramCompanyShowCaseInfo)) {
+        QidianProfileCardActivity.a(this.a, paramCompanyShowCaseInfo);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.11
  * JD-Core Version:    0.7.0.1
  */

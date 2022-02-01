@@ -19,8 +19,8 @@ class PagerSnapHelper$1
       ViolaLogUtils.d("PagerSnapHelper", "onPagerDataChanged: positionStart=" + paramInt1 + ", itemCount=" + paramInt2 + ", centerPosition=" + PagerSnapHelper.access$1000(this.this$0) + ", currentPosition=" + i);
       if ((paramInt1 <= i) && (paramInt1 + paramInt2 - 1 >= i))
       {
-        PagerSnapHelper.OnLayoutChangedListenerImpl.access$1702(PagerSnapHelper.access$1600(this.this$0), true);
-        PagerSnapHelper.access$1100(this.this$0).addOnLayoutChangeListener(PagerSnapHelper.access$1600(this.this$0));
+        PagerSnapHelper.OnLayoutChangedListenerImpl.access$1802(PagerSnapHelper.access$1700(this.this$0), true);
+        PagerSnapHelper.access$1100(this.this$0).addOnLayoutChangeListener(PagerSnapHelper.access$1700(this.this$0));
         PagerSnapHelper.access$1100(this.this$0).requestLayout();
       }
       return;
@@ -70,7 +70,7 @@ class PagerSnapHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.PagerSnapHelper.1
  * JD-Core Version:    0.7.0.1
  */

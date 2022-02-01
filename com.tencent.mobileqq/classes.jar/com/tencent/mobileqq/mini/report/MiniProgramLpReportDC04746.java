@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.report;
 
 import android.os.Build.VERSION;
-import bizw;
 import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.open.adapter.CommonDataAdapter;
 import cooperation.qzone.QUA;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class MiniProgramLpReportDC04746
   public static void report(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(bizw.a().a())));
+    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(CommonDataAdapter.a().a())));
     localArrayList.add(MiniProgramReportHelper.newEntry("touin", ""));
     localArrayList.add(MiniProgramReportHelper.newEntry("actiontype", String.valueOf(paramInt1)));
     localArrayList.add(MiniProgramReportHelper.newEntry("subactiontype", String.valueOf(paramInt2)));

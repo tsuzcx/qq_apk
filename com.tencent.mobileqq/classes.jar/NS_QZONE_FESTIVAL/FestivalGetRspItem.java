@@ -7,12 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class FestivalGetRspItem
   extends JceStruct
 {
-  public long festival_mdays;
-  public long festival_month;
+  public long festival_mdays = 0L;
+  public long festival_month = 0L;
   public String festival_name = "";
-  public long festival_type;
-  public long festival_year;
-  public int result_code;
+  public long festival_type = 0L;
+  public long festival_year = 0L;
+  public int result_code = 0;
   
   public FestivalGetRspItem() {}
   

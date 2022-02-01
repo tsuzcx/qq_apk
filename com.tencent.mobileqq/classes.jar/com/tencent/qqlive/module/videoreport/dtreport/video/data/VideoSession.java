@@ -2,12 +2,16 @@ package com.tencent.qqlive.module.videoreport.dtreport.video.data;
 
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
+import java.util.HashMap;
 import java.util.Map;
 
 public class VideoSession
 {
   private static final long INVALID_PLAY_TIME = -1L;
+  private String contentId;
   private int contentType;
+  private HashMap<String, Object> customParamsMap = new HashMap();
+  private boolean isBizReady;
   private long playEndPosition;
   private int playEndReason;
   private int playStartReason;
@@ -15,12 +19,22 @@ public class VideoSession
   private int playType;
   private long playedTime;
   private long startPosition;
-  private VideoEntity videoEntity;
+  private VideoBaseEntity videoEntity;
+  private int videoPlayerObject;
   
-  public VideoSession(@NonNull VideoEntity paramVideoEntity)
+  public VideoSession(@NonNull VideoEntity paramVideoEntity, @NonNull int paramInt)
   {
     this.videoEntity = paramVideoEntity;
+    this.contentId = paramVideoEntity.getContentId();
     this.contentType = paramVideoEntity.getContentType();
+    this.customParamsMap.putAll(paramVideoEntity.getVideoCustomParams());
+    this.isBizReady = paramVideoEntity.isBizReady();
+    this.videoPlayerObject = paramInt;
+  }
+  
+  public void bizReady()
+  {
+    this.isBizReady = true;
   }
   
   public void bufferEnd()
@@ -50,7 +64,7 @@ public class VideoSession
   
   public String getContentId()
   {
-    return this.videoEntity.getContentId();
+    return this.contentId;
   }
   
   public int getContentType()
@@ -60,12 +74,17 @@ public class VideoSession
   
   public Map<String, Object> getCustomParams()
   {
-    return this.videoEntity.getVideoCustomParams();
+    return this.customParamsMap;
   }
   
   public long getEndPosition()
   {
     return this.playEndPosition;
+  }
+  
+  public String getIdentifier()
+  {
+    return this.videoEntity.getIdentifier();
   }
   
   public int getPageId()
@@ -103,6 +122,21 @@ public class VideoSession
     return String.valueOf(this.videoEntity.getVideoDuration());
   }
   
+  public int getVideoPlayerObject()
+  {
+    return this.videoPlayerObject;
+  }
+  
+  public boolean isBizReady()
+  {
+    return this.isBizReady;
+  }
+  
+  public boolean isIgnoreReport()
+  {
+    return this.videoEntity.isIgnoreReport;
+  }
+  
   public void setContentType(int paramInt)
   {
     this.contentType = paramInt;
@@ -115,6 +149,13 @@ public class VideoSession
     this.playStartTime = SystemClock.elapsedRealtime();
     this.playedTime = 0L;
     this.playType = paramInt2;
+  }
+  
+  public void updateVideoEntity(VideoBaseEntity paramVideoBaseEntity)
+  {
+    this.videoEntity = paramVideoBaseEntity;
+    this.customParamsMap.putAll(paramVideoBaseEntity.getVideoCustomParams());
+    this.contentType = paramVideoBaseEntity.getContentType();
   }
 }
 

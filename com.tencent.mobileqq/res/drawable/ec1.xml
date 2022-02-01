@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
-  xmlns:android="http://schemas.android.com/apk/res/android"> android:shape="rectangle"> <solid android:color="@android:color/transparent" />
-    <corners android:radius="12.0dip" />
-    <stroke android:width="1.0dip" android:color="@color/al3" />
-</shape>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true" android:drawable="@drawable/h9t" />
+    <item android:state_pressed="true" android:drawable="@drawable/h9t" />
+    <item android:drawable="@drawable/qfav_category_file" />
+</selector>

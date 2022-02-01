@@ -1,22 +1,21 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import botf;
-import bowz;
-import wjs;
+import com.tencent.biz.qqstory.model.SuperManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
 
-public class EditVideoDoodle$3
+class EditVideoDoodle$3
   implements Runnable
 {
-  public EditVideoDoodle$3(botf parambotf) {}
+  EditVideoDoodle$3(EditVideoDoodle paramEditVideoDoodle) {}
   
   public void run()
   {
-    ((bowz)wjs.a(39)).c();
+    ((DoodleEmojiManager)SuperManager.a(39)).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle.3
  * JD-Core Version:    0.7.0.1
  */

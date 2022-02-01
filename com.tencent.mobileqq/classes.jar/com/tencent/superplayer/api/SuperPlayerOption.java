@@ -1,6 +1,10 @@
 package com.tencent.superplayer.api;
 
+import com.tencent.superplayer.config.CacheContent;
+import com.tencent.superplayer.config.ConfigManager;
 import com.tencent.superplayer.utils.LogUtil;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,16 +17,38 @@ public class SuperPlayerOption
   public boolean enableAudioFrameOutput;
   public boolean enableCodecReuse;
   public Boolean enableDownloadProxy;
-  public boolean enableP2P = false;
   public boolean enableVideoFrameCheck;
   public boolean enableVideoFrameOutput;
+  public Map<String, String> httpHeader;
   public boolean isPrePlay;
   public long minBufferingPacketDurationMs;
   public long preloadPacketDurationMs;
+  private int sceneId;
+  public SuperPlayerDownOption superPlayerDownOption = SuperPlayerDownOption.obtain();
+  
+  private SuperPlayerOption(int paramInt)
+  {
+    this.sceneId = paramInt;
+    loadConfigFromConfigManager();
+  }
+  
+  private void loadConfigFromConfigManager()
+  {
+    if (ConfigManager.needLoadConfig(this.sceneId))
+    {
+      this.enableCodecReuse = ConfigManager.get().getConfig("codecReuse").getBoolean("video_codec_reuse_enable", this.enableCodecReuse);
+      this.enableVideoFrameCheck = ConfigManager.get().getConfig("codecReuse").getBoolean("video_frame_check_enable", this.enableVideoFrameCheck);
+    }
+  }
   
   public static SuperPlayerOption obtain()
   {
-    return new SuperPlayerOption();
+    return obtain(0);
+  }
+  
+  public static SuperPlayerOption obtain(int paramInt)
+  {
+    return new SuperPlayerOption(paramInt);
   }
   
   public String toJsonString()
@@ -38,7 +64,7 @@ public class SuperPlayerOption
       localJSONObject.put("preloadPacketDurationMs", this.preloadPacketDurationMs);
       localJSONObject.put("minBufferingPacketDurationMs", this.minBufferingPacketDurationMs);
       localJSONObject.put("audioFrameOutputOption", this.audioFrameOutputOption);
-      localJSONObject.put("enableP2P", this.enableP2P);
+      localJSONObject.put("superPlayerDownOption", this.superPlayerDownOption.toJsonString());
       return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
@@ -48,6 +74,21 @@ public class SuperPlayerOption
         LogUtil.e("SuperPlayerOption", "");
       }
     }
+  }
+  
+  public Map<String, String> toReportMap()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("isPrePlay", String.valueOf(this.isPrePlay));
+    localHashMap.put("enableCodecReuse", String.valueOf(this.enableCodecReuse));
+    localHashMap.put("accurateSeekOnOpen", String.valueOf(this.accurateSeekOnOpen));
+    localHashMap.put("enableVideoFrameCheck", String.valueOf(this.enableVideoFrameCheck));
+    localHashMap.put("bufferPacketMinTotalDurationMs", String.valueOf(this.bufferPacketMinTotalDurationMs));
+    localHashMap.put("preloadPacketDurationMs", String.valueOf(this.preloadPacketDurationMs));
+    localHashMap.put("minBufferingPacketDurationMs", String.valueOf(this.minBufferingPacketDurationMs));
+    localHashMap.put("audioFrameOutputOption", String.valueOf(this.audioFrameOutputOption));
+    localHashMap.putAll(this.superPlayerDownOption.toReportMap());
+    return localHashMap;
   }
   
   public String toString()
@@ -61,14 +102,15 @@ public class SuperPlayerOption
     localStringBuilder.append("preloadPacketDurationMs:").append(this.preloadPacketDurationMs).append("\n");
     localStringBuilder.append("minBufferingPacketDurationMs:").append(this.minBufferingPacketDurationMs).append("\n");
     localStringBuilder.append("audioFrameOutputOption:").append(this.audioFrameOutputOption).append("\n");
-    localStringBuilder.append("enableP2P:").append(this.enableP2P).append("\n");
+    localStringBuilder.append("httpHeader:").append(this.httpHeader).append("\n");
+    localStringBuilder.append("superPlayerDownOption").append(this.superPlayerDownOption).append("\n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerOption
  * JD-Core Version:    0.7.0.1
  */

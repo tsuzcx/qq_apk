@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
-import bgbv;
-import bgbz;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
-public class ImportantMsgManager$6
+class ImportantMsgManager$6
   implements Runnable
 {
-  public ImportantMsgManager$6(bgbv parambgbv, long paramLong, bgbz parambgbz) {}
+  ImportantMsgManager$6(ImportantMsgManager paramImportantMsgManager, long paramLong, ImportantMsgManager.callbackInMainThread paramcallbackInMainThread) {}
   
   public void run()
   {

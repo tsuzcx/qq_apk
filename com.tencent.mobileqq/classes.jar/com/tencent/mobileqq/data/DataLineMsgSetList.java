@@ -7,8 +7,8 @@ public class DataLineMsgSetList
   implements Iterable<DataLineMsgSet>
 {
   ArrayList<DataLineMsgSet> mList = new ArrayList();
-  private long nFirstId;
-  private long nLastId;
+  private long nFirstId = 0L;
+  private long nLastId = 0L;
   
   private void checkFirstLastIdByAddOrModify(DataLineMsgSet paramDataLineMsgSet)
   {
@@ -231,7 +231,7 @@ public class DataLineMsgSetList
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 22	com/tencent/mobileqq/data/DataLineMsgSetList:mList	Ljava/util/ArrayList;
+    //   3: getfield 26	com/tencent/mobileqq/data/DataLineMsgSetList:mList	Ljava/util/ArrayList;
     //   6: invokevirtual 43	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   9: astore_3
     //   10: aload_3
@@ -239,14 +239,14 @@ public class DataLineMsgSetList
     //   16: ifeq +41 -> 57
     //   19: aload_3
     //   20: invokeinterface 53 1 0
-    //   25: checkcast 29	com/tencent/mobileqq/data/DataLineMsgSet
+    //   25: checkcast 31	com/tencent/mobileqq/data/DataLineMsgSet
     //   28: astore 4
     //   30: aload 4
     //   32: aload_1
     //   33: invokevirtual 148	com/tencent/mobileqq/data/DataLineMsgSet:equals	(Ljava/lang/Object;)Z
     //   36: ifeq -26 -> 10
     //   39: aload_0
-    //   40: getfield 22	com/tencent/mobileqq/data/DataLineMsgSetList:mList	Ljava/util/ArrayList;
+    //   40: getfield 26	com/tencent/mobileqq/data/DataLineMsgSetList:mList	Ljava/util/ArrayList;
     //   43: aload 4
     //   45: invokevirtual 150	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
     //   48: istore_2
@@ -284,7 +284,7 @@ public class DataLineMsgSetList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DataLineMsgSetList
  * JD-Core Version:    0.7.0.1
  */

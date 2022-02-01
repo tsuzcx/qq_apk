@@ -12,6 +12,7 @@ public class TPDownloadProxyEnum
   public static final String DLPARAM_CURRENT_FORMATID = "dl_param_current_formatid";
   public static final String DLPARAM_DATA_TRANSFER_MODE = "dl_param_data_transfer_mode";
   public static final String DLPARAM_ENABLE_EXPAND_DOWNLOAD_URL = "dl_param_enable_expand_donwload_url";
+  public static final String DLPARAM_ENABLE_TEG_PCDN = "dl_param_enable_teg_pcdn";
   public static final String DLPARAM_EXPECT_DELAY_TIME = "dl_param_expect_delay_time";
   public static final String DLPARAM_FILE_DURATION = "dl_param_file_duration";
   public static final String DLPARAM_FILE_MD5 = "dl_param_file_md5";
@@ -36,6 +37,7 @@ public class TPDownloadProxyEnum
   public static final String DLPARAM_SOURCE_IS_CHARGE = "dl_param_source_is_charge";
   public static final String DLPARAM_URL_COOKIE = "dl_param_url_cookie";
   public static final String DLPARAM_URL_EXPIRE_TIME = "dl_param_url_expire_time";
+  public static final String DLPARAM_URL_HEADER = "dl_param_url_header";
   public static final String DLPARAM_URL_HOST = "dl_param_url_host";
   public static final String DLPARAM_VID = "dl_param_vid";
   public static final String DLPARAM_VINFO_BASE = "dl_param_vinfo_base";
@@ -53,6 +55,7 @@ public class TPDownloadProxyEnum
   public static final int DLTYPE_CAPTION_WEBVTT = 15;
   public static final int DLTYPE_CLIP_MP4_VOD = 2;
   public static final int DLTYPE_FILE_DOWNLOAD = 10;
+  public static final int DLTYPE_FILE_VOD_PROXYLOAD = 11;
   public static final int DLTYPE_FLV_LIVE = 12;
   public static final int DLTYPE_HLS_ADV = 7;
   public static final int DLTYPE_HLS_ADV_LOOP = 8;
@@ -69,6 +72,10 @@ public class TPDownloadProxyEnum
   public static final int DL_DATA_TRANSFER_MODE_AV = 1;
   public static final int DL_DATA_TRANSFER_MODE_DEFAULT = 0;
   public static final int DL_DATA_TRANSFER_MODE_FMP4_TO_TS = 2;
+  public static final String DL_PARAM_IS_ENABLE_QUIC = "dl_param_is_enable_quic";
+  public static final String DL_PARAM_IS_ENABLE_QUIC_CONNECTION_MIGRATION = "dl_param_is_enable_quic_connection_migration";
+  public static final String DL_PARAM_IS_ENABLE_QUIC_PLAINTEXT = "dl_param_is_enable_quic_plaintext";
+  public static final String DL_PARAM_QUIC_CONGESTION_TYPE = "dl_param_quic_congestion_type";
   public static final int DL_URL_TYPE_LOCAL_ABSOLUTE_URL_PRIORITY = 0;
   public static final int DL_URL_TYPE_LOCAL_PROXY_URL_CREATE_TASK = 2;
   public static final int DL_URL_TYPE_LOCAL_PROXY_URL_ONLY = 1;
@@ -133,7 +140,7 @@ public class TPDownloadProxyEnum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxyEnum
  * JD-Core Version:    0.7.0.1
  */

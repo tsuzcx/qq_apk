@@ -1,33 +1,14 @@
 package com.tencent.mobileqq.ark;
 
-import apzg;
+import com.tencent.ark.ark.PlayerStub;
+import com.tencent.ark.ark.PlayerStubFactory;
 
-public class ArkMediaPlayer$2
-  implements Runnable
+final class ArkMediaPlayer$2
+  implements ark.PlayerStubFactory
 {
-  public ArkMediaPlayer$2(apzg paramapzg) {}
-  
-  public void run()
+  public ark.PlayerStub CreateStub()
   {
-    if (apzg.a(this.this$0)) {
-      return;
-    }
-    apzg.a(this.this$0, true);
-    if (apzg.a(this.this$0) == apzg.b(this.this$0)) {
-      this.this$0.Play();
-    }
-    for (;;)
-    {
-      apzg.a(this.this$0, apzg.f(this.this$0));
-      return;
-      if (apzg.a(this.this$0) == apzg.c(this.this$0)) {
-        this.this$0.Stop();
-      } else if (apzg.a(this.this$0) == apzg.d(this.this$0)) {
-        this.this$0.Resume();
-      } else if (apzg.a(this.this$0) == apzg.e(this.this$0)) {
-        this.this$0.Pause();
-      }
-    }
+    return new ArkMediaPlayer();
   }
 }
 

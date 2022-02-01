@@ -2,67 +2,64 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.app.Activity;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportConstants.VideoEndType;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
+import com.tencent.biz.pubaccount.QualityReporter;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJStatisticCollectorReport;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import ois;
-import olv;
-import pkh;
-import pqe;
-import rqa;
-import spg;
-import spk;
-import spn;
-import ufy;
-import uks;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyVideoReportData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
 
-public class VideoPlayManager$5
+class VideoPlayManager$5
   implements Runnable
 {
-  public VideoPlayManager$5(spg paramspg, int paramInt1, int paramInt2, String paramString, spn paramspn) {}
+  VideoPlayManager$5(VideoPlayManager paramVideoPlayManager, int paramInt1, int paramInt2, String paramString, VideoPlayerWrapper paramVideoPlayerWrapper) {}
   
   public void run()
   {
-    if (spg.a(this.this$0) != null)
+    if (VideoPlayManager.a(this.this$0) != null)
     {
       int i = this.jdField_a_of_type_Int;
       int j = this.b;
-      spg.a(this.this$0, spg.a(this.this$0), spg.a(this.this$0), 6, new int[] { i, j });
-      spg.a(this.this$0).jdField_a_of_type_Rqa.jdField_c_of_type_JavaLangString = (this.jdField_a_of_type_Int + ":" + this.b);
-      spg.a(this.this$0).jdField_a_of_type_Rqa.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      spg.a(this.this$0).jdField_a_of_type_Rqa.jdField_a_of_type_Long = 0L;
-      spg.a(this.this$0).jdField_a_of_type_Rqa.jdField_a_of_type_Boolean = false;
-      spg.a(this.this$0).jdField_a_of_type_Rqa.n = this.jdField_a_of_type_Spn.c();
-      spg.a(this.this$0).jdField_a_of_type_Rqa.f = this.jdField_a_of_type_Spn.e();
-      spg.a(this.this$0).jdField_a_of_type_Rqa.g = this.jdField_a_of_type_Spn.f();
-      spg.a(this.this$0).jdField_a_of_type_Rqa.jdField_c_of_type_Boolean = this.jdField_a_of_type_Spn.jdField_b_of_type_Boolean;
-      spg.a(this.this$0).jdField_a_of_type_Rqa.q = this.jdField_a_of_type_Spn.jdField_b_of_type_Long;
-      spg.a(this.this$0).jdField_a_of_type_Rqa.p = this.jdField_a_of_type_Spn.jdField_a_of_type_Long;
-      spg.a(this.this$0).jdField_a_of_type_Rqa.r = this.jdField_a_of_type_Spn.g();
-      spg.a(this.this$0).jdField_a_of_type_Rqa.l = this.jdField_a_of_type_Spn.p();
-      spg.a(this.this$0, spg.a(this.this$0));
-      this.jdField_a_of_type_Spn.a(spg.a(this.this$0).jdField_a_of_type_Rqa.b());
-      pqe.a(spg.a(this.this$0).getApplicationContext(), pkh.a(), false, spg.a(this.this$0).jdField_a_of_type_Rqa.a());
-      olv.a(spg.a(this.this$0).jdField_a_of_type_Rqa);
-      pqe.a(false, spg.a(this.this$0).jdField_a_of_type_Rqa.jdField_d_of_type_Boolean, spg.a(this.this$0).jdField_a_of_type_Rqa.g, spg.a(this.this$0).jdField_a_of_type_Rqa.jdField_a_of_type_Int, spg.a(this.this$0).jdField_a_of_type_Rqa.jdField_d_of_type_Long, 56, spg.a(this.this$0).jdField_a_of_type_Rqa.jdField_c_of_type_JavaLangString, spg.a(this.this$0).jdField_a_of_type_Rqa.jdField_a_of_type_JavaLangString);
-      BaseArticleInfo localBaseArticleInfo = spg.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-      if ((localBaseArticleInfo != null) && (uks.a((int)localBaseArticleInfo.mChannelID)) && (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo)) && (spg.a(this.this$0).jdField_b_of_type_Boolean))
+      VideoPlayManager.a(this.this$0, VideoPlayManager.a(this.this$0), VideoPlayManager.a(this.this$0), 6, new int[] { i, j });
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_c_of_type_JavaLangString = (this.jdField_a_of_type_Int + ":" + this.b);
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_a_of_type_Long = 0L;
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_a_of_type_Boolean = false;
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.n = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.c();
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.g = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.e();
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.h = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.f();
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_c_of_type_Boolean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.jdField_b_of_type_Boolean;
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.q = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.jdField_b_of_type_Long;
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.p = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.jdField_a_of_type_Long;
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.r = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.g();
+      VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.l = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.p();
+      VideoPlayManager.a(this.this$0, VideoPlayManager.a(this.this$0));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a(VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.b());
+      RIJStatisticCollectorReport.a(VideoPlayManager.a(this.this$0).getApplicationContext(), ReadInJoyUtils.a(), false, VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.a());
+      QualityReporter.a(VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData);
+      RIJStatisticCollectorReport.a(false, VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_d_of_type_Boolean, VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.h, VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_a_of_type_Int, VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_d_of_type_Long, 56, VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_c_of_type_JavaLangString, VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_a_of_type_JavaLangString);
+      BaseArticleInfo localBaseArticleInfo = VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+      if ((localBaseArticleInfo != null) && (ReadInJoyAdUtils.a((int)localBaseArticleInfo.mChannelID)) && (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo)) && (VideoPlayManager.a(this.this$0).jdField_b_of_type_Boolean))
       {
-        i = (int)spg.a(this.this$0).a(true);
-        ois.a(new ufy().a(spg.a(this.this$0)).a(6).b(11).a((AdvertisementInfo)localBaseArticleInfo).a(ois.a(0, i, 0, 0, 0, 0, localBaseArticleInfo.mVideoDuration * 1000, 1, 2, 0, ReportConstants.VideoEndType.OTHER)).a());
+        i = (int)VideoPlayManager.a(this.this$0).a(true);
+        NativeAdUtils.a(new AdReportData().a(VideoPlayManager.a(this.this$0)).a(6).b(11).a((AdvertisementInfo)localBaseArticleInfo).a(NativeAdUtils.a(0, i, 0, 0, 0, 0, localBaseArticleInfo.mVideoDuration * 1000, 1, 2, 0, ReportConstants.VideoEndType.OTHER)));
       }
-      localBaseArticleInfo = spg.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+      localBaseArticleInfo = VideoPlayManager.a(this.this$0).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
       if ((localBaseArticleInfo != null) && (localBaseArticleInfo.mChannelID == 56L) && (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo))) {
-        ois.a(new ufy().a(spg.a(this.this$0)).a(6).b(4).a((AdvertisementInfo)localBaseArticleInfo).a(ois.a(0, 0, 0, 0, 0, 0, localBaseArticleInfo.mVideoDuration * 1000, 9, 2, 0, ReportConstants.VideoEndType.OTHER)).a());
+        NativeAdUtils.a(new AdReportData().a(VideoPlayManager.a(this.this$0)).a(6).b(4).a((AdvertisementInfo)localBaseArticleInfo).a(NativeAdUtils.a(0, 0, 0, 0, 0, 0, localBaseArticleInfo.mVideoDuration * 1000, 9, 2, 0, ReportConstants.VideoEndType.OTHER)));
       }
     }
-    spg.a(this.this$0, null);
-    spg.a(this.this$0, null);
-    this.jdField_a_of_type_Spn.l();
+    VideoPlayManager.a(this.this$0, null);
+    VideoPlayManager.a(this.this$0, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.5
  * JD-Core Version:    0.7.0.1
  */

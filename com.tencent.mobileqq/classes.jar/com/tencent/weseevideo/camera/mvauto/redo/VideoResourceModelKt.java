@@ -141,24 +141,9 @@ public final class VideoResourceModelKt
   @NotNull
   public final VideoResourceModel convert()
   {
-    VideoResourceModel localVideoResourceModel = new VideoResourceModel();
-    localVideoResourceModel.setPath(this.path);
-    localVideoResourceModel.setType(this.type);
-    localVideoResourceModel.setScaleDuration(this.scaleDuration);
-    localVideoResourceModel.setSourceTimeStart(this.sourceTimeStart);
-    localVideoResourceModel.setSourceTimeDuration(this.sourceTimeDuration);
-    localVideoResourceModel.setSourceTimeStartUs(this.sourceTimeStartUs);
-    localVideoResourceModel.setSourceTimeDurationUs(this.sourceTimeDurationUs);
-    localVideoResourceModel.setSelectTimeStart(this.selectTimeStart);
-    localVideoResourceModel.setSelectTimeDuration(this.selectTimeDuration);
-    localVideoResourceModel.setSelectTimeStartUs(this.selectTimeStartUs);
-    localVideoResourceModel.setSelectTimeDurationUs(this.selectTimeDurationUs);
-    localVideoResourceModel.setCutTimeStart(this.cutTimeStart);
-    localVideoResourceModel.setCutTimeDuration(this.cutTimeDuration);
-    localVideoResourceModel.setWidth(this.width);
-    localVideoResourceModel.setHeight(this.height);
-    localVideoResourceModel.setRotate(this.rotate);
-    return localVideoResourceModel;
+    String str = this.path;
+    int i = this.type;
+    return new VideoResourceModel(str, this.scaleDuration, i, this.sourceTimeStartUs, this.sourceTimeDurationUs, this.selectTimeStartUs, this.selectTimeDurationUs, this.cutTimeStart, this.cutTimeDuration, this.width, this.height, this.rotate, null, 4096, null);
   }
   
   @NotNull
@@ -315,7 +300,7 @@ public final class VideoResourceModelKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt
  * JD-Core Version:    0.7.0.1
  */

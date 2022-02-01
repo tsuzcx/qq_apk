@@ -8,7 +8,7 @@ public final class ChangeFriendNameReq
   extends JceStruct
 {
   public String cstrName = "";
-  public long uFriendUin;
+  public long uFriendUin = 0L;
   
   public ChangeFriendNameReq() {}
   

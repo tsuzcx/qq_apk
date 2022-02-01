@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:interpolator="@android:anim/decelerate_interpolator" android:duration="@android:integer/config_mediumAnimTime" android:shareInterpolator="true"
+<set android:shareInterpolator="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <translate android:fromYDelta="-100.0%" android:toYDelta="0.0" />
-    <alpha android:fromAlpha="0.0" android:toAlpha="1.0" />
+    <alpha android:interpolator="@android:anim/linear_interpolator" android:duration="50" android:fillBefore="true" android:fillAfter="true" android:startOffset="35" android:fromAlpha="0.0" android:toAlpha="1.0" android:fillEnabled="true" />
+    <scale android:interpolator="@anim/j5" android:duration="300" android:pivotX="50.0%" android:pivotY="50.0%" android:fillBefore="true" android:fillAfter="true" android:fromXScale="0.85" android:toXScale="1.0" android:fromYScale="0.85" android:toYScale="1.0" android:fillEnabled="true" />
 </set>

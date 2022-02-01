@@ -10,7 +10,7 @@ public final class stPostCommentReplyV2Req
   static stSimpleMetaReply cache_reply = new stSimpleMetaReply();
   public String commentId = "";
   public String feed_id = "";
-  public stSimpleMetaReply reply;
+  public stSimpleMetaReply reply = null;
   
   public stPostCommentReplyV2Req() {}
   

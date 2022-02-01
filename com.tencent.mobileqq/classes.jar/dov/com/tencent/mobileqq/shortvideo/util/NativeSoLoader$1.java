@@ -1,23 +1,22 @@
 package dov.com.tencent.mobileqq.shortvideo.util;
 
-import bptk;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class NativeSoLoader$1
+final class NativeSoLoader$1
   implements Runnable
 {
   public void run()
   {
-    if (!bptk.a().get())
+    if (!NativeSoLoader.a().get())
     {
-      boolean bool = bptk.a("TKGLRenderer");
-      bptk.a().getAndSet(bool);
+      boolean bool = NativeSoLoader.a("TKGLRenderer");
+      NativeSoLoader.a().getAndSet(bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.NativeSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
 package com.tencent.biz.qrcode.util;
 
-import znl;
-
-public final class QRUtils$2
+final class QRUtils$2
   implements Runnable
 {
-  public QRUtils$2(int paramInt1, int paramInt2) {}
+  QRUtils$2(int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    znl.a(this.a, this.b);
+    QRUtils.a(this.a, this.b);
   }
 }
 

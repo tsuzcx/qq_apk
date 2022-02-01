@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import azcb;
-
 class OnlineStatusPermissionManager$1$1
   implements Runnable
 {
@@ -9,7 +7,7 @@ class OnlineStatusPermissionManager$1$1
   
   public void run()
   {
-    azcb.a(this.a.this$0);
+    OnlineStatusPermissionManager.a(this.a.this$0);
   }
 }
 

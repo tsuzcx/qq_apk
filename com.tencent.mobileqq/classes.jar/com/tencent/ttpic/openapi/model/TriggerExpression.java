@@ -9,7 +9,6 @@ import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.manager.TouchTriggerManager;
 import com.tencent.ttpic.openapi.manager.TriggerStateManager;
 import com.tencent.ttpic.openapi.util.TriggerUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -46,12 +45,12 @@ public class TriggerExpression
       localObject2 = ((PTDetectInfo)localObject1).triggeredExpression;
       localList = ((PTDetectInfo)localObject1).bodyPoints;
       localAIAttr = ((PTDetectInfo)localObject1).aiAttr;
-      if ((!VideoMaterialUtil.isFaceTriggerType(this.mTriggerType)) && (!VideoMaterialUtil.isCatTriggerType(this.mTriggerType))) {
+      if ((!VideoMaterial.isFaceTriggerType(this.mTriggerType)) && (!VideoMaterial.isCatTriggerType(this.mTriggerType))) {
         break;
       }
     } while (localObject2 == null);
     return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
-    if (VideoMaterialUtil.isGestureTriggerType(this.mTriggerType))
+    if (VideoMaterial.isGestureTriggerType(this.mTriggerType))
     {
       localObject2 = (PTHandAttr)localAIAttr.getAvailableData(AEDetectorType.HAND.value);
       if (localObject2 == null) {
@@ -69,13 +68,13 @@ public class TriggerExpression
         return true;
       }
       return bool;
-      if (VideoMaterialUtil.isAudioTextTriggerType(this.mTriggerType)) {
+      if (VideoMaterial.isAudioTextTriggerType(this.mTriggerType)) {
         return true;
       }
-      if (VideoMaterialUtil.isAllFreezeFrameTriggerType(this.mTriggerType)) {
+      if (VideoMaterial.isAllFreezeFrameTriggerType(this.mTriggerType)) {
         return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
       }
-      if (VideoMaterialUtil.isTouchTriggerType(this.mTriggerType))
+      if (VideoMaterial.isTouchTriggerType(this.mTriggerType))
       {
         if (this.triggerArea != null)
         {
@@ -84,7 +83,7 @@ public class TriggerExpression
         }
         return ((Set)localObject2).contains(Integer.valueOf(this.mTriggerType));
       }
-      if (VideoMaterialUtil.isBodyDetectType(this.mTriggerType))
+      if (VideoMaterial.isBodyDetectType(this.mTriggerType))
       {
         if ((localList != null) && (!localList.isEmpty())) {}
         for (;;)
@@ -93,7 +92,7 @@ public class TriggerExpression
           bool = false;
         }
       }
-      if ((!VideoMaterialUtil.isExternalWordsTriggerType(this.mTriggerType)) || (localAIAttr == null)) {
+      if ((!VideoMaterial.isExternalWordsTriggerType(this.mTriggerType)) || (localAIAttr == null)) {
         break;
       }
       localObject1 = (List)localAIAttr.getRealtimeData(AEDetectorType.VOICE_RECOGNIZE.value);
@@ -107,7 +106,7 @@ public class TriggerExpression
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.TriggerExpression
  * JD-Core Version:    0.7.0.1
  */

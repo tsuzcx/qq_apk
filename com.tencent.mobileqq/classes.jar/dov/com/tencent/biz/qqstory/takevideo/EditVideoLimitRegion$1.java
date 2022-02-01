@@ -3,29 +3,29 @@ package dov.com.tencent.biz.qqstory.takevideo;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.util.MQLruCache;
-import bddh;
-import bheg;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.StoryGuideLineView;
 import mqq.os.MqqHandler;
 
-public final class EditVideoLimitRegion$1
+final class EditVideoLimitRegion$1
   implements Runnable
 {
-  public EditVideoLimitRegion$1(StoryGuideLineView paramStoryGuideLineView) {}
+  EditVideoLimitRegion$1(StoryGuideLineView paramStoryGuideLineView) {}
   
   public void run()
   {
-    Object localObject1 = bddh.a().a("CMD_GET_CURRENT_NICK_NAME", null);
+    Object localObject1 = VideoPlayIPCClient.a().a("CMD_GET_CURRENT_NICK_NAME", null);
     if (localObject1 == null) {
       localObject1 = "";
     }
     for (;;)
     {
-      Object localObject2 = bddh.a().a("CMD_GET_CURRENT_USER_HEAD", null);
+      Object localObject2 = VideoPlayIPCClient.a().a("CMD_GET_CURRENT_USER_HEAD", null);
       if (localObject2 == null) {
         localObject2 = "";
       }
@@ -34,8 +34,8 @@ public final class EditVideoLimitRegion$1
         for (;;)
         {
           localObject2 = SafeBitmapFactory.decodeFile((String)localObject2);
-          Bitmap localBitmap = bheg.c((Bitmap)localObject2, 50, 50);
-          BaseApplicationImpl.sImageCache.put("story_user_avatar", localBitmap);
+          Bitmap localBitmap = ImageUtil.c((Bitmap)localObject2, 50, 50);
+          GlobalImageCache.a.put("story_user_avatar", localBitmap);
           ((Bitmap)localObject2).recycle();
           ThreadManager.getUIHandler().post(new EditVideoLimitRegion.1.1(this, (String)localObject1, localBitmap));
           return;
@@ -54,7 +54,7 @@ public final class EditVideoLimitRegion$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoLimitRegion.1
  * JD-Core Version:    0.7.0.1
  */

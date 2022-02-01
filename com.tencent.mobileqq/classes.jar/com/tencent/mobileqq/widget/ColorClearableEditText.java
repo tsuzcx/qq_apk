@@ -19,10 +19,8 @@ import android.text.Spannable;
 import android.text.TextPaint;
 import android.text.style.CharacterStyle;
 import android.util.AttributeSet;
-import bhta;
-import bimv;
-import bimw;
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.text.style.EmoticonSpan;
+import com.tencent.mobileqq.vas.troopnick.TroopNickNameHelper;
 import com.tencent.mobileqq.vas.troopnick.TroopNickResDrawable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,11 +29,11 @@ import java.util.List;
 public class ColorClearableEditText
   extends ClearableEditText
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private bimw jdField_a_of_type_Bimw = new bimw();
-  private ArrayList<bimv> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ColorClearableEditText.SpanComparator jdField_a_of_type_ComTencentMobileqqWidgetColorClearableEditText$SpanComparator = new ColorClearableEditText.SpanComparator();
+  private ArrayList<ColorClearableEditText.Paragraph> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private float[] jdField_a_of_type_ArrayOfFloat;
   private int[] jdField_a_of_type_ArrayOfInt;
   private int jdField_b_of_type_Int;
@@ -81,38 +79,38 @@ public class ColorClearableEditText
     float f = 0.0F;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject = (bimv)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      switch (((bimv)localObject).jdField_c_of_type_Int)
+      Object localObject = (ColorClearableEditText.Paragraph)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      switch (((ColorClearableEditText.Paragraph)localObject).jdField_c_of_type_Int)
       {
       }
       for (;;)
       {
         i += 1;
         break;
-        localPointF.x += getPaint().measureText(((bimv)localObject).jdField_a_of_type_JavaLangString);
-        getPaint().getTextBounds(((bimv)localObject).jdField_a_of_type_JavaLangString, 0, ((bimv)localObject).jdField_a_of_type_JavaLangString.length(), localRect);
+        localPointF.x += getPaint().measureText(((ColorClearableEditText.Paragraph)localObject).jdField_a_of_type_JavaLangString);
+        getPaint().getTextBounds(((ColorClearableEditText.Paragraph)localObject).jdField_a_of_type_JavaLangString, 0, ((ColorClearableEditText.Paragraph)localObject).jdField_a_of_type_JavaLangString.length(), localRect);
         f = Math.max(f, localRect.height());
         continue;
-        localObject = (QQText.EmoticonSpan)((bimv)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        localPointF.x += ((QQText.EmoticonSpan)localObject).getDrawable().getBounds().width();
-        f = Math.max(f, ((QQText.EmoticonSpan)localObject).getDrawable().getBounds().height());
+        localObject = (EmoticonSpan)((ColorClearableEditText.Paragraph)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        localPointF.x += ((EmoticonSpan)localObject).getDrawable().getBounds().width();
+        f = Math.max(f, ((EmoticonSpan)localObject).getDrawable().getBounds().height());
       }
     }
     localPointF.y = f;
     return localPointF;
   }
   
-  public static void a(List<bimv> paramList, bimw parambimw, Spannable paramSpannable)
+  public static void a(List<ColorClearableEditText.Paragraph> paramList, ColorClearableEditText.SpanComparator paramSpanComparator, Spannable paramSpannable)
   {
     paramList.clear();
     CharacterStyle[] arrayOfCharacterStyle = (CharacterStyle[])paramSpannable.getSpans(0, paramSpannable.length(), CharacterStyle.class);
     if (arrayOfCharacterStyle.length == 0)
     {
-      paramList.add(new bimv(1, 0, paramSpannable.length(), paramSpannable.toString(), null));
+      paramList.add(new ColorClearableEditText.Paragraph(1, 0, paramSpannable.length(), paramSpannable.toString(), null));
       return;
     }
-    parambimw.a(paramSpannable);
-    Arrays.sort(arrayOfCharacterStyle, parambimw);
+    paramSpanComparator.a(paramSpannable);
+    Arrays.sort(arrayOfCharacterStyle, paramSpanComparator);
     int j = 0;
     int i = 0;
     label76:
@@ -123,21 +121,21 @@ public class ColorClearableEditText
       m = paramSpannable.getSpanStart(arrayOfCharacterStyle[i]);
       k = paramSpannable.getSpanEnd(arrayOfCharacterStyle[i]);
       if (m > j) {
-        paramList.add(new bimv(1, j, m, paramSpannable.subSequence(j, m).toString(), null));
+        paramList.add(new ColorClearableEditText.Paragraph(1, j, m, paramSpannable.subSequence(j, m).toString(), null));
       }
-      parambimw = paramSpannable.subSequence(m, k).toString();
-      if (!(arrayOfCharacterStyle[i] instanceof QQText.EmoticonSpan)) {
+      paramSpanComparator = paramSpannable.subSequence(m, k).toString();
+      if (!(arrayOfCharacterStyle[i] instanceof EmoticonSpan)) {
         break label279;
       }
     }
     label279:
     for (j = 2;; j = 3)
     {
-      paramList.add(new bimv(j, m, k, parambimw, arrayOfCharacterStyle[i]));
+      paramList.add(new ColorClearableEditText.Paragraph(j, m, k, paramSpanComparator, arrayOfCharacterStyle[i]));
       if ((i == arrayOfCharacterStyle.length - 1) && (k < paramSpannable.length()))
       {
-        parambimw = paramSpannable.subSequence(k, paramSpannable.length()).toString();
-        paramList.add(new bimv(1, k, paramSpannable.length(), parambimw, null));
+        paramSpanComparator = paramSpannable.subSequence(k, paramSpannable.length()).toString();
+        paramList.add(new ColorClearableEditText.Paragraph(1, k, paramSpannable.length(), paramSpanComparator, null));
       }
       i += 1;
       j = k;
@@ -151,14 +149,14 @@ public class ColorClearableEditText
     return this.jdField_c_of_type_Int;
   }
   
-  public ArrayList<bimv> a()
+  public ArrayList<ColorClearableEditText.Paragraph> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
   public void a()
   {
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bimw, getText());
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqWidgetColorClearableEditText$SpanComparator, getText());
   }
   
   public void b()
@@ -187,7 +185,7 @@ public class ColorClearableEditText
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     Object localObject;
     float f3;
@@ -196,10 +194,10 @@ public class ColorClearableEditText
     Paint localPaint;
     int i;
     int j;
-    bimv localbimv;
+    ColorClearableEditText.Paragraph localParagraph;
     if (this.jdField_a_of_type_Int != 0)
     {
-      a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bimw, getText());
+      a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqWidgetColorClearableEditText$SpanComparator, getText());
       localObject = a();
       f3 = ((PointF)localObject).x;
       f6 = ((PointF)localObject).y;
@@ -218,8 +216,8 @@ public class ColorClearableEditText
         j = 0;
         while (j < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          localbimv = (bimv)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-          switch (localbimv.jdField_c_of_type_Int)
+          localParagraph = (ColorClearableEditText.Paragraph)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+          switch (localParagraph.jdField_c_of_type_Int)
           {
           default: 
             j += 1;
@@ -229,7 +227,7 @@ public class ColorClearableEditText
             if (i != 0) {
               break label1104;
             }
-            getPaint().getTextBounds(localbimv.jdField_a_of_type_JavaLangString, 0, localbimv.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
+            getPaint().getTextBounds(localParagraph.jdField_a_of_type_JavaLangString, 0, localParagraph.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
             i = this.jdField_a_of_type_AndroidGraphicsRect.height();
           }
         }
@@ -244,9 +242,9 @@ public class ColorClearableEditText
     {
       int k = 0;
       float f2;
-      if (k < localbimv.jdField_a_of_type_JavaLangString.length())
+      if (k < localParagraph.jdField_a_of_type_JavaLangString.length())
       {
-        float f7 = getPaint().measureText(localbimv.jdField_a_of_type_JavaLangString, k, k + 1);
+        float f7 = getPaint().measureText(localParagraph.jdField_a_of_type_JavaLangString, k, k + 1);
         if (this.jdField_b_of_type_Int == 1)
         {
           f2 = f1;
@@ -279,7 +277,7 @@ public class ColorClearableEditText
         }
       }
       break label196;
-      f1 += ((QQText.EmoticonSpan)localbimv.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
+      f1 += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
       break label196;
       localObject = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
       getPaint().setShader((Shader)localObject);
@@ -325,8 +323,8 @@ public class ColorClearableEditText
       j = 0;
       if (j < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        localbimv = (bimv)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-        switch (localbimv.jdField_c_of_type_Int)
+        localParagraph = (ColorClearableEditText.Paragraph)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        switch (localParagraph.jdField_c_of_type_Int)
         {
         }
         for (;;)
@@ -334,9 +332,9 @@ public class ColorClearableEditText
           j += 1;
           break;
           k = 0;
-          while (k < localbimv.jdField_a_of_type_JavaLangString.length())
+          while (k < localParagraph.jdField_a_of_type_JavaLangString.length())
           {
-            f2 = getPaint().measureText(localbimv.jdField_a_of_type_JavaLangString, k, k + 1);
+            f2 = getPaint().measureText(localParagraph.jdField_a_of_type_JavaLangString, k, k + 1);
             localPaint.setColor(this.jdField_a_of_type_ArrayOfInt[(i % this.jdField_a_of_type_ArrayOfInt.length)]);
             localPaint.setStyle(Paint.Style.FILL);
             ((Canvas)localObject).drawRect(f1, 0.0F, f1 + f2, f6, localPaint);
@@ -345,7 +343,7 @@ public class ColorClearableEditText
             f1 += f2;
           }
           continue;
-          f1 += ((QQText.EmoticonSpan)localbimv.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
+          f1 += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
         }
       }
       localObject = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
@@ -385,7 +383,7 @@ public class ColorClearableEditText
   public void setCustomCloth(int paramInt, boolean paramBoolean)
   {
     this.jdField_c_of_type_Int = paramInt;
-    bhta.a(this, getContext(), paramInt, paramBoolean);
+    TroopNickNameHelper.a(this, getContext(), paramInt, paramBoolean);
     b();
   }
   
@@ -408,7 +406,7 @@ public class ColorClearableEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ColorClearableEditText
  * JD-Core Version:    0.7.0.1
  */

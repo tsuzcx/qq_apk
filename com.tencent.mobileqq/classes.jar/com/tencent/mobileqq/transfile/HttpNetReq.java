@@ -6,19 +6,19 @@ public class HttpNetReq
   public static final int HTTP_GET = 0;
   public static final int HTTP_POST = 1;
   public HttpNetReq.IFlowDecoder decoder;
-  public boolean mHaveIpConnect;
+  public boolean mHaveIpConnect = false;
   public String mHostForHttpsVerify;
   public int mHttpMethod = 0;
   public boolean mIsHostIP;
   public boolean mIsHttps;
   public boolean mIsPreStructPic;
   public boolean mIsSync;
-  public boolean mNeedIpConnect;
-  public boolean mNeedNotReferer;
-  public boolean mNeedRedirectCallback;
+  public boolean mNeedIpConnect = false;
+  public boolean mNeedNotReferer = false;
+  public boolean mNeedRedirectCallback = false;
   public String mReqUrl;
-  public RichMediaStrategy.OldEngineDPCProfile.TimeoutParam mTimeoutParam;
-  public boolean mUseCmwapConnectionTypeFromDpc;
+  public TimeoutParam mTimeoutParam;
+  public boolean mUseCmwapConnectionTypeFromDpc = false;
   public String[] mWhiteListContentType;
 }
 

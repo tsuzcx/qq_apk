@@ -8,7 +8,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class AvGameNotify$NotifyPKUserEnterRoom
   extends MessageMicro<NotifyPKUserEnterRoom>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "roomid" }, new Object[] { Long.valueOf(0L) }, NotifyPKUserEnterRoom.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "roomid", "peer_uin" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L) }, NotifyPKUserEnterRoom.class);
+  public final PBUInt64Field peer_uin = PBField.initUInt64(0L);
   public final PBUInt64Field roomid = PBField.initUInt64(0L);
 }
 

@@ -9,7 +9,7 @@ public final class stWeishiReportReq
   extends JceStruct
 {
   static ArrayList<stReportItem> cache_report_list = new ArrayList();
-  public ArrayList<stReportItem> report_list;
+  public ArrayList<stReportItem> report_list = null;
   
   static
   {

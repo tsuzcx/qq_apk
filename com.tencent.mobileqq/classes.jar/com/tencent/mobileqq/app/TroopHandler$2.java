@@ -1,21 +1,42 @@
 package com.tencent.mobileqq.app;
 
-import aoep;
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
+import com.tencent.qphone.base.util.QLog;
 
-public class TroopHandler$2
-  implements Runnable
+class TroopHandler$2
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public TroopHandler$2(aoep paramaoep, String paramString, long paramLong, TroopInfo paramTroopInfo) {}
+  TroopHandler$2(TroopHandler paramTroopHandler) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    aoep.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
+    if (paramInt == 0)
+    {
+      paramBundle = new oidb_0x496.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        TroopHandler.a(this.a, paramBundle);
+        TroopHandler.b(this.a, paramBundle);
+        TroopHandler.c(this.a, paramBundle);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
+        return;
+      }
+    }
+    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopHandler.2
  * JD-Core Version:    0.7.0.1
  */

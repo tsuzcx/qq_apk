@@ -3,27 +3,25 @@ package com.tencent.mobileqq.camera.adapter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.hardware.Camera;
-import aqmv;
-import aqmw;
 import com.tencent.qphone.base.util.QLog;
 
-public class CameraWrapper$1
+class CameraWrapper$1
   implements Runnable
 {
-  public CameraWrapper$1(aqmw paramaqmw, SharedPreferences paramSharedPreferences) {}
+  CameraWrapper$1(CameraWrapper paramCameraWrapper, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
     int i = Camera.getNumberOfCameras();
-    aqmv.a().c();
-    if ((aqmv.a().d) || (aqmv.a().e))
+    CameraAttrs.a().c();
+    if ((CameraAttrs.a().d) || (CameraAttrs.a().e))
     {
-      QLog.d("Q.camera.CameraWrapper", 1, new Object[] { "getNumberOfCameras, readCamNumException:", Boolean.valueOf(aqmv.a().d) });
+      QLog.d("Q.camera.CameraWrapper", 1, new Object[] { "getNumberOfCameras, readCamNumException:", Boolean.valueOf(CameraAttrs.a().d) });
       i = 1;
     }
-    aqmw.a(i);
+    CameraWrapper.a(i);
     this.a.edit().putInt("localsp_camera_num", i).commit();
-    QLog.d("Q.camera.CameraWrapper", 1, new Object[] { "getNumberOfCameras init, return ", Integer.valueOf(aqmw.c()) });
+    QLog.d("Q.camera.CameraWrapper", 1, new Object[] { "getNumberOfCameras init, return ", Integer.valueOf(CameraWrapper.c()) });
   }
 }
 

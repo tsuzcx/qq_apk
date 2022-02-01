@@ -10,23 +10,23 @@ public final class StreamInfo
   static int cache_type = 0;
   static byte[] cache_vPbData = (byte[])new byte[1];
   public String fileKey = "";
-  public int iMsgId;
-  public int iSendTime;
-  public long lFromUIN;
-  public long lToUIN;
-  public int msgSeq;
-  public long msgTime;
+  public int iMsgId = 0;
+  public int iSendTime = 0;
+  public long lFromUIN = 0L;
+  public long lToUIN = 0L;
+  public int msgSeq = 0;
+  public long msgTime = 0L;
   public long netType = 255L;
-  public short oprType;
-  public long pttFormat;
-  public long pttTime;
-  public byte pttTransFlag;
-  public long random;
-  public short shFlowLayer;
-  public short shPackNum;
-  public long subBubbleId;
-  public int type;
-  public byte[] vPbData;
+  public short oprType = 0;
+  public long pttFormat = 0L;
+  public long pttTime = 0L;
+  public byte pttTransFlag = 0;
+  public long random = 0L;
+  public short shFlowLayer = 0;
+  public short shPackNum = 0;
+  public long subBubbleId = 0L;
+  public int type = 0;
+  public byte[] vPbData = null;
   
   static
   {

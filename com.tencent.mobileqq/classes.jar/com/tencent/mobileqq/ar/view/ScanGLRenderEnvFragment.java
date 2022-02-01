@@ -4,18 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import apdk;
-import apdv;
-import apdx;
-import apoz;
 import com.tencent.mobileqq.ar.ARArguments;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderUtils;
+import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
+import com.tencent.mobileqq.ar.model.UniformGLRenderManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class ScanGLRenderEnvFragment
   extends ScanGLRenderBaseFragment
 {
-  private apdx a;
+  private VideoRecordController a;
   
   public static ScanGLRenderEnvFragment a(ARArguments paramARArguments)
   {
@@ -28,35 +28,35 @@ public class ScanGLRenderEnvFragment
   
   private void c()
   {
-    boolean bool = apdv.a();
+    boolean bool = VideoEncoderUtils.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("initVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      if (this.jdField_a_of_type_Apdx == null)
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController == null)
       {
-        this.jdField_a_of_type_Apdx = new apdx(getActivity());
-        apdk.a().a(this.jdField_a_of_type_Apdx);
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = new VideoRecordController(getActivity());
+        ARVideoRecordUIControllerImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
-      apoz localapoz = this.jdField_a_of_type_Apoz;
-      if (localapoz != null) {
-        localapoz.a(this.jdField_a_of_type_Apdx);
+      UniformGLRenderManager localUniformGLRenderManager = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+      if (localUniformGLRenderManager != null) {
+        localUniformGLRenderManager.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
     }
   }
   
   private void d()
   {
-    boolean bool = apdv.a();
+    boolean bool = VideoEncoderUtils.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("unInitVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      apoz localapoz = this.jdField_a_of_type_Apoz;
-      if (localapoz != null) {
-        localapoz.a(null);
+      UniformGLRenderManager localUniformGLRenderManager = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+      if (localUniformGLRenderManager != null) {
+        localUniformGLRenderManager.a(null);
       }
-      apdk.a().b(this.jdField_a_of_type_Apdx);
-      if (this.jdField_a_of_type_Apdx != null) {
-        this.jdField_a_of_type_Apdx = null;
+      ARVideoRecordUIControllerImpl.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) {
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = null;
       }
     }
   }

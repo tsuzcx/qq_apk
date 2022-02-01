@@ -15,13 +15,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import anxc;
-import asdi;
-import asih;
-import awyr;
-import bgyo;
-import bhyo;
-import bhyq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
@@ -31,12 +24,19 @@ import com.tencent.image.NativeGifFactory;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.IndividualRedPacketManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticon.EmojiManager;
 import com.tencent.mobileqq.emoticonview.CameraEmoticonInfo;
 import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
+import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.mqsafeedit.MD5;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -257,7 +257,7 @@ public class VasExtensionDownloader
     try
     {
       String str = paramDownloadParams.url.getFile();
-      if (asdi.b(str))
+      if (EmosmUtils.b(str))
       {
         if (QLog.isColorLevel()) {
           QLog.d("VasExtensionDownloader", 2, "decodeFile isGifFile,path=" + str);
@@ -267,7 +267,7 @@ public class VasExtensionDownloader
       if (QLog.isColorLevel()) {
         QLog.d("VasExtensionDownloader", 2, "decodeFile getDecryptFileData,path=" + str);
       }
-      paramDownloadParams = asdi.b(str);
+      paramDownloadParams = EmosmUtils.b(str);
       if (paramDownloadParams != null) {
         try
         {
@@ -421,7 +421,7 @@ public class VasExtensionDownloader
     //   229: getfield 304	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
     //   232: aload 8
     //   234: getfield 307	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbHeight	I
-    //   237: invokestatic 313	bheg:a	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   237: invokestatic 313	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/BitmapFactory$Options;II)I
     //   240: putfield 316	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   243: aload 7
     //   245: iconst_0
@@ -657,7 +657,7 @@ public class VasExtensionDownloader
     paramDownloadParams = new BitmapFactory.Options();
     paramDownloadParams.inTargetDensity = this.application.getResources().getDisplayMetrics().densityDpi;
     paramDownloadParams.inDensity = Math.max(paramDownloadParams.inTargetDensity, 320);
-    return bgyo.a(paramFile.getAbsolutePath(), paramDownloadParams);
+    return BitmapManager.a(paramFile.getAbsolutePath(), paramDownloadParams);
   }
   
   @Nullable
@@ -963,9 +963,9 @@ public class VasExtensionDownloader
         }
         return paramString;
       }
-      paramDownloadParams = new bhyo(paramDownloadParams, paramString);
-      paramDownloadParams.e = asih.b;
-      if (bhyq.a(paramDownloadParams, null) == 0) {
+      paramDownloadParams = new DownloadTask(paramDownloadParams, paramString);
+      paramDownloadParams.e = EmojiManager.b;
+      if (DownloaderFactory.a(paramDownloadParams, null) == 0) {
         return paramString;
       }
     }
@@ -992,7 +992,7 @@ public class VasExtensionDownloader
     File localFile;
     if (bool1)
     {
-      localObject = asdi.a(3, paramString2);
+      localObject = EmosmUtils.a(3, paramString2);
       localFile = new File((String)localObject);
     }
     for (;;)
@@ -1003,7 +1003,7 @@ public class VasExtensionDownloader
         if (bool2)
         {
           return localFile;
-          localObject = asdi.a(4, paramString2);
+          localObject = EmosmUtils.a(4, paramString2);
           break;
         }
         if (!bool1) {
@@ -1012,7 +1012,7 @@ public class VasExtensionDownloader
         if (localBoolean.booleanValue()) {
           continue;
         }
-        paramString2 = asdi.b(3, paramString2);
+        paramString2 = EmosmUtils.b(3, paramString2);
       }
       catch (OutOfMemoryError paramString2)
       {
@@ -1024,12 +1024,12 @@ public class VasExtensionDownloader
         continue;
       }
       return realDownloadFile(paramDownloadParams, paramString1, paramString2, (String)localObject);
-      paramString2 = asdi.b(17, paramString2);
+      paramString2 = EmosmUtils.b(17, paramString2);
       continue;
       if (!localBoolean.booleanValue()) {
-        paramString2 = asdi.b(4, paramString2);
+        paramString2 = EmosmUtils.b(4, paramString2);
       } else {
-        paramString2 = asdi.b(18, paramString2);
+        paramString2 = EmosmUtils.b(18, paramString2);
       }
     }
   }
@@ -1054,10 +1054,10 @@ public class VasExtensionDownloader
         QLog.d("VasExtensionDownloader", 2, "exception:" + localThrowable.getMessage());
         localObject2 = null;
       }
-      Object localObject2 = (anxc)((AppInterface)localObject2).getManager(QQManagerFactory.INDIVIDUAL_RED_PACKET_MANAGER);
+      Object localObject2 = (IndividualRedPacketManager)((AppInterface)localObject2).getManager(QQManagerFactory.INDIVIDUAL_RED_PACKET_MANAGER);
       if (localObject2 != null)
       {
-        localObject2 = ((anxc)localObject2).a();
+        localObject2 = ((IndividualRedPacketManager)localObject2).a();
         if (QLog.isColorLevel()) {
           QLog.d("VasExtensionDownloader", 2, "downloadImage redpacket send img filename = " + (String)localObject2);
         }
@@ -1081,7 +1081,7 @@ public class VasExtensionDownloader
       if ("COMMERCIAL_DRAINAGE".equals(paramString1))
       {
         i = 22;
-        paramDownloadParams = asdi.a(i, str, MD5.toMD5(paramDownloadParams.url.getFile()));
+        paramDownloadParams = EmosmUtils.a(i, str, MD5.toMD5(paramDownloadParams.url.getFile()));
         if (QLog.isColorLevel()) {
           QLog.d("VasExtensionDownloader", 2, "emotion save local filePath: " + paramDownloadParams);
         }
@@ -1096,9 +1096,9 @@ public class VasExtensionDownloader
         return paramDownloadParams;
         i = 23;
         break;
-        paramString1 = new bhyo(paramString2, paramDownloadParams);
-        paramString1.e = asih.b;
-      } while (bhyq.a(paramString1, null) == 0);
+        paramString1 = new DownloadTask(paramString2, paramDownloadParams);
+        paramString1.e = EmojiManager.b;
+      } while (DownloaderFactory.a(paramString1, null) == 0);
     }
     return null;
   }
@@ -1128,9 +1128,9 @@ public class VasExtensionDownloader
         QLog.d("VasExtensionDownloader", 2, "downloadImage : " + paramString2 + " -> " + paramString3);
       }
       File localFile = new File(paramString3);
-      localObject1 = new bhyo(paramString2, localFile);
-      ((bhyo)localObject1).e = asih.b;
-      int i = bhyq.a((bhyo)localObject1, null);
+      localObject1 = new DownloadTask(paramString2, localFile);
+      ((DownloadTask)localObject1).e = EmojiManager.b;
+      int i = DownloaderFactory.a((DownloadTask)localObject1, null);
       reportFavoriteDownloadStatus(paramString1, i);
       localObject1 = localObject2;
       if (i == 0)
@@ -1150,7 +1150,7 @@ public class VasExtensionDownloader
   private void reportFavoriteDownloadStatus(String paramString, int paramInt)
   {
     if (("FAVOROTE_PANEL_DYNAMIC".equals(paramString)) || ("FAVORITE_PANEL_THUMB".equals(paramString)) || ("FAVORITE_PANEL_THUMB_NEW".equals(paramString))) {
-      awyr.e(String.valueOf(paramInt), 6);
+      EmoticonManager.e(String.valueOf(paramInt), 6);
     }
   }
   
@@ -1291,7 +1291,7 @@ public class VasExtensionDownloader
     try
     {
       paramURL = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-      paramURL = (asih)((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramURL)).getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
+      paramURL = (EmojiManager)((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramURL)).getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
       if (paramURL != null) {
         return paramURL.a;
       }

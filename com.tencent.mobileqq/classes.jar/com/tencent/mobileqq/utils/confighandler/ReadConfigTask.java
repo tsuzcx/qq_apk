@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils.confighandler;
 
 import android.content.res.Resources;
-import bhhz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.SyncLoadTask;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class ReadConfigTask<T extends ConfigInfo>
-  extends bhhz
+  extends SyncLoadTask
 {
   int mConfigID = 0;
   public T mConfigInfo;

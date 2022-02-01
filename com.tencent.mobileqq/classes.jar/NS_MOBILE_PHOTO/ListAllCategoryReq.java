@@ -10,8 +10,8 @@ public final class ListAllCategoryReq
   extends JceStruct
 {
   static Map<Integer, ListAllCategoryReqItem> cache_req_item_map = new HashMap();
-  public long host;
-  public Map<Integer, ListAllCategoryReqItem> req_item_map;
+  public long host = 0L;
+  public Map<Integer, ListAllCategoryReqItem> req_item_map = null;
   
   static
   {

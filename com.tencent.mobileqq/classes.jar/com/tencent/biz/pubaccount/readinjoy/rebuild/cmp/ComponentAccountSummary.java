@@ -8,93 +8,92 @@ import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import anvx;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJQQAppInterfaceUtil;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.PGCFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.jetbrains.annotations.NotNull;
-import pkh;
-import pnn;
-import qfw;
-import rbo;
-import rbx;
-import rfw;
-import rfz;
-import rga;
-import rgb;
-import rrl;
-import rsh;
-import szd;
 
 public class ComponentAccountSummary
   extends FrameLayout
-  implements rbo
+  implements ComponentView
 {
-  ReadInJoyYAFolderTextView a;
-  public rfw a;
+  CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
+  ReadInJoyYAFolderTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView;
   public boolean a;
-  public boolean b;
-  public boolean c;
+  public boolean b = false;
+  public boolean c = false;
   
   public ComponentAccountSummary(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
     b(paramContext);
   }
   
   public ComponentAccountSummary(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
     b(paramContext);
   }
   
   public ComponentAccountSummary(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
     b(paramContext);
   }
   
-  private String a(@NotNull qfw paramqfw)
+  private String a(@NotNull IReadInJoyModel paramIReadInJoyModel)
   {
-    String str = paramqfw.a().mSummary;
-    if ((this.jdField_a_of_type_Rfw.c()) || (this.jdField_a_of_type_Rfw.g())) {
-      str = paramqfw.a().mTitle;
+    String str = paramIReadInJoyModel.a().mSummary;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.c()) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.g())) {
+      str = paramIReadInJoyModel.a().mTitle;
     }
     if (!TextUtils.isEmpty(str)) {
       return str;
     }
-    if (paramqfw.a() == 33) {
-      return anvx.a(2131701826);
+    if (paramIReadInJoyModel.a() == 33) {
+      return HardCodeUtil.a(2131702381);
     }
-    if ((this.jdField_a_of_type_Rfw.b()) || (this.jdField_a_of_type_Rfw.d()) || (this.jdField_a_of_type_Rfw.e())) {
-      return anvx.a(2131701829);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.b()) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.d()) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.e())) {
+      return HardCodeUtil.a(2131702384);
     }
-    if ((this.jdField_a_of_type_Rfw.c()) || (this.jdField_a_of_type_Rfw.g())) {
-      return anvx.a(2131701806);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.c()) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.g())) {
+      return HardCodeUtil.a(2131702361);
     }
-    if (this.jdField_a_of_type_Rfw.h()) {
-      return anvx.a(2131701817);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.h()) {
+      return HardCodeUtil.a(2131702372);
     }
-    return anvx.a(2131701831);
+    return HardCodeUtil.a(2131702386);
   }
   
   private void a(@NotNull SpannableStringBuilder paramSpannableStringBuilder, @NotNull ArticleInfo paramArticleInfo)
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.a != null))
+    if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a != null))
     {
-      localSpannableStringBuilder.append(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.a);
-      QLog.d("Q.readinjoy.ui", 2, "Comment String: " + paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.a);
+      localSpannableStringBuilder.append(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a);
+      QLog.d("Q.readinjoy.ui", 2, "Comment String: " + paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a);
     }
     for (;;)
     {
-      String str = anvx.a(2131701788);
+      String str = HardCodeUtil.a(2131702343);
       localSpannableStringBuilder.append(" ");
       localSpannableStringBuilder.append(str);
-      localSpannableStringBuilder.setSpan(new rga(paramArticleInfo, -3355444, getContext(), getResources(), this.jdField_a_of_type_Rfw), localSpannableStringBuilder.length() - str.length(), localSpannableStringBuilder.length(), 33);
+      localSpannableStringBuilder.setSpan(new ComponentAccountSummary.ReadArticleSpan(paramArticleInfo, -3355444, getContext(), getResources(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt), localSpannableStringBuilder.length() - str.length(), localSpannableStringBuilder.length(), 33);
       localSpannableStringBuilder.append(" ");
       paramSpannableStringBuilder.append(localSpannableStringBuilder);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.c = true;
@@ -105,37 +104,37 @@ public class ComponentAccountSummary
     }
   }
   
-  private void a(@NotNull qfw paramqfw, @NotNull SpannableStringBuilder paramSpannableStringBuilder, String paramString)
+  private void a(@NotNull IReadInJoyModel paramIReadInJoyModel, @NotNull SpannableStringBuilder paramSpannableStringBuilder, String paramString)
   {
-    if ((paramqfw.a() == 33) && (paramqfw.a().mSocialFeedInfo != null) && (paramqfw.a().mSocialFeedInfo.jdField_a_of_type_Rsh != null)) {
-      if (paramqfw.a().mSocialFeedInfo.jdField_a_of_type_Rsh.b == 0L)
+    if ((paramIReadInJoyModel.a() == 33) && (paramIReadInJoyModel.a().mSocialFeedInfo != null) && (paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo != null)) {
+      if (paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.b == 0L)
       {
-        paramqfw = paramqfw.a().mSocialFeedInfo.jdField_a_of_type_Rsh.a;
+        paramIReadInJoyModel = paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.a;
         paramSpannableStringBuilder.append(paramString);
-        paramSpannableStringBuilder.setSpan(new rgb(this, paramqfw, -3355444), 0, paramString.length(), 33);
+        paramSpannableStringBuilder.setSpan(new ComponentAccountSummary.UserSpan(this, paramIReadInJoyModel, -3355444), 0, paramString.length(), 33);
       }
     }
     for (;;)
     {
       paramSpannableStringBuilder.append(": ");
       return;
-      paramString = String.valueOf(paramqfw.a().mSocialFeedInfo.jdField_a_of_type_Rsh.b);
-      if (pnn.a())
+      paramString = String.valueOf(paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.b);
+      if (RIJQQAppInterfaceUtil.a())
       {
-        str = ContactUtils.getBuddyName((QQAppInterface)pkh.a(), paramString, true);
-        paramqfw = paramString;
+        str = ContactUtils.c((QQAppInterface)ReadInJoyUtils.a(), paramString, true);
+        paramIReadInJoyModel = paramString;
         paramString = str;
         break;
       }
-      String str = paramqfw.a().a(paramqfw.a().mSocialFeedInfo.jdField_a_of_type_Rsh.b);
-      paramqfw = paramString;
+      String str = paramIReadInJoyModel.a().a(paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.b);
+      paramIReadInJoyModel = paramString;
       paramString = str;
       break;
-      if (paramqfw.a().mAccountLess == 0)
+      if (paramIReadInJoyModel.a().mAccountLess == 0)
       {
-        paramqfw = paramqfw.a().mSubscribeID;
+        paramIReadInJoyModel = paramIReadInJoyModel.a().mSubscribeID;
         paramSpannableStringBuilder.append(paramString);
-        paramSpannableStringBuilder.setSpan(new rgb(this, paramqfw, -3355444), 0, paramString.length(), 33);
+        paramSpannableStringBuilder.setSpan(new ComponentAccountSummary.UserSpan(this, paramIReadInJoyModel, -3355444), 0, paramString.length(), 33);
       }
       else
       {
@@ -147,7 +146,7 @@ public class ComponentAccountSummary
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Rfw = new rfw();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
     a(paramContext);
     a();
   }
@@ -155,11 +154,11 @@ public class ComponentAccountSummary
   private void b(@NotNull SpannableStringBuilder paramSpannableStringBuilder, @NotNull ArticleInfo paramArticleInfo)
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.a != null))
+    if ((paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a != null))
     {
-      localSpannableStringBuilder.append(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.a);
+      localSpannableStringBuilder.append(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.ui", 2, "Comment String: " + paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrl.a);
+        QLog.d("Q.readinjoy.ui", 2, "Comment String: " + paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a);
       }
     }
     for (;;)
@@ -172,17 +171,17 @@ public class ComponentAccountSummary
     }
   }
   
-  private void b(@NotNull qfw paramqfw, @NotNull SpannableStringBuilder paramSpannableStringBuilder, String paramString)
+  private void b(@NotNull IReadInJoyModel paramIReadInJoyModel, @NotNull SpannableStringBuilder paramSpannableStringBuilder, String paramString)
   {
-    paramqfw = paramqfw.a();
+    paramIReadInJoyModel = paramIReadInJoyModel.a();
     if ((this.jdField_a_of_type_Boolean) || (this.b))
     {
-      a(paramSpannableStringBuilder, paramqfw);
+      a(paramSpannableStringBuilder, paramIReadInJoyModel);
       return;
     }
     if (this.c)
     {
-      b(paramSpannableStringBuilder, paramqfw);
+      b(paramSpannableStringBuilder, paramIReadInJoyModel);
       return;
     }
     paramSpannableStringBuilder.append(paramString);
@@ -192,41 +191,41 @@ public class ComponentAccountSummary
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131560190, this, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365041));
+    LayoutInflater.from(paramContext).inflate(2131560268, this, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365176));
+  }
+  
+  public void a(FeedItemCell.CellListener paramCellListener)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
   }
   
   public void a(Object paramObject)
   {
-    if (!(paramObject instanceof qfw)) {}
+    if (!(paramObject instanceof IReadInJoyModel)) {}
     do
     {
       return;
-      paramObject = (qfw)paramObject;
-      this.jdField_a_of_type_Rfw.a(paramObject);
+      paramObject = (IReadInJoyModel)paramObject;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramObject);
     } while (paramObject.a() == null);
     String str1 = paramObject.a().mSubscribeName;
     String str2 = a(paramObject);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     a(paramObject, localSpannableStringBuilder, str1);
     b(paramObject, localSpannableStringBuilder, str2);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(anvx.a(2131701845));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText(HardCodeUtil.a(2131702400));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new rfz(this, paramObject.a(), -3355444));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new ComponentAccountSummary.MoreSpan(this, paramObject.a(), -3355444));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(localSpannableStringBuilder);
     b();
-  }
-  
-  public void a(rbx paramrbx)
-  {
-    this.jdField_a_of_type_Rfw.a(paramrbx);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentAccountSummary
  * JD-Core Version:    0.7.0.1
  */

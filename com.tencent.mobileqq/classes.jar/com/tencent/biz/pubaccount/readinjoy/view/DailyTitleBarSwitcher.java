@@ -10,17 +10,15 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import syj;
-import syk;
 
 public class DailyTitleBarSwitcher
   extends FrameLayout
 {
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new syj(this);
+  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new DailyTitleBarSwitcher.1(this);
   private DailyTitleBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar;
-  private final AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new syk(this);
-  private boolean jdField_a_of_type_Boolean;
+  private final AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new DailyTitleBarSwitcher.2(this);
+  private boolean jdField_a_of_type_Boolean = false;
   private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
   private DailyTitleBar jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar;
   
@@ -46,7 +44,7 @@ public class DailyTitleBarSwitcher
       this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar = ((DailyTitleBar)getChildAt(0));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar = ((DailyTitleBar)getChildAt(1));
       a(0.0F);
-      ImmersiveUtils.a(false, ((Activity)getContext()).getWindow());
+      ImmersiveUtils.setStatusTextColor(false, ((Activity)getContext()).getWindow());
       this.jdField_a_of_type_Boolean = true;
     }
   }
@@ -60,14 +58,14 @@ public class DailyTitleBarSwitcher
       if (paramFloat <= 0.0F) {
         break label58;
       }
-      ImmersiveUtils.a(true, ((Activity)getContext()).getWindow());
+      ImmersiveUtils.setStatusTextColor(true, ((Activity)getContext()).getWindow());
     }
     for (;;)
     {
       b();
       return;
       label58:
-      ImmersiveUtils.a(false, ((Activity)getContext()).getWindow());
+      ImmersiveUtils.setStatusTextColor(false, ((Activity)getContext()).getWindow());
     }
   }
   
@@ -92,7 +90,7 @@ public class DailyTitleBarSwitcher
     return this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (!this.jdField_a_of_type_Boolean) {
@@ -169,7 +167,7 @@ public class DailyTitleBarSwitcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher
  * JD-Core Version:    0.7.0.1
  */

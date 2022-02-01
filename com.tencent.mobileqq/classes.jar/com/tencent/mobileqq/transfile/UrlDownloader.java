@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import java.util.HashMap;
 
 public class UrlDownloader
@@ -7,16 +9,18 @@ public class UrlDownloader
 {
   protected TransferRequest.PicDownExtraInfo mPicDownExtra;
   
-  public UrlDownloader(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public UrlDownloader() {}
+  
+  public UrlDownloader(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     this.mRecvLen = ((TransferRequest.PicDownExtraInfo)this.mUiRequest.mExtraObj).mStartDownOffset;
   }
   
   void onError()
   {
     super.onError();
-    this.mController.removeProcessor(TransFileController.makeReceiveKey(this.mUiRequest));
+    this.mController.removeProcessor(TransFileControllerImpl.makeReceiveKey(this.mUiRequest));
     TransferResult localTransferResult = this.mUiRequest.mResult;
     if (localTransferResult != null)
     {
@@ -57,7 +61,7 @@ public class UrlDownloader
   {
     super.onSuccess();
     TransferResult localTransferResult = this.mUiRequest.mResult;
-    this.mController.removeProcessor(TransFileController.makeReceiveKey(this.mUiRequest));
+    this.mController.removeProcessor(TransFileControllerImpl.makeReceiveKey(this.mUiRequest));
     if (localTransferResult != null)
     {
       localTransferResult.mResult = 0;
@@ -91,7 +95,7 @@ public class UrlDownloader
     if (this.mUiRequest.mSupportRangeBreakDown)
     {
       localHttpNetReq.mReqProperties.put("Range", "bytes=" + localHttpNetReq.mStartDownOffset + "-");
-      localHttpNetReq.mBreakDownFix = mPicBreakDownFixForOldHttpEngine;
+      localHttpNetReq.mSupportBreakResume = true;
     }
     localHttpNetReq.mContinuErrorLimit = 4;
     localHttpNetReq.mExcuteTimeLimit = 90000L;

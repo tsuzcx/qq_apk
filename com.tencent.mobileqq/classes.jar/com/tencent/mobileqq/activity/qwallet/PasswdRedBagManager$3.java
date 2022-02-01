@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akqd;
-import akqe;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,15 +10,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class PasswdRedBagManager$3
+class PasswdRedBagManager$3
   implements Runnable
 {
-  public PasswdRedBagManager$3(akqe paramakqe, SessionInfo paramSessionInfo) {}
+  PasswdRedBagManager$3(PasswdRedBagManager paramPasswdRedBagManager, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = akqe.a(this.this$0).getMessageFacade().getMsgList(this.a.curFriendUin, this.a.curType);
+    Object localObject1 = PasswdRedBagManager.a(this.this$0).getMessageFacade().b(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int);
     if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
       localObject1 = ((List)localObject1).iterator();
@@ -34,7 +32,7 @@ public class PasswdRedBagManager$3
           {
             Object localObject3 = ((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg;
             localObject3 = this.this$0.a(((QQWalletRedPacketMsg)localObject3).redPacketId);
-            if ((localObject3 != null) && (((akqd)localObject3).a == 4) && (!((akqd)localObject3).b)) {
+            if ((localObject3 != null) && (((PasswdRedBagInfo)localObject3).jdField_a_of_type_Int == 4) && (!((PasswdRedBagInfo)localObject3).b)) {
               localArrayList.add(((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg.redPacketId);
             }
           }
@@ -46,7 +44,7 @@ public class PasswdRedBagManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.3
  * JD-Core Version:    0.7.0.1
  */

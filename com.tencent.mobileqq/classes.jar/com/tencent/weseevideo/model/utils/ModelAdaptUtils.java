@@ -21,6 +21,7 @@ import com.tencent.tavmovie.base.TAVMovieVideoConfiguration;
 import com.tencent.tavmovie.sticker.TAVMovieSticker;
 import com.tencent.tavsticker.exception.StickerInitializationException;
 import com.tencent.tavsticker.model.TAVSticker;
+import com.tencent.weseevideo.common.utils.CollectionExtKt;
 import com.tencent.weseevideo.editor.sticker.utils.StickerConverterKt;
 import com.tencent.weseevideo.model.effect.StickerModel;
 import com.tencent.weseevideo.model.effect.SubtitleModel;
@@ -99,7 +100,7 @@ public class ModelAdaptUtils
       localTAVMovieVideoConfiguration.setFrame((CGRect)localObject);
     }
     localObject = new Matrix();
-    ((Matrix)localObject).setValues(paramVideoConfigurationModel.getMatrix());
+    ((Matrix)localObject).setValues(CollectionExtKt.a(paramVideoConfigurationModel.getMatrix()));
     localTAVMovieVideoConfiguration.setTransform((Matrix)localObject);
     localTAVMovieVideoConfiguration.setPreferRotation(paramVideoConfigurationModel.getRotate());
     return localTAVMovieVideoConfiguration;
@@ -160,7 +161,7 @@ public class ModelAdaptUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.model.utils.ModelAdaptUtils
  * JD-Core Version:    0.7.0.1
  */

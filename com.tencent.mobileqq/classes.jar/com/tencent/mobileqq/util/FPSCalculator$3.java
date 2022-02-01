@@ -1,29 +1,27 @@
 package com.tencent.mobileqq.util;
 
 import android.os.Handler;
-import bgyu;
-import bgyw;
 import java.util.Vector;
 
-public class FPSCalculator$3
+class FPSCalculator$3
   implements Runnable
 {
-  public FPSCalculator$3(bgyu parambgyu) {}
+  FPSCalculator$3(FPSCalculator paramFPSCalculator) {}
   
   public void run()
   {
-    Object localObject1 = bgyu.a(this.this$0);
+    Object localObject1 = FPSCalculator.a(this.this$0);
     int i = 0;
     try
     {
-      while (i < bgyu.a(this.this$0).size())
+      while (i < FPSCalculator.a(this.this$0).size())
       {
-        bgyw localbgyw = (bgyw)bgyu.a(this.this$0).get(i);
-        bgyu.a(this.this$0, System.currentTimeMillis());
-        localbgyw.onInfo(bgyu.a(this.this$0), 60.0D);
+        FPSCalculator.GetFPSListener localGetFPSListener = (FPSCalculator.GetFPSListener)FPSCalculator.a(this.this$0).get(i);
+        FPSCalculator.a(this.this$0, System.currentTimeMillis());
+        localGetFPSListener.onInfo(FPSCalculator.a(this.this$0), 60.0D);
         i += 1;
       }
-      bgyu.a(this.this$0).postDelayed(bgyu.b(this.this$0), 500L);
+      FPSCalculator.a(this.this$0).postDelayed(FPSCalculator.b(this.this$0), 500L);
       return;
     }
     finally {}

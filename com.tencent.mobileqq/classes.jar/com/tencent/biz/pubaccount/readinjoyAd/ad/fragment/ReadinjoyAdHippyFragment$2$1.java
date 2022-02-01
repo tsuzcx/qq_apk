@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.fragment;
 
-import tvg;
-import ugm;
+import com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaUiDelegate;
 
-public class ReadinjoyAdHippyFragment$2$1
+class ReadinjoyAdHippyFragment$2$1
   implements Runnable
 {
-  public ReadinjoyAdHippyFragment$2$1(ugm paramugm) {}
+  ReadinjoyAdHippyFragment$2$1(ReadinjoyAdHippyFragment.2 param2) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class ReadinjoyAdHippyFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

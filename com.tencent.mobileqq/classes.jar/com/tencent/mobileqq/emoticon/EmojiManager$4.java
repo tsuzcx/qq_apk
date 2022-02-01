@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.emoticon;
 
 import android.os.Bundle;
-import asdi;
-import asih;
-import awyr;
-import bhyo;
-import bhyt;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.Serializable;
 
-public class EmojiManager$4
+class EmojiManager$4
   implements Runnable
 {
-  public EmojiManager$4(asih paramasih, boolean paramBoolean, String paramString, int paramInt1, int paramInt2, Bundle paramBundle) {}
+  EmojiManager$4(EmojiManager paramEmojiManager, boolean paramBoolean, String paramString, int paramInt1, int paramInt2, Bundle paramBundle) {}
   
   public void run()
   {
@@ -24,7 +23,7 @@ public class EmojiManager$4
     {
       localObject1 = EmoticonUtils.smallEmoticonJsonUrl.replace("[epId]", this.jdField_a_of_type_JavaLangString);
       localObject2 = this.this$0.a().a((String)localObject1);
-      if ((localObject2 == null) || (((bhyo)localObject2).b())) {
+      if ((localObject2 == null) || (((DownloadTask)localObject2).b())) {
         break label98;
       }
     }
@@ -35,10 +34,10 @@ public class EmojiManager$4
         break label103;
       }
       if (QLog.isColorLevel()) {
-        QLog.d(asih.a(), 2, "startDownloadEmosmJson|epId is in downloading:" + this.jdField_a_of_type_JavaLangString);
+        QLog.d(EmojiManager.a(), 2, "startDownloadEmosmJson|epId is in downloading:" + this.jdField_a_of_type_JavaLangString);
       }
       return;
-      localObject1 = asdi.a(this.jdField_a_of_type_JavaLangString);
+      localObject1 = EmosmUtils.a(this.jdField_a_of_type_JavaLangString);
       break;
     }
     label103:
@@ -47,7 +46,7 @@ public class EmojiManager$4
     if (localObject3 == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(asih.a(), 2, "startDownloadEmosmJson|emoPackage is not exist:" + this.jdField_a_of_type_JavaLangString);
+        QLog.d(EmojiManager.a(), 2, "startDownloadEmosmJson|emoPackage is not exist:" + this.jdField_a_of_type_JavaLangString);
       }
       localObject2 = new EmoticonPackage();
       ((EmoticonPackage)localObject2).epId = this.jdField_a_of_type_JavaLangString;
@@ -61,9 +60,9 @@ public class EmojiManager$4
     {
       this.this$0.a().a((EmoticonPackage)localObject2);
       if (QLog.isColorLevel()) {
-        QLog.d(asih.a(), 2, "startDownloadEmosmJson epId:" + ((EmoticonPackage)localObject2).epId);
+        QLog.d(EmojiManager.a(), 2, "startDownloadEmosmJson epId:" + ((EmoticonPackage)localObject2).epId);
       }
-      localObject1 = new bhyo((String)localObject1, new File(EmoticonUtils.emoticonJsonFilePath.replace("[epId]", this.jdField_a_of_type_JavaLangString)));
+      localObject1 = new DownloadTask((String)localObject1, new File(EmoticonUtils.emoticonJsonFilePath.replace("[epId]", this.jdField_a_of_type_JavaLangString)));
       localObject3 = new Bundle();
       ((Bundle)localObject3).putInt("jsonType", this.b);
       ((Bundle)localObject3).putSerializable("emoticonPackage", (Serializable)localObject2);
@@ -71,9 +70,9 @@ public class EmojiManager$4
       if (this.jdField_a_of_type_AndroidOsBundle != null) {
         ((Bundle)localObject3).putBundle("jsonReqParams", this.jdField_a_of_type_AndroidOsBundle);
       }
-      ((bhyo)localObject1).e = this.this$0.e;
-      ((bhyo)localObject1).n = true;
-      this.this$0.a().a((bhyo)localObject1, this.this$0.a, (Bundle)localObject3);
+      ((DownloadTask)localObject1).e = this.this$0.e;
+      ((DownloadTask)localObject1).n = true;
+      this.this$0.a().a((DownloadTask)localObject1, this.this$0.a, (Bundle)localObject3);
       return;
       label370:
       if (this.jdField_a_of_type_Int == 1) {
@@ -84,7 +83,7 @@ public class EmojiManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,19 @@ public final class qun_get_photo_list_ex_req
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumid = "";
-  public long batch_id;
-  public Map<Integer, String> busi_param;
+  public long batch_id = 0L;
+  public Map<Integer, String> busi_param = null;
   public String curlloc = "";
-  public int get_comment;
-  public int get_pfinfo;
-  public int get_poi;
-  public long left;
+  public int get_comment = 0;
+  public int get_pfinfo = 0;
+  public int get_poi = 0;
+  public long left = 0L;
   public String password = "";
   public String qunid = "";
-  public long right;
-  public int sort;
-  public long type;
-  public long uin;
+  public long right = 0L;
+  public int sort = 0;
+  public long type = 0L;
+  public long uin = 0L;
   public String url = "";
   
   static

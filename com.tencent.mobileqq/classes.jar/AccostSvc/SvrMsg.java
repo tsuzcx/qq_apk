@@ -9,10 +9,10 @@ public final class SvrMsg
 {
   static ReqHeader cache_stHeader;
   static Msg cache_stMsg;
-  public byte bNeedAckClientMsg;
-  public byte bResend;
-  public ReqHeader stHeader;
-  public Msg stMsg;
+  public byte bNeedAckClientMsg = 0;
+  public byte bResend = 0;
+  public ReqHeader stHeader = null;
+  public Msg stMsg = null;
   
   public SvrMsg() {}
   

@@ -17,7 +17,7 @@ public class MapProxyImplDefault
   public void captureImage(IMiniAppContext paramIMiniAppContext, View paramView, ViewGroup paramViewGroup, MapProxy.MapSnapshotCallback paramMapSnapshotCallback)
   {
     if ((paramView instanceof CoverMapView)) {
-      ((CoverMapView)paramView).captureImage(new MapProxyImplDefault.1(this, paramViewGroup, paramMapSnapshotCallback, paramView, paramIMiniAppContext));
+      ((CoverMapView)paramView).captureImage(new MapProxyImplDefault.1(this, paramViewGroup, paramMapSnapshotCallback, paramView));
     }
     if (paramMapSnapshotCallback != null) {
       paramMapSnapshotCallback.onSnapshotReady(null);
@@ -26,7 +26,7 @@ public class MapProxyImplDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.map.proxyImpl.MapProxyImplDefault
  * JD-Core Version:    0.7.0.1
  */

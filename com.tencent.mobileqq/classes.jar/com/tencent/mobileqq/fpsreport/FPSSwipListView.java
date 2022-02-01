@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.fpsreport;
 
-import acyd;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import com.tencent.qqperf.monitor.fps.FPSCalculator;
 import com.tencent.widget.SwipListView;
 
 public class FPSSwipListView
   extends SwipListView
 {
-  private acyd jdField_a_of_type_Acyd;
+  private FPSCalculator jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
   private boolean jdField_a_of_type_Boolean = true;
   
   public FPSSwipListView(Context paramContext)
@@ -29,8 +29,8 @@ public class FPSSwipListView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Acyd != null) {
-      this.jdField_a_of_type_Acyd.a();
+    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
+      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a();
     }
   }
   
@@ -42,28 +42,28 @@ public class FPSSwipListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Acyd != null)) {
-      this.jdField_a_of_type_Acyd.b();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null)) {
+      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.b();
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Acyd != null) {
-      this.jdField_a_of_type_Acyd.a(paramInt);
+    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
+      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a(paramInt);
     }
   }
   
   public void setActTAG(String paramString)
   {
-    this.jdField_a_of_type_Acyd = new acyd();
-    this.jdField_a_of_type_Acyd.a(paramString);
+    this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator = new FPSCalculator();
+    this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fpsreport.FPSSwipListView
  * JD-Core Version:    0.7.0.1
  */

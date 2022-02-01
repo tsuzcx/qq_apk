@@ -8,12 +8,11 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import assk;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
 public class RotateLoadingLayout
-  extends assk
+  extends LoadingLayout
 {
   private float jdField_a_of_type_Float;
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix;
@@ -53,12 +52,12 @@ public class RotateLoadingLayout
     }
   }
   
-  public int b()
+  protected int b()
   {
-    return 2130841613;
+    return 2130841756;
   }
   
-  public void b(float paramFloat)
+  protected void b(float paramFloat)
   {
     if (this.jdField_a_of_type_Boolean) {}
     for (paramFloat = 90.0F * paramFloat;; paramFloat = Math.max(0.0F, Math.min(180.0F, 360.0F * paramFloat - 180.0F)))
@@ -69,16 +68,16 @@ public class RotateLoadingLayout
     }
   }
   
-  public void i() {}
+  protected void i() {}
   
-  public void j()
+  protected void j()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  public void k() {}
+  protected void k() {}
   
-  public void l()
+  protected void l()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     a();
@@ -86,7 +85,7 @@ public class RotateLoadingLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.pulltorefresh.internal.RotateLoadingLayout
  * JD-Core Version:    0.7.0.1
  */

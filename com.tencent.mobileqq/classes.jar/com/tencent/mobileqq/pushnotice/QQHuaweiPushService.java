@@ -19,7 +19,10 @@ public class QQHuaweiPushService
   public void onNewToken(String paramString)
   {
     super.onNewToken(paramString);
-    baiw.a = paramString;
+    PushNoticeUtil.a = paramString;
+    if (!TextUtils.isEmpty(PushNoticeUtil.a)) {
+      PushNoticeUtil.b();
+    }
     if (QLog.isColorLevel()) {
       QLog.d("HPush", 2, "HPush_Huawei Push Token-QQHuaweiPushService.onNewToken : " + TextUtils.isEmpty(paramString));
     }

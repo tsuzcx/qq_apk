@@ -12,17 +12,17 @@ public final class tPullADVRequest
 {
   static Map<String, String> cache_ext_user_info;
   static ArrayList<tAdvAppInfo> cache_vec_req_app = new ArrayList();
-  public Map<String, String> ext_user_info;
-  public int i_need_expose_time;
-  public int i_req_flag;
+  public Map<String, String> ext_user_info = null;
+  public int i_need_expose_time = 0;
+  public int i_req_flag = 0;
   public String idfa = "";
   public String ip_from_pc_user = "";
-  public long l_user;
-  public int pull_as_expose_oper;
-  public int request_from;
+  public long l_user = 0L;
+  public int pull_as_expose_oper = 0;
+  public int request_from = 0;
   public String s_phone_qua = "";
   public String s_req_source = "";
-  public ArrayList<tAdvAppInfo> vec_req_app;
+  public ArrayList<tAdvAppInfo> vec_req_app = null;
   
   static
   {

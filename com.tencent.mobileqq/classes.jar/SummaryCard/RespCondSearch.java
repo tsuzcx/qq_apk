@@ -9,10 +9,10 @@ public final class RespCondSearch
   extends JceStruct
 {
   static ArrayList<CondFitUser> cache_vUserList;
-  public byte cEndFlag;
-  public long dwSessionID;
-  public int iPage;
-  public ArrayList<CondFitUser> vUserList;
+  public byte cEndFlag = 0;
+  public long dwSessionID = 0L;
+  public int iPage = 0;
+  public ArrayList<CondFitUser> vUserList = null;
   
   public RespCondSearch() {}
   
@@ -50,7 +50,7 @@ public final class RespCondSearch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.RespCondSearch
  * JD-Core Version:    0.7.0.1
  */

@@ -16,15 +16,15 @@ public final class RespGetNeighbors
   static UserData cache_stUserData;
   static ArrayList<GroupInfo> cache_vGroupList;
   static ArrayList<RespNeighborInfo> cache_vNeighborInfos;
-  public long RespTime;
-  public int iSessionTotalNumber;
-  public byte[] nearbyGroupResp;
-  public EctFragmentation stEctFmt;
-  public RespHeader stHeader;
-  public UserDetailLocalInfo stUDLinfo;
-  public UserData stUserData;
-  public ArrayList<GroupInfo> vGroupList;
-  public ArrayList<RespNeighborInfo> vNeighborInfos;
+  public long RespTime = 0L;
+  public int iSessionTotalNumber = 0;
+  public byte[] nearbyGroupResp = null;
+  public EctFragmentation stEctFmt = null;
+  public RespHeader stHeader = null;
+  public UserDetailLocalInfo stUDLinfo = null;
+  public UserData stUserData = null;
+  public ArrayList<GroupInfo> vGroupList = null;
+  public ArrayList<RespNeighborInfo> vNeighborInfos = null;
   
   public RespGetNeighbors() {}
   

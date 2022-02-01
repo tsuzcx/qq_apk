@@ -1,21 +1,20 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import bbhg;
-import bnbn;
+import com.tencent.mobileqq.richmedia.capture.gesture.CameraViewPagerGesture;
 
-public class FilterPagerViewStubHolder$2
+class FilterPagerViewStubHolder$2
   implements Runnable
 {
-  public FilterPagerViewStubHolder$2(bnbn parambnbn, bbhg parambbhg) {}
+  FilterPagerViewStubHolder$2(FilterPagerViewStubHolder paramFilterPagerViewStubHolder, CameraViewPagerGesture paramCameraViewPagerGesture) {}
   
   public void run()
   {
-    this.a.a(bnbn.a(this.this$0));
+    this.a.a(FilterPagerViewStubHolder.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.2
  * JD-Core Version:    0.7.0.1
  */

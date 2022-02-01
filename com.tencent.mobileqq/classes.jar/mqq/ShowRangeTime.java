@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class ShowRangeTime
   extends JceStruct
 {
-  public long beginTime;
-  public long endTime;
+  public long beginTime = 0L;
+  public long endTime = 0L;
   
   public ShowRangeTime() {}
   

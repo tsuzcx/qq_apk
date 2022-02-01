@@ -51,11 +51,7 @@ public enum AdAnalysis
   
   private String getUIN()
   {
-    AdAnalysisAdapter localAdAnalysisAdapter = getAdapter();
-    if (localAdAnalysisAdapter != null) {
-      return localAdAnalysisAdapter.getUIN();
-    }
-    return null;
+    return AdUin.INSTANCE.getUIN();
   }
   
   private void report(WeakReference<Context> paramWeakReference)
@@ -253,7 +249,7 @@ public enum AdAnalysis
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.analysis.AdAnalysis
  * JD-Core Version:    0.7.0.1
  */

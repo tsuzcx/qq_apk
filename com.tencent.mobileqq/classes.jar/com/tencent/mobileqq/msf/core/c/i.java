@@ -3,35 +3,47 @@ package com.tencent.mobileqq.msf.core.c;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class i
   extends JceStruct
 {
-  static ArrayList b;
-  public ArrayList a = null;
+  static Map e;
+  public String a = "";
+  public long b = 0L;
+  public Map c = null;
+  public boolean d = true;
   
   public i() {}
   
-  public i(ArrayList paramArrayList)
+  public i(String paramString, long paramLong, Map paramMap, boolean paramBoolean)
   {
-    this.a = paramArrayList;
+    this.a = paramString;
+    this.b = paramLong;
+    this.c = paramMap;
+    this.d = paramBoolean;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (b == null)
+    this.a = paramJceInputStream.readString(1, true);
+    this.b = paramJceInputStream.read(this.b, 2, true);
+    if (e == null)
     {
-      b = new ArrayList();
-      j localj = new j();
-      b.add(localj);
+      e = new HashMap();
+      e.put("", "");
     }
-    this.a = ((ArrayList)paramJceInputStream.read(b, 1, true));
+    this.c = ((Map)paramJceInputStream.read(e, 3, true));
+    this.d = paramJceInputStream.read(this.d, 4, true);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 1);
+    paramJceOutputStream.write(this.b, 2);
+    paramJceOutputStream.write(this.c, 3);
+    paramJceOutputStream.write(this.d, 4);
   }
 }
 

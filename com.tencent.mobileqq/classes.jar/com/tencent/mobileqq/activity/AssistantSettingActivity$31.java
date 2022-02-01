@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.Intent;
-import com.tencent.mobileqq.widget.BounceScrollView;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AssistantSettingActivity$31
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  AssistantSettingActivity$31(AssistantSettingActivity paramAssistantSettingActivity) {}
+  AssistantSettingActivity$31(AssistantSettingActivity paramAssistantSettingActivity, SpringFestivalEntryManager paramSpringFestivalEntryManager) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (("haibao".equals(this.this$0.getIntent().getStringExtra("jumpTo"))) && (AssistantSettingActivity.a(this.this$0) != null) && (AssistantSettingActivity.a(this.this$0).getVisibility() == 0)) {
-      this.this$0.a.scrollTo(0, AssistantSettingActivity.a(this.this$0).getTop());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalEntryManager.a(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssistantSettingActivity.31
  * JD-Core Version:    0.7.0.1
  */

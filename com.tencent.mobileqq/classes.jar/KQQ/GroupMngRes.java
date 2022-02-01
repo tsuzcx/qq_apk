@@ -11,18 +11,18 @@ public final class GroupMngRes
   static byte[] cache_vecBody = (byte[])new byte[1];
   static byte[] cache_vecJoinPrompt;
   public String ErrorString = "";
-  public byte cIsInGroup;
-  public byte cIsMemInvite;
-  public long dwDis2GrpLimitType;
-  public short errorCode;
-  public int reqtype;
-  public byte result;
+  public byte cIsInGroup = 0;
+  public byte cIsMemInvite = 0;
+  public long dwDis2GrpLimitType = 0L;
+  public short errorCode = 0;
+  public int reqtype = 0;
+  public byte result = 0;
   public String sAuthGrpInfo = "";
   public String sGroupLocation = "";
   public String sJoinAnswer = "";
   public String sJoinQuestion = "";
-  public byte[] vecBody;
-  public byte[] vecJoinPrompt;
+  public byte[] vecBody = null;
+  public byte[] vecJoinPrompt = null;
   
   static
   {

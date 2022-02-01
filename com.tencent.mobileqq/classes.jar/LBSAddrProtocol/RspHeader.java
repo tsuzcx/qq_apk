@@ -9,8 +9,8 @@ public final class RspHeader
 {
   static int cache_eResult;
   static int cache_eUinType;
-  public int eResult;
-  public int eUinType;
+  public int eResult = 0;
+  public int eUinType = 0;
   public short shVersion = 2;
   public String strCookie = "";
   public String strErrMsg = "";

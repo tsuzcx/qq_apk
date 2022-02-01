@@ -4,9 +4,9 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 public class HexUtil
 {
+  public static final byte[] EMPTYBYTES = new byte[0];
   private static final String TAG = "HexUtil";
   private static final char[] digits = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-  public static final byte[] emptyBytes = new byte[0];
   
   public static String byte2HexStr(byte paramByte)
   {
@@ -73,7 +73,7 @@ public class HexUtil
   {
     Object localObject;
     if ((paramString == null) || (paramString.equals(""))) {
-      localObject = emptyBytes;
+      localObject = EMPTYBYTES;
     }
     for (;;)
     {
@@ -96,7 +96,7 @@ public class HexUtil
         QMLog.d("HexUtil", " === hexStr2Bytes error === " + paramString.toString());
       }
     }
-    return emptyBytes;
+    return EMPTYBYTES;
   }
   
   public static String hexString2String(String paramString)
@@ -172,7 +172,7 @@ public class HexUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.HexUtil
  * JD-Core Version:    0.7.0.1
  */

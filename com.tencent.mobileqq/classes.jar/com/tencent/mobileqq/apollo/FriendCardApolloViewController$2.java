@@ -13,12 +13,12 @@ class FriendCardApolloViewController$2
       return;
     }
     int i = (int)this.this$0.a.getManRectMaxHeight();
-    this.a.a(i);
+    this.a.onApolloExpand(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.FriendCardApolloViewController.2
  * JD-Core Version:    0.7.0.1
  */

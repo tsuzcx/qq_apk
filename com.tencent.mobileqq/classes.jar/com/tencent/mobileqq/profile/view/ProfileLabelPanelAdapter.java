@@ -10,12 +10,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ToggleButton;
-import azvm;
-import azvn;
-import azvp;
 import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
+import com.tencent.mobileqq.profilecard.entity.ProfileLabelInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
@@ -23,14 +20,14 @@ public class ProfileLabelPanelAdapter
   extends PagerAdapter
   implements View.OnClickListener
 {
-  public float a;
+  protected float a;
   protected int a;
-  public Context a;
-  protected SparseArray<azvp> a;
-  protected azvm a;
-  public azvn a;
-  protected azvp a;
+  protected Context a;
+  protected SparseArray<ProfileLabelPanelAdapter.AllLabelGridViewAdapter> a;
   protected PanelRecycleBin a;
+  protected ProfileLabelCallBack a;
+  protected ProfileLabelPanel.LabelStatusManager a;
+  protected ProfileLabelPanelAdapter.AllLabelGridViewAdapter a;
   protected List<ProfileLabelTypeInfo> a;
   
   public ProfileLabelPanelAdapter(Context paramContext, List<ProfileLabelTypeInfo> paramList)
@@ -57,25 +54,25 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Azvp = ((azvp)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Azvp == null)
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter$AllLabelGridViewAdapter = ((ProfileLabelPanelAdapter.AllLabelGridViewAdapter)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter$AllLabelGridViewAdapter == null)
     {
-      this.jdField_a_of_type_Azvp = new azvp(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Azvp);
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter$AllLabelGridViewAdapter = new ProfileLabelPanelAdapter.AllLabelGridViewAdapter(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter$AllLabelGridViewAdapter);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Azvp.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Azvp);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter$AllLabelGridViewAdapter.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter$AllLabelGridViewAdapter);
   }
   
-  public void a(azvm paramazvm)
+  public void a(ProfileLabelCallBack paramProfileLabelCallBack)
   {
-    this.jdField_a_of_type_Azvm = paramazvm;
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelCallBack = paramProfileLabelCallBack;
   }
   
-  public void a(azvn paramazvn)
+  public void a(ProfileLabelPanel.LabelStatusManager paramLabelStatusManager)
   {
-    this.jdField_a_of_type_Azvn = paramazvn;
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager = paramLabelStatusManager;
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
@@ -114,10 +111,10 @@ public class ProfileLabelPanelAdapter
     ToggleButton localToggleButton = (ToggleButton)paramView;
     localToggleButton.toggle();
     ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)paramView.getTag();
-    azvm localazvm;
+    ProfileLabelCallBack localProfileLabelCallBack;
     if (localProfileLabelInfo != null)
     {
-      localazvm = this.jdField_a_of_type_Azvm;
+      localProfileLabelCallBack = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelCallBack;
       if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
         break label64;
       }
@@ -125,7 +122,7 @@ public class ProfileLabelPanelAdapter
     label64:
     for (boolean bool = false;; bool = true)
     {
-      localazvm.a(localProfileLabelInfo, localToggleButton, Boolean.valueOf(bool));
+      localProfileLabelCallBack.a(localProfileLabelInfo, localToggleButton, Boolean.valueOf(bool));
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }

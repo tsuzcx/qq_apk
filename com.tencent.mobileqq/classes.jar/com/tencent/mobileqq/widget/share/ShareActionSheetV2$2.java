@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.widget.share;
 
 import android.graphics.Bitmap;
-import aqdb;
+import com.tencent.mobileqq.armap.FaceObserver;
 
 class ShareActionSheetV2$2
-  implements aqdb
+  implements FaceObserver
 {
   ShareActionSheetV2$2(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
       return;
     }
-    ShareActionSheetV2.access$200(this.this$0, paramString1, paramString2, paramBitmap);
+    ShareActionSheetV2.a(this.a, paramString1, paramString2, paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.2
  * JD-Core Version:    0.7.0.1
  */

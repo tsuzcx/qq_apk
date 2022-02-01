@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.pushdialog;
 
-import bait;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.Date;
 
-public class PushDialogDbUtil$2
+class PushDialogDbUtil$2
   implements Runnable
 {
-  public PushDialogDbUtil$2(bait parambait, EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate) {}
+  PushDialogDbUtil$2(PushDialogDbUtil paramPushDialogDbUtil, EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate) {}
   
   public void run()
   {
-    synchronized (bait.a(this.this$0))
+    synchronized (PushDialogDbUtil.a(this.this$0))
     {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate);
       if (QLog.isColorLevel()) {

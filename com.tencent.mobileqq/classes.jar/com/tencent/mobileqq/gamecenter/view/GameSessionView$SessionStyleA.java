@@ -5,12 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
-import avdu;
-import avfe;
-import avfg;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
 import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo.SimpleMessage;
+import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
 import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -22,26 +20,21 @@ class GameSessionView$SessionStyleA
   private int jdField_a_of_type_Int;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  private GameSessionView$SessionStyleA(GameSessionView paramGameSessionView)
+  protected void a(View paramView, GameSessionView.WrappedMessage paramWrappedMessage)
   {
-    super(paramGameSessionView);
-  }
-  
-  protected void a(View paramView, avfg paramavfg)
-  {
-    super.a(paramView, paramavfg);
-    avfe localavfe = new avfe(paramavfg.a());
-    CornerImageView localCornerImageView = (CornerImageView)paramView.findViewById(2131364648);
-    paramView = (TextView)paramView.findViewById(2131380029);
-    GameSessionView.a(this.this$0, localCornerImageView, localavfe.a());
-    paramView.setText(new QQText(String.format(this.jdField_a_of_type_JavaLangString, new Object[] { localavfe.b(), paramavfg.a.jdField_a_of_type_JavaLangString }), 3, 16));
+    super.a(paramView, paramWrappedMessage);
+    GameSessionView.SessionInfoDecorator localSessionInfoDecorator = new GameSessionView.SessionInfoDecorator(paramWrappedMessage.a());
+    CornerImageView localCornerImageView = (CornerImageView)paramView.findViewById(2131364762);
+    paramView = (TextView)paramView.findViewById(2131380461);
+    GameSessionView.a(this.this$0, localCornerImageView, localSessionInfoDecorator.a());
+    paramView.setText(new QQText(String.format(this.jdField_a_of_type_JavaLangString, new Object[] { localSessionInfoDecorator.b(), paramWrappedMessage.a.jdField_a_of_type_JavaLangString }), 3, 16));
   }
   
   public void a(ViewGroup paramViewGroup)
   {
-    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559248, paramViewGroup, false);
-    a((ViewSwitcher)localView.findViewById(2131372351));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380246));
+    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559284, paramViewGroup, false);
+    a((ViewSwitcher)localView.findViewById(2131372661));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380686));
     localView.setOnClickListener(this);
     paramViewGroup.addView(localView);
   }
@@ -49,7 +42,7 @@ class GameSessionView$SessionStyleA
   public void a(List<GameCenterSessionInfo> paramList, int paramInt)
   {
     super.a(paramList, paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(avdu.a(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(GameMsgUtil.a(paramInt));
     paramList = this.jdField_a_of_type_AndroidWidgetTextView;
     if (paramInt > 0) {}
     for (int i = 0;; i = 4)
@@ -64,15 +57,15 @@ class GameSessionView$SessionStyleA
         paramList = localGameCenterSessionInfo.e();
         str = String.valueOf(localGameCenterSessionInfo.a());
       }
-      avdu.a(paramList, "1", "145", "920", "92001", "207617", "0", str, "", "", "", "", String.valueOf(this.jdField_a_of_type_Int));
+      GameMsgUtil.a(paramList, "1", "145", "920", "92001", "207617", "0", str, "", "", "", "", String.valueOf(this.jdField_a_of_type_Int));
       return;
     }
   }
   
   public View makeView()
   {
-    View localView = LayoutInflater.from(this.this$0.getContext()).inflate(2131559243, a(), false);
-    ((CornerImageView)localView.findViewById(2131364648)).setRadius(AIOUtils.dp2px(15.0F, this.this$0.getResources()));
+    View localView = LayoutInflater.from(this.this$0.getContext()).inflate(2131559279, a(), false);
+    ((CornerImageView)localView.findViewById(2131364762)).setRadius(AIOUtils.a(15.0F, this.this$0.getResources()));
     return localView;
   }
   
@@ -87,13 +80,13 @@ class GameSessionView$SessionStyleA
       str1 = localGameCenterSessionInfo.e();
       str2 = String.valueOf(localGameCenterSessionInfo.a());
     }
-    avdu.a(str1, "1", "145", "920", "92001", "207618", "0", str2, "", "", "", "", String.valueOf(this.jdField_a_of_type_Int));
+    GameMsgUtil.a(str1, "1", "145", "920", "92001", "207618", "0", str2, "", "", "", "", String.valueOf(this.jdField_a_of_type_Int));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.GameSessionView.SessionStyleA
  * JD-Core Version:    0.7.0.1
  */

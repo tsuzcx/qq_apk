@@ -32,8 +32,8 @@ public class VoicePanelContainer
     if (Build.VERSION.SDK_INT >= 26) {}
     for (this.jdField_a_of_type_Int = 2038;; this.jdField_a_of_type_Int = 2002)
     {
-      setId(2131381291);
-      setBackgroundColor(paramContext.getResources().getColor(2131167296));
+      setId(2131381754);
+      setBackgroundColor(paramContext.getResources().getColor(2131167305));
       return;
     }
   }

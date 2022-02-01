@@ -8,7 +8,7 @@ public final class pic_host
   extends JceStruct
 {
   public String nick = "";
-  public long uin;
+  public long uin = 0L;
   
   public pic_host() {}
   
@@ -34,7 +34,7 @@ public final class pic_host
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     photo_share_struct.pic_host
  * JD-Core Version:    0.7.0.1
  */

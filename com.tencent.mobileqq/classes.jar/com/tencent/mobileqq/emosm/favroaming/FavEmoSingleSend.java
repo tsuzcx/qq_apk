@@ -1,32 +1,29 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import anua;
-import asfj;
-import asfk;
-import asfl;
-import azla;
-import azlb;
-import bofz;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FavEmoRoamingHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.CaptureContext;
 import java.util.Timer;
 import tencent.im.msg.im_msg_body.RichText;
 
 public class FavEmoSingleSend
   extends AsyncStep
-  implements azla
+  implements UpCallBack
 {
-  private anua jdField_a_of_type_Anua;
-  private asfk jdField_a_of_type_Asfk;
-  private asfl jdField_a_of_type_Asfl;
+  private FavEmoRoamingHandler jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingHandler;
   private CustomEmotionData jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
+  private FavroamingDBManager jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager;
+  private FavroamingManager jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager;
   private TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private Timer jdField_a_of_type_JavaUtilTimer;
@@ -43,7 +40,7 @@ public class FavEmoSingleSend
   public int a()
   {
     QLog.d("FavEmoSingleSend", 1, new Object[] { "doStep, isResend: ", Boolean.valueOf(this.b), " ", this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData });
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = this.jdField_a_of_type_Asfl.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, this);
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest == null)
     {
       QLog.d("FavEmoSingleSend", 1, "doStep, network not support");
@@ -68,13 +65,20 @@ public class FavEmoSingleSend
     }
   }
   
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
   public void a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)bofz.a();
-    this.jdField_a_of_type_Asfl = ((asfl)localQQAppInterface.getManager(QQManagerFactory.FAV_ROAMING_MANAGER));
-    this.jdField_a_of_type_Asfk = ((asfk)localQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER));
-    this.jdField_a_of_type_Anua = ((anua)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER));
+    QQAppInterface localQQAppInterface = (QQAppInterface)CaptureContext.a();
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager = ((FavroamingManager)localQQAppInterface.getManager(QQManagerFactory.FAV_ROAMING_MANAGER));
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager = ((FavroamingDBManager)localQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER));
+    this.jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingHandler = ((FavEmoRoamingHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER));
   }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
@@ -83,20 +87,15 @@ public class FavEmoSingleSend
     {
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = paramString;
-      this.jdField_a_of_type_Asfk.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_Asfk.a();
-      this.jdField_a_of_type_Anua.notifyUI(2, true, Integer.valueOf(paramInt1));
-      asfj.a(this.jdField_a_of_type_Boolean, paramInt2, paramInt3);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager.a();
+      this.jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingHandler.notifyUI(2, true, Integer.valueOf(paramInt1));
+      FavEmoSendControl.a(this.jdField_a_of_type_Boolean, paramInt2, paramInt3);
       return;
     }
   }
   
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
-  {
-    return null;
-  }
-  
-  public void onSend(azlb arg1)
+  public void b(UpCallBack.SendResult arg1)
   {
     int j = 7;
     if (QLog.isColorLevel()) {
@@ -134,12 +133,10 @@ public class FavEmoSingleSend
       j = 0;
     }
   }
-  
-  public void updateMsg(azlb paramazlb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend
  * JD-Core Version:    0.7.0.1
  */

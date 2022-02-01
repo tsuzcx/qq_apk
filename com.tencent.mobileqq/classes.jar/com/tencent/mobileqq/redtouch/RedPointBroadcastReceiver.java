@@ -3,15 +3,14 @@ package com.tencent.mobileqq.redtouch;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bbbq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -22,7 +21,7 @@ import org.json.JSONObject;
 public class RedPointBroadcastReceiver
   extends BroadcastReceiver
 {
-  private QQAppInterface a;
+  private QQAppInterface a = null;
   
   private String a(String paramString)
   {
@@ -36,7 +35,7 @@ public class RedPointBroadcastReceiver
       }
       return null;
     }
-    paramString = ((bbbq)this.a.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramString);
+    paramString = ((RedTouchManager)this.a.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramString);
     if (paramString == null)
     {
       if (QLog.isColorLevel()) {
@@ -77,7 +76,7 @@ public class RedPointBroadcastReceiver
     if (QLog.isColorLevel()) {
       QLog.d("RedPointBroadcastReceiver clearRed", 2, "path = " + paramString);
     }
-    ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(paramString);
+    ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(paramString);
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -93,13 +92,13 @@ public class RedPointBroadcastReceiver
         JSONObject localJSONObject = new JSONObject();
         try
         {
-          paramString = ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramString);
+          paramString = ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramString);
           localJSONObject.put("service_type", 0);
           localJSONObject.put("act_id", paramInt);
           localJSONObject.put("obj_id", "");
           localJSONObject.put("pay_amt", 0);
           localJSONObject.put("service_id", i);
-          ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).c(paramString, localJSONObject.toString());
+          ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).c(paramString, localJSONObject.toString());
           return;
         }
         catch (JSONException paramQQAppInterface)
@@ -157,7 +156,7 @@ public class RedPointBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedPointBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

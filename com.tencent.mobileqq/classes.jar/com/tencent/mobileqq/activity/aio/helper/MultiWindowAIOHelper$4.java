@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agiy;
-import axem;
+import com.tencent.mobileqq.multiaio.presenter.MultiAioContext;
 
-public class MultiWindowAIOHelper$4
+class MultiWindowAIOHelper$4
   implements Runnable
 {
-  public MultiWindowAIOHelper$4(agiy paramagiy, axem paramaxem) {}
+  MultiWindowAIOHelper$4(MultiWindowAIOHelper paramMultiWindowAIOHelper, MultiAioContext paramMultiAioContext) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class MultiWindowAIOHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper.4
  * JD-Core Version:    0.7.0.1
  */

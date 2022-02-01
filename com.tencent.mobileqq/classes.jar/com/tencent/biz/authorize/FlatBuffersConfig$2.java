@@ -2,12 +2,11 @@ package com.tencent.biz.authorize;
 
 import java.io.File;
 import java.nio.ByteBuffer;
-import nun;
 
-public class FlatBuffersConfig$2
+class FlatBuffersConfig$2
   implements Runnable
 {
-  public FlatBuffersConfig$2(nun paramnun, ByteBuffer paramByteBuffer, File paramFile, boolean paramBoolean) {}
+  FlatBuffersConfig$2(FlatBuffersConfig paramFlatBuffersConfig, ByteBuffer paramByteBuffer, File paramFile, boolean paramBoolean) {}
   
   public void run()
   {
@@ -32,7 +31,7 @@ public class FlatBuffersConfig$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.authorize.FlatBuffersConfig.2
  * JD-Core Version:    0.7.0.1
  */

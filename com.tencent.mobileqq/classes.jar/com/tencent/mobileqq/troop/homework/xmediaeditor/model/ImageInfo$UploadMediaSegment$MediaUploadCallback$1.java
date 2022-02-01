@@ -1,36 +1,32 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import bfun;
-import bfuw;
-import bfuy;
-import bfuz;
-import bfvc;
-import bfvp;
-import bfvx;
-import bfwh;
-import bfwk;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import java.lang.ref.WeakReference;
 
-public class ImageInfo$UploadMediaSegment$MediaUploadCallback$1
+class ImageInfo$UploadMediaSegment$MediaUploadCallback$1
   implements Runnable
 {
-  public ImageInfo$UploadMediaSegment$MediaUploadCallback$1(bfuz parambfuz, bfvc parambfvc) {}
+  ImageInfo$UploadMediaSegment$MediaUploadCallback$1(ImageInfo.UploadMediaSegment.MediaUploadCallback paramMediaUploadCallback, VideoInfo paramVideoInfo) {}
   
   public void run()
   {
-    bfuy.a(this.jdField_a_of_type_Bfuz.a).e = 95;
-    bfuy.a(this.jdField_a_of_type_Bfuz.a).g = -2147483648;
-    XMediaEditor localXMediaEditor = (XMediaEditor)bfuy.a(this.jdField_a_of_type_Bfuz.a).get();
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).e = 95;
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).g = -2147483648;
+    XMediaEditor localXMediaEditor = (XMediaEditor)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).get();
     if (localXMediaEditor != null)
     {
-      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(bfuy.a(this.jdField_a_of_type_Bfuz.a).c);
-      if ((localObject instanceof bfwk))
+      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).c);
+      if ((localObject instanceof VideoItem.VideoViewHolder))
       {
-        localObject = (bfwk)localObject;
-        if (this.jdField_a_of_type_Bfvc.d.equals(((bfwk)localObject).a.getTag())) {
-          ((bfwh)((bfun)localXMediaEditor.getAdapter()).a.a(2)).a((bfvx)localObject, bfuy.a(this.jdField_a_of_type_Bfuz.a), 0);
+        localObject = (VideoItem.VideoViewHolder)localObject;
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject).a.getTag())) {
+          ((VideoItem)((XMediaEditorAdapter)localXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a), 0);
         }
       }
     }

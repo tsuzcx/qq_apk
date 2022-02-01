@@ -1,7 +1,7 @@
 package com.tencent.hippy.qq.update;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.soload.biz.entity.LoadExtResult;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -36,7 +36,7 @@ class HippyQQLibraryManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQLibraryManager.2.1
  * JD-Core Version:    0.7.0.1
  */

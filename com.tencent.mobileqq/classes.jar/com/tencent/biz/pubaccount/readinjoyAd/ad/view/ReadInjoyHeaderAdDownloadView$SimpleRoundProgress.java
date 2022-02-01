@@ -41,7 +41,7 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
@@ -128,7 +128,7 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyHeaderAdDownloadView.SimpleRoundProgress
  * JD-Core Version:    0.7.0.1
  */

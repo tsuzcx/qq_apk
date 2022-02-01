@@ -10,9 +10,9 @@ public final class ExposStuctInfo
   extends JceStruct
 {
   static Map<String, String> cache_extendInfo = new HashMap();
-  public int appid;
-  public Map<String, String> extendInfo;
-  public byte opType;
+  public int appid = 0;
+  public Map<String, String> extendInfo = null;
+  public byte opType = 0;
   public String recordId = "";
   
   static

@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload;
 
-import uic;
+import java.util.Comparator;
 
-public class AdMaterialResManager$5
-  implements Runnable
+class AdMaterialResManager$5
+  implements Comparator<MaterialData>
 {
-  public AdMaterialResManager$5(uic paramuic, MaterialData paramMaterialData) {}
+  AdMaterialResManager$5(AdMaterialResManager paramAdMaterialResManager) {}
   
-  public void run()
+  public int a(MaterialData paramMaterialData1, MaterialData paramMaterialData2)
   {
-    this.this$0.a(uic.a(), this.a, 2);
+    return (int)(paramMaterialData2.start_time - paramMaterialData1.start_time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialResManager.5
  * JD-Core Version:    0.7.0.1
  */

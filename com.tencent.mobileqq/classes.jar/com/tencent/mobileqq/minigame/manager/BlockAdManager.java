@@ -32,8 +32,8 @@ public class BlockAdManager
   private HashMap<Integer, BlockAdInfo> blockAdInfoHashMap = new HashMap();
   private HashMap<Integer, BlockAdView> blockAdViewMap = new HashMap();
   private float mGameDensity = -1.0F;
-  private int mGameHeight;
-  private int mGameWidth;
+  private int mGameHeight = 0;
+  private int mGameWidth = 0;
   
   public static BlockAdManager getInstance()
   {
@@ -92,7 +92,7 @@ public class BlockAdManager
   public float getDensity()
   {
     if (this.mGameDensity == -1.0F) {
-      this.mGameDensity = ViewUtils.getDensity();
+      this.mGameDensity = ViewUtils.a();
     }
     return this.mGameDensity;
   }
@@ -100,7 +100,7 @@ public class BlockAdManager
   public int getGameHeight()
   {
     if (this.mGameHeight == 0) {
-      this.mGameHeight = ViewUtils.getScreenHeight();
+      this.mGameHeight = ViewUtils.b();
     }
     return this.mGameHeight;
   }
@@ -108,7 +108,7 @@ public class BlockAdManager
   public int getGameWidth()
   {
     if (this.mGameWidth == 0) {
-      this.mGameWidth = ViewUtils.getScreenWidth();
+      this.mGameWidth = ViewUtils.a();
     }
     return this.mGameWidth;
   }
@@ -156,7 +156,7 @@ public class BlockAdManager
     }
     for (;;)
     {
-      QLog.i("BlockAdManager", 1, "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + ViewUtils.getDensity() + ", screenW = " + this.mGameWidth + ", screenH = " + this.mGameHeight);
+      QLog.i("BlockAdManager", 1, "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + ViewUtils.a() + ", screenW = " + this.mGameWidth + ", screenH = " + this.mGameHeight);
       return;
       if (this.mGameWidth > this.mGameHeight)
       {

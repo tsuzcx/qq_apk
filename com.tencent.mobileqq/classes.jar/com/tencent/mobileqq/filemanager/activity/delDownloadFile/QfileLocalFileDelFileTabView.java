@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.activity.delDownloadFile;
 
 import android.content.Context;
-import atab;
-import ataf;
-import atdu;
-import atpm;
-import augj;
-import bdla;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter.IQfileViewBinder;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView.ScanParams;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.io.File;
@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class QfileLocalFileDelFileTabView
   extends QfileLocalFileDocTabView
-  implements ataf
+  implements QfileBaseExpandableListAdapter.IQfileViewBinder
 {
   int jdField_a_of_type_Int = -1;
   Pair<String, Integer> jdField_a_of_type_ComTencentUtilPair;
@@ -37,7 +37,7 @@ public class QfileLocalFileDelFileTabView
   final int jdField_c_of_type_Int = 1000;
   List<FileInfo> jdField_c_of_type_JavaUtilList = new ArrayList();
   
-  public QfileLocalFileDelFileTabView(Context paramContext, List<augj> paramList, Pair<String, Integer> paramPair)
+  public QfileLocalFileDelFileTabView(Context paramContext, List<QfileTabBarView.ScanParams> paramList, Pair<String, Integer> paramPair)
   {
     super(paramContext, paramList, false);
     this.jdField_d_of_type_Int = 1;
@@ -137,11 +137,11 @@ public class QfileLocalFileDelFileTabView
     }
   }
   
-  public atab a()
+  public QfileBaseExpandableListAdapter a()
   {
-    atdu localatdu = new atdu(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
-    localatdu.a(this);
-    return localatdu;
+    QfileLocalFileBaseExpandableListAdapter localQfileLocalFileBaseExpandableListAdapter = new QfileLocalFileBaseExpandableListAdapter(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
+    localQfileLocalFileBaseExpandableListAdapter.a(this);
+    return localQfileLocalFileBaseExpandableListAdapter;
   }
   
   public String a(FileInfo paramFileInfo)
@@ -217,7 +217,7 @@ public class QfileLocalFileDelFileTabView
       this.jdField_c_of_type_JavaUtilList.clear();
       i();
       l2 /= 1048576L;
-      bdla.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", b(), 0, "" + l1, "" + l2, "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", b(), 0, "" + l1, "" + l2, "", "");
       return;
     }
   }
@@ -240,8 +240,8 @@ public class QfileLocalFileDelFileTabView
   {
     this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
     this.jdField_c_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    long l = atpm.d() / 1048576L;
-    bdla.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", b(), 0, "" + this.jdField_b_of_type_Int, "" + l, "", "");
+    long l = FMDataCache.d() / 1048576L;
+    ReportController.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", b(), 0, "" + this.jdField_b_of_type_Int, "" + l, "", "");
     super.d();
   }
   
@@ -289,15 +289,15 @@ public class QfileLocalFileDelFileTabView
       i();
       setSelect(0);
       return;
-      bdla.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", b(), 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", b(), 0, "", "", "", "");
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
         this.jdField_c_of_type_JavaUtilLinkedHashMap.put(this.jdField_a_of_type_ComTencentUtilPair.first, this.jdField_a_of_type_JavaUtilList);
         continue;
-        bdla.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", b(), 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", b(), 0, "", "", "", "");
         this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
         continue;
-        bdla.b(null, "dc00898", "", "", "0X800A0CA", "0X800A0CA", b(), 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800A0CA", "0X800A0CA", b(), 0, "", "", "", "");
         this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_b_of_type_JavaUtilLinkedHashMap);
       }
     }
@@ -305,7 +305,7 @@ public class QfileLocalFileDelFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView
  * JD-Core Version:    0.7.0.1
  */

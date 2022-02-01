@@ -2,17 +2,15 @@ package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import common.config.service.QzoneConfig;
-import cooperation.qzone.QUA;
-import cooperation.qzone.util.NetworkState;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReportInfo_DC01796
   implements LpReportInfo
@@ -44,17 +42,17 @@ public class LpReportInfo_DC01796
     HashMap localHashMap = new HashMap();
     if (this.reportObj != null)
     {
-      localHashMap.put("Uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      localHashMap.put("Uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
       localHashMap.put("tabletype", String.valueOf(12));
       LpReportUtils.safePut(localHashMap, "LogTime", getStringDate());
       localHashMap.put("Event", "download");
       localHashMap.put("RetCode", String.valueOf(this.reportObj.retCode));
       localHashMap.put("TimeCost", String.valueOf(this.reportObj.elapse));
-      localHashMap.put("network", String.valueOf(NetworkState.getNetworkType()));
+      localHashMap.put("network", String.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getNetworkType()));
       LpReportUtils.safePut(localHashMap, "url", URLEncoder.encode(this.reportObj.url));
       localHashMap.put("size", String.valueOf(this.reportObj.fileSize));
       localHashMap.put("terminal", "Android-QzoneInQQ");
-      LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
+      LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
       LpReportUtils.safePut(localHashMap, "client_ip", this.reportObj.clientip);
       localHashMap.put("retry", String.valueOf(this.reportObj.retry));
       localHashMap.put("flow", String.valueOf(this.reportObj.flow));
@@ -62,10 +60,10 @@ public class LpReportInfo_DC01796
       localHashMap.put("TotalTime", String.valueOf(this.reportObj.totaltime));
       i = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadLinkReportSample", 2);
       if (this.reportObj.retCode != 0) {
-        break label475;
+        break label499;
       }
     }
-    label475:
+    label499:
     for (int i = 100 / i;; i = 1)
     {
       localHashMap.put("freq", String.valueOf(i));
@@ -92,7 +90,7 @@ public class LpReportInfo_DC01796
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC01796
  * JD-Core Version:    0.7.0.1
  */

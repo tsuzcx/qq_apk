@@ -242,7 +242,7 @@ final class lw$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.lw.d
  * JD-Core Version:    0.7.0.1
  */

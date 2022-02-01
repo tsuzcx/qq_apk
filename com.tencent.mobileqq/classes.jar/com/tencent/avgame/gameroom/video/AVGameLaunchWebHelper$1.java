@@ -1,20 +1,18 @@
 package com.tencent.avgame.gameroom.video;
 
-import nmf;
-
-public class AVGameLaunchWebHelper$1
+class AVGameLaunchWebHelper$1
   implements Runnable
 {
-  public AVGameLaunchWebHelper$1(nmf paramnmf) {}
+  AVGameLaunchWebHelper$1(AVGameLaunchWebHelper paramAVGameLaunchWebHelper) {}
   
   public void run()
   {
-    nmf.a(this.this$0);
+    AVGameLaunchWebHelper.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameLaunchWebHelper.1
  * JD-Core Version:    0.7.0.1
  */

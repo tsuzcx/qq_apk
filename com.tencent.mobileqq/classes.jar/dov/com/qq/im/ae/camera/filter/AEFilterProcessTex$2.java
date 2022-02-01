@@ -1,33 +1,33 @@
 package dov.com.qq.im.ae.camera.filter;
 
-import bnaz;
-import com.tencent.aekit.api.standard.filter.AEFilterManager;
-import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
+import android.util.Log;
+import java.util.HashMap;
+import org.light.listener.LightAssetListener;
 
-public class AEFilterProcessTex$2
-  implements Runnable
+class AEFilterProcessTex$2
+  implements LightAssetListener
 {
-  public AEFilterProcessTex$2(bnaz parambnaz, boolean paramBoolean) {}
+  AEFilterProcessTex$2(AEFilterProcessTex paramAEFilterProcessTex) {}
   
-  public void run()
+  public void OnAssetProcessing(HashMap<String, String> paramHashMap)
   {
-    if (bnaz.a(this.this$0) != null)
-    {
-      bnaz.a(this.this$0).switchFilterOn(111, this.a);
-      if (this.a) {
-        bnaz.a(this.this$0).setBeautyOrTransformLevel(BeautyRealConfig.TYPE.COLOR_TONE, 0);
-      }
+    Log.d("AEFilterProcessTex", "OnAssetProcessing: " + paramHashMap);
+    if (AEFilterProcessTex.a(this.a) != null) {
+      AEFilterProcessTex.a(this.a).OnAssetProcessing(paramHashMap);
     }
-    else
-    {
-      return;
+  }
+  
+  public void OnLoadAssetError(int paramInt)
+  {
+    Log.d("AEFilterProcessTex", "OnLoadAssetError: " + paramInt);
+    if (AEFilterProcessTex.a(this.a) != null) {
+      AEFilterProcessTex.a(this.a).OnLoadAssetError(paramInt);
     }
-    bnaz.a(this.this$0).setBeautyOrTransformLevel(BeautyRealConfig.TYPE.COLOR_TONE, 50);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.filter.AEFilterProcessTex.2
  * JD-Core Version:    0.7.0.1
  */

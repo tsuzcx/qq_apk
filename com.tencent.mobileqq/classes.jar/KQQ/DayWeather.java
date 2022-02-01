@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class DayWeather
   extends JceStruct
 {
-  public int WeatherId;
+  public int WeatherId = 0;
   public String bWeather = "";
   public String bWind = "";
   public String eWeather = "";
   public String eWind = "";
-  public int highTemp;
-  public int lowTemp;
+  public int highTemp = 0;
+  public int lowTemp = 0;
   
   public DayWeather() {}
   

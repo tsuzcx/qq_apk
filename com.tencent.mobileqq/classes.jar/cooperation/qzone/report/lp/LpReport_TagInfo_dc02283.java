@@ -1,9 +1,9 @@
 package cooperation.qzone.report.lp;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReport_TagInfo_dc02283
   implements LpReportInfo
@@ -26,7 +26,7 @@ public class LpReport_TagInfo_dc02283
   {
     HashMap localHashMap = new HashMap();
     if (this.uin <= 1000L) {}
-    for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
+    for (String str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();; str = String.valueOf(this.uin))
     {
       localHashMap.put("uin", str);
       localHashMap.put("operation_id", String.valueOf(this.operation_id));
@@ -42,7 +42,7 @@ public class LpReport_TagInfo_dc02283
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_TagInfo_dc02283
  * JD-Core Version:    0.7.0.1
  */

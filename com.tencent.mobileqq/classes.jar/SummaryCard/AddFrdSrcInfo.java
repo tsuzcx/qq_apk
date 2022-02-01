@@ -8,8 +8,8 @@ public final class AddFrdSrcInfo
   extends JceStruct
 {
   public String strSrcName = "";
-  public long uSrcId;
-  public long uSubSrcId;
+  public long uSrcId = 0L;
+  public long uSubSrcId = 0L;
   
   public AddFrdSrcInfo() {}
   
@@ -38,7 +38,7 @@ public final class AddFrdSrcInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.AddFrdSrcInfo
  * JD-Core Version:    0.7.0.1
  */

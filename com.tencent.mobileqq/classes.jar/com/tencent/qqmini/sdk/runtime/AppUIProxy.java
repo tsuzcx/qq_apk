@@ -40,6 +40,11 @@ public class AppUIProxy
   private AppUIProxy.LoadingUI mLoadingUI;
   private final AppRuntimeEventCenter.RuntimeStateObserver mObserver = new AppUIProxy.1(this);
   
+  private boolean isLaunchFromAppIdWithoutEntryPath(MiniAppInfo paramMiniAppInfo)
+  {
+    return (paramMiniAppInfo.isStartFromAppId()) && (TextUtils.isEmpty(paramMiniAppInfo.launchParam.entryPath));
+  }
+  
   private void showKingcardTip()
   {
     QMLog.i("minisdk-start_UIProxy", "showKingcardTip");
@@ -187,7 +192,7 @@ public class AppUIProxy
     if (paramBaseRuntimeLoader.isLoadSucceed())
     {
       localObject = paramBaseRuntimeLoader.getMiniAppInfo();
-      if ((paramMiniAppInfo.isShortcutFakeApp()) || (paramMiniAppInfo.launchParam.fromBackToMiniApp()))
+      if ((paramMiniAppInfo.isShortcutFakeApp()) || (paramMiniAppInfo.launchParam.fromBackToMiniApp()) || (isLaunchFromAppIdWithoutEntryPath(paramMiniAppInfo)))
       {
         ((MiniAppInfo)localObject).launchParam.clone(paramMiniAppInfo.launchParam);
         paramBaseRuntimeLoader.onAttachActivity(this.mActivity, null, this.mRootLayout);
@@ -278,7 +283,7 @@ public class AppUIProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppUIProxy
  * JD-Core Version:    0.7.0.1
  */

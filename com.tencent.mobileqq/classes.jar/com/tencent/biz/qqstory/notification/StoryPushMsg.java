@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import wyz;
 
 public class StoryPushMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<StoryPushMsg> CREATOR = new wyz();
+  public static final Parcelable.Creator<StoryPushMsg> CREATOR = new StoryPushMsg.1();
   public int a;
   public long a;
   public Bundle a;
@@ -26,6 +25,7 @@ public class StoryPushMsg
   
   public StoryPushMsg(int paramInt1, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4, int paramInt2, String paramString5, String paramString6, String paramString7)
   {
+    this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_AndroidOsBundle = new Bundle();
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_JavaLangString = paramString1;
@@ -89,7 +89,7 @@ public class StoryPushMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.notification.StoryPushMsg
  * JD-Core Version:    0.7.0.1
  */

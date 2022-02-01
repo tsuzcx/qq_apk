@@ -1,25 +1,22 @@
 package com.tencent.mobileqq.ark.vipreport;
 
-import aqch;
-import aqci;
-import aqcj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public final class ArkVipReporter$1
+final class ArkVipReporter$1
   implements Runnable
 {
-  public ArkVipReporter$1(String paramString, aqcj paramaqcj) {}
+  ArkVipReporter$1(String paramString, ArkVipSceneConfig paramArkVipSceneConfig) {}
   
   public void run()
   {
     synchronized ()
     {
-      aqch localaqch = (aqch)aqci.a().get(this.jdField_a_of_type_JavaLangString);
-      if ((localaqch != null) && (Math.abs(System.currentTimeMillis() - localaqch.a) >= this.jdField_a_of_type_Aqcj.a))
+      ArkVipReportScene localArkVipReportScene = (ArkVipReportScene)ArkVipReporter.a().get(this.jdField_a_of_type_JavaLangString);
+      if ((localArkVipReportScene != null) && (Math.abs(System.currentTimeMillis() - localArkVipReportScene.a) >= this.jdField_a_of_type_ComTencentMobileqqArkVipreportArkVipSceneConfig.a))
       {
         QLog.i("ArkVipReporter", 1, "startSceneByEvent() find timeout scene and report:" + this.jdField_a_of_type_JavaLangString);
-        aqci.a(this.jdField_a_of_type_JavaLangString);
+        ArkVipReporter.a(this.jdField_a_of_type_JavaLangString);
       }
       return;
     }

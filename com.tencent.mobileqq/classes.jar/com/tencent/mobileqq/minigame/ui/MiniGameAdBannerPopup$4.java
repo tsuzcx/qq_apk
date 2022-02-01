@@ -3,7 +3,6 @@ package com.tencent.mobileqq.minigame.ui;
 import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 
 final class MiniGameAdBannerPopup$4
@@ -15,7 +14,6 @@ final class MiniGameAdBannerPopup$4
   {
     this.val$dialog.dismiss();
     MiniGameAdBannerPopup.access$300(this.val$adItem, this.val$type, 122);
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

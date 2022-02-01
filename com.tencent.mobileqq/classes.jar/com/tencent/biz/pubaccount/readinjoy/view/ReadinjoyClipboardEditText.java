@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import tco;
 
 public class ReadinjoyClipboardEditText
   extends EditText
 {
-  private tco a;
+  private ReadinjoyClipboardEditText.IClipboardCallBack a;
   
   public ReadinjoyClipboardEditText(Context paramContext)
   {
@@ -49,14 +48,14 @@ public class ReadinjoyClipboardEditText
     }
   }
   
-  public void setClipboardCallBack(tco paramtco)
+  public void setClipboardCallBack(ReadinjoyClipboardEditText.IClipboardCallBack paramIClipboardCallBack)
   {
-    this.a = paramtco;
+    this.a = paramIClipboardCallBack;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyClipboardEditText
  * JD-Core Version:    0.7.0.1
  */

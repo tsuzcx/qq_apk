@@ -4,8 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import apcc;
-import aphy;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorConfigInfo;
 import com.tencent.mobileqq.ar.model.ARRelationShip;
 import com.tencent.mobileqq.ar.model.ArAwardInfo;
 import com.tencent.mobileqq.ar.model.ArFeatureInfo;
@@ -19,10 +18,10 @@ import java.util.ArrayList;
 public class ArCloudConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArCloudConfigInfo> CREATOR = new aphy();
+  public static final Parcelable.Creator<ArCloudConfigInfo> CREATOR = new ArCloudConfigInfo.1();
   public static int f = 3;
   public int a;
-  public apcc a;
+  public ARTransferDoorConfigInfo a;
   public ARRelationShip a;
   public ArAwardInfo a;
   public ArFeatureInfo a;
@@ -42,11 +41,15 @@ public class ArCloudConfigInfo
   public ArCloudConfigInfo()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo = null;
   }
   
-  public ArCloudConfigInfo(Parcel paramParcel)
+  protected ArCloudConfigInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo = null;
     this.jdField_a_of_type_Boolean = true;
     QLog.i("ArCloudConfigInfo", 1, "readParcel  start ");
     this.jdField_a_of_type_Int = paramParcel.readInt();

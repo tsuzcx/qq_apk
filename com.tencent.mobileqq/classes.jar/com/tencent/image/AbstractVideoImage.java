@@ -3,7 +3,8 @@ package com.tencent.image;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -12,9 +13,9 @@ public abstract class AbstractVideoImage
 {
   private static final int PENDING_ACTION_CAPACITY = 100;
   private static final String TAG = AbstractVideoImage.class.getSimpleName();
-  public static boolean loopEnable = true;
-  protected static Object sPauseLock;
-  protected static volatile boolean sPaused = false;
+  public static boolean loopEnable;
+  protected static Object sPauseLock = new Object();
+  protected static volatile boolean sPaused;
   protected static final ArrayList<WeakReference<AbstractVideoImage>> sPendingActions = new AbstractVideoImage.1(105);
   public float mDefaultRoundCorner = 5.0F;
   private int mDensity = 160;
@@ -26,7 +27,8 @@ public abstract class AbstractVideoImage
   
   static
   {
-    sPauseLock = new Object();
+    loopEnable = true;
+    sPaused = false;
   }
   
   public static final void pauseAll()
@@ -34,8 +36,8 @@ public abstract class AbstractVideoImage
     if (!sPaused)
     {
       sPaused = true;
-      if (QLog.isColorLevel()) {
-        QLog.d(TAG, 2, " pauseAll ");
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d(TAG, 2, " pauseAll ");
       }
     }
   }
@@ -44,8 +46,8 @@ public abstract class AbstractVideoImage
   {
     if (sPaused)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(TAG, 2, " resumeAll ");
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d(TAG, 2, " resumeAll ");
       }
       synchronized (sPauseLock)
       {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
 import com.tencent.qqmini.sdk.R.id;
 import com.tencent.qqmini.sdk.R.layout;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.ui.MiniBaseFragment;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
@@ -55,6 +58,15 @@ public class AddPhoneNumberFragment
     mSecond = paramInt;
     this.mSendSmsCodeBtn.setText("有效期(" + mSecond + ")");
     this.mHandler.postDelayed(this.runnableCountdown, 1000L);
+  }
+  
+  private void sendVerifySmsCodeRequest()
+  {
+    if (!TextUtils.isEmpty(this.mSmsCode))
+    {
+      ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+      localChannelProxy.sendVerifySmsCodeRequest(this.mSmsCode, this.mPhoneNumber, "+86", new AddPhoneNumberFragment.10(this, localChannelProxy));
+    }
   }
   
   public void onBackPressed()
@@ -128,7 +140,7 @@ public class AddPhoneNumberFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.AddPhoneNumberFragment
  * JD-Core Version:    0.7.0.1
  */

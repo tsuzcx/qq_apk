@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.location.ui;
 
-import awln;
-import awlo;
-import awlp;
-
-public class LocationPoiDataFromMapHelper$1$2
+class LocationPoiDataFromMapHelper$1$2
   implements Runnable
 {
-  public LocationPoiDataFromMapHelper$1$2(awlo paramawlo) {}
+  LocationPoiDataFromMapHelper$1$2(LocationPoiDataFromMapHelper.1 param1) {}
   
   public void run()
   {
-    awln.a(this.a.a).a(awln.a(this.a.a));
+    LocationPoiDataFromMapHelper.a(this.a.a).a(LocationPoiDataFromMapHelper.a(this.a.a));
   }
 }
 

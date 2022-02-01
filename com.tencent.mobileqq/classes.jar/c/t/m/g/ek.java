@@ -760,7 +760,7 @@ public final class ek
     //   219: invokevirtual 407	com/tencent/map/geolocation/TencentLocationRequest:getInterval	()J
     //   222: lconst_0
     //   223: lcmp
-    //   224: ifne +1276 -> 1500
+    //   224: ifne +1284 -> 1508
     //   227: ldc2_w 769
     //   230: lstore 5
     //   232: aload 9
@@ -775,11 +775,11 @@ public final class ek
     //   256: invokestatic 784	android/os/Looper:prepare	()V
     //   259: aload_0
     //   260: getfield 307	c/t/m/g/ek:o	Lc/t/m/g/ek$a;
-    //   263: ifnonnull +1246 -> 1509
+    //   263: ifnonnull +1254 -> 1517
     //   266: iconst_1
     //   267: istore 4
     //   269: iload 4
-    //   271: ifeq +1244 -> 1515
+    //   271: ifeq +1252 -> 1523
     //   274: aload_0
     //   275: new 309	c/t/m/g/ek$a
     //   278: dup
@@ -889,12 +889,12 @@ public final class ek
     //   499: pop
     //   500: aload_0
     //   501: getfield 221	c/t/m/g/ek:r	Z
-    //   504: ifeq +1076 -> 1580
+    //   504: ifeq +1084 -> 1588
     //   507: iload 7
     //   509: ifeq +129 -> 638
     //   512: aload_0
     //   513: getfield 233	c/t/m/g/ek:q	Lc/t/m/g/en;
-    //   516: ifnull +1034 -> 1550
+    //   516: ifnull +1042 -> 1558
     //   519: iconst_1
     //   520: istore 4
     //   522: iload 4
@@ -966,7 +966,7 @@ public final class ek
     //   660: ifeq +99 -> 759
     //   663: aload_0
     //   664: getfield 228	c/t/m/g/ek:t	Lc/t/m/g/er;
-    //   667: ifnull +1065 -> 1732
+    //   667: ifnull +1073 -> 1740
     //   670: iconst_1
     //   671: istore 4
     //   673: iload 4
@@ -1029,7 +1029,7 @@ public final class ek
     //   786: putfield 706	c/t/m/g/ek:O	Z
     //   789: aload_0
     //   790: getfield 238	c/t/m/g/ek:s	Lc/t/m/g/ej;
-    //   793: ifnull +945 -> 1738
+    //   793: ifnull +953 -> 1746
     //   796: iconst_1
     //   797: istore 4
     //   799: iload 4
@@ -1044,7 +1044,7 @@ public final class ek
     //   819: aload_0
     //   820: getfield 145	c/t/m/g/ek:a	I
     //   823: iconst_1
-    //   824: if_icmpne +920 -> 1744
+    //   824: if_icmpne +928 -> 1752
     //   827: iconst_1
     //   828: istore 7
     //   830: aload_2
@@ -1085,7 +1085,7 @@ public final class ek
     //   902: invokespecial 920	android/os/Handler:<init>	(Landroid/os/Looper;)V
     //   905: putfield 921	c/t/m/g/ej:i	Landroid/os/Handler;
     //   908: iload 8
-    //   910: ifne +840 -> 1750
+    //   910: ifne +848 -> 1758
     //   913: aload_2
     //   914: getfield 912	c/t/m/g/ej:b	Lc/t/m/g/ea;
     //   917: getfield 915	c/t/m/g/ea:h	Landroid/location/LocationManager;
@@ -1139,11 +1139,11 @@ public final class ek
     //   1022: invokevirtual 944	c/t/m/g/eh:a	(Landroid/os/Handler;Lcom/tencent/map/geolocation/TencentDirectionListener;)I
     //   1025: pop
     //   1026: iload 8
-    //   1028: ifne +139 -> 1167
+    //   1028: ifne +147 -> 1175
     //   1031: aload_0
     //   1032: getfield 175	c/t/m/g/ek:J	Lcom/tencent/map/geolocation/TencentLocationRequest;
     //   1035: invokevirtual 947	com/tencent/map/geolocation/TencentLocationRequest:isAllowPedometer	()Z
-    //   1038: ifeq +129 -> 1167
+    //   1038: ifeq +137 -> 1175
     //   1041: aload_0
     //   1042: getfield 214	c/t/m/g/ek:c	Lc/t/m/g/el;
     //   1045: astore_2
@@ -1167,375 +1167,378 @@ public final class ek
     //   1087: getfield 965	c/t/m/g/el:a	Lc/t/m/g/dv;
     //   1090: aload_2
     //   1091: putfield 970	c/t/m/g/dv:i	Lc/t/m/g/ee;
-    //   1094: aload_2
-    //   1095: getstatic 949	c/t/m/g/el:f	Landroid/content/Context;
-    //   1098: ldc_w 972
-    //   1101: invokevirtual 976	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   1104: checkcast 978	android/hardware/SensorManager
-    //   1107: putfield 981	c/t/m/g/el:b	Landroid/hardware/SensorManager;
-    //   1110: aload_2
-    //   1111: getfield 981	c/t/m/g/el:b	Landroid/hardware/SensorManager;
-    //   1114: ifnull +49 -> 1163
-    //   1117: aload_2
+    //   1094: getstatic 219	android/os/Build$VERSION:SDK_INT	I
+    //   1097: bipush 23
+    //   1099: if_icmpeq +19 -> 1118
+    //   1102: aload_2
+    //   1103: getstatic 949	c/t/m/g/el:f	Landroid/content/Context;
+    //   1106: ldc_w 972
+    //   1109: invokevirtual 976	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   1112: checkcast 978	android/hardware/SensorManager
+    //   1115: putfield 981	c/t/m/g/el:b	Landroid/hardware/SensorManager;
     //   1118: aload_2
     //   1119: getfield 981	c/t/m/g/el:b	Landroid/hardware/SensorManager;
-    //   1122: iconst_1
-    //   1123: invokevirtual 985	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
-    //   1126: putfield 988	c/t/m/g/el:c	Landroid/hardware/Sensor;
-    //   1129: aload_2
-    //   1130: aload_2
-    //   1131: getfield 981	c/t/m/g/el:b	Landroid/hardware/SensorManager;
-    //   1134: bipush 10
-    //   1136: invokevirtual 985	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
-    //   1139: putfield 990	c/t/m/g/el:d	Landroid/hardware/Sensor;
-    //   1142: getstatic 219	android/os/Build$VERSION:SDK_INT	I
-    //   1145: bipush 19
-    //   1147: if_icmplt +16 -> 1163
-    //   1150: aload_2
-    //   1151: aload_2
-    //   1152: getfield 981	c/t/m/g/el:b	Landroid/hardware/SensorManager;
-    //   1155: bipush 19
-    //   1157: invokevirtual 985	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
-    //   1160: putfield 992	c/t/m/g/el:e	Landroid/hardware/Sensor;
-    //   1163: aload_2
-    //   1164: invokevirtual 993	c/t/m/g/el:d	()V
-    //   1167: invokestatic 532	c/t/m/g/da:a	()Lc/t/m/g/da;
-    //   1170: ldc 128
-    //   1172: invokevirtual 995	c/t/m/g/da:b	(Ljava/lang/String;)I
-    //   1175: istore 4
-    //   1177: iload 4
-    //   1179: iconst_1
-    //   1180: if_icmpeq +9 -> 1189
-    //   1183: iload 4
-    //   1185: iconst_2
-    //   1186: if_icmpne +28 -> 1214
-    //   1189: aload_0
-    //   1190: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
-    //   1193: ifnonnull +21 -> 1214
-    //   1196: aload_0
-    //   1197: new 610	c/t/m/g/co
-    //   1200: dup
-    //   1201: aload_0
-    //   1202: getfield 179	c/t/m/g/ek:F	Lc/t/m/g/ea;
-    //   1205: getfield 200	c/t/m/g/ea:a	Landroid/content/Context;
-    //   1208: invokespecial 998	c/t/m/g/co:<init>	(Landroid/content/Context;)V
-    //   1211: putfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
-    //   1214: aload_0
-    //   1215: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
-    //   1218: ifnull +260 -> 1478
-    //   1221: aload_1
-    //   1222: ifnull +256 -> 1478
-    //   1225: new 437	java/lang/StringBuilder
-    //   1228: dup
-    //   1229: ldc_w 1000
-    //   1232: invokespecial 442	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1235: iload 4
-    //   1237: invokevirtual 696	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1240: ldc_w 1002
-    //   1243: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1246: iload 8
-    //   1248: invokevirtual 1005	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1251: ldc_w 1007
-    //   1254: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1257: pop
-    //   1258: iload 4
-    //   1260: iconst_2
-    //   1261: if_icmpeq +14 -> 1275
-    //   1264: iload 4
-    //   1266: iconst_1
-    //   1267: if_icmpne +211 -> 1478
-    //   1270: iload 8
-    //   1272: ifne +206 -> 1478
-    //   1275: aload_0
-    //   1276: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
-    //   1279: astore_3
-    //   1280: aload_0
-    //   1281: invokespecial 1009	c/t/m/g/ek:i	()Lc/t/m/g/dt;
-    //   1284: astore_2
-    //   1285: aload_3
-    //   1286: getfield 1012	c/t/m/g/co:a	[B
-    //   1289: astore_3
-    //   1290: aload_3
-    //   1291: monitorenter
-    //   1292: aload_2
-    //   1293: putstatic 1017	c/t/m/g/cu:i	Lc/t/m/g/dt;
-    //   1296: invokestatic 1019	c/t/m/g/co:e	()Z
-    //   1299: ifeq +75 -> 1374
-    //   1302: new 437	java/lang/StringBuilder
-    //   1305: dup
-    //   1306: ldc_w 1021
-    //   1309: invokespecial 442	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1312: aload_2
-    //   1313: getfield 1023	c/t/m/g/dt:b	Ljava/lang/String;
-    //   1316: invokestatic 1024	c/t/m/g/dt:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   1319: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1322: ldc_w 1026
-    //   1325: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1328: aload_2
-    //   1329: getfield 1028	c/t/m/g/dt:a	Ljava/lang/String;
-    //   1332: invokestatic 1024	c/t/m/g/dt:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   1335: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1338: ldc_w 278
-    //   1341: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1344: getstatic 1033	android/os/Build:MANUFACTURER	Ljava/lang/String;
-    //   1347: invokestatic 1024	c/t/m/g/dt:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   1350: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1353: ldc_w 278
-    //   1356: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1359: getstatic 1036	android/os/Build:MODEL	Ljava/lang/String;
-    //   1362: invokestatic 1024	c/t/m/g/dt:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   1365: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1368: invokevirtual 1038	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1371: invokestatic 1039	c/t/m/g/co:a	(Ljava/lang/String;)V
-    //   1374: aload_3
-    //   1375: monitorexit
-    //   1376: aload_0
-    //   1377: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
-    //   1380: ldc_w 1041
-    //   1383: invokestatic 532	c/t/m/g/da:a	()Lc/t/m/g/da;
-    //   1386: ldc 132
-    //   1388: invokevirtual 1042	c/t/m/g/da:e	(Ljava/lang/String;)Ljava/lang/String;
-    //   1391: invokevirtual 1045	c/t/m/g/co:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1394: aload_0
-    //   1395: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
-    //   1398: ldc_w 1047
-    //   1401: ldc 116
-    //   1403: invokevirtual 1045	c/t/m/g/co:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1406: aload_0
-    //   1407: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
-    //   1410: astore_3
-    //   1411: aload_1
-    //   1412: invokevirtual 1048	android/os/Handler:getLooper	()Landroid/os/Looper;
-    //   1415: astore_2
-    //   1416: aload_3
-    //   1417: getfield 1012	c/t/m/g/co:a	[B
-    //   1420: astore 9
-    //   1422: aload 9
-    //   1424: monitorenter
-    //   1425: ldc_w 1050
-    //   1428: invokestatic 1039	c/t/m/g/co:a	(Ljava/lang/String;)V
-    //   1431: aload_3
-    //   1432: invokevirtual 1051	c/t/m/g/co:d	()V
-    //   1435: aload_3
-    //   1436: getfield 1054	c/t/m/g/co:b	Lc/t/m/g/cq;
-    //   1439: ifnull +36 -> 1475
-    //   1442: aload_2
-    //   1443: astore_1
-    //   1444: aload_2
-    //   1445: ifnonnull +21 -> 1466
-    //   1448: aload_3
-    //   1449: ldc_w 1056
-    //   1452: invokestatic 1061	c/t/m/g/ds:a	(Ljava/lang/String;)Landroid/os/HandlerThread;
-    //   1455: putfield 1063	c/t/m/g/co:c	Landroid/os/HandlerThread;
-    //   1458: aload_3
-    //   1459: getfield 1063	c/t/m/g/co:c	Landroid/os/HandlerThread;
-    //   1462: invokevirtual 577	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   1465: astore_1
+    //   1122: ifnull +49 -> 1171
+    //   1125: aload_2
+    //   1126: aload_2
+    //   1127: getfield 981	c/t/m/g/el:b	Landroid/hardware/SensorManager;
+    //   1130: iconst_1
+    //   1131: invokevirtual 985	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
+    //   1134: putfield 988	c/t/m/g/el:c	Landroid/hardware/Sensor;
+    //   1137: aload_2
+    //   1138: aload_2
+    //   1139: getfield 981	c/t/m/g/el:b	Landroid/hardware/SensorManager;
+    //   1142: bipush 10
+    //   1144: invokevirtual 985	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
+    //   1147: putfield 990	c/t/m/g/el:d	Landroid/hardware/Sensor;
+    //   1150: getstatic 219	android/os/Build$VERSION:SDK_INT	I
+    //   1153: bipush 19
+    //   1155: if_icmplt +16 -> 1171
+    //   1158: aload_2
+    //   1159: aload_2
+    //   1160: getfield 981	c/t/m/g/el:b	Landroid/hardware/SensorManager;
+    //   1163: bipush 19
+    //   1165: invokevirtual 985	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
+    //   1168: putfield 992	c/t/m/g/el:e	Landroid/hardware/Sensor;
+    //   1171: aload_2
+    //   1172: invokevirtual 993	c/t/m/g/el:d	()V
+    //   1175: invokestatic 532	c/t/m/g/da:a	()Lc/t/m/g/da;
+    //   1178: ldc 128
+    //   1180: invokevirtual 995	c/t/m/g/da:b	(Ljava/lang/String;)I
+    //   1183: istore 4
+    //   1185: iload 4
+    //   1187: iconst_1
+    //   1188: if_icmpeq +9 -> 1197
+    //   1191: iload 4
+    //   1193: iconst_2
+    //   1194: if_icmpne +28 -> 1222
+    //   1197: aload_0
+    //   1198: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
+    //   1201: ifnonnull +21 -> 1222
+    //   1204: aload_0
+    //   1205: new 610	c/t/m/g/co
+    //   1208: dup
+    //   1209: aload_0
+    //   1210: getfield 179	c/t/m/g/ek:F	Lc/t/m/g/ea;
+    //   1213: getfield 200	c/t/m/g/ea:a	Landroid/content/Context;
+    //   1216: invokespecial 998	c/t/m/g/co:<init>	(Landroid/content/Context;)V
+    //   1219: putfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
+    //   1222: aload_0
+    //   1223: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
+    //   1226: ifnull +260 -> 1486
+    //   1229: aload_1
+    //   1230: ifnull +256 -> 1486
+    //   1233: new 437	java/lang/StringBuilder
+    //   1236: dup
+    //   1237: ldc_w 1000
+    //   1240: invokespecial 442	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1243: iload 4
+    //   1245: invokevirtual 696	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1248: ldc_w 1002
+    //   1251: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1254: iload 8
+    //   1256: invokevirtual 1005	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1259: ldc_w 1007
+    //   1262: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1265: pop
+    //   1266: iload 4
+    //   1268: iconst_2
+    //   1269: if_icmpeq +14 -> 1283
+    //   1272: iload 4
+    //   1274: iconst_1
+    //   1275: if_icmpne +211 -> 1486
+    //   1278: iload 8
+    //   1280: ifne +206 -> 1486
+    //   1283: aload_0
+    //   1284: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
+    //   1287: astore_3
+    //   1288: aload_0
+    //   1289: invokespecial 1009	c/t/m/g/ek:i	()Lc/t/m/g/dt;
+    //   1292: astore_2
+    //   1293: aload_3
+    //   1294: getfield 1012	c/t/m/g/co:a	[B
+    //   1297: astore_3
+    //   1298: aload_3
+    //   1299: monitorenter
+    //   1300: aload_2
+    //   1301: putstatic 1017	c/t/m/g/cu:i	Lc/t/m/g/dt;
+    //   1304: invokestatic 1019	c/t/m/g/co:e	()Z
+    //   1307: ifeq +75 -> 1382
+    //   1310: new 437	java/lang/StringBuilder
+    //   1313: dup
+    //   1314: ldc_w 1021
+    //   1317: invokespecial 442	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1320: aload_2
+    //   1321: getfield 1023	c/t/m/g/dt:b	Ljava/lang/String;
+    //   1324: invokestatic 1024	c/t/m/g/dt:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1327: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1330: ldc_w 1026
+    //   1333: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1336: aload_2
+    //   1337: getfield 1028	c/t/m/g/dt:a	Ljava/lang/String;
+    //   1340: invokestatic 1024	c/t/m/g/dt:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1343: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1346: ldc_w 278
+    //   1349: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1352: getstatic 1033	android/os/Build:MANUFACTURER	Ljava/lang/String;
+    //   1355: invokestatic 1024	c/t/m/g/dt:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1358: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1361: ldc_w 278
+    //   1364: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1367: getstatic 1036	android/os/Build:MODEL	Ljava/lang/String;
+    //   1370: invokestatic 1024	c/t/m/g/dt:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1373: invokevirtual 449	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1376: invokevirtual 1038	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1379: invokestatic 1039	c/t/m/g/co:a	(Ljava/lang/String;)V
+    //   1382: aload_3
+    //   1383: monitorexit
+    //   1384: aload_0
+    //   1385: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
+    //   1388: ldc_w 1041
+    //   1391: invokestatic 532	c/t/m/g/da:a	()Lc/t/m/g/da;
+    //   1394: ldc 132
+    //   1396: invokevirtual 1042	c/t/m/g/da:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   1399: invokevirtual 1045	c/t/m/g/co:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1402: aload_0
+    //   1403: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
+    //   1406: ldc_w 1047
+    //   1409: ldc 116
+    //   1411: invokevirtual 1045	c/t/m/g/co:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1414: aload_0
+    //   1415: getfield 608	c/t/m/g/ek:w	Lc/t/m/g/co;
+    //   1418: astore_3
+    //   1419: aload_1
+    //   1420: invokevirtual 1048	android/os/Handler:getLooper	()Landroid/os/Looper;
+    //   1423: astore_2
+    //   1424: aload_3
+    //   1425: getfield 1012	c/t/m/g/co:a	[B
+    //   1428: astore 9
+    //   1430: aload 9
+    //   1432: monitorenter
+    //   1433: ldc_w 1050
+    //   1436: invokestatic 1039	c/t/m/g/co:a	(Ljava/lang/String;)V
+    //   1439: aload_3
+    //   1440: invokevirtual 1051	c/t/m/g/co:d	()V
+    //   1443: aload_3
+    //   1444: getfield 1054	c/t/m/g/co:b	Lc/t/m/g/cq;
+    //   1447: ifnull +36 -> 1483
+    //   1450: aload_2
+    //   1451: astore_1
+    //   1452: aload_2
+    //   1453: ifnonnull +21 -> 1474
+    //   1456: aload_3
+    //   1457: ldc_w 1056
+    //   1460: invokestatic 1061	c/t/m/g/ds:a	(Ljava/lang/String;)Landroid/os/HandlerThread;
+    //   1463: putfield 1063	c/t/m/g/co:c	Landroid/os/HandlerThread;
     //   1466: aload_3
-    //   1467: getfield 1054	c/t/m/g/co:b	Lc/t/m/g/cq;
-    //   1470: aload_1
-    //   1471: invokevirtual 1068	c/t/m/g/cq:b	(Landroid/os/Looper;)I
-    //   1474: pop
-    //   1475: aload 9
-    //   1477: monitorexit
-    //   1478: aload_0
-    //   1479: ldc_w 1069
-    //   1482: putfield 153	c/t/m/g/ek:G	Ljava/lang/String;
-    //   1485: aload_0
-    //   1486: getfield 703	c/t/m/g/ek:S	Ljava/lang/String;
-    //   1489: invokestatic 1070	c/t/m/g/cz:a	(Ljava/lang/String;)V
-    //   1492: iconst_0
-    //   1493: ireturn
-    //   1494: astore_1
-    //   1495: aload 10
-    //   1497: monitorexit
-    //   1498: aload_1
-    //   1499: athrow
-    //   1500: aload_1
-    //   1501: invokevirtual 407	com/tencent/map/geolocation/TencentLocationRequest:getInterval	()J
-    //   1504: lstore 5
-    //   1506: goto -1274 -> 232
-    //   1509: iconst_0
-    //   1510: istore 4
-    //   1512: goto -1243 -> 269
-    //   1515: aload_0
-    //   1516: getfield 307	c/t/m/g/ek:o	Lc/t/m/g/ek$a;
-    //   1519: aconst_null
-    //   1520: invokevirtual 1073	c/t/m/g/ek$a:removeCallbacksAndMessages	(Ljava/lang/Object;)V
+    //   1467: getfield 1063	c/t/m/g/co:c	Landroid/os/HandlerThread;
+    //   1470: invokevirtual 577	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   1473: astore_1
+    //   1474: aload_3
+    //   1475: getfield 1054	c/t/m/g/co:b	Lc/t/m/g/cq;
+    //   1478: aload_1
+    //   1479: invokevirtual 1068	c/t/m/g/cq:b	(Landroid/os/Looper;)I
+    //   1482: pop
+    //   1483: aload 9
+    //   1485: monitorexit
+    //   1486: aload_0
+    //   1487: ldc_w 1069
+    //   1490: putfield 153	c/t/m/g/ek:G	Ljava/lang/String;
+    //   1493: aload_0
+    //   1494: getfield 703	c/t/m/g/ek:S	Ljava/lang/String;
+    //   1497: invokestatic 1070	c/t/m/g/cz:a	(Ljava/lang/String;)V
+    //   1500: iconst_0
+    //   1501: ireturn
+    //   1502: astore_1
+    //   1503: aload 10
+    //   1505: monitorexit
+    //   1506: aload_1
+    //   1507: athrow
+    //   1508: aload_1
+    //   1509: invokevirtual 407	com/tencent/map/geolocation/TencentLocationRequest:getInterval	()J
+    //   1512: lstore 5
+    //   1514: goto -1282 -> 232
+    //   1517: iconst_0
+    //   1518: istore 4
+    //   1520: goto -1251 -> 269
     //   1523: aload_0
     //   1524: getfield 307	c/t/m/g/ek:o	Lc/t/m/g/ek$a;
-    //   1527: invokevirtual 1074	c/t/m/g/ek$a:getLooper	()Landroid/os/Looper;
-    //   1530: aload_3
-    //   1531: if_acmpeq -1244 -> 287
-    //   1534: aload_0
-    //   1535: new 309	c/t/m/g/ek$a
-    //   1538: dup
-    //   1539: aload_0
-    //   1540: aload_3
-    //   1541: invokespecial 787	c/t/m/g/ek$a:<init>	(Lc/t/m/g/ek;Landroid/os/Looper;)V
-    //   1544: putfield 307	c/t/m/g/ek:o	Lc/t/m/g/ek$a;
-    //   1547: goto -1260 -> 287
-    //   1550: iconst_0
-    //   1551: istore 4
-    //   1553: goto -1031 -> 522
-    //   1556: astore_3
-    //   1557: aload_2
-    //   1558: new 858	c/t/m/g/en$a
-    //   1561: dup
-    //   1562: aload_2
-    //   1563: aload_2
-    //   1564: getfield 852	c/t/m/g/en:i	Landroid/os/Handler;
-    //   1567: invokevirtual 1048	android/os/Handler:getLooper	()Landroid/os/Looper;
-    //   1570: iconst_0
-    //   1571: invokespecial 861	c/t/m/g/en$a:<init>	(Lc/t/m/g/en;Landroid/os/Looper;B)V
-    //   1574: putfield 864	c/t/m/g/en:g	Lc/t/m/g/en$a;
-    //   1577: goto -978 -> 599
-    //   1580: iload 7
-    //   1582: ifeq -944 -> 638
-    //   1585: aload_0
-    //   1586: getfield 223	c/t/m/g/ek:p	Lc/t/m/g/ef;
-    //   1589: ifnull +137 -> 1726
-    //   1592: iconst_1
-    //   1593: istore 4
-    //   1595: iload 4
-    //   1597: ifeq -959 -> 638
-    //   1600: aload_0
-    //   1601: getfield 223	c/t/m/g/ek:p	Lc/t/m/g/ef;
-    //   1604: astore_2
-    //   1605: aload_2
-    //   1606: getfield 1075	c/t/m/g/ef:a	Z
-    //   1609: ifne -971 -> 638
-    //   1612: aload_2
-    //   1613: iconst_1
-    //   1614: putfield 1075	c/t/m/g/ef:a	Z
-    //   1617: aload_2
-    //   1618: new 565	android/os/HandlerThread
-    //   1621: dup
-    //   1622: ldc_w 1077
-    //   1625: invokespecial 568	android/os/HandlerThread:<init>	(Ljava/lang/String;)V
-    //   1628: putfield 1079	c/t/m/g/ef:d	Landroid/os/HandlerThread;
-    //   1631: aload_2
-    //   1632: getfield 1079	c/t/m/g/ef:d	Landroid/os/HandlerThread;
-    //   1635: invokevirtual 573	android/os/HandlerThread:start	()V
-    //   1638: aload_2
-    //   1639: new 1081	c/t/m/g/ef$a
-    //   1642: dup
-    //   1643: aload_2
-    //   1644: aload_2
-    //   1645: getfield 1079	c/t/m/g/ef:d	Landroid/os/HandlerThread;
-    //   1648: invokevirtual 577	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   1651: iconst_0
-    //   1652: invokespecial 1084	c/t/m/g/ef$a:<init>	(Lc/t/m/g/ef;Landroid/os/Looper;B)V
-    //   1655: putfield 1085	c/t/m/g/ef:e	Landroid/os/Handler;
-    //   1658: aload_2
-    //   1659: getfield 1085	c/t/m/g/ef:e	Landroid/os/Handler;
-    //   1662: iconst_0
-    //   1663: ldc2_w 1086
-    //   1666: invokevirtual 1088	android/os/Handler:sendEmptyMessageDelayed	(IJ)Z
-    //   1669: pop
-    //   1670: aload_2
-    //   1671: getfield 1089	c/t/m/g/ef:b	Lc/t/m/g/ea;
-    //   1674: invokestatic 654	c/t/m/g/fj:a	(Lc/t/m/g/ea;)Landroid/telephony/CellLocation;
-    //   1677: astore_3
+    //   1527: aconst_null
+    //   1528: invokevirtual 1073	c/t/m/g/ek$a:removeCallbacksAndMessages	(Ljava/lang/Object;)V
+    //   1531: aload_0
+    //   1532: getfield 307	c/t/m/g/ek:o	Lc/t/m/g/ek$a;
+    //   1535: invokevirtual 1074	c/t/m/g/ek$a:getLooper	()Landroid/os/Looper;
+    //   1538: aload_3
+    //   1539: if_acmpeq -1252 -> 287
+    //   1542: aload_0
+    //   1543: new 309	c/t/m/g/ek$a
+    //   1546: dup
+    //   1547: aload_0
+    //   1548: aload_3
+    //   1549: invokespecial 787	c/t/m/g/ek$a:<init>	(Lc/t/m/g/ek;Landroid/os/Looper;)V
+    //   1552: putfield 307	c/t/m/g/ek:o	Lc/t/m/g/ek$a;
+    //   1555: goto -1268 -> 287
+    //   1558: iconst_0
+    //   1559: istore 4
+    //   1561: goto -1039 -> 522
+    //   1564: astore_3
+    //   1565: aload_2
+    //   1566: new 858	c/t/m/g/en$a
+    //   1569: dup
+    //   1570: aload_2
+    //   1571: aload_2
+    //   1572: getfield 852	c/t/m/g/en:i	Landroid/os/Handler;
+    //   1575: invokevirtual 1048	android/os/Handler:getLooper	()Landroid/os/Looper;
+    //   1578: iconst_0
+    //   1579: invokespecial 861	c/t/m/g/en$a:<init>	(Lc/t/m/g/en;Landroid/os/Looper;B)V
+    //   1582: putfield 864	c/t/m/g/en:g	Lc/t/m/g/en$a;
+    //   1585: goto -986 -> 599
+    //   1588: iload 7
+    //   1590: ifeq -952 -> 638
+    //   1593: aload_0
+    //   1594: getfield 223	c/t/m/g/ek:p	Lc/t/m/g/ef;
+    //   1597: ifnull +137 -> 1734
+    //   1600: iconst_1
+    //   1601: istore 4
+    //   1603: iload 4
+    //   1605: ifeq -967 -> 638
+    //   1608: aload_0
+    //   1609: getfield 223	c/t/m/g/ek:p	Lc/t/m/g/ef;
+    //   1612: astore_2
+    //   1613: aload_2
+    //   1614: getfield 1075	c/t/m/g/ef:a	Z
+    //   1617: ifne -979 -> 638
+    //   1620: aload_2
+    //   1621: iconst_1
+    //   1622: putfield 1075	c/t/m/g/ef:a	Z
+    //   1625: aload_2
+    //   1626: new 565	android/os/HandlerThread
+    //   1629: dup
+    //   1630: ldc_w 1077
+    //   1633: invokespecial 568	android/os/HandlerThread:<init>	(Ljava/lang/String;)V
+    //   1636: putfield 1079	c/t/m/g/ef:d	Landroid/os/HandlerThread;
+    //   1639: aload_2
+    //   1640: getfield 1079	c/t/m/g/ef:d	Landroid/os/HandlerThread;
+    //   1643: invokevirtual 573	android/os/HandlerThread:start	()V
+    //   1646: aload_2
+    //   1647: new 1081	c/t/m/g/ef$a
+    //   1650: dup
+    //   1651: aload_2
+    //   1652: aload_2
+    //   1653: getfield 1079	c/t/m/g/ef:d	Landroid/os/HandlerThread;
+    //   1656: invokevirtual 577	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   1659: iconst_0
+    //   1660: invokespecial 1084	c/t/m/g/ef$a:<init>	(Lc/t/m/g/ef;Landroid/os/Looper;B)V
+    //   1663: putfield 1085	c/t/m/g/ef:e	Landroid/os/Handler;
+    //   1666: aload_2
+    //   1667: getfield 1085	c/t/m/g/ef:e	Landroid/os/Handler;
+    //   1670: iconst_0
+    //   1671: ldc2_w 1086
+    //   1674: invokevirtual 1088	android/os/Handler:sendEmptyMessageDelayed	(IJ)Z
+    //   1677: pop
     //   1678: aload_2
-    //   1679: aload_3
-    //   1680: invokevirtual 1092	c/t/m/g/ef:a	(Landroid/telephony/CellLocation;)Z
-    //   1683: ifeq +33 -> 1716
+    //   1679: getfield 1089	c/t/m/g/ef:b	Lc/t/m/g/ea;
+    //   1682: invokestatic 654	c/t/m/g/fj:a	(Lc/t/m/g/ea;)Landroid/telephony/CellLocation;
+    //   1685: astore_3
     //   1686: aload_2
-    //   1687: getfield 1089	c/t/m/g/ef:b	Lc/t/m/g/ea;
-    //   1690: aload_3
-    //   1691: aconst_null
-    //   1692: invokestatic 657	c/t/m/g/et:a	(Lc/t/m/g/ea;Landroid/telephony/CellLocation;Landroid/telephony/SignalStrength;)Lc/t/m/g/et;
-    //   1695: astore 9
-    //   1697: aload 9
-    //   1699: ifnull +17 -> 1716
-    //   1702: aload_2
-    //   1703: aload_3
-    //   1704: putfield 1095	c/t/m/g/ef:c	Landroid/telephony/CellLocation;
-    //   1707: aload_2
-    //   1708: getfield 1089	c/t/m/g/ef:b	Lc/t/m/g/ea;
-    //   1711: aload 9
-    //   1713: invokevirtual 1097	c/t/m/g/ea:b	(Ljava/lang/Object;)V
-    //   1716: aload_2
-    //   1717: sipush 273
-    //   1720: invokevirtual 1098	c/t/m/g/ef:a	(I)V
-    //   1723: goto -1085 -> 638
-    //   1726: iconst_0
-    //   1727: istore 4
-    //   1729: goto -134 -> 1595
-    //   1732: iconst_0
-    //   1733: istore 4
-    //   1735: goto -1062 -> 673
-    //   1738: iconst_0
-    //   1739: istore 4
-    //   1741: goto -942 -> 799
-    //   1744: iconst_0
-    //   1745: istore 7
-    //   1747: goto -917 -> 830
-    //   1750: aload_3
-    //   1751: ldc_w 1100
-    //   1754: ldc2_w 1101
-    //   1757: fconst_0
-    //   1758: aload_2
-    //   1759: aload_2
-    //   1760: getfield 911	c/t/m/g/ej:g	Landroid/os/HandlerThread;
-    //   1763: invokevirtual 577	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   1766: invokevirtual 929	android/location/LocationManager:requestLocationUpdates	(Ljava/lang/String;JFLandroid/location/LocationListener;Landroid/os/Looper;)V
-    //   1769: goto -809 -> 960
-    //   1772: astore_3
-    //   1773: iconst_1
-    //   1774: putstatic 346	c/t/m/g/fj:a	Z
+    //   1687: aload_3
+    //   1688: invokevirtual 1092	c/t/m/g/ef:a	(Landroid/telephony/CellLocation;)Z
+    //   1691: ifeq +33 -> 1724
+    //   1694: aload_2
+    //   1695: getfield 1089	c/t/m/g/ef:b	Lc/t/m/g/ea;
+    //   1698: aload_3
+    //   1699: aconst_null
+    //   1700: invokestatic 657	c/t/m/g/et:a	(Lc/t/m/g/ea;Landroid/telephony/CellLocation;Landroid/telephony/SignalStrength;)Lc/t/m/g/et;
+    //   1703: astore 9
+    //   1705: aload 9
+    //   1707: ifnull +17 -> 1724
+    //   1710: aload_2
+    //   1711: aload_3
+    //   1712: putfield 1095	c/t/m/g/ef:c	Landroid/telephony/CellLocation;
+    //   1715: aload_2
+    //   1716: getfield 1089	c/t/m/g/ef:b	Lc/t/m/g/ea;
+    //   1719: aload 9
+    //   1721: invokevirtual 1097	c/t/m/g/ea:b	(Ljava/lang/Object;)V
+    //   1724: aload_2
+    //   1725: sipush 273
+    //   1728: invokevirtual 1098	c/t/m/g/ef:a	(I)V
+    //   1731: goto -1093 -> 638
+    //   1734: iconst_0
+    //   1735: istore 4
+    //   1737: goto -134 -> 1603
+    //   1740: iconst_0
+    //   1741: istore 4
+    //   1743: goto -1070 -> 673
+    //   1746: iconst_0
+    //   1747: istore 4
+    //   1749: goto -950 -> 799
+    //   1752: iconst_0
+    //   1753: istore 7
+    //   1755: goto -925 -> 830
+    //   1758: aload_3
+    //   1759: ldc_w 1100
+    //   1762: ldc2_w 1101
+    //   1765: fconst_0
+    //   1766: aload_2
+    //   1767: aload_2
+    //   1768: getfield 911	c/t/m/g/ej:g	Landroid/os/HandlerThread;
+    //   1771: invokevirtual 577	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   1774: invokevirtual 929	android/location/LocationManager:requestLocationUpdates	(Ljava/lang/String;JFLandroid/location/LocationListener;Landroid/os/Looper;)V
     //   1777: goto -817 -> 960
-    //   1780: astore_1
-    //   1781: aload_3
-    //   1782: monitorexit
-    //   1783: aload_1
-    //   1784: athrow
-    //   1785: astore_1
-    //   1786: aload 9
-    //   1788: monitorexit
-    //   1789: aload_1
-    //   1790: athrow
-    //   1791: astore_3
-    //   1792: goto -851 -> 941
-    //   1795: astore_3
-    //   1796: goto -1049 -> 747
-    //   1799: astore_2
-    //   1800: goto -1405 -> 395
-    //   1803: astore 9
-    //   1805: goto -1756 -> 49
+    //   1780: astore_3
+    //   1781: iconst_1
+    //   1782: putstatic 346	c/t/m/g/fj:a	Z
+    //   1785: goto -825 -> 960
+    //   1788: astore_1
+    //   1789: aload_3
+    //   1790: monitorexit
+    //   1791: aload_1
+    //   1792: athrow
+    //   1793: astore_1
+    //   1794: aload 9
+    //   1796: monitorexit
+    //   1797: aload_1
+    //   1798: athrow
+    //   1799: astore_3
+    //   1800: goto -859 -> 941
+    //   1803: astore_3
+    //   1804: goto -1057 -> 747
+    //   1807: astore_2
+    //   1808: goto -1413 -> 395
+    //   1811: astore 9
+    //   1813: goto -1764 -> 49
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1808	0	this	ek
-    //   0	1808	1	paramTencentLocationRequest	TencentLocationRequest
-    //   0	1808	2	paramTencentLocationListener	TencentLocationListener
-    //   267	1473	4	i1	int
-    //   230	1275	5	l1	long
-    //   330	1416	7	bool1	boolean
-    //   345	926	8	bool2	boolean
-    //   1803	1	9	localError	java.lang.Error
-    //   59	1437	10	localObject2	Object
+    //   0	1816	0	this	ek
+    //   0	1816	1	paramTencentLocationRequest	TencentLocationRequest
+    //   0	1816	2	paramTencentLocationListener	TencentLocationListener
+    //   267	1481	4	i1	int
+    //   230	1283	5	l1	long
+    //   330	1424	7	bool1	boolean
+    //   345	934	8	bool2	boolean
+    //   1811	1	9	localError	java.lang.Error
+    //   59	1445	10	localObject2	Object
     // Exception table:
     //   from	to	target	type
     //   49	55	154	java/lang/Error
-    //   170	178	1494	finally
-    //   1495	1498	1494	finally
-    //   572	599	1556	java/lang/Throwable
-    //   913	941	1772	java/lang/Exception
-    //   941	960	1772	java/lang/Exception
-    //   1750	1769	1772	java/lang/Exception
-    //   1292	1374	1780	finally
-    //   1374	1376	1780	finally
-    //   1781	1783	1780	finally
-    //   1425	1442	1785	finally
-    //   1448	1466	1785	finally
-    //   1466	1475	1785	finally
-    //   1475	1478	1785	finally
-    //   1786	1789	1785	finally
-    //   913	941	1791	java/lang/Throwable
-    //   732	747	1795	java/lang/Exception
-    //   369	395	1799	java/lang/Exception
-    //   43	49	1803	java/lang/Error
+    //   170	178	1502	finally
+    //   1503	1506	1502	finally
+    //   572	599	1564	java/lang/Throwable
+    //   913	941	1780	java/lang/Exception
+    //   941	960	1780	java/lang/Exception
+    //   1758	1777	1780	java/lang/Exception
+    //   1300	1382	1788	finally
+    //   1382	1384	1788	finally
+    //   1789	1791	1788	finally
+    //   1433	1450	1793	finally
+    //   1456	1474	1793	finally
+    //   1474	1483	1793	finally
+    //   1483	1486	1793	finally
+    //   1794	1797	1793	finally
+    //   913	941	1799	java/lang/Throwable
+    //   732	747	1803	java/lang/Exception
+    //   369	395	1807	java/lang/Exception
+    //   43	49	1811	java/lang/Error
   }
   
   public final void a(fi paramfi)
@@ -1556,7 +1559,7 @@ public final class ek
   @TargetApi(19)
   public final boolean a()
   {
-    if (Build.VERSION.SDK_INT >= 19) {
+    if ((Build.VERSION.SDK_INT >= 19) || (Build.VERSION.SDK_INT != 23)) {
       try
       {
         Sensor localSensor = ((SensorManager)this.F.a.getSystemService("sensor")).getDefaultSensor(19);
@@ -2000,7 +2003,7 @@ public final class ek
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     c.t.m.g.ek
  * JD-Core Version:    0.7.0.1
  */

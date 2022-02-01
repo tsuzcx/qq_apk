@@ -13,7 +13,7 @@ public class BmqqAccountType
   public static final int TYPE_ACCOUNT_QIDIAN_EXT = 1;
   public static final int TYPE_ACCOUNT_QIDIAN_MAIN = 6;
   public static final int TYPE_ACCOUNT_UNKNOW = 4;
-  public int mAccountType;
+  public int mAccountType = 0;
   @unique
   public String mUin = "";
   
@@ -42,7 +42,7 @@ public class BmqqAccountType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.data.BmqqAccountType
  * JD-Core Version:    0.7.0.1
  */

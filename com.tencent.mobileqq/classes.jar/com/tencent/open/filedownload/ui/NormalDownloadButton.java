@@ -2,7 +2,7 @@ package com.tencent.open.filedownload.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class NormalDownloadButton
   extends ApkFileDownloadButton
@@ -24,20 +24,20 @@ public class NormalDownloadButton
   
   protected String a(int paramInt)
   {
-    return anvx.a(2131707056);
+    return HardCodeUtil.a(2131707581);
   }
   
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return anvx.a(2131707057);
+      return HardCodeUtil.a(2131707582);
     }
-    return anvx.a(2131707055);
+    return HardCodeUtil.a(2131707580);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.NormalDownloadButton
  * JD-Core Version:    0.7.0.1
  */

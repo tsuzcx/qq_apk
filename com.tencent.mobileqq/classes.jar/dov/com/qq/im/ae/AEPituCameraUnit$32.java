@@ -1,29 +1,27 @@
 package dov.com.qq.im.ae;
 
-import bmxa;
-import bngy;
-import bnqc;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class AEPituCameraUnit$32
+class AEPituCameraUnit$32
   implements Runnable
 {
-  public AEPituCameraUnit$32(bmxa parambmxa) {}
+  AEPituCameraUnit$32(AEPituCameraUnit paramAEPituCameraUnit) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Bngy != null) {
-      this.this$0.jdField_a_of_type_Bngy.d();
-    }
-    if (this.this$0.jdField_a_of_type_Bnqc != null)
+    FilterPagerViewStubHolder localFilterPagerViewStubHolder = this.this$0.a;
+    if (this.this$0.b == AECaptureMode.NORMAL) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.this$0.jdField_a_of_type_Bnqc.a(196611, new Object[] { Boolean.valueOf(bmxa.a(this.this$0)) });
-      this.this$0.jdField_a_of_type_Bnqc.a(327685, new Object[0]);
+      localFilterPagerViewStubHolder.d(bool);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.32
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import aiuk;
-
-public class ClassificationSearchFragment$1
+class ClassificationSearchFragment$1
   implements Runnable
 {
-  ClassificationSearchFragment$1(ClassificationSearchFragment paramClassificationSearchFragment, aiuk paramaiuk) {}
+  ClassificationSearchFragment$1(ClassificationSearchFragment paramClassificationSearchFragment, SearchResult paramSearchResult) {}
   
   public void run()
   {
@@ -27,7 +25,7 @@ public class ClassificationSearchFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment.1
  * JD-Core Version:    0.7.0.1
  */

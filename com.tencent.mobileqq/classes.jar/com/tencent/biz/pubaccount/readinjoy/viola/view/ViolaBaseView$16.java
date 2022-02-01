@@ -1,0 +1,18 @@
+package com.tencent.biz.pubaccount.readinjoy.viola.view;
+
+class ViolaBaseView$16
+  implements Runnable
+{
+  ViolaBaseView$16(ViolaBaseView paramViolaBaseView) {}
+  
+  public void run()
+  {
+    ViolaBaseView.a(this.this$0).a();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.16
+ * JD-Core Version:    0.7.0.1
+ */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class CommRsp
   extends JceStruct
 {
-  public int iErrCode;
+  public int iErrCode = 0;
   public String sErrMsg = "";
   
   public CommRsp() {}

@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.app.identity;
 
 import android.app.Activity;
-import aoms;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class AccountPhoneUnityManager$4
+class AccountPhoneUnityManager$4
   implements Runnable
 {
-  public AccountPhoneUnityManager$4(aoms paramaoms, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, QQAppInterface paramQQAppInterface, Activity paramActivity) {}
+  AccountPhoneUnityManager$4(AccountPhoneUnityManager paramAccountPhoneUnityManager, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, QQAppInterface paramQQAppInterface, Activity paramActivity) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class AccountPhoneUnityManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountPhoneUnityManager.4
  * JD-Core Version:    0.7.0.1
  */

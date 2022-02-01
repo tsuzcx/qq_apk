@@ -9,13 +9,13 @@ public final class cell_follow_guide
   extends JceStruct
 {
   static ArrayList<s_user> cache_followed_list = new ArrayList();
-  public int action_type;
+  public int action_type = 0;
   public String action_url = "";
   public String attach_info = "";
   public String button_text = "";
-  public long count;
-  public int feed_type;
-  public ArrayList<s_user> followed_list;
+  public long count = 0L;
+  public int feed_type = 0;
+  public ArrayList<s_user> followed_list = null;
   public String icon_url = "";
   public String summary = "";
   public String title = "";

@@ -69,7 +69,7 @@ public class HippyTKDListViewController
         str = paramHippyArray.getString(4);
         m = paramHippyArray.getInt(5);
         n = paramHippyArray.getInt(6);
-        int i1 = ImmersiveUtils.a(paramHippyArray.getInt(7));
+        int i1 = ImmersiveUtils.dpToPx(paramHippyArray.getInt(7));
         int i2 = paramHippyArray.getInt(8);
         int i3 = paramHippyArray.getInt(9);
         i = 1;
@@ -113,13 +113,13 @@ public class HippyTKDListViewController
     } while (!"setRefreshPromptInfo".equals(paramString));
     paramString = paramHippyArray.getString(0);
     int j = paramHippyArray.getInt(1);
-    int k = ImmersiveUtils.a(paramHippyArray.getInt(2));
+    int k = ImmersiveUtils.dpToPx(paramHippyArray.getInt(2));
     String str = paramHippyArray.getString(3);
-    int m = ImmersiveUtils.a(paramHippyArray.getInt(4));
-    int n = ImmersiveUtils.a(paramHippyArray.getInt(5));
+    int m = ImmersiveUtils.dpToPx(paramHippyArray.getInt(4));
+    int n = ImmersiveUtils.dpToPx(paramHippyArray.getInt(5));
     int i = 0;
     if (paramHippyArray.size() >= 7) {
-      i = ImmersiveUtils.a(paramHippyArray.getInt(6));
+      i = ImmersiveUtils.dpToPx(paramHippyArray.getInt(6));
     }
     paramHippyListView.setRefreshPromptInfo(paramString, j, k, str, m, n, i);
   }
@@ -146,7 +146,7 @@ public class HippyTKDListViewController
     String str = paramHippyArray.getString(4);
     int m = paramHippyArray.getInt(5);
     int n = paramHippyArray.getInt(6);
-    int i1 = ImmersiveUtils.a(paramHippyArray.getInt(7));
+    int i1 = ImmersiveUtils.dpToPx(paramHippyArray.getInt(7));
     int i2 = paramHippyArray.getInt(8);
     int i3 = paramHippyArray.getInt(9);
     int i = 1;
@@ -223,7 +223,7 @@ public class HippyTKDListViewController
   {
     if ((paramHippyListView instanceof HippyTKDListView))
     {
-      paramInt = ImmersiveUtils.a(paramInt);
+      paramInt = ImmersiveUtils.dpToPx(paramInt);
       ((HippyTKDListView)paramHippyListView).setInitialContentOffset(paramInt);
     }
   }
@@ -290,7 +290,7 @@ public class HippyTKDListViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDListViewController
  * JD-Core Version:    0.7.0.1
  */

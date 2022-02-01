@@ -1,42 +1,43 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import awzb;
+import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.model.QZoneManager;
+import com.tencent.mobileqq.qcircle.api.IQCirclePreLoaderService;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqcircle.whitelist.QCirclePreLoadManager;
 
 public class GetQZoneFeedCount
   extends AsyncStep
 {
   public int a()
   {
-    awzb localawzb;
-    if ((this.a != null) && (this.a.app != null))
+    QZoneManager localQZoneManager;
+    if ((this.a != null) && (this.a.a != null))
     {
-      localawzb = (awzb)this.a.app.getManager(QQManagerFactory.QZONE_MANAGER);
-      if (localawzb != null)
+      localQZoneManager = (QZoneManager)this.a.a.getManager(QQManagerFactory.QZONE_MANAGER);
+      if (localQZoneManager != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("GetQZoneFeedCount", 2, "GetQZoneFeedCount isFirstGetUnread:" + localawzb.a() + ",isBackground_Pause:" + this.a.app.isBackgroundPause);
+          QLog.d("GetQZoneFeedCount", 2, "GetQZoneFeedCount isFirstGetUnread:" + localQZoneManager.a() + ",isBackground_Pause:" + this.a.a.isBackgroundPause);
         }
-        if (!localawzb.a()) {
-          break label137;
+        if (!localQZoneManager.a()) {
+          break label139;
         }
-        localawzb.a(this.a.app.getAccount(), null);
+        localQZoneManager.a(this.a.a.getAccount(), null);
       }
     }
     for (;;)
     {
-      QCirclePreLoadManager.getInstance().requestWhiteList(this.a.app.getCurrentUin());
+      QCircleUtils.a().requestWhiteList(this.a.a.getCurrentUin());
       return 7;
-      label137:
-      if (this.a.app.isBackgroundPause) {
-        localawzb.b(6);
+      label139:
+      if (this.a.a.isBackgroundPause) {
+        localQZoneManager.b(6);
       } else {
-        localawzb.a(5);
+        localQZoneManager.a(5);
       }
     }
   }

@@ -2,8 +2,6 @@ package com.tencent.qqprotect.singleupdate;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bkvq;
-import bkvr;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.io.IOException;
@@ -12,9 +10,9 @@ import java.io.Serializable;
 public class QPSupportUpdCfg
   implements Serializable
 {
-  static String CFG_FILEPATH;
+  static String CFG_FILEPATH = null;
   public QPSupportUpdCfg.QPUpdFileItem[] fileItem;
-  public int iConfigFileVersion;
+  public int iConfigFileVersion = 0;
   public int iRequestTime = 24;
   
   QPSupportUpdCfg()
@@ -90,7 +88,7 @@ public class QPSupportUpdCfg
         try
         {
           if (a(localFile)) {
-            str = bkvq.a(this.fileItem[i].strFilePath);
+            str = MD5FileUtil.a(this.fileItem[i].strFilePath);
           }
           if (!TextUtils.isEmpty(str))
           {
@@ -117,7 +115,7 @@ public class QPSupportUpdCfg
   
   public boolean IsFileInConfigFile(String paramString)
   {
-    paramString = bkvr.a(paramString);
+    paramString = QPUpdFileOperation.a(paramString);
     if (this.fileItem == null) {}
     for (;;)
     {
@@ -126,7 +124,7 @@ public class QPSupportUpdCfg
       int i = 0;
       while (i < j)
       {
-        if (paramString.equalsIgnoreCase(bkvr.a(this.fileItem[i].strFilePath))) {
+        if (paramString.equalsIgnoreCase(QPUpdFileOperation.a(this.fileItem[i].strFilePath))) {
           return true;
         }
         i += 1;
@@ -140,36 +138,36 @@ public class QPSupportUpdCfg
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: new 38	java/io/File
+    //   3: new 44	java/io/File
     //   6: dup
     //   7: aload_1
-    //   8: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: invokespecial 63	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore_1
     //   12: aload_1
-    //   13: invokevirtual 63	java/io/File:exists	()Z
+    //   13: invokevirtual 67	java/io/File:exists	()Z
     //   16: ifne +5 -> 21
     //   19: iconst_0
     //   20: ireturn
-    //   21: new 140	java/io/FileInputStream
+    //   21: new 143	java/io/FileInputStream
     //   24: dup
     //   25: aload_1
-    //   26: invokespecial 143	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   26: invokespecial 146	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   29: astore 6
-    //   31: new 145	java/io/DataInputStream
+    //   31: new 148	java/io/DataInputStream
     //   34: dup
     //   35: aload 6
-    //   37: invokespecial 148	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   37: invokespecial 151	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   40: astore_1
     //   41: aload_0
     //   42: aload_1
-    //   43: invokevirtual 152	java/io/DataInputStream:readInt	()I
-    //   46: putfield 154	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iConfigFileVersion	I
+    //   43: invokevirtual 155	java/io/DataInputStream:readInt	()I
+    //   46: putfield 25	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iConfigFileVersion	I
     //   49: aload_0
     //   50: aload_1
-    //   51: invokevirtual 152	java/io/DataInputStream:readInt	()I
-    //   54: putfield 21	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iRequestTime	I
+    //   51: invokevirtual 155	java/io/DataInputStream:readInt	()I
+    //   54: putfield 27	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iRequestTime	I
     //   57: aload_1
-    //   58: invokevirtual 152	java/io/DataInputStream:readInt	()I
+    //   58: invokevirtual 155	java/io/DataInputStream:readInt	()I
     //   61: istore_2
     //   62: iload_2
     //   63: bipush 100
@@ -181,73 +179,73 @@ public class QPSupportUpdCfg
     //   76: ifeq +141 -> 217
     //   79: aload_0
     //   80: iload_2
-    //   81: anewarray 65	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem
-    //   84: putfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   81: anewarray 69	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem
+    //   84: putfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   87: iconst_0
     //   88: istore_3
     //   89: iload_3
     //   90: iload_2
     //   91: if_icmpge +126 -> 217
     //   94: aload_0
-    //   95: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   95: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   98: iload_3
-    //   99: new 65	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem
+    //   99: new 69	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem
     //   102: dup
     //   103: aload_0
-    //   104: invokespecial 70	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:<init>	(Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg;)V
+    //   104: invokespecial 74	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:<init>	(Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg;)V
     //   107: aastore
     //   108: sipush 512
     //   111: newarray byte
     //   113: astore 5
     //   115: aload_1
-    //   116: invokevirtual 152	java/io/DataInputStream:readInt	()I
+    //   116: invokevirtual 155	java/io/DataInputStream:readInt	()I
     //   119: istore 4
     //   121: aload_1
     //   122: aload 5
     //   124: iconst_0
     //   125: iload 4
-    //   127: invokevirtual 158	java/io/DataInputStream:read	([BII)I
+    //   127: invokevirtual 159	java/io/DataInputStream:read	([BII)I
     //   130: pop
-    //   131: new 72	java/lang/String
+    //   131: new 76	java/lang/String
     //   134: dup
     //   135: aload 5
-    //   137: invokespecial 161	java/lang/String:<init>	([B)V
+    //   137: invokespecial 162	java/lang/String:<init>	([B)V
     //   140: astore 5
     //   142: aload_0
-    //   143: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   143: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   146: iload_3
     //   147: aaload
     //   148: aload 5
     //   150: iconst_0
     //   151: iload 4
-    //   153: invokevirtual 165	java/lang/String:substring	(II)Ljava/lang/String;
-    //   156: putfield 76	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
+    //   153: invokevirtual 166	java/lang/String:substring	(II)Ljava/lang/String;
+    //   156: putfield 80	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
     //   159: sipush 128
     //   162: newarray byte
     //   164: astore 5
     //   166: aload_1
-    //   167: invokevirtual 152	java/io/DataInputStream:readInt	()I
+    //   167: invokevirtual 155	java/io/DataInputStream:readInt	()I
     //   170: istore 4
     //   172: aload_1
     //   173: aload 5
     //   175: iconst_0
     //   176: iload 4
-    //   178: invokevirtual 158	java/io/DataInputStream:read	([BII)I
+    //   178: invokevirtual 159	java/io/DataInputStream:read	([BII)I
     //   181: pop
-    //   182: new 72	java/lang/String
+    //   182: new 76	java/lang/String
     //   185: dup
     //   186: aload 5
-    //   188: invokespecial 161	java/lang/String:<init>	([B)V
+    //   188: invokespecial 162	java/lang/String:<init>	([B)V
     //   191: astore 5
     //   193: aload_0
-    //   194: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   194: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   197: iload_3
     //   198: aaload
     //   199: aload 5
     //   201: iconst_0
     //   202: iload 4
-    //   204: invokevirtual 165	java/lang/String:substring	(II)Ljava/lang/String;
-    //   207: putfield 81	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
+    //   204: invokevirtual 166	java/lang/String:substring	(II)Ljava/lang/String;
+    //   207: putfield 85	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
     //   210: iload_3
     //   211: iconst_1
     //   212: iadd
@@ -256,26 +254,26 @@ public class QPSupportUpdCfg
     //   217: aload 6
     //   219: ifnull +8 -> 227
     //   222: aload 6
-    //   224: invokevirtual 168	java/io/FileInputStream:close	()V
+    //   224: invokevirtual 169	java/io/FileInputStream:close	()V
     //   227: aload_1
     //   228: ifnull +7 -> 235
     //   231: aload_1
-    //   232: invokevirtual 169	java/io/DataInputStream:close	()V
+    //   232: invokevirtual 170	java/io/DataInputStream:close	()V
     //   235: iconst_1
     //   236: ireturn
     //   237: astore 6
     //   239: aconst_null
     //   240: astore_1
     //   241: aload 6
-    //   243: invokevirtual 170	java/lang/Throwable:printStackTrace	()V
+    //   243: invokevirtual 171	java/lang/Throwable:printStackTrace	()V
     //   246: aload 5
     //   248: ifnull +8 -> 256
     //   251: aload 5
-    //   253: invokevirtual 168	java/io/FileInputStream:close	()V
+    //   253: invokevirtual 169	java/io/FileInputStream:close	()V
     //   256: aload_1
     //   257: ifnull -238 -> 19
     //   260: aload_1
-    //   261: invokevirtual 169	java/io/DataInputStream:close	()V
+    //   261: invokevirtual 170	java/io/DataInputStream:close	()V
     //   264: iconst_0
     //   265: ireturn
     //   266: astore_1
@@ -289,11 +287,11 @@ public class QPSupportUpdCfg
     //   276: aload 6
     //   278: ifnull +8 -> 286
     //   281: aload 6
-    //   283: invokevirtual 168	java/io/FileInputStream:close	()V
+    //   283: invokevirtual 169	java/io/FileInputStream:close	()V
     //   286: aload_1
     //   287: ifnull +7 -> 294
     //   290: aload_1
-    //   291: invokevirtual 169	java/io/DataInputStream:close	()V
+    //   291: invokevirtual 170	java/io/DataInputStream:close	()V
     //   294: aload 5
     //   296: athrow
     //   297: astore 5
@@ -387,28 +385,28 @@ public class QPSupportUpdCfg
     //   1: astore_3
     //   2: iconst_0
     //   3: istore_1
-    //   4: new 38	java/io/File
+    //   4: new 44	java/io/File
     //   7: dup
-    //   8: getstatic 56	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:CFG_FILEPATH	Ljava/lang/String;
-    //   11: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: getstatic 17	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:CFG_FILEPATH	Ljava/lang/String;
+    //   11: invokespecial 63	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore_2
     //   15: aload_2
-    //   16: invokevirtual 63	java/io/File:exists	()Z
+    //   16: invokevirtual 67	java/io/File:exists	()Z
     //   19: ifeq +12 -> 31
     //   22: aload_2
-    //   23: invokevirtual 106	java/io/File:delete	()Z
+    //   23: invokevirtual 109	java/io/File:delete	()Z
     //   26: ifne +5 -> 31
     //   29: iconst_0
     //   30: ireturn
-    //   31: new 174	java/io/FileOutputStream
+    //   31: new 175	java/io/FileOutputStream
     //   34: dup
-    //   35: getstatic 56	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:CFG_FILEPATH	Ljava/lang/String;
-    //   38: invokespecial 175	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   35: getstatic 17	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:CFG_FILEPATH	Ljava/lang/String;
+    //   38: invokespecial 176	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   41: astore_2
-    //   42: new 177	java/io/DataOutputStream
+    //   42: new 178	java/io/DataOutputStream
     //   45: dup
     //   46: aload_2
-    //   47: invokespecial 180	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   47: invokespecial 181	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   50: astore_3
     //   51: aload_3
     //   52: astore 4
@@ -416,22 +414,22 @@ public class QPSupportUpdCfg
     //   55: astore 5
     //   57: aload_3
     //   58: aload_0
-    //   59: getfield 154	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iConfigFileVersion	I
-    //   62: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
+    //   59: getfield 25	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iConfigFileVersion	I
+    //   62: invokevirtual 185	java/io/DataOutputStream:writeInt	(I)V
     //   65: aload_3
     //   66: astore 4
     //   68: aload_2
     //   69: astore 5
     //   71: aload_3
     //   72: aload_0
-    //   73: getfield 21	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iRequestTime	I
-    //   76: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
+    //   73: getfield 27	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iRequestTime	I
+    //   76: invokevirtual 185	java/io/DataOutputStream:writeInt	(I)V
     //   79: aload_3
     //   80: astore 4
     //   82: aload_2
     //   83: astore 5
     //   85: aload_0
-    //   86: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   86: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   89: ifnonnull +32 -> 121
     //   92: aload_3
     //   93: astore 4
@@ -439,15 +437,15 @@ public class QPSupportUpdCfg
     //   96: astore 5
     //   98: aload_3
     //   99: iconst_0
-    //   100: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
+    //   100: invokevirtual 185	java/io/DataOutputStream:writeInt	(I)V
     //   103: aload_2
     //   104: ifnull +7 -> 111
     //   107: aload_2
-    //   108: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   108: invokevirtual 186	java/io/FileOutputStream:close	()V
     //   111: aload_3
     //   112: ifnull +7 -> 119
     //   115: aload_3
-    //   116: invokevirtual 186	java/io/DataOutputStream:close	()V
+    //   116: invokevirtual 187	java/io/DataOutputStream:close	()V
     //   119: iconst_1
     //   120: ireturn
     //   121: aload_3
@@ -456,16 +454,16 @@ public class QPSupportUpdCfg
     //   125: astore 5
     //   127: aload_3
     //   128: aload_0
-    //   129: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   129: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   132: arraylength
-    //   133: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
+    //   133: invokevirtual 185	java/io/DataOutputStream:writeInt	(I)V
     //   136: aload_3
     //   137: astore 4
     //   139: aload_2
     //   140: astore 5
     //   142: iload_1
     //   143: aload_0
-    //   144: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   144: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   147: arraylength
     //   148: if_icmpge -45 -> 103
     //   151: aload_3
@@ -474,48 +472,48 @@ public class QPSupportUpdCfg
     //   155: astore 5
     //   157: aload_3
     //   158: aload_0
-    //   159: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   159: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   162: iload_1
     //   163: aaload
-    //   164: getfield 76	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
-    //   167: invokevirtual 188	java/lang/String:length	()I
-    //   170: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
+    //   164: getfield 80	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
+    //   167: invokevirtual 189	java/lang/String:length	()I
+    //   170: invokevirtual 185	java/io/DataOutputStream:writeInt	(I)V
     //   173: aload_3
     //   174: astore 4
     //   176: aload_2
     //   177: astore 5
     //   179: aload_3
     //   180: aload_0
-    //   181: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   181: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   184: iload_1
     //   185: aaload
-    //   186: getfield 76	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
-    //   189: invokevirtual 192	java/lang/String:getBytes	()[B
-    //   192: invokevirtual 195	java/io/DataOutputStream:write	([B)V
+    //   186: getfield 80	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
+    //   189: invokevirtual 193	java/lang/String:getBytes	()[B
+    //   192: invokevirtual 196	java/io/DataOutputStream:write	([B)V
     //   195: aload_3
     //   196: astore 4
     //   198: aload_2
     //   199: astore 5
     //   201: aload_3
     //   202: aload_0
-    //   203: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   203: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   206: iload_1
     //   207: aaload
-    //   208: getfield 81	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
-    //   211: invokevirtual 188	java/lang/String:length	()I
-    //   214: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
+    //   208: getfield 85	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
+    //   211: invokevirtual 189	java/lang/String:length	()I
+    //   214: invokevirtual 185	java/io/DataOutputStream:writeInt	(I)V
     //   217: aload_3
     //   218: astore 4
     //   220: aload_2
     //   221: astore 5
     //   223: aload_3
     //   224: aload_0
-    //   225: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   225: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   228: iload_1
     //   229: aaload
-    //   230: getfield 81	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
-    //   233: invokevirtual 192	java/lang/String:getBytes	()[B
-    //   236: invokevirtual 195	java/io/DataOutputStream:write	([B)V
+    //   230: getfield 85	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
+    //   233: invokevirtual 193	java/lang/String:getBytes	()[B
+    //   236: invokevirtual 196	java/io/DataOutputStream:write	([B)V
     //   239: iload_1
     //   240: iconst_1
     //   241: iadd
@@ -523,33 +521,33 @@ public class QPSupportUpdCfg
     //   243: goto -107 -> 136
     //   246: astore_2
     //   247: aload_2
-    //   248: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   248: invokevirtual 94	java/io/IOException:printStackTrace	()V
     //   251: goto -140 -> 111
     //   254: astore_2
     //   255: aload_2
-    //   256: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   256: invokevirtual 94	java/io/IOException:printStackTrace	()V
     //   259: goto -140 -> 119
     //   262: astore 4
     //   264: aconst_null
     //   265: astore_2
     //   266: aload 4
-    //   268: invokevirtual 196	java/io/FileNotFoundException:printStackTrace	()V
+    //   268: invokevirtual 197	java/io/FileNotFoundException:printStackTrace	()V
     //   271: aload_3
     //   272: ifnull +7 -> 279
     //   275: aload_3
-    //   276: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   276: invokevirtual 186	java/io/FileOutputStream:close	()V
     //   279: aload_2
     //   280: ifnull -161 -> 119
     //   283: aload_2
-    //   284: invokevirtual 186	java/io/DataOutputStream:close	()V
+    //   284: invokevirtual 187	java/io/DataOutputStream:close	()V
     //   287: goto -168 -> 119
     //   290: astore_2
     //   291: aload_2
-    //   292: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   292: invokevirtual 94	java/io/IOException:printStackTrace	()V
     //   295: goto -176 -> 119
     //   298: astore_3
     //   299: aload_3
-    //   300: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   300: invokevirtual 94	java/io/IOException:printStackTrace	()V
     //   303: goto -24 -> 279
     //   306: astore 6
     //   308: aconst_null
@@ -561,23 +559,23 @@ public class QPSupportUpdCfg
     //   315: aload_2
     //   316: astore 5
     //   318: aload 6
-    //   320: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   320: invokevirtual 94	java/io/IOException:printStackTrace	()V
     //   323: aload_2
     //   324: ifnull +7 -> 331
     //   327: aload_2
-    //   328: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   328: invokevirtual 186	java/io/FileOutputStream:close	()V
     //   331: aload_3
     //   332: ifnull -213 -> 119
     //   335: aload_3
-    //   336: invokevirtual 186	java/io/DataOutputStream:close	()V
+    //   336: invokevirtual 187	java/io/DataOutputStream:close	()V
     //   339: goto -220 -> 119
     //   342: astore_2
     //   343: aload_2
-    //   344: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   344: invokevirtual 94	java/io/IOException:printStackTrace	()V
     //   347: goto -228 -> 119
     //   350: astore_2
     //   351: aload_2
-    //   352: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   352: invokevirtual 94	java/io/IOException:printStackTrace	()V
     //   355: goto -24 -> 331
     //   358: astore_3
     //   359: aconst_null
@@ -587,20 +585,20 @@ public class QPSupportUpdCfg
     //   364: aload_2
     //   365: ifnull +7 -> 372
     //   368: aload_2
-    //   369: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   369: invokevirtual 186	java/io/FileOutputStream:close	()V
     //   372: aload 4
     //   374: ifnull +8 -> 382
     //   377: aload 4
-    //   379: invokevirtual 186	java/io/DataOutputStream:close	()V
+    //   379: invokevirtual 187	java/io/DataOutputStream:close	()V
     //   382: aload_3
     //   383: athrow
     //   384: astore_2
     //   385: aload_2
-    //   386: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   386: invokevirtual 94	java/io/IOException:printStackTrace	()V
     //   389: goto -17 -> 372
     //   392: astore_2
     //   393: aload_2
-    //   394: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   394: invokevirtual 94	java/io/IOException:printStackTrace	()V
     //   397: goto -15 -> 382
     //   400: astore_3
     //   401: aconst_null
@@ -745,7 +743,7 @@ public class QPSupportUpdCfg
     this.fileItem[(i - 1)].strFileHash = "00000000000000000000000000000000";
     if (a(paramFile))
     {
-      paramString1 = bkvq.a(paramString1);
+      paramString1 = MD5FileUtil.a(paramString1);
       if (paramString1 != null) {
         this.fileItem[(i - 1)].strFileHash = paramString1;
       }
@@ -783,7 +781,7 @@ public class QPSupportUpdCfg
       arrayOfQPUpdFileItem[i].strFileHash = "00000000000000000000000000000000";
       if (a(paramFile))
       {
-        paramString = bkvq.a(paramString);
+        paramString = MD5FileUtil.a(paramString);
         if (paramString != null) {
           arrayOfQPUpdFileItem[i].strFileHash = paramString;
         }
@@ -798,7 +796,7 @@ public class QPSupportUpdCfg
   
   public String getFileDstPath(String paramString)
   {
-    paramString = bkvr.a(paramString);
+    paramString = QPUpdFileOperation.a(paramString);
     if (this.fileItem == null) {}
     for (;;)
     {
@@ -807,7 +805,7 @@ public class QPSupportUpdCfg
       int i = 0;
       while (i < j)
       {
-        if (paramString.equalsIgnoreCase(bkvr.a(this.fileItem[i].strFilePath))) {
+        if (paramString.equalsIgnoreCase(QPUpdFileOperation.a(this.fileItem[i].strFilePath))) {
           return this.fileItem[i].strFilePath;
         }
         i += 1;
@@ -826,7 +824,7 @@ public class QPSupportUpdCfg
   
   public int getFileIndexInConfigFile(String paramString)
   {
-    paramString = bkvr.a(paramString);
+    paramString = QPUpdFileOperation.a(paramString);
     if (this.fileItem == null) {}
     for (;;)
     {
@@ -835,7 +833,7 @@ public class QPSupportUpdCfg
       int i = 0;
       while (i < j)
       {
-        if (paramString.equalsIgnoreCase(bkvr.a(this.fileItem[i].strFilePath)))
+        if (paramString.equalsIgnoreCase(QPUpdFileOperation.a(this.fileItem[i].strFilePath)))
         {
           paramString = this.fileItem[i].strFilePath;
           return i;
@@ -861,7 +859,7 @@ public class QPSupportUpdCfg
     int i = 0;
     label10:
     if (i < this.fileItem.length) {
-      if (!bkvr.a(this.fileItem[i].strFilePath).equalsIgnoreCase("SupportUpd.cfg")) {
+      if (!QPUpdFileOperation.a(this.fileItem[i].strFilePath).equalsIgnoreCase("SupportUpd.cfg")) {
         break label46;
       }
     }
@@ -875,7 +873,7 @@ public class QPSupportUpdCfg
       this.fileItem[i].strFileHash = "00000000000000000000000000000000";
       if (a((File)localObject))
       {
-        localObject = bkvq.a(this.fileItem[i].strFilePath);
+        localObject = MD5FileUtil.a(this.fileItem[i].strFilePath);
         if (localObject != null) {
           this.fileItem[i].strFileHash = ((String)localObject);
         }
@@ -885,7 +883,7 @@ public class QPSupportUpdCfg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSupportUpdCfg
  * JD-Core Version:    0.7.0.1
  */

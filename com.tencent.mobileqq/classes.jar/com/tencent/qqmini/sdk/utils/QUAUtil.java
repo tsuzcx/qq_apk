@@ -63,12 +63,12 @@ public class QUAUtil
     if (!TextUtils.isEmpty(str)) {
       return str;
     }
-    return "1.9.0";
+    return "1.12.1";
   }
   
   public static String getQUA()
   {
-    return "V1_AND_MINISDK_1.9.0_0_RELEASE_B";
+    return "V1_AND_MINISDK_1.12.1_0_RELEASE_B";
   }
   
   public static String getRequestUA()
@@ -198,7 +198,7 @@ public class QUAUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.QUAUtil
  * JD-Core Version:    0.7.0.1
  */

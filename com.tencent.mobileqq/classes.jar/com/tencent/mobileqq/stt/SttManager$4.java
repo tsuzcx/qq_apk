@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.stt;
 
-import bdtt;
-import bdtu;
-import bdtx;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.stt.shard.AIOSttResult;
 
-public class SttManager$4
+class SttManager$4
   implements Runnable
 {
-  public SttManager$4(bdtt parambdtt, MessageForPtt paramMessageForPtt) {}
+  SttManager$4(SttManager paramSttManager, MessageForPtt paramMessageForPtt) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgContentByUniseq(this.a.frienduin, this.a.istroop, this.a.uniseq, this.a.msgData);
-    if ((!this.a.getSttResult().a()) && (this.this$0.jdField_a_of_type_Bdtu != null)) {
-      this.this$0.jdField_a_of_type_Bdtu.a(this.a, false);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.a.frienduin, this.a.istroop, this.a.uniseq, this.a.msgData);
+    if ((!this.a.getSttResult().a()) && (this.this$0.jdField_a_of_type_ComTencentMobileqqSttSttManager$ISttListener != null)) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqSttSttManager$ISttListener.a(this.a, false);
     }
   }
 }

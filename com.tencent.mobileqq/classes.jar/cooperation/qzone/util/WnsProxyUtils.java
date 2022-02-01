@@ -13,7 +13,7 @@ public class WnsProxyUtils
 {
   private static final String KEY_REQ_DATA = "req";
   private static HashMap<String, String> mSDCardName2PathMap = new HashMap();
-  private static long maxAvailableSize;
+  private static long maxAvailableSize = 0L;
   private static String maxAvailableSizePath = "";
   private static String storeRootPath = "";
   
@@ -96,34 +96,34 @@ public class WnsProxyUtils
     //   4: aload_0
     //   5: ifnull +12 -> 17
     //   8: aload_0
-    //   9: invokevirtual 138	java/lang/String:length	()I
+    //   9: invokevirtual 140	java/lang/String:length	()I
     //   12: ifne +7 -> 19
     //   15: aload_3
     //   16: astore_2
     //   17: aload_2
     //   18: areturn
-    //   19: new 140	java/io/FileInputStream
+    //   19: new 142	java/io/FileInputStream
     //   22: dup
     //   23: aload_0
-    //   24: invokespecial 141	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   24: invokespecial 143	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   27: astore_1
     //   28: aload_1
     //   29: astore_0
     //   30: aload_1
-    //   31: invokevirtual 144	java/io/FileInputStream:available	()I
+    //   31: invokevirtual 146	java/io/FileInputStream:available	()I
     //   34: newarray byte
     //   36: astore_2
     //   37: aload_1
     //   38: astore_0
     //   39: aload_1
     //   40: aload_2
-    //   41: invokevirtual 148	java/io/FileInputStream:read	([B)I
+    //   41: invokevirtual 150	java/io/FileInputStream:read	([B)I
     //   44: pop
     //   45: aload_1
     //   46: astore_0
     //   47: aload_2
-    //   48: ldc 150
-    //   50: invokestatic 156	org/apache/http/util/EncodingUtils:getString	([BLjava/lang/String;)Ljava/lang/String;
+    //   48: ldc 152
+    //   50: invokestatic 158	org/apache/http/util/EncodingUtils:getString	([BLjava/lang/String;)Ljava/lang/String;
     //   53: astore_2
     //   54: aload_2
     //   55: astore_0
@@ -132,12 +132,12 @@ public class WnsProxyUtils
     //   58: aload_1
     //   59: ifnull -42 -> 17
     //   62: aload_1
-    //   63: invokevirtual 159	java/io/FileInputStream:close	()V
+    //   63: invokevirtual 161	java/io/FileInputStream:close	()V
     //   66: aload_0
     //   67: areturn
     //   68: astore_1
     //   69: aload_1
-    //   70: invokevirtual 162	java/io/IOException:printStackTrace	()V
+    //   70: invokevirtual 164	java/io/IOException:printStackTrace	()V
     //   73: aload_0
     //   74: areturn
     //   75: astore_2
@@ -146,18 +146,18 @@ public class WnsProxyUtils
     //   78: aload_1
     //   79: astore_0
     //   80: aload_2
-    //   81: invokevirtual 163	java/io/FileNotFoundException:printStackTrace	()V
+    //   81: invokevirtual 165	java/io/FileNotFoundException:printStackTrace	()V
     //   84: aload_3
     //   85: astore_2
     //   86: aload_1
     //   87: ifnull -70 -> 17
     //   90: aload_1
-    //   91: invokevirtual 159	java/io/FileInputStream:close	()V
+    //   91: invokevirtual 161	java/io/FileInputStream:close	()V
     //   94: aconst_null
     //   95: areturn
     //   96: astore_0
     //   97: aload_0
-    //   98: invokevirtual 162	java/io/IOException:printStackTrace	()V
+    //   98: invokevirtual 164	java/io/IOException:printStackTrace	()V
     //   101: aconst_null
     //   102: areturn
     //   103: astore_2
@@ -166,18 +166,18 @@ public class WnsProxyUtils
     //   106: aload_1
     //   107: astore_0
     //   108: aload_2
-    //   109: invokevirtual 162	java/io/IOException:printStackTrace	()V
+    //   109: invokevirtual 164	java/io/IOException:printStackTrace	()V
     //   112: aload_3
     //   113: astore_2
     //   114: aload_1
     //   115: ifnull -98 -> 17
     //   118: aload_1
-    //   119: invokevirtual 159	java/io/FileInputStream:close	()V
+    //   119: invokevirtual 161	java/io/FileInputStream:close	()V
     //   122: aconst_null
     //   123: areturn
     //   124: astore_0
     //   125: aload_0
-    //   126: invokevirtual 162	java/io/IOException:printStackTrace	()V
+    //   126: invokevirtual 164	java/io/IOException:printStackTrace	()V
     //   129: aconst_null
     //   130: areturn
     //   131: astore_2
@@ -186,18 +186,18 @@ public class WnsProxyUtils
     //   134: aload_1
     //   135: astore_0
     //   136: aload_2
-    //   137: invokevirtual 164	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   137: invokevirtual 166	java/lang/OutOfMemoryError:printStackTrace	()V
     //   140: aload_3
     //   141: astore_2
     //   142: aload_1
     //   143: ifnull -126 -> 17
     //   146: aload_1
-    //   147: invokevirtual 159	java/io/FileInputStream:close	()V
+    //   147: invokevirtual 161	java/io/FileInputStream:close	()V
     //   150: aconst_null
     //   151: areturn
     //   152: astore_0
     //   153: aload_0
-    //   154: invokevirtual 162	java/io/IOException:printStackTrace	()V
+    //   154: invokevirtual 164	java/io/IOException:printStackTrace	()V
     //   157: aconst_null
     //   158: areturn
     //   159: astore_1
@@ -206,12 +206,12 @@ public class WnsProxyUtils
     //   162: aload_0
     //   163: ifnull +7 -> 170
     //   166: aload_0
-    //   167: invokevirtual 159	java/io/FileInputStream:close	()V
+    //   167: invokevirtual 161	java/io/FileInputStream:close	()V
     //   170: aload_1
     //   171: athrow
     //   172: astore_0
     //   173: aload_0
-    //   174: invokevirtual 162	java/io/IOException:printStackTrace	()V
+    //   174: invokevirtual 164	java/io/IOException:printStackTrace	()V
     //   177: goto -7 -> 170
     //   180: astore_1
     //   181: goto -19 -> 162
@@ -392,52 +392,52 @@ public class WnsProxyUtils
     // Byte code:
     //   0: iconst_0
     //   1: istore_1
-    //   2: invokestatic 202	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   5: invokevirtual 206	java/lang/Thread:getId	()J
+    //   2: invokestatic 204	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   5: invokevirtual 208	java/lang/Thread:getId	()J
     //   8: lstore_2
-    //   9: new 58	java/io/File
+    //   9: new 60	java/io/File
     //   12: dup
-    //   13: new 114	java/lang/StringBuilder
+    //   13: new 116	java/lang/StringBuilder
     //   16: dup
-    //   17: invokespecial 115	java/lang/StringBuilder:<init>	()V
+    //   17: invokespecial 117	java/lang/StringBuilder:<init>	()V
     //   20: aload_0
-    //   21: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: ldc 208
-    //   26: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: ldc 210
+    //   26: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: lload_2
-    //   30: invokevirtual 211	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   36: invokespecial 71	java/io/File:<init>	(Ljava/lang/String;)V
+    //   30: invokevirtual 213	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokespecial 73	java/io/File:<init>	(Ljava/lang/String;)V
     //   39: astore_0
     //   40: aload_0
-    //   41: invokevirtual 75	java/io/File:exists	()Z
+    //   41: invokevirtual 77	java/io/File:exists	()Z
     //   44: ifeq +22 -> 66
     //   47: aload_0
-    //   48: invokevirtual 214	java/io/File:delete	()Z
+    //   48: invokevirtual 216	java/io/File:delete	()Z
     //   51: ifeq +8 -> 59
     //   54: aload_0
-    //   55: invokevirtual 217	java/io/File:createNewFile	()Z
+    //   55: invokevirtual 219	java/io/File:createNewFile	()Z
     //   58: istore_1
     //   59: aload_0
-    //   60: invokevirtual 214	java/io/File:delete	()Z
+    //   60: invokevirtual 216	java/io/File:delete	()Z
     //   63: pop
     //   64: iload_1
     //   65: ireturn
     //   66: aload_0
-    //   67: invokevirtual 217	java/io/File:createNewFile	()Z
+    //   67: invokevirtual 219	java/io/File:createNewFile	()Z
     //   70: istore_1
     //   71: goto -12 -> 59
     //   74: astore 4
     //   76: aload 4
-    //   78: invokevirtual 218	java/lang/Throwable:printStackTrace	()V
+    //   78: invokevirtual 220	java/lang/Throwable:printStackTrace	()V
     //   81: aload_0
-    //   82: invokevirtual 214	java/io/File:delete	()Z
+    //   82: invokevirtual 216	java/io/File:delete	()Z
     //   85: pop
     //   86: iconst_0
     //   87: ireturn
     //   88: astore 4
     //   90: aload_0
-    //   91: invokevirtual 214	java/io/File:delete	()Z
+    //   91: invokevirtual 216	java/io/File:delete	()Z
     //   94: pop
     //   95: aload 4
     //   97: athrow
@@ -463,40 +463,40 @@ public class WnsProxyUtils
   private static void updateStorage(String paramString)
   {
     // Byte code:
-    //   0: new 58	java/io/File
+    //   0: new 60	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 71	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 73	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_0
     //   9: aload_0
-    //   10: invokevirtual 75	java/io/File:exists	()Z
+    //   10: invokevirtual 77	java/io/File:exists	()Z
     //   13: ifeq +111 -> 124
-    //   16: new 221	java/io/BufferedReader
+    //   16: new 223	java/io/BufferedReader
     //   19: dup
-    //   20: new 223	java/io/FileReader
+    //   20: new 225	java/io/FileReader
     //   23: dup
     //   24: aload_0
-    //   25: invokespecial 226	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   28: invokespecial 229	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   25: invokespecial 228	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   28: invokespecial 231	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   31: astore_1
     //   32: aload_1
     //   33: astore_0
     //   34: aload_1
-    //   35: invokevirtual 232	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   35: invokevirtual 234	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   38: astore_2
     //   39: aload_2
     //   40: ifnull +85 -> 125
     //   43: aload_1
     //   44: astore_0
     //   45: aload_2
-    //   46: ldc 234
-    //   48: invokevirtual 176	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   46: ldc 236
+    //   48: invokevirtual 178	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   51: ifeq -19 -> 32
     //   54: aload_1
     //   55: astore_0
     //   56: aload_2
-    //   57: ldc 236
-    //   59: invokevirtual 240	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   57: ldc 238
+    //   59: invokevirtual 242	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   62: astore_3
     //   63: aload_1
     //   64: astore_0
@@ -514,46 +514,46 @@ public class WnsProxyUtils
     //   78: astore_3
     //   79: aload_1
     //   80: astore_0
-    //   81: new 58	java/io/File
+    //   81: new 60	java/io/File
     //   84: dup
     //   85: aload_2
-    //   86: invokespecial 71	java/io/File:<init>	(Ljava/lang/String;)V
-    //   89: invokevirtual 75	java/io/File:exists	()Z
+    //   86: invokespecial 73	java/io/File:<init>	(Ljava/lang/String;)V
+    //   89: invokevirtual 77	java/io/File:exists	()Z
     //   92: ifeq -60 -> 32
     //   95: aload_1
     //   96: astore_0
     //   97: getstatic 24	cooperation/qzone/util/WnsProxyUtils:mSDCardName2PathMap	Ljava/util/HashMap;
     //   100: aload_3
     //   101: aload_2
-    //   102: invokevirtual 244	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   102: invokevirtual 246	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   105: pop
     //   106: goto -74 -> 32
     //   109: astore_2
     //   110: aload_1
     //   111: astore_0
     //   112: aload_2
-    //   113: invokevirtual 245	java/lang/Exception:printStackTrace	()V
+    //   113: invokevirtual 247	java/lang/Exception:printStackTrace	()V
     //   116: aload_1
     //   117: ifnull +7 -> 124
     //   120: aload_1
-    //   121: invokevirtual 246	java/io/BufferedReader:close	()V
+    //   121: invokevirtual 248	java/io/BufferedReader:close	()V
     //   124: return
     //   125: aload_1
     //   126: astore_0
     //   127: aload_1
-    //   128: invokevirtual 246	java/io/BufferedReader:close	()V
+    //   128: invokevirtual 248	java/io/BufferedReader:close	()V
     //   131: aload_1
     //   132: ifnull -8 -> 124
     //   135: aload_1
-    //   136: invokevirtual 246	java/io/BufferedReader:close	()V
+    //   136: invokevirtual 248	java/io/BufferedReader:close	()V
     //   139: return
     //   140: astore_0
     //   141: aload_0
-    //   142: invokevirtual 162	java/io/IOException:printStackTrace	()V
+    //   142: invokevirtual 164	java/io/IOException:printStackTrace	()V
     //   145: return
     //   146: astore_0
     //   147: aload_0
-    //   148: invokevirtual 162	java/io/IOException:printStackTrace	()V
+    //   148: invokevirtual 164	java/io/IOException:printStackTrace	()V
     //   151: return
     //   152: astore_1
     //   153: aconst_null
@@ -561,12 +561,12 @@ public class WnsProxyUtils
     //   155: aload_0
     //   156: ifnull +7 -> 163
     //   159: aload_0
-    //   160: invokevirtual 246	java/io/BufferedReader:close	()V
+    //   160: invokevirtual 248	java/io/BufferedReader:close	()V
     //   163: aload_1
     //   164: athrow
     //   165: astore_0
     //   166: aload_0
-    //   167: invokevirtual 162	java/io/IOException:printStackTrace	()V
+    //   167: invokevirtual 164	java/io/IOException:printStackTrace	()V
     //   170: goto -7 -> 163
     //   173: astore_1
     //   174: goto -19 -> 155
@@ -611,7 +611,7 @@ public class WnsProxyUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.WnsProxyUtils
  * JD-Core Version:    0.7.0.1
  */

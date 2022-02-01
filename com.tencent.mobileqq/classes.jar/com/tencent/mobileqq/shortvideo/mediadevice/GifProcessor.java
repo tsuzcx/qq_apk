@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import altw;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.media.MediaMetadataRetriever;
 import android.text.TextUtils;
-import bheg;
 import com.tencent.maxvideo.common.GlobalInit;
 import com.tencent.maxvideo.trim.TrimNative;
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.utils.ThumbnailUtils;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.cover.RecordThumbnailUtils;
 import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.video.decode.ShortVideoSoLoad;
@@ -84,7 +83,7 @@ public class GifProcessor
     if (((File)localObject2).exists())
     {
       if (((File)localObject2).isDirectory()) {
-        FileUtils.deleteDirectory(str1);
+        FileUtils.a(str1);
       }
     }
     else
@@ -108,7 +107,7 @@ public class GifProcessor
     label651:
     for (;;)
     {
-      FileUtils.deleteDirectory(str1);
+      FileUtils.a(str1);
       return i;
       localObject1 = str1 + ",transpose=1";
       break;
@@ -195,7 +194,7 @@ public class GifProcessor
     if (((File)localObject2).exists())
     {
       if (((File)localObject2).isDirectory()) {
-        FileUtils.deleteDirectory(str1);
+        FileUtils.a(str1);
       }
     }
     else
@@ -220,7 +219,7 @@ public class GifProcessor
     label669:
     for (;;)
     {
-      FileUtils.deleteDirectory(str1);
+      FileUtils.a(str1);
       return i;
       localObject1 = str1 + ",transpose=1";
       break;
@@ -308,7 +307,7 @@ public class GifProcessor
     }
     for (;;)
     {
-      altw.a(paramString1, paramInt2, i, 0, 0, paramInt2, i);
+      ThumbnailUtils.a(paramString1, paramInt2, i, 0, 0, paramInt2, i);
       long l1;
       long l3;
       long l2;
@@ -334,7 +333,7 @@ public class GifProcessor
           if (!((File)localObject2).isDirectory()) {
             break label441;
           }
-          FileUtils.deleteDirectory((String)localObject1);
+          FileUtils.a((String)localObject1);
         }
         label362:
         ((File)localObject2).mkdir();
@@ -352,7 +351,7 @@ public class GifProcessor
         {
           paramString1.encodeGif(paramString2, (ArrayList)localObject2, paramInt5, true);
           paramString1.closeEncoder();
-          FileUtils.deleteDirectory((String)localObject1);
+          FileUtils.a((String)localObject1);
           return 0;
           l1 = paramLong;
           break;
@@ -363,12 +362,12 @@ public class GifProcessor
           ((File)localObject2).delete();
           break label362;
         }
-        Bitmap localBitmap = altw.b(l3, l5);
+        Bitmap localBitmap = ThumbnailUtils.b(l3, l5);
         long l5 = System.currentTimeMillis();
         if (localBitmap != null) {}
         try
         {
-          bheg.a(localBitmap, new File((String)localObject1 + File.separator + l3 + ".jpg"));
+          ImageUtil.a(localBitmap, new File((String)localObject1 + File.separator + l3 + ".jpg"));
           ((ArrayList)localObject2).add((String)localObject1 + File.separator + l3 + ".jpg");
           long l6 = System.currentTimeMillis();
           if (QLog.isColorLevel()) {
@@ -539,7 +538,7 @@ public class GifProcessor
         if (paramInt != 0)
         {
           paramString1 = paramString2;
-          if (!CameraFilterGLView.a(paramInt)) {
+          if (!RecordThumbnailUtils.a(paramInt)) {
             paramString1 = RecordThumbnailUtils.a(paramString2, paramInt);
           }
         }
@@ -578,7 +577,7 @@ public class GifProcessor
               paramString1 = localMediaMetadataRetriever.getFrameAtTime(1000L * l3, 3);
               long l5 = System.currentTimeMillis();
               if (paramString1 != null) {
-                bheg.a(paramString1.copy(Bitmap.Config.ARGB_8888, true), new File(paramString2 + File.separator + l3 + ".jpg"));
+                ImageUtil.a(paramString1.copy(Bitmap.Config.ARGB_8888, true), new File(paramString2 + File.separator + l3 + ".jpg"));
               }
               long l6 = System.currentTimeMillis();
               if (QLog.isColorLevel()) {
@@ -658,7 +657,7 @@ public class GifProcessor
     }
     for (;;)
     {
-      if (altw.a(paramString1, paramInt2, i, 0, 0, paramInt2, i) != 0) {
+      if (ThumbnailUtils.a(paramString1, paramInt2, i, 0, 0, paramInt2, i) != 0) {
         return -112;
       }
       long l1;
@@ -682,7 +681,7 @@ public class GifProcessor
             if (!paramString1.isDirectory()) {
               break label512;
             }
-            FileUtils.deleteDirectory(paramString2);
+            FileUtils.a(paramString2);
           }
           paramString1.mkdir();
           if (l3 > l1) {
@@ -694,13 +693,13 @@ public class GifProcessor
           if (l5 >= l1) {
             l4 = l1;
           }
-          paramString1 = altw.b(l3, l4);
+          paramString1 = ThumbnailUtils.b(l3, l4);
           l4 = System.currentTimeMillis();
           if (paramString1 == null) {}
         }
         try
         {
-          bheg.a(paramString1, new File(paramString2 + File.separator + l3 + ".jpg"));
+          ImageUtil.a(paramString1, new File(paramString2 + File.separator + l3 + ".jpg"));
           l5 = System.currentTimeMillis();
           if (QLog.isColorLevel()) {
             QLog.d("GifProcessor", 2, "getFramesFromVideo currentTime=" + l3 + " duration=" + paramLong + " retrieve frame cost=" + (l4 - l6) + " encode frame cost=" + (l5 - l4));

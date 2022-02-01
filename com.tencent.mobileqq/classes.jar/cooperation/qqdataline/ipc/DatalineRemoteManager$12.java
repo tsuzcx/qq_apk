@@ -1,14 +1,13 @@
 package cooperation.qqdataline.ipc;
 
 import android.os.Bundle;
-import blzq;
-import blzs;
 import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.qqdataline.QQProxyForDataline;
 
-public class DatalineRemoteManager$12
+class DatalineRemoteManager$12
   implements Runnable
 {
-  public DatalineRemoteManager$12(blzs paramblzs) {}
+  DatalineRemoteManager$12(DatalineRemoteManager paramDatalineRemoteManager) {}
   
   public void run()
   {
@@ -20,13 +19,13 @@ public class DatalineRemoteManager$12
     localBundle.putBoolean("string_uin", false);
     localBundle.putLong("device_din", 0L);
     localBundle.putInt("sTitleID", 0);
-    blzq.a(BaseActivity.sTopActivity, localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
-    BaseActivity.sTopActivity.overridePendingTransition(2130771997, 0);
+    QQProxyForDataline.a(BaseActivity.sTopActivity, localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
+    BaseActivity.sTopActivity.overridePendingTransition(2130771999, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.12
  * JD-Core Version:    0.7.0.1
  */

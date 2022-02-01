@@ -11,7 +11,7 @@ public class MiniAppBusiReport
   public static final String SUB_ACTION_CLICK = "click";
   public static final String SUB_ACTION_EXPO = "expo";
   public static final String TAG = "MiniAppBusiReport";
-  public static long lastEschopExpoReportTime;
+  public static long lastEschopExpoReportTime = 0L;
   
   public static void report(String paramString1, String paramString2, String paramString3, String paramString4)
   {

@@ -9,9 +9,9 @@ public final class Hamlet
   extends JceStruct
 {
   static ArrayList<UniBusinessItem> cache_itemlist = new ArrayList();
-  public ArrayList<UniBusinessItem> itemlist;
-  public int locationtype;
-  public long uid;
+  public ArrayList<UniBusinessItem> itemlist = null;
+  public int locationtype = 0;
+  public long uid = 0L;
   
   static
   {

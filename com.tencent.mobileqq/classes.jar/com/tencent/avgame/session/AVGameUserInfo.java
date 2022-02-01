@@ -8,17 +8,17 @@ public class AVGameUserInfo
   extends QavDef.MultiUserInfo
 {
   public int mAudioEnergy;
-  public boolean mBigVideo;
-  public long mEnterTime;
+  public boolean mBigVideo = false;
+  public long mEnterTime = 0L;
   public boolean mIsSelf;
   public boolean mIsSpeaking;
-  public boolean mSubVideoOn;
+  public boolean mSubVideoOn = false;
   public int mSubVideoSrc = 0;
-  public long mSubVideoTime;
-  public boolean mVideoOn;
+  public long mSubVideoTime = 0L;
+  public boolean mVideoOn = false;
   public int mVideoSrc = 0;
-  public long mVideoTime;
-  public int mVolumeValue;
+  public long mVideoTime = 0L;
+  public int mVolumeValue = 0;
   
   public AVGameUserInfo(QavDef.MultiUserInfo paramMultiUserInfo, long paramLong)
   {
@@ -81,7 +81,7 @@ public class AVGameUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.session.AVGameUserInfo
  * JD-Core Version:    0.7.0.1
  */

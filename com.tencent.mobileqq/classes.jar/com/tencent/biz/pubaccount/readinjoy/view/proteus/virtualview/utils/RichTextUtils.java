@@ -7,7 +7,10 @@ import android.text.style.AbsoluteSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.RichTextParser.CustomImageSpan;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.TruncateAttr;
+import java.util.Iterator;
+import java.util.List;
 
 public class RichTextUtils
 {
@@ -97,9 +100,9 @@ public class RichTextUtils
   
   private static void addMoreText(TextView paramTextView, SpannableStringBuilder paramSpannableStringBuilder, CharSequence paramCharSequence, int paramInt, TruncateAttr paramTruncateAttr)
   {
-    paramSpannableStringBuilder.append(paramCharSequence.subSequence(0, paramInt)).append("…");
+    paramSpannableStringBuilder.append(paramCharSequence.subSequence(0, paramInt));
     paramInt = paramSpannableStringBuilder.length();
-    paramSpannableStringBuilder.append(paramTruncateAttr.text);
+    paramSpannableStringBuilder.append("…").append(paramTruncateAttr.text);
     addMoreTextSpan(paramTextView, paramSpannableStringBuilder, paramTruncateAttr, paramInt, paramSpannableStringBuilder.length());
   }
   
@@ -108,6 +111,22 @@ public class RichTextUtils
     addClickSpan(paramTextView, paramSpannableStringBuilder, paramTruncateAttr.href, paramTruncateAttr.color, paramInt1, paramInt2);
     addFontSizeSpan(paramSpannableStringBuilder, (int)(paramTruncateAttr.fontSize * paramTruncateAttr.nodeRatio), paramInt1, paramInt2);
     addFontWeightSpan(paramSpannableStringBuilder, paramTruncateAttr.fontWeight, paramInt1, paramInt2);
+  }
+  
+  public static void adjustImageSpan(TextView paramTextView, TruncateAttr paramTruncateAttr)
+  {
+    if (paramTextView.getLineCount() <= 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramTextView = paramTruncateAttr.imageSpans.iterator();
+      while (paramTextView.hasNext())
+      {
+        paramTruncateAttr = (RichTextParser.CustomImageSpan)paramTextView.next();
+        if (paramTruncateAttr != null) {
+          paramTruncateAttr.isSingleLine = bool;
+        }
+      }
+    }
   }
   
   private static boolean isBeyondMaxLines(TextView paramTextView, int paramInt1, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt2, int paramInt3)
@@ -125,7 +144,7 @@ public class RichTextUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.RichTextUtils
  * JD-Core Version:    0.7.0.1
  */

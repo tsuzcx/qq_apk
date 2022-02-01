@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.receipt;
 
-import bbbc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,19 +13,19 @@ class ReceiptMessageReadMemberListContainerFragment$6
   
   public void run()
   {
-    MessageRecord localMessageRecord = ReceiptMessageReadMemberListContainerFragment.a(this.this$0).getMessageFacade().queryMsgItemByUniseq(ReceiptMessageReadMemberListContainerFragment.a(this.this$0).curFriendUin, ReceiptMessageReadMemberListContainerFragment.a(this.this$0).curType, ReceiptMessageReadMemberListContainerFragment.c(this.this$0));
+    MessageRecord localMessageRecord = ReceiptMessageReadMemberListContainerFragment.a(this.this$0).getMessageFacade().b(ReceiptMessageReadMemberListContainerFragment.a(this.this$0).jdField_a_of_type_JavaLangString, ReceiptMessageReadMemberListContainerFragment.a(this.this$0).jdField_a_of_type_Int, ReceiptMessageReadMemberListContainerFragment.c(this.this$0));
     if (ReceiptMessageReadMemberListContainerFragment.a(this.this$0).size() == 0) {
-      bbbc.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "3");
+      ReceiptMsgManager.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "3");
     }
     while (ReceiptMessageReadMemberListContainerFragment.b(this.this$0).size() <= 0) {
       return;
     }
-    bbbc.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "4");
+    ReceiptMsgManager.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "4");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.6
  * JD-Core Version:    0.7.0.1
  */

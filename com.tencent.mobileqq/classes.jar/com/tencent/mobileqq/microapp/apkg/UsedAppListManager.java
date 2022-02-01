@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import albn;
-import amme;
-import amwn;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils;
+import com.tencent.mobileqq.apollo.api.IApolloManagerService;
+import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionHandler;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
 import java.util.Iterator;
@@ -132,11 +132,11 @@ public class UsedAppListManager
         paramAppInfo.updateTimeStamp();
         localUsedAppListManager.insertAppInfo(paramAppInfo);
       } while (paramAppInfo.type != 2);
-      paramAppInfo = (amme)((QQAppInterface)localObject).getManager(QQManagerFactory.APOLLO_MANAGER);
-    } while ((paramAppInfo.l) && (paramAppInfo.j()));
-    amwn.b(4);
+      paramAppInfo = (IApolloManagerService)((QQAppInterface)localObject).getRuntimeService(IApolloManagerService.class, "all");
+    } while ((paramAppInfo.isMiniAppPlayed()) && (paramAppInfo.isPlusWhiteList()));
+    CmGameUtil.b(4);
     return;
-    albn.a(paramAppInfo);
+    ComIPCUtils.a(paramAppInfo);
   }
   
   private void saveToDB(Entity paramEntity)
@@ -192,7 +192,7 @@ public class UsedAppListManager
   
   public void getUsedAppList()
   {
-    ((VasExtensionHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).c();
+    ((IApolloExtensionHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a();
   }
   
   public void onDestroy() {}
@@ -248,19 +248,19 @@ public class UsedAppListManager
     //   45: ifnull -32 -> 13
     //   48: aload_0
     //   49: getfield 42	com/tencent/mobileqq/microapp/apkg/UsedAppListManager:mApp	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   52: invokevirtual 212	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
-    //   55: invokevirtual 218	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   52: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   55: invokevirtual 220	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   58: astore_3
     //   59: aload_3
     //   60: ifnull -47 -> 13
     //   63: aload_3
-    //   64: invokevirtual 224	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   64: invokevirtual 226	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   67: astore_2
     //   68: aload_2
-    //   69: invokevirtual 229	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   72: new 261	java/lang/StringBuilder
+    //   69: invokevirtual 231	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   72: new 263	java/lang/StringBuilder
     //   75: dup
-    //   76: invokespecial 262	java/lang/StringBuilder:<init>	()V
+    //   76: invokespecial 264	java/lang/StringBuilder:<init>	()V
     //   79: astore 4
     //   81: aload_1
     //   82: invokeinterface 97 1 0
@@ -275,16 +275,16 @@ public class UsedAppListManager
     //   108: aload_0
     //   109: aload_3
     //   110: aload 5
-    //   112: invokespecial 233	com/tencent/mobileqq/microapp/apkg/UsedAppListManager:updateEntity	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   112: invokespecial 235	com/tencent/mobileqq/microapp/apkg/UsedAppListManager:updateEntity	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   115: pop
     //   116: aload 4
-    //   118: ldc_w 312
-    //   121: invokevirtual 268	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: ldc_w 313
+    //   121: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: aload 5
-    //   126: getfield 315	com/tencent/mobileqq/microapp/apkg/AppInfo:name	Ljava/lang/String;
-    //   129: invokevirtual 268	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: ldc_w 317
-    //   135: invokevirtual 268	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: getfield 316	com/tencent/mobileqq/microapp/apkg/AppInfo:name	Ljava/lang/String;
+    //   129: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: ldc_w 318
+    //   135: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   138: pop
     //   139: goto -51 -> 88
     //   142: astore_1
@@ -292,11 +292,11 @@ public class UsedAppListManager
     //   146: ifeq +13 -> 159
     //   149: ldc 10
     //   151: iconst_2
-    //   152: ldc_w 319
+    //   152: ldc_w 320
     //   155: aload_1
-    //   156: invokestatic 244	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   156: invokestatic 246	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   159: aload_2
-    //   160: invokevirtual 239	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   160: invokevirtual 241	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   163: return
     //   164: astore_1
     //   165: aload_2
@@ -311,22 +311,22 @@ public class UsedAppListManager
     //   179: anewarray 4	java/lang/Object
     //   182: dup
     //   183: iconst_0
-    //   184: ldc_w 321
+    //   184: ldc_w 322
     //   187: aastore
     //   188: dup
     //   189: iconst_1
     //   190: aload 4
-    //   192: invokevirtual 275	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   192: invokevirtual 277	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   195: aastore
     //   196: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   199: aload_2
-    //   200: invokevirtual 236	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   200: invokevirtual 238	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   203: aload_2
-    //   204: invokevirtual 239	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   204: invokevirtual 241	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   207: return
     //   208: astore_1
     //   209: aload_2
-    //   210: invokevirtual 239	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   210: invokevirtual 241	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   213: aload_1
     //   214: athrow
     // Local variable table:

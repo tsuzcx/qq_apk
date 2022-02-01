@@ -7,8 +7,7 @@ import android.util.AttributeSet;
 import android.view.ViewConfiguration;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import avlm;
-import axqr;
+import com.tencent.mobileqq.hotchat.anim.HeartAnimator;
 import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 import java.util.Random;
 
@@ -39,20 +38,20 @@ public class NearbyZanAnimLayout
     }
     this.c = (ViewConfiguration.get(getContext()).getScaledTouchSlop() * 5);
     this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-    this.jdField_a_of_type_Avlm = new axqr(this);
-    this.jdField_a_of_type_Avlm.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator = new NearbyZanAnimator(this);
+    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.a(this);
   }
   
   public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2)
   {
     if (!this.jdField_a_of_type_Boolean) {}
-    while ((this.jdField_a_of_type_Avlm == null) || (paramBitmap == null)) {
+    while ((this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator == null) || (paramBitmap == null)) {
       return;
     }
     ImageView localImageView = new ImageView(getContext());
     localImageView.setImageBitmap(paramBitmap);
     localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_Avlm.a(localImageView, paramFloat1, paramFloat2, this);
+    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.a(localImageView, paramFloat1, paramFloat2, this);
   }
 }
 

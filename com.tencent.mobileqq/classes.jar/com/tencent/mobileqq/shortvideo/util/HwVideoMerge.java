@@ -163,7 +163,7 @@ public class HwVideoMerge
   {
     // Byte code:
     //   0: invokestatic 215	com/tencent/mobileqq/shortvideo/VideoEnvironment:getContext	()Landroid/content/Context;
-    //   3: invokestatic 221	bddn:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   3: invokestatic 221	com/tencent/mobileqq/shortvideo/util/FileFFmpegUtils:a	(Landroid/content/Context;)Ljava/lang/String;
     //   6: astore 6
     //   8: new 223	java/io/File
     //   11: dup
@@ -259,7 +259,7 @@ public class HwVideoMerge
     //   234: pop
     //   235: aload 5
     //   237: invokestatic 215	com/tencent/mobileqq/shortvideo/VideoEnvironment:getContext	()Landroid/content/Context;
-    //   240: invokestatic 277	bddn:b	(Landroid/content/Context;)Ljava/lang/String;
+    //   240: invokestatic 277	com/tencent/mobileqq/shortvideo/util/FileFFmpegUtils:b	(Landroid/content/Context;)Ljava/lang/String;
     //   243: invokeinterface 258 2 0
     //   248: pop
     //   249: new 165	java/lang/StringBuilder
@@ -392,7 +392,7 @@ public class HwVideoMerge
   {
     // Byte code:
     //   0: invokestatic 215	com/tencent/mobileqq/shortvideo/VideoEnvironment:getContext	()Landroid/content/Context;
-    //   3: invokestatic 221	bddn:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   3: invokestatic 221	com/tencent/mobileqq/shortvideo/util/FileFFmpegUtils:a	(Landroid/content/Context;)Ljava/lang/String;
     //   6: astore 5
     //   8: new 223	java/io/File
     //   11: dup
@@ -475,7 +475,7 @@ public class HwVideoMerge
     //   199: pop
     //   200: aload 4
     //   202: invokestatic 215	com/tencent/mobileqq/shortvideo/VideoEnvironment:getContext	()Landroid/content/Context;
-    //   205: invokestatic 277	bddn:b	(Landroid/content/Context;)Ljava/lang/String;
+    //   205: invokestatic 277	com/tencent/mobileqq/shortvideo/util/FileFFmpegUtils:b	(Landroid/content/Context;)Ljava/lang/String;
     //   208: invokeinterface 258 2 0
     //   213: pop
     //   214: new 284	com/tencent/mobileqq/shortvideo/util/HwVideoMerge$LogStream
@@ -664,7 +664,7 @@ public class HwVideoMerge
     {
       paramString1 = new File(paramString1);
       paramString2 = new File(paramString3);
-      if (FileUtils.moveFile(paramString1.getAbsolutePath(), paramString2.getAbsolutePath())) {
+      if (FileUtils.b(paramString1.getAbsolutePath(), paramString2.getAbsolutePath())) {
         i = 0;
       }
     }

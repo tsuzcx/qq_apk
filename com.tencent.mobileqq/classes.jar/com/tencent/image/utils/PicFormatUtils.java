@@ -1,6 +1,8 @@
 package com.tencent.image.utils;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -28,11 +30,11 @@ public class PicFormatUtils
           arrayOfChar[(i * 2 + 0)] = digits[(j & 0xF)];
           i += 1;
         }
-        if (!QLog.isColorLevel()) {}
+        if (!URLDrawable.depImp.mLog.isColorLevel()) {}
       }
       catch (Exception paramArrayOfByte) {}
     }
-    QLog.d("HexUtil", 2, " === bytes2HexStr error === " + paramArrayOfByte.toString());
+    URLDrawable.depImp.mLog.d("HexUtil", 2, " === bytes2HexStr error === " + paramArrayOfByte.toString());
     return null;
     return new String(arrayOfChar);
   }
@@ -123,7 +125,7 @@ public class PicFormatUtils
         }
         paramString = paramString;
         bool = false;
-        QLog.e("URLDrawable.PicFormatUtils", 2, "isJPEGImage", paramString);
+        URLDrawable.depImp.mLog.e("URLDrawable.PicFormatUtils", 2, "isJPEGImage", paramString);
         return bool;
       }
     }

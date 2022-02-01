@@ -9,9 +9,9 @@ public final class CommonInfo
 {
   public String cookie = "";
   public String debugModeInfo = "";
-  public byte hasMore;
-  public byte isRefresh;
-  public byte noUpdate;
+  public byte hasMore = 0;
+  public byte isRefresh = 0;
+  public byte noUpdate = 0;
   
   public CommonInfo() {}
   

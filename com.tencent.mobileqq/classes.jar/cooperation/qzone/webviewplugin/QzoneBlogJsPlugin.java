@@ -2,9 +2,9 @@ package cooperation.qzone.webviewplugin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -15,7 +15,7 @@ public class QzoneBlogJsPlugin
   public static final String NAMESPACE = "Qzone";
   private static final String TAG = "QzoneBlogJsPlugin";
   
-  private static void handleWriteBlog(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
+  private static void handleWriteBlog(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
     paramWebViewPlugin = new Intent("action_js2qzone");
     paramArrayOfString = new Bundle();
@@ -24,7 +24,7 @@ public class QzoneBlogJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("QzoneBlogJsPlugin", 2, "handleWriteBlog actionString: " + paramWebViewPlugin.getAction());
     }
-    QZoneHelper.forwardToQzoneTransluentActivity(parambifw.a(), QZoneHelper.UserInfo.getInstance(), paramWebViewPlugin);
+    QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), paramWebViewPlugin);
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -39,7 +39,7 @@ public class QzoneBlogJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneBlogJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -5,10 +5,10 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.RecordAndChangeVoiceService;
 import org.json.JSONException;
@@ -24,7 +24,7 @@ public class QZonePublishSecretShuoShuoH5Plugin
   public static final int NOTIFY_H5_OK = 1;
   public static final int NOTIFY_RIGHT_BTN = 2;
   public static final String TAG = "QZonePublishSecretShuoShuoH5Plugin";
-  public static QZonePublishSecretShuoShuoH5Plugin my;
+  public static QZonePublishSecretShuoShuoH5Plugin my = null;
   private BroadcastReceiver msgBrocastReceiver = new QZonePublishSecretShuoShuoH5Plugin.1(this);
   
   private void dispatchTasks(int paramInt)
@@ -336,7 +336,7 @@ public class QZonePublishSecretShuoShuoH5Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZonePublishSecretShuoShuoH5Plugin
  * JD-Core Version:    0.7.0.1
  */

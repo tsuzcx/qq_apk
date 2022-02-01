@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.scribble;
 
-import avyw;
+import com.tencent.mobileqq.jsonconverter.Alias;
 
 public class ScribbleResMgr$ResInfo
 {
-  @avyw(a="downloading")
-  public boolean downloading;
-  @avyw(a="isShow")
+  @Alias(a="downloading")
+  public boolean downloading = false;
+  @Alias(a="isShow")
   public int isShow = 1;
-  @avyw(a="name")
+  @Alias(a="name")
   public String name = "";
-  @avyw(a="orderIndex")
-  public int orderIndex;
-  @avyw(a="predownload")
+  @Alias(a="orderIndex")
+  public int orderIndex = 0;
+  @Alias(a="predownload")
   public int predownload = 1;
-  @avyw(a="resType")
-  public int resType;
-  @avyw(a="showInApp")
+  @Alias(a="resType")
+  public int resType = 0;
+  @Alias(a="showInApp")
   public int showInApp;
-  @avyw(a="sourceId")
-  public int sourceId;
-  @avyw(a="sourceMd5")
+  @Alias(a="sourceId")
+  public int sourceId = 0;
+  @Alias(a="sourceMd5")
   public String sourceMd5 = "";
-  @avyw(a="sourceUrl")
+  @Alias(a="sourceUrl")
   public String sourceUrl = "";
   
   ResInfo cpy(ResInfo paramResInfo)
@@ -43,7 +43,7 @@ public class ScribbleResMgr$ResInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo
  * JD-Core Version:    0.7.0.1
  */

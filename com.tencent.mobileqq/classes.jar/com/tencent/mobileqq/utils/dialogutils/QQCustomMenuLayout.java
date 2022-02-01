@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -32,7 +32,7 @@ public class QQCustomMenuLayout
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
   private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private int jdField_d_of_type_Int;
+  private int jdField_d_of_type_Int = 0;
   private ImageView jdField_d_of_type_AndroidWidgetImageView;
   
   public QQCustomMenuLayout(Context paramContext)
@@ -51,8 +51,8 @@ public class QQCustomMenuLayout
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(TypedValue.applyDimension(2, 15.0F, ((Resources)localObject).getDisplayMetrics()));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838993);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anvx.a(2131709659));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839061);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131710175));
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));
@@ -60,8 +60,8 @@ public class QQCustomMenuLayout
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, 0);
     this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838978);
-    if (!AppSetting.c) {
+    this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130839046);
+    if (!AppSetting.d) {
       this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription("leftIcon");
     }
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -69,8 +69,8 @@ public class QQCustomMenuLayout
     this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     addView(this.jdField_c_of_type_AndroidWidgetImageView, 1);
     this.jdField_d_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838978);
-    if (!AppSetting.c) {
+    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130839046);
+    if (!AppSetting.d) {
       this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription("rightIcon");
     }
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -79,8 +79,8 @@ public class QQCustomMenuLayout
     addView(this.jdField_d_of_type_AndroidWidgetImageView, 2);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839000);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(anvx.a(2131709645));
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839068);
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131710161));
     this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));

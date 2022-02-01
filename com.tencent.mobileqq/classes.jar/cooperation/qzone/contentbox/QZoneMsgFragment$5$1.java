@@ -13,45 +13,66 @@ class QZoneMsgFragment$5$1
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
+    Object localObject4;
     Object localObject1;
-    MQMsg localMQMsg;
     if (QZoneMsgFragment.access$200(this.this$1.this$0))
     {
-      localObject2 = null;
       Iterator localIterator1 = this.val$qzoneMessageRsp.iterator();
+      localObject4 = null;
+      localObject2 = null;
       for (;;)
       {
         if (localIterator1.hasNext())
         {
           localObject1 = (QZoneMsgEntityNew)localIterator1.next();
-          if ((localObject1 != null) && (((QZoneMsgEntityNew)localObject1).ArkNes_vec != null) && (((QZoneMsgEntityNew)localObject1).ArkNes_vec.size() > 0))
+          Object localObject3;
+          if (localObject4 != null)
           {
-            Iterator localIterator2 = ((QZoneMsgEntityNew)localObject1).ArkNes_vec.iterator();
-            localObject1 = localObject2;
-            do
+            localObject3 = localObject4;
+            if (((QZoneMsgEntityNew)localObject1).pushTime <= ((QZoneMsgEntityNew)localObject4).pushTime) {}
+          }
+          else
+          {
+            localObject3 = localObject1;
+          }
+          localObject4 = localObject3;
+          if (localObject1 != null)
+          {
+            localObject4 = localObject3;
+            if (((QZoneMsgEntityNew)localObject1).ArkNes_vec != null)
             {
-              localObject2 = localObject1;
-              if (!localIterator2.hasNext()) {
-                break;
-              }
-              localMQMsg = (MQMsg)localIterator2.next();
-            } while (localMQMsg == null);
-            localObject2 = localMQMsg;
-            if (localObject1 != null) {
-              if (localMQMsg.pushTime <= ((MQMsg)localObject1).pushTime) {
-                break label237;
+              localObject4 = localObject3;
+              if (((QZoneMsgEntityNew)localObject1).ArkNes_vec.size() > 0)
+              {
+                Iterator localIterator2 = ((QZoneMsgEntityNew)localObject1).ArkNes_vec.iterator();
+                localObject1 = localObject2;
+                do
+                {
+                  localObject2 = localObject1;
+                  localObject4 = localObject3;
+                  if (!localIterator2.hasNext()) {
+                    break;
+                  }
+                  localObject4 = (MQMsg)localIterator2.next();
+                } while (localObject4 == null);
+                localObject2 = localObject4;
+                if (localObject1 != null) {
+                  if (((MQMsg)localObject4).pushTime <= ((MQMsg)localObject1).pushTime) {
+                    break label343;
+                  }
+                }
               }
             }
           }
         }
       }
     }
-    label237:
-    for (Object localObject2 = localMQMsg;; localObject2 = localObject1)
+    label343:
+    for (Object localObject2 = localObject4;; localObject2 = localObject1)
     {
       localObject1 = localObject2;
       break;
-      if (localObject2 != null) {
+      if ((localObject2 != null) && (!((MQMsg)localObject2).isNewStyleCard())) {
         localArrayList.add(localObject2);
       }
       for (;;)
@@ -59,12 +80,17 @@ class QZoneMsgFragment$5$1
         this.this$1.this$0.adapter.setMQMsgs(localArrayList, 2);
         QZoneMsgFragment.access$300(this.this$1.this$0);
         return;
-        localObject1 = this.val$qzoneMessageRsp.iterator();
-        while (((Iterator)localObject1).hasNext())
+        if ((localObject4 != null) && (((QZoneMsgEntityNew)localObject4).ArkNes_vec != null) && (((QZoneMsgEntityNew)localObject4).ArkNes_vec.size() > 0) && (((MQMsg)((QZoneMsgEntityNew)localObject4).ArkNes_vec.get(0)).isNewStyleCard()))
         {
-          localObject2 = (QZoneMsgEntityNew)((Iterator)localObject1).next();
-          if ((localObject2 != null) && (((QZoneMsgEntityNew)localObject2).ArkNes_vec != null) && (((QZoneMsgEntityNew)localObject2).ArkNes_vec.size() > 0)) {
-            localArrayList.addAll(((QZoneMsgEntityNew)localObject2).ArkNes_vec);
+          localArrayList.addAll(((QZoneMsgEntityNew)localObject4).ArkNes_vec);
+          continue;
+          localObject1 = this.val$qzoneMessageRsp.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (QZoneMsgEntityNew)((Iterator)localObject1).next();
+            if ((localObject2 != null) && (((QZoneMsgEntityNew)localObject2).ArkNes_vec != null) && (((QZoneMsgEntityNew)localObject2).ArkNes_vec.size() > 0)) {
+              localArrayList.addAll(((QZoneMsgEntityNew)localObject2).ArkNes_vec);
+            }
           }
         }
       }
@@ -73,7 +99,7 @@ class QZoneMsgFragment$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.5.1
  * JD-Core Version:    0.7.0.1
  */

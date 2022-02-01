@@ -95,10 +95,10 @@ public class TAVAudioConfiguration
   public float getVolume(@NonNull CMTime paramCMTime)
   {
     if ((this.startVolumeEdge != null) && (this.startVolumeEdge.getTimeRange() != null) && (this.startVolumeEdge.getTimeRange().containsTime(paramCMTime))) {
-      return this.startVolumeEdge.getVolume(paramCMTime.sub(this.startVolumeEdge.getTimeRange().getStart()));
+      return this.volume * this.startVolumeEdge.getVolume(paramCMTime.sub(this.startVolumeEdge.getTimeRange().getStart()));
     }
     if ((this.endVolumeEdge != null) && (this.endVolumeEdge.getTimeRange() != null) && (this.endVolumeEdge.getTimeRange().containsTime(paramCMTime))) {
-      return this.endVolumeEdge.getVolume(paramCMTime.sub(this.endVolumeEdge.getTimeRange().getStart()));
+      return this.volume * this.endVolumeEdge.getVolume(paramCMTime.sub(this.endVolumeEdge.getTimeRange().getStart()));
     }
     if ((this.volumeEdges != null) && (!this.volumeEdges.isEmpty()))
     {
@@ -106,8 +106,10 @@ public class TAVAudioConfiguration
       while (localIterator.hasNext())
       {
         TAVAudioConfiguration.VolumeEdge localVolumeEdge = (TAVAudioConfiguration.VolumeEdge)localIterator.next();
-        if ((localVolumeEdge != null) && (localVolumeEdge.getTimeRange() != null) && (localVolumeEdge.getTimeRange().containsTime(paramCMTime))) {
-          return localVolumeEdge.getVolume(paramCMTime.sub(localVolumeEdge.getTimeRange().getStart()));
+        if ((localVolumeEdge != null) && (localVolumeEdge.getTimeRange() != null) && (localVolumeEdge.getTimeRange().containsTime(paramCMTime)))
+        {
+          float f = this.volume;
+          return localVolumeEdge.getVolume(paramCMTime.sub(localVolumeEdge.getTimeRange().getStart())) * f;
         }
       }
     }
@@ -144,7 +146,7 @@ public class TAVAudioConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.composition.model.TAVAudioConfiguration
  * JD-Core Version:    0.7.0.1
  */

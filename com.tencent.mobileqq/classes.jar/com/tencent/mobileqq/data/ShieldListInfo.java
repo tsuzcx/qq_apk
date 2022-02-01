@@ -15,6 +15,7 @@ public class ShieldListInfo
   public static final int SHIELD_LIST_SOURCE_AUDIO_ROOM = 167;
   public static final int SHIELD_LIST_SOURCE_CONFESS = 156;
   public static final int SHIELD_LIST_SOURCE_GAME_BUDDY = 168;
+  public static final int SHIELD_LIST_SOURCE_GAME_MSG = 164;
   public static final int SHIELD_LIST_SOURCE_ID_CIRCLE_GROUP = 23;
   public static final int SHIELD_LIST_SOURCE_ID_CM_GAME_TEMP = 2164;
   public static final int SHIELD_LIST_SOURCE_ID_CONTECT = 8;
@@ -96,8 +97,10 @@ public class ShieldListInfo
       return 165;
     case 10009: 
       return 168;
+    case 10010: 
+      return 167;
     }
-    return 167;
+    return 164;
   }
   
   public static int SOURCE_ID_2_AIO_TYPE(int paramInt)
@@ -150,8 +153,10 @@ public class ShieldListInfo
       return 10008;
     case 168: 
       return 10009;
+    case 167: 
+      return 10010;
     }
-    return 10010;
+    return 10007;
   }
   
   private void shieldMsg(boolean paramBoolean)
@@ -171,7 +176,7 @@ public class ShieldListInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ShieldListInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ public final class GetPasswordRsp
 {
   public int checkInterval = 300;
   public String deviceId = "";
-  public int passInterval;
+  public int passInterval = 0;
   public String password = "";
-  public int passwordType;
-  public int ret;
+  public int passwordType = 0;
+  public int ret = 0;
   
   public GetPasswordRsp() {}
   

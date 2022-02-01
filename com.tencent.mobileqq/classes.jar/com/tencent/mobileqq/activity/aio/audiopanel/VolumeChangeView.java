@@ -13,18 +13,18 @@ import com.tencent.mobileqq.R.styleable;
 public class VolumeChangeView
   extends View
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean = true;
   public int[] a;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
+  private int b = 0;
+  private int c = 0;
+  private int d = 0;
+  private int e = 0;
+  private int f = 0;
+  private int g = 0;
+  private int h = 0;
+  private int i = 0;
   
   public VolumeChangeView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,9 +44,9 @@ public class VolumeChangeView
     this.jdField_a_of_type_Int = paramTypedArray.getInt(3, 5);
     this.b = ((int)paramTypedArray.getDimension(5, 8.0F));
     this.c = ((int)paramTypedArray.getDimension(4, 48.0F));
-    this.d = getResources().getColor(2131167018);
-    this.h = getResources().getColor(2131167017);
-    this.i = getResources().getDimensionPixelOffset(2131299187);
+    this.d = getResources().getColor(2131167025);
+    this.h = getResources().getColor(2131167024);
+    this.i = getResources().getDimensionPixelOffset(2131299273);
     this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
   }
   
@@ -77,7 +77,7 @@ public class VolumeChangeView
     invalidate();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int j = 0;
@@ -121,7 +121,7 @@ public class VolumeChangeView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt1 = this.jdField_a_of_type_Int;
     paramInt2 = this.b;
@@ -130,7 +130,7 @@ public class VolumeChangeView
     setMeasuredDimension(paramInt1 * (paramInt2 + j) + getPaddingLeft() + getPaddingRight(), k + getPaddingTop() + getPaddingBottom());
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.f = (paramInt2 / 2);
@@ -165,7 +165,7 @@ public class VolumeChangeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.VolumeChangeView
  * JD-Core Version:    0.7.0.1
  */

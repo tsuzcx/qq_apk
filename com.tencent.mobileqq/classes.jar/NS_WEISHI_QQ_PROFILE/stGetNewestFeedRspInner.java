@@ -11,8 +11,8 @@ public final class stGetNewestFeedRspInner
 {
   static Map<String, String> cache_mapItemInfo;
   static stRspComm cache_rspComm = new stRspComm();
-  public Map<String, String> mapItemInfo;
-  public stRspComm rspComm;
+  public Map<String, String> mapItemInfo = null;
+  public stRspComm rspComm = null;
   
   static
   {

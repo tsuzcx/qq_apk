@@ -2,21 +2,20 @@ package com.tencent.mobileqq.ocr.view.gesture.animation;
 
 import android.os.Build.VERSION;
 import android.view.View;
-import ayvu;
 
 public abstract class AnimationEngine
   implements Runnable
 {
   private final View jdField_a_of_type_AndroidViewView;
-  private final ayvu jdField_a_of_type_Ayvu;
+  private final GestureFps jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps;
   
   public AnimationEngine(View paramView)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    if (ayvu.a()) {}
-    for (paramView = new ayvu();; paramView = null)
+    if (GestureFps.a()) {}
+    for (paramView = new GestureFps();; paramView = null)
     {
-      this.jdField_a_of_type_Ayvu = paramView;
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps = paramView;
       return;
     }
   }
@@ -34,8 +33,8 @@ public abstract class AnimationEngine
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Ayvu != null) {
-      this.jdField_a_of_type_Ayvu.a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps != null) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps.a(paramInt);
     }
     a();
   }
@@ -45,11 +44,11 @@ public abstract class AnimationEngine
   public final void run()
   {
     boolean bool = a();
-    if (this.jdField_a_of_type_Ayvu != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps != null)
     {
-      this.jdField_a_of_type_Ayvu.b();
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps.b();
       if (!bool) {
-        this.jdField_a_of_type_Ayvu.a();
+        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps.a();
       }
     }
     if (bool) {

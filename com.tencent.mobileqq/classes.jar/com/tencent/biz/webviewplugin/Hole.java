@@ -35,7 +35,7 @@ public class Hole
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawARGB(221, 0, 0, 0);
@@ -51,7 +51,7 @@ public class Hole
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.Hole
  * JD-Core Version:    0.7.0.1
  */

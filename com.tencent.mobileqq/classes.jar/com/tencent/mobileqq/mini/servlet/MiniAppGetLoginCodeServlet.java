@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_INTERFACE.INTERFACE.StGetCodeRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhjl;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.WupUtil;
 import mqq.app.Packet;
 
 public class MiniAppGetLoginCodeServlet
@@ -40,7 +40,7 @@ public class MiniAppGetLoginCodeServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_program_auth.GetCode");
-    paramPacket.putSendData(bhjl.a((byte[])localObject));
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

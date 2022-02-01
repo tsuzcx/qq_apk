@@ -15,7 +15,7 @@ public class VideoGestureLayout
 {
   private static final String TAG = "VideoGestureLayout";
   private int duration = 1000;
-  private ImageView iv_center;
+  private ImageView ivCenter;
   private VideoGestureLayout.HideRunnable mHideRunnable;
   private ProgressBar pb;
   
@@ -34,7 +34,7 @@ public class VideoGestureLayout
   private void init(Context paramContext)
   {
     LayoutInflater.from(paramContext).inflate(R.layout.mini_sdk_video_gesture_layout, this);
-    this.iv_center = ((ImageView)findViewById(R.id.iv_center));
+    this.ivCenter = ((ImageView)findViewById(R.id.iv_center));
     this.pb = ((ProgressBar)findViewById(R.id.pb));
     this.mHideRunnable = new VideoGestureLayout.HideRunnable(this, null);
     setVisibility(8);
@@ -47,7 +47,7 @@ public class VideoGestureLayout
   
   public void setImageResource(int paramInt)
   {
-    this.iv_center.setImageResource(paramInt);
+    this.ivCenter.setImageResource(paramInt);
   }
   
   public void setProgress(int paramInt)
@@ -65,7 +65,7 @@ public class VideoGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.VideoGestureLayout
  * JD-Core Version:    0.7.0.1
  */

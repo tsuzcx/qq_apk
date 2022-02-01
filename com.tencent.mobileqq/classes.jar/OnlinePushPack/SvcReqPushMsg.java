@@ -14,15 +14,15 @@ public final class SvcReqPushMsg
   static ArrayList<MsgInfo> cache_vMsgInfos = new ArrayList();
   static byte[] cache_vSyncCookie;
   static ArrayList<UinPairMsg> cache_vUinPairMsg;
-  public long lUin;
-  public Map<String, byte[]> mPreviews;
-  public int svrip;
-  public long uMsgTime;
-  public ArrayList<MsgInfo> vMsgInfos;
-  public byte[] vSyncCookie;
-  public ArrayList<UinPairMsg> vUinPairMsg;
-  public int wGeneralFlag;
-  public int wUserActive;
+  public long lUin = 0L;
+  public Map<String, byte[]> mPreviews = null;
+  public int svrip = 0;
+  public long uMsgTime = 0L;
+  public ArrayList<MsgInfo> vMsgInfos = null;
+  public byte[] vSyncCookie = null;
+  public ArrayList<UinPairMsg> vUinPairMsg = null;
+  public int wGeneralFlag = 0;
+  public int wUserActive = 0;
   
   static
   {

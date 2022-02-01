@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.nearby.guide;
 
-import axtq;
 import java.util.ArrayList;
 
-public class NearbyGuideActivity$3$1
+class NearbyGuideActivity$3$1
   implements Runnable
 {
-  public NearbyGuideActivity$3$1(axtq paramaxtq, boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
+  NearbyGuideActivity$3$1(NearbyGuideActivity.3 param3, boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axtq.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity$3.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

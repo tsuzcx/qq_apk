@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
-public class PhoneContactManagerImp$1
+class PhoneContactManagerImp$1
   implements Runnable
 {
   PhoneContactManagerImp$1(PhoneContactManagerImp paramPhoneContactManagerImp) {}
@@ -23,7 +23,7 @@ public class PhoneContactManagerImp$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.1
  * JD-Core Version:    0.7.0.1
  */

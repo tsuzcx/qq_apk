@@ -1,9 +1,11 @@
 package mqq.observer;
 
 import android.os.Bundle;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.Constants.Action;
+import mqq.bean.OnLoginByGatewayParam;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import oicq.wlogin_sdk.request.WFastLoginInfo;
 import oicq.wlogin_sdk.request.WUserSigInfo;
@@ -43,6 +45,8 @@ public abstract class WtloginObserver
   public void onGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg) {}
   
   public void onGetSubaccountStViaSMSVerifyLogin(String paramString1, String paramString2, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg) {}
+  
+  public void onLoginByGateway(int paramInt, OnLoginByGatewayParam paramOnLoginByGatewayParam) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
@@ -102,7 +106,7 @@ public abstract class WtloginObserver
       onRefreshSMSVerifyLoginAccount(paramBundle.getString("mobile"), paramBundle.getString("msg"), paramBundle.getInt("msgCnt"), paramBundle.getInt("timeLimit"), paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("errMsg"));
       return;
     case 2120: 
-      onVerifySMSVerifyLoginAccount(paramBundle.getString("mobile"), paramBundle.getString("msgCode"), paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("errMsg"));
+      onVerifySMSVerifyLoginAccount(paramBundle.getString("mobile"), paramBundle.getString("msgCode"), paramBundle.getInt("ret"), (WUserSigInfo)paramBundle.getParcelable("userSigInfo"), (ErrMsg)paramBundle.getParcelable("errMsg"));
       return;
     case 2121: 
       onReceiveGetStViaSMSVerifyLogin(paramBundle);
@@ -112,6 +116,9 @@ public abstract class WtloginObserver
       return;
     case 2208: 
       onGetOpenKeyWithoutPasswd(paramBundle.getString("userAccount"), paramBundle.getLong("dwSrcAppid"), paramBundle.getLong("dwDstAppid"), paramBundle.getInt("dwMainSigMap"), paramBundle.getByteArray("openid"), paramBundle.getByteArray("accessToken"), paramBundle.getInt("ret"), (ErrMsg)paramBundle.getParcelable("lastError"));
+      return;
+    case 2215: 
+      onLoginByGateway(paramBundle.getInt("ret"), new OnLoginByGatewayParam(paramBundle.getInt("key_sso_seq"), (DevlockInfo)paramBundle.getParcelable("resp_devlockinfo"), (ToServiceMsg)paramBundle.getParcelable("key_to_service_msg"), (WUserSigInfo)paramBundle.getParcelable("userSigInfo"), paramBundle.getString("uin"), (ErrMsg)paramBundle.getParcelable("errMsg")));
       return;
     }
     onException(paramBundle.getString("error"), paramBundle.getInt("cmd"));
@@ -169,7 +176,7 @@ public abstract class WtloginObserver
   
   public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg) {}
   
-  public void onVerifySMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt, ErrMsg paramErrMsg) {}
+  public void onVerifySMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt, WUserSigInfo paramWUserSigInfo, ErrMsg paramErrMsg) {}
 }
 
 

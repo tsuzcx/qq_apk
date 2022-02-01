@@ -1,6 +1,5 @@
 package io.flutter.plugin.platform;
 
-import android.graphics.Rect;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.AppSwitcherDescription;
@@ -10,7 +9,6 @@ import io.flutter.embedding.engine.systemchannels.PlatformChannel.PlatformMessag
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SoundType;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SystemChromeStyle;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SystemUiOverlay;
-import java.util.ArrayList;
 import java.util.List;
 
 class PlatformPlugin$1
@@ -18,14 +16,15 @@ class PlatformPlugin$1
 {
   PlatformPlugin$1(PlatformPlugin paramPlatformPlugin) {}
   
-  public CharSequence getClipboardData(@Nullable PlatformChannel.ClipboardContentFormat paramClipboardContentFormat)
+  public boolean clipboardHasStrings()
   {
-    return PlatformPlugin.access$800(this.this$0, paramClipboardContentFormat);
+    CharSequence localCharSequence = PlatformPlugin.access$700(this.this$0, PlatformChannel.ClipboardContentFormat.PLAIN_TEXT);
+    return (localCharSequence != null) && (localCharSequence.length() > 0);
   }
   
-  public List<Rect> getSystemGestureExclusionRects()
+  public CharSequence getClipboardData(@Nullable PlatformChannel.ClipboardContentFormat paramClipboardContentFormat)
   {
-    return PlatformPlugin.access$1000(this.this$0);
+    return PlatformPlugin.access$700(this.this$0, paramClipboardContentFormat);
   }
   
   public void playSystemSound(@NonNull PlatformChannel.SoundType paramSoundType)
@@ -35,52 +34,47 @@ class PlatformPlugin$1
   
   public void popSystemNavigator()
   {
-    PlatformPlugin.access$700(this.this$0);
+    PlatformPlugin.access$600(this.this$0);
   }
   
   public void restoreSystemUiOverlays()
   {
-    PlatformPlugin.access$500(this.this$0);
+    PlatformPlugin.access$400(this.this$0);
   }
   
   public void setApplicationSwitcherDescription(@NonNull PlatformChannel.AppSwitcherDescription paramAppSwitcherDescription)
   {
-    PlatformPlugin.access$300(this.this$0, paramAppSwitcherDescription);
+    PlatformPlugin.access$200(this.this$0, paramAppSwitcherDescription);
   }
   
   public void setClipboardData(@NonNull String paramString)
   {
-    PlatformPlugin.access$900(this.this$0, paramString);
+    PlatformPlugin.access$800(this.this$0, paramString);
   }
   
   public void setPreferredOrientations(int paramInt)
   {
-    PlatformPlugin.access$200(this.this$0, paramInt);
-  }
-  
-  public void setSystemGestureExclusionRects(@NonNull ArrayList<Rect> paramArrayList)
-  {
-    PlatformPlugin.access$1100(this.this$0, paramArrayList);
+    PlatformPlugin.access$100(this.this$0, paramInt);
   }
   
   public void setSystemUiOverlayStyle(@NonNull PlatformChannel.SystemChromeStyle paramSystemChromeStyle)
   {
-    PlatformPlugin.access$600(this.this$0, paramSystemChromeStyle);
+    PlatformPlugin.access$500(this.this$0, paramSystemChromeStyle);
   }
   
   public void showSystemOverlays(@NonNull List<PlatformChannel.SystemUiOverlay> paramList)
   {
-    PlatformPlugin.access$400(this.this$0, paramList);
+    PlatformPlugin.access$300(this.this$0, paramList);
   }
   
   public void vibrateHapticFeedback(@NonNull PlatformChannel.HapticFeedbackType paramHapticFeedbackType)
   {
-    PlatformPlugin.access$100(this.this$0, paramHapticFeedbackType);
+    this.this$0.vibrateHapticFeedback(paramHapticFeedbackType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.plugin.platform.PlatformPlugin.1
  * JD-Core Version:    0.7.0.1
  */

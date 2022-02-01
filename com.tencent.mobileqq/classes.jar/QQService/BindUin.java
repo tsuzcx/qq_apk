@@ -9,8 +9,8 @@ public final class BindUin
 {
   static byte[] cache_sKey;
   public int iStatus = 11;
-  public long lUin;
-  public byte[] sKey;
+  public long lUin = 0L;
+  public byte[] sKey = null;
   
   public BindUin() {}
   

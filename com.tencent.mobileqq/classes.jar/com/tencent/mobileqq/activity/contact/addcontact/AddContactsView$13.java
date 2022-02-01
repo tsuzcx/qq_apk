@@ -22,17 +22,17 @@ class AddContactsView$13
         if (this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
           return;
         }
-        View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131558469, this.this$0.i, false);
+        View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131558470, this.this$0.i, false);
         localView.measure(0, 0);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(false);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-        int i = ViewUtils.dip2px(16.0F);
+        int i = ViewUtils.a(16.0F);
         int j = -localView.getMeasuredHeight();
         int k = this.this$0.i.getMeasuredHeight();
-        int m = ViewUtils.dip2px(24.0F);
+        int m = ViewUtils.a(24.0F);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.i, i, j - k + m);
         return;
       }
@@ -45,7 +45,7 @@ class AddContactsView$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.13
  * JD-Core Version:    0.7.0.1
  */

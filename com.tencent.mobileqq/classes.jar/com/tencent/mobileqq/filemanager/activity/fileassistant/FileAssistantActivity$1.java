@@ -2,9 +2,8 @@ package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import atix;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.filemanager.api.IQFileConfigManager;
 
 class FileAssistantActivity$1
   implements Runnable
@@ -15,12 +14,9 @@ class FileAssistantActivity$1
   {
     SharedPreferences localSharedPreferences = this.this$0.app.getPreferences();
     boolean bool = localSharedPreferences.getBoolean("_file_assistant_guid_tips_", false);
-    atix localatix = (atix)this.this$0.app.getManager(QQManagerFactory.QFILE_CONFIG_MANAGER);
-    if (localatix != null)
-    {
-      this.this$0.a = localatix.a();
-      this.this$0.runOnUiThread(new FileAssistantActivity.1.1(this));
-    }
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.this$0.app.getRuntimeService(IQFileConfigManager.class, "");
+    this.this$0.a = localIQFileConfigManager.getFileAssistantTipsConfig();
+    this.this$0.runOnUiThread(new FileAssistantActivity.1.1(this));
     if (!bool)
     {
       localSharedPreferences.edit().putBoolean("_file_assistant_guid_tips_", true).apply();
@@ -30,7 +26,7 @@ class FileAssistantActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.1
  * JD-Core Version:    0.7.0.1
  */

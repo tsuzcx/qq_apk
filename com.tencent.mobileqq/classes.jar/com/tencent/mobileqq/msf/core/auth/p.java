@@ -4,8 +4,7 @@ import android.text.TextUtils;
 import com.qq.jce.wup.UniPacket;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.k;
-import com.tencent.mobileqq.msf.core.w;
+import com.tencent.mobileqq.msf.core.o;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
@@ -106,6 +105,78 @@ class p
     }
   }
   
+  public void a(int paramInt, WUserSigInfo paramWUserSigInfo, String paramString, ErrMsg paramErrMsg, HashMap paramHashMap)
+  {
+    if (this.g) {
+      for (;;)
+      {
+        try
+        {
+          localFromServiceMsg = u.a(this.d);
+          localFromServiceMsg.setMsgSuccess();
+          localFromServiceMsg.addAttribute("ret", Integer.valueOf(paramInt));
+          localFromServiceMsg.addAttribute("errMsg", paramErrMsg);
+          localFromServiceMsg.addAttribute("uin", paramString);
+          localFromServiceMsg.addAttribute("extraMap", paramHashMap);
+          localFromServiceMsg.addAttribute("userSigInfo", paramWUserSigInfo);
+          localFromServiceMsg.addAttribute("key_sso_seq", Integer.valueOf(this.d.getRequestSsoSeq()));
+          localFromServiceMsg.addAttribute("key_to_service_msg", this.d);
+          if (paramWUserSigInfo != null) {
+            localFromServiceMsg.addAttribute("resp_devlockinfo", l.e.GetDevLockInfo(null, paramWUserSigInfo._seqence));
+          }
+          int j = 0;
+          i = j;
+          if (paramInt == 0)
+          {
+            boolean bool = TextUtils.isEmpty(paramString);
+            i = j;
+            if (bool) {}
+          }
+        }
+        catch (Exception paramWUserSigInfo)
+        {
+          FromServiceMsg localFromServiceMsg;
+          int i;
+          label206:
+          QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "onLoginByGateway error " + paramWUserSigInfo, paramWUserSigInfo);
+          return;
+        }
+        for (;;)
+        {
+          try
+          {
+            a(paramString);
+            n.a(this.e, l.e, this.d, localFromServiceMsg, paramString, paramWUserSigInfo);
+          }
+          catch (Exception paramWUserSigInfo)
+          {
+            paramInt = 0;
+            break label206;
+          }
+          try
+          {
+            if (this.a) {
+              l.a(paramString);
+            }
+            i = 1;
+            if (i != 0) {
+              continue;
+            }
+            this.e.addRespToQuque(this.d, localFromServiceMsg);
+            return;
+          }
+          catch (Exception paramWUserSigInfo)
+          {
+            paramInt = 1;
+            break label206;
+          }
+        }
+        QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "onLoginByGateway succ exception " + paramWUserSigInfo.toString(), paramWUserSigInfo);
+        i = paramInt;
+      }
+    }
+  }
+  
   public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
   {
     if (this.g) {}
@@ -150,7 +221,7 @@ class p
         return;
       }
     }
-    paramWUserSigInfo = w.a(this.d);
+    paramWUserSigInfo = o.a(this.d);
     paramWUserSigInfo.setBusinessFail(3001, paramString);
     MsfSdkUtils.addFromMsgProcessName("*", paramWUserSigInfo);
     this.e.addRespToQuque(this.d, paramWUserSigInfo);
@@ -184,7 +255,7 @@ class p
     Object localObject1;
     if (this.h)
     {
-      localObject1 = w.a(this.d);
+      localObject1 = o.a(this.d);
       ((FromServiceMsg)localObject1).setMsgSuccess();
       this.d.setMsfCommand(MsfCommand.verifyPasswd);
       ((FromServiceMsg)localObject1).setMsfCommand(MsfCommand.verifyPasswd);
@@ -281,7 +352,7 @@ class p
           l.d.getAccountCenter().a(false);
           localObject1 = localObject2;
           continue;
-          localObject1 = w.a(this.d);
+          localObject1 = o.a(this.d);
           ((FromServiceMsg)localObject1).setMsgSuccess();
           ((FromServiceMsg)localObject1).addAttribute("userAccount", paramString1);
           ((FromServiceMsg)localObject1).addAttribute("dwAppid", Long.valueOf(paramLong1));
@@ -318,7 +389,7 @@ class p
                       {
                         paramString1 = paramString1._sig;
                         if (paramString1 == null) {
-                          break label1538;
+                          break label1550;
                         }
                         ((FromServiceMsg)localObject1).addAttribute("resp_login_lhsig", paramString1);
                       }
@@ -376,7 +447,7 @@ class p
             QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "OnGetStWithPasswd timeout");
             ((FromServiceMsg)localObject1).setBusinessFail(1002);
             continue;
-            label1538:
+            label1550:
             QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "OnGetStWithPasswd ret: " + paramInt2 + " , t is null.");
           }
           localObject1 = localObject2;
@@ -428,9 +499,9 @@ class p
     if (this.g) {
       QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "OnGetStWithoutPasswd serviceCmd=" + this.d.getServiceCmd() + " ssoseq=" + this.d.getRequestSsoSeq() + " ret=" + paramInt2 + " error=" + paramErrMsg);
     }
-    label829:
-    label1231:
-    label1239:
+    label830:
+    label1235:
+    label1243:
     do
     {
       for (;;)
@@ -460,7 +531,7 @@ class p
           QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "OnGetStWithoutPasswd error " + paramString, paramString);
           return;
         }
-        FromServiceMsg localFromServiceMsg = w.a(this.d);
+        FromServiceMsg localFromServiceMsg = o.a(this.d);
         localFromServiceMsg.addAttribute("wtTicket", a(paramWUserSigInfo));
         localFromServiceMsg.addAttribute("st_temp", WtloginHelper.GetTicketSig(paramWUserSigInfo, 128));
         try
@@ -475,7 +546,7 @@ class p
               paramLong1 = ((Long)localFromServiceMsg.getAttribute("__timestamp_net2msf")).longValue() - ((Long)this.d.getAttribute("__timestamp_app2msf")).longValue();
             }
           }
-          paramLong2 = k.a(this.d, localFromServiceMsg);
+          paramLong2 = com.tencent.mobileqq.msf.core.c.j.a(this.d, localFromServiceMsg);
           i = 0;
           j = 0;
           switch (paramInt2)
@@ -533,7 +604,7 @@ class p
               paramInt2 = 0;
               paramArrayOfLong = paramErrMsg.append(paramInt2).append(", st.length=");
               if (paramArrayOfByte != null) {
-                break label1231;
+                break label1235;
               }
             }
             Object localObject;
@@ -555,7 +626,7 @@ class p
                     ((CustomSigContent)localObject).sResult = 0;
                     ((CustomSigContent)localObject).SigContent = new byte[0];
                     if (!this.d.getServiceCmd().equals("login.chgTok_WEBVIEW_KEY")) {
-                      break label1239;
+                      break label1243;
                     }
                     paramArrayOfLong = WtloginHelper.GetTicketSig(paramWUserSigInfo, 32);
                     paramArrayOfByte = WtloginHelper.GetTicketSig(paramWUserSigInfo, 4096);
@@ -591,7 +662,7 @@ class p
                 }
               }
               paramInt2 = paramArrayOfLong.length;
-              break label829;
+              break label830;
             }
             if (this.d.getServiceCmd().equals("login.chgTok_A2D2"))
             {
@@ -741,7 +812,7 @@ class p
     }
   }
   
-  public void a(String paramString1, String paramString2, int paramInt, ErrMsg paramErrMsg)
+  public void a(String paramString1, String paramString2, WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
     if (this.g) {}
     try
@@ -752,12 +823,13 @@ class p
       localFromServiceMsg.addAttribute("mobile", paramString1);
       localFromServiceMsg.addAttribute("errMsg", paramErrMsg);
       localFromServiceMsg.addAttribute("msgCode", paramString2);
+      localFromServiceMsg.addAttribute("userSigInfo", paramWUserSigInfo);
       this.e.addRespToQuque(this.d, localFromServiceMsg);
       return;
     }
     catch (Exception paramString1)
     {
-      QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "OnVerifySMSVerifyLoginAccount error " + paramString1, paramString1);
+      QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "OnVerifySMSVerifyLoginAccount error ", paramString1);
     }
   }
   
@@ -799,7 +871,7 @@ class p
         return;
       }
     }
-    paramArrayOfByte = w.a(this.d);
+    paramArrayOfByte = o.a(this.d);
     if (paramInt == 0)
     {
       n.d.put(Integer.valueOf(this.d.getRequestSsoSeq()), this);
@@ -907,7 +979,7 @@ class p
         }
       }
     }
-    FromServiceMsg localFromServiceMsg = w.a(this.d);
+    FromServiceMsg localFromServiceMsg = o.a(this.d);
     localFromServiceMsg.setMsfCommand(MsfCommand.submitPuzzleVerifyCodeTicket);
     localFromServiceMsg.setMsgSuccess();
     localFromServiceMsg.addAttribute("userAccount", paramString);
@@ -1080,7 +1152,7 @@ class p
   public void a(WUserSigInfo paramWUserSigInfo, int paramInt1, int paramInt2, int paramInt3)
   {
     if (this.g) {}
-    paramWUserSigInfo = w.a(this.d);
+    paramWUserSigInfo = o.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt1));
     paramWUserSigInfo.attributes.put("resp_register_shNextResendTime", Integer.valueOf(paramInt2));
@@ -1093,7 +1165,7 @@ class p
     if (this.g) {
       return;
     }
-    FromServiceMsg localFromServiceMsg = w.a(this.d);
+    FromServiceMsg localFromServiceMsg = o.a(this.d);
     localFromServiceMsg.setMsgSuccess();
     localFromServiceMsg.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt1));
     localFromServiceMsg.attributes.put("resp_register_shNextResendTime", Integer.valueOf(paramInt2));
@@ -1158,7 +1230,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = w.a(this.d);
+    paramWUserSigInfo = o.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt));
     paramWUserSigInfo.attributes.put("resp_register_uin", String.valueOf(paramLong));
@@ -1202,7 +1274,7 @@ class p
   {
     if (this.g)
     {
-      paramWUserSigInfo = w.a(this.d);
+      paramWUserSigInfo = o.a(this.d);
       paramWUserSigInfo.setBusinessFail(3001, String.valueOf(paramInt));
       paramWUserSigInfo.attributes.put("msg", paramArrayOfByte);
       MsfSdkUtils.addFromMsgProcessName("*", paramWUserSigInfo);
@@ -1210,8 +1282,8 @@ class p
       QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "found RegError " + paramInt + " on call " + this.d.getServiceCmd());
       return;
     }
-    paramWUserSigInfo = w.a(this.d);
-    if (paramInt == 7)
+    paramWUserSigInfo = o.a(this.d);
+    if ((paramInt == 7) || (paramInt == 59))
     {
       paramWUserSigInfo.setMsgSuccess();
       paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt));
@@ -1233,7 +1305,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = w.a(this.d);
+    paramWUserSigInfo = o.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(2));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramString.getBytes());
@@ -1245,7 +1317,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = w.a(this.d);
+    paramWUserSigInfo = o.a(this.d);
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(4));
     if ((TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
       paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramString2.getBytes());
@@ -1288,9 +1360,21 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = w.a(this.d);
+    paramWUserSigInfo = o.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(8));
+    paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
+    this.e.addRespToQuque(this.d, paramWUserSigInfo);
+  }
+  
+  public void a(WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, Object paramObject)
+  {
+    if (this.g) {
+      return;
+    }
+    paramWUserSigInfo = o.a(this.d);
+    paramWUserSigInfo.setMsgSuccess();
+    paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(9));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
     this.e.addRespToQuque(this.d, paramWUserSigInfo);
   }
@@ -1315,10 +1399,10 @@ class p
     //   9: new 173	java/lang/StringBuilder
     //   12: dup
     //   13: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 884
+    //   16: ldc_w 903
     //   19: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: iload 4
-    //   24: invokevirtual 239	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   24: invokevirtual 289	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   27: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   30: invokestatic 161	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   33: aload_0
@@ -1329,10 +1413,10 @@ class p
     //   44: invokestatic 123	com/tencent/mobileqq/msf/service/u:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
     //   47: astore_3
     //   48: aload_3
-    //   49: ldc_w 886
-    //   52: invokevirtual 889	com/tencent/qphone/base/remote/FromServiceMsg:setServiceCmd	(Ljava/lang/String;)V
+    //   49: ldc_w 905
+    //   52: invokevirtual 908	com/tencent/qphone/base/remote/FromServiceMsg:setServiceCmd	(Ljava/lang/String;)V
     //   55: aload_3
-    //   56: getstatic 892	com/tencent/mobileqq/msf/sdk/MsfCommand:verifyPasswdImage	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
+    //   56: getstatic 911	com/tencent/mobileqq/msf/sdk/MsfCommand:verifyPasswdImage	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
     //   59: invokevirtual 84	com/tencent/qphone/base/remote/FromServiceMsg:setMsfCommand	(Lcom/tencent/mobileqq/msf/sdk/MsfCommand;)V
     //   62: aload_3
     //   63: ldc 125
@@ -1340,7 +1424,7 @@ class p
     //   66: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   69: pop
     //   70: aload_3
-    //   71: ldc_w 772
+    //   71: ldc_w 790
     //   74: aload_2
     //   75: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   78: pop
@@ -1351,12 +1435,12 @@ class p
     //   87: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   90: pop
     //   91: aload_3
-    //   92: ldc_w 271
+    //   92: ldc_w 319
     //   95: aload 5
     //   97: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   100: pop
     //   101: iload 4
-    //   103: tableswitch	default:+905 -> 1008, 0:+97->200, 1:+25->128, 2:+38->141
+    //   103: tableswitch	default:+901 -> 1004, 0:+97->200, 1:+25->128, 2:+38->141
     //   129: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   132: aload_0
     //   133: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
@@ -1364,17 +1448,17 @@ class p
     //   137: invokevirtual 115	com/tencent/mobileqq/msf/core/MsfCore:addRespToQuque	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)V
     //   140: return
     //   141: aload_3
-    //   142: ldc_w 894
-    //   145: getstatic 282	com/tencent/mobileqq/msf/core/auth/l:e	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   142: ldc_w 913
+    //   145: getstatic 213	com/tencent/mobileqq/msf/core/auth/l:e	Loicq/wlogin_sdk/request/WtloginHelper;
     //   148: aload_1
-    //   149: invokevirtual 362	oicq/wlogin_sdk/request/WtloginHelper:GetPictureData	(Ljava/lang/String;)[B
+    //   149: invokevirtual 386	oicq/wlogin_sdk/request/WtloginHelper:GetPictureData	(Ljava/lang/String;)[B
     //   152: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   155: pop
     //   156: aload_3
     //   157: sipush 2020
     //   160: aload 5
-    //   162: invokevirtual 246	oicq/wlogin_sdk/tools/ErrMsg:getMessage	()Ljava/lang/String;
-    //   165: invokevirtual 214	com/tencent/qphone/base/remote/FromServiceMsg:setBusinessFail	(ILjava/lang/String;)V
+    //   162: invokevirtual 296	oicq/wlogin_sdk/tools/ErrMsg:getMessage	()Ljava/lang/String;
+    //   165: invokevirtual 267	com/tencent/qphone/base/remote/FromServiceMsg:setBusinessFail	(ILjava/lang/String;)V
     //   168: goto -40 -> 128
     //   171: astore_1
     //   172: ldc 156
@@ -1382,7 +1466,7 @@ class p
     //   175: new 173	java/lang/StringBuilder
     //   178: dup
     //   179: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   182: ldc_w 896
+    //   182: ldc_w 915
     //   185: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   188: aload_1
     //   189: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -1395,19 +1479,19 @@ class p
     //   204: goto -76 -> 128
     //   207: aload_0
     //   208: getfield 28	com/tencent/mobileqq/msf/core/auth/p:g	Z
-    //   211: ifeq +253 -> 464
+    //   211: ifeq +252 -> 463
     //   214: iconst_0
     //   215: newarray byte
     //   217: astore 7
     //   219: aload 7
     //   221: astore 6
     //   223: iload 4
-    //   225: tableswitch	default:+787 -> 1012, 0:+214->439, 1:+27->252, 2:+202->427
+    //   225: tableswitch	default:+783 -> 1008, 0:+213->438, 1:+27->252, 2:+201->426
     //   253: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
     //   256: invokestatic 123	com/tencent/mobileqq/msf/service/u:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
     //   259: astore 7
     //   261: aload 7
-    //   263: getstatic 899	com/tencent/mobileqq/msf/sdk/MsfCommand:wt_CheckPictureAndGetSt	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
+    //   263: getstatic 918	com/tencent/mobileqq/msf/sdk/MsfCommand:wt_CheckPictureAndGetSt	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
     //   266: invokevirtual 84	com/tencent/qphone/base/remote/FromServiceMsg:setMsfCommand	(Lcom/tencent/mobileqq/msf/sdk/MsfCommand;)V
     //   269: aload 7
     //   271: invokevirtual 97	com/tencent/qphone/base/remote/FromServiceMsg:setMsgSuccess	()V
@@ -1417,346 +1501,346 @@ class p
     //   279: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   282: pop
     //   283: aload 7
-    //   285: ldc_w 772
+    //   285: ldc_w 790
     //   288: aload_2
     //   289: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   292: pop
     //   293: aload 7
-    //   295: ldc_w 894
+    //   295: ldc_w 913
     //   298: aload 6
     //   300: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   303: pop
     //   304: aload 7
-    //   306: ldc_w 269
-    //   309: aload_3
-    //   310: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   313: pop
-    //   314: aload 7
-    //   316: ldc 141
-    //   318: iload 4
-    //   320: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   323: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   326: pop
-    //   327: aload 7
-    //   329: ldc_w 271
-    //   332: aload 5
-    //   334: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   337: pop
-    //   338: aload 7
-    //   340: ldc_w 334
-    //   343: aload_0
-    //   344: aload_3
-    //   345: invokevirtual 337	com/tencent/mobileqq/msf/core/auth/p:a	(Loicq/wlogin_sdk/request/WUserSigInfo;)[B
-    //   348: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   351: pop
-    //   352: aload 7
-    //   354: ldc_w 339
-    //   357: aload_3
-    //   358: sipush 128
-    //   361: invokestatic 343	oicq/wlogin_sdk/request/WtloginHelper:GetTicketSig	(Loicq/wlogin_sdk/request/WUserSigInfo;I)[B
-    //   364: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   367: pop
-    //   368: aload 7
-    //   370: ldc_w 345
-    //   373: aload_3
-    //   374: sipush 128
-    //   377: invokestatic 348	oicq/wlogin_sdk/request/WtloginHelper:GetTicketSigKey	(Loicq/wlogin_sdk/request/WUserSigInfo;I)[B
-    //   380: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   383: pop
-    //   384: aload_0
-    //   385: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   388: aload_0
-    //   389: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   392: aload 7
-    //   394: invokevirtual 115	com/tencent/mobileqq/msf/core/MsfCore:addRespToQuque	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)V
-    //   397: return
-    //   398: astore_1
-    //   399: ldc 156
-    //   401: iconst_1
-    //   402: new 173	java/lang/StringBuilder
-    //   405: dup
-    //   406: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   409: ldc_w 901
-    //   412: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   415: aload_1
-    //   416: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   419: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   422: aload_1
-    //   423: invokestatic 190	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   426: return
-    //   427: getstatic 282	com/tencent/mobileqq/msf/core/auth/l:e	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   430: aload_1
-    //   431: invokevirtual 362	oicq/wlogin_sdk/request/WtloginHelper:GetPictureData	(Ljava/lang/String;)[B
-    //   434: astore 6
-    //   436: goto -184 -> 252
-    //   439: getstatic 366	com/tencent/mobileqq/msf/core/auth/l:d	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   442: invokevirtual 370	com/tencent/mobileqq/msf/core/MsfCore:getAccountCenter	()Lcom/tencent/mobileqq/msf/core/auth/b;
-    //   445: iconst_0
-    //   446: invokevirtual 375	com/tencent/mobileqq/msf/core/auth/b:a	(Z)V
-    //   449: aload 7
-    //   451: astore 6
-    //   453: goto -201 -> 252
-    //   456: astore_1
-    //   457: aload_1
-    //   458: invokevirtual 401	java/lang/Exception:printStackTrace	()V
-    //   461: goto -77 -> 384
-    //   464: aload_0
-    //   465: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   468: invokestatic 223	com/tencent/mobileqq/msf/core/w:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
-    //   471: astore 6
-    //   473: aload 6
-    //   475: getstatic 899	com/tencent/mobileqq/msf/sdk/MsfCommand:wt_CheckPictureAndGetSt	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
-    //   478: invokevirtual 84	com/tencent/qphone/base/remote/FromServiceMsg:setMsfCommand	(Lcom/tencent/mobileqq/msf/sdk/MsfCommand;)V
-    //   481: aload 6
-    //   483: invokevirtual 97	com/tencent/qphone/base/remote/FromServiceMsg:setMsgSuccess	()V
-    //   486: aload 6
-    //   488: ldc 125
-    //   490: aload_1
-    //   491: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   494: pop
-    //   495: aload 6
-    //   497: ldc_w 772
-    //   500: aload_2
-    //   501: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   504: pop
-    //   505: aload 6
-    //   507: ldc_w 704
-    //   510: aload_3
-    //   511: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   514: pop
-    //   515: aload 6
-    //   517: ldc 141
-    //   519: iload 4
-    //   521: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   524: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   527: pop
-    //   528: aload 6
-    //   530: ldc_w 271
-    //   533: aload 5
-    //   535: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   538: pop
-    //   539: aload 6
-    //   541: ldc_w 334
-    //   544: aload_0
-    //   545: aload_3
-    //   546: invokevirtual 337	com/tencent/mobileqq/msf/core/auth/p:a	(Loicq/wlogin_sdk/request/WUserSigInfo;)[B
-    //   549: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   552: pop
-    //   553: aload 6
-    //   555: ldc_w 339
-    //   558: aload_3
-    //   559: sipush 128
-    //   562: invokestatic 343	oicq/wlogin_sdk/request/WtloginHelper:GetTicketSig	(Loicq/wlogin_sdk/request/WUserSigInfo;I)[B
-    //   565: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   568: pop
-    //   569: aload 6
-    //   571: aload_3
-    //   572: getfield 277	oicq/wlogin_sdk/request/WUserSigInfo:uin	Ljava/lang/String;
-    //   575: invokevirtual 74	com/tencent/qphone/base/remote/FromServiceMsg:setUin	(Ljava/lang/String;)V
-    //   578: aload 6
-    //   580: ldc_w 345
-    //   583: aload_3
-    //   584: sipush 128
-    //   587: invokestatic 348	oicq/wlogin_sdk/request/WtloginHelper:GetTicketSigKey	(Loicq/wlogin_sdk/request/WUserSigInfo;I)[B
-    //   590: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   593: pop
-    //   594: iload 4
-    //   596: lookupswitch	default:+52->648, -1000:+350->946, 0:+283->879, 2:+183->779, 160:+233->829, 239:+233->829
-    //   649: iconst_3
-    //   650: sipush 1001
-    //   653: aload 5
-    //   655: invokevirtual 246	oicq/wlogin_sdk/tools/ErrMsg:getMessage	()Ljava/lang/String;
-    //   658: invokevirtual 214	com/tencent/qphone/base/remote/FromServiceMsg:setBusinessFail	(ILjava/lang/String;)V
-    //   661: ldc 156
-    //   663: iconst_1
-    //   664: ldc_w 903
-    //   667: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   670: iload 4
-    //   672: ifeq +71 -> 743
-    //   675: aload 5
-    //   677: invokevirtual 382	oicq/wlogin_sdk/tools/ErrMsg:getType	()I
-    //   680: iconst_1
-    //   681: if_icmpne +17 -> 698
-    //   684: aload 6
-    //   686: ldc_w 384
-    //   689: aload 5
-    //   691: invokevirtual 353	oicq/wlogin_sdk/tools/ErrMsg:getOtherinfo	()Ljava/lang/String;
-    //   694: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   697: pop
-    //   698: iload 4
-    //   700: bipush 116
-    //   702: if_icmpeq +10 -> 712
-    //   705: iload 4
-    //   707: bipush 41
-    //   709: if_icmpne +34 -> 743
-    //   712: aload_3
-    //   713: ldc_w 385
-    //   716: invokestatic 389	oicq/wlogin_sdk/request/WtloginHelper:GetUserSigInfoTicket	(Loicq/wlogin_sdk/request/WUserSigInfo;I)Loicq/wlogin_sdk/request/Ticket;
-    //   719: astore_1
+    //   306: ldc 199
+    //   308: aload_3
+    //   309: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   312: pop
+    //   313: aload 7
+    //   315: ldc 141
+    //   317: iload 4
+    //   319: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   322: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   325: pop
+    //   326: aload 7
+    //   328: ldc_w 319
+    //   331: aload 5
+    //   333: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   336: pop
+    //   337: aload 7
+    //   339: ldc_w 364
+    //   342: aload_0
+    //   343: aload_3
+    //   344: invokevirtual 367	com/tencent/mobileqq/msf/core/auth/p:a	(Loicq/wlogin_sdk/request/WUserSigInfo;)[B
+    //   347: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   350: pop
+    //   351: aload 7
+    //   353: ldc_w 369
+    //   356: aload_3
+    //   357: sipush 128
+    //   360: invokestatic 373	oicq/wlogin_sdk/request/WtloginHelper:GetTicketSig	(Loicq/wlogin_sdk/request/WUserSigInfo;I)[B
+    //   363: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   366: pop
+    //   367: aload 7
+    //   369: ldc_w 375
+    //   372: aload_3
+    //   373: sipush 128
+    //   376: invokestatic 378	oicq/wlogin_sdk/request/WtloginHelper:GetTicketSigKey	(Loicq/wlogin_sdk/request/WUserSigInfo;I)[B
+    //   379: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   382: pop
+    //   383: aload_0
+    //   384: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   387: aload_0
+    //   388: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   391: aload 7
+    //   393: invokevirtual 115	com/tencent/mobileqq/msf/core/MsfCore:addRespToQuque	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)V
+    //   396: return
+    //   397: astore_1
+    //   398: ldc 156
+    //   400: iconst_1
+    //   401: new 173	java/lang/StringBuilder
+    //   404: dup
+    //   405: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   408: ldc_w 920
+    //   411: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   414: aload_1
+    //   415: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   418: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   421: aload_1
+    //   422: invokestatic 190	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   425: return
+    //   426: getstatic 213	com/tencent/mobileqq/msf/core/auth/l:e	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   429: aload_1
+    //   430: invokevirtual 386	oicq/wlogin_sdk/request/WtloginHelper:GetPictureData	(Ljava/lang/String;)[B
+    //   433: astore 6
+    //   435: goto -183 -> 252
+    //   438: getstatic 390	com/tencent/mobileqq/msf/core/auth/l:d	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   441: invokevirtual 394	com/tencent/mobileqq/msf/core/MsfCore:getAccountCenter	()Lcom/tencent/mobileqq/msf/core/auth/b;
+    //   444: iconst_0
+    //   445: invokevirtual 399	com/tencent/mobileqq/msf/core/auth/b:a	(Z)V
+    //   448: aload 7
+    //   450: astore 6
+    //   452: goto -200 -> 252
+    //   455: astore_1
+    //   456: aload_1
+    //   457: invokevirtual 425	java/lang/Exception:printStackTrace	()V
+    //   460: goto -77 -> 383
+    //   463: aload_0
+    //   464: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   467: invokestatic 276	com/tencent/mobileqq/msf/core/o:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
+    //   470: astore 6
+    //   472: aload 6
+    //   474: getstatic 918	com/tencent/mobileqq/msf/sdk/MsfCommand:wt_CheckPictureAndGetSt	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
+    //   477: invokevirtual 84	com/tencent/qphone/base/remote/FromServiceMsg:setMsfCommand	(Lcom/tencent/mobileqq/msf/sdk/MsfCommand;)V
+    //   480: aload 6
+    //   482: invokevirtual 97	com/tencent/qphone/base/remote/FromServiceMsg:setMsgSuccess	()V
+    //   485: aload 6
+    //   487: ldc 125
+    //   489: aload_1
+    //   490: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   493: pop
+    //   494: aload 6
+    //   496: ldc_w 790
+    //   499: aload_2
+    //   500: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   503: pop
+    //   504: aload 6
+    //   506: ldc_w 722
+    //   509: aload_3
+    //   510: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   513: pop
+    //   514: aload 6
+    //   516: ldc 141
+    //   518: iload 4
+    //   520: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   523: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   526: pop
+    //   527: aload 6
+    //   529: ldc_w 319
+    //   532: aload 5
+    //   534: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   537: pop
+    //   538: aload 6
+    //   540: ldc_w 364
+    //   543: aload_0
+    //   544: aload_3
+    //   545: invokevirtual 367	com/tencent/mobileqq/msf/core/auth/p:a	(Loicq/wlogin_sdk/request/WUserSigInfo;)[B
+    //   548: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   551: pop
+    //   552: aload 6
+    //   554: ldc_w 369
+    //   557: aload_3
+    //   558: sipush 128
+    //   561: invokestatic 373	oicq/wlogin_sdk/request/WtloginHelper:GetTicketSig	(Loicq/wlogin_sdk/request/WUserSigInfo;I)[B
+    //   564: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   567: pop
+    //   568: aload 6
+    //   570: aload_3
+    //   571: getfield 322	oicq/wlogin_sdk/request/WUserSigInfo:uin	Ljava/lang/String;
+    //   574: invokevirtual 74	com/tencent/qphone/base/remote/FromServiceMsg:setUin	(Ljava/lang/String;)V
+    //   577: aload 6
+    //   579: ldc_w 375
+    //   582: aload_3
+    //   583: sipush 128
+    //   586: invokestatic 378	oicq/wlogin_sdk/request/WtloginHelper:GetTicketSigKey	(Loicq/wlogin_sdk/request/WUserSigInfo;I)[B
+    //   589: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   592: pop
+    //   593: iload 4
+    //   595: lookupswitch	default:+49->644, -1000:+347->942, 0:+280->875, 2:+180->775, 160:+230->825, 239:+230->825
+    //   645: iconst_3
+    //   646: sipush 1001
+    //   649: aload 5
+    //   651: invokevirtual 296	oicq/wlogin_sdk/tools/ErrMsg:getMessage	()Ljava/lang/String;
+    //   654: invokevirtual 267	com/tencent/qphone/base/remote/FromServiceMsg:setBusinessFail	(ILjava/lang/String;)V
+    //   657: ldc 156
+    //   659: iconst_1
+    //   660: ldc_w 922
+    //   663: invokestatic 403	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   666: iload 4
+    //   668: ifeq +71 -> 739
+    //   671: aload 5
+    //   673: invokevirtual 406	oicq/wlogin_sdk/tools/ErrMsg:getType	()I
+    //   676: iconst_1
+    //   677: if_icmpne +17 -> 694
+    //   680: aload 6
+    //   682: ldc_w 408
+    //   685: aload 5
+    //   687: invokevirtual 383	oicq/wlogin_sdk/tools/ErrMsg:getOtherinfo	()Ljava/lang/String;
+    //   690: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   693: pop
+    //   694: iload 4
+    //   696: bipush 116
+    //   698: if_icmpeq +10 -> 708
+    //   701: iload 4
+    //   703: bipush 41
+    //   705: if_icmpne +34 -> 739
+    //   708: aload_3
+    //   709: ldc_w 409
+    //   712: invokestatic 413	oicq/wlogin_sdk/request/WtloginHelper:GetUserSigInfoTicket	(Loicq/wlogin_sdk/request/WUserSigInfo;I)Loicq/wlogin_sdk/request/Ticket;
+    //   715: astore_1
+    //   716: aload_1
+    //   717: ifnull +22 -> 739
     //   720: aload_1
-    //   721: ifnull +22 -> 743
-    //   724: aload_1
-    //   725: getfield 394	oicq/wlogin_sdk/request/Ticket:_sig	[B
-    //   728: astore_1
-    //   729: aload_1
-    //   730: ifnull +236 -> 966
-    //   733: aload 6
-    //   735: ldc_w 396
-    //   738: aload_1
-    //   739: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   742: pop
-    //   743: aload 6
-    //   745: ldc_w 398
-    //   748: iload 4
-    //   750: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   753: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   756: pop
+    //   721: getfield 418	oicq/wlogin_sdk/request/Ticket:_sig	[B
+    //   724: astore_1
+    //   725: aload_1
+    //   726: ifnull +236 -> 962
+    //   729: aload 6
+    //   731: ldc_w 420
+    //   734: aload_1
+    //   735: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   738: pop
+    //   739: aload 6
+    //   741: ldc_w 422
+    //   744: iload 4
+    //   746: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   749: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   752: pop
+    //   753: aload_0
+    //   754: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   757: aload_0
-    //   758: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   761: aload_0
-    //   762: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   765: aload 6
-    //   767: invokevirtual 115	com/tencent/mobileqq/msf/core/MsfCore:addRespToQuque	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)V
-    //   770: return
-    //   771: astore_2
-    //   772: aload_2
-    //   773: invokevirtual 401	java/lang/Exception:printStackTrace	()V
-    //   776: goto -182 -> 594
-    //   779: getstatic 404	com/tencent/mobileqq/msf/core/auth/n:d	Ljava/util/concurrent/ConcurrentHashMap;
-    //   782: aload_0
-    //   783: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   786: invokevirtual 236	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
-    //   789: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   792: aload_0
-    //   793: invokevirtual 407	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   796: pop
-    //   797: aload_0
-    //   798: aload_3
-    //   799: getfield 288	oicq/wlogin_sdk/request/WUserSigInfo:_seqence	J
-    //   802: putfield 409	com/tencent/mobileqq/msf/core/auth/p:f	J
-    //   805: aload_1
+    //   758: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   761: aload 6
+    //   763: invokevirtual 115	com/tencent/mobileqq/msf/core/MsfCore:addRespToQuque	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)V
+    //   766: return
+    //   767: astore_2
+    //   768: aload_2
+    //   769: invokevirtual 425	java/lang/Exception:printStackTrace	()V
+    //   772: goto -179 -> 593
+    //   775: getstatic 428	com/tencent/mobileqq/msf/core/auth/n:d	Ljava/util/concurrent/ConcurrentHashMap;
+    //   778: aload_0
+    //   779: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   782: invokevirtual 204	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
+    //   785: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   788: aload_0
+    //   789: invokevirtual 431	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   792: pop
+    //   793: aload_0
+    //   794: aload_3
+    //   795: getfield 218	oicq/wlogin_sdk/request/WUserSigInfo:_seqence	J
+    //   798: putfield 433	com/tencent/mobileqq/msf/core/auth/p:f	J
+    //   801: aload_1
+    //   802: aload_0
+    //   803: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   806: aload_0
-    //   807: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   807: getfield 433	com/tencent/mobileqq/msf/core/auth/p:f	J
     //   810: aload_0
-    //   811: getfield 409	com/tencent/mobileqq/msf/core/auth/p:f	J
-    //   814: aload_0
-    //   815: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   818: aload 6
-    //   820: aload 5
-    //   822: invokevirtual 246	oicq/wlogin_sdk/tools/ErrMsg:getMessage	()Ljava/lang/String;
-    //   825: invokestatic 412	com/tencent/mobileqq/msf/core/auth/n:b	(Ljava/lang/String;Lcom/tencent/mobileqq/msf/core/MsfCore;JLcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/String;)V
-    //   828: return
-    //   829: getstatic 404	com/tencent/mobileqq/msf/core/auth/n:d	Ljava/util/concurrent/ConcurrentHashMap;
-    //   832: aload_0
-    //   833: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   836: invokevirtual 236	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
-    //   839: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   842: aload_0
-    //   843: invokevirtual 407	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   846: pop
-    //   847: aload_0
-    //   848: aload_3
-    //   849: getfield 288	oicq/wlogin_sdk/request/WUserSigInfo:_seqence	J
-    //   852: putfield 409	com/tencent/mobileqq/msf/core/auth/p:f	J
-    //   855: aload_1
+    //   811: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   814: aload 6
+    //   816: aload 5
+    //   818: invokevirtual 296	oicq/wlogin_sdk/tools/ErrMsg:getMessage	()Ljava/lang/String;
+    //   821: invokestatic 436	com/tencent/mobileqq/msf/core/auth/n:b	(Ljava/lang/String;Lcom/tencent/mobileqq/msf/core/MsfCore;JLcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/String;)V
+    //   824: return
+    //   825: getstatic 428	com/tencent/mobileqq/msf/core/auth/n:d	Ljava/util/concurrent/ConcurrentHashMap;
+    //   828: aload_0
+    //   829: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   832: invokevirtual 204	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
+    //   835: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   838: aload_0
+    //   839: invokevirtual 431	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   842: pop
+    //   843: aload_0
+    //   844: aload_3
+    //   845: getfield 218	oicq/wlogin_sdk/request/WUserSigInfo:_seqence	J
+    //   848: putfield 433	com/tencent/mobileqq/msf/core/auth/p:f	J
+    //   851: aload_1
+    //   852: aload_0
+    //   853: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   856: aload_0
-    //   857: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   857: getfield 433	com/tencent/mobileqq/msf/core/auth/p:f	J
     //   860: aload_0
-    //   861: getfield 409	com/tencent/mobileqq/msf/core/auth/p:f	J
-    //   864: aload_0
-    //   865: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   868: aload 6
-    //   870: aload 5
-    //   872: invokevirtual 246	oicq/wlogin_sdk/tools/ErrMsg:getMessage	()Ljava/lang/String;
-    //   875: invokestatic 419	com/tencent/mobileqq/msf/core/auth/n:a	(Ljava/lang/String;Lcom/tencent/mobileqq/msf/core/MsfCore;JLcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/String;)V
-    //   878: return
-    //   879: aload_0
-    //   880: aload_1
-    //   881: invokespecial 421	com/tencent/mobileqq/msf/core/auth/p:a	(Ljava/lang/String;)V
-    //   884: aload_0
-    //   885: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   888: getstatic 282	com/tencent/mobileqq/msf/core/auth/l:e	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   891: aload_0
-    //   892: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   895: aload 6
-    //   897: aload_1
-    //   898: aload_3
-    //   899: invokestatic 427	com/tencent/mobileqq/msf/core/auth/n:a	(Lcom/tencent/mobileqq/msf/core/MsfCore;Loicq/wlogin_sdk/request/WtloginHelper;Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;)V
-    //   902: aload_0
-    //   903: getfield 24	com/tencent/mobileqq/msf/core/auth/p:a	Z
-    //   906: ifeq +105 -> 1011
-    //   909: aload_1
-    //   910: invokestatic 428	com/tencent/mobileqq/msf/core/auth/l:a	(Ljava/lang/String;)V
-    //   913: return
-    //   914: astore_1
-    //   915: ldc 156
-    //   917: iconst_1
-    //   918: new 173	java/lang/StringBuilder
-    //   921: dup
-    //   922: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   925: ldc_w 792
-    //   928: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   931: aload_1
-    //   932: invokevirtual 324	java/lang/Exception:toString	()Ljava/lang/String;
-    //   935: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   938: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   941: aload_1
-    //   942: invokestatic 326	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   945: return
-    //   946: aload 6
-    //   948: sipush 1002
-    //   951: invokevirtual 330	com/tencent/qphone/base/remote/FromServiceMsg:setBusinessFail	(I)V
-    //   954: ldc 156
-    //   956: iconst_1
-    //   957: ldc_w 905
-    //   960: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   963: goto -293 -> 670
-    //   966: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   969: ifeq -226 -> 743
-    //   972: ldc 156
-    //   974: iconst_1
-    //   975: new 173	java/lang/StringBuilder
-    //   978: dup
-    //   979: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   982: ldc_w 907
-    //   985: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   988: iload 4
-    //   990: invokevirtual 239	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   993: ldc_w 444
-    //   996: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   999: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1002: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1005: goto -262 -> 743
-    //   1008: goto -880 -> 128
-    //   1011: return
-    //   1012: aload 7
-    //   1014: astore 6
-    //   1016: goto -764 -> 252
+    //   861: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   864: aload 6
+    //   866: aload 5
+    //   868: invokevirtual 296	oicq/wlogin_sdk/tools/ErrMsg:getMessage	()Ljava/lang/String;
+    //   871: invokestatic 443	com/tencent/mobileqq/msf/core/auth/n:a	(Ljava/lang/String;Lcom/tencent/mobileqq/msf/core/MsfCore;JLcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/String;)V
+    //   874: return
+    //   875: aload_0
+    //   876: aload_1
+    //   877: invokespecial 232	com/tencent/mobileqq/msf/core/auth/p:a	(Ljava/lang/String;)V
+    //   880: aload_0
+    //   881: getfield 32	com/tencent/mobileqq/msf/core/auth/p:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   884: getstatic 213	com/tencent/mobileqq/msf/core/auth/l:e	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   887: aload_0
+    //   888: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
+    //   891: aload 6
+    //   893: aload_1
+    //   894: aload_3
+    //   895: invokestatic 237	com/tencent/mobileqq/msf/core/auth/n:a	(Lcom/tencent/mobileqq/msf/core/MsfCore;Loicq/wlogin_sdk/request/WtloginHelper;Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;)V
+    //   898: aload_0
+    //   899: getfield 24	com/tencent/mobileqq/msf/core/auth/p:a	Z
+    //   902: ifeq +105 -> 1007
+    //   905: aload_1
+    //   906: invokestatic 238	com/tencent/mobileqq/msf/core/auth/l:a	(Ljava/lang/String;)V
+    //   909: return
+    //   910: astore_1
+    //   911: ldc 156
+    //   913: iconst_1
+    //   914: new 173	java/lang/StringBuilder
+    //   917: dup
+    //   918: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   921: ldc_w 810
+    //   924: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   927: aload_1
+    //   928: invokevirtual 241	java/lang/Exception:toString	()Ljava/lang/String;
+    //   931: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   934: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   937: aload_1
+    //   938: invokestatic 243	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   941: return
+    //   942: aload 6
+    //   944: sipush 1002
+    //   947: invokevirtual 360	com/tencent/qphone/base/remote/FromServiceMsg:setBusinessFail	(I)V
+    //   950: ldc 156
+    //   952: iconst_1
+    //   953: ldc_w 924
+    //   956: invokestatic 403	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   959: goto -293 -> 666
+    //   962: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   965: ifeq -226 -> 739
+    //   968: ldc 156
+    //   970: iconst_1
+    //   971: new 173	java/lang/StringBuilder
+    //   974: dup
+    //   975: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   978: ldc_w 926
+    //   981: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   984: iload 4
+    //   986: invokevirtual 289	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   989: ldc_w 462
+    //   992: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   995: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   998: invokestatic 403	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1001: goto -262 -> 739
+    //   1004: goto -876 -> 128
+    //   1007: return
+    //   1008: aload 7
+    //   1010: astore 6
+    //   1012: goto -760 -> 252
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1019	0	this	p
-    //   0	1019	1	paramString	String
-    //   0	1019	2	paramArrayOfByte	byte[]
-    //   0	1019	3	paramWUserSigInfo	WUserSigInfo
-    //   0	1019	4	paramInt	int
-    //   0	1019	5	paramErrMsg	ErrMsg
-    //   221	794	6	localObject1	Object
-    //   217	796	7	localObject2	Object
+    //   0	1015	0	this	p
+    //   0	1015	1	paramString	String
+    //   0	1015	2	paramArrayOfByte	byte[]
+    //   0	1015	3	paramWUserSigInfo	WUserSigInfo
+    //   0	1015	4	paramInt	int
+    //   0	1015	5	paramErrMsg	ErrMsg
+    //   221	790	6	localObject1	Object
+    //   217	792	7	localObject2	Object
     // Exception table:
     //   from	to	target	type
     //   40	101	171	java/lang/Exception
     //   128	140	171	java/lang/Exception
     //   141	168	171	java/lang/Exception
     //   200	204	171	java/lang/Exception
-    //   214	219	398	java/lang/Exception
-    //   252	368	398	java/lang/Exception
-    //   384	397	398	java/lang/Exception
-    //   427	436	398	java/lang/Exception
-    //   439	449	398	java/lang/Exception
-    //   457	461	398	java/lang/Exception
-    //   368	384	456	java/lang/Exception
-    //   578	594	771	java/lang/Exception
-    //   879	913	914	java/lang/Exception
+    //   214	219	397	java/lang/Exception
+    //   252	367	397	java/lang/Exception
+    //   383	396	397	java/lang/Exception
+    //   426	435	397	java/lang/Exception
+    //   438	448	397	java/lang/Exception
+    //   456	460	397	java/lang/Exception
+    //   367	383	455	java/lang/Exception
+    //   577	593	767	java/lang/Exception
+    //   875	909	910	java/lang/Exception
   }
   
   public void b(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
@@ -1790,7 +1874,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = w.a(this.d);
+    paramWUserSigInfo = o.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -1826,7 +1910,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = w.a(this.d);
+    paramWUserSigInfo = o.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(3));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -1934,7 +2018,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = w.a(this.d);
+    paramWUserSigInfo = o.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(1));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -1944,7 +2028,7 @@ class p
   public void d(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte)
   {
     if (this.g) {}
-    FromServiceMsg localFromServiceMsg = w.a(this.d);
+    FromServiceMsg localFromServiceMsg = o.a(this.d);
     localFromServiceMsg.setMsgSuccess();
     localFromServiceMsg.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt));
     localFromServiceMsg.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -2010,7 +2094,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = w.a(this.d);
+    paramWUserSigInfo = o.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -2022,7 +2106,7 @@ class p
     if (this.g) {
       return;
     }
-    FromServiceMsg localFromServiceMsg = w.a(this.d);
+    FromServiceMsg localFromServiceMsg = o.a(this.d);
     localFromServiceMsg.setMsgSuccess();
     if (QLog.isColorLevel()) {
       QLog.d("Login_Optimize_WtProviderImpl", 2, "ret=" + paramInt);

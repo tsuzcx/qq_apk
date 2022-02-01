@@ -9,8 +9,8 @@ public final class ExtraImageInfo
   extends JceStruct
 {
   static ArrayList<String> cache_images = new ArrayList();
-  public ArrayList<String> images;
-  public int isdynamic;
+  public ArrayList<String> images = null;
+  public int isdynamic = 0;
   
   static
   {

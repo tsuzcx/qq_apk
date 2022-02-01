@@ -64,6 +64,11 @@ class AppBoxPlugin$MiniAppBox
     }
   }
   
+  private void createBoxAdView(int paramInt1, int paramInt2, Activity paramActivity, Bundle paramBundle)
+  {
+    this.adBox = ((AdProxy)ProxyManager.get(AdProxy.class)).createBoxAdView(paramActivity, this.appId, this.adUnitId, new AppBoxPlugin.MiniAppBox.2(this, paramInt1, paramInt2), paramBundle);
+  }
+  
   private JSONObject getResultObj(int paramInt1, int paramInt2)
   {
     JSONObject localJSONObject = new JSONObject();
@@ -99,7 +104,6 @@ class AppBoxPlugin$MiniAppBox
     label117:
     label126:
     Object localObject3;
-    Object localObject1;
     label169:
     String str1;
     label187:
@@ -123,7 +127,7 @@ class AppBoxPlugin$MiniAppBox
       j = 7;
       localObject3 = AppBoxPlugin.access$400(this.this$0);
       if ((localObject3 == null) || (((MiniAppInfo)localObject3).launchParam == null)) {
-        break label483;
+        break label455;
       }
       if (((MiniAppInfo)localObject3).launchParam.entryPath == null) {
         break label304;
@@ -135,9 +139,8 @@ class AppBoxPlugin$MiniAppBox
       str1 = ((MiniAppInfo)localObject3).launchParam.reportData;
       str2 = String.valueOf(((MiniAppInfo)localObject3).launchParam.scene);
       localObject2 = localObject1;
-      localObject1 = str2;
     }
-    for (;;)
+    for (Object localObject1 = str2;; localObject1 = "")
     {
       label228:
       String str4;
@@ -188,7 +191,7 @@ class AppBoxPlugin$MiniAppBox
       localBundle.putString(AdProxy.KEY_REPORT_DATA, str1);
       localBundle.putString(AdProxy.KEY_REFER, (String)localObject1);
       localBundle.putString(AdProxy.KEY_VIA, str2);
-      this.adBox = ((AdProxy)ProxyManager.get(AdProxy.class)).createBoxAdView((Activity)localObject3, this.appId, this.adUnitId, new AppBoxPlugin.MiniAppBox.2(this, paramInt1, paramInt2), localBundle);
+      createBoxAdView(paramInt1, paramInt2, (Activity)localObject3, localBundle);
       if (this.adBox != null)
       {
         this.adBox.loadAD();
@@ -196,8 +199,7 @@ class AppBoxPlugin$MiniAppBox
       }
       this.mIsRequestingAd = false;
       return false;
-      label483:
-      localObject1 = "";
+      label455:
       str1 = "";
       localObject2 = "";
     }
@@ -247,7 +249,7 @@ class AppBoxPlugin$MiniAppBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.AppBoxPlugin.MiniAppBox
  * JD-Core Version:    0.7.0.1
  */

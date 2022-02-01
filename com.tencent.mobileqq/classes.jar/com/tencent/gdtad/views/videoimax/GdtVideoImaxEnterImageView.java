@@ -1,12 +1,12 @@
 package com.tencent.gdtad.views.videoimax;
 
-import acho;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import com.tencent.gdtad.log.GdtLog;
 
 public class GdtVideoImaxEnterImageView
   extends ImageView
@@ -28,9 +28,9 @@ public class GdtVideoImaxEnterImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    acho.a("GdtVideoImaxEnterImageView", "onDraw() called with: hashcode = " + System.identityHashCode(this));
+    GdtLog.a("GdtVideoImaxEnterImageView", "onDraw() called with: hashcode = " + System.identityHashCode(this));
     if (this.a != null)
     {
       int i = paramCanvas.save();
@@ -49,7 +49,7 @@ public class GdtVideoImaxEnterImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxEnterImageView
  * JD-Core Version:    0.7.0.1
  */

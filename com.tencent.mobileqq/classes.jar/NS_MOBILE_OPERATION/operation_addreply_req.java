@@ -12,18 +12,18 @@ public final class operation_addreply_req
   static Map<Integer, String> cache_busi_param = new HashMap();
   static Map<String, String> cache_bypass_param;
   static MediaInfo cache_mediainfo;
-  public int appid;
-  public Map<Integer, String> busi_param;
-  public Map<String, String> bypass_param;
+  public int appid = 0;
+  public Map<Integer, String> busi_param = null;
+  public Map<String, String> bypass_param = null;
   public String commentid = "";
-  public long commentuin;
+  public long commentuin = 0L;
   public String content = "";
-  public int isverified;
-  public int mediabittype;
-  public MediaInfo mediainfo;
-  public long ownuin;
+  public int isverified = 0;
+  public int mediabittype = 0;
+  public MediaInfo mediainfo = null;
+  public long ownuin = 0L;
   public String srcId = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

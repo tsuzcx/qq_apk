@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
-import bgbv;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
 
-public class ImportantMsgManager$8
+class ImportantMsgManager$8
   implements Runnable
 {
-  public ImportantMsgManager$8(bgbv parambgbv, Entity paramEntity) {}
+  ImportantMsgManager$8(ImportantMsgManager paramImportantMsgManager, Entity paramEntity) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    bgbv.a(this.this$0, this.a);
+    ImportantMsgManager.a(this.this$0, this.a);
     if (QLog.isColorLevel()) {
       QLog.i("ImportantMsgManager", 2, "updateEntity costTime" + (System.currentTimeMillis() - l));
     }

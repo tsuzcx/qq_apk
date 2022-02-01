@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.search;
 
-import bbyv;
-import bkyq;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.util.UiThreadUtil;
 
-public class HotWordSearchEntryModel$5
+class HotWordSearchEntryModel$5
   implements Runnable
 {
-  public HotWordSearchEntryModel$5(bbyv parambbyv, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  HotWordSearchEntryModel$5(HotWordSearchEntryModel paramHotWordSearchEntryModel, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
   
   public void run()
   {
     this.a.a();
-    bkyq.a(new HotWordSearchEntryModel.5.1(this));
+    UiThreadUtil.a(new HotWordSearchEntryModel.5.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.HotWordSearchEntryModel.5
  * JD-Core Version:    0.7.0.1
  */

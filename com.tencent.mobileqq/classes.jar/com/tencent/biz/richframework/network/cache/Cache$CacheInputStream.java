@@ -8,8 +8,8 @@ import java.io.InputStream;
 
 public class Cache$CacheInputStream
 {
-  private InputStream mInputStream;
-  private DiskLruCache.Snapshot mSnapshot;
+  private InputStream mInputStream = null;
+  private DiskLruCache.Snapshot mSnapshot = null;
   
   public Cache$CacheInputStream(Cache paramCache) {}
   
@@ -25,7 +25,6 @@ public class Cache$CacheInputStream
     try
     {
       this.mInputStream.close();
-      label14:
       if (this.mSnapshot != null) {
         this.mSnapshot.close();
       }
@@ -33,7 +32,10 @@ public class Cache$CacheInputStream
     }
     catch (IOException localIOException)
     {
-      break label14;
+      for (;;)
+      {
+        localIOException.printStackTrace();
+      }
     }
   }
   
@@ -47,7 +49,7 @@ public class Cache$CacheInputStream
       }
       catch (IOException localIOException)
       {
-        return null;
+        localIOException.printStackTrace();
       }
     }
     return null;
@@ -70,7 +72,7 @@ public class Cache$CacheInputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.cache.Cache.CacheInputStream
  * JD-Core Version:    0.7.0.1
  */

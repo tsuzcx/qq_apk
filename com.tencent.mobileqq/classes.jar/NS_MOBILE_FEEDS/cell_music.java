@@ -8,15 +8,15 @@ public final class cell_music
   extends JceStruct
 {
   public String coverurl = "";
-  public int height;
+  public int height = 0;
   public String musicMId = "";
   public String musicMUrl = "";
   public String musicType = "";
   public String musicid = "";
-  public int musictime;
+  public int musictime = 0;
   public String musicurl = "";
   public String title = "";
-  public int width;
+  public int width = 0;
   
   public cell_music() {}
   

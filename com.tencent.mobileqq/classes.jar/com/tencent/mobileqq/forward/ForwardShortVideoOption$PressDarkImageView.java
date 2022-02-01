@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-public class ForwardShortVideoOption$PressDarkImageView
+class ForwardShortVideoOption$PressDarkImageView
   extends ImageView
 {
   public static ColorFilter a;
@@ -37,7 +37,7 @@ public class ForwardShortVideoOption$PressDarkImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     Drawable localDrawable;
@@ -71,7 +71,7 @@ public class ForwardShortVideoOption$PressDarkImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShortVideoOption.PressDarkImageView
  * JD-Core Version:    0.7.0.1
  */

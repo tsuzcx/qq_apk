@@ -1,26 +1,24 @@
 package com.dataline.activities;
 
-import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.TextView;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cv;
 
 public class PrinterDefaultActivity
   extends IphoneTitleBarActivity
 {
   private void a()
   {
-    ((TextView)findViewById(2131369231)).setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131369262);
+    ((TextView)findViewById(2131369487)).setVisibility(8);
+    TextView localTextView = (TextView)findViewById(2131369518);
     localTextView.setVisibility(0);
-    localTextView.setText(anvx.a(2131707881));
-    localTextView.setOnClickListener(new cv(this));
+    localTextView.setText(HardCodeUtil.a(2131708408));
+    localTextView.setOnClickListener(new PrinterDefaultActivity.1(this));
   }
   
   @Override
@@ -36,8 +34,8 @@ public class PrinterDefaultActivity
   {
     super.doOnCreate(paramBundle);
     super.getWindow().setBackgroundDrawableResource(2131165443);
-    setContentView(2131559084);
-    setTitle(2131691319);
+    setContentView(2131559126);
+    setTitle(2131691429);
     super.getWindow().setBackgroundDrawable(null);
     a();
     return true;
@@ -52,7 +50,7 @@ public class PrinterDefaultActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.dataline.activities.PrinterDefaultActivity
  * JD-Core Version:    0.7.0.1
  */

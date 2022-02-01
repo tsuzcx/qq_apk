@@ -20,6 +20,7 @@ import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.AppPageInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.AppPageInfo.Builder;
 import com.tencent.qqmini.sdk.launcher.core.model.FloatDragAdInfo;
+import com.tencent.qqmini.sdk.launcher.core.model.PendantAdInfo;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.AppMode;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
@@ -200,9 +201,9 @@ public class TissuePageContainer
     }
     label263:
     label270:
-    for (paramString2 = MiniProgramReportHelper.miniAppConfigForPreload();; paramString2 = this.mMiniAppContext.getMiniAppInfo())
+    for (MiniAppInfo localMiniAppInfo = MiniProgramReportHelper.miniAppConfigForPreload();; localMiniAppInfo = this.mMiniAppContext.getMiniAppInfo())
     {
-      MiniAppReportManager2.reportLaunchPiecewise(215, paramString1, paramString2);
+      MiniAppReportManager2.reportLaunchPiecewise(215, paramString1, localMiniAppInfo);
       paramString1 = new HashMap();
       paramString1.put("apkgUnpackPath", this.mApkgInfo.apkgFolderPath);
       paramString1.put("appName", this.mApkgInfo.apkgName);
@@ -224,7 +225,7 @@ public class TissuePageContainer
       }
       paramString1.put("topRightBtnHidden", Boolean.valueOf(bool1));
       QMLog.w("miniapp-start-TISSUE", " miniapp launch" + this.mApkgInfo.appId);
-      sendMsgToFlutter("appLaunch", paramString1);
+      sendMsgToFlutter(paramString2, paramString1);
       return;
       paramString1 = "0";
       break;
@@ -333,6 +334,11 @@ public class TissuePageContainer
     return false;
   }
   
+  public boolean operatePendantAd(String paramString, PendantAdInfo paramPendantAdInfo)
+  {
+    return false;
+  }
+  
   public void redirectTo(String paramString, int paramInt)
   {
     paramString = new URL(paramString);
@@ -430,7 +436,7 @@ public class TissuePageContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.page.tissue.TissuePageContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atlb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
-public class FileIPv6StrateyController$1
+class FileIPv6StrateyController$1
   implements Runnable
 {
-  public FileIPv6StrateyController$1(atlb paramatlb) {}
+  FileIPv6StrateyController$1(FileIPv6StrateyController paramFileIPv6StrateyController) {}
   
   public void run()
   {
-    if (atlb.a(this.this$0)) {
+    if (FileIPv6StrateyController.a(this.this$0)) {
       return;
     }
     AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), this.this$0);
-    atlb.a(this.this$0, true);
+    FileIPv6StrateyController.a(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController.1
  * JD-Core Version:    0.7.0.1
  */

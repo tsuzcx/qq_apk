@@ -8,9 +8,9 @@ public final class QCallInfo
   extends JceStruct
 {
   static int cache_bStatus;
-  public int bStatus;
+  public int bStatus = 0;
   public String strNick = "";
-  public long uQCallId;
+  public long uQCallId = 0L;
   
   public QCallInfo() {}
   
@@ -39,7 +39,7 @@ public final class QCallInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.QCallInfo
  * JD-Core Version:    0.7.0.1
  */

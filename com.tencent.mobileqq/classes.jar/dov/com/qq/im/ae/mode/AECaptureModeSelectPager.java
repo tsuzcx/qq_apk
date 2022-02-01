@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 public class AECaptureModeSelectPager
   extends ViewPager
 {
-  private boolean a;
+  private boolean a = false;
   
   public AECaptureModeSelectPager(Context paramContext)
   {
@@ -37,7 +37,7 @@ public class AECaptureModeSelectPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.mode.AECaptureModeSelectPager
  * JD-Core Version:    0.7.0.1
  */

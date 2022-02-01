@@ -3,19 +3,19 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import ascz;
-import asdd;
-import behr;
-import beht;
-import beim;
-import bifw;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.theme.ISwitchCallback.Stub;
+import com.tencent.mobileqq.theme.JSONResult;
+import com.tencent.mobileqq.theme.ThemeSwitchManager;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 
 class ThemeJsPlugin$ThemeSwitchListener
-  extends behr
+  extends ISwitchCallback.Stub
 {
   private boolean needSetCurrent;
   private String themeId;
@@ -48,7 +48,7 @@ class ThemeJsPlugin$ThemeSwitchListener
     String str1 = "set skin theme back:" + paramInt;
     if (paramInt == 0) {
       if ("saveDiyTheme".equals(ThemeJsPlugin.access$000(this.this$0))) {
-        this.this$0.callJs(this.this$0.mCallbackId, new String[] { new beht(0, "set skin theme back:" + paramInt).a() });
+        this.this$0.callJs(this.this$0.mCallbackId, new String[] { new JSONResult(0, "set skin theme back:" + paramInt).a() });
       }
     }
     for (;;)
@@ -75,7 +75,7 @@ class ThemeJsPlugin$ThemeSwitchListener
             localBundle.putString("themeArray", localJSONArray.toString());
             localBundle.putLong("startTime", l);
           }
-          localBundle = asdd.a("themeSwitchSucess", "", this.this$0.mOnRemoteResp.key, localBundle);
+          localBundle = DataFactory.a("themeSwitchSucess", "", this.this$0.mOnRemoteResp.key, localBundle);
           this.this$0.sendRemoteReq(localBundle, false, true);
           i = j;
         }
@@ -84,7 +84,7 @@ class ThemeJsPlugin$ThemeSwitchListener
       {
         for (;;)
         {
-          this.this$0.callJs(this.this$0.mCallbackId, new String[] { new beht(i, str1).a() });
+          this.this$0.callJs(this.this$0.mCallbackId, new String[] { new JSONResult(i, str1).a() });
           if (paramInt == 0) {
             break;
           }
@@ -119,7 +119,7 @@ class ThemeJsPlugin$ThemeSwitchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.ThemeSwitchListener
  * JD-Core Version:    0.7.0.1
  */

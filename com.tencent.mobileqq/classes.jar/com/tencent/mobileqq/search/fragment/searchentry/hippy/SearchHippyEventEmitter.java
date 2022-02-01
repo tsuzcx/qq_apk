@@ -2,9 +2,9 @@ package com.tencent.mobileqq.search.fragment.searchentry.hippy;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import aodf;
-import aodh;
 import com.tencent.hippy.qq.app.HippyQQEngine;
+import com.tencent.mobileqq.app.SearchWordHistoryManager;
+import com.tencent.mobileqq.app.SearchWordHistoryManager.OnSearchHistoryChangeListener;
 import com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler;
 import com.tencent.mtt.hippy.common.HippyMap;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public class SearchHippyEventEmitter
-  implements aodh
+  implements SearchWordHistoryManager.OnSearchHistoryChangeListener
 {
   private static final String MODULE_KEYBOARD_CHANGE = "@search:keyboardEvent";
   private static final String MODULE_SEARCH_COMMON_EVENT = "@search:commonEvent";
@@ -25,7 +25,7 @@ public class SearchHippyEventEmitter
   {
     this.engine = paramHippyQQEngine;
     this.hotwordHandler = paramSearchHotwordHandler;
-    aodf.a(this);
+    SearchWordHistoryManager.a(this);
   }
   
   public static String mapToJsonStr(Map<String, Object> paramMap)
@@ -54,7 +54,7 @@ public class SearchHippyEventEmitter
   
   public void destroy()
   {
-    aodf.b(this);
+    SearchWordHistoryManager.b(this);
   }
   
   public void onHistoryChanged()
@@ -113,7 +113,7 @@ public class SearchHippyEventEmitter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchHippyEventEmitter
  * JD-Core Version:    0.7.0.1
  */

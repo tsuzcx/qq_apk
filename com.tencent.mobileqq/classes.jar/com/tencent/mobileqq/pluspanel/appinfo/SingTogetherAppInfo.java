@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdla;
-import bejv;
-import beki;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.together.TogetherControlManager;
+import com.tencent.mobileqq.together.TogetherUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class SingTogetherAppInfo
   extends PlusPanelAppInfo
 {
-  public SingTogetherAppInfo() {}
+  SingTogetherAppInfo() {}
   
   public SingTogetherAppInfo(int paramInt)
   {
@@ -28,7 +28,7 @@ public class SingTogetherAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839229;
+    return 2130839298;
   }
   
   public int getAppID()
@@ -57,52 +57,52 @@ public class SingTogetherAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698254);
+    return BaseApplicationImpl.getContext().getString(2131698531);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     int i = -1;
     int j = -1;
     Bundle localBundle = new Bundle();
-    paramahvi = paramBaseChatPie.app;
-    String str = paramahvi.getCurrentAccountUin();
-    bejv localbejv = (bejv)paramahvi.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
-    boolean bool = localbejv.a(4, -1, paramSessionInfo.curFriendUin);
-    if (paramSessionInfo.curType == 1)
+    paramPlusPanelViewModel = paramBaseChatPie.a;
+    String str = paramPlusPanelViewModel.getCurrentAccountUin();
+    TogetherControlManager localTogetherControlManager = (TogetherControlManager)paramPlusPanelViewModel.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
+    boolean bool = localTogetherControlManager.a(4, -1, paramSessionInfo.jdField_a_of_type_JavaLangString);
+    if (paramSessionInfo.jdField_a_of_type_Int == 1)
     {
       j = 0;
-      paramahvi = ((TroopManager)paramahvi.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.curFriendUin);
-      if (paramahvi != null) {}
+      paramPlusPanelViewModel = ((TroopManager)paramPlusPanelViewModel.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      if (paramPlusPanelViewModel != null) {}
     }
     for (;;)
     {
       return;
-      localBundle = beki.a(bool, paramahvi.isTroopOwner(str), paramahvi.isAdmin(), paramahvi.troopowneruin, paramSessionInfo.curFriendUin, 0);
-      localbejv.a("sing_tab", "clk_panelsing", 0, paramSessionInfo.curFriendUin);
+      localBundle = TogetherUtils.a(bool, paramPlusPanelViewModel.isTroopOwner(str), paramPlusPanelViewModel.isAdmin(), paramPlusPanelViewModel.troopowneruin, paramSessionInfo.jdField_a_of_type_JavaLangString, 0);
+      localTogetherControlManager.a("sing_tab", "clk_panelsing", 0, paramSessionInfo.jdField_a_of_type_JavaLangString);
       i = 1;
-      paramahvi = "SP_KEY_SING_TOGETHER_TROOP_AIO_RED_DOT_SHOW";
-      while (!TextUtils.isEmpty(paramahvi))
+      paramPlusPanelViewModel = "SP_KEY_SING_TOGETHER_TROOP_AIO_RED_DOT_SHOW";
+      while (!TextUtils.isEmpty(paramPlusPanelViewModel))
       {
         if (bool)
         {
-          localbejv.b(paramBaseChatPie.getActivity(), paramSessionInfo.curFriendUin, i, 4, j, localBundle);
+          localTogetherControlManager.b(paramBaseChatPie.a(), paramSessionInfo.jdField_a_of_type_JavaLangString, i, 4, j, localBundle);
           return;
-          if (paramSessionInfo.curType == 0)
+          if (paramSessionInfo.jdField_a_of_type_Int == 0)
           {
-            localBundle = beki.a(bool, 3);
-            bdla.b(paramahvi, "dc00899", "c2c_AIO", "", "sing_tab", "clk_panelsing", 0, 0, paramSessionInfo.curFriendUin, "", "", "");
+            localBundle = TogetherUtils.a(bool, 3);
+            ReportController.b(paramPlusPanelViewModel, "dc00899", "c2c_AIO", "", "sing_tab", "clk_panelsing", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
             j = 3;
             i = 2;
-            paramahvi = "SP_KEY_SING_TOGETHER_FRIEND_AIO_RED_DOT_SHOW";
+            paramPlusPanelViewModel = "SP_KEY_SING_TOGETHER_FRIEND_AIO_RED_DOT_SHOW";
           }
         }
         else
         {
-          localbejv.a(paramBaseChatPie.getActivity(), paramSessionInfo.curFriendUin, i, 4, j, localBundle);
+          localTogetherControlManager.a(paramBaseChatPie.a(), paramSessionInfo.jdField_a_of_type_JavaLangString, i, 4, j, localBundle);
           return;
         }
-        paramahvi = null;
+        paramPlusPanelViewModel = null;
       }
     }
   }

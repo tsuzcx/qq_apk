@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import bcrn;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.service.message.MessageConstants;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -23,10 +23,10 @@ public class MessageForArkBabyqReply
   public String babyqReplyText;
   public String compatibleMsg;
   public int forwardID;
-  public boolean isFailed;
+  public boolean isFailed = false;
   public boolean isSingleApp = true;
   public ArrayList<ArkBabyqCardInfo> mArkBabyqReplyCardList;
-  public boolean mHasReportRecv;
+  public boolean mHasReportRecv = false;
   public String resIDForLongMsg;
   public boolean showAsBabyq = true;
   
@@ -51,7 +51,7 @@ public class MessageForArkBabyqReply
       this.mArkBabyqReplyCardList = new ArrayList();
     }
     fromBytes(this.msgData);
-    this.mHasReportRecv = "1".equals(getExtInfoFromExtStr(bcrn.g));
+    this.mHasReportRecv = "1".equals(getExtInfoFromExtStr(MessageConstants.g));
   }
   
   public boolean fromAppXml(String paramString)
@@ -211,7 +211,7 @@ public class MessageForArkBabyqReply
     if (!TextUtils.isEmpty(this.babyqReplyText)) {
       return this.babyqReplyText;
     }
-    return BaseApplicationImpl.sApplication.getString(2131690189);
+    return BaseApplicationImpl.sApplication.getString(2131690246);
   }
   
   public void postRead()
@@ -292,7 +292,7 @@ public class MessageForArkBabyqReply
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForArkBabyqReply
  * JD-Core Version:    0.7.0.1
  */

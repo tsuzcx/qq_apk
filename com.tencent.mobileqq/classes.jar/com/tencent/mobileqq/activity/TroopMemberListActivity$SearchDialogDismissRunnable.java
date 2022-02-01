@@ -7,7 +7,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import java.lang.ref.WeakReference;
 
-public class TroopMemberListActivity$SearchDialogDismissRunnable
+class TroopMemberListActivity$SearchDialogDismissRunnable
   implements Runnable
 {
   private WeakReference<TroopMemberListActivity> a;
@@ -35,7 +35,7 @@ public class TroopMemberListActivity$SearchDialogDismissRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.SearchDialogDismissRunnable
  * JD-Core Version:    0.7.0.1
  */

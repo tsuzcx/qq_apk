@@ -3,9 +3,9 @@ package com.tencent.mobileqq.jsp;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import anvx;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.troop.data.AudioInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ import mqq.util.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class WebRecordApiPlugin$AudioUploadTask
+class WebRecordApiPlugin$AudioUploadTask
   implements Runnable
 {
   protected int a;
@@ -25,10 +25,16 @@ public class WebRecordApiPlugin$AudioUploadTask
   protected AudioInfo a;
   protected String a;
   protected WeakReference<BaseActivity> a;
+  protected boolean a;
   private String b;
   
   public WebRecordApiPlugin$AudioUploadTask(WebRecordApiPlugin paramWebRecordApiPlugin, BaseActivity paramBaseActivity, Handler paramHandler, String paramString1, String paramString2, AudioInfo paramAudioInfo)
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_MqqUtilWeakReference = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
@@ -51,7 +57,7 @@ public class WebRecordApiPlugin$AudioUploadTask
       this.jdField_a_of_type_Int = 0;
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo == null) || (!FileUtil.isFileExists(this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo == null) || (!FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("WebRecordApiPlugin", 2, "Audio is null!");
@@ -102,7 +108,7 @@ public class WebRecordApiPlugin$AudioUploadTask
         catch (JSONException localJSONException1) {}
         localObject4 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(16711690);
         localObject1 = localObject4;
-        ((JSONObject)localObject5).put("msg", anvx.a(2131716250));
+        ((JSONObject)localObject5).put("msg", HardCodeUtil.a(2131716716));
         localObject2 = localObject4;
         localObject1 = localObject4;
         if (!QLog.isColorLevel()) {

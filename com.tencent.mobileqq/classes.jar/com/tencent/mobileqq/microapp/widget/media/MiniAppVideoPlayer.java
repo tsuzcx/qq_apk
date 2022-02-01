@@ -151,7 +151,7 @@ public class MiniAppVideoPlayer
     this.s.setXYaxis(2);
     if (!this.i)
     {
-      if (StringUtil.isEmpty(this.e)) {
+      if (StringUtil.a(this.e)) {
         break label468;
       }
       paramContext = URLDrawable.getDrawable(this.e, null);
@@ -193,7 +193,7 @@ public class MiniAppVideoPlayer
       this.t.removeAllViews();
       this.t.addView(this.ab);
       this.t.setBackgroundColor(-16777216);
-      if ((this.ac <= 0L) || (!NetworkUtil.isWifiConnected(this.z))) {
+      if ((this.ac <= 0L) || (!NetworkUtil.h(this.z))) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -201,7 +201,7 @@ public class MiniAppVideoPlayer
       }
       a(this.ac);
       return;
-      if (!StringUtil.isEmpty(this.l)) {
+      if (!StringUtil.a(this.l)) {
         c.a(this.l, new j(this));
       }
     }
@@ -238,7 +238,7 @@ public class MiniAppVideoPlayer
   
   public void a(long paramLong)
   {
-    if (StringUtil.isEmpty(this.l)) {
+    if (StringUtil.a(this.l)) {
       return;
     }
     this.f = true;
@@ -302,7 +302,7 @@ public class MiniAppVideoPlayer
     paramJSONObject.optBoolean("showCenterPlayBtn");
     paramJSONObject.optBoolean("showFullScreenBtn");
     paramJSONObject.optBoolean("enableProgressGesture");
-    if (StringUtil.isEmpty(this.e)) {
+    if (StringUtil.a(this.e)) {
       this.e = paramJSONObject.optString("poster");
     }
     paramJSONObject.optInt("initialTime");

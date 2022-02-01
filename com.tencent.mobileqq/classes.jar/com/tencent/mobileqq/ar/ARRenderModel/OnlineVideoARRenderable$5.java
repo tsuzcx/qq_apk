@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apfd;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
 
-public class OnlineVideoARRenderable$5
+class OnlineVideoARRenderable$5
   implements Runnable
 {
-  public OnlineVideoARRenderable$5(apfd paramapfd) {}
+  OnlineVideoARRenderable$5(OnlineVideoARRenderable paramOnlineVideoARRenderable) {}
   
   public void run()
   {
     try
     {
-      apfd.a(this.this$0).stop();
+      OnlineVideoARRenderable.a(this.this$0).stop();
     }
     catch (Exception localException1)
     {
@@ -21,9 +20,9 @@ public class OnlineVideoARRenderable$5
       {
         try
         {
-          apfd.b(this.this$0, true);
-          apfd.a(this.this$0, apfd.a(this.this$0));
-          apfd.h(this.this$0);
+          OnlineVideoARRenderable.b(this.this$0, true);
+          OnlineVideoARRenderable.a(this.this$0, OnlineVideoARRenderable.a(this.this$0));
+          OnlineVideoARRenderable.h(this.this$0);
           return;
         }
         catch (Exception localException2)
@@ -45,7 +44,7 @@ public class OnlineVideoARRenderable$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.OnlineVideoARRenderable.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import anwd;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HotChatHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class HotChatCenterFragment$7
@@ -11,12 +11,12 @@ class HotChatCenterFragment$7
   
   public void run()
   {
-    ((anwd)HotChatCenterFragment.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
+    ((HotChatHandler)HotChatCenterFragment.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.activity.HotChatCenterFragment.7
  * JD-Core Version:    0.7.0.1
  */

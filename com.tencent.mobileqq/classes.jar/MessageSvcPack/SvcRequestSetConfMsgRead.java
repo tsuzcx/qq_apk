@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestSetConfMsgRead
   extends JceStruct
 {
-  public byte cVerifyType;
-  public long lConfUin;
-  public long lLastReadSeq;
+  public byte cVerifyType = 0;
+  public long lConfUin = 0L;
+  public long lLastReadSeq = 0L;
   
   public SvcRequestSetConfMsgRead() {}
   

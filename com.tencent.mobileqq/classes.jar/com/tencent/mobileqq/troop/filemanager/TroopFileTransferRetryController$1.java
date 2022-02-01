@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import bfma;
-import bfmb;
-
-public class TroopFileTransferRetryController$1
+class TroopFileTransferRetryController$1
   implements Runnable
 {
-  public TroopFileTransferRetryController$1(bfma parambfma, String paramString) {}
+  TroopFileTransferRetryController$1(TroopFileTransferRetryController paramTroopFileTransferRetryController, String paramString) {}
   
   public void run()
   {

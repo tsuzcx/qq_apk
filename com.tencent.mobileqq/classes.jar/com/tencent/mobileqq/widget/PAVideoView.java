@@ -13,11 +13,14 @@ import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
-import asbg;
-import bdla;
-import bdte;
-import bdtl;
-import bhbz;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler.ReportInfo;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.videourl.ThirdDataSourceAdapter;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.image.QQLiveDrawable.ErrorInfo;
@@ -31,32 +34,30 @@ import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.drawable.EmptyDrawable;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo.Holder;
+import com.tencent.mobileqq.utils.AIOSingleReporter;
 import com.tencent.qphone.base.util.QLog;
-import olh;
-import omx;
-import onx;
-import ooa;
 import org.json.JSONObject;
-import pkh;
-import spm;
-import swv;
-import uuc;
 
 public class PAVideoView
   extends BubbleVideoView
   implements QQLiveDrawable.OnStateListener
 {
-  public static asbg a;
+  public static EmptyDrawable a;
   public static int c;
   public static int d;
   public static int e;
   public long a;
   public Handler a;
   RotateAnimation a;
-  public bdte a;
-  public bdtl a;
+  public StructMsgItemVideo.Holder a;
+  public StructMsgItemVideo a;
   public String a;
   public int b;
   private long jdField_b_of_type_Long;
@@ -82,9 +83,10 @@ public class PAVideoView
   static
   {
     QQLiveImage.setDebugEnable(false);
+    jdField_c_of_type_Int = 0;
     jdField_d_of_type_Int = jdField_c_of_type_Int + 1;
     jdField_e_of_type_Int = jdField_d_of_type_Int + 1;
-    jdField_a_of_type_Asbg = new asbg(-2236446, 100, 100);
+    jdField_a_of_type_ComTencentMobileqqDrawableEmptyDrawable = new EmptyDrawable(-2236446, 100, 100);
   }
   
   public PAVideoView(Context paramContext)
@@ -92,6 +94,8 @@ public class PAVideoView
     super(paramContext);
     this.jdField_b_of_type_Int = ((int)(Math.random() * 1000.0D));
     this.jdField_f_of_type_Int = jdField_c_of_type_Int;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_i_of_type_Boolean = false;
     this.jdField_d_of_type_JavaLangString = "";
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_c_of_type_ArrayOfFloat[jdField_c_of_type_Int] = 1.777F;
@@ -113,13 +117,13 @@ public class PAVideoView
   
   public Drawable a(String paramString)
   {
-    asbg localasbg = jdField_a_of_type_Asbg;
+    EmptyDrawable localEmptyDrawable = jdField_a_of_type_ComTencentMobileqqDrawableEmptyDrawable;
     if (!TextUtils.isEmpty(paramString)) {}
     do
     {
       try
       {
-        paramString = URLDrawable.getDrawable(paramString, jdField_a_of_type_Asbg, jdField_a_of_type_Asbg);
+        paramString = URLDrawable.getDrawable(paramString, jdField_a_of_type_ComTencentMobileqqDrawableEmptyDrawable, jdField_a_of_type_ComTencentMobileqqDrawableEmptyDrawable);
         return paramString;
       }
       catch (Exception paramString)
@@ -127,12 +131,12 @@ public class PAVideoView
         if (QLog.isColorLevel()) {
           QLog.e("PAVideoView" + this.jdField_b_of_type_Int, 2, "getCoverDrawable():  getDrawable Exception, mCoverUrl=" + this.jdField_a_of_type_JavaLangString, paramString);
         }
-        return jdField_a_of_type_Asbg;
+        return jdField_a_of_type_ComTencentMobileqqDrawableEmptyDrawable;
       }
-      paramString = localasbg;
+      paramString = localEmptyDrawable;
     } while (!QLog.isColorLevel());
     QLog.e("PAVideoView" + this.jdField_b_of_type_Int, 2, "getCoverDrawable():  mCoverUrl=" + this.jdField_a_of_type_JavaLangString);
-    return localasbg;
+    return localEmptyDrawable;
   }
   
   QQLiveDrawable.QQLiveDrawableParams a(boolean paramBoolean)
@@ -151,12 +155,12 @@ public class PAVideoView
       localQQLiveDrawableParams.mPreviewHeight = m;
       localQQLiveDrawableParams.mPlayPause = paramBoolean;
       localQQLiveDrawableParams.mListener = this;
-      localQQLiveDrawableParams.mServerType = spm.jdField_a_of_type_JavaLangString;
+      localQQLiveDrawableParams.mServerType = VideoPlayUtils.jdField_a_of_type_JavaLangString;
       if ((this.jdField_j_of_type_Int != 2) && (this.jdField_j_of_type_Int != 4) && (this.jdField_j_of_type_Int != 6)) {
         break label277;
       }
       localQQLiveDrawableParams.mDataSourceType = 2;
-      localQQLiveDrawableParams.mDataSourceAdapter = new swv(this.jdField_j_of_type_Int);
+      localQQLiveDrawableParams.mDataSourceAdapter = new ThirdDataSourceAdapter(this.jdField_j_of_type_Int);
       localQQLiveDrawableParams.mPlayType = 3;
     }
     for (;;)
@@ -168,19 +172,19 @@ public class PAVideoView
         localQQLiveDrawableParams.mDataSource = this.jdField_d_of_type_JavaLangString;
       }
       localQQLiveDrawableParams.mCoverUrl = this.jdField_a_of_type_JavaLangString;
-      localQQLiveDrawableParams.mCoverLoadingDrawable = jdField_a_of_type_Asbg;
+      localQQLiveDrawableParams.mCoverLoadingDrawable = jdField_a_of_type_ComTencentMobileqqDrawableEmptyDrawable;
       if (((this.jdField_j_of_type_Int >= 1) && (this.jdField_j_of_type_Int <= 3)) || (this.jdField_j_of_type_Int == 6))
       {
-        if ((this.jdField_a_of_type_Bdte.q == 0) || (this.jdField_a_of_type_Bdte.q > 8))
+        if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.q == 0) || (this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.q > 8))
         {
           localQQLiveDrawableParams.mMaxPlayTimeMs = 8000;
-          localQQLiveDrawableParams.mStartPosi = this.jdField_a_of_type_Bdte.p;
+          localQQLiveDrawableParams.mStartPosi = this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.p;
         }
         localQQLiveDrawableParams.mLoopback = false;
       }
       if (this.jdField_j_of_type_Int == 4)
       {
-        localQQLiveDrawableParams.mMaxPlayTimeMs = (this.jdField_a_of_type_Bdte.q * 1000);
+        localQQLiveDrawableParams.mMaxPlayTimeMs = (this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.q * 1000);
         localQQLiveDrawableParams.mLoopback = true;
       }
       return localQQLiveDrawableParams;
@@ -206,27 +210,27 @@ public class PAVideoView
     return null;
   }
   
-  public void a(bdte parambdte, bdtl parambdtl)
+  public void a(StructMsgItemVideo paramStructMsgItemVideo, StructMsgItemVideo.Holder paramHolder)
   {
-    this.g = parambdte.r;
-    this.h = parambdte.s;
-    this.jdField_a_of_type_JavaLangString = parambdte.ac;
-    this.jdField_b_of_type_JavaLangString = parambdte.ae;
-    if (parambdte.a.message == null) {}
-    for (long l1 = 0L;; l1 = parambdte.a.message.uniseq)
+    this.g = paramStructMsgItemVideo.r;
+    this.h = paramStructMsgItemVideo.s;
+    this.jdField_a_of_type_JavaLangString = paramStructMsgItemVideo.ac;
+    this.jdField_b_of_type_JavaLangString = paramStructMsgItemVideo.ae;
+    if (paramStructMsgItemVideo.a.message == null) {}
+    for (long l1 = 0L;; l1 = paramStructMsgItemVideo.a.message.uniseq)
     {
       this.jdField_a_of_type_Long = l1;
-      this.jdField_i_of_type_Int = parambdte.a.uinType;
-      this.jdField_c_of_type_JavaLangString = parambdte.a.uin;
-      this.jdField_j_of_type_Int = parambdte.v;
-      this.jdField_e_of_type_JavaLangString = parambdte.aj;
-      if ((parambdte.a instanceof AbsShareMsg)) {
-        this.jdField_f_of_type_JavaLangString = ((AbsShareMsg)parambdte.a).mSourceName;
+      this.jdField_i_of_type_Int = paramStructMsgItemVideo.a.uinType;
+      this.jdField_c_of_type_JavaLangString = paramStructMsgItemVideo.a.uin;
+      this.jdField_j_of_type_Int = paramStructMsgItemVideo.v;
+      this.jdField_e_of_type_JavaLangString = paramStructMsgItemVideo.aj;
+      if ((paramStructMsgItemVideo.a instanceof AbsShareMsg)) {
+        this.jdField_f_of_type_JavaLangString = ((AbsShareMsg)paramStructMsgItemVideo.a).mSourceName;
       }
-      this.jdField_a_of_type_Bdte = parambdte;
-      this.jdField_d_of_type_JavaLangString = parambdte.ad;
-      this.jdField_a_of_type_Bdtl = parambdtl;
-      this.jdField_j_of_type_Boolean = "1".equals(parambdte.ay);
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo = paramStructMsgItemVideo;
+      this.jdField_d_of_type_JavaLangString = paramStructMsgItemVideo.ad;
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder = paramHolder;
+      this.jdField_j_of_type_Boolean = "1".equals(paramStructMsgItemVideo.ay);
       return;
     }
   }
@@ -246,7 +250,7 @@ public class PAVideoView
   
   public void d()
   {
-    this.jdField_a_of_type_Bdtl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     setImageDrawable(a(this.jdField_a_of_type_JavaLangString));
     if (QLog.isColorLevel()) {
       QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "showCover():  mVid=" + this.jdField_b_of_type_JavaLangString);
@@ -256,9 +260,9 @@ public class PAVideoView
   public void e()
   {
     this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_Bdtl.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_Bdtl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_Bdtl.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843294);
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843459);
     Object localObject = a();
     if (localObject != null)
     {
@@ -289,69 +293,71 @@ public class PAVideoView
   public void f()
   {
     if (this.jdField_j_of_type_Int != 4) {
-      this.jdField_a_of_type_Bdtl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
     this.jdField_c_of_type_Long = System.currentTimeMillis();
-    uuc.a(this.jdField_e_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0, 0);
-    if ((!this.jdField_a_of_type_Bdte.b) && (this.jdField_a_of_type_Bdte.a.message != null))
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).videoPlayRealtimeReport(this.jdField_e_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0, 0);
+    if ((!this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.b) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.message != null))
     {
-      bdla.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_Bdte.a.message.frienduin, "0X800682E", "0X800682E", 0, 0, this.jdField_b_of_type_JavaLangString, "" + this.jdField_j_of_type_Int, "" + this.jdField_a_of_type_Bdte.a.msgId, "");
-      this.jdField_a_of_type_Bdte.b = true;
+      ReportController.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.message.frienduin, "0X800682E", "0X800682E", 0, 0, this.jdField_b_of_type_JavaLangString, "" + this.jdField_j_of_type_Int, "" + this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.msgId, "");
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.b = true;
     }
     int m;
     Object localObject2;
-    if ((this.jdField_a_of_type_Bdte.a.message != null) && (!bhbz.a().a(this.jdField_a_of_type_Bdte.a.message, "0X80077D9")))
+    if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.message != null) && (!AIOSingleReporter.a().a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.message, "0X80077D9")))
     {
-      m = omx.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_c_of_type_JavaLangString, this.jdField_i_of_type_Int);
+      m = VideoReporter.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_c_of_type_JavaLangString, this.jdField_i_of_type_Int);
       localObject2 = new JSONObject();
     }
     try
     {
       ((JSONObject)localObject2).put("uin", this.jdField_c_of_type_JavaLangString);
       ((JSONObject)localObject2).put("memNum", m);
-      ((JSONObject)localObject2).put("msg_uniseq", this.jdField_a_of_type_Bdte.a.message.uniseq);
+      ((JSONObject)localObject2).put("msg_uniseq", this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.message.uniseq);
       ((JSONObject)localObject2).put("rowkey", this.jdField_e_of_type_JavaLangString);
-      if (!pkh.a(this.jdField_a_of_type_Bdte.a)) {
-        break label560;
+      if (!ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a)) {
+        break label586;
       }
       m = 1;
       ((JSONObject)localObject2).put("UG", m);
     }
     catch (Exception localException)
     {
-      label300:
+      label311:
+      IPublicAccountReportUtils localIPublicAccountReportUtils;
       Object localObject1;
-      label560:
-      break label300;
+      break label311;
     }
+    localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
     if (this.jdField_e_of_type_JavaLangString != null) {}
     for (localObject1 = this.jdField_e_of_type_JavaLangString;; localObject1 = "0")
     {
-      olh.a(null, "", "0X80077D9", "0X80077D9", 0, 0, "1", "", (String)localObject1, omx.a(null, null, this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, (JSONObject)localObject2), false);
-      bhbz.a().a(this.jdField_a_of_type_Bdte.a.message, "0X80077D9");
+      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X80077D9", "0X80077D9", 0, 0, "1", "", (String)localObject1, VideoReporter.a(null, null, this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, (JSONObject)localObject2), false);
+      AIOSingleReporter.a().a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.message, "0X80077D9");
       localObject1 = a(false);
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject2).mExtraInfo = localObject1;
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = jdField_a_of_type_Asbg;
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = jdField_a_of_type_ComTencentMobileqqDrawableEmptyDrawable;
       localObject1 = URLDrawable.getDrawable(a(this.jdField_a_of_type_Long), (URLDrawable.URLDrawableOptions)localObject2);
       if (QLog.isColorLevel()) {
         QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "startPlay(): new or reuse cache, mVid=" + this.jdField_b_of_type_JavaLangString);
       }
       if ((((URLDrawable)localObject1).getStatus() == 1) && ((((URLDrawable)localObject1).getCurrDrawable() instanceof QQLiveDrawable)) && (((QQLiveDrawable)((URLDrawable)localObject1).getCurrDrawable()).getPlayState() == 6))
       {
-        this.jdField_a_of_type_Bdtl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         if (QLog.isColorLevel()) {
           QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "startPlay():reuse cache playCompleted, show play btn" + this.jdField_b_of_type_JavaLangString);
         }
       }
       setImageDrawable((Drawable)localObject1);
       return;
+      label586:
       m = 0;
       break;
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     QQLiveDrawable localQQLiveDrawable = a();
@@ -400,19 +406,19 @@ public class PAVideoView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.jdField_b_of_type_AndroidGraphicsShader == null)
     {
-      paramInt1 = AIOUtils.dp2px(55.0F, getResources());
+      paramInt1 = AIOUtils.a(55.0F, getResources());
       if (!this.jdField_c_of_type_Boolean) {
         break label138;
       }
       if (this.jdField_f_of_type_Int != jdField_c_of_type_Int) {
         break label114;
       }
-      paramInt1 = AIOUtils.dp2px(55.0F, getResources());
+      paramInt1 = AIOUtils.a(55.0F, getResources());
     }
     label138:
     for (;;)
@@ -425,7 +431,7 @@ public class PAVideoView
       label114:
       if (this.jdField_f_of_type_Int == jdField_d_of_type_Int)
       {
-        paramInt1 = AIOUtils.dp2px(75.0F, getResources());
+        paramInt1 = AIOUtils.a(75.0F, getResources());
         continue;
         paramInt1 = (int)(paramInt2 * 0.6F);
       }
@@ -434,8 +440,7 @@ public class PAVideoView
   
   public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
   {
-    boolean bool2 = true;
-    paramQQLiveDrawableParams = this.jdField_a_of_type_Bdtl.jdField_a_of_type_AndroidWidgetImageView;
+    paramQQLiveDrawableParams = this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView;
     if (paramQQLiveDrawableParams != null)
     {
       if (paramInt == 3)
@@ -468,48 +473,45 @@ public class PAVideoView
       return;
       if (paramInt == 5) {
         if (!(paramObject instanceof QQLiveDrawable.ErrorInfo)) {
-          break label822;
+          break label840;
         }
       }
     }
-    label659:
-    label816:
-    label822:
+    label677:
+    label834:
+    label840:
     for (paramString = (QQLiveDrawable.ErrorInfo)paramObject;; paramString = null)
     {
       paramQQLiveDrawableParams.setVisibility(0);
-      paramQQLiveDrawableParams.setImageResource(2130843290);
-      this.jdField_a_of_type_Bdtl.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramQQLiveDrawableParams.setImageResource(2130843455);
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidViewView.setVisibility(0);
       b(true);
       this.jdField_a_of_type_AndroidOsHandler.post(new PAVideoView.3(this, paramQQLiveDrawableParams));
       if (paramString == null) {
         break;
       }
-      uuc.a(this.jdField_e_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 1, paramString.what);
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).videoPlayRealtimeReport(this.jdField_e_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 1, paramString.what);
       return;
       if (paramInt == 8)
       {
         if (!(paramObject instanceof Long)) {
-          break label816;
+          break label834;
         }
         long l1 = ((Long)paramObject).longValue();
-        bool1 = bool2;
-        if (l1 < 300L) {
-          if (l1 != -1L) {
-            break label816;
-          }
+        if ((l1 < 300L) && (l1 != -1L)) {
+          break label834;
         }
       }
-      for (boolean bool1 = bool2;; bool1 = false) {
+      for (boolean bool = true;; bool = false) {
         for (;;)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "state_init, extra = " + paramObject + " , needReport= " + bool1);
+            QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "state_init, extra = " + paramObject + " , needReport= " + bool);
           }
-          if (!bool1) {
+          if (!bool) {
             break;
           }
-          paramInt = omx.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_c_of_type_JavaLangString, this.jdField_i_of_type_Int);
+          paramInt = VideoReporter.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_c_of_type_JavaLangString, this.jdField_i_of_type_Int);
           paramQQLiveDrawableParams = new JSONObject();
           try
           {
@@ -517,12 +519,13 @@ public class PAVideoView
             {
               paramQQLiveDrawableParams.put("uin", this.jdField_c_of_type_JavaLangString);
               paramQQLiveDrawableParams.put("memNum", paramInt);
-              paramQQLiveDrawableParams.put("msg_uniseq", this.jdField_a_of_type_Bdte.a.message.uniseq);
-              label461:
+              paramQQLiveDrawableParams.put("msg_uniseq", this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.message.uniseq);
+              label464:
+              paramObject = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
               if (this.jdField_e_of_type_JavaLangString != null) {}
               for (paramString = this.jdField_e_of_type_JavaLangString;; paramString = "0")
               {
-                olh.a(null, "", "0X8007414", "0X8007414", 0, 0, "1", "", paramString, omx.a(null, null, this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, paramQQLiveDrawableParams), false);
+                paramObject.publicAccountReportClickEvent(null, "", "0X8007414", "0X8007414", 0, 0, "1", "", paramString, VideoReporter.a(null, null, this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, paramQQLiveDrawableParams), false);
                 return;
               }
               if (paramInt == 4)
@@ -530,7 +533,7 @@ public class PAVideoView
                 if ((this.jdField_j_of_type_Int != 4) || (this.jdField_b_of_type_Long == 0L)) {
                   break;
                 }
-                paramString = new ooa();
+                paramString = new EcshopAdHandler.ReportInfo();
                 paramString.a = 4;
               }
               try
@@ -545,15 +548,15 @@ public class PAVideoView
                 paramQQLiveDrawableParams.put("pa", "1");
                 paramQQLiveDrawableParams.put("pb", "1");
                 paramString.h = paramQQLiveDrawableParams.toString();
-                paramString = onx.a(paramString, this.jdField_a_of_type_Bdte.a.message);
-                ((onx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.ESHOP_AD_HANDLER)).a(paramString, null);
+                paramString = EcshopAdHandler.a(paramString, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.message);
+                ((EcshopAdHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.ESHOP_AD_HANDLER)).a(paramString, null);
                 this.jdField_b_of_type_Long = 0L;
                 return;
                 if (paramInt != 6) {
                   break;
                 }
                 paramQQLiveDrawableParams.setVisibility(0);
-                paramQQLiveDrawableParams.setImageResource(2130843294);
+                paramQQLiveDrawableParams.setImageResource(2130843459);
                 this.jdField_a_of_type_AndroidOsHandler.post(new PAVideoView.4(this, paramQQLiveDrawableParams));
                 return;
                 if (!QLog.isColorLevel()) {
@@ -564,13 +567,13 @@ public class PAVideoView
               }
               catch (Exception paramQQLiveDrawableParams)
               {
-                break label659;
+                break label677;
               }
             }
           }
           catch (Exception paramString)
           {
-            break label461;
+            break label464;
           }
         }
       }
@@ -601,7 +604,7 @@ public class PAVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAVideoView
  * JD-Core Version:    0.7.0.1
  */

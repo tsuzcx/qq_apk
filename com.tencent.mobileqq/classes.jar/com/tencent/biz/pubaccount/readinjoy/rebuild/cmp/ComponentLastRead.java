@@ -6,6 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.config.handlers.DailyModeConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
@@ -14,21 +18,15 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafCon
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import plm;
-import qfw;
-import rbo;
-import rbx;
-import rfw;
-import riy;
 
 public class ComponentLastRead
   extends LinearLayout
-  implements rbo
+  implements ComponentView
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
+  CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
   private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  public rfw a;
   
   public ComponentLastRead(Context paramContext)
   {
@@ -48,7 +46,7 @@ public class ComponentLastRead
     b(paramContext);
   }
   
-  private void a(qfw paramqfw)
+  private void a(IReadInJoyModel paramIReadInJoyModel)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {}
     do
@@ -64,25 +62,25 @@ public class ComponentLastRead
             do
             {
               return;
-              i = paramqfw.e();
-            } while ((i != 0) && (!plm.c(i)));
-            paramqfw = paramqfw.a();
-          } while (paramqfw == null);
-          localObject = paramqfw.getTemplateFactory();
+              i = paramIReadInJoyModel.e();
+            } while ((i != 0) && (!DailyModeConfigHandler.c(i)));
+            paramIReadInJoyModel = paramIReadInJoyModel.a();
+          } while (paramIReadInJoyModel == null);
+          localObject = paramIReadInJoyModel.getTemplateFactory();
         } while ((localObject == null) || (!((BaseTemplateFactory)localObject).hasTemplate("ReadInjoy_last_read_cell")));
         localObject = ((BaseTemplateFactory)localObject).getTemplate("ReadInjoy_last_read_cell");
       } while (localObject == null);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramqfw.getViewFactory().inflate(paramqfw, (TemplateBean)localObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramIReadInJoyModel.getViewFactory().inflate(paramIReadInJoyModel, (TemplateBean)localObject);
     } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null);
     removeAllViews();
-    paramqfw = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
-    paramqfw = new RelativeLayout.LayoutParams(paramqfw.mLayoutWidth, paramqfw.mLayoutHeight);
-    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, paramqfw);
+    paramIReadInJoyModel = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
+    paramIReadInJoyModel = new RelativeLayout.LayoutParams(paramIReadInJoyModel.mLayoutWidth, paramIReadInJoyModel.mLayoutHeight);
+    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, paramIReadInJoyModel);
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Rfw = new rfw();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
     a(paramContext);
     a();
   }
@@ -94,23 +92,28 @@ public class ComponentLastRead
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
+  public void a(FeedItemCell.CellListener paramCellListener)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
+  }
+  
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof qfw))
+    if ((paramObject instanceof IReadInJoyModel))
     {
-      this.jdField_a_of_type_Rfw.a((qfw)paramObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a((IReadInJoyModel)paramObject);
       b();
-      if (this.jdField_a_of_type_Rfw.a.g())
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.g())
       {
-        a((qfw)paramObject);
+        a((IReadInJoyModel)paramObject);
         if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) && (this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_AndroidViewView == null))
         {
-          this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560186, null, false);
-          setBackgroundResource(2131166909);
+          this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560264, null, false);
+          setBackgroundResource(2131166912);
           addView(this.jdField_a_of_type_AndroidViewView);
         }
         setVisibility(0);
-        setOnClickListener(new riy(this));
+        setOnClickListener(new ComponentLastRead.1(this));
         ThreadManager.executeOnSubThread(new ComponentLastRead.2(this));
       }
     }
@@ -121,16 +124,11 @@ public class ComponentLastRead
     setVisibility(8);
   }
   
-  public void a(rbx paramrbx)
-  {
-    this.jdField_a_of_type_Rfw.a(paramrbx);
-  }
-  
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead
  * JD-Core Version:    0.7.0.1
  */

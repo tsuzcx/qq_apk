@@ -31,8 +31,8 @@ public class AssociatedTroopItem
   public int memberNum = -1;
   public String name;
   public int privilege = -1;
-  public int relateStatus;
-  public int relateType;
+  public int relateStatus = 0;
+  public int relateType = 0;
   public String richIntro;
   public int seq = -1;
   @unique

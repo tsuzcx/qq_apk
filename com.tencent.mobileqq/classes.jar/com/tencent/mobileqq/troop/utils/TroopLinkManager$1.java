@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgld;
-
-public class TroopLinkManager$1
+class TroopLinkManager$1
   implements Runnable
 {
-  public TroopLinkManager$1(bgld parambgld, String paramString) {}
+  TroopLinkManager$1(TroopLinkManager paramTroopLinkManager, String paramString) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	com/tencent/mobileqq/troop/utils/TroopLinkManager$1:this$0	Lbgld;
-    //   4: getfield 28	bgld:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   1: getfield 14	com/tencent/mobileqq/troop/utils/TroopLinkManager$1:this$0	Lcom/tencent/mobileqq/troop/utils/TroopLinkManager;
+    //   4: getfield 28	com/tencent/mobileqq/troop/utils/TroopLinkManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   7: astore_1
     //   8: aload_1
     //   9: monitorenter
     //   10: aload_0
-    //   11: getfield 14	com/tencent/mobileqq/troop/utils/TroopLinkManager$1:this$0	Lbgld;
-    //   14: getfield 31	bgld:jdField_a_of_type_Boolean	Z
+    //   11: getfield 14	com/tencent/mobileqq/troop/utils/TroopLinkManager$1:this$0	Lcom/tencent/mobileqq/troop/utils/TroopLinkManager;
+    //   14: getfield 31	com/tencent/mobileqq/troop/utils/TroopLinkManager:jdField_a_of_type_Boolean	Z
     //   17: ifeq +6 -> 23
     //   20: aload_1
     //   21: monitorexit
@@ -38,15 +36,15 @@ public class TroopLinkManager$1
     //   44: new 42	org/json/JSONObject
     //   47: dup
     //   48: aload_1
-    //   49: invokestatic 48	com/tencent/mobileqq/utils/FileUtils:readFileToString	(Ljava/io/File;)Ljava/lang/String;
+    //   49: invokestatic 48	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;)Ljava/lang/String;
     //   52: invokespecial 49	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   55: astore_2
     //   56: aload_2
     //   57: invokevirtual 53	org/json/JSONObject:keys	()Ljava/util/Iterator;
     //   60: astore_3
     //   61: aload_0
-    //   62: getfield 14	com/tencent/mobileqq/troop/utils/TroopLinkManager$1:this$0	Lbgld;
-    //   65: getfield 28	bgld:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   62: getfield 14	com/tencent/mobileqq/troop/utils/TroopLinkManager$1:this$0	Lcom/tencent/mobileqq/troop/utils/TroopLinkManager;
+    //   65: getfield 28	com/tencent/mobileqq/troop/utils/TroopLinkManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   68: astore_1
     //   69: aload_1
     //   70: monitorenter
@@ -61,7 +59,7 @@ public class TroopLinkManager$1
     //   92: aload 4
     //   94: invokevirtual 68	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   97: astore 5
-    //   99: getstatic 71	bgld:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   99: getstatic 71	com/tencent/mobileqq/troop/utils/TroopLinkManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   102: aload 4
     //   104: aload 5
     //   106: invokevirtual 77	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;

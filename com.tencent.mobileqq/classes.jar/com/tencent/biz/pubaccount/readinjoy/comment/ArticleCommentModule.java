@@ -1,23 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import bhcu;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oyk;
 
 public class ArticleCommentModule
   extends CommentInfo
 {
-  public boolean canComment;
-  public int facecount;
+  public boolean canComment = false;
+  public int facecount = 0;
   private List<CommentInfo> mCommentItemLists = new ArrayList();
   
   public ArticleCommentModule(ArticleInfo paramArticleInfo, int paramInt, String paramString1, String paramString2)
@@ -42,7 +41,7 @@ public class ArticleCommentModule
     }
     try
     {
-      paramString = new String(bhcu.decode(str, 0));
+      paramString = new String(Base64Util.decode(str, 0));
       localObject = paramString;
       QLog.d("ArticleCommentModule", 2, "buildFeedsOutsideComment commentVal " + paramString);
       localObject = paramString;
@@ -66,7 +65,7 @@ public class ArticleCommentModule
       paramString.authorUin = ((QQAppInterface)paramArticleInfo).getCurrentAccountUin();
       paramString.commentByMyself = true;
     }
-    paramArticleInfo = ReadInJoyUserInfoModule.a(Long.parseLong(paramString.authorUin), new oyk(paramString));
+    paramArticleInfo = ReadInJoyUserInfoModule.a(Long.parseLong(paramString.authorUin), new ArticleCommentModule.1(paramString));
     if (paramArticleInfo != null) {}
     for (paramArticleInfo = paramArticleInfo.nick;; paramArticleInfo = ReadInJoyUserInfoModule.a())
     {
@@ -82,7 +81,7 @@ public class ArticleCommentModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule
  * JD-Core Version:    0.7.0.1
  */

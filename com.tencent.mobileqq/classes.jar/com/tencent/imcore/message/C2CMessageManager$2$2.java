@@ -1,7 +1,5 @@
 package com.tencent.imcore.message;
 
-import acml;
-import acnh;
 import java.util.Map;
 
 class C2CMessageManager$2$2
@@ -11,14 +9,14 @@ class C2CMessageManager$2$2
   
   public void run()
   {
-    if (this.a.this$0.a.refreshActionMap.containsKey(acnh.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.this$0.a.refreshActionMap.remove(acnh.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
+    if (this.a.this$0.a.b.containsKey(UinTypeUtil.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
+      this.a.this$0.a.b.remove(UinTypeUtil.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageManager.2.2
  * JD-Core Version:    0.7.0.1
  */

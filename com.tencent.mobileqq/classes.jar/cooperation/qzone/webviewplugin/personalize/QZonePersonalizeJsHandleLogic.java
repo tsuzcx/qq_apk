@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin.personalize;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bifw;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
 import org.json.JSONException;
@@ -12,7 +12,7 @@ public class QZonePersonalizeJsHandleLogic
 {
   public static final String TAG = "QZonePersonalizeJsHandleLogicQZonePersonalizePlugin";
   
-  public static void handleSwitchFinished(bifw parambifw, String... paramVarArgs)
+  public static void handleSwitchFinished(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     int i = 0;
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
@@ -46,15 +46,15 @@ public class QZonePersonalizeJsHandleLogic
       localBundle.putInt("isAfter785", i);
       localBundle.putInt("diyHome", j);
       paramVarArgs.putExtras(localBundle);
-      QZoneHelper.forwardToQzoneTransluentActivity(parambifw.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
+      QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
       return;
     }
-    catch (JSONException parambifw) {}
+    catch (JSONException paramPluginRuntime) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZonePersonalizeJsHandleLogic
  * JD-Core Version:    0.7.0.1
  */

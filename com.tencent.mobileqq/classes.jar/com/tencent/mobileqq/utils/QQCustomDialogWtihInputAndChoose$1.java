@@ -12,9 +12,9 @@ class QQCustomDialogWtihInputAndChoose$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.this$0.mViewInputBtn.setImageResource(2130847312);
-    this.this$0.mViewInputBtn.setTag(Integer.valueOf(2130847312));
-    this.this$0.hideChooseList();
+    this.a.a.setImageResource(2130847669);
+    this.a.a.setTag(Integer.valueOf(2130847669));
+    this.a.a();
     return false;
   }
 }

@@ -27,24 +27,21 @@ public final class ITFReader
   {
     END_PATTERN_REVERSED = new int[][] { { 1, 1, 2 }, { 1, 1, 3 } };
     int[] arrayOfInt1 = { 1, 1, 2, 2, 1 };
-    int[] arrayOfInt2 = { 2, 1, 1, 1, 2 };
-    int[] arrayOfInt3 = { 1, 2, 1, 1, 2 };
-    int[] arrayOfInt4 = { 2, 2, 1, 1, 1 };
-    int[] arrayOfInt5 = { 1, 1, 2, 1, 2 };
-    int[] arrayOfInt6 = { 2, 1, 2, 1, 1 };
-    int[] arrayOfInt7 = { 1, 2, 2, 1, 1 };
+    int[] arrayOfInt2 = { 1, 2, 1, 1, 2 };
+    int[] arrayOfInt3 = { 2, 2, 1, 1, 1 };
+    int[] arrayOfInt4 = { 1, 1, 2, 1, 2 };
+    int[] arrayOfInt5 = { 2, 1, 2, 1, 1 };
+    int[] arrayOfInt6 = { 1, 2, 2, 1, 1 };
+    int[] arrayOfInt7 = { 1, 1, 1, 2, 2 };
     int[] arrayOfInt8 = { 2, 1, 1, 2, 1 };
     int[] arrayOfInt9 = { 1, 2, 1, 2, 1 };
     int[] arrayOfInt10 = { 1, 1, 3, 3, 1 };
-    int[] arrayOfInt11 = { 3, 1, 1, 1, 3 };
-    int[] arrayOfInt12 = { 1, 3, 1, 1, 3 };
-    int[] arrayOfInt13 = { 3, 3, 1, 1, 1 };
-    int[] arrayOfInt14 = { 1, 1, 3, 1, 3 };
-    int[] arrayOfInt15 = { 1, 3, 3, 1, 1 };
-    int[] arrayOfInt16 = { 1, 1, 1, 3, 3 };
-    int[] arrayOfInt17 = { 3, 1, 1, 3, 1 };
-    int[] arrayOfInt18 = { 1, 3, 1, 3, 1 };
-    PATTERNS = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, { 1, 1, 1, 2, 2 }, arrayOfInt8, arrayOfInt9, arrayOfInt10, arrayOfInt11, arrayOfInt12, arrayOfInt13, arrayOfInt14, { 3, 1, 3, 1, 1 }, arrayOfInt15, arrayOfInt16, arrayOfInt17, arrayOfInt18 };
+    int[] arrayOfInt11 = { 1, 3, 1, 1, 3 };
+    int[] arrayOfInt12 = { 3, 3, 1, 1, 1 };
+    int[] arrayOfInt13 = { 3, 1, 3, 1, 1 };
+    int[] arrayOfInt14 = { 1, 3, 3, 1, 1 };
+    int[] arrayOfInt15 = { 3, 1, 1, 3, 1 };
+    PATTERNS = new int[][] { arrayOfInt1, { 2, 1, 1, 1, 2 }, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, arrayOfInt10, { 3, 1, 1, 1, 3 }, arrayOfInt11, arrayOfInt12, { 1, 1, 3, 1, 3 }, arrayOfInt13, arrayOfInt14, { 1, 1, 1, 3, 3 }, arrayOfInt15, { 1, 3, 1, 3, 1 } };
   }
   
   private static int decodeDigit(int[] paramArrayOfInt)

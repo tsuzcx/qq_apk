@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import bpsm;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraPreview
@@ -13,7 +12,7 @@ public class CameraPreview
   implements SurfaceHolder.Callback
 {
   SurfaceHolder a;
-  public bpsm a;
+  public SurfacePreviewContext a;
   
   public CameraPreview(Context paramContext)
   {
@@ -26,7 +25,7 @@ public class CameraPreview
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Bpsm.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceSurfacePreviewContext.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreview", 2, "[@] surfaceChanged end");
     }
@@ -34,17 +33,17 @@ public class CameraPreview
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_Bpsm.surfaceCreated(paramSurfaceHolder);
+    this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceSurfacePreviewContext.surfaceCreated(paramSurfaceHolder);
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_Bpsm.surfaceDestroyed(paramSurfaceHolder);
+    this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceSurfacePreviewContext.surfaceDestroyed(paramSurfaceHolder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.mediadevice.CameraPreview
  * JD-Core Version:    0.7.0.1
  */

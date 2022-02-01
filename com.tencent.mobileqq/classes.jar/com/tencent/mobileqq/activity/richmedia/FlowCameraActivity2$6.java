@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia;
 
 import android.content.Intent;
-import bbfm;
-import bbfs;
-import bbfx;
+import com.tencent.mobileqq.richmedia.CompoundProcessor;
+import com.tencent.mobileqq.richmedia.RichmediaClient;
+import com.tencent.mobileqq.richmedia.VideoCompoundController;
 
 class FlowCameraActivity2$6
   implements Runnable
@@ -12,9 +12,9 @@ class FlowCameraActivity2$6
   
   public void run()
   {
-    Object localObject = bbfs.a().a().a(this.this$0.a);
+    Object localObject = RichmediaClient.a().a().a(this.this$0.a);
     if (localObject != null) {
-      ((bbfm)localObject).a(103);
+      ((CompoundProcessor)localObject).a(103);
     }
     for (;;)
     {
@@ -29,7 +29,7 @@ class FlowCameraActivity2$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.content.Context;
-import aoep;
-import bdla;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -19,13 +19,13 @@ final class TroopUtils$5
   
   public void run()
   {
-    TroopMemberInfo localTroopMemberInfo = ((TroopManager)this.val$app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.val$troopUin, this.val$memberUin);
+    TroopMemberInfo localTroopMemberInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString, this.b);
     int j = 0;
     for (;;)
     {
       try
       {
-        String[] arrayOfString = this.val$grayTypeAndSubID.split("_");
+        String[] arrayOfString = this.c.split("_");
         i = j;
         if (arrayOfString != null)
         {
@@ -44,17 +44,17 @@ final class TroopUtils$5
         try
         {
           l = Long.parseLong(arrayOfString[2]);
-          bdla.b(this.val$app, "dc00898", "", "", "0X800AD4F", "0X800AD4F", (int)l, 0, String.valueOf(i), "", "", "");
-          ((aoep)this.val$app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).c(this.val$troopUin, 2, j);
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4F", "0X800AD4F", (int)l, 0, String.valueOf(i), "", "", "");
+          ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).c(this.jdField_a_of_type_JavaLangString, 2, j);
           j = i;
           if (localTroopMemberInfo == null) {
             break;
           }
           if (QLog.isColorLevel()) {
-            QLog.i("TroopUtils", 2, "checkAndOpenMemberProfileForRecommendTipsClick open card " + this.val$memberUin + " " + this.val$grayTypeAndSubID);
+            QLog.i("TroopUtils", 2, "checkAndOpenMemberProfileForRecommendTipsClick open card " + this.b + " " + this.c);
           }
-          if (this.val$context != null) {
-            TroopUtils.openUserProfileCardForTroopRecommend(this.val$app, this.val$context, this.val$memberUin, j, this.val$troopUin);
+          if (this.jdField_a_of_type_AndroidContentContext != null) {
+            TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, j, this.jdField_a_of_type_JavaLangString);
           }
           return;
         }
@@ -74,7 +74,7 @@ final class TroopUtils$5
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.i("TroopUtils", 2, "checkAndOpenMemberProfileForRecommendTipsClick no member " + this.val$memberUin);
+      QLog.i("TroopUtils", 2, "checkAndOpenMemberProfileForRecommendTipsClick no member " + this.b);
     }
     ThreadManager.getUIHandler().post(new TroopUtils.5.1(this));
   }

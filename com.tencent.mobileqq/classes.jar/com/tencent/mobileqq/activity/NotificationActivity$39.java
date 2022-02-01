@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bhzc;
+import com.tencent.mobileqq.vip.LhHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -11,19 +11,19 @@ class NotificationActivity$39
   
   public void run()
   {
-    boolean bool = NotificationActivity.a(this.this$0).a();
+    boolean bool = NotificationActivity.access$1400(this.this$0).a();
     QLog.e("LhHelper", 1, "receiveLhCard result = " + bool);
     if (bool)
     {
-      if (NotificationActivity.a(this.this$0).b())
+      if (NotificationActivity.access$1400(this.this$0).b())
       {
-        NotificationActivity.a(this.this$0).sendEmptyMessage(5);
+        NotificationActivity.access$1500(this.this$0).sendEmptyMessage(5);
         return;
       }
-      NotificationActivity.a(this.this$0).sendEmptyMessage(6);
+      NotificationActivity.access$1500(this.this$0).sendEmptyMessage(6);
       return;
     }
-    NotificationActivity.a(this.this$0).sendEmptyMessage(6);
+    NotificationActivity.access$1500(this.this$0).sendEmptyMessage(6);
   }
 }
 

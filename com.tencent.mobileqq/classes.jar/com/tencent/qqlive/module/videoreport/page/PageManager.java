@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import com.tencent.qqlive.module.videoreport.Configuration;
 import com.tencent.qqlive.module.videoreport.Log;
+import com.tencent.qqlive.module.videoreport.data.DataBinder;
 import com.tencent.qqlive.module.videoreport.data.DataEntity;
 import com.tencent.qqlive.module.videoreport.data.DataEntityOperator;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
@@ -34,14 +35,13 @@ public class PageManager
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.i("PageManager", "checkPageOut, mCurrentPageInfo = " + this.mCurrentPageInfo);
     }
-    if (this.mCurrentPageInfo == null) {
+    if ((this.mCurrentPageInfo == null) || (this.mLastPageIsDisappear)) {
       return;
     }
     if (this.mInnerRunnable.pageInfo != null) {
       this.mHandler.removeCallbacks(this.mInnerRunnable);
     }
     onPageOut(null, this.mCurrentPageInfo, true);
-    this.mCurrentPageInfo = null;
     this.mLastPageIsDisappear = true;
   }
   
@@ -59,20 +59,20 @@ public class PageManager
       Object localObject1 = paramPageInfo;
       if (localObject2 != null)
       {
-        localObject1 = paramPageInfo;
+        localObject1 = localObject3;
         if (localObject3 != null)
         {
           localObject1 = localObject3;
           if (localObject2 == ((PageInfo)localObject3).getPageView()) {
             localObject1 = ((PageInfo)localObject3).getParentPage();
           }
-          if (localObject2 != paramView) {
-            break label50;
-          }
         }
+        if (localObject2 != paramView) {}
       }
-      return localObject1;
-      label50:
+      else
+      {
+        return localObject1;
+      }
       localObject2 = ((View)localObject2).getParent();
       if ((localObject2 instanceof View))
       {
@@ -110,26 +110,27 @@ public class PageManager
     return true;
   }
   
-  private void onPageIn(PageInfo paramPageInfo1, PageInfo paramPageInfo2)
+  private void onPageIn(PageInfo paramPageInfo1, PageInfo paramPageInfo2, int paramInt)
   {
     StringBuilder localStringBuilder;
     if (VideoReportInner.getInstance().isDebugMode())
     {
       localStringBuilder = new StringBuilder().append("onPageIn: pageInfo page=").append(paramPageInfo1).append(", decorView=");
       if (paramPageInfo1.getPageView() == null) {
-        break label118;
+        break label126;
       }
     }
-    label118:
-    for (View localView = paramPageInfo1.getPageView().getRootView();; localView = null)
+    label126:
+    for (Object localObject = paramPageInfo1.getPageView().getRootView();; localObject = null)
     {
-      Log.d("PageManager", localView);
+      Log.d("PageManager", localObject);
       int i = this.mPgStp + 1;
       this.mPgStp = i;
-      updatePageContext(paramPageInfo1, paramPageInfo2, i, this.mCurrentPageDataEntity);
+      localObject = this.mCurrentPageDataEntity;
       this.mCurrentPageDataEntity = paramPageInfo1.constructDataEntityLink();
+      updatePageContext(paramPageInfo1, paramPageInfo2, i, (DataEntity)localObject);
       paramPageInfo2 = paramPageInfo1.findNewInPage(paramPageInfo2);
-      this.mListenerMgr.startNotify(new PageManager.1(this, paramPageInfo1, paramPageInfo2));
+      this.mListenerMgr.startNotify(new PageManager.1(this, paramPageInfo1, paramPageInfo2, paramInt));
       return;
     }
   }
@@ -144,16 +145,23 @@ public class PageManager
     for (paramPageInfo1 = paramPageInfo1.findNewOutPage(paramPageInfo2);; paramPageInfo1 = paramPageInfo2.findNewOutPage(paramPageInfo2))
     {
       this.mListenerMgr.startNotify(new PageManager.2(this, paramPageInfo2, paramPageInfo1, paramBoolean));
-      return;
+      paramPageInfo1 = paramPageInfo1.iterator();
+      while (paramPageInfo1.hasNext())
+      {
+        paramPageInfo2 = (PageInfo)paramPageInfo1.next();
+        if (paramPageInfo2.getPage() == null) {
+          PageContextManager.getInstance().remove(paramPageInfo2.getPageHashCode());
+        }
+      }
     }
   }
   
-  private void onPageUpdate(PageInfo paramPageInfo)
+  private void onPageUpdate(PageInfo paramPageInfo, int paramInt)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("PageManager", "onPageUpdate: ");
     }
-    this.mListenerMgr.startNotify(new PageManager.3(this, paramPageInfo));
+    this.mListenerMgr.startNotify(new PageManager.3(this, paramPageInfo, paramInt));
   }
   
   private void updatePageContext(PageInfo paramPageInfo1, PageInfo paramPageInfo2, int paramInt, DataEntity paramDataEntity)
@@ -166,8 +174,8 @@ public class PageManager
       while (paramPageInfo1.hasNext())
       {
         paramPageInfo2 = (PageInfo)paramPageInfo1.next();
-        PageContext localPageContext = new PageContext(paramInt, paramDataEntity);
-        PageContextManager.getInstance().set(paramPageInfo2.getPage(), localPageContext);
+        PageContext localPageContext = new PageContext(paramInt, DataBinder.getDataEntity(paramPageInfo2.getPage()), paramDataEntity);
+        PageContextManager.getInstance().set(paramPageInfo2.getPageHashCode(), localPageContext);
       }
     }
   }
@@ -181,9 +189,10 @@ public class PageManager
       }
       return;
     }
-    PageContextManager.getInstance().remove(paramObject);
+    PageContextManager.getInstance().remove(paramObject.hashCode());
   }
   
+  @Nullable
   public PageInfo getCurrentPageInfo()
   {
     return this.mCurrentPageInfo;
@@ -204,7 +213,7 @@ public class PageManager
     checkPageOut();
   }
   
-  public void onPageAppear(@NonNull PageInfo paramPageInfo)
+  public void onPageAppear(@NonNull PageInfo paramPageInfo, int paramInt)
   {
     if (VideoReportInner.getInstance().isDebugMode())
     {
@@ -216,33 +225,47 @@ public class PageManager
     }
     this.mHandler.removeCallbacks(this.mInnerRunnable);
     this.mInnerRunnable.pageInfo = paramPageInfo;
+    this.mInnerRunnable.invokeFrom = paramInt;
     this.mHandler.postDelayed(this.mInnerRunnable, VideoReportInner.getInstance().getConfiguration().getPageExposureMinTime());
   }
   
   public boolean onPageDestroyed(@NonNull View paramView)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.i("PageManager", "onPageDestroyed, mCurrentPageInfo = " + this.mCurrentPageInfo + ", disappearingView = " + paramView);
     }
-    if (this.mCurrentPageInfo == null) {}
-    do
+    boolean bool2;
+    if ((this.mCurrentPageInfo == null) || (this.mLastPageIsDisappear))
     {
+      bool2 = false;
       return bool2;
-      paramView = findNewPageLinkHead(this.mCurrentPageInfo, paramView);
-      if (paramView != this.mCurrentPageInfo) {
-        bool1 = true;
-      }
-      if (bool1)
-      {
+    }
+    paramView = findNewPageLinkHead(this.mCurrentPageInfo, paramView);
+    boolean bool1;
+    if (paramView != this.mCurrentPageInfo)
+    {
+      bool1 = true;
+      label85:
+      if (bool1) {
         onPageOut(paramView, this.mCurrentPageInfo, true);
-        this.mCurrentPageInfo = paramView;
       }
+      if (paramView != null) {
+        break label151;
+      }
+    }
+    for (this.mLastPageIsDisappear = true;; this.mLastPageIsDisappear = false)
+    {
       bool2 = bool1;
-    } while (!VideoReportInner.getInstance().isDebugMode());
-    Log.i("PageManager", "onPageDestroyed, hasNewPageOut = " + bool1);
-    return bool1;
+      if (!VideoReportInner.getInstance().isDebugMode()) {
+        break;
+      }
+      Log.i("PageManager", "onPageDestroyed, hasNewPageOut = " + bool1);
+      return bool1;
+      bool1 = false;
+      break label85;
+      label151:
+      this.mCurrentPageInfo = paramView;
+    }
   }
   
   public void onPageDisappear()

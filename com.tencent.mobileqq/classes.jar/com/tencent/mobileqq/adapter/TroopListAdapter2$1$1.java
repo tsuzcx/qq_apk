@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.adapter;
 
-import amjz;
-import amka;
-
-public class TroopListAdapter2$1$1
+class TroopListAdapter2$1$1
   implements Runnable
 {
-  public TroopListAdapter2$1$1(amka paramamka) {}
+  TroopListAdapter2$1$1(TroopListAdapter2.1 param1) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class TroopListAdapter2$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopListAdapter2.1.1
  * JD-Core Version:    0.7.0.1
  */

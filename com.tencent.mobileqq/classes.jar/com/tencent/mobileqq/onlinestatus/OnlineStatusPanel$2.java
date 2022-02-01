@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.app.Activity;
-import azbj;
 import java.util.ArrayList;
 
 class OnlineStatusPanel$2
@@ -11,9 +10,27 @@ class OnlineStatusPanel$2
   
   public void run()
   {
-    ArrayList localArrayList1 = azbj.a().a();
-    ArrayList localArrayList2 = this.this$0.a.a;
-    ((Activity)this.this$0.getContext()).runOnUiThread(new OnlineStatusPanel.2.1(this, localArrayList1, localArrayList1, localArrayList2));
+    ArrayList localArrayList1 = new ArrayList(0);
+    ArrayList localArrayList2 = new ArrayList(0);
+    if (OnlineStatusPanel.a(this.this$0) != null) {
+      if (OnlineStatusPanel.a(this.this$0).b() == null) {
+        if (OnlineStatusPanel.a(this.this$0).c() != null) {
+          break label98;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((Activity)this.this$0.getContext()).runOnUiThread(new OnlineStatusPanel.2.1(this, localArrayList1, localArrayList2));
+      return;
+      localArrayList1 = OnlineStatusPanel.a(this.this$0).b();
+      break;
+      label98:
+      localArrayList2 = OnlineStatusPanel.a(this.this$0).c();
+      continue;
+      localArrayList1 = OnLineStatusHelper.a().a();
+      localArrayList2 = this.this$0.a.a;
+    }
   }
 }
 

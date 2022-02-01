@@ -3,13 +3,11 @@ package com.tencent.mobileqq.apollo.view.pannel;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import anpl;
-import anpm;
 
-public class ApolloPanelListAdapter$1$1$1
+class ApolloPanelListAdapter$1$1$1
   implements Runnable
 {
-  public ApolloPanelListAdapter$1$1$1(anpl paramanpl) {}
+  ApolloPanelListAdapter$1$1$1(ApolloPanelListAdapter.1.1 param1) {}
   
   public void run()
   {
@@ -17,14 +15,14 @@ public class ApolloPanelListAdapter$1$1$1
     localTranslateAnimation.setDuration(400L);
     localTranslateAnimation.setRepeatCount(1);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new anpm(this));
+    localTranslateAnimation.setAnimationListener(new ApolloPanelListAdapter.1.1.1.1(this));
     this.a.a.a.setVisibility(0);
     this.a.a.a.startAnimation(localTranslateAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.pannel.ApolloPanelListAdapter.1.1.1
  * JD-Core Version:    0.7.0.1
  */

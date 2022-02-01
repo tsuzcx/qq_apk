@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import tlx;
 
 class ReadInJoyChannelActivity$2
   implements Runnable
@@ -10,13 +10,13 @@ class ReadInJoyChannelActivity$2
   
   public void run()
   {
-    tlx.a().a(true);
-    tlx.a().b(this.this$0.app, NetConnInfoCenter.getServerTimeMillis(), -1, -1);
+    ReadInJoyGlobalReporter.a().a(true);
+    ReadInJoyGlobalReporter.a().b(this.this$0.app, NetConnInfoCenter.getServerTimeMillis(), -1, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity.2
  * JD-Core Version:    0.7.0.1
  */

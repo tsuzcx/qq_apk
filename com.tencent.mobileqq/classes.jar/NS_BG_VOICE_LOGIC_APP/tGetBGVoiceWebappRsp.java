@@ -8,12 +8,12 @@ public final class tGetBGVoiceWebappRsp
   extends JceStruct
 {
   static BGVoice cache_stBGVoice = new BGVoice();
-  public int iRet;
-  public byte loop_playback_flag;
-  public byte play_mode_flag;
-  public BGVoice stBGVoice;
+  public int iRet = 0;
+  public byte loop_playback_flag = 0;
+  public byte play_mode_flag = 0;
+  public BGVoice stBGVoice = null;
   public String strErrMsg = "";
-  public byte wifi_auto_play;
+  public byte wifi_auto_play = 0;
   
   public tGetBGVoiceWebappRsp() {}
   

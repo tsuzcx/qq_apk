@@ -11,19 +11,17 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.portal.StrokeTextView;
-import lvp;
-import lvr;
 
 public class RedPacketRollNumberView
   extends LinearLayout
-  implements lvr
+  implements RedPacketRollTextView.OnRollTextChangeListener
 {
   private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private lvp jdField_a_of_type_Lvp;
+  private Context jdField_a_of_type_AndroidContentContext = null;
+  private RedPacketRollNumberView.OnRollListener jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollNumberView$OnRollListener;
   private boolean jdField_a_of_type_Boolean = true;
   private int b;
-  private int c;
+  private int c = 0;
   
   public RedPacketRollNumberView(Context paramContext)
   {
@@ -70,7 +68,7 @@ public class RedPacketRollNumberView
     localStrokeTextView.setTextSize(0, this.b);
     localStrokeTextView.setStrokeEnable(true);
     localStrokeTextView.setStrokeColor(-1);
-    localStrokeTextView.setStrokeSize(AIOUtils.dp2px(6.0F, getResources()));
+    localStrokeTextView.setStrokeSize(AIOUtils.a(6.0F, getResources()));
     localStrokeTextView.setInnerTextColor(-2094274);
     localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
     int i = (int)paramDouble;
@@ -108,8 +106,8 @@ public class RedPacketRollNumberView
   
   public void b()
   {
-    if ((this.c == this.jdField_a_of_type_Int - 2) && (this.jdField_a_of_type_Lvp != null)) {
-      this.jdField_a_of_type_Lvp.a();
+    if ((this.c == this.jdField_a_of_type_Int - 2) && (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollNumberView$OnRollListener != null)) {
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollNumberView$OnRollListener.a();
     }
     this.c += 1;
   }
@@ -143,16 +141,16 @@ public class RedPacketRollNumberView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setLisener(lvp paramlvp)
+  public void setLisener(RedPacketRollNumberView.OnRollListener paramOnRollListener)
   {
-    if (paramlvp != null) {
-      this.jdField_a_of_type_Lvp = paramlvp;
+    if (paramOnRollListener != null) {
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollNumberView$OnRollListener = paramOnRollListener;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketRollNumberView
  * JD-Core Version:    0.7.0.1
  */

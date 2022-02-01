@@ -1,20 +1,15 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bflc;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.QQGroupDigestMsgSummary;
 
-public class TroopEssenceMsgManager$6
+class TroopEssenceMsgManager$6
   implements Runnable
 {
-  public TroopEssenceMsgManager$6(bflc parambflc, long paramLong1, long paramLong2) {}
+  TroopEssenceMsgManager$6(TroopEssenceMsgManager paramTroopEssenceMsgManager, long paramLong, TroopTips0x857.QQGroupDigestMsgSummary paramQQGroupDigestMsgSummary, boolean paramBoolean) {}
   
   public void run()
   {
-    bflc.a(this.this$0).getMessageFacade().removeMsgByUniseq(String.valueOf(this.a), 1, this.b);
-    ThreadManager.getUIHandler().post(new TroopEssenceMsgManager.6.1(this));
+    this.this$0.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$QQGroupDigestMsgSummary, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -33,7 +33,7 @@ public final class QQCircleBill$SetBillDetailReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     qqcircle.QQCircleBill.SetBillDetailReq
  * JD-Core Version:    0.7.0.1
  */

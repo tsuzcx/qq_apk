@@ -39,7 +39,7 @@ public class SplitedProgressBar
     this.jdField_a_of_type_Int = 1;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int k = super.getWidth();
@@ -169,7 +169,7 @@ public class SplitedProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.SplitedProgressBar
  * JD-Core Version:    0.7.0.1
  */

@@ -10,10 +10,10 @@ import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.OvalDistortionItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.VideoFilterUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.TransformUtil;
 import java.util.Arrays;
@@ -26,8 +26,8 @@ public class OvalDistortionFilter
   private static final int DISTORTION_LIST_MAX_SIZE = 20;
   private static final int XCOORD_NUM = 64;
   private static final int YCOORD_NUM = 64;
-  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterialUtil.genFullScreenVertices(66, 66, -1.03125F, 1.03125F, -1.03125F, 1.03125F);
-  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterialUtil.genFullScreenVertices(66, 66, -0.015625F, 1.015625F, -0.015625F, 1.015625F);
+  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterial.genFullScreenVertices(66, 66, -1.03125F, 1.03125F, -1.03125F, 1.03125F);
+  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterial.genFullScreenVertices(66, 66, -0.015625F, 1.015625F, -0.015625F, 1.015625F);
   private float cropCenterX = 0.0F;
   private float cropCenterY = 0.0F;
   private float cropEdge = 1.0F;
@@ -153,8 +153,8 @@ public class OvalDistortionFilter
   
   public void initAttribParams()
   {
-    setPositions(VideoMaterialUtil.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
-    setTexCords(VideoMaterialUtil.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
+    setPositions(VideoMaterial.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
+    setTexCords(VideoMaterial.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
     setCoordNum(8779);
   }
   
@@ -172,7 +172,7 @@ public class OvalDistortionFilter
   public void updateParams(List<PointF> paramList, Set<Integer> paramSet)
   {
     Arrays.fill(this.flatMesh, -1.0F);
-    List localList = VideoMaterialUtil.copyList(paramList);
+    List localList = VideoMaterial.copyList(paramList);
     if ((localList == null) || (localList.size() < 90) || (CollectionUtils.isEmpty(this.items)) || (!VideoFilterUtil.actionTriggered(paramList, this.stickerItems, paramSet)))
     {
       addParam(new UniformParam.Float4sParam("item", this.flatMesh));
@@ -669,7 +669,7 @@ public class OvalDistortionFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.OvalDistortionFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import aloc;
 import android.content.Context;
 import android.view.WindowManager.BadTokenException;
-import bhdj;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
-public class CameraPreviewNew$1
+class CameraPreviewNew$1
   implements Runnable
 {
   CameraPreviewNew$1(CameraPreviewNew paramCameraPreviewNew, String paramString, int paramInt, Context paramContext) {}
@@ -16,9 +15,9 @@ public class CameraPreviewNew$1
   {
     Object localObject = this.jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_Int == 2002) {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131698784);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131699097);
     }
-    localObject = bhdj.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131693764), new aloc(this));
+    localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131693935), new CameraPreviewNew.1.1(this));
     try
     {
       ((QQCustomDialog)localObject).setCancelable(false);
@@ -34,7 +33,7 @@ public class CameraPreviewNew$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1
  * JD-Core Version:    0.7.0.1
  */

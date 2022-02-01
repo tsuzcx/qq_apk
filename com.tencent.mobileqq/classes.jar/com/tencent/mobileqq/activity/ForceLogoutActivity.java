@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import adxz;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ForceLogoutActivity
@@ -28,23 +27,23 @@ public class ForceLogoutActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559212);
+    super.setContentView(2131559246);
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("msg");
     if ((paramBundle != null) && (paramBundle.length() > 0)) {
-      ((TextView)findViewById(2131379715)).setText(paramBundle);
+      ((TextView)findViewById(2131380141)).setText(paramBundle);
     }
     if ((str != null) && (str.length() > 0)) {
-      ((TextView)findViewById(2131379716)).setText(str);
+      ((TextView)findViewById(2131380142)).setText(str);
     }
-    ((Button)findViewById(2131363793)).setOnClickListener(new adxz(this));
+    ((Button)findViewById(2131363892)).setOnClickListener(new ForceLogoutActivity.1(this));
     return true;
   }
   
   public boolean onBackEvent()
   {
     finish();
-    startActivity(new Intent(this, LoginActivity.class).addFlags(67108864));
+    RouteUtils.a(this, new Intent().addFlags(67108864), "/base/login");
     return true;
   }
   
@@ -57,7 +56,7 @@ public class ForceLogoutActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForceLogoutActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ public final class faiss_search_result
   static comm_page_info cache_page_info = new comm_page_info();
   static ArrayList<Photo> cache_photolist = new ArrayList();
   public String categoryid = "";
-  public comm_page_info page_info;
-  public ArrayList<Photo> photolist;
+  public comm_page_info page_info = null;
+  public ArrayList<Photo> photolist = null;
   
   static
   {

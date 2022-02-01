@@ -7,15 +7,15 @@ import com.qq.taf.jce.JceStruct;
 public final class cell_refer
   extends JceStruct
 {
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
   public String appid = "";
   public String appname = "";
   public String downloadurl = "";
   public String icon = "";
-  public int icon_height;
-  public int icon_width;
-  public boolean show_link_color;
+  public int icon_height = 0;
+  public int icon_width = 0;
+  public boolean show_link_color = false;
   
   public cell_refer() {}
   

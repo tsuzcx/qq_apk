@@ -2,7 +2,6 @@ package com.tencent.mobileqq.mini.servlet;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.os.Bundle;
-import bhjl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -10,6 +9,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -45,7 +45,7 @@ public class MiniAppSSOCmdObserver
     {
       try
       {
-        localStQWebRsp.mergeFrom(bhjl.b(paramBundle.getWupBuffer()));
+        localStQWebRsp.mergeFrom(WupUtil.b(paramBundle.getWupBuffer()));
         MiniAppSSOCmdHelper.MiniAppCmdCallbackInternal localMiniAppCmdCallbackInternal = (MiniAppSSOCmdHelper.MiniAppCmdCallbackInternal)CALLBACK_MAP.remove(Integer.valueOf((int)localStQWebRsp.Seq.get()));
         if (localMiniAppCmdCallbackInternal != null)
         {

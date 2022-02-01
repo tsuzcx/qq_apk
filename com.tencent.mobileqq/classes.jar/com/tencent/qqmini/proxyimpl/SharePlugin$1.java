@@ -1,21 +1,20 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.text.TextUtils;
-import bkqy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.HashMap;
 
-public final class SharePlugin$1
+final class SharePlugin$1
   implements Runnable
 {
-  public SharePlugin$1(int paramInt) {}
+  SharePlugin$1(int paramInt) {}
   
   public void run()
   {
     String str = null;
     if ((this.a & 0x20) != 0) {
-      str = (String)bkqy.a().get(Integer.valueOf(32));
+      str = (String)SharePlugin.a().get(Integer.valueOf(32));
     }
     for (;;)
     {
@@ -24,15 +23,15 @@ public final class SharePlugin$1
       }
       return;
       if ((this.a & 0x10) != 0) {
-        str = (String)bkqy.a().get(Integer.valueOf(16));
+        str = (String)SharePlugin.a().get(Integer.valueOf(16));
       } else if ((this.a & 0x8) != 0) {
-        str = (String)bkqy.a().get(Integer.valueOf(8));
+        str = (String)SharePlugin.a().get(Integer.valueOf(8));
       } else if ((this.a & 0x4) != 0) {
-        str = (String)bkqy.a().get(Integer.valueOf(4));
+        str = (String)SharePlugin.a().get(Integer.valueOf(4));
       } else if ((this.a & 0x2) != 0) {
-        str = (String)bkqy.a().get(Integer.valueOf(2));
+        str = (String)SharePlugin.a().get(Integer.valueOf(2));
       } else if ((this.a & 0x1) != 0) {
-        str = (String)bkqy.a().get(Integer.valueOf(1));
+        str = (String)SharePlugin.a().get(Integer.valueOf(1));
       }
     }
   }

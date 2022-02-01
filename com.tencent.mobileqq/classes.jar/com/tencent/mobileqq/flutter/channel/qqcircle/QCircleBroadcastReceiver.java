@@ -15,7 +15,7 @@ public class QCircleBroadcastReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QCircleBroadcastReceiver", 2, "[onReceive]");
+      QLog.d("QCircleBroadcastReceiver", 2, "[onReceive] action=" + paramIntent.getAction());
     }
     paramContext = paramIntent.getStringExtra("uin");
     int i = paramIntent.getIntExtra("followstate", -1);
@@ -32,7 +32,7 @@ public class QCircleBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.qqcircle.QCircleBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

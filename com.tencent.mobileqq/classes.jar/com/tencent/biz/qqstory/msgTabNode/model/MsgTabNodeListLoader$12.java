@@ -1,11 +1,9 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import wmd;
-
-public class MsgTabNodeListLoader$12
+class MsgTabNodeListLoader$12
   implements Runnable
 {
-  public MsgTabNodeListLoader$12(wmd paramwmd, String paramString, long paramLong) {}
+  MsgTabNodeListLoader$12(MsgTabNodeListLoader paramMsgTabNodeListLoader, String paramString, long paramLong) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class MsgTabNodeListLoader$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.12
  * JD-Core Version:    0.7.0.1
  */

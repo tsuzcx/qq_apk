@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/ii_" android:background="@drawable/bg_texture" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <LinearLayout android:orientation="vertical" android:id="@id/f1b" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textColor="@color/skin_gray2" android:id="@id/jjt" android:paddingLeft="@dimen/al3" android:paddingRight="@dimen/al3" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" android:text="@string/wme" android:contentDescription="@string/wme" />
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/n47" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" android:contentDescription="@string/wma" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/wma" />
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/n48" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/wmb" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/wmb" />
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/n49" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/wmc" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/wmc" />
-        <com.tencent.mobileqq.widget.FormMultiLineSwitchItem android:id="@id/n45" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" android:contentDescription="@string/wm3" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchSubText="@string/wm4" formItem:switchText="@string/wm3" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include android:id="@id/n46" layout="@layout/b2a" />
-        </LinearLayout>
-    </LinearLayout>
-</com.tencent.mobileqq.widget.BounceScrollView>
+<FrameLayout android:id="@id/o0q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="bottom" android:background="@drawable/e94" android:layout_width="fill_parent" android:layout_height="290.0dip">
+        <RelativeLayout android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="15.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:id="@id/o47" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/ald" android:gravity="center_vertical" android:id="@id/o4b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/o47" android:layout_alignBottom="@id/o47" android:layout_alignParentRight="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/o45" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="34.0dip">
+                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/o40" android:layout_width="0.0dip" android:layout_height="150.0dip" android:layout_marginRight="15.0dip" android:layout_weight="1.0">
+                    <RelativeLayout android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginBottom="-6.0dip">
+                        <ImageView android:id="@id/o44" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/h10" />
+                        <ImageView android:id="@id/o43" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/h11" />
+                    </RelativeLayout>
+                    <ImageView android:id="@id/o4_" android:layout_width="55.5dip" android:layout_height="20.0dip" android:src="@drawable/h12" android:scaleType="centerInside" android:minHeight="20.0dip" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/o4a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="还不错少投点" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/o3z" android:clipChildren="false" android:layout_width="0.0dip" android:layout_height="150.0dip" android:layout_marginLeft="15.0dip" android:layout_weight="1.0">
+                    <RelativeLayout android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginBottom="-6.0dip">
+                        <ImageView android:id="@id/o42" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/h14" />
+                        <ImageView android:id="@id/o41" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/h15" />
+                    </RelativeLayout>
+                    <ImageView android:id="@id/o48" android:layout_width="55.5dip" android:layout_height="20.0dip" android:src="@drawable/h17" android:scaleType="centerInside" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/o49" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="太棒了多投点" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/o46" android:background="@drawable/dru" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="22.0dip" android:text="投币" android:layout_below="@id/o45" />
+        </RelativeLayout>
+    </FrameLayout>
+</FrameLayout>

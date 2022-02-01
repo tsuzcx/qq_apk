@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.apollo.store;
 
-import anfp;
 import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-public class ApolloVoiceDIYHelper$1
+class ApolloVoiceDIYHelper$1
   implements Runnable
 {
-  public ApolloVoiceDIYHelper$1(anfp paramanfp, ApolloTextureView paramApolloTextureView, double paramDouble) {}
+  ApolloVoiceDIYHelper$1(ApolloVoiceDIYHelper paramApolloVoiceDIYHelper, ApolloTextureView paramApolloTextureView, double paramDouble) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class ApolloVoiceDIYHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper.1
  * JD-Core Version:    0.7.0.1
  */

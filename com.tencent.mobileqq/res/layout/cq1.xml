@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/miq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/mio" android:layout_width="20.0dip" android:layout_height="fill_parent" android:layout_marginRight="4.0dip" android:layout_alignParentRight="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/n4b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_centerVertical="true" />
+    <ImageView android:background="@drawable/dmw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

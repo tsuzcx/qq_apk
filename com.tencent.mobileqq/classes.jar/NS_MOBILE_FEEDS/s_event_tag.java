@@ -13,20 +13,20 @@ public final class s_event_tag
   static s_join_list cache_join_list = new s_join_list();
   public String backgd_picurl = "";
   public String count_desc = "";
-  public Map<String, String> extendInfo;
+  public Map<String, String> extendInfo = null;
   public String id = "";
-  public boolean is_default;
-  public s_join_list join_list;
-  public int pic_height;
+  public boolean is_default = false;
+  public s_join_list join_list = null;
+  public int pic_height = 0;
   public String pic_url = "";
-  public int pic_width;
+  public int pic_width = 0;
   public String show_desc = "";
   public String show_txt = "";
-  public long time;
+  public long time = 0L;
   public String title = "";
-  public long uin;
-  public boolean update_flag;
-  public long view_count;
+  public long uin = 0L;
+  public boolean update_flag = false;
+  public long view_count = 0L;
   
   static
   {

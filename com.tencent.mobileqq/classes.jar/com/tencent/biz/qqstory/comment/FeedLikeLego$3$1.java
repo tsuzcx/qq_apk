@@ -1,8 +1,5 @@
 package com.tencent.biz.qqstory.comment;
 
-import wgs;
-import whe;
-
 class FeedLikeLego$3$1
   implements Runnable
 {
@@ -11,12 +8,12 @@ class FeedLikeLego$3$1
   public void run()
   {
     this.a.this$0.a(this.a.this$0.a);
-    ((wgs)this.a.this$0.a()).d();
+    ((FeedCommentLikeLego)this.a.this$0.a()).d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeLego.3.1
  * JD-Core Version:    0.7.0.1
  */

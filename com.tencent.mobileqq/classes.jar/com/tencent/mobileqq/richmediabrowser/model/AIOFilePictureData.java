@@ -33,6 +33,13 @@ public class AIOFilePictureData
     this.jdField_c_of_type_JavaLangString = "I:N";
     this.jdField_d_of_type_JavaLangString = "I:N";
     this.jdField_e_of_type_JavaLangString = "I:N";
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_h_of_type_Boolean = false;
   }
   
   public int getType()
@@ -98,7 +105,7 @@ public class AIOFilePictureData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData
  * JD-Core Version:    0.7.0.1
  */

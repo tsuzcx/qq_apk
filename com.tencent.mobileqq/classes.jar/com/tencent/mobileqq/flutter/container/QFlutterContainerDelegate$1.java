@@ -1,21 +1,27 @@
 package com.tencent.mobileqq.flutter.container;
 
-import auoa;
-import aupl;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 
-public class QFlutterContainerDelegate$1
-  implements Runnable
+class QFlutterContainerDelegate$1
+  implements FlutterUiDisplayListener
 {
-  public QFlutterContainerDelegate$1(auoa paramauoa, long paramLong) {}
+  QFlutterContainerDelegate$1(QFlutterContainerDelegate paramQFlutterContainerDelegate) {}
   
-  public void run()
+  public void onFlutterUiDisplayed()
   {
-    aupl.a(auoa.a(this.this$0), auoa.b(this.this$0), auoa.a(this.this$0), auoa.b(this.this$0), auoa.c(this.this$0), this.a, auoa.a(this.this$0), auoa.a(this.this$0));
+    QLog.d("QFlutterContainerDelegate", 1, "onFlutterUiDisplayed");
+    QFlutterContainerDelegate.a(this.a);
+  }
+  
+  public void onFlutterUiNoLongerDisplayed()
+  {
+    QLog.d("QFlutterContainerDelegate", 1, "onFlutterUiNoLongerDisplayed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.QFlutterContainerDelegate.1
  * JD-Core Version:    0.7.0.1
  */

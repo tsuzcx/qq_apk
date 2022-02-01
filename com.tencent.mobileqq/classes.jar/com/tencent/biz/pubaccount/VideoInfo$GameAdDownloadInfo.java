@@ -3,20 +3,19 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import omi;
 import org.json.JSONObject;
 
 public class VideoInfo$GameAdDownloadInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameAdDownloadInfo> CREATOR = new omi();
+  public static final Parcelable.Creator<GameAdDownloadInfo> CREATOR = new VideoInfo.GameAdDownloadInfo.1();
   public int a;
   public String a;
   public String b;
   public String c;
   public String d;
   
-  public VideoInfo$GameAdDownloadInfo(Parcel paramParcel)
+  protected VideoInfo$GameAdDownloadInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
@@ -50,7 +49,7 @@ public class VideoInfo$GameAdDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.GameAdDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

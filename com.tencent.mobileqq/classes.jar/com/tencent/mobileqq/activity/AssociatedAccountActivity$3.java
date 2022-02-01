@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qphone.base.util.QLog;
 
 class AssociatedAccountActivity$3
   implements Runnable
@@ -9,14 +9,19 @@ class AssociatedAccountActivity$3
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.springBackOverScrollHeaderView();
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "refreshAllData isFinishing() = " + this.this$0.isFinishing());
     }
+    if (this.this$0.isFinishing()) {
+      return;
+    }
+    this.this$0.a();
+    this.this$0.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.3
  * JD-Core Version:    0.7.0.1
  */

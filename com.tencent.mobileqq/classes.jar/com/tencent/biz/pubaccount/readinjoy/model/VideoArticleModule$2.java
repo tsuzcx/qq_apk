@@ -1,7 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.text.TextUtils;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJAppSetting;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyOidbHelper;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyRequestParams.Request0xbedParams;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyRequestParams.Request0xbedParams.InnerMsg;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -12,22 +15,16 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import pqu;
-import qer;
-import qhj;
-import qif;
-import qxp;
-import qxu;
-import qxv;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.InnerMsg;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.ReqBody;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.ReqChannelPara;
 
-public class VideoArticleModule$2
+class VideoArticleModule$2
   implements Runnable
 {
   public void run()
@@ -56,13 +53,13 @@ public class VideoArticleModule$2
         }
         localReqChannelPara.uint64_begin_collection_id.set(this.a.jdField_c_of_type_Long);
         localReqChannelPara.uint64_end_collection_id.set(this.a.jdField_d_of_type_Long);
-        localObject = DeviceInfoUtil.getIMEI();
+        localObject = DeviceInfoUtil.a();
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           localReqChannelPara.bytes_device_id.set(ByteStringMicro.copyFromUtf8((String)localObject));
         }
         localReqChannelPara.uint32_update_times.set(this.a.jdField_c_of_type_Int);
-        localReqChannelPara.uint32_sim_type.set(bmhv.d());
-        localReqChannelPara.uint32_network_type.set(qer.a());
+        localReqChannelPara.uint32_sim_type.set(ReadInJoyHelper.d());
+        localReqChannelPara.uint32_network_type.set(ArticleInfoModuleUtils.a());
         if (this.a.jdField_a_of_type_ArrayOfByte != null) {
           localReqChannelPara.bytes_business_info.set(ByteStringMicro.copyFrom(this.a.jdField_a_of_type_ArrayOfByte));
         }
@@ -81,15 +78,15 @@ public class VideoArticleModule$2
         {
           localInnerMsg.uint32_jump_src_type.set(this.a.jdField_d_of_type_Int);
           localInnerMsg.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(String.valueOf(localLong)));
-          if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Qxv.c))
+          if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0xbedParams$InnerMsg.c))
           {
-            localInnerMsg.bytes_push_context.set(ByteStringMicro.copyFromUtf8(this.a.jdField_a_of_type_Qxv.c));
+            localInnerMsg.bytes_push_context.set(ByteStringMicro.copyFromUtf8(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0xbedParams$InnerMsg.c));
             if (QLog.isColorLevel()) {
-              QLog.d(qif.jdField_a_of_type_JavaLangString, 2, "add push contenxt:" + this.a.jdField_a_of_type_Qxv.c);
+              QLog.d(VideoArticleModule.jdField_a_of_type_JavaLangString, 2, "add push contenxt:" + this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0xbedParams$InnerMsg.c);
             }
           }
-          localInnerMsg.uint64_algorithm_id.set(this.a.jdField_a_of_type_Qxv.jdField_a_of_type_Long);
-          localInnerMsg.uint32_strategy_id.set(this.a.jdField_a_of_type_Qxv.jdField_a_of_type_Int);
+          localInnerMsg.uint64_algorithm_id.set(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0xbedParams$InnerMsg.jdField_a_of_type_Long);
+          localInnerMsg.uint32_strategy_id.set(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0xbedParams$InnerMsg.jdField_a_of_type_Int);
           ((List)localObject).add(localInnerMsg);
         }
         else
@@ -100,7 +97,7 @@ public class VideoArticleModule$2
       catch (Throwable localThrowable)
       {
         if (QLog.isColorLevel()) {
-          QLog.e(qif.jdField_a_of_type_JavaLangString, 2, "request0xbedSendWeiShiArticleInfoList makeParams:" + pqu.a(localThrowable));
+          QLog.e(VideoArticleModule.jdField_a_of_type_JavaLangString, 2, "request0xbedSendWeiShiArticleInfoList makeParams:" + RIJAppSetting.a(localThrowable));
         }
         return;
       }
@@ -108,12 +105,12 @@ public class VideoArticleModule$2
     localReqChannelPara.rpt_inner_msg_list.set((List)localObject);
     label587:
     localThrowable.reqChannelPara.set(localReqChannelPara);
-    ToServiceMsg localToServiceMsg = qxp.a("OidbSvc.0xbed", 3053, 1, localThrowable.toByteArray());
+    ToServiceMsg localToServiceMsg = ReadInJoyOidbHelper.a("OidbSvc.0xbed", 3053, 1, localThrowable.toByteArray());
     if (localToServiceMsg != null)
     {
       localToServiceMsg.getAttributes().put("channelID", Integer.valueOf(this.a.jdField_a_of_type_Int));
-      localToServiceMsg.getAttributes().put(qhj.d, Long.valueOf(this.a.jdField_a_of_type_Long));
-      localToServiceMsg.getAttributes().put(qhj.e, Long.valueOf(this.a.jdField_b_of_type_Long));
+      localToServiceMsg.getAttributes().put(ReadInJoyEngineModule.d, Long.valueOf(this.a.jdField_a_of_type_Long));
+      localToServiceMsg.getAttributes().put(ReadInJoyEngineModule.e, Long.valueOf(this.a.jdField_b_of_type_Long));
       localToServiceMsg.getAttributes().put("CountOfRequest_0xbed", Integer.valueOf(1));
     }
     this.this$0.a(localToServiceMsg);
@@ -121,7 +118,7 @@ public class VideoArticleModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.VideoArticleModule.2
  * JD-Core Version:    0.7.0.1
  */

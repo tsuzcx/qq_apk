@@ -8,9 +8,9 @@ public final class TVideoHeadInfo
   extends JceStruct
 {
   static byte[] cache_vMsg = (byte[])new byte[1];
-  public int iBasicFlag;
-  public int iNearbyFlag;
-  public byte[] vMsg;
+  public int iBasicFlag = 0;
+  public int iNearbyFlag = 0;
+  public byte[] vMsg = null;
   
   static
   {
@@ -44,7 +44,7 @@ public final class TVideoHeadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.TVideoHeadInfo
  * JD-Core Version:    0.7.0.1
  */

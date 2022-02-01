@@ -1,36 +1,35 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.controller;
 
-import ainb;
-import aine;
-import aing;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.listeners.VoiceTextSttListener;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.model.SttResultBean;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class VoiceTextSttQueryController$2
+class VoiceTextSttQueryController$2
   implements Runnable
 {
-  public VoiceTextSttQueryController$2(ainb paramainb, String paramString) {}
+  VoiceTextSttQueryController$2(VoiceTextSttQueryController paramVoiceTextSttQueryController, String paramString) {}
   
   public void run()
   {
-    List localList = ainb.b(this.this$0);
+    List localList = VoiceTextSttQueryController.b(this.this$0);
     if ((localList == null) || (localList.isEmpty()))
     {
-      if (ainb.a(this.this$0) != null) {
-        ainb.a(this.this$0).c();
+      if (VoiceTextSttQueryController.a(this.this$0) != null) {
+        VoiceTextSttQueryController.a(this.this$0).c();
       }
-      ainb.a(this.this$0).set(true);
+      VoiceTextSttQueryController.a(this.this$0).set(true);
       return;
     }
-    ainb.a(this.this$0).set(localList.size());
-    ainb.a(this.this$0, new aing[localList.size()]);
-    ainb.a(this.this$0, this.a, localList);
+    VoiceTextSttQueryController.a(this.this$0).set(localList.size());
+    VoiceTextSttQueryController.a(this.this$0, new SttResultBean[localList.size()]);
+    VoiceTextSttQueryController.a(this.this$0, this.a, localList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttQueryController.2
  * JD-Core Version:    0.7.0.1
  */

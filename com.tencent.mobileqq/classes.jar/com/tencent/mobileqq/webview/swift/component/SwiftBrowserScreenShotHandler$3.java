@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.os.Handler;
-import bihj;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ScreenShotImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import tkl;
 
-public class SwiftBrowserScreenShotHandler$3
+class SwiftBrowserScreenShotHandler$3
   implements Runnable
 {
-  public SwiftBrowserScreenShotHandler$3(bihj parambihj, int paramInt) {}
+  SwiftBrowserScreenShotHandler$3(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler, int paramInt) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaLangString = tkl.a(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, "ShotCache_");
+    this.this$0.jdField_a_of_type_JavaLangString = ScreenShotImageUtil.a(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, "ShotCache_");
     if (QLog.isDevelopLevel()) {
       QLog.d("SwiftBrowserScreenShotHandler", 2, "onDetectScreenshot->save file time:" + System.currentTimeMillis());
     }
@@ -30,7 +29,7 @@ public class SwiftBrowserScreenShotHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler.3
  * JD-Core Version:    0.7.0.1
  */

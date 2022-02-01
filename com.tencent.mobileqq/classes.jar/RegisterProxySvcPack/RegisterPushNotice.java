@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class RegisterPushNotice
   extends JceStruct
 {
-  public long uEndSeq;
-  public long uFlag;
-  public long uInterval_forbid_pulldown;
-  public long ulTimeOutFlag;
+  public long uEndSeq = 0L;
+  public long uFlag = 0L;
+  public long uInterval_forbid_pulldown = 0L;
+  public long ulTimeOutFlag = 0L;
   
   public RegisterPushNotice() {}
   

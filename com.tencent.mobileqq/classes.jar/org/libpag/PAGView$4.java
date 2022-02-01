@@ -1,6 +1,7 @@
 package org.libpag;
 
 import android.animation.ValueAnimator;
+import android.util.Log;
 
 class PAGView$4
   implements Runnable
@@ -9,12 +10,17 @@ class PAGView$4
   
   public void run()
   {
-    PAGView.access$600(this.this$0).cancel();
+    if (PAGView.access$700(this.this$0))
+    {
+      PAGView.access$300(this.this$0).start();
+      return;
+    }
+    Log.e("PAGView", "AnimatorStartRunnable: PAGView is not attached to window");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     org.libpag.PAGView.4
  * JD-Core Version:    0.7.0.1
  */

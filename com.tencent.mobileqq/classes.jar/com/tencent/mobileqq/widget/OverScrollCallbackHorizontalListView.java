@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import biqj;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
@@ -13,8 +12,8 @@ public class OverScrollCallbackHorizontalListView
   extends HorizontalListView
 {
   private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private biqj jdField_a_of_type_Biqj;
+  private int jdField_a_of_type_Int = 0;
+  private OverScrollCallbackHorizontalListView.Listener jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView$Listener;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
@@ -33,7 +32,7 @@ public class OverScrollCallbackHorizontalListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = AIOUtils.dp2px(50.0F, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.a(50.0F, getResources());
     setOverScrollMode(0);
   }
   
@@ -55,7 +54,7 @@ public class OverScrollCallbackHorizontalListView
     {
       float f2 = this.jdField_a_of_type_Float;
       f3 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.dip2px(getContext(), 5.0F))) {
+      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.a(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
@@ -75,21 +74,21 @@ public class OverScrollCallbackHorizontalListView
     if ((this.jdField_b_of_type_Boolean) && (paramInt3 > this.jdField_a_of_type_Int))
     {
       this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Biqj != null) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Biqj.a(this);
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView$Listener != null) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView$Listener.a(this);
       }
     }
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
   }
   
-  public void setListener(biqj parambiqj)
+  public void setListener(OverScrollCallbackHorizontalListView.Listener paramListener)
   {
-    this.jdField_a_of_type_Biqj = parambiqj;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView$Listener = paramListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OverScrollCallbackHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

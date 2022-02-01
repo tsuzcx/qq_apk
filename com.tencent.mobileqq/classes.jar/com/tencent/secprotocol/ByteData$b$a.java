@@ -1,6 +1,5 @@
 package com.tencent.secprotocol;
 
-import a.a.a.b.b;
 import a.a.a.b.e;
 import com.tencent.secprotocol.utils.IPutListener;
 
@@ -14,13 +13,9 @@ public class ByteData$b$a
     if ((paramInt == 0) && (paramObject != null))
     {
       e locale = this.a;
-      Object localObject = this.b;
-      long l = ((ByteData.b)localObject).b;
-      String str = ((ByteData.b)localObject).a;
-      localObject = ByteData.access$200(((ByteData.b)localObject).c);
-      paramObject = (String)paramObject;
-      locale.a(l, str, (b)localObject, paramObject);
-      ByteData.logCat("poxy_java", "data: " + paramObject);
+      ByteData.b localb = this.b;
+      locale.a(localb.b, localb.a, ByteData.access$300(localb.c), (String)paramObject);
+      ByteData.logCat("poxy_java", "test, data: " + paramObject);
     }
   }
 }

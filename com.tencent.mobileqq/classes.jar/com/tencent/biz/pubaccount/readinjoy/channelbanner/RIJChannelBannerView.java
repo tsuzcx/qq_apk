@@ -14,19 +14,18 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import oyh;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "ptsItemView", "Lcom/tencent/pts/core/itemview/PTSItemView;", "getPtsItemView", "()Lcom/tencent/pts/core/itemview/PTSItemView;", "setPtsItemView", "(Lcom/tencent/pts/core/itemview/PTSItemView;)V", "refresh", "", "ptsComposer", "Lcom/tencent/pts/core/PTSComposer;", "ptsLiteEventListener", "Lcom/tencent/pts/core/lite/IPTSLiteEventListener;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class RIJChannelBannerView
   extends FrameLayout
 {
-  public static final oyh a;
+  public static final RIJChannelBannerView.Companion a;
   @NotNull
   private PTSItemView a;
   
   static
   {
-    jdField_a_of_type_Oyh = new oyh(null);
+    jdField_a_of_type_ComTencentBizPubaccountReadinjoyChannelbannerRIJChannelBannerView$Companion = new RIJChannelBannerView.Companion(null);
   }
   
   public RIJChannelBannerView(@NotNull Context paramContext)
@@ -67,7 +66,7 @@ public final class RIJChannelBannerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.channelbanner.RIJChannelBannerView
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class AlbumThemeSkin
   extends JceStruct
 {
-  public int iColor;
+  public int iColor = 0;
   public int iItemId = -1;
-  public long lTabBarSelectedFontColor;
-  public long lTabBarUnselectedFontColor;
-  public long lTabbarUnderLineColor;
-  public long lVideoButonColor;
-  public long lVideoButtonBgColor;
+  public long lTabBarSelectedFontColor = 0L;
+  public long lTabBarUnselectedFontColor = 0L;
+  public long lTabbarUnderLineColor = 0L;
+  public long lVideoButonColor = 0L;
+  public long lVideoButtonBgColor = 0L;
   public String strPicZipUrl = "";
   
   public AlbumThemeSkin() {}

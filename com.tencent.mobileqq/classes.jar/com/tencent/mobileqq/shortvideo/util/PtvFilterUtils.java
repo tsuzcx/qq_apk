@@ -6,13 +6,13 @@ import android.opengl.GLES30;
 import android.os.Build.VERSION;
 import android.os.HandlerThread;
 import android.os.SystemClock;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
-import ykq;
 
 public class PtvFilterUtils
 {
@@ -24,18 +24,21 @@ public class PtvFilterUtils
   
   static
   {
-    boolean bool = false;
-    if (Build.VERSION.SDK_INT >= 14) {
-      bool = a("android.graphics.SurfaceTexture", "release", new Class[0]);
-    }
-    jdField_a_of_type_Boolean = bool;
-    jdField_a_of_type_ArrayOfInt = new int[2];
-    try
+    if (Build.VERSION.SDK_INT >= 14) {}
+    for (boolean bool = a("android.graphics.SurfaceTexture", "release", new Class[0]);; bool = false)
     {
-      jdField_a_of_type_JavaLangReflectMethod = HandlerThread.class.getDeclaredMethod("quitSafely", new Class[0]);
-      return;
+      jdField_a_of_type_Boolean = bool;
+      b = false;
+      c = false;
+      jdField_a_of_type_ArrayOfInt = new int[2];
+      jdField_a_of_type_JavaLangReflectMethod = null;
+      try
+      {
+        jdField_a_of_type_JavaLangReflectMethod = HandlerThread.class.getDeclaredMethod("quitSafely", new Class[0]);
+        return;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException) {}
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
   }
   
   @TargetApi(18)
@@ -45,7 +48,7 @@ public class PtvFilterUtils
     if (paramInt4 == 3) {
       i = 6407;
     }
-    ykq.a("PtvFilterUtils", "sharedMemoryGLReadPixels %d, width=%d, height=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+    SLog.a("PtvFilterUtils", "sharedMemoryGLReadPixels %d, width=%d, height=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
     if (paramInt1 != 0)
     {
       paramAVIOStruct = new int[1];
@@ -74,10 +77,10 @@ public class PtvFilterUtils
           getGLFrameBufferDataPBO(paramInt2, paramInt3, 4);
           paramInt4 = GLES20.glGetError();
           if (paramInt4 != 0) {
-            ykq.e("PtvFilterUtils", "getGLFrameBufferDataPBO:err=" + Integer.toHexString(paramInt4));
+            SLog.e("PtvFilterUtils", "getGLFrameBufferDataPBO:err=" + Integer.toHexString(paramInt4));
           }
           GLES30.glBindTexture(3553, 0);
-          ykq.a("PtvFilterUtils", "getGLFrameBufferDataPBO request pack pixel to PBO frame=%d, PBO=%d, cost=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt1 % jdField_a_of_type_ArrayOfInt.length), Long.valueOf(SystemClock.elapsedRealtime() - l1));
+          SLog.a("PtvFilterUtils", "getGLFrameBufferDataPBO request pack pixel to PBO frame=%d, PBO=%d, cost=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt1 % jdField_a_of_type_ArrayOfInt.length), Long.valueOf(SystemClock.elapsedRealtime() - l1));
           if (paramInt1 < 1) {
             break label450;
           }
@@ -87,7 +90,7 @@ public class PtvFilterUtils
           ByteBuffer localByteBuffer = (ByteBuffer)GLES30.glMapBufferRange(35051, 0, paramInt2 * paramInt3 * 4, 1);
           paramInt4 = GLES20.glGetError();
           if (paramInt4 != 0) {
-            ykq.e("PtvFilterUtils", "glMapBufferRange:err=" + Integer.toHexString(paramInt4));
+            SLog.e("PtvFilterUtils", "glMapBufferRange:err=" + Integer.toHexString(paramInt4));
           }
           long l2 = SystemClock.elapsedRealtime();
           long l3 = SystemClock.elapsedRealtime();
@@ -96,7 +99,7 @@ public class PtvFilterUtils
           }
           copyMapData(localByteBuffer, paramByteBuffer, paramInt2 * paramInt3 * 4);
           bool = GLES30.glUnmapBuffer(35051);
-          ykq.b("PtvFilterUtils", "getGLFrameBufferDataPBO copyMapData from PBO frame=%d, PBO=%d, result=%s, glMapBufferRange cost=%d, copyMapData cost=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt1 % jdField_a_of_type_ArrayOfInt.length), Boolean.valueOf(bool), Long.valueOf(l2 - l1), Long.valueOf(SystemClock.elapsedRealtime() - l3) });
+          SLog.b("PtvFilterUtils", "getGLFrameBufferDataPBO copyMapData from PBO frame=%d, PBO=%d, result=%s, glMapBufferRange cost=%d, copyMapData cost=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt1 % jdField_a_of_type_ArrayOfInt.length), Boolean.valueOf(bool), Long.valueOf(l2 - l1), Long.valueOf(SystemClock.elapsedRealtime() - l3) });
         }
         for (;;)
         {
@@ -106,7 +109,7 @@ public class PtvFilterUtils
           bool = false;
           break label134;
           label440:
-          ykq.d("PtvFilterUtils", "getGLFrameBufferDataPBO glMapBufferRange failed");
+          SLog.d("PtvFilterUtils", "getGLFrameBufferDataPBO glMapBufferRange failed");
         }
         label450:
         GLES30.glBindBuffer(35051, 0);
@@ -194,7 +197,7 @@ public class PtvFilterUtils
     if (QLog.isColorLevel()) {
       QLog.d("PtvFilterUtils", 2, "configure file content:" + localStringBuilder.toString());
     }
-    FileUtils.writeFile(paramString1, localStringBuilder.toString());
+    FileUtils.a(paramString1, localStringBuilder.toString());
   }
   
   public static void a(boolean paramBoolean)
@@ -271,16 +274,6 @@ public class PtvFilterUtils
   private static native ByteBuffer allocate();
   
   public static native ByteBuffer allocateSharedMem(long paramLong);
-  
-  public static void b(int paramInt)
-  {
-    try
-    {
-      setVideoClipThreadNum(paramInt);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
-  }
   
   public static void b(boolean paramBoolean)
   {

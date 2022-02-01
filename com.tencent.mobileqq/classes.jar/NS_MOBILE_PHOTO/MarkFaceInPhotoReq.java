@@ -10,9 +10,9 @@ public final class MarkFaceInPhotoReq
   static MarkFaceItemFeed cache_feed_face_info = new MarkFaceItemFeed();
   static MarkFaceItemMood cache_mood_face_info = new MarkFaceItemMood();
   static int cache_scene = 0;
-  public MarkFaceItemFeed feed_face_info;
-  public MarkFaceItemMood mood_face_info;
-  public long owner;
+  public MarkFaceItemFeed feed_face_info = null;
+  public MarkFaceItemMood mood_face_info = null;
+  public long owner = 0L;
   public int scene = 0;
   
   public MarkFaceInPhotoReq() {}

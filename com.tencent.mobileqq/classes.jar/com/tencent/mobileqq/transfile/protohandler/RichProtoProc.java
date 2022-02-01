@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.mobileqq.qroute.annotation.ConfigInject;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import java.util.HashMap;
 import java.util.List;
 
 public class RichProtoProc
@@ -25,6 +27,30 @@ public class RichProtoProc
   public static final String SHORT_VIDEO_FW = "short_video_fw";
   public static final String SHORT_VIDEO_UP = "short_video_up";
   public static final String SNAP_PIC_UP = "snap_pic_up";
+  @ConfigInject(configPath="Foundation/Transfile/src/main/resources/Inject_InitProtoHandlerConfig.yml", version=1)
+  public static HashMap<String, Class<? extends RichProtoProc.RichProtoHandler>> handlerMaps = new HashMap();
+  
+  static
+  {
+    handlerMaps.put("share_pic_to_wx", SharePicToWXUpHandler.class);
+    handlerMaps.put("pa_long_message", PALongMessageHandler.class);
+    handlerMaps.put("bdh_common_up", BDHCommonUpHandler.class);
+    handlerMaps.put("short_video_fw", ShortVideoForwardHandler.class);
+    handlerMaps.put("friend_avatar_up", NearbyPeoplePicUpHandler.class);
+    handlerMaps.put("nearby_people_pic_up", NearbyPeoplePicUpHandler.class);
+    handlerMaps.put("multi_msg_up", MultiMsgUpHandler.class);
+    handlerMaps.put("multi_msg_dw", MultiMsgDownHandler.class);
+    handlerMaps.put("short_video_up", ShortVideoUpHandler.class);
+    handlerMaps.put("short_video_dw", ShortVideoDownHandler.class);
+    handlerMaps.put("grp_ptt_dw", GroupPttDownHandler.class);
+    handlerMaps.put("c2c_ptt_dw", C2CPttDownHandler.class);
+    handlerMaps.put("c2c_ptt_up", C2CPttUpHandler.class);
+    handlerMaps.put("grp_pic_dw", GroupPicDownHandler.class);
+    handlerMaps.put("c2c_pic_dw", C2CPicDownHandler.class);
+    handlerMaps.put("grp_ptt_up", GroupPttUpHandler.class);
+    handlerMaps.put("grp_pic_up", GroupPicUpHandler.class);
+    handlerMaps.put("c2c_pic_up", C2CPicUpHandler.class);
+  }
   
   public static void cancelRichProtoReq(RichProto.RichProtoReq paramRichProtoReq)
   {
@@ -41,62 +67,27 @@ public class RichProtoProc
   {
     if ((paramRichProtoReq != null) && (paramRichProtoReq.protoReqMgr != null) && (paramRichProtoReq.callback != null) && (paramRichProtoReq.reqs.size() != 0))
     {
-      if ("c2c_pic_up".equals(paramRichProtoReq.protoKey)) {
-        return new C2CPicUpHandler();
-      }
-      if ("grp_pic_up".equals(paramRichProtoReq.protoKey)) {
-        return new GroupPicUpHandler();
-      }
-      if ("grp_ptt_up".equals(paramRichProtoReq.protoKey)) {
-        return new GroupPttUpHandler();
-      }
-      if ("c2c_pic_dw".equals(paramRichProtoReq.protoKey)) {
-        return new C2CPicDownHandler();
-      }
-      if ("grp_pic_dw".equals(paramRichProtoReq.protoKey)) {
-        return new GroupPicDownHandler();
-      }
-      if ("c2c_ptt_up".equals(paramRichProtoReq.protoKey)) {
-        return new C2CPttUpHandler();
-      }
-      if ("c2c_ptt_dw".equals(paramRichProtoReq.protoKey)) {
-        return new C2CPttDownHandler();
-      }
-      if ("grp_ptt_dw".equals(paramRichProtoReq.protoKey)) {
-        return new GroupPttDownHandler();
-      }
-      if ("short_video_dw".equals(paramRichProtoReq.protoKey)) {
-        return new ShortVideoDownHandler();
-      }
-      if ("short_video_up".equals(paramRichProtoReq.protoKey)) {
-        return new ShortVideoUpHandler();
-      }
-      if ("multi_msg_dw".equals(paramRichProtoReq.protoKey)) {
-        return new MultiMsgDownHandler();
-      }
-      if ("multi_msg_up".equals(paramRichProtoReq.protoKey)) {
-        return new MultiMsgUpHandler();
-      }
-      if (("nearby_people_pic_up".equals(paramRichProtoReq.protoKey)) || ("friend_avatar_up".equals(paramRichProtoReq.protoKey))) {
-        return new NearbyPeoplePicUpHandler();
-      }
-      if ("short_video_fw".equals(paramRichProtoReq.protoKey)) {
-        return new ShortVideoForwardHandler();
-      }
-      if ("bdh_common_up".equals(paramRichProtoReq.protoKey)) {
-        return new BDHCommonUpHandler();
-      }
-      if ("pa_long_message".equals(paramRichProtoReq.protoKey)) {
-        return new PALongMessageHandler();
-      }
-      if ("art_filter_up".equals(paramRichProtoReq.protoKey)) {
-        return new ArtFilterUpHandler();
-      }
-      if ("share_pic_to_wx".equals(paramRichProtoReq.protoKey)) {
-        return new SharePicToWXUpHandler();
+      paramRichProtoReq = paramRichProtoReq.protoKey;
+      paramRichProtoReq = (Class)handlerMaps.get(paramRichProtoReq);
+      if (paramRichProtoReq == null) {}
+    }
+    try
+    {
+      paramRichProtoReq = (RichProtoProc.RichProtoHandler)paramRichProtoReq.newInstance();
+      return paramRichProtoReq;
+    }
+    catch (IllegalAccessException paramRichProtoReq)
+    {
+      paramRichProtoReq.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramRichProtoReq)
+    {
+      for (;;)
+      {
+        paramRichProtoReq.printStackTrace();
       }
     }
-    return null;
   }
   
   public static void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)

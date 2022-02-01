@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.multicard.manager;
 
-import axia;
-
-public class TroopMemberRecommendManager$1
+class TroopMemberRecommendManager$1
   implements Runnable
 {
-  public TroopMemberRecommendManager$1(axia paramaxia) {}
+  TroopMemberRecommendManager$1(TroopMemberRecommendManager paramTroopMemberRecommendManager) {}
   
   public void run()
   {
-    axia.a(this.this$0);
+    TroopMemberRecommendManager.a(this.this$0);
   }
 }
 

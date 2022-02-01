@@ -1,54 +1,31 @@
 package com.tencent.qqmini.miniapp.plugin;
 
+import com.tencent.qqmini.miniapp.util.TextureRender.VideoTextureRenderer;
 import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer;
-import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnInfoListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnVideoSizeChangedListener;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import org.json.JSONObject;
 
 class VideoEmbeddedWidgetClient$4
-  implements IMediaPlayer.OnInfoListener
+  implements IMediaPlayer.OnVideoSizeChangedListener
 {
   VideoEmbeddedWidgetClient$4(VideoEmbeddedWidgetClient paramVideoEmbeddedWidgetClient) {}
   
-  public boolean onInfo(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    QMLog.d("miniapp-embedded", "onInfo what : " + paramInt1 + "; extra : " + paramInt2 + "; isHls : " + VideoEmbeddedWidgetClient.access$1100(this.this$0));
-    switch (paramInt1)
+    QMLog.i("miniapp-embedded", "onVideoSizeChanged : w - " + paramInt1 + "; h - " + paramInt2);
+    VideoEmbeddedWidgetClient.access$202(this.this$0, paramInt1);
+    VideoEmbeddedWidgetClient.access$302(this.this$0, paramInt2);
+    if (VideoEmbeddedWidgetClient.access$400(this.this$0) != null)
     {
+      VideoEmbeddedWidgetClient.access$400(this.this$0).setVideoSize(paramInt1, paramInt2, VideoEmbeddedWidgetClient.access$500(this.this$0));
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if (VideoEmbeddedWidgetClient.access$600(this.this$0) != null)
-      {
-        VideoEmbeddedWidgetClient.access$1200(this.this$0);
-        continue;
-        if (VideoEmbeddedWidgetClient.access$600(this.this$0) != null)
-        {
-          try
-          {
-            paramIMediaPlayer = new JSONObject();
-            paramIMediaPlayer.put("data", VideoEmbeddedWidgetClient.access$700(this.this$0));
-            paramIMediaPlayer.put("videoPlayerId", VideoEmbeddedWidgetClient.access$800(this.this$0));
-            VideoEmbeddedWidgetClient.access$1000(this.this$0, "onXWebVideoWaiting", paramIMediaPlayer.toString(), VideoEmbeddedWidgetClient.access$900(this.this$0));
-            QMLog.d("miniapp-embedded", "evaluateSubcribeJS onXWebVideoWaiting = " + paramIMediaPlayer.toString());
-          }
-          catch (Throwable paramIMediaPlayer)
-          {
-            QMLog.e("miniapp-embedded", "VIDEO_EVENT_WAITING  error.", paramIMediaPlayer);
-          }
-          continue;
-          if (VideoEmbeddedWidgetClient.access$600(this.this$0) != null) {
-            VideoEmbeddedWidgetClient.access$1300(this.this$0, VideoEmbeddedWidgetClient.access$800(this.this$0));
-          }
-        }
-      }
-    }
+    QMLog.e("miniapp-embedded", "setOnVideoSizeChangedListener renderer is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.VideoEmbeddedWidgetClient.4
  * JD-Core Version:    0.7.0.1
  */

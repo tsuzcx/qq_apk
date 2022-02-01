@@ -2,24 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import asco;
-import ascp;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.earlydownload.handler.ViolaBizLibHandler;
+import com.tencent.mobileqq.earlydownload.handler.ViolaLibHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import pvu;
-import pvw;
-import pwa;
 
-public final class ReadInJoyWebRenderEngine$3
+final class ReadInJoyWebRenderEngine$3
   implements Runnable
 {
-  public ReadInJoyWebRenderEngine$3(pvw parampvw, String paramString) {}
+  ReadInJoyWebRenderEngine$3(ReadInJoyWebRenderEngine.LoadLibCallback paramLoadLibCallback, String paramString) {}
   
   public void run()
   {
     int j = 0;
-    if (!pwa.a(this.jdField_a_of_type_Pvw))
+    if (!ReadInjoyWebRenderSoLoader.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback))
     {
       if (QLog.isColorLevel()) {
         QLog.e("viola.ReadInJoyWebRenderEngine", 2, " checkReinstallSoDel is false, return and wait for next load");
@@ -32,12 +29,12 @@ public final class ReadInJoyWebRenderEngine$3
     {
       try
       {
-        if (ascp.i()) {
+        if (ViolaLibHandler.i()) {
           continue;
         }
         localStringBuilder.append("viola jsc lib not exist");
-        if (this.jdField_a_of_type_Pvw != null) {
-          this.jdField_a_of_type_Pvw.onError(pvu.c);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback != null) {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback.onError(ReadInJoyWebRenderEngine.c);
         }
         localSharedPreferences1 = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
         l2 = localSharedPreferences1.getLong("js_lib", 0L);
@@ -46,28 +43,28 @@ public final class ReadInJoyWebRenderEngine$3
         }
         if (System.currentTimeMillis() - l2 > 120000L)
         {
-          ascp.f();
+          ViolaLibHandler.f();
           localSharedPreferences1.edit().putLong("js_lib", System.currentTimeMillis()).commit();
         }
-        pvu.a(1);
+        ReadInJoyWebRenderEngine.a(1);
       }
       catch (Throwable localThrowable)
       {
         SharedPreferences localSharedPreferences1;
-        pvu.a(false);
+        ReadInJoyWebRenderEngine.a(false);
         localStringBuilder.append(localThrowable.getMessage());
-        if (this.jdField_a_of_type_Pvw == null) {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback == null) {
           continue;
         }
-        this.jdField_a_of_type_Pvw.onError(pvu.b);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback.onError(ReadInJoyWebRenderEngine.b);
         return;
-        if (asco.i()) {
+        if (ViolaBizLibHandler.i()) {
           break label470;
         }
-        if (this.jdField_a_of_type_Pvw == null) {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback == null) {
           continue;
         }
-        this.jdField_a_of_type_Pvw.onError(pvu.d);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback.onError(ReadInJoyWebRenderEngine.d);
         SharedPreferences localSharedPreferences2 = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
         long l2 = localSharedPreferences2.getLong("js_lib_biz", 0L);
         if (l2 <= 0L) {
@@ -76,17 +73,17 @@ public final class ReadInJoyWebRenderEngine$3
         if (System.currentTimeMillis() - l2 <= 120000L) {
           continue;
         }
-        asco.f();
+        ViolaBizLibHandler.f();
         localSharedPreferences2.edit().putLong("js_lib_biz", System.currentTimeMillis()).commit();
-        pvu.a(2);
+        ReadInJoyWebRenderEngine.a(2);
         continue;
       }
       finally
       {
-        localStringBuilder.append(", isLoaded: ").append(pvu.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
+        localStringBuilder.append(", isLoaded: ").append(ReadInJoyWebRenderEngine.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
         QLog.i("viola.ReadInJoyWebRenderEngine", 1, localStringBuilder.toString());
       }
-      localStringBuilder.append(", isLoaded: ").append(pvu.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
+      localStringBuilder.append(", isLoaded: ").append(ReadInJoyWebRenderEngine.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
       QLog.i("viola.ReadInJoyWebRenderEngine", 1, localStringBuilder.toString());
       return;
       localSharedPreferences1.edit().putLong("js_lib", System.currentTimeMillis()).commit();
@@ -95,8 +92,8 @@ public final class ReadInJoyWebRenderEngine$3
       localObject.edit().putLong("js_lib_biz", System.currentTimeMillis()).commit();
       continue;
       label470:
-      String str1 = pwa.a();
-      String[] arrayOfString = ascp.a;
+      String str1 = ReadInjoyWebRenderSoLoader.a();
+      String[] arrayOfString = ViolaLibHandler.a;
       int k = arrayOfString.length;
       int i = 0;
       String str2;
@@ -112,14 +109,14 @@ public final class ReadInJoyWebRenderEngine$3
         }
         else
         {
-          if (this.jdField_a_of_type_Pvw != null) {
-            this.jdField_a_of_type_Pvw.onError(pvu.c);
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback != null) {
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback.onError(ReadInJoyWebRenderEngine.c);
           }
           localStringBuilder.append(str2).append(" not exist");
-          pvu.a(1);
+          ReadInJoyWebRenderEngine.a(1);
         }
       }
-      arrayOfString = asco.a;
+      arrayOfString = ViolaBizLibHandler.a;
       k = arrayOfString.length;
       i = j;
       while (i < k)
@@ -133,23 +130,23 @@ public final class ReadInJoyWebRenderEngine$3
         }
         else
         {
-          if (this.jdField_a_of_type_Pvw != null) {
-            this.jdField_a_of_type_Pvw.onError(pvu.d);
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback != null) {
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback.onError(ReadInJoyWebRenderEngine.d);
           }
           localStringBuilder.append(str2).append(" not exist");
-          pvu.a(2);
+          ReadInJoyWebRenderEngine.a(2);
         }
       }
-      pvu.a(true);
-      if (this.jdField_a_of_type_Pvw != null) {
-        this.jdField_a_of_type_Pvw.onFinish(pvu.f);
+      ReadInJoyWebRenderEngine.a(true);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderEngine$LoadLibCallback.onFinish(ReadInJoyWebRenderEngine.f);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderEngine.3
  * JD-Core Version:    0.7.0.1
  */

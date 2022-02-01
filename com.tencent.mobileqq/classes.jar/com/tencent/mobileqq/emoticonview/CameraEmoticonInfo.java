@@ -1,47 +1,58 @@
 package com.tencent.mobileqq.emoticonview;
 
-import admh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.widget.EditText;
-import anvx;
-import axnp;
-import bdla;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.core.SystemEmotionPanelManager;
+import com.tencent.mobileqq.emoticonview.api.IEmoticonInfoService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
+import mqq.app.AppRuntime;
 
 public class CameraEmoticonInfo
   extends CustomEmoticonInfoBase
-  implements ICustomEmotionInfo
+  implements Parcelable, ICustomEmotionInfo
 {
-  static final long ONE_SEC = 1000L;
+  public static final Parcelable.Creator<CameraEmoticonInfo> CREATOR = new CameraEmoticonInfo.1();
   public static final String TAG = "CameraEmoticonInfo";
-  static long lastTime;
   public String contextKey;
   private ColorDrawable mEmptyDrawable = new ColorDrawable();
   public String templateId;
   public String thumbPath;
   
+  public CameraEmoticonInfo() {}
+  
+  protected CameraEmoticonInfo(Parcel paramParcel)
+  {
+    super(paramParcel);
+    this.contextKey = paramParcel.readString();
+    this.thumbPath = paramParcel.readString();
+    this.templateId = paramParcel.readString();
+  }
+  
+  public int describeContents()
+  {
+    return 0;
+  }
+  
   public Drawable getBigDrawable(Context paramContext, float paramFloat)
   {
     try
     {
-      URL localURL = new URL("protocol_vas_extension_image", "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.path);
+      URL localURL = new URL(((IEmoticonInfoService)QRoute.api(IEmoticonInfoService.class)).getVasExtensionDownloaderProtocol(), "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.path);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = ((int)(100.0F * paramFloat));
       localURLDrawableOptions.mRequestWidth = ((int)(100.0F * paramFloat));
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843819);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130846574);
       localURLDrawableOptions.mLoadingDrawable = this.mEmptyDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
@@ -61,11 +72,11 @@ public class CameraEmoticonInfo
   {
     try
     {
-      URL localURL = new URL("protocol_vas_extension_image", "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.path);
+      URL localURL = new URL(((IEmoticonInfoService)QRoute.api(IEmoticonInfoService.class)).getVasExtensionDownloaderProtocol(), "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.path);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = paramInt1;
       localURLDrawableOptions.mRequestWidth = paramInt2;
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843819);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130846574);
       localURLDrawableOptions.mLoadingDrawable = this.mEmptyDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
@@ -86,171 +97,173 @@ public class CameraEmoticonInfo
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 43	com/tencent/mobileqq/emoticonview/CameraEmoticonInfo:path	Ljava/lang/String;
-    //   4: astore_1
-    //   5: aload_0
-    //   6: getfield 139	com/tencent/mobileqq/emoticonview/CameraEmoticonInfo:roamingType	Ljava/lang/String;
-    //   9: ldc 141
-    //   11: invokevirtual 147	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   14: ifne +18 -> 32
-    //   17: aload_1
-    //   18: astore 4
-    //   20: aload_0
-    //   21: getfield 139	com/tencent/mobileqq/emoticonview/CameraEmoticonInfo:roamingType	Ljava/lang/String;
-    //   24: ldc 149
-    //   26: invokevirtual 147	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   29: ifeq +33 -> 62
-    //   32: aload_1
-    //   33: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   36: ifne +20 -> 56
-    //   39: aload_1
-    //   40: astore 4
-    //   42: new 157	java/io/File
-    //   45: dup
-    //   46: aload_1
-    //   47: invokespecial 160	java/io/File:<init>	(Ljava/lang/String;)V
-    //   50: invokevirtual 163	java/io/File:exists	()Z
-    //   53: ifne +9 -> 62
-    //   56: aload_0
-    //   57: getfield 165	com/tencent/mobileqq/emoticonview/CameraEmoticonInfo:thumbPath	Ljava/lang/String;
-    //   60: astore 4
-    //   62: invokestatic 171	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   65: invokevirtual 172	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   68: astore_3
-    //   69: aload_3
-    //   70: ldc 173
-    //   72: invokevirtual 73	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   75: astore_1
-    //   76: aload_3
-    //   77: ldc 67
-    //   79: invokevirtual 73	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   82: astore 5
-    //   84: aload_1
-    //   85: astore_3
-    //   86: aload 5
-    //   88: astore_1
-    //   89: new 36	java/net/URL
-    //   92: dup
-    //   93: ldc 38
-    //   95: ldc 175
-    //   97: aload 4
-    //   99: invokespecial 46	java/net/URL:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   102: astore 6
-    //   104: new 177	com/tencent/mobileqq/activity/photo/LocalMediaInfo
-    //   107: dup
-    //   108: invokespecial 178	com/tencent/mobileqq/activity/photo/LocalMediaInfo:<init>	()V
-    //   111: astore 5
-    //   113: aload 5
-    //   115: aload 4
-    //   117: putfield 179	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   120: aload 5
-    //   122: bipush 100
-    //   124: putfield 182	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
-    //   127: aload 5
-    //   129: bipush 100
-    //   131: putfield 185	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbHeight	I
-    //   134: invokestatic 52	com/tencent/image/URLDrawable$URLDrawableOptions:obtain	()Lcom/tencent/image/URLDrawable$URLDrawableOptions;
-    //   137: astore 7
-    //   139: aload 7
-    //   141: aload_3
-    //   142: putfield 80	com/tencent/image/URLDrawable$URLDrawableOptions:mLoadingDrawable	Landroid/graphics/drawable/Drawable;
+    //   1: getfield 75	com/tencent/mobileqq/emoticonview/CameraEmoticonInfo:path	Ljava/lang/String;
+    //   4: astore 4
+    //   6: aload_0
+    //   7: getfield 169	com/tencent/mobileqq/emoticonview/CameraEmoticonInfo:roamingType	Ljava/lang/String;
+    //   10: ldc 171
+    //   12: invokevirtual 177	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   15: ifne +15 -> 30
+    //   18: aload_0
+    //   19: getfield 169	com/tencent/mobileqq/emoticonview/CameraEmoticonInfo:roamingType	Ljava/lang/String;
+    //   22: ldc 179
+    //   24: invokevirtual 177	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   27: ifeq +267 -> 294
+    //   30: aload 4
+    //   32: invokestatic 185	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   35: ifne +18 -> 53
+    //   38: new 187	java/io/File
+    //   41: dup
+    //   42: aload 4
+    //   44: invokespecial 190	java/io/File:<init>	(Ljava/lang/String;)V
+    //   47: invokevirtual 193	java/io/File:exists	()Z
+    //   50: ifne +244 -> 294
+    //   53: aload_0
+    //   54: getfield 49	com/tencent/mobileqq/emoticonview/CameraEmoticonInfo:thumbPath	Ljava/lang/String;
+    //   57: astore 4
+    //   59: aload_1
+    //   60: invokevirtual 98	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   63: astore_3
+    //   64: aload_3
+    //   65: ldc 194
+    //   67: invokevirtual 105	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   70: astore_1
+    //   71: aload_3
+    //   72: ldc 99
+    //   74: invokevirtual 105	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   77: astore 5
+    //   79: aload_1
+    //   80: astore_3
+    //   81: aload 5
+    //   83: astore_1
+    //   84: new 59	java/net/URL
+    //   87: dup
+    //   88: ldc 61
+    //   90: invokestatic 67	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   93: checkcast 61	com/tencent/mobileqq/emoticonview/api/IEmoticonInfoService
+    //   96: invokeinterface 70 1 0
+    //   101: ldc 196
+    //   103: aload 4
+    //   105: invokespecial 78	java/net/URL:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   108: astore 6
+    //   110: new 198	com/tencent/mobileqq/activity/photo/LocalMediaInfo
+    //   113: dup
+    //   114: invokespecial 199	com/tencent/mobileqq/activity/photo/LocalMediaInfo:<init>	()V
+    //   117: astore 5
+    //   119: aload 5
+    //   121: aload 4
+    //   123: putfield 200	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   126: aload 5
+    //   128: bipush 100
+    //   130: putfield 203	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   133: aload 5
+    //   135: bipush 100
+    //   137: putfield 206	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbHeight	I
+    //   140: invokestatic 84	com/tencent/image/URLDrawable$URLDrawableOptions:obtain	()Lcom/tencent/image/URLDrawable$URLDrawableOptions;
+    //   143: astore 7
     //   145: aload 7
-    //   147: aload_1
-    //   148: putfield 77	com/tencent/image/URLDrawable$URLDrawableOptions:mFailedDrawable	Landroid/graphics/drawable/Drawable;
+    //   147: aload_3
+    //   148: putfield 112	com/tencent/image/URLDrawable$URLDrawableOptions:mLoadingDrawable	Landroid/graphics/drawable/Drawable;
     //   151: aload 7
-    //   153: aload_0
-    //   154: putfield 189	com/tencent/image/URLDrawable$URLDrawableOptions:mExtraInfo	Ljava/lang/Object;
-    //   157: aload 4
-    //   159: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   162: ifne +71 -> 233
-    //   165: aload 6
-    //   167: aload 7
-    //   169: invokestatic 89	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
-    //   172: astore_1
-    //   173: aload_1
-    //   174: aload 5
-    //   176: invokevirtual 193	com/tencent/image/URLDrawable:setTag	(Ljava/lang/Object;)V
+    //   153: aload_1
+    //   154: putfield 109	com/tencent/image/URLDrawable$URLDrawableOptions:mFailedDrawable	Landroid/graphics/drawable/Drawable;
+    //   157: aload 7
+    //   159: aload_0
+    //   160: putfield 210	com/tencent/image/URLDrawable$URLDrawableOptions:mExtraInfo	Ljava/lang/Object;
+    //   163: aload 4
+    //   165: invokestatic 185	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   168: ifne +71 -> 239
+    //   171: aload 6
+    //   173: aload 7
+    //   175: invokestatic 121	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   178: astore_1
     //   179: aload_1
-    //   180: areturn
-    //   181: astore 5
-    //   183: aconst_null
-    //   184: astore_3
-    //   185: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   188: ifeq +14 -> 202
-    //   191: ldc 14
-    //   193: iconst_2
-    //   194: aload 5
-    //   196: invokevirtual 196	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   199: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   202: aconst_null
-    //   203: astore_1
-    //   204: goto -115 -> 89
-    //   207: astore 5
-    //   209: aconst_null
-    //   210: astore_3
-    //   211: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   214: ifeq +14 -> 228
-    //   217: ldc 14
-    //   219: iconst_2
-    //   220: aload 5
-    //   222: invokevirtual 200	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   225: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   228: aconst_null
-    //   229: astore_1
-    //   230: goto -141 -> 89
-    //   233: ldc 14
-    //   235: iconst_1
-    //   236: new 97	java/lang/StringBuilder
-    //   239: dup
-    //   240: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   243: ldc 202
-    //   245: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   248: aload_0
-    //   249: invokevirtual 203	com/tencent/mobileqq/emoticonview/CameraEmoticonInfo:toString	()Ljava/lang/String;
-    //   252: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   255: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   258: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   261: aconst_null
-    //   262: areturn
-    //   263: astore_1
-    //   264: aload_1
-    //   265: invokevirtual 131	java/net/MalformedURLException:printStackTrace	()V
-    //   268: ldc 14
-    //   270: iconst_1
-    //   271: ldc 205
-    //   273: aload_1
-    //   274: invokestatic 208	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   277: goto -16 -> 261
-    //   280: astore 5
-    //   282: aload_1
-    //   283: astore_3
-    //   284: goto -73 -> 211
-    //   287: astore 5
-    //   289: aload_1
+    //   180: aload 5
+    //   182: invokevirtual 214	com/tencent/image/URLDrawable:setTag	(Ljava/lang/Object;)V
+    //   185: aload_1
+    //   186: areturn
+    //   187: astore_3
+    //   188: aconst_null
+    //   189: astore_1
+    //   190: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   193: ifeq +13 -> 206
+    //   196: ldc 15
+    //   198: iconst_2
+    //   199: aload_3
+    //   200: invokevirtual 217	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   203: invokestatic 220	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   206: aload_1
+    //   207: astore_3
+    //   208: aconst_null
+    //   209: astore_1
+    //   210: goto -126 -> 84
+    //   213: astore_3
+    //   214: aconst_null
+    //   215: astore_1
+    //   216: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   219: ifeq +13 -> 232
+    //   222: ldc 15
+    //   224: iconst_2
+    //   225: aload_3
+    //   226: invokevirtual 221	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   229: invokestatic 220	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   232: aload_1
+    //   233: astore_3
+    //   234: aconst_null
+    //   235: astore_1
+    //   236: goto -152 -> 84
+    //   239: ldc 15
+    //   241: iconst_1
+    //   242: new 129	java/lang/StringBuilder
+    //   245: dup
+    //   246: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   249: ldc 223
+    //   251: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: aload_0
+    //   255: invokevirtual 224	com/tencent/mobileqq/emoticonview/CameraEmoticonInfo:toString	()Ljava/lang/String;
+    //   258: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   264: invokestatic 220	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   267: aconst_null
+    //   268: areturn
+    //   269: astore_1
+    //   270: aload_1
+    //   271: invokevirtual 161	java/net/MalformedURLException:printStackTrace	()V
+    //   274: ldc 15
+    //   276: iconst_1
+    //   277: ldc 226
+    //   279: aload_1
+    //   280: invokestatic 229	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   283: goto -16 -> 267
+    //   286: astore_3
+    //   287: goto -71 -> 216
     //   290: astore_3
-    //   291: goto -106 -> 185
+    //   291: goto -101 -> 190
+    //   294: goto -235 -> 59
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	294	0	this	CameraEmoticonInfo
-    //   0	294	1	paramContext	Context
-    //   0	294	2	paramFloat	float
-    //   68	223	3	localObject1	Object
-    //   18	140	4	localObject2	Object
-    //   82	93	5	localObject3	Object
-    //   181	14	5	localException1	java.lang.Exception
-    //   207	14	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   280	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   287	1	5	localException2	java.lang.Exception
-    //   102	64	6	localURL	URL
-    //   137	31	7	localURLDrawableOptions	URLDrawable.URLDrawableOptions
+    //   0	297	0	this	CameraEmoticonInfo
+    //   0	297	1	paramContext	Context
+    //   0	297	2	paramFloat	float
+    //   63	85	3	localObject1	Object
+    //   187	13	3	localException1	java.lang.Exception
+    //   207	1	3	localContext1	Context
+    //   213	13	3	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   233	1	3	localContext2	Context
+    //   286	1	3	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   290	1	3	localException2	java.lang.Exception
+    //   4	160	4	str	String
+    //   77	104	5	localObject2	Object
+    //   108	64	6	localURL	URL
+    //   143	31	7	localURLDrawableOptions	URLDrawable.URLDrawableOptions
     // Exception table:
     //   from	to	target	type
-    //   62	76	181	java/lang/Exception
-    //   62	76	207	java/lang/OutOfMemoryError
-    //   89	179	263	java/net/MalformedURLException
-    //   233	261	263	java/net/MalformedURLException
-    //   76	84	280	java/lang/OutOfMemoryError
-    //   76	84	287	java/lang/Exception
+    //   59	71	187	java/lang/Exception
+    //   59	71	213	java/lang/OutOfMemoryError
+    //   84	185	269	java/net/MalformedURLException
+    //   239	267	269	java/net/MalformedURLException
+    //   71	79	286	java/lang/OutOfMemoryError
+    //   71	79	290	java/lang/Exception
   }
   
   public int getEmoId()
@@ -283,36 +296,15 @@ public class CameraEmoticonInfo
     return this.isChecked;
   }
   
-  public void send(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  public void send(AppRuntime paramAppRuntime, Context paramContext, EditText paramEditText, Parcelable paramParcelable)
   {
-    long l = System.currentTimeMillis();
-    if (l - lastTime < 1000L) {
-      if (QLog.isColorLevel()) {
-        QLog.e("CameraEmoticonInfo", 2, "send to offen,please try it later");
-      }
-    }
-    do
+    IEmoticonInfoSender localIEmoticonInfoSender = SystemEmotionPanelManager.a().a(11);
+    if (localIEmoticonInfoSender == null)
     {
-      do
-      {
-        return;
-      } while ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null));
-      lastTime = l;
-      if (((paramContext instanceof BaseActivity)) && (axnp.a(paramSessionInfo.curType, paramSessionInfo.curFriendUin)))
-      {
-        paramContext = (BaseActivity)paramContext;
-        QQToast.a(paramQQAppInterface.getApp(), anvx.a(2131700806), 0).b(paramContext.getTitleBarHeight());
-        return;
-      }
-      paramEditText = null;
-      if (!TextUtils.isEmpty(this.templateId))
-      {
-        paramEditText = new Bundle();
-        paramEditText.putString("widgetinfo", this.templateId);
-      }
-      admh.a(paramQQAppInterface, paramContext, paramSessionInfo, this.path, true, this.contextKey, paramEditText);
-    } while (TextUtils.isEmpty(this.eId));
-    bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800A371", "0X800A371", 0, 0, "", "", this.eId, "");
+      QLog.e("CameraEmoticonInfo", 1, "emotionInfoSender is null.");
+      return;
+    }
+    localIEmoticonInfoSender.send(this, paramAppRuntime, paramContext, paramEditText, paramParcelable);
   }
   
   public void setIsChecked(boolean paramBoolean)
@@ -324,10 +316,18 @@ public class CameraEmoticonInfo
   {
     return String.format("CameraEmoticonInfo, path %s, url %s, contextKey %s", new Object[] { this.path, this.url, this.contextKey });
   }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    super.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeString(this.contextKey);
+    paramParcel.writeString(this.thumbPath);
+    paramParcel.writeString(this.templateId);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CameraEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

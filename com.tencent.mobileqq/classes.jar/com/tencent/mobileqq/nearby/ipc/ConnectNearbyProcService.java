@@ -4,36 +4,33 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.RemoteException;
-import axpp;
-import axup;
-import axuq;
-import axuy;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyProxy;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppService;
 
 public class ConnectNearbyProcService
   extends AppService
 {
-  private static axuy jdField_a_of_type_Axuy;
+  private static NearbyProcessInterface jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface;
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private axpp jdField_a_of_type_Axpp;
-  private axuq jdField_a_of_type_Axuq = new axup(this);
+  private NearbyProxy jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy;
+  private MainProcessInterface jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface = new ConnectNearbyProcService.1(this);
   
   public static Message a(Message paramMessage)
   {
-    if ((jdField_a_of_type_Axuy == null) || (paramMessage == null)) {
+    if ((jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface == null) || (paramMessage == null)) {
       return null;
     }
     try
     {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_Axuy == null) {
+        if (jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface == null) {
           return null;
         }
       }
-      paramMessage = jdField_a_of_type_Axuy.a(paramMessage);
+      paramMessage = jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface.a(paramMessage);
     }
     catch (RemoteException paramMessage)
     {
@@ -48,7 +45,7 @@ public class ConnectNearbyProcService
     if ((this.app == null) || (!(this.app instanceof QQAppInterface))) {
       throw new IllegalArgumentException("not QQAppInterface. wrong.");
     }
-    this.jdField_a_of_type_Axpp = ((QQAppInterface)this.app).getNearbyProxy();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy = ((QQAppInterface)this.app).getNearbyProxy();
   }
   
   public static boolean a()
@@ -57,7 +54,7 @@ public class ConnectNearbyProcService
     {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_Axuy != null)
+        if (jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface != null)
         {
           bool = true;
           return bool;
@@ -74,18 +71,18 @@ public class ConnectNearbyProcService
   
   public static Object[] a(int paramInt, Object... paramVarArgs)
   {
-    if (jdField_a_of_type_Axuy == null) {
+    if (jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface == null) {
       return null;
     }
     try
     {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_Axuy == null) {
+        if (jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface == null) {
           return null;
         }
       }
-      paramVarArgs = jdField_a_of_type_Axuy.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
+      paramVarArgs = jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
     }
     catch (RemoteException paramVarArgs)
     {
@@ -101,16 +98,16 @@ public class ConnectNearbyProcService
   
   private Message b(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Axpp != null) {
-      return this.jdField_a_of_type_Axpp.a(this, paramMessage);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy.a(this, paramMessage);
     }
     return null;
   }
   
   private Object[] b(int paramInt, Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_Axpp != null) {
-      return this.jdField_a_of_type_Axpp.a(this, paramInt, paramVarArgs);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy.a(this, paramInt, paramVarArgs);
     }
     return null;
   }
@@ -118,7 +115,7 @@ public class ConnectNearbyProcService
   public IBinder onBind(Intent paramIntent)
   {
     a();
-    return this.jdField_a_of_type_Axuq.asBinder();
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface.asBinder();
   }
   
   public void onCreate()
@@ -130,11 +127,11 @@ public class ConnectNearbyProcService
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      jdField_a_of_type_Axuy = null;
+      jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface = null;
       if (QLog.isColorLevel()) {
         QLog.i("nearby_ipc_log_tag", 2, "ConnectNearbyProcService onUnbind.");
       }
-      this.jdField_a_of_type_Axpp = null;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy = null;
       return super.onUnbind(paramIntent);
     }
   }

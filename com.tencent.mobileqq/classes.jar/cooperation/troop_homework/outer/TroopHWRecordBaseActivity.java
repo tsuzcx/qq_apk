@@ -1,6 +1,5 @@
 package cooperation.troop_homework.outer;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -11,7 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import bmjz;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.troop.data.AudioInfo;
@@ -25,18 +23,19 @@ public class TroopHWRecordBaseActivity
   private View.OnClickListener a;
   protected View a;
   protected RelativeLayout a;
-  public CommonRecordSoundPanel a;
-  public AudioInfo a;
-  public boolean a;
+  protected CommonRecordSoundPanel a;
+  protected AudioInfo a;
+  protected boolean a;
   
   public TroopHWRecordBaseActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bmjz(this);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new TroopHWRecordBaseActivity.1(this);
   }
   
   private void a(Resources paramResources, View paramView)
   {
-    paramResources = paramResources.getDrawable(2130850291);
+    paramResources = paramResources.getDrawable(2130850689);
     if ((paramResources instanceof BitmapDrawable)) {
       paramResources = ((BitmapDrawable)paramResources).getBitmap();
     }
@@ -57,10 +56,10 @@ public class TroopHWRecordBaseActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131379325);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379748);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(1291845632);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376386));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376781));
     a(getResources(), this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     a();
   }
@@ -80,7 +79,7 @@ public class TroopHWRecordBaseActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131560698);
+    setContentView(2131560788);
     b();
     return true;
   }
@@ -88,7 +87,7 @@ public class TroopHWRecordBaseActivity
   public void finish()
   {
     super.finish();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130850739);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130851165);
   }
   
   public boolean onBackEvent()
@@ -132,7 +131,7 @@ public class TroopHWRecordBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.troop_homework.outer.TroopHWRecordBaseActivity
  * JD-Core Version:    0.7.0.1
  */

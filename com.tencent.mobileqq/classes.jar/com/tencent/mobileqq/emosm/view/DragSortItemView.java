@@ -23,7 +23,7 @@ public class DragSortItemView
     return this.mGravity;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     View localView = super.getChildAt(0);
     if (localView == null) {
@@ -37,7 +37,7 @@ public class DragSortItemView
     localView.layout(0, super.getMeasuredHeight() - localView.getMeasuredHeight(), super.getMeasuredWidth(), super.getMeasuredHeight());
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getSize(paramInt2);
     int j = View.MeasureSpec.getSize(paramInt1);
@@ -75,7 +75,7 @@ public class DragSortItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortItemView
  * JD-Core Version:    0.7.0.1
  */

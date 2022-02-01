@@ -13,13 +13,13 @@ public final class ClientReq
   static SDKUpgradeReq cache_stSDKUpgradeReq;
   static SDKConfReq cache_stSdkConfReq;
   static ReqUserInfo cache_stUserInfo;
-  public int iCmdType;
-  public ClientUinConfReq stClientUinConfReq;
-  public GetServerListReq stGetServerListReq;
-  public GetResourceReqV2 stResourceReqV2;
-  public SDKUpgradeReq stSDKUpgradeReq;
-  public SDKConfReq stSdkConfReq;
-  public ReqUserInfo stUserInfo;
+  public int iCmdType = 0;
+  public ClientUinConfReq stClientUinConfReq = null;
+  public GetServerListReq stGetServerListReq = null;
+  public GetResourceReqV2 stResourceReqV2 = null;
+  public SDKUpgradeReq stSDKUpgradeReq = null;
+  public SDKConfReq stSdkConfReq = null;
+  public ReqUserInfo stUserInfo = null;
   
   public ClientReq() {}
   
@@ -88,7 +88,7 @@ public final class ClientReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     protocol.KQQConfig.ClientReq
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,11 @@ import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
-import quv;
 
-public class ReadInjoyApngImageView$1
+class ReadInjoyApngImageView$1
   implements Runnable
 {
-  public ReadInjoyApngImageView$1(quv paramquv, String paramString) {}
+  ReadInjoyApngImageView$1(ReadInjoyApngImageView paramReadInjoyApngImageView, String paramString) {}
   
   public void run()
   {
@@ -31,7 +30,7 @@ public class ReadInjoyApngImageView$1
       Bundle localBundle = new Bundle();
       localBundle.putInt("key_loop", 1);
       localBundle.putBoolean("key_once_clear", true);
-      localObject1 = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), (String)localObject1 + (String)localObject2, this.a, quv.a(), new int[] { 31 }, "-kandianopt-", localBundle);
+      localObject1 = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), (String)localObject1 + (String)localObject2, this.a, ReadInjoyApngImageView.a(), new int[] { 31 }, "-kandianopt-", localBundle);
       if (localObject1 != null)
       {
         this.this$0.a.setImageDrawable((Drawable)localObject1);
@@ -44,7 +43,7 @@ public class ReadInjoyApngImageView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInjoyApngImageView.1
  * JD-Core Version:    0.7.0.1
  */

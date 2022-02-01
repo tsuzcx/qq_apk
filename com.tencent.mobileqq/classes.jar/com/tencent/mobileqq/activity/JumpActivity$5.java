@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aoud;
+import com.tencent.mobileqq.app.parser.JumpActivityHelper;
 
 class JumpActivity$5
   implements Runnable
@@ -9,7 +9,7 @@ class JumpActivity$5
   
   public void run()
   {
-    aoud.c(this.this$0);
+    JumpActivityHelper.c(this.this$0);
   }
 }
 

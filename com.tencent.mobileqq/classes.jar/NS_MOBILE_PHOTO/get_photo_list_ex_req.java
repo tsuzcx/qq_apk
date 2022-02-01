@@ -21,7 +21,7 @@ public final class get_photo_list_ex_req
   public long left;
   public String password = "";
   public long right;
-  public long sharer;
+  public long sharer = 0L;
   public int sheight;
   public int sort;
   public int swidth;

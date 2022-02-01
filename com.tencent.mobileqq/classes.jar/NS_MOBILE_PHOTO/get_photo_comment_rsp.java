@@ -19,12 +19,12 @@ public final class get_photo_comment_rsp
   public String albumid = "";
   public String attach_info = "";
   public cell_comment comment;
-  public Map<String, String> extend_info;
+  public Map<String, String> extend_info = null;
   public boolean hasmore = true;
   public cell_like like;
   public String photoid = "";
   public String topicid = "";
-  public long uin;
+  public long uin = 0L;
   public cell_visitor visitor;
   
   static

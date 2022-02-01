@@ -23,7 +23,7 @@ public class ReadInJoyEllipseTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (super.getLineCount() <= 1)
@@ -47,7 +47,7 @@ public class ReadInJoyEllipseTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyEllipseTextView
  * JD-Core Version:    0.7.0.1
  */

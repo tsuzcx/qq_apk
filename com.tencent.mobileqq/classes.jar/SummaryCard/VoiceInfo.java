@@ -9,9 +9,9 @@ public final class VoiceInfo
 {
   static byte[] cache_vVoiceId;
   public byte bRead = 2;
-  public short shDuration;
+  public short shDuration = 0;
   public String strUrl = "";
-  public byte[] vVoiceId;
+  public byte[] vVoiceId = null;
   
   public VoiceInfo() {}
   
@@ -50,7 +50,7 @@ public final class VoiceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.VoiceInfo
  * JD-Core Version:    0.7.0.1
  */

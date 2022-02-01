@@ -2,11 +2,11 @@ package com.tencent.hippy.qq.module.tkd;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhcu;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -84,7 +84,7 @@ public class TKDWupModule$HippyWupCallbackManager
         paramObject = new HippyMap();
         paramObject.pushInt("code", paramInt);
         paramObject.pushString("className", localHippyWupCallbackModule.rspClassName);
-        paramObject.pushString("body", bhcu.encodeToString(paramToServiceMsg, 2));
+        paramObject.pushString("body", Base64Util.encodeToString(paramToServiceMsg, 2));
         localHippyWupCallbackModule.promise.resolve(paramObject);
         return;
       }
@@ -111,7 +111,7 @@ public class TKDWupModule$HippyWupCallbackManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDWupModule.HippyWupCallbackManager
  * JD-Core Version:    0.7.0.1
  */

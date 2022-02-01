@@ -1,38 +1,32 @@
 package com.tencent.gdtad.api.banner;
 
-import acbh;
-import acbi;
-import acbj;
-import acbk;
-import acbl;
-import acbm;
-import acho;
 import android.content.Context;
 import android.view.View;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.log.GdtLog;
 
 public final class GdtBannerAd
   extends com.tencent.gdtad.api.GdtAd
 {
-  private acbk params;
-  private boolean rendered;
+  private GdtBannerParams params;
+  private boolean rendered = false;
   private float touchUpX;
   private float touchUpY;
   
-  public GdtBannerAd(acbk paramacbk)
+  public GdtBannerAd(GdtBannerParams paramGdtBannerParams)
   {
-    super(paramacbk);
-    this.params = paramacbk;
+    super(paramGdtBannerParams);
+    this.params = paramGdtBannerParams;
     init();
   }
   
   private boolean a()
   {
     long l = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.getMinIntervalMillisBetweenExposureAndClick();
-    acho.b("GdtBannerAd", "getView().onClick exp time :" + l);
+    GdtLog.b("GdtBannerAd", "getView().onClick exp time :" + l);
     l = Math.min(Math.max(l, 0L), 1000L);
     if (l > System.currentTimeMillis() - this.params.jdField_a_of_type_Long) {
-      acho.d("GdtBannerAd", "getView().onClick return cause click unless than exp time :" + l);
+      GdtLog.d("GdtBannerAd", "getView().onClick return cause click unless than exp time :" + l);
     }
     int i;
     do
@@ -41,11 +35,11 @@ public final class GdtBannerAd
       {
         return false;
         i = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.getBannerInvalidClickXPercent();
-        acho.b("GdtBannerAd", "getView().onClick exp leftRightPercent :" + i);
+        GdtLog.b("GdtBannerAd", "getView().onClick exp leftRightPercent :" + i);
         i = Math.min(Math.max(i, 0), 100);
       } while ((this.touchUpX < this.params.b * i * 1.0D / 100.0D) || (this.touchUpX > (100 - i) * this.params.b * 1.0D / 100.0D));
       i = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.getBannerInvalidClickYPercent();
-      acho.b("GdtBannerAd", "getView().onClick exp upDownPercent :" + i);
+      GdtLog.b("GdtBannerAd", "getView().onClick exp upDownPercent :" + i);
       i = Math.min(Math.max(i, 0), 100);
     } while ((this.touchUpY < this.params.c * i * 1.0D / 100.0D) || (this.touchUpY > (100 - i) * this.params.c * 1.0D / 100.0D));
     return true;
@@ -59,17 +53,17 @@ public final class GdtBannerAd
     }
     if ((paramGdtAd == null) || (!isValid()) || (getParams().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet == null))
     {
-      acho.d("GdtBannerAd", "getErrorCode error");
+      GdtLog.d("GdtBannerAd", "getErrorCode error");
       return 1;
     }
     paramInt1 = paramGdtAd.getCreativeSize();
-    if ((getParams().jdField_a_of_type_Int == 0) && ((paramInt1 == 65) || (paramInt1 == 184) || (paramInt1 == 194))) {
+    if ((getParams().jdField_a_of_type_Int == 0) && ((paramInt1 == 65) || (paramInt1 == 184) || (paramInt1 == 194) || (paramInt1 == 285))) {
       return 0;
     }
     return 7;
   }
   
-  protected acbk getParams()
+  protected GdtBannerParams getParams()
   {
     return this.params;
   }
@@ -81,25 +75,25 @@ public final class GdtBannerAd
     }
   }
   
-  public acbl render(Context paramContext, int paramInt1, int paramInt2)
+  public GdtBannerView render(Context paramContext, int paramInt1, int paramInt2)
   {
     if ((paramContext == null) || (paramInt1 < 0) || (paramInt2 < 0) || (!isLoaded()) || (this.rendered))
     {
-      acho.d("GdtBannerAd", "render error");
+      GdtLog.d("GdtBannerAd", "render error");
       return null;
     }
     this.params.b = paramInt1;
     this.params.c = paramInt2;
-    paramContext = acbm.a(this.params);
+    paramContext = GdtBannerViewBuilder.a(this.params);
     if ((paramContext == null) || (paramContext.a() == null) || (paramContext.a() == null))
     {
-      acho.d("GdtBannerAd", "render error");
+      GdtLog.d("GdtBannerAd", "render error");
       return null;
     }
-    paramContext.a().setOnTouchListener(new acbh(this, paramContext));
-    paramContext.a().setOnClickListener(new acbi(this, paramContext));
+    paramContext.a().setOnTouchListener(new GdtBannerAd.1(this, paramContext));
+    paramContext.a().setOnClickListener(new GdtBannerAd.2(this, paramContext));
     if (paramContext.b() != null) {
-      paramContext.b().setOnClickListener(new acbj(this, paramContext));
+      paramContext.b().setOnClickListener(new GdtBannerAd.3(this, paramContext));
     }
     this.rendered = true;
     return paramContext;
@@ -107,7 +101,7 @@ public final class GdtBannerAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.GdtBannerAd
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class VoiceMatchStatus
   extends JceStruct
 {
-  public int clientTryTime;
-  public int isCliVoiceSDKReady;
+  public int clientTryTime = 0;
+  public int isCliVoiceSDKReady = 0;
   public String libVersion = "";
-  public int serverTryTime;
+  public int serverTryTime = 0;
   
   public VoiceMatchStatus() {}
   

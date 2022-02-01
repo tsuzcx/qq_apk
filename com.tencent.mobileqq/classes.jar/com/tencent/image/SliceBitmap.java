@@ -5,7 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.IReport;
+import com.tencent.image.api.URLDrawableDepWrap;
 
 public class SliceBitmap
 {
@@ -455,14 +457,11 @@ public class SliceBitmap
     if (gl_max_texture_size == 0)
     {
       gl_max_texture_size = getTextureBitmapMaxSize();
-      if (URLDrawable.sDebugCallback != null)
-      {
-        ReportBean localReportBean = new ReportBean("texture_max_size");
-        localReportBean.size = gl_max_texture_size;
-        URLDrawable.sDebugCallback.onReport(localReportBean);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("URLDrawable_", 2, "init TextureBitmapMaxSize:" + gl_max_texture_size);
+      ReportBean localReportBean = new ReportBean("texture_max_size");
+      localReportBean.size = gl_max_texture_size;
+      URLDrawable.depImp.mReport.report(localReportBean);
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.i("URLDrawable_", 2, "init TextureBitmapMaxSize:" + gl_max_texture_size);
       }
     }
     return (paramBitmap.getWidth() > gl_max_texture_size) || (paramBitmap.getHeight() > gl_max_texture_size);

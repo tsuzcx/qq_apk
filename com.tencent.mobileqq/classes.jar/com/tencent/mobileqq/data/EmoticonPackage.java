@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.data;
 
+import com.tencent.mobileqq.emoticon.IEmoticonPackage;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.defaultzero;
 import com.tencent.mobileqq.persistence.unique;
@@ -7,7 +8,7 @@ import java.io.Serializable;
 
 public class EmoticonPackage
   extends Entity
-  implements Serializable
+  implements IEmoticonPackage, Serializable
 {
   public static final int BUSINESS_GUIDE_FLAG = 4;
   public static final String EMOTION_RSC_TYPE = "rscType";
@@ -42,7 +43,7 @@ public class EmoticonPackage
   public static final int WIFI_AUTODOWNLOAD_CLOSE = -3;
   public static final int WIFI_AUTO_DOWNLOAD_FLAG = 2;
   private static final long serialVersionUID = -3944948432927289738L;
-  public boolean aio;
+  public boolean aio = false;
   public String author;
   public long beginTime;
   public String businessExtra;
@@ -79,7 +80,7 @@ public class EmoticonPackage
   @defaultzero
   public int jsonVersion;
   public String jumpUrl;
-  public boolean kandian;
+  public boolean kandian = false;
   public String kinId;
   public int latestVersion;
   public int localVersion;
@@ -113,7 +114,7 @@ public class EmoticonPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.EmoticonPackage
  * JD-Core Version:    0.7.0.1
  */

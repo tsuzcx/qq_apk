@@ -29,12 +29,12 @@ class AbsListView$3
   
   public boolean reportFullscreenMode(boolean paramBoolean)
   {
-    return AbsListView.access$3400(this.this$0).reportFullscreenMode(paramBoolean);
+    return AbsListView.access$3500(this.this$0).reportFullscreenMode(paramBoolean);
   }
   
   public boolean sendKeyEvent(KeyEvent paramKeyEvent)
   {
-    return AbsListView.access$3400(this.this$0).sendKeyEvent(paramKeyEvent);
+    return AbsListView.access$3500(this.this$0).sendKeyEvent(paramKeyEvent);
   }
 }
 

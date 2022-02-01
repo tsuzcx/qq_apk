@@ -7,20 +7,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.biz.subscribe.account_folder.passive_bubble.PassiveBubbleView;
 import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerView;
+import com.tencent.biz.subscribe.beans.RecommendInfoItem;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.List;
-import zrr;
-import zrs;
-import zse;
 
 public class TopPanelView
   extends RelativeLayout
-  implements zrs
+  implements TopPanelContract.View
 {
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private PassiveBubbleView jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView;
   private RecommendBannerView jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView;
-  private zrr jdField_a_of_type_Zrr;
+  private TopPanelContract.Presenter jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter;
   
   public TopPanelView(Context paramContext)
   {
@@ -42,7 +40,7 @@ public class TopPanelView
   
   public void a()
   {
-    ViewUtils.setViewVisibility(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView, 8);
+    ViewUtils.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView, 8);
   }
   
   public void a(int paramInt)
@@ -50,11 +48,11 @@ public class TopPanelView
     if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView != null)
     {
       this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView.a(paramInt);
-      ViewUtils.setViewVisibility(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView, 0);
+      ViewUtils.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView, 0);
     }
   }
   
-  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<zse> paramList, boolean paramBoolean)
+  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<RecommendInfoItem> paramList, boolean paramBoolean)
   {
     if (((paramList == null) || (paramList.size() == 0)) && (paramStEntry == null)) {
       b();
@@ -65,38 +63,38 @@ public class TopPanelView
       if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView != null) {
         this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView.a(paramStEntry, paramList, paramBoolean);
       }
-      ViewUtils.setViewVisibility(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView, 0);
-      ViewUtils.setViewVisibility(this.jdField_a_of_type_AndroidWidgetTextView, 0);
+      ViewUtils.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView, 0);
+      ViewUtils.a(this.jdField_a_of_type_AndroidWidgetTextView, 0);
     } while (((paramList != null) && (paramList.size() >= 10)) || (!paramBoolean) || (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView == null));
     this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView.a();
   }
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131558804, this);
-    setBackgroundResource(2130839458);
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView = ((RecommendBannerView)findViewById(2131376319));
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView = ((PassiveBubbleView)findViewById(2131372454));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378261));
+    inflate(paramContext, 2131558844, this);
+    setBackgroundResource(2130839537);
+    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView = ((RecommendBannerView)findViewById(2131376714));
+    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView = ((PassiveBubbleView)findViewById(2131372764));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378687));
   }
   
   public void b()
   {
-    ViewUtils.setViewVisibility(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView, 8);
-    ViewUtils.setViewVisibility(this.jdField_a_of_type_AndroidWidgetTextView, 8);
+    ViewUtils.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView, 8);
+    ViewUtils.a(this.jdField_a_of_type_AndroidWidgetTextView, 8);
   }
   
-  public void setPresenter(zrr paramzrr)
+  public void setPresenter(TopPanelContract.Presenter paramPresenter)
   {
-    this.jdField_a_of_type_Zrr = paramzrr;
+    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter = paramPresenter;
     if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView.setPresenter(paramzrr);
+      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView.setPresenter(paramPresenter);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelView
  * JD-Core Version:    0.7.0.1
  */

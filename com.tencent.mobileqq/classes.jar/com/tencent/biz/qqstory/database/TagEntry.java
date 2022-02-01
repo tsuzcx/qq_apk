@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
+import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.mobileqq.persistence.Entity;
-import vzk;
 
 public class TagEntry
   extends Entity
-  implements vzk
+  implements Copyable
 {
   public String desc;
   public String feedId;
@@ -27,7 +27,7 @@ public class TagEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.TagEntry
  * JD-Core Version:    0.7.0.1
  */

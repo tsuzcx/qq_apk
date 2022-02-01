@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.profile;
 
-import Override;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -14,34 +13,26 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
-import anri;
-import anvk;
-import azqz;
-import azri;
-import azrz;
-import azsa;
-import azsb;
-import azsc;
-import azsd;
-import azse;
-import bdla;
-import bhaa;
-import bhdj;
-import bhoy;
-import bhyn;
-import bhyo;
-import bhyq;
-import bisl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasH5PayUtil;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
@@ -53,19 +44,19 @@ public class VipProfileCardBaseActivity
   extends IphoneTitleBarActivity
 {
   protected float a;
-  public int a;
+  protected int a;
   public long a;
-  public Context a;
+  protected Context a;
   public DialogInterface.OnClickListener a;
   @SuppressLint({"HandlerLeak"})
   public Handler a;
-  public anri a;
-  protected bisl a;
+  public CardHandler a;
   protected CardObserver a;
   protected QQCustomDialog a;
+  protected QQProgressDialog a;
   public Runnable a;
   protected String a;
-  protected ArrayList<azri> a;
+  protected ArrayList<ProfileCardTemplate> a;
   protected boolean a;
   protected int b;
   public DialogInterface.OnClickListener b;
@@ -74,8 +65,8 @@ public class VipProfileCardBaseActivity
   protected boolean b;
   protected int c;
   public DialogInterface.OnClickListener c;
-  public int d;
-  public DialogInterface.OnClickListener d = new azse(this);
+  protected int d;
+  public DialogInterface.OnClickListener d;
   protected int e = 1;
   public int f = 2;
   public int g;
@@ -87,59 +78,71 @@ public class VipProfileCardBaseActivity
   
   public VipProfileCardBaseActivity()
   {
+    this.jdField_a_of_type_AndroidContentContext = null;
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppCardHandler = null;
+    this.jdField_a_of_type_Long = 0L;
     this.jdField_g_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new azrz(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new azsa(this);
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.jdField_a_of_type_AndroidOsHandler = new VipProfileCardBaseActivity.1(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new VipProfileCardBaseActivity.2(this);
     this.jdField_a_of_type_JavaLangRunnable = new VipProfileCardBaseActivity.3(this);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new azsb(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new azsc(this);
-    this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new azsd(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new VipProfileCardBaseActivity.4(this);
+    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new VipProfileCardBaseActivity.5(this);
+    this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new VipProfileCardBaseActivity.6(this);
+    this.jdField_d_of_type_AndroidContentDialogInterface$OnClickListener = new VipProfileCardBaseActivity.7(this);
   }
   
-  protected int a(String paramString, bhyn parambhyn)
+  protected int a(String paramString, DownloadListener paramDownloadListener)
   {
-    if (bhaa.a(this.jdField_a_of_type_AndroidContentContext, paramString)) {
+    if (ProfileCardUtil.a(this.jdField_a_of_type_AndroidContentContext, paramString)) {
       return 19;
     }
-    paramString = new bhyo(paramString, new File(bhaa.a(this.jdField_a_of_type_AndroidContentContext, paramString)));
-    if (parambhyn != null) {
-      paramString.a(parambhyn);
+    paramString = new DownloadTask(paramString, new File(ProfileCardUtil.a(this.jdField_a_of_type_AndroidContentContext, paramString)));
+    if (paramDownloadListener != null) {
+      paramString.a(paramDownloadListener);
     }
     paramString.f = "profileCardDownload";
     paramString.e = "VIP_profilecard";
-    return bhyq.a(paramString, this.app);
+    return DownloaderFactory.a(paramString, this.app);
   }
   
-  public ArrayList<azri> a()
+  public ArrayList<ProfileCardTemplate> a()
   {
     int m;
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
     {
-      this.jdField_a_of_type_JavaUtilArrayList = bhaa.a(this.app, false, false);
+      this.jdField_a_of_type_JavaUtilArrayList = ProfileCardUtil.a(this.app, false, false);
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
       {
         m = 0;
         if (m >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
           break label131;
         }
-        localazri = (azri)this.jdField_a_of_type_JavaUtilArrayList.get(m);
-        if ((localazri == null) || (localazri.o != azri.jdField_g_of_type_Long)) {
+        localProfileCardTemplate = (ProfileCardTemplate)this.jdField_a_of_type_JavaUtilArrayList.get(m);
+        if ((localProfileCardTemplate == null) || (localProfileCardTemplate.o != ProfileCardTemplate.jdField_g_of_type_Long)) {
           break label124;
         }
       }
     }
     label131:
-    for (azri localazri = bhaa.a(localazri);; localazri = null)
+    for (ProfileCardTemplate localProfileCardTemplate = ProfileCardUtil.a(localProfileCardTemplate);; localProfileCardTemplate = null)
     {
-      if (localazri != null)
+      if (localProfileCardTemplate != null)
       {
-        localazri.o = azri.n;
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, localazri);
+        localProfileCardTemplate.o = ProfileCardTemplate.n;
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, localProfileCardTemplate);
       }
-      bhaa.a(this.app);
+      ProfileCardUtil.a(this.app);
       return this.jdField_a_of_type_JavaUtilArrayList;
       label124:
       m += 1;
@@ -157,12 +160,12 @@ public class VipProfileCardBaseActivity
   protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     b();
-    this.jdField_a_of_type_Bisl = new bisl(this.jdField_a_of_type_AndroidContentContext, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
-    this.jdField_a_of_type_Bisl.setCancelable(false);
-    this.jdField_a_of_type_Bisl.c(2131694904);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131695142);
     try
     {
-      this.jdField_a_of_type_Bisl.show();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       label53:
       this.app.execute(new VipProfileCardBaseActivity.8(this, paramLong1, paramLong2, paramString, paramInt));
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.i);
@@ -174,34 +177,34 @@ public class VipProfileCardBaseActivity
     }
   }
   
-  public void a(azqz paramazqz)
+  public void a(ProfileCardBackground paramProfileCardBackground)
   {
-    if (paramazqz == null) {}
+    if (paramProfileCardBackground == null) {}
     long l1;
     do
     {
       return;
       l1 = NetConnInfoCenter.getServerTime();
-    } while ((paramazqz.d != 1) || (l1 >= paramazqz.f) || (l1 <= paramazqz.e));
-    paramazqz.jdField_c_of_type_Int = 1;
+    } while ((paramProfileCardBackground.jdField_d_of_type_Int != 1) || (l1 >= paramProfileCardBackground.f) || (l1 <= paramProfileCardBackground.e));
+    paramProfileCardBackground.jdField_c_of_type_Int = 1;
   }
   
-  public void a(azri paramazri)
+  public void a(ProfileCardTemplate paramProfileCardTemplate)
   {
-    if (paramazri == null) {}
+    if (paramProfileCardTemplate == null) {}
     long l1;
     do
     {
       return;
       l1 = NetConnInfoCenter.getServerTime();
-    } while ((paramazri.e != 1) || (l1 >= paramazri.jdField_g_of_type_Int) || (l1 <= paramazri.f));
-    paramazri.c = "1";
+    } while ((paramProfileCardTemplate.e != 1) || (l1 >= paramProfileCardTemplate.jdField_g_of_type_Int) || (l1 <= paramProfileCardTemplate.f));
+    paramProfileCardTemplate.c = "1";
   }
   
   public boolean a(long paramLong, int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    anvk localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Card localCard = localanvk.b(this.app.getCurrentAccountUin());
+    FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Card localCard = localFriendsManager.a(this.app.getCurrentAccountUin());
     if ((localCard != null) && (paramLong >= 0L))
     {
       localCard.lCurrentStyleId = paramLong;
@@ -209,7 +212,7 @@ public class VipProfileCardBaseActivity
       localCard.strCurrentBgUrl = paramString;
       localCard.backgroundColor = paramInt2;
       localCard.templateRet = paramInt3;
-      if (!localanvk.a(localCard))
+      if (!localFriendsManager.a(localCard))
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("ProfileCard.VipProfileCardBaseActivity", 4, "save card in db failed ");
@@ -221,23 +224,23 @@ public class VipProfileCardBaseActivity
     return false;
   }
   
-  public boolean a(Message paramMessage)
+  protected boolean a(Message paramMessage)
   {
     return false;
   }
   
-  protected boolean a(azri paramazri, azqz paramazqz, boolean paramBoolean)
+  protected boolean a(ProfileCardTemplate paramProfileCardTemplate, ProfileCardBackground paramProfileCardBackground, boolean paramBoolean)
   {
-    if ((paramazri != null) && (paramazqz != null))
+    if ((paramProfileCardTemplate != null) && (paramProfileCardBackground != null))
     {
-      if (paramazri.o == 0L) {
+      if (paramProfileCardTemplate.o == 0L) {
         return true;
       }
-      int i1 = Integer.valueOf(paramazri.c).intValue();
-      int m = paramazqz.jdField_c_of_type_Int;
-      boolean bool = bhaa.a(paramazqz);
+      int i1 = Integer.valueOf(paramProfileCardTemplate.c).intValue();
+      int m = paramProfileCardBackground.jdField_c_of_type_Int;
+      boolean bool = ProfileCardUtil.a(paramProfileCardBackground);
       if (bool) {
-        m = paramazri.l;
+        m = paramProfileCardTemplate.l;
       }
       if (i1 >= m)
       {
@@ -273,9 +276,9 @@ public class VipProfileCardBaseActivity
             }
             return false;
             if (this.e == 1) {
-              this.jdField_a_of_type_JavaLangString = bhaa.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, i1, m, this.jdField_a_of_type_Int);
+              this.jdField_a_of_type_JavaLangString = ProfileCardUtil.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, i1, m, this.jdField_a_of_type_Int);
             } else {
-              this.jdField_a_of_type_JavaLangString = bhaa.a(3);
+              this.jdField_a_of_type_JavaLangString = ProfileCardUtil.a(3);
             }
           }
         }
@@ -298,9 +301,9 @@ public class VipProfileCardBaseActivity
             }
             return false;
             if (this.e == 1) {
-              this.jdField_a_of_type_JavaLangString = bhaa.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, i1, m, this.jdField_a_of_type_Int);
+              this.jdField_a_of_type_JavaLangString = ProfileCardUtil.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, i1, m, this.jdField_a_of_type_Int);
             } else {
-              this.jdField_a_of_type_JavaLangString = bhaa.a(6);
+              this.jdField_a_of_type_JavaLangString = ProfileCardUtil.a(6);
             }
           }
         }
@@ -326,7 +329,7 @@ public class VipProfileCardBaseActivity
         int m = 0;
         while (m < localArrayList.size())
         {
-          localObject1[m] = ((azri)localArrayList.get(m)).o;
+          localObject1[m] = ((ProfileCardTemplate)localArrayList.get(m)).o;
           m += 1;
         }
       }
@@ -335,32 +338,32 @@ public class VipProfileCardBaseActivity
   }
   
   /* Error */
-  public void b()
+  protected void b()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bisl	Lbisl;
+    //   1: getfield 215	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog	Lcom/tencent/mobileqq/widget/QQProgressDialog;
     //   4: ifnull +25 -> 29
     //   7: aload_0
-    //   8: getfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bisl	Lbisl;
-    //   11: invokevirtual 356	bisl:isShowing	()Z
+    //   8: getfield 215	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog	Lcom/tencent/mobileqq/widget/QQProgressDialog;
+    //   11: invokevirtual 367	com/tencent/mobileqq/widget/QQProgressDialog:isShowing	()Z
     //   14: ifeq +15 -> 29
     //   17: aload_0
-    //   18: getfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bisl	Lbisl;
-    //   21: invokevirtual 359	bisl:dismiss	()V
+    //   18: getfield 215	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog	Lcom/tencent/mobileqq/widget/QQProgressDialog;
+    //   21: invokevirtual 370	com/tencent/mobileqq/widget/QQProgressDialog:dismiss	()V
     //   24: aload_0
     //   25: aconst_null
-    //   26: putfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bisl	Lbisl;
+    //   26: putfield 215	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog	Lcom/tencent/mobileqq/widget/QQProgressDialog;
     //   29: return
     //   30: astore_1
     //   31: aload_0
     //   32: aconst_null
-    //   33: putfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bisl	Lbisl;
+    //   33: putfield 215	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog	Lcom/tencent/mobileqq/widget/QQProgressDialog;
     //   36: return
     //   37: astore_1
     //   38: aload_0
     //   39: aconst_null
-    //   40: putfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bisl	Lbisl;
+    //   40: putfield 215	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog	Lcom/tencent/mobileqq/widget/QQProgressDialog;
     //   43: aload_1
     //   44: athrow
     // Local variable table:
@@ -380,38 +383,38 @@ public class VipProfileCardBaseActivity
     this.jdField_a_of_type_Boolean = VipUtils.c(this.app);
   }
   
-  public void d()
+  protected void d()
   {
     e();
     String str2;
     String str1;
     if (this.jdField_a_of_type_Int == 2)
     {
-      str2 = getString(2131694842);
+      str2 = getString(2131695080);
       if (this.jdField_c_of_type_Int == 2) {
-        str1 = getString(2131694845);
+        str1 = getString(2131695083);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this.jdField_a_of_type_AndroidContentContext, 0, str2, str1, 2131694840, 2131694841, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 0, str2, str1, 2131695078, 2131695079, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
       if (this.jdField_c_of_type_Int == 1)
       {
-        str1 = getString(2131694847);
+        str1 = getString(2131695085);
       }
       else
       {
-        str1 = getString(2131694843);
+        str1 = getString(2131695081);
         continue;
-        str2 = getString(2131694849);
+        str2 = getString(2131695087);
         if (this.jdField_c_of_type_Int == 2) {
-          str1 = getString(2131694846);
+          str1 = getString(2131695084);
         } else if (this.jdField_c_of_type_Int == 1) {
-          str1 = getString(2131694848);
+          str1 = getString(2131695086);
         } else {
-          str1 = getString(2131694844);
+          str1 = getString(2131695082);
         }
       }
     }
@@ -436,7 +439,7 @@ public class VipProfileCardBaseActivity
     this.l = paramBundle.densityDpi;
     this.jdField_a_of_type_Float = paramBundle.density;
     c();
-    this.jdField_a_of_type_Anri = ((anri)this.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER));
+    this.jdField_a_of_type_ComTencentMobileqqAppCardHandler = ((CardHandler)this.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER));
     return true;
   }
   
@@ -449,7 +452,7 @@ public class VipProfileCardBaseActivity
     this.jdField_a_of_type_JavaUtilArrayList = null;
   }
   
-  public void e()
+  protected void e()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
@@ -458,7 +461,7 @@ public class VipProfileCardBaseActivity
     }
   }
   
-  public void f()
+  protected void f()
   {
     if (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
@@ -486,19 +489,19 @@ public class VipProfileCardBaseActivity
     {
       if (this.jdField_a_of_type_Int == 2)
       {
-        bhoy.a(this.app, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, 3, "1450000516", "CJCLUBT", getString(2131719134), "svip");
-        bdla.b(this.app, "P_CliOper", "Vip_SummaryCard", "", "0X80044E0", "0X80044E0", 0, 0, "", "", "", VipUtils.a(this.app, this.app.getCurrentAccountUin()));
+        VasH5PayUtil.a(this.app, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, 3, "1450000516", "CJCLUBT", getString(2131719674), "svip");
+        ReportController.b(this.app, "P_CliOper", "Vip_SummaryCard", "", "0X80044E0", "0X80044E0", 0, 0, "", "", "", VipUtils.a(this.app, this.app.getCurrentAccountUin()));
         return;
       }
-      bhoy.a(this.app, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, 3, "1450000515", "LTMCLUB", getString(2131694850), "vip");
-      bdla.b(this.app, "P_CliOper", "Vip_SummaryCard", "", "0X80044DF", "0X80044DF", 0, 0, "", "", "", VipUtils.a(this.app, this.app.getCurrentAccountUin()));
+      VasH5PayUtil.a(this.app, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, 3, "1450000515", "LTMCLUB", getString(2131695088), "vip");
+      ReportController.b(this.app, "P_CliOper", "Vip_SummaryCard", "", "0X80044DF", "0X80044DF", 0, 0, "", "", "", VipUtils.a(this.app, this.app.getCurrentAccountUin()));
       return;
     }
   }
   
   public void h()
   {
-    Card localCard = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.app.getCurrentAccountUin());
+    Card localCard = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.app.getCurrentAccountUin());
     if (localCard != null)
     {
       if (localCard.templateRet != 0)
@@ -520,7 +523,7 @@ public class VipProfileCardBaseActivity
     if (localIntent == null)
     {
       if (localCard.cardType == 2) {}
-      for (l1 = azri.n;; l1 = (int)localCard.lCurrentStyleId)
+      for (l1 = ProfileCardTemplate.n;; l1 = (int)localCard.lCurrentStyleId)
       {
         this.jdField_a_of_type_Long = l1;
         this.jdField_g_of_type_Int = ((int)localCard.lCurrentBgId);
@@ -541,7 +544,7 @@ public class VipProfileCardBaseActivity
     }
     label287:
     label289:
-    for (long l1 = azri.n;; l1 = (int)localCard.lCurrentStyleId)
+    for (long l1 = ProfileCardTemplate.n;; l1 = (int)localCard.lCurrentStyleId)
     {
       this.jdField_a_of_type_Long = l1;
       if (!localIntent.hasExtra("CurrentBackgroundId")) {

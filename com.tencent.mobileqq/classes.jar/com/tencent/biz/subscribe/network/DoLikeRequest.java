@@ -5,6 +5,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
 import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeReq;
 import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
@@ -34,7 +35,15 @@ public class DoLikeRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CertifiedAccountWrite.StDoLikeRsp localStDoLikeRsp = new CertifiedAccountWrite.StDoLikeRsp();
-    localStDoLikeRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStDoLikeRsp.mergeFrom(paramArrayOfByte);
+      return localStDoLikeRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStDoLikeRsp;
   }
   
@@ -50,7 +59,7 @@ public class DoLikeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.DoLikeRequest
  * JD-Core Version:    0.7.0.1
  */

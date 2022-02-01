@@ -12,9 +12,9 @@ import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.model.FaceItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
 import java.util.List;
 import java.util.Set;
@@ -94,8 +94,8 @@ public class FaceOffByImageFilter
     {
       return;
     }
-    List localList = FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramObject.facePoints), 2.0F);
-    VideoMaterialUtil.flipYPoints(localList, (int)(this.height * this.mFaceDetScale));
+    List localList = FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramObject.facePoints), 2.0F);
+    VideoMaterial.flipYPoints(localList, (int)(this.height * this.mFaceDetScale));
     setPositions(FaceOffUtil.initFacePositions(localList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
     setCoordNum(690);
     addParam(new UniformParam.FloatParam("positionRotate", -paramObject.phoneAngle));
@@ -109,7 +109,7 @@ public class FaceOffByImageFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceOffByImageFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.av.ui;
 import android.os.Handler;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import mvk;
+import com.tencent.av.utils.UITools;
 
 class VideoControlUI$TimmerRunnable
   implements Runnable
@@ -14,7 +14,7 @@ class VideoControlUI$TimmerRunnable
   {
     if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.g))
     {
-      String str = mvk.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a());
+      String str = UITools.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a());
       VideoControlUI localVideoControlUI = this.this$0;
       localVideoControlUI.n += 1;
       str = this.this$0.a(str);
@@ -25,7 +25,7 @@ class VideoControlUI$TimmerRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.TimmerRunnable
  * JD-Core Version:    0.7.0.1
  */

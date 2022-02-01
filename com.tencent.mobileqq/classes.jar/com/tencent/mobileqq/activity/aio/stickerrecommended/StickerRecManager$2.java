@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aiin;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class StickerRecManager$2
+class StickerRecManager$2
   implements Runnable
 {
-  public StickerRecManager$2(aiin paramaiin, String paramString, boolean paramBoolean, SessionInfo paramSessionInfo) {}
+  StickerRecManager$2(StickerRecManager paramStickerRecManager, String paramString, boolean paramBoolean, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class StickerRecManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager.2
  * JD-Core Version:    0.7.0.1
  */

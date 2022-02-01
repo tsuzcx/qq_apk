@@ -14,7 +14,7 @@ public class AppUtil
   public static final int LMODE_NEW_INSTALL = 1;
   public static final int LMODE_UPDATE = 2;
   private static AppUtil sInstance;
-  private boolean isOpenMarked;
+  private boolean isOpenMarked = false;
   private int mLaunchMode = 3;
   
   public static AppUtil getInstance()

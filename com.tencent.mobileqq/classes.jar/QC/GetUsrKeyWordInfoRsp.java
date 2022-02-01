@@ -10,9 +10,9 @@ public final class GetUsrKeyWordInfoRsp
 {
   static ArrayList<OneKeyWordItemClient> cache_vBaseWord = new ArrayList();
   static ArrayList<OneKeyWordItemClient> cache_vVaWord;
-  public int iShowEntry;
-  public ArrayList<OneKeyWordItemClient> vBaseWord;
-  public ArrayList<OneKeyWordItemClient> vVaWord;
+  public int iShowEntry = 0;
+  public ArrayList<OneKeyWordItemClient> vBaseWord = null;
+  public ArrayList<OneKeyWordItemClient> vVaWord = null;
   
   static
   {

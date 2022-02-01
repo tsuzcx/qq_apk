@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import bfuo;
-import bfup;
-import bhbu;
 import com.tencent.mobileqq.troop.homework.entry.ui.api.AbsHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ArithmeticInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ArithmeticInfo.ArithmeticImageInfo;
+import com.tencent.mobileqq.util.TroopReportor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import org.json.JSONException;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
 public class ArithmeticCaptureTransferFragment
   extends AbsHomeWorkFragment
 {
-  private bfuo jdField_a_of_type_Bfuo;
+  private ArithmeticInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo;
   private String jdField_a_of_type_JavaLangString;
   
   public static void a(Context paramContext, String paramString1, int paramInt, String paramString2)
@@ -35,7 +35,7 @@ public class ArithmeticCaptureTransferFragment
   {
     try
     {
-      this.jdField_a_of_type_Bfuo = new bfuo(new JSONObject(paramString));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo = new ArithmeticInfo(new JSONObject(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("ArithmeticCaptureTransferFragment", 2, "init data ,homework = " + paramString);
       }
@@ -49,7 +49,7 @@ public class ArithmeticCaptureTransferFragment
   
   public int getContentLayoutId()
   {
-    return 2131560682;
+    return 2131560772;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -60,16 +60,16 @@ public class ArithmeticCaptureTransferFragment
       paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
       if ((paramIntent != null) && (paramIntent.size() > 0))
       {
-        bfup localbfup = new bfup();
-        localbfup.b = ((String)paramIntent.get(0));
-        this.jdField_a_of_type_Bfuo.a(localbfup);
+        ArithmeticInfo.ArithmeticImageInfo localArithmeticImageInfo = new ArithmeticInfo.ArithmeticImageInfo();
+        localArithmeticImageInfo.b = ((String)paramIntent.get(0));
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo.a(localArithmeticImageInfo);
         if (QLog.isColorLevel()) {
-          QLog.d("ArithmeticCaptureTransferFragment", 2, "new picture ,path = " + localbfup.b);
+          QLog.d("ArithmeticCaptureTransferFragment", 2, "new picture ,path = " + localArithmeticImageInfo.b);
         }
-        bhbu.a("Grp_edu", "Grp_oral", "Oral_Photoedit_Finish", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
+        TroopReportor.a("Grp_edu", "Grp_oral", "Oral_Photoedit_Finish", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
       }
     }
-    a(this.jdField_a_of_type_Bfuo.a(1));
+    a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo.a(1));
     a();
   }
   

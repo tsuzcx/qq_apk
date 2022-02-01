@@ -8,20 +8,20 @@ public final class stMetaUgcVideoSeg
   extends JceStruct
 {
   static stMetaLoudNorm cache_meta_loudnorm = new stMetaLoudNorm();
-  public int duration;
+  public int duration = 0;
   public String file_id = "";
-  public int file_size;
-  public int h265_hvc1;
-  public int height;
+  public int file_size = 0;
+  public int h265_hvc1 = 0;
+  public int height = 0;
   public String loudnorm = "";
-  public int max_db;
+  public int max_db = 0;
   public String md5 = "";
-  public stMetaLoudNorm meta_loudnorm;
-  public int orientation;
-  public int play_index;
+  public stMetaLoudNorm meta_loudnorm = null;
+  public int orientation = 0;
+  public int play_index = 0;
   public String sha1 = "";
-  public double voice_ratio;
-  public int width;
+  public double voice_ratio = 0.0D;
+  public int width = 0;
   
   public stMetaUgcVideoSeg() {}
   

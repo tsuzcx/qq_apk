@@ -11,8 +11,8 @@ public class XViewPager$LayoutParams
   float a;
   public int a;
   public boolean a;
-  public int b;
-  boolean b;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
   int c;
   
   public XViewPager$LayoutParams()
@@ -32,7 +32,7 @@ public class XViewPager$LayoutParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.LayoutParams
  * JD-Core Version:    0.7.0.1
  */

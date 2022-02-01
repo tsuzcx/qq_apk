@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.ai;
 
-import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -21,7 +20,7 @@ public class ApolloAIActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    this.b = "cmgame_process.ApolloAIActivity";
+    this.a = "cmgame_process.ApolloAIActivity";
     super.doOnCreate(paramBundle);
     return false;
   }
@@ -35,7 +34,7 @@ public class ApolloAIActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ai.ApolloAIActivity
  * JD-Core Version:    0.7.0.1
  */

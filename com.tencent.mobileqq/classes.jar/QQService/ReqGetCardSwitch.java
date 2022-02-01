@@ -10,7 +10,7 @@ public final class ReqGetCardSwitch
   implements Cloneable
 {
   static ReqHead cache_stHeader;
-  public ReqHead stHeader;
+  public ReqHead stHeader = null;
   
   static
   {

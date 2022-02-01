@@ -88,7 +88,7 @@ class SearchResultAdapter$SearchResultViewHolder
         break label637;
       }
       this.pkRankingContainer.setVisibility(0);
-      paramView.setBackgroundResource(2130841052);
+      paramView.setBackgroundResource(2130841185);
       int i = 0;
       for (;;)
       {
@@ -114,10 +114,10 @@ class SearchResultAdapter$SearchResultViewHolder
         {
           localObject1 = new ImageView(paramView.getContext());
           ((ImageView)localObject1).setImageDrawable(SearchResultAdapter.getAvatarDrawable(paramView.getContext(), (String)localObject2));
-          j = ViewUtils.dpToPx(12.0F);
+          j = ViewUtils.b(12.0F);
           localObject2 = new LinearLayout.LayoutParams(j, j);
           if (i > 0) {
-            ((LinearLayout.LayoutParams)localObject2).leftMargin = (-ViewUtils.dpToPx(2.0F));
+            ((LinearLayout.LayoutParams)localObject2).leftMargin = (-ViewUtils.b(2.0F));
           }
           ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
           this.avatarContainer.addView((View)localObject1);
@@ -154,7 +154,7 @@ class SearchResultAdapter$SearchResultViewHolder
         this.couponScrollView.setVisibility(0);
         this.couponTitle.setText("本游戏可使用" + ((List)localObject1).size() + "张抵扣券");
         this.couponTitle.setVisibility(0);
-        paramView.setBackgroundResource(2130841043);
+        paramView.setBackgroundResource(2130841176);
         paramSearchResultViewHolder.couponContainer.removeAllViews();
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
@@ -171,7 +171,7 @@ class SearchResultAdapter$SearchResultViewHolder
       localObject1 = "result_expo";
       break;
       label797:
-      this.name.setTextColor(paramView.getContext().getResources().getColor(2131167033));
+      this.name.setTextColor(paramView.getContext().getResources().getColor(2131167040));
       resetPkAndCouponView(paramView);
       localObject2 = "result_click";
     }

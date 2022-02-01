@@ -41,6 +41,75 @@ public class WebViewProgressBarController
   private byte mStatus = -1;
   private byte mStep = 6;
   
+  private void doRefreshUI()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2;
+    float f;
+    switch (this.mStep)
+    {
+    default: 
+      return;
+    case 0: 
+      l2 = smoothUseTime(l1 - this.mStartLoadingTime);
+      f = this.mCurrentProgress;
+      this.mCurrentProgress = ((float)l2 * this.mProgressRate + f);
+      this.mStartLoadingTime = l1;
+      if (this.mCurrentProgress >= 20.0F)
+      {
+        this.mStartLoadingTime = l1;
+        this.mStep = 1;
+        this.mProgressRate /= 5.0F;
+      }
+      this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
+      return;
+    case 1: 
+      l2 = smoothUseTime(l1 - this.mStartLoadingTime);
+      f = this.mCurrentProgress;
+      this.mCurrentProgress = ((float)l2 * this.mProgressRate + f);
+      this.mStartLoadingTime = l1;
+      if (this.mCurrentProgress >= 98.0F)
+      {
+        this.mStartLoadingTime = l1;
+        this.mStep = 4;
+        this.mCurrentProgress = 98.0F;
+        this.mProgressRate = 0.0F;
+      }
+      this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
+      return;
+    case 2: 
+      l2 = smoothUseTime(l1 - this.mStartLoadingTime);
+      f = this.mCurrentProgress;
+      this.mCurrentProgress = ((float)l2 * this.mProgressRate + f);
+      this.mStartLoadingTime = l1;
+      if (this.mCurrentProgress >= 80.0F)
+      {
+        this.mStartLoadingTime = l1;
+        this.mStep = 3;
+        this.mProgressRate /= 20.0F;
+      }
+      this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
+      return;
+    case 3: 
+      l2 = smoothUseTime(l1 - this.mStartLoadingTime);
+      f = this.mCurrentProgress;
+      this.mCurrentProgress = ((float)l2 * this.mProgressRate + f);
+      this.mStartLoadingTime = l1;
+      if (this.mCurrentProgress >= 98.0F)
+      {
+        this.mStartLoadingTime = l1;
+        this.mStep = 4;
+        this.mProgressRate = 0.0F;
+      }
+      this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
+      return;
+    case 5: 
+      stepAccelerate(l1);
+      return;
+    }
+    this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
+  }
+  
   private long smoothUseTime(long paramLong)
   {
     long l = paramLong;
@@ -48,6 +117,26 @@ public class WebViewProgressBarController
       l = 30L;
     }
     return l;
+  }
+  
+  private void stepAccelerate(long paramLong)
+  {
+    long l = smoothUseTime(paramLong - this.mStartLoadingTime);
+    this.mCurrentProgress += (float)l * this.mProgressRate;
+    this.mStartLoadingTime = paramLong;
+    this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
+    if (this.mFinishAllWidth) {
+      if (this.mCurrWidth >= this.mProgressBarWidth) {
+        this.mCurrWidth = this.mProgressBarWidth;
+      }
+    }
+    do
+    {
+      return;
+      this.mAlpha -= (int)((float)l * this.mCurrAlphaRate);
+    } while (this.mAlpha > 0);
+    reset();
+    this.mAlpha = 0;
   }
   
   public void enterStatus(byte paramByte)
@@ -145,12 +234,10 @@ public class WebViewProgressBarController
   
   public void refreshUI()
   {
-    long l1;
     if (this.mStep != 6)
     {
-      l1 = System.currentTimeMillis();
       if (this.mCurrentProgress < 100.0F) {
-        break label66;
+        break label62;
       }
       reset();
     }
@@ -162,90 +249,8 @@ public class WebViewProgressBarController
         this.mProgressBar.invalidate();
       }
       return;
-      label66:
-      long l2;
-      float f;
-      switch (this.mStep)
-      {
-      default: 
-        break;
-      case 0: 
-        l2 = smoothUseTime(l1 - this.mStartLoadingTime);
-        f = this.mCurrentProgress;
-        this.mCurrentProgress = ((float)l2 * this.mProgressRate + f);
-        this.mStartLoadingTime = l1;
-        if (this.mCurrentProgress >= 20.0F)
-        {
-          this.mStartLoadingTime = l1;
-          this.mStep = 1;
-          this.mProgressRate /= 5.0F;
-        }
-        this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
-        break;
-      case 1: 
-        l2 = smoothUseTime(l1 - this.mStartLoadingTime);
-        f = this.mCurrentProgress;
-        this.mCurrentProgress = ((float)l2 * this.mProgressRate + f);
-        this.mStartLoadingTime = l1;
-        if (this.mCurrentProgress >= 98.0F)
-        {
-          this.mStartLoadingTime = l1;
-          this.mStep = 4;
-          this.mCurrentProgress = 98.0F;
-          this.mProgressRate = 0.0F;
-        }
-        this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
-        break;
-      case 2: 
-        l2 = smoothUseTime(l1 - this.mStartLoadingTime);
-        f = this.mCurrentProgress;
-        this.mCurrentProgress = ((float)l2 * this.mProgressRate + f);
-        this.mStartLoadingTime = l1;
-        if (this.mCurrentProgress >= 80.0F)
-        {
-          this.mStartLoadingTime = l1;
-          this.mStep = 3;
-          this.mProgressRate /= 20.0F;
-        }
-        this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
-        break;
-      case 3: 
-        l2 = smoothUseTime(l1 - this.mStartLoadingTime);
-        f = this.mCurrentProgress;
-        this.mCurrentProgress = ((float)l2 * this.mProgressRate + f);
-        this.mStartLoadingTime = l1;
-        if (this.mCurrentProgress >= 98.0F)
-        {
-          this.mStartLoadingTime = l1;
-          this.mStep = 4;
-          this.mProgressRate = 0.0F;
-        }
-        this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
-        break;
-      case 5: 
-        l2 = smoothUseTime(l1 - this.mStartLoadingTime);
-        this.mCurrentProgress += (float)l2 * this.mProgressRate;
-        this.mStartLoadingTime = l1;
-        this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
-        if (this.mFinishAllWidth)
-        {
-          if (this.mCurrWidth >= this.mProgressBarWidth) {
-            this.mCurrWidth = this.mProgressBarWidth;
-          }
-        }
-        else
-        {
-          this.mAlpha -= (int)((float)l2 * this.mCurrAlphaRate);
-          if (this.mAlpha <= 0)
-          {
-            reset();
-            this.mAlpha = 0;
-          }
-        }
-        break;
-      case 4: 
-        this.mCurrWidth = (this.mProgressBarWidth * this.mCurrentProgress / 100.0F);
-      }
+      label62:
+      doRefreshUI();
     }
   }
   
@@ -270,7 +275,7 @@ public class WebViewProgressBarController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.WebViewProgressBarController
  * JD-Core Version:    0.7.0.1
  */

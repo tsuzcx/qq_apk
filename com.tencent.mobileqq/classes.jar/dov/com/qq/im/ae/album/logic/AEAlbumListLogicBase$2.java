@@ -1,24 +1,23 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bhfd;
-import bmyh;
-import bmzf;
+import com.tencent.mobileqq.utils.LogTag;
+import dov.com.qq.im.ae.album.adapter.AEAlbumListAdapter;
 
-public class AEAlbumListLogicBase$2
+class AEAlbumListLogicBase$2
   implements Runnable
 {
-  public AEAlbumListLogicBase$2(bmzf parambmzf, bmyh parambmyh) {}
+  AEAlbumListLogicBase$2(AEAlbumListLogicBase paramAEAlbumListLogicBase, AEAlbumListAdapter paramAEAlbumListAdapter) {}
   
   public void run()
   {
-    bhfd.a();
+    LogTag.a();
     this.a.a();
-    bhfd.a("PEAK", "queryAllAlbumList");
+    LogTag.a("PEAK", "queryAllAlbumList");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.logic.AEAlbumListLogicBase.2
  * JD-Core Version:    0.7.0.1
  */

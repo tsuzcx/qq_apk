@@ -11,13 +11,13 @@ public final class CGetMoreReq
 {
   static Map<String, String> cache_mParams;
   static LoginInfo cache_stLogin = new LoginInfo();
-  public int appid;
-  public long lUid;
-  public int listindex;
-  public int locationtype;
-  public Map<String, String> mParams;
-  public int pagesize;
-  public LoginInfo stLogin;
+  public int appid = 0;
+  public long lUid = 0L;
+  public int listindex = 0;
+  public int locationtype = 0;
+  public Map<String, String> mParams = null;
+  public int pagesize = 0;
+  public LoginInfo stLogin = null;
   
   static
   {

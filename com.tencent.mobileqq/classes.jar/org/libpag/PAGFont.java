@@ -29,7 +29,7 @@ public class PAGFont
     FILENAME_WHITESPACE_PATTERN = Pattern.compile("^[ \\n\\r\\t]+|[ \\n\\r\\t]+$");
     systemFontLoaded = false;
     LibraryLoadUtils.loadLibrary("libpag");
-    loadSystemFonts();
+    nativeInit();
   }
   
   public PAGFont() {}
@@ -40,51 +40,7 @@ public class PAGFont
     this.fontStyle = paramString2;
   }
   
-  public static PAGFont RegisterFont(AssetManager paramAssetManager, String paramString)
-  {
-    return RegisterFont(paramAssetManager, paramString, 0);
-  }
-  
-  public static native PAGFont RegisterFont(AssetManager paramAssetManager, String paramString, int paramInt);
-  
-  public static PAGFont RegisterFont(String paramString)
-  {
-    return RegisterFont(paramString, 0);
-  }
-  
-  public static native PAGFont RegisterFont(String paramString, int paramInt);
-  
-  private static native PAGFont RegisterFontBytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  private static native void SetFallbackFontPaths(String[] paramArrayOfString, int[] paramArrayOfInt);
-  
-  private static void addFont(PAGFont.FontConfig paramFontConfig, ArrayList<String> paramArrayList, ArrayList<Integer> paramArrayList1)
-  {
-    if (paramArrayList.contains(paramFontConfig.fileName)) {}
-    while (!new File(paramFontConfig.fileName).exists()) {
-      return;
-    }
-    paramArrayList.add(paramFontConfig.fileName);
-    paramArrayList1.add(Integer.valueOf(paramFontConfig.ttcIndex));
-  }
-  
-  private static PAGFont.FontConfig getFontByLanguage(PAGFont.FontConfig[] paramArrayOfFontConfig, String paramString)
-  {
-    paramString = paramString.toLowerCase();
-    int j = paramArrayOfFontConfig.length;
-    int i = 0;
-    while (i < j)
-    {
-      PAGFont.FontConfig localFontConfig = paramArrayOfFontConfig[i];
-      if (localFontConfig.language.toLowerCase().equals(paramString)) {
-        return localFontConfig;
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
-  static void loadSystemFonts()
+  private static void RegisterFallbackFonts()
   {
     int j = 0;
     if (systemFontLoaded) {}
@@ -158,6 +114,67 @@ public class PAGFont
     }
     SetFallbackFontPaths((String[])localObject1, (int[])localObject3);
   }
+  
+  public static PAGFont RegisterFont(AssetManager paramAssetManager, String paramString)
+  {
+    return RegisterFont(paramAssetManager, paramString, 0);
+  }
+  
+  public static PAGFont RegisterFont(AssetManager paramAssetManager, String paramString, int paramInt)
+  {
+    return RegisterFont(paramAssetManager, paramString, paramInt, "", "");
+  }
+  
+  public static native PAGFont RegisterFont(AssetManager paramAssetManager, String paramString1, int paramInt, String paramString2, String paramString3);
+  
+  public static PAGFont RegisterFont(String paramString)
+  {
+    return RegisterFont(paramString, 0);
+  }
+  
+  public static PAGFont RegisterFont(String paramString, int paramInt)
+  {
+    return RegisterFont(paramString, paramInt, "", "");
+  }
+  
+  public static native PAGFont RegisterFont(String paramString1, int paramInt, String paramString2, String paramString3);
+  
+  private static PAGFont RegisterFontBytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    return RegisterFontBytes(paramArrayOfByte, paramInt1, paramInt2, "", "");
+  }
+  
+  private static native PAGFont RegisterFontBytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString1, String paramString2);
+  
+  private static native void SetFallbackFontPaths(String[] paramArrayOfString, int[] paramArrayOfInt);
+  
+  private static void addFont(PAGFont.FontConfig paramFontConfig, ArrayList<String> paramArrayList, ArrayList<Integer> paramArrayList1)
+  {
+    if (paramArrayList.contains(paramFontConfig.fileName)) {}
+    while (!new File(paramFontConfig.fileName).exists()) {
+      return;
+    }
+    paramArrayList.add(paramFontConfig.fileName);
+    paramArrayList1.add(Integer.valueOf(paramFontConfig.ttcIndex));
+  }
+  
+  private static PAGFont.FontConfig getFontByLanguage(PAGFont.FontConfig[] paramArrayOfFontConfig, String paramString)
+  {
+    paramString = paramString.toLowerCase();
+    int j = paramArrayOfFontConfig.length;
+    int i = 0;
+    while (i < j)
+    {
+      PAGFont.FontConfig localFontConfig = paramArrayOfFontConfig[i];
+      if (localFontConfig.language.toLowerCase().equals(paramString)) {
+        return localFontConfig;
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  private static native void nativeInit();
   
   private static PAGFont.FontConfig[] parseJellyBean()
   {
@@ -383,7 +400,7 @@ public class PAGFont
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     org.libpag.PAGFont
  * JD-Core Version:    0.7.0.1
  */

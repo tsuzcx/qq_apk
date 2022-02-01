@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidd;
-import aidm;
-
-public class NearbyChatPie$7$1
+class NearbyChatPie$7$1
   implements Runnable
 {
-  public NearbyChatPie$7$1(aidm paramaidm) {}
+  NearbyChatPie$7$1(NearbyChatPie.7 param7) {}
   
   public void run()
   {
-    this.a.a.notifyDataSetChanged();
+    this.a.a.bg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.7.1
  * JD-Core Version:    0.7.0.1
  */

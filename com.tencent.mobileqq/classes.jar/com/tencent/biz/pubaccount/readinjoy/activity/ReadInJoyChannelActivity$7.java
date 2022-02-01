@@ -15,7 +15,7 @@ class ReadInJoyChannelActivity$7
       QQMessageFacade localQQMessageFacade = this.this$0.app.getMessageFacade();
       if (localQQMessageFacade != null)
       {
-        int i = localQQMessageFacade.getUnreadMsgsNum();
+        int i = localQQMessageFacade.b();
         ReadInJoyChannelActivity.a(this.this$0, i);
       }
     }
@@ -23,7 +23,7 @@ class ReadInJoyChannelActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity.7
  * JD-Core Version:    0.7.0.1
  */

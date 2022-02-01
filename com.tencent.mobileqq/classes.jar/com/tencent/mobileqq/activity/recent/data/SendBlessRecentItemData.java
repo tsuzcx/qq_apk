@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import aipw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bdla;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.bless.BlessManager;
 import com.tencent.mobileqq.activity.bless.BlessTask;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendBlessRecentItemData
@@ -24,25 +24,25 @@ public class SendBlessRecentItemData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    aipw localaipw = (aipw)paramQQAppInterface.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER);
-    BlessTask localBlessTask = localaipw.a();
+    BlessManager localBlessManager = (BlessManager)paramQQAppInterface.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER);
+    BlessTask localBlessTask = localBlessManager.a();
     int i;
-    if (!localaipw.h())
+    if (!localBlessManager.h())
     {
-      this.mTitleName = paramContext.getResources().getString(2131690653);
+      this.mTitleName = paramContext.getResources().getString(2131690755);
       if (localBlessTask != null) {
         this.mTitleName = localBlessTask.starWord;
       }
-      this.mLastMsg = localaipw.b();
+      this.mLastMsg = localBlessManager.b();
       this.mMsgExtroInfo = "";
       if (QLog.isColorLevel()) {
         QLog.d("SendBlessRecentItemData", 2, "not isVideoNeedToPlay");
       }
-      bdla.b(paramQQAppInterface, "CliOper", "", "", "0X800618A", "0X800618A", 0, 0, "", "", "", "");
-      if (localaipw.a() < 0) {
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800618A", "0X800618A", 0, 0, "", "", "", "");
+      if (localBlessManager.a() < 0) {
         break label490;
       }
-      if (localaipw.a() != 0) {
+      if (localBlessManager.a() != 0) {
         break label485;
       }
       i = 2;
@@ -56,10 +56,10 @@ public class SendBlessRecentItemData
     {
       this.mDisplayTime = this.mUser.lastmsgtime;
       if (this.mDisplayTime > 0L) {
-        this.mShowTime = TimeManager.getInstance().getMsgDisplayTime(getRecentUserUin(), this.mDisplayTime);
+        this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
       }
-      localaipw.f();
-      if (AppSetting.c)
+      localBlessManager.f();
+      if (AppSetting.d)
       {
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.mTitleName);
@@ -86,22 +86,22 @@ public class SendBlessRecentItemData
         if (QLog.isColorLevel()) {
           QLog.d("SendBlessRecentItemData", 2, "useHint: " + bool);
         }
-        if ((!bool) || (TextUtils.isEmpty(localaipw.b()))) {
+        if ((!bool) || (TextUtils.isEmpty(localBlessManager.b()))) {
           break label428;
         }
-        this.mLastMsg = localaipw.b();
+        this.mLastMsg = localBlessManager.b();
         this.mMsgExtroInfo = "";
       }
       for (;;)
       {
-        bdla.b(paramQQAppInterface, "CliOper", "", "", "0X800632B", "0X800632B", 0, 0, "", "", "", "");
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800632B", "0X800632B", 0, 0, "", "", "", "");
         break;
         bool = false;
         break label332;
         if (!TextUtils.isEmpty(this.mMsgExtroInfo))
         {
           this.mMsgExtroInfo = ("[" + this.mMsgExtroInfo + "] ");
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167138);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131167145);
         }
       }
       i = 1;
@@ -111,7 +111,7 @@ public class SendBlessRecentItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.SendBlessRecentItemData
  * JD-Core Version:    0.7.0.1
  */

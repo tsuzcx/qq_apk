@@ -11,14 +11,14 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import blfw;
-import blfx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ThemeImageWrapper;
+import com.tencent.widget.ThemeImageWrapper.DrawInterface;
 
 public class TroopLabelTextView
   extends TextView
-  implements blfx
+  implements ThemeImageWrapper.DrawInterface
 {
   protected int a;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -26,7 +26,7 @@ public class TroopLabelTextView
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode;
-  public blfw a;
+  public ThemeImageWrapper a;
   int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private int c;
@@ -39,15 +39,15 @@ public class TroopLabelTextView
     setTextColor(paramInt2);
     setMaxLines(1);
     setGravity(17);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, AIOUtils.dp2px(16.0F, getResources()));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, AIOUtils.a(16.0F, getResources()));
     localLayoutParams.rightMargin = 4;
-    paramInt2 = AIOUtils.dp2px(4.0F, getResources());
-    int i = AIOUtils.dp2px(4.0F, getResources());
-    int j = AIOUtils.dp2px(0.0F, getResources());
-    int k = AIOUtils.dp2px(0.0F, getResources());
+    paramInt2 = AIOUtils.a(4.0F, getResources());
+    int i = AIOUtils.a(4.0F, getResources());
+    int j = AIOUtils.a(0.0F, getResources());
+    int k = AIOUtils.a(0.0F, getResources());
     setTextSize(1, 10.0F);
     if (paramInt3 == 2) {
-      paramInt1 = AIOUtils.dp2px(10.0F, getResources());
+      paramInt1 = AIOUtils.a(10.0F, getResources());
     }
     for (;;)
     {
@@ -55,15 +55,15 @@ public class TroopLabelTextView
       setPadding(paramInt1, j, i, k);
       this.jdField_a_of_type_AndroidContentContext = paramContext;
       this.c = paramInt3;
-      this.jdField_b_of_type_Int = AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.d = AIOUtils.dp2px(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      this.jdField_b_of_type_Int = AIOUtils.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      this.d = AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       a();
       return;
       paramInt1 = paramInt2;
       if (paramInt3 == 1)
       {
         setIncludeFontPadding(false);
-        localLayoutParams.height = AIOUtils.dp2px(14.0F, getResources());
+        localLayoutParams.height = AIOUtils.a(14.0F, getResources());
         paramInt1 = paramInt2;
       }
     }
@@ -71,19 +71,14 @@ public class TroopLabelTextView
   
   private void a()
   {
-    this.jdField_a_of_type_Blfw = new blfw();
-    this.jdField_a_of_type_Blfw.a(true);
-    this.jdField_a_of_type_Blfw.a(blfw.c);
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
+    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper = new ThemeImageWrapper();
+    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.setSupportMaskView(true);
+    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.setMaskShape(ThemeImageWrapper.MODE_OTHER);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_Blfw.a(paramCanvas, this);
+    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.onDraw(paramCanvas, this);
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -99,7 +94,7 @@ public class TroopLabelTextView
     super.onDraw(paramCanvas);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3 + (getPaddingLeft() + getPaddingRight()), paramInt4);
     GradientDrawable localGradientDrawable = new GradientDrawable();
@@ -144,6 +139,11 @@ public class TroopLabelTextView
       while (!QLog.isColorLevel()) {}
       QLog.e("TroopLabelTextView", 2, "TroopLabelTextView setMaskImage OOM");
     }
+  }
+  
+  public void superOnDraw(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
   }
 }
 

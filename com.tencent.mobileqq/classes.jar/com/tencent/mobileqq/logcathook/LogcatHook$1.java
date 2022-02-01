@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.logcathook;
 
-import awon;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
@@ -13,20 +12,20 @@ final class LogcatHook$1
   {
     try
     {
-      if (!LogcatHook.a.get())
+      if (!LogcatHook.sLogcatHooked.get())
       {
         System.loadLibrary("logcathook");
-        awon.a("com.tencent.mobileqq", BaseApplicationImpl.processName, AppSetting.a, 0L);
-        LogcatHook.updateLogFilePath(awon.a());
-        LogcatHook.a(false);
-        LogcatHook.a.compareAndSet(false, true);
+        LogcatHookThread.a("com.tencent.mobileqq", BaseApplicationImpl.processName, AppSetting.a, 0L);
+        LogcatHook.updateLogFilePath(LogcatHookThread.a());
+        LogcatHook.access$000(false);
+        LogcatHook.sLogcatHooked.compareAndSet(false, true);
         QLog.sLogcatHooked = true;
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      LogcatHook.a.compareAndSet(true, false);
+      LogcatHook.sLogcatHooked.compareAndSet(true, false);
       QLog.e("LogcatHook", 1, "logcat hook faild", localThrowable);
     }
   }

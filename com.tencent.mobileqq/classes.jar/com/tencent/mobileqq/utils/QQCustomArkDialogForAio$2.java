@@ -17,7 +17,7 @@ class QQCustomArkDialogForAio$2
   
   public void onLoadState(int paramInt)
   {
-    WeakReference localWeakReference = new WeakReference(this.this$0);
+    WeakReference localWeakReference = new WeakReference(this.a);
     ThreadManager.getUIHandler().post(new QQCustomArkDialogForAio.2.1(this, localWeakReference, paramInt));
   }
 }

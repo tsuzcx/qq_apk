@@ -11,7 +11,7 @@ import java.io.File;
 class CleanCache$1
   implements Runnable
 {
-  private int a;
+  private int a = 0;
   
   CleanCache$1(CleanCache paramCleanCache) {}
   

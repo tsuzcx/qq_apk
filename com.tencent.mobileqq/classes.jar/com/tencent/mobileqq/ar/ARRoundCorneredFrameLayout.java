@@ -30,7 +30,7 @@ public class ARRoundCorneredFrameLayout
   public ARRoundCorneredFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.a = AIOUtils.dp2px(a(paramContext, paramAttributeSet), paramContext.getResources());
+    this.a = AIOUtils.a(a(paramContext, paramAttributeSet), paramContext.getResources());
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }
@@ -44,7 +44,7 @@ public class ARRoundCorneredFrameLayout
     return i;
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     int i = getWidth();
     int j = getHeight();
@@ -65,7 +65,7 @@ public class ARRoundCorneredFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRoundCorneredFrameLayout
  * JD-Core Version:    0.7.0.1
  */

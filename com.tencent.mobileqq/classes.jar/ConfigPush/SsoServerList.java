@@ -12,14 +12,14 @@ public final class SsoServerList
   static ArrayList<SsoServerListInfo> cache_vHttp_2G3GList;
   static ArrayList<SsoServerListInfo> cache_vHttp_WifiList;
   static ArrayList<SsoServerListInfo> cache_vWifiList;
-  public byte bTestSpeed;
-  public byte bUseNewList;
+  public byte bTestSpeed = 0;
+  public byte bUseNewList = 0;
   public int iMultiConn = 1;
-  public int iReconnect;
-  public ArrayList<SsoServerListInfo> v2G3GList;
-  public ArrayList<SsoServerListInfo> vHttp_2G3GList;
-  public ArrayList<SsoServerListInfo> vHttp_WifiList;
-  public ArrayList<SsoServerListInfo> vWifiList;
+  public int iReconnect = 0;
+  public ArrayList<SsoServerListInfo> v2G3GList = null;
+  public ArrayList<SsoServerListInfo> vHttp_2G3GList = null;
+  public ArrayList<SsoServerListInfo> vHttp_WifiList = null;
+  public ArrayList<SsoServerListInfo> vWifiList = null;
   
   public SsoServerList() {}
   

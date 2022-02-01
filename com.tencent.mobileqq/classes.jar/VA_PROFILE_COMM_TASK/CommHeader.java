@@ -11,15 +11,15 @@ public final class CommHeader
 {
   static Map<String, String> cache_map_ext = new HashMap();
   public String auth_key = "";
-  public long auth_type;
-  public long client_ip;
-  public Map<String, String> map_ext;
-  public long platform;
-  public long ptlogin_id;
+  public long auth_type = 0L;
+  public long client_ip = 0L;
+  public Map<String, String> map_ext = null;
+  public long platform = 0L;
+  public long ptlogin_id = 0L;
   public String qqver = "";
   public String qua = "";
-  public long server_ip;
-  public long uin;
+  public long server_ip = 0L;
+  public long uin = 0L;
   
   static
   {

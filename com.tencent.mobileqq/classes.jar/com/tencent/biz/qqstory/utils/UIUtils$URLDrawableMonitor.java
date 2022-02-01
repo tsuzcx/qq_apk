@@ -1,54 +1,58 @@
 package com.tencent.biz.qqstory.utils;
 
 import android.support.annotation.NonNull;
-import anvx;
-import bdjw;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import java.util.concurrent.ConcurrentHashMap;
-import ykq;
-import zfc;
 
 class UIUtils$URLDrawableMonitor
 {
-  public static ConcurrentHashMap<UIUtils.DrawableListenerHolder, Boolean> sDrawableStateMap = new ConcurrentHashMap();
-  private static volatile URLDrawableMonitor sMonitor;
+  private static volatile URLDrawableMonitor a;
+  public static ConcurrentHashMap<UIUtils.DrawableListenerHolder, Boolean> a;
   
-  public static URLDrawableMonitor getInstance()
+  static
   {
-    if (sMonitor == null) {}
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public static URLDrawableMonitor a()
+  {
+    if (jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$URLDrawableMonitor == null) {}
     try
     {
-      if (sMonitor == null) {
-        sMonitor = new URLDrawableMonitor();
+      if (jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$URLDrawableMonitor == null) {
+        jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$URLDrawableMonitor = new URLDrawableMonitor();
       }
-      return sMonitor;
+      return jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$URLDrawableMonitor;
     }
     finally {}
   }
   
-  public static void monitor(URLDrawable paramURLDrawable, String paramString)
+  public static void a(URLDrawable paramURLDrawable, String paramString)
   {
-    paramString = new UIUtils.DrawableListenerHolder(getInstance(), paramURLDrawable, paramString);
+    paramString = new UIUtils.DrawableListenerHolder(a(), paramURLDrawable, paramString);
     paramURLDrawable.setDownloadListener(paramString);
     paramURLDrawable.setURLDrawableListener(paramString);
-    sDrawableStateMap.put(paramString, Boolean.valueOf(true));
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
   }
   
-  public void remove(@NonNull UIUtils.DrawableListenerHolder paramDrawableListenerHolder)
+  public void a(@NonNull UIUtils.DrawableListenerHolder paramDrawableListenerHolder)
   {
-    boolean bool = sDrawableStateMap.containsKey(paramDrawableListenerHolder);
-    ykq.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
+    boolean bool = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramDrawableListenerHolder);
+    SLog.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
     if (!bool) {
-      bdjw.a(zfc.a(anvx.a(2131715227), null), "Story.UIUtils.monitor " + paramDrawableListenerHolder.toString());
+      CaughtExceptionReport.a(StoryDebugUtils.StoryExceptionCallback.a(HardCodeUtil.a(2131715721), null), "Story.UIUtils.monitor " + paramDrawableListenerHolder.toString());
     }
-    paramDrawableListenerHolder.drawable.setDownloadListener(null);
-    paramDrawableListenerHolder.drawable.setURLDrawableListener(null);
-    sDrawableStateMap.remove(paramDrawableListenerHolder);
+    paramDrawableListenerHolder.a.setDownloadListener(null);
+    paramDrawableListenerHolder.a.setURLDrawableListener(null);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramDrawableListenerHolder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.UIUtils.URLDrawableMonitor
  * JD-Core Version:    0.7.0.1
  */

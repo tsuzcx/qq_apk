@@ -3,7 +3,7 @@ package cooperation.qzone.panorama.controller;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.opengl.GLES20;
-import android.opengl.GLSurfaceView.Renderer;
+import com.tencent.mobileqq.apollo.view.opengl.Renderer;
 import cooperation.qzone.panorama.callback.OnPanoramaLoadingListener;
 import cooperation.qzone.panorama.model.ShapeModel;
 import cooperation.qzone.panorama.piece.PanoramaPieceManager;
@@ -15,7 +15,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public class PanoramaRenderer
-  implements GLSurfaceView.Renderer
+  implements Renderer
 {
   private static final String TAG = "PanoramaRenderer";
   private PanoramaConfig.Builder builder;
@@ -111,7 +111,7 @@ public class PanoramaRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.panorama.controller.PanoramaRenderer
  * JD-Core Version:    0.7.0.1
  */

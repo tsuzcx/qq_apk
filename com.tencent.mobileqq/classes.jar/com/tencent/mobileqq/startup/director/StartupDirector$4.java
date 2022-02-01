@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.startup.director;
 
-import bdgy;
 import com.tencent.mobileqq.splashad.SplashADView;
 
-public class StartupDirector$4
+class StartupDirector$4
   implements Runnable
 {
-  public StartupDirector$4(bdgy parambdgy, SplashADView paramSplashADView) {}
+  StartupDirector$4(StartupDirector paramStartupDirector, SplashADView paramSplashADView) {}
   
   public void run()
   {

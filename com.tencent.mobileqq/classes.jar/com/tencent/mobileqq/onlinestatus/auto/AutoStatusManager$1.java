@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.onlinestatus.auto;
 
-import azco;
-
-public class AutoStatusManager$1
+class AutoStatusManager$1
   implements Runnable
 {
-  public AutoStatusManager$1(azco paramazco) {}
+  AutoStatusManager$1(AutoStatusManager paramAutoStatusManager) {}
   
   public void run()
   {
-    azco.a(azco.a(this.this$0));
-    azco.c();
+    AutoStatusManager.a(AutoStatusManager.a(this.this$0));
+    AutoStatusManager.c();
   }
 }
 

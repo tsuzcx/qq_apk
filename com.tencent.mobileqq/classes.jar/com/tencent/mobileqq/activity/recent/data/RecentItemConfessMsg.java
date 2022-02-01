@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acmw;
 import android.content.Context;
 import android.text.TextUtils;
-import anvx;
-import aqvn;
-import bhfj;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.confess.ConfessInfo;
+import com.tencent.mobileqq.confess.ConfessShareHelper;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.MsgUtils;
 import java.util.Locale;
 
 public class RecentItemConfessMsg
   extends RecentBaseData
 {
   public final ConfessInfo mConfessInfo = new ConfessInfo();
-  public MessageRecord mMsg;
-  public int mType;
+  public MessageRecord mMsg = null;
+  public int mType = 0;
   public String mUin = "";
-  public QQMessageFacade.Message msg;
+  public Message msg = null;
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
@@ -38,7 +38,7 @@ public class RecentItemConfessMsg
       if ((this.mType == 1032) && (TextUtils.equals(this.mUin, AppConstants.CONFESS_FRD_REC_UIN)))
       {
         localObject2 = getMsgSummaryTemp();
-        str = ContactUtils.getBuddyName(paramQQAppInterface, this.mMsg.senderuin, true);
+        str = ContactUtils.c(paramQQAppInterface, this.mMsg.senderuin, true);
         localObject1 = str;
         if (TextUtils.equals(str, this.mMsg.senderuin))
         {
@@ -47,8 +47,8 @@ public class RecentItemConfessMsg
             localObject1 = this.mMsg.msg2;
           }
         }
-        ((MsgSummary)localObject2).strContent = String.format(anvx.a(2131712631), new Object[] { localObject1, this.mMsg.msg });
-        this.mTitleName = anvx.a(2131712625);
+        ((MsgSummary)localObject2).strContent = String.format(HardCodeUtil.a(2131713127), new Object[] { localObject1, this.mMsg.msg });
+        this.mTitleName = HardCodeUtil.a(2131713121);
         this.mDisplayTime = this.mMsg.time;
         this.mUnreadNum = this.mMsg.longMsgCount;
         this.mUnreadFlag = 3;
@@ -61,7 +61,7 @@ public class RecentItemConfessMsg
     String str = "";
     if (this.mType == 1033)
     {
-      localObject2 = ContactUtils.getBuddyName(paramQQAppInterface, this.mUin, true);
+      localObject2 = ContactUtils.c(paramQQAppInterface, this.mUin, true);
       if (TextUtils.isEmpty(this.mConfessInfo.topic))
       {
         this.mTitleName = ((String)localObject2);
@@ -75,7 +75,7 @@ public class RecentItemConfessMsg
       this.mDisplayTime = this.msg.time;
       this.mMenuFlag = 1;
       this.mStatus = 0;
-      bhfj.a(paramContext, paramQQAppInterface, this.msg, this.msg.istroop, localMsgSummary, (String)localObject1, false, false);
+      MsgUtils.a(paramContext, paramQQAppInterface, this.msg, this.msg.istroop, localMsgSummary, (String)localObject1, false, false);
       localMsgSummary.bShowDraft = false;
       extraUpdate(paramQQAppInterface, paramContext, localMsgSummary);
       makeContentDesc();
@@ -85,7 +85,7 @@ public class RecentItemConfessMsg
       {
         localObject1 = localObject2;
         if (((String)localObject2).length() > 7) {
-          localObject1 = aqvn.a((String)localObject2, 7.0F);
+          localObject1 = ConfessShareHelper.a((String)localObject2, 7.0F);
         }
       }
       this.mTitleName = String.format(Locale.getDefault(), "%s—%s", new Object[] { localObject1, this.mConfessInfo.topic });
@@ -100,13 +100,13 @@ public class RecentItemConfessMsg
           str = paramQQAppInterface.getCurrentNickname();
           localObject1 = str;
           if (str.length() > 7) {
-            localObject1 = aqvn.a(str, 7.0F);
+            localObject1 = ConfessShareHelper.a(str, 7.0F);
           }
         }
       }
       else
       {
-        this.mTitleName = ContactUtils.getBuddyName(paramQQAppInterface, this.mUin, true);
+        this.mTitleName = ContactUtils.c(paramQQAppInterface, this.mUin, true);
         localObject1 = str;
       }
     }
@@ -138,14 +138,14 @@ public class RecentItemConfessMsg
         this.mMsg.selfuin = paramString;
       }
       if (this.msg == null) {
-        this.msg = new QQMessageFacade.Message();
+        this.msg = new Message();
       }
       MessageRecord.copyMessageRecordBaseField(this.msg, this.mMsg);
       this.msg.istroop = this.mType;
       this.msg.frienduin = this.mUin;
       this.msg.emoRecentMsg = null;
       this.msg.fileType = -1;
-      paramQQAppInterface.getMessageFacade().decodeMsg(this.msg);
+      paramQQAppInterface.getMessageFacade().a(this.msg);
       return;
     }
   }
@@ -173,16 +173,16 @@ public class RecentItemConfessMsg
     return this.mUin;
   }
   
-  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      a((QQAppInterface)paramIMCoreAppRuntime, paramContext);
+    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
+      a((QQAppInterface)paramBaseQQAppInterface, paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemConfessMsg
  * JD-Core Version:    0.7.0.1
  */

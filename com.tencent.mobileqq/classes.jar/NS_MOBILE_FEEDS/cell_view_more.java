@@ -10,8 +10,8 @@ public final class cell_view_more
   extends JceStruct
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
-  public int actiontype;
-  public Map<Integer, String> busi_param;
+  public int actiontype = 0;
+  public Map<Integer, String> busi_param = null;
   public String guide_content = "";
   public String jump_url = "";
   

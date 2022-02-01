@@ -2,17 +2,16 @@ package com.tencent.mobileqq.troop.widget;
 
 import android.util.Pair;
 import android.widget.ImageView;
-import bgnn;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader;
 import java.util.HashMap;
 import java.util.Queue;
 import mqq.os.MqqHandler;
 
-public class HotChatPostItemView$1$1
+class HotChatPostItemView$1$1
   implements Runnable
 {
-  public HotChatPostItemView$1$1(bgnn parambgnn) {}
+  HotChatPostItemView$1$1(HotChatPostItemView.1 param1) {}
   
   public void run()
   {

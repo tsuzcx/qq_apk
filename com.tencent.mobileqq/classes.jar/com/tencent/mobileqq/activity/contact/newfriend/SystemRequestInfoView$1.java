@@ -1,0 +1,112 @@
+package com.tencent.mobileqq.activity.contact.newfriend;
+
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+
+class SystemRequestInfoView$1
+  extends MessageObserver
+{
+  SystemRequestInfoView$1(SystemRequestInfoView paramSystemRequestInfoView) {}
+  
+  public void onInsertIntoBlackList(boolean paramBoolean, String paramString) {}
+  
+  public void onRemoveFromBlackList(boolean paramBoolean, String paramString) {}
+  
+  public void onSendSystemMsgActionError(String paramString)
+  {
+    if (this.a.a())
+    {
+      paramString = this.a.getResources().getString(2131719697);
+      QQToast.a(this.a.getContext(), 1, paramString, 0).b(this.a.a());
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionError");
+  }
+  
+  public void onSendSystemMsgActionFin(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin");
+    }
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin stopProgress = fasle");
+      }
+    }
+    long l1;
+    structmsg.StructMsg localStructMsg;
+    for (;;)
+    {
+      return;
+      long l2 = FriendSystemMsgController.a().b();
+      l1 = l2;
+      if (!TextUtils.isEmpty(paramString1)) {}
+      try
+      {
+        l1 = Long.parseLong(paramString1);
+        localStructMsg = FriendSystemMsgController.a().a(Long.valueOf(l1));
+        if (!paramBoolean) {
+          if (!TextUtils.isEmpty(paramString3))
+          {
+            QQToast.a(this.a.getContext(), 1, paramString3, 0).b(this.a.a());
+            if (!SystemMsgUtils.a(localStructMsg, paramInt3, paramString2, paramString4)) {
+              continue;
+            }
+            SystemRequestInfoView.a(this.a).finish();
+            return;
+          }
+        }
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          paramString1.printStackTrace();
+          l1 = l2;
+          continue;
+          paramString3 = this.a.getResources().getString(2131719023);
+        }
+        SystemMsgUtils.a(localStructMsg, paramInt1, paramString2, paramInt2);
+        paramString2 = null;
+        if (paramInt1 != 1) {
+          break label234;
+        }
+      }
+    }
+    SystemRequestInfoView.a(this.a).finish();
+    paramString1 = this.a.getResources().getString(2131692705);
+    for (;;)
+    {
+      QQToast.a(this.a.getContext(), 2, paramString1, 0).b(this.a.a());
+      return;
+      label234:
+      paramString1 = paramString2;
+      if (paramInt1 == 0)
+      {
+        paramString1 = paramString2;
+        if (localStructMsg != null)
+        {
+          paramString1 = this.a.getResources().getString(2131692699);
+          AutoRemarkActivity.a(SystemRequestInfoView.a(this.a), 1017, String.valueOf(localStructMsg.req_uin.get()), l1, null);
+        }
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView.1
+ * JD-Core Version:    0.7.0.1
+ */

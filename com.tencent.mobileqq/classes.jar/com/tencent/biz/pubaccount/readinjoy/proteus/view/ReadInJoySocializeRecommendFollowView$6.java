@@ -1,29 +1,28 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import pvj;
-import quh;
 
-public class ReadInJoySocializeRecommendFollowView$6
+class ReadInJoySocializeRecommendFollowView$6
   implements Runnable
 {
-  public ReadInJoySocializeRecommendFollowView$6(quh paramquh, RecommendFollowInfo paramRecommendFollowInfo) {}
+  ReadInJoySocializeRecommendFollowView$6(ReadInJoySocializeRecommendFollowView paramReadInJoySocializeRecommendFollowView, RecommendFollowInfo paramRecommendFollowInfo) {}
   
   public void run()
   {
-    pvj localpvj = pvj.a();
+    ReadInJoyLogicEngine localReadInJoyLogicEngine = ReadInJoyLogicEngine.a();
     long l = this.a.uin;
     if (this.a.isFollowed) {}
     for (int i = 2;; i = 1)
     {
-      localpvj.c(l, i);
+      localReadInJoyLogicEngine.c(l, i);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.6
  * JD-Core Version:    0.7.0.1
  */

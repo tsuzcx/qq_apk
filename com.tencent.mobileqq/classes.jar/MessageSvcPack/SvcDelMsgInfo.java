@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcDelMsgInfo
   extends JceStruct
 {
-  public long lFromUin;
-  public long lMsgUid;
-  public short shMsgSeq;
-  public int shMsgType;
-  public int uMsgTime;
+  public long lFromUin = 0L;
+  public long lMsgUid = 0L;
+  public short shMsgSeq = 0;
+  public int shMsgType = 0;
+  public int uMsgTime = 0;
   
   public SvcDelMsgInfo() {}
   

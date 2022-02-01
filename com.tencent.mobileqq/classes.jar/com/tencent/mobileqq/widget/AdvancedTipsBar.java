@@ -7,9 +7,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import blfw;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.banner.TipsBar;
+import com.tencent.widget.ThemeImageWrapper;
 
 public class AdvancedTipsBar
   extends TipsBar
@@ -24,47 +25,37 @@ public class AdvancedTipsBar
     super(paramContext, paramAttributeSet);
   }
   
-  public void a()
-  {
-    if (!blfw.a()) {}
-    for (int i = Color.parseColor("#03081A");; i = Color.parseColor("#FFFFFF"))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
-      return;
-    }
-  }
+  public void a() {}
   
-  public void a(boolean paramBoolean)
+  public void b()
   {
-    super.a(paramBoolean);
-    d();
-  }
-  
-  public void b() {}
-  
-  protected void c()
-  {
-    super.c();
+    super.b();
     if (this.b != null)
     {
-      this.b.setId(2131378995);
+      this.b.setId(2131379426);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-      localLayoutParams.rightMargin = UIUtils.dip2px(BaseApplicationImpl.context, 16.0F);
+      localLayoutParams.rightMargin = UIUtils.a(BaseApplicationImpl.context, 16.0F);
       this.b.setLayoutParams(localLayoutParams);
     }
   }
   
-  protected void d()
+  public void b(boolean paramBoolean)
   {
-    super.d();
+    super.b(paramBoolean);
+    c();
+  }
+  
+  public void c()
+  {
+    super.c();
     RelativeLayout.LayoutParams localLayoutParams;
     if (this.jdField_a_of_type_AndroidWidgetButton != null)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setId(2131378994);
+      this.jdField_a_of_type_AndroidWidgetButton.setId(2131379425);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetButton.getLayoutParams();
       localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = UIUtils.dip2px(BaseApplicationImpl.context, 44.0F);
-      if (blfw.a()) {
+      localLayoutParams.rightMargin = UIUtils.a(BaseApplicationImpl.context, 44.0F);
+      if (ThemeImageWrapper.isNightMode()) {
         break label110;
       }
     }
@@ -76,16 +67,26 @@ public class AdvancedTipsBar
       if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
         localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-        localLayoutParams.addRule(0, 2131378994);
+        localLayoutParams.addRule(0, 2131379425);
         this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
       }
+      return;
+    }
+  }
+  
+  public void d()
+  {
+    if (!ThemeImageWrapper.isNightMode()) {}
+    for (int i = Color.parseColor("#03081A");; i = Color.parseColor("#FFFFFF"))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AdvancedTipsBar
  * JD-Core Version:    0.7.0.1
  */

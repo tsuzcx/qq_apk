@@ -7,21 +7,21 @@ import com.qq.taf.jce.JceStruct;
 public final class stConfInfo
   extends JceStruct
 {
-  public long bubbleEndTime;
-  public long bubbleStartTime;
-  public long collectTime;
-  public int defaultFeedPosition;
-  public int defaultTogetherFeed;
-  public int exclusive;
-  public int feedUseType;
+  public long bubbleEndTime = 0L;
+  public long bubbleStartTime = 0L;
+  public long collectTime = 0L;
+  public int defaultFeedPosition = 0;
+  public int defaultTogetherFeed = 0;
+  public int exclusive = 0;
+  public int feedUseType = 0;
   public String followFeed = "";
-  public long iStartPos;
-  public int iType;
-  public int isCollected;
+  public long iStartPos = 0L;
+  public int iType = 0;
+  public int isCollected = 0;
   public String strLabel = "";
   public String togetherFeed = "";
-  public int togetherType;
-  public int useCount;
+  public int togetherType = 0;
+  public int useCount = 0;
   
   public stConfInfo() {}
   

@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.weishi_new.download;
 
-import bjjq;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
+import com.tencent.open.appstore.dl.DownloadManagerV2;
 import com.tencent.open.downloadnew.DownloadInfo;
-import vmp;
 
-public final class WeishiDownloadUtil$3
+final class WeishiDownloadUtil$3
   implements Runnable
 {
-  public WeishiDownloadUtil$3(DownloadInfo paramDownloadInfo) {}
+  WeishiDownloadUtil$3(DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    vmp.d("WeishiDownloadUtil", "执行下载重试!!!,downloadUrl: " + this.a.d);
-    bjjq.a().b(this.a);
+    WSLog.d("WeishiDownloadUtil", "执行下载重试!!!,downloadUrl: " + this.a.d);
+    DownloadManagerV2.a().b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil.3
  * JD-Core Version:    0.7.0.1
  */

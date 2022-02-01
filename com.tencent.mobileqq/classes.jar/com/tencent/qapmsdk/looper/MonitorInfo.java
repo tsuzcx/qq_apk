@@ -8,6 +8,7 @@ class MonitorInfo
   IMonitorCallback callback;
   volatile long lastForceTime = 0L;
   volatile long lastStackRequestTime = 0L;
+  volatile boolean needCheck = false;
   volatile String scene = null;
   @Nullable
   volatile String stack = null;
@@ -17,7 +18,7 @@ class MonitorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.MonitorInfo
  * JD-Core Version:    0.7.0.1
  */

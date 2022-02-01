@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.widget.RemoteViews;
-import anvx;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.text.DecimalFormat;
 
@@ -23,11 +23,11 @@ public class PathTraceService$UpdateRunDataBroadCastReceiver
     long l = paramIntent.getLongExtra(PathTraceService.c, 0L);
     double d = paramIntent.getDoubleExtra(PathTraceService.d, 0.0D);
     if (i == 1) {
-      PathTraceService.a(this.a).setTextViewText(2131372115, anvx.a(2131707361));
+      PathTraceService.a(this.a).setTextViewText(2131372416, HardCodeUtil.a(2131707888));
     }
-    PathTraceService.a(this.a).setChronometer(2131372116, SystemClock.elapsedRealtime() - l * 1000L, null, false);
+    PathTraceService.a(this.a).setChronometer(2131372417, SystemClock.elapsedRealtime() - l * 1000L, null, false);
     paramContext = new DecimalFormat("######0.00");
-    PathTraceService.a(this.a).setTextViewText(2131372114, paramContext.format(d / 1000.0D) + "km");
+    PathTraceService.a(this.a).setTextViewText(2131372415, paramContext.format(d / 1000.0D) + "km");
     try
     {
       PathTraceService.a(this.a, PathTraceService.a(this.a).build());
@@ -42,7 +42,7 @@ public class PathTraceService$UpdateRunDataBroadCastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceService.UpdateRunDataBroadCastReceiver
  * JD-Core Version:    0.7.0.1
  */

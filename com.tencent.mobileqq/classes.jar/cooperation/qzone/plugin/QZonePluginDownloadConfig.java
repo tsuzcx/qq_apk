@@ -1,7 +1,7 @@
 package cooperation.qzone.plugin;
 
-import aavd;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.provider.ExtraConfig;
 import com.tencent.component.network.module.base.inter.IDownloadConfig;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -16,7 +16,7 @@ import mqq.app.AppRuntime;
 class QZonePluginDownloadConfig
   implements IDownloadConfig
 {
-  private long lastTime;
+  private long lastTime = 0L;
   
   private boolean isEnaough()
   {
@@ -94,7 +94,7 @@ class QZonePluginDownloadConfig
   
   public int getOperator()
   {
-    int i = aavd.a();
+    int i = ExtraConfig.a();
     if (QLog.isColorLevel()) {
       QLog.i("QZonePluginDownloadConfig", 2, "QzoneDownloadConfig ():WiFiCrarryType=" + i);
     }
@@ -165,7 +165,7 @@ class QZonePluginDownloadConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginDownloadConfig
  * JD-Core Version:    0.7.0.1
  */

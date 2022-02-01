@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import bfnw;
-
-public class TroopFileThumbnailGenMgr$1
+class TroopFileThumbnailGenMgr$1
   implements Runnable
 {
-  public TroopFileThumbnailGenMgr$1(bfnw parambfnw, String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask) {}
+  TroopFileThumbnailGenMgr$1(TroopFileThumbnailGenMgr paramTroopFileThumbnailGenMgr, String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask) {}
   
   public void run()
   {

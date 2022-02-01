@@ -67,7 +67,7 @@ public class ViewPager
   private int mCloseEnough;
   private int mCurItem;
   private int mDecorChildCount;
-  public int mDefaultGutterSize;
+  private int mDefaultGutterSize;
   private int mDrawingOrder;
   protected ArrayList<View> mDrawingOrderedChildren;
   private boolean mEdgeEffectEnabled;
@@ -95,7 +95,7 @@ public class ViewPager
   private int mMaximumVelocity;
   private int mMinimumVelocity;
   private boolean mNeedCalculatePageOffsets = false;
-  protected ViewPager.PagerObserver mObserver;
+  private ViewPager.PagerObserver mObserver;
   private int mOffscreenPageLimit = 1;
   private ViewPager.OnPageChangeListener mOnPageChangeListener;
   private List<ViewPager.OnPageChangeListener> mOnPageChangeListeners;
@@ -1013,7 +1013,7 @@ public class ViewPager
     return false;
   }
   
-  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return ((paramLayoutParams instanceof ViewPager.LayoutParams)) && (super.checkLayoutParams(paramLayoutParams));
   }
@@ -1254,7 +1254,7 @@ public class ViewPager
     }
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     Drawable localDrawable = this.mMarginDrawable;
@@ -1343,7 +1343,7 @@ public class ViewPager
     }
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     return new ViewPager.LayoutParams();
   }
@@ -1353,7 +1353,7 @@ public class ViewPager
     return new ViewPager.LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return generateDefaultLayoutParams();
   }
@@ -1363,7 +1363,7 @@ public class ViewPager
     return this.mAdapter;
   }
   
-  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
+  public int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     int i = paramInt2;
     if (this.mDrawingOrder == 2) {
@@ -1458,19 +1458,19 @@ public class ViewPager
     return this.mFakeDragging;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.mFirstLayout = true;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     removeCallbacks(this.mEndScrollRunnable);
     super.onDetachedFromWindow();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int k;
@@ -1631,7 +1631,7 @@ public class ViewPager
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i1 = getChildCount();
     int i3 = paramInt3 - paramInt1;
@@ -1776,7 +1776,7 @@ public class ViewPager
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(getDefaultSize(0, paramInt1), getDefaultSize(0, paramInt2));
     paramInt1 = getMeasuredWidth();
@@ -2031,7 +2031,7 @@ public class ViewPager
     this.mCalledSuper = true;
   }
   
-  protected boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
+  public boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
   {
     int k = -1;
     int j = getChildCount();
@@ -2090,7 +2090,7 @@ public class ViewPager
     return localSavedState;
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramInt1 != paramInt3) {
@@ -2910,7 +2910,7 @@ public class ViewPager
     }
   }
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public boolean verifyDrawable(Drawable paramDrawable)
   {
     return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.mMarginDrawable);
   }

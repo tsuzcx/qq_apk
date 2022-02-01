@@ -63,7 +63,7 @@ public class ConfessProgressView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     paramCanvas.drawCircle(this.b / 2.0F + this.d, this.c / 2.0F * 1.08F + this.e, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
@@ -78,7 +78,7 @@ public class ConfessProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessProgressView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahdc;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public class PttItemBuilder$4
+class PttItemBuilder$4
   implements Runnable
 {
-  public PttItemBuilder$4(ahdc paramahdc, String paramString1, String paramString2) {}
+  PttItemBuilder$4(PttItemBuilder paramPttItemBuilder, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -28,7 +27,7 @@ public class PttItemBuilder$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

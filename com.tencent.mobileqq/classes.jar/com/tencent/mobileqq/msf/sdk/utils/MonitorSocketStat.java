@@ -5,6 +5,7 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.msf.core.c.d;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.mobileqq.msf.service.MsfService;
@@ -116,7 +117,7 @@ public class MonitorSocketStat
             catch (Throwable localThrowable1)
             {
               QLog.d("MSF.D.MonitorSocket", 1, "" + localThrowable1, localThrowable1);
-              com.tencent.mobileqq.msf.sdk.report.e.a(localThrowable1);
+              com.tencent.mobileqq.msf.sdk.b.e.a(localThrowable1);
               this.running = false;
             }
           }

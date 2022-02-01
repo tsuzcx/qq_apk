@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/auf"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="56.0dip">
-        <TextView android:id="@id/title" android:text="@string/xug" style="@style/k6" />
-        <TextView android:textSize="14.0sp" android:textColor="#ffb0b3bf" android:id="@id/nv6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/xub" android:layout_toLeftOf="@id/yw" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/yw" android:background="@drawable/common_arrow_right_selector" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <RelativeLayout android:orientation="horizontal" android:id="@id/miv" android:layout_width="fill_parent" android:layout_height="165.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/jp7">
-        <RelativeLayout android:orientation="vertical" android:id="@id/mis" android:background="@drawable/ent" android:layout_width="fill_parent" android:layout_height="145.0dip" android:layout_marginBottom="20.5dip" android:layout_alignParentBottom="true">
-            <View android:id="@id/e_3" android:background="#fff2f3f5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="90.0dip" />
-            <View android:id="@id/e_4" android:background="#fff9f9fa" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="44.5dip" />
-        </RelativeLayout>
-        <LinearLayout android:orientation="horizontal" android:id="@id/mit" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="22.0dip" android:layout_marginRight="21.0dip" />
-    </RelativeLayout>
-    <RelativeLayout android:orientation="horizontal" android:id="@id/bhd" android:layout_width="fill_parent" android:layout_height="88.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="24.0dip" android:layout_below="@id/miv" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center" android:id="@id/n_v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:contentDescription="@string/image" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/nom" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="8.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+    <TextView android:textColor="@color/skin_over_header" android:id="@id/oel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqh" android:layout_centerInParent="true" />
+</LinearLayout>

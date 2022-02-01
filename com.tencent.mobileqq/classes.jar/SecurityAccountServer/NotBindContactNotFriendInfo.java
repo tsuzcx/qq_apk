@@ -8,14 +8,14 @@ public final class NotBindContactNotFriendInfo
   extends JceStruct
 {
   static byte[] cache_MobileNoMask = (byte[])new byte[1];
-  public byte[] MobileNoMask;
-  public int age;
+  public byte[] MobileNoMask = null;
+  public int age = 0;
   public String contactsInfoEncrypt = "";
-  public boolean isNew;
+  public boolean isNew = false;
   public String nickname = "";
-  public int sameFriend;
-  public int sex;
-  public long uAbiFlag;
+  public int sameFriend = 0;
+  public int sex = 0;
+  public long uAbiFlag = 0L;
   
   static
   {

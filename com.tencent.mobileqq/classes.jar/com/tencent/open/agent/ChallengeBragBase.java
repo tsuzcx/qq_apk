@@ -1,6 +1,5 @@
 package com.tencent.open.agent;
 
-import Override;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,13 +12,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import bjch;
-import bjci;
-import bjko;
-import bjlg;
-import bjlp;
-import bjpz;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.http.HttpCgiAsyncTask;
+import com.tencent.open.business.base.Constants;
+import com.tencent.open.settings.ServerSetting;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
@@ -32,10 +29,10 @@ public abstract class ChallengeBragBase
   protected ProgressDialog a;
   protected Bundle a;
   protected EditText a;
-  public TextView a;
+  protected TextView a;
   protected TextView b;
   protected TextView c;
-  public String c;
+  protected String c;
   protected String d;
   protected String e;
   protected String f;
@@ -43,16 +40,16 @@ public abstract class ChallengeBragBase
   protected String h;
   protected String i;
   protected String j;
-  protected String k;
-  protected String l;
+  protected String k = null;
+  protected String l = null;
   protected String m;
   protected String n;
   protected String o;
-  public String p;
+  protected String p;
   
   protected void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(2131690946), true);
+    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(2131691047), true);
     this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
     Bundle localBundle = new Bundle();
     localBundle.putString("appid", this.jdField_c_of_type_JavaLangString);
@@ -74,7 +71,7 @@ public abstract class ChallengeBragBase
       }
       localBundle.putString("appid_for_getting_config", this.jdField_c_of_type_JavaLangString);
     } while (this.n == null);
-    new bjlg(this.n, "GET", new bjch(this), true).a(localBundle);
+    new HttpCgiAsyncTask(this.n, "GET", new ChallengeBragBase.GetNickNameCallback(this), true).a(localBundle);
   }
   
   protected boolean a()
@@ -108,7 +105,7 @@ public abstract class ChallengeBragBase
     }
     catch (Exception localException)
     {
-      bjko.c("qqBaseActivity", "initParams exception." + localException.getMessage(), localException);
+      LogUtility.c("qqBaseActivity", "initParams exception." + localException.getMessage(), localException);
       c();
       return false;
     }
@@ -118,8 +115,8 @@ public abstract class ChallengeBragBase
     if (this.jdField_a_of_type_AndroidOsBundle.containsKey("source")) {
       this.k = this.jdField_a_of_type_AndroidOsBundle.getString("source");
     }
-    this.n = bjpz.a().a("https://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
-    this.o = bjpz.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_sendbragging.cgi");
+    this.n = ServerSetting.a().a("https://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
+    this.o = ServerSetting.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_sendbragging.cgi");
     return true;
   }
   
@@ -127,8 +124,8 @@ public abstract class ChallengeBragBase
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", -5);
-    localIntent.putExtra("key_error_msg", bjlp.jdField_c_of_type_JavaLangString);
-    bjko.e("qqBaseActivity", "initParams:error code:-5; error msg:" + bjlp.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("key_error_msg", Constants.jdField_c_of_type_JavaLangString);
+    LogUtility.e("qqBaseActivity", "initParams:error code:-5; error msg:" + Constants.jdField_c_of_type_JavaLangString);
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -138,13 +135,13 @@ public abstract class ChallengeBragBase
         String str = (String)localIterator.next();
         localStringBuilder.append(str + ": " + this.jdField_a_of_type_AndroidOsBundle.get(str).toString() + " ");
       }
-      bjko.e("qqBaseActivity", "params=" + localStringBuilder.toString());
+      LogUtility.e("qqBaseActivity", "params=" + localStringBuilder.toString());
     }
     super.setResult(-1, localIntent);
     super.finish();
   }
   
-  public void d()
+  protected void d()
   {
     if ((this.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
       this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
@@ -184,7 +181,7 @@ public abstract class ChallengeBragBase
       localBundle.putString("sendmsg", this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
       localBundle.putString("imgurl", this.j);
       localBundle.putString("receiver", this.h);
-      i1 = 2131690965;
+      i1 = 2131691066;
       if ("action_brag".equals(this.p))
       {
         localBundle.putString("typeid", "52");
@@ -196,7 +193,7 @@ public abstract class ChallengeBragBase
           localBundle.putString("pf", this.l);
         }
         this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(i1), true);
-        new bjlg(this.o, "POST", new bjci(this), true).a(localBundle);
+        new HttpCgiAsyncTask(this.o, "POST", new ChallengeBragBase.SendChallengeCallback(this), true).a(localBundle);
       }
     }
     for (;;)
@@ -207,7 +204,7 @@ public abstract class ChallengeBragBase
         break;
       }
       localBundle.putString("typeid", "53");
-      i1 = 2131690966;
+      i1 = 2131691067;
       break;
       if (paramView == this.jdField_c_of_type_AndroidWidgetTextView)
       {
@@ -226,7 +223,7 @@ public abstract class ChallengeBragBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.ChallengeBragBase
  * JD-Core Version:    0.7.0.1
  */

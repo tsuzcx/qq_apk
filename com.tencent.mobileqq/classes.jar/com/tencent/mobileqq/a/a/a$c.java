@@ -2,9 +2,7 @@ package com.tencent.mobileqq.a.a;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.auth.b;
-import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.d;
-import com.tencent.mobileqq.msf.core.net.j;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -27,7 +25,7 @@ public class a$c
     if (!paramBoolean) {
       a.b = false;
     }
-    if ((this.b) && (this.c != null) && (j.a(this.c))) {
+    if ((this.b) && (this.c != null) && (com.tencent.mobileqq.msf.core.net.j.a(this.c))) {
       a.b = true;
     }
   }
@@ -50,7 +48,7 @@ public class a$c
     label235:
     for (int i = 2;; i = 1)
     {
-      if (j.a(this.c))
+      if (com.tencent.mobileqq.msf.core.net.j.a(this.c))
       {
         a.b = true;
         QLog.i("ConnQualityStat", 1, "conn is cross oper!!! " + this.c.toString());

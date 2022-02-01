@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.model;
 
-import aupm;
+import com.tencent.mobileqq.flutter.utils.ModelUtils;
 import java.util.Map;
 
 public class CardCoverData
@@ -19,12 +19,12 @@ public class CardCoverData
   
   public static CardCoverData fromMap(Map paramMap)
   {
-    return (CardCoverData)aupm.a(paramMap, CardCoverData.class);
+    return (CardCoverData)ModelUtils.a(paramMap, CardCoverData.class);
   }
   
   public static Map toMap(CardCoverData paramCardCoverData)
   {
-    return aupm.a(paramCardCoverData);
+    return ModelUtils.a(paramCardCoverData);
   }
   
   public String toString()
@@ -38,7 +38,7 @@ public class CardCoverData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.model.CardCoverData
  * JD-Core Version:    0.7.0.1
  */

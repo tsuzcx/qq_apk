@@ -24,7 +24,7 @@ public class ScaleFitXYFrameLayout
     paramContext.recycle();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getMode(paramInt1);
     int j = View.MeasureSpec.getSize(paramInt1);
@@ -54,7 +54,7 @@ public class ScaleFitXYFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ScaleFitXYFrameLayout
  * JD-Core Version:    0.7.0.1
  */

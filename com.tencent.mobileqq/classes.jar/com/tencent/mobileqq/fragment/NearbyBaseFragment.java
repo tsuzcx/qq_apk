@@ -11,63 +11,57 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import bidf;
-import bkys;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
+import com.tencent.mobileqq.webview.AbsWebView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.util.WeakReferenceHandler;
 
 public class NearbyBaseFragment
   extends BaseFragment
   implements Handler.Callback
 {
-  public static int b;
-  public Handler a;
-  public NearbyAppInterface a;
-  public NearbyTabInfo a;
+  public static int b = 0;
+  Handler jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  NearbyTabInfo jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo = null;
   int c = 5000;
-  private boolean d;
+  private boolean d = false;
   boolean e;
   boolean f;
-  public boolean g;
-  
-  public NearbyBaseFragment()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo = null;
-    this.jdField_a_of_type_AndroidOsHandler = new bkys(Looper.getMainLooper(), this);
-  }
-  
-  public bidf a()
-  {
-    return null;
-  }
+  protected boolean g = false;
   
   protected NearbyAppInterface a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
   }
   
+  public AbsWebView a()
+  {
+    return null;
+  }
+  
   public void a()
   {
-    bidf localbidf = a();
-    if ((localbidf == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
+    AbsWebView localAbsWebView = a();
+    if ((localAbsWebView == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
     }
     try
     {
-      int i = localbidf.mWebview.getWebScrollY();
-      int j = localbidf.mWebview.getHeight();
+      int i = localAbsWebView.mWebview.getWebScrollY();
+      int j = localAbsWebView.mWebview.getHeight();
       if (QLog.isColorLevel()) {
         QLog.d("NearbyBaseFragment", 2, "gotoFragmentHead, scrollY=" + i + ", webH=" + j + ", maxV=" + this.c);
       }
       if (i > j)
       {
-        localbidf.mWebview.getView().scrollTo(0, j);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbidf), 60L);
+        localAbsWebView.mWebview.getView().scrollTo(0, j);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localAbsWebView), 60L);
         return;
       }
     }
@@ -85,9 +79,9 @@ public class NearbyBaseFragment
     this.jdField_a_of_type_Int = paramNearbyTabInfo.tabIndex;
   }
   
-  public void aC_()
+  public void aE_()
   {
-    super.aC_();
+    super.aE_();
     if (!this.e)
     {
       if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.f) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
@@ -212,7 +206,7 @@ public class NearbyBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyBaseFragment
  * JD-Core Version:    0.7.0.1
  */

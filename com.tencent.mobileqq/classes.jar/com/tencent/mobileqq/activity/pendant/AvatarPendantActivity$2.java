@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import akkz;
+import com.tencent.mobileqq.activity.photo.SdkDynamicAvatarSettingHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class AvatarPendantActivity$2
@@ -12,7 +12,7 @@ class AvatarPendantActivity$2
   {
     try
     {
-      akkz.a(this.this$0);
+      SdkDynamicAvatarSettingHelper.a(this.this$0);
       return;
     }
     catch (Exception localException)
@@ -23,7 +23,7 @@ class AvatarPendantActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.2
  * JD-Core Version:    0.7.0.1
  */

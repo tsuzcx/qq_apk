@@ -1,12 +1,13 @@
 package com.tencent.hippy.qq.module.tkd;
 
-import acwz;
 import com.tencent.beacon.event.UserAction;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.ug.RIJUGJsonUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.hippy.qq.view.tkd.listview.HippyTKDListView;
+import com.tencent.kingkong.DataReport;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -21,7 +22,6 @@ import com.tencent.qphone.base.util.BaseApplication;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import org.jetbrains.annotations.Nullable;
-import pqp;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 @HippyNativeModule(name="TKDDeviceModule")
@@ -38,7 +38,7 @@ public class TKDDeviceModule
   private static String getApnType()
   {
     String str = "";
-    int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
+    int i = NetworkUtil.b(BaseApplicationImpl.getContext());
     if (1 == i) {
       str = "wifi";
     }
@@ -62,13 +62,13 @@ public class TKDDeviceModule
   {
     HippyMap localHippyMap = new HippyMap();
     localHippyMap.pushString("guid", TKDAccountModule.getCurAccountInfo().qqNum);
-    localHippyMap.pushString("qua", pqp.c());
-    localHippyMap.pushString("qua2", pqp.c());
-    localHippyMap.pushString("macAddress", DeviceInfoUtil.getLocalMacAddress(BaseApplicationImpl.getApplication().getApplicationContext()));
+    localHippyMap.pushString("qua", RIJUGJsonUtils.c());
+    localHippyMap.pushString("qua2", RIJUGJsonUtils.c());
+    localHippyMap.pushString("macAddress", DeviceInfoUtil.c(BaseApplicationImpl.getApplication().getApplicationContext()));
     localHippyMap.pushString("networkType", getApnType());
-    localHippyMap.pushString("id", acwz.p());
+    localHippyMap.pushString("id", DataReport.p());
     localHippyMap.pushString("qimei", UserAction.getQIMEI());
-    localHippyMap.pushString("dpi", String.valueOf(ViewUtils.getDensityDpi()));
+    localHippyMap.pushString("dpi", String.valueOf(ViewUtils.c()));
     localHippyMap.pushBoolean("isKingCardUser", HippyTKDListView.isKingCardMobileNetWork());
     return localHippyMap;
   }
@@ -77,10 +77,10 @@ public class TKDDeviceModule
   private qq_ad_get.QQAdGet.DeviceInfo getGdtDeviceInfo()
   {
     Object localObject = new GdtDeviceInfoHelper.Params();
-    ((GdtDeviceInfoHelper.Params)localObject).businessIdForAidTicketAndTaidTicket = "ce2d9f";
-    localObject = GdtDeviceInfoHelper.create(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
+    ((GdtDeviceInfoHelper.Params)localObject).a = "ce2d9f";
+    localObject = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
     if (localObject != null) {
-      return ((GdtDeviceInfoHelper.Result)localObject).deviceInfo;
+      return ((GdtDeviceInfoHelper.Result)localObject).a;
     }
     return null;
   }
@@ -291,7 +291,7 @@ public class TKDDeviceModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDDeviceModule
  * JD-Core Version:    0.7.0.1
  */

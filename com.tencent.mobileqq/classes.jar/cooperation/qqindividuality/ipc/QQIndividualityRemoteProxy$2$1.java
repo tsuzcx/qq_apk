@@ -1,29 +1,26 @@
 package cooperation.qqindividuality.ipc;
 
-import bmde;
-import bmdf;
-import bmdg;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class QQIndividualityRemoteProxy$2$1
+class QQIndividualityRemoteProxy$2$1
   extends Thread
 {
-  public QQIndividualityRemoteProxy$2$1(bmdf parambmdf) {}
+  QQIndividualityRemoteProxy$2$1(QQIndividualityRemoteProxy.2 param2) {}
   
   public void run()
   {
     while (!this.a.a.a.isEmpty())
     {
-      bmdg localbmdg = (bmdg)this.a.a.a.poll();
-      if (localbmdg != null) {
-        this.a.a.a(localbmdg);
+      QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper localQQIndividualityRemoteProxyCallWrapper = (QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper)this.a.a.a.poll();
+      if (localQQIndividualityRemoteProxyCallWrapper != null) {
+        this.a.a.a(localQQIndividualityRemoteProxyCallWrapper);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.2.1
  * JD-Core Version:    0.7.0.1
  */

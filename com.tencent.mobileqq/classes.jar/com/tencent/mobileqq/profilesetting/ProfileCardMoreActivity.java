@@ -1,11 +1,5 @@
 package com.tencent.mobileqq.profilesetting;
 
-import Override;
-import aaqo;
-import aebq;
-import aebs;
-import aeow;
-import amdh;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -24,140 +18,143 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import anri;
-import anvi;
-import anvk;
-import anvx;
-import anyz;
-import aodm;
-import aqjm;
-import aqjn;
-import aupt;
-import auzh;
-import awtp;
-import axlr;
-import axms;
-import axmv;
-import azre;
-import bagd;
-import bage;
-import bagf;
-import bagg;
-import bagh;
-import bagi;
-import bagj;
-import bagk;
-import bagl;
-import bagm;
-import bbcv;
-import bbcz;
-import bcrg;
-import bdla;
-import bdnr;
-import bdnu;
-import bdnv;
-import bdpx;
-import bdqn;
-import bdry;
-import bdsv;
-import bhaa;
-import bhbx;
-import bisl;
-import bjxa;
-import bkzi;
+import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
+import com.tencent.biz.webviewplugin.NewReportPlugin;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.FriendProfilePhotoHelper;
+import com.tencent.mobileqq.activity.FriendProfilePhotoHelper.ProfilePhotoCallback;
 import com.tencent.mobileqq.activity.MoveToGroupActivity;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.activity.aio.IntimateInfoFragment;
+import com.tencent.mobileqq.activity.aio.intimate.IntimateUtil;
 import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.specialcare.SpecialCareUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ShieldListObserver;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.businessCard.BusinessCardManager;
+import com.tencent.mobileqq.businessCard.BusinessCardObserver;
 import com.tencent.mobileqq.businessCard.data.BusinessCard;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.friends.intimate.IntimateInfoObserver;
+import com.tencent.mobileqq.managers.ShieldMsgManger;
+import com.tencent.mobileqq.mutualmark.MutualMarkDataCenter;
+import com.tencent.mobileqq.mutualmark.info.MutualMarkForDisplayInfo;
+import com.tencent.mobileqq.mutualmark.oldlogic.FriendIntimateRelationshipHelper;
+import com.tencent.mobileqq.profile.ProfileCardShareHelper;
+import com.tencent.mobileqq.profilecard.observer.ProfileCardObserver;
+import com.tencent.mobileqq.profilecard.processor.TempGetProfileDetailProcessor;
+import com.tencent.mobileqq.profilecard.utils.ProfileServiceUtils;
+import com.tencent.mobileqq.relationx.friendclue.FriendClueConfigHelper;
+import com.tencent.mobileqq.relationx.friendclue.FriendClueReporter;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
+import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
+import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout2;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutDefault;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.util.SharePreferenceUtils;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.FormItemRelativeLayout;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qidian.QidianManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.theme.SkinnableBitmapDrawable;
+import com.tencent.widget.ActionSheet;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
+import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.util.QZoneDistributedAppCtrl;
 import cooperation.qzone.util.QZoneDistributedAppCtrl.Control;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import nut;
 
 public class ProfileCardMoreActivity
   extends IphoneTitleBarActivity
-  implements aebs, View.OnClickListener, CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, FriendProfilePhotoHelper.ProfilePhotoCallback
 {
-  public int a;
-  public aebq a;
-  public Intent a;
+  int jdField_a_of_type_Int = 0;
+  Intent jdField_a_of_type_AndroidContentIntent;
   Bundle jdField_a_of_type_AndroidOsBundle;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  anvi jdField_a_of_type_Anvi = new bagk(this);
-  anyz jdField_a_of_type_Anyz = new bagi(this);
-  aodm jdField_a_of_type_Aodm = new bagj(this);
-  aqjm jdField_a_of_type_Aqjm;
-  aqjn jdField_a_of_type_Aqjn = new bagl(this);
-  auzh jdField_a_of_type_Auzh = new bagd(this);
-  private azre jdField_a_of_type_Azre;
-  bbcv jdField_a_of_type_Bbcv;
-  public bisl a;
-  public ProfileActivity.AllInOne a;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new bagm(this);
-  public BusinessCard a;
+  public FriendProfilePhotoHelper a;
+  ProfileActivity.AllInOne jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne;
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ProfileCardMoreActivity.9(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ProfileCardMoreActivity.7(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ProfileCardMoreActivity.5(this);
+  ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new ProfileCardMoreActivity.6(this);
+  BusinessCardManager jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager;
+  BusinessCardObserver jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardObserver = new ProfileCardMoreActivity.8(this);
+  BusinessCard jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard;
+  IntimateInfoObserver jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoObserver = new ProfileCardMoreActivity.11(this);
+  private ProfileCardShareHelper jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper;
+  private ProfileCardObserver jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver = new ProfileCardMoreActivity.10(this);
+  FriendClueConfigHelper jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueConfigHelper;
   FormItemRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetFormItemRelativeLayout;
-  public FormSimpleItem a;
-  public FormSwitchItem a;
+  FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+  FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  public QQProgressDialog a;
   Boolean jdField_a_of_type_JavaLangBoolean = null;
+  private ClassLoader jdField_a_of_type_JavaLangClassLoader = null;
   String jdField_a_of_type_JavaLangString;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bagg(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new ProfileCardMoreActivity.15(this);
   boolean jdField_a_of_type_Boolean;
   int[] jdField_a_of_type_ArrayOfInt;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   public ProfileActivity.AllInOne b;
   FormSimpleItem jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-  public FormSwitchItem b;
+  FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private Boolean jdField_b_of_type_JavaLangBoolean = Boolean.valueOf(false);
   String jdField_b_of_type_JavaLangString;
   boolean jdField_b_of_type_Boolean;
-  FormSimpleItem c;
-  public FormSwitchItem c;
-  public String c;
-  FormSimpleItem d;
-  public FormSwitchItem d;
-  public String d;
+  FormSimpleItem jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+  FormSwitchItem jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  String jdField_c_of_type_JavaLangString;
+  FormSimpleItem jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+  FormSwitchItem jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  String jdField_d_of_type_JavaLangString;
   FormSimpleItem jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   String jdField_e_of_type_JavaLangString;
   FormSimpleItem jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem;
@@ -169,17 +166,12 @@ public class ProfileCardMoreActivity
   FormSimpleItem j;
   FormSimpleItem k;
   
-  public ProfileCardMoreActivity()
+  private static AbsStructMsgItem a(String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  private static bdnv a(String paramString)
-  {
-    bdry localbdry = new bdry();
-    localbdry.b(1);
-    localbdry.a(paramString);
-    return localbdry;
+    StructMsgItemLayoutDefault localStructMsgItemLayoutDefault = new StructMsgItemLayoutDefault();
+    localStructMsgItemLayoutDefault.b(1);
+    localStructMsgItemLayoutDefault.a(paramString);
+    return localStructMsgItemLayoutDefault;
   }
   
   private void a(int paramInt, Intent paramIntent)
@@ -207,9 +199,9 @@ public class ProfileCardMoreActivity
   private void b(boolean paramBoolean)
   {
     boolean bool2 = true;
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      a(2131692125, 1);
+      notifyUser(2131692257, 1);
       d();
       return;
     }
@@ -250,13 +242,13 @@ public class ProfileCardMoreActivity
         continue;
         label128:
         if (paramBoolean) {
-          a(2131718803, 1);
+          notifyUser(2131719328, 1);
         }
         for (;;)
         {
           d();
           return;
-          a(2131718805, 1);
+          notifyUser(2131719330, 1);
         }
         int m = 0;
       }
@@ -267,21 +259,17 @@ public class ProfileCardMoreActivity
   {
     boolean bool = false;
     Object localObject;
-    axms localaxms;
     int m;
     if (this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem.getVisibility() == 0)
     {
       localObject = "";
-      localaxms = axlr.a(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, true);
-      if (localaxms == null) {
-        break label218;
+      MutualMarkForDisplayInfo localMutualMarkForDisplayInfo = MutualMarkDataCenter.a(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, true);
+      if (localMutualMarkForDisplayInfo == null) {
+        break label141;
       }
-      if (localaxms.a != 1L) {
-        break label122;
-      }
-      localObject = getString(2131693302);
-      m = localaxms.c;
-      bool = localaxms.c();
+      localObject = IntimateUtil.a(this, localMutualMarkForDisplayInfo.a);
+      m = localMutualMarkForDisplayInfo.c;
+      bool = localMutualMarkForDisplayInfo.b();
     }
     for (;;)
     {
@@ -292,9 +280,8 @@ public class ProfileCardMoreActivity
         if ((localObject instanceof SkinnableBitmapDrawable))
         {
           localObject = ((SkinnableBitmapDrawable)localObject).mutate2();
-          label103:
           if (!bool) {
-            break label199;
+            break label122;
           }
           ((Drawable)localObject).setAlpha(102);
         }
@@ -302,31 +289,15 @@ public class ProfileCardMoreActivity
         {
           this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon((Drawable)localObject);
           return;
-          label122:
-          if (localaxms.a == 2L)
-          {
-            localObject = getString(2131693300);
-            break;
-          }
-          if (localaxms.a == 3L)
-          {
-            localObject = getString(2131693301);
-            break;
-          }
-          if (localaxms.a != 26L) {
-            break;
-          }
-          localObject = getString(2131693303);
-          break;
           localObject = ((Drawable)localObject).mutate();
-          break label103;
-          label199:
+          break;
+          label122:
           ((Drawable)localObject).setAlpha(255);
         }
       }
       this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
       return;
-      label218:
+      label141:
       m = 0;
     }
   }
@@ -344,8 +315,8 @@ public class ProfileCardMoreActivity
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-      if (AppSetting.c) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131690681));
+      if (AppSetting.d) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131690783));
       }
     }
   }
@@ -357,1610 +328,1612 @@ public class ProfileCardMoreActivity
     //   0: aload_1
     //   1: ifnull +13 -> 14
     //   4: aload_1
-    //   5: invokevirtual 351	java/lang/String:trim	()Ljava/lang/String;
-    //   8: invokevirtual 354	java/lang/String:length	()I
+    //   5: invokevirtual 355	java/lang/String:trim	()Ljava/lang/String;
+    //   8: invokevirtual 358	java/lang/String:length	()I
     //   11: ifne +5 -> 16
     //   14: iconst_m1
     //   15: ireturn
     //   16: aload_0
-    //   17: getfield 205	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   20: invokevirtual 358	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
-    //   23: invokevirtual 364	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   17: getfield 214	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   20: invokevirtual 362	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   23: invokevirtual 368	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   26: astore 11
     //   28: aload 11
-    //   30: ifnull +3439 -> 3469
+    //   30: ifnull +3441 -> 3471
     //   33: aload 11
-    //   35: ldc_w 366
+    //   35: ldc_w 370
     //   38: aload_1
-    //   39: invokevirtual 372	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   42: checkcast 366	com/tencent/mobileqq/data/BmqqUserSimpleInfo
+    //   39: invokevirtual 376	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   42: checkcast 370	com/tencent/mobileqq/data/BmqqUserSimpleInfo
     //   45: astore 15
     //   47: aload 11
     //   49: ifnull +8 -> 57
     //   52: aload 11
-    //   54: invokevirtual 375	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   54: invokevirtual 379	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   57: aload 15
     //   59: ifnonnull +5 -> 64
     //   62: iconst_m1
     //   63: ireturn
     //   64: aload_0
-    //   65: getfield 377	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   68: invokestatic 383	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   71: ifne +877 -> 948
+    //   65: getfield 381	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   68: invokestatic 387	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   71: ifne +879 -> 950
     //   74: aload_0
-    //   75: getfield 377	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   75: getfield 381	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   78: astore 12
     //   80: iconst_0
     //   81: istore_2
     //   82: iconst_0
-    //   83: istore 4
-    //   85: aconst_null
-    //   86: astore 13
-    //   88: aload_0
-    //   89: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   92: astore 16
-    //   94: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   97: astore 14
-    //   99: new 154	java/lang/StringBuilder
-    //   102: dup
-    //   103: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   106: ldc_w 395
-    //   109: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: aload 12
-    //   114: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: ldc_w 397
-    //   120: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: astore 11
-    //   128: aload 16
-    //   130: aload 14
-    //   132: iconst_4
-    //   133: anewarray 348	java/lang/String
-    //   136: dup
-    //   137: iconst_0
-    //   138: ldc_w 399
-    //   141: aastore
-    //   142: dup
-    //   143: iconst_1
-    //   144: ldc_w 401
-    //   147: aastore
-    //   148: dup
-    //   149: iconst_2
-    //   150: ldc_w 403
-    //   153: aastore
-    //   154: dup
-    //   155: iconst_3
-    //   156: ldc_w 405
-    //   159: aastore
-    //   160: aload 11
+    //   83: istore_3
+    //   84: aconst_null
+    //   85: astore 13
+    //   87: aload_0
+    //   88: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   91: astore 11
+    //   93: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   96: astore 14
+    //   98: new 163	java/lang/StringBuilder
+    //   101: dup
+    //   102: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   105: ldc_w 399
+    //   108: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: aload 12
+    //   113: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: ldc_w 401
+    //   119: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: astore 16
+    //   127: aload 11
+    //   129: aload 14
+    //   131: iconst_4
+    //   132: anewarray 352	java/lang/String
+    //   135: dup
+    //   136: iconst_0
+    //   137: ldc_w 403
+    //   140: aastore
+    //   141: dup
+    //   142: iconst_1
+    //   143: ldc_w 405
+    //   146: aastore
+    //   147: dup
+    //   148: iconst_2
+    //   149: ldc_w 407
+    //   152: aastore
+    //   153: dup
+    //   154: iconst_3
+    //   155: ldc_w 409
+    //   158: aastore
+    //   159: aload 16
+    //   161: aconst_null
     //   162: aconst_null
-    //   163: aconst_null
-    //   164: invokevirtual 411	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   167: astore 11
-    //   169: iconst_0
-    //   170: istore_3
+    //   163: invokevirtual 415	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   166: astore 11
+    //   168: iconst_0
+    //   169: istore 4
     //   171: lconst_0
     //   172: lstore 8
-    //   174: iload 4
-    //   176: istore_2
-    //   177: aload 11
-    //   179: ifnull +3277 -> 3456
-    //   182: aload 11
-    //   184: invokeinterface 416 1 0
-    //   189: istore 10
-    //   191: iload 10
-    //   193: ifeq +3263 -> 3456
-    //   196: aload 11
-    //   198: iconst_0
-    //   199: invokeinterface 420 2 0
-    //   204: lstore 6
-    //   206: iload_2
-    //   207: istore 4
-    //   209: aload 15
-    //   211: getfield 423	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
-    //   214: astore 13
-    //   216: aload 13
-    //   218: ifnull +873 -> 1091
-    //   221: aconst_null
-    //   222: astore 14
-    //   224: aload_0
-    //   225: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   228: astore 16
-    //   230: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   233: astore 17
-    //   235: new 154	java/lang/StringBuilder
-    //   238: dup
-    //   239: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   242: ldc_w 425
-    //   245: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   248: lload 6
-    //   250: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   253: ldc_w 430
-    //   256: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: ldc_w 403
-    //   262: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: ldc_w 432
-    //   268: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: ldc_w 434
-    //   274: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   277: ldc_w 436
-    //   280: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   283: ldc_w 405
-    //   286: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: ldc_w 432
-    //   292: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: aload 15
-    //   297: getfield 423	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
-    //   300: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   303: ldc_w 436
-    //   306: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   309: ldc_w 438
-    //   312: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: ldc_w 432
-    //   318: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   321: iconst_2
-    //   322: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   325: ldc_w 397
-    //   328: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   331: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   334: astore 13
-    //   336: aload 16
+    //   174: iload_3
+    //   175: istore_2
+    //   176: iload 4
+    //   178: istore_3
+    //   179: aload 11
+    //   181: ifnull +3277 -> 3458
+    //   184: aload 11
+    //   186: invokeinterface 420 1 0
+    //   191: istore 10
+    //   193: iload 10
+    //   195: ifeq +3263 -> 3458
+    //   198: aload 11
+    //   200: iconst_0
+    //   201: invokeinterface 424 2 0
+    //   206: lstore 6
+    //   208: iload_2
+    //   209: istore 4
+    //   211: aload 15
+    //   213: getfield 427	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
+    //   216: astore 13
+    //   218: aload 13
+    //   220: ifnull +873 -> 1093
+    //   223: aconst_null
+    //   224: astore 14
+    //   226: aload_0
+    //   227: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   230: astore 17
+    //   232: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   235: astore 13
+    //   237: new 163	java/lang/StringBuilder
+    //   240: dup
+    //   241: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   244: ldc_w 429
+    //   247: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: lload 6
+    //   252: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   255: ldc_w 434
+    //   258: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: ldc_w 407
+    //   264: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: ldc_w 436
+    //   270: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   273: ldc_w 438
+    //   276: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   279: ldc_w 440
+    //   282: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   285: ldc_w 409
+    //   288: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: ldc_w 436
+    //   294: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: aload 15
+    //   299: getfield 427	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
+    //   302: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   305: ldc_w 440
+    //   308: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   311: ldc_w 442
+    //   314: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   317: ldc_w 436
+    //   320: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   323: iconst_2
+    //   324: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   327: ldc_w 401
+    //   330: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   333: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   336: astore 16
     //   338: aload 17
-    //   340: iconst_5
-    //   341: anewarray 348	java/lang/String
-    //   344: dup
-    //   345: iconst_0
-    //   346: ldc_w 399
-    //   349: aastore
-    //   350: dup
-    //   351: iconst_1
-    //   352: ldc_w 401
-    //   355: aastore
-    //   356: dup
-    //   357: iconst_2
-    //   358: ldc_w 403
-    //   361: aastore
-    //   362: dup
-    //   363: iconst_3
-    //   364: ldc_w 405
-    //   367: aastore
-    //   368: dup
-    //   369: iconst_4
-    //   370: ldc_w 438
-    //   373: aastore
-    //   374: aload 13
-    //   376: aconst_null
-    //   377: aconst_null
-    //   378: invokevirtual 411	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   381: astore 13
-    //   383: aload 13
-    //   385: ifnull +594 -> 979
-    //   388: aload 13
-    //   390: invokeinterface 444 1 0
-    //   395: istore 10
-    //   397: iload 10
-    //   399: ifeq +580 -> 979
-    //   402: iconst_1
-    //   403: istore_3
+    //   340: aload 13
+    //   342: iconst_5
+    //   343: anewarray 352	java/lang/String
+    //   346: dup
+    //   347: iconst_0
+    //   348: ldc_w 403
+    //   351: aastore
+    //   352: dup
+    //   353: iconst_1
+    //   354: ldc_w 405
+    //   357: aastore
+    //   358: dup
+    //   359: iconst_2
+    //   360: ldc_w 407
+    //   363: aastore
+    //   364: dup
+    //   365: iconst_3
+    //   366: ldc_w 409
+    //   369: aastore
+    //   370: dup
+    //   371: iconst_4
+    //   372: ldc_w 442
+    //   375: aastore
+    //   376: aload 16
+    //   378: aconst_null
+    //   379: aconst_null
+    //   380: invokevirtual 415	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   383: astore 13
+    //   385: aload 13
+    //   387: ifnull +594 -> 981
+    //   390: aload 13
+    //   392: invokeinterface 448 1 0
+    //   397: istore 10
+    //   399: iload 10
+    //   401: ifeq +580 -> 981
     //   404: iconst_1
-    //   405: istore_2
-    //   406: aload 13
-    //   408: invokeinterface 445 1 0
-    //   413: iconst_0
-    //   414: ifeq +3035 -> 3449
-    //   417: new 447	java/lang/NullPointerException
-    //   420: dup
-    //   421: invokespecial 448	java/lang/NullPointerException:<init>	()V
-    //   424: athrow
-    //   425: iload_3
-    //   426: istore 5
-    //   428: lload 6
-    //   430: lstore 8
-    //   432: iload_2
-    //   433: istore 4
-    //   435: aload 11
-    //   437: ifnull +2999 -> 3436
-    //   440: aload 11
-    //   442: invokeinterface 445 1 0
-    //   447: iload_3
-    //   448: ifne +669 -> 1117
-    //   451: iconst_1
-    //   452: istore_3
-    //   453: iconst_0
-    //   454: istore_2
-    //   455: new 450	android/content/ContentValues
-    //   458: dup
-    //   459: invokespecial 451	android/content/ContentValues:<init>	()V
-    //   462: astore 13
-    //   464: iload_3
-    //   465: iconst_1
-    //   466: if_icmpne +669 -> 1135
-    //   469: aload_0
-    //   470: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   473: getstatic 454	android/provider/ContactsContract$RawContacts:CONTENT_URI	Landroid/net/Uri;
-    //   476: aload 13
-    //   478: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   481: invokestatic 464	android/content/ContentUris:parseId	(Landroid/net/Uri;)J
-    //   484: lstore 6
-    //   486: aload 12
-    //   488: invokestatic 383	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   491: ifne +55 -> 546
-    //   494: aload 13
-    //   496: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   499: aload 13
-    //   501: ldc_w 399
-    //   504: lload 6
-    //   506: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   509: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   512: aload 13
-    //   514: ldc_w 403
-    //   517: ldc_w 476
-    //   520: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   523: aload 13
-    //   525: ldc_w 405
-    //   528: aload 12
-    //   530: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   533: aload_0
-    //   534: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   537: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   540: aload 13
-    //   542: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   545: pop
-    //   546: aload 15
-    //   548: getfield 482	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
-    //   551: ifnonnull +11 -> 562
-    //   554: aload 15
-    //   556: getfield 485	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
-    //   559: ifnull +99 -> 658
-    //   562: aload 13
-    //   564: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   567: aload 13
-    //   569: ldc_w 399
-    //   572: lload 6
-    //   574: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   577: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   580: aload 13
-    //   582: ldc_w 403
-    //   585: ldc_w 487
-    //   588: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   591: aload 15
-    //   593: getfield 485	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
-    //   596: ifnull +16 -> 612
-    //   599: aload 13
-    //   601: ldc_w 405
-    //   604: aload 15
-    //   606: getfield 485	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
-    //   609: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   612: aload 15
-    //   614: getfield 482	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
-    //   617: ifnull +16 -> 633
-    //   620: aload 13
-    //   622: ldc_w 489
-    //   625: aload 15
-    //   627: getfield 482	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
-    //   630: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   633: aload 13
-    //   635: ldc_w 438
-    //   638: iconst_1
-    //   639: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   642: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   645: aload_0
-    //   646: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   649: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   652: aload 13
-    //   654: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   657: pop
-    //   658: aload 15
-    //   660: getfield 423	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
-    //   663: ifnull +70 -> 733
-    //   666: aload 13
-    //   668: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   671: aload 13
-    //   673: ldc_w 399
-    //   676: lload 6
-    //   678: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   681: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   684: aload 13
-    //   686: ldc_w 403
-    //   689: ldc_w 434
-    //   692: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   695: aload 13
-    //   697: ldc_w 405
-    //   700: aload 15
-    //   702: getfield 423	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
-    //   705: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   708: aload 13
-    //   710: ldc_w 438
-    //   713: iconst_2
-    //   714: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   717: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   720: aload_0
-    //   721: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   724: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   727: aload 13
-    //   729: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   732: pop
-    //   733: aload 15
-    //   735: getfield 500	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqTelphone	Ljava/lang/String;
-    //   738: ifnull +70 -> 808
-    //   741: aload 13
-    //   743: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   746: aload 13
-    //   748: ldc_w 399
-    //   751: lload 6
-    //   753: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   756: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   759: aload 13
-    //   761: ldc_w 403
-    //   764: ldc_w 434
-    //   767: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   770: aload 13
-    //   772: ldc_w 405
-    //   775: aload 15
-    //   777: getfield 500	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqTelphone	Ljava/lang/String;
-    //   780: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   783: aload 13
-    //   785: ldc_w 438
-    //   788: iconst_3
-    //   789: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   792: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   795: aload_0
-    //   796: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   799: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   802: aload 13
-    //   804: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   807: pop
-    //   808: aload 15
-    //   810: getfield 503	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqEmail	Ljava/lang/String;
-    //   813: ifnull +70 -> 883
-    //   816: aload 13
-    //   818: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   821: aload 13
-    //   823: ldc_w 399
-    //   826: lload 6
-    //   828: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   831: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   834: aload 13
-    //   836: ldc_w 403
-    //   839: ldc_w 505
-    //   842: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   845: aload 13
-    //   847: ldc_w 405
-    //   850: aload 15
-    //   852: getfield 503	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqEmail	Ljava/lang/String;
-    //   855: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   858: aload 13
-    //   860: ldc_w 438
-    //   863: iconst_2
-    //   864: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   867: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   870: aload_0
-    //   871: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   874: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   877: aload 13
-    //   879: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   882: pop
-    //   883: aload 13
-    //   885: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   888: aload 13
-    //   890: ldc_w 399
-    //   893: lload 6
-    //   895: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   898: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   901: aload 13
-    //   903: ldc_w 403
-    //   906: ldc_w 507
-    //   909: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   912: aload 13
-    //   914: ldc_w 405
-    //   917: aload_1
-    //   918: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   921: aload 13
-    //   923: ldc_w 438
-    //   926: iconst_2
-    //   927: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   930: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   933: aload_0
-    //   934: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   937: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   940: aload 13
-    //   942: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   945: pop
-    //   946: iconst_0
-    //   947: ireturn
-    //   948: aload 15
-    //   950: getfield 510	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqNickName	Ljava/lang/String;
-    //   953: ifnull +13 -> 966
-    //   956: aload 15
-    //   958: getfield 510	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqNickName	Ljava/lang/String;
-    //   961: astore 12
-    //   963: goto -883 -> 80
-    //   966: aload_1
-    //   967: invokestatic 383	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   970: ifne +2493 -> 3463
-    //   973: aload_1
-    //   974: astore 12
-    //   976: goto -896 -> 80
-    //   979: iconst_0
-    //   980: istore_2
+    //   405: istore_3
+    //   406: iconst_1
+    //   407: istore_2
+    //   408: aload 13
+    //   410: invokeinterface 449 1 0
+    //   415: iconst_0
+    //   416: ifeq +3035 -> 3451
+    //   419: new 451	java/lang/NullPointerException
+    //   422: dup
+    //   423: invokespecial 452	java/lang/NullPointerException:<init>	()V
+    //   426: athrow
+    //   427: iload_3
+    //   428: istore 5
+    //   430: lload 6
+    //   432: lstore 8
+    //   434: iload_2
+    //   435: istore 4
+    //   437: aload 11
+    //   439: ifnull +2999 -> 3438
+    //   442: aload 11
+    //   444: invokeinterface 449 1 0
+    //   449: iload_3
+    //   450: ifne +669 -> 1119
+    //   453: iconst_1
+    //   454: istore_3
+    //   455: iconst_0
+    //   456: istore_2
+    //   457: new 454	android/content/ContentValues
+    //   460: dup
+    //   461: invokespecial 455	android/content/ContentValues:<init>	()V
+    //   464: astore 13
+    //   466: iload_3
+    //   467: iconst_1
+    //   468: if_icmpne +669 -> 1137
+    //   471: aload_0
+    //   472: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   475: getstatic 458	android/provider/ContactsContract$RawContacts:CONTENT_URI	Landroid/net/Uri;
+    //   478: aload 13
+    //   480: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   483: invokestatic 468	android/content/ContentUris:parseId	(Landroid/net/Uri;)J
+    //   486: lstore 6
+    //   488: aload 12
+    //   490: invokestatic 387	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   493: ifne +55 -> 548
+    //   496: aload 13
+    //   498: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   501: aload 13
+    //   503: ldc_w 403
+    //   506: lload 6
+    //   508: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   511: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   514: aload 13
+    //   516: ldc_w 407
+    //   519: ldc_w 480
+    //   522: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   525: aload 13
+    //   527: ldc_w 409
+    //   530: aload 12
+    //   532: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   535: aload_0
+    //   536: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   539: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   542: aload 13
+    //   544: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   547: pop
+    //   548: aload 15
+    //   550: getfield 486	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
+    //   553: ifnonnull +11 -> 564
+    //   556: aload 15
+    //   558: getfield 489	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
+    //   561: ifnull +99 -> 660
+    //   564: aload 13
+    //   566: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   569: aload 13
+    //   571: ldc_w 403
+    //   574: lload 6
+    //   576: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   579: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   582: aload 13
+    //   584: ldc_w 407
+    //   587: ldc_w 491
+    //   590: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   593: aload 15
+    //   595: getfield 489	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
+    //   598: ifnull +16 -> 614
+    //   601: aload 13
+    //   603: ldc_w 409
+    //   606: aload 15
+    //   608: getfield 489	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
+    //   611: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   614: aload 15
+    //   616: getfield 486	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
+    //   619: ifnull +16 -> 635
+    //   622: aload 13
+    //   624: ldc_w 493
+    //   627: aload 15
+    //   629: getfield 486	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
+    //   632: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   635: aload 13
+    //   637: ldc_w 442
+    //   640: iconst_1
+    //   641: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   644: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   647: aload_0
+    //   648: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   651: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   654: aload 13
+    //   656: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   659: pop
+    //   660: aload 15
+    //   662: getfield 427	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
+    //   665: ifnull +70 -> 735
+    //   668: aload 13
+    //   670: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   673: aload 13
+    //   675: ldc_w 403
+    //   678: lload 6
+    //   680: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   683: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   686: aload 13
+    //   688: ldc_w 407
+    //   691: ldc_w 438
+    //   694: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   697: aload 13
+    //   699: ldc_w 409
+    //   702: aload 15
+    //   704: getfield 427	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
+    //   707: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   710: aload 13
+    //   712: ldc_w 442
+    //   715: iconst_2
+    //   716: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   719: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   722: aload_0
+    //   723: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   726: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   729: aload 13
+    //   731: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   734: pop
+    //   735: aload 15
+    //   737: getfield 504	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqTelphone	Ljava/lang/String;
+    //   740: ifnull +70 -> 810
+    //   743: aload 13
+    //   745: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   748: aload 13
+    //   750: ldc_w 403
+    //   753: lload 6
+    //   755: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   758: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   761: aload 13
+    //   763: ldc_w 407
+    //   766: ldc_w 438
+    //   769: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   772: aload 13
+    //   774: ldc_w 409
+    //   777: aload 15
+    //   779: getfield 504	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqTelphone	Ljava/lang/String;
+    //   782: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   785: aload 13
+    //   787: ldc_w 442
+    //   790: iconst_3
+    //   791: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   794: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   797: aload_0
+    //   798: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   801: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   804: aload 13
+    //   806: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   809: pop
+    //   810: aload 15
+    //   812: getfield 507	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqEmail	Ljava/lang/String;
+    //   815: ifnull +70 -> 885
+    //   818: aload 13
+    //   820: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   823: aload 13
+    //   825: ldc_w 403
+    //   828: lload 6
+    //   830: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   833: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   836: aload 13
+    //   838: ldc_w 407
+    //   841: ldc_w 509
+    //   844: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   847: aload 13
+    //   849: ldc_w 409
+    //   852: aload 15
+    //   854: getfield 507	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqEmail	Ljava/lang/String;
+    //   857: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   860: aload 13
+    //   862: ldc_w 442
+    //   865: iconst_2
+    //   866: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   869: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   872: aload_0
+    //   873: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   876: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   879: aload 13
+    //   881: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   884: pop
+    //   885: aload 13
+    //   887: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   890: aload 13
+    //   892: ldc_w 403
+    //   895: lload 6
+    //   897: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   900: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   903: aload 13
+    //   905: ldc_w 407
+    //   908: ldc_w 511
+    //   911: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   914: aload 13
+    //   916: ldc_w 409
+    //   919: aload_1
+    //   920: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   923: aload 13
+    //   925: ldc_w 442
+    //   928: iconst_2
+    //   929: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   932: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   935: aload_0
+    //   936: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   939: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   942: aload 13
+    //   944: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   947: pop
+    //   948: iconst_0
+    //   949: ireturn
+    //   950: aload 15
+    //   952: getfield 514	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqNickName	Ljava/lang/String;
+    //   955: ifnull +13 -> 968
+    //   958: aload 15
+    //   960: getfield 514	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqNickName	Ljava/lang/String;
+    //   963: astore 12
+    //   965: goto -885 -> 80
+    //   968: aload_1
+    //   969: invokestatic 387	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   972: ifne +2493 -> 3465
+    //   975: aload_1
+    //   976: astore 12
+    //   978: goto -898 -> 80
     //   981: iconst_0
-    //   982: istore 4
-    //   984: iload_2
-    //   985: istore_3
-    //   986: aload 13
-    //   988: ifnull +2487 -> 3475
-    //   991: iload 4
-    //   993: istore_3
-    //   994: aload 13
-    //   996: invokeinterface 445 1 0
-    //   1001: iload_2
-    //   1002: istore_3
-    //   1003: goto +2472 -> 3475
-    //   1006: iload_2
-    //   1007: istore_3
-    //   1008: aload 13
-    //   1010: ifnull +2465 -> 3475
-    //   1013: iload_2
-    //   1014: istore_3
-    //   1015: aload 13
-    //   1017: invokeinterface 445 1 0
-    //   1022: iload_2
-    //   1023: istore_3
-    //   1024: goto +2451 -> 3475
-    //   1027: astore 13
-    //   1029: iload_3
-    //   1030: istore_2
-    //   1031: iconst_1
-    //   1032: istore_3
-    //   1033: iload_3
-    //   1034: istore 5
-    //   1036: lload 6
-    //   1038: lstore 8
-    //   1040: iload_2
-    //   1041: istore 4
-    //   1043: aload 11
-    //   1045: ifnull +2391 -> 3436
-    //   1048: aload 11
-    //   1050: invokeinterface 445 1 0
-    //   1055: goto -608 -> 447
-    //   1058: astore 13
-    //   1060: aload 14
-    //   1062: ifnull +13 -> 1075
-    //   1065: iload_2
-    //   1066: istore 4
-    //   1068: aload 14
-    //   1070: invokeinterface 445 1 0
-    //   1075: iload_2
-    //   1076: istore 4
-    //   1078: aload 13
-    //   1080: athrow
-    //   1081: astore 13
-    //   1083: iconst_1
-    //   1084: istore_3
-    //   1085: iload 4
-    //   1087: istore_2
-    //   1088: goto -55 -> 1033
-    //   1091: iconst_0
-    //   1092: istore_2
-    //   1093: iconst_1
-    //   1094: istore_3
-    //   1095: goto -670 -> 425
-    //   1098: astore_1
-    //   1099: aload 13
-    //   1101: astore 11
-    //   1103: aload 11
-    //   1105: ifnull +10 -> 1115
-    //   1108: aload 11
-    //   1110: invokeinterface 445 1 0
-    //   1115: aload_1
-    //   1116: athrow
-    //   1117: iload_2
-    //   1118: ifne +10 -> 1128
-    //   1121: iconst_1
-    //   1122: istore_3
-    //   1123: iconst_0
-    //   1124: istore_2
-    //   1125: goto -670 -> 455
-    //   1128: iconst_1
-    //   1129: istore_2
-    //   1130: iconst_0
-    //   1131: istore_3
-    //   1132: goto -677 -> 455
-    //   1135: iload_2
-    //   1136: iconst_1
-    //   1137: if_icmpne +2163 -> 3300
-    //   1140: aload 15
-    //   1142: getfield 423	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
-    //   1145: ifnull +131 -> 1276
-    //   1148: aload 13
-    //   1150: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   1153: aload 13
-    //   1155: ldc_w 403
-    //   1158: ldc_w 434
-    //   1161: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1164: aload 13
-    //   1166: ldc_w 405
-    //   1169: aload 15
-    //   1171: getfield 423	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
-    //   1174: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1177: aload 13
-    //   1179: ldc_w 438
-    //   1182: iconst_2
-    //   1183: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1186: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   1189: aload_0
-    //   1190: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   1193: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   1196: aload 13
-    //   1198: new 154	java/lang/StringBuilder
-    //   1201: dup
-    //   1202: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   1205: ldc_w 425
-    //   1208: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1211: lload 6
-    //   1213: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1216: ldc_w 430
-    //   1219: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1222: ldc_w 403
-    //   1225: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1228: ldc_w 432
-    //   1231: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1234: ldc_w 434
-    //   1237: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1240: ldc_w 436
-    //   1243: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1246: ldc_w 438
-    //   1249: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1252: ldc_w 432
-    //   1255: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1258: iconst_2
-    //   1259: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1262: ldc_w 397
-    //   1265: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1268: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1271: aconst_null
-    //   1272: invokevirtual 514	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    //   1275: pop
-    //   1276: aload 15
-    //   1278: getfield 482	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
-    //   1281: ifnull +293 -> 1574
-    //   1284: aconst_null
-    //   1285: astore 11
-    //   1287: aload_0
-    //   1288: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   1291: astore 16
-    //   1293: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   1296: astore 14
-    //   1298: new 154	java/lang/StringBuilder
-    //   1301: dup
-    //   1302: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   1305: ldc_w 425
-    //   1308: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1311: lload 6
-    //   1313: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1316: ldc_w 430
-    //   1319: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1322: ldc_w 403
-    //   1325: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1328: ldc_w 432
-    //   1331: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1334: ldc_w 487
-    //   1337: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1340: ldc_w 436
-    //   1343: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1346: ldc_w 438
-    //   1349: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1352: ldc_w 432
-    //   1355: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1358: iconst_1
-    //   1359: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1362: ldc_w 397
-    //   1365: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1368: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1371: astore 12
-    //   1373: aload 16
-    //   1375: aload 14
-    //   1377: iconst_5
-    //   1378: anewarray 348	java/lang/String
-    //   1381: dup
-    //   1382: iconst_0
-    //   1383: ldc_w 399
-    //   1386: aastore
-    //   1387: dup
-    //   1388: iconst_1
-    //   1389: ldc_w 401
-    //   1392: aastore
-    //   1393: dup
-    //   1394: iconst_2
-    //   1395: ldc_w 403
-    //   1398: aastore
-    //   1399: dup
-    //   1400: iconst_3
-    //   1401: ldc_w 489
-    //   1404: aastore
-    //   1405: dup
-    //   1406: iconst_4
-    //   1407: ldc_w 438
-    //   1410: aastore
-    //   1411: aload 12
-    //   1413: aconst_null
-    //   1414: aconst_null
-    //   1415: invokevirtual 411	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   1418: astore 12
-    //   1420: aload 12
-    //   1422: astore 11
-    //   1424: aload 11
-    //   1426: invokeinterface 444 1 0
-    //   1431: ifeq +1364 -> 2795
-    //   1434: aload 13
-    //   1436: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   1439: aload 13
-    //   1441: ldc_w 403
-    //   1444: ldc_w 487
-    //   1447: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1450: aload 13
-    //   1452: ldc_w 489
-    //   1455: aload 15
-    //   1457: getfield 482	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
-    //   1460: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1463: aload 13
-    //   1465: ldc_w 438
-    //   1468: iconst_1
-    //   1469: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1472: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   1475: aload_0
-    //   1476: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   1479: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   1482: aload 13
-    //   1484: new 154	java/lang/StringBuilder
-    //   1487: dup
-    //   1488: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   1491: ldc_w 425
-    //   1494: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1497: lload 6
-    //   1499: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1502: ldc_w 430
-    //   1505: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1508: ldc_w 403
-    //   1511: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1514: ldc_w 432
-    //   1517: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1520: ldc_w 487
-    //   1523: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1526: ldc_w 436
-    //   1529: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1532: ldc_w 438
-    //   1535: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1538: ldc_w 432
-    //   1541: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1544: iconst_1
-    //   1545: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1548: ldc_w 397
-    //   1551: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1554: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1557: aconst_null
-    //   1558: invokevirtual 514	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    //   1561: pop
-    //   1562: aload 11
-    //   1564: ifnull +10 -> 1574
-    //   1567: aload 11
-    //   1569: invokeinterface 445 1 0
-    //   1574: aload 15
-    //   1576: getfield 485	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
-    //   1579: ifnull +293 -> 1872
-    //   1582: aconst_null
-    //   1583: astore 11
-    //   1585: aload_0
-    //   1586: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   1589: astore 14
-    //   1591: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   1594: astore 16
-    //   1596: new 154	java/lang/StringBuilder
-    //   1599: dup
-    //   1600: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   1603: ldc_w 425
-    //   1606: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1609: lload 6
-    //   1611: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1614: ldc_w 430
-    //   1617: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1620: ldc_w 403
-    //   1623: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1626: ldc_w 432
-    //   1629: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1632: ldc_w 487
-    //   1635: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1638: ldc_w 436
-    //   1641: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1644: ldc_w 438
-    //   1647: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1650: ldc_w 432
-    //   1653: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1656: iconst_1
-    //   1657: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1660: ldc_w 397
-    //   1663: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1666: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1669: astore 12
-    //   1671: aload 14
+    //   982: istore_2
+    //   983: iconst_0
+    //   984: istore 4
+    //   986: iload_2
+    //   987: istore_3
+    //   988: aload 13
+    //   990: ifnull +2487 -> 3477
+    //   993: iload 4
+    //   995: istore_3
+    //   996: aload 13
+    //   998: invokeinterface 449 1 0
+    //   1003: iload_2
+    //   1004: istore_3
+    //   1005: goto +2472 -> 3477
+    //   1008: iload_2
+    //   1009: istore_3
+    //   1010: aload 13
+    //   1012: ifnull +2465 -> 3477
+    //   1015: iload_2
+    //   1016: istore_3
+    //   1017: aload 13
+    //   1019: invokeinterface 449 1 0
+    //   1024: iload_2
+    //   1025: istore_3
+    //   1026: goto +2451 -> 3477
+    //   1029: astore 13
+    //   1031: iload_3
+    //   1032: istore_2
+    //   1033: iconst_1
+    //   1034: istore_3
+    //   1035: iload_3
+    //   1036: istore 5
+    //   1038: lload 6
+    //   1040: lstore 8
+    //   1042: iload_2
+    //   1043: istore 4
+    //   1045: aload 11
+    //   1047: ifnull +2391 -> 3438
+    //   1050: aload 11
+    //   1052: invokeinterface 449 1 0
+    //   1057: goto -608 -> 449
+    //   1060: astore 13
+    //   1062: aload 14
+    //   1064: ifnull +13 -> 1077
+    //   1067: iload_2
+    //   1068: istore 4
+    //   1070: aload 14
+    //   1072: invokeinterface 449 1 0
+    //   1077: iload_2
+    //   1078: istore 4
+    //   1080: aload 13
+    //   1082: athrow
+    //   1083: astore 13
+    //   1085: iconst_1
+    //   1086: istore_3
+    //   1087: iload 4
+    //   1089: istore_2
+    //   1090: goto -55 -> 1035
+    //   1093: iconst_0
+    //   1094: istore_2
+    //   1095: iconst_1
+    //   1096: istore_3
+    //   1097: goto -670 -> 427
+    //   1100: astore_1
+    //   1101: aload 13
+    //   1103: astore 11
+    //   1105: aload 11
+    //   1107: ifnull +10 -> 1117
+    //   1110: aload 11
+    //   1112: invokeinterface 449 1 0
+    //   1117: aload_1
+    //   1118: athrow
+    //   1119: iload_2
+    //   1120: ifne +10 -> 1130
+    //   1123: iconst_1
+    //   1124: istore_3
+    //   1125: iconst_0
+    //   1126: istore_2
+    //   1127: goto -670 -> 457
+    //   1130: iconst_1
+    //   1131: istore_2
+    //   1132: iconst_0
+    //   1133: istore_3
+    //   1134: goto -677 -> 457
+    //   1137: iload_2
+    //   1138: iconst_1
+    //   1139: if_icmpne +2163 -> 3302
+    //   1142: aload 15
+    //   1144: getfield 427	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
+    //   1147: ifnull +131 -> 1278
+    //   1150: aload 13
+    //   1152: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   1155: aload 13
+    //   1157: ldc_w 407
+    //   1160: ldc_w 438
+    //   1163: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1166: aload 13
+    //   1168: ldc_w 409
+    //   1171: aload 15
+    //   1173: getfield 427	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqMobileNum	Ljava/lang/String;
+    //   1176: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1179: aload 13
+    //   1181: ldc_w 442
+    //   1184: iconst_2
+    //   1185: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1188: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   1191: aload_0
+    //   1192: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   1195: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   1198: aload 13
+    //   1200: new 163	java/lang/StringBuilder
+    //   1203: dup
+    //   1204: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   1207: ldc_w 429
+    //   1210: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1213: lload 6
+    //   1215: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1218: ldc_w 434
+    //   1221: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1224: ldc_w 407
+    //   1227: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1230: ldc_w 436
+    //   1233: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1236: ldc_w 438
+    //   1239: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1242: ldc_w 440
+    //   1245: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1248: ldc_w 442
+    //   1251: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1254: ldc_w 436
+    //   1257: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1260: iconst_2
+    //   1261: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1264: ldc_w 401
+    //   1267: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1270: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1273: aconst_null
+    //   1274: invokevirtual 518	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   1277: pop
+    //   1278: aload 15
+    //   1280: getfield 486	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
+    //   1283: ifnull +293 -> 1576
+    //   1286: aconst_null
+    //   1287: astore 11
+    //   1289: aload_0
+    //   1290: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   1293: astore 12
+    //   1295: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   1298: astore 16
+    //   1300: new 163	java/lang/StringBuilder
+    //   1303: dup
+    //   1304: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   1307: ldc_w 429
+    //   1310: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1313: lload 6
+    //   1315: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1318: ldc_w 434
+    //   1321: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1324: ldc_w 407
+    //   1327: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1330: ldc_w 436
+    //   1333: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1336: ldc_w 491
+    //   1339: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1342: ldc_w 440
+    //   1345: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1348: ldc_w 442
+    //   1351: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1354: ldc_w 436
+    //   1357: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1360: iconst_1
+    //   1361: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1364: ldc_w 401
+    //   1367: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1370: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1373: astore 14
+    //   1375: aload 12
+    //   1377: aload 16
+    //   1379: iconst_5
+    //   1380: anewarray 352	java/lang/String
+    //   1383: dup
+    //   1384: iconst_0
+    //   1385: ldc_w 403
+    //   1388: aastore
+    //   1389: dup
+    //   1390: iconst_1
+    //   1391: ldc_w 405
+    //   1394: aastore
+    //   1395: dup
+    //   1396: iconst_2
+    //   1397: ldc_w 407
+    //   1400: aastore
+    //   1401: dup
+    //   1402: iconst_3
+    //   1403: ldc_w 493
+    //   1406: aastore
+    //   1407: dup
+    //   1408: iconst_4
+    //   1409: ldc_w 442
+    //   1412: aastore
+    //   1413: aload 14
+    //   1415: aconst_null
+    //   1416: aconst_null
+    //   1417: invokevirtual 415	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   1420: astore 12
+    //   1422: aload 12
+    //   1424: astore 11
+    //   1426: aload 11
+    //   1428: invokeinterface 448 1 0
+    //   1433: ifeq +1364 -> 2797
+    //   1436: aload 13
+    //   1438: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   1441: aload 13
+    //   1443: ldc_w 407
+    //   1446: ldc_w 491
+    //   1449: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1452: aload 13
+    //   1454: ldc_w 493
+    //   1457: aload 15
+    //   1459: getfield 486	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
+    //   1462: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1465: aload 13
+    //   1467: ldc_w 442
+    //   1470: iconst_1
+    //   1471: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1474: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   1477: aload_0
+    //   1478: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   1481: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   1484: aload 13
+    //   1486: new 163	java/lang/StringBuilder
+    //   1489: dup
+    //   1490: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   1493: ldc_w 429
+    //   1496: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1499: lload 6
+    //   1501: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1504: ldc_w 434
+    //   1507: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1510: ldc_w 407
+    //   1513: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1516: ldc_w 436
+    //   1519: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1522: ldc_w 491
+    //   1525: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1528: ldc_w 440
+    //   1531: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1534: ldc_w 442
+    //   1537: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1540: ldc_w 436
+    //   1543: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1546: iconst_1
+    //   1547: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1550: ldc_w 401
+    //   1553: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1556: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1559: aconst_null
+    //   1560: invokevirtual 518	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   1563: pop
+    //   1564: aload 11
+    //   1566: ifnull +10 -> 1576
+    //   1569: aload 11
+    //   1571: invokeinterface 449 1 0
+    //   1576: aload 15
+    //   1578: getfield 489	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
+    //   1581: ifnull +293 -> 1874
+    //   1584: aconst_null
+    //   1585: astore 11
+    //   1587: aload_0
+    //   1588: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   1591: astore 16
+    //   1593: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   1596: astore 12
+    //   1598: new 163	java/lang/StringBuilder
+    //   1601: dup
+    //   1602: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   1605: ldc_w 429
+    //   1608: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1611: lload 6
+    //   1613: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1616: ldc_w 434
+    //   1619: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1622: ldc_w 407
+    //   1625: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1628: ldc_w 436
+    //   1631: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1634: ldc_w 491
+    //   1637: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1640: ldc_w 440
+    //   1643: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1646: ldc_w 442
+    //   1649: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1652: ldc_w 436
+    //   1655: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1658: iconst_1
+    //   1659: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1662: ldc_w 401
+    //   1665: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1668: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1671: astore 14
     //   1673: aload 16
-    //   1675: iconst_5
-    //   1676: anewarray 348	java/lang/String
-    //   1679: dup
-    //   1680: iconst_0
-    //   1681: ldc_w 399
-    //   1684: aastore
-    //   1685: dup
-    //   1686: iconst_1
-    //   1687: ldc_w 401
-    //   1690: aastore
-    //   1691: dup
-    //   1692: iconst_2
-    //   1693: ldc_w 403
-    //   1696: aastore
-    //   1697: dup
-    //   1698: iconst_3
-    //   1699: ldc_w 405
-    //   1702: aastore
-    //   1703: dup
-    //   1704: iconst_4
-    //   1705: ldc_w 438
-    //   1708: aastore
-    //   1709: aload 12
-    //   1711: aconst_null
-    //   1712: aconst_null
-    //   1713: invokevirtual 411	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   1716: astore 12
-    //   1718: aload 12
-    //   1720: astore 11
-    //   1722: aload 11
-    //   1724: invokeinterface 444 1 0
-    //   1729: ifeq +1168 -> 2897
-    //   1732: aload 13
-    //   1734: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   1737: aload 13
-    //   1739: ldc_w 403
-    //   1742: ldc_w 487
-    //   1745: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1748: aload 13
-    //   1750: ldc_w 405
-    //   1753: aload 15
-    //   1755: getfield 485	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
-    //   1758: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1761: aload 13
-    //   1763: ldc_w 438
-    //   1766: iconst_1
-    //   1767: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1770: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   1773: aload_0
-    //   1774: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   1777: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   1780: aload 13
-    //   1782: new 154	java/lang/StringBuilder
-    //   1785: dup
-    //   1786: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   1789: ldc_w 425
-    //   1792: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1795: lload 6
-    //   1797: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1800: ldc_w 430
-    //   1803: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1806: ldc_w 403
-    //   1809: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1812: ldc_w 432
-    //   1815: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1818: ldc_w 487
-    //   1821: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1824: ldc_w 436
-    //   1827: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1830: ldc_w 438
-    //   1833: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1836: ldc_w 432
-    //   1839: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1842: iconst_1
-    //   1843: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1846: ldc_w 397
-    //   1849: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1852: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1855: aconst_null
-    //   1856: invokevirtual 514	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    //   1859: pop
-    //   1860: aload 11
-    //   1862: ifnull +10 -> 1872
-    //   1865: aload 11
-    //   1867: invokeinterface 445 1 0
-    //   1872: aload 15
-    //   1874: getfield 500	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqTelphone	Ljava/lang/String;
-    //   1877: ifnull +306 -> 2183
-    //   1880: aconst_null
-    //   1881: astore 11
-    //   1883: aload_0
-    //   1884: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   1887: astore 16
-    //   1889: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   1892: astore 14
-    //   1894: new 154	java/lang/StringBuilder
-    //   1897: dup
-    //   1898: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   1901: ldc_w 425
-    //   1904: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1907: lload 6
-    //   1909: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1912: ldc_w 430
-    //   1915: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1918: ldc_w 403
-    //   1921: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1924: ldc_w 432
-    //   1927: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1930: ldc_w 434
-    //   1933: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1936: ldc_w 436
-    //   1939: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1942: ldc_w 438
-    //   1945: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1948: ldc_w 432
-    //   1951: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1954: iconst_3
-    //   1955: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1958: ldc_w 397
-    //   1961: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1964: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1967: astore 12
-    //   1969: aload 16
-    //   1971: aload 14
-    //   1973: iconst_5
-    //   1974: anewarray 348	java/lang/String
-    //   1977: dup
-    //   1978: iconst_0
-    //   1979: ldc_w 399
-    //   1982: aastore
-    //   1983: dup
-    //   1984: iconst_1
-    //   1985: ldc_w 401
-    //   1988: aastore
-    //   1989: dup
-    //   1990: iconst_2
-    //   1991: ldc_w 403
-    //   1994: aastore
-    //   1995: dup
-    //   1996: iconst_3
-    //   1997: ldc_w 405
-    //   2000: aastore
-    //   2001: dup
-    //   2002: iconst_4
-    //   2003: ldc_w 438
-    //   2006: aastore
-    //   2007: aload 12
-    //   2009: aconst_null
-    //   2010: aconst_null
-    //   2011: invokevirtual 411	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   2014: astore 12
-    //   2016: aload 12
-    //   2018: astore 11
-    //   2020: aload 11
-    //   2022: invokeinterface 444 1 0
-    //   2027: ifeq +972 -> 2999
-    //   2030: aload 13
-    //   2032: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   2035: aload 13
-    //   2037: ldc_w 399
-    //   2040: lload 6
-    //   2042: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2045: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   2048: aload 13
-    //   2050: ldc_w 403
-    //   2053: ldc_w 434
-    //   2056: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2059: aload 13
-    //   2061: ldc_w 405
-    //   2064: aload 15
-    //   2066: getfield 500	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqTelphone	Ljava/lang/String;
-    //   2069: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2072: aload 13
-    //   2074: ldc_w 438
-    //   2077: iconst_3
-    //   2078: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2081: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   2084: aload_0
-    //   2085: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   2088: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   2091: aload 13
-    //   2093: new 154	java/lang/StringBuilder
-    //   2096: dup
-    //   2097: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   2100: ldc_w 425
-    //   2103: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2106: lload 6
-    //   2108: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2111: ldc_w 430
-    //   2114: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2117: ldc_w 403
-    //   2120: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2123: ldc_w 432
-    //   2126: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2129: ldc_w 434
-    //   2132: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2135: ldc_w 436
-    //   2138: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2141: ldc_w 438
-    //   2144: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2147: ldc_w 432
-    //   2150: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2153: iconst_3
-    //   2154: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2157: ldc_w 397
-    //   2160: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2163: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2166: aconst_null
-    //   2167: invokevirtual 514	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    //   2170: pop
-    //   2171: aload 11
-    //   2173: ifnull +10 -> 2183
-    //   2176: aload 11
-    //   2178: invokeinterface 445 1 0
-    //   2183: aload 15
-    //   2185: getfield 503	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqEmail	Ljava/lang/String;
-    //   2188: ifnull +306 -> 2494
-    //   2191: aconst_null
-    //   2192: astore 11
-    //   2194: aload_0
-    //   2195: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   2198: astore 16
-    //   2200: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   2203: astore 14
-    //   2205: new 154	java/lang/StringBuilder
-    //   2208: dup
-    //   2209: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   2212: ldc_w 425
-    //   2215: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2218: lload 6
-    //   2220: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2223: ldc_w 430
-    //   2226: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2229: ldc_w 403
-    //   2232: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2235: ldc_w 432
-    //   2238: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2241: ldc_w 505
-    //   2244: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2247: ldc_w 436
-    //   2250: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2253: ldc_w 438
-    //   2256: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2259: ldc_w 432
-    //   2262: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2265: iconst_2
-    //   2266: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2269: ldc_w 397
-    //   2272: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2275: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2278: astore 12
-    //   2280: aload 16
-    //   2282: aload 14
-    //   2284: iconst_5
-    //   2285: anewarray 348	java/lang/String
-    //   2288: dup
-    //   2289: iconst_0
-    //   2290: ldc_w 399
-    //   2293: aastore
-    //   2294: dup
-    //   2295: iconst_1
-    //   2296: ldc_w 401
-    //   2299: aastore
-    //   2300: dup
-    //   2301: iconst_2
-    //   2302: ldc_w 403
-    //   2305: aastore
-    //   2306: dup
-    //   2307: iconst_3
-    //   2308: ldc_w 405
-    //   2311: aastore
-    //   2312: dup
-    //   2313: iconst_4
-    //   2314: ldc_w 438
-    //   2317: aastore
-    //   2318: aload 12
-    //   2320: aconst_null
-    //   2321: aconst_null
-    //   2322: invokevirtual 411	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   2325: astore 12
-    //   2327: aload 12
-    //   2329: astore 11
-    //   2331: aload 11
-    //   2333: invokeinterface 444 1 0
-    //   2338: ifeq +763 -> 3101
-    //   2341: aload 13
-    //   2343: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   2346: aload 13
-    //   2348: ldc_w 399
-    //   2351: lload 6
-    //   2353: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2356: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   2359: aload 13
-    //   2361: ldc_w 403
-    //   2364: ldc_w 505
-    //   2367: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2370: aload 13
-    //   2372: ldc_w 405
-    //   2375: aload 15
-    //   2377: getfield 503	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqEmail	Ljava/lang/String;
-    //   2380: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2383: aload 13
-    //   2385: ldc_w 438
-    //   2388: iconst_2
-    //   2389: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2392: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   2395: aload_0
-    //   2396: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   2399: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   2402: aload 13
-    //   2404: new 154	java/lang/StringBuilder
-    //   2407: dup
-    //   2408: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   2411: ldc_w 425
-    //   2414: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2417: lload 6
-    //   2419: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2422: ldc_w 430
-    //   2425: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2428: ldc_w 403
-    //   2431: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2434: ldc_w 432
-    //   2437: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2440: ldc_w 505
-    //   2443: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2446: ldc_w 436
-    //   2449: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2452: ldc_w 438
-    //   2455: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2458: ldc_w 432
-    //   2461: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2464: iconst_2
-    //   2465: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2468: ldc_w 397
-    //   2471: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2474: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2477: aconst_null
-    //   2478: invokevirtual 514	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    //   2481: pop
-    //   2482: aload 11
-    //   2484: ifnull +10 -> 2494
-    //   2487: aload 11
-    //   2489: invokeinterface 445 1 0
-    //   2494: aconst_null
-    //   2495: astore 11
-    //   2497: aload_0
-    //   2498: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   2501: astore 14
-    //   2503: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   2506: astore 15
-    //   2508: new 154	java/lang/StringBuilder
-    //   2511: dup
-    //   2512: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   2515: ldc_w 425
-    //   2518: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2521: lload 6
-    //   2523: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2526: ldc_w 430
-    //   2529: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2532: ldc_w 403
-    //   2535: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2538: ldc_w 432
-    //   2541: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2544: ldc_w 507
-    //   2547: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2550: ldc_w 436
-    //   2553: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2556: ldc_w 438
-    //   2559: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2562: ldc_w 432
-    //   2565: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2568: iconst_2
-    //   2569: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2572: ldc_w 397
-    //   2575: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2578: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2581: astore 12
-    //   2583: aload 14
+    //   1675: aload 12
+    //   1677: iconst_5
+    //   1678: anewarray 352	java/lang/String
+    //   1681: dup
+    //   1682: iconst_0
+    //   1683: ldc_w 403
+    //   1686: aastore
+    //   1687: dup
+    //   1688: iconst_1
+    //   1689: ldc_w 405
+    //   1692: aastore
+    //   1693: dup
+    //   1694: iconst_2
+    //   1695: ldc_w 407
+    //   1698: aastore
+    //   1699: dup
+    //   1700: iconst_3
+    //   1701: ldc_w 409
+    //   1704: aastore
+    //   1705: dup
+    //   1706: iconst_4
+    //   1707: ldc_w 442
+    //   1710: aastore
+    //   1711: aload 14
+    //   1713: aconst_null
+    //   1714: aconst_null
+    //   1715: invokevirtual 415	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   1718: astore 12
+    //   1720: aload 12
+    //   1722: astore 11
+    //   1724: aload 11
+    //   1726: invokeinterface 448 1 0
+    //   1731: ifeq +1168 -> 2899
+    //   1734: aload 13
+    //   1736: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   1739: aload 13
+    //   1741: ldc_w 407
+    //   1744: ldc_w 491
+    //   1747: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1750: aload 13
+    //   1752: ldc_w 409
+    //   1755: aload 15
+    //   1757: getfield 489	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
+    //   1760: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1763: aload 13
+    //   1765: ldc_w 442
+    //   1768: iconst_1
+    //   1769: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1772: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   1775: aload_0
+    //   1776: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   1779: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   1782: aload 13
+    //   1784: new 163	java/lang/StringBuilder
+    //   1787: dup
+    //   1788: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   1791: ldc_w 429
+    //   1794: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1797: lload 6
+    //   1799: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1802: ldc_w 434
+    //   1805: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1808: ldc_w 407
+    //   1811: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1814: ldc_w 436
+    //   1817: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1820: ldc_w 491
+    //   1823: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1826: ldc_w 440
+    //   1829: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1832: ldc_w 442
+    //   1835: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1838: ldc_w 436
+    //   1841: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1844: iconst_1
+    //   1845: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1848: ldc_w 401
+    //   1851: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1854: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1857: aconst_null
+    //   1858: invokevirtual 518	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   1861: pop
+    //   1862: aload 11
+    //   1864: ifnull +10 -> 1874
+    //   1867: aload 11
+    //   1869: invokeinterface 449 1 0
+    //   1874: aload 15
+    //   1876: getfield 504	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqTelphone	Ljava/lang/String;
+    //   1879: ifnull +306 -> 2185
+    //   1882: aconst_null
+    //   1883: astore 11
+    //   1885: aload_0
+    //   1886: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   1889: astore 16
+    //   1891: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   1894: astore 14
+    //   1896: new 163	java/lang/StringBuilder
+    //   1899: dup
+    //   1900: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   1903: ldc_w 429
+    //   1906: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1909: lload 6
+    //   1911: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1914: ldc_w 434
+    //   1917: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1920: ldc_w 407
+    //   1923: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1926: ldc_w 436
+    //   1929: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1932: ldc_w 438
+    //   1935: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1938: ldc_w 440
+    //   1941: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1944: ldc_w 442
+    //   1947: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1950: ldc_w 436
+    //   1953: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1956: iconst_3
+    //   1957: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1960: ldc_w 401
+    //   1963: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1966: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1969: astore 12
+    //   1971: aload 16
+    //   1973: aload 14
+    //   1975: iconst_5
+    //   1976: anewarray 352	java/lang/String
+    //   1979: dup
+    //   1980: iconst_0
+    //   1981: ldc_w 403
+    //   1984: aastore
+    //   1985: dup
+    //   1986: iconst_1
+    //   1987: ldc_w 405
+    //   1990: aastore
+    //   1991: dup
+    //   1992: iconst_2
+    //   1993: ldc_w 407
+    //   1996: aastore
+    //   1997: dup
+    //   1998: iconst_3
+    //   1999: ldc_w 409
+    //   2002: aastore
+    //   2003: dup
+    //   2004: iconst_4
+    //   2005: ldc_w 442
+    //   2008: aastore
+    //   2009: aload 12
+    //   2011: aconst_null
+    //   2012: aconst_null
+    //   2013: invokevirtual 415	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   2016: astore 12
+    //   2018: aload 12
+    //   2020: astore 11
+    //   2022: aload 11
+    //   2024: invokeinterface 448 1 0
+    //   2029: ifeq +972 -> 3001
+    //   2032: aload 13
+    //   2034: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   2037: aload 13
+    //   2039: ldc_w 403
+    //   2042: lload 6
+    //   2044: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2047: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   2050: aload 13
+    //   2052: ldc_w 407
+    //   2055: ldc_w 438
+    //   2058: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2061: aload 13
+    //   2063: ldc_w 409
+    //   2066: aload 15
+    //   2068: getfield 504	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqTelphone	Ljava/lang/String;
+    //   2071: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2074: aload 13
+    //   2076: ldc_w 442
+    //   2079: iconst_3
+    //   2080: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2083: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   2086: aload_0
+    //   2087: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   2090: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   2093: aload 13
+    //   2095: new 163	java/lang/StringBuilder
+    //   2098: dup
+    //   2099: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   2102: ldc_w 429
+    //   2105: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2108: lload 6
+    //   2110: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2113: ldc_w 434
+    //   2116: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2119: ldc_w 407
+    //   2122: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2125: ldc_w 436
+    //   2128: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2131: ldc_w 438
+    //   2134: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2137: ldc_w 440
+    //   2140: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2143: ldc_w 442
+    //   2146: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2149: ldc_w 436
+    //   2152: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2155: iconst_3
+    //   2156: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2159: ldc_w 401
+    //   2162: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2165: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2168: aconst_null
+    //   2169: invokevirtual 518	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   2172: pop
+    //   2173: aload 11
+    //   2175: ifnull +10 -> 2185
+    //   2178: aload 11
+    //   2180: invokeinterface 449 1 0
+    //   2185: aload 15
+    //   2187: getfield 507	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqEmail	Ljava/lang/String;
+    //   2190: ifnull +306 -> 2496
+    //   2193: aconst_null
+    //   2194: astore 11
+    //   2196: aload_0
+    //   2197: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   2200: astore 16
+    //   2202: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   2205: astore 12
+    //   2207: new 163	java/lang/StringBuilder
+    //   2210: dup
+    //   2211: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   2214: ldc_w 429
+    //   2217: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2220: lload 6
+    //   2222: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2225: ldc_w 434
+    //   2228: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2231: ldc_w 407
+    //   2234: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2237: ldc_w 436
+    //   2240: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2243: ldc_w 509
+    //   2246: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2249: ldc_w 440
+    //   2252: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2255: ldc_w 442
+    //   2258: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2261: ldc_w 436
+    //   2264: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2267: iconst_2
+    //   2268: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2271: ldc_w 401
+    //   2274: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2277: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2280: astore 14
+    //   2282: aload 16
+    //   2284: aload 12
+    //   2286: iconst_5
+    //   2287: anewarray 352	java/lang/String
+    //   2290: dup
+    //   2291: iconst_0
+    //   2292: ldc_w 403
+    //   2295: aastore
+    //   2296: dup
+    //   2297: iconst_1
+    //   2298: ldc_w 405
+    //   2301: aastore
+    //   2302: dup
+    //   2303: iconst_2
+    //   2304: ldc_w 407
+    //   2307: aastore
+    //   2308: dup
+    //   2309: iconst_3
+    //   2310: ldc_w 409
+    //   2313: aastore
+    //   2314: dup
+    //   2315: iconst_4
+    //   2316: ldc_w 442
+    //   2319: aastore
+    //   2320: aload 14
+    //   2322: aconst_null
+    //   2323: aconst_null
+    //   2324: invokevirtual 415	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   2327: astore 12
+    //   2329: aload 12
+    //   2331: astore 11
+    //   2333: aload 11
+    //   2335: invokeinterface 448 1 0
+    //   2340: ifeq +763 -> 3103
+    //   2343: aload 13
+    //   2345: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   2348: aload 13
+    //   2350: ldc_w 403
+    //   2353: lload 6
+    //   2355: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2358: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   2361: aload 13
+    //   2363: ldc_w 407
+    //   2366: ldc_w 509
+    //   2369: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2372: aload 13
+    //   2374: ldc_w 409
+    //   2377: aload 15
+    //   2379: getfield 507	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqEmail	Ljava/lang/String;
+    //   2382: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2385: aload 13
+    //   2387: ldc_w 442
+    //   2390: iconst_2
+    //   2391: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2394: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   2397: aload_0
+    //   2398: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   2401: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   2404: aload 13
+    //   2406: new 163	java/lang/StringBuilder
+    //   2409: dup
+    //   2410: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   2413: ldc_w 429
+    //   2416: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2419: lload 6
+    //   2421: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2424: ldc_w 434
+    //   2427: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2430: ldc_w 407
+    //   2433: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2436: ldc_w 436
+    //   2439: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2442: ldc_w 509
+    //   2445: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2448: ldc_w 440
+    //   2451: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2454: ldc_w 442
+    //   2457: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2460: ldc_w 436
+    //   2463: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2466: iconst_2
+    //   2467: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2470: ldc_w 401
+    //   2473: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2476: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2479: aconst_null
+    //   2480: invokevirtual 518	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   2483: pop
+    //   2484: aload 11
+    //   2486: ifnull +10 -> 2496
+    //   2489: aload 11
+    //   2491: invokeinterface 449 1 0
+    //   2496: aconst_null
+    //   2497: astore 11
+    //   2499: aload_0
+    //   2500: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   2503: astore 15
+    //   2505: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   2508: astore 12
+    //   2510: new 163	java/lang/StringBuilder
+    //   2513: dup
+    //   2514: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   2517: ldc_w 429
+    //   2520: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2523: lload 6
+    //   2525: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2528: ldc_w 434
+    //   2531: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2534: ldc_w 407
+    //   2537: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2540: ldc_w 436
+    //   2543: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2546: ldc_w 511
+    //   2549: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2552: ldc_w 440
+    //   2555: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2558: ldc_w 442
+    //   2561: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2564: ldc_w 436
+    //   2567: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2570: iconst_2
+    //   2571: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2574: ldc_w 401
+    //   2577: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2580: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2583: astore 14
     //   2585: aload 15
-    //   2587: iconst_5
-    //   2588: anewarray 348	java/lang/String
-    //   2591: dup
-    //   2592: iconst_0
-    //   2593: ldc_w 399
-    //   2596: aastore
-    //   2597: dup
-    //   2598: iconst_1
-    //   2599: ldc_w 401
-    //   2602: aastore
-    //   2603: dup
-    //   2604: iconst_2
-    //   2605: ldc_w 403
-    //   2608: aastore
-    //   2609: dup
-    //   2610: iconst_3
-    //   2611: ldc_w 405
-    //   2614: aastore
-    //   2615: dup
-    //   2616: iconst_4
-    //   2617: ldc_w 438
-    //   2620: aastore
-    //   2621: aload 12
-    //   2623: aconst_null
-    //   2624: aconst_null
-    //   2625: invokevirtual 411	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   2628: astore 12
-    //   2630: aload 12
-    //   2632: astore 11
-    //   2634: aload 11
-    //   2636: invokeinterface 444 1 0
-    //   2641: ifeq +562 -> 3203
-    //   2644: aload 13
-    //   2646: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   2649: aload 13
-    //   2651: ldc_w 399
-    //   2654: lload 6
-    //   2656: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2659: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   2662: aload 13
-    //   2664: ldc_w 403
-    //   2667: ldc_w 507
-    //   2670: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2673: aload 13
-    //   2675: ldc_w 405
-    //   2678: aload_1
-    //   2679: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2682: aload 13
-    //   2684: ldc_w 438
-    //   2687: iconst_2
-    //   2688: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2691: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   2694: aload_0
-    //   2695: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   2698: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   2701: aload 13
-    //   2703: new 154	java/lang/StringBuilder
-    //   2706: dup
-    //   2707: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   2710: ldc_w 425
-    //   2713: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2716: lload 6
-    //   2718: invokevirtual 428	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2721: ldc_w 430
-    //   2724: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2727: ldc_w 403
-    //   2730: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2733: ldc_w 432
-    //   2736: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2739: ldc_w 507
-    //   2742: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2745: ldc_w 436
-    //   2748: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2751: ldc_w 438
-    //   2754: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2757: ldc_w 432
-    //   2760: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2763: iconst_2
-    //   2764: invokevirtual 441	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2767: ldc_w 397
-    //   2770: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2773: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2776: aconst_null
-    //   2777: invokevirtual 514	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    //   2780: pop
-    //   2781: aload 11
-    //   2783: ifnull +10 -> 2793
-    //   2786: aload 11
-    //   2788: invokeinterface 445 1 0
-    //   2793: iconst_1
-    //   2794: ireturn
-    //   2795: aload 13
-    //   2797: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   2800: aload 13
-    //   2802: ldc_w 399
-    //   2805: lload 6
-    //   2807: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2810: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   2813: aload 13
-    //   2815: ldc_w 403
-    //   2818: ldc_w 487
-    //   2821: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2824: aload 13
-    //   2826: ldc_w 489
-    //   2829: aload 15
-    //   2831: getfield 482	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
-    //   2834: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2837: aload 13
-    //   2839: ldc_w 438
-    //   2842: iconst_1
-    //   2843: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2846: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   2849: aload_0
-    //   2850: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   2853: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   2856: aload 13
-    //   2858: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   2861: pop
-    //   2862: goto -1300 -> 1562
-    //   2865: astore 12
-    //   2867: aload 11
-    //   2869: ifnull -1295 -> 1574
-    //   2872: aload 11
-    //   2874: invokeinterface 445 1 0
-    //   2879: goto -1305 -> 1574
-    //   2882: astore_1
-    //   2883: aload 11
-    //   2885: ifnull +10 -> 2895
-    //   2888: aload 11
-    //   2890: invokeinterface 445 1 0
-    //   2895: aload_1
-    //   2896: athrow
-    //   2897: aload 13
-    //   2899: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   2902: aload 13
-    //   2904: ldc_w 399
-    //   2907: lload 6
-    //   2909: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2912: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   2915: aload 13
-    //   2917: ldc_w 403
-    //   2920: ldc_w 487
-    //   2923: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2926: aload 13
-    //   2928: ldc_w 405
-    //   2931: aload 15
-    //   2933: getfield 485	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
-    //   2936: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2939: aload 13
-    //   2941: ldc_w 438
-    //   2944: iconst_1
-    //   2945: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2948: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   2951: aload_0
-    //   2952: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   2955: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   2958: aload 13
-    //   2960: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   2963: pop
-    //   2964: goto -1104 -> 1860
-    //   2967: astore 12
-    //   2969: aload 11
-    //   2971: ifnull -1099 -> 1872
-    //   2974: aload 11
-    //   2976: invokeinterface 445 1 0
-    //   2981: goto -1109 -> 1872
-    //   2984: astore_1
-    //   2985: aload 11
-    //   2987: ifnull +10 -> 2997
-    //   2990: aload 11
-    //   2992: invokeinterface 445 1 0
-    //   2997: aload_1
-    //   2998: athrow
-    //   2999: aload 13
-    //   3001: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   3004: aload 13
-    //   3006: ldc_w 399
-    //   3009: lload 6
-    //   3011: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   3014: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   3017: aload 13
-    //   3019: ldc_w 403
-    //   3022: ldc_w 434
-    //   3025: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3028: aload 13
-    //   3030: ldc_w 405
-    //   3033: aload 15
-    //   3035: getfield 500	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqTelphone	Ljava/lang/String;
-    //   3038: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3041: aload 13
-    //   3043: ldc_w 438
-    //   3046: iconst_3
-    //   3047: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   3050: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   3053: aload_0
-    //   3054: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   3057: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   3060: aload 13
-    //   3062: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   3065: pop
-    //   3066: goto -895 -> 2171
-    //   3069: astore 12
-    //   3071: aload 11
-    //   3073: ifnull -890 -> 2183
-    //   3076: aload 11
-    //   3078: invokeinterface 445 1 0
-    //   3083: goto -900 -> 2183
-    //   3086: astore_1
-    //   3087: aload 11
-    //   3089: ifnull +10 -> 3099
-    //   3092: aload 11
-    //   3094: invokeinterface 445 1 0
-    //   3099: aload_1
-    //   3100: athrow
-    //   3101: aload 13
-    //   3103: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   3106: aload 13
-    //   3108: ldc_w 399
-    //   3111: lload 6
-    //   3113: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   3116: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   3119: aload 13
-    //   3121: ldc_w 403
-    //   3124: ldc_w 505
-    //   3127: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3130: aload 13
-    //   3132: ldc_w 405
-    //   3135: aload 15
-    //   3137: getfield 503	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqEmail	Ljava/lang/String;
-    //   3140: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3143: aload 13
-    //   3145: ldc_w 438
-    //   3148: iconst_2
-    //   3149: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   3152: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   3155: aload_0
-    //   3156: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   3159: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   3162: aload 13
-    //   3164: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   3167: pop
-    //   3168: goto -686 -> 2482
-    //   3171: astore 12
-    //   3173: aload 11
-    //   3175: ifnull -681 -> 2494
-    //   3178: aload 11
-    //   3180: invokeinterface 445 1 0
-    //   3185: goto -691 -> 2494
-    //   3188: astore_1
-    //   3189: aload 11
-    //   3191: ifnull +10 -> 3201
-    //   3194: aload 11
-    //   3196: invokeinterface 445 1 0
-    //   3201: aload_1
-    //   3202: athrow
-    //   3203: aload 13
-    //   3205: invokevirtual 467	android/content/ContentValues:clear	()V
-    //   3208: aload 13
-    //   3210: ldc_w 399
-    //   3213: lload 6
-    //   3215: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   3218: invokevirtual 474	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   3221: aload 13
-    //   3223: ldc_w 403
-    //   3226: ldc_w 507
-    //   3229: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3232: aload 13
-    //   3234: ldc_w 405
-    //   3237: aload_1
-    //   3238: invokevirtual 479	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3241: aload 13
-    //   3243: ldc_w 438
-    //   3246: iconst_2
-    //   3247: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   3250: invokevirtual 497	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   3253: aload_0
-    //   3254: invokevirtual 387	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   3257: getstatic 393	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   3260: aload 13
-    //   3262: invokevirtual 458	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   3265: pop
-    //   3266: goto -485 -> 2781
-    //   3269: astore_1
-    //   3270: aload 11
-    //   3272: ifnull -479 -> 2793
-    //   3275: aload 11
-    //   3277: invokeinterface 445 1 0
-    //   3282: goto -489 -> 2793
-    //   3285: astore_1
-    //   3286: aload 11
-    //   3288: ifnull +10 -> 3298
-    //   3291: aload 11
-    //   3293: invokeinterface 445 1 0
-    //   3298: aload_1
-    //   3299: athrow
-    //   3300: iconst_m1
-    //   3301: ireturn
-    //   3302: astore_1
-    //   3303: goto -17 -> 3286
-    //   3306: astore_1
-    //   3307: aconst_null
-    //   3308: astore 11
-    //   3310: goto -40 -> 3270
-    //   3313: astore_1
-    //   3314: goto -125 -> 3189
-    //   3317: astore 11
-    //   3319: aconst_null
-    //   3320: astore 11
-    //   3322: goto -149 -> 3173
-    //   3325: astore_1
-    //   3326: goto -239 -> 3087
-    //   3329: astore 11
-    //   3331: aconst_null
-    //   3332: astore 11
-    //   3334: goto -263 -> 3071
-    //   3337: astore_1
-    //   3338: goto -353 -> 2985
-    //   3341: astore 11
-    //   3343: aconst_null
-    //   3344: astore 11
-    //   3346: goto -377 -> 2969
-    //   3349: astore_1
-    //   3350: goto -467 -> 2883
-    //   3353: astore 11
-    //   3355: aconst_null
-    //   3356: astore 11
-    //   3358: goto -491 -> 2867
-    //   3361: astore_1
-    //   3362: goto -2259 -> 1103
-    //   3365: astore 11
-    //   3367: aconst_null
-    //   3368: astore 11
-    //   3370: iconst_0
-    //   3371: istore_3
-    //   3372: lconst_0
-    //   3373: lstore 6
-    //   3375: goto -2342 -> 1033
-    //   3378: astore 13
-    //   3380: lload 8
-    //   3382: lstore 6
-    //   3384: goto -2351 -> 1033
-    //   3387: astore 13
-    //   3389: iconst_1
-    //   3390: istore_3
-    //   3391: lload 8
-    //   3393: lstore 6
-    //   3395: goto -2362 -> 1033
-    //   3398: astore 16
-    //   3400: aload 13
-    //   3402: astore 14
-    //   3404: aload 16
-    //   3406: astore 13
-    //   3408: goto -2348 -> 1060
-    //   3411: astore 16
-    //   3413: aload 13
-    //   3415: astore 14
-    //   3417: iconst_1
-    //   3418: istore_2
-    //   3419: aload 16
-    //   3421: astore 13
-    //   3423: goto -2363 -> 1060
-    //   3426: astore 14
-    //   3428: goto -2422 -> 1006
-    //   3431: astore 14
-    //   3433: goto -2427 -> 1006
-    //   3436: lload 8
-    //   3438: lstore 6
-    //   3440: iload 5
-    //   3442: istore_3
-    //   3443: iload 4
-    //   3445: istore_2
-    //   3446: goto -2999 -> 447
-    //   3449: iconst_1
-    //   3450: istore_2
+    //   2587: aload 12
+    //   2589: iconst_5
+    //   2590: anewarray 352	java/lang/String
+    //   2593: dup
+    //   2594: iconst_0
+    //   2595: ldc_w 403
+    //   2598: aastore
+    //   2599: dup
+    //   2600: iconst_1
+    //   2601: ldc_w 405
+    //   2604: aastore
+    //   2605: dup
+    //   2606: iconst_2
+    //   2607: ldc_w 407
+    //   2610: aastore
+    //   2611: dup
+    //   2612: iconst_3
+    //   2613: ldc_w 409
+    //   2616: aastore
+    //   2617: dup
+    //   2618: iconst_4
+    //   2619: ldc_w 442
+    //   2622: aastore
+    //   2623: aload 14
+    //   2625: aconst_null
+    //   2626: aconst_null
+    //   2627: invokevirtual 415	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   2630: astore 12
+    //   2632: aload 12
+    //   2634: astore 11
+    //   2636: aload 11
+    //   2638: invokeinterface 448 1 0
+    //   2643: ifeq +562 -> 3205
+    //   2646: aload 13
+    //   2648: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   2651: aload 13
+    //   2653: ldc_w 403
+    //   2656: lload 6
+    //   2658: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2661: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   2664: aload 13
+    //   2666: ldc_w 407
+    //   2669: ldc_w 511
+    //   2672: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2675: aload 13
+    //   2677: ldc_w 409
+    //   2680: aload_1
+    //   2681: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2684: aload 13
+    //   2686: ldc_w 442
+    //   2689: iconst_2
+    //   2690: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2693: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   2696: aload_0
+    //   2697: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   2700: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   2703: aload 13
+    //   2705: new 163	java/lang/StringBuilder
+    //   2708: dup
+    //   2709: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   2712: ldc_w 429
+    //   2715: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2718: lload 6
+    //   2720: invokevirtual 432	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2723: ldc_w 434
+    //   2726: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2729: ldc_w 407
+    //   2732: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2735: ldc_w 436
+    //   2738: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2741: ldc_w 511
+    //   2744: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2747: ldc_w 440
+    //   2750: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2753: ldc_w 442
+    //   2756: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2759: ldc_w 436
+    //   2762: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2765: iconst_2
+    //   2766: invokevirtual 445	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2769: ldc_w 401
+    //   2772: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2775: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2778: aconst_null
+    //   2779: invokevirtual 518	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   2782: pop
+    //   2783: aload 11
+    //   2785: ifnull +10 -> 2795
+    //   2788: aload 11
+    //   2790: invokeinterface 449 1 0
+    //   2795: iconst_1
+    //   2796: ireturn
+    //   2797: aload 13
+    //   2799: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   2802: aload 13
+    //   2804: ldc_w 403
+    //   2807: lload 6
+    //   2809: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2812: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   2815: aload 13
+    //   2817: ldc_w 407
+    //   2820: ldc_w 491
+    //   2823: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2826: aload 13
+    //   2828: ldc_w 493
+    //   2831: aload 15
+    //   2833: getfield 486	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqJobTitle	Ljava/lang/String;
+    //   2836: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2839: aload 13
+    //   2841: ldc_w 442
+    //   2844: iconst_1
+    //   2845: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2848: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   2851: aload_0
+    //   2852: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   2855: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   2858: aload 13
+    //   2860: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   2863: pop
+    //   2864: goto -1300 -> 1564
+    //   2867: astore 12
+    //   2869: aload 11
+    //   2871: ifnull -1295 -> 1576
+    //   2874: aload 11
+    //   2876: invokeinterface 449 1 0
+    //   2881: goto -1305 -> 1576
+    //   2884: astore_1
+    //   2885: aload 11
+    //   2887: ifnull +10 -> 2897
+    //   2890: aload 11
+    //   2892: invokeinterface 449 1 0
+    //   2897: aload_1
+    //   2898: athrow
+    //   2899: aload 13
+    //   2901: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   2904: aload 13
+    //   2906: ldc_w 403
+    //   2909: lload 6
+    //   2911: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2914: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   2917: aload 13
+    //   2919: ldc_w 407
+    //   2922: ldc_w 491
+    //   2925: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2928: aload 13
+    //   2930: ldc_w 409
+    //   2933: aload 15
+    //   2935: getfield 489	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqCompany	Ljava/lang/String;
+    //   2938: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2941: aload 13
+    //   2943: ldc_w 442
+    //   2946: iconst_1
+    //   2947: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2950: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   2953: aload_0
+    //   2954: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   2957: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   2960: aload 13
+    //   2962: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   2965: pop
+    //   2966: goto -1104 -> 1862
+    //   2969: astore 12
+    //   2971: aload 11
+    //   2973: ifnull -1099 -> 1874
+    //   2976: aload 11
+    //   2978: invokeinterface 449 1 0
+    //   2983: goto -1109 -> 1874
+    //   2986: astore_1
+    //   2987: aload 11
+    //   2989: ifnull +10 -> 2999
+    //   2992: aload 11
+    //   2994: invokeinterface 449 1 0
+    //   2999: aload_1
+    //   3000: athrow
+    //   3001: aload 13
+    //   3003: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   3006: aload 13
+    //   3008: ldc_w 403
+    //   3011: lload 6
+    //   3013: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   3016: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   3019: aload 13
+    //   3021: ldc_w 407
+    //   3024: ldc_w 438
+    //   3027: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3030: aload 13
+    //   3032: ldc_w 409
+    //   3035: aload 15
+    //   3037: getfield 504	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqTelphone	Ljava/lang/String;
+    //   3040: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3043: aload 13
+    //   3045: ldc_w 442
+    //   3048: iconst_3
+    //   3049: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3052: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   3055: aload_0
+    //   3056: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   3059: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   3062: aload 13
+    //   3064: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   3067: pop
+    //   3068: goto -895 -> 2173
+    //   3071: astore 12
+    //   3073: aload 11
+    //   3075: ifnull -890 -> 2185
+    //   3078: aload 11
+    //   3080: invokeinterface 449 1 0
+    //   3085: goto -900 -> 2185
+    //   3088: astore_1
+    //   3089: aload 11
+    //   3091: ifnull +10 -> 3101
+    //   3094: aload 11
+    //   3096: invokeinterface 449 1 0
+    //   3101: aload_1
+    //   3102: athrow
+    //   3103: aload 13
+    //   3105: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   3108: aload 13
+    //   3110: ldc_w 403
+    //   3113: lload 6
+    //   3115: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   3118: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   3121: aload 13
+    //   3123: ldc_w 407
+    //   3126: ldc_w 509
+    //   3129: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3132: aload 13
+    //   3134: ldc_w 409
+    //   3137: aload 15
+    //   3139: getfield 507	com/tencent/mobileqq/data/BmqqUserSimpleInfo:mBmqqEmail	Ljava/lang/String;
+    //   3142: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3145: aload 13
+    //   3147: ldc_w 442
+    //   3150: iconst_2
+    //   3151: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3154: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   3157: aload_0
+    //   3158: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   3161: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   3164: aload 13
+    //   3166: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   3169: pop
+    //   3170: goto -686 -> 2484
+    //   3173: astore 12
+    //   3175: aload 11
+    //   3177: ifnull -681 -> 2496
+    //   3180: aload 11
+    //   3182: invokeinterface 449 1 0
+    //   3187: goto -691 -> 2496
+    //   3190: astore_1
+    //   3191: aload 11
+    //   3193: ifnull +10 -> 3203
+    //   3196: aload 11
+    //   3198: invokeinterface 449 1 0
+    //   3203: aload_1
+    //   3204: athrow
+    //   3205: aload 13
+    //   3207: invokevirtual 471	android/content/ContentValues:clear	()V
+    //   3210: aload 13
+    //   3212: ldc_w 403
+    //   3215: lload 6
+    //   3217: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   3220: invokevirtual 478	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   3223: aload 13
+    //   3225: ldc_w 407
+    //   3228: ldc_w 511
+    //   3231: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3234: aload 13
+    //   3236: ldc_w 409
+    //   3239: aload_1
+    //   3240: invokevirtual 483	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3243: aload 13
+    //   3245: ldc_w 442
+    //   3248: iconst_2
+    //   3249: invokestatic 498	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3252: invokevirtual 501	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   3255: aload_0
+    //   3256: invokevirtual 391	com/tencent/mobileqq/profilesetting/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   3259: getstatic 397	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   3262: aload 13
+    //   3264: invokevirtual 462	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   3267: pop
+    //   3268: goto -485 -> 2783
+    //   3271: astore_1
+    //   3272: aload 11
+    //   3274: ifnull -479 -> 2795
+    //   3277: aload 11
+    //   3279: invokeinterface 449 1 0
+    //   3284: goto -489 -> 2795
+    //   3287: astore_1
+    //   3288: aload 11
+    //   3290: ifnull +10 -> 3300
+    //   3293: aload 11
+    //   3295: invokeinterface 449 1 0
+    //   3300: aload_1
+    //   3301: athrow
+    //   3302: iconst_m1
+    //   3303: ireturn
+    //   3304: astore_1
+    //   3305: goto -17 -> 3288
+    //   3308: astore_1
+    //   3309: aconst_null
+    //   3310: astore 11
+    //   3312: goto -40 -> 3272
+    //   3315: astore_1
+    //   3316: goto -125 -> 3191
+    //   3319: astore 11
+    //   3321: aconst_null
+    //   3322: astore 11
+    //   3324: goto -149 -> 3175
+    //   3327: astore_1
+    //   3328: goto -239 -> 3089
+    //   3331: astore 11
+    //   3333: aconst_null
+    //   3334: astore 11
+    //   3336: goto -263 -> 3073
+    //   3339: astore_1
+    //   3340: goto -353 -> 2987
+    //   3343: astore 11
+    //   3345: aconst_null
+    //   3346: astore 11
+    //   3348: goto -377 -> 2971
+    //   3351: astore_1
+    //   3352: goto -467 -> 2885
+    //   3355: astore 11
+    //   3357: aconst_null
+    //   3358: astore 11
+    //   3360: goto -491 -> 2869
+    //   3363: astore_1
+    //   3364: goto -2259 -> 1105
+    //   3367: astore 11
+    //   3369: aconst_null
+    //   3370: astore 11
+    //   3372: iconst_0
+    //   3373: istore_3
+    //   3374: lconst_0
+    //   3375: lstore 6
+    //   3377: goto -2342 -> 1035
+    //   3380: astore 13
+    //   3382: lload 8
+    //   3384: lstore 6
+    //   3386: goto -2351 -> 1035
+    //   3389: astore 13
+    //   3391: iconst_1
+    //   3392: istore_3
+    //   3393: lload 8
+    //   3395: lstore 6
+    //   3397: goto -2362 -> 1035
+    //   3400: astore 16
+    //   3402: aload 13
+    //   3404: astore 14
+    //   3406: aload 16
+    //   3408: astore 13
+    //   3410: goto -2348 -> 1062
+    //   3413: astore 16
+    //   3415: aload 13
+    //   3417: astore 14
+    //   3419: iconst_1
+    //   3420: istore_2
+    //   3421: aload 16
+    //   3423: astore 13
+    //   3425: goto -2363 -> 1062
+    //   3428: astore 14
+    //   3430: goto -2422 -> 1008
+    //   3433: astore 14
+    //   3435: goto -2427 -> 1008
+    //   3438: lload 8
+    //   3440: lstore 6
+    //   3442: iload 5
+    //   3444: istore_3
+    //   3445: iload 4
+    //   3447: istore_2
+    //   3448: goto -2999 -> 449
     //   3451: iconst_1
-    //   3452: istore_3
-    //   3453: goto -3028 -> 425
-    //   3456: lload 8
-    //   3458: lstore 6
-    //   3460: goto -3035 -> 425
-    //   3463: aconst_null
-    //   3464: astore 12
-    //   3466: goto -3386 -> 80
-    //   3469: aconst_null
-    //   3470: astore 15
-    //   3472: goto -3425 -> 47
-    //   3475: iload_3
-    //   3476: istore_2
-    //   3477: iconst_1
-    //   3478: istore_3
-    //   3479: lload 6
-    //   3481: lstore 8
-    //   3483: goto -3306 -> 177
-    //   3486: astore 13
-    //   3488: aconst_null
-    //   3489: astore 13
-    //   3491: goto -2485 -> 1006
+    //   3452: istore_2
+    //   3453: iconst_1
+    //   3454: istore_3
+    //   3455: goto -3028 -> 427
+    //   3458: lload 8
+    //   3460: lstore 6
+    //   3462: goto -3035 -> 427
+    //   3465: aconst_null
+    //   3466: astore 12
+    //   3468: goto -3388 -> 80
+    //   3471: aconst_null
+    //   3472: astore 15
+    //   3474: goto -3427 -> 47
+    //   3477: iload_3
+    //   3478: istore_2
+    //   3479: iconst_1
+    //   3480: istore_3
+    //   3481: lload 6
+    //   3483: lstore 8
+    //   3485: goto -3306 -> 179
+    //   3488: astore 13
+    //   3490: aconst_null
+    //   3491: astore 13
+    //   3493: goto -2485 -> 1008
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	3494	0	this	ProfileCardMoreActivity
-    //   0	3494	1	paramString	String
-    //   81	3396	2	m	int
-    //   170	3309	3	n	int
-    //   83	3361	4	i1	int
-    //   426	3015	5	i2	int
-    //   204	3276	6	l1	long
-    //   172	3310	8	l2	long
-    //   189	209	10	bool	boolean
-    //   26	3283	11	localObject1	Object
-    //   3317	1	11	localException1	Exception
-    //   3320	1	11	localObject2	Object
-    //   3329	1	11	localException2	Exception
-    //   3332	1	11	localObject3	Object
-    //   3341	1	11	localException3	Exception
-    //   3344	1	11	localObject4	Object
-    //   3353	1	11	localException4	Exception
-    //   3356	1	11	localObject5	Object
-    //   3365	1	11	localException5	Exception
-    //   3368	1	11	localObject6	Object
-    //   78	2553	12	localObject7	Object
-    //   2865	1	12	localException6	Exception
-    //   2967	1	12	localException7	Exception
-    //   3069	1	12	localException8	Exception
-    //   3171	1	12	localException9	Exception
-    //   3464	1	12	localObject8	Object
-    //   86	930	13	localObject9	Object
-    //   1027	1	13	localException10	Exception
-    //   1058	21	13	localObject10	Object
-    //   1081	2180	13	localException11	Exception
-    //   3378	1	13	localException12	Exception
-    //   3387	14	13	localException13	Exception
-    //   3406	16	13	localObject11	Object
-    //   3486	1	13	localException14	Exception
-    //   3489	1	13	localObject12	Object
-    //   97	3319	14	localObject13	Object
-    //   3426	1	14	localException15	Exception
-    //   3431	1	14	localException16	Exception
-    //   45	3426	15	localObject14	Object
-    //   92	2189	16	localObject15	Object
-    //   3398	7	16	localObject16	Object
-    //   3411	9	16	localObject17	Object
-    //   233	106	17	localUri	android.net.Uri
+    //   0	3496	0	this	ProfileCardMoreActivity
+    //   0	3496	1	paramString	String
+    //   81	3398	2	m	int
+    //   83	3398	3	n	int
+    //   169	3277	4	i1	int
+    //   428	3015	5	i2	int
+    //   206	3276	6	l1	long
+    //   172	3312	8	l2	long
+    //   191	209	10	bool	boolean
+    //   26	3285	11	localObject1	Object
+    //   3319	1	11	localException1	Exception
+    //   3322	1	11	localObject2	Object
+    //   3331	1	11	localException2	Exception
+    //   3334	1	11	localObject3	Object
+    //   3343	1	11	localException3	Exception
+    //   3346	1	11	localObject4	Object
+    //   3355	1	11	localException4	Exception
+    //   3358	1	11	localObject5	Object
+    //   3367	1	11	localException5	Exception
+    //   3370	1	11	localObject6	Object
+    //   78	2555	12	localObject7	Object
+    //   2867	1	12	localException6	Exception
+    //   2969	1	12	localException7	Exception
+    //   3071	1	12	localException8	Exception
+    //   3173	1	12	localException9	Exception
+    //   3466	1	12	localObject8	Object
+    //   85	933	13	localObject9	Object
+    //   1029	1	13	localException10	Exception
+    //   1060	21	13	localObject10	Object
+    //   1083	2180	13	localException11	Exception
+    //   3380	1	13	localException12	Exception
+    //   3389	14	13	localException13	Exception
+    //   3408	16	13	localObject11	Object
+    //   3488	1	13	localException14	Exception
+    //   3491	1	13	localObject12	Object
+    //   96	3322	14	localObject13	Object
+    //   3428	1	14	localException15	Exception
+    //   3433	1	14	localException16	Exception
+    //   45	3428	15	localObject14	Object
+    //   125	2158	16	localObject15	Object
+    //   3400	7	16	localObject16	Object
+    //   3413	9	16	localObject17	Object
+    //   230	109	17	localContentResolver	android.content.ContentResolver
     // Exception table:
     //   from	to	target	type
-    //   417	425	1027	java/lang/Exception
-    //   994	1001	1027	java/lang/Exception
-    //   1015	1022	1027	java/lang/Exception
-    //   224	383	1058	finally
-    //   209	216	1081	java/lang/Exception
-    //   1068	1075	1081	java/lang/Exception
-    //   1078	1081	1081	java/lang/Exception
-    //   88	169	1098	finally
-    //   1424	1562	2865	java/lang/Exception
-    //   2795	2862	2865	java/lang/Exception
-    //   1287	1420	2882	finally
-    //   1722	1860	2967	java/lang/Exception
-    //   2897	2964	2967	java/lang/Exception
-    //   1585	1718	2984	finally
-    //   2020	2171	3069	java/lang/Exception
-    //   2999	3066	3069	java/lang/Exception
-    //   1883	2016	3086	finally
-    //   2331	2482	3171	java/lang/Exception
-    //   3101	3168	3171	java/lang/Exception
-    //   2194	2327	3188	finally
-    //   2634	2781	3269	java/lang/Exception
-    //   3203	3266	3269	java/lang/Exception
-    //   2497	2630	3285	finally
-    //   2634	2781	3302	finally
-    //   3203	3266	3302	finally
-    //   2497	2630	3306	java/lang/Exception
-    //   2331	2482	3313	finally
-    //   3101	3168	3313	finally
-    //   2194	2327	3317	java/lang/Exception
-    //   2020	2171	3325	finally
-    //   2999	3066	3325	finally
-    //   1883	2016	3329	java/lang/Exception
-    //   1722	1860	3337	finally
-    //   2897	2964	3337	finally
-    //   1585	1718	3341	java/lang/Exception
-    //   1424	1562	3349	finally
-    //   2795	2862	3349	finally
-    //   1287	1420	3353	java/lang/Exception
-    //   182	191	3361	finally
-    //   196	206	3361	finally
-    //   209	216	3361	finally
-    //   417	425	3361	finally
-    //   994	1001	3361	finally
-    //   1015	1022	3361	finally
-    //   1068	1075	3361	finally
-    //   1078	1081	3361	finally
-    //   88	169	3365	java/lang/Exception
-    //   182	191	3378	java/lang/Exception
-    //   196	206	3387	java/lang/Exception
-    //   388	397	3398	finally
-    //   406	413	3411	finally
-    //   388	397	3426	java/lang/Exception
-    //   406	413	3431	java/lang/Exception
-    //   224	383	3486	java/lang/Exception
+    //   419	427	1029	java/lang/Exception
+    //   996	1003	1029	java/lang/Exception
+    //   1017	1024	1029	java/lang/Exception
+    //   226	385	1060	finally
+    //   211	218	1083	java/lang/Exception
+    //   1070	1077	1083	java/lang/Exception
+    //   1080	1083	1083	java/lang/Exception
+    //   87	168	1100	finally
+    //   1426	1564	2867	java/lang/Exception
+    //   2797	2864	2867	java/lang/Exception
+    //   1289	1422	2884	finally
+    //   1724	1862	2969	java/lang/Exception
+    //   2899	2966	2969	java/lang/Exception
+    //   1587	1720	2986	finally
+    //   2022	2173	3071	java/lang/Exception
+    //   3001	3068	3071	java/lang/Exception
+    //   1885	2018	3088	finally
+    //   2333	2484	3173	java/lang/Exception
+    //   3103	3170	3173	java/lang/Exception
+    //   2196	2329	3190	finally
+    //   2636	2783	3271	java/lang/Exception
+    //   3205	3268	3271	java/lang/Exception
+    //   2499	2632	3287	finally
+    //   2636	2783	3304	finally
+    //   3205	3268	3304	finally
+    //   2499	2632	3308	java/lang/Exception
+    //   2333	2484	3315	finally
+    //   3103	3170	3315	finally
+    //   2196	2329	3319	java/lang/Exception
+    //   2022	2173	3327	finally
+    //   3001	3068	3327	finally
+    //   1885	2018	3331	java/lang/Exception
+    //   1724	1862	3339	finally
+    //   2899	2966	3339	finally
+    //   1587	1720	3343	java/lang/Exception
+    //   1426	1564	3351	finally
+    //   2797	2864	3351	finally
+    //   1289	1422	3355	java/lang/Exception
+    //   184	193	3363	finally
+    //   198	208	3363	finally
+    //   211	218	3363	finally
+    //   419	427	3363	finally
+    //   996	1003	3363	finally
+    //   1017	1024	3363	finally
+    //   1070	1077	3363	finally
+    //   1080	1083	3363	finally
+    //   87	168	3367	java/lang/Exception
+    //   184	193	3380	java/lang/Exception
+    //   198	208	3389	java/lang/Exception
+    //   390	399	3400	finally
+    //   408	415	3413	finally
+    //   390	399	3428	java/lang/Exception
+    //   408	415	3433	java/lang/Exception
+    //   226	385	3488	java/lang/Exception
   }
   
   protected ProfileActivity.CardContactInfo a()
@@ -1981,12 +1954,12 @@ public class ProfileCardMoreActivity
     return localObject1;
   }
   
-  public String a()
+  String a()
   {
     Object localObject = null;
     try
     {
-      String str = ContactUtils.getUinByPhoneNum(this.app, this.jdField_a_of_type_JavaLangString);
+      String str = ContactUtils.e(this.app, this.jdField_a_of_type_JavaLangString);
       localObject = str;
     }
     catch (Exception localException)
@@ -2000,7 +1973,7 @@ public class ProfileCardMoreActivity
   
   void a()
   {
-    setContentViewB(2131561384);
+    setContentViewB(2131561491);
     Object localObject1;
     label97:
     int i1;
@@ -2009,20 +1982,20 @@ public class ProfileCardMoreActivity
     int m;
     if ("troopMembercard".equals(this.jdField_g_of_type_JavaLangString))
     {
-      setTitle(anvx.a(2131707906));
+      setTitle(HardCodeUtil.a(2131708433));
       if (this.mLeftBackText != null)
       {
         this.mLeftBackText.setText("");
-        this.mLeftBackText.setContentDescription(anvx.a(2131707916));
+        this.mLeftBackText.setContentDescription(HardCodeUtil.a(2131708443));
       }
       enableRightHighlight(false);
-      localObject1 = findViewById(2131365490);
+      localObject1 = findViewById(2131365651);
       if (this.jdField_a_of_type_ArrayOfInt[14] != 1) {
         break label180;
       }
       ((View)localObject1).setVisibility(0);
       ((View)localObject1).setOnClickListener(this);
-      localObject1 = findViewById(2131378106);
+      localObject1 = findViewById(2131378527);
       if (this.jdField_a_of_type_ArrayOfInt[15] != 1) {
         break label190;
       }
@@ -2036,60 +2009,60 @@ public class ProfileCardMoreActivity
         break label200;
       }
       if (this.jdField_a_of_type_ArrayOfInt[m] != 1) {
-        break label1376;
+        break label1385;
       }
       if (i1 >= 0) {
-        break label1373;
+        break label1382;
       }
       i1 = m;
       label156:
       if (n >= m) {
-        break label1370;
+        break label1379;
       }
       n = m;
     }
     label180:
     label190:
     label200:
-    label1106:
-    label1364:
-    label1367:
-    label1370:
+    label1115:
     label1373:
     label1376:
+    label1379:
+    label1382:
+    label1385:
     for (;;)
     {
       m += 1;
       break label135;
-      setTitle(2131694900);
+      setTitle(2131695138);
       break;
       ((View)localObject1).setVisibility(8);
       break label97;
       ((View)localObject1).setVisibility(8);
       break label129;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormItemRelativeLayout = ((FormItemRelativeLayout)findViewById(2131369176));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormItemRelativeLayout = ((FormItemRelativeLayout)findViewById(2131369427));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormItemRelativeLayout.setBGType(1);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376509));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376902));
       a(0, this.jdField_a_of_type_ComTencentMobileqqWidgetFormItemRelativeLayout, i1, n);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369044));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369276));
       a(1, this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, i1, n);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369191));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369440));
       a(2, this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, i1, n);
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369036));
+      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369268));
       a(3, this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem, i1, n);
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369137));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369388));
       a(4, this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem, 4, 4);
       if (this.app.getCurrentUin().equals(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
       {
-        this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftText(anvx.a(2131707939));
-        this.i = ((FormSimpleItem)findViewById(2131369039));
-        this.j = ((FormSimpleItem)findViewById(2131369051));
+        this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftText(HardCodeUtil.a(2131708466));
+        this.i = ((FormSimpleItem)findViewById(2131369271));
+        this.j = ((FormSimpleItem)findViewById(2131369283));
         a(16, this.i, 16, 17);
         a(17, this.j, 16, 17);
         a(null);
-        this.k = ((FormSimpleItem)findViewById(2131369133));
+        this.k = ((FormSimpleItem)findViewById(2131369384));
         a(18, this.k, 18, 18);
-        this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369136));
+        this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369387));
         a(5, this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem, 5, 5);
         i1 = -1;
         n = -1;
@@ -2099,14 +2072,14 @@ public class ProfileCardMoreActivity
           break label563;
         }
         if (this.jdField_a_of_type_ArrayOfInt[m] != 1) {
-          break label1367;
+          break label1376;
         }
         if (i1 >= 0) {
-          break label1364;
+          break label1373;
         }
         i1 = m;
         if (n >= m) {
-          break label1361;
+          break label1370;
         }
         n = m;
       }
@@ -2117,35 +2090,35 @@ public class ProfileCardMoreActivity
         if (!ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) {
           break;
         }
-        this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftText(anvx.a(2131707928));
+        this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftText(HardCodeUtil.a(2131708455));
         break;
-        this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131377923));
+        this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131378338));
         a(7, this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem, i1, n);
-        this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369097));
+        this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131369348));
         a(8, this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem, i1, n);
         if (this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem.getVisibility() == 0) {
-          bdla.b(null, "dc00898", "", "", "0X8009F70", "0X8009F70", 0, 0, "", "", "", "");
+          ReportController.b(null, "dc00898", "", "", "0X8009F70", "0X8009F70", 0, 0, "", "", "", "");
         }
-        this.h = ((FormSimpleItem)findViewById(2131369096));
+        this.h = ((FormSimpleItem)findViewById(2131369347));
         a(9, this.h, i1, n);
         if (this.h.getVisibility() == 0) {
-          bbcz.a(2);
+          FriendClueReporter.a(2);
         }
-        this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131377439));
+        this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131377858));
         a(11, this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem, i1, n);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131377442));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131377861));
         a(10, this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem, i1, n);
-        this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371647));
+        this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371960));
         a(12, this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem, i1, n);
-        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131377445));
+        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131377864));
         a(13, this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem, i1, n);
-        anvk localanvk;
+        FriendsManager localFriendsManager;
         label1017:
         boolean bool;
         if (ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))
         {
-          localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-          if (localanvk == null)
+          localFriendsManager = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+          if (localFriendsManager == null)
           {
             localObject1 = null;
             Object localObject2;
@@ -2153,8 +2126,8 @@ public class ProfileCardMoreActivity
             {
               this.jdField_b_of_type_JavaLangString = ((Friends)localObject1).remark;
               this.jdField_d_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-              localObject2 = localanvk.a(String.valueOf(((Friends)localObject1).groupid));
-              if ((localObject2 != null) && (!bhbx.a(this.jdField_c_of_type_JavaLangString, ((Groups)localObject2).group_name))) {
+              localObject2 = localFriendsManager.a(String.valueOf(((Friends)localObject1).groupid));
+              if ((localObject2 != null) && (!Utils.a(this.jdField_c_of_type_JavaLangString, ((Groups)localObject2).group_name))) {
                 this.jdField_c_of_type_JavaLangString = ((Groups)localObject2).group_name;
               }
               if (((Friends)localObject1).gathtertype == 1)
@@ -2168,7 +2141,7 @@ public class ProfileCardMoreActivity
             {
               localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
               if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-                break label1300;
+                break label1309;
               }
               localObject1 = "";
               ((FormSimpleItem)localObject2).setRightText((CharSequence)localObject1);
@@ -2180,59 +2153,62 @@ public class ProfileCardMoreActivity
             }
             if (this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.getVisibility() == 0)
             {
-              if (localanvk != null) {
-                break label1309;
+              if (localFriendsManager != null) {
+                break label1318;
               }
               localObject1 = null;
               localObject2 = this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem;
               if ((localObject1 == null) || (!((Card)localObject1).babyQSwitch)) {
-                break label1322;
+                break label1331;
               }
               bool = true;
               ((FormSwitchItem)localObject2).setChecked(bool);
-              ((anri)this.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).v();
+              localObject1 = (TempGetProfileDetailProcessor)ProfileServiceUtils.getBusinessProcessor(this.app, TempGetProfileDetailProcessor.class);
+              if (localObject1 != null) {
+                ((TempGetProfileDetailProcessor)localObject1).getBabyQSwitch();
+              }
             }
             if (this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.getVisibility() == 0)
             {
-              if ((localanvk == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
-                break label1328;
+              if ((localFriendsManager == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+                break label1337;
               }
-              this.jdField_a_of_type_Boolean = localanvk.e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+              this.jdField_a_of_type_Boolean = localFriendsManager.e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
               d();
             }
-            if ((localanvk != null) && (localanvk.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+            if ((localFriendsManager != null) && (localFriendsManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
               l();
             }
           }
         }
         for (;;)
         {
-          if (AppSetting.c)
+          if (AppSetting.d)
           {
-            this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131718530));
+            this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719053));
             this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setFocusable(true);
-            this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131716737));
-            this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131694833));
-            this.h.setContentDescription(getString(2131694824));
-            this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anvx.a(2131707889));
-            this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131690681));
+            this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131717232));
+            this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131695071));
+            this.h.setContentDescription(getString(2131695062));
+            this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(HardCodeUtil.a(2131708416));
+            this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131690783));
             this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setFocusable(true);
-            this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(anvx.a(2131707899));
+            this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(HardCodeUtil.a(2131708426));
             this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setFocusable(true);
-            this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131694919));
+            this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131695157));
             this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setFocusable(true);
           }
           return;
-          localObject1 = localanvk.e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+          localObject1 = localFriendsManager.e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
           break;
           localObject1 = this.jdField_c_of_type_JavaLangString;
           break label958;
-          localObject1 = localanvk.c(AppConstants.BABY_Q_UIN);
+          localObject1 = localFriendsManager.b(AppConstants.BABY_Q_UIN);
           break label1017;
           bool = false;
           break label1039;
           this.jdField_a_of_type_Boolean = false;
-          break label1106;
+          break label1115;
           if (this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.getVisibility() == 0)
           {
             this.jdField_a_of_type_Boolean = a();
@@ -2249,7 +2225,8 @@ public class ProfileCardMoreActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    QQToast.a(BaseApplication.getContext(), paramInt2, paramInt1, 0).a(getTitleBarHeight()).show();
+    DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
+    QQToast.a(BaseApplication.getContext(), paramInt2, paramInt1, 0).b(getTitleBarHeight() - (int)(localDisplayMetrics.density * 10.0F));
   }
   
   void a(int paramInt1, RelativeLayout paramRelativeLayout, int paramInt2, int paramInt3)
@@ -2263,20 +2240,20 @@ public class ProfileCardMoreActivity
       paramRelativeLayout.setOnClickListener(this);
       if ((paramInt1 == paramInt2) && (paramInt1 == paramInt3))
       {
-        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130839496));
+        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130839575));
         return;
       }
       if (paramInt1 == paramInt2)
       {
-        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130839512));
+        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130839591));
         return;
       }
       if (paramInt1 == paramInt3)
       {
-        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130839503));
+        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130839582));
         return;
       }
-      paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130839506));
+      paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130839585));
       return;
     }
     paramRelativeLayout.setVisibility(8);
@@ -2358,14 +2335,14 @@ public class ProfileCardMoreActivity
     paramTextView.setCompoundDrawables(null, null, paramDrawable, null);
   }
   
-  public void a(BusinessCard paramBusinessCard)
+  void a(BusinessCard paramBusinessCard)
   {
     int n = 0;
     if (paramBusinessCard == null) {
       return;
     }
     String str = "";
-    Object localObject1 = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject1 = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     Object localObject2;
     if (localObject1 == null)
     {
@@ -2385,7 +2362,7 @@ public class ProfileCardMoreActivity
       if (TextUtils.isEmpty(paramBusinessCard.picUrl)) {
         break label243;
       }
-      a(this.jdField_a_of_type_AndroidWidgetTextView, getResources().getDrawable(2130845760));
+      a(this.jdField_a_of_type_AndroidWidgetTextView, getResources().getDrawable(2130846082));
     }
     int m;
     for (;;)
@@ -2410,7 +2387,7 @@ public class ProfileCardMoreActivity
         ((StringBuilder)localObject2).append((String)paramBusinessCard.mobilesNum.get(m));
         m += 1;
       }
-      localObject2 = ((anvk)localObject1).e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+      localObject2 = ((FriendsManager)localObject1).e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
       break;
       label243:
       a(this.jdField_a_of_type_AndroidWidgetTextView, null);
@@ -2436,52 +2413,52 @@ public class ProfileCardMoreActivity
   
   void a(Card paramCard)
   {
-    if (this.jdField_a_of_type_Aebq != null) {
-      this.jdField_a_of_type_Aebq.a(paramCard);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper.a(paramCard);
     }
   }
   
   void a(String paramString)
   {
-    bkzi localbkzi = bkzi.a(this);
-    if (bhbx.b(paramString)) {
-      localbkzi.a(2131690602);
+    ActionSheet localActionSheet = ActionSheet.create(this);
+    if (Utils.b(paramString)) {
+      localActionSheet.setMainTitle(2131690704);
     }
     for (;;)
     {
-      localbkzi.a(2131691457, 3);
-      localbkzi.c(2131690697);
-      localbkzi.a(new bagh(this, paramString, localbkzi));
-      localbkzi.show();
+      localActionSheet.addButton(2131691567, 3);
+      localActionSheet.addCancelButton(2131690800);
+      localActionSheet.setOnButtonClickListener(new ProfileCardMoreActivity.3(this, paramString, localActionSheet));
+      localActionSheet.show();
       return;
       if ((this.jdField_a_of_type_JavaLangBoolean != null) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue())) {
-        localbkzi.a(2131690604);
+        localActionSheet.setMainTitle(2131690706);
       } else {
-        localbkzi.a(2131690603);
+        localActionSheet.setMainTitle(2131690705);
       }
     }
   }
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    Object localObject1 = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString1);
+    Object localObject1 = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString1);
     int m = 17;
     if (localObject1 != null) {
       m = ((Friends)localObject1).cSpecialFlag;
     }
-    Object localObject2 = new bdnr(StructMsgForGeneralShare.class);
-    Object localObject3 = "mqqapi://app/action?pkg=com.tencent.mobileqq&account_type=2&uintype=1024&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=" + paramString1 + "&cspecialflag=" + m;
+    Object localObject2 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class);
+    Object localObject3 = "mqqapi://app/action?pkg=com.tencent.mobileqq&account_type=2&uintype=1024&cmp=com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity&uin=" + paramString1 + "&cspecialflag=" + m;
     String str1 = "mqqapi://card/show_pslcard?src_type=internal&card_type=qq_bussiness_account&uin=" + paramString1 + "&version=1&cspecialflag=" + m;
     String str2 = "https://share.mp.qq.com/cgi/share.php?uin=" + paramString1 + "&account_flag=" + -7 + "&jumptype=1&card_type=crm&cspecialflag=" + m;
     localObject1 = "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + paramString1;
-    localObject2 = ((bdnr)localObject2).c(14).a(2).a(1).a(anvx.a(2131707891) + paramString2).a("plugin", str2, "", (String)localObject3, str1).d(getResources().getString(2131717984)).a();
-    localObject3 = new bdqn();
-    ((bdnv)localObject3).b(1);
-    ((bdnv)localObject3).a(new bdpx((String)localObject1));
-    ((bdnv)localObject3).a(new StructMsgItemTitle(paramString2));
-    ((bdnv)localObject3).a(new bdsv(anvx.a(2131707888) + bjxa.b(this.app, paramString1)));
-    ((AbsShareMsg)localObject2).addItem(a(anvx.a(2131707936)));
-    ((AbsShareMsg)localObject2).addItem((bdnu)localObject3);
+    localObject2 = ((AbsShareMsg.Builder)localObject2).c(14).a(2).a(1).a(HardCodeUtil.a(2131708418) + paramString2).a("plugin", str2, "", (String)localObject3, str1).d(getResources().getString(2131718475)).a();
+    localObject3 = new StructMsgItemLayout2();
+    ((AbsStructMsgItem)localObject3).b(1);
+    ((AbsStructMsgItem)localObject3).a(new StructMsgItemCover((String)localObject1));
+    ((AbsStructMsgItem)localObject3).a(new StructMsgItemTitle(paramString2));
+    ((AbsStructMsgItem)localObject3).a(new StructMsgItemSummary(HardCodeUtil.a(2131708415) + QidianManager.b(this.app, paramString1)));
+    ((AbsShareMsg)localObject2).addItem(a(HardCodeUtil.a(2131708463)));
+    ((AbsShareMsg)localObject2).addItem((AbsStructMsgElement)localObject3);
     paramString1 = new Bundle();
     paramString1.putInt("forward_type", 20);
     paramString1.putInt("structmsg_service_id", paramInt);
@@ -2489,16 +2466,16 @@ public class ProfileCardMoreActivity
     paramString1.putBoolean("k_dataline", false);
     paramString2 = new Intent();
     paramString2.putExtras(paramString1);
-    aupt.a(this, paramString2, 21);
+    ForwardBaseOption.a(this, paramString2, 21);
   }
   
   void a(boolean paramBoolean)
   {
     boolean bool = true;
-    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    if (NetworkUtil.d(BaseApplication.getContext()))
     {
-      awtp localawtp = (awtp)this.app.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
-      if (localawtp != null) {}
+      ShieldMsgManger localShieldMsgManger = (ShieldMsgManger)this.app.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
+      if (localShieldMsgManger != null) {}
       for (;;)
       {
         int m;
@@ -2511,10 +2488,10 @@ public class ProfileCardMoreActivity
           long l = Long.parseLong((String)localObject);
           localObject = new ArrayList();
           ((List)localObject).add(Long.valueOf(l));
-          m = bhaa.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+          m = ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
           if (paramBoolean)
           {
-            localawtp.b(m, (List)localObject);
+            localShieldMsgManger.b(m, (List)localObject);
             m = 1;
           }
           switch (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int)
@@ -2532,7 +2509,7 @@ public class ProfileCardMoreActivity
             this.jdField_a_of_type_Int |= 0x2;
             e();
             return;
-            localawtp.a(m, (List)localObject);
+            localShieldMsgManger.a(m, (List)localObject);
             continue;
             m = 0;
           }
@@ -2566,20 +2543,20 @@ public class ProfileCardMoreActivity
       }
       label314:
       if (paramBoolean) {
-        a(2131718803, 1);
+        notifyUser(2131719328, 1);
       }
       for (;;)
       {
         d();
         return;
-        a(2131718805, 1);
+        notifyUser(2131719330, 1);
       }
     }
-    a(2131692125, 1);
+    notifyUser(2131692257, 1);
     d();
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     f();
     if ((this.jdField_a_of_type_Int & 0x2) == 2)
@@ -2588,7 +2565,7 @@ public class ProfileCardMoreActivity
         break label113;
       }
       if (paramBoolean2) {
-        a(2131718804, 2);
+        notifyUser(2131719329, 2);
       }
     }
     else
@@ -2597,25 +2574,25 @@ public class ProfileCardMoreActivity
       if (!ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) {
         break label145;
       }
-      anvk localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if ((localanvk == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+      FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if ((localFriendsManager == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
         break label137;
       }
-      this.jdField_a_of_type_Boolean = localanvk.e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Boolean = localFriendsManager.e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
       d();
       return;
-      a(2131718816, 2);
+      notifyUser(2131719341, 2);
       break;
       label113:
       if (paramBoolean2)
       {
-        a(2131718803, 1);
+        notifyUser(2131719328, 1);
         break;
       }
-      a(2131718805, 1);
+      notifyUser(2131719330, 1);
       break;
       label137:
       this.jdField_a_of_type_Boolean = false;
@@ -2627,20 +2604,26 @@ public class ProfileCardMoreActivity
   
   public void a(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte != null) {
-      c(paramArrayOfByte);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper.a(paramArrayOfByte);
     }
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      a(null);
+      return;
+    }
+    runOnUiThread(new ProfileCardMoreActivity.4(this));
   }
   
   boolean a()
   {
-    awtp localawtp = null;
+    ShieldMsgManger localShieldMsgManger = null;
     Object localObject = null;
     switch (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int)
     {
     default: 
-      localawtp = (awtp)this.app.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
-      if (localawtp == null) {
+      localShieldMsgManger = (ShieldMsgManger)this.app.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
+      if (localShieldMsgManger == null) {
         break label164;
       }
       if (ProfileActivity.AllInOne.g(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) {
@@ -2650,10 +2633,10 @@ public class ProfileCardMoreActivity
     }
     while (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      return localawtp.a((String)localObject);
-      localObject = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      return localShieldMsgManger.a((String)localObject);
+      localObject = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (localObject == null) {}
-      for (localObject = localawtp; (localObject != null) && (((Friends)localObject).groupid == -1002); localObject = ((anvk)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {
+      for (localObject = localShieldMsgManger; (localObject != null) && (((Friends)localObject).groupid == -1002); localObject = ((FriendsManager)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {
         return true;
       }
       return false;
@@ -2690,7 +2673,7 @@ public class ProfileCardMoreActivity
       if (ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))
       {
         this.jdField_a_of_type_ArrayOfInt[1] = 1;
-        if (bhbx.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
+        if (Utils.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
         {
           this.jdField_a_of_type_ArrayOfInt[2] = 1;
           this.jdField_a_of_type_ArrayOfInt[12] = 1;
@@ -2699,13 +2682,13 @@ public class ProfileCardMoreActivity
         else
         {
           this.jdField_a_of_type_ArrayOfInt[0] = 1;
-          if ((nut.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) || (bjxa.b(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
+          if ((BmqqSegmentUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) || (QidianManager.b(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
           {
             m = 1;
             label197:
             if (m != 0)
             {
-              if (!((bjxa)this.app.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {
+              if (!((QidianManager)this.app.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {
                 break label356;
               }
               this.jdField_a_of_type_ArrayOfInt[3] = 0;
@@ -2721,11 +2704,11 @@ public class ProfileCardMoreActivity
             }
             this.jdField_a_of_type_ArrayOfInt[6] = 1;
             this.jdField_a_of_type_ArrayOfInt[7] = 1;
-            if (axmv.a(this.app.getCurrentUin())) {
+            if (FriendIntimateRelationshipHelper.a(this.app.getCurrentUin())) {
               this.jdField_a_of_type_ArrayOfInt[8] = 1;
             }
-            bbcv localbbcv = this.jdField_a_of_type_Bbcv;
-            if (bbcv.a()) {
+            FriendClueConfigHelper localFriendClueConfigHelper = this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueConfigHelper;
+            if (FriendClueConfigHelper.a()) {
               this.jdField_a_of_type_ArrayOfInt[9] = 1;
             }
             this.jdField_a_of_type_ArrayOfInt[10] = 1;
@@ -2785,13 +2768,32 @@ public class ProfileCardMoreActivity
     }
   }
   
-  public void b(int paramInt1, int paramInt2)
+  void b(int paramInt1, int paramInt2)
   {
-    DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
-    QQToast.a(BaseApplication.getContext(), paramInt2, paramInt1, 0).b(getTitleBarHeight() - (int)(localDisplayMetrics.density * 10.0F));
+    if (!TextUtils.isEmpty(SharePreferenceUtils.a(this, "bc_remark_first"))) {}
+    while ((this.jdField_a_of_type_ComTencentMobileqqWidgetFormItemRelativeLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetFormItemRelativeLayout.getVisibility() == 8)) {
+      return;
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366083));
+    }
+    if (paramInt1 < 0) {}
+    for (paramInt1 = 0;; paramInt1 = AIOUtils.a(10.0F, getResources()))
+    {
+      int m = paramInt2;
+      if (paramInt2 < 0) {
+        m = 0;
+      }
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.setMargins(paramInt1, m, 0, 0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      SharePreferenceUtils.a(this, "bc_remark_first", "false");
+      return;
+    }
   }
   
-  public void b(String paramString)
+  void b(String paramString)
   {
     this.jdField_b_of_type_JavaLangString = paramString;
     if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
@@ -2818,62 +2820,17 @@ public class ProfileCardMoreActivity
     }
   }
   
-  public void b(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte != null) {
-      c(paramArrayOfByte);
-    }
-  }
-  
   void c()
   {
-    Object localObject = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject == null) {}
-    for (localObject = null;; localObject = ((anvk)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
+    for (localObject = null;; localObject = ((FriendsManager)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
     {
       if (localObject != null) {
         startActivityForResult(new Intent(getActivity(), MoveToGroupActivity.class).putExtra("friendUin", this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString).putExtra("mgid", (byte)((Friends)localObject).groupid), 0);
       }
       return;
     }
-  }
-  
-  void c(int paramInt1, int paramInt2)
-  {
-    if (!TextUtils.isEmpty(SharePreferenceUtils.get(this, "bc_remark_first"))) {}
-    while ((this.jdField_a_of_type_ComTencentMobileqqWidgetFormItemRelativeLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetFormItemRelativeLayout.getVisibility() == 8)) {
-      return;
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365919));
-    }
-    if (paramInt1 < 0) {}
-    for (paramInt1 = 0;; paramInt1 = AIOUtils.dp2px(10.0F, getResources()))
-    {
-      int m = paramInt2;
-      if (paramInt2 < 0) {
-        m = 0;
-      }
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.setMargins(paramInt1, m, 0, 0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      SharePreferenceUtils.set(this, "bc_remark_first", "false");
-      return;
-    }
-  }
-  
-  public void c(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Aebq != null) {
-      this.jdField_a_of_type_Aebq.a(paramArrayOfByte);
-    }
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      a(null);
-      return;
-    }
-    runOnUiThread(new ProfileCardMoreActivity.4(this));
   }
   
   public void d()
@@ -2884,7 +2841,7 @@ public class ProfileCardMoreActivity
       this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
     }
-    while ((!ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (bhbx.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+    while ((!ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (Utils.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
       return;
     }
     this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
@@ -2930,7 +2887,7 @@ public class ProfileCardMoreActivity
       }
       for (;;)
       {
-        if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
+        if (NetworkUtil.d(BaseApplication.getContext()))
         {
           if ((!bool) && (paramIntent.equals(this.jdField_e_of_type_JavaLangString))) {
             break;
@@ -2948,24 +2905,24 @@ public class ProfileCardMoreActivity
               QZoneDistributedAppCtrl.getInstance(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString).submitCtrl(paramIntent);
               return;
             }
-            a(2131693257, 1);
+            notifyUser(2131693407, 1);
             return;
           }
-          a(2131693243, 0);
+          notifyUser(2131693393, 0);
           return;
         }
-        a(2131694302, 1);
+        notifyUser(2131694507, 1);
         return;
-        paramIntent.putExtra("selfSet_leftViewText", getString(2131719161));
-        localObject = AIOUtils.setOpenAIOIntent(new Intent(this, SplashActivity.class), null);
+        paramIntent.putExtra("selfSet_leftViewText", getString(2131719718));
+        localObject = AIOUtils.a(new Intent(this, SplashActivity.class), null);
         ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
-        paramIntent = ForwardUtils.sessionFromIntent((Intent)localObject);
-        ForwardUtils.handleAppShareAction(this.app, this, paramIntent, (Intent)localObject);
+        paramIntent = ForwardUtils.a((Intent)localObject);
+        ForwardUtils.a(this.app, this, paramIntent, (Intent)localObject);
         return;
-        if (this.jdField_a_of_type_Aebq == null) {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper == null) {
           break;
         }
-        this.jdField_a_of_type_Aebq.a(paramInt2, paramIntent);
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper.a(paramInt2, paramIntent);
         return;
         if (paramIntent == null) {
           break;
@@ -2992,30 +2949,31 @@ public class ProfileCardMoreActivity
     if (QLog.isColorLevel()) {
       QLog.i("IphoneTitleBarActivity", 2, String.format("check params [%s, %s, %s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_AndroidOsBundle }));
     }
-    this.jdField_a_of_type_Bbcv = new bbcv(this.app);
+    this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueConfigHelper = new FriendClueConfigHelper(this.app);
     try
     {
       b();
       a();
-      this.jdField_a_of_type_Aebq = new aebq(this, this);
-      this.jdField_a_of_type_Aebq.jdField_a_of_type_Int = getIntent().getIntExtra("coverTimeStamp", 0);
-      this.jdField_a_of_type_Aebq.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("coverUrl");
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper = new FriendProfilePhotoHelper(this, this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper.jdField_a_of_type_Int = getIntent().getIntExtra("coverTimeStamp", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("coverUrl");
       this.jdField_b_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = ((ProfileActivity.AllInOne)getIntent().getParcelableExtra("AllInOne"));
       if (this.jdField_b_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) {
         this.jdField_b_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = new ProfileActivity.AllInOne(this.app.getCurrentUin(), 0);
       }
-      this.jdField_a_of_type_Aqjm = ((aqjm)this.app.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER));
-      addObserver(this.jdField_a_of_type_Anyz);
-      addObserver(this.jdField_a_of_type_Aodm);
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager = ((BusinessCardManager)this.app.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER));
+      addObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+      addObserver(this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver);
       addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-      addObserver(this.jdField_a_of_type_Anvi);
-      addObserver(this.jdField_a_of_type_Auzh);
-      this.app.registObserver(this.jdField_a_of_type_Aqjn);
+      addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver);
+      addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoObserver);
+      this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardObserver);
       this.app.setHandler(ProfileCardMoreActivity.class, this.jdField_a_of_type_MqqOsMqqHandler);
       if ((this.jdField_d_of_type_JavaLangString == null) || (ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {
         ThreadManager.excute(new ProfileCardMoreActivity.1(this), 16, null, true);
       }
-      amdh.a(this.app);
+      SpecialCareUtils.a(this.app);
       return true;
     }
     catch (NoSuchFieldError paramBundle)
@@ -3030,18 +2988,19 @@ public class ProfileCardMoreActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Aebq != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper != null)
     {
-      this.jdField_a_of_type_Aebq.a();
-      this.jdField_a_of_type_Aebq = null;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper = null;
     }
     f();
-    removeObserver(this.jdField_a_of_type_Anyz);
-    removeObserver(this.jdField_a_of_type_Aodm);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver);
     removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-    removeObserver(this.jdField_a_of_type_Anvi);
-    removeObserver(this.jdField_a_of_type_Auzh);
-    this.app.unRegistObserver(this.jdField_a_of_type_Aqjn);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoObserver);
+    this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardObserver);
     this.app.removeHandler(ProfileCardMoreActivity.class);
   }
   
@@ -3049,48 +3008,48 @@ public class ProfileCardMoreActivity
   {
     super.doOnNewIntent(paramIntent);
     ArrayList localArrayList = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-    if ((localArrayList != null) && (localArrayList.size() > 0) && (this.jdField_a_of_type_Aebq != null)) {
-      this.jdField_a_of_type_Aebq.a(paramIntent, localArrayList);
+    if ((localArrayList != null) && (localArrayList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper.a(paramIntent, localArrayList);
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    SpecialCareInfo localSpecialCareInfo = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+    SpecialCareInfo localSpecialCareInfo = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
     if (this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.getVisibility() == 0)
     {
       if ((localSpecialCareInfo != null) && (localSpecialCareInfo.globalSwitch != 0)) {
         break label68;
       }
-      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131718420));
+      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131718943));
     }
     for (;;)
     {
       j();
       return;
       label68:
-      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131718421));
+      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131718944));
     }
   }
   
   void e()
   {
-    if (this.jdField_a_of_type_Bisl == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
-      this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bisl.c(2131718527);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131719050);
     }
-    this.jdField_a_of_type_Bisl.show();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
   
-  public void f()
+  void f()
   {
-    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bisl.cancel();
-      this.jdField_a_of_type_Bisl = null;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
       return;
     }
     catch (Exception localException)
@@ -3108,10 +3067,10 @@ public class ProfileCardMoreActivity
     if (this.jdField_a_of_type_AndroidOsBundle != null) {
       localIntent.putExtra("result", this.jdField_a_of_type_AndroidOsBundle);
     }
-    if ((this.jdField_a_of_type_Aebq != null) && (this.jdField_a_of_type_Aebq.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper.jdField_a_of_type_Boolean))
     {
       localIntent.putExtra("is_set_cover", true);
-      localIntent.putExtra("cover_data", this.jdField_a_of_type_Aebq.jdField_a_of_type_ArrayOfByte);
+      localIntent.putExtra("cover_data", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper.jdField_a_of_type_ArrayOfByte);
     }
     setResult(-1, localIntent);
     super.finish();
@@ -3122,13 +3081,29 @@ public class ProfileCardMoreActivity
     if (!this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Boolean = true;
-      ThreadManager.getFileThreadHandler().post(new ProfileCardMoreActivity.13(this));
+      ThreadManager.getFileThreadHandler().post(new ProfileCardMoreActivity.14(this));
     }
+  }
+  
+  public ClassLoader getClassLoader()
+  {
+    ClassLoader localClassLoader3 = super.getClassLoader();
+    ClassLoader localClassLoader2 = this.jdField_a_of_type_JavaLangClassLoader;
+    ClassLoader localClassLoader1 = localClassLoader2;
+    if (localClassLoader2 == null) {
+      localClassLoader1 = QzonePluginProxyActivity.getQZonePluginClassLoaderInUI();
+    }
+    if (localClassLoader1 != null)
+    {
+      this.jdField_a_of_type_JavaLangClassLoader = localClassLoader1;
+      return localClassLoader1;
+    }
+    return localClassLoader3;
   }
   
   protected void h()
   {
-    Object localObject1 = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject1 = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject1 == null)
     {
       localObject1 = null;
@@ -3163,7 +3138,7 @@ public class ProfileCardMoreActivity
           QLog.i("IphoneTitleBarActivity", 4, "initRemark, " + this.jdField_d_of_type_JavaLangString);
         }
         return;
-        localObject1 = ((anvk)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+        localObject1 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
         break;
       }
     }
@@ -3207,14 +3182,14 @@ public class ProfileCardMoreActivity
       for (;;)
       {
         if ((m == 20005) || (m == 20015) || (m == 25020)) {
-          aaqo.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, aaqo.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, aaqo.b(2)), str2, null, this.app.getCurrentAccountUin(), m, null, (Bundle)localObject1);
+          NewReportPlugin.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, NewReportPlugin.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, NewReportPlugin.b(2)), str2, null, this.app.getCurrentAccountUin(), m, null, (Bundle)localObject1);
         }
         for (;;)
         {
           if (QLog.isColorLevel()) {
             QLog.i("NewReportPlugin", 2, String.format("profile-report [%s, %s, %s, %s, %s, %s]", new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int), Integer.valueOf(m), str2, str1, localObject1 }));
           }
-          bdla.b(this.app, "CliOper", "", "", "P_prof", "Pp_more_report", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
+          ReportController.b(this.app, "CliOper", "", "", "P_prof", "Pp_more_report", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
           return;
           str2 = "0";
           break;
@@ -3226,7 +3201,7 @@ public class ProfileCardMoreActivity
             if (localObject1 != null) {
               break label508;
             }
-            localObject1 = aaqo.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_c_of_type_JavaLangString, 1);
+            localObject1 = NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_c_of_type_JavaLangString, 1);
             m = n;
             break label119;
           }
@@ -3242,7 +3217,7 @@ public class ProfileCardMoreActivity
             if (localObject1 != null) {
               break label508;
             }
-            localObject1 = aaqo.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_e_of_type_JavaLangString, 3000);
+            localObject1 = NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_e_of_type_JavaLangString, 3000);
             m = n;
             break label119;
           }
@@ -3250,7 +3225,7 @@ public class ProfileCardMoreActivity
           {
             if (((Bundle)localObject1).containsKey("chattype"))
             {
-              m = aaqo.a(((Bundle)localObject1).getInt("chattype"));
+              m = NewReportPlugin.a(((Bundle)localObject1).getInt("chattype"));
               break label119;
             }
             if (ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))
@@ -3268,10 +3243,15 @@ public class ProfileCardMoreActivity
           }
           m = 20001;
           break label119;
-          aaqo.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, null, str2, str1, this.app.getAccount(), m, null, (Bundle)localObject1);
+          NewReportPlugin.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, null, str2, str1, this.app.getAccount(), m, null, (Bundle)localObject1);
         }
       }
     }
+  }
+  
+  public void notifyUser(int paramInt1, int paramInt2)
+  {
+    QQToast.a(BaseApplication.getContext(), paramInt2, paramInt1, 0).a(getTitleBarHeight()).show();
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -3288,7 +3268,7 @@ public class ProfileCardMoreActivity
       if (paramBoolean)
       {
         m = 1;
-        bdla.b((QQAppInterface)localObject1, "CliOper", "", "", "0X8009DCF", "0X8009DCF", 0, m, "0", "0", "", "");
+        ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "0X8009DCF", "0X8009DCF", 0, m, "0", "0", "", "");
         if (this.jdField_a_of_type_Boolean != paramBoolean) {
           break label92;
         }
@@ -3322,7 +3302,7 @@ public class ProfileCardMoreActivity
         if (paramCompoundButton != this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
           break label333;
         }
-        if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+        if (!NetworkUtil.d(BaseApplication.getContext())) {
           break label280;
         }
         localObject1 = (FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
@@ -3330,12 +3310,12 @@ public class ProfileCardMoreActivity
         ((ArrayList)localObject2).add(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
         ((FriendListHandler)localObject1).gatherContacts((short)1, (List)localObject2, paramBoolean);
         if (paramBoolean) {
-          bdla.b(this.app, "CliOper", "", "", "0X8004C5A", "0X8004C5A", 0, 0, "", "", "", "");
+          ReportController.b(this.app, "CliOper", "", "", "0X8004C5A", "0X8004C5A", 0, 0, "", "", "", "");
         } else {
-          bdla.b(this.app, "CliOper", "", "", "0X8004C5B", "0X8004C5B", 0, 0, "", "", "", "");
+          ReportController.b(this.app, "CliOper", "", "", "0X8004C5B", "0X8004C5B", 0, 0, "", "", "", "");
         }
       }
-      a(2131692125, 1);
+      notifyUser(2131692257, 1);
       this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
       localObject1 = this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem;
       if (!paramBoolean) {}
@@ -3347,19 +3327,19 @@ public class ProfileCardMoreActivity
       }
       if (paramCompoundButton == this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
       {
-        if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
+        if (NetworkUtil.d(BaseApplication.getContext()))
         {
-          ((anri)this.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).m(paramBoolean);
+          ((CardHandler)this.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).m(paramBoolean);
           localObject1 = this.app;
           if (paramBoolean) {}
           for (;;)
           {
-            bdla.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800723C", "0X800723C", 0, 0, String.valueOf(m), "", "", "");
+            ReportController.b((AppRuntime)localObject1, "dc00898", "", "", "0X800723C", "0X800723C", 0, 0, String.valueOf(m), "", "", "");
             break;
             m = 0;
           }
         }
-        a(2131692125, 1);
+        notifyUser(2131692257, 1);
         this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
         localObject1 = this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem;
         if (!paramBoolean) {}
@@ -3373,9 +3353,9 @@ public class ProfileCardMoreActivity
     } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a() != paramCompoundButton));
     label280:
     label333:
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      a(2131692125, 1);
+      notifyUser(2131692257, 1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
       if (!paramCompoundButton.isChecked()) {}
@@ -3394,7 +3374,7 @@ public class ProfileCardMoreActivity
     long l;
     if (paramCompoundButton.isChecked())
     {
-      l = bcrg.a();
+      l = MessageCache.a();
       label613:
       FriendsStatusUtil.b((QQAppInterface)localObject1, (String)localObject2, 0, l, true, false);
       localObject1 = this.app;
@@ -3405,7 +3385,7 @@ public class ProfileCardMoreActivity
     label679:
     for (m = 1;; m = 2)
     {
-      bdla.b((QQAppInterface)localObject1, "CliOper", "", "", "0X8009DCD", "0X8009DCD", 0, m, "0", "0", "", "");
+      ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "0X8009DCD", "0X8009DCD", 0, m, "0", "0", "", "");
       break;
       l = 0L;
       break label613;
@@ -3414,6 +3394,7 @@ public class ProfileCardMoreActivity
   
   public void onClick(View paramView)
   {
+    Object localObject1 = null;
     int m;
     if (paramView == null)
     {
@@ -3433,17 +3414,17 @@ public class ProfileCardMoreActivity
       return;
       m = paramView.getId();
       break;
-      bhaa.a(this, this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-      bdla.b(this.app, "CliOper", "", "", "P_prof", "Pp_more_edit_name", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-      bdla.b(this.app, "CliOper", "", "", "0X8007750", "0X8007750", 1, 0, "", "", "", "");
+      ProfileCardUtil.a(this, this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+      ReportController.b(this.app, "CliOper", "", "", "P_prof", "Pp_more_edit_name", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
+      ReportController.b(this.app, "CliOper", "", "", "0X8007750", "0X8007750", 1, 0, "", "", "", "");
       continue;
       c();
-      bdla.b(this.app, "CliOper", "", "", "P_prof", "Pp_more_move", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
+      ReportController.b(this.app, "CliOper", "", "", "P_prof", "Pp_more_move", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
       continue;
       if (Build.VERSION.SDK_INT >= 23)
       {
         if (checkSelfPermission("android.permission.WRITE_CONTACTS") != 0) {
-          requestPermissions(new bage(this, this), 1, new String[] { "android.permission.WRITE_CONTACTS" });
+          requestPermissions(new ProfileCardMoreActivity.12(this, this), 1, new String[] { "android.permission.WRITE_CONTACTS" });
         } else {
           g();
         }
@@ -3452,116 +3433,108 @@ public class ProfileCardMoreActivity
       {
         g();
         continue;
-        String str1;
-        if (((bjxa)this.app.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
+        if (((QidianManager)this.app.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
         {
           if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString)) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString = ContactUtils.getAccountNickName(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+            this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString = ContactUtils.h(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
           }
-          String str2 = getIntent().getStringExtra("key_nick_name");
-          str1 = str2;
-          if (str2 == null) {
-            str1 = this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString;
+          String str = getIntent().getStringExtra("key_nick_name");
+          localObject1 = str;
+          if (str == null) {
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString;
           }
-          a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, str1, 14);
+          a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, (String)localObject1, 14);
         }
         for (;;)
         {
-          bdla.b(null, "dc00898", "", "", "0X800A4FC", "0X800A4FC", 0, 0, "", "0", "0", "");
+          ReportController.b(null, "dc00898", "", "", "0X800A4FC", "0X800A4FC", 0, 0, "", "0", "0", "");
           break;
-          if (this.jdField_a_of_type_Azre == null) {
-            this.jdField_a_of_type_Azre = new azre(this, this.app, 0, new bagf(this));
+          if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper == null) {
+            this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper = new ProfileCardShareHelper(this, this.app, 0, new ProfileCardMoreActivity.13(this));
           }
           if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString)) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString = ContactUtils.getAccountNickName(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+            this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString = ContactUtils.h(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
           }
-          this.jdField_a_of_type_Azre.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString);
+          this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString);
         }
-        label631:
-        QZoneHelper.UserInfo localUserInfo;
-        for (;;)
-        {
-          try
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) {
-              break label631;
-            }
-            str1 = this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-            a(str1);
-          }
-          catch (Exception localException1) {}
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("IphoneTitleBarActivity", 2, localException1, new Object[0]);
-          break;
-          localUserInfo = null;
-        }
-        i();
-        continue;
         try
         {
-          localUserInfo = QZoneHelper.UserInfo.getInstance();
-          localUserInfo.qzone_uin = this.app.getCurrentAccountUin();
-          localUserInfo.nickname = this.app.getCurrentNickname();
-          QZoneHelper.forwardToSinglePermissionSetting(this, localUserInfo, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString).longValue(), -1);
-          bdla.b(this.app, "CliOper", "", "", "P_prof", "Pp_more_qzone", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) {
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
+          }
+          a((String)localObject1);
         }
-        catch (Exception localException2) {}
+        catch (Exception localException1) {}
         if (QLog.isColorLevel())
         {
-          QLog.i("Q.profilecard.FrdProfileCard", 2, localException2.toString());
+          QLog.d("IphoneTitleBarActivity", 2, localException1, new Object[0]);
           continue;
-          amdh.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 3);
-          bdla.b(null, "CliOper", "", "", "0X80050E4", "0X80050E4", 0, 0, "1", "", "", "");
+          i();
           continue;
-          bdla.b(null, "dc00898", "", "", "0X8009F71", "0X8009F71", 0, 0, "", "", "", "");
-          Object localObject = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-          if (localObject != null) {
-            if ((((ExtensionInfo)localObject).intimate_type == 2) || (((ExtensionInfo)localObject).intimate_type == 3) || (((ExtensionInfo)localObject).intimate_type == 26) || (((ExtensionInfo)localObject).intimate_type == 1))
-            {
-              localObject = new Intent();
-              ((Intent)localObject).putExtra("FORWARD_PEER_UIN", this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-              aeow.a(this, (Intent)localObject, PublicFragmentActivity.class, IntimateInfoFragment.class);
-              if (QLog.isColorLevel()) {
-                QLog.d("IphoneTitleBarActivity", 2, "jumpIntimatePage");
-              }
-            }
-            else
-            {
-              localObject = axmv.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-              if (QLog.isColorLevel()) {
-                QLog.d("IphoneTitleBarActivity", 2, "click item_friend_intimate url:" + (String)localObject);
-              }
-              if (!TextUtils.isEmpty((CharSequence)localObject))
+          try
+          {
+            QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
+            localUserInfo.qzone_uin = this.app.getCurrentAccountUin();
+            localUserInfo.nickname = this.app.getCurrentNickname();
+            QZoneHelper.forwardToSinglePermissionSetting(this, localUserInfo, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString).longValue(), -1);
+            ReportController.b(this.app, "CliOper", "", "", "P_prof", "Pp_more_qzone", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
+          }
+          catch (Exception localException2) {}
+          if (QLog.isColorLevel())
+          {
+            QLog.i("Q.profilecard.FrdProfileCard", 2, localException2.toString());
+            continue;
+            SpecialCareUtils.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 3);
+            ReportController.b(null, "CliOper", "", "", "0X80050E4", "0X80050E4", 0, 0, "1", "", "", "");
+            continue;
+            ReportController.b(null, "dc00898", "", "", "0X8009F71", "0X8009F71", 0, 0, "", "", "", "");
+            Object localObject2 = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+            if (localObject2 != null) {
+              if (IntimateUtil.a(((ExtensionInfo)localObject2).intimate_type))
               {
-                startActivity(new Intent(this, QQBrowserActivity.class).putExtra("url", (String)localObject));
-                continue;
-                this.jdField_a_of_type_Bbcv.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-                bbcz.b(2);
-                continue;
-                localObject = new Intent(this, AvatarPendantActivity.class);
-                ((Intent)localObject).putExtra("AllInOne", this.jdField_b_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-                ((Intent)localObject).putExtra("showActionSheet", true);
-                startActivity((Intent)localObject);
-                bdla.b(this.app, "dc00898", "", "", "0X8007EC5", "0X8007EC5", 0, 0, "", "", "", "");
-                continue;
-                if (this.jdField_a_of_type_Aebq != null)
+                localObject2 = new Intent();
+                ((Intent)localObject2).putExtra("FORWARD_PEER_UIN", this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+                PublicFragmentActivity.Launcher.a(this, (Intent)localObject2, PublicFragmentActivity.class, IntimateInfoFragment.class);
+                if (QLog.isColorLevel()) {
+                  QLog.d("IphoneTitleBarActivity", 2, "jumpIntimatePage");
+                }
+              }
+              else
+              {
+                localObject2 = FriendIntimateRelationshipHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+                if (QLog.isColorLevel()) {
+                  QLog.d("IphoneTitleBarActivity", 2, "click item_friend_intimate url:" + (String)localObject2);
+                }
+                if (!TextUtils.isEmpty((CharSequence)localObject2))
                 {
-                  localObject = this.jdField_a_of_type_Aebq;
-                  if (this.jdField_a_of_type_Aebq.jdField_a_of_type_Int != 0) {
-                    break label1198;
+                  startActivity(new Intent(this, QQBrowserActivity.class).putExtra("url", (String)localObject2));
+                  continue;
+                  this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueConfigHelper.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+                  FriendClueReporter.b(2);
+                  continue;
+                  localObject2 = new Intent(this, AvatarPendantActivity.class);
+                  ((Intent)localObject2).putExtra("AllInOne", this.jdField_b_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+                  ((Intent)localObject2).putExtra("showActionSheet", true);
+                  startActivity((Intent)localObject2);
+                  ReportController.b(this.app, "dc00898", "", "", "0X8007EC5", "0X8007EC5", 0, 0, "", "", "", "");
+                  continue;
+                  if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper != null)
+                  {
+                    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper;
+                    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePhotoHelper.jdField_a_of_type_Int != 0) {
+                      break label1171;
+                    }
                   }
+                  label1171:
+                  for (boolean bool = true;; bool = false)
+                  {
+                    ((FriendProfilePhotoHelper)localObject2).a(bool);
+                    ReportController.b(this.app, "dc00898", "", "", "0X8009C0E", "0X8009C0E", 0, 0, "", "", "", "");
+                    break;
+                  }
+                  k();
+                  ReportController.b(this.app, "dc00898", "", "", "0X8007ED1", "0X8007ED1", 0, 0, "", "", "", "");
                 }
-                label1198:
-                for (boolean bool = true;; bool = false)
-                {
-                  ((aebq)localObject).a(bool);
-                  bdla.b(this.app, "dc00898", "", "", "0X8009C0E", "0X8009C0E", 0, 0, "", "", "", "");
-                  break;
-                }
-                k();
-                bdla.b(this.app, "dc00898", "", "", "0X8007ED1", "0X8007ED1", 0, 0, "", "", "", "");
               }
             }
           }
@@ -3575,6 +3548,20 @@ public class ProfileCardMoreActivity
   {
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  public void onUploadResult(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte != null) {
+      a(paramArrayOfByte);
+    }
+  }
+  
+  public void updateCover(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte != null) {
+      a(paramArrayOfByte);
+    }
   }
 }
 

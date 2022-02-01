@@ -86,7 +86,7 @@ public class HippyTKDGifImageViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.image.HippyTKDGifImageViewController
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import olh;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import org.json.JSONObject;
-import sgv;
-import sps;
 
-public class VideoPluginInstall$SDKInstallListener$1
+class VideoPluginInstall$SDKInstallListener$1
   implements Runnable
 {
-  public VideoPluginInstall$SDKInstallListener$1(sps paramsps, boolean paramBoolean, int paramInt) {}
+  VideoPluginInstall$SDKInstallListener$1(VideoPluginInstall.SDKInstallListener paramSDKInstallListener, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.4.10");
+      localJSONObject.put("version", "8.5.5");
       if (!this.jdField_a_of_type_Boolean) {
         localJSONObject.put("error_code", this.jdField_a_of_type_Int);
       }
@@ -23,12 +22,12 @@ public class VideoPluginInstall$SDKInstallListener$1
       {
         String str1 = "";
         if (!this.jdField_a_of_type_Boolean) {
-          break label124;
+          break label144;
         }
         str3 = "1";
-        olh.a(null, null, "0X8009753", "0X8009753", 0, 0, str3, sgv.a(), str1, localJSONObject.toString(), false);
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009753", "0X8009753", 0, 0, str3, VideoDeviceInfoHelper.a(), str1, localJSONObject.toString(), false);
         if (!this.jdField_a_of_type_Boolean) {
-          olh.a(null, null, "0X8009752", "0X8009752", 0, 0, str3, sgv.a(), str1, localJSONObject.toString(), false);
+          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009752", "0X8009752", 0, 0, str3, VideoDeviceInfoHelper.a(), str1, localJSONObject.toString(), false);
         }
       }
     }
@@ -40,7 +39,7 @@ public class VideoPluginInstall$SDKInstallListener$1
         continue;
         String str2 = String.valueOf(this.jdField_a_of_type_Int);
         continue;
-        label124:
+        label144:
         String str3 = "0";
       }
     }
@@ -48,7 +47,7 @@ public class VideoPluginInstall$SDKInstallListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.SDKInstallListener.1
  * JD-Core Version:    0.7.0.1
  */

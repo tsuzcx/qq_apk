@@ -11,16 +11,16 @@ class BaseChatPie$9$2
   
   public void run()
   {
-    if (this.this$1.this$0.shieldTV != null)
+    if (this.a.this$0.j != null)
     {
-      this.this$1.this$0.shieldTV.setText(this.this$1.this$0.mContext.getResources().getString(2131689987));
-      this.this$1.this$0.shieldTV.setTag(Integer.valueOf(2));
+      this.a.this$0.j.setText(this.a.this$0.a.getResources().getString(2131690029));
+      this.a.this$0.j.setTag(Integer.valueOf(2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.9.2
  * JD-Core Version:    0.7.0.1
  */

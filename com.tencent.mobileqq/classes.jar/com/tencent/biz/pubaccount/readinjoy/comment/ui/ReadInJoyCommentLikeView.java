@@ -13,11 +13,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bmhv;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
-import phz;
-import pia;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class ReadInJoyCommentLikeView
   extends FrameLayout
@@ -28,7 +26,7 @@ public class ReadInJoyCommentLikeView
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private BaseCommentData jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
-  private pia jdField_a_of_type_Pia;
+  private ReadInJoyCommentLikeView.OnLikeStateChangeLinstener jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiReadInJoyCommentLikeView$OnLikeStateChangeLinstener;
   
   public ReadInJoyCommentLikeView(@NonNull Context paramContext)
   {
@@ -50,12 +48,12 @@ public class ReadInJoyCommentLikeView
   
   private void a()
   {
-    inflate(getContext(), 2131560148, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370346));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369445));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379858));
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new phz(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    inflate(getContext(), 2131560226, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370616));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369704));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380286));
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ReadInJoyCommentLikeView.1(this);
+    setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
   private void a(View paramView)
@@ -79,11 +77,11 @@ public class ReadInJoyCommentLikeView
       }
     }
     label77:
-    for (int i = 2130842851;; i = 2130842849)
+    for (int i = 2130843005;; i = 2130843003)
     {
       localImageView.setImageResource(i);
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt > 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(bmhv.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyHelper.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt));
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.likeCnt == 0) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText("");
@@ -128,14 +126,14 @@ public class ReadInJoyCommentLikeView
     measure(paramInt1, paramInt2);
   }
   
-  public void setOnLikeListener(pia parampia)
+  public void setOnLikeListener(ReadInJoyCommentLikeView.OnLikeStateChangeLinstener paramOnLikeStateChangeLinstener)
   {
-    this.jdField_a_of_type_Pia = parampia;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiReadInJoyCommentLikeView$OnLikeStateChangeLinstener = paramOnLikeStateChangeLinstener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView
  * JD-Core Version:    0.7.0.1
  */

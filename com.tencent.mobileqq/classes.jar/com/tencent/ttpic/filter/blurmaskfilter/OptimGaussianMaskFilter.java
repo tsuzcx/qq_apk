@@ -4,10 +4,9 @@ import com.tencent.aekit.openrender.UniformParam.TextureParam;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.filter.BaseFilter;
-import com.tencent.ttpic.baseutils.device.YearClass;
 import com.tencent.ttpic.offlineset.enumclass.ScaleMode;
 import com.tencent.ttpic.openapi.filter.GaussianMaskFilter;
-import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
+import com.tencent.ttpic.openapi.offlineset.AEOfflineConfig;
 
 public class OptimGaussianMaskFilter
   implements BlurMaskFilter.IBlurMaskFilter
@@ -27,7 +26,7 @@ public class OptimGaussianMaskFilter
   private int mOrignWidth;
   private BaseFilter mReSizeFilter;
   private double mScale = 1.0D;
-  private ScaleMode mScaleMode = OfflineConfig.getGauScaleMode();
+  private ScaleMode mScaleMode = AEOfflineConfig.getGauScaleMode();
   private float mStrength;
   private boolean notNeedGaussBlur = false;
   
@@ -47,7 +46,6 @@ public class OptimGaussianMaskFilter
     this.mStrength = paramFloat;
     this.mIsBlackBg = paramBoolean2;
     this.mIsAlphaBlur = paramBoolean3;
-    initScaleFactor();
   }
   
   private void clearExtraFilter()
@@ -73,31 +71,13 @@ public class OptimGaussianMaskFilter
     }
   }
   
-  private void initFromPhoneYear()
-  {
-    int i = YearClass.get(null);
-    if ((i < 2009) || (!OfflineConfig.isGaussSettingUpdate()))
-    {
-      this.mScaleMode = ScaleMode.USE_SCALE_VALE;
-      this.mScale = 0.5D;
-    }
-    do
-    {
-      return;
-      if (ScaleMode.USE_MAX_SIZE == this.mScaleMode)
-      {
-        this.MAX_LENGTH = ((int)OfflineConfig.getGauScaleFromPhoneYear(i));
-        return;
-      }
-    } while (ScaleMode.USE_SCALE_VALE != this.mScaleMode);
-    this.mScale = OfflineConfig.getGauScaleFromPhoneYear(i);
-  }
+  private void initFromPhoneYear() {}
   
   private void initScaleFactor()
   {
     if (ScaleMode.USE_MAX_SIZE == this.mScaleMode) {
-      if (OfflineConfig.getGauMaxSize() > 10) {
-        this.MAX_LENGTH = OfflineConfig.getGauMaxSize();
+      if (AEOfflineConfig.getGauMaxSize() > 10) {
+        this.MAX_LENGTH = AEOfflineConfig.getGauMaxSize();
       }
     }
     while (ScaleMode.USE_SCALE_VALE != this.mScaleMode)
@@ -106,9 +86,9 @@ public class OptimGaussianMaskFilter
       initFromPhoneYear();
       return;
     }
-    if (OfflineConfig.getGauScaleValue() > 0.0F)
+    if (AEOfflineConfig.getGauScaleValue() > 0.0F)
     {
-      this.mScale = OfflineConfig.getGauScaleValue();
+      this.mScale = AEOfflineConfig.getGauScaleValue();
       return;
     }
     initFromPhoneYear();
@@ -307,7 +287,7 @@ public class OptimGaussianMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.blurmaskfilter.OptimGaussianMaskFilter
  * JD-Core Version:    0.7.0.1
  */

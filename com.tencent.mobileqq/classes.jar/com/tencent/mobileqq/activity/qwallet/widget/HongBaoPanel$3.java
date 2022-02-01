@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import akyn;
-import albv;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.PanelTabData;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletRedPkgUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONObject;
@@ -17,8 +17,8 @@ class HongBaoPanel$3
   {
     try
     {
-      akyn localakyn = (akyn)paramView.getTag();
-      if (localakyn == null)
+      PanelTabData localPanelTabData = (PanelTabData)paramView.getTag();
+      if (localPanelTabData == null)
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
@@ -39,8 +39,8 @@ class HongBaoPanel$3
           if (str.jdField_a_of_type_OrgJsonJSONObject != null)
           {
             str = str.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-            if (!StringUtil.isEmpty(str)) {
-              albv.b(this.this$0.mContext, str);
+            if (!StringUtil.a(str)) {
+              QWalletRedPkgUtils.b(this.this$0.mContext, str);
             }
           }
           break;
@@ -49,8 +49,8 @@ class HongBaoPanel$3
           break;
         case 102: 
           str = str.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-          if (!StringUtil.isEmpty(str)) {
-            albv.b(this.this$0.mContext, str);
+          if (!StringUtil.a(str)) {
+            QWalletRedPkgUtils.b(this.this$0.mContext, str);
           }
           break;
         }
@@ -60,7 +60,7 @@ class HongBaoPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel.3
  * JD-Core Version:    0.7.0.1
  */

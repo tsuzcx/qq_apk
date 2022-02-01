@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import akgk;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
-public class AvatarPendantActivity$24$1
+class AvatarPendantActivity$24$1
   implements Runnable
 {
-  public AvatarPendantActivity$24$1(akgk paramakgk) {}
+  AvatarPendantActivity$24$1(AvatarPendantActivity.24 param24) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class AvatarPendantActivity$24$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.24.1
  * JD-Core Version:    0.7.0.1
  */

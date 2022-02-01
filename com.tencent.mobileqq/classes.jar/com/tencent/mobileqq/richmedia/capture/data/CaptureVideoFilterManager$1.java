@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import bbgq;
 import com.tencent.qphone.base.util.QLog;
 
-public class CaptureVideoFilterManager$1
+class CaptureVideoFilterManager$1
   implements Runnable
 {
-  public CaptureVideoFilterManager$1(bbgq parambbgq) {}
+  CaptureVideoFilterManager$1(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class CaptureVideoFilterManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.1
  * JD-Core Version:    0.7.0.1
  */

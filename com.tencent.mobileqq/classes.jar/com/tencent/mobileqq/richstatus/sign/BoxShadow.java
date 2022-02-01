@@ -51,7 +51,7 @@ public class BoxShadow
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsRectF != null) {
       paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.b, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -59,7 +59,7 @@ public class BoxShadow
     super.dispatchDraw(paramCanvas);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((this.jdField_a_of_type_AndroidGraphicsRectF == null) || (this.d != getMeasuredWidth()) || (this.e != getMeasuredHeight()))
@@ -82,7 +82,7 @@ public class BoxShadow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.BoxShadow
  * JD-Core Version:    0.7.0.1
  */

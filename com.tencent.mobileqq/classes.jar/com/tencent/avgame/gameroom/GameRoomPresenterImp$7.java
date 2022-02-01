@@ -1,21 +1,20 @@
 package com.tencent.avgame.gameroom;
 
-import nii;
-import nqc;
+import com.tencent.avgame.gamelogic.GameEngine;
 
-public class GameRoomPresenterImp$7
+class GameRoomPresenterImp$7
   implements Runnable
 {
-  public GameRoomPresenterImp$7(nii paramnii) {}
+  GameRoomPresenterImp$7(GameRoomPresenterImp paramGameRoomPresenterImp) {}
   
   public void run()
   {
-    nqc.a().b(0);
+    GameEngine.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomPresenterImp.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.app.face;
 
 import android.graphics.Bitmap;
-import aofu;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.avatar.observer.GroupAvatarObserver;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 
 class FaceDecoderImpl$MyTroopHeaderObserver
-  extends aofu
+  extends GroupAvatarObserver
 {
   private FaceDecoderImpl$MyTroopHeaderObserver(FaceDecoderImpl paramFaceDecoderImpl) {}
   
@@ -33,7 +34,7 @@ class FaceDecoderImpl$MyTroopHeaderObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoderImpl.MyTroopHeaderObserver
  * JD-Core Version:    0.7.0.1
  */

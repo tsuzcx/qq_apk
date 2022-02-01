@@ -2,21 +2,20 @@ package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bfuq;
-import bfvi;
-import bmjd;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
+import cooperation.troop_homework.TroopHomeworkHelper;
 
-public class AudioItem$1
+class AudioItem$1
   implements Runnable
 {
-  public AudioItem$1(bfvi parambfvi, bfuq parambfuq) {}
+  AudioItem$1(AudioItem paramAudioItem, AudioInfo paramAudioInfo) {}
   
   public void run()
   {
-    String str = bmjd.a(this.a.b);
+    String str = TroopHomeworkHelper.a(this.a.b);
     this.a.b(str);
     if (!TextUtils.isEmpty(str)) {
-      ((Activity)bfvi.a(this.this$0)).runOnUiThread(new AudioItem.1.1(this));
+      ((Activity)AudioItem.a(this.this$0)).runOnUiThread(new AudioItem.1.1(this));
     }
   }
 }

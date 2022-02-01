@@ -4,13 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.persistence.Entity;
-import qhf;
 
 public class ReadInJoyDraftboxItem
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReadInJoyDraftboxItem> CREATOR = new qhf();
+  public static final Parcelable.Creator<ReadInJoyDraftboxItem> CREATOR = new ReadInJoyDraftboxItem.1();
   public static final int DEFAULT_DRAFTID = -1;
   public static final String TABLE_NAME = ReadInJoyDraftboxItem.class.getSimpleName();
   public static final int TYPE_ANSWER = 2;
@@ -23,7 +22,7 @@ public class ReadInJoyDraftboxItem
   public ReadInJoyDraftboxItem.PicData firstPicData;
   public long time;
   public String title;
-  public int type;
+  public int type = 0;
   
   public ReadInJoyDraftboxItem() {}
   
@@ -79,7 +78,7 @@ public class ReadInJoyDraftboxItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem
  * JD-Core Version:    0.7.0.1
  */

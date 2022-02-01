@@ -10,8 +10,8 @@ public final class GetPlayShowCatMatTreeRsp
   extends JceStruct
 {
   static ArrayList<PSMetaCategory> cache_Categories = new ArrayList();
-  public ArrayList<PSMetaCategory> Categories;
-  public int Code;
+  public ArrayList<PSMetaCategory> Categories = null;
+  public int Code = 0;
   public String ETag = "";
   
   static
@@ -49,7 +49,7 @@ public final class GetPlayShowCatMatTreeRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp
  * JD-Core Version:    0.7.0.1
  */

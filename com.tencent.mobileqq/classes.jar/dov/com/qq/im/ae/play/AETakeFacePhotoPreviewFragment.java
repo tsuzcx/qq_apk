@@ -1,7 +1,5 @@
 package dov.com.qq.im.ae.play;
 
-import aeow;
-import aeox;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -17,37 +15,40 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bnjs;
-import bnju;
-import bnlb;
-import bnqm;
-import bpdd;
 import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.subscribe.utils.NavigationBarUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.component.network.utils.FileUtils;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.PublicFragmentActivityCallBackInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForPeak;
+import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import dov.com.qq.im.ae.config.CameraPeakServiceHandler;
+import dov.com.qq.im.ae.config.CameraPeakServiceObserver;
+import dov.com.qq.im.ae.entry.AECameraEntry;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import javax.annotation.Nullable;
-import zza;
 
 public class AETakeFacePhotoPreviewFragment
   extends PublicBaseFragment
-  implements aeox, View.OnClickListener
+  implements View.OnClickListener, PublicFragmentActivityCallBackInterface
 {
   public static final String INTENT_KEY_PHOTO_PATH = "photo_path";
   public static final String INTENT_RESULT_KEY_TAKE_PHOTO_PATH = "take_photo_path";
   private static String detectFacePath = "";
   private long faceDetectStartTime;
   private AppInterface mAppInterface = QQStoryContext.a();
-  private bnjs mHandler = (bnjs)this.mAppInterface.getBusinessHandler(3);
+  private CameraPeakServiceHandler mHandler = (CameraPeakServiceHandler)this.mAppInterface.getBusinessHandler(PeakAppInterface.d);
   private ImageView mImgFacePreview;
   private Dialog mLoadingDialog;
-  private bnju mObserver;
+  private CameraPeakServiceObserver mObserver;
   private Bitmap mPhotoBitmap;
   private String mPhotoPath;
   private TextView mTvAgain;
@@ -81,13 +82,13 @@ public class AETakeFacePhotoPreviewFragment
       return;
       if (paramInt == -1)
       {
-        QQToast.a(getActivity(), 2131689774, 0).a();
+        QQToast.a(getActivity(), 2131689814, 0).a();
       }
       else if (paramInt == -2)
       {
-        QQToast.a(getActivity(), 2131697500, 0).a();
+        QQToast.a(getActivity(), 2131697754, 0).a();
         continue;
-        QQToast.a(getActivity(), 2131697500, 0).a();
+        QQToast.a(getActivity(), 2131697754, 0).a();
       }
     }
   }
@@ -102,8 +103,8 @@ public class AETakeFacePhotoPreviewFragment
   
   private void initData()
   {
-    this.screenWidth = bpdd.a(getActivity());
-    this.screenHeight = bpdd.b(getActivity());
+    this.screenWidth = DisplayUtil.a(getActivity());
+    this.screenHeight = DisplayUtil.b(getActivity());
     this.mPhotoPath = getArguments().getString("photo_path");
     if (!TextUtils.isEmpty(this.mPhotoPath))
     {
@@ -129,14 +130,14 @@ public class AETakeFacePhotoPreviewFragment
   
   private void initView(View paramView)
   {
-    this.mImgFacePreview = ((ImageView)paramView.findViewById(2131362279));
-    this.mTvAgain = ((TextView)paramView.findViewById(2131362293));
-    this.mTvConfirm = ((TextView)paramView.findViewById(2131362294));
+    this.mImgFacePreview = ((ImageView)paramView.findViewById(2131362302));
+    this.mTvAgain = ((TextView)paramView.findViewById(2131362319));
+    this.mTvConfirm = ((TextView)paramView.findViewById(2131362320));
   }
   
   public static void jumpToMeForResult(Activity paramActivity, Intent paramIntent, int paramInt)
   {
-    aeow.a(paramActivity, paramIntent, PublicFragmentActivityForPeak.class, AETakeFacePhotoPreviewFragment.class, paramInt);
+    PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, PublicFragmentActivityForPeak.class, AETakeFacePhotoPreviewFragment.class, paramInt);
   }
   
   private void onPressConfirmBtn(@Nullable Bitmap paramBitmap, @Nullable String paramString)
@@ -147,14 +148,14 @@ public class AETakeFacePhotoPreviewFragment
     AEVideoShelfEditFragment.keepScreenOn(getActivity(), true);
     showLoading();
     Intent localIntent = getActivity().getIntent();
-    if (((!localIntent.getBooleanExtra("key_disable_face_detect", false)) || (bnlb.h(localIntent))) && (!FaceChangeUtils.hasFaceInPic(paramBitmap)))
+    if (((!localIntent.getBooleanExtra("key_disable_face_detect", false)) || (AECameraEntry.i(localIntent))) && (!FaceChangeUtils.hasFaceInPic(paramBitmap)))
     {
-      QQToast.a(getActivity(), 2131689776, 0).a();
+      QQToast.a(getActivity(), 2131689816, 0).a();
       hideLoading();
       onBackPressed();
       return;
     }
-    if ((localIntent.getBooleanExtra("key_need_check_sensitive", false)) || (bnlb.h(localIntent)))
+    if ((localIntent.getBooleanExtra("key_need_check_sensitive", false)) || (AECameraEntry.i(localIntent)))
     {
       removeOldObserver();
       this.mObserver = new AETakeFacePhotoPreviewFragment.2(this);
@@ -182,9 +183,9 @@ public class AETakeFacePhotoPreviewFragment
     {
       if (this.mLoadingDialog == null)
       {
-        this.mLoadingDialog = new ReportDialog(localFragmentActivity, 2131755829);
-        this.mLoadingDialog.setContentView(2131559607);
-        ((TextView)this.mLoadingDialog.findViewById(2131372740)).setText(2131689773);
+        this.mLoadingDialog = new ReportDialog(localFragmentActivity, 2131755842);
+        this.mLoadingDialog.setContentView(2131559683);
+        ((TextView)this.mLoadingDialog.findViewById(2131373066)).setText(2131689813);
         this.mLoadingDialog.setCancelable(true);
         this.mLoadingDialog.setCanceledOnTouchOutside(false);
         this.mLoadingDialog.setOnDismissListener(new AETakeFacePhotoPreviewFragment.3(this));
@@ -198,7 +199,7 @@ public class AETakeFacePhotoPreviewFragment
     paramActivity.requestWindowFeature(1);
     paramActivity.getWindow().setFlags(1024, 1024);
     if (Build.VERSION.SDK_INT >= 29) {
-      zza.a(paramActivity.getWindow());
+      NavigationBarUtil.a(paramActivity.getWindow());
     }
   }
   
@@ -220,10 +221,10 @@ public class AETakeFacePhotoPreviewFragment
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131362294) {
+    if (i == 2131362320) {
       if ((!TextUtils.isEmpty(this.mPhotoPath)) || (this.mPhotoBitmap != null))
       {
-        bnqm.a().Y();
+        AEBaseDataReporter.a().W();
         onPressConfirmBtn(this.mPhotoBitmap, this.mPhotoPath);
       }
     }
@@ -231,9 +232,9 @@ public class AETakeFacePhotoPreviewFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (i == 2131362293)
+      if (i == 2131362319)
       {
-        bnqm.a().Z();
+        AEBaseDataReporter.a().X();
         onBackPressed();
       }
     }
@@ -241,7 +242,7 @@ public class AETakeFacePhotoPreviewFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558503, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558511, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -271,7 +272,7 @@ public class AETakeFacePhotoPreviewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

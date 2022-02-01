@@ -11,10 +11,10 @@ public final class stPostFeedCommentV2Req
 {
   static stSimpleMetaComment cache_comment = new stSimpleMetaComment();
   static ArrayList<stMetaReportDataItem> cache_data = new ArrayList();
-  public stSimpleMetaComment comment;
-  public ArrayList<stMetaReportDataItem> data;
+  public stSimpleMetaComment comment = null;
+  public ArrayList<stMetaReportDataItem> data = null;
   public String feed_id = "";
-  public int hadMancheked;
+  public int hadMancheked = 0;
   
   static
   {

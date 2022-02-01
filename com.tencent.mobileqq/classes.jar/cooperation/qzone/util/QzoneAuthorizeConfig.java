@@ -18,9 +18,9 @@ public class QzoneAuthorizeConfig
   static final String TAG = "QzoneAuthorizeConfig";
   private static QzoneAuthorizeConfig instance;
   private final ConcurrentHashMap<String, Set<String>> mJsApiBlackList = new ConcurrentHashMap();
-  private String mJsApiBlackString;
+  private String mJsApiBlackString = null;
   private final ConcurrentHashMap<String, Set<String>> mSchemaBlackList = new ConcurrentHashMap();
-  private String mSchemaBlackString;
+  private String mSchemaBlackString = null;
   
   public static QzoneAuthorizeConfig getInstance()
   {
@@ -253,7 +253,7 @@ public class QzoneAuthorizeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.QzoneAuthorizeConfig
  * JD-Core Version:    0.7.0.1
  */

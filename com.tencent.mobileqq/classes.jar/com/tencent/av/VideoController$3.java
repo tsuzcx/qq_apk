@@ -1,7 +1,6 @@
 package com.tencent.av;
 
-import lcw;
-import mtf;
+import com.tencent.av.utils.PhoneStatusMonitor;
 
 class VideoController$3
   implements Runnable
@@ -10,13 +9,13 @@ class VideoController$3
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Mtg = new lcw(this.this$0);
-    this.this$0.jdField_a_of_type_Mtf = new mtf(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_Mtg);
+    this.this$0.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener = new VideoController.QQPhoneStatusListener(this.this$0);
+    this.this$0.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor = new PhoneStatusMonitor(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.VideoController.3
  * JD-Core Version:    0.7.0.1
  */

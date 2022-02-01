@@ -3,7 +3,7 @@ package com.tencent.mobileqq.transfile;
 import com.tencent.TMG.utils.QLog;
 
 class HttpInterfaceForTVKImp$NetEngineResponseListener
-  implements INetEngine.INetEngineListener
+  implements INetEngineListener
 {
   private HttpInterfaceForTVKImp$NetEngineResponseListener(HttpInterfaceForTVKImp paramHttpInterfaceForTVKImp) {}
   

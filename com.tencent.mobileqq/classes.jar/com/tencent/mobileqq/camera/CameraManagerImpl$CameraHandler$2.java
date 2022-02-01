@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.camera;
 
-public class CameraManagerImpl$CameraHandler$2
+class CameraManagerImpl$CameraHandler$2
   implements Runnable
 {
   public void run()

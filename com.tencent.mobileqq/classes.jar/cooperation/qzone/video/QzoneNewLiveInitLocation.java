@@ -4,10 +4,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.LbsManagerServiceOnLocationChangeListener;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
+import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
+import com.tencent.mobileqq.soso.location.data.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LbsDataV2.GpsInfo;
 import cooperation.qzone.report.QzoneLbsReporter;
@@ -15,7 +16,7 @@ import cooperation.qzone.util.QZLog;
 import java.util.concurrent.ConcurrentHashMap;
 
 class QzoneNewLiveInitLocation
-  extends LbsManagerService.OnLocationChangeListener
+  extends LbsManagerServiceOnLocationChangeListener
   implements QzoneLiveInitLocationInterface
 {
   private static final String TAG = "QzoneNewLiveInitLocation";
@@ -31,7 +32,7 @@ class QzoneNewLiveInitLocation
     this.mBusinessId = paramString;
   }
   
-  public static LbsDataV2.GpsInfo getGpsFromSoso(SosoInterface.SosoLocation paramSosoLocation)
+  public static LbsDataV2.GpsInfo getGpsFromSoso(SosoLocation paramSosoLocation)
   {
     if (paramSosoLocation == null) {
       return null;
@@ -77,7 +78,7 @@ class QzoneNewLiveInitLocation
     try
     {
       mLocationStartTime = System.currentTimeMillis();
-      LbsManagerService.startLocation(this);
+      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(this);
       return;
     }
     catch (Exception paramHandler)
@@ -86,7 +87,7 @@ class QzoneNewLiveInitLocation
     }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
     QZLog.i("QzoneNewLiveInitLocation.NewLbsInterface", 1, "[QZLIVE_LBS_MODULE]----Info");
     long l1 = System.currentTimeMillis();
@@ -100,7 +101,7 @@ class QzoneNewLiveInitLocation
     localBundle.putBoolean("key_initlocation_success", false);
     if (paramInt == 0)
     {
-      SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.mLocation;
+      SosoLocation localSosoLocation = paramSosoLbsInfo.mLocation;
       paramSosoLbsInfo = getGpsFromSoso(paramSosoLbsInfo.mLocation);
       if ((localSosoLocation != null) && (paramSosoLbsInfo != null) && (!TextUtils.isEmpty(localSosoLocation.city)) && (!localSosoLocation.city.equalsIgnoreCase("unknown")))
       {
@@ -125,7 +126,7 @@ class QzoneNewLiveInitLocation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.video.QzoneNewLiveInitLocation
  * JD-Core Version:    0.7.0.1
  */

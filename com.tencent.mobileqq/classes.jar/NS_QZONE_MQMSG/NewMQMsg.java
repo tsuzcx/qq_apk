@@ -16,21 +16,26 @@ public final class NewMQMsg
   static Map<String, String> cache_mpExtent;
   static MsgBody cache_msgBody = new MsgBody();
   static MsgInteractData cache_msgInteractData = new MsgInteractData();
+  static PostBar cache_postGuide = new PostBar();
   static UserPersonalData cache_userPersonalData;
-  public ArrayList<single_feed> all_feeds_data;
-  public BottomCell bottomCell;
+  public ArrayList<single_feed> all_feeds_data = null;
+  public BottomCell bottomCell = null;
+  public String content = "";
+  public int isNewStyle = 0;
   public String jumpUrlToDetail = "";
-  public Map<String, String> mpExtent;
-  public MsgBody msgBody;
-  public MsgInteractData msgInteractData;
-  public int msgType;
+  public Map<String, String> mpExtent = null;
+  public MsgBody msgBody = null;
+  public MsgInteractData msgInteractData = null;
+  public long msgSize = 0L;
+  public int msgType = 0;
   public String nick = "";
+  public PostBar postGuide = null;
   public String promot = "";
-  public long pushTime;
+  public long pushTime = 0L;
   public String reportValue = "";
   public String title = "";
   public String userAvatar = "";
-  public UserPersonalData userPersonalData;
+  public UserPersonalData userPersonalData = null;
   
   static
   {
@@ -45,11 +50,11 @@ public final class NewMQMsg
   
   public NewMQMsg() {}
   
-  public NewMQMsg(int paramInt, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, MsgBody paramMsgBody, MsgInteractData paramMsgInteractData, String paramString5, BottomCell paramBottomCell, Map<String, String> paramMap, UserPersonalData paramUserPersonalData, ArrayList<single_feed> paramArrayList, String paramString6)
+  public NewMQMsg(int paramInt1, String paramString1, long paramLong1, String paramString2, String paramString3, String paramString4, MsgBody paramMsgBody, MsgInteractData paramMsgInteractData, String paramString5, BottomCell paramBottomCell, Map<String, String> paramMap, UserPersonalData paramUserPersonalData, ArrayList<single_feed> paramArrayList, String paramString6, String paramString7, long paramLong2, int paramInt2, PostBar paramPostBar)
   {
-    this.msgType = paramInt;
+    this.msgType = paramInt1;
     this.title = paramString1;
-    this.pushTime = paramLong;
+    this.pushTime = paramLong1;
     this.userAvatar = paramString2;
     this.nick = paramString3;
     this.promot = paramString4;
@@ -61,6 +66,10 @@ public final class NewMQMsg
     this.userPersonalData = paramUserPersonalData;
     this.all_feeds_data = paramArrayList;
     this.reportValue = paramString6;
+    this.content = paramString7;
+    this.msgSize = paramLong2;
+    this.isNewStyle = paramInt2;
+    this.postGuide = paramPostBar;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -79,6 +88,10 @@ public final class NewMQMsg
     this.userPersonalData = ((UserPersonalData)paramJceInputStream.read(cache_userPersonalData, 11, false));
     this.all_feeds_data = ((ArrayList)paramJceInputStream.read(cache_all_feeds_data, 12, false));
     this.reportValue = paramJceInputStream.readString(13, false);
+    this.content = paramJceInputStream.readString(14, false);
+    this.msgSize = paramJceInputStream.read(this.msgSize, 15, false);
+    this.isNewStyle = paramJceInputStream.read(this.isNewStyle, 16, false);
+    this.postGuide = ((PostBar)paramJceInputStream.read(cache_postGuide, 17, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -120,6 +133,14 @@ public final class NewMQMsg
     }
     if (this.reportValue != null) {
       paramJceOutputStream.write(this.reportValue, 13);
+    }
+    if (this.content != null) {
+      paramJceOutputStream.write(this.content, 14);
+    }
+    paramJceOutputStream.write(this.msgSize, 15);
+    paramJceOutputStream.write(this.isNewStyle, 16);
+    if (this.postGuide != null) {
+      paramJceOutputStream.write(this.postGuide, 17);
     }
   }
 }

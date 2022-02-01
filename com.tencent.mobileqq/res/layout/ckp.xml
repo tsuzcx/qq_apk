@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/jox" android:paddingLeft="4.0dip" android:layout_width="0.0dip" android:layout_height="48.0dip" android:layout_weight="1.0" style="@style/zq"
+<LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ibt" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="start|center" android:id="@id/jpo" android:layout_width="@dimen/bd4" android:layout_height="@dimen/bd4" android:scaleType="centerInside" />
-    <TextView android:textColor="#ffcccccc" android:ellipsize="end" android:layout_gravity="start|center" android:id="@id/d6" android:paddingLeft="4.0dip" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/zr" />
+    <View android:id="@id/kw9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:background="#ffffffff" android:paddingTop="2.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <EditText android:textSize="14.0dip" android:textColor="#ff000000" android:textColorHint="#ffbbbbbb" android:layout_gravity="center" android:id="@id/byp" android:background="@drawable/dho" android:paddingLeft="10.0dip" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="50.0dip" android:hint="@string/wtz" android:cursorVisible="true" android:maxLines="5" android:singleLine="true" android:layout_weight="1.0" android:imeOptions="flagNoFullscreen" android:textCursorDrawable="@drawable/bc" />
+        <View android:id="@id/nfz" android:layout_width="1.0dip" android:layout_height="50.0dip" android:layout_marginTop="1.0dip" />
+        <Button android:textSize="13.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center|right" android:id="@id/mni" android:background="@drawable/dhp" android:visibility="visible" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="发送" android:shadowDx="1.0" android:shadowDy="1.0" />
+    </LinearLayout>
 </LinearLayout>

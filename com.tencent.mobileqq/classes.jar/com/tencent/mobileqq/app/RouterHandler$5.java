@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import ansr;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.litetransfersdk.ProtocolHelper;
 import com.tencent.litetransfersdk.Session;
@@ -28,7 +27,7 @@ class RouterHandler$5
         if (localRouterMsgRecord.uSessionID != this.a) {
           break label225;
         }
-        localObject2 = this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, localRouterMsgRecord.filename, null, ansr.b(localRouterMsgRecord.msgtype), 0, this.a, 0, 0, 0);
+        localObject2 = this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, localRouterMsgRecord.filename, null, DataLineHandler.b(localRouterMsgRecord.msgtype), 0, this.a, 0, 0, 0);
         localObject1 = localObject2;
         if (localObject2 == null) {
           break label225;
@@ -54,7 +53,7 @@ class RouterHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RouterHandler.5
  * JD-Core Version:    0.7.0.1
  */

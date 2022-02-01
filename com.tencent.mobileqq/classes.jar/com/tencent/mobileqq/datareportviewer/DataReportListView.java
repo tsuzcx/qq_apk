@@ -15,18 +15,18 @@ public class DataReportListView
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
-    if (getMeasuredHeight() > DisplayUtil.dip2px(getContext(), 100.0F)) {
-      setMeasuredDimension(paramInt1, DisplayUtil.dip2px(getContext(), 100.0F));
+    if (getMeasuredHeight() > DisplayUtil.a(getContext(), 100.0F)) {
+      setMeasuredDimension(paramInt1, DisplayUtil.a(getContext(), 100.0F));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportListView
  * JD-Core Version:    0.7.0.1
  */

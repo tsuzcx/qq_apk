@@ -1,25 +1,15 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bflb;
-import bflc;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.QQGroupDigestMsg;
 
-public class TroopEssenceMsgManager$4
+class TroopEssenceMsgManager$4
   implements Runnable
 {
-  public TroopEssenceMsgManager$4(bflc parambflc) {}
+  TroopEssenceMsgManager$4(TroopEssenceMsgManager paramTroopEssenceMsgManager, TroopTips0x857.QQGroupDigestMsg paramQQGroupDigestMsg, boolean paramBoolean) {}
   
   public void run()
   {
-    int i = 0;
-    while (i < this.this$0.a.size())
-    {
-      QLog.i("TroopEssenceMsgManager", 1, "handleEssenceMsgGroupPushMain push holdMsg msgItem:" + ((bflb)this.this$0.a.get(i)).toString());
-      bflc.a(this.this$0, (bflb)this.this$0.a.get(i));
-      i += 1;
-    }
-    this.this$0.a.clear();
+    TroopEssenceMsgManager.a(this.this$0, this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$QQGroupDigestMsg, this.jdField_a_of_type_Boolean);
   }
 }
 

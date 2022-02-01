@@ -3,12 +3,13 @@ package com.tencent.ttpic.util;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.device.DeviceUtils;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import org.light.device.LightDeviceUtils;
 
 public class FrameRateUtilForWesee
 {
@@ -138,7 +139,7 @@ public class FrameRateUtilForWesee
   
   public static FrameRateUtilForWesee.DOWNGRADE_LEVEL getScreenLevel()
   {
-    int i = DeviceUtils.getScreenWidth(AEModule.getContext());
+    int i = LightDeviceUtils.getScreenWidth(AEModule.getContext());
     if (i >= 1080) {
       return FrameRateUtilForWesee.DOWNGRADE_LEVEL.HIGH;
     }
@@ -255,7 +256,7 @@ public class FrameRateUtilForWesee
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.util.FrameRateUtilForWesee
  * JD-Core Version:    0.7.0.1
  */

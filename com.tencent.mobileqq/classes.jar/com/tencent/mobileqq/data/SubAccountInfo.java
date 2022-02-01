@@ -19,7 +19,7 @@ public class SubAccountInfo
   public boolean hintIsNew;
   public boolean isTop;
   public byte isbind;
-  public long lastCleanQZoneMessageTime;
+  public long lastCleanQZoneMessageTime = 0L;
   @notColumn
   public CharSequence lastMsg;
   @notColumn
@@ -27,19 +27,19 @@ public class SubAccountInfo
   @notColumn
   public String lastUinNick;
   public long lasttime;
-  public String serverErrorMsg;
-  public int serverErrorType;
+  public String serverErrorMsg = null;
+  public int serverErrorType = 0;
   public int status;
   @Deprecated
   public String subname;
   public String subuin;
   public String trunkuin;
   @notColumn
-  public int unNotifySender;
+  public int unNotifySender = 0;
   @notColumn
   public int unreadMsgNum;
   @notColumn
-  public int unreadSenderNum;
+  public int unreadSenderNum = 0;
   @notColumn
   public int unreadTroopMsgNum;
   
@@ -77,7 +77,7 @@ public class SubAccountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.SubAccountInfo
  * JD-Core Version:    0.7.0.1
  */

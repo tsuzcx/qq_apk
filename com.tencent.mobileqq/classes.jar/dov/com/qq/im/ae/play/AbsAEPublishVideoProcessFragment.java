@@ -13,10 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bmwb;
-import bnst;
-import bobw;
-import boby;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -29,13 +25,24 @@ import com.tencent.tavcut.session.TAVCutVideoSession;
 import com.tencent.tavcut.session.config.SessionConfig;
 import com.tencent.tavcut.view.TAVCutVideoView;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
+import com.tencent.ttpic.openapi.initializer.ImageAlgoInitializer;
+import com.tencent.ttpic.openapi.initializer.LightSdkInitializer;
+import com.tencent.ttpic.openapi.initializer.PtuAlgoInitializer;
+import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
+import com.tencent.ttpic.openapi.initializer.YTCommonInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
+import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.weseevideo.model.MediaModel;
 import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import com.tencent.weseevideo.model.resource.MediaClipModel;
 import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import dov.com.qq.im.ae.AEKitForQQ;
+import dov.com.qq.im.ae.download.AEResUtil;
+import dov.com.qq.im.aeeditor.AEEditorProcessManager;
 import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiVideoEditFragment;
+import dov.com.qq.im.aeeditor.module.params.ParamFactory;
+import dov.com.qq.im.aeeditor.module.params.VideoParamStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +55,7 @@ public abstract class AbsAEPublishVideoProcessFragment
   protected String missionId;
   protected TAVCutVideoSession tavCutVideoSession;
   protected TAVCutVideoView tavCutVideoView;
-  private boby videoParam = bobw.a();
+  private VideoParamStrategy videoParam = ParamFactory.a();
   
   private String getMissionId()
   {
@@ -59,7 +66,7 @@ public abstract class AbsAEPublishVideoProcessFragment
       str1 = getActivity().getIntent().getStringExtra("key_ae_video_mission_id");
     }
     String str2 = str1;
-    if (StringUtil.isEmpty(str1))
+    if (StringUtil.a(str1))
     {
       str2 = str1;
       if (localBundle != null)
@@ -76,8 +83,8 @@ public abstract class AbsAEPublishVideoProcessFragment
   private void initTavCutAndPlayer()
   {
     Log.d("AbsAEPublishVideoProces", "initTavCutAndPlayer: 开始初始化tavcutsession、moviePlayer");
-    MediaModel localMediaModel = bnst.a().a(this.missionId);
-    if ((StringUtil.isEmpty(this.missionId)) || (isMediaModelBroken(localMediaModel)))
+    MediaModel localMediaModel = AEEditorProcessManager.a().a(this.missionId);
+    if ((StringUtil.a(this.missionId)) || (isMediaModelBroken(localMediaModel)))
     {
       Log.e("AbsAEPublishVideoProces", "missionId异常！合成model损坏：" + isMediaModelBroken(localMediaModel));
       QQToast.a(getActivity(), "视频合成信息异常", 0).a();
@@ -176,7 +183,7 @@ public abstract class AbsAEPublishVideoProcessFragment
       str1 = getActivity().getIntent().getStringExtra("key_video_media_path");
     }
     String str2 = str1;
-    if (StringUtil.isEmpty(str1))
+    if (StringUtil.a(str1))
     {
       str2 = str1;
       if (localBundle != null)
@@ -215,7 +222,7 @@ public abstract class AbsAEPublishVideoProcessFragment
   
   protected int getPlayerBackColor()
   {
-    return getResources().getColor(2131165268);
+    return getResources().getColor(2131165272);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -248,8 +255,13 @@ public abstract class AbsAEPublishVideoProcessFragment
   {
     super.onCreate(paramBundle);
     this.missionId = getMissionId();
-    bmwb.a();
-    TAVCut.initTAVCut(getActivity(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new AbsAEPublishVideoProcessFragment.1(this));
+    AEKitForQQ.a();
+    FeatureManager.Features.YT_COMMON.init();
+    FeatureManager.Features.PTU_TOOLS.init();
+    FeatureManager.Features.PTU_ALGO.init();
+    FeatureManager.Features.LIGHT_SDK.init();
+    FeatureManager.Features.IMAGE_ALGO.init();
+    TAVCut.initTAVCut(getActivity(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), AEResUtil.g(), new AbsAEPublishVideoProcessFragment.1(this));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -282,11 +294,11 @@ public abstract class AbsAEPublishVideoProcessFragment
       }
       if (this.mLoadingDialog == null)
       {
-        this.mLoadingDialog = new ReportDialog(getActivity(), 2131755829);
+        this.mLoadingDialog = new ReportDialog(getActivity(), 2131755842);
         this.mLoadingDialog.setCancelable(false);
         this.mLoadingDialog.setCanceledOnTouchOutside(false);
-        this.mLoadingDialog.setContentView(2131559607);
-        ((TextView)this.mLoadingDialog.findViewById(2131372740)).setText("正在保存封面...");
+        this.mLoadingDialog.setContentView(2131559683);
+        ((TextView)this.mLoadingDialog.findViewById(2131373066)).setText("正在保存封面...");
       }
       this.mLoadingDialog.show();
     }
@@ -299,7 +311,7 @@ public abstract class AbsAEPublishVideoProcessFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AbsAEPublishVideoProcessFragment
  * JD-Core Version:    0.7.0.1
  */

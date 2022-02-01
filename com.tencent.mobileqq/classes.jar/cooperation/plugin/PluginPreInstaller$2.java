@@ -1,20 +1,19 @@
 package cooperation.plugin;
 
-import blxf;
-import bmep;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqreader.QReaderHelper;
 
-public class PluginPreInstaller$2
+class PluginPreInstaller$2
   implements Runnable
 {
-  public PluginPreInstaller$2(blxf paramblxf) {}
+  PluginPreInstaller$2(PluginPreInstaller paramPluginPreInstaller) {}
   
   public void run()
   {
-    if (blxf.a(this.this$0) != null) {}
+    if (PluginPreInstaller.a(this.this$0) != null) {}
     try
     {
-      bmep.a(1, blxf.a(this.this$0));
+      QReaderHelper.a(1, PluginPreInstaller.a(this.this$0));
       return;
     }
     catch (Exception localException)
@@ -25,7 +24,7 @@ public class PluginPreInstaller$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.plugin.PluginPreInstaller.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import afut;
-import ansg;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigHelper;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -9,14 +8,14 @@ import java.io.File;
 import mqq.app.MobileQQ;
 import protocol.KQQConfig.GetResourceRespInfo;
 
-public class ConfigHandler$7
+class ConfigHandler$7
   implements Runnable
 {
-  public ConfigHandler$7(ansg paramansg, GetResourceRespInfo paramGetResourceRespInfo, String paramString, long paramLong) {}
+  ConfigHandler$7(ConfigHandler paramConfigHandler, GetResourceRespInfo paramGetResourceRespInfo, String paramString, long paramLong) {}
   
   public void run()
   {
-    if (!ansg.a(this.this$0, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.strPkgName, 10000L)) {
+    if (!ConfigHandler.a(this.this$0, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.strPkgName, 10000L)) {
       if (QLog.isColorLevel()) {
         QLog.d("eggs", 2, "handleUpdateEggsActions dpc aio_eggs is false");
       }
@@ -24,24 +23,24 @@ public class ConfigHandler$7
     do
     {
       return;
-      File localFile = new File(this.this$0.app.getApplication().getFilesDir(), "eggs_config.zip");
+      File localFile = new File(this.this$0.a.getApplication().getFilesDir(), "eggs_config.zip");
       String str = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-      int i = HttpDownloadUtil.downloadData(this.this$0.app, str, localFile);
+      int i = HttpDownloadUtil.downloadData(this.this$0.a, str, localFile);
       if (QLog.isColorLevel()) {
         QLog.d("eggs", 2, "handleUpdateEggsActions download: " + i);
       }
       if (i == 0)
       {
-        afut.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+        AioAnimationConfigHelper.a().a(this.this$0.a, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
         return;
       }
-    } while (afut.a().a() != null);
-    afut.a().a(this.this$0.app.getApplication());
+    } while (AioAnimationConfigHelper.a().a() != null);
+    AioAnimationConfigHelper.a().a(this.this$0.a.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.7
  * JD-Core Version:    0.7.0.1
  */

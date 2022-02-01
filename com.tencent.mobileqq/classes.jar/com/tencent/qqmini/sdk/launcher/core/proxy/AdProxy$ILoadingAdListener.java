@@ -6,7 +6,7 @@ public abstract interface AdProxy$ILoadingAdListener
 {
   public abstract void getLoadingAdLayoutReady();
   
-  public abstract void onAdClick();
+  public abstract void onAdClick(int paramInt);
   
   public abstract void onAdDismiss(boolean paramBoolean);
   
@@ -20,7 +20,7 @@ public abstract interface AdProxy$ILoadingAdListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener
  * JD-Core Version:    0.7.0.1
  */

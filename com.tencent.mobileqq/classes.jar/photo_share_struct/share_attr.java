@@ -10,8 +10,8 @@ public final class share_attr
   extends JceStruct
 {
   static Map<Long, uin_attr> cache_shares_attr = new HashMap();
-  public long owner;
-  public Map<Long, uin_attr> shares_attr;
+  public long owner = 0L;
+  public Map<Long, uin_attr> shares_attr = null;
   public String source = "";
   
   static
@@ -49,7 +49,7 @@ public final class share_attr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     photo_share_struct.share_attr
  * JD-Core Version:    0.7.0.1
  */

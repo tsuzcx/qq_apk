@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +12,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import aqxe;
-import argh;
-import argi;
-import becr;
-import beeg;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -25,10 +19,15 @@ import com.tencent.image.GifDrawable;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.config.business.TencentDocsPushBean;
+import com.tencent.mobileqq.config.business.TencentDocsPushItemBean;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.teamwork.tencentdocreport.TenDocLogReportHelper;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -58,7 +57,7 @@ public class TeamWorkDocEditBrowserActivity
   
   public TeamWorkDocEditBrowserActivity()
   {
-    this.jdField_a_of_type_JavaLangClass = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.class;
+    this.mFragmentClass = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.class;
   }
   
   public static Intent a(Intent paramIntent, String paramString, Context paramContext)
@@ -77,7 +76,7 @@ public class TeamWorkDocEditBrowserActivity
   {
     Object localObject3;
     Object localObject1;
-    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    if (NetworkUtil.d(BaseApplication.getContext()))
     {
       localObject3 = paramBundle.getString("tdsourcetag");
       if (localObject3 != null)
@@ -88,7 +87,7 @@ public class TeamWorkDocEditBrowserActivity
         {
           localObject1 = localObject2;
           if (!((String)localObject2).contains("tdsourcetag")) {
-            localObject1 = becr.b((String)localObject2, (String)localObject3);
+            localObject1 = TeamWorkUtils.b((String)localObject2, (String)localObject3);
           }
         }
         if (a(paramContext, (String)localObject1, (String)localObject3, paramBundle.getBoolean("temp_preview_from_qq")))
@@ -100,18 +99,18 @@ public class TeamWorkDocEditBrowserActivity
             QLog.d("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp in TeamWorkDocEditBrowserActivity");
             ((Activity)paramContext).finish();
           }
-          becr.a(paramBundle, "0X8009ED7");
+          TeamWorkUtils.a(paramBundle, "0X8009ED7");
           return;
         }
       }
-      becr.a(paramBundle, "0X8009ED6");
+      TeamWorkUtils.a(paramBundle, "0X8009ED6");
       localObject3 = new Intent(paramContext, TeamWorkDocEditBrowserActivity.class);
       Object localObject2 = paramBundle.getString("url");
       i = paramBundle.getInt("key_team_work_edit_type");
       localObject1 = localObject2;
       Object localObject4;
       Object localObject5;
-      if (becr.b((String)localObject2))
+      if (TeamWorkUtils.b((String)localObject2))
       {
         localObject1 = localObject2;
         if ((paramContext instanceof FragmentActivity))
@@ -125,20 +124,20 @@ public class TeamWorkDocEditBrowserActivity
             localObject1 = localObject2;
             if (localObject5 != null)
             {
-              String str = ((BaseChatPie)localObject5).sessionInfo.curFriendUin;
+              String str = ((BaseChatPie)localObject5).a.jdField_a_of_type_JavaLangString;
               localObject1 = localObject2;
               if (!TextUtils.isEmpty((CharSequence)localObject2))
               {
                 localObject1 = localObject2;
                 if (!TextUtils.isEmpty(str)) {
-                  if (((BaseChatPie)localObject5).sessionInfo.curType != 0)
+                  if (((BaseChatPie)localObject5).a.jdField_a_of_type_Int != 0)
                   {
                     localObject1 = localObject2;
-                    if (((BaseChatPie)localObject5).sessionInfo.curType != 1) {}
+                    if (((BaseChatPie)localObject5).a.jdField_a_of_type_Int != 1) {}
                   }
                   else
                   {
-                    localObject4 = becr.a(((FragmentActivity)localObject4).app, str, ((BaseChatPie)localObject5).sessionInfo.curType);
+                    localObject4 = TeamWorkUtils.a(((FragmentActivity)localObject4).app, str, ((BaseChatPie)localObject5).a.jdField_a_of_type_Int);
                     localObject1 = "?" + (String)localObject4;
                     if (((String)localObject2).contains("?")) {
                       localObject1 = "&" + (String)localObject4;
@@ -173,13 +172,13 @@ public class TeamWorkDocEditBrowserActivity
             localObject4 = ((ChatFragment)localObject4).a();
             if (localObject4 != null)
             {
-              localObject5 = ((BaseChatPie)localObject4).sessionInfo.curFriendUin;
-              int j = ((BaseChatPie)localObject4).sessionInfo.curType;
+              localObject5 = ((BaseChatPie)localObject4).a.jdField_a_of_type_JavaLangString;
+              int j = ((BaseChatPie)localObject4).a.jdField_a_of_type_Int;
               if ((!TextUtils.isEmpty((CharSequence)localObject5)) && (j != -1))
               {
                 ((Intent)localObject3).putExtra("doc_from_aio_uin", (String)localObject5);
                 ((Intent)localObject3).putExtra("doc_from_aio_peertype", j);
-                ((Intent)localObject3).putExtra("doc_from_aio_nickname", ContactUtils.getNickName(((FragmentActivity)localObject2).app, (String)localObject5, j));
+                ((Intent)localObject3).putExtra("doc_from_aio_nickname", ContactUtils.b(((FragmentActivity)localObject2).app, (String)localObject5, j));
               }
             }
           }
@@ -192,7 +191,7 @@ public class TeamWorkDocEditBrowserActivity
         }
         localObject2 = paramBundle.getString("tdsourcetag");
         ((Intent)localObject3).putExtra("tdsourcetag", (String)localObject2);
-        ((Intent)localObject3).putExtra("url", becr.b((String)localObject1, (String)localObject2));
+        ((Intent)localObject3).putExtra("url", TeamWorkUtils.b((String)localObject1, (String)localObject2));
         label670:
         ((Intent)localObject3).putExtra("key_team_work_edit_type", i);
         ((Intent)localObject3).putExtra("hide_more_button", true);
@@ -225,7 +224,7 @@ public class TeamWorkDocEditBrowserActivity
       {
         ((Activity)paramContext).startActivityForResult((Intent)localObject3, 14001);
         return;
-        if ((BaseActivity.sTopActivity == null) || (!(BaseActivity.sTopActivity instanceof SplashActivity)) || (SplashActivity.a != 2)) {
+        if ((BaseActivity.sTopActivity == null) || (!(BaseActivity.sTopActivity instanceof SplashActivity)) || (SplashActivity.currentFragment != 2)) {
           break;
         }
         ((Intent)localObject3).putExtra("doc_from_aio", true);
@@ -237,7 +236,7 @@ public class TeamWorkDocEditBrowserActivity
       }
       paramContext.startActivity((Intent)localObject3);
       return;
-      QQToast.a(BaseApplication.getContext(), paramContext.getResources().getString(2131692125), 0).b(paramContext.getResources().getDimensionPixelSize(2131299080));
+      QQToast.a(BaseApplication.getContext(), paramContext.getResources().getString(2131692257), 0).b(paramContext.getResources().getDimensionPixelSize(2131299166));
       return;
     }
   }
@@ -252,18 +251,18 @@ public class TeamWorkDocEditBrowserActivity
     if ((paramString2 == null) || (paramContext == null)) {
       return false;
     }
-    String str3 = (String)becr.a.get(paramString2);
+    String str3 = (String)TeamWorkUtils.a.get(paramString2);
     if (str3 == null) {
       return false;
     }
     if (QLog.isColorLevel()) {
       QLog.i("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp:configType " + str3);
     }
-    paramString2 = (argh)aqxe.a().a(418);
+    paramString2 = (TencentDocsPushBean)QConfigManager.a().a(418);
     if (paramString2 == null) {
       return false;
     }
-    paramString2 = (argi)paramString2.a().get(str3);
+    paramString2 = (TencentDocsPushItemBean)paramString2.a().get(str3);
     if (paramString2 == null) {
       return false;
     }
@@ -273,7 +272,6 @@ public class TeamWorkDocEditBrowserActivity
       if (TextUtils.isEmpty(paramString1)) {}
       try
       {
-        LaunchParam localLaunchParam = new LaunchParam();
         String str4 = paramString2.a();
         String str2 = paramString2.b();
         String str1 = "";
@@ -282,21 +280,21 @@ public class TeamWorkDocEditBrowserActivity
         if (!str3.equals("docs_miniapp_config_templatelist"))
         {
           if (!TextUtils.isEmpty(paramString1)) {
-            break label382;
+            break label373;
           }
           paramString2 = new StringBuilder().append(str2).append("?needSave=");
           if (!paramBoolean) {
-            break label375;
+            break label366;
           }
         }
-        label375:
+        label366:
         for (paramString1 = "1";; paramString1 = "0")
         {
           paramString2 = paramString1;
           localObject = str1;
-          MiniAppLauncher.launchMiniAppById(paramContext, str4, paramString2, (String)localObject, null, null, 2012);
+          ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById(paramContext, str4, paramString2, (String)localObject, null, null, 2012, null);
           if (QLog.isColorLevel()) {
-            QLog.i("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp:open :scene = " + localLaunchParam.scene + "miniAppId = " + localLaunchParam.miniAppId + "entryPath = " + localLaunchParam.entryPath + "navigateExtData = " + localLaunchParam.navigateExtData);
+            QLog.i("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp:open :scene = " + 2012 + "miniAppId = " + str4 + "entryPath = " + paramString2 + "navigateExtData = " + (String)localObject);
           }
           return true;
           if (paramString1.contains("showh5=1"))
@@ -314,7 +312,7 @@ public class TeamWorkDocEditBrowserActivity
           }
           return false;
         }
-        label382:
+        label373:
         localObject = new StringBuilder().append(str2).append("?url=").append(URLEncoder.encode(paramString1, "utf-8")).append("&needSave=");
         if (paramBoolean) {}
         for (paramString2 = "1";; paramString2 = "0")
@@ -331,7 +329,7 @@ public class TeamWorkDocEditBrowserActivity
           QLog.e("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp " + paramContext.getMessage());
         }
         if (TextUtils.equals(str3, "s_qq_mini_importing")) {
-          beeg.a(null, "0X800A4B5");
+          TenDocLogReportHelper.a(null, "0X800A4B5");
         }
       }
     }
@@ -352,16 +350,16 @@ public class TeamWorkDocEditBrowserActivity
     if (i < paramArrayList.size())
     {
       str = (String)paramArrayList.get(i);
-      if (FileUtil.isFileExists(str))
+      if (FileUtil.a(str))
       {
         if (QLog.isColorLevel()) {
           QLog.d("TeamWorkDocEditBrowserActivity", 4, "local url:" + str);
         }
-        if (FileUtil.getFileSize(str) <= 5242880L) {
+        if (FileUtil.a(str) <= 5242880L) {
           break label452;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("TeamWorkDocEditBrowserActivity", 4, "file length:" + FileUtil.getFileSize(str));
+          QLog.d("TeamWorkDocEditBrowserActivity", 4, "file length:" + FileUtil.a(str));
         }
         if ((paramInt != 0) || (GifDrawable.isGifFile(new File(str)))) {
           break label446;
@@ -376,7 +374,7 @@ public class TeamWorkDocEditBrowserActivity
         localHashMap.put("Connection", "keep-alive");
         localHashMap.put("Referer", paramString4);
         localObject1 = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
-        WebViewFragment localWebViewFragment = a();
+        WebViewFragment localWebViewFragment = getCurrentWebViewFragment();
         localObject3 = "";
         if (localWebViewFragment != null) {
           localObject3 = localWebViewFragment.getCurrentUrl();
@@ -395,7 +393,7 @@ public class TeamWorkDocEditBrowserActivity
     label455:
     Object localObject2;
     label579:
-    for (Object localObject1 = ((TicketManager)localObject1).getPskey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "docx.qq.com");; localObject2 = null)
+    for (Object localObject1 = ((TicketManager)localObject1).getPskey(this.a.getCurrentAccountUin(), "docx.qq.com");; localObject2 = null)
     {
       for (;;)
       {
@@ -426,9 +424,9 @@ public class TeamWorkDocEditBrowserActivity
           if (!((String)localObject3).contains("docs.qq.com")) {
             break label579;
           }
-          localObject1 = ((TicketManager)localObject1).getPskey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "docs.qq.com");
+          localObject1 = ((TicketManager)localObject1).getPskey(this.a.getCurrentAccountUin(), "docs.qq.com");
           continue;
-          localHashMap.put("Cookie", "p_skey=" + (String)localObject1 + ";p_uin=" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin() + ";skey=" + paramString2);
+          localHashMap.put("Cookie", "p_skey=" + (String)localObject1 + ";p_uin=" + this.a.getCurrentAccountUin() + ";skey=" + paramString2);
         }
         catch (JSONException localJSONException)
         {
@@ -447,7 +445,7 @@ public class TeamWorkDocEditBrowserActivity
   
   public void a(int paramInt)
   {
-    WebViewFragment localWebViewFragment = a();
+    WebViewFragment localWebViewFragment = getCurrentWebViewFragment();
     if ((localWebViewFragment instanceof TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)) {
       ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localWebViewFragment).b(paramInt);
     }
@@ -464,7 +462,7 @@ public class TeamWorkDocEditBrowserActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
+    this.a = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
     return super.doOnCreate(paramBundle);
   }
   
@@ -483,7 +481,7 @@ public class TeamWorkDocEditBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.FloatsParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.util.List;
 import java.util.Map;
 
@@ -18,8 +18,8 @@ public class ReshapeWrinkleFilter
   public static final String VERTEX_SHADER_VTF = "//uniform highp mat4 projection;\n//uniform highp mat4 faceFrame;\n//uniform highp mat4 stableToImage;\nuniform highp vec2 lipsPlainSize;\nuniform highp vec2 lipsLeftEdge;\nuniform highp vec2 lipsRightEdge;\nuniform vec3 nose3DCenter;\nuniform vec2 nosePlainSize;\nuniform highp float faceSmile;\nattribute highp vec4 position;\n//attribute highp vec3 displacementVector;\n//attribute highp float faceIndex;\n//attribute highp float depthValue;\nvarying highp vec2 textureCoordinate;\nuniform vec3 angles; // angles.x: pitch, angles.y: yaw, angles.z: roll\nuniform vec2 size;\n\nuniform sampler2D inputImageTexture;\n\nfloat my_smoothstep(float edge0, float edge1, float x) {\n    float t = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);\n    return t * t * (3.0 - 2.0 * t);\n}\n\nfloat getEllipseMask(in vec2 sigmaScaling, in vec2 point,in vec2 center, in vec2 boundingSize, float a1, float a2) {\n    // un-normalization\n    boundingSize = boundingSize * size;\n    point = point * size;\n    center = center * size;\n\n    float cos_t = cos(angles.z);\n    float sin_t = sin(angles.z);\n    vec2 translate = (point - center);\n    // rotate and scale\n    vec2 v = vec2(dot(translate, vec2(cos_t, sin_t)), dot(translate, vec2(-sin_t, cos_t))) * sigmaScaling;\n\n    float d2 = sqrt(dot(v / boundingSize, v / boundingSize));\n\n    return 1.0 - my_smoothstep(a1, a2, d2);\n}\nfloat getNoseMask() {\n    const vec2 sigmaScaling = vec2(1.2, 1.5);\n    return getEllipseMask(sigmaScaling, position.xy, nose3DCenter.xy, nosePlainSize, 0.8, 1.0);\n}\nhighp vec2 rotate2DPoint(in highp vec2 point, in highp float angle) {\n    return vec2(cos(angle) * point.x - sin(angle) * point.y,\n    sin(angle) * point.x + cos(angle) * point.y);\n}\nhighp vec2 rotate2DPointAroundCenter(in highp vec2 point, in highp vec2 center, in highp float angle) {\n    return center + rotate2DPoint(point - center, angle);\n}\nconst highp float kLipsEdgeWrinkleSizeToLipsSizeRatio = 0.3;\nconst highp float kPi = 3.14159265358979;\nconst highp float kLipsEdgeWrinklesRotationAngle = 0.015 * kPi;\nhighp vec3 getRotatedLipsEdgeWrinkle(in highp vec3 originalPoint, in bool isLeftSide) {\n    float cos_t = cos(angles.z);\n    float sin_t = sin(angles.z);\n    highp vec2 wrinkleSize = vec2(kLipsEdgeWrinkleSizeToLipsSizeRatio * lipsPlainSize.x, 0.6*lipsPlainSize.y);\n    highp vec2 lipsEdge = isLeftSide ? lipsLeftEdge : lipsRightEdge;\n    highp float directionSign = isLeftSide ? 1.0 : -1.0;\n    highp vec2 wrinkleCenter = lipsEdge + directionSign * 0.065 * (lipsRightEdge - lipsLeftEdge);\n\n    highp float wrinkleMask = getEllipseMask(vec2(0.8, 0.5), position.xy, wrinkleCenter,wrinkleSize, 0.5, 1.2);\n    highp vec2 wrinkleRotationCenter = lipsEdge + directionSign * 0.2 * (lipsRightEdge - lipsLeftEdge);\n    highp vec2 rotated2DPoint = rotate2DPointAroundCenter(originalPoint.xy, wrinkleRotationCenter, - directionSign * wrinkleMask * kLipsEdgeWrinklesRotationAngle);\n    wrinkleMask = getEllipseMask(vec2(0.6, 0.4), position.xy, wrinkleCenter,wrinkleSize, 0.5, 1.2);\n    rotated2DPoint = rotated2DPoint + 0.01*directionSign*wrinkleMask*(lipsRightEdge - lipsLeftEdge);\n    vec2 smileLiftingVector = vec2(0.0, 0.03*lipsPlainSize.y);\n    smileLiftingVector = vec2(dot(smileLiftingVector, vec2(cos_t, -sin_t)), dot(smileLiftingVector, vec2(sin_t, cos_t)));\n    rotated2DPoint = rotated2DPoint + wrinkleMask*smileLiftingVector;\n    return vec3(rotated2DPoint, originalPoint.z);\n}\nhighp vec3 getRotatedLipsLeftEdgeWrinkle(in highp vec3 originalPoint) {\n    return getRotatedLipsEdgeWrinkle(originalPoint, true);\n}\nhighp vec3 getRotatedLipsRightEdgeWrinkle(in highp vec3 originalPoint) {\n    return getRotatedLipsEdgeWrinkle(originalPoint, false);\n}\nvoid main() {\n    highp vec3 displacedPoint = position.xyz;\n    float noseMask = 0.9 * getNoseMask();\n    displacedPoint = mix(getRotatedLipsLeftEdgeWrinkle(displacedPoint), displacedPoint, noseMask);\n    displacedPoint = mix(getRotatedLipsRightEdgeWrinkle(displacedPoint), displacedPoint, noseMask);\n    highp vec2 originalPosition = position.xy;\n    highp vec2 displacedPosition = originalPosition + faceSmile * (displacedPoint.xy - originalPosition);\n    highp vec4 color = texture2D(inputImageTexture, position.xy);\n    highp vec2 offset = (color.xy * 255.0 + color.zw) / 127.5 - 1.0;\n    textureCoordinate = offset + displacedPosition - originalPosition;\n\n    gl_Position = vec4(originalPosition.x*2.0-1.0, originalPosition.y*2.0-1.0, 0.0, 1.0);\n}";
   private static final int XCOORD_NUM = 128;
   private static final int YCOORD_NUM = 128;
-  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterialUtil.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
-  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterialUtil.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
+  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterial.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
+  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterial.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
   private float[] angles = { 0.0F, 0.0F, 0.0F };
   private float faceSmile = 0.0F;
   private float[] lipsLeftEdge = { 0.0F, 0.0F };
@@ -52,8 +52,8 @@ public class ReshapeWrinkleFilter
   
   public void initAttribParams()
   {
-    setPositions(VideoMaterialUtil.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
-    setTexCords(VideoMaterialUtil.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
+    setPositions(VideoMaterial.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
+    setTexCords(VideoMaterial.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
     setCoordNum(32897);
   }
   
@@ -101,7 +101,7 @@ public class ReshapeWrinkleFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.ReshapeWrinkleFilter
  * JD-Core Version:    0.7.0.1
  */

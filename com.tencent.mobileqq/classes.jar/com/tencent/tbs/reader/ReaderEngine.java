@@ -190,18 +190,20 @@ public class ReaderEngine
           bool1 = bool2;
           Log.d("ReaderEngine", "fileEnginePreLoad,into download:FileComponent,isForeground:" + paramBoolean);
           if (!paramBoolean) {
-            break label183;
+            break label197;
           }
           bool1 = bool2;
           paramTBSOneCallback = new ReaderEngine.2(this, paramTBSOneCallback);
           bool1 = bool2;
           localBundle = new Bundle();
           bool1 = bool2;
-          localBundle.putBoolean("is_ignore_wifi_state", true);
+          localBundle.putBoolean("is_ignore_flow_control", true);
           bool1 = bool2;
           localBundle.putBoolean("is_ignore_frequency_limitation", true);
           bool1 = bool2;
-          localBundle.putBoolean("is_ignore_flow_control", true);
+          localBundle.putBoolean("is_ignore_wifi_state", true);
+          bool1 = bool2;
+          paramContext.configure("is_ignore_update_wifi_network", Boolean.valueOf(true));
           bool1 = bool2;
           paramContext.installComponent("file", localBundle, paramTBSOneCallback);
           bool1 = bool2;
@@ -213,7 +215,7 @@ public class ReaderEngine
         {
           boolean bool2;
           Bundle localBundle;
-          label183:
+          label197:
           paramTBSOneCallback.printStackTrace();
         }
       }
@@ -228,6 +230,8 @@ public class ReaderEngine
       localBundle = new Bundle();
       bool1 = bool2;
       localBundle.putBoolean("is_ignore_wifi_state", true);
+      bool1 = bool2;
+      paramContext.configure("is_ignore_update_wifi_network", Boolean.valueOf(true));
       bool1 = bool2;
       paramContext.installComponent("file", localBundle, paramTBSOneCallback);
     }
@@ -249,7 +253,7 @@ public class ReaderEngine
     if (this.mReaderEntry != null) {
       return true;
     }
-    localObject = null;
+    Object localObject = null;
     TBSOneManager localTBSOneManager = TBSOneManager.getDefaultInstance(paramContext);
     localTBSOneManager.setPolicy(TBSOneManager.Policy.BUILTIN_FIRST);
     try
@@ -257,24 +261,21 @@ public class ReaderEngine
       paramContext = new Bundle();
       paramContext.putBoolean("is_ignore_wifi_state", true);
       paramContext.putBoolean("is_ignore_flow_control", true);
-      if (!localTBSOneManager.isComponentInstalled("file")) {
-        paramContext.putBoolean("is_ignore_frequency_limitation", true);
-      }
-      paramContext = localTBSOneManager.loadComponentSync("file", paramContext);
+      localTBSOneManager.configure("is_ignore_update_wifi_network", Boolean.valueOf(true));
+      paramContext = localTBSOneManager.loadComponentSync("file", paramContext, 5000L);
+      boolean bool = loadFileEngine(localTBSOneManager, paramContext);
+      Log.d("ReaderEngine", "initReaderEntry,ret:" + bool);
+      return bool;
     }
     catch (Throwable paramContext)
     {
       for (;;)
       {
-        boolean bool;
         paramContext.printStackTrace();
         report(1000, "initReaderEntry", paramContext);
         paramContext = localObject;
       }
     }
-    bool = loadFileEngine(localTBSOneManager, paramContext);
-    Log.d("ReaderEngine", "initReaderEntry,ret:" + bool);
-    return bool;
   }
   
   public void initReaderEntryAsync(Context paramContext, ITbsReaderCallback paramITbsReaderCallback)
@@ -289,9 +290,7 @@ public class ReaderEngine
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("is_ignore_wifi_state", true);
       localBundle.putBoolean("is_ignore_flow_control", true);
-      if (!localTBSOneManager.isComponentInstalled("file")) {
-        localBundle.putBoolean("is_ignore_frequency_limitation", true);
-      }
+      localTBSOneManager.configure("is_ignore_update_wifi_network", Boolean.valueOf(true));
       localTBSOneManager.loadComponentAsync("file", localBundle, new ReaderEngine.1(this, paramContext, localTBSOneManager, paramITbsReaderCallback));
       return;
     }
@@ -347,7 +346,7 @@ public class ReaderEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tbs.reader.ReaderEngine
  * JD-Core Version:    0.7.0.1
  */

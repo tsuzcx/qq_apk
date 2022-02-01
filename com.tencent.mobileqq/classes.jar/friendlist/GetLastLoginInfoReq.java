@@ -8,8 +8,8 @@ public final class GetLastLoginInfoReq
   extends JceStruct
 {
   static LastLoginPageInfo cache_stPageInfo;
-  public LastLoginPageInfo stPageInfo;
-  public long uin;
+  public LastLoginPageInfo stPageInfo = null;
+  public long uin = 0L;
   
   public GetLastLoginInfoReq() {}
   
@@ -38,7 +38,7 @@ public final class GetLastLoginInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.GetLastLoginInfoReq
  * JD-Core Version:    0.7.0.1
  */

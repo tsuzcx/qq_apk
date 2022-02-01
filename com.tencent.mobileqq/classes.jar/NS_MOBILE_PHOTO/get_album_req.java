@@ -11,12 +11,12 @@ public final class get_album_req
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumid = "";
-  public Map<Integer, String> busi_param;
-  public boolean is_from_public_url;
-  public boolean is_get_url_key;
-  public long owner_uin;
+  public Map<Integer, String> busi_param = null;
+  public boolean is_from_public_url = false;
+  public boolean is_get_url_key = false;
+  public long owner_uin = 0L;
   public String share_key = "";
-  public int type;
+  public int type = 0;
   
   static
   {

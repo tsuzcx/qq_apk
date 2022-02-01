@@ -1,45 +1,20 @@
 package com.tencent.mobileqq.search.searchengine;
 
 import android.os.Bundle;
-import aoxx;
-import aoyc;
-import bcdc;
-import bcfi;
-import bckr;
-import bckw;
-import bcld;
-import bcle;
-import bclf;
-import bclg;
-import bclh;
-import bcli;
-import bclj;
-import bclk;
-import bcll;
-import bclm;
-import bcln;
-import bclo;
-import bclp;
-import bclq;
-import bclr;
-import bcls;
-import bclt;
-import bclu;
-import bclv;
-import bclw;
-import bclx;
-import bcly;
-import bcmk;
-import bcmz;
-import bcnb;
-import bcnc;
-import bdvn;
-import bhkf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.FTSDBManager;
+import com.tencent.mobileqq.app.proxy.fts.FTSMsgOperator;
 import com.tencent.mobileqq.filemanager.data.search.FileManagerSearchEngine;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.search.util.SearchConfigUtils;
+import com.tencent.mobileqq.search.util.SearchStatisticsConstants;
+import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.studymode.StudyModeManager;
+import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
 import cooperation.qqfav.globalsearch.FunctionSearchEngine;
@@ -57,17 +32,17 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class GroupSearchEngine
-  implements bclw<bcfi>, Observer
+  implements ISearchEngine<ISearchResultGroupModel>, Observer
 {
-  private static final Comparator<bclv> jdField_a_of_type_JavaUtilComparator = new bcle();
-  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new bclo(3, 5, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new bcln());
+  private static final Comparator<GroupSearchEngine.SearchEngineEntity> jdField_a_of_type_JavaUtilComparator = new GroupSearchEngine.1();
+  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new GroupSearchEngine.3(3, 5, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new GroupSearchEngine.2());
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = -1L;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private GroupSearchEngine.SearchRunnable jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine$SearchRunnable;
   private GroupSearchEngine.TroopMemberSearchRunnable jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine$TroopMemberSearchRunnable;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<bclv> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<GroupSearchEngine.SearchEngineEntity> jdField_a_of_type_JavaUtilArrayList;
   private Future jdField_a_of_type_JavaUtilConcurrentFuture;
   private ScheduledFuture jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
   private ScheduledThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
@@ -81,25 +56,25 @@ public class GroupSearchEngine
     paramQQAppInterface.getFTSDBManager().a().a(this);
   }
   
-  private ArrayList<bclv> a()
+  private ArrayList<GroupSearchEngine.SearchEngineEntity> a()
   {
     ArrayList localArrayList = new ArrayList();
     if (this.jdField_a_of_type_Int == 12)
     {
-      localArrayList.add(new bclp(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
-      localArrayList.add(new bclq(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
+      localArrayList.add(new GroupSearchEngine.4(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
+      localArrayList.add(new GroupSearchEngine.5(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
       Collections.sort(localArrayList, jdField_a_of_type_JavaUtilComparator);
       return localArrayList;
     }
     if (this.jdField_a_of_type_Int == 14)
     {
-      localArrayList.add(new bclr(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
-      localArrayList.add(new bcls(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
+      localArrayList.add(new GroupSearchEngine.6(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
+      localArrayList.add(new GroupSearchEngine.7(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
       Collections.sort(localArrayList, jdField_a_of_type_JavaUtilComparator);
       return localArrayList;
     }
-    localArrayList.add(new bclt(this, new bckw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, 197437, null), "people", 20));
-    if (bdvn.a()) {
+    localArrayList.add(new GroupSearchEngine.8(this, new ContactSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, 197437, null), "people", 20));
+    if (StudyModeManager.a()) {
       d(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
     }
     for (;;)
@@ -115,43 +90,43 @@ public class GroupSearchEngine
     }
   }
   
-  private void a(ArrayList<bclv> paramArrayList, QQAppInterface paramQQAppInterface)
+  private void a(ArrayList<GroupSearchEngine.SearchEngineEntity> paramArrayList, QQAppInterface paramQQAppInterface)
   {
-    paramArrayList.add(new bclk(this, new FavoriteSearchEngine(paramQQAppInterface), "favorite", 60));
+    paramArrayList.add(new GroupSearchEngine.15(this, new FavoriteSearchEngine(paramQQAppInterface), "favorite", 60));
   }
   
-  private void a(ArrayList<bclv> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
+  private void a(ArrayList<GroupSearchEngine.SearchEngineEntity> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    paramArrayList.add(new bclu(this, new MiniProgramSearchEngine(paramQQAppInterface, paramInt), "", 0, paramInt));
+    paramArrayList.add(new GroupSearchEngine.9(this, new MiniProgramSearchEngine(paramQQAppInterface, paramInt), "", 0, paramInt));
   }
   
-  private void b(ArrayList<bclv> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
+  private void b(ArrayList<GroupSearchEngine.SearchEngineEntity> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    paramArrayList.add(new bclf(this, new bckr(paramQQAppInterface, paramInt, 793, null), "people", 20, paramInt));
+    paramArrayList.add(new GroupSearchEngine.10(this, new ApproximateSearchEngine(paramQQAppInterface, paramInt, 793, null), "people", 20, paramInt));
   }
   
-  private void c(ArrayList<bclv> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
+  private void c(ArrayList<GroupSearchEngine.SearchEngineEntity> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    paramArrayList.add(new bclg(this, new FunctionSearchEngine(paramQQAppInterface, paramInt), "function", 130, paramInt));
+    paramArrayList.add(new GroupSearchEngine.11(this, new FunctionSearchEngine(paramQQAppInterface, paramInt), "function", 130, paramInt));
   }
   
-  private void d(ArrayList<bclv> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
+  private void d(ArrayList<GroupSearchEngine.SearchEngineEntity> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    boolean bool1 = bcmz.f();
-    boolean bool2 = bcmz.e();
+    boolean bool1 = SearchConfigUtils.f();
+    boolean bool2 = SearchConfigUtils.e();
     if (bool1)
     {
-      paramArrayList.add(new bclh(this, new bcld(paramQQAppInterface, paramInt), "create_discussion", 120, paramInt));
-      if ((bool2) && (aoxx.jdField_a_of_type_Boolean) && (bhkf.a(paramQQAppInterface)) && (paramQQAppInterface.getFTSDBManager().a()) && (bhkf.d(paramQQAppInterface)))
+      paramArrayList.add(new GroupSearchEngine.12(this, new CreateDiscussionSearchEngine(paramQQAppInterface, paramInt), "create_discussion", 120, paramInt));
+      if ((bool2) && (FTSDBManager.jdField_a_of_type_Boolean) && (SQLiteFTSUtils.a(paramQQAppInterface)) && (paramQQAppInterface.getFTSDBManager().a()) && (SQLiteFTSUtils.d(paramQQAppInterface)))
       {
-        paramArrayList.add(new bcli(this, new bcdc(paramQQAppInterface), "fts_message", 40, paramInt));
+        paramArrayList.add(new GroupSearchEngine.13(this, new FTSMessageSearchEngine(paramQQAppInterface), "fts_message", 40, paramInt));
         if (QLog.isColorLevel()) {
           QLog.d("GroupSearchEngine", 2, "newSearchEngine() searchEngines add FTSMessageSearchEngine");
         }
-        if ((bool2) && (aoxx.jdField_a_of_type_Boolean) && (bhkf.a(paramQQAppInterface)) && (paramQQAppInterface.getFTSDBManager().a()) && (bhkf.e(paramQQAppInterface) != 1) && ((!bhkf.a(paramQQAppInterface)) || (bhkf.d(paramQQAppInterface)))) {
+        if ((bool2) && (FTSDBManager.jdField_a_of_type_Boolean) && (SQLiteFTSUtils.a(paramQQAppInterface)) && (paramQQAppInterface.getFTSDBManager().a()) && (SQLiteFTSUtils.e(paramQQAppInterface) != 1) && ((!SQLiteFTSUtils.a(paramQQAppInterface)) || (SQLiteFTSUtils.d(paramQQAppInterface)))) {
           break label270;
         }
-        paramArrayList.add(new bclj(this, new bcly(paramQQAppInterface), "message", 40));
+        paramArrayList.add(new GroupSearchEngine.14(this, new MessageSearchEngine(paramQQAppInterface), "message", 40));
         if (QLog.isColorLevel()) {
           QLog.d("GroupSearchEngine", 2, "newSearchEngine() searchEngines add MessageSearchEngine");
         }
@@ -176,9 +151,9 @@ public class GroupSearchEngine
     }
   }
   
-  private void e(ArrayList<bclv> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
+  private void e(ArrayList<GroupSearchEngine.SearchEngineEntity> paramArrayList, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    paramArrayList.add(new bcll(this, new FileManagerSearchEngine(paramQQAppInterface, paramInt), "file", 100, paramInt));
+    paramArrayList.add(new GroupSearchEngine.16(this, new FileManagerSearchEngine(paramQQAppInterface, paramInt), "file", 100, paramInt));
   }
   
   private void h()
@@ -205,7 +180,7 @@ public class GroupSearchEngine
     }
   }
   
-  public List<bcfi> a(bcmk parambcmk)
+  public List<ISearchResultGroupModel> a(SearchRequest paramSearchRequest)
   {
     return null;
   }
@@ -220,7 +195,7 @@ public class GroupSearchEngine
       int i = 0;
       if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((bclv)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bclw.a();
+        ((GroupSearchEngine.SearchEngineEntity)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.a();
         i += 1;
       }
     }
@@ -228,23 +203,23 @@ public class GroupSearchEngine
     if (QLog.isColorLevel()) {
       QLog.d("GroupSearchEngine", 2, "GroupSearchEngine.init() cost time : " + (l2 - l1));
     }
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "GroupSearchEngineInit", true, l2 - l1, 0L, bcnc.a(null), "", false);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "GroupSearchEngineInit", true, l2 - l1, 0L, SearchUtils.a(null), "", false);
   }
   
-  public void a(bcmk parambcmk, bclx<bcfi> parambclx)
+  public void a(SearchRequest paramSearchRequest, ISearchListener<ISearchResultGroupModel> paramISearchListener)
   {
-    this.jdField_a_of_type_JavaLangString = parambcmk.jdField_a_of_type_JavaLangString;
-    if (parambcmk.jdField_a_of_type_AndroidOsBundle == null) {
-      parambcmk.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_JavaLangString = paramSearchRequest.jdField_a_of_type_JavaLangString;
+    if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle == null) {
+      paramSearchRequest.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
-    parambcmk.jdField_a_of_type_AndroidOsBundle.putBoolean("bSearchNet", true);
-    parambcmk.jdField_a_of_type_AndroidOsBundle.putInt("iNumber", 11);
-    parambcmk.jdField_a_of_type_AndroidOsBundle.putBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", true);
-    parambcmk.jdField_a_of_type_AndroidOsBundle.putBoolean("searchTroopMember", false);
+    paramSearchRequest.jdField_a_of_type_AndroidOsBundle.putBoolean("bSearchNet", true);
+    paramSearchRequest.jdField_a_of_type_AndroidOsBundle.putInt("iNumber", 11);
+    paramSearchRequest.jdField_a_of_type_AndroidOsBundle.putBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", true);
+    paramSearchRequest.jdField_a_of_type_AndroidOsBundle.putBoolean("searchTroopMember", false);
     h();
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine$SearchRunnable = new GroupSearchEngine.SearchRunnable(this, parambcmk, parambclx);
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine$SearchRunnable = new GroupSearchEngine.SearchRunnable(this, paramSearchRequest, paramISearchListener);
     this.jdField_a_of_type_JavaUtilConcurrentFuture = jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine$SearchRunnable);
-    bcnc.a("all_result", "active_local", new String[] { this.jdField_a_of_type_JavaLangString });
+    SearchUtils.a("all_result", "active_local", new String[] { this.jdField_a_of_type_JavaLangString });
   }
   
   public void a(boolean paramBoolean)
@@ -257,14 +232,14 @@ public class GroupSearchEngine
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       return;
     }
-    bcnb.a();
+    SearchStatisticsConstants.a();
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     int i = 0;
     try
     {
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((bclv)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bclw.b();
+        ((GroupSearchEngine.SearchEngineEntity)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.b();
         i += 1;
       }
       h();
@@ -281,7 +256,7 @@ public class GroupSearchEngine
     {
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((bclv)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bclw.c();
+        ((GroupSearchEngine.SearchEngineEntity)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.c();
         i += 1;
       }
       return;
@@ -297,7 +272,7 @@ public class GroupSearchEngine
     {
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((bclv)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bclw.d();
+        ((GroupSearchEngine.SearchEngineEntity)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.d();
         i += 1;
       }
       return;
@@ -311,14 +286,14 @@ public class GroupSearchEngine
     // Byte code:
     //   0: aload_0
     //   1: getfield 66	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 79	com/tencent/mobileqq/app/QQAppInterface:getFTSDBManager	()Laoxx;
-    //   7: invokevirtual 84	aoxx:a	()Laoyc;
+    //   4: invokevirtual 79	com/tencent/mobileqq/app/QQAppInterface:getFTSDBManager	()Lcom/tencent/mobileqq/app/proxy/FTSDBManager;
+    //   7: invokevirtual 84	com/tencent/mobileqq/app/proxy/FTSDBManager:a	()Lcom/tencent/mobileqq/app/proxy/fts/FTSMsgOperator;
     //   10: astore_2
     //   11: aload_2
     //   12: ifnull +8 -> 20
     //   15: aload_2
     //   16: aload_0
-    //   17: invokevirtual 460	aoyc:b	(Ljava/util/Observer;)V
+    //   17: invokevirtual 460	com/tencent/mobileqq/app/proxy/fts/FTSMsgOperator:b	(Ljava/util/Observer;)V
     //   20: aload_0
     //   21: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   24: astore_2
@@ -335,8 +310,8 @@ public class GroupSearchEngine
     //   41: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   44: iload_1
     //   45: invokevirtual 367	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   48: checkcast 369	bclv
-    //   51: getfield 372	bclv:jdField_a_of_type_Bclw	Lbclw;
+    //   48: checkcast 369	com/tencent/mobileqq/search/searchengine/GroupSearchEngine$SearchEngineEntity
+    //   51: getfield 372	com/tencent/mobileqq/search/searchengine/GroupSearchEngine$SearchEngineEntity:jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine	Lcom/tencent/mobileqq/search/searchengine/ISearchEngine;
     //   54: invokeinterface 462 1 0
     //   59: iload_1
     //   60: iconst_1
@@ -371,14 +346,14 @@ public class GroupSearchEngine
     //   109: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   112: iload_1
     //   113: invokevirtual 367	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   116: checkcast 369	bclv
-    //   119: getfield 466	bclv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   116: checkcast 369	com/tencent/mobileqq/search/searchengine/GroupSearchEngine$SearchEngineEntity
+    //   119: getfield 466	com/tencent/mobileqq/search/searchengine/GroupSearchEngine$SearchEngineEntity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   122: aload_0
     //   123: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   126: iload_1
     //   127: invokevirtual 367	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   130: checkcast 369	bclv
-    //   133: getfield 467	bclv:jdField_a_of_type_Long	J
+    //   130: checkcast 369	com/tencent/mobileqq/search/searchengine/GroupSearchEngine$SearchEngineEntity
+    //   133: getfield 467	com/tencent/mobileqq/search/searchengine/GroupSearchEngine$SearchEngineEntity:jdField_a_of_type_Long	J
     //   136: invokestatic 471	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   139: invokevirtual 475	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   142: pop
@@ -390,8 +365,8 @@ public class GroupSearchEngine
     //   152: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   155: iload_1
     //   156: invokevirtual 367	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   159: checkcast 369	bclv
-    //   162: getfield 466	bclv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   159: checkcast 369	com/tencent/mobileqq/search/searchengine/GroupSearchEngine$SearchEngineEntity
+    //   162: getfield 466	com/tencent/mobileqq/search/searchengine/GroupSearchEngine$SearchEngineEntity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   165: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   168: ldc_w 477
     //   171: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -400,8 +375,8 @@ public class GroupSearchEngine
     //   178: getfield 73	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   181: iload_1
     //   182: invokevirtual 367	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   185: checkcast 369	bclv
-    //   188: getfield 479	bclv:b	I
+    //   185: checkcast 369	com/tencent/mobileqq/search/searchengine/GroupSearchEngine$SearchEngineEntity
+    //   188: getfield 479	com/tencent/mobileqq/search/searchengine/GroupSearchEngine$SearchEngineEntity:b	I
     //   191: invokestatic 482	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   194: invokevirtual 475	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   197: pop
@@ -448,7 +423,7 @@ public class GroupSearchEngine
     //   269: getfield 64	com/tencent/mobileqq/search/searchengine/GroupSearchEngine:jdField_a_of_type_Long	J
     //   272: lconst_0
     //   273: aload_3
-    //   274: invokestatic 400	bcnc:a	(Ljava/util/HashMap;)Ljava/util/HashMap;
+    //   274: invokestatic 400	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/util/HashMap;)Ljava/util/HashMap;
     //   277: ldc 202
     //   279: iconst_0
     //   280: invokevirtual 404	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
@@ -499,9 +474,9 @@ public class GroupSearchEngine
       {
         if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          bclv localbclv = (bclv)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if ((localbclv.jdField_a_of_type_Bclw instanceof bcdc)) {
-            ((bcdc)localbclv.jdField_a_of_type_Bclw).f();
+          GroupSearchEngine.SearchEngineEntity localSearchEngineEntity = (GroupSearchEngine.SearchEngineEntity)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          if ((localSearchEngineEntity.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine instanceof FTSMessageSearchEngine)) {
+            ((FTSMessageSearchEngine)localSearchEngineEntity.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine).f();
           }
         }
         else
@@ -524,9 +499,9 @@ public class GroupSearchEngine
       {
         if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          bclv localbclv = (bclv)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if ((localbclv.jdField_a_of_type_Bclw instanceof bcdc)) {
-            ((bcdc)localbclv.jdField_a_of_type_Bclw).g();
+          GroupSearchEngine.SearchEngineEntity localSearchEngineEntity = (GroupSearchEngine.SearchEngineEntity)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          if ((localSearchEngineEntity.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine instanceof FTSMessageSearchEngine)) {
+            ((FTSMessageSearchEngine)localSearchEngineEntity.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine).g();
           }
         }
         else
@@ -541,7 +516,7 @@ public class GroupSearchEngine
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if ((aoxx.jdField_a_of_type_Boolean) && ((paramObservable instanceof aoxx)))
+    if ((FTSDBManager.jdField_a_of_type_Boolean) && ((paramObservable instanceof FTSDBManager)))
     {
       paramObservable = this.jdField_a_of_type_JavaUtilArrayList;
       int i = 0;
@@ -552,20 +527,20 @@ public class GroupSearchEngine
           if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
             break;
           }
-          paramObject = (bclv)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if ((paramObject.jdField_a_of_type_Bclw instanceof bcdc))
+          paramObject = (GroupSearchEngine.SearchEngineEntity)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          if ((paramObject.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine instanceof FTSMessageSearchEngine))
           {
             if (QLog.isColorLevel()) {
               QLog.d("GroupSearchEngine", 2, "update() searchEngines has add FTSMessageSearchEngine");
             }
             return;
           }
-          if ((paramObject.jdField_a_of_type_Bclw instanceof bcly))
+          if ((paramObject.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine instanceof MessageSearchEngine))
           {
-            paramObject = new bcdc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            paramObject = new FTSMessageSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
             paramObject.a();
-            this.jdField_a_of_type_JavaUtilArrayList.add(i, new bclm(this, paramObject, "fts message", 40));
-            if (bhkf.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 0) {
+            this.jdField_a_of_type_JavaUtilArrayList.add(i, new GroupSearchEngine.17(this, paramObject, "fts message", 40));
+            if (SQLiteFTSUtils.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 0) {
               this.jdField_a_of_type_JavaUtilArrayList.remove(i + 1);
             }
             if (QLog.isColorLevel()) {
@@ -586,7 +561,7 @@ public class GroupSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine
  * JD-Core Version:    0.7.0.1
  */

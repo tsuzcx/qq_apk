@@ -3,34 +3,39 @@ package com.tencent.mobileqq.vas.troopnick;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bhpo;
-import bhsx;
+import com.tencent.mobileqq.vas.VasResEngine.VasResController;
 
-public class TroopNickAdapter$2
+class TroopNickAdapter$2
   implements Runnable
 {
-  public TroopNickAdapter$2(bhsx parambhsx, String paramString, int paramInt1, int paramInt2) {}
+  TroopNickAdapter$2(TroopNickAdapter paramTroopNickAdapter, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    String[] arrayOfString = this.this$0.a(this.jdField_a_of_type_JavaLangString);
-    if ((arrayOfString == null) || (arrayOfString.length == 0)) {
+    if (TroopNickAdapter.a(this.this$0) == null) {
       return;
     }
-    Message localMessage = bhsx.a(this.this$0).a().obtainMessage();
+    synchronized (TroopNickAdapter.a(this.this$0))
+    {
+      String[] arrayOfString1 = this.this$0.a(this.jdField_a_of_type_JavaLangString);
+      if ((arrayOfString1 == null) || (arrayOfString1.length == 0) || (TroopNickAdapter.a(this.this$0) == null)) {
+        return;
+      }
+    }
+    Message localMessage = TroopNickAdapter.a(this.this$0).a().obtainMessage();
     Bundle localBundle = new Bundle();
     localBundle.putInt("type", 1);
-    localBundle.putStringArray("pngs", arrayOfString);
+    localBundle.putStringArray("pngs", arrayOfString2);
     localBundle.putInt("interval", this.jdField_a_of_type_Int);
     localBundle.putInt("repeatTimes", this.b);
     localMessage.setData(localBundle);
     localMessage.what = 10001;
-    bhsx.a(this.this$0).a().sendMessage(localMessage);
+    TroopNickAdapter.a(this.this$0).a().sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickAdapter.2
  * JD-Core Version:    0.7.0.1
  */

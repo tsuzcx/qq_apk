@@ -16,8 +16,8 @@ public final class RespGetRecommender
   public int iOuterInterval = 86400;
   public String strBrief = "";
   public String strTitle = "";
-  public long uRecommendTime;
-  public ArrayList<RespEncounterInfo> vEncounterInfos;
+  public long uRecommendTime = 0L;
+  public ArrayList<RespEncounterInfo> vEncounterInfos = null;
   
   public RespGetRecommender() {}
   

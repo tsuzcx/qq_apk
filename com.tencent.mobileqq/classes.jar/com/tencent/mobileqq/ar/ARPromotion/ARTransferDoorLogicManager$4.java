@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import apce;
 import com.tencent.av.avgesture.AVGestureWrapper;
 import com.tencent.qphone.base.util.QLog;
 
-public class ARTransferDoorLogicManager$4
+class ARTransferDoorLogicManager$4
   implements Runnable
 {
-  public ARTransferDoorLogicManager$4(apce paramapce) {}
+  ARTransferDoorLogicManager$4(ARTransferDoorLogicManager paramARTransferDoorLogicManager) {}
   
   public void run()
   {
@@ -21,21 +20,21 @@ public class ARTransferDoorLogicManager$4
     {
       for (;;)
       {
-        QLog.i(apce.a, 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
+        QLog.i(ARTransferDoorLogicManager.a, 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        QLog.i(apce.a, 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
+        QLog.i(ARTransferDoorLogicManager.a, 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.4
  * JD-Core Version:    0.7.0.1
  */

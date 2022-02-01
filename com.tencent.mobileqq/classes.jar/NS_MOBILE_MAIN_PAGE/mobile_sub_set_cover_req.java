@@ -11,9 +11,9 @@ public final class mobile_sub_set_cover_req
   public String cover = "";
   public long coverScene;
   public String coverkey = "";
-  public int iTransparency;
-  public int iVideoHeight;
-  public int iVideoWidth;
+  public int iTransparency = 0;
+  public int iVideoHeight = 0;
+  public int iVideoWidth = 0;
   public String strVideoPlay = "";
   public long syncflag;
   public String trace = "";

@@ -41,7 +41,6 @@ public class VRecyclerView
   implements IVView<VRecyclerList>, PagerSnapHelper.PagerEventListener, OverScrollHelper.OverScrollListener, VRefreshContentView.ContentViewProvider<VRecyclerView>
 {
   private static final String TAG = "VRecyclerView";
-  private int flingVelocityIncrease = 0;
   private int mContentOffsetX = 0;
   private int mContentOffsetY = 0;
   private VRecyclerView.OnGestureListener mGestureListener;
@@ -364,14 +363,14 @@ public class VRecyclerView
           this.snapOffset = ((int)FlexConvertUtils.converPxByViewportToRealPx(getComponent().getDomObject().getAttributes().get("stickyOffset"), 750));
         }
         if (!getComponent().getDomObject().getAttributes().containsKey("stickyRebound")) {
-          break label603;
+          break label615;
         }
       }
     }
-    label401:
-    label548:
-    label598:
-    label603:
+    label408:
+    label555:
+    label610:
+    label615:
     for (boolean bool1 = ((Boolean)getComponent().getDomObject().getAttributes().get("stickyRebound")).booleanValue();; bool1 = true)
     {
       int i;
@@ -396,15 +395,15 @@ public class VRecyclerView
         if (getComponent().getDomObject().getAttributes().containsKey("stickySpeed"))
         {
           if (!(getComponent().getDomObject().getAttributes().get("stickySpeed") instanceof Double)) {
-            break label518;
+            break label525;
           }
           this.snapSpeedFactor = Float.valueOf(getComponent().getDomObject().getAttributes().get("stickySpeed").toString()).floatValue();
           label361:
-          this.flingVelocityIncrease = ((int)this.snapSpeedFactor);
-          if (getMinFlingVelocity() <= 10000) {
-            break label548;
+          this.mPagerSnapHelper.setMinFlingVelocity((int)this.snapSpeedFactor);
+          if (this.snapSpeedFactor <= 10000.0F) {
+            break label555;
           }
-          this.flingVelocityIncrease = 0;
+          this.mPagerSnapHelper.setMinFlingVelocity(0);
           this.mPagerSnapHelper.setSnapOnFling(false);
           this.mPagerSnapHelper.setSnapOnIdle(false);
         }
@@ -413,7 +412,7 @@ public class VRecyclerView
           i = ((Integer)getComponent().getDomObject().getAttributes().get("stickySlowRebound")).intValue();
           localObject = this.mPagerSnapHelper;
           if (i != 1) {
-            break label598;
+            break label610;
           }
         }
       }
@@ -430,16 +429,16 @@ public class VRecyclerView
         break;
         this.snapSpeedFactor = ((Integer)getComponent().getDomObject().getAttributes().get("stickySpeed")).intValue();
         break label361;
-        if (getMinFlingVelocity() <= 0)
+        if (this.snapSpeedFactor <= 0.0F)
         {
-          this.flingVelocityIncrease = 0;
+          this.mPagerSnapHelper.setMinFlingVelocity(0);
           this.mPagerSnapHelper.setSnapOnFling(true);
           this.mPagerSnapHelper.setSnapOnIdle(true);
-          break label401;
+          break label408;
         }
         this.mPagerSnapHelper.setSnapOnIdle(false);
         this.mPagerSnapHelper.setSnapOnFling(true);
-        break label401;
+        break label408;
       }
     }
   }
@@ -775,9 +774,9 @@ public class VRecyclerView
   public int getMinFlingVelocity()
   {
     if (getLayoutManager().canScrollVertically()) {
-      return super.getMinFlingVelocity() + this.flingVelocityIncrease;
+      return super.getMinFlingVelocity();
     }
-    return super.getMinFlingVelocity() + this.flingVelocityIncrease;
+    return super.getMinFlingVelocity();
   }
   
   public RefreshMoveOberver getRefreshMoveOberver()
@@ -1135,7 +1134,7 @@ public class VRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.VRecyclerView
  * JD-Core Version:    0.7.0.1
  */

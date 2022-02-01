@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 import org.json.JSONObject;
 
 class ThemeAndBubbleCommonJsPlugin$7
@@ -27,7 +27,7 @@ class ThemeAndBubbleCommonJsPlugin$7
             if (i != 0) {
               break label152;
             }
-            bdla.b(null, "CliOper", "", "", "starphoto", "downloadsuc_starphoto_button", 0, 0, "", "", "", "");
+            ReportController.b(null, "CliOper", "", "", "starphoto", "downloadsuc_starphoto_button", 0, 0, "", "", "", "");
             this.this$0.callJs(this.this$0.saveCallbackId, new String[] { paramMessage.toString() });
             return;
           }
@@ -42,14 +42,14 @@ class ThemeAndBubbleCommonJsPlugin$7
         paramMessage.put("ret", 2);
         continue;
         label152:
-        bdla.b(null, "CliOper", "", "", "starphoto", "downloadfail_starphoto_button", 0, 0, "", "", "", "");
+        ReportController.b(null, "CliOper", "", "", "starphoto", "downloadfail_starphoto_button", 0, 0, "", "", "", "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeAndBubbleCommonJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

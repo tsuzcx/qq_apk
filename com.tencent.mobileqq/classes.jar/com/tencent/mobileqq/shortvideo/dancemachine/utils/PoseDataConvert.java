@@ -9,14 +9,20 @@ public class PoseDataConvert
   
   static
   {
-    int[] arrayOfInt1 = { 3, 6 };
-    int[] arrayOfInt2 = { 4, 7 };
-    int[] arrayOfInt3 = { 9, 12 };
-    int[] arrayOfInt4 = { 10, 13 };
-    int[] arrayOfInt5 = { 32, 33 };
-    int[] arrayOfInt6 = { 26, 29 };
-    int[] arrayOfInt7 = { 27, 30 };
-    mirrorMap = new int[][] { { 14, 15 }, { 16, 17 }, { 2, 5 }, arrayOfInt1, arrayOfInt2, { 8, 11 }, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 34, 35 }, { 20, 23 }, { 21, 24 }, { 22, 25 }, arrayOfInt6, arrayOfInt7, { 28, 31 } };
+    int[] arrayOfInt1 = { 14, 15 };
+    int[] arrayOfInt2 = { 16, 17 };
+    int[] arrayOfInt3 = { 2, 5 };
+    int[] arrayOfInt4 = { 3, 6 };
+    int[] arrayOfInt5 = { 4, 7 };
+    int[] arrayOfInt6 = { 8, 11 };
+    int[] arrayOfInt7 = { 9, 12 };
+    int[] arrayOfInt8 = { 10, 13 };
+    int[] arrayOfInt9 = { 32, 33 };
+    int[] arrayOfInt10 = { 34, 35 };
+    int[] arrayOfInt11 = { 22, 25 };
+    int[] arrayOfInt12 = { 26, 29 };
+    int[] arrayOfInt13 = { 28, 31 };
+    mirrorMap = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, arrayOfInt10, { 20, 23 }, { 21, 24 }, arrayOfInt11, arrayOfInt12, { 27, 30 }, arrayOfInt13 };
   }
   
   public static float[] convertPointsOld(float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -127,7 +133,7 @@ public class PoseDataConvert
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.utils.PoseDataConvert
  * JD-Core Version:    0.7.0.1
  */

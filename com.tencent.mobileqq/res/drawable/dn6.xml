@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval" android:useLevel="false"
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ff00cafc" />
-    <size android:height="6.0dip" android:width="6.0dip" />
-</shape>
+    <item android:duration="100" android:drawable="@drawable/gt1" />
+    <item android:duration="100" android:drawable="@drawable/gt3" />
+    <item android:duration="100" android:drawable="@drawable/gt4" />
+    <item android:duration="100" android:drawable="@drawable/gt6" />
+    <item android:duration="100" android:drawable="@drawable/gt7" />
+    <item android:duration="100" android:drawable="@drawable/gt8" />
+    <item android:duration="100" android:drawable="@drawable/gt9" />
+    <item android:duration="100" android:drawable="@drawable/gt_" />
+    <item android:duration="100" android:drawable="@drawable/gta" />
+    <item android:duration="100" android:drawable="@drawable/gtb" />
+    <item android:duration="100" android:drawable="@drawable/gtc" />
+    <item android:duration="100" android:drawable="@drawable/gtd" />
+    <item android:duration="100" android:drawable="@drawable/gte" />
+    <item android:duration="100" android:drawable="@drawable/gtf" />
+    <item android:duration="100" android:drawable="@drawable/gtg" />
+</animation-list>

@@ -11,10 +11,10 @@ public final class AcsGetMsgRsp
   public String busi_name = "";
   public String content = "";
   public String err_str = "";
-  public long notice_time;
-  public int ret_code;
+  public long notice_time = 0L;
+  public int ret_code = 0;
   public String sub_content = "";
-  public int type;
+  public int type = 0;
   
   public AcsGetMsgRsp() {}
   

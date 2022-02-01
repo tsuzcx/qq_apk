@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ampv;
+import com.tencent.mobileqq.apollo.IApolloRenderView;
 
 class SpriteUIHandler$SpriteVisibleRunnable$1
   implements Runnable
 {
-  SpriteUIHandler$SpriteVisibleRunnable$1(SpriteUIHandler.SpriteVisibleRunnable paramSpriteVisibleRunnable, ampv paramampv) {}
+  SpriteUIHandler$SpriteVisibleRunnable$1(SpriteUIHandler.SpriteVisibleRunnable paramSpriteVisibleRunnable, IApolloRenderView paramIApolloRenderView) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ class SpriteUIHandler$SpriteVisibleRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.SpriteVisibleRunnable.1
  * JD-Core Version:    0.7.0.1
  */

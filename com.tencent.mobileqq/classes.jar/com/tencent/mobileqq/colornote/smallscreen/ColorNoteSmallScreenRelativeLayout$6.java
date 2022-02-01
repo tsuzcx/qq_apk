@@ -2,7 +2,6 @@ package com.tencent.mobileqq.colornote.smallscreen;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import aqrd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
@@ -10,7 +9,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.InputStream;
 
-public class ColorNoteSmallScreenRelativeLayout$6
+class ColorNoteSmallScreenRelativeLayout$6
   implements Runnable
 {
   ColorNoteSmallScreenRelativeLayout$6(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, String paramString1, Context paramContext, String paramString2, boolean paramBoolean) {}
@@ -20,7 +19,7 @@ public class ColorNoteSmallScreenRelativeLayout$6
     try
     {
       InputStream localInputStream = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getAssets().open(this.jdField_a_of_type_JavaLangString);
-      ColorNoteSmallScreenRelativeLayout.a(this.this$0, LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidContentContext, localInputStream, new aqrd(this)));
+      ColorNoteSmallScreenRelativeLayout.a(this.this$0, LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidContentContext, localInputStream, new ColorNoteSmallScreenRelativeLayout.6.1(this)));
       return;
     }
     catch (Throwable localThrowable)

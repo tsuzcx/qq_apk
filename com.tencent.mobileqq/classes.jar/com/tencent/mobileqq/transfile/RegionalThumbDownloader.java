@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import akju;
-import akkp;
 import android.app.Application;
 import android.graphics.Bitmap;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.ProtocolDownloader.Adapter;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.NewRegionalThumbDecoder;
+import com.tencent.mobileqq.activity.photo.RegionalThumbDecoder;
 import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -66,7 +66,7 @@ public class RegionalThumbDownloader
       }
     }
     label66:
-    for (paramFile = new akju();; paramFile = new akkp())
+    for (paramFile = new NewRegionalThumbDecoder();; paramFile = new RegionalThumbDecoder())
     {
       paramURLDrawableHandler = paramFile.getBitmap(paramDownloadParams.url);
       paramFile = paramURLDrawableHandler;

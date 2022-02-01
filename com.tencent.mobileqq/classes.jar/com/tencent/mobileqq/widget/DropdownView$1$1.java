@@ -2,24 +2,22 @@ package com.tencent.mobileqq.widget;
 
 import android.view.View;
 import android.widget.ImageView;
-import bioj;
-import biok;
 
-public class DropdownView$1$1
+class DropdownView$1$1
   implements Runnable
 {
-  public DropdownView$1$1(bioj parambioj, View paramView) {}
+  DropdownView$1$1(DropdownView.1 param1, View paramView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bioj.a.jdField_a_of_type_Biok.showDropDown();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Bioj.a.b);
-    this.jdField_a_of_type_Bioj.a.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView$1.a.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView$AutoCompleteView.showDropDown();
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView$1.a.b);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView$1.a.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DropdownView.1.1
  * JD-Core Version:    0.7.0.1
  */

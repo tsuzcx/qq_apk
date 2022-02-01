@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class cell_frdlike_container
   extends JceStruct
 {
-  public int blank_actiontype;
+  public int blank_actiontype = 0;
   public String right_desc = "";
-  public int right_desc_actiontype;
+  public int right_desc_actiontype = 0;
   
   public cell_frdlike_container() {}
   

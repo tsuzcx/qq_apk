@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class RespQuitDiscuss
   extends JceStruct
 {
-  public long DiscussUin;
+  public long DiscussUin = 0L;
   
   public RespQuitDiscuss() {}
   

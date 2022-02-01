@@ -11,9 +11,9 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.c.k;
-import com.tencent.mobileqq.msf.core.c.k.c;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.c.j.c;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -177,7 +177,7 @@ public class a
     if ((MsfCore.sCore != null) && (MsfCore.sCore.quicksender != null))
     {
       com.tencent.mobileqq.a.a.a.a().a(n());
-      MsfCore.sCore.quicksender.c(true);
+      MsfCore.sCore.quicksender.b(true);
     }
   }
   
@@ -197,7 +197,7 @@ public class a
       if ((MsfCore.sCore != null) && (MsfCore.sCore.quicksender != null))
       {
         com.tencent.mobileqq.a.a.a.a().d();
-        MsfCore.sCore.quicksender.g();
+        MsfCore.sCore.quicksender.h();
       }
       return;
       QLog.d("StandbyModeManager", 1, "stop try start standby by lockScreenMsg ON when screenoff");
@@ -398,7 +398,7 @@ public class a
       paramContext = paramIntent.getAction();
       QLog.d("StandbyModeManager", 1, "onReceive action: " + paramContext);
       if ((this.i.getStatReporter() != null) && (this.i.statReporter.Y == null)) {
-        this.i.statReporter.Y = new k.c();
+        this.i.statReporter.Y = new j.c();
       }
       if ("android.intent.action.SCREEN_ON".equals(paramContext))
       {

@@ -11,8 +11,8 @@ public final class SvcResponseIpwdStat
 {
   static RespondHeader cache_stRespondHeader;
   static RespondQueryIPwdStat cache_stRespondQueryIPwdStat;
-  public RespondHeader stRespondHeader;
-  public RespondQueryIPwdStat stRespondQueryIPwdStat;
+  public RespondHeader stRespondHeader = null;
+  public RespondQueryIPwdStat stRespondQueryIPwdStat = null;
   
   public SvcResponseIpwdStat() {}
   

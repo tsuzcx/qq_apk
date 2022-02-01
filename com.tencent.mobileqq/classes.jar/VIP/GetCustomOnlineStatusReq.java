@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GetCustomOnlineStatusReq
   extends JceStruct
 {
-  public int iModelNum;
-  public long lUin;
+  public int iModelNum = 0;
+  public long lUin = 0L;
   public String sIMei = "";
   
   public GetCustomOnlineStatusReq() {}

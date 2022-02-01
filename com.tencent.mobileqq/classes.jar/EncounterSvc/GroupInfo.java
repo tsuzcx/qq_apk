@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupInfo
   extends JceStruct
 {
-  public byte cGroupId;
+  public byte cGroupId = 0;
   public String strGroupName = "";
   
   public GroupInfo() {}

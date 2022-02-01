@@ -1,23 +1,24 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
-import com.tencent.youtu.sdkkitframework.common.CommonUtils;
+import com.tencent.youtu.sdkkitframework.common.YtLogger;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
 import java.util.HashMap;
 
 class NetLivenessReqResultState$9
-  extends HashMap<String, Object>
+  implements YtSDKKitFramework.IYtSDKKitNetResponseParser
 {
-  NetLivenessReqResultState$9(NetLivenessReqResultState paramNetLivenessReqResultState, Exception paramException)
+  NetLivenessReqResultState$9(NetLivenessReqResultState paramNetLivenessReqResultState) {}
+  
+  public void onNetworkResponseEvent(HashMap<String, String> paramHashMap, Exception paramException)
   {
-    put("ui_action", "process_finished");
-    put("ui_tips", "rst_failed");
-    put("process_action", "failed");
-    put("error_code", Integer.valueOf(2097153));
-    put("message", CommonUtils.makeMessageJson(2097153, "msg_net_error", this.val$e.getLocalizedMessage()));
+    YtLogger.i(NetLivenessReqResultState.access$000(), "handle actreflect response");
+    NetLivenessReqResultState.access$100(this.this$0, paramHashMap, paramException);
+    NetLivenessReqResultState.access$200(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.NetLivenessReqResultState.9
  * JD-Core Version:    0.7.0.1
  */

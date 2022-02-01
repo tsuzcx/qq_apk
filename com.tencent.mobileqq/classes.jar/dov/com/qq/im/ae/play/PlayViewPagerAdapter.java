@@ -5,11 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import bnka;
-import bnke;
-import bnqc;
-import bnqq;
-import bnrh;
+import dov.com.qq.im.ae.data.AEMaterialCategory;
+import dov.com.qq.im.ae.data.AEMaterialMetaData;
+import dov.com.qq.im.ae.part.VideoStoryCapturePartManager;
+import dov.com.qq.im.ae.report.AEBaseReportParam;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,27 +19,27 @@ public class PlayViewPagerAdapter
   public static final String DEFAULT_TAB_ID = "-1";
   private AEPlayShowPageView currentPageView;
   private int lastPos = -1;
-  private List<bnka> mCategoryList;
+  private List<AEMaterialCategory> mCategoryList;
   private Context mContext;
-  private bnqc mPartManager;
+  private VideoStoryCapturePartManager mPartManager;
   
-  public PlayViewPagerAdapter(@NonNull Context paramContext, @NonNull bnqc parambnqc, @NonNull List<bnka> paramList)
+  public PlayViewPagerAdapter(@NonNull Context paramContext, @NonNull VideoStoryCapturePartManager paramVideoStoryCapturePartManager, @NonNull List<AEMaterialCategory> paramList)
   {
     this.mContext = paramContext;
-    this.mPartManager = parambnqc;
+    this.mPartManager = paramVideoStoryCapturePartManager;
     this.mCategoryList = paramList;
   }
   
   private int getLayoutType(int paramInt)
   {
-    bnka localbnka = (bnka)this.mCategoryList.get(paramInt);
-    if (localbnka == null) {
+    AEMaterialCategory localAEMaterialCategory = (AEMaterialCategory)this.mCategoryList.get(paramInt);
+    if (localAEMaterialCategory == null) {
       return 2;
     }
-    return localbnka.b;
+    return localAEMaterialCategory.b;
   }
   
-  private List<bnke> getMaterialList(int paramInt)
+  private List<AEMaterialMetaData> getMaterialList(int paramInt)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -47,19 +47,19 @@ public class PlayViewPagerAdapter
     {
       localObject1 = localObject2;
       if (this.mCategoryList.size() > paramInt) {
-        localObject1 = (bnka)this.mCategoryList.get(paramInt);
+        localObject1 = (AEMaterialCategory)this.mCategoryList.get(paramInt);
       }
     }
-    if ((localObject1 == null) || (((bnka)localObject1).jdField_a_of_type_JavaUtilList == null)) {
+    if ((localObject1 == null) || (((AEMaterialCategory)localObject1).jdField_a_of_type_JavaUtilList == null)) {
       return new LinkedList();
     }
-    return ((bnka)localObject1).jdField_a_of_type_JavaUtilList;
+    return ((AEMaterialCategory)localObject1).jdField_a_of_type_JavaUtilList;
   }
   
   private String getMaterialTabId(int paramInt)
   {
     if ((this.mCategoryList != null) && (this.mCategoryList.size() > paramInt)) {
-      return ((bnka)this.mCategoryList.get(paramInt)).jdField_a_of_type_JavaLangString;
+      return ((AEMaterialCategory)this.mCategoryList.get(paramInt)).jdField_a_of_type_JavaLangString;
     }
     return "-1";
   }
@@ -69,7 +69,7 @@ public class PlayViewPagerAdapter
     if ((paramObject instanceof AEPlayShowPageView)) {
       ((AEPlayShowPageView)paramObject).onDestroy();
     }
-    bnrh.a("AEPlayShowPart", "page destroy.......");
+    AEQLog.a("AEPlayShowPart", "page destroy.......");
     paramViewGroup.removeView((View)paramObject);
   }
   
@@ -99,7 +99,7 @@ public class PlayViewPagerAdapter
     return getMaterialTabId(this.lastPos);
   }
   
-  public List<bnka> getmCategoryList()
+  public List<AEMaterialCategory> getmCategoryList()
   {
     return this.mCategoryList;
   }
@@ -116,7 +116,7 @@ public class PlayViewPagerAdapter
     return paramView == paramObject;
   }
   
-  public void setCategoryList(List<bnka> paramList)
+  public void setCategoryList(List<AEMaterialCategory> paramList)
   {
     this.mCategoryList = paramList;
   }
@@ -132,9 +132,9 @@ public class PlayViewPagerAdapter
       this.lastPos = paramInt;
       if ((this.mCategoryList != null) && (this.mCategoryList.size() > paramInt))
       {
-        paramViewGroup = (bnka)this.mCategoryList.get(paramInt);
+        paramViewGroup = (AEMaterialCategory)this.mCategoryList.get(paramInt);
         if (paramViewGroup != null) {
-          bnqq.a().g(paramViewGroup.jdField_a_of_type_JavaLangString + "");
+          AEBaseReportParam.a().j(paramViewGroup.jdField_a_of_type_JavaLangString + "");
         }
       }
       if ((paramObject instanceof AEPlayShowPageView))
@@ -147,7 +147,7 @@ public class PlayViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.PlayViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

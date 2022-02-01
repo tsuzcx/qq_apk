@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.ark.API;
 
-import apqy;
-import aprj;
-import aprk;
-
-public class ArkAppDeviceModule$ScanCodeMethod$1$1
+class ArkAppDeviceModule$ScanCodeMethod$1$1
   implements Runnable
 {
-  public ArkAppDeviceModule$ScanCodeMethod$1$1(aprk paramaprk, String paramString1, String paramString2) {}
+  ArkAppDeviceModule$ScanCodeMethod$1$1(ArkAppDeviceModule.ScanCodeMethod.1 param1, String paramString1, String paramString2) {}
   
   public void run()
   {
-    apqy.a(this.jdField_a_of_type_Aprk.jdField_a_of_type_Aprj.a, this.jdField_a_of_type_Aprk.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+    ArkAppDeviceModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDeviceModule$ScanCodeMethod$1.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDeviceModule$ScanCodeMethod.a, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDeviceModule$ScanCodeMethod$1.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

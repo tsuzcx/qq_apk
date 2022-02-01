@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import admh;
-import afzn;
-import afzr;
-import agab;
 import android.animation.Animator.AnimatorListener;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -24,26 +20,26 @@ import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anvx;
-import aqhi;
-import aqjb;
-import asdi;
-import awyr;
-import bhdj;
-import bhpl;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.animation.PropertyValuesHolder;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseTroopChatPie;
+import com.tencent.mobileqq.activity.aio.core.DiscussChatPie;
+import com.tencent.mobileqq.activity.aio.core.FriendChatPie;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.bubble.BubbleInfo;
 import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.bubble.VipBubbleDrawable;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -55,19 +51,26 @@ import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emosm.AIOEmoticonUIHelper;
+import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasReportUtils;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.ListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import cooperation.qzone.mobilereport.MobileReportManager;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -96,12 +99,12 @@ public class StickerGestureDetector
   float dismissFirstY;
   float dismissSecondX;
   float dismissSecondY;
-  public boolean enteredAIO;
+  public boolean enteredAIO = false;
   public View expandStickerView;
   Rect firstOrLastRect;
   int heightPaddingOffset;
   boolean isFirstUpInvoked = false;
-  public boolean isInTowFingerMode;
+  public boolean isInTowFingerMode = false;
   float lastDownX;
   float lastDownY;
   View lastIntersectChatLayout;
@@ -141,10 +144,10 @@ public class StickerGestureDetector
     this.mBaseChatPie = paramBaseChatPie;
     if (this.mBaseChatPie != null)
     {
-      if ((paramBaseChatPie instanceof agab))
+      if ((paramBaseChatPie instanceof FriendChatPie))
       {
         this.currentChatPieType = 1;
-        this.mRootView = ((TopGestureLayout)this.mBaseChatPie.mAIORootView);
+        this.mRootView = ((TopGestureLayout)this.mBaseChatPie.c);
       }
     }
     else
@@ -154,14 +157,14 @@ public class StickerGestureDetector
       this.density = paramContext.getResources().getDisplayMetrics().density;
       this.widthPaddingOffset = ((int)(this.density * 5.0F));
       this.heightPaddingOffset = ((int)(this.density * 5.0F));
-      this.titleBarHeight = paramContext.getResources().getDimensionPixelOffset(2131299080);
+      this.titleBarHeight = paramContext.getResources().getDimensionPixelOffset(2131299166);
       paramSimpleOnGestureListener = paramContext.getResources().getDisplayMetrics();
       this.screenWidth = paramSimpleOnGestureListener.widthPixels;
       if (ImmersiveUtils.isSupporImmersive() != 1) {
-        break label435;
+        break label445;
       }
     }
-    label435:
+    label445:
     for (int i = 0;; i = ImmersiveUtils.getStatusBarHeight(this.mContext))
     {
       this.lowVersionOffset = i;
@@ -177,12 +180,12 @@ public class StickerGestureDetector
       this.expandStickerView.setLayoutParams(paramContext);
       this.firstOrLastRect = new Rect();
       return;
-      if ((paramBaseChatPie instanceof afzn))
+      if ((paramBaseChatPie instanceof BaseTroopChatPie))
       {
         this.currentChatPieType = 2;
         break;
       }
-      if (!(paramBaseChatPie instanceof afzr)) {
+      if (!(paramBaseChatPie instanceof DiscussChatPie)) {
         break;
       }
       this.currentChatPieType = 3;
@@ -196,7 +199,7 @@ public class StickerGestureDetector
     {
       this.enteredAIO = true;
       EmojiStickerManager.jdField_a_of_type_Boolean = true;
-      this.mBaseChatPie.stickerEditMode(true);
+      this.mBaseChatPie.o(true);
       this.mBottom = (this.mTop - this.lowVersionOffset + paramListView.getMeasuredHeight() - this.titleBarHeight);
       if (QLog.isColorLevel()) {
         QLog.i("StickerGestureDetector", 2, "line 3 mBottom = " + this.mBottom);
@@ -211,8 +214,8 @@ public class StickerGestureDetector
       return;
       this.mRootView.post(new StickerGestureDetector.3(this));
       EmojiStickerManager.jdField_a_of_type_Boolean = false;
-      this.mBaseChatPie.stickerEditMode(false);
-      this.mBaseChatPie.removeStickerExpandView();
+      this.mBaseChatPie.o(false);
+      this.mBaseChatPie.aS();
       changeBubbleBg(this.lastIntersectView, false);
       if ((this.lastIntersectChatLayout != null) && ((this.lastIntersectChatLayout instanceof BaseChatItemLayout))) {
         ((BaseChatItemLayout)this.lastIntersectChatLayout).setStickerPressStatus(false);
@@ -240,8 +243,8 @@ public class StickerGestureDetector
       {
         int i = Integer.parseInt(paramSmallEmoticonInfo.emoticon.eId);
         int j = Integer.parseInt(paramSmallEmoticonInfo.emoticon.epId);
-        paramSmallEmoticonInfo = asdi.a(j, i);
-        EmoticonPackage localEmoticonPackage = ((awyr)this.mBaseChatPie.app.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(String.valueOf(j));
+        paramSmallEmoticonInfo = EmosmUtils.a(j, i);
+        EmoticonPackage localEmoticonPackage = ((EmoticonManager)this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(String.valueOf(j));
         char[] arrayOfChar = new char[5];
         arrayOfChar[0] = '\024';
         arrayOfChar[1] = paramSmallEmoticonInfo[3];
@@ -257,7 +260,7 @@ public class StickerGestureDetector
       }
       catch (NumberFormatException paramSmallEmoticonInfo)
       {
-        bhpl.a("emotionType", "emotionActionSend", "4", "", "", "", "", "", "", "");
+        VasReportUtils.a("emotionType", "emotionActionSend", "4", "", "", "", "", "", "", "");
         QLog.e("StickerGestureDetector", 1, "fail to send small_emotion. id is not Int.");
         return "";
       }
@@ -270,7 +273,7 @@ public class StickerGestureDetector
     if (QLog.isColorLevel()) {
       QLog.i("StickerGestureDetector", 2, "showOpenVip invoked");
     }
-    bhdj.a(this.mContext, 230).setTitle(anvx.a(2131713769)).setMessage(anvx.a(2131713762)).setPositiveButton(anvx.a(2131713768), new StickerGestureDetector.5(this)).setNegativeButton("取消", new StickerGestureDetector.4(this)).show();
+    DialogUtil.a(this.mContext, 230).setTitle(HardCodeUtil.a(2131714265)).setMessage(HardCodeUtil.a(2131714258)).setPositiveButton(HardCodeUtil.a(2131714264), new StickerGestureDetector.5(this)).setNegativeButton("取消", new StickerGestureDetector.4(this)).show();
     int i;
     if (this.mBaseChatPie != null)
     {
@@ -281,7 +284,7 @@ public class StickerGestureDetector
     }
     for (;;)
     {
-      VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "SVIPTip", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "SVIPTip", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       return;
       label147:
       if (EmojiStickerManager.a().jdField_a_of_type_Int == 1) {
@@ -306,12 +309,12 @@ public class StickerGestureDetector
     if (f2 * f1 < 0.0F) {
       if (f2 < 0.0F)
       {
-        i = EmojiStickerManager.g;
+        i = EmojiStickerManager.jdField_g_of_type_Int;
         this.currentDismissMode = i;
-        if ((this.mBaseChatPie == null) || (this.mBaseChatPie.listView == null)) {
+        if ((this.mBaseChatPie == null) || (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null)) {
           break label420;
         }
-        paramMotionEvent = this.mBaseChatPie.listView;
+        paramMotionEvent = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
         i = paramMotionEvent.getChildCount() - 1;
         if (i < 0) {
           break label420;
@@ -321,7 +324,7 @@ public class StickerGestureDetector
           break label246;
         }
         localObject1 = (BaseChatItemLayout)localObject1;
-        if (this.currentDismissMode != EmojiStickerManager.g) {
+        if (this.currentDismissMode != EmojiStickerManager.jdField_g_of_type_Int) {
           break label205;
         }
         f2 = Math.min(0.0F, f2);
@@ -369,7 +372,7 @@ public class StickerGestureDetector
       if ((localObject2 instanceof StickerGrayTipLayout))
       {
         localObject2 = (StickerGrayTipLayout)localObject2;
-        if (this.currentDismissMode == EmojiStickerManager.g)
+        if (this.currentDismissMode == EmojiStickerManager.jdField_g_of_type_Int)
         {
           f2 = Math.min(0.0F, f2);
           f1 = Math.max(0.0F, f1);
@@ -473,23 +476,23 @@ public class StickerGestureDetector
   
   void changeBubbleBg(View paramView, boolean paramBoolean)
   {
-    aqhi localaqhi;
+    BubbleInfo localBubbleInfo;
     boolean bool;
     if (paramView != null)
     {
-      localaqhi = (aqhi)paramView.getTag(2131364096);
-      localObject = (ChatMessage)paramView.getTag(2131364568);
+      localBubbleInfo = (BubbleInfo)paramView.getTag(2131364199);
+      localObject = (ChatMessage)paramView.getTag(2131364681);
       bool = false;
       if (localObject != null) {
         bool = ((ChatMessage)localObject).isSend();
       }
-      if (localaqhi != null)
+      if (localBubbleInfo != null)
       {
         localObject = paramView.getBackground();
-        if ((localObject == null) || (!(localObject instanceof aqjb))) {
+        if ((localObject == null) || (!(localObject instanceof VipBubbleDrawable))) {
           break label77;
         }
-        ((aqjb)localObject).b(paramBoolean);
+        ((VipBubbleDrawable)localObject).b(paramBoolean);
       }
     }
     label77:
@@ -500,19 +503,19 @@ public class StickerGestureDetector
     if (!paramBoolean)
     {
       if (bool) {}
-      for (i = 2130850010;; i = 2130849834)
+      for (i = 2130850408;; i = 2130850232)
       {
         localObject = ((Resources)localObject).getDrawable(i);
         label112:
         if (localObject == null) {
           break;
         }
-        localaqhi.a(paramView, (Drawable)localObject);
+        localBubbleInfo.a(paramView, (Drawable)localObject);
         return;
       }
     }
     if (bool) {}
-    for (int i = 2130850011;; i = 2130849835)
+    for (int i = 2130850409;; i = 2130850233)
     {
       localObject = ((Resources)localObject).getDrawable(i);
       break label112;
@@ -522,9 +525,9 @@ public class StickerGestureDetector
   
   View findBiggestIntersectAreaView(int paramInt1, int paramInt2, Rect paramRect, ViewGroup paramViewGroup)
   {
-    if ((this.mBaseChatPie != null) && (this.mBaseChatPie.listView != null))
+    if ((this.mBaseChatPie != null) && (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null))
     {
-      localObject = this.mBaseChatPie.listView;
+      localObject = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
       if (!this.enteredAIO) {
         if (paramInt1 <= this.mTop - this.lowVersionOffset + ((ChatXListView)localObject).getMeasuredHeight() - this.titleBarHeight)
         {
@@ -592,9 +595,9 @@ public class StickerGestureDetector
   
   View findBiggestIntersectAreaView(int paramInt, Rect paramRect, ViewGroup paramViewGroup)
   {
-    if ((this.mBaseChatPie != null) && (this.mBaseChatPie.listView != null))
+    if ((this.mBaseChatPie != null) && (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null))
     {
-      localObject = this.mBaseChatPie.listView;
+      localObject = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
       if (!this.enteredAIO)
       {
         i = this.mTop;
@@ -664,11 +667,11 @@ public class StickerGestureDetector
       while (i >= 0)
       {
         Object localObject = this.mRootView.getChildAt(i);
-        if (((View)localObject).getId() == 2131374197)
+        if (((View)localObject).getId() == 2131374517)
         {
           this.popupEmo = ((EmojiStickerManager.StickerFrameLayout)localObject);
-          this.confirm = ((ImageView)this.popupEmo.findViewById(2131362367));
-          this.cancel = ((ImageView)this.popupEmo.findViewById(2131362366));
+          this.confirm = ((ImageView)this.popupEmo.findViewById(2131362396));
+          this.cancel = ((ImageView)this.popupEmo.findViewById(2131362395));
           localObject = this.popupEmo.getTag();
           double d;
           if (((localObject instanceof PicEmoticonInfo)) || ((localObject instanceof Emoticon)) || ((localObject instanceof FavoriteEmoticonInfo)))
@@ -924,7 +927,7 @@ public class StickerGestureDetector
     if (QLog.isColorLevel()) {
       QLog.i("StickerGestureDetector", 2, "makeToast, content = " + paramString);
     }
-    QQToast.a(this.mContext, paramString, 0).b(this.mContext.getResources().getDimensionPixelSize(2131299080));
+    QQToast.a(this.mContext, paramString, 0).b(this.mContext.getResources().getDimensionPixelSize(2131299166));
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -932,25 +935,25 @@ public class StickerGestureDetector
     Object localObject1;
     if (this.mBaseChatPie != null)
     {
-      localObject1 = this.mBaseChatPie.getEmoPanel();
+      localObject1 = AIOEmoticonUIHelper.a(this.mBaseChatPie);
       if ((localObject1 != null) && (((EmoticonMainPanel)localObject1).showStickerGuide) && (this.mRootView != null))
       {
-        localObject1 = this.mRootView.findViewById(2131374232);
+        localObject1 = this.mRootView.findViewById(2131374552);
         if (localObject1 != null) {
           return ((View)localObject1).onTouchEvent(paramMotionEvent);
         }
       }
     }
-    if ((EmojiStickerManager.c) && (this.mRootView != null))
+    if ((EmojiStickerManager.jdField_d_of_type_Boolean) && (this.mRootView != null))
     {
-      localObject1 = this.mRootView.findViewById(2131374231);
+      localObject1 = this.mRootView.findViewById(2131374551);
       if (localObject1 != null) {
         return ((View)localObject1).onTouchEvent(paramMotionEvent);
       }
     }
-    if ((EmojiStickerManager.jdField_d_of_type_Boolean) && (this.mRootView != null))
+    if ((EmojiStickerManager.jdField_e_of_type_Boolean) && (this.mRootView != null))
     {
-      localObject1 = this.mRootView.findViewById(2131374234);
+      localObject1 = this.mRootView.findViewById(2131374554);
       if (localObject1 != null) {
         return ((View)localObject1).onTouchEvent(paramMotionEvent);
       }
@@ -986,9 +989,9 @@ public class StickerGestureDetector
     int i8;
     int i5;
     int i4;
-    label2238:
-    label2250:
-    label2275:
+    label2234:
+    label2246:
+    label2271:
     ChatXListView localChatXListView;
     int i10;
     int i11;
@@ -1032,9 +1035,9 @@ public class StickerGestureDetector
               }
               if ((this.popupEmo != null) && ((isTouchedAboveEmotion(paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) || (!this.isFirstUpInvoked)))
               {
-                if ((this.mBaseChatPie != null) && (this.mBaseChatPie.listView != null))
+                if ((this.mBaseChatPie != null) && (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null))
                 {
-                  localObject1 = this.mBaseChatPie.listView;
+                  localObject1 = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
                   if (f5 > this.mTop + ((ChatXListView)localObject1).getMeasuredHeight() - this.lowVersionOffset - this.titleBarHeight) {
                     break label1258;
                   }
@@ -1093,9 +1096,9 @@ public class StickerGestureDetector
                   if (QLog.isColorLevel()) {
                     QLog.i("StickerGestureDetector", 2, "sticker move NEW, left = " + f4 + " top = " + f2 + " right = " + f3 + " bottom = " + f5 + " distanceX = " + f7 + " distanceY = " + f8);
                   }
-                  if ((this.mRootView != null) && (this.mBaseChatPie.listView != null))
+                  if ((this.mRootView != null) && (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null))
                   {
-                    localObject3 = this.mBaseChatPie.listView;
+                    localObject3 = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
                     i = (int)((1.0D - this.scale) * this.stickerWidth / 2.0D);
                     i = (int)((1.0D - this.scale) * this.stickerHeight / 2.0D);
                     localObject2 = findBiggestIntersectAreaView((int)paramMotionEvent.getRawY(), this.childRect, (ViewGroup)localObject3);
@@ -1117,10 +1120,10 @@ public class StickerGestureDetector
                   }
                   this.lastX = paramMotionEvent.getRawX();
                   this.lastY = paramMotionEvent.getRawY();
-                  if ((this.mBaseChatPie == null) || (this.mBaseChatPie.listView == null)) {
+                  if ((this.mBaseChatPie == null) || (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null)) {
                     break;
                   }
-                  paramMotionEvent = this.mBaseChatPie.listView;
+                  paramMotionEvent = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
                   if (Math.abs(f2 - this.mTop + this.lowVersionOffset) >= 15.0F) {
                     break label1395;
                   }
@@ -1160,11 +1163,11 @@ public class StickerGestureDetector
           if (QLog.isColorLevel()) {
             QLog.i("StickerGestureDetector", 2, "event = " + paramMotionEvent.getAction());
           }
-          if ((!this.isFirstUpInvoked) && (this.enteredAIO) && (this.mBaseChatPie != null) && (this.mBaseChatPie.listView != null))
+          if ((!this.isFirstUpInvoked) && (this.enteredAIO) && (this.mBaseChatPie != null) && (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null))
           {
-            localObject1 = this.mBaseChatPie.listView;
+            localObject1 = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
             EmojiStickerManager.jdField_a_of_type_Boolean = true;
-            this.mBaseChatPie.stickerEditMode(true);
+            this.mBaseChatPie.o(true);
             stickerButtonAnimation(true);
             i = this.mTop;
             j = this.lowVersionOffset;
@@ -1176,22 +1179,22 @@ public class StickerGestureDetector
             if ((localObject1 instanceof PicEmoticonInfo))
             {
               this.stickerReportType = 5;
-              VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "DragToAIO", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", String.valueOf(this.stickerType), "", "", "", 0, 0, 0, 0);
+              VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "DragToAIO", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", String.valueOf(this.stickerType), "", "", "", 0, 0, 0, 0);
             }
           }
           else
           {
             this.isFirstUpInvoked = true;
-            if ((!this.enteredAIO) && (this.mRootView != null) && (this.mBaseChatPie != null) && (this.mBaseChatPie.listView != null))
+            if ((!this.enteredAIO) && (this.mRootView != null) && (this.mBaseChatPie != null) && (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null))
             {
-              localObject1 = this.mBaseChatPie.listView;
-              localObject2 = this.mBaseChatPie.getEmoPanel();
+              localObject1 = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+              localObject2 = AIOEmoticonUIHelper.a(this.mBaseChatPie);
               if (localObject2 == null) {
-                break label2250;
+                break label2246;
               }
               ((EmoticonMainPanel)localObject2).getGlobalVisibleRect(this.panelRect);
               if ((this.panelRect.top != 0) || (this.panelRect.bottom != 0)) {
-                break label2238;
+                break label2234;
               }
               i = this.mTop - this.lowVersionOffset + ((ChatXListView)localObject1).getMeasuredHeight() - this.titleBarHeight;
             }
@@ -1199,8 +1202,8 @@ public class StickerGestureDetector
           for (;;)
           {
             judgeIfEnteredAIO(f3, f2, f4, f5, paramMotionEvent, (ListView)localObject1, i);
-            if ((this.mBaseChatPie != null) && (this.mBaseChatPie.listView != null)) {
-              setSmoothScrollMode(this.mBaseChatPie.listView, this.SCROLL_STOP);
+            if ((this.mBaseChatPie != null) && (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null)) {
+              setSmoothScrollMode(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.SCROLL_STOP);
             }
             bool5 = false;
             bool1 = false;
@@ -1225,14 +1228,14 @@ public class StickerGestureDetector
               break;
             }
             if (!isTouchedAboveCancel(this.lastDownX, this.lastDownY, paramMotionEvent)) {
-              break label2275;
+              break label2271;
             }
             if (QLog.isColorLevel()) {
               QLog.i("StickerGestureDetector", 2, "isTouchedAboveCancel invoked");
             }
             EmojiStickerManager.jdField_a_of_type_Boolean = false;
-            this.mBaseChatPie.stickerEditMode(false);
-            this.mBaseChatPie.instantUpdate(false, false);
+            this.mBaseChatPie.o(false);
+            this.mBaseChatPie.c(false, false);
             this.enteredAIO = false;
             this.isFirstUpInvoked = false;
             this.mBottom = this.mRootView.getBottom();
@@ -1240,14 +1243,14 @@ public class StickerGestureDetector
               QLog.i("StickerGestureDetector", 2, "line 5 mBottom = " + this.mBottom);
             }
             playDismissAnimation(f3, f2);
-            i = EmoticonPanelLinearLayout.PANEL_TYPE_ROAM;
-            if ((this.popupEmo.getTag(2131374233) instanceof Integer)) {
-              i = ((Integer)this.popupEmo.getTag(2131374233)).intValue();
+            i = 4;
+            if ((this.popupEmo.getTag(2131374553) instanceof Integer)) {
+              i = ((Integer)this.popupEmo.getTag(2131374553)).intValue();
             }
-            if ((i == EmoticonPanelLinearLayout.PANEL_TYPE_ROAM) && (this.mBaseChatPie != null)) {
-              this.mBaseChatPie.clearInput();
+            if ((i == 4) && (this.mBaseChatPie != null)) {
+              this.mBaseChatPie.aQ();
             }
-            VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "CancelSend", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
+            VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "CancelSend", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
             return true;
             if ((localObject1 instanceof Emoticon))
             {
@@ -1287,23 +1290,24 @@ public class StickerGestureDetector
             if (QLog.isColorLevel()) {
               QLog.i("StickerGestureDetector", 2, "isTouchedAboveConfirm invoked");
             }
+            MobileReportManager.getInstance().reportAction("tie_emoji", "4", "platform898", "6", "3", 102, 1, System.currentTimeMillis());
             if (this.mRootView != null)
             {
-              i = EmoticonPanelLinearLayout.PANEL_TYPE_ROAM;
-              if ((this.popupEmo.getTag(2131374233) instanceof Integer)) {
-                i = ((Integer)this.popupEmo.getTag(2131374233)).intValue();
+              i = 4;
+              if ((this.popupEmo.getTag(2131374553) instanceof Integer)) {
+                i = ((Integer)this.popupEmo.getTag(2131374553)).intValue();
               }
-              if ((i == EmoticonPanelLinearLayout.PANEL_TYPE_FAV_EMOTION) && (!VipUtils.b(this.mBaseChatPie.app)))
+              if ((i == 3) && (!VipUtils.b(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
               {
                 showOpenVip();
                 return true;
               }
-              if ((i == EmoticonPanelLinearLayout.PANEL_TYPE_ROAM) && (this.mBaseChatPie != null)) {
-                this.mBaseChatPie.clearInput();
+              if ((i == 4) && (this.mBaseChatPie != null)) {
+                this.mBaseChatPie.aQ();
               }
-              if (this.mBaseChatPie.listView != null)
+              if (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null)
               {
-                localChatXListView = this.mBaseChatPie.listView;
+                localChatXListView = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
                 i10 = (int)((this.scale - 1.0D) * this.stickerWidth / 2.0D);
                 i11 = (int)((this.scale - 1.0D) * this.stickerHeight / 2.0D);
                 localObject1 = this.currentChooseLayout;
@@ -1312,18 +1316,18 @@ public class StickerGestureDetector
                   paramMotionEvent = findBiggestIntersectAreaView((int)((f2 + f5) / 2.0F), this.childRect, localChatXListView);
                 }
                 if (!(paramMotionEvent instanceof BaseChatItemLayout)) {
-                  break label6206;
+                  break label6225;
                 }
                 localBaseChatItemLayout = (BaseChatItemLayout)paramMotionEvent;
-                if ((!localBaseChatItemLayout.c()) || (!this.enteredAIO)) {
-                  break label6067;
+                if ((!localBaseChatItemLayout.g()) || (!this.enteredAIO)) {
+                  break label6086;
                 }
                 i8 = 0;
                 i9 = 0;
                 i3 = this.childRect.top;
                 i4 = this.childRect.bottom;
                 if (localBaseChatItemLayout.getTop() >= this.titleBarHeight) {
-                  break label7853;
+                  break label7873;
                 }
                 i3 = this.mTop - this.titleBarHeight + localBaseChatItemLayout.getTop();
               }
@@ -1332,10 +1336,11 @@ public class StickerGestureDetector
         }
       }
     }
-    label2716:
-    label3755:
-    label7084:
-    label7853:
+    label2733:
+    label3760:
+    label3764:
+    label4160:
+    label7873:
     for (;;)
     {
       if (localBaseChatItemLayout.getBottom() > localChatXListView.getMeasuredHeight()) {
@@ -1351,29 +1356,29 @@ public class StickerGestureDetector
         if ((paramMotionEvent instanceof PicEmoticonInfo))
         {
           localObject1 = (PicEmoticonInfo)paramMotionEvent;
-          localObject2 = null;
-          localObject4 = null;
           localObject3 = null;
+          localObject4 = null;
+          localObject2 = null;
           localFavoriteEmoticonInfo = null;
         }
         for (;;)
         {
-          label2637:
-          label2656:
+          label2654:
+          label2673:
           View localView;
-          if ((!EmojiStickerManager.f) && (FileUtils.getAvailableInnernalMemorySize() > 1.048576E+008F))
+          if ((!EmojiStickerManager.jdField_g_of_type_Boolean) && (FileUtils.a() > 1.048576E+008F))
           {
             i = 1;
             paramMotionEvent = null;
             if ((localObject1 == null) || (((PicEmoticonInfo)localObject1).emoticon == null)) {
-              break label3301;
+              break label3318;
             }
             if (i == 0) {
-              break label3284;
+              break label3301;
             }
             paramMotionEvent = ((PicEmoticonInfo)localObject1).getLoadingDrawable("fromAIO", true, false, null, (int)(this.popupEmo.getWidth() * this.scale), (int)(this.popupEmo.getHeight() * this.scale));
             if (paramMotionEvent == null) {
-              break label7793;
+              break label7813;
             }
             i5 = localBaseChatItemLayout.getChildCount() - 1;
             i7 = 0;
@@ -1387,29 +1392,29 @@ public class StickerGestureDetector
             i1 = i8;
             i2 = i7;
             j = i6;
-            label2769:
+            label2786:
             if (i5 < 0) {
-              break label7703;
+              break label7723;
             }
             localView = localBaseChatItemLayout.getChildAt(i5);
-            if ((localView == null) || (localView.getId() != 2131364522)) {
-              break label7660;
+            if ((localView == null) || (localView.getId() != 2131364634)) {
+              break label7680;
             }
             localObject5 = new Rect();
             localView.getGlobalVisibleRect((Rect)localObject5);
             bool4 = isInAllowedArea((int)(f3 + 0.5D) - i10 + this.widthPaddingOffset + (int)this.clicpXoffset, (int)(f2 + 0.5D) - i11, (int)(f4 + 0.5D) + i10 - this.widthPaddingOffset - (int)this.clicpXoffset, (int)(f5 + 0.5D) + i11, (Rect)localObject5);
             i2 = ((Rect)localObject5).left;
             i6 = i3 + localView.getTop();
-            localObject6 = (ChatMessage)localView.getTag(2131364568);
+            localObject6 = (ChatMessage)localView.getTag(2131364681);
             if ((bool4) || (localObject6 == null)) {
-              break label7657;
+              break label7677;
             }
             if (!((ChatMessage)localObject6).isSend()) {
-              break label3390;
+              break label3407;
             }
             j = ((Rect)localObject5).left + BaseChatItemLayout.k - this.popupEmo.getWidth() - i10 + this.widthPaddingOffset + (int)this.clicpXoffset;
             if (localBaseChatItemLayout.getParent() != null) {
-              break label3418;
+              break label3435;
             }
             QLog.e("StickerGestureDetector", 1, "itemView.getParent == null");
             i4 = 1;
@@ -1421,22 +1426,24 @@ public class StickerGestureDetector
           }
           for (;;)
           {
-            label3010:
+            label3027:
             if ((this.lastIntersectChatLayout != null) && ((this.lastIntersectChatLayout instanceof BaseChatItemLayout))) {
               ((BaseChatItemLayout)this.lastIntersectChatLayout).setStickerPressStatus(false);
             }
-            label3059:
-            label3703:
+            label3141:
+            label3181:
+            label3318:
+            label3708:
             ChatMessage localChatMessage;
             if (j != 0)
             {
-              makeToast(anvx.a(2131713759));
+              makeToast(HardCodeUtil.a(2131714255));
               i = 0;
               j = 0;
               if ((this.currentChooseLayout instanceof BaseChatItemLayout))
               {
                 if (i == 0) {
-                  break label6194;
+                  break label6213;
                 }
                 playCloseToMessageAnimation(i1);
                 if (this.lastIntersectView != null) {
@@ -1446,79 +1453,76 @@ public class StickerGestureDetector
                   ((BaseChatItemLayout)this.lastIntersectChatLayout).setStickerPressStatus(true);
                 }
               }
-              label3124:
               if (QLog.isColorLevel()) {
                 QLog.i("StickerGestureDetector", 2, "line 6 mBottom = " + this.mBottom);
               }
               localBaseChatItemLayout.requestLayout();
-              label3164:
               return true;
               if ((paramMotionEvent instanceof Emoticon))
               {
-                localObject3 = (Emoticon)paramMotionEvent;
-                localObject2 = null;
+                localObject2 = (Emoticon)paramMotionEvent;
+                localObject3 = null;
                 localObject4 = null;
                 localFavoriteEmoticonInfo = null;
                 localObject1 = null;
-                break label2637;
+                break label2654;
               }
               if ((paramMotionEvent instanceof SystemAndEmojiEmoticonInfo))
               {
                 localObject4 = (SystemAndEmojiEmoticonInfo)paramMotionEvent;
-                localObject2 = null;
                 localObject3 = null;
+                localObject2 = null;
                 localFavoriteEmoticonInfo = null;
                 localObject1 = null;
-                break label2637;
+                break label2654;
               }
               if ((paramMotionEvent instanceof SmallEmoticonInfo))
               {
-                localObject2 = (SmallEmoticonInfo)paramMotionEvent;
+                localObject3 = (SmallEmoticonInfo)paramMotionEvent;
                 localObject4 = null;
-                localObject3 = null;
+                localObject2 = null;
                 localFavoriteEmoticonInfo = null;
                 localObject1 = null;
-                break label2637;
+                break label2654;
               }
               if (!(paramMotionEvent instanceof FavoriteEmoticonInfo)) {
-                break label7832;
+                break label7852;
               }
               localFavoriteEmoticonInfo = (FavoriteEmoticonInfo)paramMotionEvent;
-              localObject2 = null;
-              localObject4 = null;
               localObject3 = null;
+              localObject4 = null;
+              localObject2 = null;
               localObject1 = null;
-              break label2637;
+              break label2654;
               i = 0;
-              break label2656;
-              label3284:
-              paramMotionEvent = ((PicEmoticonInfo)localObject1).getDrawable(this.mContext, this.density);
-              break label2716;
+              break label2673;
               label3301:
+              paramMotionEvent = ((PicEmoticonInfo)localObject1).getDrawable(this.mContext, this.density);
+              break label2733;
               if (localObject4 != null)
               {
                 paramMotionEvent = ((SystemAndEmojiEmoticonInfo)localObject4).getBigDrawable(this.mContext, this.density);
-                break label2716;
-              }
-              if (localObject3 != null)
-              {
-                paramMotionEvent = EmojiStickerManager.a().a(this.mContext, (Emoticon)localObject3);
-                break label2716;
+                break label2733;
               }
               if (localObject2 != null)
               {
-                paramMotionEvent = ((SmallEmoticonInfo)localObject2).getBigDrawable(this.mContext, this.density);
-                break label2716;
+                paramMotionEvent = EmojiStickerManager.a().a(this.mContext, (Emoticon)localObject2);
+                break label2733;
+              }
+              if (localObject3 != null)
+              {
+                paramMotionEvent = ((SmallEmoticonInfo)localObject3).getBigDrawable(this.mContext, this.density);
+                break label2733;
               }
               if (localFavoriteEmoticonInfo == null) {
-                break label2716;
+                break label2733;
               }
               paramMotionEvent = localFavoriteEmoticonInfo.getBigDrawable(this.mContext, this.density, 0, 0);
-              break label2716;
-              label3390:
+              break label2733;
+              label3407:
               j = ((Rect)localObject5).right - BaseChatItemLayout.k + i10 - this.widthPaddingOffset - (int)this.clicpXoffset;
-              break label2970;
-              label3418:
+              break label2987;
+              label3435:
               i1 = localChatXListView.getPositionForView(localBaseChatItemLayout);
               i7 = localChatXListView.getCount() - localChatXListView.getHeaderViewsCount() - localChatXListView.getFooterViewsCount();
               if (i7 - i1 - 1 <= 20)
@@ -1529,22 +1533,20 @@ public class StickerGestureDetector
                 }
                 localObject5 = localBaseChatItemLayout.jdField_a_of_type_ComTencentImageURLImageView;
                 localObject5 = localBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar;
-                localBaseChatItemLayout.a();
-                localBaseChatItemLayout.a();
                 i8 = 0;
                 if (localObject6 == null) {
-                  break label7778;
+                  break label7798;
                 }
                 bool2 = EmojiStickerManager.d((MessageRecord)localObject6);
                 if (((ChatMessage)localObject6).istroop != 0) {
-                  break label3718;
+                  break label3723;
                 }
                 if (((ChatMessage)localObject6).msgUid == 0L) {
-                  break label3712;
+                  break label3717;
                 }
                 m = 1;
                 if (android.text.TextUtils.isEmpty(((ChatMessage)localObject6).getExtInfoFromExtStr("message_is_sticker"))) {
-                  break label3740;
+                  break label3745;
                 }
                 k = 1;
               }
@@ -1565,21 +1567,21 @@ public class StickerGestureDetector
                         break;
                       }
                       if (((MessageRecord)((Iterator)localObject5).next()).msgtype != -2000) {
-                        break label7769;
+                        break label7789;
                       }
                       n += 1;
                     }
                     bool3 = false;
                     break;
                     m = 0;
-                    break label3606;
+                    break label3611;
                     if (((ChatMessage)localObject6).shmsgseq != 0L)
                     {
                       m = 1;
-                      break label3606;
+                      break label3611;
                     }
                     m = 0;
-                    break label3606;
+                    break label3611;
                     k = 0;
                     continue;
                   }
@@ -1587,13 +1589,12 @@ public class StickerGestureDetector
                   {
                     n = 1;
                     i1 = n;
-                    label3759:
                     localObject5 = EmojiStickerManager.a((MessageRecord)localObject6);
-                    Iterator localIterator = this.mBaseChatPie.app.getMessageFacade().getAIOList(this.mBaseChatPie.sessionInfo.curFriendUin, this.mBaseChatPie.sessionInfo.curType, this.mBaseChatPie.getIfOnShowDone()).iterator();
-                    label3917:
+                    Iterator localIterator = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.mBaseChatPie.x()).iterator();
+                    label3922:
                     for (;;)
                     {
-                      label3813:
+                      label3818:
                       if (localIterator.hasNext())
                       {
                         localChatMessage = (ChatMessage)localIterator.next();
@@ -1601,11 +1602,11 @@ public class StickerGestureDetector
                         {
                           Object localObject7 = (MessageForMarketFace)localChatMessage;
                           if ((((MessageForMarketFace)localObject7).mMarkFaceMessage == null) || (((MessageForMarketFace)localObject7).mMarkFaceMessage.stickerInfo == null)) {
-                            break label7757;
+                            break label7777;
                           }
                           n = 1;
                           if (((localChatMessage instanceof MessageForUniteGrayTip)) || (n != 0)) {
-                            break label7761;
+                            break label7781;
                           }
                           localObject7 = EmojiStickerManager.a(localChatMessage);
                           if ((localObject7 == null) || (!((Pair)localObject7).equals(localObject5)) || (localChatMessage == localObject6)) {
@@ -1613,21 +1614,20 @@ public class StickerGestureDetector
                           }
                           n = 1;
                           if ((!EmojiStickerManager.b((MessageRecord)localObject6)) || (m == 0) || (i1 != 0) || (n != 0)) {
-                            break label4489;
+                            break label4494;
                           }
                           m = 1;
-                          label3943:
+                          label3948:
                           if ((EmojiStickerManager.jdField_d_of_type_Long <= ((ChatMessage)localObject6).time) || (!(localObject6 instanceof MessageForMarketFace))) {
-                            break label4495;
+                            break label4500;
                           }
                           n = 1;
-                          label3966:
                           if (!(localObject6 instanceof MessageForMarketFace)) {
-                            break label7730;
+                            break label7750;
                           }
                           localObject5 = (MessageForMarketFace)localObject6;
                           if ((((MessageForMarketFace)localObject5).mMarkFaceMessage == null) || (((MessageForMarketFace)localObject5).mMarkFaceMessage.stickerInfo == null)) {
-                            break label4501;
+                            break label4506;
                           }
                           i = 1;
                           i1 = k;
@@ -1651,23 +1651,22 @@ public class StickerGestureDetector
                 if ((localObject1 != null) && (((PicEmoticonInfo)localObject1).emoticon != null))
                 {
                   localObject5 = ((PicEmoticonInfo)localObject1).emoticon.epId;
-                  label4155:
                   if (f2 - i11 + this.lowVersionOffset <= i3) {
-                    break label4522;
+                    break label4527;
                   }
                   bool1 = localBaseChatItemLayout.a(paramMotionEvent, (int)(f3 + 0.5D) + this.widthPaddingOffset + (int)this.clicpXoffset - i10 - this.childRect.left - localView.getLeft(), (int)(this.lowVersionOffset + f2 + 0.5D) - this.childRect.top - i11 + this.heightPaddingOffset + (int)this.clicpYoffset, (int)(this.stickerWidth * this.scale), (int)(this.stickerHeight * this.scale), this.angle, (String)localObject5, true, 1.0F, null);
                   i1 = (int)(this.lowVersionOffset + f2 + 0.5D) - i11 + (int)this.stickerHeight;
                   if (i1 <= i4) {
-                    break label7717;
+                    break label7737;
                   }
                   i1 -= i3;
                 }
               }
               for (;;)
               {
-                label4319:
+                label4324:
                 f1 = i1 - localBaseChatItemLayout.getHeight();
-                localObject5 = this.mBaseChatPie.getAnimContainer();
+                localObject5 = this.mBaseChatPie.a();
                 if (localObject5 != null) {
                   ((AIOAnimationConatiner)localObject5).a();
                 }
@@ -1695,104 +1694,104 @@ public class StickerGestureDetector
                   m = i6;
                   bool2 = bool5;
                   i5 = i7;
-                  break label2769;
+                  break label2786;
                   n = 0;
-                  break label3755;
+                  break label3760;
                   if ((!(localChatMessage instanceof MessageForText)) && (!(localChatMessage instanceof MessageForPic))) {
-                    break label7757;
+                    break label7777;
                   }
                   if (!android.text.TextUtils.isEmpty(localChatMessage.getExtInfoFromExtStr("sticker_info")))
                   {
                     n = 1;
-                    break label3872;
+                    break label3877;
                   }
                   n = 0;
-                  break label3872;
+                  break label3877;
                   m = 0;
-                  break label3943;
+                  break label3948;
                   n = 0;
-                  break label3966;
+                  break label3971;
                   i = 0;
-                  break label4003;
-                  if (localObject3 == null) {
-                    break label4155;
+                  break label4008;
+                  if (localObject2 == null) {
+                    break label4160;
                   }
-                  localObject5 = ((Emoticon)localObject3).epId;
-                  break label4155;
+                  localObject5 = ((Emoticon)localObject2).epId;
+                  break label4160;
                   bool5 = localBaseChatItemLayout.a(paramMotionEvent, (int)(f3 + 0.5D) + this.widthPaddingOffset + (int)this.clicpXoffset - i10 - this.childRect.left - localView.getLeft(), this.heightPaddingOffset + (int)this.clicpYoffset, (int)(this.stickerWidth * this.scale), (int)(this.stickerHeight * this.scale), this.angle, (String)localObject5, true, 1.0F, null);
                   i7 = (int)(this.lowVersionOffset + f2 + 0.5D);
                   i8 = (int)this.stickerHeight;
                   i1 = i3 - (int)(this.lowVersionOffset + f2 + 0.5D) + i11 + localBaseChatItemLayout.getHeight();
                   bool1 = bool5;
                   if (i7 - i11 + i8 <= i4) {
-                    break label4319;
+                    break label4324;
                   }
                   i1 = (int)this.stickerHeight;
                   bool1 = bool5;
-                  break label4319;
+                  break label4324;
                   if (!bool2)
                   {
-                    makeToast(anvx.a(2131713764));
-                    VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 4, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
+                    makeToast(HardCodeUtil.a(2131714260));
+                    VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 4, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
                     i = 0;
                     j = 0;
-                    break label3059;
+                    break label3076;
                   }
                   if (!bool4)
                   {
-                    makeToast(anvx.a(2131713772));
-                    VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 5, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
+                    makeToast(HardCodeUtil.a(2131714268));
+                    VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 5, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
                     i = 1;
                     j = 0;
-                    break label3059;
+                    break label3076;
                   }
                   if (!bool3)
                   {
                     makeToast("只能贴最新的20条消息哦~");
-                    VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 2, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
+                    VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 2, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
                     i = 0;
                     j = 0;
-                    break label3059;
+                    break label3076;
                   }
                   if (k != 0)
                   {
-                    makeToast(anvx.a(2131713760));
+                    makeToast(HardCodeUtil.a(2131714256));
                     i = 0;
                     j = 0;
-                    break label3059;
+                    break label3076;
                   }
                   if (m != 0)
                   {
-                    makeToast(anvx.a(2131713766));
+                    makeToast(HardCodeUtil.a(2131714262));
                     i = 0;
                     j = 0;
-                    break label3059;
+                    break label3076;
                   }
                   if (((localObject5 instanceof MessageForLongMsg)) || ((localObject5 instanceof MessageForLongTextMsg)))
                   {
-                    makeToast(anvx.a(2131713757));
-                    VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 3, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
+                    makeToast(HardCodeUtil.a(2131714253));
+                    VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 3, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
                     i = 0;
                     j = 0;
-                    break label3059;
+                    break label3076;
                   }
                   if ((n == 0) || (i != 0))
                   {
-                    makeToast(anvx.a(2131713763));
-                    VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 3, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
+                    makeToast(HardCodeUtil.a(2131714259));
+                    VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 3, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
                     i = 0;
                     j = 0;
-                    break label3059;
+                    break label3076;
                   }
                   if ((this.mBaseChatPie != null) && (localObject5 != null))
                   {
                     if ((((ChatMessage)localObject5).extraflag == 32772) || (((ChatMessage)localObject5).extraflag == 32768))
                     {
-                      makeToast(anvx.a(2131713761));
-                      VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 8, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
+                      makeToast(HardCodeUtil.a(2131714257));
+                      VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 8, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
                       i = 0;
                       j = 0;
-                      break label3059;
+                      break label3076;
                     }
                     if (bool1)
                     {
@@ -1810,23 +1809,26 @@ public class StickerGestureDetector
                       }
                       if (localObject1 != null)
                       {
-                        ((PicEmoticonInfo)localObject1).stickerInfo = ((EmojiStickerManager.StickerInfo)localObject6);
+                        ((PicEmoticonInfo)localObject1).stickerInfo = ((Serializable)localObject6);
                         ((ChatMessage)localObject5).stickerHidden = false;
-                        this.mBaseChatPie.send((EmoticonInfo)localObject1);
+                        paramMotionEvent = (AIOEmoticonPanelHelper)this.mBaseChatPie.a(104);
+                        if (paramMotionEvent != null) {
+                          paramMotionEvent.send((EmoticonInfo)localObject1);
+                        }
                       }
                       do
                       {
                         for (;;)
                         {
-                          if ((localObject1 != null) || (localObject3 != null))
+                          if ((localObject1 != null) || (localObject2 != null))
                           {
-                            VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
+                            VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
                             if ((this.angle != 0.0D) || (this.scale != 1.0D)) {
-                              VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Adjust", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
+                              VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Adjust", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", String.valueOf(this.stickerReportType), "", "", "", 0, 0, 0, 0);
                             }
                           }
                           if (f1 <= 0.0F) {
-                            break label5921;
+                            break label5940;
                           }
                           j = localChatXListView.getPositionForView(localBaseChatItemLayout);
                           k = localChatXListView.getFirstVisiblePosition();
@@ -1836,9 +1838,9 @@ public class StickerGestureDetector
                             ObjectAnimator.ofPropertyValuesHolder(localChatXListView.getChildAt(i), new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("TranslationY", new float[] { f1, 0.0F }) }).setDuration(300L).start();
                             i += 1;
                           }
-                          if (localObject3 != null)
+                          if (localObject2 != null)
                           {
-                            admh.a(this.mBaseChatPie.app, this.mContext, this.mBaseChatPie.sessionInfo, (Emoticon)localObject3, (EmojiStickerManager.StickerInfo)localObject6);
+                            ChatActivityFacade.a(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.mContext, this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Emoticon)localObject2, (EmojiStickerManager.StickerInfo)localObject6);
                           }
                           else
                           {
@@ -1847,33 +1849,33 @@ public class StickerGestureDetector
                               if (((SystemAndEmojiEmoticonInfo)localObject4).emotionType == 1) {}
                               for (paramMotionEvent = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemAndEmojiEmoticonInfo)localObject4).code);; paramMotionEvent = com.tencent.mobileqq.text.TextUtils.getEmojiString(((SystemAndEmojiEmoticonInfo)localObject4).code))
                               {
-                                this.mBaseChatPie.send(paramMotionEvent, (EmojiStickerManager.StickerInfo)localObject6);
+                                this.mBaseChatPie.a(paramMotionEvent, (EmojiStickerManager.StickerInfo)localObject6);
                                 break;
                               }
                             }
-                            if (localObject2 == null) {
+                            if (localObject3 == null) {
                               break;
                             }
-                            paramMotionEvent = makeSmallEmojiString((SmallEmoticonInfo)localObject2);
-                            this.mBaseChatPie.send(paramMotionEvent, (EmojiStickerManager.StickerInfo)localObject6);
+                            paramMotionEvent = makeSmallEmojiString((SmallEmoticonInfo)localObject3);
+                            this.mBaseChatPie.a(paramMotionEvent, (EmojiStickerManager.StickerInfo)localObject6);
                           }
                         }
                       } while (localFavoriteEmoticonInfo == null);
-                      paramMotionEvent = this.mBaseChatPie.app;
-                      localObject2 = this.mContext;
-                      localObject4 = this.mBaseChatPie.sessionInfo;
+                      paramMotionEvent = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+                      localObject3 = this.mContext;
+                      localObject4 = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
                       localObject5 = localFavoriteEmoticonInfo.path;
                       if (!android.text.TextUtils.isEmpty(localFavoriteEmoticonInfo.eId)) {}
                       for (bool1 = true;; bool1 = false)
                       {
-                        admh.a(paramMotionEvent, (Context)localObject2, (SessionInfo)localObject4, (String)localObject5, true, bool1, localFavoriteEmoticonInfo.eId, (EmojiStickerManager.StickerInfo)localObject6);
+                        ChatActivityFacade.a(paramMotionEvent, (Context)localObject3, (SessionInfo)localObject4, (String)localObject5, true, bool1, localFavoriteEmoticonInfo.eId, (EmojiStickerManager.StickerInfo)localObject6);
                         break;
                       }
                       this.mRootView.post(new StickerGestureDetector.1(this));
                       EmojiStickerManager.jdField_a_of_type_Boolean = false;
-                      this.mBaseChatPie.stickerEditMode(false);
-                      this.mBaseChatPie.instantUpdate(false, false);
-                      this.mBaseChatPie.removeStickerExpandView();
+                      this.mBaseChatPie.o(false);
+                      this.mBaseChatPie.c(false, false);
+                      this.mBaseChatPie.aS();
                       removeStickerMaskLayout();
                       this.isFirstUpInvoked = false;
                       this.enteredAIO = false;
@@ -1893,44 +1895,44 @@ public class StickerGestureDetector
                       EmojiStickerManager.b = false;
                       i = 0;
                       j = 1;
-                      break label3059;
-                      label6067:
+                      break label3076;
+                      label6086:
                       if (!this.enteredAIO)
                       {
-                        makeToast(anvx.a(2131713765));
+                        makeToast(HardCodeUtil.a(2131714261));
                         i1 = i8;
                         i = i4;
                         j = i3;
-                        break label3059;
+                        break label3076;
                       }
-                      makeToast(String.format(anvx.a(2131713771), new Object[] { Integer.valueOf(EmojiStickerManager.e) }));
-                      VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 1, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+                      makeToast(String.format(HardCodeUtil.a(2131714267), new Object[] { Integer.valueOf(EmojiStickerManager.jdField_e_of_type_Int) }));
+                      VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 1, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
                       i1 = i8;
                       i = i4;
                       j = i3;
-                      break label3059;
-                      label6194:
+                      break label3076;
+                      label6213:
                       if (j != 0) {
-                        break label3124;
+                        break label3141;
                       }
                       stickerJoggleAnimation();
-                      break label3124;
-                      label6206:
+                      break label3141;
+                      label6225:
                       if (paramMotionEvent != null)
                       {
                         if ((paramMotionEvent instanceof ViewGroup))
                         {
-                          makeToast(anvx.a(2131713758));
-                          VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 3, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-                          break label3164;
+                          makeToast(HardCodeUtil.a(2131714254));
+                          VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 3, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+                          break label3181;
                         }
-                        makeToast(anvx.a(2131713767));
-                        VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 5, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-                        break label3164;
+                        makeToast(HardCodeUtil.a(2131714263));
+                        VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 5, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+                        break label3181;
                       }
-                      makeToast(anvx.a(2131713770));
-                      VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 5, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-                      break label3164;
+                      makeToast(HardCodeUtil.a(2131714266));
+                      VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Send", String.valueOf(this.currentChatPieType), 0, 5, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+                      break label3181;
                       this.lastMotionAction = 1;
                       this.lastDownX = -1.0F;
                       this.lastDownY = -1.0F;
@@ -1945,28 +1947,28 @@ public class StickerGestureDetector
                       if (paramMotionEvent.getAction() != 1) {
                         break;
                       }
-                      if ((this.mBaseChatPie != null) && (this.mBaseChatPie.listView != null))
+                      if ((this.mBaseChatPie != null) && (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null))
                       {
-                        this.mBottom = (this.mTop - this.lowVersionOffset + this.mBaseChatPie.listView.getMeasuredHeight() - this.titleBarHeight);
+                        this.mBottom = (this.mTop - this.lowVersionOffset + this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getMeasuredHeight() - this.titleBarHeight);
                         if (QLog.isColorLevel()) {
                           QLog.i("StickerGestureDetector", 2, "line 7 mBottom = " + this.mBottom);
                         }
-                        setSmoothScrollMode(this.mBaseChatPie.listView, this.SCROLL_STOP);
+                        setSmoothScrollMode(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.SCROLL_STOP);
                       }
                       if ((this.enteredAIO) && (isTouchedAboveOutsideArea(this.lastOutDownX, this.lastOutDownY, paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))) {
                         if ((this.mBaseChatPie != null) && (this.mRootView != null))
                         {
-                          paramMotionEvent = this.mBaseChatPie.getEmoPanel();
+                          paramMotionEvent = AIOEmoticonUIHelper.a(this.mBaseChatPie);
                           if ((paramMotionEvent != null) && (!paramMotionEvent.isHiden)) {
-                            break label6752;
+                            break label6771;
                           }
                           playDismissAnimation(f3, f2);
                           EmojiStickerManager.jdField_a_of_type_Boolean = false;
-                          this.mBaseChatPie.stickerEditMode(false);
-                          this.mBaseChatPie.instantUpdate(false, false);
+                          this.mBaseChatPie.o(false);
+                          this.mBaseChatPie.c(false, false);
                           this.enteredAIO = false;
                           this.isFirstUpInvoked = false;
-                          VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "CancelSendX", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+                          VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "CancelSendX", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
                         }
                       }
                       for (;;)
@@ -1975,17 +1977,17 @@ public class StickerGestureDetector
                         this.lastOutDownX = -1.0F;
                         this.lastOutDownY = -1.0F;
                         break;
-                        label6752:
-                        this.mBaseChatPie.hidePanel();
+                        label6771:
+                        this.mBaseChatPie.an();
                         continue;
                         if ((this.mBaseChatPie != null) && (isTouchedAboveAIOArea(this.lastOutDownX, this.lastOutDownY, paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))) {
-                          this.mBaseChatPie.hidePanel();
+                          this.mBaseChatPie.an();
                         }
                       }
-                      if ((paramMotionEvent.getAction() == 1) && (this.mBaseChatPie != null) && (this.mBaseChatPie.listView != null))
+                      if ((paramMotionEvent.getAction() == 1) && (this.mBaseChatPie != null) && (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null))
                       {
                         bool1 = false;
-                        localObject1 = this.mBaseChatPie.listView;
+                        localObject1 = this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
                         i = ((ChatXListView)localObject1).getChildCount() - 1;
                         if (i >= 0)
                         {
@@ -1994,13 +1996,13 @@ public class StickerGestureDetector
                           {
                             localObject2 = (BaseChatItemLayout)localObject2;
                             if (bool1) {
-                              break label7645;
+                              break label7665;
                             }
-                            bool1 = ((BaseChatItemLayout)localObject2).d();
+                            bool1 = ((BaseChatItemLayout)localObject2).h();
                           }
                         }
                       }
-                      label7645:
+                      label7665:
                       for (;;)
                       {
                         ((BaseChatItemLayout)localObject2).c();
@@ -2035,15 +2037,15 @@ public class StickerGestureDetector
                         }
                         if (bool1)
                         {
-                          if (this.currentDismissMode != EmojiStickerManager.g) {
-                            break label7084;
+                          if (this.currentDismissMode != EmojiStickerManager.jdField_g_of_type_Int) {
+                            break label7103;
                           }
-                          VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "Hide", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+                          VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "Hide", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
                         }
                         for (;;)
                         {
                           return super.onTouchEvent(paramMotionEvent);
-                          VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.app.getCurrentUin(), "Stick", "CancelHide", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+                          VasWebviewUtil.reportCommercialDrainage(this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "CancelHide", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
                         }
                         if (i == 2)
                         {
@@ -2081,7 +2083,7 @@ public class StickerGestureDetector
                             if (((FragmentActivity)localObject1).getChatFragment() != null)
                             {
                               localObject1 = ((FragmentActivity)localObject1).getChatFragment().a();
-                              if ((((localObject1 instanceof afzn)) || ((localObject1 instanceof agab)) || ((localObject1 instanceof afzr))) && (EmojiStickerManager.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0))
+                              if ((((localObject1 instanceof BaseTroopChatPie)) || ((localObject1 instanceof FriendChatPie)) || ((localObject1 instanceof DiscussChatPie))) && (EmojiStickerManager.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0))
                               {
                                 this.isInTowFingerMode = true;
                                 switch (paramMotionEvent.getAction() & paramMotionEvent.getActionMasked())
@@ -2124,10 +2126,9 @@ public class StickerGestureDetector
                   }
                   i = 0;
                   j = 0;
-                  break label3059;
-                  label7657:
-                  break label2970;
-                  label7660:
+                  break label3076;
+                  label7677:
+                  break label2987;
                   i6 = i;
                   i7 = m;
                   i = i2;
@@ -2142,12 +2143,12 @@ public class StickerGestureDetector
                 i3 = i1;
                 i1 = j;
                 j = 0;
-                break label3010;
+                break label3027;
                 i1 = 0;
                 continue;
                 i1 = i8;
               }
-              label7730:
+              label7750:
               i1 = i;
               i7 = m;
               i = k;
@@ -2155,23 +2156,22 @@ public class StickerGestureDetector
               m = n;
               n = i7;
               continue;
-              label7757:
+              label7777:
               n = 0;
-              break label3872;
-              label7761:
-              break label3813;
+              break label3877;
+              label7781:
+              break label3818;
               n = 0;
-              break label3917;
-              label7769:
-              break label3703;
+              break label3922;
+              label7789:
+              break label3708;
               i1 = 0;
-              break label3759;
-              label7778:
+              break label3764;
+              label7798:
               i1 = i;
               i = k;
               k = i1;
             }
-            label7793:
             j = 0;
             bool3 = false;
             f1 = 0.0F;
@@ -2183,9 +2183,9 @@ public class StickerGestureDetector
             i2 = i9;
             i3 = i8;
           }
-          localObject2 = null;
-          localObject4 = null;
           localObject3 = null;
+          localObject4 = null;
+          localObject2 = null;
           localFavoriteEmoticonInfo = null;
           localObject1 = null;
         }
@@ -2206,10 +2206,10 @@ public class StickerGestureDetector
   
   void playDismissAnimation(float paramFloat1, float paramFloat2)
   {
-    if ((this.popupEmo != null) && (this.mBaseChatPie != null) && (this.mBaseChatPie.listView != null))
+    if ((this.popupEmo != null) && (this.mBaseChatPie != null) && (this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null))
     {
       ViewPropertyAnimator localViewPropertyAnimator = this.popupEmo.animate();
-      localViewPropertyAnimator.translationX(this.screenWidth / 2 - (this.popupEmo.getWidth() / 2 + paramFloat1)).translationY(this.mTop - this.lowVersionOffset + this.mBaseChatPie.listView.getMeasuredHeight() - this.titleBarHeight - paramFloat2);
+      localViewPropertyAnimator.translationX(this.screenWidth / 2 - (this.popupEmo.getWidth() / 2 + paramFloat1)).translationY(this.mTop - this.lowVersionOffset + this.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getMeasuredHeight() - this.titleBarHeight - paramFloat2);
       localViewPropertyAnimator.setListener(this.animationListener);
       localViewPropertyAnimator.setDuration(200L);
     }
@@ -2219,7 +2219,7 @@ public class StickerGestureDetector
   {
     if (this.mBaseChatPie != null)
     {
-      EmoticonMainPanel localEmoticonMainPanel = this.mBaseChatPie.getEmoPanel();
+      EmoticonMainPanel localEmoticonMainPanel = AIOEmoticonUIHelper.a(this.mBaseChatPie);
       if (localEmoticonMainPanel != null) {
         localEmoticonMainPanel.removeView(localEmoticonMainPanel.stickerMaskLayout);
       }
@@ -2252,7 +2252,7 @@ public class StickerGestureDetector
               localView.getGlobalVisibleRect(this.firstOrLastRect);
               if ((Math.abs(this.firstOrLastRect.bottom - this.lowVersionOffset - this.mBottom) < 15) && (this.mBaseChatPie != null))
               {
-                this.mBaseChatPie.addStickerExpandView();
+                this.mBaseChatPie.aR();
                 return;
               }
             }
@@ -2293,7 +2293,7 @@ public class StickerGestureDetector
       this.cancel.setVisibility(0);
       this.confirm.setVisibility(0);
       if (paramBoolean) {
-        break label166;
+        break label193;
       }
     }
     for (;;)
@@ -2303,8 +2303,9 @@ public class StickerGestureDetector
       PropertyValuesHolder localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat("scaleY", new float[] { f2, f1 });
       ObjectAnimator.ofPropertyValuesHolder(this.cancel, new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder2, localPropertyValuesHolder3 }).setDuration(300L).start();
       ObjectAnimator.ofPropertyValuesHolder(this.confirm, new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder2, localPropertyValuesHolder3 }).setDuration(300L).start();
+      MobileReportManager.getInstance().reportAction("tie_emoji", "4", "platform898", "6", "3", 101, 1, System.currentTimeMillis());
       return;
-      label166:
+      label193:
       f2 = 0.0F;
       f1 = 1.0F;
     }
@@ -2338,7 +2339,7 @@ public class StickerGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.StickerGestureDetector
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
-import albw;
-import alcf;
-import alcg;
-import alch;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -21,7 +17,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import anvx;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
@@ -33,15 +30,15 @@ public class KSongMicView
 {
   float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 0;
-  private alch jdField_a_of_type_Alch;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(5);
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private List<alcg> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private KSongMicView.StatusListener jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView$StatusListener;
+  private List<KSongMicView.CircleHolder> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
-  private float jdField_b_of_type_Float = DisplayUtil.dip2px(getContext(), 2.0F);
+  private float jdField_b_of_type_Float = DisplayUtil.a(getContext(), 2.0F);
   private int jdField_b_of_type_Int;
   private int c;
   private int d;
@@ -53,22 +50,22 @@ public class KSongMicView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
-    int i = DisplayUtil.dip2px(getContext(), 90.0F);
+    int i = DisplayUtil.a(getContext(), 90.0F);
     this.c = i;
     this.jdField_b_of_type_Int = i;
-    this.d = DisplayUtil.dip2px(getContext(), 28.0F);
-    this.e = DisplayUtil.dip2px(getContext(), 36.5F);
-    this.f = DisplayUtil.dip2px(getContext(), 12.0F);
-    this.g = DisplayUtil.dip2px(getContext(), 100.0F);
+    this.d = DisplayUtil.a(getContext(), 28.0F);
+    this.e = DisplayUtil.a(getContext(), 36.5F);
+    this.f = DisplayUtil.a(getContext(), 12.0F);
+    this.g = DisplayUtil.a(getContext(), 100.0F);
     ViewCompat.setImportantForAccessibility(this, 1);
-    setContentDescription(anvx.a(2131705443));
+    setContentDescription(HardCodeUtil.a(2131705986));
     setClickable(true);
   }
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
   {
-    alcg localalcg = new alcg(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
-    this.jdField_a_of_type_JavaUtilList.add(localalcg);
+    KSongMicView.CircleHolder localCircleHolder = new KSongMicView.CircleHolder(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaUtilList.add(localCircleHolder);
   }
   
   private void c()
@@ -80,7 +77,7 @@ public class KSongMicView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new alcf(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new KSongMicView.1(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -124,7 +121,7 @@ public class KSongMicView
     super.draw(paramCanvas);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
@@ -135,7 +132,7 @@ public class KSongMicView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     float f2 = 1.0F;
     super.onDraw(paramCanvas);
@@ -143,29 +140,29 @@ public class KSongMicView
     int i;
     if (this.jdField_a_of_type_Int == 3)
     {
-      this.jdField_b_of_type_Float = DisplayUtil.dip2px(getContext(), 1.0F);
+      this.jdField_b_of_type_Float = DisplayUtil.a(getContext(), 1.0F);
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        alcg localalcg = (alcg)((Iterator)localObject).next();
+        KSongMicView.CircleHolder localCircleHolder = (KSongMicView.CircleHolder)((Iterator)localObject).next();
         paramCanvas.save();
-        f2 = localalcg.jdField_a_of_type_Float;
-        f1 = localalcg.jdField_b_of_type_Float;
+        f2 = localCircleHolder.jdField_a_of_type_Float;
+        f1 = localCircleHolder.jdField_b_of_type_Float;
         f2 = (getWidth() - f2) / 2.0F;
         f1 = (getHeight() - f1) / 2.0F;
-        i = (int)(255.0F * localalcg.c);
+        i = (int)(255.0F * localCircleHolder.c);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-3405);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Float * 0.5F + f2, this.jdField_b_of_type_Float * 0.5F + f1, getWidth() - this.jdField_b_of_type_Float * 0.5F - f2, getHeight() - this.jdField_b_of_type_Float * 0.5F - f1);
-        paramCanvas.scale(localalcg.d, localalcg.e, getWidth() / 2, getHeight() / 2);
-        paramCanvas.rotate(localalcg.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
+        paramCanvas.scale(localCircleHolder.d, localCircleHolder.e, getWidth() / 2, getHeight() / 2);
+        paramCanvas.rotate(localCircleHolder.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
         paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
         paramCanvas.restore();
       }
     }
-    this.jdField_b_of_type_Float = DisplayUtil.dip2px(getContext(), 1.0F);
+    this.jdField_b_of_type_Float = DisplayUtil.a(getContext(), 1.0F);
     paramCanvas.save();
     paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
     if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 2))
@@ -196,7 +193,7 @@ public class KSongMicView
       paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
       if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1))
       {
-        localObject = getResources().getDrawable(2130847320);
+        localObject = getResources().getDrawable(2130847677);
         int j = (a() - this.d) / 2;
         ((Drawable)localObject).setBounds(j, j, this.d + j, this.e + j);
         ((Drawable)localObject).setAlpha(i);
@@ -230,8 +227,8 @@ public class KSongMicView
       } while (this.jdField_a_of_type_Int != 0);
       this.jdField_a_of_type_Int = 1;
       invalidate();
-      if (this.jdField_a_of_type_Alch != null) {
-        this.jdField_a_of_type_Alch.l();
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView$StatusListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView$StatusListener.l();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
       return true;
@@ -239,7 +236,7 @@ public class KSongMicView
     float f1 = this.jdField_a_of_type_Float;
     paramMotionEvent.getRawY();
     int i = j;
-    if (albw.a(this, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) {
+    if (QWalletTools.a(this, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) {
       if (paramMotionEvent.getAction() != 3) {
         break label218;
       }
@@ -249,8 +246,8 @@ public class KSongMicView
     {
       if (i != 0)
       {
-        if (this.jdField_a_of_type_Alch != null) {
-          this.jdField_a_of_type_Alch.n();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView$StatusListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView$StatusListener.n();
         }
         b();
         break;
@@ -258,22 +255,22 @@ public class KSongMicView
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_Int = 2;
       invalidate();
-      if (this.jdField_a_of_type_Alch == null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView$StatusListener == null) {
         break;
       }
-      this.jdField_a_of_type_Alch.m();
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView$StatusListener.m();
       break;
     }
   }
   
-  public void setStatusListener(alch paramalch)
+  public void setStatusListener(KSongMicView.StatusListener paramStatusListener)
   {
-    this.jdField_a_of_type_Alch = paramalch;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView$StatusListener = paramStatusListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.voice.KSongMicView
  * JD-Core Version:    0.7.0.1
  */

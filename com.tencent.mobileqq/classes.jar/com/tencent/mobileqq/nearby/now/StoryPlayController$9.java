@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now;
 
 import android.app.Activity;
-import aych;
+import com.tencent.mobileqq.nearby.now.view.widget.StoryNewGuideDialog;
 
 class StoryPlayController$9
   implements Runnable

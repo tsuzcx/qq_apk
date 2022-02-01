@@ -8,12 +8,12 @@
     </FrameLayout>
     <RelativeLayout android:id="@id/enm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dma" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layout_alignParentBottom="true">
-            <ImageView android:id="@id/kvk" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/g04" android:contentDescription="@string/mw8" />
+            <ImageView android:id="@id/kvk" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/gnw" android:contentDescription="@string/mw8" />
             <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/g2a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="00:00" />
-            <SeekBar android:id="@id/dmb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:maxHeight="2.0dip" android:progressDrawable="@drawable/a1k" android:minHeight="2.0dip" android:thumb="@drawable/bsu" android:thumbOffset="0.0dip" android:layout_weight="1.0" />
+            <SeekBar android:id="@id/dmb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:maxHeight="2.0dip" android:progressDrawable="@drawable/a1k" android:minHeight="2.0dip" android:thumb="@drawable/c_t" android:thumbOffset="0.0dip" android:layout_weight="1.0" />
             <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:id="@id/bqq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="01:22" />
-            <CheckBox android:id="@id/mp5" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:checked="false" android:button="@drawable/bsj" />
-            <ImageView android:id="@id/cq3" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/g01" android:contentDescription="@string/mwb" />
+            <CheckBox android:id="@id/mtp" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:checked="false" android:button="@drawable/c9d" />
+            <ImageView android:id="@id/cq3" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/gnt" android:contentDescription="@string/mwb" />
         </LinearLayout>
     </RelativeLayout>
     <com.tencent.mobileqq.gamecenter.media.DanmakuLayout android:id="@id/a3x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="36.0dip" />

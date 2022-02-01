@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import acmw;
-import bmhv;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDoingSomething;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyReportUserApps;
+import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.util.QLog;
-import pka;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 class TimerCheckMsgCount$1
   implements Runnable
@@ -18,11 +18,11 @@ class TimerCheckMsgCount$1
   
   public void run()
   {
-    this.this$0.a.app.getMessageFacade().checkMsgCounts();
-    ((HotChatManager)this.this$0.a.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b();
-    this.this$0.a.app.getConversationFacade().c();
-    if (!bmhv.p(this.this$0.a.app)) {
-      if (((Boolean)bmhv.a("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue()) {
+    this.this$0.a.a.getMessageFacade().l();
+    ((HotChatManager)this.this$0.a.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b();
+    this.this$0.a.a.getConversationFacade().c();
+    if (!ReadInJoyHelper.q(this.this$0.a.a)) {
+      if (((Boolean)ReadInJoyHelper.a("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue()) {
         break label119;
       }
     }
@@ -46,7 +46,7 @@ class TimerCheckMsgCount$1
       try
       {
         label119:
-        pka.a();
+        ReadInJoyReportUserApps.a();
       }
       catch (Exception localException2)
       {

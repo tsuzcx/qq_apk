@@ -4,16 +4,15 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnTouchListener;
 import android.widget.ListAdapter;
-import aymx;
-import aymy;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class AsyncListView
   extends FPSXListView
+  implements AsyncAbsListView
 {
-  final aymx a = new aymx(this);
+  final ItemManaged a = new ItemManaged(this);
   
   public AsyncListView(Context paramContext)
   {
@@ -42,9 +41,9 @@ public class AsyncListView
     this.a.b();
   }
   
-  public void setItemManager(aymy paramaymy)
+  public void setItemManager(ItemManager paramItemManager)
   {
-    this.a.a(paramaymy);
+    this.a.a(paramItemManager);
   }
   
   public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)

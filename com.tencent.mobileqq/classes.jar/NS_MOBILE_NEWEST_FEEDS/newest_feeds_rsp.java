@@ -13,13 +13,13 @@ public final class newest_feeds_rsp
   static Map<Long, String> cache_mapExt;
   static Map<Long, QzoneData> cache_mapVcByte;
   static ArrayList<feed_info> cache_vec_feed_info = new ArrayList();
-  public int code;
-  public long last_feed_time;
-  public Map<Long, String> mapExt;
-  public Map<Long, QzoneData> mapVcByte;
+  public int code = 0;
+  public long last_feed_time = 0L;
+  public Map<Long, String> mapExt = null;
+  public Map<Long, QzoneData> mapVcByte = null;
   public String str_attach = "";
-  public long uNextTime;
-  public ArrayList<feed_info> vec_feed_info;
+  public long uNextTime = 0L;
+  public ArrayList<feed_info> vec_feed_info = null;
   
   static
   {

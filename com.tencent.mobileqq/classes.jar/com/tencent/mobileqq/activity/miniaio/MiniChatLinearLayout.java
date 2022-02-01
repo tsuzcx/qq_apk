@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import afoa;
-import aked;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOCheckBoxUtil;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
@@ -16,7 +15,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 
 public class MiniChatLinearLayout
   extends LinearLayout
-  implements aked
+  implements IChatShieldClick
 {
   private CheckBox a;
   protected boolean a;
@@ -43,7 +42,7 @@ public class MiniChatLinearLayout
     }
     if (BaseChatItemLayout.jdField_a_of_type_Boolean)
     {
-      afoa.a(this, paramMotionEvent);
+      AIOCheckBoxUtil.a(this, paramMotionEvent);
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -58,7 +57,7 @@ public class MiniChatLinearLayout
       }
       this.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(getContext());
       this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131364548);
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131364660);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(BaseChatItemLayout.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
       paramMiniChatLinearLayout = new LinearLayout.LayoutParams(1, 1);
       addView(this.jdField_a_of_type_AndroidWidgetCheckBox, paramMiniChatLinearLayout);
@@ -92,7 +91,7 @@ public class MiniChatLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatLinearLayout
  * JD-Core Version:    0.7.0.1
  */

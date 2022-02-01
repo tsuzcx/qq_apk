@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
-import bfut;
-import bfvo;
-import bfwn;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase.OnEditItemListener;
 
-public class HWReciteItem$AudioUploadCallback$1
+class HWReciteItem$AudioUploadCallback$1
   implements Runnable
 {
-  public HWReciteItem$AudioUploadCallback$1(bfwn parambfwn) {}
+  HWReciteItem$AudioUploadCallback$1(HWReciteItem.AudioUploadCallback paramAudioUploadCallback) {}
   
   public void run()
   {
-    HWReciteItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Bfut.c), true);
+    HWReciteItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c), true);
   }
 }
 

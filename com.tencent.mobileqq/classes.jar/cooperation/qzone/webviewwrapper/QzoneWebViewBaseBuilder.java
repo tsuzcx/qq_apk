@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.ProgressBar;
-import bidf;
-import biec;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import com.tencent.mobileqq.webview.AbsWebView;
+import com.tencent.mobileqq.webview.build.IWebViewBuilder;
+import com.tencent.mobileqq.webview.swift.CommonJsPluginFactory;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -19,10 +19,10 @@ import cooperation.qzone.webviewplugin.QZoneWebViewPlugin;
 import java.util.ArrayList;
 
 public class QzoneWebViewBaseBuilder
-  extends bidf
-  implements biec
+  extends AbsWebView
+  implements IWebViewBuilder
 {
-  public static final WebAccelerateHelper.CommonJsPluginFactory QZONE_SHOW_COMMON_JS = new QzoneWebViewBaseBuilder.1();
+  public static final CommonJsPluginFactory QZONE_SHOW_COMMON_JS = new QzoneWebViewBaseBuilder.1();
   protected Intent mIntent;
   private boolean mIsSmallWebview = true;
   protected int mWebViewResId;
@@ -73,12 +73,12 @@ public class QzoneWebViewBaseBuilder
     return false;
   }
   
-  public WebAccelerateHelper.CommonJsPluginFactory myCommonJsPlugins()
+  public CommonJsPluginFactory myCommonJsPlugins()
   {
     if (this.mIsSmallWebview) {
       return QZONE_SHOW_COMMON_JS;
     }
-    return new WebAccelerateHelper.CommonJsPluginFactory();
+    return new CommonJsPluginFactory();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -187,7 +187,7 @@ public class QzoneWebViewBaseBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewwrapper.QzoneWebViewBaseBuilder
  * JD-Core Version:    0.7.0.1
  */

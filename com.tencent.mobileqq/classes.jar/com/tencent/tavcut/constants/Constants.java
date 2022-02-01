@@ -13,12 +13,13 @@ public class Constants
   public static final int NOT_SET = -1;
   public static final int RET_CODE_FAILED = -1;
   public static final int RET_CODE_SUCCESS = 0;
+  public static final int RET_LIGHT_RES_LOAD_FAILED = -3;
   public static final int RET_PAG_SO_LOAD_FAILED = -2;
   public static final int RET_TAVKIT_SO_LOAD_FAILED = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.constants.Constants
  * JD-Core Version:    0.7.0.1
  */

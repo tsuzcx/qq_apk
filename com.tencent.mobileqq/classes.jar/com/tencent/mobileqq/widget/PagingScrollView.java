@@ -7,9 +7,6 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import biqm;
-import biqn;
-import biqo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ScrollView;
 import java.util.ArrayList;
@@ -19,8 +16,8 @@ public class PagingScrollView
 {
   private boolean mCanScroll = true;
   protected GestureDetector mGestureDetector;
-  public boolean mIsOnSpecialView = false;
-  protected biqn mScrollChangedListener;
+  boolean mIsOnSpecialView = false;
+  protected PagingScrollView.OnScrollChangedListener mScrollChangedListener;
   protected ArrayList<View> pagingViews;
   
   public PagingScrollView(Context paramContext)
@@ -44,7 +41,7 @@ public class PagingScrollView
       this.pagingViews = new ArrayList();
     }
     this.pagingViews.add(paramView);
-    paramView.setOnTouchListener(new biqm(this));
+    paramView.setOnTouchListener(new PagingScrollView.1(this));
   }
   
   public void clearPagingViews()
@@ -67,7 +64,7 @@ public class PagingScrollView
       setOverScrollMode(0);
     }
     setFadingEdgeLength(0);
-    this.mGestureDetector = new GestureDetector(paramContext, new biqo(this));
+    this.mGestureDetector = new GestureDetector(paramContext, new PagingScrollView.YScrollDetector(this));
   }
   
   protected boolean isOnView(View paramView, float paramFloat1, float paramFloat2)
@@ -191,14 +188,14 @@ public class PagingScrollView
     }
   }
   
-  public void setOnScrollChangedListener(biqn parambiqn)
+  public void setOnScrollChangedListener(PagingScrollView.OnScrollChangedListener paramOnScrollChangedListener)
   {
-    this.mScrollChangedListener = parambiqn;
+    this.mScrollChangedListener = paramOnScrollChangedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PagingScrollView
  * JD-Core Version:    0.7.0.1
  */

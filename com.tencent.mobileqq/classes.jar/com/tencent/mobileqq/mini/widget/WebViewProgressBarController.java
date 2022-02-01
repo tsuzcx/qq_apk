@@ -31,10 +31,10 @@ public class WebViewProgressBarController
   private float mCurrAlphaRate;
   private float mCurrWidth;
   private float mCurrentProgress;
-  private boolean mFinishAllWidth;
+  private boolean mFinishAllWidth = false;
   private Handler mHandler = new WebViewProgressBarController.MainThreadHandler(this);
   protected WebViewProgressBar mProgressBar;
-  private int mProgressBarWidth;
+  private int mProgressBarWidth = 0;
   private float mProgressRate;
   private long mStartLoadingTime;
   private float mStartWidth;

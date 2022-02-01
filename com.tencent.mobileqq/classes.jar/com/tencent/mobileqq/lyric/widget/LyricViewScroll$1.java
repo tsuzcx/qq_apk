@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.lyric.widget;
 
 import android.util.Log;
-import awqu;
 import java.util.Timer;
 import java.util.TimerTask;
 

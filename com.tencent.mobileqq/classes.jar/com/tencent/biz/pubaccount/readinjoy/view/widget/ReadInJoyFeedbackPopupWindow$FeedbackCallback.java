@@ -1,0 +1,16 @@
+package com.tencent.biz.pubaccount.readinjoy.view.widget;
+
+public abstract interface ReadInJoyFeedbackPopupWindow$FeedbackCallback
+{
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
+  
+  public abstract void b(boolean paramBoolean, String paramString);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyFeedbackPopupWindow.FeedbackCallback
+ * JD-Core Version:    0.7.0.1
+ */

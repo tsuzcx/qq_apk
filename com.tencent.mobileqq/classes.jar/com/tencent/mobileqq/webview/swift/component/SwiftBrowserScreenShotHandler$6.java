@@ -3,23 +3,22 @@ package com.tencent.mobileqq.webview.swift.component;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bihj;
-import bisl;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ScreenShotShareHelper;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import nwh;
-import tkm;
-import znl;
 
-public class SwiftBrowserScreenShotHandler$6
+class SwiftBrowserScreenShotHandler$6
   implements Runnable
 {
-  public SwiftBrowserScreenShotHandler$6(bihj parambihj, String paramString, Bundle paramBundle, boolean paramBoolean) {}
+  SwiftBrowserScreenShotHandler$6(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler, String paramString, Bundle paramBundle, boolean paramBoolean) {}
   
   public void run()
   {
-    String str = nwh.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    boolean bool2 = bihj.a(this.this$0).a().isShowing();
+    String str = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    boolean bool2 = SwiftBrowserScreenShotHandler.a(this.this$0).a().isShowing();
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.this$0.b))) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -37,23 +36,23 @@ public class SwiftBrowserScreenShotHandler$6
           break label289;
         }
         this.this$0.jdField_a_of_type_JavaLangString = str;
-        bihj.a(this.this$0).a(3);
+        SwiftBrowserScreenShotHandler.a(this.this$0).a(3);
         if (!this.jdField_a_of_type_Boolean) {
           break;
         }
-        bihj.a(this.this$0).d(this.this$0.jdField_a_of_type_JavaLangString);
+        SwiftBrowserScreenShotHandler.a(this.this$0).d(this.this$0.jdField_a_of_type_JavaLangString);
       }
       return;
     }
     this.this$0.jdField_a_of_type_AndroidOsHandler.post(new SwiftBrowserScreenShotHandler.6.2(this));
     return;
     label289:
-    znl.a(1, 2131695005);
+    QRUtils.a(1, 2131695244);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler.6
  * JD-Core Version:    0.7.0.1
  */

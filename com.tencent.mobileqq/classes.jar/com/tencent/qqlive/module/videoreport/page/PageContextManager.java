@@ -1,11 +1,10 @@
 package com.tencent.qqlive.module.videoreport.page;
 
-import java.util.Map;
-import java.util.WeakHashMap;
+import android.util.SparseArray;
 
 public class PageContextManager
 {
-  private final Map<Object, PageContext> mContextMap = new WeakHashMap();
+  private SparseArray<PageContext> mContextMap = new SparseArray();
   
   public static PageContextManager getInstance()
   {
@@ -17,22 +16,19 @@ public class PageContextManager
     this.mContextMap.clear();
   }
   
-  public PageContext get(Object paramObject)
+  public PageContext get(int paramInt)
   {
-    return (PageContext)this.mContextMap.get(paramObject);
+    return (PageContext)this.mContextMap.get(paramInt);
   }
   
-  public void remove(Object paramObject)
+  public void remove(int paramInt)
   {
-    if (paramObject == null) {
-      return;
-    }
-    this.mContextMap.remove(paramObject);
+    this.mContextMap.remove(paramInt);
   }
   
-  public void set(Object paramObject, PageContext paramPageContext)
+  public void set(int paramInt, PageContext paramPageContext)
   {
-    this.mContextMap.put(paramObject, paramPageContext);
+    this.mContextMap.put(paramInt, paramPageContext);
   }
 }
 

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.doodle.control;
 
-import agef;
-import ageg;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,17 +13,17 @@ public class ColorView
   extends View
 {
   private int jdField_a_of_type_Int;
-  private ageg jdField_a_of_type_Ageg;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int b = AIOUtils.dp2px(4.0F, getResources());
+  private ColorView.ColorViewListener jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView$ColorViewListener;
+  private int b = AIOUtils.a(4.0F, getResources());
   
   public ColorView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
@@ -65,15 +63,15 @@ public class ColorView
     invalidate();
   }
   
-  public void setListener(ageg paramageg)
+  public void setListener(ColorView.ColorViewListener paramColorViewListener)
   {
-    this.jdField_a_of_type_Ageg = paramageg;
-    setOnClickListener(new agef(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView$ColorViewListener = paramColorViewListener;
+    setOnClickListener(new ColorView.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.ColorView
  * JD-Core Version:    0.7.0.1
  */

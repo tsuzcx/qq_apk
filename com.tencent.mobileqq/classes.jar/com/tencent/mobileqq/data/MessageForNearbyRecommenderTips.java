@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import apab;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 
 public class MessageForNearbyRecommenderTips
   extends ChatMessage
@@ -13,7 +13,7 @@ public class MessageForNearbyRecommenderTips
   {
     try
     {
-      MessageForNearbyRecommenderTips.NearbyRecommenderInfo localNearbyRecommenderInfo = (MessageForNearbyRecommenderTips.NearbyRecommenderInfo)apab.a(this.msgData);
+      MessageForNearbyRecommenderTips.NearbyRecommenderInfo localNearbyRecommenderInfo = (MessageForNearbyRecommenderTips.NearbyRecommenderInfo)MessagePkgUtils.a(this.msgData);
       if (localNearbyRecommenderInfo != null)
       {
         this.uRecommendTime = localNearbyRecommenderInfo.uRecommendTime;
@@ -50,7 +50,7 @@ public class MessageForNearbyRecommenderTips
     localNearbyRecommenderInfo.strBrief = this.strBrief;
     try
     {
-      this.msgData = apab.a(localNearbyRecommenderInfo);
+      this.msgData = MessagePkgUtils.a(localNearbyRecommenderInfo);
       return;
     }
     catch (Exception localException)
@@ -61,7 +61,7 @@ public class MessageForNearbyRecommenderTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNearbyRecommenderTips
  * JD-Core Version:    0.7.0.1
  */

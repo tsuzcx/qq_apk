@@ -11,15 +11,15 @@ public final class HttpUploadReq
   static byte[] cache_v10MMd5;
   static byte[] cache_vEncryptUsrInfo;
   static byte[] cache_vFileData;
-  public DefineAvatarInfo AvatarInfo;
-  public byte ifUpQQAvatar;
+  public DefineAvatarInfo AvatarInfo = null;
+  public byte ifUpQQAvatar = 0;
   public String strFileName = "";
-  public int uFileSize;
-  public int uFromPos;
-  public int uLength;
-  public byte[] v10MMd5;
-  public byte[] vEncryptUsrInfo;
-  public byte[] vFileData;
+  public int uFileSize = 0;
+  public int uFromPos = 0;
+  public int uLength = 0;
+  public byte[] v10MMd5 = null;
+  public byte[] vEncryptUsrInfo = null;
+  public byte[] vFileData = null;
   
   public HttpUploadReq() {}
   

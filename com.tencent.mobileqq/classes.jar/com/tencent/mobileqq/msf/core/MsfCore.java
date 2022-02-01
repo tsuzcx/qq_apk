@@ -11,9 +11,8 @@ import android.os.HandlerThread;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.monitor.MsfMonitorCallback;
-import com.tencent.mobileqq.msf.core.auth.d;
 import com.tencent.mobileqq.msf.core.auth.l;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.core.push.RegPushReason;
 import com.tencent.mobileqq.msf.sdk.CommandCallbackerInfo;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
@@ -23,6 +22,7 @@ import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.msf.sdk.aa;
 import com.tencent.mobileqq.msf.sdk.z;
+import com.tencent.mobileqq.msf.service.e;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -70,21 +70,20 @@ public class MsfCore
   public int mLocaleId;
   public MsfMonitorCallback mMsfMonitorCallback = null;
   public AtomicBoolean mbIsInfoLoginGetted = new AtomicBoolean();
-  u msfAlarmer;
+  m msfAlarmer;
   private int msfAppid = -1;
   private MsfExitReceiver msfExitReceiver;
   LinkedBlockingQueue msfMessagePairs = new LinkedBlockingQueue();
-  public com.tencent.mobileqq.msf.core.c.b mtaReporter;
   public NetConnInfoCenter netConnICenter;
-  public com.tencent.mobileqq.msf.core.c.e netFlowStore;
+  public com.tencent.mobileqq.msf.core.c.d netFlowStore;
   public volatile String nowSocketConnAdd;
   public com.tencent.mobileqq.msf.core.push.g pushManager;
   public com.tencent.mobileqq.msf.core.quicksend.b quicksender;
-  public aj sender;
+  public ac sender;
   com.tencent.mobileqq.msf.core.a.c ssoListManager;
-  private am ssoRespHandler;
+  private af ssoRespHandler;
   com.tencent.mobileqq.msf.core.d.a standbyModeManager;
-  public k statReporter;
+  public j statReporter;
   MsfStore store;
   AtomicBoolean suspended = new AtomicBoolean(false);
   public SimpleDateFormat timeFormatter = new SimpleDateFormat("yy-MM-dd HH:mm:ss", Locale.getDefault());
@@ -132,7 +131,7 @@ public class MsfCore
     localFromServiceMsg.addAttribute("_attr_deviceGUID", l.a());
     localFromServiceMsg.addAttribute("_attr_app_timeout", Integer.valueOf(com.tencent.mobileqq.msf.core.a.a.br()));
     localFromServiceMsg.setMsgSuccess();
-    com.tencent.mobileqq.msf.service.e.a("*", null, localFromServiceMsg);
+    e.a("*", null, localFromServiceMsg);
   }
   
   private void initLocaleId()
@@ -178,7 +177,7 @@ public class MsfCore
         {
           l1 = System.currentTimeMillis();
           l2 = ((Long)paramToServiceMsg.getAttribute("__timestamp_addSendQueue")).longValue();
-          l3 = k.a(paramToServiceMsg, paramFromServiceMsg);
+          l3 = j.a(paramToServiceMsg, paramFromServiceMsg);
           String str1 = "0";
           str3 = "0";
           if (paramToServiceMsg.getAttributes().containsKey("_tag_socket")) {
@@ -267,7 +266,7 @@ public class MsfCore
           if (paramToServiceMsg.getAttributes().containsKey("__timestamp_addSendQueue")) {
             l1 = System.currentTimeMillis() - ((Long)paramToServiceMsg.getAttribute("__timestamp_addSendQueue")).longValue();
           }
-          l3 = k.a(paramToServiceMsg, paramFromServiceMsg);
+          l3 = j.a(paramToServiceMsg, paramFromServiceMsg);
           str2 = "0";
           str3 = "0";
           if (paramToServiceMsg.getAttributes().containsKey("_tag_socket")) {
@@ -336,7 +335,7 @@ public class MsfCore
     return str;
   }
   
-  public u getMsfAlarmer()
+  public m getMsfAlarmer()
   {
     return this.msfAlarmer;
   }
@@ -351,14 +350,14 @@ public class MsfCore
     return this.msfMessagePairs;
   }
   
-  public com.tencent.mobileqq.msf.core.c.e getNetFlowStore()
+  public com.tencent.mobileqq.msf.core.c.d getNetFlowStore()
   {
     return this.netFlowStore;
   }
   
   public HandlerThread getNetworkHandlerThread()
   {
-    return x.c();
+    return q.c();
   }
   
   public void getPluginConfig(ToServiceMsg paramToServiceMsg)
@@ -371,7 +370,7 @@ public class MsfCore
     return this.ssoListManager;
   }
   
-  public am getSsoRespHandler()
+  public af getSsoRespHandler()
   {
     return this.ssoRespHandler;
   }
@@ -381,7 +380,7 @@ public class MsfCore
     return this.standbyModeManager;
   }
   
-  public k getStatReporter()
+  public j getStatReporter()
   {
     return this.statReporter;
   }
@@ -474,25 +473,22 @@ public class MsfCore
     long l1 = SystemClock.elapsedRealtime();
     sCore = this;
     this.mbIsInfoLoginGetted.set(false);
-    k localk = new k(this);
-    localk.e();
+    j localj = new j(this);
+    localj.e();
     QLog.d("MSF.C.MsfCore", 1, "init RQD cost=" + (SystemClock.elapsedRealtime() - l1));
     long l2 = SystemClock.elapsedRealtime();
     boolean bool1 = false;
-    int k = -1;
     int i = -1;
     int j;
     try
     {
       j = c.g(paramContext);
       i = j;
-      int m = c.e(paramContext);
-      i = m;
-      if ((j == -1) || (i == -1) || (i != j)) {
+      k = c.e(paramContext);
+      if ((j == -1) || (k == -1) || (k != j)) {
         bool1 = true;
       }
-      k = j;
-      j = i;
+      i = k;
     }
     catch (Exception localException2)
     {
@@ -500,26 +496,27 @@ public class MsfCore
       {
         File localFile = new File(MOBILEQQSDROOT_PATH);
         if (localFile.exists()) {
-          break label222;
+          break label214;
         }
         localFile.mkdirs();
         localFile = new File(OLDKSID_PATH);
         if ((!localFile.exists()) || (!localFile.isDirectory())) {
-          break label256;
+          break label248;
         }
         localFile.delete();
-        QLog.i("MSF.C.MsfCore", 1, "check copysolib platform=" + c.c(paramContext) + " installAppVersionCode=" + j + " isNewVersion=" + bool1);
+        QLog.i("MSF.C.MsfCore", 1, "check copysolib platform=" + c.c(paramContext) + " installAppVersionCode=" + i + " isNewVersion=" + bool1);
         bool2 = "x86".equals(c.c(paramContext));
         if (!bool2) {
-          break label555;
+          break label547;
         }
       }
       catch (Exception localException2)
       {
         try
         {
+          int k;
           boolean bool2;
-          c.a(paramContext, c.c(paramContext), bool1, j, new String[] { "libcodecwrapperV2.so", "libmsfbootV2.so", "libNativeRQD.so", "libwtecdh.so" });
+          c.a(paramContext, c.c(paramContext), bool1, i, new String[] { "libcodecwrapperV2.so", "libmsfbootV2.so", "libNativeRQD.so", "libwtecdh.so" });
           for (;;)
           {
             QLog.d("MSF.C.MsfCore", 1, "init copySo cost=" + (SystemClock.elapsedRealtime() - l2));
@@ -531,7 +528,7 @@ public class MsfCore
             {
               this.store = new MsfStore();
               if (this.store.init(paramContext)) {
-                break label652;
+                break label643;
               }
               QLog.e("MSF.C.MsfCore", 1, "MsfStore init fail");
               return false;
@@ -544,13 +541,14 @@ public class MsfCore
             localException1 = localException1;
             QLog.e("MSF.C.MsfCore", 1, "checkAppVersionCode error " + localException1, localException1);
             bool1 = true;
-            j = k;
-            k = i;
+            k = -1;
+            j = i;
+            i = k;
             break;
             localException2 = localException2;
             QLog.e("MSF.C.MsfCore", 1, "File operation error " + localException2);
-            break label256;
-            c.a(paramContext, c.c(paramContext), bool1, j, new String[] { "libcodecwrapperV2.so", "libNativeRQD.so" });
+            break label248;
+            c.a(paramContext, c.c(paramContext), bool1, i, new String[] { "libcodecwrapperV2.so", "libNativeRQD.so" });
           }
         }
         catch (Exception localException3)
@@ -564,20 +562,20 @@ public class MsfCore
       }
     }
     com.tencent.mobileqq.msf.service.k.t = bool1;
-    w.c();
+    o.c();
     if (Build.VERSION.SDK_INT >= 26) {
-      this.mDeepSleepDetector = new com.tencent.mobileqq.msf.core.net.c.a(x.f());
+      this.mDeepSleepDetector = new com.tencent.mobileqq.msf.core.net.c.a(q.f());
     }
     QLog.d("MSF.C.MsfCore", 1, "init deviceInfo cost=" + (SystemClock.elapsedRealtime() - l2));
     l2 = SystemClock.elapsedRealtime();
-    label222:
+    label214:
+    label248:
     QLog.d("MSF.C.MsfCore", 1, "init msfStore cost=" + (SystemClock.elapsedRealtime() - l2));
-    label256:
-    label555:
+    label547:
     l2 = SystemClock.elapsedRealtime();
     try
     {
-      label652:
+      label643:
       String str = MsfStore.getNativeConfigStore().getConfig("key_mobileQQAppid");
       if ((str != null) && (str.length() > 0))
       {
@@ -591,7 +589,7 @@ public class MsfCore
     {
       try
       {
-        this.msfAlarmer = new u(this);
+        this.msfAlarmer = new m(this);
         this.msfAlarmer.a();
         QLog.d("MSF.C.MsfCore", 1, "init msfAlarm cost=" + (SystemClock.elapsedRealtime() - l2));
         l2 = SystemClock.elapsedRealtime();
@@ -624,7 +622,7 @@ public class MsfCore
                 l2 = SystemClock.elapsedRealtime();
                 try
                 {
-                  this.sender = new aj(this);
+                  this.sender = new ac(this);
                   if (this.sender.a(paramContext)) {
                     break;
                   }
@@ -669,11 +667,11 @@ public class MsfCore
     this.accountCenter.a(true);
     QLog.d("MSF.C.MsfCore", 2, "init accountCenter cost=" + (SystemClock.elapsedRealtime() - l2));
     l2 = SystemClock.elapsedRealtime();
-    this.ssoRespHandler = new am(this);
+    this.ssoRespHandler = new af(this);
     try
     {
       this.lightSender = new g(this, paramContext);
-      if (com.tencent.mobileqq.msf.core.quicksend.b.f()) {
+      if (com.tencent.mobileqq.msf.core.quicksend.b.g()) {
         this.lightTcpSender = new h(this, paramContext);
       }
       this.accountCenter.a();
@@ -710,7 +708,7 @@ public class MsfCore
                 this.accountCenter.g.b();
                 QLog.d("MSF.C.MsfCore", 1, "init standby&quickSender cost=" + (SystemClock.elapsedRealtime() - l2));
                 SystemClock.elapsedRealtime();
-                new v(this, localk, bool1, j, k).start();
+                new n(this, localj, i, j).start();
                 this.coreInitFinished.set(true);
                 initLocaleId();
                 paramContext = BaseApplication.getContext().getSharedPreferences("sp_msf_common", 0);
@@ -867,7 +865,7 @@ public class MsfCore
   public void sendMsgSignal()
   {
     if (this.sender != null) {
-      this.sender.p();
+      this.sender.r();
     }
   }
   
@@ -882,14 +880,14 @@ public class MsfCore
     {
       if ("MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd()))
       {
-        ap.b(this, paramToServiceMsg);
+        ai.b(this, paramToServiceMsg);
         com.tencent.mobileqq.a.a.a.a().b(paramToServiceMsg);
       }
       for (;;)
       {
         return paramToServiceMsg.getRequestSsoSeq();
         if ("RegPrxySvc.infoSync".equals(paramToServiceMsg.getServiceCmd())) {
-          ap.a(this, paramToServiceMsg);
+          ai.a(this, paramToServiceMsg);
         }
       }
     }
@@ -933,7 +931,7 @@ public class MsfCore
     QLog.d("msfCore", 1, "startPCActivePolling by " + paramString2);
     try
     {
-      ab.a().a(true);
+      u.a().a(true);
       this.pushManager.q().a(paramString1);
       if (this.statReporter != null)
       {
@@ -961,7 +959,7 @@ public class MsfCore
     QLog.d("msfCore", 1, "stopPCActivePolling by " + paramString);
     try
     {
-      ab.a().a(false);
+      u.a().a(false);
       this.pushManager.q().a();
       return;
     }
@@ -1113,7 +1111,7 @@ public class MsfCore
   
   public void wt_GetStViaSMSVerifyLogin(ToServiceMsg paramToServiceMsg)
   {
-    this.wtLoginCenter.L(paramToServiceMsg);
+    this.wtLoginCenter.M(paramToServiceMsg);
   }
   
   public void wt_GetStWithPasswd(ToServiceMsg paramToServiceMsg)
@@ -1124,6 +1122,11 @@ public class MsfCore
   public void wt_GetStWithoutPasswd(ToServiceMsg paramToServiceMsg)
   {
     this.wtLoginCenter.q(paramToServiceMsg);
+  }
+  
+  public void wt_QuickLoginByGateway(ToServiceMsg paramToServiceMsg)
+  {
+    this.wtLoginCenter.L(paramToServiceMsg);
   }
   
   public void wt_RefreshPictureData(ToServiceMsg paramToServiceMsg)

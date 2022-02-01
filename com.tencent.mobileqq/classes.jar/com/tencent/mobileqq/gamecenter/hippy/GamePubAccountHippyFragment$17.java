@@ -1,0 +1,18 @@
+package com.tencent.mobileqq.gamecenter.hippy;
+
+class GamePubAccountHippyFragment$17
+  implements Runnable
+{
+  GamePubAccountHippyFragment$17(GamePubAccountHippyFragment paramGamePubAccountHippyFragment) {}
+  
+  public void run()
+  {
+    GamePubAccountHippyFragment.a(this.this$0);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.gamecenter.hippy.GamePubAccountHippyFragment.17
+ * JD-Core Version:    0.7.0.1
+ */

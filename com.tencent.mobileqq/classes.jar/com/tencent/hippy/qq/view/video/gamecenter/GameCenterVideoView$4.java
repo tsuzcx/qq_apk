@@ -7,12 +7,12 @@ class GameCenterVideoView$4
   
   public void run()
   {
-    GameCenterVideoView.access$2200(this.this$0);
+    GameCenterVideoView.access$2300(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView.4
  * JD-Core Version:    0.7.0.1
  */

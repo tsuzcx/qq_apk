@@ -137,7 +137,7 @@ final class FlutterSplashView
     paramFlutterView.addFlutterEngineAttachmentListener(this.flutterEngineAttachmentListener);
   }
   
-  protected void onRestoreInstanceState(Parcelable paramParcelable)
+  public void onRestoreInstanceState(Parcelable paramParcelable)
   {
     paramParcelable = (FlutterSplashView.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
@@ -146,7 +146,7 @@ final class FlutterSplashView
   }
   
   @Nullable
-  protected Parcelable onSaveInstanceState()
+  public Parcelable onSaveInstanceState()
   {
     FlutterSplashView.SavedState localSavedState = new FlutterSplashView.SavedState(super.onSaveInstanceState());
     FlutterSplashView.SavedState.access$602(localSavedState, this.previousCompletedSplashIsolate);
@@ -160,7 +160,7 @@ final class FlutterSplashView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterSplashView
  * JD-Core Version:    0.7.0.1
  */

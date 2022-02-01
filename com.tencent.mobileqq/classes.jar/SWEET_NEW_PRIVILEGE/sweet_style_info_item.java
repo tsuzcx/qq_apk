@@ -11,8 +11,8 @@ public final class sweet_style_info_item
 {
   static Map<String, String> cache_map_ext = new HashMap();
   public String jump_url = "";
-  public long level;
-  public Map<String, String> map_ext;
+  public long level = 0L;
+  public Map<String, String> map_ext = null;
   public String pic_url = "";
   
   static

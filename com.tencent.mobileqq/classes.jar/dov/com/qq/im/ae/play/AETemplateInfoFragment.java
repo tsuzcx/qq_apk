@@ -1,7 +1,5 @@
 package dov.com.qq.im.ae.play;
 
-import aeow;
-import aeox;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -26,18 +24,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bmws;
-import bnlb;
-import bnlf;
-import bnqm;
-import bnqu;
-import bnrf;
-import bnrh;
-import bnrj;
-import bpdd;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.PublicFragmentActivityCallBackInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForPeak;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -50,7 +41,6 @@ import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.openapi.initializer.PagInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
-import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
 import com.tencent.ttpic.openapi.offlineset.OfflineFileUpdater;
 import com.tencent.ttpic.videoshelf.libpag.PagNotSupportSystemException;
 import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
@@ -62,25 +52,35 @@ import com.tencent.ttpic.videoshelf.model.template.MaskNodeGroup;
 import com.tencent.ttpic.videoshelf.model.template.MaskNodeItem;
 import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
 import com.tencent.ttpic.videoshelf.parser.TemplateParser;
+import dov.com.qq.im.ae.AEPath.PLAY.CACHE;
+import dov.com.qq.im.ae.entry.AECameraEntry;
+import dov.com.qq.im.ae.entry.AECameraLauncher;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.util.AECameraPrefsUtil;
+import dov.com.qq.im.ae.util.AEFastClickThrottle;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.ae.util.PicChooseJumpUtil;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import org.light.device.OfflineConfig;
 
 public class AETemplateInfoFragment
   extends IphoneTitleBarFragment
-  implements aeox, View.OnClickListener
+  implements View.OnClickListener, PublicFragmentActivityCallBackInterface
 {
-  public static final String CACHE_DIR = bmws.b;
+  public static final String CACHE_DIR = AEPath.PLAY.CACHE.b;
   public static final String PREFERENCE_K_QUDONG_LAST_CRAZY_FACE_PHOTO = "ae_preference_k_qudong_last_crazy_face_photo";
   public static final int REQUEST_CODE_TAKE_FACE_PHOTO = 1024;
   private static final String TAG = "AETemplateInfoFragment";
   private List<String> crazyFaceMaterials;
   private boolean isCrazyFace;
   private ArrayList<String> mCropPhotoCacheList = new ArrayList();
-  private boolean mHasTextNode;
-  private boolean mIsEnglish;
+  private boolean mHasTextNode = false;
+  private boolean mIsEnglish = false;
   private boolean mIsSimpleChinese = true;
   private ImageView mLastImg;
   private ViewGroup mLastLayout;
@@ -97,7 +97,7 @@ public class AETemplateInfoFragment
   private AETemplateInfoFragment.PlayerListener mPlayerListener;
   private TextView mPlayerRateView;
   private ArrayList<String> mSelectedPhotoList;
-  private boolean mSurfaceReady;
+  private boolean mSurfaceReady = false;
   private String mTakeSameName;
   private VideoShelfTemplate mTemplate;
   private TextView mTipsTextView;
@@ -173,7 +173,7 @@ public class AETemplateInfoFragment
       return;
       localBitmap = BitmapUtils.decodeSampleBitmap(getActivity(), paramString, this.screenWidth, this.screenHeight);
     } while (localBitmap == null);
-    bnqu.a().a("ae_preference_k_qudong_last_crazy_face_photo", paramString, 0);
+    AECameraPrefsUtil.a().a("ae_preference_k_qudong_last_crazy_face_photo", paramString, 0);
     showLoading(true);
     long l = System.currentTimeMillis();
     this.mNeedPlayVideo = false;
@@ -184,7 +184,7 @@ public class AETemplateInfoFragment
   private String cropHeadOfImage(String paramString)
   {
     Object localObject1 = new File(paramString);
-    Object localObject2 = new File(bmws.a);
+    Object localObject2 = new File(AEPath.PLAY.CACHE.a);
     if (!((File)localObject2).exists()) {
       ((File)localObject2).mkdirs();
     }
@@ -218,15 +218,15 @@ public class AETemplateInfoFragment
   public static int getFromType(Context paramContext)
   {
     if ((paramContext instanceof Activity)) {
-      return ((Activity)paramContext).getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", bnlb.a.a());
+      return ((Activity)paramContext).getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
     }
-    return bnlb.a.a();
+    return AECameraEntry.a.a();
   }
   
   private void initData()
   {
-    this.screenWidth = bpdd.a(getActivity());
-    this.screenHeight = bpdd.b(getActivity());
+    this.screenWidth = DisplayUtil.a(getActivity());
+    this.screenHeight = DisplayUtil.b(getActivity());
     Intent localIntent = getActivity().getIntent();
     if (localIntent != null)
     {
@@ -252,11 +252,11 @@ public class AETemplateInfoFragment
       this.isCrazyFace = bool;
       if (this.isCrazyFace)
       {
-        this.mLastPhotoPath = bnqu.a().a("ae_preference_k_qudong_last_crazy_face_photo", null, 0);
+        this.mLastPhotoPath = AECameraPrefsUtil.a().a("ae_preference_k_qudong_last_crazy_face_photo", null, 0);
         if (!TextUtils.isEmpty(this.mLastPhotoPath))
         {
-          int i = getActivity().getResources().getDimensionPixelSize(2131296365);
-          int j = getActivity().getResources().getDimensionPixelSize(2131296366);
+          int i = getActivity().getResources().getDimensionPixelSize(2131296381);
+          int j = getActivity().getResources().getDimensionPixelSize(2131296382);
           this.mLastPhoto = BitmapUtils.decodeSampleBitmap(getActivity(), this.mLastPhotoPath, j, i);
         }
       }
@@ -302,24 +302,24 @@ public class AETemplateInfoFragment
   private void initView()
   {
     View localView = getView();
-    this.mNextButton = ((TextView)localView.findViewById(2131371944));
-    this.mLastImg = ((ImageView)localView.findViewById(2131368712));
-    this.mLastLayout = ((ViewGroup)localView.findViewById(2131369867));
+    this.mNextButton = ((TextView)localView.findViewById(2131372251));
+    this.mLastImg = ((ImageView)localView.findViewById(2131368943));
+    this.mLastLayout = ((ViewGroup)localView.findViewById(2131370138));
     this.mNextButton.setOnClickListener(this);
     this.mLastLayout.setOnClickListener(this);
-    this.mTitleTextView = ((TextView)localView.findViewById(2131379001));
-    this.mTipsTextView = ((TextView)localView.findViewById(2131378963));
-    this.mPlayerRateView = ((TextView)localView.findViewById(2131372953));
+    this.mTitleTextView = ((TextView)localView.findViewById(2131379432));
+    this.mTipsTextView = ((TextView)localView.findViewById(2131379394));
+    this.mPlayerRateView = ((TextView)localView.findViewById(2131373279));
     if (isDebugVersion())
     {
       this.mPlayerRateView.setVisibility(0);
       this.mPlayerRateView.setText("0(fps)");
       this.mPlayerRateView.setTextColor(-65536);
     }
-    this.playerStatusView = ((ImageView)localView.findViewById(2131372954));
-    this.mVideoView = ((TextureView)localView.findViewById(2131373137));
+    this.playerStatusView = ((ImageView)localView.findViewById(2131373280));
+    this.mVideoView = ((TextureView)localView.findViewById(2131373463));
     this.mVideoView.setKeepScreenOn(true);
-    this.mPlayerContainer = ((FrameLayout)localView.findViewById(2131372943));
+    this.mPlayerContainer = ((FrameLayout)localView.findViewById(2131373266));
     this.mPlayerContainer.getViewTreeObserver().addOnGlobalLayoutListener(new AETemplateInfoFragment.1(this));
     this.mVideoView.setOnClickListener(this);
     this.mVideoView.setSurfaceTextureListener(new AETemplateInfoFragment.PlayerSurfaceTextureCallback(this));
@@ -331,15 +331,15 @@ public class AETemplateInfoFragment
         this.mLastLayout.setVisibility(0);
         this.mLastImg.setImageBitmap(this.mLastPhoto);
         this.mNextButton.setTextColor(-16777216);
-        this.mNextButton.setBackgroundResource(2130837699);
-        this.mNextButton.setText(2131689778);
+        this.mNextButton.setBackgroundResource(2130837704);
+        this.mNextButton.setText(2131689818);
         this.mTipsTextView.setVisibility(8);
       }
     }
     else {
       return;
     }
-    this.mTipsTextView.setText(2131689775);
+    this.mTipsTextView.setText(2131689815);
     this.mTipsTextView.setVisibility(0);
   }
   
@@ -379,14 +379,14 @@ public class AETemplateInfoFragment
     localIntent.putExtra("loc_play_show_tab_name", paramString1);
     localIntent.putExtra("VIDEO_STORY_FROM_TYPE", getFromType(paramContext));
     localIntent.putExtra("loc_play_show_take_same_name", paramString5);
-    aeow.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
+    PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
   }
   
   private void jumpToPagRealtimePreview(boolean paramBoolean)
   {
     int i = 0;
     Log.i("AETemplateInfoFragment", "未合成视频，将直接实时预览。");
-    bnrh.b("AETemplateInfoFragment", "未合成视频，将直接实时预览。");
+    AEQLog.b("AETemplateInfoFragment", "未合成视频，将直接实时预览。");
     if (this.mTemplate == null) {
       return;
     }
@@ -461,7 +461,7 @@ public class AETemplateInfoFragment
     }
     catch (IllegalArgumentException paramString)
     {
-      bnrh.c("AETemplateInfoFragment", "loadTemplate Error!");
+      AEQLog.c("AETemplateInfoFragment", "loadTemplate Error!");
     }
   }
   
@@ -470,7 +470,7 @@ public class AETemplateInfoFragment
     int i1 = 1;
     if ((this.mTemplate == null) || (TextUtils.isEmpty(this.mTemplate.getMaterialPath())))
     {
-      bnrh.c("AETemplateInfoFragment", "onNext template Error!");
+      AEQLog.c("AETemplateInfoFragment", "onNext template Error!");
       return;
     }
     if (this.isCrazyFace)
@@ -537,7 +537,7 @@ public class AETemplateInfoFragment
   
   private void onPlayError()
   {
-    bnrh.c("AETemplateInfoFragment", "onPlayError!");
+    AEQLog.c("AETemplateInfoFragment", "onPlayError!");
   }
   
   private void pauseVideo()
@@ -618,7 +618,7 @@ public class AETemplateInfoFragment
     paramIntent.addFlags(67108864);
     paramIntent.addFlags(536870912);
     paramIntent.putExtra("VIDEO_STORY_FROM_TYPE", getFromType(paramContext));
-    aeow.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
+    PublicFragmentActivity.Launcher.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
   }
   
   private void showFirstEntryTipDialog()
@@ -634,15 +634,15 @@ public class AETemplateInfoFragment
         this.tipDialog.show();
       }
       return;
-      this.tipDialog = new ReportDialog(getActivity(), 2131755829);
+      this.tipDialog = new ReportDialog(getActivity(), 2131755842);
       this.tipDialog.setCancelable(true);
       this.tipDialog.setCanceledOnTouchOutside(true);
-      this.tipDialog.setContentView(2131558518);
+      this.tipDialog.setContentView(2131558529);
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getActivity().getResources().getDrawable(2131167363);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getActivity().getResources().getDrawable(2131167374);
       localObject = URLDrawable.getDrawable("https://dl.url.cn/myapp/qq_desk/qqrm/videofilter/Pturenwu/tipss.png", (URLDrawable.URLDrawableOptions)localObject);
-      URLImageView localURLImageView = (URLImageView)this.tipDialog.findViewById(2131369218);
-      TextView localTextView = (TextView)this.tipDialog.findViewById(2131379732);
+      URLImageView localURLImageView = (URLImageView)this.tipDialog.findViewById(2131369473);
+      TextView localTextView = (TextView)this.tipDialog.findViewById(2131380159);
       localURLImageView.setImageDrawable((Drawable)localObject);
       this.tipDialog.show();
       localTextView.setOnClickListener(new AETemplateInfoFragment.3(this));
@@ -659,10 +659,10 @@ public class AETemplateInfoFragment
       }
       if (this.mLoadingDialog == null)
       {
-        this.mLoadingDialog = new ReportDialog(localFragmentActivity, 2131755829);
+        this.mLoadingDialog = new ReportDialog(localFragmentActivity, 2131755842);
         this.mLoadingDialog.setCancelable(false);
         this.mLoadingDialog.setCanceledOnTouchOutside(false);
-        this.mLoadingDialog.setContentView(2131559607);
+        this.mLoadingDialog.setContentView(2131559683);
       }
       this.mLoadingDialog.show();
     }
@@ -682,7 +682,7 @@ public class AETemplateInfoFragment
       return;
     }
     this.mTitleTextView.setText(this.mMaterialName);
-    getActivity().findViewById(2131365521).setVisibility(8);
+    getActivity().findViewById(2131365682).setVisibility(8);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mTipsTextView.getLayoutParams();
     this.mTipsTextView.setLines(2);
     localLayoutParams.height = ((int)(32.0F * this.mTipsTextView.getContext().getResources().getDisplayMetrics().density));
@@ -692,7 +692,7 @@ public class AETemplateInfoFragment
   
   private void startAlumNext(int paramInt)
   {
-    bnrj.a(getActivity(), paramInt);
+    PicChooseJumpUtil.a(getActivity(), paramInt);
   }
   
   private void startPreviewNext()
@@ -706,16 +706,16 @@ public class AETemplateInfoFragment
   {
     if (!isNeedRealTimePlay())
     {
-      QQToast.a(getActivity(), getActivity().getString(2131689768), 0).a();
+      QQToast.a(getActivity(), getActivity().getString(2131689808), 0).a();
       return;
     }
-    if (bnqu.a().a("key_first_change_face_click_flag", true, 0))
+    if (AECameraPrefsUtil.a().a("key_first_change_face_click_flag", true, 0))
     {
-      bnqu.a().a("key_first_change_face_click_flag", false, 0);
+      AECameraPrefsUtil.a().a("key_first_change_face_click_flag", false, 0);
       showFirstEntryTipDialog();
       return;
     }
-    bnlf.a(getActivity(), 1024, bnlb.H.a(), null);
+    AECameraLauncher.a(getActivity(), 1024, AECameraEntry.I.a(), null);
   }
   
   private void stopVideo()
@@ -744,7 +744,7 @@ public class AETemplateInfoFragment
       {
         for (;;)
         {
-          bnrh.a("AETemplateInfoFragment", "mVideoPlayer.setSurface(null) raise exception: ", localException);
+          AEQLog.a("AETemplateInfoFragment", "mVideoPlayer.setSurface(null) raise exception: ", localException);
         }
       }
     }
@@ -795,7 +795,7 @@ public class AETemplateInfoFragment
       }
       catch (PagNotSupportSystemException paramSurfaceTexture)
       {
-        bnrh.d("AETemplateInfoFragment", paramSurfaceTexture.getMessage());
+        AEQLog.d("AETemplateInfoFragment", paramSurfaceTexture.getMessage());
         popNotSupportPagToast("pag版本过低");
         return;
       }
@@ -844,7 +844,7 @@ public class AETemplateInfoFragment
   
   public int getContentLayoutId()
   {
-    return 2131558505;
+    return 2131558513;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -862,7 +862,7 @@ public class AETemplateInfoFragment
   
   public void onClick(View paramView)
   {
-    if (bnrf.a(paramView)) {}
+    if (AEFastClickThrottle.a(paramView)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
@@ -871,22 +871,22 @@ public class AETemplateInfoFragment
       {
       default: 
         break;
-      case 2131364141: 
+      case 2131364248: 
         onBackPressed();
         break;
-      case 2131371944: 
+      case 2131372251: 
         onNext();
         if (!this.isCrazyFace) {
-          bnqm.a().O();
+          AEBaseDataReporter.a().M();
         } else {
-          bnqm.a().P();
+          AEBaseDataReporter.a().N();
         }
         break;
-      case 2131369867: 
+      case 2131370138: 
         changeFace(this.mLastPhotoPath);
-        bnqm.a().Q();
+        AEBaseDataReporter.a().O();
         break;
-      case 2131373137: 
+      case 2131373463: 
         toggleVideoStatus();
       }
     }
@@ -965,7 +965,7 @@ public class AETemplateInfoFragment
     this.vg.setTitle("模板详情");
     if (!FeatureManager.Features.PAG.init())
     {
-      bnrh.d("AETemplateInfoFragment", "pag相关so未初始化成功");
+      AEQLog.d("AETemplateInfoFragment", "pag相关so未初始化成功");
       QQToast.a(getActivity(), "pag相关so未初始化成功", 0).a();
       return;
     }
@@ -975,7 +975,7 @@ public class AETemplateInfoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AETemplateInfoFragment
  * JD-Core Version:    0.7.0.1
  */

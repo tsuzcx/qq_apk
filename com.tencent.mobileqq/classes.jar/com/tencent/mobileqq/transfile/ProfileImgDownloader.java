@@ -287,7 +287,7 @@ public class ProfileImgDownloader
         bool1 = HttpDownloadUtil.download(null, MsfSdkUtils.insertMtype("qzone", paramOutputStream), localFile2);
         if (bool1)
         {
-          FileUtils.copyFile(paramURLDrawableHandler, paramDownloadParams);
+          FileUtils.d(paramURLDrawableHandler, paramDownloadParams);
           localFile2.delete();
           return localFile1;
         }

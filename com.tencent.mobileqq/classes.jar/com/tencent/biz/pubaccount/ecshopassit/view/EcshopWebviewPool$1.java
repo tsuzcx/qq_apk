@@ -1,13 +1,12 @@
 package com.tencent.biz.pubaccount.ecshopassit.view;
 
 import android.os.Bundle;
-import biiq;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import opv;
 
-public class EcshopWebviewPool$1
+class EcshopWebviewPool$1
   implements Runnable
 {
   public void run()
@@ -16,18 +15,18 @@ public class EcshopWebviewPool$1
     {
       Object localObject = new Bundle();
       ((Bundle)localObject).putInt("_accelerator_mode_", 3);
-      biiq.a().a((Bundle)localObject);
+      SwiftWebAccelerator.a().a((Bundle)localObject);
       localObject = EcshopWebview.a(BaseApplicationImpl.sApplication);
-      opv.a(this.this$0).put(this.a, localObject);
+      EcshopWebviewPool.a(this.this$0).put(this.a, localObject);
       if (QLog.isColorLevel()) {
-        QLog.i("Ecshop_EcshopWebviewPool", 2, "【init】webViewLinkedList.size: " + opv.a(this.this$0).size());
+        QLog.i("Ecshop_EcshopWebviewPool", 2, "【init】webViewLinkedList.size: " + EcshopWebviewPool.a(this.this$0).size());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebviewPool.1
  * JD-Core Version:    0.7.0.1
  */

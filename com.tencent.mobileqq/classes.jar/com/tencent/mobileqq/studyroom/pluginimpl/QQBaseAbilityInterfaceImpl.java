@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.studyroom.pluginimpl;
 
-import aady;
 import android.content.Context;
 import android.os.Bundle;
-import avvz;
-import bdwg;
-import bdwh;
+import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.mobileqq.intervideo.now.dynamic.PluginManagerInterfaceImpl;
+import com.tencent.mobileqq.studyroom.config.StudyRoomConfBean;
+import com.tencent.mobileqq.studyroom.config.StudyRoomConfProcessor;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqinterface.CommonCallback;
 import com.tencent.qqinterface.DownloadCallback;
@@ -15,24 +16,73 @@ import com.tencent.qqinterface.QQConfigAbilityInterface;
 import com.tencent.qqinterface.QQConfigAbilityInterface.Callback;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QQBaseAbilityInterfaceImpl
   implements QQBaseAbilityInterface, QQConfigAbilityInterface
 {
   private static final String TAG = "studyroom.QQBaseAbilityInterface";
-  private final avvz impl = avvz.a();
-  private final aady mClient;
+  private final PluginManagerInterfaceImpl impl = PluginManagerInterfaceImpl.a();
+  private final TroopMemberApiClient mClient;
   private ExecutorService networkExecutor = ThreadManagerExecutor.getExecutorService(128);
   
   public QQBaseAbilityInterfaceImpl()
   {
     QLog.d("studyroom.QQBaseAbilityInterface", 4, "init");
-    this.mClient = aady.a();
+    this.mClient = TroopMemberApiClient.a();
     this.mClient.a();
   }
   
+  private void uploadPic(JSONObject paramJSONObject, QQConfigAbilityInterface.Callback<JSONObject> paramCallback)
+  {
+    try
+    {
+      paramJSONObject = paramJSONObject.getString("localPath");
+      if (TextUtils.isEmpty(paramJSONObject)) {
+        return;
+      }
+      this.mClient.e(paramJSONObject, new QQBaseAbilityInterfaceImpl.2(this, paramCallback));
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
+  
+  private void uploadPicCancel(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = paramJSONObject.getString("localPath");
+      if (TextUtils.isEmpty(paramJSONObject)) {
+        return;
+      }
+      this.mClient.g(paramJSONObject);
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
+  
   public void beaconReportData(Bundle paramBundle, int paramInt) {}
+  
+  public boolean callMethod(int paramInt, JSONObject paramJSONObject, QQConfigAbilityInterface.Callback<JSONObject> paramCallback)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 1: 
+      uploadPic(paramJSONObject, paramCallback);
+      return true;
+    }
+    uploadPicCancel(paramJSONObject);
+    return true;
+  }
   
   public void doCgiReq(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback) {}
   
@@ -54,9 +104,9 @@ public class QQBaseAbilityInterfaceImpl
   
   public JSONObject getConfigFromQQ()
   {
-    bdwg localbdwg = bdwh.a();
-    if (localbdwg != null) {
-      return localbdwg.a;
+    StudyRoomConfBean localStudyRoomConfBean = StudyRoomConfProcessor.a();
+    if (localStudyRoomConfBean != null) {
+      return localStudyRoomConfBean.a;
     }
     return new JSONObject();
   }
@@ -85,6 +135,28 @@ public class QQBaseAbilityInterfaceImpl
   
   public void openWebView(Bundle paramBundle) {}
   
+  public void printQLog(int paramInt, String paramString1, String paramString2)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 3: 
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d(paramString1, 2, paramString2);
+      return;
+    case 4: 
+      QLog.i(paramString1, 1, paramString2);
+      return;
+    case 5: 
+      QLog.w(paramString1, 1, paramString2);
+      return;
+    }
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
   public void printQLog(Bundle paramBundle)
   {
     this.impl.b(paramBundle);
@@ -105,7 +177,7 @@ public class QQBaseAbilityInterfaceImpl
     if (paramCallback != null) {
       paramCallback.onResult(getConfigFromQQ());
     }
-    bdwh.a();
+    StudyRoomConfProcessor.a();
   }
   
   public void sendSSOTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback) {}

@@ -7,15 +7,13 @@ import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.theme.ISkinIgnoreTypeface;
-import zur;
-import zus;
 
 public class CommentEditText
   extends EditText
   implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 140;
-  private zus jdField_a_of_type_Zus;
+  private CommentEditText.OnInputBackListener jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText$OnInputBackListener;
   
   public CommentEditText(Context paramContext)
   {
@@ -25,7 +23,7 @@ public class CommentEditText
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    addTextChangedListener(new zur(this));
+    addTextChangedListener(new CommentEditText.1(this));
   }
   
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -37,12 +35,16 @@ public class CommentEditText
   {
     if (getContext() != null)
     {
-      InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
-      if (localInputMethodManager == null) {
+      Object localObject = (InputMethodManager)getContext().getSystemService("input_method");
+      if (localObject == null) {
         return super.dispatchKeyEventPreIme(paramKeyEvent);
       }
-      if ((localInputMethodManager.isActive()) && (paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1)) {
-        getHandler().postDelayed(new CommentEditText.2(this), 50L);
+      if ((((InputMethodManager)localObject).isActive()) && (paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1))
+      {
+        localObject = getHandler();
+        if (localObject != null) {
+          ((Handler)localObject).postDelayed(new CommentEditText.2(this), 50L);
+        }
       }
     }
     return super.dispatchKeyEventPreIme(paramKeyEvent);
@@ -53,14 +55,14 @@ public class CommentEditText
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setOnInputBackListener(zus paramzus)
+  public void setOnInputBackListener(CommentEditText.OnInputBackListener paramOnInputBackListener)
   {
-    this.jdField_a_of_type_Zus = paramzus;
+    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText$OnInputBackListener = paramOnInputBackListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentEditText
  * JD-Core Version:    0.7.0.1
  */

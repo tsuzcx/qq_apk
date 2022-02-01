@@ -1,28 +1,26 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import ailr;
-import ailw;
 import android.widget.Toast;
-import awtz;
-import bdla;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
-public class TroopAssistTipsBar$1
+class TroopAssistTipsBar$1
   implements Runnable
 {
-  public TroopAssistTipsBar$1(ailw paramailw) {}
+  TroopAssistTipsBar$1(TroopAssistTipsBar paramTroopAssistTipsBar) {}
   
   public void run()
   {
-    if ((ailw.a(this.this$0).getTroopMask(ailw.a(this.this$0).curFriendUin) != 2) && (ailw.a(this.this$0).getTroopMask(ailw.a(this.this$0).curFriendUin) != 3)) {}
+    if ((TroopAssistTipsBar.a(this.this$0).getTroopMask(TroopAssistTipsBar.a(this.this$0).a) != 2) && (TroopAssistTipsBar.a(this.this$0).getTroopMask(TroopAssistTipsBar.a(this.this$0).a) != 3)) {}
     do
     {
       do
       {
         return;
-        if (awtz.a().c(ailw.a(this.this$0), ailw.a(this.this$0).curFriendUin)) {
+        if (TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.this$0), TroopAssistTipsBar.a(this.this$0).a)) {
           break;
         }
       } while (!QLog.isColorLevel());
@@ -31,14 +29,14 @@ public class TroopAssistTipsBar$1
       if (this.this$0.a != null) {
         this.this$0.a.cancel();
       }
-    } while (!ailw.a(this.this$0).a(this.this$0, new Object[0]));
-    awtz.a().c(ailw.a(this.this$0), ailw.a(this.this$0).curFriendUin);
-    bdla.b(ailw.a(this.this$0), "CliOper", "", "", "Grp_helper", "Aio_grp_banner", 0, 0, "", "", "", "");
+    } while (!TroopAssistTipsBar.a(this.this$0).a(this.this$0, new Object[0]));
+    TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.this$0), TroopAssistTipsBar.a(this.this$0).a);
+    ReportController.b(TroopAssistTipsBar.a(this.this$0), "CliOper", "", "", "Grp_helper", "Aio_grp_banner", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar.1
  * JD-Core Version:    0.7.0.1
  */

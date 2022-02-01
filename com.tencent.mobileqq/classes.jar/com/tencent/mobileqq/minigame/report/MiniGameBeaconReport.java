@@ -4,7 +4,7 @@ import com.tencent.beacon.event.UserAction;
 import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qqperf.tools.DeviceInfoUtils;
 import cooperation.qzone.QUA;
 import java.util.Map;
 import kotlin.Metadata;
@@ -15,7 +15,7 @@ import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/report/MiniGameBeaconReport;", "", "()V", "BEACON_MAX_EVENT_NAME_LENGTH", "", "JANK_TRACE_TOP_RECORDS_COUNT", "MINI_GAME_BEACON_KEY", "", "init", "", "report", "eventCode", "params", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/report/MiniGameBeaconReport;", "", "()V", "BEACON_MAX_EVENT_NAME_LENGTH", "", "JANK_TRACE_TOP_RECORDS_COUNT", "MINI_GAME_BEACON_KEY", "", "init", "", "report", "eventCode", "params", "", "qqmini_impl_release"}, k=1, mv={1, 1, 16})
 public final class MiniGameBeaconReport
 {
   private static final int BEACON_MAX_EVENT_NAME_LENGTH = 59;
@@ -56,7 +56,7 @@ public final class MiniGameBeaconReport
           if (paramMap != null)
           {
             localMap.put("uid", paramMap);
-            localMap.put("perfLevel", String.valueOf(DeviceInfoUtil.getPerfLevel()));
+            localMap.put("perfLevel", String.valueOf(DeviceInfoUtils.a()));
           }
         }
       }

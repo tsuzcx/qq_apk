@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aize;
-
-public class NewFriendBindContactGuideBuilderV2$3
+class NewFriendBindContactGuideBuilderV2$3
   implements Runnable
 {
-  public NewFriendBindContactGuideBuilderV2$3(aize paramaize) {}
+  NewFriendBindContactGuideBuilderV2$3(NewFriendBindContactGuideBuilderV2 paramNewFriendBindContactGuideBuilderV2) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class NewFriendBindContactGuideBuilderV2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendBindContactGuideBuilderV2.3
  * JD-Core Version:    0.7.0.1
  */

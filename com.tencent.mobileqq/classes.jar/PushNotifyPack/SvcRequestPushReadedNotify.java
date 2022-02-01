@@ -11,10 +11,10 @@ public final class SvcRequestPushReadedNotify
   static ArrayList<C2CMsgReadedNotify> cache_vC2CReadedNotify;
   static ArrayList<DisMsgReadedNotify> cache_vDisReadedNotify;
   static ArrayList<GroupMsgReadedNotify> cache_vGroupReadedNotify;
-  public byte cNotifyType;
-  public ArrayList<C2CMsgReadedNotify> vC2CReadedNotify;
-  public ArrayList<DisMsgReadedNotify> vDisReadedNotify;
-  public ArrayList<GroupMsgReadedNotify> vGroupReadedNotify;
+  public byte cNotifyType = 0;
+  public ArrayList<C2CMsgReadedNotify> vC2CReadedNotify = null;
+  public ArrayList<DisMsgReadedNotify> vDisReadedNotify = null;
+  public ArrayList<GroupMsgReadedNotify> vGroupReadedNotify = null;
   
   public SvcRequestPushReadedNotify() {}
   

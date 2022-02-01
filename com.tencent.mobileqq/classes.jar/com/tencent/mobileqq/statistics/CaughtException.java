@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,8 +9,8 @@ import java.util.Iterator;
 public class CaughtException
   extends Exception
 {
-  public static final String ADVICE = anvx.a(2131700965);
-  private static HashSet<String> a = new CaughtException.1();
+  public static final String ADVICE = HardCodeUtil.a(2131701540);
+  private static HashSet<String> spareStackWords = new CaughtException.1();
   
   public CaughtException(String paramString)
   {
@@ -20,11 +20,16 @@ public class CaughtException
   public CaughtException(String paramString, Throwable paramThrowable)
   {
     super(paramString, paramThrowable);
-    a();
-    b();
+    filterSpareStack();
+    modifySelfMessage();
   }
   
-  private void a()
+  public CaughtException(Throwable paramThrowable)
+  {
+    super(paramThrowable);
+  }
+  
+  private void filterSpareStack()
   {
     StackTraceElement[] arrayOfStackTraceElement = getStackTrace();
     ArrayList localArrayList = new ArrayList(arrayOfStackTraceElement.length);
@@ -33,7 +38,7 @@ public class CaughtException
     while (i < j)
     {
       StackTraceElement localStackTraceElement = arrayOfStackTraceElement[i];
-      if (!a(localStackTraceElement)) {
+      if (!spareStack(localStackTraceElement)) {
         localArrayList.add(localStackTraceElement);
       }
       i += 1;
@@ -41,20 +46,7 @@ public class CaughtException
     setStackTrace((StackTraceElement[])localArrayList.toArray(new StackTraceElement[localArrayList.size()]));
   }
   
-  private boolean a(StackTraceElement paramStackTraceElement)
-  {
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (paramStackTraceElement.toString().contains(str)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private void b()
+  private void modifySelfMessage()
   {
     String str = getMessage();
     try
@@ -73,6 +65,19 @@ public class CaughtException
     {
       localIllegalAccessException.printStackTrace();
     }
+  }
+  
+  private boolean spareStack(StackTraceElement paramStackTraceElement)
+  {
+    Iterator localIterator = spareStackWords.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (paramStackTraceElement.toString().contains(str)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.helper;
 
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentViewItem;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import pbm;
-import pdp;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "invoke"}, k=3, mv={1, 1, 16})
-public final class RIJCommentNetworkHelper$authorDeleteComment$1
+final class RIJCommentNetworkHelper$authorDeleteComment$1
   extends Lambda
   implements Function1<String, Unit>
 {
-  public RIJCommentNetworkHelper$authorDeleteComment$1(pbm parampbm, pdp parampdp, int paramInt)
+  RIJCommentNetworkHelper$authorDeleteComment$1(ReadInJoyCommentObserver paramReadInJoyCommentObserver, CommentViewItem paramCommentViewItem, int paramInt)
   {
     super(1);
   }
@@ -27,7 +27,7 @@ public final class RIJCommentNetworkHelper$authorDeleteComment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.authorDeleteComment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRspDelLoginInfo
   extends JceStruct
 {
-  public int iResult;
+  public int iResult = 0;
   public String strResult = "";
   
   public SvcRspDelLoginInfo() {}

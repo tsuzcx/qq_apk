@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model.handler;
 
-import pvm;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
 class RIJUpvoteAndCommentHandler$2$1
   implements Runnable
@@ -9,12 +9,12 @@ class RIJUpvoteAndCommentHandler$2$1
   
   public void run()
   {
-    pvm.a().b();
+    ReadInJoyLogicEngineEventDispatcher.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.handler.RIJUpvoteAndCommentHandler.2.1
  * JD-Core Version:    0.7.0.1
  */

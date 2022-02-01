@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 class AuthDetailDialog$DetailAdapter
@@ -41,25 +40,24 @@ class AuthDetailDialog$DetailAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     COMM.Entry localEntry = (COMM.Entry)getItem(paramInt);
-    Object localObject = paramView;
+    paramViewGroup = paramView;
     if (localEntry != null)
     {
       if (paramView == null) {
-        break label84;
+        break label63;
       }
-      localObject = (AuthDetailDialog.DetailAdapter.DetailViewHolder)paramView.getTag();
+      paramViewGroup = (AuthDetailDialog.DetailAdapter.DetailViewHolder)paramView.getTag();
     }
     for (;;)
     {
-      ((AuthDetailDialog.DetailAdapter.DetailViewHolder)localObject).tvTitle.setText(localEntry.key.get());
-      ((AuthDetailDialog.DetailAdapter.DetailViewHolder)localObject).tvDesc.setText(localEntry.value.get());
-      localObject = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      label84:
-      paramView = LayoutInflater.from(AuthDetailDialog.access$000(this.this$0)).inflate(2131559430, null);
-      localObject = new AuthDetailDialog.DetailAdapter.DetailViewHolder(this, paramView);
-      paramView.setTag(localObject);
+      paramViewGroup.tvTitle.setText(localEntry.key.get());
+      paramViewGroup.tvDesc.setText(localEntry.value.get());
+      paramViewGroup = paramView;
+      return paramViewGroup;
+      label63:
+      paramView = LayoutInflater.from(AuthDetailDialog.access$000(this.this$0)).inflate(2131559497, null);
+      paramViewGroup = new AuthDetailDialog.DetailAdapter.DetailViewHolder(this, paramView);
+      paramView.setTag(paramViewGroup);
     }
   }
   

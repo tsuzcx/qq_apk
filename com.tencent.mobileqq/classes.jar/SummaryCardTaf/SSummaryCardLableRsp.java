@@ -9,9 +9,9 @@ public final class SSummaryCardLableRsp
 {
   static SUserLabel cache_likes;
   static int cache_ret;
-  public SUserLabel likes;
+  public SUserLabel likes = null;
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public SSummaryCardLableRsp() {}
   
@@ -45,7 +45,7 @@ public final class SSummaryCardLableRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SSummaryCardLableRsp
  * JD-Core Version:    0.7.0.1
  */

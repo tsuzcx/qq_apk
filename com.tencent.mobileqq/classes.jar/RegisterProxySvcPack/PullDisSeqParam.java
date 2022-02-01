@@ -10,8 +10,8 @@ public final class PullDisSeqParam
   extends JceStruct
   implements Cloneable
 {
-  public long lDisCode;
-  public long lLastSeqId;
+  public long lDisCode = 0L;
+  public long lLastSeqId = 0L;
   
   static
   {

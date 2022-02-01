@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 public class ShareActionSheetBuilder$ActionSheetItemViewHolder
 {
-  public ShareActionSheetBuilder.ActionSheetItem sheetItem;
-  public ImageView vIcon;
-  public TextView vLabel;
+  public ImageView a;
+  public TextView a;
+  public ShareActionSheetBuilder.ActionSheetItem a;
 }
 
 

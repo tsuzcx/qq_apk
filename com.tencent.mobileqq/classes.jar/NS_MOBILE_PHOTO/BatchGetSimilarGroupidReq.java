@@ -10,9 +10,9 @@ public final class BatchGetSimilarGroupidReq
   extends JceStruct
 {
   static Map<String, PhotoInfos> cache_infos = new HashMap();
-  public Map<String, PhotoInfos> infos;
-  public boolean is_need_new_groupids;
-  public long uin;
+  public Map<String, PhotoInfos> infos = null;
+  public boolean is_need_new_groupids = false;
+  public long uin = 0L;
   
   static
   {

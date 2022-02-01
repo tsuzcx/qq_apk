@@ -11,10 +11,10 @@ public final class photo_tab_categroy_info
   static int cache_status = 0;
   static int cache_type = 0;
   static ArrayList<String> cache_url = new ArrayList();
-  public long count;
+  public long count = 0L;
   public int status = 1;
-  public int type;
-  public ArrayList<String> url;
+  public int type = 0;
+  public ArrayList<String> url = null;
   
   static
   {

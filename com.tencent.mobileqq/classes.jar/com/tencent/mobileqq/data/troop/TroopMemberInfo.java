@@ -14,6 +14,7 @@ public class TroopMemberInfo
 {
   public static final long VALUE_DISTANCE_TO_SELF_EXPIRED = -1000L;
   public static final long VALUE_DISTANCE_TO_SELF_UNKOWN = -100L;
+  protected static final int VALUE_INVALID = -100;
   public static final long VALUE_MEMBER_CLOSE_SHARE_LBS = -1001L;
   public long active_point;
   @notColumn
@@ -27,9 +28,9 @@ public class TroopMemberInfo
   public long datetime;
   @notColumn
   public String displayedNamePinyinFirst;
-  public int distance;
+  public int distance = 0;
   public double distanceToSelf = -100.0D;
-  public long distanceToSelfUpdateTimeStamp;
+  public long distanceToSelfUpdateTimeStamp = 0L;
   public short faceid;
   public String friendnick;
   public long gagTimeStamp;
@@ -42,16 +43,18 @@ public class TroopMemberInfo
   public int isShowQZone;
   public boolean isTroopFollowed;
   public long join_time;
+  public long lastMsgUpdateHonorRichTime;
   public long last_active_time;
   public int level;
   public int mBigClubTemplateId;
   public int mBigClubVipLevel;
   public int mBigClubVipType;
   public int mGlamourLevel;
+  public byte mHonorRichFlag;
   public int mIsHideBigClub;
   public boolean mIsShielded;
   public String mUniqueTitle;
-  public int mUniqueTitleExpire;
+  public int mUniqueTitleExpire = 0;
   public int mVipLevel;
   public int mVipTemplateId;
   public int mVipType;
@@ -64,13 +67,13 @@ public class TroopMemberInfo
   public String pyFirst_autoremark;
   public String pyFirst_friendnick;
   public String pyFirst_troopnick;
-  public int qqVipInfo;
+  public int qqVipInfo = 0;
   public int realLevel;
   public String recommendRemark;
   public byte sex;
   public byte status;
-  public int superQqInfo;
-  public int superVipInfo;
+  public int superQqInfo = 0;
+  public int superVipInfo = 0;
   public int tribeLevel;
   public int tribePoint;
   public String troopColorNick;
@@ -145,6 +148,8 @@ public class TroopMemberInfo
       this.mBigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubTemplateId"));
       this.mIsHideBigClub = paramCursor.getInt(paramCursor.getColumnIndex("mIsHideBigClub"));
       this.honorList = paramCursor.getString(paramCursor.getColumnIndex("honorList"));
+      this.mHonorRichFlag = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("mHonorRichFlag")));
+      this.lastMsgUpdateHonorRichTime = paramCursor.getLong(paramCursor.getColumnIndex("lastMsgUpdateHonorRichTime"));
       this.cmduinFlagEx3Grocery = paramCursor.getLong(paramCursor.getColumnIndex("cmduinFlagEx3Grocery"));
       return true;
     }

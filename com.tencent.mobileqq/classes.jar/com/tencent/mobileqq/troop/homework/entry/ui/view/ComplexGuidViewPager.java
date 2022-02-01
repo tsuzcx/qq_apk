@@ -10,11 +10,9 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bfpw;
-import bfrt;
-import bfru;
 import com.tencent.biz.troopgift.RadioButtonIndicator;
 import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.troop.homework.config.HomeworkConfig.HomeWorkGuideInfo.PageInfo;
 import java.util.ArrayList;
 
 public class ComplexGuidViewPager
@@ -26,8 +24,8 @@ public class ComplexGuidViewPager
   protected HorizontalScrollView a;
   protected ImageView a;
   protected TextView a;
-  public bfru a;
   protected RadioButtonIndicator a;
+  protected ComplexGuidViewPager.OnGuideBtnClickListener a;
   protected GuideViewPager a;
   protected String a;
   protected ArrayList<Object> a;
@@ -47,18 +45,19 @@ public class ComplexGuidViewPager
   public ComplexGuidViewPager(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(getContext()).inflate(2131561561, this, true);
-    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator = ((RadioButtonIndicator)findViewById(2131376073));
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener = null;
+    LayoutInflater.from(getContext()).inflate(2131561678, this, true);
+    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator = ((RadioButtonIndicator)findViewById(2131376454));
     this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setOrientation(0);
-    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setButtonResourceId(2130846183);
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131377142));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364048));
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager = ((GuideViewPager)findViewById(2131367971));
+    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setButtonResourceId(2130846507);
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131377562));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364149));
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager = ((GuideViewPager)findViewById(2131368179));
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager.setOnPagerSizeChangeListener(this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator);
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377147));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377567));
     this.jdField_a_of_type_Int = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bfrt(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ComplexGuidViewPager.1(this));
   }
   
   public float a()
@@ -85,10 +84,10 @@ public class ComplexGuidViewPager
   public void onPageSelected(int paramInt)
   {
     AbstractGifImage.resumeAll();
-    bfpw localbfpw = (bfpw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    HomeworkConfig.HomeWorkGuideInfo.PageInfo localPageInfo = (HomeworkConfig.HomeWorkGuideInfo.PageInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.onPageSelected(paramInt);
     RadioButtonIndicator localRadioButtonIndicator = this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator;
-    if (localbfpw.b) {}
+    if (localPageInfo.b) {}
     for (paramInt = 0;; paramInt = 8)
     {
       localRadioButtonIndicator.setVisibility(paramInt);
@@ -104,10 +103,10 @@ public class ComplexGuidViewPager
     GuideViewPager.setBitmapByPath(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
   }
   
-  public void setOnActionBtnClickListener(bfru parambfru)
+  public void setOnActionBtnClickListener(ComplexGuidViewPager.OnGuideBtnClickListener paramOnGuideBtnClickListener)
   {
-    this.jdField_a_of_type_Bfru = parambfru;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager.setOnActionBtnClickListener(parambfru);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener = paramOnGuideBtnClickListener;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager.setOnActionBtnClickListener(paramOnGuideBtnClickListener);
   }
 }
 

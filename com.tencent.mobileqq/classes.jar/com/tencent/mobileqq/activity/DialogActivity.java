@@ -1,14 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import adui;
-import aduj;
-import aduk;
-import adul;
-import adum;
-import adun;
-import aduo;
-import adup;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,11 +8,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.BadTokenException;
-import aora;
-import bdla;
-import becj;
-import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.TeamWorkSaveDialog;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -37,10 +28,15 @@ public class DialogActivity
   private int e;
   private int f;
   
+  static
+  {
+    jdField_a_of_type_Int = 0;
+  }
+  
   private void a()
   {
-    QQCustomDialog localQQCustomDialog = bhdj.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131718825), new aduj(this)).setNegativeButton(getString(2131718826), new adui(this));
-    localQQCustomDialog.setOnCancelListener(new aduk(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131719350), new DialogActivity.3(this)).setNegativeButton(getString(2131719351), new DialogActivity.2(this));
+    localQQCustomDialog.setOnCancelListener(new DialogActivity.4(this));
     a(localQQCustomDialog);
   }
   
@@ -54,7 +50,7 @@ public class DialogActivity
       }
       paramDialog.show();
       if (this.f == c) {
-        bdla.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
       }
       return;
     }
@@ -69,14 +65,14 @@ public class DialogActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidAppDialog = bhdj.a(this, 230, null, getString(2131698305), getString(2131690697), getString(2131698306), new adul(this), new adum(this));
+    this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230, null, getString(2131698585), getString(2131690800), getString(2131698586), new DialogActivity.5(this), new DialogActivity.6(this));
     a(this.jdField_a_of_type_AndroidAppDialog);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidAppDialog = new aora(this);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new adun(this));
+    this.jdField_a_of_type_AndroidAppDialog = new MsgNotifyPushDialog(this);
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new DialogActivity.7(this));
     a(this.jdField_a_of_type_AndroidAppDialog);
   }
   
@@ -85,7 +81,7 @@ public class DialogActivity
     if (getIntent() == null) {
       return;
     }
-    new becj(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new aduo(this), new adup(this)).show();
+    new TeamWorkSaveDialog(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new DialogActivity.8(this), new DialogActivity.9(this)).show();
   }
   
   @Override
@@ -103,7 +99,7 @@ public class DialogActivity
     if (localIntent != null)
     {
       this.f = localIntent.getIntExtra("key_dialog_type", jdField_a_of_type_Int);
-      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131691223);
+      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131691330);
     }
     return super.doOnCreate(paramBundle);
   }
@@ -153,7 +149,7 @@ public class DialogActivity
     if (this.jdField_a_of_type_AndroidAppDialog != null) {
       this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(null);
     }
-    overridePendingTransition(0, 2130772030);
+    overridePendingTransition(0, 2130772034);
   }
   
   @Override
@@ -170,7 +166,7 @@ public class DialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DialogActivity
  * JD-Core Version:    0.7.0.1
  */

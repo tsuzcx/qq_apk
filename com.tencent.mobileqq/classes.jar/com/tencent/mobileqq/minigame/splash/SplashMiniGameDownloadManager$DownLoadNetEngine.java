@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.minigame.splash;
 
 import android.text.TextUtils;
+import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nwp;
 
 public class SplashMiniGameDownloadManager$DownLoadNetEngine
-  implements INetEngine.INetEngineListener
+  implements INetEngineListener
 {
   QQAppInterface app;
   String appid;
@@ -50,7 +50,7 @@ public class SplashMiniGameDownloadManager$DownLoadNetEngine
             }
             if (this.type == 0)
             {
-              nwp.a(paramNetResp, paramNetResp.getParent() + File.separator);
+              ZipUtils.unZipFile(paramNetResp, paramNetResp.getParent() + File.separator);
               this.resPath = (paramNetResp.getParent() + File.separator + "splash.png");
             }
             SplashMiniGameUtil.downloadSuccess(this.appid, this.type, this.resPath);

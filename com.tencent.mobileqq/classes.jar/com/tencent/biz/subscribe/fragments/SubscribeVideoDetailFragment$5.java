@@ -1,7 +1,7 @@
 package com.tencent.biz.subscribe.fragments;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import ztn;
+import com.tencent.biz.subscribe.bizdapters.VideoHeaderBlock;
 
 class SubscribeVideoDetailFragment$5
   implements Runnable
@@ -19,7 +19,7 @@ class SubscribeVideoDetailFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment.5
  * JD-Core Version:    0.7.0.1
  */

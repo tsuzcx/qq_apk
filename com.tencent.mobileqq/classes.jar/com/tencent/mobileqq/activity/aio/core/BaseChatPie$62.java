@@ -1,40 +1,27 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.text.Editable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XEditTextEx;
-import mqq.app.AppRuntime;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
 import mqq.os.MqqHandler;
 
 class BaseChatPie$62
   implements Runnable
 {
-  BaseChatPie$62(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$62(BaseChatPie paramBaseChatPie, FriendsManager paramFriendsManager) {}
   
   public void run()
   {
-    int i = this.this$0.input.getText().length();
-    if ((BaseChatPie.access$1700(this.this$0) == i) && (BaseChatPie.access$1800(this.this$0) != 1)) {
-      BaseChatPie.access$1908(this.this$0);
+    ExtensionInfo localExtensionInfo = this.a.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true);
+    if ((localExtensionInfo != null) && (localExtensionInfo.audioPanelType != -1) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel != null)) {
+      this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(40, localExtensionInfo.audioPanelType, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).sendToTarget();
     }
-    while (BaseChatPie.access$1900(this.this$0) <= BaseChatPie.access$2000(this.this$0))
-    {
-      this.this$0.app.sendMsgSignal();
-      BaseChatPie.access$1808(this.this$0);
-      ThreadManager.getSubThreadHandler().postDelayed(BaseChatPie.access$2100(this.this$0), 2000L);
-      return;
-      BaseChatPie.access$1702(this.this$0, i);
-      BaseChatPie.access$1902(this.this$0, 0);
-    }
-    BaseChatPie.access$2202(this.this$0, false);
-    BaseChatPie.access$1802(this.this$0, 50);
-    BaseChatPie.access$1902(this.this$0, 0);
-    BaseChatPie.access$2302(this.this$0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.62
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class RspGetAreaList
   extends JceStruct
 {
   static ArrayList<GroupArea> cache_vGroupArea;
-  public ArrayList<GroupArea> vGroupArea;
+  public ArrayList<GroupArea> vGroupArea = null;
   
   public RspGetAreaList() {}
   

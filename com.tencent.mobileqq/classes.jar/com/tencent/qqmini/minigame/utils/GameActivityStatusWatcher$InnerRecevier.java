@@ -7,10 +7,10 @@ import android.content.Intent;
 class GameActivityStatusWatcher$InnerRecevier
   extends BroadcastReceiver
 {
-  final String SYSTEM_DIALOG_REASON_GLOBAL_ACTIONS = "globalactions";
-  final String SYSTEM_DIALOG_REASON_HOME_KEY = "homekey";
-  final String SYSTEM_DIALOG_REASON_KEY = "reason";
-  final String SYSTEM_DIALOG_REASON_RECENT_APPS = "recentapps";
+  public static final String SYSTEM_DIALOG_REASON_GLOBAL_ACTIONS = "globalactions";
+  public static final String SYSTEM_DIALOG_REASON_HOME_KEY = "homekey";
+  public static final String SYSTEM_DIALOG_REASON_KEY = "reason";
+  public static final String SYSTEM_DIALOG_REASON_RECENT_APPS = "recentapps";
   
   GameActivityStatusWatcher$InnerRecevier(GameActivityStatusWatcher paramGameActivityStatusWatcher) {}
   

@@ -2,21 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import com.tencent.mobileqq.persistence.Entity;
 import java.util.Arrays;
-import rqf;
-import rqg;
 import tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.SRTClickInfo;
 
 public class ReportInfo
   extends Entity
   implements Cloneable
 {
+  public ReportInfo.DynamicInsertReportData dynamicInsertReportData;
   public String firstVideoRowkey;
   public int mAlgorithmId;
   public int mArticleLength = -1;
   public int mChannelId;
   public String mCollectUrl;
   public int mColumnID = -1;
-  public rqf mFeedsReportData;
+  public ReportInfo.FeedsReportData mFeedsReportData;
   public int mFolderStatus;
   public String mGWCommonData;
   public byte[] mGalleryReportInfo;
@@ -35,8 +34,8 @@ public class ReportInfo
   public long mSourceArticleId;
   public int mStrategyId;
   public long mUin;
-  public rqg mVideoExtraRepoerData;
-  public int noDifferenceJump;
+  public ReportInfo.VideoExtraRepoerData mVideoExtraRepoerData;
+  public int noDifferenceJump = 0;
   public String replyID;
   public long replyUin = -1L;
   public oidb_cmd0x64e.SRTClickInfo srtClickInfo;
@@ -63,7 +62,7 @@ public class ReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

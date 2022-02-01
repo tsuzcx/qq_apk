@@ -1,11 +1,11 @@
 package cooperation.qqcircle.proxy;
 
-import com.tencent.TMG.utils.QLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class QCircleInvokeProxy
 {
   public static final String TAG = "QCircleInvokeProxy";
-  private boolean mHasStubBind;
+  private boolean mHasStubBind = false;
   private QCircleInvokeStub mInvokeStub;
   
   public static void bindStub(QCircleInvokeStub paramQCircleInvokeStub)
@@ -56,7 +56,7 @@ public class QCircleInvokeProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.proxy.QCircleInvokeProxy
  * JD-Core Version:    0.7.0.1
  */

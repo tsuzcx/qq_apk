@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount.ecshopassit;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import oom;
 
 public class RecentShopParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator<RecentShopParcel> CREATOR = new oom();
+  public static final Parcelable.Creator<RecentShopParcel> CREATOR = new RecentShopParcel.1();
   public int a;
   public long a;
   public String a;
@@ -23,7 +22,7 @@ public class RecentShopParcel
   
   public RecentShopParcel() {}
   
-  public RecentShopParcel(Parcel paramParcel)
+  protected RecentShopParcel(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
@@ -60,7 +59,7 @@ public class RecentShopParcel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel
  * JD-Core Version:    0.7.0.1
  */

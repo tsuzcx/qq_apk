@@ -5,11 +5,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
+import androidx.annotation.Keep;
 
+@Keep
 public class FlutterSplashView$SavedState
   extends View.BaseSavedState
 {
-  public static Parcelable.Creator CREATOR = new FlutterSplashView.SavedState.1();
+  public static Parcelable.Creator<SavedState> CREATOR = new FlutterSplashView.SavedState.1();
   private String previousCompletedSplashIsolate;
   private Bundle splashScreenState;
   
@@ -34,7 +36,7 @@ public class FlutterSplashView$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterSplashView.SavedState
  * JD-Core Version:    0.7.0.1
  */

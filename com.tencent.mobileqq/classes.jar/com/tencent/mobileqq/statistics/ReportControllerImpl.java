@@ -5,20 +5,18 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
-import bcwd;
-import bdla;
-import bdlc;
-import bdle;
-import bkyc;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.bridge.ReportControllerServiceHolder;
+import com.tencent.mobileqq.bridge.report.service.IProxyManager;
+import com.tencent.mobileqq.bridge.report.service.IReportDataProviderService;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.servlet.ReportServlet;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,43 +25,52 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import mqq.manager.ServerConfigManager.ConfigType;
 import mqq.observer.BusinessObserver;
 
 public class ReportControllerImpl
-  extends bdla
+  extends ReportController
   implements Handler.Callback, BusinessObserver
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private bkyc jdField_a_of_type_Bkyc;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ProxyManager jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager;
+  private IProxyManager jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIProxyManager;
+  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
   private volatile Boolean jdField_a_of_type_JavaLangBoolean;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   private final HashMap<String, Reporting> b = new HashMap();
   
-  private ReportControllerImpl(QQAppInterface paramQQAppInterface)
+  private ReportControllerImpl(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "Create:" + paramQQAppInterface);
+      QLog.d("ReportController", 2, "Create:" + paramAppRuntime);
     }
-    this.jdField_a_of_type_Bkyc = new bkyc(ThreadManager.getSubThreadLooper(), this);
-    try
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+    for (;;)
     {
-      paramQQAppInterface = paramQQAppInterface.getServerConfigValue(ServerConfigManager.ConfigType.common, "ActionReportInterval");
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.length() > 0)) {
-        this.jdField_a_of_type_Long = (Long.parseLong(paramQQAppInterface) * 1000L);
+      try
+      {
+        IReportDataProviderService localIReportDataProviderService = ReportControllerServiceHolder.a();
+        if (localIReportDataProviderService == null) {
+          continue;
+        }
+        paramAppRuntime = localIReportDataProviderService.a(paramAppRuntime, ServerConfigManager.ConfigType.common, "ActionReportInterval");
+        if ((paramAppRuntime != null) && (paramAppRuntime.length() > 0)) {
+          this.jdField_a_of_type_Long = (Long.parseLong(paramAppRuntime) * 1000L);
+        }
       }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      label99:
-      break label99;
-    }
-    if (this.jdField_a_of_type_Long <= 1000L) {
-      this.jdField_a_of_type_Long = 86400000L;
+      catch (Exception paramAppRuntime)
+      {
+        continue;
+      }
+      if (this.jdField_a_of_type_Long <= 1000L) {
+        this.jdField_a_of_type_Long = 86400000L;
+      }
+      return;
+      paramAppRuntime = "";
     }
   }
   
@@ -89,18 +96,18 @@ public class ReportControllerImpl
     }
   }
   
-  public static bdla a(QQAppInterface paramQQAppInterface)
+  public static ReportController a(AppRuntime paramAppRuntime)
   {
-    return new ReportControllerImpl(paramQQAppInterface);
+    return new ReportControllerImpl(paramAppRuntime);
   }
   
   private boolean a()
   {
-    if (!NetworkUtil.isNetSupport(BaseApplicationImpl.sApplication)) {
+    if (!AppNetConnInfo.isNetSupport()) {
       return false;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "doReportClickEvent:" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      QLog.d("ReportController", 2, "doReportClickEvent:" + this.jdField_a_of_type_MqqAppAppRuntime);
     }
     int k = this.b.size();
     Object localObject1 = new ArrayList(20);
@@ -117,27 +124,27 @@ public class ReportControllerImpl
       if ((localReporting.mDetailHashCode != 0) && (localReporting.mDetail.hashCode() != localReporting.mDetailHashCode))
       {
         localIterator.remove();
-        this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue("", 0, "Reporting", localReporting, 5, null);
+        this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIProxyManager.a("", 0, "Reporting", localReporting, 5);
         k -= 1;
       }
       for (;;)
       {
         if ((j % 20 == 0) || (j >= k))
         {
-          localObject3 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bcwd.class);
+          localObject3 = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), ReportServlet.class);
           ((NewIntent)localObject3).putExtra("sendType", 10);
           ((NewIntent)localObject3).putExtra("seqKey", i);
           ((NewIntent)localObject3).putExtra("tags", (Serializable)localObject1);
           ((NewIntent)localObject3).putExtra("retryTime", 0);
           ((NewIntent)localObject3).putExtra("contents", (Serializable)localObject2);
           ((NewIntent)localObject3).setObserver(this);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject3);
+          this.jdField_a_of_type_MqqAppAppRuntime.startServlet((NewIntent)localObject3);
           localObject2 = new ArrayList(20);
           localObject1 = new ArrayList(20);
           if (j < k)
           {
             i = a();
-            label308:
+            label306:
             localObject3 = localObject2;
             localObject2 = localObject1;
             localObject1 = localObject3;
@@ -146,10 +153,10 @@ public class ReportControllerImpl
             {
               localObject3 = a(localReporting.mTag);
               if (localObject3 != null) {
-                ((bdlc)localObject3).a(localReporting);
+                ((ReportController.BusinessDataReporter)localObject3).a(localReporting);
               }
               localIterator.remove();
-              this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue("", 0, "Reporting", localReporting, 5, null);
+              this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIProxyManager.a("", 0, "Reporting", localReporting, 5);
               k -= 1;
               continue;
             }
@@ -168,7 +175,7 @@ public class ReportControllerImpl
     {
       ((ArrayList)localObject2).add(localObject3);
       localIterator.remove();
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue("", 0, "Reporting", localReporting, 5, null);
+      this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIProxyManager.a("", 0, "Reporting", localReporting, 5);
       if (QLog.isColorLevel()) {
         QLog.d("ReportController", 2, "Report: " + localReporting.mTag + ", " + (String)localObject3 + ", " + i);
       }
@@ -176,55 +183,12 @@ public class ReportControllerImpl
       break;
       a();
       return true;
-      break label308;
+      break label306;
       localObject3 = localObject1;
       localObject1 = localObject2;
       localObject2 = localObject3;
-      break label308;
+      break label306;
     }
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "saveReportData:" + paramQQAppInterface);
-    }
-    Object localObject = this.b.values();
-    if ((localObject != null) && (((Collection)localObject).size() > 0)) {}
-    try
-    {
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      EntityTransaction localEntityTransaction = paramQQAppInterface.getTransaction();
-      localEntityTransaction.begin();
-      for (;;)
-      {
-        Reporting localReporting;
-        try
-        {
-          localObject = ((Collection)localObject).iterator();
-          if (((Iterator)localObject).hasNext())
-          {
-            localReporting = (Reporting)((Iterator)localObject).next();
-            if (localReporting.getStatus() == 1000) {
-              paramQQAppInterface.persistOrReplace(localReporting);
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          localEntityTransaction.commit();
-          localEntityTransaction.end();
-          paramQQAppInterface.close();
-        }
-        paramQQAppInterface.update(localReporting);
-      }
-      return;
-    }
-    catch (Throwable paramQQAppInterface) {}
   }
   
   private void b(String paramString1, String paramString2, int paramInt)
@@ -243,7 +207,7 @@ public class ReportControllerImpl
       localReporting.mDetailHashCode = localReporting.mDetail.hashCode();
       this.b.put(str, localReporting);
       if ((this.jdField_a_of_type_JavaLangBoolean != null) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue())) {
-        this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue("", 0, "Reporting", localReporting, 3, null);
+        this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIProxyManager.a("", 0, "Reporting", localReporting, 3);
       }
       paramString1 = localReporting;
       if (QLog.isColorLevel())
@@ -254,7 +218,7 @@ public class ReportControllerImpl
       if (this.jdField_a_of_type_JavaLangBoolean != null)
       {
         if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-          break label455;
+          break label457;
         }
         if (this.b.size() >= 40)
         {
@@ -265,7 +229,7 @@ public class ReportControllerImpl
         }
       }
     }
-    label455:
+    label457:
     do
     {
       do
@@ -273,25 +237,68 @@ public class ReportControllerImpl
         return;
         localReporting.mCount += paramInt;
         if ((this.jdField_a_of_type_JavaLangBoolean != null) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue())) {
-          this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue("", 0, "Reporting", localReporting.clone(), 4, null);
+          this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIProxyManager.a("", 0, "Reporting", localReporting.clone(), 4);
         }
         if (QLog.isColorLevel()) {
           QLog.d("ReportController", 2, "handleAddReporting:r.mTag=" + localReporting.mTag + ", r.mDetail=" + localReporting.mDetail + ", r.mDetailHashCode=" + localReporting.mDetailHashCode);
         }
         paramString1 = localReporting;
         break;
-      } while (this.jdField_a_of_type_Bkyc.hasMessages(9528));
-      this.jdField_a_of_type_Bkyc.sendEmptyMessage(9528);
+      } while (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(9528));
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(9528);
     } while (!QLog.isColorLevel());
     QLog.d("ReportController", 2, "handleAddReporting: savedata r.mTag=" + paramString1.mTag + ", r.mDetail=" + paramString1.mDetail + ", r.mDetailHashCode=" + paramString1.mDetailHashCode);
+  }
+  
+  private void b(AppRuntime paramAppRuntime)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportController", 2, "saveReportData:" + paramAppRuntime);
+    }
+    Object localObject = this.b.values();
+    if ((localObject != null) && (((Collection)localObject).size() > 0)) {}
+    try
+    {
+      paramAppRuntime = paramAppRuntime.getEntityManagerFactory().createEntityManager();
+      EntityTransaction localEntityTransaction = paramAppRuntime.getTransaction();
+      localEntityTransaction.begin();
+      for (;;)
+      {
+        Reporting localReporting;
+        try
+        {
+          localObject = ((Collection)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            localReporting = (Reporting)((Iterator)localObject).next();
+            if (localReporting.getStatus() == 1000) {
+              paramAppRuntime.persistOrReplace(localReporting);
+            }
+          }
+          else
+          {
+            return;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          localEntityTransaction.commit();
+          localEntityTransaction.end();
+          paramAppRuntime.close();
+        }
+        paramAppRuntime.update(localReporting);
+      }
+      return;
+    }
+    catch (Throwable paramAppRuntime) {}
   }
   
   private void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "handleInit:" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      QLog.d("ReportController", 2, "handleInit:" + this.jdField_a_of_type_MqqAppAppRuntime);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().query(Reporting.class);
+    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager().query(Reporting.class);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -312,16 +319,16 @@ public class ReportControllerImpl
   
   private void d()
   {
-    this.jdField_a_of_type_Bkyc.removeMessages(9527);
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(9527);
     try
     {
       a();
-      Object localObject = BaseApplicationImpl.sApplication.getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
+      Object localObject = BaseApplication.getContext().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getAccount(), 0);
       long l = System.currentTimeMillis();
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putLong("pre_report_time", l);
       ((SharedPreferences.Editor)localObject).commit();
-      this.jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(9527, this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(9527, this.jdField_a_of_type_Long);
       return;
     }
     catch (Exception localException)
@@ -335,36 +342,36 @@ public class ReportControllerImpl
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  protected void a(String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
+    ReportControllerImpl.ReportingBridge localReportingBridge = new ReportControllerImpl.ReportingBridge();
+    localReportingBridge.jdField_a_of_type_JavaLangString = paramString1;
+    localReportingBridge.b = paramString2;
+    localReportingBridge.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(9529, localReportingBridge).sendToTarget();
+  }
+  
+  protected void a(AppRuntime paramAppRuntime, IProxyManager paramIProxyManager)
+  {
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_ComTencentMobileqqBridgeReportServiceIProxyManager = paramIProxyManager;
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
     if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "Init:" + paramQQAppInterface);
+      QLog.d("ReportController", 2, "Init:" + paramAppRuntime);
     }
-    this.jdField_a_of_type_Bkyc.sendEmptyMessage(9530);
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(9530);
   }
   
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    bdle localbdle = new bdle();
-    localbdle.jdField_a_of_type_JavaLangString = paramString1;
-    localbdle.b = paramString2;
-    localbdle.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bkyc.obtainMessage(9529, localbdle).sendToTarget();
-  }
-  
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean)
   {
     Object localObject;
     if (paramBoolean)
     {
-      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() != null)
+      BaseApplication localBaseApplication = BaseApplication.getContext();
+      if (this.jdField_a_of_type_MqqAppAppRuntime.getAccount() != null)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-        localObject = localBaseApplicationImpl.getSharedPreferences((String)localObject, 0);
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getAccount();
+        localObject = localBaseApplication.getSharedPreferences((String)localObject, 0);
         long l = System.currentTimeMillis();
         if (Math.abs(l - ((SharedPreferences)localObject).getLong("pre_report_time", l)) >= this.jdField_a_of_type_Long) {
           break label75;
@@ -372,34 +379,34 @@ public class ReportControllerImpl
       }
     }
     label75:
-    while (this.jdField_a_of_type_Bkyc.hasMessages(9527))
+    while (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(9527))
     {
       return;
       localObject = "10000";
       break;
     }
-    this.jdField_a_of_type_Bkyc.sendEmptyMessage(9527);
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(9527);
   }
   
-  public void b()
+  protected void b()
   {
-    this.jdField_a_of_type_Bkyc.removeMessages(9527);
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(9527);
   }
   
-  public void b(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  protected void b(AppRuntime paramAppRuntime, IProxyManager paramIProxyManager)
   {
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
     if (QLog.isColorLevel()) {
-      QLog.d("ReportController", 2, "Destory:" + paramQQAppInterface);
+      QLog.d("ReportController", 2, "Destory:" + paramAppRuntime);
     }
-    this.jdField_a_of_type_Bkyc.sendEmptyMessage(9528);
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(9528);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 9529)
     {
-      paramMessage = (bdle)paramMessage.obj;
+      paramMessage = (ReportControllerImpl.ReportingBridge)paramMessage.obj;
       b(paramMessage.jdField_a_of_type_JavaLangString, paramMessage.b, paramMessage.jdField_a_of_type_Int);
     }
     for (;;)
@@ -408,7 +415,7 @@ public class ReportControllerImpl
       if (paramMessage.what == 9527) {
         d();
       } else if (paramMessage.what == 9528) {
-        b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        b(this.jdField_a_of_type_MqqAppAppRuntime);
       } else if (paramMessage.what == 9530) {
         c();
       }
@@ -427,17 +434,17 @@ public class ReportControllerImpl
       if (!paramBoolean) {
         paramInt = paramBundle.getInt("retryTime");
       }
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if ((!paramBoolean) && (paramInt < 2) && (localQQAppInterface != null))
+      AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+      if ((!paramBoolean) && (paramInt < 2) && (localAppRuntime != null))
       {
-        NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), bcwd.class);
+        NewIntent localNewIntent = new NewIntent(BaseApplication.getContext(), ReportServlet.class);
         localNewIntent.putExtra("sendType", 10);
         localNewIntent.putExtra("seqKey", i);
         localNewIntent.putExtra("tags", paramBundle.getStringArrayList("tags"));
         localNewIntent.putExtra("contents", paramBundle.getStringArrayList("contents"));
         localNewIntent.putExtra("retryTime", paramInt + 1);
         localNewIntent.setObserver(this);
-        localQQAppInterface.startServlet(localNewIntent);
+        localAppRuntime.startServlet(localNewIntent);
       }
     }
   }

@@ -1,7 +1,6 @@
 package com.tencent.thumbplayer.adapter.strategy.utils;
 
 import com.tencent.thumbplayer.adapter.TPPlaybackInfo;
-import com.tencent.thumbplayer.core.common.TPDecoderType;
 import com.tencent.thumbplayer.core.common.TPNativeLibraryLoader;
 import com.tencent.thumbplayer.core.common.TPThumbplayerCapabilityHelper;
 
@@ -9,12 +8,12 @@ public class TPStrategyUtils
 {
   public static boolean enableFfmpegCodec(TPPlaybackInfo paramTPPlaybackInfo)
   {
-    return TPThumbplayerCapabilityHelper.isVCodecCapabilitySupport(TPDecoderType.TP_VIDEO_DECODER_FFMPEG, paramTPPlaybackInfo.getVideoCodedId(), (int)paramTPPlaybackInfo.getWidth(), (int)paramTPPlaybackInfo.getHeight(), paramTPPlaybackInfo.getVideoProfile(), paramTPPlaybackInfo.getVideoLevel());
+    return TPThumbplayerCapabilityHelper.isVCodecCapabilitySupport(101, paramTPPlaybackInfo.getVideoCodedId(), (int)paramTPPlaybackInfo.getWidth(), (int)paramTPPlaybackInfo.getHeight(), paramTPPlaybackInfo.getVideoProfile(), paramTPPlaybackInfo.getVideoLevel());
   }
   
   public static boolean enableMediaCodec(TPPlaybackInfo paramTPPlaybackInfo)
   {
-    return TPThumbplayerCapabilityHelper.isVCodecCapabilitySupport(TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC, paramTPPlaybackInfo.getVideoCodedId(), (int)paramTPPlaybackInfo.getWidth(), (int)paramTPPlaybackInfo.getHeight(), paramTPPlaybackInfo.getVideoProfile(), paramTPPlaybackInfo.getVideoLevel());
+    return TPThumbplayerCapabilityHelper.isVCodecCapabilitySupport(102, paramTPPlaybackInfo.getVideoCodedId(), (int)paramTPPlaybackInfo.getWidth(), (int)paramTPPlaybackInfo.getHeight(), paramTPPlaybackInfo.getVideoProfile(), paramTPPlaybackInfo.getVideoLevel());
   }
   
   public static boolean enablePlayBySystemPlayer(TPPlaybackInfo paramTPPlaybackInfo)
@@ -51,7 +50,7 @@ public class TPStrategyUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.strategy.utils.TPStrategyUtils
  * JD-Core Version:    0.7.0.1
  */

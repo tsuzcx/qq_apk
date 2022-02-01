@@ -12,7 +12,7 @@ public class AudioResample
     QLog.i("SegmentClipUtils", 2, "LoadExtractedShortVideoSo:loaded=" + bool);
     if (!bool)
     {
-      VideoEnvironment.loadAVCodecSoNotify("AVCodec", null, true);
+      VideoEnvironment.loadAVCodecSo();
       bool = ShortVideoUtils.isVideoSoLibLoaded();
       if (QLog.isColorLevel()) {
         QLog.i("SegmentClipUtils", 2, "LoadExtractedShortVideoSo:loaded=" + bool);

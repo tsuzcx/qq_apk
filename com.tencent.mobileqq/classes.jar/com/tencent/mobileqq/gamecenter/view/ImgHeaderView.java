@@ -1,58 +1,66 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import abuf;
-import amwn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.MeasureSpec;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aver;
-import aves;
-import avfh;
-import avfi;
-import avfj;
-import avfk;
-import avfl;
-import bdnu;
-import bdnv;
-import bdpx;
-import bmqt;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gamecenter.appointment.GameCenterUtils;
+import com.tencent.gamecenter.wadl.api.IQQGameNetService;
+import com.tencent.gamecenter.wadl.api.IQQGameReportService;
+import com.tencent.gamecenter.wadl.biz.listener.WadlCmdListener;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionHandler;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
+import com.tencent.mobileqq.gamecenter.util.QQGameConstant;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
 import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.PackageUtil;
+import com.tencent.mtt.hippy.common.HippyArray;
+import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.mtt.hippy.uimanager.HippyViewBase;
+import com.tencent.mtt.hippy.uimanager.NativeGestureDispatcher;
+import com.tencent.util.URLUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
-import usd;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ImgHeaderView
   extends RelativeLayout
-  implements avfh
+  implements WadlCmdListener, IHeaderView, HippyViewBase
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private QQGameMsgInfo jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo;
+  private HippyMap jdField_a_of_type_ComTencentMttHippyCommonHippyMap;
   private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public ImgHeaderView(Context paramContext)
   {
@@ -65,32 +73,72 @@ public class ImgHeaderView
     localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
     paramActivity.startActivity(localIntent);
     paramActivity = new HashMap();
-    abuf.a(paramActivity, aver.a(paramMessageRecord, 0));
-    paramActivity.put(Integer.valueOf(2), aver.a(paramMessageRecord));
+    GameCenterUtils.a(paramActivity, QQGameConstant.a(paramMessageRecord, 0));
+    paramActivity.put(Integer.valueOf(2), QQGameConstant.a(paramMessageRecord));
     paramActivity.put(Integer.valueOf(4), "20");
-    abuf.a(amwn.a(), "769", "205019", aver.a(paramMessageRecord, 0), "76901", "1", "160", paramActivity);
-    ((VasExtensionHandler)amwn.a().getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(3, paramMessageRecord.getExtInfoFromExtStr("pa_msgId"), this.jdField_a_of_type_JavaLangString);
+    GameCenterUtils.a(CmGameUtil.a(), "769", "205019", QQGameConstant.a(paramMessageRecord, 0), "76901", "1", "160", paramActivity);
+    ((IApolloExtensionHandler)CmGameUtil.a().getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(3, paramMessageRecord.getExtInfoFromExtStr("pa_msgId"), this.jdField_a_of_type_JavaLangString);
   }
   
-  private void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, QQGameMsgInfo paramQQGameMsgInfo)
+  private void a(Context paramContext, String paramString1, String paramString2, int paramInt, QQGameMsgInfo paramQQGameMsgInfo, String paramString3)
   {
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
     localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    paramActivity.startActivity(localIntent);
-    paramActivity = new HashMap();
-    paramActivity.put(Integer.valueOf(2), paramString1);
-    paramActivity.put(Integer.valueOf(4), "20");
-    paramActivity.put(Integer.valueOf(24), "1");
-    abuf.a(amwn.a(), "769", "205019", paramString2, "76901", "1", "160", paramActivity);
-    bmqt.a(3, paramString1, this.jdField_a_of_type_JavaLangString);
+    paramContext.startActivity(localIntent);
+    paramContext = new HashMap();
+    paramContext.put(Integer.valueOf(2), paramString1);
+    paramContext.put(Integer.valueOf(3), paramInt + "");
+    paramContext.put(Integer.valueOf(4), "20");
+    paramContext.put(Integer.valueOf(24), paramString3);
+    GameCenterUtils.a(CmGameUtil.a(), "769", "205019", paramString2, "76901", "1", "160", paramContext);
+    ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).reportGamePubAccountMsgStatus(3, paramString1, this.jdField_a_of_type_JavaLangString);
     try
     {
-      aves.a(118, paramQQGameMsgInfo, paramInt);
+      QQGameHelper.a(118, paramQQGameMsgInfo, paramInt);
       return;
     }
-    catch (Throwable paramActivity)
+    catch (Throwable paramContext)
     {
-      paramActivity.printStackTrace();
+      paramContext.printStackTrace();
+    }
+  }
+  
+  private void a(QQGameMsgInfo paramQQGameMsgInfo)
+  {
+    Object localObject = URLUtil.a(paramQQGameMsgInfo.url);
+    if (localObject != null)
+    {
+      if (((Map)localObject).containsKey("autodownload")) {
+        this.jdField_a_of_type_Boolean = ((String)((Map)localObject).get("autodownload")).equals("1");
+      }
+      if (((Map)localObject).containsKey("autolaunch")) {
+        this.b = ((String)((Map)localObject).get("autolaunch")).equals("1");
+      }
+    }
+    if ((this.jdField_a_of_type_Boolean) || (this.b))
+    {
+      localObject = QQGameHelper.a(paramQQGameMsgInfo.gameAppId);
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add(paramQQGameMsgInfo.gameAppId);
+        ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).getApkDownloadInfo("10000144", (ArrayList)localObject);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a((String)localObject);
+  }
+  
+  private void a(String paramString)
+  {
+    if (PackageUtil.a(BaseApplicationImpl.getContext(), paramString).equals("0")) {}
+    for (paramString = "下载游戏";; paramString = "启动游戏")
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new ImgHeaderView.5(this, paramString));
+      return;
     }
   }
   
@@ -101,170 +149,38 @@ public class ImgHeaderView
   
   public void a() {}
   
-  public void a(MessageRecord paramMessageRecord, Activity paramActivity)
+  public void a(QQGameMsgInfo paramQQGameMsgInfo, Context paramContext, int paramInt, String paramString)
   {
-    Object localObject1 = "";
-    Object localObject3;
-    for (Object localObject2 = "";; localObject2 = localObject3)
-    {
-      int k;
-      Object localObject5;
-      for (;;)
-      {
-        int n;
-        try
-        {
-          if ((paramMessageRecord instanceof MessageForStructing))
-          {
-            ArrayList localArrayList = (ArrayList)((StructMsgForGeneralShare)((MessageForStructing)paramMessageRecord).structingMsg).getStructMsgItemLists();
-            k = 0;
-            localObject3 = localObject2;
-            localObject4 = localObject1;
-            if (k < localArrayList.size())
-            {
-              localObject3 = localObject2;
-              localObject5 = localObject1;
-              if (!(localArrayList.get(k) instanceof bdnv)) {
-                break;
-              }
-              localObject4 = ((bdnv)localArrayList.get(k)).a;
-              m = 0;
-              j = 0;
-              i = 0;
-              if (m >= ((ArrayList)localObject4).size()) {
-                break label585;
-              }
-              if ((((ArrayList)localObject4).get(m) instanceof StructMsgItemTitle))
-              {
-                localObject2 = ((StructMsgItemTitle)((ArrayList)localObject4).get(m)).ai;
-                i = j;
-                j = 1;
-                localObject3 = localObject1;
-                localObject1 = localObject2;
-                localObject2 = localObject3;
-                break label606;
-                this.jdField_a_of_type_JavaLangString = ((bdnu)localArrayList.get(k)).b;
-                localObject3 = localObject1;
-                localObject5 = localObject4;
-                if (j == 0) {
-                  break;
-                }
-                localObject3 = localObject1;
-                localObject5 = localObject4;
-                if (i == 0) {
-                  break;
-                }
-                localObject3 = localObject1;
-              }
-            }
-            else
-            {
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559241, this, false));
-              this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368674));
-              localObject1 = URLDrawable.getDrawable((String)localObject4);
-              this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378658));
-              this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject3);
-              ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370784)).setImageDrawable(URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412124557_I8OGtzphYZ.png"));
-              this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365549));
-              this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(aver.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
-              this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new avfi(this, paramActivity, paramMessageRecord));
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new avfj(this, paramActivity, paramMessageRecord));
-              addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-              return;
-            }
-            if ((((ArrayList)localObject4).get(m) instanceof bdpx))
-            {
-              localObject3 = ((bdpx)((ArrayList)localObject4).get(m)).ac;
-              n = 1;
-              j = i;
-              localObject1 = localObject2;
-              localObject2 = localObject3;
-              i = n;
-              break label606;
-            }
-          }
-          else
-          {
-            localObject3 = localObject2;
-            localObject4 = localObject1;
-            if (!(paramMessageRecord instanceof MessageForPubAccount)) {
-              continue;
-            }
-            localObject1 = (MessageForPubAccount)paramMessageRecord;
-            ((MessageForPubAccount)localObject1).mPAMessage = usd.a(((MessageForPubAccount)localObject1).msgData);
-            localObject4 = ((PAMessage.Item)((MessageForPubAccount)localObject1).mPAMessage.items.get(0)).cover;
-            localObject3 = ((PAMessage.Item)((MessageForPubAccount)localObject1).mPAMessage.items.get(0)).title;
-            this.jdField_a_of_type_JavaLangString = ((PAMessage.Item)((MessageForPubAccount)localObject1).mPAMessage.items.get(0)).url;
-            continue;
-          }
-          n = i;
-        }
-        catch (Throwable paramMessageRecord)
-        {
-          QLog.e("ImgHeaderView", 1, "init imgHeader failed e=" + paramMessageRecord.toString());
-          return;
-        }
-        localObject3 = localObject1;
-        int i = j;
-        int j = n;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        break label606;
-        label585:
-        Object localObject4 = localObject1;
-        int m = i;
-        localObject1 = localObject2;
-        i = j;
-        j = m;
-        continue;
-        label606:
-        if ((j != 0) && (i != 0))
-        {
-          localObject4 = localObject2;
-        }
-        else
-        {
-          n = m + 1;
-          localObject3 = localObject2;
-          m = j;
-          j = i;
-          i = m;
-          localObject2 = localObject1;
-          localObject1 = localObject3;
-          m = n;
-        }
-      }
-      k += 1;
-      localObject1 = localObject5;
-    }
-  }
-  
-  public void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt)
-  {
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo = paramQQGameMsgInfo;
+    ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).addListener(this);
     try
     {
       Object localObject2 = paramQQGameMsgInfo.coverUrl;
       Object localObject1 = paramQQGameMsgInfo.title;
       this.jdField_a_of_type_JavaLangString = paramQQGameMsgInfo.url;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559241, this, false));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368674));
-      localObject2 = URLDrawable.getDrawable((String)localObject2);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378658));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-      localObject1 = (ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370784);
-      localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = new ColorDrawable(0);
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = new ColorDrawable(-1);
-      localObject2 = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412124557_I8OGtzphYZ.png", (URLDrawable.URLDrawableOptions)localObject2);
-      ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
-      ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365549));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(aver.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new avfk(this, paramActivity, paramQQGameMsgInfo, paramInt));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new avfl(this, paramActivity, paramQQGameMsgInfo, paramInt));
-      addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      if ("3".equals(paramString)) {}
+      for (this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559276, this, false));; this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559277, this, false)))
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368905));
+        localObject2 = URLDrawable.getDrawable((String)localObject2);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379091));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+        localObject1 = (ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371065);
+        localObject2 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = new ColorDrawable(0);
+        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = new ColorDrawable(-1);
+        localObject2 = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412124557_I8OGtzphYZ.png", (URLDrawable.URLDrawableOptions)localObject2);
+        ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
+        ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365710));
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(QQGameConstant.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
+        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ImgHeaderView.3(this, paramContext, paramQQGameMsgInfo, paramInt, paramString));
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ImgHeaderView.4(this, paramContext, paramQQGameMsgInfo, paramInt, paramString));
+        addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+        a(paramQQGameMsgInfo);
+        return;
+      }
       return;
     }
     catch (Throwable paramQQGameMsgInfo)
@@ -273,11 +189,109 @@ public class ImgHeaderView
     }
   }
   
+  public void a(HippyArray paramHippyArray)
+  {
+    QQGameMsgInfo localQQGameMsgInfo = new QQGameMsgInfo();
+    localQQGameMsgInfo.coverUrl = paramHippyArray.getString(0);
+    localQQGameMsgInfo.title = paramHippyArray.getString(1);
+    localQQGameMsgInfo.url = paramHippyArray.getString(2);
+    localQQGameMsgInfo.contentText = paramHippyArray.getString(3);
+    localQQGameMsgInfo.limitText = paramHippyArray.getString(4);
+    localQQGameMsgInfo.dateTitle = paramHippyArray.getString(5);
+    localQQGameMsgInfo.paMsgid = paramHippyArray.getString(6);
+    localQQGameMsgInfo.gameAppId = paramHippyArray.getString(7);
+    localQQGameMsgInfo.frienduin = paramHippyArray.getString(8);
+    localQQGameMsgInfo.uniseq = paramHippyArray.getLong(9);
+    localQQGameMsgInfo.advId = paramHippyArray.getString(10);
+    localQQGameMsgInfo.triggerInfo = paramHippyArray.getString(11);
+    int i = paramHippyArray.getInt(12);
+    a(localQQGameMsgInfo, BaseApplicationImpl.getContext(), i, QQGameHelper.b());
+  }
+  
   public void b() {}
+  
+  public void c()
+  {
+    try
+    {
+      ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).removeListener(this);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void d()
+  {
+    measure(View.MeasureSpec.makeMeasureSpec(getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(getHeight(), 1073741824));
+    layout(getLeft(), getTop(), getRight(), getBottom());
+  }
+  
+  public void e()
+  {
+    a(QQGameHelper.a(this.jdField_a_of_type_ComTencentMttHippyCommonHippyMap), BaseApplicationImpl.getContext(), QQGameHelper.a(this.jdField_a_of_type_ComTencentMttHippyCommonHippyMap), QQGameHelper.b());
+  }
+  
+  public HashSet<String> getFilterCmds()
+  {
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("13169");
+    return localHashSet;
+  }
+  
+  public NativeGestureDispatcher getGestureDispatcher()
+  {
+    return null;
+  }
+  
+  public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
+  {
+    if ("13169".equals(paramString)) {}
+    try
+    {
+      paramString = paramJSONObject.optJSONArray("v_appd_down_load_info").getJSONObject(0);
+      paramIntent = paramString.optString("pkg_name");
+      paramString = paramString.optString("appid");
+      if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId.equals(paramString)))
+      {
+        QQGameHelper.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, paramIntent);
+        a(paramIntent);
+      }
+      return;
+    }
+    catch (JSONException paramIntent)
+    {
+      paramIntent.printStackTrace();
+    }
+  }
+  
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (getChildAt(0) != null) {
+      getChildAt(0).layout(0, 0, getWidth(), getHeight());
+    }
+  }
+  
+  public void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(paramInt1, paramInt2);
+    if (getChildAt(0) != null) {
+      getChildAt(0).measure(paramInt1, paramInt2);
+    }
+  }
+  
+  public void setGestureDispatcher(NativeGestureDispatcher paramNativeGestureDispatcher) {}
+  
+  public void setSrc(HippyMap paramHippyMap)
+  {
+    this.jdField_a_of_type_ComTencentMttHippyCommonHippyMap = paramHippyMap;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.ImgHeaderView
  * JD-Core Version:    0.7.0.1
  */

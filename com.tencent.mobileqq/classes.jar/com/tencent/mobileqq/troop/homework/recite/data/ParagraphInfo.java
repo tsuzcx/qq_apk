@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.homework.recite.data;
 
 import android.text.TextUtils;
-import apfw;
-import bgzs;
-import bgzu;
+import com.tencent.mobileqq.ar.ArConfigUtils;
 import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
+import com.tencent.mobileqq.util.JSONUtils.FieldName;
+import com.tencent.mobileqq.util.JSONUtils.NotKey;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,23 +14,23 @@ import java.util.List;
 public class ParagraphInfo
   implements Serializable
 {
-  @bgzs(a="con_py_tone_mark")
+  @JSONUtils.FieldName(a="con_py_tone_mark")
   public String con_py_tone_mark;
-  @bgzs(a="content_html")
+  @JSONUtils.FieldName(a="content_html")
   public String content_html;
-  @bgzs(a="content_pinyin")
+  @JSONUtils.FieldName(a="content_pinyin")
   public String content_pinyin;
-  @bgzu
+  @JSONUtils.NotKey
   private String[] mContents;
-  @bgzu
+  @JSONUtils.NotKey
   private String[] mDisplayPinyins;
-  @bgzu
+  @JSONUtils.NotKey
   private String[] mOriginalPinyins;
-  @bgzu
+  @JSONUtils.NotKey
   public int paragraphPos = -1;
-  @bgzs(a="pid")
+  @JSONUtils.FieldName(a="pid")
   public int pid;
-  @bgzu
+  @JSONUtils.NotKey
   public List<WordInfo> wordList;
   
   public String[] generateOrGetContents()
@@ -42,7 +42,7 @@ public class ParagraphInfo
     if (TextUtils.isEmpty(this.content_html)) {
       return new String[0];
     }
-    this.content_html = apfw.a(this.content_html.trim()).replace("​", "");
+    this.content_html = ArConfigUtils.a(this.content_html.trim()).replace("​", "");
     this.mContents = new String[this.content_html.length()];
     while (i < this.content_html.length())
     {

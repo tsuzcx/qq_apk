@@ -1,5 +1,6 @@
 package com.tencent.qqmini.miniapp.core.page.widget;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
@@ -101,6 +102,11 @@ public class MiniAppTextArea
     this.mNativeContainer.setSoftKeyboardStateListener(localKeyboardHiddenObserver);
   }
   
+  private boolean checkHasNavBar(Activity paramActivity)
+  {
+    return ((DisplayUtil.hasNavBar(paramActivity)) && (DisplayUtil.isNavigationBarExist(paramActivity))) || (DisplayUtil.isFlymeOS7NavBarShow());
+  }
+  
   private void evaluateTextAreaHeightChange()
   {
     if (this.mNativeContainer != null) {}
@@ -131,6 +137,14 @@ public class MiniAppTextArea
     {
       localJSONException.printStackTrace();
     }
+  }
+  
+  private Activity getCurrentActivity()
+  {
+    if ((this.mNativeContainer != null) && (this.mNativeContainer.getPageWebviewContainer() != null)) {
+      return this.mNativeContainer.getPageWebviewContainer().getAttachActivity();
+    }
+    return null;
   }
   
   private int getDefaultHeight(float paramFloat)
@@ -233,6 +247,11 @@ public class MiniAppTextArea
     hideCurrentInput(paramBoolean);
   }
   
+  private boolean needUpdateLayoutParams(JSONObject paramJSONObject)
+  {
+    return (paramJSONObject.has("width")) || (paramJSONObject.has("height")) || (paramJSONObject.has("left")) || (paramJSONObject.has("top"));
+  }
+  
   private void removeConfirmListener()
   {
     if (this.mNativeContainer != null) {
@@ -268,6 +287,22 @@ public class MiniAppTextArea
     }
   }
   
+  private void updateCursorPosition(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt1 > 0)
+    {
+      if (paramInt2 <= 0) {
+        break label14;
+      }
+      this.cursorPositation = paramInt1;
+    }
+    label14:
+    while (paramInt3 <= 0) {
+      return;
+    }
+    this.cursorPositation = (paramInt1 + paramInt3);
+  }
+  
   private void updateFontWeight(JSONObject paramJSONObject)
   {
     if (paramJSONObject.has("fontWeight"))
@@ -287,18 +322,18 @@ public class MiniAppTextArea
     int k;
     int j;
     int i;
-    if ((paramJSONObject.has("width")) || (paramJSONObject.has("height")) || (paramJSONObject.has("left")) || (paramJSONObject.has("top")))
+    if (needUpdateLayoutParams(paramJSONObject))
     {
       k = (int)Math.max(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("width") + 0.5F, 0.0F);
       this.textAreaHeight = ((int)Math.max(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("height") + 0.5F, 0.0F));
       j = this.textAreaHeight;
       i = j;
       if (this.textAreaHeight != 0) {
-        break label312;
+        break label280;
       }
       i = j;
       if (!this.autoSize) {
-        break label312;
+        break label280;
       }
       if (this.textAreaMinHeight == 0)
       {
@@ -311,19 +346,19 @@ public class MiniAppTextArea
       j = this.textAreaMinHeight;
       i = j;
       if (!paramBoolean) {
-        break label312;
+        break label280;
       }
       i = j;
       if (getLayout() == null) {
-        break label312;
+        break label280;
       }
       i = j;
       if (getLayout().getHeight() <= this.textAreaMinHeight) {
-        break label312;
+        break label280;
       }
       i = getLayout().getHeight();
     }
-    label312:
+    label280:
     for (;;)
     {
       j = (int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("left") + 0.5F);
@@ -612,7 +647,7 @@ public class MiniAppTextArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.widget.MiniAppTextArea
  * JD-Core Version:    0.7.0.1
  */

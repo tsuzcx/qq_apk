@@ -12,10 +12,10 @@ class QQCustomDialogThreeBtns$3
   
   public void onClick(View paramView)
   {
-    if (this.val$nl != null) {
-      this.val$nl.onClick(this.this$0, 0);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
     }
-    this.this$0.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

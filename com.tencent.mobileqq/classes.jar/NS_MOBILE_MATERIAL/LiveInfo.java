@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class LiveInfo
   extends JceStruct
 {
-  public int iRecording;
-  public long iRelativeTime;
+  public int iRecording = 0;
+  public long iRelativeTime = 0L;
   public String strAuthorUin = "";
   public String strRoomId = "";
   

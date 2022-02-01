@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bevc;
-import bkxz;
+import com.tencent.util.InputMethodUtil;
 
-public class AbsPublishActivity$8$2
+class AbsPublishActivity$8$2
   implements Runnable
 {
-  public AbsPublishActivity$8$2(bevc parambevc) {}
+  AbsPublishActivity$8$2(AbsPublishActivity.8 param8) {}
   
   public void run()
   {
-    bkxz.a(this.a.a.b);
+    InputMethodUtil.a(this.a.a.b);
   }
 }
 

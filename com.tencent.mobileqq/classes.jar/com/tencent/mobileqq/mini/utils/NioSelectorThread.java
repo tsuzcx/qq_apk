@@ -10,8 +10,8 @@ import java.util.Set;
 
 public class NioSelectorThread
 {
-  private static NioSelectorThread INSTANCE;
-  private volatile boolean registerSpin;
+  private static NioSelectorThread INSTANCE = null;
+  private volatile boolean registerSpin = false;
   private final Selector selector = Selector.open();
   
   private NioSelectorThread()

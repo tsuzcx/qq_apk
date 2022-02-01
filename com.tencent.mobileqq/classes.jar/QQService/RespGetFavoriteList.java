@@ -12,11 +12,11 @@ public final class RespGetFavoriteList
   static UserCntlData cache_stUserData;
   static ArrayList<UserProfile> cache_vFavoriteInfos;
   static byte[] cache_vNotice;
-  public long RespTime;
-  public RespHead stHeader;
-  public UserCntlData stUserData;
-  public ArrayList<UserProfile> vFavoriteInfos;
-  public byte[] vNotice;
+  public long RespTime = 0L;
+  public RespHead stHeader = null;
+  public UserCntlData stUserData = null;
+  public ArrayList<UserProfile> vFavoriteInfos = null;
+  public byte[] vNotice = null;
   
   public RespGetFavoriteList() {}
   

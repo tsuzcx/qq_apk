@@ -13,19 +13,19 @@ public final class operation_addcomment_req
   static Map<String, String> cache_bypass_param;
   static Map<String, byte[]> cache_bypass_param_binary;
   static MediaInfo cache_mediainfo;
-  public int appid;
-  public Map<Integer, String> busi_param;
-  public Map<String, String> bypass_param;
-  public Map<String, byte[]> bypass_param_binary;
+  public int appid = 0;
+  public Map<Integer, String> busi_param = null;
+  public Map<String, String> bypass_param = null;
+  public Map<String, byte[]> bypass_param_binary = null;
   public String content = "";
-  public int isPrivateComment;
-  public int isverified;
-  public int mediabittype;
-  public MediaInfo mediainfo;
-  public long ownuin;
+  public int isPrivateComment = 0;
+  public int isverified = 0;
+  public int mediabittype = 0;
+  public MediaInfo mediainfo = null;
+  public long ownuin = 0L;
   public String srcId = "";
   public String srcSubid = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

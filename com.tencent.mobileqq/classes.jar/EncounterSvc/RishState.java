@@ -8,8 +8,8 @@ public final class RishState
   extends JceStruct
 {
   static byte[] cache_vState = (byte[])new byte[1];
-  public long uModifyTime;
-  public byte[] vState;
+  public long uModifyTime = 0L;
+  public byte[] vState = null;
   
   static
   {

@@ -8,19 +8,19 @@ public class WebViewTitleStyle
   implements Parcelable
 {
   public static final Parcelable.Creator<WebViewTitleStyle> CREATOR = new WebViewTitleStyle.1();
-  public int leftAndRightBtnColor;
-  public int statusBarColor;
-  public int titleBgColor;
-  public int titleColor;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
   public WebViewTitleStyle() {}
   
   public WebViewTitleStyle(Parcel paramParcel)
   {
-    this.statusBarColor = paramParcel.readInt();
-    this.titleBgColor = paramParcel.readInt();
-    this.titleColor = paramParcel.readInt();
-    this.leftAndRightBtnColor = paramParcel.readInt();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readInt();
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -30,15 +30,15 @@ public class WebViewTitleStyle
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.statusBarColor);
-    paramParcel.writeInt(this.titleBgColor);
-    paramParcel.writeInt(this.titleColor);
-    paramParcel.writeInt(this.leftAndRightBtnColor);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeInt(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebViewTitleStyle
  * JD-Core Version:    0.7.0.1
  */

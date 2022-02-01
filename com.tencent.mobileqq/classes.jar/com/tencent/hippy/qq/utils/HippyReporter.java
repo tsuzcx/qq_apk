@@ -3,13 +3,16 @@ package com.tencent.hippy.qq.utils;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import avec;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.hippy.qq.exception.QQHippyException;
 import com.tencent.hippy.qq.update.HippyQQLibraryManager;
+import com.tencent.hippy.qq.update.UpdateSetting;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.gamecenter.protocol.GameCenterUnissoHandler;
+import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -22,6 +25,7 @@ import org.json.JSONObject;
 
 public class HippyReporter
 {
+  public static final int OPEN_RESULT_MODULE_INVALID = -4;
   public static final int OPEN_RESULT_NO_JSBUNDLE = -2;
   public static final int OPEN_RESULT_NO_SO = -3;
   public static final int OPEN_RESULT_SUCCESS = 0;
@@ -32,10 +36,12 @@ public class HippyReporter
   public static final int OPER_TYPE_LOAD_CRASH = 7;
   public static final int OPER_TYPE_LOAD_HIPPY = 3;
   public static final int OPER_TYPE_LOAD_MODULE_JS_EXCEPTION = 4;
-  public static final int OPER_TYPE_LOAD_TIMEOUT = 8;
-  public static final int OPER_TYPE_LOAD_TIME_OUT = 6;
+  public static final int OPER_TYPE_LOAD_PAGE_TIMEOUT = 6;
+  public static final int OPER_TYPE_LOAD_STEP_TIMEOUT = 8;
   public static final int OPER_TYPE_NATIVE_EXCEPTION = 2;
+  public static final int OPER_TYPE_PREDOWNLOAD_HIPPY = 12;
   public static final int OPER_TYPE_PRELOAD_HIPPY = 10;
+  public static final int OPER_TYPE_SSO_CHECK_UPDATE = 11;
   private static final String TAG = "HippyReporter";
   private static HippyReporter sInstance;
   
@@ -51,10 +57,10 @@ public class HippyReporter
         localJSONObject.put("head", getReportHeadData());
         localJSONObject.put("body", paramJSONArray);
         QLog.i("HippyReporter", 1, "baseReport data:" + localJSONObject);
-        paramJSONArray = getAppInterface();
+        paramJSONArray = GameCenterUnissoHandler.a();
         if (paramJSONArray != null)
         {
-          ((avec)paramJSONArray.getBusinessHandler(BusinessHandlerFactory.GAME_CENTER_UNISSO_HANDLER)).a(localJSONObject);
+          paramJSONArray.a(localJSONObject);
           return;
         }
       }
@@ -65,13 +71,21 @@ public class HippyReporter
     }
   }
   
-  private AppInterface getAppInterface()
+  public static AppInterface getAppInterface()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     if (localObject != null)
     {
       localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if ((localObject instanceof AppInterface)) {
+      if ((localObject instanceof ToolAppRuntime))
+      {
+        localObject = ((AppRuntime)localObject).getAppRuntime("modular_web");
+        if ((localObject instanceof AppInterface)) {
+          return (AppInterface)localObject;
+        }
+      }
+      else if ((localObject instanceof AppInterface))
+      {
         return (AppInterface)localObject;
       }
     }
@@ -121,8 +135,9 @@ public class HippyReporter
       localJSONObject.put("manufacturer", Build.BRAND);
       localJSONObject.put("os_ver", Build.VERSION.SDK_INT);
       localJSONObject.put("cpu_bit", 32);
-      localJSONObject.put("qq_ver", DeviceInfoUtil.getQQVersionWithCode(BaseApplicationImpl.getContext()));
-      localJSONObject.put("resolution", DeviceInfoUtil.getPortraitWidth() + "*" + DeviceInfoUtil.getPortraitHeight());
+      localJSONObject.put("qq_ver", DeviceInfoUtil.a(BaseApplicationImpl.getContext()));
+      localJSONObject.put("is_public", 1);
+      localJSONObject.put("resolution", DeviceInfoUtil.i() + "*" + DeviceInfoUtil.j());
       Object localObject2 = AppConstants.NET_TYPE_NAME[0];
       int i = HttpUtil.getNetWorkType();
       Object localObject1 = localObject2;
@@ -175,11 +190,11 @@ public class HippyReporter
       {
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("page", paramString1);
-        localJSONObject.put("page_ver", paramInt1);
+        localJSONObject.put("page_ver", UpdateSetting.getInstance().getModuleVersion(paramString1));
         if (i == 0)
         {
           localJSONObject.put("ret", paramLong);
-          localJSONObject.put("oper_type", 5);
+          localJSONObject.put("oper_type", paramInt1);
           localJSONObject.put("errmsg", paramString2);
           paramString1 = new JSONArray();
           paramString1.put(localJSONObject);
@@ -209,9 +224,10 @@ public class HippyReporter
       localJSONObject.put("ret", 0);
       localJSONObject.put("oper_type", paramInt2);
       localJSONObject.put("errmsg", getExceptionMessage(paramException));
-      paramString = new JSONArray();
-      paramString.put(localJSONObject);
-      baseReport(paramString);
+      JSONArray localJSONArray = new JSONArray();
+      localJSONArray.put(localJSONObject);
+      baseReport(localJSONArray);
+      CaughtExceptionReport.a(new QQHippyException(paramString + "_" + paramInt1 + "_" + paramInt2, paramException));
       return;
     }
     catch (Throwable paramString)
@@ -238,7 +254,7 @@ public class HippyReporter
     }
   }
   
-  public void reportHippyLoadResult(String paramString, int paramInt, HashMap<String, Object> paramHashMap, HashMap<String, Long> paramHashMap1)
+  public void reportHippyLoadResult(int paramInt1, String paramString, int paramInt2, HashMap<String, Object> paramHashMap, HashMap<String, Long> paramHashMap1)
   {
     if ((paramHashMap1 == null) || (paramHashMap1.size() <= 0) || (paramHashMap == null) || (paramHashMap.size() <= 0)) {
       return;
@@ -246,11 +262,12 @@ public class HippyReporter
     for (;;)
     {
       int i;
-      Object localObject;
+      String str;
+      JSONObject localJSONObject;
       try
       {
         if (!paramHashMap.containsKey("ret")) {
-          break label323;
+          break label421;
         }
         i = ((Integer)paramHashMap.get("ret")).intValue();
       }
@@ -261,56 +278,74 @@ public class HippyReporter
       }
       if (paramHashMap.containsKey("errMsg"))
       {
-        localObject = (String)paramHashMap.get("errMsg");
+        str = (String)paramHashMap.get("errMsg");
         if (paramHashMap.containsKey("isPreload"))
         {
-          bool = ((Boolean)paramHashMap.get("isPreload")).booleanValue();
+          bool1 = ((Boolean)paramHashMap.get("isPreload")).booleanValue();
+          if (!paramHashMap.containsKey("isPredraw")) {
+            break label439;
+          }
+          bool2 = ((Boolean)paramHashMap.get("isPredraw")).booleanValue();
+          if (!paramHashMap.containsKey("from")) {
+            break label445;
+          }
+          paramHashMap = (String)paramHashMap.get("from");
           l = 0L;
           if (paramHashMap1.containsKey("total")) {
             l = ((Long)paramHashMap1.get("total")).longValue();
           }
-          paramHashMap = new JSONObject();
-          paramHashMap.put("page", paramString);
-          paramHashMap.put("page_ver", paramInt);
+          localJSONObject = new JSONObject();
+          localJSONObject.put("page", paramString);
+          localJSONObject.put("page_ver", paramInt2);
           if (i != 0) {
-            break label341;
+            break label451;
           }
-          paramHashMap.put("ret", l);
-          paramHashMap.put("oper_type", 3);
-          paramHashMap.put("errmsg", localObject);
-          new JSONObject().put("isPreload", bool);
+          localJSONObject.put("ret", l);
+          localJSONObject.put("oper_type", paramInt1);
+          localJSONObject.put("errmsg", str);
+          localJSONObject.put("from", paramHashMap);
           paramString = new JSONObject();
-          paramHashMap1 = paramHashMap1.entrySet().iterator();
-          if (!paramHashMap1.hasNext()) {
-            break label349;
+          paramString.put("isPreload", bool1);
+          paramString.put("isPredraw", bool2);
+          localJSONObject.put("oper_data", paramString);
+          paramString = new JSONObject();
+          paramHashMap = paramHashMap1.entrySet().iterator();
+          if (!paramHashMap.hasNext()) {
+            break label459;
           }
-          localObject = (Map.Entry)paramHashMap1.next();
-          if ("total".equals(((Map.Entry)localObject).getKey())) {
+          paramHashMap1 = (Map.Entry)paramHashMap.next();
+          if ("total".equals(paramHashMap1.getKey())) {
             continue;
           }
-          paramString.put((String)((Map.Entry)localObject).getKey(), ((Long)((Map.Entry)localObject).getValue()).longValue());
+          paramString.put((String)paramHashMap1.getKey(), ((Long)paramHashMap1.getValue()).longValue());
           continue;
-          label323:
+          label421:
           i = -1;
-          break label381;
+          break label493;
         }
       }
       else
       {
-        localObject = null;
+        str = null;
         continue;
       }
-      boolean bool = false;
+      boolean bool1 = false;
       continue;
-      label341:
+      label439:
+      boolean bool2 = false;
+      continue;
+      label445:
+      paramHashMap = null;
+      continue;
+      label451:
       long l = i;
       continue;
-      label349:
-      paramHashMap.put("cost_list", paramString);
+      label459:
+      localJSONObject.put("cost_list", paramString);
       paramString = new JSONArray();
-      paramString.put(paramHashMap);
+      paramString.put(localJSONObject);
       baseReport(paramString);
-      label381:
+      label493:
       while (i <= 0) {
         break;
       }
@@ -346,6 +381,41 @@ public class HippyReporter
     catch (Throwable paramString1)
     {
       QLog.e("HippyReporter", 1, "reportOper e:" + paramString1);
+    }
+  }
+  
+  public void reportPreDownloadOper(String paramString1, int paramInt1, int paramInt2, int paramInt3, JSONObject paramJSONObject, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("page", paramString1);
+        localJSONObject.put("page_ver", paramInt1);
+        localJSONObject.put("ret", paramInt3);
+        localJSONObject.put("oper_type", paramInt2);
+        if (!TextUtils.isEmpty(paramString2)) {
+          localJSONObject.put("errmsg", paramString2);
+        }
+        if (paramJSONObject != null) {
+          localJSONObject.put("oper_data", paramJSONObject);
+        }
+        paramString1 = new JSONArray();
+        paramString1.put(localJSONObject);
+        baseReport(paramString1);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("HippyReporter", 2, "[reportPreDownloadOper] body:" + paramString1.toString());
+          return;
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.e("HippyReporter", 1, "reportOper e:" + paramString1);
+      }
     }
   }
   
@@ -393,7 +463,7 @@ public class HippyReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.utils.HippyReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.Activity;
-import avzk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
@@ -10,14 +9,14 @@ import java.io.File;
 import java.util.ArrayList;
 import mqq.manager.TicketManager;
 
-public class DocxApiPlugin$2
+class DocxApiPlugin$2
   implements Runnable
 {
-  public DocxApiPlugin$2(avzk paramavzk, Activity paramActivity, String paramString1, String paramString2) {}
+  DocxApiPlugin$2(DocxApiPlugin paramDocxApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject = (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).a();
+    Object localObject = (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentWebViewFragment();
     if (localObject == null) {}
     do
     {
@@ -43,7 +42,7 @@ public class DocxApiPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

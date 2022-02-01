@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stAnnexation
   extends JceStruct
 {
-  public int money;
+  public int money = 0;
   
   public stAnnexation() {}
   

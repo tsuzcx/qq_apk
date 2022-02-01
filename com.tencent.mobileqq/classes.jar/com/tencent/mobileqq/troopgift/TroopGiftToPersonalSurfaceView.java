@@ -11,21 +11,19 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import bdyd;
-import bdye;
-import bdyf;
-import bdyg;
-import bdyh;
-import bdyj;
-import bdyl;
-import bdym;
-import bdyx;
-import bdyy;
-import bdzh;
-import bdzk;
-import bgrz;
-import bgsb;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.DelayAction;
+import com.tencent.mobileqq.surfaceviewaction.action.FlowerAction;
+import com.tencent.mobileqq.surfaceviewaction.action.MoveToAction;
+import com.tencent.mobileqq.surfaceviewaction.action.OpacityAction;
+import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
+import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
 import com.tencent.mobileqq.util.DisplayUtil;
 
@@ -33,11 +31,11 @@ public class TroopGiftToPersonalSurfaceView
   extends SpriteGLView
 {
   protected int a;
-  private bdzh jdField_a_of_type_Bdzh;
-  private bdzh[] jdField_a_of_type_ArrayOfBdzh;
+  private Sprite jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
+  private Sprite[] jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite;
   protected int b;
-  private bdzh b;
-  private bdzh c;
+  private Sprite b;
+  private Sprite c;
   private int d;
   
   public TroopGiftToPersonalSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
@@ -47,7 +45,7 @@ public class TroopGiftToPersonalSurfaceView
   
   private Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    int i = DisplayUtil.dip2px(getContext(), 4.0F);
+    int i = DisplayUtil.a(getContext(), 4.0F);
     try
     {
       Bitmap localBitmap1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
@@ -73,7 +71,7 @@ public class TroopGiftToPersonalSurfaceView
       paramBitmap.setAlpha(43);
       paramBitmap.setStyle(Paint.Style.STROKE);
       paramBitmap.setAntiAlias(true);
-      paramBitmap.setStrokeWidth(DisplayUtil.dip2px(getContext(), 1.0F));
+      paramBitmap.setStrokeWidth(DisplayUtil.a(getContext(), 1.0F));
       localCanvas.drawCircle(localBitmap1.getWidth() / 2, localBitmap1.getHeight() / 2, localBitmap1.getWidth() / 2, paramBitmap);
       localBitmap2.recycle();
       return localBitmap1;
@@ -82,72 +80,72 @@ public class TroopGiftToPersonalSurfaceView
     return null;
   }
   
-  public void a(int paramInt, bdye parambdye)
+  public void a(int paramInt, Action.OnActionEndListener paramOnActionEndListener)
   {
-    int i = this.jdField_a_of_type_Bdzh.d();
+    int i = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d();
     int j = (int)(i * 0.15F);
-    this.jdField_a_of_type_Bdzh.a(new bdyd[] { new bdym(new bdyd[] { new bdyf(paramInt), new bdyl(200, 1.0F, 1.05F), new bdyl(200, 1.05F, 0.0F) }), new bdym(new bdyd[] { new bdyf(paramInt), new bdyh(200, (int)this.jdField_a_of_type_Bdzh.c, (int)this.jdField_a_of_type_Bdzh.d, (int)this.jdField_a_of_type_Bdzh.c - j / 2, (int)this.jdField_a_of_type_Bdzh.d), new bdyh(200, (int)this.jdField_a_of_type_Bdzh.c, (int)this.jdField_a_of_type_Bdzh.d, (int)this.jdField_a_of_type_Bdzh.c + j / 2 + i, (int)this.jdField_a_of_type_Bdzh.d) }) });
-    if (this.jdField_b_of_type_Bdzh.a() == null)
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { new SequenceAction(new Action[] { new DelayAction(paramInt), new ScaleAction(200, 1.0F, 1.05F), new ScaleAction(200, 1.05F, 0.0F) }), new SequenceAction(new Action[] { new DelayAction(paramInt), new MoveToAction(200, (int)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c, (int)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d, (int)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c - j / 2, (int)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d), new MoveToAction(200, (int)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c, (int)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d, (int)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c + j / 2 + i, (int)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d) }) });
+    if (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a() == null)
     {
-      if (parambdye != null) {
-        parambdye.a();
+      if (paramOnActionEndListener != null) {
+        paramOnActionEndListener.a();
       }
       return;
     }
-    bdyl localbdyl = new bdyl(200, 1.05F, 0.0F);
-    this.jdField_b_of_type_Bdzh.a(new bdyd[] { new bdym(new bdyd[] { new bdyf(paramInt), new bdyl(200, 1.0F, 1.05F), localbdyl }), new bdym(new bdyd[] { new bdyh(200, (int)this.jdField_b_of_type_Bdzh.c, (int)this.jdField_b_of_type_Bdzh.d, (int)this.jdField_b_of_type_Bdzh.c + j / 2, (int)this.jdField_b_of_type_Bdzh.d), new bdyh(200, (int)this.jdField_b_of_type_Bdzh.c, (int)this.jdField_b_of_type_Bdzh.d, (int)this.jdField_b_of_type_Bdzh.c - j / 2 - i, (int)this.jdField_b_of_type_Bdzh.d) }) });
-    localbdyl.a(parambdye);
+    ScaleAction localScaleAction = new ScaleAction(200, 1.05F, 0.0F);
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { new SequenceAction(new Action[] { new DelayAction(paramInt), new ScaleAction(200, 1.0F, 1.05F), localScaleAction }), new SequenceAction(new Action[] { new MoveToAction(200, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c + j / 2, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d), new MoveToAction(200, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c - j / 2 - i, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d) }) });
+    localScaleAction.a(paramOnActionEndListener);
   }
   
-  public void a(bdyy parambdyy)
+  public void a(FrameSprite.OnFrameEndListener paramOnFrameEndListener)
   {
-    this.jdField_a_of_type_Bdzh.e = 0.0F;
-    this.jdField_b_of_type_Bdzh.e = 0.0F;
-    int i = this.jdField_a_of_type_Bdzh.d();
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.e = 0.0F;
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.e = 0.0F;
+    int i = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d();
     int j = i / 10;
-    this.jdField_a_of_type_Bdzh.a(this.jdField_a_of_type_Int / 2 - i, this.d);
-    this.jdField_b_of_type_Bdzh.a(this.jdField_a_of_type_Int / 2 + i, this.d);
-    this.jdField_a_of_type_ArrayOfBdzh[0].a(this.jdField_a_of_type_Int / 2 - i, this.d - j * 2);
-    this.jdField_a_of_type_ArrayOfBdzh[1].a(this.jdField_a_of_type_Int / 2 - i, this.d - j);
-    this.jdField_a_of_type_ArrayOfBdzh[2].a(this.jdField_a_of_type_Int / 2 - i, this.d);
-    this.jdField_a_of_type_ArrayOfBdzh[3].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j);
-    this.jdField_a_of_type_ArrayOfBdzh[4].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j * 2);
-    this.jdField_a_of_type_ArrayOfBdzh[5].a(this.jdField_a_of_type_Int / 2 - i, j * 2 + this.d);
-    this.jdField_a_of_type_Bdzh.a(new bdyd[] { new bdym(new bdyd[] { new bdyl(200, 0.0F, 1.05F), new bdyl(150, 1.05F, 1.0F) }) });
-    this.jdField_b_of_type_Bdzh.a(new bdyd[] { new bdym(new bdyd[] { new bdyf(200), new bdyl(200, 0.0F, 1.05F), new bdyl(150, 1.05F, 1.0F) }) });
-    float f = 9.0F / (this.jdField_b_of_type_Bdzh.c - this.jdField_a_of_type_Bdzh.c);
-    bdym localbdym1 = new bdym(new bdyd[] { new bdyf(500), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[0].c, (int)this.jdField_a_of_type_ArrayOfBdzh[0].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f) });
-    bdym localbdym2 = new bdym(new bdyd[] { new bdyf(700), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[1].c, (int)this.jdField_a_of_type_ArrayOfBdzh[1].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f) });
-    bdym localbdym3 = new bdym(new bdyd[] { new bdyf(600), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[2].c, (int)this.jdField_a_of_type_ArrayOfBdzh[2].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f) });
-    bdym localbdym4 = new bdym(new bdyd[] { new bdyf(900), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[3].c, (int)this.jdField_a_of_type_ArrayOfBdzh[3].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f * 0.6F) });
-    bdym localbdym5 = new bdym(new bdyd[] { new bdyf(800), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[4].c, (int)this.jdField_a_of_type_ArrayOfBdzh[4].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f * 0.6F) });
-    bdym localbdym6 = new bdym(new bdyd[] { new bdyf(1000), new bdyg(600, (int)this.jdField_a_of_type_ArrayOfBdzh[5].c, (int)this.jdField_a_of_type_ArrayOfBdzh[5].d, (int)this.jdField_b_of_type_Bdzh.c, i / 20, f) });
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this.jdField_a_of_type_Int / 2 - i, this.d);
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this.jdField_a_of_type_Int / 2 + i, this.d);
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[0].a(this.jdField_a_of_type_Int / 2 - i, this.d - j * 2);
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[1].a(this.jdField_a_of_type_Int / 2 - i, this.d - j);
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[2].a(this.jdField_a_of_type_Int / 2 - i, this.d);
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[3].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j);
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[4].a(this.jdField_a_of_type_Int / 2 - i * 6 / 5, this.d + j * 2);
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[5].a(this.jdField_a_of_type_Int / 2 - i, j * 2 + this.d);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { new SequenceAction(new Action[] { new ScaleAction(200, 0.0F, 1.05F), new ScaleAction(150, 1.05F, 1.0F) }) });
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { new SequenceAction(new Action[] { new DelayAction(200), new ScaleAction(200, 0.0F, 1.05F), new ScaleAction(150, 1.05F, 1.0F) }) });
+    float f = 9.0F / (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c - this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c);
+    SequenceAction localSequenceAction1 = new SequenceAction(new Action[] { new DelayAction(500), new FlowerAction(600, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[0].c, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[0].d, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c, i / 20, f) });
+    SequenceAction localSequenceAction2 = new SequenceAction(new Action[] { new DelayAction(700), new FlowerAction(600, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[1].c, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[1].d, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c, i / 20, f) });
+    SequenceAction localSequenceAction3 = new SequenceAction(new Action[] { new DelayAction(600), new FlowerAction(600, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[2].c, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[2].d, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c, i / 20, f) });
+    SequenceAction localSequenceAction4 = new SequenceAction(new Action[] { new DelayAction(900), new FlowerAction(600, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[3].c, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[3].d, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c, i / 20, f * 0.6F) });
+    SequenceAction localSequenceAction5 = new SequenceAction(new Action[] { new DelayAction(800), new FlowerAction(600, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[4].c, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[4].d, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c, i / 20, f * 0.6F) });
+    SequenceAction localSequenceAction6 = new SequenceAction(new Action[] { new DelayAction(1000), new FlowerAction(600, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[5].c, (int)this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[5].d, (int)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c, i / 20, f) });
     i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfBdzh.length)
+    while (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite.length)
     {
-      this.jdField_a_of_type_ArrayOfBdzh[i].e = 0.0F;
-      this.jdField_a_of_type_ArrayOfBdzh[i].jdField_a_of_type_Int = 255;
-      this.jdField_a_of_type_ArrayOfBdzh[i].a(new bdyd[] { new bdyd[] { localbdym1, localbdym2, localbdym3, localbdym4, localbdym5, localbdym6 }[i], new bdym(new bdyd[] { new bdyf(1300), new bdyj(300, 255, 0) }) });
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[i].e = 0.0F;
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[i].jdField_a_of_type_Int = 255;
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[i].a(new Action[] { new Action[] { localSequenceAction1, localSequenceAction2, localSequenceAction3, localSequenceAction4, localSequenceAction5, localSequenceAction6 }[i], new SequenceAction(new Action[] { new DelayAction(1300), new OpacityAction(300, 255, 0) }) });
       i += 1;
     }
-    if ((this.c != null) && ((this.c instanceof bdyx)))
+    if ((this.c != null) && ((this.c instanceof FrameSprite)))
     {
-      ((bdyx)this.c).a = new bgrz(this, parambdyy);
-      ((bdyx)this.c).a(getContext(), this);
+      ((FrameSprite)this.c).a = new TroopGiftToPersonalSurfaceView.1(this, paramOnFrameEndListener);
+      ((FrameSprite)this.c).a(getContext(), this);
     }
     while (a())
     {
       a(this.c);
-      a(this.jdField_a_of_type_Bdzh);
-      a(this.jdField_b_of_type_Bdzh);
+      a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
+      a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
       i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfBdzh.length)
+      while (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite.length)
       {
-        a(this.jdField_a_of_type_ArrayOfBdzh[i]);
+        a(this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[i]);
         i += 1;
       }
       if ((this.c != null) && ((this.c instanceof VideoSprite))) {
-        ((VideoSprite)this.c).a(new bgsb(this, parambdyy));
+        ((VideoSprite)this.c).a(new TroopGiftToPersonalSurfaceView.2(this, paramOnFrameEndListener));
       }
     }
   }
@@ -177,8 +175,8 @@ public class TroopGiftToPersonalSurfaceView
   
   public void setReceiveHeadBitmap(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (this.jdField_b_of_type_Bdzh != null)) {
-      this.jdField_b_of_type_Bdzh.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+    if ((paramBitmap != null) && (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null)) {
+      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.a(getContext(), 70.0F), DisplayUtil.a(getContext(), 70.0F)));
     }
   }
   
@@ -189,75 +187,75 @@ public class TroopGiftToPersonalSurfaceView
     this.c.c = (paramInt1 / 2);
     this.c.d = (paramInt2 / 2);
     a(this.c);
-    this.jdField_a_of_type_Bdzh = new bdzh();
-    a(this.jdField_a_of_type_Bdzh);
-    this.jdField_b_of_type_Bdzh = new bdzh();
-    a(this.jdField_b_of_type_Bdzh);
-    this.jdField_a_of_type_Bdzh.e = 0.0F;
-    this.jdField_b_of_type_Bdzh.e = 0.0F;
-    this.jdField_a_of_type_ArrayOfBdzh = new bdzh[6];
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite();
+    a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite();
+    a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.e = 0.0F;
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.e = 0.0F;
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite = new Sprite[6];
     paramInt1 = 0;
     while (paramInt1 < 6)
     {
-      this.jdField_a_of_type_ArrayOfBdzh[paramInt1] = new bdzh();
-      this.jdField_a_of_type_ArrayOfBdzh[paramInt1].e = 0.0F;
-      a(this.jdField_a_of_type_ArrayOfBdzh[paramInt1]);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[paramInt1] = new Sprite();
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[paramInt1].e = 0.0F;
+      a(this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[paramInt1]);
       paramInt1 += 1;
     }
     if (paramBitmap1 != null) {
-      this.jdField_a_of_type_Bdzh.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.a(getContext(), 70.0F), DisplayUtil.a(getContext(), 70.0F)));
     }
     if (paramBitmap2 != null) {
-      this.jdField_b_of_type_Bdzh.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.a(getContext(), 70.0F), DisplayUtil.a(getContext(), 70.0F)));
     }
-    paramBitmap1 = new bdzk(this, paramBitmap3);
+    paramBitmap1 = new Texture(this, paramBitmap3);
     paramInt1 = 0;
     while (paramInt1 < 6)
     {
-      this.jdField_a_of_type_ArrayOfBdzh[paramInt1].a(paramBitmap1);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[paramInt1].a(paramBitmap1);
       paramInt1 += 1;
     }
   }
   
   public void setResourceWithFps(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String[] paramArrayOfString, int paramInt)
   {
-    this.c = new bdyx(this, paramArrayOfString);
-    ((bdyx)this.c).e(paramInt);
+    this.c = new FrameSprite(this, paramArrayOfString);
+    ((FrameSprite)this.c).e(paramInt);
     a(this.c);
-    this.jdField_a_of_type_Bdzh = new bdzh();
-    a(this.jdField_a_of_type_Bdzh);
-    this.jdField_b_of_type_Bdzh = new bdzh();
-    a(this.jdField_b_of_type_Bdzh);
-    this.jdField_a_of_type_Bdzh.e = 0.0F;
-    this.jdField_b_of_type_Bdzh.e = 0.0F;
-    this.jdField_a_of_type_ArrayOfBdzh = new bdzh[6];
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite();
+    a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite();
+    a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.e = 0.0F;
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.e = 0.0F;
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite = new Sprite[6];
     paramInt = 0;
     while (paramInt < 6)
     {
-      this.jdField_a_of_type_ArrayOfBdzh[paramInt] = new bdzh();
-      this.jdField_a_of_type_ArrayOfBdzh[paramInt].e = 0.0F;
-      a(this.jdField_a_of_type_ArrayOfBdzh[paramInt]);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[paramInt] = new Sprite();
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[paramInt].e = 0.0F;
+      a(this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[paramInt]);
       paramInt += 1;
     }
     if (paramBitmap1 != null) {
-      this.jdField_a_of_type_Bdzh.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this, a(paramBitmap1.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.a(getContext(), 70.0F), DisplayUtil.a(getContext(), 70.0F)));
     }
     if (paramBitmap2 != null) {
-      this.jdField_b_of_type_Bdzh.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+      this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this, a(paramBitmap2.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.a(getContext(), 70.0F), DisplayUtil.a(getContext(), 70.0F)));
     }
-    paramBitmap1 = new bdzk(this, paramBitmap3);
+    paramBitmap1 = new Texture(this, paramBitmap3);
     paramInt = 0;
     while (paramInt < 6)
     {
-      this.jdField_a_of_type_ArrayOfBdzh[paramInt].a(paramBitmap1);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlSprite[paramInt].a(paramBitmap1);
       paramInt += 1;
     }
   }
   
   public void setSendHeadBitmap(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (this.jdField_a_of_type_Bdzh != null)) {
-      this.jdField_a_of_type_Bdzh.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.dip2px(getContext(), 70.0F), DisplayUtil.dip2px(getContext(), 70.0F)));
+    if ((paramBitmap != null) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this, a(paramBitmap.copy(Bitmap.Config.ARGB_8888, false), DisplayUtil.a(getContext(), 70.0F), DisplayUtil.a(getContext(), 70.0F)));
     }
   }
 }

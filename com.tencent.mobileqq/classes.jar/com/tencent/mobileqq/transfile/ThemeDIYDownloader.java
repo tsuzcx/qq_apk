@@ -3,11 +3,6 @@ package com.tencent.mobileqq.transfile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
-import beim;
-import beix;
-import bhyo;
-import bhyq;
-import bkwb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngImage;
 import com.tencent.image.DownloadParams;
@@ -17,9 +12,14 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.SignatureManager;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.ThemeSwitchManager;
 import com.tencent.mobileqq.theme.diy.ResData;
 import com.tencent.mobileqq.theme.diy.ThemeBackground;
+import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic.StyleCallBack;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqsharpP.QQSharpPUtil;
 import com.tencent.sharpP.SharpPUtil;
 import java.io.File;
 import java.io.OutputStream;
@@ -85,10 +85,10 @@ public class ThemeDIYDownloader
         try
         {
           localObject1 = ((Header)localObject3).getValue();
-          localObject3 = (beim)((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime((String)localObject1)).getManager(QQManagerFactory.THEME_MANAGER);
+          localObject3 = (ThemeSwitchManager)((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime((String)localObject1)).getManager(QQManagerFactory.THEME_MANAGER);
           localObject1 = paramOutputStream;
           ResData localResData;
-          if (((beim)localObject3).a != null)
+          if (((ThemeSwitchManager)localObject3).a != null)
           {
             Header localHeader = paramDownloadParams.getHeader("my_id");
             localResData = new ResData();
@@ -112,7 +112,7 @@ public class ThemeDIYDownloader
             j = Integer.parseInt(paramDownloadParams.getValue());
             label236:
             paramURLDrawableHandler.putInt("page_index", j);
-            paramDownloadParams = ((beim)localObject3).a;
+            paramDownloadParams = ((ThemeSwitchManager)localObject3).a;
             if (i == 0) {
               break label733;
             }
@@ -122,13 +122,13 @@ public class ThemeDIYDownloader
           label733:
           for (i = 4;; i = 8)
           {
-            paramDownloadParams.callback(18, i, paramURLDrawableHandler, localResData);
+            paramDownloadParams.a(18, i, paramURLDrawableHandler, localResData);
             localObject1 = paramOutputStream;
             boolean bool;
             do
             {
               return localObject1;
-              paramOutputStream = new File(bkwb.a((File)localObject1));
+              paramOutputStream = new File(QQSharpPUtil.a((File)localObject1));
               bool = paramDownloadParams.useSharpPImage;
               if ((!bool) || (!paramOutputStream.exists())) {
                 break;
@@ -140,9 +140,9 @@ public class ThemeDIYDownloader
             if (QLog.isColorLevel()) {
               QLog.d("themediydownloader", 2, "downloadImage download url=" + paramURLDrawableHandler + ", path=" + str + ", isSharpPAv=" + bool);
             }
-            paramOutputStream = new bhyo(paramURLDrawableHandler, (File)localObject1);
+            paramOutputStream = new DownloadTask(paramURLDrawableHandler, (File)localObject1);
             paramOutputStream.k = bool;
-            if (bhyq.a(paramOutputStream, BaseApplicationImpl.sApplication.getRuntime()) == 0)
+            if (DownloaderFactory.a(paramOutputStream, BaseApplicationImpl.sApplication.getRuntime()) == 0)
             {
               if ((((File)localObject1).exists()) && (!SignatureManager.a(((File)localObject1).getAbsolutePath())))
               {
@@ -177,7 +177,7 @@ public class ThemeDIYDownloader
                 if (!SharpPUtil.isSharpPFile((File)localObject1)) {
                   break label498;
                 }
-                paramOutputStream = bkwb.a((File)localObject1);
+                paramOutputStream = QQSharpPUtil.a((File)localObject1);
                 break label498;
                 i = 0;
               }

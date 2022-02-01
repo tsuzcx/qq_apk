@@ -5,6 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build.VERSION;
 import android.os.Handler;
 import com.tencent.map.geolocation.TencentDirectionListener;
 
@@ -24,8 +25,10 @@ public final class eh
   {
     try
     {
-      this.b = ((SensorManager)paramContext.getSystemService("sensor"));
-      label22:
+      if (Build.VERSION.SDK_INT != 23) {
+        this.b = ((SensorManager)paramContext.getSystemService("sensor"));
+      }
+      label30:
       if (this.b != null) {}
       for (boolean bool = true;; bool = false)
       {
@@ -35,7 +38,7 @@ public final class eh
     }
     catch (Throwable paramContext)
     {
-      break label22;
+      break label30;
     }
   }
   
@@ -182,7 +185,7 @@ public final class eh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     c.t.m.g.eh
  * JD-Core Version:    0.7.0.1
  */

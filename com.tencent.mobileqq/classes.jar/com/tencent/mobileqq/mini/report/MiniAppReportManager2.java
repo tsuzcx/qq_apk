@@ -71,6 +71,8 @@ public class MiniAppReportManager2
       lanchFailCode.put("show_page_kill", Integer.valueOf(421));
       first = true;
       launchTimeoutRunnable = new MiniAppReportManager2.2();
+      timerEnable = false;
+      handler = null;
       return;
     }
   }
@@ -211,7 +213,7 @@ public class MiniAppReportManager2
           }
           catch (Throwable paramString1)
           {
-            QLog.e("MiniAppReportManager2", 2, paramString1.getStackTrace());
+            QLog.e("MiniAppReportManager2", 2, "", paramString1);
             return;
           }
           paramString2 = "0";

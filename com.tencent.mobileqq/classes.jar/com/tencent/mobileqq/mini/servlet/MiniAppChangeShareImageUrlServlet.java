@@ -4,12 +4,12 @@ import NS_MINI_SHARE.MiniProgramShare.StAdaptSharePicRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhjl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import mqq.app.Packet;
 
@@ -31,7 +31,7 @@ public class MiniAppChangeShareImageUrlServlet
     {
       try
       {
-        localStQWebRsp.mergeFrom(bhjl.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
         MiniProgramShare.StAdaptSharePicRsp localStAdaptSharePicRsp = new MiniProgramShare.StAdaptSharePicRsp();
         localStAdaptSharePicRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
@@ -58,7 +58,7 @@ public class MiniAppChangeShareImageUrlServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_share.AdaptSharePic");
-    paramPacket.putSendData(bhjl.a(arrayOfByte1));
+    paramPacket.putSendData(WupUtil.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.util;
 
 import android.os.Bundle;
-import axqt;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
 
-public final class NearbyProfileUtil$2
+final class NearbyProfileUtil$2
   implements Runnable
 {
-  public NearbyProfileUtil$2(axqt paramaxqt, Bundle paramBundle) {}
+  NearbyProfileUtil$2(NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axqt.a(this.jdField_a_of_type_AndroidOsBundle, null, null, false, false, false, false);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, null, null, false, false, false, false);
   }
 }
 

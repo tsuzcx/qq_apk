@@ -2,28 +2,26 @@ package com.tencent.mobileqq.teamwork;
 
 import android.os.Handler;
 import android.os.Message;
-import anvx;
-import bdla;
-import bebl;
-import bece;
-import beeg;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.tencentdocreport.TenDocLogReportHelper;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public class TeamWorkFileImportHandler$11
+class TeamWorkFileImportHandler$11
   implements Runnable
 {
-  public TeamWorkFileImportHandler$11(bebl parambebl, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, JSONObject paramJSONObject, int paramInt) {}
+  TeamWorkFileImportHandler$11(TeamWorkFileImportHandler paramTeamWorkFileImportHandler, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, JSONObject paramJSONObject, int paramInt) {}
   
   public void run()
   {
-    if ((this.this$0.app == null) || (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null)) {
+    if ((TeamWorkFileImportHandler.a(this.this$0) == null) || (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null)) {
       return;
     }
     long l1 = System.currentTimeMillis();
-    Object localObject1 = bece.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.this$0.app.getCurrentAccountUin());
+    Object localObject1 = TeamWorkHttpUtils.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, TeamWorkFileImportHandler.a(this.this$0).getCurrentAccountUin());
     long l2 = System.currentTimeMillis();
     if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_k_of_type_Int != this.jdField_a_of_type_Int)
     {
@@ -64,22 +62,22 @@ public class TeamWorkFileImportHandler$11
           }
         }
       }
-      localObject1 = anvx.a(2131714188);
+      localObject1 = HardCodeUtil.a(2131714684);
       if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.e == 3)
       {
         localObject1 = "word";
         l1 = l2 - l1;
-        localQQAppInterface = this.this$0.app;
+        localQQAppInterface = TeamWorkFileImportHandler.a(this.this$0);
         if (!bool) {
           break label364;
         }
         i = 1;
-        bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l1 + "", "", (String)localObject1, (String)localObject3);
-        beeg.a("TeamWorkFileImportHandler", "http duration", String.valueOf(l1), this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_k_of_type_JavaLangString);
+        ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l1 + "", "", (String)localObject1, (String)localObject3);
+        TenDocLogReportHelper.a("TeamWorkFileImportHandler", "http duration", String.valueOf(l1), this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_k_of_type_JavaLangString);
         if (bool) {
           break;
         }
-        if (!FileUtil.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)) {
+        if (!FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)) {
           break label369;
         }
         this.this$0.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
@@ -89,12 +87,12 @@ public class TeamWorkFileImportHandler$11
         return;
       }
       label369:
-      if (bebl.a(this.this$0) == null) {
+      if (TeamWorkFileImportHandler.a(this.this$0) == null) {
         break;
       }
-      Object localObject2 = bebl.a(this.this$0).obtainMessage(8002);
+      Object localObject2 = TeamWorkFileImportHandler.a(this.this$0).obtainMessage(8002);
       ((Message)localObject2).obj = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
-      bebl.a(this.this$0).sendMessage((Message)localObject2);
+      TeamWorkFileImportHandler.a(this.this$0).sendMessage((Message)localObject2);
       return;
     }
   }

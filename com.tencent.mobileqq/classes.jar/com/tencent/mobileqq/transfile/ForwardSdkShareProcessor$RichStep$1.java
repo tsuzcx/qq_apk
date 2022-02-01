@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.transfile;
 
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -25,7 +24,7 @@ class ForwardSdkShareProcessor$RichStep$1
     {
       if ((i == -1) && (this.this$1.retryCount.getAndIncrement() < 2))
       {
-        ThreadManager.post(this, 8, null, true);
+        run();
         return;
       }
       this.this$1.needRich.set(false);

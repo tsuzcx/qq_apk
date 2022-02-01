@@ -8,11 +8,11 @@ public final class s_videoflow_user
   extends JceStruct
 {
   static s_user cache_user = new s_user();
-  public long follower_count;
-  public long following_count;
-  public boolean is_followed;
-  public boolean is_following;
-  public s_user user;
+  public long follower_count = 0L;
+  public long following_count = 0L;
+  public boolean is_followed = false;
+  public boolean is_following = false;
+  public s_user user = null;
   
   public s_videoflow_user() {}
   

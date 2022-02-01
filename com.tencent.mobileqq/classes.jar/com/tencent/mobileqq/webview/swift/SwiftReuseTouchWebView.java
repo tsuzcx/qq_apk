@@ -5,20 +5,20 @@ import android.content.MutableContextWrapper;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebBackForwardList;
 import com.tencent.smtt.sdk.WebHistoryItem;
+import mqq.app.MobileQQ;
 
 public class SwiftReuseTouchWebView
   extends TouchWebView
 {
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   private static SwiftReuseTouchWebView b;
-  public static int c;
+  public static int c = 0;
   private SwiftReuseTouchWebView jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
   public int b;
-  private int d;
+  private int d = 0;
   
   private SwiftReuseTouchWebView(Context paramContext)
   {
@@ -65,7 +65,7 @@ public class SwiftReuseTouchWebView
       }
       if (i != 0)
       {
-        ((MutableContextWrapper)getContext()).setBaseContext(BaseApplicationImpl.sApplication);
+        ((MutableContextWrapper)getContext()).setBaseContext(MobileQQ.sMobileQQ);
         if (!paramBoolean)
         {
           resetForReuse();
@@ -122,7 +122,7 @@ public class SwiftReuseTouchWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView
  * JD-Core Version:    0.7.0.1
  */

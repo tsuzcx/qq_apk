@@ -1,0 +1,32 @@
+package com.tencent.mobileqq.activity;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+
+class QQSettingMe$10
+  extends BroadcastReceiver
+{
+  QQSettingMe$10(QQSettingMe paramQQSettingMe) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
+    }
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
+      }
+      this.a.w();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.10
+ * JD-Core Version:    0.7.0.1
+ */

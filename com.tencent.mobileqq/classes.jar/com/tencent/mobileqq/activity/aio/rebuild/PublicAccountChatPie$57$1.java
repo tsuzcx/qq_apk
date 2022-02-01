@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aido;
-
 class PublicAccountChatPie$57$1
   implements Runnable
 {
@@ -9,12 +7,12 @@ class PublicAccountChatPie$57$1
   
   public void run()
   {
-    this.a.this$0.e(0);
+    this.a.this$0.x(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.57.1
  * JD-Core Version:    0.7.0.1
  */

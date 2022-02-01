@@ -13,11 +13,11 @@ import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.SwitchFaceUtil;
 import com.tencent.ttpic.openapi.util.SwitchFaceUtil.FEATURE_TYPE;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -152,14 +152,14 @@ public class FaceCopyFilter
     for (;;)
     {
       return;
-      paramSet = faceSwapFacePoint(SwitchFaceUtil.getFullCoords(VideoMaterialUtil.copyList((List)this.mFaceLists.get(0))));
-      VideoMaterialUtil.flipYPoints(paramSet, (int)(this.height * this.mFaceDetScale));
+      paramSet = faceSwapFacePoint(SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get(0))));
+      VideoMaterial.flipYPoints(paramSet, (int)(this.height * this.mFaceDetScale));
       setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(paramSet, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.texVertices));
       int i = 1;
       while (i < this.mFaceLists.size())
       {
-        paramSet = faceSwapFacePoint(SwitchFaceUtil.getFullCoords(VideoMaterialUtil.copyList((List)this.mFaceLists.get(i))));
-        VideoMaterialUtil.flipYPoints(paramSet, (int)(this.height * this.mFaceDetScale));
+        paramSet = faceSwapFacePoint(SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get(i))));
+        VideoMaterial.flipYPoints(paramSet, (int)(this.height * this.mFaceDetScale));
         setPositions(SwitchFaceUtil.initFacePositions(paramSet, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
         setCoordNum(138);
         OnDrawFrameGLSL();
@@ -184,7 +184,7 @@ public class FaceCopyFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceCopyFilter
  * JD-Core Version:    0.7.0.1
  */

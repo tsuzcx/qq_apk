@@ -33,7 +33,7 @@ public class PanelFrameLayout
     return super.addViewInLayout(paramView, paramInt, paramLayoutParams, paramBoolean);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.isShowing)
     {
@@ -55,7 +55,7 @@ public class PanelFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.adapt.PanelFrameLayout
  * JD-Core Version:    0.7.0.1
  */

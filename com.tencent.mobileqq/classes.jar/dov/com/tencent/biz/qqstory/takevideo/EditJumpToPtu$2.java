@@ -1,25 +1,24 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
-import boru;
-import bpjt;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 
-public class EditJumpToPtu$2
+class EditJumpToPtu$2
   implements Runnable
 {
-  public EditJumpToPtu$2(boru paramboru, String paramString) {}
+  EditJumpToPtu$2(EditJumpToPtu paramEditJumpToPtu, String paramString) {}
   
   public void run()
   {
     Bitmap localBitmap = this.this$0.a(this.a);
     if (localBitmap != null) {
-      bpjt.a().a(localBitmap);
+      VideoFilterTools.a().a(localBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditJumpToPtu.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.pluginsdk;
 
-import Override;
 import android.app.Fragment;
 import android.content.ComponentName;
 import android.content.Context;

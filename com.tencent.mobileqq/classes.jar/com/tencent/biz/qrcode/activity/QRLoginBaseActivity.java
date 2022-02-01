@@ -1,6 +1,5 @@
 package com.tencent.biz.qrcode.activity;
 
-import Override;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import zlp;
 
 public abstract class QRLoginBaseActivity
   extends IphoneTitleBarActivity
@@ -36,9 +34,9 @@ public abstract class QRLoginBaseActivity
     super.doOnCreate(paramBundle);
     a();
     hideTitleBar();
-    this.b = ((ImageView)super.findViewById(2131369988));
-    this.b.setContentDescription(getText(2131690676));
-    this.b.setOnClickListener(new zlp(this));
+    this.b = ((ImageView)super.findViewById(2131370258));
+    this.b.setContentDescription(getText(2131690778));
+    this.b.setOnClickListener(new QRLoginBaseActivity.1(this));
     return true;
   }
   
@@ -55,7 +53,7 @@ public abstract class QRLoginBaseActivity
       }
     }
     if (i != 0) {
-      ImmersiveUtils.a(true, getWindow());
+      ImmersiveUtils.setStatusTextColor(true, getWindow());
     }
   }
   
@@ -73,21 +71,21 @@ public abstract class QRLoginBaseActivity
       getWindow().addFlags(67108864);
       if (this.mActNeedImmersive)
       {
-        int i = getResources().getColor(2131167084);
+        int i = getResources().getColor(2131167091);
         if (this.mSystemBarComp == null)
         {
           this.mSystemBarComp = new SystemBarCompact(this, true, i);
           if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
             break label103;
           }
-          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838911));
+          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838979));
         }
       }
     }
     for (;;)
     {
       if (!isInMultiWindow()) {
-        ImmersiveUtils.a(getWindow(), this.isClearCoverLayer);
+        ImmersiveUtils.clearCoverForStatus(getWindow(), this.isClearCoverLayer);
       }
       return;
       label103:
@@ -97,7 +95,7 @@ public abstract class QRLoginBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginBaseActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public final class Monitor$1
+final class Monitor$1
   implements Runnable
 {
-  public Monitor$1(String paramString) {}
+  Monitor$1(String paramString) {}
   
   public void run()
   {
@@ -45,7 +45,7 @@ public final class Monitor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.Monitor.1
  * JD-Core Version:    0.7.0.1
  */

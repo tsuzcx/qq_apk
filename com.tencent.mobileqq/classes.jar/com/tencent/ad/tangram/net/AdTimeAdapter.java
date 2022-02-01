@@ -1,0 +1,15 @@
+package com.tencent.ad.tangram.net;
+
+import android.support.annotation.Keep;
+
+@Keep
+public abstract interface AdTimeAdapter
+{
+  public abstract long getServerTimeMillis();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     com.tencent.ad.tangram.net.AdTimeAdapter
+ * JD-Core Version:    0.7.0.1
+ */

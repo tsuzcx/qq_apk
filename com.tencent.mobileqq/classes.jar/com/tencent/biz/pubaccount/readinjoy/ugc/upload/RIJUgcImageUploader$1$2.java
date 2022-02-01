@@ -1,8 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.upload;
 
+import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.ImageUploadController;
 import com.tencent.qphone.base.util.QLog;
-import sdq;
-import sec;
 
 class RIJUgcImageUploader$1$2
   implements Runnable
@@ -11,18 +10,18 @@ class RIJUgcImageUploader$1$2
   
   public void run()
   {
-    if (sdq.a(this.a.this$0))
+    if (RIJUgcImageUploader.a(this.a.this$0))
     {
-      sdq.a(this.a.this$0, false);
-      QLog.i(sdq.a, 1, "cancel before upload");
+      RIJUgcImageUploader.a(this.a.this$0, false);
+      QLog.i(RIJUgcImageUploader.a, 1, "cancel before upload");
       return;
     }
-    sdq.a(this.a.this$0).a(sdq.a(this.a.this$0), true);
+    RIJUgcImageUploader.a(this.a.this$0).a(RIJUgcImageUploader.a(this.a.this$0), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader.1.2
  * JD-Core Version:    0.7.0.1
  */

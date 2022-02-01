@@ -13,7 +13,7 @@ public class HippyQQThirdPartyAdapter
   
   public String getAppVersion()
   {
-    return "8.4.10";
+    return "8.5.5";
   }
   
   public JSONObject getExtraData()
@@ -43,7 +43,7 @@ public class HippyQQThirdPartyAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.adapter.HippyQQThirdPartyAdapter
  * JD-Core Version:    0.7.0.1
  */

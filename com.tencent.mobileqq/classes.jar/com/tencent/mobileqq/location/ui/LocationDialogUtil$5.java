@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.location.ui;
 
+import android.app.Activity;
 import android.content.res.Resources;
-import awju;
-import awkg;
-import bhdj;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class LocationDialogUtil$5
+final class LocationDialogUtil$5
   implements Runnable
 {
-  public LocationDialogUtil$5(BaseActivity paramBaseActivity) {}
+  LocationDialogUtil$5(Activity paramActivity, int paramInt1, String paramString, int paramInt2) {}
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = bhdj.a(this.a, 230, null, this.a.getResources().getString(2131718878), 2131690697, 2131694399, new awkg(this), null);
-    awju.a(this.a, localQQCustomDialog);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719408), 2131690800, 2131694615, new LocationDialogUtil.5.1(this), new LocationDialogUtil.5.2(this));
+    LocationDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, localQQCustomDialog);
   }
 }
 

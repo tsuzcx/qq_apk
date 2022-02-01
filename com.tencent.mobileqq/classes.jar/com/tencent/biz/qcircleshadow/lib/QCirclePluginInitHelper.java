@@ -2,13 +2,13 @@ package com.tencent.biz.qcircleshadow.lib;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import bapt;
-import bmux;
-import com.tencent.hippy.qq.update.HippyQQLibraryManager;
+import com.tencent.biz.qcircleshadow.local.QCircleShadow;
 import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.font.FontManager;
+import com.tencent.mobileqq.config.api.IAppSettingApi;
+import com.tencent.mobileqq.peak.api.IPeakHelperApi;
+import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import mqq.os.MqqHandler;
-import vvq;
 
 public class QCirclePluginInitHelper
 {
@@ -17,12 +17,12 @@ public class QCirclePluginInitHelper
   
   public static void cancelPeakAlive(@NonNull Context paramContext)
   {
-    ThreadManager.getSubThreadHandler().post(new QCirclePluginInitHelper.5(paramContext));
+    ((IPeakHelperApi)QRoute.api(IPeakHelperApi.class)).cancelPeakAlive(paramContext);
   }
   
   public static void cancelQzoneAlive()
   {
-    ThreadManager.getSubThreadHandler().post(new QCirclePluginInitHelper.3());
+    ((IQZoneHelper)QRoute.api(IQZoneHelper.class)).cancelQzoneAlive();
   }
   
   public static QCirclePluginInitHelper getInstance()
@@ -40,32 +40,32 @@ public class QCirclePluginInitHelper
   
   public static String getPluginQUA()
   {
-    return vvq.a().a();
+    return QCircleShadow.a().a();
   }
   
   public static String getReportVersionName()
   {
-    return "8.4.10.4875";
+    return ((IAppSettingApi)QRoute.api(IAppSettingApi.class)).getReportVersionName();
   }
   
   public static boolean isPeakAlive(Context paramContext)
   {
-    return bmux.a(paramContext);
+    return ((IPeakHelperApi)QRoute.api(IPeakHelperApi.class)).isPeakAlive(paramContext);
   }
   
   public static boolean isVideoSDKReady()
   {
-    return bapt.a();
+    return ((IQZoneHelper)QRoute.api(IQZoneHelper.class)).isVideoSDKReady();
   }
   
   public static void preloadPeakProcess(@NonNull Context paramContext)
   {
-    ThreadManager.getSubThreadHandler().post(new QCirclePluginInitHelper.4(paramContext));
+    ((IPeakHelperApi)QRoute.api(IPeakHelperApi.class)).preloadPeakProcess(paramContext);
   }
   
   public static void preloadQZoneProcess()
   {
-    ThreadManager.getSubThreadHandler().post(new QCirclePluginInitHelper.2());
+    ((IQZoneHelper)QRoute.api(IQZoneHelper.class)).preloadQZoneProcess();
   }
   
   public static void preloadToolProgress()
@@ -75,17 +75,17 @@ public class QCirclePluginInitHelper
   
   public static void startFontSoDownload()
   {
-    FontManager.getInstance().startFontSoDownload(null);
+    ((IQZoneHelper)QRoute.api(IQZoneHelper.class)).startFontSoDownload();
   }
   
   public void preloadHippy()
   {
-    HippyQQLibraryManager.getInstance().preDownload();
+    ((IQZoneHelper)QRoute.api(IQZoneHelper.class)).preloadHippy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCirclePluginInitHelper
  * JD-Core Version:    0.7.0.1
  */

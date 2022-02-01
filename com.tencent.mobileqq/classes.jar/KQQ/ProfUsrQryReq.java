@@ -9,18 +9,18 @@ public final class ProfUsrQryReq
   extends JceStruct
 {
   static ArrayList<Long> cache_vUin;
-  public byte cGetBusiCardFlag;
-  public byte cGetDateNick;
-  public byte cGetSig;
-  public byte cGetSpecialFlag;
-  public int iAppId;
-  public int iGetLevel;
-  public int iGetXManInfo;
-  public int iGetXManInfoScene;
-  public int iReloadFlag;
-  public int iRetIncomPlete;
+  public byte cGetBusiCardFlag = 0;
+  public byte cGetDateNick = 0;
+  public byte cGetSig = 0;
+  public byte cGetSpecialFlag = 0;
+  public int iAppId = 0;
+  public int iGetLevel = 0;
+  public int iGetXManInfo = 0;
+  public int iGetXManInfoScene = 0;
+  public int iReloadFlag = 0;
+  public int iRetIncomPlete = 0;
   public String strSessionKey = "";
-  public ArrayList<Long> vUin;
+  public ArrayList<Long> vUin = null;
   
   public ProfUsrQryReq() {}
   

@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.stt;
 
-import bdtt;
-import bdtu;
-import bdtx;
 import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.stt.shard.AIOSttResult;
 
-public class SttManager$3
+class SttManager$3
   implements Runnable
 {
-  public SttManager$3(bdtt parambdtt, MessageForPtt paramMessageForPtt) {}
+  SttManager$3(SttManager paramSttManager, MessageForPtt paramMessageForPtt) {}
   
   public void run()
   {
-    bdtt.a(this.this$0, this.a, this.a.getSttResult().c());
+    SttManager.a(this.this$0, this.a, this.a.getSttResult().c());
     if (this.this$0.a != null) {
       this.this$0.a.a(this.a);
     }

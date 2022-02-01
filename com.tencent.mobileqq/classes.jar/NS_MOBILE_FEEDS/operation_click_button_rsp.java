@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class operation_click_button_rsp
   extends JceStruct
 {
-  public int iRet;
+  public int iRet = 0;
   public String strButtonText = "";
   public String strJumpUrl = "";
   public String strToastText = "";

@@ -1,8 +1,8 @@
 package cooperation.qzone.share;
 
 import android.text.TextUtils;
-import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
@@ -23,7 +23,7 @@ class QZoneShareActivity$7$1
   {
     if (this.val$currentCount > this.val$maxWordCnt)
     {
-      QQToast.a(this.this$1.this$0, 4, 2131717577, 0).a();
+      QQToast.a(this.this$1.this$0, 4, 2131718072, 0).a();
       return;
     }
     this.this$1.this$0.hideKeyboardAndEmo();
@@ -80,7 +80,7 @@ class QZoneShareActivity$7$1
         continue;
         label378:
         QZoneShareActivity.access$900(this.this$1.this$0);
-        QQToast.a(this.this$1.this$0, 5, anvx.a(2131711793), 0).a();
+        QQToast.a(this.this$1.this$0, 5, HardCodeUtil.a(2131712308), 0).a();
         continue;
         int i = 1;
         continue;
@@ -91,7 +91,7 @@ class QZoneShareActivity$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

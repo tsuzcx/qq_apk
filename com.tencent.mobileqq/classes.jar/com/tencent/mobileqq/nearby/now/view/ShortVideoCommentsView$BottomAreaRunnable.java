@@ -3,7 +3,7 @@ package com.tencent.mobileqq.nearby.now.view;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class ShortVideoCommentsView$BottomAreaRunnable
+class ShortVideoCommentsView$BottomAreaRunnable
   implements Runnable
 {
   private int a = 2;

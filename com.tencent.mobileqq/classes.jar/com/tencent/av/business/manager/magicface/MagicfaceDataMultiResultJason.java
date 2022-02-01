@@ -2,15 +2,15 @@ package com.tencent.av.business.manager.magicface;
 
 public class MagicfaceDataMultiResultJason
 {
-  public String divers_ani_hit;
-  public int divers_ani_hit_frame;
-  public String divers_ani_miss;
-  public int divers_ani_miss_frame;
-  public int divers_ani_start;
-  public int divers_hei = 0;
-  public int divers_wid = 0;
-  public int divers_x = 0;
-  public int divers_y = 0;
+  String divers_ani_hit;
+  int divers_ani_hit_frame;
+  String divers_ani_miss;
+  int divers_ani_miss_frame;
+  int divers_ani_start;
+  int divers_hei = 0;
+  int divers_wid = 0;
+  int divers_x = 0;
+  int divers_y = 0;
   
   public String toString()
   {
@@ -19,7 +19,7 @@ public class MagicfaceDataMultiResultJason
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfaceDataMultiResultJason
  * JD-Core Version:    0.7.0.1
  */

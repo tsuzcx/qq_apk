@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class UiExtraAppInfo
   extends JceStruct
 {
-  public int svipLevel;
-  public int svipMonth;
+  public int svipLevel = 0;
+  public int svipMonth = 0;
   
   public UiExtraAppInfo() {}
   

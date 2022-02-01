@@ -1,20 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
-import qos;
-
-public class NoteCardProteusItem$5
+class NoteCardProteusItem$5
   implements Runnable
 {
-  public NoteCardProteusItem$5(qos paramqos) {}
+  NoteCardProteusItem$5(NoteCardProteusItem paramNoteCardProteusItem) {}
   
   public void run()
   {
-    qos.b(this.this$0);
+    NoteCardProteusItem.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.item.NoteCardProteusItem.5
  * JD-Core Version:    0.7.0.1
  */

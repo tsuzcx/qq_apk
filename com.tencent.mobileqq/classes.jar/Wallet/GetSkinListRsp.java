@@ -9,12 +9,12 @@ public final class GetSkinListRsp
   extends JceStruct
 {
   static ArrayList<SkinInfo> cache_skin_list = new ArrayList();
-  public boolean is_hide_list;
+  public boolean is_hide_list = false;
   public String more_skin_url = "";
   public String operate_desc = "";
   public String operate_url = "";
-  public int selected_id;
-  public ArrayList<SkinInfo> skin_list;
+  public int selected_id = 0;
+  public ArrayList<SkinInfo> skin_list = null;
   
   static
   {

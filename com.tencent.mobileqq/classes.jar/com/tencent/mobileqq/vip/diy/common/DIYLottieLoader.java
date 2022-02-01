@@ -3,21 +3,23 @@ package com.tencent.mobileqq.vip.diy.common;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.util.MQLruCache;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.jsoninflate.LottieLoader;
+import com.tencent.mobileqq.qroute.annotation.PluginInterface;
+import com.tencent.mobileqq.vas.widget.lottie.LottieLoader;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+@Deprecated
+@PluginInterface
 public class DIYLottieLoader
   extends LottieLoader
 {
-  private static final String TAG = "DIYProfileTemplate.DIYLottieLoader";
+  private static final String TAG = "DIYLottieLoader";
   private MQLruCache<String, Object> mMemoryCache;
   
-  public DIYLottieLoader(QQAppInterface paramQQAppInterface, Context paramContext)
+  public DIYLottieLoader(Context paramContext)
   {
-    super(paramQQAppInterface, paramContext);
+    super(paramContext);
   }
   
   public void destroy()
@@ -33,7 +35,7 @@ public class DIYLottieLoader
         if ((localObject != null) && ((localObject instanceof Bitmap)))
         {
           ((Bitmap)localObject).recycle();
-          QZLog.i("DIYProfileTemplate.DIYLottieLoader", 4, "recycle bitmap key = " + str);
+          QLog.i("DIYLottieLoader", 4, "recycle bitmap key = " + str);
         }
       }
       this.mMemoryCache.releaseLargeCache();
@@ -53,7 +55,7 @@ public class DIYLottieLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.common.DIYLottieLoader
  * JD-Core Version:    0.7.0.1
  */

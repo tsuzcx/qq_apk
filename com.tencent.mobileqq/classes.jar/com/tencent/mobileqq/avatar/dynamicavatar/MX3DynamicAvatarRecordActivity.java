@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;

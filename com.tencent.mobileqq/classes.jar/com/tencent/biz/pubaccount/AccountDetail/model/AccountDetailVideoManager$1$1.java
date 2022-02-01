@@ -1,13 +1,11 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
 import android.app.Activity;
-import obb;
-import obc;
 
-public class AccountDetailVideoManager$1$1
+class AccountDetailVideoManager$1$1
   implements Runnable
 {
-  public AccountDetailVideoManager$1$1(obc paramobc) {}
+  AccountDetailVideoManager$1$1(AccountDetailVideoManager.1 param1) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public class AccountDetailVideoManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.1.1
  * JD-Core Version:    0.7.0.1
  */

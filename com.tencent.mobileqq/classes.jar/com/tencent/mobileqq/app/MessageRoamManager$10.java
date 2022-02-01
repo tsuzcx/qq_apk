@@ -5,7 +5,6 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anzc;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -13,10 +12,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.MobileQQ;
 
-public class MessageRoamManager$10
+class MessageRoamManager$10
   implements Runnable
 {
-  public MessageRoamManager$10(anzc paramanzc) {}
+  MessageRoamManager$10(MessageRoamManager paramMessageRoamManager) {}
   
   public void run()
   {
@@ -43,7 +42,7 @@ public class MessageRoamManager$10
         }
         localObject = localSharedPreferences.getString("blue_banner_svip_text", null);
         if (i == 0) {
-          localObject = this.this$0.a.getApp().getResources().getString(2131693784);
+          localObject = this.this$0.a.getApp().getResources().getString(2131693955);
         }
         String str2 = localSharedPreferences.getString("blue_banner_go_url", null);
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str2)))
@@ -83,7 +82,7 @@ public class MessageRoamManager$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.10
  * JD-Core Version:    0.7.0.1
  */

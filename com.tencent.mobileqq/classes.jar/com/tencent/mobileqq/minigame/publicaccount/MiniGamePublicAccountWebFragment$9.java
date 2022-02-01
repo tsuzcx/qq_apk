@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.minigame.publicaccount.view.MiniGamePubViewpager;
 
 class MiniGamePublicAccountWebFragment$9
   implements Runnable
@@ -10,8 +10,8 @@ class MiniGamePublicAccountWebFragment$9
   
   public void run()
   {
-    if ((this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing()) && (MiniGamePublicAccountWebFragment.access$1800(this.this$0) != null)) {
-      MiniGamePublicAccountWebFragment.access$1800(this.this$0).setCurrentItem(this.val$pos);
+    if ((this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing()) && (this.this$0.viewPager != null)) {
+      this.this$0.viewPager.setCurrentItem(this.val$pos);
     }
   }
 }

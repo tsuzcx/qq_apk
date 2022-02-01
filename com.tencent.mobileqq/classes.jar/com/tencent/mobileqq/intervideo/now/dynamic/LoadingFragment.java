@@ -11,10 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import avuo;
-import avux;
-import avvt;
-import avvu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.intervideo.nowproxy.Global;
 import com.tencent.intervideo.nowproxy.NowLive;
@@ -23,15 +19,16 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.intervideo.now.NowDataReporter;
 import com.tencent.qphone.base.util.QLog;
 
 public class LoadingFragment
   extends IphoneTitleBarFragment
 {
   static View jdField_a_of_type_AndroidViewView;
-  avux jdField_a_of_type_Avux;
-  NowPluginObserver jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver = new avvt(this);
+  NowPluginObserver jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver = new LoadingFragment.1(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  DynamicNowManager jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager;
   
   public static void a(Context paramContext, Bundle paramBundle, View paramView)
   {
@@ -44,7 +41,7 @@ public class LoadingFragment
     PublicFragmentActivity.a(paramContext, localIntent, LoadingFragment.class);
   }
   
-  public void a()
+  protected void a()
   {
     FragmentActivity localFragmentActivity = getActivity();
     if (localFragmentActivity != null) {
@@ -77,12 +74,12 @@ public class LoadingFragment
         paramLayoutInflater.addView(jdField_a_of_type_AndroidViewView, paramViewGroup);
       }
     }
-    this.jdField_a_of_type_Avux.a.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager.a.a.a();
   }
   
   public int getContentLayoutId()
   {
-    return 2131561260;
+    return 2131561365;
   }
   
   public void init(Bundle paramBundle)
@@ -93,7 +90,7 @@ public class LoadingFragment
     for (paramBundle = null; (paramBundle instanceof QQAppInterface); paramBundle = paramBundle.getAppInterface())
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
-      this.jdField_a_of_type_Avux = ((avux)paramBundle.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER));
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager = ((DynamicNowManager)paramBundle.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER));
       Global.addNowPluginObserver(this.jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver);
       return;
     }
@@ -109,7 +106,7 @@ public class LoadingFragment
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Avux != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager != null) {
       Global.removeNowPluginObserver(this.jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver);
     }
     if (jdField_a_of_type_AndroidViewView != null)
@@ -152,7 +149,7 @@ public class LoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment
  * JD-Core Version:    0.7.0.1
  */

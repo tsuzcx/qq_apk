@@ -1,16 +1,16 @@
 package cooperation.qzone;
 
 import android.os.ResultReceiver;
-import anvx;
-import bcxc;
-import bcyc;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceStatus.ISVConfig;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import java.util.ArrayList;
 
 class QzoneVideoSoDownloadModule$MyISVConfig
-  implements bcyc
+  implements ShortVideoResourceStatus.ISVConfig
 {
   private QQAppInterface app;
   private ResultReceiver mReceiver;
@@ -28,8 +28,8 @@ class QzoneVideoSoDownloadModule$MyISVConfig
     {
       if (paramInt2 != 0)
       {
-        QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, anvx.a(2131711967) + paramInt2 + "]");
-        bcxc.b(1, paramInt2);
+        QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, HardCodeUtil.a(2131712482) + paramInt2 + "]");
+        ShortVideoErrorReport.b(1, paramInt2);
         return;
       }
       ArrayList localArrayList = new ArrayList(1);
@@ -39,17 +39,17 @@ class QzoneVideoSoDownloadModule$MyISVConfig
         ShortVideoResourceManager.a(this.app, localArrayList, new QzoneVideoSoDownloadModule.MyShortVideoResource(this.this$0, this.mReceiver));
         return;
       }
-      QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, anvx.a(2131712051) + paramInt1 + "]");
-      bcxc.b(1, paramInt1);
+      QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, HardCodeUtil.a(2131712566) + paramInt1 + "]");
+      ShortVideoErrorReport.b(1, paramInt1);
       return;
     }
-    QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, anvx.a(2131711942) + paramInt2 + "]");
-    bcxc.b(1, paramInt2);
+    QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, HardCodeUtil.a(2131712457) + paramInt2 + "]");
+    ShortVideoErrorReport.b(1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzoneVideoSoDownloadModule.MyISVConfig
  * JD-Core Version:    0.7.0.1
  */

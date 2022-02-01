@@ -1,22 +1,34 @@
 package com.tencent.av;
 
-import com.tencent.av.gaudio.QQGAudioCtrl;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import mqq.app.MobileQQ;
 
 class VideoController$26
   implements Runnable
 {
-  VideoController$26(VideoController paramVideoController, int paramInt1, int paramInt2, int paramInt3) {}
+  VideoController$26(VideoController paramVideoController, int paramInt, long paramLong) {}
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.setAudioNoiseCtrlParam(this.a, this.b, this.c);
+    this.this$0.j = null;
+    this.this$0.a().a("startGAudioChat.1", 0);
+    boolean bool = NetworkUtil.g(this.this$0.a.getApplication().getApplicationContext());
+    VideoController localVideoController = this.this$0;
+    int j = this.jdField_a_of_type_Int;
+    long l = this.jdField_a_of_type_Long;
+    if (bool) {}
+    for (int i = 71;; i = 70)
+    {
+      localVideoController.onGAudioSDKError(j, l, i, 0);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.VideoController.26
  * JD-Core Version:    0.7.0.1
  */

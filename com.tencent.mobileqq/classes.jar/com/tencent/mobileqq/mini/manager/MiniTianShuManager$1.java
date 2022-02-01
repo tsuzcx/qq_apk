@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.manager;
 
+import com.tencent.mobileqq.tianshu.data.TianShuGetAdvCallback;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import cooperation.vip.tianshu.TianShuGetAdvCallback;
 import java.util.List;
 
 final class MiniTianShuManager$1

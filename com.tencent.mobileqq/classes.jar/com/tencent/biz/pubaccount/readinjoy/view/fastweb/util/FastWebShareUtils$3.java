@@ -8,12 +8,11 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.IOException;
 import java.util.Map;
-import tjt;
 
-public class FastWebShareUtils$3
+class FastWebShareUtils$3
   implements Runnable
 {
-  public FastWebShareUtils$3(tjt paramtjt, String paramString, boolean paramBoolean, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
+  FastWebShareUtils$3(FastWebShareUtils paramFastWebShareUtils, String paramString, boolean paramBoolean, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
   
   public void run()
   {
@@ -54,7 +53,7 @@ public class FastWebShareUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,29 @@
 package com.tencent.mobileqq.apollo;
 
-import amnh;
-import bhyo;
-import bhyq;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 
-public class ApolloQueueDownloader$1
+class ApolloQueueDownloader$1
   implements Runnable
 {
-  public ApolloQueueDownloader$1(amnh paramamnh, bhyo parambhyo) {}
+  ApolloQueueDownloader$1(ApolloQueueDownloader paramApolloQueueDownloader, DownloadTask paramDownloadTask) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ApolloQueue_Downloader", 2, "doTask | run() downloadLimitCount=" + this.this$0.a.get() + ",task=" + this.a);
     }
-    if ((this.a.c) && (bhyq.a(this.a.jdField_a_of_type_JavaLangString)))
+    if ((this.a.c) && (DownloaderFactory.a(this.a.jdField_a_of_type_JavaLangString)))
     {
       this.a.jdField_a_of_type_Int = -101;
       this.a.a(-1);
-      this.a.e();
+      this.a.f();
       this.this$0.a(this.a);
       this.this$0.a.addAndGet(-1);
       this.this$0.a();
@@ -34,7 +33,7 @@ public class ApolloQueueDownloader$1
       return;
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    int i = bhyq.a(this.a, localAppRuntime);
+    int i = DownloaderFactory.a(this.a, localAppRuntime);
     if (QLog.isColorLevel()) {
       QLog.d("ApolloQueue_Downloader", 2, "doTask | run() download task result=" + i + ",task=" + this.a);
     }
@@ -53,12 +52,12 @@ public class ApolloQueueDownloader$1
       {
         localObject = this.a.jdField_a_of_type_JavaLangString;
         localObject = localStringBuilder.append("ApolloQueue_Downloader").append(" current task:").append((String)localObject).append(",downloadQueue size:");
-        if (amnh.a(this.this$0) != null) {
+        if (ApolloQueueDownloader.a(this.this$0) != null) {
           break label105;
         }
       }
       label105:
-      for (int i = 0;; i = amnh.a(this.this$0).size())
+      for (int i = 0;; i = ApolloQueueDownloader.a(this.this$0).size())
       {
         ((StringBuilder)localObject).append(i);
         return localStringBuilder.toString();
@@ -75,7 +74,7 @@ public class ApolloQueueDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloQueueDownloader.1
  * JD-Core Version:    0.7.0.1
  */

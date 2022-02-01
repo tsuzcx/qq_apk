@@ -1,6 +1,5 @@
 package dov.com.qq.im.ae.data;
 
-import bnkg;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,13 +9,13 @@ public class AEGifCategoryWrapper
   public String categoryId = "";
   public String categoryName = "";
   public String fontId = "";
-  public List<bnkg> materialWrapperList;
+  public List<AEMaterialWrapper> materialWrapperList;
   public boolean selected;
   public boolean showCategory;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.data.AEGifCategoryWrapper
  * JD-Core Version:    0.7.0.1
  */

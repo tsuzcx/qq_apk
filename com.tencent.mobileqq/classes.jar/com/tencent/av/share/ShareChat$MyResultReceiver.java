@@ -5,21 +5,19 @@ import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import lyx;
-import lyz;
 
-public class ShareChat$MyResultReceiver
+class ShareChat$MyResultReceiver
   extends ResultReceiver
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private WeakReference<lyx> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ShareChat.SharePanel> jdField_a_of_type_JavaLangRefWeakReference;
   private int b;
   
-  public ShareChat$MyResultReceiver(Handler paramHandler, lyx paramlyx, int paramInt1, int paramInt2, long paramLong)
+  public ShareChat$MyResultReceiver(Handler paramHandler, ShareChat.SharePanel paramSharePanel, int paramInt1, int paramInt2, long paramLong)
   {
     super(paramHandler);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramlyx);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSharePanel);
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
     this.jdField_a_of_type_Long = paramLong;
@@ -28,7 +26,7 @@ public class ShareChat$MyResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     int i = 2;
-    paramBundle = (lyx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramBundle = (ShareChat.SharePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (paramBundle == null) {}
     do
     {
@@ -77,7 +75,7 @@ public class ShareChat$MyResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

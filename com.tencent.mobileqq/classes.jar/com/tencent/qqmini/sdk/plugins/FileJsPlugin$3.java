@@ -19,10 +19,10 @@ class FileJsPlugin$3
   
   private void reportUploadResult(long paramLong, int paramInt)
   {
-    if (FileJsPlugin.access$800(this.this$0)) {}
+    if (FileJsPlugin.access$600(this.this$0)) {}
     for (String str = "1";; str = "0")
     {
-      MiniReportManager.reportEventType(FileJsPlugin.access$900(this.this$0), 641, null, null, null, paramInt, str, paramLong, null);
+      MiniReportManager.reportEventType(FileJsPlugin.access$700(this.this$0), 641, null, null, null, paramInt, str, paramLong, null);
       return;
     }
   }
@@ -134,7 +134,7 @@ class FileJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

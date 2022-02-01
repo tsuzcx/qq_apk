@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msf.sdk;
 
-import com.tencent.mobileqq.msf.sdk.report.c;
+import com.tencent.mobileqq.msf.sdk.b.c;
 import com.tencent.qphone.base.util.QLog;
 
 class s

@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.register;
 
 import android.content.Intent;
-import anvx;
-import bbbv;
-import bdla;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.loginregister.LoginUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class QueryAccount$1
+class QueryAccount$1
   implements Runnable
 {
-  public QueryAccount$1(bbbv parambbbv, String paramString) {}
+  QueryAccount$1(QueryAccount paramQueryAccount, String paramString) {}
   
   public void run()
   {
@@ -26,15 +24,16 @@ public class QueryAccount$1
         localObject1 = "https://" + (String)localObject2;
       }
     }
-    localObject2 = new Intent(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("selfSet_leftViewText", anvx.a(2131710682));
-    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
-    bdla.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800665B", "0X800665B", 0, 0, "", "", "", "");
+    localObject2 = new Intent();
+    ((Intent)localObject2).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131711195));
+    ((Intent)localObject2).putExtra("url", (String)localObject1);
+    LoginUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, (Intent)localObject2, "/base/browser");
+    ReportController.b(this.this$0.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "0X800665B", "0X800665B", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.register.QueryAccount.1
  * JD-Core Version:    0.7.0.1
  */

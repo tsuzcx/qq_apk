@@ -8,23 +8,23 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bmxa;
-import bmxz;
-import bnbg;
-import bnkb;
-import bnke;
-import bnpz;
-import bnqc;
-import bnqm;
-import bnqq;
-import bnrf;
-import bnrh;
-import bogd;
-import bpqs;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.AEPituCameraUnit;
+import dov.com.qq.im.ae.AEViewModelProviders;
+import dov.com.qq.im.ae.camera.ui.AECaptureController;
 import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import dov.com.qq.im.ae.data.AEMaterialManager;
+import dov.com.qq.im.ae.data.AEMaterialMetaData;
+import dov.com.qq.im.ae.mode.AEVideoStoryCaptureModeViewModel;
+import dov.com.qq.im.ae.part.VideoStoryCapturePartManager;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.report.AEBaseReportParam;
+import dov.com.qq.im.ae.util.AEFastClickThrottle;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -37,30 +37,30 @@ public class AEPlayShowGridAdapter
   implements AEPlayShowGridViewHolder.ItemClickCallback
 {
   private static final String TAG = "AEPlayShowGridAdapter";
-  public static bnke selectedMaterial;
-  public static bnke selectedMidMaterial;
+  public static AEMaterialMetaData selectedMaterial;
+  public static AEMaterialMetaData selectedMidMaterial;
   private String curTabId = "";
-  private bnbg mAECaptureController;
+  private AECaptureController mAECaptureController;
   private Map<String, AEPlayShowGridViewHolder> mCachedViewHolder;
-  private bnpz mCaptureModeViewModel;
+  private AEVideoStoryCaptureModeViewModel mCaptureModeViewModel;
   private Context mContext;
   private int mLayoutType;
-  private List<bnke> mMaterialList;
-  private bnkb mMidMaterialManager;
-  private bnqc mPartManager;
+  private List<AEMaterialMetaData> mMaterialList;
+  private AEMaterialManager mMidMaterialManager;
+  private VideoStoryCapturePartManager mPartManager;
   private AEPlayShowGridAdapter.SizeInfo mSizeInfo;
-  private bmxa mUnit;
+  private AEPituCameraUnit mUnit;
   
-  public AEPlayShowGridAdapter(@NonNull Context paramContext, @NonNull bnqc parambnqc, @NonNull AEPlayShowGridAdapter.SizeInfo paramSizeInfo, int paramInt)
+  public AEPlayShowGridAdapter(@NonNull Context paramContext, @NonNull VideoStoryCapturePartManager paramVideoStoryCapturePartManager, @NonNull AEPlayShowGridAdapter.SizeInfo paramSizeInfo, int paramInt)
   {
     this.mContext = paramContext;
-    this.mPartManager = parambnqc;
-    this.mUnit = ((bmxa)this.mPartManager.a(65537, new Object[0]));
+    this.mPartManager = paramVideoStoryCapturePartManager;
+    this.mUnit = ((AEPituCameraUnit)this.mPartManager.a(65537, new Object[0]));
     this.mAECaptureController = this.mUnit.a();
     this.mSizeInfo = paramSizeInfo;
     this.mLayoutType = paramInt;
-    this.mMidMaterialManager = ((bnkb)bogd.a().c(18));
-    this.mCaptureModeViewModel = ((bnpz)bmxz.a(this.mUnit).get(bnpz.class));
+    this.mMidMaterialManager = ((AEMaterialManager)QIMManager.a().c(18));
+    this.mCaptureModeViewModel = ((AEVideoStoryCaptureModeViewModel)AEViewModelProviders.a(this.mUnit).get(AEVideoStoryCaptureModeViewModel.class));
     this.mCachedViewHolder = new HashMap();
   }
   
@@ -81,45 +81,45 @@ public class AEPlayShowGridAdapter
     finally {}
   }
   
-  private void applyTemplate(@NonNull bnke parambnke)
+  private void applyTemplate(@NonNull AEMaterialMetaData paramAEMaterialMetaData)
   {
-    if (parambnke.g == 0)
+    if (paramAEMaterialMetaData.g == 0)
     {
-      selectedMidMaterial = parambnke;
-      new StringBuilder().append(bpqs.a).append(parambnke.jdField_f_of_type_JavaLangString).toString();
-      this.mAECaptureController.a(parambnke);
+      selectedMidMaterial = paramAEMaterialMetaData;
+      new StringBuilder().append(QIMPtvTemplateManager.a).append(paramAEMaterialMetaData.jdField_f_of_type_JavaLangString).toString();
+      this.mAECaptureController.a(paramAEMaterialMetaData);
       i = AEBeautyProviderView.a();
       this.mAECaptureController.a(i);
       i = AEBeautyProviderView.b();
       this.mAECaptureController.b(i);
-      this.mPartManager.a(393218, new Object[] { parambnke });
+      this.mPartManager.a(393218, new Object[] { paramAEMaterialMetaData });
     }
-    while ((parambnke.g != 4) && (parambnke.g != 5) && (parambnke.g != 6) && (parambnke.g != 7))
+    while ((paramAEMaterialMetaData.g != 4) && (paramAEMaterialMetaData.g != 5) && (paramAEMaterialMetaData.g != 6) && (paramAEMaterialMetaData.g != 7))
     {
       int i;
       return;
     }
     selectedMidMaterial = null;
-    this.mPartManager.a(655361, new Object[] { parambnke });
+    this.mPartManager.a(655361, new Object[] { paramAEMaterialMetaData });
   }
   
-  private void downloadTemplate(@NonNull bnke parambnke)
+  private void downloadTemplate(@NonNull AEMaterialMetaData paramAEMaterialMetaData)
   {
-    if ((parambnke.jdField_f_of_type_Boolean) || (TextUtils.isEmpty(parambnke.a))) {
+    if ((paramAEMaterialMetaData.jdField_f_of_type_Boolean) || (TextUtils.isEmpty(paramAEMaterialMetaData.a))) {
       return;
     }
-    downloadTemplateDirectly(parambnke);
+    downloadTemplateDirectly(paramAEMaterialMetaData);
   }
   
-  private void downloadTemplateDirectly(@NonNull bnke parambnke)
+  private void downloadTemplateDirectly(@NonNull AEMaterialMetaData paramAEMaterialMetaData)
   {
-    AEPlayShowGridViewHolder localAEPlayShowGridViewHolder = (AEPlayShowGridViewHolder)this.mCachedViewHolder.get(parambnke.a);
+    AEPlayShowGridViewHolder localAEPlayShowGridViewHolder = (AEPlayShowGridViewHolder)this.mCachedViewHolder.get(paramAEMaterialMetaData.a);
     if (localAEPlayShowGridViewHolder != null) {
       localAEPlayShowGridViewHolder.onDownloadStart();
     }
-    bnrh.b("AEPlayShowGridAdapter", "【Play Item】onDownloadStart :" + parambnke.a);
-    PlayDownloadManagerWrap.getInstance().addProgressObserver(parambnke.a, localAEPlayShowGridViewHolder);
-    PlayDownloadManagerWrap.getInstance().startDownload(this.mPartManager, this.mMidMaterialManager, parambnke);
+    AEQLog.b("AEPlayShowGridAdapter", "【Play Item】onDownloadStart :" + paramAEMaterialMetaData.a);
+    PlayDownloadManagerWrap.getInstance().addProgressObserver(paramAEMaterialMetaData.a, localAEPlayShowGridViewHolder);
+    PlayDownloadManagerWrap.getInstance().startDownload(this.mPartManager, this.mMidMaterialManager, paramAEMaterialMetaData);
   }
   
   public static void onSelectedMidMaterialConsumed()
@@ -163,14 +163,14 @@ public class AEPlayShowGridAdapter
     return selectedMidMaterial != null;
   }
   
-  private void toMiniApp(@NonNull bnke parambnke)
+  private void toMiniApp(@NonNull AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.mPartManager.a(655363, new Object[] { parambnke });
+    this.mPartManager.a(655363, new Object[] { paramAEMaterialMetaData });
   }
   
-  private void toWebView(@NonNull bnke parambnke)
+  private void toWebView(@NonNull AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.mPartManager.a(655362, new Object[] { parambnke });
+    this.mPartManager.a(655362, new Object[] { paramAEMaterialMetaData });
   }
   
   public int getItemCount()
@@ -201,13 +201,13 @@ public class AEPlayShowGridAdapter
   
   public void onBindViewHolder(AEPlayShowGridViewHolder paramAEPlayShowGridViewHolder, int paramInt)
   {
-    bnke localbnke = (bnke)this.mMaterialList.get(paramInt);
-    paramAEPlayShowGridViewHolder.bind(localbnke, paramInt);
-    if ((this.curTabId != null) && (this.curTabId.equals(localbnke.k)))
+    AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)this.mMaterialList.get(paramInt);
+    paramAEPlayShowGridViewHolder.bind(localAEMaterialMetaData, paramInt);
+    if ((this.curTabId != null) && (this.curTabId.equals(localAEMaterialMetaData.n)))
     {
-      bnqq.a().d(paramAEPlayShowGridViewHolder.mPlayMaterial.g);
-      bnqq.a().c(paramInt + 1);
-      bnqm.a().g(paramAEPlayShowGridViewHolder.mPlayMaterial.a);
+      AEBaseReportParam.a().d(paramAEPlayShowGridViewHolder.mPlayMaterial.g);
+      AEBaseReportParam.a().c(paramInt + 1);
+      AEBaseDataReporter.a().g(paramAEPlayShowGridViewHolder.mPlayMaterial.a);
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramAEPlayShowGridViewHolder, paramInt, getItemId(paramInt));
   }
@@ -215,7 +215,7 @@ public class AEPlayShowGridAdapter
   public AEPlayShowGridViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     if (this.mLayoutType == 1) {}
-    for (paramViewGroup = LayoutInflater.from(this.mContext).inflate(2131558520, paramViewGroup, false);; paramViewGroup = LayoutInflater.from(this.mContext).inflate(2131558521, paramViewGroup, false)) {
+    for (paramViewGroup = LayoutInflater.from(this.mContext).inflate(2131558531, paramViewGroup, false);; paramViewGroup = LayoutInflater.from(this.mContext).inflate(2131558532, paramViewGroup, false)) {
       return new AEPlayShowGridViewHolder(paramViewGroup, this.mSizeInfo, this, this.mLayoutType);
     }
   }
@@ -230,9 +230,9 @@ public class AEPlayShowGridAdapter
     }
   }
   
-  public void onItemClicked(View paramView, @NonNull bnke parambnke, int paramInt)
+  public void onItemClicked(View paramView, @NonNull AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
   {
-    if (bnrf.a(paramView)) {}
+    if (AEFastClickThrottle.a(paramView)) {}
     label140:
     label187:
     do
@@ -241,52 +241,52 @@ public class AEPlayShowGridAdapter
       if (paramInt < 0)
       {
         Integer.toString(paramInt);
-        bnqq.a().c(paramInt);
-        bnqq.a().f("3");
-        bnqq.a().d(parambnke.g);
-        selectedMaterial = parambnke;
-        bnrh.b("AEPlayShowGridAdapter", "【Play Material OnClick】playShowType:" + parambnke.g);
-        bnrh.b("AEPlayShowGridAdapter", "【Play Material OnClick】id:" + parambnke.a);
-        if (!bnke.b(parambnke)) {
+        AEBaseReportParam.a().c(paramInt);
+        AEBaseReportParam.a().i("3");
+        AEBaseReportParam.a().d(paramAEMaterialMetaData.g);
+        selectedMaterial = paramAEMaterialMetaData;
+        AEQLog.b("AEPlayShowGridAdapter", "【Play Material OnClick】playShowType:" + paramAEMaterialMetaData.g);
+        AEQLog.b("AEPlayShowGridAdapter", "【Play Material OnClick】id:" + paramAEMaterialMetaData.a);
+        if (!AEMaterialMetaData.b(paramAEMaterialMetaData)) {
           break label187;
         }
-        if (!parambnke.e) {
+        if (!paramAEMaterialMetaData.e) {
           break label140;
         }
-        applyTemplate(parambnke);
+        applyTemplate(paramAEMaterialMetaData);
       }
       for (;;)
       {
-        bnqm.a().d(parambnke.a);
+        AEBaseDataReporter.a().d(paramAEMaterialMetaData.a);
         return;
         paramInt += 1;
         break;
-        if (!NetworkUtil.isNetworkAvailable())
+        if (!NetworkUtil.a())
         {
           selectedMaterial = null;
           selectedMidMaterial = null;
-          QQToast.a(this.mContext, this.mContext.getString(2131717691), 0).a();
+          QQToast.a(this.mContext, this.mContext.getString(2131718193), 0).a();
         }
         else
         {
-          downloadTemplate(parambnke);
+          downloadTemplate(paramAEMaterialMetaData);
         }
       }
-      if (parambnke.g == 2)
+      if (paramAEMaterialMetaData.g == 2)
       {
-        toWebView(parambnke);
-        bnqm.a().d(parambnke.a);
+        toWebView(paramAEMaterialMetaData);
+        AEBaseDataReporter.a().d(paramAEMaterialMetaData.a);
         return;
       }
-    } while (parambnke.g != 3);
-    toMiniApp(parambnke);
-    bnqm.a().d(parambnke.a);
+    } while (paramAEMaterialMetaData.g != 3);
+    toMiniApp(paramAEMaterialMetaData);
+    AEBaseDataReporter.a().d(paramAEMaterialMetaData.a);
   }
   
   public void onViewAttachedToWindow(AEPlayShowGridViewHolder paramAEPlayShowGridViewHolder)
   {
     super.onViewAttachedToWindow(paramAEPlayShowGridViewHolder);
-    if ((paramAEPlayShowGridViewHolder.mPlayMaterial != null) && (!TextUtils.isEmpty(paramAEPlayShowGridViewHolder.mPlayMaterial.a)) && (bnke.b(paramAEPlayShowGridViewHolder.mPlayMaterial)))
+    if ((paramAEPlayShowGridViewHolder.mPlayMaterial != null) && (!TextUtils.isEmpty(paramAEPlayShowGridViewHolder.mPlayMaterial.a)) && (AEMaterialMetaData.b(paramAEPlayShowGridViewHolder.mPlayMaterial)))
     {
       this.mCachedViewHolder.put(paramAEPlayShowGridViewHolder.mPlayMaterial.a, paramAEPlayShowGridViewHolder);
       paramAEPlayShowGridViewHolder.resetProgress();
@@ -297,7 +297,7 @@ public class AEPlayShowGridAdapter
   public void onViewDetachedFromWindow(AEPlayShowGridViewHolder paramAEPlayShowGridViewHolder)
   {
     super.onViewDetachedFromWindow(paramAEPlayShowGridViewHolder);
-    if ((paramAEPlayShowGridViewHolder.mPlayMaterial != null) && (!TextUtils.isEmpty(paramAEPlayShowGridViewHolder.mPlayMaterial.a)) && (bnke.b(paramAEPlayShowGridViewHolder.mPlayMaterial)))
+    if ((paramAEPlayShowGridViewHolder.mPlayMaterial != null) && (!TextUtils.isEmpty(paramAEPlayShowGridViewHolder.mPlayMaterial.a)) && (AEMaterialMetaData.b(paramAEPlayShowGridViewHolder.mPlayMaterial)))
     {
       this.mCachedViewHolder.remove(paramAEPlayShowGridViewHolder.mPlayMaterial.a);
       paramAEPlayShowGridViewHolder.resetProgress();
@@ -306,7 +306,7 @@ public class AEPlayShowGridAdapter
     }
   }
   
-  public void putData(@NonNull List<bnke> paramList)
+  public void putData(@NonNull List<AEMaterialMetaData> paramList)
   {
     this.mMaterialList = paramList;
     if (this.mMaterialList.size() == 0) {
@@ -322,7 +322,7 @@ public class AEPlayShowGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEPlayShowGridAdapter
  * JD-Core Version:    0.7.0.1
  */

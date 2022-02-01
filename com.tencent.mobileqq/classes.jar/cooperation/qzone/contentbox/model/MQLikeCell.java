@@ -9,11 +9,11 @@ public class MQLikeCell
   implements Serializable
 {
   public static final String TAG = "QZoneMsgManager.MQLikeCell";
-  public int appid;
-  public long hostUin;
+  public int appid = 0;
+  public long hostUin = 0L;
   public String likeKey = "";
-  public boolean liked;
-  public int totalLike;
+  public boolean liked = false;
+  public int totalLike = 0;
   
   public static MQLikeCell parseFromJson(JSONObject paramJSONObject)
   {
@@ -75,7 +75,7 @@ public class MQLikeCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQLikeCell
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ public final class stUserConfigRsp
 {
   static stCallInfo cache_call_inBg = new stCallInfo();
   public boolean auth_closed = true;
-  public stCallInfo call_inBg;
-  public int code;
+  public stCallInfo call_inBg = null;
+  public int code = 0;
   public String msg = "";
   
   public stUserConfigRsp() {}

@@ -8,15 +8,12 @@ import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import bisu;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import mqq.os.MqqHandler;
 
-public class QQToast$ProtectedToast
+class QQToast$ProtectedToast
   extends Toast
 {
   private static WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
@@ -111,8 +108,8 @@ public class QQToast$ProtectedToast
       if (QLog.isColorLevel()) {
         QLog.d("QQToast", 2, new Object[] { "", "cancel!" });
       }
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (!QQToast.a(false))
+      getView().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      if (!QQToast.a())
       {
         super.cancel();
         return;
@@ -169,7 +166,7 @@ public class QQToast$ProtectedToast
         {
           localObject1 = a(jdField_a_of_type_JavaLangReflectField, "mHandler");
           if ((localObject1 instanceof Handler)) {
-            this.jdField_a_of_type_Boolean = a(localObject1, "mCallback", new bisu(this, (Handler)localObject1));
+            this.jdField_a_of_type_Boolean = a(localObject1, "mCallback", new QQToast.ProtectedToast.InternalHandlerCallback(this, (Handler)localObject1));
           }
         }
         if ((!this.jdField_a_of_type_Boolean) && (QLog.isColorLevel())) {
@@ -179,13 +176,13 @@ public class QQToast$ProtectedToast
     }
     Object localObject1 = jdField_a_of_type_JavaLangReflectField.get(this);
     Object localObject2;
-    if (QQToast.a())
+    if (QQToast.b())
     {
       localObject2 = localObject1.getClass().getDeclaredField("mParams");
       ((Field)localObject2).setAccessible(true);
       jdField_a_of_type_AndroidViewWindowManager$LayoutParams = (WindowManager.LayoutParams)((Field)localObject2).get(localObject1);
       jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 40;
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755560;
+      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755568;
     }
     for (;;)
     {
@@ -194,15 +191,15 @@ public class QQToast$ProtectedToast
         if (("" + Build.MANUFACTURER).equalsIgnoreCase("SAMSUNG")) {
           jdField_a_of_type_AndroidViewWindowManager$LayoutParams.getClass().getField("layoutInDisplayCutoutMode").setInt(jdField_a_of_type_AndroidViewWindowManager$LayoutParams, 1);
         }
-        localObject2 = (TextView)getView().findViewById(2131379183);
+        localObject2 = (TextView)getView().findViewById(2131379617);
         if ((localObject2 != null) && (((TextView)localObject2).getText().length() < 6))
         {
           l = 900L;
-          ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
+          getView().postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
           if (QLog.isColorLevel()) {
             QLog.d("QQToast", 2, "show");
           }
-          if (!QQToast.a(false))
+          if (!QQToast.a())
           {
             super.show();
             return;

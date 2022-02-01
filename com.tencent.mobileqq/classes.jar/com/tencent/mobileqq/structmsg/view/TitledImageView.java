@@ -21,11 +21,11 @@ public class TitledImageView
   extends AnyScaleTypeImageView
 {
   private int jdField_a_of_type_Int = -16777216;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Layout jdField_a_of_type_AndroidTextLayout;
+  private Path jdField_a_of_type_AndroidGraphicsPath = null;
+  private Layout jdField_a_of_type_AndroidTextLayout = null;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
   private TransformationMethod jdField_a_of_type_AndroidTextMethodTransformationMethod;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence = null;
   private int b = -1;
   private int c = 10;
   private int d = 10;
@@ -51,7 +51,7 @@ public class TitledImageView
     this.jdField_a_of_type_AndroidTextMethodTransformationMethod = SingleLineTransformationMethod.getInstance();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence))
@@ -73,7 +73,7 @@ public class TitledImageView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getMeasuredHeight();

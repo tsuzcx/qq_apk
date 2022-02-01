@@ -7,15 +7,15 @@ import com.qq.taf.jce.JceStruct;
 public final class downloadConfig
   extends JceStruct
 {
-  public boolean appStoreSwitch;
+  public boolean appStoreSwitch = false;
   public String downloadUrl = "";
-  public boolean enableRock;
+  public boolean enableRock = false;
   public String packageName = "";
-  public boolean preload;
+  public boolean preload = false;
   public String preloadDownloadUrl = "";
   public String qqDownloadUrl = "";
-  public int vendorId;
-  public int versionCode;
+  public int vendorId = 0;
+  public int versionCode = 0;
   
   public downloadConfig() {}
   

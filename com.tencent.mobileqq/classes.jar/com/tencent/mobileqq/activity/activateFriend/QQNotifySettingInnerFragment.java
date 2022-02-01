@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsGetMsgRsp;
-import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,11 +16,12 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import anvx;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -43,7 +43,7 @@ public class QQNotifySettingInnerFragment
     localIntent.putExtra("key_msgid", paramString1);
     localIntent.putExtra("key_busid", paramString2);
     localIntent.putExtra("key_domain", paramString3);
-    aeow.a(paramActivity, localIntent, PublicTransFragmentActivity.class, QQNotifySettingInnerFragment.class, 48128);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicTransFragmentActivity.class, QQNotifySettingInnerFragment.class, jdField_a_of_type_Int);
   }
   
   private void b()
@@ -55,12 +55,12 @@ public class QQNotifySettingInnerFragment
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131560967, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131561053, paramViewGroup, false);
   }
   
   public void a()
   {
-    QQToast.a(getActivity(), anvx.a(2131710037), 0).a();
+    QQToast.a(getActivity(), HardCodeUtil.a(2131710553), 0).a();
   }
   
   public void a(AcsGetMsgRsp paramAcsGetMsgRsp)
@@ -76,34 +76,34 @@ public class QQNotifySettingInnerFragment
     {
       bool = true;
       this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_b_of_type_Int = paramInt;
       this.jdField_a_of_type_JavaLangString = paramString;
       if (!this.jdField_a_of_type_Boolean) {
         break label124;
       }
       this.jdField_a_of_type_AndroidWidgetButton.setTag("1");
-      this.jdField_a_of_type_AndroidWidgetButton.setText(anvx.a(2131710035));
-      this.c.setText(anvx.a(2131710033));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131710551));
+      this.c.setText(HardCodeUtil.a(2131710549));
       paramString = URLDrawable.URLDrawableOptions.obtain();
-      paramString.mRequestHeight = this.b.getHeight();
-      paramString.mRequestWidth = this.b.getWidth();
+      paramString.mRequestHeight = this.jdField_b_of_type_AndroidWidgetImageView.getHeight();
+      paramString.mRequestWidth = this.jdField_b_of_type_AndroidWidgetImageView.getWidth();
       paramString = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201907/upload_623df8b3818ab2d06b9511a3c38871ec.png", paramString);
       if (paramString != null)
       {
         if (paramString.getStatus() == 2) {
           paramString.restartDownload();
         }
-        this.b.setImageDrawable(paramString);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
       }
     }
     label124:
-    while (this.jdField_a_of_type_Int == 2)
+    while (this.jdField_b_of_type_Int == 2)
     {
       return;
       bool = false;
       break;
     }
-    a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
   
   public void c(int paramInt, String paramString)
@@ -126,25 +126,25 @@ public class QQNotifySettingInnerFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362703));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379870));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362730));
+    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380300));
     this.d.setVisibility(8);
-    ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369422)).setVisibility(0);
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369423));
-    this.b.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+    ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369681)).setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369682));
+    this.jdField_b_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     paramLayoutInflater = URLDrawable.URLDrawableOptions.obtain();
-    paramLayoutInflater.mRequestHeight = UIUtils.dip2px(getActivity(), 86.0F);
-    paramLayoutInflater.mRequestWidth = UIUtils.dip2px(getActivity(), 86.0F);
+    paramLayoutInflater.mRequestHeight = UIUtils.a(getActivity(), 86.0F);
+    paramLayoutInflater.mRequestWidth = UIUtils.a(getActivity(), 86.0F);
     paramLayoutInflater = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201907/upload_c180abdeaa834c09173949780f36b7a6.png", paramLayoutInflater);
     if (paramLayoutInflater != null)
     {
       if (paramLayoutInflater.getStatus() == 2) {
         paramLayoutInflater.restartDownload();
       }
-      this.b.setImageDrawable(paramLayoutInflater);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramLayoutInflater);
     }
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369424));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363866));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369683));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363963));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -153,7 +153,7 @@ public class QQNotifySettingInnerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifySettingInnerFragment
  * JD-Core Version:    0.7.0.1
  */

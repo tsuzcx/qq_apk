@@ -8,7 +8,6 @@ import com.tencent.qqmini.sdk.launcher.core.action.ServiceSubscribeEvent;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,64 +53,12 @@ class MiniAppLivePlayer$1
   public void onPlayEvent(int paramInt, Bundle paramBundle)
   {
     QMLog.d("MiniAppLivePlayer", "onPlayEvent code:" + paramInt);
-    if (2028 == paramInt) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("livePlayerId", this.this$0.livePlayerId);
-        localJSONObject.put("errCode", paramInt);
-        paramBundle = paramBundle.get("EVT_GET_METADATA");
-        if ((paramBundle instanceof HashMap)) {
-          localJSONObject.put("errMsg", new JSONObject((HashMap)paramBundle));
-        }
-        if (this.this$0.miniAppContextRef != null) {}
-        for (paramBundle = (IMiniAppContext)this.this$0.miniAppContextRef.get();; paramBundle = null)
-        {
-          if (paramBundle != null) {
-            paramBundle.performAction(ServiceSubscribeEvent.obtain("onLivePlayerMetadata", localJSONObject.toString(), this.this$0.webviewId));
-          }
-          this.val$req.jsService.evaluateSubscribeJS("onLivePlayerMetadata", localJSONObject.toString(), this.this$0.webviewId);
-          QMLog.e("MiniAppLivePlayer", "operate start evaluateSubcribeJS onLivePlayerMetadata = " + localJSONObject.toString());
-          return;
-        }
-        try
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("livePlayerId", this.this$0.livePlayerId);
-          localJSONObject.put("errCode", paramInt);
-          localJSONObject.put("errMsg", paramBundle.get("EVT_MSG"));
-          if (this.this$0.miniAppContextRef != null)
-          {
-            paramBundle = (IMiniAppContext)this.this$0.miniAppContextRef.get();
-            if (paramBundle != null) {
-              paramBundle.performAction(ServiceSubscribeEvent.obtain("onLivePlayerEvent", localJSONObject.toString(), this.this$0.webviewId));
-            }
-            this.val$req.jsService.evaluateSubscribeJS("onLivePlayerEvent", localJSONObject.toString(), this.this$0.webviewId);
-            QMLog.e("MiniAppLivePlayer", "operate start evaluateSubcribeJS onLivePlayerEvent = " + localJSONObject.toString());
-            return;
-          }
-        }
-        catch (JSONException paramBundle)
-        {
-          paramBundle.printStackTrace();
-          return;
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-    }
-    for (;;)
-    {
-      paramBundle = null;
-    }
+    MiniAppLivePlayer.access$000(this.this$0, paramInt, paramBundle, this.val$req);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppLivePlayer.1
  * JD-Core Version:    0.7.0.1
  */

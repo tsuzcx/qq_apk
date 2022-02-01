@@ -6,7 +6,7 @@ import com.tencent.ttpic.model.BlurEffectItem;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.filter.GaussianMaskFilter;
-import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
+import com.tencent.ttpic.openapi.offlineset.AEOfflineConfig;
 
 public class BlurMaskFilter
 {
@@ -64,7 +64,7 @@ public class BlurMaskFilter
       this.mBlurMaskFilter = ((BlurMaskFilter.IBlurMaskFilter)localObject);
       return;
     }
-    if (OfflineConfig.isGausResize())
+    if (AEOfflineConfig.isGausResize())
     {
       if (this.mBlurMaskFactory != null) {}
       for (boolean bool = true;; bool = false)
@@ -244,7 +244,7 @@ public class BlurMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.blurmaskfilter.BlurMaskFilter
  * JD-Core Version:    0.7.0.1
  */

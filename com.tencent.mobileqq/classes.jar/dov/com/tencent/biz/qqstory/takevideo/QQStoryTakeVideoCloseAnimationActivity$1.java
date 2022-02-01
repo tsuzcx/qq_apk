@@ -20,12 +20,12 @@ class QQStoryTakeVideoCloseAnimationActivity$1
     localIntent.putExtra("new_video_extra_info", "need_publish_animation");
     localIntent.setFlags(335544320);
     localQQStoryTakeVideoCloseAnimationActivity.startActivity(localIntent);
-    localQQStoryTakeVideoCloseAnimationActivity.overridePendingTransition(2130771981, 2130771983);
+    localQQStoryTakeVideoCloseAnimationActivity.overridePendingTransition(2130771983, 2130771985);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity.1
  * JD-Core Version:    0.7.0.1
  */

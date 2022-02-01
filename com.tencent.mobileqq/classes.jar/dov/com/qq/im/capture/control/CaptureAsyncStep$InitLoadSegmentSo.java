@@ -1,10 +1,7 @@
 package dov.com.qq.im.capture.control;
 
-import bnrh;
-import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import com.tencent.ttpic.openapi.manager.FeatureManager;
-import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
+import dov.com.qq.im.ae.util.AEQLog;
 
 public class CaptureAsyncStep$InitLoadSegmentSo
   extends AsyncStep
@@ -13,22 +10,21 @@ public class CaptureAsyncStep$InitLoadSegmentSo
   {
     try
     {
-      boolean bool = AIManager.installDetector(PTHumanSegmenter.class, FeatureManager.getSoDir(), FeatureManager.getResourceDir());
-      bnrh.d("QQInitHandler", "[InitLoadSegmentSo] isOK:" + bool);
+      AEQLog.d("QQInitHandler", "[InitLoadSegmentSo] isOK:" + false);
       return 7;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        bnrh.d("QQInitHandler", "[InitLoadSegmentSo] failed");
+        AEQLog.d("QQInitHandler", "[InitLoadSegmentSo] failed");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.control.CaptureAsyncStep.InitLoadSegmentSo
  * JD-Core Version:    0.7.0.1
  */

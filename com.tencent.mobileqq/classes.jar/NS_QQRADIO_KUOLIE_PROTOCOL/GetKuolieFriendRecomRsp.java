@@ -11,9 +11,9 @@ public final class GetKuolieFriendRecomRsp
   static CommonInfo cache_commInfo = new CommonInfo();
   static SimpleKuolieRoomInfo cache_roomInfo = new SimpleKuolieRoomInfo();
   static ArrayList<User> cache_userList = new ArrayList();
-  public CommonInfo commInfo;
-  public SimpleKuolieRoomInfo roomInfo;
-  public ArrayList<User> userList;
+  public CommonInfo commInfo = null;
+  public SimpleKuolieRoomInfo roomInfo = null;
+  public ArrayList<User> userList = null;
   
   static
   {

@@ -1,6 +1,5 @@
 package com.sina.weibo.sdk.web;
 
-import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -228,7 +227,7 @@ public class WebActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.sina.weibo.sdk.web.WebActivity
  * JD-Core Version:    0.7.0.1
  */

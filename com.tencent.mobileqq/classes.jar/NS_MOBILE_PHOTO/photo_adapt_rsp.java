@@ -10,7 +10,7 @@ public final class photo_adapt_rsp
   extends JceStruct
 {
   static Map<String, st_adapt_result> cache_urlStatus = new HashMap();
-  public Map<String, st_adapt_result> urlStatus;
+  public Map<String, st_adapt_result> urlStatus = null;
   
   static
   {

@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.widget.TextView;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -16,8 +16,8 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class QWalletPayProgressDialog
   extends ReportDialog
 {
-  private String mMessage = anvx.a(2131710902);
-  private TextView mTextView;
+  private String mMessage = HardCodeUtil.a(2131711417);
+  private TextView mTextView = null;
   
   public QWalletPayProgressDialog(Context paramContext)
   {
@@ -33,14 +33,14 @@ public class QWalletPayProgressDialog
   {
     try
     {
-      super.setContentView(2131559425);
+      super.setContentView(2131559492);
       paramBundle = getWindow();
       paramBundle.setLayout(-1, -1);
       paramBundle.setBackgroundDrawable(new ColorDrawable(0));
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         paramBundle.addFlags(67108864);
       }
-      this.mTextView = ((TextView)super.findViewById(2131371023));
+      this.mTextView = ((TextView)super.findViewById(2131371301));
       this.mTextView.setVisibility(0);
       this.mTextView.setText(this.mMessage);
       super.setCancelable(false);
@@ -84,7 +84,7 @@ public class QWalletPayProgressDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPayProgressDialog
  * JD-Core Version:    0.7.0.1
  */

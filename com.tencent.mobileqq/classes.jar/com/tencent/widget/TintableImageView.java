@@ -41,7 +41,7 @@ public class TintableImageView
     paramContext.recycle();
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     if ((this.a != null) && (this.a.isStateful())) {
@@ -57,7 +57,7 @@ public class TintableImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.TintableImageView
  * JD-Core Version:    0.7.0.1
  */

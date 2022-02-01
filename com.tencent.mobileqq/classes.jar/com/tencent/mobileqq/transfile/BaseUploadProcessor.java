@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.transfile;
 
-import blkh;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
 import com.tencent.mobileqq.highway.transaction.TransReport;
 import com.tencent.mobileqq.highway.transaction.Transaction;
 import com.tencent.mobileqq.highway.utils.HwNetworkCenter;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.wstt.SSCM.SSCM;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class BaseUploadProcessor
   protected byte[] mSessionKey;
   protected byte[] mSigSession;
   long mStartOffset;
-  protected Transaction mTrans;
+  protected Transaction mTrans = null;
   long mTransferedSize = 0L;
   int mTryCount = 0;
   String mUkey;
@@ -48,7 +48,7 @@ public class BaseUploadProcessor
   int mWidth;
   protected boolean needSendMsg = true;
   public int shouldMsgReportSucc = -1;
-  blkh sscmObject = new blkh();
+  SSCM sscmObject = new SSCM();
   boolean useServerInitSize = false;
   
   public BaseUploadProcessor() {}
@@ -232,18 +232,18 @@ public class BaseUploadProcessor
     //   72: aload_3
     //   73: astore_2
     //   74: aload_0
-    //   75: new 96	java/lang/StringBuilder
+    //   75: new 98	java/lang/StringBuilder
     //   78: dup
-    //   79: invokespecial 97	java/lang/StringBuilder:<init>	()V
+    //   79: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   82: aload_0
     //   83: getfield 412	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
-    //   86: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: ldc_w 419
-    //   92: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   95: aload_0
     //   96: getfield 421	com/tencent/mobileqq/transfile/BaseUploadProcessor:mExtName	Ljava/lang/String;
-    //   99: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   99: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   105: putfield 412	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
     //   108: aload_3
     //   109: ifnull +7 -> 116
@@ -271,7 +271,7 @@ public class BaseUploadProcessor
     //   146: aload_3
     //   147: astore_2
     //   148: aload 4
-    //   150: invokestatic 434	bkvq:a	(Ljava/io/File;)Ljava/lang/String;
+    //   150: invokestatic 434	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
     //   153: astore 4
     //   155: aload 4
     //   157: ifnull +17 -> 174
@@ -468,22 +468,6 @@ public class BaseUploadProcessor
         this.mNetEngine.cancelReq(this.mNetReq);
         this.mNetReq = null;
       }
-    }
-  }
-  
-  protected void reportDataFlow(long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt)
-  {
-    if (paramLong1 != 0L) {
-      this.app.countFlow(true, 1, paramInt, this.mUiRequest.mUinType, paramLong1);
-    }
-    if (paramLong2 != 0L) {
-      this.app.countFlow(true, 1, paramInt, this.mUiRequest.mUinType, paramLong2);
-    }
-    if (paramLong3 != 0L) {
-      this.app.countFlow(true, 0, paramInt, this.mUiRequest.mUinType, paramLong3);
-    }
-    if (paramLong4 != 0L) {
-      this.app.countFlow(true, 0, paramInt, this.mUiRequest.mUinType, paramLong4);
     }
   }
   

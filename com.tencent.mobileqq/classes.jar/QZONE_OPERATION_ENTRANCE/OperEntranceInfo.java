@@ -11,7 +11,7 @@ public final class OperEntranceInfo
 {
   static Map<Integer, EntranceRes> cache_resTable = new HashMap();
   private static final long serialVersionUID = 0L;
-  public Map<Integer, EntranceRes> resTable;
+  public Map<Integer, EntranceRes> resTable = null;
   
   static
   {

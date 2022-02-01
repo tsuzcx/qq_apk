@@ -11,8 +11,8 @@ public final class RespSetCard
   static RespHead cache_stHeader;
   static byte[] cache_vRespSetTemplate;
   public int eSubCmd = CARDSETTYPE.TYPE_SET_DEFAUT.value();
-  public RespHead stHeader;
-  public byte[] vRespSetTemplate;
+  public RespHead stHeader = null;
+  public byte[] vRespSetTemplate = null;
   
   public RespSetCard() {}
   

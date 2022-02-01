@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class OneVideoPlayInfo
   extends JceStruct
 {
-  public int definition;
+  public int definition = 0;
   public String url = "";
-  public int vbitrate;
-  public int vheight;
-  public int vwidth;
+  public int vbitrate = 0;
+  public int vheight = 0;
+  public int vwidth = 0;
   
   public OneVideoPlayInfo() {}
   

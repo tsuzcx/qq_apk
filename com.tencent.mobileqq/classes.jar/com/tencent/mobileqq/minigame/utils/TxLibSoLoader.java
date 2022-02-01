@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.minigame.utils;
 
 import android.text.TextUtils;
+import com.tencent.av.core.VcSystemInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.utils.DebugUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import llq;
 
 public class TxLibSoLoader
 {
@@ -16,7 +16,7 @@ public class TxLibSoLoader
   {
     try
     {
-      if (llq.f() > 2) {}
+      if (VcSystemInfo.getCpuArchitecture() > 2) {}
       for (paramString = "/txlib/lib" + paramString + "-v7a.so";; paramString = "/txlib/lib" + paramString + "-armeabi.so")
       {
         paramString = BaseApplicationImpl.getContext().getFilesDir().getParent() + paramString;

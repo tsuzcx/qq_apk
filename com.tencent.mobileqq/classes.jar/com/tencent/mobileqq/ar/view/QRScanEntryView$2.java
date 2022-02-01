@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import apoo;
+import com.tencent.mobileqq.ar.model.CameraProxy;
 
 class QRScanEntryView$2
   implements Runnable
@@ -9,7 +9,7 @@ class QRScanEntryView$2
   
   public void run()
   {
-    apoo.a().b();
+    CameraProxy.a().b();
   }
 }
 

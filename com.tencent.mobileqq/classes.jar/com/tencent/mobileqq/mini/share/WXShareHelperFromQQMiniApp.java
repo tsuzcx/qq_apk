@@ -27,7 +27,7 @@ public class WXShareHelperFromQQMiniApp
   public static final String WX_APPID_DEBUG = "wx76a769350165bcff";
   public static final String WX_APPID_RELEASE = "wxf0a80d0ac2e82aa7";
   private static final byte[] lock = new byte[0];
-  private static WXShareHelperFromQQMiniApp mWxShareHelperFromQQMiniApp;
+  private static WXShareHelperFromQQMiniApp mWxShareHelperFromQQMiniApp = null;
   private IWXAPI api = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), this.mWxAppId, true);
   private LaunchParam launchParamFromQQ;
   private String mWxAppId = "wxf0a80d0ac2e82aa7";

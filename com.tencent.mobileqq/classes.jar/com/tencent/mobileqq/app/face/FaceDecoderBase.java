@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app.face;
 
 import AvatarInfo.QQHeadInfo;
 import android.graphics.Bitmap;
-import axql;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.util.HeadRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -15,20 +15,20 @@ public abstract class FaceDecoderBase
   static final int LENGTH_LIMIT = 5;
   static final String TAG = "FaceDecoderBase";
   static final long TIMEOUT_REQDECODE = 300000L;
-  protected int iRunningRequests;
-  protected FaceDecoderBase.DecodeTaskCompletionListener mDecodeTaskCompletionListener = null;
-  protected Hashtable<String, FaceInfo> mInProgress = new Hashtable();
-  protected boolean mPause = false;
-  protected LinkedList<FaceInfo> mReadyRequests = new LinkedList();
+  protected int iRunningRequests = 0;
+  DecodeTaskCompletionListener mDecodeTaskCompletionListener = null;
+  Hashtable<String, FaceInfo> mInProgress = new Hashtable();
+  boolean mPause = false;
+  LinkedList<FaceInfo> mReadyRequests = new LinkedList();
   Hashtable<String, FaceInfo> mRefreshMap = new Hashtable();
-  protected boolean mStatDecodeTime = false;
+  boolean mStatDecodeTime = false;
   boolean mUserJustTouchDown = false;
-  protected int maxDecodingTask = 10;
+  int maxDecodingTask = 10;
   
   public void cancelPendingRequests()
   {
     if (QLog.isColorLevel()) {
-      axql.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
+      QLog.i("FaceDecoderBase", 2, "cancelPendingRequests");
     }
     this.mInProgress.clear();
     this.mReadyRequests.clear();
@@ -37,7 +37,7 @@ public abstract class FaceDecoderBase
   public void destory()
   {
     if (QLog.isColorLevel()) {
-      axql.a(2, "FaceDecoderBase", "destory", new Object[0]);
+      QLog.i("FaceDecoderBase", 2, "destory");
     }
     cancelPendingRequests();
     this.iRunningRequests = 0;
@@ -98,7 +98,7 @@ public abstract class FaceDecoderBase
   public void pause()
   {
     if (QLog.isColorLevel()) {
-      axql.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
+      QLog.i("FaceDecoderBase", 2, "cancelPendingRequests");
     }
     this.mPause = true;
   }
@@ -131,7 +131,7 @@ public abstract class FaceDecoderBase
   
   public abstract void setAppRuntime(AppInterface paramAppInterface);
   
-  public void setDecodeTaskCompletionListener(FaceDecoderBase.DecodeTaskCompletionListener paramDecodeTaskCompletionListener)
+  public void setDecodeTaskCompletionListener(DecodeTaskCompletionListener paramDecodeTaskCompletionListener)
   {
     this.mDecodeTaskCompletionListener = paramDecodeTaskCompletionListener;
   }
@@ -148,7 +148,7 @@ public abstract class FaceDecoderBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoderBase
  * JD-Core Version:    0.7.0.1
  */

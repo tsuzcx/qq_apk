@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ResponseVerifyWTLogin
   extends JceStruct
 {
-  public long preBindUin;
+  public long preBindUin = 0L;
   
   public ResponseVerifyWTLogin() {}
   

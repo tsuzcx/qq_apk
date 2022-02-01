@@ -163,7 +163,7 @@ class QRDisplayActivity$14
     //   319: iconst_2
     //   320: aload 5
     //   322: aastore
-    //   323: invokestatic 145	bhbu:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   323: invokestatic 145	com/tencent/mobileqq/util/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
     //   326: aload_0
     //   327: getfield 12	com/tencent/biz/qrcode/activity/QRDisplayActivity$14:this$0	Lcom/tencent/biz/qrcode/activity/QRDisplayActivity;
     //   330: new 147	com/tencent/biz/qrcode/activity/QRDisplayActivity$14$1
@@ -382,7 +382,7 @@ class QRDisplayActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.14
  * JD-Core Version:    0.7.0.1
  */

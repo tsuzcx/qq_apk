@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqGetSoftwaresOnTop
   extends JceStruct
 {
-  public int pageno;
-  public int pagesize;
-  public byte sorttype;
+  public int pageno = 0;
+  public int pagesize = 0;
+  public byte sorttype = 0;
   
   public ReqGetSoftwaresOnTop() {}
   

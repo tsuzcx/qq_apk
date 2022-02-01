@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.music.SongInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,11 +18,11 @@ public class BroadcastMusicInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new BroadcastMusicInfo.1();
-  public BroadcastAudio broadcastAudioUrl;
+  public BroadcastAudio broadcastAudioUrl = null;
   public String broadcastID = "";
   public String broadcastName = "";
   public String detailUrl = "";
-  public ArrayList<BroadcastOneShow> showList;
+  public ArrayList<BroadcastOneShow> showList = null;
   
   public BroadcastMusicInfo() {}
   
@@ -147,7 +147,7 @@ public class BroadcastMusicInfo
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = anvx.a(2131700707);
+        localObject2 = HardCodeUtil.a(2131701285);
       }
       return localObject2;
     }
@@ -181,7 +181,7 @@ public class BroadcastMusicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.music.BroadcastMusicInfo
  * JD-Core Version:    0.7.0.1
  */

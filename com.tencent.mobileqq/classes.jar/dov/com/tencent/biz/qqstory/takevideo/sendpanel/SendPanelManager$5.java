@@ -1,22 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo.sendpanel;
 
-import bpfi;
-import bpfr;
-import bpfs;
-
-public class SendPanelManager$5
+class SendPanelManager$5
   implements Runnable
 {
-  public SendPanelManager$5(bpfs parambpfs, int paramInt, bpfr parambpfr) {}
+  SendPanelManager$5(SendPanelManager paramSendPanelManager, int paramInt, SendPanelItemInfo paramSendPanelItemInfo) {}
   
   public void run()
   {
-    bpfs.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bpfr);
+    SendPanelManager.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSendPanelItemInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelManager.5
  * JD-Core Version:    0.7.0.1
  */

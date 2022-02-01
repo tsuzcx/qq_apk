@@ -4,12 +4,11 @@ import android.graphics.RectF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjuo;
 
 public class QBarResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<QBarResult> CREATOR = new bjuo();
+  public static final Parcelable.Creator<QBarResult> CREATOR = new QBarResult.1();
   public float a;
   public RectF a;
   public String a;
@@ -17,7 +16,7 @@ public class QBarResult
   
   public QBarResult() {}
   
-  public QBarResult(Parcel paramParcel)
+  protected QBarResult(Parcel paramParcel)
   {
     this.jdField_a_of_type_Float = paramParcel.readFloat();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -45,7 +44,7 @@ public class QBarResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qbar.QBarResult
  * JD-Core Version:    0.7.0.1
  */

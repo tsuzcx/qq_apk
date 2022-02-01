@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRespKikOut
   extends JceStruct
 {
-  public long appid;
-  public long lUin;
-  public byte result;
+  public long appid = 0L;
+  public long lUin = 0L;
+  public byte result = 0;
   
   public SvcRespKikOut() {}
   

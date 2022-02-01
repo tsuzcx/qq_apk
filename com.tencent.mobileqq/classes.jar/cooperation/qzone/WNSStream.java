@@ -21,12 +21,12 @@ public class WNSStream
   private static final String BUSICOMPCONTROL = "busiCompCtl";
   private static final String ENCODE_CODE = "UTF-8";
   private int SUPPORT_COMPRESS = 1;
-  private byte[] mA2;
-  private int mAppId;
-  private String mDeviceInfo;
-  private String mQUA;
-  private RetryInfo mRetryInfo;
-  private long mUin;
+  private byte[] mA2 = null;
+  private int mAppId = 0;
+  private String mDeviceInfo = null;
+  private String mQUA = null;
+  private RetryInfo mRetryInfo = null;
+  private long mUin = 0L;
   
   public WNSStream() {}
   
@@ -413,7 +413,7 @@ public class WNSStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.WNSStream
  * JD-Core Version:    0.7.0.1
  */

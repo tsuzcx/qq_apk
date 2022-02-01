@@ -1,30 +1,24 @@
 package com.tencent.qqmini.miniapp.widget.camera;
 
-import android.hardware.Camera;
+import com.tencent.qqmini.sdk.widget.ToastView;
 
 class MiniAppCamera$9
   implements Runnable
 {
-  MiniAppCamera$9(MiniAppCamera paramMiniAppCamera, boolean paramBoolean) {}
+  MiniAppCamera$9(MiniAppCamera paramMiniAppCamera) {}
   
   public void run()
   {
-    this.this$0.stopPreview(true);
-    MiniAppCamera localMiniAppCamera = this.this$0;
-    if (this.val$isBack) {}
-    for (Integer localInteger = this.this$0.backCameraId;; localInteger = this.this$0.frontCameraId)
+    if (MiniAppCamera.access$900(this.this$0) != null)
     {
-      localMiniAppCamera.setupCamera(localInteger.intValue());
-      this.this$0.onCameraSurfaceCreate(this.this$0.mPreviewSt);
-      this.this$0.setCameraSize(this.this$0.cameraSize);
-      this.this$0.camera.startPreview();
-      return;
+      MiniAppCamera.access$900(this.this$0).hide();
+      MiniAppCamera.access$902(this.this$0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.MiniAppCamera.9
  * JD-Core Version:    0.7.0.1
  */

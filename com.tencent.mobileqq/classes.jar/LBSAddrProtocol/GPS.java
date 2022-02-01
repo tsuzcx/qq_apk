@@ -8,7 +8,7 @@ public final class GPS
   extends JceStruct
 {
   static int cache_eType;
-  public int eType;
+  public int eType = 0;
   public int iAlt = -10000000;
   public int iLat = 900000000;
   public int iLon = 900000000;

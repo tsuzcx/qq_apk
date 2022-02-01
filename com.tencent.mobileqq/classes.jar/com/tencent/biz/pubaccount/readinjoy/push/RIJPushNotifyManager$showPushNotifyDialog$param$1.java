@@ -7,16 +7,13 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Lambda;
-import rao;
-import rar;
-import ras;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isOpenPushNotify", "", "isDefaultOpen", "buttonId", "", "invoke"}, k=3, mv={1, 1, 16})
-public final class RIJPushNotifyManager$showPushNotifyDialog$param$1
+final class RIJPushNotifyManager$showPushNotifyDialog$param$1
   extends Lambda
   implements Function3<Boolean, Boolean, Integer, Unit>
 {
-  public RIJPushNotifyManager$showPushNotifyDialog$param$1(rao paramrao, BaseActivity paramBaseActivity, String paramString, int paramInt1, int paramInt2)
+  RIJPushNotifyManager$showPushNotifyDialog$param$1(RIJPushNotifyManager paramRIJPushNotifyManager, BaseActivity paramBaseActivity, String paramString, int paramInt1, int paramInt2)
   {
     super(3);
   }
@@ -25,19 +22,19 @@ public final class RIJPushNotifyManager$showPushNotifyDialog$param$1
   {
     if ((paramInt != 0) && (paramInt != 3))
     {
-      rao.a(this.this$0, paramBoolean1, paramBoolean2, (Activity)this.$topActivity);
-      rar.a.a().a(paramBoolean1, paramBoolean2, this.$uniqueId, this.$bizType, (Function1)RIJPushNotifyManager.showPushNotifyDialog.param.1.1.INSTANCE);
-      rao.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType, paramInt, paramBoolean2);
+      RIJPushNotifyManager.a(this.this$0, paramBoolean1, paramBoolean2, (Activity)this.$topActivity);
+      RIJPushNotifyModule.a.a().a(paramBoolean1, paramBoolean2, this.$uniqueId, this.$bizType, (Function1)RIJPushNotifyManager.showPushNotifyDialog.param.1.1.INSTANCE);
+      RIJPushNotifyManager.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType, paramInt, paramBoolean2);
     }
     while (paramInt != 3) {
       return;
     }
-    rao.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType);
+    RIJPushNotifyManager.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyManager.showPushNotifyDialog.param.1
  * JD-Core Version:    0.7.0.1
  */

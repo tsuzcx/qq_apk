@@ -15,28 +15,28 @@ public final class RequestPushGroupMsg
   static ArrayList<GPicInfo> cache_vGPicInfo;
   static ArrayList<MarketFaceInfo> cache_vMarketFace;
   static byte[] cache_vMsg;
-  public byte cGroupType;
-  public byte cType;
-  public long lFromInstId;
-  public long lGroupCode;
-  public long lInfoSeq;
-  public long lSendUin;
-  public long lUin;
-  public long lsMsgSeq;
-  public short shMsgLen;
-  public GroupMsgHead stGroupMsgHead;
-  public shareData stShareData;
+  public byte cGroupType = 0;
+  public byte cType = 0;
+  public long lFromInstId = 0L;
+  public long lGroupCode = 0L;
+  public long lInfoSeq = 0L;
+  public long lSendUin = 0L;
+  public long lUin = 0L;
+  public long lsMsgSeq = 0L;
+  public short shMsgLen = 0;
+  public GroupMsgHead stGroupMsgHead = null;
+  public shareData stShareData = null;
   public String strCmd = "";
   public String strGroupCard = "";
   public String strService = "";
-  public long uAppShareID;
-  public int uMsgTime;
-  public long uSuperQQBubbleId;
-  public byte[] vAppShareCookie;
-  public ArrayList<GPicInfo> vGPicInfo;
-  public ArrayList<MarketFaceInfo> vMarketFace;
-  public byte[] vMsg;
-  public int wUserActive;
+  public long uAppShareID = 0L;
+  public int uMsgTime = 0;
+  public long uSuperQQBubbleId = 0L;
+  public byte[] vAppShareCookie = null;
+  public ArrayList<GPicInfo> vGPicInfo = null;
+  public ArrayList<MarketFaceInfo> vMarketFace = null;
+  public byte[] vMsg = null;
+  public int wUserActive = 0;
   
   public RequestPushGroupMsg() {}
   

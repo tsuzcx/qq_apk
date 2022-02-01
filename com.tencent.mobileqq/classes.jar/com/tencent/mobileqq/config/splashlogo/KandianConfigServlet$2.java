@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import bmhv;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import olh;
+import cooperation.readinjoy.ReadInJoyHelper;
 import org.json.JSONObject;
 
-public final class KandianConfigServlet$2
+final class KandianConfigServlet$2
   implements Runnable
 {
-  public KandianConfigServlet$2(String paramString1, String paramString2, String paramString3) {}
+  KandianConfigServlet$2(String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      bmhv.a(localJSONObject);
-      olh.a(null, null, this.a, this.a, 0, 0, this.b, this.c, null, localJSONObject.toString(), false);
+      ReadInJoyHelper.a(localJSONObject);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, this.a, this.a, 0, 0, this.b, this.c, null, localJSONObject.toString(), false);
       QLog.d("KandianConfigServlet", 1, "reportID:" + this.a + " reportKDConfigFailed  isAll:" + this.b + "  errorCode:" + this.c);
       return;
     }

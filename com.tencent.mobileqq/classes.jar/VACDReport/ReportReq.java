@@ -10,7 +10,7 @@ public final class ReportReq
   implements Cloneable
 {
   static ArrayList<ReportInfo> cache_reports;
-  public ArrayList<ReportInfo> reports;
+  public ArrayList<ReportInfo> reports = null;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

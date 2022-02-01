@@ -10,7 +10,7 @@ public final class SortPicReq
   static int cache_sort_type = 0;
   public String albumid = "";
   public int sort_type = 0;
-  public long uin;
+  public long uin = 0L;
   
   public SortPicReq() {}
   

@@ -10,14 +10,13 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import anvx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import org.json.JSONException;
@@ -58,7 +57,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", -4);
-        paramString1.put("resultMsg", anvx.a(2131706311));
+        paramString1.put("resultMsg", HardCodeUtil.a(2131706851));
         if (paramString1 != null) {
           paramString1 = paramString1.toString();
         }
@@ -88,7 +87,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", 1000);
-        paramString1.put("errMsg", anvx.a(2131706316));
+        paramString1.put("errMsg", HardCodeUtil.a(2131706856));
         paramString1 = paramString1.toString();
         if (paramString1 != null) {
           handleNativeResponse(paramString3, paramString1, paramInt2);
@@ -112,14 +111,14 @@ public class MiniGamePayFragment
     {
       this.payRecevicer = new MiniGamePayFragment.PayResultRecevicer(this, new Handler(Looper.getMainLooper()));
       this.app = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-      int i = PayBridgeActivity.a(this.app, getActivity(), this.payRecevicer, 6, paramLayoutInflater).getInt("retCode", -1);
+      int i = PayBridgeActivity.newPay(this.app, getActivity(), this.payRecevicer, 6, paramLayoutInflater).getInt("retCode", -1);
       int j = paramLayoutInflater.getInt("mini_event_seq", -1);
       paramViewGroup = paramLayoutInflater.getString("mini_event_name");
       if (i != 0)
       {
         paramLayoutInflater = ApiUtil.wrapCallbackFail(paramViewGroup, null);
         if (paramLayoutInflater == null) {
-          break label139;
+          break label134;
         }
         paramLayoutInflater = paramLayoutInflater.toString();
         if (paramLayoutInflater != null) {
@@ -127,20 +126,17 @@ public class MiniGamePayFragment
         }
       }
     }
-    for (;;)
+    label134:
+    do
     {
-      V4FragmentCollector.onV4FragmentViewCreated(this, null);
       return null;
-      label139:
       paramLayoutInflater = "";
       break;
       paramLayoutInflater = getActivity();
-      if (paramLayoutInflater != null)
-      {
-        paramLayoutInflater.setResult(0, null);
-        paramLayoutInflater.finish();
-      }
-    }
+    } while (paramLayoutInflater == null);
+    paramLayoutInflater.setResult(0, null);
+    paramLayoutInflater.finish();
+    return null;
   }
 }
 

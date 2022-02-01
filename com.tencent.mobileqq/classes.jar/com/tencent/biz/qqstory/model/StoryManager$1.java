@@ -1,19 +1,18 @@
 package com.tencent.biz.qqstory.model;
 
+import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.handler.VidToBasicInfoHandler;
+import com.tencent.biz.qqstory.network.handler.VidToBasicInfoHandler.GetVideoBasicInfoListEvent;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import wad;
-import wjp;
-import wsa;
-import wsb;
 
-public class StoryManager$1
+class StoryManager$1
   implements Runnable
 {
-  public StoryManager$1(wjp paramwjp, String paramString) {}
+  StoryManager$1(StoryManager paramStoryManager, String paramString) {}
   
   public void run()
   {
@@ -22,17 +21,17 @@ public class StoryManager$1
     {
       localObject = new ArrayList(1);
       ((List)localObject).add(this.a);
-      new wsa((List)localObject, true).a();
+      new VidToBasicInfoHandler((List)localObject, true).a();
       return;
     }
-    wsb localwsb = new wsb();
-    localwsb.a = Collections.singletonList(localObject);
-    wad.a().dispatch(localwsb);
+    VidToBasicInfoHandler.GetVideoBasicInfoListEvent localGetVideoBasicInfoListEvent = new VidToBasicInfoHandler.GetVideoBasicInfoListEvent();
+    localGetVideoBasicInfoListEvent.a = Collections.singletonList(localObject);
+    StoryDispatcher.a().dispatch(localGetVideoBasicInfoListEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import aqrl;
-import aqrn;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
+import com.tencent.mobileqq.colornote.smallscreen.IServiceSyncListener;
 
 class GameActivity1$4
-  implements aqrn
+  implements IServiceSyncListener
 {
   GameActivity1$4(GameActivity1 paramGameActivity1) {}
   
   public void onServiceSyncSucc(boolean paramBoolean)
   {
-    aqrl.a(BaseApplicationImpl.getContext(), 2, false);
+    ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 2, false);
   }
 }
 

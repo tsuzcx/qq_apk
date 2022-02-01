@@ -2,10 +2,10 @@ package com.tencent.mobileqq.microapp;
 
 public final class R$anim
 {
-  public static int a = 2130771996;
-  public static int b = 2130771997;
-  public static int c = 2130772000;
-  public static int d = 2130772001;
+  public static int a = 2130771998;
+  public static int b = 2130771999;
+  public static int c = 2130772002;
+  public static int d = 2130772003;
 }
 
 

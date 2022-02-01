@@ -5,12 +5,9 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import anvx;
-import aysu;
-import aysw;
-import ayud;
-import ayut;
-import ayuu;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.Group;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SearchResult;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,59 +18,59 @@ public class SearchResultViewPagerAdapter
   extends PagerAdapter
 {
   ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  public ayud a;
+  public BaseOCRTextSearchFragment.SearchActivityInterface a;
   SearchResultFragment jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment;
-  public List<ayuu> a;
-  Map<String, ayut> jdField_a_of_type_JavaUtilMap = new HashMap();
-  List<aysu> b;
+  public List<SearchResultViewPagerAdapter.TabItem> a;
+  Map<String, SearchResultPageView> jdField_a_of_type_JavaUtilMap = new HashMap();
+  List<OCRTextSearchInfo.Group> b;
   
-  public SearchResultViewPagerAdapter(ayud paramayud, SearchResultFragment paramSearchResultFragment, ViewPager paramViewPager)
+  public SearchResultViewPagerAdapter(BaseOCRTextSearchFragment.SearchActivityInterface paramSearchActivityInterface, SearchResultFragment paramSearchResultFragment, ViewPager paramViewPager)
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Ayud = paramayud;
+    this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface = paramSearchActivityInterface;
     this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment = paramSearchResultFragment;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
   }
   
-  public List<ayuu> a(String paramString, int paramInt, aysw paramaysw)
+  public List<SearchResultViewPagerAdapter.TabItem> a(String paramString, int paramInt, OCRTextSearchInfo.SearchResult paramSearchResult)
   {
-    if (paramaysw != null) {}
-    for (this.b = paramaysw.jdField_a_of_type_JavaUtilList;; this.b = null)
+    if (paramSearchResult != null) {}
+    for (this.b = paramSearchResult.jdField_a_of_type_JavaUtilList;; this.b = null)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      if ((paramaysw != null) && (paramaysw.b != null)) {
-        this.jdField_a_of_type_JavaUtilList = paramaysw.b;
+      if ((paramSearchResult != null) && (paramSearchResult.b != null)) {
+        this.jdField_a_of_type_JavaUtilList = paramSearchResult.b;
       }
-      if ((paramInt != 0) || (paramaysw == null) || (paramaysw.b == null) || (paramaysw.b.size() <= 0)) {
+      if ((paramInt != 0) || (paramSearchResult == null) || (paramSearchResult.b == null) || (paramSearchResult.b.size() <= 0)) {
         break;
       }
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        ayuu localayuu = (ayuu)localIterator.next();
-        if (localayuu.jdField_a_of_type_Int == 0)
+        SearchResultViewPagerAdapter.TabItem localTabItem = (SearchResultViewPagerAdapter.TabItem)localIterator.next();
+        if (localTabItem.jdField_a_of_type_Int == 0)
         {
-          localayuu.jdField_a_of_type_JavaUtilList = paramaysw.jdField_a_of_type_JavaUtilList;
-          localayuu.jdField_a_of_type_Boolean = paramaysw.jdField_a_of_type_Boolean;
+          localTabItem.jdField_a_of_type_JavaUtilList = paramSearchResult.jdField_a_of_type_JavaUtilList;
+          localTabItem.jdField_a_of_type_Boolean = paramSearchResult.jdField_a_of_type_Boolean;
         }
       }
     }
     if (this.jdField_a_of_type_JavaUtilList.size() == 0)
     {
-      paramaysw = new ayuu();
-      paramaysw.jdField_a_of_type_JavaLangString = anvx.a(2131713106);
-      paramaysw.jdField_a_of_type_Int = 0;
-      paramaysw.jdField_a_of_type_JavaUtilList = this.b;
-      if ((paramaysw.jdField_a_of_type_JavaUtilList == null) || (paramaysw.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      paramSearchResult = new SearchResultViewPagerAdapter.TabItem();
+      paramSearchResult.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713602);
+      paramSearchResult.jdField_a_of_type_Int = 0;
+      paramSearchResult.jdField_a_of_type_JavaUtilList = this.b;
+      if ((paramSearchResult.jdField_a_of_type_JavaUtilList == null) || (paramSearchResult.jdField_a_of_type_JavaUtilList.size() <= 0)) {
         break label241;
       }
     }
     label241:
-    for (paramaysw.jdField_b_of_type_Int = paramInt;; paramaysw.jdField_b_of_type_Int = -1)
+    for (paramSearchResult.jdField_b_of_type_Int = paramInt;; paramSearchResult.jdField_b_of_type_Int = -1)
     {
-      paramaysw.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_JavaUtilList.add(0, paramaysw);
-      a(this.jdField_a_of_type_Ayud.a());
+      paramSearchResult.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_JavaUtilList.add(0, paramSearchResult);
+      a(this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface.a());
       super.notifyDataSetChanged();
       return this.jdField_a_of_type_JavaUtilList;
     }
@@ -81,8 +78,8 @@ public class SearchResultViewPagerAdapter
   
   public void a(int paramInt)
   {
-    ayuu localayuu = (ayuu)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    ((ayut)this.jdField_a_of_type_JavaUtilMap.get(localayuu.jdField_a_of_type_JavaLangString)).a();
+    SearchResultViewPagerAdapter.TabItem localTabItem = (SearchResultViewPagerAdapter.TabItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    ((SearchResultPageView)this.jdField_a_of_type_JavaUtilMap.get(localTabItem.jdField_a_of_type_JavaLangString)).a();
   }
   
   void a(Context paramContext)
@@ -90,19 +87,19 @@ public class SearchResultViewPagerAdapter
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      ayuu localayuu = (ayuu)this.jdField_a_of_type_JavaUtilList.get(i);
-      ayut localayut;
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(localayuu.jdField_a_of_type_JavaLangString)) {
-        localayut = (ayut)this.jdField_a_of_type_JavaUtilMap.get(localayuu.jdField_a_of_type_JavaLangString);
+      SearchResultViewPagerAdapter.TabItem localTabItem = (SearchResultViewPagerAdapter.TabItem)this.jdField_a_of_type_JavaUtilList.get(i);
+      SearchResultPageView localSearchResultPageView;
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(localTabItem.jdField_a_of_type_JavaLangString)) {
+        localSearchResultPageView = (SearchResultPageView)this.jdField_a_of_type_JavaUtilMap.get(localTabItem.jdField_a_of_type_JavaLangString);
       }
       for (;;)
       {
-        localayut.a(localayuu.jdField_a_of_type_Boolean);
-        localayut.a(paramContext, localayuu);
+        localSearchResultPageView.a(localTabItem.jdField_a_of_type_Boolean);
+        localSearchResultPageView.a(paramContext, localTabItem);
         i += 1;
         break;
-        localayut = new ayut(this.jdField_a_of_type_Ayud, this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment);
-        this.jdField_a_of_type_JavaUtilMap.put(localayuu.jdField_a_of_type_JavaLangString, localayut);
+        localSearchResultPageView = new SearchResultPageView(this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface, this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment);
+        this.jdField_a_of_type_JavaUtilMap.put(localTabItem.jdField_a_of_type_JavaLangString, localSearchResultPageView);
       }
     }
   }
@@ -127,8 +124,8 @@ public class SearchResultViewPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = (ayuu)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localObject = ((ayut)this.jdField_a_of_type_JavaUtilMap.get(((ayuu)localObject).jdField_a_of_type_JavaLangString)).a(this.jdField_a_of_type_Ayud.a(), (ayuu)localObject);
+    Object localObject = (SearchResultViewPagerAdapter.TabItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    localObject = ((SearchResultPageView)this.jdField_a_of_type_JavaUtilMap.get(((SearchResultViewPagerAdapter.TabItem)localObject).jdField_a_of_type_JavaLangString)).a(this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface.a(), (SearchResultViewPagerAdapter.TabItem)localObject);
     paramViewGroup.removeView((View)localObject);
     paramViewGroup.addView((View)localObject);
     return localObject;

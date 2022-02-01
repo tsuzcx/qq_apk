@@ -10,132 +10,119 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
-import bhan;
 
 public class ShaderAnimLayout
   extends RelativeLayout
 {
-  public static final long ANIM_DURATION = 200L;
-  float mAnimFactor = 0.0F;
-  private Animation.AnimationListener mAnimListener = new ShaderAnimLayout.2(this);
-  private Animation mCalcAnimation = new ShaderAnimLayout.1(this);
-  boolean mHide = false;
-  private boolean mIsInitial;
-  private Path mPath = new Path();
+  float jdField_a_of_type_Float = 0.0F;
+  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new ShaderAnimLayout.2(this);
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new ShaderAnimLayout.1(this);
+  boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public ShaderAnimLayout(Context paramContext)
   {
     super(paramContext);
-    init();
+    h();
   }
   
   public ShaderAnimLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    init();
+    h();
   }
   
   public ShaderAnimLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    init();
+    h();
   }
   
-  private void init()
+  private void h()
   {
-    if (!this.mIsInitial)
+    if (!this.b)
     {
-      this.mCalcAnimation.setDuration(200L);
-      this.mCalcAnimation.setInterpolator(new LinearInterpolator());
-      this.mIsInitial = true;
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(200L);
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new LinearInterpolator());
+      this.b = true;
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
-  {
-    this.mPath.reset();
-    this.mPath.addRect(getWidth() * (1.0F - this.mAnimFactor), 0.0F, getWidth(), getBottom(), Path.Direction.CW);
-    try
-    {
-      paramCanvas.clipPath(this.mPath, Region.Op.INTERSECT);
-      super.dispatchDraw(paramCanvas);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        bhan.a(this, 1, null);
-      }
-    }
-  }
-  
-  public void hide()
-  {
-    if (getVisibility() == 0)
-    {
-      this.mHide = true;
-      clearAnimation();
-      this.mCalcAnimation.setAnimationListener(this.mAnimListener);
-      startAnimation(this.mCalcAnimation);
-    }
-  }
-  
-  public void hideDirectly()
-  {
-    clearAnimation();
-    this.mCalcAnimation.setAnimationListener(null);
-    this.mHide = true;
-    setVisibility(8);
-    this.mAnimFactor = 0.0F;
-  }
-  
-  public void hideIgnoreVisible()
-  {
-    this.mHide = true;
-    clearAnimation();
-    this.mCalcAnimation.setAnimationListener(this.mAnimListener);
-    startAnimation(this.mCalcAnimation);
-  }
-  
-  public void hideWithoutAnimation()
-  {
-    setVisibility(8);
-  }
-  
-  public void show()
+  public void a()
   {
     if (getVisibility() != 0)
     {
-      this.mHide = false;
-      this.mCalcAnimation.setAnimationListener(null);
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
       clearAnimation();
       setVisibility(0);
-      startAnimation(this.mCalcAnimation);
+      startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
     }
   }
   
-  public void showDirectly()
+  public void b()
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
     clearAnimation();
-    this.mCalcAnimation.setAnimationListener(null);
-    this.mHide = false;
     setVisibility(0);
-    this.mAnimFactor = 1.0F;
+    startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  public void showIgnoreVisible()
+  public void c()
   {
-    this.mHide = false;
-    this.mCalcAnimation.setAnimationListener(null);
     clearAnimation();
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
+    this.jdField_a_of_type_Boolean = false;
     setVisibility(0);
-    startAnimation(this.mCalcAnimation);
+    this.jdField_a_of_type_Float = 1.0F;
+  }
+  
+  public void d()
+  {
+    clearAnimation();
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
+    this.jdField_a_of_type_Boolean = true;
+    setVisibility(8);
+    this.jdField_a_of_type_Float = 0.0F;
+  }
+  
+  public void dispatchDraw(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.jdField_a_of_type_AndroidGraphicsPath.addRect(getWidth() * (1.0F - this.jdField_a_of_type_Float), 0.0F, getWidth(), getBottom(), Path.Direction.CW);
+    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath, Region.Op.INTERSECT);
+    super.dispatchDraw(paramCanvas);
+  }
+  
+  public void e()
+  {
+    if (getVisibility() == 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      clearAnimation();
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+      startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    }
+  }
+  
+  public void f()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    clearAnimation();
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+  }
+  
+  public void g()
+  {
+    setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ShaderAnimLayout
  * JD-Core Version:    0.7.0.1
  */

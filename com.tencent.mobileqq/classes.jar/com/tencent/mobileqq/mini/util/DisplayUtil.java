@@ -28,10 +28,10 @@ import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LiuHaiUtils;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qzone.util.SystemUtil;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.json.JSONException;
@@ -51,7 +51,7 @@ public class DisplayUtil
   
   static
   {
-    if (VersionUtils.isKITKAT()) {}
+    if (VersionUtils.i()) {}
     try
     {
       Method localMethod = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
@@ -572,25 +572,25 @@ public class DisplayUtil
   {
     if (ThemeUtil.isDefaultTheme())
     {
-      ImmersiveUtils.a(false, paramActivity.getWindow());
+      ImmersiveUtils.setStatusTextColor(false, paramActivity.getWindow());
       return;
     }
     if (ThemeUtil.isGoldenTheme())
     {
-      ImmersiveUtils.a(false, paramActivity.getWindow());
+      ImmersiveUtils.setStatusTextColor(false, paramActivity.getWindow());
       return;
     }
     if (isWhiteModeTheme())
     {
-      ImmersiveUtils.a(false, paramActivity.getWindow());
+      ImmersiveUtils.setStatusTextColor(false, paramActivity.getWindow());
       return;
     }
     if (isSimpleThemeAndStatusBarOfWhite(ThemeUtil.getCurrentThemeId()))
     {
-      ImmersiveUtils.a(false, paramActivity.getWindow());
+      ImmersiveUtils.setStatusTextColor(false, paramActivity.getWindow());
       return;
     }
-    ImmersiveUtils.a(ThemeUtil.isDartStatusBar(paramActivity), paramActivity.getWindow());
+    ImmersiveUtils.setStatusTextColor(ThemeUtil.isDartStatusBar(paramActivity), paramActivity.getWindow());
   }
   
   public static void setSystemUIVisible(BaseActivity paramBaseActivity, boolean paramBoolean)

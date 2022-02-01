@@ -11,7 +11,7 @@ final class MiniArkShareAsyncManager$2
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(this.val$filePath)) && (FileUtils.deleteFile(this.val$filePath))) {
+    if ((!TextUtils.isEmpty(this.val$filePath)) && (FileUtils.e(this.val$filePath))) {
       QLog.d("MiniArkShareAsyncManage [miniappArkShare]", 2, "removeArkShareLocalTemporaryFile() called with: filePath = [" + this.val$filePath + "]");
     }
   }

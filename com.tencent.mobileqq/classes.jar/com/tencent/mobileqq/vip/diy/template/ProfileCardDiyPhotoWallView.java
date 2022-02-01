@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bhzv;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -34,7 +33,7 @@ public class ProfileCardDiyPhotoWallView
   
   public View a()
   {
-    View localView = this.a.inflate(2131562059, null);
+    View localView = this.a.inflate(2131562197, null);
     localView.setPadding(this.e, this.e, this.e, this.e);
     return localView;
   }
@@ -44,7 +43,7 @@ public class ProfileCardDiyPhotoWallView
     ViewGroup localViewGroup = super.a(paramInt1, paramInt2, paramInt3);
     if ((!TextUtils.isEmpty(this.b)) && (this.b.startsWith("http")))
     {
-      localViewGroup.setBackgroundDrawable(a(this.b, new bhzv(paramInt1 * 2, paramInt2 * 2)));
+      localViewGroup.setBackgroundDrawable(a(this.b, new ProfileTemplateBase.NinePatchDecoderHandler(paramInt1 * 2, paramInt2 * 2)));
       return localViewGroup;
     }
     localViewGroup.setBackgroundColor(this.d);
@@ -92,7 +91,7 @@ public class ProfileCardDiyPhotoWallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.ProfileCardDiyPhotoWallView
  * JD-Core Version:    0.7.0.1
  */

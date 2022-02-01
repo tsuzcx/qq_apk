@@ -12,7 +12,7 @@ import okhttp3.ResponseBody;
 final class MiniappHttpUtil$1
   implements Callback
 {
-  private volatile boolean canceled;
+  private volatile boolean canceled = false;
   
   MiniappHttpUtil$1(String paramString, HttpCallBack paramHttpCallBack) {}
   

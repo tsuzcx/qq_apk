@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class strupbuffResp
   extends JceStruct
 {
-  public int seqno;
+  public int seqno = 0;
   
   public strupbuffResp() {}
   

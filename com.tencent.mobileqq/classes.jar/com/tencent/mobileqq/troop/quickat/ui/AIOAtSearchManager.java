@@ -5,8 +5,6 @@ import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import bfzo;
-import bgam;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
@@ -22,9 +20,9 @@ public class AIOAtSearchManager
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private bfzo jdField_a_of_type_Bfzo;
   private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AIOAtSearchManager.RefreshUIListener jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener;
   List<TroopMemberInfo> jdField_a_of_type_JavaUtilList = new ArrayList(0);
   private ConcurrentHashMap<String, Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(1);
   private Handler b;
@@ -70,9 +68,9 @@ public class AIOAtSearchManager
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
   }
   
-  public void a(bfzo parambfzo)
+  public void a(AIOAtSearchManager.RefreshUIListener paramRefreshUIListener)
   {
-    this.jdField_a_of_type_Bfzo = parambfzo;
+    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener = paramRefreshUIListener;
   }
   
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -181,16 +179,16 @@ public class AIOAtSearchManager
     if (QLog.isColorLevel()) {
       QLog.e("AIOAtSearchManager", 2, "taa handleMessage  " + System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_Bfzo == null) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener == null) {}
     do
     {
       do
       {
         return true;
       } while (paramMessage.what != 1);
-      paramMessage = (bgam)paramMessage.obj;
+      paramMessage = (SearchTask.SearchResult)paramMessage.obj;
     } while (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramMessage.a));
-    this.jdField_a_of_type_Bfzo.a(paramMessage);
+    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAIOAtSearchManager$RefreshUIListener.a(paramMessage);
     return true;
   }
 }

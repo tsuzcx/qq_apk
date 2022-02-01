@@ -9,7 +9,7 @@ public final class FaceRecommendInfo
 {
   public String groupid = "";
   public String nick = "";
-  public long uin;
+  public long uin = 0L;
   
   public FaceRecommendInfo() {}
   

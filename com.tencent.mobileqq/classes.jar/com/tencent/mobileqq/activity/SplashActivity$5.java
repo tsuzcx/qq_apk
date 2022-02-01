@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import bdla;
-import bhhk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.SdCardUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class SplashActivity$5
@@ -15,11 +15,11 @@ class SplashActivity$5
     long l = SpaceLowNoticeActiviy.a(this.this$0.app, "conf_space_low_shreshold", 104857600L);
     if (SpaceLowNoticeActiviy.a(SpaceLowNoticeActiviy.a(this.this$0.app, "conf_space_check_interval", 259200000L)))
     {
-      if (bhhk.b(this.this$0) + bhhk.b() < l)
+      if (SdCardUtil.getAvailableExternalMemorySize(this.this$0) + SdCardUtil.getAvailableInternalMemorySize() < l)
       {
         QLog.i("SplashActivity", 1, "qqclean conf did notice");
         SpaceLowNoticeActiviy.a(this.this$0);
-        bdla.b(this.this$0.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.this$0.app.getCurrentAccountUin(), "", "", "");
+        ReportController.b(this.this$0.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.this$0.app.getCurrentAccountUin(), "", "", "");
       }
     }
     else {

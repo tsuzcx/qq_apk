@@ -91,7 +91,7 @@ public class MiniGdtReporter
         catch (Exception localException1) {}
         try
         {
-          str = paramMiniAppInfo.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("1.9.0", "utf-8"));
+          str = paramMiniAppInfo.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("1.12.1", "utf-8"));
           paramMiniAppInfo = str;
           paramInt = 1;
           if (paramInt == 0) {
@@ -117,7 +117,7 @@ public class MiniGdtReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniGdtReporter
  * JD-Core Version:    0.7.0.1
  */

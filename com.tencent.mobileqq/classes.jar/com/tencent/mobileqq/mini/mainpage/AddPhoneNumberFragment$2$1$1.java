@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.mini.mainpage;
 
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
 class AddPhoneNumberFragment$2$1$1
@@ -9,7 +11,10 @@ class AddPhoneNumberFragment$2$1$1
   
   public void run()
   {
-    QQToast.a(this.this$2.this$1.this$0.getActivity(), this.val$message, 0).a();
+    FragmentActivity localFragmentActivity = this.this$2.this$1.this$0.getActivity();
+    if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing())) {
+      QQToast.a(localFragmentActivity, this.val$message, 0).a();
+    }
   }
 }
 

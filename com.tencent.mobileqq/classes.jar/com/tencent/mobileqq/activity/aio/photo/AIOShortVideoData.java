@@ -25,17 +25,20 @@ public class AIOShortVideoData
   public String g;
   public int h;
   private String h;
-  public int i;
+  public int i = 0;
   public int j;
-  public int k;
+  public int k = 0;
   
   public AIOShortVideoData()
   {
     this.jdField_a_of_type_JavaLangString = "I:N";
     this.jdField_b_of_type_JavaLangString = "I:N";
+    this.jdField_e_of_type_Int = 0;
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_h_of_type_Int = 0;
     this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_h_of_type_JavaLangString = null;
   }
   
   public File a(int paramInt)
@@ -174,7 +177,7 @@ public class AIOShortVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData
  * JD-Core Version:    0.7.0.1
  */

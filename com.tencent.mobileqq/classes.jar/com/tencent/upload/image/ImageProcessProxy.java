@@ -40,6 +40,7 @@ public class ImageProcessProxy
     localMessage.arg1 = paramInt1;
     localMessage.replyTo = this.mMessenger;
     paramString2 = FileUtils.getTempFilePath(this.mContext, paramString1, paramString2, paramInt1);
+    UploadLog.d("ImageProcessProxy", "targetFile:" + paramString2);
     if (TextUtils.isEmpty(paramString2)) {
       return false;
     }
@@ -51,10 +52,14 @@ public class ImageProcessProxy
         this.mService.send(localMessage);
         return true;
       }
+      UploadLog.e("ImageProcessProxy", "mService == null");
     }
     catch (Exception paramString1)
     {
-      UploadLog.w("ImageProcessProxy", "ImageCompressor", paramString1);
+      for (;;)
+      {
+        UploadLog.w("ImageProcessProxy", "ImageCompressor", paramString1);
+      }
     }
     return false;
   }
@@ -107,12 +112,12 @@ public class ImageProcessProxy
     //   4: new 107	java/lang/StringBuilder
     //   7: dup
     //   8: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   11: ldc 225
+    //   11: ldc 232
     //   13: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: aload_0
     //   17: getfield 59	com/tencent/upload/image/ImageProcessProxy:mServiceBusy	Z
     //   20: invokevirtual 119	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   23: ldc 227
+    //   23: ldc 234
     //   25: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: aload_0
     //   29: getfield 116	com/tencent/upload/image/ImageProcessProxy:mBound	Z
@@ -124,8 +129,8 @@ public class ImageProcessProxy
     //   45: ifne +101 -> 146
     //   48: aload_0
     //   49: getfield 77	com/tencent/upload/image/ImageProcessProxy:mPendingRecords	Ljava/util/concurrent/LinkedBlockingQueue;
-    //   52: invokevirtual 231	java/util/concurrent/LinkedBlockingQueue:peek	()Ljava/lang/Object;
-    //   55: checkcast 214	com/tencent/upload/image/ImageCompressRecord
+    //   52: invokevirtual 238	java/util/concurrent/LinkedBlockingQueue:peek	()Ljava/lang/Object;
+    //   55: checkcast 221	com/tencent/upload/image/ImageCompressRecord
     //   58: astore_1
     //   59: aload_1
     //   60: ifnull +86 -> 146
@@ -134,25 +139,25 @@ public class ImageProcessProxy
     //   65: putfield 59	com/tencent/upload/image/ImageProcessProxy:mServiceBusy	Z
     //   68: aload_0
     //   69: aload_1
-    //   70: getfield 234	com/tencent/upload/image/ImageCompressRecord:flowId	I
+    //   70: getfield 241	com/tencent/upload/image/ImageCompressRecord:flowId	I
     //   73: aload_1
-    //   74: getfield 237	com/tencent/upload/image/ImageCompressRecord:path	Ljava/lang/String;
+    //   74: getfield 244	com/tencent/upload/image/ImageCompressRecord:path	Ljava/lang/String;
     //   77: aload_1
-    //   78: getfield 240	com/tencent/upload/image/ImageCompressRecord:md5	Ljava/lang/String;
+    //   78: getfield 247	com/tencent/upload/image/ImageCompressRecord:md5	Ljava/lang/String;
     //   81: aload_1
-    //   82: getfield 244	com/tencent/upload/image/ImageCompressRecord:mSize	Lcom/tencent/upload/uinterface/IUploadConfig$UploadImageSize;
-    //   85: getfield 249	com/tencent/upload/uinterface/IUploadConfig$UploadImageSize:width	I
+    //   82: getfield 251	com/tencent/upload/image/ImageCompressRecord:mSize	Lcom/tencent/upload/uinterface/IUploadConfig$UploadImageSize;
+    //   85: getfield 256	com/tencent/upload/uinterface/IUploadConfig$UploadImageSize:width	I
     //   88: aload_1
-    //   89: getfield 244	com/tencent/upload/image/ImageCompressRecord:mSize	Lcom/tencent/upload/uinterface/IUploadConfig$UploadImageSize;
-    //   92: getfield 252	com/tencent/upload/uinterface/IUploadConfig$UploadImageSize:height	I
+    //   89: getfield 251	com/tencent/upload/image/ImageCompressRecord:mSize	Lcom/tencent/upload/uinterface/IUploadConfig$UploadImageSize;
+    //   92: getfield 259	com/tencent/upload/uinterface/IUploadConfig$UploadImageSize:height	I
     //   95: aload_1
-    //   96: getfield 244	com/tencent/upload/image/ImageCompressRecord:mSize	Lcom/tencent/upload/uinterface/IUploadConfig$UploadImageSize;
-    //   99: getfield 255	com/tencent/upload/uinterface/IUploadConfig$UploadImageSize:quality	I
+    //   96: getfield 251	com/tencent/upload/image/ImageCompressRecord:mSize	Lcom/tencent/upload/uinterface/IUploadConfig$UploadImageSize;
+    //   99: getfield 262	com/tencent/upload/uinterface/IUploadConfig$UploadImageSize:quality	I
     //   102: aload_1
-    //   103: getfield 258	com/tencent/upload/image/ImageCompressRecord:autoRotate	Z
+    //   103: getfield 265	com/tencent/upload/image/ImageCompressRecord:autoRotate	Z
     //   106: aload_1
-    //   107: getfield 261	com/tencent/upload/image/ImageCompressRecord:compressToWebp	Z
-    //   110: invokespecial 263	com/tencent/upload/image/ImageProcessProxy:asyncCopyAndCompressFile	(ILjava/lang/String;Ljava/lang/String;IIIZZ)Z
+    //   107: getfield 268	com/tencent/upload/image/ImageCompressRecord:compressToWebp	Z
+    //   110: invokespecial 270	com/tencent/upload/image/ImageProcessProxy:asyncCopyAndCompressFile	(ILjava/lang/String;Ljava/lang/String;IIIZZ)Z
     //   113: ifeq +36 -> 149
     //   116: aload_0
     //   117: getfield 48	com/tencent/upload/image/ImageProcessProxy:mIncomingHandler	Lcom/tencent/upload/image/ImageProcessProxy$IncomingHandler;
@@ -161,13 +166,13 @@ public class ImageProcessProxy
     //   125: astore_2
     //   126: aload_2
     //   127: aload_1
-    //   128: getfield 234	com/tencent/upload/image/ImageCompressRecord:flowId	I
+    //   128: getfield 241	com/tencent/upload/image/ImageCompressRecord:flowId	I
     //   131: putfield 157	android/os/Message:arg1	I
     //   134: aload_0
     //   135: getfield 48	com/tencent/upload/image/ImageProcessProxy:mIncomingHandler	Lcom/tencent/upload/image/ImageProcessProxy$IncomingHandler;
     //   138: aload_2
-    //   139: ldc2_w 264
-    //   142: invokevirtual 269	com/tencent/upload/image/ImageProcessProxy$IncomingHandler:sendMessageDelayed	(Landroid/os/Message;J)Z
+    //   139: ldc2_w 271
+    //   142: invokevirtual 276	com/tencent/upload/image/ImageProcessProxy$IncomingHandler:sendMessageDelayed	(Landroid/os/Message;J)Z
     //   145: pop
     //   146: aload_0
     //   147: monitorexit
@@ -225,20 +230,20 @@ public class ImageProcessProxy
     //   2: aload_0
     //   3: getfield 82	com/tencent/upload/image/ImageProcessProxy:mRecordMap	Landroid/util/SparseArray;
     //   6: aload_1
-    //   7: getfield 234	com/tencent/upload/image/ImageCompressRecord:flowId	I
-    //   10: invokevirtual 212	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   7: getfield 241	com/tencent/upload/image/ImageCompressRecord:flowId	I
+    //   10: invokevirtual 219	android/util/SparseArray:get	(I)Ljava/lang/Object;
     //   13: ifnonnull +31 -> 44
     //   16: aload_0
     //   17: getfield 77	com/tencent/upload/image/ImageProcessProxy:mPendingRecords	Ljava/util/concurrent/LinkedBlockingQueue;
     //   20: aload_1
-    //   21: invokevirtual 288	java/util/concurrent/LinkedBlockingQueue:add	(Ljava/lang/Object;)Z
+    //   21: invokevirtual 295	java/util/concurrent/LinkedBlockingQueue:add	(Ljava/lang/Object;)Z
     //   24: pop
     //   25: aload_0
     //   26: getfield 82	com/tencent/upload/image/ImageProcessProxy:mRecordMap	Landroid/util/SparseArray;
     //   29: aload_1
-    //   30: getfield 234	com/tencent/upload/image/ImageCompressRecord:flowId	I
+    //   30: getfield 241	com/tencent/upload/image/ImageCompressRecord:flowId	I
     //   33: aload_1
-    //   34: invokevirtual 292	android/util/SparseArray:put	(ILjava/lang/Object;)V
+    //   34: invokevirtual 299	android/util/SparseArray:put	(ILjava/lang/Object;)V
     //   37: aload_0
     //   38: invokespecial 97	com/tencent/upload/image/ImageProcessProxy:next	()V
     //   41: aload_0
@@ -248,10 +253,10 @@ public class ImageProcessProxy
     //   46: new 107	java/lang/StringBuilder
     //   49: dup
     //   50: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   53: ldc_w 294
+    //   53: ldc_w 301
     //   56: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: aload_1
-    //   60: getfield 234	com/tencent/upload/image/ImageCompressRecord:flowId	I
+    //   60: getfield 241	com/tencent/upload/image/ImageCompressRecord:flowId	I
     //   63: invokevirtual 124	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   66: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   69: invokestatic 148	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
@@ -309,7 +314,7 @@ public class ImageProcessProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.upload.image.ImageProcessProxy
  * JD-Core Version:    0.7.0.1
  */

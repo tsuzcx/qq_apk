@@ -11,21 +11,21 @@ public final class ProfGroupInfoRes
   static ArrayList<GroupMemberFlag> cache_vAdministrator;
   static ArrayList<String> cache_vsUrl;
   public byte cAlbumResult = -1;
-  public byte cInviteSwitchOpen;
-  public byte cResult;
-  public long dwFlagExt;
-  public long dwTimeStamp;
+  public byte cInviteSwitchOpen = 0;
+  public byte cResult = 0;
+  public long dwFlagExt = 0L;
+  public long dwTimeStamp = 0L;
   public String sAuthGrpInfo = "";
   public String sFingerGroupMemo = "";
   public String sGroupLocation = "";
   public String sGroupMemo = "";
   public String sGroupName = "";
-  public long uGroupCode;
-  public long uGroupOwnerUin;
-  public long uGroupUin;
-  public ArrayList<GroupMemberFlag> vAdministrator;
-  public ArrayList<String> vsUrl;
-  public short wGroupFace;
+  public long uGroupCode = 0L;
+  public long uGroupOwnerUin = 0L;
+  public long uGroupUin = 0L;
+  public ArrayList<GroupMemberFlag> vAdministrator = null;
+  public ArrayList<String> vsUrl = null;
+  public short wGroupFace = 0;
   
   public ProfGroupInfoRes() {}
   

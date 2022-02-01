@@ -10,22 +10,22 @@ public class SystemAndEmojiUniversalPanel$Builder
   private SystemAndEmojiUniversalPanel.DispatchKeyEventListener mDispatchKeyEventListener;
   private EditText mEditText;
   private EmoticonCallback mEmoticonCallback;
-  private boolean mFilterSysFaceBeyond255Enable;
-  private boolean mShowCommonUsedSystemEmoji;
+  private boolean mFilterSysFaceBeyond255Enable = false;
+  private boolean mShowCommonUsedSystemEmoji = false;
   
   public SystemAndEmojiUniversalPanel$Builder(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  public SystemAndEmojiUniversalPanel create()
+  public SystemAndEmojiUniversalPanel create(IEmoticonMainPanelApp paramIEmoticonMainPanelApp)
   {
-    SystemAndEmojiUniversalPanel localSystemAndEmojiUniversalPanel = (SystemAndEmojiUniversalPanel)View.inflate(this.mContext, 2131559177, null);
-    into(localSystemAndEmojiUniversalPanel);
+    SystemAndEmojiUniversalPanel localSystemAndEmojiUniversalPanel = (SystemAndEmojiUniversalPanel)View.inflate(this.mContext, 2131563076, null);
+    into(localSystemAndEmojiUniversalPanel, paramIEmoticonMainPanelApp);
     return localSystemAndEmojiUniversalPanel;
   }
   
-  public void into(SystemAndEmojiUniversalPanel paramSystemAndEmojiUniversalPanel)
+  public void into(SystemAndEmojiUniversalPanel paramSystemAndEmojiUniversalPanel, IEmoticonMainPanelApp paramIEmoticonMainPanelApp)
   {
     if (paramSystemAndEmojiUniversalPanel == null) {
       return;
@@ -35,7 +35,7 @@ public class SystemAndEmojiUniversalPanel$Builder
     paramSystemAndEmojiUniversalPanel.setShowDeleteButton(this.mEditText);
     paramSystemAndEmojiUniversalPanel.setShowCommonUsedSystemEmoji(this.mShowCommonUsedSystemEmoji);
     paramSystemAndEmojiUniversalPanel.setFilterSysFaceBeyond255Enable(this.mFilterSysFaceBeyond255Enable);
-    paramSystemAndEmojiUniversalPanel.init();
+    paramSystemAndEmojiUniversalPanel.init(paramIEmoticonMainPanelApp);
   }
   
   public Builder setDispatchKeyEventListener(SystemAndEmojiUniversalPanel.DispatchKeyEventListener paramDispatchKeyEventListener)
@@ -70,7 +70,7 @@ public class SystemAndEmojiUniversalPanel$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.Builder
  * JD-Core Version:    0.7.0.1
  */

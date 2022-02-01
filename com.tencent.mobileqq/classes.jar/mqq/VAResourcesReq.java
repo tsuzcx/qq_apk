@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class VAResourcesReq
   extends JceStruct
 {
-  public long lastVisitTime;
-  public int resourcesFlag;
+  public long lastVisitTime = 0L;
+  public int resourcesFlag = 0;
   public String sUin = "";
   
   public VAResourcesReq() {}

@@ -3,6 +3,7 @@ package com.tencent.mobileqq.msf.core.net.c;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.msf.service.protocol.push.a.b;
 import com.tencent.msf.service.protocol.push.a.d;
 import com.tencent.qphone.base.remote.FromServiceMsg;

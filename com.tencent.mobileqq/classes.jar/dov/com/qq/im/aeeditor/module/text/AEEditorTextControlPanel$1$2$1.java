@@ -1,13 +1,11 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bnrh;
-import boce;
-import boct;
+import dov.com.qq.im.ae.util.AEQLog;
 
-public class AEEditorTextControlPanel$1$2$1
+class AEEditorTextControlPanel$1$2$1
   implements Runnable
 {
-  public AEEditorTextControlPanel$1$2$1(boce paramboce) {}
+  AEEditorTextControlPanel$1$2$1(AEEditorTextControlPanel.1.2 param2) {}
   
   public void run()
   {
@@ -15,7 +13,7 @@ public class AEEditorTextControlPanel$1$2$1
     {
       try
       {
-        bnrh.d("AEEditorTextControlPanel", "[createImageAndUpdate]notifyAll");
+        AEQLog.d("AEEditorTextControlPanel", "[createImageAndUpdate]notifyAll");
         AEEditorTextControlPanel.a(this.a.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel$1.this$0).notifyItemChanged(this.a.jdField_a_of_type_Int);
         return;
       }
@@ -23,7 +21,7 @@ public class AEEditorTextControlPanel$1$2$1
       {
         for (;;)
         {
-          bnrh.d("AEEditorTextControlPanel", "[createImageAndUpdate]IllegalMonitorStateException");
+          AEQLog.d("AEEditorTextControlPanel", "[createImageAndUpdate]IllegalMonitorStateException");
         }
       }
     }
@@ -31,7 +29,7 @@ public class AEEditorTextControlPanel$1$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel.1.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,22 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import acim;
-import acin;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
-import onx;
+import com.tencent.gdtad.util.GdtManager;
+import com.tencent.gdtad.util.GdtManager.Params;
 
-public class EcshopAdHandler$1
+class EcshopAdHandler$1
   implements Runnable
 {
-  public EcshopAdHandler$1(onx paramonx) {}
+  EcshopAdHandler$1(EcshopAdHandler paramEcshopAdHandler) {}
   
   public void run()
   {
-    MiniLog.init();
-    acim.a().a(BaseApplicationImpl.getApplication().getApplicationContext(), new acin());
+    GdtManager.a().a(BaseApplicationImpl.getApplication().getApplicationContext(), new GdtManager.Params());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler.1
  * JD-Core Version:    0.7.0.1
  */

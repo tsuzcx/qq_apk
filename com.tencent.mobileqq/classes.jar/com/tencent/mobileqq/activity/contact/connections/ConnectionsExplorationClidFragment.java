@@ -1,46 +1,44 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import aixv;
-import aiya;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import blfe;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.SwipListView;
+import com.tencent.widget.SwipListView.RightIconMenuListener;
 
 public class ConnectionsExplorationClidFragment
   extends ReportV4Fragment
 {
-  private int jdField_a_of_type_Int;
-  private aiya jdField_a_of_type_Aiya;
-  blfe jdField_a_of_type_Blfe = new aixv(this);
+  private int jdField_a_of_type_Int = 0;
+  private ConnectsExplorationFriendAdapter jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  SwipListView.RightIconMenuListener jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener = new ConnectionsExplorationClidFragment.1(this);
+  private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView = null;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean = false;
   
   private void a(View paramView)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131376358));
-    View localView = paramView.findViewById(2131366162);
-    paramView = paramView.findViewById(2131370469);
-    this.jdField_a_of_type_Aiya = new aiya(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView, paramView, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131376753));
+    View localView = paramView.findViewById(2131366333);
+    paramView = paramView.findViewById(2131370750);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter = new ConnectsExplorationFriendAdapter(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView, paramView, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Aiya.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter.a();
       this.jdField_b_of_type_Boolean = false;
     }
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this.jdField_a_of_type_Blfe);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener);
   }
   
   public void a()
@@ -48,9 +46,9 @@ public class ConnectionsExplorationClidFragment
     if (QLog.isColorLevel()) {
       QLog.d("ConnectionsExplorationClidFragment", 2, "ConnectionsExplorationClidFragment onPageSelected " + this.jdField_b_of_type_Int);
     }
-    if (this.jdField_a_of_type_Aiya != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter != null)
     {
-      this.jdField_a_of_type_Aiya.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter.a();
       return;
     }
     this.jdField_b_of_type_Boolean = true;
@@ -71,8 +69,8 @@ public class ConnectionsExplorationClidFragment
     if (QLog.isColorLevel()) {
       QLog.d("ConnectionsExplorationClidFragment", 2, "ConnectionsExplorationClidFragment doOnDestroy " + this.jdField_b_of_type_Int);
     }
-    if (this.jdField_a_of_type_Aiya != null) {
-      this.jdField_a_of_type_Aiya.c();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter.c();
     }
   }
   
@@ -83,7 +81,7 @@ public class ConnectionsExplorationClidFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561299, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561404, paramViewGroup, false);
     a(paramLayoutInflater);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -101,14 +99,14 @@ public class ConnectionsExplorationClidFragment
       QLog.d("ConnectionsExplorationClidFragment", 2, " onResume");
     }
     super.onResume();
-    if (this.jdField_a_of_type_Aiya != null) {
-      this.jdField_a_of_type_Aiya.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationClidFragment
  * JD-Core Version:    0.7.0.1
  */

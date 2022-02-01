@@ -1,32 +1,31 @@
 package com.tencent.biz.pubaccount.readinjoy.feedspopup.steps;
 
 import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyOperationManager;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinHandler;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
 import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import pxg;
-import rmt;
-import rmu;
-import rmx;
-import rna;
-import rns;
 
-public class RIJSkinOperationPopupStep$1
+class RIJSkinOperationPopupStep$1
   implements Runnable
 {
-  public RIJSkinOperationPopupStep$1(pxg parampxg) {}
+  RIJSkinOperationPopupStep$1(RIJSkinOperationPopupStep paramRIJSkinOperationPopupStep) {}
   
   public void run()
   {
     Object localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    rmx localrmx = (rmx)((QQAppInterface)localObject2).getBusinessHandler(BusinessHandlerFactory.READ_INJOY_SKIN_HANDLER);
-    rna localrna = (rna)((QQAppInterface)localObject2).getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER);
-    Object localObject1 = (rmt)((QQAppInterface)localObject2).getManager(QQManagerFactory.READ_IN_JOY_OPERATION_MANAGER);
-    rmu localrmu = (rmu)((QQAppInterface)localObject2).getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
-    localObject2 = localrmu.a(pxg.a(this.this$0), 0);
+    ReadInJoySkinHandler localReadInJoySkinHandler = (ReadInJoySkinHandler)((QQAppInterface)localObject2).getBusinessHandler(BusinessHandlerFactory.READ_INJOY_SKIN_HANDLER);
+    ReadInJoySkinManager localReadInJoySkinManager = (ReadInJoySkinManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER);
+    Object localObject1 = (ReadInJoyOperationManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.READ_IN_JOY_OPERATION_MANAGER);
+    ReadInJoyRefreshManager localReadInJoyRefreshManager = (ReadInJoyRefreshManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
+    localObject2 = localReadInJoyRefreshManager.a(RIJSkinOperationPopupStep.a(this.this$0), 0);
     boolean bool1;
     label140:
     boolean bool2;
@@ -51,7 +50,7 @@ public class RIJSkinOperationPopupStep$1
       if ((!bool1) || (!bool2)) {
         break label365;
       }
-      bool1 = rns.a(((RefreshData)localObject2).id);
+      bool1 = RefreshRes.a(((RefreshData)localObject2).id);
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh dataMatch = true, timeMatch = true, resValid =" + bool1);
       }
@@ -61,13 +60,13 @@ public class RIJSkinOperationPopupStep$1
       if (!((RefreshData)localObject2).isShown) {
         break label326;
       }
-      localrmu.a(1, ((RefreshData)localObject2).id, ((RefreshData)localObject2).seq, 0);
-      localrmu.a(true);
+      localReadInJoyRefreshManager.a(1, ((RefreshData)localObject2).id, ((RefreshData)localObject2).seq, 0);
+      localReadInJoyRefreshManager.a(true);
     }
     for (;;)
     {
-      localObject1 = (GuideData)((rmt)localObject1).a("operation_guide");
-      localrmx.a(localrna.a(pxg.a(this.this$0)), null, (RefreshData)localObject2, (GuideData)localObject1, 0);
+      localObject1 = (GuideData)((ReadInJoyOperationManager)localObject1).a("operation_guide");
+      localReadInJoySkinHandler.a(localReadInJoySkinManager.a(RIJSkinOperationPopupStep.a(this.this$0)), null, (RefreshData)localObject2, (GuideData)localObject1, 0);
       return;
       QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh refreshData = " + ((RefreshData)localObject2).toString());
       break;
@@ -78,23 +77,23 @@ public class RIJSkinOperationPopupStep$1
       bool2 = false;
       break label165;
       label326:
-      localrmu.a(0, "", -1L, 0);
+      localReadInJoyRefreshManager.a(0, "", -1L, 0);
       continue;
       label341:
-      localrmu.a(0, "", -1L, 0);
-      localrmu.a((RefreshData)localObject2, 0);
+      localReadInJoyRefreshManager.a(0, "", -1L, 0);
+      localReadInJoyRefreshManager.a((RefreshData)localObject2, 0);
       continue;
       label365:
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh dataMatch =" + bool1 + ",timeMatch = " + bool2);
       }
-      localrmu.a(0, "", -1L, 0);
+      localReadInJoyRefreshManager.a(0, "", -1L, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJSkinOperationPopupStep.1
  * JD-Core Version:    0.7.0.1
  */

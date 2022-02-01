@@ -1,0 +1,20 @@
+package com.tencent.mobileqq.together;
+
+import com.tencent.mobileqq.app.HardCodeUtil;
+
+public final class TogetherConstants
+{
+  public static final String a = HardCodeUtil.a(2131714875);
+  public static final String b = HardCodeUtil.a(2131714889);
+  
+  private TogetherConstants()
+  {
+    throw new UnsupportedOperationException("Can not create an instance.");
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.together.TogetherConstants
+ * JD-Core Version:    0.7.0.1
+ */

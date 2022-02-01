@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.bless;
 
 import android.os.Message;
-import bheg;
-import bkyc;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 class BlessResultActivity$3
   implements Runnable
@@ -16,7 +16,7 @@ class BlessResultActivity$3
   {
     try
     {
-      long l = FileUtils.getFileSizes(this.a);
+      long l = FileUtils.a(this.a);
       if (l < 25600L)
       {
         localObject = this.this$0.a.obtainMessage(1004);
@@ -24,9 +24,9 @@ class BlessResultActivity$3
         return;
       }
       Object localObject = BlessResultActivity.a(this.a);
-      bheg.a(BaseApplication.getContext(), this.a, (String)localObject, 160, 160);
+      ImageUtil.a(BaseApplication.getContext(), this.a, (String)localObject, 160, 160);
       if (QLog.isColorLevel()) {
-        QLog.d("BlessResultActivity", 2, "share ptv to FC. srcLen:" + l + " ,objLen:" + FileUtils.getFileSizes((String)localObject) + " , thumbPath:" + (String)localObject);
+        QLog.d("BlessResultActivity", 2, "share ptv to FC. srcLen:" + l + " ,objLen:" + FileUtils.a((String)localObject) + " , thumbPath:" + (String)localObject);
       }
       Message localMessage = this.this$0.a.obtainMessage(1004);
       localMessage.obj = localObject;
@@ -41,7 +41,7 @@ class BlessResultActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessResultActivity.3
  * JD-Core Version:    0.7.0.1
  */

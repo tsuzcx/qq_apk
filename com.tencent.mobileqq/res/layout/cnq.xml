@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/nrq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/nrs" android:layout_width="12.0dip" android:layout_height="12.0dip" />
-    <com.tencent.image.URLImageView android:id="@id/nrt" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
-    <com.tencent.image.URLImageView android:id="@id/nru" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
-    <com.tencent.image.URLImageView android:id="@id/nrv" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
-    <com.tencent.image.URLImageView android:id="@id/nrw" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
-</LinearLayout>
+    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="marquee" android:id="@id/mfp" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
+    <ImageView android:id="@id/mg1" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/gwd" android:layout_toRightOf="@id/mfp" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
+</RelativeLayout>

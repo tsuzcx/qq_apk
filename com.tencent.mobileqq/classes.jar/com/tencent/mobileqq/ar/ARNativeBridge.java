@@ -3,8 +3,7 @@ package com.tencent.mobileqq.ar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
-import apfz;
-import apmk;
+import com.tencent.mobileqq.ar.arengine.ARReport;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -13,14 +12,14 @@ public class ARNativeBridge
   public static final int ANIMATION_TYPE_MAIN = 3;
   public static final int ANIMATION_TYPE_SWIPE_LEFT = 1;
   public static final int ANIMATION_TYPE_SWIPE_RIGHT = 2;
-  private static boolean globalInitialized;
-  private static boolean loadSoSuccess;
+  private static boolean globalInitialized = false;
+  private static boolean loadSoSuccess = false;
   private static boolean needCheckMd5 = true;
-  public static int sIdCount;
-  public String basePath;
+  public static int sIdCount = 0;
+  public String basePath = null;
   public int id;
   public ARGLSurfaceView mAttached;
-  public int mCurrentActiveId;
+  public int mCurrentActiveId = 0;
   public ARNativeBridge.ActionCallback sActionCallback;
   
   public ARNativeBridge()
@@ -40,7 +39,7 @@ public class ARNativeBridge
   {
     boolean bool2 = true;
     long l = System.currentTimeMillis();
-    boolean bool3 = apfz.a("ArMapEngine836", needCheckMd5);
+    boolean bool3 = ArNativeSoLoader.a("ArMapEngine836", needCheckMd5);
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -63,7 +62,7 @@ public class ARNativeBridge
     {
       try
       {
-        int i = apfz.a("ArMapEngine836");
+        int i = ArNativeSoLoader.a("ArMapEngine836");
         if (i != 0) {
           continue;
         }
@@ -84,7 +83,7 @@ public class ARNativeBridge
       if (QLog.isColorLevel()) {
         QLog.d("AREngine", 2, "initSoEnvirontMent loadSoSuccess = " + loadSoSuccess);
       }
-      apmk.a().f(System.currentTimeMillis() - l, loadSoSuccess);
+      ARReport.a().f(System.currentTimeMillis() - l, loadSoSuccess);
       return loadSoSuccess;
       bool1 = false;
     }
@@ -387,7 +386,7 @@ public class ARNativeBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARNativeBridge
  * JD-Core Version:    0.7.0.1
  */

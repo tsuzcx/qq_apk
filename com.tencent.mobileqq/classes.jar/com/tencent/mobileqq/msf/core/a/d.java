@@ -3,12 +3,12 @@ package com.tencent.mobileqq.msf.core.a;
 import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.b.b;
-import com.tencent.mobileqq.msf.core.i.a;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.msf.service.protocol.serverconfig.f;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.log.a.b.a;
+import com.tencent.qphone.base.util.log.a.j;
 import java.util.concurrent.LinkedBlockingDeque;
 
 class d
@@ -35,7 +35,7 @@ class d
       MsfCore.initAppProMsg("*", this.b.getAppId());
     }
     label133:
-    i.a locala1;
+    b.a locala1;
     do
     {
       do
@@ -43,15 +43,15 @@ class d
         return;
       } while (locala.a != 1);
       localObject = this.a.c + "&" + System.currentTimeMillis();
-      locala1 = new i.a();
+      locala1 = new b.a();
       locala1.b = this.a.c;
-      com.tencent.mobileqq.msf.core.b.a.a(com.tencent.mobileqq.msf.core.b.a.j, (String)localObject, locala1);
-      if (b.b(this.a.c))
+      com.tencent.qphone.base.util.log.a.a.a(com.tencent.qphone.base.util.log.a.a.j, (String)localObject, locala1);
+      if (j.b(this.a.c))
       {
         QLog.i("MSF.C.SsoListManager", 1, "handleLogPush, repeated push ignored");
         locala1.f = true;
         locala1.e = this.a.c;
-        com.tencent.mobileqq.msf.core.b.a.a(com.tencent.mobileqq.msf.core.b.a.j, (String)localObject, 11, locala1);
+        com.tencent.qphone.base.util.log.a.a.a(com.tencent.qphone.base.util.log.a.a.j, (String)localObject, 11, locala1);
         return;
       }
       locala.f = this.a.c;

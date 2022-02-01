@@ -1,41 +1,16 @@
 package com.tencent.mobileqq.utils;
 
-import android.text.TextUtils;
-import bhcu;
-import bheh;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class JumpAction$7
+class JumpAction$7
   implements Runnable
 {
-  public JumpAction$7(bheh parambheh, String paramString1, long paramLong, String paramString2, String paramString3, Runnable paramRunnable) {}
+  JumpAction$7(JumpAction paramJumpAction) {}
   
   public void run()
   {
-    String str = FileUtils.saveFileUriToFile(this.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "opensdk_tmp");
-    QLog.d("JumpAction", 1, new Object[] { "-->executeOnSubThread shareFilePath=", str, ", cost=", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    this.this$0.jdField_a_of_type_JavaUtilHashMap.remove(this.b);
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      str = new String(bhcu.encode(str.getBytes("UTF-8"), 0));
-      this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, str);
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      if ((!this.this$0.f) && ((this.this$0.jdField_a_of_type_AndroidContentContext instanceof JumpActivity))) {
-        ((JumpActivity)this.this$0.jdField_a_of_type_AndroidContentContext).finish();
-      }
-      return;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        QLog.i("JumpAction", 1, "executeOnSubThread put exception:", localUnsupportedEncodingException);
-      }
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131699259, 0).a();
   }
 }
 

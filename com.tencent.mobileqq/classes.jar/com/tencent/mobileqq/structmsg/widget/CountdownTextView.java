@@ -3,8 +3,6 @@ package com.tencent.mobileqq.structmsg.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bdtq;
-import bdtr;
 import com.tencent.mobileqq.activity.photopreview.CountDownTimer;
 import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
 
@@ -33,21 +31,21 @@ public class CountdownTextView
   {
     CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
     if (localCountDownTimer != null) {
-      localCountDownTimer.removeListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
+      localCountDownTimer.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
     }
   }
   
-  public void a(long paramLong, bdtr parambdtr)
+  public void a(long paramLong, CountdownTextView.TimerCallback paramTimerCallback)
   {
     CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
     if (localCountDownTimer != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new bdtq(this, paramLong, parambdtr);
-      localCountDownTimer.addListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new CountdownTextView.1(this, paramLong, paramTimerCallback);
+      localCountDownTimer.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     a();

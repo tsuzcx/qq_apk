@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahpt;
-import ahvi;
 import android.content.Intent;
 import android.os.Bundle;
-import aupt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class BusinessCardAppInfo
   extends PlusPanelAppInfo
 {
-  public BusinessCardAppInfo() {}
+  BusinessCardAppInfo() {}
   
   public BusinessCardAppInfo(int paramInt)
   {
@@ -23,7 +23,7 @@ public class BusinessCardAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839185;
+    return 2130839253;
   }
   
   public int getAppID()
@@ -52,23 +52,23 @@ public class BusinessCardAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131693453);
+    return BaseApplicationImpl.getContext().getString(2131693608);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramahvi = new Bundle();
-    paramahvi.putInt("forward_type", 23);
-    paramahvi.putInt("curent_aio_uin_type", paramSessionInfo.curType);
-    paramahvi.putString("curent_aio_uinname", paramSessionInfo.curFriendNick);
-    paramahvi.putString("curent_aio_uin", paramSessionInfo.curFriendUin);
-    paramahvi.putString("curent_aio_troop_uin", paramSessionInfo.troopUin);
-    paramahvi.putBoolean("only_single_selection", true);
+    paramPlusPanelViewModel = new Bundle();
+    paramPlusPanelViewModel.putInt("forward_type", 23);
+    paramPlusPanelViewModel.putInt("curent_aio_uin_type", paramSessionInfo.jdField_a_of_type_Int);
+    paramPlusPanelViewModel.putString("curent_aio_uinname", paramSessionInfo.d);
+    paramPlusPanelViewModel.putString("curent_aio_uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
+    paramPlusPanelViewModel.putString("curent_aio_troop_uin", paramSessionInfo.b);
+    paramPlusPanelViewModel.putBoolean("only_single_selection", true);
     Intent localIntent = new Intent();
-    localIntent.putExtras(paramahvi);
-    aupt.a(paramBaseChatPie.getActivity(), localIntent, 21);
-    ahpt.a(paramBaseChatPie.app, "0X80056B3", paramSessionInfo.curType);
-    ahpt.a(paramBaseChatPie.app, "0X8007010", paramSessionInfo.curType);
+    localIntent.putExtras(paramPlusPanelViewModel);
+    ForwardBaseOption.a(paramBaseChatPie.a(), localIntent, 21);
+    AIOPanelUtiles.a(paramBaseChatPie.a, "0X80056B3", paramSessionInfo.jdField_a_of_type_Int);
+    AIOPanelUtiles.a(paramBaseChatPie.a, "0X8007010", paramSessionInfo.jdField_a_of_type_Int);
   }
 }
 

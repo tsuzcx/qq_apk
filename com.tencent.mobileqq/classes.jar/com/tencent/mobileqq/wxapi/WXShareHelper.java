@@ -11,11 +11,8 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
-import auea;
-import bcut;
-import biyl;
-import biym;
-import biyn;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -35,6 +32,8 @@ import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.service.qzone.QzoneMapUtil;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -44,38 +43,33 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import nwh;
-import znl;
 
 public class WXShareHelper
   extends BroadcastReceiver
   implements IWXAPIEventHandler
 {
-  private static WXShareHelper jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper;
+  private static WXShareHelper jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper = null;
   public static final String a;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new biyl(this);
+  private static byte[] jdField_a_of_type_ArrayOfByte;
   Context jdField_a_of_type_AndroidContentContext;
   private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxf0a80d0ac2e82aa7", true);
-  private ArrayList<biyn> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new biym(this);
-  private IWXAPI jdField_b_of_type_ComTencentMmOpensdkOpenapiIWXAPI;
+  private ArrayList<WXShareHelper.WXShareListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  private IWXAPI b;
   private IWXAPI c;
   
   static
   {
     jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "photo/");
+    jdField_a_of_type_ArrayOfByte = new byte[0];
   }
   
   private WXShareHelper()
   {
     BaseApplication.getContext().registerReceiver(this, new IntentFilter("com.tencent.mobileqq.action.ACTION_WECHAT_RESPONSE"), "com.tencent.msg.permission.pushnotify", null);
     a();
-    this.jdField_b_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxcb89b8fc34e4e304", true);
-    BaseApplication.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.mobileqq.action.ACTION_WECHAT_RESPONSE"), "com.tencent.msg.permission.pushnotify", null);
-    this.jdField_b_of_type_ComTencentMmOpensdkOpenapiIWXAPI.registerApp("wxcb89b8fc34e4e304");
+    this.b = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxcb89b8fc34e4e304", true);
+    this.b.registerApp("wxcb89b8fc34e4e304");
     this.c = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wx1d0f5457c7556472", true);
-    BaseApplication.getContext().registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.mobileqq.action.ACTION_WECHAT_RESPONSE"), "com.tencent.msg.permission.pushnotify", null);
     this.c.registerApp("wx1d0f5457c7556472");
   }
   
@@ -147,29 +141,29 @@ public class WXShareHelper
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 220	java/io/FileInputStream
+    //   2: new 206	java/io/FileInputStream
     //   5: dup
     //   6: aload_0
-    //   7: invokespecial 223	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   10: invokevirtual 227	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   7: invokespecial 209	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   10: invokevirtual 213	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   13: astore_2
-    //   14: new 229	java/io/FileOutputStream
+    //   14: new 215	java/io/FileOutputStream
     //   17: dup
     //   18: aload_1
-    //   19: invokespecial 230	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   22: invokevirtual 231	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   19: invokespecial 216	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   22: invokevirtual 217	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   25: astore_1
     //   26: aload_1
     //   27: aload_2
     //   28: lconst_0
     //   29: aload_2
-    //   30: invokevirtual 236	java/nio/channels/FileChannel:size	()J
-    //   33: invokevirtual 240	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
+    //   30: invokevirtual 222	java/nio/channels/FileChannel:size	()J
+    //   33: invokevirtual 226	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
     //   36: pop2
     //   37: aload_2
-    //   38: invokevirtual 243	java/nio/channels/FileChannel:close	()V
+    //   38: invokevirtual 229	java/nio/channels/FileChannel:close	()V
     //   41: aload_1
-    //   42: invokevirtual 243	java/nio/channels/FileChannel:close	()V
+    //   42: invokevirtual 229	java/nio/channels/FileChannel:close	()V
     //   45: return
     //   46: astore_0
     //   47: aconst_null
@@ -177,9 +171,9 @@ public class WXShareHelper
     //   49: aload_3
     //   50: astore_2
     //   51: aload_2
-    //   52: invokevirtual 243	java/nio/channels/FileChannel:close	()V
+    //   52: invokevirtual 229	java/nio/channels/FileChannel:close	()V
     //   55: aload_1
-    //   56: invokevirtual 243	java/nio/channels/FileChannel:close	()V
+    //   56: invokevirtual 229	java/nio/channels/FileChannel:close	()V
     //   59: aload_0
     //   60: athrow
     //   61: astore_0
@@ -206,7 +200,7 @@ public class WXShareHelper
     QLog.d("WXShareHelper", 1, "--shareImageToWX");
     if (TextUtils.isEmpty(paramString1))
     {
-      znl.a(1, 2131696208);
+      QRUtils.a(1, 2131696460);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -267,7 +261,7 @@ public class WXShareHelper
     if (paramBoolean2)
     {
       Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, paramInt, paramInt);
-      localObject1 = nwh.a(localBitmap);
+      localObject1 = ImageUtil.a(localBitmap);
       localBitmap.recycle();
     }
     for (;;)
@@ -279,7 +273,7 @@ public class WXShareHelper
       }
       paramBitmap.recycle();
       return localObject1;
-      localObject1 = nwh.a((Bitmap)localObject2);
+      localObject1 = ImageUtil.a((Bitmap)localObject2);
     }
   }
   
@@ -300,12 +294,12 @@ public class WXShareHelper
     }
   }
   
-  public void a(biyn parambiyn)
+  public void a(WXShareHelper.WXShareListener paramWXShareListener)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambiyn)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(parambiyn);
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramWXShareListener)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramWXShareListener);
       }
       return;
     }
@@ -330,7 +324,7 @@ public class WXShareHelper
     QLog.d("WXShareHelper", 1, "--shareFileToWx");
     if (TextUtils.isEmpty(paramString))
     {
-      znl.a(1, 2131696208);
+      QRUtils.a(1, 2131696460);
       return;
     }
     WXFileObject localWXFileObject = new WXFileObject();
@@ -341,7 +335,7 @@ public class WXShareHelper
       localWXFileObject.filePath = ((String)localObject);
       localObject = a(paramBitmap, false, true);
       paramBitmap = new WXMediaMessage();
-      paramBitmap.title = auea.a(paramString);
+      paramBitmap.title = FileManagerUtil.a(paramString);
       paramBitmap.mediaObject = localWXFileObject;
       paramBitmap.thumbData = ((byte[])localObject);
       if (((paramBitmap.thumbData == null) || (paramBitmap.thumbData.length > 32768)) && (QLog.isColorLevel())) {
@@ -365,7 +359,7 @@ public class WXShareHelper
   {
     if (TextUtils.isEmpty(paramString1))
     {
-      znl.a(1, 2131696208);
+      QRUtils.a(1, 2131696460);
       return;
     }
     a(paramString1, a(paramBitmap, paramInt1), paramInt2, paramString2);
@@ -380,7 +374,7 @@ public class WXShareHelper
   {
     if (TextUtils.isEmpty(paramString1))
     {
-      znl.a(1, 2131696208);
+      QRUtils.a(1, 2131696460);
       return;
     }
     a(paramString1, a(paramBitmap, false, paramBoolean), paramInt, paramString2);
@@ -461,7 +455,7 @@ public class WXShareHelper
     paramString2.transaction = a("miniProgram");
     paramString2.message = paramString1;
     paramString2.scene = 0;
-    this.jdField_b_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramString2);
+    this.b.sendReq(paramString2);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4, String paramString5, boolean paramBoolean, int paramInt)
@@ -527,7 +521,7 @@ public class WXShareHelper
           if (this.c.sendReq(paramString)) {
             break;
           }
-          ThreadManager.getUIHandler().post(new WXShareHelper.3(this));
+          ThreadManager.getUIHandler().post(new WXShareHelper.1(this));
           return;
         }
       }
@@ -544,12 +538,12 @@ public class WXShareHelper
     return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled();
   }
   
-  public void b(biyn parambiyn)
+  public void b(WXShareHelper.WXShareListener paramWXShareListener)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.contains(parambiyn)) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(parambiyn);
+      if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramWXShareListener)) {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(paramWXShareListener);
       }
       return;
     }
@@ -704,7 +698,7 @@ public class WXShareHelper
     }
     try
     {
-      paramBaseReq = bcut.b(((ShowMessageFromWX.Req)paramBaseReq).message.messageExt);
+      paramBaseReq = QzoneMapUtil.b(((ShowMessageFromWX.Req)paramBaseReq).message.messageExt);
       if ((paramBaseReq.get("actiontype") != null) && (((String)paramBaseReq.get("actiontype")).equals("schema")) && (paramBaseReq.get("schema") != null))
       {
         paramBaseReq = Uri.decode((String)paramBaseReq.get("schema"));
@@ -740,7 +734,7 @@ public class WXShareHelper
         int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
         while (i >= 0)
         {
-          ((biyn)this.jdField_a_of_type_JavaUtilArrayList.get(i)).onWXShareResp(paramBaseResp);
+          ((WXShareHelper.WXShareListener)this.jdField_a_of_type_JavaUtilArrayList.get(i)).onWXShareResp(paramBaseResp);
           i -= 1;
         }
         return;
@@ -755,7 +749,7 @@ public class WXShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.WXShareHelper
  * JD-Core Version:    0.7.0.1
  */

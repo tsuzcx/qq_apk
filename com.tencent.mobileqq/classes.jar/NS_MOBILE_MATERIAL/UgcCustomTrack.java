@@ -9,7 +9,7 @@ public final class UgcCustomTrack
 {
   static byte[] cache_strExtFields = (byte[])new byte[1];
   public int iItemId = -1;
-  public byte[] strExtFields;
+  public byte[] strExtFields = null;
   
   static
   {

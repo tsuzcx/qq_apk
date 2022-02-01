@@ -7,10 +7,10 @@ import java.io.InputStreamReader;
 
 class HwVideoMerge$LogStream
 {
-  private BufferedReader br;
-  private InputStream inputStm;
-  private InputStreamReader isr;
-  public Process mProcess;
+  private BufferedReader br = null;
+  private InputStream inputStm = null;
+  private InputStreamReader isr = null;
+  public Process mProcess = null;
   
   public void initStream()
   {

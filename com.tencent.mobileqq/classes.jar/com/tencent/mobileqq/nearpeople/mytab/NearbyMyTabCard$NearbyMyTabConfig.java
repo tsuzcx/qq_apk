@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearpeople.mytab;
 
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import java.io.Serializable;
 
 public class NearbyMyTabCard$NearbyMyTabConfig

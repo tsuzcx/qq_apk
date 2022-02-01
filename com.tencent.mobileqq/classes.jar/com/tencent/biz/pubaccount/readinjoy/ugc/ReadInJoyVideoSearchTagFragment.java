@@ -15,55 +15,48 @@ import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
 import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.ArrayList;
-import ptj;
-import pvm;
-import pvq;
-import rvk;
-import rvl;
-import rvm;
-import rvn;
-import rvo;
-import rvp;
-import rvy;
 
 public class ReadInJoyVideoSearchTagFragment
   extends PublicBaseFragment
 {
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new rvl(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ReadInJoyVideoSearchTagFragment.2(this);
   private ArrayAdapter<TagInfo> jdField_a_of_type_AndroidWidgetArrayAdapter;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
-  pvq jdField_a_of_type_Pvq = new rvk(this);
+  ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new ReadInJoyVideoSearchTagFragment.1(this);
   
   private void a()
   {
-    getView().setOnClickListener(new rvm(this));
+    getView().setOnClickListener(new ReadInJoyVideoSearchTagFragment.3(this));
   }
   
   private void b()
   {
-    getView().findViewById(2131364141).setOnClickListener(new rvn(this));
+    getView().findViewById(2131364248).setOnClickListener(new ReadInJoyVideoSearchTagFragment.4(this));
   }
   
   private void c()
   {
-    ListView localListView = (ListView)getView().findViewById(2131370241);
+    ListView localListView = (ListView)getView().findViewById(2131370513);
     View localView = new View(getActivity());
     localView.setBackgroundColor(Color.argb(102, 0, 0, 0));
     localListView.setEmptyView(localView);
-    this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2131560347, new ArrayList());
+    this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2131560417, new ArrayList());
     localListView.setAdapter(this.jdField_a_of_type_AndroidWidgetArrayAdapter);
-    localListView.setOnItemClickListener(new rvo(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
+    localListView.setOnItemClickListener(new ReadInJoyVideoSearchTagFragment.5(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131378485));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new rvp(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131378916));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new ReadInJoyVideoSearchTagFragment.6(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
@@ -78,7 +71,7 @@ public class ReadInJoyVideoSearchTagFragment
     paramActivity.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     paramActivity.getWindow().requestFeature(1);
     paramActivity.getWindow().setSoftInputMode(4);
-    paramActivity.overridePendingTransition(2130772039, 0);
+    paramActivity.overridePendingTransition(2130772043, 0);
   }
   
   public boolean isWrapContent()
@@ -88,8 +81,8 @@ public class ReadInJoyVideoSearchTagFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    ptj.a.a(getActivity());
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560346, paramViewGroup, false);
+    RIJDtReportHelper.a.a(getActivity());
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560416, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -97,29 +90,29 @@ public class ReadInJoyVideoSearchTagFragment
   public void onDestroy()
   {
     super.onDestroy();
-    pvm.a().b(this.jdField_a_of_type_Pvq);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
   }
   
   public void onFinish()
   {
-    getActivity().overridePendingTransition(0, 2130772041);
+    getActivity().overridePendingTransition(0, 2130772045);
     super.onFinish();
   }
   
   public void onResume()
   {
     super.onResume();
-    rvy.a(this);
+    Utils.a(this);
     d();
     c();
     b();
     a();
-    pvm.a().a(this.jdField_a_of_type_Pvq);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment
  * JD-Core Version:    0.7.0.1
  */

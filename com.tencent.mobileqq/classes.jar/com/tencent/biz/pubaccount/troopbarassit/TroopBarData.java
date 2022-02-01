@@ -8,7 +8,7 @@ import com.tencent.mobileqq.persistence.unique;
 public class TroopBarData
   extends Entity
 {
-  public boolean mIsSticky;
+  public boolean mIsSticky = false;
   public long mLastDraftTime;
   public long mLastMsgTime;
   public long mLastStickyTime;
@@ -24,7 +24,7 @@ public class TroopBarData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.troopbarassit.TroopBarData
  * JD-Core Version:    0.7.0.1
  */

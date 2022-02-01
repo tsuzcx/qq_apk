@@ -7,12 +7,12 @@ class DiniFlyAnimationView$2
   
   public void onResult(Throwable paramThrowable)
   {
-    throw new IllegalStateException("Unable to parse composition", paramThrowable);
+    DiniFlyLog.e(DiniFlyAnimationView.access$000(), 1, "Unable to parse composition", paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.DiniFlyAnimationView.2
  * JD-Core Version:    0.7.0.1
  */

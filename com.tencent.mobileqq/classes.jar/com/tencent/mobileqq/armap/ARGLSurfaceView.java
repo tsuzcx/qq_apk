@@ -10,8 +10,8 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.OrientationEventListener;
-import aqdk;
-import aqdl;
+import com.tencent.mobileqq.armap.sensor.ARSensorManager;
+import com.tencent.mobileqq.armap.sensor.ARSensorManager.OnSensorChangeListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -19,7 +19,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class ARGLSurfaceView
   extends GLSurfaceView
-  implements GLSurfaceView.Renderer, aqdl
+  implements GLSurfaceView.Renderer, ARSensorManager.OnSensorChangeListener
 {
   public static final int ACCELER_TYPE = 1;
   public static long FPS_LIMIT = 33L;
@@ -30,14 +30,14 @@ public class ARGLSurfaceView
   private ARGLSurfaceView.TraceCallback mCallback;
   private Activity mCurActivity;
   protected long mEngineHandler;
-  private long mFrameCount;
-  private long mFrameLastFPS;
-  public long mFrameRate;
-  private volatile boolean mIsContextDestroyed;
+  private long mFrameCount = 0L;
+  private long mFrameLastFPS = 0L;
+  public long mFrameRate = 0L;
+  private volatile boolean mIsContextDestroyed = false;
   volatile boolean mIsDestroyed = false;
   private boolean mIsSupportPreserveEGLContextOnPause = true;
-  private aqdl mSensorListener;
-  public aqdk mSensorManager;
+  private ARSensorManager.OnSensorChangeListener mSensorListener;
+  public ARSensorManager mSensorManager;
   private ARGLSurfaceView.SurfaceStateListener mSurfaceStateListener;
   private OrientationEventListener orientationListener;
   
@@ -98,12 +98,12 @@ public class ARGLSurfaceView
     this.orientationListener = new ARGLSurfaceView.3(this, paramActivity, paramActivity);
   }
   
-  public void initSensor(aqdl paramaqdl, int paramInt)
+  public void initSensor(ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener, int paramInt)
   {
     if ((this.mSensorManager == null) && (this.mCurActivity != null))
     {
-      this.mSensorManager = new aqdk(this.mCurActivity, paramInt);
-      this.mSensorListener = paramaqdl;
+      this.mSensorManager = new ARSensorManager(this.mCurActivity, paramInt);
+      this.mSensorListener = paramOnSensorChangeListener;
     }
   }
   
@@ -159,7 +159,7 @@ public class ARGLSurfaceView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     this.mIsDestroyed = true;
     super.onDetachedFromWindow();

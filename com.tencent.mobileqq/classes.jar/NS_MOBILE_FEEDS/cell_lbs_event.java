@@ -10,12 +10,12 @@ public final class cell_lbs_event
 {
   static s_gps cache_gpsinfo = new s_gps();
   static ArrayList<s_user> cache_usersinfo = new ArrayList();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
   public String desc = "";
-  public long event_id;
-  public s_gps gpsinfo;
-  public ArrayList<s_user> usersinfo;
+  public long event_id = 0L;
+  public s_gps gpsinfo = null;
+  public ArrayList<s_user> usersinfo = null;
   
   static
   {

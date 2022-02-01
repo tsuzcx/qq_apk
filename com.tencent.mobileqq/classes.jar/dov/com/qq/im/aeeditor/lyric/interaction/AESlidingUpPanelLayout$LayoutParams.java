@@ -20,11 +20,13 @@ public class AESlidingUpPanelLayout$LayoutParams
   public AESlidingUpPanelLayout$LayoutParams()
   {
     super(-1, -1);
+    this.jdField_a_of_type_Float = 0.0F;
   }
   
   public AESlidingUpPanelLayout$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Float = 0.0F;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
     if (paramContext != null)
     {
@@ -36,16 +38,18 @@ public class AESlidingUpPanelLayout$LayoutParams
   public AESlidingUpPanelLayout$LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     super(paramLayoutParams);
+    this.jdField_a_of_type_Float = 0.0F;
   }
   
   public AESlidingUpPanelLayout$LayoutParams(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
   {
     super(paramMarginLayoutParams);
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout.LayoutParams
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aeaz;
 import android.os.Message;
-import aoks;
-import asid;
-import axql;
+import com.tencent.mobileqq.app.face.util.FaceUtil;
+import com.tencent.mobileqq.emoticon.DownloadInfo;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.nearby.NearbyUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -14,17 +13,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import mqq.os.MqqHandler;
 
-public class FriendProfileImageAvatar$4
+class FriendProfileImageAvatar$4
   implements Runnable
 {
-  public FriendProfileImageAvatar$4(aeaz paramaeaz, String paramString1, byte paramByte, String paramString2) {}
+  FriendProfileImageAvatar$4(FriendProfileImageAvatar paramFriendProfileImageAvatar, String paramString1, byte paramByte, String paramString2) {}
   
   public void run()
   {
-    Object localObject2 = aoks.b(String.valueOf(this.jdField_a_of_type_JavaLangString));
-    if (FileUtil.isFileExists((String)localObject2)) {
-      if (axql.a()) {
-        axql.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 2", new Object[0]);
+    Object localObject2 = FaceUtil.b(String.valueOf(this.jdField_a_of_type_JavaLangString));
+    if (FileUtil.a((String)localObject2)) {
+      if (NearbyUtils.a()) {
+        NearbyUtils.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 2", new Object[0]);
       }
     }
     for (;;)
@@ -32,10 +31,10 @@ public class FriendProfileImageAvatar$4
       return;
       if (this.this$0.b)
       {
-        if (!axql.a()) {
+        if (!NearbyUtils.a()) {
           continue;
         }
-        axql.a("Q.profilecard.Avatar", "downloadHDAvatar is downloading and return 2", new Object[0]);
+        NearbyUtils.a("Q.profilecard.Avatar", "downloadHDAvatar is downloading and return 2", new Object[0]);
         return;
       }
       this.this$0.b = true;
@@ -55,7 +54,7 @@ public class FriendProfileImageAvatar$4
         }
         localObject2 = new File((String)localObject2);
         File localFile = new File(((File)localObject2).getPath() + Long.toString(System.currentTimeMillis()));
-        if (HttpDownloadUtil.downloadData(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new asid(MsfSdkUtils.insertMtype("friendlist", (String)localObject1), localFile, 0), this.this$0) == 0)
+        if (HttpDownloadUtil.downloadData(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new DownloadInfo(MsfSdkUtils.insertMtype("friendlist", (String)localObject1), localFile, 0), this.this$0) == 0)
         {
           bool1 = true;
           boolean bool2 = bool1;
@@ -74,10 +73,10 @@ public class FriendProfileImageAvatar$4
             this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject1);
           }
           this.this$0.b = false;
-          if (!axql.a()) {
+          if (!NearbyUtils.a()) {
             continue;
           }
-          axql.a("Q.profilecard.Avatar", "downloadHDAvatar end of downloading", new Object[0]);
+          NearbyUtils.a("Q.profilecard.Avatar", "downloadHDAvatar end of downloading", new Object[0]);
           return;
           if ((this.jdField_a_of_type_Byte & 0x10) != 0)
           {
@@ -118,7 +117,7 @@ public class FriendProfileImageAvatar$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageAvatar.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,24 @@
 package com.tencent.mobileqq.matchchat;
 
-import android.graphics.Rect;
-import android.view.TouchDelegate;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.utils.ExpandReportUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class MatchChatMsgListFragment$6
-  implements Runnable
+class MatchChatMsgListFragment$6
+  implements View.OnClickListener
 {
-  public void run()
+  MatchChatMsgListFragment$6(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
-    }
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
-    }
+    ExpandReportUtils.a("click#message_page#go_setting", true, -1L, -1L, null, true, true);
+    ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(this.a.a.getCurrentAccountUin(), 0);
+    ProfileActivity.b(this.a.getActivity(), localAllInOne, 1031);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

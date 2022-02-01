@@ -11,20 +11,20 @@ public final class RequestPushNotify
   static byte[] cache_bytes_server_buf;
   static MsgInfo cache_stMsgInfo;
   static byte[] cache_vNotifyCookie = (byte[])new byte[1];
-  public byte[] bytes_server_buf;
-  public byte cType;
-  public long lBindedUin;
-  public long lUin;
+  public byte[] bytes_server_buf = null;
+  public byte cType = 0;
+  public long lBindedUin = 0L;
+  public long lUin = 0L;
   public String msg_ctrl_buf = "";
-  public long ping_flag;
-  public MsgInfo stMsgInfo;
+  public long ping_flag = 0L;
+  public MsgInfo stMsgInfo = null;
   public String strCmd = "";
   public String strService = "";
-  public int svrip;
-  public int usMsgType;
-  public byte[] vNotifyCookie;
-  public int wGeneralFlag;
-  public int wUserActive;
+  public int svrip = 0;
+  public int usMsgType = 0;
+  public byte[] vNotifyCookie = null;
+  public int wGeneralFlag = 0;
+  public int wUserActive = 0;
   
   static
   {

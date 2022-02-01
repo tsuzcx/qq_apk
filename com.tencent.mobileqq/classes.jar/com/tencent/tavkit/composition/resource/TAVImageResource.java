@@ -7,17 +7,25 @@ import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tavkit.ciimage.CIImage;
 import java.util.HashMap;
 
+@Deprecated
 public class TAVImageResource
   extends TAVResource
 {
   private HashMap<Thread, CIImage> ciImageHashMap = new HashMap();
+  private boolean emptyAudioTrack;
   private CIImage image;
   
   public TAVImageResource(CIImage paramCIImage, CMTime paramCMTime)
   {
+    this(paramCIImage, paramCMTime, false);
+  }
+  
+  public TAVImageResource(CIImage paramCIImage, CMTime paramCMTime, boolean paramBoolean)
+  {
     this.image = paramCIImage;
     this.duration = paramCMTime;
     this.sourceTimeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
+    this.emptyAudioTrack = paramBoolean;
   }
   
   public TAVResource clone()
@@ -50,15 +58,18 @@ public class TAVImageResource
   @Nullable
   public TrackInfo trackInfoForType(int paramInt1, int paramInt2)
   {
-    if (paramInt1 != 1) {
-      return null;
+    if (paramInt1 == 1) {
+      return newEmptyTrackInfo(paramInt1, paramInt2);
     }
-    return super.trackInfoForType(paramInt1, paramInt2);
+    if ((this.emptyAudioTrack) && (paramInt1 == 2)) {
+      return newEmptyTrackInfo(paramInt1, paramInt2);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TAVImageResource
  * JD-Core Version:    0.7.0.1
  */

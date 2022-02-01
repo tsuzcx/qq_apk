@@ -1,16 +1,15 @@
 package com.tencent.qqmini.nativePlugins;
 
-import albs;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import anvx;
-import bmhp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.utils.H5HbUtil;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
@@ -19,6 +18,7 @@ import com.tencent.qqmini.sdk.annotation.JsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import cooperation.qwallet.pluginshare.TenCookie;
 import mqq.util.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,13 +71,13 @@ public class TenpayPlugin
       if (QLog.isColorLevel()) {
         QLog.d("TenpayPlugin", 2, "grapH5CommonHb params: " + paramJSONObject);
       }
-      paramJSONObject = albs.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramJSONObject);
+      paramJSONObject = H5HbUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramJSONObject);
       if (QLog.isColorLevel()) {
         QLog.d("TenpayPlugin", 2, "grapH5CommonHb extraData: " + paramJSONObject);
       }
       if (paramJSONObject != null)
       {
-        albs.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramJSONObject.toString(), this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver);
+        H5HbUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramJSONObject.toString(), this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver);
         return;
       }
       a(paramRequestEvent, "-1001", "params error");
@@ -127,7 +127,7 @@ public class TenpayPlugin
       if (bool) {
         try
         {
-          albs.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localJSONObject, "redgiftH5CommonDetail", this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver);
+          H5HbUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localJSONObject, "redgiftH5CommonDetail", this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver);
         }
         catch (Throwable localThrowable)
         {
@@ -144,11 +144,11 @@ public class TenpayPlugin
   {
     String str1 = paramJSONObject.optString("listid");
     String str2 = paramJSONObject.optString("uin");
-    if ((!StringUtil.isEmpty(str2)) && (str2.equals(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())) && (!StringUtil.isEmpty(str1)))
+    if ((!StringUtil.a(str2)) && (str2.equals(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())) && (!StringUtil.a(str1)))
     {
-      Object localObject = bmhp.a().b(str1);
+      Object localObject = TenCookie.a().b(str1);
       paramJSONObject = (JSONObject)localObject;
-      if (StringUtil.isEmpty((String)localObject)) {
+      if (StringUtil.a((String)localObject)) {
         paramJSONObject = SharedPreferencesProxyManager.getInstance().getProxy("common_h5_hb_info" + str2, 0).getString(str1, "");
       }
       if (QLog.isColorLevel()) {
@@ -183,7 +183,7 @@ public class TenpayPlugin
       QLog.e("TenpayPlugin", 2, "param: " + localJSONObject);
     }
     if (localJSONObject == null) {
-      paramRequestEvent.fail(anvx.a(2131714226));
+      paramRequestEvent.fail(HardCodeUtil.a(2131714722));
     }
     for (;;)
     {
@@ -195,16 +195,16 @@ public class TenpayPlugin
         localBundle.putString("json", localJSONObject.getString("data"));
         localBundle.putString("callbackSn", "0");
         localBundle.putInt("payparmas_paytype", 1);
-        if (!PayBridgeActivity.a(this.mMiniAppContext.getAttachedActivity(), 5, localBundle, this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$TenpayRecevicer))
+        if (!PayBridgeActivity.tenpay(this.mMiniAppContext.getAttachedActivity(), 5, localBundle, this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$TenpayRecevicer))
         {
-          paramRequestEvent.fail(anvx.a(2131714227));
+          paramRequestEvent.fail(HardCodeUtil.a(2131714723));
           return;
         }
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
-        paramRequestEvent.fail(anvx.a(2131714226));
+        paramRequestEvent.fail(HardCodeUtil.a(2131714722));
       }
     }
   }

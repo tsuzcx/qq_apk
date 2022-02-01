@@ -12,7 +12,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class ApngImage
 {
   public static final int CAN_PLAY_TAG_AIO = 0;
   private static final boolean DEBUG = false;
-  public static int DECRYPTTYPE_DECRYPT = 1;
+  public static int DECRYPTTYPE_DECRYPT = 0;
   public static final int DENSITY_NONE = 0;
   public static final int ERROR_CODE_SUCCESS = 0;
   private static final int IMAGE_INFO_INDEX_CURRENTFRAM = 3;
@@ -49,10 +50,10 @@ public class ApngImage
   public static final String KEY_USE_RECT = "key_use_rect";
   private static final int PENDING_ACTION_CAPACITY = 100;
   private static final String TAG = "ApngImage";
-  public static ArrayList<Integer> canDecodeIDs = new ArrayList();
+  public static ArrayList<Integer> canDecodeIDs;
   private static ArgumentsRunnable<WeakReference<ApngImage>> sAccumulativeRunnable;
   private static Handler sHandler;
-  protected static boolean sPaused = false;
+  protected static boolean sPaused;
   protected static final ArrayList<WeakReference<ApngImage>> sPendingActions = new ApngImage.1(105);
   public int apngLoop;
   private boolean cacheFirstFrame;
@@ -89,6 +90,13 @@ public class ApngImage
   private Paint paint = new Paint();
   private Paint paintTransparentBlack = new Paint();
   public int width = 0;
+  
+  static
+  {
+    canDecodeIDs = new ArrayList();
+    DECRYPTTYPE_DECRYPT = 1;
+    sPaused = false;
+  }
   
   public ApngImage(File paramFile, boolean paramBoolean)
   {
@@ -141,8 +149,8 @@ public class ApngImage
       if (this.mUseFileLoop) {
         this.apngLoop = this.mImageInfo[6];
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApngImage", 2, "start decode success width = " + this.width + " height = " + this.height + " frameCount = " + this.mFrameCount);
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d("ApngImage", 2, "start decode success width = " + this.width + " height = " + this.height + " frameCount = " + this.mFrameCount);
       }
       if ((this.width <= 0) || (this.height <= 0) || (this.mFrameCount <= 0)) {
         throw new RuntimeException("bad apng, w=" + this.width + " h=" + this.height + " frames=" + this.mFrameCount);
@@ -182,13 +190,13 @@ public class ApngImage
     try
     {
       this.curFrame = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApngImage", 2, "init curFrame success width = " + this.curFrame.getWidth() + " height = " + this.curFrame.getHeight());
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d("ApngImage", 2, "init curFrame success width = " + this.curFrame.getWidth() + " height = " + this.curFrame.getHeight());
       }
       if ((this.width > 0) && (this.height > 0)) {
         if (!this.mDoubleBitmap) {
           if (this.width * this.height > IMAGE_SIZE_DISABLE_DOUBLE_BUFFER) {
-            break label194;
+            break label226;
           }
         }
       }
@@ -200,15 +208,15 @@ public class ApngImage
         try
         {
           this.nextFrame = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
-          if (QLog.isColorLevel()) {
-            QLog.d("ApngImage", 2, "init nextFrame success width = " + this.nextFrame.getWidth() + " height = " + this.nextFrame.getHeight());
+          if (URLDrawable.depImp.mLog.isColorLevel()) {
+            URLDrawable.depImp.mLog.d("ApngImage", 2, "init nextFrame success width = " + this.nextFrame.getWidth() + " height = " + this.nextFrame.getHeight());
           }
-          label194:
+          label226:
           return;
         }
         catch (OutOfMemoryError localOutOfMemoryError3)
         {
-          QLog.e("ApngImage", 1, "APNG buffer create OOM");
+          URLDrawable.depImp.mLog.e("ApngImage", 1, "APNG buffer create OOM");
         }
         localOutOfMemoryError1 = localOutOfMemoryError1;
         URLDrawable.clearMemoryCache();
@@ -218,7 +226,7 @@ public class ApngImage
         }
         catch (OutOfMemoryError localOutOfMemoryError2)
         {
-          QLog.e("ApngImage", 1, "APNG create Bitmap OOM");
+          URLDrawable.depImp.mLog.e("ApngImage", 1, "APNG create Bitmap OOM");
         }
       }
     }
@@ -268,8 +276,8 @@ public class ApngImage
   
   public static final void pauseByTag(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApngImage", 2, "pauseByTag , conplayids:" + canDecodeIDs + ", tag:" + paramInt);
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.d("ApngImage", 2, "pauseByTag , conplayids:" + canDecodeIDs + ", tag:" + paramInt);
     }
     synchronized (canDecodeIDs)
     {
@@ -283,8 +291,8 @@ public class ApngImage
   
   public static final void playByTag(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApngImage", 2, "playByTag , conplayids:" + canDecodeIDs + ", tag:" + paramInt);
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.d("ApngImage", 2, "playByTag , conplayids:" + canDecodeIDs + ", tag:" + paramInt);
     }
     if (sPaused) {
       pauseAll();
@@ -501,16 +509,16 @@ public class ApngImage
         label75:
         if (this.mNextFrameTime + i * 2 <= l)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("URLDrawable_", 2, "executeNewTask reset " + this.mName + ":" + this.mNextFrameTime + "," + i + "," + l);
+          if (URLDrawable.depImp.mLog.isColorLevel()) {
+            URLDrawable.depImp.mLog.d("URLDrawable_", 2, "executeNewTask reset " + this.mName + ":" + this.mNextFrameTime + "," + i + "," + l);
           }
           this.mNextFrameTime = l;
         }
       }
       catch (RejectedExecutionException localRejectedExecutionException)
       {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("URLDrawable_", 2, "executeNewTask()", localRejectedExecutionException);
+        while (!URLDrawable.depImp.mLog.isColorLevel()) {}
+        URLDrawable.depImp.mLog.e("URLDrawable_", 2, "executeNewTask()", localRejectedExecutionException);
       }
     }
   }
@@ -607,7 +615,7 @@ public class ApngImage
       try
       {
         if (this.nativeImageInstance == 0L) {
-          break label134;
+          break label150;
         }
         if (this.nextFrame != null)
         {
@@ -624,13 +632,13 @@ public class ApngImage
           this.nativeFrameInfoInstance = nativeGetNextFrame(this.nativeImageInstance, this.nativeFrameInfoInstance, this.curFrame, this.mImageInfo);
           continue;
         }
-        if (!QLog.isColorLevel()) {
-          break label134;
+        if (!URLDrawable.depImp.mLog.isColorLevel()) {
+          break label150;
         }
       }
       finally {}
-      QLog.d("ApngImage", 2, "getNextFrame fail: " + this.mImageInfo[5]);
-      label134:
+      URLDrawable.depImp.mLog.d("ApngImage", 2, "getNextFrame fail: " + this.mImageInfo[5]);
+      label150:
       boolean bool = false;
     }
   }
@@ -661,16 +669,16 @@ public class ApngImage
   
   void onDecodeNextFrameCanceled()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("URLDrawable_", 2, "apng decode canceled. " + this.file);
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.e("URLDrawable_", 2, "apng decode canceled. " + this.file);
     }
     this.mDecodeNextFrameEnd = true;
   }
   
   void onDecodeNextFrameFailed(Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("URLDrawable_", 2, "apng decode error. " + this.file, paramThrowable);
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.e("URLDrawable_", 2, "apng decode error. " + this.file, paramThrowable);
     }
     this.mDecodeNextFrameEnd = true;
   }
@@ -688,8 +696,8 @@ public class ApngImage
         if ((this.apngLoop <= 0) || (this.mFrameCount != this.mImageInfo[3] + 1)) {
           return;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApngImage", 2, "apng mFrameCount:" + this.mFrameCount + ", current:" + this.mImageInfo[3]);
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.d("ApngImage", 2, "apng mFrameCount:" + this.mFrameCount + ", current:" + this.mImageInfo[3]);
         }
         this.currentApngLoop += 1;
         synchronized (this.mListener)
@@ -705,8 +713,8 @@ public class ApngImage
                 localOnPlayRepeatListener.onPlayRepeat(this.currentApngLoop);
                 i -= 1;
                 continue;
-                if (QLog.isColorLevel()) {
-                  QLog.d("ApngImage", 2, "post task overtime: " + (l - paramLong));
+                if (URLDrawable.depImp.mLog.isColorLevel()) {
+                  URLDrawable.depImp.mLog.d("ApngImage", 2, "post task overtime: " + (l - paramLong));
                 }
                 sHandler.post(this);
                 break;

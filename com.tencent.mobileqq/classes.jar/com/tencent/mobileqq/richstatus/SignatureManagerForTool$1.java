@@ -2,32 +2,31 @@ package com.tencent.mobileqq.richstatus;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbvh;
-import bhoh;
-import bhoj;
+import com.etrump.mixlayout.VasFontIPCModule;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vas.SignatureTemplateConfig;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
-import gk;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class SignatureManagerForTool$1
+class SignatureManagerForTool$1
   implements Runnable
 {
-  public SignatureManagerForTool$1(bbvh parambbvh, int paramInt) {}
+  SignatureManagerForTool$1(SignatureManagerForTool paramSignatureManagerForTool, int paramInt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.e("Signature.TOOL", 2, "in getTemplateInfo info" + this.a);
     }
-    Object localObject1 = (bhoj)bbvh.a(this.this$0).get(Integer.valueOf(this.a));
+    Object localObject1 = (SignatureTemplateInfo)SignatureManagerForTool.a(this.this$0).get(Integer.valueOf(this.a));
     Object localObject2;
     boolean bool;
-    if ((localObject1 == null) || (!((bhoj)localObject1).a.get())) {
+    if ((localObject1 == null) || (!((SignatureTemplateInfo)localObject1).a.get())) {
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder().append("getTemplateInfo info == null: ");
@@ -48,23 +47,23 @@ public class SignatureManagerForTool$1
       if (!((File)localObject2).exists()) {
         break label208;
       }
-      localObject2 = FileUtils.readFileToStringEx((File)localObject2, -1);
+      localObject2 = FileUtils.a((File)localObject2, -1);
     } while (TextUtils.isEmpty((CharSequence)localObject2));
-    bhoh.a((String)localObject2, (bhoj)localObject1);
-    ((bhoj)localObject1).a.set(false);
-    bbvh.a(this.this$0);
+    SignatureTemplateConfig.a((String)localObject2, (SignatureTemplateInfo)localObject1);
+    ((SignatureTemplateInfo)localObject1).a.set(false);
+    SignatureManagerForTool.a(this.this$0);
     this.this$0.notifyObservers(Integer.valueOf(3));
     return;
     label208:
     this.this$0.notifyObservers(Integer.valueOf(9));
     localObject1 = new Bundle();
     ((Bundle)localObject1).putInt("id", this.a);
-    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gk.d, (Bundle)localObject1, bbvh.a(this.this$0));
+    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.d, (Bundle)localObject1, SignatureManagerForTool.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureManagerForTool.1
  * JD-Core Version:    0.7.0.1
  */

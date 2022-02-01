@@ -8,7 +8,7 @@ import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.filter.EyeLightenAndPounchFilter;
 import com.tencent.ttpic.filter.FaceFeatureFilter;
 import com.tencent.ttpic.filter.WrinklesRemoveFilter2;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
 import java.util.ArrayList;
@@ -352,7 +352,7 @@ public class BeautyFaceList
       int j = 0;
       while (j < paramList.size())
       {
-        List localList = VideoMaterialUtil.copyList((List)paramList.get(j));
+        List localList = VideoMaterial.copyList((List)paramList.get(j));
         FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(localList, 2.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices);
         BenchUtil.benchStart("mBeautyFaceList mFaceFeatherFilter");
         Object localObject1 = paramFrame;
@@ -536,7 +536,7 @@ public class BeautyFaceList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BeautyFaceList
  * JD-Core Version:    0.7.0.1
  */

@@ -211,17 +211,17 @@
                                         "setBoldFontSizeString:":"16",
                                         "setNumberOfLinesString:":"1",
                                         "setDTElementID:withParams:": [
-                                          "puin_button",
-                                          {
-                                            "rowkey": "$dt_rowkey",
-                                            "content_type": "$dt_content_type",
-                                            "dt_pgid": "14",
-                                            "channel_id": "$dt_channel_id",
-                                            "backend_info": "$dt_backend_info",
-                                            "area": "list",
-                                            "actionid": "click_puin",
-                                            "click_type": "single"
-                                          }
+                                            "puin_button",
+                                            {
+                                                "rowkey": "$dt_rowkey",
+                                                "content_type": "$dt_content_type",
+                                                "dt_pgid": "14",
+                                                "channel_id": "$dt_channel_id",
+                                                "backend_info": "$dt_backend_info",
+                                                "area": "list",
+                                                "actionid": "click_puin",
+                                                "click_type": "single"
+                                            }
                                         ]
                                     }
                                 },

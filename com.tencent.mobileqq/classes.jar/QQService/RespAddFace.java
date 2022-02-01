@@ -8,9 +8,9 @@ public final class RespAddFace
   extends JceStruct
 {
   static RespHead cache_stHeader;
-  public int iFaceNum;
-  public RespHead stHeader;
-  public int uFaceTimeStamp;
+  public int iFaceNum = 0;
+  public RespHead stHeader = null;
+  public int uFaceTimeStamp = 0;
   
   public RespAddFace() {}
   

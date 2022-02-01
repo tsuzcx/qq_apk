@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/lk1" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/ohr" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.5dip" android:layout_marginBottom="11.0dip">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/ayn" android:textColor="@color/bp" android:layout_gravity="center_vertical" android:id="@id/o8l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="推荐关注" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/o7w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/i3u" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/ayk" android:textColor="@color/bp" android:gravity="center_vertical" android:layout_gravity="center|right" android:id="@id/o8k" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="查看全部" android:drawableRight="@drawable/i4b" />
-    </FrameLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/nm9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <ImageView android:id="@id/ohs" android:padding="10.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/dpm" android:scaleType="centerCrop" android:layout_alignBottom="@id/oht" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/oht" android:padding="8.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/ig1" android:scaleType="centerCrop" android:layout_alignParentLeft="true" />
+</RelativeLayout>

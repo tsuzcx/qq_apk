@@ -46,11 +46,6 @@ public class ViewUtils
     densityDpi = localDisplayMetrics.densityDpi;
   }
   
-  public static int PxToDp(float paramFloat)
-  {
-    return Math.round(paramFloat / getDensity());
-  }
-  
   @TargetApi(11)
   public static void changeTransparency(View paramView, int paramInt)
   {
@@ -396,6 +391,11 @@ public class ViewUtils
     return false;
   }
   
+  public static int pxToDp(float paramFloat)
+  {
+    return Math.round(paramFloat / getDensity());
+  }
+  
   public static int pxTosp(float paramFloat)
   {
     return (int)(paramFloat / AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().scaledDensity + 0.5F);
@@ -554,7 +554,7 @@ public class ViewUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.ViewUtils
  * JD-Core Version:    0.7.0.1
  */

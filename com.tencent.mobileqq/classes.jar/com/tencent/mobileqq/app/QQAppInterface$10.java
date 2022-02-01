@@ -1,10 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import awtm;
-import baiw;
-import bkyy;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.service.MobileQQServiceExtend;
+import mqq.manager.Manager;
 
 class QQAppInterface$10
   implements Runnable
@@ -13,38 +10,17 @@ class QQAppInterface$10
   
   public void run()
   {
-    try
-    {
-      QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 265);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 267);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 274);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 236);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 268);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 272);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 271);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 273);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 239);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 266);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 524);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 527);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 3000529);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 3000531);
-      bkyy localbkyy = (bkyy)this.this$0.getManager(QQManagerFactory.NOTIFY_ID_MANAGER);
-      if (localbkyy != null) {
-        localbkyy.a();
-      }
-      ((awtm)this.this$0.getManager(QQManagerFactory.PUSH_NOTICE_MANAGER)).a(localQQNotificationManager, -1);
-      baiw.a(this.this$0.getApplication());
-      if (QLog.isColorLevel()) {
-        QLog.d("notification", 2, "removeNotification");
-      }
-      return;
+    if (this.this$0.mqqService != null) {
+      this.this$0.mqqService.destroy();
     }
-    catch (Exception localException)
+    int i = 0;
+    while (i < QQAppInterface.access$2000(this.this$0).length)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("notification", 2, "removeNotification", localException);
+      Manager localManager = QQAppInterface.access$2000(this.this$0)[i];
+      if (localManager != null) {
+        localManager.onDestroy();
+      }
+      i += 1;
     }
   }
 }

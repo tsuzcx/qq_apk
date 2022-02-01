@@ -65,6 +65,10 @@ public class EmbeddedWidgetClientFactory
     if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(Long.valueOf(paramLong))))
     {
       QMLog.d("miniapp-embedded", "embeddedWidgetClientHolderMap remove " + paramLong);
+      EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(Long.valueOf(paramLong));
+      if (localEmbeddedWidgetClientHolder != null) {
+        this.mappingTableMap.remove(Integer.valueOf(localEmbeddedWidgetClientHolder.getViewId()));
+      }
       this.embeddedWidgetClientHolderMap.remove(Long.valueOf(paramLong));
     }
     return true;
@@ -78,7 +82,11 @@ public class EmbeddedWidgetClientFactory
       paramString2 = new JSONObject(paramString2);
       int i = paramString2.optInt("viewId", -1);
       long l = paramString2.optLong("x5WidgetId", -1L);
-      if (l != -1L) {
+      if (l != -1L)
+      {
+        if ((i != -1) && (this.mappingTableMap != null)) {
+          this.mappingTableMap.put(Integer.valueOf(i), Long.valueOf(l));
+        }
         return doEventByWidgetId(paramString1, paramIMiniAppContext, paramInt, paramString2, l, paramIJsService);
       }
       if ((this.mappingTableMap != null) && (this.mappingTableMap.containsKey(Integer.valueOf(i)))) {
@@ -128,7 +136,7 @@ public class EmbeddedWidgetClientFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.EmbeddedWidgetClientFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -30,14 +30,14 @@ public class StoryImageToastView
   
   protected void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131560910, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379185));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379181));
+    LayoutInflater.from(paramContext).inflate(2131561000, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379619));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379615));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.capture.view.StoryImageToastView
  * JD-Core Version:    0.7.0.1
  */

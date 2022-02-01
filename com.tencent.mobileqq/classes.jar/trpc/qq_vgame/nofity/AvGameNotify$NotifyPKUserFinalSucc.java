@@ -7,6 +7,7 @@ import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import trpc.qq_vgame.common.AvGameCommon.PKUserRankInfo;
 import trpc.qq_vgame.common.AvGameCommon.UinWrap;
@@ -24,7 +25,9 @@ public final class AvGameNotify$NotifyPKUserFinalSucc
   public final PBRepeatMessageField<AvGameCommon.UinWrap> final_ranking = PBField.initRepeatMessage(AvGameCommon.UinWrap.class);
   public final PBRepeatMessageField<AvGameCommon.PKUserRankInfo> ranking = PBField.initRepeatMessage(AvGameCommon.PKUserRankInfo.class);
   public final PBUInt32Field reason = PBField.initUInt32(0);
+  public final PBUInt32Field score = PBField.initUInt32(0);
   public final PBUInt32Field total = PBField.initUInt32(0);
+  public final PBStringField win_tip = PBField.initString("");
   
   static
   {
@@ -32,7 +35,7 @@ public final class AvGameNotify$NotifyPKUserFinalSucc
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 58, 66, 72, 82, 90 }, new String[] { "reason", "total", "final_ranking", "award_str", "award_url", "ranking", "award_url_str", "delay_award", "delay_award_tip", "draw_res" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, null, localByteStringMicro3, Boolean.valueOf(false), localByteStringMicro4, null }, NotifyPKUserFinalSucc.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 58, 66, 72, 82, 90, 98, 104 }, new String[] { "reason", "total", "final_ranking", "award_str", "award_url", "ranking", "award_url_str", "delay_award", "delay_award_tip", "draw_res", "win_tip", "score" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, null, localByteStringMicro3, Boolean.valueOf(false), localByteStringMicro4, null, "", Integer.valueOf(0) }, NotifyPKUserFinalSucc.class);
   }
 }
 

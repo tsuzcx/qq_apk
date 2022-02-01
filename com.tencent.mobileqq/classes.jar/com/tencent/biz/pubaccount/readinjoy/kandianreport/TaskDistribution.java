@@ -1,13 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import uuc;
 
 public class TaskDistribution
 {
@@ -43,7 +44,7 @@ public class TaskDistribution
   public static void report(String paramString)
   {
     paramString = getAttrList(paramString);
-    uuc.a(80, TaskManager.scriptVersion, paramString);
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPushEffectEventForTaskManager(80, TaskManager.scriptVersion, paramString);
   }
   
   public static void test()
@@ -53,7 +54,7 @@ public class TaskDistribution
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskDistribution
  * JD-Core Version:    0.7.0.1
  */

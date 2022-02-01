@@ -1,25 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.listeners;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pvm;
-import qrm;
-import qro;
 
-public class OnSocialHeaderFollowClickListener$2$1
+class OnSocialHeaderFollowClickListener$2$1
   implements Runnable
 {
-  public OnSocialHeaderFollowClickListener$2$1(qro paramqro) {}
+  OnSocialHeaderFollowClickListener$2$1(OnSocialHeaderFollowClickListener.2 param2) {}
   
   public void run()
   {
-    qrm.a(this.a.a).invalidateProteusTemplateBean();
-    pvm.a().b();
-    pvm.a().a(qrm.a(this.a.a), true);
+    OnSocialHeaderFollowClickListener.a(this.a.a).invalidateProteusTemplateBean();
+    ReadInJoyLogicEngineEventDispatcher.a().c();
+    ReadInJoyLogicEngineEventDispatcher.a().a(OnSocialHeaderFollowClickListener.a(this.a.a), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnSocialHeaderFollowClickListener.2.1
  * JD-Core Version:    0.7.0.1
  */

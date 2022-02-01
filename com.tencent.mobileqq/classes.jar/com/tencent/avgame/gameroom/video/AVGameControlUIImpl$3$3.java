@@ -1,20 +1,18 @@
 package com.tencent.avgame.gameroom.video;
 
-import nmc;
-
-public class AVGameControlUIImpl$3$3
+class AVGameControlUIImpl$3$3
   implements Runnable
 {
-  public AVGameControlUIImpl$3$3(nmc paramnmc, long paramLong) {}
+  AVGameControlUIImpl$3$3(AVGameControlUIImpl.3 param3, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nmc.a.a(this.jdField_a_of_type_Long, "android.permission.CAMERA");
+    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$3.a.a(this.jdField_a_of_type_Long, "android.permission.CAMERA");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.3
  * JD-Core Version:    0.7.0.1
  */

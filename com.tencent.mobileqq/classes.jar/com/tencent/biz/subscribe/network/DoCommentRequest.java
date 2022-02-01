@@ -5,6 +5,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentReq;
 import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -29,7 +30,15 @@ public class DoCommentRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CertifiedAccountWrite.StDoCommentRsp localStDoCommentRsp = new CertifiedAccountWrite.StDoCommentRsp();
-    localStDoCommentRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStDoCommentRsp.mergeFrom(paramArrayOfByte);
+      return localStDoCommentRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStDoCommentRsp;
   }
   
@@ -45,7 +54,7 @@ public class DoCommentRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.DoCommentRequest
  * JD-Core Version:    0.7.0.1
  */

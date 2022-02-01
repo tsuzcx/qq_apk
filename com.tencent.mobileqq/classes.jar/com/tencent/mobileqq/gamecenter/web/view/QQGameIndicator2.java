@@ -16,8 +16,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import avhc;
-import avhd;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +24,7 @@ public class QQGameIndicator2
   implements ViewPager.OnPageChangeListener
 {
   public ViewPager a;
-  private avhd a;
+  private QQGameIndicator2.IPageListener a;
   
   public QQGameIndicator2(Context paramContext)
   {
@@ -48,13 +46,18 @@ public class QQGameIndicator2
     if (i < paramInt2)
     {
       RadioButton localRadioButton = (RadioButton)super.getChildAt(i);
-      if (i == paramInt1) {
+      if (localRadioButton != null)
+      {
+        if (i != paramInt1) {
+          break label40;
+        }
         localRadioButton.setTextColor(-1);
       }
       for (;;)
       {
         i += 1;
         break;
+        label40:
         localRadioButton.setTextColor(Color.parseColor("#9B9B9B"));
       }
     }
@@ -62,28 +65,29 @@ public class QQGameIndicator2
   
   public RadioButton a(int paramInt1, int paramInt2)
   {
-    avhc localavhc = new avhc(this, super.getContext());
-    localavhc.setButtonDrawable(null);
-    localavhc.setBackgroundResource(2130846253);
-    localavhc.setGravity(17);
-    localavhc.setText(paramInt1 + "");
+    QQGameIndicator2.1 local1 = new QQGameIndicator2.1(this, super.getContext());
+    local1.setButtonDrawable(null);
+    local1.setId(2131376453 + paramInt1);
+    local1.setBackgroundResource(2130846604);
+    local1.setGravity(17);
+    local1.setText(paramInt1 + "");
     if (paramInt2 + 1 == paramInt1) {
-      localavhc.setTextColor(-1);
+      local1.setTextColor(-1);
     }
     for (;;)
     {
-      localavhc.setTextSize(12.0F);
+      local1.setTextSize(12.0F);
       Resources localResources = super.getContext().getResources();
       RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 20.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 20.0F, localResources.getDisplayMetrics()));
       localLayoutParams.gravity = 17;
       paramInt1 = (int)TypedValue.applyDimension(1, 2.0F, localResources.getDisplayMetrics());
       localLayoutParams.leftMargin = paramInt1;
       localLayoutParams.rightMargin = paramInt1;
-      localavhc.setLayoutParams(localLayoutParams);
-      localavhc.setClickable(false);
-      localavhc.setFocusable(false);
-      return localavhc;
-      localavhc.setTextColor(Color.parseColor("#9B9B9B"));
+      local1.setLayoutParams(localLayoutParams);
+      local1.setClickable(false);
+      local1.setFocusable(false);
+      return local1;
+      local1.setTextColor(Color.parseColor("#9B9B9B"));
     }
   }
   
@@ -167,8 +171,8 @@ public class QQGameIndicator2
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_Avhd != null) {
-      this.jdField_a_of_type_Avhd.a(paramInt1, paramFloat, paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameIndicator2$IPageListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameIndicator2$IPageListener.a(paramInt1, paramFloat, paramInt2);
     }
   }
   
@@ -189,17 +193,29 @@ public class QQGameIndicator2
         localRadioButton.setChecked(true);
       }
       a(i, localPagerAdapter.getCount());
-      if (this.jdField_a_of_type_Avhd == null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameIndicator2$IPageListener == null) {
         break;
       }
-      this.jdField_a_of_type_Avhd.a(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameIndicator2$IPageListener.a(paramInt);
       return;
     }
   }
   
-  public void setPageListener(avhd paramavhd)
+  public void setCurrentIndex(int paramInt)
   {
-    this.jdField_a_of_type_Avhd = paramavhd;
+    int i = paramInt;
+    if (paramInt >= super.getChildCount()) {
+      i = super.getChildCount() - 1;
+    }
+    RadioButton localRadioButton = (RadioButton)super.getChildAt(i);
+    if (localRadioButton != null) {
+      localRadioButton.setChecked(true);
+    }
+  }
+  
+  public void setPageListener(QQGameIndicator2.IPageListener paramIPageListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameIndicator2$IPageListener = paramIPageListener;
   }
   
   public void setViewPager(ViewPager paramViewPager)
@@ -212,7 +228,7 @@ public class QQGameIndicator2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.view.QQGameIndicator2
  * JD-Core Version:    0.7.0.1
  */

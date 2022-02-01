@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.coverselect;
 
 import android.graphics.Bitmap;
-import zdr;
+import com.tencent.biz.qqstory.utils.BitmapUtils;
 
 class GalleryFragment$4
   implements Runnable
@@ -10,13 +10,13 @@ class GalleryFragment$4
   
   public void run()
   {
-    Bitmap localBitmap = zdr.a(this.a);
+    Bitmap localBitmap = BitmapUtils.a(this.a);
     GalleryFragment.a(this.this$0, localBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.profilecard.base.view;
 
 import android.os.Message;
-import anvk;
-import azrb;
-import bhcs;
-import bkyc;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 class AbsProfileHeaderView$7
   implements Runnable
 {
-  AbsProfileHeaderView$7(AbsProfileHeaderView paramAbsProfileHeaderView, azrb paramazrb, boolean paramBoolean) {}
+  AbsProfileHeaderView$7(AbsProfileHeaderView paramAbsProfileHeaderView, ProfileCardInfo paramProfileCardInfo, boolean paramBoolean) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((anvk)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_Azrb.a.a);
-    Message localMessage = this.this$0.jdField_a_of_type_Bkyc.obtainMessage(1003, localExtensionInfo);
-    this.this$0.jdField_a_of_type_Bkyc.sendMessage(localMessage);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bhcs.b(localExtensionInfo.pendantId))) {
-      bhcs.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azrb.a.a);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.this$0.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.val$cardInfo.a.a);
+    Message localMessage = this.this$0.mUIHandler.obtainMessage(1003, localExtensionInfo);
+    this.this$0.mUIHandler.sendMessage(localMessage);
+    if ((this.val$isInit) && (localExtensionInfo != null) && (AvatarPendantUtil.b(localExtensionInfo.pendantId))) {
+      AvatarPendantUtil.a(this.this$0.mApp, this.val$cardInfo.a.a);
     }
   }
 }

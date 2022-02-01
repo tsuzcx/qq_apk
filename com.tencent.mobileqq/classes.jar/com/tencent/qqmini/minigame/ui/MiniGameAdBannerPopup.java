@@ -65,82 +65,26 @@ public class MiniGameAdBannerPopup
   
   private static boolean allowShowForAppId(String paramString)
   {
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        if ((TextUtils.isEmpty(APPID_WHITE_LIST)) && (TextUtils.isEmpty(APPID_BLACK_LIST))) {
-          return true;
-        }
-        QMLog.d("MiniGameAdBannerPopup", "allowShowForAppId check if appid " + paramString + " in whitelist " + APPID_WHITE_LIST + " or blacklist " + APPID_BLACK_LIST);
-        String[] arrayOfString;
-        int j;
-        String str;
-        if (!TextUtils.isEmpty(APPID_WHITE_LIST))
-        {
-          if (APPID_WHITE_LIST.contains(","))
-          {
-            arrayOfString = APPID_WHITE_LIST.split(",");
-            if (arrayOfString == null) {
-              break;
-            }
-            j = arrayOfString.length;
-            i = 0;
-            if (i >= j) {
-              break;
-            }
-            str = arrayOfString[i];
-            if (str == null) {
-              break label237;
-            }
-            if (!str.equals(paramString)) {
-              break label237;
-            }
-          }
-          else
-          {
-            arrayOfString = APPID_WHITE_LIST.split(";");
-            continue;
-          }
-        }
-        else if (!TextUtils.isEmpty(APPID_BLACK_LIST))
-        {
-          if (APPID_BLACK_LIST.contains(","))
-          {
-            arrayOfString = APPID_BLACK_LIST.split(",");
-            if (arrayOfString == null) {
-              break label235;
-            }
-            j = arrayOfString.length;
-            i = 0;
-            if (i >= j) {
-              break label235;
-            }
-            str = arrayOfString[i];
-            if ((str != null) && (str.equals(paramString))) {
-              return false;
-            }
-          }
-          else
-          {
-            arrayOfString = APPID_BLACK_LIST.split(";");
-            continue;
-          }
-          i += 1;
-          continue;
-        }
+      if ((TextUtils.isEmpty(APPID_WHITE_LIST)) && (TextUtils.isEmpty(APPID_BLACK_LIST))) {
         return true;
       }
-      catch (Exception paramString)
-      {
-        QMLog.e("MiniGameAdBannerPopup", "allowShowForAppId", paramString);
+      QMLog.d("MiniGameAdBannerPopup", "allowShowForAppId check if appid " + paramString + " in whitelist " + APPID_WHITE_LIST + " or blacklist " + APPID_BLACK_LIST);
+      if (!TextUtils.isEmpty(APPID_WHITE_LIST)) {
+        return checkWhiteList(paramString);
       }
-      label235:
-      label237:
-      i += 1;
+      if (!TextUtils.isEmpty(APPID_BLACK_LIST))
+      {
+        boolean bool = checkBlackList(paramString);
+        return bool;
+      }
     }
-    return false;
+    catch (Exception paramString)
+    {
+      QMLog.e("MiniGameAdBannerPopup", "allowShowForAppId", paramString);
+    }
+    return true;
   }
   
   private static boolean allowShowForRefer(int paramInt)
@@ -156,18 +100,15 @@ public class MiniGameAdBannerPopup
       int i;
       if (!TextUtils.isEmpty(REFER_WHITE_LIST))
       {
-        if (REFER_WHITE_LIST.contains(",")) {}
-        for (arrayOfString = REFER_WHITE_LIST.split(",");; arrayOfString = REFER_WHITE_LIST.split(";"))
+        arrayOfString = getWhiteListRefers();
+        if (arrayOfString != null)
         {
-          if (arrayOfString == null) {
-            break label223;
-          }
           j = arrayOfString.length;
           i = 0;
           for (;;)
           {
             if (i >= j) {
-              break label223;
+              break label179;
             }
             if (Integer.parseInt(arrayOfString[i]) == paramInt) {
               break;
@@ -176,42 +117,69 @@ public class MiniGameAdBannerPopup
           }
         }
       }
-      if (!TextUtils.isEmpty(REFER_BLACK_LIST)) {
-        if (REFER_BLACK_LIST.contains(","))
+      else
+      {
+        if (!TextUtils.isEmpty(REFER_BLACK_LIST))
         {
-          arrayOfString = REFER_BLACK_LIST.split(",");
+          arrayOfString = getBlackListRefers();
           if (arrayOfString != null)
           {
             j = arrayOfString.length;
             i = 0;
-          }
-        }
-        else
-        {
-          for (;;)
-          {
-            if (i >= j) {
-              break label221;
-            }
-            if (Integer.parseInt(arrayOfString[i]) == paramInt)
+            while (i < j)
             {
-              return false;
-              arrayOfString = REFER_BLACK_LIST.split(";");
-              break;
+              int k = Integer.parseInt(arrayOfString[i]);
+              if (k == paramInt) {
+                return false;
+              }
+              i += 1;
             }
-            i += 1;
           }
         }
+        return true;
       }
-      return true;
     }
     catch (Exception localException)
     {
       QMLog.e("MiniGameAdBannerPopup", "allowShowForRefer", localException);
     }
-    label221:
-    label223:
+    label179:
     return false;
+  }
+  
+  private static boolean checkBlackList(String paramString)
+  {
+    String[] arrayOfString;
+    int j;
+    int i;
+    if (APPID_BLACK_LIST.contains(","))
+    {
+      arrayOfString = APPID_BLACK_LIST.split(",");
+      if (arrayOfString != null)
+      {
+        j = arrayOfString.length;
+        i = 0;
+      }
+    }
+    else
+    {
+      for (;;)
+      {
+        if (i >= j) {
+          break label74;
+        }
+        String str = arrayOfString[i];
+        if ((str != null) && (str.equals(paramString)))
+        {
+          return false;
+          arrayOfString = APPID_BLACK_LIST.split(";");
+          break;
+        }
+        i += 1;
+      }
+    }
+    label74:
+    return true;
   }
   
   public static void checkShouldShow(Context paramContext, String paramString, int paramInt)
@@ -230,6 +198,59 @@ public class MiniGameAdBannerPopup
     } while (((ChannelProxy)ProxyManager.get(ChannelProxy.class)).tianshuRequestAdv(paramContext, paramString, paramInt, 258, 1, new MiniGameAdBannerPopup.2(localWeakReference, paramString, paramInt)));
     MiniToast.makeText(paramContext, 0, "暂不支持在" + QUAUtil.getApplicationName(paramContext) + "中请求广告弹窗", 1);
     handleGetAdResult(paramContext, paramString, paramInt, false, null);
+  }
+  
+  private static boolean checkWhiteList(String paramString)
+  {
+    boolean bool2 = false;
+    String[] arrayOfString;
+    boolean bool1;
+    int j;
+    int i;
+    if (APPID_WHITE_LIST.contains(","))
+    {
+      arrayOfString = APPID_WHITE_LIST.split(",");
+      bool1 = bool2;
+      if (arrayOfString != null)
+      {
+        j = arrayOfString.length;
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
+      {
+        String str = arrayOfString[i];
+        if ((str != null) && (str.equals(paramString))) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+        arrayOfString = APPID_WHITE_LIST.split(";");
+        break;
+      }
+      i += 1;
+    }
+  }
+  
+  private static String[] getBlackListRefers()
+  {
+    if (REFER_BLACK_LIST.contains(",")) {
+      return REFER_BLACK_LIST.split(",");
+    }
+    return REFER_BLACK_LIST.split(";");
+  }
+  
+  private static String[] getWhiteListRefers()
+  {
+    if (REFER_WHITE_LIST.contains(",")) {
+      return REFER_WHITE_LIST.split(",");
+    }
+    return REFER_WHITE_LIST.split(";");
   }
   
   private static void handleGetAdResult(Context paramContext, String paramString, int paramInt, boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
@@ -412,6 +433,11 @@ public class MiniGameAdBannerPopup
     }
   }
   
+  private static boolean isParamEmpty(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    return (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3));
+  }
+  
   private static void performReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
     ThreadManager.getSubThreadHandler().post(new MiniGameAdBannerPopup.7(paramAdItem, paramString, paramInt));
@@ -436,7 +462,7 @@ public class MiniGameAdBannerPopup
   
   private static void showAdBannerPopupWindow(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, TianShuAccess.AdItem paramAdItem)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString4))) {}
+    if (isParamEmpty(paramContext, paramString2, paramString3, paramString4)) {}
     do
     {
       do
@@ -445,10 +471,8 @@ public class MiniGameAdBannerPopup
       } while (!(paramContext instanceof Activity));
       localObject1 = (Activity)paramContext;
     } while ((((Activity)localObject1).isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject1).isDestroyed())));
-    Object localObject2 = LayoutInflater.from(paramContext).inflate(R.layout.mini_sdk_ad_banner_popup_dialog, null);
-    ImageView localImageView = (ImageView)((View)localObject2).findViewById(R.id.mini_sdk_ad_banner_popup_dialog_close_button);
-    TextView localTextView = (TextView)((View)localObject2).findViewById(R.id.mini_sdk_ad_banner_popup_dialog_title);
-    Object localObject1 = (LinearLayout)((View)localObject2).findViewById(R.id.mini_game_ad_banner_popup_dialog_content_layout);
+    Object localObject1 = LayoutInflater.from(paramContext).inflate(R.layout.mini_sdk_ad_banner_popup_dialog, null);
+    Object localObject2 = (TextView)((View)localObject1).findViewById(R.id.mini_sdk_ad_banner_popup_dialog_title);
     ReportDialog localReportDialog = new ReportDialog(paramContext);
     localReportDialog.setCancelable(false);
     if (localReportDialog.getWindow() != null)
@@ -456,11 +480,11 @@ public class MiniGameAdBannerPopup
       localReportDialog.getWindow().requestFeature(1);
       localReportDialog.getWindow().setBackgroundDrawableResource(17170445);
     }
-    localReportDialog.setContentView((View)localObject2, new ViewGroup.LayoutParams(-1, -1));
+    localReportDialog.setContentView((View)localObject1, new ViewGroup.LayoutParams(-1, -1));
     localReportDialog.setOnShowListener(new MiniGameAdBannerPopup.4(paramAdItem, paramString1));
-    localImageView.setOnClickListener(new MiniGameAdBannerPopup.5(localReportDialog, paramAdItem, paramString1));
+    ((ImageView)((View)localObject1).findViewById(R.id.mini_sdk_ad_banner_popup_dialog_close_button)).setOnClickListener(new MiniGameAdBannerPopup.5(localReportDialog, paramAdItem, paramString1));
     if (!TextUtils.isEmpty(paramString2)) {
-      localTextView.setText(paramString2);
+      ((TextView)localObject2).setText(paramString2);
     }
     paramString2 = new MiniGameAdBannerPopup.BottomCornerURLImageView(paramContext);
     paramString2.setAdjustViewBounds(true);
@@ -471,7 +495,7 @@ public class MiniGameAdBannerPopup
     paramString2.setOnClickListener(new MiniGameAdBannerPopup.6(localReportDialog, paramContext, paramString4, (MiniAppProxy)localObject2, paramAdItem, paramString1));
     paramContext = new LinearLayout.LayoutParams(-1, (int)TypedValue.applyDimension(1, 229.0F, paramContext.getResources().getDisplayMetrics()));
     paramContext.gravity = 1;
-    ((LinearLayout)localObject1).addView(paramString2, paramContext);
+    ((LinearLayout)((View)localObject1).findViewById(R.id.mini_game_ad_banner_popup_dialog_content_layout)).addView(paramString2, paramContext);
     localReportDialog.show();
   }
 }

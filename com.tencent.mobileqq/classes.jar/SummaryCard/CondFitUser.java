@@ -3,25 +3,23 @@ package SummaryCard;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.richstatus.RichStatus;
 
 public final class CondFitUser
   extends JceStruct
 {
   static byte[] cache_vRichSign = (byte[])new byte[1];
-  public byte cConstellationId;
-  public byte cSex;
-  public long dwAge;
-  public long dwCity;
-  public long dwCountry;
-  public long dwProvince;
-  public int iOccupationId;
-  public long lUIN;
+  public byte cConstellationId = 0;
+  public byte cSex = 0;
+  public long dwAge = 0L;
+  public long dwCity = 0L;
+  public long dwCountry = 0L;
+  public long dwProvince = 0L;
+  public int iOccupationId = 0;
+  public long lUIN = 0L;
   public String locDesc;
   public String personalSignature;
-  public RichStatus richStatus;
   public String strNick = "";
-  public byte[] vRichSign;
+  public byte[] vRichSign = null;
   
   static
   {
@@ -78,7 +76,7 @@ public final class CondFitUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.CondFitUser
  * JD-Core Version:    0.7.0.1
  */

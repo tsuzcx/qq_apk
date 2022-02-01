@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/mmm" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/csy" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/nzb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxLines="1" />
-</LinearLayout>
+    <TextView android:textSize="40.0dip" android:textColor="@color/al3" android:id="@id/ofa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wln" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="24.0dip" android:textColor="@color/al3" android:id="@id/of_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wlm" android:layout_below="@id/ofa" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="24.0dip" android:textColor="@color/al3" android:id="@id/of9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wll" android:layout_below="@id/of_" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -2,10 +2,10 @@ package com.tencent.biz.game;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.google.zxing.client.android.wifi.BizWifiConfigManager;
+import com.tencent.biz.common.util.Util;
 import com.tencent.qphone.base.util.QLog;
-import gn;
 import java.lang.ref.WeakReference;
-import nwo;
 
 class SensorAPIJavaScript$11
   extends Thread
@@ -33,12 +33,12 @@ class SensorAPIJavaScript$11
           break label200;
         }
         int j = this.this$0.a();
-        this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { nwo.a(Integer.toString(i)), nwo.a(str), nwo.a(Integer.toString(j)) });
+        this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { Util.a(Integer.toString(i)), Util.a(str), Util.a(Integer.toString(j)) });
         return;
         if (QLog.isDevelopLevel()) {
           QLog.d("SensorApi", 4, "run check: " + i);
         }
-        str = gn.a(this.jdField_a_of_type_AndroidContentContext);
+        str = BizWifiConfigManager.a(this.jdField_a_of_type_AndroidContentContext);
         if (!TextUtils.isEmpty(str)) {
           i = 0;
         } else {
@@ -55,7 +55,7 @@ class SensorAPIJavaScript$11
       }
       continue;
       label200:
-      this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { nwo.a(Integer.toString(i)) });
+      this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { Util.a(Integer.toString(i)) });
       return;
       i = 2;
     }
@@ -63,7 +63,7 @@ class SensorAPIJavaScript$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.11
  * JD-Core Version:    0.7.0.1
  */

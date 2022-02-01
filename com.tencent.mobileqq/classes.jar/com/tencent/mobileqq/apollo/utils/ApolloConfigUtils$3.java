@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amme;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.apollo.api.IApolloManagerService;
+import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
 import java.util.Map;
+import mqq.app.AppRuntime;
 
-public final class ApolloConfigUtils$3
+final class ApolloConfigUtils$3
   implements Runnable
 {
-  public ApolloConfigUtils$3(QQAppInterface paramQQAppInterface, Map paramMap) {}
+  ApolloConfigUtils$3(AppRuntime paramAppRuntime, Map paramMap) {}
   
   public void run()
   {
-    ((amme)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER)).a(this.jdField_a_of_type_JavaUtilMap);
+    ((ApolloManagerServiceImpl)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IApolloManagerService.class, "all")).updateAndDownloadPreRes(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloConfigUtils.3
  * JD-Core Version:    0.7.0.1
  */

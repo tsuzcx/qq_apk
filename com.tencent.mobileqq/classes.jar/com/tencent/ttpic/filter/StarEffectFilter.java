@@ -10,7 +10,7 @@ import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.model.StarParam;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.view.RendererUtils;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -109,7 +109,7 @@ public class StarEffectFilter
   
   public Frame getMaskFrame(Frame paramFrame, StarParam paramStarParam, int paramInt)
   {
-    if ((paramFrame.width * paramFrame.height == 0) || (!VideoMaterialUtil.needRenderStar(paramStarParam))) {
+    if ((paramFrame.width * paramFrame.height == 0) || (!VideoMaterial.needRenderStar(paramStarParam))) {
       return null;
     }
     long l = System.currentTimeMillis();
@@ -208,7 +208,7 @@ public class StarEffectFilter
   
   public List<PointF> getStarPoints(Frame paramFrame, StarParam paramStarParam, int paramInt)
   {
-    if ((paramFrame.width * paramFrame.height == 0) || (!VideoMaterialUtil.needRenderStar(paramStarParam))) {
+    if ((paramFrame.width * paramFrame.height == 0) || (!VideoMaterial.needRenderStar(paramStarParam))) {
       return new ArrayList();
     }
     int j;
@@ -321,7 +321,7 @@ public class StarEffectFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.StarEffectFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.weather;
 
-import amei;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.NewIntent;
 
-public class WeatherServlet$PermissionCallback$1
+class WeatherServlet$PermissionCallback$1
   implements Runnable
 {
-  public WeatherServlet$PermissionCallback$1(amei paramamei, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface) {}
+  WeatherServlet$PermissionCallback$1(WeatherServlet.PermissionCallback paramPermissionCallback, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class WeatherServlet$PermissionCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.WeatherServlet.PermissionCallback.1
  * JD-Core Version:    0.7.0.1
  */

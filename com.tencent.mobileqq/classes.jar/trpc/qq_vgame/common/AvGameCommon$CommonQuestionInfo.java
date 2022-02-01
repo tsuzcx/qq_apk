@@ -9,9 +9,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class AvGameCommon$CommonQuestionInfo
   extends MessageMicro<CommonQuestionInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32 }, new String[] { "item", "feedbacks", "tips", "size" }, new Object[] { null, null, null, Integer.valueOf(0) }, CommonQuestionInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40 }, new String[] { "item", "feedbacks", "tips", "size", "score" }, new Object[] { null, null, null, Integer.valueOf(0), Integer.valueOf(0) }, CommonQuestionInfo.class);
   public final PBRepeatMessageField<AvGameCommon.QuestionFeedbackInfo> feedbacks = PBField.initRepeatMessage(AvGameCommon.QuestionFeedbackInfo.class);
   public AvGameCommon.QuestionItemInfo item = new AvGameCommon.QuestionItemInfo();
+  public final PBUInt32Field score = PBField.initUInt32(0);
   public final PBUInt32Field size = PBField.initUInt32(0);
   public final PBRepeatMessageField<AvGameCommon.QuestionTipsInfo> tips = PBField.initRepeatMessage(AvGameCommon.QuestionTipsInfo.class);
 }

@@ -1,21 +1,19 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkpq;
-import bkpw;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.report.MiniProgramReporter;
 import com.tencent.qqmini.sdk.launcher.action.ActionBridge.PageActionBridge;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 
-public class MiniSDKClientQIPCModule$4
+class MiniSDKClientQIPCModule$4
   implements Runnable
 {
-  public MiniSDKClientQIPCModule$4(bkpq parambkpq, BaseRuntime paramBaseRuntime, String paramString1, String paramString2, int paramInt, String paramString3) {}
+  MiniSDKClientQIPCModule$4(MiniSDKClientQIPCModule paramMiniSDKClientQIPCModule, BaseRuntime paramBaseRuntime, String paramString1, String paramString2, int paramInt, String paramString3) {}
   
   public void run()
   {
-    MiniAppConfig localMiniAppConfig = bkpw.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime.getMiniAppInfo());
+    MiniAppConfig localMiniAppConfig = MiniSdkUtil.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime.getMiniAppInfo());
     String str2 = MiniProgramLpReportDC04239.getAppType(localMiniAppConfig);
     if ("0".equals(str2)) {}
     for (String str1 = ActionBridge.PageActionBridge.getPageUrl(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime);; str1 = null)

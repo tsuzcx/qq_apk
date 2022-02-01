@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.vip;
 
-import bhyw;
-import bhzi;
-
-public class KCWraper$1
+class KCWraper$1
   implements Runnable
 {
-  public KCWraper$1(bhyw parambhyw, bhzi parambhzi) {}
+  KCWraper$1(KCWraper paramKCWraper, TMSManager.Callback paramCallback) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class KCWraper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraper.1
  * JD-Core Version:    0.7.0.1
  */

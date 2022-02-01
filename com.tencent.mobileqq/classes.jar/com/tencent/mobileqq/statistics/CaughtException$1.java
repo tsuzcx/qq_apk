@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.statistics;
 
-import bdjw;
 import java.util.HashSet;
 
 final class CaughtException$1
@@ -9,7 +8,7 @@ final class CaughtException$1
   CaughtException$1()
   {
     add(CaughtException.class.getName());
-    add(bdjw.class.getName());
+    add(CaughtExceptionReport.class.getName());
   }
 }
 

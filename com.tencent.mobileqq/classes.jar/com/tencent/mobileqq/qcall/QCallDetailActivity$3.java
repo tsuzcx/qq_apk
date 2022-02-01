@@ -1,63 +1,55 @@
 package com.tencent.mobileqq.qcall;
 
-import acnh;
-import awyz;
-import bapk;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.PhoneContact;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.face.GroupIconHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class QCallDetailActivity$3
-  implements Runnable
+  extends DiscussionObserver
 {
   QCallDetailActivity$3(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    int k = 0;
-    if (this.this$0.app == null) {
-      break label12;
+    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.a(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000)) {
+      this.a.a(QCallDetailActivity.a(this.a));
     }
-    label12:
-    label143:
-    label160:
-    for (;;)
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if ((QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
+      this.a.a(paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCallDetailActivity", 2, " === onUpdateDiscussionFaceIcon isSuccess | " + paramBoolean1 + ", disUin | " + paramString + ",isComplete | " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
     {
-      return;
-      if (QCallDetailActivity.a(this.this$0, QCallDetailActivity.a(this.this$0)))
+      String str = paramString;
+      if (GroupIconHelper.a(paramString)) {
+        str = GroupIconHelper.b(paramString);
+      }
+      if (QCallDetailActivity.a(this.a).equals(str))
       {
-        Object localObject = acnh.q;
-        int m = localObject.length;
-        int i = 0;
-        int j = k;
-        if (i < m)
-        {
-          j = localObject[i];
-          if (QCallDetailActivity.a(this.this$0) == j) {
-            j = 1;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            break;
-          }
-          localObject = (awyz)this.this$0.app.getManager(QQManagerFactory.CONTACT_MANAGER);
-          if (localObject != null) {
-            break label143;
-          }
-        }
-        for (localObject = null;; localObject = ((awyz)localObject).c(QCallDetailActivity.a(this.this$0)))
-        {
-          if (localObject == null) {
-            break label160;
-          }
-          QCallDetailActivity.a(this.this$0).a(((PhoneContact)localObject).mobileCode, 1006, QCallDetailActivity.a(this.this$0), QCallDetailActivity.a(this.this$0));
-          return;
-          i += 1;
-          break;
+        this.a.a(QCallDetailActivity.a(this.a));
+        if (QLog.isColorLevel()) {
+          QLog.i("QCallDetailActivity", 2, "==== onUpdateDiscussionFaceIcon updateUin ===");
         }
       }
+    }
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.a(this.a))) && (QCallDetailActivity.a(this.a).equals(paramString)) && (!this.a.isFinishing())) {
+      this.a.finish();
     }
   }
 }

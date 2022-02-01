@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.studyroom.pluginimpl;
 
 import android.os.Bundle;
-import avry;
-import avsb;
-import avsc;
+import com.tencent.mobileqq.intervideo.LoginKeyHelper;
+import com.tencent.mobileqq.intervideo.LoginKeyHelper.AccountInfo;
+import com.tencent.mobileqq.intervideo.LoginKeyHelper.GetLoginKeyListener;
 import java.util.concurrent.CountDownLatch;
 
 class QQBaseAbilityInterfaceImpl$GetAccessTokenBundle$1
-  implements avsc
+  implements LoginKeyHelper.GetLoginKeyListener
 {
-  QQBaseAbilityInterfaceImpl$GetAccessTokenBundle$1(QQBaseAbilityInterfaceImpl.GetAccessTokenBundle paramGetAccessTokenBundle, avry paramavry, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
+  QQBaseAbilityInterfaceImpl$GetAccessTokenBundle$1(QQBaseAbilityInterfaceImpl.GetAccessTokenBundle paramGetAccessTokenBundle, LoginKeyHelper paramLoginKeyHelper, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
   
   public void onGetKeyComplete(String paramString, boolean paramBoolean, int paramInt)
   {

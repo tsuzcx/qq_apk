@@ -3,12 +3,11 @@ package dov.com.tencent.biz.qqstory.takevideo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import botq;
 
 public final class EditVideoGame$GameResultItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameResultItem> CREATOR = new botq();
+  public static final Parcelable.Creator<GameResultItem> CREATOR = new EditVideoGame.GameResultItem.1();
   public int a;
   public String a;
   public int b;
@@ -23,7 +22,7 @@ public final class EditVideoGame$GameResultItem
   
   public EditVideoGame$GameResultItem() {}
   
-  public EditVideoGame$GameResultItem(Parcel paramParcel)
+  protected EditVideoGame$GameResultItem(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -63,7 +62,7 @@ public final class EditVideoGame$GameResultItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoGame.GameResultItem
  * JD-Core Version:    0.7.0.1
  */

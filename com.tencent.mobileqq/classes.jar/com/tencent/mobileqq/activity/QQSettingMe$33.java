@@ -14,14 +14,18 @@ class QQSettingMe$33
   
   public void run()
   {
-    int i = 0;
-    int k = this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getBaseContext().getResources().getDimensionPixelSize(2131298438);
+    int j = 0;
+    int k = this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getBaseContext().getResources().getDimensionPixelSize(2131298524);
     if (this.this$0.b.getVisibility() == 0) {
-      i = 0 + ScreenUtil.dip2px(45.0F);
+      j = 0 + ScreenUtil.dip2px(53.0F);
     }
-    int j = i;
+    int i = j;
     if (this.this$0.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
-      j = i + ScreenUtil.dip2px(35.0F);
+      i = j + ScreenUtil.dip2px(35.0F);
+    }
+    j = i;
+    if (this.this$0.c.getVisibility() == 0) {
+      j = i + ScreenUtil.dip2px(17.0F);
     }
     QQSettingMe.a(this.this$0, ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(94.0F) - k - ScreenUtil.dip2px(45.0F) - j);
     this.this$0.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(QQSettingMe.a(this.this$0));
@@ -29,7 +33,7 @@ class QQSettingMe$33
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.33
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/aoy" android:gravity="center" android:id="@id/mmh" android:background="@drawable/eol" android:layout_width="88.0dip" android:layout_height="29.0dip" android:text="@string/xy5" android:shadowColor="@color/aoz" android:shadowDx="1.0" android:shadowDy="3.0" android:shadowRadius="0.0" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/aoy" android:gravity="center" android:id="@id/mmi" android:background="@drawable/eol" android:layout_width="88.0dip" android:layout_height="29.0dip" android:layout_marginLeft="21.0dip" android:text="@string/xy6" android:shadowColor="@color/aoz" android:shadowDx="1.0" android:shadowDy="3.0" android:shadowRadius="0.0" android:layout_toRightOf="@id/mmh" />
-</RelativeLayout>
+    <TextView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="这是新动态页" />
+</FrameLayout>

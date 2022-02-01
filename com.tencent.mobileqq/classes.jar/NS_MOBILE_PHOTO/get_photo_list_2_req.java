@@ -14,22 +14,22 @@ public final class get_photo_list_2_req
   static int cache_type;
   public String albumid = "";
   public String attach_info = "";
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String ciphertext = "";
   public String curlloc = "";
-  public long face_uin;
-  public boolean need_pos;
+  public long face_uin = 0L;
+  public boolean need_pos = false;
   public String password = "";
   public long password_cleartext = 1L;
-  public int pn;
-  public int ps;
+  public int pn = 0;
+  public int ps = 0;
   public String req_url = "";
-  public long sharer;
-  public int sheight;
+  public long sharer = 0L;
+  public int sheight = 0;
   public int sort_type = 0;
-  public int swidth;
-  public int type;
-  public long uin;
+  public int swidth = 0;
+  public int type = 0;
+  public long uin = 0L;
   
   static
   {

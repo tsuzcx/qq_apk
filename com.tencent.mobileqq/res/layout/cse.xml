@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n3e" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/h05" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:id="@id/o18" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_toRightOf="@id/n3e" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/n3d" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="15.5dip" android:src="@drawable/qb_troop_info_qrcode" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/b8q" android:background="@drawable/e_y" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/h47" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff989eb4" android:gravity="center" android:id="@id/mdl" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="8.0dip" android:text="深圳大学" />
+    </LinearLayout>
+</FrameLayout>

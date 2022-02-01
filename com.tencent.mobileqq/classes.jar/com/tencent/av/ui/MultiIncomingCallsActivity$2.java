@@ -1,10 +1,10 @@
 package com.tencent.av.ui;
 
+import com.tencent.av.gaudio.Memberinfo;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lny;
 import mqq.os.MqqHandler;
 
 class MultiIncomingCallsActivity$2
@@ -28,11 +28,11 @@ class MultiIncomingCallsActivity$2
         Iterator localIterator = MultiIncomingCallsActivity.a(this.this$0).iterator();
         while (localIterator.hasNext())
         {
-          lny locallny = (lny)localIterator.next();
-          if (locallny.b + 60L > l) {
-            localArrayList.add(locallny);
+          Memberinfo localMemberinfo = (Memberinfo)localIterator.next();
+          if (localMemberinfo.b + 60L > l) {
+            localArrayList.add(localMemberinfo);
           } else if (QLog.isColorLevel()) {
-            QLog.d(this.this$0.b, 2, "mTaskCheckRunnable " + locallny.b + ";otherTimestamp=" + l);
+            QLog.d(this.this$0.b, 2, "mTaskCheckRunnable " + localMemberinfo.b + ";otherTimestamp=" + l);
           }
         }
         MultiIncomingCallsActivity.a(this.this$0, localArrayList);
@@ -44,7 +44,7 @@ class MultiIncomingCallsActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallsActivity.2
  * JD-Core Version:    0.7.0.1
  */

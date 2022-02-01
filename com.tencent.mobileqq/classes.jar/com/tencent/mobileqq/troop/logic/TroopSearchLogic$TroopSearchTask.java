@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.troop.logic;
 
 import android.text.TextUtils;
-import aoep;
-import aoxz;
-import bfxy;
-import bfxz;
-import bhcz;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
+import com.tencent.mobileqq.utils.ChnToSpell.ChnSpelling;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -23,20 +21,20 @@ import java.util.List;
 class TroopSearchLogic$TroopSearchTask
   implements Runnable
 {
-  bfxz jdField_a_of_type_Bfxz;
+  TroopSearchLogic.TroopSearchCallback jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic$TroopSearchCallback;
   ArrayList<ResultRecord> jdField_a_of_type_JavaUtilArrayList;
   
-  TroopSearchLogic$TroopSearchTask(bfxz parambfxz, ArrayList<ResultRecord> paramArrayList)
+  TroopSearchLogic$TroopSearchTask(TroopSearchLogic.TroopSearchCallback paramTroopSearchCallback, ArrayList<ResultRecord> paramArrayList)
   {
-    this.jdField_a_of_type_Bfxz = paramArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic$TroopSearchCallback = paramArrayList;
     Object localObject;
     this.jdField_a_of_type_JavaUtilArrayList = localObject;
   }
   
-  private void a(ArrayList<bfxy> paramArrayList)
+  private void a(ArrayList<TroopSearchLogic.SearchResult> paramArrayList)
   {
-    if (this.jdField_a_of_type_Bfxz != null) {
-      this.jdField_a_of_type_Bfxz.a(paramArrayList);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic$TroopSearchCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic$TroopSearchCallback.a(paramArrayList);
     }
   }
   
@@ -63,7 +61,7 @@ class TroopSearchLogic$TroopSearchTask
   
   public void run()
   {
-    Object localObject1 = (aoep)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+    Object localObject1 = (TroopHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
     localObject1 = new ArrayList();
     Object localObject2 = new ArrayList(this.this$0.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b());
     if ((localObject2 == null) || (((List)localObject2).size() == 0))
@@ -121,24 +119,24 @@ class TroopSearchLogic$TroopSearchTask
       {
         break label254;
         if (i == 0) {
-          break label455;
+          break label454;
         }
-        localObject3 = new bfxy();
-        ((bfxy)localObject3).jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localTroopInfo;
-        ((bfxy)localObject3).jdField_a_of_type_Int = localList.size();
-        ((bfxy)localObject3).jdField_a_of_type_JavaLangString = ChnToSpell.a(localTroopInfo.getTroopName(), 1).jdField_a_of_type_JavaLangString;
-        localTroopInfo.lastMsgTime = ((RecentUser)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().findRecentUserByUin(localTroopInfo.troopuin, 1)).lastmsgtime;
-        if (k != ((bfxy)localObject3).jdField_a_of_type_Int) {
+        localObject3 = new TroopSearchLogic.SearchResult();
+        ((TroopSearchLogic.SearchResult)localObject3).jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localTroopInfo;
+        ((TroopSearchLogic.SearchResult)localObject3).jdField_a_of_type_Int = localList.size();
+        ((TroopSearchLogic.SearchResult)localObject3).jdField_a_of_type_JavaLangString = ChnToSpell.a(localTroopInfo.getTroopDisplayName(), 1).jdField_a_of_type_JavaLangString;
+        localTroopInfo.lastMsgTime = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(localTroopInfo.troopuin, 1).lastmsgtime;
+        if (k != ((TroopSearchLogic.SearchResult)localObject3).jdField_a_of_type_Int) {
           break;
         }
-        ((bfxy)localObject3).b = 1;
+        ((TroopSearchLogic.SearchResult)localObject3).b = 1;
         ((ArrayList)localObject1).add(localObject3);
         break;
         Collections.sort((List)localObject1);
         a((ArrayList)localObject1);
         return;
       }
-      label455:
+      label454:
       break;
     }
   }

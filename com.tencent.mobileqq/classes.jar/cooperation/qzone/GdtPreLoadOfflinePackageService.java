@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.util.QZLog;
-import nuz;
 
 public class GdtPreLoadOfflinePackageService
   extends Service
@@ -32,8 +32,8 @@ public class GdtPreLoadOfflinePackageService
         try
         {
           BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-          nuz.a();
-          nuz.a(str, localBaseApplicationImpl.getRuntime());
+          HtmlOffline.a();
+          HtmlOffline.a(str, localBaseApplicationImpl.getRuntime());
         }
         catch (Exception localException)
         {
@@ -45,7 +45,7 @@ public class GdtPreLoadOfflinePackageService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.GdtPreLoadOfflinePackageService
  * JD-Core Version:    0.7.0.1
  */

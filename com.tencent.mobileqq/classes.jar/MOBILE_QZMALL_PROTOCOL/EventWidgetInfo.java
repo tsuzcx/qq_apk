@@ -11,15 +11,15 @@ public final class EventWidgetInfo
   static VideoInfo cache_stVideoInfo = new VideoInfo();
   static int cache_type = 0;
   public boolean bIsPreload = true;
-  public boolean bShow;
-  public DescInfo stDescInfo;
-  public VideoInfo stVideoInfo;
+  public boolean bShow = false;
+  public DescInfo stDescInfo = null;
+  public VideoInfo stVideoInfo = null;
   public String strBubbleDesc = "";
   public String strDownloadAppPackageName = "";
   public String strJumpUrl = "";
   public String strMaterialUrl = "";
   public String strTraceInfo = "";
-  public int type;
+  public int type = 0;
   
   public EventWidgetInfo() {}
   

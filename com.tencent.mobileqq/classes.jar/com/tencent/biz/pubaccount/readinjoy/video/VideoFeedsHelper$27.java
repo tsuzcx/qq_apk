@@ -4,10 +4,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public final class VideoFeedsHelper$27
+final class VideoFeedsHelper$27
   implements Runnable
 {
-  public VideoFeedsHelper$27(String paramString) {}
+  VideoFeedsHelper$27(String paramString) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public final class VideoFeedsHelper$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper.27
  * JD-Core Version:    0.7.0.1
  */

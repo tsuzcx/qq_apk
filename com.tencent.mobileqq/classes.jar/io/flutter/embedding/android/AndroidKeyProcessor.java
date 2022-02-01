@@ -2,6 +2,7 @@ package io.flutter.embedding.android;
 
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import androidx.annotation.NonNull;
@@ -12,77 +13,109 @@ import io.flutter.plugin.editing.TextInputPlugin;
 
 public class AndroidKeyProcessor
 {
+  private static final String TAG = "AndroidKeyProcessor";
+  private static long eventIdSerial;
   private int combiningCharacter;
+  @NonNull
+  private AndroidKeyProcessor.EventResponder eventResponder;
   @NonNull
   private final KeyEventChannel keyEventChannel;
   @NonNull
   private final TextInputPlugin textInputPlugin;
   
-  public AndroidKeyProcessor(@NonNull KeyEventChannel paramKeyEventChannel, @NonNull TextInputPlugin paramTextInputPlugin)
+  public AndroidKeyProcessor(@NonNull View paramView, @NonNull KeyEventChannel paramKeyEventChannel, @NonNull TextInputPlugin paramTextInputPlugin)
   {
     this.keyEventChannel = paramKeyEventChannel;
     this.textInputPlugin = paramTextInputPlugin;
+    this.eventResponder = new AndroidKeyProcessor.EventResponder(paramView);
+    this.keyEventChannel.setEventResponseHandler(this.eventResponder);
   }
   
   @Nullable
   private Character applyCombiningCharacterToBaseCharacter(int paramInt)
   {
-    Object localObject;
     if (paramInt == 0) {
-      localObject = null;
+      return null;
     }
-    Character localCharacter;
-    do
+    char c1 = (char)paramInt;
+    int i;
+    char c2;
+    if ((0x80000000 & paramInt) != 0)
     {
-      return localObject;
-      localCharacter = Character.valueOf((char)paramInt);
-      int i;
-      if ((0x80000000 & paramInt) != 0) {
-        i = 1;
+      i = 1;
+      if (i == 0) {
+        break label71;
       }
-      while (i != 0)
+      paramInt = 0x7FFFFFFF & paramInt;
+      if (this.combiningCharacter == 0) {
+        break label61;
+      }
+      this.combiningCharacter = KeyCharacterMap.getDeadChar(this.combiningCharacter, paramInt);
+      c2 = c1;
+    }
+    for (;;)
+    {
+      return Character.valueOf(c2);
+      i = 0;
+      break;
+      label61:
+      this.combiningCharacter = paramInt;
+      c2 = c1;
+      continue;
+      label71:
+      c2 = c1;
+      if (this.combiningCharacter != 0)
       {
-        paramInt = 0x7FFFFFFF & paramInt;
-        if (this.combiningCharacter != 0)
-        {
-          this.combiningCharacter = KeyCharacterMap.getDeadChar(this.combiningCharacter, paramInt);
-          return localCharacter;
-          i = 0;
+        paramInt = KeyCharacterMap.getDeadChar(this.combiningCharacter, paramInt);
+        if (paramInt > 0) {
+          c1 = (char)paramInt;
         }
-        else
-        {
-          this.combiningCharacter = paramInt;
-          return localCharacter;
-        }
+        this.combiningCharacter = 0;
+        c2 = c1;
       }
-      localObject = localCharacter;
-    } while (this.combiningCharacter == 0);
-    paramInt = KeyCharacterMap.getDeadChar(this.combiningCharacter, paramInt);
-    if (paramInt > 0) {
-      localCharacter = Character.valueOf((char)paramInt);
     }
-    this.combiningCharacter = 0;
-    return localCharacter;
   }
   
-  public void onKeyDown(@NonNull KeyEvent paramKeyEvent)
+  public void destroy()
   {
-    if ((this.textInputPlugin.getLastInputConnection() != null) && (this.textInputPlugin.getInputMethodManager().isAcceptingText())) {
-      this.textInputPlugin.getLastInputConnection().sendKeyEvent(paramKeyEvent);
-    }
-    Character localCharacter = applyCombiningCharacterToBaseCharacter(paramKeyEvent.getUnicodeChar());
-    this.keyEventChannel.keyDown(new KeyEventChannel.FlutterKeyEvent(paramKeyEvent, localCharacter));
+    this.keyEventChannel.setEventResponseHandler(null);
   }
   
-  public void onKeyUp(@NonNull KeyEvent paramKeyEvent)
+  public boolean onKeyDown(@NonNull KeyEvent paramKeyEvent)
   {
-    Character localCharacter = applyCombiningCharacterToBaseCharacter(paramKeyEvent.getUnicodeChar());
-    this.keyEventChannel.keyUp(new KeyEventChannel.FlutterKeyEvent(paramKeyEvent, localCharacter));
+    boolean bool = true;
+    if (this.eventResponder.dispatchingKeyEvent) {
+      bool = false;
+    }
+    while ((this.textInputPlugin.getLastInputConnection() != null) && (this.textInputPlugin.getInputMethodManager().isAcceptingText()) && (this.textInputPlugin.getLastInputConnection().sendKeyEvent(paramKeyEvent))) {
+      return bool;
+    }
+    Object localObject = applyCombiningCharacterToBaseCharacter(paramKeyEvent.getUnicodeChar());
+    long l = eventIdSerial;
+    eventIdSerial = 1L + l;
+    localObject = new KeyEventChannel.FlutterKeyEvent(paramKeyEvent, (Character)localObject, l);
+    this.keyEventChannel.keyDown((KeyEventChannel.FlutterKeyEvent)localObject);
+    this.eventResponder.addEvent(((KeyEventChannel.FlutterKeyEvent)localObject).eventId, paramKeyEvent);
+    return true;
+  }
+  
+  public boolean onKeyUp(@NonNull KeyEvent paramKeyEvent)
+  {
+    if (this.eventResponder.dispatchingKeyEvent) {
+      return false;
+    }
+    Object localObject = applyCombiningCharacterToBaseCharacter(paramKeyEvent.getUnicodeChar());
+    long l = eventIdSerial;
+    eventIdSerial = 1L + l;
+    localObject = new KeyEventChannel.FlutterKeyEvent(paramKeyEvent, (Character)localObject, l);
+    this.keyEventChannel.keyUp((KeyEventChannel.FlutterKeyEvent)localObject);
+    this.eventResponder.addEvent(((KeyEventChannel.FlutterKeyEvent)localObject).eventId, paramKeyEvent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.AndroidKeyProcessor
  * JD-Core Version:    0.7.0.1
  */

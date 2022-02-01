@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
 import android.content.Intent;
-import bgtj;
-import bhhr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController;
 import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class TroopEffectPicAppInfo
@@ -19,7 +19,7 @@ public class TroopEffectPicAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130850758;
+    return 2130851187;
   }
   
   public int getAppID()
@@ -32,23 +32,23 @@ public class TroopEffectPicAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697454);
+    return BaseApplicationImpl.getContext().getString(2131697708);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (bhhr.q(paramBaseChatPie.getActivity(), paramBaseChatPie.app.getCurrentAccountUin())) {
-      TroopPicEffectsEditActivity.a(paramBaseChatPie.getActivity(), paramSessionInfo.curFriendUin, paramSessionInfo.troopUin);
+    if (SharedPreUtils.q(paramBaseChatPie.a(), paramBaseChatPie.a.getCurrentAccountUin())) {
+      TroopPicEffectsEditActivity.a(paramBaseChatPie.a(), paramSessionInfo.a, paramSessionInfo.b);
     }
     for (;;)
     {
-      bgtj.a("app_entry", "page_clk");
+      TroopPicEffectsController.a("app_entry", "page_clk");
       return;
-      bhhr.z(paramBaseChatPie.getActivity(), paramBaseChatPie.app.getCurrentAccountUin());
-      paramahvi = new Intent(paramBaseChatPie.getActivity(), TroopPicEffectGuidePicActivity.class);
-      paramahvi.putExtra("friendUin", paramSessionInfo.curFriendUin);
-      paramahvi.putExtra("troopUin", paramSessionInfo.troopUin);
-      paramBaseChatPie.getActivity().startActivity(paramahvi);
+      SharedPreUtils.z(paramBaseChatPie.a(), paramBaseChatPie.a.getCurrentAccountUin());
+      paramPlusPanelViewModel = new Intent(paramBaseChatPie.a(), TroopPicEffectGuidePicActivity.class);
+      paramPlusPanelViewModel.putExtra("friendUin", paramSessionInfo.a);
+      paramPlusPanelViewModel.putExtra("troopUin", paramSessionInfo.b);
+      paramBaseChatPie.a().startActivity(paramPlusPanelViewModel);
     }
   }
 }

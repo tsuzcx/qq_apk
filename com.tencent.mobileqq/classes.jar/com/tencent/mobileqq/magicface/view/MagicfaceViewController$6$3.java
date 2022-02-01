@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.magicface.view;
 
 import android.widget.TextView;
-import awsw;
-import awsy;
 
-public class MagicfaceViewController$6$3
+class MagicfaceViewController$6$3
   implements Runnable
 {
-  public MagicfaceViewController$6$3(awsy paramawsy, String paramString) {}
+  MagicfaceViewController$6$3(MagicfaceViewController.6 param6, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awsy.a.b.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.a.b.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

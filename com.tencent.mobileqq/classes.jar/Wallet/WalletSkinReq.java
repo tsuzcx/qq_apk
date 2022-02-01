@@ -11,9 +11,9 @@ public final class WalletSkinReq
   public static final int TYPE_CLOSE = 2;
   public static final int TYPE_GET = 0;
   public static final int TYPE_OPEN = 1;
-  public int skinID;
-  public int type;
-  public long uin;
+  public int skinID = 0;
+  public int type = 0;
+  public long uin = 0L;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

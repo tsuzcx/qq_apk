@@ -1,27 +1,53 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetDropdownAppListRsp;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.util.List;
+import org.json.JSONObject;
 
-final class DesktopDataManager$13
-  implements Runnable
+class DesktopDataManager$13
+  implements MiniAppCmdInterface
 {
-  DesktopDataManager$13(MiniAppInfo paramMiniAppInfo) {}
+  DesktopDataManager$13(DesktopDataManager paramDesktopDataManager) {}
   
-  public void run()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime != null)
+    long l = 0L;
+    DesktopDataManager.access$2102(this.this$0, false);
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-      DesktopDataManager localDesktopDataManager = (DesktopDataManager)localAppRuntime.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
-      if (localDesktopDataManager != null) {
-        DesktopDataManager.access$2500(localDesktopDataManager, this.val$appInfo);
+      l = paramJSONObject.optLong("retCode");
+      String str = paramJSONObject.optString("errMsg");
+      if (l != 0L)
+      {
+        QLog.e("DesktopDataManager", 1, "loadMoreRencentApp, retCode = " + l + ", errMsg = " + str);
+        return;
       }
-      QLog.d("DesktopDataManager", 1, "recordMiniAppStart, appInfo = " + this.val$appInfo + ", appRuntime = " + localAppRuntime + "， manager = " + localDesktopDataManager);
+      paramJSONObject = (INTERFACE.StGetDropdownAppListRsp)paramJSONObject.opt("response");
+      if (paramJSONObject != null)
+      {
+        if (paramJSONObject.modules.get() != null) {}
+        for (int i = paramJSONObject.modules.get().size();; i = 0)
+        {
+          if (i <= 0) {
+            DesktopDataManager.access$2202(this.this$0, false);
+          }
+          DesktopDataManager.access$2300(this.this$0, paramJSONObject.modules.get());
+          DesktopDataManager.access$2402(this.this$0, (COMM.StCommonExt)paramJSONObject.extInfo.get());
+          QLog.d("DesktopDataManager", 1, "loadMoreRencentApp, retCode = " + l + ", errMsg = " + str + " count = " + i);
+          return;
+        }
+      }
+      QLog.e("DesktopDataManager", 1, "loadMoreRencentApp failed, response is null.");
+      return;
     }
+    if (paramJSONObject != null) {
+      l = paramJSONObject.optLong("retCode");
+    }
+    QLog.e("DesktopDataManager", 1, "loadMoreRencentApp, isSuccess = " + paramBoolean + ", ret = " + paramJSONObject + ", retCode = " + l);
   }
 }
 

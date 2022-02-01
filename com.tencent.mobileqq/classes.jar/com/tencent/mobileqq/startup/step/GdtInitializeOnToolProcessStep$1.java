@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import acft;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.ipc.GdtIPCManager;
 
 class GdtInitializeOnToolProcessStep$1
   implements Runnable
@@ -13,7 +13,7 @@ class GdtInitializeOnToolProcessStep$1
     try
     {
       long l = System.currentTimeMillis();
-      acft.a().a(BaseApplicationImpl.getContext());
+      GdtIPCManager.a().a(BaseApplicationImpl.getContext());
       GdtInitializeOnToolProcessStep.a("GdtInitializeOnToolProcessStep", "ipc register durationMillis:" + (System.currentTimeMillis() - l), null);
       return;
     }

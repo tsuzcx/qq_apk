@@ -14,20 +14,19 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
-import bler;
 
 public class QzoneAutoVerticalScrollTextView
   extends TextSwitcher
   implements Handler.Callback, ViewSwitcher.ViewFactory
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 2500L;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bler jdField_a_of_type_Bler;
+  private QzoneAutoVerticalScrollTextView.Rotate3dAnimation jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 1000L;
-  private bler jdField_b_of_type_Bler;
+  private QzoneAutoVerticalScrollTextView.Rotate3dAnimation jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation;
   
   public QzoneAutoVerticalScrollTextView(Context paramContext)
   {
@@ -41,30 +40,30 @@ public class QzoneAutoVerticalScrollTextView
     b();
   }
   
-  private bler a(boolean paramBoolean1, boolean paramBoolean2)
+  private QzoneAutoVerticalScrollTextView.Rotate3dAnimation a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    bler localbler = new bler(this, paramBoolean1, paramBoolean2);
-    localbler.setDuration(this.jdField_b_of_type_Long);
-    localbler.setFillAfter(false);
-    localbler.setInterpolator(new AccelerateInterpolator());
-    return localbler;
+    QzoneAutoVerticalScrollTextView.Rotate3dAnimation localRotate3dAnimation = new QzoneAutoVerticalScrollTextView.Rotate3dAnimation(this, paramBoolean1, paramBoolean2);
+    localRotate3dAnimation.setDuration(this.jdField_b_of_type_Long);
+    localRotate3dAnimation.setFillAfter(false);
+    localRotate3dAnimation.setInterpolator(new AccelerateInterpolator());
+    return localRotate3dAnimation;
   }
   
   private void b()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     setFactory(this);
-    this.jdField_a_of_type_Bler = a(true, true);
-    this.jdField_b_of_type_Bler = a(false, true);
+    this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation = a(true, true);
+    this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation = a(false, true);
   }
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Bler) {
-      setInAnimation(this.jdField_a_of_type_Bler);
+    if (getInAnimation() != this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation) {
+      setInAnimation(this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Bler) {
-      setOutAnimation(this.jdField_b_of_type_Bler);
+    if (getOutAnimation() != this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation) {
+      setOutAnimation(this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
     }
   }
   
@@ -129,8 +128,8 @@ public class QzoneAutoVerticalScrollTextView
       if (paramArrayOfString.length <= 1) {
         break label102;
       }
-      setInAnimation(this.jdField_a_of_type_Bler);
-      setOutAnimation(this.jdField_b_of_type_Bler);
+      setInAnimation(this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
+      setOutAnimation(this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9001, this.jdField_a_of_type_Long);
       }
@@ -143,7 +142,7 @@ public class QzoneAutoVerticalScrollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.QzoneAutoVerticalScrollTextView
  * JD-Core Version:    0.7.0.1
  */

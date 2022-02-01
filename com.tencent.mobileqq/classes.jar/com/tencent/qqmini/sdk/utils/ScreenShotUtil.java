@@ -65,6 +65,7 @@ public class ScreenShotUtil
     localNativeViewRequestEvent.dispatchTarget = 3;
     localNativeViewRequestEvent.event = "getMenuButtonBoundingClientRect";
     int n = new JSONObject(getMenuButtonRect(localNativeViewRequestEvent)).optInt("bottom") * (int)DisplayUtil.getDensity(runtime.getAttachedActivity()) + DisplayUtil.getStatusBarHeight(runtime.getAttachedActivity());
+    QMLog.i("ScreenShotUtil", "--- checkIfWhiteScreen:width:" + k + " height:" + m);
     int i = getImageRowRgb(paramBitmap, k, n + 5);
     int j = getImageRowRgb(paramBitmap, k, m / 2);
     n = getImageRowRgb(paramBitmap, k, m - n - 5);
@@ -142,7 +143,7 @@ public class ScreenShotUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.ScreenShotUtil
  * JD-Core Version:    0.7.0.1
  */

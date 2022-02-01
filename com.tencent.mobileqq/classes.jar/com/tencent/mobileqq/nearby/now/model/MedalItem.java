@@ -3,12 +3,11 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axwn;
 
 public class MedalItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<MedalItem> CREATOR = new axwn();
+  public static final Parcelable.Creator<MedalItem> CREATOR = new MedalItem.1();
   public int a;
   public long a;
   public String a;
@@ -26,7 +25,7 @@ public class MedalItem
   
   public MedalItem() {}
   
-  public MedalItem(Parcel paramParcel)
+  protected MedalItem(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_b_of_type_Int = paramParcel.readInt();

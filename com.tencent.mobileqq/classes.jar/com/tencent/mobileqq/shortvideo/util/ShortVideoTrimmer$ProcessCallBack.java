@@ -1,12 +1,23 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-public abstract interface ShortVideoTrimmer$ProcessCallBack
+import com.tencent.richmedia.videocompress.VideoConverter.Processor;
+import com.tencent.richmedia.videocompress.VideoConverterConfig;
+
+public class ShortVideoTrimmer$ProcessCallBack
+  implements VideoConverter.Processor
 {
-  public abstract void onDestroy();
+  public VideoConverterConfig getEncodeConfig(int paramInt1, int paramInt2)
+  {
+    return null;
+  }
   
-  public abstract void onStart(Process paramProcess);
+  public void onCancel() {}
   
-  public abstract void onStop();
+  public void onFail(Throwable paramThrowable) {}
+  
+  public void onProgress(int paramInt) {}
+  
+  public void onSuccess() {}
 }
 
 

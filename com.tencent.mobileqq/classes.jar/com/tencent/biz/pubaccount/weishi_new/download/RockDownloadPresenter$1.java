@@ -2,11 +2,10 @@ package com.tencent.biz.pubaccount.weishi_new.download;
 
 import android.app.Activity;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import mqq.util.WeakReference;
-import vbq;
-import vkf;
-import vmp;
 
 class RockDownloadPresenter$1
   extends RockDownloadPresenter.MyRockDownloadListener
@@ -18,10 +17,10 @@ class RockDownloadPresenter$1
   
   public void onDownloadCancel(RockDownloadInfo paramRockDownloadInfo)
   {
-    int i = vbq.b();
-    vmp.a("RockDownloader", "rockdownload onDownloadCancel");
-    vbq.a();
-    WSPublicAccReport.getInstance().reportDownload(vbq.a(), i, 3, 1, 0, RockDownloadPresenter.a(this.this$0));
+    int i = WeishiDownloadUtil.b();
+    WSLog.a("RockDownloader", "rockdownload onDownloadCancel");
+    WeishiDownloadUtil.a();
+    WSPublicAccReport.getInstance().reportDownload(WeishiDownloadUtil.a(), i, 3, 1, 0, RockDownloadPresenter.a(this.this$0));
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadCancel(paramRockDownloadInfo);
@@ -31,19 +30,19 @@ class RockDownloadPresenter$1
   public void onDownloadFail(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
     boolean bool = true;
-    vbq.a();
-    vmp.d("RockDownloader", "onDownloadFail errorCode: " + paramInt + ",errorInfo:" + paramString + ",    " + paramRockDownloadInfo.toString());
+    WeishiDownloadUtil.a();
+    WSLog.d("RockDownloader", "onDownloadFail errorCode: " + paramInt + ",errorInfo:" + paramString + ",    " + paramRockDownloadInfo.toString());
     this.this$0.a(paramRockDownloadInfo);
-    int i = vbq.b();
-    WSPublicAccReport.getInstance().reportDownload(vbq.a(), i, 3, 1, 0, RockDownloadPresenter.a(this.this$0));
-    vmp.d("RockDownloader", "Rock下载失败，QQ下载兜底！,eventType = " + i);
+    int i = WeishiDownloadUtil.b();
+    WSPublicAccReport.getInstance().reportDownload(WeishiDownloadUtil.a(), i, 3, 1, 0, RockDownloadPresenter.a(this.this$0));
+    WSLog.d("RockDownloader", "Rock下载失败，QQ下载兜底！,eventType = " + i);
     Object localObject = this.val$activity;
     RockDownloadPresenter localRockDownloadPresenter = this.this$0;
     WSDownloadParams localWSDownloadParams = RockDownloadPresenter.a(this.this$0);
     if (i != 1) {}
     for (;;)
     {
-      vbq.a((Activity)localObject, localRockDownloadPresenter, localWSDownloadParams, bool, i);
+      WeishiDownloadUtil.a((Activity)localObject, localRockDownloadPresenter, localWSDownloadParams, bool, i);
       localObject = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
       if (localObject == null) {
         break;
@@ -52,12 +51,12 @@ class RockDownloadPresenter$1
       return;
       bool = false;
     }
-    vmp.d("RockDownloader", "Rock onDownloadFail, listenerWrapper is null！");
+    WSLog.d("RockDownloader", "Rock onDownloadFail, listenerWrapper is null！");
   }
   
   public void onDownloadFinish(RockDownloadInfo paramRockDownloadInfo)
   {
-    vmp.a("RockDownloader", "rockdownload onDownloadFinish");
+    WSLog.a("RockDownloader", "rockdownload onDownloadFinish");
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadFinish(paramRockDownloadInfo);
@@ -66,7 +65,7 @@ class RockDownloadPresenter$1
   
   public void onDownloadProceedOn(RockDownloadInfo paramRockDownloadInfo, int paramInt)
   {
-    vmp.a("RockDownloader", "rockdownload onDownloadProceedOn,process" + paramInt);
+    WSLog.a("RockDownloader", "rockdownload onDownloadProceedOn,process" + paramInt);
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadProceedOn(paramRockDownloadInfo, paramInt);
@@ -75,9 +74,9 @@ class RockDownloadPresenter$1
   
   public void onDownloadStart(RockDownloadInfo paramRockDownloadInfo)
   {
-    int i = vbq.b();
-    vmp.b("RockDownloader", "rockdownload onDownloadStart,eventType = " + i);
-    vbq.b();
+    int i = WeishiDownloadUtil.b();
+    WSLog.b("RockDownloader", "rockdownload onDownloadStart,eventType = " + i);
+    WeishiDownloadUtil.b();
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadStart(paramRockDownloadInfo);
@@ -86,11 +85,11 @@ class RockDownloadPresenter$1
   
   public void onDownloadSuccess(RockDownloadInfo paramRockDownloadInfo)
   {
-    int i = vbq.b();
-    vmp.c("RockDownloader", "rockdownload onDownloadSuccess,eventType = " + i);
-    vbq.a();
-    vkf.a(1);
-    WSPublicAccReport.getInstance().reportDownload(vbq.a(), i, 2, 1, 0, RockDownloadPresenter.a(this.this$0));
+    int i = WeishiDownloadUtil.b();
+    WSLog.c("RockDownloader", "rockdownload onDownloadSuccess,eventType = " + i);
+    WeishiDownloadUtil.a();
+    WSReportDc00898.a(1);
+    WSPublicAccReport.getInstance().reportDownload(WeishiDownloadUtil.a(), i, 2, 1, 0, RockDownloadPresenter.a(this.this$0));
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadSuccess(paramRockDownloadInfo);
@@ -100,13 +99,13 @@ class RockDownloadPresenter$1
       this.this$0.a(paramRockDownloadInfo, 2);
       return;
     }
-    vmp.c("RockDownloader", "rockdownload onDownloadSuccess,but preload need not call install. eventType = " + i);
+    WSLog.c("RockDownloader", "rockdownload onDownloadSuccess,but preload need not call install. eventType = " + i);
   }
   
   public void onDownloadWait(RockDownloadInfo paramRockDownloadInfo)
   {
-    vmp.c("RockDownloader", "rockdownload onDownloadWait");
-    vbq.b();
+    WSLog.c("RockDownloader", "rockdownload onDownloadWait");
+    WeishiDownloadUtil.b();
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onDownloadWait(paramRockDownloadInfo);
@@ -115,10 +114,10 @@ class RockDownloadPresenter$1
   
   public void onPermissionDeny(RockDownloadInfo paramRockDownloadInfo)
   {
-    int i = vbq.b();
-    vmp.b("RockDownloader", "rockdownload onPermissionDeny");
-    vbq.a();
-    WSPublicAccReport.getInstance().reportDownload(vbq.a(), i, 3, 1, 0, RockDownloadPresenter.a(this.this$0));
+    int i = WeishiDownloadUtil.b();
+    WSLog.b("RockDownloader", "rockdownload onPermissionDeny");
+    WeishiDownloadUtil.a();
+    WSPublicAccReport.getInstance().reportDownload(WeishiDownloadUtil.a(), i, 3, 1, 0, RockDownloadPresenter.a(this.this$0));
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onPermissionDeny(paramRockDownloadInfo);
@@ -127,8 +126,8 @@ class RockDownloadPresenter$1
   
   public void onPermissionPermit(RockDownloadInfo paramRockDownloadInfo)
   {
-    vmp.b("RockDownloader", "rockdownload onPermissionPermit");
-    vbq.b();
+    WSLog.b("RockDownloader", "rockdownload onPermissionPermit");
+    WeishiDownloadUtil.b();
     RockDownloadListenerWrapper localRockDownloadListenerWrapper = (RockDownloadListenerWrapper)this.val$listenerWrapperWeakReference.get();
     if (localRockDownloadListenerWrapper != null) {
       localRockDownloadListenerWrapper.onPermissionPermit(paramRockDownloadInfo);
@@ -137,7 +136,7 @@ class RockDownloadPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.RockDownloadPresenter.1
  * JD-Core Version:    0.7.0.1
  */

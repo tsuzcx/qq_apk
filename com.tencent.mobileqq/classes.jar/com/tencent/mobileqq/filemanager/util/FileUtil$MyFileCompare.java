@@ -6,7 +6,7 @@ import java.util.Comparator;
 public class FileUtil$MyFileCompare
   implements Comparator<FileInfo>
 {
-  public int compare(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
     if (paramFileInfo1.c()) {
       if (paramFileInfo2.c()) {
@@ -29,7 +29,7 @@ public class FileUtil$MyFileCompare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileUtil.MyFileCompare
  * JD-Core Version:    0.7.0.1
  */

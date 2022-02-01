@@ -1,21 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video.bandwidth;
 
-import srh;
-import srk;
-
-public class BandwidthPredictor$NetworkChangeReceiver$1
+class BandwidthPredictor$NetworkChangeReceiver$1
   implements Runnable
 {
-  public BandwidthPredictor$NetworkChangeReceiver$1(srk paramsrk) {}
+  BandwidthPredictor$NetworkChangeReceiver$1(BandwidthPredictor.NetworkChangeReceiver paramNetworkChangeReceiver) {}
   
   public void run()
   {
-    srh.a(this.a.a);
+    BandwidthPredictor.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1
  * JD-Core Version:    0.7.0.1
  */

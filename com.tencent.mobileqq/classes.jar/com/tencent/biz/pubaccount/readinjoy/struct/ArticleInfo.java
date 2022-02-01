@@ -4,22 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.preparse.RIJPreParseData;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSParcelableUtil;
+import com.tencent.biz.pubaccount.readinjoy.srtUtils.ShortWithLongContentUtil;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.pts.core.itemview.PTSItemData;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
-import pqa;
-import pqw;
-import raf;
-import rny;
-import ron;
-import roo;
-import roz;
-import rpx;
-import rqy;
-import rsh;
 import tencent.im.oidb.articlesummary.articlesummary.ArkAppFeedsInfo;
 import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
 import tencent.im.oidb.articlesummary.articlesummary.TopicRecommendFeedsInfo;
@@ -35,7 +29,7 @@ public class ArticleInfo
   public static final String TAG = "ArticleInfo";
   public static final long TOPIC_ARTICLE_ID = -2L;
   public static final long TOPIC_RECOMMEND_SEQ = -2L;
-  public int recommentFlag;
+  public int recommentFlag = 0;
   
   public ArticleInfo() {}
   
@@ -46,7 +40,7 @@ public class ArticleInfo
   
   public static Parcelable.Creator<ArticleInfo> makeArticleInfoCreator()
   {
-    return new roo();
+    return new ArticleInfo.1();
   }
   
   private void readArkAppFeedsInfo(@NotNull ArticleInfo paramArticleInfo, @NotNull Parcel paramParcel)
@@ -63,7 +57,7 @@ public class ArticleInfo
     try
     {
       paramParcel.mergeFrom(paramArticleInfo.mArkAppFeedsInfoBytes);
-      paramArticleInfo.mArkAppFeedsInfo = ron.a(paramParcel);
+      paramArticleInfo.mArkAppFeedsInfo = ArkAppFeedsInfo.a(paramParcel);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramParcel)
@@ -114,6 +108,7 @@ public class ArticleInfo
     paramArticleInfo.mArticleContentUrl = paramParcel.readString();
     paramArticleInfo.mTime = paramParcel.readLong();
     paramArticleInfo.mCommentCount = paramParcel.readLong();
+    paramArticleInfo.mShareCount = paramParcel.readInt();
     paramArticleInfo.mSubscribeID = paramParcel.readString();
     paramArticleInfo.mSubscribeName = paramParcel.readString();
     paramArticleInfo.mRecommendTime = paramParcel.readLong();
@@ -132,7 +127,7 @@ public class ArticleInfo
       paramArticleInfo.mTopicPicWHRatio = paramParcel.readDouble();
       paramArticleInfo.mTopicPicInfo = paramParcel.readString();
       readPictureInfo(paramArticleInfo, paramParcel);
-      paramArticleInfo.mVideoCoverUrl = pqa.a(paramParcel.readString());
+      paramArticleInfo.mVideoCoverUrl = RIJPreParseData.a(paramParcel.readString());
       paramArticleInfo.mVideoVid = paramParcel.readString();
       paramArticleInfo.mVideoDuration = paramParcel.readInt();
       paramArticleInfo.mCommentIconType = paramParcel.readInt();
@@ -143,10 +138,10 @@ public class ArticleInfo
       paramArticleInfo.mCircleId = paramParcel.readLong();
       paramArticleInfo.mStrCircleId = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
-        break label609;
+        break label617;
       }
       bool1 = true;
-      label273:
+      label281:
       paramArticleInfo.mPUinIsActive = bool1;
       readSubscribeInfo(paramArticleInfo, paramParcel);
       paramArticleInfo.mFeedType = paramParcel.readInt();
@@ -171,39 +166,39 @@ public class ArticleInfo
       paramArticleInfo.mVideoAdsSource = paramParcel.readInt();
       paramArticleInfo.videoReportInfo = paramParcel.readString();
       if (paramParcel.readByte() != 1) {
-        break label614;
+        break label622;
       }
       bool1 = true;
-      label456:
+      label464:
       paramArticleInfo.isTwoItem = bool1;
       if (paramParcel.readByte() != 1) {
-        break label619;
+        break label627;
       }
       bool1 = true;
-      label471:
+      label479:
       paramArticleInfo.isSuperTopic = bool1;
       readNewPackInfo(paramArticleInfo, paramParcel);
       readRecommendFollowInfo(paramArticleInfo, paramParcel);
       paramArticleInfo.mRecommendFollowId = paramParcel.readLong();
       paramArticleInfo.gifCoverUrl = paramParcel.readString();
       if (paramParcel.readByte() != 1) {
-        break label624;
+        break label632;
       }
       bool1 = true;
-      label514:
+      label522:
       paramArticleInfo.isUseGif = bool1;
       readExtraBiuBrief(paramArticleInfo, paramParcel);
       readMultiBiuSameList(paramArticleInfo, paramParcel);
       paramArticleInfo.mIsGallery = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
-        break label629;
+        break label637;
       }
     }
-    label609:
-    label614:
-    label619:
-    label624:
-    label629:
+    label617:
+    label622:
+    label627:
+    label632:
+    label637:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       paramArticleInfo.mIsGalleryChannel = bool1;
@@ -212,19 +207,19 @@ public class ArticleInfo
       paramArticleInfo.mGWCommonData = paramParcel.readString();
       paramArticleInfo.mReportCommonData = paramParcel.readString();
       paramArticleInfo.recommentFlag = paramParcel.readInt();
-      rny.a(paramArticleInfo);
+      ShortWithLongContentUtil.a(paramArticleInfo);
       readPtsItemData(paramArticleInfo, paramParcel);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label273;
+      break label281;
       bool1 = false;
-      break label456;
+      break label464;
       bool1 = false;
-      break label471;
+      break label479;
       bool1 = false;
-      break label514;
+      break label522;
     }
   }
   
@@ -291,11 +286,11 @@ public class ArticleInfo
       int i = 0;
       while (i < j)
       {
-        paramArticleInfo.mPictures[i] = pqa.a(paramParcel.readString());
+        paramArticleInfo.mPictures[i] = RIJPreParseData.a(paramParcel.readString());
         i += 1;
       }
     }
-    paramArticleInfo.mSinglePicture = pqa.a(paramParcel.readString());
+    paramArticleInfo.mSinglePicture = RIJPreParseData.a(paramParcel.readString());
   }
   
   private void readPtsItemData(@NotNull ArticleInfo paramArticleInfo, @NotNull Parcel paramParcel)
@@ -305,7 +300,7 @@ public class ArticleInfo
     {
       paramArticleInfo.ptsItemDataBytes = new byte[i];
       paramParcel.readByteArray(paramArticleInfo.ptsItemDataBytes);
-      paramArticleInfo.ptsItemData = ((PTSItemData)raf.a(paramArticleInfo.ptsItemDataBytes, PTSItemData.CREATOR));
+      paramArticleInfo.ptsItemData = ((PTSItemData)PTSParcelableUtil.a(paramArticleInfo.ptsItemDataBytes, PTSItemData.CREATOR));
       return;
     }
     paramArticleInfo.ptsItemDataBytes = null;
@@ -390,7 +385,7 @@ public class ArticleInfo
     try
     {
       paramParcel.mergeFrom(paramArticleInfo.mTopicRecommendFeedsInfoByte);
-      paramArticleInfo.mTopicRecommendFeedsInfo = rsh.a(paramParcel);
+      paramArticleInfo.mTopicRecommendFeedsInfo = TopicRecommendFeedsInfo.a(paramParcel);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramParcel)
@@ -519,31 +514,31 @@ public class ArticleInfo
     return (this.mChannelInfoId != -1) && (!TextUtils.isEmpty(this.mChannelInfoName)) && (this.mChannelInfoType != -1) && (!TextUtils.isEmpty(this.mChannelInfoDisplayName));
   }
   
-  public roz makeDislikeParam(ArrayList<DislikeInfo> paramArrayList)
+  public DislikeParam makeDislikeParam(ArrayList<DislikeInfo> paramArrayList)
   {
     return makeDislikeParam(paramArrayList, this.innerUniqueID);
   }
   
-  public roz makeDislikeParam(ArrayList<DislikeInfo> paramArrayList, String paramString)
+  public DislikeParam makeDislikeParam(ArrayList<DislikeInfo> paramArrayList, String paramString)
   {
-    roz localroz = new roz();
+    DislikeParam localDislikeParam = new DislikeParam();
     if ((paramString != null) && (paramString.length() > 0)) {
-      localroz.jdField_a_of_type_JavaLangString = paramString;
+      localDislikeParam.jdField_a_of_type_JavaLangString = paramString;
     }
-    localroz.jdField_a_of_type_Long = this.mArticleID;
-    localroz.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    localDislikeParam.jdField_a_of_type_Long = this.mArticleID;
+    localDislikeParam.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     if (this.mSocialFeedInfo != null)
     {
-      localroz.b = this.mSocialFeedInfo.jdField_a_of_type_Long;
-      localroz.c = this.mSocialFeedInfo.jdField_a_of_type_Rqy.jdField_a_of_type_Long;
+      localDislikeParam.b = this.mSocialFeedInfo.jdField_a_of_type_Long;
+      localDislikeParam.c = this.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long;
     }
-    if (pqw.l(this))
+    if (RIJFeedsType.l(this))
     {
-      localroz.c = this.mPolymericInfo.b;
-      localroz.d = this.mPolymericInfo.f;
-      localroz.jdField_a_of_type_Long = 0L;
+      localDislikeParam.c = this.mPolymericInfo.b;
+      localDislikeParam.d = this.mPolymericInfo.f;
+      localDislikeParam.jdField_a_of_type_Long = 0L;
     }
-    return localroz;
+    return localDislikeParam;
   }
   
   public void prewrite()
@@ -562,6 +557,7 @@ public class ArticleInfo
     paramParcel.writeString(this.mArticleContentUrl);
     paramParcel.writeLong(this.mTime);
     paramParcel.writeLong(this.mCommentCount);
+    paramParcel.writeInt(this.mShareCount);
     paramParcel.writeString(this.mSubscribeID);
     paramParcel.writeString(this.mSubscribeName);
     paramParcel.writeLong(this.mRecommendTime);
@@ -635,7 +631,7 @@ public class ArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo
  * JD-Core Version:    0.7.0.1
  */

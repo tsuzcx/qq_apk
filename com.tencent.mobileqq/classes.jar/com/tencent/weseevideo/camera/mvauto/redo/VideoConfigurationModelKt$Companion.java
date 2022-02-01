@@ -1,6 +1,6 @@
 package com.tencent.weseevideo.camera.mvauto.redo;
 
-import android.graphics.PointF;
+import com.tencent.weseevideo.model.resource.EditorPointF;
 import com.tencent.weseevideo.model.resource.VideoConfigurationModel;
 import java.util.List;
 import kotlin.Metadata;
@@ -16,17 +16,15 @@ public final class VideoConfigurationModelKt$Companion
     Intrinsics.checkParameterIsNotNull(paramVideoConfigurationModel, "it");
     int i = paramVideoConfigurationModel.getContentMode();
     float f1 = paramVideoConfigurationModel.getFrameHeight();
-    PointF localPointF = paramVideoConfigurationModel.getFrameOrigin();
+    EditorPointF localEditorPointF = paramVideoConfigurationModel.getFrameOrigin();
     float f2 = paramVideoConfigurationModel.getFrameWidth();
     List localList = paramVideoConfigurationModel.getEffects();
-    float[] arrayOfFloat = paramVideoConfigurationModel.getMatrix();
-    Intrinsics.checkExpressionValueIsNotNull(arrayOfFloat, "it.matrix");
-    return new VideoConfigurationModelKt(i, localPointF, f2, f1, arrayOfFloat, localList, paramVideoConfigurationModel.getRotate());
+    return new VideoConfigurationModelKt(i, localEditorPointF, f2, f1, paramVideoConfigurationModel.getMatrix(), localList, paramVideoConfigurationModel.getRotate());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.VideoConfigurationModelKt.Companion
  * JD-Core Version:    0.7.0.1
  */

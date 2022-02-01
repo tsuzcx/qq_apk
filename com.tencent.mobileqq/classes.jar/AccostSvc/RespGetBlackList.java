@@ -13,10 +13,10 @@ public final class RespGetBlackList
   static ArrayList<Long> cache_vBlackListUin;
   static ArrayList<Long> cache_vMobileBlackListUin;
   public long lNextMid = -1L;
-  public RespHeader stHeader;
-  public ArrayList<BlackSimpleInfo> vBlackList;
-  public ArrayList<Long> vBlackListUin;
-  public ArrayList<Long> vMobileBlackListUin;
+  public RespHeader stHeader = null;
+  public ArrayList<BlackSimpleInfo> vBlackList = null;
+  public ArrayList<Long> vBlackListUin = null;
+  public ArrayList<Long> vMobileBlackListUin = null;
   
   public RespGetBlackList() {}
   

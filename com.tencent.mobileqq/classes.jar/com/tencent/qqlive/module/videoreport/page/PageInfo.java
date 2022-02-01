@@ -16,6 +16,7 @@ import java.util.Set;
 public class PageInfo
 {
   private WeakReference<Object> mPage;
+  private int mPageHashCode;
   private WeakReference<View> mPageView;
   private PageInfo mParentPage;
   
@@ -23,6 +24,7 @@ public class PageInfo
   {
     this.mPage = new WeakReference(paramObject);
     this.mPageView = new WeakReference(paramView);
+    this.mPageHashCode = paramObject.hashCode();
   }
   
   private static Set<PageInfo> getPageLinker(PageInfo paramPageInfo)
@@ -55,26 +57,7 @@ public class PageInfo
     if ((paramObject instanceof PageInfo))
     {
       paramObject = (PageInfo)paramObject;
-      int i;
-      if (((getPage() == null) && (paramObject.getPage() == null)) || ((getPage() != null) && (getPage().equals(paramObject.getPage()))))
-      {
-        i = 1;
-        if (((getPageView() != null) || (paramObject.getPageView() != null)) && ((getPageView() == null) || (!getPageView().equals(paramObject.getPageView())))) {
-          break label101;
-        }
-      }
-      label101:
-      for (int j = 1;; j = 0)
-      {
-        if ((i == 0) || (j == 0)) {
-          break label106;
-        }
-        return true;
-        i = 0;
-        break;
-      }
-      label106:
-      return false;
+      return this.mPageHashCode == paramObject.mPageHashCode;
     }
     return super.equals(paramObject);
   }
@@ -118,6 +101,11 @@ public class PageInfo
     return this.mPage.get();
   }
   
+  public int getPageHashCode()
+  {
+    return this.mPageHashCode;
+  }
+  
   @Nullable
   public View getPageView()
   {
@@ -154,45 +142,45 @@ public class PageInfo
     if (VideoReportInner.getInstance().isDebugMode())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("\n  size = " + getPageLinker(this).size());
+      localStringBuilder.append("\n  size = ").append(getPageLinker(this).size());
       PageInfo localPageInfo = this;
       if (localPageInfo != null)
       {
         Object localObject2 = localPageInfo.getPage();
         String str1;
-        label71:
+        label58:
         String str2;
         if (localObject2 == null)
         {
           str1 = "_null_page_";
           if (localObject2 != null) {
-            break label171;
+            break label158;
           }
           str2 = "_null_page_";
-          label79:
+          label66:
           if (localObject2 != null) {
-            break label180;
+            break label167;
           }
           localObject1 = null;
-          label87:
+          label74:
           if (localObject1 != null) {
-            break label190;
+            break label177;
           }
         }
-        label171:
-        label180:
-        label190:
+        label158:
+        label167:
+        label177:
         for (Object localObject1 = "_null_params_";; localObject1 = localObject1.toString())
         {
           localStringBuilder.append("\n pageId = ").append(str1).append(", contentId = ").append(str2).append(", pageParams = ").append((String)localObject1).append(", page = ").append(localObject2).append(", pageView = ").append(localPageInfo.getPageView()).append("\n");
           localPageInfo = localPageInfo.mParentPage;
           break;
           str1 = DataRWProxy.getPageId(localObject2);
-          break label71;
+          break label58;
           str2 = DataRWProxy.getContentId(localObject2);
-          break label79;
+          break label66;
           localObject1 = DataRWProxy.getPageParams(localObject2);
-          break label87;
+          break label74;
         }
       }
       return localStringBuilder.toString();

@@ -3,10 +3,7 @@ package cooperation.qzone.thread;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import common.config.service.QzoneConfig;
 import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QZoneExceptionReport;
-import cooperation.qzone.util.exception.QZoneStartupFailException;
 import java.util.concurrent.ConcurrentHashMap;
 
 class QzoneThreadMonitor$1
@@ -38,9 +35,6 @@ class QzoneThreadMonitor$1
     Object localObject = QzoneThreadMonitor.access$100(QzoneHandlerThreadFactory.getHandlerThreadLooper(localMessageInfo.threadName).getThread().getStackTrace(), localMessageInfo.threadName + " id=" + localMessageInfo.id + ": ");
     QZLog.w("QzoneThreadMonitor", 1, new Object[] { "[stack] ", localMessageInfo.threadName, " id=", localMessageInfo.id, " what=", Integer.valueOf(localMessageInfo.what), " msg.target=", localMessageInfo.target, " msg.callback=", localMessageInfo.callback });
     QZLog.w("QzoneThreadMonitor", 1, new Object[] { localObject });
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "report_backgroudmonitor", "0").equals("1")) {
-      QZoneExceptionReport.doReport(new QZoneStartupFailException(new Throwable((String)localObject)), ((String)localObject).toString());
-    }
     paramMessage = Message.obtain(QzoneThreadMonitor.access$200(this.this$0), 1, paramMessage.arg1 + 1, 0, localMessageInfo);
     localObject = QzoneThreadMonitor.access$200(this.this$0);
     if (localMessageInfo.type == 1) {}
@@ -53,7 +47,7 @@ class QzoneThreadMonitor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.thread.QzoneThreadMonitor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajhl;
-
-public class TroopView$MyTroopObserver$1
+class TroopView$MyTroopObserver$1
   implements Runnable
 {
-  public TroopView$MyTroopObserver$1(ajhl paramajhl) {}
+  TroopView$MyTroopObserver$1(TroopView.MyTroopObserver paramMyTroopObserver) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class TroopView$MyTroopObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver.1
  * JD-Core Version:    0.7.0.1
  */

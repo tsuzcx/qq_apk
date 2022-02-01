@@ -2,232 +2,151 @@ package com.tencent.biz.richframework.network.request;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.biz.richframework.network.cache.Cache;
-import com.tencent.biz.richframework.network.cache.CacheHelper;
-import com.tencent.biz.richframework.widget.BaseVideoView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.PlatformInfor;
-import cooperation.qzone.QUA;
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
+import com.tencent.mobileqq.qcircle.api.data.QCircleExposeDataBean;
+import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
+import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
+import com.tencent.mobileqq.soso.location.data.SosoLocation;
+import com.tencent.mobileqq.utils.WupUtil;
 import java.util.TimeZone;
-import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
-import org.jetbrains.annotations.NotNull;
+import mqq.app.MobileQQ;
 
 public abstract class VSBaseRequest
-  implements Serializable
+  extends BaseRequest
 {
-  public static final int RETRY_LIMIT = 5;
-  public static final String TAG = "VSBaseRequest";
-  public static final AtomicInteger atomicInteger = new AtomicInteger(0);
-  private static final long serialVersionUID = -1L;
-  private boolean isEnableCache;
-  private int mContextHashCode = -1;
-  private String mRequestKey;
-  private int mRetryCount;
-  private int mSeq;
-  protected String mTraceId;
-  
-  public static String concactRetCodeAndMsg(long paramLong, String paramString)
-  {
-    return ", retcode:" + paramLong + " | errMsg:" + paramString;
-  }
+  private final String QUA3 = ((IQZoneService)this.mAppRuntime.getRuntimeService(IQZoneService.class, "all")).getQUA3();
+  private final AppRuntime mAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+  private long mNetworkTimeCost;
+  private String mSsoFailMsg;
+  private int mSsoResultCode;
+  private int mSsoSeq;
+  private final ThreadLocal<StringBuilder> mStringBuilder = new VSBaseRequest.1(this);
   
   private String generateDeviceInfo()
   {
-    Object localObject2 = PlatformInfor.g().getDeviceInfor();
-    Object localObject1 = localObject2;
-    StringBuilder localStringBuilder;
-    if (localObject2 != null)
+    Object localObject = ((IQZoneService)this.mAppRuntime.getRuntimeService(IQZoneService.class, "all")).getDeviceInfo();
+    StringBuilder localStringBuilder1 = (StringBuilder)this.mStringBuilder.get();
+    if ((localObject != null) && (((String)localObject).length() > 0) && (localStringBuilder1 != null))
     {
-      localObject1 = localObject2;
-      if (((String)localObject2).length() > 0)
+      localStringBuilder1.setLength(0);
+      localStringBuilder1.append((String)localObject);
+      localStringBuilder1.append('&');
+      localStringBuilder1.append("timezone=").append(TimeZone.getDefault().getID());
+      localObject = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("qqcircle");
+      if ((localObject != null) && (((SosoLbsInfo)localObject).mLocation != null))
       {
-        localObject2 = new StringBuilder((String)localObject2);
-        ((StringBuilder)localObject2).append('&');
-        ((StringBuilder)localObject2).append("timezone=").append(TimeZone.getDefault().getID());
-        localObject1 = LbsManagerService.getCachedLbsInfo("qqcircle");
-        if ((localObject1 != null) && (((SosoInterface.SosoLbsInfo)localObject1).mLocation != null))
-        {
-          ((StringBuilder)localObject2).append('&');
-          ((StringBuilder)localObject2).append("latitude=").append(String.valueOf(((SosoInterface.SosoLbsInfo)localObject1).mLocation.mLat02));
-          ((StringBuilder)localObject2).append('&');
-          ((StringBuilder)localObject2).append("longitude=").append(String.valueOf(((SosoInterface.SosoLbsInfo)localObject1).mLocation.mLon02));
-        }
-        ((StringBuilder)localObject2).append('&');
-        localStringBuilder = ((StringBuilder)localObject2).append("vh265=");
-        if (!BaseVideoView.a.equals("")) {
-          break label168;
-        }
+        localStringBuilder1.append('&');
+        localStringBuilder1.append("latitude=").append(String.valueOf(((SosoLbsInfo)localObject).mLocation.mLat02));
+        localStringBuilder1.append('&');
+        localStringBuilder1.append("longitude=").append(String.valueOf(((SosoLbsInfo)localObject).mLocation.mLon02));
+      }
+      localStringBuilder1.append('&');
+      StringBuilder localStringBuilder2 = localStringBuilder1.append("vh265=");
+      if ("".equals(QCircleExposeDataBean.sIsSupportHEVC)) {}
+      for (localObject = Integer.valueOf(0);; localObject = QCircleExposeDataBean.sIsSupportHEVC)
+      {
+        localStringBuilder2.append(localObject);
+        return localStringBuilder1.toString();
       }
     }
-    label168:
-    for (localObject1 = Integer.valueOf(0);; localObject1 = BaseVideoView.a)
-    {
-      localStringBuilder.append(localObject1);
-      localObject1 = ((StringBuilder)localObject2).toString();
-      return localObject1;
-    }
+    this.mStringBuilder.remove();
+    return localObject;
   }
   
-  public static String generateTraceId()
+  protected byte[] getFinalRequestData(byte[] paramArrayOfByte)
   {
-    String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
-    Random localRandom = new Random();
-    localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
-    return localStringBuilder.toString();
-  }
-  
-  public static boolean isCacheExist(VSBaseRequest paramVSBaseRequest)
-  {
-    if ((paramVSBaseRequest == null) || (paramVSBaseRequest.getRequestByteData() == null)) {
-      return false;
-    }
-    return CacheHelper.fileCache().cacheExists(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + QUA.getQUA3() + new String(paramVSBaseRequest.getRequestByteKey()));
-  }
-  
-  public static void reMoveCache(VSBaseRequest paramVSBaseRequest)
-  {
-    if ((paramVSBaseRequest == null) || (paramVSBaseRequest.getRequestByteData() == null)) {
-      return;
-    }
-    CacheHelper.fileCache().remove(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + QUA.getQUA3() + new String(paramVSBaseRequest.getRequestByteKey()));
-  }
-  
-  public abstract MessageMicro decode(byte[] paramArrayOfByte);
-  
-  public byte[] encode()
-  {
-    Object localObject = getRequestByteData();
-    if (isEnableCache()) {
-      this.mRequestKey = (getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + QUA.getQUA3() + new String(getRequestByteKey()));
-    }
-    localObject = getRequestWrapper(ByteStringMicro.copyFrom((byte[])localObject));
-    if (localObject != null) {
-      return ((MessageMicro)localObject).toByteArray();
+    paramArrayOfByte = getRequestWrapper(ByteStringMicro.copyFrom(paramArrayOfByte));
+    if (paramArrayOfByte != null) {
+      return paramArrayOfByte;
     }
     return new byte[0];
   }
   
-  public abstract String getCmdName();
-  
-  public int getContextHashCode()
+  public long getNetworkTimeCost()
   {
-    return this.mContextHashCode;
+    return this.mNetworkTimeCost;
   }
   
-  public int getCurrentSeq()
-  {
-    return this.mSeq;
-  }
-  
-  @Deprecated
-  public int getNewSeq()
-  {
-    this.mSeq = atomicInteger.getAndIncrement();
-    this.mTraceId = generateTraceId();
-    return this.mSeq;
-  }
-  
-  protected abstract byte[] getRequestByteData();
-  
-  public byte[] getRequestByteKey()
-  {
-    return getRequestByteData();
-  }
-  
-  public String getRequestKey()
-  {
-    return this.mRequestKey;
-  }
-  
-  @NotNull
-  protected MessageMicro getRequestWrapper(ByteStringMicro paramByteStringMicro)
+  protected byte[] getRequestWrapper(ByteStringMicro paramByteStringMicro)
   {
     PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
     localStQWebReq.Seq.set(getCurrentSeq());
-    localStQWebReq.qua.set(QUA.getQUA3());
+    localStQWebReq.qua.set(this.QUA3);
     localStQWebReq.deviceInfo.set(generateDeviceInfo());
     localStQWebReq.busiBuff.set(paramByteStringMicro);
     localStQWebReq.traceid.set(this.mTraceId);
-    return localStQWebReq;
+    return localStQWebReq.toByteArray();
   }
   
-  public int getRetryCount()
+  public String getSsoFailMsg()
   {
-    return this.mRetryCount;
+    return this.mSsoFailMsg;
   }
   
-  public String getTraceId()
+  public int getSsoResultCode()
   {
-    return this.mTraceId;
+    return this.mSsoResultCode;
   }
   
-  public boolean isAsyncCallBack()
+  public int getSsoSeq()
   {
-    return true;
+    return this.mSsoSeq;
   }
   
-  public boolean isEnableCache()
-  {
-    return this.isEnableCache;
-  }
-  
-  public boolean isNeedRetry(long paramLong)
-  {
-    if (paramLong == -2L) {}
-    for (boolean bool = false;; bool = true)
-    {
-      QLog.d("VSBaseRequest", 1, new Object[] { "CmdName:", getCmdName(), ",retCode:", Long.valueOf(paramLong), "isNeedRetry:" + bool });
-      return bool;
-    }
-  }
-  
-  public Object[] parseResponseWrapper(byte[] paramArrayOfByte)
+  public Object[] parseResponseHeadInfo(byte[] paramArrayOfByte)
   {
     PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    localStQWebRsp.mergeFrom(paramArrayOfByte);
-    return new Object[] { Long.valueOf(localStQWebRsp.retCode.get()), localStQWebRsp.errMsg.get().toStringUtf8(), localStQWebRsp.busiBuff.get() };
-  }
-  
-  public void setContextHashCode(int paramInt)
-  {
-    this.mContextHashCode = paramInt;
-  }
-  
-  public void setEnableCache(boolean paramBoolean)
-  {
-    this.isEnableCache = paramBoolean;
-  }
-  
-  public void setRetryCount(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt > 5) {
-      i = 5;
+    try
+    {
+      localStQWebRsp.mergeFrom(WupUtil.b(paramArrayOfByte));
+      long l = localStQWebRsp.retCode.get();
+      paramArrayOfByte = localStQWebRsp.errMsg.get().toStringUtf8();
+      byte[] arrayOfByte = localStQWebRsp.busiBuff.get().toByteArray();
+      reportCmdSuccessRate(localStQWebRsp);
+      return new Object[] { Long.valueOf(l), paramArrayOfByte, arrayOfByte };
     }
-    this.mRetryCount = i;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  public void reportCmdSuccessRate(PROTOCAL.StQWebRsp paramStQWebRsp) {}
+  
+  public void setNetworkTimeCost(long paramLong)
+  {
+    this.mNetworkTimeCost = paramLong;
+  }
+  
+  public void setSsoFailMsg(String paramString)
+  {
+    this.mSsoFailMsg = paramString;
+  }
+  
+  public void setSsoResultCode(int paramInt)
+  {
+    this.mSsoResultCode = paramInt;
+  }
+  
+  public void setSsoSeq(int paramInt)
+  {
+    this.mSsoSeq = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.VSBaseRequest
  * JD-Core Version:    0.7.0.1
  */

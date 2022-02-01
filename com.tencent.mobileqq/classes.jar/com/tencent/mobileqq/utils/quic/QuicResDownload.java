@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
-import anvx;
-import bcyc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceStatus.ISVConfig;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import java.io.File;
@@ -18,11 +18,16 @@ import java.util.Iterator;
 import java.util.List;
 
 public class QuicResDownload
-  implements bcyc
+  implements ShortVideoResourceStatus.ISVConfig
 {
   private static final String jdField_a_of_type_JavaLangString = Environment.getDataDirectory() + "/data/" + BaseApplicationImpl.sApplication.getBaseContext().getPackageName() + "/app_lib/quic/";
   public static boolean a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  static
+  {
+    jdField_a_of_type_Boolean = false;
+  }
   
   public QuicResDownload(QQAppInterface paramQQAppInterface)
   {
@@ -41,7 +46,7 @@ public class QuicResDownload
   
   private boolean a()
   {
-    boolean bool = NetworkUtil.isWifiConnected(null);
+    boolean bool = NetworkUtil.h(null);
     if (bool)
     {
       VideoEnvironment.LogDownLoad("QuicResDownload", "QUIC配置下载中...", null);
@@ -49,7 +54,7 @@ public class QuicResDownload
       ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
       return bool;
     }
-    VideoEnvironment.LogDownLoad("QuicResDownload", anvx.a(2131710698), null);
+    VideoEnvironment.LogDownLoad("QuicResDownload", HardCodeUtil.a(2131711213), null);
     return bool;
   }
   

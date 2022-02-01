@@ -1,56 +1,55 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.os.Build.VERSION;
-import bnjo;
-import bnkt;
-import bnku;
-import bnqu;
-import bnrh;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import dov.com.qq.im.ae.config.CameraDataServiceHandler;
+import dov.com.qq.im.ae.download.AEResManager;
+import dov.com.qq.im.ae.util.AECameraPrefsUtil;
+import dov.com.qq.im.ae.util.AEQLog;
 
 public class CameraCategoryMaterialStep
   extends AsyncStep
 {
   private long a()
   {
-    return bnqu.a().a("lasttime", 0L, 0);
+    return AECameraPrefsUtil.a().a("lasttime", 0L, 0);
   }
   
   private String a()
   {
-    return bnqu.a().a("last_entry_version", "", 4);
+    return AECameraPrefsUtil.a().a("last_entry_version", "", 4);
   }
   
   private void a(String paramString)
   {
-    bnqu.a().a("last_entry_version", paramString, 4);
+    AECameraPrefsUtil.a().a("last_entry_version", paramString, 4);
   }
   
   private void b(long paramLong)
   {
-    bnqu.a().a("lasttime", paramLong, 0);
+    AECameraPrefsUtil.a().a("lasttime", paramLong, 0);
   }
   
   public int a()
   {
-    bnjo localbnjo;
+    CameraDataServiceHandler localCameraDataServiceHandler;
     if (Build.VERSION.SDK_INT >= 21)
     {
-      localbnjo = (bnjo)this.a.app.getBusinessHandler(BusinessHandlerFactory.CAMERA_HANDLER);
+      localCameraDataServiceHandler = (CameraDataServiceHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.CAMERA_HANDLER);
       if (System.currentTimeMillis() - a() > 86400000L)
       {
         b(System.currentTimeMillis());
         a(AppSetting.a());
-        localbnjo.a("MqStoryCamera");
-        localbnjo.a("MqEmoCamera");
-        localbnjo.a("MqCircleWatermark");
-        localbnjo.b();
-        localbnjo.a();
-        bnku.a().b(bnkt.b, null, false);
+        localCameraDataServiceHandler.a("MqStoryCamera");
+        localCameraDataServiceHandler.a("MqEmoCamera");
+        localCameraDataServiceHandler.a("MqCircleWatermark");
+        localCameraDataServiceHandler.b();
+        localCameraDataServiceHandler.a();
+        AEResManager.a().a();
       }
     }
     for (;;)
@@ -59,10 +58,10 @@ public class CameraCategoryMaterialStep
       if (!AppSetting.a().equals(a()))
       {
         a(AppSetting.a());
-        localbnjo.a();
-        bnku.a().b(bnkt.b, null, false);
+        localCameraDataServiceHandler.a();
+        AEResManager.a().a();
         continue;
-        bnrh.d("QQInitHandler", "[CameraCategoryMaterialStep] Build.VERSION.SDK_INT < 5.0");
+        AEQLog.d("QQInitHandler", "[CameraCategoryMaterialStep] Build.VERSION.SDK_INT < 5.0");
       }
     }
   }

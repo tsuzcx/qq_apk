@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
 import android.content.Context;
-import atab;
-import atdu;
-import audf;
-import auds;
-import aufb;
-import augj;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.filemanager.util.IReportVer51;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView.ScanParams;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +23,7 @@ public class QfileLocalFileMediaTabView
 {
   private int a;
   
-  public QfileLocalFileMediaTabView(Context paramContext, int paramInt, List<augj> paramList, boolean paramBoolean)
+  public QfileLocalFileMediaTabView(Context paramContext, int paramInt, List<QfileTabBarView.ScanParams> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     this.jdField_a_of_type_Int = 3;
@@ -37,7 +36,7 @@ public class QfileLocalFileMediaTabView
     HashMap localHashMap = new HashMap();
     String str;
     if (this.f) {
-      str = audf.a().a();
+      str = FMSettings.a().a();
     }
     while ((this.jdField_a_of_type_Int & 0x1) > 0)
     {
@@ -46,16 +45,16 @@ public class QfileLocalFileMediaTabView
       {
         if (localIterator.hasNext())
         {
-          auds.a(true, ((augj)localIterator.next()).a(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
+          FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
           continue;
           str = null;
           break;
         }
       }
       if (str != null) {
-        auds.a(true, str, ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
+        FileCategoryUtil.a(true, str, ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
       }
-      auds.a(localHashMap);
+      FileCategoryUtil.a(localHashMap);
     }
     return localHashMap;
   }
@@ -65,7 +64,7 @@ public class QfileLocalFileMediaTabView
     HashMap localHashMap = new HashMap();
     String str;
     if (this.f) {
-      str = audf.a().a();
+      str = FMSettings.a().a();
     }
     while ((this.jdField_a_of_type_Int & 0x2) > 0)
     {
@@ -74,16 +73,16 @@ public class QfileLocalFileMediaTabView
       {
         if (localIterator.hasNext())
         {
-          auds.a(true, ((augj)localIterator.next()).a(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
+          FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
           continue;
           str = null;
           break;
         }
       }
       if (str != null) {
-        auds.a(true, str, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
+        FileCategoryUtil.a(true, str, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
       }
-      auds.a(localHashMap);
+      FileCategoryUtil.a(localHashMap);
     }
     return localHashMap;
   }
@@ -99,7 +98,7 @@ public class QfileLocalFileMediaTabView
       return;
       if ((this.f) && ((this.jdField_a_of_type_Int & 0x1) > 0))
       {
-        Map localMap = auds.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
+        Map localMap = FileCategoryUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
         if (localMap == null) {
           break;
         }
@@ -126,7 +125,7 @@ public class QfileLocalFileMediaTabView
       return;
       if ((this.f) && ((this.jdField_a_of_type_Int & 0x2) > 0))
       {
-        Map localMap = auds.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
+        Map localMap = FileCategoryUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
         if (localMap == null) {
           break;
         }
@@ -142,9 +141,9 @@ public class QfileLocalFileMediaTabView
     }
   }
   
-  protected atab a()
+  protected QfileBaseExpandableListAdapter a()
   {
-    return new atdu(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
+    return new QfileLocalFileBaseExpandableListAdapter(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
   }
   
   protected void a()
@@ -209,7 +208,7 @@ public class QfileLocalFileMediaTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView
  * JD-Core Version:    0.7.0.1
  */

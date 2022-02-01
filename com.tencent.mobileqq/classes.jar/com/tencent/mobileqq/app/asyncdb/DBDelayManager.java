@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.asyncdb;
 
 import com.tencent.mobileqq.app.proxy.BaseProxyManager;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
@@ -10,19 +10,20 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
+import mqq.app.AppRuntime;
 import mqq.manager.Manager;
 
 public class DBDelayManager
   implements Manager
 {
   private static final String TAG = "Q.db.Cache";
-  private IMCoreAppRuntime app;
+  private AppRuntime app;
   Vector<BaseDBQueueItem> baseQueue;
   boolean isDestroyed = false;
   
-  public DBDelayManager(IMCoreAppRuntime paramIMCoreAppRuntime)
+  public DBDelayManager(AppRuntime paramAppRuntime)
   {
-    this.app = paramIMCoreAppRuntime;
+    this.app = paramAppRuntime;
     this.baseQueue = new Vector();
     this.isDestroyed = false;
   }
@@ -46,7 +47,7 @@ public class DBDelayManager
         Object localObject3 = (List)this.baseQueue.clone();
         this.baseQueue.clear();
         if (localObject3 == null) {
-          break label477;
+          break label429;
         }
         localObject2 = null;
         ??? = null;
@@ -66,12 +67,12 @@ public class DBDelayManager
           paramEntityManager.printStackTrace();
           localObject2 = ???;
           if (!QLog.isColorLevel()) {
-            break label351;
+            break label303;
           }
           localObject2 = ???;
           QLog.w("Q.db.Cache", 2, "writeRunable write exception: " + paramEntityManager.getMessage());
           if (??? == null) {
-            break label477;
+            break label429;
           }
           ((EntityTransaction)???).end();
           return;
@@ -91,14 +92,14 @@ public class DBDelayManager
         finally
         {
           if (localObject2 == null) {
-            break label414;
+            break label366;
           }
           localObject2.end();
         }
         ??? = localEntityTransaction;
         localObject2 = localEntityTransaction;
         if (!((Iterator)localObject3).hasNext()) {
-          break label456;
+          break label408;
         }
         ??? = localEntityTransaction;
         localObject2 = localEntityTransaction;
@@ -109,14 +110,6 @@ public class DBDelayManager
         ??? = localEntityTransaction;
         localObject2 = localEntityTransaction;
         localProxyListener = localBaseDBQueueItem.listener;
-        ??? = localEntityTransaction;
-        localObject2 = localEntityTransaction;
-        if (QLog.isColorLevel())
-        {
-          ??? = localEntityTransaction;
-          localObject2 = localEntityTransaction;
-          QLog.d("Q.db.Cache", 2, "writeRunable QueueItem.action: " + localBaseDBQueueItem.action);
-        }
         ??? = localEntityTransaction;
         localObject2 = localEntityTransaction;
         switch (localBaseDBQueueItem.action)
@@ -133,9 +126,9 @@ public class DBDelayManager
           localProxyListener.onInsertFinish(str);
         }
       }
-      label351:
+      label303:
+      label366:
       ??? = localEntityTransaction;
-      label414:
       Object localObject2 = localEntityTransaction;
       paramEntityManager.remove(localBaseDBQueueItem.item);
       if (localProxyListener != null)
@@ -144,14 +137,14 @@ public class DBDelayManager
         localObject2 = localEntityTransaction;
         localProxyListener.onDeleteFinish(str, 1);
         continue;
-        label456:
+        label408:
         ??? = localEntityTransaction;
         localObject2 = localEntityTransaction;
         localEntityTransaction.commit();
         if (localEntityTransaction != null) {
           localEntityTransaction.end();
         }
-        label477:
+        label429:
         return;
       }
     }
@@ -238,7 +231,7 @@ public class DBDelayManager
   
   public void saveNotify()
   {
-    this.app.getProxyManager().saveNotify();
+    this.app.getProxyManagerInner().saveNotify();
   }
   
   public void start() {}

@@ -9,7 +9,7 @@ class ProfileCardMoreActivity$2
   
   public void run()
   {
-    this.this$0.c(this.this$0.a.getLeft(), this.this$0.a.getTop() + this.this$0.a.getMeasuredHeight() - 20);
+    this.this$0.b(this.this$0.a.getLeft(), this.this$0.a.getTop() + this.this$0.a.getMeasuredHeight() - 20);
   }
 }
 

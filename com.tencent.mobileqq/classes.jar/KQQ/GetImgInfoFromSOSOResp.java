@@ -8,7 +8,7 @@ public final class GetImgInfoFromSOSOResp
   extends JceStruct
 {
   static byte[] cache_vecRespBody;
-  public byte[] vecRespBody;
+  public byte[] vecRespBody = null;
   
   public GetImgInfoFromSOSOResp() {}
   

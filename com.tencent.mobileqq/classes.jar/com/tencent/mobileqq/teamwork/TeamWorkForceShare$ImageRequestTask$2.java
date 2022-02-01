@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamwork;
 
-import anvx;
-import bisl;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 
 class TeamWorkForceShare$ImageRequestTask$2
@@ -12,7 +12,7 @@ class TeamWorkForceShare$ImageRequestTask$2
   public void run()
   {
     TeamWorkForceShare.a(this.a.this$0).dismiss();
-    QQToast.a(TeamWorkForceShare.a(this.a.this$0), anvx.a(2131714187), 0).a();
+    QQToast.a(TeamWorkForceShare.a(this.a.this$0), HardCodeUtil.a(2131714683), 0).a();
   }
 }
 

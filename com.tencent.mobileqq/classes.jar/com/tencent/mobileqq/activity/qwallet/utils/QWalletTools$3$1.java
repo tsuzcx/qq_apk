@@ -19,7 +19,7 @@ class QWalletTools$3$1
       {
         localRedDotImageView.setReddotXOffsetDp(15);
         localRedDotImageView.setReddotYOffsetDp(10);
-        localRedDotImageView.setRedDotDrawable(localRedDotImageView.getResources().getDrawable(2130850428));
+        localRedDotImageView.setRedDotDrawable(localRedDotImageView.getResources().getDrawable(2130850831));
         localRedDotImageView.a(true);
       }
       return;
@@ -32,7 +32,7 @@ class QWalletTools$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.3.1
  * JD-Core Version:    0.7.0.1
  */

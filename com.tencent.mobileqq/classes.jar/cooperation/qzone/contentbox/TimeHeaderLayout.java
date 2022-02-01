@@ -14,7 +14,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bmkt;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -25,6 +24,7 @@ import common.config.service.QzoneConfig;
 import cooperation.qzone.QUA;
 import cooperation.qzone.report.lp.LpReportInfo_dc02880;
 import cooperation.qzone.report.lp.LpReportManager;
+import cooperation.vip.VipReporterManager;
 import mqq.app.AppRuntime;
 
 public class TimeHeaderLayout
@@ -91,17 +91,17 @@ public class TimeHeaderLayout
   private void init()
   {
     this.handler = new Handler(Looper.getMainLooper());
-    LayoutInflater.from(getContext()).inflate(2131562429, this, true);
+    LayoutInflater.from(getContext()).inflate(2131562572, this, true);
     this.preferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_time_capsule", 0);
-    this.timeCapsule = findViewById(2131378913);
-    this.avatarView = ((ImageView)findViewById(2131363145));
-    this.registerDyasView = ((TextView)findViewById(2131375901));
-    this.loginDaysView = ((TextView)findViewById(2131375396));
-    this.vistorView = ((TextView)findViewById(2131375975));
-    this.mLayoutVisitor = ((LinearLayout)findViewById(2131369950));
+    this.timeCapsule = findViewById(2131379344);
+    this.avatarView = ((ImageView)findViewById(2131363196));
+    this.registerDyasView = ((TextView)findViewById(2131376283));
+    this.loginDaysView = ((TextView)findViewById(2131375775));
+    this.vistorView = ((TextView)findViewById(2131376356));
+    this.mLayoutVisitor = ((LinearLayout)findViewById(2131370220));
     this.mLayoutVisitor.setOnClickListener(this);
-    findViewById(2131378913).setOnClickListener(this);
-    bmkt.a(9, 1);
+    findViewById(2131379344).setOnClickListener(this);
+    VipReporterManager.a(9, 1);
   }
   
   private void onDetailClick(TimeHeaderLayout.HeadInfo paramHeadInfo)
@@ -109,7 +109,7 @@ public class TimeHeaderLayout
     LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(7, 3);
     LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, true);
     if ((this.onDetailClickListner != null) && (paramHeadInfo != null)) {
-      this.onDetailClickListner.onDetailClick(paramHeadInfo.jumpUrl, 2131378913);
+      this.onDetailClickListner.onDetailClick(paramHeadInfo.jumpUrl, 2131379344);
     }
   }
   
@@ -163,8 +163,8 @@ public class TimeHeaderLayout
         if (QLog.isColorLevel()) {
           QLog.i("QZoneMsg", 0, " jump url = " + str);
         }
-        bmkt.a(9, 2);
-        this.onDetailClickListner.onDetailClick(str, 2131369950);
+        VipReporterManager.a(9, 2);
+        this.onDetailClickListner.onDetailClick(str, 2131370220);
       }
     }
   }
@@ -184,7 +184,7 @@ public class TimeHeaderLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.TimeHeaderLayout
  * JD-Core Version:    0.7.0.1
  */

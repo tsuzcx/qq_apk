@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 class DeviceInfoPlugin$1
   implements EIPCResultCallback
 {
-  DeviceInfoPlugin$1(DeviceInfoPlugin paramDeviceInfoPlugin, NativePlugin.JSContext paramJSContext) {}
+  DeviceInfoPlugin$1(DeviceInfoPlugin paramDeviceInfoPlugin, JSContext paramJSContext) {}
   
   public void onCallback(EIPCResult paramEIPCResult)
   {

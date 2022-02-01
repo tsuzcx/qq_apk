@@ -2,7 +2,10 @@ package com.tencent.mobileqq.pluginsdk;
 
 import android.content.Context;
 import android.content.ServiceConnection;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +26,15 @@ public class PluginManagerHelper
   public static void destory(Context paramContext)
   {
     PluginRemoteProcessor.get().cancel(sSc);
+  }
+  
+  public static PluginManagerClient getPluginInterface(Context paramContext)
+  {
+    paramContext = QIPCClientHelper.getInstance().callServer("qipc_plugin_module", "qipc_action_manager_client", null);
+    if (paramContext.isSuccess()) {
+      return new PluginManagerClient(RemotePluginManager.Stub.asInterface(((BinderParcelable)paramContext.data.getParcelable("plugin_client_binder")).mBinder));
+    }
+    return new PluginManagerClient(null);
   }
   
   public static void getPluginInterface(Context paramContext, PluginManagerHelper.OnPluginManagerLoadedListener paramOnPluginManagerLoadedListener)

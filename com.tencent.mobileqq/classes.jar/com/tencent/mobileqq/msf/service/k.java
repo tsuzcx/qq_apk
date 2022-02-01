@@ -12,7 +12,8 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.core.net.m;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -193,7 +194,7 @@ public class k
     }
   }
   
-  public static void a(com.tencent.mobileqq.msf.core.c.k paramk, boolean paramBoolean)
+  public static void a(j paramj, boolean paramBoolean)
   {
     d = paramBoolean;
     long l3 = System.currentTimeMillis();
@@ -218,7 +219,7 @@ public class k
         a.b();
       }
       if (l2 <= b) {
-        a.a(paramk);
+        a.a(paramj);
       }
       return;
       l3 = a(a.c);
@@ -228,14 +229,14 @@ public class k
         if (QLog.isColorLevel()) {
           QLog.d(c, 1, "not same day report " + l3 + " " + l4);
         }
-        a.b(paramk);
+        a.b(paramj);
       }
       for (;;)
       {
         if (l2 <= b) {
           break label337;
         }
-        a.b(paramk);
+        a.b(paramj);
         break;
         if (QLog.isColorLevel()) {
           QLog.d(c, 1, "fix data " + a.p + " " + a.c);

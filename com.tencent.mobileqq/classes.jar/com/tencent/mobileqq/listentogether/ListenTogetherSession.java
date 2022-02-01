@@ -3,19 +3,17 @@ package com.tencent.mobileqq.listentogether;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anvx;
-import awfp;
-import awfq;
-import bekh;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.together.TogetherSession;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListenTogetherSession
-  extends bekh
+  extends TogetherSession
   implements Parcelable
 {
-  public static final Parcelable.Creator<ListenTogetherSession> CREATOR = new awfp();
+  public static final Parcelable.Creator<ListenTogetherSession> CREATOR = new ListenTogetherSession.1();
   public int a;
   public String a;
   public List<MusicInfo> a;
@@ -30,6 +28,9 @@ public class ListenTogetherSession
   
   public ListenTogetherSession(int paramInt, String paramString)
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_c_of_type_Int = 1;
     this.jdField_d_of_type_Int = 0;
     this.jdField_e_of_type_Int = 1;
@@ -39,6 +40,9 @@ public class ListenTogetherSession
   
   private ListenTogetherSession(Parcel paramParcel)
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_c_of_type_Int = 1;
     this.jdField_d_of_type_Int = 0;
     this.jdField_e_of_type_Int = paramParcel.readInt();
@@ -58,10 +62,10 @@ public class ListenTogetherSession
       this.jdField_a_of_type_Int = paramParcel.readInt();
       this.jdField_b_of_type_JavaLangString = paramParcel.readString();
       if (paramParcel.readByte() != 1) {
-        break label178;
+        break label193;
       }
     }
-    label178:
+    label193:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_b_of_type_Boolean = bool1;
@@ -85,7 +89,7 @@ public class ListenTogetherSession
   
   public String a(int paramInt1, int paramInt2)
   {
-    return awfq.a(this.jdField_f_of_type_Int, paramInt1, paramInt2);
+    return ListenTogetherUtils.a(this.jdField_f_of_type_Int, paramInt1, paramInt2);
   }
   
   public void a(ListenTogetherSession paramListenTogetherSession)
@@ -121,13 +125,13 @@ public class ListenTogetherSession
     do
     {
       return i;
-      if (anvx.a(2131693534).equals(this.jdField_a_of_type_JavaLangString)) {
+      if (HardCodeUtil.a(2131693690).equals(this.jdField_a_of_type_JavaLangString)) {
         return 3;
       }
-      if (anvx.a(2131693545).equals(this.jdField_a_of_type_JavaLangString)) {
+      if (HardCodeUtil.a(2131693701).equals(this.jdField_a_of_type_JavaLangString)) {
         return 2;
       }
-    } while (anvx.a(2131693561).equals(this.jdField_a_of_type_JavaLangString));
+    } while (HardCodeUtil.a(2131693717).equals(this.jdField_a_of_type_JavaLangString));
     return 4;
   }
   

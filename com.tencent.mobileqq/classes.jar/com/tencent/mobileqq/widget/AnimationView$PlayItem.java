@@ -22,7 +22,7 @@ public class AnimationView$PlayItem
     this.mCycle = paramInt3;
   }
   
-  protected static PlayItem loadFromJson(JSONObject paramJSONObject)
+  protected static PlayItem a(JSONObject paramJSONObject)
   {
     int i = 1;
     if (paramJSONObject == null) {
@@ -72,7 +72,7 @@ public class AnimationView$PlayItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView.PlayItem
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public final class s_schema
   public String postparams = "";
   public String schemapageurl = "";
   public byte usepost;
-  public boolean yingyongbao;
+  public boolean yingyongbao = false;
   
   public s_schema() {}
   

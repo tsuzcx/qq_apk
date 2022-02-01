@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class PushInfo
   extends JceStruct
 {
-  public int totalPush;
+  public int totalPush = 0;
   
   public PushInfo() {}
   

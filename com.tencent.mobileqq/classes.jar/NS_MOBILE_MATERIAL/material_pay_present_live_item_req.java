@@ -8,10 +8,10 @@ public final class material_pay_present_live_item_req
   extends JceStruct
 {
   static LiveInfo cache_stLiveInfo = new LiveInfo();
-  public int iAppid;
-  public long lPayUin;
-  public long lPresentUin;
-  public LiveInfo stLiveInfo;
+  public int iAppid = 0;
+  public long lPayUin = 0L;
+  public long lPresentUin = 0L;
+  public LiveInfo stLiveInfo = null;
   public String strItemId = "";
   public String strQua = "";
   public String strSerialNo = "";

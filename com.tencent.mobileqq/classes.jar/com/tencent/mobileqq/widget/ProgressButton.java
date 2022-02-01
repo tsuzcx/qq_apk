@@ -28,6 +28,7 @@ public class ProgressButton
   {
     super(paramContext);
     this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_Float = 0.0F;
     this.jdField_a_of_type_Int = 100;
     a();
   }
@@ -36,6 +37,7 @@ public class ProgressButton
   {
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_Float = 0.0F;
     this.jdField_a_of_type_Int = 100;
     a();
   }
@@ -43,7 +45,7 @@ public class ProgressButton
   private void a()
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    int i = getResources().getColorStateList(2131167061).getDefaultColor();
+    int i = getResources().getColorStateList(2131167068).getDefaultColor();
     if (this.jdField_b_of_type_Int == -1)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
@@ -57,13 +59,13 @@ public class ProgressButton
     if (this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable != null) {
       return this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
     }
-    float f = ViewUtils.dip2px(50.0F);
+    float f = ViewUtils.a(50.0F);
     ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
     localShapeDrawable.getPaint().setColor(paramInt);
     return new ClipDrawable(localShapeDrawable, 8388611, 1);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable != null)
     {
@@ -106,7 +108,7 @@ public class ProgressButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProgressButton
  * JD-Core Version:    0.7.0.1
  */

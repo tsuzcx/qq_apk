@@ -2,9 +2,9 @@ package com.tencent.mobileqq.microapp;
 
 public final class R$layout
 {
-  public static int a = 2131559019;
-  public static int b = 2131561988;
-  public static int c = 2131561989;
+  public static int a = 2131559060;
+  public static int b = 2131562125;
+  public static int c = 2131562126;
 }
 
 

@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import anwv;
-import arph;
-import bhhr;
+import com.tencent.mobileqq.app.HotchatSCMng;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-public class ConfigServlet$9
+class ConfigServlet$9
   implements Runnable
 {
-  public ConfigServlet$9(arph paramarph, ConfigurationService.Config paramConfig) {}
+  ConfigServlet$9(ConfigServlet paramConfigServlet, QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.this$0.getAppRuntime();
-    boolean bool = ((anwv)localQQAppInterface.getManager(QQManagerFactory.HOTCHAT_SCENE_CONFIG_MANAGER)).a(this.a);
-    bhhr.a(localQQAppInterface.getApp(), this.a.version.get(), bool);
+    boolean bool = ((HotchatSCMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOTCHAT_SCENE_CONFIG_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config);
+    SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get(), bool);
   }
 }
 

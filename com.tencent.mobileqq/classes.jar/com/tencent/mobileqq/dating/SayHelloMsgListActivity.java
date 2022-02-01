@@ -1,16 +1,12 @@
 package com.tencent.mobileqq.dating;
 
-import Override;
-import acmw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import arxx;
-import aryt;
-import axpz;
+import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
 import com.tencent.mobileqq.app.AppConstants;
@@ -18,6 +14,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -31,11 +28,11 @@ import mqq.os.MqqHandler;
 public class SayHelloMsgListActivity
   extends BaseMsgBoxActivity
 {
-  axpz a;
+  NearbyRelevantObserver a;
   
   public SayHelloMsgListActivity()
   {
-    this.jdField_a_of_type_Axpz = new aryt(this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver = new SayHelloMsgListActivity.1(this);
   }
   
   protected List<RecentBaseData> a(List<MessageRecord> paramList)
@@ -97,7 +94,7 @@ public class SayHelloMsgListActivity
       {
         localIterator.remove();
       }
-      else if (arxx.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (DatingUtil.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject1;
         if (localObject1 == null) {
@@ -107,7 +104,7 @@ public class SayHelloMsgListActivity
         ((List)localObject3).add(localMessageRecord);
         localObject1 = localObject3;
       }
-      else if (arxx.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (DatingUtil.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject2;
         if (localObject2 == null) {
@@ -140,15 +137,15 @@ public class SayHelloMsgListActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setTitle(2131698636);
-    this.app.addObserver(this.jdField_a_of_type_Axpz, true);
+    super.setTitle(2131698938);
+    this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver, true);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Axpz);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver);
   }
   
   public void finish()
@@ -170,7 +167,7 @@ public class SayHelloMsgListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.SayHelloMsgListActivity
  * JD-Core Version:    0.7.0.1
  */

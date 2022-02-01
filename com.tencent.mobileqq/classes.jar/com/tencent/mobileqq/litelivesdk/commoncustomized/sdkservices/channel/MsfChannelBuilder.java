@@ -1,0 +1,21 @@
+package com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.channel;
+
+import com.tencent.falco.base.libapi.ServiceBaseInterface;
+import com.tencent.falco.utils.ThreadCenter.HandlerKeyable;
+import com.tencent.livesdk.servicefactory.ServiceAccessor;
+import com.tencent.livesdk.servicefactory.builder.BaseServiceBuilder;
+
+public class MsfChannelBuilder
+  implements ThreadCenter.HandlerKeyable, BaseServiceBuilder
+{
+  public ServiceBaseInterface build(ServiceAccessor paramServiceAccessor)
+  {
+    return new MsfChannelService();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.channel.MsfChannelBuilder
+ * JD-Core Version:    0.7.0.1
+ */

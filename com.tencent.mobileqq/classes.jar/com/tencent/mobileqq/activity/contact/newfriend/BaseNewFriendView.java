@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aiyo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +10,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class BaseNewFriendView
   extends FrameLayout
 {
-  public aiyo a;
   protected Intent a;
-  public QQAppInterface a;
+  protected BaseNewFriendView.INewFriendContext a;
+  protected QQAppInterface a;
   private boolean a;
-  private boolean b;
+  private boolean b = false;
   
   public BaseNewFriendView(Context paramContext)
   {
@@ -26,7 +25,7 @@ public class BaseNewFriendView
   {
     this.b = false;
     if (!a()) {
-      this.jdField_a_of_type_Aiyo.b();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.b();
     }
   }
   
@@ -34,16 +33,16 @@ public class BaseNewFriendView
   {
     if ((20000 == paramInt1) && (paramInt2 != 0))
     {
-      this.jdField_a_of_type_Aiyo.getActivity().setResult(paramInt2, paramIntent);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.getActivity().setResult(paramInt2, paramIntent);
       g();
     }
   }
   
-  protected void a(Intent paramIntent, aiyo paramaiyo)
+  protected void a(Intent paramIntent, BaseNewFriendView.INewFriendContext paramINewFriendContext)
   {
     this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_Aiyo = paramaiyo;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Aiyo.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext = paramINewFriendContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.a();
   }
   
   protected final boolean a()
@@ -56,10 +55,10 @@ public class BaseNewFriendView
     this.jdField_a_of_type_Boolean = false;
     if (this.b)
     {
-      this.jdField_a_of_type_Aiyo.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.a();
       return;
     }
-    this.jdField_a_of_type_Aiyo.b();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.b();
   }
   
   protected void c() {}
@@ -82,12 +81,12 @@ public class BaseNewFriendView
   protected void g()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Aiyo.getActivity().finish();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.BaseNewFriendView
  * JD-Core Version:    0.7.0.1
  */

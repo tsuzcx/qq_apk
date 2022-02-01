@@ -15,8 +15,8 @@ class TaskManager$22
   {
     paramJSContext = new JSONObject();
     paramJSContext.put("platform", "Android");
-    paramJSContext.put("sys_version", DeviceInfoUtil.getDeviceOSVersion());
-    paramJSContext.put("qq_version", DeviceInfoUtil.getQQVersion());
+    paramJSContext.put("sys_version", DeviceInfoUtil.e());
+    paramJSContext.put("qq_version", DeviceInfoUtil.c());
     paramJSContext.put("framework_version", String.valueOf(TaskManager.scriptVersion));
     paramJSContext.putOpt("app_id", Integer.valueOf(AppSetting.a()));
     return paramJSContext.toString();
@@ -24,7 +24,7 @@ class TaskManager$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager.22
  * JD-Core Version:    0.7.0.1
  */

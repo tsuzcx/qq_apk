@@ -1,10 +1,10 @@
 package com.tencent.av.smallscreen;
 
-import bdla;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.tips.TipsUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import lfe;
-import mbf;
 
 class SmallScreenMultiVideoControlUI$RequestVideoTimeOutRunnable
   implements Runnable
@@ -16,13 +16,13 @@ class SmallScreenMultiVideoControlUI$RequestVideoTimeOutRunnable
     if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null)
     {
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a("Small_RequestVideoTimeOutRunnable");
-      mbf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
-      mbf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
-      mbf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030, 2131695625);
+      TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
+      TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
+      TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030, 2131695868);
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().a(this.this$0.jdField_a_of_type_Long, true, true);
       this.this$0.a(true, false, true);
       if (this.this$0.d == 2) {
-        bdla.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
+        ReportController.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
       }
     }
     while (!QLog.isColorLevel()) {
@@ -33,7 +33,7 @@ class SmallScreenMultiVideoControlUI$RequestVideoTimeOutRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI.RequestVideoTimeOutRunnable
  * JD-Core Version:    0.7.0.1
  */

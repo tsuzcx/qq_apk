@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aggp;
 import android.os.Bundle;
-import anzc;
+import com.tencent.mobileqq.app.MessageRoamManager;
 
-public class AIOSearchBarHelper$1
+class AIOSearchBarHelper$1
   implements Runnable
 {
-  public AIOSearchBarHelper$1(aggp paramaggp, Bundle paramBundle) {}
+  AIOSearchBarHelper$1(AIOSearchBarHelper paramAIOSearchBarHelper, Bundle paramBundle) {}
   
   public void run()
   {
-    aggp.a(this.this$0).a(this.a.getString("uin"));
-    aggp.a(this.this$0).b(this.this$0.hashCode());
+    AIOSearchBarHelper.a(this.this$0).a(this.a.getString("uin"));
+    AIOSearchBarHelper.a(this.this$0).b(this.this$0.hashCode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOSearchBarHelper.1
  * JD-Core Version:    0.7.0.1
  */

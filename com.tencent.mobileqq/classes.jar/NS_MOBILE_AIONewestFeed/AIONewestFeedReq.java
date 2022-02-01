@@ -10,9 +10,9 @@ public final class AIONewestFeedReq
 {
   static ArrayList<Long> cache_uHostUin = new ArrayList();
   public int src = 0;
-  public ArrayList<Long> uHostUin;
-  public long uLastTime;
-  public long uOpUin;
+  public ArrayList<Long> uHostUin = null;
+  public long uLastTime = 0L;
+  public long uOpUin = 0L;
   
   static
   {

@@ -1,16 +1,14 @@
 package com.tencent.avgame.qav;
 
-import bkys;
 import com.tencent.av.camera.CameraUtils;
 import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.business.observer.ObserverCenter;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import mqq.util.WeakReference;
-import ndq;
-import nnr;
-import nnu;
 
-public class AVGameCameraAssistant$3
+class AVGameCameraAssistant$3
   implements Runnable
 {
   AVGameCameraAssistant$3(AVGameCameraAssistant paramAVGameCameraAssistant) {}
@@ -31,8 +29,8 @@ public class AVGameCameraAssistant$3
         if ((bool) || (AVGameCameraAssistant.a(this.this$0) != null)) {
           break label213;
         }
-        AVGameCameraAssistant.a(this.this$0, new nnr(this));
-        ndq.a().a(AVGameCameraAssistant.a(this.this$0), true);
+        AVGameCameraAssistant.a(this.this$0, new AVGameCameraAssistant.3.1(this));
+        ObserverCenter.a().a(AVGameCameraAssistant.a(this.this$0), true);
         if (QLog.isColorLevel()) {
           QLog.i("AVGameCameraAssistant", 2, "check ptv so ret[" + bool + "]");
         }
@@ -56,7 +54,7 @@ public class AVGameCameraAssistant$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.qav.AVGameCameraAssistant.3
  * JD-Core Version:    0.7.0.1
  */

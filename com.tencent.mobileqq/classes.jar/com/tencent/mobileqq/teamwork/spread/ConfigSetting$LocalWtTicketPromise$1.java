@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import bedz;
-import beea;
 import java.lang.ref.WeakReference;
 
-public class ConfigSetting$LocalWtTicketPromise$1
+class ConfigSetting$LocalWtTicketPromise$1
   implements Runnable
 {
-  public ConfigSetting$LocalWtTicketPromise$1(beea parambeea) {}
+  ConfigSetting$LocalWtTicketPromise$1(ConfigSetting.LocalWtTicketPromise paramLocalWtTicketPromise) {}
   
   public void run()
   {
-    bedz localbedz = (bedz)beea.a(this.this$0).get();
-    if (localbedz != null) {
-      bedz.a(localbedz, beea.a(this.this$0));
+    ConfigSetting localConfigSetting = (ConfigSetting)ConfigSetting.LocalWtTicketPromise.a(this.this$0).get();
+    if (localConfigSetting != null) {
+      ConfigSetting.a(localConfigSetting, ConfigSetting.LocalWtTicketPromise.a(this.this$0));
     }
   }
 }

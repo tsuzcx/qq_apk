@@ -1,7 +1,6 @@
 package dov.com.qq.im.aeeditor.module.filter;
 
-import bnqm;
-import boad;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
 
 class AEEditorFilterControlPanel$6
   implements Runnable
@@ -13,14 +12,14 @@ class AEEditorFilterControlPanel$6
     if (AEEditorFilterControlPanel.a(this.this$0) != null)
     {
       AEEditorFilterControlPanel.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
-      bnqm.a().b(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.getEffectId());
+      AEBaseDataReporter.a().b(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.getEffectId());
     }
     this.this$0.a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel.6
  * JD-Core Version:    0.7.0.1
  */

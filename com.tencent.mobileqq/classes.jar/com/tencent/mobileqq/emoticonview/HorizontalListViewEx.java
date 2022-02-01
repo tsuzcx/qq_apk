@@ -21,7 +21,6 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.ListAdapter;
-import bldq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -29,6 +28,7 @@ import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.OverScroller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -39,9 +39,9 @@ public class HorizontalListViewEx
   private static LayoutInflater inflater;
   private static List<View> tabCacheViews = Collections.synchronizedList(new ArrayList());
   private int mIndicatorRoundRectX;
-  protected int mIndicatorStartX;
-  private boolean mIsAnimTabIndicatoring;
-  private boolean mIsTabAnimateEnable;
+  protected int mIndicatorStartX = 0;
+  private boolean mIsAnimTabIndicatoring = false;
+  private boolean mIsTabAnimateEnable = false;
   private int mOldSelectedAdapterIndex = -1;
   private Paint mRectPaint;
   private RectF mRoundRect;
@@ -56,7 +56,7 @@ public class HorizontalListViewEx
   public HorizontalListViewEx(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.mTabWidth = AIOUtils.dp2px(51.0F, paramContext.getResources());
+    this.mTabWidth = AIOUtils.a(51.0F, paramContext.getResources());
     paramAttributeSet = new DisplayMetrics();
     ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(paramAttributeSet);
     this.mScreenWidth = paramAttributeSet.widthPixels;
@@ -100,9 +100,9 @@ public class HorizontalListViewEx
     this.mRectPaint = new Paint();
     this.mRectPaint.setAntiAlias(true);
     this.mRectPaint.setStyle(Paint.Style.FILL);
-    this.mRectPaint.setColor(getResources().getColor(2131166536));
+    this.mRectPaint.setColor(getResources().getColor(2131166539));
     this.mRoundRect = new RectF();
-    this.mIndicatorRoundRectX = ViewUtils.dip2px(18.0F);
+    this.mIndicatorRoundRectX = ViewUtils.a(18.0F);
   }
   
   public static void produceTabView(int paramInt)
@@ -119,7 +119,7 @@ public class HorizontalListViewEx
       if (i < paramInt) {
         try
         {
-          View localView = inflater.inflate(2131559180, null, false);
+          View localView = inflater.inflate(2131559214, null, false);
           if (localView != null) {
             tabCacheViews.add(localView);
           }
@@ -268,7 +268,13 @@ public class HorizontalListViewEx
   
   public void resetCurrentX(int paramInt)
   {
-    int i = this.mTabWidth * paramInt - (getMeasuredWidth() - this.mTabWidth);
+    int k = this.mTabWidth;
+    int j = getMeasuredWidth();
+    int i = j;
+    if (j == 0) {
+      i = ViewUtils.a();
+    }
+    i = paramInt * k - (i - this.mTabWidth);
     paramInt = i;
     if (i < 0) {
       paramInt = 0;
@@ -285,7 +291,7 @@ public class HorizontalListViewEx
     if (i > this.mMaxX) {
       return 1;
     }
-    this.mScroller.a(this.mNextX, 0, paramInt, 0, 20);
+    this.mScroller.startScroll(this.mNextX, 0, paramInt, 0, 20);
     setCurrentScrollState(4098);
     requestLayout();
     return 0;
@@ -406,7 +412,7 @@ public class HorizontalListViewEx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.HorizontalListViewEx
  * JD-Core Version:    0.7.0.1
  */

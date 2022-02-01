@@ -2,13 +2,13 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import android.content.res.Resources;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.RecentUser;
-import pkh;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 @Deprecated
 public class RecentItemKandianMergeData
@@ -21,10 +21,10 @@ public class RecentItemKandianMergeData
   public RecentItemKandianMergeData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    if (bmhv.C(BaseApplicationImpl.getApplication().getRuntime()) == 1) {}
+    if (ReadInJoyHelper.z(BaseApplicationImpl.getApplication().getRuntime()) == 1) {}
     for (this.mUnreadFlag = 1;; this.mUnreadFlag = 2)
     {
-      this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131167138);
+      this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131167145);
       return;
     }
   }
@@ -39,14 +39,14 @@ public class RecentItemKandianMergeData
   
   public long getFaceExtraFlag()
   {
-    Object localObject = (QQAppInterface)pkh.a();
+    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
     if (localObject == null) {
       return super.getFaceExtraFlag();
     }
     localObject = ((QQAppInterface)localObject).getMessageFacade();
     if (localObject != null)
     {
-      localObject = ((QQMessageFacade)localObject).getLastMsgForMsgTab(this.mUser.uin, this.mUser.getType());
+      localObject = ((QQMessageFacade)localObject).b(this.mUser.uin, this.mUser.getType());
       if (localObject == null) {
         return super.getFaceExtraFlag();
       }
@@ -57,14 +57,14 @@ public class RecentItemKandianMergeData
           ((MessageForStructing)localObject).parse();
         }
       }
-      prp.b = pkh.b();
+      com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.push.RIJKanDianFolderStatus.b = ReadInJoyUtils.b();
     }
     return super.getFaceExtraFlag();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemKandianMergeData
  * JD-Core Version:    0.7.0.1
  */

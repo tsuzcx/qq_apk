@@ -15,11 +15,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bhdb;
 import com.tencent.commonsdk.cache.Sizeable;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.CommonImageCacheHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,7 +28,7 @@ public class TroopActiveLayout
   extends View
   implements Handler.Callback
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842578, 2130842579, 2130842579, 2130842580, 2130842581, 2130842582 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842724, 2130842725, 2130842725, 2130842726, 2130842727, 2130842728 };
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
@@ -58,12 +58,12 @@ public class TroopActiveLayout
   public TroopActiveLayout(Context arg1, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(???, paramAttributeSet, paramInt);
-    Sizeable localSizeable = bhdb.a("TroopActiveLayout_cache");
+    Sizeable localSizeable = CommonImageCacheHelper.a("TroopActiveLayout_cache");
     paramAttributeSet = localSizeable;
     if (!(localSizeable instanceof TroopActiveLayout.SizeableBitmapCache))
     {
       paramAttributeSet = new TroopActiveLayout.SizeableBitmapCache(41702);
-      bhdb.a("TroopActiveLayout_cache", paramAttributeSet);
+      CommonImageCacheHelper.a("TroopActiveLayout_cache", paramAttributeSet);
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache = ((TroopActiveLayout.SizeableBitmapCache)paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = ???;
@@ -486,7 +486,7 @@ public class TroopActiveLayout
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int n = getWidth();
@@ -560,7 +560,7 @@ public class TroopActiveLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(a(paramInt1, true), a(paramInt2, false));

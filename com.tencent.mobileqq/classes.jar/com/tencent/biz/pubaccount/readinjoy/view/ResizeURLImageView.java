@@ -11,7 +11,7 @@ import com.tencent.mobileqq.R.styleable;
 public class ResizeURLImageView
   extends ZImageView
 {
-  private boolean mBlockLayout;
+  private boolean mBlockLayout = false;
   private Context mContext;
   private float mHeightWeight = 1.0F;
   private float mWidthWeight = 1.0F;
@@ -41,7 +41,7 @@ public class ResizeURLImageView
     paramAttributeSet.recycle();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
@@ -72,7 +72,7 @@ public class ResizeURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView
  * JD-Core Version:    0.7.0.1
  */

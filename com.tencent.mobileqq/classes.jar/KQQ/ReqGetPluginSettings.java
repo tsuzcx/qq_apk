@@ -9,7 +9,7 @@ public final class ReqGetPluginSettings
   extends JceStruct
 {
   static ArrayList<Long> cache_PluginList;
-  public ArrayList<Long> PluginList;
+  public ArrayList<Long> PluginList = null;
   
   public ReqGetPluginSettings() {}
   

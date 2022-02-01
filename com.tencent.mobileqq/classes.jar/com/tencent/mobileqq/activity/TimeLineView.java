@@ -8,9 +8,9 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.FrameLayout;
-import anvx;
-import anzc;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
@@ -48,7 +48,7 @@ public class TimeLineView
   
   public int a()
   {
-    return AIOUtils.dp2pxByRound(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    return AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   public BitSet a()
@@ -76,13 +76,13 @@ public class TimeLineView
     this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScrollView = paramAutoFitScrollView;
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    int k = AIOUtils.dp2pxByRound(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int m = AIOUtils.dp2pxByRound(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int n = AIOUtils.dp2pxByRound(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int i1 = AIOUtils.dp2pxByRound(7.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int m = AIOUtils.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int n = AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i1 = AIOUtils.b(7.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int j = (this.jdField_b_of_type_Int >> 1) - (m >> 1);
     Paint localPaint1 = new Paint();
     Paint localPaint2 = new Paint();
@@ -114,10 +114,10 @@ public class TimeLineView
       if (i3 != 1) {
         break label389;
       }
-      str = i2 + anvx.a(2131714336);
+      str = i2 + HardCodeUtil.a(2131714831);
       label287:
       float f = localPaint2.measureText(str);
-      i2 = AIOUtils.dp2pxByRound(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      i2 = AIOUtils.b(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramCanvas.drawText(str, m / 2 + j - f / 2.0F, (getHeight() >> 1) - i2, localPaint2);
       label339:
       j += k + m;
@@ -171,7 +171,7 @@ public class TimeLineView
       localStringBuilder.append(i).append("-").append(j + 1).append("-").append(k);
       localStringBuilder.append(", isLoc: ").append(paramBoolean);
     }
-    paramQQAppInterface = (anzc)paramQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    paramQQAppInterface = (MessageRoamManager)paramQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
     if (!paramBoolean) {}
     for (this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.c(this.jdField_a_of_type_JavaUtilCalendar, this.jdField_b_of_type_JavaUtilCalendar);; this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.a(paramCalendar1, paramCalendar2))
     {
@@ -193,7 +193,7 @@ public class TimeLineView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TimeLineView
  * JD-Core Version:    0.7.0.1
  */

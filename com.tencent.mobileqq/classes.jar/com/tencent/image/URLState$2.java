@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 
 class URLState$2
   extends URLDrawableHandler.Adapter
@@ -19,13 +20,13 @@ class URLState$2
     {
       Object localObject = this.this$0.loadImage(this.this$0.mUrl, this.val$handler);
       if (localObject != URLState.DOWNLOAD_ASYNC) {
-        URLState.access$300(this.this$0, localObject);
+        URLState.access$000(this.this$0, localObject);
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("URLDrawable_", 1, "ApngSoLoader error: ", localThrowable);
+      URLDrawable.depImp.mLog.e("URLDrawable_", 1, "ApngSoLoader error: ", localThrowable);
     }
   }
 }

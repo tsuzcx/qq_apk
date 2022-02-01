@@ -2,15 +2,13 @@ package dov.com.tencent.mobileqq.richmedia.mediacodec;
 
 import android.media.MediaPlayer;
 import android.text.TextUtils;
-import bppl;
-import bppm;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class AudioDecoder$BgmAudioPlayRunnable
+class AudioDecoder$BgmAudioPlayRunnable
   implements Runnable
 {
   long jdField_a_of_type_Long;
@@ -33,7 +31,7 @@ public class AudioDecoder$BgmAudioPlayRunnable
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new bppm(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new AudioDecoder.BgmAudioPlayRunnable.1(this));
       return;
     }
     catch (FileNotFoundException paramString)
@@ -114,7 +112,7 @@ public class AudioDecoder$BgmAudioPlayRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.mediacodec.AudioDecoder.BgmAudioPlayRunnable
  * JD-Core Version:    0.7.0.1
  */

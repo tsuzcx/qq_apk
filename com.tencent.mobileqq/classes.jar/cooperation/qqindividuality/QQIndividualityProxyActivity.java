@@ -1,16 +1,15 @@
 package cooperation.qqindividuality;
 
-import Override;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import blvy;
-import blwh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.plugin.PluginInfo;
 import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
 
@@ -22,18 +21,18 @@ public class QQIndividualityProxyActivity
     QQIndividualityPluginProxyService.a();
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", true);
-    blwh localblwh = new blwh(1);
-    localblwh.jdField_b_of_type_JavaLangString = "qqindividuality_plugin.apk";
-    localblwh.d = PluginInfo.m;
-    localblwh.jdField_a_of_type_JavaLangString = paramString1;
-    localblwh.e = paramString2;
-    localblwh.jdField_a_of_type_JavaLangClass = paramClass;
-    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localblwh.jdField_b_of_type_Int = paramInt;
-    localblwh.c = 30000;
-    localblwh.f = null;
-    localblwh.jdField_b_of_type_Boolean = false;
-    blvy.a(paramActivity, localblwh);
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
+    localPluginParams.jdField_b_of_type_JavaLangString = "qqindividuality_plugin.apk";
+    localPluginParams.e = PluginInfo.m;
+    localPluginParams.jdField_a_of_type_JavaLangString = paramString1;
+    localPluginParams.f = paramString2;
+    localPluginParams.jdField_a_of_type_JavaLangClass = paramClass;
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localPluginParams.c = paramInt;
+    localPluginParams.d = 30000;
+    localPluginParams.g = null;
+    localPluginParams.jdField_b_of_type_Boolean = false;
+    IPluginManager.a(paramActivity, localPluginParams);
     if ((paramString2.equals("com.qqindividuality.activity.QQIndividualitySignatureActivity")) && ((paramActivity instanceof QQIndividualityBridgeActivity)) && (paramDialog != null)) {
       paramActivity.finish();
     }
@@ -61,7 +60,7 @@ public class QQIndividualityProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityProxyActivity
  * JD-Core Version:    0.7.0.1
  */

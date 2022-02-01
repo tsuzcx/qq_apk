@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupNickItem
   extends JceStruct
 {
-  public int itemid;
+  public int itemid = 0;
   public String url = "";
   
   public GroupNickItem() {}

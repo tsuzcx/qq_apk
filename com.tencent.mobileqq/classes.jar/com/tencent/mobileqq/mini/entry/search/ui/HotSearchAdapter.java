@@ -21,7 +21,6 @@ import com.tencent.mobileqq.mini.entry.search.comm.SearchInfo;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager.HotSearchDataChangedListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -61,35 +60,31 @@ public class HotSearchAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    HotSearchAdapter.HotSearchViewHolder localHotSearchViewHolder;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559451, paramViewGroup, false);
-      localHotSearchViewHolder = new HotSearchAdapter.HotSearchViewHolder();
-      localHotSearchViewHolder.icon = ((ImageView)paramView.findViewById(2131371320));
-      localHotSearchViewHolder.ranking = ((ImageView)paramView.findViewById(2131371322));
-      localHotSearchViewHolder.name = ((TextView)paramView.findViewById(2131371324));
-      localHotSearchViewHolder.category = ((TextView)paramView.findViewById(2131371325));
-      paramView.setTag(localHotSearchViewHolder);
+      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559518, paramViewGroup, false);
+      paramViewGroup = new HotSearchAdapter.HotSearchViewHolder();
+      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131371600));
+      paramViewGroup.ranking = ((ImageView)paramView.findViewById(2131371602));
+      paramViewGroup.name = ((TextView)paramView.findViewById(2131371604));
+      paramViewGroup.category = ((TextView)paramView.findViewById(2131371605));
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
       SearchInfo localSearchInfo = (SearchInfo)this.appList.get(paramInt);
       try
       {
-        localHotSearchViewHolder.update(paramView, localSearchInfo, (Activity)this.mActivityReference.get(), paramInt, this.mRefer);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        paramViewGroup.update(paramView, localSearchInfo, (Activity)this.mActivityReference.get(), paramInt, this.mRefer);
         return paramView;
-        localHotSearchViewHolder = (HotSearchAdapter.HotSearchViewHolder)paramView.getTag();
       }
-      catch (Exception localException)
+      catch (Exception paramViewGroup)
       {
-        for (;;)
-        {
-          QLog.e("HotSearchAdapter", 1, "getView exception: " + Log.getStackTraceString(localException));
-        }
+        QLog.e("HotSearchAdapter", 1, "getView exception: " + Log.getStackTraceString(paramViewGroup));
       }
+      paramViewGroup = (HotSearchAdapter.HotSearchViewHolder)paramView.getTag();
     }
+    return paramView;
   }
   
   public void onHotSearchDataChanged()

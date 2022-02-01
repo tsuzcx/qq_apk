@@ -3,26 +3,25 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atps;
-import auea;
-import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.io.File;
 import java.io.FileNotFoundException;
 
 public class FileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FileInfo> CREATOR = new atps();
+  public static final Parcelable.Creator<FileInfo> CREATOR = new FileInfo.1();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
   private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private String d;
   private String e;
   
@@ -64,7 +63,7 @@ public class FileInfo
     d(paramString.getName());
     a(paramString.length());
     b(paramString.lastModified());
-    b(auea.a(this.jdField_b_of_type_JavaLangString));
+    b(((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getFileType(this.jdField_b_of_type_JavaLangString));
     c("");
     a("");
   }
@@ -72,12 +71,12 @@ public class FileInfo
   public static FileInfo a(String paramString)
   {
     if ((paramString == null) || (paramString.length() == 0)) {}
-    VFSFile localVFSFile;
+    File localFile;
     do
     {
       return null;
-      localVFSFile = new VFSFile(paramString);
-    } while ((!localVFSFile.exists()) || (localVFSFile.length() == 0L));
+      localFile = new File(paramString);
+    } while ((!localFile.exists()) || (localFile.length() == 0L));
     try
     {
       paramString = new FileInfo(paramString);
@@ -242,7 +241,7 @@ public class FileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileInfo
  * JD-Core Version:    0.7.0.1
  */

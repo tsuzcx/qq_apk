@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import ucm;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.LoadAsyBack;
 
 class ViolaAccessHelper$7$2
   implements Runnable
@@ -14,7 +14,7 @@ class ViolaAccessHelper$7$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.7.2
  * JD-Core Version:    0.7.0.1
  */

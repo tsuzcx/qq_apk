@@ -1,58 +1,57 @@
 package com.tencent.mobileqq.vas.adapter;
 
 import android.os.Bundle;
-import bbvh;
-import bhoh;
-import bhoj;
-import bhok;
-import bhpo;
-import bhqf;
 import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.richstatus.SignatureManagerForTool;
+import com.tencent.mobileqq.vas.SignatureTemplateConfig;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo.DynamicItem;
+import com.tencent.mobileqq.vas.VasResEngine.VasResController;
 
-public class SignatureAdapter$2
+class SignatureAdapter$2
   implements Runnable
 {
-  public SignatureAdapter$2(bhqf parambhqf, int paramInt, bhoj parambhoj) {}
+  SignatureAdapter$2(SignatureAdapter paramSignatureAdapter, int paramInt, SignatureTemplateInfo paramSignatureTemplateInfo) {}
   
   public void run()
   {
     if (SignatureManager.b(String.valueOf(this.jdField_a_of_type_Int)))
     {
-      bhqf.a(this.this$0, true);
-      str = bhoh.a(Integer.toString(this.jdField_a_of_type_Int), "dynamic_aio");
-      localObject1 = this.jdField_a_of_type_Bhoj.a[0];
-      localObject2 = bhqf.a(this.this$0);
+      SignatureAdapter.a(this.this$0, true);
+      str = SignatureTemplateConfig.a(Integer.toString(this.jdField_a_of_type_Int), "dynamic_aio");
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo.a[0];
+      localObject2 = SignatureAdapter.a(this.this$0);
       int i;
-      if (((bhok)localObject1).c != 0)
+      if (((SignatureTemplateInfo.DynamicItem)localObject1).c != 0)
       {
-        i = ((bhok)localObject1).c;
-        if (!bhqf.a(this.this$0)) {
+        i = ((SignatureTemplateInfo.DynamicItem)localObject1).c;
+        if (!SignatureAdapter.a(this.this$0)) {
           break label96;
         }
       }
       label96:
-      for (int j = -1;; j = ((bhok)localObject1).b)
+      for (int j = -1;; j = ((SignatureTemplateInfo.DynamicItem)localObject1).b)
       {
-        ((bhpo)localObject2).a(str, i, j);
+        ((VasResController)localObject2).a(str, i, j);
         return;
         i = 50;
         break;
       }
     }
-    String str = this.jdField_a_of_type_Bhoj.a[0].a;
-    Object localObject1 = bbvh.a(this.jdField_a_of_type_Int, str);
-    Object localObject2 = bhoh.a(String.valueOf(this.jdField_a_of_type_Int), str);
+    String str = this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo.a[0].a;
+    Object localObject1 = SignatureManagerForTool.a(this.jdField_a_of_type_Int, str);
+    Object localObject2 = SignatureTemplateConfig.a(String.valueOf(this.jdField_a_of_type_Int), str);
     Bundle localBundle = new Bundle();
     localBundle.putInt("resType", 2);
     localBundle.putInt("dynamicType", 16);
     localBundle.putString("tplId", String.valueOf(this.jdField_a_of_type_Int));
     localBundle.putString("fileName", str);
-    bhqf.a(this.this$0).a((String)localObject1, (String)localObject2, localBundle);
+    SignatureAdapter.a(this.this$0).a((String)localObject1, (String)localObject2, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureAdapter.2
  * JD-Core Version:    0.7.0.1
  */

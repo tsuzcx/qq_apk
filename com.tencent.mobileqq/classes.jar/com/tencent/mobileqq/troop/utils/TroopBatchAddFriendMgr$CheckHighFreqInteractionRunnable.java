@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aoep;
-import bbco;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
@@ -9,8 +7,10 @@ import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.relationx.batchAdd.BatchAddFriendForTroopConfig;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,17 +51,17 @@ public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
     do
     {
       return;
-      String str = ((TroopChatPie)localObject).sessionInfo.curFriendUin;
-      int i = ((TroopChatPie)localObject).sessionInfo.curType;
+      String str = ((TroopChatPie)localObject).a.jdField_a_of_type_JavaLangString;
+      int i = ((TroopChatPie)localObject).a.jdField_a_of_type_Int;
       l1 = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a().i * 60;
       long l2 = NetConnInfoCenter.getServerTime();
-      localObject = localQQAppInterface.getMessageFacade().queryMessageByTimeOrSeq(str, i, ((TroopChatPie)localObject).b, 250, String.format("time>=%d and (extLong & 2)=%d", new Object[] { Long.valueOf(l2 - l1), Integer.valueOf(0) }));
+      localObject = localQQAppInterface.getMessageFacade().a(str, i, ((TroopChatPie)localObject).c, 250, String.format("time>=%d and (extLong & 2)=%d", new Object[] { Long.valueOf(l2 - l1), Integer.valueOf(0) }));
       ArrayList localArrayList = TroopBatchAddFriendMgr.a((List)localObject, localQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d("CheckHighFreqInteractionRunnable", 2, String.format("checkHighFreqInteractionUinTask msgSize=%d uins = ", new Object[] { Integer.valueOf(((List)localObject).size()), Arrays.toString(localArrayList.toArray()) }));
       }
       if ((localArrayList.size() > 0) && (!this.jdField_a_of_type_Boolean)) {
-        ((aoep)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a().a(str, localArrayList, 3);
+        ((TroopHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a().a(str, localArrayList, 3);
       }
     } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (this.b.get() == null));
     ThreadManager.getSubThreadHandler().postDelayed(this, 1000L * l1);

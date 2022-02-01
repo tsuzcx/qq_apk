@@ -8,17 +8,17 @@ public final class DelMsgInfo
   extends JceStruct
 {
   static byte[] cache_vMsgCookies;
-  public int clientIp;
-  public long lFromUin;
-  public long lSendTime;
-  public short shMsgSeq;
-  public int ssoIp;
-  public int ssoSeq;
-  public long uAppId;
-  public long uMsgTime;
-  public long uMsgType;
-  public byte[] vMsgCookies;
-  public short wCmd;
+  public int clientIp = 0;
+  public long lFromUin = 0L;
+  public long lSendTime = 0L;
+  public short shMsgSeq = 0;
+  public int ssoIp = 0;
+  public int ssoSeq = 0;
+  public long uAppId = 0L;
+  public long uMsgTime = 0L;
+  public long uMsgType = 0L;
+  public byte[] vMsgCookies = null;
+  public short wCmd = 0;
   
   public DelMsgInfo() {}
   

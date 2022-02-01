@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.theme.diy;
 
-import afrb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,14 +14,15 @@ import android.util.Base64;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.Window;
-import anvx;
-import beht;
-import beih;
-import beiw;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.aio.ChatBackground;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.JSONResult;
+import com.tencent.mobileqq.theme.ThemeIPCModule;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -32,19 +32,40 @@ import org.json.JSONObject;
 
 public class ThemeDiyModule
 {
+  static final int BG_DEFAULT_POSITION = 1;
+  static final int BG_UPLOAD_POSITION = 0;
+  public static String[] BUNDLE_PAGE_KEY = { "pageDrawer", "pageMessage", "pageAIO", "pageFriend", "pageDynamic" };
+  static final String KEY_FCID = "fcID";
+  static final String KEY_TYPE = "funcType";
+  static final String KEY_URL = "url";
+  public static final int PAGE_AIO = 2;
+  public static final int PAGE_DYNAMIC = 4;
+  public static final int PAGE_FRIEND = 3;
+  public static final int PAGE_MSG = 1;
+  public static final int PAGE_SETTING = 0;
+  static final int TAB_POSITION_BG = 1;
+  static final int TAB_POSITION_STYLE = 3;
   private static final String TAG = "ThemeDiyModule";
+  static final int THEME_DEFAULT_POSITION = 0;
+  static final int TYPE_SVIP = 2;
+  static final int TYPE_VIP = 1;
   private AppInterface app;
   private Context context;
-  private int mAlbumPageIndex;
+  private int mAlbumPageIndex = 0;
   private SparseArray<String> mPageIndexBgMap = new SparseArray();
   private JSONObject mStyle;
-  private ThemeDIYData[] mThemeDIYData = ThemeDIYActivity.getDiyData();
-  private beiw mThemeDiyImpl;
+  private ThemeDIYData[] mThemeDIYData = getDiyData();
+  private ThemeDiyModule.ThemeDiyImpl mThemeDiyImpl;
   
   public ThemeDiyModule(Context paramContext, AppInterface paramAppInterface)
   {
     this.context = paramContext;
     this.app = paramAppInterface;
+  }
+  
+  private static ThemeDIYData[] getDiyData()
+  {
+    return new ThemeDIYData[] { new ThemeDIYData(2130846363, "theme_bg_setting_path", 2131166606, "theme_bg_setting_path_png", -50, 0), new ThemeDIYData(2130847831, "theme_bg_message_path", 2131166608, "theme_bg_message_path_png", 50, 1), new ThemeDIYData(2130850444, "theme_bg_aio_path", 0, "theme_bg_aio_path", 0, 2), new ThemeDIYData(2130847831, "theme_bg_friend_path", 2131166608, "theme_bg_friend_path_png", 50, 3), new ThemeDIYData(2130850444, "theme_bg_dynamic_path", 2131166608, "theme_bg_dynamic_path_png", 50, 4) };
   }
   
   private JSONObject getDiyThemePath(int paramInt, String paramString)
@@ -68,7 +89,7 @@ public class ThemeDiyModule
     Object localObject3 = ThemeBackground.getSharedPreferences(this.context, this.app.getAccount(), 4).getString(paramString, "null");
     Object localObject1 = "100";
     if ("theme_bg_aio_path".equals(paramString)) {
-      localObject3 = afrb.a(this.context, this.app.getAccount(), "");
+      localObject3 = ChatBackground.a(this.context, this.app.getAccount(), "");
     }
     paramString = (String)localObject2;
     if (!"null".equals(localObject3))
@@ -129,7 +150,7 @@ public class ThemeDiyModule
     }
   }
   
-  public static String imageFile2Base64(String paramString)
+  private static String imageFile2Base64(String paramString)
   {
     int i = 1;
     ByteArrayOutputStream localByteArrayOutputStream;
@@ -164,7 +185,7 @@ public class ThemeDiyModule
     if (QLog.isColorLevel()) {
       QLog.i("ThemeDiyModule", 2, "saveTheme  themeId:" + str);
     }
-    beih.a(str, new ThemeDiyModule.1(this, paramJSONObject, paramString));
+    ThemeIPCModule.a(str, new ThemeDiyModule.1(this, paramJSONObject, paramString));
   }
   
   private void setDIYData(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -205,6 +226,54 @@ public class ThemeDiyModule
     }
   }
   
+  private static void setSpThemeBackground(Context paramContext, String paramString, ThemeDIYData paramThemeDIYData)
+  {
+    if (paramThemeDIYData == null) {
+      QLog.e("ThemeDiyModule", 1, "sData is null");
+    }
+    for (;;)
+    {
+      return;
+      if ((paramThemeDIYData.tryOnBgBigOrgRD == null) || (paramThemeDIYData.tryOnBgBigRD == null) || ("100".equals(paramThemeDIYData.tryOnBgBigOrgRD.id)))
+      {
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder().append("setSpThemeBackground sData.tryOnBgBigOrgRD=").append(paramThemeDIYData.tryOnBgBigOrgRD).append(", sData.tryOnBgBigRD=").append(paramThemeDIYData.tryOnBgBigRD).append(", id=");
+          if (paramThemeDIYData.tryOnBgBigOrgRD != null) {
+            break label166;
+          }
+        }
+        label166:
+        for (String str = "-";; str = paramThemeDIYData.tryOnBgBigOrgRD.id)
+        {
+          QLog.d("ThemeDiyModule", 2, str + ", pageIndex:" + paramThemeDIYData.position);
+          ThemeBackground.setThemeBackgroundPic(paramContext, paramThemeDIYData.dealSpkey, paramString, "", "", "", "", 1, null, true);
+          if (paramThemeDIYData.position != 2) {
+            break;
+          }
+          ChatBackground.a(paramContext, paramString, null, "null");
+          return;
+        }
+      }
+      ThemeBackground.setThemeBackgroundPic(paramContext, paramThemeDIYData.orgSpKey, paramString, paramThemeDIYData.tryOnBgBigOrgRD.path, paramThemeDIYData.tryOnBgBigOrgRD.url, paramThemeDIYData.tryOnBgBigOrgRD.id, "", 1, null, true);
+      if (!paramThemeDIYData.orgSpKey.equals(paramThemeDIYData.dealSpkey))
+      {
+        if ((paramThemeDIYData.tryOnBgBigRD == null) || (paramThemeDIYData.tryOnBgBigRD.state != 5)) {
+          break label301;
+        }
+        ThemeBackground.setThemeBackgroundPic(paramContext, paramThemeDIYData.dealSpkey, paramString, paramThemeDIYData.tryOnBgBigRD.path, paramThemeDIYData.tryOnBgBigOrgRD.url, paramThemeDIYData.tryOnBgBigOrgRD.id, "", 1, null, true);
+      }
+      while (paramThemeDIYData.position == 2)
+      {
+        ChatBackground.a(paramContext, paramString, null, paramThemeDIYData.tryOnBgBigOrgRD.path);
+        return;
+        label301:
+        ThemeBackground.setThemeBackgroundPic(paramContext, paramThemeDIYData.dealSpkey, paramString, paramThemeDIYData.tryOnBgBigOrgRD.path, paramThemeDIYData.tryOnBgBigOrgRD.url, paramThemeDIYData.tryOnBgBigOrgRD.id, "", 1, null, true);
+      }
+    }
+  }
+  
   public void albumCallback(String paramString1, String paramString2)
   {
     Object localObject = "";
@@ -213,7 +282,7 @@ public class ThemeDiyModule
     if (str.equals(""))
     {
       i = -1;
-      localObject = anvx.a(2131714288);
+      localObject = HardCodeUtil.a(2131714783);
     }
     for (;;)
     {
@@ -266,7 +335,7 @@ public class ThemeDiyModule
         if (str1.equals("custom")) {
           str2 = "99";
         }
-        localBundle.putString(ThemeDIYActivity.BUNDLE_PAGE_KEY[i], str2);
+        localBundle.putString(BUNDLE_PAGE_KEY[i], str2);
         i += 1;
         break;
       }
@@ -309,8 +378,8 @@ public class ThemeDiyModule
     this.mAlbumPageIndex = paramInt1;
     Object localObject = new ResSuitData.BgSuit(null);
     ((ResSuitData.BgSuit)localObject).id = "99";
-    ((ResSuitData.BgSuit)localObject).resID = 2130846087;
-    ((ResSuitData.BgSuit)localObject).name = anvx.a(2131714270);
+    ((ResSuitData.BgSuit)localObject).resID = 2130846409;
+    ((ResSuitData.BgSuit)localObject).name = HardCodeUtil.a(2131714765);
     localObject = DIYThemeUtils.getResData(this.app, (ResSuitData)localObject, 121, ((ResSuitData.BgSuit)localObject).id + "." + paramInt1 + "." + System.currentTimeMillis()).path;
     Rect localRect = new Rect();
     paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
@@ -334,7 +403,7 @@ public class ThemeDiyModule
     if (localJSONArray == null)
     {
       if (this.mThemeDiyImpl != null) {
-        this.mThemeDiyImpl.callJs(paramString, new String[] { new beht(-1, "bginfos is null").a() });
+        this.mThemeDiyImpl.callJs(paramString, new String[] { new JSONResult(-1, "bginfos is null").a() });
       }
       return;
     }
@@ -380,7 +449,7 @@ public class ThemeDiyModule
       while (i < j)
       {
         ThemeDIYData localThemeDIYData = arrayOfThemeDIYData[i];
-        ThemeDIYActivity.setSpThemeBackground(this.context, this.app.getAccount(), localThemeDIYData);
+        setSpThemeBackground(this.context, this.app.getAccount(), localThemeDIYData);
         i += 1;
       }
       return;
@@ -393,15 +462,15 @@ public class ThemeDiyModule
     }
   }
   
-  public void setThemeDiyImpl(beiw parambeiw)
+  public void setThemeDiyImpl(ThemeDiyModule.ThemeDiyImpl paramThemeDiyImpl)
   {
-    this.mThemeDiyImpl = parambeiw;
+    this.mThemeDiyImpl = paramThemeDiyImpl;
   }
   
   public void trySaveDefineImage(String paramString)
   {
     if (paramString == null) {}
-    label89:
+    label82:
     do
     {
       ThemeDIYData localThemeDIYData;
@@ -424,8 +493,8 @@ public class ThemeDiyModule
           if (localThemeDIYData.mSaveStatus == 0)
           {
             str = ChatBackgroundManager.a(true, localThemeDIYData.tryOnBgBigRD.id);
-            if (!new File(str).exists()) {
-              break label89;
+            if (!FileUtils.a(str)) {
+              break label82;
             }
             localThemeDIYData.mSaveStatus = 5;
           }

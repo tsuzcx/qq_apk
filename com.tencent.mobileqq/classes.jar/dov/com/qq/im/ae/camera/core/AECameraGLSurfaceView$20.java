@@ -1,23 +1,21 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnaz;
+import dov.com.qq.im.ae.camera.ui.watermark.WatermarkDataManager.IWatermarkDictCallback;
+import java.util.Map;
 
 class AECameraGLSurfaceView$20
-  implements Runnable
+  implements WatermarkDataManager.IWatermarkDictCallback
 {
-  AECameraGLSurfaceView$20(AECameraGLSurfaceView paramAECameraGLSurfaceView, int paramInt) {}
+  AECameraGLSurfaceView$20(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
-  public void run()
+  public void onGetWatermarkDict(Map<String, String> paramMap)
   {
-    bnaz localbnaz = (bnaz)AECameraGLSurfaceView.access$000(this.this$0);
-    if (localbnaz != null) {
-      localbnaz.a(this.val$level);
-    }
+    this.this$0.queueEvent(new AECameraGLSurfaceView.20.1(this, paramMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.20
  * JD-Core Version:    0.7.0.1
  */

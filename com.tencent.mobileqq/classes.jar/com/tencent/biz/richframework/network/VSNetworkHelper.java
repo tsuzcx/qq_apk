@@ -1,18 +1,16 @@
 package com.tencent.biz.richframework.network;
 
 import android.content.Context;
-import com.tencent.biz.qcircleshadow.lib.QCircleHostGlobalInfo;
+import com.tencent.biz.richframework.delegate.impl.RFApplication;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.biz.richframework.delegate.impl.RFThreadManager;
+import com.tencent.biz.richframework.network.delegate.VSBaseNetwork;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.biz.richframework.network.servlet.VSBaseServlet;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqcircle.proxy.QCircleInvokeProxy;
-import cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue;
-import cooperation.qqcircle.report.outbox.SimpleTaskQueue;
-import mqq.app.AppRuntime;
-import zqh;
+import com.tencent.biz.richframework.network.request.BaseRequest;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class VSNetworkHelper
 {
@@ -20,10 +18,43 @@ public class VSNetworkHelper
   public static final String ERROR_CACHE_PREFIX = "_VSNetworkHelperCache";
   public static final String ERROR_TIMEOUT_PREFIX = "_VSNetworkHelperTimeOut";
   public static final String TAG = "VSNetworkHelper";
-  private static volatile String mCurrentAccount;
   private static final VSDispatchObserver mDispatchObserver = new VSDispatchObserver();
+  private static Class<? extends VSBaseNetwork> mImplClass;
   private static final VSNetworkHelper mInstance = new VSNetworkHelper();
-  private VSNetworkHelper.NetStateChangeListener mNetStateChangeListener;
+  private static volatile boolean mIsInit = false;
+  private static VSBaseNetwork mNetworkImpl;
+  private VSNetworkHelper.OnReceivedCall mReceivedCall;
+  
+  private byte[] convertInputStreamtoByteArray(InputStream paramInputStream)
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    copy(paramInputStream, localByteArrayOutputStream);
+    return localByteArrayOutputStream.toByteArray();
+  }
+  
+  private int copy(InputStream paramInputStream, OutputStream paramOutputStream)
+  {
+    long l = copyLarge(paramInputStream, paramOutputStream);
+    if (l > 2147483647L) {
+      return -1;
+    }
+    return (int)l;
+  }
+  
+  private long copyLarge(InputStream paramInputStream, OutputStream paramOutputStream)
+  {
+    byte[] arrayOfByte = new byte[4096];
+    int i;
+    for (long l = 0L;; l += i)
+    {
+      i = paramInputStream.read(arrayOfByte);
+      if (-1 == i) {
+        break;
+      }
+      paramOutputStream.write(arrayOfByte, 0, i);
+    }
+    return l;
+  }
   
   public static VSDispatchObserver getDispatchObserver()
   {
@@ -32,23 +63,23 @@ public class VSNetworkHelper
   
   public static VSNetworkHelper getInstance()
   {
-    if (mCurrentAccount == null) {}
+    if (mNetworkImpl == null) {}
     for (;;)
     {
       try
       {
-        if (mCurrentAccount == null) {
+        if (mNetworkImpl == null) {
           init();
         }
         return mInstance;
       }
       finally {}
-      if (!isDifferentAccount()) {
+      if (!mNetworkImpl.needReinitialize()) {
         continue;
       }
       try
       {
-        if (isDifferentAccount())
+        if (mNetworkImpl.needReinitialize())
         {
           mInstance.release();
           init();
@@ -58,17 +89,41 @@ public class VSNetworkHelper
     }
   }
   
-  private static void init()
+  public static VSBaseNetwork getNetworkImpl()
   {
-    QLog.i("VSNetworkHelper", 2, "VSNetworkHelper: registerObserver");
-    mCurrentAccount = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    BaseApplicationImpl.getApplication().getRuntime().registObserver(getDispatchObserver());
-    QCircleInvokeProxy.invoke(1, 1, new Object[0]);
+    return mNetworkImpl;
   }
   
-  private static boolean isDifferentAccount()
+  private static void init()
   {
-    return (mCurrentAccount != null) && (!mCurrentAccount.equals(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    if (mIsInit) {
+      return;
+    }
+    mImplClass = RFApplication.getDelegateImpl(VSBaseNetwork.class);
+    if ((RFApplication.isDebug()) && (mImplClass == null)) {
+      throw new RuntimeException("please invoke setNetworkImpl method to bind implemention");
+    }
+    try
+    {
+      mNetworkImpl = (VSBaseNetwork)mImplClass.newInstance();
+      mNetworkImpl.onInit();
+      mIsInit = true;
+      return;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      for (;;)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+    }
+    catch (InstantiationException localInstantiationException)
+    {
+      for (;;)
+      {
+        localInstantiationException.printStackTrace();
+      }
+    }
   }
   
   public static boolean isProtocolCache(String paramString)
@@ -86,14 +141,23 @@ public class VSNetworkHelper
   
   public static boolean isValidLog(String paramString)
   {
-    return (paramString != null) && (!paramString.endsWith(".DataReport"));
+    return (mNetworkImpl != null) && (mNetworkImpl.isValidLog(paramString));
+  }
+  
+  private void responseCache(BaseRequest paramBaseRequest)
+  {
+    if (paramBaseRequest.isEnableCache())
+    {
+      RFLog.d("VSNetworkHelper| Protocol Cache", RFLog.USR, "start to response cache,CmdName:" + paramBaseRequest.getCmdName() + " Seq:" + paramBaseRequest.getCurrentSeq());
+      RFThreadManager.execute(new VSNetworkHelper.1(this, paramBaseRequest), RFThreadManager.Normal);
+    }
   }
   
   public void cancelRequest(Context paramContext)
   {
     if (paramContext != null)
     {
-      QLog.i("VSNetworkHelper", 2, String.format("VSNetworkHelper: cancelRequest：success, contextHashCode:%s", new Object[] { Integer.valueOf(paramContext.hashCode()) }));
+      RFLog.i("VSNetworkHelper", RFLog.CLR, String.format("VSNetworkHelper: cancelRequest：success, contextHashCode:%s", new Object[] { Integer.valueOf(paramContext.hashCode()) }));
       getDispatchObserver().cancelAllRequest(paramContext);
     }
   }
@@ -102,64 +166,74 @@ public class VSNetworkHelper
   {
     if (paramContext != null)
     {
-      QLog.i("VSNetworkHelper", 2, String.format("VSNetworkHelper: cancelRequest：success, contextHashCode:%s", new Object[] { Integer.valueOf(paramContext.hashCode()) }));
+      RFLog.i("VSNetworkHelper", RFLog.CLR, String.format("VSNetworkHelper: cancelRequest：success, contextHashCode:%s", new Object[] { Integer.valueOf(paramContext.hashCode()) }));
       getDispatchObserver().cancelRequest(paramContext, paramInt);
     }
   }
   
+  public VSNetworkHelper.OnReceivedCall getReceivedCall()
+  {
+    if (this.mReceivedCall == null) {
+      this.mReceivedCall = new VSNetworkHelper.OnReceivedCall();
+    }
+    return this.mReceivedCall;
+  }
+  
   public void release()
   {
-    QLog.i("VSNetworkHelper", 2, "VSNetworkHelper: release");
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(getDispatchObserver());
+    RFLog.i("VSNetworkHelper", RFLog.CLR, "VSNetworkHelper: release");
     getDispatchObserver().release();
-    zqh.a();
-    QCircleInvokeProxy.invoke(2, 1, new Object[0]);
-    QCircleHostGlobalInfo.releaseWhenAccountChange();
-    QCircleReportOutboxTaskQueue.getInstance().resetTaskList();
-    mCurrentAccount = null;
-    if (this.mNetStateChangeListener != null) {
-      this.mNetStateChangeListener.onRelease();
+    if (mNetworkImpl != null)
+    {
+      mNetworkImpl.onRelease();
+      mNetworkImpl = null;
     }
+    mIsInit = false;
   }
   
-  public int sendRequest(int paramInt, VSBaseRequest paramVSBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack)
+  public int sendRequest(int paramInt, BaseRequest paramBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack)
   {
-    if (paramVSBaseRequest == null) {
+    if (paramBaseRequest == null) {
       return 0;
     }
-    paramVSBaseRequest.setContextHashCode(paramInt);
-    getDispatchObserver().setCallBack(paramVSBaseRequest, paramonVSRspCallBack);
-    paramonVSRspCallBack = new VSNetworkHelper.RequestIntent(this, BaseApplicationImpl.getApplication(), VSBaseServlet.class);
-    paramonVSRspCallBack.putExtra("key_request_data", paramVSBaseRequest);
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramonVSRspCallBack);
-    if (isValidLog(paramVSBaseRequest.getCmdName())) {
-      QLog.i("VSNetworkHelper", 2, String.format("VSNetworkHelper: sendRequest: success, contextHashCode:%s, seq:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramVSBaseRequest.getCurrentSeq()) }));
+    paramBaseRequest.setContextHashCode(paramInt);
+    getDispatchObserver().setCallBack(paramBaseRequest, paramonVSRspCallBack);
+    if (mNetworkImpl != null)
+    {
+      mNetworkImpl.sendRequest(paramBaseRequest, paramBaseRequest.encode(), getReceivedCall());
+      paramBaseRequest.generateSendTimeStamp();
+      responseCache(paramBaseRequest);
     }
-    return paramVSBaseRequest.getCurrentSeq();
+    if (isValidLog(paramBaseRequest.getCmdName())) {
+      RFLog.i("VSNetworkHelper", RFLog.CLR, String.format("VSNetworkHelper: sendRequest: success, contextHashCode:%s, seq:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBaseRequest.getCurrentSeq()) }));
+    }
+    if (isValidLog(paramBaseRequest.getCmdName())) {
+      RFLog.i("VSNetworkHelper", RFLog.CLR, "onSend Info:CmdName:" + paramBaseRequest.getCmdName() + " | TraceId:" + paramBaseRequest.getTraceId() + " | SeqNum:" + paramBaseRequest.getCurrentSeq() + " | request encode size:" + 0);
+    }
+    return paramBaseRequest.getCurrentSeq();
   }
   
-  public void sendRequest(Context paramContext, VSBaseRequest paramVSBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack)
+  public int sendRequest(Context paramContext, BaseRequest paramBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack)
   {
-    Object localObject = paramContext;
+    Context localContext = paramContext;
     if (paramContext == null) {
-      localObject = BaseApplicationImpl.getContext();
+      localContext = RFApplication.getApplication();
     }
-    sendRequest(localObject.hashCode(), paramVSBaseRequest, paramonVSRspCallBack);
+    int i = -1;
+    if (localContext != null) {
+      i = localContext.hashCode();
+    }
+    return sendRequest(i, paramBaseRequest, paramonVSRspCallBack);
   }
   
-  public void sendRequest(VSBaseRequest paramVSBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack)
+  public int sendRequest(BaseRequest paramBaseRequest, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack)
   {
-    sendRequest(null, paramVSBaseRequest, paramonVSRspCallBack);
-  }
-  
-  public void setNetStateChangeListener(VSNetworkHelper.NetStateChangeListener paramNetStateChangeListener)
-  {
-    this.mNetStateChangeListener = paramNetStateChangeListener;
+    return sendRequest(null, paramBaseRequest, paramonVSRspCallBack);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.VSNetworkHelper
  * JD-Core Version:    0.7.0.1
  */

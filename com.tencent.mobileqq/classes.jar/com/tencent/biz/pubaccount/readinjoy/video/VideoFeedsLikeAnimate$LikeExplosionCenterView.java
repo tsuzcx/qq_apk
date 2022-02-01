@@ -12,7 +12,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
-import sjw;
 
 public class VideoFeedsLikeAnimate$LikeExplosionCenterView
   extends View
@@ -40,12 +39,12 @@ public class VideoFeedsLikeAnimate$LikeExplosionCenterView
     ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("scaleY", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.4F), Keyframe.ofFloat(0.75F, 1.0F), Keyframe.ofFloat(1.0F, 1.28F) }) });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.setDuration(400L);
-    localObjectAnimator1.addListener(new sjw(this));
+    localObjectAnimator1.addListener(new VideoFeedsLikeAnimate.LikeExplosionCenterView.1(this));
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3 });
     localAnimatorSet.start();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, VideoFeedsLikeAnimate.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate) - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, VideoFeedsLikeAnimate.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate) - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
@@ -62,7 +61,7 @@ public class VideoFeedsLikeAnimate$LikeExplosionCenterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView
  * JD-Core Version:    0.7.0.1
  */

@@ -5,25 +5,24 @@ import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
 import android.widget.TextView;
-import bncm;
 import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
-public class VideoStoryAIScenePart$18
+class VideoStoryAIScenePart$18
   implements Runnable
 {
-  public VideoStoryAIScenePart$18(bncm parambncm, AEMaterialPanel paramAEMaterialPanel, int paramInt) {}
+  VideoStoryAIScenePart$18(VideoStoryAIScenePart paramVideoStoryAIScenePart, AEMaterialPanel paramAEMaterialPanel, int paramInt) {}
   
   public void run()
   {
     int i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight();
     int j = this.jdField_a_of_type_Int;
-    int k = bncm.a(this.this$0).getMeasuredHeight();
+    int k = VideoStoryAIScenePart.a(this.this$0).getMeasuredHeight();
     Object localObject = new int[2];
-    bncm.a(this.this$0).getLocationInWindow((int[])localObject);
+    VideoStoryAIScenePart.a(this.this$0).getLocationInWindow((int[])localObject);
     i = j - i - k - 10 - localObject[1];
-    localObject = ObjectAnimator.ofFloat(bncm.a(this.this$0), "translationY", new float[] { 0.0F, i });
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bncm.b(this.this$0), "translationY", new float[] { 0.0F, i });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bncm.b(this.this$0), "translationY", new float[] { 0.0F, i });
+    localObject = ObjectAnimator.ofFloat(VideoStoryAIScenePart.a(this.this$0), "translationY", new float[] { 0.0F, i });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(VideoStoryAIScenePart.b(this.this$0), "translationY", new float[] { 0.0F, i });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(VideoStoryAIScenePart.b(this.this$0), "translationY", new float[] { 0.0F, i });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
     localAnimatorSet.setDuration(300L).start();
@@ -31,7 +30,7 @@ public class VideoStoryAIScenePart$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.aiscene.VideoStoryAIScenePart.18
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,18 @@
 package com.tencent.mobileqq.mini.widget;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
 
 class MiniLoadingAdLayout$1
   implements View.OnClickListener
 {
-  MiniLoadingAdLayout$1(MiniLoadingAdLayout paramMiniLoadingAdLayout, boolean paramBoolean, AdProxy.ILoadingAdListener paramILoadingAdListener) {}
+  MiniLoadingAdLayout$1(MiniLoadingAdLayout paramMiniLoadingAdLayout, MiniLoadingAdLayout.OnDismissListener paramOnDismissListener) {}
   
   public void onClick(View paramView)
   {
-    QLog.i("MiniLoadingAdLayout", 1, "yuki LoadingAd reportClick");
-    GdtHandler.Params localParams = new GdtHandler.Params();
-    localParams.c = 11;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)this.this$0.getContext());
-    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = MiniLoadingAdLayout.access$000(this.this$0);
-    localParams.jdField_a_of_type_Boolean = true;
-    localParams.b = MiniLoadingAdLayout.access$100(this.this$0);
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("big_brother_ref_source_key", "biz_src_miniappD");
-    localParams.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
-    localObject = MiniLoadingAdLayout.access$300(this.this$0, MiniLoadingAdLayout.access$200(this.this$0));
-    Bundle localBundle = MiniLoadingAdLayout.access$400(this.this$0, MiniLoadingAdLayout.access$200(this.this$0), MiniLoadingAdLayout.access$000(this.this$0).getUrlForClick(), 5);
-    localParams.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).toString();
-    QLog.i("MiniLoadingAdLayout", 1, "report click antiSpamParams=" + ((JSONObject)localObject).toString());
-    GdtHandler.a(localParams);
-    MiniLoadingAdLayout.report(localBundle);
-    if (this.val$isSDK) {
-      if (this.val$loadingAdListener != null) {
-        this.val$loadingAdListener.onAdClick();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      MiniProgramLpReportDC04239.reportMiniAppEvent(MiniLoadingAdLayout.access$500(this.this$0), MiniProgramLpReportDC04239.getAppType(MiniLoadingAdLayout.access$500(this.this$0)), null, "ad", "ad_loading", "click", null);
-    }
+    MiniLoadingAdLayout.report(MiniLoadingAdLayout.access$200(this.this$0, MiniLoadingAdLayout.access$000(this.this$0), MiniLoadingAdLayout.access$100(this.this$0).getUrlForClick(), 9));
+    this.this$0.dismiss(true, this.val$onDismissListener);
   }
 }
 

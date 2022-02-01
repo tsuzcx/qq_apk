@@ -9,8 +9,8 @@ public final class SvcReqBindUin
   extends JceStruct
 {
   static ArrayList<BindUin> cache_vecBindUin;
-  public byte cCmd;
-  public ArrayList<BindUin> vecBindUin;
+  public byte cCmd = 0;
+  public ArrayList<BindUin> vecBindUin = null;
   
   public SvcReqBindUin() {}
   

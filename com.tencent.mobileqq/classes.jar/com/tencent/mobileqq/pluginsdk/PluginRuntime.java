@@ -36,6 +36,16 @@ public class PluginRuntime
     paramContext.sendBroadcast(localIntent);
   }
   
+  public BaseApplication getApp()
+  {
+    return null;
+  }
+  
+  public String getCurrentAccountUin()
+  {
+    return getAccount();
+  }
+  
   public Manager getManager(int paramInt)
   {
     Object localObject1 = super.getManager(paramInt);

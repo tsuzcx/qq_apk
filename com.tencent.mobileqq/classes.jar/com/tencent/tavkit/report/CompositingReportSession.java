@@ -11,7 +11,7 @@ public final class CompositingReportSession
   private static final String REPORT_EVENT = "android_tavkit_compositing";
   public static final String REPORT_KEY_AVG_RENDER_TIME_US = "avg_render_time_us";
   private static final String REPORT_SERVICE = "TAVKit_Android";
-  private static final String REPORT_VERSION = "1.3.5.6-qq_8.4.8";
+  private static final String REPORT_VERSION = "1.5.0.14-beta";
   private static final String TAG = "CompositingReportSessio";
   @Nullable
   private static CompositingReportSession.IReporter reporter;
@@ -100,7 +100,7 @@ public final class CompositingReportSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.report.CompositingReportSession
  * JD-Core Version:    0.7.0.1
  */

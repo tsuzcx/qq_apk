@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import aloh;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-public class EditLocalVideoActivity$12$1
+class EditLocalVideoActivity$12$1
   implements Runnable
 {
-  public EditLocalVideoActivity$12$1(aloh paramaloh) {}
+  EditLocalVideoActivity$12$1(EditLocalVideoActivity.12 param12) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class EditLocalVideoActivity$12$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.12.1
  * JD-Core Version:    0.7.0.1
  */

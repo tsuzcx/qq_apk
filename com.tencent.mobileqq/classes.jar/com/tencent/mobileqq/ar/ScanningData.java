@@ -16,8 +16,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
-import anvx;
-import aphp;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 
 public abstract class ScanningData
@@ -293,7 +292,7 @@ public abstract class ScanningData
   {
     this.jdField_c_of_type_Float = 1.0F;
     this.jdField_g_of_type_Float = 1.0F;
-    this.jdField_e_of_type_JavaLangString = anvx.a(2131712974);
+    this.jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131713470);
     this.jdField_f_of_type_JavaLangString = "YANG YANG";
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
@@ -321,7 +320,7 @@ public abstract class ScanningData
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_b_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(aphp.jdField_b_of_type_Int);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(ScanningData.Dip2PxCache.jdField_b_of_type_Int);
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -420,7 +419,7 @@ public abstract class ScanningData
   {
     if (this.jdField_a_of_type_AndroidAnimationObjectAnimator == null)
     {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { ViewUtils.dip2px(5.0F) * this.jdField_c_of_type_Float, aphp.jdField_c_of_type_Int * this.jdField_c_of_type_Float });
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { ViewUtils.a(5.0F) * this.jdField_c_of_type_Float, ScanningData.Dip2PxCache.jdField_c_of_type_Int * this.jdField_c_of_type_Float });
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(600L);
     }
@@ -577,7 +576,7 @@ public abstract class ScanningData
   {
     if (this.jdField_n_of_type_AndroidAnimationObjectAnimator == null)
     {
-      this.jdField_n_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { aphp.jdField_c_of_type_Int * this.jdField_c_of_type_Float, aphp.jdField_h_of_type_Int * this.jdField_c_of_type_Float });
+      this.jdField_n_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { ScanningData.Dip2PxCache.jdField_c_of_type_Int * this.jdField_c_of_type_Float, ScanningData.Dip2PxCache.jdField_h_of_type_Int * this.jdField_c_of_type_Float });
       this.jdField_n_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_n_of_type_AndroidAnimationObjectAnimator.setDuration(600L);
     }
@@ -839,49 +838,49 @@ public abstract class ScanningData
   
   public void b()
   {
-    this.jdField_f_of_type_Float = aphp.I;
-    this.jdField_i_of_type_Float = aphp.jdField_h_of_type_Int;
-    this.jdField_n_of_type_Float = aphp.jdField_i_of_type_Int;
-    this.jdField_B_of_type_Float = aphp.L;
-    this.jdField_E_of_type_Float = aphp.jdField_c_of_type_Int;
-    this.L = aphp.G;
-    this.O = aphp.H;
-    this.P = aphp.jdField_b_of_type_Int;
-    this.X = aphp.G;
-    this.Y = aphp.jdField_c_of_type_Int;
-    this.ag = aphp.G;
-    this.ai = aphp.jdField_u_of_type_Int;
-    this.am = aphp.jdField_q_of_type_Int;
-    this.an = aphp.jdField_b_of_type_Int;
-    this.ay = aphp.jdField_c_of_type_Int;
-    this.aB = aphp.jdField_k_of_type_Int;
-    this.aH = aphp.x;
-    this.aD = aphp.C;
-    this.aE = aphp.jdField_u_of_type_Int;
-    this.aL = aphp.x;
-    this.aM = aphp.x;
-    this.aN = aphp.jdField_p_of_type_Int;
-    this.aP = aphp.jdField_r_of_type_Int;
-    this.aQ = aphp.jdField_r_of_type_Int;
-    this.aR = aphp.jdField_j_of_type_Int;
-    this.aH = aphp.jdField_r_of_type_Int;
-    this.aS = aphp.jdField_k_of_type_Int;
-    this.aT = aphp.jdField_m_of_type_Int;
+    this.jdField_f_of_type_Float = ScanningData.Dip2PxCache.I;
+    this.jdField_i_of_type_Float = ScanningData.Dip2PxCache.jdField_h_of_type_Int;
+    this.jdField_n_of_type_Float = ScanningData.Dip2PxCache.jdField_i_of_type_Int;
+    this.jdField_B_of_type_Float = ScanningData.Dip2PxCache.L;
+    this.jdField_E_of_type_Float = ScanningData.Dip2PxCache.jdField_c_of_type_Int;
+    this.L = ScanningData.Dip2PxCache.G;
+    this.O = ScanningData.Dip2PxCache.H;
+    this.P = ScanningData.Dip2PxCache.jdField_b_of_type_Int;
+    this.X = ScanningData.Dip2PxCache.G;
+    this.Y = ScanningData.Dip2PxCache.jdField_c_of_type_Int;
+    this.ag = ScanningData.Dip2PxCache.G;
+    this.ai = ScanningData.Dip2PxCache.jdField_u_of_type_Int;
+    this.am = ScanningData.Dip2PxCache.jdField_q_of_type_Int;
+    this.an = ScanningData.Dip2PxCache.jdField_b_of_type_Int;
+    this.ay = ScanningData.Dip2PxCache.jdField_c_of_type_Int;
+    this.aB = ScanningData.Dip2PxCache.jdField_k_of_type_Int;
+    this.aH = ScanningData.Dip2PxCache.x;
+    this.aD = ScanningData.Dip2PxCache.C;
+    this.aE = ScanningData.Dip2PxCache.jdField_u_of_type_Int;
+    this.aL = ScanningData.Dip2PxCache.x;
+    this.aM = ScanningData.Dip2PxCache.x;
+    this.aN = ScanningData.Dip2PxCache.jdField_p_of_type_Int;
+    this.aP = ScanningData.Dip2PxCache.jdField_r_of_type_Int;
+    this.aQ = ScanningData.Dip2PxCache.jdField_r_of_type_Int;
+    this.aR = ScanningData.Dip2PxCache.jdField_j_of_type_Int;
+    this.aH = ScanningData.Dip2PxCache.jdField_r_of_type_Int;
+    this.aS = ScanningData.Dip2PxCache.jdField_k_of_type_Int;
+    this.aT = ScanningData.Dip2PxCache.jdField_m_of_type_Int;
     this.aU = 0.0F;
-    this.aX = aphp.jdField_m_of_type_Int;
-    this.aY = aphp.jdField_b_of_type_Int;
-    this.bb = aphp.jdField_a_of_type_Int;
-    this.bd = aphp.A;
-    this.be = aphp.jdField_o_of_type_Int;
-    this.bf = aphp.f;
-    this.bh = aphp.jdField_d_of_type_Int;
-    this.bI = aphp.F;
-    this.bK = aphp.jdField_e_of_type_Int;
-    this.bL = aphp.jdField_h_of_type_Int;
-    this.bP = aphp.y;
-    this.bS = aphp.jdField_c_of_type_Int;
-    this.bV = aphp.jdField_v_of_type_Int;
-    this.bW = aphp.D;
+    this.aX = ScanningData.Dip2PxCache.jdField_m_of_type_Int;
+    this.aY = ScanningData.Dip2PxCache.jdField_b_of_type_Int;
+    this.bb = ScanningData.Dip2PxCache.jdField_a_of_type_Int;
+    this.bd = ScanningData.Dip2PxCache.A;
+    this.be = ScanningData.Dip2PxCache.jdField_o_of_type_Int;
+    this.bf = ScanningData.Dip2PxCache.f;
+    this.bh = ScanningData.Dip2PxCache.jdField_d_of_type_Int;
+    this.bI = ScanningData.Dip2PxCache.F;
+    this.bK = ScanningData.Dip2PxCache.jdField_e_of_type_Int;
+    this.bL = ScanningData.Dip2PxCache.jdField_h_of_type_Int;
+    this.bP = ScanningData.Dip2PxCache.y;
+    this.bS = ScanningData.Dip2PxCache.jdField_c_of_type_Int;
+    this.bV = ScanningData.Dip2PxCache.jdField_v_of_type_Int;
+    this.bW = ScanningData.Dip2PxCache.D;
   }
   
   public abstract void c();
@@ -1073,15 +1072,15 @@ public abstract class ScanningData
   
   public void x()
   {
-    this.jdField_f_of_type_Float = aphp.I;
-    this.jdField_i_of_type_Float = aphp.jdField_h_of_type_Int;
+    this.jdField_f_of_type_Float = ScanningData.Dip2PxCache.I;
+    this.jdField_i_of_type_Float = ScanningData.Dip2PxCache.jdField_h_of_type_Int;
     this.jdField_j_of_type_Float = 234.0F;
     this.jdField_k_of_type_Float = 36.0F;
     this.jdField_l_of_type_Float = 54.0F;
     this.jdField_m_of_type_Float = 216.0F;
     this.jdField_a_of_type_Int = Color.argb(255, 30, 255, 236);
     this.jdField_b_of_type_Int = Color.argb(255, 0, 191, 255);
-    this.jdField_n_of_type_Float = aphp.jdField_i_of_type_Int;
+    this.jdField_n_of_type_Float = ScanningData.Dip2PxCache.jdField_i_of_type_Int;
     this.jdField_o_of_type_Float = ((this.jdField_j_of_type_Float + this.jdField_m_of_type_Float) / 2.0F);
     this.jdField_p_of_type_Float = ((this.jdField_k_of_type_Float + this.jdField_l_of_type_Float) / 2.0F);
     this.jdField_c_of_type_Int = Color.argb(255, 30, 255, 236);
@@ -1089,18 +1088,18 @@ public abstract class ScanningData
     this.jdField_e_of_type_Int = Color.argb(255, 30, 255, 236);
     this.jdField_v_of_type_Float = 0.0F;
     this.jdField_u_of_type_Float = 0.0F;
-    this.jdField_B_of_type_Float = aphp.L;
-    this.jdField_E_of_type_Float = aphp.jdField_c_of_type_Int;
+    this.jdField_B_of_type_Float = ScanningData.Dip2PxCache.L;
+    this.jdField_E_of_type_Float = ScanningData.Dip2PxCache.jdField_c_of_type_Int;
     this.F = 160.0F;
     this.G = 290.0F;
     this.H = 340.0F;
     this.I = 110.0F;
     this.jdField_g_of_type_Int = -1;
     this.J = 102.0F;
-    this.K = aphp.M;
-    this.L = aphp.G;
-    this.O = aphp.H;
-    this.P = aphp.jdField_b_of_type_Int;
+    this.K = ScanningData.Dip2PxCache.M;
+    this.L = ScanningData.Dip2PxCache.G;
+    this.O = ScanningData.Dip2PxCache.H;
+    this.P = ScanningData.Dip2PxCache.jdField_b_of_type_Int;
     this.Q = 32.0F;
     this.R = 138.0F;
     this.S = 272.0F;
@@ -1109,8 +1108,8 @@ public abstract class ScanningData
     this.V = 258.0F;
     this.jdField_h_of_type_Int = -1;
     this.W = 0.0F;
-    this.X = aphp.G;
-    this.Y = aphp.jdField_c_of_type_Int;
+    this.X = ScanningData.Dip2PxCache.G;
+    this.Y = ScanningData.Dip2PxCache.jdField_c_of_type_Int;
     this.Z = 60.0F;
     this.aa = 100.0F;
     this.ab = 300.0F;
@@ -1119,12 +1118,12 @@ public abstract class ScanningData
     this.ae = 220.0F;
     this.jdField_i_of_type_Int = -1;
     this.af = 0.0F;
-    this.ag = aphp.G;
-    this.ai = aphp.jdField_u_of_type_Int;
+    this.ag = ScanningData.Dip2PxCache.G;
+    this.ai = ScanningData.Dip2PxCache.jdField_u_of_type_Int;
     this.jdField_j_of_type_Int = -1;
     this.aj = 0.0F;
-    this.am = aphp.jdField_q_of_type_Int;
-    this.an = aphp.jdField_b_of_type_Int;
+    this.am = ScanningData.Dip2PxCache.jdField_q_of_type_Int;
+    this.an = ScanningData.Dip2PxCache.jdField_b_of_type_Int;
     this.ao = 183.0F;
     this.ap = 267.0F;
     this.aq = 93.0F;
@@ -1135,78 +1134,78 @@ public abstract class ScanningData
     this.av = 87.0F;
     this.jdField_k_of_type_Int = -1;
     this.aw = 0.0F;
-    this.ay = aphp.jdField_c_of_type_Int;
+    this.ay = ScanningData.Dip2PxCache.jdField_c_of_type_Int;
     this.jdField_l_of_type_Int = -1;
     this.az = 0.0F;
-    this.aB = aphp.jdField_k_of_type_Int;
+    this.aB = ScanningData.Dip2PxCache.jdField_k_of_type_Int;
     this.jdField_m_of_type_Int = -1;
-    this.aH = aphp.x;
-    this.aD = aphp.C;
-    this.aE = aphp.jdField_u_of_type_Int;
-    this.aL = aphp.x;
-    this.aM = aphp.x;
-    this.aN = aphp.jdField_p_of_type_Int;
-    this.aP = aphp.jdField_r_of_type_Int;
-    this.aQ = aphp.jdField_r_of_type_Int;
-    this.aR = aphp.jdField_j_of_type_Int;
-    this.aH = aphp.jdField_r_of_type_Int;
-    this.aS = aphp.jdField_k_of_type_Int;
-    this.aT = aphp.jdField_m_of_type_Int;
+    this.aH = ScanningData.Dip2PxCache.x;
+    this.aD = ScanningData.Dip2PxCache.C;
+    this.aE = ScanningData.Dip2PxCache.jdField_u_of_type_Int;
+    this.aL = ScanningData.Dip2PxCache.x;
+    this.aM = ScanningData.Dip2PxCache.x;
+    this.aN = ScanningData.Dip2PxCache.jdField_p_of_type_Int;
+    this.aP = ScanningData.Dip2PxCache.jdField_r_of_type_Int;
+    this.aQ = ScanningData.Dip2PxCache.jdField_r_of_type_Int;
+    this.aR = ScanningData.Dip2PxCache.jdField_j_of_type_Int;
+    this.aH = ScanningData.Dip2PxCache.jdField_r_of_type_Int;
+    this.aS = ScanningData.Dip2PxCache.jdField_k_of_type_Int;
+    this.aT = ScanningData.Dip2PxCache.jdField_m_of_type_Int;
     this.aU = 0.0F;
-    this.aX = aphp.jdField_m_of_type_Int;
-    this.aY = aphp.jdField_b_of_type_Int;
+    this.aX = ScanningData.Dip2PxCache.jdField_m_of_type_Int;
+    this.aY = ScanningData.Dip2PxCache.jdField_b_of_type_Int;
     this.jdField_n_of_type_Int = Color.argb(102, 0, 0, 0);
     this.aZ = 270.0F;
     this.ba = 40.0F;
-    this.bb = aphp.jdField_a_of_type_Int;
-    this.bd = aphp.A;
-    this.be = aphp.jdField_o_of_type_Int;
-    this.bf = aphp.f;
-    this.bh = aphp.jdField_d_of_type_Int;
+    this.bb = ScanningData.Dip2PxCache.jdField_a_of_type_Int;
+    this.bd = ScanningData.Dip2PxCache.A;
+    this.be = ScanningData.Dip2PxCache.jdField_o_of_type_Int;
+    this.bf = ScanningData.Dip2PxCache.f;
+    this.bh = ScanningData.Dip2PxCache.jdField_d_of_type_Int;
     this.bj = 0.0F;
     this.bk = 0.0F;
-    this.bl = aphp.K;
-    this.bm = aphp.C;
+    this.bl = ScanningData.Dip2PxCache.K;
+    this.bm = ScanningData.Dip2PxCache.C;
     this.jdField_p_of_type_Int = Color.argb(229, 255, 255, 255);
     this.jdField_q_of_type_Int = Color.argb(229, 255, 255, 255);
     this.jdField_r_of_type_Int = Color.argb(127, 255, 255, 255);
-    this.bn = aphp.jdField_i_of_type_Int;
-    this.bo = aphp.jdField_s_of_type_Int;
-    this.bw = aphp.z;
-    this.bp = aphp.jdField_s_of_type_Int;
-    this.bq = aphp.jdField_s_of_type_Int;
-    this.br = aphp.jdField_g_of_type_Int;
-    this.bs = aphp.jdField_g_of_type_Int;
-    this.bx = aphp.jdField_s_of_type_Int;
-    this.bt = aphp.jdField_j_of_type_Int;
-    this.bu = aphp.jdField_p_of_type_Int;
-    this.bv = aphp.jdField_s_of_type_Int;
-    this.by = aphp.jdField_s_of_type_Int;
-    this.bz = aphp.jdField_r_of_type_Int;
-    this.bA = aphp.jdField_p_of_type_Int;
-    this.bB = aphp.jdField_n_of_type_Int;
+    this.bn = ScanningData.Dip2PxCache.jdField_i_of_type_Int;
+    this.bo = ScanningData.Dip2PxCache.jdField_s_of_type_Int;
+    this.bw = ScanningData.Dip2PxCache.z;
+    this.bp = ScanningData.Dip2PxCache.jdField_s_of_type_Int;
+    this.bq = ScanningData.Dip2PxCache.jdField_s_of_type_Int;
+    this.br = ScanningData.Dip2PxCache.jdField_g_of_type_Int;
+    this.bs = ScanningData.Dip2PxCache.jdField_g_of_type_Int;
+    this.bx = ScanningData.Dip2PxCache.jdField_s_of_type_Int;
+    this.bt = ScanningData.Dip2PxCache.jdField_j_of_type_Int;
+    this.bu = ScanningData.Dip2PxCache.jdField_p_of_type_Int;
+    this.bv = ScanningData.Dip2PxCache.jdField_s_of_type_Int;
+    this.by = ScanningData.Dip2PxCache.jdField_s_of_type_Int;
+    this.bz = ScanningData.Dip2PxCache.jdField_r_of_type_Int;
+    this.bA = ScanningData.Dip2PxCache.jdField_p_of_type_Int;
+    this.bB = ScanningData.Dip2PxCache.jdField_n_of_type_Int;
     this.jdField_s_of_type_Int = Color.argb(255, 119, 119, 119);
-    this.bC = aphp.jdField_h_of_type_Int;
-    this.bD = aphp.jdField_r_of_type_Int;
-    this.bE = aphp.jdField_e_of_type_Int;
+    this.bC = ScanningData.Dip2PxCache.jdField_h_of_type_Int;
+    this.bD = ScanningData.Dip2PxCache.jdField_r_of_type_Int;
+    this.bE = ScanningData.Dip2PxCache.jdField_e_of_type_Int;
     this.jdField_t_of_type_Int = Color.argb(76, 0, 104, 144);
-    this.bF = aphp.jdField_l_of_type_Int;
-    this.bG = aphp.jdField_i_of_type_Int;
+    this.bF = ScanningData.Dip2PxCache.jdField_l_of_type_Int;
+    this.bG = ScanningData.Dip2PxCache.jdField_i_of_type_Int;
     this.bH = 0.0F;
-    this.bI = aphp.F;
-    this.bK = aphp.jdField_e_of_type_Int;
+    this.bI = ScanningData.Dip2PxCache.F;
+    this.bK = ScanningData.Dip2PxCache.jdField_e_of_type_Int;
     this.jdField_u_of_type_Int = -1;
-    this.bL = aphp.jdField_h_of_type_Int;
+    this.bL = ScanningData.Dip2PxCache.jdField_h_of_type_Int;
     this.jdField_v_of_type_Int = -1;
     this.bM = 120.0F;
-    this.bP = aphp.y;
-    this.bS = aphp.jdField_c_of_type_Int;
+    this.bP = ScanningData.Dip2PxCache.y;
+    this.bS = ScanningData.Dip2PxCache.jdField_c_of_type_Int;
     this.jdField_w_of_type_Int = -1;
     this.bT = 0.0F;
     this.bU = 0.0F;
-    this.bV = aphp.jdField_v_of_type_Int;
-    this.bW = aphp.D;
-    this.jdField_w_of_type_Float = aphp.jdField_k_of_type_Int;
+    this.bV = ScanningData.Dip2PxCache.jdField_v_of_type_Int;
+    this.bW = ScanningData.Dip2PxCache.D;
+    this.jdField_w_of_type_Float = ScanningData.Dip2PxCache.jdField_k_of_type_Int;
     this.aV = 0.0F;
     this.aW = 0.0F;
     this.bc = 0.0F;
@@ -1259,7 +1258,7 @@ public abstract class ScanningData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanningData
  * JD-Core Version:    0.7.0.1
  */

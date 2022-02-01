@@ -25,6 +25,15 @@ public class HippyTKDImageViewController
     return new HippyTKDImageView(paramContext);
   }
   
+  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  {
+    paramContext = new HippyTKDImageView(paramContext);
+    if (paramHippyMap != null) {
+      paramContext.setIniProps(paramHippyMap);
+    }
+    return paramContext;
+  }
+  
   public void dispatchFunction(HippyImageView paramHippyImageView, String paramString, HippyArray paramHippyArray, Promise paramPromise)
   {
     super.dispatchFunction(paramHippyImageView, paramString, paramHippyArray, paramPromise);
@@ -54,7 +63,7 @@ public class HippyTKDImageViewController
     }
   }
   
-  @HippyControllerProps(name="blurRadius")
+  @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="blurRadius")
   public void setBlurRadius(HippyImageView paramHippyImageView, int paramInt)
   {
     if ((paramHippyImageView instanceof HippyTKDImageView)) {
@@ -152,7 +161,7 @@ public class HippyTKDImageViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.image.HippyTKDImageViewController
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,5 @@
 package com.tencent.mobileqq.Doraemon.test;
 
-import adad;
-import adai;
-import adcv;
-import adcw;
-import adcx;
-import adcy;
-import adcz;
-import addb;
-import addc;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -24,8 +15,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioGroup;
-import anvx;
+import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
+import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI;
+import com.tencent.mobileqq.Doraemon.ui.SdkAuthDialog;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -37,25 +31,18 @@ public class TestAppFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  public int a;
-  public adad a;
-  public EditText a;
-  private RadioGroup a;
-  public String a;
-  private RadioGroup b;
-  public String b;
-  public String c = "101469453";
-  
-  public TestAppFragment()
-  {
-    this.jdField_a_of_type_JavaLangString = (AppConstants.SDCARD_ROOT + "/Tencent/com/tencent/mobileqq/");
-    this.jdField_b_of_type_JavaLangString = "openapi";
-    this.jdField_a_of_type_Int = 5;
-  }
+  int jdField_a_of_type_Int = 5;
+  EditText jdField_a_of_type_AndroidWidgetEditText;
+  private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
+  DoraemonAPIManager jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
+  String jdField_a_of_type_JavaLangString = AppConstants.SDCARD_ROOT + "/Tencent/com/tencent/mobileqq/";
+  private RadioGroup jdField_b_of_type_AndroidWidgetRadioGroup;
+  String jdField_b_of_type_JavaLangString = "openapi";
+  String c = "101469453";
   
   private void b()
   {
-    this.jdField_a_of_type_Adad.a("login", null, new adcz(this));
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("login", null, new TestAppFragment.6(this));
   }
   
   public void a()
@@ -74,38 +61,38 @@ public class TestAppFragment
     localLinearLayout.addView(localEditText2);
     localBuilder.setView(localLinearLayout);
     localBuilder.setTitle("输入appid&type");
-    localBuilder.setPositiveButton(anvx.a(2131714228), new adcx(this, localEditText1, localEditText2)).setNegativeButton(anvx.a(2131714232), new adcw(this));
+    localBuilder.setPositiveButton(HardCodeUtil.a(2131714724), new TestAppFragment.3(this, localEditText1, localEditText2)).setNegativeButton(HardCodeUtil.a(2131714728), new TestAppFragment.2(this));
     localBuilder.create().show();
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = (FormSwitchItem)this.mContentView.findViewById(2131365581);
+    paramLayoutInflater = (FormSwitchItem)this.mContentView.findViewById(2131365742);
     paramLayoutInflater.setChecked(new File(this.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString).exists());
-    paramLayoutInflater.setOnCheckedChangeListener(new adcv(this));
-    this.mContentView.findViewById(2131368180).setOnClickListener(this);
-    this.mContentView.findViewById(2131370534).setOnClickListener(this);
-    this.mContentView.findViewById(2131370537).setOnClickListener(this);
-    this.mContentView.findViewById(2131370535).setOnClickListener(this);
-    this.mContentView.findViewById(2131367692).setOnClickListener(this);
-    this.mContentView.findViewById(2131367690).setOnClickListener(this);
-    this.mContentView.findViewById(2131364624).setOnClickListener(this);
-    this.mContentView.findViewById(2131367693).setOnClickListener(this);
-    this.mContentView.findViewById(2131367689).setOnClickListener(this);
-    this.mContentView.findViewById(2131367691).setOnClickListener(this);
-    this.mContentView.findViewById(2131376556).setOnClickListener(this);
-    this.mContentView.findViewById(2131368914).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131372337));
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131376645));
-    this.jdField_b_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131376644));
-    adai.a();
-    this.jdField_a_of_type_Adad = adai.a(getActivity(), 3, "101480522");
+    paramLayoutInflater.setOnCheckedChangeListener(new TestAppFragment.1(this));
+    this.mContentView.findViewById(2131368402).setOnClickListener(this);
+    this.mContentView.findViewById(2131370817).setOnClickListener(this);
+    this.mContentView.findViewById(2131370820).setOnClickListener(this);
+    this.mContentView.findViewById(2131370818).setOnClickListener(this);
+    this.mContentView.findViewById(2131367899).setOnClickListener(this);
+    this.mContentView.findViewById(2131367897).setOnClickListener(this);
+    this.mContentView.findViewById(2131364738).setOnClickListener(this);
+    this.mContentView.findViewById(2131367900).setOnClickListener(this);
+    this.mContentView.findViewById(2131367896).setOnClickListener(this);
+    this.mContentView.findViewById(2131367898).setOnClickListener(this);
+    this.mContentView.findViewById(2131376949).setOnClickListener(this);
+    this.mContentView.findViewById(2131369146).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131372647));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131377040));
+    this.jdField_b_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131377039));
+    DoraemonOpenAPI.a();
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager = DoraemonOpenAPI.a(getActivity(), 3, "101480522");
   }
   
   public int getContentLayoutId()
   {
-    return 2131559134;
+    return 2131559176;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -125,32 +112,32 @@ public class TestAppFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_Adad.a("hello", null, new addb(this.jdField_a_of_type_AndroidWidgetEditText));
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("hello", null, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       continue;
-      this.jdField_a_of_type_Adad.a("login", null, new addb(this.jdField_a_of_type_AndroidWidgetEditText));
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("login", null, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       continue;
-      this.jdField_a_of_type_Adad.a("loginSilent", null, new addb(this.jdField_a_of_type_AndroidWidgetEditText));
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("loginSilent", null, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       continue;
-      localObject = new addc(getActivity());
-      ((addc)localObject).c(anvx.a(2131714230));
-      ((addc)localObject).b("appName");
-      ((addc)localObject).d("desc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\n");
-      ((addc)localObject).f("negativeButton");
-      ((addc)localObject).e("positiveButton");
-      ((addc)localObject).a(null);
-      ((addc)localObject).b(null);
-      ((addc)localObject).a("https://seeklogo.com/images/T/twitter-icon-square-logo-108D17D373-seeklogo.com.png");
-      ((addc)localObject).show();
+      localObject = new SdkAuthDialog(getActivity());
+      ((SdkAuthDialog)localObject).c(HardCodeUtil.a(2131714726));
+      ((SdkAuthDialog)localObject).b("appName");
+      ((SdkAuthDialog)localObject).d("desc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\ndesc\n");
+      ((SdkAuthDialog)localObject).f("negativeButton");
+      ((SdkAuthDialog)localObject).e("positiveButton");
+      ((SdkAuthDialog)localObject).a(null);
+      ((SdkAuthDialog)localObject).b(null);
+      ((SdkAuthDialog)localObject).a("https://seeklogo.com/images/T/twitter-icon-square-logo-108D17D373-seeklogo.com.png");
+      ((SdkAuthDialog)localObject).show();
       continue;
-      this.jdField_a_of_type_Adad.a("getSkey", (JSONObject)localObject, new addb(this.jdField_a_of_type_AndroidWidgetEditText));
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getSkey", (JSONObject)localObject, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       continue;
-      this.jdField_a_of_type_Adad.a("getUserInfo", (JSONObject)localObject, new addb(this.jdField_a_of_type_AndroidWidgetEditText));
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getUserInfo", (JSONObject)localObject, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       continue;
-      this.jdField_a_of_type_Adad.a("getAppFriends", (JSONObject)localObject, new addb(this.jdField_a_of_type_AndroidWidgetEditText));
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getAppFriends", (JSONObject)localObject, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       continue;
-      this.jdField_a_of_type_Adad.a("getLocation", null, new addb(this.jdField_a_of_type_AndroidWidgetEditText));
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getLocation", null, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       continue;
-      this.jdField_a_of_type_Adad.a("getCity", null, new addb(this.jdField_a_of_type_AndroidWidgetEditText));
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getCity", null, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       continue;
       int i;
       switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
@@ -173,8 +160,8 @@ public class TestAppFragment
         ((JSONObject)localObject).put("rankValueType", i);
         ((JSONObject)localObject).put("rankOrderType", j);
         label532:
-        this.jdField_a_of_type_Adad.a("getRankingList", (JSONObject)localObject, new addb(this.jdField_a_of_type_AndroidWidgetEditText));
-        this.jdField_a_of_type_Adad.a("loginSilent", null, new adcy(this, this.jdField_a_of_type_AndroidWidgetEditText, (JSONObject)localObject));
+        this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getRankingList", (JSONObject)localObject, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
+        this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("loginSilent", null, new TestAppFragment.4(this, this.jdField_a_of_type_AndroidWidgetEditText, (JSONObject)localObject));
         continue;
         i = 1;
         break label450;
@@ -194,16 +181,16 @@ public class TestAppFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Adad != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager != null)
     {
-      this.jdField_a_of_type_Adad.b();
-      this.jdField_a_of_type_Adad = null;
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.b();
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.test.TestAppFragment
  * JD-Core Version:    0.7.0.1
  */

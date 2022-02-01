@@ -2,7 +2,7 @@ package com.tencent.biz.videostory.config;
 
 import NS_QQ_STORY_CONFIG.CONFIG.StGetStoryConfigRsp;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 class VSConfigManager$2
@@ -10,16 +10,16 @@ class VSConfigManager$2
 {
   VSConfigManager$2(VSConfigManager paramVSConfigManager) {}
   
-  public void onReceive(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CONFIG.StGetStoryConfigRsp paramStGetStoryConfigRsp)
+  public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CONFIG.StGetStoryConfigRsp paramStGetStoryConfigRsp)
   {
     if ((paramStGetStoryConfigRsp != null) && (paramStGetStoryConfigRsp.intConf != null)) {
-      VSConfigManager.access$000(this.this$0, paramStGetStoryConfigRsp.intConf.get());
+      VSConfigManager.a(this.a, paramStGetStoryConfigRsp.intConf.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.videostory.config.VSConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

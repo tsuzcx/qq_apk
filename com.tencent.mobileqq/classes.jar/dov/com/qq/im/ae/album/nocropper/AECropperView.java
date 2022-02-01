@@ -12,20 +12,15 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bnas;
-import bnat;
-import bnau;
-import bnav;
-import bnaw;
 import dov.com.qq.im.aeeditor.module.clip.image.EditorPicInfo;
 
 public class AECropperView
   extends FrameLayout
 {
-  private bnas jdField_a_of_type_Bnas;
   private AECropperGridView jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperGridView;
   public AECropperImageView a;
-  private boolean jdField_a_of_type_Boolean;
+  private AECropperView.GridCallback jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperView$GridCallback;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public AECropperView(Context paramContext)
   {
@@ -45,16 +40,16 @@ public class AECropperView
     a(paramContext, paramAttributeSet);
   }
   
-  private bnav a()
+  private CropResult a()
   {
     if (this.jdField_a_of_type_Boolean) {
-      return bnav.a();
+      return CropResult.a();
     }
-    bnau localbnau = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.a();
-    if (localbnau != null) {
-      return bnav.a(localbnau);
+    CropInfo localCropInfo = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.a();
+    if (localCropInfo != null) {
+      return CropResult.a(localCropInfo);
     }
-    return bnav.b();
+    return CropResult.b();
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -69,7 +64,7 @@ public class AECropperView
     }
     addView(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, 0, paramAttributeSet);
     addView(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperGridView, 1, paramAttributeSet);
-    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setGestureCallback(new bnat(this, null));
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setGestureCallback(new AECropperView.TouchGestureCallback(this, null));
   }
   
   public float a()
@@ -99,16 +94,16 @@ public class AECropperView
   @Nullable
   public EditorPicInfo a(@NonNull EditorPicInfo paramEditorPicInfo)
   {
-    bnav localbnav = a();
-    if ((localbnav.jdField_a_of_type_Bnaw != bnaw.b) || (localbnav.jdField_a_of_type_Bnau == null)) {
+    CropResult localCropResult = a();
+    if ((localCropResult.jdField_a_of_type_DovComQqImAeAlbumNocropperCropState != CropState.b) || (localCropResult.jdField_a_of_type_DovComQqImAeAlbumNocropperCropInfo == null)) {
       return null;
     }
     int i = b();
     int j = c();
-    paramEditorPicInfo.x = (localbnav.jdField_a_of_type_Bnau.a * 1.0D / i);
-    paramEditorPicInfo.y = (localbnav.jdField_a_of_type_Bnau.b * 1.0D / j);
-    paramEditorPicInfo.w = (localbnav.jdField_a_of_type_Bnau.c * 1.0D / i);
-    paramEditorPicInfo.h = (localbnav.jdField_a_of_type_Bnau.d * 1.0D / j);
+    paramEditorPicInfo.x = (localCropResult.jdField_a_of_type_DovComQqImAeAlbumNocropperCropInfo.a * 1.0D / i);
+    paramEditorPicInfo.y = (localCropResult.jdField_a_of_type_DovComQqImAeAlbumNocropperCropInfo.b * 1.0D / j);
+    paramEditorPicInfo.w = (localCropResult.jdField_a_of_type_DovComQqImAeAlbumNocropperCropInfo.c * 1.0D / i);
+    paramEditorPicInfo.h = (localCropResult.jdField_a_of_type_DovComQqImAeAlbumNocropperCropInfo.d * 1.0D / j);
     return paramEditorPicInfo;
   }
   
@@ -143,7 +138,7 @@ public class AECropperView
     return this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.c();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int i = getContext().getResources().getConfiguration().orientation;
@@ -178,9 +173,9 @@ public class AECropperView
     }
   }
   
-  public void setGridCallback(bnas parambnas)
+  public void setGridCallback(AECropperView.GridCallback paramGridCallback)
   {
-    this.jdField_a_of_type_Bnas = parambnas;
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperView$GridCallback = paramGridCallback;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
@@ -213,7 +208,7 @@ public class AECropperView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.nocropper.AECropperView
  * JD-Core Version:    0.7.0.1
  */

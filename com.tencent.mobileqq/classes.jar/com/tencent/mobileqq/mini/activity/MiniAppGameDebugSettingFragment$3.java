@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class MiniAppGameDebugSettingFragment$3
   implements CompoundButton.OnCheckedChangeListener
@@ -14,7 +13,6 @@ class MiniAppGameDebugSettingFragment$3
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     this.val$miniGameSp.edit().putBoolean("_minigame_start_with_sdk", paramBoolean).commit();
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

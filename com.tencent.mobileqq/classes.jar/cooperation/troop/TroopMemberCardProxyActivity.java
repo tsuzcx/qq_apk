@@ -1,45 +1,44 @@
 package cooperation.troop;
 
-import Override;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import bdla;
-import blvy;
-import blwh;
-import bmja;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
+import cooperation.troop.troopmemcard.TroopMemCardCmd;
 
 public class TroopMemberCardProxyActivity
   extends TroopBaseProxyActivity
 {
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, Class paramClass, Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString3, String paramString4, int paramInt)
   {
-    paramQQAppInterface = new bmja(paramQQAppInterface);
+    paramQQAppInterface = new TroopMemCardCmd(paramQQAppInterface);
     PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
     if (localPluginCommunicationHandler != null) {
       localPluginCommunicationHandler.register(paramQQAppInterface);
     }
-    paramQQAppInterface = new blwh(1);
-    paramQQAppInterface.jdField_b_of_type_JavaLangString = paramString1;
-    paramQQAppInterface.d = paramString2;
+    paramQQAppInterface = new IPluginManager.PluginParams(1);
+    paramQQAppInterface.b = paramString1;
+    paramQQAppInterface.e = paramString2;
     paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString4;
-    paramQQAppInterface.e = paramString3;
+    paramQQAppInterface.f = paramString3;
     paramQQAppInterface.jdField_a_of_type_JavaLangClass = paramClass;
     paramQQAppInterface.jdField_a_of_type_AndroidContentIntent = paramIntent;
     paramQQAppInterface.jdField_a_of_type_AndroidAppDialog = paramDialog;
     paramQQAppInterface.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
     paramQQAppInterface.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
     paramQQAppInterface.jdField_a_of_type_AndroidContentIntent.putExtra("useSkinEngine", true);
-    paramQQAppInterface.jdField_b_of_type_Int = paramInt;
-    paramQQAppInterface.c = 10000;
-    paramQQAppInterface.f = null;
-    blvy.a(paramActivity, paramQQAppInterface);
-    bdla.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
+    paramQQAppInterface.c = paramInt;
+    paramQQAppInterface.d = 10000;
+    paramQQAppInterface.g = null;
+    IPluginManager.a(paramActivity, paramQQAppInterface);
+    ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
   }
   
   @Override
@@ -65,7 +64,7 @@ public class TroopMemberCardProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.troop.TroopMemberCardProxyActivity
  * JD-Core Version:    0.7.0.1
  */

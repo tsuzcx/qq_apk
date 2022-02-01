@@ -3,20 +3,19 @@ package com.tencent.mobileqq.troop.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import bdzo;
-import bgqi;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.OnOnPlayedListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopSignVideoView
   extends SpriteGLView
 {
-  private int jdField_a_of_type_Int;
-  private bdzo jdField_a_of_type_Bdzo;
+  private int jdField_a_of_type_Int = 0;
+  private VideoSprite.OnOnPlayedListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite$OnOnPlayedListener;
   private VideoSprite jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite;
   private String jdField_a_of_type_JavaLangString;
-  private boolean d;
+  private boolean d = false;
   
   public TroopSignVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -50,7 +49,7 @@ public class TroopSignVideoView
     }
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(true);
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(new bgqi(this));
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(new TroopSignVideoView.1(this));
     if (QLog.isColorLevel()) {
       QLog.d("SpriteGLView", 2, "SpriteGLView->play");
     }
@@ -83,7 +82,7 @@ public class TroopSignVideoView
     }
   }
   
-  protected void onVisibilityChanged(View paramView, int paramInt)
+  public void onVisibilityChanged(View paramView, int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("SpriteGLView", 2, "onVisibilityChanged: visibility = " + paramInt);
@@ -108,9 +107,9 @@ public class TroopSignVideoView
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void setOnPlayedListener(bdzo parambdzo)
+  public void setOnPlayedListener(VideoSprite.OnOnPlayedListener paramOnOnPlayedListener)
   {
-    this.jdField_a_of_type_Bdzo = parambdzo;
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite$OnOnPlayedListener = paramOnOnPlayedListener;
   }
   
   public void setShowCover(boolean paramBoolean)

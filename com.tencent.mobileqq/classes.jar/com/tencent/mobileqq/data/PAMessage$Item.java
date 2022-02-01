@@ -12,7 +12,7 @@ public class PAMessage$Item
   public String actionData;
   public String actionUrl;
   public String androidUrl;
-  public long appId;
+  public long appId = 0L;
   public String cover;
   public String desc;
   public List<String> digestList;
@@ -25,7 +25,7 @@ public class PAMessage$Item
   public String isAd;
   public int mVideoFlag;
   public String nativeJumpString;
-  public boolean needLogin;
+  public boolean needLogin = false;
   public String nowTime;
   public String oneWeather;
   public String rankListDownload;
@@ -47,7 +47,7 @@ public class PAMessage$Item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PAMessage.Item
  * JD-Core Version:    0.7.0.1
  */

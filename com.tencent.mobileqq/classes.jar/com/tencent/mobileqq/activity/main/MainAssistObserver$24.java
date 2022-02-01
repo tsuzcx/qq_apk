@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.activity.main;
 
-import akam;
-import bisl;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 
-public class MainAssistObserver$24
+class MainAssistObserver$24
   implements Runnable
 {
-  public MainAssistObserver$24(akam paramakam) {}
+  MainAssistObserver$24(MainAssistObserver paramMainAssistObserver) {}
   
   public void run()
   {
@@ -19,12 +18,12 @@ public class MainAssistObserver$24
       return;
     }
     this.this$0.c = true;
-    this.this$0.jdField_a_of_type_Bisl.hide();
+    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.24
  * JD-Core Version:    0.7.0.1
  */

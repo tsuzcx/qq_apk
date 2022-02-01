@@ -15,7 +15,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
 import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.GifDrawable;
@@ -25,9 +27,6 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.widget.MessageProgressView;
-import wly;
-import wnv;
-import ykq;
 
 public class StoryMsgNodeFrameLayout
   extends FrameLayout
@@ -47,6 +46,7 @@ public class StoryMsgNodeFrameLayout
   public TextView b;
   public int c;
   public int d;
+  @StoryMsgNodeFrameLayout.DisplayState
   public int e = -1;
   
   public StoryMsgNodeFrameLayout(@NonNull Context paramContext)
@@ -57,15 +57,15 @@ public class StoryMsgNodeFrameLayout
   public StoryMsgNodeFrameLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = AIOUtils.dp2px(77.0F, getResources());
-    this.jdField_b_of_type_Int = AIOUtils.dp2px(58.0F, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.a(77.0F, getResources());
+    this.jdField_b_of_type_Int = AIOUtils.a(58.0F, getResources());
     a(paramContext);
   }
   
-  private boolean a(wly paramwly)
+  private boolean a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    ykq.a("StoryMsgNodeFrameLayout", "checkNeedShowRedPoint, uid:%s, feedId:%s, redPoint:%s", Long.valueOf(paramwly.jdField_b_of_type_Long), paramwly.f, Boolean.valueOf(paramwly.c));
-    return paramwly.c;
+    SLog.a("StoryMsgNodeFrameLayout", "checkNeedShowRedPoint, uid:%s, feedId:%s, redPoint:%s", Long.valueOf(paramMsgTabNodeInfo.jdField_b_of_type_Long), paramMsgTabNodeInfo.f, Boolean.valueOf(paramMsgTabNodeInfo.c));
+    return paramMsgTabNodeInfo.c;
   }
   
   private void b(int paramInt)
@@ -78,31 +78,31 @@ public class StoryMsgNodeFrameLayout
     if (paramInt < 10)
     {
       localLayoutParams = this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      localLayoutParams.width = UIUtils.dip2px(getContext(), 10.0F);
+      localLayoutParams.width = UIUtils.a(getContext(), 10.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846636);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846979);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
       return;
     }
     if (paramInt < 100)
     {
       localLayoutParams = this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      localLayoutParams.width = UIUtils.dip2px(getContext(), 14.0F);
+      localLayoutParams.width = UIUtils.a(getContext(), 14.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846637);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846980);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
       return;
     }
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    localLayoutParams.width = UIUtils.dip2px(getContext(), 19.0F);
+    localLayoutParams.width = UIUtils.a(getContext(), 19.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846638);
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846981);
     this.jdField_a_of_type_AndroidWidgetTextView.setText("99+");
   }
   
   public void a()
   {
-    ykq.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation()");
+    SLog.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation()");
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
     this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
   }
@@ -123,15 +123,15 @@ public class StoryMsgNodeFrameLayout
   
   public void a(Context paramContext)
   {
-    inflate(paramContext, 2131563077, this);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView = ((RoundBorderImageView)findViewById(2131371636));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371633));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371638));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371632));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131371639);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371637);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371635));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)findViewById(2131371634));
+    inflate(paramContext, 2131563233, this);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView = ((RoundBorderImageView)findViewById(2131371947));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371944));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371949));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371943));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131371950);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131371948);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371946));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)findViewById(2131371945));
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.jdField_a_of_type_Int, false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setBreathingCircleRadius(16.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
@@ -140,11 +140,11 @@ public class StoryMsgNodeFrameLayout
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  public void a(wly paramwly)
+  public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     int j = 0;
     int i = 0;
-    switch (paramwly.jdField_a_of_type_Int)
+    switch (paramMsgTabNodeInfo.jdField_a_of_type_Int)
     {
     case 8: 
     default: 
@@ -154,9 +154,9 @@ public class StoryMsgNodeFrameLayout
     case 6: 
     case 7: 
       a(0);
-      b(paramwly.jdField_b_of_type_Int);
+      b(paramMsgTabNodeInfo.jdField_b_of_type_Int);
       localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
-      if (a(paramwly)) {}
+      if (a(paramMsgTabNodeInfo)) {}
       for (;;)
       {
         localImageView.setVisibility(i);
@@ -166,7 +166,7 @@ public class StoryMsgNodeFrameLayout
     }
     a(8);
     ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
-    if (a(paramwly)) {}
+    if (a(paramMsgTabNodeInfo)) {}
     for (i = j;; i = 8)
     {
       localImageView.setVisibility(i);
@@ -176,44 +176,44 @@ public class StoryMsgNodeFrameLayout
   
   public void b()
   {
-    ykq.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation()");
+    SLog.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation()");
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(100, QQStoryContext.a().b());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new wnv(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new StoryMsgNodeFrameLayout.2(this));
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    ykq.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation load onLoadFialed!");
+    SLog.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation load onLoadFialed!");
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ykq.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation load onLoadFialed!");
+    SLog.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation load onLoadFialed!");
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    ykq.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation load onLoadCanceled!");
+    SLog.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation load onLoadCanceled!");
   }
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    ykq.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation load onLoadSuccessed!");
+    SLog.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation load onLoadSuccessed!");
     if ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable))
     {
-      ykq.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation reset drawable!");
+      SLog.b("StoryMsgNodeFrameLayoutVASH", "startUploadingAnimation reset drawable!");
       AbstractGifImage.resumeAll();
     }
   }
   
-  public void setDisplayState(int paramInt)
+  public void setDisplayState(@StoryMsgNodeFrameLayout.DisplayState int paramInt)
   {
     if (paramInt == this.e) {}
     for (;;)
     {
       return;
-      int i = AIOUtils.dp2px(56.0F, getResources());
+      int i = AIOUtils.a(56.0F, getResources());
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.a(false);
       switch (paramInt)
       {
@@ -234,7 +234,7 @@ public class StoryMsgNodeFrameLayout
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         continue;
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setBadgeIcon(2130846657, true);
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setBadgeIcon(2130847000, true);
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.a(true);
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -243,19 +243,19 @@ public class StoryMsgNodeFrameLayout
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         continue;
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130846660);
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130847003);
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.a(1.0F);
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.a();
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         continue;
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130846660);
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130847003);
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.a();
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         continue;
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846658);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847001);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         continue;
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.a();
@@ -273,7 +273,7 @@ public class StoryMsgNodeFrameLayout
     }
     for (;;)
     {
-      paramInt = getContext().getResources().getColor(2131167033);
+      paramInt = getContext().getResources().getColor(2131167040);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramInt);
       return;
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
@@ -288,11 +288,11 @@ public class StoryMsgNodeFrameLayout
     localURLDrawableOptions.mLoadingDrawable = paramString1;
     localURLDrawableOptions.mFailedDrawable = paramString1;
     localURLDrawableOptions.mUseAutoScaleParams = false;
-    localURLDrawableOptions.mRequestWidth = UIUtils.dip2px(getContext(), 12.0F);
-    localURLDrawableOptions.mRequestHeight = UIUtils.dip2px(getContext(), 12.0F);
+    localURLDrawableOptions.mRequestWidth = UIUtils.a(getContext(), 12.0F);
+    localURLDrawableOptions.mRequestHeight = UIUtils.a(getContext(), 12.0F);
     paramString1 = URLDrawable.getDrawable(paramString2, localURLDrawableOptions);
     this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramString1, null);
-    int i = getContext().getResources().getColor(2131167033);
+    int i = getContext().getResources().getColor(2131167040);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(i);
   }
   
@@ -300,7 +300,7 @@ public class StoryMsgNodeFrameLayout
   {
     if (paramBoolean)
     {
-      setNodeName(paramString, 2130846661);
+      setNodeName(paramString, 2130847004);
       return;
     }
     setNodeName(paramString, 0);
@@ -308,7 +308,7 @@ public class StoryMsgNodeFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout
  * JD-Core Version:    0.7.0.1
  */

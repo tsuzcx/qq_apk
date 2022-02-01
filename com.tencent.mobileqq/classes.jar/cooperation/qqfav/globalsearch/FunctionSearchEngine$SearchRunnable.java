@@ -1,11 +1,11 @@
 package cooperation.qqfav.globalsearch;
 
-import bbyl;
-import bceh;
-import bclx;
-import bcmk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.search.FunctionModuleConfigManager;
+import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +13,14 @@ import java.util.List;
 public class FunctionSearchEngine$SearchRunnable
   implements Runnable
 {
-  public bclx<bceh> a;
-  public bcmk a;
+  public ISearchListener<GroupBaseNetSearchModelItem> a;
+  public SearchRequest a;
   
   protected FunctionSearchEngine$SearchRunnable(FunctionSearchEngine paramFunctionSearchEngine) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bcmk == null) || (this.jdField_a_of_type_Bclx == null)) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest == null) || (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener == null)) {
       if (QLog.isColorLevel()) {
         QLog.e(FunctionSearchEngine.jdField_a_of_type_JavaLangString, 2, "mSearchRunnable.run, innerSearchRequest == null or innerListener == null");
       }
@@ -35,30 +35,30 @@ public class FunctionSearchEngine$SearchRunnable
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
         {
           QLog.e(FunctionSearchEngine.jdField_a_of_type_JavaLangString, 1, "mSearchRunnable.run, app is null.");
-          this.jdField_a_of_type_Bclx.a(null, 6);
+          this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(null, 6);
           return;
         }
-        localList = ((bbyl)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER)).a("" + this.jdField_a_of_type_Bcmk.jdField_a_of_type_JavaLangString, FunctionSearchEngine.a(this.this$0));
+        localList = ((FunctionModuleConfigManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER)).a("" + this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.jdField_a_of_type_JavaLangString, FunctionSearchEngine.a(this.this$0));
         if ((localList != null) && (localList.size() != 0)) {
           break;
         }
-      } while (this.jdField_a_of_type_Bclx == null);
-      this.jdField_a_of_type_Bclx.a(null, 1);
+      } while (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener == null);
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(null, 1);
       return;
       localArrayList = new ArrayList(localList.size());
       int i = 0;
       while (i < localList.size())
       {
-        localArrayList.add((bceh)localList.get(i));
+        localArrayList.add((GroupBaseNetSearchModelItem)localList.get(i));
         i += 1;
       }
-    } while (this.jdField_a_of_type_Bclx == null);
-    this.jdField_a_of_type_Bclx.a(localArrayList, 1);
+    } while (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener == null);
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localArrayList, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FunctionSearchEngine.SearchRunnable
  * JD-Core Version:    0.7.0.1
  */

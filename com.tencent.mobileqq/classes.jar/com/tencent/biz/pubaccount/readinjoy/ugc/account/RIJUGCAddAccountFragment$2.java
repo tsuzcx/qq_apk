@@ -1,11 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.account;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport.ReportR5Builder;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import olh;
 import org.json.JSONException;
-import pkh;
-import pqf;
-import pqg;
 
 final class RIJUGCAddAccountFragment$2
   implements Runnable
@@ -14,7 +15,8 @@ final class RIJUGCAddAccountFragment$2
   {
     try
     {
-      olh.a(null, "CliOper", "", "", "0X800AF12", "0X800AF12", 0, 0, "", "", "", pqf.a().a("uin", pkh.a()).a(), false);
+      String str = RIJTransMergeKanDianReport.a().a("uin", ReadInJoyUtils.a()).a();
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X800AF12", "0X800AF12", 0, 0, "", "", "", str, false);
       return;
     }
     catch (JSONException localJSONException)
@@ -25,7 +27,7 @@ final class RIJUGCAddAccountFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment.2
  * JD-Core Version:    0.7.0.1
  */

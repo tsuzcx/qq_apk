@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import afur;
-import afvv;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.AnimationUtils;
-import bkxo;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.AnimateUtils;
 import com.tencent.widget.ListView;
 
 public class MoveToBottomScroller
@@ -20,10 +18,10 @@ public class MoveToBottomScroller
   float jdField_a_of_type_Float = 1.0F;
   public int a;
   private long jdField_a_of_type_Long;
-  afur jdField_a_of_type_Afur;
-  afvv jdField_a_of_type_Afvv;
+  AIOFooterViewDetector jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOFooterViewDetector;
+  MoveToBottomScroller.OnScrollerListener jdField_a_of_type_ComTencentMobileqqActivityAioAnimMoveToBottomScroller$OnScrollerListener;
   ListView jdField_a_of_type_ComTencentWidgetListView;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean = true;
   private float jdField_c_of_type_Float;
@@ -36,7 +34,7 @@ public class MoveToBottomScroller
   int g = 0;
   int h = 0;
   int i = 0;
-  private int j;
+  private int j = 0;
   private int k;
   private int l;
   private int m;
@@ -47,12 +45,13 @@ public class MoveToBottomScroller
     jdField_b_of_type_Int = 50;
   }
   
-  public MoveToBottomScroller(ListView paramListView, afur paramafur)
+  public MoveToBottomScroller(ListView paramListView, AIOFooterViewDetector paramAIOFooterViewDetector)
   {
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_Afur = paramafur;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOFooterViewDetector = paramAIOFooterViewDetector;
     this.jdField_c_of_type_Int = ViewConfiguration.get(this.jdField_a_of_type_ComTencentWidgetListView.getContext()).getScaledMinimumFlingVelocity();
-    if (DeviceInfoUtil.getSystemTotalMemory() / 1048576L > 512L) {}
+    if (DeviceInfoUtil.a() / 1048576L > 512L) {}
     for (;;)
     {
       this.jdField_b_of_type_Boolean = bool;
@@ -130,13 +129,13 @@ public class MoveToBottomScroller
           i1 = 1;
         }
         int i2;
-        if ((this.jdField_a_of_type_ComTencentWidgetListView.getFooterViewsCount() > 0) && (this.jdField_a_of_type_Afur.jdField_a_of_type_Int >= 0)) {
+        if ((this.jdField_a_of_type_ComTencentWidgetListView.getFooterViewsCount() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOFooterViewDetector.jdField_a_of_type_Int >= 0)) {
           if (this.jdField_d_of_type_Int > 1)
           {
             i2 = this.jdField_d_of_type_Int - 1;
             label448:
             this.jdField_d_of_type_Int = i2;
-            this.n = this.jdField_a_of_type_Afur.jdField_a_of_type_Int;
+            this.n = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOFooterViewDetector.jdField_a_of_type_Int;
             label464:
             i2 = this.n;
             this.n = (this.jdField_d_of_type_Int * this.jdField_a_of_type_ComTencentWidgetListView.getHeight() / i1 + i2);
@@ -173,16 +172,11 @@ public class MoveToBottomScroller
     }
   }
   
-  public void a(afvv paramafvv)
-  {
-    this.jdField_a_of_type_Afvv = paramafvv;
-  }
-  
   public void b()
   {
     this.jdField_c_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Afvv != null) {
-      this.jdField_a_of_type_Afvv.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimMoveToBottomScroller$OnScrollerListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimMoveToBottomScroller$OnScrollerListener.a();
     }
     this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this);
   }
@@ -221,7 +215,7 @@ public class MoveToBottomScroller
       if (this.jdField_d_of_type_Int < 2)
       {
         if (this.g > this.h) {
-          break label767;
+          break label766;
         }
         i2 = i1;
         if (i1 < this.jdField_a_of_type_Float * 2.0F) {
@@ -236,21 +230,21 @@ public class MoveToBottomScroller
         }
         catch (Exception localException1)
         {
-          label767:
+          label766:
           boolean bool = true;
         }
         try
         {
           QLog.d("MoveToBottomScroller", 2, "move delta=" + i2);
           if (bool) {
-            break label864;
+            break label863;
           }
           i1 = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
           i2 = this.jdField_a_of_type_ComTencentWidgetListView.mFirstPosition;
           if ((this.k != 3) && (this.k != 1) && (i2 + i1 - 1 >= this.l))
           {
             if (i1 < 2) {
-              break label821;
+              break label820;
             }
             this.n = (this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i1 - 1).getBottom() - this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i1 - 2).getBottom());
             QLog.d("MoveToBottomScroller", 2, "at position mDistance=" + this.n);
@@ -264,7 +258,7 @@ public class MoveToBottomScroller
             this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
             this.j = 0;
             if ((this.jdField_c_of_type_Float * 1000.0F <= this.jdField_c_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
-              break label846;
+              break label845;
             }
             this.k = 1;
             this.jdField_c_of_type_Float = (this.n * 2.0F / this.m);
@@ -273,14 +267,14 @@ public class MoveToBottomScroller
           }
           this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this);
           if (Build.VERSION.SDK_INT < 16) {
-            break label854;
+            break label853;
           }
           this.jdField_a_of_type_ComTencentWidgetListView.postOnAnimation(this);
           return;
         }
         catch (Exception localException2)
         {
-          break label806;
+          break label805;
         }
         this.jdField_c_of_type_Float = (this.jdField_b_of_type_Float * i3);
         i1 = (int)(this.jdField_c_of_type_Float * i3 / 2.0F);
@@ -298,7 +292,7 @@ public class MoveToBottomScroller
         this.jdField_c_of_type_Float -= this.jdField_b_of_type_Float * i3;
         i1 = (int)(this.n - this.jdField_c_of_type_Float * (this.m - i3) / 2.0F);
         break;
-        i1 = (int)(bkxo.a(i3 / this.m) * this.n);
+        i1 = (int)(AnimateUtils.a(i3 / this.m) * this.n);
         break;
         i1 = (int)(i3 / this.m * this.n);
         break;
@@ -307,23 +301,23 @@ public class MoveToBottomScroller
         {
           i2 = (int)(this.jdField_a_of_type_Float * 10.0F + 0.5D);
           continue;
-          label806:
+          label805:
           QLog.d("MoveToBottomScroller", 2, localException1, new Object[0]);
           continue;
-          label821:
+          label820:
           if (i1 == 1)
           {
             this.n = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i1 - 1).getBottom();
             continue;
-            label846:
+            label845:
             this.k = 3;
           }
         }
       }
-      label854:
+      label853:
       this.jdField_a_of_type_ComTencentWidgetListView.post(this);
       return;
-      label864:
+      label863:
       if (QLog.isColorLevel()) {
         QLog.d("MoveToBottomScroller", 2, "atEdge");
       }
@@ -334,7 +328,7 @@ public class MoveToBottomScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.MoveToBottomScroller
  * JD-Core Version:    0.7.0.1
  */

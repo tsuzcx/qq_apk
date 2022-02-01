@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetOnlineFriendReq
   extends JceStruct
 {
-  public long uin;
+  public long uin = 0L;
   
   public GetOnlineFriendReq() {}
   
@@ -28,7 +28,7 @@ public final class GetOnlineFriendReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.GetOnlineFriendReq
  * JD-Core Version:    0.7.0.1
  */

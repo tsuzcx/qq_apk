@@ -56,7 +56,7 @@ public class TAVPlayer
   
   public TAVPlayer(Surface paramSurface, int paramInt1, int paramInt2)
   {
-    onSurfaceCreate(paramSurface, paramInt2, paramInt1);
+    onSurfaceCreate(paramSurface, paramInt1, paramInt2);
   }
   
   public TAVPlayer(FrameLayout paramFrameLayout)
@@ -118,7 +118,7 @@ public class TAVPlayer
       paramPlayerItem.play();
     }
     if (this.compositionUpdateListener != null) {
-      this.compositionUpdateListener.onUpdated(paramPlayerItem, false);
+      this.compositionUpdateListener.onUpdated(paramPlayerItem, true);
     }
     this.isResetting = false;
     return paramPlayerItem;
@@ -311,8 +311,8 @@ public class TAVPlayer
   
   public void onSurfaceCreate(Surface paramSurface, int paramInt1, int paramInt2)
   {
-    this.surfaceWidth = paramInt2;
-    this.surfaceHeight = paramInt1;
+    this.surfaceWidth = paramInt1;
+    this.surfaceHeight = paramInt2;
     this.surface = paramSurface;
     updateComposition(this.tavComposition, this.position, this.isAutoPlay, this.compositionUpdateListener);
   }
@@ -622,6 +622,25 @@ public class TAVPlayer
     }
   }
   
+  public void stop()
+  {
+    try
+    {
+      Logger.d(this.TAG, "stop() called");
+      if (this.player != null)
+      {
+        abandonAudioFocus();
+        this.player.stop();
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public void updateComposition(TAVComposition paramTAVComposition, CMTime paramCMTime, boolean paramBoolean)
   {
     updateComposition(paramTAVComposition, paramCMTime, paramBoolean, null);
@@ -668,7 +687,7 @@ public class TAVPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVPlayer
  * JD-Core Version:    0.7.0.1
  */

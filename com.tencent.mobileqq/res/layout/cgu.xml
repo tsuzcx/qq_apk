@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="@drawable/trans" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/mm3" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:gravity="center" android:id="@id/mig" android:layout_width="fill_parent" android:layout_height="24.0dip" android:contentDescription="@string/wie" />
-        <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/mii" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" android:text="@string/wie" android:contentDescription="@string/wie" />
-        <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="312.0dip" android:layout_height="350.0dip" android:layout_marginTop="22.5dip">
-            <android.support.v7.widget.RecyclerView android:id="@id/mgh" android:scrollbars="none" android:clipToPadding="false" android:layout_width="312.0dip" android:layout_height="350.0dip" />
-            <View android:layout_gravity="bottom" android:background="@drawable/bkb" android:layout_width="fill_parent" android:layout_height="30.0dip" />
-        </FrameLayout>
-        <Button android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/mgi" android:background="@drawable/bk1" android:focusable="false" android:duplicateParentState="false" android:layout_width="296.0dip" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/noo" android:background="#99000000" android:padding="8.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" android:text="指令性能分析数据" />
+    <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/nop" android:background="#ff00bcd4" android:padding="8.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="转发快照" android:layout_below="@id/noo" />
+    <com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer android:id="@id/o5u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/oln" android:background="@drawable/f3l" android:layout_width="267.0dip" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/o5t" android:background="@drawable/f3l" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/oln" android:layout_alignTop="@id/oln" android:layout_alignRight="@id/oln" android:layout_alignBottom="@id/oln">
+            <TextView android:textSize="20.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/o5s" android:background="@drawable/trans" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/y9z" android:alpha="0.5" />
+        </RelativeLayout>
+        <ImageView android:id="@id/mdd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-28.0dip" android:src="@drawable/ges" android:layout_alignTop="@id/oln" android:layout_centerHorizontal="true" />
+    </com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer>
+</RelativeLayout>

@@ -45,12 +45,12 @@ public class FootNavigationLayout
   
   private void init()
   {
-    LayoutInflater.from(getContext()).inflate(2131562417, this);
-    this.container = ((ViewGroup)findViewById(2131369201));
-    this.items = new ViewGroup[] { (ViewGroup)findViewById(2131366832), (ViewGroup)findViewById(2131377244), (ViewGroup)findViewById(2131378868) };
-    this.arrows = new ImageView[] { (ImageView)findViewById(2131366833), (ImageView)findViewById(2131377245), (ImageView)findViewById(2131378869) };
-    this.texts = new TextView[] { (TextView)findViewById(2131366834), (TextView)findViewById(2131377246), (TextView)findViewById(2131378870) };
-    this.dividers = new View[] { null, findViewById(2131365761), findViewById(2131365762) };
+    LayoutInflater.from(getContext()).inflate(2131562557, this);
+    this.container = ((ViewGroup)findViewById(2131369450));
+    this.items = new ViewGroup[] { (ViewGroup)findViewById(2131367017), (ViewGroup)findViewById(2131377664), (ViewGroup)findViewById(2131379298) };
+    this.arrows = new ImageView[] { (ImageView)findViewById(2131367018), (ImageView)findViewById(2131377665), (ImageView)findViewById(2131379299) };
+    this.texts = new TextView[] { (TextView)findViewById(2131367019), (TextView)findViewById(2131377666), (TextView)findViewById(2131379300) };
+    this.dividers = new View[] { null, findViewById(2131365924), findViewById(2131365925) };
   }
   
   public void setArrowVisible(int paramInt)
@@ -94,7 +94,7 @@ public class FootNavigationLayout
       {
         localObject2 = localObject1[i];
         if (localObject2 != null) {
-          localObject2.setBackgroundResource(2130848469);
+          localObject2.setBackgroundResource(2130848826);
         }
         i += 1;
       }
@@ -118,7 +118,7 @@ public class FootNavigationLayout
     {
       localObject2 = localObject1[i];
       if (localObject2 != null) {
-        localObject2.setBackgroundResource(2130848468);
+        localObject2.setBackgroundResource(2130848825);
       }
       i += 1;
     }
@@ -186,7 +186,7 @@ public class FootNavigationLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.FootNavigationLayout
  * JD-Core Version:    0.7.0.1
  */

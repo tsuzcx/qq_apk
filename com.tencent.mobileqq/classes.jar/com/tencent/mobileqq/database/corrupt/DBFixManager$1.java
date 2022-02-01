@@ -28,7 +28,7 @@ class DBFixManager$1
     }
     QLog.d(DBFixManager.a(), 1, "DBFixDialogUI 1, max count, delete db");
     this.this$0.b(false);
-    this.this$0.b();
+    this.this$0.c();
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.d);
     ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.e);
@@ -37,7 +37,7 @@ class DBFixManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixManager.1
  * JD-Core Version:    0.7.0.1
  */

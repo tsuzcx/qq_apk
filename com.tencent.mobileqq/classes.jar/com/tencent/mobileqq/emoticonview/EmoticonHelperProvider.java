@@ -5,6 +5,7 @@ import android.support.v4.util.SparseArrayCompat;
 public class EmoticonHelperProvider
 {
   public static final int ID_CAMERA_EMOTICON_HELPER = 3;
+  public static final int ID_CMSHOW_EMOTICON_HELPER = 9;
   public static final int ID_EMOTICON_EXTEND_HELPER = 1;
   public static final int ID_FAV_EMOTICON_HELPER = 2;
   public static final int ID_HOTPIC_SEARCH_EMOTICON_HELPER = 7;
@@ -27,6 +28,7 @@ public class EmoticonHelperProvider
     register(6, new EmoticonPanelSettingHelper(paramEmoticonPanelController));
     register(7, new EmoticonPanelHotPicSearchHelper(paramEmoticonPanelController));
     register(8, new EmoticonPanelTabSortHelper(paramEmoticonPanelController));
+    register(9, new EmoticonPanelCmshowHelper(paramEmoticonPanelController));
   }
   
   private void check(int paramInt)
@@ -123,7 +125,7 @@ public class EmoticonHelperProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonHelperProvider
  * JD-Core Version:    0.7.0.1
  */

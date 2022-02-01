@@ -3,37 +3,35 @@ package com.tencent.biz;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
+import com.tencent.biz.authorize.FlatBuffersConfig;
+import com.tencent.biz.authorize.JsonConfig;
 import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import java.util.concurrent.ConcurrentHashMap;
-import nro;
-import nun;
-import nuo;
 
-public class AuthorizeConfig$1
+class AuthorizeConfig$1
   implements Runnable
 {
-  public AuthorizeConfig$1(nro paramnro) {}
+  AuthorizeConfig$1(AuthorizeConfig paramAuthorizeConfig) {}
   
   public void run()
   {
     long l = SystemClock.currentThreadTimeMillis();
-    if (l > nro.jdField_a_of_type_Long + 10000L)
+    if (l > AuthorizeConfig.jdField_a_of_type_Long + 10000L)
     {
       this.this$0.jdField_a_of_type_AndroidContentContext.getSharedPreferences("domainCmdRight", 4);
-      nro.jdField_a_of_type_Long = l;
+      AuthorizeConfig.jdField_a_of_type_Long = l;
     }
     FlatBuffersParser.b();
     l = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getLong("lastUpdate", 0L);
-    if (l != nro.jdField_b_of_type_Long)
+    if (l != AuthorizeConfig.jdField_b_of_type_Long)
     {
-      nro.jdField_b_of_type_Long = l;
-      this.this$0.jdField_a_of_type_Nuo.b();
-      this.this$0.jdField_a_of_type_Nun.a();
-      this.this$0.i = null;
+      AuthorizeConfig.jdField_b_of_type_Long = l;
+      this.this$0.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.b();
+      this.this$0.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a();
+      this.this$0.f = null;
       this.this$0.jdField_b_of_type_OrgJsonJSONObject = null;
       this.this$0.c = null;
       this.this$0.jdField_a_of_type_OrgJsonJSONObject = null;
-      this.this$0.g = null;
       this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
       this.this$0.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
@@ -41,7 +39,7 @@ public class AuthorizeConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfig.1
  * JD-Core Version:    0.7.0.1
  */

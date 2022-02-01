@@ -4,17 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.AbsSavedState;
-import axff;
 
 public class MultiAIOBaseViewPager$SavedState
   extends AbsSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = new axff();
+  public static final Parcelable.Creator<SavedState> CREATOR = new MultiAIOBaseViewPager.SavedState.1();
   int jdField_a_of_type_Int;
   Parcelable jdField_a_of_type_AndroidOsParcelable;
   ClassLoader jdField_a_of_type_JavaLangClassLoader;
   
-  public MultiAIOBaseViewPager$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
+  MultiAIOBaseViewPager$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel);
     ClassLoader localClassLoader = paramClassLoader;

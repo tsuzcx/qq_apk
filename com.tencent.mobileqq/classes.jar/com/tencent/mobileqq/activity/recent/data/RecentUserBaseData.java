@@ -2,12 +2,12 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import android.os.Bundle;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.RecentConfig;
+import com.tencent.mobileqq.activity.recent.config.RecentBaseDataConfig;
 import com.tencent.mobileqq.activity.recent.config.menu.RecentMenuFlagDispatch;
 import com.tencent.mobileqq.activity.recent.parcelUtils.annotation.ParcelAnnotation.NotParcel;
-import com.tencent.mobileqq.data.BaseRecentUser;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.data.RecentUser;
 
 public abstract class RecentUserBaseData
   extends RecentBaseData
@@ -17,14 +17,50 @@ public abstract class RecentUserBaseData
   @ParcelAnnotation.NotParcel
   protected Bundle mArgsBundle;
   @ParcelAnnotation.NotParcel
-  public BaseRecentUser mUser;
+  public RecentUser mUser;
   
-  public RecentUserBaseData(BaseRecentUser paramBaseRecentUser)
+  public RecentUserBaseData(RecentUser paramRecentUser)
   {
-    if (paramBaseRecentUser == null) {
+    if (paramRecentUser == null) {
       throw new NullPointerException("RecentUser is null");
     }
-    this.mUser = paramBaseRecentUser;
+    this.mUser = paramRecentUser;
+  }
+  
+  public RecentUser a()
+  {
+    return this.mUser;
+  }
+  
+  public String a()
+  {
+    return this.mUser.troopUin;
+  }
+  
+  public void a(RecentUser paramRecentUser)
+  {
+    this.mUser = paramRecentUser;
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  public final void b()
+  {
+    if ((isUnreadMsgNumInTabNum()) && (a()))
+    {
+      this.mMenuFlag &= 0xFFF0FFFF;
+      if (this.mUnreadNum != 0) {
+        this.mMenuFlag |= 0x10000;
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.mMenuFlag |= 0x20000;
   }
   
   public long getLastDraftTime()
@@ -37,26 +73,6 @@ public abstract class RecentUserBaseData
     return this.mUser.lastmsgtime;
   }
   
-  public int getMenuFlag()
-  {
-    return this.mMenuFlag;
-  }
-  
-  public BaseRecentUser getRecentUser()
-  {
-    return this.mUser;
-  }
-  
-  public int getRecentUserMsgType()
-  {
-    return this.mUser.msgType;
-  }
-  
-  public String getRecentUserTroopUin()
-  {
-    return this.mUser.troopUin;
-  }
-  
   public int getRecentUserType()
   {
     return this.mUser.getType();
@@ -67,22 +83,12 @@ public abstract class RecentUserBaseData
     return this.mUser.uin;
   }
   
-  protected boolean isEnableUnreadState()
-  {
-    return false;
-  }
-  
   public final boolean isUnreadMsgNumInTabNum()
   {
     return (this.mUnreadFlag == 1) || (this.mUnreadFlag == 4);
   }
   
-  public void setRecentUser(BaseRecentUser paramBaseRecentUser)
-  {
-    this.mUser = paramBaseRecentUser;
-  }
-  
-  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
     if (this.mArgsBundle == null) {
       this.mArgsBundle = new Bundle();
@@ -90,26 +96,10 @@ public abstract class RecentUserBaseData
     for (;;)
     {
       this.mMsgExtroInfo = "";
-      paramIMCoreAppRuntime.getRecentConfig().getRecentMenuFlagDispatch().processor(paramIMCoreAppRuntime, this);
+      RecentBaseDataConfig.a().a(paramBaseQQAppInterface, this);
       return;
       this.mArgsBundle.clear();
     }
-  }
-  
-  public final void updateMsgUnreadStateMenu()
-  {
-    if ((isUnreadMsgNumInTabNum()) && (isEnableUnreadState()))
-    {
-      this.mMenuFlag &= 0xFFF0FFFF;
-      if (this.mUnreadNum != 0) {
-        this.mMenuFlag |= 0x10000;
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.mMenuFlag |= 0x20000;
   }
 }
 

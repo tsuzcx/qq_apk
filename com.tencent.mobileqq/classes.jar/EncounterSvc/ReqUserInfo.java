@@ -20,14 +20,14 @@ public final class ReqUserInfo
   static ArrayList<SOSO_Wifi> cache_vSOSOMac;
   public int eListType = 1;
   public int eLocalInfo = 0;
-  public GPS stGps;
+  public GPS stGps = null;
   public String strAuthName = "";
   public String strAuthPassword = "";
-  public ArrayList<Cell> vCells;
-  public byte[] vLBSKeyData;
-  public ArrayList<Long> vMacs;
-  public ArrayList<SOSO_Cell> vSOSOCells;
-  public ArrayList<SOSO_Wifi> vSOSOMac;
+  public ArrayList<Cell> vCells = null;
+  public byte[] vLBSKeyData = null;
+  public ArrayList<Long> vMacs = null;
+  public ArrayList<SOSO_Cell> vSOSOCells = null;
+  public ArrayList<SOSO_Wifi> vSOSOMac = null;
   
   static
   {

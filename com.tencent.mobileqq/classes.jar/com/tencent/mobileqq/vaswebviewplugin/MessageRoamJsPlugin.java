@@ -7,11 +7,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
-import ascz;
-import asdd;
-import bifw;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.webview.swift.IPreCreatePluginChecker;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import org.json.JSONException;
@@ -19,6 +20,7 @@ import org.json.JSONObject;
 
 public class MessageRoamJsPlugin
   extends VasWebviewJsPlugin
+  implements IPreCreatePluginChecker
 {
   public static final String ACTION = "action";
   public static final String DATA = "data";
@@ -39,7 +41,7 @@ public class MessageRoamJsPlugin
   Activity browserActivity = null;
   BrowserAppInterface browserAppInterface = null;
   Context context = null;
-  public String listenCallback;
+  public String listenCallback = null;
   
   public MessageRoamJsPlugin()
   {
@@ -54,7 +56,7 @@ public class MessageRoamJsPlugin
   
   private boolean handleGetRoam(String paramString)
   {
-    sendRemoteReq(asdd.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
+    sendRemoteReq(DataFactory.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
     return true;
   }
   
@@ -178,6 +180,11 @@ public class MessageRoamJsPlugin
       return true;
     }
     return false;
+  }
+  
+  public long getWebViewSchemaByNameSpace(String paramString)
+  {
+    return 1L;
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -343,11 +350,16 @@ public class MessageRoamJsPlugin
     }
   }
   
+  public boolean isNeedPreCreatePlugin(Intent paramIntent, String paramString1, String paramString2)
+  {
+    return (paramString1.startsWith("http://clientui.3g.qq.com/mqqapi/im/roam")) || (paramString1.startsWith("https://mapp.3g.qq.com/touch/psw/verify.jsp")) || (paramString1.startsWith("https://mapp.3g.qq.com/touch/psw/create.jsp"));
+  }
+  
   public void notifyGetMsgRoam(String paramString)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("pwd", paramString);
-    sendRemoteReq(asdd.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
+    sendRemoteReq(DataFactory.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
   }
   
   public void onCreate()
@@ -416,7 +428,7 @@ public class MessageRoamJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MessageRoamJsPlugin
  * JD-Core Version:    0.7.0.1
  */

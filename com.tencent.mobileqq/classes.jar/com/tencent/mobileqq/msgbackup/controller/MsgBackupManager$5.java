@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import awzl;
-import awzs;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
-public class MsgBackupManager$5
+class MsgBackupManager$5
   implements Runnable
 {
-  public MsgBackupManager$5(awzs paramawzs) {}
+  MsgBackupManager$5(MsgBackupManager paramMsgBackupManager) {}
   
   public void run()
   {
-    List localList = awzs.a(this.this$0).getMessageFacade().getAllMsgTableData();
-    if (awzs.a(this.this$0) != null) {
-      awzs.a(this.this$0).a(localList);
+    List localList = MsgBackupManager.a(this.this$0).getMessageFacade().b();
+    if (MsgBackupManager.a(this.this$0) != null) {
+      MsgBackupManager.a(this.this$0).a(localList);
     }
   }
 }

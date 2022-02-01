@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import ahqb;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -9,14 +9,14 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.ImageButton;
-import bdla;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout.InterceptListener;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XEditTextEx;
 import com.tencent.widget.XPanelContainer;
@@ -24,14 +24,16 @@ import java.util.List;
 
 public class EmoticonPanelExtendHelper
   extends AbstractEmoticonPanelHelper
-  implements ahqb, EmotionPanelListView.PullAndFastScrollListener
+  implements PanelIconLinearLayout.InterceptListener, EmotionPanelListView.PullAndFastScrollListener
 {
+  public static final int ANIM_DURATION_EXTEND = 200;
+  public static final int ANIM_DURATION_REDUCE = 250;
   private static final String LOG_TAG = "EmoticonPanelExtendHelper";
   private static int sMaxPanelHeight;
-  private QQAppInterface app;
+  private QQEmoticonMainPanelApp app;
   private float mDowny;
   private EmoticonMainPanel mMainPanel;
-  private int mOldPanelHeight;
+  private int mOldPanelHeight = 0;
   private int mOriginPanelHeight;
   private int mStartHeight;
   private TextWatcher textWatcher = new EmoticonPanelExtendHelper.3(this);
@@ -61,39 +63,39 @@ public class EmoticonPanelExtendHelper
     {
       localEmotionPanelInfo = (EmotionPanelInfo)this.mPanelController.panelDataList.get(EmoticonPanelController.sLastSelectedSecondTabIndex);
       if (localEmotionPanelInfo.type != 7) {
-        break label88;
+        break label91;
       }
-      bdla.b(this.app, "dc00898", "", "", paramString, paramString, 1, 0, "", "", "", "");
+      ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", paramString, paramString, 1, 0, "", "", "", "");
     }
-    label88:
+    label91:
     do
     {
       return;
       if (localEmotionPanelInfo.type == 4)
       {
-        bdla.b(this.app, "dc00898", "", "", paramString, paramString, 2, 0, "", "", "", "");
+        ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", paramString, paramString, 2, 0, "", "", "", "");
         return;
       }
       if (localEmotionPanelInfo.type == 11)
       {
-        bdla.b(this.app, "dc00898", "", "", paramString, paramString, 3, 0, "", "", "", "");
+        ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", paramString, paramString, 3, 0, "", "", "", "");
         return;
       }
       if (localEmotionPanelInfo.type == 8)
       {
-        bdla.b(this.app, "dc00898", "", "", paramString, paramString, 4, 0, "", "", "", "");
+        ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", paramString, paramString, 4, 0, "", "", "", "");
         return;
       }
       if (localEmotionPanelInfo.type == 10)
       {
-        bdla.b(this.app, "dc00898", "", "", paramString, paramString, 5, 0, "", "", "", "");
+        ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", paramString, paramString, 5, 0, "", "", "", "");
         return;
       }
     } while ((localEmotionPanelInfo.type != 9) && (localEmotionPanelInfo.type != 6));
-    bdla.b(this.app, "dc00898", "", "", paramString, paramString, 6, 0, "", "", "", "");
+    ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", paramString, paramString, 6, 0, "", "", "", "");
   }
   
-  protected void abordFling()
+  protected void abortFling()
   {
     if ((this.mPanelController.pageAdapter != null) && (this.mPanelController.panelDataList != null) && (EmoticonPanelController.sLastSelectedSecondTabIndex >= 0) && (EmoticonPanelController.sLastSelectedSecondTabIndex < this.mPanelController.panelDataList.size()))
     {
@@ -135,7 +137,7 @@ public class EmoticonPanelExtendHelper
   
   public int getSearchAnimHeight()
   {
-    return sMaxPanelHeight + ViewUtils.dip2px(35.0F);
+    return sMaxPanelHeight + ViewUtils.a(35.0F);
   }
   
   public String getTag()
@@ -266,7 +268,7 @@ public class EmoticonPanelExtendHelper
       return false;
       f = paramMotionEvent.getY();
       i = (int)(f - this.mDowny + 0.5F);
-    } while ((!isShowExtendPanel()) || (this.mPanelController.mBaseChatPie == null) || (this.mPanelController.mBaseChatPie.panelicons == null) || (Math.abs(i) <= this.mPanelController.mBaseChatPie.panelicons.getHeight() * 0.6F));
+    } while ((!isShowExtendPanel()) || (this.mPanelController.mBaseChatPie == null) || (this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout == null) || (Math.abs(i) <= this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getHeight() * 0.6F));
     this.mDowny = f;
     return true;
   }
@@ -283,13 +285,13 @@ public class EmoticonPanelExtendHelper
   
   boolean isShowExtendPanel()
   {
-    return (this.mPanelController.mBaseChatPie != null) && (!this.mPanelController.mParams.kanDianBiu) && (this.mPanelController.mBaseChatPie.input != null);
+    return (this.mPanelController.mBaseChatPie != null) && (!this.mPanelController.mParams.kanDianBiu) && (this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null);
   }
   
   public void onAttachedToWindow()
   {
     if (isShowExtendPanel()) {
-      this.mPanelController.mBaseChatPie.input.addTextChangedListener(this.textWatcher);
+      this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.textWatcher);
     }
   }
   
@@ -297,7 +299,7 @@ public class EmoticonPanelExtendHelper
   {
     if (isShowExtendPanel())
     {
-      this.mPanelController.mBaseChatPie.input.removeTextChangedListener(this.textWatcher);
+      this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.textWatcher);
       this.mOldPanelHeight = XPanelContainer.a;
       XPanelContainer.a = this.mOriginPanelHeight;
     }
@@ -318,8 +320,8 @@ public class EmoticonPanelExtendHelper
     for (;;)
     {
       this.mOldPanelHeight = 0;
-      if ((this.mPanelController.mBaseChatPie != null) && (this.mPanelController.mBaseChatPie.panelicons != null)) {
-        this.mPanelController.mBaseChatPie.panelicons.setInterceptListener(null);
+      if ((this.mPanelController.mBaseChatPie != null) && (this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null)) {
+        this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setInterceptListener(null);
       }
       return;
       label76:
@@ -331,8 +333,8 @@ public class EmoticonPanelExtendHelper
   
   public void onPageSelected(int paramInt)
   {
-    if ((this.mPanelController.mBaseChatPie != null) && (this.mPanelController.mBaseChatPie.input != null)) {
-      updateDeleteBtnVisibility(this.mPanelController.mBaseChatPie.input.getText().toString());
+    if ((this.mPanelController.mBaseChatPie != null) && (this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+      updateDeleteBtnVisibility(this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
     }
   }
   
@@ -375,8 +377,8 @@ public class EmoticonPanelExtendHelper
       }
       this.mOldPanelHeight = 0;
       initPanelExtendHeight();
-      if ((this.mPanelController.mBaseChatPie != null) && (this.mPanelController.mBaseChatPie.panelicons != null)) {
-        this.mPanelController.mBaseChatPie.panelicons.setInterceptListener(this);
+      if ((this.mPanelController.mBaseChatPie != null) && (this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null)) {
+        this.mPanelController.mBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setInterceptListener(this);
       }
       updateViewAlpha();
     }
@@ -424,7 +426,7 @@ public class EmoticonPanelExtendHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelExtendHelper
  * JD-Core Version:    0.7.0.1
  */

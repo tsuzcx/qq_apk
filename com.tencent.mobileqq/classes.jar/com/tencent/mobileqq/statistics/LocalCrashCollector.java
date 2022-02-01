@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.statistics;
 
 import android.os.Looper;
-import bkyc;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.util.MqqWeakReferenceHandler;
 import mqq.os.MqqHandler;
 
 public class LocalCrashCollector
@@ -15,7 +15,7 @@ public class LocalCrashCollector
   
   public LocalCrashCollector(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new bkyc(Looper.getMainLooper(), null, true);
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), null, true);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
@@ -49,10 +49,10 @@ public class LocalCrashCollector
     //   47: invokevirtual 69	java/io/File:mkdirs	()Z
     //   50: pop
     //   51: aload_3
-    //   52: new 71	bdkl
+    //   52: new 71	com/tencent/mobileqq/statistics/LocalCrashCollector$1
     //   55: dup
     //   56: aload_0
-    //   57: invokespecial 74	bdkl:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
+    //   57: invokespecial 74	com/tencent/mobileqq/statistics/LocalCrashCollector$1:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
     //   60: invokevirtual 78	java/io/File:listFiles	(Ljava/io/FilenameFilter;)[Ljava/io/File;
     //   63: astore 8
     //   65: aload 8
@@ -83,10 +83,10 @@ public class LocalCrashCollector
     //   111: arraylength
     //   112: putfield 44	com/tencent/mobileqq/statistics/LocalCrashCollector:jdField_a_of_type_Int	I
     //   115: aload 8
-    //   117: new 94	bdkm
+    //   117: new 94	com/tencent/mobileqq/statistics/LocalCrashCollector$2
     //   120: dup
     //   121: aload_0
-    //   122: invokespecial 95	bdkm:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
+    //   122: invokespecial 95	com/tencent/mobileqq/statistics/LocalCrashCollector$2:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
     //   125: invokestatic 101	java/util/Arrays:sort	([Ljava/lang/Object;Ljava/util/Comparator;)V
     //   128: aload 8
     //   130: arraylength

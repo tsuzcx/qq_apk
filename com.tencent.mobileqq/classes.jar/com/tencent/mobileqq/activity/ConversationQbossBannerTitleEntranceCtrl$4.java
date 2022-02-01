@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import adty;
-
-public class ConversationQbossBannerTitleEntranceCtrl$4
+class ConversationQbossBannerTitleEntranceCtrl$4
   implements Runnable
 {
-  public ConversationQbossBannerTitleEntranceCtrl$4(adty paramadty) {}
+  ConversationQbossBannerTitleEntranceCtrl$4(ConversationQbossBannerTitleEntranceCtrl paramConversationQbossBannerTitleEntranceCtrl) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ConversationQbossBannerTitleEntranceCtrl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationQbossBannerTitleEntranceCtrl.4
  * JD-Core Version:    0.7.0.1
  */

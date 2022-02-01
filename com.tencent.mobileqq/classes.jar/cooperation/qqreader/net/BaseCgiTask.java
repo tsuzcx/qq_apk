@@ -5,16 +5,14 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bmfq;
-import bmfs;
-import bmgm;
-import bmgr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.util.QQDeviceInfo;
 import cooperation.qqreader.QRBridgeUtil;
+import cooperation.qqreader.utils.Log;
+import cooperation.qqreader.utils.Utility;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
 import java.io.IOException;
@@ -32,12 +30,12 @@ public abstract class BaseCgiTask
   public static String b = "AND";
   public static String c = "QQPLUGIN_B";
   protected Context a;
-  private bmfq jdField_a_of_type_Bmfq;
-  private WeakReference<bmfq> jdField_a_of_type_JavaLangRefWeakReference;
+  private ReaderCgiListener jdField_a_of_type_CooperationQqreaderNetReaderCgiListener;
+  private WeakReference<ReaderCgiListener> jdField_a_of_type_JavaLangRefWeakReference;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "8.4.10.0001";
+    jdField_a_of_type_JavaLangString = "8.5.5.0001";
   }
   
   public BaseCgiTask()
@@ -45,13 +43,13 @@ public abstract class BaseCgiTask
     this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
   }
   
-  private bmfq a()
+  private ReaderCgiListener a()
   {
-    if (this.jdField_a_of_type_Bmfq != null) {
-      return this.jdField_a_of_type_Bmfq;
+    if (this.jdField_a_of_type_CooperationQqreaderNetReaderCgiListener != null) {
+      return this.jdField_a_of_type_CooperationQqreaderNetReaderCgiListener;
     }
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (bmfq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      return (ReaderCgiListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
     return null;
   }
@@ -69,7 +67,7 @@ public abstract class BaseCgiTask
       for (;;)
       {
         Object localObject2;
-        bmgm.a("BaseCgiTask", "getRequestContent", localIOException);
+        Log.a("BaseCgiTask", "getRequestContent", localIOException);
         continue;
         localObject1 = a(new String((byte[])localObject1), 100);
       }
@@ -91,28 +89,28 @@ public abstract class BaseCgiTask
     return paramString.substring(0, paramInt);
   }
   
-  private void a(bmfs parambmfs)
-  {
-    bmfq localbmfq = a();
-    if (localbmfq != null)
-    {
-      localbmfq.b(parambmfs);
-      ThreadManager.getUIHandler().post(new BaseCgiTask.1(this, localbmfq, parambmfs));
-      return;
-    }
-    bmgm.c("BaseCgiTask", getClass().getName() + " request: " + a() + " onConnectionReceiveData callback null");
-  }
-  
   private void a(BaseCgiTask paramBaseCgiTask, Exception paramException)
   {
-    bmfq localbmfq = a();
-    if (localbmfq != null)
+    ReaderCgiListener localReaderCgiListener = a();
+    if (localReaderCgiListener != null)
     {
-      bmgm.a("BaseCgiTask", a("failed task:" + getClass().getName()), paramException);
-      ThreadManager.getUIHandler().post(new BaseCgiTask.2(this, localbmfq, paramBaseCgiTask, paramException));
+      Log.a("BaseCgiTask", a("failed task:" + getClass().getName()), paramException);
+      ThreadManager.getUIHandler().post(new BaseCgiTask.2(this, localReaderCgiListener, paramBaseCgiTask, paramException));
       return;
     }
-    bmgm.c("BaseCgiTask", getClass().getName() + "onConnectionError callback null");
+    Log.c("BaseCgiTask", getClass().getName() + "onConnectionError callback null");
+  }
+  
+  private void a(ReaderCgiResponse paramReaderCgiResponse)
+  {
+    ReaderCgiListener localReaderCgiListener = a();
+    if (localReaderCgiListener != null)
+    {
+      localReaderCgiListener.b(paramReaderCgiResponse);
+      ThreadManager.getUIHandler().post(new BaseCgiTask.1(this, localReaderCgiListener, paramReaderCgiResponse));
+      return;
+    }
+    Log.c("BaseCgiTask", getClass().getName() + " request: " + a() + " onConnectionReceiveData callback null");
   }
   
   public static String b()
@@ -163,7 +161,7 @@ public abstract class BaseCgiTask
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       localObject2 = "";
-      bmgm.a("BaseCgiTask", "skey is null");
+      Log.a("BaseCgiTask", "skey is null");
     }
     return localObject2;
   }
@@ -207,14 +205,14 @@ public abstract class BaseCgiTask
     ThreadManagerV2.excute(this, 128, null, true);
   }
   
-  public void a(bmfq parambmfq, boolean paramBoolean)
+  public void a(ReaderCgiListener paramReaderCgiListener, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Bmfq = parambmfq;
+      this.jdField_a_of_type_CooperationQqreaderNetReaderCgiListener = paramReaderCgiListener;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmfq);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReaderCgiListener);
   }
   
   protected byte[] a()
@@ -225,7 +223,7 @@ public abstract class BaseCgiTask
   protected HashMap<String, String> b()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qq_version", "8.4.10");
+    localHashMap.put("qq_version", "8.5.5");
     localHashMap.put("c_platform", "mqqandroid");
     localHashMap.put("qqnum", d());
     localHashMap.put("client_version", jdField_a_of_type_JavaLangString);
@@ -239,7 +237,7 @@ public abstract class BaseCgiTask
     localHashMap.put("Referer", "https://readercentera.qq.com");
     localHashMap.put("cookie", g());
     localHashMap.put("identify", "skey");
-    localHashMap.put("resolution", bmgr.a() + "*" + bmgr.b());
+    localHashMap.put("resolution", Utility.a() + "*" + Utility.b());
     localHashMap.put("timi", d());
     return localHashMap;
   }
@@ -252,8 +250,8 @@ public abstract class BaseCgiTask
       for (Object localObject = OkHttpHelper.HttpMethodType.POST;; localObject = OkHttpHelper.HttpMethodType.GET)
       {
         localObject = OkHttpHelper.a(a(), (OkHttpHelper.HttpMethodType)localObject, a(), a(), a());
-        a(new bmfs(this, (String)localObject));
-        bmgm.c("BaseCgiTask", a((String)localObject));
+        a(new ReaderCgiResponse(this, (String)localObject));
+        Log.c("BaseCgiTask", a((String)localObject));
         return;
       }
       return;
@@ -276,7 +274,7 @@ public abstract class BaseCgiTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.net.BaseCgiTask
  * JD-Core Version:    0.7.0.1
  */

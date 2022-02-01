@@ -1,0 +1,22 @@
+package com.tencent.av.ui;
+
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+
+class QAVPtvTemplateAdapter$2
+  implements HorizontalListView.OnScrollStateChangedListener
+{
+  QAVPtvTemplateAdapter$2(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter) {}
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(0L);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.av.ui.QAVPtvTemplateAdapter.2
+ * JD-Core Version:    0.7.0.1
+ */

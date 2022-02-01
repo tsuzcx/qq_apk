@@ -1,0 +1,51 @@
+package com.tencent.biz.pubaccount.readinjoy.weaknet;
+
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReadInJoyPTSCostHelper
+{
+  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  
+  public static void a()
+  {
+    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() <= 0)) {}
+  }
+  
+  public static void a(String paramString1, String paramString2, double paramDouble)
+  {
+    if (!a(paramDouble)) {}
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
+  {
+    if (!a(paramDouble)) {}
+  }
+  
+  private static boolean a(double paramDouble)
+  {
+    return false;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_JavaUtilList != null) {
+      jdField_a_of_type_JavaUtilList.clear();
+    }
+  }
+  
+  private static void b(String paramString)
+  {
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(RIJQQAppInterfaceUtil.a(), "", "0X800A064", "0X800A064", 0, 0, "", "", "", paramString, false);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.weaknet.ReadInJoyPTSCostHelper
+ * JD-Core Version:    0.7.0.1
+ */

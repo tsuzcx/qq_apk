@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.startup.director;
 
-import alht;
 import android.text.TextUtils;
-import bdgy;
-import bdjn;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.recent.RecentParcelUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.startup.step.Step;
+import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.UnifiedMonitor;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
-public class StartupDirector$2
+class StartupDirector$2
   implements Runnable
 {
-  public StartupDirector$2(bdgy parambdgy, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6) {}
+  StartupDirector$2(StartupDirector paramStartupDirector, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class StartupDirector$2
             break label522;
           }
           localObject1 = "1";
-          bdla.b((QQAppInterface)localObject2, "CliOper", "", "", "0X80064F6", "0X80064F6", 0, 0, (String)localObject1, "", "", "");
+          ReportController.b((AppRuntime)localObject2, "CliOper", "", "", "0X80064F6", "0X80064F6", 0, 0, (String)localObject1, "", "", "");
         }
       }
       if (this.c > 0L)
@@ -58,17 +58,17 @@ public class StartupDirector$2
         ((HashMap)localObject2).put("cost", this.f + "");
         localObject1 = BaseApplicationImpl.sApplication.getRuntime();
         if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface))) {
-          if (alht.a((QQAppInterface)localObject1))
+          if (RecentParcelUtil.a((QQAppInterface)localObject1))
           {
             localObject1 = "1";
             label315:
             ((HashMap)localObject2).put("bootOpt", localObject1);
             label323:
-            localObject1 = alht.a(BaseApplicationImpl.context);
+            localObject1 = RecentParcelUtil.a(BaseApplicationImpl.context);
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
               ((HashMap)localObject2).put("bootOptCrashMessage", localObject1);
             }
-            if (!alht.a(BaseApplicationImpl.context)) {
+            if (!RecentParcelUtil.a(BaseApplicationImpl.context)) {
               break label563;
             }
           }
@@ -79,16 +79,16 @@ public class StartupDirector$2
         for (localObject1 = "1";; localObject1 = "0")
         {
           ((HashMap)localObject2).put("bootOptHasCrash", localObject1);
-          ((HashMap)localObject2).put("bootOptTotalSize", alht.a() + "");
-          ((HashMap)localObject2).put("bootOptFailSize", alht.b() + "");
-          if ((bdgy.a(this.this$0) == null) || (bdgy.a(this.this$0).size() != 6)) {
+          ((HashMap)localObject2).put("bootOptTotalSize", RecentParcelUtil.a() + "");
+          ((HashMap)localObject2).put("bootOptFailSize", RecentParcelUtil.b() + "");
+          if ((StartupDirector.a(this.this$0) == null) || (StartupDirector.a(this.this$0).size() != 6)) {
             break label569;
           }
-          localObject1 = bdgy.a(this.this$0).keySet().iterator();
+          localObject1 = StartupDirector.a(this.this$0).keySet().iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject3 = (Integer)((Iterator)localObject1).next();
-            ((HashMap)localObject2).put("state" + localObject3, String.valueOf(bdgy.a(this.this$0).get(localObject3)));
+            ((HashMap)localObject2).put("state" + localObject3, String.valueOf(StartupDirector.a(this.this$0).get(localObject3)));
           }
           if (this.b == 2200L)
           {
@@ -122,13 +122,13 @@ public class StartupDirector$2
     }
     for (;;)
     {
-      bdla.a((QQAppInterface)localObject2, "P_CliOper", "Vip_login_upload", "", "upload", "report", 0, 0, AppSetting.a(BaseApplicationImpl.sApplication, (String)localObject1), "", "", "");
+      ReportController.a((AppRuntime)localObject2, "P_CliOper", "Vip_login_upload", "", "upload", "report", 0, 0, AppSetting.a(BaseApplicationImpl.sApplication, (String)localObject1), "", "", "");
       if ("Success".equals(BaseApplicationImpl.sInjectResult))
       {
-        bdjn.b(16, this.this$0, null).step();
+        Step.AmStepFactory.b(16, this.this$0, null).step();
         UnifiedMonitor.a().b();
       }
-      bdjn.b(43, this.this$0, null).step();
+      Step.AmStepFactory.b(42, this.this$0, null).step();
       return;
       label751:
       localObject1 = ((QQAppInterface)localObject2).getAccount();

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
-import blfz;
 import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
+import com.tencent.widget.TraceUtils;
 
 public class FlowLayout
   extends TagFlowLayout
@@ -27,7 +27,7 @@ public class FlowLayout
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    blfz.a("FlowLayout.onLayout");
+    TraceUtils.traceBegin("FlowLayout.onLayout");
     int k = getWidth();
     paramInt3 = 0;
     paramInt2 = 0;
@@ -66,7 +66,7 @@ public class FlowLayout
         paramInt3 = j + (localMarginLayoutParams.rightMargin + (paramInt3 + i1));
       }
     }
-    blfz.a();
+    TraceUtils.traceEnd();
   }
 }
 

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.forward;
 
 import java.util.HashSet;
 
-public final class ForwardStatisticsReporter$2
+final class ForwardStatisticsReporter$2
   extends HashSet<String>
 {
-  public ForwardStatisticsReporter$2()
+  ForwardStatisticsReporter$2()
   {
     add("KEY_LOGIN_STAGE_1_TOTAL");
     add("KEY_LOGIN_STAGE_2_OLD_TOTAL");
@@ -30,7 +30,7 @@ public final class ForwardStatisticsReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardStatisticsReporter.2
  * JD-Core Version:    0.7.0.1
  */

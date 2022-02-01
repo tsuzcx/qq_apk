@@ -8,6 +8,7 @@ import com.tencent.qqlive.tvkplayer.vinfo.TVKPlaybackInfo.RequestInfo;
 import com.tencent.qqlive.tvkplayer.vinfo.TVKPlaybackParam;
 import com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerVideoInfo;
 import com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerWrapperCGIModel;
+import com.tencent.qqlive.tvkplayer.vinfo.TVKUserInfo;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.utils.LogUtil;
 
@@ -48,7 +49,9 @@ class TVideoImpl
       ((TVKPlayerVideoInfo)localObject2).setPlatform(paramSuperPlayerVideoInfo.getBusiPlatform());
       localObject1 = new TVKPlaybackParam();
       ((TVKPlaybackParam)localObject1).context(this.mContext);
-      ((TVKPlaybackParam)localObject1).userInfo(null);
+      TVKUserInfo localTVKUserInfo = new TVKUserInfo();
+      localTVKUserInfo.setLoginCookie(paramSuperPlayerVideoInfo.getTVideoLoginCookie());
+      ((TVKPlaybackParam)localObject1).userInfo(localTVKUserInfo);
       ((TVKPlaybackParam)localObject1).videoInfo((TVKPlayerVideoInfo)localObject2);
       ((TVKPlaybackParam)localObject1).definition(paramSuperPlayerVideoInfo.getRequestDefinition());
       ((TVKPlaybackParam)localObject1).mediaSource(new TVKMediaSource((TVKPlayerVideoInfo)localObject2));
@@ -78,7 +81,7 @@ class TVideoImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.vinfo.TVideoImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,16 @@ package com.tencent.mobileqq.utils;
 
 public class NoiseSuppression
 {
-  public static int a = 160;
-  private int b = nativeCreate();
+  public static int a;
+  private static NoiseSuppression jdField_a_of_type_ComTencentMobileqqUtilsNoiseSuppression = null;
+  private static boolean jdField_a_of_type_Boolean = false;
+  private static final int b = com.tencent.mobileqq.qqaudio.QQAudioUtils.a[0];
+  private int c = 0;
+  
+  static
+  {
+    jdField_a_of_type_Int = 160;
+  }
   
   private native int nativeCreate();
   
@@ -17,19 +25,19 @@ public class NoiseSuppression
   
   public int a()
   {
-    if (this.b != 0) {
-      return nativeRelease(this.b);
+    if (this.c != 0) {
+      return nativeRelease(this.c);
     }
     return -1;
   }
   
   public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if ((paramInt2 != 80) && (paramInt2 != 160) && (paramInt2 != a)) {
+    if ((paramInt2 != 80) && (paramInt2 != 160) && (paramInt2 != jdField_a_of_type_Int)) {
       throw new IllegalArgumentException();
     }
-    if (this.b != 0) {
-      return nativeProcess(this.b, paramArrayOfByte, paramInt1, paramInt2);
+    if (this.c != 0) {
+      return nativeProcess(this.c, paramArrayOfByte, paramInt1, paramInt2);
     }
     return -1;
   }

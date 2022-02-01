@@ -11,7 +11,7 @@ public final class SCGet3rdCloudCheck
   static ArrayList<Integer> cache_safeTypeList = new ArrayList();
   public int delayHour = 24;
   public String h5 = "";
-  public ArrayList<Integer> safeTypeList;
+  public ArrayList<Integer> safeTypeList = null;
   public String tips = "";
   public int tipsType = 0;
   

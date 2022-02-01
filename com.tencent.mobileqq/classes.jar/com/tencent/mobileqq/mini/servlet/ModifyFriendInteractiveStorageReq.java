@@ -37,7 +37,9 @@ public class ModifyFriendInteractiveStorageReq
     for (paramInt = 1;; paramInt = 0)
     {
       paramStCommonExt.set(paramInt);
-      this.req.desc.set(paramStInteractiveTemplate);
+      if (paramStInteractiveTemplate != null) {
+        this.req.desc.set(paramStInteractiveTemplate);
+      }
       paramStCommonExt = paramHashMap.entrySet().iterator();
       while (paramStCommonExt.hasNext())
       {

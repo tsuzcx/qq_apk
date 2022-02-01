@@ -1,19 +1,21 @@
 package com.tencent.mobileqq.activity.recent.config.statusIcon;
 
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.config.RecentDispatchImpl;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class RecentStatusIconDispatch
   extends RecentDispatchImpl<AbsRecentStatus>
 {
-  public void processor(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  public void a() {}
+  
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, RecentBaseData paramRecentBaseData)
   {
-    prepare();
+    b();
     paramRecentBaseData.mStatus = 0;
-    Iterator localIterator = this.iRecentProcessors.iterator();
+    Iterator localIterator = this.a.iterator();
     do
     {
       AbsRecentStatus localAbsRecentStatus;
@@ -23,12 +25,10 @@ public class RecentStatusIconDispatch
           break;
         }
         localAbsRecentStatus = (AbsRecentStatus)localIterator.next();
-      } while (!localAbsRecentStatus.focusUINType(paramRecentBaseData, paramIMCoreAppRuntime));
-      localAbsRecentStatus.handleBusiness(paramIMCoreAppRuntime, paramRecentBaseData);
+      } while (!localAbsRecentStatus.a(paramRecentBaseData, paramBaseQQAppInterface));
+      localAbsRecentStatus.a(paramBaseQQAppInterface, paramRecentBaseData);
     } while (paramRecentBaseData.mStatus == 0);
   }
-  
-  public void registerCoreProcessor() {}
 }
 
 

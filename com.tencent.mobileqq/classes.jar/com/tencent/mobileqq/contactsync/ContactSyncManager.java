@@ -24,21 +24,14 @@ import android.provider.ContactsContract.AggregationExceptions;
 import android.provider.ContactsContract.RawContacts;
 import android.text.TextUtils;
 import android.util.Log;
-import arpv;
-import arpw;
-import arpx;
-import arpy;
-import arqc;
-import arqd;
-import arqe;
-import awyz;
-import azip;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -59,22 +52,22 @@ import mqq.os.MqqHandler;
 public class ContactSyncManager
   implements Manager
 {
-  private static String jdField_a_of_type_JavaLangString = arpv.jdField_a_of_type_JavaLangString;
+  private static String jdField_a_of_type_JavaLangString = Constants.jdField_a_of_type_JavaLangString;
   private static final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private volatile Account jdField_a_of_type_AndroidAccountsAccount;
+  private volatile Account jdField_a_of_type_AndroidAccountsAccount = null;
   private AccountManager jdField_a_of_type_AndroidAccountsAccountManager;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Handler jdField_a_of_type_AndroidOsHandler = new arpy(this, ThreadManager.getSubThreadLooper());
-  private azip jdField_a_of_type_Azip = new arpx(this);
-  public QQAppInterface a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new ContactSyncManager.3(this, ThreadManager.getSubThreadLooper());
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ContactSyncManager.RefreshContactRunnable jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager$RefreshContactRunnable = new ContactSyncManager.RefreshContactRunnable(this, null);
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ContactSyncManager.1(this);
   private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
   private boolean jdField_a_of_type_Boolean;
   private final String jdField_b_of_type_JavaLangString = "pref_sync_contact";
   private boolean jdField_b_of_type_Boolean;
   private String jdField_c_of_type_JavaLangString = "com.android.contacts";
-  private volatile boolean jdField_c_of_type_Boolean;
-  private volatile boolean d;
+  private volatile boolean jdField_c_of_type_Boolean = false;
+  private volatile boolean d = false;
   
   public ContactSyncManager(QQAppInterface paramQQAppInterface)
   {
@@ -97,7 +90,7 @@ public class ContactSyncManager
         if (!bool) {
           continue;
         }
-        paramQQAppInterface.registObserver(this.jdField_a_of_type_Azip);
+        paramQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       }
       catch (Throwable localThrowable)
       {
@@ -125,27 +118,27 @@ public class ContactSyncManager
   }
   
   /* Error */
-  private List<arqd> a()
+  private List<RawContact> a()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 96	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 102	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: invokevirtual 223	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   1: getfield 102	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4: invokevirtual 108	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   7: invokevirtual 229	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore_1
-    //   11: new 225	java/util/ArrayList
+    //   11: new 231	java/util/ArrayList
     //   14: dup
-    //   15: invokespecial 226	java/util/ArrayList:<init>	()V
+    //   15: invokespecial 232	java/util/ArrayList:<init>	()V
     //   18: astore 4
     //   20: aload_1
     //   21: aload_0
-    //   22: invokespecial 228	com/tencent/mobileqq/contactsync/ContactSyncManager:c	()Ljava/lang/String;
-    //   25: invokestatic 233	arqc:a	(Ljava/lang/String;)Landroid/net/Uri;
-    //   28: getstatic 236	arqc:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   22: invokespecial 234	com/tencent/mobileqq/contactsync/ContactSyncManager:c	()Ljava/lang/String;
+    //   25: invokestatic 239	com/tencent/mobileqq/contactsync/ContactSyncManager$RawQuery:a	(Ljava/lang/String;)Landroid/net/Uri;
+    //   28: getstatic 242	com/tencent/mobileqq/contactsync/ContactSyncManager$RawQuery:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   31: aconst_null
     //   32: aconst_null
     //   33: aconst_null
-    //   34: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   34: invokevirtual 248	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   37: astore_2
     //   38: aload_2
     //   39: ifnull +152 -> 191
@@ -153,99 +146,99 @@ public class ContactSyncManager
     //   43: astore_1
     //   44: aload 4
     //   46: aload_2
-    //   47: invokeinterface 248 1 0
-    //   52: invokevirtual 252	java/util/ArrayList:ensureCapacity	(I)V
+    //   47: invokeinterface 254 1 0
+    //   52: invokevirtual 258	java/util/ArrayList:ensureCapacity	(I)V
     //   55: aload_2
     //   56: astore_1
     //   57: aload_2
-    //   58: invokeinterface 255 1 0
+    //   58: invokeinterface 261 1 0
     //   63: ifeq +128 -> 191
     //   66: aload_2
     //   67: astore_1
-    //   68: new 257	arqd
+    //   68: new 263	com/tencent/mobileqq/contactsync/RawContact
     //   71: dup
-    //   72: invokespecial 258	arqd:<init>	()V
+    //   72: invokespecial 264	com/tencent/mobileqq/contactsync/RawContact:<init>	()V
     //   75: astore_3
     //   76: aload_2
     //   77: astore_1
     //   78: aload_3
     //   79: aload_2
     //   80: iconst_0
-    //   81: invokeinterface 262 2 0
-    //   86: putfield 265	arqd:jdField_a_of_type_Long	J
+    //   81: invokeinterface 268 2 0
+    //   86: putfield 271	com/tencent/mobileqq/contactsync/RawContact:jdField_a_of_type_Long	J
     //   89: aload_2
     //   90: astore_1
     //   91: aload_3
     //   92: aload_2
     //   93: iconst_1
-    //   94: invokeinterface 269 2 0
-    //   99: putfield 270	arqd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   94: invokeinterface 275 2 0
+    //   99: putfield 276	com/tencent/mobileqq/contactsync/RawContact:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   102: aload_2
     //   103: astore_1
     //   104: aload_3
     //   105: aload_2
     //   106: iconst_2
-    //   107: invokeinterface 274 2 0
-    //   112: putfield 277	arqd:jdField_a_of_type_Int	I
+    //   107: invokeinterface 280 2 0
+    //   112: putfield 283	com/tencent/mobileqq/contactsync/RawContact:jdField_a_of_type_Int	I
     //   115: aload_2
     //   116: astore_1
     //   117: aload 4
     //   119: aload_3
-    //   120: invokevirtual 281	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   120: invokevirtual 287	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   123: pop
     //   124: goto -69 -> 55
     //   127: astore_3
     //   128: aload_2
     //   129: astore_1
-    //   130: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   130: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   133: ifeq +15 -> 148
     //   136: aload_2
     //   137: astore_1
-    //   138: ldc 89
+    //   138: ldc 95
     //   140: iconst_2
-    //   141: ldc_w 283
+    //   141: ldc_w 289
     //   144: aload_3
-    //   145: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   145: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   148: aload_2
     //   149: ifnull +9 -> 158
     //   152: aload_2
-    //   153: invokeinterface 286 1 0
-    //   158: ldc 89
+    //   153: invokeinterface 292 1 0
+    //   158: ldc 95
     //   160: iconst_1
-    //   161: new 134	java/lang/StringBuilder
+    //   161: new 140	java/lang/StringBuilder
     //   164: dup
-    //   165: invokespecial 135	java/lang/StringBuilder:<init>	()V
-    //   168: ldc_w 288
-    //   171: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   168: ldc_w 294
+    //   171: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: aload 4
-    //   176: invokevirtual 291	java/util/ArrayList:size	()I
-    //   179: invokevirtual 294	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   182: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   185: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   176: invokevirtual 297	java/util/ArrayList:size	()I
+    //   179: invokevirtual 300	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   182: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   185: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   188: aload 4
     //   190: areturn
     //   191: aload_2
     //   192: ifnull -34 -> 158
     //   195: aload_2
-    //   196: invokeinterface 286 1 0
+    //   196: invokeinterface 292 1 0
     //   201: goto -43 -> 158
     //   204: astore_1
-    //   205: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   205: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   208: ifeq -50 -> 158
-    //   211: ldc 89
+    //   211: ldc 95
     //   213: iconst_2
-    //   214: ldc_w 296
+    //   214: ldc_w 302
     //   217: aload_1
-    //   218: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   218: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   221: goto -63 -> 158
     //   224: astore_1
-    //   225: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   225: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   228: ifeq -70 -> 158
-    //   231: ldc 89
+    //   231: ldc 95
     //   233: iconst_2
-    //   234: ldc_w 296
+    //   234: ldc_w 302
     //   237: aload_1
-    //   238: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   238: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   241: goto -83 -> 158
     //   244: astore_2
     //   245: aconst_null
@@ -253,17 +246,17 @@ public class ContactSyncManager
     //   247: aload_1
     //   248: ifnull +9 -> 257
     //   251: aload_1
-    //   252: invokeinterface 286 1 0
+    //   252: invokeinterface 292 1 0
     //   257: aload_2
     //   258: athrow
     //   259: astore_1
-    //   260: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   260: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   263: ifeq -6 -> 257
-    //   266: ldc 89
+    //   266: ldc 95
     //   268: iconst_2
-    //   269: ldc_w 296
+    //   269: ldc_w 302
     //   272: aload_1
-    //   273: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   273: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   276: goto -19 -> 257
     //   279: astore_2
     //   280: goto -33 -> 247
@@ -283,7 +276,7 @@ public class ContactSyncManager
     //   244	14	2	localObject3	Object
     //   279	1	2	localObject4	Object
     //   285	1	2	localObject5	Object
-    //   75	45	3	localarqd	arqd
+    //   75	45	3	localRawContact	RawContact
     //   127	18	3	localException1	java.lang.Exception
     //   283	1	3	localException2	java.lang.Exception
     //   18	171	4	localArrayList	ArrayList
@@ -314,7 +307,7 @@ public class ContactSyncManager
   
   private Map<String, PhoneContact> a()
   {
-    List localList = ((awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).d();
+    List localList = ((PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).d();
     if (localList != null)
     {
       HashMap localHashMap = new HashMap(localList.size());
@@ -404,7 +397,7 @@ public class ContactSyncManager
   
   private void a(List<ContentProviderOperation> paramList, PhoneContact paramPhoneContact)
   {
-    paramList = arpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, c(), paramPhoneContact.mobileNo, paramPhoneContact.nationCode, paramPhoneContact.mobileCode, paramPhoneContact.ability, paramPhoneContact.contactID);
+    paramList = ContactOperation.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, c(), paramPhoneContact.mobileNo, paramPhoneContact.nationCode, paramPhoneContact.mobileCode, paramPhoneContact.ability, paramPhoneContact.contactID);
     paramList.a(paramPhoneContact.name);
     paramList.b(paramPhoneContact.mobileNo);
   }
@@ -414,124 +407,124 @@ public class ContactSyncManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 96	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1: getfield 102	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   4: aload_1
     //   5: lload_3
-    //   6: invokestatic 538	arpw:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;J)Larpw;
+    //   6: invokestatic 540	com/tencent/mobileqq/contactsync/ContactOperation:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;J)Lcom/tencent/mobileqq/contactsync/ContactOperation;
     //   9: astore 6
     //   11: aload_0
-    //   12: getfield 96	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   15: invokevirtual 542	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   18: invokevirtual 545	mqq/app/MobileQQ:getContentResolver	()Landroid/content/ContentResolver;
+    //   12: getfield 102	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   15: invokevirtual 544	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   18: invokevirtual 547	mqq/app/MobileQQ:getContentResolver	()Landroid/content/ContentResolver;
     //   21: astore_1
     //   22: aload_1
-    //   23: getstatic 549	arqa:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   26: getstatic 550	arqa:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   29: ldc_w 552
+    //   23: getstatic 551	com/tencent/mobileqq/contactsync/ContactSyncManager$DataQuery:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   26: getstatic 552	com/tencent/mobileqq/contactsync/ContactSyncManager$DataQuery:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   29: ldc_w 554
     //   32: iconst_1
-    //   33: anewarray 189	java/lang/String
+    //   33: anewarray 195	java/lang/String
     //   36: dup
     //   37: iconst_0
     //   38: lload_3
-    //   39: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   39: invokestatic 557	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   42: aastore
     //   43: aconst_null
-    //   44: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   44: invokevirtual 248	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   47: astore 5
     //   49: aload 5
     //   51: ifnull +114 -> 165
     //   54: aload 5
     //   56: astore_1
     //   57: aload 5
-    //   59: invokeinterface 255 1 0
+    //   59: invokeinterface 261 1 0
     //   64: ifeq +101 -> 165
     //   67: aload 5
     //   69: astore_1
     //   70: aload 5
     //   72: iconst_1
-    //   73: invokeinterface 269 2 0
-    //   78: ldc_w 557
-    //   81: invokevirtual 364	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   73: invokeinterface 275 2 0
+    //   78: ldc_w 559
+    //   81: invokevirtual 370	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   84: ifeq -30 -> 54
     //   87: aload 5
     //   89: astore_1
     //   90: aload 5
     //   92: iconst_2
-    //   93: invokeinterface 269 2 0
+    //   93: invokeinterface 275 2 0
     //   98: astore 7
     //   100: aload 5
     //   102: astore_1
     //   103: aload 7
-    //   105: invokestatic 342	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   105: invokestatic 348	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   108: ifne +18 -> 126
     //   111: aload 5
     //   113: astore_1
     //   114: aload 7
     //   116: aload_2
-    //   117: getfield 528	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
-    //   120: invokevirtual 364	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   117: getfield 530	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   120: invokevirtual 370	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   123: ifne +42 -> 165
     //   126: aload 5
     //   128: astore_1
     //   129: aload 5
     //   131: iconst_0
-    //   132: invokeinterface 262 2 0
+    //   132: invokeinterface 268 2 0
     //   137: lstore_3
     //   138: aload 5
     //   140: astore_1
-    //   141: getstatic 549	arqa:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   141: getstatic 551	com/tencent/mobileqq/contactsync/ContactSyncManager$DataQuery:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
     //   144: lload_3
-    //   145: invokestatic 563	android/content/ContentUris:withAppendedId	(Landroid/net/Uri;J)Landroid/net/Uri;
+    //   145: invokestatic 565	android/content/ContentUris:withAppendedId	(Landroid/net/Uri;J)Landroid/net/Uri;
     //   148: astore 7
     //   150: aload 5
     //   152: astore_1
     //   153: aload 6
     //   155: aload_2
-    //   156: getfield 528	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
+    //   156: getfield 530	com/tencent/mobileqq/data/PhoneContact:name	Ljava/lang/String;
     //   159: aload 7
-    //   161: invokevirtual 566	arpw:a	(Ljava/lang/String;Landroid/net/Uri;)Larpw;
+    //   161: invokevirtual 568	com/tencent/mobileqq/contactsync/ContactOperation:a	(Ljava/lang/String;Landroid/net/Uri;)Lcom/tencent/mobileqq/contactsync/ContactOperation;
     //   164: pop
     //   165: aload 5
     //   167: ifnull +10 -> 177
     //   170: aload 5
-    //   172: invokeinterface 286 1 0
+    //   172: invokeinterface 292 1 0
     //   177: return
     //   178: astore_1
-    //   179: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   179: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   182: ifeq -5 -> 177
-    //   185: ldc 89
+    //   185: ldc 95
     //   187: iconst_2
-    //   188: ldc_w 568
+    //   188: ldc_w 570
     //   191: aload_1
-    //   192: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   192: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   195: return
     //   196: astore_2
     //   197: aconst_null
     //   198: astore 5
     //   200: aload 5
     //   202: astore_1
-    //   203: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   203: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   206: ifeq +16 -> 222
     //   209: aload 5
     //   211: astore_1
-    //   212: ldc 89
+    //   212: ldc 95
     //   214: iconst_2
-    //   215: ldc_w 570
+    //   215: ldc_w 572
     //   218: aload_2
-    //   219: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   219: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   222: aload 5
     //   224: ifnull -47 -> 177
     //   227: aload 5
-    //   229: invokeinterface 286 1 0
+    //   229: invokeinterface 292 1 0
     //   234: return
     //   235: astore_1
-    //   236: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   236: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   239: ifeq -62 -> 177
-    //   242: ldc 89
+    //   242: ldc 95
     //   244: iconst_2
-    //   245: ldc_w 568
+    //   245: ldc_w 570
     //   248: aload_1
-    //   249: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   249: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   252: return
     //   253: astore_2
     //   254: aconst_null
@@ -539,17 +532,17 @@ public class ContactSyncManager
     //   256: aload_1
     //   257: ifnull +9 -> 266
     //   260: aload_1
-    //   261: invokeinterface 286 1 0
+    //   261: invokeinterface 292 1 0
     //   266: aload_2
     //   267: athrow
     //   268: astore_1
-    //   269: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   269: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   272: ifeq -6 -> 266
-    //   275: ldc 89
+    //   275: ldc 95
     //   277: iconst_2
-    //   278: ldc_w 568
+    //   278: ldc_w 570
     //   281: aload_1
-    //   282: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   282: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   285: goto -19 -> 266
     //   288: astore_2
     //   289: goto -33 -> 256
@@ -562,7 +555,7 @@ public class ContactSyncManager
     //   0	296	2	paramPhoneContact	PhoneContact
     //   0	296	3	paramLong	long
     //   47	181	5	localCursor	android.database.Cursor
-    //   9	145	6	localarpw	arpw
+    //   9	145	6	localContactOperation	ContactOperation
     //   98	62	7	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -713,16 +706,16 @@ public class ContactSyncManager
         Iterator localIterator = ((List)localObject3).iterator();
         if (localIterator.hasNext())
         {
-          arqd localarqd = (arqd)localIterator.next();
+          RawContact localRawContact = (RawContact)localIterator.next();
           if (a("for1"))
           {
             bool = false;
             continue;
           }
-          String str = localarqd.jdField_a_of_type_JavaLangString;
-          if ((TextUtils.isEmpty(str)) || (!paramMap.containsKey(localarqd.jdField_a_of_type_JavaLangString)))
+          String str = localRawContact.jdField_a_of_type_JavaLangString;
+          if ((TextUtils.isEmpty(str)) || (!paramMap.containsKey(localRawContact.jdField_a_of_type_JavaLangString)))
           {
-            a(localarqd.jdField_a_of_type_Long, localArrayList);
+            a(localRawContact.jdField_a_of_type_Long, localArrayList);
             j = m + 1;
             m = j;
             if (j >= 15) {
@@ -733,7 +726,7 @@ public class ContactSyncManager
               continue;
             }
             m = j;
-            if (!arqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localarqd.jdField_a_of_type_Int)) {
+            if (!ReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRawContact.jdField_a_of_type_Int)) {
               continue;
             }
             k += 1;
@@ -743,29 +736,29 @@ public class ContactSyncManager
           if ((TextUtils.isEmpty(str)) || (!paramMap.containsKey(str))) {
             continue;
           }
-          if (((Set)localObject2).contains(Integer.valueOf(localarqd.jdField_a_of_type_Int)))
+          if (((Set)localObject2).contains(Integer.valueOf(localRawContact.jdField_a_of_type_Int)))
           {
             if (QLog.isColorLevel()) {
               QLog.e("ContactSync.Manager", 2, "doSyncContacts | error: duplicate contact id");
             }
             n += 1;
-            a(localarqd.jdField_a_of_type_Long, localArrayList);
+            a(localRawContact.jdField_a_of_type_Long, localArrayList);
             paramMap.remove(str);
             continue;
           }
-          ((Set)localObject2).add(Integer.valueOf(localarqd.jdField_a_of_type_Int));
+          ((Set)localObject2).add(Integer.valueOf(localRawContact.jdField_a_of_type_Int));
           j = i;
-          if (((PhoneContact)paramMap.get(str)).contactID == localarqd.jdField_a_of_type_Int) {
+          if (((PhoneContact)paramMap.get(str)).contactID == localRawContact.jdField_a_of_type_Int) {
             break label1111;
           }
-          ((Set)localObject1).add(localarqd.jdField_a_of_type_JavaLangString);
+          ((Set)localObject1).add(localRawContact.jdField_a_of_type_JavaLangString);
           j = i + 1;
-          a(localArrayList, (PhoneContact)paramMap.get(str), localarqd.jdField_a_of_type_Long);
+          a(localArrayList, (PhoneContact)paramMap.get(str), localRawContact.jdField_a_of_type_Long);
           break label1111;
         }
         paramMap = paramMap.values();
         QLog.d("ContactSync.Manager", 1, String.format("doSyncContacts syncFrom|selfUin|syncUin|qqContactSize|rawContactSize|delCnt|delCntConflict|aggCnt|willInsertCnt|dangersDelCnt = %d|%s|%s|%d|%d|%d|%d|%d|%d|%d", new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), b(a()), Integer.valueOf(i1), Integer.valueOf(((List)localObject3).size()), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(paramMap.size()), Integer.valueOf(k) }));
-        arqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i1, ((List)localObject3).size(), m, n, k, paramMap.size());
+        ReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i1, ((List)localObject3).size(), m, n, k, paramMap.size());
         a(localArrayList, 0, "doSyncContacts apply update ops");
         paramMap = paramMap.iterator();
         paramInt = 0;
@@ -806,11 +799,11 @@ public class ContactSyncManager
         localObject2 = ((List)localObject2).iterator();
         if (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (arqd)((Iterator)localObject2).next();
-          if ((((Set)localObject1).contains(((arqd)localObject3).jdField_a_of_type_JavaLangString)) && (paramMap.containsKey(((arqd)localObject3).jdField_a_of_type_JavaLangString)))
+          localObject3 = (RawContact)((Iterator)localObject2).next();
+          if ((((Set)localObject1).contains(((RawContact)localObject3).jdField_a_of_type_JavaLangString)) && (paramMap.containsKey(((RawContact)localObject3).jdField_a_of_type_JavaLangString)))
           {
-            a(localArrayList, ((arqd)localObject3).jdField_a_of_type_Long, ((Long)paramMap.get(((arqd)localObject3).jdField_a_of_type_JavaLangString)).longValue());
-            ((Set)localObject1).remove(((arqd)localObject3).jdField_a_of_type_JavaLangString);
+            a(localArrayList, ((RawContact)localObject3).jdField_a_of_type_Long, ((Long)paramMap.get(((RawContact)localObject3).jdField_a_of_type_JavaLangString)).longValue());
+            ((Set)localObject1).remove(((RawContact)localObject3).jdField_a_of_type_JavaLangString);
           }
           a(localArrayList, 500, "doSyncContacts apply aggregate batch");
           continue;
@@ -850,49 +843,49 @@ public class ContactSyncManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 96	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 102	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: invokevirtual 223	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   1: getfield 102	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4: invokevirtual 108	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   7: invokevirtual 229	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore_2
-    //   11: new 314	java/util/HashMap
+    //   11: new 320	java/util/HashMap
     //   14: dup
-    //   15: invokespecial 357	java/util/HashMap:<init>	()V
+    //   15: invokespecial 363	java/util/HashMap:<init>	()V
     //   18: astore_1
     //   19: aload_2
-    //   20: getstatic 741	arqb:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   23: getstatic 742	arqb:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   20: getstatic 743	com/tencent/mobileqq/contactsync/ContactSyncManager$PhoneQuery:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   23: getstatic 744	com/tencent/mobileqq/contactsync/ContactSyncManager$PhoneQuery:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   26: aconst_null
     //   27: aconst_null
     //   28: aconst_null
-    //   29: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   29: invokevirtual 248	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   32: astore_2
     //   33: aload_2
     //   34: ifnull +216 -> 250
     //   37: aload_2
     //   38: astore_3
-    //   39: new 314	java/util/HashMap
+    //   39: new 320	java/util/HashMap
     //   42: dup
     //   43: aload_2
-    //   44: invokeinterface 248 1 0
-    //   49: invokespecial 319	java/util/HashMap:<init>	(I)V
+    //   44: invokeinterface 254 1 0
+    //   49: invokespecial 325	java/util/HashMap:<init>	(I)V
     //   52: astore 4
     //   54: aload_2
     //   55: astore_3
     //   56: aload_2
-    //   57: invokeinterface 255 1 0
+    //   57: invokeinterface 261 1 0
     //   62: ifeq +78 -> 140
     //   65: aload_2
     //   66: astore_3
     //   67: aload 4
     //   69: aload_2
     //   70: iconst_0
-    //   71: invokeinterface 269 2 0
-    //   76: invokestatic 746	ajca:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   71: invokeinterface 275 2 0
+    //   76: invokestatic 748	com/tencent/mobileqq/activity/contact/phonecontact/PhoneContactHelper:a	(Ljava/lang/String;)Ljava/lang/String;
     //   79: aload_2
     //   80: iconst_3
-    //   81: invokeinterface 262 2 0
-    //   86: invokestatic 470	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   89: invokevirtual 747	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   81: invokeinterface 268 2 0
+    //   86: invokestatic 472	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   89: invokevirtual 749	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   92: pop
     //   93: goto -39 -> 54
     //   96: astore_3
@@ -902,21 +895,21 @@ public class ContactSyncManager
     //   101: astore 4
     //   103: aload_2
     //   104: astore_3
-    //   105: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   105: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   108: ifeq +16 -> 124
     //   111: aload_2
     //   112: astore_3
-    //   113: ldc 89
+    //   113: ldc 95
     //   115: iconst_2
-    //   116: ldc_w 749
+    //   116: ldc_w 751
     //   119: aload 4
-    //   121: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   121: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   124: aload_1
     //   125: astore_3
     //   126: aload_2
     //   127: ifnull +11 -> 138
     //   130: aload_2
-    //   131: invokeinterface 286 1 0
+    //   131: invokeinterface 292 1 0
     //   136: aload_1
     //   137: astore_3
     //   138: aload_3
@@ -928,31 +921,31 @@ public class ContactSyncManager
     //   145: aload_2
     //   146: ifnull -8 -> 138
     //   149: aload_2
-    //   150: invokeinterface 286 1 0
+    //   150: invokeinterface 292 1 0
     //   155: aload_1
     //   156: areturn
     //   157: astore_2
     //   158: aload_1
     //   159: astore_3
-    //   160: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   160: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   163: ifeq -25 -> 138
-    //   166: ldc 89
+    //   166: ldc 95
     //   168: iconst_2
-    //   169: ldc_w 751
+    //   169: ldc_w 753
     //   172: aload_2
-    //   173: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   173: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   176: aload_1
     //   177: areturn
     //   178: astore_2
     //   179: aload_1
     //   180: astore_3
-    //   181: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   181: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   184: ifeq -46 -> 138
-    //   187: ldc 89
+    //   187: ldc 95
     //   189: iconst_2
-    //   190: ldc_w 751
+    //   190: ldc_w 753
     //   193: aload_2
-    //   194: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   194: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   197: aload_1
     //   198: areturn
     //   199: astore_1
@@ -961,17 +954,17 @@ public class ContactSyncManager
     //   202: aload_3
     //   203: ifnull +9 -> 212
     //   206: aload_3
-    //   207: invokeinterface 286 1 0
+    //   207: invokeinterface 292 1 0
     //   212: aload_1
     //   213: athrow
     //   214: astore_2
-    //   215: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   215: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   218: ifeq -6 -> 212
-    //   221: ldc 89
+    //   221: ldc 95
     //   223: iconst_2
-    //   224: ldc_w 751
+    //   224: ldc_w 753
     //   227: aload_2
-    //   228: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   228: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   231: goto -19 -> 212
     //   234: astore_1
     //   235: goto -33 -> 202
@@ -1052,29 +1045,29 @@ public class ContactSyncManager
     // Byte code:
     //   0: aload_0
     //   1: getfield 54	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   4: invokeinterface 780 1 0
+    //   4: invokeinterface 782 1 0
     //   9: aload_0
     //   10: aconst_null
-    //   11: putfield 370	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_AndroidAccountsAccount	Landroid/accounts/Account;
+    //   11: putfield 87	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_AndroidAccountsAccount	Landroid/accounts/Account;
     //   14: aload_0
-    //   15: getfield 110	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_AndroidAccountsAccountManager	Landroid/accounts/AccountManager;
-    //   18: ldc_w 754
-    //   21: invokevirtual 758	android/accounts/AccountManager:getAccountsByType	(Ljava/lang/String;)[Landroid/accounts/Account;
+    //   15: getfield 116	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_AndroidAccountsAccountManager	Landroid/accounts/AccountManager;
+    //   18: ldc_w 756
+    //   21: invokevirtual 760	android/accounts/AccountManager:getAccountsByType	(Ljava/lang/String;)[Landroid/accounts/Account;
     //   24: astore 4
-    //   26: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   26: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   29: ifeq +31 -> 60
-    //   32: ldc 89
+    //   32: ldc 95
     //   34: iconst_2
-    //   35: new 134	java/lang/StringBuilder
+    //   35: new 140	java/lang/StringBuilder
     //   38: dup
-    //   39: invokespecial 135	java/lang/StringBuilder:<init>	()V
-    //   42: ldc_w 782
-    //   45: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   42: ldc_w 784
+    //   45: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: aload 4
     //   50: arraylength
-    //   51: invokevirtual 294	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   54: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   51: invokevirtual 300	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   60: aload 4
     //   62: arraylength
     //   63: istore_2
@@ -1087,41 +1080,41 @@ public class ContactSyncManager
     //   73: iload_1
     //   74: aaload
     //   75: astore 5
-    //   77: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   77: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   80: ifeq +36 -> 116
-    //   83: ldc 89
+    //   83: ldc 95
     //   85: iconst_2
-    //   86: new 134	java/lang/StringBuilder
+    //   86: new 140	java/lang/StringBuilder
     //   89: dup
-    //   90: invokespecial 135	java/lang/StringBuilder:<init>	()V
-    //   93: ldc_w 784
-    //   96: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   93: ldc_w 786
+    //   96: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: aload 5
-    //   101: getfield 426	android/accounts/Account:name	Ljava/lang/String;
-    //   104: invokestatic 682	com/tencent/mobileqq/contactsync/ContactSyncManager:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   107: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   101: getfield 430	android/accounts/Account:name	Ljava/lang/String;
+    //   104: invokestatic 684	com/tencent/mobileqq/contactsync/ContactSyncManager:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   107: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   113: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   116: getstatic 36	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
     //   119: astore_3
     //   120: aload_3
     //   121: monitorenter
     //   122: getstatic 36	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
     //   125: aload 5
-    //   127: getfield 426	android/accounts/Account:name	Ljava/lang/String;
-    //   130: invokeinterface 668 2 0
+    //   127: getfield 430	android/accounts/Account:name	Ljava/lang/String;
+    //   130: invokeinterface 670 2 0
     //   135: pop
     //   136: aload_3
     //   137: monitorexit
     //   138: aload_0
-    //   139: getfield 110	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_AndroidAccountsAccountManager	Landroid/accounts/AccountManager;
+    //   139: getfield 116	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_AndroidAccountsAccountManager	Landroid/accounts/AccountManager;
     //   142: aload 5
-    //   144: new 786	arpz
+    //   144: new 788	com/tencent/mobileqq/contactsync/ContactSyncManager$5
     //   147: dup
     //   148: aload_0
-    //   149: invokespecial 787	arpz:<init>	(Lcom/tencent/mobileqq/contactsync/ContactSyncManager;)V
+    //   149: invokespecial 789	com/tencent/mobileqq/contactsync/ContactSyncManager$5:<init>	(Lcom/tencent/mobileqq/contactsync/ContactSyncManager;)V
     //   152: aconst_null
-    //   153: invokevirtual 791	android/accounts/AccountManager:removeAccount	(Landroid/accounts/Account;Landroid/accounts/AccountManagerCallback;Landroid/os/Handler;)Landroid/accounts/AccountManagerFuture;
+    //   153: invokevirtual 793	android/accounts/AccountManager:removeAccount	(Landroid/accounts/Account;Landroid/accounts/AccountManagerCallback;Landroid/os/Handler;)Landroid/accounts/AccountManagerFuture;
     //   156: pop
     //   157: iload_1
     //   158: iconst_1
@@ -1134,25 +1127,25 @@ public class ContactSyncManager
     //   168: aload 4
     //   170: athrow
     //   171: astore_3
-    //   172: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   172: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   175: ifeq +13 -> 188
-    //   178: ldc 89
+    //   178: ldc 95
     //   180: iconst_2
-    //   181: ldc_w 793
+    //   181: ldc_w 795
     //   184: aload_3
-    //   185: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   185: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   188: aload_0
     //   189: getfield 54	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   192: invokeinterface 796 1 0
+    //   192: invokeinterface 798 1 0
     //   197: return
     //   198: aload_0
     //   199: getfield 54	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   202: invokeinterface 796 1 0
+    //   202: invokeinterface 798 1 0
     //   207: return
     //   208: astore_3
     //   209: aload_0
     //   210: getfield 54	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   213: invokeinterface 796 1 0
+    //   213: invokeinterface 798 1 0
     //   218: aload_3
     //   219: athrow
     // Local variable table:
@@ -1248,7 +1241,7 @@ public class ContactSyncManager
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
         return false;
       }
-      localObject = (awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
+      localObject = (PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
@@ -1258,14 +1251,14 @@ public class ContactSyncManager
         }
       }
       label311:
-      for (int i = ((awyz)localObject).d();; i = -1000)
+      for (int i = ((PhoneContactManager)localObject).d();; i = -1000)
       {
         QLog.d("ContactSync.Manager", 2, i);
-        if ((localObject == null) || (!((awyz)localObject).d())) {
+        if ((localObject == null) || (!((PhoneContactManager)localObject).d())) {
           break;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("ContactSync.Manager", 2, "couldAddAccount | bind state = " + ((awyz)localObject).d());
+          QLog.d("ContactSync.Manager", 2, "couldAddAccount | bind state = " + ((PhoneContactManager)localObject).d());
         }
         return true;
       }
@@ -1301,18 +1294,18 @@ public class ContactSyncManager
       if (this.jdField_a_of_type_Boolean)
       {
         Object localObject = a();
-        awyz localawyz = (awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
+        PhoneContactManager localPhoneContactManager = (PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
         StringBuilder localStringBuilder = new StringBuilder().append("couldSyncContact | bind state = ");
-        if (localawyz == null) {
+        if (localPhoneContactManager == null) {
           break label277;
         }
         i = 9;
         QLog.d("ContactSync.Manager", 1, i + " | account.name = " + b((String)localObject));
         bool1 = bool2;
-        if (localawyz != null)
+        if (localPhoneContactManager != null)
         {
           bool1 = bool2;
-          if (localawyz.d())
+          if (localPhoneContactManager.d())
           {
             bool1 = bool2;
             if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localObject))
@@ -1425,89 +1418,89 @@ public class ContactSyncManager
   }
   
   /* Error */
-  public arqf a(Uri paramUri)
+  public SimplePhoneContact a(Uri paramUri)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 96	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 102	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: invokevirtual 223	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   1: getfield 102	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4: invokevirtual 108	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   7: invokevirtual 229	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore 6
     //   12: aload 6
     //   14: aload_1
     //   15: iconst_1
-    //   16: anewarray 189	java/lang/String
+    //   16: anewarray 195	java/lang/String
     //   19: dup
     //   20: iconst_0
-    //   21: ldc_w 919
+    //   21: ldc_w 921
     //   24: aastore
     //   25: aconst_null
     //   26: aconst_null
     //   27: aconst_null
-    //   28: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   28: invokevirtual 248	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   31: astore_1
     //   32: aload_1
     //   33: ifnull +681 -> 714
     //   36: aload_1
     //   37: astore 4
     //   39: aload_1
-    //   40: invokeinterface 255 1 0
+    //   40: invokeinterface 261 1 0
     //   45: ifeq +669 -> 714
     //   48: aload_1
     //   49: astore 4
     //   51: aload_1
     //   52: iconst_0
-    //   53: invokeinterface 262 2 0
+    //   53: invokeinterface 268 2 0
     //   58: lstore_2
     //   59: aload_1
     //   60: ifnull +651 -> 711
     //   63: aload_1
-    //   64: invokeinterface 286 1 0
+    //   64: invokeinterface 292 1 0
     //   69: lload_2
-    //   70: ldc2_w 920
+    //   70: ldc2_w 922
     //   73: lcmp
     //   74: ifne +137 -> 211
     //   77: aconst_null
     //   78: areturn
     //   79: astore 4
-    //   81: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   81: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   84: ifeq +14 -> 98
-    //   87: ldc 89
+    //   87: ldc 95
     //   89: iconst_2
-    //   90: ldc_w 923
+    //   90: ldc_w 925
     //   93: aload 4
-    //   95: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   95: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   98: goto -29 -> 69
     //   101: astore 5
     //   103: aconst_null
     //   104: astore_1
     //   105: aload_1
     //   106: astore 4
-    //   108: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   108: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   111: ifeq +17 -> 128
     //   114: aload_1
     //   115: astore 4
-    //   117: ldc 89
+    //   117: ldc 95
     //   119: iconst_2
-    //   120: ldc_w 925
+    //   120: ldc_w 927
     //   123: aload 5
-    //   125: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   125: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   128: aload_1
     //   129: ifnull +575 -> 704
     //   132: aload_1
-    //   133: invokeinterface 286 1 0
-    //   138: ldc2_w 920
+    //   133: invokeinterface 292 1 0
+    //   138: ldc2_w 922
     //   141: lstore_2
     //   142: goto -73 -> 69
     //   145: astore 4
-    //   147: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   147: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   150: ifeq +14 -> 164
-    //   153: ldc 89
+    //   153: ldc 95
     //   155: iconst_2
-    //   156: ldc_w 923
+    //   156: ldc_w 925
     //   159: aload 4
-    //   161: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   164: ldc2_w 920
+    //   161: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   164: ldc2_w 922
     //   167: lstore_2
     //   168: goto -99 -> 69
     //   171: astore_1
@@ -1516,35 +1509,35 @@ public class ContactSyncManager
     //   175: aload 4
     //   177: ifnull +10 -> 187
     //   180: aload 4
-    //   182: invokeinterface 286 1 0
+    //   182: invokeinterface 292 1 0
     //   187: aload_1
     //   188: athrow
     //   189: astore 4
-    //   191: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   191: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   194: ifeq -7 -> 187
-    //   197: ldc 89
+    //   197: ldc 95
     //   199: iconst_2
-    //   200: ldc_w 923
+    //   200: ldc_w 925
     //   203: aload 4
-    //   205: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   205: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   208: goto -21 -> 187
-    //   211: new 927	arqf
+    //   211: new 929	com/tencent/mobileqq/contactsync/SimplePhoneContact
     //   214: dup
-    //   215: invokespecial 928	arqf:<init>	()V
+    //   215: invokespecial 930	com/tencent/mobileqq/contactsync/SimplePhoneContact:<init>	()V
     //   218: astore 7
     //   220: aload 6
-    //   222: getstatic 549	arqa:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   225: getstatic 550	arqa:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   228: ldc_w 552
+    //   222: getstatic 551	com/tencent/mobileqq/contactsync/ContactSyncManager$DataQuery:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   225: getstatic 552	com/tencent/mobileqq/contactsync/ContactSyncManager$DataQuery:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   228: ldc_w 554
     //   231: iconst_1
-    //   232: anewarray 189	java/lang/String
+    //   232: anewarray 195	java/lang/String
     //   235: dup
     //   236: iconst_0
     //   237: lload_2
-    //   238: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   238: invokestatic 557	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   241: aastore
     //   242: aconst_null
-    //   243: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   243: invokevirtual 248	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   246: astore 4
     //   248: aload 4
     //   250: astore_1
@@ -1553,113 +1546,113 @@ public class ContactSyncManager
     //   255: aload_1
     //   256: astore 4
     //   258: aload_1
-    //   259: invokeinterface 255 1 0
+    //   259: invokeinterface 261 1 0
     //   264: ifeq +37 -> 301
     //   267: aload_1
     //   268: astore 4
     //   270: aload_1
     //   271: iconst_1
-    //   272: invokeinterface 269 2 0
-    //   277: ldc_w 557
-    //   280: invokevirtual 364	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   272: invokeinterface 275 2 0
+    //   277: ldc_w 559
+    //   280: invokevirtual 370	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   283: ifeq -28 -> 255
     //   286: aload_1
     //   287: astore 4
     //   289: aload 7
     //   291: aload_1
     //   292: iconst_2
-    //   293: invokeinterface 269 2 0
-    //   298: putfield 929	arqf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   293: invokeinterface 275 2 0
+    //   298: putfield 931	com/tencent/mobileqq/contactsync/SimplePhoneContact:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   301: aload_1
     //   302: astore 4
     //   304: aload_1
     //   305: ifnull +393 -> 698
     //   308: aload_1
-    //   309: invokeinterface 286 1 0
+    //   309: invokeinterface 292 1 0
     //   314: aload 6
-    //   316: getstatic 383	android/provider/ContactsContract$RawContacts:CONTENT_URI	Landroid/net/Uri;
-    //   319: getstatic 931	arqc:b	[Ljava/lang/String;
-    //   322: ldc_w 933
+    //   316: getstatic 387	android/provider/ContactsContract$RawContacts:CONTENT_URI	Landroid/net/Uri;
+    //   319: getstatic 933	com/tencent/mobileqq/contactsync/ContactSyncManager$RawQuery:b	[Ljava/lang/String;
+    //   322: ldc_w 935
     //   325: iconst_1
-    //   326: anewarray 189	java/lang/String
+    //   326: anewarray 195	java/lang/String
     //   329: dup
     //   330: iconst_0
     //   331: lload_2
-    //   332: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   332: invokestatic 557	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   335: aastore
     //   336: aconst_null
-    //   337: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   337: invokevirtual 248	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   340: astore 4
     //   342: aload 4
     //   344: ifnull +64 -> 408
     //   347: aload 4
     //   349: astore_1
     //   350: aload 4
-    //   352: invokeinterface 255 1 0
+    //   352: invokeinterface 261 1 0
     //   357: ifeq +51 -> 408
     //   360: aload 4
     //   362: astore_1
     //   363: aload 7
     //   365: aload 4
     //   367: iconst_0
-    //   368: invokeinterface 269 2 0
-    //   373: putfield 934	arqf:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   368: invokeinterface 275 2 0
+    //   373: putfield 936	com/tencent/mobileqq/contactsync/SimplePhoneContact:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   376: aload 4
     //   378: astore_1
     //   379: aload 7
     //   381: aload 4
     //   383: iconst_1
-    //   384: invokeinterface 269 2 0
-    //   389: putfield 935	arqf:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   384: invokeinterface 275 2 0
+    //   389: putfield 937	com/tencent/mobileqq/contactsync/SimplePhoneContact:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   392: aload 4
     //   394: astore_1
     //   395: aload 7
     //   397: aload 4
     //   399: iconst_2
-    //   400: invokeinterface 274 2 0
-    //   405: putfield 936	arqf:jdField_a_of_type_Int	I
+    //   400: invokeinterface 280 2 0
+    //   405: putfield 938	com/tencent/mobileqq/contactsync/SimplePhoneContact:jdField_a_of_type_Int	I
     //   408: aload 4
     //   410: ifnull +10 -> 420
     //   413: aload 4
-    //   415: invokeinterface 286 1 0
+    //   415: invokeinterface 292 1 0
     //   420: aload 7
     //   422: areturn
     //   423: astore 4
-    //   425: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   425: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   428: ifeq +14 -> 442
-    //   431: ldc 89
+    //   431: ldc 95
     //   433: iconst_2
-    //   434: ldc_w 938
+    //   434: ldc_w 940
     //   437: aload 4
-    //   439: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   439: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   442: goto -128 -> 314
     //   445: astore 5
     //   447: aload_1
     //   448: astore 4
-    //   450: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   450: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   453: ifeq +17 -> 470
     //   456: aload_1
     //   457: astore 4
-    //   459: ldc 89
+    //   459: ldc 95
     //   461: iconst_2
-    //   462: ldc_w 925
+    //   462: ldc_w 927
     //   465: aload 5
-    //   467: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   467: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   470: aload_1
     //   471: astore 4
     //   473: aload_1
     //   474: ifnull +224 -> 698
     //   477: aload_1
-    //   478: invokeinterface 286 1 0
+    //   478: invokeinterface 292 1 0
     //   483: goto -169 -> 314
     //   486: astore 4
-    //   488: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   488: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   491: ifeq +14 -> 505
-    //   494: ldc 89
+    //   494: ldc 95
     //   496: iconst_2
-    //   497: ldc_w 938
+    //   497: ldc_w 940
     //   500: aload 4
-    //   502: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   502: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   505: goto -191 -> 314
     //   508: astore 5
     //   510: aload_1
@@ -1669,70 +1662,70 @@ public class ContactSyncManager
     //   516: aload 4
     //   518: ifnull +10 -> 528
     //   521: aload 4
-    //   523: invokeinterface 286 1 0
+    //   523: invokeinterface 292 1 0
     //   528: aload_1
     //   529: athrow
     //   530: astore 4
-    //   532: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   532: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   535: ifeq -7 -> 528
-    //   538: ldc 89
+    //   538: ldc 95
     //   540: iconst_2
-    //   541: ldc_w 938
+    //   541: ldc_w 940
     //   544: aload 4
-    //   546: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   546: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   549: goto -21 -> 528
     //   552: astore_1
-    //   553: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   553: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   556: ifeq -136 -> 420
-    //   559: ldc 89
+    //   559: ldc 95
     //   561: iconst_2
-    //   562: ldc_w 940
+    //   562: ldc_w 942
     //   565: aload_1
-    //   566: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   566: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   569: goto -149 -> 420
     //   572: astore 5
     //   574: aload_1
     //   575: astore 4
     //   577: aload 4
     //   579: astore_1
-    //   580: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   580: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   583: ifeq +17 -> 600
     //   586: aload 4
     //   588: astore_1
-    //   589: ldc 89
+    //   589: ldc 95
     //   591: iconst_2
-    //   592: ldc_w 925
+    //   592: ldc_w 927
     //   595: aload 5
-    //   597: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   597: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   600: aload 4
     //   602: ifnull -182 -> 420
     //   605: aload 4
-    //   607: invokeinterface 286 1 0
+    //   607: invokeinterface 292 1 0
     //   612: goto -192 -> 420
     //   615: astore_1
-    //   616: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   616: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   619: ifeq -199 -> 420
-    //   622: ldc 89
+    //   622: ldc 95
     //   624: iconst_2
-    //   625: ldc_w 940
+    //   625: ldc_w 942
     //   628: aload_1
-    //   629: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   629: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   632: goto -212 -> 420
     //   635: astore 4
     //   637: aload_1
     //   638: ifnull +9 -> 647
     //   641: aload_1
-    //   642: invokeinterface 286 1 0
+    //   642: invokeinterface 292 1 0
     //   647: aload 4
     //   649: athrow
     //   650: astore_1
-    //   651: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   651: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   654: ifeq -7 -> 647
-    //   657: ldc 89
+    //   657: ldc 95
     //   659: iconst_2
-    //   660: ldc_w 940
+    //   660: ldc_w 942
     //   663: aload_1
-    //   664: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   664: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   667: goto -20 -> 647
     //   670: astore 4
     //   672: goto -35 -> 637
@@ -1749,11 +1742,11 @@ public class ContactSyncManager
     //   698: aload 4
     //   700: astore_1
     //   701: goto -387 -> 314
-    //   704: ldc2_w 920
+    //   704: ldc2_w 922
     //   707: lstore_2
     //   708: goto -639 -> 69
     //   711: goto -642 -> 69
-    //   714: ldc2_w 920
+    //   714: ldc2_w 922
     //   717: lstore_2
     //   718: goto -659 -> 59
     // Local variable table:
@@ -1784,7 +1777,7 @@ public class ContactSyncManager
     //   684	1	5	localException5	java.lang.Exception
     //   693	1	5	localException6	java.lang.Exception
     //   10	305	6	localContentResolver	ContentResolver
-    //   218	203	7	localarqf	arqf
+    //   218	203	7	localSimplePhoneContact	SimplePhoneContact
     // Exception table:
     //   from	to	target	type
     //   63	69	79	java/lang/Throwable
@@ -1842,52 +1835,52 @@ public class ContactSyncManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 96	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 102	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: invokevirtual 223	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   1: getfield 102	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4: invokevirtual 108	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   7: invokevirtual 229	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore_2
     //   11: aload_2
     //   12: aload_1
     //   13: iconst_1
-    //   14: anewarray 189	java/lang/String
+    //   14: anewarray 195	java/lang/String
     //   17: dup
     //   18: iconst_0
-    //   19: ldc_w 943
+    //   19: ldc_w 945
     //   22: aastore
     //   23: aconst_null
     //   24: aconst_null
     //   25: aconst_null
-    //   26: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   26: invokevirtual 248	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   29: astore_1
     //   30: aload_1
     //   31: ifnull +154 -> 185
     //   34: aload_1
     //   35: astore_2
     //   36: aload_1
-    //   37: invokeinterface 255 1 0
+    //   37: invokeinterface 261 1 0
     //   42: ifeq +143 -> 185
     //   45: aload_1
     //   46: astore_2
     //   47: aload_1
     //   48: iconst_0
-    //   49: invokeinterface 269 2 0
+    //   49: invokeinterface 275 2 0
     //   54: astore_3
     //   55: aload_3
     //   56: astore_2
     //   57: aload_1
     //   58: ifnull +9 -> 67
     //   61: aload_1
-    //   62: invokeinterface 286 1 0
+    //   62: invokeinterface 292 1 0
     //   67: aload_2
     //   68: areturn
     //   69: astore_1
-    //   70: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   70: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   73: ifeq -6 -> 67
-    //   76: ldc 89
+    //   76: ldc 95
     //   78: iconst_2
-    //   79: ldc_w 945
+    //   79: ldc_w 947
     //   82: aload_1
-    //   83: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   83: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   86: aload_2
     //   87: areturn
     //   88: astore_3
@@ -1895,29 +1888,29 @@ public class ContactSyncManager
     //   90: astore_1
     //   91: aload_1
     //   92: astore_2
-    //   93: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   93: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   96: ifeq +15 -> 111
     //   99: aload_1
     //   100: astore_2
-    //   101: ldc 89
+    //   101: ldc 95
     //   103: iconst_2
-    //   104: ldc_w 947
+    //   104: ldc_w 949
     //   107: aload_3
-    //   108: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   108: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   111: aload_1
     //   112: ifnull +9 -> 121
     //   115: aload_1
-    //   116: invokeinterface 286 1 0
+    //   116: invokeinterface 292 1 0
     //   121: aconst_null
     //   122: areturn
     //   123: astore_1
-    //   124: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   124: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   127: ifeq +13 -> 140
-    //   130: ldc 89
+    //   130: ldc 95
     //   132: iconst_2
-    //   133: ldc_w 945
+    //   133: ldc_w 947
     //   136: aload_1
-    //   137: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   137: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   140: aconst_null
     //   141: areturn
     //   142: astore_1
@@ -1926,17 +1919,17 @@ public class ContactSyncManager
     //   145: aload_2
     //   146: ifnull +9 -> 155
     //   149: aload_2
-    //   150: invokeinterface 286 1 0
+    //   150: invokeinterface 292 1 0
     //   155: aload_1
     //   156: athrow
     //   157: astore_2
-    //   158: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   158: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   161: ifeq -6 -> 155
-    //   164: ldc 89
+    //   164: ldc 95
     //   166: iconst_2
-    //   167: ldc_w 945
+    //   167: ldc_w 947
     //   170: aload_2
-    //   171: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   171: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   174: goto -19 -> 155
     //   177: astore_1
     //   178: goto -33 -> 145
@@ -1987,7 +1980,7 @@ public class ContactSyncManager
     }
     for (;;)
     {
-      i = ContactUtils.getFriendStatus(j, (int)paramGetOnlineInfoResp.iTermType);
+      i = ContactUtils.a(j, (int)paramGetOnlineInfoResp.iTermType);
       if ((i == 0) || (i == 6)) {
         break label97;
       }
@@ -2006,7 +1999,7 @@ public class ContactSyncManager
     if (QLog.isColorLevel()) {
       QLog.d("ContactSync.Manager", 2, "deleteSyncContact | mobileNo = " + c(paramString));
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getContentResolver().delete(arqc.a(c()), "sourceid=?", new String[] { paramString });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getContentResolver().delete(ContactSyncManager.RawQuery.a(c()), "sourceid=?", new String[] { paramString });
   }
   
   public void a(boolean paramBoolean)
@@ -2064,52 +2057,52 @@ public class ContactSyncManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 96	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 102	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: invokevirtual 223	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   1: getfield 102	com/tencent/mobileqq/contactsync/ContactSyncManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4: invokevirtual 108	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   7: invokevirtual 229	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore_2
     //   11: aload_2
     //   12: aload_1
     //   13: iconst_1
-    //   14: anewarray 189	java/lang/String
+    //   14: anewarray 195	java/lang/String
     //   17: dup
     //   18: iconst_0
-    //   19: ldc_w 1005
+    //   19: ldc_w 1004
     //   22: aastore
     //   23: aconst_null
     //   24: aconst_null
     //   25: aconst_null
-    //   26: invokevirtual 242	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   26: invokevirtual 248	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   29: astore_1
     //   30: aload_1
     //   31: ifnull +154 -> 185
     //   34: aload_1
     //   35: astore_2
     //   36: aload_1
-    //   37: invokeinterface 255 1 0
+    //   37: invokeinterface 261 1 0
     //   42: ifeq +143 -> 185
     //   45: aload_1
     //   46: astore_2
     //   47: aload_1
     //   48: iconst_0
-    //   49: invokeinterface 269 2 0
+    //   49: invokeinterface 275 2 0
     //   54: astore_3
     //   55: aload_3
     //   56: astore_2
     //   57: aload_1
     //   58: ifnull +9 -> 67
     //   61: aload_1
-    //   62: invokeinterface 286 1 0
+    //   62: invokeinterface 292 1 0
     //   67: aload_2
     //   68: areturn
     //   69: astore_1
-    //   70: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   70: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   73: ifeq -6 -> 67
-    //   76: ldc 89
+    //   76: ldc 95
     //   78: iconst_2
-    //   79: ldc_w 1007
+    //   79: ldc_w 1006
     //   82: aload_1
-    //   83: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   83: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   86: aload_2
     //   87: areturn
     //   88: astore_3
@@ -2117,29 +2110,29 @@ public class ContactSyncManager
     //   90: astore_1
     //   91: aload_1
     //   92: astore_2
-    //   93: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   93: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   96: ifeq +15 -> 111
     //   99: aload_1
     //   100: astore_2
-    //   101: ldc 89
+    //   101: ldc 95
     //   103: iconst_2
-    //   104: ldc_w 1009
+    //   104: ldc_w 1008
     //   107: aload_3
-    //   108: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   108: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   111: aload_1
     //   112: ifnull +9 -> 121
     //   115: aload_1
-    //   116: invokeinterface 286 1 0
+    //   116: invokeinterface 292 1 0
     //   121: aconst_null
     //   122: areturn
     //   123: astore_1
-    //   124: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   124: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   127: ifeq +13 -> 140
-    //   130: ldc 89
+    //   130: ldc 95
     //   132: iconst_2
-    //   133: ldc_w 1007
+    //   133: ldc_w 1006
     //   136: aload_1
-    //   137: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   137: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   140: aconst_null
     //   141: areturn
     //   142: astore_1
@@ -2148,17 +2141,17 @@ public class ContactSyncManager
     //   145: aload_2
     //   146: ifnull +9 -> 155
     //   149: aload_2
-    //   150: invokeinterface 286 1 0
+    //   150: invokeinterface 292 1 0
     //   155: aload_1
     //   156: athrow
     //   157: astore_2
-    //   158: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   158: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   161: ifeq -6 -> 155
-    //   164: ldc 89
+    //   164: ldc 95
     //   166: iconst_2
-    //   167: ldc_w 1007
+    //   167: ldc_w 1006
     //   170: aload_2
-    //   171: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   171: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   174: goto -19 -> 155
     //   177: astore_1
     //   178: goto -33 -> 145
@@ -2208,25 +2201,25 @@ public class ContactSyncManager
     }
     while (i != 0)
     {
-      return String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131698380), new Object[] { str1, paramGetOnlineInfoResp });
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698665);
-      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698666);
+      return String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131698660), new Object[] { str1, paramGetOnlineInfoResp });
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698968);
+      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698969);
       i = 1;
       continue;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698665);
-      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698662);
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698968);
+      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698965);
       i = 1;
       continue;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698665);
-      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698663);
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698968);
+      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698966);
       i = 1;
       continue;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698665);
-      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698661);
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698968);
+      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698964);
       i = 1;
       continue;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698664);
-      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698660);
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698967);
+      paramGetOnlineInfoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getString(2131698963);
       i = 1;
     }
   }
@@ -2280,12 +2273,12 @@ public class ContactSyncManager
   public void onDestroy()
   {
     BaseApplicationImpl.sUiHandler.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager$RefreshContactRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Azip);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.contactsync.ContactSyncManager
  * JD-Core Version:    0.7.0.1
  */

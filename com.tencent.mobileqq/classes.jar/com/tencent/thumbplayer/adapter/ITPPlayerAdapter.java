@@ -11,6 +11,8 @@ public abstract interface ITPPlayerAdapter
 {
   public abstract int getCurrentPlayClipNo();
   
+  public abstract int getCurrentState();
+  
   public abstract TPPlaybackInfo getPlaybackInfo();
   
   public abstract int getPlayerType();
@@ -31,7 +33,7 @@ public abstract interface ITPPlayerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.ITPPlayerAdapter
  * JD-Core Version:    0.7.0.1
  */

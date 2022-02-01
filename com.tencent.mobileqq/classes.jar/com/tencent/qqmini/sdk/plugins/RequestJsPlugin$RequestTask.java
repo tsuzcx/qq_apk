@@ -37,8 +37,8 @@ public class RequestJsPlugin$RequestTask
       this.mMethod = paramJSONObject.optString("method", this.mMethod);
       this.mDataType = paramJSONObject.optString("dataType", this.mDataType);
       this.mResponseType = paramJSONObject.optString("responseType", this.mResponseType);
-      RequestJsPlugin.access$2200(this.mHeaders, paramJSONObject);
-      this.mHeaders.put("Referer", RequestJsPlugin.access$1900(paramRequestJsPlugin));
+      RequestJsPlugin.access$1300(this.mHeaders, paramJSONObject);
+      this.mHeaders.put("Referer", RequestJsPlugin.access$1000(paramRequestJsPlugin));
       this.mHeaders.put("User-Agent", QUAUtil.getRequestUA());
       processBody(paramJSONObject);
       return;
@@ -73,7 +73,7 @@ public class RequestJsPlugin$RequestTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RequestJsPlugin.RequestTask
  * JD-Core Version:    0.7.0.1
  */

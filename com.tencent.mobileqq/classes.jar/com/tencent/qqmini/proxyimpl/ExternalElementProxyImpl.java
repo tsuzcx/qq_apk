@@ -1,0 +1,212 @@
+package com.tencent.qqmini.proxyimpl;
+
+import android.graphics.Rect;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.Surface;
+import com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavVideoView;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.IJsService;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ExternalElementProxy;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
+
+@ProxyService(proxy=ExternalElementProxy.class)
+public class ExternalElementProxyImpl
+  extends ExternalElementProxy
+{
+  private Map<Long, ExternalElementProxy> a = new HashMap();
+  
+  public void handleInsertXWebExternalElement(JSONObject paramJSONObject, long paramLong)
+  {
+    Log.d("ExternalElementProxyImp", "handleInsertXWebExternalElement() called with: jsonObject = [" + paramJSONObject + "], widgetId = [" + paramLong + "]");
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.handleInsertXWebExternalElement(paramJSONObject, paramLong);
+    }
+  }
+  
+  public void handleOperateExternalElement(JSONObject paramJSONObject, int paramInt, IJsService paramIJsService, long paramLong)
+  {
+    Log.d("ExternalElementProxyImp", "handleOperateExternalElement() called with: req = [" + paramJSONObject + "], callbackId = [" + paramInt + "], webview = [" + paramIJsService + "], widgetId = [" + paramLong + "]");
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.handleOperateExternalElement(paramJSONObject, paramInt, paramIJsService, paramLong);
+    }
+  }
+  
+  public void handleRemoveExternalElement(long paramLong)
+  {
+    Log.d("ExternalElementProxyImp", "handleRemoveExternalElement() called with: widgetId = [" + paramLong + "]");
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.handleRemoveExternalElement(paramLong);
+    }
+  }
+  
+  public void handleUpdateExternalElement(JSONObject paramJSONObject, long paramLong)
+  {
+    Log.d("ExternalElementProxyImp", "handleUpdateExternalElement() called with: jsonObject = [" + paramJSONObject + "], widgetId = [" + paramLong + "]");
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.handleUpdateExternalElement(paramJSONObject, paramLong);
+    }
+  }
+  
+  public void nativeDestroy(long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.nativeDestroy(paramLong);
+    }
+  }
+  
+  public void nativePause(long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.nativePause(paramLong);
+    }
+  }
+  
+  public void nativeResume(long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.nativeResume(paramLong);
+    }
+  }
+  
+  public void onActive(long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onActive(paramLong);
+    }
+  }
+  
+  public void onDeActive(long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onDeActive(paramLong);
+    }
+  }
+  
+  public void onDestroy(long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onDestroy(paramLong);
+    }
+  }
+  
+  public void onInit(String paramString, Map<String, String> paramMap, long paramLong)
+  {
+    Log.d("ExternalElementProxyImp", "onInit() called with: s = [" + paramString + "], map = [" + paramMap + "], widgetId = [" + paramLong + "]");
+    this.a.put(Long.valueOf(paramLong), new TavVideoView());
+  }
+  
+  public void onRectChanged(Rect paramRect, long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onRectChanged(paramRect, paramLong);
+    }
+  }
+  
+  public void onRequestRedraw(long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onRequestRedraw(paramLong);
+    }
+  }
+  
+  public void onSurfaceCreated(Surface paramSurface, long paramLong)
+  {
+    Log.d("ExternalElementProxyImp", "onSurfaceCreated() called with: surface = [" + paramSurface + "], widgetId = [" + paramLong + "]");
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onSurfaceCreated(paramSurface, paramLong);
+    }
+  }
+  
+  public void onSurfaceDestroyed(Surface paramSurface, long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onSurfaceDestroyed(paramSurface, paramLong);
+    }
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    return (localExternalElementProxy != null) && (localExternalElementProxy.onTouchEvent(paramMotionEvent, paramLong));
+  }
+  
+  public void onVisibilityChanged(boolean paramBoolean, long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onVisibilityChanged(paramBoolean, paramLong);
+    }
+  }
+  
+  public void setCallBackWebView(IJsService paramIJsService, long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.setCallBackWebView(paramIJsService, paramLong);
+    }
+  }
+  
+  public void setCurPageWebViewId(int paramInt, long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.setCurPageWebViewId(paramInt, paramLong);
+    }
+  }
+  
+  public void setMiniAppContext(IMiniAppContext paramIMiniAppContext, long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.setMiniAppContext(paramIMiniAppContext, paramLong);
+    }
+  }
+  
+  public void webViewDestroy(long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.webViewDestroy(paramLong);
+    }
+  }
+  
+  public void webViewPause(long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.webViewPause(paramLong);
+    }
+  }
+  
+  public void webViewResume(long paramLong)
+  {
+    ExternalElementProxy localExternalElementProxy = (ExternalElementProxy)this.a.get(Long.valueOf(paramLong));
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.webViewResume(paramLong);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.qqmini.proxyimpl.ExternalElementProxyImpl
+ * JD-Core Version:    0.7.0.1
+ */

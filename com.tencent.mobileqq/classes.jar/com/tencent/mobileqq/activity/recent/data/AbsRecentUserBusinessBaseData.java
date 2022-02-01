@@ -1,32 +1,22 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.activity.recent.parcelUtils.annotation.ParcelAnnotation.NotParcel;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public abstract class AbsRecentUserBusinessBaseData
   extends RecentUserBaseData
 {
-  @ParcelAnnotation.NotParcel
-  public RecentUser mUser;
-  
   public AbsRecentUserBusinessBaseData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    this.mUser = paramRecentUser;
   }
   
-  public RecentUser a()
-  {
-    return this.mUser;
-  }
-  
-  protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  protected void a(Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     super.buildMessageBody(paramMessage, paramInt, paramQQAppInterface, paramContext, paramMsgSummary);
   }
@@ -51,44 +41,44 @@ public abstract class AbsRecentUserBusinessBaseData
     super.dealDraft(paramQQAppInterface, paramMsgSummary);
   }
   
-  public final void buildMessageBody(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext, MsgSummary paramMsgSummary)
+  public final void buildMessageBody(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    if (((paramIMCoreMessageStub instanceof QQMessageFacade.Message)) && ((paramIMCoreAppRuntime instanceof QQAppInterface))) {
-      a((QQMessageFacade.Message)paramIMCoreMessageStub, paramInt, (QQAppInterface)paramIMCoreAppRuntime, paramContext, paramMsgSummary);
+    if (((paramIMCoreMessageStub instanceof Message)) && ((paramBaseQQAppInterface instanceof QQAppInterface))) {
+      a((Message)paramIMCoreMessageStub, paramInt, (QQAppInterface)paramBaseQQAppInterface, paramContext, paramMsgSummary);
     }
   }
   
-  public final void dealDraft(IMCoreAppRuntime paramIMCoreAppRuntime, MsgSummary paramMsgSummary)
+  public final void dealDraft(BaseQQAppInterface paramBaseQQAppInterface, MsgSummary paramMsgSummary)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      a((QQAppInterface)paramIMCoreAppRuntime, paramMsgSummary);
+    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
+      a((QQAppInterface)paramBaseQQAppInterface, paramMsgSummary);
     }
   }
   
-  public final void dealStatus(IMCoreAppRuntime paramIMCoreAppRuntime)
+  public final void dealStatus(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      a((QQAppInterface)paramIMCoreAppRuntime);
+    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
+      a((QQAppInterface)paramBaseQQAppInterface);
     }
   }
   
-  public final void extraUpdate(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext, MsgSummary paramMsgSummary)
+  public final void extraUpdate(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      a((QQAppInterface)paramIMCoreAppRuntime, paramContext, paramMsgSummary);
+    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
+      a((QQAppInterface)paramBaseQQAppInterface, paramContext, paramMsgSummary);
     }
   }
   
-  public final void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  public final void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      a((QQAppInterface)paramIMCoreAppRuntime, paramContext);
+    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
+      a((QQAppInterface)paramBaseQQAppInterface, paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.AbsRecentUserBusinessBaseData
  * JD-Core Version:    0.7.0.1
  */

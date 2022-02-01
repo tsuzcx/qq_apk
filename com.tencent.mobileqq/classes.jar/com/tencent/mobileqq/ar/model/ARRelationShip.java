@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apof;
 
 public class ARRelationShip
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARRelationShip> CREATOR = new apof();
+  public static final Parcelable.Creator<ARRelationShip> CREATOR = new ARRelationShip.1();
   public long a;
   public String a;
   public String b;
@@ -27,7 +26,7 @@ public class ARRelationShip
   
   public ARRelationShip() {}
   
-  public ARRelationShip(Parcel paramParcel)
+  protected ARRelationShip(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();

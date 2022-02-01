@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atpc;
-
-public class ThumbDownloadManager$1
+class ThumbDownloadManager$1
   implements Runnable
 {
-  public ThumbDownloadManager$1(atpc paramatpc, long paramLong, String paramString1, String paramString2) {}
+  ThumbDownloadManager$1(ThumbDownloadManager paramThumbDownloadManager, long paramLong, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (atpc.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
-      atpc.a(this.this$0);
+    if (ThumbDownloadManager.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
+      ThumbDownloadManager.a(this.this$0);
     }
   }
 }

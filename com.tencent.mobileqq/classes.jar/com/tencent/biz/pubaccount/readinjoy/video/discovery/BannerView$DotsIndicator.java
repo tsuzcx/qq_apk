@@ -33,10 +33,10 @@ public class BannerView$DotsIndicator
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.f = paramInt1;
-    this.b = AIOUtils.dp2px(6.0F, getResources());
-    this.c = AIOUtils.dp2px(10.0F, getResources());
-    this.d = AIOUtils.dp2px(7.0F, getResources());
-    this.e = AIOUtils.dp2px(7.0F, getResources());
+    this.b = AIOUtils.a(6.0F, getResources());
+    this.c = AIOUtils.a(10.0F, getResources());
+    this.d = AIOUtils.a(7.0F, getResources());
+    this.e = AIOUtils.a(7.0F, getResources());
     paramContext = new FrameLayout.LayoutParams(-2, -2);
     paramContext.bottomMargin = this.b;
     paramContext.gravity = paramInt2;
@@ -89,7 +89,7 @@ public class BannerView$DotsIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.BannerView.DotsIndicator
  * JD-Core Version:    0.7.0.1
  */

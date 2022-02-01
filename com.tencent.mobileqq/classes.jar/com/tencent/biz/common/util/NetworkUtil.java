@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.text.TextUtils;
+import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
@@ -12,32 +13,7 @@ import java.net.URL;
 
 public class NetworkUtil
 {
-  public static NetworkInfo getNetworInfo(Context paramContext)
-  {
-    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    if (paramContext == null) {
-      return null;
-    }
-    NetworkInfo localNetworkInfo = paramContext.getActiveNetworkInfo();
-    if ((localNetworkInfo != null) && (localNetworkInfo.isAvailable())) {
-      return localNetworkInfo;
-    }
-    paramContext = paramContext.getAllNetworkInfo();
-    if (paramContext != null)
-    {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        if (paramContext[i].getState() == NetworkInfo.State.CONNECTED) {
-          return paramContext[i];
-        }
-        i += 1;
-      }
-    }
-    return null;
-  }
-  
-  public static int getNetworkType(Context paramContext)
+  public static int a(Context paramContext)
   {
     try
     {
@@ -115,38 +91,7 @@ public class NetworkUtil
     return 0;
   }
   
-  public static boolean isMobileNetworkInfo(NetworkInfo paramNetworkInfo)
-  {
-    if (paramNetworkInfo == null) {}
-    while ((paramNetworkInfo.getType() != 0) && (50 != paramNetworkInfo.getType())) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean isNetworkAvailable(Context paramContext)
-  {
-    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    if (paramContext == null) {}
-    for (;;)
-    {
-      return false;
-      paramContext = paramContext.getAllNetworkInfo();
-      if (paramContext != null)
-      {
-        int i = 0;
-        while (i < paramContext.length)
-        {
-          if (paramContext[i].getState() == NetworkInfo.State.CONNECTED) {
-            return true;
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public static String toDirectIpUrl(String paramString, int paramInt)
+  public static String a(String paramString, int paramInt)
   {
     if (!TextUtils.isEmpty(paramString)) {
       try
@@ -178,10 +123,32 @@ public class NetworkUtil
       }
     }
   }
+  
+  public static boolean a(Context paramContext)
+  {
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {}
+    for (;;)
+    {
+      return false;
+      paramContext = paramContext.getAllNetworkInfo();
+      if (paramContext != null)
+      {
+        int i = 0;
+        while (i < paramContext.length)
+        {
+          if (paramContext[i].getState() == NetworkInfo.State.CONNECTED) {
+            return true;
+          }
+          i += 1;
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.util.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class QzmallCustomPassivePraise
   extends JceStruct
 {
   public int iItemId = -1;
-  public int iType;
+  public int iType = 0;
   public String strCmShowActionId = "";
   public String strFullScreenUrl = "";
   

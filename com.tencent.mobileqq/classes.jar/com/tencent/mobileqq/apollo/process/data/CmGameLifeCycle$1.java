@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import amyt;
-import amyv;
 import com.tencent.qphone.base.util.QLog;
 
-public class CmGameLifeCycle$1
+class CmGameLifeCycle$1
   implements Runnable
 {
-  public CmGameLifeCycle$1(amyt paramamyt, amyv paramamyv) {}
+  CmGameLifeCycle$1(CmGameLifeCycle paramCmGameLifeCycle, CmGameMainManager paramCmGameMainManager) {}
   
   public void run()
   {
     this.a.f();
     this.a.g();
     if (QLog.isColorLevel()) {
-      QLog.d(amyt.a, 2, "onCurrentGame showMsgTips");
+      QLog.d(CmGameLifeCycle.a, 2, "onCurrentGame showMsgTips");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.data.CmGameLifeCycle.1
  * JD-Core Version:    0.7.0.1
  */

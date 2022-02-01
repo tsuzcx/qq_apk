@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import akxf;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
@@ -55,7 +55,7 @@ public class g
     }
     if (!TextUtils.isEmpty(str1))
     {
-      akxf.a(BaseApplicationImpl.getApplication().getRuntime()).c(str1, new h(this, paramc, str2, parama));
+      PreloadManagerProxy.getInstance(BaseApplicationImpl.getApplication().getRuntime()).getResPath(str1, new h(this, paramc, str2, parama));
       return;
     }
     parama.onInitApkgInfo$76ec3a73(1, null);

@@ -21,7 +21,7 @@ public final class ilive_new_anchor_follow_interface$FollowActionReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aiif;
-import aiin;
 import android.text.TextUtils;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
@@ -9,15 +7,15 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
-public class StickerRecManager$10
+class StickerRecManager$10
   implements Runnable
 {
-  public StickerRecManager$10(aiin paramaiin) {}
+  StickerRecManager$10(StickerRecManager paramStickerRecManager) {}
   
   public void run()
   {
     int i = 0;
-    Object localObject = new File(aiif.a);
+    Object localObject = new File(StickerRecConstants.a);
     long l1 = 0L;
     localObject = ((File)localObject).listFiles();
     long l2 = l1;
@@ -52,7 +50,7 @@ public class StickerRecManager$10
       {
         localObject = new String[1];
         localObject[0] = String.valueOf(l1 - 86400000L);
-        Iterator localIterator = aiin.a(this.this$0).query(StickerRecCacheEntity.class, StickerRecCacheEntity.class.getSimpleName(), false, "lastTime<?", (String[])localObject, "", "", "", "").iterator();
+        Iterator localIterator = StickerRecManager.a(this.this$0).query(StickerRecCacheEntity.class, StickerRecCacheEntity.class.getSimpleName(), false, "lastTime<?", (String[])localObject, "", "", "", "").iterator();
         while (localIterator.hasNext())
         {
           StickerRecCacheEntity localStickerRecCacheEntity = (StickerRecCacheEntity)localIterator.next();
@@ -69,12 +67,12 @@ public class StickerRecManager$10
     }
     QLog.d("StickerRecManager", 2, "clearOverdueStickerCache error", localException);
     return;
-    aiin.a(this.this$0).delete(StickerRecCacheEntity.class.getSimpleName(), "lastTime<?", localException);
+    StickerRecManager.a(this.this$0).delete(StickerRecCacheEntity.class.getSimpleName(), "lastTime<?", localException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager.10
  * JD-Core Version:    0.7.0.1
  */

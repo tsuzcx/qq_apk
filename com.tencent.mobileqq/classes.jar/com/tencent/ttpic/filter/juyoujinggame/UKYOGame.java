@@ -6,8 +6,8 @@ import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.openapi.filter.RenderItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.VideoFilterUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import com.tencent.ttpic.util.FrameUtil;
 import com.tencent.ttpic.util.VideoFrameUtil;
@@ -74,7 +74,7 @@ public class UKYOGame
     }
     for (;;)
     {
-      if ((VideoFilterUtil.maybeTransformFilter(paramVideoFilterBase)) && (VideoMaterialUtil.needCopyTransform())) {
+      if ((VideoFilterUtil.maybeTransformFilter(paramVideoFilterBase)) && (VideoMaterial.needCopyTransform())) {
         paramFrame1 = VideoFrameUtil.renderProcessByCopy(paramFrame2.getTextureId(), paramFrame2.width, paramFrame2.height, paramVideoFilterBase, this.mCopyFilter, paramFrame1, localFrame2);
       }
       for (;;)
@@ -237,7 +237,7 @@ public class UKYOGame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.juyoujinggame.UKYOGame
  * JD-Core Version:    0.7.0.1
  */

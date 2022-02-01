@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import aiul;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -14,7 +13,7 @@ import com.tencent.pb.addcontacts.AccountSearchPb.record;
 public class SearchResultItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<SearchResultItem> CREATOR = new aiul();
+  public static final Parcelable.Creator<SearchResultItem> CREATOR = new SearchResultItem.1();
   public byte a;
   public int a;
   public long a;
@@ -23,18 +22,30 @@ public class SearchResultItem
   public byte b;
   public String b;
   public byte[] b;
-  public byte c;
+  public byte c = 0;
   
   public SearchResultItem()
   {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_b_of_type_Byte = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_b_of_type_ArrayOfByte = null;
   }
   
-  public SearchResultItem(Parcel paramParcel)
+  protected SearchResultItem(Parcel paramParcel)
   {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_b_of_type_Byte = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_b_of_type_ArrayOfByte = null;
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -48,8 +59,14 @@ public class SearchResultItem
   
   public SearchResultItem(AccountSearchPb.record paramrecord)
   {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_b_of_type_Byte = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_b_of_type_ArrayOfByte = null;
     if (paramrecord != null)
     {
       this.jdField_a_of_type_Long = paramrecord.uin.get();
@@ -82,7 +99,7 @@ public class SearchResultItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem
  * JD-Core Version:    0.7.0.1
  */

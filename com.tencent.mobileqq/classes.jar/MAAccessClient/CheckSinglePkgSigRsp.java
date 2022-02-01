@@ -11,10 +11,10 @@ public final class CheckSinglePkgSigRsp
   static ArrayList<NoCheckMarket> cache_vtMarket = new ArrayList();
   public String pageUrl = "";
   public String pkgSig = "";
-  public int ret;
-  public int sigVersionCode;
+  public int ret = 0;
+  public int sigVersionCode = 0;
   public String tmastUrl = "";
-  public ArrayList<NoCheckMarket> vtMarket;
+  public ArrayList<NoCheckMarket> vtMarket = null;
   
   static
   {

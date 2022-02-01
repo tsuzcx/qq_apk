@@ -31,7 +31,7 @@ public class QQWalletBaseMsgElem
   public int contentBgColor;
   public int contentColor;
   public int effectsId;
-  public int hbFrom;
+  public int hbFrom = 0;
   public int icon;
   public String iconUrl;
   public String jumpUrl;
@@ -83,58 +83,58 @@ public class QQWalletBaseMsgElem
         this.titleColor = paramQQWalletAioElem.uint32_title_color.get();
         this.titleColor |= 0xFF000000;
         if (!paramQQWalletAioElem.uint32_subtitle_color.has()) {
-          break label754;
+          break label759;
         }
         this.subtitleColor = paramQQWalletAioElem.uint32_subtitle_color.get();
         this.subtitleColor |= 0xFF000000;
-        label235:
+        label240:
         if (!paramQQWalletAioElem.bytes_actions_priority.has()) {
-          break label762;
+          break label767;
         }
         this.actionsPriority = paramQQWalletAioElem.bytes_actions_priority.get().toStringUtf8();
-        label259:
+        label264:
         if (!paramQQWalletAioElem.bytes_jump_url.has()) {
-          break label771;
+          break label776;
         }
         this.jumpUrl = paramQQWalletAioElem.bytes_jump_url.get().toStringUtf8();
-        label283:
+        label288:
         if (!paramQQWalletAioElem.bytes_native_android.has()) {
-          break label780;
+          break label785;
         }
         this.nativeAndroid = paramQQWalletAioElem.bytes_native_android.get().toStringUtf8();
-        label307:
+        label312:
         if (!paramQQWalletAioElem.bytes_iconurl.has()) {
-          break label789;
+          break label794;
         }
         this.iconUrl = paramQQWalletAioElem.bytes_iconurl.get().toStringUtf8();
-        label331:
+        label336:
         if (!paramQQWalletAioElem.uint32_content_color.has()) {
-          break label798;
+          break label803;
         }
         this.contentColor = paramQQWalletAioElem.uint32_content_color.get();
         this.contentColor |= 0xFF000000;
-        label363:
+        label368:
         if (!paramQQWalletAioElem.uint32_content_bgcolor.has()) {
-          break label806;
+          break label811;
         }
         this.contentBgColor = paramQQWalletAioElem.uint32_content_bgcolor.get();
         this.contentBgColor |= 0xFF000000;
-        label395:
+        label400:
         if (!paramQQWalletAioElem.bytes_aio_image_left.has()) {
-          break label814;
+          break label819;
         }
         this.aioImageLeft = paramQQWalletAioElem.bytes_aio_image_left.get().toStringUtf8();
-        label419:
+        label424:
         if (!paramQQWalletAioElem.bytes_aio_image_right.has()) {
-          break label823;
+          break label828;
         }
         this.aioImageRight = paramQQWalletAioElem.bytes_aio_image_right.get().toStringUtf8();
-        label443:
+        label448:
         if (!paramQQWalletAioElem.bytes_cft_image.has()) {
-          break label832;
+          break label837;
         }
         this.cftImage = paramQQWalletAioElem.bytes_cft_image.get().toStringUtf8();
-        label467:
+        label472:
         this.soundRecordDuration = 12000;
         if (!paramQQWalletAioElem.bytes_pb_reserve.has()) {
           continue;
@@ -184,36 +184,36 @@ public class QQWalletBaseMsgElem
               continue;
               this.titleColor = -1;
               break;
-              label754:
+              label759:
               this.subtitleColor = -1;
-              break label235;
-              label762:
+              break label240;
+              label767:
               this.actionsPriority = "";
-              break label259;
-              label771:
+              break label264;
+              label776:
               this.jumpUrl = "";
-              break label283;
-              label780:
+              break label288;
+              label785:
               this.nativeAndroid = "";
-              break label307;
-              label789:
+              break label312;
+              label794:
               this.iconUrl = "";
-              break label331;
-              label798:
+              break label336;
+              label803:
               this.contentColor = -1;
-              break label363;
-              label806:
+              break label368;
+              label811:
               this.contentBgColor = -1;
-              break label395;
-              label814:
+              break label400;
+              label819:
               this.aioImageLeft = "";
-              break label419;
-              label823:
+              break label424;
+              label828:
               this.aioImageRight = "";
-              break label443;
-              label832:
+              break label448;
+              label837:
               this.cftImage = "";
-              break label467;
+              break label472;
             }
           }
         }
@@ -345,7 +345,7 @@ public class QQWalletBaseMsgElem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQWalletBaseMsgElem
  * JD-Core Version:    0.7.0.1
  */

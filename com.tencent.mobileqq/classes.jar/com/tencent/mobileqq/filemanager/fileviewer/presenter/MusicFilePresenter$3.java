@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import atzg;
-import auax;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
 
-public class MusicFilePresenter$3
+class MusicFilePresenter$3
   implements Runnable
 {
-  public MusicFilePresenter$3(atzg paramatzg, String paramString, int paramInt) {}
+  MusicFilePresenter$3(MusicFilePresenter paramMusicFilePresenter, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class MusicFilePresenter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.3
  * JD-Core Version:    0.7.0.1
  */

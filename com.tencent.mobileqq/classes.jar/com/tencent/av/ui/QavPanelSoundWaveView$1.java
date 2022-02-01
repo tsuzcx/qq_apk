@@ -2,11 +2,10 @@ package com.tencent.av.ui;
 
 import android.os.Handler;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import java.util.Iterator;
 import java.util.List;
-import lfe;
-import mjf;
 import mqq.app.BaseActivity;
 
 class QavPanelSoundWaveView$1
@@ -37,7 +36,7 @@ class QavPanelSoundWaveView$1
         break label330;
       }
       localObject = ((VideoAppInterface)localObject).a();
-      f = ((VideoController)localObject).j() * 0.05F;
+      f = ((VideoController)localObject).i() * 0.05F;
       if ((((VideoController)localObject).a().d != 3) && (!((VideoController)localObject).a().l())) {
         break label325;
       }
@@ -57,12 +56,12 @@ class QavPanelSoundWaveView$1
         label190:
         if (((Iterator)localObject).hasNext())
         {
-          mjf localmjf = (mjf)((Iterator)localObject).next();
-          localmjf.a(this.this$0.c, f);
+          QavPanelWave localQavPanelWave = (QavPanelWave)((Iterator)localObject).next();
+          localQavPanelWave.a(this.this$0.c, f);
           if (i == 0) {
             break label319;
           }
-          if (Float.compare(localmjf.d, 0.0F) == 0) {
+          if (Float.compare(localQavPanelWave.d, 0.0F) == 0) {
             i = 1;
           }
         }
@@ -93,7 +92,7 @@ class QavPanelSoundWaveView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.QavPanelSoundWaveView.1
  * JD-Core Version:    0.7.0.1
  */

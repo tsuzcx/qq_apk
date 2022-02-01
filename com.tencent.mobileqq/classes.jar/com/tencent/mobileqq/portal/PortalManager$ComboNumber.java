@@ -13,6 +13,26 @@ public class PortalManager$ComboNumber
   public String numberImageMD5;
   public String numberImageUrl;
   
+  public String getCowJumpAnimFileName()
+  {
+    return this.number + "_anim.png";
+  }
+  
+  public String getFlowerImage1FileName()
+  {
+    return this.number + "_flower1.png";
+  }
+  
+  public String getFlowerImage2FileName()
+  {
+    return this.number + "_flower2.png";
+  }
+  
+  public String getNumberImageFileName()
+  {
+    return this.number + "_number.png";
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();

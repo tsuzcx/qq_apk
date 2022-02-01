@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import bddx;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class NativeSoLoader$1
+final class NativeSoLoader$1
   implements Runnable
 {
   public void run()
   {
-    if (!bddx.a().get())
+    if (!NativeSoLoader.a().get())
     {
-      boolean bool = bddx.a("TKGLRenderer");
-      bddx.a().getAndSet(bool);
+      boolean bool = NativeSoLoader.a("TKGLRenderer");
+      NativeSoLoader.a().getAndSet(bool);
     }
   }
 }

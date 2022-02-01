@@ -13,104 +13,99 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bfut;
-import bfwg;
-import bfwl;
-import bfwm;
-import bfwn;
-import bfwo;
-import bfwr;
-import bhjj;
-import bhjk;
-import bkys;
-import bmjg;
-import bmju;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.UploadEditItem;
+import com.tencent.mobileqq.utils.VoicePlayer;
+import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
+import com.tencent.util.WeakReferenceHandler;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import cooperation.troop_homework.jsp.TroopHWVoiceController;
 import java.io.File;
-import wzk;
 
 public class HWReciteItem
-  extends bfwg<bfwo, bfut>
-  implements Handler.Callback, bhjk
+  extends UploadEditItem<HWReciteItem.HWReciteViewHolder, HWReciteInfo>
+  implements Handler.Callback, VoicePlayer.VoicePlayerListener
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bfwm(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new HWReciteItem.3(this);
   private final Context jdField_a_of_type_AndroidContentContext;
-  private bfut jdField_a_of_type_Bfut;
-  public bfwo a;
-  private bhjj jdField_a_of_type_Bhjj;
-  private final bkys jdField_a_of_type_Bkys;
+  private HWReciteInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo;
+  public HWReciteItem.HWReciteViewHolder a;
+  private VoicePlayer jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
+  private final WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public HWReciteItem(XMediaEditor paramXMediaEditor, Context paramContext)
   {
     super(paramXMediaEditor);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bkys = new bkys(this);
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(this);
     this.jdField_a_of_type_JavaLangString = paramXMediaEditor.a("troopuin");
   }
   
   private String a(String paramString)
   {
-    return bmju.a(this.jdField_a_of_type_AndroidContentContext).getString(paramString, null);
+    return TroopHWVoiceController.a(this.jdField_a_of_type_AndroidContentContext).getString(paramString, null);
   }
   
   private void a(String paramString)
   {
-    bmju.a(this.jdField_a_of_type_AndroidContentContext).edit().remove(paramString).commit();
+    TroopHWVoiceController.a(this.jdField_a_of_type_AndroidContentContext).edit().remove(paramString).commit();
   }
   
   private void a(String paramString1, String paramString2)
   {
-    bmju.a(this.jdField_a_of_type_AndroidContentContext).edit().putString(paramString1, paramString2).commit();
+    TroopHWVoiceController.a(this.jdField_a_of_type_AndroidContentContext).edit().putString(paramString1, paramString2).commit();
   }
   
-  private void f(bfut parambfut)
+  private void f(HWReciteInfo paramHWReciteInfo)
   {
-    if ((!TextUtils.isEmpty(parambfut.e)) || (parambfut.g != 0)) {
+    if ((!TextUtils.isEmpty(paramHWReciteInfo.e)) || (paramHWReciteInfo.g != 0)) {
       return;
     }
-    h(parambfut);
-    ThreadManager.post(new HWReciteItem.1(this, parambfut), 8, null, true);
+    h(paramHWReciteInfo);
+    ThreadManager.post(new HWReciteItem.1(this, paramHWReciteInfo), 8, null, true);
   }
   
-  private void g(bfut parambfut)
+  private void g(HWReciteInfo paramHWReciteInfo)
   {
-    if ((!TextUtils.isEmpty(parambfut.e)) || (parambfut.g != 2)) {
+    if ((!TextUtils.isEmpty(paramHWReciteInfo.e)) || (paramHWReciteInfo.g != 2)) {
       return;
     }
-    h(parambfut);
-    ThreadManager.post(new HWReciteItem.2(this, parambfut), 8, null, true);
+    h(paramHWReciteInfo);
+    ThreadManager.post(new HWReciteItem.2(this, paramHWReciteInfo), 8, null, true);
   }
   
-  private void h(bfut parambfut)
+  private void h(HWReciteInfo paramHWReciteInfo)
   {
-    if (parambfut.jdField_a_of_type_Bmjg == null)
+    if (paramHWReciteInfo.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask == null)
     {
-      parambfut.jdField_a_of_type_Bmjg = new bmjg(wzk.a(), parambfut.d, parambfut.f);
-      parambfut.jdField_a_of_type_Bmjg.a(new bfwn(this, parambfut));
+      paramHWReciteInfo.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask = new TroopHomeworkHelper.UploadFileTask(PlayModeUtils.a(), paramHWReciteInfo.d, paramHWReciteInfo.f);
+      paramHWReciteInfo.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a(new HWReciteItem.AudioUploadCallback(this, paramHWReciteInfo));
     }
-    parambfut.g = 1;
+    paramHWReciteInfo.g = 1;
   }
   
-  private void i(bfut parambfut)
+  private void i(HWReciteInfo paramHWReciteInfo)
   {
-    if ((parambfut != null) && (parambfut.jdField_a_of_type_Boolean)) {
+    if ((paramHWReciteInfo != null) && (paramHWReciteInfo.jdField_a_of_type_Boolean)) {
       b();
     }
   }
   
-  public bfwo a(ViewGroup paramViewGroup)
+  public HWReciteItem.HWReciteViewHolder a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560703, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560793, paramViewGroup, false);
     try
     {
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.tnecnet.mobileqq.homework.recite.stopAudio");
       this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
       label42:
-      return new bfwo(paramViewGroup);
+      return new HWReciteItem.HWReciteViewHolder(paramViewGroup);
     }
     catch (Exception localException)
     {
@@ -132,39 +127,39 @@ public class HWReciteItem
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
-    paramInt1 = this.jdField_a_of_type_Bfut.c;
+    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c;
     b();
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().notifyItemChanged(paramInt1);
   }
   
-  public void a(View paramView, bfwo parambfwo)
+  public void a(View paramView, HWReciteItem.HWReciteViewHolder paramHWReciteViewHolder)
   {
-    if (parambfwo != null) {
-      parambfwo.a(paramView, this);
+    if (paramHWReciteViewHolder != null) {
+      paramHWReciteViewHolder.a(paramView, this);
     }
   }
   
-  public void a(bfut parambfut)
+  public void a(HWReciteInfo paramHWReciteInfo)
   {
-    if (parambfut.jdField_a_of_type_Int == 1) {
-      f(parambfut);
+    if (paramHWReciteInfo.jdField_a_of_type_Int == 1) {
+      f(paramHWReciteInfo);
     }
   }
   
-  public void a(bfwo parambfwo, bfut parambfut, int paramInt)
+  public void a(HWReciteItem.HWReciteViewHolder paramHWReciteViewHolder, HWReciteInfo paramHWReciteInfo, int paramInt)
   {
-    if (TextUtils.isEmpty(parambfut.f)) {
-      parambfut.f = this.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramHWReciteInfo.f)) {
+      paramHWReciteInfo.f = this.jdField_a_of_type_JavaLangString;
     }
-    parambfwo.a(this, parambfut, paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) && ((parambfwo.jdField_a_of_type_Bfwr.a.getVisibility() == 0) || (parambfwo.jdField_a_of_type_Bfwl.a.getVisibility() == 0))) {
-      parambfwo.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
+    paramHWReciteViewHolder.a(this, paramHWReciteInfo, paramInt);
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) && ((paramHWReciteViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a.getVisibility() == 0) || (paramHWReciteViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a.getVisibility() == 0))) {
+      paramHWReciteViewHolder.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfwo = parambfwo;
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem$HWReciteViewHolder = paramHWReciteViewHolder;
       return;
-      parambfwo.itemView.setPadding(0, 0, 0, 0);
+      paramHWReciteViewHolder.itemView.setPadding(0, 0, 0, 0);
     }
   }
   
@@ -172,72 +167,72 @@ public class HWReciteItem
   
   public void b()
   {
-    if (this.jdField_a_of_type_Bhjj != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer != null)
     {
-      this.jdField_a_of_type_Bhjj.e();
-      this.jdField_a_of_type_Bhjj = null;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.f();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
     }
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Bfut != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo != null)
     {
-      this.jdField_a_of_type_Bfut.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Bfut = null;
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo = null;
     }
   }
   
-  public void b(bfut parambfut)
+  public void b(HWReciteInfo paramHWReciteInfo)
   {
-    g(parambfut);
+    g(paramHWReciteInfo);
   }
   
   public void b(String paramString, int paramInt1, int paramInt2) {}
   
-  public void c(bfut parambfut)
+  public void c(HWReciteInfo paramHWReciteInfo)
   {
-    super.d(parambfut);
-    i(parambfut);
+    super.d(paramHWReciteInfo);
+    i(paramHWReciteInfo);
   }
   
-  public void d(bfut parambfut)
+  public void d(HWReciteInfo paramHWReciteInfo)
   {
-    parambfut.b = 1;
-    if (!TextUtils.isEmpty(parambfut.e))
+    paramHWReciteInfo.b = 1;
+    if (!TextUtils.isEmpty(paramHWReciteInfo.e))
     {
-      String str2 = a(parambfut.e);
+      String str2 = a(paramHWReciteInfo.e);
       String str1 = str2;
       if (!TextUtils.isEmpty(str2))
       {
         str1 = str2;
         if (!new File(str2).exists())
         {
-          a(parambfut.e);
+          a(paramHWReciteInfo.e);
           str1 = null;
         }
       }
       if (!TextUtils.isEmpty(str1))
       {
-        parambfut.d = str1;
-        parambfut.b = 2;
+        paramHWReciteInfo.d = str1;
+        paramHWReciteInfo.b = 2;
         return;
       }
-      ThreadManager.postImmediately(new HWReciteItem.DownloadAudioTask(this, parambfut), null, false);
+      ThreadManager.postImmediately(new HWReciteItem.DownloadAudioTask(this, paramHWReciteInfo), null, false);
       return;
     }
-    parambfut.b = 3;
+    paramHWReciteInfo.b = 3;
   }
   
-  public void e(bfut parambfut)
+  public void e(HWReciteInfo paramHWReciteInfo)
   {
     if (this.jdField_a_of_type_Boolean) {
       b();
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bfut = parambfut;
-    parambfut.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bhjj = new bhjj(parambfut.d, new Handler(), 1);
-    this.jdField_a_of_type_Bhjj.a(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Bhjj.a(this);
-    this.jdField_a_of_type_Bhjj.b();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo = paramHWReciteInfo;
+    paramHWReciteInfo.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = new VoicePlayer(paramHWReciteInfo.d, new Handler(), 1);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -248,8 +243,8 @@ public class HWReciteItem
     do
     {
       return false;
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof bfut)));
-    paramMessage = (bfut)paramMessage.obj;
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof HWReciteInfo)));
+    paramMessage = (HWReciteInfo)paramMessage.obj;
     if (!TextUtils.isEmpty(paramMessage.d))
     {
       paramMessage.b = 2;

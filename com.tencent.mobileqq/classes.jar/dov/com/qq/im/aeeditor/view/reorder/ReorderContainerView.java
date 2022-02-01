@@ -11,15 +11,11 @@ import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import blhq;
-import blhu;
-import bnrh;
-import boea;
-import boed;
-import boee;
-import boem;
 import com.tencent.tavsticker.utils.ViewUtils;
 import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
+import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
+import com.tencent.widget.itemtouchhelper.ItemTouchHelper.Callback;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.util.List;
 import kotlin.Lazy;
 import kotlin.LazyKt;
@@ -37,9 +33,9 @@ public final class ReorderContainerView
   private int jdField_a_of_type_Int;
   private final LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  private blhq jdField_a_of_type_Blhq;
+  private ItemTouchHelper jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper;
   @Nullable
-  private boee jdField_a_of_type_Boee;
+  private ReorderListener jdField_a_of_type_DovComQqImAeeditorViewReorderReorderListener;
   private final String jdField_a_of_type_JavaLangString = "ReorderContainerView";
   private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)ReorderContainerView.adapter.2.INSTANCE);
   private String jdField_b_of_type_JavaLangString;
@@ -66,9 +62,9 @@ public final class ReorderContainerView
     this.jdField_a_of_type_Int = -1;
   }
   
-  private final boea a()
+  private final ReorderContainerView.SpacingAdapter a()
   {
-    return (boea)this.jdField_a_of_type_KotlinLazy.getValue();
+    return (ReorderContainerView.SpacingAdapter)this.jdField_a_of_type_KotlinLazy.getValue();
   }
   
   public final int a(@NotNull String paramString, @NotNull Point paramPoint)
@@ -84,34 +80,34 @@ public final class ReorderContainerView
   }
   
   @Nullable
-  public final boee a()
+  public final ReorderListener a()
   {
-    return this.jdField_a_of_type_Boee;
+    return this.jdField_a_of_type_DovComQqImAeeditorViewReorderReorderListener;
   }
   
   public final void a()
   {
     setLayoutManager((RecyclerView.LayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
     setAdapter((RecyclerView.Adapter)a());
-    addItemDecoration((RecyclerView.ItemDecoration)new boem(getResources().getDimensionPixelSize(2131296306)));
-    this.jdField_a_of_type_Blhq = new blhq((blhu)new boed(this, 51, 0));
-    blhq localblhq = this.jdField_a_of_type_Blhq;
-    if (localblhq != null) {
-      localblhq.attachToRecyclerView((RecyclerView)this);
+    addItemDecoration((RecyclerView.ItemDecoration)new SpacesItemDecoration(getResources().getDimensionPixelSize(2131296323)));
+    this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper = new ItemTouchHelper((ItemTouchHelper.Callback)new ReorderContainerView.initial.itemTouchCallback.1(this, 51, 0));
+    ItemTouchHelper localItemTouchHelper = this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper;
+    if (localItemTouchHelper != null) {
+      localItemTouchHelper.attachToRecyclerView((RecyclerView)this);
     }
   }
   
   public final void a(int paramInt)
   {
-    bnrh.b(this.jdField_a_of_type_JavaLangString, "startDrag() called with: index = [" + paramInt + ']');
+    AEQLog.b(this.jdField_a_of_type_JavaLangString, "startDrag() called with: index = [" + paramInt + ']');
     RecyclerView.ViewHolder localViewHolder = findViewHolderForLayoutPosition(paramInt + 1);
     if (localViewHolder != null)
     {
-      blhq localblhq = this.jdField_a_of_type_Blhq;
-      if (localblhq != null) {
-        localblhq.startDrag(localViewHolder);
+      ItemTouchHelper localItemTouchHelper = this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper;
+      if (localItemTouchHelper != null) {
+        localItemTouchHelper.startDrag(localViewHolder);
       }
-      bnrh.b(this.jdField_a_of_type_JavaLangString, "startDrag() called with: vh = [$]");
+      AEQLog.b(this.jdField_a_of_type_JavaLangString, "startDrag() called with: vh = [$]");
     }
   }
   
@@ -123,19 +119,19 @@ public final class ReorderContainerView
   
   public boolean dispatchTouchEvent(@Nullable MotionEvent paramMotionEvent)
   {
-    bnrh.a(this.jdField_a_of_type_JavaLangString, "dispatchTouchEvent: width: " + getWidth() + ", height: " + getHeight());
-    bnrh.b(this.jdField_a_of_type_JavaLangString, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + ']');
+    AEQLog.a(this.jdField_a_of_type_JavaLangString, "dispatchTouchEvent: width: " + getWidth() + ", height: " + getHeight());
+    AEQLog.b(this.jdField_a_of_type_JavaLangString, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + ']');
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public final void setReorderListener(@Nullable boee paramboee)
+  public final void setReorderListener(@Nullable ReorderListener paramReorderListener)
   {
-    this.jdField_a_of_type_Boee = paramboee;
+    this.jdField_a_of_type_DovComQqImAeeditorViewReorderReorderListener = paramReorderListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.reorder.ReorderContainerView
  * JD-Core Version:    0.7.0.1
  */

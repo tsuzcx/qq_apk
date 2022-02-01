@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend;
 
-import aijh;
-import aijj;
-import aijk;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,9 +20,9 @@ public class ScenesRecommendManager
   extends BroadcastReceiver
   implements Manager
 {
-  aijj jdField_a_of_type_Aijj;
+  ScenesRecommendManager.IScenesRecEmoUIHelper jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedScenesrecommendScenesRecommendManager$IScenesRecEmoUIHelper;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  List<aijh> jdField_a_of_type_JavaUtilList = null;
+  List<ScenesRecommendItem> jdField_a_of_type_JavaUtilList = null;
   
   public ScenesRecommendManager() {}
   
@@ -42,64 +39,64 @@ public class ScenesRecommendManager
     return (ScenesRecommendManager)paramQQAppInterface.getManager(QQManagerFactory.SCENES_REC_EMO_MANAGER);
   }
   
-  private void a(aijh paramaijh)
+  private void a(ScenesRecommendItem paramScenesRecommendItem)
   {
-    QLog.i("ScenesRecommendManager", 0, "doScenesEmotionRecommend ScenesRecommendItem is " + paramaijh.a());
-    if (this.jdField_a_of_type_Aijj == null) {
+    QLog.i("ScenesRecommendManager", 0, "doScenesEmotionRecommend ScenesRecommendItem is " + paramScenesRecommendItem.a());
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedScenesrecommendScenesRecommendManager$IScenesRecEmoUIHelper == null) {
       return;
     }
-    this.jdField_a_of_type_Aijj.a(paramaijh);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedScenesrecommendScenesRecommendManager$IScenesRecEmoUIHelper.a(paramScenesRecommendItem);
   }
   
   private boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_Aijj == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedScenesrecommendScenesRecommendManager$IScenesRecEmoUIHelper == null) {
       return false;
     }
-    return this.jdField_a_of_type_Aijj.a(paramString);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedScenesrecommendScenesRecommendManager$IScenesRecEmoUIHelper.a(paramString);
   }
   
-  private aijh b(String paramString)
+  private ScenesRecommendItem b(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    aijh localaijh;
+    ScenesRecommendItem localScenesRecommendItem;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localaijh = (aijh)localIterator.next();
-    } while ((localaijh.d() == null) || (!localaijh.d().equalsIgnoreCase(paramString)));
-    for (paramString = localaijh;; paramString = null) {
+      localScenesRecommendItem = (ScenesRecommendItem)localIterator.next();
+    } while ((localScenesRecommendItem.d() == null) || (!localScenesRecommendItem.d().equalsIgnoreCase(paramString)));
+    for (paramString = localScenesRecommendItem;; paramString = null) {
       return paramString;
     }
   }
   
-  public aijh a(String paramString)
+  public ScenesRecommendItem a(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    aijh localaijh;
+    ScenesRecommendItem localScenesRecommendItem;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localaijh = (aijh)localIterator.next();
-    } while ((localaijh.a() == null) || (!localaijh.a().equalsIgnoreCase(paramString)));
-    for (paramString = localaijh;; paramString = null) {
+      localScenesRecommendItem = (ScenesRecommendItem)localIterator.next();
+    } while ((localScenesRecommendItem.a() == null) || (!localScenesRecommendItem.a().equalsIgnoreCase(paramString)));
+    for (paramString = localScenesRecommendItem;; paramString = null) {
       return paramString;
     }
   }
   
   public void a()
   {
-    String str = aijk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    String str = ScenesRecommendUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     QLog.i("ScenesRecommendManager", 0, "loadConfigFromLoacl config is " + str);
     a(str);
   }
@@ -125,14 +122,14 @@ public class ScenesRecommendManager
     }
   }
   
-  public void a(aijj paramaijj)
+  public void a(ScenesRecommendManager.IScenesRecEmoUIHelper paramIScenesRecEmoUIHelper)
   {
-    this.jdField_a_of_type_Aijj = paramaijj;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedScenesrecommendScenesRecommendManager$IScenesRecEmoUIHelper = paramIScenesRecEmoUIHelper;
   }
   
   public void a(String paramString)
   {
-    if (StringUtil.isEmpty(paramString)) {
+    if (StringUtil.a(paramString)) {
       return;
     }
     if (this.jdField_a_of_type_JavaUtilList == null) {
@@ -140,7 +137,7 @@ public class ScenesRecommendManager
     }
     for (;;)
     {
-      paramString = aijk.a(paramString);
+      paramString = ScenesRecommendUtils.a(paramString);
       if (paramString == null) {
         break;
       }
@@ -195,7 +192,7 @@ public class ScenesRecommendManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.ScenesRecommendManager
  * JD-Core Version:    0.7.0.1
  */

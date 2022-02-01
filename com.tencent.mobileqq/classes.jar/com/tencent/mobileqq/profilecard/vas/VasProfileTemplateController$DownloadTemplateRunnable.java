@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.profilecard.vas;
 
 import android.os.Message;
-import azri;
-import bhaa;
-import bhyo;
-import bhyq;
-import bkys;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -17,28 +17,28 @@ import java.util.concurrent.atomic.AtomicBoolean;
 class VasProfileTemplateController$DownloadTemplateRunnable
   implements Runnable
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<FriendProfileCardActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private WeakReference<azri> b;
+  private WeakReference<FriendProfileCardActivity> mActivityRef;
+  private long mBackgroundId;
+  private String mBackgroundUrl;
+  private WeakReference<ProfileCardTemplate> mCardTemplateRef;
+  private AtomicBoolean mIsRunning;
   
-  VasProfileTemplateController$DownloadTemplateRunnable(FriendProfileCardActivity paramFriendProfileCardActivity, azri paramazri, AtomicBoolean paramAtomicBoolean, String paramString, long paramLong)
+  VasProfileTemplateController$DownloadTemplateRunnable(FriendProfileCardActivity paramFriendProfileCardActivity, ProfileCardTemplate paramProfileCardTemplate, AtomicBoolean paramAtomicBoolean, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFriendProfileCardActivity);
-    this.b = new WeakReference(paramazri);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = paramAtomicBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.mActivityRef = new WeakReference(paramFriendProfileCardActivity);
+    this.mCardTemplateRef = new WeakReference(paramProfileCardTemplate);
+    this.mIsRunning = paramAtomicBoolean;
+    this.mBackgroundUrl = paramString;
+    this.mBackgroundId = paramLong;
   }
   
-  private boolean a(FriendProfileCardActivity paramFriendProfileCardActivity, boolean paramBoolean)
+  private boolean isExistsTemplateDir(FriendProfileCardActivity paramFriendProfileCardActivity, boolean paramBoolean)
   {
     boolean bool1 = paramBoolean;
     String str;
     if (!paramBoolean)
     {
-      str = bhaa.a(paramFriendProfileCardActivity.app, -1L);
+      str = ProfileCardUtil.a(paramFriendProfileCardActivity.app, -1L);
       bool1 = paramBoolean;
       if (str != null)
       {
@@ -60,10 +60,10 @@ class VasProfileTemplateController$DownloadTemplateRunnable
     if (localFile.exists()) {
       localFile.delete();
     }
-    Object localObject = new bhyo("https://imgcache.gtimg.cn/club/mobile/profile/template/android_common_583.zip", localFile);
-    ((bhyo)localObject).f = "profileCardDownload";
-    ((bhyo)localObject).e = "VIP_profilecard";
-    int j = bhyq.a((bhyo)localObject, paramFriendProfileCardActivity.app);
+    Object localObject = new DownloadTask("https://imgcache.gtimg.cn/club/mobile/profile/template/android_common_583.zip", localFile);
+    ((DownloadTask)localObject).f = "profileCardDownload";
+    ((DownloadTask)localObject).e = "VIP_profilecard";
+    int j = DownloaderFactory.a((DownloadTask)localObject, paramFriendProfileCardActivity.app);
     if (j == 0) {}
     boolean bool2;
     for (int i = 1;; i = 0)
@@ -72,10 +72,10 @@ class VasProfileTemplateController$DownloadTemplateRunnable
       if (i != 0) {}
       try
       {
-        FileUtils.uncompressZip(localFile.getAbsolutePath(), str + File.separator, false);
-        bhaa.a(paramFriendProfileCardActivity.app, "common", "583");
+        FileUtils.a(localFile.getAbsolutePath(), str + File.separator, false);
+        ProfileCardUtil.a(paramFriendProfileCardActivity.app, "common", "583");
         bool2 = paramBoolean;
-        if (bhaa.a(paramFriendProfileCardActivity.app))
+        if (ProfileCardUtil.a(paramFriendProfileCardActivity.app))
         {
           localFile.delete();
           bool2 = true;
@@ -107,33 +107,33 @@ class VasProfileTemplateController$DownloadTemplateRunnable
     {
       try
       {
-        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.b != null))
+        if ((this.mActivityRef != null) && (this.mCardTemplateRef != null))
         {
-          FriendProfileCardActivity localFriendProfileCardActivity = (FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          Object localObject = (azri)this.b.get();
+          FriendProfileCardActivity localFriendProfileCardActivity = (FriendProfileCardActivity)this.mActivityRef.get();
+          Object localObject = (ProfileCardTemplate)this.mCardTemplateRef.get();
           if ((localFriendProfileCardActivity != null) && (localObject != null))
           {
             long l = System.currentTimeMillis();
             if (QLog.isColorLevel()) {
               QLog.d("ProfileTemplateCheckController", 2, "DownloadTemplateRunnable start");
             }
-            boolean bool3 = bhaa.a(localFriendProfileCardActivity.app);
-            if ((this.jdField_a_of_type_Long != 160L) && (this.jdField_a_of_type_Long != 1600L)) {
+            boolean bool3 = ProfileCardUtil.a(localFriendProfileCardActivity.app);
+            if ((this.mBackgroundId != 160L) && (this.mBackgroundId != 1600L)) {
               break label468;
             }
-            bool1 = bhaa.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString);
+            bool1 = ProfileCardUtil.a(localFriendProfileCardActivity.app.getApplication(), this.mBackgroundUrl);
             if (QLog.isColorLevel()) {
               QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable start isExistsTemplateDir=%s isExistBgResource=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) }));
             }
             boolean bool2 = bool1;
             if (!bool1)
             {
-              localObject = new File(bhaa.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString));
-              localObject = new bhyo(this.jdField_a_of_type_JavaLangString, (File)localObject);
-              ((bhyo)localObject).f = "profileCardDownload";
-              ((bhyo)localObject).e = "VIP_profilecard";
-              i = bhyq.a((bhyo)localObject, localFriendProfileCardActivity.app);
-              if ((i != 0) || (!bhaa.a(localFriendProfileCardActivity.app.getApplication(), this.jdField_a_of_type_JavaLangString))) {
+              localObject = new File(ProfileCardUtil.a(localFriendProfileCardActivity.app.getApplication(), this.mBackgroundUrl));
+              localObject = new DownloadTask(this.mBackgroundUrl, (File)localObject);
+              ((DownloadTask)localObject).f = "profileCardDownload";
+              ((DownloadTask)localObject).e = "VIP_profilecard";
+              i = DownloaderFactory.a((DownloadTask)localObject, localFriendProfileCardActivity.app);
+              if ((i != 0) || (!ProfileCardUtil.a(localFriendProfileCardActivity.app.getApplication(), this.mBackgroundUrl))) {
                 continue;
               }
               bool1 = true;
@@ -144,7 +144,7 @@ class VasProfileTemplateController$DownloadTemplateRunnable
                 bool2 = bool1;
               }
             }
-            bool1 = a(localFriendProfileCardActivity, bool3);
+            bool1 = isExistsTemplateDir(localFriendProfileCardActivity, bool3);
             if (QLog.isColorLevel())
             {
               QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable end isExistsTemplateDir=%s isExistBgResource=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
@@ -164,7 +164,7 @@ class VasProfileTemplateController$DownloadTemplateRunnable
             }
           }
         }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.mIsRunning.set(false);
         return;
         boolean bool1 = false;
         continue;
@@ -175,7 +175,7 @@ class VasProfileTemplateController$DownloadTemplateRunnable
       catch (Throwable localThrowable)
       {
         QLog.e("ProfileTemplateCheckController", 1, "DownloadTemplateRunnable fail.", localThrowable);
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.mIsRunning.set(false);
         return;
       }
     }

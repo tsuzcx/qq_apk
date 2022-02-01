@@ -5,8 +5,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import com.tencent.widget.Gallery;
-import tag;
-import tah;
 
 public class ReadInJoyGallery
   extends Gallery
@@ -15,14 +13,16 @@ public class ReadInJoyGallery
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   ViewConfiguration jdField_a_of_type_AndroidViewViewConfiguration = ViewConfiguration.get(getContext());
-  protected tag a;
-  private tah jdField_a_of_type_Tah;
+  protected ReadInJoyGallery.OnDoubleTapListener a;
+  private ReadInJoyGallery.OnScrollChangeListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyGallery$OnScrollChangeListener;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float;
   boolean jdField_b_of_type_Boolean = false;
-  private boolean j;
-  private boolean k;
-  private int l = 1;
+  private boolean j = false;
+  private boolean k = false;
+  private int jdField_l_of_type_Int = 1;
+  private boolean jdField_l_of_type_Boolean = false;
+  private boolean m;
   
   static
   {
@@ -32,22 +32,22 @@ public class ReadInJoyGallery
   public ReadInJoyGallery(Context paramContext)
   {
     super(paramContext);
-    B_();
+    F_();
   }
   
   public ReadInJoyGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    B_();
+    F_();
   }
   
   public ReadInJoyGallery(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    B_();
+    F_();
   }
   
-  protected void B_()
+  protected void F_()
   {
     setMaxScale(2.147484E+009F);
     this.jdField_a_of_type_Int = (ViewConfiguration.get(getContext()).getScaledTouchSlop() / 3);
@@ -56,8 +56,8 @@ public class ReadInJoyGallery
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     super.a(paramInt1, paramInt2, paramBoolean);
-    if (this.jdField_a_of_type_Tah != null) {
-      this.jdField_a_of_type_Tah.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyGallery$OnScrollChangeListener != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyGallery$OnScrollChangeListener.a(paramInt1, paramInt2);
     }
   }
   
@@ -84,7 +84,7 @@ public class ReadInJoyGallery
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
       this.jdField_b_of_type_Float = paramMotionEvent.getY();
-      this.j = false;
+      this.k = false;
       break;
       if (this.jdField_a_of_type_Boolean)
       {
@@ -102,11 +102,11 @@ public class ReadInJoyGallery
     if (Math.abs(f1) > Math.abs(f2))
     {
       this.jdField_b_of_type_Boolean = true;
-      this.j = true;
+      this.k = true;
       if (f1 < 0.0F) {}
       for (int i = 1;; i = 2)
       {
-        this.l = i;
+        this.jdField_l_of_type_Int = i;
         super.dispatchTouchEvent(paramMotionEvent);
         return true;
       }
@@ -127,15 +127,15 @@ public class ReadInJoyGallery
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Tag != null) {
-      this.jdField_a_of_type_Tag.a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyGallery$OnDoubleTapListener != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyGallery$OnDoubleTapListener.a();
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.k)
+    if (this.m)
     {
       if (paramMotionEvent.getPointerCount() >= 2) {}
       do
@@ -154,7 +154,7 @@ public class ReadInJoyGallery
           case 1: 
             if (this.jdField_a_of_type_Boolean)
             {
-              if (this.j) {
+              if (this.k) {
                 return super.onInterceptTouchEvent(paramMotionEvent);
               }
               onTouchEvent(paramMotionEvent);
@@ -166,10 +166,10 @@ public class ReadInJoyGallery
             return false;
           }
         } while (!this.jdField_a_of_type_Boolean);
-        if (!this.k) {
+        if (!this.m) {
           break;
         }
-      } while ((!this.j) || (this.l != 2));
+      } while ((!this.k) || (this.jdField_l_of_type_Int != 2));
       return super.onInterceptTouchEvent(paramMotionEvent);
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
@@ -183,22 +183,22 @@ public class ReadInJoyGallery
   
   public void setIsListPage(boolean paramBoolean)
   {
-    this.k = paramBoolean;
+    this.m = paramBoolean;
   }
   
-  public void setOnDoubleTapListener(tag paramtag)
+  public void setOnDoubleTapListener(ReadInJoyGallery.OnDoubleTapListener paramOnDoubleTapListener)
   {
-    this.jdField_a_of_type_Tag = paramtag;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyGallery$OnDoubleTapListener = paramOnDoubleTapListener;
   }
   
-  public void setOnScrollChangeListener(tah paramtah)
+  public void setOnScrollChangeListener(ReadInJoyGallery.OnScrollChangeListener paramOnScrollChangeListener)
   {
-    this.jdField_a_of_type_Tah = paramtah;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyGallery$OnScrollChangeListener = paramOnScrollChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyGallery
  * JD-Core Version:    0.7.0.1
  */

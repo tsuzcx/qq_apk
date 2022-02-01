@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
-import lyc;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<RecvMsg> CREATOR = new lyc();
+  public static final Parcelable.Creator<RecvMsg> CREATOR = new RecvMsg.1();
   static String jdField_a_of_type_JavaLangString = "RecvMsg";
   int jdField_a_of_type_Int;
   public long a;
+  public boolean a;
   public int b;
   String b;
   public int c;
@@ -27,6 +27,7 @@ public class RecvMsg
   
   public RecvMsg()
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = 0;
     this.jdField_c_of_type_JavaLangString = null;
     this.jdField_d_of_type_JavaLangString = null;
@@ -42,6 +43,7 @@ public class RecvMsg
   
   public RecvMsg(Parcel paramParcel)
   {
+    this.jdField_a_of_type_Boolean = false;
     a(paramParcel);
   }
   
@@ -129,7 +131,7 @@ public class RecvMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.service.RecvMsg
  * JD-Core Version:    0.7.0.1
  */

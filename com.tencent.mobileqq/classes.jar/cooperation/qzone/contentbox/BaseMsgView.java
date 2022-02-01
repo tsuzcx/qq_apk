@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import awda;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -18,6 +17,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.contentbox.model.CubicBezierInterpolator;
 import cooperation.qzone.contentbox.model.MQMsg;
 import cooperation.qzone.contentbox.model.MQMsgBody;
 import cooperation.qzone.contentbox.model.MQPhotoCell;
@@ -31,8 +31,8 @@ import mqq.app.AppRuntime;
 public abstract class BaseMsgView
   extends FrameLayout
 {
-  private static final int IMAGE_HEIGHT = ViewUtils.dpToPx(230.0F);
-  private static final int IMAGE_WIDTH = ViewUtils.getScreenWidth() - ViewUtils.dpToPx(24.0F);
+  private static final int IMAGE_HEIGHT = ViewUtils.b(230.0F);
+  private static final int IMAGE_WIDTH = ViewUtils.a() - ViewUtils.b(24.0F);
   private static final int MSG_PAGER_NEXT_ITEM = 10000;
   protected static final int PAGER_ITEM_TIME = 3000;
   private static final String TAG = "QZoneMsgManager.BaseMsgView";
@@ -137,7 +137,7 @@ public abstract class BaseMsgView
     try
     {
       Field localField = Class.forName("android.support.v4.view.ViewPager").getDeclaredField("mScroller");
-      BaseMsgView.CustumScroller localCustumScroller = new BaseMsgView.CustumScroller(this.mContext, new awda(0.25D, 0.1000000014901161D, 0.25D, 1.0D));
+      BaseMsgView.CustumScroller localCustumScroller = new BaseMsgView.CustumScroller(this.mContext, new CubicBezierInterpolator(0.25D, 0.1000000014901161D, 0.25D, 1.0D));
       localCustumScroller.setmDuration(400);
       localField.setAccessible(true);
       localField.set(this.viewPager, localCustumScroller);
@@ -214,7 +214,7 @@ public abstract class BaseMsgView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.BaseMsgView
  * JD-Core Version:    0.7.0.1
  */

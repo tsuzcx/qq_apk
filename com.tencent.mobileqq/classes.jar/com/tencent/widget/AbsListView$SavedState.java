@@ -3,15 +3,15 @@ package com.tencent.widget;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import android.util.LongSparseArray;
 import android.util.SparseBooleanArray;
 import android.view.View.BaseSavedState;
-import bkyb;
 
 public class AbsListView$SavedState
   extends View.BaseSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new AbsListView.SavedState.1();
-  bkyb<Integer> checkIdState;
+  LongSparseArray<Integer> checkIdState;
   SparseBooleanArray checkState;
   int checkedItemCount;
   String filter;
@@ -41,12 +41,12 @@ public class AbsListView$SavedState
       if (j <= 0) {
         break;
       }
-      this.checkIdState = new bkyb();
+      this.checkIdState = new LongSparseArray();
       while (i < j)
       {
         long l = paramParcel.readLong();
         int k = paramParcel.readInt();
-        this.checkIdState.a(l, Integer.valueOf(k));
+        this.checkIdState.put(l, Integer.valueOf(k));
         i += 1;
       }
     }
@@ -83,13 +83,13 @@ public class AbsListView$SavedState
       }
     }
     label154:
-    for (paramInt = this.checkIdState.a();; paramInt = 0)
+    for (paramInt = this.checkIdState.size();; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
       while (i < paramInt)
       {
-        paramParcel.writeLong(this.checkIdState.a(i));
-        paramParcel.writeInt(((Integer)this.checkIdState.a(i)).intValue());
+        paramParcel.writeLong(this.checkIdState.keyAt(i));
+        paramParcel.writeInt(((Integer)this.checkIdState.valueAt(i)).intValue());
         i += 1;
       }
       paramInt = 0;

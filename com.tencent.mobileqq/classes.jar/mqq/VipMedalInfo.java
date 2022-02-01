@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class VipMedalInfo
   extends JceStruct
 {
-  public int is_remind;
-  public int tips_times;
-  public int type;
+  public int is_remind = 0;
+  public int tips_times = 0;
+  public int type = 0;
   public String value = "";
   
   public VipMedalInfo() {}

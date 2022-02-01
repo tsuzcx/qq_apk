@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.model;
 
-import awzc;
-
 class QueryTask$1
   implements Runnable
 {

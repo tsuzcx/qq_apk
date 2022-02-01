@@ -17,8 +17,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import rpy;
-import rsl;
 import tencent.im.oidb.articlesummary.articlesummary.BiuMultiLevel;
 import tencent.im.oidb.articlesummary.articlesummary.BiuOneLevelItem;
 import tencent.im.oidb.articlesummary.articlesummary.JumpInfo;
@@ -28,11 +26,11 @@ public class UgcVideo
   extends Entity
   implements Parcelable, Serializable, Comparable<UgcVideo>
 {
-  public static final Parcelable.Creator<UgcVideo> CREATOR = new rsl();
+  public static final Parcelable.Creator<UgcVideo> CREATOR = new UgcVideo.1();
   public static int RETRY_TIME_LIMIT = 3;
   public static int STATUS_FAILED;
   public static int STATUS_FINISH;
-  public static int STATUS_IDLE;
+  public static int STATUS_IDLE = 0;
   public static int STATUS_PAUSE;
   public static int STATUS_UPLOADING = 1;
   public static int SUBSTATUS_COMPRESS_VIDEO;
@@ -42,49 +40,51 @@ public class UgcVideo
   public static int TYPE_PUBLIC;
   public static int TYPE_PUBLIC_AND_REMIND;
   public String address = "";
-  public long bitrate;
+  public long bitrate = 0L;
   public String brief = "";
   public int businessType = 4;
   public byte[] byteArray;
-  public long columnId;
+  public boolean canUploadInMobileNet = false;
+  public long columnId = 0L;
   public String compressPath = "";
-  public int compressProgress;
-  public long compressTime;
-  public int coverHeight;
+  public int compressProgress = 0;
+  public long compressTime = 0L;
+  public int coverHeight = 0;
   public String coverPath = "";
-  public int coverProgress;
+  public int coverProgress = 0;
   public String coverUrl = "";
-  public int coverWidth;
-  public int duration;
+  public int coverWidth = 0;
+  public int duration = 0;
   public String fileMd5 = "";
   public String filePath = "";
-  public long fileSize;
+  public long fileSize = 0L;
   public int fromForReport;
-  public int height;
-  public long insertTime;
-  public long lastUploadSize;
-  public long lastUploadSizeUpdateTime;
+  public int height = 0;
+  public long insertTime = 0L;
+  public long lastUploadSize = 0L;
+  public long lastUploadSizeUpdateTime = 0L;
   private List<byte[]> multiTitleStruct = new ArrayList();
+  public boolean pauseBySwitchNet = false;
   public int publicType = TYPE_PUBLIC;
-  public boolean reprintDisable;
-  public int retryTime;
+  public boolean reprintDisable = false;
+  public int retryTime = 0;
   public String rowkey = "";
   @unique
   public String seqId = "";
-  public long startCompressTime;
-  public long startUploadingTime;
-  public long startUserWaitingTime;
+  public long startCompressTime = 0L;
+  public long startUploadingTime = 0L;
+  public long startUserWaitingTime = 0L;
   public int status = STATUS_IDLE;
   public String title = "";
   public String uploadSpeed = "0KB/S";
-  public long uploadTotalCostTime;
+  public long uploadTotalCostTime = 0L;
   public int uploadType;
   public int uploadVideoStatus = SUBSTATUS_IDLE_VIDEO;
   public String url = "";
-  public long userWaitingTotalCostTime;
-  public int videoProgress;
+  public long userWaitingTotalCostTime = 0L;
+  public int videoProgress = 0;
   public String videoUploadKey;
-  public int width;
+  public int width = 0;
   
   static
   {
@@ -94,13 +94,14 @@ public class UgcVideo
     TYPE_PUBLIC_AND_REMIND = 1;
     TYPE_PUBLIC = 2;
     TYPE_NO_PUBLIC = 3;
+    SUBSTATUS_IDLE_VIDEO = 0;
     SUBSTATUS_COMPRESS_VIDEO = 1;
     SUBSTATUS_UPLOADING_VIDEO = 2;
   }
   
   public UgcVideo() {}
   
-  public UgcVideo(Parcel paramParcel)
+  protected UgcVideo(Parcel paramParcel)
   {
     this.seqId = paramParcel.readString();
     this.insertTime = paramParcel.readLong();
@@ -136,17 +137,15 @@ public class UgcVideo
     this.height = paramParcel.readInt();
     this.fileSize = paramParcel.readLong();
     this.fileMd5 = paramParcel.readString();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.reprintDisable = bool;
-      this.publicType = paramParcel.readByte();
-      this.startCompressTime = paramParcel.readLong();
-      this.fromForReport = paramParcel.readInt();
-      this.uploadType = paramParcel.readInt();
-      this.address = paramParcel.readString();
-      return;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
     }
+    this.reprintDisable = bool;
+    this.publicType = paramParcel.readByte();
+    this.startCompressTime = paramParcel.readLong();
+    this.fromForReport = paramParcel.readInt();
+    this.uploadType = paramParcel.readInt();
+    this.address = paramParcel.readString();
   }
   
   public UgcVideo(oidb_0xe2a.UgcVideoInfo paramUgcVideoInfo)
@@ -299,7 +298,7 @@ public class UgcVideo
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.multiTitleStruct.iterator();
     while (localIterator.hasNext()) {
-      localArrayList.add(rpy.a((byte[])localIterator.next()));
+      localArrayList.add(RIJSerializableKtxKt.a((byte[])localIterator.next()));
     }
     return localArrayList;
   }
@@ -411,7 +410,7 @@ public class UgcVideo
       while (paramList.hasNext())
       {
         SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)paramList.next();
-        this.multiTitleStruct.add(rpy.a(localBiuCommentInfo));
+        this.multiTitleStruct.add(RIJSerializableKtxKt.a(localBiuCommentInfo));
       }
     }
   }
@@ -467,7 +466,7 @@ public class UgcVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo
  * JD-Core Version:    0.7.0.1
  */

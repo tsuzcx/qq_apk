@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
@@ -12,7 +11,7 @@ public class QWalletFullWindowActivity
 {
   public QWalletFullWindowActivity()
   {
-    this.a = QWalletFullWindowActivity.QWalletFullWindowFragment.class;
+    this.mFragmentClass = QWalletFullWindowActivity.QWalletFullWindowFragment.class;
   }
   
   @Override
@@ -51,13 +50,13 @@ public class QWalletFullWindowActivity
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    if (findViewById(2131363780) != null) {}
+    if (findViewById(2131363879) != null) {}
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity
  * JD-Core Version:    0.7.0.1
  */

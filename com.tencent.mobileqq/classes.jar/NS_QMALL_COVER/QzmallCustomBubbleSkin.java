@@ -8,9 +8,9 @@ public final class QzmallCustomBubbleSkin
   extends JceStruct
 {
   public int iItemId = -1;
-  public long lHeadBgColor;
-  public long lTextColor;
-  public long lUin;
+  public long lHeadBgColor = 0L;
+  public long lTextColor = 0L;
+  public long lUin = 0L;
   public String strBubbleZipUrl = "";
   public String strFeedsPicUrl = "";
   

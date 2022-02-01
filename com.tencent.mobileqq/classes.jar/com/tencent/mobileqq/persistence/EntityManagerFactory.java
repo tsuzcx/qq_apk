@@ -9,17 +9,26 @@ public abstract class EntityManagerFactory
   protected static final String CLOSE_EXCEPTION_MSG = "The EntityManagerFactory has been already closed";
   protected static final int FLAG_CHECK_AUTHENTICATION = -1;
   public static long corruptedTime = -1L;
-  public String TAG = "EntityManagerFactory";
   protected boolean closed;
-  protected SQLiteOpenHelper dbHelper = build(paramString);
+  protected SQLiteOpenHelper dbHelper;
+  protected int mDBVersion = 0;
   protected EntityManagerFactory.SQLiteOpenHelperImpl mInnerDbHelper;
   protected String mName;
   public String name;
+  protected String tag = "EntityManagerFactory";
   
   public EntityManagerFactory(String paramString)
   {
+    this.dbHelper = build(paramString);
     this.mName = paramString;
     this.name = paramString;
+  }
+  
+  protected EntityManagerFactory(String paramString, int paramInt)
+  {
+    this.mName = paramString;
+    this.name = paramString;
+    this.mDBVersion = paramInt;
   }
   
   /* Error */
@@ -32,50 +41,50 @@ public abstract class EntityManagerFactory
     //   3: astore_2
     //   4: aconst_null
     //   5: astore_0
-    //   6: ldc 53
+    //   6: ldc 57
     //   8: astore_3
-    //   9: ldc 55
+    //   9: ldc 59
     //   11: aconst_null
-    //   12: invokestatic 61	android/database/sqlite/SQLiteDatabase:openOrCreateDatabase	(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;)Landroid/database/sqlite/SQLiteDatabase;
+    //   12: invokestatic 65	android/database/sqlite/SQLiteDatabase:openOrCreateDatabase	(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;)Landroid/database/sqlite/SQLiteDatabase;
     //   15: astore 4
     //   17: aload 4
     //   19: astore_0
     //   20: aload_2
     //   21: astore_1
     //   22: aload_0
-    //   23: ldc 63
+    //   23: ldc 67
     //   25: aconst_null
-    //   26: invokevirtual 67	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   26: invokevirtual 71	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   29: astore_2
     //   30: aload_2
     //   31: astore_1
     //   32: aload_2
-    //   33: invokeinterface 73 1 0
+    //   33: invokeinterface 77 1 0
     //   38: ifeq +33 -> 71
     //   41: aload_2
     //   42: astore_1
-    //   43: new 75	java/lang/StringBuilder
+    //   43: new 79	java/lang/StringBuilder
     //   46: dup
-    //   47: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   47: invokespecial 80	java/lang/StringBuilder:<init>	()V
     //   50: aload_3
-    //   51: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: aload_2
     //   55: iconst_0
-    //   56: invokeinterface 84 2 0
-    //   61: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokeinterface 88 2 0
+    //   61: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   67: astore_3
     //   68: goto -38 -> 30
     //   71: aload_2
     //   72: ifnull +9 -> 81
     //   75: aload_2
-    //   76: invokeinterface 90 1 0
+    //   76: invokeinterface 94 1 0
     //   81: aload_3
     //   82: astore_1
     //   83: aload_0
     //   84: ifnull +9 -> 93
     //   87: aload_0
-    //   88: invokevirtual 91	android/database/sqlite/SQLiteDatabase:close	()V
+    //   88: invokevirtual 95	android/database/sqlite/SQLiteDatabase:close	()V
     //   91: aload_3
     //   92: astore_1
     //   93: aload_1
@@ -83,24 +92,24 @@ public abstract class EntityManagerFactory
     //   95: astore_2
     //   96: aconst_null
     //   97: astore_1
-    //   98: ldc 93
+    //   98: ldc 97
     //   100: astore_3
-    //   101: ldc 95
+    //   101: ldc 99
     //   103: iconst_1
-    //   104: ldc 97
+    //   104: ldc 101
     //   106: aload_2
-    //   107: invokestatic 103	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   107: invokestatic 107	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   110: aload_1
     //   111: ifnull +9 -> 120
     //   114: aload_1
-    //   115: invokeinterface 90 1 0
+    //   115: invokeinterface 94 1 0
     //   120: aload_3
     //   121: astore_1
     //   122: aload_0
     //   123: ifnull -30 -> 93
     //   126: aload_0
-    //   127: invokevirtual 91	android/database/sqlite/SQLiteDatabase:close	()V
-    //   130: ldc 93
+    //   127: invokevirtual 95	android/database/sqlite/SQLiteDatabase:close	()V
+    //   130: ldc 97
     //   132: areturn
     //   133: astore_2
     //   134: aconst_null
@@ -108,11 +117,11 @@ public abstract class EntityManagerFactory
     //   136: aload_1
     //   137: ifnull +9 -> 146
     //   140: aload_1
-    //   141: invokeinterface 90 1 0
+    //   141: invokeinterface 94 1 0
     //   146: aload_0
     //   147: ifnull +7 -> 154
     //   150: aload_0
-    //   151: invokevirtual 91	android/database/sqlite/SQLiteDatabase:close	()V
+    //   151: invokevirtual 95	android/database/sqlite/SQLiteDatabase:close	()V
     //   154: aload_2
     //   155: athrow
     //   156: astore_2

@@ -9,11 +9,11 @@ public final class Visitor
 {
   static FaceInfo cache_stFace;
   static byte[] cache_vecNick;
-  public int iFaceID;
-  public long lUIN;
-  public FaceInfo stFace;
+  public int iFaceID = 0;
+  public long lUIN = 0L;
+  public FaceInfo stFace = null;
   public String strNick = "";
-  public byte[] vecNick;
+  public byte[] vecNick = null;
   
   public Visitor() {}
   

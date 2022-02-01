@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import atlf;
-import bmad;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqfav.QfavBuilder;
 
 public class FilePicQFavActivity
   extends IphoneTitleBarActivity
@@ -28,8 +27,8 @@ public class FilePicQFavActivity
       FileManagerEntity localFileManagerEntity = this.app.getFileManagerDataCenter().a(this.jdField_a_of_type_Long);
       if ((localFileManagerEntity != null) && (-1L != localFileManagerEntity.uniseq))
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)this.app.getMessageFacade().queryMsgItemByUniseq(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.uniseq));
-        new bmad(3).a(this.app, this, localFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)this.app.getMessageFacade().b(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.uniseq));
+        new QfavBuilder(3).a(this.app, this, localFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
       }
     }
     finish();
@@ -74,7 +73,7 @@ public class FilePicQFavActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FilePicQFavActivity
  * JD-Core Version:    0.7.0.1
  */

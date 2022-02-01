@@ -2,36 +2,34 @@ package com.tencent.mobileqq.onlinestatus.auto;
 
 import android.os.Handler;
 import android.util.SparseArray;
-import azco;
-import azcv;
-import azdg;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.onlinestatus.auto.location.LocationBaseStateDetector;
+import com.tencent.mobileqq.utils.ProcessUtil;
 import java.util.List;
 
-public class AutoStatusManager$3
+class AutoStatusManager$3
   implements Runnable
 {
-  public AutoStatusManager$3(azco paramazco) {}
+  AutoStatusManager$3(AutoStatusManager paramAutoStatusManager) {}
   
   public void run()
   {
-    if (!AppInterface.isAppOnForeground(BaseApplicationImpl.getApplication()))
+    if (!ProcessUtil.a(BaseApplicationImpl.getApplication()))
     {
       this.this$0.d("schedule");
       return;
     }
-    azco.a(this.this$0).b();
-    if ((azcv.jdField_a_of_type_AndroidUtilSparseArray == null) || (azcv.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) {
-      azco.a(this.this$0);
+    AutoStatusManager.a(this.this$0).b();
+    if ((Constant.jdField_a_of_type_AndroidUtilSparseArray == null) || (Constant.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) {
+      AutoStatusManager.a(this.this$0);
     }
-    if ((azcv.jdField_a_of_type_JavaUtilList == null) || (azcv.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      azco.b(this.this$0);
+    if ((Constant.jdField_a_of_type_JavaUtilList == null) || (Constant.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      AutoStatusManager.b(this.this$0);
     }
-    if ((azcv.jdField_a_of_type_AndroidUtilSparseArray != null) && (azcv.jdField_a_of_type_AndroidUtilSparseArray.size() > 0) && (azcv.jdField_a_of_type_JavaUtilList != null) && (!azcv.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      azco.c(this.this$0);
+    if ((Constant.jdField_a_of_type_AndroidUtilSparseArray != null) && (Constant.jdField_a_of_type_AndroidUtilSparseArray.size() > 0) && (Constant.jdField_a_of_type_JavaUtilList != null) && (!Constant.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      AutoStatusManager.c(this.this$0);
     }
-    azco.a(this.this$0).postDelayed(this, azcv.c);
+    AutoStatusManager.a(this.this$0).postDelayed(this, Constant.c);
   }
 }
 

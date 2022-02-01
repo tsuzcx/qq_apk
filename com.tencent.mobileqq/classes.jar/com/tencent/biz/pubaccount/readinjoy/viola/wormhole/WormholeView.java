@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import ucz;
 
 public class WormholeView
   extends FrameLayout
@@ -17,7 +16,7 @@ public class WormholeView
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ucz jdField_a_of_type_Ucz;
+  private WormholeView.WormholeViewLifeListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView$WormholeViewLifeListener;
   private boolean jdField_a_of_type_Boolean;
   
   public WormholeView(@NonNull Context paramContext)
@@ -40,8 +39,8 @@ public class WormholeView
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Ucz != null) {
-        this.jdField_a_of_type_Ucz.a(this);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView$WormholeViewLifeListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView$WormholeViewLifeListener.a(this);
       }
     }
   }
@@ -51,8 +50,8 @@ public class WormholeView
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Ucz != null) {
-        this.jdField_a_of_type_Ucz.b(this);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView$WormholeViewLifeListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView$WormholeViewLifeListener.b(this);
       }
     }
   }
@@ -64,9 +63,9 @@ public class WormholeView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381529));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131381531);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381530));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381992));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131381994);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381993));
   }
   
   public void b()
@@ -92,13 +91,13 @@ public class WormholeView
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     e();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     f();
@@ -116,9 +115,9 @@ public class WormholeView
     f();
   }
   
-  public void setLifeListener(ucz paramucz)
+  public void setLifeListener(WormholeView.WormholeViewLifeListener paramWormholeViewLifeListener)
   {
-    this.jdField_a_of_type_Ucz = paramucz;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView$WormholeViewLifeListener = paramWormholeViewLifeListener;
   }
   
   public void setOnErrorViewClickListener(View.OnClickListener paramOnClickListener)
@@ -131,7 +130,7 @@ public class WormholeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView
  * JD-Core Version:    0.7.0.1
  */

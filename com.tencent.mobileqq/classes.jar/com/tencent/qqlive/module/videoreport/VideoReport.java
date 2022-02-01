@@ -5,6 +5,9 @@ import android.app.Application;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
+import com.tencent.qqlive.module.videoreport.constants.ClickPolicy;
+import com.tencent.qqlive.module.videoreport.constants.EndExposurePolicy;
+import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
 import com.tencent.qqlive.module.videoreport.data.IElementDynamicParams;
 import com.tencent.qqlive.module.videoreport.dtreport.api.DTConfig;
@@ -14,7 +17,9 @@ import com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioEntity;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.data.IAudioDataManager;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.IEventParamsBuilder;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventCode;
+import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoBaseEntity;
 import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoEntity;
+import com.tencent.qqlive.module.videoreport.inject.InjectHelper;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.page.IScrollReader;
 import com.tencent.qqlive.module.videoreport.page.PageInfo;
@@ -69,11 +74,27 @@ public class VideoReport
     return VideoReportInner.getInstance().findOwnerPage(paramView);
   }
   
+  public static ClickPolicy getElementClickPolicy(Object paramObject)
+  {
+    return VideoReportInner.getInstance().getElementClickPolicy(paramObject);
+  }
+  
+  public static EndExposurePolicy getElementEndExposePolicy(Object paramObject)
+  {
+    return VideoReportInner.getInstance().getElementEndExposePolicy(paramObject);
+  }
+  
+  public static ExposurePolicy getElementExposePolicy(Object paramObject)
+  {
+    return VideoReportInner.getInstance().getElementExposePolicy(paramObject);
+  }
+  
   public static Map<String, ?> getElementParams(Object paramObject)
   {
     return VideoReportInner.getInstance().getElementParams(paramObject);
   }
   
+  @Deprecated
   public static ReportPolicy getElementReportPolicy(Object paramObject)
   {
     return VideoReportInner.getInstance().getElementReportPolicy(paramObject);
@@ -87,6 +108,11 @@ public class VideoReport
   public static boolean isDebugMode()
   {
     return VideoReportInner.getInstance().isDebugMode();
+  }
+  
+  public static boolean isInjectSuccess()
+  {
+    return InjectHelper.isInjectSuccess();
   }
   
   public static void markAsPageBodyView(View paramView)
@@ -213,9 +239,24 @@ public class VideoReport
     VideoReportInner.getInstance().setDetectionMode(paramInt);
   }
   
+  public static void setElementClickPolicy(Object paramObject, ClickPolicy paramClickPolicy)
+  {
+    VideoReportInner.getInstance().setElementClickPolicy(paramObject, paramClickPolicy);
+  }
+  
   public static void setElementDynamicParams(Object paramObject, IElementDynamicParams paramIElementDynamicParams)
   {
     VideoReportInner.getInstance().setElementDynamicParams(paramObject, paramIElementDynamicParams);
+  }
+  
+  public static void setElementEndExposePolicy(Object paramObject, EndExposurePolicy paramEndExposurePolicy)
+  {
+    VideoReportInner.getInstance().setElementEndExposePolicy(paramObject, paramEndExposurePolicy);
+  }
+  
+  public static void setElementExposePolicy(Object paramObject, ExposurePolicy paramExposurePolicy)
+  {
+    VideoReportInner.getInstance().setElementExposePolicy(paramObject, paramExposurePolicy);
   }
   
   public static void setElementExposureDetectionEnabled(View paramView, boolean paramBoolean)
@@ -248,6 +289,7 @@ public class VideoReport
     VideoReportInner.getInstance().setElementParams(paramObject, paramMap);
   }
   
+  @Deprecated
   public static void setElementReportPolicy(Object paramObject, ReportPolicy paramReportPolicy)
   {
     VideoReportInner.getInstance().setElementReportPolicy(paramObject, paramReportPolicy);
@@ -361,6 +403,11 @@ public class VideoReport
   public static void unbindVideoPlayerInfo(@NonNull Object paramObject)
   {
     VideoReportInner.getInstance().unbindVideoPlayerInfo(paramObject);
+  }
+  
+  public static void updateVideoPlayerInfo(@NonNull Object paramObject, @NonNull VideoBaseEntity paramVideoBaseEntity)
+  {
+    VideoReportInner.getInstance().updateVideoPlayerInfo(paramObject, paramVideoBaseEntity);
   }
   
   @Nullable

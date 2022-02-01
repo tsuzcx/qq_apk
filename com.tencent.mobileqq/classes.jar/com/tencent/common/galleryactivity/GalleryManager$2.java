@@ -1,16 +1,14 @@
 package com.tencent.common.galleryactivity;
 
-import aawb;
-
-public class GalleryManager$2
+class GalleryManager$2
   implements Runnable
 {
-  public GalleryManager$2(aawb paramaawb) {}
+  GalleryManager$2(GalleryManager paramGalleryManager) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Aavi.c = false;
-    aawb.a(this.this$0, this.this$0.jdField_a_of_type_Aavk);
+    this.this$0.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = false;
+    GalleryManager.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene);
     this.this$0.a(true);
   }
 }

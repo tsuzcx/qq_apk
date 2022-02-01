@@ -14,7 +14,7 @@ class AbsListView$AdapterDataSetObserver
   {
     super.onChanged();
     if (this.this$0.mFastScroller != null) {
-      this.this$0.mFastScroller.c();
+      this.this$0.mFastScroller.onSectionsChanged();
     }
   }
   
@@ -22,7 +22,7 @@ class AbsListView$AdapterDataSetObserver
   {
     super.onInvalidated();
     if (this.this$0.mFastScroller != null) {
-      this.this$0.mFastScroller.c();
+      this.this$0.mFastScroller.onSectionsChanged();
     }
   }
 }

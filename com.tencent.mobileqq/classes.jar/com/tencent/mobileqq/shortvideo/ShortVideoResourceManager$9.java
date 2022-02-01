@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.shortvideo;
 
-import com.tencent.mobileqq.transfile.NetResp;
+import java.util.List;
 
 class ShortVideoResourceManager$9
   implements Runnable
 {
-  ShortVideoResourceManager$9(ShortVideoResourceManager paramShortVideoResourceManager, NetResp paramNetResp) {}
+  ShortVideoResourceManager$9(ShortVideoResourceManager paramShortVideoResourceManager, List paramList) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class ShortVideoResourceManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.9
  * JD-Core Version:    0.7.0.1
  */

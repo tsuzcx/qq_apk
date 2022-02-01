@@ -12,10 +12,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.TouchDelegate;
 import android.view.View;
-import bdez;
-import bdfa;
-import bdfb;
-import bdfd;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -27,47 +23,48 @@ public class TCProgressBar
   public int a;
   long jdField_a_of_type_Long;
   public Bitmap a;
-  public Paint a;
+  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
   Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   TouchDelegate jdField_a_of_type_AndroidViewTouchDelegate = new TouchDelegate(this.jdField_a_of_type_AndroidGraphicsRect, this);
-  bdez jdField_a_of_type_Bdez = new bdez(this);
-  public bdfa a;
-  bdfb jdField_a_of_type_Bdfb = new bdfb(this);
-  bdfd jdField_a_of_type_Bdfd = new bdfd(this, true);
-  ArrayList<bdfd> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  TCProgressBar.BlinkBlock jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock = new TCProgressBar.BlinkBlock(this);
+  public TCProgressBar.DelEvent a;
+  TCProgressBar.DeleteImage jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage = new TCProgressBar.DeleteImage(this);
+  TCProgressBar.ProgressBlock jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock = new TCProgressBar.ProgressBlock(this, true);
+  ArrayList<TCProgressBar.ProgressBlock> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
   boolean jdField_a_of_type_Boolean;
   public int b;
   public Bitmap b;
-  public Rect b;
-  ArrayList<bdfd> jdField_b_of_type_JavaUtilArrayList = new ArrayList(10);
+  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  ArrayList<TCProgressBar.ProgressBlock> jdField_b_of_type_JavaUtilArrayList = new ArrayList(10);
   boolean jdField_b_of_type_Boolean = false;
   public int c;
   int d = 1000;
   public int e;
   int f;
-  public int g;
-  public int h = -14408659;
-  public int i = -16737062;
-  public int j = -65536;
-  public int k = -15000805;
-  public int l = ScreenUtil.dip2px(1.0F);
-  public int m = -1;
+  int g;
+  int h = -14408659;
+  int i = -16737062;
+  int j = -65536;
+  int k = -15000805;
+  int l = ScreenUtil.dip2px(1.0F);
+  int m = -1;
   int n = ScreenUtil.dip2px(5.0F);
   int o = 0;
   
   public TCProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DelEvent = null;
     this.jdField_f_of_type_Int = 0;
     this.jdField_g_of_type_Int = 1310991405;
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_Int = 3;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130846001);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130846000);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130846322);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130846321);
       this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TCProgressBar.TimerRefresh(this), this.d);
       return;
@@ -86,7 +83,7 @@ public class TCProgressBar
   {
     int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
     if (i1 > 0) {
-      return ((bdfd)this.jdField_a_of_type_JavaUtilArrayList.get(i1 - 1)).jdField_b_of_type_Int;
+      return ((TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i1 - 1)).jdField_b_of_type_Int;
     }
     return -1;
   }
@@ -119,20 +116,20 @@ public class TCProgressBar
     {
       invalidate();
       return;
-      this.jdField_a_of_type_Bdez.jdField_e_of_type_Boolean = true;
-      this.jdField_a_of_type_Bdfb.jdField_e_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.jdField_e_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_e_of_type_Boolean = false;
       continue;
-      this.jdField_a_of_type_Bdez.jdField_e_of_type_Boolean = false;
-      this.jdField_a_of_type_Bdfb.jdField_e_of_type_Boolean = true;
-      this.jdField_a_of_type_Bdfb.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.jdField_e_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_e_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_a_of_type_Boolean = true;
       continue;
-      this.jdField_a_of_type_Bdez.jdField_e_of_type_Boolean = true;
-      this.jdField_a_of_type_Bdfb.jdField_e_of_type_Boolean = false;
-      bdfd localbdfd = new bdfd(this, false);
-      localbdfd.jdField_b_of_type_Boolean = false;
-      localbdfd.jdField_c_of_type_Int = 0;
-      localbdfd.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localbdfd);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.jdField_e_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_e_of_type_Boolean = false;
+      TCProgressBar.ProgressBlock localProgressBlock = new TCProgressBar.ProgressBlock(this, false);
+      localProgressBlock.jdField_b_of_type_Boolean = false;
+      localProgressBlock.jdField_c_of_type_Int = 0;
+      localProgressBlock.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localProgressBlock);
       continue;
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_b_of_type_JavaUtilArrayList.clear();
@@ -172,12 +169,12 @@ public class TCProgressBar
     int i1 = 0;
     while (i1 < i5 - 1)
     {
-      localbdfd = (bdfd)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if (localbdfd.d)
+      localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+      if (localProgressBlock.d)
       {
-        localbdfd.jdField_f_of_type_Int = a(localbdfd.jdField_c_of_type_Int - localbdfd.jdField_b_of_type_Int, i4);
-        localbdfd.jdField_g_of_type_Int = a(localbdfd.jdField_b_of_type_Int, i4);
-        localbdfd.jdField_a_of_type_Boolean = false;
+        localProgressBlock.jdField_f_of_type_Int = a(localProgressBlock.jdField_c_of_type_Int - localProgressBlock.jdField_b_of_type_Int, i4);
+        localProgressBlock.jdField_g_of_type_Int = a(localProgressBlock.jdField_b_of_type_Int, i4);
+        localProgressBlock.jdField_a_of_type_Boolean = false;
       }
       i1 += 1;
     }
@@ -185,29 +182,29 @@ public class TCProgressBar
     i1 = 0;
     while (i1 < i8)
     {
-      localbdfd = (bdfd)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
-      if (localbdfd.d)
+      localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
+      if (localProgressBlock.d)
       {
-        localbdfd.jdField_f_of_type_Int = a(localbdfd.jdField_c_of_type_Int - localbdfd.jdField_b_of_type_Int, i4);
-        localbdfd.jdField_g_of_type_Int = a(localbdfd.jdField_b_of_type_Int, i4);
-        localbdfd.jdField_a_of_type_Boolean = false;
+        localProgressBlock.jdField_f_of_type_Int = a(localProgressBlock.jdField_c_of_type_Int - localProgressBlock.jdField_b_of_type_Int, i4);
+        localProgressBlock.jdField_g_of_type_Int = a(localProgressBlock.jdField_b_of_type_Int, i4);
+        localProgressBlock.jdField_a_of_type_Boolean = false;
       }
       i1 += 1;
     }
     if (i5 > 0)
     {
-      localbdfd = (bdfd)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
-      localbdfd.jdField_f_of_type_Boolean = true;
-      localbdfd.jdField_a_of_type_Boolean = false;
-      if (!localbdfd.jdField_g_of_type_Boolean)
+      localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
+      localProgressBlock.jdField_f_of_type_Boolean = true;
+      localProgressBlock.jdField_a_of_type_Boolean = false;
+      if (!localProgressBlock.jdField_g_of_type_Boolean)
       {
-        localbdfd.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-        localbdfd.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - this.o);
+        localProgressBlock.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
+        localProgressBlock.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - this.o);
       }
-      if (localbdfd.d)
+      if (localProgressBlock.d)
       {
-        localbdfd.jdField_f_of_type_Int = a(localbdfd.jdField_c_of_type_Int - localbdfd.jdField_b_of_type_Int, i4);
-        localbdfd.jdField_g_of_type_Int = a(localbdfd.jdField_b_of_type_Int, i4);
+        localProgressBlock.jdField_f_of_type_Int = a(localProgressBlock.jdField_c_of_type_Int - localProgressBlock.jdField_b_of_type_Int, i4);
+        localProgressBlock.jdField_g_of_type_Int = a(localProgressBlock.jdField_b_of_type_Int, i4);
       }
     }
     int i2;
@@ -217,113 +214,113 @@ public class TCProgressBar
     {
       i2 = i4;
       i1 = 0;
-      if ((this.jdField_a_of_type_Bdez.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Bdez.d))
+      if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.d))
       {
-        this.jdField_a_of_type_Bdez.jdField_f_of_type_Int = i1;
-        this.jdField_a_of_type_Bdez.jdField_g_of_type_Int = this.n;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.jdField_f_of_type_Int = i1;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.jdField_g_of_type_Int = this.n;
       }
-      i9 = this.jdField_a_of_type_Bdfb.a();
+      i9 = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.a();
       i3 = i5;
-      if (this.jdField_a_of_type_Bdfb.jdField_e_of_type_Boolean)
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_e_of_type_Boolean)
       {
         i3 = i5;
-        if (this.jdField_a_of_type_Bdfb.d)
+        if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.d)
         {
-          this.jdField_a_of_type_Bdfb.jdField_g_of_type_Int = this.jdField_e_of_type_Int;
-          if (!this.jdField_a_of_type_Bdfb.jdField_c_of_type_Boolean) {
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_g_of_type_Int = this.jdField_e_of_type_Int;
+          if (!this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_c_of_type_Boolean) {
             break label879;
           }
-          this.jdField_a_of_type_Bdfb.jdField_f_of_type_Int = (i1 - 3);
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_f_of_type_Int = (i1 - 3);
         }
       }
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Bdfb.jdField_f_of_type_Int < 0) && (this.jdField_a_of_type_Bdfb.jdField_c_of_type_Boolean)) {
-        this.jdField_a_of_type_Bdfb.jdField_f_of_type_Int = 0;
+      if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_f_of_type_Int < 0) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_c_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_f_of_type_Int = 0;
       }
-      if (this.jdField_a_of_type_Bdfb.jdField_f_of_type_Int + this.jdField_a_of_type_Bdfb.jdField_g_of_type_Int + 1 >= i7) {
-        this.jdField_a_of_type_Bdfb.jdField_f_of_type_Int = (i7 - this.jdField_a_of_type_Bdfb.jdField_g_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_f_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_g_of_type_Int + 1 >= i7) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_f_of_type_Int = (i7 - this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_g_of_type_Int);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("TCProgressBar", 2, "layout:delete.requestLayout" + this.jdField_a_of_type_Bdfb.jdField_c_of_type_Boolean);
+        QLog.d("TCProgressBar", 2, "layout:delete.requestLayout" + this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_c_of_type_Boolean);
       }
       i3 = i5;
-      if (!this.jdField_a_of_type_Bdfb.jdField_c_of_type_Boolean)
+      if (!this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_c_of_type_Boolean)
       {
         i5 = this.jdField_a_of_type_JavaUtilArrayList.size();
         if (i5 > 0)
         {
-          localbdfd = (bdfd)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
-          localbdfd.jdField_f_of_type_Boolean = false;
-          if (localbdfd.a(i9))
+          localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
+          localProgressBlock.jdField_f_of_type_Boolean = false;
+          if (localProgressBlock.a(i9))
           {
             if (QLog.isColorLevel()) {
               QLog.d("TCProgressBar", 2, "layout:progress.checkBounds=true");
             }
-            localbdfd.jdField_a_of_type_Int = (this.jdField_a_of_type_Bdfb.jdField_f_of_type_Int + 3);
-            localbdfd.jdField_a_of_type_Boolean = true;
+            localProgressBlock.jdField_a_of_type_Int = (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_f_of_type_Int + 3);
+            localProgressBlock.jdField_a_of_type_Boolean = true;
           }
         }
         i3 = i5;
         if (i8 > 0)
         {
-          localbdfd = (bdfd)this.jdField_b_of_type_JavaUtilArrayList.get(i8 - 1);
+          localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_b_of_type_JavaUtilArrayList.get(i8 - 1);
           i3 = i5;
-          if (localbdfd.a(i9))
+          if (localProgressBlock.a(i9))
           {
             if (QLog.isColorLevel()) {
               QLog.d("TCProgressBar", 2, "layout:deletedList.checkBounds=true");
             }
-            localbdfd.jdField_a_of_type_Int = (this.jdField_a_of_type_Bdfb.jdField_f_of_type_Int + 3);
-            localbdfd.jdField_a_of_type_Boolean = true;
+            localProgressBlock.jdField_a_of_type_Int = (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_f_of_type_Int + 3);
+            localProgressBlock.jdField_a_of_type_Boolean = true;
             i3 = i5;
           }
         }
       }
       if (i3 > 0)
       {
-        localbdfd = (bdfd)this.jdField_a_of_type_JavaUtilArrayList.get(i3 - 1);
-        if (localbdfd.h) {
-          localbdfd.jdField_g_of_type_Int = (i4 - localbdfd.jdField_f_of_type_Int);
+        localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i3 - 1);
+        if (localProgressBlock.h) {
+          localProgressBlock.jdField_g_of_type_Int = (i4 - localProgressBlock.jdField_f_of_type_Int);
         }
       }
       if (i8 > 0)
       {
-        localbdfd = (bdfd)this.jdField_b_of_type_JavaUtilArrayList.get(0);
-        if (localbdfd.h) {
-          localbdfd.jdField_g_of_type_Int = (i7 - localbdfd.jdField_f_of_type_Int);
+        localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_b_of_type_JavaUtilArrayList.get(0);
+        if (localProgressBlock.h) {
+          localProgressBlock.jdField_g_of_type_Int = (i7 - localProgressBlock.jdField_f_of_type_Int);
         }
-        i1 = localbdfd.jdField_f_of_type_Int + localbdfd.jdField_g_of_type_Int;
+        i1 = localProgressBlock.jdField_f_of_type_Int + localProgressBlock.jdField_g_of_type_Int;
         i2 = i4 - i1;
       }
-      if (this.jdField_a_of_type_Bdfd.d)
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock.d)
       {
-        this.jdField_a_of_type_Bdfd.jdField_f_of_type_Int = i1;
-        this.jdField_a_of_type_Bdfd.jdField_g_of_type_Int = i2;
-        if (this.jdField_a_of_type_Bdfd.jdField_g_of_type_Int > 1) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock.jdField_f_of_type_Int = i1;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock.jdField_g_of_type_Int = i2;
+        if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock.jdField_g_of_type_Int > 1) {
           break label919;
         }
-        this.jdField_a_of_type_Bdfd.jdField_e_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock.jdField_e_of_type_Boolean = false;
       }
       return;
-      localbdfd = (bdfd)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
-      i2 = localbdfd.jdField_f_of_type_Int + localbdfd.jdField_g_of_type_Int;
+      localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
+      i2 = localProgressBlock.jdField_f_of_type_Int + localProgressBlock.jdField_g_of_type_Int;
       i1 = i2;
       i2 = i4 - i2;
       break;
       label879:
       if ((i8 == 0) && (i9 > i1))
       {
-        this.jdField_a_of_type_Bdfb.jdField_f_of_type_Int = (i1 - 3);
-        this.jdField_a_of_type_Bdfb.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Bdfb.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_f_of_type_Int = (i1 - 3);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_c_of_type_Boolean = true;
       }
     }
     label919:
-    this.jdField_a_of_type_Bdfd.jdField_e_of_type_Boolean = true;
-    bdfd localbdfd = this.jdField_a_of_type_Bdfd;
-    localbdfd.jdField_g_of_type_Int += i6;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock.jdField_e_of_type_Boolean = true;
+    TCProgressBar.ProgressBlock localProgressBlock = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock;
+    localProgressBlock.jdField_g_of_type_Int += i6;
   }
   
   public int c()
@@ -331,7 +328,7 @@ public class TCProgressBar
     int i1 = 0;
     int i2 = this.jdField_a_of_type_JavaUtilArrayList.size();
     if (i2 > 0) {
-      i1 = ((bdfd)this.jdField_a_of_type_JavaUtilArrayList.get(i2 - 1)).jdField_c_of_type_Int;
+      i1 = ((TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i2 - 1)).jdField_c_of_type_Int;
     }
     return i1;
   }
@@ -341,16 +338,16 @@ public class TCProgressBar
     int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
     if (i1 > 0)
     {
-      bdfd localbdfd = (bdfd)this.jdField_a_of_type_JavaUtilArrayList.get(i1 - 1);
+      TCProgressBar.ProgressBlock localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i1 - 1);
       if (this.jdField_a_of_type_Boolean)
       {
-        localbdfd.h = true;
+        localProgressBlock.h = true;
         this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
       }
-      localbdfd.jdField_b_of_type_Boolean = false;
-      localbdfd.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-      localbdfd.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - this.o);
-      localbdfd.jdField_g_of_type_Boolean = true;
+      localProgressBlock.jdField_b_of_type_Boolean = false;
+      localProgressBlock.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
+      localProgressBlock.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - this.o);
+      localProgressBlock.jdField_g_of_type_Boolean = true;
       this.o = this.jdField_c_of_type_Int;
     }
   }
@@ -370,7 +367,7 @@ public class TCProgressBar
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i2 = 0;
     super.onDraw(paramCanvas);
@@ -383,7 +380,7 @@ public class TCProgressBar
       int i4 = i3 / 7;
       int i5 = i4 * 3;
       b();
-      this.jdField_a_of_type_Bdfb.jdField_e_of_type_Int = i3;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_e_of_type_Int = i3;
       this.jdField_b_of_type_AndroidGraphicsRect.left = 0;
       this.jdField_b_of_type_AndroidGraphicsRect.right = i1;
       this.jdField_b_of_type_AndroidGraphicsRect.top = 0;
@@ -398,12 +395,12 @@ public class TCProgressBar
       this.jdField_b_of_type_AndroidGraphicsRect.bottom = (i5 + i4);
       i3 = this.jdField_a_of_type_JavaUtilArrayList.size();
       i1 = 0;
-      bdfd localbdfd;
+      TCProgressBar.ProgressBlock localProgressBlock;
       while (i1 < i3)
       {
-        localbdfd = (bdfd)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if ((localbdfd.d) && (localbdfd.jdField_e_of_type_Boolean)) {
-          localbdfd.a(paramCanvas);
+        localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+        if ((localProgressBlock.d) && (localProgressBlock.jdField_e_of_type_Boolean)) {
+          localProgressBlock.a(paramCanvas);
         }
         i1 += 1;
       }
@@ -411,23 +408,23 @@ public class TCProgressBar
       i1 = i2;
       while (i1 < i3)
       {
-        localbdfd = (bdfd)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
-        if ((localbdfd.d) && (localbdfd.jdField_e_of_type_Boolean)) {
-          localbdfd.a(paramCanvas);
+        localProgressBlock = (TCProgressBar.ProgressBlock)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
+        if ((localProgressBlock.d) && (localProgressBlock.jdField_e_of_type_Boolean)) {
+          localProgressBlock.a(paramCanvas);
         }
         i1 += 1;
       }
-      if ((this.jdField_a_of_type_Bdfd.d) && (this.jdField_a_of_type_Bdfd.jdField_e_of_type_Boolean)) {
-        this.jdField_a_of_type_Bdfd.a(paramCanvas);
+      if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock.d) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock.jdField_e_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$ProgressBlock.a(paramCanvas);
       }
-      if ((this.jdField_a_of_type_Bdez.d) && (this.jdField_a_of_type_Bdez.jdField_e_of_type_Boolean)) {
-        this.jdField_a_of_type_Bdez.a(paramCanvas);
+      if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.d) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.jdField_e_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$BlinkBlock.a(paramCanvas);
       }
-    } while ((!this.jdField_a_of_type_Bdfb.d) || (!this.jdField_a_of_type_Bdfb.jdField_e_of_type_Boolean));
-    this.jdField_a_of_type_Bdfb.a(paramCanvas);
+    } while ((!this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.d) || (!this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_e_of_type_Boolean));
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.a(paramCanvas);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if ((paramInt1 != this.jdField_a_of_type_AndroidGraphicsRect.left) || (paramInt2 != this.jdField_a_of_type_AndroidGraphicsRect.top + 25) || (paramInt3 != this.jdField_a_of_type_AndroidGraphicsRect.right) || (paramInt4 != this.jdField_a_of_type_AndroidGraphicsRect.bottom - 25))
     {
@@ -461,25 +458,25 @@ public class TCProgressBar
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
       this.jdField_f_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.size();
       this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Bdfb.a(f1))
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.a(f1))
       {
-        this.jdField_a_of_type_Bdfb.a(paramMotionEvent);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.a(paramMotionEvent);
         continue;
         if (QLog.isColorLevel()) {
           QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_MOVE count=" + i1 + " X=" + f1);
         }
-        if (this.jdField_a_of_type_Bdfb.jdField_b_of_type_Boolean)
+        if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_b_of_type_Boolean)
         {
-          this.jdField_a_of_type_Bdfb.a(paramMotionEvent);
-          if (this.jdField_a_of_type_Bdfb.a())
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.a(paramMotionEvent);
+          if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.a())
           {
-            i2 = this.jdField_a_of_type_Bdfb.a();
-            if (this.jdField_a_of_type_Bdfb.jdField_c_of_type_Int < 0)
+            i2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.a();
+            if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_c_of_type_Int < 0)
             {
               i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
               while (i1 >= 0)
               {
-                paramMotionEvent = (bdfd)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+                paramMotionEvent = (TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
                 if (!paramMotionEvent.b(i2)) {
                   break;
                 }
@@ -495,7 +492,7 @@ public class TCProgressBar
             i1 = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
             while (i1 >= 0)
             {
-              paramMotionEvent = (bdfd)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
+              paramMotionEvent = (TCProgressBar.ProgressBlock)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
               if (!paramMotionEvent.c(i2)) {
                 break;
               }
@@ -512,10 +509,10 @@ public class TCProgressBar
             if (QLog.isColorLevel()) {
               QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_UP count=" + i1 + " X=" + f1);
             }
-            if (this.jdField_a_of_type_Bdfb.jdField_b_of_type_Boolean)
+            if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_b_of_type_Boolean)
             {
-              this.jdField_a_of_type_Bdfb.a(paramMotionEvent);
-              if (this.jdField_a_of_type_Bdfb.a(f1))
+              this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.a(paramMotionEvent);
+              if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.a(f1))
               {
                 if (QLog.isColorLevel()) {
                   QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_UP[checkBounds:true] count=" + i1 + " X=" + f1);
@@ -525,7 +522,7 @@ public class TCProgressBar
                   i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
                   if (i1 > 0)
                   {
-                    paramMotionEvent = (bdfd)this.jdField_a_of_type_JavaUtilArrayList.remove(i1 - 1);
+                    paramMotionEvent = (TCProgressBar.ProgressBlock)this.jdField_a_of_type_JavaUtilArrayList.remove(i1 - 1);
                     paramMotionEvent.jdField_b_of_type_Boolean = true;
                     this.jdField_b_of_type_JavaUtilArrayList.add(paramMotionEvent);
                     if (QLog.isColorLevel()) {
@@ -535,38 +532,38 @@ public class TCProgressBar
                 }
               }
               if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0) {}
-              for (this.jdField_a_of_type_Bdfb.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_Bdfb.jdField_a_of_type_Boolean = true)
+              for (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_a_of_type_Boolean = true)
               {
                 invalidate();
                 if (QLog.isColorLevel()) {
-                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_Bdfb.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_Bdfb.d);
+                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.d);
                 }
                 i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
                 if (this.jdField_f_of_type_Int - i1 > 0) {
                   this.jdField_b_of_type_Boolean = true;
                 }
-                if (this.jdField_a_of_type_Bdfa == null) {
+                if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DelEvent == null) {
                   break;
                 }
-                this.jdField_a_of_type_Bdfa.f(this.jdField_b_of_type_Boolean);
+                this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DelEvent.f(this.jdField_b_of_type_Boolean);
                 break;
               }
               if (QLog.isColorLevel()) {
                 QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_CANCEL count=" + i1 + " X=" + f1);
               }
-              if (this.jdField_a_of_type_Bdfb.jdField_b_of_type_Boolean)
+              if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_b_of_type_Boolean)
               {
-                this.jdField_a_of_type_Bdfb.a(paramMotionEvent);
+                this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.a(paramMotionEvent);
                 invalidate();
                 if (QLog.isColorLevel()) {
-                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_Bdfb.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_Bdfb.d);
+                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DeleteImage.d);
                 }
                 i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
                 if (this.jdField_f_of_type_Int - i1 > 0) {
                   this.jdField_b_of_type_Boolean = true;
                 }
-                if (this.jdField_a_of_type_Bdfa != null) {
-                  this.jdField_a_of_type_Bdfa.f(this.jdField_b_of_type_Boolean);
+                if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DelEvent != null) {
+                  this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar$DelEvent.f(this.jdField_b_of_type_Boolean);
                 }
               }
             }

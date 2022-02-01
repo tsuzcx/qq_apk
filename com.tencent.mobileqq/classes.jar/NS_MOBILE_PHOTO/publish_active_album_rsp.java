@@ -9,11 +9,11 @@ public final class publish_active_album_rsp
   extends JceStruct
 {
   static s_arkshare cache_ark_sharedata = new s_arkshare();
-  public s_arkshare ark_sharedata;
+  public s_arkshare ark_sharedata = null;
   public String fake_feeds_client_key = "";
   public String mgz_id = "";
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   public String share_url = "";
   public String xcx_name = "";
   public String xcx_share_path = "";

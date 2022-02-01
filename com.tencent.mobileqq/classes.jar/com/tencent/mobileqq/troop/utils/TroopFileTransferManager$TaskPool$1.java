@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgkb;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class TroopFileTransferManager$TaskPool$1
+class TroopFileTransferManager$TaskPool$1
   implements Runnable
 {
-  public TroopFileTransferManager$TaskPool$1(bgkb parambgkb) {}
+  TroopFileTransferManager$TaskPool$1(TroopFileTransferManager.TaskPool paramTaskPool) {}
   
   public void run()
   {

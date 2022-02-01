@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stPostFeedDingRsp
   extends JceStruct
 {
-  public int is_ding;
+  public int is_ding = 0;
   
   public stPostFeedDingRsp() {}
   

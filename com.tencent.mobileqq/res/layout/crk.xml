@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/nii" android:layout_width="fill_parent" android:layout_height="250.0dip" android:scaleType="centerCrop" />
-    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <TextView android:textSize="18.0dip" android:textColor="@color/skin_black" android:layout_gravity="center_horizontal" android:id="@id/niy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/xab" />
-        <Button android:layout_gravity="center_horizontal" android:id="@id/nih" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/xac" style="@style/i0" />
-    </LinearLayout>
+    <com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView android:id="@id/n8n" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:layout_alignParentLeft="true" />
+    <TextView android:id="@id/n8t" android:layout_width="10.0dip" android:layout_height="8.5dip" android:layout_marginLeft="6.0dip" android:layout_alignLeft="@id/n8n" android:layout_alignBottom="@id/n8n" />
+    <TextView android:textSize="12.0sp" android:ellipsize="end" android:id="@id/n8u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="12.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/n8n" />
 </RelativeLayout>

@@ -1,24 +1,23 @@
 package com.tencent.biz.webviewplugin;
 
-import aaqp;
-import anvx;
-import bisl;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-public class NewReportPlugin$2$1
+class NewReportPlugin$2$1
   implements Runnable
 {
-  public NewReportPlugin$2$1(aaqp paramaaqp) {}
+  NewReportPlugin$2$1(NewReportPlugin.2 param2) {}
   
   public void run()
   {
     try
     {
-      if (this.this$0.jdField_a_of_type_Bisl.isShowing()) {
-        this.this$0.jdField_a_of_type_Bisl.dismiss();
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
+        this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
-      QQToast.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, anvx.a(2131707019), 0).a();
+      QQToast.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, HardCodeUtil.a(2131707544), 0).a();
       return;
     }
     catch (Exception localException)
@@ -30,7 +29,7 @@ public class NewReportPlugin$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

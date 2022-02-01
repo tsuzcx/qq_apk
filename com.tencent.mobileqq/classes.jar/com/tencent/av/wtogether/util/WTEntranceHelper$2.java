@@ -1,0 +1,38 @@
+package com.tencent.av.wtogether.util;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.wtogether.data.ChooseFileInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
+import com.tencent.qphone.base.util.QLog;
+
+class WTEntranceHelper$2
+  implements DialogInterface.OnClickListener
+{
+  WTEntranceHelper$2(WTEntranceHelper paramWTEntranceHelper, int paramInt1, ChooseFileInfo paramChooseFileInfo, int paramInt2, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Int == 3) {
+        ChooseFileAssistant.a().a(WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a().jdField_a_of_type_Int, WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a().jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
+      }
+      for (;;)
+      {
+        PlusPanelUtils.a(WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), true, "AIOQAVWatchTogether", null);
+        return;
+        ChooseFileAssistant.a().a(this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
+      }
+    }
+    QLog.e(WTEntranceHelper.jdField_a_of_type_JavaLangString, 1, "deny permission");
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.av.wtogether.util.WTEntranceHelper.2
+ * JD-Core Version:    0.7.0.1
+ */

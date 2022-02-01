@@ -12,14 +12,14 @@ class LaunchManagerService$4
   public void run()
   {
     MiniAppCacheProxy localMiniAppCacheProxy = (MiniAppCacheProxy)ProxyManager.get(MiniAppCacheProxy.class);
-    if ((localMiniAppCacheProxy != null) && (localMiniAppCacheProxy.deleteCacheByTimeStamp(System.currentTimeMillis() - localMiniAppCacheProxy.getDeleteIntervalTime()))) {
+    if ((localMiniAppCacheProxy != null) && (localMiniAppCacheProxy.enableMiniAppCache()) && (localMiniAppCacheProxy.deleteCacheByTimeStamp(System.currentTimeMillis() - localMiniAppCacheProxy.getDeleteIntervalTime()))) {
       QMLog.d("minisdk-start_LaunchManagerService", "deleteCacheByTimeStamp success.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.LaunchManagerService.4
  * JD-Core Version:    0.7.0.1
  */

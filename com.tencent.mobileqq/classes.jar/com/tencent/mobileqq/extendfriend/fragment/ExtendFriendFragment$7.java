@@ -14,12 +14,12 @@ class ExtendFriendFragment$7
     if (QZoneApiProxy.needLoadQZoneEnv()) {
       ExtendFriendFragment.a(QZoneApiProxy.needShowSchoolExtendFeed(this.this$0.getActivity(), ExtendFriendFragment.a(this.this$0)));
     }
-    QzoneHandlerThreadFactory.getMainHandler().post(new ExtendFriendFragment.7.1(this));
+    QzoneHandlerThreadFactory.getMainHandler().post(ExtendFriendFragment.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,15 @@
 [
   {
+    "id": "font_huangyou",
+    "fontFamily": "ButterShiSan",
+    "description": "黄油拾叁体",
+    "url": "https://downv6.qq.com/shadow_qqcamera/Font/font_huangyou_v2_7ebca3dc2e50cf666f1af284a970a465.zip",
+    "md5": "7ebca3dc2e50cf666f1af284a970a465",
+    "preDownload": 1
+  },
+  {
     "id": "font_lanting",
+    "fontFamily": "FZLanTingHeiS-H-GB",
     "description": "方正兰亭特黑简体",
     "url": "https://downv6.qq.com/shadow_qqcamera/Font/font_lanting_v2_4a9aea96f09b22db96a705985fadbdbd.zip",
     "md5": "4a9aea96f09b22db96a705985fadbdbd",
@@ -8,6 +17,7 @@
   },
   {
     "id": "font_miaowu",
+    "fontFamily": "FZMiaoWuS-GB",
     "description": "方正喵呜体",
     "url": "https://downv6.qq.com/shadow_qqcamera/Font/font_miaowu_v2_52b2ebe82ac92a342d3bbf226bc7a290.zip",
     "md5": "52b2ebe82ac92a342d3bbf226bc7a290",
@@ -15,6 +25,7 @@
   },
   {
     "id": "font_runyuan75w",
+    "fontFamily": "HYRunYuan",
     "description": "汉仪润圆-75W",
     "url": "https://downv6.qq.com/shadow_qqcamera/Font/font_runyuan75w_a90047f379bbe0495d2e5a1713dccf6a.zip",
     "md5": "a90047f379bbe0495d2e5a1713dccf6a",
@@ -22,16 +33,10 @@
   },
   {
     "id": "font_shangya",
+    "fontFamily": "MF ShangYa",
     "description": "造字工房尚雅体",
     "url": "https://downv6.qq.com/shadow_qqcamera/Font/font_shangya_v2_8a85baecf498ef2b58a2305040715124.zip",
     "md5": "8a85baecf498ef2b58a2305040715124",
-    "preDownload": 1
-  },
-  {
-    "id": "font_huangyou",
-    "description": "黄油拾叁体",
-    "url": "https://downv6.qq.com/shadow_qqcamera/Font/font_huangyou_v2_7ebca3dc2e50cf666f1af284a970a465.zip",
-    "md5": "7ebca3dc2e50cf666f1af284a970a465",
     "preDownload": 1
   }
 ]

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.imaxad;
 
-import avqv;
+import com.tencent.biz.pubaccount.api.IPublicAccountManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import okn;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class ImaxAdVideoPreloadManager$4
+class ImaxAdVideoPreloadManager$4
   implements Runnable
 {
-  public ImaxAdVideoPreloadManager$4(avqv paramavqv, QQAppInterface paramQQAppInterface) {}
+  ImaxAdVideoPreloadManager$4(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    okn.a().a(this.a);
+    ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).preloadWebProcess(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager.4
  * JD-Core Version:    0.7.0.1
  */

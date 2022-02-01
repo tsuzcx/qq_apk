@@ -2,7 +2,8 @@ package com.tencent.image;
 
 import android.os.Handler;
 import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class NativeVideoImage$DecodeFrameJob
@@ -25,8 +26,8 @@ class NativeVideoImage$DecodeFrameJob
       {
         NativeVideoImage.sUIHandler.postDelayed(localRefreshJob, this.mNextFrameTime - l);
         NativeVideoImage.access$200(this.this$0).onVideoFrameDroped(false, -1);
-        if ((QLog.isColorLevel()) && (this.this$0.debug)) {
-          QLog.d(NativeVideoImage.TAG + NativeVideoImage.access$000(this.this$0), 2, "after getFrame, now < mNextFrameTime, delay:" + (this.mNextFrameTime - l) + "ms, index=" + NativeVideoImage.access$100(this.this$0).get());
+        if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.this$0.debug)) {
+          URLDrawable.depImp.mLog.d(NativeVideoImage.TAG + NativeVideoImage.access$000(this.this$0), 2, "after getFrame, now < mNextFrameTime, delay:" + (this.mNextFrameTime - l) + "ms, index=" + NativeVideoImage.access$100(this.this$0).get());
         }
       }
       do
@@ -34,12 +35,12 @@ class NativeVideoImage$DecodeFrameJob
         return;
         NativeVideoImage.sUIHandler.post(localRefreshJob);
         NativeVideoImage.access$200(this.this$0).onVideoFrameDroped(true, (int)(l - this.mNextFrameTime));
-      } while (!QLog.isColorLevel());
-      QLog.w(NativeVideoImage.TAG + NativeVideoImage.access$000(this.this$0), 2, "after getFrame, now > mNextFrameTime, delayedTime=" + (l - this.mNextFrameTime) + "ms, index=" + NativeVideoImage.access$100(this.this$0).get());
+      } while (!URLDrawable.depImp.mLog.isColorLevel());
+      URLDrawable.depImp.mLog.w(NativeVideoImage.TAG + NativeVideoImage.access$000(this.this$0), 2, "after getFrame, now > mNextFrameTime, delayedTime=" + (l - this.mNextFrameTime) + "ms, index=" + NativeVideoImage.access$100(this.this$0).get());
       return;
     }
     this.this$0.mDecodeNextFrameEnd = true;
-    QLog.e(NativeVideoImage.TAG + NativeVideoImage.access$000(this.this$0), 1, "after getFrame, return false ");
+    URLDrawable.depImp.mLog.e(NativeVideoImage.TAG + NativeVideoImage.access$000(this.this$0), 1, "after getFrame, return false ");
   }
 }
 

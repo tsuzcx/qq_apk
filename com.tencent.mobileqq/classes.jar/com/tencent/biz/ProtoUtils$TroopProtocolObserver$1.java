@@ -1,21 +1,20 @@
 package com.tencent.biz;
 
 import android.os.Bundle;
-import ntf;
 
-public class ProtoUtils$TroopProtocolObserver$1
+class ProtoUtils$TroopProtocolObserver$1
   implements Runnable
 {
-  public ProtoUtils$TroopProtocolObserver$1(ntf paramntf, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  ProtoUtils$TroopProtocolObserver$1(ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    ntf.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    ProtoUtils.TroopProtocolObserver.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ProtoUtils.TroopProtocolObserver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,10 +11,10 @@ public final class ModifyGroupCardResp
   static int cache_result = 0;
   static ArrayList<Long> cache_vecUin = new ArrayList();
   public String ErrorString = "";
-  public long dwGroupCode;
-  public long dwGroupUin;
-  public int result;
-  public ArrayList<Long> vecUin;
+  public long dwGroupCode = 0L;
+  public long dwGroupUin = 0L;
+  public int result = 0;
+  public ArrayList<Long> vecUin = null;
   
   static
   {
@@ -54,7 +54,7 @@ public final class ModifyGroupCardResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.ModifyGroupCardResp
  * JD-Core Version:    0.7.0.1
  */

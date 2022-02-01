@@ -14,19 +14,25 @@ public class CreateUpdatableMsgRequest
 {
   public static final String CMD_STRING = "LightAppSvc.mini_app_updatablemsg.CreateUpdatableMsg";
   private static final String TAG = "CreateUpdatableMsgRequest";
+  public static final int UPDATABLE_MSG_FROM_AUDIT = 3;
+  public static final int UPDATABLE_MSG_FROM_EXPERIENCE = 2;
+  public static final int UPDATABLE_MSG_FROM_ONLINE = 1;
   private INTERFACE.StCreateUpdatableMsgReq req = new INTERFACE.StCreateUpdatableMsgReq();
   
-  public CreateUpdatableMsgRequest(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, byte[] paramArrayOfByte)
+  public CreateUpdatableMsgRequest(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, int paramInt4, byte[] paramArrayOfByte)
   {
     this.req.appid.set(paramString1);
     this.req.templateId.set(paramString2);
     this.req.from.set(paramInt1);
-    this.req.serviceType.set(paramInt3);
+    this.req.serviceType.set(paramInt4);
     if (paramArrayOfByte != null) {
       this.req.sig.set(ByteStringMicro.copyFrom(paramArrayOfByte));
     }
     paramString1 = new INTERFACE.StUpdatableMsgShareInfo();
     paramString1.scene.set(paramInt2);
+    if (paramInt3 > 0) {
+      paramString1.subScene.set(paramInt3);
+    }
     switch (paramInt2)
     {
     default: 

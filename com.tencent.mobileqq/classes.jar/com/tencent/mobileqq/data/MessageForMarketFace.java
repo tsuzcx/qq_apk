@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import anvx;
-import apab;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -15,11 +15,11 @@ public class MessageForMarketFace
   extends ChatMessage
 {
   public static final String TAG = "MessageForMarketFace";
-  public MarkFaceMessage mMarkFaceMessage;
+  public MarkFaceMessage mMarkFaceMessage = null;
   public int msgVia;
-  public boolean needToPlay;
+  public boolean needToPlay = false;
   public float playProgress;
-  public String sendFaceName;
+  public String sendFaceName = null;
   public String timeStr;
   
   public static MessageForMarketFace parsePb(im_msg_body.MarketFace paramMarketFace)
@@ -43,8 +43,8 @@ public class MessageForMarketFace
   {
     try
     {
-      this.mMarkFaceMessage = ((MarkFaceMessage)apab.a(this.msgData));
-      if ((EmojiStickerManager.e) && (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.stickerInfo != null))
+      this.mMarkFaceMessage = ((MarkFaceMessage)MessagePkgUtils.a(this.msgData));
+      if ((EmojiStickerManager.f) && (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.stickerInfo != null))
       {
         if (this.msgtype == -2007) {
           this.msgtype = -2058;
@@ -86,7 +86,7 @@ public class MessageForMarketFace
       localStringBuilder.append("[").append(this.mMarkFaceMessage.faceName).append("]");
       return localStringBuilder.toString();
     }
-    return anvx.a(2131706063);
+    return HardCodeUtil.a(2131706603);
   }
   
   public boolean isNewSoundType()
@@ -114,7 +114,7 @@ public class MessageForMarketFace
     if (this.mMarkFaceMessage != null) {}
     try
     {
-      this.msgData = apab.a(this.mMarkFaceMessage);
+      this.msgData = MessagePkgUtils.a(this.mMarkFaceMessage);
       return;
     }
     catch (Exception localException)
@@ -125,7 +125,7 @@ public class MessageForMarketFace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForMarketFace
  * JD-Core Version:    0.7.0.1
  */

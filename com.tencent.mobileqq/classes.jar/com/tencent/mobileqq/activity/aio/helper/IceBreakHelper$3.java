@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agio;
-
-public class IceBreakHelper$3
+class IceBreakHelper$3
   implements Runnable
 {
-  public IceBreakHelper$3(agio paramagio) {}
+  IceBreakHelper$3(IceBreakHelper paramIceBreakHelper) {}
   
   public void run()
   {
-    this.this$0.a(false, false);
+    this.this$0.a(false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.IceBreakHelper.3
  * JD-Core Version:    0.7.0.1
  */

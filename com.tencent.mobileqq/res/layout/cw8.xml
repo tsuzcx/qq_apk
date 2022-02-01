@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        <TextView android:id="@id/title" android:text="@string/ych" style="@style/k6" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffb0b3bf" android:id="@id/o_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/ycc" android:layout_toLeftOf="@id/yw" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/yw" android:background="@drawable/common_arrow_right_selector" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/ml9" android:layout_width="fill_parent" android:layout_height="165.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/jp7">
+        <RelativeLayout android:orientation="vertical" android:id="@id/ml6" android:background="@drawable/f2m" android:layout_width="fill_parent" android:layout_height="145.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true">
+            <View android:id="@id/e_3" android:background="#fff2f3f5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="90.0dip" />
+            <View android:id="@id/e_4" android:background="#fff9f9fa" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="44.5dip" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/ml7" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="22.0dip" android:layout_marginRight="21.0dip" />
+    </RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/jt6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="7.0dip" android:layout_below="@id/ml9" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/bhd" android:layout_width="fill_parent" android:layout_height="88.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="24.0dip" android:layout_below="@id/jt6" />
+</RelativeLayout>

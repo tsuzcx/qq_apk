@@ -2,32 +2,31 @@ package com.tencent.mobileqq.ar.codeEngine;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import apno;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public final class MiniScanReport$4
+final class MiniScanReport$4
   implements Runnable
 {
-  public MiniScanReport$4(int paramInt1, int paramInt2) {}
+  MiniScanReport$4(int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    long l1 = apno.a("report_tag_detect_support_easy", 0L);
+    long l1 = MiniScanReport.a("report_tag_detect_support_easy", 0L);
     long l2 = System.currentTimeMillis();
     if (l2 - l1 > 86400000L)
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("report_key_detect_support_type", String.valueOf(this.a));
       localHashMap.put("report_key_detect_support_type_strict", String.valueOf(this.b));
-      apno.a(localHashMap);
+      MiniScanReport.a(localHashMap);
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "report_tag_detect_support_easy", true, 0L, 0L, localHashMap, "");
       if (QLog.isColorLevel()) {
         QLog.i("MiniRecog.MiniScanReport", 2, String.format("onDetectSupportEasyReport [model,sdkver]=[%s,%d]", new Object[] { Build.MODEL, Integer.valueOf(Build.VERSION.SDK_INT) }));
       }
-      apno.a("report_tag_detect_support_easy", l2);
+      MiniScanReport.a("report_tag_detect_support_easy", l2);
     }
   }
 }

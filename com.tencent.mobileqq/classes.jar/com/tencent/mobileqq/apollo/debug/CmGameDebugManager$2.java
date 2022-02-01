@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.apollo.debug;
 
-import amro;
-import amrp;
 import java.lang.ref.WeakReference;
 
-public class CmGameDebugManager$2
+class CmGameDebugManager$2
   implements Runnable
 {
-  public CmGameDebugManager$2(amro paramamro) {}
+  CmGameDebugManager$2(CmGameDebugManager paramCmGameDebugManager) {}
   
   public void run()
   {
-    if ((amro.a(this.this$0) != null) && (amro.a(this.this$0).get() != null)) {
-      ((amrp)amro.a(this.this$0).get()).a(0);
+    if ((CmGameDebugManager.a(this.this$0) != null) && (CmGameDebugManager.a(this.this$0).get() != null)) {
+      ((CmGameDebugManager.OnLogViewRefresh)CmGameDebugManager.a(this.this$0).get()).a(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.debug.CmGameDebugManager.2
  * JD-Core Version:    0.7.0.1
  */

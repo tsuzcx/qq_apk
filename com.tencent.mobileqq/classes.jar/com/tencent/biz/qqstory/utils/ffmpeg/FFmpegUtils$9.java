@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
-import bomw;
-import bomx;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import dov.com.qq.im.capture.util.CaptureFreqMonitor;
+import dov.com.qq.im.capture.util.CaptureFreqMonitorItem;
 import java.io.File;
-import ykq;
-import ykv;
 
 final class FFmpegUtils$9
   extends ExecuteBinResponseCallback
@@ -13,7 +13,7 @@ final class FFmpegUtils$9
   
   public void onFailure(String paramString)
   {
-    ykv.a("music_composite", "video_music_composite", 0, 1, new String[0]);
+    StoryReportor.a("music_composite", "video_music_composite", 0, 1, new String[0]);
     this.val$endCallback.onFailure(paramString);
   }
   
@@ -34,17 +34,17 @@ final class FFmpegUtils$9
   
   public void onSuccess(String paramString)
   {
-    ykv.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.startime) });
-    if (bomw.c) {
-      bomw.g.a(1, System.currentTimeMillis() - this.val$mergeStartTime);
+    StoryReportor.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.startime) });
+    if (CaptureFreqMonitor.c) {
+      CaptureFreqMonitor.g.a(1, System.currentTimeMillis() - this.val$mergeStartTime);
     }
     this.val$endCallback.onSuccess(paramString);
-    ykq.c("Q.qqstory.ffmpeg.FFmpegCmd", "[vs_publish_flow]   recordVideo combinBackgroundMusic success end");
+    SLog.c("Q.qqstory.ffmpeg.FFmpegCmd", "[vs_publish_flow]   recordVideo combinBackgroundMusic success end");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils.9
  * JD-Core Version:    0.7.0.1
  */

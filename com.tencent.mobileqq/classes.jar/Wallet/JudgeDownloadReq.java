@@ -3,25 +3,24 @@ package Wallet;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 
 public final class JudgeDownloadReq
   extends JceStruct
 {
   static ArrayList<ResInfo> cache_vecResInfo = new ArrayList();
-  public float fMaxCPUFreq;
-  public float fMinCPUFreq;
+  public float fMaxCPUFreq = 0.0F;
+  public float fMinCPUFreq = 0.0F;
   public int iActId = 1001;
-  public int iCores;
-  public long iMemory;
+  public int iCores = 0;
+  public long iMemory = 0L;
   public int iPlatForm = 1;
-  public int iRetryTimes;
+  public int iRetryTimes = 0;
   public int iType = 1;
-  public long iUin;
+  public long iUin = 0L;
   public String sPhoneType = "";
   public String sQQVersion = "";
-  public ArrayList<ResInfo> vecResInfo;
+  public ArrayList<ResInfo> vecResInfo = null;
   
   static
   {
@@ -29,18 +28,18 @@ public final class JudgeDownloadReq
     cache_vecResInfo.add(localResInfo);
   }
   
-  public static JudgeDownloadReq createReq(ArrayList<ResInfo> paramArrayList, long paramLong, int paramInt)
+  public static JudgeDownloadReq createReq(ArrayList<ResInfo> paramArrayList, long paramLong1, int paramInt1, String paramString1, String paramString2, float paramFloat1, float paramFloat2, int paramInt2, long paramLong2)
   {
     JudgeDownloadReq localJudgeDownloadReq = new JudgeDownloadReq();
-    localJudgeDownloadReq.iUin = paramLong;
+    localJudgeDownloadReq.iUin = paramLong1;
     localJudgeDownloadReq.vecResInfo = paramArrayList;
-    localJudgeDownloadReq.sPhoneType = DeviceInfoUtil.getModel();
-    localJudgeDownloadReq.sQQVersion = DeviceInfoUtil.getQQVersion();
-    localJudgeDownloadReq.fMinCPUFreq = ((float)DeviceInfoUtil.getCpuFrequency());
-    localJudgeDownloadReq.fMaxCPUFreq = ((float)DeviceInfoUtil.getCpuMaxFreq());
-    localJudgeDownloadReq.iCores = DeviceInfoUtil.getCpuNumber();
-    localJudgeDownloadReq.iMemory = (DeviceInfoUtil.getSystemTotalMemory() / 1024L);
-    localJudgeDownloadReq.iRetryTimes = paramInt;
+    localJudgeDownloadReq.sPhoneType = paramString1;
+    localJudgeDownloadReq.sQQVersion = paramString2;
+    localJudgeDownloadReq.fMinCPUFreq = paramFloat1;
+    localJudgeDownloadReq.fMaxCPUFreq = paramFloat2;
+    localJudgeDownloadReq.iCores = paramInt2;
+    localJudgeDownloadReq.iMemory = paramLong2;
+    localJudgeDownloadReq.iRetryTimes = paramInt1;
     return localJudgeDownloadReq;
   }
   

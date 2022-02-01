@@ -100,6 +100,8 @@ final class PreDownloadConstants$2
     put(Integer.valueOf(10093), "flutter_app_res");
     put(Integer.valueOf(10094), "ptt_transition_anim_zip");
     put(Integer.valueOf(10095), "qq_ilive");
+    put(Integer.valueOf(10096), "online_status_animation");
+    put(Integer.valueOf(10097), "game_center");
   }
 }
 

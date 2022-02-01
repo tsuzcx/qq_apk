@@ -13,19 +13,18 @@ import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class MiniAppDialog
-  extends ReportDialog
+  extends Dialog
 {
   private static final int mAnimationDuration = 200;
   private View mContentView;
-  private boolean mIsAnimating;
+  private boolean mIsAnimating = false;
   private MiniAppDialog.OnBottomSheetShowListener mOnBottomSheetShowListener;
   
   public MiniAppDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755055);
+    super(paramContext, 2131755057);
   }
   
   private void animateDown()
@@ -76,8 +75,8 @@ public class MiniAppDialog
     paramBundle = getWindow().getAttributes();
     paramBundle.height = -2;
     paramBundle.gravity = 81;
-    int i = ViewUtils.getScreenWidth();
-    int j = ViewUtils.getScreenHeight();
+    int i = ViewUtils.a();
+    int j = ViewUtils.b();
     if (i < j) {}
     for (;;)
     {

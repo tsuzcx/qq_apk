@@ -31,6 +31,8 @@ public abstract interface ITPPlayManager
   
   public abstract void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
+  public abstract void setIsUseResourceLoader(boolean paramBoolean);
+  
   public abstract void setLogListener(ITPDLProxyLogListener paramITPDLProxyLogListener);
   
   public abstract void setPlayListener(ITPPlayListener paramITPPlayListener);
@@ -61,7 +63,7 @@ public abstract interface ITPPlayManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.ITPPlayManager
  * JD-Core Version:    0.7.0.1
  */

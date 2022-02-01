@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
 import QzoneCombine.ClientOnlineNotfiyReq;
-import blpn;
 import com.qq.taf.jce.JceStruct;
+import common.config.service.WupTool;
 
 public class ClientOnlineRequest
   extends QzoneExternalRequest
@@ -22,7 +22,7 @@ public class ClientOnlineRequest
   
   protected byte[] getEncodedUniParameter()
   {
-    return blpn.a(this.req);
+    return WupTool.encodeWup(this.req);
   }
   
   public JceStruct getReq()
@@ -37,7 +37,7 @@ public class ClientOnlineRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.ClientOnlineRequest
  * JD-Core Version:    0.7.0.1
  */

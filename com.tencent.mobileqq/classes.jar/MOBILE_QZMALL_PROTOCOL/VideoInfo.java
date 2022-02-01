@@ -9,8 +9,8 @@ public final class VideoInfo
 {
   static VideoSpec cache_stVideoSpec = new VideoSpec();
   static VideoUrl cache_stVideoUrl = new VideoUrl();
-  public VideoSpec stVideoSpec;
-  public VideoUrl stVideoUrl;
+  public VideoSpec stVideoSpec = null;
+  public VideoUrl stVideoUrl = null;
   
   public VideoInfo() {}
   

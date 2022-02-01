@@ -46,10 +46,25 @@ public enum AdBrowser
     localParams.extrasForIntent = paramBundle;
     return localAdBrowserAdapter.show(localParams);
   }
+  
+  public static AdError showWithoutAd(WeakReference<Activity> paramWeakReference, String paramString, Bundle paramBundle)
+  {
+    AdBrowserAdapter localAdBrowserAdapter = getAdapter();
+    if (localAdBrowserAdapter == null)
+    {
+      AdLog.e("AdBrowser", "showWithoutAd error");
+      return new AdError(301);
+    }
+    AdBrowserAdapter.Params localParams = new AdBrowserAdapter.Params();
+    localParams.activity = paramWeakReference;
+    localParams.url = paramString;
+    localParams.extrasForIntent = paramBundle;
+    return localAdBrowserAdapter.showWithoutAd(localParams);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.web.AdBrowser
  * JD-Core Version:    0.7.0.1
  */

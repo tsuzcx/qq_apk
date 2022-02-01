@@ -3,12 +3,11 @@ package com.tencent.mobileqq.gamecenter.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avbw;
 
 public class GameCenterSessionInfo$SimpleMessage
   implements Parcelable
 {
-  public static final Parcelable.Creator<SimpleMessage> CREATOR = new avbw();
+  public static final Parcelable.Creator<SimpleMessage> CREATOR = new GameCenterSessionInfo.SimpleMessage.1();
   public final long a;
   public final String a;
   
@@ -18,7 +17,7 @@ public class GameCenterSessionInfo$SimpleMessage
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public GameCenterSessionInfo$SimpleMessage(Parcel paramParcel)
+  protected GameCenterSessionInfo$SimpleMessage(Parcel paramParcel)
   {
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -37,7 +36,7 @@ public class GameCenterSessionInfo$SimpleMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo.SimpleMessage
  * JD-Core Version:    0.7.0.1
  */

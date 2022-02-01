@@ -9,14 +9,14 @@ public final class MusicInfo
   extends JceStruct
 {
   static ArrayList<SingerInfo> cache_vecSingerList = new ArrayList();
-  public int iAccess;
-  public long lDuration;
+  public int iAccess = 0;
+  public long lDuration = 0L;
   public String strAlbumName = "";
   public String strName = "";
   public String strPic = "";
   public String strSongId = "";
   public String strUrl = "";
-  public ArrayList<SingerInfo> vecSingerList;
+  public ArrayList<SingerInfo> vecSingerList = null;
   
   static
   {

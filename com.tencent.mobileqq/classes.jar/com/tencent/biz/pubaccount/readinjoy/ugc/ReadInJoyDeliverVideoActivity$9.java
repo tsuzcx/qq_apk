@@ -7,12 +7,12 @@ class ReadInJoyDeliverVideoActivity$9
   
   public void run()
   {
-    ReadInJoyDeliverVideoActivity.b(this.this$0);
+    ReadInJoyDeliverVideoActivity.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.9
  * JD-Core Version:    0.7.0.1
  */

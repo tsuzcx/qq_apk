@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import android.os.Environment;
-import anvx;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
@@ -47,6 +44,7 @@ public abstract interface AppConstants
   public static final int CSPECIAL_FLAG_ROBOT = 2;
   public static final String DATALINE_IPAD_UIN;
   public static final long DATALINE_IPAD_UIN_LONGVALUE = 9962L;
+  public static final String DATALINE_NEW_VERSION_UIN = "3636666661";
   public static final String DATALINE_PC_UIN;
   public static final long DATALINE_PC_UIN_LONGVALUE = 9993L;
   public static final String DATALINE_PRINTER_UIN;
@@ -55,6 +53,7 @@ public abstract interface AppConstants
   public static final long DATE_SAY_HELLO_LIST_UIN_LONGVALUE = 9965L;
   public static final String DATE_UIN;
   public static final long DATE_UIN_LONGVALUE = 9974L;
+  public static final String DEFAULT_PROFILE_CARD_DIRNAME = ".profilecard";
   public static final int DEFAULT_SUB_VERSION = 5;
   public static final String DEVICE_HEAD_PATH;
   public static final String DEVICE_HEAD_PATH_SYSTEM = "head/_dhd/";
@@ -98,6 +97,7 @@ public abstract interface AppConstants
   public static final String GROUP_PAD_PEMPLATE_NOTICE = "group_pad_template_notice";
   public static final int GROUP_PHONE_CONTACT_ID = 1002;
   public static final int GROUP_QCIRCLE_DOUBLE_FOLLOW = 1009;
+  public static final int GROUP_QCIRCLE_OFFICIAL_ACCOUNR = 1010;
   public static final int GROUP_RECENT_ID = 1003;
   public static final int GROUP_RELATIONFRIENDS = 1007;
   public static final int GROUP_RELATIONTROOPS = 1008;
@@ -286,7 +286,6 @@ public abstract interface AppConstants
   public static final long PULL_ACTIVE_PUSH = 9958L;
   public static final String PULL_ACTIVE_PUSH_UIN;
   public static final String QCIRCLE_CHAT_UIN;
-  public static final long QCIRCLE_CHAT_UIN_LONGVALUE = 9913L;
   public static final String QQBROADCAST_MSG_UIN;
   public static final long QQBROADCAST_MSG_UIN_LONGVALUE = 10000L;
   public static final String QQSETTING_ALLOW_KANDIAN_PUSH = "qqsetting_kandian_key";
@@ -342,7 +341,6 @@ public abstract interface AppConstants
   public static final long RECOMMEND_TROOP_UIN_LONGVALUE = 9979L;
   public static final String REMINDER_UIN = String.valueOf(2068467417L);
   public static final long REMINDER_UIN_LONGVALUE = 2068467417L;
-  public static final String REQ_PB_PROTOCOL_FLAG = "req_pb_protocol_flag";
   public static final boolean RICH_MEDIA_INJECT_ERROR = false;
   public static final int RICH_MEDIA_STEP_HTTP_ERROR_POBABILITY = 90;
   public static final int RICH_MEDIA_STEP_SEND_MSG_ERROR_PROBABILITY = 20;
@@ -384,9 +382,7 @@ public abstract interface AppConstants
   public static final String SDCARD_IMG_ORIGIN_SAVE;
   public static final String SDCARD_IMG_SAVE;
   public static final String SDCARD_IMG_VIDEO;
-  public static final String SDCARD_IMG_VIDEO_GN9000L;
   public static final String SDCARD_IMG_VIDEO_RUBBISH_MX040;
-  public static final String SDCARD_IMG_VIDEO_VIVO_X7;
   public static final String SDCARD_INDIV_ANIM_ROOT;
   public static final String SDCARD_MAP_ROAM_SAVE;
   public static final String SDCARD_MINIAPP_WANGKA_PATH;
@@ -584,28 +580,28 @@ public abstract interface AppConstants
     KANDIAN_DAILY_UIN = String.valueOf(3434959637L);
     CONVERSATION_CONTACTS_GUIDE_UIN = String.valueOf(9922L);
     MATCH_CHAT_UIN = String.valueOf(9916L);
-    QCIRCLE_CHAT_UIN = String.valueOf(9913L);
+    QCIRCLE_CHAT_UIN = AppOpenConstants.d;
     TIM_TEAM_UIN = String.valueOf(3606676177L);
     MINI_GAME_PUBLIC_ACCOUNT_UIN = String.valueOf(1983141935L);
     QQ_VIP_UIN = String.valueOf(2659464438L);
     AUDIO_ROOM_UIN = String.valueOf(3606676177L);
     TEMP_MSG_BOX_UIN = String.valueOf(9912L);
     FILTER_MSG_UIN = String.valueOf(9911L);
-    SDCARD_ROOT = Environment.getExternalStorageDirectory().getAbsolutePath();
+    SDCARD_ROOT = AppOpenConstants.a;
     SDCARD_PATH = SDCARD_ROOT + "/Tencent/MobileQQ/";
     SDCARD_PATH_CHATRECORD = SDCARD_ROOT + "/Tencent/MobileQQ/ChatRecord/";
     SDCARD_PATH_EMOJIS = SDCARD_PATH + "emoji/";
     SDCARD_PATH_HOTFRIEND_IMG = SDCARD_PATH + "hotimage/";
     SDCARD_BOLB_PATH = SDCARD_ROOT + "/Tencent/blob/";
     LOG_PATH_SDCARD = SDCARD_PATH + "log/";
-    SDCARD_IMG_SAVE = SDCARD_ROOT + "/Tencent/QQ_Images/";
+    SDCARD_IMG_SAVE = AppOpenConstants.c;
     SDCARD_IMG_ORIGIN_SAVE = SDCARD_IMG_SAVE + "QQEditPic/OriginPic/";
     SDCARD_IMG_FLOW_CAMERA = SDCARD_ROOT + "/DCIM/QQPhoto/";
     SDCARD_SHORTVIDEO_SAVE = SDCARD_ROOT + "/Tencent/QQ_Shortvideos/";
     SDCARD_AIO_FORWARD = SDCARD_ROOT + "/Tencent/AIO_FORWARD/";
     SDCARD_IMG_FAVORITE = VFSAssistantUtils.getSDKPrivatePath(SDCARD_ROOT + "/Tencent/QQ_Favorite/");
     SDCARD_IMG_CAMERA_EMO = VFSAssistantUtils.getSDKPrivatePath(SDCARD_ROOT + "/Tencent/QQ_CameraEmo/");
-    SDCARD_IMG_CAMERA = SDCARD_ROOT + "/DCIM/Camera/";
+    SDCARD_IMG_CAMERA = AppOpenConstants.b;
     S_DCARD_COLLECTION = VFSAssistantUtils.getSDKPrivatePath(SDCARD_ROOT + "/Tencent/QQ_Collection/");
     SDCARD_FILE_SAVE_PATH = VFSAssistantUtils.getSDKPrivatePath(SDCARD_ROOT + "/Tencent/QQfile_recv/");
     SDCARD_FILE_SAVE_THUMB_PATH = SDCARD_FILE_SAVE_PATH + ".thumbnails/";
@@ -627,7 +623,7 @@ public abstract interface AppConstants
     SDCARD_PE = SDCARD_PATH + "pe";
     SDCARD_POKE = SDCARD_PATH + "poke";
     SDCARD_NEW_POKE = SDCARD_PATH + "newpoke";
-    if (BaseApplicationImpl.getContext().doesHasSDCardPermission()) {}
+    if (BaseApplication.getContext().doesHasSDCardPermission()) {}
     for (String str = SDCARD_PATH;; str = "/sdcard/Android/data/com.tencent.mobileqq/files/Tencent/MobileQQ/")
     {
       HEAD_ROOT_PATH = str;
@@ -687,8 +683,6 @@ public abstract interface AppConstants
       SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD = VFSAssistantUtils.getSDKPrivatePath(SDCARD_PATH_PUBLIC_ACCOUNT + "preload/");
       SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD_IMAGE = VFSAssistantUtils.getSDKPrivatePath(SDCARD_PATH_PUBLIC_ACCOUNT + "preimg/");
       SDCARD_IMG_VIDEO = SDCARD_ROOT + "/DCIM/Video/";
-      SDCARD_IMG_VIDEO_GN9000L = SDCARD_ROOT + anvx.a(2131700112);
-      SDCARD_IMG_VIDEO_VIVO_X7 = SDCARD_ROOT + anvx.a(2131700113);
       SDCARD_IMG_VIDEO_RUBBISH_MX040 = SDCARD_ROOT + "/Camera/Video/";
       SDCARD_PATH_PUBLIC_ACCOUNT_IMAGE_COLLECTION_PRELOAD = SDCARD_PATH_PUBLIC_ACCOUNT + "imagecollection/";
       PATH_NEWER_GUIDE_DIR_NAME = SDCARD_PATH + "/newerGuide/";

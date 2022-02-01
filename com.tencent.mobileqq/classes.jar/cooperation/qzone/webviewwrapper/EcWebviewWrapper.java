@@ -1,6 +1,5 @@
 package cooperation.qzone.webviewwrapper;
 
-import aatf;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +8,9 @@ import android.text.TextUtils;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import bieb;
 import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewplugin.WebSoPlugin;
+import com.tencent.mobileqq.webview.WebViewDirector;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -85,7 +85,7 @@ public class EcWebviewWrapper
     this.mWebview.setVisibility(4);
     this.mWebViewBuilder.setWebView(this.mWebview);
     this.mWebViewBuilder.setWebviewStatusListener(new EcWebviewWrapper.1(this, paramIWebviewListener));
-    new bieb(this.mWebViewBuilder).a(null, QzoneWebViewPluginManager.getInstance().getRuntime(), null);
+    new WebViewDirector(this.mWebViewBuilder).a(null, QzoneWebViewPluginManager.getInstance().getRuntime(), null);
   }
   
   public void onPause()
@@ -144,7 +144,7 @@ public class EcWebviewWrapper
         if (paramIntent.getBooleanExtra("need_force_refresh", false))
         {
           QLog.i("WebviewWrapper", 2, "saxon@ isCurrentUrlEmpty loadDataWithBaseURL");
-          aatf.a(this.mWebview, str1, str2);
+          WebSoPlugin.a(this.mWebview, str1, str2);
         }
       }
       catch (Exception paramIntent)
@@ -192,7 +192,7 @@ public class EcWebviewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewwrapper.EcWebviewWrapper
  * JD-Core Version:    0.7.0.1
  */

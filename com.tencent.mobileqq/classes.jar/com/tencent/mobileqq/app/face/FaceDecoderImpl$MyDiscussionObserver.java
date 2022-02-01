@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.app.face;
 
-import antq;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.avatar.observer.DiscussionAvatarObserver;
+import com.tencent.mobileqq.avatar.utils.AvatarUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 
 class FaceDecoderImpl$MyDiscussionObserver
-  extends antq
+  extends DiscussionAvatarObserver
 {
   private FaceDecoderImpl$MyDiscussionObserver(FaceDecoderImpl paramFaceDecoderImpl) {}
   
@@ -19,10 +21,10 @@ class FaceDecoderImpl$MyDiscussionObserver
     if (this.this$0.mDecodeTaskCompletionListener != null)
     {
       i = 101;
-      if (!GroupIconHelper.a(paramString)) {
+      if (!AvatarUtil.a(paramString)) {
         break label228;
       }
-      str = GroupIconHelper.b(paramString);
+      str = AvatarUtil.b(paramString);
       i = 1001;
     }
     for (;;)
@@ -53,7 +55,7 @@ class FaceDecoderImpl$MyDiscussionObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoderImpl.MyDiscussionObserver
  * JD-Core Version:    0.7.0.1
  */

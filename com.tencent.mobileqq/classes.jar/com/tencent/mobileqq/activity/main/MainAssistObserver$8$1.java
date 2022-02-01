@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.activity.main;
 
-import akam;
-import akbn;
-import bapk;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import uot;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
-public class MainAssistObserver$8$1
+class MainAssistObserver$8$1
   implements Runnable
 {
-  public MainAssistObserver$8$1(akbn paramakbn) {}
+  MainAssistObserver$8$1(MainAssistObserver.8 param8) {}
   
   public void run()
   {
@@ -21,19 +19,19 @@ public class MainAssistObserver$8$1
     }
     QQAppInterface localQQAppInterface = localSplashActivity.app;
     int i = 0;
-    int j = bapk.a(localQQAppInterface);
+    int j = QCallFacade.a(localQQAppInterface);
     QQMessageFacade localQQMessageFacade = localQQAppInterface.getMessageFacade();
     if (localQQMessageFacade != null)
     {
-      uot.a().a(localQQAppInterface);
-      i = localQQMessageFacade.getUnreadMsgsNum();
+      ServiceAccountFolderManager.a().a(localQQAppInterface);
+      i = localQQMessageFacade.b();
     }
     localSplashActivity.runOnUiThread(new MainAssistObserver.8.1.1(this, i + j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.8.1
  * JD-Core Version:    0.7.0.1
  */

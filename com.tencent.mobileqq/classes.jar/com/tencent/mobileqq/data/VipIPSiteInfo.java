@@ -3,13 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arvm;
 import java.util.List;
 
 public class VipIPSiteInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VipIPSiteInfo> CREATOR = new arvm();
+  public static final Parcelable.Creator<VipIPSiteInfo> CREATOR = new VipIPSiteInfo.1();
   public int extId;
   public String extStr;
   public String ipContent;
@@ -66,7 +65,7 @@ public class VipIPSiteInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.VipIPSiteInfo
  * JD-Core Version:    0.7.0.1
  */

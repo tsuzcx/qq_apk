@@ -8,6 +8,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FeedCloudMeta$StRelationInfo
   extends MessageMicro<StRelationInfo>
@@ -15,6 +16,7 @@ public final class FeedCloudMeta$StRelationInfo
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField busiData = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField id = PBField.initString("");
+  public final PBUInt64Field imBitMap = PBField.initUInt64(0L);
   public final PBBoolField isBlock = PBField.initBool(false);
   public final PBBoolField isBlocked = PBField.initBool(false);
   public final PBBoolField isFriend = PBField.initBool(false);
@@ -26,12 +28,12 @@ public final class FeedCloudMeta$StRelationInfo
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 48, 56, 64, 72 }, new String[] { "id", "relation", "busiData", "relationState", "score", "isBlock", "isBlocked", "isFriend", "isUncare" }, new Object[] { "", Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false) }, StRelationInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 48, 56, 64, 72, 80 }, new String[] { "id", "relation", "busiData", "relationState", "score", "isBlock", "isBlocked", "isFriend", "isUncare", "imBitMap" }, new Object[] { "", Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Long.valueOf(0L) }, StRelationInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StRelationInfo
  * JD-Core Version:    0.7.0.1
  */

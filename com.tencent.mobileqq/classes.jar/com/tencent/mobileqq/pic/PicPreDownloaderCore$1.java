@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.pic;
 
-import azjq;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class PicPreDownloaderCore$1
@@ -13,7 +12,7 @@ class PicPreDownloaderCore$1
     if (!PicPreDownloaderCore.a(this.this$0).get())
     {
       PicPreDownloaderCore.a(this.this$0).set(true);
-      azjq.a("PIC_TAG_PRELOAD", "timer count off, picPreDownload set on", "mIsPicPreloadSuitable" + PicPreDownloaderCore.a(this.this$0).get());
+      Logger.a("PIC_TAG_PRELOAD", "timer count off, picPreDownload set on", "mIsPicPreloadSuitable" + PicPreDownloaderCore.a(this.this$0).get());
     }
   }
 }

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class XiaoQuInfo
   extends JceStruct
 {
-  public int iMemberCnt;
+  public int iMemberCnt = 0;
   public String strIntro = "";
   public String strLocation = "";
   public String strName = "";

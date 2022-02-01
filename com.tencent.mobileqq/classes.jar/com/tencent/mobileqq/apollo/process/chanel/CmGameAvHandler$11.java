@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import amxj;
-import amxk;
-import anie;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVRoomMulti;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
-public class CmGameAvHandler$11
+class CmGameAvHandler$11
   implements Runnable
 {
-  public CmGameAvHandler$11(amxj paramamxj, Boolean paramBoolean) {}
+  CmGameAvHandler$11(CmGameAvHandler paramCmGameAvHandler, Boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a.booleanValue()) {
-      if (amxj.a(this.this$0).size() > 0)
+      if (CmGameAvHandler.a(this.this$0).size() > 0)
       {
         localObject = BaseApplicationImpl.getApplication().getRuntime();
         if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {
@@ -32,16 +30,16 @@ public class CmGameAvHandler$11
         return;
       }
       localObject = ((QQAppInterface)localObject).getCurrentUin();
-      amxj.a(this.this$0, (String[])amxj.a(this.this$0).toArray(new String[amxj.a(this.this$0).size()]), (String)localObject);
+      CmGameAvHandler.a(this.this$0, (String[])CmGameAvHandler.a(this.this$0).toArray(new String[CmGameAvHandler.a(this.this$0).size()]), (String)localObject);
       return;
-      anie.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new amxk(this));
+      AVManager.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new CmGameAvHandler.11.1(this));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11
  * JD-Core Version:    0.7.0.1
  */

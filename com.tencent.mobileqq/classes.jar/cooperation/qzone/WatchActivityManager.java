@@ -9,10 +9,10 @@ public class WatchActivityManager
 {
   public static String TAG = "WatchActivityManager";
   private Activity activity;
-  private boolean mActivityStopped;
-  private boolean mPressHomeKey;
-  private boolean mPressMenuKey;
-  private boolean mPressScreenOff;
+  private boolean mActivityStopped = false;
+  private boolean mPressHomeKey = false;
+  private boolean mPressMenuKey = false;
+  private boolean mPressScreenOff = false;
   public WatchActivityManager.ScreenKeyReceiver mScreenReceiver = new WatchActivityManager.ScreenKeyReceiver(this, null);
   
   private void registKeyReceiver()
@@ -80,7 +80,7 @@ public class WatchActivityManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.WatchActivityManager
  * JD-Core Version:    0.7.0.1
  */

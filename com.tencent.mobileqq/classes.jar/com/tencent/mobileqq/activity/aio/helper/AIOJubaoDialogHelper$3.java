@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agfq;
 import android.app.Dialog;
 
-public class AIOJubaoDialogHelper$3
+class AIOJubaoDialogHelper$3
   implements Runnable
 {
-  public AIOJubaoDialogHelper$3(agfq paramagfq) {}
+  AIOJubaoDialogHelper$3(AIOJubaoDialogHelper paramAIOJubaoDialogHelper) {}
   
   public void run()
   {
@@ -21,7 +20,7 @@ public class AIOJubaoDialogHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOJubaoDialogHelper.3
  * JD-Core Version:    0.7.0.1
  */

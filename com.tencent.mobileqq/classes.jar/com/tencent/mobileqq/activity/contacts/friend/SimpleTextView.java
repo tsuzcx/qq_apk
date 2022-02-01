@@ -14,8 +14,8 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bhdz;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.theme.ISkinTypeface;
 
 public class SimpleTextView
@@ -44,7 +44,7 @@ public class SimpleTextView
     if (paramAttributeSet != null)
     {
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SimpleTextView);
-      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)bhdz.a(paramContext, 12.0F));
+      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)DisplayUtils.a(paramContext, 12.0F));
       localObject = paramAttributeSet.getColorStateList(1);
       paramContext = paramAttributeSet.getString(2);
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);
@@ -96,7 +96,7 @@ public class SimpleTextView
     return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     if ((this.jdField_a_of_type_AndroidContentResColorStateList != null) && (this.jdField_a_of_type_AndroidContentResColorStateList.isStateful())) {
@@ -109,7 +109,7 @@ public class SimpleTextView
     return this.jdField_a_of_type_AndroidTextTextPaint;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i = getMeasuredHeight();
     float f2 = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.bottom;
@@ -120,7 +120,7 @@ public class SimpleTextView
     paramCanvas.drawText(this.jdField_a_of_type_JavaLangCharSequence, 0, this.jdField_a_of_type_JavaLangCharSequence.length(), getPaddingLeft(), f1 - f2 - f3, this.jdField_a_of_type_AndroidTextTextPaint);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.c != -1) {}
     for (int i = this.c;; i = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangCharSequence, 0, this.jdField_a_of_type_JavaLangCharSequence.length()))
@@ -182,7 +182,7 @@ public class SimpleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.SimpleTextView
  * JD-Core Version:    0.7.0.1
  */

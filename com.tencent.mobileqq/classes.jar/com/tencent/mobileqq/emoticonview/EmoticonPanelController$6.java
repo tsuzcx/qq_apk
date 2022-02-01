@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.text.TextUtils;
-import awzd;
+import com.tencent.mobileqq.model.QueryTask.Query;
 
 class EmoticonPanelController$6
-  implements awzd<String, Integer>
+  implements QueryTask.Query<String, Integer>
 {
   EmoticonPanelController$6(EmoticonPanelController paramEmoticonPanelController, int paramInt) {}
   
@@ -20,7 +20,7 @@ class EmoticonPanelController$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController.6
  * JD-Core Version:    0.7.0.1
  */

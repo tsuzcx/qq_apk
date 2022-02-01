@@ -4,20 +4,20 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import bhzu;
-import bhzv;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.vip.diy.template.ProfileTemplateBase.BackGroundUpdateListener;
+import com.tencent.mobileqq.vip.diy.template.ProfileTemplateBase.NinePatchDecoderHandler;
 import com.tencent.mobileqq.widget.ProfileNameView;
 
 public class ProfileTemplateNickNameContainer
   extends ViewGroup
 {
   private int jdField_a_of_type_Int;
-  private bhzv jdField_a_of_type_Bhzv = new bhzv();
+  private ProfileTemplateBase.NinePatchDecoderHandler jdField_a_of_type_ComTencentMobileqqVipDiyTemplateProfileTemplateBase$NinePatchDecoderHandler = new ProfileTemplateBase.NinePatchDecoderHandler();
   private ProfileNameView jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -50,7 +50,7 @@ public class ProfileTemplateNickNameContainer
     return this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.a();
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int n = this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.b();
     int k = this.jdField_a_of_type_Int;
@@ -68,9 +68,9 @@ public class ProfileTemplateNickNameContainer
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break;
       }
-      this.jdField_a_of_type_Bhzv.a(i - j, paramInt4 - paramInt2);
-      URLDrawable localURLDrawable = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bhzv);
-      bhzu.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateProfileTemplateBase$NinePatchDecoderHandler.a(i - j, paramInt4 - paramInt2);
+      URLDrawable localURLDrawable = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateProfileTemplateBase$NinePatchDecoderHandler);
+      ProfileTemplateBase.BackGroundUpdateListener.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable(localURLDrawable);
       return;
       i = m;
@@ -84,7 +84,7 @@ public class ProfileTemplateNickNameContainer
     this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable(null);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.measure(paramInt2, paramInt2);
@@ -96,7 +96,7 @@ public class ProfileTemplateNickNameContainer
     this.jdField_a_of_type_JavaLangString = paramString;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      int i = UIUtils.getScreenWidth(getContext());
+      int i = UIUtils.b(getContext());
       this.b = ((int)(i * 0.005D));
       this.c = ((int)(i * 0.03D));
     }
@@ -122,7 +122,7 @@ public class ProfileTemplateNickNameContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer
  * JD-Core Version:    0.7.0.1
  */

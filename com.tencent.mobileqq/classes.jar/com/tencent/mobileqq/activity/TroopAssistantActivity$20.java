@@ -1,18 +1,63 @@
 package com.tencent.mobileqq.activity;
 
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+
 class TroopAssistantActivity$20
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  TroopAssistantActivity$20(TroopAssistantActivity paramTroopAssistantActivity) {}
+  TroopAssistantActivity$20(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.this$0.b();
+    if (!NetworkUtil.d(BaseApplication.getContext()))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.b(2, 2131694459, 1500);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      }
+      return;
+      int i = -1;
+      switch (paramInt)
+      {
+      default: 
+        paramInt = i;
+      }
+      while (paramInt != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.setTroopMsgFilterToServer(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+        break;
+        paramInt = 1;
+        continue;
+        paramInt = 4;
+        continue;
+        paramInt = 2;
+        continue;
+        paramInt = 3;
+      }
+    }
+    catch (Exception paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("TroopAssistantActivity", 2, paramView.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.20
  * JD-Core Version:    0.7.0.1
  */

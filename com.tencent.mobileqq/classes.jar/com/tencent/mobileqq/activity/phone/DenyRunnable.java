@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.phone;
 
-import akig;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
@@ -11,8 +10,8 @@ public class DenyRunnable
   implements Runnable
 {
   private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private akig jdField_a_of_type_Akig;
+  private long jdField_a_of_type_Long = 0L;
+  private DenyRunnable.OnCancelAction jdField_a_of_type_ComTencentMobileqqActivityPhoneDenyRunnable$OnCancelAction = null;
   private final WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   
   public DenyRunnable(Context paramContext, int paramInt)
@@ -21,10 +20,10 @@ public class DenyRunnable
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public DenyRunnable(Context paramContext, akig paramakig)
+  public DenyRunnable(Context paramContext, DenyRunnable.OnCancelAction paramOnCancelAction)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Akig = paramakig;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDenyRunnable$OnCancelAction = paramOnCancelAction;
   }
   
   public void a()
@@ -59,9 +58,9 @@ public class DenyRunnable
       if (QLog.isColorLevel()) {
         QLog.i("DenyRunnable", 2, String.format("run [%s, %s, %s]", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(l), Boolean.valueOf(bool) }));
       }
-      if (this.jdField_a_of_type_Akig != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDenyRunnable$OnCancelAction != null)
       {
-        this.jdField_a_of_type_Akig.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), bool);
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDenyRunnable$OnCancelAction.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), bool);
         return;
       }
       a(bool);
@@ -71,7 +70,7 @@ public class DenyRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.DenyRunnable
  * JD-Core Version:    0.7.0.1
  */

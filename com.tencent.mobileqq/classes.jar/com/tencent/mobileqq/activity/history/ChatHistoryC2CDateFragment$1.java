@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
 import android.support.v4.app.FragmentActivity;
-import anzc;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,7 +26,7 @@ class ChatHistoryC2CDateFragment$1
     localCalendar.setTimeInMillis(((CalendarDay)localObject1).getTimeInMillis());
     localObject1 = Calendar.getInstance();
     ((Calendar)localObject1).setTimeInMillis(((CalendarDay)localObject2).getTimeInMillis());
-    localObject2 = ((anzc)this.this$0.getActivity().app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).b(localCalendar, (Calendar)localObject1);
+    localObject2 = ((MessageRoamManager)this.this$0.getActivity().app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).b(localCalendar, (Calendar)localObject1);
     i = 0;
     localCalendar = (Calendar)localCalendar.clone();
     ArrayList localArrayList = new ArrayList(31);
@@ -48,7 +48,7 @@ class ChatHistoryC2CDateFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.qqstory.database.TroopStoryEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import zcp;
 
 public class TroopStoryItemInfo
   extends BaseUIItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopStoryItemInfo> CREATOR = new zcp();
+  public static final Parcelable.Creator<TroopStoryItemInfo> CREATOR = new TroopStoryItemInfo.1();
   public static final int ITEM_TYPE_DAY = 1;
   public static final int ITEM_TYPE_EMPTY = 4;
   public static final int ITEM_TYPE_SHOOTING = 3;
@@ -42,7 +41,7 @@ public class TroopStoryItemInfo
   
   public TroopStoryItemInfo() {}
   
-  public TroopStoryItemInfo(Parcel paramParcel)
+  protected TroopStoryItemInfo(Parcel paramParcel)
   {
     this.troopId = paramParcel.readLong();
     this.itemType = paramParcel.readInt();
@@ -140,7 +139,7 @@ public class TroopStoryItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo
  * JD-Core Version:    0.7.0.1
  */

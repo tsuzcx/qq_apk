@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apmk;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public class ARReport$8
+class ARReport$8
   implements Runnable
 {
-  public ARReport$8(apmk paramapmk, long paramLong, boolean paramBoolean) {}
+  ARReport$8(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {

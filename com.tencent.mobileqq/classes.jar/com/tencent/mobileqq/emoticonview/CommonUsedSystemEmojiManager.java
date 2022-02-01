@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import asjb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.emoticon.QQEmojiUtil;
 import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResMgr;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -118,7 +118,7 @@ public class CommonUsedSystemEmojiManager
       File localFile = new File(BaseApplicationImpl.sApplication.getFilesDir(), "commonusedSystemEmojiInfoFile_v3_" + BaseApplicationImpl.sApplication.getRuntime().getAccount());
       EmosmPb.SubCmd0x13Rsp localSubCmd0x13Rsp = new EmosmPb.SubCmd0x13Rsp();
       localSubCmd0x13Rsp.itemlist.set(paramList);
-      FileUtils.pushData2File(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
+      FileUtils.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
       return;
     }
   }
@@ -128,7 +128,7 @@ public class CommonUsedSystemEmojiManager
     Object localObject2;
     synchronized (this.lock)
     {
-      localObject2 = FileUtils.fileToBytes(paramFile1);
+      localObject2 = FileUtils.a(paramFile1);
       if (localObject2 == null)
       {
         QLog.e("CommonUsedSystemEmojiManager", 1, "Can not translate pb file to byte");
@@ -158,7 +158,7 @@ public class CommonUsedSystemEmojiManager
         else
         {
           paramFile1.itemlist.set((List)???);
-          FileUtils.pushData2File(paramFile2.getAbsolutePath(), paramFile1.toByteArray(), false);
+          FileUtils.a(paramFile2.getAbsolutePath(), paramFile1.toByteArray(), false);
           return;
         }
       }
@@ -287,7 +287,7 @@ public class CommonUsedSystemEmojiManager
           }
           ((EmosmPb.SmallYellowItem)localObject2).id.set(j);
           label183:
-          if (!asjb.a().a(((EmosmPb.SmallYellowItem)localObject2).type.get()).b(((EmosmPb.SmallYellowItem)localObject2).id.get())) {
+          if (!QQSysAndEmojiResMgr.getInstance().getResImpl(((EmosmPb.SmallYellowItem)localObject2).type.get()).checkEmoticonShouldHide(((EmosmPb.SmallYellowItem)localObject2).id.get())) {
             break label312;
           }
           if (QLog.isColorLevel()) {
@@ -328,7 +328,7 @@ public class CommonUsedSystemEmojiManager
       while (((Iterator)localObject2).hasNext())
       {
         EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)((Iterator)localObject2).next();
-        if (asjb.a().a(localSmallYellowItem.type.get()).b(localSmallYellowItem.id.get())) {
+        if (QQSysAndEmojiResMgr.getInstance().getResImpl(localSmallYellowItem.type.get()).checkEmoticonShouldHide(localSmallYellowItem.id.get())) {
           ((Iterator)localObject2).remove();
         }
       }
@@ -350,7 +350,7 @@ public class CommonUsedSystemEmojiManager
         QLog.d("CommonUsedSystemEmojiManager", 2, "getLocalSystemEmojiInfoFromFile file not exists");
         return null;
       }
-      localObject3 = FileUtils.fileToBytes((File)localObject3);
+      localObject3 = FileUtils.a((File)localObject3);
       if (localObject3 == null)
       {
         QLog.e("CommonUsedSystemEmojiManager", 1, "Can not translate pb file to byte");
@@ -520,7 +520,7 @@ public class CommonUsedSystemEmojiManager
     }
     for (;;)
     {
-      if (asjb.a().a(i).b(j))
+      if (QQSysAndEmojiResMgr.getInstance().getResImpl(i).checkEmoticonShouldHide(j))
       {
         n = m;
         if (QLog.isColorLevel())
@@ -612,7 +612,7 @@ public class CommonUsedSystemEmojiManager
         {
           EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)paramList2.next();
           String str = localSmallYellowItem.type.get() + "-" + localSmallYellowItem.id.get();
-          if ((paramList1.contains(str)) || (asjb.a().a(localSmallYellowItem.type.get()).b(localSmallYellowItem.id.get()))) {
+          if ((paramList1.contains(str)) || (QQSysAndEmojiResMgr.getInstance().getResImpl(localSmallYellowItem.type.get()).checkEmoticonShouldHide(localSmallYellowItem.id.get()))) {
             paramList2.remove();
           } else {
             paramList1.add(str);
@@ -790,7 +790,7 @@ public class CommonUsedSystemEmojiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager
  * JD-Core Version:    0.7.0.1
  */

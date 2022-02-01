@@ -11,8 +11,8 @@ public final class BottomCell
   static ArrayList<String> cache_userAvatar = new ArrayList();
   public String content = "";
   public String jumpUrl = "";
-  public int total;
-  public ArrayList<String> userAvatar;
+  public int total = 0;
+  public ArrayList<String> userAvatar = null;
   
   static
   {

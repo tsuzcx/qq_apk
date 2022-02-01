@@ -8,7 +8,7 @@ public final class mobile_host_hb_info_req
   extends JceStruct
 {
   public String ext_info = "";
-  public long huin;
+  public long huin = 0L;
   
   public mobile_host_hb_info_req() {}
   

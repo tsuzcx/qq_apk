@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bhbg;
+import com.tencent.mobileqq.util.SquareRoundImageUtils;
 
 public class ImageProgressMask
   extends View
@@ -49,7 +49,7 @@ public class ImageProgressMask
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     try
     {
@@ -72,11 +72,11 @@ public class ImageProgressMask
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != 0) && (paramInt2 != 0) && ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))) {
-      this.jdField_a_of_type_AndroidGraphicsPath = bhbg.a(paramInt1, paramInt2);
+      this.jdField_a_of_type_AndroidGraphicsPath = SquareRoundImageUtils.a(paramInt1, paramInt2);
     }
   }
   
@@ -91,7 +91,7 @@ public class ImageProgressMask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.ImageProgressMask
  * JD-Core Version:    0.7.0.1
  */

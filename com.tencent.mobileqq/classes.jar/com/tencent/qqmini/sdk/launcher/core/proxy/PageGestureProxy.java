@@ -2,6 +2,7 @@ package com.tencent.qqmini.sdk.launcher.core.proxy;
 
 import android.app.Activity;
 import android.view.MotionEvent;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public abstract interface PageGestureProxy
@@ -20,7 +21,7 @@ public abstract interface PageGestureProxy
   
   public abstract void onCreateMiniAppInfo(MiniAppInfo paramMiniAppInfo);
   
-  public abstract void onLoadUrl(MiniAppInfo paramMiniAppInfo);
+  public abstract void onLoadUrl(IMiniAppContext paramIMiniAppContext);
   
   public abstract void onMoveTaskToBack(Activity paramActivity);
   
@@ -34,7 +35,7 @@ public abstract interface PageGestureProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.PageGestureProxy
  * JD-Core Version:    0.7.0.1
  */

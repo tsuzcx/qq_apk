@@ -31,11 +31,11 @@ public class QQAioBackgroundPlugin
     //   26: invokevirtual 34	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   29: pop
     //   30: aload_0
-    //   31: getfield 38	com/tencent/mobileqq/vaswebviewplugin/QQAioBackgroundPlugin:mRuntime	Lbifw;
-    //   34: invokevirtual 44	bifw:a	()Landroid/app/Activity;
+    //   31: getfield 38	com/tencent/mobileqq/vaswebviewplugin/QQAioBackgroundPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   34: invokevirtual 44	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
     //   37: aload_0
-    //   38: getfield 38	com/tencent/mobileqq/vaswebviewplugin/QQAioBackgroundPlugin:mRuntime	Lbifw;
-    //   41: invokevirtual 47	bifw:a	()Lcom/tencent/common/app/AppInterface;
+    //   38: getfield 38	com/tencent/mobileqq/vaswebviewplugin/QQAioBackgroundPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   41: invokevirtual 47	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
     //   44: invokevirtual 53	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   47: aload_2
     //   48: invokestatic 59	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
@@ -87,7 +87,7 @@ public class QQAioBackgroundPlugin
     //   139: invokespecial 100	android/graphics/BitmapFactory$Options:<init>	()V
     //   142: aload 7
     //   144: sipush 200
-    //   147: invokestatic 105	bheg:a	(Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;I)Landroid/graphics/BitmapFactory$Options;
+    //   147: invokestatic 105	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;I)Landroid/graphics/BitmapFactory$Options;
     //   150: astore_2
     //   151: aload 7
     //   153: aload_2
@@ -121,7 +121,7 @@ public class QQAioBackgroundPlugin
     //   206: aload_3
     //   207: invokevirtual 137	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   210: iconst_2
-    //   211: invokestatic 143	bhcu:encodeToString	([BI)Ljava/lang/String;
+    //   211: invokestatic 143	com/tencent/mobileqq/utils/Base64Util:encodeToString	([BI)Ljava/lang/String;
     //   214: astore 7
     //   216: aload 4
     //   218: ldc 72
@@ -182,7 +182,7 @@ public class QQAioBackgroundPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQAioBackgroundPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -29,13 +29,13 @@
     <item android:id="@id/ba_" android:title="@string/aet" />
     <item android:id="@id/kkb" android:title="@string/ibf" />
     <item android:id="@id/f43" android:title="静音播放" />
-    <item android:id="@id/lqh" android:title="应用数据" />
-    <item android:id="@id/lqt" android:title="应用版本" />
+    <item android:id="@id/m7f" android:title="应用数据" />
+    <item android:id="@id/m7h" android:title="应用版本" />
     <item android:id="@id/s" android:title="@string/g38" />
     <item android:id="@id/i7f" android:title="@string/etr" />
     <item android:id="@id/m5p" android:title="@string/iwv" />
-    <item android:id="@id/mqw" android:title="@string/xu6" />
-    <item android:id="@id/mqx" android:title="@string/xu7" />
+    <item android:id="@id/mwc" android:title="@string/yc2" />
+    <item android:id="@id/mwd" android:title="@string/yc3" />
     <item android:id="@id/bf8" android:title="@string/b5u" />
     <item android:id="@id/ig1" android:title="@string/b6v" />
     <item android:id="@id/ck5" android:title="@string/b64" />
@@ -73,6 +73,6 @@
     <item android:id="@id/ini" android:title="StructMsg" />
     <item android:id="@id/b0w" android:title="厘米秀" />
     <item android:id="@id/j5q" android:title="@string/fos" />
-    <item android:id="@id/o1x" android:title="@string/wkn" />
-    <item android:id="@id/o8y" android:title="@string/y04" />
+    <item android:id="@id/ogg" android:title="@string/wo6" />
+    <item android:id="@id/ook" android:title="@string/yij" />
 </menu>

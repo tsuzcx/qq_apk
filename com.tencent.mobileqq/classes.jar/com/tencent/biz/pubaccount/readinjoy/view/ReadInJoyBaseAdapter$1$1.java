@@ -1,33 +1,33 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import olh;
-import pqg;
-import qcu;
-import sze;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport.ReportR5Builder;
+import com.tencent.biz.pubaccount.readinjoy.handlers.BaseHandler;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class ReadInJoyBaseAdapter$1$1
+class ReadInJoyBaseAdapter$1$1
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$1$1(sze paramsze, long paramLong, qcu paramqcu) {}
+  ReadInJoyBaseAdapter$1$1(ReadInJoyBaseAdapter.1 param1, long paramLong, BaseHandler paramBaseHandler) {}
   
   public void run()
   {
-    pqg localpqg1 = new pqg();
-    pqg localpqg2 = localpqg1.a("cost", this.jdField_a_of_type_Long).b("type", this.jdField_a_of_type_Sze.jdField_a_of_type_Int);
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder1 = new RIJTransMergeKanDianReport.ReportR5Builder();
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder2 = localReportR5Builder1.a("cost", this.jdField_a_of_type_Long).b("type", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$1.jdField_a_of_type_Int);
     Object localObject;
-    if (this.jdField_a_of_type_Sze.jdField_a_of_type_JavaLangObject == null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$1.jdField_a_of_type_JavaLangObject == null)
     {
       localObject = "0";
-      localObject = localpqg2.b("result", (String)localObject).b("handleID", this.jdField_a_of_type_Qcu.a());
-      if (this.jdField_a_of_type_Sze.jdField_a_of_type_AndroidViewView != null) {
-        break label114;
+      localObject = localReportR5Builder2.b("result", (String)localObject).b("handleID", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyHandlersBaseHandler.a());
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$1.jdField_a_of_type_AndroidViewView != null) {
+        break label124;
       }
     }
-    label114:
+    label124:
     for (int i = 1;; i = 0)
     {
-      ((pqg)localObject).b("isNewCreate", i).b("isDebugVersion", 0).b("isPublicVersion", 1);
-      olh.a("0X800AF90", localpqg1.a());
+      ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).b("isNewCreate", i).b("isDebugVersion", 0).b("isPublicVersion", 1);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountSimpleReportWithR5("0X800AF90", localReportR5Builder1.a());
       return;
       localObject = "1";
       break;
@@ -36,7 +36,7 @@ public class ReadInJoyBaseAdapter$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

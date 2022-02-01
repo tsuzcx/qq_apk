@@ -8,7 +8,7 @@ public final class RespInsertBlackList
   extends JceStruct
 {
   static RespHeader cache_stHeader;
-  public RespHeader stHeader;
+  public RespHeader stHeader = null;
   
   public RespInsertBlackList() {}
   

@@ -8,12 +8,9 @@ import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.Window;
-import anvx;
-import bhdj;
-import bisl;
-import bjgb;
-import bjgc;
-import bjgd;
+import com.tencent.biz.ProtoUtils;
+import com.tencent.biz.common.util.OpenIdObserver;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.OpenID;
@@ -22,15 +19,15 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import ntb;
-import nwk;
 import tencent.im.oidb.oidb_0xb60.ClientInfo;
 import tencent.im.oidb.oidb_0xb60.GetPrivilegeReq;
 import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
@@ -43,19 +40,19 @@ public abstract class TroopAbilityPreVerificationFragment
   private static long jdField_a_of_type_Long;
   private static oidb_0xb60.RspBody jdField_a_of_type_TencentImOidbOidb_0xb60$RspBody;
   private static long b;
-  public int a;
+  protected int a;
   protected DialogInterface.OnClickListener a;
-  public Bundle a;
+  protected Bundle a;
   protected Handler a;
-  public FragmentActivity a;
-  protected bisl a;
+  protected FragmentActivity a;
+  private OpenIdObserver jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new TroopAbilityPreVerificationFragment.2(this);
   protected QQAppInterface a;
-  public QQCustomDialog a;
-  public String a;
-  private nwk jdField_a_of_type_Nwk = new bjgc(this);
-  public String b;
-  public String c = "";
-  public String d = "";
+  protected QQCustomDialog a;
+  protected QQProgressDialog a;
+  protected String a;
+  protected String b;
+  protected String c = "";
+  protected String d = "";
   protected String e = "";
   protected String f = "";
   protected String g = "";
@@ -107,13 +104,13 @@ public abstract class TroopAbilityPreVerificationFragment
     }
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(getActivity(), 230);
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new bjgb(this);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(getActivity(), 230);
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new TroopAbilityPreVerificationFragment.1(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131694975);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131692056);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(anvx.a(2131714501), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(anvx.a(2131714497), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131695214);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131692187);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131714996), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131714992), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
@@ -123,7 +120,7 @@ public abstract class TroopAbilityPreVerificationFragment
     this.jdField_a_of_type_AndroidOsBundle.putString("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     if ((localOpenID == null) || (TextUtils.isEmpty(localOpenID.openID)))
     {
-      b(anvx.a(2131714496));
+      b(HardCodeUtil.a(2131714991));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().d(this.c);
       QLog.d("TroopAbility.PreVerification", 1, "-->checkAccountDiff, get openId from server.");
       return;
@@ -164,57 +161,57 @@ public abstract class TroopAbilityPreVerificationFragment
     ((oidb_0xb60.ClientInfo)localObject2).sdk_version.set(this.f);
     ((oidb_0xb60.ClientInfo)localObject2).platform.set(1);
     QLog.i("TroopAbility.PreVerification", 1, "send type=" + this.jdField_a_of_type_Int + ", appid=" + this.c);
-    ntb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bjgd(this), ((oidb_0xb60.ReqBody)localObject1).toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
+    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new TroopAbilityPreVerificationFragment.4(this), ((oidb_0xb60.ReqBody)localObject1).toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nwk);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver);
   }
   
-  public void a(String paramString)
+  protected void a(String paramString)
   {
     QQToast.a(getActivity(), 1, paramString, 0).b(getActivity().getTitleBarHeight());
   }
   
-  public abstract void a(boolean paramBoolean);
+  protected abstract void a(boolean paramBoolean);
   
-  public abstract boolean a(Set<Integer> paramSet);
+  protected abstract boolean a(Set<Integer> paramSet);
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nwk);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver);
   }
   
   protected void b(String paramString)
   {
-    if (this.jdField_a_of_type_Bisl == null) {
-      this.jdField_a_of_type_Bisl = new bisl(getActivity(), getActivity().getTitleBarHeight());
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), getActivity().getTitleBarHeight());
     }
     d();
-    this.jdField_a_of_type_Bisl.a(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
     if (getActivity().isResume()) {
-      this.jdField_a_of_type_Bisl.show();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
   }
   
-  public void c()
+  protected void c()
   {
-    b(anvx.a(2131714499));
+    b(HardCodeUtil.a(2131714994));
     g();
   }
   
-  public void c(String paramString)
+  protected void c(String paramString)
   {
     d();
     a(paramString);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopAbilityPreVerificationFragment.3(this), 2000L);
   }
   
-  public void d()
+  protected void d()
   {
-    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing()) && (getActivity().isResume())) {
-      this.jdField_a_of_type_Bisl.dismiss();
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (getActivity().isResume())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
   }
   
@@ -244,7 +241,7 @@ public abstract class TroopAbilityPreVerificationFragment
     a();
     if (!a())
     {
-      a(anvx.a(2131714491));
+      a(HardCodeUtil.a(2131714986));
       return;
     }
     f();
@@ -268,7 +265,7 @@ public abstract class TroopAbilityPreVerificationFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.TroopAbilityPreVerificationFragment
  * JD-Core Version:    0.7.0.1
  */

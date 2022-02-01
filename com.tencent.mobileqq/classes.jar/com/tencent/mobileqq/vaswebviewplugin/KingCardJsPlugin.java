@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bhzh;
-import bifw;
+import com.tencent.mobileqq.vip.TMSManager;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import org.json.JSONObject;
 
 public class KingCardJsPlugin
@@ -21,7 +21,7 @@ public class KingCardJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      if (bhzh.a().a(this.mRuntime.a())) {}
+      if (TMSManager.a().a(this.mRuntime.a())) {}
       for (;;)
       {
         localJSONObject.put("result", i);
@@ -44,7 +44,7 @@ public class KingCardJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      if (bhzh.a().c()) {}
+      if (TMSManager.a().c()) {}
       for (;;)
       {
         localJSONObject.put("result", i);
@@ -62,7 +62,7 @@ public class KingCardJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.KingCardJsPlugin
  * JD-Core Version:    0.7.0.1
  */

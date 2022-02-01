@@ -1,8 +1,5 @@
 package com.tencent.device.qfind;
 
-import abme;
-import abmf;
-import abmj;
 import android.annotation.TargetApi;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
@@ -33,11 +30,11 @@ public class BluetoothLeService
   public static String e;
   public static String f;
   public static String g;
-  abmf jdField_a_of_type_Abmf = new abmf(this);
   private BluetoothAdapter jdField_a_of_type_AndroidBluetoothBluetoothAdapter;
-  private final BluetoothGattCallback jdField_a_of_type_AndroidBluetoothBluetoothGattCallback = new abme(this);
+  private final BluetoothGattCallback jdField_a_of_type_AndroidBluetoothBluetoothGattCallback = new BluetoothLeService.1(this);
   private BluetoothManager jdField_a_of_type_AndroidBluetoothBluetoothManager;
-  private List<abmj> jdField_a_of_type_JavaUtilList = new ArrayList();
+  BluetoothLeService.LocalBinder jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService$LocalBinder = new BluetoothLeService.LocalBinder(this);
+  private List<GattInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   static
   {
@@ -51,36 +48,36 @@ public class BluetoothLeService
     jdField_a_of_type_JavaUtilUUID = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
   }
   
-  private abmj a(int paramInt)
+  private GattInfo a(int paramInt)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      abmj localabmj = (abmj)localIterator.next();
-      if (localabmj.jdField_a_of_type_Int == paramInt) {
-        return localabmj;
+      GattInfo localGattInfo = (GattInfo)localIterator.next();
+      if (localGattInfo.jdField_a_of_type_Int == paramInt) {
+        return localGattInfo;
       }
     }
     return null;
   }
   
-  private abmj a(BluetoothGatt paramBluetoothGatt)
+  private GattInfo a(BluetoothGatt paramBluetoothGatt)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      abmj localabmj = (abmj)localIterator.next();
-      if (localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt == paramBluetoothGatt) {
-        return localabmj;
+      GattInfo localGattInfo = (GattInfo)localIterator.next();
+      if (localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt == paramBluetoothGatt) {
+        return localGattInfo;
       }
     }
     return null;
   }
   
-  private void a(abmj paramabmj)
+  private void a(GattInfo paramGattInfo)
   {
     int i = 20;
-    int j = paramabmj.jdField_a_of_type_ArrayOfByte.length - paramabmj.c;
+    int j = paramGattInfo.jdField_a_of_type_ArrayOfByte.length - paramGattInfo.c;
     if (j > 0) {
       if (j <= 20) {
         break label173;
@@ -88,18 +85,18 @@ public class BluetoothLeService
     }
     for (;;)
     {
-      paramabmj.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.setWriteType(2);
-      byte[] arrayOfByte = Arrays.copyOfRange(paramabmj.jdField_a_of_type_ArrayOfByte, paramabmj.c, paramabmj.c + i);
-      paramabmj.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.setValue(arrayOfByte);
-      boolean bool = paramabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt.writeCharacteristic(paramabmj.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic);
+      paramGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.setWriteType(2);
+      byte[] arrayOfByte = Arrays.copyOfRange(paramGattInfo.jdField_a_of_type_ArrayOfByte, paramGattInfo.c, paramGattInfo.c + i);
+      paramGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.setValue(arrayOfByte);
+      boolean bool = paramGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt.writeCharacteristic(paramGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic);
       if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE_EX", 2, "writeCharacteristic result=" + bool + ", len=" + i + ",sent=" + paramabmj.c + ", toSend=" + paramabmj.jdField_a_of_type_ArrayOfByte.length);
+        QLog.i("DeviceBLE_EX", 2, "writeCharacteristic result=" + bool + ", len=" + i + ",sent=" + paramGattInfo.c + ", toSend=" + paramGattInfo.jdField_a_of_type_ArrayOfByte.length);
       }
-      paramabmj.c = (i + paramabmj.c);
-      if (paramabmj.c >= paramabmj.jdField_a_of_type_ArrayOfByte.length)
+      paramGattInfo.c = (i + paramGattInfo.c);
+      if (paramGattInfo.c >= paramGattInfo.jdField_a_of_type_ArrayOfByte.length)
       {
-        paramabmj.jdField_a_of_type_ArrayOfByte = null;
-        paramabmj.c = 0;
+        paramGattInfo.jdField_a_of_type_ArrayOfByte = null;
+        paramGattInfo.c = 0;
       }
       return;
       label173:
@@ -133,8 +130,8 @@ public class BluetoothLeService
   
   public void a(int paramInt)
   {
-    abmj localabmj = a(paramInt);
-    if (localabmj == null) {
+    GattInfo localGattInfo = a(paramInt);
+    if (localGattInfo == null) {
       if (QLog.isColorLevel()) {
         QLog.e("DeviceBLE_EX", 2, "gattInfo is null for bleid=" + paramInt);
       }
@@ -142,16 +139,16 @@ public class BluetoothLeService
     do
     {
       return;
-      if ((this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null) && (localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)) {
+      if ((this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null) && (localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.w("DeviceBLE_EX", 2, "BluetoothAdapter not initialized");
     return;
     if (QLog.isColorLevel()) {
-      QLog.e("DeviceBLE_EX", 2, "disconnect " + localabmj.jdField_a_of_type_JavaLangString + ", bleId=" + paramInt);
+      QLog.e("DeviceBLE_EX", 2, "disconnect " + localGattInfo.jdField_a_of_type_JavaLangString + ", bleId=" + paramInt);
     }
-    localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt.disconnect();
+    localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt.disconnect();
   }
   
   public void a(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, boolean paramBoolean)
@@ -210,29 +207,29 @@ public class BluetoothLeService
     do
     {
       return bool;
-      abmj localabmj = a(paramInt);
-      if ((localabmj != null) && (localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null))
+      GattInfo localGattInfo = a(paramInt);
+      if ((localGattInfo != null) && (localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null))
       {
         if (QLog.isColorLevel()) {
           QLog.d("DeviceBLE_EX", 2, "Trying to use an existing mBluetoothGatt for connection.");
         }
-        if (localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt.connect())
+        if (localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt.connect())
         {
-          localabmj.jdField_b_of_type_Int = 1;
+          localGattInfo.jdField_b_of_type_Int = 1;
           return true;
         }
         return false;
       }
-      localabmj = new abmj();
-      localabmj.jdField_a_of_type_Int = paramInt;
-      localabmj.jdField_a_of_type_JavaLangString = paramString;
+      localGattInfo = new GattInfo();
+      localGattInfo.jdField_a_of_type_Int = paramInt;
+      localGattInfo.jdField_a_of_type_JavaLangString = paramString;
       paramString = this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.getRemoteDevice(paramString);
-      localabmj.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_JavaUtilList.add(localabmj);
-      localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt = paramString.connectGatt(this, false, this.jdField_a_of_type_AndroidBluetoothBluetoothGattCallback);
-      if (localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt == null)
+      localGattInfo.jdField_b_of_type_Int = 1;
+      this.jdField_a_of_type_JavaUtilList.add(localGattInfo);
+      localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt = paramString.connectGatt(this, false, this.jdField_a_of_type_AndroidBluetoothBluetoothGattCallback);
+      if (localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt == null)
       {
-        this.jdField_a_of_type_JavaUtilList.remove(localabmj);
+        this.jdField_a_of_type_JavaUtilList.remove(localGattInfo);
         if (QLog.isColorLevel()) {
           QLog.d("DeviceBLE_EX", 2, "connectGatt failed");
         }
@@ -245,13 +242,13 @@ public class BluetoothLeService
   
   public boolean a(int paramInt, byte[] paramArrayOfByte)
   {
-    abmj localabmj = a(paramInt);
-    if (localabmj != null)
+    GattInfo localGattInfo = a(paramInt);
+    if (localGattInfo != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE_EX", 2, "blewrite(" + localabmj.jdField_a_of_type_JavaLangString + ")=" + paramArrayOfByte);
+        QLog.i("DeviceBLE_EX", 2, "blewrite(" + localGattInfo.jdField_a_of_type_JavaLangString + ")=" + paramArrayOfByte);
       }
-      if (localabmj.jdField_a_of_type_ArrayOfByte == null) {
+      if (localGattInfo.jdField_a_of_type_ArrayOfByte == null) {
         break label79;
       }
       if (QLog.isColorLevel()) {
@@ -260,22 +257,22 @@ public class BluetoothLeService
     }
     return false;
     label79:
-    localabmj.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    a(localabmj);
+    localGattInfo.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    a(localGattInfo);
     return true;
   }
   
   public void b(int paramInt)
   {
-    abmj localabmj = a(paramInt);
-    if (localabmj != null)
+    GattInfo localGattInfo = a(paramInt);
+    if (localGattInfo != null)
     {
-      if (localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)
+      if (localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)
       {
-        localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt.close();
-        localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt = null;
+        localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt.close();
+        localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt = null;
       }
-      this.jdField_a_of_type_JavaUtilList.remove(localabmj);
+      this.jdField_a_of_type_JavaUtilList.remove(localGattInfo);
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -285,7 +282,7 @@ public class BluetoothLeService
   
   public IBinder onBind(Intent paramIntent)
   {
-    return this.jdField_a_of_type_Abmf;
+    return this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService$LocalBinder;
   }
   
   public boolean onUnbind(Intent paramIntent)
@@ -293,11 +290,11 @@ public class BluetoothLeService
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      abmj localabmj = (abmj)localIterator.next();
-      if (localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)
+      GattInfo localGattInfo = (GattInfo)localIterator.next();
+      if (localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)
       {
-        localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt.close();
-        localabmj.jdField_a_of_type_AndroidBluetoothBluetoothGatt = null;
+        localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt.close();
+        localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt = null;
       }
     }
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -306,7 +303,7 @@ public class BluetoothLeService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.qfind.BluetoothLeService
  * JD-Core Version:    0.7.0.1
  */

@@ -10,17 +10,17 @@ class ShaderAnimLayout$1
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (this.this$0.mHide == true) {}
-    for (this.this$0.mAnimFactor = (1.0F - paramFloat);; this.this$0.mAnimFactor = paramFloat)
+    if (this.a.jdField_a_of_type_Boolean == true) {}
+    for (this.a.jdField_a_of_type_Float = (1.0F - paramFloat);; this.a.jdField_a_of_type_Float = paramFloat)
     {
-      this.this$0.invalidate();
+      this.a.invalidate();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ShaderAnimLayout.1
  * JD-Core Version:    0.7.0.1
  */

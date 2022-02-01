@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
 import android.text.TextUtils;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -10,12 +10,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import omv;
-import pnn;
+import cooperation.readinjoy.ReadInJoyHelper;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.FeedsIdInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
 
-public class VideoPlayRecommendHandler$5
+class VideoPlayRecommendHandler$5
   implements Runnable
 {
   public void run()
@@ -24,15 +23,15 @@ public class VideoPlayRecommendHandler$5
     {
       Object localObject1 = new oidb_0x6cf.ReqBody();
       long l = 0L;
-      Object localObject2 = pnn.a();
+      Object localObject2 = RIJQQAppInterfaceUtil.a();
       if (localObject2 != null) {
         l = ((QQAppInterface)localObject2).getLongAccountUin();
       }
       ((oidb_0x6cf.ReqBody)localObject1).uint64_uin.set(l);
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_times.set(this.jdField_a_of_type_Int);
-      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_network.set(omv.a(this.this$0));
+      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_network.set(VideoPlayRecommendHandler.a(this.this$0));
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_os.set(1);
-      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_sim_type.set(bmhv.d());
+      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_sim_type.set(ReadInJoyHelper.d());
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_source.set(this.b);
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_sub_source.set(5);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g))
@@ -56,7 +55,7 @@ public class VideoPlayRecommendHandler$5
       for (;;)
       {
         localObject1 = this.this$0.makeOIDBPkg("OidbSvc.0x6cf", 1743, 0, ((oidb_0x6cf.ReqBody)localObject1).toByteArray());
-        ((ToServiceMsg)localObject1).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.jdField_a_of_type_Omw.hashCode()));
+        ((ToServiceMsg)localObject1).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountVideoPlayRecommendObserver.hashCode()));
         this.this$0.sendPbReq((ToServiceMsg)localObject1);
         if (!QLog.isColorLevel()) {
           break;
@@ -77,7 +76,7 @@ public class VideoPlayRecommendHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoPlayRecommendHandler.5
  * JD-Core Version:    0.7.0.1
  */

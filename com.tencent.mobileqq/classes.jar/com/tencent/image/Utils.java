@@ -13,7 +13,8 @@ import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.StatFs;
 import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,20 +28,14 @@ public class Utils
 {
   public static final String AIO_PIC_DISPATCH_WAIT = "AioPicDispatchWait";
   public static final String AIO_PIC_DOWNLOAD_WAIT = "AioPicDownloadWait";
-  private static long[] CRCTable;
+  private static long[] CRCTable = new long[256];
   public static final byte[] HEIF_SIGNATURE = { 0, 0, 0, 24, 102, 116, 121, 112, 104, 101, 105, 99 };
   private static final long INITIALCRC = -1L;
   private static final long POLY64REV = -7661587058870466123L;
   public static final String PROTOCOL_CHAT_THUMB = "chatthumb";
   public static final String TAG = "URLDrawable.Utils";
   private static boolean init = false;
-  private static ThreadLocal<LinkedList<Long>> sBeginTimeList;
-  
-  static
-  {
-    CRCTable = new long[256];
-    sBeginTimeList = new ThreadLocal();
-  }
+  private static ThreadLocal<LinkedList<Long>> sBeginTimeList = new ThreadLocal();
   
   public static final long Crc64Long(String paramString)
   {
@@ -95,7 +90,7 @@ public class Utils
   
   public static void beginPile()
   {
-    if (QLog.isColorLevel())
+    if (URLDrawable.depImp.mLog.isColorLevel())
     {
       LinkedList localLinkedList2 = (LinkedList)sBeginTimeList.get();
       LinkedList localLinkedList1 = localLinkedList2;
@@ -120,15 +115,15 @@ public class Utils
     if ((paramInt1 == 0) || (paramInt2 == 0) || (paramInt1 == -1) || (paramInt2 == -1)) {
       if (paramRect.width() * paramRect.height() > 5000000)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("URLDrawable.Utils", 2, "calculateInSampleSize options.outWidth*options.outHeight=" + paramRect.width() * paramRect.height());
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.d("URLDrawable.Utils", 2, "calculateInSampleSize options.outWidth*options.outHeight=" + paramRect.width() * paramRect.height());
         }
         j = 2;
       }
     }
     int m;
     int k;
-    label94:
+    label110:
     do
     {
       return j;
@@ -151,7 +146,7 @@ public class Utils
       m /= 2;
       k /= 2;
       i *= 2;
-      break label94;
+      break label110;
       n = j;
     }
   }
@@ -183,7 +178,7 @@ public class Utils
   
   public static void endPile(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel())
+    if (URLDrawable.depImp.mLog.isColorLevel())
     {
       Object localObject2 = (LinkedList)sBeginTimeList.get();
       Object localObject1 = localObject2;
@@ -204,7 +199,7 @@ public class Utils
       ((StringBuilder)localObject2).append(":cost ");
       ((StringBuilder)localObject2).append(SystemClock.uptimeMillis() - ((Long)((LinkedList)sBeginTimeList.get()).removeFirst()).longValue());
       ((StringBuilder)localObject2).append("ms");
-      QLog.i(paramString1, 2, ((StringBuilder)localObject2).toString());
+      URLDrawable.depImp.mLog.i(paramString1, 2, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -276,8 +271,8 @@ public class Utils
     {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("URLDrawable.Utils", 2, "new ExifInterface", paramString);
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.e("URLDrawable.Utils", 2, "new ExifInterface", paramString);
         }
         paramString = null;
       }
@@ -329,20 +324,20 @@ public class Utils
   public static boolean isHeifFile(String paramString)
   {
     // Byte code:
-    //   0: new 298	java/io/File
+    //   0: new 310	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 309	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 321	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_0
-    //   9: new 363	java/io/RandomAccessFile
+    //   9: new 375	java/io/RandomAccessFile
     //   12: dup
     //   13: aload_0
-    //   14: ldc_w 365
-    //   17: invokespecial 368	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   14: ldc_w 377
+    //   17: invokespecial 380	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   20: astore 4
     //   22: aload 4
     //   24: astore_0
-    //   25: getstatic 58	com/tencent/image/Utils:HEIF_SIGNATURE	[B
+    //   25: getstatic 47	com/tencent/image/Utils:HEIF_SIGNATURE	[B
     //   28: arraylength
     //   29: newarray byte
     //   31: astore 5
@@ -350,14 +345,14 @@ public class Utils
     //   35: astore_0
     //   36: aload 4
     //   38: aload 5
-    //   40: invokevirtual 369	java/io/RandomAccessFile:read	([B)I
+    //   40: invokevirtual 381	java/io/RandomAccessFile:read	([B)I
     //   43: pop
     //   44: iconst_0
     //   45: istore_1
     //   46: aload 4
     //   48: astore_0
     //   49: iload_1
-    //   50: getstatic 58	com/tencent/image/Utils:HEIF_SIGNATURE	[B
+    //   50: getstatic 47	com/tencent/image/Utils:HEIF_SIGNATURE	[B
     //   53: arraylength
     //   54: if_icmpge +43 -> 97
     //   57: aload 5
@@ -366,7 +361,7 @@ public class Utils
     //   61: istore_2
     //   62: aload 4
     //   64: astore_0
-    //   65: getstatic 58	com/tencent/image/Utils:HEIF_SIGNATURE	[B
+    //   65: getstatic 47	com/tencent/image/Utils:HEIF_SIGNATURE	[B
     //   68: iload_1
     //   69: baload
     //   70: istore_3
@@ -374,12 +369,12 @@ public class Utils
     //   72: iload_3
     //   73: if_icmpeq +17 -> 90
     //   76: aload 4
-    //   78: invokevirtual 370	java/io/RandomAccessFile:close	()V
+    //   78: invokevirtual 382	java/io/RandomAccessFile:close	()V
     //   81: iconst_0
     //   82: ireturn
     //   83: astore_0
     //   84: aload_0
-    //   85: invokevirtual 373	java/lang/Exception:printStackTrace	()V
+    //   85: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   88: iconst_0
     //   89: ireturn
     //   90: iload_1
@@ -388,12 +383,12 @@ public class Utils
     //   93: istore_1
     //   94: goto -48 -> 46
     //   97: aload 4
-    //   99: invokevirtual 370	java/io/RandomAccessFile:close	()V
+    //   99: invokevirtual 382	java/io/RandomAccessFile:close	()V
     //   102: iconst_1
     //   103: ireturn
     //   104: astore_0
     //   105: aload_0
-    //   106: invokevirtual 373	java/lang/Exception:printStackTrace	()V
+    //   106: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   109: iconst_1
     //   110: ireturn
     //   111: astore 5
@@ -402,26 +397,26 @@ public class Utils
     //   116: aload 4
     //   118: astore_0
     //   119: aload 5
-    //   121: invokevirtual 374	java/io/IOException:printStackTrace	()V
+    //   121: invokevirtual 386	java/io/IOException:printStackTrace	()V
     //   124: aload 4
-    //   126: invokevirtual 370	java/io/RandomAccessFile:close	()V
+    //   126: invokevirtual 382	java/io/RandomAccessFile:close	()V
     //   129: iconst_0
     //   130: ireturn
     //   131: astore_0
     //   132: aload_0
-    //   133: invokevirtual 373	java/lang/Exception:printStackTrace	()V
+    //   133: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   136: iconst_0
     //   137: ireturn
     //   138: astore 4
     //   140: aconst_null
     //   141: astore_0
     //   142: aload_0
-    //   143: invokevirtual 370	java/io/RandomAccessFile:close	()V
+    //   143: invokevirtual 382	java/io/RandomAccessFile:close	()V
     //   146: aload 4
     //   148: athrow
     //   149: astore_0
     //   150: aload_0
-    //   151: invokevirtual 373	java/lang/Exception:printStackTrace	()V
+    //   151: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   154: goto -8 -> 146
     //   157: astore 4
     //   159: goto -17 -> 142

@@ -11,7 +11,7 @@ public final class stPostCommentDingReq
   implements Cloneable
 {
   public String commentId = "";
-  public int dingAction;
+  public int dingAction = 0;
   public String feed_id = "";
   
   static

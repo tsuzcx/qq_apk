@@ -9,7 +9,7 @@ public final class FestivalGetReq
   extends JceStruct
 {
   static ArrayList<FestivalGetReqItem> cache__vec_festivals = new ArrayList();
-  public ArrayList<FestivalGetReqItem> _vec_festivals;
+  public ArrayList<FestivalGetReqItem> _vec_festivals = null;
   
   static
   {

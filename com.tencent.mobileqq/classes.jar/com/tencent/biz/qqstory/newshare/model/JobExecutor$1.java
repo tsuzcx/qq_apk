@@ -1,22 +1,20 @@
 package com.tencent.biz.qqstory.newshare.model;
 
 import java.util.concurrent.ConcurrentHashMap;
-import wxz;
-import wyb;
 
-public class JobExecutor$1
+class JobExecutor$1
   implements Runnable
 {
-  public JobExecutor$1(wyb paramwyb, wxz paramwxz, ConcurrentHashMap paramConcurrentHashMap) {}
+  JobExecutor$1(JobExecutor paramJobExecutor, Job paramJob, ConcurrentHashMap paramConcurrentHashMap) {}
   
   public void run()
   {
-    wyb.a(this.this$0, this.jdField_a_of_type_Wxz, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    JobExecutor.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.JobExecutor.1
  * JD-Core Version:    0.7.0.1
  */

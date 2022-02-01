@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acmw;
-import afuo;
-import aile;
-import ailf;
-import alht;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import anvx;
-import aoan;
-import avds;
-import avdu;
-import bhiw;
+import com.tencent.biz.pubaccount.ecshopassit.utils.EcshopUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
+import com.tencent.biz.pubaccount.weishi_new.api.IWSManager;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
+import com.tencent.mobileqq.activity.aio.tips.PubAccountTips;
+import com.tencent.mobileqq.activity.aio.tips.PubAccountTips.PubAccountTipsMsg;
+import com.tencent.mobileqq.activity.recent.RecentParcelUtil;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -27,18 +30,16 @@ import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.gamecenter.message.GameMsgManager;
+import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import common.config.service.QZoneConfigHelper;
+import com.tencent.mobileqq.vas.nicknamemessage.NickNameManager;
+import cooperation.qzone.QZoneHelper;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import opg;
 import org.json.JSONObject;
-import pkp;
-import uot;
-import usu;
-import uvs;
-import uyz;
 
 public class RecentItemPublicAccountChatMsgData
   extends RecentItemChatMsgData
@@ -55,31 +56,24 @@ public class RecentItemPublicAccountChatMsgData
     }
   }
   
-  public static PublicAccountInfo a(QQAppInterface paramQQAppInterface, aoan paramaoan, String paramString)
+  public static PublicAccountInfo a(QQAppInterface paramQQAppInterface, PublicAccountDataManager paramPublicAccountDataManager, String paramString)
   {
     PublicAccountInfo localPublicAccountInfo = null;
-    if ((paramaoan == null) || (alht.a(paramQQAppInterface))) {
+    if ((paramPublicAccountDataManager == null) || (RecentParcelUtil.a(paramQQAppInterface))) {
       try
       {
-        localPublicAccountInfo = paramaoan.a(paramString, true);
+        localPublicAccountInfo = paramPublicAccountDataManager.a(paramString, true);
         return localPublicAccountInfo;
       }
       catch (Throwable paramQQAppInterface)
       {
-        return paramaoan.b(paramString);
+        return paramPublicAccountDataManager.b(paramString);
       }
     }
-    return paramaoan.b(paramString);
+    return paramPublicAccountDataManager.b(paramString);
   }
   
-  private void a()
-  {
-    if (AppConstants.WEISHI_UIN.equals(this.mUser.uin)) {
-      pkp.a(this, 9);
-    }
-  }
-  
-  private void a(Context paramContext, QQMessageFacade.Message paramMessage)
+  private void a(Context paramContext, Message paramMessage)
   {
     Object localObject = null;
     if ((paramMessage.lastMsg instanceof MessageForStructing))
@@ -116,7 +110,7 @@ public class RecentItemPublicAccountChatMsgData
     }
   }
   
-  private void a(QQMessageFacade.Message paramMessage)
+  private void a(Message paramMessage)
   {
     paramMessage = paramMessage.getExtInfoFromExtStr("qzone_msg_box_promot");
     if (!TextUtils.isEmpty(paramMessage)) {
@@ -127,37 +121,37 @@ public class RecentItemPublicAccountChatMsgData
   private void a(QQAppInterface paramQQAppInterface)
   {
     if ("3046055438".equals(this.mUser.uin)) {
-      opg.a(paramQQAppInterface, this.msgSummary);
+      EcshopUtils.a(paramQQAppInterface, this.msgSummary);
     }
   }
   
-  private void a(QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage)
+  private void a(QQAppInterface paramQQAppInterface, Message paramMessage)
   {
     if (this.mUnreadNum > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      Object localObject = bhiw.a(paramQQAppInterface, paramMessage, bool);
+      Object localObject = NickNameManager.a(paramQQAppInterface, paramMessage, bool);
       if (localObject != null) {
         this.msgSummary.strContent = ((CharSequence)localObject);
       }
-      localObject = aile.a(paramQQAppInterface, this.mUser.uin);
-      if ((localObject != null) && (((ailf)localObject).d == paramMessage.uniseq) && (((ailf)localObject).b())) {
-        ThreadManager.post(new RecentItemPublicAccountChatMsgData.1(this, paramQQAppInterface, (ailf)localObject), 2, null, false);
+      localObject = PubAccountTips.a(paramQQAppInterface, this.mUser.uin);
+      if ((localObject != null) && (((PubAccountTips.PubAccountTipsMsg)localObject).d == paramMessage.uniseq) && (((PubAccountTips.PubAccountTipsMsg)localObject).b())) {
+        ThreadManager.post(new RecentItemPublicAccountChatMsgData.1(this, paramQQAppInterface, (PubAccountTips.PubAccountTipsMsg)localObject), 2, null, false);
       }
       return;
     }
   }
   
-  private void a(QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage, PublicAccountInfo paramPublicAccountInfo, aoan paramaoan)
+  private void a(QQAppInterface paramQQAppInterface, Message paramMessage, PublicAccountInfo paramPublicAccountInfo, PublicAccountDataManager paramPublicAccountDataManager)
   {
-    if ((paramPublicAccountInfo == null) && (paramaoan != null))
+    if ((paramPublicAccountInfo == null) && (paramPublicAccountDataManager != null))
     {
-      paramaoan = paramaoan.a(this.mUser.uin);
-      if (paramaoan != null) {
-        this.mTitleName = paramaoan.name;
+      paramPublicAccountDataManager = paramPublicAccountDataManager.a(this.mUser.uin);
+      if (paramPublicAccountDataManager != null) {
+        this.mTitleName = paramPublicAccountDataManager.name;
       }
       if (this.isNewKandian) {
-        this.mTitleName = usu.b(paramQQAppInterface, paramQQAppInterface.getApp());
+        this.mTitleName = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getXinKandianName(paramQQAppInterface, paramQQAppInterface.getApp());
       }
     }
     if (paramPublicAccountInfo != null) {
@@ -174,21 +168,21 @@ public class RecentItemPublicAccountChatMsgData
   
   private void a(AbsStructMsg paramAbsStructMsg, Context paramContext)
   {
-    if ((!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(anvx.a(2131712637))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(anvx.a(2131712642))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(anvx.a(2131712634))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(anvx.a(2131712645))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(anvx.a(2131712648))))
+    if ((!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131713133))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131713138))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131713130))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131713141))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131713144))))
     {
-      if (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(String.format(paramContext.getString(2131696170), new Object[] { Integer.valueOf(this.mUnreadNum) }))) {}
+      if (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(String.format(paramContext.getString(2131696421), new Object[] { Integer.valueOf(this.mUnreadNum) }))) {}
     }
     else {
       this.mMsgExtroInfo = "";
     }
   }
   
-  private boolean a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade.Message paramMessage, QQMessageFacade paramQQMessageFacade, int paramInt)
+  private boolean a(QQAppInterface paramQQAppInterface, Context paramContext, Message paramMessage, QQMessageFacade paramQQMessageFacade, int paramInt)
   {
     if ((paramInt != -3006) && (paramInt != -5004))
     {
       buildMessageBody(paramMessage, this.mUser.getType(), paramQQAppInterface, paramContext, this.msgSummary);
-      if ((paramInt == -2025) && (this.mUnreadNum > 0) && (uot.a(paramQQAppInterface, this.mUser.uin)))
+      if ((paramInt == -2025) && (this.mUnreadNum > 0) && (ServiceAccountFolderManager.a(paramQQAppInterface, this.mUser.uin)))
       {
         this.mExtraInfoColor = -881592;
         this.mMsgExtroInfo = paramMessage.msg;
@@ -210,7 +204,7 @@ public class RecentItemPublicAccountChatMsgData
       {
         a(paramContext, paramMessage);
       }
-      else if (("2290230341".equals(this.mUser.uin)) && (QZoneConfigHelper.enableQZoneContextBox(paramQQAppInterface)))
+      else if (("2290230341".equals(this.mUser.uin)) && (QZoneHelper.enableQZoneContextBox(paramQQAppInterface)))
       {
         a(paramMessage);
       }
@@ -219,7 +213,7 @@ public class RecentItemPublicAccountChatMsgData
         a(paramQQAppInterface, paramMessage);
         continue;
         this.msgSummary.strContent = "";
-        paramQQMessageFacade = afuo.a(paramMessage);
+        paramQQMessageFacade = XMLMessageUtils.a(paramMessage);
         if ((paramQQMessageFacade != null) && (paramQQMessageFacade.items != null) && (paramQQMessageFacade.items.size() != 0)) {
           break;
         }
@@ -239,7 +233,7 @@ public class RecentItemPublicAccountChatMsgData
   
   private boolean a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade paramQQMessageFacade)
   {
-    paramQQAppInterface = paramQQMessageFacade.getLastMsgForMsgTab(this.mUser.uin, this.mUser.getType());
+    paramQQAppInterface = paramQQMessageFacade.b(this.mUser.uin, this.mUser.getType());
     if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof MessageForStructing)))
     {
       paramQQAppInterface = (MessageForStructing)paramQQAppInterface;
@@ -255,7 +249,7 @@ public class RecentItemPublicAccountChatMsgData
       for (this.mMsgExtroInfo = ("[" + paramQQAppInterface.structingMsg.mOrangeWord.substring(0, 8) + "]");; this.mMsgExtroInfo = ("[" + paramQQAppInterface.structingMsg.mOrangeWord + "]"))
       {
         a(paramQQAppInterface.structingMsg, paramContext);
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167138);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167145);
         if ((paramQQAppInterface.extInt != 1) || (paramQQAppInterface.extLong != 1)) {
           break;
         }
@@ -265,9 +259,7 @@ public class RecentItemPublicAccountChatMsgData
     return false;
   }
   
-  private void b() {}
-  
-  private void b(QQMessageFacade.Message paramMessage)
+  private void b(Message paramMessage)
   {
     if ((paramMessage != null) && (paramMessage.getMessageText() != null))
     {
@@ -280,7 +272,7 @@ public class RecentItemPublicAccountChatMsgData
   private void b(QQAppInterface paramQQAppInterface)
   {
     int i;
-    if ((!this.isNewKandian) && (uot.a(paramQQAppInterface, this.mUser.uin)))
+    if ((!this.isNewKandian) && (ServiceAccountFolderManager.a(paramQQAppInterface, this.mUser.uin)))
     {
       i = paramQQAppInterface.getConversationFacade().g(this.mUser.uin, this.mUser.getType());
       if (this.mUnreadNum > 0)
@@ -322,21 +314,35 @@ public class RecentItemPublicAccountChatMsgData
     this.mUnreadFlag = 1;
   }
   
-  private void b(QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage)
+  private void b(QQAppInterface paramQQAppInterface, Message paramMessage)
   {
-    if (("2747277822".equals(this.mUser.uin)) && (avds.a())) {
-      avdu.a(paramQQAppInterface, paramMessage, this.msgSummary, this);
+    if (("2747277822".equals(this.mUser.uin)) && (GameMsgManager.a()))
+    {
+      GameMsgManager localGameMsgManager = (GameMsgManager)paramQQAppInterface.getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER);
+      if ((localGameMsgManager == null) || (!localGameMsgManager.c())) {}
+    }
+    else
+    {
+      return;
+    }
+    GameMsgUtil.a(paramQQAppInterface, paramMessage, this.msgSummary, this);
+  }
+  
+  private void c()
+  {
+    if (AppConstants.WEISHI_UIN.equals(this.mUser.uin)) {
+      WeishiReportUtil.a(this, 9);
     }
   }
   
-  private void c(QQMessageFacade.Message paramMessage)
+  private void c(Message paramMessage)
   {
     if ((paramMessage != null) && (paramMessage.mExJsonObject != null)) {
       this.mReportKeyBytesOacMsgxtend = paramMessage.mExJsonObject.optString("report_key_bytes_oac_msg_extend", null);
     }
   }
   
-  private void c(QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage)
+  private void c(QQAppInterface paramQQAppInterface, Message paramMessage)
   {
     if ((paramMessage != null) && ("2909288299".equals(this.mUser.uin)) && (this.mUnreadNum > 0))
     {
@@ -349,33 +355,35 @@ public class RecentItemPublicAccountChatMsgData
     }
   }
   
-  public QQMessageFacade.Message a()
+  private void d() {}
+  
+  public Message a()
   {
     return this.msg;
   }
   
-  protected void a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade.Message paramMessage)
+  protected void a(QQAppInterface paramQQAppInterface, Context paramContext, Message paramMessage)
   {
     if ((paramMessage != null) && (a(paramQQAppInterface, paramContext, paramMessage, paramQQAppInterface.getMessageFacade(), paramMessage.msgtype))) {
       return;
     }
-    paramContext = (aoan)paramQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+    paramContext = (PublicAccountDataManager)paramQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
     a(paramQQAppInterface, paramMessage, a(paramQQAppInterface, paramContext, this.mUser.uin), paramContext);
     b(paramMessage);
     b(paramQQAppInterface, paramMessage);
     a(paramQQAppInterface);
     b(paramQQAppInterface);
     c(paramMessage);
-    a();
-    uyz.a().a();
-    b();
-    uvs.a(this);
+    c();
+    ((IWSManager)QRoute.api(IWSManager.class)).preloadData();
+    d();
+    ReadinjoyReportUtils.a(this);
     c(paramQQAppInterface, paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData
  * JD-Core Version:    0.7.0.1
  */

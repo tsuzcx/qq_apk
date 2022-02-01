@@ -10,7 +10,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 public class SubscribeBannerView$DotsIndicator
   extends LinearLayout
 {
-  public int a = 2130839120;
+  public int a = 2130839188;
   public int b;
   public int c;
   public int d;
@@ -23,9 +23,9 @@ public class SubscribeBannerView$DotsIndicator
   
   private void a()
   {
-    this.b = AIOUtils.dp2px(10.0F, getResources());
-    this.c = AIOUtils.dp2px(7.0F, getResources());
-    this.d = AIOUtils.dp2px(7.0F, getResources());
+    this.b = AIOUtils.a(10.0F, getResources());
+    this.c = AIOUtils.a(7.0F, getResources());
+    this.d = AIOUtils.a(7.0F, getResources());
     setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
   }
   
@@ -75,7 +75,7 @@ public class SubscribeBannerView$DotsIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator
  * JD-Core Version:    0.7.0.1
  */

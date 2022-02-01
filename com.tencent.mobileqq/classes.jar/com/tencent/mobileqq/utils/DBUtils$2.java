@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.utils;
 
-import aocx;
-import bhdf;
+import com.tencent.mobileqq.app.RoamSettingManager;
 import java.util.List;
 
-public class DBUtils$2
+class DBUtils$2
   implements Runnable
 {
-  public DBUtils$2(bhdf parambhdf, aocx paramaocx, List paramList) {}
+  DBUtils$2(DBUtils paramDBUtils, RoamSettingManager paramRoamSettingManager, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aocx.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentMobileqqAppRoamSettingManager.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import bmho;
+import cooperation.qwallet.pluginshare.HbInfo.BundleInfo;
 
 public class DrawHbFragment$DrawHbBundleInfo
-  extends bmho
+  extends HbInfo.BundleInfo
 {
   public String drawParam;
   public String modelList;
@@ -12,7 +12,7 @@ public class DrawHbFragment$DrawHbBundleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment.DrawHbBundleInfo
  * JD-Core Version:    0.7.0.1
  */

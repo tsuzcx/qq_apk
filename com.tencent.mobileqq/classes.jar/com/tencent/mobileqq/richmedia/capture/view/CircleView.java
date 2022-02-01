@@ -24,7 +24,7 @@ public class CircleView
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean)
@@ -48,7 +48,7 @@ public class CircleView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_Boolean = true;
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -56,7 +56,7 @@ public class CircleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CircleView
  * JD-Core Version:    0.7.0.1
  */

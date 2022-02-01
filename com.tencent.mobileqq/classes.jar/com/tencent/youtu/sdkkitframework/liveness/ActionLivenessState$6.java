@@ -5,13 +5,13 @@ import com.tencent.youtu.sdkkitframework.common.YtLogger;
 import com.tencent.youtu.sdkkitframework.common.YtSDKStats;
 import com.tencent.youtu.sdkkitframework.common.YtVideoEncoder;
 import com.tencent.youtu.sdkkitframework.framework.YtFSM;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTBaseFunctionListener;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKPlatformContext;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectOnFrame;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.HashMap;
 
 class ActionLivenessState$6
@@ -71,7 +71,7 @@ class ActionLivenessState$6
           break;
         }
       }
-      catch (IOException localIOException1)
+      catch (Exception localException1)
       {
         try
         {
@@ -85,13 +85,13 @@ class ActionLivenessState$6
           YTPoseDetectInterface.getBestImage(new ActionLivenessState.6.1(this), true);
           return;
         }
-        catch (IOException localIOException2)
+        catch (Exception localException2)
         {
           continue;
         }
-        localIOException1 = localIOException1;
+        localException1 = localException1;
         paramArrayOfByte = null;
-        YtLogger.e(ActionLivenessState.access$200(), "Failed fetch action video " + localIOException1.getLocalizedMessage());
+        YtLogger.e(ActionLivenessState.access$200(), "Failed fetch action video " + localException1.getLocalizedMessage());
         continue;
       }
       label503:
@@ -108,8 +108,11 @@ class ActionLivenessState$6
     if (paramInt == 1)
     {
       YtLogger.d(ActionLivenessState.access$200(), "Detect pose with sequence " + ActionLivenessState.access$300(this.this$0).length);
-      if (ActionLivenessState.access$500(this.this$0, ActionLivenessState.access$300(this.this$0), ActionLivenessState.access$400(this.this$0) + 1)) {
-        YtLogger.i(ActionLivenessState.access$200(), "start check pose: " + ActionLivenessState.access$600(this.this$0));
+      if (YtFSM.getInstance().getContext().baseFunctionListener != null) {
+        YtFSM.getInstance().getContext().baseFunctionListener.detectActionDone(ActionLivenessState.access$400(this.this$0));
+      }
+      if (ActionLivenessState.access$600(this.this$0, ActionLivenessState.access$300(this.this$0), ActionLivenessState.access$500(this.this$0) + 1)) {
+        YtLogger.i(ActionLivenessState.access$200(), "start check pose: " + ActionLivenessState.access$400(this.this$0));
       }
     }
     for (;;)
@@ -138,7 +141,7 @@ class ActionLivenessState$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ActionLivenessState.6
  * JD-Core Version:    0.7.0.1
  */

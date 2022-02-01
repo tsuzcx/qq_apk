@@ -13,10 +13,10 @@ public final class MsgBody
   public String content = "";
   public String contentIcon = "";
   public String coverPicUrl = "";
-  public int mediaType;
+  public int mediaType = 0;
   public String title = "";
-  public ArrayList<PhotoCell> vecPhotos;
-  public ArrayList<String> vecUserAvatar;
+  public ArrayList<PhotoCell> vecPhotos = null;
+  public ArrayList<String> vecUserAvatar = null;
   
   static
   {

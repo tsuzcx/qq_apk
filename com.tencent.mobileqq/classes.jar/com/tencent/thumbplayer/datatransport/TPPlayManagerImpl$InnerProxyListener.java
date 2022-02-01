@@ -13,6 +13,11 @@ class TPPlayManagerImpl$InnerProxyListener
     return TPPlayManagerImpl.access$100(this.this$0).getAdvRemainTime();
   }
   
+  public String getContentType(int paramInt, String paramString)
+  {
+    return TPPlayManagerImpl.access$100(this.this$0).getContentType(paramInt, paramString);
+  }
+  
   public int getCurrentPlayClipNo()
   {
     return TPPlayManagerImpl.access$100(this.this$0).getCurrentPlayClipNo();
@@ -21,6 +26,16 @@ class TPPlayManagerImpl$InnerProxyListener
   public long getCurrentPosition()
   {
     return TPPlayManagerImpl.access$100(this.this$0).getCurrentPosition();
+  }
+  
+  public String getDataFilePath(int paramInt, String paramString)
+  {
+    return TPPlayManagerImpl.access$100(this.this$0).getDataFilePath(paramInt, paramString);
+  }
+  
+  public long getDataTotalSize(int paramInt, String paramString)
+  {
+    return TPPlayManagerImpl.access$100(this.this$0).getDataTotalSize(paramInt, paramString);
   }
   
   public Object getPlayInfo(long paramLong)
@@ -87,10 +102,30 @@ class TPPlayManagerImpl$InnerProxyListener
   {
     return TPPlayManagerImpl.access$100(this.this$0).onPlayCallback(paramInt, paramObject1, paramObject2, paramObject3, paramObject4);
   }
+  
+  public void onQuicDownloadStatusUpdate(String paramString)
+  {
+    TPPlayManagerImpl.access$100(this.this$0).onQuicDownloadStatusUpdate(paramString);
+  }
+  
+  public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return TPPlayManagerImpl.access$100(this.this$0).onReadData(paramInt, paramString, paramLong1, paramLong2);
+  }
+  
+  public int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return TPPlayManagerImpl.access$100(this.this$0).onStartReadData(paramInt, paramString, paramLong1, paramLong2);
+  }
+  
+  public int onStopReadData(int paramInt1, String paramString, int paramInt2)
+  {
+    return TPPlayManagerImpl.access$100(this.this$0).onStopReadData(paramInt1, paramString, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPlayManagerImpl.InnerProxyListener
  * JD-Core Version:    0.7.0.1
  */

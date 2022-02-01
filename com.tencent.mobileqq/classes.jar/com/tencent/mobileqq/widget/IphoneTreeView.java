@@ -14,17 +14,16 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import bipv;
 import java.lang.reflect.Field;
 
 public class IphoneTreeView
   extends ExpandableListView
 {
-  public int a;
+  int jdField_a_of_type_Int = -1;
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bipv(this);
-  public View a;
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new IphoneTreeView.1(this);
+  View jdField_a_of_type_AndroidViewView;
   private boolean jdField_a_of_type_Boolean;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private View jdField_b_of_type_AndroidViewView;
@@ -34,21 +33,18 @@ public class IphoneTreeView
   public IphoneTreeView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
     a();
   }
   
   public IphoneTreeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = -1;
     a();
   }
   
   public IphoneTreeView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = -1;
     a();
   }
   
@@ -95,7 +91,7 @@ public class IphoneTreeView
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     if (getExpandableListAdapter() == null)
     {
@@ -265,7 +261,7 @@ public class IphoneTreeView
     return true;
   }
   
-  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     boolean bool = true;
     if (paramView != this.jdField_b_of_type_AndroidViewView) {
@@ -312,7 +308,7 @@ public class IphoneTreeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IphoneTreeView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.biz.subscribe.videoplayer;
 
 import mqq.util.WeakReference;
-import zzy;
 
 class VideoFrameCheckHelper$1$1
   implements Runnable
@@ -11,13 +10,13 @@ class VideoFrameCheckHelper$1$1
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get() != null) {
-      ((zzy)this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get()).a(this.jdField_a_of_type_Boolean);
+      ((VideoFrameCheckHelper.DarkFrameCheckListener)this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoFrameCheckHelper$1.a.get()).a(this.jdField_a_of_type_Boolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoFrameCheckHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

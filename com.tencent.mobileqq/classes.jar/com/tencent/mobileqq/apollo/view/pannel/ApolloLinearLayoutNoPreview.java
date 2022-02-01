@@ -2,8 +2,8 @@ package com.tencent.mobileqq.apollo.view.pannel;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import annl;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.api.model.ApolloInfo;
 
 public class ApolloLinearLayoutNoPreview
   extends ApolloLinearLayout
@@ -18,11 +18,11 @@ public class ApolloLinearLayoutNoPreview
     super(paramContext, paramAttributeSet, paramInt1, paramInt2, paramInt3);
   }
   
-  public void a(BaseChatPie paramBaseChatPie, annl paramannl) {}
+  public void a(BaseChatPie paramBaseChatPie, ApolloInfo paramApolloInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.pannel.ApolloLinearLayoutNoPreview
  * JD-Core Version:    0.7.0.1
  */

@@ -9,16 +9,14 @@ import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import trq;
-import trr;
 
 public class ViewPagerCompat
   extends ViewPager
 {
+  private ViewPagerCompat.PageChangeListenerImpl jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat$PageChangeListenerImpl;
   private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private trr jdField_a_of_type_Trr;
   private boolean jdField_a_of_type_Boolean = true;
-  private List<trq> b;
+  private List<ViewPagerCompat.OnAdapterChangeListener> b;
   
   public ViewPagerCompat(Context paramContext)
   {
@@ -34,16 +32,16 @@ public class ViewPagerCompat
   
   private void a()
   {
-    this.jdField_a_of_type_Trr = new trr(this, null);
-    super.setOnPageChangeListener(this.jdField_a_of_type_Trr);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat$PageChangeListenerImpl = new ViewPagerCompat.PageChangeListenerImpl(this, null);
+    super.setOnPageChangeListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat$PageChangeListenerImpl);
   }
   
-  public void a(trq paramtrq)
+  public void a(ViewPagerCompat.OnAdapterChangeListener paramOnAdapterChangeListener)
   {
     if (this.b == null) {
       this.b = new ArrayList();
     }
-    this.b.add(paramtrq);
+    this.b.add(paramOnAdapterChangeListener);
   }
   
   public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
@@ -54,10 +52,10 @@ public class ViewPagerCompat
     this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
   }
   
-  public void b(trq paramtrq)
+  public void b(ViewPagerCompat.OnAdapterChangeListener paramOnAdapterChangeListener)
   {
     if (this.b != null) {
-      this.b.remove(paramtrq);
+      this.b.remove(paramOnAdapterChangeListener);
     }
   }
   
@@ -117,7 +115,7 @@ public class ViewPagerCompat
       int i = 0;
       while (i < j)
       {
-        ((trq)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
+        ((ViewPagerCompat.OnAdapterChangeListener)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
         i += 1;
       }
     }
@@ -136,7 +134,7 @@ public class ViewPagerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat
  * JD-Core Version:    0.7.0.1
  */

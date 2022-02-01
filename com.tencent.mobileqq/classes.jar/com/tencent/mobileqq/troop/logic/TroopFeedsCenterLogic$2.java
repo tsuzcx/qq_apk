@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.troop.logic;
 
-import bfxw;
-
-public class TroopFeedsCenterLogic$2
+class TroopFeedsCenterLogic$2
   implements Runnable
 {
-  public TroopFeedsCenterLogic$2(bfxw parambfxw) {}
+  TroopFeedsCenterLogic$2(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
   
   public void run()
   {

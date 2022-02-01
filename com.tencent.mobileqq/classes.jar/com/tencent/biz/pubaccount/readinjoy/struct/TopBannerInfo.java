@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import rsa;
-import rsb;
-import rsd;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundRspBody;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
@@ -22,23 +19,23 @@ public class TopBannerInfo
 {
   private static final String TAG = "TopBannerInfo";
   @notColumn
-  public final List<rsb> dynamicItems = new ArrayList();
+  public final List<TopBannerInfo.DynamicItem> dynamicItems = new ArrayList();
   @notColumn
-  public final List<rsa> items = new ArrayList();
+  public final List<TopBannerInfo.BaseItem> items = new ArrayList();
   public byte[] itemsByte;
   public int mChannelId = -1;
   public String mCookie;
   @notColumn
-  public rsd moreChannelItem;
+  public TopBannerInfo.MoreChannelItem moreChannelItem;
   
-  public void addDynamicItem(rsb paramrsb)
+  public void addDynamicItem(TopBannerInfo.DynamicItem paramDynamicItem)
   {
-    this.dynamicItems.add(paramrsb);
+    this.dynamicItems.add(paramDynamicItem);
   }
   
-  public void addItem(rsa paramrsa)
+  public void addItem(TopBannerInfo.BaseItem paramBaseItem)
   {
-    this.items.add(paramrsa);
+    this.items.add(paramBaseItem);
   }
   
   public boolean isBothEmpty()
@@ -71,7 +68,7 @@ public class TopBannerInfo
           localIterator = localBannerRoundRspBody.rpt_msg_banner_list.get().iterator();
           while (localIterator.hasNext())
           {
-            localObject = rsa.a((oidb_cmd0xbc9.BannerItem)localIterator.next());
+            localObject = TopBannerInfo.BaseItem.a((oidb_cmd0xbc9.BannerItem)localIterator.next());
             if (localObject != null)
             {
               this.items.add(localObject);
@@ -87,7 +84,7 @@ public class TopBannerInfo
         QLog.d("TopBannerInfo", 1, "", localInvalidProtocolBufferMicroException);
       }
     }
-    rsd localrsd;
+    TopBannerInfo.MoreChannelItem localMoreChannelItem;
     do
     {
       do
@@ -97,16 +94,16 @@ public class TopBannerInfo
           localIterator = localInvalidProtocolBufferMicroException.rpt_msg_dynamic_banner_list.get().iterator();
           while (localIterator.hasNext())
           {
-            localObject = rsb.a((oidb_cmd0xbc9.DynamicBannerItem)localIterator.next());
+            localObject = TopBannerInfo.DynamicItem.a((oidb_cmd0xbc9.DynamicBannerItem)localIterator.next());
             if (localObject != null) {
               this.dynamicItems.addAll((Collection)localObject);
             }
           }
         }
       } while (!localInvalidProtocolBufferMicroException.msg_more_channel_item.has());
-      localrsd = rsd.a((oidb_cmd0xbc9.MoreChannelItem)localInvalidProtocolBufferMicroException.msg_more_channel_item.get());
-    } while (localrsd == null);
-    this.moreChannelItem = localrsd;
+      localMoreChannelItem = TopBannerInfo.MoreChannelItem.a((oidb_cmd0xbc9.MoreChannelItem)localInvalidProtocolBufferMicroException.msg_more_channel_item.get());
+    } while (localMoreChannelItem == null);
+    this.moreChannelItem = localMoreChannelItem;
   }
   
   public void prewrite()
@@ -117,13 +114,13 @@ public class TopBannerInfo
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = this.items.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((rsa)localIterator.next()).a());
+        localArrayList.add(((TopBannerInfo.BaseItem)localIterator.next()).a());
       }
       localBannerRoundRspBody.rpt_msg_banner_list.addAll(localArrayList);
       localArrayList = new ArrayList();
       localIterator = this.dynamicItems.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((rsb)localIterator.next()).a());
+        localArrayList.add(((TopBannerInfo.DynamicItem)localIterator.next()).a());
       }
       if (this.moreChannelItem != null) {
         localBannerRoundRspBody.msg_more_channel_item.set(this.moreChannelItem.a());
@@ -133,9 +130,9 @@ public class TopBannerInfo
     }
   }
   
-  public void setMoreChannelItem(rsd paramrsd)
+  public void setMoreChannelItem(TopBannerInfo.MoreChannelItem paramMoreChannelItem)
   {
-    this.moreChannelItem = paramrsd;
+    this.moreChannelItem = paramMoreChannelItem;
   }
   
   public String toString()
@@ -145,7 +142,7 @@ public class TopBannerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo
  * JD-Core Version:    0.7.0.1
  */

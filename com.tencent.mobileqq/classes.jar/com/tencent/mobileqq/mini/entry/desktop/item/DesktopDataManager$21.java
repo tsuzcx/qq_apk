@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -21,29 +21,63 @@ class DesktopDataManager$21
     if (localObject1 == null) {
       QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
     }
-    StringBuilder localStringBuilder;
+    EntityManager localEntityManager;
     do
     {
-      do
+      return;
+      localEntityManager = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    } while (localEntityManager == null);
+    EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
+    localEntityTransaction.begin();
+    for (;;)
+    {
+      try
       {
-        return;
-        localObject1 = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-      } while (localObject1 == null);
-      localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.val$moduleInfoList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (INTERFACE.StModuleInfo)localIterator.next();
-        if (localObject2 != null)
-        {
-          localObject2 = new DesktopCardEntity((INTERFACE.StModuleInfo)localObject2);
-          ((DesktopCardEntity)localObject2).setStatus(1000);
-          DesktopDataManager.access$3100(this.this$0, (EntityManager)localObject1, (Entity)localObject2);
-          localStringBuilder.append(((DesktopCardEntity)localObject2).moduleType).append(":").append(((DesktopCardEntity)localObject2).title).append(", ");
+        localStringBuilder = new StringBuilder();
+        Iterator localIterator = this.val$appInfoList.iterator();
+        if (!localIterator.hasNext()) {
+          continue;
         }
+        localObject1 = (DesktopItemInfo)localIterator.next();
+        if (!(localObject1 instanceof DesktopAppInfo)) {
+          continue;
+        }
+        localObject1 = new DeskTopAppEntity(((DesktopAppInfo)localObject1).mMiniAppInfo);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("DesktopDataManager", 2, new Object[] { "saveCardModuleData : ", localStringBuilder.toString() });
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("DesktopDataManager", 2, "insertEntityWithBatch exception: ", localException);
+        return;
+        if (!(localException instanceof DesktopSearchInfo)) {
+          break label231;
+        }
+        DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(((DesktopSearchInfo)localException).mAppInfo);
+        continue;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("DesktopDataManager", 2, new Object[] { "insertEntityWithBatch : ", localStringBuilder.toString() });
+        localEntityTransaction.commit();
+        return;
+      }
+      finally
+      {
+        localEntityTransaction.end();
+      }
+      if (localObject1 != null)
+      {
+        ((DeskTopAppEntity)localObject1).setStatus(1000);
+        DesktopDataManager.access$3100(this.this$0, localEntityManager, (Entity)localObject1);
+        localStringBuilder.append(((DeskTopAppEntity)localObject1).name).append(", ");
+        continue;
+        label231:
+        Object localObject3 = null;
+      }
+    }
   }
 }
 

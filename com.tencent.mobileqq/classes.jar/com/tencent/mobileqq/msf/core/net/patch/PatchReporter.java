@@ -4,14 +4,11 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.b;
-import com.tencent.mobileqq.msf.sdk.report.e;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.msf.sdk.b.e;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Properties;
 
 public class PatchReporter
 {
@@ -112,12 +109,12 @@ public class PatchReporter
         localHashMap.put("relaxCode", String.valueOf(paramInt2));
         localHashMap.put("patchName", paramString3);
         if ((!TextUtils.isEmpty(paramString1)) || (MsfCore.sCore == null)) {
-          break label515;
+          break label459;
         }
         paramString1 = MsfCore.sCore.getMainAccount();
         QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent curUin=" + paramString1 + ", event=" + paramString2 + ", result=" + paramInt1 + ", patchName=" + paramString3);
         if (paramInt1 % 100 != 0) {
-          break label519;
+          break label463;
         }
         bool = true;
         if (("actPatchConfig".equals(paramString2)) || ("actPatchDownload".equals(paramString2)) || ("actPatchResolve".equals(paramString2)) || ("actPatchUnzip".equals(paramString2)))
@@ -131,7 +128,7 @@ public class PatchReporter
         if ("actPatchCheck".equals(paramString2))
         {
           if ((!TextUtils.isEmpty(str2)) && (str2.equals(str1))) {
-            break label518;
+            break label462;
           }
           e.a(paramString1, paramString2, bool, 0L, 0L, localHashMap, null, false);
           PatchSharedPreUtil.updatePatchReportInfo(paramContext, paramString3, str1);
@@ -150,32 +147,19 @@ public class PatchReporter
         str1 = str1 + str3.substring(0, 8) + Integer.parseInt(str3.substring(8)) / 8;
         if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1)))
         {
+          localHashMap.put("uin", paramString1);
+          localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
           e.a(paramString1, paramString2, bool, 0L, 0L, localHashMap, null, false);
-          try
-          {
-            localHashMap.put("uin", paramString1);
-            localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-            paramString1 = new Properties();
-            paramString1.putAll(localHashMap);
-            b.a(BaseApplication.getContext()).reportKVEvent("actPatchInstall", paramString1);
-            PatchSharedPreUtil.updatePatchReportInfo(paramContext, paramString3, str1);
-            QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent actPatchInstall");
-            return;
-          }
-          catch (Exception paramString1)
-          {
-            for (;;)
-            {
-              QLog.d("PatchLogTag", 1, "PatchReporter reportKVEvent actPatchInstall exception=" + paramString1);
-            }
-          }
-          label515:
+          PatchSharedPreUtil.updatePatchReportInfo(paramContext, paramString3, str1);
+          QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent actPatchInstall");
+          return;
+          label459:
           continue;
         }
       }
-      label518:
+      label462:
       return;
-      label519:
+      label463:
       boolean bool = false;
     }
   }

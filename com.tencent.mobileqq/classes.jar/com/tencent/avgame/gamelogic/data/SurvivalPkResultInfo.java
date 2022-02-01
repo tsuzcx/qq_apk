@@ -18,32 +18,37 @@ public class SurvivalPkResultInfo
   public SurvivalPkResultInfo.PKDrawRes pkDrawRes;
   public int rank;
   public List<SurvivalPkResultInfo.Pair<Integer, Long>> rankingUins;
+  public int score;
   public int total;
   public int winReason;
-  public int winRound;
+  public int winRound = -1;
+  public String winTips;
   
   public void copyFrom(SurvivalPkResultInfo paramSurvivalPkResultInfo)
   {
-    if (paramSurvivalPkResultInfo == null) {}
-    do
-    {
+    if (paramSurvivalPkResultInfo == null) {
       return;
-      this.gameSur = paramSurvivalPkResultInfo.gameSur;
-      this.winReason = paramSurvivalPkResultInfo.winReason;
-      this.rank = paramSurvivalPkResultInfo.rank;
-      this.total = paramSurvivalPkResultInfo.total;
-      this.hasAward = paramSurvivalPkResultInfo.hasAward;
-      this.awardText = paramSurvivalPkResultInfo.awardText;
-      this.awardUrl = paramSurvivalPkResultInfo.awardUrl;
-      this.awardUrlStr = paramSurvivalPkResultInfo.awardUrlStr;
-      this.delayAward = paramSurvivalPkResultInfo.delayAward;
-      this.delayAwardTip = paramSurvivalPkResultInfo.delayAwardTip;
-      this.isBothClose = paramSurvivalPkResultInfo.isBothClose;
-      if (paramSurvivalPkResultInfo.rankingUins != null) {
-        this.rankingUins = new ArrayList(paramSurvivalPkResultInfo.rankingUins);
-      }
-    } while (paramSurvivalPkResultInfo.pkDrawRes == null);
-    this.pkDrawRes = new SurvivalPkResultInfo.PKDrawRes(paramSurvivalPkResultInfo.pkDrawRes.isDraw, paramSurvivalPkResultInfo.pkDrawRes.selfCost, paramSurvivalPkResultInfo.pkDrawRes.peerCost);
+    }
+    this.gameSur = paramSurvivalPkResultInfo.gameSur;
+    this.winReason = paramSurvivalPkResultInfo.winReason;
+    this.winRound = paramSurvivalPkResultInfo.winRound;
+    this.rank = paramSurvivalPkResultInfo.rank;
+    this.total = paramSurvivalPkResultInfo.total;
+    this.hasAward = paramSurvivalPkResultInfo.hasAward;
+    this.awardText = paramSurvivalPkResultInfo.awardText;
+    this.awardUrl = paramSurvivalPkResultInfo.awardUrl;
+    this.awardUrlStr = paramSurvivalPkResultInfo.awardUrlStr;
+    this.delayAward = paramSurvivalPkResultInfo.delayAward;
+    this.delayAwardTip = paramSurvivalPkResultInfo.delayAwardTip;
+    this.isBothClose = paramSurvivalPkResultInfo.isBothClose;
+    if (paramSurvivalPkResultInfo.rankingUins != null) {
+      this.rankingUins = new ArrayList(paramSurvivalPkResultInfo.rankingUins);
+    }
+    if (paramSurvivalPkResultInfo.pkDrawRes != null) {
+      this.pkDrawRes = new SurvivalPkResultInfo.PKDrawRes(paramSurvivalPkResultInfo.pkDrawRes.isDraw, paramSurvivalPkResultInfo.pkDrawRes.selfCost, paramSurvivalPkResultInfo.pkDrawRes.peerCost);
+    }
+    this.winTips = paramSurvivalPkResultInfo.winTips;
+    this.score = paramSurvivalPkResultInfo.score;
   }
   
   public String toString()
@@ -62,12 +67,13 @@ public class SurvivalPkResultInfo
     localStringBuilder.append("rankingUins:").append(this.rankingUins).append("|");
     localStringBuilder.append("pkDrawRes:").append(this.pkDrawRes);
     localStringBuilder.append("isBothClose").append(this.isBothClose);
+    localStringBuilder.append("score").append(this.score);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.SurvivalPkResultInfo
  * JD-Core Version:    0.7.0.1
  */

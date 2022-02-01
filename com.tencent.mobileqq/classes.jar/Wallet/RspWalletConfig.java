@@ -13,16 +13,16 @@ public final class RspWalletConfig
   public static final int ACTION_BATCH_CHANGE = 3;
   public static final int ACTION_INCRE_CHANGE = 2;
   public static final int ACTION_NOT_CHANGE = 1;
-  public static int RET_SUCC;
+  public static int RET_SUCC = 0;
   static Map<String, String> cache_mConfig = new HashMap();
-  public int action;
+  public int action = 0;
   public String commonMsg = "";
-  public Map<String, String> mConfig;
-  public int refreshTime;
-  public int refreshType;
-  public long reqType;
-  public int result;
-  public long seriesNo;
+  public Map<String, String> mConfig = null;
+  public int refreshTime = 0;
+  public int refreshType = 0;
+  public long reqType = 0L;
+  public int result = 0;
+  public long seriesNo = 0L;
   
   static
   {

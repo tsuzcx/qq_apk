@@ -11,21 +11,26 @@ import android.util.SparseArray;
 import com.tencent.qbar.QBarResult;
 import java.util.ArrayList;
 import java.util.Iterator;
-import zmj;
 
 public class ScannerResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<ScannerResult> CREATOR = new zmj();
+  public static final Parcelable.Creator<ScannerResult> CREATOR = new ScannerResult.1();
   public ArrayList<QBarResult> a;
   public boolean a;
   public ArrayList<QMiniResult> b;
   public boolean b;
   
-  public ScannerResult() {}
-  
-  public ScannerResult(Parcel paramParcel)
+  public ScannerResult()
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  protected ScannerResult(Parcel paramParcel)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilArrayList = paramParcel.createTypedArrayList(QBarResult.CREATOR);
     this.jdField_b_of_type_JavaUtilArrayList = paramParcel.createTypedArrayList(QMiniResult.CREATOR);
     if (paramParcel.readByte() != 0)
@@ -33,10 +38,10 @@ public class ScannerResult
       bool1 = true;
       this.jdField_a_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label62;
+        break label72;
       }
     }
-    label62:
+    label72:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_b_of_type_Boolean = bool1;
@@ -240,7 +245,7 @@ public class ScannerResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.ScannerResult
  * JD-Core Version:    0.7.0.1
  */

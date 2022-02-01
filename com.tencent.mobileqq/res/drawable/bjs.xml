@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:width="3.0dip" android:color="@color/af4" />
-    <solid android:color="@color/af1" />
-    <corners android:topLeftRadius="8.0dip" android:topRightRadius="8.0dip" android:bottomLeftRadius="8.0dip" android:bottomRightRadius="8.0dip" />
-</shape>
+    <item android:state_checked="true" android:drawable="@drawable/g9a" />
+    <item android:state_selected="true" android:drawable="@drawable/g9a" />
+    <item android:drawable="@drawable/g8i" />
+</selector>

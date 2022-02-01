@@ -9,14 +9,14 @@ public final class QStarInfoRsp
   extends JceStruct
 {
   static ArrayList<QStarInfoItem> cache_followlist;
-  public int cmd;
-  public int follow_xylm;
-  public ArrayList<QStarInfoItem> followlist;
+  public int cmd = 0;
+  public int follow_xylm = 0;
+  public ArrayList<QStarInfoItem> followlist = null;
   public String jumpurl = "";
   public String logourl = "";
-  public int ret;
-  public int seq;
-  public int ver;
+  public int ret = 0;
+  public int seq = 0;
+  public int ver = 0;
   
   public QStarInfoRsp() {}
   
@@ -70,7 +70,7 @@ public final class QStarInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     mqq_qstar.QStarInfoRsp
  * JD-Core Version:    0.7.0.1
  */

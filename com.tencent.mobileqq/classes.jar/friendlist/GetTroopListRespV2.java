@@ -16,17 +16,17 @@ public final class GetTroopListRespV2
   static ArrayList<stTroopNum> cache_vecTroopListDel;
   static ArrayList<stTroopNum> cache_vecTroopListExt;
   static ArrayList<stGroupRankInfo> cache_vecTroopRank;
-  public short errorCode;
-  public int result;
-  public short troopcount;
-  public long uin;
-  public byte[] vecCookies;
-  public ArrayList<stFavoriteGroup> vecFavGroup;
-  public ArrayList<Long> vecGroupInfoExt;
-  public ArrayList<stTroopNum> vecTroopList;
-  public ArrayList<stTroopNum> vecTroopListDel;
-  public ArrayList<stTroopNum> vecTroopListExt;
-  public ArrayList<stGroupRankInfo> vecTroopRank;
+  public short errorCode = 0;
+  public int result = 0;
+  public short troopcount = 0;
+  public long uin = 0L;
+  public byte[] vecCookies = null;
+  public ArrayList<stFavoriteGroup> vecFavGroup = null;
+  public ArrayList<Long> vecGroupInfoExt = null;
+  public ArrayList<stTroopNum> vecTroopList = null;
+  public ArrayList<stTroopNum> vecTroopListDel = null;
+  public ArrayList<stTroopNum> vecTroopListExt = null;
+  public ArrayList<stGroupRankInfo> vecTroopRank = null;
   
   static
   {
@@ -113,7 +113,7 @@ public final class GetTroopListRespV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.GetTroopListRespV2
  * JD-Core Version:    0.7.0.1
  */

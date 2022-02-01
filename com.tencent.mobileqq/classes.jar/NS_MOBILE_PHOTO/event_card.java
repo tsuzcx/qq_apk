@@ -15,10 +15,10 @@ public final class event_card
   static int cache_type;
   public String cardid = "";
   public String desc = "";
-  public Map<String, String> ext;
-  public ArrayList<event_photo> photos;
-  public int status;
-  public int type;
+  public Map<String, String> ext = null;
+  public ArrayList<event_photo> photos = null;
+  public int status = 0;
+  public int type = 0;
   
   static
   {

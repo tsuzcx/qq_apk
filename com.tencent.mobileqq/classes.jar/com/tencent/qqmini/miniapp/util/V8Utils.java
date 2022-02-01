@@ -16,13 +16,15 @@ public class V8Utils
   public static boolean checkEnableV8()
   {
     boolean bool = true;
-    if (WnsConfig.getConfig("qqminiapp", "mini_app_enable_v8_service", 1) > 0)
+    int i = WnsConfig.getConfig("qqminiapp", "mini_app_enable_v8_service", 1);
+    if (i > 0)
     {
       Object localObject = WnsConfig.getConfig("qqminiapp", "mini_app_v8_rt_url", "{ \"url\":\"https://down.qq.com/miniapp/libtv8rt_202008101130.so\",\"size\":535136 }");
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        QMLog.e("V8Utils", "mini_app_v8_rt_url is null");
         return false;
       }
-      int i;
       try
       {
         localObject = new JSONObject((String)localObject);
@@ -39,13 +41,16 @@ public class V8Utils
         QMLog.e("V8Utils", "parse v8rt_url failed", localException);
         return false;
       }
-      if (!v8rtValid(i)) {}
+      if (v8rtValid(i)) {
+        return bool;
+      }
+      AppBrandCmdProxy.g().sendCmd("cmd_update_v8rt", new Bundle(), new V8Utils.1());
     }
     for (;;)
     {
-      return bool;
-      AppBrandCmdProxy.g().sendCmd("cmd_update_v8rt", new Bundle(), new V8Utils.1());
       bool = false;
+      break;
+      QMLog.e("V8Utils", "mini_app_enable_v8_service is " + i);
     }
   }
   
@@ -61,7 +66,7 @@ public class V8Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.V8Utils
  * JD-Core Version:    0.7.0.1
  */

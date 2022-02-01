@@ -12,7 +12,7 @@ public final class DcStandardReportReq
 {
   static ArrayList<Map<String, String>> cache_report_infos = new ArrayList();
   public String dc_name = "";
-  public ArrayList<Map<String, String>> report_infos;
+  public ArrayList<Map<String, String>> report_infos = null;
   
   static
   {

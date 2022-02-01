@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.profilecard.bussiness.circle;
 
-import azrb;
-import baai;
-import baal;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-public class ProfileCircleComponent$FeedVsRspCallBack$1
+class ProfileCircleComponent$FeedVsRspCallBack$1
   implements Runnable
 {
-  public ProfileCircleComponent$FeedVsRspCallBack$1(baal parambaal, baai parambaai) {}
+  ProfileCircleComponent$FeedVsRspCallBack$1(ProfileCircleComponent.FeedVsRspCallBack paramFeedVsRspCallBack, ProfileCircleComponent paramProfileCircleComponent) {}
   
   public void run()
   {
-    this.a.a(((azrb)baai.c(this.a)).a);
+    this.val$circleComponent.makeOrRefreshQQCircle(((ProfileCardInfo)ProfileCircleComponent.access$600(this.val$circleComponent)).a);
   }
 }
 

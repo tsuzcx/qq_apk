@@ -3,7 +3,7 @@ package com.tencent.av.ui;
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
 
-public class VideoControlUI$ToolbarAnimationRunnable
+class VideoControlUI$ToolbarAnimationRunnable
   implements Runnable
 {
   VideoControlUI$ToolbarAnimationRunnable(VideoControlUI paramVideoControlUI) {}
@@ -34,7 +34,7 @@ public class VideoControlUI$ToolbarAnimationRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.ToolbarAnimationRunnable
  * JD-Core Version:    0.7.0.1
  */

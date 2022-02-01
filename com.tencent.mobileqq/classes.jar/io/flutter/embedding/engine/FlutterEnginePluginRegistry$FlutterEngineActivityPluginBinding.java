@@ -80,17 +80,17 @@ class FlutterEnginePluginRegistry$FlutterEngineActivityPluginBinding
   
   boolean onActivityResult(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
   {
-    Iterator localIterator = this.onActivityResultListeners.iterator();
+    Iterator localIterator = new HashSet(this.onActivityResultListeners).iterator();
     for (boolean bool = false;; bool = true)
     {
       if (!localIterator.hasNext()) {
-        break label56;
+        break label61;
       }
       if ((!((PluginRegistry.ActivityResultListener)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent)) && (!bool)) {
         break;
       }
     }
-    label56:
+    label61:
     return bool;
   }
   
@@ -169,7 +169,7 @@ class FlutterEnginePluginRegistry$FlutterEngineActivityPluginBinding
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterEnginePluginRegistry.FlutterEngineActivityPluginBinding
  * JD-Core Version:    0.7.0.1
  */

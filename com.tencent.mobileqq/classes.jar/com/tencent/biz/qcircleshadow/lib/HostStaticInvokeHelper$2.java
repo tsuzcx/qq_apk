@@ -1,25 +1,20 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import auoi;
+import com.tencent.tmassistantbase.network.INetworkChangedObserver;
 
 final class HostStaticInvokeHelper$2
-  implements auoi
+  implements INetworkChangedObserver
 {
-  HostStaticInvokeHelper$2(HostStaticInvokeHelper.FlutterInstallCallBack paramFlutterInstallCallBack) {}
+  HostStaticInvokeHelper$2(HostStaticInvokeHelper.NetworkChangedObserver paramNetworkChangedObserver) {}
   
-  public void onProgress(int paramInt)
+  public void onNetworkChanged()
   {
-    this.val$callBack.onProgress(paramInt);
-  }
-  
-  public void onResult(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    this.val$callBack.onResult(paramBoolean1, paramString, paramBoolean2, paramBoolean3);
+    this.val$observer.onNetworkChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.HostStaticInvokeHelper.2
  * JD-Core Version:    0.7.0.1
  */

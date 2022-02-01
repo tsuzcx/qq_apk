@@ -11,14 +11,14 @@ public final class GetArkTailRsp
   static ArrayList<String> cache_icon_list = new ArrayList();
   public String desc = "";
   public String icon = "";
-  public ArrayList<String> icon_list;
+  public ArrayList<String> icon_list = null;
   public String jump_url = "";
-  public int num;
-  public int style;
-  public int sub_type;
+  public int num = 0;
+  public int style = 0;
+  public int sub_type = 0;
   public String title = "";
-  public int type;
-  public int value;
+  public int type = 0;
+  public int value = 0;
   
   static
   {
@@ -65,7 +65,7 @@ public final class GetArkTailRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.protocol.GetArkTailRsp
  * JD-Core Version:    0.7.0.1
  */

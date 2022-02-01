@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.magicface;
 
-import lgx;
+import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
 
 public class FaceItem
-  extends lgx
+  extends EffectConfigBase.ItemBase
 {
   private String attr;
   private String compress_res_md5;
@@ -150,7 +150,7 @@ public class FaceItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.FaceItem
  * JD-Core Version:    0.7.0.1
  */

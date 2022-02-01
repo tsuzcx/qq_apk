@@ -1,34 +1,105 @@
 package com.tencent.mobileqq.startup.step;
 
-import aauu;
-import alht;
-import bdgy;
-import bhii;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppActivity;
+import com.tencent.common.app.SafeModeUtil;
+import com.tencent.mobileqq.activity.recent.RecentDataListManager;
+import com.tencent.mobileqq.activity.recent.RecentParcelUtil;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.startup.director.StartupDirector;
+import com.tencent.mobileqq.statistics.CaughtExceptionReport;
+import com.tencent.mobileqq.utils.TripleGraySwitchUtil;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
 public class LoadData
   extends Step
 {
+  private boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (!SafeModeUtil.a(BaseApplicationImpl.sApplication)) {
+      return false;
+    }
+    try
+    {
+      QLog.e("LoadData", 2, "prepare try preload Database");
+      paramQQAppInterface.getRecentUserProxy();
+      QLog.e("LoadData", 2, "try preload getRecentUserProxy finish");
+      return true;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      for (;;)
+      {
+        try
+        {
+          QLog.e("LoadData", 2, "try preload fail", paramQQAppInterface);
+          CaughtExceptionReport.a(paramQQAppInterface, "");
+        }
+        catch (Throwable paramQQAppInterface) {}
+      }
+    }
+  }
+  
+  public boolean a(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadData", 2, "LoadDataactivity = " + paramAppRuntime + paramAppRuntime.isLogin());
+    }
+    if ((paramAppRuntime != null) && ((paramAppRuntime instanceof QQAppInterface)) && (!TextUtils.isEmpty(paramAppRuntime.getAccount())))
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)paramAppRuntime;
+      if (paramAppRuntime.isLogin())
+      {
+        if (a(localQQAppInterface)) {
+          return false;
+        }
+        return RecentDataListManager.a().a(localQQAppInterface, BaseApplicationImpl.sApplication, paramBoolean, false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LoadData", 2, new Object[] { "Preload not login account: ", paramAppRuntime.getAccount() });
+      }
+      try
+      {
+        if (a(localQQAppInterface)) {
+          return false;
+        }
+        paramBoolean = RecentDataListManager.a().a(localQQAppInterface, BaseApplicationImpl.sApplication, paramBoolean, false);
+        return paramBoolean;
+      }
+      catch (Throwable paramAppRuntime)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LoadData", 2, "has account and not login, preload fail.");
+        }
+        return false;
+      }
+    }
+    return false;
+  }
+  
   protected boolean doStep()
   {
-    AppActivity localAppActivity = this.mDirector.a;
+    Object localObject = this.mDirector.a;
     long l = System.currentTimeMillis();
-    aauu.a = l;
-    if (localAppActivity != null)
+    SafeModeUtil.a = l;
+    if (localObject != null)
     {
-      if (aauu.a(BaseApplicationImpl.sApplication))
+      if (SafeModeUtil.a(BaseApplicationImpl.sApplication))
       {
-        alht.a(BaseApplicationImpl.sApplication, true);
-        bhii.a(BaseApplicationImpl.sApplication, true, null, null);
+        RecentParcelUtil.a(BaseApplicationImpl.sApplication, true);
+        TripleGraySwitchUtil.a(BaseApplicationImpl.sApplication, true, null, null);
       }
-      AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.waitAppRuntime(null);
-      if (this.mId == 19) {}
-      for (boolean bool = true; (localAppActivity.preloadData(localAppRuntime, bool)) && (System.currentTimeMillis() - l < 550L); bool = false) {
-        return true;
+      if ((localObject instanceof BaseActivity))
+      {
+        localObject = BaseApplicationImpl.sApplication.waitAppRuntime(null);
+        if (this.mId == 19) {}
+        for (boolean bool = true; (a((AppRuntime)localObject, bool)) && (System.currentTimeMillis() - l < 550L); bool = false) {
+          return true;
+        }
+        return false;
       }
-      return false;
     }
     return false;
   }

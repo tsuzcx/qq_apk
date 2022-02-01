@@ -15,11 +15,11 @@ public final class CategoryOpReq
   static Map<String, category_face_confirm_info> cache_groupid_confirm_info;
   static Map<String, ArrayList<s_picdata>> cache_groupid_photos;
   static int cache_op = 0;
-  public Map<String, ArrayList<String>> category_groupids;
-  public Map<String, category_face_confirm_info> groupid_confirm_info;
-  public Map<String, ArrayList<s_picdata>> groupid_photos;
+  public Map<String, ArrayList<String>> category_groupids = null;
+  public Map<String, category_face_confirm_info> groupid_confirm_info = null;
+  public Map<String, ArrayList<s_picdata>> groupid_photos = null;
   public int op = 0;
-  public long op_uin;
+  public long op_uin = 0L;
   
   static
   {

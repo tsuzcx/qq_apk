@@ -2,19 +2,15 @@ package com.tencent.mobileqq.musicgene;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import axku;
-import axla;
-import axlb;
-import axlj;
 
-public class MusicPlayerActivity$1$1$1
+class MusicPlayerActivity$1$1$1
   implements Runnable
 {
-  public MusicPlayerActivity$1$1$1(axlb paramaxlb, int paramInt) {}
+  MusicPlayerActivity$1$1$1(MusicPlayerActivity.1.1 param1, int paramInt) {}
   
   public void run()
   {
-    Object localObject = axku.a(this.jdField_a_of_type_Axlb.jdField_a_of_type_Axlj.c);
+    Object localObject = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1$1.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.c);
     if (localObject != null)
     {
       int i = ((Bitmap)localObject).getWidth();
@@ -24,7 +20,7 @@ public class MusicPlayerActivity$1$1$1
         double d = Math.sqrt(8000.0D / (i * j));
         Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
         ((Bitmap)localObject).recycle();
-        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Axlb.jdField_a_of_type_Axla.a), 55);
+        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1$1.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1.a), 55);
         ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
         ((Message)localObject).obj = localBitmap;
         ((Message)localObject).sendToTarget();

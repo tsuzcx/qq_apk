@@ -10,14 +10,13 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import java.util.ArrayList;
-import roy;
 import tencent.im.oidb.articlesummary.articlesummary.DisLikeInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.DisLikeInfo;
 
 public class DislikeInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DislikeInfo> CREATOR = new roy();
+  public static final Parcelable.Creator<DislikeInfo> CREATOR = new DislikeInfo.1();
   public int a;
   public long a;
   public String a;
@@ -26,7 +25,7 @@ public class DislikeInfo
   
   public DislikeInfo() {}
   
-  public DislikeInfo(Parcel paramParcel)
+  protected DislikeInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_Long = paramParcel.readLong();
@@ -132,7 +131,7 @@ public class DislikeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo
  * JD-Core Version:    0.7.0.1
  */

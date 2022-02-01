@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.share;
 
 import android.os.Bundle;
-import aqcd;
+import com.tencent.mobileqq.ark.share.IArkMessagePreprocessorCallback;
 import com.tencent.mobileqq.mini.launch.CmdCallback.Stub;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class MiniArkShareAsyncPreprocessor$1
   extends CmdCallback.Stub
 {
-  MiniArkShareAsyncPreprocessor$1(MiniArkShareAsyncPreprocessor paramMiniArkShareAsyncPreprocessor, JSONObject paramJSONObject, aqcd paramaqcd, Object paramObject, String paramString) {}
+  MiniArkShareAsyncPreprocessor$1(MiniArkShareAsyncPreprocessor paramMiniArkShareAsyncPreprocessor, JSONObject paramJSONObject, IArkMessagePreprocessorCallback paramIArkMessagePreprocessorCallback, Object paramObject, String paramString) {}
   
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {

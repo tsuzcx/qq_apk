@@ -11,11 +11,11 @@ public final class stRecommandAlbumEx
 {
   static Album cache_albuminfo = new Album();
   static ArrayList<s_picdata> cache_photolist = new ArrayList();
-  public Album albuminfo;
-  public int commentCnt;
-  public int likeCnt;
-  public ArrayList<s_picdata> photolist;
-  public int viewCnt;
+  public Album albuminfo = null;
+  public int commentCnt = 0;
+  public int likeCnt = 0;
+  public ArrayList<s_picdata> photolist = null;
+  public int viewCnt = 0;
   
   static
   {

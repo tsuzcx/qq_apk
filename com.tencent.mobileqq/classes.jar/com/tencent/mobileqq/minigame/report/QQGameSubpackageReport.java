@@ -10,7 +10,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/report/QQGameSubpackageReport;", "Lcom/tencent/mobileqq/triton/statistic/SubpackageLoadStatisticsCallback;", "()V", "onSubpackageLoaded", "", "name", "", "statistic", "Lcom/tencent/mobileqq/triton/statistic/ScriptLoadStatistic;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/report/QQGameSubpackageReport;", "Lcom/tencent/mobileqq/triton/statistic/SubpackageLoadStatisticsCallback;", "()V", "onSubpackageLoaded", "", "name", "", "statistic", "Lcom/tencent/mobileqq/triton/statistic/ScriptLoadStatistic;", "Companion", "qqmini_impl_release"}, k=1, mv={1, 1, 16})
 public final class QQGameSubpackageReport
   implements SubpackageLoadStatisticsCallback
 {

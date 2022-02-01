@@ -1,39 +1,37 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
 import android.os.Bundle;
-import bdcw;
-import bddh;
 import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class RedBagVideoManager$5
+class RedBagVideoManager$5
   implements Runnable
 {
-  public RedBagVideoManager$5(bdcw parambdcw) {}
+  RedBagVideoManager$5(RedBagVideoManager paramRedBagVideoManager) {}
   
   public void run()
   {
     String str1 = null;
-    if (bdcw.a(this.this$0) == null) {}
-    while (bdcw.a(this.this$0).jdField_e_of_type_Int != LocalMediaInfo.REDBAG_TYPE_GET) {
+    if (RedBagVideoManager.a(this.this$0) == null) {}
+    while (RedBagVideoManager.a(this.this$0).jdField_e_of_type_Int != LocalMediaInfo.REDBAG_TYPE_GET) {
       return;
     }
-    String str2 = bdcw.a(this.this$0).d;
+    String str2 = RedBagVideoManager.a(this.this$0).d;
     Object localObject = new Bundle();
     ((Bundle)localObject).putString("VALUE_USER_UIN_TO_GET_NICK_NAME", str2);
-    localObject = bddh.a().a("CMD_GET_NICK_NAME_BY_UIN", (Bundle)localObject);
+    localObject = VideoPlayIPCClient.a().a("CMD_GET_NICK_NAME_BY_UIN", (Bundle)localObject);
     if ((localObject == null) && (QLog.isColorLevel())) {
       QLog.d("RedBagVideoManager", 2, "getNickName VideoPlayIPCClient.callServer value=null");
     }
     if (localObject != null) {}
     for (localObject = ((Bundle)localObject).getString("VALUE_USER_NICK_NAME");; localObject = "")
     {
-      Bundle localBundle = bddh.a().a("CMD_GET_CURRENT_NICK_NAME", null);
+      Bundle localBundle = VideoPlayIPCClient.a().a("CMD_GET_CURRENT_NICK_NAME", null);
       if (localBundle != null) {
         str1 = localBundle.getString("VALUE_GET_CURRENT_NICK_NAME");
       }
-      this.this$0.a(bdcw.a(this.this$0), str2, (String)localObject, str1, bdcw.a(this.this$0).c, bdcw.a(this.this$0).g, bdcw.a(this.this$0).jdField_e_of_type_JavaLangString);
+      this.this$0.a(RedBagVideoManager.a(this.this$0), str2, (String)localObject, str1, RedBagVideoManager.a(this.this$0).c, RedBagVideoManager.a(this.this$0).g, RedBagVideoManager.a(this.this$0).jdField_e_of_type_JavaLangString);
       return;
     }
   }

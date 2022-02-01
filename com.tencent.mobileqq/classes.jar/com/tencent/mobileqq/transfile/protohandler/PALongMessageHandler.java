@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import anza;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.LongMsgUrlRequest;
 import com.tencent.mobileqq.mp.mobileqq_mp.LongMsgUrlResponse;
 import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import java.util.List;
 
@@ -46,13 +46,13 @@ public class PALongMessageHandler
     paramRichProtoReq.resps.add(localLongStructMessageDownResp);
   }
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
     paramProtoReq = paramProtoResp.resp;
     Object localObject = paramProtoResp.resp.getWupBuffer();
-    anza localanza = paramProtoResp.statisInfo;
+    StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
     if (paramProtoReq.getResultCode() == 1000) {}
     try
     {
@@ -78,7 +78,7 @@ public class PALongMessageHandler
           if (paramProtoReq == null) {
             paramProtoResp = "";
           }
-          setResult(-1, 9311, (String)localObject, paramProtoResp, localanza, localRichProtoResp.resps);
+          setResult(-1, 9311, (String)localObject, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
         }
         else
         {
@@ -88,7 +88,7 @@ public class PALongMessageHandler
           if (paramProtoReq == null) {
             paramProtoResp = "";
           }
-          setResult(-1, 9044, (String)localObject, paramProtoResp, localanza, localRichProtoResp.resps);
+          setResult(-1, 9044, (String)localObject, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
         }
       }
     }
@@ -102,7 +102,7 @@ public class PALongMessageHandler
   {
     if ((paramRichProtoReq != null) && (paramRichProtoReq.reqs != null) && (paramRichProtoReq.protoReqMgr != null))
     {
-      ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
+      ProtoReqManagerImpl.ProtoReq localProtoReq = new ProtoReqManagerImpl.ProtoReq();
       localProtoReq.ssoCmd = "PubAccountSvc.pull_long_msg_url";
       localProtoReq.reqBody = constructReqBody(paramRichProtoReq.reqs);
       localProtoReq.busiData = paramRichProtoReq;

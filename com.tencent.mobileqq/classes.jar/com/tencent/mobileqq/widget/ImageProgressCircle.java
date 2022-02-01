@@ -50,14 +50,14 @@ public class ImageProgressCircle
   {
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130848597);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130848977);
       int i = (int)(paramContext.getResources().getDisplayMetrics().density * 12.0F);
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(i);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(Typeface.DEFAULT_BOLD);
       this.jdField_c_of_type_Boolean = true;
-      this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297196);
+      this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297221);
       this.jdField_a_of_type_Int = (this.jdField_c_of_type_Int / 2);
       this.jdField_b_of_type_Int = (this.jdField_c_of_type_Int / 2);
       return;
@@ -76,7 +76,7 @@ public class ImageProgressCircle
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i;
     int j;
@@ -112,7 +112,7 @@ public class ImageProgressCircle
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramInt3 - paramInt1 == 0)
     {
@@ -148,7 +148,7 @@ public class ImageProgressCircle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageProgressCircle
  * JD-Core Version:    0.7.0.1
  */

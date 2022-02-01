@@ -4,16 +4,18 @@ import NS_COMM.COMM.Entry;
 import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
 import android.os.Handler;
 import android.os.HandlerThread;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.biz.qcircleshadow.local.requests.CommandReportRequest;
-import com.tencent.biz.qcircleshadow.local.requests.QCircleClientReportRequest;
+import com.tencent.biz.qcircleshadow.local.util.QCircleHostProtoUtil;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.config.api.IAppSettingApi;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import com.tencent.mobileqq.qcircle.api.requests.CommandReportRequest;
+import com.tencent.mobileqq.qcircle.api.requests.QCircleClientReportRequest;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import cooperation.qqcircle.QCircleConfig;
 import cooperation.qqcircle.report.outbox.QCircleReportOutboxTask;
 import cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue;
 import cooperation.qqcircle.report.outbox.SimpleTaskQueue;
@@ -23,17 +25,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import mqq.app.MobileQQ;
 import qqcircle.QQCircleReport.SingleDcData;
-import vvw;
 
 public class QCircleReporter
 {
   private static final int MESSAGE_CHECK_SHOULD_IMMEDIATE_REPORT_TO_SERVER = 4098;
   private static final int MESSAGE_CHECK_SHOULD_REPORT_TO_SERVER = 4097;
   private static final int REPORT_COUNT_THRESHOLD_NORMAL;
-  private static final int REPORT_COUNT_THRESHOLD_QUALITY = QzoneConfig.getQQCircleQualityReportBufferLength();
+  private static final int REPORT_COUNT_THRESHOLD_QUALITY = QCircleConfig.getQQCircleQualityReportBufferLength();
   private static final long REPORT_IMMEDIATE_INTERVAL = 1000L;
-  private static final long REPORT_NORMAL_INTERVAL = TimeUnit.SECONDS.toMillis(QzoneConfig.getQQCircleReportInterval());
+  private static final long REPORT_NORMAL_INTERVAL = TimeUnit.SECONDS.toMillis(QCircleConfig.getQQCircleReportInterval());
   private static final long REPORT_QUALITY_INTERVAL;
   public static final String TAG = "QCircleReporter";
   private static volatile QCircleReporter sInstance;
@@ -49,8 +51,8 @@ public class QCircleReporter
   
   static
   {
-    REPORT_COUNT_THRESHOLD_NORMAL = QzoneConfig.getQQCircleReportBufferLength();
-    REPORT_QUALITY_INTERVAL = TimeUnit.SECONDS.toMillis(QzoneConfig.getQQCircleQualityReportInterval());
+    REPORT_COUNT_THRESHOLD_NORMAL = QCircleConfig.getQQCircleReportBufferLength();
+    REPORT_QUALITY_INTERVAL = TimeUnit.SECONDS.toMillis(QCircleConfig.getQQCircleQualityReportInterval());
   }
   
   private QCircleReporter()
@@ -162,9 +164,9 @@ public class QCircleReporter
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = new QCircleClientReportRequest(new ArrayList(paramList));
-      if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
+      if (!NetworkUtil.g(MobileQQ.sMobileQQ.getApplicationContext()))
       {
-        QLog.d("QCircleReporter", 2, "performClientReport fail! network is not available,save in cache first");
+        RFLog.d("QCircleReporter", RFLog.CLR, "performClientReport fail! network is not available,save in cache first");
         QCircleReportOutboxTaskQueue.getInstance().addPausedTask(new QCircleReportOutboxTask(paramList));
       }
     }
@@ -172,7 +174,7 @@ public class QCircleReporter
     {
       return;
     }
-    VSNetworkHelper.getInstance().sendRequest(paramList, new QCircleReporter.4(this));
+    VSNetworkHelper.getInstance().sendRequest(MobileQQ.sMobileQQ, paramList, new QCircleReporter.4(this));
   }
   
   private void performCommandDataListReportToServer()
@@ -180,6 +182,9 @@ public class QCircleReporter
     this.mLastCommandReportTimeMillis = System.currentTimeMillis();
     performCommandReport(this.mCommandListPool);
     this.mCommandListPool.clear();
+    if (((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()) {
+      RFLog.d("QCircleReporter", RFLog.CLR, "performQualityDataListReportToServer called");
+    }
   }
   
   private void performCommandReport(List<APP_REPORT_TRANSFER.SingleDcData> paramList)
@@ -195,7 +200,7 @@ public class QCircleReporter
   {
     performClientReport(this.mImmediateDataListPool);
     this.mImmediateDataListPool.clear();
-    QLog.d("QCircleReporter", 2, "performImmediateDataListReportToServer called");
+    RFLog.d("QCircleReporter", RFLog.CLR, "performImmediateDataListReportToServer called");
   }
   
   private void performNormalDataListReportToServer()
@@ -203,7 +208,7 @@ public class QCircleReporter
     this.mLastReportTimeMillis = System.currentTimeMillis();
     performClientReport(this.mNormalDataListPool);
     this.mNormalDataListPool.clear();
-    QLog.d("QCircleReporter", 2, "performNormalDataListReportToServer called");
+    RFLog.d("QCircleReporter", RFLog.CLR, "performNormalDataListReportToServer called");
   }
   
   private void performQualityDataListReportToServer()
@@ -211,17 +216,21 @@ public class QCircleReporter
     this.mLastQualityReportTimeMillis = System.currentTimeMillis();
     performClientReport(this.mQualityDataListPool);
     this.mQualityDataListPool.clear();
-    QLog.d("QCircleReporter", 2, "performQualityDataListReportToServer called");
+    RFLog.d("QCircleReporter", RFLog.CLR, "performQualityDataListReportToServer called");
   }
   
   private void performVideoDataListReportToServer(List<QQCircleReport.SingleDcData> paramList)
   {
     performClientReport(paramList);
     paramList = paramList.iterator();
-    while (paramList.hasNext()) {
+    while (paramList.hasNext())
+    {
       QQCircleReport.SingleDcData localSingleDcData = (QQCircleReport.SingleDcData)paramList.next();
+      if (((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()) {
+        RFLog.d("QCircleReporter", RFLog.CLR, "perform video Data:" + parseString(localSingleDcData));
+      }
     }
-    QLog.d("QCircleReporter", 2, "performVideoDataListReportToServer called");
+    RFLog.d("QCircleReporter", RFLog.CLR, "performVideoDataListReportToServer called");
   }
   
   public void add(QQCircleReport.SingleDcData paramSingleDcData, boolean paramBoolean)
@@ -253,7 +262,7 @@ public class QCircleReporter
   {
     if ((paramList == null) || (paramList.size() == 0))
     {
-      QLog.d("QCircleReporter", 1, "flushVideoReport data error");
+      RFLog.d("QCircleReporter", RFLog.USR, "flushVideoReport data error");
       return;
     }
     this.reportHandler.post(new QCircleReporter.11(this, paramList));
@@ -261,7 +270,7 @@ public class QCircleReporter
   
   public void flushVideoReportByByte(List<byte[]> paramList)
   {
-    flushVideoReport(vvw.a(paramList));
+    flushVideoReport(QCircleHostProtoUtil.a(paramList));
   }
   
   public Handler getReportHandler()
@@ -281,7 +290,7 @@ public class QCircleReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReporter
  * JD-Core Version:    0.7.0.1
  */

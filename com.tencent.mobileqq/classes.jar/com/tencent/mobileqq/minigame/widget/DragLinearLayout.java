@@ -17,7 +17,7 @@ public class DragLinearLayout
   private float downX;
   private float downY;
   private int height;
-  private boolean isDrag;
+  private boolean isDrag = false;
   int left;
   int right;
   private int screenHeight;
@@ -52,8 +52,8 @@ public class DragLinearLayout
   
   private void initScreenConfig()
   {
-    this.screenWidth = ViewUtils.getScreenWidth();
-    this.screenHeight = ViewUtils.getScreenHeight();
+    this.screenWidth = ViewUtils.a();
+    this.screenHeight = ViewUtils.b();
   }
   
   public int getStatusBarHeight()
@@ -67,7 +67,7 @@ public class DragLinearLayout
     return this.isDrag;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.width = getMeasuredWidth();

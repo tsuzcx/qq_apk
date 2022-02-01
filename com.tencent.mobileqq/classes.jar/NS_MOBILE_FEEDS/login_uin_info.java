@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class login_uin_info
   extends JceStruct
 {
-  public int highFiveNotifyStatus;
+  public int highFiveNotifyStatus = 0;
   public String nickname = "";
   
   public login_uin_info() {}

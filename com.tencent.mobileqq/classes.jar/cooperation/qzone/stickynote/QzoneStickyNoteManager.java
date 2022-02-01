@@ -7,17 +7,17 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
-import bace;
-import blha;
 import com.tencent.ditto.utils.ClassLoadUtils;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.bussiness.stickynote.ProfileStickyNoteComponent;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
+import com.tencent.widget.XSimpleListAdapter;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.api.QZoneApiProxy;
 import cooperation.qzone.util.QZLog;
@@ -48,10 +48,10 @@ public class QzoneStickyNoteManager
   private Object mLoadCallback;
   private int mLoadingState = 0;
   private BaseAdapter mQzoneAdapter;
-  private ClassLoader mQzoneClassLoader;
+  private ClassLoader mQzoneClassLoader = null;
   private int mScrollState = 0;
-  private boolean mShouldNotifyDataChanged;
-  private bace mStickyNoteComponent;
+  private boolean mShouldNotifyDataChanged = false;
+  private ProfileStickyNoteComponent mStickyNoteComponent;
   private View mTitleView;
   private int mTotalItemCount;
   private Handler mUiHandler = new Handler(Looper.getMainLooper());
@@ -260,7 +260,7 @@ public class QzoneStickyNoteManager
     }
     try
     {
-      localClass.getDeclaredMethod("setStickyNoteComponent", new Class[] { bace.class }).invoke(this.mQzoneAdapter, new Object[] { this.mStickyNoteComponent });
+      localClass.getDeclaredMethod("setStickyNoteComponent", new Class[] { ProfileStickyNoteComponent.class }).invoke(this.mQzoneAdapter, new Object[] { this.mStickyNoteComponent });
       return;
     }
     catch (Exception localException)
@@ -318,7 +318,7 @@ public class QzoneStickyNoteManager
   public void destroy()
   {
     if ((this.mAdapterLoaded) && (this.mListView != null)) {
-      this.mListView.setAdapter(new blha(null));
+      this.mListView.setAdapter(new XSimpleListAdapter(null));
     }
   }
   
@@ -346,7 +346,7 @@ public class QzoneStickyNoteManager
     }
   }
   
-  public void init(Activity paramActivity, QQAppInterface paramQQAppInterface, Card paramCard, ListView paramListView, View paramView, bace parambace)
+  public void init(Activity paramActivity, QQAppInterface paramQQAppInterface, Card paramCard, ListView paramListView, View paramView, ProfileStickyNoteComponent paramProfileStickyNoteComponent)
   {
     if ((paramActivity == null) || (paramQQAppInterface == null))
     {
@@ -355,7 +355,7 @@ public class QzoneStickyNoteManager
     }
     this.mListView = paramListView;
     this.mTitleView = paramView;
-    this.mStickyNoteComponent = parambace;
+    this.mStickyNoteComponent = paramProfileStickyNoteComponent;
     paramActivity = new WeakReference(paramActivity);
     paramListView = new WeakReference(paramListView);
     ThreadManager.getSubThreadHandler().post(new QzoneStickyNoteManager.1(this, paramQQAppInterface, paramActivity, paramListView, paramCard));
@@ -446,7 +446,7 @@ public class QzoneStickyNoteManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.stickynote.QzoneStickyNoteManager
  * JD-Core Version:    0.7.0.1
  */

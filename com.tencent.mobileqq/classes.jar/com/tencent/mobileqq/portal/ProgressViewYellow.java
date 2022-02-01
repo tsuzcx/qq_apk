@@ -17,7 +17,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bheg;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 public class ProgressViewYellow
   extends View
@@ -29,10 +29,10 @@ public class ProgressViewYellow
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private ShapeDrawable jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+  private int[] jdField_a_of_type_ArrayOfInt = { 2130845491, 2130845492, 2130845493, 2130845494, 2130845495, 2130845496, 2130845497, 2130845498, 2130845499, 2130845500, 2130845501, 2130845502, 2130845503, 2130845504, 2130845505, 2130845506, 2130845507, 2130845508, 2130845509, 2130845510 };
+  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = null;
   private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  private long jdField_b_of_type_Long = 0L;
   private int c;
   private int d;
   
@@ -57,12 +57,12 @@ public class ProgressViewYellow
   private void a()
   {
     int i = 0;
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131298207));
-    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131298209));
-    this.c = ((int)getResources().getDimension(2131298208));
+    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131298287));
+    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131298289));
+    this.c = ((int)getResources().getDimension(2131298288));
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int }, null, null));
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setColor(Color.parseColor("#FC9100"));
+    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setColor(Color.parseColor("#FC7B31"));
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.d = 0;
@@ -127,30 +127,30 @@ public class ProgressViewYellow
       i2 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getHeight();
       this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, j, i2);
       if (j > k - i1) {
-        break label226;
+        break label223;
       }
       localBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i];
       this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, m, j + i1, n);
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+      paramCanvas.drawBitmap(localBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, null);
     }
     for (;;)
     {
       this.d += 1;
       return;
-      label226:
+      label223:
       localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i], 0, 0, k - i1, i2, null, false);
       this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, m, k, n);
       if ((Build.VERSION.SDK_INT >= 11) && (Build.VERSION.SDK_INT < 18))
       {
-        localBitmap = bheg.b(localBitmap, this.jdField_b_of_type_Int, k - i1, i2);
+        localBitmap = ImageUtil.b(localBitmap, this.jdField_b_of_type_Int, k - i1, i2);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, m, k, n);
-        paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+        paramCanvas.drawBitmap(localBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, null);
       }
       else
       {
         this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, Path.Direction.CW);
         paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath, Region.Op.INTERSECT);
-        paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawBitmap(localBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
     }
   }

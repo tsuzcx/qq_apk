@@ -8,7 +8,7 @@ public final class ReqSetCardSwitch
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public ReqHead stHeader;
+  public ReqHead stHeader = null;
   public long uCloseNeighborVote = 2L;
   public long uCloseTimeGateVote = 2L;
   

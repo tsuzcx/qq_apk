@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import aqmz;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.campuscircle.CampusCircleIpcClient;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -12,7 +12,7 @@ class ConfessHalfScreenActivity$2
   
   public void run()
   {
-    Object[] arrayOfObject = aqmz.a().a();
+    Object[] arrayOfObject = CampusCircleIpcClient.a().a();
     if ((arrayOfObject != null) && (arrayOfObject.length == 2))
     {
       boolean bool1 = ((Boolean)arrayOfObject[0]).booleanValue();
@@ -26,7 +26,7 @@ class ConfessHalfScreenActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.2
  * JD-Core Version:    0.7.0.1
  */

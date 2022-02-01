@@ -26,6 +26,8 @@ public class QavMenuBaseView
   public QavMenuBaseView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+    this.jdField_a_of_type_ComTencentAvUiQavPanel = null;
   }
   
   public void a(QavPanel paramQavPanel)
@@ -71,7 +73,7 @@ public class QavMenuBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.QavMenuBaseView
  * JD-Core Version:    0.7.0.1
  */

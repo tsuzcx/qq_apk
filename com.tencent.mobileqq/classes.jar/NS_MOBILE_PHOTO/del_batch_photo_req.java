@@ -15,9 +15,9 @@ public final class del_batch_photo_req
   static ArrayList<String> cache_vids;
   public String albumid = "";
   public int appid = 4;
-  public Map<Integer, String> busi_param;
-  public ArrayList<String> picid_list;
-  public ArrayList<String> vids;
+  public Map<Integer, String> busi_param = null;
+  public ArrayList<String> picid_list = null;
+  public ArrayList<String> vids = null;
   
   static
   {

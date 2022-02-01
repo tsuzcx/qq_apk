@@ -13,11 +13,11 @@ public final class SvcReqGetDevLoginInfo
   static byte[] cache_vecGuid;
   public long iGetDevListType = 7L;
   public long iLoginType = 1L;
-  public long iNextItemIndex;
-  public long iRequireMax;
-  public long iTimeStamp;
+  public long iNextItemIndex = 0L;
+  public long iRequireMax = 0L;
+  public long iTimeStamp = 0L;
   public String strAppName = "";
-  public byte[] vecGuid;
+  public byte[] vecGuid = null;
   
   static
   {

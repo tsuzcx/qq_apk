@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJQQAppInterfaceUtil;
 import com.tencent.qphone.base.util.QLog;
-import pnn;
+import cooperation.readinjoy.ReadInJoyHelper;
 
-public final class RIJSPUtils$1
+final class RIJSPUtils$1
   implements Runnable
 {
-  public RIJSPUtils$1(boolean paramBoolean, String paramString) {}
+  RIJSPUtils$1(boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    Object localObject = bmhv.a(pnn.a(), this.jdField_a_of_type_Boolean, true);
+    Object localObject = ReadInJoyHelper.a(RIJQQAppInterfaceUtil.a(), this.jdField_a_of_type_Boolean, true);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -25,7 +25,7 @@ public final class RIJSPUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJSPUtils.1
  * JD-Core Version:    0.7.0.1
  */

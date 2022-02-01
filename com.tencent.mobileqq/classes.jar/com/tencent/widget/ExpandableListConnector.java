@@ -10,35 +10,32 @@ import android.widget.ExpandableListAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.HeterogeneousExpandableList;
-import blbo;
-import blbp;
-import blbq;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.VersionUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ExpandableListConnector
+class ExpandableListConnector
   extends BaseAdapter
   implements Filterable
 {
-  private int jdField_a_of_type_Int;
-  private final DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new blbo(this);
-  private ExpandableListAdapter jdField_a_of_type_AndroidWidgetExpandableListAdapter;
-  private ArrayList<ExpandableListConnector.GroupMetadata> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b = 2147483647;
+  private final DataSetObserver mDataSetObserver = new ExpandableListConnector.MyDataSetObserver(this);
+  private ArrayList<ExpandableListConnector.GroupMetadata> mExpGroupMetadataList = new ArrayList();
+  private ExpandableListAdapter mExpandableListAdapter;
+  private int mMaxExpGroupCount = 2147483647;
+  private int mTotalExpChildrenCount;
   
   public ExpandableListConnector(ExpandableListAdapter paramExpandableListAdapter)
   {
-    a(paramExpandableListAdapter);
+    setExpandableListAdapter(paramExpandableListAdapter);
   }
   
-  private void a(boolean paramBoolean1, boolean paramBoolean2)
+  private void refreshExpGroupMetadataList(boolean paramBoolean1, boolean paramBoolean2)
   {
     int i1 = 0;
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.mExpGroupMetadataList;
     int i = localArrayList.size();
-    this.jdField_a_of_type_Int = 0;
+    this.mTotalExpChildrenCount = 0;
     int j = i;
     int n;
     int k;
@@ -51,9 +48,9 @@ public class ExpandableListConnector
       if (n >= 0)
       {
         localGroupMetadata = (ExpandableListConnector.GroupMetadata)localArrayList.get(n);
-        int i2 = a(localGroupMetadata.jdField_a_of_type_Long, localGroupMetadata.c);
+        int i2 = findGroupPosition(localGroupMetadata.gId, localGroupMetadata.gPos);
         m = i;
-        if (i2 == localGroupMetadata.c) {
+        if (i2 == localGroupMetadata.gPos) {
           break label289;
         }
         j = i;
@@ -62,7 +59,7 @@ public class ExpandableListConnector
           localArrayList.remove(n);
           j = i - 1;
         }
-        localGroupMetadata.c = i2;
+        localGroupMetadata.gPos = i2;
         m = j;
         if (k != 0) {
           break label289;
@@ -89,15 +86,15 @@ public class ExpandableListConnector
       if (i < j)
       {
         localGroupMetadata = (ExpandableListConnector.GroupMetadata)localArrayList.get(i);
-        if ((localGroupMetadata.b == -1) || (paramBoolean1)) {}
-        for (n = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getChildrenCount(localGroupMetadata.c);; n = localGroupMetadata.b - localGroupMetadata.jdField_a_of_type_Int)
+        if ((localGroupMetadata.lastChildFlPos == -1) || (paramBoolean1)) {}
+        for (n = this.mExpandableListAdapter.getChildrenCount(localGroupMetadata.gPos);; n = localGroupMetadata.lastChildFlPos - localGroupMetadata.flPos)
         {
-          this.jdField_a_of_type_Int += n;
-          m += localGroupMetadata.c - k;
-          k = localGroupMetadata.c;
-          localGroupMetadata.jdField_a_of_type_Int = m;
+          this.mTotalExpChildrenCount += n;
+          m += localGroupMetadata.gPos - k;
+          k = localGroupMetadata.gPos;
+          localGroupMetadata.flPos = m;
           m = n + m;
-          localGroupMetadata.b = m;
+          localGroupMetadata.lastChildFlPos = m;
           i += 1;
           break;
         }
@@ -109,9 +106,73 @@ public class ExpandableListConnector
     }
   }
   
-  int a(long paramLong, int paramInt)
+  public boolean areAllItemsEnabled()
   {
-    int i1 = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getGroupCount();
+    return this.mExpandableListAdapter.areAllItemsEnabled();
+  }
+  
+  boolean collapseGroup(int paramInt)
+  {
+    ExpandableListConnector.PositionMetadata localPositionMetadata = getFlattenedPos(ExpandableListPosition.obtain(2, paramInt, -1, -1));
+    if (localPositionMetadata == null) {
+      return false;
+    }
+    boolean bool = collapseGroup(localPositionMetadata);
+    localPositionMetadata.recycle();
+    return bool;
+  }
+  
+  boolean collapseGroup(ExpandableListConnector.PositionMetadata paramPositionMetadata)
+  {
+    if (paramPositionMetadata.groupMetadata == null) {
+      return false;
+    }
+    this.mExpGroupMetadataList.remove(paramPositionMetadata.groupMetadata);
+    refreshExpGroupMetadataList(false, false);
+    notifyDataSetChanged();
+    this.mExpandableListAdapter.onGroupCollapsed(paramPositionMetadata.groupMetadata.gPos);
+    return true;
+  }
+  
+  boolean expandGroup(int paramInt)
+  {
+    ExpandableListConnector.PositionMetadata localPositionMetadata = getFlattenedPos(ExpandableListPosition.obtain(2, paramInt, -1, -1));
+    boolean bool = expandGroup(localPositionMetadata);
+    localPositionMetadata.recycle();
+    return bool;
+  }
+  
+  boolean expandGroup(ExpandableListConnector.PositionMetadata paramPositionMetadata)
+  {
+    if (paramPositionMetadata.position.groupPos < 0) {
+      throw new RuntimeException("Need group");
+    }
+    if (this.mMaxExpGroupCount == 0) {
+      return false;
+    }
+    if (paramPositionMetadata.groupMetadata != null) {
+      return false;
+    }
+    if (this.mExpGroupMetadataList.size() >= this.mMaxExpGroupCount)
+    {
+      localGroupMetadata = (ExpandableListConnector.GroupMetadata)this.mExpGroupMetadataList.get(0);
+      int i = this.mExpGroupMetadataList.indexOf(localGroupMetadata);
+      collapseGroup(localGroupMetadata.gPos);
+      if (paramPositionMetadata.groupInsertIndex > i) {
+        paramPositionMetadata.groupInsertIndex -= 1;
+      }
+    }
+    ExpandableListConnector.GroupMetadata localGroupMetadata = ExpandableListConnector.GroupMetadata.obtain(-1, -1, paramPositionMetadata.position.groupPos, this.mExpandableListAdapter.getGroupId(paramPositionMetadata.position.groupPos));
+    this.mExpGroupMetadataList.add(paramPositionMetadata.groupInsertIndex, localGroupMetadata);
+    refreshExpGroupMetadataList(false, false);
+    notifyDataSetChanged();
+    this.mExpandableListAdapter.onGroupExpanded(localGroupMetadata.gPos);
+    return true;
+  }
+  
+  int findGroupPosition(long paramLong, int paramInt)
+  {
+    int i1 = this.mExpandableListAdapter.getGroupCount();
     int m;
     if (i1 == 0)
     {
@@ -124,7 +185,7 @@ public class ExpandableListConnector
     paramInt = Math.min(i1 - 1, Math.max(0, paramInt));
     long l = SystemClock.uptimeMillis();
     int i = 0;
-    ExpandableListAdapter localExpandableListAdapter = a();
+    ExpandableListAdapter localExpandableListAdapter = getAdapter();
     label66:
     int n;
     int j;
@@ -182,18 +243,162 @@ public class ExpandableListConnector
     }
   }
   
-  ExpandableListAdapter a()
+  ExpandableListAdapter getAdapter()
   {
-    return this.jdField_a_of_type_AndroidWidgetExpandableListAdapter;
+    return this.mExpandableListAdapter;
   }
   
-  blbp a(int paramInt)
+  public int getCount()
+  {
+    return this.mExpandableListAdapter.getGroupCount() + this.mTotalExpChildrenCount;
+  }
+  
+  ArrayList<ExpandableListConnector.GroupMetadata> getExpandedGroupMetadataList()
+  {
+    return this.mExpGroupMetadataList;
+  }
+  
+  public Filter getFilter()
+  {
+    ExpandableListAdapter localExpandableListAdapter = getAdapter();
+    if ((localExpandableListAdapter instanceof Filterable)) {
+      return ((Filterable)localExpandableListAdapter).getFilter();
+    }
+    return null;
+  }
+  
+  ExpandableListConnector.PositionMetadata getFlattenedPos(ExpandableListPosition paramExpandableListPosition)
+  {
+    int j = 0;
+    Object localObject2 = null;
+    ArrayList localArrayList = this.mExpGroupMetadataList;
+    int i = localArrayList.size();
+    Object localObject1;
+    if (i == 0)
+    {
+      localObject1 = ExpandableListConnector.PositionMetadata.obtain(paramExpandableListPosition.groupPos, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, null, 0);
+      return localObject1;
+    }
+    for (;;)
+    {
+      if (k <= i)
+      {
+        int m = (i - k) / 2 + k;
+        ExpandableListConnector.GroupMetadata localGroupMetadata = (ExpandableListConnector.GroupMetadata)localArrayList.get(m);
+        if (paramExpandableListPosition.groupPos > localGroupMetadata.gPos)
+        {
+          k = m + 1;
+          j = m;
+          continue;
+        }
+        if (paramExpandableListPosition.groupPos < localGroupMetadata.gPos)
+        {
+          i = m - 1;
+          j = m;
+          continue;
+        }
+        j = m;
+        if (paramExpandableListPosition.groupPos != localGroupMetadata.gPos) {
+          continue;
+        }
+        if (paramExpandableListPosition.type == 2) {
+          return ExpandableListConnector.PositionMetadata.obtain(localGroupMetadata.flPos, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, localGroupMetadata, m);
+        }
+        localObject1 = localObject2;
+        if (paramExpandableListPosition.type != 1) {
+          break;
+        }
+        return ExpandableListConnector.PositionMetadata.obtain(localGroupMetadata.flPos + paramExpandableListPosition.childPos + 1, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, localGroupMetadata, m);
+      }
+      localObject1 = localObject2;
+      if (paramExpandableListPosition.type != 2) {
+        break;
+      }
+      if (k > j)
+      {
+        localObject1 = (ExpandableListConnector.GroupMetadata)localArrayList.get(k - 1);
+        i = ((ExpandableListConnector.GroupMetadata)localObject1).lastChildFlPos;
+        return ExpandableListConnector.PositionMetadata.obtain(paramExpandableListPosition.groupPos - ((ExpandableListConnector.GroupMetadata)localObject1).gPos + i, paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, null, k);
+      }
+      localObject1 = localObject2;
+      if (i >= j) {
+        break;
+      }
+      i += 1;
+      localObject1 = (ExpandableListConnector.GroupMetadata)localArrayList.get(i);
+      return ExpandableListConnector.PositionMetadata.obtain(((ExpandableListConnector.GroupMetadata)localObject1).flPos - (((ExpandableListConnector.GroupMetadata)localObject1).gPos - paramExpandableListPosition.groupPos), paramExpandableListPosition.type, paramExpandableListPosition.groupPos, paramExpandableListPosition.childPos, null, i);
+      i -= 1;
+      int k = 0;
+    }
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    ExpandableListConnector.PositionMetadata localPositionMetadata = getUnflattenedPos(paramInt);
+    if (localPositionMetadata.position.type == 2) {}
+    for (Object localObject = this.mExpandableListAdapter.getGroup(localPositionMetadata.position.groupPos);; localObject = this.mExpandableListAdapter.getChild(localPositionMetadata.position.groupPos, localPositionMetadata.position.childPos))
+    {
+      localPositionMetadata.recycle();
+      return localObject;
+      if (localPositionMetadata.position.type != 1) {
+        break;
+      }
+    }
+    throw new RuntimeException("Flat list position is of unknown type");
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    ExpandableListConnector.PositionMetadata localPositionMetadata = getUnflattenedPos(paramInt);
+    long l1 = this.mExpandableListAdapter.getGroupId(localPositionMetadata.position.groupPos);
+    if (localPositionMetadata.position.type == 2) {}
+    long l2;
+    for (l1 = this.mExpandableListAdapter.getCombinedGroupId(l1);; l1 = this.mExpandableListAdapter.getCombinedChildId(l1, l2))
+    {
+      localPositionMetadata.recycle();
+      return l1;
+      if (localPositionMetadata.position.type != 1) {
+        break;
+      }
+      l2 = this.mExpandableListAdapter.getChildId(localPositionMetadata.position.groupPos, localPositionMetadata.position.childPos);
+    }
+    throw new RuntimeException("Flat list position is of unknown type");
+  }
+  
+  @TargetApi(8)
+  public int getItemViewType(int paramInt)
+  {
+    ExpandableListPosition localExpandableListPosition = getUnflattenedPos(paramInt).position;
+    HeterogeneousExpandableList localHeterogeneousExpandableList;
+    if ((VersionUtils.b()) && ((this.mExpandableListAdapter instanceof HeterogeneousExpandableList)))
+    {
+      localHeterogeneousExpandableList = (HeterogeneousExpandableList)this.mExpandableListAdapter;
+      if (localExpandableListPosition.type == 2) {
+        paramInt = localHeterogeneousExpandableList.getGroupType(localExpandableListPosition.groupPos);
+      }
+    }
+    for (;;)
+    {
+      localExpandableListPosition.recycle();
+      return paramInt;
+      paramInt = localHeterogeneousExpandableList.getChildType(localExpandableListPosition.groupPos, localExpandableListPosition.childPos);
+      paramInt = localHeterogeneousExpandableList.getGroupTypeCount() + paramInt;
+      continue;
+      if (localExpandableListPosition.type == 2) {
+        paramInt = 0;
+      } else {
+        paramInt = 1;
+      }
+    }
+  }
+  
+  ExpandableListConnector.PositionMetadata getUnflattenedPos(int paramInt)
   {
     int k = 0;
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.mExpGroupMetadataList;
     int i = ((ArrayList)localObject).size();
     if (i == 0) {
-      return blbp.a(paramInt, 2, paramInt, -1, null, 0);
+      return ExpandableListConnector.PositionMetadata.obtain(paramInt, 2, paramInt, -1, null, 0);
     }
     for (;;)
     {
@@ -202,26 +407,26 @@ public class ExpandableListConnector
       {
         int m = (j - i) / 2 + i;
         ExpandableListConnector.GroupMetadata localGroupMetadata = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(m);
-        if (paramInt > localGroupMetadata.b)
+        if (paramInt > localGroupMetadata.lastChildFlPos)
         {
           i = m + 1;
           k = m;
         }
-        else if (paramInt < localGroupMetadata.jdField_a_of_type_Int)
+        else if (paramInt < localGroupMetadata.flPos)
         {
           j = m - 1;
           k = m;
         }
         else
         {
-          if (paramInt == localGroupMetadata.jdField_a_of_type_Int) {
-            return blbp.a(paramInt, 2, localGroupMetadata.c, -1, localGroupMetadata, m);
+          if (paramInt == localGroupMetadata.flPos) {
+            return ExpandableListConnector.PositionMetadata.obtain(paramInt, 2, localGroupMetadata.gPos, -1, localGroupMetadata, m);
           }
           k = m;
-          if (paramInt <= localGroupMetadata.b)
+          if (paramInt <= localGroupMetadata.lastChildFlPos)
           {
-            i = localGroupMetadata.jdField_a_of_type_Int;
-            return blbp.a(paramInt, 1, localGroupMetadata.c, paramInt - (i + 1), localGroupMetadata, m);
+            i = localGroupMetadata.flPos;
+            return ExpandableListConnector.PositionMetadata.obtain(paramInt, 1, localGroupMetadata.gPos, paramInt - (i + 1), localGroupMetadata, m);
           }
         }
       }
@@ -230,12 +435,12 @@ public class ExpandableListConnector
         if (i > k)
         {
           localObject = (ExpandableListConnector.GroupMetadata)((ArrayList)localObject).get(i - 1);
-          k = paramInt - ((ExpandableListConnector.GroupMetadata)localObject).b + ((ExpandableListConnector.GroupMetadata)localObject).c;
+          k = paramInt - ((ExpandableListConnector.GroupMetadata)localObject).lastChildFlPos + ((ExpandableListConnector.GroupMetadata)localObject).gPos;
           j = i;
         }
-        for (i = k;; i = ((ExpandableListConnector.GroupMetadata)localObject).c - (((ExpandableListConnector.GroupMetadata)localObject).jdField_a_of_type_Int - paramInt))
+        for (i = k;; i = ((ExpandableListConnector.GroupMetadata)localObject).gPos - (((ExpandableListConnector.GroupMetadata)localObject).flPos - paramInt))
         {
-          return blbp.a(paramInt, 2, i, -1, null, j);
+          return ExpandableListConnector.PositionMetadata.obtain(paramInt, 2, i, -1, null, j);
           if (j >= k) {
             break;
           }
@@ -249,268 +454,24 @@ public class ExpandableListConnector
     }
   }
   
-  blbp a(blbq paramblbq)
-  {
-    int j = 0;
-    Object localObject2 = null;
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    int i = localArrayList.size();
-    Object localObject1;
-    if (i == 0)
-    {
-      localObject1 = blbp.a(paramblbq.jdField_a_of_type_Int, paramblbq.d, paramblbq.jdField_a_of_type_Int, paramblbq.b, null, 0);
-      return localObject1;
-    }
-    for (;;)
-    {
-      if (k <= i)
-      {
-        int m = (i - k) / 2 + k;
-        ExpandableListConnector.GroupMetadata localGroupMetadata = (ExpandableListConnector.GroupMetadata)localArrayList.get(m);
-        if (paramblbq.jdField_a_of_type_Int > localGroupMetadata.c)
-        {
-          k = m + 1;
-          j = m;
-          continue;
-        }
-        if (paramblbq.jdField_a_of_type_Int < localGroupMetadata.c)
-        {
-          i = m - 1;
-          j = m;
-          continue;
-        }
-        j = m;
-        if (paramblbq.jdField_a_of_type_Int != localGroupMetadata.c) {
-          continue;
-        }
-        if (paramblbq.d == 2) {
-          return blbp.a(localGroupMetadata.jdField_a_of_type_Int, paramblbq.d, paramblbq.jdField_a_of_type_Int, paramblbq.b, localGroupMetadata, m);
-        }
-        localObject1 = localObject2;
-        if (paramblbq.d != 1) {
-          break;
-        }
-        return blbp.a(localGroupMetadata.jdField_a_of_type_Int + paramblbq.b + 1, paramblbq.d, paramblbq.jdField_a_of_type_Int, paramblbq.b, localGroupMetadata, m);
-      }
-      localObject1 = localObject2;
-      if (paramblbq.d != 2) {
-        break;
-      }
-      if (k > j)
-      {
-        localObject1 = (ExpandableListConnector.GroupMetadata)localArrayList.get(k - 1);
-        i = ((ExpandableListConnector.GroupMetadata)localObject1).b;
-        return blbp.a(paramblbq.jdField_a_of_type_Int - ((ExpandableListConnector.GroupMetadata)localObject1).c + i, paramblbq.d, paramblbq.jdField_a_of_type_Int, paramblbq.b, null, k);
-      }
-      localObject1 = localObject2;
-      if (i >= j) {
-        break;
-      }
-      i += 1;
-      localObject1 = (ExpandableListConnector.GroupMetadata)localArrayList.get(i);
-      return blbp.a(((ExpandableListConnector.GroupMetadata)localObject1).jdField_a_of_type_Int - (((ExpandableListConnector.GroupMetadata)localObject1).c - paramblbq.jdField_a_of_type_Int), paramblbq.d, paramblbq.jdField_a_of_type_Int, paramblbq.b, null, i);
-      i -= 1;
-      int k = 0;
-    }
-  }
-  
-  ArrayList<ExpandableListConnector.GroupMetadata> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(ExpandableListAdapter paramExpandableListAdapter)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetExpandableListAdapter != null) {
-      this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
-    }
-    this.jdField_a_of_type_AndroidWidgetExpandableListAdapter = paramExpandableListAdapter;
-    paramExpandableListAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
-  }
-  
-  void a(ArrayList<ExpandableListConnector.GroupMetadata> paramArrayList)
-  {
-    if ((paramArrayList == null) || (this.jdField_a_of_type_AndroidWidgetExpandableListAdapter == null)) {
-      return;
-    }
-    int j = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getGroupCount();
-    int i = paramArrayList.size() - 1;
-    for (;;)
-    {
-      if (i < 0) {
-        break label55;
-      }
-      if (((ExpandableListConnector.GroupMetadata)paramArrayList.get(i)).c >= j) {
-        break;
-      }
-      i -= 1;
-    }
-    label55:
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    a(true, false);
-  }
-  
-  boolean a(int paramInt)
-  {
-    blbp localblbp = a(blbq.a(2, paramInt, -1, -1));
-    if (localblbp == null) {
-      return false;
-    }
-    boolean bool = a(localblbp);
-    localblbp.a();
-    return bool;
-  }
-  
-  boolean a(blbp paramblbp)
-  {
-    if (paramblbp.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata == null) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramblbp.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata);
-    a(false, false);
-    notifyDataSetChanged();
-    this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.onGroupCollapsed(paramblbp.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata.c);
-    return true;
-  }
-  
-  public boolean areAllItemsEnabled()
-  {
-    return this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.areAllItemsEnabled();
-  }
-  
-  public boolean b(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    while (i >= 0)
-    {
-      if (((ExpandableListConnector.GroupMetadata)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c == paramInt) {
-        return true;
-      }
-      i -= 1;
-    }
-    return false;
-  }
-  
-  boolean b(blbp paramblbp)
-  {
-    if (paramblbp.jdField_a_of_type_Blbq.jdField_a_of_type_Int < 0) {
-      throw new RuntimeException("Need group");
-    }
-    if (this.b == 0) {
-      return false;
-    }
-    if (paramblbp.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata != null) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.b)
-    {
-      localGroupMetadata = (ExpandableListConnector.GroupMetadata)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(localGroupMetadata);
-      a(localGroupMetadata.c);
-      if (paramblbp.jdField_a_of_type_Int > i) {
-        paramblbp.jdField_a_of_type_Int -= 1;
-      }
-    }
-    ExpandableListConnector.GroupMetadata localGroupMetadata = ExpandableListConnector.GroupMetadata.a(-1, -1, paramblbp.jdField_a_of_type_Blbq.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getGroupId(paramblbp.jdField_a_of_type_Blbq.jdField_a_of_type_Int));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramblbp.jdField_a_of_type_Int, localGroupMetadata);
-    a(false, false);
-    notifyDataSetChanged();
-    this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.onGroupExpanded(localGroupMetadata.c);
-    return true;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getGroupCount() + this.jdField_a_of_type_Int;
-  }
-  
-  public Filter getFilter()
-  {
-    ExpandableListAdapter localExpandableListAdapter = a();
-    if ((localExpandableListAdapter instanceof Filterable)) {
-      return ((Filterable)localExpandableListAdapter).getFilter();
-    }
-    return null;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    blbp localblbp = a(paramInt);
-    if (localblbp.jdField_a_of_type_Blbq.d == 2) {}
-    for (Object localObject = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getGroup(localblbp.jdField_a_of_type_Blbq.jdField_a_of_type_Int);; localObject = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getChild(localblbp.jdField_a_of_type_Blbq.jdField_a_of_type_Int, localblbp.jdField_a_of_type_Blbq.b))
-    {
-      localblbp.a();
-      return localObject;
-      if (localblbp.jdField_a_of_type_Blbq.d != 1) {
-        break;
-      }
-    }
-    throw new RuntimeException("Flat list position is of unknown type");
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    blbp localblbp = a(paramInt);
-    long l1 = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getGroupId(localblbp.jdField_a_of_type_Blbq.jdField_a_of_type_Int);
-    if (localblbp.jdField_a_of_type_Blbq.d == 2) {}
-    long l2;
-    for (l1 = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getCombinedGroupId(l1);; l1 = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getCombinedChildId(l1, l2))
-    {
-      localblbp.a();
-      return l1;
-      if (localblbp.jdField_a_of_type_Blbq.d != 1) {
-        break;
-      }
-      l2 = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getChildId(localblbp.jdField_a_of_type_Blbq.jdField_a_of_type_Int, localblbp.jdField_a_of_type_Blbq.b);
-    }
-    throw new RuntimeException("Flat list position is of unknown type");
-  }
-  
-  @TargetApi(8)
-  public int getItemViewType(int paramInt)
-  {
-    blbq localblbq = a(paramInt).jdField_a_of_type_Blbq;
-    HeterogeneousExpandableList localHeterogeneousExpandableList;
-    if ((VersionUtils.isrFroyo()) && ((this.jdField_a_of_type_AndroidWidgetExpandableListAdapter instanceof HeterogeneousExpandableList)))
-    {
-      localHeterogeneousExpandableList = (HeterogeneousExpandableList)this.jdField_a_of_type_AndroidWidgetExpandableListAdapter;
-      if (localblbq.d == 2) {
-        paramInt = localHeterogeneousExpandableList.getGroupType(localblbq.jdField_a_of_type_Int);
-      }
-    }
-    for (;;)
-    {
-      localblbq.a();
-      return paramInt;
-      paramInt = localHeterogeneousExpandableList.getChildType(localblbq.jdField_a_of_type_Int, localblbq.b);
-      paramInt = localHeterogeneousExpandableList.getGroupTypeCount() + paramInt;
-      continue;
-      if (localblbq.d == 2) {
-        paramInt = 0;
-      } else {
-        paramInt = 1;
-      }
-    }
-  }
-  
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     boolean bool = true;
-    blbp localblbp = a(paramInt);
+    ExpandableListConnector.PositionMetadata localPositionMetadata = getUnflattenedPos(paramInt);
     View localView;
-    if (localblbp.jdField_a_of_type_Blbq.d == 2)
+    if (localPositionMetadata.position.type == 2)
     {
-      localView = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getGroupView(localblbp.jdField_a_of_type_Blbq.jdField_a_of_type_Int, localblbp.a(), paramView, paramViewGroup);
-      localblbp.a();
+      localView = this.mExpandableListAdapter.getGroupView(localPositionMetadata.position.groupPos, localPositionMetadata.isExpanded(), paramView, paramViewGroup);
+      localPositionMetadata.recycle();
       EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
       return localView;
     }
-    if (localblbp.jdField_a_of_type_Blbq.d == 1)
+    if (localPositionMetadata.position.type == 1)
     {
-      if (localblbp.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata.b == paramInt) {}
+      if (localPositionMetadata.groupMetadata.lastChildFlPos == paramInt) {}
       for (;;)
       {
-        localView = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getChildView(localblbp.jdField_a_of_type_Blbq.jdField_a_of_type_Int, localblbp.jdField_a_of_type_Blbq.b, bool, paramView, paramViewGroup);
+        localView = this.mExpandableListAdapter.getChildView(localPositionMetadata.position.groupPos, localPositionMetadata.position.childPos, bool, paramView, paramViewGroup);
         break;
         bool = false;
       }
@@ -521,9 +482,9 @@ public class ExpandableListConnector
   @TargetApi(8)
   public int getViewTypeCount()
   {
-    if ((VersionUtils.isrFroyo()) && ((this.jdField_a_of_type_AndroidWidgetExpandableListAdapter instanceof HeterogeneousExpandableList)))
+    if ((VersionUtils.b()) && ((this.mExpandableListAdapter instanceof HeterogeneousExpandableList)))
     {
-      HeterogeneousExpandableList localHeterogeneousExpandableList = (HeterogeneousExpandableList)this.jdField_a_of_type_AndroidWidgetExpandableListAdapter;
+      HeterogeneousExpandableList localHeterogeneousExpandableList = (HeterogeneousExpandableList)this.mExpandableListAdapter;
       int i = localHeterogeneousExpandableList.getGroupTypeCount();
       return localHeterogeneousExpandableList.getChildTypeCount() + i;
     }
@@ -532,12 +493,12 @@ public class ExpandableListConnector
   
   public boolean hasStableIds()
   {
-    return this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.hasStableIds();
+    return this.mExpandableListAdapter.hasStableIds();
   }
   
   public boolean isEmpty()
   {
-    ExpandableListAdapter localExpandableListAdapter = a();
+    ExpandableListAdapter localExpandableListAdapter = getAdapter();
     if (localExpandableListAdapter != null) {
       return localExpandableListAdapter.isEmpty();
     }
@@ -547,17 +508,66 @@ public class ExpandableListConnector
   public boolean isEnabled(int paramInt)
   {
     boolean bool = true;
-    blbq localblbq = a(paramInt).jdField_a_of_type_Blbq;
-    if (localblbq.d == 1) {
-      bool = this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.isChildSelectable(localblbq.jdField_a_of_type_Int, localblbq.b);
+    ExpandableListPosition localExpandableListPosition = getUnflattenedPos(paramInt).position;
+    if (localExpandableListPosition.type == 1) {
+      bool = this.mExpandableListAdapter.isChildSelectable(localExpandableListPosition.groupPos, localExpandableListPosition.childPos);
     }
-    localblbq.a();
+    localExpandableListPosition.recycle();
     return bool;
+  }
+  
+  public boolean isGroupExpanded(int paramInt)
+  {
+    int i = this.mExpGroupMetadataList.size() - 1;
+    while (i >= 0)
+    {
+      if (((ExpandableListConnector.GroupMetadata)this.mExpGroupMetadataList.get(i)).gPos == paramInt) {
+        return true;
+      }
+      i -= 1;
+    }
+    return false;
+  }
+  
+  public void setExpandableListAdapter(ExpandableListAdapter paramExpandableListAdapter)
+  {
+    if (this.mExpandableListAdapter != null) {
+      this.mExpandableListAdapter.unregisterDataSetObserver(this.mDataSetObserver);
+    }
+    this.mExpandableListAdapter = paramExpandableListAdapter;
+    paramExpandableListAdapter.registerDataSetObserver(this.mDataSetObserver);
+  }
+  
+  void setExpandedGroupMetadataList(ArrayList<ExpandableListConnector.GroupMetadata> paramArrayList)
+  {
+    if ((paramArrayList == null) || (this.mExpandableListAdapter == null)) {
+      return;
+    }
+    int j = this.mExpandableListAdapter.getGroupCount();
+    int i = paramArrayList.size() - 1;
+    for (;;)
+    {
+      if (i < 0) {
+        break label55;
+      }
+      if (((ExpandableListConnector.GroupMetadata)paramArrayList.get(i)).gPos >= j) {
+        break;
+      }
+      i -= 1;
+    }
+    label55:
+    this.mExpGroupMetadataList = paramArrayList;
+    refreshExpGroupMetadataList(true, false);
+  }
+  
+  public void setMaxExpGroupCount(int paramInt)
+  {
+    this.mMaxExpGroupCount = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ExpandableListConnector
  * JD-Core Version:    0.7.0.1
  */

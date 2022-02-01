@@ -1,22 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import java.util.ArrayList;
-import pvm;
-import qfq;
 
-public class FollowListInfoModule$2
+class FollowListInfoModule$2
   implements Runnable
 {
-  public FollowListInfoModule$2(qfq paramqfq) {}
+  FollowListInfoModule$2(FollowListInfoModule paramFollowListInfoModule) {}
   
   public void run()
   {
-    pvm.a().a(false, new ArrayList(), 0L, false);
+    ReadInJoyLogicEngineEventDispatcher.a().a(false, new ArrayList(), 0L, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.FollowListInfoModule.2
  * JD-Core Version:    0.7.0.1
  */

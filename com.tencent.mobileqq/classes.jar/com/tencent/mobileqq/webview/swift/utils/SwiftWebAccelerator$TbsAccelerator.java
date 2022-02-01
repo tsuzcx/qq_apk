@@ -1,0 +1,50 @@
+package com.tencent.mobileqq.webview.swift.utils;
+
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.WebAccelerator;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class SwiftWebAccelerator$TbsAccelerator
+{
+  public static long a;
+  static final AtomicBoolean a;
+  
+  static
+  {
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    jdField_a_of_type_Long = 0L;
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public static boolean b()
+  {
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      long l = System.currentTimeMillis();
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("use_speedy_classloader", Boolean.valueOf(true));
+      localHashMap.put("use_dexloader_service", Boolean.valueOf(false));
+      QbSdk.initTbsSettings(localHashMap);
+      WebAccelerator.initTbsEnvironment(BaseApplicationImpl.sApplication.getApplicationContext(), 2);
+      com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.E = SystemClock.elapsedRealtime();
+      jdField_a_of_type_Long = System.currentTimeMillis() - l;
+      QLog.d("WebLog_SwiftWebAccelerator", 1, "WebAccelerator.initTbsEnvironment, cost=" + (System.currentTimeMillis() - l));
+      return true;
+    }
+    return false;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator
+ * JD-Core Version:    0.7.0.1
+ */

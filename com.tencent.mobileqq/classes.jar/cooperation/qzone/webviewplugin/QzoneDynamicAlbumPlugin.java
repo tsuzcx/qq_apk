@@ -17,21 +17,23 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import anvx;
-import avzi;
-import bifw;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.JpegExifReader;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.DeviceApiPlugin;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.swift.WebViewProvider;
+import com.tencent.mobileqq.webview.swift.WebViewUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
@@ -94,11 +96,11 @@ public class QzoneDynamicAlbumPlugin
   private int REQUEST_PICK_CLOUD_PHOTO = 1;
   private byte REQUEST_PICK_PHOTO = 111;
   private int REQUEST_PUBLISH_MOOD = 274;
-  Handler handler = new QzoneDynamicAlbumPlugin.5(this);
+  Handler handler = new QzoneDynamicAlbumPlugin.5(this, Looper.getMainLooper());
   private int hasSelectSize = 30;
   private boolean isChating;
-  private boolean isFromAlbum;
-  private boolean isFromAlbumSharePanel;
+  private boolean isFromAlbum = false;
+  private boolean isFromAlbumSharePanel = false;
   private boolean isResume;
   private boolean ispreSelloaded;
   private String mJSONArgs;
@@ -117,21 +119,21 @@ public class QzoneDynamicAlbumPlugin
     // Byte code:
     //   0: iconst_0
     //   1: istore 5
-    //   3: new 137	java/io/ByteArrayOutputStream
+    //   3: new 149	java/io/ByteArrayOutputStream
     //   6: dup
-    //   7: invokespecial 138	java/io/ByteArrayOutputStream:<init>	()V
+    //   7: invokespecial 150	java/io/ByteArrayOutputStream:<init>	()V
     //   10: astore 7
     //   12: aload 7
     //   14: astore 6
     //   16: aload_1
-    //   17: getfield 143	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   17: getfield 155	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   20: iconst_1
     //   21: if_icmpgt +25 -> 46
     //   24: aload 7
     //   26: astore 6
     //   28: aload_1
-    //   29: getfield 146	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
-    //   32: invokestatic 150	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:IsSupportImgType	(Ljava/lang/String;)Z
+    //   29: getfield 158	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
+    //   32: invokestatic 162	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:IsSupportImgType	(Ljava/lang/String;)Z
     //   35: ifeq +11 -> 46
     //   38: iload 5
     //   40: istore 4
@@ -140,44 +142,44 @@ public class QzoneDynamicAlbumPlugin
     //   46: aload 7
     //   48: astore 6
     //   50: aload_1
-    //   51: getstatic 156	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   54: putfield 159	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   51: getstatic 168	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   54: putfield 171	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   57: aload 7
     //   59: astore 6
     //   61: aload_1
     //   62: iconst_1
-    //   63: putfield 162	android/graphics/BitmapFactory$Options:inPurgeable	Z
+    //   63: putfield 174	android/graphics/BitmapFactory$Options:inPurgeable	Z
     //   66: aload 7
     //   68: astore 6
     //   70: aload_1
     //   71: iconst_1
-    //   72: putfield 165	android/graphics/BitmapFactory$Options:inInputShareable	Z
+    //   72: putfield 177	android/graphics/BitmapFactory$Options:inInputShareable	Z
     //   75: aload 7
     //   77: astore 6
     //   79: aload_0
     //   80: aconst_null
     //   81: aload_1
-    //   82: invokestatic 171	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   82: invokestatic 183	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   85: astore 8
     //   87: aload 7
     //   89: astore 6
     //   91: ldc 50
     //   93: iconst_1
-    //   94: new 173	java/lang/StringBuilder
+    //   94: new 185	java/lang/StringBuilder
     //   97: dup
-    //   98: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   101: ldc 176
-    //   103: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: invokespecial 186	java/lang/StringBuilder:<init>	()V
+    //   101: ldc 188
+    //   103: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: aload_1
-    //   107: getfield 183	android/graphics/BitmapFactory$Options:outWidth	I
-    //   110: invokevirtual 186	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   113: ldc 188
-    //   115: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: getfield 195	android/graphics/BitmapFactory$Options:outWidth	I
+    //   110: invokevirtual 198	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   113: ldc 200
+    //   115: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: aload_1
-    //   119: getfield 191	android/graphics/BitmapFactory$Options:outHeight	I
-    //   122: invokevirtual 186	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 195	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokestatic 201	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   119: getfield 203	android/graphics/BitmapFactory$Options:outHeight	I
+    //   122: invokevirtual 198	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   128: invokestatic 213	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   131: aload 8
     //   133: astore_1
     //   134: iload_2
@@ -186,7 +188,7 @@ public class QzoneDynamicAlbumPlugin
     //   140: astore 6
     //   142: aload 8
     //   144: iload_2
-    //   145: invokestatic 205	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:rotate	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   145: invokestatic 217	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:rotate	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
     //   148: astore_1
     //   149: iload 5
     //   151: istore 4
@@ -195,25 +197,25 @@ public class QzoneDynamicAlbumPlugin
     //   157: aload 7
     //   159: astore 6
     //   161: aload_1
-    //   162: getstatic 211	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   162: getstatic 223	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   165: bipush 60
     //   167: aload 7
-    //   169: invokevirtual 217	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   169: invokevirtual 229	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   172: pop
     //   173: aload 7
     //   175: astore 6
     //   177: aload_1
-    //   178: invokevirtual 220	android/graphics/Bitmap:recycle	()V
+    //   178: invokevirtual 232	android/graphics/Bitmap:recycle	()V
     //   181: iconst_1
     //   182: istore 4
     //   184: iload 4
-    //   186: ifne +99 -> 285
+    //   186: ifne +110 -> 296
     //   189: aload 7
     //   191: astore 6
     //   193: ldc 50
     //   195: iconst_1
-    //   196: ldc 222
-    //   198: invokestatic 201	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   196: ldc 234
+    //   198: invokestatic 213	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   201: aload 7
     //   203: astore 6
     //   205: sipush 4096
@@ -223,99 +225,110 @@ public class QzoneDynamicAlbumPlugin
     //   213: astore 6
     //   215: aload_0
     //   216: aload_1
-    //   217: invokevirtual 228	java/io/InputStream:read	([B)I
+    //   217: invokevirtual 240	java/io/InputStream:read	([B)I
     //   220: istore_2
     //   221: iload_2
     //   222: iconst_m1
-    //   223: if_icmpeq +62 -> 285
+    //   223: if_icmpeq +73 -> 296
     //   226: aload 7
     //   228: astore 6
     //   230: aload 7
     //   232: aload_1
     //   233: iconst_0
     //   234: iload_2
-    //   235: invokevirtual 232	java/io/ByteArrayOutputStream:write	([BII)V
+    //   235: invokevirtual 244	java/io/ByteArrayOutputStream:write	([BII)V
     //   238: goto -27 -> 211
     //   241: astore_0
     //   242: aload 7
     //   244: astore 6
     //   246: ldc 50
     //   248: iconst_1
-    //   249: ldc 234
+    //   249: ldc 246
     //   251: aload_0
-    //   252: invokestatic 238	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   255: aload 7
-    //   257: invokestatic 244	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   260: pop
-    //   261: aconst_null
-    //   262: areturn
-    //   263: astore 8
-    //   265: aload 7
-    //   267: astore 6
-    //   269: ldc 50
-    //   271: iconst_1
-    //   272: ldc 246
-    //   274: aload 8
-    //   276: invokestatic 238	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   279: aconst_null
-    //   280: astore 8
-    //   282: goto -195 -> 87
-    //   285: aload 7
-    //   287: astore 6
-    //   289: aload 7
-    //   291: invokevirtual 250	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   294: iconst_2
-    //   295: invokestatic 256	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   298: astore_0
-    //   299: aload 7
-    //   301: invokestatic 244	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   304: pop
-    //   305: aload_0
-    //   306: areturn
-    //   307: astore_0
-    //   308: aconst_null
-    //   309: astore 7
-    //   311: aload 7
-    //   313: astore 6
-    //   315: ldc 50
-    //   317: iconst_1
-    //   318: ldc 246
-    //   320: aload_0
-    //   321: invokestatic 238	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   324: aload 7
-    //   326: invokestatic 244	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   329: pop
-    //   330: aconst_null
-    //   331: areturn
-    //   332: astore_0
-    //   333: aconst_null
+    //   252: invokestatic 250	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   255: ldc 252
+    //   257: invokestatic 258	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   260: checkcast 252	com/tencent/qzonehub/api/IDataUtils
+    //   263: aload 7
+    //   265: invokeinterface 262 2 0
+    //   270: pop
+    //   271: aconst_null
+    //   272: areturn
+    //   273: astore 8
+    //   275: aload 7
+    //   277: astore 6
+    //   279: ldc 50
+    //   281: iconst_1
+    //   282: ldc_w 264
+    //   285: aload 8
+    //   287: invokestatic 250	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   290: aconst_null
+    //   291: astore 8
+    //   293: goto -206 -> 87
+    //   296: aload 7
+    //   298: astore 6
+    //   300: aload 7
+    //   302: invokevirtual 268	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   305: iconst_2
+    //   306: invokestatic 274	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   309: astore_0
+    //   310: ldc 252
+    //   312: invokestatic 258	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   315: checkcast 252	com/tencent/qzonehub/api/IDataUtils
+    //   318: aload 7
+    //   320: invokeinterface 262 2 0
+    //   325: pop
+    //   326: aload_0
+    //   327: areturn
+    //   328: astore_0
+    //   329: aconst_null
+    //   330: astore 7
+    //   332: aload 7
     //   334: astore 6
-    //   336: aload 6
-    //   338: invokestatic 244	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   341: pop
+    //   336: ldc 50
+    //   338: iconst_1
+    //   339: ldc_w 264
     //   342: aload_0
-    //   343: athrow
-    //   344: astore_0
-    //   345: goto -9 -> 336
-    //   348: astore_0
-    //   349: goto -38 -> 311
-    //   352: astore_0
-    //   353: aconst_null
-    //   354: astore 7
-    //   356: goto -114 -> 242
+    //   343: invokestatic 250	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   346: ldc 252
+    //   348: invokestatic 258	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   351: checkcast 252	com/tencent/qzonehub/api/IDataUtils
+    //   354: aload 7
+    //   356: invokeinterface 262 2 0
+    //   361: pop
+    //   362: goto -91 -> 271
+    //   365: astore_0
+    //   366: aconst_null
+    //   367: astore 6
+    //   369: ldc 252
+    //   371: invokestatic 258	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   374: checkcast 252	com/tencent/qzonehub/api/IDataUtils
+    //   377: aload 6
+    //   379: invokeinterface 262 2 0
+    //   384: pop
+    //   385: aload_0
+    //   386: athrow
+    //   387: astore_0
+    //   388: goto -19 -> 369
+    //   391: astore_0
+    //   392: goto -60 -> 332
+    //   395: astore_0
+    //   396: aconst_null
+    //   397: astore 7
+    //   399: goto -157 -> 242
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	359	0	paramInputStream	InputStream
-    //   0	359	1	paramOptions	BitmapFactory.Options
-    //   0	359	2	paramInt	int
-    //   0	359	3	paramBoolean	boolean
+    //   0	402	0	paramInputStream	InputStream
+    //   0	402	1	paramOptions	BitmapFactory.Options
+    //   0	402	2	paramInt	int
+    //   0	402	3	paramBoolean	boolean
     //   40	145	4	i	int
     //   1	149	5	j	int
-    //   14	323	6	localByteArrayOutputStream1	ByteArrayOutputStream
-    //   10	345	7	localByteArrayOutputStream2	ByteArrayOutputStream
+    //   14	364	6	localByteArrayOutputStream1	ByteArrayOutputStream
+    //   10	388	7	localByteArrayOutputStream2	ByteArrayOutputStream
     //   85	58	8	localBitmap	Bitmap
-    //   263	12	8	localOutOfMemoryError	OutOfMemoryError
-    //   280	1	8	localObject	Object
+    //   273	13	8	localOutOfMemoryError	OutOfMemoryError
+    //   291	1	8	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   16	24	241	java/lang/Exception
@@ -332,45 +345,45 @@ public class QzoneDynamicAlbumPlugin
     //   205	211	241	java/lang/Exception
     //   215	221	241	java/lang/Exception
     //   230	238	241	java/lang/Exception
-    //   269	279	241	java/lang/Exception
-    //   289	299	241	java/lang/Exception
-    //   79	87	263	java/lang/OutOfMemoryError
-    //   3	12	307	java/lang/OutOfMemoryError
-    //   3	12	332	finally
-    //   16	24	344	finally
-    //   28	38	344	finally
-    //   50	57	344	finally
-    //   61	66	344	finally
-    //   70	75	344	finally
-    //   79	87	344	finally
-    //   91	131	344	finally
-    //   142	149	344	finally
-    //   161	173	344	finally
-    //   177	181	344	finally
-    //   193	201	344	finally
-    //   205	211	344	finally
-    //   215	221	344	finally
-    //   230	238	344	finally
-    //   246	255	344	finally
-    //   269	279	344	finally
-    //   289	299	344	finally
-    //   315	324	344	finally
-    //   16	24	348	java/lang/OutOfMemoryError
-    //   28	38	348	java/lang/OutOfMemoryError
-    //   50	57	348	java/lang/OutOfMemoryError
-    //   61	66	348	java/lang/OutOfMemoryError
-    //   70	75	348	java/lang/OutOfMemoryError
-    //   91	131	348	java/lang/OutOfMemoryError
-    //   142	149	348	java/lang/OutOfMemoryError
-    //   161	173	348	java/lang/OutOfMemoryError
-    //   177	181	348	java/lang/OutOfMemoryError
-    //   193	201	348	java/lang/OutOfMemoryError
-    //   205	211	348	java/lang/OutOfMemoryError
-    //   215	221	348	java/lang/OutOfMemoryError
-    //   230	238	348	java/lang/OutOfMemoryError
-    //   269	279	348	java/lang/OutOfMemoryError
-    //   289	299	348	java/lang/OutOfMemoryError
-    //   3	12	352	java/lang/Exception
+    //   279	290	241	java/lang/Exception
+    //   300	310	241	java/lang/Exception
+    //   79	87	273	java/lang/OutOfMemoryError
+    //   3	12	328	java/lang/OutOfMemoryError
+    //   3	12	365	finally
+    //   16	24	387	finally
+    //   28	38	387	finally
+    //   50	57	387	finally
+    //   61	66	387	finally
+    //   70	75	387	finally
+    //   79	87	387	finally
+    //   91	131	387	finally
+    //   142	149	387	finally
+    //   161	173	387	finally
+    //   177	181	387	finally
+    //   193	201	387	finally
+    //   205	211	387	finally
+    //   215	221	387	finally
+    //   230	238	387	finally
+    //   246	255	387	finally
+    //   279	290	387	finally
+    //   300	310	387	finally
+    //   336	346	387	finally
+    //   16	24	391	java/lang/OutOfMemoryError
+    //   28	38	391	java/lang/OutOfMemoryError
+    //   50	57	391	java/lang/OutOfMemoryError
+    //   61	66	391	java/lang/OutOfMemoryError
+    //   70	75	391	java/lang/OutOfMemoryError
+    //   91	131	391	java/lang/OutOfMemoryError
+    //   142	149	391	java/lang/OutOfMemoryError
+    //   161	173	391	java/lang/OutOfMemoryError
+    //   177	181	391	java/lang/OutOfMemoryError
+    //   193	201	391	java/lang/OutOfMemoryError
+    //   205	211	391	java/lang/OutOfMemoryError
+    //   215	221	391	java/lang/OutOfMemoryError
+    //   230	238	391	java/lang/OutOfMemoryError
+    //   279	290	391	java/lang/OutOfMemoryError
+    //   300	310	391	java/lang/OutOfMemoryError
+    //   3	12	395	java/lang/Exception
   }
   
   public static boolean IsSupportImgType(String paramString)
@@ -422,86 +435,86 @@ public class QzoneDynamicAlbumPlugin
     //   6: aconst_null
     //   7: astore 7
     //   9: aload_1
-    //   10: invokestatic 316	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   10: invokestatic 332	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   13: ifeq +15 -> 28
-    //   16: ldc_w 317
+    //   16: ldc_w 333
     //   19: iconst_2
-    //   20: ldc_w 319
-    //   23: invokestatic 321	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   20: ldc_w 335
+    //   23: invokestatic 337	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   26: iconst_0
     //   27: ireturn
-    //   28: new 323	java/io/File
+    //   28: new 339	java/io/File
     //   31: dup
     //   32: aload_1
-    //   33: invokespecial 324	java/io/File:<init>	(Ljava/lang/String;)V
+    //   33: invokespecial 340	java/io/File:<init>	(Ljava/lang/String;)V
     //   36: astore 10
     //   38: aload 10
-    //   40: invokevirtual 328	java/io/File:exists	()Z
+    //   40: invokevirtual 344	java/io/File:exists	()Z
     //   43: ifne +15 -> 58
-    //   46: ldc_w 317
+    //   46: ldc_w 333
     //   49: iconst_2
-    //   50: ldc_w 330
-    //   53: invokestatic 321	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   50: ldc_w 346
+    //   53: invokestatic 337	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   56: iconst_0
     //   57: ireturn
     //   58: aload_1
-    //   59: invokestatic 334	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:getImageDegree	(Ljava/lang/String;)I
+    //   59: invokestatic 350	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:getImageDegree	(Ljava/lang/String;)I
     //   62: istore 5
-    //   64: new 336	java/io/FileInputStream
+    //   64: new 352	java/io/FileInputStream
     //   67: dup
     //   68: aload_1
-    //   69: invokespecial 337	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   69: invokespecial 353	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   72: astore 6
     //   74: aload 10
-    //   76: invokestatic 343	android/net/Uri:fromFile	(Ljava/io/File;)Landroid/net/Uri;
+    //   76: invokestatic 359	android/net/Uri:fromFile	(Ljava/io/File;)Landroid/net/Uri;
     //   79: aload_0
     //   80: iload_3
     //   81: iload 4
-    //   83: invokestatic 347	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:getSizeOpt	(Landroid/net/Uri;Landroid/content/Context;II)Landroid/graphics/BitmapFactory$Options;
+    //   83: invokestatic 363	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:getSizeOpt	(Landroid/net/Uri;Landroid/content/Context;II)Landroid/graphics/BitmapFactory$Options;
     //   86: astore_0
-    //   87: new 323	java/io/File
+    //   87: new 339	java/io/File
     //   90: dup
     //   91: aload_2
-    //   92: invokespecial 324	java/io/File:<init>	(Ljava/lang/String;)V
+    //   92: invokespecial 340	java/io/File:<init>	(Ljava/lang/String;)V
     //   95: astore_1
-    //   96: getstatic 349	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:dirdynamicalbum	Ljava/io/File;
-    //   99: invokevirtual 328	java/io/File:exists	()Z
+    //   96: getstatic 365	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:dirdynamicalbum	Ljava/io/File;
+    //   99: invokevirtual 344	java/io/File:exists	()Z
     //   102: ifne +10 -> 112
-    //   105: getstatic 349	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:dirdynamicalbum	Ljava/io/File;
-    //   108: invokevirtual 352	java/io/File:mkdirs	()Z
+    //   105: getstatic 365	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:dirdynamicalbum	Ljava/io/File;
+    //   108: invokevirtual 368	java/io/File:mkdirs	()Z
     //   111: pop
     //   112: aload_1
-    //   113: invokevirtual 328	java/io/File:exists	()Z
+    //   113: invokevirtual 344	java/io/File:exists	()Z
     //   116: ifne +8 -> 124
     //   119: aload_1
-    //   120: invokevirtual 355	java/io/File:createNewFile	()Z
+    //   120: invokevirtual 371	java/io/File:createNewFile	()Z
     //   123: pop
-    //   124: new 357	java/io/FileOutputStream
+    //   124: new 373	java/io/FileOutputStream
     //   127: dup
     //   128: aload_1
-    //   129: invokespecial 360	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   129: invokespecial 376	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   132: astore_1
     //   133: aload_0
-    //   134: getfield 143	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   134: getfield 155	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   137: iconst_1
     //   138: if_icmpgt +13 -> 151
     //   141: aload_0
-    //   142: getfield 146	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
-    //   145: invokestatic 150	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:IsSupportImgType	(Ljava/lang/String;)Z
+    //   142: getfield 158	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
+    //   145: invokestatic 162	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:IsSupportImgType	(Ljava/lang/String;)Z
     //   148: ifne +123 -> 271
     //   151: aload_0
-    //   152: getstatic 156	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   155: putfield 159	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   152: getstatic 168	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   155: putfield 171	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   158: aload_0
     //   159: iconst_1
-    //   160: putfield 162	android/graphics/BitmapFactory$Options:inPurgeable	Z
+    //   160: putfield 174	android/graphics/BitmapFactory$Options:inPurgeable	Z
     //   163: aload_0
     //   164: iconst_1
-    //   165: putfield 165	android/graphics/BitmapFactory$Options:inInputShareable	Z
+    //   165: putfield 177	android/graphics/BitmapFactory$Options:inInputShareable	Z
     //   168: aload 6
     //   170: aconst_null
     //   171: aload_0
-    //   172: invokestatic 171	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   172: invokestatic 183	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   175: astore_0
     //   176: aload_0
     //   177: astore_2
@@ -509,44 +522,44 @@ public class QzoneDynamicAlbumPlugin
     //   180: ifeq +10 -> 190
     //   183: aload_0
     //   184: iload 5
-    //   186: invokestatic 205	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:rotate	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   186: invokestatic 217	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:rotate	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
     //   189: astore_2
     //   190: aload_2
     //   191: ifnull +47 -> 238
     //   194: aload_2
-    //   195: getstatic 211	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   195: getstatic 223	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   198: bipush 60
     //   200: aload_1
-    //   201: invokevirtual 217	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   201: invokevirtual 229	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   204: pop
     //   205: aload_2
-    //   206: invokevirtual 220	android/graphics/Bitmap:recycle	()V
+    //   206: invokevirtual 232	android/graphics/Bitmap:recycle	()V
     //   209: aload_1
-    //   210: invokevirtual 365	java/io/OutputStream:close	()V
+    //   210: invokevirtual 381	java/io/OutputStream:close	()V
     //   213: aload 6
-    //   215: invokevirtual 366	java/io/InputStream:close	()V
+    //   215: invokevirtual 382	java/io/InputStream:close	()V
     //   218: aload_1
     //   219: ifnull +7 -> 226
     //   222: aload_1
-    //   223: invokevirtual 365	java/io/OutputStream:close	()V
+    //   223: invokevirtual 381	java/io/OutputStream:close	()V
     //   226: aload 6
     //   228: ifnull +8 -> 236
     //   231: aload 6
-    //   233: invokevirtual 366	java/io/InputStream:close	()V
+    //   233: invokevirtual 382	java/io/InputStream:close	()V
     //   236: iconst_1
     //   237: ireturn
-    //   238: ldc_w 317
+    //   238: ldc_w 333
     //   241: iconst_2
-    //   242: ldc_w 368
-    //   245: invokestatic 321	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   242: ldc_w 384
+    //   245: invokestatic 337	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   248: aload_1
     //   249: ifnull +7 -> 256
     //   252: aload_1
-    //   253: invokevirtual 365	java/io/OutputStream:close	()V
+    //   253: invokevirtual 381	java/io/OutputStream:close	()V
     //   256: aload 6
     //   258: ifnull -232 -> 26
     //   261: aload 6
-    //   263: invokevirtual 366	java/io/InputStream:close	()V
+    //   263: invokevirtual 382	java/io/InputStream:close	()V
     //   266: iconst_0
     //   267: ireturn
     //   268: astore_0
@@ -557,7 +570,7 @@ public class QzoneDynamicAlbumPlugin
     //   276: astore_0
     //   277: aload 6
     //   279: aload_0
-    //   280: invokevirtual 228	java/io/InputStream:read	([B)I
+    //   280: invokevirtual 240	java/io/InputStream:read	([B)I
     //   283: istore_3
     //   284: iload_3
     //   285: iconst_m1
@@ -566,7 +579,7 @@ public class QzoneDynamicAlbumPlugin
     //   290: aload_0
     //   291: iconst_0
     //   292: iload_3
-    //   293: invokevirtual 369	java/io/OutputStream:write	([BII)V
+    //   293: invokevirtual 385	java/io/OutputStream:write	([BII)V
     //   296: goto -19 -> 277
     //   299: astore_2
     //   300: aload_1
@@ -574,26 +587,26 @@ public class QzoneDynamicAlbumPlugin
     //   302: aload_2
     //   303: astore_1
     //   304: aload_1
-    //   305: invokevirtual 372	java/lang/Exception:printStackTrace	()V
-    //   308: ldc_w 317
+    //   305: invokevirtual 388	java/lang/Exception:printStackTrace	()V
+    //   308: ldc_w 333
     //   311: iconst_2
-    //   312: new 173	java/lang/StringBuilder
+    //   312: new 185	java/lang/StringBuilder
     //   315: dup
-    //   316: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   319: ldc_w 374
-    //   322: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: invokespecial 186	java/lang/StringBuilder:<init>	()V
+    //   319: ldc_w 390
+    //   322: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   325: aload_1
-    //   326: invokevirtual 377	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   329: invokevirtual 195	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   332: invokestatic 321	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   326: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   329: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   332: invokestatic 337	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   335: aload_0
     //   336: ifnull +7 -> 343
     //   339: aload_0
-    //   340: invokevirtual 365	java/io/OutputStream:close	()V
+    //   340: invokevirtual 381	java/io/OutputStream:close	()V
     //   343: aload 6
     //   345: ifnull -319 -> 26
     //   348: aload 6
-    //   350: invokevirtual 366	java/io/InputStream:close	()V
+    //   350: invokevirtual 382	java/io/InputStream:close	()V
     //   353: iconst_0
     //   354: ireturn
     //   355: astore_0
@@ -605,22 +618,22 @@ public class QzoneDynamicAlbumPlugin
     //   361: aload_1
     //   362: ifnull +7 -> 369
     //   365: aload_1
-    //   366: invokevirtual 365	java/io/OutputStream:close	()V
+    //   366: invokevirtual 381	java/io/OutputStream:close	()V
     //   369: aload_0
     //   370: athrow
     //   371: astore_1
     //   372: aload 6
     //   374: astore_0
     //   375: aload_1
-    //   376: invokevirtual 372	java/lang/Exception:printStackTrace	()V
+    //   376: invokevirtual 388	java/lang/Exception:printStackTrace	()V
     //   379: aload_0
     //   380: ifnull +7 -> 387
     //   383: aload_0
-    //   384: invokevirtual 366	java/io/InputStream:close	()V
-    //   387: ldc_w 317
+    //   384: invokevirtual 382	java/io/InputStream:close	()V
+    //   387: ldc_w 333
     //   390: iconst_2
-    //   391: ldc_w 379
-    //   394: invokestatic 321	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   391: ldc_w 395
+    //   394: invokestatic 337	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   397: iconst_0
     //   398: ireturn
     //   399: astore_0
@@ -629,7 +642,7 @@ public class QzoneDynamicAlbumPlugin
     //   402: aload_1
     //   403: ifnull +7 -> 410
     //   406: aload_1
-    //   407: invokevirtual 366	java/io/InputStream:close	()V
+    //   407: invokevirtual 382	java/io/InputStream:close	()V
     //   410: aload_0
     //   411: athrow
     //   412: astore_0
@@ -757,81 +770,90 @@ public class QzoneDynamicAlbumPlugin
     //   7: aload_0
     //   8: iload_2
     //   9: iload_3
-    //   10: invokestatic 384	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:getSizeCrop	(Landroid/net/Uri;Landroid/content/Context;II)Landroid/graphics/BitmapFactory$Options;
+    //   10: invokestatic 400	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:getSizeCrop	(Landroid/net/Uri;Landroid/content/Context;II)Landroid/graphics/BitmapFactory$Options;
     //   13: astore 6
     //   15: aload_0
-    //   16: invokevirtual 390	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   16: invokevirtual 406	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   19: aload_1
-    //   20: invokevirtual 396	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   20: invokevirtual 412	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
     //   23: astore 5
     //   25: aload 5
     //   27: astore_0
     //   28: aload 5
     //   30: aload 6
     //   32: aload_1
-    //   33: invokevirtual 399	android/net/Uri:getPath	()Ljava/lang/String;
-    //   36: invokestatic 334	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:getImageDegree	(Ljava/lang/String;)I
+    //   33: invokevirtual 415	android/net/Uri:getPath	()Ljava/lang/String;
+    //   36: invokestatic 350	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:getImageDegree	(Ljava/lang/String;)I
     //   39: iload 4
-    //   41: invokestatic 401	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:CompressImageFile	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;IZ)Ljava/lang/String;
+    //   41: invokestatic 417	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:CompressImageFile	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;IZ)Ljava/lang/String;
     //   44: astore_1
-    //   45: aload 5
-    //   47: invokestatic 244	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   50: pop
-    //   51: aload_1
-    //   52: areturn
-    //   53: astore_1
-    //   54: aconst_null
-    //   55: astore 5
-    //   57: aload 5
-    //   59: astore_0
-    //   60: ldc 50
-    //   62: iconst_1
-    //   63: new 173	java/lang/StringBuilder
-    //   66: dup
-    //   67: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   70: ldc_w 403
-    //   73: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: aload_1
-    //   77: invokevirtual 377	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   80: invokevirtual 195	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 321	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   86: aload 5
-    //   88: invokestatic 244	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   91: pop
-    //   92: aconst_null
-    //   93: areturn
-    //   94: astore_0
-    //   95: aconst_null
-    //   96: astore 5
-    //   98: aload_0
-    //   99: astore_1
-    //   100: aload 5
-    //   102: invokestatic 244	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
-    //   105: pop
-    //   106: aload_1
-    //   107: athrow
-    //   108: astore_1
-    //   109: aload_0
-    //   110: astore 5
-    //   112: goto -12 -> 100
-    //   115: astore_1
-    //   116: goto -59 -> 57
+    //   45: ldc 252
+    //   47: invokestatic 258	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   50: checkcast 252	com/tencent/qzonehub/api/IDataUtils
+    //   53: aload 5
+    //   55: invokeinterface 262 2 0
+    //   60: pop
+    //   61: aload_1
+    //   62: areturn
+    //   63: astore_1
+    //   64: aconst_null
+    //   65: astore 5
+    //   67: aload 5
+    //   69: astore_0
+    //   70: ldc 50
+    //   72: iconst_1
+    //   73: new 185	java/lang/StringBuilder
+    //   76: dup
+    //   77: invokespecial 186	java/lang/StringBuilder:<init>	()V
+    //   80: ldc_w 419
+    //   83: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: aload_1
+    //   87: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: invokestatic 337	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   96: ldc 252
+    //   98: invokestatic 258	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   101: checkcast 252	com/tencent/qzonehub/api/IDataUtils
+    //   104: aload 5
+    //   106: invokeinterface 262 2 0
+    //   111: pop
+    //   112: aconst_null
+    //   113: areturn
+    //   114: astore_0
+    //   115: aconst_null
+    //   116: astore 5
+    //   118: aload_0
+    //   119: astore_1
+    //   120: ldc 252
+    //   122: invokestatic 258	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   125: checkcast 252	com/tencent/qzonehub/api/IDataUtils
+    //   128: aload 5
+    //   130: invokeinterface 262 2 0
+    //   135: pop
+    //   136: aload_1
+    //   137: athrow
+    //   138: astore_1
+    //   139: aload_0
+    //   140: astore 5
+    //   142: goto -22 -> 120
+    //   145: astore_1
+    //   146: goto -79 -> 67
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	119	0	paramContext	Context
-    //   0	119	1	paramUri	Uri
-    //   0	119	2	paramInt1	int
-    //   0	119	3	paramInt2	int
-    //   0	119	4	paramBoolean	boolean
-    //   23	88	5	localObject	Object
+    //   0	149	0	paramContext	Context
+    //   0	149	1	paramUri	Uri
+    //   0	149	2	paramInt1	int
+    //   0	149	3	paramInt2	int
+    //   0	149	4	paramBoolean	boolean
+    //   23	118	5	localObject	Object
     //   13	18	6	localOptions	BitmapFactory.Options
     // Exception table:
     //   from	to	target	type
-    //   6	25	53	java/lang/Exception
-    //   6	25	94	finally
-    //   28	45	108	finally
-    //   60	86	108	finally
-    //   28	45	115	java/lang/Exception
+    //   6	25	63	java/lang/Exception
+    //   6	25	114	finally
+    //   28	45	138	finally
+    //   70	96	138	finally
+    //   28	45	145	java/lang/Exception
   }
   
   private String convertToJSONInfo(String[] paramArrayOfString)
@@ -995,7 +1017,7 @@ public class QzoneDynamicAlbumPlugin
         ((Bundle)localObject2).putBoolean("EDIT_IMAGE", false);
         ((Bundle)localObject2).putBoolean("APPEND_IMAGE", false);
         ((Bundle)localObject2).putBoolean("SHOW_RECNET_IMAGE", false);
-        ((Bundle)localObject2).putString("shareSource", anvx.a(2131711180));
+        ((Bundle)localObject2).putString("shareSource", HardCodeUtil.a(2131711695));
         if (i == 1)
         {
           ((Bundle)localObject2).putBoolean("dynamic_album_is_from_draft", true);
@@ -1016,7 +1038,7 @@ public class QzoneDynamicAlbumPlugin
             if (paramString.startsWith("https://www.dynamicalbumlocalimage.com")) {
               localObject1 = paramString.replace("https://www.dynamicalbumlocalimage.com", "");
             }
-            QZoneHelper.forwardToPublishMood(this.parentPlugin.mRuntime.a(), (Bundle)localObject2, (QZoneHelper.UserInfo)localObject3, (String)localObject1, anvx.a(2131711179), null, this.REQUEST_PUBLISH_MOOD);
+            QZoneHelper.forwardToPublishMood(this.parentPlugin.mRuntime.a(), (Bundle)localObject2, (QZoneHelper.UserInfo)localObject3, (String)localObject1, HardCodeUtil.a(2131711694), null, this.REQUEST_PUBLISH_MOOD);
             QLog.d("QzoneDynamicAlbumPlugin", 4, "entryWriteMoodAsync SUCCESS!");
             localJSONObject.put("code", 0);
             localJSONObject.put("msg", "success");
@@ -1381,11 +1403,11 @@ public class QzoneDynamicAlbumPlugin
   {
     int[] arrayOfInt = new int[2];
     int i = QzoneConfig.getInstance().getConfig("MiniVideo", "MinCpu", 1150);
-    long l1 = DeviceInfoUtil.getCpuFrequency();
+    long l1 = DeviceInfoUtil.b();
     long l2 = QzoneConfig.getInstance().getConfig("MiniVideo", "MinRam", 700);
-    long l3 = DeviceInfoUtil.getSystemTotalMemory() / 1048576L;
+    long l3 = DeviceInfoUtil.a() / 1048576L;
     long l4 = QzoneConfig.getInstance().getConfig("MiniVideo", "MinRuntimeRam", 150);
-    long l5 = DeviceInfoUtil.getSystemAvaialbeMemory() / 1048576L;
+    long l5 = DeviceInfoUtil.e() / 1048576L;
     if (QLog.isColorLevel()) {
       QLog.i("QZLog", 2, "DynamicQzoneDynamicAlbumPlugin freeSizeMB " + l5);
     }
@@ -1821,10 +1843,10 @@ public class QzoneDynamicAlbumPlugin
       localObject = this.parentPlugin.mRuntime.a();
       if (localObject != null)
       {
-        ((WebViewFragment)localObject).gotoSelectPicture(this.parentPlugin, paramString, this.REQUEST_PICK_PHOTO);
+        WebViewUtil.a(this.parentPlugin, paramString, this.REQUEST_PICK_PHOTO, (WebViewProvider)localObject);
         return;
       }
-      ((AbsBaseWebViewActivity)this.parentPlugin.mRuntime.a()).a(this.parentPlugin, paramString, this.REQUEST_PICK_PHOTO);
+      ((AbsBaseWebViewActivity)this.parentPlugin.mRuntime.a()).gotoSelectPicture(this.parentPlugin, paramString, this.REQUEST_PICK_PHOTO);
       return;
     }
     catch (JSONException paramString)
@@ -1837,10 +1859,10 @@ public class QzoneDynamicAlbumPlugin
   {
     if (paramBoolean)
     {
-      avzi.a(true, this.parentPlugin.mRuntime.a(), false);
+      DeviceApiPlugin.a(true, this.parentPlugin.mRuntime.a(), false);
       return;
     }
-    avzi.a(false, this.parentPlugin.mRuntime.a(), false);
+    DeviceApiPlugin.a(false, this.parentPlugin.mRuntime.a(), false);
     ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).abandonAudioFocus(null);
   }
   
@@ -2197,7 +2219,7 @@ public class QzoneDynamicAlbumPlugin
       return;
     }
     if (paramWebViewPlugin.mRuntime.a() != null) {}
-    for (Object localObject = paramWebViewPlugin.mRuntime.a().mUrl;; localObject = "")
+    for (Object localObject = paramWebViewPlugin.mRuntime.a().getCurrentUrl();; localObject = "")
     {
       currentUrl = (String)localObject;
       if ((TextUtils.isEmpty(currentUrl)) || ((!currentUrl.contains("qzone.qq.com/dynamic")) && (!currentUrl.contains("blog")))) {
@@ -2290,7 +2312,7 @@ public class QzoneDynamicAlbumPlugin
     super.onDestroy();
     RemoteHandleManager.getInstance().removeWebEventListener(this);
     RemoteHandleManager.getInstance().getSender().onDynamicPageDestroy();
-    avzi.a(false, this.parentPlugin.mRuntime.a(), false);
+    DeviceApiPlugin.a(false, this.parentPlugin.mRuntime.a(), false);
     try
     {
       this.parentPlugin.mRuntime.a().unregisterReceiver(this.notifyReceiver);
@@ -2382,7 +2404,7 @@ public class QzoneDynamicAlbumPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package dov.com.tencent.mobileqq.shortvideo.multisender;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import bpsn;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -18,13 +17,13 @@ public class MultiSendEntry
   public String fakeVid;
   public String md5;
   @notColumn
-  List<bpsn> messageDataList;
+  List<MessageBaseData> messageDataList;
   public String messageInfos;
   public int syncToStory;
   public long time;
   public String uploadInfo;
   @notColumn
-  bpsn uploadMessageData;
+  MessageBaseData uploadMessageData;
   public String uuid;
   public String videoPath;
   
@@ -41,7 +40,7 @@ public class MultiSendEntry
     if (!TextUtils.isEmpty(this.uploadInfo)) {}
     try
     {
-      this.uploadMessageData = new bpsn();
+      this.uploadMessageData = new MessageBaseData();
       this.uploadMessageData.a(this.uploadInfo);
       if (TextUtils.isEmpty(this.messageInfos)) {}
     }
@@ -51,7 +50,7 @@ public class MultiSendEntry
       {
         try
         {
-          this.messageDataList = bpsn.a(this.messageInfos);
+          this.messageDataList = MessageBaseData.a(this.messageInfos);
           return true;
           paramCursor = paramCursor;
           paramCursor.printStackTrace();
@@ -73,28 +72,28 @@ public class MultiSendEntry
     }
     Iterator localIterator = this.messageDataList.iterator();
     while (localIterator.hasNext()) {
-      if (((bpsn)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
+      if (((MessageBaseData)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
         localIterator.remove();
       }
     }
-    this.messageInfos = bpsn.a(this.messageDataList);
+    this.messageInfos = MessageBaseData.a(this.messageDataList);
   }
   
-  public void setMessageDataList(List<bpsn> paramList)
+  public void setMessageDataList(List<MessageBaseData> paramList)
   {
     this.messageDataList = paramList;
-    this.messageInfos = bpsn.a(paramList);
+    this.messageInfos = MessageBaseData.a(paramList);
   }
   
-  public void setUploadMessageData(bpsn parambpsn)
+  public void setUploadMessageData(MessageBaseData paramMessageBaseData)
   {
-    this.uploadMessageData = parambpsn;
-    this.uploadInfo = parambpsn.a();
+    this.uploadMessageData = paramMessageBaseData;
+    this.uploadInfo = paramMessageBaseData.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.multisender.MultiSendEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ public final class GroupLabel
 {
   static Color cache_edging_color;
   static Color cache_text_color;
-  public Color edging_color;
+  public Color edging_color = null;
   public String strWording = "";
-  public Color text_color;
-  public long type;
+  public Color text_color = null;
+  public long type = 0L;
   
   public GroupLabel() {}
   

@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.pendant;
 
-import lgx;
+import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
 
 public class PendantItem
-  extends lgx
+  extends EffectConfigBase.ItemBase
 {
   public static final int Category_BeautyMakeup = 3;
   public static final int Category_Face = 0;
@@ -11,7 +11,7 @@ public class PendantItem
   public static final int Category_Gesture = 1;
   private int category;
   private String desc;
-  public Object extraParam;
+  public Object extraParam = null;
   private String filtername;
   private String gestureType;
   private String gestureWording;
@@ -21,13 +21,13 @@ public class PendantItem
   private int kind;
   private String md5;
   private String name = "";
-  public boolean needHMirror;
+  public boolean needHMirror = false;
   private int platform;
   private boolean predownload;
   private String resurl;
   private int type;
   private boolean usable;
-  private int voiceid;
+  private int voiceid = 0;
   
   public static boolean isBeautyMakeup(int paramInt)
   {
@@ -151,7 +151,7 @@ public class PendantItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.PendantItem
  * JD-Core Version:    0.7.0.1
  */

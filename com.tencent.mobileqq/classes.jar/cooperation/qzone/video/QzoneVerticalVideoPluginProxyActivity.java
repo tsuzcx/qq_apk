@@ -1,6 +1,5 @@
 package cooperation.qzone.video;
 
-import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,15 +7,16 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import aqrl;
-import biwn;
-import blvy;
-import blwh;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 
 public class QzoneVerticalVideoPluginProxyActivity
   extends PluginProxyFragmentActivity
@@ -49,21 +49,21 @@ public class QzoneVerticalVideoPluginProxyActivity
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", false);
     paramIntent.putExtra("param_plugin_gesturelock", false);
-    blwh localblwh = new blwh(0);
-    localblwh.jdField_a_of_type_JavaLangString = paramString;
-    localblwh.e = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
-    localblwh.jdField_a_of_type_JavaLangClass = localClass;
-    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localblwh.jdField_b_of_type_Int = paramInt;
-    localblwh.c = 15000;
-    localblwh.f = null;
-    localblwh.jdField_b_of_type_Boolean = false;
-    localblwh.jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
-    localblwh.d = "QZoneVerticalVideo";
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
+    localPluginParams.f = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
+    localPluginParams.jdField_a_of_type_JavaLangClass = localClass;
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localPluginParams.c = paramInt;
+    localPluginParams.d = 15000;
+    localPluginParams.g = null;
+    localPluginParams.jdField_b_of_type_Boolean = false;
+    localPluginParams.jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
+    localPluginParams.e = "QZoneVerticalVideo";
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "加载原始插件");
     }
-    blvy.a(paramActivity, localblwh);
+    IPluginManager.a(paramActivity, localPluginParams);
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "QzoneVerticalVideoPluginProxyActivity.launchPluginActivityForResult");
     }
@@ -118,19 +118,19 @@ public class QzoneVerticalVideoPluginProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    biwn.a(BaseApplicationImpl.getContext(), false, 5);
-    aqrl.a(BaseApplicationImpl.getContext(), 2, false);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplicationImpl.getContext(), false, 5);
+    ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void onDestroy()
   {
-    aqrl.a(BaseApplicationImpl.getContext(), 2, true);
+    ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 2, true);
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

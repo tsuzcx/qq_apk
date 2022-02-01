@@ -94,13 +94,13 @@ public class WSOverlayStickerMergedEffectNode
   
   private void updateSubtitleSticker(@NonNull CGSize paramCGSize)
   {
-    if ((!isAvailable()) || (this.mContextCreator != null)) {}
-    do
+    if (isAvailable())
     {
-      return;
       removeStickers(findStickerByType(VideoEffectType.TYPE_SUBTITLE.value));
-    } while (this.mSubtitleModel == null);
-    VideoEffectNodeFactory.addPagOverlayEffectNode(this.mSubtitleModel, paramCGSize, getStickerContext(), this.mContextCreator);
+      if (this.mSubtitleModel != null) {
+        VideoEffectNodeFactory.addPagOverlayEffectNode(this.mSubtitleModel, paramCGSize, getStickerContext(), this.mContextCreator);
+      }
+    }
   }
   
   public TAVVideoEffect.Filter createFilter()
@@ -139,22 +139,18 @@ public class WSOverlayStickerMergedEffectNode
   public void setStickerModels(List<StickerModel> paramList, CGSize paramCGSize)
   {
     this.mStickerModels = paramList;
-    if (this.mContextCreator == null) {
-      updateCommonSticker(paramCGSize);
-    }
+    updateCommonSticker(paramCGSize);
   }
   
   public void setSubtitleModel(SubtitleModel paramSubtitleModel, CGSize paramCGSize)
   {
     this.mSubtitleModel = paramSubtitleModel;
-    if (this.mContextCreator == null) {
-      updateSubtitleSticker(paramCGSize);
-    }
+    updateSubtitleSticker(paramCGSize);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSOverlayStickerMergedEffectNode
  * JD-Core Version:    0.7.0.1
  */

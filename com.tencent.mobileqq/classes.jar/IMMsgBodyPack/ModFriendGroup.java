@@ -9,7 +9,7 @@ public final class ModFriendGroup
   extends JceStruct
 {
   static ArrayList<FriendGroup> cache_vMsgFrdGroup;
-  public ArrayList<FriendGroup> vMsgFrdGroup;
+  public ArrayList<FriendGroup> vMsgFrdGroup = null;
   
   public ModFriendGroup() {}
   

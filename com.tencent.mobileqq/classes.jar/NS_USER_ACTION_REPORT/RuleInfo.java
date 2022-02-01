@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class RuleInfo
   extends JceStruct
 {
-  public long rule_id;
-  public long test_id;
+  public long rule_id = 0L;
+  public long test_id = 0L;
   
   public RuleInfo() {}
   

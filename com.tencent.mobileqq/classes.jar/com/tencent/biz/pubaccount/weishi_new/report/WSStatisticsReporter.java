@@ -1,16 +1,14 @@
 package com.tencent.biz.pubaccount.weishi_new.report;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.net.common.WSNetService;
+import com.tencent.biz.pubaccount.weishi_new.request.newreq.WSBeaconSendRequest;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import vfk;
-import vfr;
-import vkf;
-import vkj;
-import vkk;
-import vkr;
 
 public class WSStatisticsReporter
 {
@@ -19,6 +17,7 @@ public class WSStatisticsReporter
   public static final int REPORT_REQUEST_ERROR_TYPE_PARSE_DATA = 3;
   public static final int REPORT_REQUEST_ERROR_TYPE_SERVER = 2;
   private static final String TAG = "WSStatisticsReporter";
+  private static final String TAG_VIDEO_SESSION = "reportVideoSession";
   private WSStatisticsBaseCollector mBaseCollector;
   private WSStatisticsReporter.Builder mBuilder;
   private String mEventName;
@@ -47,8 +46,7 @@ public class WSStatisticsReporter
   
   private void beaconData2Server()
   {
-    vfr localvfr = new vfr(new vkr(this.mEventName, this.mReportParams), null, new vkj(this), 4009);
-    vfk.a().a(localvfr);
+    WSNetService.a(new WSBeaconSendRequest(this.mEventName, this.mReportParams)).a(new WSStatisticsReporter.2(this));
   }
   
   private static String getEnterPublicAccFrom()
@@ -67,6 +65,19 @@ public class WSStatisticsReporter
       return "6";
     }
     return "0";
+  }
+  
+  private void printReportLog()
+  {
+    if (QLog.isColorLevel())
+    {
+      HashMap localHashMap = new HashMap(WSStatisticsReporter.Builder.access$1100(this.mBuilder));
+      WSLog.b("WSReportFeedPassKey", "EventReport feedPassKey:" + (String)localHashMap.get("feed_pass_key"));
+      WSLog.b("WSReportFeedGlobalKey", "EventReport globalKey:" + (String)localHashMap.get("global_key"));
+      localHashMap.remove("feed_pass_key");
+      localHashMap.remove("global_key");
+      WSLog.a("WSStatisticsReporter", "[EventReport] mSceneFrom:" + (String)this.mReportParams.get("scenes_from") + ", mEventName:" + this.mEventName + ", mSopName:" + (String)this.mReportParams.get("sop_name") + ", mPosition:" + (String)this.mReportParams.get("position") + ", mSubSessionId:" + (String)this.mReportParams.get("sub_session_id") + ", mTabId:" + (String)WSStatisticsReporter.Builder.access$900(this.mBuilder).get("tab_id") + ", mCustomParams:" + localHashMap.toString() + ", mBaseParams:" + this.mBaseCollector.getBaseParams().toString());
+    }
   }
   
   private void reportRequestFailure(String paramString1, String paramString2, String paramString3)
@@ -94,18 +105,19 @@ public class WSStatisticsReporter
     localHashMap.put("err_type", paramString1);
     localHashMap.put("err_code", paramString2);
     localHashMap.put("err_msg", paramString3);
-    vkf.a(localHashMap);
-    vkk.a().a(localHashMap);
+    WSReportDc00898.a(localHashMap);
+    WsBeaconReportPresenter.a().a(localHashMap);
   }
   
   public void report()
   {
-    ThreadManager.getSubThreadHandler().post(new WSStatisticsReporter.1(this));
+    String str = WSReportUtils.b();
+    ThreadManager.getSubThreadHandler().post(new WSStatisticsReporter.1(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter
  * JD-Core Version:    0.7.0.1
  */

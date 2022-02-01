@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.vas;
 
-import bhow;
-import bhul;
+import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionObserver;
+import com.tencent.mobileqq.vas.updatesystem.api.IVasEngine;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class VasQuickUpdateManager$DefaultVasExtensionObserver
-  extends bhow
+  implements IApolloExtensionObserver
 {
   public VasQuickUpdateManager$DefaultVasExtensionObserver(VasQuickUpdateManager paramVasQuickUpdateManager) {}
   
-  public void onQuickUpdateGetUrl(boolean paramBoolean, Object paramObject)
+  protected void onQuickUpdateGetUrl(boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean) {
       paramObject = (VasQuickUpdateManager.GetUrlRsp)paramObject;
@@ -48,8 +48,8 @@ public class VasQuickUpdateManager$DefaultVasExtensionObserver
         if (QLog.isColorLevel()) {
           QLog.d("VasQuickUpdateManager", 2, "onQuickUpdateGetUrl data = " + localJSONObject1.toString());
         }
-        if (this.this$0.mEngineProxy != null) {
-          this.this$0.mEngineProxy.onPbMsgRecv(0, VasExtensionHandler.g, localJSONObject1.toString());
+        if (VasQuickUpdateManager.access$000(this.this$0) != null) {
+          VasQuickUpdateManager.access$000(this.this$0).onPbMsgRecv(0, "GetUrlRsp", localJSONObject1.toString());
         }
         return;
       }
@@ -58,19 +58,19 @@ public class VasQuickUpdateManager$DefaultVasExtensionObserver
         do
         {
           QLog.e("VasQuickUpdateManager", 1, "onQuickUpdateGetUrl error: ", localException);
-        } while (this.this$0.mEngineProxy == null);
+        } while (VasQuickUpdateManager.access$000(this.this$0) == null);
         str = "{\"cookie\":" + paramObject.cookie + "}";
-        this.this$0.mEngineProxy.onPbMsgRecv((int)paramObject.ret, VasExtensionHandler.g, str);
+        VasQuickUpdateManager.access$000(this.this$0).onPbMsgRecv((int)paramObject.ret, "GetUrlRsp", str);
         return;
       }
       paramObject = (VasQuickUpdateManager.QuickUpdateRsp)paramObject;
       QLog.e("VasQuickUpdateManager", 1, "onQuickUpdateGetUrl result = " + paramObject.ret + " cookie = " + paramObject.cookie);
-    } while (this.this$0.mEngineProxy == null);
+    } while (VasQuickUpdateManager.access$000(this.this$0) == null);
     String str = "{\"cookie\":" + paramObject.cookie + "}";
-    this.this$0.mEngineProxy.onPbMsgRecv((int)paramObject.ret, VasExtensionHandler.g, str);
+    VasQuickUpdateManager.access$000(this.this$0).onPbMsgRecv((int)paramObject.ret, "GetUrlRsp", str);
   }
   
-  public void onQuickUpdateSync(boolean paramBoolean, Object paramObject)
+  protected void onQuickUpdateSync(boolean paramBoolean, Object paramObject)
   {
     int j = 0;
     JSONObject localJSONObject1;
@@ -139,8 +139,8 @@ public class VasQuickUpdateManager$DefaultVasExtensionObserver
         if (QLog.isColorLevel()) {
           QLog.d("VasQuickUpdateManager", 2, "onQuickUpdateSync data = " + localJSONObject1.toString());
         }
-        if (this.this$0.mEngineProxy != null) {
-          this.this$0.mEngineProxy.onPbMsgRecv(0, VasExtensionHandler.e, localJSONObject1.toString());
+        if (VasQuickUpdateManager.access$000(this.this$0) != null) {
+          VasQuickUpdateManager.access$000(this.this$0).onPbMsgRecv(0, "SyncVCRRsp", localJSONObject1.toString());
         }
         return;
       }
@@ -149,21 +149,32 @@ public class VasQuickUpdateManager$DefaultVasExtensionObserver
         do
         {
           QLog.e("VasQuickUpdateManager", 1, "onQuickUpdateSync error: ", localException);
-        } while (this.this$0.mEngineProxy == null);
+        } while (VasQuickUpdateManager.access$000(this.this$0) == null);
         paramObject = "{\"cookie\":" + paramObject.cookie + "}";
-        this.this$0.mEngineProxy.onPbMsgRecv(-1, VasExtensionHandler.e, paramObject);
+        VasQuickUpdateManager.access$000(this.this$0).onPbMsgRecv(-1, "SyncVCRRsp", paramObject);
         return;
       }
       paramObject = (VasQuickUpdateManager.QuickUpdateRsp)paramObject;
       QLog.e("VasQuickUpdateManager", 1, "onQuickUpdateSync result = " + paramObject.ret + " cookie = " + paramObject.cookie);
-    } while (this.this$0.mEngineProxy == null);
+    } while (VasQuickUpdateManager.access$000(this.this$0) == null);
     String str = "{\"cookie\":" + paramObject.cookie + "}";
-    this.this$0.mEngineProxy.onPbMsgRecv((int)paramObject.ret, VasExtensionHandler.e, str);
+    VasQuickUpdateManager.access$000(this.this$0).onPbMsgRecv((int)paramObject.ret, "SyncVCRRsp", str);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 16) {
+      onQuickUpdateSync(paramBoolean, paramObject);
+    }
+    while (paramInt != 17) {
+      return;
+    }
+    onQuickUpdateGetUrl(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager.DefaultVasExtensionObserver
  * JD-Core Version:    0.7.0.1
  */

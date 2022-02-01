@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class comm_page_info
   extends JceStruct
 {
-  public boolean has_more;
+  public boolean has_more = false;
   public String page_str = "";
   
   public comm_page_info() {}

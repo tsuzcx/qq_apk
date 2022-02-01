@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bghf;
-
-public final class HWTroopUtils$2
+final class HWTroopUtils$2
   implements Runnable
 {
-  public HWTroopUtils$2(bghf parambghf, int paramInt) {}
+  HWTroopUtils$2(HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bghf.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHWTroopUtils$OnHomeworkTroopIdentityCheckListener.a(this.jdField_a_of_type_Int);
   }
 }
 

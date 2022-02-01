@@ -2,9 +2,9 @@ package cooperation.qzone.webviewplugin.famous;
 
 import android.app.Activity;
 import android.content.Intent;
-import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.webviewplugin.QzoneInternalWebViewPlugin;
 
@@ -30,7 +30,7 @@ public class QzoneHomePageJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.famous.QzoneHomePageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

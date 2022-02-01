@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
-import pkp;
-import pwb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import uuc;
 
-public final class WeishiReportUtil$2
+final class WeishiReportUtil$2
   implements Runnable
 {
-  public WeishiReportUtil$2(int paramInt, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4) {}
+  WeishiReportUtil$2(int paramInt, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public final class WeishiReportUtil$2
     oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(1);
     localAttributeList.att_name.set("ExitType");
-    localAttributeList.att_value.set(pkp.a(this.jdField_a_of_type_Int));
+    localAttributeList.att_value.set(WeishiReportUtil.a(this.jdField_a_of_type_Int));
     localArrayList.add(localAttributeList);
     localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(2);
@@ -29,7 +29,7 @@ public final class WeishiReportUtil$2
     localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(3);
     localAttributeList.att_name.set("Time");
-    localAttributeList.att_value.set(String.valueOf(pwb.a(this.jdField_a_of_type_Long) / 1000L));
+    localAttributeList.att_value.set(String.valueOf(ReadinjoySPEventReport.a(this.jdField_a_of_type_Long) / 1000L));
     localArrayList.add(localAttributeList);
     if (!"1".equals(this.jdField_a_of_type_JavaLangString))
     {
@@ -49,12 +49,12 @@ public final class WeishiReportUtil$2
       localAttributeList.att_value.set("" + this.d);
       localArrayList.add(localAttributeList);
     }
-    uuc.a(26, localArrayList);
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPushEffectEvent(26, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,15 +7,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
-import anvx;
-import bkyz;
-import bkzi;
-import bkzq;
-import bkzz;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import com.tencent.util.pm.PackageUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.widget.ActionSheetHelper;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -24,7 +24,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class MapHelper
-  implements bkzq
+  implements ActionSheet.OnButtonClickListener
 {
   public static final int ACTION_BAIDU_MAP = 2;
   public static final int ACTION_STREET = 0;
@@ -36,7 +36,7 @@ public class MapHelper
   protected static final int WALKING = 0;
   protected int[] mActionArray = new int[6];
   protected HashMap<String, Integer> mActionMap = new HashMap();
-  protected bkzi mActionSheet;
+  protected ActionSheet mActionSheet = null;
   protected LinkedHashMap<String, String> mAppNameMap = new LinkedHashMap();
   protected Context mContext;
   protected HashSet<String> mInstalledMapAppSet = new HashSet();
@@ -51,8 +51,8 @@ public class MapHelper
   public MapHelper(Context paramContext)
   {
     this.mContext = paramContext;
-    this.mAppNameMap.put("com.tencent.map", anvx.a(2131705926));
-    this.mAppNameMap.put("com.baidu.BaiduMap", anvx.a(2131705932));
+    this.mAppNameMap.put("com.tencent.map", HardCodeUtil.a(2131706466));
+    this.mAppNameMap.put("com.baidu.BaiduMap", HardCodeUtil.a(2131706472));
     this.mActionMap.put("com.tencent.map", Integer.valueOf(1));
     this.mActionMap.put("com.baidu.BaiduMap", Integer.valueOf(2));
     this.mUIHandler = new Handler(Looper.getMainLooper());
@@ -99,10 +99,10 @@ public class MapHelper
     long l = System.currentTimeMillis();
     this.mInstalledMapAppSet.clear();
     this.mContext.getPackageManager();
-    if (bkyz.a(this.mContext, "com.tencent.map")) {
+    if (PackageUtil.a(this.mContext, "com.tencent.map")) {
       this.mInstalledMapAppSet.add("com.tencent.map");
     }
-    if (bkyz.a(this.mContext, "com.baidu.BaiduMap")) {
+    if (PackageUtil.a(this.mContext, "com.baidu.BaiduMap")) {
       this.mInstalledMapAppSet.add("com.baidu.BaiduMap");
     }
     if (QLog.isColorLevel()) {
@@ -192,7 +192,7 @@ public class MapHelper
   {
     if (TextUtils.isEmpty(this.mStreetViewUrl))
     {
-      QQToast.a(this.mContext.getApplicationContext(), 0, anvx.a(2131705928), 1).b(this.mContext.getResources().getDimensionPixelSize(2131299080));
+      QQToast.a(this.mContext.getApplicationContext(), 0, HardCodeUtil.a(2131706468), 1).b(this.mContext.getResources().getDimensionPixelSize(2131299166));
       return;
     }
     Intent localIntent = new Intent(this.mContext, QQBrowserActivity.class);
@@ -210,7 +210,7 @@ public class MapHelper
   {
     if ((paramLatLng1 == null) || (paramLatLng2 == null))
     {
-      QQToast.a(this.mContext, 0, anvx.a(2131705931), 1).b(this.mContext.getResources().getDimensionPixelSize(2131299080));
+      QQToast.a(this.mContext, 0, HardCodeUtil.a(2131706471), 1).b(this.mContext.getResources().getDimensionPixelSize(2131299166));
       return;
     }
     this.mSelfPoint = paramLatLng1;
@@ -218,10 +218,10 @@ public class MapHelper
     this.mSelfPoiName = paramString1;
     this.mTargetPoiName = paramString2;
     if (TextUtils.isEmpty(this.mSelfPoiName)) {
-      this.mSelfPoiName = anvx.a(2131705927);
+      this.mSelfPoiName = HardCodeUtil.a(2131706467);
     }
     if (TextUtils.isEmpty(this.mTargetPoiName)) {
-      this.mTargetPoiName = anvx.a(2131705925);
+      this.mTargetPoiName = HardCodeUtil.a(2131706465);
     }
     double d = getDistance(paramLatLng1.getLongitude(), paramLatLng1.getLatitude(), paramLatLng2.getLongitude(), paramLatLng2.getLatitude());
     if (d > 1000.0D)
@@ -231,19 +231,19 @@ public class MapHelper
         QLog.d("Q.qqmap", 2, "showActionSheet: self=" + paramLatLng1.toString() + ",to=" + paramLatLng2.toString() + ",selfPoi=" + paramString1 + ",toPoi=" + paramString2 + ",distance=" + d);
       }
       checkInstalledMapApp();
-      this.mActionSheet = ((bkzi)bkzz.a(this.mContext, null));
-      this.mActionSheet.a(this);
+      this.mActionSheet = ((ActionSheet)ActionSheetHelper.a(this.mContext, null));
+      this.mActionSheet.setOnButtonClickListener(this);
       if (TextUtils.isEmpty(this.mStreetViewUrl)) {
         break label424;
       }
-      this.mActionSheet.c(anvx.a(2131705929));
+      this.mActionSheet.addButton(HardCodeUtil.a(2131706469));
       this.mActionArray[0] = 0;
     }
     label421:
     label424:
     for (int i = 1;; i = 0)
     {
-      this.mActionSheet.c(anvx.a(2131705930));
+      this.mActionSheet.addButton(HardCodeUtil.a(2131706470));
       this.mActionArray[i] = 1;
       paramLatLng1 = this.mAppNameMap.entrySet().iterator();
       i += 1;
@@ -256,7 +256,7 @@ public class MapHelper
         if (!this.mInstalledMapAppSet.contains(paramLatLng2)) {
           break label421;
         }
-        this.mActionSheet.c(paramString1);
+        this.mActionSheet.addButton(paramString1);
         this.mActionArray[i] = ((Integer)this.mActionMap.get(paramLatLng2)).intValue();
         i += 1;
       }

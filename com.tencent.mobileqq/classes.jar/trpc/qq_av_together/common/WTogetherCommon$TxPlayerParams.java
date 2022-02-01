@@ -8,7 +8,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class WTogetherCommon$TxPlayerParams
   extends MessageMicro<TxPlayerParams>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "vid" }, new Object[] { "" }, TxPlayerParams.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "vid", "cid" }, new Object[] { "", "" }, TxPlayerParams.class);
+  public final PBStringField cid = PBField.initString("");
   public final PBStringField vid = PBField.initString("");
 }
 

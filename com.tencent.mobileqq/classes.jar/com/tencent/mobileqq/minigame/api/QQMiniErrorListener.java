@@ -2,8 +2,7 @@ package com.tencent.mobileqq.minigame.api;
 
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
-import anvx;
-import bhdj;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
@@ -14,12 +13,13 @@ import com.tencent.mobileqq.triton.exception.ErrorCodes;
 import com.tencent.mobileqq.triton.exception.ErrorSeverity;
 import com.tencent.mobileqq.triton.exception.TritonException;
 import com.tencent.mobileqq.triton.statistic.ErrorCallback;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/api/QQMiniErrorListener;", "Lcom/tencent/mobileqq/triton/statistic/ErrorCallback;", "context", "Landroid/content/Context;", "miniAppInfo", "Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;", "gameReportManager", "Lcom/tencent/mobileqq/minigame/manager/GameReportManager;", "(Landroid/content/Context;Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;Lcom/tencent/mobileqq/minigame/manager/GameReportManager;)V", "onError", "", "message", "", "exception", "Lcom/tencent/mobileqq/triton/exception/TritonException;", "onScriptError", "stack", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/minigame/api/QQMiniErrorListener;", "Lcom/tencent/mobileqq/triton/statistic/ErrorCallback;", "context", "Landroid/content/Context;", "miniAppInfo", "Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;", "gameReportManager", "Lcom/tencent/mobileqq/minigame/manager/GameReportManager;", "(Landroid/content/Context;Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;Lcom/tencent/mobileqq/minigame/manager/GameReportManager;)V", "onError", "", "message", "", "exception", "Lcom/tencent/mobileqq/triton/exception/TritonException;", "onScriptError", "stack", "Companion", "qqmini_impl_release"}, k=1, mv={1, 1, 16})
 public final class QQMiniErrorListener
   implements ErrorCallback
 {
@@ -44,7 +44,7 @@ public final class QQMiniErrorListener
     GameLog.getInstance().e("MiniErrorListener", "On TritonError " + paramString, (Throwable)paramTritonException);
     if ((paramTritonException.getError().getSeverity().compareTo((Enum)ErrorSeverity.SEVER) >= 0) && (GameWnsUtils.getGameErrorDialogEnable()) && (!GameWnsUtils.getGameErrorDialogIsBlack()))
     {
-      paramString = bhdj.a(this.context, 230, null, (CharSequence)GameWnsUtils.getGameErrorDialogContent(), anvx.a(2131709678), anvx.a(2131709679), (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.1.INSTANCE, (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.2.INSTANCE);
+      paramString = DialogUtil.a(this.context, 230, null, (CharSequence)GameWnsUtils.getGameErrorDialogContent(), HardCodeUtil.a(2131710194), HardCodeUtil.a(2131710195), (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.1.INSTANCE, (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.2.INSTANCE);
       paramString.setCanceledOnTouchOutside(false);
       paramString.show();
       MiniReportManager.reportEventType(this.miniAppInfo, 1024, "1");

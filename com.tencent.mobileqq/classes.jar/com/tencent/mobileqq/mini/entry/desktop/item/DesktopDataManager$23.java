@@ -1,39 +1,20 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 class DesktopDataManager$23
   implements Runnable
 {
-  DesktopDataManager$23(DesktopDataManager paramDesktopDataManager, ArrayList paramArrayList) {}
+  DesktopDataManager$23(DesktopDataManager paramDesktopDataManager) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = DesktopDataManager.getSharedPreferences("app_recommend_exposure");
-    if (localSharedPreferences != null)
-    {
-      localSharedPreferences.edit().clear().commit();
-      QLog.d("DesktopDataManager-Recommend", 2, "updateRecommendExposureSp : clear.");
-      StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.val$recommendAppInfoList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecommendAppInfo localRecommendAppInfo = (RecommendAppInfo)localIterator.next();
-        if (localRecommendAppInfo != null) {
-          localStringBuilder.append(localRecommendAppInfo.getAppId()).append("_").append(localRecommendAppInfo.getExposuredNum()).append("_").append(localRecommendAppInfo.getPullTime()).append(";");
-        }
-      }
-      if (localStringBuilder.length() > 0)
-      {
-        QLog.d("DesktopDataManager-Recommend", 2, "updateRecommendExposureSp : " + localStringBuilder.toString() + ", recommendAppList size: " + this.val$recommendAppInfoList.size());
-        localSharedPreferences.edit().putString("app_recommend_exposure", localStringBuilder.toString()).commit();
-      }
+    QLog.d("DesktopDataManager-Recommend", 2, "clearRecommendExposureList");
+    if (DesktopDataManager.access$1700(this.this$0) != null) {
+      DesktopDataManager.access$1700(this.this$0).clear();
     }
+    DesktopDataManager.access$1800(this.this$0);
   }
 }
 

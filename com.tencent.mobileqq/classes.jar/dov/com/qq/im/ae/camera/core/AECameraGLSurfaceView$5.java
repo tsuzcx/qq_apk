@@ -1,24 +1,25 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnbc;
-import bnrh;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import dov.com.qq.im.ae.gif.AEExpressionRecognizer;
 
 class AECameraGLSurfaceView$5
-  implements bnbc
+  implements Runnable
 {
   AECameraGLSurfaceView$5(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
-  public void recover(VideoMaterial paramVideoMaterial)
+  public void run()
   {
-    bnrh.b("AECameraGLSurfaceView", "EditableWatermarkMaterialRecover recover---");
-    AECameraGLSurfaceView.access$502(this.this$0, null);
-    this.this$0.setMaterial(paramVideoMaterial.getDataPath());
+    if (AECameraGLSurfaceView.access$300(this.this$0) != null)
+    {
+      AECameraGLSurfaceView.access$300(this.this$0).d();
+      AECameraGLSurfaceView.access$302(this.this$0, null);
+    }
+    AECameraGLSurfaceView.access$400(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.5
  * JD-Core Version:    0.7.0.1
  */

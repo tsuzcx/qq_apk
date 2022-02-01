@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:background="#66000000" android:paddingBottom="@dimen/b_a" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="22.0dip" android:textColor="@android:color/white" android:gravity="center" android:id="@id/text1" android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_marginBottom="5.0dip" android:text="@string/w8y" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RadioGroup android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/m62" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginRight="22.0dip">
+            <RadioButton android:textSize="14.0dip" android:textColor="@color/dj" android:gravity="bottom|center" android:id="@id/nyt" android:background="@drawable/b9l" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:layout_width="0.0dip" android:layout_height="50.0dip" android:checked="true" android:button="@null" android:text="@string/waa" android:includeFontPadding="false" android:layout_weight="1.0" />
+            <RadioButton android:textSize="14.0dip" android:textColor="@color/dj" android:gravity="bottom|center" android:id="@id/nyu" android:background="@drawable/b9l" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:layout_width="0.0dip" android:layout_height="50.0dip" android:checked="false" android:button="@null" android:text="@string/wab" android:includeFontPadding="false" android:layout_weight="1.0" />
+            <RadioButton android:textSize="14.0dip" android:textColor="@color/dj" android:gravity="bottom|center" android:id="@id/nyv" android:background="@drawable/b9l" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:layout_width="0.0dip" android:layout_height="50.0dip" android:button="@null" android:text="@string/wac" android:includeFontPadding="false" android:layout_weight="1.0" />
+        </RadioGroup>
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <dov.com.qq.im.ae.view.NoScrollViewPager android:id="@id/nmg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

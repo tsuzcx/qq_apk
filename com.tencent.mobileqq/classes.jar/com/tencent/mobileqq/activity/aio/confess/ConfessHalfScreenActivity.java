@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import Override;
-import afze;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -21,12 +19,12 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class ConfessHalfScreenActivity
   extends QQBrowserActivity
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   
   public ConfessHalfScreenActivity()
   {
-    this.jdField_a_of_type_JavaLangClass = ConfessHalfScreenActivity.ConfessBrowserFragment.class;
+    this.mFragmentClass = ConfessHalfScreenActivity.ConfessBrowserFragment.class;
   }
   
   public static void a()
@@ -47,10 +45,10 @@ public class ConfessHalfScreenActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167296);
-    paramBundle = findViewById(2131363780);
+    getWindow().setBackgroundDrawableResource(2131167305);
+    paramBundle = findViewById(2131363879);
     if (paramBundle != null) {
-      paramBundle.setBackgroundResource(2131167296);
+      paramBundle.setBackgroundResource(2131167305);
     }
     this.jdField_a_of_type_Int = getIntent().getIntExtra("confessDstHeight", 0);
     if (this.jdField_a_of_type_Int <= 0)
@@ -61,7 +59,7 @@ public class ConfessHalfScreenActivity
       finish();
     }
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new afze(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ConfessHalfScreenActivity.1(this);
     }
     try
     {
@@ -116,7 +114,7 @@ public class ConfessHalfScreenActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity
  * JD-Core Version:    0.7.0.1
  */

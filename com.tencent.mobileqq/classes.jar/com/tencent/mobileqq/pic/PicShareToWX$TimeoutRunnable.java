@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.pic;
 
-import azkg;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 import eipc.EIPCResult;
 
-public class PicShareToWX$TimeoutRunnable
+class PicShareToWX$TimeoutRunnable
   implements Runnable
 {
   private PicShareToWX$TimeoutRunnable(PicShareToWX paramPicShareToWX) {}
@@ -14,7 +13,7 @@ public class PicShareToWX$TimeoutRunnable
   {
     PicShareToWX.a(this.this$0, true);
     if ((PicShareToWX.a(this.this$0) != null) && (PicShareToWX.a(this.this$0) != null)) {
-      PicShareToWX.a(this.this$0).getTransFileController().stop(PicShareToWX.a(this.this$0));
+      ((ITransFileController)PicShareToWX.a(this.this$0).getRuntimeService(ITransFileController.class)).stop(PicShareToWX.a(this.this$0));
     }
     if (PicShareToWX.a(this.this$0) != null) {
       PicShareToWX.a(this.this$0).callbackResult(PicShareToWX.a(this.this$0), EIPCResult.createResult(-102, null));

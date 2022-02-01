@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.qphone.base.util.QLog;
 
 class NewFlowCameraActivity$20
   implements Runnable
@@ -12,15 +9,18 @@ class NewFlowCameraActivity$20
   
   public void run()
   {
-    int i = (int)(this.this$0.a.getHeight() * 0.35F);
-    ViewGroup.LayoutParams localLayoutParams = this.this$0.c.getLayoutParams();
-    localLayoutParams.height = (i - this.this$0.d.getHeight());
-    this.this$0.c.setLayoutParams(localLayoutParams);
+    if (VideoFilterTools.a(this.this$0.getApplicationContext()))
+    {
+      VideoFilterTools localVideoFilterTools = VideoFilterTools.a();
+      localVideoFilterTools.a(this.this$0.getApplicationContext(), new NewFlowCameraActivity.20.1(this, localVideoFilterTools));
+      return;
+    }
+    QLog.w("PTV.NewFlowCameraActivity", 2, "your device don't support video filter!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.20
  * JD-Core Version:    0.7.0.1
  */

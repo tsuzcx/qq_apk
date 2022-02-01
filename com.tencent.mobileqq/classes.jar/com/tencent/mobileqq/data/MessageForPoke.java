@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import agrd;
-import ahmq;
 import android.graphics.drawable.Drawable.ConstantState;
-import anvx;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameAnimationState;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.UnlimitedState;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,18 +26,18 @@ public class MessageForPoke
   public static final int POKE_FLAG_BREAKING_ICE_POKE = 1;
   @Deprecated
   public static final int POKE_FLAG_BREAKING_ICE_POKE_ACK = 2;
-  public int doubleHitState;
-  public int flag;
-  public boolean hasQuickBackShowed;
+  public int doubleHitState = 0;
+  public int flag = 0;
+  public boolean hasQuickBackShowed = false;
   public int interactType = 0;
-  public boolean isPlayed;
-  public Drawable.ConstantState mBubbleBgState;
-  public agrd mFrameState = new agrd();
-  public ahmq mUnlimitedState = new ahmq();
+  public boolean isPlayed = false;
+  public Drawable.ConstantState mBubbleBgState = null;
+  public CustomFrameAnimationDrawable.FrameAnimationState mFrameState = new CustomFrameAnimationDrawable.FrameAnimationState();
+  public UnlimitedBladeWorks.UnlimitedState mUnlimitedState = new UnlimitedBladeWorks.UnlimitedState();
   public String minVersion;
   public String name;
-  public int state;
-  public int strength;
+  public int state = 0;
+  public int strength = 0;
   public int subId = -1;
   
   protected void doParse()
@@ -68,25 +68,25 @@ public class MessageForPoke
     switch (this.interactType)
     {
     default: 
-      this.msg = anvx.a(2131706093);
+      this.msg = HardCodeUtil.a(2131706633);
       return;
     case 1: 
-      this.msg = anvx.a(2131706088);
+      this.msg = HardCodeUtil.a(2131706628);
       return;
     case 2: 
-      this.msg = anvx.a(2131706067);
+      this.msg = HardCodeUtil.a(2131706607);
       return;
     case 3: 
-      this.msg = anvx.a(2131706068);
+      this.msg = HardCodeUtil.a(2131706608);
       return;
     case 4: 
-      this.msg = anvx.a(2131706055);
+      this.msg = HardCodeUtil.a(2131706595);
       return;
     case 5: 
       this.msg = "[666]";
       return;
     case 6: 
-      this.msg = anvx.a(2131706070);
+      this.msg = HardCodeUtil.a(2131706610);
       return;
     }
     this.msg = ("[" + this.name + "]");
@@ -136,13 +136,13 @@ public class MessageForPoke
     {
       this.isPlayed = true;
       prewrite();
-      paramQQAppInterface.getMessageFacade().updateMsgContentByUniseq(this.frienduin, this.istroop, this.uniseq, this.msgData);
+      paramQQAppInterface.getMessageFacade().a(this.frienduin, this.istroop, this.uniseq, this.msgData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPoke
  * JD-Core Version:    0.7.0.1
  */

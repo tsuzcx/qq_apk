@@ -1,11 +1,10 @@
 package com.tencent.device.devicemgr;
 
-import abgm;
-import abmo;
-import abmp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.qfind.QFindConfig;
+import com.tencent.device.qfind.QFindConfigUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -14,17 +13,17 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class SmartDeviceProxyMgr$2
+class SmartDeviceProxyMgr$2
   implements Runnable
 {
-  public SmartDeviceProxyMgr$2(abgm paramabgm, ConfigurationService.Config paramConfig) {}
+  SmartDeviceProxyMgr$2(SmartDeviceProxyMgr paramSmartDeviceProxyMgr, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
     if ((this.a.content_list != null) && (this.a.content_list.size() > 0))
     {
       localObject1 = (String)this.a.content_list.get(0);
-      localObject2 = abmp.a((String)localObject1);
+      localObject2 = QFindConfigUtil.a((String)localObject1);
       if (QLog.isColorLevel()) {
         QLog.i("QFind", 2, "config0 " + (String)localObject1);
       }
@@ -42,16 +41,16 @@ public class SmartDeviceProxyMgr$2
         if (QLog.isColorLevel()) {
           QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 65,content: " + str + ",version: " + this.a.version.get());
         }
-        abmo localabmo = abmp.a(str);
+        QFindConfig localQFindConfig = QFindConfigUtil.a(str);
         Object localObject4 = localObject2;
         localObject3 = localObject1;
-        if (localabmo != null)
+        if (localQFindConfig != null)
         {
           localObject4 = localObject2;
           localObject3 = localObject1;
-          if (localabmo.a > ((abmo)localObject2).a)
+          if (localQFindConfig.a > ((QFindConfig)localObject2).a)
           {
-            localObject4 = localabmo;
+            localObject4 = localQFindConfig;
             localObject3 = str;
           }
         }
@@ -60,9 +59,9 @@ public class SmartDeviceProxyMgr$2
         localObject1 = localObject3;
       }
       Object localObject3 = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).edit();
-      ((SharedPreferences.Editor)localObject3).putString("qfind_assist" + this.this$0.app.getCurrentAccountUin(), String.valueOf(((abmo)localObject2).b));
+      ((SharedPreferences.Editor)localObject3).putString("qfind_assist" + SmartDeviceProxyMgr.a(this.this$0).getCurrentAccountUin(), String.valueOf(((QFindConfig)localObject2).b));
       ((SharedPreferences.Editor)localObject3).commit();
-      FileUtils.writeFile(BaseApplicationImpl.getApplication().getFilesDir() + "/qfindconfig", (String)localObject1);
+      FileUtils.a(BaseApplicationImpl.getApplication().getFilesDir() + "/qfindconfig", (String)localObject1);
       this.this$0.a(null, false);
       return;
     }
@@ -71,7 +70,7 @@ public class SmartDeviceProxyMgr$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.devicemgr.SmartDeviceProxyMgr.2
  * JD-Core Version:    0.7.0.1
  */

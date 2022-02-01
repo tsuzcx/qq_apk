@@ -1,22 +1,9 @@
 package com.tencent.mobileqq.qassistant.audio;
 
 import android.text.TextUtils;
-import anvx;
-import bajb;
-import bajd;
-import baje;
-import bajh;
-import bajl;
-import bakl;
-import bakm;
-import bakx;
-import balh;
-import bali;
-import balj;
-import balk;
-import bkvq;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.highway.HwEngine;
@@ -28,6 +15,13 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qassistant.core.AssistantUtils;
+import com.tencent.mobileqq.qassistant.core.CommandDistributorHelper;
+import com.tencent.mobileqq.qassistant.core.VoiceAssistantManager;
+import com.tencent.mobileqq.qassistant.data.VoiceAssiatantRespInfo;
+import com.tencent.mobileqq.qassistant.data.VoiceAssiatantRespInfo.ConfirmSendInfo;
+import com.tencent.mobileqq.qassistant.data.VoiceAssiatantRespInfo.Slot;
+import com.tencent.mobileqq.qassistant.data.VoiceAssiatantRespInfo.UserInfo;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.protofile.cmd67.cmd67.ASRRecoRes;
 import com.tencent.protofile.cmd67.cmd67.ASRWord;
@@ -41,6 +35,7 @@ import com.tencent.protofile.cmd67.cmd67.VoiceAssistantNLPResp;
 import com.tencent.protofile.cmd67.cmd67.VoiceAssistantReq;
 import com.tencent.protofile.cmd67.cmd67.VoiceAssistantResp;
 import com.tencent.qphone.base.util.MD5;
+import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -57,14 +52,14 @@ public class AudioUploadThread
   extends Thread
 {
   private int jdField_a_of_type_Int = -1;
-  private volatile bajh jdField_a_of_type_Bajh;
-  private bakm jdField_a_of_type_Bakm;
-  private bakx jdField_a_of_type_Bakx;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private volatile String jdField_a_of_type_JavaLangString = bakl.a();
+  private volatile VoiceCacheHolder jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder;
+  private CommandDistributorHelper jdField_a_of_type_ComTencentMobileqqQassistantCoreCommandDistributorHelper;
+  private VoiceAssistantManager jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceAssistantManager;
+  private volatile String jdField_a_of_type_JavaLangString = AssistantUtils.a();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private int jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 0;
   private String jdField_b_of_type_JavaLangString = "";
   private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private String jdField_c_of_type_JavaLangString = "";
@@ -72,26 +67,31 @@ public class AudioUploadThread
   private String jdField_d_of_type_JavaLangString = "";
   private AtomicInteger jdField_d_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  public AudioUploadThread(int paramInt, bajh parambajh)
+  public AudioUploadThread(int paramInt, VoiceCacheHolder paramVoiceCacheHolder)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = bakl.a();
-      this.jdField_a_of_type_Bakm = new bakm();
-      this.jdField_a_of_type_Bakx = ((bakx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VOICE_ASSISTANT_MANAGER));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = AssistantUtils.a();
+      this.jdField_a_of_type_ComTencentMobileqqQassistantCoreCommandDistributorHelper = new CommandDistributorHelper();
+      this.jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceAssistantManager = ((VoiceAssistantManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VOICE_ASSISTANT_MANAGER));
       this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Bajh = parambajh;
+      this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder = paramVoiceCacheHolder;
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
       return;
     }
-    catch (Exception parambajh)
+    catch (Exception paramVoiceCacheHolder)
     {
-      bakl.a("AudioUploadThread", "init exception:" + parambajh);
-      parambajh.printStackTrace();
+      AssistantUtils.a("AudioUploadThread", "init exception:" + paramVoiceCacheHolder);
+      paramVoiceCacheHolder.printStackTrace();
     }
   }
   
-  private bali a(List<cmd67.ASRRecoRes> paramList, String paramString)
+  private ITransactionCallback a(VoiceBean paramVoiceBean, String paramString)
+  {
+    return new AudioUploadThread.1(this, paramString, paramVoiceBean);
+  }
+  
+  private VoiceAssiatantRespInfo.ConfirmSendInfo a(List<cmd67.ASRRecoRes> paramList, String paramString)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return null;
@@ -110,11 +110,11 @@ public class AudioUploadThread
       ((cmd67.ASRRecoRes)localObject3).confidence.get();
       ((List)localObject1).addAll((Collection)localObject4);
     }
-    bakl.a("AudioUploadThread", String.format("confirmSendInterval, resList:%s, wordsList:%s", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(((List)localObject1).size()) }));
+    AssistantUtils.a("AudioUploadThread", String.format("confirmSendInterval, resList:%s, wordsList:%s", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(((List)localObject1).size()) }));
     if (((List)localObject1).isEmpty()) {
       return null;
     }
-    localObject2 = anvx.a(2131720024).trim();
+    localObject2 = HardCodeUtil.a(2131720600).trim();
     paramList = new StringBuilder("confirmSendInterval");
     localObject1 = ((List)localObject1).iterator();
     int i = 0;
@@ -129,11 +129,11 @@ public class AudioUploadThread
       k = ((cmd67.ASRWord)localObject3).metm.get();
       paramList.append(", word_char:").append((String)localObject4).append(", mbtm:").append(m).append(", metm:").append(k);
       if (!((String)localObject2).startsWith((String)localObject4)) {
-        break label376;
+        break label377;
       }
       j = m;
     }
-    label376:
+    label377:
     for (;;)
     {
       if (((String)localObject2).endsWith((String)localObject4)) {
@@ -142,20 +142,15 @@ public class AudioUploadThread
       for (;;)
       {
         break;
-        paramString = new bali(j, i, paramString);
+        paramString = new VoiceAssiatantRespInfo.ConfirmSendInfo(j, i, paramString);
         paramList.append(", header:").append(paramString.a).append(", tailor:").append(paramString.b);
-        bakl.a("AudioUploadThread", paramList.toString());
+        AssistantUtils.a("AudioUploadThread", paramList.toString());
         return paramString;
       }
     }
   }
   
-  private ITransactionCallback a(bajd parambajd, String paramString)
-  {
-    return new bajb(this, paramString, parambajd);
-  }
-  
-  private void a(bajd parambajd, byte[] paramArrayOfByte, long paramLong)
+  private void a(VoiceBean paramVoiceBean, byte[] paramArrayOfByte, long paramLong)
   {
     Object localObject = new cmd67.RspBody();
     ((cmd67.RspBody)localObject).mergeFrom(paramArrayOfByte);
@@ -175,7 +170,7 @@ public class AudioUploadThread
     List localList3;
     String str3;
     float f2;
-    bali localbali;
+    VoiceAssiatantRespInfo.ConfirmSendInfo localConfirmSendInfo;
     if (paramArrayOfByte.uint32_is_final.get() == 1)
     {
       bool1 = true;
@@ -187,7 +182,7 @@ public class AudioUploadThread
       localList3 = ((cmd67.VoiceAssistantNLPResp)localObject).msg_slots.get();
       str3 = ((cmd67.VoiceAssistantNLPResp)localObject).str_dialog_status.get();
       f2 = ((cmd67.VoiceAssistantNLPResp)localObject).time_use.get();
-      localbali = a(paramArrayOfByte.reco_res.get(), str2);
+      localConfirmSendInfo = a(paramArrayOfByte.reco_res.get(), str2);
       if ((j != 0) || (m != 0)) {
         break label516;
       }
@@ -195,16 +190,16 @@ public class AudioUploadThread
     label516:
     for (boolean bool2 = true;; bool2 = false)
     {
-      bakl.a(bool2, this.jdField_b_of_type_JavaLangString, j, m, i1);
+      AssistantUtils.a(bool2, this.jdField_b_of_type_JavaLangString, j, m, i1);
       if (!bool2) {
-        bakl.a("AudioUploadThread", "onError, continue Upload, errCode:" + j + ", asrCode:" + m + ", nlpCode:" + i1);
+        AssistantUtils.a("AudioUploadThread", "onError, continue Upload, errCode:" + j + ", asrCode:" + m + ", nlpCode:" + i1);
       }
-      bakl.a("AudioUploadThread", String.format("voiceId:%s, srvAckOffset:%s, retCode:%s, asrRetCode:%s, nlpRetCode:%s, dialStatus:%s, timeUsed1:%s, timeUsed2:%s contactCount:%s\ncontacts:%s, intents:%s, slots:%s, voiceText:%s", new Object[] { str2, Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(m), Integer.valueOf(i1), str3, Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(k), Integer.valueOf(localList1.size()), Integer.valueOf(localList2.size()), Integer.valueOf(localList3.size()), str1 }));
+      AssistantUtils.a("AudioUploadThread", String.format("voiceId:%s, srvAckOffset:%s, retCode:%s, asrRetCode:%s, nlpRetCode:%s, dialStatus:%s, timeUsed1:%s, timeUsed2:%s contactCount:%s\ncontacts:%s, intents:%s, slots:%s, voiceText:%s", new Object[] { str2, Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(m), Integer.valueOf(i1), str3, Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(k), Integer.valueOf(localList1.size()), Integer.valueOf(localList2.size()), Integer.valueOf(localList3.size()), str1 }));
       int i = 0;
       while (i < localList1.size())
       {
         paramArrayOfByte = (cmd67.UserInfo)localList1.get(i);
-        bakl.a("AudioUploadThread", String.format("UserInfo[uin:%s, wei:%s, contact:%s]", new Object[] { Long.valueOf(paramArrayOfByte.uint64_uin.get()), Float.valueOf(paramArrayOfByte.float_weight.get()), paramArrayOfByte.str_matched_contacts.get() }));
+        AssistantUtils.a("AudioUploadThread", String.format("UserInfo[uin:%s, wei:%s, contact:%s]", new Object[] { Long.valueOf(paramArrayOfByte.uint64_uin.get()), Float.valueOf(paramArrayOfByte.float_weight.get()), paramArrayOfByte.str_matched_contacts.get() }));
         i += 1;
       }
       bool1 = false;
@@ -220,7 +215,7 @@ public class AudioUploadThread
       {
         float f3 = localIntent.confidence.get();
         paramArrayOfByte = localIntent.str_content.get();
-        bakl.a("AudioUploadThread", String.format("[content:%s, confidence:%s, skill:%s, intent:%s]", new Object[] { paramArrayOfByte, Float.valueOf(f3), localIntent.str_skill.get(), localIntent.str_intent.get() }));
+        AssistantUtils.a("AudioUploadThread", String.format("[content:%s, confidence:%s, skill:%s, intent:%s]", new Object[] { paramArrayOfByte, Float.valueOf(f3), localIntent.str_skill.get(), localIntent.str_intent.get() }));
       }
     }
     boolean bool3 = a(str2, str1, paramArrayOfByte);
@@ -228,53 +223,53 @@ public class AudioUploadThread
     this.jdField_c_of_type_JavaLangString = str1;
     this.jdField_d_of_type_JavaLangString = paramArrayOfByte;
     this.jdField_b_of_type_Int = n;
-    bajl.a().a(parambajd, str2, str1, paramArrayOfByte, k);
-    bajl.a().a(parambajd, f1, f2);
-    bajl.a().a(parambajd, j, m, i1);
-    if (baje.b(parambajd.jdField_b_of_type_Int)) {
-      bakl.a(bajl.a().a(str2));
+    VoiceTimeTraceUtil.a().a(paramVoiceBean, str2, str1, paramArrayOfByte, k);
+    VoiceTimeTraceUtil.a().a(paramVoiceBean, f1, f2);
+    VoiceTimeTraceUtil.a().a(paramVoiceBean, j, m, i1);
+    if (VoiceBeanCoordinator.b(paramVoiceBean.jdField_b_of_type_Int)) {
+      AssistantUtils.a(VoiceTimeTraceUtil.a().a(str2));
     }
     if ((bool2) && (!bool3)) {
-      a(localList2, localList1, localList3, str3, localbali, f1, f2, str2, bool1);
+      a(localList2, localList1, localList3, str3, localConfirmSendInfo, f1, f2, str2, bool1);
     }
   }
   
-  private void a(List<cmd67.Intent> paramList, List<cmd67.UserInfo> paramList1, List<cmd67.Slot> paramList2, String paramString1, bali parambali, float paramFloat1, float paramFloat2, String paramString2, boolean paramBoolean)
+  private void a(List<cmd67.Intent> paramList, List<cmd67.UserInfo> paramList1, List<cmd67.Slot> paramList2, String paramString1, VoiceAssiatantRespInfo.ConfirmSendInfo paramConfirmSendInfo, float paramFloat1, float paramFloat2, String paramString2, boolean paramBoolean)
   {
-    balh localbalh = new balh();
+    VoiceAssiatantRespInfo localVoiceAssiatantRespInfo = new VoiceAssiatantRespInfo();
     if (paramList.size() > 0)
     {
       paramList = (cmd67.Intent)paramList.get(0);
-      localbalh.jdField_c_of_type_JavaLangString = paramList.str_content.get();
-      localbalh.jdField_d_of_type_JavaLangString = paramList.str_skill.get();
-      localbalh.e = paramList.str_intent.get();
+      localVoiceAssiatantRespInfo.jdField_c_of_type_JavaLangString = paramList.str_content.get();
+      localVoiceAssiatantRespInfo.jdField_d_of_type_JavaLangString = paramList.str_skill.get();
+      localVoiceAssiatantRespInfo.e = paramList.str_intent.get();
     }
-    localbalh.jdField_a_of_type_JavaLangString = paramString2;
-    localbalh.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    localbalh.f = paramString1;
-    localbalh.jdField_a_of_type_Float = paramFloat1;
-    localbalh.jdField_b_of_type_Float = paramFloat2;
-    localbalh.jdField_a_of_type_Boolean = paramBoolean;
+    localVoiceAssiatantRespInfo.jdField_a_of_type_JavaLangString = paramString2;
+    localVoiceAssiatantRespInfo.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    localVoiceAssiatantRespInfo.f = paramString1;
+    localVoiceAssiatantRespInfo.jdField_a_of_type_Float = paramFloat1;
+    localVoiceAssiatantRespInfo.jdField_b_of_type_Float = paramFloat2;
+    localVoiceAssiatantRespInfo.jdField_a_of_type_Boolean = paramBoolean;
     paramList = new ArrayList();
     paramList2 = paramList2.iterator();
     while (paramList2.hasNext())
     {
       paramString1 = (cmd67.Slot)paramList2.next();
-      localbalh.getClass();
-      paramList.add(new balj(localbalh, paramString1.str_name.get(), paramString1.str_value.get(), paramString1.str_norm.get()));
+      localVoiceAssiatantRespInfo.getClass();
+      paramList.add(new VoiceAssiatantRespInfo.Slot(localVoiceAssiatantRespInfo, paramString1.str_name.get(), paramString1.str_value.get(), paramString1.str_norm.get()));
     }
-    localbalh.jdField_a_of_type_JavaUtilList = paramList;
+    localVoiceAssiatantRespInfo.jdField_a_of_type_JavaUtilList = paramList;
     paramList = new ArrayList();
     paramList1 = paramList1.iterator();
     while (paramList1.hasNext())
     {
       paramList2 = (cmd67.UserInfo)paramList1.next();
-      paramList.add(new balk(paramList2.uint64_uin.get(), paramList2.str_matched_contacts.get(), paramList2.float_weight.get(), paramList2.uint32_chat_type.get()));
+      paramList.add(new VoiceAssiatantRespInfo.UserInfo(paramList2.uint64_uin.get(), paramList2.str_matched_contacts.get(), paramList2.float_weight.get(), paramList2.uint32_chat_type.get()));
     }
-    localbalh.jdField_b_of_type_JavaUtilList = paramList;
-    localbalh.jdField_a_of_type_Bali = parambali;
-    if (this.jdField_a_of_type_Bakm != null) {
-      this.jdField_a_of_type_Bakm.a(localbalh);
+    localVoiceAssiatantRespInfo.jdField_b_of_type_JavaUtilList = paramList;
+    localVoiceAssiatantRespInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataVoiceAssiatantRespInfo$ConfirmSendInfo = paramConfirmSendInfo;
+    if (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreCommandDistributorHelper != null) {
+      this.jdField_a_of_type_ComTencentMobileqqQassistantCoreCommandDistributorHelper.a(localVoiceAssiatantRespInfo);
     }
   }
   
@@ -295,45 +290,45 @@ public class AudioUploadThread
         paramString.close();
         if ((arrayOfByte != null) && (arrayOfByte.length > 0))
         {
-          bakl.a("AudioUploadThread", "file size:" + localFile.length() + ", fixed md5:" + HexUtil.bytes2HexStr(arrayOfByte));
+          AssistantUtils.a("AudioUploadThread", "file size:" + localFile.length() + ", fixed md5:" + HexUtil.bytes2HexStr(arrayOfByte));
           return arrayOfByte;
         }
-        paramString = bkvq.a(localFile);
+        paramString = MD5FileUtil.a(localFile);
         if (paramString != null)
         {
           paramString = HexUtil.hexStr2Bytes(paramString);
-          bakl.a("AudioUploadThread", "file size:" + localFile.length() + ", fixed md5:" + HexUtil.bytes2HexStr(paramString));
+          AssistantUtils.a("AudioUploadThread", "file size:" + localFile.length() + ", fixed md5:" + HexUtil.bytes2HexStr(paramString));
           return paramString;
         }
       }
       catch (Exception paramString)
       {
-        bakl.a("AudioUploadThread", "fix file md5 failed...");
+        AssistantUtils.a("AudioUploadThread", "fix file md5 failed...");
         return null;
       }
       paramString = "";
     }
   }
   
-  protected int a(bajd parambajd)
+  protected int a(VoiceBean paramVoiceBean)
   {
     int i = 1;
-    if ((parambajd.jdField_a_of_type_ArrayOfByte == null) || (parambajd.jdField_a_of_type_Int <= 0))
+    if ((paramVoiceBean.jdField_a_of_type_ArrayOfByte == null) || (paramVoiceBean.jdField_a_of_type_Int <= 0))
     {
-      bakl.a("AudioUploadThread", "slk encode failure, bean: " + parambajd.a());
+      AssistantUtils.a("AudioUploadThread", "slk encode failure, bean: " + paramVoiceBean.a());
       return 0;
     }
-    Object localObject = a(parambajd);
+    Object localObject = a(paramVoiceBean);
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      bakl.a("AudioUploadThread", "slk encode failure, bean: " + parambajd.a());
+      AssistantUtils.a("AudioUploadThread", "slk encode failure, bean: " + paramVoiceBean.a());
       return 0;
     }
-    bajl.a().e(parambajd);
+    VoiceTimeTraceUtil.a().e(paramVoiceBean);
     if (this.jdField_a_of_type_Int == 1)
     {
       i = 2;
-      if (!this.jdField_a_of_type_Bakx.a()) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceAssistantManager.a()) {
         break label265;
       }
       i = 2;
@@ -341,16 +336,16 @@ public class AudioUploadThread
     label265:
     for (;;)
     {
-      boolean bool1 = baje.a(parambajd.jdField_b_of_type_Int);
-      boolean bool2 = baje.b(parambajd.jdField_b_of_type_Int);
-      cmd67.ReqBody localReqBody = a(parambajd.jdField_a_of_type_JavaLangString, this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicInteger.get(), bool1, bool2, i);
-      localObject = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 67, (String)localObject, 0, a((String)localObject), a(parambajd, (String)localObject), localReqBody.toByteArray(), false);
+      boolean bool1 = VoiceBeanCoordinator.a(paramVoiceBean.jdField_b_of_type_Int);
+      boolean bool2 = VoiceBeanCoordinator.b(paramVoiceBean.jdField_b_of_type_Int);
+      cmd67.ReqBody localReqBody = a(paramVoiceBean.jdField_a_of_type_JavaLangString, this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicInteger.get(), bool1, bool2, i);
+      localObject = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 67, (String)localObject, 0, a((String)localObject), a(paramVoiceBean, (String)localObject), localReqBody.toByteArray(), false);
       i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
       if (i != 0) {
-        bakl.a("AudioUploadThread", "submitTransactionTask onError, retcode:" + i);
+        AssistantUtils.a("AudioUploadThread", "submitTransactionTask onError, retcode:" + i);
       }
-      bajl.a().f(parambajd);
-      return parambajd.jdField_a_of_type_Int;
+      VoiceTimeTraceUtil.a().f(paramVoiceBean);
+      return paramVoiceBean.jdField_a_of_type_Int;
       if (this.jdField_a_of_type_Int == 2) {
         break;
       }
@@ -362,7 +357,7 @@ public class AudioUploadThread
   protected cmd67.ReqBody a(String paramString, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
   {
     int i = 0;
-    bakl.a("AudioUploadThread", "create req body, voiceId:" + paramString + ", offset:" + paramInt1 + ", isFir:" + paramBoolean1 + ", isEnd:" + paramBoolean2);
+    AssistantUtils.a("AudioUploadThread", "create req body, voiceId:" + paramString + ", offset:" + paramInt1 + ", isFir:" + paramBoolean1 + ", isEnd:" + paramBoolean2);
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     cmd67.VoiceAssistantReq localVoiceAssistantReq = new cmd67.VoiceAssistantReq();
     localVoiceAssistantReq.uint64_uin.set(Long.parseLong(str));
@@ -393,30 +388,30 @@ public class AudioUploadThread
     }
   }
   
-  protected String a(bajd parambajd)
+  protected String a(VoiceBean paramVoiceBean)
   {
-    if (parambajd != null) {
+    if (paramVoiceBean != null) {
       try
       {
-        if ((parambajd.jdField_a_of_type_ArrayOfByte != null) && (parambajd.jdField_a_of_type_Int > 0))
+        if ((paramVoiceBean.jdField_a_of_type_ArrayOfByte != null) && (paramVoiceBean.jdField_a_of_type_Int > 0))
         {
-          String str = bakl.a("out_" + parambajd.jdField_a_of_type_JavaLangString + "_" + parambajd.c, "slk");
-          FileUtils.deleteFile(str);
+          String str = AssistantUtils.a("out_" + paramVoiceBean.jdField_a_of_type_JavaLangString + "_" + paramVoiceBean.c, "slk");
+          FileUtils.e(str);
           FileOutputStream localFileOutputStream = new FileOutputStream(str);
-          if (baje.a(parambajd.jdField_b_of_type_Int))
+          if (VoiceBeanCoordinator.a(paramVoiceBean.jdField_b_of_type_Int))
           {
-            bakl.a("AudioUploadThread", "write silk header:" + str);
-            localFileOutputStream.write(bajh.jdField_a_of_type_ArrayOfByte);
+            AssistantUtils.a("AudioUploadThread", "write silk header:" + str);
+            localFileOutputStream.write(VoiceCacheHolder.jdField_a_of_type_ArrayOfByte);
           }
-          localFileOutputStream.write(parambajd.jdField_a_of_type_ArrayOfByte, 0, parambajd.jdField_a_of_type_Int);
+          localFileOutputStream.write(paramVoiceBean.jdField_a_of_type_ArrayOfByte, 0, paramVoiceBean.jdField_a_of_type_Int);
           localFileOutputStream.flush();
           localFileOutputStream.close();
           return str;
         }
       }
-      catch (IOException parambajd)
+      catch (IOException paramVoiceBean)
       {
-        parambajd.printStackTrace();
+        paramVoiceBean.printStackTrace();
         return null;
       }
     }
@@ -426,10 +421,10 @@ public class AudioUploadThread
   public void a()
   {
     String str = "interrupt AudioUploadThread";
-    if (this.jdField_a_of_type_Bajh != null) {
-      str = "interrupt AudioUploadThread" + ", buffer size:" + this.jdField_a_of_type_Bajh.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder != null) {
+      str = "interrupt AudioUploadThread" + ", buffer size:" + this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a();
     }
-    bakl.a("AudioUploadThread", str);
+    AssistantUtils.a("AudioUploadThread", str);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     if (isAlive()) {
       interrupt();
@@ -439,7 +434,7 @@ public class AudioUploadThread
   public void run()
   {
     while (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      if (this.jdField_a_of_type_Bajh.a() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 2)
+      if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 2)
       {
         try
         {
@@ -453,28 +448,28 @@ public class AudioUploadThread
       else
       {
         int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-        while (i < this.jdField_a_of_type_Bajh.a() - 2)
+        while (i < this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a() - 2)
         {
-          baje.a(this.jdField_a_of_type_Bajh.a(i), this.jdField_a_of_type_Bajh.a(i + 1));
+          VoiceBeanCoordinator.a(this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a(i), this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a(i + 1));
           this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i + 1);
           i += 1;
         }
         i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
         while (i < this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
         {
-          bajd localbajd = this.jdField_a_of_type_Bajh.a(i);
-          if (baje.a(localbajd.jdField_b_of_type_Int))
+          VoiceBean localVoiceBean = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a(i);
+          if (VoiceBeanCoordinator.a(localVoiceBean.jdField_b_of_type_Int))
           {
-            this.jdField_a_of_type_JavaLangString = localbajd.jdField_a_of_type_JavaLangString;
+            this.jdField_a_of_type_JavaLangString = localVoiceBean.jdField_a_of_type_JavaLangString;
             this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
             this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
           }
-          localbajd.c = this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-          localbajd.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-          if (localbajd.b())
+          localVoiceBean.c = this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+          localVoiceBean.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+          if (localVoiceBean.b())
           {
-            bakl.a("AudioUploadThread", String.format("transferBean: %s, Offset:%s", new Object[] { localbajd.a(), Integer.valueOf(this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) }));
-            int j = a(localbajd);
+            AssistantUtils.a("AudioUploadThread", String.format("transferBean: %s, Offset:%s", new Object[] { localVoiceBean.a(), Integer.valueOf(this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) }));
+            int j = a(localVoiceBean);
             this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(j + this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
           }
           this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i + 1);

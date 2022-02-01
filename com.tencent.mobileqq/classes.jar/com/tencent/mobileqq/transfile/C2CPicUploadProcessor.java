@@ -1,25 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import ahsj;
-import aklj;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
-import anud;
-import anvx;
-import anyz;
-import azla;
-import azlb;
-import bbob;
-import bcrg;
-import bcsa;
-import bdqa;
-import blkh;
-import boqd;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.photo.AIOGallerySceneWithBusiness;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.app.FlashPicHelper;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -41,9 +33,18 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgManager;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemImage;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PicUpReq;
@@ -56,6 +57,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.wstt.SSCM.SSCM;
+import dov.com.qq.im.editipc.PeakIpcController;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
@@ -83,8 +86,8 @@ public class C2CPicUploadProcessor
 {
   public static final String TAG = "C2CPicUploadProcessor";
   protected QQAppInterface app;
-  private boolean isStoryPhoto;
-  protected TransFileController mController;
+  private boolean isStoryPhoto = false;
+  protected TransFileControllerImpl mController;
   protected byte[] mExtendInfo;
   protected boolean mIsOpenUpEnable;
   protected CSDataHighwayHead.LoginSigHead mLoginSigHead;
@@ -94,16 +97,16 @@ public class C2CPicUploadProcessor
   private byte[] mSigSession;
   private BaseTransProcessor.StepInfo mStepTransLeft = new BaseTransProcessor.StepInfo();
   private BaseTransProcessor.StepInfo mStepTransPre = new BaseTransProcessor.StepInfo();
-  anyz messageObserver = new C2CPicUploadProcessor.6(this);
+  MessageObserver messageObserver = new C2CPicUploadProcessor.6(this);
   private MessageForPic picMsg;
-  public boolean uploadSuccess;
+  public boolean uploadSuccess = false;
   
   public C2CPicUploadProcessor() {}
   
-  public C2CPicUploadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public C2CPicUploadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
-    this.mController = paramTransFileController;
+    super(paramTransFileControllerImpl, paramTransferRequest);
+    this.mController = paramTransFileControllerImpl;
     this.app = ((QQAppInterface)this.app);
     this.file.fileType = this.mUiRequest.mFileType;
     this.file.uniseq = this.mUiRequest.mUniseq;
@@ -186,7 +189,7 @@ public class C2CPicUploadProcessor
               logRichMediaEvent("busiTypeStat", "uiBusiType:" + this.mUiRequest.mBusiType + " protoBusiType:" + ((im_msg_body.NotOnlineImage)localObject4).biz_type.get());
             }
             localObject1 = new im_msg_body.Elem();
-            if (!anud.a((MessageRecord)localObject5)) {
+            if (!FlashPicHelper.a((MessageRecord)localObject5)) {
               break label871;
             }
             localObject3 = new im_msg_body.CommonElem();
@@ -200,11 +203,11 @@ public class C2CPicUploadProcessor
               QLog.d("flash", 2, "C2CPicUploadProcessor constructPicRichText send flash");
             }
             localObject1 = new im_msg_body.Text();
-            ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8(anvx.a(2131700794)));
+            ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131701372)));
             localObject3 = new im_msg_body.Elem();
             ((im_msg_body.Elem)localObject3).text.set((MessageMicro)localObject1);
             localRichText.elems.add((MessageMicro)localObject3);
-            localObject5 = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+            localObject5 = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
             if (!(localObject5 instanceof MessageForStructing)) {
               break;
             }
@@ -217,21 +220,21 @@ public class C2CPicUploadProcessor
             if (localObject4 == null) {
               break;
             }
-            ((bdqa)localObject4).ae = this.mMd5Str;
+            ((StructMsgItemImage)localObject4).ae = this.mMd5Str;
             if (this.mResid != null) {
               break label892;
             }
             localObject1 = this.mUuid;
-            ((bdqa)localObject4).ad = ((String)localObject1);
-            ((bdqa)localObject4).d = this.mFileSize;
-            ((bdqa)localObject4).e = ((MessageRecord)localObject5).time;
-            if (!ahsj.b(((StructMsgForImageShare)localObject6).mMsgActionData)) {
+            ((StructMsgItemImage)localObject4).ad = ((String)localObject1);
+            ((StructMsgItemImage)localObject4).d = this.mFileSize;
+            ((StructMsgItemImage)localObject4).e = ((MessageRecord)localObject5).time;
+            if (!AIOGallerySceneWithBusiness.b(((StructMsgForImageShare)localObject6).mMsgActionData)) {
               break label900;
             }
-            localObject5 = ((bdqa)localObject4).ac;
-            ((bdqa)localObject4).ac = "";
+            localObject5 = ((StructMsgItemImage)localObject4).ac;
+            ((StructMsgItemImage)localObject4).ac = "";
             localObject1 = ((MessageForStructing)localObject3).structingMsg.getXmlBytes();
-            ((bdqa)localObject4).ac = ((String)localObject5);
+            ((StructMsgItemImage)localObject4).ac = ((String)localObject5);
             if ((TextUtils.isEmpty(((MessageForStructing)localObject3).frienduin)) || (localObject1 == null)) {
               break;
             }
@@ -344,7 +347,7 @@ public class C2CPicUploadProcessor
       String str3 = (String)arrayOfObject[2];
       int m = this.app.getMsgCache().a();
       localObject5 = new SimpleDateFormat("MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()));
-      StringBuilder localStringBuilder = new StringBuilder(anvx.a(2131700793)).append("发了第").append(m).append("张").append("\n");
+      StringBuilder localStringBuilder = new StringBuilder(HardCodeUtil.a(2131701371)).append("发了第").append(m).append("张").append("\n");
       localStringBuilder.append("时间:").append((String)localObject5).append("\n");
       localStringBuilder.append("图片大小:").append(this.file.fileSize).append("bytes\n");
       localObject5 = localStringBuilder.append("老通道传输:").append(l8).append("ms,").append("速度:");
@@ -384,8 +387,8 @@ public class C2CPicUploadProcessor
         localStringBuilder.append("网络:").append(str1).append("\n");
         localStringBuilder.append("Host:").append((String)localObject3).append("\n");
         localStringBuilder.append("连接数:").append((String)localObject2).append("\n");
-        localObject1 = bcsa.a(this.app, this.app.getCurrentAccountUin(), str3, str3, 1, (byte)1, (byte)0, (short)0, localStringBuilder.toString());
-        this.app.getMessageFacade().addAndSendMessage((MessageRecord)localObject1, null);
+        localObject1 = MessageRecordFactory.a(this.app, this.app.getCurrentAccountUin(), str3, str3, 1, (byte)1, (byte)0, (short)0, localStringBuilder.toString());
+        this.app.getMessageFacade().a((MessageRecord)localObject1, null);
         localObject1 = new HashMap();
         ((HashMap)localObject1).put("param_c2cSpeed", String.valueOf(l1));
         ((HashMap)localObject1).put("param_grpSpeed", String.valueOf(l8));
@@ -533,10 +536,10 @@ public class C2CPicUploadProcessor
       onError();
       return -1;
     }
-    localObject = FileUtils.estimateFileType((String)localObject);
+    localObject = FileUtils.b((String)localObject);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      if ((((String)localObject).contains(FileUtils.unKnownFileTypeMark)) || (!FileUtils.isPicFileByExt((String)localObject)))
+      if ((((String)localObject).contains(FileUtils.jdField_a_of_type_JavaLangString)) || (!FileUtils.g((String)localObject)))
       {
         setError(9072, (String)localObject, getClientReason((String)localObject), null);
         onError();
@@ -572,7 +575,7 @@ public class C2CPicUploadProcessor
           l = paramLong1;
         }
         double d = l / paramLong1;
-        aklj.a(l, this.mFileSize, this.mIsPicSecondTransfered, d);
+        StatisticConstants.a(l, this.mFileSize, this.mIsPicSecondTransfered, d);
         if ((d >= 0.0D) && (d <= 1.0D)) {
           this.mReportInfo.put("param_AIOPercent", d + "");
         }
@@ -616,7 +619,7 @@ public class C2CPicUploadProcessor
     Object localObject2;
     if (!paramBoolean)
     {
-      localObject1 = "Q.richmedia." + RichMediaUtil.getUinDesc(this.mUiRequest.mUinType) + "." + RichMediaUtil.getFileType(this.mUiRequest.mFileType);
+      localObject1 = "Q.richmedia." + TransFileUtil.getUinDesc(this.mUiRequest.mUinType) + "." + RichMediaUtil.getFileType(this.mUiRequest.mFileType);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("id:" + this.mUiRequest.mUniseq + "  ");
       ((StringBuilder)localObject2).append("errCode:" + this.errCode + "  ");
@@ -673,7 +676,7 @@ public class C2CPicUploadProcessor
         this.mReportInfo.put("param_openUpStep", localObject2);
         localObject2 = this.mReportInfo;
         if (this.mResid != null) {
-          break label1069;
+          break label1064;
         }
         localObject1 = this.mUuid;
         label725:
@@ -682,8 +685,8 @@ public class C2CPicUploadProcessor
         this.mReportInfo.put("param_picmd5", this.mFileName);
         this.mReportInfo.put("param_isPresend", this.mUiRequest.mIsPresend + "");
         this.mReportInfo.put("param_isSecondTrans", this.mIsPicSecondTransfered + "");
-        this.mReportInfo.put("param_PhoneType", aklj.a() + "");
-        this.mReportInfo.put("param_NetType", NetworkUtil.getSystemNetwork(BaseApplication.getContext()) + "");
+        this.mReportInfo.put("param_PhoneType", StatisticConstants.a() + "");
+        this.mReportInfo.put("param_NetType", NetworkUtil.a(BaseApplication.getContext()) + "");
         this.mReportInfo.put("param_IsRawPic", this.mIsRawPic + "");
         this.mReportInfo.put("param_quickHttp", String.valueOf(this.mSendByQuickHttp));
         this.mReportInfo.put("param_picType", String.valueOf(this.mPicType));
@@ -691,15 +694,14 @@ public class C2CPicUploadProcessor
         this.mReportInfo.put("param_openUp", String.valueOf(this.mIsOpenUpEnable));
         localObject1 = this.mReportInfo;
         if (!this.mUiRequest.isQzonePic) {
-          break label1078;
+          break label1073;
         }
       }
-      label1069:
-      label1078:
+      label1064:
+      label1073:
       for (int i = 1;; i = 0)
       {
         ((HashMap)localObject1).put("param_source_type", String.valueOf(i));
-        checkFailCodeReport(paramBoolean);
         doRealReport(paramBoolean, l2, l1);
         return;
         i = 1;
@@ -1065,11 +1067,11 @@ public class C2CPicUploadProcessor
     }
     if (this.mUiRequest.mUpCallBack != null)
     {
-      azlb localazlb = new azlb();
-      localazlb.jdField_a_of_type_Int = -1;
-      localazlb.b = this.errCode;
-      localazlb.jdField_a_of_type_JavaLangString = this.errDesc;
-      this.mUiRequest.mUpCallBack.onSend(localazlb);
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+      localSendResult.jdField_a_of_type_Int = -1;
+      localSendResult.b = this.errCode;
+      localSendResult.jdField_a_of_type_JavaLangString = this.errDesc;
+      this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
   
@@ -1079,18 +1081,18 @@ public class C2CPicUploadProcessor
     String str;
     if (this.mUiRequest.mUpCallBack != null)
     {
-      azlb localazlb = new azlb();
-      localazlb.jdField_a_of_type_Int = 0;
-      localazlb.jdField_a_of_type_Long = this.mFileSize;
-      localazlb.d = this.mMd5Str;
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+      localSendResult.jdField_a_of_type_Int = 0;
+      localSendResult.jdField_a_of_type_Long = this.mFileSize;
+      localSendResult.d = this.mMd5Str;
       if (this.mResid == null)
       {
         str = this.mUuid;
-        localazlb.c = str;
+        localSendResult.c = str;
         if (this.mUiRequest.isShareImageByServer) {
-          localazlb.jdField_a_of_type_JavaLangObject = getImageInfo();
+          localSendResult.jdField_a_of_type_JavaLangObject = getImageInfo();
         }
-        this.mUiRequest.mUpCallBack.onSend(localazlb);
+        this.mUiRequest.mUpCallBack.b(localSendResult);
       }
     }
     for (;;)
@@ -1212,7 +1214,7 @@ public class C2CPicUploadProcessor
   {
     super.sendMessageToUpdate(paramInt);
     if (this.isStoryPhoto) {
-      boqd.a(this.picMsg, paramInt, getProgress());
+      PeakIpcController.a(this.picMsg, paramInt, getProgress());
     }
   }
   
@@ -1245,7 +1247,7 @@ public class C2CPicUploadProcessor
         return;
       }
       if (this.mUiRequest.mUpCallBack != null) {
-        this.mUiRequest.mUpCallBack.attachRichText2Msg((im_msg_body.RichText)localObject1);
+        this.mUiRequest.mUpCallBack.a((im_msg_body.RichText)localObject1);
       }
       if ((this.mUiRequest.mIsPresend) && (this.mIsPicSecondTransfered)) {
         ((MessageForPic)this.mUiRequest.mRec).mPresendTransferedSize = 0L;
@@ -1264,7 +1266,7 @@ public class C2CPicUploadProcessor
     }
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localObject1 = this.mUiRequest.mUpCallBack.attachRichText2Msg((im_msg_body.RichText)localObject2);
+      localObject1 = this.mUiRequest.mUpCallBack.a((im_msg_body.RichText)localObject2);
       if ((localObject1 != null) && (((localObject1 instanceof MessageForPic)) || ((localObject1 instanceof MessageForStructing)))) {
         break label468;
       }
@@ -1284,7 +1286,7 @@ public class C2CPicUploadProcessor
         localObject1 = this.mUiRequest.mRec;
         break;
       }
-      localObject1 = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+      localObject1 = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
       break;
     }
     label468:
@@ -1309,7 +1311,7 @@ public class C2CPicUploadProcessor
       return;
     }
     addInfoToMsg();
-    ((bbob)this.app.getManager(QQManagerFactory.MEDIA_MSG_ORDER_SEND_MANAGER)).a((MessageRecord)localObject1, this.messageObserver, this);
+    ((OrderMediaMsgManager)this.app.getManager(QQManagerFactory.MEDIA_MSG_ORDER_SEND_MANAGER)).a((MessageRecord)localObject1, this.messageObserver, this);
   }
   
   protected void sendRequest()
@@ -1335,7 +1337,7 @@ public class C2CPicUploadProcessor
       localRichProtoReq.callback = this;
       localRichProtoReq.protoKey = "c2c_pic_up";
       localRichProtoReq.reqs.add(localPicUpReq);
-      localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+      localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
       changeRequest(localPicUpReq);
       MessageRecord localMessageRecord = this.mUiRequest.mRec;
       if (MessageForPic.class.isInstance(localMessageRecord))
@@ -1344,12 +1346,12 @@ public class C2CPicUploadProcessor
         this.mPicType = ((MessageForPic)localMessageRecord).imageType;
       }
       if (isAppValid()) {
-        break label249;
+        break label258;
       }
       setError(9366, "illegal app", null, this.mStepUrl);
       onError();
     }
-    label249:
+    label258:
     do
     {
       return;
@@ -1382,7 +1384,7 @@ public class C2CPicUploadProcessor
     }
     label78:
     Object localObject;
-    bdqa localbdqa;
+    StructMsgItemImage localStructMsgItemImage;
     do
     {
       do
@@ -1390,7 +1392,7 @@ public class C2CPicUploadProcessor
         do
         {
           return;
-          localMessageRecord = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+          localMessageRecord = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
           logRichMediaEvent("updateDb", "findmsgbyMsgId,need fix");
           break;
           if (localMessageRecord.isMultiMsg)
@@ -1407,24 +1409,24 @@ public class C2CPicUploadProcessor
             {
               ((MessageForPic)localObject).uuid = str;
               ((MessageForPic)localObject).serial();
-              this.app.getMessageFacade().updateMsgContentByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageRecord.uniseq, ((MessageForPic)localObject).msgData);
+              this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageRecord.uniseq, ((MessageForPic)localObject).msgData);
               return;
             }
           }
         } while (!(localMessageRecord instanceof MessageForStructing));
         localObject = (MessageForStructing)localMessageRecord;
       } while ((((MessageForStructing)localObject).structingMsg == null) || (!(((MessageForStructing)localObject).structingMsg instanceof StructMsgForImageShare)));
-      localbdqa = ((StructMsgForImageShare)((MessageForStructing)localObject).structingMsg).getFirstImageElement();
-    } while (localbdqa == null);
-    localbdqa.ae = this.mMd5Str;
+      localStructMsgItemImage = ((StructMsgForImageShare)((MessageForStructing)localObject).structingMsg).getFirstImageElement();
+    } while (localStructMsgItemImage == null);
+    localStructMsgItemImage.ae = this.mMd5Str;
     if (this.mResid == null) {}
     for (String str = this.mUuid;; str = this.mResid)
     {
-      localbdqa.ad = str;
-      localbdqa.d = this.mFileSize;
-      localbdqa.e = localMessageRecord.time;
+      localStructMsgItemImage.ad = str;
+      localStructMsgItemImage.d = this.mFileSize;
+      localStructMsgItemImage.e = localMessageRecord.time;
       ((MessageForStructing)localObject).msgData = ((MessageForStructing)localObject).structingMsg.getBytes();
-      this.app.getMessageFacade().updateMsgContentByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageRecord.uniseq, ((MessageForStructing)localObject).msgData);
+      this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageRecord.uniseq, ((MessageForStructing)localObject).msgData);
       return;
     }
   }

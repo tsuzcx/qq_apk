@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanageraux.fileviewer.FileView;
 
-import arow;
+import com.tencent.mobileqq.config.business.tendoc.tds.TdsReaderConfigProcessor;
 import java.lang.ref.WeakReference;
 
 final class TdsReaderGlobal$RunnableImpl
@@ -41,7 +41,7 @@ final class TdsReaderGlobal$RunnableImpl
           return;
           localTdsReaderGlobal = (TdsReaderGlobal)this.jdField_a_of_type_JavaLangRefWeakReference.get();
           break;
-          arow.a();
+          TdsReaderConfigProcessor.a();
           return;
         } while (localTdsReaderGlobal == null);
         TdsReaderGlobal.a(localTdsReaderGlobal, this.jdField_a_of_type_ArrayOfJavaLangObject);
@@ -55,7 +55,7 @@ final class TdsReaderGlobal$RunnableImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal.RunnableImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.feedspopup.steps;
 
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import pxf;
 
-public class RIJMsgBoxPopupStep$2
+class RIJMsgBoxPopupStep$2
   implements Runnable
 {
-  public RIJMsgBoxPopupStep$2(pxf parampxf, KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo, KandianMergeManager paramKandianMergeManager) {}
+  RIJMsgBoxPopupStep$2(RIJMsgBoxPopupStep paramRIJMsgBoxPopupStep, KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo, KandianMergeManager paramKandianMergeManager) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class RIJMsgBoxPopupStep$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJMsgBoxPopupStep.2
  * JD-Core Version:    0.7.0.1
  */

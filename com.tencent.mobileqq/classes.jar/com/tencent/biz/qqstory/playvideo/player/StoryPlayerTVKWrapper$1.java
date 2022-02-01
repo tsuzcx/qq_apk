@@ -1,24 +1,23 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import xjy;
-import ykq;
 
-public class StoryPlayerTVKWrapper$1
+class StoryPlayerTVKWrapper$1
   implements Runnable
 {
-  public StoryPlayerTVKWrapper$1(xjy paramxjy, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  StoryPlayerTVKWrapper$1(StoryPlayerTVKWrapper paramStoryPlayerTVKWrapper, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
-    ykq.d("StoryPlayerTVKWrapper", ">> stop + release");
+    SLog.d("StoryPlayerTVKWrapper", ">> stop + release");
     this.a.stop();
     this.a.release();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.1
  * JD-Core Version:    0.7.0.1
  */

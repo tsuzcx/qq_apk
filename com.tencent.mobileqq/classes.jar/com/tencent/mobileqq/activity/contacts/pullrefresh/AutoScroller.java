@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.contacts.pullrefresh;
 
-import ajmj;
 import android.widget.Scroller;
 
 public class AutoScroller
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private ajmj jdField_a_of_type_Ajmj;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
+  private AutoScroller.ScrollerCallback jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback;
   private CommonRefreshLayout jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public AutoScroller(CommonRefreshLayout paramCommonRefreshLayout)
   {
@@ -24,8 +23,8 @@ public class AutoScroller
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout.removeCallbacks(this);
-    if ((!this.b) && (this.jdField_a_of_type_Ajmj != null)) {
-      this.jdField_a_of_type_Ajmj.a();
+    if ((!this.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback.a();
     }
   }
   
@@ -55,9 +54,9 @@ public class AutoScroller
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(ajmj paramajmj)
+  public void a(AutoScroller.ScrollerCallback paramScrollerCallback)
   {
-    this.jdField_a_of_type_Ajmj = paramajmj;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback = paramScrollerCallback;
   }
   
   public boolean a()
@@ -81,15 +80,15 @@ public class AutoScroller
       return;
     }
     this.jdField_a_of_type_Int = j;
-    if (this.jdField_a_of_type_Ajmj != null) {
-      this.jdField_a_of_type_Ajmj.a(j - k);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback.a(j - k);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout.post(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.pullrefresh.AutoScroller
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ public final class QArkNews
   public String img_url = "";
   public String jump_url = "";
   public String title = "";
-  public int type;
+  public int type = 0;
   public String type_content = "";
-  public long utime;
+  public long utime = 0L;
   
   private JSONObject convertToJson()
   {
@@ -140,7 +140,7 @@ public final class QArkNews
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.QArkNews
  * JD-Core Version:    0.7.0.1
  */

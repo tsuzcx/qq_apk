@@ -1,23 +1,22 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import xaw;
 
-public class QQStoryWatcherListActivity$GetWatcherHelper$1
+class QQStoryWatcherListActivity$GetWatcherHelper$1
   implements Runnable
 {
-  public QQStoryWatcherListActivity$GetWatcherHelper$1(xaw paramxaw) {}
+  QQStoryWatcherListActivity$GetWatcherHelper$1(QQStoryWatcherListActivity.GetWatcherHelper paramGetWatcherHelper) {}
   
   public void run()
   {
-    QQToast.a(this.this$0.a, 1, anvx.a(2131710580), 0).a();
+    QQToast.a(this.this$0.a, 1, HardCodeUtil.a(2131711096), 0).a();
     this.this$0.a.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity.GetWatcherHelper.1
  * JD-Core Version:    0.7.0.1
  */

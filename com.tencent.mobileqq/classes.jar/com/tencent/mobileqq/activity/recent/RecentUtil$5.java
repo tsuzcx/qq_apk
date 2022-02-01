@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.recent;
 
-import bdxj;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
 
-public final class RecentUtil$5
+final class RecentUtil$5
   implements Runnable
 {
-  public RecentUtil$5(QQAppInterface paramQQAppInterface) {}
+  RecentUtil$5(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (this.a != null)
     {
-      bdxj.c(this.a);
-      bdxj.a(this.a, true, null);
+      SubAccountControll.c(this.a);
+      SubAccountControll.a(this.a, true, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.5
  * JD-Core Version:    0.7.0.1
  */

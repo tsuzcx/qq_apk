@@ -1,8 +1,8 @@
 package com.tencent.biz.qrcode.activity;
 
 import android.view.View;
-import bgyd;
-import zjo;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate;
+import com.tencent.mobileqq.util.AccessibilityUtil;
 
 class QRDisplayActivity$25
   implements Runnable
@@ -11,14 +11,14 @@ class QRDisplayActivity$25
   
   public void run()
   {
-    zjo localzjo = new zjo(this.this$0.d, this.this$0);
-    this.this$0.d.setAccessibilityDelegate(localzjo);
-    bgyd.a(this.this$0.a, false);
+    CustomAccessibilityDelegate localCustomAccessibilityDelegate = new CustomAccessibilityDelegate(this.this$0.d, this.this$0);
+    this.this$0.d.setAccessibilityDelegate(localCustomAccessibilityDelegate);
+    AccessibilityUtil.a(this.this$0.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.25
  * JD-Core Version:    0.7.0.1
  */

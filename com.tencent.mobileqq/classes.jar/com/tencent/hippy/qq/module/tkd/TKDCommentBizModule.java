@@ -4,15 +4,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.util.Base64;
-import bcsc;
-import bhcu;
 import com.google.gson.Gson;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
 import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentCreateData;
 import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SubCommentCreateData;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.RIJCreateCommentForHippyObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkWrapper;
+import com.tencent.biz.pubaccount.readinjoy.comment.topic.RIJCommentTopicUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebPTSUtils;
 import com.tencent.hippy.qq.module.QQBaseLifecycleModule;
+import com.tencent.hippy.qq.tuwen.app.TKDTuWenHippyEngine;
+import com.tencent.hippy.qq.tuwen.callback.ITKDTuWenHippyObservable;
+import com.tencent.hippy.qq.tuwen.callback.ITKDTuWenHippyObserver;
 import com.tencent.hippy.qq.utils.tkd.TKDCommentDispatcher;
 import com.tencent.hippy.qq.utils.tkd.TKDCommentDispatcher.HippyCommentEvent;
+import com.tencent.mobileqq.service.message.EmotionCodecUtils;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -27,6 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 import junit.framework.Assert;
 import kotlin.Metadata;
+import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.text.Charsets;
 import org.jetbrains.annotations.NotNull;
@@ -34,29 +43,34 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pgv;
-import pgw;
-import tjg;
 
 @HippyNativeModule(name="TKDCommentBizModule")
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/hippy/qq/module/tkd/TKDCommentBizModule;", "Lcom/tencent/hippy/qq/module/QQBaseLifecycleModule;", "context", "Lcom/tencent/mtt/hippy/HippyEngineContext;", "(Lcom/tencent/mtt/hippy/HippyEngineContext;)V", "commentPublisherPromise", "Lcom/tencent/mtt/hippy/modules/Promise;", "extraParams", "", "hippyCommentEvent", "com/tencent/hippy/qq/module/tkd/TKDCommentBizModule$hippyCommentEvent$1", "Lcom/tencent/hippy/qq/module/tkd/TKDCommentBizModule$hippyCommentEvent$1;", "buildCallbackInfo", "Lcom/tencent/mtt/hippy/common/HippyMap;", "resultCode", "", "errorCode", "comment", "(ILjava/lang/Integer;Ljava/lang/String;)Lcom/tencent/mtt/hippy/common/HippyMap;", "buildCommentEditorIntent", "Landroid/content/Intent;", "params", "closeComment", "", "promise", "closeSubComment", "decodeQQEmotionString", "destroy", "getCurrentFontScaleFactor", "handleError", "msg", "t", "", "handleOnActivityResult", "data", "initialize", "onActivityCreated", "activity", "Landroid/app/Activity;", "savedInstanceState", "Landroid/os/Bundle;", "onActivityDestroyed", "onActivityPaused", "onActivityResult", "requestCode", "onActivityResumed", "onActivityStarted", "onActivityStopped", "onClickLike", "onCommentViewLayout", "onCreateComment", "onDeleteComment", "openComment", "openCommentPublisher", "openSubComment", "sendEventToJs", "eventName", "hippyMap", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/hippy/qq/module/tkd/TKDCommentBizModule;", "Lcom/tencent/hippy/qq/module/QQBaseLifecycleModule;", "context", "Lcom/tencent/mtt/hippy/HippyEngineContext;", "(Lcom/tencent/mtt/hippy/HippyEngineContext;)V", "commentPublisherPromise", "Lcom/tencent/mtt/hippy/modules/Promise;", "extraParams", "", "hippyCommentEvent", "com/tencent/hippy/qq/module/tkd/TKDCommentBizModule$hippyCommentEvent$1", "Lcom/tencent/hippy/qq/module/tkd/TKDCommentBizModule$hippyCommentEvent$1;", "tuWenHippyObservable", "Lcom/tencent/hippy/qq/tuwen/callback/ITKDTuWenHippyObservable;", "buildCallbackInfo", "Lcom/tencent/mtt/hippy/common/HippyMap;", "resultCode", "", "errorCode", "comment", "(ILjava/lang/Integer;Ljava/lang/String;)Lcom/tencent/mtt/hippy/common/HippyMap;", "buildCommentEditorIntent", "Landroid/content/Intent;", "params", "closeComment", "", "promise", "closeSubComment", "decodeQQEmotionString", "destroy", "forbidScroll", "getCurrentFontScaleFactor", "handleError", "msg", "t", "", "handleOnActivityResult", "data", "initialize", "onActivityCreated", "activity", "Landroid/app/Activity;", "savedInstanceState", "Landroid/os/Bundle;", "onActivityDestroyed", "onActivityPaused", "onActivityResult", "requestCode", "onActivityResumed", "onActivityStarted", "onActivityStopped", "onClickLike", "onCommentViewLayout", "onCreateComment", "onDeleteComment", "onLoadStatusChanged", "openComment", "openCommentDetail", "openCommentPublisher", "openMiniApp", "openSubComment", "sendEventToJs", "eventName", "hippyMap", "updateCommentCount", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class TKDCommentBizModule
   extends QQBaseLifecycleModule
 {
+  private static final String ARG_ANCHOR_ID = "anchorId";
   private static final String ARG_ANONYMOUS = "anonymous";
   private static final String ARG_ARTICLE_ID = "articleId";
   private static final String ARG_COMMENT = "comment";
+  private static final String ARG_COMMENT_ID = "commentId";
   private static final String ARG_COMMENT_INFO = "commentInfo";
+  private static final String ARG_COMMENT_NUM = "commentNum";
   private static final String ARG_COMMENT_TYPE = "commentType";
   private static final String ARG_CONTENT_SRC = "contentSrc";
   private static final String ARG_DEFAULT_TEXT = "defaultTxt";
   private static final String ARG_ERROR_CODE = "errorCode";
   private static final String ARG_EXTRA_PARAMS = "extraParam";
   private static final String ARG_FIRST_COMMENT_ID = "firstCommentId";
+  private static final String ARG_FORBID = "forbid";
   private static final String ARG_HINT = "hint";
+  private static final String ARG_IS_LIKE = "isLike";
   private static final String ARG_IS_PGC_AUTHOR = "isPgcAuthor";
   private static final String ARG_MAX_TEXT_LIMIT = "maxTextLimit";
+  private static final String ARG_MINI_APP_URL = "miniAppUrl";
   private static final String ARG_PUBLISHER_CONFIG = "publisherConfig";
+  private static final String ARG_READ_TIME = "readTime";
+  private static final String ARG_REPLIED_COMMENT_ID = "repliedCommentId";
   private static final String ARG_REPLIED_SUB_AUTHOR_ID = "repliedSubAuthorId";
   private static final String ARG_REPLIED_SUB_COMMENT_ID = "repliedSubCommentId";
   private static final String ARG_REPLY_HAS_LINK = "replyHasLink";
@@ -66,18 +80,28 @@ public final class TKDCommentBizModule
   private static final String ARG_SHOW_AT_ICON = "showAtIcon";
   private static final String ARG_SHOW_BIU_ICON = "showBiuIcon";
   private static final String ARG_SOURCE_TYPE = "sourceType";
+  private static final String ARG_STATUS = "status";
+  private static final String ARG_SUB_COMMENT = "subComment";
+  private static final String ARG_SUB_COMMENT_ID = "subCommentId";
   public static final TKDCommentBizModule.Companion Companion = new TKDCommentBizModule.Companion(null);
   private static final String EVENT_CLOSECOMMENT = "@comment:swipe";
   private static final String EVENT_CLOSECOMMENT_DIRECTION_RIGHT = "right";
   private static final String EVENT_CLOSECOMMENT_KEY_DIRECTION = "direction";
+  private static final String EVENT_DELETE_SUB_COMMENT = "@comment:deleteLevel2Comment";
+  private static final String EVENT_DEL_MAIN_COMMENT = "@comment:deleteLevel1Comment";
   private static final String EVENT_FONTSCALE = "@comment:onFontScaleChange";
   private static final String EVENT_FONTSCALE_SCALEFACTOR = "scaleFactor";
+  private static final String EVENT_INSERT_SUB_COMMENT = "@comment:insertLevel2Comment";
   private static final String EVENT_LIFECYCLE = "@common:lifecycle";
   private static final String EVENT_LIFECYCLE_KEY = "type";
+  private static final String EVENT_LIKE_MAIN_COMMENT = "@comment:toggleLevel1PraiseStatus";
   private static final String EVENT_ONACTIVE = "onActive";
   private static final String EVENT_ONDEACTIVE = "onDeactive";
   private static final String EVENT_ONDESTROY = "onDestroy";
   private static final String EVENT_ONSTART = "onStart";
+  private static final String EVENT_OPEN_PUBLISHER = "@comment:openPublisher";
+  private static final String EVENT_REFRESH_NEW_HOT = "@comment:refreshNewAndHot";
+  private static final String EVENT_REPORT_COMMENT_READ_TIME = "@comment:reportCommentReadTime";
   private static final int REQ_CODE_COMMENT_EDITOR_NATIVE = 117;
   private static final int RET_CODE_CANCELED = -2;
   private static final int RET_CODE_FAILED = -1;
@@ -86,6 +110,7 @@ public final class TKDCommentBizModule
   private Promise commentPublisherPromise;
   private String extraParams;
   private final TKDCommentBizModule.hippyCommentEvent.1 hippyCommentEvent = new TKDCommentBizModule.hippyCommentEvent.1(this);
+  private ITKDTuWenHippyObservable tuWenHippyObservable;
   
   public TKDCommentBizModule(@Nullable HippyEngineContext paramHippyEngineContext)
   {
@@ -146,14 +171,14 @@ public final class TKDCommentBizModule
       if (localObject2 == null) {
         break label546;
       }
-      localObject2 = bhcu.decode((String)localObject2, 0);
+      localObject2 = Base64Util.decode((String)localObject2, 0);
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "Base64Util.decode(publis…: \"\", Base64Util.DEFAULT)");
       String str3 = new String((byte[])localObject2, Charsets.UTF_8);
       localObject2 = ((HippyMap)localObject3).getString("defaultTxt");
       if (localObject2 == null) {
         break label554;
       }
-      localObject2 = bhcu.decode((String)localObject2, 0);
+      localObject2 = Base64Util.decode((String)localObject2, 0);
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "Base64Util.decode(publis…: \"\", Base64Util.DEFAULT)");
       String str4 = new String((byte[])localObject2, Charsets.UTF_8);
       int j = ((HippyMap)localObject3).getInt("maxTextLimit");
@@ -273,7 +298,7 @@ public final class TKDCommentBizModule
     for (;;)
     {
       HippyMap localHippyMap = new HippyMap();
-      localHippyMap.pushString("emotionText", bcsc.b(paramHippyMap));
+      localHippyMap.pushString("emotionText", EmotionCodecUtils.b(paramHippyMap));
       paramPromise.resolve(localHippyMap);
       return;
       paramHippyMap = "";
@@ -285,13 +310,21 @@ public final class TKDCommentBizModule
     TKDCommentDispatcher.INSTANCE.removeEventListener((TKDCommentDispatcher.HippyCommentEvent)this.hippyCommentEvent);
   }
   
+  @HippyMethod(name="forbidScroll")
+  public final void forbidScroll(@NotNull HippyMap paramHippyMap, @NotNull Promise paramPromise)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHippyMap, "params");
+    Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
+    UIThreadUtils.runOnUiThread((Runnable)new TKDCommentBizModule.forbidScroll.1(this, paramHippyMap));
+  }
+  
   @HippyMethod(name="getCurrentFontScaleFactor")
   public final void getCurrentFontScaleFactor(@NotNull HippyMap paramHippyMap, @NotNull Promise paramPromise)
   {
     Intrinsics.checkParameterIsNotNull(paramHippyMap, "params");
     Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
     paramHippyMap = new HippyMap();
-    paramHippyMap.pushDouble("scaleFactor", tjg.a().floatValue());
+    paramHippyMap.pushDouble("scaleFactor", FastWebPTSUtils.a().floatValue());
     paramPromise.resolve(paramHippyMap);
   }
   
@@ -312,62 +345,70 @@ public final class TKDCommentBizModule
       }
       catch (JSONException localJSONException)
       {
-        label266:
-        label301:
-        label306:
+        CommentData localCommentData;
+        label286:
+        label322:
+        label327:
         do
         {
           for (;;)
           {
             handleError("handleOnActivityResult() json parse error!", (Throwable)localJSONException);
           }
-          localObject2 = Base64.decode(paramIntent.optString("comment"), 0);
-          Intrinsics.checkExpressionValueIsNotNull(localObject2, "Base64.decode(jsonObject…omment\"), Base64.DEFAULT)");
-          localObject4 = new String((byte[])localObject2, Charsets.UTF_8);
           paramIntent.optInt("feedsType");
           paramInt = paramIntent.optInt("biuAfterComment", 0);
-          paramIntent = paramIntent.optJSONArray("linkList");
-          if (paramIntent != null)
+          localObject2 = paramIntent.optJSONArray("linkList");
+          if (localObject2 != null)
           {
-            localObject2 = new TKDCommentBizModule.handleOnActivityResult.linkDataList.1.type.1().getType();
-            paramIntent = (List)new Gson().fromJson(paramIntent.toString(), (Type)localObject2);
-            if (paramIntent != null)
+            localObject4 = new TKDCommentBizModule.handleOnActivityResult.linkDataList.1.type.1().getType();
+            localObject2 = (List)new Gson().fromJson(((JSONArray)localObject2).toString(), (Type)localObject4);
+            if (localObject2 != null)
             {
-              localObject2 = (pgw)new TKDCommentBizModule.handleOnActivityResult.observer.1(this);
+              localObject4 = (RIJCommentNetworkHelper.RIJCreateCommentForHippyObserver)new TKDCommentBizModule.handleOnActivityResult.observer.1(this);
+              localCommentData = new CommentData();
+              RIJCommentTopicUtil.a(paramIntent, (BaseCommentData)localCommentData);
               if (!(localObject3 instanceof FirstCommentCreateData)) {
                 continue;
               }
-              ((FirstCommentCreateData)localObject3).a((String)localObject4);
-              ((FirstCommentCreateData)localObject3).a(paramIntent);
-              localObject4 = pgv.a;
+              ((FirstCommentCreateData)localObject3).b((List)localObject2);
+              paramIntent = (FirstCommentCreateData)localObject3;
+              localObject2 = localCommentData.commentContent;
+              Intrinsics.checkExpressionValueIsNotNull(localObject2, "baseCommentData.commentContent");
+              paramIntent.a((String)localObject2);
+              ((FirstCommentCreateData)localObject3).a(localCommentData.commentRptDataList);
+              localObject2 = RIJCommentNetworkWrapper.a;
               localObject3 = (FirstCommentCreateData)localObject3;
               if (paramInt != 1) {
-                break label301;
+                break label322;
               }
               bool = true;
               paramIntent = this.extraParams;
               if (paramIntent == null) {
-                break label306;
+                break label327;
               }
             }
           }
           for (;;)
           {
-            ((pgv)localObject4).a((FirstCommentCreateData)localObject3, (pgw)localObject2, bool, paramIntent);
+            ((RIJCommentNetworkWrapper)localObject2).a((FirstCommentCreateData)localObject3, (RIJCommentNetworkHelper.RIJCreateCommentForHippyObserver)localObject4, bool, paramIntent);
             return;
-            paramIntent = (List)new ArrayList();
+            localObject2 = (List)new ArrayList();
             break;
             bool = false;
-            break label266;
+            break label286;
             paramIntent = "";
           }
         } while (!(localObject3 instanceof SubCommentCreateData));
-        ((SubCommentCreateData)localObject3).d((String)localObject4);
-        ((SubCommentCreateData)localObject3).a(paramIntent);
-        localObject4 = pgv.a;
+        ((SubCommentCreateData)localObject3).b((List)localObject2);
+        paramIntent = (SubCommentCreateData)localObject3;
+        localObject2 = localCommentData.commentContent;
+        Intrinsics.checkExpressionValueIsNotNull(localObject2, "baseCommentData.commentContent");
+        paramIntent.d((String)localObject2);
+        ((SubCommentCreateData)localObject3).a(localCommentData.commentRptDataList);
+        localObject2 = RIJCommentNetworkWrapper.a;
         localObject3 = (SubCommentCreateData)localObject3;
         if (paramInt != 1) {
-          break label378;
+          break label430;
         }
       }
       if (paramIntent == null) {
@@ -378,9 +419,9 @@ public final class TKDCommentBizModule
       if (paramIntent != null) {}
       for (;;)
       {
-        ((pgv)localObject4).a((SubCommentCreateData)localObject3, (pgw)localObject2, bool, paramIntent);
+        ((RIJCommentNetworkWrapper)localObject2).a((SubCommentCreateData)localObject3, (RIJCommentNetworkHelper.RIJCreateCommentForHippyObserver)localObject4, bool, paramIntent);
         return;
-        label378:
+        label430:
         bool = false;
         break;
         paramIntent = "";
@@ -397,6 +438,18 @@ public final class TKDCommentBizModule
   {
     super.initialize();
     TKDCommentDispatcher.INSTANCE.addEventListener((TKDCommentDispatcher.HippyCommentEvent)this.hippyCommentEvent);
+    if ((getHippyQQEngine() instanceof TKDTuWenHippyEngine))
+    {
+      Object localObject = getHippyQQEngine();
+      if (localObject == null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.hippy.qq.tuwen.app.TKDTuWenHippyEngine");
+      }
+      this.tuWenHippyObservable = ((TKDTuWenHippyEngine)localObject).getTuWenHippyObservable();
+      localObject = this.tuWenHippyObservable;
+      if (localObject != null) {
+        ((ITKDTuWenHippyObservable)localObject).register((ITKDTuWenHippyObserver)new TKDCommentBizModule.initialize.1(this));
+      }
+    }
   }
   
   public void onActivityCreated(@Nullable Activity paramActivity, @Nullable Bundle paramBundle)
@@ -449,16 +502,16 @@ public final class TKDCommentBizModule
     {
       str1 = paramHippyMap.getString("likeType");
       if (str1 == null) {
-        break label88;
+        break label87;
       }
       str2 = paramHippyMap.getString("commentId");
       if (str2 == null) {
-        break label95;
+        break label94;
       }
-      label52:
+      label51:
       paramHippyMap = paramHippyMap.getString("seq");
       if (paramHippyMap == null) {
-        break label103;
+        break label102;
       }
     }
     for (;;)
@@ -467,13 +520,13 @@ public final class TKDCommentBizModule
       return;
       paramPromise = "";
       break;
-      label88:
+      label87:
       str1 = "";
       break label38;
-      label95:
+      label94:
       str2 = "";
-      break label52;
-      label103:
+      break label51;
+      label102:
       paramHippyMap = "";
     }
   }
@@ -493,34 +546,34 @@ public final class TKDCommentBizModule
     Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
     paramPromise = paramHippyMap.getString("rowkey");
     String str1;
-    label38:
+    label37:
     String str2;
-    label52:
+    label51:
     String str3;
-    label66:
+    label65:
     String str4;
     if (paramPromise != null)
     {
       str1 = paramHippyMap.getString("commentId");
       if (str1 == null) {
-        break label120;
+        break label119;
       }
       str2 = paramHippyMap.getString("commentContent");
       if (str2 == null) {
-        break label127;
+        break label126;
       }
       str3 = paramHippyMap.getString("level");
       if (str3 == null) {
-        break label135;
+        break label134;
       }
       str4 = paramHippyMap.getString("seq");
       if (str4 == null) {
-        break label143;
+        break label142;
       }
-      label80:
+      label79:
       paramHippyMap = paramHippyMap.getString("parentCommentId");
       if (paramHippyMap == null) {
-        break label151;
+        break label150;
       }
     }
     for (;;)
@@ -529,19 +582,19 @@ public final class TKDCommentBizModule
       return;
       paramPromise = "";
       break;
-      label120:
+      label119:
       str1 = "";
-      break label38;
-      label127:
+      break label37;
+      label126:
       str2 = "";
-      break label52;
-      label135:
+      break label51;
+      label134:
       str3 = "";
-      break label66;
-      label143:
+      break label65;
+      label142:
       str4 = "";
-      break label80;
-      label151:
+      break label79;
+      label150:
       paramHippyMap = "";
     }
   }
@@ -553,22 +606,22 @@ public final class TKDCommentBizModule
     Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
     paramPromise = paramHippyMap.getString("rowkey");
     String str1;
-    label38:
+    label37:
     String str2;
     if (paramPromise != null)
     {
       str1 = paramHippyMap.getString("commentId");
       if (str1 == null) {
-        break label88;
+        break label87;
       }
       str2 = paramHippyMap.getString("seq");
       if (str2 == null) {
-        break label95;
+        break label94;
       }
-      label52:
+      label51:
       paramHippyMap = paramHippyMap.getString("totalDeleteCount");
       if (paramHippyMap == null) {
-        break label103;
+        break label102;
       }
     }
     for (;;)
@@ -577,15 +630,23 @@ public final class TKDCommentBizModule
       return;
       paramPromise = "";
       break;
-      label88:
+      label87:
       str1 = "";
-      break label38;
-      label95:
+      break label37;
+      label94:
       str2 = "";
-      break label52;
-      label103:
+      break label51;
+      label102:
       paramHippyMap = "";
     }
+  }
+  
+  @HippyMethod(name="onLoadStatusChanged")
+  public final void onLoadStatusChanged(@NotNull HippyMap paramHippyMap, @NotNull Promise paramPromise)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHippyMap, "params");
+    Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
+    UIThreadUtils.runOnUiThread((Runnable)new TKDCommentBizModule.onLoadStatusChanged.1(this, paramHippyMap));
   }
   
   @HippyMethod(name="openComment")
@@ -596,12 +657,28 @@ public final class TKDCommentBizModule
     TKDCommentDispatcher.INSTANCE.getEvent().openComment();
   }
   
+  @HippyMethod(name="openCommentDetail")
+  public final void openCommentDetail(@NotNull HippyMap paramHippyMap, @NotNull Promise paramPromise)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHippyMap, "params");
+    Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
+    UIThreadUtils.runOnUiThread((Runnable)new TKDCommentBizModule.openCommentDetail.1(this, paramHippyMap));
+  }
+  
   @HippyMethod(name="openCommentPublisher")
   public final void openCommentPublisher(@NotNull HippyMap paramHippyMap, @NotNull Promise paramPromise)
   {
     Intrinsics.checkParameterIsNotNull(paramHippyMap, "params");
     Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
     UIThreadUtils.runOnUiThread((Runnable)new TKDCommentBizModule.openCommentPublisher.1(this, paramHippyMap, paramPromise));
+  }
+  
+  @HippyMethod(name="openMiniApp")
+  public final void openMiniApp(@NotNull HippyMap paramHippyMap, @NotNull Promise paramPromise)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHippyMap, "params");
+    Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
+    UIThreadUtils.runOnUiThread((Runnable)new TKDCommentBizModule.openMiniApp.1(this, paramHippyMap));
   }
   
   @HippyMethod(name="onSubCommentOpen")
@@ -630,10 +707,18 @@ public final class TKDCommentBizModule
       }
     }
   }
+  
+  @HippyMethod(name="updateCommentCount")
+  public final void updateCommentCount(@NotNull HippyMap paramHippyMap, @NotNull Promise paramPromise)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHippyMap, "params");
+    Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
+    UIThreadUtils.runOnUiThread((Runnable)new TKDCommentBizModule.updateCommentCount.1(this, paramHippyMap));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDCommentBizModule
  * JD-Core Version:    0.7.0.1
  */

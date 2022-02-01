@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import anwn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -26,7 +25,7 @@ class HotChatManager$3
     Object localObject1 = new File(BaseApplicationImpl.getContext().getFilesDir() + File.separator + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "_nearby_hotchat_v_list");
     try
     {
-      localObject1 = FileUtils.readFileToString((File)localObject1);
+      localObject1 = FileUtils.b((File)localObject1);
       this.this$0.jdField_a_of_type_JavaUtilList = new ArrayList();
       if (localObject1 == null) {}
     }
@@ -64,15 +63,15 @@ class HotChatManager$3
         }
       }
       this.this$0.f = false;
-      if (this.this$0.jdField_a_of_type_Anwn != null) {
-        this.this$0.jdField_a_of_type_Anwn.a();
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppHotChatManager$OnVListUpdateListener != null) {
+        this.this$0.jdField_a_of_type_ComTencentMobileqqAppHotChatManager$OnVListUpdateListener.a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatManager.3
  * JD-Core Version:    0.7.0.1
  */

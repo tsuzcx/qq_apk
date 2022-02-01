@@ -1,26 +1,26 @@
 package com.tencent.biz.qqstory.utils;
 
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class UIUtils$StoryProgressUI
 {
-  bisl mProgressDialog;
+  QQProgressDialog a;
   
-  UIUtils$StoryProgressUI(bisl parambisl)
+  UIUtils$StoryProgressUI(QQProgressDialog paramQQProgressDialog)
   {
-    this.mProgressDialog = parambisl;
+    this.a = paramQQProgressDialog;
   }
   
-  public void dismiss()
+  public void a()
   {
-    if ((this.mProgressDialog != null) && (this.mProgressDialog.isShowing())) {
-      this.mProgressDialog.dismiss();
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.UIUtils.StoryProgressUI
  * JD-Core Version:    0.7.0.1
  */

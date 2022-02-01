@@ -33,7 +33,7 @@
         "setShouldRepeat:": "NO",
         "setVideoScaleType:": "2",
         "setShouldMute:": "YES",
-        "setPlayIconUrl:": "http://pub.idqqimg.com/pc/misc/files/20200609/9a711edcef31434296a24ad323932e46.png",
+        "setPlayIconUrl:": "https://pub.idqqimg.com/pc/misc/files/20200609/9a711edcef31434296a24ad323932e46.png",
         "setPlayIconWidth:height:": ["50", "50"],
         "setPlayIconVisible:": "YES",
         "setReportPlayDuration:": {

@@ -1,20 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data;
 
 import android.text.TextUtils;
-import bhhr;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJFrameworkReportManager;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import pmz;
-import pnb;
-import pqb;
-import rmu;
-import rna;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-public class RIJDataFetchManager$4
+class RIJDataFetchManager$4
   implements Runnable
 {
-  public RIJDataFetchManager$4(pmz parampmz) {}
+  RIJDataFetchManager$4(RIJDataFetchManager paramRIJDataFetchManager) {}
   
   public void run()
   {
@@ -27,12 +25,12 @@ public class RIJDataFetchManager$4
     label133:
     int k;
     if (!this.this$0.d()) {
-      if ((pmz.a(this.this$0).a() instanceof BaseActivity))
+      if ((RIJDataFetchManager.a(this.this$0).a() instanceof BaseActivity))
       {
-        bool = bhhr.t(pmz.a(this.this$0).a(), ((BaseActivity)pmz.a(this.this$0).a()).getCurrentAccountUin());
-        if ((pmz.a(this.this$0).a() instanceof BaseActivity))
+        bool = SharedPreUtils.t(RIJDataFetchManager.a(this.this$0).a(), ((BaseActivity)RIJDataFetchManager.a(this.this$0).a()).getCurrentAccountUin());
+        if ((RIJDataFetchManager.a(this.this$0).a() instanceof BaseActivity))
         {
-          str = ((rna)((BaseActivity)pmz.a(this.this$0).a()).app.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER)).a();
+          str = ((ReadInJoySkinManager)((BaseActivity)RIJDataFetchManager.a(this.this$0).a()).app.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER)).a();
           if ((TextUtils.isEmpty(str)) || (str.equals("0")))
           {
             i = 0;
@@ -41,20 +39,20 @@ public class RIJDataFetchManager$4
             k = i;
             localObject = str;
             m = j;
-            if ((pmz.a(this.this$0).a() instanceof BaseActivity))
+            if ((RIJDataFetchManager.a(this.this$0).a() instanceof BaseActivity))
             {
-              rmu localrmu = (rmu)((BaseActivity)pmz.a(this.this$0).a()).app.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
+              ReadInJoyRefreshManager localReadInJoyRefreshManager = (ReadInJoyRefreshManager)((BaseActivity)RIJDataFetchManager.a(this.this$0).a()).app.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
               k = i;
               localObject = str;
               m = j;
-              if (localrmu.a() == 1)
+              if (localReadInJoyRefreshManager.a() == 1)
               {
                 k = i;
                 localObject = str;
                 m = j;
-                if (localrmu.b())
+                if (localReadInJoyRefreshManager.b())
                 {
-                  localObject = localrmu.a();
+                  localObject = localReadInJoyRefreshManager.a();
                   k = 2;
                 }
               }
@@ -65,7 +63,7 @@ public class RIJDataFetchManager$4
     }
     for (int m = 0;; m = 0)
     {
-      pqb.a(pmz.a(this.this$0).d(), m, (String)localObject, k);
+      RIJFrameworkReportManager.a(RIJDataFetchManager.a(this.this$0).d(), m, (String)localObject, k);
       return;
       if (bool)
       {
@@ -86,7 +84,7 @@ public class RIJDataFetchManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data.RIJDataFetchManager.4
  * JD-Core Version:    0.7.0.1
  */

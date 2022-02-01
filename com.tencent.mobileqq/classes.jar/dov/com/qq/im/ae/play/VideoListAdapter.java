@@ -29,13 +29,13 @@ public class VideoListAdapter
   private static long lastClickTime;
   private Context context;
   private VideoListAdapter.OnVideoNodeClickedListener listener;
-  private double mAspectRatio;
+  private double mAspectRatio = 0.0D;
   private String mAssetsPath = "";
   private HashMap<Integer, Bitmap> mBitmaps = new HashMap();
-  private boolean mIsHorizontal;
+  private boolean mIsHorizontal = false;
   private List<ShelfNode> mNodeGroupList;
   private ArrayList<String> mSelectedPhotoList;
-  private int mSelectedPosition;
+  private int mSelectedPosition = 0;
   private int mVideoHeight;
   private int mVideoWidth;
   
@@ -54,15 +54,10 @@ public class VideoListAdapter
     if (this.mVideoHeight != 0)
     {
       this.mAspectRatio = (this.mVideoWidth / this.mVideoHeight);
-      if (this.mAspectRatio < 1.0D) {
-        break label83;
+      if (this.mAspectRatio >= 1.0D) {
+        bool = true;
       }
-    }
-    label83:
-    for (boolean bool = true;; bool = false)
-    {
       this.mIsHorizontal = bool;
-      return;
     }
   }
   
@@ -134,7 +129,7 @@ public class VideoListAdapter
   
   public VideoListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return new VideoListAdapter.ViewHolder(this, LayoutInflater.from(this.context).inflate(2131558509, paramViewGroup, false));
+    return new VideoListAdapter.ViewHolder(this, LayoutInflater.from(this.context).inflate(2131558517, paramViewGroup, false));
   }
   
   public void setMaterialPath(String paramString)
@@ -174,7 +169,7 @@ public class VideoListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.VideoListAdapter
  * JD-Core Version:    0.7.0.1
  */

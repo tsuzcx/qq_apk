@@ -10,20 +10,20 @@ public final class MultiBanner
 {
   static ArrayList<Long> cache_recomUinList = new ArrayList();
   public boolean bNeedPiecewise = true;
-  public boolean bNeedSpread;
+  public boolean bNeedSpread = false;
   public String coverurl = "";
-  public long createtime;
-  public boolean from_now;
+  public long createtime = 0L;
+  public boolean from_now = false;
   public String jmpUrl = "";
-  public int livetype;
-  public int num;
-  public ArrayList<Long> recomUinList;
+  public int livetype = 0;
+  public int num = 0;
+  public ArrayList<Long> recomUinList = null;
   public String roomid = "";
   public String schemaurl = "";
   public String strNicks = "";
-  public int styleType;
+  public int styleType = 0;
   public String summary = "";
-  public long uUin;
+  public long uUin = 0L;
   public String videoUrl = "";
   
   static

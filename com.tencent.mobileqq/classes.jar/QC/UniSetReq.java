@@ -27,24 +27,24 @@ public final class UniSetReq
   static Signature cache_stSignature;
   static SummaryCard cache_stSummaryCard;
   static UniBusinessItem cache_stUniBusinessItem = new UniBusinessItem();
-  public int clearflag;
-  public Map<String, String> ext_map;
-  public Bubble stBubble;
-  public Concise stConcise;
-  public ExtendFriend stExtendFriend;
-  public Font stFont;
-  public Funcall stFuncall;
-  public GroupEffect stGroupEffect;
-  public Hamlet stHamletItem;
-  public ArrayList<Hamlet> stHamletItemList;
-  public LoginInfo stLogin;
-  public MessageShow stMessageShow;
-  public NamePlate stNamePlate;
-  public Nudge stNudge;
-  public Redpacket stRedpacket;
-  public Signature stSignature;
-  public SummaryCard stSummaryCard;
-  public UniBusinessItem stUniBusinessItem;
+  public int clearflag = 0;
+  public Map<String, String> ext_map = null;
+  public Bubble stBubble = null;
+  public Concise stConcise = null;
+  public ExtendFriend stExtendFriend = null;
+  public Font stFont = null;
+  public Funcall stFuncall = null;
+  public GroupEffect stGroupEffect = null;
+  public Hamlet stHamletItem = null;
+  public ArrayList<Hamlet> stHamletItemList = null;
+  public LoginInfo stLogin = null;
+  public MessageShow stMessageShow = null;
+  public NamePlate stNamePlate = null;
+  public Nudge stNudge = null;
+  public Redpacket stRedpacket = null;
+  public Signature stSignature = null;
+  public SummaryCard stSummaryCard = null;
+  public UniBusinessItem stUniBusinessItem = null;
   
   static
   {

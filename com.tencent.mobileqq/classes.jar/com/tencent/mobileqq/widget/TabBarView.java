@@ -17,11 +17,6 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bitz;
-import biua;
-import biub;
-import biuc;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -37,14 +32,14 @@ public class TabBarView
   private static final int q;
   private static final int r = 10;
   private static final int s = 14;
-  public float a;
+  protected float a;
   public long a;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bitz(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new TabBarView.1(this);
   protected LinearLayout.LayoutParams a;
-  public biuc a;
+  public TabBarView.OnTabChangeListener a;
   protected List<RedDotTextView> a;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   protected int b;
   Paint b;
   protected List<LinearLayout> b;
@@ -60,12 +55,12 @@ public class TabBarView
   protected int k;
   protected int l;
   protected int m = s;
-  public int n = -1;
+  protected int n = -1;
   public int o = -1;
   
   static
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    BaseApplication localBaseApplication = BaseApplication.getContext();
     p = (int)(40.0F * localBaseApplication.getResources().getDisplayMetrics().density + 0.5F);
     q = (int)(localBaseApplication.getResources().getDisplayMetrics().density * 4.0F + 0.5F);
   }
@@ -81,17 +76,18 @@ public class TabBarView
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = 0L;
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_Int = p;
     this.jdField_c_of_type_Int = q;
-    this.e = paramContext.getResources().getColor(2131167034);
-    this.f = paramContext.getResources().getColor(2131167026);
+    this.e = paramContext.getResources().getColor(2131167041);
+    this.f = paramContext.getResources().getColor(2131167033);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(0, -1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.weight = 1.0F;
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.gravity = 17;
-    setBackgroundDrawable(getResources().getDrawable(2130850421));
+    setBackgroundDrawable(getResources().getDrawable(2130850824));
     if (jdField_a_of_type_Int == 0) {
       jdField_a_of_type_Int = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getWidth();
     }
@@ -99,8 +95,8 @@ public class TabBarView
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Biuc != null) {
-      this.jdField_a_of_type_Biuc.onTabSelected(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener.a(paramInt1, paramInt2);
     }
   }
   
@@ -117,7 +113,7 @@ public class TabBarView
         RedDotTextView localRedDotTextView = a(i1);
         if (localRedDotTextView != null)
         {
-          ((StringBuilder)localObject).append(localRedDotTextView.getText()).append("，").append(getContext().getString(2131691087));
+          ((StringBuilder)localObject).append(localRedDotTextView.getText()).append("，").append(getContext().getString(2131691194));
           if (this.o == i1) {
             ((StringBuilder)localObject).append("，").append("已选中");
           }
@@ -214,7 +210,7 @@ public class TabBarView
     if (localView == null) {
       return null;
     }
-    localView = localView.findViewById(2131378737);
+    localView = localView.findViewById(2131379169);
     if ((localView instanceof RedDotTextView)) {
       return (RedDotTextView)localView;
     }
@@ -247,9 +243,9 @@ public class TabBarView
     localRedDotTextView.setContentDescription(paramString);
     localRedDotTextView.setGravity(17);
     if (!TextUtils.isEmpty(paramString)) {
-      localRedDotTextView.setOnClickListener(new biua(this, paramInt));
+      localRedDotTextView.setOnClickListener(new TabBarView.2(this, paramInt));
     }
-    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new biub(this));
+    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new TabBarView.3(this));
     this.jdField_a_of_type_JavaUtilList.add(localRedDotTextView);
     this.jdField_b_of_type_JavaUtilList.add(localLinearLayout1);
     this.jdField_c_of_type_JavaUtilList.add(paramString);
@@ -376,7 +372,7 @@ public class TabBarView
         localLinearLayout2.setGravity(17);
         break label397;
         label912:
-        localRedDotTextView.setId(2131378737);
+        localRedDotTextView.setId(2131379169);
         if ((localHashMap != null) && (localHashMap.get("paddingLeft") != null))
         {
           localLinearLayout1.addView(localRedDotTextView, paramString);
@@ -462,7 +458,7 @@ public class TabBarView
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     a(paramCanvas);
     super.dispatchDraw(paramCanvas);
@@ -479,9 +475,9 @@ public class TabBarView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnTabChangeListener(biuc parambiuc)
+  public void setOnTabChangeListener(TabBarView.OnTabChangeListener paramOnTabChangeListener)
   {
-    this.jdField_a_of_type_Biuc = parambiuc;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = paramOnTabChangeListener;
   }
   
   public void setSelectBgRes(int paramInt)
@@ -585,7 +581,7 @@ public class TabBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView
  * JD-Core Version:    0.7.0.1
  */

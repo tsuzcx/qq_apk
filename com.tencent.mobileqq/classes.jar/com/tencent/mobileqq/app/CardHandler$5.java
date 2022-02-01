@@ -1,18 +1,34 @@
 package com.tencent.mobileqq.app;
 
-import anri;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.profile.upload.VipUploadUtils;
+import com.tencent.mobileqq.profile.upload.config.VipUploadConfigImpl;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 
-public class CardHandler$5
-  implements Runnable
+class CardHandler$5
+  extends VipUploadConfigImpl
 {
-  public void run()
+  CardHandler$5(CardHandler paramCardHandler, long paramLong)
   {
-    anri.a(this.this$0);
+    super(paramLong);
+  }
+  
+  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  {
+    paramUploadImageSize = VipUploadUtils.a(paramAbstractUploadTask.uploadFilePath);
+    if (paramUploadImageSize != null)
+    {
+      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
+      paramUploadImageSize.recycle();
+      return paramAbstractUploadTask;
+    }
+    return new IUploadConfig.UploadImageSize(640, 1136, 100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.CardHandler.5
  * JD-Core Version:    0.7.0.1
  */

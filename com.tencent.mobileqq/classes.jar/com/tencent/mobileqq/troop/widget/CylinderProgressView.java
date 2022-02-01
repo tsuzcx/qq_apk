@@ -62,15 +62,15 @@ public class CylinderProgressView
     paramContext.recycle();
   }
   
-  public static CylinderProgressView.ProgressAge a(String paramString)
+  public static int a(String paramString)
   {
     if (paramString.contains("00")) {
-      return CylinderProgressView.ProgressAge.Age_00;
+      return 2;
     }
     if ((paramString.contains("80")) || (paramString.contains("90"))) {
-      return CylinderProgressView.ProgressAge.Age_8090;
+      return 1;
     }
-    return CylinderProgressView.ProgressAge.Age_70;
+    return 0;
   }
   
   private void a(int paramInt)
@@ -84,18 +84,18 @@ public class CylinderProgressView
     return new int[] { Color.parseColor("#FF596A"), Color.parseColor("#4DFF596A") };
   }
   
-  public static int[] a(CylinderProgressView.ProgressAge paramProgressAge)
+  public static int[] a(int paramInt)
   {
     int[] arrayOfInt = new int[2];
-    switch (bgnd.a[paramProgressAge.ordinal()])
+    switch (paramInt)
     {
     default: 
       return arrayOfInt;
-    case 1: 
+    case 0: 
       arrayOfInt[0] = Color.parseColor("#00CAFC");
       arrayOfInt[1] = Color.parseColor("#4D00CAFC");
       return arrayOfInt;
-    case 2: 
+    case 1: 
       arrayOfInt[0] = Color.parseColor("#21D9C6");
       arrayOfInt[1] = Color.parseColor("#4D21D9C6");
       return arrayOfInt;
@@ -130,7 +130,7 @@ public class CylinderProgressView
     return new int[] { Color.parseColor("#333B5A"), Color.parseColor("#4D333B5A") };
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -191,7 +191,7 @@ public class CylinderProgressView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int m = View.MeasureSpec.getMode(paramInt1);

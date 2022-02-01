@@ -17,19 +17,15 @@ import android.widget.TextView.BufferType;
 import com.tencent.biz.subscribe.widget.textview.SafeTextView;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
-import vlq;
-import vlu;
-import vlv;
-import vlw;
 
 public class FeedRichTextView
   extends SafeTextView
   implements Handler.Callback
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private ArrayList<vlw> jdField_a_of_type_JavaUtilArrayList;
-  private vlq jdField_a_of_type_Vlq;
-  private ArrayList<vlv> b;
+  private FeedRichTextView.OnElementClickListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView$OnElementClickListener;
+  private ArrayList<FeedTextParser.WSUser> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<FeedTextParser.WSTopic> b;
   
   public FeedRichTextView(Context paramContext)
   {
@@ -51,17 +47,17 @@ public class FeedRichTextView
   
   private void a(AttributeSet paramAttributeSet) {}
   
-  public ArrayList<vlw> a()
+  public ArrayList<FeedTextParser.WSUser> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  protected void a(CharSequence paramCharSequence, vlq paramvlq, Drawable.Callback paramCallback)
+  protected void a(CharSequence paramCharSequence, FeedRichTextView.OnElementClickListener paramOnElementClickListener, Drawable.Callback paramCallback)
   {
-    ThreadManager.post(new FeedRichTextView.1(this, paramCharSequence, paramvlq, paramCallback), 8, null, true);
+    ThreadManager.post(new FeedRichTextView.1(this, paramCharSequence, paramOnElementClickListener, paramCallback), 8, null, true);
   }
   
-  public ArrayList<vlv> b()
+  public ArrayList<FeedTextParser.WSTopic> b()
   {
     return this.b;
   }
@@ -74,17 +70,17 @@ public class FeedRichTextView
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage == null) {}
-    while ((paramMessage.what != 1001) || (!(paramMessage.obj instanceof vlu))) {
+    while ((paramMessage.what != 1001) || (!(paramMessage.obj instanceof FeedTextParser.InnerSpannableBuilder))) {
       return false;
     }
-    paramMessage = (vlu)paramMessage.obj;
+    paramMessage = (FeedTextParser.InnerSpannableBuilder)paramMessage.obj;
     this.jdField_a_of_type_JavaUtilArrayList = paramMessage.a();
     this.b = paramMessage.b();
     super.setText(paramMessage, null);
     return false;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     CharSequence localCharSequence = getText();
@@ -104,24 +100,24 @@ public class FeedRichTextView
     super.setOnClickListener(paramOnClickListener);
   }
   
-  public void setOnElementClickListener(vlq paramvlq)
+  public void setOnElementClickListener(FeedRichTextView.OnElementClickListener paramOnElementClickListener)
   {
-    this.jdField_a_of_type_Vlq = paramvlq;
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView$OnElementClickListener = paramOnElementClickListener;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    if ((TextUtils.isEmpty(paramCharSequence)) || ((!TextUtils.isEmpty(paramCharSequence)) && ((paramCharSequence instanceof vlu))))
+    if ((TextUtils.isEmpty(paramCharSequence)) || ((!TextUtils.isEmpty(paramCharSequence)) && ((paramCharSequence instanceof FeedTextParser.InnerSpannableBuilder))))
     {
       super.setText(paramCharSequence, paramBufferType);
       return;
     }
-    a(paramCharSequence, this.jdField_a_of_type_Vlq, null);
+    a(paramCharSequence, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView$OnElementClickListener, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView
  * JD-Core Version:    0.7.0.1
  */

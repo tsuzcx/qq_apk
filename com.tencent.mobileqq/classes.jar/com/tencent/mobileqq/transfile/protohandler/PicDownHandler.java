@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import anza;
 import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.mobileqq.app.StatictisInfo;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public abstract class PicDownHandler
@@ -11,15 +11,15 @@ public abstract class PicDownHandler
 {
   protected void handleRespIp() {}
   
-  protected abstract void handleSucResponse(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, anza paramanza);
+  protected abstract boolean handleSucResponse(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, StatictisInfo paramStatictisInfo);
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     FromServiceMsg localFromServiceMsg = paramProtoResp.resp;
     Object localObject = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    anza localanza = paramProtoResp.statisInfo;
+    StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
     if (localFromServiceMsg.getResultCode() != 1000)
     {
       int i = localFromServiceMsg.getResultCode();
@@ -31,12 +31,14 @@ public abstract class PicDownHandler
         if (paramProtoReq == null) {
           paramProtoResp = "";
         }
-        setResult(-1, 9311, (String)localObject, paramProtoResp, localanza, localRichProtoResp.resps);
+        setResult(-1, 9311, (String)localObject, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
       }
     }
-    for (;;)
+    for (boolean bool = true;; bool = handleSucResponse(paramProtoResp, paramProtoReq, localFromServiceMsg, (byte[])localObject, localRichProtoReq, localRichProtoResp, localStatictisInfo))
     {
-      RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
+      if (bool) {
+        RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
+      }
       return;
       localObject = MessageHandler.a(localFromServiceMsg);
       paramProtoReq = localFromServiceMsg.getBusinessFailMsg();
@@ -44,9 +46,8 @@ public abstract class PicDownHandler
       if (paramProtoReq == null) {
         paramProtoResp = "";
       }
-      setResult(-1, 9044, (String)localObject, paramProtoResp, localanza, localRichProtoResp.resps);
-      continue;
-      handleSucResponse(paramProtoResp, paramProtoReq, localFromServiceMsg, (byte[])localObject, localRichProtoReq, localRichProtoResp, localanza);
+      setResult(-1, 9044, (String)localObject, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
+      break;
     }
   }
 }

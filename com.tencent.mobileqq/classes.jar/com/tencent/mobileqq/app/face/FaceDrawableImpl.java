@@ -2,14 +2,15 @@ package com.tencent.mobileqq.app.face;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import antl;
-import aoke;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.avatar.api.IQQAvatarDataService;
+import com.tencent.mobileqq.avatar.api.IQQAvatarDecoderApi;
+import com.tencent.mobileqq.avatar.api.IQQAvatarHandlerService;
+import com.tencent.mobileqq.avatar.api.IQQAvatarManagerService;
+import com.tencent.mobileqq.avatar.utils.AvatarUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.IDiscussionHandlerService;
+import com.tencent.mobileqq.troop.api.ITroopUtilApi;
 import java.lang.ref.WeakReference;
 
 public class FaceDrawableImpl
@@ -19,12 +20,12 @@ public class FaceDrawableImpl
   FaceDrawableImpl.InternalDiscussionObserver mDisObserver;
   FaceDrawableImpl.InternalFriendListObserver mFriendListObserver;
   FaceDrawableImpl.InternalGroupObserver mGroupObserver;
-  WeakReference<QQAppInterface> weakApp;
+  WeakReference<AppInterface> weakApp;
   
   public FaceDrawableImpl(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, int paramInt4, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, FaceDrawable.OnLoadingStateChangeListener paramOnLoadingStateChangeListener, boolean paramBoolean2)
   {
     super(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean2);
-    this.weakApp = new WeakReference((QQAppInterface)paramAppInterface);
+    this.weakApp = new WeakReference(paramAppInterface);
   }
   
   private Bitmap getBitmapFromCacheInner(boolean paramBoolean)
@@ -32,50 +33,47 @@ public class FaceDrawableImpl
     if (this.mFaceInfo == null) {
       return null;
     }
-    Object localObject1 = this.mFaceInfo.jdField_a_of_type_JavaLangString;
+    Object localObject = this.mFaceInfo.jdField_a_of_type_JavaLangString;
     if (this.mFaceInfo.jdField_a_of_type_Int == 1001) {
-      localObject1 = GroupIconHelper.a(this.mFaceInfo.jdField_a_of_type_JavaLangString);
+      localObject = AvatarUtil.c(this.mFaceInfo.jdField_a_of_type_JavaLangString);
     }
-    Object localObject2 = (QQAppInterface)this.weakApp.get();
-    if (localObject2 == null) {
+    AppInterface localAppInterface = (AppInterface)this.weakApp.get();
+    if (localAppInterface == null) {
       return null;
     }
-    localObject1 = ((QQAppInterface)localObject2).getBitmapFromCache(((QQAppInterface)localObject2).getFaceBitmapCacheKey(this.mFaceInfo.jdField_a_of_type_Int, (String)localObject1, (byte)this.mFaceInfo.c, this.mFaceInfo.jdField_b_of_type_Int, this.mFaceInfo.d, paramBoolean));
-    if ((localObject1 != null) && (this.mFaceInfo.jdField_a_of_type_Int == 1001))
-    {
-      localObject2 = (antl)((QQAppInterface)localObject2).getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
-      if ((localObject2 != null) && (((antl)localObject2).a() != null)) {
-        ((antl)localObject2).a().f(this.mFaceInfo.jdField_a_of_type_JavaLangString);
-      }
+    IQQAvatarDataService localIQQAvatarDataService = (IQQAvatarDataService)localAppInterface.getRuntimeService(IQQAvatarDataService.class, "");
+    localObject = localIQQAvatarDataService.getBitmapFromCache(localIQQAvatarDataService.getFaceBitmapCacheKey(this.mFaceInfo.jdField_a_of_type_Int, (String)localObject, (byte)this.mFaceInfo.c, this.mFaceInfo.jdField_b_of_type_Int, this.mFaceInfo.d, paramBoolean));
+    if ((localObject != null) && (this.mFaceInfo.jdField_a_of_type_Int == 1001)) {
+      ((IDiscussionHandlerService)localAppInterface.getRuntimeService(IDiscussionHandlerService.class, "")).checkPstnIconInfoAndUpdate(this.mFaceInfo.jdField_a_of_type_JavaLangString);
     }
-    return localObject1;
+    return localObject;
   }
   
   public void cancel()
   {
-    Object localObject = (QQAppInterface)this.weakApp.get();
+    Object localObject = (AppInterface)this.weakApp.get();
     if ((!this.mCancelled) && (localObject != null))
     {
-      aoke localaoke;
+      IQQAvatarManagerService localIQQAvatarManagerService;
       if (this.mFriendListObserver != null)
       {
-        localaoke = (aoke)((QQAppInterface)localObject).getManager(QQManagerFactory.FACE_MANAGER);
-        if (localaoke != null) {
-          localaoke.b(this.mFriendListObserver);
+        localIQQAvatarManagerService = (IQQAvatarManagerService)((AppInterface)localObject).getRuntimeService(IQQAvatarManagerService.class, "");
+        if (localIQQAvatarManagerService != null) {
+          localIQQAvatarManagerService.removeObserver(this.mFriendListObserver);
         }
       }
       if (this.mDisObserver != null)
       {
-        localaoke = (aoke)((QQAppInterface)localObject).getManager(QQManagerFactory.FACE_MANAGER);
-        if (localaoke != null) {
-          localaoke.b(this.mDisObserver);
+        localIQQAvatarManagerService = (IQQAvatarManagerService)((AppInterface)localObject).getRuntimeService(IQQAvatarManagerService.class, "");
+        if (localIQQAvatarManagerService != null) {
+          localIQQAvatarManagerService.removeObserver(this.mDisObserver);
         }
       }
       if (this.mGroupObserver != null)
       {
-        localObject = (aoke)((QQAppInterface)localObject).getManager(QQManagerFactory.FACE_MANAGER);
+        localObject = (IQQAvatarManagerService)((AppInterface)localObject).getRuntimeService(IQQAvatarManagerService.class, "");
         if (localObject != null) {
-          ((aoke)localObject).b(this.mGroupObserver);
+          ((IQQAvatarManagerService)localObject).removeObserver(this.mGroupObserver);
         }
       }
       this.weakApp = null;
@@ -98,43 +96,56 @@ public class FaceDrawableImpl
     if (this.mFriendListObserver == null) {
       this.mFriendListObserver = new FaceDrawableImpl.InternalFriendListObserver(this, this);
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.weakApp.get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    Object localObject = (aoke)localQQAppInterface.getManager(QQManagerFactory.FACE_MANAGER);
-    if (localObject != null) {
-      ((aoke)localObject).a(this.mFriendListObserver);
-    }
-    if ((this.mFaceInfo.jdField_a_of_type_Int == 1) || (this.mFaceInfo.jdField_a_of_type_Int == 11) || (this.mFaceInfo.jdField_a_of_type_Int == 4) || (this.mFaceInfo.jdField_a_of_type_Int == 32) || (this.mFaceInfo.jdField_a_of_type_Int == 16) || (this.mFaceInfo.jdField_a_of_type_Int == 116) || (this.mFaceInfo.jdField_a_of_type_Int == 1001))
+    AppInterface localAppInterface = (AppInterface)this.weakApp.get();
+    if (localAppInterface == null) {}
+    do
     {
-      localObject = (FriendListHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-      if (this.mFaceInfo.jdField_a_of_type_Int != 1) {
-        break label194;
+      do
+      {
+        return;
+        localObject = (IQQAvatarManagerService)localAppInterface.getRuntimeService(IQQAvatarManagerService.class, "");
+        if (localObject != null) {
+          ((IQQAvatarManagerService)localObject).addObserver(this.mFriendListObserver);
+        }
+      } while ((this.mFaceInfo.jdField_a_of_type_Int != 1) && (this.mFaceInfo.jdField_a_of_type_Int != 11) && (this.mFaceInfo.jdField_a_of_type_Int != 4) && (this.mFaceInfo.jdField_a_of_type_Int != 32) && (this.mFaceInfo.jdField_a_of_type_Int != 16) && (this.mFaceInfo.jdField_a_of_type_Int != 116) && (this.mFaceInfo.jdField_a_of_type_Int != 1001));
+      Object localObject = (IQQAvatarHandlerService)localAppInterface.getRuntimeService(IQQAvatarHandlerService.class, "");
+      if (this.mFaceInfo.jdField_a_of_type_Int == 1)
+      {
+        ((IQQAvatarHandlerService)localObject).getCustomHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_a_of_type_Byte, this.mFaceInfo.jdField_b_of_type_Byte);
+        return;
       }
-      ((FriendListHandler)localObject).getCustomHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_a_of_type_Byte, this.mFaceInfo.jdField_b_of_type_Byte);
-    }
-    for (;;)
-    {
-      System.currentTimeMillis();
-      return;
-      label194:
-      if (this.mFaceInfo.jdField_a_of_type_Int == 11) {
-        ((FriendListHandler)localObject).getMobileQQHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_b_of_type_Byte);
-      } else if (this.mFaceInfo.jdField_a_of_type_Int == 4) {
-        ((FriendListHandler)localObject).getTroopHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_b_of_type_Byte);
-      } else if (this.mFaceInfo.jdField_a_of_type_Int == 32) {
-        ((FriendListHandler)localObject).getStrangerHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_b_of_type_Int, this.mFaceInfo.jdField_a_of_type_Byte, this.mFaceInfo.jdField_b_of_type_Byte);
-      } else if (this.mFaceInfo.jdField_a_of_type_Int == 16) {
-        ((FriendListHandler)localObject).getQCallHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_b_of_type_Int, this.mFaceInfo.jdField_a_of_type_Byte, this.mFaceInfo.jdField_b_of_type_Byte);
-      } else if (this.mFaceInfo.jdField_a_of_type_Int == 116) {
-        ((FriendListHandler)localObject).getApolloHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_a_of_type_Byte, this.mFaceInfo.jdField_b_of_type_Byte, this.mFaceInfo.d);
-      } else if (this.mFaceInfo.jdField_a_of_type_Int == 101) {
-        ((antl)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(this.mFaceInfo.jdField_a_of_type_JavaLangString, true);
-      } else if (this.mFaceInfo.jdField_a_of_type_Int == 1001) {
-        ((antl)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(GroupIconHelper.a(this.mFaceInfo.jdField_a_of_type_JavaLangString), true);
+      if (this.mFaceInfo.jdField_a_of_type_Int == 11)
+      {
+        ((IQQAvatarHandlerService)localObject).getMobileQQHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_b_of_type_Byte);
+        return;
       }
-    }
+      if (this.mFaceInfo.jdField_a_of_type_Int == 4)
+      {
+        ((IQQAvatarHandlerService)localObject).getTroopHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_b_of_type_Byte);
+        return;
+      }
+      if (this.mFaceInfo.jdField_a_of_type_Int == 32)
+      {
+        ((IQQAvatarHandlerService)localObject).getStrangerHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_b_of_type_Int, this.mFaceInfo.jdField_a_of_type_Byte, this.mFaceInfo.jdField_b_of_type_Byte);
+        return;
+      }
+      if (this.mFaceInfo.jdField_a_of_type_Int == 16)
+      {
+        ((IQQAvatarHandlerService)localObject).getQCallHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_b_of_type_Int, this.mFaceInfo.jdField_a_of_type_Byte, this.mFaceInfo.jdField_b_of_type_Byte);
+        return;
+      }
+      if (this.mFaceInfo.jdField_a_of_type_Int == 116)
+      {
+        ((IQQAvatarHandlerService)localObject).getApolloHead(this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.jdField_a_of_type_Byte, this.mFaceInfo.jdField_b_of_type_Byte, this.mFaceInfo.d);
+        return;
+      }
+      if (this.mFaceInfo.jdField_a_of_type_Int == 101)
+      {
+        ((IDiscussionHandlerService)localAppInterface.getRuntimeService(IDiscussionHandlerService.class, "")).updateDiscussionIcon(this.mFaceInfo.jdField_a_of_type_JavaLangString, true);
+        return;
+      }
+    } while (this.mFaceInfo.jdField_a_of_type_Int != 1001);
+    ((IDiscussionHandlerService)localAppInterface.getRuntimeService(IDiscussionHandlerService.class, "")).updateDiscussionIcon(AvatarUtil.c(this.mFaceInfo.jdField_a_of_type_JavaLangString), true);
   }
   
   public void onUpdateHead(boolean paramBoolean, int paramInt, String paramString, Object paramObject)
@@ -149,11 +160,11 @@ public class FaceDrawableImpl
       if (paramObject == null) {
         break;
       }
-      paramString = (QQAppInterface)this.weakApp.get();
+      paramString = (AppInterface)this.weakApp.get();
     } while (paramString == null);
-    paramString = (aoke)paramString.getManager(QQManagerFactory.FACE_MANAGER);
+    paramString = (IQQAvatarManagerService)paramString.getRuntimeService(IQQAvatarManagerService.class, "");
     if (paramString != null) {
-      paramString.b(paramObject);
+      paramString.removeObserver(paramObject);
     }
     if (paramBoolean)
     {
@@ -177,39 +188,39 @@ public class FaceDrawableImpl
     if (this.mFaceInfo == null) {
       return false;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.weakApp.get();
-    if (localQQAppInterface == null) {
+    AppInterface localAppInterface = (AppInterface)this.weakApp.get();
+    if (localAppInterface == null) {
       return false;
     }
-    aoke localaoke;
+    IQQAvatarManagerService localIQQAvatarManagerService;
     if ((this.mFaceInfo.jdField_a_of_type_Int == 101) || (this.mFaceInfo.jdField_a_of_type_Int == 1001))
     {
       this.mDisObserver = new FaceDrawableImpl.InternalDiscussionObserver(this, this);
-      localaoke = (aoke)localQQAppInterface.getManager(QQManagerFactory.FACE_MANAGER);
-      if (localaoke != null) {
-        localaoke.a(this.mDisObserver);
+      localIQQAvatarManagerService = (IQQAvatarManagerService)localAppInterface.getRuntimeService(IQQAvatarManagerService.class, "");
+      if (localIQQAvatarManagerService != null) {
+        localIQQAvatarManagerService.addObserver(this.mDisObserver);
       }
     }
-    if (((this.mFaceInfo.jdField_a_of_type_Int == 4) || (this.mFaceInfo.jdField_a_of_type_Int == 113)) && (!TroopUtils.hasSetTroopHead(this.mFaceInfo.jdField_a_of_type_JavaLangString)))
+    if (((this.mFaceInfo.jdField_a_of_type_Int == 4) || (this.mFaceInfo.jdField_a_of_type_Int == 113)) && (!((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).hasSetTroopHead(this.mFaceInfo.jdField_a_of_type_JavaLangString)))
     {
       this.mGroupObserver = new FaceDrawableImpl.InternalGroupObserver(this, this);
-      localaoke = (aoke)localQQAppInterface.getManager(QQManagerFactory.FACE_MANAGER);
-      if (localaoke != null) {
-        localaoke.a(this.mGroupObserver);
+      localIQQAvatarManagerService = (IQQAvatarManagerService)localAppInterface.getRuntimeService(IQQAvatarManagerService.class, "");
+      if (localIQQAvatarManagerService != null) {
+        localIQQAvatarManagerService.addObserver(this.mGroupObserver);
       }
     }
-    FaceDecodeTask.execute(FaceDecodeTask.getFaceDecodeTask(localQQAppInterface, this.mFaceInfo, this));
+    ((IQQAvatarDecoderApi)QRoute.api(IQQAvatarDecoderApi.class)).executeTask(localAppInterface, this.mFaceInfo, this);
     return true;
   }
   
   protected void setApp(AppInterface paramAppInterface)
   {
-    this.weakApp = new WeakReference((QQAppInterface)paramAppInterface);
+    this.weakApp = new WeakReference(paramAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDrawableImpl
  * JD-Core Version:    0.7.0.1
  */

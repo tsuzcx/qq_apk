@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestGroupInfo
   extends JceStruct
 {
-  public long lGroupCode;
-  public long lLastSeqId;
+  public long lGroupCode = 0L;
+  public long lLastSeqId = 0L;
   
   public SvcRequestGroupInfo() {}
   

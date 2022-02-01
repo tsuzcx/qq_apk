@@ -2,9 +2,9 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import aogw;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VipInfoHandler;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -19,7 +19,7 @@ public class GetDonateFriends
   public int a()
   {
     boolean bool = false;
-    Object localObject = this.a.app.getApplication().getApplicationContext().getSharedPreferences(this.a.app.getCurrentAccountUin(), 0);
+    Object localObject = this.a.a.getApplication().getApplicationContext().getSharedPreferences(this.a.a.getCurrentAccountUin(), 0);
     long l = ((SharedPreferences)localObject).getLong("sp_vip_info_request_time", 0L);
     int i = ((SharedPreferences)localObject).getInt("sp_vip_info_update_freq", 10);
     localObject = ((SharedPreferences)localObject).getString("sp_vip_info_current_version", "");
@@ -29,9 +29,9 @@ public class GetDonateFriends
     QLog.e("Ilive", 1, " isVersionChange = " + bool);
     if ((NetConnInfoCenter.getServerTime() - l > i * 60) || (bool))
     {
-      localObject = this.a.app.getCurrentAccountUin();
-      String str = ((TicketManager)this.a.app.getManager(2)).getSkey((String)localObject);
-      ((aogw)this.a.app.getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a(str, (String)localObject);
+      localObject = this.a.a.getCurrentAccountUin();
+      String str = ((TicketManager)this.a.a.getManager(2)).getSkey((String)localObject);
+      ((VipInfoHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a(str, (String)localObject);
     }
     return 7;
   }

@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import acmw;
-import ailg;
-import arpb;
-import arpd;
+import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.operation.QQOperateManager;
+import com.tencent.mobileqq.config.operation.QQOperationRequestInfo;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QQOperateTips$1
+class QQOperateTips$1
   implements Runnable
 {
-  public QQOperateTips$1(ailg paramailg) {}
+  QQOperateTips$1(QQOperateTips paramQQOperateTips) {}
   
   public void run()
   {
-    Object localObject1 = ailg.a(this.this$0).getMessageFacade().getAIOList(ailg.a(this.this$0).curFriendUin, ailg.a(this.this$0).curType);
+    Object localObject1 = QQOperateTips.a(this.this$0).getMessageFacade().a(QQOperateTips.a(this.this$0).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.this$0).jdField_a_of_type_Int);
     int j = ((List)localObject1).size();
     Object localObject2;
     int i;
@@ -28,13 +27,13 @@ public class QQOperateTips$1
       localObject2 = (ChatMessage)((List)localObject1).get(j - 1);
       if (localObject2 != null)
       {
-        if (ailg.a(this.this$0).curType != 0) {
+        if (QQOperateTips.a(this.this$0).jdField_a_of_type_Int != 0) {
           break label333;
         }
-        ailg.a(this.this$0, ((ChatMessage)localObject2).time);
-        ailg.b(this.this$0, ((ChatMessage)localObject2).uniseq);
+        QQOperateTips.a(this.this$0, ((ChatMessage)localObject2).time);
+        QQOperateTips.b(this.this$0, ((ChatMessage)localObject2).uniseq);
       }
-      if (ailg.a(this.this$0).getConversationFacade().a(ailg.a(this.this$0).curFriendUin, ailg.a(this.this$0).curType) <= 0) {
+      if (QQOperateTips.a(this.this$0).getConversationFacade().a(QQOperateTips.a(this.this$0).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.this$0).jdField_a_of_type_Int) <= 0) {
         break label365;
       }
       i = 1;
@@ -53,38 +52,38 @@ public class QQOperateTips$1
       else
       {
         if (QLog.isDevelopLevel()) {
-          QLog.d("QQOperateVoIP", 4, " from aio open .. unreadMsg index = " + ailg.a(this.this$0));
+          QLog.d("QQOperateVoIP", 4, " from aio open .. unreadMsg index = " + QQOperateTips.a(this.this$0));
         }
-        localObject2 = arpb.a(ailg.a(this.this$0));
+        localObject2 = QQOperateManager.a(QQOperateTips.a(this.this$0));
         if (localObject2 != null)
         {
-          localObject1 = ((arpb)localObject2).a(ailg.a(this.this$0).curFriendUin, ailg.a(this.this$0).curType, ailg.a(this.this$0), (List)localObject1, true, ailg.a(this.this$0));
-          if (((arpd)localObject1).jdField_a_of_type_Boolean)
+          localObject1 = ((QQOperateManager)localObject2).a(QQOperateTips.a(this.this$0).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.this$0).jdField_a_of_type_Int, QQOperateTips.a(this.this$0), (List)localObject1, true, QQOperateTips.a(this.this$0));
+          if (((QQOperationRequestInfo)localObject1).jdField_a_of_type_Boolean)
           {
-            localObject1 = ((arpd)localObject1).jdField_a_of_type_JavaUtilArrayList;
-            ((arpb)localObject2).a(ailg.a(this.this$0).curFriendUin, ailg.a(this.this$0).curType, (ArrayList)localObject1, ailg.a(this.this$0));
+            localObject1 = ((QQOperationRequestInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
+            ((QQOperateManager)localObject2).a(QQOperateTips.a(this.this$0).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.this$0).jdField_a_of_type_Int, (ArrayList)localObject1, QQOperateTips.a(this.this$0));
           }
         }
-        ailg.a(this.this$0, -1);
+        QQOperateTips.a(this.this$0, -1);
         return;
         label333:
-        if (ailg.a(this.this$0).curType != 3000) {
+        if (QQOperateTips.a(this.this$0).jdField_a_of_type_Int != 3000) {
           break;
         }
-        ailg.a(this.this$0, ((ChatMessage)localObject2).shmsgseq);
+        QQOperateTips.a(this.this$0, ((ChatMessage)localObject2).shmsgseq);
         break;
         label365:
         i = 0;
         break label145;
       }
-      ailg.a(this.this$0, i - 1);
+      QQOperateTips.a(this.this$0, i - 1);
       i -= 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.QQOperateTips.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,32 +4,34 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import anvx;
-import bheh;
-import bhey;
-import bhfn;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelModule;
+import com.tencent.biz.pubaccount.readinjoy.video.playfeedback.PlayFeedbackHelper;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.qcircle.api.event.QCircleOpenRewardAdEvent;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqcircle.events.QCircleOpenRewardAdEvent;
+import com.tencent.viola.core.ViolaInstance;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pkh;
-import sug;
-import zfn;
 
 public class QQBridgeModule
   extends BridgeModule
@@ -177,6 +179,32 @@ public class QQBridgeModule
     catch (JSONException paramJSONObject) {}
   }
   
+  public void getAllowedStateOfOperationAction(JSONObject paramJSONObject, Promise paramPromise)
+  {
+    Object localObject1 = getViolaInstance();
+    if (localObject1 != null) {}
+    for (localObject1 = ((ViolaInstance)localObject1).getActivity();; localObject1 = null)
+    {
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = BaseActivity.sTopActivity;
+      }
+      boolean bool = RIJUserLevelModule.a().a((Context)localObject2, paramJSONObject.optInt("operType"), null);
+      try
+      {
+        paramJSONObject = new JSONObject();
+        paramJSONObject.put("isAllow", bool);
+        doPromiseCallback(paramPromise, paramJSONObject);
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return;
+      }
+    }
+  }
+  
   public void getCreateTopicPermission(JSONObject paramJSONObject, Promise paramPromise)
   {
     getCreateTopicPermission(paramJSONObject, getCallbackId(paramPromise));
@@ -207,13 +235,13 @@ public class QQBridgeModule
   {
     int i = HttpUtil.getNetWorkType();
     if (QLog.isColorLevel()) {
-      QLog.d(TAG, 2, "getNetType,netType:" + i);
+      QLog.d("BridgeModule", 2, "getNetType,netType:" + i);
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("result", i);
-      label54:
+      label56:
       if (paramBoolean) {
         invokeCallJS(paramPromise, localJSONObject);
       }
@@ -226,7 +254,7 @@ public class QQBridgeModule
     }
     catch (JSONException localJSONException)
     {
-      break label54;
+      break label56;
     }
   }
   
@@ -259,7 +287,7 @@ public class QQBridgeModule
     }
     boolean bool;
     if (("weishi://feed".equals(paramString)) || ("weishi".equals(paramString))) {
-      bool = zfn.a(localBaseActivity);
+      bool = WeishiGuideUtils.a(localBaseActivity);
     }
     for (;;)
     {
@@ -267,12 +295,12 @@ public class QQBridgeModule
       {
         paramString = new JSONObject();
         if (!bool) {
-          break label123;
+          break label124;
         }
         i = 1;
         paramString.put("result", i);
         if (!paramBoolean) {
-          break label129;
+          break label130;
         }
         invokeCallJS(paramPromise, paramString);
         return;
@@ -281,14 +309,14 @@ public class QQBridgeModule
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.e(TAG, 2, "hasApp error" + paramString.getMessage());
+      QLog.e("BridgeModule", 2, "hasApp error" + paramString.getMessage());
       return;
-      bool = bhfn.a(localBaseActivity, paramString);
+      bool = PackageUtil.a(localBaseActivity, paramString);
       continue;
-      label123:
+      label124:
       int i = 0;
     }
-    label129:
+    label130:
     doPromiseCallback(paramPromise, paramString);
   }
   
@@ -299,8 +327,8 @@ public class QQBridgeModule
     String str2 = paramJSONObject.optString("method");
     if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
     {
-      invokeErrorCallJS(paramPromise, anvx.a(2131700699));
-      QLog.d(TAG, 1, "ns or method not exists");
+      invokeErrorCallJS(paramPromise, HardCodeUtil.a(2131701277));
+      QLog.d("BridgeModule", 1, "ns or method not exists");
     }
     Object localObject;
     for (;;)
@@ -335,11 +363,11 @@ public class QQBridgeModule
         break label334;
       }
       localObject = ((Fragment)localObject).getActivity();
-      QQAppInterface localQQAppInterface = (QQAppInterface)pkh.a();
+      QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
       if ((localObject != null) && (localQQAppInterface != null)) {
         try
         {
-          paramJSONObject = bhey.a(localQQAppInterface, (Context)localObject, paramJSONObject.getString("schema"));
+          paramJSONObject = JumpParser.a(localQQAppInterface, (Context)localObject, paramJSONObject.getString("schema"));
           if (paramJSONObject != null)
           {
             paramJSONObject.b("viola");
@@ -351,7 +379,7 @@ public class QQBridgeModule
         catch (JSONException paramJSONObject)
         {
           paramJSONObject.printStackTrace();
-          invokeErrorCallJS(paramPromise, "ns:" + str1 + anvx.a(2131700695) + str2 + anvx.a(2131700690));
+          invokeErrorCallJS(paramPromise, "ns:" + str1 + HardCodeUtil.a(2131701273) + str2 + HardCodeUtil.a(2131701268));
           return;
         }
       }
@@ -514,7 +542,7 @@ public class QQBridgeModule
   
   public void vaNetworkChange(Promise paramPromise)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pkh.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
     if (localQQAppInterface == null) {}
     while (this.netInfoHandler != null) {
       return;
@@ -526,9 +554,9 @@ public class QQBridgeModule
   public void videoPlayFeedback(JSONObject paramJSONObject, Promise paramPromise)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(TAG, 2, "do videoPlayFeedback start data: " + paramJSONObject.toString());
+      QLog.d("BridgeModule", 2, "do videoPlayFeedback start data: " + paramJSONObject.toString());
     }
-    sug.a(null, paramJSONObject);
+    PlayFeedbackHelper.a(null, paramJSONObject);
     if (getViolaInstance() != null) {
       paramJSONObject = new JSONObject();
     }
@@ -549,7 +577,7 @@ public class QQBridgeModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQBridgeModule
  * JD-Core Version:    0.7.0.1
  */

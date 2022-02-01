@@ -16,22 +16,23 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import antu;
-import awyr;
-import blcj;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.AIOEmoticonUIHelper;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonHandlerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerProxy;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.HeaderViewListAdapter;
 import com.tencent.widget.ListView;
 import com.tencent.widget.XEditTextEx;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class EmotionPanelViewPagerAdapter
 {
   public static final int PRELOAD_LINE_NUM = 5;
   public static final String TAG = "EmotionPanelViewPagerAdapter";
-  public QQAppInterface app;
+  public QQEmoticonMainPanelApp app;
   public Map<String, BaseEmotionAdapter> bigEmotionAdapters;
   public int businessType = 0;
   public EmoticonCallback callback;
@@ -62,7 +63,7 @@ public class EmotionPanelViewPagerAdapter
   boolean isFilterSysFaceBeyond255 = false;
   boolean isOnlySysEmotion = false;
   public HashSet<String> justDownload = new HashSet();
-  public boolean kanDianBiu;
+  public boolean kanDianBiu = false;
   public BaseChatPie mBaseChatPie;
   public Context mContext;
   public int mainPanelWidth;
@@ -70,11 +71,11 @@ public class EmotionPanelViewPagerAdapter
   public Map<Integer, BaseEmotionAdapter> otherEmotionAdapters;
   int[] sysEmotionOrder = null;
   
-  public EmotionPanelViewPagerAdapter(QQAppInterface paramQQAppInterface, Context paramContext, EmoticonCallback paramEmoticonCallback, BaseChatPie paramBaseChatPie, int paramInt, boolean paramBoolean)
+  public EmotionPanelViewPagerAdapter(QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, Context paramContext, EmoticonCallback paramEmoticonCallback, BaseChatPie paramBaseChatPie, int paramInt, boolean paramBoolean)
   {
     this.mBaseChatPie = paramBaseChatPie;
     this.businessType = paramInt;
-    this.app = paramQQAppInterface;
+    this.app = paramQQEmoticonMainPanelApp;
     this.mContext = paramContext;
     this.callback = paramEmoticonCallback;
     this.kanDianBiu = paramBoolean;
@@ -103,15 +104,15 @@ public class EmotionPanelViewPagerAdapter
     localRelativeLayout.addView(paramEmotionPanelListView, new RelativeLayout.LayoutParams(-1, -1));
     paramEmotionPanelListView = new RelativeLayout.LayoutParams(-2, -2);
     ImageButton localImageButton = new ImageButton(this.mContext);
-    localImageButton.setContentDescription(this.mContext.getString(2131689897));
-    localImageButton.setBackgroundResource(2130838034);
+    localImageButton.setContentDescription(this.mContext.getString(2131689938));
+    localImageButton.setBackgroundResource(2130838105);
     localImageButton.setOnClickListener(this);
-    if (TextUtils.isEmpty(this.mBaseChatPie.input.getText())) {}
+    if (TextUtils.isEmpty(this.mBaseChatPie.a.getText())) {}
     for (int i = 8;; i = 0)
     {
       localImageButton.setVisibility(i);
-      paramEmotionPanelListView.rightMargin = ViewUtils.dip2px(5.0F);
-      paramEmotionPanelListView.bottomMargin = ViewUtils.dip2px(7.0F);
+      paramEmotionPanelListView.rightMargin = ViewUtils.a(5.0F);
+      paramEmotionPanelListView.bottomMargin = ViewUtils.a(7.0F);
       paramEmotionPanelListView.addRule(11);
       paramEmotionPanelListView.addRule(12);
       localRelativeLayout.addView(localImageButton, paramEmotionPanelListView);
@@ -131,18 +132,18 @@ public class EmotionPanelViewPagerAdapter
     {
       localObject = EmoticonRecDressup.getEmotionRecommend(paramEmoticonPackage.epId, false);
       if ((localObject == null) || (System.currentTimeMillis() - ((EmoticonRecDressup)localObject).lastLookupTime > EmoticonRecDressup.RECOMMEND_EXPIRED_TIME)) {
-        ((antu)this.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).b(Integer.parseInt(paramEmoticonPackage.epId));
+        ((EmoticonHandlerProxy)this.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).fetchEmoticonRecommend(Integer.parseInt(paramEmoticonPackage.epId));
       }
       if (!(paramBaseEmotionAdapter instanceof BigEmotionDownloadedAdapter)) {
         break label88;
       }
-      fetchIPSite((awyr)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER), Collections.singleton(paramEmoticonPackage), false);
+      fetchIPSite((EmoticonManagerProxy)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER), Collections.singleton(paramEmoticonPackage), false);
     }
     label88:
     while ((!(paramBaseEmotionAdapter instanceof MagicFaceAdapter)) || (paramList == null)) {
       return;
     }
-    paramEmoticonPackage = (awyr)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER);
+    paramEmoticonPackage = (EmoticonManagerProxy)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER);
     paramBaseEmotionAdapter = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -153,7 +154,7 @@ public class EmotionPanelViewPagerAdapter
         localObject = (PicEmoticonInfo)localObject;
         if (((PicEmoticonInfo)localObject).emoticon != null)
         {
-          localObject = paramEmoticonPackage.a(((PicEmoticonInfo)localObject).emoticon.epId);
+          localObject = paramEmoticonPackage.syncFindEmoticonPackageById(((PicEmoticonInfo)localObject).emoticon.epId);
           if (localObject != null) {
             paramBaseEmotionAdapter.add(localObject);
           }
@@ -220,32 +221,43 @@ public class EmotionPanelViewPagerAdapter
   
   private void setSystemAndEmojiAdapterLocalId(BaseEmotionAdapter paramBaseEmotionAdapter)
   {
-    if ((this.mBaseChatPie != null) && (this.mBaseChatPie.getEmoPanel() != null) && ((paramBaseEmotionAdapter instanceof SystemAndEmojiAdapter)))
+    if (this.mBaseChatPie == null) {}
+    EmoticonMainPanel localEmoticonMainPanel;
+    do
     {
-      ((SystemAndEmojiAdapter)paramBaseEmotionAdapter).mLocalId = this.mBaseChatPie.getEmoPanel().mLocalId;
-      ((SystemAndEmojiAdapter)paramBaseEmotionAdapter).mEmotionType = this.mBaseChatPie.getEmoPanel().mEmotionType;
-      this.mBaseChatPie.getEmoPanel().mLocalId = -1;
-      this.mBaseChatPie.getEmoPanel().mEmotionType = -1;
-    }
+      return;
+      localEmoticonMainPanel = AIOEmoticonUIHelper.a(this.mBaseChatPie);
+    } while ((localEmoticonMainPanel == null) || (!(paramBaseEmotionAdapter instanceof SystemAndEmojiAdapter)));
+    ((SystemAndEmojiAdapter)paramBaseEmotionAdapter).mLocalId = localEmoticonMainPanel.mLocalId;
+    ((SystemAndEmojiAdapter)paramBaseEmotionAdapter).mEmotionType = localEmoticonMainPanel.mEmotionType;
+    localEmoticonMainPanel.mLocalId = -1;
+    localEmoticonMainPanel.mEmotionType = -1;
   }
   
   protected void addHeaderAndFooterView(EmotionPanelListView paramEmotionPanelListView, BaseEmotionAdapter paramBaseEmotionAdapter, View paramView, int paramInt)
   {
-    if ((paramEmotionPanelListView == null) || (this.mBaseChatPie == null) || (this.mBaseChatPie.getEmoPanel() == null)) {
+    if ((paramEmotionPanelListView == null) || (this.mBaseChatPie == null)) {}
+    do
+    {
       return;
-    }
-    EmoticonPanelHotPicSearchHelper localEmoticonPanelHotPicSearchHelper = (EmoticonPanelHotPicSearchHelper)this.mBaseChatPie.getEmoPanel().getEmoController().getHelper(7);
-    localEmoticonPanelHotPicSearchHelper.addHeaderAndFooterView(paramEmotionPanelListView, paramBaseEmotionAdapter, paramInt);
-    localEmoticonPanelHotPicSearchHelper.setEmptyView(paramView);
-    paramEmotionPanelListView.addOnScrollListener(localEmoticonPanelHotPicSearchHelper);
+      localObject = AIOEmoticonUIHelper.a(this.mBaseChatPie);
+    } while (localObject == null);
+    Object localObject = (EmoticonPanelHotPicSearchHelper)((EmoticonMainPanel)localObject).getEmoController().getHelper(7);
+    ((EmoticonPanelHotPicSearchHelper)localObject).addHeaderAndFooterView(paramEmotionPanelListView, paramBaseEmotionAdapter, paramInt);
+    ((EmoticonPanelHotPicSearchHelper)localObject).setEmptyView(paramView);
+    paramEmotionPanelListView.addOnScrollListener((AbsListView.OnScrollListener)localObject);
   }
   
   protected void asyncFetchEmotionSearchData()
   {
-    if ((this.mBaseChatPie == null) || (this.mBaseChatPie.getEmoPanel() == null)) {
+    if (this.mBaseChatPie == null) {}
+    EmoticonMainPanel localEmoticonMainPanel;
+    do
+    {
       return;
-    }
-    ((EmoticonPanelHotPicSearchHelper)this.mBaseChatPie.getEmoPanel().getEmoController().getHelper(7)).loadPicData();
+      localEmoticonMainPanel = AIOEmoticonUIHelper.a(this.mBaseChatPie);
+    } while (localEmoticonMainPanel == null);
+    ((EmoticonPanelHotPicSearchHelper)localEmoticonMainPanel.getEmoController().getHelper(7)).loadPicData();
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
@@ -263,13 +275,13 @@ public class EmotionPanelViewPagerAdapter
     int i;
     if ((paramObject instanceof RelativeLayout))
     {
-      paramView = (EmotionPanelListView)((RelativeLayout)paramObject).findViewById(2131362372);
+      paramView = (EmotionPanelListView)((RelativeLayout)paramObject).findViewById(2131362402);
       ((ViewGroup)paramView.getParent()).removeView(paramView);
       paramObject = paramView.getAdapter();
-      if (!(paramObject instanceof blcj)) {
+      if (!(paramObject instanceof HeaderViewListAdapter)) {
         break label254;
       }
-      paramObject = (BaseEmotionAdapter)((blcj)paramObject).getWrappedAdapter();
+      paramObject = (BaseEmotionAdapter)((HeaderViewListAdapter)paramObject).getWrappedAdapter();
       paramView.setAdapter(null);
       paramView.setOnScrollListener(null);
       paramView.setEnableExtendPanle(false);
@@ -307,10 +319,10 @@ public class EmotionPanelViewPagerAdapter
     }
   }
   
-  public void fetchIPSite(awyr paramawyr, Collection<EmoticonPackage> paramCollection, boolean paramBoolean)
+  public void fetchIPSite(EmoticonManagerProxy paramEmoticonManagerProxy, Collection<EmoticonPackage> paramCollection, boolean paramBoolean)
   {
     long l2 = System.currentTimeMillis();
-    antu localantu = (antu)this.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
+    EmoticonHandlerProxy localEmoticonHandlerProxy = (EmoticonHandlerProxy)this.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
     {
@@ -327,8 +339,8 @@ public class EmotionPanelViewPagerAdapter
             break;
           }
           localEmoticonPackage.richIPLastReqTime = l2;
-          localantu.a(localEmoticonPackage.epId, paramBoolean);
-          paramawyr.a(localEmoticonPackage);
+          localEmoticonHandlerProxy.fetchEmoticonIPSiteInformationEx(localEmoticonPackage.epId, paramBoolean);
+          paramEmoticonManagerProxy.saveEmoticonPackage(localEmoticonPackage);
           break;
         }
       }
@@ -388,9 +400,9 @@ public class EmotionPanelViewPagerAdapter
       ((LinearLayout)localObject).addView(paramEmotionPanelListView);
       localRelativeLayout.addView((View)localObject, new RelativeLayout.LayoutParams(-1, -1));
       localObject = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = ViewUtils.dip2px(60.0F);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = ViewUtils.a(60.0F);
       ((RelativeLayout.LayoutParams)localObject).addRule(12);
-      View localView = View.inflate(this.mContext, 2131558612, null);
+      View localView = View.inflate(this.mContext, 2131558636, null);
       localRelativeLayout.addView(localView, (ViewGroup.LayoutParams)localObject);
       addHeaderAndFooterView(paramEmotionPanelListView, paramBaseEmotionAdapter, localView, paramInt);
       paramEmotionPanelListView.setVerticalScrollBarEnabled(false);
@@ -441,8 +453,8 @@ public class EmotionPanelViewPagerAdapter
     localEmotionPanelListView.setDivider(null);
     localEmotionPanelListView.setVerticalScrollBarEnabled(true);
     localEmotionPanelListView.setEdgeEffectEnabled(false);
-    localEmotionPanelListView.setSelector(2130850739);
-    localEmotionPanelListView.setId(2131362372);
+    localEmotionPanelListView.setSelector(2130851165);
+    localEmotionPanelListView.setId(2131362402);
     EmotionPanelInfo localEmotionPanelInfo = (EmotionPanelInfo)this.data.get(paramInt);
     int k = EmotionPanelConstans.getPanelType(this.app, localEmotionPanelInfo);
     int j = localEmotionPanelInfo.columnNum;
@@ -471,30 +483,31 @@ public class EmotionPanelViewPagerAdapter
     Object localObject = localEmoticonPackage;
     if (this.mBaseChatPie != null)
     {
+      EmoticonMainPanel localEmoticonMainPanel = AIOEmoticonUIHelper.a(this.mBaseChatPie);
       localObject = localEmoticonPackage;
-      if (this.mBaseChatPie.getEmoPanel() != null)
+      if (localEmoticonMainPanel != null)
       {
         localObject = localEmoticonPackage;
-        if (this.mBaseChatPie.input != null)
+        if (this.mBaseChatPie.a != null)
         {
           localObject = localEmoticonPackage;
-          if (this.mBaseChatPie.getEmoPanel().isShowExtendPanel())
+          if (localEmoticonMainPanel.isShowExtendPanel())
           {
             localEmotionPanelListView.setEnableExtendPanle(true);
-            localEmotionPanelListView.setPullAndFastScrollListener(this.mBaseChatPie.getEmoPanel());
+            localEmotionPanelListView.setPullAndFastScrollListener(localEmoticonMainPanel);
             localObject = localEmotionPanelListView.getOnScrollListener();
             if (!(localObject instanceof EmoticonPanelOnScrollListener)) {
-              localEmotionPanelListView.setOnScrollListener(new EmoticonPanelOnScrollListener(localEmotionPanelListView, this.mBaseChatPie.getEmoPanel(), (AbsListView.OnScrollListener)localObject));
+              localEmotionPanelListView.setOnScrollListener(new EmoticonPanelOnScrollListener(localEmotionPanelListView, localEmoticonMainPanel, (AbsListView.OnScrollListener)localObject));
             }
             if ((k != 1) && (k != 2)) {
-              break label649;
+              break label638;
             }
             localObject = getSystemSmallEmoticonRelativeLayout(paramInt, localEmotionPanelListView, localBaseEmotionAdapter);
           }
         }
       }
     }
-    label448:
+    label437:
     localBaseEmotionAdapter.widthPixels = this.mainPanelWidth;
     localBaseEmotionAdapter.curPanelInfo = this.curItemInfo;
     localBaseEmotionAdapter.setCurrentListView(localEmotionPanelListView);
@@ -506,9 +519,9 @@ public class EmotionPanelViewPagerAdapter
       if ((localEmoticonPackage != null) && (!TextUtils.isEmpty(localEmoticonPackage.epId)))
       {
         this.bigEmotionAdapters.put(localEmoticonPackage.epId, localBaseEmotionAdapter);
-        label588:
+        label577:
         if ((localObject == null) || (((RelativeLayout)localObject).getParent() == paramView) || (paramInt >= getCount())) {
-          break label699;
+          break label688;
         }
         ((ViewGroup)paramView).addView((View)localObject);
       }
@@ -522,14 +535,14 @@ public class EmotionPanelViewPagerAdapter
         break;
       }
       return localEmotionPanelListView;
-      label649:
+      label638:
       localObject = getHotPicSearchEmoticonLayout(localEmotionPanelListView, k, localBaseEmotionAdapter);
-      break label448;
+      break label437;
       QLog.e("EmotionPanelViewPagerAdapter", 1, "instantiateItem put adapter to map error");
-      break label588;
+      break label577;
       this.otherEmotionAdapters.put(Integer.valueOf(localEmotionPanelInfo.type), localBaseEmotionAdapter);
-      break label588;
-      label699:
+      break label577;
+      label688:
       if ((localEmotionPanelListView.getParent() != paramView) && (paramInt < getCount())) {
         ((ViewGroup)paramView).addView(localEmotionPanelListView);
       }
@@ -543,10 +556,16 @@ public class EmotionPanelViewPagerAdapter
   
   public void onClick(View paramView)
   {
-    if ((this.mBaseChatPie != null) && (this.mBaseChatPie.getEmoPanel() != null)) {
-      this.mBaseChatPie.getEmoPanel().deleteEmoticonClick();
+    if (this.mBaseChatPie == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      EmoticonMainPanel localEmoticonMainPanel = AIOEmoticonUIHelper.a(this.mBaseChatPie);
+      if (localEmoticonMainPanel != null) {
+        localEmoticonMainPanel.deleteEmoticonClick();
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestroy()
@@ -627,12 +646,15 @@ public class EmotionPanelViewPagerAdapter
   
   protected void removeHeaderAndFooterView(EmotionPanelListView paramEmotionPanelListView)
   {
-    if ((paramEmotionPanelListView == null) || (this.mBaseChatPie == null) || (this.mBaseChatPie.getEmoPanel() == null)) {
+    if ((paramEmotionPanelListView == null) || (this.mBaseChatPie == null)) {}
+    do
+    {
       return;
-    }
-    EmoticonPanelHotPicSearchHelper localEmoticonPanelHotPicSearchHelper = (EmoticonPanelHotPicSearchHelper)this.mBaseChatPie.getEmoPanel().getEmoController().getHelper(7);
-    localEmoticonPanelHotPicSearchHelper.removeHeaderAndFooterView(paramEmotionPanelListView);
-    paramEmotionPanelListView.removeOnScrollListener(localEmoticonPanelHotPicSearchHelper);
+      localObject = AIOEmoticonUIHelper.a(this.mBaseChatPie);
+    } while (localObject == null);
+    Object localObject = (EmoticonPanelHotPicSearchHelper)((EmoticonMainPanel)localObject).getEmoController().getHelper(7);
+    ((EmoticonPanelHotPicSearchHelper)localObject).removeHeaderAndFooterView(paramEmotionPanelListView);
+    paramEmotionPanelListView.removeOnScrollListener((AbsListView.OnScrollListener)localObject);
   }
   
   public void setData(List<EmotionPanelInfo> paramList)
@@ -647,7 +669,7 @@ public class EmotionPanelViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

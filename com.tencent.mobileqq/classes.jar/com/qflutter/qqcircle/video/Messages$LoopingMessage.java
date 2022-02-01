@@ -1,0 +1,62 @@
+package com.qflutter.qqcircle.video;
+
+import java.util.HashMap;
+
+public class Messages$LoopingMessage
+{
+  private Boolean isLooping;
+  private Long textureId;
+  
+  static LoopingMessage fromMap(HashMap paramHashMap)
+  {
+    LoopingMessage localLoopingMessage = new LoopingMessage();
+    Object localObject = paramHashMap.get("textureId");
+    if (localObject == null)
+    {
+      localObject = null;
+      localLoopingMessage.textureId = ((Long)localObject);
+      localLoopingMessage.isLooping = ((Boolean)paramHashMap.get("isLooping"));
+      return localLoopingMessage;
+    }
+    if ((localObject instanceof Integer)) {}
+    for (long l = ((Integer)localObject).intValue();; l = ((Long)localObject).longValue())
+    {
+      localObject = Long.valueOf(l);
+      break;
+    }
+  }
+  
+  public Boolean getIsLooping()
+  {
+    return this.isLooping;
+  }
+  
+  public Long getTextureId()
+  {
+    return this.textureId;
+  }
+  
+  public void setIsLooping(Boolean paramBoolean)
+  {
+    this.isLooping = paramBoolean;
+  }
+  
+  public void setTextureId(Long paramLong)
+  {
+    this.textureId = paramLong;
+  }
+  
+  HashMap toMap()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("textureId", this.textureId);
+    localHashMap.put("isLooping", this.isLooping);
+    return localHashMap;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     com.qflutter.qqcircle.video.Messages.LoopingMessage
+ * JD-Core Version:    0.7.0.1
+ */

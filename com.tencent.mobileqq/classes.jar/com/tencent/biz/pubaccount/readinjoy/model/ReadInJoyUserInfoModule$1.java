@@ -5,9 +5,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import qho;
 
-public class ReadInJoyUserInfoModule$1
+class ReadInJoyUserInfoModule$1
   implements Runnable
 {
   ReadInJoyUserInfoModule$1(ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3) {}
@@ -36,7 +35,7 @@ public class ReadInJoyUserInfoModule$1
     if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {}
     for (;;)
     {
-      localObject1 = ((qho)localObject1).a((String)localObject2, bool);
+      localObject1 = ((ReadInJoyUserInfoRepository)localObject1).a((String)localObject2, bool);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
         localObject2 = (ReadInJoyUserInfo)((List)localObject1).get(0);
@@ -57,7 +56,7 @@ public class ReadInJoyUserInfoModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.1
  * JD-Core Version:    0.7.0.1
  */

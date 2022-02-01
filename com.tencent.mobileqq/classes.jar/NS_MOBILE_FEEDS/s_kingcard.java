@@ -8,7 +8,7 @@ public final class s_kingcard
   extends JceStruct
 {
   public String button_title = "";
-  public boolean is_guide;
+  public boolean is_guide = false;
   public String jump_url = "";
   
   public s_kingcard() {}

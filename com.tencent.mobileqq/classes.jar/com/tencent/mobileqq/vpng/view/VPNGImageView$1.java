@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vpng.view;
 
-import bicm;
+import com.tencent.mobileqq.vpng.glrenderer.VPNGRenderer;
 
 class VPNGImageView$1
   implements Runnable
@@ -16,7 +16,7 @@ class VPNGImageView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.view.VPNGImageView.1
  * JD-Core Version:    0.7.0.1
  */

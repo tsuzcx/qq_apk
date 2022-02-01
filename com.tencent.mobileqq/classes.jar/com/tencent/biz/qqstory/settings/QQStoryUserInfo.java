@@ -8,8 +8,8 @@ public class QQStoryUserInfo
   extends Entity
   implements Comparable<QQStoryUserInfo>
 {
-  public int isAllowed;
-  public int isInterested;
+  public int isAllowed = 0;
+  public int isInterested = 0;
   public String mPinying;
   public String nick;
   @unique
@@ -52,7 +52,7 @@ public class QQStoryUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryUserInfo
  * JD-Core Version:    0.7.0.1
  */

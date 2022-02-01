@@ -8,7 +8,6 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
-import ayua;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageRecord;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageTranslateRspResult;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -24,7 +23,7 @@ import java.util.List;
 public class TranslateResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<TranslateResult> CREATOR = new ayua();
+  public static final Parcelable.Creator<TranslateResult> CREATOR = new TranslateResult.1();
   public int a;
   public String a;
   public List<TranslateResult.Record> a;
@@ -41,7 +40,7 @@ public class TranslateResult
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public TranslateResult(Parcel paramParcel)
+  protected TranslateResult(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();

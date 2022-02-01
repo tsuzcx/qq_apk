@@ -5,12 +5,11 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import uot;
 
-public class ServiceAccountFolderManager$7
+class ServiceAccountFolderManager$7
   implements Runnable
 {
-  public ServiceAccountFolderManager$7(uot paramuot, QQAppInterface paramQQAppInterface) {}
+  ServiceAccountFolderManager$7(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -18,18 +17,18 @@ public class ServiceAccountFolderManager$7
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_read_time", uot.b(this.this$0));
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_enter_time", uot.a(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_read_time", ServiceAccountFolderManager.b(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_enter_time", ServiceAccountFolderManager.a(this.this$0));
       ((SharedPreferences.Editor)localObject).commit();
       if (QLog.isColorLevel()) {
-        QLog.d("ServiceAccountFolderManager", 2, "setFolderLastReadTime->mFolderLastReadTime:" + uot.b(this.this$0) + ", mFolderLastEnterTime:" + uot.a(this.this$0));
+        QLog.d("ServiceAccountFolderManager", 2, "setFolderLastReadTime->mFolderLastReadTime:" + ServiceAccountFolderManager.b(this.this$0) + ", mFolderLastEnterTime:" + ServiceAccountFolderManager.a(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.7
  * JD-Core Version:    0.7.0.1
  */

@@ -4,19 +4,19 @@
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <ImageView android:id="@id/dgu" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/com" />
         <RelativeLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_weight="1.0">
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n6j" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nel" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/kea" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
                 <com.tencent.mobileqq.extendfriend.bean.HideOnExceedView android:id="@id/kyu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" />
             </LinearLayout>
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n6s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/n6j" android:layout_alignLeft="@id/n6j">
-                <ImageView android:id="@id/n1v" android:layout_width="16.0dip" android:layout_height="14.0dip" android:src="@drawable/gyr" />
-                <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/o0d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:includeFontPadding="false" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nev" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/nel" android:layout_alignLeft="@id/nel">
+                <ImageView android:id="@id/n_6" android:layout_width="16.0dip" android:layout_height="14.0dip" android:src="@drawable/i2r" />
+                <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/oes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:includeFontPadding="false" />
             </LinearLayout>
         </RelativeLayout>
         <ImageView android:id="@id/ai8" android:background="@drawable/ac1" android:layout_width="50.0dip" android:layout_height="30.0dip" android:layout_marginLeft="9.0dip" android:src="@drawable/ac8" android:scaleType="center" />
         <ImageView android:id="@id/af8" android:background="@drawable/ac4" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/hub" android:scaleType="center" />
     </LinearLayout>
-    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendLabelFlowLayout android:id="@id/mse" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendLabelFlowLayout android:id="@id/myk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
     <com.etrump.mixlayout.ETTextView android:textSize="15.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/kdi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="@dimen/mp" android:maxLines="4" android:includeFontPadding="false" android:layout_below="@id/ked" android:lineSpacingExtra="2.0dip" />
     <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView android:id="@id/di4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/ked" />
     <ImageView android:layout_gravity="right" android:id="@id/ajh" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/est" android:scaleType="center" />

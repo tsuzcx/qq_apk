@@ -14,24 +14,23 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anvx;
-import arnx;
-import arny;
-import arnz;
-import ault;
-import bdla;
-import beaz;
-import bebl;
-import beeg;
-import bheg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocLocalCooperationBean;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocLocalCooperationBean.ViewOrEditInfo;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocLocalCooperationProcessor;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.teamwork.tencentdocreport.TenDocLogReportHelper;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -44,8 +43,8 @@ public class DocQBBottomView
   private int jdField_a_of_type_Int = 0;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  ault jdField_a_of_type_Ault;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  DocQBBottomView.DocQBBottomViewCallback jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView$DocQBBottomViewCallback;
   TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -56,27 +55,27 @@ public class DocQBBottomView
   public DocQBBottomView(Context paramContext)
   {
     super(paramContext, null);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560863, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560955, this, true);
     b();
   }
   
   public DocQBBottomView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560863, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560955, this, true);
     b();
   }
   
-  public DocQBBottomView(Context paramContext, ault paramault)
+  public DocQBBottomView(Context paramContext, DocQBBottomView.DocQBBottomViewCallback paramDocQBBottomViewCallback)
   {
     this(paramContext);
-    this.jdField_a_of_type_Ault = paramault;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView$DocQBBottomViewCallback = paramDocQBBottomViewCallback;
   }
   
   private Drawable a()
   {
-    Drawable localDrawable1 = getResources().getDrawable(2130844305);
-    Drawable localDrawable2 = bheg.a(localDrawable1, 2368548);
+    Drawable localDrawable1 = getResources().getDrawable(2130844495);
+    Drawable localDrawable2 = ImageUtil.a(localDrawable1, 2368548);
     localDrawable2.setAlpha(127);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     localStateListDrawable.addState(new int[] { -16842919 }, localDrawable1);
@@ -107,13 +106,13 @@ public class DocQBBottomView
   {
     if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b())
     {
-      arny localarny = arnz.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-      if ((localarny != null) && (!TextUtils.isEmpty(localarny.jdField_a_of_type_JavaLangString))) {
-        return localarny.jdField_a_of_type_JavaLangString;
+      TencentDocLocalCooperationBean.ViewOrEditInfo localViewOrEditInfo = TencentDocLocalCooperationProcessor.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+      if ((localViewOrEditInfo != null) && (!TextUtils.isEmpty(localViewOrEditInfo.jdField_a_of_type_JavaLangString))) {
+        return localViewOrEditInfo.jdField_a_of_type_JavaLangString;
       }
-      return anvx.a(2131702873);
+      return HardCodeUtil.a(2131703421);
     }
-    return anvx.a(2131697908);
+    return HardCodeUtil.a(2131698165);
   }
   
   private void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
@@ -121,16 +120,16 @@ public class DocQBBottomView
     Object localObject = BaseApplicationImpl.sApplication.getRuntime();
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = (bebl)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
+      localObject = (TeamWorkFileImportHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
       if ((localObject != null) && (paramTeamWorkFileImportInfo != null))
       {
-        if (!((bebl)localObject).a(paramTeamWorkFileImportInfo))
+        if (!((TeamWorkFileImportHandler)localObject).a(paramTeamWorkFileImportInfo))
         {
           paramTeamWorkFileImportInfo.g = 0;
-          ((bebl)localObject).a(paramTeamWorkFileImportInfo);
+          ((TeamWorkFileImportHandler)localObject).a(paramTeamWorkFileImportInfo);
         }
-        beeg.a(null, "0X800ABA6");
-        beaz.a(getContext(), paramTeamWorkFileImportInfo, null);
+        TenDocLogReportHelper.a(null, "0X800ABA6");
+        TeamWorkConvertUtils.a(getContext(), paramTeamWorkFileImportInfo, null);
       }
     }
   }
@@ -138,11 +137,11 @@ public class DocQBBottomView
   private void a(boolean paramBoolean, int paramInt)
   {
     int j = 1;
-    Object localObject = arnz.a();
+    Object localObject = TencentDocLocalCooperationProcessor.a();
     int i;
     if (paramBoolean)
     {
-      localObject = ((arnx)localObject).b;
+      localObject = ((TencentDocLocalCooperationBean)localObject).b;
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         i = j;
@@ -157,9 +156,9 @@ public class DocQBBottomView
     }
     for (;;)
     {
-      bdla.b(null, "dc00898", "", "", (String)localObject, (String)localObject, i, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", (String)localObject, (String)localObject, i, 0, "", "", "", "");
       return;
-      localObject = ((arnx)localObject).d;
+      localObject = ((TencentDocLocalCooperationBean)localObject).d;
       break;
       label80:
       if (paramInt == 0) {
@@ -173,15 +172,15 @@ public class DocQBBottomView
   private void b()
   {
     setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373801));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131373800));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373802));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374115));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131374114));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374116));
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a());
   }
   
   private void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b()) && (arnz.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b()) && (TencentDocLocalCooperationProcessor.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b)))
     {
       d();
       return;
@@ -205,24 +204,24 @@ public class DocQBBottomView
   
   private void e()
   {
-    if (this.jdField_a_of_type_Ault != null) {
-      this.jdField_a_of_type_Ault.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView$DocQBBottomViewCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView$DocQBBottomViewCallback.a();
     }
     if (this.c)
     {
       StringBuilder localStringBuilder = new StringBuilder(a());
-      localStringBuilder.append(anvx.a(2131719338));
+      localStringBuilder.append(HardCodeUtil.a(2131719896));
       QQToast.a(getContext(), 1, localStringBuilder.toString(), 0).a();
     }
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_Ault != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView$DocQBBottomViewCallback != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder(anvx.a(2131697906));
+      StringBuilder localStringBuilder = new StringBuilder(HardCodeUtil.a(2131698163));
       localStringBuilder.append(a());
-      this.jdField_a_of_type_Ault.a(localStringBuilder.toString());
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView$DocQBBottomViewCallback.a(localStringBuilder.toString());
     }
   }
   
@@ -244,8 +243,8 @@ public class DocQBBottomView
         {
           this.d = false;
           onClick(this);
-          if (this.jdField_a_of_type_Ault != null) {
-            this.jdField_a_of_type_Ault.a();
+          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView$DocQBBottomViewCallback != null) {
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView$DocQBBottomViewCallback.a();
           }
         }
       }
@@ -269,8 +268,8 @@ public class DocQBBottomView
         return;
       }
       onClick(this);
-    } while (this.jdField_a_of_type_Ault == null);
-    this.jdField_a_of_type_Ault.a();
+    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView$DocQBBottomViewCallback == null);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView$DocQBBottomViewCallback.a();
     return;
     if (paramInt == 3) {
       e();
@@ -288,7 +287,7 @@ public class DocQBBottomView
     label91:
     for (paramString = paramString + "&adtag=s_qq_file_inviteedit";; paramString = paramString + "?adtag=s_qq_file_inviteedit")
     {
-      beeg.a(null, "0X800A637");
+      TenDocLogReportHelper.a(null, "0X800A637");
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString);
       localBundle.putBoolean("temp_preview_from_qq", true);
@@ -322,9 +321,9 @@ public class DocQBBottomView
   {
     boolean bool = false;
     ((View)paramView.getParent()).performClick();
-    bdla.b(null, "dc00898", "", "", "0X800AF72", "0X800AF72", 2, 0, "", "", "", "");
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-      QQToast.a(getContext(), anvx.a(2131702864), 0).a();
+    ReportController.b(null, "dc00898", "", "", "0X800AF72", "0X800AF72", 2, 0, "", "", "", "");
+    if (!NetworkUtil.d(BaseApplication.getContext())) {
+      QQToast.a(getContext(), HardCodeUtil.a(2131703412), 0).a();
     }
     for (;;)
     {
@@ -345,7 +344,7 @@ public class DocQBBottomView
         {
           this.c = true;
           f();
-          beaz.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+          TeamWorkConvertUtils.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
         }
         else if (this.jdField_a_of_type_Int == 5)
         {
@@ -359,7 +358,7 @@ public class DocQBBottomView
             {
               a(bool, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
               break;
-              if (arnz.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b))
+              if (TencentDocLocalCooperationProcessor.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b))
               {
                 a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
                 bool = true;
@@ -369,12 +368,12 @@ public class DocQBBottomView
                 localObject = BaseApplicationImpl.sApplication.getRuntime();
                 if ((localObject instanceof QQAppInterface))
                 {
-                  localObject = (bebl)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
-                  if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (!((bebl)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo)))
+                  localObject = (TeamWorkFileImportHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
+                  if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (!((TeamWorkFileImportHandler)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo)))
                   {
-                    beeg.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.k + "-" + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d);
+                    TenDocLogReportHelper.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.k + "-" + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d);
                     this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
-                    ((bebl)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+                    ((TeamWorkFileImportHandler)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
                   }
                 }
                 bool = true;
@@ -398,7 +397,7 @@ public class DocQBBottomView
                   if (!this.b) {
                     break label523;
                   }
-                  beeg.a(null, "0X800ABAB");
+                  TenDocLogReportHelper.a(null, "0X800ABAB");
                 }
                 for (;;)
                 {
@@ -411,7 +410,7 @@ public class DocQBBottomView
                   this.jdField_a_of_type_JavaLangString += "?converFrom=qqFile";
                   break label429;
                   label523:
-                  beeg.a(null, "0X800ABAC");
+                  TenDocLogReportHelper.a(null, "0X800ABAC");
                 }
               }
             }
@@ -433,7 +432,7 @@ public class DocQBBottomView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.widget.DocQBBottomView
  * JD-Core Version:    0.7.0.1
  */

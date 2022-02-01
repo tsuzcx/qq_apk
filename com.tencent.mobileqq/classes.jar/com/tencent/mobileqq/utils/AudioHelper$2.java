@@ -11,7 +11,7 @@ final class AudioHelper$2
   public void run()
   {
     int i = -1;
-    if (AudioHelper.e()) {
+    if (AudioHelper.d()) {
       if (!EnvSwitchActivity.isTestEnvironment()) {
         break label26;
       }

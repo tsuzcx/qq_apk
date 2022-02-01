@@ -1,15 +1,14 @@
 package com.tencent.open.model;
 
 import android.os.Bundle;
-import bjpm;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.observer.SSOAccountObserver;
 
-public class AccountManage$1
+class AccountManage$1
   implements Runnable
 {
-  public AccountManage$1(bjpm parambjpm, WeakReference paramWeakReference, String paramString1, String paramString2, Bundle paramBundle) {}
+  AccountManage$1(AccountManage paramAccountManage, WeakReference paramWeakReference, String paramString1, String paramString2, Bundle paramBundle) {}
   
   public void run()
   {
@@ -24,7 +23,7 @@ public class AccountManage$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.model.AccountManage.1
  * JD-Core Version:    0.7.0.1
  */

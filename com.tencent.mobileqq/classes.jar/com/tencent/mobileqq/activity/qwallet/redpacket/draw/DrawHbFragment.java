@@ -1,13 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import akux;
-import akwh;
-import akzv;
-import akzw;
-import akzx;
-import akzy;
-import akzz;
-import albw;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -20,15 +12,19 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import bmhg;
-import bmhn;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbLogic;
+import com.tencent.mobileqq.activity.qwallet.fragment.busylogic.MoneyWatcher;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.activity.qwallet.utils.ReportUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import cooperation.qwallet.QwUtils;
+import cooperation.qwallet.pluginshare.HbInfo;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -40,20 +36,20 @@ public class DrawHbFragment
   extends BaseHbFragment
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   protected TextWatcher a;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ChooseItemView a;
+  ChooseItemView jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView;
   DrawHbFragment.DrawHbBundleInfo jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo = new DrawHbFragment.DrawHbBundleInfo();
   private String jdField_a_of_type_JavaLangString;
   private EditText b;
   
   public DrawHbFragment()
   {
-    this.jdField_a_of_type_AndroidTextTextWatcher = new akzz(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new DrawHbFragment.5(this);
   }
   
   private int a()
@@ -155,25 +151,25 @@ public class DrawHbFragment
       a(false);
       return;
     }
-    if ((bmhg.a(str1) <= 0.0F) || (bmhg.a(str2) <= 0.0F))
+    if ((QwUtils.a(str1) <= 0.0F) || (QwUtils.a(str2) <= 0.0F))
     {
       a(false);
       return;
     }
     a(true);
-    str1 = getString(2131696506) + str2 + anvx.a(2131703014);
+    str1 = getString(2131696759) + str2 + HardCodeUtil.a(2131703562);
     this.jdField_a_of_type_AndroidWidgetButton.setText(str1);
   }
   
   private void a(View paramView, Bundle paramBundle)
   {
-    bmhn.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131372148));
-    this.b = ((EditText)paramView.findViewById(2131362687));
+    HbInfo.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131372450));
+    this.b = ((EditText)paramView.findViewById(2131362713));
     this.b.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-    this.b.addTextChangedListener(new akwh(this.b));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363934));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380213));
+    this.b.addTextChangedListener(new MoneyWatcher(this.b));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364031));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380654));
     try
     {
       if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.drawParam))
@@ -191,7 +187,7 @@ public class DrawHbFragment
       if (QLog.isColorLevel()) {
         QLog.i("DrawHbFragment", 2, "bizParams:" + paramBundle);
       }
-      if (!StringUtil.isEmpty(paramBundle))
+      if (!StringUtil.a(paramBundle))
       {
         paramBundle = new JSONObject(paramBundle).optString("subject", "");
         if ((!TextUtils.isEmpty(paramBundle)) && (b(paramBundle))) {
@@ -206,23 +202,23 @@ public class DrawHbFragment
         paramBundle.printStackTrace();
         continue;
         if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.people_num)) {
-          this.jdField_a_of_type_AndroidWidgetEditText.setHint(anvx.a(2131703015) + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.people_num + anvx.a(2131703016));
+          this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131703563) + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.people_num + HardCodeUtil.a(2131703564));
         }
         this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       }
     }
-    if (bmhn.b.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.recv_type))
+    if (HbInfo.b.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.recv_type))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText("1");
-      paramView.findViewById(2131379323).setVisibility(8);
+      paramView.findViewById(2131379746).setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new akzw(this));
-      albw.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369855));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new DrawHbFragment.2(this));
+      QWalletTools.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370126));
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView = new ChooseItemView(getActivity());
       paramBundle = a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.recommend, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.drawParam, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.modelList);
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(paramBundle, false, new akzx(this), null, new akzy(this, paramView));
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(paramBundle, false, new DrawHbFragment.3(this), null, new DrawHbFragment.4(this, paramView));
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.setRecommendCnt(a());
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.setStyle(1);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView);
@@ -267,7 +263,7 @@ public class DrawHbFragment
   {
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(paramBoolean);
     if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131696506));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131696759));
     }
   }
   
@@ -321,12 +317,12 @@ public class DrawHbFragment
     this.jdField_a_of_type_Long = l;
     String str1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
     String str2 = this.b.getText().toString();
-    Map localMap = this.mActivity.a();
+    Map localMap = this.mActivity.getMapPacketExtra();
     localMap.put("type", "1");
     localMap.put("wishing", this.jdField_a_of_type_JavaLangString);
     localMap.put("bus_type", "2");
     localMap.put("total_num", str1);
-    localMap.put("total_amount", bmhg.a(str2));
+    localMap.put("total_amount", QwUtils.a(str2));
     localMap.put("channel", "" + this.channel);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.skinId)) {
       localMap.put("skin_id", this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.skinId);
@@ -337,6 +333,7 @@ public class DrawHbFragment
       localMap.put("subchannel", "1");
     }
     this.mLogic.a(localMap);
+    ReportUtils.a(this.mQApp, "redpack.paybtn.click", null, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.panel_name);
   }
   
   private boolean b(String paramString)
@@ -353,7 +350,7 @@ public class DrawHbFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.mActivity.c("draw.wrappacket.wrap");
+      this.mActivity.addHbUploadData("draw.wrappacket.wrap");
       b();
     }
   }
@@ -361,8 +358,8 @@ public class DrawHbFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561984, null);
-    paramLayoutInflater.setOnClickListener(new akzv(this));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562121, null);
+    paramLayoutInflater.setOnClickListener(new DrawHbFragment.1(this));
     a(paramLayoutInflater, getArguments());
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -375,14 +372,14 @@ public class DrawHbFragment
     {
       QLog.i("DrawHbFragment", 2, "DrawHb enter...");
       if (this.mActivity != null) {
-        this.mActivity.c("draw.wrappacket.show");
+        this.mActivity.addHbUploadData("draw.wrappacket.show");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment
  * JD-Core Version:    0.7.0.1
  */

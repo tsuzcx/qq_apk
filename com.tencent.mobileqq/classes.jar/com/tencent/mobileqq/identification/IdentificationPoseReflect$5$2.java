@@ -1,13 +1,9 @@
 package com.tencent.mobileqq.identification;
 
-import avqf;
-import avqh;
-import avqk;
-
-public class IdentificationPoseReflect$5$2
+class IdentificationPoseReflect$5$2
   implements Runnable
 {
-  public IdentificationPoseReflect$5$2(avqh paramavqh) {}
+  IdentificationPoseReflect$5$2(IdentificationPoseReflect.5 param5) {}
   
   public void run()
   {
@@ -16,7 +12,7 @@ public class IdentificationPoseReflect$5$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationPoseReflect.5.2
  * JD-Core Version:    0.7.0.1
  */

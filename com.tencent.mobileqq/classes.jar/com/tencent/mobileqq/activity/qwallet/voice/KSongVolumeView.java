@@ -12,16 +12,16 @@ import com.tencent.mobileqq.R.styleable;
 public class KSongVolumeView
   extends View
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean = true;
   public int[] a;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
+  private int b = 0;
+  private int c = 0;
+  private int d = 0;
+  private int e = 0;
+  private int f = 0;
+  private int g = 0;
   
   public KSongVolumeView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -56,7 +56,7 @@ public class KSongVolumeView
     invalidate();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = this.d;
@@ -94,7 +94,7 @@ public class KSongVolumeView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt1 = this.jdField_a_of_type_Int;
     paramInt2 = this.b;
@@ -103,7 +103,7 @@ public class KSongVolumeView
     setMeasuredDimension(paramInt1 * 2 * paramInt2 + getPaddingLeft() + getPaddingRight(), i * 8 + j + getPaddingTop() + getPaddingBottom());
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.e = (paramInt2 / 2);
@@ -138,7 +138,7 @@ public class KSongVolumeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.voice.KSongVolumeView
  * JD-Core Version:    0.7.0.1
  */

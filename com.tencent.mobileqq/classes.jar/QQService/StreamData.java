@@ -8,8 +8,8 @@ public final class StreamData
   extends JceStruct
 {
   static byte[] cache_vData;
-  public short shPackSeq;
-  public byte[] vData;
+  public short shPackSeq = 0;
+  public byte[] vData = null;
   
   public StreamData() {}
   

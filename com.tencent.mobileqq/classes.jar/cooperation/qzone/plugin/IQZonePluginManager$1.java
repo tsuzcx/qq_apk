@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
-import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
 
@@ -28,12 +28,12 @@ final class IQZonePluginManager$1
       IQZonePluginManager.doOpenActivityForResult((Activity)paramContext, paramPluginParams);
       return;
     }
-    Toast.makeText(BaseApplicationImpl.getContext(), anvx.a(2131705330), 0).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131705873), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.plugin.IQZonePluginManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class VideoSpec
   extends JceStruct
 {
-  public long uiDuration;
-  public long uiHeight;
-  public long uiSize;
-  public long uiWidth;
+  public long uiDuration = 0L;
+  public long uiHeight = 0L;
+  public long uiSize = 0L;
+  public long uiWidth = 0L;
   
   public VideoSpec() {}
   

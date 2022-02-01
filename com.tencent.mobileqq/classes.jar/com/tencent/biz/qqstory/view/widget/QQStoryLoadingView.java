@@ -10,8 +10,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import ykq;
-import zhr;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class QQStoryLoadingView
   extends TextView
@@ -22,7 +21,7 @@ public class QQStoryLoadingView
   public QQStoryLoadingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new zhr(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new QQStoryLoadingView.1(this, Looper.getMainLooper());
     super.setGravity(17);
     if ((a(this) == 0) && (!post(new QQStoryLoadingView.2(this)))) {
       setVisibility(0);
@@ -34,7 +33,7 @@ public class QQStoryLoadingView
     int i = 0;
     while (i < 29)
     {
-      paramContext.getResources().getDrawable(2130846580 + i);
+      paramContext.getResources().getDrawable(2130846923 + i);
       i += 1;
     }
   }
@@ -55,7 +54,7 @@ public class QQStoryLoadingView
   
   public void a()
   {
-    super.setCompoundDrawablesWithIntrinsicBounds(null, super.getResources().getDrawable(2130846580), null, null);
+    super.setCompoundDrawablesWithIntrinsicBounds(null, super.getResources().getDrawable(2130846923), null, null);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable != null)
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
@@ -83,7 +82,7 @@ public class QQStoryLoadingView
         this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = new AnimationDrawable();
         while (i < 29)
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.addFrame(super.getResources().getDrawable(2130846580 + i), 50);
+          this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.addFrame(super.getResources().getDrawable(2130846923 + i), 50);
           i += 1;
         }
         this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setOneShot(false);
@@ -95,14 +94,14 @@ public class QQStoryLoadingView
     catch (OutOfMemoryError localOutOfMemoryError)
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
-      ykq.e("Q.qqstory.QQStoryLoadingView", "start animation error:" + localOutOfMemoryError);
+      SLog.e("Q.qqstory.QQStoryLoadingView", "start animation error:" + localOutOfMemoryError);
     }
   }
   
   public void setVisibility(int paramInt)
   {
     if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-      ykq.b("QQStoryLoadingView", "ignore VISIBLE");
+      SLog.b("QQStoryLoadingView", "ignore VISIBLE");
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     String str2;
@@ -118,7 +117,7 @@ public class QQStoryLoadingView
     }
     for (;;)
     {
-      ykq.a(str2, "setVisibility => %s", str1);
+      SLog.a(str2, "setVisibility => %s", str1);
       if (paramInt != 0) {
         break;
       }
@@ -142,7 +141,7 @@ public class QQStoryLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.QQStoryLoadingView
  * JD-Core Version:    0.7.0.1
  */

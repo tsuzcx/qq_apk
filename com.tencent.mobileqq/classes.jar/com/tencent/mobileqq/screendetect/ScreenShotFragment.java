@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.screendetect;
 
-import ahsl;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -35,21 +34,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvx;
-import aupp;
-import aupt;
-import ausc;
-import avay;
-import bbql;
-import bbxb;
-import bbxc;
-import bbxj;
-import bbxk;
-import bbxl;
-import bbxm;
-import bbxn;
-import bbxq;
-import bgyo;
 import com.enrique.stackblur.StackBlurManager;
 import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.common.config.AppSetting;
@@ -58,12 +42,18 @@ import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.forward.ForwardOptionBuilder;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.gallery.view.BigImageAdapter;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.startup.step.CheckPermission;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.QQToast;
@@ -71,6 +61,7 @@ import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.util.LiuHaiUtils;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.DragView;
 import com.tencent.widget.Gallery;
@@ -79,7 +70,6 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import cooperation.qzone.QZoneShareManager;
 import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -102,12 +92,12 @@ public class ScreenShotFragment
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aupt jdField_a_of_type_Aupt;
-  private bbxb jdField_a_of_type_Bbxb;
-  private bbxc jdField_a_of_type_Bbxc = new bbxj(this);
-  private bbxq jdField_a_of_type_Bbxq;
   private ElasticHorScrView jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ForwardBaseOption jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption;
+  private ScreenShotAdapter.OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter$OnHolderItemClickListener = new ScreenShotFragment.1(this);
+  private ScreenShotAdapter jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter;
+  private ScreenShotHelper jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotHelper;
   protected AdapterView.OnItemClickListener a;
   private DragView jdField_a_of_type_ComTencentWidgetDragView;
   private Gallery jdField_a_of_type_ComTencentWidgetGallery;
@@ -115,7 +105,7 @@ public class ScreenShotFragment
   private Runnable jdField_a_of_type_JavaLangRunnable = new ScreenShotFragment.5(this);
   private String jdField_a_of_type_JavaLangString;
   private List<RecentBaseData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
@@ -128,11 +118,12 @@ public class ScreenShotFragment
   private int jdField_d_of_type_Int;
   private TextView jdField_d_of_type_AndroidWidgetTextView;
   private boolean jdField_d_of_type_Boolean;
-  private TextView e;
+  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  private boolean jdField_e_of_type_Boolean;
   
   public ScreenShotFragment()
   {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new bbxm(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new ScreenShotFragment.4(this);
   }
   
   private Bitmap a(Bitmap paramBitmap, int paramInt)
@@ -158,7 +149,7 @@ public class ScreenShotFragment
     }
   }
   
-  public static String a(String paramString, int paramInt)
+  protected static String a(String paramString, int paramInt)
   {
     String str = paramString;
     if (paramString != null)
@@ -191,22 +182,22 @@ public class ScreenShotFragment
       }
       localObject3 = new Bundle();
       ((Bundle)localObject3).putString("uin", ((RecentUserBaseData)localObject1).getRecentUserUin());
-      ((Bundle)localObject3).putString("troop_uin", ((RecentUserBaseData)localObject1).getRecentUserTroopUin());
+      ((Bundle)localObject3).putString("troop_uin", ((RecentUserBaseData)localObject1).a());
       ((Bundle)localObject3).putString("uinname", ((RecentUserBaseData)localObject1).getTitleName());
       ((Bundle)localObject3).putInt("uintype", ((RecentUserBaseData)localObject1).getRecentUserType());
       ((Bundle)localObject3).putBoolean("key_help_forward_pic", true);
       ((Intent)localObject2).setData(Uri.parse(this.jdField_a_of_type_JavaLangString));
       ((Intent)localObject2).putExtra("forward_type", 1);
       ((Intent)localObject2).putExtra("key_share_from_screen_shot", true);
-      if (this.jdField_a_of_type_Aupt == null) {
-        this.jdField_a_of_type_Aupt = ausc.a((Intent)localObject2, getActivity().app, getActivity());
+      if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption == null) {
+        this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption = ForwardOptionBuilder.a((Intent)localObject2, getActivity().app, getActivity());
       }
       if (((RecentUserBaseData)localObject1).getRecentUserType() == 6000)
       {
-        this.jdField_a_of_type_Aupt.a(aupp.f.intValue(), (Bundle)localObject3);
+        this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(ForwardAbility.ForwardAbilityType.f.intValue(), (Bundle)localObject3);
         return;
       }
-      this.jdField_a_of_type_Aupt.a(aupp.a.intValue(), (Bundle)localObject3);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(ForwardAbility.ForwardAbilityType.a.intValue(), (Bundle)localObject3);
       return;
     }
     QLog.e("ScreenShotFragment", 2, "handleIconItemClick : position = " + paramInt + ", data is null!");
@@ -214,56 +205,56 @@ public class ScreenShotFragment
   
   private void a(Activity paramActivity, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_Bbxq.a(paramActivity, paramQQAppInterface));
+    this.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotHelper.a(paramActivity, paramQQAppInterface));
   }
   
   private void a(View paramView)
   {
     boolean bool = false;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377116));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377536));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377119));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377539));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131377112));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377117));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131377532));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377537));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    if (AppSetting.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anvx.a(2131713042));
+    if (AppSetting.jdField_d_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131713538));
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377111));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377525));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377531));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377936));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365945));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366110));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380021));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380453));
     Object localObject = this.jdField_c_of_type_AndroidWidgetTextView;
     int i;
-    if ((this.jdField_b_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
+    if ((this.jdField_b_of_type_Boolean) || (this.jdField_e_of_type_Boolean))
     {
       i = 0;
-      ViewUtils.setVisible((View)localObject, i);
+      ViewUtils.b((View)localObject, i);
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380030));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380462));
       this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.e = ((TextView)paramView.findViewById(2131380093));
-      this.e.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)paramView.findViewById(2131365898));
-      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)paramView.findViewById(2131367490));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131377113));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363337));
-      if (AppSetting.jdField_c_of_type_Boolean) {
-        this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(anvx.a(2131713047));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380532));
+      this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)paramView.findViewById(2131366062));
+      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)paramView.findViewById(2131367677));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131377533));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363417));
+      if (AppSetting.jdField_d_of_type_Boolean) {
+        this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131713543));
       }
       this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)paramView.findViewById(2131377554));
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)paramView.findViewById(2131377965));
       this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-      this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131367851));
-      if (this.jdField_c_of_type_Boolean)
+      this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131368059));
+      if (this.jdField_d_of_type_Boolean)
       {
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
         this.jdField_a_of_type_ComTencentWidgetDragView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(new avay(Collections.singletonList(this.jdField_a_of_type_JavaLangString)));
-        this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297147));
+        this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(new BigImageAdapter(Collections.singletonList(this.jdField_a_of_type_JavaLangString)));
+        this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297168));
         this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(0);
         this.jdField_a_of_type_ComTencentWidgetDragView.setRatioModify(true);
         this.jdField_a_of_type_ComTencentWidgetDragView.setEnableDrag(false);
@@ -276,29 +267,29 @@ public class ScreenShotFragment
     }
     for (;;)
     {
-      ((TextView)paramView.findViewById(2131377114)).setText(anvx.a(2131694669));
-      if (this.jdField_d_of_type_Boolean) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(anvx.a(2131718329));
+      ((TextView)paramView.findViewById(2131377534)).setText(HardCodeUtil.a(2131694906));
+      if (this.jdField_e_of_type_Boolean) {
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131718833));
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingLeft(), ImmersiveUtils.getStatusBarHeight(getActivity()) + 15, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight(), this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingBottom());
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131719177));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131719734));
       localObject = getActivity();
       Uri localUri = Uri.fromFile(new File(this.jdField_a_of_type_JavaLangString));
-      TextView localTextView1 = this.e;
+      TextView localTextView1 = this.jdField_e_of_type_AndroidWidgetTextView;
       TextView localTextView2 = this.jdField_d_of_type_AndroidWidgetTextView;
       if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 0) {
         bool = true;
       }
-      bbxq.a((Context)localObject, localUri, localTextView1, localTextView2, bool);
-      paramView.findViewById(2131367563).setVisibility(this.jdField_c_of_type_AndroidWidgetTextView.getVisibility());
-      paramView.findViewById(2131367564).setVisibility(this.jdField_d_of_type_AndroidWidgetTextView.getVisibility());
-      paramView.findViewById(2131367565).setVisibility(this.e.getVisibility());
+      ScreenShotHelper.a((Context)localObject, localUri, localTextView1, localTextView2, bool);
+      paramView.findViewById(2131367754).setVisibility(this.jdField_c_of_type_AndroidWidgetTextView.getVisibility());
+      paramView.findViewById(2131367755).setVisibility(this.jdField_d_of_type_AndroidWidgetTextView.getVisibility());
+      paramView.findViewById(2131367756).setVisibility(this.jdField_e_of_type_AndroidWidgetTextView.getVisibility());
       h();
       return;
       i = 8;
       break;
       label715:
-      CheckPermission.requestStoragePermission(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, new bbxk(this));
+      CheckPermission.requestStoragePermission(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, new ScreenShotFragment.2(this));
     }
   }
   
@@ -334,7 +325,7 @@ public class ScreenShotFragment
     int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
     int i = j;
     int k;
-    if (this.jdField_c_of_type_Boolean)
+    if (this.jdField_d_of_type_Boolean)
     {
       QLog.d("ScreenShotFragment", 1, new Object[] { "long pic blur background change start, height is : ", Integer.valueOf(j) });
       k = this.jdField_a_of_type_AndroidViewView.getHeight();
@@ -433,8 +424,8 @@ public class ScreenShotFragment
       return;
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    } while (!this.jdField_c_of_type_Boolean);
-    bbxq.a("0X800A9A8", "1", "");
+    } while (!this.jdField_d_of_type_Boolean);
+    ScreenShotHelper.a("0X800A9A8", "1", "");
   }
   
   private void b(int paramInt)
@@ -445,22 +436,22 @@ public class ScreenShotFragment
     }
     for (;;)
     {
-      if ((this.jdField_c_of_type_Boolean) && (str != null)) {
-        bbxq.a("0X800A9A7", str, "1");
+      if ((this.jdField_d_of_type_Boolean) && (str != null)) {
+        ScreenShotHelper.a("0X800A9A7", str, "1");
       }
       return;
       str = "1";
-      bbxq.a("0X8009FEE", 1);
+      ScreenShotHelper.a("0X8009FEE", 1);
       continue;
       str = "2";
-      bbxq.a("0X8009FEE", 2);
+      ScreenShotHelper.a("0X8009FEE", 2);
       continue;
-      bbxq.a("0X8009FEE", 3);
+      ScreenShotHelper.a("0X8009FEE", 3);
       continue;
-      bbxq.a("0X8009FEE", 4);
+      ScreenShotHelper.a("0X8009FEE", 4);
       continue;
       str = "3";
-      bbxq.a("0X8009FEE", 5);
+      ScreenShotHelper.a("0X8009FEE", 5);
     }
   }
   
@@ -483,7 +474,7 @@ public class ScreenShotFragment
   
   private void b(String paramString)
   {
-    bbql.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString, 101);
+    com.tencent.mobileqq.richmediabrowser.utils.AIOGalleryUtils.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString, 101);
   }
   
   private void b(String paramString, Bitmap paramBitmap)
@@ -499,9 +490,11 @@ public class ScreenShotFragment
   
   private void f()
   {
-    this.jdField_b_of_type_Boolean = getArguments().getBoolean("is_aio_page_with_msg", false);
+    Bundle localBundle = getArguments();
+    this.jdField_b_of_type_Boolean = localBundle.getBoolean("is_aio_page_with_msg", false);
+    this.jdField_c_of_type_Boolean = localBundle.getBoolean("switch_bottom_layout", false);
     if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "handlerArg: mHasMsg = " + this.jdField_b_of_type_Boolean);
+      QLog.d("ScreenShotFragment", 2, "handlerArg: mHasMsg = " + this.jdField_b_of_type_Boolean + ", mSwitchLayout = " + this.jdField_c_of_type_Boolean);
     }
   }
   
@@ -516,13 +509,13 @@ public class ScreenShotFragment
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Bbxb = new bbxb(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, 0);
-    this.jdField_a_of_type_Bbxb.a(this.jdField_a_of_type_Bbxc);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bbxb);
-    this.jdField_a_of_type_Bbxb.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter = new ScreenShotAdapter(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, 0);
+    this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter.a(this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter$OnHolderItemClickListener);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter);
+    this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter.a(this.jdField_a_of_type_JavaUtilList);
     List localList = a()[0];
     Object localObject1 = new TextPaint();
-    ((TextPaint)localObject1).setTextSize(getActivity().getResources().getDimensionPixelSize(2131299008));
+    ((TextPaint)localObject1).setTextSize(getActivity().getResources().getDimensionPixelSize(2131299096));
     localObject1 = new StaticLayout(a(a(localList), 6), (TextPaint)localObject1, this.jdField_a_of_type_Int, Layout.Alignment.ALIGN_CENTER, 1.0F, this.jdField_b_of_type_Int, true);
     if (Build.VERSION.SDK_INT >= 9) {
       this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
@@ -550,7 +543,7 @@ public class ScreenShotFragment
       j = this.jdField_c_of_type_Int;
       ((ViewGroup.LayoutParams)localObject2).height = (((StaticLayout)localObject1).getHeight() + (i + j));
       this.jdField_a_of_type_ComTencentWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(new bbxn(getActivity(), localList));
+      this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(new ScreenShotFragment.ActionSheetItemAdapter(getActivity(), localList));
       this.jdField_a_of_type_ComTencentWidgetGridView.setSelector(new ColorDrawable(0));
       this.jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
       return;
@@ -582,7 +575,7 @@ public class ScreenShotFragment
       }
       m = 1;
       label52:
-      if (this.e.getVisibility() != 0) {
+      if (this.jdField_e_of_type_AndroidWidgetTextView.getVisibility() != 0) {
         break label151;
       }
     }
@@ -594,7 +587,7 @@ public class ScreenShotFragment
         this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(12.0F);
         this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(12.0F);
         this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(12.0F);
-        this.e.setTextSize(12.0F);
+        this.jdField_e_of_type_AndroidWidgetTextView.setTextSize(12.0F);
       }
       return;
       i = 0;
@@ -615,14 +608,14 @@ public class ScreenShotFragment
   
   private void i()
   {
-    QQToast.a(getActivity(), 2131718157, 0).a();
+    QQToast.a(getActivity(), 2131718661, 0).a();
     File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    ahsl.a(getActivity(), localFile, Utils.Crc64String(localFile.getName()));
+    com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils.a(getActivity(), localFile, Utils.Crc64String(localFile.getName()));
   }
   
   private void j()
   {
-    if (ImmersiveUtils.a(getActivity()))
+    if (LiuHaiUtils.b(getActivity()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onResume current is liuhai style!");
@@ -658,12 +651,12 @@ public class ScreenShotFragment
         {
           Object localObject = new BitmapFactory.Options();
           ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-          bgyo.a(paramString.getAbsolutePath(), (BitmapFactory.Options)localObject);
+          BitmapManager.a(paramString.getAbsolutePath(), (BitmapFactory.Options)localObject);
           int i = ((BitmapFactory.Options)localObject).outHeight;
           ((BitmapFactory.Options)localObject).inSampleSize = ((i - this.jdField_d_of_type_Int) / i);
           ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
           ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
-          localObject = bgyo.a(paramString.getAbsolutePath(), (BitmapFactory.Options)localObject).copy(Bitmap.Config.RGB_565, true);
+          localObject = BitmapManager.a(paramString.getAbsolutePath(), (BitmapFactory.Options)localObject).copy(Bitmap.Config.RGB_565, true);
           paramString = (String)localObject;
           if (((Bitmap)localObject).getWidth() > ((Bitmap)localObject).getHeight()) {
             paramString = a((Bitmap)localObject, 90);
@@ -732,35 +725,41 @@ public class ScreenShotFragment
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = getActivity().getString(2131696130);
-    localActionSheetItem.icon = 2130839146;
+    localActionSheetItem.label = getActivity().getString(2131696380);
+    localActionSheetItem.icon = 2130839214;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = getActivity().getString(2131696143);
-    localActionSheetItem.icon = 2130839147;
+    localActionSheetItem.label = getActivity().getString(2131696394);
+    localActionSheetItem.icon = 2130839215;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = getActivity().getString(2131696150);
-    localActionSheetItem.icon = 2130839150;
+    localActionSheetItem.label = getActivity().getString(2131696401);
+    localActionSheetItem.icon = 2130839218;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = getActivity().getString(2131696133);
-    localActionSheetItem.icon = 2130839144;
+    localActionSheetItem.label = getActivity().getString(2131696383);
+    localActionSheetItem.icon = 2130839212;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = getActivity().getString(2131692678);
-    localActionSheetItem.icon = 2130840214;
+    localActionSheetItem.label = getActivity().getString(2131692816);
+    localActionSheetItem.icon = 2130840305;
     localActionSheetItem.action = 50;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = getActivity().getString(2131693308);
+    localActionSheetItem.icon = 2130840311;
+    localActionSheetItem.action = 39;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     return (List[])new ArrayList[] { localArrayList };
@@ -777,8 +776,8 @@ public class ScreenShotFragment
       }
       localFragmentActivity.overridePendingTransition(0, 0);
     }
-    if (this.jdField_c_of_type_Boolean) {
-      bbxq.a("0X800A9AD", "1", "");
+    if (this.jdField_d_of_type_Boolean) {
+      ScreenShotHelper.a("0X800A9AD", "1", "");
     }
   }
   
@@ -870,25 +869,25 @@ public class ScreenShotFragment
       b();
       continue;
       a(false);
-      bbxq.a("0X8009FEF", 0);
+      ScreenShotHelper.a("0X8009FEF", 0);
       continue;
-      if (this.jdField_c_of_type_Boolean)
+      if (this.jdField_d_of_type_Boolean)
       {
         e();
-        bbxq.a("0X800A9AA", "1", "");
+        ScreenShotHelper.a("0X800A9AA", "1", "");
       }
       else
       {
         d();
-        bbxq.a("0X8009FF4", 0);
+        ScreenShotHelper.a("0X8009FF4", 0);
         continue;
         k();
         if (this.jdField_b_of_type_Boolean) {
-          bbxq.a("0X800A8BD", 0);
+          ScreenShotHelper.a("0X800A8BD", 0);
         }
-        if (this.jdField_d_of_type_Boolean)
+        if (this.jdField_e_of_type_Boolean)
         {
-          bbxq.a("0X800A9A5", "1", "");
+          ScreenShotHelper.a("0X800A9A5", "1", "");
           continue;
           a(true);
           continue;
@@ -896,14 +895,14 @@ public class ScreenShotFragment
           continue;
           Intent localIntent = new Intent();
           localIntent.putExtra("preResult", (String)this.jdField_d_of_type_AndroidWidgetTextView.getTag());
-          bbxq.a(getActivity(), this.jdField_a_of_type_JavaLangString, 2, localIntent);
-          bbxq.a("0X800AC94", 0);
+          ScreenShotHelper.a(getActivity(), this.jdField_a_of_type_JavaLangString, 2, localIntent);
+          ScreenShotHelper.a("0X800AC94", 0);
           this.jdField_a_of_type_Boolean = true;
           continue;
           localIntent = new Intent();
-          localIntent.putExtra("preResult", (String)this.e.getTag());
-          bbxq.a(getActivity(), this.jdField_a_of_type_JavaLangString, 1, localIntent);
-          bbxq.a("0X800AC93", 0);
+          localIntent.putExtra("preResult", (String)this.jdField_e_of_type_AndroidWidgetTextView.getTag());
+          ScreenShotHelper.a(getActivity(), this.jdField_a_of_type_JavaLangString, 1, localIntent);
+          ScreenShotHelper.a("0X800AC93", 0);
           this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
         }
       }
@@ -920,7 +919,7 @@ public class ScreenShotFragment
       QLog.e("ScreenShotFragment", 2, "ScreenShotShareFragment onCreate activity has gone!");
     }
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
-    this.jdField_a_of_type_Bbxq = new bbxq();
+    this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotHelper = new ScreenShotHelper();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       a();
@@ -931,29 +930,34 @@ public class ScreenShotFragment
       {
         return;
         a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.jdField_a_of_type_Int = getActivity().getResources().getDimensionPixelSize(2131296796);
-        this.jdField_b_of_type_Int = getActivity().getResources().getDimensionPixelOffset(2131296799);
-        this.jdField_c_of_type_Int = getActivity().getResources().getDimensionPixelOffset(2131296798);
+        this.jdField_a_of_type_Int = getActivity().getResources().getDimensionPixelSize(2131296816);
+        this.jdField_b_of_type_Int = getActivity().getResources().getDimensionPixelOffset(2131296819);
+        this.jdField_c_of_type_Int = getActivity().getResources().getDimensionPixelOffset(2131296818);
         paramBundle = getActivity().getIntent();
       } while (paramBundle == null);
       this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("screen_path");
-      this.jdField_c_of_type_Boolean = paramBundle.getBooleanExtra("is_web_screen_long_shot", false);
-      this.jdField_d_of_type_Boolean = paramBundle.getBooleanExtra("is_screen_shot_from_web", false);
-    } while (!this.jdField_c_of_type_Boolean);
-    bbxq.a("0X800A9A6", "1", "");
+      this.jdField_d_of_type_Boolean = paramBundle.getBooleanExtra("is_web_screen_long_shot", false);
+      this.jdField_e_of_type_Boolean = paramBundle.getBooleanExtra("is_screen_shot_from_web", false);
+    } while (!this.jdField_d_of_type_Boolean);
+    ScreenShotHelper.a("0X800A9A6", "1", "");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
+    boolean bool = false;
     if (QLog.isColorLevel()) {
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onCreateView");
     }
     f();
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561465, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561574, paramViewGroup, false);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#aa000000"));
-    this.jdField_d_of_type_Int = getActivity().getResources().getDimensionPixelSize(2131298858);
+    this.jdField_d_of_type_Int = getActivity().getResources().getDimensionPixelSize(2131298945);
     a(this.jdField_a_of_type_AndroidViewView);
     g();
+    if (!this.jdField_c_of_type_Boolean) {
+      bool = true;
+    }
+    a(bool);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -965,8 +969,8 @@ public class ScreenShotFragment
     if (QLog.isColorLevel()) {
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onDestroy");
     }
-    if (this.jdField_a_of_type_Bbxb != null) {
-      this.jdField_a_of_type_Bbxb.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter.a();
     }
     if (this.jdField_a_of_type_JavaLangRunnable != null) {
       ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -999,7 +1003,7 @@ public class ScreenShotFragment
     }
     if (Build.VERSION.SDK_INT >= 28)
     {
-      ViewCompat.setOnApplyWindowInsetsListener(localFragmentActivity.getWindow().getDecorView(), new bbxl(this));
+      ViewCompat.setOnApplyWindowInsetsListener(localFragmentActivity.getWindow().getDecorView(), new ScreenShotFragment.3(this));
       return;
     }
     j();
@@ -1015,7 +1019,7 @@ public class ScreenShotFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.plugin;
 
-public final class Dex2Oat$StreamConsumer$1
+final class Dex2Oat$StreamConsumer$1
   implements Runnable
 {
   /* Error */
@@ -63,7 +63,7 @@ public final class Dex2Oat$StreamConsumer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.plugin.Dex2Oat.StreamConsumer.1
  * JD-Core Version:    0.7.0.1
  */

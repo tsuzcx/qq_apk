@@ -1,20 +1,25 @@
 package com.tencent.mobileqq.apollo;
 
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.PopupWindow;
 
 final class ApolloRender$22
   implements Runnable
 {
+  ApolloRender$22(ApolloRender paramApolloRender) {}
+  
   public void run()
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).toggleSoftInput(1, 1);
+    if (this.a.mShowEditWindow)
+    {
+      this.a.mEditWindow.dismiss();
+      this.a.mShowEditWindow = false;
+      ApolloRender.sIsKeyBoardDissmiss = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.22
  * JD-Core Version:    0.7.0.1
  */

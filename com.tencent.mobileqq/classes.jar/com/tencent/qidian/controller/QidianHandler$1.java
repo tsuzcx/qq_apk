@@ -2,20 +2,18 @@ package com.tencent.qidian.controller;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import avhz;
-import bjyi;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipParam;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class QidianHandler$1
+class QidianHandler$1
   implements Runnable
 {
-  public QidianHandler$1(bjyi parambjyi, ToServiceMsg paramToServiceMsg, HashMap paramHashMap) {}
+  QidianHandler$1(QidianHandler paramQidianHandler, ToServiceMsg paramToServiceMsg, HashMap paramHashMap) {}
   
   public void run()
   {
@@ -26,14 +24,14 @@ public class QidianHandler$1
       int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getInt("uinType");
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localObject = this.this$0.app.getMessageFacade().queryMsgItemByUniseq((String)localObject, i, l);
+        localObject = QidianHandler.a(this.this$0).getMessageFacade().b((String)localObject, i, l);
         if ((localObject != null) && ((localObject instanceof MessageForUniteGrayTip)))
         {
           localObject = (MessageForUniteGrayTip)localObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null))
+          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a() != null))
           {
-            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
-            ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsgData(this.this$0.app);
+            ((MessageForUniteGrayTip)localObject).tipParam.a();
+            ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsgData(QidianHandler.a(this.this$0));
             this.this$0.notifyUI(1005, true, this.jdField_a_of_type_JavaUtilHashMap);
           }
         }
@@ -43,13 +41,13 @@ public class QidianHandler$1
     catch (Exception localException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d(bjyi.a(), 2, "handleBlockBulkMsg ", localException);
+      QLog.d(QidianHandler.a(), 2, "handleBlockBulkMsg ", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianHandler.1
  * JD-Core Version:    0.7.0.1
  */

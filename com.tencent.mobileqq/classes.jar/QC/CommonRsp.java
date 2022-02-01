@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class CommonRsp
   extends JceStruct
 {
-  public int err;
+  public int err = 0;
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public CommonRsp() {}
   

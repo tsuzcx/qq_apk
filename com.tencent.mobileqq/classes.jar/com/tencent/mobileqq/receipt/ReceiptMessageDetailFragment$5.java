@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.receipt;
 
-import bcsc;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class ReceiptMessageDetailFragment$5
@@ -16,7 +16,7 @@ class ReceiptMessageDetailFragment$5
     if (QLog.isColorLevel()) {
       QLog.d("ReceiptMessageDetailFragment", 2, "mSendFetchReadStatusRequestRunnable");
     }
-    switch (ReceiptMessageDetailFragment.a(this.this$0).curType)
+    switch (ReceiptMessageDetailFragment.a(this.this$0).jdField_a_of_type_Int)
     {
     default: 
       return;
@@ -25,7 +25,7 @@ class ReceiptMessageDetailFragment$5
       return;
     case 0: 
       ReceiptMessageDetailFragment.a(this.this$0).addObserver(ReceiptMessageDetailFragment.b(this.this$0), false);
-      ReceiptMessageDetailFragment.b(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getMsgHandler().b(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).curFriendUin), ReceiptMessageDetailFragment.a(this.this$0), bcsc.a(ReceiptMessageDetailFragment.b(this.this$0))));
+      ReceiptMessageDetailFragment.b(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getMsgHandler().b(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).jdField_a_of_type_JavaLangString), ReceiptMessageDetailFragment.a(this.this$0), MessageUtils.a(ReceiptMessageDetailFragment.b(this.this$0))));
       return;
     }
     ReceiptMessageDetailFragment.f(this.this$0);
@@ -33,7 +33,7 @@ class ReceiptMessageDetailFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.5
  * JD-Core Version:    0.7.0.1
  */

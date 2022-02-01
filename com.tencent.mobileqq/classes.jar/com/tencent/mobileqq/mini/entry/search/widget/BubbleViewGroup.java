@@ -12,7 +12,7 @@ import java.util.List;
 public class BubbleViewGroup
   extends ViewGroup
 {
-  public static final int HORIZONTAL_SPACE = ViewUtils.dpToPx(12.0F);
+  public static final int HORIZONTAL_SPACE = ViewUtils.b(12.0F);
   public static final int MAX_ROW = 3;
   public static final int VERTICAL_SPACE = HORIZONTAL_SPACE;
   private List<BubbleViewGroup.WarpLine> mRowLayoutList;
@@ -37,7 +37,7 @@ public class BubbleViewGroup
     return false;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt2 = getPaddingTop();
     paramInt3 = 0;
@@ -81,7 +81,7 @@ public class BubbleViewGroup
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int m = 0;
     int k = View.MeasureSpec.getMode(paramInt1);

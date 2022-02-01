@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anrh;
-import asen;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.CameraEmoRoamingObserver;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmotionRoamingDBManagerProxy;
 import com.tencent.qphone.base.util.QLog;
 
 class EmoticonPanelCameraHelper$2
-  extends anrh
+  extends CameraEmoRoamingObserver
 {
   EmoticonPanelCameraHelper$2(EmoticonPanelCameraHelper paramEmoticonPanelCameraHelper) {}
   
@@ -28,7 +28,7 @@ class EmoticonPanelCameraHelper$2
     }
     if (paramInt == 0)
     {
-      if ((this.this$0.mPanelController.app != null) && (((asen)this.this$0.mPanelController.app.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).a() > 0)) {
+      if ((this.this$0.mPanelController.app != null) && (((CameraEmotionRoamingDBManagerProxy)this.this$0.mPanelController.app.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).getCatchDataCount() > 0)) {
         this.this$0.tryHiddenCameraEmoGuide();
       }
       this.this$0.updateCameraEmoticonPanel();
@@ -41,7 +41,7 @@ class EmoticonPanelCameraHelper$2
       QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, onCameraEmoInsert");
     }
     this.this$0.updateCameraEmoticonPanel();
-    if ((this.this$0.mPanelController.app != null) && (((asen)this.this$0.mPanelController.app.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).a() > 0)) {
+    if ((this.this$0.mPanelController.app != null) && (((CameraEmotionRoamingDBManagerProxy)this.this$0.mPanelController.app.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).getCatchDataCount() > 0)) {
       this.this$0.tryHiddenCameraEmoGuide();
     }
   }
@@ -57,7 +57,7 @@ class EmoticonPanelCameraHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelCameraHelper.2
  * JD-Core Version:    0.7.0.1
  */

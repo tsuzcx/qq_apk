@@ -8,7 +8,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bbje;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class BeautyProviderView
@@ -17,7 +16,7 @@ public class BeautyProviderView
 {
   private int jdField_a_of_type_Int = 6;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private int d;
+  private int d = 0;
   
   public BeautyProviderView(Context paramContext)
   {
@@ -27,20 +26,20 @@ public class BeautyProviderView
   
   private void a(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130845913);
+    paramTextView.setBackgroundResource(2130846234);
     paramTextView.setTextColor(Color.parseColor("#12B7F5"));
   }
   
   private void b(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130845912);
+    paramTextView.setBackgroundResource(2130846233);
     paramTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
   
   public void onClick(View paramView)
   {
     setBeautyLevel(((Integer)paramView.getTag()).intValue());
-    this.jdField_a_of_type_Bbje.a(((Integer)paramView.getTag()).intValue());
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener.a(((Integer)paramView.getTag()).intValue());
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
@@ -69,7 +68,7 @@ public class BeautyProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.BeautyProviderView
  * JD-Core Version:    0.7.0.1
  */

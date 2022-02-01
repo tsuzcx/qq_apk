@@ -74,7 +74,7 @@ public class PullToZoomHeaderListView
           this.jdField_a_of_type_AndroidViewView.layout(k, i, n, i1);
         }
         if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView != null) {
-          this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView.c(i);
+          this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewProfileBaseView.updateClipTop(i);
         }
       }
       return;
@@ -89,7 +89,7 @@ public class PullToZoomHeaderListView
     super.computeScroll();
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     ViewGroup localViewGroup;
@@ -124,7 +124,7 @@ public class PullToZoomHeaderListView
     }
   }
   
-  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, this.jdField_a_of_type_Int, paramBoolean);
   }
@@ -147,7 +147,7 @@ public class PullToZoomHeaderListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.PullToZoomHeaderListView
  * JD-Core Version:    0.7.0.1
  */

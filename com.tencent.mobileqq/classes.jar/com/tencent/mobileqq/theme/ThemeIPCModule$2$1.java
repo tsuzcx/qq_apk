@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.theme;
 
-import awzc;
-import beij;
-import beik;
+import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.mobileqq.vas.theme.api.ThemeLocator;
 
-public class ThemeIPCModule$2$1
+class ThemeIPCModule$2$1
   implements Runnable
 {
-  public ThemeIPCModule$2$1(beij parambeij, beik parambeik) {}
+  ThemeIPCModule$2$1(ThemeIPCModule.2 param2, ThemeLocator paramThemeLocator) {}
   
   public void run()
   {

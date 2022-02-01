@@ -14,12 +14,12 @@ public final class stFollowFeedsRsp
   static ArrayList<stFeed> cache_feeds = new ArrayList();
   static Map<String, String> cache_map_ext;
   public String attatch_info = "";
-  public int cache_size;
-  public stFollowFeedsGlobalConfig config;
-  public ArrayList<stFeed> feeds;
+  public int cache_size = 0;
+  public stFollowFeedsGlobalConfig config = null;
+  public ArrayList<stFeed> feeds = null;
   public String feeds_source = "";
   public boolean is_finished = true;
-  public Map<String, String> map_ext;
+  public Map<String, String> map_ext = null;
   public String trace_id = "";
   
   static

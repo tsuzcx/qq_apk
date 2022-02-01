@@ -12,9 +12,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View.MeasureSpec;
-import bldn;
-import com.tencent.mobileqq.R.styleable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.qqui.R.styleable;
 
 public class XListView
   extends ListView
@@ -32,12 +30,12 @@ public class XListView
   private int mLastRadius;
   private int mLastRoundMode;
   private int mMaxHeight = -1;
-  private bldn mOnSizeChangeListener;
-  private int mOrientation;
+  private OnSizeChangeListener mOnSizeChangeListener;
+  private int mOrientation = 0;
   private int mRadius;
   private int mRoundMode = 0;
   private Path mRoundPath;
-  private boolean wrapByScroll;
+  private boolean wrapByScroll = false;
   
   public XListView(Context paramContext)
   {
@@ -53,11 +51,11 @@ public class XListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.mOverscrollDistance = 2147483647;
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.tencent_widget);
-    setMaxHeight(localTypedArray.getDimensionPixelSize(0, -1));
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bo);
+    setMaxHeight(localTypedArray.getDimensionPixelSize(R.styleable.ar, -1));
     localTypedArray.recycle();
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.XListView);
-    boolean bool = paramContext.getBoolean(0, false);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bf);
+    boolean bool = paramContext.getBoolean(R.styleable.ag, false);
     paramContext.recycle();
     setEdgeEffectEnabled(bool);
     this.mRoundPath = new Path();
@@ -132,11 +130,11 @@ public class XListView
   private void notifySizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
   {
     if (this.mOnSizeChangeListener != null) {
-      this.mOnSizeChangeListener.a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, paramInt5);
+      this.mOnSizeChangeListener.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, paramInt5);
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     if (this.mDrawFinishedListener != null) {
@@ -178,7 +176,6 @@ public class XListView
         {
           for (;;)
           {
-            AIOUtils.catchedExceptionInReleaseV2("XLISTVIEW_dispatchTouchEvent_ERROR", "dispatchTouchEvent_ERROR", paramMotionEvent);
             boolean bool2 = false;
           }
         }
@@ -202,7 +199,7 @@ public class XListView
     super.draw(paramCanvas);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i;
     if (this.mMaxHeight > 0)
@@ -228,7 +225,7 @@ public class XListView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     int i = getWindowOrientation();
@@ -265,9 +262,9 @@ public class XListView
     this.mInterceptor = paramMotionEventInterceptor;
   }
   
-  public void setOnSizeChangeListener(bldn parambldn)
+  public void setOnSizeChangeListener(OnSizeChangeListener paramOnSizeChangeListener)
   {
-    this.mOnSizeChangeListener = parambldn;
+    this.mOnSizeChangeListener = paramOnSizeChangeListener;
   }
   
   public void setOverScrollDistance(int paramInt)

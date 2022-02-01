@@ -1,41 +1,35 @@
 package com.tencent.mobileqq.apollo;
 
-import amna;
-import anbs;
-import anch;
-import anck;
+import com.tencent.mobileqq.apollo.api.ISpriteScriptManager;
+import com.tencent.mobileqq.apollo.api.impl.SpriteScriptManagerImpl;
+import com.tencent.mobileqq.apollo.api.model.ApolloInfo;
+import com.tencent.mobileqq.apollo.script.SpriteActionMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ApolloPanelManager$2
+class ApolloPanelManager$2
   implements Runnable
 {
-  public ApolloPanelManager$2(amna paramamna) {}
+  ApolloPanelManager$2(ApolloPanelManager paramApolloPanelManager, ApolloInfo paramApolloInfo) {}
   
   public void run()
   {
-    Object localObject = this.this$0;
-    int i = this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    if (this.this$0.jdField_a_of_type_Annl != null) {}
-    for (boolean bool = true;; bool = false)
+    this.this$0.a(this.this$0.a.get(), true, ApolloPanelManager.a(this.this$0));
+    if ((this.this$0.a.get() == 0) && (!ApolloPanelManager.a(this.this$0)) && (this.this$0.a() != null))
     {
-      ((amna)localObject).a(i, bool, amna.a(this.this$0));
-      if ((this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) && (!amna.a(this.this$0)) && (this.this$0.a() != null) && (this.this$0.jdField_a_of_type_Annl != null))
-      {
-        localObject = anck.a(this.this$0.a()).a();
-        if (localObject != null) {
-          ((anbs)localObject).a(this.this$0.b);
-        }
+      SpriteActionMessage localSpriteActionMessage = ((SpriteScriptManagerImpl)this.this$0.a().getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteActionMessage();
+      if (localSpriteActionMessage != null) {
+        localSpriteActionMessage.a(this.this$0.b);
       }
-      if (((amna.a(this.this$0)) || (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)) && (this.this$0.jdField_a_of_type_Annl != null)) {
-        amna.a(this.this$0, this.this$0.jdField_a_of_type_Annl);
-      }
-      return;
+    }
+    if ((ApolloPanelManager.a(this.this$0)) || (this.this$0.a.get() > 0)) {
+      ApolloPanelManager.a(this.this$0, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloPanelManager.2
  * JD-Core Version:    0.7.0.1
  */

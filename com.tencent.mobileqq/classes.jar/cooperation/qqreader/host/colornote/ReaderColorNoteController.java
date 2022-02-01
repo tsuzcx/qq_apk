@@ -2,21 +2,21 @@ package cooperation.qqreader.host.colornote;
 
 import android.content.Context;
 import android.content.ContextWrapper;
-import aqnr;
-import bmgn;
+import com.tencent.mobileqq.colornote.ColorNoteController;
+import cooperation.qqreader.utils.ReaderContextUtils;
 
 public class ReaderColorNoteController
 {
-  private aqnr a;
+  private ColorNoteController a;
   
   public ReaderColorNoteController(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a = new aqnr(paramContext, paramBoolean1, paramBoolean2);
+    this.a = new ColorNoteController(paramContext, paramBoolean1, paramBoolean2);
   }
   
   public static void setCustomNightMode(Context paramContext, boolean paramBoolean)
   {
-    aqnr.a(paramContext, paramBoolean);
+    ColorNoteController.a(paramContext, paramBoolean);
   }
   
   public void addHistoryNote()
@@ -31,7 +31,7 @@ public class ReaderColorNoteController
   
   public void attachToActivity(ContextWrapper paramContextWrapper)
   {
-    paramContextWrapper = bmgn.a(paramContextWrapper);
+    paramContextWrapper = ReaderContextUtils.a(paramContextWrapper);
     if (paramContextWrapper != null) {
       this.a.a(paramContextWrapper);
     }
@@ -106,7 +106,7 @@ public class ReaderColorNoteController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.colornote.ReaderColorNoteController
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,11 @@ import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.weishi_new.player.report.IWSPlayerReport;
+import com.tencent.biz.pubaccount.weishi_new.player.report.WSPlayerReportImpl;
+import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSPlayer;
+import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSVideoView;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -17,249 +22,234 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
-import vfs;
-import vfx;
-import vfz;
-import vga;
-import vgb;
-import vgc;
-import vgh;
-import vgi;
-import vgj;
-import vgl;
-import vgq;
-import vgs;
-import vgv;
-import vhc;
-import vmp;
 
 public class WSPlayerManager
-  implements vgl
+  implements WSVideoPluginInstall.OnVideoPluginInstallListener
 {
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication().getApplicationContext();
-  private Handler jdField_a_of_type_AndroidOsHandler = new vga(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new WSPlayerManager.PlayerHandler(this, Looper.getMainLooper());
+  private WSPlayerForNetInfoHandler jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerForNetInfoHandler;
+  private WSPlayerManager.MediaPlayListenerAdapterImpl jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager$MediaPlayListenerAdapterImpl = new WSPlayerManager.MediaPlayListenerAdapterImpl(this, null);
+  private WSPlayerParam jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
+  private WSVideoPluginInstall jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall;
   private WSVideoPreDownloadManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private TVK_NetVideoInfo jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo;
-  private ArrayList<vgc> jdField_a_of_type_JavaUtilArrayList;
-  private ConcurrentHashMap<vgh, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private vfx jdField_a_of_type_Vfx;
-  private vfz jdField_a_of_type_Vfz = new vfz(this, null);
-  private vgb jdField_a_of_type_Vgb;
-  private vgj jdField_a_of_type_Vgj;
-  private boolean jdField_a_of_type_Boolean;
+  private ArrayList<WSPlayerStatusListener> jdField_a_of_type_JavaUtilArrayList;
+  private ConcurrentHashMap<WSPlayerWrapper, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
-  private vgb jdField_b_of_type_Vgb;
-  private boolean jdField_b_of_type_Boolean;
+  private WSPlayerParam jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
+  private boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e;
+  private boolean jdField_c_of_type_Boolean = false;
+  private boolean d = false;
+  private boolean e = false;
   private boolean f = true;
-  private boolean g;
+  private boolean g = false;
   private boolean h;
   private boolean i;
-  private boolean j;
-  private boolean k;
-  private boolean l;
-  private boolean m;
-  private boolean n;
-  private boolean o;
+  private boolean j = false;
+  private boolean k = false;
+  private boolean l = false;
+  private boolean m = false;
+  private boolean n = false;
+  private boolean o = false;
   
   public WSPlayerManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Vgj = new vgj();
-    this.jdField_a_of_type_Vgj.a(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall = new WSVideoPluginInstall();
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall.a(this);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Vfx = new vfx(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vfx);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerForNetInfoHandler = new WSPlayerForNetInfoHandler(this);
+    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerForNetInfoHandler);
     this.h = true;
   }
   
-  private String a(vgb paramvgb)
+  private WSPlayerParam a(WSPlayerParam paramWSPlayerParam)
   {
-    if (paramvgb == null) {
-      return "WSPlayerParam is null!";
-    }
-    if (paramvgb.jdField_a_of_type_Vgi == null) {
-      return "VideoInfo is null!";
-    }
-    return paramvgb.jdField_a_of_type_Vgi.jdField_b_of_type_JavaLangString;
-  }
-  
-  private vgb a(vgb paramvgb)
-  {
-    if (paramvgb == this.jdField_a_of_type_Vgb) {
-      return paramvgb;
+    if (paramWSPlayerParam == this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam) {
+      return paramWSPlayerParam;
     }
     return null;
   }
   
-  private vgh a()
+  private WSPlayerWrapper a()
   {
     if (this.jdField_a_of_type_AndroidContentContext == null) {
       return null;
     }
-    vgh localvgh = new vgh(this.jdField_a_of_type_AndroidContentContext);
-    localvgh.a(this.jdField_a_of_type_Vfz);
-    return localvgh;
+    WSPlayerWrapper localWSPlayerWrapper = new WSPlayerWrapper(this.jdField_a_of_type_AndroidContentContext);
+    localWSPlayerWrapper.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager$MediaPlayListenerAdapterImpl);
+    return localWSPlayerWrapper;
   }
   
-  private vgh a(vgb paramvgb)
+  private WSPlayerWrapper a(WSPlayerParam paramWSPlayerParam)
   {
-    if (paramvgb != null) {
-      return paramvgb.jdField_a_of_type_Vgh;
+    if (paramWSPlayerParam != null) {
+      return paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
     }
     return null;
   }
   
-  private vgh a(vgh paramvgh)
+  private WSPlayerWrapper a(WSPlayerWrapper paramWSPlayerWrapper)
   {
-    if (paramvgh == b()) {
-      return paramvgh;
+    if (paramWSPlayerWrapper == b()) {
+      return paramWSPlayerWrapper;
     }
     return null;
   }
   
-  private vgq a(vgb paramvgb)
+  private IWSPlayerReport a(WSPlayerParam paramWSPlayerParam)
   {
-    if (paramvgb != null) {
-      return paramvgb.jdField_a_of_type_Vgq;
+    if (paramWSPlayerParam != null) {
+      return paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportIWSPlayerReport;
     }
     return null;
   }
   
-  private void a(vgh paramvgh)
+  private String a(WSPlayerParam paramWSPlayerParam)
   {
-    if (paramvgh == null) {}
+    if (paramWSPlayerParam == null) {
+      return "WSPlayerParam is null!";
+    }
+    if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null) {
+      return "VideoInfo is null!";
+    }
+    return paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.jdField_b_of_type_JavaLangString;
+  }
+  
+  private void a(WSPlayerWrapper paramWSPlayerWrapper)
+  {
+    if (paramWSPlayerWrapper == null) {}
     int i1;
     do
     {
       return;
-      paramvgh.k();
-      i1 = paramvgh.e();
+      paramWSPlayerWrapper.k();
+      i1 = paramWSPlayerWrapper.e();
     } while ((i1 == 7) || (i1 == 8) || (i1 == 0) || (i1 == 6));
-    paramvgh.e();
-    ThreadManager.excute(new WSPlayerManager.6(this, paramvgh), 16, null, true);
+    paramWSPlayerWrapper.e();
+    ThreadManager.excute(new WSPlayerManager.6(this, paramWSPlayerWrapper), 16, null, true);
   }
   
-  private boolean a(vgb paramvgb)
+  private boolean a(WSPlayerParam paramWSPlayerParam)
   {
-    return a(paramvgb) != null;
+    return a(paramWSPlayerParam) != null;
   }
   
-  private boolean a(vgh paramvgh)
+  private boolean a(WSPlayerWrapper paramWSPlayerWrapper)
   {
-    return a(paramvgh) != null;
+    return a(paramWSPlayerWrapper) != null;
   }
   
-  private String b(vgb paramvgb)
+  private WSPlayerWrapper b()
   {
-    if (paramvgb == null) {
+    return a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
+  }
+  
+  private String b(WSPlayerParam paramWSPlayerParam)
+  {
+    if (paramWSPlayerParam == null) {
       return "WSPlayerParam is null.";
     }
-    if (paramvgb.jdField_a_of_type_Vgi == null) {
+    if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null) {
       return "VideoInfo is null.";
     }
-    return paramvgb.jdField_a_of_type_Vgi.d;
+    return paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d;
   }
   
-  private vgh b()
+  private void b(WSPlayerParam paramWSPlayerParam)
   {
-    return a(this.jdField_a_of_type_Vgb);
-  }
-  
-  private void b(vgb paramvgb)
-  {
-    if (paramvgb != null) {
-      a(paramvgb.jdField_a_of_type_Vgh);
+    if (paramWSPlayerParam != null) {
+      a(paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper);
     }
   }
   
-  private void c(vgb paramvgb, boolean paramBoolean)
+  private void c(WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
   {
     boolean bool2 = false;
-    if (paramvgb == null) {
+    if (paramWSPlayerParam == null) {
       return;
     }
-    if (paramvgb.jdField_a_of_type_Vhc != null)
+    if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView != null)
     {
-      localObject = paramvgb.jdField_a_of_type_Vhc.a();
-      if ((localObject != null) && (((View)localObject).getParent() != paramvgb.jdField_a_of_type_AndroidViewViewGroup))
+      localObject = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView.a();
+      if ((localObject != null) && (((View)localObject).getParent() != paramWSPlayerParam.jdField_a_of_type_AndroidViewViewGroup))
       {
-        vmp.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][createVideoPlayerAndPlay] playerParam.mVideoView.getParent:" + ((View)localObject).getParent() + ", playerParam.mVideoLayout:" + paramvgb.jdField_a_of_type_AndroidViewViewGroup);
-        paramvgb.jdField_a_of_type_Vgh = null;
-        paramvgb.jdField_a_of_type_Vhc = null;
+        WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][createVideoPlayerAndPlay] playerParam.mVideoView.getParent:" + ((View)localObject).getParent() + ", playerParam.mVideoLayout:" + paramWSPlayerParam.jdField_a_of_type_AndroidViewViewGroup);
+        paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper = null;
+        paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView = null;
       }
     }
-    Object localObject = a(paramvgb);
-    if ((localObject == null) || (((vgh)localObject).a() != null))
+    Object localObject = a(paramWSPlayerParam);
+    if ((localObject == null) || (((WSPlayerWrapper)localObject).a() != null))
     {
       boolean bool1 = bool2;
       if (localObject != null)
       {
         bool1 = bool2;
-        if (((vgh)localObject).a() != null)
+        if (((WSPlayerWrapper)localObject).a() != null)
         {
-          ((vgh)localObject).b(false);
-          vmp.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][createVideoPlayerAndPlay] videoPlayer.tag isn't null!");
+          ((WSPlayerWrapper)localObject).b(false);
+          WSLog.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][createVideoPlayerAndPlay] videoPlayer.tag isn't null!");
           bool1 = true;
         }
       }
-      ThreadManager.post(new WSPlayerManager.2(this, new WeakReference(paramvgb), bool1, paramBoolean), 5, null, true);
+      ThreadManager.post(new WSPlayerManager.2(this, new WeakReference(paramWSPlayerParam), bool1, paramBoolean), 5, null, true);
       return;
     }
-    vmp.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][createVideoPlayerAndPlay] hit getVideoPlayerFromParam. goto innerPlayVideo!");
-    paramvgb.jdField_a_of_type_Vgh.a(paramvgb.jdField_a_of_type_Vgi);
-    d(paramvgb, paramBoolean);
+    WSLog.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][createVideoPlayerAndPlay] hit getVideoPlayerFromParam. goto innerPlayVideo!");
+    paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper.a(paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo);
+    d(paramWSPlayerParam, paramBoolean);
   }
   
-  private void d(vgb paramvgb, boolean paramBoolean)
+  private void d(WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
   {
-    vgh localvgh = a(paramvgb);
-    if ((paramvgb == null) || (localvgh == null) || (paramvgb.jdField_a_of_type_AndroidViewViewGroup == null))
+    WSPlayerWrapper localWSPlayerWrapper = a(paramWSPlayerParam);
+    if ((paramWSPlayerParam == null) || (localWSPlayerWrapper == null) || (paramWSPlayerParam.jdField_a_of_type_AndroidViewViewGroup == null))
     {
-      vmp.d("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][innerPlayVideo] playParam:" + paramvgb);
+      WSLog.d("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][innerPlayVideo] playParam:" + paramWSPlayerParam);
       return;
     }
-    paramvgb.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
+    paramWSPlayerParam.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
     Object localObject;
-    if (paramvgb.jdField_a_of_type_Vhc == null)
+    if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView == null)
     {
-      vmp.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][innerPlayVideo] videoView null. goto getVideoViewScroll.");
-      localObject = localvgh.a();
+      WSLog.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][innerPlayVideo] videoView null. goto getVideoViewScroll.");
+      localObject = localWSPlayerWrapper.a();
       View localView;
       if (localObject != null)
       {
-        localView = ((vhc)localObject).a();
+        localView = ((IWSVideoView)localObject).a();
         if (localView != null) {}
       }
       else
       {
-        if (paramvgb.jdField_a_of_type_Vfs != null) {
-          paramvgb.jdField_a_of_type_Vfs.a(paramvgb, 999, 999, null);
+        if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) {
+          paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.a(paramWSPlayerParam, 999, 999, null);
         }
-        paramvgb.jdField_a_of_type_Vgh = null;
+        paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper = null;
         return;
       }
-      paramvgb.jdField_a_of_type_Vhc = ((vhc)localObject);
-      paramvgb.jdField_a_of_type_AndroidViewViewGroup.addView(localView, new ViewGroup.LayoutParams(-1, -1));
-      localvgh.a((vhc)localObject);
-      if (paramvgb.jdField_a_of_type_Vfs != null) {
-        paramvgb.jdField_a_of_type_Vfs.b(paramvgb);
+      paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView = ((IWSVideoView)localObject);
+      paramWSPlayerParam.jdField_a_of_type_AndroidViewViewGroup.addView(localView, new ViewGroup.LayoutParams(-1, -1));
+      localWSPlayerWrapper.a((IWSVideoView)localObject);
+      if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) {
+        paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.b(paramWSPlayerParam);
       }
-      if ((paramvgb.jdField_a_of_type_Vgi != null) && (paramvgb.jdField_a_of_type_Vgi.jdField_a_of_type_Int > 0) && (paramvgb.jdField_a_of_type_Vgi.jdField_b_of_type_Int > 0) && (paramvgb.jdField_a_of_type_Vgi.jdField_b_of_type_Int < 10000) && (paramvgb.jdField_a_of_type_Vgi.jdField_a_of_type_Int < 10000)) {
-        ((vhc)localObject).a(paramvgb.jdField_a_of_type_Vgi.jdField_a_of_type_Int, paramvgb.jdField_a_of_type_Vgi.jdField_b_of_type_Int);
+      if ((paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo != null) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.jdField_a_of_type_Int > 0) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.jdField_b_of_type_Int > 0) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.jdField_b_of_type_Int < 10000) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.jdField_a_of_type_Int < 10000)) {
+        ((IWSVideoView)localObject).a(paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.jdField_a_of_type_Int, paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.jdField_b_of_type_Int);
       }
     }
     int i1;
     if (this.jdField_a_of_type_Boolean)
     {
       i1 = 2;
-      localvgh.b(i1);
+      localWSPlayerWrapper.b(i1);
       if ((!this.k) && (!this.g)) {
         break label425;
       }
@@ -267,39 +257,39 @@ public class WSPlayerManager
     label425:
     for (boolean bool = true;; bool = false)
     {
-      localvgh.c(bool);
-      localvgh.a(this.h);
-      localvgh.d(paramvgb.jdField_b_of_type_Boolean);
-      localvgh.a().b(this.i);
-      vmp.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][innerPlayVideo] xyAxis:" + i1 + ", isMuted:" + this.i + ", mPreOutputFirstFrame:" + this.h);
-      localObject = paramvgb.jdField_a_of_type_Vhc.a();
+      localWSPlayerWrapper.c(bool);
+      localWSPlayerWrapper.a(this.h);
+      localWSPlayerWrapper.d(paramWSPlayerParam.jdField_b_of_type_Boolean);
+      localWSPlayerWrapper.a().b(this.i);
+      WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][innerPlayVideo] xyAxis:" + i1 + ", isMuted:" + this.i + ", mPreOutputFirstFrame:" + this.h);
+      localObject = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView.a();
       if (localObject != null) {
         ((View)localObject).setVisibility(0);
       }
-      ThreadManager.excute(new WSPlayerManager.PlayStartVideoRunnable(this, paramvgb, localvgh, paramBoolean), 16, null, true);
+      ThreadManager.excute(new WSPlayerManager.PlayStartVideoRunnable(this, paramWSPlayerParam, localWSPlayerWrapper, paramBoolean), 16, null, true);
       return;
-      i1 = paramvgb.jdField_a_of_type_Int;
+      i1 = paramWSPlayerParam.jdField_a_of_type_Int;
       break;
     }
   }
   
-  private void e(vgb paramvgb, boolean paramBoolean)
+  private void e(WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
   {
-    vgq localvgq;
-    if (paramvgb != null)
+    IWSPlayerReport localIWSPlayerReport;
+    if (paramWSPlayerParam != null)
     {
-      if (paramvgb.jdField_a_of_type_Vgq == null) {
-        paramvgb.jdField_a_of_type_Vgq = new vgs();
+      if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportIWSPlayerReport == null) {
+        paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportIWSPlayerReport = new WSPlayerReportImpl();
       }
-      localvgq = paramvgb.jdField_a_of_type_Vgq;
-      if (paramvgb.jdField_a_of_type_Vgi == null) {
+      localIWSPlayerReport = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportIWSPlayerReport;
+      if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null) {
         break label57;
       }
     }
     label57:
-    for (String str = paramvgb.jdField_a_of_type_Vgi.jdField_a_of_type_JavaLangString;; str = "")
+    for (String str = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.jdField_a_of_type_JavaLangString;; str = "")
     {
-      localvgq.a(str, paramBoolean, paramvgb.jdField_a_of_type_JavaLangString);
+      localIWSPlayerReport.a(str, paramBoolean, paramWSPlayerParam.jdField_a_of_type_JavaLangString);
       return;
     }
   }
@@ -312,18 +302,18 @@ public class WSPlayerManager
     while ((!a()) && (!e()) && (!d()) && (!h())) {
       return;
     }
-    b(this.jdField_a_of_type_Vgb, false);
+    b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, false);
   }
   
   private void i()
   {
-    vmp.g("WS_VIDEO_PLAYER", "<------------------------------- [WSPlayerManager.java][onVideoStart] title:" + b(this.jdField_a_of_type_Vgb));
+    WSLog.g("WS_VIDEO_PLAYER", "<------------------------------- [WSPlayerManager.java][onVideoStart] title:" + b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam));
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(-2);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(-2);
     this.jdField_a_of_type_AndroidOsHandler.post(new WSPlayerManager.4(this));
-    vgq localvgq = a(this.jdField_a_of_type_Vgb);
-    if (localvgq != null) {
-      localvgq.b(a(this.jdField_a_of_type_Vgb));
+    IWSPlayerReport localIWSPlayerReport = a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
+    if (localIWSPlayerReport != null) {
+      localIWSPlayerReport.b(a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam));
     }
   }
   
@@ -335,9 +325,9 @@ public class WSPlayerManager
     return 0;
   }
   
-  public vgb a()
+  public WSPlayerParam a()
   {
-    return this.jdField_a_of_type_Vgb;
+    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
   }
   
   public void a()
@@ -351,23 +341,93 @@ public class WSPlayerManager
     else {
       return;
     }
-    vmp.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] videoPlayer.start!");
+    WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] videoPlayer.start!");
     b().b();
     i();
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Vgb != null) && (b() != null))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (b() != null))
     {
       this.j = true;
       b().a(paramInt);
-      if ((paramBoolean) && (this.jdField_a_of_type_Vgb != null) && (this.jdField_a_of_type_Vgb.jdField_a_of_type_Vfs != null))
+      if ((paramBoolean) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null))
       {
         long l1 = b().b();
-        this.jdField_a_of_type_Vgb.jdField_a_of_type_Vfs.a(this.jdField_a_of_type_Vgb, paramInt, l1);
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, paramInt, l1);
       }
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(-2);
+    }
+  }
+  
+  public void a(WSPlayerParam paramWSPlayerParam)
+  {
+    WSLog.g("WS_VIDEO_PRE_PLAY", "===============================> [WSPlayerManager.java][prePlayVideo] title:" + b(paramWSPlayerParam));
+    if (paramWSPlayerParam == null) {
+      WSLog.d("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][prePlayVideo] playerParam is null.");
+    }
+    WSPlayerWrapper localWSPlayerWrapper;
+    do
+    {
+      do
+      {
+        return;
+        localWSPlayerWrapper = a(paramWSPlayerParam);
+      } while ((localWSPlayerWrapper != null) && (paramWSPlayerParam.jdField_a_of_type_Boolean) && (localWSPlayerWrapper.a() == paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo = null;
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall != null) && (!this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall.a()))
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall.a();
+        return;
+      }
+    } while ((localWSPlayerWrapper != null) && (!localWSPlayerWrapper.a()) && (localWSPlayerWrapper.e() != 6) && (localWSPlayerWrapper.e() != 7));
+    paramWSPlayerParam.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = paramWSPlayerParam;
+    e(paramWSPlayerParam, true);
+    if (this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) {
+      this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.a(this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
+    }
+    c(paramWSPlayerParam, true);
+  }
+  
+  public void a(WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
+  {
+    WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] startTime:" + System.currentTimeMillis());
+    if (paramWSPlayerParam == null)
+    {
+      WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] playerParam null.");
+      return;
+    }
+    if ((paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView == null) || (paramWSPlayerParam.jdField_a_of_type_AndroidViewViewGroup == null))
+    {
+      WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] videoView:" + paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView + ", videoLayout:" + paramWSPlayerParam.jdField_a_of_type_AndroidViewViewGroup);
+      return;
+    }
+    WSPlayerWrapper localWSPlayerWrapper = a(paramWSPlayerParam);
+    if (localWSPlayerWrapper == null)
+    {
+      WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] videoPlayer null.");
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = paramWSPlayerParam;
+    localWSPlayerWrapper.b(paramWSPlayerParam.jdField_a_of_type_Int);
+    localWSPlayerWrapper.a(paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView, paramWSPlayerParam.jdField_a_of_type_AndroidViewViewGroup);
+    localWSPlayerWrapper.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager$MediaPlayListenerAdapterImpl);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(-2);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(-2);
+    if (paramBoolean) {
+      h();
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localWSPlayerWrapper, jdField_a_of_type_JavaLangObject);
+    localWSPlayerWrapper.h();
+    this.jdField_a_of_type_AndroidOsHandler.post(new WSPlayerManager.1(this, paramWSPlayerParam));
+  }
+  
+  public void a(WSPlayerStatusListener paramWSPlayerStatusListener)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramWSPlayerStatusListener))) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramWSPlayerStatusListener);
     }
   }
   
@@ -376,86 +436,16 @@ public class WSPlayerManager
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager = paramWSVideoPreDownloadManager;
   }
   
-  public void a(vgb paramvgb)
-  {
-    vmp.g("WS_VIDEO_PRE_PLAY", "===============================> [WSPlayerManager.java][prePlayVideo] title:" + b(paramvgb));
-    if (paramvgb == null) {
-      vmp.d("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][prePlayVideo] playerParam is null.");
-    }
-    vgh localvgh;
-    do
-    {
-      do
-      {
-        return;
-        localvgh = a(paramvgb);
-      } while ((localvgh != null) && (paramvgb.jdField_a_of_type_Boolean) && (localvgh.a() == paramvgb.jdField_a_of_type_Vgi));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo = null;
-      if ((this.jdField_a_of_type_Vgj != null) && (!this.jdField_a_of_type_Vgj.a()))
-      {
-        this.jdField_a_of_type_Vgj.a();
-        return;
-      }
-    } while ((localvgh != null) && (!localvgh.a()) && (localvgh.e() != 6) && (localvgh.e() != 7));
-    paramvgb.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Vgb = paramvgb;
-    e(paramvgb, true);
-    if (this.jdField_b_of_type_Vgb.jdField_a_of_type_Vfs != null) {
-      this.jdField_b_of_type_Vgb.jdField_a_of_type_Vfs.a(this.jdField_b_of_type_Vgb);
-    }
-    c(paramvgb, true);
-  }
-  
-  public void a(vgb paramvgb, boolean paramBoolean)
-  {
-    vmp.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] startTime:" + System.currentTimeMillis());
-    if (paramvgb == null)
-    {
-      vmp.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] playerParam null.");
-      return;
-    }
-    if ((paramvgb.jdField_a_of_type_Vhc == null) || (paramvgb.jdField_a_of_type_AndroidViewViewGroup == null))
-    {
-      vmp.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] videoView:" + paramvgb.jdField_a_of_type_Vhc + ", videoLayout:" + paramvgb.jdField_a_of_type_AndroidViewViewGroup);
-      return;
-    }
-    vgh localvgh = a(paramvgb);
-    if (localvgh == null)
-    {
-      vmp.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] videoPlayer null.");
-      return;
-    }
-    this.jdField_a_of_type_Vgb = paramvgb;
-    localvgh.b(paramvgb.jdField_a_of_type_Int);
-    localvgh.a(paramvgb.jdField_a_of_type_Vhc, paramvgb.jdField_a_of_type_AndroidViewViewGroup);
-    localvgh.a(this.jdField_a_of_type_Vfz);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(-2);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(-2);
-    if (paramBoolean) {
-      h();
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localvgh, jdField_a_of_type_JavaLangObject);
-    localvgh.h();
-    this.jdField_a_of_type_AndroidOsHandler.post(new WSPlayerManager.1(this, paramvgb));
-  }
-  
-  public void a(vgc paramvgc)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramvgc))) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramvgc);
-    }
-  }
-  
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Vgb != null) {
-        b(this.jdField_a_of_type_Vgb, false);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) {
+        b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, false);
       }
       return;
     }
-    this.jdField_a_of_type_Vgb = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = null;
   }
   
   public boolean a()
@@ -465,34 +455,34 @@ public class WSPlayerManager
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Vgb != null) && (b() != null) && ((b().e() == 3) || (b().e() == 4)))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (b() != null) && ((b().e() == 3) || (b().e() == 4)))
     {
       b().c();
-      if (this.jdField_a_of_type_Vgb.jdField_a_of_type_Vfs != null) {
-        this.jdField_a_of_type_Vgb.jdField_a_of_type_Vfs.e(this.jdField_a_of_type_Vgb);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.e(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
       }
       if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext()) {
-          ((vgc)localIterator.next()).d(this.jdField_a_of_type_Vgb);
+          ((WSPlayerStatusListener)localIterator.next()).d(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
         }
       }
     }
   }
   
-  public void b(vgb paramvgb, boolean paramBoolean)
+  public void b(WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
   {
-    vmp.g("WS_VIDEO_PLAYER", "-------------------------------> [WSPlayerManager.java][playVideo] title:" + b(paramvgb));
-    if ((paramvgb != null) && (paramvgb.jdField_a_of_type_Vgi != null))
+    WSLog.g("WS_VIDEO_PLAYER", "-------------------------------> [WSPlayerManager.java][playVideo] title:" + b(paramWSPlayerParam));
+    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo != null))
     {
-      vmp.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] videoUrl:" + paramvgb.jdField_a_of_type_Vgi.jdField_b_of_type_JavaLangString);
+      WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] videoUrl:" + paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.jdField_b_of_type_JavaLangString);
       this.jdField_c_of_type_Boolean = false;
       this.jdField_a_of_type_Int = 0;
       this.d = false;
       this.e = false;
       this.j = false;
-      this.jdField_a_of_type_Vgb = paramvgb;
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = paramWSPlayerParam;
       this.jdField_b_of_type_Int = 0;
       if (this.jdField_a_of_type_JavaUtilArrayList != null) {
         localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -502,67 +492,67 @@ public class WSPlayerManager
     {
       while (((Iterator)localObject1).hasNext())
       {
-        ((vgc)((Iterator)localObject1).next()).a(this.jdField_a_of_type_Vgb);
+        ((WSPlayerStatusListener)((Iterator)localObject1).next()).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
         continue;
-        vmp.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] error, playerParam or videoInfo is null.");
+        WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] error, playerParam or videoInfo is null.");
         return;
       }
     }
-    if (this.jdField_a_of_type_Vgb.jdField_a_of_type_Vfs != null) {
-      this.jdField_a_of_type_Vgb.jdField_a_of_type_Vfs.a(this.jdField_a_of_type_Vgb, paramBoolean);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, paramBoolean);
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(-3);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(-4);
-    Object localObject1 = a(paramvgb);
-    Object localObject2 = a(paramvgb);
-    if ((localObject1 != null) && (((vgh)localObject1).e()) && (((vgh)localObject1).a() == paramvgb.jdField_a_of_type_Vgi))
+    Object localObject1 = a(paramWSPlayerParam);
+    Object localObject2 = a(paramWSPlayerParam);
+    if ((localObject1 != null) && (((WSPlayerWrapper)localObject1).e()) && (((WSPlayerWrapper)localObject1).a() == paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo))
     {
-      paramvgb.jdField_a_of_type_Boolean = false;
+      paramWSPlayerParam.jdField_a_of_type_Boolean = false;
       this.o = false;
-      this.jdField_b_of_type_Vgb = null;
-      paramvgb.jdField_a_of_type_Vgh.f();
+      this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = null;
+      paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper.f();
       if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo != null) {
-        this.jdField_a_of_type_Vfz.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo, paramvgb.jdField_a_of_type_Vgh);
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager$MediaPlayListenerAdapterImpl.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo, paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper);
       }
       if (localObject2 != null)
       {
-        ((vgq)localObject2).a(true);
-        ((vgq)localObject2).a(2);
-        ((vgq)localObject2).a(a(paramvgb));
+        ((IWSPlayerReport)localObject2).a(true);
+        ((IWSPlayerReport)localObject2).a(2);
+        ((IWSPlayerReport)localObject2).a(a(paramWSPlayerParam));
       }
-      vmp.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] hasPrePlay, just go startVideoAfterPrepared! title:" + b(paramvgb));
-      this.jdField_a_of_type_Vfz.a();
+      WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] hasPrePlay, just go startVideoAfterPrepared! title:" + b(paramWSPlayerParam));
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager$MediaPlayListenerAdapterImpl.a();
       return;
     }
-    if ((paramvgb.jdField_a_of_type_Boolean) && ((localObject1 == null) || (((vgh)localObject1).a() == paramvgb.jdField_a_of_type_Vgi)))
+    if ((paramWSPlayerParam.jdField_a_of_type_Boolean) && ((localObject1 == null) || (((WSPlayerWrapper)localObject1).a() == paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo)))
     {
       if (localObject1 != null) {
-        ((vgh)localObject1).f();
+        ((WSPlayerWrapper)localObject1).f();
       }
       this.m = true;
       if (localObject2 != null)
       {
-        ((vgq)localObject2).a(false);
-        ((vgq)localObject2).a(1);
+        ((IWSPlayerReport)localObject2).a(false);
+        ((IWSPlayerReport)localObject2).a(1);
       }
       localObject2 = new StringBuilder().append("[WSPlayerManager.java][playVideo] prePlaying, just do nothing! playerStatus:");
       if (localObject1 != null) {}
-      for (localObject1 = Integer.valueOf(((vgh)localObject1).e());; localObject1 = " ")
+      for (localObject1 = Integer.valueOf(((WSPlayerWrapper)localObject1).e());; localObject1 = " ")
       {
-        vmp.d("WS_VIDEO_PRE_PLAY", localObject1 + ", title:" + b(paramvgb));
+        WSLog.d("WS_VIDEO_PRE_PLAY", localObject1 + ", title:" + b(paramWSPlayerParam));
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(-3, 150L);
         return;
       }
     }
     this.o = false;
-    this.jdField_b_of_type_Vgb = null;
-    e(this.jdField_a_of_type_Vgb, false);
-    if ((this.jdField_a_of_type_Vgj != null) && (!this.jdField_a_of_type_Vgj.a()))
+    this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = null;
+    e(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, false);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall != null) && (!this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall.a()))
     {
-      this.jdField_a_of_type_Vgj.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall.a();
       return;
     }
-    c(paramvgb, false);
+    c(paramWSPlayerParam, false);
   }
   
   public void b(boolean paramBoolean)
@@ -570,14 +560,14 @@ public class WSPlayerManager
     if (this.jdField_a_of_type_Boolean != paramBoolean)
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
-      if ((b() != null) && (this.jdField_a_of_type_Vgb != null)) {
+      if ((b() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null)) {
         if (!this.jdField_a_of_type_Boolean) {
           break label45;
         }
       }
     }
     label45:
-    for (int i1 = 2;; i1 = this.jdField_a_of_type_Vgb.jdField_a_of_type_Int)
+    for (int i1 = 2;; i1 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_Int)
     {
       b().b(i1);
       return;
@@ -600,9 +590,9 @@ public class WSPlayerManager
     if ((b() != null) && (b().a() != null)) {
       b().a().b(paramBoolean);
     }
-    vgh localvgh = a(this.jdField_b_of_type_Vgb);
-    if ((localvgh != null) && (localvgh.a() != null)) {
-      localvgh.a().b(paramBoolean);
+    WSPlayerWrapper localWSPlayerWrapper = a(this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
+    if ((localWSPlayerWrapper != null) && (localWSPlayerWrapper.a() != null)) {
+      localWSPlayerWrapper.a().b(paramBoolean);
     }
   }
   
@@ -613,28 +603,28 @@ public class WSPlayerManager
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Vgb != null) && (b() != null))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (b() != null))
     {
-      Object localObject = a(this.jdField_a_of_type_Vgb);
+      Object localObject = a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
       if (localObject != null) {
-        ((vgq)localObject).a(this.jdField_a_of_type_Vgb.jdField_a_of_type_Vgh, this.jdField_c_of_type_Boolean);
+        ((IWSPlayerReport)localObject).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper, this.jdField_c_of_type_Boolean);
       }
-      this.jdField_a_of_type_Vgb.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Vgb.jdField_a_of_type_Vfs != null) {
-        this.jdField_a_of_type_Vgb.jdField_a_of_type_Vfs.g(this.jdField_a_of_type_Vgb);
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.g(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
       }
       if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
         localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((vgc)((Iterator)localObject).next()).a(this.jdField_a_of_type_Vgb, this.jdField_c_of_type_Boolean);
+          ((WSPlayerStatusListener)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, this.jdField_c_of_type_Boolean);
         }
       }
-      vmp.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][stop] title:" + b(this.jdField_a_of_type_Vgb));
-      b(this.jdField_a_of_type_Vgb);
+      WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][stop] title:" + b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam));
+      b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
     }
-    if (this.jdField_a_of_type_Vgb != null) {
-      this.jdField_a_of_type_Vgb = null;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = null;
     }
     this.jdField_a_of_type_Int = 0;
     this.d = false;
@@ -643,7 +633,7 @@ public class WSPlayerManager
   
   public void d(boolean paramBoolean)
   {
-    vmp.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][doOnDestroy] isStopVideo:" + paramBoolean);
+    WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][doOnDestroy] isStopVideo:" + paramBoolean);
     this.jdField_b_of_type_Boolean = true;
     if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager != null)
     {
@@ -653,45 +643,45 @@ public class WSPlayerManager
     if (paramBoolean) {
       d();
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_a_of_type_Vgb);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_b_of_type_Vgb);
-    if ((this.jdField_a_of_type_Vgb != null) && (paramBoolean))
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (paramBoolean))
     {
       if (b() != null)
       {
         b().g();
-        this.jdField_a_of_type_Vgb.jdField_a_of_type_Vgh = null;
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper = null;
       }
-      this.jdField_a_of_type_Vgb = null;
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = null;
     }
     Object localObject;
-    if ((this.jdField_b_of_type_Vgb != null) && (this.jdField_b_of_type_Vgb != this.jdField_a_of_type_Vgb))
+    if ((this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam))
     {
-      localObject = a(this.jdField_b_of_type_Vgb);
+      localObject = a(this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
       if (localObject != null)
       {
-        ((vgh)localObject).g();
-        this.jdField_b_of_type_Vgb.jdField_a_of_type_Vgh = null;
+        ((WSPlayerWrapper)localObject).g();
+        this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper = null;
       }
       this.o = false;
-      this.jdField_b_of_type_Vgb = null;
+      this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = null;
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
     {
       localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        vgh localvgh = (vgh)((Iterator)localObject).next();
-        if ((localvgh != null) && (localvgh.e() != 8) && ((localvgh != b()) || (paramBoolean))) {
-          localvgh.g();
+        WSPlayerWrapper localWSPlayerWrapper = (WSPlayerWrapper)((Iterator)localObject).next();
+        if ((localWSPlayerWrapper != null) && (localWSPlayerWrapper.e() != 8) && ((localWSPlayerWrapper != b()) || (paramBoolean))) {
+          localWSPlayerWrapper.g();
         }
       }
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
-    if (this.jdField_a_of_type_Vgj != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall != null)
     {
-      this.jdField_a_of_type_Vgj.b();
-      this.jdField_a_of_type_Vgj = null;
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall.b();
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall = null;
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
@@ -699,10 +689,10 @@ public class WSPlayerManager
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_a_of_type_JavaUtilArrayList = null;
     }
-    if (this.jdField_a_of_type_Vfx != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerForNetInfoHandler != null)
     {
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Vfx);
-      this.jdField_a_of_type_Vfx = null;
+      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerForNetInfoHandler);
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerForNetInfoHandler = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     this.jdField_a_of_type_AndroidContentContext = null;
@@ -715,11 +705,12 @@ public class WSPlayerManager
   
   public void e()
   {
+    WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][doOnResume] mIsNeedStartOnResume:" + this.n + ", mIsNeedRestartOnResume:" + this.l);
     this.f = true;
     if ((this.n) && (b() != null) && (b().e())) {
       a();
     }
-    label85:
+    label127:
     for (;;)
     {
       this.l = false;
@@ -731,7 +722,7 @@ public class WSPlayerManager
         for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isVideoChatting();; bool = false)
         {
           if (bool) {
-            break label85;
+            break label127;
           }
           this.m = true;
           c();
@@ -744,13 +735,13 @@ public class WSPlayerManager
   public void e(boolean paramBoolean)
   {
     this.g = paramBoolean;
-    vgh localvgh = b();
-    if (localvgh != null) {
-      localvgh.c(paramBoolean);
+    WSPlayerWrapper localWSPlayerWrapper = b();
+    if (localWSPlayerWrapper != null) {
+      localWSPlayerWrapper.c(paramBoolean);
     }
-    localvgh = a(this.jdField_b_of_type_Vgb);
-    if (localvgh != null) {
-      localvgh.c(paramBoolean);
+    localWSPlayerWrapper = a(this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
+    if (localWSPlayerWrapper != null) {
+      localWSPlayerWrapper.c(paramBoolean);
     }
   }
   
@@ -762,7 +753,7 @@ public class WSPlayerManager
   public void f()
   {
     this.f = false;
-    vmp.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][doOnPause] isPlaying:" + c());
+    WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][doOnPause] isPlaying:" + c());
     if (c())
     {
       this.l = true;
@@ -775,8 +766,8 @@ public class WSPlayerManager
   {
     boolean bool2 = false;
     this.k = paramBoolean;
-    vgh localvgh = b();
-    if (localvgh != null) {
+    WSPlayerWrapper localWSPlayerWrapper = b();
+    if (localWSPlayerWrapper != null) {
       if ((!paramBoolean) && (!this.g)) {
         break label74;
       }
@@ -784,9 +775,9 @@ public class WSPlayerManager
     label74:
     for (boolean bool1 = true;; bool1 = false)
     {
-      localvgh.c(bool1);
-      localvgh = a(this.jdField_b_of_type_Vgb);
-      if (localvgh != null)
+      localWSPlayerWrapper.c(bool1);
+      localWSPlayerWrapper = a(this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam);
+      if (localWSPlayerWrapper != null)
       {
         if (!paramBoolean)
         {
@@ -797,7 +788,7 @@ public class WSPlayerManager
         {
           paramBoolean = true;
         }
-        localvgh.c(paramBoolean);
+        localWSPlayerWrapper.c(paramBoolean);
       }
       return;
     }
@@ -810,9 +801,9 @@ public class WSPlayerManager
   
   public void g()
   {
-    vgh localvgh = b();
-    if (localvgh != null) {
-      localvgh.h();
+    WSPlayerWrapper localWSPlayerWrapper = b();
+    if (localWSPlayerWrapper != null) {
+      localWSPlayerWrapper.h();
     }
   }
   
@@ -838,7 +829,7 @@ public class WSPlayerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager
  * JD-Core Version:    0.7.0.1
  */

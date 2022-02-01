@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.text.TextUtils;
-import aptb;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public class ArkAppQQModule$26
+class ArkAppQQModule$26
   implements Runnable
 {
-  public ArkAppQQModule$26(aptb paramaptb, long paramLong, String paramString1, String paramString2) {}
+  ArkAppQQModule$26(ArkAppQQModule paramArkAppQQModule, long paramLong, String paramString1, String paramString2) {}
   
   public void run()
   {

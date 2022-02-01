@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import aoos;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.message.RecordForTest;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -26,7 +26,7 @@ public class ArkAppMessage
   public String appView;
   public String compatibleText;
   public String config;
-  @aoos
+  @RecordForTest
   public MessageForStructing containStructMsg;
   public int forwardID;
   public int from;
@@ -191,7 +191,7 @@ public class ArkAppMessage
     if (!TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return BaseApplicationImpl.getApplication().getString(2131690189);
+    return BaseApplicationImpl.getApplication().getString(2131690246);
   }
   
   public long optMsgSeq()
@@ -625,7 +625,7 @@ public class ArkAppMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ArkAppMessage
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.emoticon;
 
-import asie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.util.WeakReference;
 import org.json.JSONObject;
 
-public class EPRecommendTask$1
+class EPRecommendTask$1
   implements Runnable
 {
-  public EPRecommendTask$1(asie paramasie) {}
+  EPRecommendTask$1(EPRecommendTask paramEPRecommendTask) {}
   
   public void run()
   {
@@ -25,7 +24,7 @@ public class EPRecommendTask$1
       if (localObject == null) {
         return;
       }
-      localObject = VasQuickUpdateManager.getJSONFromLocal((AppRuntime)localObject, "emoji_app_vip_emoji_aio_android_config.json", true, this.this$0.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+      localObject = VasUpdateUtil.a((AppRuntime)localObject, "emoji_app_vip_emoji_aio_android_config.json", true, this.this$0.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
       this.this$0.a((JSONObject)localObject);
     }
     catch (Exception localException)
@@ -53,7 +52,7 @@ public class EPRecommendTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EPRecommendTask.1
  * JD-Core Version:    0.7.0.1
  */

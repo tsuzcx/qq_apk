@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajfb;
 import android.view.View;
-import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SwipListView;
@@ -26,7 +25,7 @@ class TroopNotifyAndRecommendView$9$1
     if ((this.a.this$0.b != null) && (this.a.this$0.b.size() > 0))
     {
       if (TroopNotifyAndRecommendView.a(this.a.this$0).getVisibility() == 8) {
-        bdla.b(this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_contacts_news", "", "notice", "unnormal_tab_exp", 0, 0, "", "", "", "");
+        ReportController.b(this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_contacts_news", "", "notice", "unnormal_tab_exp", 0, 0, "", "", "", "");
       }
       TroopNotifyAndRecommendView.a(this.a.this$0).setVisibility(0);
       if (!(this.a.this$0.b.get(0) instanceof MessageForSystemMsg))
@@ -50,7 +49,7 @@ class TroopNotifyAndRecommendView$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.9.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/lac" android:background="@drawable/gdh" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
-        <ImageView android:layout_gravity="center" android:id="@id/jnm" android:visibility="gone" android:layout_width="13.5dip" android:layout_height="13.5dip" android:src="@drawable/hoz" />
-        <ImageView android:layout_gravity="center" android:id="@id/jnn" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/ci8" />
-        <TextView android:textColor="@android:color/white" android:gravity="center" android:id="@id/f18" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_gravity="center" android:id="@id/myt" android:background="#ff222222" android:layout_width="200.0dip" android:layout_height="112.0dip" android:layout_margin="8.0dip" />
+    <ImageView android:layout_gravity="end|center|top" android:id="@id/nae" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="7.5dip" android:src="@drawable/gon" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/mz2" android:background="@drawable/d0b" android:layout_width="wrap_content" android:layout_height="16.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/nb4" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" />
+        <TextView android:textSize="10.0sp" android:textColor="#ff000000" android:layout_gravity="center_vertical" android:id="@id/odn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="4.0dip" android:text="主播暂时离开" android:includeFontPadding="false" />
     </LinearLayout>
 </FrameLayout>

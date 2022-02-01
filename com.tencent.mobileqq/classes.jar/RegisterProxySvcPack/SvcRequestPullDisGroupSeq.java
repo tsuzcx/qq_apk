@@ -12,7 +12,7 @@ public final class SvcRequestPullDisGroupSeq
   implements Cloneable
 {
   static ArrayList<PullDisSeqParam> cache_vDisInfo;
-  public ArrayList<PullDisSeqParam> vDisInfo;
+  public ArrayList<PullDisSeqParam> vDisInfo = null;
   
   static
   {

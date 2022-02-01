@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.utils;
 
-import bheh;
-
-public class JumpAction$14
+class JumpAction$14
   implements Runnable
 {
-  public JumpAction$14(bheh parambheh) {}
+  JumpAction$14(JumpAction paramJumpAction) {}
   
   public void run()
   {

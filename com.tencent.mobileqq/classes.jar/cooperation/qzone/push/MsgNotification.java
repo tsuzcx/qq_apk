@@ -10,12 +10,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
-import awxj;
-import bcvb;
-import bcvr;
-import bgyo;
-import bhkn;
-import bkxs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -23,9 +17,15 @@ import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.message.newmsg.NewMsgNotificationManager;
+import com.tencent.mobileqq.servlet.CliNotifyPush;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BadgeUtils;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.NotificationClickReceiver;
 import cooperation.qzone.QZoneClickReport;
@@ -52,7 +52,7 @@ public class MsgNotification
   public static final int RING_TYPE_NO_SOUND = 0;
   public static final int RING_TYPE_SYSTEM_SOUND = 2;
   public static final String TAG = "MsgNotification";
-  private static MsgNotification manager;
+  private static MsgNotification manager = null;
   
   public static void cleanQCirclePush()
   {
@@ -167,7 +167,7 @@ public class MsgNotification
   private String getTitle(String paramString, int paramInt)
   {
     if (!TextUtils.isEmpty(paramString)) {}
-    for (String str = paramString; paramInt == 0; str = BaseApplication.getContext().getString(2131719158)) {
+    for (String str = paramString; paramInt == 0; str = BaseApplication.getContext().getString(2131719715)) {
       return str;
     }
     int i = getUnreadCount(paramInt);
@@ -175,25 +175,25 @@ public class MsgNotification
       return str;
     }
     if (paramInt == 3000532) {
-      paramString = BaseApplication.getContext().getString(2131719814);
+      paramString = BaseApplication.getContext().getString(2131720384);
     }
     for (;;)
     {
-      return str + "(" + BaseApplication.getContext().getString(2131693165) + i + BaseApplication.getContext().getString(2131719003) + paramString + ")";
+      return str + "(" + BaseApplication.getContext().getString(2131693315) + i + BaseApplication.getContext().getString(2131719539) + paramString + ")";
       if (paramInt == 3000533)
       {
-        paramString = BaseApplication.getContext().getString(2131719815);
+        paramString = BaseApplication.getContext().getString(2131720385);
       }
       else if (paramInt == 3000534)
       {
-        paramString = BaseApplication.getContext().getString(2131719816);
+        paramString = BaseApplication.getContext().getString(2131720386);
       }
       else
       {
         if (paramInt != 3000535) {
           break;
         }
-        paramString = BaseApplication.getContext().getString(2131719817);
+        paramString = BaseApplication.getContext().getString(2131720387);
       }
     }
     return str;
@@ -327,56 +327,56 @@ public class MsgNotification
   public void showNewLocalPhotoNotification(android.content.Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     // Byte code:
-    //   0: new 63	android/content/Intent
+    //   0: new 66	android/content/Intent
     //   3: dup
-    //   4: invokespecial 292	android/content/Intent:<init>	()V
+    //   4: invokespecial 293	android/content/Intent:<init>	()V
     //   7: astore 7
     //   9: aload 7
-    //   11: ldc_w 294
-    //   14: invokestatic 300	cooperation/qzone/QzonePluginProxyActivity:setActivityNameToIntent	(Landroid/content/Intent;Ljava/lang/String;)V
+    //   11: ldc_w 295
+    //   14: invokestatic 301	cooperation/qzone/QzonePluginProxyActivity:setActivityNameToIntent	(Landroid/content/Intent;Ljava/lang/String;)V
     //   17: aload 7
-    //   19: ldc_w 302
-    //   22: invokevirtual 305	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
+    //   19: ldc_w 303
+    //   22: invokevirtual 306	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
     //   25: pop
     //   26: aload 7
-    //   28: ldc_w 307
-    //   31: ldc_w 309
-    //   34: invokevirtual 80	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   28: ldc_w 308
+    //   31: ldc_w 310
+    //   34: invokevirtual 83	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   37: pop
     //   38: aload 7
-    //   40: ldc_w 311
+    //   40: ldc_w 312
     //   43: aload 4
-    //   45: invokevirtual 80	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   45: invokevirtual 83	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   48: pop
-    //   49: new 63	android/content/Intent
+    //   49: new 66	android/content/Intent
     //   52: dup
     //   53: aload_1
-    //   54: ldc_w 392
-    //   57: invokespecial 74	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   54: ldc_w 393
+    //   57: invokespecial 77	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   60: astore 4
     //   62: aload 4
-    //   64: ldc_w 393
-    //   67: invokevirtual 135	android/content/Intent:addFlags	(I)Landroid/content/Intent;
+    //   64: ldc_w 394
+    //   67: invokevirtual 136	android/content/Intent:addFlags	(I)Landroid/content/Intent;
     //   70: pop
     //   71: aload 4
     //   73: aload 7
-    //   75: invokevirtual 396	android/content/Intent:putExtras	(Landroid/content/Intent;)Landroid/content/Intent;
+    //   75: invokevirtual 397	android/content/Intent:putExtras	(Landroid/content/Intent;)Landroid/content/Intent;
     //   78: pop
     //   79: aload 4
-    //   81: ldc_w 404
+    //   81: ldc_w 405
     //   84: sipush 245
-    //   87: invokevirtual 328	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   87: invokevirtual 329	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   90: pop
     //   91: aload_1
     //   92: sipush 245
     //   95: aload 4
-    //   97: ldc_w 405
-    //   100: invokestatic 411	android/app/PendingIntent:getActivity	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    //   97: ldc_w 406
+    //   100: invokestatic 412	android/app/PendingIntent:getActivity	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
     //   103: astore 9
     //   105: aload_1
-    //   106: invokevirtual 417	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   109: ldc_w 418
-    //   112: invokestatic 424	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   106: invokevirtual 418	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   109: ldc_w 419
+    //   112: invokestatic 425	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
     //   115: astore 4
     //   117: aload 4
     //   119: astore 7
@@ -384,144 +384,144 @@ public class MsgNotification
     //   123: ifnull +75 -> 198
     //   126: aload 4
     //   128: astore 7
-    //   130: getstatic 429	android/os/Build$VERSION:SDK_INT	I
+    //   130: getstatic 430	android/os/Build$VERSION:SDK_INT	I
     //   133: bipush 11
     //   135: if_icmplt +63 -> 198
     //   138: aload_1
-    //   139: invokevirtual 417	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   142: ldc_w 430
-    //   145: invokevirtual 435	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   139: invokevirtual 418	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   142: ldc_w 431
+    //   145: invokevirtual 436	android/content/res/Resources:getDimensionPixelSize	(I)I
     //   148: istore 5
     //   150: aload_1
-    //   151: invokevirtual 417	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   154: ldc_w 436
-    //   157: invokevirtual 435	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   151: invokevirtual 418	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   154: ldc_w 437
+    //   157: invokevirtual 436	android/content/res/Resources:getDimensionPixelSize	(I)I
     //   160: istore 6
     //   162: iload 5
     //   164: aload 4
-    //   166: invokevirtual 441	android/graphics/Bitmap:getWidth	()I
+    //   166: invokevirtual 442	android/graphics/Bitmap:getWidth	()I
     //   169: if_icmpne +17 -> 186
     //   172: aload 4
     //   174: astore 7
     //   176: iload 6
     //   178: aload 4
-    //   180: invokevirtual 444	android/graphics/Bitmap:getHeight	()I
+    //   180: invokevirtual 445	android/graphics/Bitmap:getHeight	()I
     //   183: if_icmpeq +15 -> 198
     //   186: aload 4
     //   188: iload 5
     //   190: iload 6
     //   192: iconst_0
-    //   193: invokestatic 448	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   193: invokestatic 449	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
     //   196: astore 7
-    //   198: getstatic 453	bhkn:e	Z
+    //   198: getstatic 454	com/tencent/mobileqq/utils/kapalaiadapter/MobileIssueSettings:e	Z
     //   201: ifne +175 -> 376
-    //   204: invokestatic 458	cooperation/qzone/push/QZoneNotificationAdapter:getInstance	()Lcooperation/qzone/push/QZoneNotificationAdapter;
+    //   204: invokestatic 459	cooperation/qzone/push/QZoneNotificationAdapter:getInstance	()Lcooperation/qzone/push/QZoneNotificationAdapter;
     //   207: aload 9
     //   209: aload_1
     //   210: aload 7
     //   212: aload_2
     //   213: aload_3
-    //   214: ldc_w 459
-    //   217: invokevirtual 463	cooperation/qzone/push/QZoneNotificationAdapter:newNotificationForMz	(Landroid/app/PendingIntent;Landroid/content/Context;Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)Landroid/app/Notification;
+    //   214: ldc_w 460
+    //   217: invokevirtual 464	cooperation/qzone/push/QZoneNotificationAdapter:newNotificationForMz	(Landroid/app/PendingIntent;Landroid/content/Context;Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)Landroid/app/Notification;
     //   220: astore_2
     //   221: aload_1
     //   222: iconst_0
     //   223: aload_2
-    //   224: invokestatic 469	bkxs:a	(Landroid/content/Context;ILandroid/app/Notification;)V
-    //   227: invokestatic 32	com/tencent/commonsdk/util/notification/QQNotificationManager:getInstance	()Lcom/tencent/commonsdk/util/notification/QQNotificationManager;
+    //   224: invokestatic 470	com/tencent/util/BadgeUtils:a	(Landroid/content/Context;ILandroid/app/Notification;)V
+    //   227: invokestatic 35	com/tencent/commonsdk/util/notification/QQNotificationManager:getInstance	()Lcom/tencent/commonsdk/util/notification/QQNotificationManager;
     //   230: astore_1
     //   231: aload_1
     //   232: ifnull +14 -> 246
     //   235: aload_1
-    //   236: ldc_w 471
+    //   236: ldc_w 472
     //   239: sipush 245
     //   242: aload_2
-    //   243: invokevirtual 475	com/tencent/commonsdk/util/notification/QQNotificationManager:notify	(Ljava/lang/String;ILandroid/app/Notification;)V
+    //   243: invokevirtual 476	com/tencent/commonsdk/util/notification/QQNotificationManager:notify	(Ljava/lang/String;ILandroid/app/Notification;)V
     //   246: return
     //   247: astore 4
-    //   249: invokestatic 369	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   249: invokestatic 370	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   252: ifeq +33 -> 285
     //   255: ldc 18
     //   257: iconst_2
-    //   258: new 270	java/lang/StringBuilder
+    //   258: new 271	java/lang/StringBuilder
     //   261: dup
-    //   262: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   265: ldc_w 477
-    //   268: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   262: invokespecial 272	java/lang/StringBuilder:<init>	()V
+    //   265: ldc_w 478
+    //   268: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   271: aload 4
-    //   273: invokevirtual 478	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   276: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   279: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   282: invokestatic 480	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   273: invokevirtual 479	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
+    //   276: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   279: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   282: invokestatic 481	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   285: aconst_null
     //   286: astore 4
     //   288: goto -171 -> 117
     //   291: astore 8
     //   293: aload_1
-    //   294: invokevirtual 417	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   297: ldc_w 481
-    //   300: invokestatic 424	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   294: invokevirtual 418	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   297: ldc_w 482
+    //   300: invokestatic 425	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
     //   303: astore 7
     //   305: aload 7
     //   307: astore 4
     //   309: ldc 18
     //   311: iconst_1
-    //   312: ldc_w 483
+    //   312: ldc_w 484
     //   315: aload 8
-    //   317: invokestatic 246	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   317: invokestatic 247	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   320: aload 4
     //   322: astore 7
     //   324: goto -126 -> 198
     //   327: astore 8
     //   329: aload 4
     //   331: astore 7
-    //   333: invokestatic 369	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   333: invokestatic 370	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   336: ifeq -138 -> 198
     //   339: ldc 18
     //   341: iconst_2
-    //   342: new 270	java/lang/StringBuilder
+    //   342: new 271	java/lang/StringBuilder
     //   345: dup
-    //   346: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   349: ldc_w 477
-    //   352: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   346: invokespecial 272	java/lang/StringBuilder:<init>	()V
+    //   349: ldc_w 478
+    //   352: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   355: aload 8
-    //   357: invokevirtual 478	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   360: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   363: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   366: invokestatic 480	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   357: invokevirtual 479	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
+    //   360: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   363: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   366: invokestatic 481	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   369: aload 4
     //   371: astore 7
     //   373: goto -175 -> 198
-    //   376: ldc_w 485
-    //   379: invokestatic 490	com/tencent/mobileqq/utils/DeviceInfoUtil:getManufacturer	()Ljava/lang/String;
-    //   382: invokevirtual 494	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   376: ldc_w 486
+    //   379: invokestatic 491	com/tencent/mobileqq/utils/DeviceInfoUtil:k	()Ljava/lang/String;
+    //   382: invokevirtual 495	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   385: ifeq +23 -> 408
-    //   388: invokestatic 458	cooperation/qzone/push/QZoneNotificationAdapter:getInstance	()Lcooperation/qzone/push/QZoneNotificationAdapter;
+    //   388: invokestatic 459	cooperation/qzone/push/QZoneNotificationAdapter:getInstance	()Lcooperation/qzone/push/QZoneNotificationAdapter;
     //   391: aload 9
     //   393: aload_1
     //   394: aload 7
     //   396: aload_2
     //   397: aload_3
-    //   398: ldc_w 459
-    //   401: invokevirtual 497	cooperation/qzone/push/QZoneNotificationAdapter:newNotificationForOppo	(Landroid/app/PendingIntent;Landroid/content/Context;Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)Landroid/app/Notification;
+    //   398: ldc_w 460
+    //   401: invokevirtual 498	cooperation/qzone/push/QZoneNotificationAdapter:newNotificationForOppo	(Landroid/app/PendingIntent;Landroid/content/Context;Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)Landroid/app/Notification;
     //   404: astore_2
     //   405: goto -184 -> 221
-    //   408: invokestatic 458	cooperation/qzone/push/QZoneNotificationAdapter:getInstance	()Lcooperation/qzone/push/QZoneNotificationAdapter;
+    //   408: invokestatic 459	cooperation/qzone/push/QZoneNotificationAdapter:getInstance	()Lcooperation/qzone/push/QZoneNotificationAdapter;
     //   411: aload 9
     //   413: aload_1
     //   414: aload 7
     //   416: aload_2
     //   417: aload_3
-    //   418: ldc_w 459
-    //   421: invokevirtual 500	cooperation/qzone/push/QZoneNotificationAdapter:buildNotification	(Landroid/app/PendingIntent;Landroid/content/Context;Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)Landroid/app/Notification;
+    //   418: ldc_w 460
+    //   421: invokevirtual 501	cooperation/qzone/push/QZoneNotificationAdapter:buildNotification	(Landroid/app/PendingIntent;Landroid/content/Context;Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)Landroid/app/Notification;
     //   424: astore_2
     //   425: goto -204 -> 221
     //   428: astore_1
     //   429: ldc 18
     //   431: iconst_1
-    //   432: ldc_w 502
+    //   432: ldc_w 503
     //   435: aload_1
-    //   436: invokestatic 246	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   436: invokestatic 247	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   439: return
     //   440: astore 8
     //   442: goto -113 -> 329
@@ -567,7 +567,7 @@ public class MsgNotification
     } while (FriendsStatusUtil.a(paramQQAppInterface.getApp()));
     playSound(paramInt1, paramQQAppInterface);
     paramInt1 = 1;
-    Object localObject3 = (bcvr)paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
+    Object localObject3 = (QZoneManagerImp)paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
     Object localObject1;
     switch (paramInt2)
     {
@@ -594,20 +594,20 @@ public class MsgNotification
       if (paramInt2 == 366)
       {
         paramString1 = getTitle(paramString1, i);
-        paramInt3 = 2130847527;
+        paramInt3 = 2130847884;
         localObject1 = null;
         localObject3 = null;
         if (paramInt2 != 8) {
           break label1082;
         }
-        localObject5 = awxj.a(paramQQAppInterface);
+        localObject5 = NewMsgNotificationManager.a(paramQQAppInterface);
         localObject1 = localObject3;
-        if (((awxj)localObject5).a(paramString3, paramString4)) {
-          localObject1 = ((awxj)localObject5).a(paramString3, paramString4, null);
+        if (((NewMsgNotificationManager)localObject5).a(paramString3, paramString4)) {
+          localObject1 = ((NewMsgNotificationManager)localObject5).a(paramString3, paramString4, null);
         }
         paramString3 = (String)localObject1;
         label296:
-        if (bhkn.e) {
+        if (MobileIssueSettings.e) {
           break label1390;
         }
         paramString1 = QZoneNotificationAdapter.getInstance().newNotificationForMz((PendingIntent)localObject4, paramQQAppInterface.getApp(), paramString3, paramString1, paramString2, paramInt3);
@@ -629,7 +629,7 @@ public class MsgNotification
                 paramString2.putExtra("pushtype", paramInt2);
                 paramString1.deleteIntent = PendingIntent.getBroadcast(paramQQAppInterface.getApp(), i, paramString2, 134217728);
               }
-              bkxs.a(paramQQAppInterface.getApp(), 0, paramString1);
+              BadgeUtils.a(paramQQAppInterface.getApp(), 0, paramString1);
               if (localStatus != AppRuntime.Status.dnd) {
                 break label1448;
               }
@@ -652,8 +652,8 @@ public class MsgNotification
               if (localObject3 == null) {
                 break label1560;
               }
-              paramInt1 = ((bcvr)localObject3).a(1);
-              ((bcvr)localObject3).a(1, paramInt1);
+              paramInt1 = ((QZoneManagerImp)localObject3).a(1);
+              ((QZoneManagerImp)localObject3).a(1, paramInt1);
               if (paramInt1 > 0) {
                 break label1557;
               }
@@ -690,15 +690,15 @@ public class MsgNotification
                       localObject1 = localObject3;
                       localObject5 = new QzNotificationStruct(((Uri)localObject4).getQueryParameter("room"), paramString2, paramBoolean1, paramInt2, paramString5, paramString6);
                       localObject1 = localObject3;
-                      if (bcvb.a == null)
+                      if (CliNotifyPush.a == null)
                       {
                         localObject1 = localObject3;
-                        bcvb.a = Collections.synchronizedList(new ArrayList());
+                        CliNotifyPush.a = Collections.synchronizedList(new ArrayList());
                       }
                       if (paramBoolean2)
                       {
                         localObject1 = localObject3;
-                        bcvb.a.add(localObject5);
+                        CliNotifyPush.a.add(localObject5);
                       }
                       try
                       {
@@ -769,30 +769,30 @@ public class MsgNotification
           {
             if ((paramInt2 == 2) || (paramInt2 == 8) || (paramInt2 == 4))
             {
-              paramString1 = BaseApplication.getContext().getString(2131718181);
+              paramString1 = BaseApplication.getContext().getString(2131718685);
               break label240;
             }
-            paramString1 = BaseApplication.getContext().getString(2131718181) + "(" + BaseApplication.getContext().getString(2131693165) + paramInt1 + BaseApplication.getContext().getString(2131719003) + BaseApplication.getContext().getString(2131719813) + ")";
+            paramString1 = BaseApplication.getContext().getString(2131718685) + "(" + BaseApplication.getContext().getString(2131693315) + paramInt1 + BaseApplication.getContext().getString(2131719539) + BaseApplication.getContext().getString(2131720383) + ")";
             break label240;
           }
-          paramString1 = BaseApplication.getContext().getString(2131718181);
+          paramString1 = BaseApplication.getContext().getString(2131718685);
           break label240;
           label1082:
           if (paramInt2 == 366)
           {
-            paramInt3 = 2130841445;
-            localBitmap = bgyo.a(paramQQAppInterface.getApp().getResources(), 2130844021);
-            localObject5 = awxj.a(paramQQAppInterface);
+            paramInt3 = 2130841588;
+            localBitmap = BitmapManager.a(paramQQAppInterface.getApp().getResources(), 2130844197);
+            localObject5 = NewMsgNotificationManager.a(paramQQAppInterface);
             localObject1 = localBitmap;
-            if (((awxj)localObject5).a(paramString3, paramString4)) {
-              localObject1 = ((awxj)localObject5).a(paramString3, paramString4, localBitmap);
+            if (((NewMsgNotificationManager)localObject5).a(paramString3, paramString4)) {
+              localObject1 = ((NewMsgNotificationManager)localObject5).a(paramString3, paramString4, localBitmap);
             }
             paramString3 = (String)localObject1;
             break label296;
           }
           try
           {
-            paramString3 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130848511);
+            paramString3 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130848891);
             paramString4 = paramString3;
             if (paramString3 != null) {
               paramString4 = paramString3;
@@ -830,7 +830,7 @@ public class MsgNotification
             {
               try
               {
-                paramString4 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130848407);
+                paramString4 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130848764);
                 paramString3 = paramString4;
                 QLog.e("MsgNotification", 1, "use small icon ,exp:", localThrowable);
                 paramString3 = paramString4;
@@ -846,7 +846,7 @@ public class MsgNotification
         }
         break label296;
         label1390:
-        if ("oppo".equalsIgnoreCase(DeviceInfoUtil.getManufacturer())) {
+        if ("oppo".equalsIgnoreCase(DeviceInfoUtil.k())) {
           paramString1 = QZoneNotificationAdapter.getInstance().newNotificationForOppo(localException5, paramQQAppInterface.getApp(), paramString3, paramString1, paramString2, paramInt3);
         } else {
           paramString1 = QZoneNotificationAdapter.getInstance().buildNotification(localException5, paramQQAppInterface.getApp(), paramString3, paramString1, paramString2, paramInt3);
@@ -894,7 +894,7 @@ public class MsgNotification
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.push.MsgNotification
  * JD-Core Version:    0.7.0.1
  */

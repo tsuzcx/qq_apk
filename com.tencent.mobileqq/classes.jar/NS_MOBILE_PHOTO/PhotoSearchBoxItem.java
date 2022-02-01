@@ -10,7 +10,7 @@ public final class PhotoSearchBoxItem
 {
   static ArrayList<PhotoSearchBoxItemElem> cache_elems = new ArrayList();
   public String desc = "";
-  public ArrayList<PhotoSearchBoxItemElem> elems;
+  public ArrayList<PhotoSearchBoxItemElem> elems = null;
   
   static
   {

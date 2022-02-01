@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhjl;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import mqq.app.Packet;
 
 public class MiniAppDataReportServlet
@@ -38,7 +38,7 @@ public class MiniAppDataReportServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_report_transfer.DataReport");
-    paramPacket.putSendData(bhjl.a((byte[])localObject));
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

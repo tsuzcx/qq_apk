@@ -14,13 +14,13 @@ public final class SvcRspGetDevLoginInfo
   static ArrayList<SvcDevLoginInfo> cache_vecAuthLoginDevInfo;
   static ArrayList<SvcDevLoginInfo> cache_vecCurrentLoginDevInfo;
   static ArrayList<SvcDevLoginInfo> cache_vecHistoryLoginDevInfo;
-  public long iNextItemIndex;
-  public int iResult;
-  public long iTotalItemCount;
+  public long iNextItemIndex = 0L;
+  public int iResult = 0;
+  public long iTotalItemCount = 0L;
   public String strResult = "";
-  public ArrayList<SvcDevLoginInfo> vecAuthLoginDevInfo;
-  public ArrayList<SvcDevLoginInfo> vecCurrentLoginDevInfo;
-  public ArrayList<SvcDevLoginInfo> vecHistoryLoginDevInfo;
+  public ArrayList<SvcDevLoginInfo> vecAuthLoginDevInfo = null;
+  public ArrayList<SvcDevLoginInfo> vecCurrentLoginDevInfo = null;
+  public ArrayList<SvcDevLoginInfo> vecHistoryLoginDevInfo = null;
   
   static
   {

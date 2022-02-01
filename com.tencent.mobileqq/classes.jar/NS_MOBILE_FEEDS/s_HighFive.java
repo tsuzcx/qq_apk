@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_HighFive
   extends JceStruct
 {
-  public long iCount;
+  public long iCount = 0L;
   public String strResourceUrl = "";
   
   public s_HighFive() {}

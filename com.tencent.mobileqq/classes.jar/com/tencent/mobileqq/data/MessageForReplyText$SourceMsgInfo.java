@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import axai;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupMsgProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 
@@ -29,7 +29,7 @@ public class MessageForReplyText$SourceMsgInfo
   public long origUid;
   public int replyPicHeight;
   public int replyPicWidth;
-  private long uniseq;
+  private long uniseq = 0L;
   
   public MessageForReplyText$SourceMsgInfo() {}
   
@@ -70,7 +70,7 @@ public class MessageForReplyText$SourceMsgInfo
     do
     {
       return;
-      paramQQAppInterface = axai.a(paramQQAppInterface, paramMessageRecord);
+      paramQQAppInterface = MsgBackupMsgProxy.a(paramQQAppInterface, paramMessageRecord);
     } while (paramQQAppInterface == null);
     setSourceMsgByte(paramQQAppInterface);
     setUniSeq(paramMessageRecord.uniseq, false);
@@ -107,12 +107,12 @@ public class MessageForReplyText$SourceMsgInfo
     if (this.mSourceMessageByte == null) {
       return null;
     }
-    return axai.a(paramQQAppInterface, this.mSourceMessageByte);
+    return MsgBackupMsgProxy.a(paramQQAppInterface, this.mSourceMessageByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -39,27 +39,7 @@ public class RegionView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public int a()
-  {
-    return this.b;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public int c()
-  {
-    return this.d;
-  }
-  
-  public int d()
-  {
-    return this.e;
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.b == 0) {
@@ -174,7 +154,7 @@ public class RegionView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.cropvideo.RegionView
  * JD-Core Version:    0.7.0.1
  */

@@ -7,18 +7,16 @@ import com.tencent.qphone.base.util.QLog;
 
 class QQCustomDialog$BrandColorManager
 {
-  static final int INVALID_COLOR = 0;
-  private static final String TAG = "BrandColorManager";
-  private int color = 0;
-  private View dialogBrandColorView;
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
   
-  private void setBrandBorderColor()
+  private void a()
   {
-    if ((this.dialogBrandColorView != null) && (this.color != 0))
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
     {
-      Drawable localDrawable = this.dialogBrandColorView.getBackground().mutate();
+      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
       if ((localDrawable instanceof GradientDrawable)) {
-        ((GradientDrawable)localDrawable).setColor(this.color);
+        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
       }
     }
     else
@@ -28,16 +26,10 @@ class QQCustomDialog$BrandColorManager
     QLog.w("BrandColorManager", 4, "set band border-color fail");
   }
   
-  void setColor(int paramInt)
+  void a(View paramView)
   {
-    this.color = paramInt;
-    setBrandBorderColor();
-  }
-  
-  void setDialogBrandColorView(View paramView)
-  {
-    this.dialogBrandColorView = paramView;
-    setBrandBorderColor();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.startup.step;
 
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
 
 final class DtSdkInitStep$2
@@ -15,7 +16,9 @@ final class DtSdkInitStep$2
       long l = System.currentTimeMillis();
       UserAction.initUserAction(localBaseApplicationImpl, false);
       DtSdkInitStep.d();
-      UserAction.setLogAble(false, false);
+      if (!AppSetting.c()) {
+        UserAction.setLogAble(false, false);
+      }
       com.tencent.beacon.upload.UploadStrategy.DEFAULT_SENSOR_ENABLE = false;
       QLog.d("DtSdkInitStep", 1, "init beacon-dt success ! cost : " + (System.currentTimeMillis() - l) + " ms");
       return;

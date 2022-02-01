@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
-import awfq;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.listentogether.ListenTogetherUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ListenTogetherAppInfo
   extends PlusPanelAppInfo
 {
-  public ListenTogetherAppInfo() {}
+  ListenTogetherAppInfo() {}
   
   public ListenTogetherAppInfo(int paramInt)
   {
@@ -25,7 +25,7 @@ public class ListenTogetherAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839208;
+    return 2130839277;
   }
   
   public int getAppID()
@@ -54,19 +54,19 @@ public class ListenTogetherAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131693532);
+    return BaseApplicationImpl.getContext().getString(2131693688);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if ((paramBaseChatPie == null) || (paramBaseChatPie.getActivity() == null)) {}
+    if ((paramBaseChatPie == null) || (paramBaseChatPie.a() == null)) {}
     for (;;)
     {
       return;
-      QQAppInterface localQQAppInterface = paramBaseChatPie.app;
+      QQAppInterface localQQAppInterface = paramBaseChatPie.a;
       int j;
       int k;
-      if (paramSessionInfo.curType == 0)
+      if (paramSessionInfo.jdField_a_of_type_Int == 0)
       {
         j = 0;
         k = 2;
@@ -78,7 +78,7 @@ public class ListenTogetherAppInfo
         int i;
         if (j != 0)
         {
-          localTroopInfo = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.curFriendUin);
+          localTroopInfo = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
           str = localQQAppInterface.getCurrentAccountUin();
           if (localTroopInfo.isTroopOwner(str)) {
             i = 0;
@@ -87,18 +87,18 @@ public class ListenTogetherAppInfo
         for (;;)
         {
           label81:
-          awfq.b(localQQAppInterface, paramBaseChatPie.getActivity(), k, paramSessionInfo.curFriendUin, 0);
-          if ((j == 0) && (awfq.a(localQQAppInterface, "listen_together_c2c_aio_red_dot_show", true, false)))
+          ListenTogetherUtils.b(localQQAppInterface, paramBaseChatPie.a(), k, paramSessionInfo.jdField_a_of_type_JavaLangString, 0);
+          if ((j == 0) && (ListenTogetherUtils.a(localQQAppInterface, "listen_together_c2c_aio_red_dot_show", true, false)))
           {
-            awfq.a(localQQAppInterface, "listen_together_c2c_aio_red_dot_show", false, false);
-            paramahvi.b(paramBaseChatPie);
+            ListenTogetherUtils.a(localQQAppInterface, "listen_together_c2c_aio_red_dot_show", false, false);
+            paramPlusPanelViewModel.b(paramBaseChatPie);
           }
           if (j == 0) {}
-          for (paramahvi = "c2c_AIO";; paramahvi = "Grp_AIO")
+          for (paramPlusPanelViewModel = "c2c_AIO";; paramPlusPanelViewModel = "Grp_AIO")
           {
-            bdla.b(null, "dc00899", paramahvi, "", "music_tab", "clk_panelmusic", 0, 0, paramSessionInfo.curFriendUin, i + "", i + "", "");
+            ReportController.b(null, "dc00899", paramPlusPanelViewModel, "", "music_tab", "clk_panelmusic", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, i + "", i + "", "");
             return;
-            if (paramSessionInfo.curType != 1) {
+            if (paramSessionInfo.jdField_a_of_type_Int != 1) {
               break label249;
             }
             j = 1;

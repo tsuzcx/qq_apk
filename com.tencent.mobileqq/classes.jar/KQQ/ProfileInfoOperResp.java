@@ -9,9 +9,9 @@ public final class ProfileInfoOperResp
   extends JceStruct
 {
   static ArrayList<ProfileInfoResp> cache_vecInfo;
-  public byte cResult;
-  public long uin;
-  public ArrayList<ProfileInfoResp> vecInfo;
+  public byte cResult = 0;
+  public long uin = 0L;
+  public ArrayList<ProfileInfoResp> vecInfo = null;
   
   public ProfileInfoOperResp() {}
   

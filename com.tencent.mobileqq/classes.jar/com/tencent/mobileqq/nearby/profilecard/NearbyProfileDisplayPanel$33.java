@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ayek;
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class NearbyProfileDisplayPanel$33
+class NearbyProfileDisplayPanel$33
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$33(ayek paramayek, int paramInt) {}
+  NearbyProfileDisplayPanel$33(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, int paramInt) {}
   
   public void run()
   {
-    bdla.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "CliOper", "", "", ayek.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], ayek.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], 0, 0, "", "", "", "");
-    bdla.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
+    ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "CliOper", "", "", NearbyProfileDisplayPanel.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], NearbyProfileDisplayPanel.jdField_a_of_type_ArrayOfJavaLangString[(this.a - 1)], 0, 0, "", "", "", "");
+    ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
   }
 }
 

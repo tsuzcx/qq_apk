@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.share;
 
 import android.app.Activity;
-import bhdj;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -20,10 +20,10 @@ class MiniProgramShareUtils$2$1
       if (this.this$0.val$listener != null) {
         this.this$0.val$listener.onShared(this.val$finalNeedShareCallback.booleanValue(), false);
       }
-      bhdj.a(this.this$0.val$activity, 233, this.this$0.val$activity.getString(2131718769), this.val$finalErrMsg, new MiniProgramShareUtils.2.1.1(this), null).show();
+      DialogUtil.a(this.this$0.val$activity, 233, this.this$0.val$activity.getString(2131719294), this.val$finalErrMsg, new MiniProgramShareUtils.2.1.1(this), null).show();
       return;
     }
-    QQToast.a(this.this$0.val$activity, 1, 2131718769, 0).a();
+    QQToast.a(this.this$0.val$activity, 1, 2131719294, 0).a();
   }
 }
 

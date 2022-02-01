@@ -4,31 +4,40 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import apau;
-import bhjl;
-import bmoq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.applets.PublicAccountEventReport;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
+import com.tencent.mobileqq.tianshu.data.TianShuAdPosItemData;
+import com.tencent.mobileqq.tianshu.data.TianShuGetAdvCallback;
+import com.tencent.mobileqq.tianshu.data.TianShuReportData;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.mobileqq.vas.api.IVasService;
+import com.tencent.mobileqq.vas.tianshu.ITianshuWebManager;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QUA;
+import cooperation.vip.VasC2SReporter;
 import cooperation.vip.pb.TianShuAccess.AdItem;
+import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
 import cooperation.vip.pb.TianShuAccess.AdPosItem;
 import cooperation.vip.pb.TianShuAccess.CommInfo;
 import cooperation.vip.pb.TianShuAccess.GetAdsReq;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import cooperation.vip.pb.TianShuAccess.MapEntry;
+import cooperation.vip.pb.TianShuAccess.RspEntry;
 import cooperation.vip.pb.TianShuReport.UserActionMultiReportReq;
 import cooperation.vip.pb.TianShuReport.UserActionMultiReportRsp;
 import cooperation.vip.pb.TianShuReport.UserCommReport;
+import cooperation.vip.utils.Tools;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,29 +48,67 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class TianShuManager
 {
   private static final String SP_NAME = "tianshu_manager";
   private static final String SP_TIME_DELAY_KEY = "time_delay";
   private static final String TAG = "TianShuManager";
-  private static TianShuManager mInstance;
+  private static TianShuManager mInstance = null;
   private final AtomicBoolean mLockFlag = new AtomicBoolean(false);
   private final ArrayList<TianShuReportData> mReportList = new ArrayList();
-  private ConcurrentHashMap<String, String> mTianshuTraceInfoCache = new ConcurrentHashMap();
+  private final ConcurrentHashMap<String, String> mTianshuTraceInfoCache = new ConcurrentHashMap();
   private long mTimeDelay = BaseApplicationImpl.getApplication().getSharedPreferences("tianshu_manager", 4).getLong("time_delay", 3000L);
   private HashMap<Long, WeakReference<TianShuGetAdvCallback>> mWeakCallbackHashMap = new HashMap();
+  
+  private void cacheNecessaryDataForReport(List<TianShuAccess.RspEntry> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      Object localObject = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        ((ArrayList)localObject).addAll(((TianShuAccess.AdPlacementInfo)((TianShuAccess.RspEntry)paramList.next()).value.get()).lst.get());
+      }
+      paramList = ((ArrayList)localObject).iterator();
+      while (paramList.hasNext())
+      {
+        localObject = (TianShuAccess.AdItem)paramList.next();
+        VasC2SReporter.a().a((TianShuAccess.AdItem)localObject);
+        cacheTraceInfo((TianShuAccess.AdItem)localObject);
+      }
+    }
+  }
+  
+  private void cacheTraceInfo(TianShuAccess.AdItem paramAdItem)
+  {
+    if (paramAdItem == null) {}
+    String str;
+    do
+    {
+      return;
+      str = String.valueOf(paramAdItem.iAdId.get());
+      paramAdItem = paramAdItem.traceinfo.get();
+    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramAdItem)));
+    this.mTianshuTraceInfoCache.put(str, paramAdItem);
+    QLog.i("TianShuManager", 1, "cacheTraceInfo mTianshuTraceInfoCache done:" + str + "---" + paramAdItem);
+  }
   
   private static TianShuAccess.AdPosItem convertAdItemToPb(TianShuAdPosItemData paramTianShuAdPosItemData)
   {
     TianShuAccess.AdPosItem localAdPosItem = new TianShuAccess.AdPosItem();
-    localAdPosItem.posId.set(paramTianShuAdPosItemData.mPosId);
-    localAdPosItem.nNeedCnt.set(paramTianShuAdPosItemData.mNeedCnt);
-    if (paramTianShuAdPosItemData.mExtraData != null)
+    localAdPosItem.posId.set(paramTianShuAdPosItemData.jdField_a_of_type_Int);
+    localAdPosItem.nNeedCnt.set(paramTianShuAdPosItemData.b);
+    if (paramTianShuAdPosItemData.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      paramTianShuAdPosItemData = paramTianShuAdPosItemData.mExtraData.entrySet().iterator();
+      paramTianShuAdPosItemData = paramTianShuAdPosItemData.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
       while (paramTianShuAdPosItemData.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)paramTianShuAdPosItemData.next();
@@ -82,14 +129,14 @@ public class TianShuManager
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     TianShuReport.UserActionMultiReportReq localUserActionMultiReportReq = new TianShuReport.UserActionMultiReportReq();
     NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), TianShuServlet.class);
-    localUserActionMultiReportReq.user_comm_report.set(bmoq.a());
+    localUserActionMultiReportReq.user_comm_report.set(Tools.a());
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
       TianShuReportData localTianShuReportData = (TianShuReportData)paramArrayList.next();
-      localUserActionMultiReportReq.report_infos.add(bmoq.a(localTianShuReportData));
+      localUserActionMultiReportReq.report_infos.add(Tools.a(localTianShuReportData));
     }
-    localNewIntent.putExtra("data", bhjl.a(localUserActionMultiReportReq.toByteArray()));
+    localNewIntent.putExtra("data", WupUtil.a(localUserActionMultiReportReq.toByteArray()));
     localNewIntent.putExtra("cmd", "TianShu.UserActionMultiReport");
     localAppRuntime.startServlet(localNewIntent);
   }
@@ -113,11 +160,11 @@ public class TianShuManager
     localCommInfo.lUin.set(l);
     localCommInfo.strApp.set("sq");
     localCommInfo.strOs.set("and");
-    localCommInfo.strDeviceInfo.set(String.valueOf(bmoq.b()));
+    localCommInfo.strDeviceInfo.set(String.valueOf(Tools.b()));
     localCommInfo.strVersion.set(AppSetting.f());
-    String str = LbsManagerService.getCityCode();
+    String str = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCityCode();
     localCommInfo.strCityCode.set(String.valueOf(str));
-    localCommInfo.strQimei.set(String.valueOf(bmoq.a()));
+    localCommInfo.strQimei.set(String.valueOf(Tools.a()));
     localCommInfo.strQua.set(String.valueOf(QUA.getQUA3()));
     return localCommInfo;
   }
@@ -135,6 +182,52 @@ public class TianShuManager
     finally {}
   }
   
+  private static void setLastClickAdId(TianShuReportData paramTianShuReportData)
+  {
+    if (paramTianShuReportData == null) {}
+    while ((paramTianShuReportData.d != 102) && (paramTianShuReportData.d != 118) && (paramTianShuReportData.d != 123) && (paramTianShuReportData.d != 124) && (paramTianShuReportData.d != 125) && (paramTianShuReportData.d != 134) && (paramTianShuReportData.d != 138) && (paramTianShuReportData.d != 140) && (paramTianShuReportData.d != 142)) {
+      return;
+    }
+    String str2 = paramTianShuReportData.l;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = getInstance().getTraceInfoFromCache(paramTianShuReportData.g);
+    }
+    setLastClickAdTraceInfo(paramTianShuReportData.g, str1);
+  }
+  
+  public static void setLastClickAdTraceInfo(String paramString1, String paramString2)
+  {
+    String str = "{}";
+    if (QLog.isColorLevel()) {
+      QLog.i("TianShuManager", 1, "adId:" + paramString1 + " traceInfo:" + paramString2);
+    }
+    localObject = str;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        localObject = str;
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("adId", paramString1);
+          ((JSONObject)localObject).put("traceInfo", paramString2);
+          localObject = ((JSONObject)localObject).toString();
+        }
+      }
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        QLog.e("TianShuManager", 1, "setLastClickAdTraceInfo error," + paramString1);
+        localObject = "{}";
+      }
+    }
+    ((IVasService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IVasService.class, "")).getTianshuWebManager().a((String)localObject);
+  }
+  
   private void updateReportDelayTime(int paramInt)
   {
     if (paramInt > 0)
@@ -146,25 +239,6 @@ public class TianShuManager
     }
   }
   
-  public void cacheTraceInfo(TianShuAccess.AdItem paramAdItem)
-  {
-    if (paramAdItem == null) {}
-    String str;
-    do
-    {
-      return;
-      if (this.mTianshuTraceInfoCache == null)
-      {
-        QLog.e("TianShuManager", 1, "cacheTraceInfo mTianshuTraceInfoCache is null");
-        return;
-      }
-      str = String.valueOf(paramAdItem.iAdId.get());
-      paramAdItem = paramAdItem.traceinfo.get();
-    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramAdItem)));
-    this.mTianshuTraceInfoCache.put(str, paramAdItem);
-    QLog.i("TianShuManager", 1, "cacheTraceInfo mTianshuTraceInfoCache done:" + str + "---" + paramAdItem);
-  }
-  
   public void cacheTraceInfo(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
@@ -172,26 +246,23 @@ public class TianShuManager
     do
     {
       return;
-      str = apau.a(paramString);
+      str = PublicAccountEventReport.a(paramString);
     } while (TextUtils.isEmpty(str));
     this.mTianshuTraceInfoCache.put(str, paramString);
     QLog.i("TianShuManager", 1, "cacheTraceInfo mTianshuTraceInfoCache done:" + str + "---" + paramString);
   }
   
-  public void clearTraceInfoCache()
+  public void clearNecessaryDataCacheForReport()
   {
-    if (this.mTianshuTraceInfoCache != null) {
-      this.mTianshuTraceInfoCache.clear();
+    this.mTianshuTraceInfoCache.clear();
+    VasC2SReporter.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.i("TianShuManager", 1, "do clearNecessaryDataCacheForReport");
     }
   }
   
   public String getTraceInfoFromCache(String paramString)
   {
-    if (this.mTianshuTraceInfoCache == null)
-    {
-      QLog.e("TianShuManager", 1, "getADFromTianShuCache mTianshuTraceInfoCache is null");
-      return "";
-    }
     if ((!TextUtils.isEmpty(paramString)) && (this.mTianshuTraceInfoCache.containsKey(paramString))) {
       return (String)this.mTianshuTraceInfoCache.get(paramString);
     }
@@ -229,18 +300,21 @@ public class TianShuManager
           localGetAdsRsp.mergeFrom(arrayOfByte);
           i = localGetAdsRsp.code.get();
           if (i != 0) {
-            break label244;
+            break label269;
           }
           if (QLog.isColorLevel()) {
             QLog.d("TianShuManager", 2, "onReceive success " + i);
           }
-          if (paramIntent != null)
-          {
+          if (paramIntent != null) {
             paramIntent.onGetAdvs(true, localGetAdsRsp);
-            return;
           }
-          QLog.e("TianShuManager", 1, "callback == null");
-          return;
+          while (!localGetAdsRsp.mapAds.isEmpty())
+          {
+            cacheNecessaryDataForReport(localGetAdsRsp.mapAds.get());
+            return;
+            QLog.e("TianShuManager", 1, "callback == null");
+          }
+          paramIntent.onGetAdvs(false, localGetAdsRsp);
         }
         catch (Exception paramFromServiceMsg)
         {
@@ -249,9 +323,8 @@ public class TianShuManager
             return;
           }
         }
-        paramIntent.onGetAdvs(false, localGetAdsRsp);
         return;
-        label244:
+        label269:
         QLog.d("TianShuManager", 2, "onReceive ret " + i);
         if (paramIntent == null) {
           return;
@@ -313,6 +386,8 @@ public class TianShuManager
       return;
     }
     enqueueReport(paramTianShuReportData);
+    setLastClickAdId(paramTianShuReportData);
+    VasC2SReporter.a().a(paramTianShuReportData);
   }
   
   public void requestAdv(List<TianShuAdPosItemData> paramList, TianShuGetAdvCallback paramTianShuGetAdvCallback)
@@ -332,7 +407,7 @@ public class TianShuManager
       localGetAdsReq.lstPos.add(convertAdItemToPb(localTianShuAdPosItemData));
     }
     paramList = new NewIntent(paramTianShuGetAdvCallback.getApplication(), TianShuServlet.class);
-    paramList.putExtra("data", bhjl.a(localGetAdsReq.toByteArray()));
+    paramList.putExtra("data", WupUtil.a(localGetAdsReq.toByteArray()));
     paramList.putExtra("cmd", "TianShu.GetAds");
     paramList.putExtra("requestKey", l);
     paramTianShuGetAdvCallback.startServlet(paramList);
@@ -340,7 +415,7 @@ public class TianShuManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.tianshu.TianShuManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package dov.com.qq.im.ae.cmshow;
 
-import aeow;
-import aeox;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,25 +14,28 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bnqm;
-import bnqu;
-import bnrh;
+import com.tencent.biz.subscribe.utils.NavigationBarUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.PublicFragmentActivityCallBackInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForPeak;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.startup.step.InitMemoryCache;
 import com.tencent.mobileqq.startup.step.InitUrlDrawable;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.util.AECameraPrefsUtil;
+import dov.com.qq.im.ae.util.AEQLog;
 import mqq.app.AppRuntime;
-import zza;
 
 public class AECMShowGuideFragment
   extends PublicBaseFragment
-  implements aeox, View.OnClickListener
+  implements View.OnClickListener, PublicFragmentActivityCallBackInterface
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -47,21 +48,22 @@ public class AECMShowGuideFragment
   
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt)
   {
-    aeow.a(paramActivity, paramIntent, PublicFragmentActivityForPeak.class, AECMShowGuideFragment.class, paramInt);
+    PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, PublicFragmentActivityForPeak.class, AECMShowGuideFragment.class, paramInt);
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369413));
-    this.b = ((ImageView)paramView.findViewById(2131369414));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379970));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369672));
+    this.b = ((ImageView)paramView.findViewById(2131369673));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380401));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    new InitMemoryCache().step();
     new InitUrlDrawable().step();
     try
     {
       paramView = URLDrawable.URLDrawableOptions.obtain();
-      paramView.mRequestWidth = ViewUtils.getScreenWidth();
-      paramView.mRequestHeight = ViewUtils.getScreenHeight();
+      paramView.mRequestWidth = ViewUtils.a();
+      paramView.mRequestHeight = ViewUtils.b();
       Drawable localDrawable = getResources().getDrawable(2131165217);
       paramView.mFailedDrawable = localDrawable;
       paramView.mLoadingDrawable = localDrawable;
@@ -93,10 +95,10 @@ public class AECMShowGuideFragment
         }
         catch (Exception paramView)
         {
-          bnrh.a("AECMShowGuideFragment", "set guide title image exception", paramView);
+          AEQLog.a("AECMShowGuideFragment", "set guide title image exception", paramView);
         }
         paramView = paramView;
-        bnrh.a("AECMShowGuideFragment", "set guide avatar image exception", paramView);
+        AEQLog.a("AECMShowGuideFragment", "set guide avatar image exception", paramView);
       }
     }
   }
@@ -106,7 +108,7 @@ public class AECMShowGuideFragment
     paramActivity.requestWindowFeature(1);
     paramActivity.getWindow().setFlags(1024, 1024);
     if (Build.VERSION.SDK_INT >= 29) {
-      zza.a(paramActivity.getWindow());
+      NavigationBarUtil.a(paramActivity.getWindow());
     }
   }
   
@@ -122,23 +124,23 @@ public class AECMShowGuideFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    bnrh.b("AECMShowGuideFragment", "onActivityResult--requestCode=" + paramInt1 + ", resultCode=" + paramInt2);
+    AEQLog.b("AECMShowGuideFragment", "onActivityResult--requestCode=" + paramInt1 + ", resultCode=" + paramInt2);
     getActivity().setResult(paramInt2, paramIntent);
     getActivity().finish();
   }
   
   public void onBackPressed()
   {
-    bnrh.b("AECMShowGuideFragment", "onBackPressed");
+    AEQLog.b("AECMShowGuideFragment", "onBackPressed");
     getActivity().finish();
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131379970)
+    if (paramView.getId() == 2131380401)
     {
       a();
-      bnqm.a().az();
+      AEBaseDataReporter.a().ax();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -146,12 +148,12 @@ public class AECMShowGuideFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bnqu.a().a("sp_key_cmshow_first_guide_has_shown_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), true, 4);
+    AECameraPrefsUtil.a().a("sp_key_cmshow_first_guide_has_shown_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), true, 4);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558500, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558506, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -159,7 +161,7 @@ public class AECMShowGuideFragment
   public void onResume()
   {
     super.onResume();
-    bnqm.a().ay();
+    AEBaseDataReporter.a().aw();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -169,7 +171,7 @@ public class AECMShowGuideFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.cmshow.AECMShowGuideFragment
  * JD-Core Version:    0.7.0.1
  */

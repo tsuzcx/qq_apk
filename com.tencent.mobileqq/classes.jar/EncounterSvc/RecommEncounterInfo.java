@@ -10,10 +10,10 @@ public final class RecommEncounterInfo
 {
   static ArrayList<RespEncounterInfo> cache_vEncounterInfos = new ArrayList();
   public String icon_url = "";
-  public int postion;
-  public int show_num;
+  public int postion = 0;
+  public int show_num = 0;
   public String title = "";
-  public ArrayList<RespEncounterInfo> vEncounterInfos;
+  public ArrayList<RespEncounterInfo> vEncounterInfos = null;
   
   static
   {

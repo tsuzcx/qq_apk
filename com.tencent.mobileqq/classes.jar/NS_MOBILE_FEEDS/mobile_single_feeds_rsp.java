@@ -12,9 +12,9 @@ public final class mobile_single_feeds_rsp
 {
   static ArrayList<single_feed> cache_all_feeds_data = new ArrayList();
   static Map<String, String> cache_stMapExtendinfo;
-  public ArrayList<single_feed> all_feeds_data;
-  public long next_keep_alive_time;
-  public Map<String, String> stMapExtendinfo;
+  public ArrayList<single_feed> all_feeds_data = null;
+  public long next_keep_alive_time = 0L;
+  public Map<String, String> stMapExtendinfo = null;
   
   static
   {

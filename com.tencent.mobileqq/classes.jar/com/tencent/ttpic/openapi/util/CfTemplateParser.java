@@ -21,6 +21,7 @@ import com.tencent.ttpic.openapi.model.FilterMaterial;
 import com.tencent.ttpic.openapi.model.FilterParam;
 import com.tencent.ttpic.openapi.model.MaterialUtil;
 import com.tencent.ttpic.openapi.model.MaterialUtil.FIELD;
+import com.tencent.ttpic.openapi.model.VideoMaterial.DISTORTION_ITEM_FILED;
 import com.tencent.ttpic.util.DecryptListener;
 import com.tencent.ttpic.util.GsonUtils;
 import java.io.ByteArrayInputStream;
@@ -667,15 +668,15 @@ public class CfTemplateParser
         {
           localObject1 = (JsonObject)localObject1;
           localObject2 = new DistortionItem();
-          ((DistortionItem)localObject2).position = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.DISTORTION_ITEM_FILED.POSITION.value);
-          ((DistortionItem)localObject2).distortion = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.DISTORTION_ITEM_FILED.DISTORTION.value);
-          ((DistortionItem)localObject2).direction = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.DISTORTION_ITEM_FILED.DIRECTION.value);
-          ((DistortionItem)localObject2).radius = ((float)GsonUtils.optDouble((JsonObject)localObject1, VideoMaterialUtil.DISTORTION_ITEM_FILED.RADIUS.value));
-          ((DistortionItem)localObject2).strength = ((float)GsonUtils.optDouble((JsonObject)localObject1, VideoMaterialUtil.DISTORTION_ITEM_FILED.STRENGH.value));
-          ((DistortionItem)localObject2).x = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.DISTORTION_ITEM_FILED.X.value, 0);
-          ((DistortionItem)localObject2).y = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.DISTORTION_ITEM_FILED.Y.value, 0);
-          ((DistortionItem)localObject2).targetDx = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.DISTORTION_ITEM_FILED.TARGETDX.value, 0);
-          ((DistortionItem)localObject2).targetDy = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.DISTORTION_ITEM_FILED.TARGETDY.value, 0);
+          ((DistortionItem)localObject2).position = GsonUtils.optInt((JsonObject)localObject1, VideoMaterial.DISTORTION_ITEM_FILED.POSITION.value);
+          ((DistortionItem)localObject2).distortion = GsonUtils.optInt((JsonObject)localObject1, VideoMaterial.DISTORTION_ITEM_FILED.DISTORTION.value);
+          ((DistortionItem)localObject2).direction = GsonUtils.optInt((JsonObject)localObject1, VideoMaterial.DISTORTION_ITEM_FILED.DIRECTION.value);
+          ((DistortionItem)localObject2).radius = ((float)GsonUtils.optDouble((JsonObject)localObject1, VideoMaterial.DISTORTION_ITEM_FILED.RADIUS.value));
+          ((DistortionItem)localObject2).strength = ((float)GsonUtils.optDouble((JsonObject)localObject1, VideoMaterial.DISTORTION_ITEM_FILED.STRENGH.value));
+          ((DistortionItem)localObject2).x = GsonUtils.optInt((JsonObject)localObject1, VideoMaterial.DISTORTION_ITEM_FILED.X.value, 0);
+          ((DistortionItem)localObject2).y = GsonUtils.optInt((JsonObject)localObject1, VideoMaterial.DISTORTION_ITEM_FILED.Y.value, 0);
+          ((DistortionItem)localObject2).targetDx = GsonUtils.optInt((JsonObject)localObject1, VideoMaterial.DISTORTION_ITEM_FILED.TARGETDX.value, 0);
+          ((DistortionItem)localObject2).targetDy = GsonUtils.optInt((JsonObject)localObject1, VideoMaterial.DISTORTION_ITEM_FILED.TARGETDY.value, 0);
           localArrayList.add(localObject2);
         }
         i += 1;
@@ -1649,7 +1650,7 @@ public class CfTemplateParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.CfTemplateParser
  * JD-Core Version:    0.7.0.1
  */

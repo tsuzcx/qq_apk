@@ -1,20 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper;
 
-import qwx;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
+import java.util.List;
 
-public class RecycleViewAdapterHelper$5
-  implements Runnable
+class RecycleViewAdapterHelper$5
+  extends EventCallback
 {
-  public RecycleViewAdapterHelper$5(qwx paramqwx, Runnable paramRunnable) {}
+  RecycleViewAdapterHelper$5(RecycleViewAdapterHelper paramRecycleViewAdapterHelper) {}
   
-  public void run()
+  public void onPagerChange(int paramInt)
   {
-    qwx.a(this.this$0, this.a);
+    RecycleViewAdapterHelper.b(paramInt);
+    if ((RecycleViewAdapterHelper.b() != null) && (!RecycleViewAdapterHelper.b().contains(Integer.valueOf(paramInt)))) {
+      RecycleViewAdapterHelper.b().add(Integer.valueOf(paramInt));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper.RecycleViewAdapterHelper.5
  * JD-Core Version:    0.7.0.1
  */

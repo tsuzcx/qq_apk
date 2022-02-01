@@ -4,26 +4,27 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import aqcb;
-import bizw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.mobileqq.ark.ArkAppCenterUtil;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.ark.share.ArkMessagePreprocessorMgr;
 import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
+import com.tencent.mobileqq.mini.api.IMiniCallback;
 import com.tencent.mobileqq.mini.launch.CmdCallback;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.UUID;
 
@@ -76,7 +77,7 @@ public class MiniArkShareAsyncManager
       }
     }
     label263:
-    for (String str1 = ArkAppCenterUtil.CopyFileToCache(str3, str2);; str1 = str2)
+    for (String str1 = ArkAppCenterUtil.a(str3, str2);; str1 = str2)
     {
       Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject1 instanceof QQAppInterface))
@@ -87,7 +88,7 @@ public class MiniArkShareAsyncManager
         {
           localObject2 = ((ArkAppCenter)localObject2).a();
           if (localObject2 != null) {
-            ((aqcb)localObject2).a(str3, new MiniArkShareAsyncPreprocessor(paramBundle));
+            ((ArkMessagePreprocessorMgr)localObject2).a(str3, new MiniArkShareAsyncPreprocessor(paramBundle));
           }
         }
         if (i != 0)
@@ -124,7 +125,7 @@ public class MiniArkShareAsyncManager
     }
   }
   
-  public static void performUploadArkShareImage(String paramString, CmdCallback paramCmdCallback)
+  public static void performUploadArkShareImage(String paramString, IMiniCallback paramIMiniCallback)
   {
     if (!TextUtils.isEmpty(paramString))
     {
@@ -138,19 +139,19 @@ public class MiniArkShareAsyncManager
         localTransferRequest.mCommandId = 62;
         localTransferRequest.mUniseq = ((Math.random() * 1000000.0D));
         localTransferRequest.mPeerUin = "0";
-        localTransferRequest.mSelfUin = String.valueOf(bizw.a().a());
+        localTransferRequest.mSelfUin = String.valueOf(CommonDataAdapter.a().a());
         localTransferRequest.mFileType = 24;
         localTransferRequest.mRichTag = "miniAppArkShareUploadPicHit";
         paramString = new Bdh_extinfo.CommFileExtReq();
         paramString.uint32_action_type.set(0);
         paramString.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
         localTransferRequest.mExtentionInfo = paramString.toByteArray();
-        paramString = new MiniArkShareAsyncTransProcessorHandler(ThreadManagerV2.getFileThreadLooper(), paramCmdCallback);
+        paramString = new MiniArkShareAsyncTransProcessorHandler(ThreadManagerV2.getFileThreadLooper(), paramIMiniCallback);
         paramString.addFilter(new Class[] { BDHCommonUploadProcessor.class });
-        if (((QQAppInterface)localObject).getTransFileController() != null)
+        if (((QQAppInterface)localObject).getRuntimeService(ITransFileController.class) != null)
         {
-          ((QQAppInterface)localObject).getTransFileController().addHandle(paramString);
-          ((QQAppInterface)localObject).getTransFileController().transferAsync(localTransferRequest);
+          ((ITransFileController)((QQAppInterface)localObject).getRuntimeService(ITransFileController.class)).addHandle(paramString);
+          ((ITransFileController)((QQAppInterface)localObject).getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
         }
       }
     }
@@ -158,13 +159,13 @@ public class MiniArkShareAsyncManager
     {
       return;
       QLog.e("MiniArkShareAsyncManage [miniappArkShare]", 2, "performUploadArkShareImage empty local image path");
-    } while (paramCmdCallback == null);
+    } while (paramIMiniCallback == null);
     try
     {
-      paramCmdCallback.onCmdResult(false, new Bundle());
+      paramIMiniCallback.onCallbackResult(false, new Bundle());
       return;
     }
-    catch (RemoteException paramString)
+    catch (Throwable paramString)
     {
       paramString.printStackTrace();
     }
@@ -181,7 +182,7 @@ public class MiniArkShareAsyncManager
         localObject = ((ArkAppCenter)localObject).a();
         if (localObject != null)
         {
-          ((aqcb)localObject).a("com.tencent.miniapp", new MiniArkShareAsyncPreprocessor(new Bundle()));
+          ((ArkMessagePreprocessorMgr)localObject).a("com.tencent.miniapp", new MiniArkShareAsyncPreprocessor(new Bundle()));
           QLog.d("MiniArkShareAsyncManage [miniappArkShare]", 2, "registerMiniArkShareMessageProcessorAfterProcessRestart");
         }
       }

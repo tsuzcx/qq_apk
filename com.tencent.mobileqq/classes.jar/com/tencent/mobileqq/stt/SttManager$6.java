@@ -1,13 +1,9 @@
 package com.tencent.mobileqq.stt;
 
-import bdtt;
-import bdtu;
-import bdtw;
-
-public class SttManager$6
+class SttManager$6
   implements Runnable
 {
-  public SttManager$6(bdtt parambdtt, bdtw parambdtw) {}
+  SttManager$6(SttManager paramSttManager, SttTask paramSttTask) {}
   
   public void run()
   {

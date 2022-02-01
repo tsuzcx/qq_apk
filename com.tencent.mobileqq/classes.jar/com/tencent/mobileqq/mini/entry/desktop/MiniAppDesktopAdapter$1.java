@@ -10,7 +10,7 @@ class MiniAppDesktopAdapter$1
   public int getSpanSize(int paramInt)
   {
     if (this.this$0.getItemViewType(paramInt) == 1) {}
-    while ((this.this$0.getItemViewType(paramInt) == 4) || (this.this$0.getItemViewType(paramInt) == 5) || (this.this$0.getItemViewType(paramInt) == 6) || (this.this$0.getItemViewType(paramInt) == 12) || (this.this$0.getItemViewType(paramInt) == 9) || (this.this$0.getItemViewType(paramInt) == 8) || (this.this$0.getItemViewType(paramInt) == 10) || (this.this$0.getItemViewType(paramInt) == 11)) {
+    while ((this.this$0.getItemViewType(paramInt) == 4) || (this.this$0.getItemViewType(paramInt) == 5) || (this.this$0.getItemViewType(paramInt) == 6) || (this.this$0.getItemViewType(paramInt) == 12) || (this.this$0.getItemViewType(paramInt) == 9) || (this.this$0.getItemViewType(paramInt) == 8) || (this.this$0.getItemViewType(paramInt) == 10) || (this.this$0.getItemViewType(paramInt) == 13) || (this.this$0.getItemViewType(paramInt) == 11)) {
       return 4;
     }
     return 1;

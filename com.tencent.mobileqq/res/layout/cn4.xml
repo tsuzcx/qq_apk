@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/o2k" android:paddingLeft="16.0dip" android:paddingRight="25.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:orientation="vertical" android:paddingTop="14.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:background="@drawable/i4c" android:layout_width="16.0dip" android:layout_height="16.0dip" />
-    <TextView android:background="@drawable/i4d" android:layout_width="51.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" />
-    <TextView android:textSize="@dimen/aym" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/o2l" android:layout_width="0.0dip" android:layout_height="28.0dip" android:layout_marginLeft="7.0dip" android:singleLine="true" android:layout_weight="1.0" />
-    <TextView android:background="@drawable/i4p" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="25.0dip" />
-</LinearLayout>
+    <FrameLayout android:layout_gravity="left" android:id="@id/ne5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.now.widget.CircleImageView android:layout_gravity="start|center" android:id="@id/a35" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="13.0dip" android:src="@drawable/account_panel_add_icon" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/agv" android:id="@id/tv_name" android:paddingLeft="45.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hello World!" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="right" android:id="@id/ne3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="14.0dip">
+        <ImageView android:layout_gravity="end|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gtn" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/agt" android:gravity="center" android:layout_gravity="end|center" android:id="@id/od0" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginRight="12.0dip" android:text="@string/x1u" />
+    </FrameLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/mz8" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="13.0dip" android:layout_below="@id/ne6" />
+</FrameLayout>

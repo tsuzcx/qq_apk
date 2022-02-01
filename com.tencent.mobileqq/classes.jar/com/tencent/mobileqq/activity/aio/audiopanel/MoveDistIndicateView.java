@@ -26,8 +26,8 @@ public class MoveDistIndicateView
   public int b;
   private Bitmap b;
   private int c;
-  private int d;
-  private int e;
+  private int d = 0;
+  private int e = 0;
   
   public MoveDistIndicateView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,16 +40,16 @@ public class MoveDistIndicateView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     paramContext = getResources();
-    this.jdField_a_of_type_Int = AIOUtils.dp2px(29.0F, paramContext);
-    this.jdField_b_of_type_Int = AIOUtils.dp2px(42.0F, paramContext);
-    this.e = AIOUtils.dp2px(10.0F, paramContext);
+    this.jdField_a_of_type_Int = AIOUtils.a(29.0F, paramContext);
+    this.jdField_b_of_type_Int = AIOUtils.a(42.0F, paramContext);
+    this.e = AIOUtils.a(10.0F, paramContext);
     this.c = this.jdField_a_of_type_Int;
     if (QLog.isDevelopLevel()) {
       QLog.d("MoveDistIndicateView", 4, "init(), mRaidusMin:" + this.jdField_a_of_type_Int + ",mRaidusMax:" + this.jdField_b_of_type_Int);
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i = getWidth();
     int j = getHeight();
@@ -78,7 +78,7 @@ public class MoveDistIndicateView
       super.onDraw(paramCanvas);
       return;
       if (this.d == 1) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167141));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167148));
       }
       for (;;)
       {
@@ -86,11 +86,11 @@ public class MoveDistIndicateView
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
         paramCanvas.drawCircle(m, n, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
         break;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167142));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167149));
       }
       if (this.c > this.jdField_a_of_type_Int)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167025));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167032));
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
         paramCanvas.drawCircle(m, n, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -163,7 +163,7 @@ public class MoveDistIndicateView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.MoveDistIndicateView
  * JD-Core Version:    0.7.0.1
  */

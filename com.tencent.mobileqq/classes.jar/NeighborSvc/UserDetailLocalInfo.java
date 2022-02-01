@@ -9,8 +9,8 @@ public final class UserDetailLocalInfo
 {
   static byte[] cache_SOSOUrl;
   static byte[] cache_cityId;
-  public byte[] SOSOUrl;
-  public byte[] cityId;
+  public byte[] SOSOUrl = null;
+  public byte[] cityId = null;
   public String strCity = "";
   public String strDistrict = "";
   public String strPremises = "";

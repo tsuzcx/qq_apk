@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bifw;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.swift.WebViewProvider;
 
 public class ColorRingUIPlugin
   extends VasWebviewUiPlugin
@@ -11,9 +11,9 @@ public class ColorRingUIPlugin
   void OnActivityCreate()
   {
     super.OnActivityCreate();
-    WebViewFragment localWebViewFragment = this.mRuntime.a();
-    if (localWebViewFragment != null) {
-      localWebViewFragment.mUrl = super.decodeUrl(localWebViewFragment.mUrl);
+    WebViewProvider localWebViewProvider = this.mRuntime.a();
+    if (localWebViewProvider != null) {
+      localWebViewProvider.setCurUrl(super.decodeUrl(localWebViewProvider.getCurrentUrl()));
     }
   }
   
@@ -21,10 +21,15 @@ public class ColorRingUIPlugin
   {
     return 4194304L;
   }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 3L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ColorRingUIPlugin
  * JD-Core Version:    0.7.0.1
  */

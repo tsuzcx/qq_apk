@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class CheckFriendReq
   extends JceStruct
 {
-  public long fuin;
-  public long uin;
+  public long fuin = 0L;
+  public long uin = 0L;
   
   public CheckFriendReq() {}
   
@@ -32,7 +32,7 @@ public final class CheckFriendReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.CheckFriendReq
  * JD-Core Version:    0.7.0.1
  */

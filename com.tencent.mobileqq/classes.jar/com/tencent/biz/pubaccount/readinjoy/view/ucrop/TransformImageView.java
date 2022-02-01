@@ -13,9 +13,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import tob;
-import tof;
-import too;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.util.RectUtils;
 
 public class TransformImageView
   extends ImageView
@@ -23,14 +21,14 @@ public class TransformImageView
   protected float a;
   protected int a;
   protected Matrix a;
-  protected tof a;
+  protected TransformImageView.TransformImageListener a;
   protected boolean a;
   protected final float[] a;
   protected float b;
   protected int b;
   protected boolean b;
   protected final float[] b;
-  private int jdField_c_of_type_Int;
+  private int jdField_c_of_type_Int = 0;
   private final float[] jdField_c_of_type_ArrayOfFloat = new float[9];
   private float[] d;
   private float[] e;
@@ -51,6 +49,8 @@ public class TransformImageView
     this.jdField_a_of_type_ArrayOfFloat = new float[8];
     this.jdField_b_of_type_ArrayOfFloat = new float[2];
     this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     c();
   }
   
@@ -78,8 +78,8 @@ public class TransformImageView
     do
     {
       return null;
-      if ((getDrawable() instanceof tob)) {
-        return ((tob)getDrawable()).a();
+      if ((getDrawable() instanceof FastBitmapDrawable)) {
+        return ((FastBitmapDrawable)getDrawable()).a();
       }
     } while (!(getDrawable() instanceof BitmapDrawable));
     return ((BitmapDrawable)getDrawable()).getBitmap();
@@ -110,11 +110,11 @@ public class TransformImageView
       float f2 = ((Drawable)localObject).getIntrinsicHeight();
       Log.d("TransformImageView", String.format("Image size: [%d:%d]", new Object[] { Integer.valueOf((int)f1), Integer.valueOf((int)f2) }));
       localObject = new RectF(0.0F, 0.0F, f1, f2);
-      this.d = too.a((RectF)localObject);
-      this.e = too.b((RectF)localObject);
+      this.d = RectUtils.a((RectF)localObject);
+      this.e = RectUtils.b((RectF)localObject);
       this.jdField_b_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_Tof == null);
-    this.jdField_a_of_type_Tof.a();
+    } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropTransformImageView$TransformImageListener == null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropTransformImageView$TransformImageListener.a();
   }
   
   protected void c()
@@ -130,8 +130,8 @@ public class TransformImageView
       this.jdField_b_of_type_Float = paramFloat3;
       this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
       setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      if (this.jdField_a_of_type_Tof != null) {
-        this.jdField_a_of_type_Tof.b(a(this.jdField_a_of_type_AndroidGraphicsMatrix));
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropTransformImageView$TransformImageListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropTransformImageView$TransformImageListener.b(a(this.jdField_a_of_type_AndroidGraphicsMatrix));
       }
     }
   }
@@ -146,7 +146,7 @@ public class TransformImageView
     return b(this.jdField_a_of_type_AndroidGraphicsMatrix);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramBoolean) || ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)))
@@ -165,7 +165,7 @@ public class TransformImageView
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    setImageDrawable(new tob(paramBitmap));
+    setImageDrawable(new FastBitmapDrawable(paramBitmap));
   }
   
   public void setImageMatrix(Matrix paramMatrix)
@@ -190,14 +190,14 @@ public class TransformImageView
     Log.w("TransformImageView", "Invalid ScaleType. Only ScaleType.MATRIX can be used");
   }
   
-  public void setTransformImageListener(tof paramtof)
+  public void setTransformImageListener(TransformImageView.TransformImageListener paramTransformImageListener)
   {
-    this.jdField_a_of_type_Tof = paramtof;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropTransformImageView$TransformImageListener = paramTransformImageListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ucrop.TransformImageView
  * JD-Core Version:    0.7.0.1
  */

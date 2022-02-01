@@ -8,8 +8,8 @@ public final class MsgType0x210SubMsgType0x13_MsgItem
   extends JceStruct
 {
   static byte[] cache_bytes_text;
-  public byte[] bytes_text;
-  public long uint32_type;
+  public byte[] bytes_text = null;
+  public long uint32_type = 0L;
   
   public MsgType0x210SubMsgType0x13_MsgItem() {}
   

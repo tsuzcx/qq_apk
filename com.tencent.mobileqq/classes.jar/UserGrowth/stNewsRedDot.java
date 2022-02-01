@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stNewsRedDot
   extends JceStruct
 {
-  public int newsCount;
+  public int newsCount = 0;
   
   public stNewsRedDot() {}
   

@@ -358,7 +358,7 @@ public class DownloaderProxy
     return true;
   }
   
-  public void preConnectHost(ArrayList<String> paramArrayList) {}
+  public void preConnectHost(ArrayList<String> paramArrayList, String paramString) {}
   
   public void uninit()
   {
@@ -369,7 +369,7 @@ public class DownloaderProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.ipc.DownloaderProxy
  * JD-Core Version:    0.7.0.1
  */

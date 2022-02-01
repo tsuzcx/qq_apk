@@ -1,53 +1,23 @@
 package com.tencent.mobileqq.transfile;
 
-import android.os.SystemClock;
-import boqd;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.StatictisInfo;
 
 class ShortVideoForwardProcessor$4
-  implements ITransactionCallback
+  extends MessageObserver
 {
-  ShortVideoForwardProcessor$4(ShortVideoForwardProcessor paramShortVideoForwardProcessor, String paramString, long paramLong) {}
+  ShortVideoForwardProcessor$4(ShortVideoForwardProcessor paramShortVideoForwardProcessor) {}
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, StatictisInfo paramStatictisInfo)
   {
-    this.this$0.doOnSendFailed(paramInt, paramHashMap, this.val$startTime);
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    this.this$0.doOnSendSucess(paramArrayOfByte, paramHashMap, this.val$combinePath, this.val$startTime);
-  }
-  
-  public void onSwitch2BackupChannel()
-  {
-    long l = SystemClock.uptimeMillis();
-    this.this$0.log("<BDH_LOG> onSwitch2BackupChannel()");
-    this.this$0.mReportInfo.put("param_switchChannel", String.valueOf(l - this.val$startTime));
-  }
-  
-  public void onTransStart()
-  {
-    this.this$0.log("<BDH_LOG> onTransStart()");
-    this.this$0.mStepTrans.startTime = 0L;
-    this.this$0.mStepTrans.logStartTime();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    ShortVideoForwardProcessor localShortVideoForwardProcessor = this.this$0;
-    FileMsg localFileMsg = this.this$0.file;
-    long l = paramInt;
-    localFileMsg.transferedSize = l;
-    localShortVideoForwardProcessor.mTransferedSize = l;
-    if ((paramInt < this.this$0.mFileSize) && (!this.this$0.mIsCancel) && (!this.this$0.mIsPause))
+    this.this$0.logRichMediaEvent("sendMsgFinish", "success:" + paramBoolean);
+    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
     {
-      this.this$0.sendProgressMessage();
-      if (this.this$0.isStoryVideo) {
-        boqd.a(this.this$0.msg, 1002, this.this$0.getProgress());
-      }
+      this.this$0.onSuccess();
+      return;
     }
+    this.this$0.onError();
   }
 }
 

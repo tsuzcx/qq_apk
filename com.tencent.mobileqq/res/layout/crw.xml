@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/dqx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nfj" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="evy" formItem:switchChecked="false" />
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="422.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.vas.qid.QidPagView android:id="@id/nte" android:layout_width="362.0dip" android:layout_height="532.0dip" android:layout_marginTop="-110.0dip" />
 </LinearLayout>

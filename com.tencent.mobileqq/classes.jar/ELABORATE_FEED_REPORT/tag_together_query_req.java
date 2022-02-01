@@ -10,10 +10,10 @@ public final class tag_together_query_req
   extends JceStruct
 {
   static Map<Integer, String> cache_mapExt = new HashMap();
-  public Map<Integer, String> mapExt;
+  public Map<Integer, String> mapExt = null;
   public String sPgcFeedKey = "";
-  public long uPgcAppid;
-  public long uPgcUin;
+  public long uPgcAppid = 0L;
+  public long uPgcUin = 0L;
   
   static
   {

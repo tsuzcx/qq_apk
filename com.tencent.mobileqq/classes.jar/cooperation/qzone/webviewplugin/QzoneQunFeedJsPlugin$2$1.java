@@ -2,11 +2,11 @@ package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
 import android.content.Context;
-import anvx;
-import bhdj;
-import bifw;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 
 class QzoneQunFeedJsPlugin$2$1
   implements Runnable
@@ -18,7 +18,7 @@ class QzoneQunFeedJsPlugin$2$1
     QzoneQunFeedJsPlugin.access$102(this.this$1.this$0, this.this$1.val$args[0]);
     Activity localActivity = this.this$1.this$0.parentPlugin.mRuntime.a();
     if (QzoneQunFeedJsPlugin.access$200(this.this$1.this$0) == null) {
-      QzoneQunFeedJsPlugin.access$202(this.this$1.this$0, bhdj.a(localActivity, 230).setTitle(anvx.a(2131711737)).setMessage(anvx.a(2131711741)).setPositiveButton(anvx.a(2131711738), new QzoneQunFeedJsPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131717404), new QzoneQunFeedJsPlugin.2.1.1(this)));
+      QzoneQunFeedJsPlugin.access$202(this.this$1.this$0, DialogUtil.a(localActivity, 230).setTitle(HardCodeUtil.a(2131712252)).setMessage(HardCodeUtil.a(2131712256)).setPositiveButton(HardCodeUtil.a(2131712253), new QzoneQunFeedJsPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131717899), new QzoneQunFeedJsPlugin.2.1.1(this)));
     }
     if (!QzoneQunFeedJsPlugin.access$200(this.this$1.this$0).isShowing()) {
       QzoneQunFeedJsPlugin.access$200(this.this$1.this$0).show();
@@ -27,7 +27,7 @@ class QzoneQunFeedJsPlugin$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

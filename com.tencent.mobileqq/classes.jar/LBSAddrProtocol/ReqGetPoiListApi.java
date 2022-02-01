@@ -10,12 +10,12 @@ public final class ReqGetPoiListApi
 {
   static byte[] cache_vLBSKeyData;
   static ArrayList<Integer> cache_vTypes;
-  public int iBeginPos;
+  public int iBeginPos = 0;
   public int iRadius = 100;
   public int iReqNum = 10;
   public int iSortMethod = 1;
-  public byte[] vLBSKeyData;
-  public ArrayList<Integer> vTypes;
+  public byte[] vLBSKeyData = null;
+  public ArrayList<Integer> vTypes = null;
   
   public ReqGetPoiListApi() {}
   

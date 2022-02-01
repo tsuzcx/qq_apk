@@ -1,9 +1,8 @@
 package cooperation.qqfav;
 
-import bmaf;
 import com.tencent.qphone.base.util.QLog;
 
-public final class QfavHelper$2
+final class QfavHelper$2
   implements Runnable
 {
   public void run()
@@ -13,7 +12,7 @@ public final class QfavHelper$2
       if (QLog.isColorLevel()) {
         QLog.i("qqfav", 2, "notify(IS_PLUGININSTALLED) qqfav.apk");
       }
-      bmaf.a().notifyAll();
+      QfavHelper.a().notifyAll();
       return;
     }
   }

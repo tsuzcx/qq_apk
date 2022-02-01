@@ -3,6 +3,8 @@ package com.tencent.biz.pubaccount.readinjoy.view.widget;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJJumpUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -12,27 +14,24 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import pkh;
-import pqx;
-import tps;
 
-public class ReadInJoyFeedbackPopupWindow$3
+class ReadInJoyFeedbackPopupWindow$3
   implements Runnable
 {
-  public ReadInJoyFeedbackPopupWindow$3(tps paramtps) {}
+  ReadInJoyFeedbackPopupWindow$3(ReadInJoyFeedbackPopupWindow paramReadInJoyFeedbackPopupWindow) {}
   
   public void run()
   {
-    if (!tps.a(this.this$0, "reportFeeds")) {}
+    if (!ReadInJoyFeedbackPopupWindow.a(this.this$0, "reportFeeds")) {}
     String str1;
     String str3;
     String str4;
     do
     {
       return;
-      str1 = pqx.a(tps.a(this.this$0));
-      str3 = pkh.a();
-      str4 = String.valueOf(tps.a(this.this$0).publishUin);
+      str1 = RIJJumpUtils.a(ReadInJoyFeedbackPopupWindow.a(this.this$0));
+      str3 = ReadInJoyUtils.a();
+      str4 = String.valueOf(ReadInJoyFeedbackPopupWindow.a(this.this$0).publishUin);
       QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "reportFeeds, shareUrl = ", str1, ", uin = ", str3, ", publicUin = ", str4 });
     } while (TextUtils.isEmpty(str1));
     if (Pattern.compile("(http|https)://.*.mp.qq.com.*").matcher(str1).matches()) {}
@@ -82,7 +81,7 @@ public class ReadInJoyFeedbackPopupWindow$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyFeedbackPopupWindow.3
  * JD-Core Version:    0.7.0.1
  */

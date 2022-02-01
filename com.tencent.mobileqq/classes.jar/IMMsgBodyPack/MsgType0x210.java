@@ -16,16 +16,16 @@ public final class MsgType0x210
   static MsgType0x210SubMsgType0xa cache_stMsgInfo0xa;
   static MsgType0x210SubMsgType0xe cache_stMsgInfo0xe;
   static byte[] cache_vProtobuf;
-  public MsgType0x210SubMsgType0x13 stMsgInfo0x13;
-  public MsgType0x210SubMsgType0x17 stMsgInfo0x17;
-  public MsgType0x210SubMsgType0x1d stMsgInfo0x1d;
-  public MsgType0x210SubMsgType0x2 stMsgInfo0x2;
-  public MsgType0x210SubMsgType0x20 stMsgInfo0x20;
-  public MsgType0x210SubMsgType0x24 stMsgInfo0x24;
-  public MsgType0x210SubMsgType0xa stMsgInfo0xa;
-  public MsgType0x210SubMsgType0xe stMsgInfo0xe;
-  public long uSubMsgType;
-  public byte[] vProtobuf;
+  public MsgType0x210SubMsgType0x13 stMsgInfo0x13 = null;
+  public MsgType0x210SubMsgType0x17 stMsgInfo0x17 = null;
+  public MsgType0x210SubMsgType0x1d stMsgInfo0x1d = null;
+  public MsgType0x210SubMsgType0x2 stMsgInfo0x2 = null;
+  public MsgType0x210SubMsgType0x20 stMsgInfo0x20 = null;
+  public MsgType0x210SubMsgType0x24 stMsgInfo0x24 = null;
+  public MsgType0x210SubMsgType0xa stMsgInfo0xa = null;
+  public MsgType0x210SubMsgType0xe stMsgInfo0xe = null;
+  public long uSubMsgType = 0L;
+  public byte[] vProtobuf = null;
   
   public MsgType0x210() {}
   

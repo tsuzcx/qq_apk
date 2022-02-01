@@ -1,6 +1,5 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaas;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,7 +16,7 @@ import java.util.List;
 public class SubscribeBannerView
   extends BaseWidgetView
 {
-  private static int c = ImmersiveUtils.a(20.0F);
+  private static int c = ImmersiveUtils.dpToPx(20.0F);
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private SubscribeBannerView.BannerAdapter jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter;
   private SubscribeBannerView.DotsIndicator jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator;
@@ -59,7 +58,7 @@ public class SubscribeBannerView
     paramContext.bottomMargin = c;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setLayoutParams(paramContext);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(3);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new aaas(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new SubscribeBannerView.1(this));
     ((FrameLayout)paramView).addView(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     a((FrameLayout)paramView);
   }
@@ -101,7 +100,7 @@ public class SubscribeBannerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView
  * JD-Core Version:    0.7.0.1
  */

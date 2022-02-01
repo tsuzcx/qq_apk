@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.microapp.ext;
 
-import albn;
-import amme;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,10 +8,11 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
+import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils;
+import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -25,19 +24,19 @@ public class GameProxy
   {
     try
     {
-      paramQQAppInterface = (amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
+      paramQQAppInterface = (IApolloManagerService)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
       if (paramQQAppInterface != null)
       {
-        if (!paramQQAppInterface.j()) {
+        if (!paramQQAppInterface.isPlusWhiteList()) {
           return;
         }
-        if ((!paramQQAppInterface.h()) && (!paramQQAppInterface.i()))
+        if ((!paramQQAppInterface.is765GuideShowed()) && (!paramQQAppInterface.is780GuideShowed()))
         {
-          paramQQAppInterface.h = false;
+          paramQQAppInterface.setClickIgnore(false);
           paramQQAppInterface = BaseApplicationImpl.getContext();
           Intent localIntent = new Intent(paramQQAppInterface, SplashActivity.class);
           localIntent.putExtra("fragment_id", 1);
-          localIntent.putExtra("tab_index", MainFragment.b);
+          localIntent.putExtra("tab_index", FrameControllerUtil.a);
           localIntent.putExtra("fromApolloNewUser", 2);
           localIntent.setFlags(335609856);
           paramQQAppInterface.startActivity(localIntent);
@@ -126,7 +125,7 @@ public class GameProxy
         paramString.putString("gameName", str6);
         paramString.putInt("src", k);
         paramString.putInt("enter", 3);
-        paramJSONObject = AIOUtils.setOpenAIOIntent(new Intent(paramActivity, SplashActivity.class), new int[] { 2 });
+        paramJSONObject = AIOUtils.a(new Intent(paramActivity, SplashActivity.class), new int[] { 2 });
         paramJSONObject.putExtras(paramString);
         paramActivity.startActivity(paramJSONObject);
         if (QLog.isColorLevel()) {
@@ -147,7 +146,7 @@ public class GameProxy
         if (paramActivity.src == 318) {
           paramActivity.disableMinGame = true;
         }
-        albn.a(paramActivity);
+        ComIPCUtils.a(paramActivity);
         return true;
       }
       return false;

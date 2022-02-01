@@ -1,51 +1,46 @@
 package com.tencent.mobileqq.gallery.picocr;
 
 import android.text.TextUtils;
-import avaq;
-import avat;
-import avau;
-import avaw;
-import avax;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public class PicOcrManager$3
+class PicOcrManager$3
   implements Runnable
 {
-  public PicOcrManager$3(avaq paramavaq, avat paramavat, avau paramavau) {}
+  PicOcrManager$3(PicOcrManager paramPicOcrManager, PicOcrManager.OCRReqContext paramOCRReqContext, PicOcrObserver paramPicOcrObserver) {}
   
   public void run()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Avat.d)) || (this.jdField_a_of_type_Avat.a))
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext.d)) || (this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext.a))
     {
-      this.jdField_a_of_type_Avat.d = avax.a(this.jdField_a_of_type_Avat.b);
-      this.jdField_a_of_type_Avat.a = false;
+      this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext.d = PicOrcUtils.a(this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext.b);
+      this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext.a = false;
     }
-    if (!avaq.a(this.this$0).isEmpty())
+    if (!PicOcrManager.a(this.this$0).isEmpty())
     {
-      avaw localavaw = this.this$0.a(this.jdField_a_of_type_Avat.d);
-      if (localavaw != null)
+      PicOcrRspResult localPicOcrRspResult = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext.d);
+      if (localPicOcrRspResult != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("PicOcrManager", 2, "requestOcr cacheRsp:" + localavaw.toString());
+          QLog.e("PicOcrManager", 2, "requestOcr cacheRsp:" + localPicOcrRspResult.toString());
         }
-        this.jdField_a_of_type_Avau.a(localavaw);
+        this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver.a(localPicOcrRspResult);
         return;
       }
     }
-    avaq.a(this.this$0, this.jdField_a_of_type_Avau, this.jdField_a_of_type_Avat);
-    if (this.jdField_a_of_type_Avat.a())
+    PicOcrManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver, this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext);
+    if (this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext.a())
     {
-      this.this$0.a(this.jdField_a_of_type_Avau, this.jdField_a_of_type_Avat);
-      this.jdField_a_of_type_Avau.a();
+      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver, this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext);
+      this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver.a();
       return;
     }
-    this.jdField_a_of_type_Avau.onUpdate(100, false, new avaw());
+    this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver.onUpdate(100, false, new PicOcrRspResult());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gallery.picocr.PicOcrManager.3
  * JD-Core Version:    0.7.0.1
  */

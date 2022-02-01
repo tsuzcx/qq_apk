@@ -9,14 +9,13 @@ import android.view.MotionEvent;
 import android.view.View.OnLongClickListener;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import axgd;
 
 public class MultiCardCustomLayout
   extends RelativeLayout
 {
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public MultiCardCustomLayout(Context paramContext)
   {
@@ -32,7 +31,7 @@ public class MultiCardCustomLayout
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewGestureDetector == null)) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new axgd(this), new Handler(Looper.getMainLooper()));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new MultiCardCustomLayout.1(this), new Handler(Looper.getMainLooper()));
     }
   }
   

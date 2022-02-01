@@ -10,8 +10,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import boer;
 import com.tencent.weishi.module.edit.widget.playtrack.provider.IPlayTrackViewBitmapProvider;
+import dov.com.qq.im.aeeditor.view.timebar.scale.ScaleAdapter;
 
 public class PlayTrackExpandWidthView
   extends View
@@ -19,8 +19,8 @@ public class PlayTrackExpandWidthView
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-  private boer jdField_a_of_type_Boer;
   private IPlayTrackViewBitmapProvider jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderIPlayTrackViewBitmapProvider;
+  private ScaleAdapter jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int;
   private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
@@ -76,7 +76,7 @@ public class PlayTrackExpandWidthView
     this.jdField_b_of_type_Int = getContext().getResources().getDisplayMetrics().widthPixels;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i = 1;
     super.onDraw(paramCanvas);
@@ -97,7 +97,7 @@ public class PlayTrackExpandWidthView
         i = a(m, k);
         while ((i < j + k) && (i < this.jdField_b_of_type_Int + k - m))
         {
-          long l = this.jdField_a_of_type_Boer.a(i);
+          long l = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(i);
           Bitmap localBitmap = this.jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderIPlayTrackViewBitmapProvider.getBitmap(l);
           int n = localBitmap.getHeight();
           int i1 = localBitmap.getWidth();
@@ -123,9 +123,9 @@ public class PlayTrackExpandWidthView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setScaleAdapter(boer paramboer)
+  public void setScaleAdapter(ScaleAdapter paramScaleAdapter)
   {
-    this.jdField_a_of_type_Boer = paramboer;
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter = paramScaleAdapter;
   }
   
   public void setVideoThumbProvider(IPlayTrackViewBitmapProvider paramIPlayTrackViewBitmapProvider)
@@ -135,7 +135,7 @@ public class PlayTrackExpandWidthView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.playtrack.view.PlayTrackExpandWidthView
  * JD-Core Version:    0.7.0.1
  */

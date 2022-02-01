@@ -108,7 +108,7 @@ public class PanoramaLoadingBackground
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.outCircleRadius = (this.mViewWidth / 2);
@@ -119,7 +119,7 @@ public class PanoramaLoadingBackground
     drawContentText(paramCanvas);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(measureWidth(paramInt1), measureHeight(paramInt2));
   }
@@ -132,7 +132,7 @@ public class PanoramaLoadingBackground
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaLoadingBackground
  * JD-Core Version:    0.7.0.1
  */

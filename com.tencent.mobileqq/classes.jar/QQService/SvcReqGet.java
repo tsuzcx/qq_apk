@@ -8,19 +8,19 @@ public final class SvcReqGet
   extends JceStruct
 {
   static byte[] cache_vecGuid;
-  public byte bIsShowOnline;
-  public byte bOnlinePush;
-  public byte cConnType;
-  public int iClientId;
-  public int iClientIp;
-  public int iClientPort;
-  public int iSSOIp;
-  public int iSSOPort;
+  public byte bIsShowOnline = 0;
+  public byte bOnlinePush = 0;
+  public byte cConnType = 0;
+  public int iClientId = 0;
+  public int iClientIp = 0;
+  public int iClientPort = 0;
+  public int iSSOIp = 0;
+  public int iSSOPort = 0;
   public int iStatus = 11;
-  public long lBid;
-  public long lUin;
+  public long lBid = 0L;
+  public long lUin = 0L;
   public String sOther = "";
-  public byte[] vecGuid;
+  public byte[] vecGuid = null;
   
   public SvcReqGet() {}
   

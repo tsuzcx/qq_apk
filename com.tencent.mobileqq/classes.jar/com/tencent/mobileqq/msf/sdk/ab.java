@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.IBinder.DeathRecipient;
 import android.os.RemoteException;
-import com.tencent.mobileqq.msf.core.w;
-import com.tencent.mobileqq.msf.sdk.report.c;
+import com.tencent.mobileqq.msf.core.o;
+import com.tencent.mobileqq.msf.sdk.b.c;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.IBaseActionListener;
 import com.tencent.qphone.base.remote.IBaseService;
@@ -83,7 +83,7 @@ public abstract class ab
   
   protected FromServiceMsg a(ToServiceMsg paramToServiceMsg, String paramString)
   {
-    paramToServiceMsg = w.a(paramToServiceMsg);
+    paramToServiceMsg = o.a(paramToServiceMsg);
     paramToServiceMsg.setBusinessFail(1013, paramString);
     return paramToServiceMsg;
   }
@@ -152,7 +152,9 @@ public abstract class ab
   
   protected void b(ToServiceMsg paramToServiceMsg)
   {
-    d.add(paramToServiceMsg);
+    if (!d.add(paramToServiceMsg)) {
+      QLog.i("MSF.D.RemoteServiceProxy", 1, "addMsgToSendQueue fail, size = " + d.size() + ", msg = " + paramToServiceMsg.getShortStringForLog());
+    }
   }
   
   /* Error */
@@ -180,25 +182,25 @@ public abstract class ab
     //   36: aload_0
     //   37: getfield 101	com/tencent/mobileqq/msf/sdk/ab:s	Landroid/content/ServiceConnection;
     //   40: iconst_1
-    //   41: invokevirtual 261	com/tencent/qphone/base/util/BaseApplication:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    //   41: invokevirtual 289	com/tencent/qphone/base/util/BaseApplication:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
     //   44: istore_1
     //   45: invokestatic 211	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   48: ifeq +42 -> 90
     //   51: ldc 8
     //   53: iconst_2
-    //   54: new 263	java/lang/StringBuilder
+    //   54: new 259	java/lang/StringBuilder
     //   57: dup
-    //   58: invokespecial 264	java/lang/StringBuilder:<init>	()V
-    //   61: ldc_w 266
-    //   64: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokespecial 260	java/lang/StringBuilder:<init>	()V
+    //   61: ldc_w 291
+    //   64: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   67: aload_0
     //   68: getfield 103	com/tencent/mobileqq/msf/sdk/ab:n	Ljava/lang/String;
-    //   71: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: ldc_w 272
-    //   77: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: ldc_w 293
+    //   77: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: iload_1
-    //   81: invokevirtual 275	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 278	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: invokevirtual 296	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   87: invokestatic 216	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   90: iload_1
     //   91: ireturn

@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atht;
-import atni;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.qphone.base.util.QLog;
 
-public class FileTransferHandler$8
+class FileTransferHandler$8
   implements Runnable
 {
-  public FileTransferHandler$8(atht paramatht, long paramLong, boolean paramBoolean, String paramString) {}
+  FileTransferHandler$8(FileTransferHandler paramFileTransferHandler, long paramLong, boolean paramBoolean, String paramString) {}
   
   public void run()
   {

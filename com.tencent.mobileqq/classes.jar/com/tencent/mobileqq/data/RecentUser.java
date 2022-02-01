@@ -1,29 +1,51 @@
 package com.tencent.mobileqq.data;
 
-import alkr;
-import alku;
-import alkv;
 import android.database.Cursor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.defaultValue;
 import com.tencent.mobileqq.persistence.defaultzero;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.mobileqq.proxy.api.IRecentUserMsgSerializeApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
+import com.tencent.qphone.base.util.QLog;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
-public class RecentUser
-  extends BaseRecentUser
+@KeepClassConstructor
+public final class RecentUser
+  extends Entity
 {
   public static final long FLAG_HOTCHAT = 1L;
   public static final long FLAG_PA_AD = 16L;
   public static final String TABLE_NAME = "recent";
   private static final String TAG = "RecentUser";
+  public String displayName;
   @notColumn
   public Object extraInfo;
+  @defaultValue(defaultInteger=0)
+  public int isHiddenChat;
+  @notColumn
+  public int jumpTabMode;
   @defaultzero
   public long lFlag;
+  @defaultzero
+  public long lastmsgdrafttime;
+  public long lastmsgtime;
+  public boolean mIsParsed;
+  @notColumn
+  public Object msg;
+  public byte[] msgData;
+  public int msgType;
+  @defaultzero
+  public long opTime;
   public byte[] parceledRecentBaseData;
+  @defaultzero
+  public long showUpTime;
+  public String troopUin;
+  public int type;
+  public String uin;
   
   @Deprecated
   public RecentUser() {}
@@ -34,9 +56,25 @@ public class RecentUser
     this.type = paramInt;
   }
   
+  public void cleanMsgAndMsgData(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentUser", 2, "cleanMsgAndMsgData " + this.uin + " " + this.uin + " this.msgType " + this.msgType + " msgType " + paramInt);
+    }
+    if (this.msgType == paramInt)
+    {
+      this.msg = null;
+      this.msgData = null;
+      this.msgType = 0;
+    }
+  }
+  
   public void doParse()
   {
-    this.msg = alkv.a(this.msgType, this.msgData);
+    IRecentUserMsgSerializeApi localIRecentUserMsgSerializeApi = (IRecentUserMsgSerializeApi)QRoute.api(IRecentUserMsgSerializeApi.class);
+    if (localIRecentUserMsgSerializeApi != null) {
+      this.msg = localIRecentUserMsgSerializeApi.recentUserMsgDeserialize(this.msgType, this.msgData);
+    }
   }
   
   public boolean entityByCursor(Cursor paramCursor)
@@ -85,25 +123,60 @@ public class RecentUser
     return "recent";
   }
   
-  public void prewrite()
+  public int getType()
   {
-    this.msgData = alkv.a(this.msgType, this.msg);
-    super.prewrite();
+    return this.type;
   }
   
-  public boolean shouldShowInRecentList(QQAppInterface paramQQAppInterface)
+  public void parse()
   {
-    if (this.msgType == 1) {
-      return true;
-    }
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = ((alku)paramQQAppInterface.getManager(QQManagerFactory.RECENT_USER)).a(this.msgType);
-      if (paramQQAppInterface != null) {
-        return paramQQAppInterface.a();
+    if (!this.mIsParsed) {
+      try
+      {
+        if (!this.mIsParsed)
+        {
+          doParse();
+          this.mIsParsed = true;
+        }
+        return;
       }
+      finally {}
     }
-    return false;
+  }
+  
+  public void prewrite()
+  {
+    IRecentUserMsgSerializeApi localIRecentUserMsgSerializeApi = (IRecentUserMsgSerializeApi)QRoute.api(IRecentUserMsgSerializeApi.class);
+    if (localIRecentUserMsgSerializeApi != null) {
+      this.msgData = localIRecentUserMsgSerializeApi.recentUserMsgSerialize(this.msgType, this.msg);
+    }
+  }
+  
+  public void reParse()
+  {
+    if (!this.mIsParsed) {
+      return;
+    }
+    this.mIsParsed = false;
+    parse();
+  }
+  
+  public void setMsgAndType(Object paramObject, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentUser", 2, "setMsgAndType " + this.uin + " " + this.uin + " this.msgType " + this.msgType + " msgType " + paramInt);
+    }
+    if (paramInt >= this.msgType)
+    {
+      this.msg = paramObject;
+      this.msgType = paramInt;
+      reParse();
+    }
+  }
+  
+  public void setType(int paramInt)
+  {
+    this.type = paramInt;
   }
   
   public String toString()
@@ -113,7 +186,7 @@ public class RecentUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecentUser
  * JD-Core Version:    0.7.0.1
  */

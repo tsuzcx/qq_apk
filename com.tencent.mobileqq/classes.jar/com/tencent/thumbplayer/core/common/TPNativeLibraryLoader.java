@@ -5,8 +5,8 @@ import android.text.TextUtils;
 
 public class TPNativeLibraryLoader
 {
-  private static final String DEFAULT_LIB_PLAYER_CORE_VERSION = "2.8.0.1086.full";
-  private static final String MAIN_PLAYER_CORE_VERSION = "2.8.0";
+  private static final String DEFAULT_LIB_PLAYER_CORE_VERSION = "2.10.0.1086.full";
+  private static final String MAIN_PLAYER_CORE_VERSION = "2.10.0";
   private static boolean mIsLibLoaded = false;
   private static Object mIsLibLoadedLock = new Object();
   private static ITPNativeLibraryExternalLoader mLibLoader = null;
@@ -29,9 +29,9 @@ public class TPNativeLibraryLoader
     }
     catch (Throwable localThrowable)
     {
-      TPNativeLog.printLog(2, "getPlayerCoreVersion: *.so is not loaded yet, return the hard-coded version number:2.8.0.1086.full");
+      TPNativeLog.printLog(2, "getPlayerCoreVersion: *.so is not loaded yet, return the hard-coded version number:2.10.0.1086.full");
     }
-    return "2.8.0.1086.full";
+    return "2.10.0.1086.full";
   }
   
   /* Error */
@@ -114,17 +114,17 @@ public class TPNativeLibraryLoader
     String str = "TPCore-master" + "";
     if (mLibLoader != null) {}
     boolean bool2;
-    for (boolean bool1 = mLibLoader.loadLib(str, "2.8.0.1086.full");; bool1 = loadLibDefault(str, paramContext))
+    for (boolean bool1 = mLibLoader.loadLib(str, "2.10.0.1086.full");; bool1 = loadLibDefault(str, paramContext))
     {
       bool2 = bool1;
       if (bool1)
       {
         paramContext = getPlayerCoreVersion();
-        bool1 = isMatchJavaAndPlayerCore("2.8.0", paramContext);
+        bool1 = isMatchJavaAndPlayerCore("2.10.0", paramContext);
         bool2 = bool1;
         if (!bool1)
         {
-          TPNativeLog.printLog(4, "nativePlayerCoreVer(" + paramContext + ") doesn't match javaPlayerCoreVer:(" + "2.8.0" + ")");
+          TPNativeLog.printLog(4, "nativePlayerCoreVer(" + paramContext + ") doesn't match javaPlayerCoreVer:(" + "2.10.0" + ")");
           bool2 = bool1;
         }
       }
@@ -332,7 +332,7 @@ public class TPNativeLibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPNativeLibraryLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,14 @@ package com.tencent.mobileqq.applets;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.tianshu.data.TianShuReportData;
 import cooperation.vip.tianshu.TianShuManager;
-import cooperation.vip.tianshu.TianShuReportData;
 import mqq.app.AppRuntime;
 
-public final class PublicAccountEventReport$13
+final class PublicAccountEventReport$13
   implements Runnable
 {
-  public PublicAccountEventReport$13(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2) {}
+  PublicAccountEventReport$13(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2) {}
   
   public void run()
   {
@@ -20,24 +20,24 @@ public final class PublicAccountEventReport$13
       str = localAppRuntime.getAccount();
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localTianShuReportData.mAppId = "vab_push";
-    localTianShuReportData.mPageId = "vab_push";
-    localTianShuReportData.mTraceId = (str + "_" + l);
-    localTianShuReportData.mTraceNum = 1;
-    localTianShuReportData.mItemId = this.jdField_a_of_type_JavaLangString;
-    localTianShuReportData.mSubItemId = "";
-    localTianShuReportData.mOperTime = l;
-    localTianShuReportData.mActionId = this.jdField_a_of_type_Int;
-    localTianShuReportData.mPositionId = Integer.toString(this.jdField_b_of_type_Int);
-    localTianShuReportData.mActionValue = 1;
-    localTianShuReportData.mActionAttr = this.c;
-    localTianShuReportData.mTriggerInfo = this.jdField_b_of_type_JavaLangString;
+    localTianShuReportData.jdField_e_of_type_JavaLangString = "vab_push";
+    localTianShuReportData.jdField_f_of_type_JavaLangString = "vab_push";
+    localTianShuReportData.jdField_b_of_type_JavaLangString = (str + "_" + l);
+    localTianShuReportData.jdField_a_of_type_Int = 1;
+    localTianShuReportData.g = this.jdField_a_of_type_JavaLangString;
+    localTianShuReportData.h = "";
+    localTianShuReportData.jdField_a_of_type_Long = l;
+    localTianShuReportData.d = this.jdField_a_of_type_Int;
+    localTianShuReportData.k = Integer.toString(this.jdField_b_of_type_Int);
+    localTianShuReportData.jdField_e_of_type_Int = 1;
+    localTianShuReportData.jdField_f_of_type_Int = this.c;
+    localTianShuReportData.l = this.jdField_b_of_type_JavaLangString;
     TianShuManager.getInstance().report(localTianShuReportData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.13
  * JD-Core Version:    0.7.0.1
  */

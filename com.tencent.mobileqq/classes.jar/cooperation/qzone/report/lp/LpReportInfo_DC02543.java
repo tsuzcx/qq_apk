@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import cooperation.qzone.QUA;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,14 +10,14 @@ import org.json.JSONObject;
 public class LpReportInfo_DC02543
   implements LpReportInfo
 {
-  private static final String QUA = ;
+  private static final String QUA = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3();
   private static final String TABLE_NAME = "DC02543";
   private long clientTime;
   private String envent;
   private HashMap<String, String> msgMap;
   private String retcode = "0";
   private long serverTime;
-  private long timeCost;
+  private long timeCost = 0L;
   private String uin;
   
   public LpReportInfo_DC02543(String paramString1, String paramString2, long paramLong)
@@ -33,7 +33,7 @@ public class LpReportInfo_DC02543
     this.timeCost = paramLong;
     this.msgMap = paramHashMap;
     this.clientTime = System.currentTimeMillis();
-    this.serverTime = NetConnInfoCenter.getServerTimeMillis();
+    this.serverTime = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getServerTimeMillis();
   }
   
   public String getSimpleInfo()
@@ -76,7 +76,7 @@ public class LpReportInfo_DC02543
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC02543
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.onlinestatus.auto;
 
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 
-public final class AutoStatusManager$4
+final class AutoStatusManager$4
   implements Runnable
 {
   public void run()

@@ -9,20 +9,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
-public final class BridgeModuleHelper$9
+final class BridgeModuleHelper$9
   implements Runnable
 {
-  public BridgeModuleHelper$9(BridgeModule paramBridgeModule, String paramString) {}
+  BridgeModuleHelper$9(BridgeModule paramBridgeModule, String paramString) {}
   
   public void run()
   {
     JSONObject localJSONObject = new JSONObject();
     Object localObject1 = new GdtDeviceInfoHelper.Params();
-    ((GdtDeviceInfoHelper.Params)localObject1).businessIdForAidTicketAndTaidTicket = "ce2d9f";
-    localObject1 = GdtDeviceInfoHelper.create(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject1);
+    ((GdtDeviceInfoHelper.Params)localObject1).jdField_a_of_type_JavaLangString = "ce2d9f";
+    localObject1 = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject1);
     if (localObject1 != null) {}
     Object localObject2;
-    for (localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).deviceInfo;; localObject2 = null)
+    for (localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).a;; localObject2 = null)
     {
       if (localObject1 != null) {}
       try
@@ -46,7 +46,7 @@ public final class BridgeModuleHelper$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModuleHelper.9
  * JD-Core Version:    0.7.0.1
  */

@@ -15,20 +15,20 @@ public final class GetOnlineInfoResp
   static byte[] cache_vecPoiInfo;
   public long dwInterval = 30L;
   public long dwStatus = 20L;
-  public long dwUin;
+  public long dwUin = 0L;
   public int eIconType = 0;
   public int eNetworkType = 0;
-  public short errorCode;
-  public int iBatteryStatus;
-  public long iTermType;
-  public int result;
+  public short errorCode = 0;
+  public int iBatteryStatus = 0;
+  public long iTermType = 0L;
+  public int result = 0;
   public String strCustomOnlineStatusDesc = "";
   public String strTermDesc = "";
-  public long uAbiFlag;
-  public long uExtOnlineStatus;
-  public byte[] vecExtOnlineBusinessInfo;
-  public byte[] vecMusicInfo;
-  public byte[] vecPoiInfo;
+  public long uAbiFlag = 0L;
+  public long uExtOnlineStatus = 0L;
+  public byte[] vecExtOnlineBusinessInfo = null;
+  public byte[] vecMusicInfo = null;
+  public byte[] vecPoiInfo = null;
   
   static
   {
@@ -116,7 +116,7 @@ public final class GetOnlineInfoResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.GetOnlineInfoResp
  * JD-Core Version:    0.7.0.1
  */

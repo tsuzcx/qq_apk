@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.qqlive.module.videoreport.Configuration;
-import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
+import com.tencent.qqlive.module.videoreport.constants.ClickPolicy;
+import com.tencent.qqlive.module.videoreport.constants.EndExposurePolicy;
+import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import com.tencent.qqlive.module.videoreport.data.DataBinder;
 import com.tencent.qqlive.module.videoreport.data.DataEntity;
 import com.tencent.qqlive.module.videoreport.data.DataEntityOperator;
@@ -67,6 +69,17 @@ public class ReportHelper
     return paramView;
   }
   
+  @NonNull
+  public static ClickPolicy getClickPolicy(DataEntity paramDataEntity)
+  {
+    ClickPolicy localClickPolicy = (ClickPolicy)DataEntityOperator.getInnerParam(paramDataEntity, "element_click_policy");
+    paramDataEntity = localClickPolicy;
+    if (localClickPolicy == null) {
+      paramDataEntity = VideoReportInner.getInstance().getConfiguration().getElementClickPolicy();
+    }
+    return paramDataEntity;
+  }
+  
   private static double getElementExposureMinRate(@Nullable DataEntity paramDataEntity)
   {
     double d = VideoReportInner.getInstance().getConfiguration().getElementExposureMinRate();
@@ -80,6 +93,28 @@ public class ReportHelper
       return d;
       d = paramDataEntity.doubleValue();
     }
+  }
+  
+  @NonNull
+  public static EndExposurePolicy getEndExposePolicy(DataEntity paramDataEntity)
+  {
+    EndExposurePolicy localEndExposurePolicy = (EndExposurePolicy)DataEntityOperator.getInnerParam(paramDataEntity, "element_end_expose_policy");
+    paramDataEntity = localEndExposurePolicy;
+    if (localEndExposurePolicy == null) {
+      paramDataEntity = VideoReportInner.getInstance().getConfiguration().getElementEndExposePolicy();
+    }
+    return paramDataEntity;
+  }
+  
+  @NonNull
+  public static ExposurePolicy getExposePolicy(DataEntity paramDataEntity)
+  {
+    ExposurePolicy localExposurePolicy = (ExposurePolicy)DataEntityOperator.getInnerParam(paramDataEntity, "element_expose_policy");
+    paramDataEntity = localExposurePolicy;
+    if (localExposurePolicy == null) {
+      paramDataEntity = VideoReportInner.getInstance().getConfiguration().getElementExposePolicy();
+    }
+    return paramDataEntity;
   }
   
   static long getExposureMinTime(@Nullable DataEntity paramDataEntity)
@@ -97,19 +132,15 @@ public class ReportHelper
     }
   }
   
-  @NonNull
-  private static ReportPolicy getReportPolicy(DataEntity paramDataEntity)
+  private static boolean handleReportFirstPolicy(Object paramObject, String paramString, View paramView)
   {
-    Object localObject = (ReportPolicy)DataEntityOperator.getInnerParam(paramDataEntity, "element_report_policy");
-    paramDataEntity = (DataEntity)localObject;
-    if (localObject == null) {
-      paramDataEntity = VideoReportInner.getInstance().getConfiguration().getElementReportPolicy();
-    }
-    localObject = paramDataEntity;
-    if (paramDataEntity == null) {
-      localObject = ReportPolicy.REPORT_POLICY_ALL;
-    }
-    return localObject;
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return true;
+      paramObject = ExposurePolicyHelper.getEleExposeInfo(paramObject, paramView, paramString);
+    } while ((paramObject == null) || (!paramObject.hasReport()));
+    return paramObject.reportOverTime();
   }
   
   static boolean isViewExposed(View paramView, double paramDouble)
@@ -126,18 +157,39 @@ public class ReportHelper
   
   static boolean reportClick(@Nullable DataEntity paramDataEntity)
   {
-    if (emptyElementId(paramDataEntity)) {
+    if (emptyElementId(paramDataEntity)) {}
+    while (getClickPolicy(paramDataEntity) != ClickPolicy.REPORT_ALL) {
       return false;
     }
-    return getReportPolicy(paramDataEntity).reportClick;
+    return true;
   }
   
-  static boolean reportExposure(@Nullable DataEntity paramDataEntity)
+  static boolean reportEndExposure(@Nullable View paramView)
   {
-    if (emptyElementId(paramDataEntity)) {
+    paramView = DataBinder.getDataEntity(paramView);
+    if (emptyElementId(paramView)) {}
+    while (EndExposurePolicy.REPORT_ALL != getEndExposePolicy(paramView)) {
       return false;
     }
-    return getReportPolicy(paramDataEntity).reportExposure;
+    return true;
+  }
+  
+  static boolean reportExposure(Object paramObject, String paramString, View paramView)
+  {
+    Object localObject = DataBinder.getDataEntity(paramView);
+    if (emptyElementId((DataEntity)localObject)) {}
+    do
+    {
+      do
+      {
+        return false;
+        localObject = getExposePolicy((DataEntity)localObject);
+      } while (localObject == ExposurePolicy.REPORT_NONE);
+      if (localObject == ExposurePolicy.REPORT_ALL) {
+        return true;
+      }
+    } while (localObject != ExposurePolicy.REPORT_FIRST);
+    return handleReportFirstPolicy(paramObject, paramString, paramView);
   }
 }
 

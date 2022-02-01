@@ -3,7 +3,7 @@ package com.tencent.mobileqq.armap;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class ArMapUtil$1
+final class ArMapUtil$1
   implements Runnable
 {
   public void run()

@@ -3,10 +3,10 @@ package cooperation.ilive.util;
 import android.content.Context;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class IliveEntranceUtil$1
+final class IliveEntranceUtil$1
   implements Runnable
 {
-  public IliveEntranceUtil$1(Context paramContext, String paramString) {}
+  IliveEntranceUtil$1(Context paramContext, String paramString) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public final class IliveEntranceUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.util.IliveEntranceUtil.1
  * JD-Core Version:    0.7.0.1
  */

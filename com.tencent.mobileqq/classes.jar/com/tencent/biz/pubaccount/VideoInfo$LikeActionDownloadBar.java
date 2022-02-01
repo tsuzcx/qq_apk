@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import oml;
 
 public class VideoInfo$LikeActionDownloadBar
   implements Parcelable
 {
-  public static final Parcelable.Creator<LikeActionDownloadBar> CREATOR = new oml();
+  public static final Parcelable.Creator<LikeActionDownloadBar> CREATOR = new VideoInfo.LikeActionDownloadBar.1();
   public UrlJumpInfo a;
   public String a;
   public String b;
@@ -17,7 +16,7 @@ public class VideoInfo$LikeActionDownloadBar
   
   public VideoInfo$LikeActionDownloadBar() {}
   
-  public VideoInfo$LikeActionDownloadBar(Parcel paramParcel)
+  protected VideoInfo$LikeActionDownloadBar(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
@@ -45,7 +44,7 @@ public class VideoInfo$LikeActionDownloadBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.LikeActionDownloadBar
  * JD-Core Version:    0.7.0.1
  */

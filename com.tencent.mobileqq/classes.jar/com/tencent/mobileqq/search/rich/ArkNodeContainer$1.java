@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.search.rich;
 
-import bcjy;
 import com.tencent.qphone.base.util.QLog;
 
-public class ArkNodeContainer$1
+class ArkNodeContainer$1
   implements Runnable
 {
-  public ArkNodeContainer$1(bcjy parambcjy, String paramString) {}
+  ArkNodeContainer$1(ArkNodeContainer paramArkNodeContainer, String paramString) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class ArkNodeContainer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkNodeContainer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -24,6 +24,7 @@ public class PTFaceParam
   public static final int YOUTU_FACE_256_POINTS_NUM = 256;
   public static final int YOUTU_FACE_FEATURE_POINT_NUM = 67;
   public static final int YOUTU_FACE_POINT_NUM = 94;
+  public static final int YOUTU_FACE_POINT_NUM_90 = 90;
   public static final int YOUTU_FACE_PROFILE_POINT_NUM = 21;
   public static final int YOUTU_FACE_PUPIL_POINT_NUM = 6;
   
@@ -64,7 +65,7 @@ public class PTFaceParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTFaceParam
  * JD-Core Version:    0.7.0.1
  */

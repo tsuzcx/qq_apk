@@ -8,14 +8,19 @@ import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
-import bheg;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptConfig;
+import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptReport;
+import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageTypeOptHelper;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
 import com.tencent.image.DownloadParams;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.startup.step.AVSoUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.DiskCache;
+import com.tencent.mobileqq.transfile.HttpDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.sharpP.SharpPUtil;
@@ -32,17 +37,6 @@ import java.util.List;
 import java.util.Set;
 import mqq.os.MqqHandler;
 import org.jetbrains.annotations.NotNull;
-import qdk;
-import qdm;
-import qdn;
-import tlo;
-import tls;
-import tlu;
-import tlv;
-import tlw;
-import tmb;
-import tmd;
-import usq;
 
 public class RunningJob
   implements Runnable
@@ -51,24 +45,24 @@ public class RunningJob
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  BitmapCache jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache;
+  ImageManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageManager;
+  ImageRequest jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest;
   DiskCache jdField_a_of_type_ComTencentMobileqqTransfileDiskCache;
+  HttpDownloader jdField_a_of_type_ComTencentMobileqqTransfileHttpDownloader;
   File jdField_a_of_type_JavaIoFile;
-  Set<WeakReference<tlu>> jdField_a_of_type_JavaUtilSet = new HashSet();
-  tlo jdField_a_of_type_Tlo;
-  tlv jdField_a_of_type_Tlv;
-  public tlw a;
-  usq jdField_a_of_type_Usq;
+  Set<WeakReference<IBitmapCallback>> jdField_a_of_type_JavaUtilSet = new HashSet();
   
   static
   {
     jdField_a_of_type_JavaLangString = "zimage." + RunningJob.class.getSimpleName();
   }
   
-  public RunningJob(tlv paramtlv, tlw paramtlw)
+  public RunningJob(ImageManager paramImageManager, ImageRequest paramImageRequest)
   {
-    this.jdField_a_of_type_Tlv = paramtlv;
-    this.jdField_a_of_type_Tlw = paramtlw;
-    this.jdField_a_of_type_Tlo = paramtlv.jdField_a_of_type_Tlo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageManager = paramImageManager;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest = paramImageRequest;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache = paramImageManager.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache;
     this.jdField_a_of_type_ComTencentMobileqqTransfileDiskCache = new DiskCache(URLDrawableHelper.diskCachePath);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
@@ -330,8 +324,8 @@ public class RunningJob
   private Bitmap a(Bitmap paramBitmap)
   {
     Bitmap localBitmap = paramBitmap;
-    if (this.jdField_a_of_type_Tlw.jdField_c_of_type_Int == 1) {
-      localBitmap = bheg.c(paramBitmap, this.jdField_a_of_type_Tlw.jdField_a_of_type_Int, this.jdField_a_of_type_Tlw.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_c_of_type_Int == 1) {
+      localBitmap = ImageUtil.c(paramBitmap, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_b_of_type_Int);
     }
     return localBitmap;
   }
@@ -357,18 +351,18 @@ public class RunningJob
     //   25: aload 4
     //   27: astore 5
     //   29: aload_0
-    //   30: getfield 70	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlw	Ltlw;
+    //   30: getfield 70	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;
     //   33: ifnull +277 -> 310
     //   36: aload 4
     //   38: astore 5
     //   40: getstatic 182	android/os/Build$VERSION:SDK_INT	I
     //   43: bipush 19
     //   45: if_icmplt +265 -> 310
-    //   48: getstatic 187	qdn:a	Lqdn;
+    //   48: getstatic 187	com/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageTypeOptHelper:a	Lcom/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageTypeOptHelper;
     //   51: aload_0
     //   52: getfield 119	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_JavaIoFile	Ljava/io/File;
     //   55: invokevirtual 190	java/io/File:getPath	()Ljava/lang/String;
-    //   58: invokevirtual 193	qdn:a	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
+    //   58: invokevirtual 193	com/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageTypeOptHelper:a	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
     //   61: astore 5
     //   63: aload 6
     //   65: astore 4
@@ -384,11 +378,11 @@ public class RunningJob
     //   86: if_icmpeq +202 -> 288
     //   89: aload 5
     //   91: aload_0
-    //   92: getfield 70	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlw	Ltlw;
-    //   95: getfield 165	tlw:jdField_a_of_type_Int	I
+    //   92: getfield 70	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;
+    //   95: getfield 165	com/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest:jdField_a_of_type_Int	I
     //   98: aload_0
-    //   99: getfield 70	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlw	Ltlw;
-    //   102: getfield 168	tlw:jdField_b_of_type_Int	I
+    //   99: getfield 70	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;
+    //   102: getfield 168	com/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest:jdField_b_of_type_Int	I
     //   105: invokestatic 195	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	(Landroid/graphics/BitmapFactory$Options;II)I
     //   108: istore_3
     //   109: aload 5
@@ -414,9 +408,9 @@ public class RunningJob
     //   145: iconst_1
     //   146: putfield 202	android/graphics/BitmapFactory$Options:inMutable	Z
     //   149: aload_0
-    //   150: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlo	Ltlo;
+    //   150: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache;
     //   153: aload 5
-    //   155: invokevirtual 207	tlo:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   155: invokevirtual 207	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   158: astore 6
     //   160: aload 6
     //   162: ifnull +74 -> 236
@@ -450,14 +444,14 @@ public class RunningJob
     //   229: iload_3
     //   230: getstatic 237	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
     //   233: invokevirtual 241	android/graphics/Bitmap:reconfigure	(IILandroid/graphics/Bitmap$Config;)V
-    //   236: getstatic 187	qdn:a	Lqdn;
+    //   236: getstatic 187	com/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageTypeOptHelper:a	Lcom/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageTypeOptHelper;
     //   239: aload_0
     //   240: getfield 119	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_JavaIoFile	Ljava/io/File;
     //   243: invokevirtual 190	java/io/File:getPath	()Ljava/lang/String;
     //   246: iload_2
     //   247: iload_3
     //   248: aload 6
-    //   250: invokevirtual 244	qdn:a	(Ljava/lang/String;IILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   250: invokevirtual 244	com/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageTypeOptHelper:a	(Ljava/lang/String;IILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   253: astore 5
     //   255: aload 5
     //   257: astore 4
@@ -530,8 +524,8 @@ public class RunningJob
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     try
     {
-      if (this.jdField_a_of_type_Tlo.jdField_a_of_type_JavaUtilList.size() > 0) {
-        arrayOfByte1 = (byte[])this.jdField_a_of_type_Tlo.jdField_a_of_type_JavaUtilList.remove(0);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache.jdField_a_of_type_JavaUtilList.size() > 0) {
+        arrayOfByte1 = (byte[])this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache.jdField_a_of_type_JavaUtilList.remove(0);
       }
       byte[] arrayOfByte2 = arrayOfByte1;
       if (arrayOfByte1 == null)
@@ -540,7 +534,7 @@ public class RunningJob
         arrayOfByte2 = arrayOfByte1;
         if (QLog.isColorLevel())
         {
-          tmd.a(jdField_a_of_type_JavaLangString, "allocate temp storage");
+          Utils.a(jdField_a_of_type_JavaLangString, "allocate temp storage");
           arrayOfByte2 = arrayOfByte1;
         }
       }
@@ -560,23 +554,23 @@ public class RunningJob
       }
       catch (OutOfMemoryError paramInputStream)
       {
-        this.jdField_a_of_type_Tlo.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
         throw paramInputStream;
       }
       catch (Exception paramInputStream)
       {
-        this.jdField_a_of_type_Tlo.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
         throw paramInputStream;
       }
       paramInputStream = finally;
     }
     label184:
     localOptions.inDither = true;
-    localOptions.inPreferredConfig = this.jdField_a_of_type_Tlw.jdField_a_of_type_AndroidGraphicsBitmap$Config;
+    localOptions.inPreferredConfig = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_AndroidGraphicsBitmap$Config;
     if (Build.VERSION.SDK_INT >= 11) {
       localOptions.inMutable = true;
     }
-    localOptions.inSampleSize = a(localOptions, this.jdField_a_of_type_Tlw.jdField_a_of_type_Int, this.jdField_a_of_type_Tlw.jdField_b_of_type_Int);
+    localOptions.inSampleSize = a(localOptions, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_b_of_type_Int);
     return localOptions;
   }
   
@@ -593,38 +587,38 @@ public class RunningJob
   private DownloadParams a()
   {
     DownloadParams localDownloadParams = new DownloadParams();
-    localDownloadParams.url = this.jdField_a_of_type_Tlw.jdField_a_of_type_JavaNetURL;
-    localDownloadParams.urlStr = this.jdField_a_of_type_Tlw.jdField_a_of_type_JavaNetURL.toString();
-    localDownloadParams.retryCount = this.jdField_a_of_type_Tlw.jdField_f_of_type_Int;
+    localDownloadParams.url = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_JavaNetURL;
+    localDownloadParams.urlStr = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_JavaNetURL.toString();
+    localDownloadParams.retryCount = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_f_of_type_Int;
     return localDownloadParams;
   }
   
   private File a(DownloadParams paramDownloadParams, StringBuilder paramStringBuilder)
   {
-    return this.jdField_a_of_type_Usq.loadImageFile(paramDownloadParams, new tmb(this, paramStringBuilder));
+    return this.jdField_a_of_type_ComTencentMobileqqTransfileHttpDownloader.loadImageFile(paramDownloadParams, new RunningJob.1(this, paramStringBuilder));
   }
   
   private void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Tlw != null) {
-      this.jdField_a_of_type_Tlw.jdField_e_of_type_Long = paramLong;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_e_of_type_Long = paramLong;
     }
   }
   
   private void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Tlv.a(this.jdField_a_of_type_Tlw);
-    paramBitmap = new tls(a(paramBitmap), this.jdField_a_of_type_Tlo.jdField_a_of_type_Tma);
-    this.jdField_a_of_type_Tlo.a(this.jdField_a_of_type_Tlw, paramBitmap);
-    if (this.jdField_a_of_type_Tlw.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+    paramBitmap = new CloseableBitmap(a(paramBitmap), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReleaser);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, paramBitmap);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_Boolean)
     {
-      qdm.a(6, this.jdField_a_of_type_Tlw);
-      qdm.a(this.jdField_a_of_type_Tlw, false, "cancelled");
+      RIJImageOptReport.a(6, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+      RIJImageOptReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, false, "cancelled");
       paramBitmap.a();
       return;
     }
-    qdm.a(5, this.jdField_a_of_type_Tlw);
-    if (qdk.a.c())
+    RIJImageOptReport.a(5, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+    if (RIJImageOptConfig.a.c())
     {
       this.jdField_a_of_type_AndroidOsHandler.postAtFrontOfQueue(new RunningJob.2(this, paramBitmap));
       return;
@@ -634,10 +628,10 @@ public class RunningJob
   
   private void a(Bitmap paramBitmap, long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_Tlw != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest != null)
     {
-      this.jdField_a_of_type_Tlw.jdField_f_of_type_Long = paramLong2;
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "[decode success](" + paramLong2 + ") total(" + (paramLong1 - this.jdField_a_of_type_Long) + ")" + this.jdField_a_of_type_Tlw + "; size =" + paramBitmap.getByteCount());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_f_of_type_Long = paramLong2;
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "[decode success](" + paramLong2 + ") total(" + (paramLong1 - this.jdField_a_of_type_Long) + ")" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest + "; size =" + paramBitmap.getByteCount());
     }
   }
   
@@ -649,6 +643,26 @@ public class RunningJob
       return;
     }
     d(new RuntimeException("bitmap null"));
+  }
+  
+  private void a(CloseableBitmap paramCloseableBitmap)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_Boolean)
+    {
+      RIJImageOptReport.a(6, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+      RIJImageOptReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, false, "cancelled");
+      paramCloseableBitmap.a();
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if (localWeakReference.get() != null) {
+        ((IBitmapCallback)localWeakReference.get()).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, paramCloseableBitmap.a());
+      }
+    }
+    paramCloseableBitmap.a();
   }
   
   private void a(InputStream paramInputStream)
@@ -695,23 +709,23 @@ public class RunningJob
   
   private void a(Throwable paramThrowable, int paramInt)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "[job fail] failCode:" + paramInt + this.jdField_a_of_type_Tlw + " " + paramThrowable + " retryCount:" + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Tlw.jdField_e_of_type_Int == -2) {
-      this.jdField_a_of_type_Tlw.jdField_e_of_type_Int = paramInt;
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "[job fail] failCode:" + paramInt + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest + " " + paramThrowable + " retryCount:" + this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_e_of_type_Int == -2) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_e_of_type_Int = paramInt;
     }
-    this.jdField_a_of_type_Tlv.a(this.jdField_a_of_type_Tlw);
-    if (this.jdField_a_of_type_Tlw.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_Boolean)
     {
-      qdm.a(6, this.jdField_a_of_type_Tlw);
-      qdm.a(this.jdField_a_of_type_Tlw, false, "cancelled");
+      RIJImageOptReport.a(6, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+      RIJImageOptReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, false, "cancelled");
     }
     for (;;)
     {
       return;
       Object localObject2;
-      if (this.jdField_a_of_type_Tlw.jdField_f_of_type_Int == tlw.g)
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_f_of_type_Int == ImageRequest.g)
       {
-        localObject2 = this.jdField_a_of_type_Tlw;
+        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest;
         if (paramThrowable == null) {
           break label166;
         }
@@ -719,7 +733,7 @@ public class RunningJob
       label166:
       for (Object localObject1 = paramThrowable.getMessage();; localObject1 = "")
       {
-        qdm.a((tlw)localObject2, false, (String)localObject1);
+        RIJImageOptReport.a((ImageRequest)localObject2, false, (String)localObject1);
         if (!e()) {
           break;
         }
@@ -735,26 +749,6 @@ public class RunningJob
         }
       }
     }
-  }
-  
-  private void a(tls paramtls)
-  {
-    if (this.jdField_a_of_type_Tlw.jdField_a_of_type_Boolean)
-    {
-      qdm.a(6, this.jdField_a_of_type_Tlw);
-      qdm.a(this.jdField_a_of_type_Tlw, false, "cancelled");
-      paramtls.a();
-      return;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if (localWeakReference.get() != null) {
-        ((tlu)localWeakReference.get()).a(this.jdField_a_of_type_Tlw, paramtls.a());
-      }
-    }
-    paramtls.a();
   }
   
   private static void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2)
@@ -812,14 +806,14 @@ public class RunningJob
   
   private void b()
   {
-    if (this.jdField_a_of_type_Tlw.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_Boolean) {
       throw new RuntimeException("cancel");
     }
   }
   
   private void b(Throwable paramThrowable)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, paramThrowable.getMessage() + " " + this.jdField_a_of_type_Tlw + " retryCount:" + this.jdField_a_of_type_Int);
+    QLog.d(jdField_a_of_type_JavaLangString, 1, paramThrowable.getMessage() + " " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest + " retryCount:" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 0)
     {
       this.jdField_a_of_type_Int += 1;
@@ -834,46 +828,49 @@ public class RunningJob
   
   private boolean b()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (d()) {
-          return true;
-        }
-        this.jdField_a_of_type_Usq = new usq(BaseApplicationImpl.getApplication());
-        Object localObject = a();
-        boolean bool = this.jdField_a_of_type_Usq.hasDiskFile((DownloadParams)localObject);
-        l1 = System.currentTimeMillis();
-        this.jdField_a_of_type_JavaIoFile = a((DownloadParams)localObject, new StringBuilder());
-        c();
-        long l2 = System.currentTimeMillis();
-        long l3 = l2 - l1;
-        a(l3);
-        localObject = jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder().append("[download success](").append(l3).append(")").append(this.jdField_a_of_type_Tlw).append(" fileSize:");
-        if (this.jdField_a_of_type_JavaIoFile == null) {
-          continue;
-        }
-        l1 = this.jdField_a_of_type_JavaIoFile.length();
-        QLog.d((String)localObject, 2, l1);
-        b();
-        if (c()) {
-          break label193;
-        }
-        a(bool, l2, l3);
+      if (d()) {
+        return true;
       }
-      catch (Throwable localThrowable)
+      this.jdField_a_of_type_ComTencentMobileqqTransfileHttpDownloader = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).getHttpDownloader();
+      localObject = a();
+      bool = this.jdField_a_of_type_ComTencentMobileqqTransfileHttpDownloader.hasDiskFile((DownloadParams)localObject);
+      l1 = System.currentTimeMillis();
+      this.jdField_a_of_type_JavaIoFile = a((DownloadParams)localObject, new StringBuilder());
+      c();
+      l2 = System.currentTimeMillis();
+      l3 = l2 - l1;
+      a(l3);
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder().append("[download success](").append(l3).append(")").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest).append(" fileSize:");
+      if (this.jdField_a_of_type_JavaIoFile == null) {
+        break label194;
+      }
+      l1 = this.jdField_a_of_type_JavaIoFile.length();
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        long l1;
+        Object localObject;
+        boolean bool;
+        long l2;
+        long l3;
+        StringBuilder localStringBuilder;
         a(localThrowable);
         continue;
+        label194:
+        long l1 = 0L;
       }
-      return false;
-      l1 = 0L;
     }
-    label193:
-    return true;
+    QLog.d((String)localObject, 2, l1);
+    b();
+    if (c()) {
+      return true;
+    }
+    a(bool, l2, l3);
+    return false;
   }
   
   private boolean b(Throwable paramThrowable)
@@ -890,17 +887,17 @@ public class RunningJob
   
   private void c(Throwable paramThrowable)
   {
-    qdm.a(6, this.jdField_a_of_type_Tlw);
-    qdm.a(this.jdField_a_of_type_Tlw, false, paramThrowable.getMessage());
+    RIJImageOptReport.a(6, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+    RIJImageOptReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, false, paramThrowable.getMessage());
   }
   
   private boolean c()
   {
-    if ((this.jdField_a_of_type_Tlw.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilSet.isEmpty()))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilSet.isEmpty()))
     {
-      this.jdField_a_of_type_Tlv.a(this.jdField_a_of_type_Tlw);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[preload request]" + this.jdField_a_of_type_Tlw + " no callback, give up decode");
-      tlv.a().c(this.jdField_a_of_type_Tlw);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[preload request]" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest + " no callback, give up decode");
+      ImageManager.a().c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
       return true;
     }
     return false;
@@ -913,8 +910,8 @@ public class RunningJob
   
   private void d()
   {
-    if (this.jdField_a_of_type_Tlw.d == 0) {
-      qdm.b(2, this.jdField_a_of_type_Tlw);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.d == 0) {
+      RIJImageOptReport.b(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
     }
   }
   
@@ -925,10 +922,10 @@ public class RunningJob
   
   private boolean d()
   {
-    if (this.jdField_a_of_type_Tlw.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_Boolean)
     {
-      qdm.a(6, this.jdField_a_of_type_Tlw);
-      tlv.a().c(this.jdField_a_of_type_Tlw);
+      RIJImageOptReport.a(6, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+      ImageManager.a().c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
       return true;
     }
     return false;
@@ -936,16 +933,16 @@ public class RunningJob
   
   private void e(Throwable paramThrowable)
   {
-    tlw localtlw = this.jdField_a_of_type_Tlw;
-    localtlw.jdField_f_of_type_Int += 1;
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "try count: " + this.jdField_a_of_type_Tlw.jdField_f_of_type_Int + " " + this.jdField_a_of_type_Tlw);
-    if (((paramThrowable != null) && (paramThrowable.getMessage() != null) && (paramThrowable.getMessage().equals("sharpP decode fail"))) || (this.jdField_a_of_type_Tlw.jdField_e_of_type_Int == 400)) {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "before convert: " + this.jdField_a_of_type_Tlw.jdField_a_of_type_JavaNetURL);
+    ImageRequest localImageRequest = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest;
+    localImageRequest.jdField_f_of_type_Int += 1;
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "try count: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_f_of_type_Int + " " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+    if (((paramThrowable != null) && (paramThrowable.getMessage() != null) && (paramThrowable.getMessage().equals("sharpP decode fail"))) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_e_of_type_Int == 400)) {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "before convert: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_JavaNetURL);
     }
     try
     {
-      this.jdField_a_of_type_Tlw.jdField_a_of_type_JavaNetURL = new URL(qdn.a.b(this.jdField_a_of_type_Tlw.jdField_a_of_type_JavaNetURL.toString(), this.jdField_a_of_type_Tlw.jdField_c_of_type_JavaLangString));
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "after convert: " + this.jdField_a_of_type_Tlw.jdField_a_of_type_JavaNetURL);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_JavaNetURL = new URL(RIJImageTypeOptHelper.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_JavaNetURL.toString(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_c_of_type_JavaLangString));
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "after convert: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_JavaNetURL);
       ThreadManager.getUIHandler().post(new RunningJob.5(this));
       return;
     }
@@ -960,12 +957,12 @@ public class RunningJob
   
   private boolean e()
   {
-    return this.jdField_a_of_type_Tlw.jdField_f_of_type_Int < tlw.g;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_f_of_type_Int < ImageRequest.g;
   }
   
   public Bitmap a(InputStream paramInputStream1, InputStream paramInputStream2, long paramLong)
   {
-    if (tmd.a()) {
+    if (Utils.a()) {
       return b(paramInputStream1, paramInputStream2, paramLong);
     }
     return c(paramInputStream1, paramInputStream2, paramLong);
@@ -984,26 +981,26 @@ public class RunningJob
   public void a()
   {
     if (QLog.isColorLevel()) {
-      tmd.a(jdField_a_of_type_JavaLangString, "[cancel request]" + this.jdField_a_of_type_Tlw);
+      Utils.a(jdField_a_of_type_JavaLangString, "[cancel request]" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
     }
-    this.jdField_a_of_type_Tlw.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Usq != null) {
-      this.jdField_a_of_type_Usq.cancel();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpDownloader != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTransfileHttpDownloader.cancel();
     }
   }
   
-  public void a(tlu paramtlu)
+  public void a(IBitmapCallback paramIBitmapCallback)
   {
-    if (paramtlu != null) {}
+    if (paramIBitmapCallback != null) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilSet.add(new WeakReference(paramtlu));
+      this.jdField_a_of_type_JavaUtilSet.add(new WeakReference(paramIBitmapCallback));
       return;
     }
     finally
     {
-      paramtlu = finally;
-      throw paramtlu;
+      paramIBitmapCallback = finally;
+      throw paramIBitmapCallback;
     }
   }
   
@@ -1011,11 +1008,11 @@ public class RunningJob
   {
     try
     {
-      if ((AVSoUtils.a()) && (qdk.a.g()))
+      if ((AVSoUtils.a()) && (RIJImageOptConfig.a.g()))
       {
-        qdn localqdn = qdn.a;
-        if (this.jdField_a_of_type_Tlw.jdField_a_of_type_JavaNetURL != null) {}
-        for (String str = this.jdField_a_of_type_Tlw.jdField_a_of_type_JavaNetURL.toString(); (localqdn.a(str)) && (SharpPUtil.isSharpPFile(this.jdField_a_of_type_JavaIoFile)); str = "") {
+        RIJImageTypeOptHelper localRIJImageTypeOptHelper = RIJImageTypeOptHelper.a;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_JavaNetURL != null) {}
+        for (String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_JavaNetURL.toString(); (localRIJImageTypeOptHelper.a(str)) && (SharpPUtil.isSharpPFile(this.jdField_a_of_type_JavaIoFile)); str = "") {
           return true;
         }
       }
@@ -1035,7 +1032,7 @@ public class RunningJob
     // Byte code:
     //   0: aload_0
     //   1: aload_2
-    //   2: invokespecial 713	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	(Ljava/io/InputStream;)Landroid/graphics/BitmapFactory$Options;
+    //   2: invokespecial 716	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	(Ljava/io/InputStream;)Landroid/graphics/BitmapFactory$Options;
     //   5: astore_2
     //   6: invokestatic 276	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   9: ifeq +45 -> 54
@@ -1043,28 +1040,28 @@ public class RunningJob
     //   15: new 23	java/lang/StringBuilder
     //   18: dup
     //   19: invokespecial 26	java/lang/StringBuilder:<init>	()V
-    //   22: ldc_w 715
+    //   22: ldc_w 718
     //   25: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: aload_0
-    //   29: getfield 70	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlw	Ltlw;
+    //   29: getfield 70	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;
     //   32: invokevirtual 431	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   35: ldc_w 717
+    //   35: ldc_w 720
     //   38: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: aload_2
     //   42: getfield 198	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   45: invokevirtual 218	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   48: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 283	tmd:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   51: invokestatic 283	com/tencent/biz/pubaccount/readinjoy/view/imageloader/Utils:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   54: aload_0
-    //   55: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlo	Ltlo;
+    //   55: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache;
     //   58: aload_2
-    //   59: invokevirtual 207	tlo:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   59: invokevirtual 207	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   62: astore 6
     //   64: aload 6
     //   66: ifnull +121 -> 187
     //   69: aload_2
     //   70: aload 6
-    //   72: putfield 721	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
+    //   72: putfield 724	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
     //   75: iconst_1
     //   76: istore 5
     //   78: new 291	java/io/BufferedInputStream
@@ -1073,20 +1070,20 @@ public class RunningJob
     //   83: invokespecial 293	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   86: astore_1
     //   87: aload_2
-    //   88: invokestatic 724	tmd:a	(Landroid/graphics/BitmapFactory$Options;)Z
+    //   88: invokestatic 727	com/tencent/biz/pubaccount/readinjoy/view/imageloader/Utils:a	(Landroid/graphics/BitmapFactory$Options;)Z
     //   91: ifeq +58 -> 149
     //   94: aload_1
     //   95: iconst_0
-    //   96: invokestatic 730	android/graphics/BitmapRegionDecoder:newInstance	(Ljava/io/InputStream;Z)Landroid/graphics/BitmapRegionDecoder;
+    //   96: invokestatic 733	android/graphics/BitmapRegionDecoder:newInstance	(Ljava/io/InputStream;Z)Landroid/graphics/BitmapRegionDecoder;
     //   99: aload_0
     //   100: aload_2
-    //   101: invokespecial 732	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Rect;
+    //   101: invokespecial 735	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Rect;
     //   104: aload_2
-    //   105: invokevirtual 736	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   105: invokevirtual 739	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   108: astore_1
     //   109: aload_0
-    //   110: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlo	Ltlo;
-    //   113: getfield 262	tlo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   110: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache;
+    //   113: getfield 262	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   116: aload_2
     //   117: getfield 286	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   120: invokeinterface 308 2 0
@@ -1097,10 +1094,10 @@ public class RunningJob
     //   133: aload_1
     //   134: if_acmpeq +51 -> 185
     //   137: aload_1
-    //   138: invokevirtual 739	android/graphics/Bitmap:recycle	()V
-    //   141: new 741	java/lang/IllegalStateException
+    //   138: invokevirtual 742	android/graphics/Bitmap:recycle	()V
+    //   141: new 744	java/lang/IllegalStateException
     //   144: dup
-    //   145: invokespecial 742	java/lang/IllegalStateException:<init>	()V
+    //   145: invokespecial 745	java/lang/IllegalStateException:<init>	()V
     //   148: athrow
     //   149: aload_1
     //   150: aconst_null
@@ -1113,8 +1110,8 @@ public class RunningJob
     //   161: athrow
     //   162: astore_1
     //   163: aload_0
-    //   164: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlo	Ltlo;
-    //   167: getfield 262	tlo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   164: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache;
+    //   167: getfield 262	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   170: aload_2
     //   171: getfield 286	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   174: invokeinterface 308 2 0
@@ -1167,11 +1164,11 @@ public class RunningJob
     //   16: astore 9
     //   18: aload_0
     //   19: aload_2
-    //   20: invokespecial 713	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	(Ljava/io/InputStream;)Landroid/graphics/BitmapFactory$Options;
+    //   20: invokespecial 716	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	(Ljava/io/InputStream;)Landroid/graphics/BitmapFactory$Options;
     //   23: astore 13
     //   25: aload 13
-    //   27: getstatic 745	com/tencent/biz/pubaccount/readinjoy/view/imageloader/NativeBitmap:jdField_a_of_type_Boolean	Z
-    //   30: putfield 748	android/graphics/BitmapFactory$Options:inPurgeable	Z
+    //   27: getstatic 748	com/tencent/biz/pubaccount/readinjoy/view/imageloader/NativeBitmap:jdField_a_of_type_Boolean	Z
+    //   30: putfield 751	android/graphics/BitmapFactory$Options:inPurgeable	Z
     //   33: lload_3
     //   34: l2i
     //   35: istore 5
@@ -1187,10 +1184,10 @@ public class RunningJob
     //   53: aload 11
     //   55: astore 7
     //   57: aload_0
-    //   58: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlo	Ltlo;
-    //   61: getfield 751	tlo:jdField_a_of_type_Tlq	Ltlq;
+    //   58: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache;
+    //   61: getfield 754	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool;
     //   64: iload 5
-    //   66: invokevirtual 756	tlq:a	(I)[B
+    //   66: invokevirtual 759	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool:a	(I)[B
     //   69: astore 9
     //   71: aload 6
     //   73: astore_2
@@ -1204,7 +1201,7 @@ public class RunningJob
     //   87: aload 9
     //   89: iconst_0
     //   90: iload 5
-    //   92: invokevirtual 760	java/io/InputStream:read	([BII)I
+    //   92: invokevirtual 763	java/io/InputStream:read	([BII)I
     //   95: pop
     //   96: aload 6
     //   98: astore_2
@@ -1215,7 +1212,7 @@ public class RunningJob
     //   106: aload 9
     //   108: astore 8
     //   110: aload 13
-    //   112: invokestatic 724	tmd:a	(Landroid/graphics/BitmapFactory$Options;)Z
+    //   112: invokestatic 727	com/tencent/biz/pubaccount/readinjoy/view/imageloader/Utils:a	(Landroid/graphics/BitmapFactory$Options;)Z
     //   115: ifeq +126 -> 241
     //   118: aload 6
     //   120: astore_2
@@ -1229,12 +1226,12 @@ public class RunningJob
     //   134: iconst_0
     //   135: iload 5
     //   137: iconst_0
-    //   138: invokestatic 763	android/graphics/BitmapRegionDecoder:newInstance	([BIIZ)Landroid/graphics/BitmapRegionDecoder;
+    //   138: invokestatic 766	android/graphics/BitmapRegionDecoder:newInstance	([BIIZ)Landroid/graphics/BitmapRegionDecoder;
     //   141: aload_0
     //   142: aload 13
-    //   144: invokespecial 732	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Rect;
+    //   144: invokespecial 735	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Rect;
     //   147: aload 13
-    //   149: invokevirtual 736	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   149: invokevirtual 739	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   152: astore 10
     //   154: aload 6
     //   156: astore_2
@@ -1244,7 +1241,7 @@ public class RunningJob
     //   162: astore 7
     //   164: aload 9
     //   166: astore 8
-    //   168: getstatic 745	com/tencent/biz/pubaccount/readinjoy/view/imageloader/NativeBitmap:jdField_a_of_type_Boolean	Z
+    //   168: getstatic 748	com/tencent/biz/pubaccount/readinjoy/view/imageloader/NativeBitmap:jdField_a_of_type_Boolean	Z
     //   171: ifeq +22 -> 193
     //   174: aload 6
     //   176: astore_2
@@ -1255,17 +1252,17 @@ public class RunningJob
     //   184: aload 9
     //   186: astore 8
     //   188: aload 10
-    //   190: invokestatic 766	com/tencent/biz/pubaccount/readinjoy/view/imageloader/NativeBitmap:nativePinBitmap	(Landroid/graphics/Bitmap;)V
+    //   190: invokestatic 769	com/tencent/biz/pubaccount/readinjoy/view/imageloader/NativeBitmap:nativePinBitmap	(Landroid/graphics/Bitmap;)V
     //   193: aload 9
     //   195: ifnull +15 -> 210
     //   198: aload_0
-    //   199: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlo	Ltlo;
-    //   202: getfield 751	tlo:jdField_a_of_type_Tlq	Ltlq;
+    //   199: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache;
+    //   202: getfield 754	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool;
     //   205: aload 9
-    //   207: invokevirtual 768	tlq:a	([B)V
+    //   207: invokevirtual 771	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool:a	([B)V
     //   210: aload_0
-    //   211: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlo	Ltlo;
-    //   214: getfield 262	tlo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   211: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache;
+    //   214: getfield 262	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   217: aload 13
     //   219: getfield 286	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   222: invokeinterface 308 2 0
@@ -1273,7 +1270,7 @@ public class RunningJob
     //   228: aload 6
     //   230: ifnull +8 -> 238
     //   233: aload 6
-    //   235: invokevirtual 457	java/io/InputStream:close	()V
+    //   235: invokevirtual 483	java/io/InputStream:close	()V
     //   238: aload 10
     //   240: areturn
     //   241: aload 6
@@ -1288,12 +1285,12 @@ public class RunningJob
     //   257: iconst_0
     //   258: iload 5
     //   260: aload 13
-    //   262: invokestatic 772	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   262: invokestatic 775	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   265: astore 10
     //   267: goto -113 -> 154
     //   270: astore_1
     //   271: aload_1
-    //   272: invokevirtual 775	java/io/IOException:printStackTrace	()V
+    //   272: invokevirtual 778	java/io/IOException:printStackTrace	()V
     //   275: aload 10
     //   277: areturn
     //   278: astore 7
@@ -1311,13 +1308,13 @@ public class RunningJob
     //   296: aload 6
     //   298: ifnull +15 -> 313
     //   301: aload_0
-    //   302: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlo	Ltlo;
-    //   305: getfield 751	tlo:jdField_a_of_type_Tlq	Ltlq;
+    //   302: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache;
+    //   305: getfield 754	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool;
     //   308: aload 6
-    //   310: invokevirtual 768	tlq:a	([B)V
+    //   310: invokevirtual 771	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool:a	([B)V
     //   313: aload_0
-    //   314: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Tlo	Ltlo;
-    //   317: getfield 262	tlo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   314: getfield 75	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBitmapCache	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache;
+    //   317: getfield 262	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BitmapCache:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   320: aload 13
     //   322: getfield 286	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   325: invokeinterface 308 2 0
@@ -1325,7 +1322,7 @@ public class RunningJob
     //   331: aload_2
     //   332: ifnull +7 -> 339
     //   335: aload_2
-    //   336: invokevirtual 457	java/io/InputStream:close	()V
+    //   336: invokevirtual 483	java/io/InputStream:close	()V
     //   339: aload_1
     //   340: athrow
     //   341: astore 8
@@ -1337,7 +1334,7 @@ public class RunningJob
     //   350: athrow
     //   351: astore_2
     //   352: aload_2
-    //   353: invokevirtual 775	java/io/IOException:printStackTrace	()V
+    //   353: invokevirtual 778	java/io/IOException:printStackTrace	()V
     //   356: goto -17 -> 339
     //   359: astore_1
     //   360: aconst_null
@@ -1412,18 +1409,18 @@ public class RunningJob
   @TargetApi(12)
   public void run()
   {
-    qdm.a(4, this.jdField_a_of_type_Tlw);
-    tlv.a().b(this.jdField_a_of_type_Tlw);
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "[start request](" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ")" + this.jdField_a_of_type_Tlw + " createTs:" + this.jdField_a_of_type_Long);
+    RIJImageOptReport.a(4, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+    ImageManager.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "[start request](" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ")" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest + " createTs:" + this.jdField_a_of_type_Long);
     if (b()) {
       return;
     }
-    tlv.a().c(this.jdField_a_of_type_Tlw);
+    ImageManager.a().c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,48 @@
+package com.tencent.mobileqq.webview.swift.utils;
+
+import android.os.MessageQueue.IdleHandler;
+import java.util.ArrayList;
+
+class SwiftBrowserIdleTaskHelper$1
+  implements MessageQueue.IdleHandler
+{
+  SwiftBrowserIdleTaskHelper$1(SwiftBrowserIdleTaskHelper paramSwiftBrowserIdleTaskHelper) {}
+  
+  public boolean queueIdle()
+  {
+    Object localObject;
+    int i;
+    if (!SwiftBrowserIdleTaskHelper.a().isEmpty())
+    {
+      localObject = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.a().remove(0);
+      i = ((SwiftBrowserIdleTaskHelper.IdleTask)localObject).a();
+      if (2 == i) {
+        SwiftBrowserIdleTaskHelper.a().add(localObject);
+      }
+    }
+    else
+    {
+      label38:
+      localObject = this.a;
+      if (SwiftBrowserIdleTaskHelper.a().isEmpty()) {
+        break label75;
+      }
+    }
+    label75:
+    for (boolean bool = true;; bool = false)
+    {
+      ((SwiftBrowserIdleTaskHelper)localObject).a = bool;
+      return this.a.a;
+      if (1 != i) {
+        break;
+      }
+      break label38;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.1
+ * JD-Core Version:    0.7.0.1
+ */

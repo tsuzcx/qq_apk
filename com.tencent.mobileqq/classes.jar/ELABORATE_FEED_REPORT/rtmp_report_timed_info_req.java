@@ -13,9 +13,9 @@ public final class rtmp_report_timed_info_req
   static rtmp_report_comm_info cache_comm_info = new rtmp_report_comm_info();
   static Map<String, String> cache_ext_info;
   static ArrayList<rtmp_report_timed_info> cache_timed_infos = new ArrayList();
-  public rtmp_report_comm_info comm_info;
-  public Map<String, String> ext_info;
-  public ArrayList<rtmp_report_timed_info> timed_infos;
+  public rtmp_report_comm_info comm_info = null;
+  public Map<String, String> ext_info = null;
+  public ArrayList<rtmp_report_timed_info> timed_infos = null;
   
   static
   {

@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import awvk;
-import bhcl;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public final class AudioUtil$1
-  implements Runnable
+final class AudioUtil$1
+  implements MediaPlayer.OnCompletionListener
 {
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    awvk.a().a(bhcl.a());
+    paramMediaPlayer.release();
+    AudioUtil.a = null;
   }
 }
 

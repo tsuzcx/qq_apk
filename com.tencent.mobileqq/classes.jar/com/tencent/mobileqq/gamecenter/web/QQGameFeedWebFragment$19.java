@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.gamecenter.web;
 
 import android.support.v4.app.FragmentActivity;
-import aves;
 import com.tencent.mobileqq.gamecenter.protocol.GmpEnterInfoRsp;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
 
 class QQGameFeedWebFragment$19
   implements Runnable
@@ -12,13 +12,13 @@ class QQGameFeedWebFragment$19
   public void run()
   {
     if ((this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing()) && (this.this$0.isAdded())) {
-      aves.a(this.this$0.a, this.a);
+      QQGameHelper.a(this.this$0.a, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.19
  * JD-Core Version:    0.7.0.1
  */

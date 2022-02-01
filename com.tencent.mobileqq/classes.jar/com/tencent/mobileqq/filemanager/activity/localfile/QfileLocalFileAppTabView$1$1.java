@@ -1,13 +1,10 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import atdr;
-import atds;
-import atdt;
-import bhdj;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class QfileLocalFileAppTabView$1$1
+class QfileLocalFileAppTabView$1$1
   implements Runnable
 {
   QfileLocalFileAppTabView$1$1(QfileLocalFileAppTabView.1 param1) {}
@@ -17,9 +14,9 @@ public class QfileLocalFileAppTabView$1$1
     if ((this.a.this$0.a == null) || (this.a.this$0.a.isFinishing())) {
       return;
     }
-    QQCustomDialog localQQCustomDialog = bhdj.a(QfileLocalFileAppTabView.a(this.a.this$0), 230).setMessage(2131692372).setNegativeButton(2131690697, new atds(this)).setPositiveButton(2131692373, new atdr(this));
-    localQQCustomDialog.setOnDismissListener(new atdt(this));
-    localQQCustomDialog.setTitle(2131692374);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(QfileLocalFileAppTabView.a(this.a.this$0), 230).setMessage(2131692504).setNegativeButton(2131690800, new QfileLocalFileAppTabView.1.1.2(this)).setPositiveButton(2131692505, new QfileLocalFileAppTabView.1.1.1(this));
+    localQQCustomDialog.setOnDismissListener(new QfileLocalFileAppTabView.1.1.3(this));
+    localQQCustomDialog.setTitle(2131692506);
     localQQCustomDialog.setCancelable(false);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     localQQCustomDialog.show();
@@ -28,7 +25,7 @@ public class QfileLocalFileAppTabView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1
  * JD-Core Version:    0.7.0.1
  */

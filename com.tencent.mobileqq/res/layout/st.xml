@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="horizontal" android:id="@id/bcy" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/mp1" android:layout_width="0.0dip" android:layout_height="54.0dip" android:layout_weight="1.0" layout="@layout/p" />
-    <include android:id="@id/mp2" android:layout_width="0.0dip" android:layout_height="54.0dip" android:layout_marginLeft="9.0dip" android:layout_weight="1.0" layout="@layout/p" />
+    <include android:id="@id/mtl" android:layout_width="0.0dip" android:layout_height="54.0dip" android:layout_weight="1.0" layout="@layout/p" />
+    <include android:id="@id/mtm" android:layout_width="0.0dip" android:layout_height="54.0dip" android:layout_marginLeft="9.0dip" android:layout_weight="1.0" layout="@layout/p" />
 </LinearLayout>

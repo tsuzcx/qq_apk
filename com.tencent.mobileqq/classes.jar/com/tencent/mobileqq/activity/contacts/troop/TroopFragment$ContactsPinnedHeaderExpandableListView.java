@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contacts.troop;
 
-import ajkt;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
+import com.tencent.mobileqq.activity.contacts.friend.BuddyListAdapter;
 import com.tencent.widget.SwipPinnedHeaderExpandableListView;
 
 public class TroopFragment$ContactsPinnedHeaderExpandableListView
@@ -27,25 +27,25 @@ public class TroopFragment$ContactsPinnedHeaderExpandableListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(int paramInt1, int paramInt2, View paramView, int paramInt3)
+  public void scrollItemView(int paramInt1, int paramInt2, View paramView, int paramInt3)
   {
     if (this.a) {
-      super.a(paramInt1, paramInt2, paramView, paramInt3);
+      super.scrollItemView(paramInt1, paramInt2, paramView, paramInt3);
     }
   }
   
   public void setChildViewCanAction(boolean paramBoolean)
   {
-    ExpandableListAdapter localExpandableListAdapter = a();
-    if ((localExpandableListAdapter instanceof ajkt)) {
-      ((ajkt)localExpandableListAdapter).b(paramBoolean);
+    ExpandableListAdapter localExpandableListAdapter = getExpandableListAdapter();
+    if ((localExpandableListAdapter instanceof BuddyListAdapter)) {
+      ((BuddyListAdapter)localExpandableListAdapter).a(paramBoolean);
     }
     this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.TroopFragment.ContactsPinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.bgprobe;
 
-import aqfv;
-
-public final class BackgroundProbeManager$2
+final class BackgroundProbeManager$2
   implements Runnable
 {
-  public BackgroundProbeManager$2(aqfv paramaqfv) {}
+  BackgroundProbeManager$2(BackgroundProbeManager paramBackgroundProbeManager) {}
   
   public void run()
   {
-    aqfv.b(this.a);
+    BackgroundProbeManager.b(this.a);
   }
 }
 

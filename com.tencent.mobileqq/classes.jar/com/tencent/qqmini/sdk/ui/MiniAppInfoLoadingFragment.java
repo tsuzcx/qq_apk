@@ -317,18 +317,7 @@ public class MiniAppInfoLoadingFragment
       paramMiniAppInfo.launchParam.miniAppId = paramMiniAppInfo.appId;
       paramMiniAppInfo.launchParam.shareTicket = paramString2;
       paramMiniAppInfo.launchParam.navigateExtData = paramMiniAppInfo.extraData;
-      if (paramLaunchParam != null) {
-        paramMiniAppInfo.launchParam.scene = paramLaunchParam.scene;
-      }
-      if (!TextUtils.isEmpty(paramMiniAppInfo.launchParam.shareTicket)) {
-        paramMiniAppInfo.launchParam.scene = 1044;
-      }
-      if (TextUtils.isEmpty(paramMiniAppInfo.launchParam.reportData)) {
-        paramMiniAppInfo.launchParam.reportData = paramMiniAppInfo.reportData;
-      }
-    }
-    for (;;)
-    {
+      updateLaunchParam(paramMiniAppInfo, paramLaunchParam);
       if (paramMiniAppInfo.verType != 3) {
         paramMiniAppInfo.forceReroad = 3;
       }
@@ -336,46 +325,58 @@ public class MiniAppInfoLoadingFragment
       if (paramMiniAppInfo.clearAuths == 1) {
         paramString2 = LoginManager.getInstance().getAccount();
       }
-      try
+    }
+    try
+    {
+      if (Long.valueOf(Long.parseLong(paramString2)).longValue() > 0L)
       {
-        if (Long.valueOf(Long.parseLong(paramString2)).longValue() > 0L)
-        {
-          MiniAppEnv.g().getAuthSate(paramMiniAppInfo.appId).clearAll();
-          paramMiniAppInfo.clearAuths = 0;
-        }
-        label185:
-        if (paramString3 != null) {
-          paramMiniAppInfo.customInfo = paramString3;
-        }
-        doStartMiniApp(paramMiniAppInfo);
-        if (this.mResultReceiver != null)
-        {
-          paramMiniAppInfo = new Bundle();
-          paramMiniAppInfo.putLong("retCode", paramLong);
-          paramMiniAppInfo.putString("errMsg", paramString1);
-          this.mResultReceiver.send(0, paramMiniAppInfo);
-        }
-        do
-        {
-          return;
-          if (TextUtils.isEmpty(paramMiniAppInfo.reportData)) {
-            break;
-          }
-          paramMiniAppInfo.launchParam.reportData = (paramMiniAppInfo.launchParam.reportData + "&" + paramMiniAppInfo.reportData);
-          break;
-          ThreadManager.getUIHandler().post(new MiniAppInfoLoadingFragment.8(this, paramLong, paramString1));
-        } while (this.mResultReceiver == null);
+        MiniAppEnv.g().getAuthSate(paramMiniAppInfo.appId).clearAll();
+        paramMiniAppInfo.clearAuths = 0;
+      }
+      label123:
+      if (paramString3 != null) {
+        paramMiniAppInfo.customInfo = paramString3;
+      }
+      doStartMiniApp(paramMiniAppInfo);
+      if (this.mResultReceiver != null)
+      {
         paramMiniAppInfo = new Bundle();
         paramMiniAppInfo.putLong("retCode", paramLong);
         paramMiniAppInfo.putString("errMsg", paramString1);
-        this.mResultReceiver.send(1, paramMiniAppInfo);
-        return;
+        this.mResultReceiver.send(0, paramMiniAppInfo);
       }
-      catch (Exception paramString2)
+      do
       {
-        break label185;
-      }
+        return;
+        ThreadManager.getUIHandler().post(new MiniAppInfoLoadingFragment.8(this, paramLong, paramString1));
+      } while (this.mResultReceiver == null);
+      paramMiniAppInfo = new Bundle();
+      paramMiniAppInfo.putLong("retCode", paramLong);
+      paramMiniAppInfo.putString("errMsg", paramString1);
+      this.mResultReceiver.send(1, paramMiniAppInfo);
+      return;
     }
+    catch (Exception paramString2)
+    {
+      break label123;
+    }
+  }
+  
+  private void updateLaunchParam(MiniAppInfo paramMiniAppInfo, LaunchParam paramLaunchParam)
+  {
+    if (paramLaunchParam != null) {
+      paramMiniAppInfo.launchParam.scene = paramLaunchParam.scene;
+    }
+    if (!TextUtils.isEmpty(paramMiniAppInfo.launchParam.shareTicket)) {
+      paramMiniAppInfo.launchParam.scene = 1044;
+    }
+    if (TextUtils.isEmpty(paramMiniAppInfo.launchParam.reportData)) {
+      paramMiniAppInfo.launchParam.reportData = paramMiniAppInfo.reportData;
+    }
+    while (TextUtils.isEmpty(paramMiniAppInfo.reportData)) {
+      return;
+    }
+    paramMiniAppInfo.launchParam.reportData = (paramMiniAppInfo.launchParam.reportData + "&" + paramMiniAppInfo.reportData);
   }
   
   @Nullable
@@ -426,7 +427,7 @@ public class MiniAppInfoLoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniAppInfoLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

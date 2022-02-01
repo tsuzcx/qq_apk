@@ -5,7 +5,6 @@ import com.tencent.oscar.app.GlobalContext;
 import com.tencent.tavcut.util.Logger;
 import com.tencent.tavsticker.model.TAVStickerLayerInfo;
 import com.tencent.tavsticker.model.TAVStickerLayerInfo.TAVStickerUserData;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.weseevideo.model.data.MusicMaterialMetaDataBean;
 import com.tencent.weseevideo.model.effect.MusicModel;
 import java.io.File;
@@ -13,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.light.device.LightDeviceUtils;
 
 public class Utils
 {
@@ -27,7 +27,7 @@ public class Utils
   
   private static String getDir(MusicMaterialMetaDataBean paramMusicMaterialMetaDataBean)
   {
-    File localFile = DeviceUtils.getExternalFilesDir(GlobalContext.getContext(), "olm");
+    File localFile = LightDeviceUtils.getExternalFilesDir(GlobalContext.getContext(), "olm");
     if (localFile == null) {
       break label87;
     }
@@ -150,7 +150,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.model.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

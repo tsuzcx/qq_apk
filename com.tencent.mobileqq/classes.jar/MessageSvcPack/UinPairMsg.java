@@ -9,10 +9,10 @@ public final class UinPairMsg
   extends JceStruct
 {
   static ArrayList<SvcGetMsgInfo> cache_vMsgInfos;
-  public long lPeerUin;
-  public long uLastReadTime;
-  public long uMsgCompleted;
-  public ArrayList<SvcGetMsgInfo> vMsgInfos;
+  public long lPeerUin = 0L;
+  public long uLastReadTime = 0L;
+  public long uMsgCompleted = 0L;
+  public ArrayList<SvcGetMsgInfo> vMsgInfos = null;
   
   public UinPairMsg() {}
   

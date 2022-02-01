@@ -7,6 +7,7 @@ import com.tencent.aekit.api.standard.AEModuleConfig.Builder;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.oscar.app.GlobalContext;
 import com.tencent.ttpic.openapi.initializer.ImageAlgoInitializer;
+import com.tencent.ttpic.openapi.initializer.LightSdkInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 
@@ -37,12 +38,13 @@ public class AEKitUtils
     }
     FeatureManager.loadBasicFeatures();
     FeatureManager.Features.IMAGE_ALGO.init();
+    FeatureManager.Features.LIGHT_SDK.init();
     this.mIsLoadAekitSo = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.camera.aekitconfig.AEKitUtils
  * JD-Core Version:    0.7.0.1
  */

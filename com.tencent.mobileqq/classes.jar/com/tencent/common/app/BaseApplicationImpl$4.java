@@ -1,16 +1,25 @@
 package com.tencent.common.app;
 
-import android.content.SharedPreferences;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager.IAdapter;
+import android.content.Intent;
+import com.tencent.mobileqq.bigbrother.TeleScreenRunnable;
+import com.tencent.qphone.base.util.QLog;
 
 class BaseApplicationImpl$4
-  implements SharedPreferencesProxyManager.IAdapter
+  implements TeleScreenRunnable
 {
-  BaseApplicationImpl$4(BaseApplicationImpl paramBaseApplicationImpl) {}
+  BaseApplicationImpl$4(BaseApplicationImpl paramBaseApplicationImpl, Intent paramIntent) {}
   
-  public SharedPreferences getSystemSharedPreferences(String paramString, int paramInt)
+  public void run()
   {
-    return this.this$0.getSystemSharedPreferences(paramString, paramInt);
+    try
+    {
+      BaseApplicationImpl.access$001(this.this$0, this.a);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("BaseApplicationImpl", 1, localThrowable, new Object[0]);
+    }
   }
 }
 

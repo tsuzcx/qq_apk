@@ -10,7 +10,7 @@ public final class stDeleteFeedCommentRsp
   extends JceStruct
   implements Cloneable
 {
-  public int ret;
+  public int ret = 0;
   
   static
   {

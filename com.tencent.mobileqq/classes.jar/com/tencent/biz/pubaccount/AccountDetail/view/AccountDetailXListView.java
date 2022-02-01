@@ -15,8 +15,6 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import ocw;
-import ocx;
 
 public class AccountDetailXListView
   extends XListView
@@ -27,8 +25,8 @@ public class AccountDetailXListView
   protected ProgressBar a;
   protected RelativeLayout a;
   protected TextView a;
-  private ocw a;
-  public ocx a;
+  private AccountDetailXListView.OnEndScrollListener a;
+  public AccountDetailXListView.RefreshCallback a;
   public boolean a;
   protected float b;
   protected int b;
@@ -50,7 +48,13 @@ public class AccountDetailXListView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Float = 0.0F;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_d_of_type_Float = 0.0F;
     a(paramContext, paramAttributeSet);
   }
   
@@ -58,7 +62,13 @@ public class AccountDetailXListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Float = 0.0F;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_d_of_type_Float = 0.0F;
     a(paramContext, paramAttributeSet);
   }
   
@@ -87,32 +97,32 @@ public class AccountDetailXListView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560031, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373388));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373389));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560108, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373701));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373702));
     addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, null, false);
     setFooterDividersEnabled(false);
   }
   
   private void d()
   {
-    if ((a()) && (this.jdField_a_of_type_Ocx != null))
+    if ((a()) && (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$RefreshCallback != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AccountDetailXListView", 2, "loadingMore");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689504);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689505);
       a(0);
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Ocx.a(this);
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$RefreshCallback.startLoadMore(this);
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Ocx = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$RefreshCallback = null;
   }
   
   public void a(boolean paramBoolean)
@@ -140,7 +150,7 @@ public class AccountDetailXListView
         QLog.d("AccountDetailXListView", 2, "loadMoreFail");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689503);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689504);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       a(0);
       this.jdField_a_of_type_Int = 0;
@@ -157,7 +167,7 @@ public class AccountDetailXListView
       this.jdField_a_of_type_Int = 0;
       if (!paramBoolean)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689505);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689506);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_a_of_type_Boolean = false;
@@ -211,7 +221,7 @@ public class AccountDetailXListView
       if (i == 2)
       {
         this.jdField_d_of_type_Int = ((int)(paramMotionEvent.getY() - this.jdField_d_of_type_Int));
-        if (Math.abs(this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) < DisplayUtil.dip2px(super.getContext(), 10.0F))
+        if (Math.abs(this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) < DisplayUtil.a(super.getContext(), 10.0F))
         {
           this.jdField_d_of_type_Int = ((int)paramMotionEvent.getY());
           this.jdField_d_of_type_Float = (this.jdField_b_of_type_Float - this.jdField_c_of_type_Float);
@@ -238,8 +248,8 @@ public class AccountDetailXListView
     int i = getScrollY();
     if (this.jdField_e_of_type_Int - i == 0)
     {
-      if (this.jdField_a_of_type_Ocw != null) {
-        this.jdField_a_of_type_Ocw.a((int)this.jdField_e_of_type_Float);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$OnEndScrollListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$OnEndScrollListener.a((int)this.jdField_e_of_type_Float);
       }
       return;
     }
@@ -247,19 +257,19 @@ public class AccountDetailXListView
     postDelayed(this, this.f);
   }
   
-  public void setOnEndScrollListener(ocw paramocw)
+  public void setOnEndScrollListener(AccountDetailXListView.OnEndScrollListener paramOnEndScrollListener)
   {
-    this.jdField_a_of_type_Ocw = paramocw;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$OnEndScrollListener = paramOnEndScrollListener;
   }
   
-  public void setRefreshCallback(ocx paramocx)
+  public void setRefreshCallback(AccountDetailXListView.RefreshCallback paramRefreshCallback)
   {
-    this.jdField_a_of_type_Ocx = paramocx;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$RefreshCallback = paramRefreshCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView
  * JD-Core Version:    0.7.0.1
  */

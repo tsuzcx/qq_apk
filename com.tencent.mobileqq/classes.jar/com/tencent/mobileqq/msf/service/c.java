@@ -4,7 +4,7 @@ import android.os.IBinder;
 import android.os.IBinder.DeathRecipient;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
 import com.tencent.qphone.base.remote.FromServiceMsg;

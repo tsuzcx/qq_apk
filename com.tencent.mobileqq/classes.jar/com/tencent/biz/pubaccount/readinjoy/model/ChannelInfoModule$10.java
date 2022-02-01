@@ -1,22 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.util.SparseArray;
-import pvm;
-import qfb;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class ChannelInfoModule$10
+class ChannelInfoModule$10
   implements Runnable
 {
-  public ChannelInfoModule$10(qfb paramqfb, boolean paramBoolean, int paramInt, SparseArray paramSparseArray) {}
+  ChannelInfoModule$10(ChannelInfoModule paramChannelInfoModule, boolean paramBoolean, int paramInt, SparseArray paramSparseArray) {}
   
   public void run()
   {
-    pvm.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidUtilSparseArray);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidUtilSparseArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule.10
  * JD-Core Version:    0.7.0.1
  */

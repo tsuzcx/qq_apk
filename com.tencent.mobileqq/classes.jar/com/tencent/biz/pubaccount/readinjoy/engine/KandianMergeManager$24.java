@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bmhv;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 class KandianMergeManager$24
   implements Runnable
@@ -11,17 +11,17 @@ class KandianMergeManager$24
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bmhv.a(KandianMergeManager.a(this.this$0), 1).edit();
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.this$0), 1).edit();
     localEditor.remove("subscribe_push_msg_time");
     localEditor.remove("subscribe_push_msg_uin");
     localEditor.remove("subscribe_push_msg_status");
     localEditor.remove("subscribe_push_msg_xml");
-    bmhv.a(localEditor, true);
+    ReadInJoyHelper.a(localEditor, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.24
  * JD-Core Version:    0.7.0.1
  */

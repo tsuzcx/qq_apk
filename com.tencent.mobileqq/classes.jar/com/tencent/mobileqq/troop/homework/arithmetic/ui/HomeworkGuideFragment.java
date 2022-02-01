@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bfpq;
-import bfpr;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
 import java.util.ArrayList;
@@ -21,8 +19,8 @@ public class HomeworkGuideFragment
   protected ViewPager a;
   protected TextView a;
   protected DotStyleNavBar a;
-  public ArrayList<HWGuideItem> a;
-  protected List<bfpr> a;
+  protected ArrayList<HWGuideItem> a;
+  protected List<HomeworkGuideFragment.ContentViewHolder> a;
   
   public HomeworkGuideFragment()
   {
@@ -35,9 +33,9 @@ public class HomeworkGuideFragment
     this.jdField_a_of_type_JavaUtilArrayList = getArguments().getParcelableArrayList("EXTRA_GUIDE_ITEM_LIST");
     paramLayoutInflater = getArguments().getString("EXTRA_GO_BUTTON_TXT");
     paramViewGroup = getArguments().getString("EXTRA_TITLE_TXT");
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.mContentView.findViewById(2131381153));
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiDotStyleNavBar = ((DotStyleNavBar)this.mContentView.findViewById(2131365813));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131363918));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.mContentView.findViewById(2131381620));
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiDotStyleNavBar = ((DotStyleNavBar)this.mContentView.findViewById(2131365976));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364015));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new HomeworkGuideFragment.ContentAdapter(this, getActivity()));
     if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount() > 1) {
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiDotStyleNavBar.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
@@ -46,7 +44,7 @@ public class HomeworkGuideFragment
     {
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiDotStyleNavBar.setOnPageChangeListener(new HomeworkGuideFragment.PagerListener(this));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramLayoutInflater);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bfpq(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new HomeworkGuideFragment.1(this));
       setTitle(paramViewGroup);
       return;
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiDotStyleNavBar.setVisibility(4);
@@ -55,7 +53,7 @@ public class HomeworkGuideFragment
   
   public int getContentLayoutId()
   {
-    return 2131560691;
+    return 2131560781;
   }
   
   public boolean isWrapContent()

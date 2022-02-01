@@ -3,9 +3,9 @@ package cooperation.qzone.report.lp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QUA;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,7 +30,7 @@ public class LpReportInfo_dc04233
   
   private boolean isNeedReport()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("king_card_sp", 0);
+    SharedPreferences localSharedPreferences = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getSharedPreferences("king_card_sp");
     Object localObject = localSharedPreferences.getString("lastReportTime", "");
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date localDate = new Date();
@@ -82,13 +82,13 @@ public class LpReportInfo_dc04233
     HashMap localHashMap = new HashMap();
     localHashMap.put("uin", String.valueOf(this.uin));
     localHashMap.put("is_kingcard", String.valueOf(this.isKingCard));
-    LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
+    LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
     return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc04233
  * JD-Core Version:    0.7.0.1
  */

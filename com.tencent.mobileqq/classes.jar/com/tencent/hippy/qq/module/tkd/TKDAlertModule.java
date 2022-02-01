@@ -2,7 +2,7 @@ package com.tencent.hippy.qq.module.tkd;
 
 import android.content.DialogInterface.OnClickListener;
 import androidx.annotation.NonNull;
-import bhdj;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyGlobalConfigs;
@@ -65,7 +65,7 @@ public class TKDAlertModule
     if (paramHippyArray.size() > 3) {
       return;
     }
-    QQCustomDialog localQQCustomDialog = bhdj.a(this.hippyEngineContext.getGlobalConfigs().getContext(), 230);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.hippyEngineContext.getGlobalConfigs().getContext(), 230);
     localQQCustomDialog.setTitle(paramString1);
     localQQCustomDialog.setMessage(paramString2);
     setDialogButton(paramHippyArray, paramPromise, localQQCustomDialog);
@@ -83,7 +83,7 @@ public class TKDAlertModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDAlertModule
  * JD-Core Version:    0.7.0.1
  */

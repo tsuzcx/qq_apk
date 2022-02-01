@@ -1,7 +1,8 @@
 package com.tencent.gdtad.views.videoimax;
 
-import acho;
+import android.os.Bundle;
 import android.os.ResultReceiver;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
 class GdtVideoImaxFragment$2
@@ -11,27 +12,27 @@ class GdtVideoImaxFragment$2
   
   public void run()
   {
-    acho.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
+    GdtLog.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
     if (GdtVideoImaxFragment.a(this.this$0))
     {
       GdtVideoImaxFragment.a(this.this$0).setBackgroundColor(-16777216);
       if (GdtVideoImaxFragment.a(this.this$0) == null) {
-        break label61;
+        break label67;
       }
-      GdtVideoImaxFragment.a(this.this$0).send(2, null);
+      GdtVideoImaxFragment.a(this.this$0).send(2, new Bundle());
     }
     for (;;)
     {
       GdtVideoImaxFragment.a(this.this$0, false);
       return;
-      label61:
-      acho.a("GdtVideoImaxFragment", "run() mResultReceiver != null");
+      label67:
+      GdtLog.a("GdtVideoImaxFragment", "run() mResultReceiver != null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.2
  * JD-Core Version:    0.7.0.1
  */

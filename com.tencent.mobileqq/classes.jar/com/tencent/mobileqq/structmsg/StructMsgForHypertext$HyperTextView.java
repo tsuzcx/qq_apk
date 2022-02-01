@@ -6,11 +6,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Field;
-import uuc;
 
 public final class StructMsgForHypertext$HyperTextView
   extends TextView
@@ -65,7 +66,7 @@ public final class StructMsgForHypertext$HyperTextView
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag(2131378157);
+    Object localObject = paramView.getTag(2131378578);
     if ((localObject != null) && ((localObject instanceof StructMsgForHypertext)))
     {
       localObject = (StructMsgForHypertext)localObject;
@@ -85,7 +86,7 @@ public final class StructMsgForHypertext$HyperTextView
         Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
         localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
         localIntent.putExtra("url", ((StructMsgForHypertext)localObject).mMsgUrl);
-        uuc.a(((StructMsgForHypertext)localObject).message, localIntent, ((StructMsgForHypertext)localObject).mMsgUrl);
+        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(((StructMsgForHypertext)localObject).message, localIntent, ((StructMsgForHypertext)localObject).mMsgUrl);
         localContext.startActivity(localIntent);
         this.jdField_a_of_type_Boolean = true;
       }

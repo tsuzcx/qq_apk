@@ -8,7 +8,7 @@ public final class Wifi
   extends JceStruct
 {
   public long lMac = -1L;
-  public short shRssi;
+  public short shRssi = 0;
   
   public Wifi() {}
   

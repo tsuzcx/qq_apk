@@ -1,6 +1,5 @@
 package com.tencent.biz.qcircleshadow.local.activity;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -26,7 +25,7 @@ public class QCircleTransProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.activity.QCircleTransProxyActivity
  * JD-Core Version:    0.7.0.1
  */

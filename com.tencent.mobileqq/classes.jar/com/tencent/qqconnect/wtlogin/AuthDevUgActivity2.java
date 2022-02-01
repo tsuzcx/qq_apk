@@ -1,6 +1,5 @@
 package com.tencent.qqconnect.wtlogin;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.AuthDevUgActivity;
@@ -10,15 +9,15 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class AuthDevUgActivity2
   extends AuthDevUgActivity
 {
-  public void a()
-  {
-    QLog.d("Q.devlock.AuthDevUgActivity2", 1, "opensdk beforeOpenBrowser do nothing");
-  }
-  
-  public void b()
+  public void afterOpenBrowser()
   {
     QLog.d("Q.devlock.AuthDevUgActivity2", 1, "opensdk afterOpenBrowser do finish");
     finish();
+  }
+  
+  public void beforeOpenBrowser()
+  {
+    QLog.d("Q.devlock.AuthDevUgActivity2", 1, "opensdk beforeOpenBrowser do nothing");
   }
   
   @Override

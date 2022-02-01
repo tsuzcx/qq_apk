@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.ark.API;
 
-import apsu;
-import apsv;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ArkAppMusicModule$GlobalMusicCallback$1
+class ArkAppMusicModule$GlobalMusicCallback$1
   implements Runnable
 {
-  public ArkAppMusicModule$GlobalMusicCallback$1(apsv paramapsv, int paramInt) {}
+  ArkAppMusicModule$GlobalMusicCallback$1(ArkAppMusicModule.GlobalMusicCallback paramGlobalMusicCallback, int paramInt) {}
   
   public void run()
   {
-    Iterator localIterator = apsu.a.iterator();
+    Iterator localIterator = ArkAppMusicModule.a.iterator();
     while (localIterator.hasNext())
     {
-      apsu localapsu = (apsu)((WeakReference)localIterator.next()).get();
-      if (localapsu != null) {
-        localapsu.a(this.a);
+      ArkAppMusicModule localArkAppMusicModule = (ArkAppMusicModule)((WeakReference)localIterator.next()).get();
+      if (localArkAppMusicModule != null) {
+        localArkAppMusicModule.a(this.a);
       }
     }
   }

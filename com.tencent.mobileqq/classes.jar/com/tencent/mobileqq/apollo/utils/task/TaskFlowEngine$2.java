@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.apollo.utils.task;
 
-import anmp;
-import anms;
-
-public class TaskFlowEngine$2
+class TaskFlowEngine$2
   implements Runnable
 {
-  public TaskFlowEngine$2(anms paramanms, anmp paramanmp) {}
+  TaskFlowEngine$2(TaskFlowEngine paramTaskFlowEngine, BaseTask paramBaseTask) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class TaskFlowEngine$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.TaskFlowEngine.2
  * JD-Core Version:    0.7.0.1
  */

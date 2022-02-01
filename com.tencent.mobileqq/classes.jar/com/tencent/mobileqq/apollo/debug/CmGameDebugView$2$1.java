@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.apollo.debug;
 
-import amrr;
-
-public class CmGameDebugView$2$1
+class CmGameDebugView$2$1
   implements Runnable
 {
-  public CmGameDebugView$2$1(amrr paramamrr) {}
+  CmGameDebugView$2$1(CmGameDebugView.2 param2) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class CmGameDebugView$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1
  * JD-Core Version:    0.7.0.1
  */

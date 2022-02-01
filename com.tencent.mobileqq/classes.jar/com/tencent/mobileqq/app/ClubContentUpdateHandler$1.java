@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.app;
 
-import amme;
-import anrv;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.api.IApolloManagerService;
+import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
-public class ClubContentUpdateHandler$1
+class ClubContentUpdateHandler$1
   implements Runnable
 {
-  public ClubContentUpdateHandler$1(anrv paramanrv, int paramInt, String paramString) {}
+  ClubContentUpdateHandler$1(ClubContentUpdateHandler paramClubContentUpdateHandler, int paramInt, String paramString) {}
   
   public void run()
   {
     try
     {
-      amme localamme = (amme)this.this$0.a.getManager(QQManagerFactory.APOLLO_MANAGER);
-      int i = ApolloUtil.a(1);
+      IApolloManagerService localIApolloManagerService = (IApolloManagerService)this.this$0.a.getRuntimeService(IApolloManagerService.class, "all");
+      int i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloPanelJsonVer(1);
       if (i != this.jdField_a_of_type_Int) {
-        localamme.a(1);
+        localIApolloManagerService.downloadJson(1);
       }
       QLog.i("ClubContentUpdateHandler", 1, "handleApolloPanelRelTimeUpdate name: " + this.jdField_a_of_type_JavaLangString + ", ver: " + this.jdField_a_of_type_Int + ", locver: " + i);
       return;
@@ -30,7 +30,7 @@ public class ClubContentUpdateHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ClubContentUpdateHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.structmsg;
 
-import bdla;
-import bdor;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class StructMsgForGeneralShare$GeneralClickHandler$3
+class StructMsgForGeneralShare$GeneralClickHandler$3
   implements Runnable
 {
-  public StructMsgForGeneralShare$GeneralClickHandler$3(bdor parambdor, QQAppInterface paramQQAppInterface) {}
+  StructMsgForGeneralShare$GeneralClickHandler$3(StructMsgForGeneralShare.GeneralClickHandler paramGeneralClickHandler, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    bdla.b(this.a, "dc00898", "", "", "0X8009305", "0X8009305", 0, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X8009305", "0X8009305", 0, 0, "", "", "", "");
   }
 }
 

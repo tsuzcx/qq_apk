@@ -5,11 +5,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bohq;
-import boig;
-import bpjt;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -18,7 +16,7 @@ import org.json.JSONObject;
 public class QIMFilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new boig();
+  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new QIMFilterCategoryItem.1();
   public int a;
   public String a;
   public ArrayList<String> a;
@@ -34,24 +32,26 @@ public class QIMFilterCategoryItem
   public JSONArray d;
   public String e;
   public String f;
-  public String g;
+  public String g = null;
   public String h;
   public String i = "";
   
   public QIMFilterCategoryItem()
   {
     this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_c_of_type_Int = 0;
   }
   
-  public QIMFilterCategoryItem(Parcel paramParcel)
+  protected QIMFilterCategoryItem(Parcel paramParcel)
   {
     this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.b = paramParcel.readString();
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.g = paramParcel.readString();
     this.d = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -72,7 +72,7 @@ public class QIMFilterCategoryItem
     while (paramQIMFilterCategoryItem.hasNext())
     {
       Object localObject = (String)paramQIMFilterCategoryItem.next();
-      localObject = bpjt.a().a((String)localObject);
+      localObject = VideoFilterTools.a().a((String)localObject);
       if ((localObject != null) && (((FilterDesc)localObject).id == 9)) {
         return true;
       }
@@ -88,7 +88,7 @@ public class QIMFilterCategoryItem
       while (paramQIMFilterCategoryItem.hasNext())
       {
         Object localObject = (String)paramQIMFilterCategoryItem.next();
-        localObject = bpjt.a().a((String)localObject);
+        localObject = VideoFilterTools.a().a((String)localObject);
         if ((localObject != null) && (((FilterDesc)localObject).id == 1011)) {
           return true;
         }
@@ -117,7 +117,7 @@ public class QIMFilterCategoryItem
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("name", this.b);
+      localJSONObject.put("name", this.jdField_b_of_type_JavaLangString);
       localJSONObject.put("camera", this.g);
       localJSONObject.put("iconUrl", this.d);
       localJSONObject.put("categoryId", this.jdField_a_of_type_Int);
@@ -158,7 +158,7 @@ public class QIMFilterCategoryItem
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      String[] arrayOfString = bohq.a;
+      String[] arrayOfString = CaptureConst.a;
       int k = arrayOfString.length;
       int j = 0;
       while (j < k)
@@ -193,7 +193,7 @@ public class QIMFilterCategoryItem
     while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)) {
       return false;
     }
-    if (QQAVImageFilterConstants.getFilterType(bpjt.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
+    if (QQAVImageFilterConstants.getFilterType(VideoFilterTools.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -220,14 +220,14 @@ public class QIMFilterCategoryItem
   
   public String toString()
   {
-    return "FilterCategoryItem{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", isCombo=" + this.jdField_a_of_type_Boolean + '}';
+    return "FilterCategoryItem{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", isCombo=" + this.jdField_a_of_type_Boolean + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramInt = 0;
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeString(this.g);
     paramParcel.writeString(this.d);
     paramParcel.writeInt(this.jdField_a_of_type_Int);
@@ -244,7 +244,7 @@ public class QIMFilterCategoryItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.data.QIMFilterCategoryItem
  * JD-Core Version:    0.7.0.1
  */

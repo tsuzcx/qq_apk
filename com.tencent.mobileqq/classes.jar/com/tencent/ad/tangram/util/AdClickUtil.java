@@ -35,6 +35,7 @@ public final class AdClickUtil
   public static final int ACTION_APP_WITH_DEEPLINK = 4;
   public static final int ACTION_CANVAS = 3;
   public static final int ACTION_HALF_SCREEN = 10;
+  public static final int ACTION_INSTALL = 11;
   public static final int ACTION_QQ_MINI_PROGRAM = 6;
   public static final int ACTION_UNKNOWN = 0;
   public static final int ACTION_VIDEO_CEILING = 2;
@@ -341,7 +342,7 @@ public final class AdClickUtil
     }
   }
   
-  private static AdClickUtil.Result handleApp(AdClickUtil.Params paramParams)
+  static AdClickUtil.Result handleApp(AdClickUtil.Params paramParams, boolean paramBoolean)
   {
     if ((!isValidForApp(paramParams)) || (!AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName())))
     {
@@ -349,7 +350,7 @@ public final class AdClickUtil
       return new AdClickUtil.Result(4, 5);
     }
     AdError localAdError = AdAppUtil.launch((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName(), paramParams.extrasForIntent);
-    if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick)) {
+    if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick) && (!paramBoolean)) {
       AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
     }
     return new AdClickUtil.Result(localAdError, 5);
@@ -360,7 +361,7 @@ public final class AdClickUtil
     if (!isValidForApp(paramParams)) {
       AdLog.e("AdClickUtil", "handleAppAfterInstalled error");
     }
-    while ((paramParams.appReceiver == null) || (paramParams.appReceiver.get() == null)) {
+    while ((paramParams.ad.isAppPreOrder()) || (paramParams.ad.isAppXiJingFengling()) || (paramParams.appReceiver == null) || (paramParams.appReceiver.get() == null)) {
       return;
     }
     ((AdAppReceiver)paramParams.appReceiver.get()).observe(paramParams);
@@ -413,6 +414,11 @@ public final class AdClickUtil
       AdLog.e("AdClickUtil", "handleAppProductType error");
       return new AdClickUtil.Result(4, 0);
     }
+    if (paramParams.ad.isAppPreOrder())
+    {
+      AdLog.d("AdClickUtil", "handleAppProduct isAppPreOder:" + paramParams.ad.getDestType());
+      return handleAppProductTypeIfNotInstalled(paramParams);
+    }
     boolean bool = AdAppUtil.isInstalled((Context)paramParams.activity.get(), paramParams.ad.getAppPackageName());
     if ((paramParams.videoSpliceSupported) && (paramParams.ad.isVideoSplice()))
     {
@@ -462,7 +468,7 @@ public final class AdClickUtil
       }
       localObject = localResult;
     } while (localResult.isSuccess());
-    return handleApp(paramParams);
+    return handleApp(paramParams, false);
   }
   
   private static AdClickUtil.Result handleAppProductTypeIfNotInstalled(AdClickUtil.Params paramParams)
@@ -478,8 +484,8 @@ public final class AdClickUtil
     {
       return localObject;
       int i = getVideoCeilingStyle(paramParams);
-      if ((!paramParams.ad.isAppXiJingDefault()) && (!paramParams.ad.isAppXiJing())) {
-        break label154;
+      if ((!paramParams.ad.isAppXiJingDefault()) && (!paramParams.ad.isAppXiJing()) && (!paramParams.ad.isAppXiJingFengling())) {
+        break label166;
       }
       handleAppAfterInstalled(paramParams);
       if (i != -2147483648) {
@@ -498,7 +504,7 @@ public final class AdClickUtil
       return handleCanvas(paramParams);
     }
     return handleUrl(paramParams, getURLObject(paramParams));
-    label154:
+    label166:
     AdLog.e("AdClickUtil", "handleAppProductTypeIfNotInstalled error");
     return new AdClickUtil.Result(4, 0);
   }
@@ -768,7 +774,39 @@ public final class AdClickUtil
   
   public static boolean isValidForApp(AdClickUtil.Params paramParams)
   {
-    return (paramParams != null) && (paramParams.isValid()) && (paramParams.ad.isAppProductType()) && (!TextUtils.isEmpty(paramParams.ad.getProductId())) && (!TextUtils.isEmpty(paramParams.ad.getVia())) && (!TextUtils.isEmpty(paramParams.ad.getAppName())) && (!TextUtils.isEmpty(paramParams.ad.getAppId())) && (!TextUtils.isEmpty(paramParams.ad.getAppPackageName())) && (!TextUtils.isEmpty(paramParams.ad.getAppPackageUrl()));
+    boolean bool3 = true;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramParams != null)
+    {
+      bool1 = bool2;
+      if (paramParams.isValid())
+      {
+        if (paramParams.ad.isAppProductType()) {
+          break label37;
+        }
+        bool1 = bool2;
+      }
+    }
+    bool2 = bool1;
+    label37:
+    label114:
+    do
+    {
+      return bool2;
+      if ((TextUtils.isEmpty(paramParams.ad.getProductId())) || (TextUtils.isEmpty(paramParams.ad.getVia())) || (TextUtils.isEmpty(paramParams.ad.getAppName())) || (TextUtils.isEmpty(paramParams.ad.getAppId())) || (TextUtils.isEmpty(paramParams.ad.getAppPackageName()))) {
+        break;
+      }
+      bool1 = true;
+      bool2 = bool1;
+    } while (paramParams.ad.isAppPreOrder());
+    if ((bool1) && (!TextUtils.isEmpty(paramParams.ad.getAppPackageUrl()))) {}
+    for (bool1 = bool3;; bool1 = false)
+    {
+      break;
+      bool1 = false;
+      break label114;
+    }
   }
   
   private static boolean isWebProductType(AdClickUtil.Params paramParams)
@@ -841,7 +879,7 @@ public final class AdClickUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdClickUtil
  * JD-Core Version:    0.7.0.1
  */

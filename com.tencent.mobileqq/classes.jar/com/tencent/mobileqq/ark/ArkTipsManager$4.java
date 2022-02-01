@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.ark;
 
-import apzo;
-import apzt;
 import java.lang.ref.WeakReference;
 
-public class ArkTipsManager$4
+class ArkTipsManager$4
   implements Runnable
 {
-  public ArkTipsManager$4(apzo paramapzo, long paramLong) {}
+  ArkTipsManager$4(ArkTipsManager paramArkTipsManager, long paramLong) {}
   
   public void run()
   {
-    if ((apzo.a(this.this$0) != null) && (this.a == apzo.a(this.this$0).b))
+    if ((ArkTipsManager.a(this.this$0) != null) && (this.a == ArkTipsManager.a(this.this$0).b))
     {
-      apzo.a(this.this$0, this.a);
-      apzo.a(this.this$0, new WeakReference(apzo.a(this.this$0).a));
+      ArkTipsManager.a(this.this$0, this.a);
+      ArkTipsManager.a(this.this$0, new WeakReference(ArkTipsManager.a(this.this$0).a));
       this.this$0.b();
     }
   }

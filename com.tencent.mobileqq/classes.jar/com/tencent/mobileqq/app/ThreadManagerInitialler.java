@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import bhhr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class ThreadManagerInitialler
   implements ThreadWrapContext
 {
-  private static boolean sFlagInited;
-  private static volatile boolean sShotChanceForPublicVersion;
+  private static boolean sFlagInited = false;
+  private static volatile boolean sShotChanceForPublicVersion = false;
   
   public static void initShotChanceForPublicVersion(long paramLong)
   {
@@ -37,12 +37,12 @@ public class ThreadManagerInitialler
   
   public long getMainProccessThreadMonitorTime()
   {
-    return bhhr.d();
+    return SharedPreUtils.d();
   }
   
   public long getMainProccessThreadPeakCounts()
   {
-    return bhhr.c();
+    return SharedPreUtils.c();
   }
   
   public boolean isColorLevel()
@@ -64,12 +64,12 @@ public class ThreadManagerInitialler
   
   public void setMainProccessThreadMonitorTime(long paramLong)
   {
-    bhhr.b(paramLong);
+    SharedPreUtils.b(paramLong);
   }
   
   public void setMainProccessThreadPeakCounts(long paramLong)
   {
-    bhhr.a(paramLong);
+    SharedPreUtils.a(paramLong);
   }
 }
 

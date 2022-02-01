@@ -148,7 +148,7 @@ public class EmbeddedHelper
   {
     if (appIDWhiteList == null)
     {
-      String str1 = WnsConfig.getConfig("qqminiapp", "enableUpdateEmbeddedAppList", "1108711239");
+      String str1 = WnsConfig.getConfig("qqminiapp", "enableUpdateEmbeddedAppList", "1108711239;1108735743;1110465521");
       if ((str1 != null) && (!str1.equals(mCurWhiteListConfig)))
       {
         appIDWhiteList = new ArrayList();
@@ -218,7 +218,7 @@ public class EmbeddedHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.EmbeddedHelper
  * JD-Core Version:    0.7.0.1
  */

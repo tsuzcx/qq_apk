@@ -3,7 +3,7 @@ package com.tencent.mobileqq.listentogether;
 import android.text.TextUtils;
 import java.util.Map;
 
-public class ListenTogetherManager$1
+class ListenTogetherManager$1
   implements Runnable
 {
   ListenTogetherManager$1(ListenTogetherManager paramListenTogetherManager) {}

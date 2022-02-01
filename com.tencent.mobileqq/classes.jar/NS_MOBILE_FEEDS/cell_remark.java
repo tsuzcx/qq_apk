@@ -8,7 +8,7 @@ public final class cell_remark
   extends JceStruct
 {
   static s_shoot_info cache_shoot_info = new s_shoot_info();
-  public int action_type;
+  public int action_type = 0;
   public String action_url = "";
   public String remark = "";
   public String remark_down = "";

@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import atqj;
-import bclx;
-import bcmk;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 class FileManagerSearchEngine$SearchRunnable
   implements Runnable
 {
-  bclx<atqj> jdField_a_of_type_Bclx;
-  bcmk jdField_a_of_type_Bcmk;
+  ISearchListener<FileEntitySearchResultModel> jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener;
+  SearchRequest jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
   
   private FileManagerSearchEngine$SearchRunnable(FileManagerSearchEngine paramFileManagerSearchEngine) {}
   
@@ -18,18 +17,18 @@ class FileManagerSearchEngine$SearchRunnable
   {
     try
     {
-      if (this.jdField_a_of_type_Bcmk == null)
+      if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest == null)
       {
-        this.jdField_a_of_type_Bclx.a(new ArrayList(), 6);
+        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(new ArrayList(), 6);
         return;
       }
-      bcmk localbcmk = this.jdField_a_of_type_Bcmk;
-      String str = this.jdField_a_of_type_Bcmk.a;
-      List localList = this.this$0.a(localbcmk);
+      SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
+      String str = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a;
+      List localList = this.this$0.a(localSearchRequest);
       try
       {
-        if ((this.jdField_a_of_type_Bclx != null) && (localbcmk == this.jdField_a_of_type_Bcmk) && (str.equals(this.jdField_a_of_type_Bcmk.a))) {
-          this.jdField_a_of_type_Bclx.a(localList, 1);
+        if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a))) {
+          this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
         }
         return;
       }
@@ -44,7 +43,7 @@ class FileManagerSearchEngine$SearchRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileManagerSearchEngine.SearchRunnable
  * JD-Core Version:    0.7.0.1
  */

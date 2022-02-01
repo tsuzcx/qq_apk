@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agvc;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
-import bheg;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -30,7 +29,7 @@ public class HeartBreakCombolEffectView$DecodeRunnable
       localObject3 = this.this$0;
       int i = ((HeartBreakCombolEffectView)localObject3).b;
       ((HeartBreakCombolEffectView)localObject3).b = (i + 1);
-      localObject3 = (agvc)((ArrayList)localObject1).get(i);
+      localObject3 = (HeartBreakCombolEffectView.OneFrame)((ArrayList)localObject1).get(i);
       if (localObject3 != null)
       {
         this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inSampleSize = 1;
@@ -52,7 +51,7 @@ public class HeartBreakCombolEffectView$DecodeRunnable
         }
         try
         {
-          localObject1 = bheg.a(((agvc)localObject3).a, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+          localObject1 = ImageUtil.a(((HeartBreakCombolEffectView.OneFrame)localObject3).a, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
           if (localObject1 == null) {
             break;
           }
@@ -78,7 +77,7 @@ public class HeartBreakCombolEffectView$DecodeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

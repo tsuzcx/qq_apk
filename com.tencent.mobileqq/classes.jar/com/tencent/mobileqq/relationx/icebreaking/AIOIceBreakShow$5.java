@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import bbdh;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,12 +12,12 @@ class AIOIceBreakShow$5
   
   public void run()
   {
-    ((bbdh)AIOIceBreakShow.a(this.this$0).app.getManager(QQManagerFactory.ICE_BREAKING_MNG)).i(AIOIceBreakShow.a(this.this$0).sessionInfo.curFriendUin);
+    ((IceBreakingMng)AIOIceBreakShow.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).i(AIOIceBreakShow.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow.5
  * JD-Core Version:    0.7.0.1
  */

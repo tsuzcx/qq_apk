@@ -38,7 +38,7 @@ class StatisticCollector$ContextLog
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
     Date localDate = new Date(this.time);
-    localStringBuilder.append(StatisticCollector.access$000().format(localDate));
+    localStringBuilder.append(StatisticCollector.simpleDateFormat.format(localDate));
     localStringBuilder.append(" ");
     localStringBuilder.append(this.tag);
     localStringBuilder.append(" ");

@@ -2,8 +2,8 @@ package com.tencent.msfmqpsdkbridge;
 
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
-import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class MSFIntChkStrike$4
@@ -15,7 +15,7 @@ class MSFIntChkStrike$4
   {
     try
     {
-      QQCustomDialog localQQCustomDialog = bhdj.a(BaseActivity.sTopActivity, 230, this.val$fstrTitle, this.val$fstrWording, this.val$fonConfirm, this.val$fonCancel);
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, this.val$fstrTitle, this.val$fstrWording, this.val$fonConfirm, this.val$fonCancel);
       if (localQQCustomDialog == null) {
         return;
       }
@@ -37,7 +37,7 @@ class MSFIntChkStrike$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.msfmqpsdkbridge.MSFIntChkStrike.4
  * JD-Core Version:    0.7.0.1
  */

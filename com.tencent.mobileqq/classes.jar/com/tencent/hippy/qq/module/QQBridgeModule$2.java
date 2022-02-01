@@ -1,9 +1,8 @@
 package com.tencent.hippy.qq.module;
 
-import achn;
-import acho;
 import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
@@ -27,13 +26,13 @@ class QQBridgeModule$2
     JSONObject localJSONObject = new JSONObject();
     Object localObject2 = null;
     Object localObject3 = new GdtDeviceInfoHelper.Params();
-    ((GdtDeviceInfoHelper.Params)localObject3).businessIdForAidTicketAndTaidTicket = this.val$jsonObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
-    localObject1 = GdtDeviceInfoHelper.create((Context)localObject1, (GdtDeviceInfoHelper.Params)localObject3);
+    ((GdtDeviceInfoHelper.Params)localObject3).a = this.val$jsonObject.optString("businessIdForAidTicketAndTaidTicket", "ce2d9f");
+    localObject1 = GdtDeviceInfoHelper.a((Context)localObject1, (GdtDeviceInfoHelper.Params)localObject3);
     if (localObject1 == null)
     {
       localObject1 = localObject2;
       if ((localObject1 == null) || (localObject1 == JSONObject.NULL)) {
-        break label165;
+        break label164;
       }
     }
     for (;;)
@@ -42,16 +41,16 @@ class QQBridgeModule$2
       {
         localJSONObject.put("deviceInfo", localObject1);
         if (!this.val$isFromInvoke) {
-          break label176;
+          break label174;
         }
         this.this$0.invokeCallJS(this.val$promise, localJSONObject);
         return;
-        localObject3 = ((GdtDeviceInfoHelper.Result)localObject1).deviceInfo;
+        localObject3 = ((GdtDeviceInfoHelper.Result)localObject1).a;
         localObject1 = localObject2;
         if (localObject3 == null) {
           break;
         }
-        localObject3 = achn.a((PBField)localObject3);
+        localObject3 = GdtJsonPbUtil.a((PBField)localObject3);
         localObject1 = localObject2;
         if (localObject3 == null) {
           break;
@@ -64,19 +63,19 @@ class QQBridgeModule$2
       }
       catch (JSONException localJSONException)
       {
-        acho.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
+        GdtLog.d("BridgeModule", "handleJsCallRequest", localJSONException);
         continue;
       }
-      label165:
-      acho.d(BridgeModule.TAG, "handleJsCallRequest error");
+      label164:
+      GdtLog.d("BridgeModule", "handleJsCallRequest error");
     }
-    label176:
+    label174:
     QQBridgeModule.access$000(this.this$0, this.val$promise, localJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQBridgeModule.2
  * JD-Core Version:    0.7.0.1
  */

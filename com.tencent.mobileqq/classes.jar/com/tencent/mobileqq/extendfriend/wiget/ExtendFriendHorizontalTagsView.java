@@ -11,8 +11,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import asue;
-import asuf;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ public class ExtendFriendHorizontalTagsView
   implements View.OnClickListener
 {
   public int a;
-  public asue a;
+  public ExtendFriendHorizontalTagsView.OnItemClickListener a;
   
   public ExtendFriendHorizontalTagsView(Context paramContext)
   {
@@ -44,20 +42,20 @@ public class ExtendFriendHorizontalTagsView
   
   public void onClick(View paramView)
   {
-    asuf localasuf;
-    if ((paramView.getTag() instanceof asuf))
+    ExtendFriendHorizontalTagsView.TagInfo localTagInfo;
+    if ((paramView.getTag() instanceof ExtendFriendHorizontalTagsView.TagInfo))
     {
-      localasuf = (asuf)paramView.getTag();
-      if (localasuf.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {}
+      localTagInfo = (ExtendFriendHorizontalTagsView.TagInfo)paramView.getTag();
+      if (localTagInfo.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {}
     }
     else
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.jdField_a_of_type_Int = localasuf.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Asue != null) {
-      this.jdField_a_of_type_Asue.a(localasuf.jdField_a_of_type_JavaLangString, localasuf.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = localTagInfo.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView$OnItemClickListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView$OnItemClickListener.a(localTagInfo.jdField_a_of_type_JavaLangString, localTagInfo.jdField_a_of_type_Int);
     }
     int i = 0;
     label71:
@@ -78,9 +76,9 @@ public class ExtendFriendHorizontalTagsView
     }
   }
   
-  public void setOnItemClickListener(asue paramasue)
+  public void setOnItemClickListener(ExtendFriendHorizontalTagsView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_Asue = paramasue;
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView$OnItemClickListener = paramOnItemClickListener;
   }
   
   public void setSearchTags(ArrayList<String> paramArrayList, int paramInt)
@@ -91,8 +89,8 @@ public class ExtendFriendHorizontalTagsView
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       return;
     }
-    int m = AIOUtils.dp2px(13.0F, getResources());
-    int n = AIOUtils.dp2px(26.0F, getResources());
+    int m = AIOUtils.a(13.0F, getResources());
+    int n = AIOUtils.a(26.0F, getResources());
     int i = 0;
     int j = 0;
     label50:
@@ -107,7 +105,7 @@ public class ExtendFriendHorizontalTagsView
       {
         localTextView = new TextView(getContext());
         localTextView.setText((CharSequence)localObject);
-        localTextView.setTag(new asuf(this, i, (String)localObject));
+        localTextView.setTag(new ExtendFriendHorizontalTagsView.TagInfo(this, i, (String)localObject));
         localTextView.setContentDescription((CharSequence)localObject);
         if (i != paramInt) {
           break label261;
@@ -124,11 +122,11 @@ public class ExtendFriendHorizontalTagsView
       localTextView.setClickable(true);
       localTextView.setFocusable(true);
       localTextView.setPadding(m, 0, m, 0);
-      localTextView.setBackgroundResource(2130845143);
-      localTextView.setTextColor(getResources().getColorStateList(2131166371));
+      localTextView.setBackgroundResource(2130845305);
+      localTextView.setTextColor(getResources().getColorStateList(2131166374));
       localObject = new LinearLayout.LayoutParams(-2, n);
       if (j > 0) {
-        ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(8.0F, getResources());
+        ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.a(8.0F, getResources());
       }
       addView(localTextView, (ViewGroup.LayoutParams)localObject);
       k = j + 1;
@@ -143,7 +141,7 @@ public class ExtendFriendHorizontalTagsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendHorizontalTagsView
  * JD-Core Version:    0.7.0.1
  */

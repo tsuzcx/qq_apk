@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import aesu;
-import aesv;
-import aesw;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,7 +7,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import avxi;
+import com.tencent.mobileqq.intervideo.yiqikan.TogetherWatchFloatingUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
 
@@ -22,7 +18,7 @@ public class QQTranslucentBrowserActivity
   
   public QQTranslucentBrowserActivity()
   {
-    this.jdField_a_of_type_JavaLangClass = QQTranslucentBrowserActivity.QQTranslucentBrowserFragment.class;
+    this.mFragmentClass = QQTranslucentBrowserActivity.QQTranslucentBrowserFragment.class;
   }
   
   public void a()
@@ -31,25 +27,19 @@ public class QQTranslucentBrowserActivity
     do
     {
       return;
-      if (this.jdField_a_of_type_AndroidAppDialog == null) {
-        this.jdField_a_of_type_AndroidAppDialog = new aesw(this);
+      if (this.a == null) {
+        this.a = new QQTranslucentBrowserActivity.LoadingDialog(this);
       }
-    } while (this.jdField_a_of_type_AndroidAppDialog == null);
-    this.jdField_a_of_type_AndroidAppDialog.show();
-  }
-  
-  public void a(WebView paramWebView, String paramString)
-  {
-    b();
-    super.a(paramWebView, paramString);
+    } while (this.a == null);
+    this.a.show();
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    if ((this.a != null) && (this.a.isShowing()))
     {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.jdField_a_of_type_AndroidAppDialog = null;
+      this.a.dismiss();
+      this.a = null;
     }
   }
   
@@ -66,10 +56,10 @@ public class QQTranslucentBrowserActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = super.getIntent();
-    getWindow().setBackgroundDrawableResource(2131167296);
-    View localView = findViewById(2131363780);
+    getWindow().setBackgroundDrawableResource(2131167305);
+    View localView = findViewById(2131363879);
     if (localView != null) {
-      localView.setBackgroundResource(2131167296);
+      localView.setBackgroundResource(2131167305);
     }
     int i;
     if (paramBundle != null)
@@ -86,14 +76,14 @@ public class QQTranslucentBrowserActivity
       return bool;
       if (i == 4)
       {
-        this.jdField_a_of_type_AndroidAppDialog = avxi.a(this);
-        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new aesu(this));
+        this.a = TogetherWatchFloatingUtil.a(this);
+        this.a.setOnDismissListener(new QQTranslucentBrowserActivity.1(this));
         a();
         return bool;
       }
     } while (i != 5);
-    this.jdField_a_of_type_AndroidAppDialog = avxi.a(this, paramBundle);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new aesv(this));
+    this.a = TogetherWatchFloatingUtil.a(this, paramBundle);
+    this.a.setOnDismissListener(new QQTranslucentBrowserActivity.2(this));
     a();
     return bool;
   }
@@ -116,10 +106,16 @@ public class QQTranslucentBrowserActivity
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    b();
+    super.onPageFinished(paramWebView, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

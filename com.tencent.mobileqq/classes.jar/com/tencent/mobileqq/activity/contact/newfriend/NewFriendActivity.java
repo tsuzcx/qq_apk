@@ -1,11 +1,5 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import Override;
-import aixk;
-import aiyo;
-import aiyx;
-import aiyy;
-import aizi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -24,30 +18,31 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anvx;
-import anyb;
-import bisl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.BaseForwardSelectionActivity;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerificationManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class NewFriendActivity
   extends BaseForwardSelectionActivity
-  implements aiyo, View.OnClickListener
+  implements View.OnClickListener, BaseNewFriendView.INewFriendContext
 {
   public static int a;
-  private aiyy jdField_a_of_type_Aiyy;
-  aizi jdField_a_of_type_Aizi;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bisl a;
+  private NewFriendActivity.UiHandler jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity$UiHandler;
+  NewFriendManager jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendManager;
   private SystemMsgListView jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView;
+  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   private int jdField_b_of_type_Int;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -84,7 +79,7 @@ public class NewFriendActivity
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839470);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839549);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
@@ -93,31 +88,31 @@ public class NewFriendActivity
     }
   }
   
-  public void a(int paramInt)
+  void a(int paramInt)
   {
-    if ((!isFinishing()) && (this.jdField_a_of_type_Bisl == null))
+    if ((!isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null))
     {
-      this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bisl.setOnDismissListener(new aiyx(this));
-      this.jdField_a_of_type_Bisl.c(paramInt);
-      this.jdField_a_of_type_Bisl.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bisl.setCancelable(false);
-      this.jdField_a_of_type_Bisl.show();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new NewFriendActivity.1(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
   }
   
   public boolean a()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Aiyy.hasMessages(1))
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity$UiHandler.hasMessages(1))
     {
-      this.jdField_a_of_type_Aiyy.removeMessages(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity$UiHandler.removeMessages(1);
       bool = true;
     }
-    if (this.jdField_a_of_type_Bisl != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
     {
-      this.jdField_a_of_type_Bisl.cancel();
-      this.jdField_a_of_type_Bisl = null;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
       return true;
     }
     return bool;
@@ -136,8 +131,8 @@ public class NewFriendActivity
   
   public void c()
   {
-    Message localMessage = this.jdField_a_of_type_Aiyy.obtainMessage(1, 2131718527, 0);
-    this.jdField_a_of_type_Aiyy.sendMessageDelayed(localMessage, 1000L);
+    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity$UiHandler.obtainMessage(1, 2131719050, 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity$UiHandler.sendMessageDelayed(localMessage, 1000L);
   }
   
   void d()
@@ -180,37 +175,37 @@ public class NewFriendActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    this.jdField_a_of_type_Aiyy = new aiyy(this);
-    this.jdField_a_of_type_Aizi = ((aizi)this.app.getManager(QQManagerFactory.NEW_FRIEND_MANAGER));
-    setContentView(2131561296);
-    setContentBackgroundResource(2130838911);
-    paramBundle = (LinearLayout)findViewById(2131376947);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity$UiHandler = new NewFriendActivity.UiHandler(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendManager = ((NewFriendManager)this.app.getManager(QQManagerFactory.NEW_FRIEND_MANAGER));
+    setContentView(2131561401);
+    setContentBackgroundResource(2130838979);
+    paramBundle = (LinearLayout)findViewById(2131377356);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368901));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369278));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369231));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369133));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369534));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369487));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.c = ((TextView)findViewById(2131369262));
+    this.c = ((TextView)findViewById(2131369518));
     this.c.setVisibility(0);
     this.c.setOnClickListener(this);
-    this.c.setText(2131689550);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694274);
+    this.c.setText(2131689557);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694478);
     d();
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText());
       this.c.setContentDescription(this.c.getText());
-      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131693747) + anvx.a(2131706978));
+      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131693918) + HardCodeUtil.a(2131707503));
     }
-    paramBundle = (anyb)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+    paramBundle = (MayknowRecommendManager)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
     if (paramBundle != null) {
       paramBundle.a(4);
     }
-    aixk.a(this.app).a(this.app.getCurrentAccountUin());
+    NewFriendVerificationManager.a(this.app).a(this.app.getCurrentAccountUin());
     paramBundle = getIntent().getStringExtra("from");
     int j = getIntent().getIntExtra("fromSubType", -1);
     int i;
@@ -227,7 +222,7 @@ public class NewFriendActivity
     }
     for (;;)
     {
-      paramBundle = (aizi)this.app.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
+      paramBundle = (NewFriendManager)this.app.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
       paramBundle.e = false;
       paramBundle.d = false;
       return true;
@@ -294,7 +289,7 @@ public class NewFriendActivity
       localIntent.putExtra("entrence_data_report", 3);
       localIntent.putExtra("EntranceId", 6);
       startActivityForResult(localIntent, 221);
-      this.jdField_a_of_type_Aizi.f();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendManager.f();
     }
     for (;;)
     {
@@ -318,7 +313,7 @@ public class NewFriendActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity
  * JD-Core Version:    0.7.0.1
  */

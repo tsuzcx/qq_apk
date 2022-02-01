@@ -15,7 +15,7 @@ class ShowExternalTroopListActivity$2
     if (localBitmap != null) {}
     try
     {
-      StackBlur.fastblur(localBitmap, 10);
+      StackBlur.a(localBitmap, 10);
       this.this$0.runOnUiThread(new ShowExternalTroopListActivity.2.1(this, localBitmap));
       return;
     }
@@ -30,7 +30,7 @@ class ShowExternalTroopListActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.2
  * JD-Core Version:    0.7.0.1
  */

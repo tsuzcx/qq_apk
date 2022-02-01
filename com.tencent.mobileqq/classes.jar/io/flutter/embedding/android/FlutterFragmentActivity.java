@@ -6,11 +6,13 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -20,10 +22,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.FlutterShellArgs;
-import io.flutter.view.FlutterMain;
+import io.flutter.embedding.engine.plugins.util.GeneratedPluginRegister;
 
 public class FlutterFragmentActivity
   extends FragmentActivity
@@ -48,10 +51,8 @@ public class FlutterFragmentActivity
   
   private void configureWindowForTransparency()
   {
-    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.transparent)
-    {
+    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.transparent) {
       getWindow().setBackgroundDrawable(new ColorDrawable(0));
-      getWindow().setFlags(512, 512);
     }
   }
   
@@ -128,7 +129,7 @@ public class FlutterFragmentActivity
       }
       else
       {
-        Log.d("FlutterFragmentActivity", "Using the launch theme as normal theme.");
+        Log.v("FlutterFragmentActivity", "Using the launch theme as normal theme.");
         return;
       }
     }
@@ -152,26 +153,19 @@ public class FlutterFragmentActivity
   
   public void cleanUpFlutterEngine(@NonNull FlutterEngine paramFlutterEngine) {}
   
-  public void configureFlutterEngine(@NonNull FlutterEngine paramFlutterEngine) {}
+  public void configureFlutterEngine(@NonNull FlutterEngine paramFlutterEngine)
+  {
+    GeneratedPluginRegister.registerGeneratedPlugins(paramFlutterEngine);
+  }
   
   @NonNull
   protected FlutterFragment createFlutterFragment()
   {
     FlutterActivityLaunchConfigs.BackgroundMode localBackgroundMode = getBackgroundMode();
-    FlutterView.RenderMode localRenderMode;
-    if (localBackgroundMode == FlutterActivityLaunchConfigs.BackgroundMode.opaque)
+    RenderMode localRenderMode = getRenderMode();
+    if (localBackgroundMode == FlutterActivityLaunchConfigs.BackgroundMode.opaque) {}
+    for (TransparencyMode localTransparencyMode = TransparencyMode.opaque; getCachedEngineId() != null; localTransparencyMode = TransparencyMode.transparent)
     {
-      localRenderMode = FlutterView.RenderMode.surface;
-      if (localBackgroundMode != FlutterActivityLaunchConfigs.BackgroundMode.opaque) {
-        break label166;
-      }
-    }
-    label166:
-    for (FlutterView.TransparencyMode localTransparencyMode = FlutterView.TransparencyMode.opaque;; localTransparencyMode = FlutterView.TransparencyMode.transparent)
-    {
-      if (getCachedEngineId() == null) {
-        break label173;
-      }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Creating FlutterFragment with cached engine:\nCached engine ID: ");
       localStringBuilder.append(getCachedEngineId());
@@ -181,12 +175,9 @@ public class FlutterFragmentActivity
       localStringBuilder.append(localBackgroundMode);
       localStringBuilder.append("\nWill attach FlutterEngine to Activity: ");
       localStringBuilder.append(shouldAttachEngineToActivity());
-      Log.d("FlutterFragmentActivity", localStringBuilder.toString());
+      Log.v("FlutterFragmentActivity", localStringBuilder.toString());
       return FlutterFragment.withCachedEngine(getCachedEngineId()).renderMode(localRenderMode).transparencyMode(localTransparencyMode).shouldAttachEngineToActivity(shouldAttachEngineToActivity()).destroyEngineWithFragment(shouldDestroyEngineWithHost()).build();
-      localRenderMode = FlutterView.RenderMode.texture;
-      break;
     }
-    label173:
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Creating FlutterFragment with new engine:\nBackground transparency mode: ");
     localStringBuilder.append(localBackgroundMode);
@@ -198,8 +189,17 @@ public class FlutterFragmentActivity
     localStringBuilder.append(getAppBundlePath());
     localStringBuilder.append("\nWill attach FlutterEngine to Activity: ");
     localStringBuilder.append(shouldAttachEngineToActivity());
-    Log.d("FlutterFragmentActivity", localStringBuilder.toString());
+    Log.v("FlutterFragmentActivity", localStringBuilder.toString());
     return FlutterFragment.withNewEngine().dartEntrypoint(getDartEntrypointFunctionName()).initialRoute(getInitialRoute()).appBundlePath(getAppBundlePath()).flutterShellArgs(FlutterShellArgs.fromIntent(getIntent())).renderMode(localRenderMode).transparencyMode(localTransparencyMode).shouldAttachEngineToActivity(shouldAttachEngineToActivity()).build();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   @NonNull
@@ -212,7 +212,7 @@ public class FlutterFragmentActivity
         return str;
       }
     }
-    return FlutterMain.findAppBundlePath();
+    return null;
   }
   
   @NonNull
@@ -256,8 +256,8 @@ public class FlutterFragmentActivity
   protected String getInitialRoute()
   {
     Object localObject2;
-    if (getIntent().hasExtra("initial_route")) {
-      localObject2 = getIntent().getStringExtra("initial_route");
+    if (getIntent().hasExtra("route")) {
+      localObject2 = getIntent().getStringExtra("route");
     }
     for (;;)
     {
@@ -280,7 +280,16 @@ public class FlutterFragmentActivity
     }
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  @NonNull
+  protected RenderMode getRenderMode()
+  {
+    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.opaque) {
+      return RenderMode.surface;
+    }
+    return RenderMode.texture;
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     this.flutterFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
@@ -291,7 +300,14 @@ public class FlutterFragmentActivity
     this.flutterFragment.onBackPressed();
   }
   
-  protected void onCreate(@Nullable Bundle paramBundle)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  public void onCreate(@Nullable Bundle paramBundle)
   {
     switchLaunchThemeForNormalTheme();
     super.onCreate(paramBundle);
@@ -301,7 +317,7 @@ public class FlutterFragmentActivity
     ensureFlutterFragmentCreated();
   }
   
-  protected void onNewIntent(@NonNull Intent paramIntent)
+  public void onNewIntent(@NonNull Intent paramIntent)
   {
     this.flutterFragment.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
@@ -315,6 +331,7 @@ public class FlutterFragmentActivity
   
   public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
   {
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     this.flutterFragment.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
   }
   
@@ -357,7 +374,7 @@ public class FlutterFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

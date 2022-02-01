@@ -10,8 +10,8 @@ public final class SyncReq
 {
   static UserData cache_userData;
   static ArrayList<InfoItem> cache_vecReqPkg;
-  public UserData userData;
-  public ArrayList<InfoItem> vecReqPkg;
+  public UserData userData = null;
+  public ArrayList<InfoItem> vecReqPkg = null;
   
   public SyncReq() {}
   

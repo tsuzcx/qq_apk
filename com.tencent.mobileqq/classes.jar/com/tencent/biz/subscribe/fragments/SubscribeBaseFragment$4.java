@@ -1,0 +1,30 @@
+package com.tencent.biz.subscribe.fragments;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.OnColorNoteCurdListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
+
+class SubscribeBaseFragment$4
+  extends ColorNoteCurd.OnColorNoteCurdListener
+{
+  SubscribeBaseFragment$4(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  {
+    super.onAddColorNote(paramBundle, paramBoolean);
+    ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 2, true);
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribeBaseFragment.4
+ * JD-Core Version:    0.7.0.1
+ */

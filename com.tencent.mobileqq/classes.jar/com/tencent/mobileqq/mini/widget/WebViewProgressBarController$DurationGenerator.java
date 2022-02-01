@@ -13,14 +13,14 @@ class WebViewProgressBarController$DurationGenerator
   private static final int MIN_EXPECTED_FINISH_TIME = 100;
   public static final int PHASE_ONE = 0;
   public static final int PHASE_TWO = 1;
-  private static DurationGenerator sPhaseOne;
-  private static DurationGenerator sPhaseTwo;
+  private static DurationGenerator sPhaseOne = null;
+  private static DurationGenerator sPhaseTwo = null;
   private int m2GDuration = 9000;
   private int mLastSampleIndex;
   private int mNetType = 0;
   private int mNon2GDuration = 1800;
   private int mPhaseType = 0;
-  private int[] mSampleDuration;
+  private int[] mSampleDuration = null;
   private long mStartingTime;
   
   public WebViewProgressBarController$DurationGenerator(int paramInt)

@@ -17,18 +17,19 @@ public class QZoneMsgEntityNew
 {
   public static final String TAG;
   @notColumn
-  public ArrayList<MQMsg> ArkNes_vec;
+  public ArrayList<MQMsg> ArkNes_vec = null;
   public String bottomItemBuffer;
   @notColumn
   public ArrayList<BottomItem> bottomItems;
   public boolean hasmore = true;
   public String more_url = "";
   public String msgBuffer = "";
-  public long pushTime;
-  public long qzone_level;
-  public long registered_days;
+  public long pushTime = 0L;
+  public long qzone_level = 0L;
+  public long registered_days = 0L;
   public String trace_info = "";
-  public long visitor_count;
+  private MQUnReadSummaryInfo unReadSummaryInfo;
+  public long visitor_count = 0L;
   
   static
   {
@@ -53,6 +54,9 @@ public class QZoneMsgEntityNew
     localQZoneMsgEntityNew.writeBottomItemToBuffer();
     if ((localQZoneMsgEntityNew.ArkNes_vec != null) && (localQZoneMsgEntityNew.ArkNes_vec.size() > 0) && (((MQMsg)localQZoneMsgEntityNew.ArkNes_vec.get(0)).pushTime > 0L)) {
       localQZoneMsgEntityNew.pushTime = ((MQMsg)localQZoneMsgEntityNew.ArkNes_vec.get(0)).pushTime;
+    }
+    if (paramQzoneMessageBoxRsp.unread_info != null) {
+      localQZoneMsgEntityNew.unReadSummaryInfo = MQUnReadSummaryInfo.readFrom(paramQzoneMessageBoxRsp.unread_info);
     }
     return localQZoneMsgEntityNew;
   }
@@ -151,7 +155,7 @@ public class QZoneMsgEntityNew
     while (localIterator.hasNext())
     {
       MQMsg localMQMsg = (MQMsg)localIterator.next();
-      if (localMQMsg != null) {
+      if ((localMQMsg != null) && (!localMQMsg.isRecommGuideCard())) {
         localJSONArray.put(localMQMsg.convertToJson());
       }
     }
@@ -177,7 +181,7 @@ public class QZoneMsgEntityNew
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.QZoneMsgEntityNew
  * JD-Core Version:    0.7.0.1
  */

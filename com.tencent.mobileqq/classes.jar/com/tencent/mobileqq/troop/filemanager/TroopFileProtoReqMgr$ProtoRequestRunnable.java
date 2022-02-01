@@ -1,17 +1,14 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import anza;
-import bfls;
-import bflt;
-import bfmf;
+import com.tencent.mobileqq.app.StatictisInfo;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.NewIntent;
 
-public class TroopFileProtoReqMgr$ProtoRequestRunnable
+class TroopFileProtoReqMgr$ProtoRequestRunnable
   implements Runnable
 {
   long jdField_a_of_type_Long;
-  bflt jdField_a_of_type_Bflt;
+  TroopFileProtoReqMgr.ProtoResponse jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoResponse;
   NewIntent jdField_a_of_type_MqqAppNewIntent;
   boolean jdField_a_of_type_Boolean = false;
   long jdField_b_of_type_Long;
@@ -27,13 +24,13 @@ public class TroopFileProtoReqMgr$ProtoRequestRunnable
   public void run()
   {
     int i = this.jdField_a_of_type_MqqAppNewIntent.getIntExtra("key_runnable_index", 0);
-    bfmf.c("TroopFileProtoReqMgr", bfmf.a, "cookie<" + this.jdField_a_of_type_Bflt.jdField_a_of_type_Bfls.jdField_b_of_type_Long + "> sendToMsf. scheduleIndex:" + i + " timeOut:" + this.jdField_a_of_type_Long);
+    TroopFileTransferUtil.Log.c("TroopFileProtoReqMgr", TroopFileTransferUtil.Log.a, "cookie<" + this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoResponse.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequest.jdField_b_of_type_Long + "> sendToMsf. scheduleIndex:" + i + " timeOut:" + this.jdField_a_of_type_Long);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_MqqAppNewIntent.putExtra("timeout", this.jdField_a_of_type_Long);
-    anza localanza = this.jdField_a_of_type_Bflt.jdField_a_of_type_Anza;
-    localanza.c += 1;
-    TroopFileProtoReqMgr.a(this.this$0).put(this.jdField_a_of_type_MqqAppNewIntent, this.jdField_a_of_type_Bflt);
+    StatictisInfo localStatictisInfo = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoResponse.jdField_a_of_type_ComTencentMobileqqAppStatictisInfo;
+    localStatictisInfo.c += 1;
+    TroopFileProtoReqMgr.a(this.this$0).put(this.jdField_a_of_type_MqqAppNewIntent, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoResponse);
     this.this$0.a(this.jdField_a_of_type_MqqAppNewIntent);
   }
 }

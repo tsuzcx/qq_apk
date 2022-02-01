@@ -132,25 +132,31 @@ public final class el
   @TargetApi(19)
   final void d()
   {
-    if (!this.n) {
+    if (!this.n)
+    {
       this.k = System.currentTimeMillis();
-    }
-    try
-    {
-      Handler localHandler = new Handler(this.g.getLooper());
-      if (!this.b.registerListener(this, this.c, 1, localHandler)) {
-        this.h = -1;
+      try
+      {
+        if (this.b == null)
+        {
+          this.h = -1;
+          return;
+        }
+        Handler localHandler = new Handler(this.g.getLooper());
+        if (!this.b.registerListener(this, this.c, 1, localHandler)) {
+          this.h = -1;
+        }
+        this.b.registerListener(this, this.d, 3, localHandler);
+        if ((Build.VERSION.SDK_INT >= 19) && (this.e != null)) {
+          this.b.registerListener(this, this.e, 3, localHandler);
+        }
+        this.n = true;
+        return;
       }
-      this.b.registerListener(this, this.d, 3, localHandler);
-      if ((Build.VERSION.SDK_INT >= 19) && (this.e != null)) {
-        this.b.registerListener(this, this.e, 3, localHandler);
+      catch (Throwable localThrowable)
+      {
+        this.n = false;
       }
-      this.n = true;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      this.n = false;
     }
   }
   
@@ -392,7 +398,7 @@ public final class el
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     c.t.m.g.el
  * JD-Core Version:    0.7.0.1
  */

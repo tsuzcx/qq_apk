@@ -10,9 +10,9 @@ public final class mobile_sub_concern_push_req
   extends JceStruct
 {
   static Map<Integer, String> cache_map_ext = new HashMap();
-  public Map<Integer, String> map_ext;
-  public long objuin;
-  public int push_type;
+  public Map<Integer, String> map_ext = null;
+  public long objuin = 0L;
+  public int push_type = 0;
   
   static
   {

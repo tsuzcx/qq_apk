@@ -5,9 +5,6 @@ import java.util.HashMap;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tlv_type.tlv_t104;
 import oicq.wlogin_sdk.tlv_type.tlv_t116;
-import oicq.wlogin_sdk.tlv_type.tlv_t126;
-import oicq.wlogin_sdk.tlv_type.tlv_t127;
-import oicq.wlogin_sdk.tlv_type.tlv_t184;
 import oicq.wlogin_sdk.tlv_type.tlv_t8;
 import oicq.wlogin_sdk.tools.util;
 
@@ -17,29 +14,25 @@ public class y
   public y(t paramt)
   {
     this.t = 2064;
-    this.u = 18;
+    this.u = 19;
     this.v = "wtlogin.login";
     this.x = paramt;
     this.x.m = 0;
   }
   
-  private byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
+  private byte[] b(int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
     int j = 0;
-    int[] arrayOfInt = new int[6];
-    int[] tmp11_9 = arrayOfInt;
-    tmp11_9[0] = 260;
-    int[] tmp17_11 = tmp11_9;
-    tmp17_11[1] = 8;
-    int[] tmp22_17 = tmp17_11;
-    tmp22_17[2] = 295;
-    int[] tmp28_22 = tmp22_17;
-    tmp28_22[3] = 388;
-    int[] tmp34_28 = tmp28_22;
-    tmp34_28[4] = 278;
-    int[] tmp40_34 = tmp34_28;
-    tmp40_34[5] = 1313;
-    tmp40_34;
+    int[] arrayOfInt = new int[4];
+    int[] tmp10_8 = arrayOfInt;
+    tmp10_8[0] = 260;
+    int[] tmp16_10 = tmp10_8;
+    tmp16_10[1] = 8;
+    int[] tmp21_16 = tmp16_10;
+    tmp21_16[2] = 278;
+    int[] tmp27_21 = tmp21_16;
+    tmp27_21[3] = 1313;
+    tmp27_21;
     ArrayList localArrayList = new ArrayList();
     int i1 = arrayOfInt.length;
     int i = 0;
@@ -69,10 +62,6 @@ public class y
         continue;
         localObject = new tlv_t8().get_tlv_8(0, t.v, 0);
         continue;
-        localObject = new tlv_t127().get_tlv_127(paramArrayOfByte, localasync_context._t126.get_random());
-        continue;
-        localObject = new tlv_t184().get_tlv_184(localasync_context._msalt, localasync_context._mpasswd);
-        continue;
         localObject = new tlv_t116().get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
         continue;
         localObject = new tlv_t(1313);
@@ -83,36 +72,36 @@ public class y
         localObject = ((tlv_t)localObject).get_buf();
       }
     }
-    paramArrayOfByte = (tlv_t)paramWUserSigInfo._loginExtraProductTLVMap.get(Integer.valueOf(1322));
+    paramArrayOfLong = (tlv_t)paramWUserSigInfo._loginExtraProductTLVMap.get(Integer.valueOf(1322));
     paramInt2 = i;
     paramInt1 = j;
-    if (paramArrayOfByte != null)
+    if (paramArrayOfLong != null)
     {
-      paramArrayOfByte = paramArrayOfByte.get_buf();
+      paramArrayOfLong = paramArrayOfLong.get_buf();
       paramInt1 = j + 1;
-      paramInt2 = i + paramArrayOfByte.length;
-      localArrayList.add(paramArrayOfByte);
+      paramInt2 = i + paramArrayOfLong.length;
+      localArrayList.add(paramArrayOfLong);
     }
-    paramArrayOfByte = new byte[paramInt2];
+    paramArrayOfLong = new byte[paramInt2];
     i = 0;
     paramInt2 = 0;
     while (paramInt2 < paramInt1)
     {
-      paramArrayOfLong = (byte[])localArrayList.get(paramInt2);
-      System.arraycopy(paramArrayOfLong, 0, paramArrayOfByte, i, paramArrayOfLong.length);
-      i += paramArrayOfLong.length;
+      paramWUserSigInfo = (byte[])localArrayList.get(paramInt2);
+      System.arraycopy(paramWUserSigInfo, 0, paramArrayOfLong, i, paramWUserSigInfo.length);
+      i += paramWUserSigInfo.length;
       paramInt2 += 1;
     }
-    return b(paramArrayOfByte, this.u, paramInt1);
+    return b(paramArrayOfLong, this.u, paramInt1);
   }
   
-  public int a(String paramString, int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
+  public int a(int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
     int j = t.x;
     int i = 0;
     for (;;)
     {
-      byte[] arrayOfByte = a(paramString.getBytes(), paramInt1, paramInt2, paramArrayOfLong, paramWUserSigInfo);
+      byte[] arrayOfByte = b(paramInt1, paramInt2, paramArrayOfLong, paramWUserSigInfo);
       a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, arrayOfByte);
       int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
       if (k != 0) {

@@ -12,7 +12,7 @@
     "children": [
         {
             "tag": "view",
-            "content": "\n  \n  \n   \n",
+            "content": "\n  \n  \n  \n",
             "attributes": {
                 "viewID": "1",
                 "class": "bkg-view",
@@ -30,7 +30,7 @@
             "children": [
                 {
                     "tag": "view",
-                    "content": "\n    \n    \n    \n\n    \n    \n    \n     \n    \n    \n    \n     \n    \n  ",
+                    "content": "\n    \n    \n    \n\n    \n    \n    \n    \n    \n    \n    \n    \n    \n  ",
                     "attributes": {
                         "viewID": "2",
                         "class": "item-wrp",
@@ -93,7 +93,7 @@
                                     "attributes": {
                                         "viewID": "7",
                                         "class": "cover-info-bkg",
-                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200812/030effb038f348a0ab083fd75fa9eb1f.png"
+                                        "src": "https://pub.idqqimg.com/pc/misc/files/20200812/030effb038f348a0ab083fd75fa9eb1f.png"
                                     },
                                     "styles": {
                                         "border-radius": "12rpx",
@@ -132,7 +132,7 @@
                                                 "viewID": "13",
                                                 "class": "icon",
                                                 "wx:if": "{{item.duration && item.count && item.count != 0}}",
-                                                "src": "http://pub.idqqimg.com/pc/misc/files/20200810/3b7a792c870b4236ac96165502c014d9.png"
+                                                "src": "https://pub.idqqimg.com/pc/misc/files/20200810/3b7a792c870b4236ac96165502c014d9.png"
                                             },
                                             "styles": {
                                                 "height": "24rpx",
@@ -166,7 +166,7 @@
                                                 "viewID": "15",
                                                 "class": "icon",
                                                 "wx:if": "{{item.comment && item.comment != 0}}",
-                                                "src": "http://pub.idqqimg.com/pc/misc/files/20200904/f6be9eb9626e48128a36d96bdbccff01.png"
+                                                "src": "https://pub.idqqimg.com/pc/misc/files/20200904/f6be9eb9626e48128a36d96bdbccff01.png"
                                             },
                                             "styles": {
                                                 "height": "24rpx",
@@ -199,7 +199,7 @@
                         },
                         {
                             "tag": "view",
-                            "content": "\n      \n      \n      \n      \n      \n    ",
+                            "content": "\n      \n      \n\n      \n      \n      \n    ",
                             "attributes": {
                                 "viewID": "4",
                                 "class": "info-wrp info-wrp-left",
@@ -229,41 +229,84 @@
                                     },
                                     "children": [
                                         {
-                                            "tag": "text",
-                                            "content": "{{item.title}}",
+                                            "tag": "view",
+                                            "content": "\n          \n        ",
                                             "attributes": {
                                                 "viewID": "17",
-                                                "class": "read",
-                                                "wx:if": "{{$RIJArticle.isRead == 1}}"
+                                                "wx:if": "{{item.nodes}}"
                                             },
                                             "styles": {
-                                                "box-sizing": "border-box",
-                                                "display": "-webkit-box",
-                                                "overflow": "hidden",
-                                                "color": "rgb(153, 153, 153)",
-                                                "-webkit-line-clamp": "2",
-                                                "font-size": "32rpx",
-                                                "line-height": "42rpx"
+                                                "display": "flex",
+                                                "box-sizing": "border-box"
                                             },
-                                            "children": []
+                                            "children": [
+                                                {
+                                                    "tag": "rich-text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "27",
+                                                        "nodes": "{{item.nodes}}"
+                                                    },
+                                                    "styles": {
+                                                        "color": "rgb(38, 38, 38)",
+                                                        "-webkit-line-clamp": "2",
+                                                        "font-size": "32rpx",
+                                                        "line-height": "42rpx"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
                                         },
                                         {
-                                            "tag": "text",
-                                            "content": "{{item.title}}",
+                                            "tag": "view",
+                                            "content": "\n          \n          \n        ",
                                             "attributes": {
                                                 "viewID": "18",
                                                 "wx:else": ""
                                             },
                                             "styles": {
-                                                "box-sizing": "border-box",
-                                                "display": "-webkit-box",
-                                                "overflow": "hidden",
-                                                "color": "rgb(38, 38, 38)",
-                                                "-webkit-line-clamp": "2",
-                                                "font-size": "32rpx",
-                                                "line-height": "42rpx"
+                                                "display": "flex",
+                                                "box-sizing": "border-box"
                                             },
-                                            "children": []
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{item.title}}",
+                                                    "attributes": {
+                                                        "viewID": "28",
+                                                        "class": "read",
+                                                        "wx:if": "{{$RIJArticle.isRead == 1}}"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "color": "rgb(153, 153, 153)",
+                                                        "-webkit-line-clamp": "2",
+                                                        "font-size": "32rpx",
+                                                        "line-height": "42rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{item.title}}",
+                                                    "attributes": {
+                                                        "viewID": "29",
+                                                        "wx:else": ""
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "color": "rgb(38, 38, 38)",
+                                                        "-webkit-line-clamp": "2",
+                                                        "font-size": "32rpx",
+                                                        "line-height": "42rpx"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
@@ -308,7 +351,7 @@
                                                     "tag": "text",
                                                     "content": "{{left_mark_text}}",
                                                     "attributes": {
-                                                        "viewID": "27"
+                                                        "viewID": "30"
                                                     },
                                                     "styles": {
                                                         "box-sizing": "border-box",
@@ -367,9 +410,9 @@
                                                     "tag": "img",
                                                     "content": "",
                                                     "attributes": {
-                                                        "viewID": "28",
+                                                        "viewID": "31",
                                                         "class": "dislike-btn",
-                                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200402/01ffb73afd2c4af9ba9ad33b666bebd1.png"
+                                                        "src": "https://pub.idqqimg.com/pc/misc/files/20200402/01ffb73afd2c4af9ba9ad33b666bebd1.png"
                                                     },
                                                     "styles": {
                                                         "height": "24rpx",
@@ -414,41 +457,84 @@
                                     },
                                     "children": [
                                         {
-                                            "tag": "text",
-                                            "content": "{{item.title}}",
+                                            "tag": "view",
+                                            "content": "\n          \n        ",
                                             "attributes": {
                                                 "viewID": "22",
-                                                "class": "read",
-                                                "wx:if": "{{$RIJArticle.subArticles[0].isRead == 1}}"
+                                                "wx:if": "{{item.nodes}}"
                                             },
                                             "styles": {
-                                                "box-sizing": "border-box",
-                                                "display": "-webkit-box",
-                                                "overflow": "hidden",
-                                                "color": "rgb(153, 153, 153)",
-                                                "-webkit-line-clamp": "2",
-                                                "font-size": "32rpx",
-                                                "line-height": "42rpx"
+                                                "display": "flex",
+                                                "box-sizing": "border-box"
                                             },
-                                            "children": []
+                                            "children": [
+                                                {
+                                                    "tag": "rich-text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "32",
+                                                        "nodes": "{{item.nodes}}"
+                                                    },
+                                                    "styles": {
+                                                        "color": "rgb(38, 38, 38)",
+                                                        "-webkit-line-clamp": "2",
+                                                        "font-size": "32rpx",
+                                                        "line-height": "42rpx"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
                                         },
                                         {
-                                            "tag": "text",
-                                            "content": "{{item.title}}",
+                                            "tag": "view",
+                                            "content": "\n          \n          \n        ",
                                             "attributes": {
                                                 "viewID": "23",
                                                 "wx:else": ""
                                             },
                                             "styles": {
-                                                "box-sizing": "border-box",
-                                                "display": "-webkit-box",
-                                                "overflow": "hidden",
-                                                "color": "rgb(38, 38, 38)",
-                                                "-webkit-line-clamp": "2",
-                                                "font-size": "32rpx",
-                                                "line-height": "42rpx"
+                                                "display": "flex",
+                                                "box-sizing": "border-box"
                                             },
-                                            "children": []
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{item.title}}",
+                                                    "attributes": {
+                                                        "viewID": "33",
+                                                        "class": "read",
+                                                        "wx:if": "{{$RIJArticle.subArticles[0].isRead == 1}}"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "color": "rgb(153, 153, 153)",
+                                                        "-webkit-line-clamp": "2",
+                                                        "font-size": "32rpx",
+                                                        "line-height": "42rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{item.title}}",
+                                                    "attributes": {
+                                                        "viewID": "34",
+                                                        "wx:else": ""
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "color": "rgb(38, 38, 38)",
+                                                        "-webkit-line-clamp": "2",
+                                                        "font-size": "32rpx",
+                                                        "line-height": "42rpx"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
@@ -493,7 +579,7 @@
                                                     "tag": "text",
                                                     "content": "{{right_mark_text}}",
                                                     "attributes": {
-                                                        "viewID": "29"
+                                                        "viewID": "35"
                                                     },
                                                     "styles": {
                                                         "box-sizing": "border-box",
@@ -552,9 +638,9 @@
                                                     "tag": "img",
                                                     "content": "",
                                                     "attributes": {
-                                                        "viewID": "30",
+                                                        "viewID": "36",
                                                         "class": "dislike-btn",
-                                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200402/01ffb73afd2c4af9ba9ad33b666bebd1.png"
+                                                        "src": "https://pub.idqqimg.com/pc/misc/files/20200402/01ffb73afd2c4af9ba9ad33b666bebd1.png"
                                                     },
                                                     "styles": {
                                                         "height": "24rpx",

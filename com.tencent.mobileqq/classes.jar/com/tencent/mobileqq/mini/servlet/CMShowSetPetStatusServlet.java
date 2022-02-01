@@ -67,7 +67,7 @@ public class CMShowSetPetStatusServlet
     Object localObject = new WebSSOAgent.UniSsoServerReqComm();
     ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
     ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.10");
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.5.5");
     paramIntent = new WebSSOAgent.UniSsoServerReq();
     paramIntent.comm.set((MessageMicro)localObject);
     localObject = new JSONObject();

@@ -1,12 +1,12 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
-import lfe;
 
 class DoubleVideoCtrlUI$8
   extends TimerTask
@@ -18,13 +18,13 @@ class DoubleVideoCtrlUI$8
   public void run()
   {
     if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) || (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)) {}
-    lfe locallfe;
+    SessionInfo localSessionInfo;
     do
     {
       return;
-      locallfe = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    } while (locallfe == null);
-    if (locallfe.S <= 0)
+      localSessionInfo = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+    } while (localSessionInfo == null);
+    if (localSessionInfo.S <= 0)
     {
       if (this.this$0.jdField_a_of_type_JavaUtilTimer != null)
       {
@@ -73,7 +73,7 @@ class DoubleVideoCtrlUI$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.8
  * JD-Core Version:    0.7.0.1
  */

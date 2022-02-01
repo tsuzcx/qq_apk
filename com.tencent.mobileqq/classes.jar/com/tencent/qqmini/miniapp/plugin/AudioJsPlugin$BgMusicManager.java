@@ -61,7 +61,7 @@ class AudioJsPlugin$BgMusicManager
   private void pauseQQMusic(RequestEvent paramRequestEvent)
   {
     MusicPlayerProxy localMusicPlayerProxy = (MusicPlayerProxy)ProxyManager.get(MusicPlayerProxy.class);
-    AudioJsPlugin.access$602(this.this$0, paramRequestEvent);
+    AudioJsPlugin.access$4602(this.this$0, paramRequestEvent);
     try
     {
       localMusicPlayerProxy.pause();
@@ -75,7 +75,6 @@ class AudioJsPlugin$BgMusicManager
   
   private void playNew(JSONObject paramJSONObject)
   {
-    MusicPlayerProxy localMusicPlayerProxy = (MusicPlayerProxy)ProxyManager.get(MusicPlayerProxy.class);
     SongInfo localSongInfo = new SongInfo();
     localSongInfo.id = System.currentTimeMillis();
     localSongInfo.url = paramJSONObject.optString("dataUrl", paramJSONObject.optString("src"));
@@ -87,8 +86,9 @@ class AudioJsPlugin$BgMusicManager
     localSongInfo.type = 9;
     localSongInfo.startTime = (paramJSONObject.optInt("startTime", 0) * 1000);
     localSongInfo.fromMini = true;
-    localMusicPlayerProxy.setPlayMode(100);
-    localMusicPlayerProxy.startPlay(new SongInfo[] { localSongInfo }, 0);
+    paramJSONObject = (MusicPlayerProxy)ProxyManager.get(MusicPlayerProxy.class);
+    paramJSONObject.setPlayMode(100);
+    paramJSONObject.startPlay(new SongInfo[] { localSongInfo }, 0);
   }
   
   private void playQQMusic(JSONObject paramJSONObject, RequestEvent paramRequestEvent)
@@ -100,7 +100,7 @@ class AudioJsPlugin$BgMusicManager
     do
     {
       return;
-      AudioJsPlugin.access$602(this.this$0, paramRequestEvent);
+      AudioJsPlugin.access$4602(this.this$0, paramRequestEvent);
       try
       {
         SongInfo localSongInfo = localMusicPlayerProxy.getCurrentSong();
@@ -147,12 +147,12 @@ class AudioJsPlugin$BgMusicManager
           if (i < 0) {
             break label142;
           }
-          AudioJsPlugin.access$200(this.this$0, "waiting");
-          AudioJsPlugin.access$200(this.this$0, "seeking");
+          AudioJsPlugin.access$800(this.this$0, "waiting");
+          AudioJsPlugin.access$800(this.this$0, "seeking");
           this.musicPlayerProxy.seekTo(i);
           paramRequestEvent.ok();
-          AudioJsPlugin.access$200(this.this$0, "seeked");
-          AudioJsPlugin.access$200(this.this$0, "play");
+          AudioJsPlugin.access$800(this.this$0, "seeked");
+          AudioJsPlugin.access$800(this.this$0, "play");
           return;
           f1 = Float.valueOf(str).floatValue();
           break;
@@ -175,7 +175,7 @@ class AudioJsPlugin$BgMusicManager
   private void stopQQmMusic(RequestEvent paramRequestEvent)
   {
     MusicPlayerProxy localMusicPlayerProxy = (MusicPlayerProxy)ProxyManager.get(MusicPlayerProxy.class);
-    AudioJsPlugin.access$602(this.this$0, paramRequestEvent);
+    AudioJsPlugin.access$4602(this.this$0, paramRequestEvent);
     try
     {
       localMusicPlayerProxy.stop();
@@ -219,7 +219,7 @@ class AudioJsPlugin$BgMusicManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.AudioJsPlugin.BgMusicManager
  * JD-Core Version:    0.7.0.1
  */

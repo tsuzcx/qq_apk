@@ -5,19 +5,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aokd;
-import axql;
 import com.tencent.qphone.base.util.QLog;
 
 public class FaceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FaceInfo> CREATOR = new aokd();
-  public static int f;
+  public static final Parcelable.Creator<FaceInfo> CREATOR = new FaceInfo.1();
+  public static int f = 0;
   public static int g = 1;
   public static int h = 2;
   public static int i = 3;
-  public static int j;
+  public static int j = 0;
   public static int k = j + 1;
   public static int l = k + 1;
   public static int m = l + 1;
@@ -48,10 +46,14 @@ public class FaceInfo
   
   public FaceInfo()
   {
-    if (this.jdField_a_of_type_ArrayOfLong == null) {
+    this.jdField_a_of_type_ArrayOfLong = null;
+    this.jdField_e_of_type_Int = 0;
+    int i1 = i2;
+    if (this.jdField_a_of_type_ArrayOfLong == null)
+    {
       this.jdField_a_of_type_ArrayOfLong = new long[s];
+      i1 = i2;
     }
-    int i1 = 0;
     while (i1 < s)
     {
       this.jdField_a_of_type_ArrayOfLong[i1] = 0L;
@@ -61,11 +63,15 @@ public class FaceInfo
   
   public FaceInfo(int paramInt1, String paramString, boolean paramBoolean1, byte paramByte, int paramInt2, boolean paramBoolean2, int paramInt3, int paramInt4)
   {
+    this.jdField_a_of_type_ArrayOfLong = null;
+    this.jdField_e_of_type_Int = 0;
     a(paramInt1, paramString, paramBoolean1, paramByte, paramInt2, paramBoolean2, paramInt3, paramInt4, false, 100);
   }
   
   public FaceInfo(int paramInt1, String paramString, boolean paramBoolean1, byte paramByte, int paramInt2, boolean paramBoolean2, int paramInt3, boolean paramBoolean3, int paramInt4)
   {
+    this.jdField_a_of_type_ArrayOfLong = null;
+    this.jdField_e_of_type_Int = 0;
     a(paramInt1, paramString, paramBoolean1, paramByte, paramInt2, paramBoolean2, paramInt3, 0, paramBoolean3, paramInt4);
   }
   
@@ -186,7 +192,6 @@ public class FaceInfo
   
   public void a(int paramInt1, int paramInt2)
   {
-    int i1 = 0;
     long l2 = 0L;
     if (this.jdField_a_of_type_ArrayOfLong == null) {}
     do
@@ -197,13 +202,13 @@ public class FaceInfo
       } while ((paramInt1 < 0) || (paramInt1 >= s));
       this.jdField_a_of_type_ArrayOfLong[paramInt1] = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        axql.a(FaceInfo.class.getSimpleName(), "markTime", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt1]), this });
+        QLog.i("FaceInfo", 2, "markTime tag= " + paramInt1 + "mTimes[tag] = " + this.jdField_a_of_type_ArrayOfLong[paramInt1] + "this=" + this);
       }
     } while ((paramInt1 != r) || (!QLog.isColorLevel()));
     StringBuilder localStringBuilder = new StringBuilder(260);
     localStringBuilder.append("id=").append(this.jdField_a_of_type_JavaLangString).append(",").append("idType=").append(this.jdField_b_of_type_Int).append(",").append("headType=").append(this.jdField_a_of_type_Int).append(",").append("shape=").append(this.jdField_c_of_type_Int).append(" ,Times={");
+    paramInt1 = 0;
     long l1 = 0L;
-    paramInt1 = i1;
     if (paramInt1 < this.jdField_a_of_type_ArrayOfLong.length)
     {
       localStringBuilder.append("[").append(a(paramInt1)).append(",");
@@ -291,26 +296,23 @@ public class FaceInfo
   
   public boolean a(int paramInt, long paramLong)
   {
-    boolean bool = true;
     if (this.jdField_a_of_type_ArrayOfLong == null) {}
     do
     {
       do
       {
-        return false;
-      } while ((paramInt < 0) || (paramInt >= s));
-      if (this.jdField_a_of_type_ArrayOfLong[paramInt] != 0L) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    axql.a(FaceInfo.class.getSimpleName(), "isTimeOut", new Object[] { Integer.valueOf(paramInt) });
-    return false;
-    if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[paramInt]) >= paramLong) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+        do
+        {
+          return false;
+        } while ((paramInt < 0) || (paramInt >= s));
+        if (this.jdField_a_of_type_ArrayOfLong[paramInt] != 0L) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.i("FaceInfo", 2, "isTimeOut");
+      return false;
+    } while (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[paramInt]) < paramLong);
+    return true;
   }
   
   public String b()
@@ -377,7 +379,7 @@ public class FaceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceInfo
  * JD-Core Version:    0.7.0.1
  */

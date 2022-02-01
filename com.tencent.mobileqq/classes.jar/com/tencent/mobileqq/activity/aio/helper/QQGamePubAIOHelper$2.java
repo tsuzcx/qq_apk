@@ -1,28 +1,27 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agjm;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 
-public class QQGamePubAIOHelper$2
+class QQGamePubAIOHelper$2
   implements Runnable
 {
-  public QQGamePubAIOHelper$2(agjm paramagjm, List paramList) {}
+  QQGamePubAIOHelper$2(QQGamePubAIOHelper paramQQGamePubAIOHelper, List paramList) {}
   
   public void run()
   {
     try
     {
-      if (!agjm.a(this.this$0)) {
+      if (!QQGamePubAIOHelper.a(this.this$0)) {
         return;
       }
-      if (!agjm.a().isEmpty())
+      if (!QQGamePubAIOHelper.a().isEmpty())
       {
         int i = 0;
         while (i < this.a.size())
         {
-          Iterator localIterator = agjm.a().iterator();
+          Iterator localIterator = QQGamePubAIOHelper.a().iterator();
           while (localIterator.hasNext()) {
             if (localIterator.next() == this.a.get(i))
             {
@@ -47,7 +46,7 @@ public class QQGamePubAIOHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.2
  * JD-Core Version:    0.7.0.1
  */

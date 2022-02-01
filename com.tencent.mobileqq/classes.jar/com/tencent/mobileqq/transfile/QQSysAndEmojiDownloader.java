@@ -2,13 +2,12 @@ package com.tencent.mobileqq.transfile;
 
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
-import asjb;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.NativeGifFactory;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResMgr;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import com.tencent.mobileqq.text.EmotcationConstants;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -120,7 +119,7 @@ public class QQSysAndEmojiDownloader
     }
     for (;;)
     {
-      return asjb.a(i, paramString2);
+      return QQSysAndEmojiResMgr.getFullResPath(i, paramString2);
       if ("host_emoji".equals(paramString1)) {
         i = 3;
       }
@@ -134,8 +133,8 @@ public class QQSysAndEmojiDownloader
     if ((paramInt >= EmotcationConstants.STATIC_SYS_EMO_GIF_RES.length) || (oldEmotionDir == null)) {}
     try
     {
-      oldEmotionDir = BaseApplicationImpl.getApplication().getDir("systemface", 0);
-      String str = BaseApplicationImpl.getContext().getResources().getResourceEntryName(EmotcationConstants.STATIC_SYS_EMO_GIF_RES[paramInt]);
+      oldEmotionDir = BaseApplication.getContext().getDir("systemface", 0);
+      String str = BaseApplication.getContext().getResources().getResourceEntryName(EmotcationConstants.STATIC_SYS_EMO_GIF_RES[paramInt]);
       localObject = new File(oldEmotionDir + File.separator + str);
       if (!((File)localObject).exists())
       {
@@ -169,7 +168,7 @@ public class QQSysAndEmojiDownloader
   
   protected void needToReload(int paramInt1, int paramInt2)
   {
-    asjb.a().a(paramInt1).b(paramInt2);
+    QQSysAndEmojiResMgr.getInstance().getResImpl(paramInt1).addReloadDrawable(paramInt2);
   }
 }
 

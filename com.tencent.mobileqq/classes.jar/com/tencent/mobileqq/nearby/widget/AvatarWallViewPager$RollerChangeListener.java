@@ -10,7 +10,10 @@ public class AvatarWallViewPager$RollerChangeListener
 {
   public int a;
   
-  protected AvatarWallViewPager$RollerChangeListener(AvatarWallViewPager paramAvatarWallViewPager) {}
+  protected AvatarWallViewPager$RollerChangeListener(AvatarWallViewPager paramAvatarWallViewPager)
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
   
   public void onPageScrollStateChanged(int paramInt)
   {

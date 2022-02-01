@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bhcu;
-import bheh;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
-public class JumpAction$20
+class JumpAction$20
   implements Runnable
 {
-  public JumpAction$20(bheh parambheh, String paramString1, String paramString2) {}
+  JumpAction$20(JumpAction paramJumpAction, String paramString) {}
   
   public void run()
   {
@@ -25,7 +22,7 @@ public class JumpAction$20
       String str = URLDecoder.decode(arrayOfString[i]);
       if (!TextUtils.isEmpty(str))
       {
-        str = FileUtils.saveFileUriToFile(this.this$0.jdField_a_of_type_AndroidContentContext, str, "opensdk_tmp");
+        str = FileUtils.a(this.this$0.jdField_a_of_type_AndroidContentContext, str, "opensdk_tmp");
         if (!TextUtils.isEmpty(str))
         {
           ((StringBuffer)localObject).append(URLEncoder.encode(str));
@@ -38,19 +35,16 @@ public class JumpAction$20
     }
     try
     {
-      localObject = new String(bhcu.encode(((StringBuffer)localObject).toString().getBytes("UTF-8"), 0));
+      localObject = new String(Base64Util.encode(((StringBuffer)localObject).toString().getBytes("UTF-8"), 0));
       this.this$0.jdField_a_of_type_JavaUtilHashMap.put("image_url", localObject);
-      bheh.a(this.this$0, this.b, false);
-      if (((this.this$0.jdField_a_of_type_AndroidContentContext instanceof GesturePWDUnlockActivity)) && (this.this$0.g)) {
-        ((GesturePWDUnlockActivity)this.this$0.jdField_a_of_type_AndroidContentContext).finish();
-      }
+      JumpAction.a(this.this$0, false);
       return;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
       for (;;)
       {
-        QLog.i("JumpAction", 1, "gotoShareMsgCheck put exception:", localUnsupportedEncodingException);
+        QLog.e("JumpAction", 1, "gotoQzonePublishMoodCheck  exception:", localUnsupportedEncodingException);
       }
     }
   }

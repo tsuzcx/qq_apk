@@ -4,24 +4,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anvx;
-import anyz;
-import aodp;
-import azjq;
-import azla;
-import azlb;
-import bbkg;
-import bbob;
-import bcwz;
-import bcxd;
-import bcyj;
-import bdcw;
-import bdlg;
-import bhfd;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -36,7 +24,6 @@ import com.tencent.mobileqq.highway.config.HwServlet;
 import com.tencent.mobileqq.highway.conn.ConnManager;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
 import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.highway.utils.PTVUpConfigInfo;
 import com.tencent.mobileqq.highway.utils.VideoUpConfigInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -46,14 +33,27 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.richmedia.dc.DCShortVideo;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoForwardInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.mobileqq.statistics.RichMediaBugReport;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.ShortVideoUpReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.ShortVideoUpResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.LogTag;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -75,54 +75,50 @@ import tencent.im.msg.im_msg_body.VideoFile;
 public class ShortVideoUploadProcessor
   extends BaseShortVideoUploadProcessor
 {
-  static final int CMD_ACK = 3;
-  static final int CMD_THUMB = 1;
-  static final int CMD_VIDEO_SEG = 2;
   public static final String SEPERATOR = "QQ_&_MoblieQQ_&_QQ";
   public static final int SWITCH_DEFAULT = 1;
   public static final int SWITCH_PRE_UPLOAD = 3;
   public static final int SWITCH_REQ_AVOID = 2;
   public static final String TAG = "ShortVideoUploadProcessor";
-  static final int VIDEO_PREUPLOAD_COMMAND_ID = 16;
+  public static long lOldCompressCost;
   QQAppInterface app = (QQAppInterface)this.app;
   Boolean isBDHExistBeforeVideoUpload = Boolean.valueOf(false);
-  public boolean isBDHSuccess;
+  public boolean isBDHSuccess = false;
   public boolean isFromFavorite;
-  private volatile boolean mIsCacheDiff;
+  private volatile boolean mIsCacheDiff = false;
   boolean mIsSecondTransfered = false;
-  private boolean mNeedSyncStory;
+  boolean mNeedSyncStory = false;
   BaseTransProcessor.StepInfo mPreUpStepTrans = new BaseTransProcessor.StepInfo();
   int mReportBusiType = -1;
   private byte[] mSessionKey;
-  protected aodp mShortVideoTransManager;
   private byte[] mSigSession;
-  private int mSwitch = 1;
+  int mSwitch = 1;
   protected int mThumbFileHeight;
   protected String mThumbFilePath;
   protected long mThumbFileSize;
   protected int mThumbFileWidth;
-  private int mVideoAttr;
-  private int mVideoKandianType;
-  anyz messageObserver = new ShortVideoUploadProcessor.6(this);
+  int mVideoAttr = 0;
+  int mVideoKandianType = 0;
+  MessageObserver messageObserver = new ShortVideoUploadProcessor.4(this);
   protected int videoTime;
   
-  public ShortVideoUploadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public ShortVideoUploadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForShortVideo))) {}
     for (this.mReportBusiType = ((MessageForShortVideo)this.mUiRequest.mRec).busiType;; this.mReportBusiType = 0)
     {
       if (!this.mUiRequest.mIsPresend)
       {
-        paramTransFileController = this.mUiRequest.mLocalPath;
-        paramTransferRequest = paramTransFileController.split("QQ_&_MoblieQQ_&_QQ");
+        paramTransFileControllerImpl = this.mUiRequest.mLocalPath;
+        paramTransferRequest = paramTransFileControllerImpl.split("QQ_&_MoblieQQ_&_QQ");
         if (4 == paramTransferRequest.length) {
           break;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "path was not set correctlly------path = " + paramTransFileController);
+          QLog.d("ShortVideoUploadProcessor", 2, "path was not set correctlly------path = " + paramTransFileControllerImpl);
         }
-        setError(9304, "path =" + paramTransFileController);
+        setError(9304, "path =" + paramTransFileControllerImpl);
         onError();
         this.mIsCancel = true;
       }
@@ -137,124 +133,13 @@ public class ShortVideoUploadProcessor
     this.thumbFileMd5 = HexUtil.hexStr2Bytes(paramTransferRequest[3]);
   }
   
-  private void checkRedbagVideoRealStat()
+  private void doDCReport(ShortVideoUploadInfo paramShortVideoUploadInfo, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    if (this.mUiRequest.mRec != null) {}
-    for (MessageRecord localMessageRecord = this.mUiRequest.mRec;; localMessageRecord = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq))
-    {
-      if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForShortVideo)) && (((MessageForShortVideo)localMessageRecord).redBagType == LocalMediaInfo.REDBAG_TYPE_GET)) {
-        bdcw.a(this.app);
-      }
-      return;
-    }
-  }
-  
-  private im_msg_body.RichText constructRichText()
-  {
-    for (;;)
-    {
-      try
-      {
-        im_msg_body.RichText localRichText = new im_msg_body.RichText();
-        im_msg_body.VideoFile localVideoFile = new im_msg_body.VideoFile();
-        localVideoFile.setHasFlag(true);
-        if (this.mResid != null) {
-          localVideoFile.bytes_file_uuid.set(ByteStringMicro.copyFromUtf8(this.mResid));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "mResid uuid=" + this.mResid);
-        }
-        if (!(this.mUiRequest.mRec instanceof MessageForShortVideo)) {
-          break label613;
-        }
-        Object localObject1 = (MessageForShortVideo)this.mUiRequest.mRec;
-        videoFile.ResvAttr localResvAttr;
-        if (localObject1 != null)
-        {
-          localVideoFile.bytes_source.set(ByteStringMicro.copyFromUtf8(((MessageForShortVideo)localObject1).fileSource));
-          localVideoFile.uint32_busi_type.set(((MessageForShortVideo)localObject1).busiType);
-          localVideoFile.bool_support_progressive.set(((MessageForShortVideo)localObject1).supportProgressive);
-          localVideoFile.uint32_file_width.set(((MessageForShortVideo)localObject1).fileWidth);
-          localVideoFile.uint32_file_height.set(((MessageForShortVideo)localObject1).fileHeight);
-          localVideoFile.uint32_sub_busi_type.set(((MessageForShortVideo)localObject1).subBusiType);
-          localResvAttr = new videoFile.ResvAttr();
-          localResvAttr.uint32_msg_tail_type.set(((MessageForShortVideo)localObject1).msgTailType);
-          if ((localObject1 != null) && (((MessageForShortVideo)localObject1).CheckIsHotVideo()))
-          {
-            handleHotVideoRichText(localResvAttr, (MessageForShortVideo)localObject1, localVideoFile);
-            PBBytesField localPBBytesField = localResvAttr.bytes_camera_templateid;
-            if (((MessageForShortVideo)localObject1).templateId == null) {
-              break label599;
-            }
-            localObject3 = ((MessageForShortVideo)localObject1).templateId;
-            localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-            localPBBytesField = localResvAttr.bytes_camera_templateName;
-            if (((MessageForShortVideo)localObject1).templateName == null) {
-              break label606;
-            }
-            localObject3 = ((MessageForShortVideo)localObject1).templateName;
-            localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-            localResvAttr.uint32_long_video_kandian_type.set(this.mVideoKandianType);
-            setVideoSource((MessageForShortVideo)localObject1, localResvAttr);
-            localVideoFile.bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
-            localVideoFile.uint32_video_attr.set(this.mVideoAttr);
-          }
-        }
-        else
-        {
-          localVideoFile.uint32_file_format.set(2);
-          localVideoFile.uint32_file_size.set((int)(this.mFileSize - this.mThumbFileSize));
-          localVideoFile.uint32_file_time.set(this.videoTime);
-          localVideoFile.uint32_thumb_width.set(this.mThumbFileWidth);
-          localVideoFile.uint32_thumb_height.set(this.mThumbFileHeight);
-          localVideoFile.bytes_thumb_file_md5.set(ByteStringMicro.copyFrom(this.thumbFileMd5));
-          localVideoFile.uint32_thumb_file_size.set((int)this.mThumbFileSize);
-          localVideoFile.uint32_from_chat_type.set(-1);
-          localVideoFile.uint32_to_chat_type.set(-1);
-          localObject3 = new im_msg_body.Text();
-          ((im_msg_body.Text)localObject3).setHasFlag(true);
-          ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFromUtf8(anvx.a(2131713542)));
-          localObject1 = new im_msg_body.Elem();
-          ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject3);
-          localObject3 = new im_msg_body.Elem();
-          ((im_msg_body.Elem)localObject3).video_file.set(localVideoFile);
-          localRichText.elems.add((MessageMicro)localObject1);
-          localRichText.elems.add((MessageMicro)localObject3);
-          return localRichText;
-        }
-        if (((MessageForShortVideo)localObject1).CheckIsDanceVideo()) {
-          localResvAttr.uint32_special_video_type.set(((MessageForShortVideo)localObject1).specialVideoType);
-        }
-        localVideoFile.bytes_file_name.set(ByteStringMicro.copyFromUtf8(this.mUiRequest.mLocalPath));
-        localVideoFile.bytes_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(this.mUiRequest.mMd5)));
-        continue;
-        localObject3 = "";
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ShortVideoUploadProcessor", 2, "Construct richtext error", localException);
-        }
-        localException.printStackTrace();
-        return null;
-      }
-      label599:
-      continue;
-      label606:
-      Object localObject3 = "";
-      continue;
-      label613:
-      Object localObject2 = null;
-    }
-  }
-  
-  private void doDCReport(bcyj parambcyj, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    bbkg localbbkg;
+    DCShortVideo localDCShortVideo;
     int i;
-    if (parambcyj != null)
+    if (paramShortVideoUploadInfo != null)
     {
-      localbbkg = new bbkg(BaseApplication.getContext());
+      localDCShortVideo = new DCShortVideo(BaseApplication.getContext());
       i = 2002;
       switch (((MessageForShortVideo)paramMessageRecord).busiType)
       {
@@ -262,10 +147,10 @@ public class ShortVideoUploadProcessor
     }
     for (;;)
     {
-      if ((parambcyj.jdField_i_of_type_JavaLangString == null) || (parambcyj.jdField_i_of_type_JavaLangString.length() <= 0)) {
-        parambcyj.jdField_i_of_type_JavaLangString = parambcyj.h;
+      if ((paramShortVideoUploadInfo.i == null) || (paramShortVideoUploadInfo.i.length() <= 0)) {
+        paramShortVideoUploadInfo.i = paramShortVideoUploadInfo.jdField_h_of_type_JavaLangString;
       }
-      localbbkg.a(this.app, parambcyj.jdField_i_of_type_JavaLangString, i, paramMessageRecord.istroop, paramMessageRecord.frienduin, false, paramBoolean, -1, null, parambcyj.f, parambcyj.jdField_e_of_type_JavaLangString);
+      localDCShortVideo.a(this.app, paramShortVideoUploadInfo.i, i, paramMessageRecord.istroop, paramMessageRecord.frienduin, false, paramBoolean, -1, null, paramShortVideoUploadInfo.jdField_f_of_type_Int, paramShortVideoUploadInfo.jdField_e_of_type_JavaLangString);
       return;
       i = 2002;
       continue;
@@ -273,69 +158,6 @@ public class ShortVideoUploadProcessor
       continue;
       i = 2003;
     }
-  }
-  
-  private void doSendMsg(im_msg_body.RichText paramRichText, bcyj parambcyj, boolean paramBoolean)
-  {
-    MessageRecord localMessageRecord;
-    if (this.mUiRequest.mUpCallBack != null)
-    {
-      localMessageRecord = this.mUiRequest.mUpCallBack.attachRichText2Msg(paramRichText);
-      if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForShortVideo))) {
-        break label174;
-      }
-      parambcyj = new StringBuilder().append("Mr_");
-      if (localMessageRecord != null) {
-        break label146;
-      }
-    }
-    label146:
-    for (paramRichText = "null";; paramRichText = "" + localMessageRecord.msgtype)
-    {
-      setError(9368, "msgtypeError", paramRichText, this.mStepMsg);
-      onError();
-      return;
-      if (this.mUiRequest.mRec != null)
-      {
-        localMessageRecord = this.mUiRequest.mRec;
-        break;
-      }
-      localMessageRecord = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
-      break;
-    }
-    label174:
-    ((MessageForShortVideo)localMessageRecord).richText = paramRichText;
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoUploadProcessor", 2, "sendMsg() start, subBusiType = " + ((MessageForShortVideo)localMessageRecord).subBusiType);
-    }
-    if ((this.mUiRequest.mBusiType == 1010) && (this.mUiRequest.mUpCallBack != null))
-    {
-      onSuccess();
-      return;
-    }
-    if ((localMessageRecord instanceof MessageForBlessPTV))
-    {
-      ((MessageForBlessPTV)localMessageRecord).uuid = this.mResid;
-      this.app.getMsgHandler().notifyUI(999, true, localMessageRecord.frienduin);
-      azjq.a("ShortVideoUploadProcessor", "updataMessageDataBaseContent", "notifyUI bless ptv data send finished");
-      return;
-    }
-    if ((localMessageRecord instanceof MessageForDanceMachine))
-    {
-      ((MessageForDanceMachine)localMessageRecord).uuid = this.mResid;
-      this.app.getMsgHandler().notifyUI(8034, true, localMessageRecord);
-      azjq.a("ShortVideoUploadProcessor", "updataMessageDataBaseContent", "notifyUI dance machine data send finished");
-      return;
-    }
-    if (!isAppValid())
-    {
-      setError(9366, "illegal app", null, this.mStepMsg);
-      onError();
-      return;
-    }
-    bhfd.a(String.valueOf(this.mUiRequest.mUniseq), "message", "sendMsg() []. mr = " + localMessageRecord.toString());
-    ((bbob)this.app.getManager(QQManagerFactory.MEDIA_MSG_ORDER_SEND_MANAGER)).a(localMessageRecord, this.messageObserver);
-    doDCReport(parambcyj, localMessageRecord, paramBoolean);
   }
   
   private int getFormat(String paramString)
@@ -429,116 +251,6 @@ public class ShortVideoUploadProcessor
     }
   }
   
-  private RichProto.RichProtoReq.ShortVideoUpReq makeShortVideoUpReq()
-  {
-    RichProto.RichProtoReq.ShortVideoUpReq localShortVideoUpReq = new RichProto.RichProtoReq.ShortVideoUpReq();
-    localShortVideoUpReq.seq = ((int)this.mUiRequest.mUniseq);
-    localShortVideoUpReq.selfUin = this.mUiRequest.mSelfUin;
-    String str;
-    int i;
-    if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForBlessPTV)))
-    {
-      Object localObject = (MessageForBlessPTV)this.mUiRequest.mRec;
-      if (((MessageForBlessPTV)localObject).uinList != null)
-      {
-        str = (String)((MessageForBlessPTV)localObject).uinList.get(0);
-        localShortVideoUpReq.peerUin = str;
-        localShortVideoUpReq.subBusiType = 1;
-        if (((MessageForBlessPTV)localObject).uinList == null) {
-          break label450;
-        }
-        i = ((MessageForBlessPTV)localObject).uinList.size();
-        label121:
-        localShortVideoUpReq.userCnt = i;
-        label127:
-        localShortVideoUpReq.uinType = this.mUiRequest.mUinType;
-        localShortVideoUpReq.agentType = 0;
-        if ((localShortVideoUpReq.uinType != 0) && (1008 != localShortVideoUpReq.uinType)) {
-          break label535;
-        }
-        localShortVideoUpReq.troopUin = null;
-        label170:
-        if (localShortVideoUpReq.uinType != 0) {
-          break label550;
-        }
-        localShortVideoUpReq.chatType = 0;
-        label184:
-        localShortVideoUpReq.clientType = 2;
-        localObject = new File(this.mUiRequest.mLocalPath);
-        str = ((File)localObject).getName();
-        localShortVideoUpReq.fileName = str;
-        localShortVideoUpReq.fileSize = ((File)localObject).length();
-        localShortVideoUpReq.md5 = this.mLocalMd5;
-        localShortVideoUpReq.thumbFileMd5 = this.thumbFileMd5;
-        localShortVideoUpReq.fileResWidth = this.mThumbFileWidth;
-        localShortVideoUpReq.fileResLength = this.mThumbFileHeight;
-        localShortVideoUpReq.fileTime = this.videoTime;
-        localShortVideoUpReq.thumbFileSize = this.mThumbFileSize;
-        localObject = this.file;
-        long l = localShortVideoUpReq.fileSize + this.mThumbFileSize;
-        this.mFileSize = l;
-        ((FileMsg)localObject).fileSize = l;
-        i = getFormat(str.substring(str.lastIndexOf(".") + 1));
-        localShortVideoUpReq.format = i;
-        this.mReportInfo.put("param_fileFormat", String.valueOf(i));
-        this.mReportInfo.put("param_picResLength", String.valueOf(this.mThumbFileHeight));
-        this.mReportInfo.put("param_picResWidth", String.valueOf(this.mThumbFileWidth));
-        if ((this.mUiRequest.mRec == null) || (!(this.mUiRequest.mRec instanceof MessageForShortVideo))) {
-          break label597;
-        }
-      }
-    }
-    label450:
-    label597:
-    for (localShortVideoUpReq.busiType = ((MessageForShortVideo)this.mUiRequest.mRec).busiType;; localShortVideoUpReq.busiType = 0)
-    {
-      this.mReportBusiType = localShortVideoUpReq.busiType;
-      return localShortVideoUpReq;
-      str = "0";
-      break;
-      i = 1;
-      break label121;
-      if ((this.mUiRequest.mRec != null) && (((MessageForShortVideo)this.mUiRequest.mRec).CheckIsHotVideo()))
-      {
-        localShortVideoUpReq.peerUin = this.mUiRequest.mPeerUin;
-        localShortVideoUpReq.subBusiType = 0;
-        localShortVideoUpReq.userCnt = 1;
-        break label127;
-      }
-      localShortVideoUpReq.peerUin = this.mUiRequest.mPeerUin;
-      localShortVideoUpReq.subBusiType = 0;
-      localShortVideoUpReq.userCnt = 1;
-      break label127;
-      localShortVideoUpReq.troopUin = this.mUiRequest.mPeerUin;
-      break label170;
-      if (1 == localShortVideoUpReq.uinType)
-      {
-        localShortVideoUpReq.chatType = 1;
-        break label184;
-      }
-      if (3000 == localShortVideoUpReq.uinType)
-      {
-        localShortVideoUpReq.chatType = 2;
-        break label184;
-      }
-      localShortVideoUpReq.chatType = 3;
-      break label184;
-    }
-  }
-  
-  private void resetStatictisInfo()
-  {
-    this.file.stepSig.reset();
-    this.file.stepUrl.reset();
-    this.file.stepTrans.reset();
-    this.file.stepNotify.reset();
-    FileMsg localFileMsg = this.file;
-    long l = System.nanoTime();
-    localFileMsg.startTime = l;
-    this.mStartTime = l;
-    this.file.endTime = 0L;
-  }
-  
   private void setThumbInfoForHotVideo(MessageForShortVideo paramMessageForShortVideo)
   {
     if ((this.mThumbFileSize == 0L) && (paramMessageForShortVideo.thumbFileSize != 0)) {
@@ -621,84 +333,84 @@ public class ShortVideoUploadProcessor
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 178	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
+    //   1: getfield 182	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
     //   4: ifnonnull +98 -> 102
-    //   7: new 944	java/io/FileInputStream
+    //   7: new 535	java/io/FileInputStream
     //   10: dup
     //   11: aload_0
-    //   12: getfield 156	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
-    //   15: invokespecial 945	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   12: getfield 160	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
+    //   15: invokespecial 537	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   18: astore_2
     //   19: aload_2
     //   20: astore_1
     //   21: aload_0
     //   22: aload_2
     //   23: lconst_0
-    //   24: invokestatic 951	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   27: putfield 178	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
+    //   24: invokestatic 543	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   27: putfield 182	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
     //   30: aload_2
     //   31: astore_1
     //   32: aload_0
-    //   33: getfield 178	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
+    //   33: getfield 182	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
     //   36: ifnonnull +58 -> 94
     //   39: aload_2
     //   40: astore_1
     //   41: aload_0
     //   42: sipush 9041
-    //   45: new 127	java/lang/StringBuilder
+    //   45: new 131	java/lang/StringBuilder
     //   48: dup
-    //   49: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   52: ldc_w 953
-    //   55: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   52: ldc_w 545
+    //   55: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: aload_0
-    //   59: getfield 156	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
-    //   62: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   68: invokevirtual 148	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:setError	(ILjava/lang/String;)V
+    //   59: getfield 160	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
+    //   62: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: invokevirtual 152	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:setError	(ILjava/lang/String;)V
     //   71: aload_2
     //   72: astore_1
     //   73: aload_0
-    //   74: invokevirtual 151	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
+    //   74: invokevirtual 155	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
     //   77: aload_2
     //   78: ifnull +7 -> 85
     //   81: aload_2
-    //   82: invokevirtual 956	java/io/FileInputStream:close	()V
+    //   82: invokevirtual 548	java/io/FileInputStream:close	()V
     //   85: iconst_0
     //   86: ireturn
     //   87: astore_1
     //   88: aload_1
-    //   89: invokevirtual 957	java/io/IOException:printStackTrace	()V
+    //   89: invokevirtual 551	java/io/IOException:printStackTrace	()V
     //   92: iconst_0
     //   93: ireturn
     //   94: aload_2
     //   95: ifnull +7 -> 102
     //   98: aload_2
-    //   99: invokevirtual 956	java/io/FileInputStream:close	()V
+    //   99: invokevirtual 548	java/io/FileInputStream:close	()V
     //   102: aload_0
-    //   103: getfield 961	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
+    //   103: getfield 555	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
     //   106: ifnonnull +126 -> 232
     //   109: aload_0
-    //   110: new 963	java/io/RandomAccessFile
+    //   110: new 557	java/io/RandomAccessFile
     //   113: dup
     //   114: aload_0
-    //   115: getfield 156	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
-    //   118: ldc_w 965
-    //   121: invokespecial 968	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   124: putfield 961	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
+    //   115: getfield 160	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
+    //   118: ldc_w 559
+    //   121: invokespecial 562	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   124: putfield 555	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
     //   127: aload_0
-    //   128: getfield 961	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
+    //   128: getfield 555	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
     //   131: ifnonnull +101 -> 232
     //   134: aload_0
     //   135: sipush 9303
-    //   138: ldc_w 970
-    //   141: invokevirtual 148	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:setError	(ILjava/lang/String;)V
+    //   138: ldc_w 564
+    //   141: invokevirtual 152	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:setError	(ILjava/lang/String;)V
     //   144: aload_0
-    //   145: invokevirtual 151	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
+    //   145: invokevirtual 155	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
     //   148: iconst_0
     //   149: ireturn
     //   150: astore_1
     //   151: aload_1
-    //   152: invokevirtual 957	java/io/IOException:printStackTrace	()V
+    //   152: invokevirtual 551	java/io/IOException:printStackTrace	()V
     //   155: goto -53 -> 102
     //   158: astore_3
     //   159: aconst_null
@@ -707,25 +419,25 @@ public class ShortVideoUploadProcessor
     //   162: astore_1
     //   163: aload_0
     //   164: aconst_null
-    //   165: putfield 178	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
+    //   165: putfield 182	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
     //   168: aload_2
     //   169: astore_1
     //   170: aload_0
     //   171: aload_3
-    //   172: invokevirtual 974	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:analysisIOProblem	(Ljava/io/IOException;)V
+    //   172: invokevirtual 568	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:analysisIOProblem	(Ljava/io/IOException;)V
     //   175: aload_2
     //   176: astore_1
     //   177: aload_0
-    //   178: invokevirtual 151	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
+    //   178: invokevirtual 155	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
     //   181: aload_2
     //   182: ifnull -97 -> 85
     //   185: aload_2
-    //   186: invokevirtual 956	java/io/FileInputStream:close	()V
+    //   186: invokevirtual 548	java/io/FileInputStream:close	()V
     //   189: iconst_0
     //   190: ireturn
     //   191: astore_1
     //   192: aload_1
-    //   193: invokevirtual 957	java/io/IOException:printStackTrace	()V
+    //   193: invokevirtual 551	java/io/IOException:printStackTrace	()V
     //   196: iconst_0
     //   197: ireturn
     //   198: astore_2
@@ -734,32 +446,32 @@ public class ShortVideoUploadProcessor
     //   201: aload_1
     //   202: ifnull +7 -> 209
     //   205: aload_1
-    //   206: invokevirtual 956	java/io/FileInputStream:close	()V
+    //   206: invokevirtual 548	java/io/FileInputStream:close	()V
     //   209: aload_2
     //   210: athrow
     //   211: astore_1
     //   212: aload_1
-    //   213: invokevirtual 957	java/io/IOException:printStackTrace	()V
+    //   213: invokevirtual 551	java/io/IOException:printStackTrace	()V
     //   216: goto -7 -> 209
     //   219: astore_1
     //   220: aload_1
-    //   221: invokevirtual 975	java/io/FileNotFoundException:printStackTrace	()V
+    //   221: invokevirtual 569	java/io/FileNotFoundException:printStackTrace	()V
     //   224: aload_0
     //   225: aconst_null
-    //   226: putfield 961	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
+    //   226: putfield 555	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
     //   229: goto -102 -> 127
     //   232: aload_0
-    //   233: new 715	java/io/File
+    //   233: new 571	java/io/File
     //   236: dup
     //   237: aload_0
-    //   238: getfield 156	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
-    //   241: invokespecial 718	java/io/File:<init>	(Ljava/lang/String;)V
-    //   244: invokevirtual 727	java/io/File:length	()J
-    //   247: putfield 356	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFileSize	J
+    //   238: getfield 160	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
+    //   241: invokespecial 572	java/io/File:<init>	(Ljava/lang/String;)V
+    //   244: invokevirtual 575	java/io/File:length	()J
+    //   247: putfield 348	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFileSize	J
     //   250: aload_0
     //   251: aload_0
-    //   252: getfield 156	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
-    //   255: invokevirtual 978	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:getThumbFileSize	(Ljava/lang/String;)V
+    //   252: getfield 160	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
+    //   255: invokevirtual 578	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:getThumbFileSize	(Ljava/lang/String;)V
     //   258: iconst_1
     //   259: ireturn
     //   260: astore_2
@@ -819,7 +531,7 @@ public class ShortVideoUploadProcessor
       onError();
       return false;
     }
-    if (!FileUtils.fileExistsAndNotEmpty(this.mUiRequest.mLocalPath))
+    if (!FileUtils.b(this.mUiRequest.mLocalPath))
     {
       setError(9042, "video file not exists");
       onError();
@@ -856,21 +568,131 @@ public class ShortVideoUploadProcessor
     return 0;
   }
   
+  void checkRedbagVideoRealStat()
+  {
+    if (this.mUiRequest.mRec != null) {}
+    for (MessageRecord localMessageRecord = this.mUiRequest.mRec;; localMessageRecord = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq))
+    {
+      if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForShortVideo)) && (((MessageForShortVideo)localMessageRecord).redBagType == LocalMediaInfo.REDBAG_TYPE_GET)) {
+        RedBagVideoManager.a(this.app);
+      }
+      return;
+    }
+  }
+  
+  im_msg_body.RichText constructRichText()
+  {
+    for (;;)
+    {
+      try
+      {
+        im_msg_body.RichText localRichText = new im_msg_body.RichText();
+        im_msg_body.VideoFile localVideoFile = new im_msg_body.VideoFile();
+        localVideoFile.setHasFlag(true);
+        if (this.mResid != null) {
+          localVideoFile.bytes_file_uuid.set(ByteStringMicro.copyFromUtf8(this.mResid));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoUploadProcessor", 2, "mResid uuid=" + this.mResid);
+        }
+        if (!(this.mUiRequest.mRec instanceof MessageForShortVideo)) {
+          break label614;
+        }
+        Object localObject1 = (MessageForShortVideo)this.mUiRequest.mRec;
+        videoFile.ResvAttr localResvAttr;
+        if (localObject1 != null)
+        {
+          localVideoFile.bytes_source.set(ByteStringMicro.copyFromUtf8(((MessageForShortVideo)localObject1).fileSource));
+          localVideoFile.uint32_busi_type.set(((MessageForShortVideo)localObject1).busiType);
+          localVideoFile.bool_support_progressive.set(((MessageForShortVideo)localObject1).supportProgressive);
+          localVideoFile.uint32_file_width.set(((MessageForShortVideo)localObject1).fileWidth);
+          localVideoFile.uint32_file_height.set(((MessageForShortVideo)localObject1).fileHeight);
+          localVideoFile.uint32_sub_busi_type.set(((MessageForShortVideo)localObject1).subBusiType);
+          localResvAttr = new videoFile.ResvAttr();
+          localResvAttr.uint32_msg_tail_type.set(((MessageForShortVideo)localObject1).msgTailType);
+          if ((localObject1 != null) && (((MessageForShortVideo)localObject1).CheckIsHotVideo()))
+          {
+            handleHotVideoRichText(localResvAttr, (MessageForShortVideo)localObject1, localVideoFile);
+            PBBytesField localPBBytesField = localResvAttr.bytes_camera_templateid;
+            if (((MessageForShortVideo)localObject1).templateId == null) {
+              break label600;
+            }
+            localObject3 = ((MessageForShortVideo)localObject1).templateId;
+            localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject3));
+            localPBBytesField = localResvAttr.bytes_camera_templateName;
+            if (((MessageForShortVideo)localObject1).templateName == null) {
+              break label607;
+            }
+            localObject3 = ((MessageForShortVideo)localObject1).templateName;
+            localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject3));
+            localResvAttr.uint32_long_video_kandian_type.set(this.mVideoKandianType);
+            setVideoSource((MessageForShortVideo)localObject1, localResvAttr);
+            localVideoFile.bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
+            localVideoFile.uint32_video_attr.set(this.mVideoAttr);
+          }
+        }
+        else
+        {
+          localVideoFile.uint32_file_format.set(2);
+          localVideoFile.uint32_file_size.set((int)(this.mFileSize - this.mThumbFileSize));
+          localVideoFile.uint32_file_time.set(this.videoTime);
+          localVideoFile.uint32_thumb_width.set(this.mThumbFileWidth);
+          localVideoFile.uint32_thumb_height.set(this.mThumbFileHeight);
+          localVideoFile.bytes_thumb_file_md5.set(ByteStringMicro.copyFrom(this.thumbFileMd5));
+          localVideoFile.uint32_thumb_file_size.set((int)this.mThumbFileSize);
+          localVideoFile.uint32_from_chat_type.set(-1);
+          localVideoFile.uint32_to_chat_type.set(-1);
+          localObject3 = new im_msg_body.Text();
+          ((im_msg_body.Text)localObject3).setHasFlag(true);
+          ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131714038)));
+          localObject1 = new im_msg_body.Elem();
+          ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject3);
+          localObject3 = new im_msg_body.Elem();
+          ((im_msg_body.Elem)localObject3).video_file.set(localVideoFile);
+          localRichText.elems.add((MessageMicro)localObject1);
+          localRichText.elems.add((MessageMicro)localObject3);
+          return localRichText;
+        }
+        if (((MessageForShortVideo)localObject1).CheckIsDanceVideo()) {
+          localResvAttr.uint32_special_video_type.set(((MessageForShortVideo)localObject1).specialVideoType);
+        }
+        localVideoFile.bytes_file_name.set(ByteStringMicro.copyFromUtf8(this.mUiRequest.mLocalPath));
+        localVideoFile.bytes_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(this.mUiRequest.mMd5)));
+        continue;
+        localObject3 = "";
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ShortVideoUploadProcessor", 2, "Construct richtext error", localException);
+        }
+        localException.printStackTrace();
+        return null;
+      }
+      label600:
+      continue;
+      label607:
+      Object localObject3 = "";
+      continue;
+      label614:
+      Object localObject2 = null;
+    }
+  }
+  
   public void doOnSendFailed(int paramInt, HashMap<String, String> paramHashMap, long paramLong)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    long l = SystemClock.uptimeMillis();
+    Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - paramLong) + "ms");
+      QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - paramLong) + "ms");
     }
     addBDHReportInfo(paramHashMap);
     if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true))) {
       this.mIsCacheDiff = true;
     }
-    ThreadManager.post(new ShortVideoUploadProcessor.3(this, l2, l3, l4, l5), 5, null, true);
     setError(paramInt, "OnFailed.", "", this.mStepTrans);
     if ((this.mSwitch == 3) && (this.mPreUpStepTrans != null))
     {
@@ -882,13 +704,13 @@ public class ShortVideoUploadProcessor
     {
       onError();
       return;
-      bdlg.a("Upload_Video_Error", String.valueOf(paramInt));
+      RichMediaBugReport.a("Upload_Video_Error", String.valueOf(paramInt));
     }
   }
   
   public void doOnSendSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap, String paramString, long paramLong)
   {
-    long l1 = SystemClock.uptimeMillis();
+    long l = SystemClock.uptimeMillis();
     try
     {
       paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)new PttShortVideo.PttShortVideoUploadResp().mergeFrom(paramArrayOfByte);
@@ -903,12 +725,12 @@ public class ShortVideoUploadProcessor
           }
         }
       }
-      long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-      long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-      long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-      long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+      Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+      Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+      Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+      Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
       if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - paramLong) + "ms ,fileSize:" + this.file.fileSize + " transInfo:" + (String)paramHashMap.get("rep_bdhTrans"));
+        QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - paramLong) + "ms ,fileSize:" + this.file.fileSize + " transInfo:" + (String)paramHashMap.get("rep_bdhTrans"));
       }
       addBDHReportInfo(paramHashMap);
       if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true))) {
@@ -920,12 +742,11 @@ public class ShortVideoUploadProcessor
       this.isBDHSuccess = true;
       sendMessageToUpdate(1007);
       sendMsg(false);
-      ThreadManager.post(new ShortVideoUploadProcessor.2(this, l2, l3, l4, l5), 5, null, true);
       this.file.closeInputStream();
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> Transaction Success,delete combined file");
       }
-      FileUtils.deleteFile(paramString);
+      FileUtils.e(paramString);
       paramString = (String)paramHashMap.get("ip");
       paramHashMap = (String)paramHashMap.get("port");
       String str = this.mFileName;
@@ -1024,43 +845,82 @@ public class ShortVideoUploadProcessor
     }
   }
   
-  public void doStart()
+  void doSendMsg(im_msg_body.RichText paramRichText, ShortVideoUploadInfo paramShortVideoUploadInfo, boolean paramBoolean)
   {
-    if (this.mUiRequest.mIsPresend)
+    MessageRecord localMessageRecord;
+    if (this.mUiRequest.mUpCallBack != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoUploadProcessor", 2, "is Presend ");
+      localMessageRecord = this.mUiRequest.mUpCallBack.a(paramRichText);
+      if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForShortVideo))) {
+        break label174;
       }
-      this.mSwitch = 3;
-      this.mThumbFilePath = this.mUiRequest.mThumbPath;
-      this.thumbFileMd5 = HexUtil.hexStr2Bytes(this.mUiRequest.mThumbMd5);
-      if (buildThumbInfo()) {
-        break label159;
+      paramShortVideoUploadInfo = new StringBuilder().append("Mr_");
+      if (localMessageRecord != null) {
+        break label146;
       }
     }
-    label157:
-    label159:
-    while (!handleBDHKey())
+    label146:
+    for (paramRichText = "null";; paramRichText = "" + localMessageRecord.msgtype)
     {
-      do
+      setError(9368, "msgtypeError", paramRichText, this.mStepMsg);
+      onError();
+      return;
+      if (this.mUiRequest.mRec != null)
       {
-        return;
-      } while (!buildVideoMd5());
-      if (((MessageForShortVideo)this.mUiRequest.mRec).busiType == 1) {
-        if (VideoUpConfigInfo.sSwitch != 2) {}
+        localMessageRecord = this.mUiRequest.mRec;
+        break;
       }
-      for (this.mSwitch = 2;; this.mSwitch = 2) {
-        do
-        {
-          if (ShortVideoPresendStats.lOldCompressCost <= 0L) {
-            break label157;
-          }
-          this.mReportInfo.put("param_cost_c_comp", String.valueOf(ShortVideoPresendStats.lOldCompressCost));
-          break;
-        } while ((((MessageForShortVideo)this.mUiRequest.mRec).busiType != 2) || (PTVUpConfigInfo.sSwitch != 2));
-      }
+      localMessageRecord = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
       break;
     }
+    label174:
+    ((MessageForShortVideo)localMessageRecord).richText = paramRichText;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoUploadProcessor", 2, "sendMsg() start, subBusiType = " + ((MessageForShortVideo)localMessageRecord).subBusiType);
+    }
+    if ((this.mUiRequest.mBusiType == 1010) && (this.mUiRequest.mUpCallBack != null))
+    {
+      onSuccess();
+      return;
+    }
+    if ((localMessageRecord instanceof MessageForBlessPTV))
+    {
+      ((MessageForBlessPTV)localMessageRecord).uuid = this.mResid;
+      this.app.getMsgHandler().notifyUI(999, true, localMessageRecord.frienduin);
+      Logger.a("ShortVideoUploadProcessor", "updataMessageDataBaseContent", "notifyUI bless ptv data send finished");
+      return;
+    }
+    if ((localMessageRecord instanceof MessageForDanceMachine))
+    {
+      ((MessageForDanceMachine)localMessageRecord).uuid = this.mResid;
+      this.app.getMsgHandler().notifyUI(8034, true, localMessageRecord);
+      Logger.a("ShortVideoUploadProcessor", "updataMessageDataBaseContent", "notifyUI dance machine data send finished");
+      return;
+    }
+    if (!isAppValid())
+    {
+      setError(9366, "illegal app", null, this.mStepMsg);
+      onError();
+      return;
+    }
+    LogTag.a(String.valueOf(this.mUiRequest.mUniseq), "message", "sendMsg() []. mr = " + localMessageRecord.toString());
+    ((OrderMediaMsgManager)this.app.getManager(QQManagerFactory.MEDIA_MSG_ORDER_SEND_MANAGER)).a(localMessageRecord, this.messageObserver);
+    doDCReport(paramShortVideoUploadInfo, localMessageRecord, paramBoolean);
+  }
+  
+  public void doStart()
+  {
+    if (!buildVideoMd5()) {}
+    do
+    {
+      return;
+      if ((((MessageForShortVideo)this.mUiRequest.mRec).busiType == 1) && (VideoUpConfigInfo.sSwitch == 2)) {
+        this.mSwitch = 2;
+      }
+      if (lOldCompressCost > 0L) {
+        this.mReportInfo.put("param_cost_c_comp", String.valueOf(lOldCompressCost));
+      }
+    } while ((!buildThumbInfo()) || (!handleBDHKey()));
     QLog.d("ShortVideoUploadProcessor", 1, "<BDH_LOG>mSwitch : " + this.mSwitch);
     switch (this.mSwitch)
     {
@@ -1136,7 +996,7 @@ public class ShortVideoUploadProcessor
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoUploadProcessor", 2, "start() isHotVideo");
     }
-    if ((this.mUiRequest.mExtraObj == null) || ((this.mUiRequest.mExtraObj instanceof bcxd)))
+    if ((this.mUiRequest.mExtraObj == null) || ((this.mUiRequest.mExtraObj instanceof ShortVideoForwardInfo)))
     {
       MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)this.mUiRequest.mRec;
       if ((localMessageForShortVideo.md5 != null) && (localMessageForShortVideo.md5.length() > 0)) {
@@ -1177,6 +1037,103 @@ public class ShortVideoUploadProcessor
       return;
     }
     start();
+  }
+  
+  RichProto.RichProtoReq.ShortVideoUpReq makeShortVideoUpReq()
+  {
+    RichProto.RichProtoReq.ShortVideoUpReq localShortVideoUpReq = new RichProto.RichProtoReq.ShortVideoUpReq();
+    localShortVideoUpReq.seq = ((int)this.mUiRequest.mUniseq);
+    localShortVideoUpReq.selfUin = this.mUiRequest.mSelfUin;
+    String str;
+    int i;
+    if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForBlessPTV)))
+    {
+      Object localObject = (MessageForBlessPTV)this.mUiRequest.mRec;
+      if (((MessageForBlessPTV)localObject).uinList != null)
+      {
+        str = (String)((MessageForBlessPTV)localObject).uinList.get(0);
+        localShortVideoUpReq.peerUin = str;
+        localShortVideoUpReq.subBusiType = 1;
+        if (((MessageForBlessPTV)localObject).uinList == null) {
+          break label450;
+        }
+        i = ((MessageForBlessPTV)localObject).uinList.size();
+        label121:
+        localShortVideoUpReq.userCnt = i;
+        label127:
+        localShortVideoUpReq.uinType = this.mUiRequest.mUinType;
+        localShortVideoUpReq.agentType = 0;
+        if ((localShortVideoUpReq.uinType != 0) && (1008 != localShortVideoUpReq.uinType)) {
+          break label535;
+        }
+        localShortVideoUpReq.troopUin = null;
+        label170:
+        if (localShortVideoUpReq.uinType != 0) {
+          break label550;
+        }
+        localShortVideoUpReq.chatType = 0;
+        label184:
+        localShortVideoUpReq.clientType = 2;
+        localObject = new File(this.mUiRequest.mLocalPath);
+        str = ((File)localObject).getName();
+        localShortVideoUpReq.fileName = str;
+        localShortVideoUpReq.fileSize = ((File)localObject).length();
+        localShortVideoUpReq.md5 = this.mLocalMd5;
+        localShortVideoUpReq.thumbFileMd5 = this.thumbFileMd5;
+        localShortVideoUpReq.fileResWidth = this.mThumbFileWidth;
+        localShortVideoUpReq.fileResLength = this.mThumbFileHeight;
+        localShortVideoUpReq.fileTime = this.videoTime;
+        localShortVideoUpReq.thumbFileSize = this.mThumbFileSize;
+        localObject = this.file;
+        long l = localShortVideoUpReq.fileSize + this.mThumbFileSize;
+        this.mFileSize = l;
+        ((FileMsg)localObject).fileSize = l;
+        i = getFormat(str.substring(str.lastIndexOf(".") + 1));
+        localShortVideoUpReq.format = i;
+        this.mReportInfo.put("param_fileFormat", String.valueOf(i));
+        this.mReportInfo.put("param_picResLength", String.valueOf(this.mThumbFileHeight));
+        this.mReportInfo.put("param_picResWidth", String.valueOf(this.mThumbFileWidth));
+        if ((this.mUiRequest.mRec == null) || (!(this.mUiRequest.mRec instanceof MessageForShortVideo))) {
+          break label597;
+        }
+      }
+    }
+    label450:
+    label597:
+    for (localShortVideoUpReq.busiType = ((MessageForShortVideo)this.mUiRequest.mRec).busiType;; localShortVideoUpReq.busiType = 0)
+    {
+      this.mReportBusiType = localShortVideoUpReq.busiType;
+      return localShortVideoUpReq;
+      str = "0";
+      break;
+      i = 1;
+      break label121;
+      if ((this.mUiRequest.mRec != null) && (((MessageForShortVideo)this.mUiRequest.mRec).CheckIsHotVideo()))
+      {
+        localShortVideoUpReq.peerUin = this.mUiRequest.mPeerUin;
+        localShortVideoUpReq.subBusiType = 0;
+        localShortVideoUpReq.userCnt = 1;
+        break label127;
+      }
+      localShortVideoUpReq.peerUin = this.mUiRequest.mPeerUin;
+      localShortVideoUpReq.subBusiType = 0;
+      localShortVideoUpReq.userCnt = 1;
+      break label127;
+      localShortVideoUpReq.troopUin = this.mUiRequest.mPeerUin;
+      break label170;
+      if (1 == localShortVideoUpReq.uinType)
+      {
+        localShortVideoUpReq.chatType = 1;
+        break label184;
+      }
+      if (3000 == localShortVideoUpReq.uinType)
+      {
+        localShortVideoUpReq.chatType = 2;
+        break label184;
+      }
+      localShortVideoUpReq.chatType = 3;
+      break label184;
+    }
   }
   
   public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
@@ -1237,7 +1194,7 @@ public class ShortVideoUploadProcessor
       }
     }
     label320:
-    for (Object localObject = this.mUiRequest.mRec;; localObject = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq))
+    for (Object localObject = this.mUiRequest.mRec;; localObject = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq))
     {
       if ((localObject != null) && ((localObject instanceof MessageForShortVideo))) {
         ((MessageForShortVideo)localObject).md5 = this.mMd5Str;
@@ -1250,22 +1207,22 @@ public class ShortVideoUploadProcessor
       }
       if (this.mUiRequest.mUpCallBack != null)
       {
-        localObject = new azlb();
-        ((azlb)localObject).jdField_a_of_type_Int = -1;
-        ((azlb)localObject).b = this.errCode;
-        ((azlb)localObject).jdField_a_of_type_JavaLangString = this.errDesc;
-        this.mUiRequest.mUpCallBack.onSend((azlb)localObject);
+        localObject = new UpCallBack.SendResult();
+        ((UpCallBack.SendResult)localObject).jdField_a_of_type_Int = -1;
+        ((UpCallBack.SendResult)localObject).b = this.errCode;
+        ((UpCallBack.SendResult)localObject).jdField_a_of_type_JavaLangString = this.errDesc;
+        this.mUiRequest.mUpCallBack.b((UpCallBack.SendResult)localObject);
       }
       if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForBlessPTV)))
       {
         this.app.getMsgHandler().notifyUI(999, false, this.mUiRequest.mRec.frienduin);
-        azjq.a("ShortVideoUploadProcessor", "onError", "notifyUI bless ptv send error");
+        Logger.a("ShortVideoUploadProcessor", "onError", "notifyUI bless ptv send error");
       }
       if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForDanceMachine)))
       {
         ((MessageForDanceMachine)this.mUiRequest.mRec).errorCode = 1;
         this.app.getMsgHandler().notifyUI(8034, false, this.mUiRequest.mRec);
-        azjq.a("ShortVideoUploadProcessor", "onError", "notifyUI dance machine send error");
+        Logger.a("ShortVideoUploadProcessor", "onError", "notifyUI dance machine send error");
       }
       return;
     }
@@ -1274,26 +1231,23 @@ public class ShortVideoUploadProcessor
   void onSuccess()
   {
     super.onSuccess();
-    if (this.mShortVideoTransManager != null) {
-      this.mShortVideoTransManager.a(this.mUiRequest.mMd5 + this.mUiRequest.mPeerUin + this.mUiRequest.mUniseq);
-    }
     String str;
     if (this.mUiRequest.mUpCallBack != null)
     {
-      azlb localazlb = new azlb();
-      localazlb.jdField_a_of_type_Int = 0;
-      localazlb.jdField_a_of_type_Long = (this.mFileSize - this.mThumbFileSize);
-      localazlb.jdField_d_of_type_JavaLangString = this.mMd5Str;
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+      localSendResult.jdField_a_of_type_Int = 0;
+      localSendResult.jdField_a_of_type_Long = (this.mFileSize - this.mThumbFileSize);
+      localSendResult.jdField_d_of_type_JavaLangString = this.mMd5Str;
       if (this.mResid == null)
       {
         str = this.mUuid;
-        localazlb.jdField_c_of_type_JavaLangString = str;
-        localazlb.jdField_c_of_type_Long = this.mThumbFileSize;
-        localazlb.jdField_c_of_type_Int = this.mVideoAttr;
-        localazlb.jdField_d_of_type_Int = this.mVideoKandianType;
-        this.mUiRequest.mUpCallBack.onSend(localazlb);
+        localSendResult.jdField_c_of_type_JavaLangString = str;
+        localSendResult.jdField_c_of_type_Long = this.mThumbFileSize;
+        localSendResult.jdField_c_of_type_Int = this.mVideoAttr;
+        localSendResult.jdField_d_of_type_Int = this.mVideoKandianType;
+        this.mUiRequest.mUpCallBack.b(localSendResult);
         if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "onSuccess uuid = " + localazlb.jdField_c_of_type_JavaLangString);
+          QLog.d("ShortVideoUploadProcessor", 2, "onSuccess uuid = " + localSendResult.jdField_c_of_type_JavaLangString);
         }
       }
     }
@@ -1324,11 +1278,11 @@ public class ShortVideoUploadProcessor
       sendMessageToUpdate(1004);
       if ((this.mUiRequest.mBusiType == 1010) && (this.mUiRequest.mUpCallBack != null))
       {
-        azlb localazlb = new azlb();
-        localazlb.jdField_a_of_type_Int = -1;
-        localazlb.b = 9037;
-        localazlb.jdField_a_of_type_JavaLangString = "cancel";
-        this.mUiRequest.mUpCallBack.onSend(localazlb);
+        UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+        localSendResult.jdField_a_of_type_Int = -1;
+        localSendResult.b = 9037;
+        localSendResult.jdField_a_of_type_JavaLangString = "cancel";
+        this.mUiRequest.mUpCallBack.b(localSendResult);
       }
       if (this.mRichProtoReq != null)
       {
@@ -1356,7 +1310,7 @@ public class ShortVideoUploadProcessor
   protected void reportMoovInfo()
   {
     if (((MessageForShortVideo)this.mUiRequest.mRec).busiType == 0) {
-      ThreadManager.post(new ShortVideoUploadProcessor.7(this, this.mUiRequest.mLocalPath), 5, null, true);
+      ThreadManager.post(new ShortVideoUploadProcessor.5(this, this.mUiRequest.mLocalPath), 5, null, true);
     }
   }
   
@@ -1369,6 +1323,19 @@ public class ShortVideoUploadProcessor
       localHashMap.put("param_FailCode", String.valueOf(this.errCode));
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "tempVideoUploadBDH", paramBoolean, paramLong, this.mFileSize, localHashMap, "");
     }
+  }
+  
+  void resetStatictisInfo()
+  {
+    this.file.stepSig.reset();
+    this.file.stepUrl.reset();
+    this.file.stepTrans.reset();
+    this.file.stepNotify.reset();
+    FileMsg localFileMsg = this.file;
+    long l = System.nanoTime();
+    localFileMsg.startTime = l;
+    this.mStartTime = l;
+    this.file.endTime = 0L;
   }
   
   public int resume()
@@ -1408,13 +1375,13 @@ public class ShortVideoUploadProcessor
       Object localObject = combineThumbAndVideo();
       RichProto.RichProtoReq.ShortVideoUpReq localShortVideoUpReq = makeShortVideoUpReq();
       byte[] arrayOfByte = buildExtendInfo(localShortVideoUpReq);
-      ShortVideoUploadProcessor.4 local4 = new ShortVideoUploadProcessor.4(this, (String)localObject, l);
+      ShortVideoUploadProcessor.2 local2 = new ShortVideoUploadProcessor.2(this, (String)localObject, l);
       int i = 12;
       if (localShortVideoUpReq.busiType == 0) {
         i = 25;
       }
-      this.mTrans = new Transaction(this.app.getCurrentAccountUin(), i, (String)localObject, (int)this.mStartOffset, this.mLocalMd5, local4, arrayOfByte, true);
-      localObject = new ShortVideoUploadProcessor.5(this);
+      this.mTrans = new Transaction(this.app.getCurrentAccountUin(), i, (String)localObject, (int)this.mStartOffset, this.mLocalMd5, local2, arrayOfByte, true);
+      localObject = new ShortVideoUploadProcessor.3(this);
       this.mTrans.cbForReport = ((ITransCallbackForReport)localObject);
       j = this.app.getHwEngine().submitTransactionTask(this.mTrans);
       if (QLog.isColorLevel()) {
@@ -1434,7 +1401,7 @@ public class ShortVideoUploadProcessor
     if ((this.mIsPause) && (1004 != paramInt)) {
       return;
     }
-    bcwz.a(this.app, this.file, this.mUiRequest);
+    ShortVideoBusiManager.a(this.app, this.file, this.mUiRequest);
   }
   
   void sendMsg(boolean paramBoolean)
@@ -1450,10 +1417,10 @@ public class ShortVideoUploadProcessor
       return;
     }
     Object localObject2;
-    if ((this.mUiRequest.mExtraObj != null) && ((this.mUiRequest.mExtraObj instanceof bcyj)))
+    if ((this.mUiRequest.mExtraObj != null) && ((this.mUiRequest.mExtraObj instanceof ShortVideoUploadInfo)))
     {
-      localObject2 = (bcyj)this.mUiRequest.mExtraObj;
-      this.mNeedSyncStory = ((bcyj)localObject2).jdField_g_of_type_Boolean;
+      localObject2 = (ShortVideoUploadInfo)this.mUiRequest.mExtraObj;
+      this.mNeedSyncStory = ((ShortVideoUploadInfo)localObject2).jdField_h_of_type_Boolean;
       localObject1 = localObject2;
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoUploadProcessor", 2, "sendMsg() start, mNeedSyncStory = " + this.mNeedSyncStory);
@@ -1464,17 +1431,17 @@ public class ShortVideoUploadProcessor
       if (localObject1 != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "sendMsg() start, isHotVideo = " + localObject1.jdField_e_of_type_Boolean);
+          QLog.d("ShortVideoUploadProcessor", 2, "sendMsg() start, isHotVideo = " + localObject1.jdField_f_of_type_Boolean);
         }
-        if (localObject1.jdField_e_of_type_Boolean)
+        if (localObject1.jdField_f_of_type_Boolean)
         {
           this.mUuid = localObject1.jdField_a_of_type_JavaLangString;
           this.mMd5Str = localObject1.jdField_e_of_type_JavaLangString;
           this.mLocalMd5 = HexUtil.hexStr2Bytes(localObject1.jdField_e_of_type_JavaLangString);
           this.mFileSize = (localObject1.jdField_e_of_type_Int + localObject1.b);
-          this.videoTime = localObject1.f;
+          this.videoTime = localObject1.jdField_f_of_type_Int;
           this.mThumbFileSize = localObject1.b;
-          this.thumbFileMd5 = HexUtil.hexStr2Bytes(localObject1.jdField_g_of_type_JavaLangString);
+          this.thumbFileMd5 = HexUtil.hexStr2Bytes(localObject1.g);
           this.mThumbFileHeight = localObject1.jdField_d_of_type_Int;
           this.mThumbFileWidth = localObject1.jdField_c_of_type_Int;
         }
@@ -1482,7 +1449,7 @@ public class ShortVideoUploadProcessor
       if (!this.needSendMsg) {
         break;
       }
-      bhfd.a(String.valueOf(this.mUiRequest.mUniseq), "message", "sendMsg() start.");
+      LogTag.a(String.valueOf(this.mUiRequest.mUniseq), "message", "sendMsg() start.");
       this.mStepMsg.logStartTime();
       localObject2 = constructRichText();
       if (localObject2 == null)
@@ -1507,7 +1474,7 @@ public class ShortVideoUploadProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "short_video_up";
     localRichProtoReq.reqs.add(localShortVideoUpReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
     if (!isAppValid())
     {
       setError(9366, "illegal app", null, this.mStepUrl);
@@ -1559,8 +1526,8 @@ public class ShortVideoUploadProcessor
       handleHotVideo();
       return;
     }
-    if ((this.mUiRequest.mExtraObj != null) && ((this.mUiRequest.mExtraObj instanceof bcyj))) {
-      this.isFromFavorite = ((bcyj)this.mUiRequest.mExtraObj).jdField_i_of_type_Boolean;
+    if ((this.mUiRequest.mExtraObj != null) && ((this.mUiRequest.mExtraObj instanceof ShortVideoUploadInfo))) {
+      this.isFromFavorite = ((ShortVideoUploadInfo)this.mUiRequest.mExtraObj).j;
     }
     sendMessageToUpdate(1001);
     this.file.closeInputStream();
@@ -1582,7 +1549,7 @@ public class ShortVideoUploadProcessor
     while (!(localMessageRecord instanceof MessageForShortVideo))
     {
       return;
-      localMessageRecord = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+      localMessageRecord = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
       logRichMediaEvent("updateDb", "findmsgbyMsgId,need fix");
       break;
     }
@@ -1596,7 +1563,7 @@ public class ShortVideoUploadProcessor
       localMessageForShortVideo.videoAttr = this.mVideoAttr;
       localMessageForShortVideo.videoKandianType = this.mVideoKandianType;
       localMessageForShortVideo.serial();
-      this.app.getMessageFacade().updateMsgContentByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageRecord.uniseq, localMessageForShortVideo.msgData);
+      this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageRecord.uniseq, localMessageForShortVideo.msgData);
       return;
     }
   }

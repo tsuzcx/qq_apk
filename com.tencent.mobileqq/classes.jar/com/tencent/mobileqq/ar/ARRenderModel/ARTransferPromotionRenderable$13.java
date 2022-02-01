@@ -1,15 +1,12 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apef;
-import apem;
-import apeo;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.QLog;
 
-public class ARTransferPromotionRenderable$13
+class ARTransferPromotionRenderable$13
   implements Runnable
 {
-  public ARTransferPromotionRenderable$13(apem paramapem, int paramInt) {}
+  ARTransferPromotionRenderable$13(ARTransferPromotionRenderable paramARTransferPromotionRenderable, int paramInt) {}
   
   public void run()
   {
@@ -19,23 +16,23 @@ public class ARTransferPromotionRenderable$13
     }
     for (;;)
     {
-      apem.e(this.this$0);
+      ARTransferPromotionRenderable.e(this.this$0);
       return;
-      if ((this.a == 1) && (apem.a(this.this$0) != null) && (apem.a(this.this$0).a.booleanValue())) {
-        apem.a(this.this$0).b(0, 1);
+      if ((this.a == 1) && (ARTransferPromotionRenderable.a(this.this$0) != null) && (ARTransferPromotionRenderable.a(this.this$0).a.booleanValue())) {
+        ARTransferPromotionRenderable.a(this.this$0).b(0, 1);
       }
-      if (apem.a(this.this$0) != null)
+      if (ARTransferPromotionRenderable.a(this.this$0) != null)
       {
-        apem.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+        ARTransferPromotionRenderable.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
         continue;
         if (this.this$0.b == 3)
         {
-          if (apem.a(this.this$0) != null) {
-            apem.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+          if (ARTransferPromotionRenderable.a(this.this$0) != null) {
+            ARTransferPromotionRenderable.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
           }
         }
         else {
-          apem.a(this.this$0, 4, apem.a(this.this$0).c + "360Video.mp4", false, apem.a(this.this$0).d, false);
+          ARTransferPromotionRenderable.a(this.this$0, 4, ARTransferPromotionRenderable.a(this.this$0).c + "360Video.mp4", false, ARTransferPromotionRenderable.a(this.this$0).d, false);
         }
       }
     }
@@ -43,7 +40,7 @@ public class ARTransferPromotionRenderable$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.13
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class mobile_client_action_report_res
   extends JceStruct
 {
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public mobile_client_action_report_res() {}
   

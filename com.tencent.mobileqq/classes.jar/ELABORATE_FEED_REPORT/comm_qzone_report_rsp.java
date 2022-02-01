@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class comm_qzone_report_rsp
   extends JceStruct
 {
-  public int iRetCode;
+  public int iRetCode = 0;
   public String strErrorMsg = "";
   
   public comm_qzone_report_rsp() {}

@@ -23,11 +23,13 @@ public class SuperPlayerVideoInfo
   private ArrayList<String> mCookies = null;
   private String mFileId;
   private int mFormat;
+  private boolean mIsDisableTVideoCache;
   private String mLocalSavePath;
   private String mPid;
   private String[] mPlayUrls;
   private String mRequestDefinition;
   private TPDownloadParamData mTPDownloadParamData = null;
+  private String mTVideoLoginCookie;
   private TVideoNetInfo mTVideoNetInfo;
   private ArrayList<TVKVideoInfo.Section> mTVideoSectionList;
   private ArrayList<String> mUrlHostList = null;
@@ -206,6 +208,11 @@ public class SuperPlayerVideoInfo
     return this.mFormat;
   }
   
+  public boolean getIsDisableTVideoCache()
+  {
+    return this.mIsDisableTVideoCache;
+  }
+  
   public String getLocalSavePath()
   {
     return this.mLocalSavePath;
@@ -240,6 +247,11 @@ public class SuperPlayerVideoInfo
   public TPDownloadParamData getTPDownloadParamData()
   {
     return this.mTPDownloadParamData;
+  }
+  
+  public String getTVideoLoginCookie()
+  {
+    return this.mTVideoLoginCookie;
   }
   
   public TVideoNetInfo getTVideoNetInfo()
@@ -350,6 +362,11 @@ public class SuperPlayerVideoInfo
     this.mFormat = paramInt;
   }
   
+  public void setIsDisableTVideoCache(boolean paramBoolean)
+  {
+    this.mIsDisableTVideoCache = paramBoolean;
+  }
+  
   public void setLocalSavePath(String paramString)
   {
     this.mLocalSavePath = paramString;
@@ -373,6 +390,11 @@ public class SuperPlayerVideoInfo
   public void setTPDownloadParamData(TPDownloadParamData paramTPDownloadParamData)
   {
     this.mTPDownloadParamData = paramTPDownloadParamData;
+  }
+  
+  public void setTVideoLoginCookie(String paramString)
+  {
+    this.mTVideoLoginCookie = paramString;
   }
   
   public void setTVideoNetInfo(TVideoNetInfo paramTVideoNetInfo)
@@ -417,7 +439,7 @@ public class SuperPlayerVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerVideoInfo
  * JD-Core Version:    0.7.0.1
  */

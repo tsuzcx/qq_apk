@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import aljf;
-import aljg;
-import aljh;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -18,14 +16,14 @@ import com.tencent.qphone.base.util.QLog;
 @TargetApi(19)
 public class DragTextView
   extends TextView
-  implements aljg
+  implements IDragView
 {
-  private static int jdField_a_of_type_Int;
+  private static int jdField_a_of_type_Int = 0;
   private static int b;
   private static int c;
-  private aljh jdField_a_of_type_Aljh;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private View jdField_a_of_type_AndroidViewView;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = null;
+  private View jdField_a_of_type_AndroidViewView = null;
+  private IDragView.OnChangeModeListener jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener;
   private boolean jdField_a_of_type_Boolean;
   private int d = -1;
   
@@ -82,7 +80,32 @@ public class DragTextView
     return this.d;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void notifyViewAccessibilityStateChangedIfNeeded(int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      if (!isAttachedToWindow()) {
+        if (QLog.isColorLevel()) {
+          QLog.d("DragTextView", 2, "Android 4.4-5.2 DragTextView rejected notifyViewAccessibilityStateChangedIfNeeded");
+        }
+      }
+      do
+      {
+        return;
+        try
+        {
+          super.notifyViewAccessibilityStateChangedIfNeeded(paramInt);
+          return;
+        }
+        catch (NoSuchMethodError localNoSuchMethodError) {}
+      } while (!QLog.isColorLevel());
+      QLog.d("DragTextView", 2, localNoSuchMethodError, new Object[0]);
+      return;
+    }
+    super.notifyViewAccessibilityStateChangedIfNeeded(paramInt);
+  }
+  
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (paramBoolean)) {
@@ -94,10 +117,10 @@ public class DragTextView
   {
     if ((this.d != -1) && (!this.jdField_a_of_type_Boolean) && (paramMotionEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Aljh != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener != null)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Aljh.a(this, this.d);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener.a(this, this.d);
         return true;
       }
       return super.onTouchEvent(paramMotionEvent);
@@ -117,23 +140,23 @@ public class DragTextView
     if (this.jdField_a_of_type_AndroidViewView == null) {
       this.jdField_a_of_type_AndroidViewView = ((ViewGroup)getParent());
     }
-    if ((this.jdField_a_of_type_Aljh != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
     {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new aljf(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
+      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new DragTextView.DragTouchDelegate(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
     }
   }
   
-  public void setOnModeChangeListener(aljh paramaljh)
+  public void setOnModeChangeListener(IDragView.OnChangeModeListener paramOnChangeModeListener)
   {
-    this.jdField_a_of_type_Aljh = paramaljh;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener = paramOnChangeModeListener;
     if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "setOnModeChangeListener:" + paramaljh);
+      QLog.d("Drag", 2, "setOnModeChangeListener:" + paramOnChangeModeListener);
     }
-    if ((this.jdField_a_of_type_Aljh != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
     {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new aljf(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
+      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new DragTextView.DragTouchDelegate(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
     }
   }
   
@@ -147,7 +170,7 @@ public class DragTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.DragTextView
  * JD-Core Version:    0.7.0.1
  */

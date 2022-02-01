@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import afoo;
 import android.app.Activity;
 import android.app.Application;
 import android.app.PendingIntent;
@@ -12,12 +11,13 @@ import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import anvx;
-import avxz;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.aio.AIOUnreadQIPCClient;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherMiniAioHelper;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqinterface.NewMiniAioInterface;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -26,19 +26,19 @@ public class GroupMiniAioInterfaceImpl
   implements NewMiniAioInterface
 {
   private Activity mActivity;
-  private avxz mMiniMsgUser;
-  private long roomId;
-  private int roomType;
-  private int xPoint;
-  private int yPoint;
+  private WatchTogetherMiniAioHelper mMiniMsgUser;
+  private long roomId = 0L;
+  private int roomType = 0;
+  private int xPoint = 0;
+  private int yPoint = 0;
   
   Intent getBackIntent()
   {
     Intent localIntent1 = new Intent();
     localIntent1.setFlags(67108864);
-    localIntent1.putExtra("tab_index", MainFragment.b);
+    localIntent1.putExtra("tab_index", FrameControllerUtil.a);
     localIntent1.putExtra("fragment_id", 1);
-    localIntent1.putExtra("banner_wording", anvx.a(2131704823));
+    localIntent1.putExtra("banner_wording", HardCodeUtil.a(2131705366));
     localIntent1.putExtra("banner_iconIdx", 13);
     localIntent1.putExtra("banner_iconIdx", 14);
     localIntent1.putExtra("banner_businessCategory", "GroupVideo");
@@ -56,14 +56,14 @@ public class GroupMiniAioInterfaceImpl
   {
     int i = this.mActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
     int j = ImmersiveUtils.getStatusBarHeight(this.mActivity);
-    int k = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131297336);
+    int k = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131297362);
     if (this.xPoint == 0)
     {
-      i = i - k * 4 - ViewUtils.dpToPx(35.0F);
+      i = i - k * 4 - ViewUtils.b(35.0F);
       if (this.yPoint != 0) {
         break label147;
       }
-      j += ViewUtils.dip2px(7.0F);
+      j += ViewUtils.a(7.0F);
     }
     for (;;)
     {
@@ -96,7 +96,7 @@ public class GroupMiniAioInterfaceImpl
     this.mActivity = ((Activity)((ContextWrapper)paramContext).getBaseContext());
     this.roomId = paramLong;
     this.roomType = paramInt;
-    this.mMiniMsgUser = new avxz(this.mActivity, paramString1, paramString2, getMiniMsgUserParam());
+    this.mMiniMsgUser = new WatchTogetherMiniAioHelper(this.mActivity, paramString1, paramString2, getMiniMsgUserParam());
     ThreadManagerV2.getUIHandlerV2().post(new GroupMiniAioInterfaceImpl.1(this));
   }
   
@@ -118,7 +118,7 @@ public class GroupMiniAioInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.GroupMiniAioInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

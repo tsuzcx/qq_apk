@@ -11,9 +11,15 @@ public abstract interface ITPPlayListener
   
   public abstract long getAdvRemainTime();
   
+  public abstract String getContentType(int paramInt, String paramString);
+  
   public abstract int getCurrentPlayClipNo();
   
   public abstract long getCurrentPosition();
+  
+  public abstract String getDataFilePath(int paramInt, String paramString);
+  
+  public abstract long getDataTotalSize(int paramInt, String paramString);
   
   public abstract Object getPlayInfo(long paramLong);
   
@@ -38,10 +44,18 @@ public abstract interface ITPPlayListener
   public abstract void onDownloadStatusUpdate(int paramInt);
   
   public abstract Object onPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4);
+  
+  public abstract void onQuicDownloadStatusUpdate(String paramString);
+  
+  public abstract int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2);
+  
+  public abstract int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2);
+  
+  public abstract int onStopReadData(int paramInt1, String paramString, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener
  * JD-Core Version:    0.7.0.1
  */

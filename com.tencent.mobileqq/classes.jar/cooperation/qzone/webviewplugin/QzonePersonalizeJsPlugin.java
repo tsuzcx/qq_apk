@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bazk;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.qzonevip.gift.QzoneGiftManager;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
@@ -92,7 +92,7 @@ public class QzonePersonalizeJsPlugin
     }
   }
   
-  private static void handleCustomVipSetting(bifw parambifw, String... paramVarArgs)
+  private static void handleCustomVipSetting(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
       return;
@@ -108,12 +108,12 @@ public class QzonePersonalizeJsPlugin
       localBundle.putInt("CustomVipId", i);
       localBundle.putString("zipUrl", paramVarArgs);
       localIntent.putExtras(localBundle);
-      QZoneHelper.forwardToQzoneTransluentActivity(parambifw.a(), QZoneHelper.UserInfo.getInstance(), localIntent);
+      QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), localIntent);
       return;
     }
-    catch (JSONException parambifw)
+    catch (JSONException paramPluginRuntime)
     {
-      parambifw.printStackTrace();
+      paramPluginRuntime.printStackTrace();
     }
   }
   
@@ -256,7 +256,7 @@ public class QzonePersonalizeJsPlugin
         QZLog.w("QzonePersonalizeJsPlugin", "tiantai webView == null");
         return;
       }
-      localCustomWebView.setTag(2131375971, Boolean.TRUE);
+      localCustomWebView.setTag(2131376352, Boolean.TRUE);
       QLog.i("QzonePersonalizeJsPlugin", 1, "tiantai webview activity name: " + this.parentPlugin.mRuntime.a().getClass().getSimpleName());
       if (!(this.parentPlugin.mRuntime.a() instanceof QzoneTiantaiTranslucentBrowserActivity))
       {
@@ -270,7 +270,7 @@ public class QzonePersonalizeJsPlugin
       QLog.w("QzonePersonalizeJsPlugin", 1, "tiantai handleNotifyWebviewJsReady: ", localException);
       return;
     }
-    Object localObject2 = localException.getTag(2131375968);
+    Object localObject2 = localException.getTag(2131376349);
     if ((localObject2 != null) && (((Boolean)localObject2).booleanValue())) {}
     for (int i = 1;; i = 0)
     {
@@ -345,7 +345,7 @@ public class QzonePersonalizeJsPlugin
     }
   }
   
-  private static void handlePersonalizeSetting(bifw parambifw, String... paramVarArgs)
+  private static void handlePersonalizeSetting(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     int i = 0;
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
@@ -361,7 +361,7 @@ public class QzonePersonalizeJsPlugin
           if ((paramVarArgs != null) && (paramVarArgs.length() > 0))
           {
             if ((((JSONObject)localObject).has("toast")) && (((JSONObject)localObject).getBoolean("toast"))) {
-              QQToast.a(parambifw.a(), 2, 2131689525, 0).a();
+              QQToast.a(paramPluginRuntime.a(), 2, 2131689532, 0).a();
             }
             localObject = new long[paramVarArgs.length()];
             while (i < paramVarArgs.length())
@@ -372,20 +372,20 @@ public class QzonePersonalizeJsPlugin
             paramVarArgs = new Intent();
             paramVarArgs.putExtra("key_msg_type", 2);
             paramVarArgs.putExtra("key_friend_list", (long[])localObject);
-            parambifw.a().setResult(-1, paramVarArgs);
-            parambifw.a().finish();
+            paramPluginRuntime.a().setResult(-1, paramVarArgs);
+            paramPluginRuntime.a().finish();
             return;
           }
         }
       }
-      catch (JSONException parambifw)
+      catch (JSONException paramPluginRuntime)
       {
-        parambifw.printStackTrace();
+        paramPluginRuntime.printStackTrace();
       }
     }
   }
   
-  private void handlePreloadFacade(bifw parambifw, String... paramVarArgs)
+  private void handlePreloadFacade(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     Intent localIntent = new Intent("action_personalize_js2qzone");
     Bundle localBundle = new Bundle();
@@ -395,7 +395,7 @@ public class QzonePersonalizeJsPlugin
     {
       localBundle.putInt("showonfridyn", new JSONObject(paramVarArgs[0]).getInt("showonfridyn"));
       localIntent.putExtras(localBundle);
-      QZoneHelper.forwardToQzoneTransluentActivity(parambifw.a(), QZoneHelper.UserInfo.getInstance(), localIntent);
+      QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), localIntent);
       return;
     }
     catch (Exception paramVarArgs)
@@ -579,7 +579,7 @@ public class QzonePersonalizeJsPlugin
     }
   }
   
-  private static void handleUpdateMallClicktime(bifw parambifw, String... paramVarArgs)
+  private static void handleUpdateMallClicktime(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
       return;
@@ -590,12 +590,12 @@ public class QzonePersonalizeJsPlugin
       if (QLog.isColorLevel()) {
         QLog.d("QZoneWebViewPlugin", 2, "handleUpdateMallClicktime: " + i);
       }
-      QZonePersonalizeH5Service.updateCTime(Integer.valueOf(i), Long.valueOf(parambifw.a().getLongAccountUin()));
+      QZonePersonalizeH5Service.updateCTime(Integer.valueOf(i), Long.valueOf(paramPluginRuntime.a().getLongAccountUin()));
       return;
     }
-    catch (JSONException parambifw)
+    catch (JSONException paramPluginRuntime)
     {
-      parambifw.printStackTrace();
+      paramPluginRuntime.printStackTrace();
     }
   }
   
@@ -667,8 +667,8 @@ public class QzonePersonalizeJsPlugin
       localJSONObject2.put("broadcast", true);
       localJSONObject2.put("domains", localJSONArray);
       dispatchEventImpl(paramCustomWebView, "qzRooftop", localJSONObject1, localJSONObject2);
-      paramCustomWebView.setTag(2131375968, Boolean.FALSE);
-      paramCustomWebView.setTag(2131375971, Boolean.FALSE);
+      paramCustomWebView.setTag(2131376349, Boolean.FALSE);
+      paramCustomWebView.setTag(2131376352, Boolean.FALSE);
       return;
     }
     catch (Exception paramCustomWebView)
@@ -677,7 +677,7 @@ public class QzonePersonalizeJsPlugin
     }
   }
   
-  private static void onHandleUpdateMallID(bifw parambifw, String... paramVarArgs)
+  private static void onHandleUpdateMallID(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     int j = 0;
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
@@ -708,7 +708,7 @@ public class QzonePersonalizeJsPlugin
           break;
         }
         new HashMap();
-        localObject = QZonePersonalizeH5Service.getCTime(Long.valueOf(parambifw.a().getLongAccountUin()));
+        localObject = QZonePersonalizeH5Service.getCTime(Long.valueOf(paramPluginRuntime.a().getLongAccountUin()));
         i = j;
         if (i < paramVarArgs.length)
         {
@@ -718,12 +718,12 @@ public class QzonePersonalizeJsPlugin
           ((Map)localObject).put(Integer.valueOf(paramVarArgs[i]), Long.valueOf(0L));
         }
       }
-      catch (JSONException parambifw)
+      catch (JSONException paramPluginRuntime)
       {
-        parambifw.printStackTrace();
+        paramPluginRuntime.printStackTrace();
         return;
       }
-      QZonePersonalizeH5Service.setCTime((Map)localObject, Long.valueOf(parambifw.a().getLongAccountUin()));
+      QZonePersonalizeH5Service.setCTime((Map)localObject, Long.valueOf(paramPluginRuntime.a().getLongAccountUin()));
       return;
       label191:
       i += 1;
@@ -833,7 +833,7 @@ public class QzonePersonalizeJsPlugin
       } while (paramVarArgs.length != 1);
       bool1 = bool2;
     } while (TextUtils.isEmpty(paramVarArgs[0]));
-    bazk.a().b(paramVarArgs[0]);
+    QzoneGiftManager.a().b(paramVarArgs[0]);
     return true;
     if ("GetRedpocket".equals(paramString3))
     {
@@ -871,12 +871,12 @@ public class QzonePersonalizeJsPlugin
   public void onDestroy()
   {
     super.onDestroy();
-    bazk.a().onDestroy();
+    QzoneGiftManager.a().onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzonePersonalizeJsPlugin
  * JD-Core Version:    0.7.0.1
  */

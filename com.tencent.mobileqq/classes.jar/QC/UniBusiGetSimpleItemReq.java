@@ -12,8 +12,8 @@ public final class UniBusiGetSimpleItemReq
 {
   static Map<Integer, ArrayList<Integer>> cache_mAppidItems;
   static LoginInfo cache_stLogin = new LoginInfo();
-  public Map<Integer, ArrayList<Integer>> mAppidItems;
-  public LoginInfo stLogin;
+  public Map<Integer, ArrayList<Integer>> mAppidItems = null;
+  public LoginInfo stLogin = null;
   
   static
   {

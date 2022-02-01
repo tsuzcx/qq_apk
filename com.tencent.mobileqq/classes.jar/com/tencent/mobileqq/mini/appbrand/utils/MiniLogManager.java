@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
 import Wallet.GetMiniAppReq;
-import akra;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -15,6 +17,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Comparator;
+import mqq.app.AppRuntime;
 
 public class MiniLogManager
 {
@@ -27,10 +30,17 @@ public class MiniLogManager
   private static Comparator<File> fileTimeComparator = new MiniLogManager.4();
   private static boolean isInited;
   private static SimpleDateFormat logFileFormatter = new SimpleDateFormat("yy.MM.dd.HH");
-  private static Handler mHandler = new MiniLogManager.1(Looper.getMainLooper());
-  private static final BroadcastReceiver mReceiver = new MiniLogManager.2();
-  private static long sLastCheckLogTime;
+  private static Handler mHandler;
+  private static final BroadcastReceiver mReceiver;
+  private static long sLastCheckLogTime = 0L;
   private static SimpleDateFormat timeFormatter = new SimpleDateFormat("yy-MM-dd HH_mm_ss");
+  
+  static
+  {
+    mHandler = new MiniLogManager.1(Looper.getMainLooper());
+    mReceiver = new MiniLogManager.2();
+    isInited = false;
+  }
   
   public static void compressAndDeleteOldLog()
   {
@@ -39,7 +49,7 @@ public class MiniLogManager
   
   public static void compressAndUploadLog(String paramString, int paramInt)
   {
-    if (StringUtil.isEmpty(paramString)) {
+    if (StringUtil.a(paramString)) {
       return;
     }
     ThreadManagerV2.executeOnFileThread(new MiniLogManager.5(MiniLog.getMiniLogFolderPath(paramString), paramString, paramInt));
@@ -47,7 +57,7 @@ public class MiniLogManager
   
   private static void doUploadFile(String paramString1, String paramString2)
   {
-    if ((StringUtil.isEmpty(paramString1)) || (StringUtil.isEmpty(paramString2))) {
+    if ((StringUtil.a(paramString1)) || (StringUtil.a(paramString2))) {
       return;
     }
     ThreadManager.excute(new MiniLogManager.7(paramString1, paramString2), 128, null, false);
@@ -99,72 +109,72 @@ public class MiniLogManager
   
   public static void upload(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if ((StringUtil.isEmpty(paramString1)) || (StringUtil.isEmpty(paramString2)) || (!new File(paramString2).exists())) {
+    if ((StringUtil.a(paramString1)) || (StringUtil.a(paramString2)) || (!new File(paramString2).exists())) {
       return;
     }
-    akra.a(new GetMiniAppReq(paramString1, paramInt2, paramInt1, ""), new MiniLogManager.6(paramString2, paramInt1));
+    QWalletCommonServlet.a(new GetMiniAppReq(paramString1, paramInt2, paramInt1, "", BaseApplicationImpl.getApplication().getRuntime().getAccount(), "Android|" + DeviceInfoUtil.e() + "|" + DeviceInfoUtil.i(), DeviceInfoUtil.c()), new MiniLogManager.6(paramString2, paramInt1));
   }
   
   /* Error */
   public static void zipFiles(java.util.ArrayList<MiniLogManager.LogFile> paramArrayList, String paramString)
   {
     // Byte code:
-    //   0: new 278	java/io/BufferedOutputStream
+    //   0: new 307	java/io/BufferedOutputStream
     //   3: dup
-    //   4: new 280	java/io/FileOutputStream
+    //   4: new 309	java/io/FileOutputStream
     //   7: dup
-    //   8: new 184	java/io/File
+    //   8: new 186	java/io/File
     //   11: dup
     //   12: aload_1
     //   13: invokespecial 252	java/io/File:<init>	(Ljava/lang/String;)V
-    //   16: invokespecial 283	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   19: invokespecial 286	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   16: invokespecial 312	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   19: invokespecial 315	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   22: astore_1
-    //   23: new 288	java/util/zip/ZipOutputStream
+    //   23: new 317	java/util/zip/ZipOutputStream
     //   26: dup
     //   27: aload_1
-    //   28: invokespecial 289	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   28: invokespecial 318	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   31: astore 11
     //   33: iconst_0
     //   34: istore_2
     //   35: aload_0
-    //   36: invokevirtual 295	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   36: invokevirtual 324	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   39: astore_0
     //   40: aload_0
-    //   41: invokeinterface 300 1 0
+    //   41: invokeinterface 329 1 0
     //   46: ifeq +258 -> 304
     //   49: aload_0
-    //   50: invokeinterface 304 1 0
-    //   55: checkcast 306	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager$LogFile
+    //   50: invokeinterface 333 1 0
+    //   55: checkcast 335	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager$LogFile
     //   58: astore 12
     //   60: aload 12
-    //   62: invokevirtual 307	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager$LogFile:exists	()Z
+    //   62: invokevirtual 336	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager$LogFile:exists	()Z
     //   65: ifeq +318 -> 383
     //   68: aload 11
-    //   70: new 309	java/util/zip/ZipEntry
+    //   70: new 338	java/util/zip/ZipEntry
     //   73: dup
-    //   74: new 204	java/lang/StringBuilder
+    //   74: new 206	java/lang/StringBuilder
     //   77: dup
-    //   78: invokespecial 205	java/lang/StringBuilder:<init>	()V
+    //   78: invokespecial 207	java/lang/StringBuilder:<init>	()V
     //   81: aload 12
-    //   83: invokevirtual 312	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager$LogFile:getName	()Ljava/lang/String;
-    //   86: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: invokevirtual 341	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager$LogFile:getName	()Ljava/lang/String;
+    //   86: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: aload 12
-    //   91: getfield 315	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager$LogFile:stuffix	Ljava/lang/String;
-    //   94: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 214	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokespecial 316	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   103: invokevirtual 320	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   91: getfield 344	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager$LogFile:stuffix	Ljava/lang/String;
+    //   94: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokespecial 345	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   103: invokevirtual 349	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
     //   106: aload 11
     //   108: bipush 9
-    //   110: invokevirtual 324	java/util/zip/ZipOutputStream:setLevel	(I)V
+    //   110: invokevirtual 353	java/util/zip/ZipOutputStream:setLevel	(I)V
     //   113: aload 12
-    //   115: invokevirtual 327	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager$LogFile:length	()J
+    //   115: invokevirtual 356	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager$LogFile:length	()J
     //   118: lstore 9
-    //   120: new 329	java/io/FileInputStream
+    //   120: new 358	java/io/FileInputStream
     //   123: dup
     //   124: aload 12
-    //   126: invokespecial 330	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   126: invokespecial 359	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   129: astore 12
     //   131: sipush 20480
     //   134: newarray byte
@@ -175,7 +185,7 @@ public class MiniLogManager
     //   143: aload 13
     //   145: iconst_0
     //   146: sipush 20480
-    //   149: invokevirtual 334	java/io/FileInputStream:read	([BII)I
+    //   149: invokevirtual 363	java/io/FileInputStream:read	([BII)I
     //   152: istore 4
     //   154: iload 4
     //   156: iconst_m1
@@ -184,7 +194,7 @@ public class MiniLogManager
     //   162: aload 13
     //   164: iconst_0
     //   165: iload 4
-    //   167: invokevirtual 338	java/util/zip/ZipOutputStream:write	([BII)V
+    //   167: invokevirtual 367	java/util/zip/ZipOutputStream:write	([BII)V
     //   170: iconst_1
     //   171: istore_3
     //   172: iconst_1
@@ -203,19 +213,19 @@ public class MiniLogManager
     //   194: iload_3
     //   195: istore_2
     //   196: aload 12
-    //   198: invokevirtual 341	java/io/FileInputStream:close	()V
+    //   198: invokevirtual 370	java/io/FileInputStream:close	()V
     //   201: aload 11
-    //   203: invokevirtual 344	java/util/zip/ZipOutputStream:flush	()V
+    //   203: invokevirtual 373	java/util/zip/ZipOutputStream:flush	()V
     //   206: aload 11
-    //   208: invokevirtual 347	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   208: invokevirtual 376	java/util/zip/ZipOutputStream:closeEntry	()V
     //   211: goto +172 -> 383
     //   214: astore_0
     //   215: aload 12
-    //   217: invokevirtual 341	java/io/FileInputStream:close	()V
+    //   217: invokevirtual 370	java/io/FileInputStream:close	()V
     //   220: aload 11
-    //   222: invokevirtual 344	java/util/zip/ZipOutputStream:flush	()V
+    //   222: invokevirtual 373	java/util/zip/ZipOutputStream:flush	()V
     //   225: aload 11
-    //   227: invokevirtual 347	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   227: invokevirtual 376	java/util/zip/ZipOutputStream:closeEntry	()V
     //   230: aload_0
     //   231: athrow
     //   232: astore_0
@@ -223,62 +233,62 @@ public class MiniLogManager
     //   236: ifeq +31 -> 267
     //   239: getstatic 39	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:TAG	Ljava/lang/String;
     //   242: iconst_2
-    //   243: new 204	java/lang/StringBuilder
+    //   243: new 206	java/lang/StringBuilder
     //   246: dup
-    //   247: invokespecial 205	java/lang/StringBuilder:<init>	()V
-    //   250: ldc_w 349
-    //   253: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   250: ldc_w 378
+    //   253: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   256: aload_0
-    //   257: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   260: invokevirtual 214	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   257: invokevirtual 381	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   260: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   263: aload_0
-    //   264: invokestatic 356	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   264: invokestatic 384	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   267: aload_1
-    //   268: invokevirtual 357	java/io/BufferedOutputStream:close	()V
+    //   268: invokevirtual 385	java/io/BufferedOutputStream:close	()V
     //   271: invokestatic 243	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   274: ifeq +13 -> 287
     //   277: getstatic 39	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:TAG	Ljava/lang/String;
     //   280: iconst_2
-    //   281: ldc_w 359
+    //   281: ldc_w 387
     //   284: invokestatic 249	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   287: invokestatic 243	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   290: ifeq +13 -> 303
     //   293: getstatic 39	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:TAG	Ljava/lang/String;
     //   296: iconst_2
-    //   297: ldc_w 361
-    //   300: invokestatic 363	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   297: ldc_w 389
+    //   300: invokestatic 391	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   303: return
     //   304: iload_2
     //   305: ifeq +8 -> 313
     //   308: aload 11
-    //   310: invokevirtual 364	java/util/zip/ZipOutputStream:close	()V
+    //   310: invokevirtual 392	java/util/zip/ZipOutputStream:close	()V
     //   313: invokestatic 243	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   316: ifeq +13 -> 329
     //   319: getstatic 39	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:TAG	Ljava/lang/String;
     //   322: iconst_2
-    //   323: ldc_w 366
+    //   323: ldc_w 394
     //   326: invokestatic 249	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   329: aload_1
-    //   330: invokevirtual 357	java/io/BufferedOutputStream:close	()V
+    //   330: invokevirtual 385	java/io/BufferedOutputStream:close	()V
     //   333: invokestatic 243	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   336: ifeq -49 -> 287
     //   339: getstatic 39	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:TAG	Ljava/lang/String;
     //   342: iconst_2
-    //   343: ldc_w 359
+    //   343: ldc_w 387
     //   346: invokestatic 249	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   349: goto -62 -> 287
     //   352: astore_0
     //   353: aload_0
-    //   354: invokevirtual 369	java/io/IOException:printStackTrace	()V
+    //   354: invokevirtual 397	java/io/IOException:printStackTrace	()V
     //   357: goto -70 -> 287
     //   360: astore_0
     //   361: aload_1
-    //   362: invokevirtual 357	java/io/BufferedOutputStream:close	()V
+    //   362: invokevirtual 385	java/io/BufferedOutputStream:close	()V
     //   365: invokestatic 243	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   368: ifeq +13 -> 381
     //   371: getstatic 39	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:TAG	Ljava/lang/String;
     //   374: iconst_2
-    //   375: ldc_w 359
+    //   375: ldc_w 387
     //   378: invokestatic 249	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   381: aload_0
     //   382: athrow
@@ -331,59 +341,59 @@ public class MiniLogManager
     //   4: astore 6
     //   6: iconst_0
     //   7: istore_3
-    //   8: new 278	java/io/BufferedOutputStream
+    //   8: new 307	java/io/BufferedOutputStream
     //   11: dup
-    //   12: new 280	java/io/FileOutputStream
+    //   12: new 309	java/io/FileOutputStream
     //   15: dup
-    //   16: new 184	java/io/File
+    //   16: new 186	java/io/File
     //   19: dup
     //   20: aload_0
-    //   21: invokestatic 377	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:getZipLogFilePath	(Ljava/io/File;)Ljava/lang/String;
+    //   21: invokestatic 405	com/tencent/mobileqq/mini/appbrand/utils/MiniLogManager:getZipLogFilePath	(Ljava/io/File;)Ljava/lang/String;
     //   24: invokespecial 252	java/io/File:<init>	(Ljava/lang/String;)V
-    //   27: invokespecial 283	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   30: invokespecial 286	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   27: invokespecial 312	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   30: invokespecial 315	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   33: astore 4
-    //   35: new 288	java/util/zip/ZipOutputStream
+    //   35: new 317	java/util/zip/ZipOutputStream
     //   38: dup
     //   39: aload 4
-    //   41: invokespecial 289	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   41: invokespecial 318	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   44: astore 6
     //   46: aload 6
     //   48: bipush 9
-    //   50: invokevirtual 324	java/util/zip/ZipOutputStream:setLevel	(I)V
+    //   50: invokevirtual 353	java/util/zip/ZipOutputStream:setLevel	(I)V
     //   53: sipush 8192
     //   56: newarray byte
     //   58: astore 7
-    //   60: new 309	java/util/zip/ZipEntry
+    //   60: new 338	java/util/zip/ZipEntry
     //   63: dup
     //   64: aload_0
-    //   65: invokevirtual 378	java/io/File:getName	()Ljava/lang/String;
-    //   68: invokespecial 316	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   65: invokevirtual 406	java/io/File:getName	()Ljava/lang/String;
+    //   68: invokespecial 345	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
     //   71: astore 8
     //   73: aload 8
     //   75: aload_0
-    //   76: invokevirtual 379	java/io/File:length	()J
-    //   79: invokevirtual 382	java/util/zip/ZipEntry:setSize	(J)V
+    //   76: invokevirtual 407	java/io/File:length	()J
+    //   79: invokevirtual 410	java/util/zip/ZipEntry:setSize	(J)V
     //   82: aload 8
     //   84: aload_0
-    //   85: invokevirtual 385	java/io/File:lastModified	()J
-    //   88: invokevirtual 388	java/util/zip/ZipEntry:setTime	(J)V
+    //   85: invokevirtual 413	java/io/File:lastModified	()J
+    //   88: invokevirtual 416	java/util/zip/ZipEntry:setTime	(J)V
     //   91: aload 6
     //   93: aload 8
-    //   95: invokevirtual 320	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   98: new 390	java/io/BufferedInputStream
+    //   95: invokevirtual 349	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   98: new 418	java/io/BufferedInputStream
     //   101: dup
-    //   102: new 329	java/io/FileInputStream
+    //   102: new 358	java/io/FileInputStream
     //   105: dup
     //   106: aload_0
-    //   107: invokespecial 330	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   110: invokespecial 393	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   107: invokespecial 359	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   110: invokespecial 421	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   113: astore_0
     //   114: aload_0
     //   115: aload 7
     //   117: iconst_0
     //   118: sipush 8192
-    //   121: invokevirtual 396	java/io/InputStream:read	([BII)I
+    //   121: invokevirtual 424	java/io/InputStream:read	([BII)I
     //   124: istore_1
     //   125: iload_1
     //   126: iconst_m1
@@ -392,47 +402,47 @@ public class MiniLogManager
     //   132: aload 7
     //   134: iconst_0
     //   135: iload_1
-    //   136: invokevirtual 338	java/util/zip/ZipOutputStream:write	([BII)V
+    //   136: invokevirtual 367	java/util/zip/ZipOutputStream:write	([BII)V
     //   139: goto -25 -> 114
     //   142: astore 5
     //   144: aload 5
-    //   146: invokevirtual 397	java/lang/Exception:printStackTrace	()V
+    //   146: invokevirtual 425	java/lang/Exception:printStackTrace	()V
     //   149: aload 4
     //   151: ifnull +8 -> 159
     //   154: aload 4
-    //   156: invokevirtual 357	java/io/BufferedOutputStream:close	()V
+    //   156: invokevirtual 385	java/io/BufferedOutputStream:close	()V
     //   159: iload_3
     //   160: istore_2
     //   161: aload_0
     //   162: ifnull +9 -> 171
     //   165: aload_0
-    //   166: invokevirtual 398	java/io/InputStream:close	()V
+    //   166: invokevirtual 426	java/io/InputStream:close	()V
     //   169: iload_3
     //   170: istore_2
     //   171: iload_2
     //   172: ireturn
     //   173: aload 6
-    //   175: invokevirtual 364	java/util/zip/ZipOutputStream:close	()V
+    //   175: invokevirtual 392	java/util/zip/ZipOutputStream:close	()V
     //   178: iconst_1
     //   179: istore_2
     //   180: aload 4
     //   182: ifnull +8 -> 190
     //   185: aload 4
-    //   187: invokevirtual 357	java/io/BufferedOutputStream:close	()V
+    //   187: invokevirtual 385	java/io/BufferedOutputStream:close	()V
     //   190: aload_0
     //   191: ifnull -20 -> 171
     //   194: aload_0
-    //   195: invokevirtual 398	java/io/InputStream:close	()V
+    //   195: invokevirtual 426	java/io/InputStream:close	()V
     //   198: iconst_1
     //   199: ireturn
     //   200: astore_0
     //   201: aload_0
-    //   202: invokevirtual 399	java/lang/Throwable:printStackTrace	()V
+    //   202: invokevirtual 427	java/lang/Throwable:printStackTrace	()V
     //   205: iconst_1
     //   206: ireturn
     //   207: astore_0
     //   208: aload_0
-    //   209: invokevirtual 399	java/lang/Throwable:printStackTrace	()V
+    //   209: invokevirtual 427	java/lang/Throwable:printStackTrace	()V
     //   212: iconst_0
     //   213: ireturn
     //   214: astore_0
@@ -441,16 +451,16 @@ public class MiniLogManager
     //   218: aload 4
     //   220: ifnull +8 -> 228
     //   223: aload 4
-    //   225: invokevirtual 357	java/io/BufferedOutputStream:close	()V
+    //   225: invokevirtual 385	java/io/BufferedOutputStream:close	()V
     //   228: aload 5
     //   230: ifnull +8 -> 238
     //   233: aload 5
-    //   235: invokevirtual 398	java/io/InputStream:close	()V
+    //   235: invokevirtual 426	java/io/InputStream:close	()V
     //   238: aload_0
     //   239: athrow
     //   240: astore 4
     //   242: aload 4
-    //   244: invokevirtual 399	java/lang/Throwable:printStackTrace	()V
+    //   244: invokevirtual 427	java/lang/Throwable:printStackTrace	()V
     //   247: goto -9 -> 238
     //   250: astore_0
     //   251: goto -33 -> 218

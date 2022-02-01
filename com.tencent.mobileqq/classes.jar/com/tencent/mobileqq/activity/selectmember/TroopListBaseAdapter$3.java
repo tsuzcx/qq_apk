@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alzi;
 import android.text.TextUtils;
-import antp;
-import aoxz;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -15,15 +14,15 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class TroopListBaseAdapter$3
+class TroopListBaseAdapter$3
   implements Runnable
 {
-  public TroopListBaseAdapter$3(alzi paramalzi, TroopManager paramTroopManager, aoxz paramaoxz) {}
+  TroopListBaseAdapter$3(TroopListBaseAdapter paramTroopListBaseAdapter, TroopManager paramTroopManager, RecentUserProxy paramRecentUserProxy) {}
   
   public void run()
   {
     ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a();
-    ArrayList localArrayList2 = ((antp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
+    ArrayList localArrayList2 = ((DiscussionManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
     ArrayList localArrayList3 = new ArrayList();
     Iterator localIterator = localArrayList2.iterator();
     int i = 0;
@@ -51,7 +50,7 @@ public class TroopListBaseAdapter$3
         {
           localArrayList3.add(localDiscussionInfo);
         }
-        else if (this.this$0.jdField_a_of_type_Antp.a(localDiscussionInfo.uin) > 0)
+        else if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppDiscussionManager.a(localDiscussionInfo.uin) > 0)
         {
           localArrayList3.add(localDiscussionInfo);
           i += 1;
@@ -70,7 +69,7 @@ public class TroopListBaseAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopListBaseAdapter.3
  * JD-Core Version:    0.7.0.1
  */

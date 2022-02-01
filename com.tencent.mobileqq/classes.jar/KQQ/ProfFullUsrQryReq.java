@@ -9,13 +9,13 @@ public final class ProfFullUsrQryReq
   extends JceStruct
 {
   static ArrayList<Long> cache_vFriendUin;
-  public int iAppId;
+  public int iAppId = 0;
   public int iGetTagFlag = -1;
-  public int iReloadFlag;
-  public int iRetIncomPlete;
+  public int iReloadFlag = 0;
+  public int iRetIncomPlete = 0;
   public String strSessionKey = "";
-  public long usruin;
-  public ArrayList<Long> vFriendUin;
+  public long usruin = 0L;
+  public ArrayList<Long> vFriendUin = null;
   
   public ProfFullUsrQryReq() {}
   

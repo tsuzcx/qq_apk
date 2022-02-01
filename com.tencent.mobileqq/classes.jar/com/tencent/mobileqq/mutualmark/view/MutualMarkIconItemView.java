@@ -5,14 +5,14 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import axlx;
-import axms;
+import com.tencent.mobileqq.mutualmark.MutualMarkIconProxyDrawable;
+import com.tencent.mobileqq.mutualmark.info.MutualMarkForDisplayInfo;
 
 public class MutualMarkIconItemView
   extends ImageView
 {
-  axlx jdField_a_of_type_Axlx;
-  axms jdField_a_of_type_Axms;
+  MutualMarkIconProxyDrawable jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable;
+  MutualMarkForDisplayInfo jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo;
   
   public MutualMarkIconItemView(Context paramContext)
   {
@@ -31,31 +31,31 @@ public class MutualMarkIconItemView
   
   public int a()
   {
-    if (this.jdField_a_of_type_Axlx != null) {
-      return this.jdField_a_of_type_Axlx.getIntrinsicWidth();
+    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable.getIntrinsicWidth();
     }
     return getMeasuredWidth();
   }
   
   public long a()
   {
-    if (this.jdField_a_of_type_Axms != null) {
-      return this.jdField_a_of_type_Axms.a;
+    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo.a;
     }
     return 0L;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Axlx != null) {
-      this.jdField_a_of_type_Axlx.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable.b();
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Axlx != null) {
-      this.jdField_a_of_type_Axlx.a(paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable.a(paramString);
     }
   }
   
@@ -65,22 +65,22 @@ public class MutualMarkIconItemView
     setAlpha(paramFloat);
   }
   
-  public void setIconResource(axms paramaxms)
+  public void setIconResource(MutualMarkForDisplayInfo paramMutualMarkForDisplayInfo)
   {
-    if (this.jdField_a_of_type_Axms == paramaxms) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo == paramMutualMarkForDisplayInfo) {}
     do
     {
       return;
-      this.jdField_a_of_type_Axms = paramaxms;
-      if (!TextUtils.isEmpty(paramaxms.jdField_c_of_type_JavaLangString))
+      this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo = paramMutualMarkForDisplayInfo;
+      if (!TextUtils.isEmpty(paramMutualMarkForDisplayInfo.jdField_c_of_type_JavaLangString))
       {
-        this.jdField_a_of_type_Axlx = new axlx(getContext(), paramaxms.jdField_c_of_type_JavaLangString);
-        setImageDrawable(this.jdField_a_of_type_Axlx);
+        this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.jdField_c_of_type_JavaLangString);
+        setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable);
         return;
       }
-    } while (paramaxms.jdField_c_of_type_Int == 0);
-    this.jdField_a_of_type_Axlx = new axlx(getContext(), paramaxms.jdField_c_of_type_Int);
-    setImageDrawable(this.jdField_a_of_type_Axlx);
+    } while (paramMutualMarkForDisplayInfo.jdField_c_of_type_Int == 0);
+    this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.jdField_c_of_type_Int);
+    setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable);
   }
 }
 

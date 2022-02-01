@@ -8,7 +8,7 @@ public final class UndealCountQzmallDeco
   extends JceStruct
 {
   static QzmallCustomVip cache_stCustomVip = new QzmallCustomVip();
-  public QzmallCustomVip stCustomVip;
+  public QzmallCustomVip stCustomVip = null;
   
   public UndealCountQzmallDeco() {}
   

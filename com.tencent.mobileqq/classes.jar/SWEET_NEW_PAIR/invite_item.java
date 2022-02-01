@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class invite_item
   extends JceStruct
 {
-  public long time;
-  public long uin;
+  public long time = 0L;
+  public long uin = 0L;
   
   public invite_item() {}
   

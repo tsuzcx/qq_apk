@@ -27,11 +27,11 @@ public class RoundTextView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RoundTextView);
-    this.jdField_a_of_type_Int = paramContext.getColor(0, 2131167363);
+    this.jdField_a_of_type_Int = paramContext.getColor(0, 2131167374);
     paramContext.recycle();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
     {

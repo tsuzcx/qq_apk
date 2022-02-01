@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bdxj;
-import bhdj;
-import bisl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -23,27 +22,27 @@ public class SubAccountBaseActivity
   extends IphoneTitleBarActivity
   implements DialogInterface.OnClickListener
 {
-  private bisl jdField_a_of_type_Bisl;
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  public String b;
+  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  protected String b;
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bisl == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
-      this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bisl.c(true);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
     }
     if (paramInt > 0) {
-      this.jdField_a_of_type_Bisl.c(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Bisl != null) && (!this.jdField_a_of_type_Bisl.isShowing()) && (!isFinishing())) {
-        this.jdField_a_of_type_Bisl.show();
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (!isFinishing())) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       return;
-      this.jdField_a_of_type_Bisl.c(2131694477);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131694694);
     }
   }
   
@@ -54,9 +53,9 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     f();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131691037, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690697, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131691144, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690800, (DialogInterface.OnClickListener)localObject);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
@@ -73,15 +72,15 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     f();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131691037, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131691144, (DialogInterface.OnClickListener)localObject);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
   public boolean b()
   {
-    return NetworkUtil.isNetSupport(BaseApplication.getContext());
+    return NetworkUtil.d(BaseApplication.getContext());
   }
   
   public void c(String paramString)
@@ -93,7 +92,7 @@ public class SubAccountBaseActivity
   {
     boolean bool = b();
     if (!bool) {
-      b(getString(2131692125));
+      b(getString(2131692257));
     }
     return bool;
   }
@@ -117,18 +116,18 @@ public class SubAccountBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bdxj localbdxj = (bdxj)this.app.getManager(QQManagerFactory.SUB_ACCOUNT_CONTROLL);
-    if (localbdxj != null) {
-      localbdxj.a(this);
+    SubAccountControll localSubAccountControll = (SubAccountControll)this.app.getManager(QQManagerFactory.SUB_ACCOUNT_CONTROLL);
+    if (localSubAccountControll != null) {
+      localSubAccountControll.a(this);
     }
   }
   
   public void e()
   {
-    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bisl.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       return;
     }
     catch (Exception localException) {}
@@ -181,7 +180,7 @@ public class SubAccountBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBaseActivity
  * JD-Core Version:    0.7.0.1
  */

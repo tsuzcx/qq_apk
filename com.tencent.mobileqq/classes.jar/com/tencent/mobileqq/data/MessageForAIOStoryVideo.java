@@ -16,7 +16,7 @@ public class MessageForAIOStoryVideo
   public static final String MSG_STORY_FEED_KEY_DESC = "desc";
   public static final String TAG = "MessageForAIOStoryVideo";
   public String cover = "";
-  public long createtime;
+  public long createtime = 0L;
   public META.StStoryFeed mStStoryFeed = new META.StStoryFeed();
   public String text = "";
   
@@ -53,7 +53,7 @@ public class MessageForAIOStoryVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForAIOStoryVideo
  * JD-Core Version:    0.7.0.1
  */

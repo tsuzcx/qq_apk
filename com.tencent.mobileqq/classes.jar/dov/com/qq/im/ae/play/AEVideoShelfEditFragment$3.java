@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae.play;
 
-import bisa;
-import bisc;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
 
 class AEVideoShelfEditFragment$3
-  implements bisc
+  implements ProgressPieDrawable.OnProgressListener
 {
   AEVideoShelfEditFragment$3(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
   
-  public void onProgressChanged(bisa parambisa, int paramInt1, int paramInt2) {}
+  public void onProgressChanged(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
   
-  public void onProgressCompleted(bisa parambisa) {}
+  public void onProgressCompleted(ProgressPieDrawable paramProgressPieDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoShelfEditFragment.3
  * JD-Core Version:    0.7.0.1
  */

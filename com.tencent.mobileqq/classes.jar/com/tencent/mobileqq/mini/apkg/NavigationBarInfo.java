@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.apkg;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.mini.util.ColorUtils;
+import com.tencent.qqmini.sdk.launcher.utils.ColorUtils;
 import org.json.JSONObject;
 
 public class NavigationBarInfo

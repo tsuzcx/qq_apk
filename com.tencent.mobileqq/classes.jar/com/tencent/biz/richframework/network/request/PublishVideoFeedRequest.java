@@ -3,6 +3,7 @@ package com.tencent.biz.richframework.network.request;
 import NS_QQ_STORY_CLIENT.CLIENT.StPublishStoryFeedReq;
 import NS_QQ_STORY_CLIENT.CLIENT.StPublishStoryFeedRsp;
 import NS_QQ_STORY_META.META.StStoryFeed;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 
 public class PublishVideoFeedRequest
@@ -18,7 +19,15 @@ public class PublishVideoFeedRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CLIENT.StPublishStoryFeedRsp localStPublishStoryFeedRsp = new CLIENT.StPublishStoryFeedRsp();
-    localStPublishStoryFeedRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStPublishStoryFeedRsp.mergeFrom(paramArrayOfByte);
+      return localStPublishStoryFeedRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStPublishStoryFeedRsp;
   }
   
@@ -34,7 +43,7 @@ public class PublishVideoFeedRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.PublishVideoFeedRequest
  * JD-Core Version:    0.7.0.1
  */

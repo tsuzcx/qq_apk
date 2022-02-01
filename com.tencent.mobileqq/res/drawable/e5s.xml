@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/guq" />
-    <item android:drawable="@drawable/gur" />
-</selector>
+    <solid android:color="#ffff5983" />
+    <corners android:radius="18.0dip" />
+    <padding android:left="5.5dip" android:top="2.0dip" android:right="5.5dip" android:bottom="2.0dip" />
+</shape>

@@ -14,8 +14,8 @@ import javax.net.ssl.SSLException;
 public final class du
 {
   private long A = 30000L;
-  private String B = "6.0.5.7";
-  private String C = "200408";
+  private String B = "6.0.5.8";
+  private String C = "201207";
   private String D = this.B;
   public int a;
   public String b;
@@ -195,7 +195,7 @@ public final class du
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     c.t.m.g.du
  * JD-Core Version:    0.7.0.1
  */

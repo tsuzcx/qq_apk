@@ -7,15 +7,15 @@ import com.qq.taf.jce.JceStruct;
 public final class MessageRemindRsp
   extends JceStruct
 {
-  public int eNowLevel;
-  public int eRemindLevel;
-  public int iFreezedType;
-  public long iGroupExpiredTime;
-  public int iGroupType;
-  public int iLhGroupExpiredTime;
-  public long iNextReqTime;
-  public long iSVIPExpiredTime;
-  public int iUserRole;
+  public int eNowLevel = 0;
+  public int eRemindLevel = 0;
+  public int iFreezedType = 0;
+  public long iGroupExpiredTime = 0L;
+  public int iGroupType = 0;
+  public int iLhGroupExpiredTime = 0;
+  public long iNextReqTime = 0L;
+  public long iSVIPExpiredTime = 0L;
+  public int iUserRole = 0;
   public boolean isFreezed = true;
   
   public MessageRemindRsp() {}

@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import agre;
-import arul;
-import arum;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameListener;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForFuDai
   extends ChatMessage
-  implements agre
+  implements CustomFrameAnimationDrawable.FrameListener
 {
   private static final String TAG = "MessageForFuDai";
   public String aioTails = "";
@@ -27,7 +25,7 @@ public class MessageForFuDai
   
   protected void doParse()
   {
-    arul.a(this.msgData, this);
+    MessageForFuDai.Decoder.a(this.msgData, this);
   }
   
   public int getState()
@@ -78,7 +76,7 @@ public class MessageForFuDai
   
   public void prewrite()
   {
-    this.msgData = arum.a(this);
+    this.msgData = MessageForFuDai.Encoder.a(this);
   }
   
   public String toString()
@@ -88,7 +86,7 @@ public class MessageForFuDai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFuDai
  * JD-Core Version:    0.7.0.1
  */

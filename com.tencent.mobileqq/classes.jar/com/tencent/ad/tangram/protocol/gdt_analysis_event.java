@@ -21,6 +21,10 @@ public final class gdt_analysis_event
   public static final int CANVAS_STYLE_HALF_SCREEN = 101;
   public static final int CANVAS_STYLE_VIDEO_CEILING = 102;
   public static final int EVENT_APP_INSATLLED = 1062;
+  public static final int EVENT_APP_PREORDER_CAN_START_DOWNLOAD = 1206;
+  public static final int EVENT_APP_PREORDER_CLICKED = 1205;
+  public static final int EVENT_APP_PREORDER_TASK_REPORT_STAGE_CHANGED = 1204;
+  public static final int EVENT_APP_PREORDER_TASK_STATUS_CHANGED = 1203;
   public static final int EVENT_CANVAS_DATA_BUILD_END = 1202;
   public static final int EVENT_CANVAS_DATA_BUILD_ERROR = 1201;
   public static final int EVENT_CLICK_END = 1017;
@@ -91,6 +95,7 @@ public final class gdt_analysis_event
   public static final int EVENT_PRELOAD_QQ_MINI_PROGRM_FAILED = 1012;
   public static final int EVENT_PRELOAD_QQ_MINI_PROGRM_START = 1010;
   public static final int EVENT_PRELOAD_QQ_MINI_PROGRM_SUCCESS = 1011;
+  public static final int EVENT_QQ_STAY_BACKGROUND_TIME_MILLIS = 1207;
   public static final int EVENT_SHOW_BANNER = 1054;
   public static final int EVENT_SHOW_INTERSTITIAL_ARK_SCRIPT_LOADED = 1088;
   public static final int EVENT_SHOW_INTERSTITIAL_ARK_VIEW_LOAD_END = 1087;
@@ -190,7 +195,7 @@ public final class gdt_analysis_event
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.protocol.gdt_analysis_event
  * JD-Core Version:    0.7.0.1
  */

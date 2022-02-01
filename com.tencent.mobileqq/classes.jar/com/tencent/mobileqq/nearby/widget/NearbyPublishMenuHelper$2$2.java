@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class NearbyPublishMenuHelper$2$2
   implements Runnable

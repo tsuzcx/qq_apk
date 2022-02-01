@@ -8,9 +8,9 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import bapu;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoViewFactory;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class FileVideoOnlinePlayerFragment
   extends IphoneTitleBarFragment
 {
-  private QQVideoPlayView a;
+  private QQVideoPlayView a = null;
   
   void a()
   {
@@ -41,7 +41,7 @@ public class FileVideoOnlinePlayerFragment
         if (!ThemeUtil.isInNightMode(((PublicFragmentActivity)localFragmentActivity).app)) {
           break label115;
         }
-        if ((SystemUtil.isMIUI()) || (SystemUtil.isFlyme())) {
+        if ((SystemUtil.b()) || (SystemUtil.d())) {
           break label104;
         }
         localSystemBarCompact.setStatusBarColor(0);
@@ -53,13 +53,13 @@ public class FileVideoOnlinePlayerFragment
     localSystemBarCompact.setStatusBarDarkMode(true);
     return;
     label115:
-    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
     {
       localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
       localSystemBarCompact.setStatusBarColor(0);
       return;
     }
-    if (!SystemUtil.isFlyme())
+    if (!SystemUtil.d())
     {
       localSystemBarCompact.setStatusBarColor(0);
       return;
@@ -70,7 +70,7 @@ public class FileVideoOnlinePlayerFragment
   
   public int getContentLayoutId()
   {
-    return 2131560852;
+    return 2131560944;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -102,7 +102,7 @@ public class FileVideoOnlinePlayerFragment
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131376948);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131377357);
     Object localObject = getActivity().getIntent();
     String str1 = ((Intent)localObject).getStringExtra("fileid");
     String str2 = ((Intent)localObject).getStringExtra("url");
@@ -116,7 +116,7 @@ public class FileVideoOnlinePlayerFragment
     localVideoPlayParam.mIsLocal = false;
     localVideoPlayParam.mIsLoop = false;
     localVideoPlayParam.mSceneId = 109;
-    this.a = ((QQVideoPlayView)bapu.a(getActivity(), 109L, localVideoPlayParam, null));
+    this.a = ((QQVideoPlayView)QQVideoViewFactory.a(getActivity(), 109L, localVideoPlayParam, null));
     localRelativeLayout.addView(this.a, -1, -1);
     this.a.play();
     super.onViewCreated(paramView, paramBundle);
@@ -124,7 +124,7 @@ public class FileVideoOnlinePlayerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileVideoOnlinePlayerFragment
  * JD-Core Version:    0.7.0.1
  */

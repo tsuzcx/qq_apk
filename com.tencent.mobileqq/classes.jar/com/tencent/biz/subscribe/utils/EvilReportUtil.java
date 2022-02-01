@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Base64;
-import bkwk;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import cooperation.qzone.util.QZLog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.securitysdk.utils.MD5;
 import java.net.URLEncoder;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -16,15 +16,27 @@ import okhttp3.Request.Builder;
 
 public class EvilReportUtil
 {
-  private static final String AES_DECYPT_KEY = "d41d8cd98f00b204e9800998ecf8427e";
-  private static final String ECB_CHIPER_ALGRITHUM = "AES/ECB/NoPadding";
-  private static final String ENCRYPTED_KEY_DEFUALT = "Jbq0Dm55FudiaTa26UjP071XduhCyIKRYaK6MCcYzZA";
-  private static final String EVIL_REPORT_URL = "https://jubao.qq.com/uniform_impeach/impeach_entry";
-  private static final String GET_EVIL_REPORT_ENCRYPTED_KEY_URL = "https://jubao.qq.com/uniform_impeach/impeach_cryptokey";
-  private static final String KEY_ALGRITHM = "AES";
-  private static final String TAG = "EvilReportUtil";
+  private static String a(EvilReportUtil.EvilReportParams paramEvilReportParams, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramEvilReportParams.a);
+    localStringBuilder.append("_").append(paramEvilReportParams.b);
+    localStringBuilder.append("_").append(paramEvilReportParams.h);
+    localStringBuilder.append("_").append(a(paramString));
+    paramString = MD5.a(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder().append(paramEvilReportParams.d);
+    localStringBuilder.append("_").append(paramEvilReportParams.k);
+    localStringBuilder.append("_").append(paramEvilReportParams.l);
+    localStringBuilder.append("_").append(paramEvilReportParams.m);
+    localStringBuilder.append("_").append(paramEvilReportParams.n);
+    localStringBuilder.append("_").append(paramEvilReportParams.o);
+    localStringBuilder.append("_").append(paramEvilReportParams.p);
+    localStringBuilder.append("_").append(paramEvilReportParams.q);
+    localStringBuilder.append("_").append(paramString);
+    return MD5.a(localStringBuilder.toString());
+  }
   
-  private static String decryptKey(String paramString)
+  private static String a(String paramString)
   {
     try
     {
@@ -37,71 +49,57 @@ public class EvilReportUtil
     }
     catch (Throwable paramString)
     {
-      QZLog.e("EvilReportUtil", "decrypt key error! " + paramString);
+      QLog.e("EvilReportUtil", 1, "decrypt key error! " + paramString);
     }
     return "";
   }
   
-  public static void doEvilReport(Context paramContext, EvilReportUtil.EvilReportParams paramEvilReportParams)
+  public static void a(Context paramContext, EvilReportUtil.EvilReportParams paramEvilReportParams)
   {
-    if ((paramContext == null) || (paramEvilReportParams == null)) {
+    if ((paramContext == null) || (paramEvilReportParams == null))
+    {
+      QLog.d("QCircleEvilReport", 1, "context or reportParam is empty");
       return;
     }
     Request localRequest = new Request.Builder().url("https://jubao.qq.com/uniform_impeach/impeach_cryptokey").build();
     new OkHttpClient().newCall(localRequest).enqueue(new EvilReportUtil.1(paramContext, paramEvilReportParams));
   }
   
-  private static String generateCryptoGraph(EvilReportUtil.EvilReportParams paramEvilReportParams, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramEvilReportParams.system);
-    localStringBuilder.append("_").append(paramEvilReportParams.version);
-    localStringBuilder.append("_").append(paramEvilReportParams.scene);
-    localStringBuilder.append("_").append(decryptKey(paramString));
-    paramString = bkwk.a(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder().append(paramEvilReportParams.eviluin);
-    localStringBuilder.append("_").append(paramEvilReportParams.srv_para);
-    localStringBuilder.append("_").append(paramEvilReportParams.text_evidence);
-    localStringBuilder.append("_").append(paramEvilReportParams.img_evidence);
-    localStringBuilder.append("_").append(paramEvilReportParams.url_evidence);
-    localStringBuilder.append("_").append(paramEvilReportParams.video_evidence);
-    localStringBuilder.append("_").append(paramEvilReportParams.file_evidence);
-    localStringBuilder.append("_").append(paramEvilReportParams.audio_evidence);
-    localStringBuilder.append("_").append(paramString);
-    return bkwk.a(localStringBuilder.toString());
-  }
-  
-  private static void navigateToEvilReportPage(Context paramContext, EvilReportUtil.EvilReportParams paramEvilReportParams, String paramString)
+  private static void b(Context paramContext, EvilReportUtil.EvilReportParams paramEvilReportParams, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder("https://jubao.qq.com/uniform_impeach/impeach_entry");
-    localStringBuilder.append("?system=").append(paramEvilReportParams.system);
-    localStringBuilder.append("&version=").append(paramEvilReportParams.version);
-    localStringBuilder.append("&uintype=").append(paramEvilReportParams.uintype);
-    localStringBuilder.append("&eviluin=").append(paramEvilReportParams.eviluin);
-    localStringBuilder.append("&appname=").append(paramEvilReportParams.appname);
-    localStringBuilder.append("&appid=").append(paramEvilReportParams.appid);
-    localStringBuilder.append("&subapp=").append(paramEvilReportParams.subapp);
-    localStringBuilder.append("&scene=").append(paramEvilReportParams.scene);
-    localStringBuilder.append("&buddyflag=").append(paramEvilReportParams.buddyflag);
-    localStringBuilder.append("&contentid=").append(paramEvilReportParams.contentid);
-    localStringBuilder.append("&srv_para=").append(paramEvilReportParams.srv_para);
-    localStringBuilder.append("&text_evidence=").append(paramEvilReportParams.text_evidence);
-    localStringBuilder.append("&img_evidence=").append(URLEncoder.encode(paramEvilReportParams.img_evidence));
-    localStringBuilder.append("&url_evidence=").append(paramEvilReportParams.url_evidence);
-    localStringBuilder.append("&video_evidence=").append(URLEncoder.encode(paramEvilReportParams.video_evidence));
-    localStringBuilder.append("&file_evidence=").append(paramEvilReportParams.file_evidence);
-    localStringBuilder.append("&audio_evidence=").append(paramEvilReportParams.audio_evidence);
-    localStringBuilder.append("&user_input_param=").append(paramEvilReportParams.user_input_param);
-    localStringBuilder.append("&groupid=").append(paramEvilReportParams.groupid);
-    localStringBuilder.append("&cryptograph=").append(generateCryptoGraph(paramEvilReportParams, paramString));
-    paramEvilReportParams = new Intent(paramContext, QQBrowserDelegationActivity.class);
+    localStringBuilder.append("?system=").append(paramEvilReportParams.a);
+    localStringBuilder.append("&version=").append(paramEvilReportParams.b);
+    localStringBuilder.append("&uintype=").append(paramEvilReportParams.c);
+    localStringBuilder.append("&eviluin=").append(paramEvilReportParams.d);
+    localStringBuilder.append("&appname=").append(paramEvilReportParams.e);
+    localStringBuilder.append("&appid=").append(paramEvilReportParams.f);
+    localStringBuilder.append("&subapp=").append(paramEvilReportParams.g);
+    localStringBuilder.append("&scene=").append(paramEvilReportParams.h);
+    localStringBuilder.append("&buddyflag=").append(paramEvilReportParams.i);
+    localStringBuilder.append("&contentid=").append(paramEvilReportParams.j);
+    localStringBuilder.append("&srv_para=").append(paramEvilReportParams.k);
+    localStringBuilder.append("&text_evidence=").append(paramEvilReportParams.l);
+    localStringBuilder.append("&img_evidence=").append(URLEncoder.encode(paramEvilReportParams.m));
+    localStringBuilder.append("&url_evidence=").append(paramEvilReportParams.n);
+    localStringBuilder.append("&video_evidence=").append(URLEncoder.encode(paramEvilReportParams.o));
+    localStringBuilder.append("&file_evidence=").append(paramEvilReportParams.p);
+    localStringBuilder.append("&audio_evidence=").append(paramEvilReportParams.q);
+    localStringBuilder.append("&user_input_param=").append(paramEvilReportParams.r);
+    localStringBuilder.append("&groupid=").append(paramEvilReportParams.s);
+    localStringBuilder.append("&cryptograph=").append(a(paramEvilReportParams, paramString));
+    paramEvilReportParams = new Intent();
+    paramEvilReportParams.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserDelegationActivity");
     paramEvilReportParams.putExtra("url", localStringBuilder.toString());
+    if (!(paramContext instanceof Activity)) {
+      paramEvilReportParams.addFlags(268435456);
+    }
     paramContext.startActivity(paramEvilReportParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.EvilReportUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.device;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import zms;
+import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
 
 final class DeviceScanner$1
   implements DialogInterface.OnClickListener
 {
-  DeviceScanner$1(zms paramzms) {}
+  DeviceScanner$1(QrHandleResultCallBack paramQrHandleResultCallBack) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
@@ -19,7 +19,7 @@ final class DeviceScanner$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.DeviceScanner.1
  * JD-Core Version:    0.7.0.1
  */

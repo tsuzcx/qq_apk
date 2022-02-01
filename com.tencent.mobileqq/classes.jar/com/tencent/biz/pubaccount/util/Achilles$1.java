@@ -1,15 +1,14 @@
 package com.tencent.biz.pubaccount.util;
 
-import aqgj;
 import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderProxy;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import ura;
 
-public final class Achilles$1
+final class Achilles$1
   implements Runnable
 {
   public void run()
@@ -51,7 +50,7 @@ public final class Achilles$1
         {
           localObject2 = (AchillesParams)((Iterator)localObject1).next();
           localObject3 = Achilles.a((AchillesParams)localObject2);
-          aqgj.a((RockDownloadInfo)localObject3, new ura(this, (RockDownloadInfo)localObject3, (AchillesParams)localObject2));
+          RockDownloaderProxy.a((RockDownloadInfo)localObject3, new Achilles.1.1(this, (RockDownloadInfo)localObject3, (AchillesParams)localObject2));
         }
       }
     }
@@ -59,7 +58,7 @@ public final class Achilles$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.Achilles.1
  * JD-Core Version:    0.7.0.1
  */

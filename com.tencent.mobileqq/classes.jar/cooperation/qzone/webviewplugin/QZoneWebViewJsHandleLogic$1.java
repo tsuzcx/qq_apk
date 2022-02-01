@@ -2,10 +2,10 @@ package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import cooperation.qzone.share.WXShareFromQZHelper;
 import cooperation.qzone.share.WXShareFromQZHelper.WXShareListener;
-import znl;
 
 final class QZoneWebViewJsHandleLogic$1
   implements WXShareFromQZHelper.WXShareListener
@@ -26,17 +26,17 @@ final class QZoneWebViewJsHandleLogic$1
       case -2: 
       case -1: 
       default: 
-        znl.a(1, 2131718766);
+        QRUtils.a(1, 2131719291);
         break;
       case 0: 
-        znl.a(2, 2131718784);
+        QRUtils.a(2, 2131719309);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic.1
  * JD-Core Version:    0.7.0.1
  */

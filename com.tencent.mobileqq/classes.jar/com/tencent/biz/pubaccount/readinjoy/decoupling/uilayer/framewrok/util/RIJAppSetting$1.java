@@ -2,12 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import pqu;
 
-public final class RIJAppSetting$1
+final class RIJAppSetting$1
   implements Runnable
 {
-  public RIJAppSetting$1(QQAppInterface paramQQAppInterface) {}
+  RIJAppSetting$1(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -17,15 +16,15 @@ public final class RIJAppSetting$1
       do
       {
         return;
-      } while (!pqu.a);
-      pqu.b(this.a);
+      } while (!RIJAppSetting.a);
+      RIJAppSetting.b(this.a);
     } while (!QLog.isColorLevel());
     QLog.d("RIJAppSetting", 2, "handNet2Wifi is show conversation");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJAppSetting.1
  * JD-Core Version:    0.7.0.1
  */

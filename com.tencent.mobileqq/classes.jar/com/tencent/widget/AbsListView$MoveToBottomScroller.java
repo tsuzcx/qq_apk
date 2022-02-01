@@ -4,7 +4,7 @@ import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import bkxo;
+import com.tencent.util.AnimateUtils;
 
 class AbsListView$MoveToBottomScroller
   implements Runnable
@@ -14,7 +14,7 @@ class AbsListView$MoveToBottomScroller
   private static final int STATUS_DECERLERING = 1;
   private static final int STATUS_UNIFORM = 2;
   private static final int STATUS_VISCOUS_FLUID = 3;
-  private int lastMotionY;
+  private int lastMotionY = 0;
   private float mAccerleration;
   private float mCurrVelocity;
   private int mDistance;
@@ -23,7 +23,7 @@ class AbsListView$MoveToBottomScroller
   private long mStartTime;
   private int mStatus;
   private int mTargetPosition;
-  private boolean mUseViscousFluid;
+  private boolean mUseViscousFluid = false;
   
   AbsListView$MoveToBottomScroller(AbsListView paramAbsListView) {}
   
@@ -49,8 +49,8 @@ class AbsListView$MoveToBottomScroller
           if ((this.mStatus == 3) || (this.mStatus == 1) || (k + i - 1 < this.mTargetPosition)) {
             break label524;
           }
-          k = AbsListView.access$2800(this.this$0);
-          int m = AbsListView.access$2900(this.this$0);
+          k = AbsListView.access$2900(this.this$0);
+          int m = AbsListView.access$3000(this.this$0);
           int n = this.this$0.mListPadding.bottom;
           this.mDistance = (this.this$0.getChildAt(i - 1).getBottom() - (k - m - n));
           if (this.mDistance != 0) {
@@ -96,7 +96,7 @@ class AbsListView$MoveToBottomScroller
           return;
         }
         float f = j;
-        i = (int)(bkxo.a(f / this.mDuration) * this.mDistance);
+        i = (int)(AnimateUtils.a(f / this.mDuration) * this.mDistance);
         continue;
         label426:
         this.mDuration = (400 - j);
@@ -140,8 +140,8 @@ class AbsListView$MoveToBottomScroller
     i = this.this$0.mItemCount - (i + j - 1) - 1;
     if (i == 0)
     {
-      i = AbsListView.access$2600(this.this$0);
-      j = AbsListView.access$2700(this.this$0);
+      i = AbsListView.access$2700(this.this$0);
+      j = AbsListView.access$2800(this.this$0);
       int k = this.this$0.mListPadding.bottom;
       this.mDistance = (this.this$0.getChildAt(this.this$0.getChildCount() - 1).getBottom() - (i - j - k));
       if (this.mDistance == 0)

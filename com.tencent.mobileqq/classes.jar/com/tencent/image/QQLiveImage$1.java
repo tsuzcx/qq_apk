@@ -1,37 +1,44 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
+import java.util.ArrayList;
+import java.util.concurrent.locks.ReentrantLock;
 
-class QQLiveImage$1
-  implements URLDrawable.URLDrawableListener
+final class QQLiveImage$1
+  implements Runnable
 {
-  QQLiveImage$1(QQLiveImage paramQQLiveImage) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(QQLiveImage.TAG + this.this$0.ID, 2, "initCover(): onLoadFialed(): ");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable.getStatus() == 1) && ((paramURLDrawable.getCurrDrawable() instanceof RegionDrawable)))
+    try
     {
-      paramURLDrawable = ((RegionDrawable)paramURLDrawable.getCurrDrawable()).getBitmap();
-      this.this$0.mCoverBitmapRef = new WeakReference(paramURLDrawable);
-      this.this$0.invalidateSelf();
-      if (QLog.isColorLevel()) {
-        QLog.d(QQLiveImage.TAG + this.this$0.ID, 2, "initCover(): onLoadSuccessed(): ");
+      QQLiveImage.mLockForImageList.lock();
+      if (QQLiveImage.access$000() != null)
+      {
+        int i = 0;
+        while (i < QQLiveImage.access$000().size())
+        {
+          QQLiveImage localQQLiveImage = (QQLiveImage)QQLiveImage.access$000().get(i);
+          if (localQQLiveImage != null)
+          {
+            localQQLiveImage.recyleFor2Background();
+            URLDrawable.depImp.mLog.i(QQLiveImage.TAG, 1, "recyleFor2Background().... i " + i + ", ID: " + localQQLiveImage.ID);
+          }
+          i += 1;
+        }
       }
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(QQLiveImage.TAG + this.this$0.ID, 2, "initCover(): onLoadSuccessed(): ");
+    catch (Exception localException)
+    {
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.e(QQLiveImage.TAG, 2, "recyleFor2Background()", localException);
+      }
+      return;
+    }
+    finally
+    {
+      QQLiveImage.mLockForImageList.unlock();
     }
   }
 }

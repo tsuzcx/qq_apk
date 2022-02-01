@@ -32,8 +32,10 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Scroller;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -42,17 +44,7 @@ import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.dom.style.CornerViewOutlineProvider;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import olh;
 import org.json.JSONObject;
-import ttf;
-import ttg;
-import tth;
-import tti;
-import ttj;
-import ttk;
-import ttl;
-import ttm;
-import ttn;
 
 public class CommonSuspensionGestureLayout
   extends FrameLayout
@@ -72,7 +64,7 @@ public class CommonSuspensionGestureLayout
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Context jdField_a_of_type_AndroidContentContext;
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
+  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker = null;
   private View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -81,9 +73,9 @@ public class CommonSuspensionGestureLayout
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   Scroller jdField_a_of_type_AndroidWidgetScroller;
+  private CommonSuspensionGestureLayout.ContentScrollListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener;
+  private CommonSuspensionGestureLayout.SuspensionGestureListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$SuspensionGestureListener;
   private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  private ttm jdField_a_of_type_Ttm;
-  private ttn jdField_a_of_type_Ttn;
   private boolean jdField_a_of_type_Boolean = true;
   float jdField_b_of_type_Float;
   private View jdField_b_of_type_AndroidViewView;
@@ -92,7 +84,7 @@ public class CommonSuspensionGestureLayout
   private boolean jdField_b_of_type_Boolean = true;
   float jdField_c_of_type_Float;
   private View jdField_c_of_type_AndroidViewView;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   float jdField_d_of_type_Float;
   private View jdField_d_of_type_AndroidViewView;
   private boolean jdField_d_of_type_Boolean = true;
@@ -100,30 +92,31 @@ public class CommonSuspensionGestureLayout
   private View jdField_e_of_type_AndroidViewView;
   private boolean jdField_e_of_type_Boolean = true;
   private View jdField_f_of_type_AndroidViewView;
-  private boolean jdField_f_of_type_Boolean;
+  private boolean jdField_f_of_type_Boolean = false;
   private View jdField_g_of_type_AndroidViewView;
-  private boolean jdField_g_of_type_Boolean;
+  private boolean jdField_g_of_type_Boolean = false;
   private boolean h;
-  private int jdField_i_of_type_Int;
-  private boolean jdField_i_of_type_Boolean;
+  private int jdField_i_of_type_Int = 0;
+  private boolean jdField_i_of_type_Boolean = false;
   private int jdField_j_of_type_Int = 120;
-  private boolean jdField_j_of_type_Boolean;
+  private boolean jdField_j_of_type_Boolean = false;
   private int jdField_k_of_type_Int = 10;
-  private boolean jdField_k_of_type_Boolean;
+  private boolean jdField_k_of_type_Boolean = false;
   private int jdField_l_of_type_Int = -1;
-  private boolean jdField_l_of_type_Boolean;
-  private int jdField_m_of_type_Int;
+  private boolean jdField_l_of_type_Boolean = false;
+  private int jdField_m_of_type_Int = 0;
   private boolean jdField_m_of_type_Boolean = true;
-  private int n;
-  private int o;
+  private int n = 0;
+  private int o = 0;
   private int p = -1;
   private int q = -1;
   private int r = -1;
-  private int s;
-  private int t = -ViewUtils.dpToPx(this.jdField_j_of_type_Int);
+  private int s = 0;
+  private int t = -ViewUtils.b(this.jdField_j_of_type_Int);
   
   static
   {
+    jdField_a_of_type_Int = 0;
     jdField_b_of_type_Int = 1;
     jdField_c_of_type_Int = 2;
     jdField_d_of_type_Int = 3;
@@ -136,6 +129,7 @@ public class CommonSuspensionGestureLayout
   public CommonSuspensionGestureLayout(Context paramContext, Bundle paramBundle)
   {
     super(paramContext, null, 0);
+    this.jdField_h_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("float_layer_back_view"))) {
       this.jdField_f_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("float_layer_back_view", false);
@@ -151,8 +145,8 @@ public class CommonSuspensionGestureLayout
     l();
     m();
     n();
-    setOnClickListener(new ttf(this));
-    this.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new tti(this);
+    setOnClickListener(new CommonSuspensionGestureLayout.1(this));
+    this.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new CommonSuspensionGestureLayout.2(this);
     addOnLayoutChangeListener(this.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener);
   }
   
@@ -166,7 +160,7 @@ public class CommonSuspensionGestureLayout
           int i2 = ScreenUtil.getNavigationBarHeight(paramActivity.getApplicationContext());
           i1 = i2;
           int i3;
-          label166:
+          label168:
           return i1;
         }
       }
@@ -190,7 +184,7 @@ public class CommonSuspensionGestureLayout
         }
         catch (Exception paramActivity)
         {
-          break label166;
+          break label168;
         }
         paramActivity = paramActivity;
         QLog.e("CommonSuspensionGestureLayout", 1, "getNavigationBarHeight error:" + paramActivity.getMessage());
@@ -211,7 +205,7 @@ public class CommonSuspensionGestureLayout
     }
     int i1 = this.jdField_a_of_type_AndroidViewView.getScrollX();
     int i2 = this.jdField_a_of_type_AndroidViewView.getScrollY();
-    if ((this.jdField_a_of_type_Ttm != null) && (!this.jdField_a_of_type_Ttm.a()) && ((i2 > 0) || (i2 >= jdField_h_of_type_Int)))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener != null) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a()) && ((i2 > 0) || (i2 >= jdField_h_of_type_Int)))
     {
       this.jdField_i_of_type_Int = jdField_f_of_type_Int;
       this.jdField_a_of_type_AndroidViewView.scrollTo(0, 0);
@@ -221,17 +215,17 @@ public class CommonSuspensionGestureLayout
     if ((i2 < 0) && (i2 > -jdField_g_of_type_Int))
     {
       this.jdField_i_of_type_Int = jdField_b_of_type_Int;
-      if ((!e()) || (this.jdField_e_of_type_Float <= 0.0F) || (this.jdField_a_of_type_Ttm == null) || (!this.jdField_a_of_type_Ttm.a()) || (paramBoolean)) {
+      if ((!e()) || (this.jdField_e_of_type_Float <= 0.0F) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener == null) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a()) || (paramBoolean)) {
         break label278;
       }
       this.jdField_i_of_type_Int = jdField_f_of_type_Int;
-      this.jdField_a_of_type_AndroidViewView.scrollTo(0, -ViewUtils.dpToPx(this.jdField_j_of_type_Int));
+      this.jdField_a_of_type_AndroidViewView.scrollTo(0, -ViewUtils.b(this.jdField_j_of_type_Int));
       u();
       postInvalidate();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ttn.a(this.jdField_i_of_type_Int);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$SuspensionGestureListener.a(this.jdField_i_of_type_Int);
       return;
       if (i2 <= -jdField_g_of_type_Int)
       {
@@ -260,8 +254,8 @@ public class CommonSuspensionGestureLayout
     {
       this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
       float f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(0);
-      if ((this.jdField_a_of_type_AndroidViewView.getScrollY() != -ViewUtils.dpToPx(this.jdField_j_of_type_Int)) && (f1 < 0.0F)) {
-        a(0, -ViewUtils.dpToPx(this.jdField_j_of_type_Int), 200, false);
+      if ((this.jdField_a_of_type_AndroidViewView.getScrollY() != -ViewUtils.b(this.jdField_j_of_type_Int)) && (f1 < 0.0F)) {
+        a(0, -ViewUtils.b(this.jdField_j_of_type_Int), 200, false);
       }
     }
   }
@@ -271,15 +265,15 @@ public class CommonSuspensionGestureLayout
     if (this.jdField_d_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(getContext());
-      Object localObject = new FrameLayout.LayoutParams(-1, ViewUtils.dpToPx(20.0F));
+      Object localObject = new FrameLayout.LayoutParams(-1, ViewUtils.b(20.0F));
       if (this.jdField_i_of_type_Boolean) {
-        ((FrameLayout.LayoutParams)localObject).topMargin = (-ViewUtils.dpToPx(20.0F));
+        ((FrameLayout.LayoutParams)localObject).topMargin = (-ViewUtils.b(20.0F));
       }
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(this.jdField_l_of_type_Int);
       localObject = new View(getContext());
       int i1 = Color.parseColor("#FFB0B3BF");
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.dpToPx(60.0F), ViewUtils.dpToPx(4.0F));
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.b(60.0F), ViewUtils.b(4.0F));
       localLayoutParams.gravity = 17;
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setCornerRadius(66.0F);
@@ -329,7 +323,7 @@ public class CommonSuspensionGestureLayout
     if (paramBoolean) {}
     for (this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(paramView, View.ALPHA, new float[] { 0.0F, 1.0F });; this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(paramView, View.ALPHA, new float[] { 1.0F, 0.0F }))
     {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new ttl(this, paramView));
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new CommonSuspensionGestureLayout.9(this, paramView));
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(250L);
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
@@ -447,7 +441,7 @@ public class CommonSuspensionGestureLayout
   
   private boolean b(int paramInt, float paramFloat)
   {
-    return ((paramInt > jdField_h_of_type_Int) || (paramFloat < -6500.0F)) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) && (paramFloat < 100.0F) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 200L) && (this.jdField_e_of_type_Float < 0.0F) && (this.jdField_a_of_type_Ttm.a());
+    return ((paramInt > jdField_h_of_type_Int) || (paramFloat < -6500.0F)) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) && (paramFloat < 100.0F) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 200L) && (this.jdField_e_of_type_Float < 0.0F) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a());
   }
   
   private boolean b(MotionEvent paramMotionEvent)
@@ -483,7 +477,7 @@ public class CommonSuspensionGestureLayout
   {
     if ((Build.VERSION.SDK_INT >= 21) && (this.jdField_k_of_type_Int != 0))
     {
-      paramView.setOutlineProvider(new CornerViewOutlineProvider(ViewUtils.dpToPx(this.jdField_k_of_type_Int), FlexConvertUtils.getScreenHeight(getContext()) - ViewUtils.dpToPx(this.jdField_j_of_type_Int), 1));
+      paramView.setOutlineProvider(new CornerViewOutlineProvider(ViewUtils.b(this.jdField_k_of_type_Int), FlexConvertUtils.getScreenHeight(getContext()) - ViewUtils.b(this.jdField_j_of_type_Int), 1));
       paramView.setClipToOutline(true);
     }
   }
@@ -511,23 +505,23 @@ public class CommonSuspensionGestureLayout
   
   private void d(int paramInt)
   {
-    if ((this.s < 0) && (this.s > -ViewUtils.dpToPx(this.jdField_j_of_type_Int))) {
-      if (this.s <= -ViewUtils.dpToPx(this.jdField_j_of_type_Int))
+    if ((this.s < 0) && (this.s > -ViewUtils.b(this.jdField_j_of_type_Int))) {
+      if (this.s <= -ViewUtils.b(this.jdField_j_of_type_Int))
       {
-        a(0, -ViewUtils.dpToPx(this.jdField_j_of_type_Int), 200, false);
+        a(0, -ViewUtils.b(this.jdField_j_of_type_Int), 200, false);
         u();
       }
     }
-    while ((this.s != 0) || (paramInt >= -ViewUtils.dpToPx(this.jdField_j_of_type_Int))) {
+    while ((this.s != 0) || (paramInt >= -ViewUtils.b(this.jdField_j_of_type_Int))) {
       return;
     }
-    a(0, -ViewUtils.dpToPx(this.jdField_j_of_type_Int), 200, false);
+    a(0, -ViewUtils.b(this.jdField_j_of_type_Int), 200, false);
     u();
   }
   
   private boolean d(int paramInt, float paramFloat)
   {
-    return ((paramInt > jdField_h_of_type_Int) || (paramFloat < -6500.0F)) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) && (paramFloat < 100.0F) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 200L) && (this.jdField_e_of_type_Float < 0.0F) && (this.jdField_a_of_type_Ttm.a());
+    return ((paramInt > jdField_h_of_type_Int) || (paramFloat < -6500.0F)) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) && (paramFloat < 100.0F) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 200L) && (this.jdField_e_of_type_Float < 0.0F) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a());
   }
   
   private void e(int paramInt)
@@ -550,7 +544,7 @@ public class CommonSuspensionGestureLayout
         localException.printStackTrace();
       }
     }
-    olh.a(null, null, "0X800A9B8", "0X800A9B8", 0, 0, "", "", "", localJSONObject.toString(), false);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800A9B8", "0X800A9B8", 0, 0, "", "", "", localJSONObject.toString(), false);
   }
   
   private boolean e()
@@ -610,7 +604,7 @@ public class CommonSuspensionGestureLayout
       {
         if (this.jdField_c_of_type_Boolean)
         {
-          a(0, -ViewUtils.dpToPx(this.jdField_j_of_type_Int), 200, false);
+          a(0, -ViewUtils.b(this.jdField_j_of_type_Int), 200, false);
           u();
           return;
         }
@@ -622,15 +616,15 @@ public class CommonSuspensionGestureLayout
         c(i1);
         return;
       }
-      if (this.jdField_a_of_type_Ttm.a()) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a()) {
         d(i1);
       }
       for (;;)
       {
         this.jdField_i_of_type_Int = jdField_a_of_type_Int;
-        this.jdField_a_of_type_Ttn.a(this.jdField_i_of_type_Int);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$SuspensionGestureListener.a(this.jdField_i_of_type_Int);
         return;
-        a(0, -ViewUtils.dpToPx(this.jdField_j_of_type_Int), 200, true);
+        a(0, -ViewUtils.b(this.jdField_j_of_type_Int), 200, true);
       }
     }
     if (c(i1, f1))
@@ -643,9 +637,9 @@ public class CommonSuspensionGestureLayout
       c(i1);
       return;
     }
-    a(0, -ViewUtils.dpToPx(this.jdField_j_of_type_Int), 200, true);
+    a(0, -ViewUtils.b(this.jdField_j_of_type_Int), 200, true);
     this.jdField_i_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_Ttn.a(this.jdField_i_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$SuspensionGestureListener.a(this.jdField_i_of_type_Int);
   }
   
   private void l()
@@ -662,27 +656,27 @@ public class CommonSuspensionGestureLayout
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
       Object localObject1 = new FrameLayout.LayoutParams(-2, -2);
-      ((FrameLayout.LayoutParams)localObject1).setMargins(0, ViewUtils.dpToPx(40.0F), 0, 0);
+      ((FrameLayout.LayoutParams)localObject1).setMargins(0, ViewUtils.b(40.0F), 0, 0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849527);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849906);
       localObject1 = new TextView(getContext());
       Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject2).setMargins(ViewUtils.dpToPx(12.0F), 0, 0, 0);
+      ((LinearLayout.LayoutParams)localObject2).setMargins(ViewUtils.b(12.0F), 0, 0, 0);
       ((LinearLayout.LayoutParams)localObject2).gravity = 16;
       ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       ((TextView)localObject1).setTextSize(2, 14.0F);
       ((TextView)localObject1).setText("返回");
       localObject2 = new ImageView(getContext());
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.setMargins(ViewUtils.dpToPx(6.0F), 0, 0, 0);
+      localLayoutParams.setMargins(ViewUtils.b(6.0F), 0, 0, 0);
       localLayoutParams.gravity = 16;
       ((ImageView)localObject2).setLayoutParams(localLayoutParams);
-      ((ImageView)localObject2).setBackgroundResource(2130849526);
+      ((ImageView)localObject2).setBackgroundResource(2130849905);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
       addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ttg(this));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new CommonSuspensionGestureLayout.10(this));
     }
   }
   
@@ -690,10 +684,10 @@ public class CommonSuspensionGestureLayout
   {
     if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet == null)
     {
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet = ((AnimationSet)AnimationUtils.loadAnimation(getContext(), 2130772069));
+      this.jdField_a_of_type_AndroidViewAnimationAnimationSet = ((AnimationSet)AnimationUtils.loadAnimation(getContext(), 2130772085));
       this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setDuration(200L);
       this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setInterpolator(new AccelerateDecelerateInterpolator());
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new tth(this));
+      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new CommonSuspensionGestureLayout.11(this));
     }
   }
   
@@ -762,11 +756,11 @@ public class CommonSuspensionGestureLayout
     }
     if (this.jdField_f_of_type_AndroidViewView != null)
     {
-      int i1 = (FlexConvertUtils.getScreenHeight(getContext()) - ViewUtils.dpToPx(this.jdField_j_of_type_Int) - this.jdField_f_of_type_AndroidViewView.getHeight()) / 2;
+      int i1 = (FlexConvertUtils.getScreenHeight(getContext()) - ViewUtils.b(this.jdField_j_of_type_Int) - this.jdField_f_of_type_AndroidViewView.getHeight()) / 2;
       this.jdField_f_of_type_AndroidViewView.scrollTo(0, -i1);
     }
     if (this.jdField_g_of_type_AndroidViewView != null) {
-      this.jdField_g_of_type_AndroidViewView.scrollTo(0, ViewUtils.dpToPx(this.jdField_j_of_type_Int));
+      this.jdField_g_of_type_AndroidViewView.scrollTo(0, ViewUtils.b(this.jdField_j_of_type_Int));
     }
   }
   
@@ -789,7 +783,7 @@ public class CommonSuspensionGestureLayout
         localException.printStackTrace();
       }
     }
-    olh.a(null, null, "0X800A9B6", "0X800A9B6", 0, 0, "", "", "", localJSONObject.toString(), false);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800A9B6", "0X800A9B6", 0, 0, "", "", "", localJSONObject.toString(), false);
   }
   
   private void w()
@@ -811,7 +805,7 @@ public class CommonSuspensionGestureLayout
         localException.printStackTrace();
       }
     }
-    olh.a(null, null, "0X800A9B7", "0X800A9B7", 0, 0, "", "", "", localJSONObject.toString(), false);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800A9B7", "0X800A9B7", 0, 0, "", "", "", localJSONObject.toString(), false);
   }
   
   public int a()
@@ -847,13 +841,13 @@ public class CommonSuspensionGestureLayout
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Ttn.a(true, paramInt1);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$SuspensionGestureListener.a(true, paramInt1);
       return;
     }
     if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation == null) {
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = ((TranslateAnimation)AnimationUtils.loadAnimation(getContext(), 2130772001));
+      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = ((TranslateAnimation)AnimationUtils.loadAnimation(getContext(), 2130772003));
     }
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new ttj(this, paramInt1, paramInt2));
+    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new CommonSuspensionGestureLayout.7(this, paramInt1, paramInt2));
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(200L);
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setInterpolator(new AccelerateInterpolator());
     this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
@@ -910,8 +904,8 @@ public class CommonSuspensionGestureLayout
       this.jdField_a_of_type_AndroidViewView = paramBaseActivity;
       a(paramBaseActivity);
       addView(paramBaseActivity);
-      this.jdField_a_of_type_AndroidViewView.scrollTo(0, -ViewUtils.dpToPx(this.jdField_j_of_type_Int));
-      this.s = (-ViewUtils.dpToPx(this.jdField_j_of_type_Int));
+      this.jdField_a_of_type_AndroidViewView.scrollTo(0, -ViewUtils.b(this.jdField_j_of_type_Int));
+      this.s = (-ViewUtils.b(this.jdField_j_of_type_Int));
       this.jdField_b_of_type_AndroidViewView.setBackgroundColor(this.jdField_l_of_type_Int);
     }
     if (!this.jdField_i_of_type_Boolean) {
@@ -932,8 +926,8 @@ public class CommonSuspensionGestureLayout
       return;
     }
     b(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_Ttn != null) {
-      this.jdField_a_of_type_Ttn.a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$SuspensionGestureListener != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$SuspensionGestureListener.a();
     }
     v();
   }
@@ -948,17 +942,17 @@ public class CommonSuspensionGestureLayout
     int i1;
     if (QLog.isColorLevel())
     {
-      if (this.jdField_a_of_type_Ttm != null) {
-        QLog.d("CommonSuspensionGestureLayout", 2, "test isAllowedInterceptTouchEvent,positionState:" + this.jdField_a_of_type_Ttm.a() + ",deltaY:" + paramFloat + ",event:" + paramMotionEvent.getAction());
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener != null) {
+        QLog.d("CommonSuspensionGestureLayout", 2, "test isAllowedInterceptTouchEvent,positionState:" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a() + ",deltaY:" + paramFloat + ",event:" + paramMotionEvent.getAction());
       }
     }
     else
     {
-      if ((this.jdField_a_of_type_Ttm == null) || (paramMotionEvent.getAction() == 0)) {
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener == null) || (paramMotionEvent.getAction() == 0)) {
         break label216;
       }
-      i1 = this.jdField_a_of_type_Ttm.a();
-      this.jdField_a_of_type_Ttn.b(i1);
+      i1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$SuspensionGestureListener.b(i1);
       if ((i1 != 1) || (paramFloat <= 5.0F)) {
         break label136;
       }
@@ -977,7 +971,7 @@ public class CommonSuspensionGestureLayout
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     return true;
     label175:
-    if ((this.jdField_a_of_type_Ttm != null) && (!this.jdField_a_of_type_Ttm.a()) && (paramFloat < -10.0F))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener != null) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a()) && (paramFloat < -10.0F))
     {
       this.jdField_a_of_type_Long = 0L;
       return true;
@@ -1014,7 +1008,7 @@ public class CommonSuspensionGestureLayout
     if ((this.jdField_f_of_type_AndroidViewView != null) && (this.q != paramView.hashCode()))
     {
       this.q = paramView.hashCode();
-      int i1 = (int)(FlexConvertUtils.getScreenHeight(getContext()) - ViewUtils.dpToPx(this.jdField_j_of_type_Int) - paramFloat) / 2;
+      int i1 = (int)(FlexConvertUtils.getScreenHeight(getContext()) - ViewUtils.b(this.jdField_j_of_type_Int) - paramFloat) / 2;
       this.jdField_f_of_type_AndroidViewView.scrollTo(0, -i1);
     }
   }
@@ -1039,7 +1033,7 @@ public class CommonSuspensionGestureLayout
       {
         i2 = i1;
         if (this.jdField_j_of_type_Int > 0) {
-          i2 = i1 + ViewUtils.dpToPx(this.jdField_j_of_type_Int);
+          i2 = i1 + ViewUtils.b(this.jdField_j_of_type_Int);
         }
       }
       this.jdField_b_of_type_AndroidViewView.setPadding(0, 0, 0, i2);
@@ -1052,13 +1046,13 @@ public class CommonSuspensionGestureLayout
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Ttn.a(false, paramInt);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$SuspensionGestureListener.a(false, paramInt);
       return;
     }
     if (this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation == null) {
-      this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = ((TranslateAnimation)AnimationUtils.loadAnimation(getContext(), 2130772148));
+      this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = ((TranslateAnimation)AnimationUtils.loadAnimation(getContext(), 2130772163));
     }
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new ttk(this, paramInt));
+    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new CommonSuspensionGestureLayout.8(this, paramInt));
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setDuration(200L);
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setInterpolator(new AccelerateInterpolator());
     this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
@@ -1071,7 +1065,7 @@ public class CommonSuspensionGestureLayout
     if ((this.jdField_g_of_type_AndroidViewView != null) && (this.r != paramView.hashCode()))
     {
       this.r = paramView.hashCode();
-      this.jdField_g_of_type_AndroidViewView.scrollTo(0, ViewUtils.dpToPx(this.jdField_j_of_type_Int));
+      this.jdField_g_of_type_AndroidViewView.scrollTo(0, ViewUtils.b(this.jdField_j_of_type_Int));
     }
   }
   
@@ -1087,7 +1081,7 @@ public class CommonSuspensionGestureLayout
       if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
       {
         if (!this.jdField_b_of_type_Boolean) {
-          if (Math.abs(this.jdField_a_of_type_AndroidWidgetScroller.getCurrY()) >= ViewUtils.dpToPx(this.jdField_j_of_type_Int)) {}
+          if (Math.abs(this.jdField_a_of_type_AndroidWidgetScroller.getCurrY()) >= ViewUtils.b(this.jdField_j_of_type_Int)) {}
         }
         for (;;)
         {
@@ -1133,7 +1127,7 @@ public class CommonSuspensionGestureLayout
       this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
     }
     this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    if ((this.jdField_a_of_type_Ttm != null) && (!this.jdField_a_of_type_Ttm.a()))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener != null) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a()))
     {
       a(paramMotionEvent);
       return super.dispatchTouchEvent(paramMotionEvent);
@@ -1166,12 +1160,12 @@ public class CommonSuspensionGestureLayout
     this.jdField_b_of_type_Boolean = this.jdField_m_of_type_Boolean;
     if (!this.jdField_b_of_type_Boolean)
     {
-      a(0, -ViewUtils.dpToPx(this.jdField_j_of_type_Int), 200, false);
+      a(0, -ViewUtils.b(this.jdField_j_of_type_Int), 200, false);
       u();
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     if (this.jdField_a_of_type_AndroidViewVelocityTracker != null) {
       this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
@@ -1197,10 +1191,10 @@ public class CommonSuspensionGestureLayout
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramMotionEvent.getAction() == 0) || (this.jdField_a_of_type_Ttm == null)) {
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramMotionEvent.getAction() == 0) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener == null)) {
       return false;
     }
-    if ((this.jdField_a_of_type_AndroidViewView.getScrollY() < 0) && (paramMotionEvent.getRawY() <= Math.abs(this.jdField_a_of_type_AndroidViewView.getScrollY())) && (this.jdField_a_of_type_AndroidViewView.getScrollY() >= -ViewUtils.dpToPx(this.jdField_j_of_type_Int))) {
+    if ((this.jdField_a_of_type_AndroidViewView.getScrollY() < 0) && (paramMotionEvent.getRawY() <= Math.abs(this.jdField_a_of_type_AndroidViewView.getScrollY())) && (this.jdField_a_of_type_AndroidViewView.getScrollY() >= -ViewUtils.b(this.jdField_j_of_type_Int))) {
       return false;
     }
     if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
@@ -1218,8 +1212,8 @@ public class CommonSuspensionGestureLayout
       default: 
         this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
         f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(0);
-        if ((this.jdField_a_of_type_Ttm != null) && (!this.jdField_a_of_type_Ttm.a()) && (this.jdField_a_of_type_AndroidViewView.getScrollY() != -ViewUtils.dpToPx(this.jdField_j_of_type_Int)) && (f1 < 0.0F)) {
-          a(0, -ViewUtils.dpToPx(this.jdField_j_of_type_Int), 200, false);
+        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener != null) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a()) && (this.jdField_a_of_type_AndroidViewView.getScrollY() != -ViewUtils.b(this.jdField_j_of_type_Int)) && (f1 < 0.0F)) {
+          a(0, -ViewUtils.b(this.jdField_j_of_type_Int), 200, false);
         }
         break;
       }
@@ -1230,7 +1224,7 @@ public class CommonSuspensionGestureLayout
       f1 = 0.0F;
       break;
       int i1 = (int)(this.jdField_a_of_type_AndroidViewView.getScrollY() - f1);
-      if (this.jdField_a_of_type_Ttm.a()) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener.a()) {
         a(0, i1, 0, false);
       }
       for (;;)
@@ -1274,9 +1268,9 @@ public class CommonSuspensionGestureLayout
     this.jdField_j_of_type_Int = paramInt;
   }
   
-  public void setContentScrollListener(ttm paramttm)
+  public void setContentScrollListener(CommonSuspensionGestureLayout.ContentScrollListener paramContentScrollListener)
   {
-    this.jdField_a_of_type_Ttm = paramttm;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$ContentScrollListener = paramContentScrollListener;
   }
   
   public void setIsAutoSuctionTop(boolean paramBoolean)
@@ -1341,17 +1335,17 @@ public class CommonSuspensionGestureLayout
   
   public void setTitleBarHeight(int paramInt)
   {
-    this.n = ViewUtils.dpToPx(paramInt);
+    this.n = ViewUtils.b(paramInt);
   }
   
-  public void setViolaGestureListener(ttn paramttn)
+  public void setViolaGestureListener(CommonSuspensionGestureLayout.SuspensionGestureListener paramSuspensionGestureListener)
   {
-    this.jdField_a_of_type_Ttn = paramttn;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout$SuspensionGestureListener = paramSuspensionGestureListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout
  * JD-Core Version:    0.7.0.1
  */

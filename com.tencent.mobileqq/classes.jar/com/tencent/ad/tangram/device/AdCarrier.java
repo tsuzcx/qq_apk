@@ -15,27 +15,32 @@ public final class AdCarrier
   {
     AdLog.i("AdCarrier", "getCode");
     if (paramContext == null) {}
-    do
+    for (;;)
     {
-      do
-      {
-        return null;
-        paramContext = paramContext.getApplicationContext();
-      } while (paramContext == null);
-      paramContext = paramContext.getSystemService("phone");
-    } while (!(paramContext instanceof TelephonyManager));
-    paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
-    try
-    {
-      if (paramContext.getSimState() == 5) {
-        return paramContext.getSimOperator();
-      }
-      AdLog.i("AdCarrier", "getCode error");
       return null;
-    }
-    catch (Throwable paramContext)
-    {
-      AdLog.i("AdCarrier", "getCode", paramContext);
+      paramContext = paramContext.getApplicationContext();
+      if (paramContext != null) {
+        try
+        {
+          paramContext = paramContext.getSystemService("phone");
+          if ((paramContext instanceof TelephonyManager))
+          {
+            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
+            if (paramContext != null)
+            {
+              if (paramContext.getSimState() == 5) {
+                return paramContext.getSimOperator();
+              }
+              AdLog.i("AdCarrier", "getCode error");
+              return null;
+            }
+          }
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.i("AdCarrier", "getCode", paramContext);
+        }
+      }
     }
     return null;
   }
@@ -59,7 +64,7 @@ public final class AdCarrier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.device.AdCarrier
  * JD-Core Version:    0.7.0.1
  */

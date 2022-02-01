@@ -11,9 +11,9 @@ public final class GetCategoryMaterialRsp
 {
   static BubbleData cache_BubbleData = new BubbleData();
   static ArrayList<MetaCategory> cache_Categories = new ArrayList();
-  public BubbleData BubbleData;
-  public ArrayList<MetaCategory> Categories;
-  public int Code;
+  public BubbleData BubbleData = null;
+  public ArrayList<MetaCategory> Categories = null;
+  public int Code = 0;
   public String ETag = "";
   
   static
@@ -56,7 +56,7 @@ public final class GetCategoryMaterialRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp
  * JD-Core Version:    0.7.0.1
  */

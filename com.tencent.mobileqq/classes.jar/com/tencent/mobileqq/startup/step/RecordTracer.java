@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
 import android.os.Build.VERSION;
-import bdix;
-import bdiy;
-import bdiz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.trackrecordlib.core.RecordManager;
@@ -15,7 +12,7 @@ public class RecordTracer
   
   public static RecordTracer a()
   {
-    return bdiz.a;
+    return RecordTracer.Holder.a;
   }
   
   protected boolean doStep()
@@ -25,7 +22,7 @@ public class RecordTracer
     }
     try
     {
-      RecordManager.getInstance().startRecord(BaseApplicationImpl.getContext(), new bdix(this), new bdiy(this));
+      RecordManager.getInstance().startRecord(BaseApplicationImpl.getContext(), new RecordTracer.1(this), new RecordTracer.2(this));
       return true;
     }
     catch (Throwable localThrowable)

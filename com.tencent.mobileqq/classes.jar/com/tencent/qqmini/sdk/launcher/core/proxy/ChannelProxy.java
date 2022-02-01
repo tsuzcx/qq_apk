@@ -26,8 +26,6 @@ import org.json.JSONObject;
 
 public abstract interface ChannelProxy
 {
-  public abstract void JudgeTiming(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, COMM.StCommonExt paramStCommonExt, String paramString4, String paramString5, AsyncResult paramAsyncResult);
-  
   public abstract void ReportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult);
   
   public abstract void addGroupApp(IMiniAppContext paramIMiniAppContext, AsyncResult paramAsyncResult);
@@ -54,6 +52,8 @@ public abstract interface ChannelProxy
   
   public abstract void delPhoneNumber(String paramString1, String paramString2, AsyncResult paramAsyncResult);
   
+  public abstract void doGameRaffle(String paramString1, String paramString2, AsyncResult paramAsyncResult);
+  
   public abstract void downloadQQBrowser(String paramString);
   
   public abstract void ffmpegExecCommand(String[] paramArrayOfString, ChannelProxy.ICommandListenr paramICommandListenr);
@@ -79,6 +79,8 @@ public abstract interface ChannelProxy
   public abstract void getFormId(String paramString, AsyncResult paramAsyncResult);
   
   public abstract void getFriendCloudStorage(String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult);
+  
+  public abstract void getGameRaffleMaterial(String paramString1, String paramString2, AsyncResult paramAsyncResult);
   
   public abstract void getGdtAd(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult);
   
@@ -111,6 +113,8 @@ public abstract interface ChannelProxy
   public abstract void getRobotUin(String paramString, AsyncResult paramAsyncResult);
   
   public abstract void getSDKOpenKeyToken(COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult);
+  
+  public abstract long getServerTime();
   
   public abstract void getShareInfo(MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq, AsyncResult paramAsyncResult);
   
@@ -145,6 +149,8 @@ public abstract interface ChannelProxy
   public abstract void insertBookShelf(String paramString1, String paramString2, ArrayList<String> paramArrayList, AsyncResult paramAsyncResult);
   
   public abstract boolean isGooglePlayVersion();
+  
+  public abstract void judgeTiming(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, COMM.StCommonExt paramStCommonExt, String paramString4, String paramString5, AsyncResult paramAsyncResult);
   
   public abstract boolean jump2PublicAccount(Context paramContext, String paramString1, String paramString2);
   
@@ -196,6 +202,8 @@ public abstract interface ChannelProxy
   
   public abstract boolean setWebviewCookie(Context paramContext, String paramString);
   
+  public abstract void springHbReport(String paramString1, int paramInt1, int paramInt2, Map<String, String> paramMap, String paramString2);
+  
   public abstract boolean startAddFriendActivity(Context paramContext, String paramString1, String paramString2);
   
   public abstract boolean startBrowserSupportHeaderActivityForResult(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt);
@@ -203,6 +211,8 @@ public abstract interface ChannelProxy
   public abstract boolean startChooseMessageFileActivityForResult(Activity paramActivity, int paramInt1, String paramString, int paramInt2);
   
   public abstract void startDownloadX5(IMiniAppContext paramIMiniAppContext);
+  
+  public abstract boolean startRedpacketTranslucentBrowserActivityForResult(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt);
   
   public abstract boolean startTransparentBrowserActivityForResult(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt);
   
@@ -234,7 +244,7 @@ public abstract interface ChannelProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy
  * JD-Core Version:    0.7.0.1
  */

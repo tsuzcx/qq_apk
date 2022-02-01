@@ -25,7 +25,7 @@ public class AECMShowSquareLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i = getContext().getResources().getConfiguration().orientation;
     if ((i == 1) || (i == 0)) {
@@ -41,7 +41,7 @@ public class AECMShowSquareLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.cmshow.AECMShowSquareLayout
  * JD-Core Version:    0.7.0.1
  */

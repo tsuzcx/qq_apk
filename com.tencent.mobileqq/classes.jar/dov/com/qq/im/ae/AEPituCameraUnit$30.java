@@ -1,39 +1,24 @@
 package dov.com.qq.im.ae;
 
-import bmxa;
-import bnbn;
-import bnkb;
-import bogd;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import dov.com.qq.im.ae.data.AEMaterialManager;
+import dov.com.qq.im.ae.part.VideoStoryCapturePartManager;
 
-public class AEPituCameraUnit$30
+class AEPituCameraUnit$30
   implements Runnable
 {
-  public AEPituCameraUnit$30(bmxa parambmxa) {}
+  AEPituCameraUnit$30(AEPituCameraUnit paramAEPituCameraUnit, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "onResourceDownload update filterpager begin");
-    }
-    bnbn localbnbn = this.this$0.jdField_a_of_type_Bnbn;
-    if (this.this$0.b == AECaptureMode.NORMAL) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localbnbn.d(bool);
-      ((bnkb)bogd.a(18)).b(false);
-      bogm.c = 0;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "onResourceDownload update filterpager end");
-      }
-      return;
+    if ((this.this$0.a != null) && (this.this$0.a.a(131072) != null)) {
+      this.this$0.a.a(131072).a(115, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.30
  * JD-Core Version:    0.7.0.1
  */

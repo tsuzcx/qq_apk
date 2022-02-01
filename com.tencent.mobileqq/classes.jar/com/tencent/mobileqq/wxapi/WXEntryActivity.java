@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.wxapi;
 
-import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +10,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
 import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
-import com.tencent.mobileqq.mini.share.WXShareHelperFromQQMiniApp;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -82,7 +82,7 @@ public class WXEntryActivity
             {
               for (;;)
               {
-                WXShareHelperFromQQMiniApp.getInstance().handleWXEntryActivityIntent(this, getIntent());
+                ((IMiniAppService)QRoute.api(IMiniAppService.class)).handleWXEntryActivityIntent(this, getIntent());
                 finish();
                 return;
                 localException = localException;
@@ -113,7 +113,7 @@ public class WXEntryActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.WXEntryActivity
  * JD-Core Version:    0.7.0.1
  */

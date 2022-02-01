@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.utils;
 
-import bhjj;
-
-public class VoicePlayer$2
+class VoicePlayer$2
   implements Runnable
 {
-  public VoicePlayer$2(bhjj parambhjj) {}
+  VoicePlayer$2(VoicePlayer paramVoicePlayer) {}
   
   public void run()
   {
-    bhjj.a(this.this$0, false);
+    VoicePlayer.a(this.this$0, false);
   }
 }
 

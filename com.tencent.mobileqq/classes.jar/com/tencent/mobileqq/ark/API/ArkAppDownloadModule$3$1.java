@@ -1,34 +1,32 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.text.TextUtils;
-import aprm;
-import aprr;
-import bjqz;
-import bmqk;
-import bmql;
 import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
+import com.tencent.gamecenter.wadl.biz.entity.WadlResult;
+import com.tencent.open.wadl.WadlJsBridgeUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
+import cooperation.wadl.ipc.WadlProxyServiceUtil;
+import cooperation.wadl.ipc.WadlProxyServiceWrap;
 import java.util.ArrayList;
 import org.json.JSONObject;
 
-public class ArkAppDownloadModule$3$1
+class ArkAppDownloadModule$3$1
   implements Runnable
 {
-  public ArkAppDownloadModule$3$1(aprr paramaprr, WadlResult paramWadlResult) {}
+  ArkAppDownloadModule$3$1(ArkAppDownloadModule.3 param3, WadlResult paramWadlResult) {}
   
   public void run()
   {
     int i;
     ark.VariantWrapper localVariantWrapper1;
-    if ((aprm.a(this.jdField_a_of_type_Aprr.a) != null) && (aprm.a(this.jdField_a_of_type_Aprr.a).size() > 0))
+    if ((ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDownloadModule$3.a) != null) && (ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDownloadModule$3.a).size() > 0))
     {
       i = 0;
-      if (i < aprm.a(this.jdField_a_of_type_Aprr.a).size())
+      if (i < ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDownloadModule$3.a).size())
       {
-        localVariantWrapper1 = this.jdField_a_of_type_Aprr.a.b(((Long)aprm.a(this.jdField_a_of_type_Aprr.a).get(i)).longValue());
-        if ((localVariantWrapper1 != null) && (this.jdField_a_of_type_CooperationWadlIpcWadlResult != null)) {
+        localVariantWrapper1 = this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDownloadModule$3.a.b(((Long)ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDownloadModule$3.a).get(i)).longValue());
+        if ((localVariantWrapper1 != null) && (this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlResult != null)) {
           break label101;
         }
         QLog.d("ark.download.module", 1, "ark.dctrl.onDownloadState Callback is null");
@@ -39,14 +37,14 @@ public class ArkAppDownloadModule$3$1
     ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
     localVariantWrapper2.SetNull();
     ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-    int j = bjqz.a(this.jdField_a_of_type_CooperationWadlIpcWadlResult.b);
+    int j = WadlJsBridgeUtil.a(this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlResult.b);
     String str;
     if (-2 == j)
     {
-      j = bjqz.b(this.jdField_a_of_type_CooperationWadlIpcWadlResult.c);
-      str = aprm.a(this.jdField_a_of_type_Aprr.a, j);
+      j = WadlJsBridgeUtil.b(this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlResult.c);
+      str = ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDownloadModule$3.a, j);
       if (!TextUtils.isEmpty(str)) {
-        aprm.a(this.jdField_a_of_type_Aprr.a, str);
+        ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDownloadModule$3.a, str);
       }
       QLog.e("ark.download.module", 1, new Object[] { "ark.dctrl.download error code:", Integer.valueOf(j) });
       switch (j)
@@ -55,7 +53,7 @@ public class ArkAppDownloadModule$3$1
     }
     for (;;)
     {
-      JSONObject localJSONObject = aprm.a(this.jdField_a_of_type_Aprr.a, this.jdField_a_of_type_CooperationWadlIpcWadlResult, "DownloadInit");
+      JSONObject localJSONObject = ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDownloadModule$3.a, this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlResult, "DownloadInit");
       str = "";
       if (localJSONObject != null) {
         str = localJSONObject.toString();
@@ -67,12 +65,12 @@ public class ArkAppDownloadModule$3$1
       QLog.i("ark.download.module", 1, "ark.dctrl.onDownloadState callback : " + str);
       i += 1;
       break;
-      if (this.jdField_a_of_type_CooperationWadlIpcWadlResult.a != null)
+      if (this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlResult.a != null)
       {
-        bmqk.a().c(this.jdField_a_of_type_CooperationWadlIpcWadlResult.a.d, this.jdField_a_of_type_CooperationWadlIpcWadlResult.a.a);
+        WadlProxyServiceUtil.a().c(this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlResult.a.d, this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlResult.a.a);
         continue;
         if (2 == j) {
-          aprm.a(this.jdField_a_of_type_Aprr.a, true);
+          ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDownloadModule$3.a, true);
         }
       }
     }

@@ -2,41 +2,40 @@ package com.tencent.biz.qqstory.network.handler;
 
 import android.os.Bundle;
 import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import mqq.manager.TicketManager;
-import wro;
-import wzk;
-import ykq;
 
-public class ReportEvilToXinanHandler$1
+class ReportEvilToXinanHandler$1
   implements Runnable
 {
-  public ReportEvilToXinanHandler$1(wro paramwro, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  ReportEvilToXinanHandler$1(ReportEvilToXinanHandler paramReportEvilToXinanHandler, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
-    String str4 = wro.a(this.this$0);
+    String str4 = ReportEvilToXinanHandler.a(this.this$0);
     if (this.jdField_a_of_type_Boolean) {}
     for (String str1 = "1";; str1 = "0")
     {
       String str2 = this.jdField_a_of_type_JavaLangString;
       String str3 = this.b;
-      str4 = MD5Utils.toMD5("android" + "_" + "8.4.10" + "_" + "1111" + "_" + str4);
-      ykq.a("ReportEvilToXinanHandler", "get cryptograph step1. scretKey = %s.", str4);
+      str4 = MD5Utils.toMD5("android" + "_" + "8.5.5" + "_" + "1111" + "_" + str4);
+      SLog.a("ReportEvilToXinanHandler", "get cryptograph step1. scretKey = %s.", str4);
       str4 = MD5Utils.toMD5(this.c + "_" + "" + "_" + str2 + "_" + "" + "_" + "" + "_" + str3 + "_" + "" + "_" + "" + "_" + str4);
-      ykq.a("ReportEvilToXinanHandler", "get cryptograph step2. cryptograph = %s.", str4);
-      Object localObject2 = (TicketManager)wzk.a().getManager(2);
-      Object localObject1 = wzk.a().getCurrentAccountUin();
+      SLog.a("ReportEvilToXinanHandler", "get cryptograph step2. cryptograph = %s.", str4);
+      Object localObject2 = (TicketManager)PlayModeUtils.a().getManager(2);
+      Object localObject1 = PlayModeUtils.a().getCurrentAccountUin();
       String str5 = ((TicketManager)localObject2).getSkey((String)localObject1);
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("cookie", "uin=" + (String)localObject1 + ";skey=" + str5);
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("system", "android");
-      ((Bundle)localObject1).putString("version", "8.4.10");
+      ((Bundle)localObject1).putString("version", "8.5.5");
       ((Bundle)localObject1).putString("uintype", "1");
       ((Bundle)localObject1).putString("eviluin", this.c);
       ((Bundle)localObject1).putString("appname", "KQQ");
@@ -58,7 +57,7 @@ public class ReportEvilToXinanHandler$1
       try
       {
         str1 = HttpUtil.openUrl(BaseApplicationImpl.getContext(), "https://jubao.qq.com/uniform_impeach/impeach_submit", "POST", (Bundle)localObject1, (Bundle)localObject2);
-        wro.a(this.this$0, this.c, this.e, this.d, str1);
+        ReportEvilToXinanHandler.a(this.this$0, this.c, this.e, this.d, str1);
         return;
       }
       catch (IOException localIOException)
@@ -70,7 +69,7 @@ public class ReportEvilToXinanHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler.1
  * JD-Core Version:    0.7.0.1
  */

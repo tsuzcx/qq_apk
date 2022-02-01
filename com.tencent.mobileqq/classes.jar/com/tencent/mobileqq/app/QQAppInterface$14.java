@@ -1,33 +1,57 @@
 package com.tencent.mobileqq.app;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.securemodule.impl.AppInfo;
-import com.tencent.securemodule.service.CloudScanListener;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 class QQAppInterface$14
-  implements CloudScanListener
+  extends Handler
 {
-  QQAppInterface$14(QQAppInterface paramQQAppInterface) {}
-  
-  public void onFinish(int paramInt)
+  QQAppInterface$14(QQAppInterface paramQQAppInterface, Looper paramLooper)
   {
-    if (paramInt == 0) {
-      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.access$2800(this.this$0)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
-    }
+    super(paramLooper);
   }
   
-  public void onRiskFoud(List<AppInfo> paramList) {}
-  
-  public void onRiskFound()
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("security_scan", 2, "Find Risk");
+    switch (paramMessage.what)
+    {
     }
-    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.access$2700(this.this$0)).edit().putBoolean("security_scan_last_result", true).commit();
+    do
+    {
+      return;
+      paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
+      if (paramMessage != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QQAppInterface", 2, "getOnlineFriend app is null");
+    return;
+    long l1 = QQAppInterface.sNextGetOnlineFriendDelay;
+    long l3 = SystemClock.uptimeMillis();
+    long l2 = Math.abs(l3 - this.this$0.sLastGetOnlineFriendTime);
+    if ((!"0".equals(paramMessage.getCurrentAccountUin())) && (l2 >= QQAppInterface.sNextGetOnlineFriendDelay))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAppInterface", 2, "getOnlineFriend");
+      }
+      this.this$0.sLastGetOnlineFriendTime = l3;
+      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      if (localFriendListHandler != null) {
+        localFriendListHandler.getOnlineFriend(paramMessage.getCurrentAccountUin(), (byte)0);
+      }
+    }
+    if (l2 < QQAppInterface.sNextGetOnlineFriendDelay) {
+      l1 = QQAppInterface.sNextGetOnlineFriendDelay - l2;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface", 2, "getOnlineFriend send next msg " + l1);
+    }
+    paramMessage = this.this$0.sGetOnlineFriendHandler.obtainMessage(0, new WeakReference(paramMessage));
+    this.this$0.sGetOnlineFriendHandler.sendMessageDelayed(paramMessage, l1);
   }
 }
 

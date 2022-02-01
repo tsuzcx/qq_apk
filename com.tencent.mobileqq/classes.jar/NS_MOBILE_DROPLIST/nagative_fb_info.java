@@ -9,9 +9,9 @@ public final class nagative_fb_info
 {
   public String attach_info = "";
   public String fb_name = "";
-  public int fb_type;
+  public int fb_type = 0;
   public String tag_name = "";
-  public int tag_type;
+  public int tag_type = 0;
   
   public nagative_fb_info() {}
   

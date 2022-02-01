@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.fragment;
 
-import agij;
 import android.support.v4.app.FragmentActivity;
-import anxv;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.aio.helper.HiddenChatHelper;
+import com.tencent.mobileqq.app.LocaleManager;
 
 class LangSettingFragment$4
   implements Runnable
@@ -12,14 +12,14 @@ class LangSettingFragment$4
   
   public void run()
   {
-    anxv.c(this.this$0.getActivity());
+    LocaleManager.c(this.this$0.getActivity());
     this.this$0.getActivity().finish();
-    agij.b(this.this$0.getActivity(), GeneralSettingActivity.class);
+    HiddenChatHelper.b(this.this$0.getActivity(), GeneralSettingActivity.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LangSettingFragment.4
  * JD-Core Version:    0.7.0.1
  */

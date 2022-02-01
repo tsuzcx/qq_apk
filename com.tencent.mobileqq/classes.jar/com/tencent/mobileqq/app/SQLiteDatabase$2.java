@@ -10,7 +10,7 @@ class SQLiteDatabase$2
   
   public void run()
   {
-    Toast.makeText(BaseApplication.getContext(), BaseApplication.getContext().getString(2131693163) + BaseApplication.processName + BaseApplication.getContext().getString(2131693164), 1).show();
+    Toast.makeText(BaseApplication.getContext(), "进程：" + BaseApplication.processName + "DB读写异常，请联系 williscao", 1).show();
   }
 }
 

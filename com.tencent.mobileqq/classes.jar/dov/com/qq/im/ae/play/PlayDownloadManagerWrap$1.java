@@ -1,13 +1,13 @@
 package dov.com.qq.im.ae.play;
 
-import bnkb;
-import bnke;
-import bnkq;
+import dov.com.qq.im.ae.data.AEMaterialManager;
+import dov.com.qq.im.ae.data.AEMaterialMetaData;
+import dov.com.qq.im.ae.download.AEMaterialDownloader.MaterialDownloadListener;
 
 class PlayDownloadManagerWrap$1
   implements Runnable
 {
-  PlayDownloadManagerWrap$1(PlayDownloadManagerWrap paramPlayDownloadManagerWrap, bnkb parambnkb, bnke parambnke, bnkq parambnkq) {}
+  PlayDownloadManagerWrap$1(PlayDownloadManagerWrap paramPlayDownloadManagerWrap, AEMaterialManager paramAEMaterialManager, AEMaterialMetaData paramAEMaterialMetaData, AEMaterialDownloader.MaterialDownloadListener paramMaterialDownloadListener) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ class PlayDownloadManagerWrap$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.PlayDownloadManagerWrap.1
  * JD-Core Version:    0.7.0.1
  */

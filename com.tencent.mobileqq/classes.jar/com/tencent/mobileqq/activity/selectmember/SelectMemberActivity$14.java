@@ -3,33 +3,33 @@ package com.tencent.mobileqq.activity.selectmember;
 import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
-import aofu;
-import bdla;
+import com.tencent.av.utils.TroopMemberUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopBusinessObserver;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mvi;
 
 class SelectMemberActivity$14
-  extends aofu
+  extends TroopBusinessObserver
 {
   SelectMemberActivity$14(SelectMemberActivity paramSelectMemberActivity) {}
   
   public void onGetInviteNoAuthLimitNum(boolean paramBoolean, long paramLong1, long paramLong2)
   {
     String str = String.valueOf(paramLong1);
-    if ((paramBoolean) && (str.equals(this.this$0.mGroupCode)))
+    if ((paramBoolean) && (str.equals(this.a.jdField_c_of_type_JavaLangString)))
     {
-      this.this$0.mInviteNoAuthLimitNum = paramLong2;
+      this.a.jdField_a_of_type_Long = paramLong2;
       if (QLog.isColorLevel()) {
         QLog.d("SelectMemberActivity", 2, "troop" + str + " get inviteNoAuthLimitNum = " + paramLong2);
       }
-      if ((this.this$0.mTroopMemberNum >= this.this$0.mInviteNoAuthLimitNum) && (this.this$0.mInviteNoAuthLimitNum > 0L))
+      if ((this.a.i >= this.a.jdField_a_of_type_Long) && (this.a.jdField_a_of_type_Long > 0L))
       {
-        this.this$0.mTooManyMembersTipsBar.setVisibility(0);
-        bdla.b(this.this$0.app, "dc00899", "invite_friend", "", "friend_list", "exp_needagree", 0, 0, str, mvi.a(this.this$0.app, this.this$0.app.getCurrentAccountUin(), str) + "", "", "");
+        this.a.d.setVisibility(0);
+        ReportController.b(this.a.app, "dc00899", "invite_friend", "", "friend_list", "exp_needagree", 0, 0, str, TroopMemberUtil.a(this.a.app, this.a.app.getCurrentAccountUin(), str) + "", "", "");
       }
     }
   }
@@ -37,13 +37,13 @@ class SelectMemberActivity$14
   public void onGetInvitedUinList(boolean paramBoolean, Long paramLong, List<Long> paramList)
   {
     paramLong = String.valueOf(paramLong);
-    if ((paramBoolean) && (paramLong.equals(this.this$0.mGroupCode)))
+    if ((paramBoolean) && (paramLong.equals(this.a.jdField_c_of_type_JavaLangString)))
     {
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
         Long localLong = (Long)localIterator.next();
-        this.this$0.mInvitedUinList.add(String.valueOf(localLong));
+        this.a.jdField_a_of_type_JavaUtilList.add(String.valueOf(localLong));
       }
       if (QLog.isColorLevel()) {
         QLog.d("SelectMemberActivity", 2, "troop" + paramLong + " get invitedUinList = " + paramList.toString());
@@ -58,7 +58,7 @@ class SelectMemberActivity$14
       if (QLog.isColorLevel()) {
         QLog.d("SelectMemberActivity", 2, "add troop member fail");
       }
-      SelectMemberActivity.access$200(this.this$0, paramInt2);
+      SelectMemberActivity.a(this.a, paramInt2);
     }
   }
   
@@ -71,18 +71,18 @@ class SelectMemberActivity$14
         if (QLog.isColorLevel()) {
           QLog.d("SelectMemberActivity", 2, "add troop member success");
         }
-        this.this$0.mHandler.sendEmptyMessage(0);
-        if (!this.this$0.mIsTroopAdmin)
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+        if (!this.a.jdField_c_of_type_Boolean)
         {
-          paramInt1 = this.this$0.getNotAdminInviteMemberCount();
-          this.this$0.setNotAdminInviteMemberCount(paramInt1 + 1);
-          bdla.b(this.this$0.app, "CliOper", "", "", "Grp", "Send_invite", 0, 0, "", "", "", "");
+          paramInt1 = this.a.b();
+          this.a.a(paramInt1 + 1);
+          ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Send_invite", 0, 0, "", "", "", "");
         }
-        ArrayList localArrayList = this.this$0.getOutGroupMem();
-        this.this$0.mIntent.putExtra("roomId", Long.parseLong(paramString));
-        this.this$0.mIntent.putParcelableArrayListExtra("result_set", this.this$0.mResultList);
-        this.this$0.mIntent.putParcelableArrayListExtra("result_set_for_out_Member ", localArrayList);
-        this.this$0.setResult(-1);
+        ArrayList localArrayList = this.a.a();
+        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", Long.parseLong(paramString));
+        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
+        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set_for_out_Member ", localArrayList);
+        this.a.setResult(-1);
       }
     }
     else {
@@ -91,12 +91,12 @@ class SelectMemberActivity$14
     if (QLog.isColorLevel()) {
       QLog.d("SelectMemberActivity", 2, "add troop member fail, troopUin: " + paramString + " result: " + paramInt2);
     }
-    SelectMemberActivity.access$200(this.this$0, paramInt2);
+    SelectMemberActivity.a(this.a, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.14
  * JD-Core Version:    0.7.0.1
  */

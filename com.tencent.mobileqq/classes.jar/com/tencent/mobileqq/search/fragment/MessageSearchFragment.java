@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.search.fragment;
 
-import bcbc;
-import bccm;
-import bclw;
-import bcly;
+import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
 
 public class MessageSearchFragment
   extends BaseSearchFragment
@@ -13,19 +12,19 @@ public class MessageSearchFragment
     return 40;
   }
   
-  protected bcbc a()
+  protected BaseMvpAdapter a()
   {
-    return new bccm(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
+    return new MessageSearchFragment.1(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
   }
   
-  protected bclw a()
+  protected ISearchEngine a()
   {
-    return new bcly(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new MessageSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   protected String a()
   {
-    return getString(2131718374);
+    return getString(2131718893);
   }
   
   public void a(String paramString)
@@ -36,18 +35,18 @@ public class MessageSearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Bclw.c();
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Bclw.d();
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.MessageSearchFragment
  * JD-Core Version:    0.7.0.1
  */

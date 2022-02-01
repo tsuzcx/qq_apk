@@ -14,9 +14,9 @@ import com.tencent.ttpic.openapi.facedetect.FaceDetector;
 import com.tencent.ttpic.openapi.gles.GLSegSharedData;
 import com.tencent.ttpic.openapi.gles.SegmentDataPipe;
 import com.tencent.ttpic.openapi.model.StarParam;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager.DATA_TYPE;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FrameUtil;
@@ -629,7 +629,7 @@ public class FaceGestureDetGLThread
   
   public void processStar(SegmentDataPipe paramSegmentDataPipe, Frame paramFrame, StarParam paramStarParam, int paramInt)
   {
-    if ((paramFrame.width == 0) || (!VideoMaterialUtil.needRenderStar(paramStarParam)))
+    if ((paramFrame.width == 0) || (!VideoMaterial.needRenderStar(paramStarParam)))
     {
       paramSegmentDataPipe.starPoints = new ArrayList();
       paramSegmentDataPipe.starMaskFrame = null;
@@ -663,24 +663,10 @@ public class FaceGestureDetGLThread
   {
     this.mListener = paramOnFaceDetListener;
   }
-  
-  public void tryFaceDetectorInit()
-  {
-    LogUtils.e("debug", "tryFaceDetectorInit");
-    if (this.mInitReady) {
-      return;
-    }
-    if (this.mFaceDetector.init() != 0) {}
-    for (this.mInitReady = false;; this.mInitReady = true)
-    {
-      LogUtils.e("debug", "mInitReady = " + this.mInitReady);
-      return;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.thread.FaceGestureDetGLThread
  * JD-Core Version:    0.7.0.1
  */

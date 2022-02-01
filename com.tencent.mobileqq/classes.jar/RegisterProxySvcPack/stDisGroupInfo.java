@@ -12,11 +12,11 @@ public final class stDisGroupInfo
 {
   static int cache_eInfoFlag;
   public int eInfoFlag = eDisGroupInfoFlag.E_DIS_GROUP_DEFAULT.value();
-  public long lDisCode;
-  public long lRedPackTime;
-  public long uDisMsgSeq;
-  public long uInfoSeq;
-  public long uMemberMsgSeq;
+  public long lDisCode = 0L;
+  public long lRedPackTime = 0L;
+  public long uDisMsgSeq = 0L;
+  public long uInfoSeq = 0L;
+  public long uMemberMsgSeq = 0L;
   
   static
   {

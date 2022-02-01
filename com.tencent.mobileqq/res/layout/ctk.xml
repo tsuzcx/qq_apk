@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@drawable/abz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/title_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_centerInParent="true">
+                <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:id="@id/kdo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="扩列广场" />
+            </LinearLayout>
+            <com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator android:textSize="18.0dip" android:id="@id/ixv" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="50.0dip" android:layout_marginRight="50.0dip" android:layout_centerInParent="true" app:checkTextColor="#ff4c82ff" app:indicatorAlpha="255" app:indicatorColor="#ffffffff" app:indicatorMarginLeftRight="8.0dip" app:indicatorMarginTopBottom="2.0dip" app:indicatorRoundRectX="16.0dip" app:indicatorRoundRectY="16.0dip" app:tabContainerPaddingLeftRight="5.0dip" app:uncheckTextColor="#ffffffff" />
+            <View android:gravity="center" android:id="@id/jok" android:background="@drawable/b09" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/b9w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title_container" />
+    <com.tencent.mobileqq.nearby.anim.NearbyZanAnimLayout android:id="@id/d53" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title_container" />
+    <View android:id="@id/f_1" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

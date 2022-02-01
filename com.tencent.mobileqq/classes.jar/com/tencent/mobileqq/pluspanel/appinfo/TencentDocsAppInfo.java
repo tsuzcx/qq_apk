@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahpt;
-import ahvi;
-import becr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class TencentDocsAppInfo
   extends PlusPanelAppInfo
 {
-  public TencentDocsAppInfo() {}
+  TencentDocsAppInfo() {}
   
   public TencentDocsAppInfo(int paramInt)
   {
@@ -22,7 +22,7 @@ public class TencentDocsAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839223;
+    return 2130839292;
   }
   
   public int getAppID()
@@ -51,28 +51,28 @@ public class TencentDocsAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698212);
+    return BaseApplicationImpl.getContext().getString(2131698488);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    paramahvi.a("chat_tool_tencentdoc", localQQAppInterface.getCurrentAccountUin());
-    paramahvi.b(paramBaseChatPie);
-    becr.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo.curFriendUin, paramSessionInfo.curType, paramSessionInfo.curFriendNick);
-    if (paramSessionInfo.curType == 0) {
-      ahpt.a(localQQAppInterface, "0X80093F4", paramSessionInfo.curType);
+    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    paramPlusPanelViewModel.a("chat_tool_tencentdoc", localQQAppInterface.getCurrentAccountUin());
+    paramPlusPanelViewModel.b(paramBaseChatPie);
+    TeamWorkUtils.a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.d);
+    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+      AIOPanelUtiles.a(localQQAppInterface, "0X80093F4", paramSessionInfo.jdField_a_of_type_Int);
     }
     do
     {
       return;
-      if (paramSessionInfo.curType == 3000)
+      if (paramSessionInfo.jdField_a_of_type_Int == 3000)
       {
-        ahpt.a(localQQAppInterface, "0X80093F6", paramSessionInfo.curType);
+        AIOPanelUtiles.a(localQQAppInterface, "0X80093F6", paramSessionInfo.jdField_a_of_type_Int);
         return;
       }
-    } while (paramSessionInfo.curType != 1);
-    ahpt.a(localQQAppInterface, "0X80093F8", paramSessionInfo.curType);
+    } while (paramSessionInfo.jdField_a_of_type_Int != 1);
+    AIOPanelUtiles.a(localQQAppInterface, "0X80093F8", paramSessionInfo.jdField_a_of_type_Int);
   }
 }
 

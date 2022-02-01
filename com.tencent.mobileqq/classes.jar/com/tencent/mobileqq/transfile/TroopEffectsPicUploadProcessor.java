@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import azla;
-import azlb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import java.util.ArrayList;
 import tencent.im.msg.im_msg_body.CustomFace;
 
@@ -15,9 +16,9 @@ public class TroopEffectsPicUploadProcessor
 {
   public im_msg_body.CustomFace customFace;
   
-  public TroopEffectsPicUploadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public TroopEffectsPicUploadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
   }
   
   protected void constructCustomFace()
@@ -56,14 +57,14 @@ public class TroopEffectsPicUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       constructCustomFace();
-      azlb localazlb = new azlb();
-      localazlb.jdField_a_of_type_Long = this.mFileSize;
-      localazlb.d = this.mMd5Str;
-      localazlb.c = this.mFileName;
-      localazlb.jdField_b_of_type_JavaLangString = this.mUiRequest.mLocalPath;
-      localazlb.jdField_b_of_type_Long = this.mFileID;
-      localazlb.jdField_a_of_type_JavaLangObject = this.customFace;
-      this.mUiRequest.mUpCallBack.onSend(localazlb);
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
+      localSendResult.jdField_a_of_type_Long = this.mFileSize;
+      localSendResult.d = this.mMd5Str;
+      localSendResult.c = this.mFileName;
+      localSendResult.jdField_b_of_type_JavaLangString = this.mUiRequest.mLocalPath;
+      localSendResult.jdField_b_of_type_Long = this.mFileID;
+      localSendResult.jdField_a_of_type_JavaLangObject = this.customFace;
+      this.mUiRequest.mUpCallBack.b(localSendResult);
       doReport(true);
     }
   }

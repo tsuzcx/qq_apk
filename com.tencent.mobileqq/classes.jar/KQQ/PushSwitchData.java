@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class PushSwitchData
   extends JceStruct
 {
-  public long appid;
-  public byte cPushSwitch;
-  public long uin;
+  public long appid = 0L;
+  public byte cPushSwitch = 0;
+  public long uin = 0L;
   
   public PushSwitchData() {}
   

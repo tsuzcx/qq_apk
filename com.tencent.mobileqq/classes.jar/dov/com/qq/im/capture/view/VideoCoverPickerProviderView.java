@@ -6,27 +6,24 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-import bopp;
-import bopq;
-import bopr;
-import bpeg;
 import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoCoverSegmentPicker;
+import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoCoverSegmentPicker.SegmentPickerListener;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class VideoCoverPickerProviderView
   extends ProviderView
-  implements bpeg
+  implements VideoCoverSegmentPicker.SegmentPickerListener
 {
   private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   private VideoCoverSegmentPicker jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentPicker;
-  private WeakReference<bopr> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<VideoCoverPickerProviderView.PickerListener> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
-  private long b;
-  private long c;
-  private long d;
-  private long e;
+  private long b = 0L;
+  private long c = 0L;
+  private long d = 0L;
+  private long e = 0L;
   
   public VideoCoverPickerProviderView(Context paramContext)
   {
@@ -35,7 +32,7 @@ public class VideoCoverPickerProviderView
   
   protected int a()
   {
-    return 2131560933;
+    return 2131561021;
   }
   
   public void a()
@@ -61,36 +58,36 @@ public class VideoCoverPickerProviderView
       }
     }
     label38:
-    bopr localbopr;
+    VideoCoverPickerProviderView.PickerListener localPickerListener;
     do
     {
       return;
       l = 90L;
       break;
       this.e = paramLong;
-      localbopr = null;
+      localPickerListener = null;
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        localbopr = (bopr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localPickerListener = (VideoCoverPickerProviderView.PickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       }
-    } while (localbopr == null);
-    localbopr.a(paramLong);
+    } while (localPickerListener == null);
+    localPickerListener.a(paramLong);
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560933, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561021, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentPicker = ((VideoCoverSegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131366020));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentPicker = ((VideoCoverSegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131366185));
     setPlayMode(this.jdField_a_of_type_Int);
-    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364257);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366819)).setOnClickListener(new bopp(this));
-    paramBundle.setOnClickListener(new bopq(this));
+    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364364);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367002)).setOnClickListener(new VideoCoverPickerProviderView.1(this));
+    paramBundle.setOnClickListener(new VideoCoverPickerProviderView.2(this));
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramBundle = (bopr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramBundle = (VideoCoverPickerProviderView.PickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (paramBundle != null) {
         paramBundle.a();
       }
@@ -99,12 +96,12 @@ public class VideoCoverPickerProviderView
   
   public void a(List<Long> paramList)
   {
-    bopr localbopr = null;
+    VideoCoverPickerProviderView.PickerListener localPickerListener = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbopr = (bopr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localPickerListener = (VideoCoverPickerProviderView.PickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbopr != null) {
-      localbopr.a(paramList);
+    if (localPickerListener != null) {
+      localPickerListener.a(paramList);
     }
   }
   
@@ -134,9 +131,9 @@ public class VideoCoverPickerProviderView
     }
   }
   
-  public void setListener(bopr parambopr)
+  public void setListener(VideoCoverPickerProviderView.PickerListener paramPickerListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambopr);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramPickerListener);
   }
   
   public void setPlayMode(int paramInt)
@@ -173,7 +170,7 @@ public class VideoCoverPickerProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.capture.view.VideoCoverPickerProviderView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class label_show_info
 {
   static ArrayList<String> cache_labelids = new ArrayList();
   public String label = "";
-  public ArrayList<String> labelids;
+  public ArrayList<String> labelids = null;
   
   static
   {

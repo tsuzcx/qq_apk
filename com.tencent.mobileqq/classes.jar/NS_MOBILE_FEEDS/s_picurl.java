@@ -8,13 +8,13 @@ public final class s_picurl
   extends JceStruct
 {
   public int enlarge_rate = 200;
-  public int focus_x;
-  public int focus_y;
-  public int height;
+  public int focus_x = 0;
+  public int focus_y = 0;
+  public int height = 0;
   public String md5 = "";
-  public long size;
+  public long size = 0L;
   public String url = "";
-  public int width;
+  public int width = 0;
   
   public s_picurl() {}
   

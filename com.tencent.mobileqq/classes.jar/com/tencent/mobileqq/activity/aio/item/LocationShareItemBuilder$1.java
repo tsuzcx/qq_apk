@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahak;
-import awni;
 import com.tencent.mobileqq.data.MessageForLocationShare;
+import com.tencent.mobileqq.location.LocationMessageUtil;
 
-public class LocationShareItemBuilder$1
+class LocationShareItemBuilder$1
   implements Runnable
 {
-  public LocationShareItemBuilder$1(ahak paramahak, MessageForLocationShare paramMessageForLocationShare) {}
+  LocationShareItemBuilder$1(LocationShareItemBuilder paramLocationShareItemBuilder, MessageForLocationShare paramMessageForLocationShare) {}
   
   public void run()
   {
-    awni.a(this.this$0.a, this.a, false);
+    LocationMessageUtil.a(this.this$0.a, this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.LocationShareItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

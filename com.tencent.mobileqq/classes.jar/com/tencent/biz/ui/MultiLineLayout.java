@@ -16,7 +16,7 @@ public class MultiLineLayout
   int jdField_a_of_type_Int;
   private int b;
   private int c;
-  private int d;
+  private int d = 0;
   private int e = -1;
   
   static
@@ -47,7 +47,7 @@ public class MultiLineLayout
     this.jdField_a_of_type_Int = ((int)(5.0F * this.jdField_a_of_type_Float));
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt3 = 0;
     paramInt2 = 0;
@@ -118,7 +118,7 @@ public class MultiLineLayout
     this.c = (paramInt1 + paramInt2);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int m = 0;
     this.b = View.MeasureSpec.getSize(paramInt1);
@@ -201,7 +201,7 @@ public class MultiLineLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.ui.MultiLineLayout
  * JD-Core Version:    0.7.0.1
  */

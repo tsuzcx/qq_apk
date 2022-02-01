@@ -6,23 +6,18 @@ import android.net.Uri;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import bkyp;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.URLUtil;
 import common.config.service.QzoneConfig;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
 import org.json.JSONObject;
 
 public class AppBrandUtil
@@ -389,44 +384,6 @@ public class AppBrandUtil
     return (int)Math.ceil(i * f1 + 0.5F);
   }
   
-  public static String getUrlKeyVal(String paramString1, String paramString2)
-  {
-    Object localObject2 = "";
-    Object localObject1 = localObject2;
-    for (;;)
-    {
-      try
-      {
-        List localList = URLEncodedUtils.parse(new URI(paramString1), "UTF-8");
-        localObject1 = localObject2;
-        int j = localList.size();
-        int i = 0;
-        paramString1 = (String)localObject2;
-        localObject1 = paramString1;
-        if (i < j)
-        {
-          localObject1 = paramString1;
-          localObject2 = (NameValuePair)localList.get(i);
-          localObject1 = paramString1;
-          if (((NameValuePair)localObject2).getName().equals(paramString2))
-          {
-            localObject1 = paramString1;
-            paramString1 = ((NameValuePair)localObject2).getValue();
-            i += 1;
-          }
-        }
-        else
-        {
-          return localObject1;
-        }
-      }
-      catch (URISyntaxException paramString1)
-      {
-        paramString1.printStackTrace();
-      }
-    }
-  }
-  
   public static String getUrlWithoutParams(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
@@ -500,7 +457,7 @@ public class AppBrandUtil
         localStringBuilder.append(str1).append('=').append(str2);
       }
     }
-    return bkyp.a(localStringBuilder.toString());
+    return URLUtil.a(localStringBuilder.toString());
   }
   
   public static boolean needUpdate(MiniAppInfo paramMiniAppInfo1, MiniAppInfo paramMiniAppInfo2)

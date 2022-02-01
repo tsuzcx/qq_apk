@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aggs;
-import aggt;
-import aggu;
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +9,16 @@ import android.view.animation.AnimationSet;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
-public class AIOShakeHelper$1
+class AIOShakeHelper$1
   implements Runnable
 {
-  public AIOShakeHelper$1(aggs paramaggs, Activity paramActivity) {}
+  AIOShakeHelper$1(AIOShakeHelper paramAIOShakeHelper, Activity paramActivity) {}
   
   public void run()
   {
-    aggs.a(this.this$0, new View(this.a));
-    aggs.a(this.this$0).setOnTouchListener(new aggt(this));
-    this.a.addContentView(aggs.a(this.this$0), new ViewGroup.LayoutParams(-1, -1));
+    AIOShakeHelper.a(this.this$0, new View(this.a));
+    AIOShakeHelper.a(this.this$0).setOnTouchListener(new AIOShakeHelper.1.1(this));
+    this.a.addContentView(AIOShakeHelper.a(this.this$0), new ViewGroup.LayoutParams(-1, -1));
     View localView = ((ViewGroup)this.a.getWindow().getDecorView()).getChildAt(0);
     AnimationSet localAnimationSet = new AnimationSet(false);
     long l = 0L;
@@ -53,13 +50,13 @@ public class AIOShakeHelper$1
       l += arrayOfLong[i];
       i += 1;
     }
-    localAnimationSet.setAnimationListener(new aggu(this));
+    localAnimationSet.setAnimationListener(new AIOShakeHelper.1.2(this));
     localView.startAnimation(localAnimationSet);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1
  * JD-Core Version:    0.7.0.1
  */

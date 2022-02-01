@@ -19,12 +19,12 @@ class RedPacketKuaKuaFragment$3
       }
       return;
     }
-    ContactUtils.getBuddyNickName(this.this$0.getActivity().app, RedPacketKuaKuaFragment.a(this.this$0).senderuin, true);
+    ContactUtils.d(this.this$0.getActivity().app, RedPacketKuaKuaFragment.a(this.this$0).senderuin, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment.3
  * JD-Core Version:    0.7.0.1
  */

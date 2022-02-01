@@ -18,11 +18,11 @@ import android.view.View.OnTouchListener;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bnqm;
-import bnrj;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.ttpic.videoshelf.ImagePositonManager;
 import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.util.PicChooseJumpUtil;
 import java.lang.reflect.Field;
 
 public class FaceImageViewer
@@ -43,25 +43,25 @@ public class FaceImageViewer
   private float currentX;
   private float currentY;
   private Matrix initMatrix = new Matrix();
-  private boolean isAnimationPlaying;
-  private boolean isCombinedAction;
+  private boolean isAnimationPlaying = false;
+  private boolean isCombinedAction = false;
   private boolean isFirstDraw = true;
-  private boolean isImageSelected;
+  private boolean isImageSelected = false;
   private FaceImageViewer.OnSaveScrollInfoListener listener;
   private Activity mActivity;
   private LayerDrawable mAnimationDrawable;
   private Drawable mAnimationSolidDrawable;
-  private float mBaseDistance;
-  private int mCenterViewWidth;
+  private float mBaseDistance = 0.0F;
+  private int mCenterViewWidth = 0;
   private Matrix mCurrentMatrix = new Matrix();
-  private boolean mIsSelecting;
+  private boolean mIsSelecting = false;
   private float mLastRotation = 0.0F;
-  private boolean mMovable;
+  private boolean mMovable = false;
   private NodeItem mNodeItem = new NodeItem();
   private boolean mSigleDown = true;
   private ValueAnimator mValueAnimator;
   private int mode = 0;
-  private int moveEventCount;
+  private int moveEventCount = 0;
   private int prePointerCount;
   private float preX;
   private float preY;
@@ -83,8 +83,8 @@ public class FaceImageViewer
     this.mActivity = ((Activity)paramContext);
     setOnClickListener(this);
     clearSeclected();
-    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837676));
-    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368579);
+    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837680));
+    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368809);
   }
   
   private float calcRotation(MotionEvent paramMotionEvent)
@@ -212,12 +212,12 @@ public class FaceImageViewer
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       activeSelected();
-      bnqm.a().h();
-      bnrj.b(this.mActivity, this.mNodeItem.nodeID);
+      AEBaseDataReporter.a().h();
+      PicChooseJumpUtil.b(this.mActivity, this.mNodeItem.nodeID);
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.mNodeItem.once) {
       updateMatrix(getWidth(), getHeight());
@@ -458,7 +458,7 @@ public class FaceImageViewer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.FaceImageViewer
  * JD-Core Version:    0.7.0.1
  */

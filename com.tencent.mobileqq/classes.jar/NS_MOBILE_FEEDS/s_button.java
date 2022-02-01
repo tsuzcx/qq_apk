@@ -11,17 +11,17 @@ public final class s_button
 {
   static Map<String, String> cache_extendinfo;
   static Map<Integer, Integer> cache_stMapABTest = new HashMap();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public int animation_duration;
+  public int animation_duration = 0;
   public String animation_url = "";
-  public int appear_time;
+  public int appear_time = 0;
   public String button_background_img = "";
   public String button_icon = "";
   public String button_img = "";
-  public int duration_time;
-  public Map<String, String> extendinfo;
-  public Map<Integer, Integer> stMapABTest;
+  public int duration_time = 0;
+  public Map<String, String> extendinfo = null;
+  public Map<Integer, Integer> stMapABTest = null;
   public String text = "";
   
   static

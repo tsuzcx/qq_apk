@@ -22,7 +22,7 @@ public class ByteData
   public static final int MSG_DATA_UPING = 163;
   public static final int MSG_DATA_WRITE_SP = 162;
   public static final int MSG_INTERNAL_DATA_UPING = 161;
-  public static final String MY_VERSION = "0.3.1";
+  public static final String MY_VERSION = "0.3.5";
   public static long REQUEST_TIME_BUFF = 43200L;
   public static final int RH_SCV = 1;
   public static String SP_MARK_TIME = "mark_time_";
@@ -59,6 +59,15 @@ public class ByteData
     }
   }
   
+  private boolean checkObject(long paramLong, Object paramObject)
+  {
+    if (paramLong == 0L) {}
+    while (((paramObject instanceof byte[])) && (paramObject != null) && (((byte[])paramObject).length > 0)) {
+      return false;
+    }
+    return true;
+  }
+  
   private boolean checkProgressName()
   {
     if (!processName.isEmpty())
@@ -76,27 +85,23 @@ public class ByteData
   
   private boolean checkToa()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (!isMsf)
     {
       Object localObject = this.mContext.getSharedPreferences(BMP_ARRIVE_TIME + "_" + processName, 0);
       long l1 = System.currentTimeMillis();
       long l2 = l1 - ((SharedPreferences)localObject).getLong(VAL_ARRIVE_TIME, 0L);
-      bool1 = bool2;
-      if (l2 > REQUEST_TIME_BUFF)
+      if ((l2 > REQUEST_TIME_BUFF) && (l2 > 0L))
       {
-        bool1 = bool2;
-        if (l2 > 0L)
-        {
-          localObject = ((SharedPreferences)localObject).edit();
-          ((SharedPreferences.Editor)localObject).putLong(VAL_ARRIVE_TIME, l1);
-          ((SharedPreferences.Editor)localObject).commit();
-          bool1 = true;
-        }
+        localObject = ((SharedPreferences)localObject).edit();
+        ((SharedPreferences.Editor)localObject).putLong(VAL_ARRIVE_TIME, l1);
+        ((SharedPreferences.Editor)localObject).commit();
       }
     }
-    return bool1;
+    else
+    {
+      return true;
+    }
+    return false;
   }
   
   private native byte[] getByte(Context paramContext, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4);
@@ -185,15 +190,6 @@ public class ByteData
     }
   }
   
-  public boolean checkObject(long paramLong, Object paramObject)
-  {
-    if (paramLong == 0L) {}
-    while (((paramObject instanceof byte[])) && (paramObject != null) && (((byte[])paramObject).length > 0)) {
-      return false;
-    }
-    return true;
-  }
-  
   public byte[] getCode(long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
     if (checkObject(paramLong1, paramObject4))
@@ -217,9 +213,9 @@ public class ByteData
     localArrayList.add(this.cData.d);
     localArrayList.add(this.cData.f);
     localArrayList.add((String)paramObject1);
-    localArrayList.add(String.valueOf(paramLong4));
+    localArrayList.add(this.cData.g);
     localArrayList.add(processName);
-    this.mUin = paramLong3;
+    this.mUin = paramLong2;
     ReportLogHelper.report(5, 0);
     return getByte(this.mContext, paramLong1, paramLong2, paramLong3, paramLong4, (String[])localArrayList.toArray(new String[localArrayList.size()]), paramObject2, paramObject3, paramObject4);
   }
@@ -235,7 +231,7 @@ public class ByteData
     {
       processName = s.getProcessName(paramContext);
       this.mBmpMgr = new a(paramContext, processName);
-      this.cData = new a.a.a.b.b(paramContext, paramString1, "", paramString2, paramString3, paramString4, sSessionID, paramString5, "0.3.1");
+      this.cData = new a.a.a.b.b(paramContext, paramString1, "", paramString2, paramString3, paramString4, sSessionID, paramString5, "0.3.5");
       setContext(paramContext);
       initLoadlibrary();
       checkProgressName();

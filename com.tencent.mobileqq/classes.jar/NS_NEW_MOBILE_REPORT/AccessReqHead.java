@@ -13,17 +13,17 @@ public final class AccessReqHead
   static Terminal cache_terminal = new Terminal();
   static TicketForQQ cache_ticketForQQ = new TicketForQQ();
   static ArrayList<String> cache_uninstallPkgList;
-  public ArrayList<String> installPkgList;
-  public IOSTerminal iosTerminal;
-  public int loginType;
+  public ArrayList<String> installPkgList = null;
+  public IOSTerminal iosTerminal = null;
+  public int loginType = 0;
   public String opendId = "";
   public String phoneNum = "";
   public int platform = 1;
   public String qua = "";
-  public Terminal terminal;
-  public TicketForQQ ticketForQQ;
-  public long uin;
-  public ArrayList<String> uninstallPkgList;
+  public Terminal terminal = null;
+  public TicketForQQ ticketForQQ = null;
+  public long uin = 0L;
+  public ArrayList<String> uninstallPkgList = null;
   public String uniqueId = "";
   
   static

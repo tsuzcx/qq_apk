@@ -2,13 +2,14 @@ package com.tencent.mobileqq.gamecenter.view;
 
 import android.content.res.Resources;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.widget.ViewSwitcher;
 import android.widget.ViewSwitcher.ViewFactory;
-import avdu;
-import avff;
-import avfg;
+import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
 import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo.SimpleMessage;
+import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,38 +18,64 @@ import java.util.List;
 import mqq.app.AppRuntime;
 
 abstract class GameSessionView$ViewSwitcherSession<T extends View>
-  implements ViewSwitcher.ViewFactory, avff, Runnable, Comparator<avfg>
+  implements ViewSwitcher.ViewFactory, GameSessionView.SessionStyle, Runnable, Comparator<GameSessionView.WrappedMessage>
 {
   private int jdField_a_of_type_Int = -1;
   private final long jdField_a_of_type_Long = 1500L;
   private ViewSwitcher jdField_a_of_type_AndroidWidgetViewSwitcher;
   protected String a;
-  private List<avfg> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<GameSessionView.WrappedMessage> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   GameSessionView$ViewSwitcherSession(GameSessionView paramGameSessionView)
   {
-    this.jdField_a_of_type_JavaLangString = paramGameSessionView.getResources().getString(2131694981);
+    this.jdField_a_of_type_JavaLangString = paramGameSessionView.getResources().getString(2131695220);
   }
   
   private void a(boolean paramBoolean)
   {
+    int k = 0;
     this.jdField_a_of_type_Int += 1;
     if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {
       this.jdField_a_of_type_Int = 0;
     }
-    a(this.jdField_a_of_type_AndroidWidgetViewSwitcher.getNextView(), (avfg)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int));
+    a(this.jdField_a_of_type_AndroidWidgetViewSwitcher.getNextView(), (GameSessionView.WrappedMessage)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int));
     this.jdField_a_of_type_AndroidWidgetViewSwitcher.showNext();
-    if (paramBoolean) {
-      this.this$0.postDelayed(this, 1500L);
+    int i;
+    if ("3".equals(QQGameHelper.b())) {
+      i = 0;
+    }
+    for (;;)
+    {
+      int j = k;
+      if (i < this.jdField_a_of_type_AndroidWidgetViewSwitcher.getChildCount())
+      {
+        if ((this.jdField_a_of_type_AndroidWidgetViewSwitcher.getChildAt(i) != null) && (this.jdField_a_of_type_AndroidWidgetViewSwitcher.getChildAt(i).getHeight() == 0) && (this.jdField_a_of_type_AndroidWidgetViewSwitcher.getChildAt(i).getWidth() == 0)) {
+          j = 1;
+        }
+      }
+      else
+      {
+        if (j != 0)
+        {
+          QLog.d(GameSessionView.jdField_a_of_type_JavaLangString, 1, "viewSwitcher need posDraw");
+          this.jdField_a_of_type_AndroidWidgetViewSwitcher.measure(View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_AndroidWidgetViewSwitcher.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_AndroidWidgetViewSwitcher.getHeight(), 1073741824));
+          this.jdField_a_of_type_AndroidWidgetViewSwitcher.layout(this.jdField_a_of_type_AndroidWidgetViewSwitcher.getLeft(), this.jdField_a_of_type_AndroidWidgetViewSwitcher.getTop(), this.jdField_a_of_type_AndroidWidgetViewSwitcher.getRight(), this.jdField_a_of_type_AndroidWidgetViewSwitcher.getBottom());
+        }
+        if (paramBoolean) {
+          this.this$0.postDelayed(this, 1500L);
+        }
+        return;
+      }
+      i += 1;
     }
   }
   
-  public int a(avfg paramavfg1, avfg paramavfg2)
+  public int a(GameSessionView.WrappedMessage paramWrappedMessage1, GameSessionView.WrappedMessage paramWrappedMessage2)
   {
-    if (paramavfg1.a.jdField_a_of_type_Long > paramavfg2.a.jdField_a_of_type_Long) {
+    if (paramWrappedMessage1.a.jdField_a_of_type_Long > paramWrappedMessage2.a.jdField_a_of_type_Long) {
       return -1;
     }
-    if (paramavfg1.a.jdField_a_of_type_Long < paramavfg2.a.jdField_a_of_type_Long) {
+    if (paramWrappedMessage1.a.jdField_a_of_type_Long < paramWrappedMessage2.a.jdField_a_of_type_Long) {
       return 1;
     }
     return 0;
@@ -69,9 +96,9 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
     this.this$0.removeCallbacks(this);
   }
   
-  protected void a(T paramT, avfg paramavfg)
+  protected void a(T paramT, GameSessionView.WrappedMessage paramWrappedMessage)
   {
-    paramT.setTag(paramavfg.a());
+    paramT.setTag(paramWrappedMessage.a());
   }
   
   protected void a(ViewSwitcher paramViewSwitcher)
@@ -85,16 +112,17 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
     boolean bool = false;
     this.jdField_a_of_type_JavaUtilList.clear();
     paramInt = 0;
+    GameCenterSessionInfo localGameCenterSessionInfo;
     while (paramInt < paramList.size())
     {
-      GameCenterSessionInfo localGameCenterSessionInfo = (GameCenterSessionInfo)paramList.get(paramInt);
+      localGameCenterSessionInfo = (GameCenterSessionInfo)paramList.get(paramInt);
       List localList = ((GameCenterSessionInfo)paramList.get(paramInt)).a();
       if (localList != null)
       {
         int i = 0;
         while (i < localList.size())
         {
-          this.jdField_a_of_type_JavaUtilList.add(new avfg(localGameCenterSessionInfo, (GameCenterSessionInfo.SimpleMessage)localList.get(i)));
+          this.jdField_a_of_type_JavaUtilList.add(new GameSessionView.WrappedMessage(localGameCenterSessionInfo, (GameCenterSessionInfo.SimpleMessage)localList.get(i)));
           i += 1;
         }
       }
@@ -102,8 +130,13 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
     }
     if (this.jdField_a_of_type_JavaUtilList.size() == 0)
     {
-      paramList = (GameCenterSessionInfo)paramList.get(0);
-      this.jdField_a_of_type_JavaUtilList.add(new avfg(paramList, new GameCenterSessionInfo.SimpleMessage(paramList.a(), paramList.i())));
+      paramInt = 0;
+      while (paramInt < paramList.size())
+      {
+        localGameCenterSessionInfo = (GameCenterSessionInfo)paramList.get(paramInt);
+        this.jdField_a_of_type_JavaUtilList.add(new GameSessionView.WrappedMessage(localGameCenterSessionInfo, new GameCenterSessionInfo.SimpleMessage(localGameCenterSessionInfo.a(), localGameCenterSessionInfo.i())));
+        paramInt += 1;
+      }
     }
     Collections.sort(this.jdField_a_of_type_JavaUtilList, this);
     this.this$0.removeCallbacks(this);
@@ -120,7 +153,7 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
   {
     GameCenterSessionInfo localGameCenterSessionInfo = a();
     GameSessionView.a(this.this$0, this.this$0.getContext(), localGameCenterSessionInfo);
-    avdu.b(GameSessionView.a(this.this$0).getAccount(), System.currentTimeMillis());
+    GameMsgUtil.b(GameSessionView.a(this.this$0).getAccount(), System.currentTimeMillis());
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
@@ -131,7 +164,7 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.GameSessionView.ViewSwitcherSession
  * JD-Core Version:    0.7.0.1
  */

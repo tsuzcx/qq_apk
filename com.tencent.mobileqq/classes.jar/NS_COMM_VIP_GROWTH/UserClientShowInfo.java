@@ -10,14 +10,14 @@ public final class UserClientShowInfo
   extends JceStruct
 {
   static Map<String, IconInfo> cache_mapIconInfo = new HashMap();
-  public int iIsUseVipIcon;
-  public int iKeepVipDays;
-  public int iLevel;
-  public int iScore;
-  public int iSpeed;
-  public int iVip;
-  public int iVipRatio;
-  public Map<String, IconInfo> mapIconInfo;
+  public int iIsUseVipIcon = 0;
+  public int iKeepVipDays = 0;
+  public int iLevel = 0;
+  public int iScore = 0;
+  public int iSpeed = 0;
+  public int iVip = 0;
+  public int iVipRatio = 0;
+  public Map<String, IconInfo> mapIconInfo = null;
   public String strUid = "";
   
   static

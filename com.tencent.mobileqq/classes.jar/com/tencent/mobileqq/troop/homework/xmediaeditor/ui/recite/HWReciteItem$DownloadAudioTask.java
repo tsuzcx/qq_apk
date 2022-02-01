@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
 import android.os.Message;
-import bfut;
-import bkys;
-import bmjd;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import com.tencent.util.WeakReferenceHandler;
+import cooperation.troop_homework.TroopHomeworkHelper;
 import java.lang.ref.WeakReference;
 
 class HWReciteItem$DownloadAudioTask
   implements Runnable
 {
   private final WeakReference<HWReciteItem> a;
-  private final WeakReference<bfut> b;
+  private final WeakReference<HWReciteInfo> b;
   
-  HWReciteItem$DownloadAudioTask(HWReciteItem paramHWReciteItem, bfut parambfut)
+  HWReciteItem$DownloadAudioTask(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo)
   {
     this.a = new WeakReference(paramHWReciteItem);
-    this.b = new WeakReference(parambfut);
+    this.b = new WeakReference(paramHWReciteInfo);
   }
   
   public void run()
   {
-    bfut localbfut = (bfut)this.b.get();
-    if (localbfut != null)
+    HWReciteInfo localHWReciteInfo = (HWReciteInfo)this.b.get();
+    if (localHWReciteInfo != null)
     {
-      localbfut.d = bmjd.a(localbfut.e);
+      localHWReciteInfo.d = TroopHomeworkHelper.a(localHWReciteInfo.e);
       Object localObject = (HWReciteItem)this.a.get();
       if ((localObject != null) && (HWReciteItem.a((HWReciteItem)localObject) != null))
       {
         localObject = HWReciteItem.a((HWReciteItem)localObject).obtainMessage();
         ((Message)localObject).what = 233;
-        ((Message)localObject).obj = localbfut;
+        ((Message)localObject).obj = localHWReciteInfo;
         ((Message)localObject).sendToTarget();
       }
     }

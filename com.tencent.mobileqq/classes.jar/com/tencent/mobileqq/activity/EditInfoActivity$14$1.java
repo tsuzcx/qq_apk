@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adwh;
 import android.graphics.Color;
 import android.widget.TextView;
 
-public class EditInfoActivity$14$1
+class EditInfoActivity$14$1
   implements Runnable
 {
-  public EditInfoActivity$14$1(adwh paramadwh) {}
+  EditInfoActivity$14$1(EditInfoActivity.14 param14) {}
   
   public void run()
   {
@@ -23,7 +22,7 @@ public class EditInfoActivity$14$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EditInfoActivity.14.1
  * JD-Core Version:    0.7.0.1
  */

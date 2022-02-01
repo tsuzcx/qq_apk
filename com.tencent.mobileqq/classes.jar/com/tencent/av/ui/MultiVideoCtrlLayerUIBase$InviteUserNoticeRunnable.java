@@ -3,7 +3,7 @@ package com.tencent.av.ui;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
-public class MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable
+class MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable
   implements Runnable
 {
   int jdField_a_of_type_Int = 0;
@@ -31,7 +31,7 @@ public class MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.InviteUserNoticeRunnable
  * JD-Core Version:    0.7.0.1
  */

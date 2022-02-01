@@ -37,18 +37,7 @@ public class MiniProgramShareUtils
     localStAdaptShareInfoReq.scene.set(paramInt2);
     localStAdaptShareInfoReq.templetType.set(paramInt3);
     localStAdaptShareInfoReq.businessType.set(paramInt4);
-    if (paramString4 != null) {
-      localStAdaptShareInfoReq.picUrl.set(paramString4);
-    }
-    if (paramString5 != null) {
-      localStAdaptShareInfoReq.vidUrl.set(paramString5);
-    }
-    if (paramString6 != null) {
-      localStAdaptShareInfoReq.jumpUrl.set(paramString6);
-    }
-    if (paramString7 != null) {
-      localStAdaptShareInfoReq.iconUrl.set(paramString7);
-    }
+    setUrl(paramString4, paramString5, paramString6, paramString7, localStAdaptShareInfoReq);
     if (paramStCommonExt != null) {
       localStAdaptShareInfoReq.extInfo.set(paramStCommonExt);
     }
@@ -68,23 +57,44 @@ public class MiniProgramShareUtils
       if (paramString10 != null) {
         localStAdaptShareInfoReq.appidRich.set(paramString10);
       }
-      if ((paramString11 != null) && (paramString12 != null))
-      {
-        paramString1 = new MiniProgramShare.StTemplateInfo();
-        paramString1.templateId.set(paramString11);
-        paramString1.templateData.set(paramString12);
-        localStAdaptShareInfoReq.template.set(paramString1);
-      }
+      setTemplate(paramString11, paramString12, localStAdaptShareInfoReq);
       if ((paramInt6 == 5) && (paramString13 != null)) {
         localStAdaptShareInfoReq.rcvOpenId.set(paramString13);
       }
       return localStAdaptShareInfoReq;
     }
   }
+  
+  private static void setTemplate(String paramString1, String paramString2, MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq)
+  {
+    if ((paramString1 != null) && (paramString2 != null))
+    {
+      MiniProgramShare.StTemplateInfo localStTemplateInfo = new MiniProgramShare.StTemplateInfo();
+      localStTemplateInfo.templateId.set(paramString1);
+      localStTemplateInfo.templateData.set(paramString2);
+      paramStAdaptShareInfoReq.template.set(localStTemplateInfo);
+    }
+  }
+  
+  private static void setUrl(String paramString1, String paramString2, String paramString3, String paramString4, MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq)
+  {
+    if (paramString1 != null) {
+      paramStAdaptShareInfoReq.picUrl.set(paramString1);
+    }
+    if (paramString2 != null) {
+      paramStAdaptShareInfoReq.vidUrl.set(paramString2);
+    }
+    if (paramString3 != null) {
+      paramStAdaptShareInfoReq.jumpUrl.set(paramString3);
+    }
+    if (paramString4 != null) {
+      paramStAdaptShareInfoReq.iconUrl.set(paramString4);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniProgramShareUtils
  * JD-Core Version:    0.7.0.1
  */

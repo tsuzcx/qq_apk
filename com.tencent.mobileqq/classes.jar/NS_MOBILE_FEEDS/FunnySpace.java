@@ -9,14 +9,14 @@ public final class FunnySpace
   extends JceStruct
 {
   static ArrayList<FunnySpaceAction> cache_Actions = new ArrayList();
-  public ArrayList<FunnySpaceAction> Actions;
-  public long TotalCount;
+  public ArrayList<FunnySpaceAction> Actions = null;
+  public long TotalCount = 0L;
   public String host_message = "";
-  public boolean is_block;
-  public boolean is_show;
+  public boolean is_block = false;
+  public boolean is_show = false;
   public boolean is_show_cmshowar = true;
-  public long uFirePowerCount;
-  public long uFirePowerLevel;
+  public long uFirePowerCount = 0L;
+  public long uFirePowerLevel = 0L;
   
   static
   {

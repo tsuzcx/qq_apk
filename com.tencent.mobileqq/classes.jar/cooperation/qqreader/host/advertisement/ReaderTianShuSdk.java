@@ -1,6 +1,6 @@
 package cooperation.qqreader.host.advertisement;
 
-import cooperation.vip.tianshu.TianShuAdPosItemData;
+import com.tencent.mobileqq.tianshu.data.TianShuAdPosItemData;
 import cooperation.vip.tianshu.TianShuManager;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +11,15 @@ public class ReaderTianShuSdk
   {
     ArrayList localArrayList = new ArrayList();
     TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-    localTianShuAdPosItemData.mPosId = paramInt1;
-    localTianShuAdPosItemData.mNeedCnt = paramInt2;
+    localTianShuAdPosItemData.a = paramInt1;
+    localTianShuAdPosItemData.b = paramInt2;
     localArrayList.add(localTianShuAdPosItemData);
     TianShuManager.getInstance().requestAdv(localArrayList, new ReaderTianShuSdk.ReaderTianShuGetAdvCallback(paramInt1, paramRequestListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderTianShuSdk
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,12 @@ public class AEEditorPagStickerInfo
 {
   @SerializedName("backgroundColorAdjustable")
   public int backgroundColorAdjustable;
+  public String badgeURL = "";
   @SerializedName("fontID")
   public String fontId;
+  public String hashTag = "";
+  public String interactive = "";
+  public String parentId = "";
   @SerializedName("preDownload")
   public int preDownload;
   @SerializedName("resourceMD5")
@@ -38,7 +42,7 @@ public class AEEditorPagStickerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.manage.AEEditorPagStickerInfo
  * JD-Core Version:    0.7.0.1
  */

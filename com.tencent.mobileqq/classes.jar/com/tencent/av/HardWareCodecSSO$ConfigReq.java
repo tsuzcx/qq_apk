@@ -18,7 +18,7 @@ public final class HardWareCodecSSO$ConfigReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.HardWareCodecSSO.ConfigReq
  * JD-Core Version:    0.7.0.1
  */

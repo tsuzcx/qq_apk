@@ -1,5 +1,6 @@
 package io.flutter.embedding.android;
 
+@Deprecated
 public enum FlutterView$TransparencyMode
 {
   opaque,  transparent;
@@ -8,7 +9,7 @@ public enum FlutterView$TransparencyMode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterView.TransparencyMode
  * JD-Core Version:    0.7.0.1
  */

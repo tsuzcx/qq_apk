@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
@@ -184,21 +185,21 @@ public class MmapCache
       this.mMappedBuffer.position(j * 16 + 14);
       this.mMappedBuffer.get(arrayOfByte, 0, 16);
       if (!Arrays.equals(arrayOfByte, paramString)) {
-        break label351;
+        break label367;
       }
-      if (!QLog.isColorLevel()) {
-        break label358;
+      if (!URLDrawable.depImp.mLog.isColorLevel()) {
+        break label374;
       }
-      QLog.d("SafeBitmapFactory", 2, "deleteItem() 找到了,pos:" + j);
-      break label358;
-      label228:
+      URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "deleteItem() 找到了,pos:" + j);
+      break label374;
+      label244:
       if (i < m - 1)
       {
         j = (k + i) % n;
         this.mMappedBuffer.position(j * 16 + 14);
         this.mMappedBuffer.get(arrayOfByte, 0, 16);
         if (j != 0) {
-          break label365;
+          break label381;
         }
         j = n - 1;
       }
@@ -208,7 +209,7 @@ public class MmapCache
       this.mMappedBuffer.position(j * 16 + 14);
       this.mMappedBuffer.put(arrayOfByte);
       i += 1;
-      break label228;
+      break label244;
       if (m > 0)
       {
         this.mMappedBuffer.position(6);
@@ -216,13 +217,13 @@ public class MmapCache
       }
       this.mMappedBuffer.force();
       break;
-      label351:
+      label367:
       i -= 1;
       break label145;
-      label358:
+      label374:
       i += 1;
-      break label228;
-      label365:
+      break label244;
+      label381:
       j -= 1;
     }
   }
@@ -233,8 +234,8 @@ public class MmapCache
     int j;
     int k;
     int m;
-    label156:
-    label160:
+    label172:
+    label176:
     try
     {
       paramString = MD5Util.byteArrayToMd5(paramString);
@@ -250,10 +251,10 @@ public class MmapCache
       j = this.mMappedBuffer.getInt();
       k = this.mMappedBuffer.getInt();
       m = this.mMappedBuffer.getInt();
-      if (!QLog.isColorLevel()) {
-        break label391;
+      if (!URLDrawable.depImp.mLog.isColorLevel()) {
+        break label439;
       }
-      QLog.d("SafeBitmapFactory", 2, "findOrAddItem() start:" + j + "，valid:" + k + "，max:" + m);
+      URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "findOrAddItem() start:" + j + "，valid:" + k + "，max:" + m);
     }
     finally {}
     createHead();
@@ -266,7 +267,7 @@ public class MmapCache
         this.mMappedBuffer.position((j + i) % m * 16 + 14);
         this.mMappedBuffer.get(arrayOfByte, 0, 16);
         if (!Arrays.equals(arrayOfByte, paramString)) {
-          break label412;
+          break label460;
         }
         i = 1;
         break;
@@ -278,8 +279,8 @@ public class MmapCache
         i = k + 1;
         this.mMappedBuffer.position(6);
         this.mMappedBuffer.putInt(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("SafeBitmapFactory", 2, "findOrAddItem() 没找到 ，总数未满跟新 valid:" + i);
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "findOrAddItem() 没找到 ，总数未满跟新 valid:" + i);
         }
       }
       for (;;)
@@ -290,19 +291,19 @@ public class MmapCache
         i = (j + 1) % m;
         this.mMappedBuffer.position(2);
         this.mMappedBuffer.putInt(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("SafeBitmapFactory", 2, "findOrAddItem() 没找到 ，总数已满跟新 start:" + i);
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "findOrAddItem() 没找到 ，总数已满跟新 start:" + i);
         }
       }
-      label391:
+      label439:
       if ((m < 0) || (m < j)) {
-        break label156;
+        break label172;
       }
       if (m >= k) {
-        break label160;
+        break label176;
       }
-      break label156;
-      label412:
+      break label172;
+      label460:
       i -= 1;
     }
   }

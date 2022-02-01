@@ -13,8 +13,10 @@ import feedcloud.FeedCloudMeta.StGPSV2;
 public final class QQCircleFeedBase$StFeedListBusiReqData
   extends MessageMicro<StFeedListBusiReqData>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 66, 72, 90, 96, 106 }, new String[] { "tabAttachInfo", "gpsInfo", "isReqLayer", "tagId", "tagName", "noRecom", "refreshAttachInfo", "detailFeed", "groupNumber", "simulateInfo", "pullSceneType", "schemaTrans" }, new Object[] { "", null, Boolean.valueOf(false), "", "", Boolean.valueOf(false), "", null, Long.valueOf(0L), null, Integer.valueOf(0), "" }, StFeedListBusiReqData.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 66, 72, 90, 96, 106, 114, 122 }, new String[] { "tabAttachInfo", "gpsInfo", "isReqLayer", "tagId", "tagName", "noRecom", "refreshAttachInfo", "detailFeed", "groupNumber", "simulateInfo", "pullSceneType", "schemaTrans", "RedPointInfo", "entrySchema" }, new Object[] { "", null, Boolean.valueOf(false), "", "", Boolean.valueOf(false), "", null, Long.valueOf(0L), null, Integer.valueOf(0), "", null, "" }, StFeedListBusiReqData.class);
+  public QQCircleFeedBase.StPageRedPointInfo RedPointInfo = new QQCircleFeedBase.StPageRedPointInfo();
   public FeedCloudMeta.StFeed detailFeed = new FeedCloudMeta.StFeed();
+  public final PBStringField entrySchema = PBField.initString("");
   public FeedCloudMeta.StGPSV2 gpsInfo = new FeedCloudMeta.StGPSV2();
   public final PBUInt64Field groupNumber = PBField.initUInt64(0L);
   public final PBBoolField isReqLayer = PBField.initBool(false);
@@ -29,7 +31,7 @@ public final class QQCircleFeedBase$StFeedListBusiReqData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     qqcircle.QQCircleFeedBase.StFeedListBusiReqData
  * JD-Core Version:    0.7.0.1
  */

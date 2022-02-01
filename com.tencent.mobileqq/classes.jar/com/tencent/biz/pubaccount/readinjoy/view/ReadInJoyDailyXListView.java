@@ -13,41 +13,38 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bldp;
-import bmhv;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyDailyViewController;
+import com.tencent.biz.pubaccount.readinjoy.common.KandianDailyReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ProteusSupportUtil;
+import com.tencent.biz.pubaccount.readinjoy.config.handlers.DailyModeConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJThreadHandler;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.TemplateFactory;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoyAnimBaseManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
+import com.tencent.widget.ReadInJoyOverScrollViewListener;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.List;
-import olh;
 import org.json.JSONException;
-import orj;
-import pin;
-import piv;
-import plm;
-import pno;
-import pqf;
-import pqg;
-import szd;
-import szj;
-import szo;
-import szp;
-import tax;
-import tmh;
-import tnd;
 
 public class ReadInJoyDailyXListView
   extends ReadInJoyXListView
-  implements tax
+  implements ReadInJoyOverScrollViewListener
 {
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-1);
   private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  public List<bldp> a;
-  private boolean f;
-  private boolean g;
+  protected List<OverScrollViewListener> a;
+  private boolean f = false;
+  private boolean g = false;
   
   public ReadInJoyDailyXListView(Context paramContext)
   {
@@ -78,27 +75,27 @@ public class ReadInJoyDailyXListView
     if (this.g) {
       return;
     }
-    pqg localpqg = pqf.a();
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.a();
     String str2 = "0";
     String str1;
-    if (orj.a() == 1) {
+    if (ReadInJoyDailyViewController.a() == 1) {
       str1 = "1";
     }
     for (;;)
     {
-      localpqg.b("is_jump", str1);
-      localpqg.b("cmd", bmhv.h());
+      localReportR5Builder.b("is_jump", str1);
+      localReportR5Builder.b("cmd", ReadInJoyHelper.i());
       if ("1".equals(str1)) {
-        localpqg.b("jump_src", plm.b());
+        localReportR5Builder.b("jump_src", DailyModeConfigHandler.b());
       }
       this.g = true;
-      olh.a(null, "", "0X8009882", "0X8009882", 0, 0, "", "", "", localpqg.a(), false);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009882", "0X8009882", 0, 0, "", "", "", localReportR5Builder.a(), false);
       return;
       str1 = str2;
-      if (!TextUtils.isEmpty(plm.a()))
+      if (!TextUtils.isEmpty(DailyModeConfigHandler.a()))
       {
         str1 = str2;
-        if (orj.a() == 3) {
+        if (ReadInJoyDailyViewController.a() == 3) {
           str1 = "1";
         }
       }
@@ -110,12 +107,12 @@ public class ReadInJoyDailyXListView
     return this.mTouchMode;
   }
   
-  public tnd a(int paramInt)
+  public ReadInJoyAnimBaseManager a(int paramInt)
   {
     return super.a(paramInt);
   }
   
-  public void a(int paramInt)
+  protected void a(int paramInt)
   {
     if (!this.f) {
       return;
@@ -123,13 +120,13 @@ public class ReadInJoyDailyXListView
     if (paramInt != 4)
     {
       setFooterView(true);
-      if (this.jdField_a_of_type_Szj != null)
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView$RefreshCallback != null)
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718013);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718505);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         this.c = 1;
-        this.jdField_a_of_type_Szj.b(this, paramInt);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView$RefreshCallback.b(this, paramInt);
       }
     }
     for (;;)
@@ -138,20 +135,13 @@ public class ReadInJoyDailyXListView
       return;
       setFooterView(true);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718013);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718505);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      if (this.jdField_a_of_type_Szj != null)
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView$RefreshCallback != null)
       {
         this.c = 1;
-        this.jdField_a_of_type_Szj.b(this, paramInt);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView$RefreshCallback.b(this, paramInt);
       }
-    }
-  }
-  
-  public void a(int paramInt1, View paramView, ListView paramListView, int paramInt2)
-  {
-    if (paramInt1 == 0) {
-      super.a(paramInt1, paramView, paramListView, paramInt2);
     }
   }
   
@@ -160,7 +150,7 @@ public class ReadInJoyDailyXListView
     super.a(paramContext, paramAttributeSet);
     setNeedShowHeaderView(true);
     a(this);
-    if (orj.a() != 2)
+    if (ReadInJoyDailyViewController.a() != 2)
     {
       a(this);
       return;
@@ -168,16 +158,14 @@ public class ReadInJoyDailyXListView
     setCanLoadMore(true);
   }
   
-  public void a(View paramView, ListView paramListView, int paramInt) {}
-  
-  public void a(bldp parambldp)
+  public void a(OverScrollViewListener paramOverScrollViewListener)
   {
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      super.setOverScrollListener(new szp(this));
+      super.setOverScrollListener(new ReadInJoyDailyXListView.3(this));
     }
-    this.jdField_a_of_type_JavaUtilList.add(parambldp);
+    this.jdField_a_of_type_JavaUtilList.add(paramOverScrollViewListener);
   }
   
   public void a(boolean paramBoolean)
@@ -222,24 +210,31 @@ public class ReadInJoyDailyXListView
     TemplateBean localTemplateBean = null;
     try
     {
-      tmh localtmh = tmh.a("default_feeds", true);
-      if (localtmh != null) {
-        localTemplateBean = localtmh.getTemplateBean(plm.a());
+      TemplateFactory localTemplateFactory = TemplateFactory.a("default_feeds", true);
+      if (localTemplateFactory != null) {
+        localTemplateBean = localTemplateFactory.getTemplateBean(DailyModeConfigHandler.a());
       }
       if ((localTemplateBean != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null))
       {
-        if (pno.a())
+        if (RIJThreadHandler.a())
         {
-          piv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, null, localTemplateBean);
+          ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, null, localTemplateBean);
           return;
         }
-        pno.b().post(new ReadInJoyDailyXListView.2(this, localTemplateBean));
+        RIJThreadHandler.b().post(new ReadInJoyDailyXListView.2(this, localTemplateBean));
         return;
       }
     }
     catch (JSONException localJSONException)
     {
       QLog.e("ReadInJoyDailyXListView", 1, "onRefreshFooterView, e = " + localJSONException);
+    }
+  }
+  
+  public void onNotCompleteVisable(int paramInt1, View paramView, ListView paramListView, int paramInt2)
+  {
+    if (paramInt1 == 0) {
+      super.onNotCompleteVisable(paramInt1, paramView, paramListView, paramInt2);
     }
   }
   
@@ -259,9 +254,11 @@ public class ReadInJoyDailyXListView
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     if (paramInt == 0) {
-      pin.a(8);
+      KandianDailyReportUtils.a(8);
     }
   }
+  
+  public void onScrollView(View paramView, ListView paramListView, int paramInt) {}
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
@@ -296,8 +293,8 @@ public class ReadInJoyDailyXListView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     super.setAdapter(paramListAdapter);
-    if ((paramListAdapter != null) && ((paramListAdapter instanceof szd))) {
-      ((szd)paramListAdapter).a(new szo(this));
+    if ((paramListAdapter != null) && ((paramListAdapter instanceof ReadInJoyBaseAdapter))) {
+      ((ReadInJoyBaseAdapter)paramListAdapter).a(new ReadInJoyDailyXListView.1(this));
     }
   }
   
@@ -343,10 +340,10 @@ public class ReadInJoyDailyXListView
   
   public void setNoMoreData(boolean paramBoolean) {}
   
-  public void setOverScrollListener(bldp parambldp)
+  public void setOverScrollListener(OverScrollViewListener paramOverScrollViewListener)
   {
-    if (parambldp != null) {
-      this.jdField_a_of_type_JavaUtilList.add(parambldp);
+    if (paramOverScrollViewListener != null) {
+      this.jdField_a_of_type_JavaUtilList.add(paramOverScrollViewListener);
     }
   }
   
@@ -357,7 +354,7 @@ public class ReadInJoyDailyXListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.biz.qqstory.takevideo.rmw;
 
-import bdah;
-import bnky;
+import com.tencent.av.core.VcSystemInfo;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import llq;
-import wjs;
-import ysa;
-import yyu;
+import com.tencent.mobileqq.shortvideo.hwcodec.HwEnvData;
+import dov.com.qq.im.ae.download.AEResUtil;
 
 class RMWService$2
   extends Thread
@@ -15,26 +14,26 @@ class RMWService$2
   
   public void run()
   {
-    yyu.b("RMWService", "preload AVCodec - start -");
-    VideoEnvironment.loadAVCodecSoNotify("AVCodec", null, true);
-    yyu.b("RMWService", "preload AVCodec - end -");
-    yyu.b("RMWService", "preload PtvFilterSoLoad - start -");
-    bnky.c();
-    yyu.b("RMWService", "preload PtvFilterSoLoad - end -");
-    yyu.b("RMWService", "preInit DoodleEmojiManager - start -");
-    ((ysa)wjs.a(8)).a(this.this$0);
-    yyu.b("RMWService", "preInit DoodleEmojiManager - end -");
-    yyu.b("RMWService", "preInit HwEnvData.supportHardWareCodec - start -");
-    bdah.a();
-    yyu.b("RMWService", "preInit HwEnvData.supportHardWareCodec - end -");
-    yyu.b("RMWService", "preInit VcSystemInfo.getCpuInfo - start -");
-    llq.a();
-    yyu.b("RMWService", "preInit VcSystemInfo.getCpuInfo - end -");
+    RMWLog.b("RMWService", "preload AVCodec - start -");
+    VideoEnvironment.loadAVCodecSo();
+    RMWLog.b("RMWService", "preload AVCodec - end -");
+    RMWLog.b("RMWService", "preload PtvFilterSoLoad - start -");
+    AEResUtil.e();
+    RMWLog.b("RMWService", "preload PtvFilterSoLoad - end -");
+    RMWLog.b("RMWService", "preInit DoodleEmojiManager - start -");
+    ((DoodleEmojiManager)SuperManager.a(8)).a(this.this$0);
+    RMWLog.b("RMWService", "preInit DoodleEmojiManager - end -");
+    RMWLog.b("RMWService", "preInit HwEnvData.supportHardWareCodec - start -");
+    HwEnvData.a();
+    RMWLog.b("RMWService", "preInit HwEnvData.supportHardWareCodec - end -");
+    RMWLog.b("RMWService", "preInit VcSystemInfo.getCpuInfo - start -");
+    VcSystemInfo.getCpuInfo();
+    RMWLog.b("RMWService", "preInit VcSystemInfo.getCpuInfo - end -");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.rmw.RMWService.2
  * JD-Core Version:    0.7.0.1
  */

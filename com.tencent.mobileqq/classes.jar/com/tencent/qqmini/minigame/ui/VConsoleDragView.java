@@ -61,6 +61,49 @@ public class VConsoleDragView
     }
   }
   
+  private void onTouchEventActionMove(FrameLayout.LayoutParams paramLayoutParams)
+  {
+    int i = this.startX - this.lastX;
+    int j = this.startY - this.lastY;
+    this.left = (getLeft() + i);
+    this.top = (getTop() + j);
+    this.right = (i + getRight());
+    this.bottom = (getBottom() + j);
+    if (this.left < 0)
+    {
+      this.left = 0;
+      this.right = (this.left + this.width);
+      if (this.top >= 0) {
+        break label261;
+      }
+      this.top = 0;
+      this.bottom = (this.top + this.height);
+    }
+    for (;;)
+    {
+      paramLayoutParams.setMargins(this.left, this.top, this.mScreenWidth - this.right, this.mScreenHeight - this.bottom);
+      setLayoutParams(paramLayoutParams);
+      if ((!this.isDrag) && ((Math.abs(this.startX - this.lastX) > this.mDm.density * 2.0F) || (Math.abs(this.startY - this.lastY) > this.mDm.density * 2.0F))) {
+        this.isDrag = true;
+      }
+      this.lastX = this.startX;
+      this.lastY = this.startY;
+      return;
+      if (this.right <= this.mScreenWidth) {
+        break;
+      }
+      this.right = this.mScreenWidth;
+      this.left = (this.right - this.width);
+      break;
+      label261:
+      if (this.bottom > this.mScreenHeight)
+      {
+        this.bottom = this.mScreenHeight;
+        this.top = (this.mScreenHeight - this.height);
+      }
+    }
+  }
+  
   public int getStatusBarHeight()
   {
     int i = getResources().getIdentifier("status_bar_height", "dimen", "android");
@@ -72,7 +115,7 @@ public class VConsoleDragView
     return this.isDrag;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.width = getMeasuredWidth();
@@ -87,58 +130,20 @@ public class VConsoleDragView
     this.startY = ((int)paramMotionEvent.getRawY());
     switch (paramMotionEvent.getAction())
     {
-    default: 
+    }
+    for (;;)
+    {
       return true;
-    case 0: 
       this.lastX = this.startX;
       this.lastY = this.startY;
-      return true;
-    case 2: 
-      int i = this.startX - this.lastX;
-      int j = this.startY - this.lastY;
-      this.left = (getLeft() + i);
-      this.top = (getTop() + j);
-      this.right = (i + getRight());
-      this.bottom = (getBottom() + j);
-      if (this.left < 0)
-      {
-        this.left = 0;
-        this.right = (this.left + this.width);
-        if (this.top >= 0) {
-          break label348;
-        }
-        this.top = 0;
-        this.bottom = (this.top + this.height);
+      continue;
+      onTouchEventActionMove(localLayoutParams);
+      continue;
+      if ((!this.isDrag) && (this.mListener != null)) {
+        this.mListener.onVConsoleMoveUp();
       }
-      for (;;)
-      {
-        localLayoutParams.setMargins(this.left, this.top, this.mScreenWidth - this.right, this.mScreenHeight - this.bottom);
-        setLayoutParams(localLayoutParams);
-        if ((!this.isDrag) && ((Math.abs(this.startX - this.lastX) > this.mDm.density * 2.0F) || (Math.abs(this.startY - this.lastY) > this.mDm.density * 2.0F))) {
-          this.isDrag = true;
-        }
-        this.lastX = this.startX;
-        this.lastY = this.startY;
-        return true;
-        if (this.right <= this.mScreenWidth) {
-          break;
-        }
-        this.right = this.mScreenWidth;
-        this.left = (this.right - this.width);
-        break;
-        label348:
-        if (this.bottom > this.mScreenHeight)
-        {
-          this.bottom = this.mScreenHeight;
-          this.top = (this.mScreenHeight - this.height);
-        }
-      }
+      this.isDrag = false;
     }
-    if ((!this.isDrag) && (this.mListener != null)) {
-      this.mListener.onVConsoleMoveUp();
-    }
-    this.isDrag = false;
-    return true;
   }
   
   public void requestLandscapeLayout()

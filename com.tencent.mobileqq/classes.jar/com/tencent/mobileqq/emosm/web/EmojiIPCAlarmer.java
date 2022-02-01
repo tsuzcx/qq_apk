@@ -2,16 +2,15 @@ package com.tencent.mobileqq.emosm.web;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import asgr;
 
 public class EmojiIPCAlarmer
 {
   private volatile Handler jdField_a_of_type_AndroidOsHandler;
-  asgr jdField_a_of_type_Asgr;
+  EmojiIPCAlarmer.TimeoutObserver jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer$TimeoutObserver;
   
-  public EmojiIPCAlarmer(asgr paramasgr)
+  public EmojiIPCAlarmer(EmojiIPCAlarmer.TimeoutObserver paramTimeoutObserver)
   {
-    this.jdField_a_of_type_Asgr = paramasgr;
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer$TimeoutObserver = paramTimeoutObserver;
   }
   
   public Runnable a(int paramInt, long paramLong)
@@ -37,7 +36,7 @@ public class EmojiIPCAlarmer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import olh;
-import omx;
-import org.json.JSONObject;
-import pqf;
-import pqu;
-import rna;
-import sij;
 
 class ReadinjoyTabFrame$21
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  ReadinjoyTabFrame$21(ReadinjoyTabFrame paramReadinjoyTabFrame, VideoInfo paramVideoInfo, rna paramrna) {}
+  ReadinjoyTabFrame$21(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 2;
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = pqf.a();
-        localJSONObject.put("kandian_mode", pqu.a());
-        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
-        {
-          localJSONObject.put("reddot", i);
-          localJSONObject.put("kandian_mode_new", omx.a());
-          if ((this.jdField_a_of_type_Rna.a() != 1) || (TextUtils.isEmpty(this.jdField_a_of_type_Rna.a()))) {
-            break label219;
-          }
-          String str1 = this.jdField_a_of_type_Rna.a();
-          localJSONObject.put("skin_id", str1);
-          if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
-          {
-            str1 = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g;
-            localJSONObject.put("rwokey", str1);
-            localJSONObject.put("diandianfeeds_type", RecommendFeedsDiandianEntranceManager.a().b());
-            olh.a(this.this$0.a, "CliOper", "", "", "0X8007DB0", "0X8007DB0", 0, 0, "5", "", "", localJSONObject.toString(), false);
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.readinjoy.4tab", 2, "reportForVideoEntranceRedDotButtonClicked has finished,  r5: " + localJSONObject.toString());
-            }
-            if (ReadinjoyTabFrame.a(this.this$0) != null) {
-              sij.b(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-            }
-          }
-          else
-          {
-            str1 = "";
-            continue;
-          }
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      i = 1;
-      continue;
-      label219:
-      String str2 = "0";
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change cancel");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.21
  * JD-Core Version:    0.7.0.1
  */

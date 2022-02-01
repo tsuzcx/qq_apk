@@ -13,8 +13,8 @@ public class VoiceGifImage
   extends NativeGifImage
 {
   boolean IS_ENABLE_DEBUG_LOG = false;
-  private boolean restart;
-  private boolean restarting;
+  private boolean restart = false;
+  private boolean restarting = false;
   private boolean running = true;
   
   public VoiceGifImage(File paramFile, int paramInt, boolean paramBoolean)
@@ -132,7 +132,7 @@ public class VoiceGifImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.VoiceGifImage
  * JD-Core Version:    0.7.0.1
  */

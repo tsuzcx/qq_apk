@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.widget.share;
 
 import android.content.Context;
-import bixm;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class Validator$1
+class Validator$1
   implements Runnable
 {
-  public Validator$1(bixm parambixm, String paramString) {}
+  Validator$1(Validator paramValidator, String paramString) {}
   
   public void run()
   {
-    Context localContext = bixm.a(this.this$0).mOutAct;
+    Context localContext = Validator.a(this.this$0).a;
     if (localContext != null) {
       QQToast.a(localContext, this.a, 0).a();
     }
@@ -19,7 +18,7 @@ public class Validator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.Validator.1
  * JD-Core Version:    0.7.0.1
  */

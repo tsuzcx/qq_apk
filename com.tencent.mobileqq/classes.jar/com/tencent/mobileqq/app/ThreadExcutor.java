@@ -168,7 +168,7 @@ public class ThreadExcutor
     return paramString;
   }
   
-  static ThreadExcutor getInstance()
+  public static ThreadExcutor getInstance()
   {
     try
     {
@@ -369,7 +369,7 @@ public class ThreadExcutor
     return false;
   }
   
-  void shrinkMaxPoolSize(boolean paramBoolean)
+  public void shrinkMaxPoolSize(boolean paramBoolean)
   {
     if (paramBoolean)
     {

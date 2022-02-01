@@ -32,35 +32,35 @@ public class StoryLoadingView
   private void a()
   {
     this.a = new AnimationDrawable();
-    this.a.addFrame(getResources().getDrawable(2130846580), 50);
-    this.a.addFrame(getResources().getDrawable(2130846581), 50);
-    this.a.addFrame(getResources().getDrawable(2130846582), 50);
-    this.a.addFrame(getResources().getDrawable(2130846583), 50);
-    this.a.addFrame(getResources().getDrawable(2130846584), 50);
-    this.a.addFrame(getResources().getDrawable(2130846585), 50);
-    this.a.addFrame(getResources().getDrawable(2130846586), 50);
-    this.a.addFrame(getResources().getDrawable(2130846587), 50);
-    this.a.addFrame(getResources().getDrawable(2130846588), 50);
-    this.a.addFrame(getResources().getDrawable(2130846589), 50);
-    this.a.addFrame(getResources().getDrawable(2130846590), 50);
-    this.a.addFrame(getResources().getDrawable(2130846591), 50);
-    this.a.addFrame(getResources().getDrawable(2130846592), 50);
-    this.a.addFrame(getResources().getDrawable(2130846593), 50);
-    this.a.addFrame(getResources().getDrawable(2130846594), 50);
-    this.a.addFrame(getResources().getDrawable(2130846595), 50);
-    this.a.addFrame(getResources().getDrawable(2130846596), 50);
-    this.a.addFrame(getResources().getDrawable(2130846597), 50);
-    this.a.addFrame(getResources().getDrawable(2130846598), 50);
-    this.a.addFrame(getResources().getDrawable(2130846599), 50);
-    this.a.addFrame(getResources().getDrawable(2130846600), 50);
-    this.a.addFrame(getResources().getDrawable(2130846601), 50);
-    this.a.addFrame(getResources().getDrawable(2130846602), 50);
-    this.a.addFrame(getResources().getDrawable(2130846603), 50);
-    this.a.addFrame(getResources().getDrawable(2130846604), 50);
-    this.a.addFrame(getResources().getDrawable(2130846605), 50);
-    this.a.addFrame(getResources().getDrawable(2130846606), 50);
-    this.a.addFrame(getResources().getDrawable(2130846607), 50);
-    this.a.addFrame(getResources().getDrawable(2130846608), 50);
+    this.a.addFrame(getResources().getDrawable(2130846923), 50);
+    this.a.addFrame(getResources().getDrawable(2130846924), 50);
+    this.a.addFrame(getResources().getDrawable(2130846925), 50);
+    this.a.addFrame(getResources().getDrawable(2130846926), 50);
+    this.a.addFrame(getResources().getDrawable(2130846927), 50);
+    this.a.addFrame(getResources().getDrawable(2130846928), 50);
+    this.a.addFrame(getResources().getDrawable(2130846929), 50);
+    this.a.addFrame(getResources().getDrawable(2130846930), 50);
+    this.a.addFrame(getResources().getDrawable(2130846931), 50);
+    this.a.addFrame(getResources().getDrawable(2130846932), 50);
+    this.a.addFrame(getResources().getDrawable(2130846933), 50);
+    this.a.addFrame(getResources().getDrawable(2130846934), 50);
+    this.a.addFrame(getResources().getDrawable(2130846935), 50);
+    this.a.addFrame(getResources().getDrawable(2130846936), 50);
+    this.a.addFrame(getResources().getDrawable(2130846937), 50);
+    this.a.addFrame(getResources().getDrawable(2130846938), 50);
+    this.a.addFrame(getResources().getDrawable(2130846939), 50);
+    this.a.addFrame(getResources().getDrawable(2130846940), 50);
+    this.a.addFrame(getResources().getDrawable(2130846941), 50);
+    this.a.addFrame(getResources().getDrawable(2130846942), 50);
+    this.a.addFrame(getResources().getDrawable(2130846943), 50);
+    this.a.addFrame(getResources().getDrawable(2130846944), 50);
+    this.a.addFrame(getResources().getDrawable(2130846945), 50);
+    this.a.addFrame(getResources().getDrawable(2130846946), 50);
+    this.a.addFrame(getResources().getDrawable(2130846947), 50);
+    this.a.addFrame(getResources().getDrawable(2130846948), 50);
+    this.a.addFrame(getResources().getDrawable(2130846949), 50);
+    this.a.addFrame(getResources().getDrawable(2130846950), 50);
+    this.a.addFrame(getResources().getDrawable(2130846951), 50);
     this.a.setOneShot(false);
     super.setImageDrawable(this.a);
     if ((this.a != null) && (!this.a.isRunning())) {
@@ -82,7 +82,7 @@ public class StoryLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryLoadingView
  * JD-Core Version:    0.7.0.1
  */

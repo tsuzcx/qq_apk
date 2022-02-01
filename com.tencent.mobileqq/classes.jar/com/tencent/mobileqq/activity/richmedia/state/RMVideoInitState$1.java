@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import altg;
 import android.os.Handler;
-import bczp;
 import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.shortvideo.common.GloableValue;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 
-public class RMVideoInitState$1
+class RMVideoInitState$1
   implements Runnable
 {
-  public RMVideoInitState$1(altg paramaltg) {}
+  RMVideoInitState$1(RMVideoInitState paramRMVideoInitState) {}
   
   public void run()
   {
@@ -27,7 +26,7 @@ public class RMVideoInitState$1
     for (;;)
     {
       return;
-      File localFile = new File(bczp.a + File.separator + ".nomedia");
+      File localFile = new File(GloableValue.a + File.separator + ".nomedia");
       if (!localFile.exists()) {}
       try
       {
@@ -68,7 +67,7 @@ public class RMVideoInitState$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.1
  * JD-Core Version:    0.7.0.1
  */

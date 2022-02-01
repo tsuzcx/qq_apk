@@ -31,7 +31,7 @@ public class ShortVideoForPicThumbDownloader
     localOptions.inScreenDensity = 160;
     localOptions.inJustDecodeBounds = false;
     String str = paramFile.getAbsolutePath();
-    if (!FileUtils.fileExistsAndNotEmpty(str))
+    if (!FileUtils.b(str))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoForPicThumbDownloader", 2, "decodeFile file not exits. just return");

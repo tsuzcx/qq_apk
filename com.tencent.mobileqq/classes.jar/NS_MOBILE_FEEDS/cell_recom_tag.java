@@ -8,9 +8,9 @@ public final class cell_recom_tag
   extends JceStruct
 {
   static s_event_tag cache_tagData = new s_event_tag();
-  public int action_type;
+  public int action_type = 0;
   public String action_url = "";
-  public s_event_tag tagData;
+  public s_event_tag tagData = null;
   
   public cell_recom_tag() {}
   

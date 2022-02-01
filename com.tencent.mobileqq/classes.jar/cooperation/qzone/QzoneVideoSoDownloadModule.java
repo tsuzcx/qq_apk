@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCModule;
@@ -86,7 +85,7 @@ public class QzoneVideoSoDownloadModule
     if ("action_download_avcodec".equals(paramString))
     {
       QLog.i("QzoneVideoSoDownloadModule", 1, "try download libavcodec");
-      if ((NetworkUtil.isNetworkAvailable(null)) && (paramBundle != null))
+      if ((NetworkUtil.g(null)) && (paramBundle != null))
       {
         paramString = (ResultReceiver)paramBundle.getParcelable("key_download_result_receiver");
         if (paramString == null)
@@ -101,7 +100,7 @@ public class QzoneVideoSoDownloadModule
     }
     if ("action_check_avcodec_is_ok".equals(paramString))
     {
-      boolean bool = VideoEnvironment.checkAVCodecLoadIsOK((AppInterface)localObject);
+      boolean bool = VideoEnvironment.checkAndLoadAVCodec();
       paramString = new Bundle();
       paramString.putBoolean("key_is_avcodec_ok", bool);
       return EIPCResult.createResult(0, paramString);
@@ -111,7 +110,7 @@ public class QzoneVideoSoDownloadModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzoneVideoSoDownloadModule
  * JD-Core Version:    0.7.0.1
  */

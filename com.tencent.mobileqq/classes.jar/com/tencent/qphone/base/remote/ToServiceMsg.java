@@ -510,6 +510,8 @@ public class ToServiceMsg
       ((StringBuffer)localObject).append(this.appId);
       ((StringBuffer)localObject).append(" appSeq:");
       ((StringBuffer)localObject).append(this.appSeq);
+      ((StringBuffer)localObject).append(" sName:");
+      ((StringBuffer)localObject).append(this.serviceName);
       ((StringBuffer)localObject).append(" uin:");
       ((StringBuffer)localObject).append(this.uin);
       ((StringBuffer)localObject).append(" sCmd:");

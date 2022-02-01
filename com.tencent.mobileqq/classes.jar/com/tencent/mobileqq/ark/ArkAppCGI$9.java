@@ -1,52 +1,49 @@
 package com.tencent.mobileqq.ark;
 
 import android.os.Bundle;
-import apxp;
-import apxw;
-import apyb;
-import bhyo;
-import bhyq;
-import bhyt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
-public class ArkAppCGI$9
+class ArkAppCGI$9
   implements Runnable
 {
-  public ArkAppCGI$9(apxp paramapxp, apyb paramapyb) {}
+  ArkAppCGI$9(ArkAppCGI paramArkAppCGI, ArkAppCGI.QueryTask paramQueryTask) {}
   
   public void run()
   {
     try
     {
-      Object localObject = (QQAppInterface)apxp.a(this.this$0).get();
+      Object localObject = (QQAppInterface)ArkAppCGI.a(this.this$0).get();
       if (localObject == null)
       {
         ArkAppCenter.c("ArkApp.ArkAppCGI", "runTask_retry, app is null, return");
         return;
       }
-      localObject = ((bhyq)((QQAppInterface)localObject).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
-      File localFile = new File(apxp.a());
+      localObject = ((DownloaderFactory)((QQAppInterface)localObject).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+      File localFile = new File(ArkAppCGI.a());
       this.a.jdField_a_of_type_JavaIoFile = localFile;
-      bhyo localbhyo = new bhyo(this.a.jdField_a_of_type_JavaLangString, localFile);
-      localbhyo.n = true;
-      localbhyo.p = true;
+      DownloadTask localDownloadTask = new DownloadTask(this.a.jdField_a_of_type_JavaLangString, localFile);
+      localDownloadTask.n = true;
+      localDownloadTask.p = true;
       if (this.a.b != null) {
-        localbhyo.a("Cookie", this.a.b);
+        localDownloadTask.a("Cookie", this.a.b);
       }
       if (this.a.c != null) {
-        localbhyo.a("Referer", this.a.c);
+        localDownloadTask.a("Referer", this.a.c);
       }
       Bundle localBundle = new Bundle();
-      ((bhyt)localObject).a(localbhyo, new apxw(this, localFile), localBundle);
+      ((DownloaderInterface)localObject).a(localDownloadTask, new ArkAppCGI.9.1(this, localFile), localBundle);
       return;
     }
     catch (Exception localException)
     {
       ArkAppCenter.c("ArkApp.ArkAppCGI", String.format("runTask fail, url=%s, msg=%s", new Object[] { this.a.jdField_a_of_type_JavaLangString, localException.getMessage() }));
-      apxp.a(this.this$0, this.a, false, null);
+      ArkAppCGI.a(this.this$0, this.a, false, null);
     }
   }
 }

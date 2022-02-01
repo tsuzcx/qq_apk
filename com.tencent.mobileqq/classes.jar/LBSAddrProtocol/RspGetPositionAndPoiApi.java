@@ -10,17 +10,17 @@ public final class RspGetPositionAndPoiApi
 {
   static GPS cache_stUsrLoc;
   static ArrayList<PoiInfo> cache_vPoiList;
-  public int iDistrictCode;
+  public int iDistrictCode = 0;
   public int iRange = -1;
-  public int iTotalNum;
-  public GPS stUsrLoc;
+  public int iTotalNum = 0;
+  public GPS stUsrLoc = null;
   public String strCity = "";
   public String strDistrict = "";
   public String strPremises = "";
   public String strProvince = "";
   public String strRoad = "";
   public String strTown = "";
-  public ArrayList<PoiInfo> vPoiList;
+  public ArrayList<PoiInfo> vPoiList = null;
   
   public RspGetPositionAndPoiApi() {}
   

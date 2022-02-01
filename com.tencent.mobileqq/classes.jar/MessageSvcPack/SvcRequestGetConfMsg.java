@@ -10,14 +10,14 @@ public final class SvcRequestGetConfMsg
   extends JceStruct
   implements Cloneable
 {
-  public byte cGetPttUrl;
-  public byte cGetSmartRemark;
-  public byte cVerifyType;
-  public long dwLastGetTime;
-  public long dwLastInfoSeq;
-  public long lBeginSeq;
-  public long lConfUin;
-  public long lEndSeq;
+  public byte cGetPttUrl = 0;
+  public byte cGetSmartRemark = 0;
+  public byte cVerifyType = 0;
+  public long dwLastGetTime = 0L;
+  public long dwLastInfoSeq = 0L;
+  public long lBeginSeq = 0L;
+  public long lConfUin = 0L;
+  public long lEndSeq = 0L;
   
   static
   {

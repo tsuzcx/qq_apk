@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import anwa;
 import com.tencent.mobileqq.data.HotChatItemData;
 import com.tencent.mobileqq.persistence.EntityManager;
 
-public class HotChatCenterManager$2
+class HotChatCenterManager$2
   implements Runnable
 {
-  public HotChatCenterManager$2(anwa paramanwa, EntityManager paramEntityManager, HotChatItemData paramHotChatItemData) {}
+  HotChatCenterManager$2(HotChatCenterManager paramHotChatCenterManager, EntityManager paramEntityManager, HotChatItemData paramHotChatItemData) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class HotChatCenterManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatCenterManager.2
  * JD-Core Version:    0.7.0.1
  */

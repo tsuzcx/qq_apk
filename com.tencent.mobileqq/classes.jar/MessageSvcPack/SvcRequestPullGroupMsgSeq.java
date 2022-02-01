@@ -13,9 +13,9 @@ public final class SvcRequestPullGroupMsgSeq
 {
   static int cache_filter;
   static ArrayList<PullGroupSeqParam> cache_vGroupInfo;
-  public byte cVerifyType;
+  public byte cVerifyType = 0;
   public int filter = MsgFilter.NO_FILTER.value();
-  public ArrayList<PullGroupSeqParam> vGroupInfo;
+  public ArrayList<PullGroupSeqParam> vGroupInfo = null;
   
   static
   {

@@ -11,10 +11,10 @@ public final class material_tab_get_rsp
 {
   static Map<String, String> cache_mapExtInfo;
   static MaterialTab cache_stTab = new MaterialTab();
-  public int iCode;
-  public int iHasMore;
-  public Map<String, String> mapExtInfo;
-  public MaterialTab stTab;
+  public int iCode = 0;
+  public int iHasMore = 0;
+  public Map<String, String> mapExtInfo = null;
+  public MaterialTab stTab = null;
   public String strAttachInfo = "";
   
   static

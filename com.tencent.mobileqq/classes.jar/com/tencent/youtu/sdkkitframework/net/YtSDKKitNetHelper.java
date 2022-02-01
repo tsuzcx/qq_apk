@@ -50,6 +50,13 @@ public class YtSDKKitNetHelper
     this.networkThread.start();
   }
   
+  public void sendNetworkRequestEncry(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
+  {
+    this.networkThread = new Thread(new YtSDKKitNetHelper.2(this, paramString1, paramHashMap, paramString2, paramIYtSDKKitNetResponseParser));
+    this.networkThread.setName("YtNetworkRequestThread");
+    this.networkThread.start();
+  }
+  
   public void stopNetworkRequest()
   {
     Iterator localIterator = this.runningMap.entrySet().iterator();
@@ -66,7 +73,7 @@ public class YtSDKKitNetHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.net.YtSDKKitNetHelper
  * JD-Core Version:    0.7.0.1
  */

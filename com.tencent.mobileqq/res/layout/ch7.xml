@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/af7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/nqj" android:layout_width="750.0px" android:layout_height="1334.0px"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.avgame.gameroom.seat.background.SurvivalSeatBgView android:id="@id/mi7" android:background="@color/af7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" />
-    <ImageView android:layout_gravity="center|left" android:id="@id/mi6" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-    <ImageView android:layout_gravity="center|right" android:id="@id/mi9" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-    <ImageView android:layout_gravity="center|left" android:id="@id/mhv" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_marginLeft="25.0dip" android:layout_marginBottom="7.0dip" />
-    <ImageView android:layout_gravity="center|right" android:id="@id/mhw" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_marginRight="25.0dip" android:layout_marginBottom="7.0dip" />
-    <ImageView android:layout_gravity="center" android:id="@id/mhu" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="170.0dip" />
-    <ImageView android:layout_gravity="center|left" android:id="@id/mhn" android:visibility="gone" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_marginLeft="25.0dip" />
-    <ImageView android:layout_gravity="center|right" android:id="@id/mhx" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginRight="65.0dip" android:layout_marginBottom="9.0dip" />
-</FrameLayout>
+    <ImageView android:id="@id/nq4" android:layout_width="750.0px" android:layout_height="1624.0px" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/nq3" android:layout_width="750.0px" android:layout_height="1134.0px" android:layout_marginTop="36.0px" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nqg" android:layout_width="619.0px" android:layout_height="1108.0px" android:layout_marginTop="39.0px" android:layout_centerHorizontal="true">
+        <RelativeLayout android:id="@id/nqk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/nq6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="38.0px" android:layout_centerHorizontal="true" />
+            <FrameLayout android:id="@id/npx" android:background="@drawable/bku" android:padding="8.0px" android:layout_width="370.0px" android:layout_height="370.0px" android:layout_marginTop="26.0px" android:layout_below="@id/nq6" android:layout_centerHorizontal="true">
+                <com.tencent.avgame.ui.AVGamePosterCoverView android:id="@id/npy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </FrameLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/npw" android:layout_width="478.0px" android:layout_height="wrap_content" android:layout_marginLeft="64.0px" android:layout_marginTop="31.0px" android:layout_below="@id/npx" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.RoundCorneredRelativeLayout android:layout_gravity="right" android:id="@id/nq7" android:background="@drawable/bkt" android:layout_width="100.0px" android:layout_height="120.0px" android:layout_marginTop="5.0px" android:layout_marginRight="88.0px" android:layout_below="@id/nq3" android:layout_alignRight="@id/nq3" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/nq5" android:padding="5.0px" android:layout_width="98.0px" android:layout_height="98.0px" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="15.0px" android:textStyle="bold" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0px" android:text="@string/wnc" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </com.tencent.mobileqq.widget.RoundCorneredRelativeLayout>
+</RelativeLayout>

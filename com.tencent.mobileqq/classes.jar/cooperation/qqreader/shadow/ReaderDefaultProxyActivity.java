@@ -1,15 +1,14 @@
 package cooperation.qqreader.shadow;
 
-import Override;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Process;
 import android.view.MotionEvent;
-import bmgm;
-import bmgp;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.utils.Log;
+import cooperation.qqreader.utils.ReportUtils;
 
 public class ReaderDefaultProxyActivity
   extends Activity
@@ -38,15 +37,15 @@ public class ReaderDefaultProxyActivity
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
-    bmgm.c(this.a, "[ReaderPlugin] 异常分支：自动重启Reader插件Activity的场景，finish不做任何处理 ");
-    bmgp.a(this, -1, "Recover failed activity=" + this.a);
+    Log.c(this.a, "[ReaderPlugin] 异常分支：自动重启Reader插件Activity的场景，finish不做任何处理 ");
+    ReportUtils.a(this, -1, "Recover failed activity=" + this.a);
     finish();
     Process.killProcess(Process.myPid());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.shadow.ReaderDefaultProxyActivity
  * JD-Core Version:    0.7.0.1
  */

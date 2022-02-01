@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.wxapi;
 
-import Override;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;

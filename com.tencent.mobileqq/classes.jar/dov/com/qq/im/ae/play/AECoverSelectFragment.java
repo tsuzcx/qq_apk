@@ -20,21 +20,32 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bnrh;
-import bnss;
-import bpdd;
 import com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tavcut.exporter.VideoExporter;
 import com.tencent.tavcut.player.MoviePlayer;
 import com.tencent.tavcut.session.TAVCutVideoSession;
 import com.tencent.tavcut.timeline.CoverSelectView;
 import com.tencent.tavcut.timeline.CoverSelectView.UIConfigWrapper;
 import com.tencent.tavcut.view.TAVCutVideoView;
+import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.ModelExtKt;
+import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import dov.com.qq.im.ae.util.AEQLog;
+import dov.com.qq.im.aeeditor.AEEditorPath.EDITOR.FILES;
+import dov.com.qq.im.aeeditor.AEEditorProcessManager;
+import dov.com.qq.im.aeeditor.data.AEEditorVideoInfo;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiVideoEditFragment;
+import dov.com.qq.im.aeeditor.module.export.AEEditorGenerateRunnable;
+import dov.com.qq.im.aeeditor.module.params.ParamFactory;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 import java.io.File;
+import java.util.ArrayList;
 
 public class AECoverSelectFragment
   extends AbsAEPublishVideoProcessFragment
@@ -43,22 +54,24 @@ public class AECoverSelectFragment
   public static final float DEFAULT_COVER_PROGRESS = 0.0F;
   private static final String TAG = "AECoverSelectFragment";
   CoverSelectView coverSelectView;
+  TAVCutVideoSession coverVideoSession;
   private float defaultCoverProgress;
   FrameLayout flCoverSelectContainer;
   LinearLayout llBottomContainer;
+  private String outputPath;
   TextView tvCancel;
   TextView tvConfirm;
   
   private void addCoverSelectView()
   {
-    Object localObject = new CoverSelectView.UIConfigWrapper(getActivity(), 2130837943, 2130837721, 2130837720, 2130837854, 2130837903, 2130837904, 2130837905, 2130837938, 11);
-    ((CoverSelectView.UIConfigWrapper)localObject).setPrevibarHeight(bpdd.b(getActivity(), 59.0F)).setPreviewBarWidth(bpdd.b(getActivity(), 34.0F)).setCoverDefaultProgress(this.defaultCoverProgress);
+    Object localObject = new CoverSelectView.UIConfigWrapper(getActivity(), 2130837974, 2130837732, 2130837731, 2130837921, 2130837922, 2130837923, 2130837924, 2130837966, 11);
+    ((CoverSelectView.UIConfigWrapper)localObject).setPrevibarHeight(DisplayUtil.b(getActivity(), 59.0F)).setPreviewBarWidth(DisplayUtil.b(getActivity(), 34.0F)).setCoverDefaultProgress(this.defaultCoverProgress);
     this.coverSelectView = new CoverSelectView(getActivity(), (CoverSelectView.UIConfigWrapper)localObject);
-    int i = bpdd.b(getActivity(), 4.0F);
-    int j = bpdd.b(getActivity(), 2.0F);
+    int i = DisplayUtil.b(getActivity(), 4.0F);
+    int j = DisplayUtil.b(getActivity(), 2.0F);
     Log.d("AECoverSelectFragment", "addCoverSelectView: pixValue2Dip = " + j);
-    int k = bpdd.b(getActivity(), 16.0F);
-    int m = bpdd.b(getActivity(), 13.0F);
+    int k = DisplayUtil.b(getActivity(), 16.0F);
+    int m = DisplayUtil.b(getActivity(), 13.0F);
     localObject = new RoundCornerImageView(getActivity());
     ((RoundCornerImageView)localObject).setCorner(j);
     ((RoundCornerImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -113,7 +126,7 @@ public class AECoverSelectFragment
     Object localObject2 = this.coverSelectView.getCurrCoverBitmap();
     if (localObject2 == null)
     {
-      bnrh.d("AECoverSelectFragment", "获取封面图失败");
+      AEQLog.d("AECoverSelectFragment", "获取封面图失败");
       showLoading(false);
       return;
     }
@@ -122,21 +135,21 @@ public class AECoverSelectFragment
       try
       {
         Log.d("AECoverSelectFragment", "saveDataAndQuit: w=" + ((Bitmap)localObject2).getWidth() + " h=" + ((Bitmap)localObject2).getHeight());
-        String str = bnss.e + File.separator + this.missionId + "_" + System.currentTimeMillis() + ".JPG";
+        String str = AEEditorPath.EDITOR.FILES.e + File.separator + this.missionId + "_" + System.currentTimeMillis() + ".JPG";
         localFile = new File(str);
         if (localFile.getParentFile().exists()) {
           continue;
         }
         if (!localFile.getParentFile().mkdirs()) {
-          bnrh.d("AECoverSelectFragment", "保存封面，创建父路径失败");
+          AEQLog.d("AECoverSelectFragment", "保存封面，创建父路径失败");
         }
         if (!localFile.createNewFile()) {
-          bnrh.d("AECoverSelectFragment", "保存封面，创建封面文件失败");
+          AEQLog.d("AECoverSelectFragment", "保存封面，创建封面文件失败");
         }
-        if (!FileUtil.writeBitmapToFile((Bitmap)localObject2, str)) {
+        if (!FileUtil.a((Bitmap)localObject2, str)) {
           continue;
         }
-        bnrh.a("AECoverSelectFragment", "封面保存成功,path=" + str);
+        AEQLog.a("AECoverSelectFragment", "封面保存成功,path=" + str);
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("key_video_cover_position", f);
         ((Intent)localObject2).putExtra("key_video_cover_path", str);
@@ -147,10 +160,10 @@ public class AECoverSelectFragment
       {
         File localFile;
         localException.printStackTrace();
-        bnrh.d("AECoverSelectFragment", "封面保存出错:" + localException.toString());
+        AEQLog.d("AECoverSelectFragment", "封面保存出错:" + localException.toString());
         getActivity().setResult(0);
         return;
-        bnrh.d("AECoverSelectFragment", "封面保存出错");
+        AEQLog.d("AECoverSelectFragment", "封面保存出错");
         getActivity().setResult(0);
         continue;
       }
@@ -162,17 +175,17 @@ public class AECoverSelectFragment
       showLoading(false);
       getActivity().finish();
       return;
-      FileUtil.deleteSubFile(localFile.getParentFile());
+      FileUtil.a(localFile.getParentFile());
     }
   }
   
   void bindViews(View paramView)
   {
-    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378516));
-    this.llBottomContainer = ((LinearLayout)paramView.findViewById(2131370310));
-    this.flCoverSelectContainer = ((FrameLayout)paramView.findViewById(2131366876));
-    this.tvCancel = ((TextView)paramView.findViewById(2131379813));
-    this.tvConfirm = ((TextView)paramView.findViewById(2131379854));
+    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378947));
+    this.llBottomContainer = ((LinearLayout)paramView.findViewById(2131370579));
+    this.flCoverSelectContainer = ((FrameLayout)paramView.findViewById(2131367067));
+    this.tvCancel = ((TextView)paramView.findViewById(2131380242));
+    this.tvConfirm = ((TextView)paramView.findViewById(2131380282));
     this.tvCancel.setOnClickListener(this);
     this.tvConfirm.setOnClickListener(this);
   }
@@ -180,9 +193,16 @@ public class AECoverSelectFragment
   void customizeBindingData(VideoResourceModel paramVideoResourceModel)
   {
     addCoverSelectView();
+    this.coverVideoSession = new TAVCutVideoSession();
+    AEEditorMultiVideoEditFragment.a(getActivity(), this.coverVideoSession, ParamFactory.b(), this.tavCutVideoSession.getMediaModel(), null, null);
+    this.coverVideoSession.restoreStickersWithLyric(new ArrayList(this.tavCutVideoSession.getMediaModel().getMediaEffectModel().getStickerModelList()));
+    this.coverVideoSession.setStickerTouchEnable(false);
+    if (ModelExtKt.isLightTemplate(this.coverVideoSession.getMediaModel())) {
+      this.coverVideoSession.getMediaModel().getMediaEffectModel().setAeKitModel(null);
+    }
     this.coverSelectView.bindPlayer(this.mMoviePlayer);
     Log.d("AECoverSelectFragment", "initTavCutAndPlayer: \nresource.selectDuration = " + paramVideoResourceModel.getSelectTimeDuration() + "\nresource.start = " + paramVideoResourceModel.getSelectTimeStart() + "\n resource.end = " + (paramVideoResourceModel.getSelectTimeStart() + paramVideoResourceModel.getSelectTimeDuration()));
-    this.coverSelectView.updateTavVideoSession(this.tavCutVideoSession);
+    this.coverSelectView.updateTavVideoSession(this.coverVideoSession);
     this.coverSelectView.setClipAndSpeed(paramVideoResourceModel.getSpeed(), getTotalDuration(paramVideoResourceModel), paramVideoResourceModel.getSelectTimeStart(), paramVideoResourceModel.getSelectTimeStart() + getTotalDuration(paramVideoResourceModel));
     this.mMoviePlayer.pause();
     paramVideoResourceModel = CMTime.fromUs(((float)this.tavCutVideoSession.getDuration().getTimeUs() * this.defaultCoverProgress / 100.0F));
@@ -191,7 +211,7 @@ public class AECoverSelectFragment
   
   protected int getLayoutId()
   {
-    return 2131558553;
+    return 2131558570;
   }
   
   public void onClick(View paramView)
@@ -214,13 +234,33 @@ public class AECoverSelectFragment
   {
     super.onCreate(paramBundle);
     this.defaultCoverProgress = getDefaultCoverProgress();
+    paramBundle = new File(getMediaPath());
+    this.outputPath = (AEEditorPath.EDITOR.FILES.d + File.separator + "output_" + this.missionId + "_" + VideoFilterTools.a(paramBundle.getName()) + ".mp4");
+    AEQLog.a("AECoverSelectFragment", "[coverGen][onCreate] missionId = " + this.missionId + " outputPath = " + this.outputPath);
+    paramBundle = AEEditorProcessManager.a().a(this.missionId);
+    if (paramBundle != null)
+    {
+      AEQLog.a("AECoverSelectFragment", "[coverGen][onCreate][tryToKillExport] videoInfo = " + paramBundle.toString());
+      paramBundle.a.a().cancel();
+    }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558553, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558570, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
+  }
+  
+  public void onFinish()
+  {
+    this.coverVideoSession.release();
+    this.coverSelectView.release();
+    AEEditorVideoInfo localAEEditorVideoInfo = AEEditorProcessManager.a().a(this.missionId);
+    if ((localAEEditorVideoInfo != null) && (localAEEditorVideoInfo.e.equals("AEEDITOR_GENERATE_STATUS_CANEL"))) {
+      AEEditorProcessManager.a().a(this.missionId);
+    }
+    super.onFinish();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -230,7 +270,7 @@ public class AECoverSelectFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AECoverSelectFragment
  * JD-Core Version:    0.7.0.1
  */

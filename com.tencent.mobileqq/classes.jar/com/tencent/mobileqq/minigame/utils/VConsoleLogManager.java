@@ -21,9 +21,9 @@ public class VConsoleLogManager
   private static final int MAX_QUEUE_CAPACITY = 1000;
   public static final String TAG = "[minigame] VConsoleLogManager";
   public static final String WARN = "warn";
-  private boolean hasRequestedToOpenPanel;
-  private boolean isLogSystemReady;
-  private boolean isPrintingLogs;
+  private boolean hasRequestedToOpenPanel = false;
+  private boolean isLogSystemReady = false;
+  private boolean isPrintingLogs = false;
   private boolean isVConsoleOpened;
   private View.OnClickListener mOnvConsoleBtn = new VConsoleLogManager.2(this);
   private ArrayBlockingQueue queue = new ArrayBlockingQueue(1000);

@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aiin;
 import com.tencent.mobileqq.persistence.EntityManager;
 
-public class StickerRecManager$6
+class StickerRecManager$6
   implements Runnable
 {
-  public StickerRecManager$6(aiin paramaiin, StickerRecommendEntity paramStickerRecommendEntity) {}
+  StickerRecManager$6(StickerRecManager paramStickerRecManager, StickerRecommendEntity paramStickerRecommendEntity) {}
   
   public void run()
   {
-    aiin.a(this.this$0).persistOrReplace(this.a);
+    StickerRecManager.a(this.this$0).persistOrReplace(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager.6
  * JD-Core Version:    0.7.0.1
  */

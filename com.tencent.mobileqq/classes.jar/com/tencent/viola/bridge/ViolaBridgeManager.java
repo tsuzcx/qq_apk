@@ -36,14 +36,14 @@ public class ViolaBridgeManager
   public static final String METHOD_FIRE_EVENT = "fireEvent";
   public static final String METHOD_NAME_JS_REGISTER_MODULES = "registerModules";
   public static final String METHOD_REGISTER_COMPONENT = "registerComponent";
-  public static String TAG = "ViolaBridgeManager";
+  public static final String TAG = "ViolaBridgeManager";
   private static final Object mLock = new Object();
   static volatile ViolaBridgeManager mViolaBridgeManager;
+  private volatile boolean hasCallBridgeInit;
   private ViolaBridge mBridge = new ViolaBridge();
   private volatile boolean mInit = false;
   Handler mJSHandler = this.mJSThread.getHandler();
   private ViolaThread mJSThread = new ViolaThread("ViolaJSBridgeThread", this);
-  StringBuilder mLogBuilder = new StringBuilder(50);
   private String mRefreshRef;
   private List<Map<String, Object>> mRegisterComponentFailList = new ArrayList(8);
   private List<Map<String, Object>> mRegisterModuleFailList = new ArrayList(8);
@@ -57,15 +57,11 @@ public class ViolaBridgeManager
   
   private void createInstanceImpl(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (ViolaEnvironment.isDebugable())
-    {
-      this.mLogBuilder.append("createInstance >>>> instanceId:").append(paramString1).append("template:").append(paramString2);
-      this.mLogBuilder.append(" data:").append(paramString3);
-      ViolaLogUtils.d(TAG, this.mLogBuilder.substring(0));
-      this.mLogBuilder.setLength(0);
+    if (ViolaEnvironment.isDebugable()) {
+      ViolaLogUtils.d("ViolaBridgeManager", "createInstance >>>> instanceId:" + paramString1 + " data:" + paramString3);
     }
     if (TextUtils.isEmpty(paramString2)) {
-      ViolaLogUtils.e(TAG, "violaInstance createInstanceImpl template null!");
+      ViolaLogUtils.e("ViolaBridgeManager", "violaInstance createInstanceImpl template null!");
     }
     do
     {
@@ -73,7 +69,7 @@ public class ViolaBridgeManager
       ViolaModuleManager.createDomModule(ViolaSDKManager.getInstance().getViolaInstance(paramString1));
       if (Thread.currentThread().getName().equals("ViolaJSBridgeThread"))
       {
-        ViolaLogUtils.e(TAG, "violaInstance createInstanceImpl ViolaJSBridgeThread start!");
+        ViolaLogUtils.e("ViolaBridgeManager", "violaInstance createInstanceImpl ViolaJSBridgeThread start!");
         paramString4 = this.mBridge;
         byte[] arrayOfByte = paramString2.getBytes();
         int i = paramString2.getBytes().length;
@@ -85,7 +81,7 @@ public class ViolaBridgeManager
         }
       }
       post(new ViolaBridgeManager.5(this, paramString1, paramString2, paramString3), paramString1);
-      ViolaLogUtils.e(TAG, "violaInstance createInstanceImpl end!");
+      ViolaLogUtils.e("ViolaBridgeManager", "violaInstance createInstanceImpl end!");
     } while (TextUtils.isEmpty(paramString4));
     this.mBridge.preloadTest(paramString1, paramString4);
   }
@@ -109,14 +105,14 @@ public class ViolaBridgeManager
     {
       paramString1 = ViolaUtils.readFile(new File(paramString1));
       if (!TextUtils.isEmpty(paramString1)) {
-        break label43;
+        break label42;
       }
       if (paramInitCallback != null) {
         paramInitCallback.onFinish(101, 0L, "mainjs error");
       }
     }
     return;
-    label43:
+    label42:
     initFrameworkStringImpl(paramString1, paramInitCallback, paramString2);
   }
   
@@ -124,7 +120,11 @@ public class ViolaBridgeManager
   {
     if (!isJSFrameworkInit())
     {
-      this.mBridge.init();
+      if (!this.hasCallBridgeInit)
+      {
+        this.mBridge.init();
+        this.hasCallBridgeInit = true;
+      }
       l = System.currentTimeMillis();
       if (!TextUtils.isEmpty(paramString1)) {
         if (1 == this.mBridge.initJsFramework(paramString1.getBytes(), paramString1.getBytes().length, paramString2))
@@ -161,15 +161,14 @@ public class ViolaBridgeManager
     try
     {
       if (ViolaEnvironment.isDebugable()) {
-        ViolaLogUtils.d(TAG, "destroyInstance >>>> instanceId:" + paramString);
+        ViolaLogUtils.d("ViolaBridgeManager", "destroyInstance >>>> instanceId:" + paramString);
       }
       this.mBridge.destroyInstance(paramString);
       return;
     }
     catch (Throwable paramString)
     {
-      paramString = "[BridgeManager] invokeDestroyInstance " + paramString.getCause();
-      ViolaLogUtils.e(TAG, paramString);
+      ViolaLogUtils.e("ViolaBridgeManager", "[BridgeManager] invokeDestroyInstance " + paramString.getCause());
     }
   }
   
@@ -182,21 +181,20 @@ public class ViolaBridgeManager
   {
     if (ViolaEnvironment.isDebugable())
     {
-      this.mLogBuilder.append("callJS >>>> instanceId:").append(paramString1).append("function:").append(paramString2.toString());
+      StringBuilder localStringBuilder = new StringBuilder().append("callJS >>>> instanceId:").append(paramString1).append("function:").append(paramString2);
       if (paramBoolean) {
-        this.mLogBuilder.append(" tasks:").append(paramString2);
+        localStringBuilder.append(" tasks:").append(paramString2);
       }
-      ViolaLogUtils.d(TAG, this.mLogBuilder.substring(0));
-      this.mLogBuilder.setLength(0);
+      ViolaLogUtils.d("ViolaBridgeManager", localStringBuilder.toString());
     }
     if (!this.mInit)
     {
-      ViolaLogUtils.e(TAG, "invokeExecJS Exception mInit is false");
+      ViolaLogUtils.e("ViolaBridgeManager", "invokeExecJS Exception mInit is false");
       return;
     }
     if (!ViolaSDKManager.getInstance().isViolaInstanceAlive(paramString1))
     {
-      ViolaLogUtils.e(TAG, "violaInstance is destroy!  temp instanceId:" + paramString1 + ", temp data:" + paramString2);
+      ViolaLogUtils.e("ViolaBridgeManager", "violaInstance is destroy!  temp instanceId:" + paramString1 + ", temp data:" + paramString2);
       return;
     }
     this.mBridge.callJS(paramString1, paramString2.getBytes(), paramString2.getBytes().length);
@@ -215,7 +213,7 @@ public class ViolaBridgeManager
     Object localObject1;
     if (!isJSFrameworkInit())
     {
-      ViolaLogUtils.e(TAG, "invokeRegisterComponents: framework.js uninitialized.");
+      ViolaLogUtils.e("ViolaBridgeManager", "invokeRegisterComponents: framework.js uninitialized.");
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -310,11 +308,8 @@ public class ViolaBridgeManager
   
   public Object callNativeModule(String paramString1, String paramString2, String paramString3, JSONArray paramJSONArray, JSONObject paramJSONObject)
   {
-    if (ViolaEnvironment.isDebugable())
-    {
-      this.mLogBuilder.append("[BridgeManager] callNativeModule >>>> instanceId:").append(paramString1).append(", module:").append(paramString2).append(", method:").append(paramString3).append(", arguments:").append(paramJSONArray);
-      ViolaLogUtils.d(TAG, this.mLogBuilder.substring(0));
-      this.mLogBuilder.setLength(0);
+    if (ViolaEnvironment.isDebugable()) {
+      ViolaLogUtils.d("ViolaBridgeManager", "[BridgeManager] callNativeModule >>>> instanceId:" + paramString1 + ", module:" + paramString2 + ", method:" + paramString3 + ", arguments:" + paramJSONArray);
     }
     try
     {
@@ -323,8 +318,7 @@ public class ViolaBridgeManager
     }
     catch (Exception paramString1)
     {
-      paramString1 = "[BridgeManager] callNative exception: " + paramString1.getMessage();
-      ViolaLogUtils.e(TAG, paramString1);
+      ViolaLogUtils.e("ViolaBridgeManager", "[BridgeManager] callNative exception: " + paramString1.getMessage());
     }
     return null;
   }
@@ -350,7 +344,7 @@ public class ViolaBridgeManager
       createInstanceImpl(paramString1, ViolaUtils.readFile(new File(paramString2)), paramString3, "");
       return;
     }
-    ViolaLogUtils.e(TAG, "violaInstance createInstance init false!");
+    ViolaLogUtils.e("ViolaBridgeManager", "violaInstance createInstance init false!");
   }
   
   public void createInstanceBySource(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -360,7 +354,7 @@ public class ViolaBridgeManager
       createInstanceImpl(paramString1, paramString2, paramString4, paramString3);
       return;
     }
-    ViolaLogUtils.e(TAG, "violaInstance createInstance init false!");
+    ViolaLogUtils.e("ViolaBridgeManager", "violaInstance createInstance init false!");
   }
   
   public String createParamForCallJS(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
@@ -591,7 +585,7 @@ public class ViolaBridgeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.bridge.ViolaBridgeManager
  * JD-Core Version:    0.7.0.1
  */

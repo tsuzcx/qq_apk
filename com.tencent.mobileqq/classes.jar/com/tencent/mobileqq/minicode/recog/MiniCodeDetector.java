@@ -9,9 +9,7 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
-import apmz;
-import bblu;
-import com.tencent.mobileqq.minicode.GlUtil;
+import com.tencent.mobileqq.ar.codeEngine.AIRect;
 import com.tencent.mobileqq.minicode.RecogUtil;
 import com.tencent.mobileqq.minicode.Utils;
 import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglHandlerThread;
@@ -41,7 +39,7 @@ public class MiniCodeDetector
   String anchorPath;
   Context context;
   String kernalBinPath;
-  List<apmz> mBoxes = new ArrayList();
+  List<AIRect> mBoxes = new ArrayList();
   boolean mClosed = false;
   Handler mEglHandler;
   EglHandlerThread mEglHandlerThread;
@@ -85,14 +83,14 @@ public class MiniCodeDetector
   private static void bmp2Texture(int paramInt, Bitmap paramBitmap)
   {
     GLES20.glBindTexture(3553, paramInt);
-    GlUtil.checkGlError("glBindTexture");
+    com.tencent.mobileqq.minicode.GlUtil.checkGlError("glBindTexture");
     GLES20.glTexParameterf(3553, 10241, 9729.0F);
     GLES20.glTexParameterf(3553, 10240, 9729.0F);
     GLES20.glTexParameteri(3553, 10242, 33071);
     GLES20.glTexParameteri(3553, 10243, 33071);
-    GlUtil.checkGlError("glTexParameteri");
+    com.tencent.mobileqq.minicode.GlUtil.checkGlError("glTexParameteri");
     GLUtils.texImage2D(3553, 0, paramBitmap, 0);
-    GlUtil.checkGlError("texImage2D");
+    com.tencent.mobileqq.minicode.GlUtil.checkGlError("texImage2D");
   }
   
   @TargetApi(18)
@@ -148,7 +146,7 @@ public class MiniCodeDetector
     this.mHasEGLInited = false;
     if (this.mInTextureId >= 0)
     {
-      bblu.b(this.mInTextureId);
+      com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.GlUtil.b(this.mInTextureId);
       this.mInTextureId = -1;
     }
     if (this.mRecog != null) {}
@@ -196,7 +194,7 @@ public class MiniCodeDetector
       QLog.i("MiniRecog.detector", 2, localStringBuilder.toString());
     }
     if ((this.mSrcW > 0) && (this.mSrcH > 0)) {
-      this.mInTextureId = GlUtil.createTexture31(this.mSrcW, this.mSrcH);
+      this.mInTextureId = com.tencent.mobileqq.minicode.GlUtil.createTexture31(this.mSrcW, this.mSrcH);
     }
     this.mRecog = new MiniCodeRecog(localMiniParam);
     if (this.mRecog.isInitSuc()) {
@@ -234,12 +232,12 @@ public class MiniCodeDetector
       this.mSrcH = ((Bitmap)localObject).getHeight();
       if (this.mInTextureId >= 0)
       {
-        bblu.b(this.mInTextureId);
+        com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.GlUtil.b(this.mInTextureId);
         this.mInTextureId = -1;
       }
       try
       {
-        int j = bblu.a(3553, (Bitmap)localObject);
+        int j = com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.GlUtil.a(3553, (Bitmap)localObject);
         i = j;
       }
       catch (Throwable localThrowable1)

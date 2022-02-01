@@ -1,24 +1,22 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ync;
-import ynd;
-import ywd;
+import com.tencent.biz.qqstory.takevideo.filter.WeatherFilterData;
 
-public class EditVideoFilterNeo$1$1
+class EditVideoFilterNeo$1$1
   implements Runnable
 {
-  public EditVideoFilterNeo$1$1(ynd paramynd, int paramInt) {}
+  EditVideoFilterNeo$1$1(EditVideoFilterNeo.1 param1, int paramInt) {}
   
   public void run()
   {
-    if (ync.a(this.jdField_a_of_type_Ynd.a) != null) {
-      ync.a(this.jdField_a_of_type_Ynd.a).a(this.jdField_a_of_type_Int);
+    if (EditVideoFilterNeo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilterNeo$1.a) != null) {
+      EditVideoFilterNeo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilterNeo$1.a).a(this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1
  * JD-Core Version:    0.7.0.1
  */

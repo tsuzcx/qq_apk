@@ -161,6 +161,11 @@ public class LivePlayerEmbeddedWidgetClient
     return this.mMiniAppContext;
   }
   
+  public int getViewId()
+  {
+    return this.viewId;
+  }
+  
   public void handleInsertXWebLivePlayer(JSONObject paramJSONObject, IJsService paramIJsService)
   {
     this.callBackWebview = paramIJsService;
@@ -358,9 +363,9 @@ public class LivePlayerEmbeddedWidgetClient
     this.livePlayerJSAdapter.takePhoto(paramBoolean);
   }
   
-  public void webViewDestory()
+  public void webViewDestroy()
   {
-    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.webviewDestory " + this);
+    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.webViewDestroy " + this);
     release();
   }
   
@@ -390,7 +395,7 @@ public class LivePlayerEmbeddedWidgetClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePlayerEmbeddedWidgetClient
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package com.tencent.mobileqq.ar.ARRecord;
 
 import android.media.AudioRecord;
 import android.os.SystemClock;
-import apdx;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -15,9 +14,9 @@ public class MicRecordController
   private byte[] jdField_a_of_type_ArrayOfByte;
   private volatile boolean b;
   
-  public MicRecordController(apdx paramapdx)
+  public MicRecordController(VideoRecordController paramVideoRecordController)
   {
-    super(paramapdx);
+    super(paramVideoRecordController);
   }
   
   public void a()
@@ -29,12 +28,12 @@ public class MicRecordController
           int i = this.jdField_a_of_type_AndroidMediaAudioRecord.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
           if (i > 0)
           {
-            apdx localapdx = (apdx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-            if (localapdx != null)
+            VideoRecordController localVideoRecordController = (VideoRecordController)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (localVideoRecordController != null)
             {
               byte[] arrayOfByte = new byte[i];
               System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
-              localapdx.a(arrayOfByte, SystemClock.elapsedRealtimeNanos());
+              localVideoRecordController.a(arrayOfByte, SystemClock.elapsedRealtimeNanos());
             }
           }
         }
@@ -78,7 +77,7 @@ public class MicRecordController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.MicRecordController
  * JD-Core Version:    0.7.0.1
  */

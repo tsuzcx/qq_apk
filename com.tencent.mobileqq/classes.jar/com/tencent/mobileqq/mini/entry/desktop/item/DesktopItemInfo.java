@@ -14,11 +14,12 @@ public abstract class DesktopItemInfo
   public static final int TYPE_MODULE_POPULARITY_LIST = 9;
   public static final int TYPE_MODULE_RECOMMEND = 8;
   public static final int TYPE_MOST_COMMONLY_USED = 12;
-  public boolean deleteEnable;
-  public boolean dragEnable;
-  public boolean dropEnable;
-  private boolean isFixApp;
-  public boolean isTemp;
+  public static final int TYPE_SPRING_ENTRY = 13;
+  public boolean deleteEnable = false;
+  public boolean dragEnable = false;
+  public boolean dropEnable = false;
+  private boolean isFixApp = false;
+  public boolean isTemp = false;
   public int mModuleType;
   public int visible = 0;
   

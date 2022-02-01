@@ -10,7 +10,7 @@ public final class BatchGetFacadeRsp
   extends JceStruct
 {
   static Map<Long, UserFacadeInfo> cache_info = new HashMap();
-  public Map<Long, UserFacadeInfo> info;
+  public Map<Long, UserFacadeInfo> info = null;
   public String jumpUrl = "";
   
   static

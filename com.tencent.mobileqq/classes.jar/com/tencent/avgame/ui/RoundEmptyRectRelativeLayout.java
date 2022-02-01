@@ -14,13 +14,12 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
-import nqa;
 
 public class RoundEmptyRectRelativeLayout
   extends RelativeLayout
 {
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private ArrayList<nqa> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+  private ArrayList<RoundEmptyRectRelativeLayout.ClipRoundRect> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   
   @TargetApi(11)
   public RoundEmptyRectRelativeLayout(Context paramContext)
@@ -49,25 +48,25 @@ public class RoundEmptyRectRelativeLayout
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.XOR));
   }
   
-  public boolean a(nqa paramnqa)
+  public boolean a(RoundEmptyRectRelativeLayout.ClipRoundRect paramClipRoundRect)
   {
-    if ((paramnqa != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramnqa)))
+    if ((paramClipRoundRect != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramClipRoundRect)))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramnqa);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramClipRoundRect);
       return true;
     }
     return false;
   }
   
-  public boolean b(nqa paramnqa)
+  public boolean b(RoundEmptyRectRelativeLayout.ClipRoundRect paramClipRoundRect)
   {
-    if (paramnqa != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.remove(paramnqa);
+    if (paramClipRoundRect != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.remove(paramClipRoundRect);
     }
     return false;
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     int i = paramCanvas.getWidth();
     int j = paramCanvas.getHeight();
@@ -75,8 +74,8 @@ public class RoundEmptyRectRelativeLayout
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      nqa localnqa = (nqa)localIterator.next();
-      localPath.addRoundRect(nqa.a(localnqa), nqa.a(localnqa), Path.Direction.CW);
+      RoundEmptyRectRelativeLayout.ClipRoundRect localClipRoundRect = (RoundEmptyRectRelativeLayout.ClipRoundRect)localIterator.next();
+      localPath.addRoundRect(RoundEmptyRectRelativeLayout.ClipRoundRect.a(localClipRoundRect), RoundEmptyRectRelativeLayout.ClipRoundRect.a(localClipRoundRect), Path.Direction.CW);
     }
     paramCanvas.saveLayer(new RectF(0.0F, 0.0F, i, j), null, 31);
     super.dispatchDraw(paramCanvas);
@@ -86,7 +85,7 @@ public class RoundEmptyRectRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ui.RoundEmptyRectRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

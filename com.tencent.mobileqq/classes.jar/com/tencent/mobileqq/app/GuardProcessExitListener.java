@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import aady;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.format.Time;
+import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public abstract class GuardProcessExitListener
   
   private boolean a(String paramString, ArrayList<String> paramArrayList)
   {
-    if (Foreground.sCountActivity > 0) {}
+    if (Foreground.getActivityCount() > 0) {}
     while ((paramString == null) || (paramString.length() == 0) || ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true))))) {
       return false;
     }
@@ -60,7 +60,7 @@ public abstract class GuardProcessExitListener
   
   protected String a()
   {
-    return aady.a();
+    return TroopMemberApiClient.a();
   }
   
   public void a(boolean paramBoolean)
@@ -92,7 +92,7 @@ public abstract class GuardProcessExitListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.GuardProcessExitListener
  * JD-Core Version:    0.7.0.1
  */

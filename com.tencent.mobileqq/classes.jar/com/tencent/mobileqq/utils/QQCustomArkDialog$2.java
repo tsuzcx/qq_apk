@@ -18,17 +18,17 @@ class QQCustomArkDialog$2
   
   public void onLoadState(int paramInt)
   {
-    WeakReference localWeakReference = new WeakReference(this.this$0);
+    WeakReference localWeakReference = new WeakReference(this.a);
     ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, localWeakReference, paramInt));
     if (paramInt == 0) {}
     do
     {
       return;
-      QQCustomArkDialog.access$102(this.this$0, true);
+      QQCustomArkDialog.a(this.a, true);
       if (QLog.isColorLevel()) {
-        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(QQCustomArkDialog.access$200(this.this$0)), ";alreadyShowDialog:", Boolean.valueOf(QQCustomArkDialog.access$300(this.this$0)) });
+        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(QQCustomArkDialog.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(QQCustomArkDialog.b(this.a)) });
       }
-    } while (!QQCustomArkDialog.access$200(this.this$0));
+    } while (!QQCustomArkDialog.a(this.a));
     ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
   }
 }

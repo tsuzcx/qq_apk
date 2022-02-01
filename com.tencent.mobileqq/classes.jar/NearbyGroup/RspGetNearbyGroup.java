@@ -17,23 +17,23 @@ public final class RspGetNearbyGroup
   static ArrayList<GroupArea> cache_vGroupArea;
   static ArrayList<GroupInfo> cache_vGroupInfo;
   static ArrayList<XiaoQuInfo> cache_vXiaoQuInfo;
-  public short dwFlag;
-  public int eReplyCode;
-  public int iCompletedFlag;
-  public int iLat;
-  public int iLon;
-  public int iRadius;
-  public short shSortType;
-  public RspActivity stRspAct;
-  public RspHotGrp stRspHotGrp;
-  public RspTopic stRspTopic;
+  public short dwFlag = 0;
+  public int eReplyCode = 0;
+  public int iCompletedFlag = 0;
+  public int iLat = 0;
+  public int iLon = 0;
+  public int iRadius = 0;
+  public short shSortType = 0;
+  public RspActivity stRspAct = null;
+  public RspHotGrp stRspHotGrp = null;
+  public RspTopic stRspTopic = null;
   public String strCity = "";
   public String strCityCode = "";
-  public ArrayList<Activity> vActivity;
-  public byte[] vContext;
-  public ArrayList<GroupArea> vGroupArea;
-  public ArrayList<GroupInfo> vGroupInfo;
-  public ArrayList<XiaoQuInfo> vXiaoQuInfo;
+  public ArrayList<Activity> vActivity = null;
+  public byte[] vContext = null;
+  public ArrayList<GroupArea> vGroupArea = null;
+  public ArrayList<GroupInfo> vGroupInfo = null;
+  public ArrayList<XiaoQuInfo> vXiaoQuInfo = null;
   
   public RspGetNearbyGroup() {}
   

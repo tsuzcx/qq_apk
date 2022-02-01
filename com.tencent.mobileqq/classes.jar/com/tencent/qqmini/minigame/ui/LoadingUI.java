@@ -20,6 +20,7 @@ import com.tencent.qqmini.minigame.R.layout;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.URLUtil;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.launcher.widget.SquareImageView;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 public class LoadingUI
   extends RelativeLayout
 {
+  public static final String TAG = "LoadingUI";
   int iconSize = DisplayUtil.dip2px(getContext(), 100.0F);
   private boolean isForeground = false;
   private LinearLayout mBottonLayout;
@@ -131,29 +133,37 @@ public class LoadingUI
   
   private void initUIComponents()
   {
-    inflate(getContext(), R.layout.mini_sdk_game_loading_layout, this);
-    this.mStatusBar = findViewById(R.id.status_bar);
-    this.mGameInstruction = ((TextView)findViewById(R.id.game_instruction));
-    this.mGameVersionDesc = ((TextView)findViewById(R.id.game_version_desc));
-    this.mJumpBtn = ((TextView)findViewById(R.id.jump_btn));
-    this.mMoreView = ((ImageView)findViewById(R.id.btn_more_menu));
-    this.mCloseView = ((ImageView)findViewById(R.id.btn_close));
-    this.mNameView = ((TextView)findViewById(R.id.game_name));
-    this.mDeveloperDescView = ((TextView)findViewById(R.id.developer_desc));
-    this.mDeveloperDescLayout = ((LinearLayout)findViewById(R.id.developer_desc_layout));
-    this.mLogoView = ((SquareImageView)findViewById(R.id.logo_mask));
-    this.mLogoView.setRoundRect(this.iconSize);
-    this.mBottonLayout = ((LinearLayout)findViewById(R.id.bottom_layout));
-    this.mGameFakeFirstFrameDownLoadRect = ((RelativeLayout)findViewById(R.id.minigame_fakecover_rect));
-    this.mGameFakeFirstFrame = ((ImageView)findViewById(R.id.game_fake_firstframe));
-    this.mGameFakeFrameProgres = ((ProgressBar)findViewById(R.id.minigame_fakecover_progressbar));
-    this.mGameFakeFrameProgressText = ((TextView)findViewById(R.id.minigame_fakecover_progresstext));
-    this.mGameFakeFrameGameName = ((TextView)findViewById(R.id.minigame_fakecover_gamename));
-    this.mGameFakeGameLogo = ((SquareImageView)findViewById(R.id.minigame_fakecover_gamelogo));
-    this.mGameFakeGameLogo.setRoundRect(10);
-    this.mProgressTxt = ((TextView)findViewById(R.id.txt_download_progress));
-    this.mSplashProgressTxt = ((TextView)findViewById(R.id.splash_txt_download_progress));
-    this.mSplashProgressBar = ((ProgressBar)findViewById(R.id.splash_launch_progress));
+    try
+    {
+      inflate(getContext(), R.layout.mini_sdk_game_loading_layout, this);
+      this.mStatusBar = findViewById(R.id.status_bar);
+      this.mGameInstruction = ((TextView)findViewById(R.id.game_instruction));
+      this.mGameVersionDesc = ((TextView)findViewById(R.id.game_version_desc));
+      this.mJumpBtn = ((TextView)findViewById(R.id.jump_btn));
+      this.mMoreView = ((ImageView)findViewById(R.id.btn_more_menu));
+      this.mCloseView = ((ImageView)findViewById(R.id.btn_close));
+      this.mNameView = ((TextView)findViewById(R.id.game_name));
+      this.mDeveloperDescView = ((TextView)findViewById(R.id.developer_desc));
+      this.mDeveloperDescLayout = ((LinearLayout)findViewById(R.id.developer_desc_layout));
+      this.mLogoView = ((SquareImageView)findViewById(R.id.logo_mask));
+      this.mLogoView.setRoundRect(this.iconSize);
+      this.mBottonLayout = ((LinearLayout)findViewById(R.id.bottom_layout));
+      this.mGameFakeFirstFrameDownLoadRect = ((RelativeLayout)findViewById(R.id.minigame_fakecover_rect));
+      this.mGameFakeFirstFrame = ((ImageView)findViewById(R.id.game_fake_firstframe));
+      this.mGameFakeFrameProgres = ((ProgressBar)findViewById(R.id.minigame_fakecover_progressbar));
+      this.mGameFakeFrameProgressText = ((TextView)findViewById(R.id.minigame_fakecover_progresstext));
+      this.mGameFakeFrameGameName = ((TextView)findViewById(R.id.minigame_fakecover_gamename));
+      this.mGameFakeGameLogo = ((SquareImageView)findViewById(R.id.minigame_fakecover_gamelogo));
+      this.mGameFakeGameLogo.setRoundRect(10);
+      this.mProgressTxt = ((TextView)findViewById(R.id.txt_download_progress));
+      this.mSplashProgressTxt = ((TextView)findViewById(R.id.splash_txt_download_progress));
+      this.mSplashProgressBar = ((ProgressBar)findViewById(R.id.splash_launch_progress));
+      return;
+    }
+    catch (Exception localException)
+    {
+      QMLog.e("LoadingUI", "void initUIComponents", localException);
+    }
   }
   
   private boolean isInterLoadingMode()

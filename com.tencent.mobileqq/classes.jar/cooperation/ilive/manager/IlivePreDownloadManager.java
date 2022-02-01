@@ -1,12 +1,6 @@
 package cooperation.ilive.manager;
 
 import android.text.TextUtils;
-import bluh;
-import blul;
-import bluv;
-import blvj;
-import blvk;
-import blvm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -16,20 +10,26 @@ import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.mobileqq.transfile.predownload.RunnableTask;
 import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.IliveDownloadCallback;
+import cooperation.ilive.IlivePluginDownloadManager;
+import cooperation.ilive.config.IliveConfigBean;
+import cooperation.ilive.time.TimeMonitorData;
+import cooperation.ilive.time.TimeMonitorManager;
+import cooperation.ilive.util.IliveEntranceUtil;
 import java.io.File;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 
 public class IlivePreDownloadManager
-  implements bluh
+  implements IliveDownloadCallback
 {
   private static final String TAG = "IlivePreDownloadManager";
   private static IlivePreDownloadManager sInstance;
   
   private void downloadPlugin()
   {
-    blvk.a().b("PLUGIN_DOWNLOAD");
-    blul.a().a(true);
+    TimeMonitorManager.a().b("PLUGIN_DOWNLOAD");
+    IlivePluginDownloadManager.a().a(true);
   }
   
   public static IlivePreDownloadManager getInstance()
@@ -48,22 +48,22 @@ public class IlivePreDownloadManager
   private void onPreloadDownloadComplete(boolean paramBoolean)
   {
     QLog.e("IlivePreDownloadManager", 1, "onPreloadDownloadComplete isSuccess = " + paramBoolean);
-    Object localObject1 = blul.a().a();
-    if ((localObject1 == null) || (TextUtils.isEmpty(((bluv)localObject1).c()))) {
+    Object localObject1 = IlivePluginDownloadManager.a().a();
+    if ((localObject1 == null) || (TextUtils.isEmpty(((IliveConfigBean)localObject1).c()))) {
       return;
     }
-    Object localObject2 = new File(((bluv)localObject1).a());
+    Object localObject2 = new File(((IliveConfigBean)localObject1).a());
     if (((File)localObject2).exists()) {}
     for (long l = ((File)localObject2).length();; l = -1L)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("IlivePreDownloadManager", 2, "onPreloadDownloadComplete isSuccess = " + paramBoolean + " url = " + ((bluv)localObject1).c() + " fileSize = " + l);
+        QLog.i("IlivePreDownloadManager", 2, "onPreloadDownloadComplete isSuccess = " + paramBoolean + " url = " + ((IliveConfigBean)localObject1).c() + " fileSize = " + l);
       }
       localObject2 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject2 instanceof QQAppInterface))
       {
         localObject2 = (PreDownloadController)((QQAppInterface)localObject2).getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
-        localObject1 = ((bluv)localObject1).c();
+        localObject1 = ((IliveConfigBean)localObject1).c();
         if (paramBoolean) {}
         for (;;)
         {
@@ -79,11 +79,11 @@ public class IlivePreDownloadManager
   
   private void preloadDownload()
   {
-    bluv localbluv = blul.a().a();
-    if ((localbluv == null) || (TextUtils.isEmpty(localbluv.c()))) {
+    IliveConfigBean localIliveConfigBean = IlivePluginDownloadManager.a().a();
+    if ((localIliveConfigBean == null) || (TextUtils.isEmpty(localIliveConfigBean.c()))) {
       return;
     }
-    blvk.a().b("PLUGIN_PRE_DOWNLOAD");
+    TimeMonitorManager.a().b("PLUGIN_PRE_DOWNLOAD");
     Object localObject1 = new IlivePreDownloadManager.2(this);
     QLog.e("IlivePreDownloadManager", 1, "add preload dispatch");
     Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
@@ -91,8 +91,8 @@ public class IlivePreDownloadManager
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)localObject2;
       localObject2 = (PreDownloadController)localQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
-      localObject1 = new RunnableTask(localQQAppInterface, localbluv.c(), (Runnable)localObject1, 4000L);
-      ((PreDownloadController)localObject2).requestPreDownload(10095, "vas", localbluv.b(), ((Integer)PreDownloadConstants.BUSINESS_PRIORITY.get(Integer.valueOf(10095))).intValue(), localbluv.c(), localbluv.a(), 2, 0, false, (AbsPreDownloadTask)localObject1);
+      localObject1 = new RunnableTask(localQQAppInterface, localIliveConfigBean.c(), (Runnable)localObject1, 4000L);
+      ((PreDownloadController)localObject2).requestPreDownload(10095, "vas", localIliveConfigBean.b(), ((Integer)PreDownloadConstants.BUSINESS_PRIORITY.get(Integer.valueOf(10095))).intValue(), localIliveConfigBean.c(), localIliveConfigBean.a(), 2, 0, false, (AbsPreDownloadTask)localObject1);
       return;
     }
     QLog.e("IlivePreDownloadManager", 1, "onPreloadDownloadStart app is not QQAppInterface");
@@ -101,18 +101,18 @@ public class IlivePreDownloadManager
   
   public void cancelPreloadDownload()
   {
-    bluv localbluv = blul.a().a();
-    if ((localbluv == null) || (TextUtils.isEmpty(localbluv.c()))) {
+    IliveConfigBean localIliveConfigBean = IlivePluginDownloadManager.a().a();
+    if ((localIliveConfigBean == null) || (TextUtils.isEmpty(localIliveConfigBean.c()))) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("IlivePreDownloadManager", 2, " cancelPreloadDownload ");
     }
-    blul.a().a();
+    IlivePluginDownloadManager.a().a();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface))
     {
-      ((PreDownloadController)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2)).cancelPreDownload(localbluv.c());
+      ((PreDownloadController)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2)).cancelPreDownload(localIliveConfigBean.c());
       return;
     }
     QLog.e("IlivePreDownloadManager", 1, "cancelPreloadDownload app is not QQAppInterface");
@@ -136,7 +136,7 @@ public class IlivePreDownloadManager
       paramString = new HashMap();
       paramString.put("status", "fail");
       paramString.put("errorCode", paramInt + str);
-      blvk.a().a("PLUGIN_PRE_DOWNLOAD").a("plugin_pre_download_result", paramString);
+      TimeMonitorManager.a().a("PLUGIN_PRE_DOWNLOAD").a("plugin_pre_download_result", paramString);
       onPreloadDownloadComplete(false);
       return;
     }
@@ -152,8 +152,8 @@ public class IlivePreDownloadManager
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("status", "success");
-    blvk.a().a("PLUGIN_PRE_DOWNLOAD").a("plugin_pre_download_result", localHashMap);
-    if (!blul.a().b())
+    TimeMonitorManager.a().a("PLUGIN_PRE_DOWNLOAD").a("plugin_pre_download_result", localHashMap);
+    if (!IlivePluginDownloadManager.a().b())
     {
       onFail(102, "pre download success but local apk file is not exist");
       return;
@@ -167,7 +167,7 @@ public class IlivePreDownloadManager
     if (paramInt != 1) {
       return;
     }
-    if (!blvm.b())
+    if (!IliveEntranceUtil.b())
     {
       QLog.e("IlivePreDownloadManager", 1, "stop preloadPluginConfig current version disable predownload");
       return;
@@ -177,7 +177,7 @@ public class IlivePreDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.manager.IlivePreDownloadManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajza;
-import bdkx;
+import com.tencent.mobileqq.statistics.QZoneReport;
 
-public class Conversation$UICallBack$3
+class Conversation$UICallBack$3
   implements Runnable
 {
-  public Conversation$UICallBack$3(ajza paramajza) {}
+  Conversation$UICallBack$3(Conversation.UICallBack paramUICallBack) {}
   
   public void run()
   {
-    bdkx.a(this.a.a.a);
+    QZoneReport.a(this.a.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.3
  * JD-Core Version:    0.7.0.1
  */

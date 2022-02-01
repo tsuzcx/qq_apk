@@ -1,7 +1,7 @@
 package com.tencent.qidian;
 
-import bheh;
-import bhey;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -14,10 +14,10 @@ public class QidianWebViewFragment
     if ((paramString.startsWith("mqqwpa://")) && (paramString.contains("request=videochat"))) {
       try
       {
-        bheh localbheh = bhey.a(null, getActivity(), paramString);
-        if (localbheh != null)
+        JumpAction localJumpAction = JumpParser.a(null, getActivity(), paramString);
+        if (localJumpAction != null)
         {
-          boolean bool = localbheh.a();
+          boolean bool = localJumpAction.a();
           return bool;
         }
       }
@@ -33,7 +33,7 @@ public class QidianWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.QidianWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

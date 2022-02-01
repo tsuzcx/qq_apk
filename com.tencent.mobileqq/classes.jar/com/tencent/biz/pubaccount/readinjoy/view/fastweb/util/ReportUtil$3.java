@@ -1,18 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import android.os.Parcel;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pqf;
-import tkj;
 
-public final class ReportUtil$3
+final class ReportUtil$3
   implements Runnable
 {
-  public ReportUtil$3(byte[] paramArrayOfByte, long paramLong) {}
+  ReportUtil$3(byte[] paramArrayOfByte, long paramLong) {}
   
   public void run()
   {
@@ -57,12 +56,12 @@ public final class ReportUtil$3
     localJSONObject = new JSONObject();
     if (localBaseActivity != null)
     {
-      localJSONObject = pqf.a(localBaseActivity, localArticleInfo, (int)localArticleInfo.mChannelID, "2");
+      localJSONObject = RIJTransMergeKanDianReport.a(localBaseActivity, localArticleInfo, (int)localArticleInfo.mChannelID, "2");
       try
       {
         localJSONObject.put("rowkey", localArticleInfo.innerUniqueID);
         localJSONObject.put("duration", l1 - l2);
-        tkj.a(localArticleInfo, "0X800A732", localJSONObject.toString());
+        ReportUtil.a(localArticleInfo, "0X800A732", localJSONObject.toString());
         return;
       }
       catch (JSONException localJSONException)
@@ -77,7 +76,7 @@ public final class ReportUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ public final class ReportInfo
 {
   static ReportBody cache_body;
   static ReportHeader cache_header;
-  public ReportBody body;
-  public ReportHeader header;
+  public ReportBody body = null;
+  public ReportHeader header = null;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

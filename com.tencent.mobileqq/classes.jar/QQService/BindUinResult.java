@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class BindUinResult
   extends JceStruct
 {
-  public int iResult;
-  public long lUin;
+  public int iResult = 0;
+  public long lUin = 0L;
   public String strResult = "";
   
   public BindUinResult() {}

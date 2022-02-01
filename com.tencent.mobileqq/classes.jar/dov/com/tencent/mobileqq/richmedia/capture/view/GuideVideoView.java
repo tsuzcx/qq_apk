@@ -1,15 +1,12 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import afsn;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bpnu;
-import bpnv;
-import bpnw;
+import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
 import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -33,16 +30,16 @@ import mqq.os.MqqHandler;
 
 public class GuideVideoView
   extends LinearLayout
-  implements afsn, View.OnClickListener, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
+  implements View.OnClickListener, FileTransferManager.Callback, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bpnu jdField_a_of_type_Bpnu;
-  private bpnv jdField_a_of_type_Bpnv;
-  private bpnw jdField_a_of_type_Bpnw;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
   protected FadedButton a;
+  private GuideVideoView.OnCloseListener jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCloseListener;
+  private GuideVideoView.OnCompleteListener jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener;
+  private GuideVideoView.OnErrorListener jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener;
   private List<String> jdField_a_of_type_JavaUtilList;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   boolean jdField_a_of_type_Boolean;
@@ -109,8 +106,8 @@ public class GuideVideoView
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton) {
-      if (this.jdField_a_of_type_Bpnu != null) {
-        this.jdField_a_of_type_Bpnu.a();
+      if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCloseListener != null) {
+        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCloseListener.a();
       }
     }
     for (;;)
@@ -142,15 +139,15 @@ public class GuideVideoView
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.jdField_a_of_type_Bpnv != null) {
-      this.jdField_a_of_type_Bpnv.a();
+    if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener != null) {
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener.a();
     }
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_Bpnw != null) {
-      this.jdField_a_of_type_Bpnw.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
+    if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener != null) {
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
     }
     return false;
   }
@@ -211,24 +208,24 @@ public class GuideVideoView
     }
   }
   
-  public void setOnCloseListener(bpnu parambpnu)
+  public void setOnCloseListener(GuideVideoView.OnCloseListener paramOnCloseListener)
   {
-    this.jdField_a_of_type_Bpnu = parambpnu;
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCloseListener = paramOnCloseListener;
   }
   
-  public void setOnCompleteListener(bpnv parambpnv)
+  public void setOnCompleteListener(GuideVideoView.OnCompleteListener paramOnCompleteListener)
   {
-    this.jdField_a_of_type_Bpnv = parambpnv;
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnCompleteListener = paramOnCompleteListener;
   }
   
-  public void setOnErrorListener(bpnw parambpnw)
+  public void setOnErrorListener(GuideVideoView.OnErrorListener paramOnErrorListener)
   {
-    this.jdField_a_of_type_Bpnw = parambpnw;
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewGuideVideoView$OnErrorListener = paramOnErrorListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,15 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.content.Context;
 import android.view.View;
-import awvk;
-import awvo;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenManager;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IFullScreenEnterListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.mediafocus.MediaFocusManager;
+import com.tencent.mobileqq.mediafocus.MediaFocusManager.OnMediaFocusChangeListener;
+import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams;
+import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams.FloatingBuilder;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindow;
+import com.tencent.mobileqq.qqfloatingwindow.listener.IFullScreenEnterListener;
+import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoInnerStatusListener;
+import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class IVFloatingScreenManagerInterfaceImpl
 {
@@ -21,40 +22,40 @@ public class IVFloatingScreenManagerInterfaceImpl
     return sInstance;
   }
   
-  int abandonMediaFocus(awvo paramawvo)
+  int abandonMediaFocus(MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener)
   {
-    return awvk.a().a(paramawvo);
+    return MediaFocusManager.a().a(paramOnMediaFocusChangeListener);
   }
   
   int enterFloatingScreen(Context paramContext, View paramView)
   {
     FloatingScreenParams localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setIsHorizontal(false).setCanMove(true).setCanZoom(false).build();
-    return FloatingScreenManager.getInstance().enterFloatingScreen(paramContext, paramView, localFloatingScreenParams, 2);
+    return ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).enterFloatingScreen(paramContext, paramView, localFloatingScreenParams, 2);
   }
   
   void quitFloatingScreen()
   {
-    FloatingScreenManager.getInstance().quitFloatingScreen();
+    ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).quitFloatingScreen();
   }
   
-  int requestMediaFocus(int paramInt, awvo paramawvo)
+  int requestMediaFocus(int paramInt, MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener)
   {
-    return awvk.a().a(paramInt, paramawvo);
+    return MediaFocusManager.a().a(paramInt, paramOnMediaFocusChangeListener);
   }
   
   IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)
   {
-    return FloatingScreenManager.getInstance().setFloatingVideoListener(paramIVideoInnerStatusListener);
+    return ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).setFloatingVideoListener(paramIVideoInnerStatusListener);
   }
   
   void setFullScreenListener(IFullScreenEnterListener paramIFullScreenEnterListener)
   {
-    FloatingScreenManager.getInstance().setFullScreenListener(paramIFullScreenEnterListener);
+    ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).setFullScreenListener(paramIFullScreenEnterListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVFloatingScreenManagerInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

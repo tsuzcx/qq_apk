@@ -9,8 +9,8 @@ public final class AcsPullMsgReq
 {
   static AcsHead cache_head = new AcsHead();
   public String day = "";
-  public AcsHead head;
-  public long uin;
+  public AcsHead head = null;
+  public long uin = 0L;
   
   public AcsPullMsgReq() {}
   

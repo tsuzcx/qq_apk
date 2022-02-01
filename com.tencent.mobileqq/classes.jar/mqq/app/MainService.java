@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.SystemClock;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
 import com.tencent.mobileqq.msf.sdk.MsfRespHandleUtil;
@@ -56,8 +57,8 @@ public class MainService
   private MobileQQ mApplicaiton;
   private volatile AppRuntime.InterceptKickListener mInterceptKickListener;
   private final Map<Integer, Class<? extends MSFServlet>> mRequestServlets = new ConcurrentHashMap();
-  private final Runnable mSFReceiver = new MainService.2(this);
   private IMsfMsgHandler msfMsgHandler = new MainService.3(this);
+  private final Runnable msfReceiver = new MainService.2(this);
   private Thread msfRecvThread;
   private final MsfRespHandleUtil msfRespHandleUtil;
   public final MsfServiceSdk msfSub;
@@ -93,7 +94,7 @@ public class MainService
   
   private void notifyCostTooLongIfDebug(FromServiceMsg paramFromServiceMsg, AppRuntime paramAppRuntime, long paramLong)
   {
-    if ((isDebugVersion) && (paramLong >= 5000L) && (paramAppRuntime != null)) {
+    if ((isDebugVersion) && (paramLong >= 5000L) && (paramAppRuntime != null) && (!AppSetting.c())) {
       paramAppRuntime.runOnUiThread(new MainService.1(this, paramFromServiceMsg, paramLong));
     }
   }
@@ -403,9 +404,9 @@ public class MainService
     this.mRequestServlets.put(Integer.valueOf(paramToServiceMsg.getAppSeq()), paramMSFServlet.getClass());
     paramToServiceMsg.extraData.putLong("sendTime", System.currentTimeMillis());
     paramToServiceMsg.extraData.putString("moduleId", paramMSFServlet.getAppRuntime().getModuleId());
-    this.msfSub.sendMsg(paramToServiceMsg);
+    int i = this.msfSub.sendMsg(paramToServiceMsg);
     if (QLog.isColorLevel()) {
-      QLog.d("mqq", 2, "[MSF Send]" + paramToServiceMsg.getServiceCmd() + " appSeq:" + paramToServiceMsg.getAppSeq() + "  " + paramMSFServlet.getAppRuntime().getClass().getSimpleName() + "@" + paramMSFServlet.getAppRuntime().hashCode() + "  from " + paramMSFServlet.getClass().getSimpleName());
+      QLog.d("mqq", 2, "[MSF Send]" + paramToServiceMsg.getServiceCmd() + " appSeq:" + paramToServiceMsg.getAppSeq() + "  " + paramMSFServlet.getAppRuntime().getClass().getSimpleName() + "@" + paramMSFServlet.getAppRuntime().hashCode() + "  from " + paramMSFServlet.getClass().getSimpleName() + ", res = " + i);
     }
     if (sCmdCallback != null) {
       sCmdCallback.onCmdRequest(paramToServiceMsg.getServiceCmd());
@@ -421,7 +422,7 @@ public class MainService
   {
     if (this.msfRecvThread == null)
     {
-      this.msfRecvThread = new Thread(this.mSFReceiver, "MSF-Receiver");
+      this.msfRecvThread = new Thread(this.msfReceiver, "MSF-Receiver");
       QLog.d(TAG, 1, "start MSF-Receiver " + this.msfRecvThread.getId());
       if ((this.mApplicaiton == null) || (this.mApplicaiton.getQQProcessName() == null) || (!this.mApplicaiton.getQQProcessName().endsWith(":video"))) {
         break label130;

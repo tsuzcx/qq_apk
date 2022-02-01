@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:orientation="vertical" android:id="@id/n4m" android:background="@color/agk" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountNavBar android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="30.0dip" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/n4m">
-                <com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHeadLayout android:id="@id/cw5" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                    <com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountWebView android:id="@id/cwr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                </com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHeadLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/nci" android:background="#ff39a0f9" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.gamecenter.view.NavBarQQGamePub android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="30.0dip" />
+    </LinearLayout>
+    <FrameLayout android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/n4d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/e3u" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.gamecenter.hippy.view.GamePubAccountHeadView android:id="@id/nch" android:background="@drawable/i8t" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/eet" android:background="#fff8f8f8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/nch">
+                <ImageView android:id="@id/n60" android:layout_width="60.0dip" android:layout_height="55.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" />
             </LinearLayout>
         </RelativeLayout>
-    </RelativeLayout>
-</FrameLayout>
+    </FrameLayout>
+</LinearLayout>

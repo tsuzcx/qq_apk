@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import apab;
-import bdla;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.io.StringReader;
 import org.xmlpull.v1.XmlPullParser;
@@ -11,9 +11,9 @@ public class MessageForIncompatibleGrayTips
   extends ChatMessage
 {
   private String TAG = "Q.msg.IncompatibleGrayTips";
-  public int linkEnd;
-  public int linkStart;
-  public String url;
+  public int linkEnd = 0;
+  public int linkStart = 0;
+  public String url = null;
   
   public MessageForIncompatibleGrayTips()
   {
@@ -24,7 +24,7 @@ public class MessageForIncompatibleGrayTips
   {
     try
     {
-      IncompatibleGrayTipsMessage localIncompatibleGrayTipsMessage = (IncompatibleGrayTipsMessage)apab.a(this.msgData);
+      IncompatibleGrayTipsMessage localIncompatibleGrayTipsMessage = (IncompatibleGrayTipsMessage)MessagePkgUtils.a(this.msgData);
       if (localIncompatibleGrayTipsMessage != null)
       {
         this.linkStart = localIncompatibleGrayTipsMessage.linkStart;
@@ -152,7 +152,7 @@ public class MessageForIncompatibleGrayTips
   public void prewrite()
   {
     serial();
-    bdla.b(null, "CliOper", "", String.valueOf(this.frienduin), "0X800491A", "0X800491A", 0, 0, "", "", "", "");
+    ReportController.b(null, "CliOper", "", String.valueOf(this.frienduin), "0X800491A", "0X800491A", 0, 0, "", "", "", "");
   }
   
   public void serial()
@@ -164,7 +164,7 @@ public class MessageForIncompatibleGrayTips
     localIncompatibleGrayTipsMessage.url = this.url;
     try
     {
-      this.msgData = apab.a(localIncompatibleGrayTipsMessage);
+      this.msgData = MessagePkgUtils.a(localIncompatibleGrayTipsMessage);
       return;
     }
     catch (Exception localException)
@@ -175,7 +175,7 @@ public class MessageForIncompatibleGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForIncompatibleGrayTips
  * JD-Core Version:    0.7.0.1
  */

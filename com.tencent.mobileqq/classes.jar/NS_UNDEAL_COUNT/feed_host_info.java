@@ -10,12 +10,12 @@ public final class feed_host_info
 {
   static yellow_info cache_OpuinYellowInfo = new yellow_info();
   static ArrayList<feed_info> cache_vec_feedInfos = new ArrayList();
-  public yellow_info OpuinYellowInfo;
+  public yellow_info OpuinYellowInfo = null;
   public String actiondesc = "";
   public String nickname = "";
   public String strWords = "";
-  public long uUin;
-  public ArrayList<feed_info> vec_feedInfos;
+  public long uUin = 0L;
+  public ArrayList<feed_info> vec_feedInfos = null;
   
   static
   {

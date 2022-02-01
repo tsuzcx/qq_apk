@@ -2,6 +2,7 @@ package com.tencent.mobileqq.mini.network.http;
 
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +17,7 @@ import okhttp3.Protocol;
 public class MiniOkHttpClientFactory
 {
   private static final long HTTP_CACHE_SIZE = 10485760L;
+  public static final String TAG = "MiniOkHttpClientFactory";
   private static volatile OkHttpClient downloadClient;
   private static volatile OkHttpClient downloadClientWithCache;
   private static final ConnectionPool mConnectionPool = new ConnectionPool(10, 60L, TimeUnit.SECONDS);
@@ -27,7 +29,7 @@ public class MiniOkHttpClientFactory
   {
     mDispatcher.setMaxRequests(64);
     mDispatcher.setMaxRequestsPerHost(8);
-    init(30000L, 30000L, 30000L);
+    init(60000L, 60000L, 60000L);
   }
   
   private static OkHttpClient.Builder createClientWithTimeout(long paramLong, boolean paramBoolean)
@@ -69,11 +71,20 @@ public class MiniOkHttpClientFactory
   public static void init(long paramLong1, long paramLong2, long paramLong3)
   {
     boolean bool = GameWnsUtils.enableHttp2();
-    requestClient = createClientWithTimeout(paramLong1, bool).build();
-    uploadClient = createClientWithTimeout(paramLong2, bool).build();
-    downloadClient = createClientWithTimeout(paramLong3, bool).build();
-    Cache localCache = new Cache(new File(MiniAppGlobal.getMiniCacheFilePath(), "http_cache"), 10485760L);
-    downloadClientWithCache = createClientWithTimeout(paramLong3, bool).cache(localCache).build();
+    QLog.e("MiniOkHttpClientFactory", 1, "MiniOkHttpClientFactory init requestTimeOut:" + paramLong1 + " uploadTimeOut:" + paramLong2 + " downloadTimeout:" + paramLong3);
+    try
+    {
+      requestClient = createClientWithTimeout(paramLong1, bool).build();
+      uploadClient = createClientWithTimeout(paramLong2, bool).build();
+      downloadClient = createClientWithTimeout(paramLong3, bool).build();
+      Cache localCache = new Cache(new File(MiniAppGlobal.getMiniCacheFilePath(), "http_cache"), 10485760L);
+      downloadClientWithCache = createClientWithTimeout(paramLong3, bool).cache(localCache).build();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MiniOkHttpClientFactory", 1, "MiniOkHttpClientFactory init failed", localException);
+    }
   }
 }
 

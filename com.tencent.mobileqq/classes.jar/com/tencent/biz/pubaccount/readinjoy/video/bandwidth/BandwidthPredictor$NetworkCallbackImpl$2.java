@@ -1,21 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video.bandwidth;
 
-import srh;
-import srj;
-
-public class BandwidthPredictor$NetworkCallbackImpl$2
+class BandwidthPredictor$NetworkCallbackImpl$2
   implements Runnable
 {
-  public BandwidthPredictor$NetworkCallbackImpl$2(srj paramsrj) {}
+  BandwidthPredictor$NetworkCallbackImpl$2(BandwidthPredictor.NetworkCallbackImpl paramNetworkCallbackImpl) {}
   
   public void run()
   {
-    srh.a(this.a.a);
+    BandwidthPredictor.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.2
  * JD-Core Version:    0.7.0.1
  */

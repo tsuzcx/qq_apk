@@ -1,25 +1,20 @@
 package com.tencent.mobileqq.utils;
 
-import android.text.TextUtils;
-import bheh;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.loginregister.ILoginRegisterApi;
 
-public class JumpAction$24
-  implements Runnable
+class JumpAction$24
+  implements DialogInterface.OnDismissListener
 {
-  public JumpAction$24(bheh parambheh) {}
+  JumpAction$24(JumpAction paramJumpAction) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.this$0.a == null) {}
-    String str;
-    do
-    {
-      return;
-      str = this.this$0.a.getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.a(str, "key_reader_click_time");
+    if (this.a.a().getLoginActivityClass().isInstance(this.a.a)) {
+      ((Activity)this.a.a).finish();
+    }
   }
 }
 

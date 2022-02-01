@@ -92,6 +92,7 @@ public class StickerUtil
       for (;;)
       {
         localObject = new TextEditorData(str1, str2, j, str3, str4, (String)localObject, i);
+        ((TextEditorData)localObject).setInteractive(String.valueOf(TAVStickerExKt.getStickerInteractive(paramTAVSticker)));
         if ((paramTAVSticker instanceof WSLyricSticker)) {
           ((TextEditorData)localObject).setStickerType("sticker_lyric");
         }
@@ -121,6 +122,7 @@ public class StickerUtil
     TAVStickerExKt.setExtraStickerType((TAVSticker)localObject1, paramStickerModel.getType());
     TAVStickerExKt.setStickerTextPngPath((TAVSticker)localObject1, paramStickerModel.getTextPngPath());
     TAVStickerExKt.setStickerTexturePngPath((TAVSticker)localObject1, paramStickerModel.getTexturePngPath());
+    TAVStickerExKt.setStickerInteractive((TAVSticker)localObject1, paramStickerModel.getInteractive());
     if (!TextUtils.isEmpty(paramStickerModel.getUniqueId())) {
       ((TAVSticker)localObject1).setStickerId(paramStickerModel.getUniqueId());
     }
@@ -134,15 +136,15 @@ public class StickerUtil
       {
         j = k;
         if (i >= paramStickerModel.getTextItems().size()) {
-          break label488;
+          break label497;
         }
         if (i >= ((TAVSticker)localObject1).getStickerTextItems().size()) {
           break;
         }
-        ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(i)).setText(((TextItem)paramStickerModel.getTextItems().get(i)).text);
-        ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(i)).setTextColor(((TextItem)paramStickerModel.getTextItems().get(i)).textColor);
-        localObject2 = ((TextItem)paramStickerModel.getTextItems().get(i)).fontPath;
-        localObject3 = ((TextItem)paramStickerModel.getTextItems().get(i)).assetFontPath;
+        ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(i)).setText(((TextItem)paramStickerModel.getTextItems().get(i)).getText());
+        ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(i)).setTextColor(((TextItem)paramStickerModel.getTextItems().get(i)).getTextColor());
+        localObject2 = ((TextItem)paramStickerModel.getTextItems().get(i)).getFontPath();
+        localObject3 = ((TextItem)paramStickerModel.getTextItems().get(i)).getAssetFontPath();
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(i)).setFontPath((String)localObject2);
         }
@@ -164,15 +166,15 @@ public class StickerUtil
     for (;;)
     {
       j += 1;
-      label488:
+      label497:
       if (j < paramStickerModel.getSolidItems().size())
       {
         localObject3 = ((TAVSticker)localObject1).getStickerSolidItems();
         if (!CollectionUtil.isEmptyList((List)localObject3)) {
-          break label529;
+          break label538;
         }
       }
-      label529:
+      label538:
       Map localMap;
       do
       {
@@ -234,16 +236,17 @@ public class StickerUtil
       localStickerModel.setScaleYMax(TAVStickerExKt.getStickerScaleMaxY(paramTAVSticker));
       localStickerModel.setLockRatio(TAVStickerExKt.isLockRatio(paramTAVSticker));
       localStickerModel.setEnableRotate(TAVStickerExKt.isRotateEnable(paramTAVSticker));
+      localStickerModel.setInteractive(TAVStickerExKt.getStickerInteractive(paramTAVSticker));
       localArrayList = new ArrayList();
       localObject1 = paramTAVSticker.getStickerTextItems().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (TAVStickerTextItem)((Iterator)localObject1).next();
         localObject3 = new TextItem();
-        ((TextItem)localObject3).fontPath = ((TAVStickerTextItem)localObject2).getFontPath();
-        ((TextItem)localObject3).assetFontPath = ((TAVStickerTextItem)localObject2).getAssetFontPath();
-        ((TextItem)localObject3).text = ((TAVStickerTextItem)localObject2).getText();
-        ((TextItem)localObject3).textColor = ((TAVStickerTextItem)localObject2).getTextColor();
+        ((TextItem)localObject3).setFontPath(((TAVStickerTextItem)localObject2).getFontPath());
+        ((TextItem)localObject3).setAssetFontPath(((TAVStickerTextItem)localObject2).getAssetFontPath());
+        ((TextItem)localObject3).setText(((TAVStickerTextItem)localObject2).getText());
+        ((TextItem)localObject3).setTextColor(((TAVStickerTextItem)localObject2).getTextColor());
         localArrayList.add(localObject3);
       }
     }
@@ -270,7 +273,7 @@ public class StickerUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.util.StickerUtil
  * JD-Core Version:    0.7.0.1
  */

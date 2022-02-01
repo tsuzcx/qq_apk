@@ -20,7 +20,6 @@ public class PTFaceAttr$Builder
   private int[] autoBrightnessCurve;
   private int[] autoContrastCurve;
   private List<List<PointF>> bodyPoints;
-  private Frame correctFrame;
   private int[] curve;
   private byte[] data;
   private Map<String, Long> detectTimes;
@@ -33,12 +32,13 @@ public class PTFaceAttr$Builder
   private int faceDetHeight = 0;
   private int faceDetRotation = 0;
   private int faceDetWidth = 0;
-  private double faceDetectScale;
+  private double faceDetectScale = 1.0D;
   private VideoPreviewFaceOutlineDetector faceDetector;
   private Map<PTFaceAttr.PTExpression, Boolean> faceExpression;
   private List<FaceInfo> faceInfos;
   private List<float[]> faceKitVerticesArray;
   private PointF facePiont2DCenter;
+  private List<List<PointF>> facePoint94;
   private List<List<PointF>> facePoints = new ArrayList();
   private List<FaceStatus> faceStatusList;
   private List<int[]> featureIndicesArray;
@@ -79,12 +79,6 @@ public class PTFaceAttr$Builder
   public PTFaceAttr build()
   {
     return new PTFaceAttr(this);
-  }
-  
-  public Builder correctFrame(Frame paramFrame)
-  {
-    this.correctFrame = paramFrame;
-    return this;
   }
   
   public Builder curve(int[] paramArrayOfInt)
@@ -192,6 +186,12 @@ public class PTFaceAttr$Builder
   public Builder facePiont2DCenter(PointF paramPointF)
   {
     this.facePiont2DCenter = paramPointF;
+    return this;
+  }
+  
+  public Builder facePoint94(List<List<PointF>> paramList)
+  {
+    this.facePoint94 = paramList;
     return this;
   }
   
@@ -305,7 +305,7 @@ public class PTFaceAttr$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTFaceAttr.Builder
  * JD-Core Version:    0.7.0.1
  */

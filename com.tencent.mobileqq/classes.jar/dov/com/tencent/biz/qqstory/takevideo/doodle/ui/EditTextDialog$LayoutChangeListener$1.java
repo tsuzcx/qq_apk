@@ -1,13 +1,9 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui;
 
-import boxn;
-import boxy;
-import boya;
-
-public class EditTextDialog$LayoutChangeListener$1
+class EditTextDialog$LayoutChangeListener$1
   implements Runnable
 {
-  public EditTextDialog$LayoutChangeListener$1(boya paramboya) {}
+  EditTextDialog$LayoutChangeListener$1(EditTextDialog.LayoutChangeListener paramLayoutChangeListener) {}
   
   public void run()
   {
@@ -17,7 +13,7 @@ public class EditTextDialog$LayoutChangeListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.LayoutChangeListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,9 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import vtj;
-import vug;
-
-public class PublicAccountImageCollectionMainActivity$3$8
+class PublicAccountImageCollectionMainActivity$3$8
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$8(vug paramvug) {}
+  PublicAccountImageCollectionMainActivity$3$8(PublicAccountImageCollectionMainActivity.3 param3) {}
   
   public void run()
   {
@@ -17,7 +14,7 @@ public class PublicAccountImageCollectionMainActivity$3$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.8
  * JD-Core Version:    0.7.0.1
  */

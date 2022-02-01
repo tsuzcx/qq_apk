@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.monitor.service;
 
-import bgyw;
+import com.tencent.mobileqq.util.FPSCalculator.GetFPSListener;
 
 class TaskMonitorManager$FpsListener
-  implements bgyw
+  implements FPSCalculator.GetFPSListener
 {
   private TaskMonitorManager$FpsListener(TaskMonitorManager paramTaskMonitorManager) {}
   

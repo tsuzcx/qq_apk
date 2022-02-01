@@ -3,18 +3,17 @@ package com.tencent.shadow.dynamic.host;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.shadow.proguard.p;
 
 public final class PpsStatus
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new p();
+  public static final Parcelable.Creator<PpsStatus> CREATOR = new PpsStatus.1();
   public final boolean loaderLoaded;
   public final boolean runtimeLoaded;
   public final String uuid;
   public final boolean uuidManagerSet;
   
-  public PpsStatus(Parcel paramParcel)
+  PpsStatus(Parcel paramParcel)
   {
     this.uuid = paramParcel.readString();
     if (paramParcel.readByte() != 0)
@@ -44,7 +43,7 @@ public final class PpsStatus
     }
   }
   
-  public PpsStatus(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  PpsStatus(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     this.uuid = paramString;
     this.runtimeLoaded = paramBoolean1;
@@ -52,12 +51,12 @@ public final class PpsStatus
     this.uuidManagerSet = paramBoolean3;
   }
   
-  public final int describeContents()
+  public int describeContents()
   {
     return 0;
   }
   
-  public final void writeToParcel(Parcel paramParcel, int paramInt)
+  public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
     paramParcel.writeString(this.uuid);
@@ -90,7 +89,7 @@ public final class PpsStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.PpsStatus
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewDebug.ExportedProperty;
 import android.widget.TextView;
-import aryx;
 import com.tencent.qphone.base.util.QLog;
 
 public class DatingCommentTextView
@@ -73,8 +72,8 @@ public class DatingCommentTextView
         if ((this.jdField_a_of_type_Int < 0) || (this.b < this.jdField_a_of_type_Int)) {
           break label458;
         }
-        if ((arrayOfClickableSpan[0] instanceof aryx)) {
-          ((aryx)arrayOfClickableSpan[0]).a(true);
+        if ((arrayOfClickableSpan[0] instanceof DatingCommentTextView.TouchableSpan)) {
+          ((DatingCommentTextView.TouchableSpan)arrayOfClickableSpan[0]).a(true);
         } else {
           paramMotionEvent.setSpan(new BackgroundColorSpan(Color.parseColor("#d5d5d5")), this.jdField_a_of_type_Int, this.b, 33);
         }
@@ -92,8 +91,8 @@ public class DatingCommentTextView
       this.jdField_a_of_type_AndroidTextStyleClickableSpan = null;
       if ((this.jdField_a_of_type_Int >= 0) && (this.b >= this.jdField_a_of_type_Int))
       {
-        if ((arrayOfClickableSpan[0] instanceof aryx)) {
-          ((aryx)arrayOfClickableSpan[0]).a(false);
+        if ((arrayOfClickableSpan[0] instanceof DatingCommentTextView.TouchableSpan)) {
+          ((DatingCommentTextView.TouchableSpan)arrayOfClickableSpan[0]).a(false);
         }
         for (;;)
         {
@@ -107,9 +106,9 @@ public class DatingCommentTextView
         if ((this.jdField_a_of_type_Int < 0) || (this.b < this.jdField_a_of_type_Int)) {
           break label460;
         }
-        if ((this.jdField_a_of_type_AndroidTextStyleClickableSpan != null) && ((this.jdField_a_of_type_AndroidTextStyleClickableSpan instanceof aryx)))
+        if ((this.jdField_a_of_type_AndroidTextStyleClickableSpan != null) && ((this.jdField_a_of_type_AndroidTextStyleClickableSpan instanceof DatingCommentTextView.TouchableSpan)))
         {
-          ((aryx)this.jdField_a_of_type_AndroidTextStyleClickableSpan).a(false);
+          ((DatingCommentTextView.TouchableSpan)this.jdField_a_of_type_AndroidTextStyleClickableSpan).a(false);
           this.jdField_a_of_type_AndroidTextStyleClickableSpan = null;
         }
         for (;;)
@@ -132,7 +131,7 @@ public class DatingCommentTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.widget.DatingCommentTextView
  * JD-Core Version:    0.7.0.1
  */

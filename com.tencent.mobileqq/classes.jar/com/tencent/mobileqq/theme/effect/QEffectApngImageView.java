@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import beiy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -21,20 +20,20 @@ import com.tencent.qq.effect.utils.QEffectUtils;
 public class QEffectApngImageView
   extends QEffectImageView
 {
-  private beiy a;
+  private QEffectApngImageView.ApngOptions a;
   
   public QEffectApngImageView(Context paramContext)
   {
     super(paramContext);
   }
   
-  public static beiy a(int[] paramArrayOfInt, String paramString)
+  public static QEffectApngImageView.ApngOptions a(int[] paramArrayOfInt, String paramString)
   {
-    beiy localbeiy = new beiy();
-    localbeiy.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    localbeiy.b = paramString;
-    localbeiy.jdField_a_of_type_JavaLangString = paramString;
-    return localbeiy;
+    QEffectApngImageView.ApngOptions localApngOptions = new QEffectApngImageView.ApngOptions();
+    localApngOptions.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    localApngOptions.b = paramString;
+    localApngOptions.jdField_a_of_type_JavaLangString = paramString;
+    return localApngOptions;
   }
   
   public void load(Context paramContext, QEffectView paramQEffectView, IQEffectLoad paramIQEffectLoad, QEffectData paramQEffectData)
@@ -49,8 +48,8 @@ public class QEffectApngImageView
       return;
     }
     paramContext = paramQEffectView.getExtOptions(paramQEffectData.type);
-    if ((paramContext != null) && ((paramContext instanceof beiy))) {
-      this.a = ((beiy)paramQEffectView.getExtOptions(paramQEffectData.type));
+    if ((paramContext != null) && ((paramContext instanceof QEffectApngImageView.ApngOptions))) {
+      this.a = ((QEffectApngImageView.ApngOptions)paramQEffectView.getExtOptions(paramQEffectData.type));
     }
     for (;;)
     {
@@ -62,7 +61,7 @@ public class QEffectApngImageView
       }
       Log.e("QEffectApngImageView", " load apng is null" + paramQEffectData.repeat);
       return;
-      this.a = new beiy();
+      this.a = new QEffectApngImageView.ApngOptions();
       this.a.jdField_a_of_type_JavaLangString = String.valueOf(paramQEffectData.effectId);
       this.a.b = String.valueOf(paramQEffectData.effectId);
       this.a.jdField_a_of_type_ArrayOfInt = new int[] { paramQEffectData.effectId };

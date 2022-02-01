@@ -17,34 +17,32 @@ import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.TextView;
-import anvx;
-import awgw;
-import awhh;
-import awpy;
-import awqa;
-import awqc;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.lyric.data.Lyric;
+import com.tencent.mobileqq.lyric.data.Sentence;
+import com.tencent.mobileqq.lyric.data.SentenceUI;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class SingleLineLyricView
   extends TextView
-  implements Handler.Callback, awgw
+  implements Handler.Callback, ILyricView, ILyricView.LyricState
 {
   protected int a;
   protected volatile long a;
   Paint.Align jdField_a_of_type_AndroidGraphicsPaint$Align = Paint.Align.CENTER;
   protected Handler a;
-  private SparseArray<awqc> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(4);
-  protected awpy a;
-  private awqc jdField_a_of_type_Awqc;
+  private SparseArray<SentenceUI> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(4);
+  protected Lyric a;
+  private SentenceUI jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<awhh> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<OnSizeChangeListener> jdField_a_of_type_JavaLangRefWeakReference;
   private volatile boolean jdField_a_of_type_Boolean = true;
-  private volatile int jdField_b_of_type_Int;
+  private volatile int jdField_b_of_type_Int = 0;
   private boolean jdField_b_of_type_Boolean;
-  private volatile int c;
+  private volatile int c = 0;
   private int d = 1;
   private int e;
   private int f;
@@ -70,15 +68,15 @@ public class SingleLineLyricView
     d();
   }
   
-  private int a(awqc paramawqc)
+  private int a(SentenceUI paramSentenceUI)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPaint$Align == Paint.Align.LEFT) {
       return 0;
     }
     if (this.jdField_a_of_type_AndroidGraphicsPaint$Align == Paint.Align.RIGHT) {
-      return paramawqc.jdField_a_of_type_Int * 2;
+      return paramSentenceUI.jdField_a_of_type_Int * 2;
     }
-    return paramawqc.jdField_a_of_type_Int;
+    return paramSentenceUI.jdField_a_of_type_Int;
   }
   
   private String a(int paramInt)
@@ -86,23 +84,23 @@ public class SingleLineLyricView
     switch (paramInt)
     {
     default: 
-      return anvx.a(2131713632);
+      return HardCodeUtil.a(2131714128);
     case 1: 
-      return anvx.a(2131713635);
+      return HardCodeUtil.a(2131714131);
     case 2: 
       return "";
     case 3: 
-      return anvx.a(2131713634);
+      return HardCodeUtil.a(2131714130);
     }
-    return anvx.a(2131713633);
+    return HardCodeUtil.a(2131714129);
   }
   
-  private void a(Canvas paramCanvas, awqc paramawqc)
+  private void a(Canvas paramCanvas, SentenceUI paramSentenceUI)
   {
-    this.jdField_a_of_type_Awqc = paramawqc;
+    this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI = paramSentenceUI;
     paramCanvas.save();
     paramCanvas.clipRect(new Rect(getPaddingLeft(), getPaddingTop(), getPaddingLeft() + (getMeasuredWidth() - getPaddingLeft() - getPaddingRight()), getPaddingTop() + (getMeasuredHeight() - getPaddingTop() - getPaddingBottom())));
-    int j = getPaddingLeft() - this.h + a(paramawqc);
+    int j = getPaddingLeft() - this.h + a(paramSentenceUI);
     if (this.g == 0) {
       this.g = b();
     }
@@ -112,23 +110,23 @@ public class SingleLineLyricView
     localTextPaint.setStrokeWidth(this.e);
     int m = getCurrentTextColor();
     localTextPaint.setColor(this.f);
-    paramCanvas.drawText(paramawqc.jdField_a_of_type_JavaLangString, j, k, localTextPaint);
+    paramCanvas.drawText(paramSentenceUI.jdField_a_of_type_JavaLangString, j, k, localTextPaint);
     localTextPaint.setColor(m);
     localTextPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawText(paramawqc.jdField_a_of_type_JavaLangString, j, k, localTextPaint);
+    paramCanvas.drawText(paramSentenceUI.jdField_a_of_type_JavaLangString, j, k, localTextPaint);
     paramCanvas.restore();
   }
   
-  private boolean a(awqa paramawqa)
+  private boolean a(Sentence paramSentence)
   {
     boolean bool = false;
     long l1 = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-    long l2 = paramawqa.jdField_a_of_type_Long;
-    long l3 = paramawqa.b;
+    long l2 = paramSentence.jdField_a_of_type_Long;
+    long l3 = paramSentence.b;
     if (l1 > l2 + l3) {
       return false;
     }
-    int k = ((awqc)paramawqa.a().get(0)).jdField_b_of_type_Int;
+    int k = ((SentenceUI)paramSentence.a().get(0)).jdField_b_of_type_Int;
     int m = getMeasuredWidth() - getPaddingRight() - getPaddingLeft();
     int n;
     int j;
@@ -182,7 +180,7 @@ public class SingleLineLyricView
   
   private boolean b()
   {
-    return (this.jdField_a_of_type_Awpy == null) || (this.jdField_a_of_type_Awpy.a == null) || (this.jdField_a_of_type_Awpy.a.isEmpty()) || (this.d != 2);
+    return (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) || (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a == null) || (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.isEmpty()) || (this.d != 2);
   }
   
   private void d()
@@ -190,7 +188,7 @@ public class SingleLineLyricView
     if (QLog.isColorLevel()) {
       QLog.i("QQMusicPlay.Lyric", 2, String.format("=======>init", new Object[0]));
     }
-    this.e = AIOUtils.dp2px(1.0F, getResources());
+    this.e = AIOUtils.a(1.0F, getResources());
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   }
   
@@ -203,7 +201,7 @@ public class SingleLineLyricView
     {
       Object localObject = a(j);
       int k = (int)(localTextPaint.measureText((String)localObject) + 0.5D);
-      localObject = new awqc((String)localObject, 0, 0, k, k, null);
+      localObject = new SentenceUI((String)localObject, 0, 0, k, k, null);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(j, localObject);
       j += 1;
     }
@@ -281,12 +279,12 @@ public class SingleLineLyricView
     }
   }
   
-  protected int getSuggestedMinimumWidth()
+  public int getSuggestedMinimumWidth()
   {
     if ((this.d == 2) || (this.jdField_a_of_type_AndroidUtilSparseArray.get(this.d) == null)) {
       return getPaddingLeft() + getPaddingRight() + this.i;
     }
-    return ((awqc)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.d)).jdField_b_of_type_Int + getPaddingLeft() + getPaddingRight();
+    return ((SentenceUI)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.d)).jdField_b_of_type_Int + getPaddingLeft() + getPaddingRight();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -309,7 +307,7 @@ public class SingleLineLyricView
       for (long l = 200L;; l = 500L)
       {
         paramMessage.sendEmptyMessageDelayed(0, l);
-        if ((b()) && (this.jdField_a_of_type_Awqc != null)) {
+        if ((b()) && (this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI != null)) {
           break;
         }
         invalidate();
@@ -323,7 +321,7 @@ public class SingleLineLyricView
       }
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
       if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-      for (paramMessage = null; paramMessage != null; paramMessage = (awhh)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+      for (paramMessage = null; paramMessage != null; paramMessage = (OnSizeChangeListener)this.jdField_a_of_type_JavaLangRefWeakReference.get())
       {
         paramMessage.b(getMeasuredWidth(), getMeasuredHeight());
         return false;
@@ -331,33 +329,33 @@ public class SingleLineLyricView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     this.jdField_b_of_type_Boolean = false;
     Object localObject;
     if (b())
     {
-      localObject = (awqc)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.d);
+      localObject = (SentenceUI)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.d);
       this.h = 0;
     }
     for (;;)
     {
       if (localObject != null) {
-        a(paramCanvas, (awqc)localObject);
+        a(paramCanvas, (SentenceUI)localObject);
       }
-      awqa localawqa;
+      Sentence localSentence;
       do
       {
         return;
         if (this.jdField_a_of_type_Boolean)
         {
-          localObject = this.jdField_a_of_type_Awqc;
+          localObject = this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI;
           break;
         }
         int j = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
         this.jdField_b_of_type_Int = j;
-        int k = this.jdField_a_of_type_Awpy.a(j);
-        localObject = this.jdField_a_of_type_Awpy.a;
+        int k = this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a(j);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a;
         int m = ((ArrayList)localObject).size();
         j = k;
         if (k < 0) {
@@ -368,14 +366,14 @@ public class SingleLineLyricView
           k = m - 1;
         }
         this.c = k;
-        localawqa = (awqa)((ArrayList)localObject).get(k);
-      } while (localawqa.a().isEmpty());
-      localObject = (awqc)localawqa.a().get(0);
-      this.jdField_b_of_type_Boolean = a(localawqa);
+        localSentence = (Sentence)((ArrayList)localObject).get(k);
+      } while (localSentence.a().isEmpty());
+      localObject = (SentenceUI)localSentence.a().get(0);
+      this.jdField_b_of_type_Boolean = a(localSentence);
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.jdField_a_of_type_Int != getMeasuredWidth())
@@ -383,15 +381,15 @@ public class SingleLineLyricView
       this.jdField_a_of_type_Int = getMeasuredWidth();
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 300L);
-      if (this.jdField_a_of_type_Awpy != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric != null)
       {
         paramInt1 = getMeasuredWidth();
         paramInt2 = getPaddingRight();
         paramInt3 = getPaddingLeft();
-        this.jdField_a_of_type_Awpy.a(getPaint(), getPaint(), paramInt1 - paramInt2 - paramInt3, true, false);
+        this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a(getPaint(), getPaint(), paramInt1 - paramInt2 - paramInt3, true, false);
       }
       this.g = 0;
-      this.jdField_a_of_type_Awqc = null;
+      this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI = null;
       this.h = 0;
       f();
     }
@@ -400,7 +398,7 @@ public class SingleLineLyricView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(getSuggestedMinimumWidth(), View.getDefaultSize(getSuggestedMinimumHeight(), paramInt2));
   }
@@ -420,32 +418,32 @@ public class SingleLineLyricView
     requestLayout();
   }
   
-  public void setLyric(awpy paramawpy, int paramInt)
+  public void setLyric(Lyric paramLyric, int paramInt)
   {
-    awpy localawpy;
-    if (paramawpy != null)
+    Lyric localLyric;
+    if (paramLyric != null)
     {
-      localawpy = new awpy(2, 0, null);
-      localawpy.a(paramawpy);
+      localLyric = new Lyric(2, 0, null);
+      localLyric.a(paramLyric);
     }
-    for (this.jdField_a_of_type_Awpy = localawpy;; this.jdField_a_of_type_Awpy = null)
+    for (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = localLyric;; this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = null)
     {
       this.d = paramInt;
       this.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_Awqc = null;
+      this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI = null;
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
       return;
     }
   }
   
-  public void setOnSizeChangeListener(awhh paramawhh)
+  public void setOnSizeChangeListener(OnSizeChangeListener paramOnSizeChangeListener)
   {
-    if (paramawhh == null)
+    if (paramOnSizeChangeListener == null)
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawhh);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnSizeChangeListener);
   }
   
   public void setSongId(String paramString)

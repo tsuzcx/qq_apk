@@ -9,6 +9,7 @@ public class BaseCommentData$CommentLinkData
   public static final int TYPE_ACTIVITY = 2;
   public static final int TYPE_CONTENT = 3;
   public static final int TYPE_GOODS = 1;
+  public static final int TYPE_MINI_APP = 4;
   private static final long serialVersionUID = -5511624060230403921L;
   @SerializedName("icon")
   public String iconUrl;
@@ -36,7 +37,7 @@ public class BaseCommentData$CommentLinkData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData.CommentLinkData
  * JD-Core Version:    0.7.0.1
  */

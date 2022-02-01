@@ -12,13 +12,13 @@ class ServiceAccountFolderActivity$3
   
   public void run()
   {
-    int i = this.this$0.app.getMessageFacade().getUnreadMsgsNum();
+    int i = this.this$0.app.getMessageFacade().b();
     ServiceAccountFolderActivity.a(this.this$0).post(new ServiceAccountFolderActivity.3.1(this, i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity.3
  * JD-Core Version:    0.7.0.1
  */

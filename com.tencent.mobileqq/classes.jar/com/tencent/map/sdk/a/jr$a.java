@@ -36,7 +36,7 @@ public final class jr$a
     paramCanvas.drawLine(jr.e(this.a) + i, j - jr.d(this.a) * 3.0F, jr.e(this.a) + i, j + 1, this.b);
   }
   
-  protected final void onMeasure(int paramInt1, int paramInt2)
+  public final void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(Math.min(Math.round(jr.e(this.a) + 12.0F * jr.d(this.a)), jr.f(this.a) / 2), Math.round(jr.g(this.a) * jr.d(this.a)));
@@ -44,7 +44,7 @@ public final class jr$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.map.sdk.a.jr.a
  * JD-Core Version:    0.7.0.1
  */

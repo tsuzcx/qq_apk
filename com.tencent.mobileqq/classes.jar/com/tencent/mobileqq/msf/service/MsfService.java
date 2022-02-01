@@ -14,8 +14,9 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.ab;
 import com.tencent.mobileqq.msf.core.auth.b;
+import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.u;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.remote.IBaseService.Stub;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -315,7 +316,7 @@ public class MsfService
         {
           for (;;)
           {
-            ab.a(ab.P);
+            u.a(u.P);
             stopForegroundCompat();
             super.onDestroy();
             return;

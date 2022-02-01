@@ -1,15 +1,14 @@
 package cooperation.vip.widget;
 
 import android.text.TextUtils;
-import bmpr;
 import cooperation.qzone.util.QZLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class VipGeneralGdtShowView$2
+class VipGeneralGdtShowView$2
   implements Runnable
 {
-  public VipGeneralGdtShowView$2(bmpr parambmpr, String paramString) {}
+  VipGeneralGdtShowView$2(VipGeneralGdtShowView paramVipGeneralGdtShowView, String paramString) {}
   
   public void run()
   {
@@ -51,7 +50,7 @@ public class VipGeneralGdtShowView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.widget.VipGeneralGdtShowView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import augw;
-
-public class SendBottomBar$4$1
+class SendBottomBar$4$1
   implements Runnable
 {
-  public SendBottomBar$4$1(augw paramaugw) {}
+  SendBottomBar$4$1(SendBottomBar.4 param4) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class SendBottomBar$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,10 @@ package com.tencent.mobileqq.statistics;
 import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
 
-public final class ArkAppReportController$1
+final class ArkAppReportController$1
   implements Runnable
 {
-  public ArkAppReportController$1(String paramString) {}
+  ArkAppReportController$1(String paramString) {}
   
   public void run()
   {

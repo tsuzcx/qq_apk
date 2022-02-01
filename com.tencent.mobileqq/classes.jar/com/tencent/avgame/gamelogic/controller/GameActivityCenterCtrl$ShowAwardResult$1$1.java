@@ -1,23 +1,22 @@
 package com.tencent.avgame.gamelogic.controller;
 
 import android.app.Activity;
-import nfn;
-import nmf;
+import com.tencent.avgame.gameroom.video.AVGameLaunchWebHelper;
 
-public class GameActivityCenterCtrl$ShowAwardResult$1$1
+class GameActivityCenterCtrl$ShowAwardResult$1$1
   implements Runnable
 {
-  public GameActivityCenterCtrl$ShowAwardResult$1$1(nfn paramnfn, String paramString, nmf paramnmf) {}
+  GameActivityCenterCtrl$ShowAwardResult$1$1(GameActivityCenterCtrl.ShowAwardResult.1 param1, String paramString, AVGameLaunchWebHelper paramAVGameLaunchWebHelper) {}
   
   public void run()
   {
-    GameActivityCenterCtrl.ShowAwardResult.a(this.jdField_a_of_type_Nfn.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl$ShowAwardResult, (Activity)this.jdField_a_of_type_Nfn.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nfn.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Nmf.a();
+    GameActivityCenterCtrl.ShowAwardResult.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl$ShowAwardResult$1.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl$ShowAwardResult, (Activity)this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl$ShowAwardResult$1.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl$ShowAwardResult$1.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameLaunchWebHelper.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl.ShowAwardResult.1.1
  * JD-Core Version:    0.7.0.1
  */

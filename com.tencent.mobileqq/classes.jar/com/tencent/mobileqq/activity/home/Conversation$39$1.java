@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajxt;
-import algc;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class Conversation$39$1
+class Conversation$39$1
   implements Runnable
 {
-  public Conversation$39$1(ajxt paramajxt, String paramString) {}
+  Conversation$39$1(Conversation.39 param39) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ajxt.a.a != null) {
-      this.jdField_a_of_type_Ajxt.a.a.a(this.jdField_a_of_type_JavaLangString, 3000);
-    }
+    QQToast.a(this.a.a.a(), 1, HardCodeUtil.a(2131702631), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299166));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.39.1
  * JD-Core Version:    0.7.0.1
  */

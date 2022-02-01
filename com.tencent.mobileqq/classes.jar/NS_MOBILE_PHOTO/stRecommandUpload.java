@@ -8,9 +8,9 @@ public final class stRecommandUpload
   extends JceStruct
 {
   static int cache_type = 0;
-  public long begin;
-  public long end;
-  public long left_days;
+  public long begin = 0L;
+  public long end = 0L;
+  public long left_days = 0L;
   public int type = 1;
   
   public stRecommandUpload() {}

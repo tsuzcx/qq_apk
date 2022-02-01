@@ -11,10 +11,10 @@ public final class PoiInfoCell_V2
   static GPS_V2 cache_stClientGps = new GPS_V2();
   static GPS_V2 cache_stGps = new GPS_V2();
   static ArrayList<PoiInfo_V2> cache_vPoiList = new ArrayList();
-  public int iRet;
-  public GPS_V2 stClientGps;
-  public GPS_V2 stGps;
-  public ArrayList<PoiInfo_V2> vPoiList;
+  public int iRet = 0;
+  public GPS_V2 stClientGps = null;
+  public GPS_V2 stGps = null;
+  public ArrayList<PoiInfo_V2> vPoiList = null;
   
   static
   {

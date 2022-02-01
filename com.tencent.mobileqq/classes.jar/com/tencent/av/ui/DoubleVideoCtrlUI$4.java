@@ -17,7 +17,7 @@ class DoubleVideoCtrlUI$4
     {
       localObject1 = localObject2;
       if (this.this$0.a.get() != null) {
-        localObject1 = (ChildLockSign)((Activity)this.this$0.a.get()).findViewById(2131373480);
+        localObject1 = (ChildLockSign)((Activity)this.this$0.a.get()).findViewById(2131373794);
       }
     }
     if (localObject1 != null) {
@@ -27,7 +27,7 @@ class DoubleVideoCtrlUI$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.4
  * JD-Core Version:    0.7.0.1
  */

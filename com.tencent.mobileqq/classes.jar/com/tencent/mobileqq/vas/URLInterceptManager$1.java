@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.vas;
 
 import android.content.Context;
-import bhon;
 
-public class URLInterceptManager$1
+class URLInterceptManager$1
   implements Runnable
 {
-  public URLInterceptManager$1(bhon parambhon, Context paramContext) {}
+  URLInterceptManager$1(URLInterceptManager paramURLInterceptManager, Context paramContext) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class URLInterceptManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.URLInterceptManager.1
  * JD-Core Version:    0.7.0.1
  */

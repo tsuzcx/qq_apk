@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import admi;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ChatActivityFacade$17$1$1
+class ChatActivityFacade$17$1$1
   implements Runnable
 {
-  public ChatActivityFacade$17$1$1(admi paramadmi) {}
+  ChatActivityFacade$17$1$1(ChatActivityFacade.17.1 param1) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByMessageRecord(this.a.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.17.1.1
  * JD-Core Version:    0.7.0.1
  */

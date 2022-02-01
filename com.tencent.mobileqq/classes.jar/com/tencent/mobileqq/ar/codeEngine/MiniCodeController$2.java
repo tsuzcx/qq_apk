@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import apnc;
-import apno;
-
-public class MiniCodeController$2
+class MiniCodeController$2
   implements Runnable
 {
-  public MiniCodeController$2(apnc paramapnc) {}
+  MiniCodeController$2(MiniCodeController paramMiniCodeController) {}
   
   public void run()
   {
-    long l1 = apno.a("report_tag_detect_supporttype", 0L);
+    long l1 = MiniScanReport.a("report_tag_detect_supporttype", 0L);
     long l2 = System.currentTimeMillis();
     if (l2 - l1 > 86400000L)
     {
-      apno.b(apnc.a(this.this$0), -1);
-      apno.a("report_tag_detect_supporttype", l2);
+      MiniScanReport.b(MiniCodeController.a(this.this$0), -1);
+      MiniScanReport.a("report_tag_detect_supporttype", l2);
     }
   }
 }

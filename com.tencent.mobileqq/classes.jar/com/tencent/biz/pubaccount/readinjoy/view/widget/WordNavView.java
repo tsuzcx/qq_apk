@@ -14,18 +14,16 @@ import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import trt;
-import tru;
 
 public class WordNavView
   extends View
 {
-  private float jdField_a_of_type_Float = ViewUtils.dpToPx(15.0F);
+  private float jdField_a_of_type_Float = ViewUtils.b(15.0F);
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
+  private WordNavView.OnTouchingWordChangedListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView$OnTouchingWordChangedListener;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Map<Float, String> jdField_a_of_type_JavaUtilMap;
-  private tru jdField_a_of_type_Tru;
   private float b;
   
   public WordNavView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
@@ -46,7 +44,7 @@ public class WordNavView
     this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#878B99"));
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
     this.b = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().top);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new trt(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new WordNavView.MySimpleGestureDetector(this, null));
   }
   
   private float b(int paramInt)
@@ -54,7 +52,7 @@ public class WordNavView
     return getPaddingTop() + getHeight() / this.jdField_a_of_type_JavaUtilArrayList.size() * (paramInt + 1) - this.b / 2.0F;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     int i = 0;
@@ -79,19 +77,19 @@ public class WordNavView
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    getLayoutParams().height = (this.jdField_a_of_type_JavaUtilArrayList.size() * (int)(this.jdField_a_of_type_Float + ViewUtils.dpToPx(5.0F)));
+    getLayoutParams().height = (this.jdField_a_of_type_JavaUtilArrayList.size() * (int)(this.jdField_a_of_type_Float + ViewUtils.b(5.0F)));
     requestLayout();
     invalidate();
   }
   
-  public void setOnTouchingWordChangedListener(tru paramtru)
+  public void setOnTouchingWordChangedListener(WordNavView.OnTouchingWordChangedListener paramOnTouchingWordChangedListener)
   {
-    this.jdField_a_of_type_Tru = paramtru;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView$OnTouchingWordChangedListener = paramOnTouchingWordChangedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView
  * JD-Core Version:    0.7.0.1
  */

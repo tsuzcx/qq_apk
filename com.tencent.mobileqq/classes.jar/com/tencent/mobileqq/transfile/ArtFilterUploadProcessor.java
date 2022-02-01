@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.SparseArray;
 import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterModule;
+import com.tencent.biz.qqstory.takevideo.artfilter.FilterUploadInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.api.IRequestCallback;
@@ -20,6 +22,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PicUpReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
@@ -33,8 +36,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import yqg;
-import yqi;
 
 public class ArtFilterUploadProcessor
   extends BaseUploadProcessor
@@ -59,7 +60,7 @@ public class ArtFilterUploadProcessor
   public static final String TEG_COSTTIME = "teg_Costtime";
   public static final String UPLOAD_FILE_SIZE = "uploadFileSize";
   public static final String WUP_COSTTIME = "wup_Costtime";
-  public yqg artFilterModule = yqg.a();
+  public ArtFilterModule artFilterModule = ArtFilterModule.a();
   private int callbackId;
   int currentStep;
   long endAllTime = 0L;
@@ -69,7 +70,7 @@ public class ArtFilterUploadProcessor
   long endRequestTime = 0L;
   String fileOutputPath;
   boolean isCanceld = false;
-  yqi mFilterUploadInfo;
+  FilterUploadInfo mFilterUploadInfo;
   boolean needUploadImg;
   long startAllTime = 0L;
   long startDownloadTime = 0L;
@@ -86,26 +87,26 @@ public class ArtFilterUploadProcessor
     this.mUkey = paramString;
   }
   
-  public void begin(int paramInt1, int paramInt2, String paramString, int paramInt3, yqi paramyqi, boolean paramBoolean)
+  public void begin(int paramInt1, int paramInt2, String paramString, int paramInt3, FilterUploadInfo paramFilterUploadInfo, boolean paramBoolean)
   {
     this.callbackId = paramInt1;
     this.styleId = paramInt2;
     this.styleName = paramString;
     this.taskId = paramInt3;
-    this.mFilterUploadInfo = paramyqi;
+    this.mFilterUploadInfo = paramFilterUploadInfo;
     this.needUploadImg = paramBoolean;
     if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "FilterUploadInfo:" + paramyqi);
+      QLog.d("ArtFilterUploadProcessor", 2, "FilterUploadInfo:" + paramFilterUploadInfo);
     }
-    if (paramyqi == null) {
+    if (paramFilterUploadInfo == null) {
       return;
     }
-    this.mFileSize = paramyqi.jdField_a_of_type_Long;
-    this.mLocalMd5 = paramyqi.jdField_a_of_type_ArrayOfByte;
-    this.mFileName = paramyqi.jdField_b_of_type_JavaLangString;
-    this.fileOutputPath = (EditVideoArtFilter.jdField_a_of_type_JavaLangString + paramyqi.jdField_b_of_type_Long + "_" + paramInt2 + ".png");
-    this.mHeight = paramyqi.jdField_a_of_type_Int;
-    this.mWidth = paramyqi.jdField_b_of_type_Int;
+    this.mFileSize = paramFilterUploadInfo.jdField_a_of_type_Long;
+    this.mLocalMd5 = paramFilterUploadInfo.jdField_a_of_type_ArrayOfByte;
+    this.mFileName = paramFilterUploadInfo.jdField_b_of_type_JavaLangString;
+    this.fileOutputPath = (EditVideoArtFilter.jdField_a_of_type_JavaLangString + paramFilterUploadInfo.jdField_b_of_type_Long + "_" + paramInt2 + ".png");
+    this.mHeight = paramFilterUploadInfo.jdField_a_of_type_Int;
+    this.mWidth = paramFilterUploadInfo.jdField_b_of_type_Int;
     this.startAllTime = SystemClock.uptimeMillis();
     if (QLog.isColorLevel()) {
       QLog.d("ArtFilterUploadProcessor", 2, "start()  needUploadImg:" + paramBoolean + " mUky:" + this.mUkey);
@@ -298,7 +299,7 @@ public class ArtFilterUploadProcessor
     localHttpNetReq.mNeedIpConnect = true;
     localHttpNetReq.mOutPath = this.fileOutputPath;
     localHttpNetReq.mPrioty = 0;
-    localHttpNetReq.mBreakDownFix = mPicBreakDownFixForOldHttpEngine;
+    localHttpNetReq.mSupportBreakResume = true;
     if (QLog.isColorLevel()) {
       QLog.d("ArtFilterUploadProcessor", 2, "sendDownLoadRequest req:" + localHttpNetReq);
     }
@@ -390,7 +391,7 @@ public class ArtFilterUploadProcessor
       localRichProtoReq.callback = this;
       localRichProtoReq.protoKey = "art_filter_up";
       localRichProtoReq.reqs.add(localPicUpReq);
-      localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+      localRichProtoReq.protoReqMgr = getProtoReqManager();
       this.app.getHwEngine().preConnect();
       this.mStepUrl.logStartTime();
       if (QLog.isColorLevel()) {

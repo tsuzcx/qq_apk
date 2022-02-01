@@ -28,12 +28,12 @@ public class ContentView
   
   protected void a()
   {
-    setBackgroundColor(getResources().getColor(2131165219));
+    setBackgroundColor(getResources().getColor(2131165220));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.timeline.ContentView
  * JD-Core Version:    0.7.0.1
  */

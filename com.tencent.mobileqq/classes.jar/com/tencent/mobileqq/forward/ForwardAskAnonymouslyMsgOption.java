@@ -2,12 +2,10 @@ package com.tencent.mobileqq.forward;
 
 import android.content.Intent;
 import android.os.Bundle;
-import aupp;
-import aups;
-import azzv;
-import azzw;
-import bdla;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.profilecard.bussiness.anonymous.utils.AskAnonymouslyUtil;
+import com.tencent.mobileqq.profilecard.bussiness.anonymous.utils.AskAnonymouslyUtil.Companion;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 import kotlin.Metadata;
@@ -17,12 +15,12 @@ import org.jetbrains.annotations.Nullable;
 public final class ForwardAskAnonymouslyMsgOption
   extends ForwardArkMsgOption
 {
-  public static final aups a;
-  private boolean i = true;
+  public static final ForwardAskAnonymouslyMsgOption.Companion a;
+  private boolean j = true;
   
   static
   {
-    jdField_a_of_type_Aups = new aups(null);
+    jdField_a_of_type_ComTencentMobileqqForwardForwardAskAnonymouslyMsgOption$Companion = new ForwardAskAnonymouslyMsgOption.Companion(null);
   }
   
   public ForwardAskAnonymouslyMsgOption(@Nullable Intent paramIntent)
@@ -30,33 +28,10 @@ public final class ForwardAskAnonymouslyMsgOption
     super(paramIntent);
   }
   
-  public void a()
+  protected void a()
   {
-    if (o()) {
-      this.jdField_a_of_type_JavaUtilSet.add(aupp.d);
-    }
-    if (p()) {
-      this.jdField_a_of_type_JavaUtilSet.add(aupp.c);
-    }
-    if (q()) {
-      this.jdField_a_of_type_JavaUtilSet.add(aupp.b);
-    }
-    if (e()) {
-      this.jdField_a_of_type_JavaUtilSet.add(aupp.e);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = super.a();
-    this.i = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_qzone", true);
-    return bool;
-  }
-  
-  public void d()
-  {
-    super.d();
-    String str = ForwardUtils.toTypeSimple(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"));
+    super.a();
+    String str = ForwardUtils.b(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"));
     if (str == null) {}
     do
     {
@@ -71,26 +46,49 @@ public final class ForwardAskAnonymouslyMsgOption
           }
         }
       } while (!str.equals("1"));
-      bdla.b(null, "dc00898", "", "", "0X800B46F", "0X800B46F", 0, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B46F", "0X800B46F", 0, 0, "", "", "", "");
       return;
     } while (!str.equals("2"));
-    bdla.b(null, "dc00898", "", "", "0X800B470", "0X800B470", 0, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800B470", "0X800B470", 0, 0, "", "", "", "");
   }
   
-  public boolean e()
+  public boolean a()
   {
-    return this.i;
+    boolean bool = super.a();
+    this.j = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_qzone", true);
+    return bool;
+  }
+  
+  protected void b()
+  {
+    if (p()) {
+      this.jdField_a_of_type_JavaUtilSet.add(ForwardAbility.ForwardAbilityType.d);
+    }
+    if (q()) {
+      this.jdField_a_of_type_JavaUtilSet.add(ForwardAbility.ForwardAbilityType.c);
+    }
+    if (r()) {
+      this.jdField_a_of_type_JavaUtilSet.add(ForwardAbility.ForwardAbilityType.b);
+    }
+    if (e()) {
+      this.jdField_a_of_type_JavaUtilSet.add(ForwardAbility.ForwardAbilityType.e);
+    }
+  }
+  
+  protected boolean e()
+  {
+    return this.j;
   }
   
   public boolean f()
   {
-    azzv.a.a(this.jdField_a_of_type_AndroidAppActivity);
+    AskAnonymouslyUtil.Companion.shareInviteToQZone(this.jdField_a_of_type_AndroidAppActivity);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardAskAnonymouslyMsgOption
  * JD-Core Version:    0.7.0.1
  */

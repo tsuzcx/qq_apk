@@ -1,47 +1,44 @@
 package com.tencent.mobileqq.service;
 
 import android.os.Bundle;
-import aqtc;
-import bcpv;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class MobileQQServiceBase$1
+class MobileQQServiceBase$1
   implements Runnable
 {
-  public MobileQQServiceBase$1(bcpv parambcpv, ToServiceMsg paramToServiceMsg, aqtc paramaqtc, Class paramClass) {}
+  MobileQQServiceBase$1(MobileQQServiceBase paramMobileQQServiceBase, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd();
+    Object localObject = this.val$request.getServiceCmd();
     if (QLog.isColorLevel()) {
       QLog.d("MobileQQServiceBase", 2, "req cmd: " + (String)localObject);
     }
     if ("MessageSvc.PbSendMsg".equalsIgnoreCase((String)localObject))
     {
-      long l1 = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getLong("msg_send_time", 0L);
+      long l1 = this.val$request.extraData.getLong("msg_send_time", 0L);
       if (l1 != 0L)
       {
         long l2 = System.currentTimeMillis();
-        this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putLong("msg_request_time", l2);
-        this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putLong("msg_send_to_request_cost", l2 - l1);
+        this.val$request.extraData.putLong("msg_request_time", l2);
+        this.val$request.extraData.putLong("msg_send_to_request_cost", l2 - l1);
       }
     }
     try
     {
-      this.this$0.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_Aqtc, this.jdField_a_of_type_JavaLangClass);
+      this.this$0.realHandleRequest(this.val$request, this.this$0.getServlet());
       return;
     }
     catch (Exception localException)
     {
-      localException.printStackTrace();
       if (QLog.isColorLevel()) {
         QLog.e("MobileQQServiceBase", 2, "handleRequest Exception. cmd = " + (String)localObject, localException);
       }
-      localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getUin(), (String)localObject);
+      localObject = new FromServiceMsg(this.val$request.getUin(), (String)localObject);
       ((FromServiceMsg)localObject).setMsgFail();
-      this.this$0.a(false, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject, localException);
+      this.this$0.handleResponse(false, this.val$request, (FromServiceMsg)localObject, localException);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -49,9 +46,9 @@ public class MobileQQServiceBase$1
       if (QLog.isColorLevel()) {
         QLog.d("MobileQQServiceBase", 2, "handleRequest OutOfMemoryError. cmd = " + (String)localObject);
       }
-      localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getUin(), (String)localObject);
+      localObject = new FromServiceMsg(this.val$request.getUin(), (String)localObject);
       ((FromServiceMsg)localObject).setMsgFail();
-      this.this$0.a(false, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject, null);
+      this.this$0.handleResponse(false, this.val$request, (FromServiceMsg)localObject, null);
     }
   }
 }

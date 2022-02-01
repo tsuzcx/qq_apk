@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import aetv;
-import aetx;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -13,160 +10,101 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bisy;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.loginregister.LoginUtils;
+import com.tencent.mobileqq.logintempapi.ILoginApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToastNotifier;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
 
 public class RegisterNewBaseActivity
-  extends BaseActivity
+  extends QBaseActivity
   implements DialogInterface.OnClickListener
 {
-  public int a;
-  protected Dialog a;
-  public Handler a;
-  protected View.OnClickListener a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
+  public static final int FROM_ADD_ACCOUNT = 1;
+  public static final int FROM_CHOOSE_LOGIN = 6;
+  public static final int FROM_LOGIN_BIND_PHONE_NUM = 9;
+  public static final int FROM_LOGIN_GUIDE = 2;
+  public static final int FROM_LOGIN_VIEW = 3;
+  public static final int FROM_NICKANDPWD = 8;
+  public static final int FROM_PHOME_NUM = 7;
+  public static final int FROM_UP_SMS = 4;
+  public static final int FROM_VERIFY_CODE = 5;
+  private static final String TAG = "RegisterNewBaseActivity";
+  public String countryCode = "86";
+  protected Dialog dialog;
+  public Handler handler = new RegisterNewBaseActivity.1(this);
+  public String inviteCode;
+  protected ViewGroup mContextView;
+  public String mCountryEnglishName = "CN";
+  private QQCustomDialog mDialog;
+  public int mFrom = -1;
+  public boolean mHasPwd = true;
+  public boolean mIsPhoneNumRegistered = false;
+  public ILoginApi mLoginApi;
+  protected View.OnClickListener onBackListeger = new RegisterNewBaseActivity.5(this);
+  public String phoneNum;
   
-  public RegisterNewBaseActivity()
+  public void closeAllActs(boolean paramBoolean)
   {
-    this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new aetv(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aetx(this);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void a(int paramInt)
-  {
-    ((ProgressBar)findViewById(2131376495)).setProgress(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    new bisy(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return;
-    }
-    String str = paramString;
-    if (paramString.endsWith("\n")) {
-      str = paramString.substring(0, paramString.length() - 1);
-    }
-    new bisy(this).a(str, getTitleBarHeight(), 0, paramInt);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new RegisterNewBaseActivity.2(this, paramString1, paramString2));
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    ProgressBar localProgressBar = (ProgressBar)findViewById(2131376495);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
-    {
-      localProgressBar.setVisibility(i);
-      return;
-    }
-  }
-  
-  protected void b()
-  {
-    TextView localTextView = (TextView)findViewById(2131364161);
-    localTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (AppSetting.c) {
-      localTextView.setContentDescription(getResources().getString(2131690676));
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new RegisterNewBaseActivity.4(this, paramInt));
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    TextView localTextView = (TextView)findViewById(2131380330);
-    localTextView.setText(paramString);
-    if (AppSetting.c) {
-      localTextView.setContentDescription(paramString);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    MqqHandler localMqqHandler = this.app.getHandler(RegisterSendUpSms.class);
+    MqqHandler localMqqHandler = LoginUtils.a(getAppRuntime(), RegisterSendUpSms.class);
     if (localMqqHandler != null) {
       localMqqHandler.sendEmptyMessage(107);
     }
-    localMqqHandler = this.app.getHandler(RegisterVerifyCodeActivity.class);
+    localMqqHandler = LoginUtils.a(getAppRuntime(), RegisterVerifyCodeActivity.class);
     if (localMqqHandler != null) {
       localMqqHandler.sendEmptyMessage(106);
     }
-    localMqqHandler = this.app.getHandler(RegisterPhoneNumActivity.class);
+    localMqqHandler = LoginUtils.a(getAppRuntime(), RegisterPhoneNumActivity.class);
     if (localMqqHandler != null) {
       localMqqHandler.sendEmptyMessage(103);
     }
     if (paramBoolean)
     {
-      localMqqHandler = this.app.getHandler(RegisterPersonalInfoActivity.class);
+      localMqqHandler = LoginUtils.a(getAppRuntime(), RegisterPersonalInfoActivity.class);
       if (localMqqHandler != null) {
         localMqqHandler.sendEmptyMessage(109);
       }
-      localMqqHandler = this.app.getHandler(RegisterByNicknameAndPwdActivity.class);
+      localMqqHandler = LoginUtils.a(getAppRuntime(), RegisterByNicknameAndPwdActivity.class);
       if (localMqqHandler != null) {
         localMqqHandler.sendEmptyMessage(109);
       }
     }
   }
   
-  public void c()
+  public void closeDialog()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new RegisterNewBaseActivity.3(this));
+    this.handler.post(new RegisterNewBaseActivity.3(this));
   }
   
-  protected void c(int paramInt)
+  public void createWaitingDialog(int paramInt)
   {
-    TextView localTextView = (TextView)findViewById(2131380330);
-    String str = getResources().getString(paramInt);
-    localTextView.setText(str);
-    if (AppSetting.c) {
-      localTextView.setContentDescription(str);
+    try
+    {
+      this.handler.post(new RegisterNewBaseActivity.4(this, paramInt));
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("RegisterNewBaseActivity", 1, "createWaitingDialog exception", localException);
+    }
+  }
+  
+  public void dimissDialog()
+  {
+    if ((this.mDialog != null) && (this.mDialog.isShowing()))
+    {
+      this.mDialog.dismiss();
+      this.mDialog = null;
     }
   }
   
@@ -185,8 +123,31 @@ public class RegisterNewBaseActivity
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
     getWindow().addFlags(1024);
-    this.jdField_a_of_type_Int = getIntent().getIntExtra("key_register_from", -1);
+    this.mFrom = getIntent().getIntExtra("key_register_from", -1);
+    this.mLoginApi = ((ILoginApi)QRoute.api(ILoginApi.class));
     return true;
+  }
+  
+  public String getEditPhoneNum()
+  {
+    return this.phoneNum;
+  }
+  
+  public void notifyToast(int paramInt1, int paramInt2)
+  {
+    new QQToastNotifier(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+  }
+  
+  public void notifyToast(String paramString, int paramInt)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return;
+    }
+    String str = paramString;
+    if (paramString.endsWith("\n")) {
+      str = paramString.substring(0, paramString.length() - 1);
+    }
+    new QQToastNotifier(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public boolean onBackEvent()
@@ -214,10 +175,93 @@ public class RegisterNewBaseActivity
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
+  
+  protected void setBackListener()
+  {
+    TextView localTextView = (TextView)findViewById(2131364268);
+    localTextView.setOnClickListener(this.onBackListeger);
+    if (AppSetting.d) {
+      localTextView.setContentDescription(getResources().getString(2131690778));
+    }
+  }
+  
+  protected void setBarProgress(int paramInt)
+  {
+    ((ProgressBar)findViewById(2131376888)).setProgress(paramInt);
+  }
+  
+  protected void setProgressBarVisible(boolean paramBoolean)
+  {
+    ProgressBar localProgressBar = (ProgressBar)findViewById(2131376888);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
+    {
+      localProgressBar.setVisibility(i);
+      return;
+    }
+  }
+  
+  protected void setTitleText(int paramInt)
+  {
+    TextView localTextView = (TextView)findViewById(2131380773);
+    String str = getResources().getString(paramInt);
+    localTextView.setText(str);
+    if (AppSetting.d) {
+      localTextView.setContentDescription(str);
+    }
+  }
+  
+  protected void setTitleText(String paramString)
+  {
+    TextView localTextView = (TextView)findViewById(2131380773);
+    localTextView.setText(paramString);
+    if (AppSetting.d) {
+      localTextView.setContentDescription(paramString);
+    }
+  }
+  
+  public void showDialog(String paramString1, String paramString2)
+  {
+    try
+    {
+      this.handler.post(new RegisterNewBaseActivity.2(this, paramString1, paramString2));
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  public void showQQCustomDialog(String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    Object localObject = paramOnClickListener;
+    if (paramOnClickListener == null) {
+      localObject = this;
+    }
+    dimissDialog();
+    this.mDialog = DialogUtil.a(getActivity(), 230).setTitle(paramString1).setMessage(paramString2);
+    this.mDialog.setPositiveButton(2131718523, (DialogInterface.OnClickListener)localObject);
+    this.mDialog.setCancelable(false);
+    this.mDialog.show();
+  }
+  
+  public void showQQCustomDialogOneBtn(String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    Object localObject = paramOnClickListener;
+    if (paramOnClickListener == null) {
+      localObject = this;
+    }
+    dimissDialog();
+    this.mDialog = DialogUtil.a(getActivity(), 230).setTitle(paramString1).setMessage(paramString2);
+    this.mDialog.setPositiveButton(paramString3, (DialogInterface.OnClickListener)localObject);
+    this.mDialog.setCancelable(false);
+    this.mDialog.show();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterNewBaseActivity
  * JD-Core Version:    0.7.0.1
  */

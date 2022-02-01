@@ -12,9 +12,9 @@ class ApolloWebViewFragment$2
   
   public void run()
   {
-    if ((this.this$0.mUIStyleHandler != null) && (this.this$0.mUIStyleHandler.mHostFragment != null))
+    if ((this.this$0.mUIStyleHandler != null) && (this.this$0.mUIStyleHandler.a != null))
     {
-      this.this$0.mUIStyleHandler.mHostFragment.hideVirtualNavBar();
+      this.this$0.mUIStyleHandler.a.hideVirtualNavBar();
       Object localObject = this.this$0.getHostActivity();
       if (localObject != null)
       {
@@ -28,7 +28,7 @@ class ApolloWebViewFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloWebViewFragment.2
  * JD-Core Version:    0.7.0.1
  */

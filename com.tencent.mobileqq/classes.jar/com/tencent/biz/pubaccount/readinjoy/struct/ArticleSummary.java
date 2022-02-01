@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import com.tencent.mobileqq.persistence.Entity;
-import rsp;
 
 public class ArticleSummary
   extends Entity
@@ -31,7 +30,7 @@ public class ArticleSummary
   public long time;
   public String title;
   public int videoCommentCount;
-  public rsp videoData;
+  public VideoData videoData;
   public int videoPlayCount;
   public String videoReportInfo;
   public String videoSubscriptColor;
@@ -39,7 +38,7 @@ public class ArticleSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ArticleSummary
  * JD-Core Version:    0.7.0.1
  */

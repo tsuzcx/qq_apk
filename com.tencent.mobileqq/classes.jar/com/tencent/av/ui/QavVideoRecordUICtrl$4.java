@@ -1,20 +1,18 @@
 package com.tencent.av.ui;
 
-import mji;
-
-public class QavVideoRecordUICtrl$4
+class QavVideoRecordUICtrl$4
   implements Runnable
 {
-  public QavVideoRecordUICtrl$4(mji parammji) {}
+  QavVideoRecordUICtrl$4(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
   public void run()
   {
-    mji.a(this.this$0, 1);
+    QavVideoRecordUICtrl.a(this.this$0, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.QavVideoRecordUICtrl.4
  * JD-Core Version:    0.7.0.1
  */

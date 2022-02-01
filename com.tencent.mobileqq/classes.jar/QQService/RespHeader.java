@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class RespHeader
   extends JceStruct
 {
-  public int iReplyCode;
-  public int iSeq;
-  public long lMID;
-  public short shVersion;
+  public int iReplyCode = 0;
+  public int iSeq = 0;
+  public long lMID = 0L;
+  public short shVersion = 0;
   public String strResult = "";
   
   public RespHeader() {}

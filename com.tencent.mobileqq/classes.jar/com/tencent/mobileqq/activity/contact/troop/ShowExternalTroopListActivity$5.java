@@ -1,0 +1,49 @@
+package com.tencent.mobileqq.activity.contact.troop;
+
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.net.URLEncoder;
+import mqq.app.AppRuntime;
+
+class ShowExternalTroopListActivity$5
+  implements View.OnClickListener
+{
+  ShowExternalTroopListActivity$5(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!NetworkUtil.g(this.a.jdField_a_of_type_AndroidAppActivity))
+    {
+      QQToast.a(this.a, 1, this.a.getString(2131692186), 0).b(this.a.getTitleBarHeight());
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    String str1 = ((TextView)paramView).getText().toString();
+    Object localObject = new Intent(this.a.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", "https://qqweb.qq.com/m/relativegroup/index.html?_bid=165&_wv=4194304&source=qun_tag&keyword=" + URLEncoder.encode(str1));
+    ((Intent)localObject).putExtra("hide_operation_bar", true);
+    ((Intent)localObject).putExtra("hide_more_button", true);
+    this.a.startActivity((Intent)localObject);
+    localObject = this.a.app;
+    String str2 = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_Boolean) {}
+    for (str1 = "0";; str1 = "1")
+    {
+      ReportController.b((AppRuntime)localObject, "P_CliOper", "Grp_join", "", "person_data", "Clk_quntag", 0, 0, str2, str1, "", "");
+      break;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.5
+ * JD-Core Version:    0.7.0.1
+ */

@@ -21,7 +21,7 @@ class AuthorityAccountView$5$1
     try
     {
       QLog.d("AuthorityAccountView", 1, "-->updateAccountFace use default uin");
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.a.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.this$0.getResources(), 2130840662));
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.a.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.this$0.getResources(), 2130840792));
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -32,7 +32,7 @@ class AuthorityAccountView$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityAccountView.5.1
  * JD-Core Version:    0.7.0.1
  */

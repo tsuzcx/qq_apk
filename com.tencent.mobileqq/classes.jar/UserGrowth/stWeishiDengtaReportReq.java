@@ -11,7 +11,7 @@ public final class stWeishiDengtaReportReq
 {
   static Map<String, String> cache_params = new HashMap();
   public String eventName = "";
-  public Map<String, String> params;
+  public Map<String, String> params = null;
   
   static
   {

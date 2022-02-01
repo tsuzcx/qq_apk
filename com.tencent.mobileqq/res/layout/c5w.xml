@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="12.0sp" android:textColor="@color/ab3" android:id="@id/kj1" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:background="@color/ajr" android:clickable="true" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:background="@color/al3" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:id="@id/oea" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="10.0dip" android:text="已选中10个" />
+        <android.support.v7.widget.RecyclerView android:id="@id/o2a" android:background="@color/al3" android:scrollbars="none" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:overScrollMode="never" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center|left|top" android:orientation="vertical" android:id="@id/nex" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="80.0dip" android:layout_marginTop="-10.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:background="@drawable/fo8" android:layout_width="166.0dip" android:layout_height="36.0dip" android:text="长按拖拽可调整排序" />
+        <View android:background="@drawable/fo7" android:layout_width="11.0dip" android:layout_height="6.0dip" android:layout_marginLeft="15.0dip" />
+    </LinearLayout>
+</FrameLayout>

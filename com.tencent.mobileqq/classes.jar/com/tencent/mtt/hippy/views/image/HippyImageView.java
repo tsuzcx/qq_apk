@@ -486,6 +486,7 @@ public class HippyImageView
       if (paramHippyMap.containsKey("imageType")) {
         this.mIniProps.pushString("imageType", paramHippyMap.getString("imageType"));
       }
+      this.mIniProps.pushInt("repeatCount", paramHippyMap.getInt("repeatCount"));
       this.mIniProps.pushBoolean("isGif", paramHippyMap.getBoolean("isGif"));
       this.mIniProps.pushInt("width", k);
       this.mIniProps.pushInt("height", m);
@@ -526,46 +527,42 @@ public class HippyImageView
   
   public boolean shouldFetchImage()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (this.mUrlFetchState == 1) {
-      bool1 = false;
-    }
-    label64:
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (this.mUrlFetchState == 0);
-      boolean bool3 = this.mIniProps.getBoolean("isGif");
-      bool1 = bool3;
-      if (!bool3)
-      {
-        if ((TextUtils.isEmpty(this.mImageType)) || (!this.mImageType.equals("gif"))) {
-          break;
-        }
-        bool1 = true;
-      }
-      if (!bool1) {
-        break label84;
-      }
-      bool1 = bool2;
-    } while (this.mGifMovie == null);
-    label84:
+    if (this.mUrlFetchState == 1) {}
+    label112:
+    label115:
+    label117:
     Bitmap localBitmap;
     do
     {
-      return false;
-      bool1 = false;
-      break label64;
-      localBitmap = getBitmap();
-      bool1 = bool2;
-      if (localBitmap == null) {
-        break;
+      for (;;)
+      {
+        return false;
+        if (this.mUrlFetchState == 0) {
+          return true;
+        }
+        boolean bool2 = this.mIniProps.getBoolean("isGif");
+        boolean bool1 = bool2;
+        if (!bool2) {
+          if ((TextUtils.isEmpty(this.mImageType)) || (!this.mImageType.equals("gif"))) {
+            break label112;
+          }
+        }
+        for (bool1 = true;; bool1 = false)
+        {
+          if ((!TextUtils.isEmpty(this.mImageType)) && (this.mImageType.equals("apng")) && (this.mContentDrawable != null) && (!(this.mContentDrawable instanceof ContentDrawable))) {
+            break label115;
+          }
+          if (!bool1) {
+            break label117;
+          }
+          if (this.mGifMovie != null) {
+            break;
+          }
+          return true;
+        }
       }
-    } while (!localBitmap.isRecycled());
+      localBitmap = getBitmap();
+    } while ((localBitmap != null) && (!localBitmap.isRecycled()));
     return true;
   }
   
@@ -590,7 +587,7 @@ public class HippyImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.image.HippyImageView
  * JD-Core Version:    0.7.0.1
  */

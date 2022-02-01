@@ -11,6 +11,7 @@ import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import java.util.HashMap;
+import java.util.List;
 
 public abstract class ProxyWebViewClientExtension
   implements IX5WebViewClientExtension
@@ -54,6 +55,19 @@ public abstract class ProxyWebViewClientExtension
     if (this.mWebViewClientExt != null) {
       this.mWebViewClientExt.documentAvailableInMainFrame();
     }
+  }
+  
+  public int getHostByName(String paramString, List<String> paramList)
+  {
+    int i = 0;
+    if (this.mWebViewClientExt != null) {}
+    try
+    {
+      i = this.mWebViewClientExt.getHostByName(paramString, paramList);
+      return i;
+    }
+    catch (NoSuchMethodError paramString) {}
+    return 0;
   }
   
   public void handlePluginTag(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
@@ -430,7 +444,7 @@ public abstract class ProxyWebViewClientExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension
  * JD-Core Version:    0.7.0.1
  */

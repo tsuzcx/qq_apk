@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class DataReturnFlag
   extends JceStruct
 {
-  public int has_priv_base;
+  public int has_priv_base = 0;
   public String trace_info = "";
   
   public DataReturnFlag() {}

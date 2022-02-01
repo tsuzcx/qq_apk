@@ -645,6 +645,10 @@ public final class WebAudioPlugin
     for (boolean bool = localWebAudioManager.loadWebAudioSo(paramString);; bool = false)
     {
       this.hasSoLoaded = bool;
+      paramString = this.logger;
+      if (paramString != null) {
+        LogDelegate.DefaultImpls.printLog$default(paramString, LogDelegate.Level.INFO, "[audio]WebAudioPlugin", "setWebAudioSoPath hasSoLoaded=" + this.hasSoLoaded, null, 8, null);
+      }
       return;
     }
   }

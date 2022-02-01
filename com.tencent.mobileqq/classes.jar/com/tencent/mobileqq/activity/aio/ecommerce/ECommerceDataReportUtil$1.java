@@ -1,28 +1,26 @@
 package com.tencent.mobileqq.activity.aio.ecommerce;
 
-import agfa;
-import agfb;
-import aqxe;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.util.WeakReference;
 
-public final class ECommerceDataReportUtil$1
+final class ECommerceDataReportUtil$1
   implements Runnable
 {
-  public ECommerceDataReportUtil$1(QQAppInterface paramQQAppInterface, WeakReference paramWeakReference, String paramString1, int paramInt, String paramString2) {}
+  ECommerceDataReportUtil$1(QQAppInterface paramQQAppInterface, WeakReference paramWeakReference, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
     try
     {
-      agfa localagfa = (agfa)aqxe.a().a(592);
-      if ((localagfa != null) && (localagfa.a != null) && (!localagfa.a.isEmpty()))
+      ECommerceDataReportConfigProcessor.Config localConfig = (ECommerceDataReportConfigProcessor.Config)QConfigManager.a().a(592);
+      if ((localConfig != null) && (localConfig.a != null) && (!localConfig.a.isEmpty()))
       {
-        agfb.a(localagfa.a);
-        agfb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        agfb.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+        ECommerceDataReportUtil.a(localConfig.a);
+        ECommerceDataReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        ECommerceDataReportUtil.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
       }
       return;
     }
@@ -34,7 +32,7 @@ public final class ECommerceDataReportUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.activity;
 
-import abty;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -21,39 +20,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout.LayoutParams;
-import anvx;
-import azlo;
-import bdla;
-import besj;
-import bezd;
-import beze;
-import bezf;
-import bezg;
-import bezh;
-import bezi;
-import bezj;
-import bezk;
-import bgip;
-import bgke;
-import bhdj;
-import bhdz;
-import bhfn;
-import bjmu;
-import bjmy;
-import bmhv;
 import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.devicelib.DeviceLib;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.emoticonview.EmoticonCallback;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import com.tencent.mobileqq.pic.compress.Utils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tribe.VideoInfo;
 import com.tencent.mobileqq.troop.data.AudioInfo;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
 import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.downloadnew.DownloadApi;
+import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -64,13 +56,15 @@ import org.json.JSONObject;
 public class TroopBarPublishUtils
 {
   public static Editable.Factory a;
-  private static bezk a;
+  private static TroopBarPublishUtils.UserInvokeAction a;
   public static String a;
   public static boolean a;
   
   static
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new bezg();
+    jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_AndroidTextEditable$Factory = new TroopBarPublishUtils.4();
   }
   
   public static int a(String paramString1, String paramString2)
@@ -132,13 +126,13 @@ public class TroopBarPublishUtils
     }
     Object localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inScaled = false;
-    paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130843297, (BitmapFactory.Options)localObject);
+    paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130843462, (BitmapFactory.Options)localObject);
     int i;
     int j;
     int k;
     if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
-      jdField_a_of_type_JavaLangString = anvx.a(2131714614);
+      jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715109);
       if (jdField_a_of_type_JavaLangString.length() > 12) {
         jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaLangString.substring(0, 11) + "...";
       }
@@ -168,41 +162,41 @@ public class TroopBarPublishUtils
       localCanvas.drawText(jdField_a_of_type_JavaLangString, 0.0F, 0.0F, (Paint)localObject);
       localCanvas.restore();
       return paramBitmap;
-      if (jdField_a_of_type_JavaLangString.endsWith(anvx.a(2131714609))) {
+      if (jdField_a_of_type_JavaLangString.endsWith(HardCodeUtil.a(2131715104))) {
         break;
       }
-      jdField_a_of_type_JavaLangString += anvx.a(2131714606);
+      jdField_a_of_type_JavaLangString += HardCodeUtil.a(2131715101);
       break;
       label385:
       paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
     }
   }
   
-  public static Uri a(BaseActivity paramBaseActivity, bezj parambezj)
+  protected static Uri a(BaseActivity paramBaseActivity, TroopBarPublishUtils.IGrantCameraCallback paramIGrantCameraCallback)
   {
     if (paramBaseActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
     {
-      paramBaseActivity.requestPermissions(new bezd(paramBaseActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+      paramBaseActivity.requestPermissions(new TroopBarPublishUtils.1(paramBaseActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
       return null;
     }
     if ((Build.VERSION.SDK_INT >= 23) && (paramBaseActivity.checkSelfPermission("android.permission.CAMERA") != 0))
     {
-      paramBaseActivity.requestPermissions(new beze(parambezj, paramBaseActivity), 1, new String[] { "android.permission.CAMERA" });
+      paramBaseActivity.requestPermissions(new TroopBarPublishUtils.2(paramIGrantCameraCallback, paramBaseActivity), 1, new String[] { "android.permission.CAMERA" });
       return null;
     }
-    return bgip.a(paramBaseActivity, AppConstants.SDCARD_IMG_SAVE, 1001);
+    return TroopBarUtils.a(paramBaseActivity, AppConstants.SDCARD_IMG_SAVE, 1001);
   }
   
   public static ViewGroup a(BaseActivity paramBaseActivity, ViewGroup paramViewGroup, EditText paramEditText, EmoticonCallback paramEmoticonCallback)
   {
     paramEditText.setEditableFactory(jdField_a_of_type_AndroidTextEditable$Factory);
-    abty.a(paramBaseActivity, paramEditText);
-    paramEditText = (EmoticonMainPanel)View.inflate(paramBaseActivity, 2131559158, null);
+    DeviceLib.a(paramBaseActivity, paramEditText);
+    paramEditText = (EmoticonMainPanel)View.inflate(paramBaseActivity, 2131559200, null);
     paramEditText.setCallBack(paramEmoticonCallback);
     paramEditText.onlySysAndEmoji = true;
     paramEditText.init(paramBaseActivity.app, 1008, paramBaseActivity, paramBaseActivity.getTitleBarHeight(), null, null);
     paramEditText.hideAllTabs();
-    paramViewGroup.addView(paramEditText, new RelativeLayout.LayoutParams(-1, (int)bhdz.a(paramBaseActivity, 250.0F)));
+    paramViewGroup.addView(paramEditText, new RelativeLayout.LayoutParams(-1, (int)DisplayUtils.a(paramBaseActivity, 250.0F)));
     paramEditText.setVisibility(8);
     return paramEditText;
   }
@@ -211,11 +205,11 @@ public class TroopBarPublishUtils
   public static SystemAndEmojiEmoticonPanel a(Context paramContext, ViewGroup paramViewGroup, EditText paramEditText, EmoticonCallback paramEmoticonCallback)
   {
     paramEditText.setEditableFactory(jdField_a_of_type_AndroidTextEditable$Factory);
-    abty.a(paramContext, paramEditText);
+    DeviceLib.a(paramContext, paramEditText);
     paramEditText = new SystemAndEmojiEmoticonPanel(paramContext, paramEmoticonCallback);
-    paramEditText.setBackgroundResource(2130838048);
-    paramEmoticonCallback = new RelativeLayout.LayoutParams(-1, (int)bhdz.a(paramContext, 196.0F));
-    int i = (int)bhdz.a(paramContext, 20.0F);
+    paramEditText.setBackgroundResource(2130838120);
+    paramEmoticonCallback = new RelativeLayout.LayoutParams(-1, (int)DisplayUtils.a(paramContext, 196.0F));
+    int i = (int)DisplayUtils.a(paramContext, 20.0F);
     paramEditText.setPadding(0, i, 0, i);
     paramViewGroup.addView(paramEditText, paramEmoticonCallback);
     paramEditText.setVisibility(8);
@@ -227,7 +221,7 @@ public class TroopBarPublishUtils
     return a(paramString, paramArrayList, paramAudioInfo, null);
   }
   
-  public static String a(String paramString, ArrayList<String> paramArrayList, AudioInfo paramAudioInfo, besj parambesj)
+  public static String a(String paramString, ArrayList<String> paramArrayList, AudioInfo paramAudioInfo, VideoInfo paramVideoInfo)
   {
     JSONObject localJSONObject = new JSONObject();
     String str = paramString;
@@ -247,12 +241,12 @@ public class TroopBarPublishUtils
         while (j < paramString.size())
         {
           str = (String)paramString.get(j);
-          TroopBarPublishActivity.Pic_list localPic_list = (TroopBarPublishActivity.Pic_list)bgip.a.get(str);
+          TroopBarPublishActivity.Pic_list localPic_list = (TroopBarPublishActivity.Pic_list)TroopBarUtils.a.get(str);
           if (localPic_list == null) {
             break label283;
           }
           paramArrayList.put(localPic_list.getJsonObject());
-          if (!azlo.a(str)) {
+          if (!Utils.a(str)) {
             break label283;
           }
           i += 1;
@@ -271,7 +265,7 @@ public class TroopBarPublishUtils
         {
           paramString.put(new JSONObject(paramAudioInfo.getJsonText()));
           localJSONObject.put("audio_list", paramString);
-          if (parambesj != null) {
+          if (paramVideoInfo != null) {
             paramString = new JSONArray();
           }
         }
@@ -281,7 +275,7 @@ public class TroopBarPublishUtils
           {
             do
             {
-              paramString.put(parambesj.a());
+              paramString.put(paramVideoInfo.a());
               localJSONObject.put("ugc_video_list", paramString);
               return localJSONObject.toString();
               paramString = paramString;
@@ -338,7 +332,7 @@ public class TroopBarPublishUtils
       }
       for (;;)
       {
-        bdla.b(null, "dc00899", "Grp_tribe", "", paramActivity, paramBundle, paramInt, 0, str, "", "", "");
+        ReportController.b(null, "dc00899", "Grp_tribe", "", paramActivity, paramBundle, paramInt, 0, str, "", "", "");
         return;
         if ("0".endsWith(str)) {}
         for (paramActivity = "pub_page_new";; paramActivity = "reply_page_new") {
@@ -372,7 +366,7 @@ public class TroopBarPublishUtils
     }
     catch (Exception localException)
     {
-      QQToast.a(paramActivity, anvx.a(2131714603), 0).b(50);
+      QQToast.a(paramActivity, HardCodeUtil.a(2131715098), 0).b(50);
     }
   }
   
@@ -388,8 +382,8 @@ public class TroopBarPublishUtils
     if (paramBundle == null) {
       return;
     }
-    String str = bhfn.a(paramActivity, "com.tencent.tribe");
-    jdField_a_of_type_Bezk = new bezk(paramActivity, paramInt1, paramInt2, paramBundle);
+    String str = PackageUtil.a(paramActivity, "com.tencent.tribe");
+    jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$UserInvokeAction = new TroopBarPublishUtils.UserInvokeAction(paramActivity, paramInt1, paramInt2, paramBundle);
     if (!"0".equals(str))
     {
       if (("interestcircle".endsWith(paramBundle.getString("from"))) && (a(str, "1.5") < 0))
@@ -419,15 +413,15 @@ public class TroopBarPublishUtils
     }
     catch (Exception paramBundle)
     {
-      QQToast.a(paramActivity, anvx.a(2131714598), 0).b(50);
+      QQToast.a(paramActivity, HardCodeUtil.a(2131715093), 0).b(50);
     }
   }
   
-  public static void a(BaseActivity paramBaseActivity, ArrayList<String> paramArrayList, int paramInt)
+  protected static void a(BaseActivity paramBaseActivity, ArrayList<String> paramArrayList, int paramInt)
   {
     if (paramBaseActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
     {
-      paramBaseActivity.requestPermissions(new bezf(paramBaseActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+      paramBaseActivity.requestPermissions(new TroopBarPublishUtils.3(paramBaseActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -456,23 +450,23 @@ public class TroopBarPublishUtils
   
   public static void a(boolean paramBoolean)
   {
-    bmhv.a("sp_key_is_open_tribe_pic_watermark", Boolean.valueOf(paramBoolean));
+    ReadInJoyHelper.a("sp_key_is_open_tribe_pic_watermark", Boolean.valueOf(paramBoolean));
   }
   
   public static boolean a()
   {
-    return ((Boolean)bmhv.a("sp_key_is_open_tribe_pic_watermark", Boolean.valueOf(true))).booleanValue();
+    return ((Boolean)ReadInJoyHelper.a("sp_key_is_open_tribe_pic_watermark", Boolean.valueOf(true))).booleanValue();
   }
   
   protected static void b(Activity paramActivity)
   {
-    if (bgke.a(paramActivity) != 2)
+    if (TroopFileUtils.a(paramActivity) != 2)
     {
-      QQCustomDialog localQQCustomDialog = bhdj.a(paramActivity, 230);
-      localQQCustomDialog.setTitle(anvx.a(2131714602));
-      paramActivity = new bezi(paramActivity);
-      localQQCustomDialog.setNegativeButton(anvx.a(2131714612), paramActivity);
-      localQQCustomDialog.setPositiveButton(anvx.a(2131714608), paramActivity);
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
+      localQQCustomDialog.setTitle(HardCodeUtil.a(2131715097));
+      paramActivity = new TroopBarPublishUtils.6(paramActivity);
+      localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131715107), paramActivity);
+      localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131715103), paramActivity);
       localQQCustomDialog.show();
       return;
     }
@@ -481,7 +475,7 @@ public class TroopBarPublishUtils
   
   protected static void b(Activity paramActivity, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if ((paramInt1 != 3) && (paramInt1 != 4) && (jdField_a_of_type_Bezk.a().booleanValue()))
+    if ((paramInt1 != 3) && (paramInt1 != 4) && (jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$UserInvokeAction.a().booleanValue()))
     {
       a(paramInt1, paramActivity, paramBundle);
       return;
@@ -495,7 +489,7 @@ public class TroopBarPublishUtils
     switch (paramInt2)
     {
     default: 
-      str2 = anvx.a(2131714594);
+      str2 = HardCodeUtil.a(2131715089);
       switch (paramInt1)
       {
       default: 
@@ -523,23 +517,23 @@ public class TroopBarPublishUtils
     }
     for (;;)
     {
-      bdla.b(null, "dc00899", "Grp_tribe", "", (String)localObject, str3, paramInt2, 0, str4, "", "", "");
-      localObject = bhdj.a(paramActivity, 230);
-      ((QQCustomDialog)localObject).setTitle(paramActivity.getString(2131695963, new Object[] { str1, str2 }));
-      paramActivity = new bezh(paramBundle, paramInt1, paramInt1, paramActivity);
-      ((QQCustomDialog)localObject).setNegativeButton(anvx.a(2131714583), paramActivity);
-      ((QQCustomDialog)localObject).setPositiveButton(anvx.a(2131714604) + str1, paramActivity);
+      ReportController.b(null, "dc00899", "Grp_tribe", "", (String)localObject, str3, paramInt2, 0, str4, "", "", "");
+      localObject = DialogUtil.a(paramActivity, 230);
+      ((QQCustomDialog)localObject).setTitle(paramActivity.getString(2131696211, new Object[] { str1, str2 }));
+      paramActivity = new TroopBarPublishUtils.5(paramBundle, paramInt1, paramInt1, paramActivity);
+      ((QQCustomDialog)localObject).setNegativeButton(HardCodeUtil.a(2131715078), paramActivity);
+      ((QQCustomDialog)localObject).setPositiveButton(HardCodeUtil.a(2131715099) + str1, paramActivity);
       ((QQCustomDialog)localObject).show();
       return;
-      str2 = anvx.a(2131714577);
+      str2 = HardCodeUtil.a(2131715072);
       break;
-      str2 = anvx.a(2131714580);
+      str2 = HardCodeUtil.a(2131715075);
       break;
-      str1 = anvx.a(2131714607);
+      str1 = HardCodeUtil.a(2131715102);
       break label97;
-      str1 = anvx.a(2131714590);
+      str1 = HardCodeUtil.a(2131715085);
       break label97;
-      str1 = anvx.a(2131714586);
+      str1 = HardCodeUtil.a(2131715081);
       break label97;
       label340:
       if ("0".endsWith(str4)) {}
@@ -572,11 +566,11 @@ public class TroopBarPublishUtils
     }
     catch (Exception paramBundle)
     {
-      QQToast.a(paramActivity, anvx.a(2131714595), 0).b(50);
+      QQToast.a(paramActivity, HardCodeUtil.a(2131715090), 0).b(50);
     }
   }
   
-  public static void c(Activity paramActivity)
+  protected static void c(Activity paramActivity)
   {
     try
     {
@@ -584,20 +578,20 @@ public class TroopBarPublishUtils
       ((Bundle)localObject1).putString("REFERER", " https://buluo.qq.com/");
       ((Bundle)localObject1).putString("HOST", " buluo.qq.com");
       Object localObject2 = new JSONObject(HttpUtil.openUrl(paramActivity, "https://buluo.qq.com/cgi-bin/sbar/other/downloadappurl", "POST", null, (Bundle)localObject1));
-      localObject1 = paramActivity.getString(2131695962);
+      localObject1 = paramActivity.getString(2131696210);
       localObject2 = ((JSONObject)localObject2).getJSONObject("result").getJSONObject("android").getString("app_url");
-      String str1 = paramActivity.getString(2131695964);
-      String str2 = paramActivity.getString(2131695961);
+      String str1 = paramActivity.getString(2131696212);
+      String str2 = paramActivity.getString(2131696209);
       Bundle localBundle = new Bundle();
-      localBundle.putString(bjmy.b, (String)localObject1);
-      localBundle.putString(bjmy.j, (String)localObject2);
-      localBundle.putInt(bjmy.k, 2);
-      localBundle.putString(bjmy.l, str2);
-      localBundle.putString(bjmy.f, str1);
-      localBundle.putBoolean(bjmy.r, false);
-      localBundle.putBoolean(bjmy.x, false);
-      localBundle.putString(bjmy.m, "_" + (String)localObject1);
-      bjmu.a(paramActivity, localBundle, "biz_src_feeds_buluo", null, 0);
+      localBundle.putString(DownloadConstants.b, (String)localObject1);
+      localBundle.putString(DownloadConstants.j, (String)localObject2);
+      localBundle.putInt(DownloadConstants.k, 2);
+      localBundle.putString(DownloadConstants.l, str2);
+      localBundle.putString(DownloadConstants.f, str1);
+      localBundle.putBoolean(DownloadConstants.r, false);
+      localBundle.putBoolean(DownloadConstants.x, false);
+      localBundle.putString(DownloadConstants.m, "_" + (String)localObject1);
+      DownloadApi.a(paramActivity, localBundle, "biz_src_feeds_buluo", null, 0);
       return;
     }
     catch (Exception localException)
@@ -606,7 +600,7 @@ public class TroopBarPublishUtils
       if (QLog.isColorLevel()) {
         QLog.d("TroopBarPublishUtils", 2, "====tribe app download====" + localException.toString());
       }
-      QQToast.a(paramActivity, anvx.a(2131714599), 0).b(50);
+      QQToast.a(paramActivity, HardCodeUtil.a(2131715094), 0).b(50);
     }
   }
 }

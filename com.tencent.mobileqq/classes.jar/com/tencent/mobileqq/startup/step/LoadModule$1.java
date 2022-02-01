@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
+import com.tencent.mobileqq.imcore.IMCoreProxyRegister;
+
 class LoadModule$1
   implements Runnable
 {

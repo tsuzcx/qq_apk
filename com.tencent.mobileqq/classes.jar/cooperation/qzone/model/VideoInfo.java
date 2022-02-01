@@ -31,20 +31,20 @@ public class VideoInfo
   public String desc;
   public int fileType;
   public VideoUrl h265NormalUrl;
-  public boolean hasVideoPlayed;
+  public boolean hasVideoPlayed = false;
   public int height;
   public VideoUrl highBrUrl;
   public boolean isAutoPlay;
   public boolean isCircle;
-  public boolean isFakeFeed;
-  public boolean isFeedComplete;
+  public boolean isFakeFeed = false;
+  public boolean isFeedComplete = false;
   public boolean isFeedFirst = true;
-  public boolean isFeedFirstComplete;
+  public boolean isFeedFirstComplete = false;
   public boolean isFloatFirst = true;
   public int isGetRecommAfterPlay;
-  public boolean isTranscoding;
-  public boolean isUploading;
-  public long lastUseTime;
+  public boolean isTranscoding = false;
+  public boolean isUploading = false;
+  public long lastUseTime = 0L;
   public String lloc;
   public VideoUrl lowBrUrl;
   public String nativeLikeUrl;
@@ -321,7 +321,7 @@ public class VideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

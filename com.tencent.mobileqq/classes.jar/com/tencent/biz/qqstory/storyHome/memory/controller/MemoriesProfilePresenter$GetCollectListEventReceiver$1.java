@@ -1,23 +1,21 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
-import wjs;
-import wke;
-import xzg;
-import xzi;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
 
-public class MemoriesProfilePresenter$GetCollectListEventReceiver$1
+class MemoriesProfilePresenter$GetCollectListEventReceiver$1
   implements Runnable
 {
-  public MemoriesProfilePresenter$GetCollectListEventReceiver$1(xzi paramxzi, xzg paramxzg) {}
+  MemoriesProfilePresenter$GetCollectListEventReceiver$1(MemoriesProfilePresenter.GetCollectListEventReceiver paramGetCollectListEventReceiver, MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
   
   public void run()
   {
-    ((wke)wjs.a(2)).a(this.a.a);
+    ((UserManager)SuperManager.a(2)).a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver.1
  * JD-Core Version:    0.7.0.1
  */

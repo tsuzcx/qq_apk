@@ -18,8 +18,8 @@ public class SimpleProgressBar
   public int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  public int b;
-  private int e;
+  public int b = 0;
+  private int e = 0;
   private final int f = -1;
   private final int g = ScreenUtil.dip2px(3.0F);
   private int h = c;
@@ -95,7 +95,7 @@ public class SimpleProgressBar
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (super.isInEditMode()) {

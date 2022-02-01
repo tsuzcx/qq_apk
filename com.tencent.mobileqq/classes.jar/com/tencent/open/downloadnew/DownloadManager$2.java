@@ -1,21 +1,20 @@
 package com.tencent.open.downloadnew;
 
-import bizw;
-import bjko;
-import bjlo;
-import bjna;
-import bjop;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.open.downloadnew.common.DownloadDBHelper;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class DownloadManager$2
+class DownloadManager$2
   implements Runnable
 {
-  public DownloadManager$2(bjna parambjna) {}
+  DownloadManager$2(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    this.this$0.a = ((ConcurrentHashMap)bjop.a().a());
+    this.this$0.a = ((ConcurrentHashMap)DownloadDBHelper.a().a());
     try
     {
       DownloadInfo localDownloadInfo = this.this$0.b("com.tencent.mobileqq");
@@ -36,28 +35,28 @@ public class DownloadManager$2
         while (localTMAssistantDownloadTaskInfo1 == null)
         {
           this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-          bjop.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+          DownloadDBHelper.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
           return;
           localTMAssistantDownloadTaskInfo1 = this.this$0.a(localDownloadInfo.i);
           str = localDownloadInfo.l;
         }
-        if ((localTMAssistantDownloadTaskInfo1.mState == 4) && (bjlo.c(str) <= bizw.a().a()))
+        if ((localTMAssistantDownloadTaskInfo1.mState == 4) && (AppUtil.c(str) <= CommonDataAdapter.a().a()))
         {
           this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-          bjop.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+          DownloadDBHelper.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
           return;
         }
       }
     }
     catch (Exception localException)
     {
-      bjko.c("DownloadManager_", "speical clear>>>", localException);
+      LogUtility.c("DownloadManager_", "speical clear>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

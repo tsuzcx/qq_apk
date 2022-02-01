@@ -43,13 +43,13 @@ public class PlatoSoLoader
     //   29: invokestatic 68	cooperation/qzone/plato/PlatoSoLoader:getSoPath	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   32: astore_0
     //   33: aload_2
-    //   34: invokestatic 73	zeb:e	(Ljava/lang/String;)Z
+    //   34: invokestatic 73	com/tencent/biz/qqstory/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   37: ifeq +59 -> 96
     //   40: aload_3
-    //   41: invokestatic 73	zeb:e	(Ljava/lang/String;)Z
+    //   41: invokestatic 73	com/tencent/biz/qqstory/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   44: ifeq +52 -> 96
     //   47: aload_0
-    //   48: invokestatic 73	zeb:e	(Ljava/lang/String;)Z
+    //   48: invokestatic 73	com/tencent/biz/qqstory/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   51: istore_1
     //   52: iload_1
     //   53: ifeq +43 -> 96
@@ -114,7 +114,7 @@ public class PlatoSoLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.plato.PlatoSoLoader
  * JD-Core Version:    0.7.0.1
  */

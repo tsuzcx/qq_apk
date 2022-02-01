@@ -12,23 +12,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
+import com.tencent.biz.subscribe.part.ExtraInfoInterface;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import zsb;
-import zsc;
-import zsd;
 
 public abstract class BaseWidgetView<T>
   extends FrameLayout
+  implements ExtraInfoInterface
 {
   public int a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private SparseArray<Long> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private BaseWidgetView.IInteractor jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView$IInteractor;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   private T jdField_a_of_type_JavaLangObject;
   private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<Integer, zsd> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private zsc jdField_a_of_type_Zsc;
+  private HashMap<Integer, BaseWidgetView.ItemPreClickListener> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   protected int b;
   
   public BaseWidgetView(@NonNull Context paramContext)
@@ -51,28 +50,28 @@ public abstract class BaseWidgetView<T>
   {
     super(paramContext, paramAttributeSet, paramInt);
     a(paramContext, paramAttributeSet);
-    c(paramContext, c());
+    c(paramContext, b());
   }
   
-  private void a(View paramView, zsd paramzsd)
+  private void a(View paramView, BaseWidgetView.ItemPreClickListener paramItemPreClickListener)
   {
     if (paramView != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramView.getId()), paramzsd);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramView.getId()), paramItemPreClickListener);
     }
   }
   
   private void c(Context paramContext, int paramInt)
   {
     this.b = paramInt;
-    b(paramContext, paramInt);
+    a(paramContext, paramInt);
     if (a() != 0) {
       LayoutInflater.from(paramContext).inflate(a(), this, true);
     }
     a(paramContext, this);
     if (a() != null) {
-      a().setOnClickListener(new zsb(this));
+      a().setOnClickListener(new BaseWidgetView.1(this));
     }
-    a(paramContext, paramInt);
+    b(paramContext, paramInt);
   }
   
   protected abstract int a();
@@ -93,12 +92,12 @@ public abstract class BaseWidgetView<T>
     return this.jdField_a_of_type_AndroidOsHandler;
   }
   
-  public View.OnClickListener a()
+  protected View.OnClickListener a()
   {
     return null;
   }
   
-  public View a()
+  protected View a()
   {
     return null;
   }
@@ -119,10 +118,10 @@ public abstract class BaseWidgetView<T>
   
   protected abstract void a(Context paramContext, View paramView);
   
-  public void a(View paramView)
+  protected void a(View paramView)
   {
     if ((paramView != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId())) != null)) {
-      ((zsd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()))).a();
+      ((BaseWidgetView.ItemPreClickListener)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()))).a();
     }
   }
   
@@ -130,7 +129,7 @@ public abstract class BaseWidgetView<T>
   
   public void a(T paramT, int paramInt) {}
   
-  public boolean a(View paramView)
+  protected boolean a(View paramView)
   {
     if (paramView == null) {
       return false;
@@ -144,16 +143,16 @@ public abstract class BaseWidgetView<T>
     return true;
   }
   
-  protected void b(Context paramContext, int paramInt) {}
-  
-  public int c()
+  public int b()
   {
     return this.b;
   }
   
-  public void i() {}
+  public void b() {}
   
-  protected void onDetachedFromWindow()
+  protected void b(Context paramContext, int paramInt) {}
+  
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     a().removeCallbacksAndMessages(null);
@@ -186,19 +185,19 @@ public abstract class BaseWidgetView<T>
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
   }
   
-  public void setInteractor(zsc paramzsc)
+  public void setInteractor(BaseWidgetView.IInteractor paramIInteractor)
   {
-    this.jdField_a_of_type_Zsc = paramzsc;
+    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView$IInteractor = paramIInteractor;
   }
   
-  public void setPreClickListener(View paramView, zsd paramzsd)
+  public void setPreClickListener(View paramView, BaseWidgetView.ItemPreClickListener paramItemPreClickListener)
   {
-    a(paramView, paramzsd);
+    a(paramView, paramItemPreClickListener);
   }
   
-  public void setPreClickListener(zsd paramzsd)
+  public void setPreClickListener(BaseWidgetView.ItemPreClickListener paramItemPreClickListener)
   {
-    a(a(), paramzsd);
+    a(a(), paramItemPreClickListener);
   }
   
   public void setViewType(int paramInt)
@@ -208,7 +207,7 @@ public abstract class BaseWidgetView<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.baseUI.BaseWidgetView
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public class QqViewFlipper
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     try
     {
@@ -32,7 +32,7 @@ public class QqViewFlipper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QqViewFlipper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
 import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
 
 public class SharePicToWXUpHandler
@@ -12,7 +12,7 @@ public class SharePicToWXUpHandler
     paramTryUpImgReq.uint32_bu_type.set(96);
   }
   
-  protected void setSsoCmd(ProtoReqManager.ProtoReq paramProtoReq)
+  protected void setSsoCmd(ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     paramProtoReq.ssoCmd = "LongConn.SharePic2Wechat";
   }

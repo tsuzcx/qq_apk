@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import anri;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -17,7 +16,7 @@ class HotChatManager$2
   
   public void run()
   {
-    anri localanri = (anri)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    CardHandler localCardHandler = (CardHandler)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
     oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
     Oidb_0x66b.ReqBody localReqBody1 = new Oidb_0x66b.ReqBody();
     ArrayList localArrayList = new ArrayList();
@@ -25,12 +24,12 @@ class HotChatManager$2
     localReqBody.rpt_uint64_uins.set(localArrayList);
     localReqBody1.bytes_reqbody_5eb.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
     localReqBody1.uint32_req_pansocialinfo.set(1);
-    localanri.a(localReqBody1);
+    localCardHandler.a(localReqBody1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatManager.2
  * JD-Core Version:    0.7.0.1
  */

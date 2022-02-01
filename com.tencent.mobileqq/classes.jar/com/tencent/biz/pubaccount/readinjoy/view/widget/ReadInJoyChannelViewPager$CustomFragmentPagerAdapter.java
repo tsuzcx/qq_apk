@@ -10,25 +10,25 @@ import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoySrtUtils;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFragmentFactory;
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.CallHotwordChange;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pkd;
-import pyi;
-import tds;
 
 public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   extends PagerAdapter
 {
-  private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
+  private Fragment jdField_a_of_type_AndroidSupportV4AppFragment = null;
   private final FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
-  private FragmentTransaction jdField_a_of_type_AndroidSupportV4AppFragmentTransaction;
+  private FragmentTransaction jdField_a_of_type_AndroidSupportV4AppFragmentTransaction = null;
+  ReadinjoyTabFrame.CallHotwordChange jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$CallHotwordChange;
   private ArrayList<Fragment.SavedState> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  tds jdField_a_of_type_Tds;
   private ArrayList<Fragment> b = new ArrayList();
   
   public ReadInJoyChannelViewPager$CustomFragmentPagerAdapter(FragmentManager paramFragmentManager)
@@ -41,9 +41,9 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   {
     if ((paramFragment instanceof ReadInJoyBaseFragment))
     {
-      pkd.a().a();
+      ReadInJoySrtUtils.a().a();
       paramFragment = (ReadInJoyBaseFragment)paramFragment;
-      pkd.a().a(String.valueOf(paramFragment.a()));
+      ReadInJoySrtUtils.a().a(String.valueOf(paramFragment.a()));
     }
   }
   
@@ -59,11 +59,11 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
     {
       return localObject;
       localTabChannelCoverInfo = (TabChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localFragment = pyi.a().a(localTabChannelCoverInfo);
+      localFragment = ReadInJoyFragmentFactory.a().a(localTabChannelCoverInfo);
       localObject = localFragment;
     } while (!(localFragment instanceof ReadInJoyBaseFragment));
     ((ReadInJoyBaseFragment)localFragment).c(paramInt);
-    ((ReadInJoyBaseFragment)localFragment).a(this.jdField_a_of_type_Tds, localTabChannelCoverInfo.mChannelCoverId);
+    ((ReadInJoyBaseFragment)localFragment).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$CallHotwordChange, localTabChannelCoverInfo.mChannelCoverId);
     return localFragment;
   }
   
@@ -100,6 +100,11 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
     }
   }
   
+  public void a(ReadinjoyTabFrame.CallHotwordChange paramCallHotwordChange)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$CallHotwordChange = paramCallHotwordChange;
+  }
+  
   public void a(List<TabChannelCoverInfo> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0))
@@ -108,11 +113,6 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
       this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
     notifyDataSetChanged();
-  }
-  
-  public void a(tds paramtds)
-  {
-    this.jdField_a_of_type_Tds = paramtds;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -178,21 +178,26 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
+    Object localObject;
     if (this.b.size() > paramInt)
     {
-      localFragment = (Fragment)this.b.get(paramInt);
-      if (localFragment != null) {
-        return localFragment;
+      localObject = (Fragment)this.b.get(paramInt);
+      if (localObject == null) {}
+    }
+    Fragment localFragment;
+    do
+    {
+      return localObject;
+      if (this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction == null) {
+        this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
       }
-    }
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction == null) {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
-    }
-    Fragment localFragment = b(paramInt);
-    QLog.d("CustomFragmentPagerAdapter", 2, new Object[] { "instantiateItem position = ", Integer.valueOf(paramInt), ", f = ", localFragment });
-    while (this.b.size() <= paramInt) {
-      this.b.add(null);
-    }
+      localFragment = b(paramInt);
+      QLog.d("CustomFragmentPagerAdapter", 2, new Object[] { "instantiateItem position = ", Integer.valueOf(paramInt), ", f = ", localFragment });
+      while (this.b.size() <= paramInt) {
+        this.b.add(null);
+      }
+      localObject = localFragment;
+    } while (localFragment == null);
     localFragment.setMenuVisibility(false);
     localFragment.setUserVisibleHint(false);
     this.b.set(paramInt, localFragment);
@@ -313,7 +318,7 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager.CustomFragmentPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

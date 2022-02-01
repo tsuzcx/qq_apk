@@ -5,11 +5,13 @@ import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.g;
 import com.tencent.mobileqq.msf.core.a.g.a;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.ar;
-import com.tencent.mobileqq.msf.core.ar.f;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.ak;
+import com.tencent.mobileqq.msf.core.ak.f;
+import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.i;
 import com.tencent.mobileqq.msf.core.net.x;
+import com.tencent.mobileqq.msf.core.quicksend.b;
 import com.tencent.mobileqq.msf.core.quicksend.f;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -20,7 +22,7 @@ import java.util.HashMap;
 
 public class a
   extends c
-  implements ar.f
+  implements ak.f
 {
   public static final boolean a = ;
   public static boolean b = false;
@@ -33,10 +35,10 @@ public class a
   {
     if (a)
     {
-      if (ar.a().b() != null)
+      if (ak.a().b() != null)
       {
-        ar.a().a(this);
-        QLog.i("ConnQualityStat", 1, ar.a().b().toString());
+        ak.a().a(this);
+        QLog.i("ConnQualityStat", 1, ak.a().b().toString());
       }
       return;
     }
@@ -50,7 +52,7 @@ public class a
   
   public static boolean b()
   {
-    return (a) && (ar.a().c());
+    return (a) && (ak.a().c());
   }
   
   public void a(int paramInt) {}
@@ -60,7 +62,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().a(paramInt, paramLong, paramx);
+      ak.a().a(paramInt, paramLong, paramx);
       a.c.a().a(false);
       return;
     }
@@ -78,7 +80,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().a(paramLong1, paramLong2);
+      ak.a().a(paramLong1, paramLong2);
       return;
     }
     catch (Exception localException)
@@ -92,7 +94,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().a(parama);
+      ak.a().a(parama);
       a.c.a().a(false);
       return;
     }
@@ -110,7 +112,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().a(paramToServiceMsg);
+      ak.a().a(paramToServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -124,7 +126,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().a(paramToServiceMsg, paramFromServiceMsg);
+      ak.a().a(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -138,7 +140,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
+      ak.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -169,7 +171,7 @@ public class a
       {
         try
         {
-          ar.a().a(paramToServiceMsg, paramFromServiceMsg, paramBoolean, 0);
+          ak.a().a(paramToServiceMsg, paramFromServiceMsg, paramBoolean, 0);
           return;
         }
         finally {}
@@ -190,7 +192,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().a(paramToServiceMsg, paramBoolean);
+      ak.a().a(paramToServiceMsg, paramBoolean);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -205,7 +207,7 @@ public class a
     try
     {
       if (NetConnInfoCenter.isWifiConn()) {
-        ar.a().a(paramSocket, paramInt2);
+        ak.a().a(paramSocket, paramInt2);
       }
       for (;;)
       {
@@ -224,7 +226,7 @@ public class a
           MsfService.serviceInitStart = 0L;
         }
         return;
-        ar.a().b(paramSocket, paramInt2);
+        ak.a().b(paramSocket, paramInt2);
       }
     }
     catch (Exception paramSocket)
@@ -241,7 +243,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().a(paramBoolean);
+      ak.a().a(paramBoolean);
       if (paramBoolean)
       {
         long l = SystemClock.uptimeMillis();
@@ -252,18 +254,23 @@ public class a
     }
     catch (Exception localException)
     {
-      for (;;)
+      try
       {
-        try
+        if ((i.a().e()) && (MsfCore.sCore.quicksender != null)) {
+          MsfCore.sCore.quicksender.a(2000L);
+        }
+        for (;;)
         {
-          MsfCore.sCore.sender.g();
           MsfCore.sCore.screenOn();
           return;
+          localException = localException;
+          QLog.w("ConnQualityStat", 1, "onScreenOn", localException);
+          break;
+          MsfCore.sCore.sender.g();
         }
-        catch (Throwable localThrowable) {}
-        localException = localException;
-        QLog.w("ConnQualityStat", 1, "onScreenOn", localException);
+        return;
       }
+      catch (Throwable localThrowable) {}
     }
   }
   
@@ -274,7 +281,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().b(paramToServiceMsg);
+      ak.a().b(paramToServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -286,7 +293,7 @@ public class a
   public void c()
   {
     if (a) {
-      ar.a().d();
+      ak.a().d();
     }
     a.c.a().a(false);
   }
@@ -296,7 +303,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().c(paramToServiceMsg);
+      ak.a().c(paramToServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -310,7 +317,7 @@ public class a
     if (a) {}
     try
     {
-      ar.a().e();
+      ak.a().e();
       return;
     }
     catch (Exception localException)

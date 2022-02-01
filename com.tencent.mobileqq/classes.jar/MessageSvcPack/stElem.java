@@ -9,8 +9,8 @@ public final class stElem
 {
   static stFace cache_face;
   static stText cache_text;
-  public stFace face;
-  public stText text;
+  public stFace face = null;
+  public stText text = null;
   
   public stElem() {}
   

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.mini.launch;
 
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import aczy;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -14,13 +13,13 @@ import android.os.Process;
 import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import arbw;
-import bkpw;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.hardcoder.HardCoderManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -40,6 +39,7 @@ import com.tencent.mobileqq.minigame.splash.SplashMiniGameData;
 import com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter;
 import com.tencent.mobileqq.minigame.utils.CPUUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.MiniSdkUtil;
 import com.tencent.qqmini.sdk.MiniSDK;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
@@ -65,7 +65,7 @@ public class AppBrandLaunchManager
   private static final String TAG = "miniapp-process_AppBrandLaunchManager";
   private static AppBrandLaunchManager instance;
   private static byte[] lock = new byte[0];
-  private int hardCoderTimeout;
+  private int hardCoderTimeout = 0;
   private final Runnable mCheckPreloadRunnable = new AppBrandLaunchManager.10(this);
   private Context mContext = BaseApplicationImpl.getApplication();
   protected Handler mHandler = new Handler(ThreadManager.getSubThreadHandler().getLooper());
@@ -143,7 +143,7 @@ public class AppBrandLaunchManager
         if (!new MiniAppConfig((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2).isEngineTypeMiniGame())
         {
           bool = true;
-          if (bkpw.a(bool))
+          if (MiniSdkUtil.a(bool))
           {
             localObject2 = MiniSdkLauncher.convert((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2);
             MiniSDK.init(this.mContext);
@@ -165,7 +165,7 @@ public class AppBrandLaunchManager
   
   private void doPreloadApp(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (bkpw.a(paramBoolean1))
+    if (MiniSdkUtil.a(paramBoolean1))
     {
       QLog.i("miniapp-process_AppBrandLaunchManager", 1, "doPreloadApp needJumpToMiniSDK");
       MiniSdkLauncher.preloadMiniApp(BaseApplicationImpl.getContext(), paramBoolean1);
@@ -183,7 +183,7 @@ public class AppBrandLaunchManager
       return;
       if (WnsConfig.getConfig("qqminiapp", "mini_app_hard_coder_enabled", true))
       {
-        int i = aczy.a().a(0, 1, 1, Process.myTid(), this.hardCoderTimeout, 601, 1L, Process.myTid(), "miniLaunch");
+        int i = HardCoderManager.a().a(0, 1, 1, Process.myTid(), this.hardCoderTimeout, 601, 1L, Process.myTid(), "miniLaunch");
         QMLog.w("miniapp-process_AppBrandLaunchManager", "hard coder started, reqId: " + i);
       }
       for (;;)
@@ -191,7 +191,7 @@ public class AppBrandLaunchManager
         if (!paramMiniAppConfig.isEngineTypeMiniGame()) {
           bool = true;
         }
-        if ((paramMiniAppConfig.config.renderInfo == null) || (paramMiniAppConfig.config.renderInfo.renderMode != 1) || (paramMiniAppConfig.config.renderInfo.renderMaterialMap.get(Integer.valueOf(1)) == null) || (!enableFlutter()) || (!bkpw.a(bool))) {
+        if ((paramMiniAppConfig.config.renderInfo == null) || (paramMiniAppConfig.config.renderInfo.renderMode != 1) || (paramMiniAppConfig.config.renderInfo.renderMaterialMap.get(Integer.valueOf(1)) == null) || (!enableFlutter()) || (!MiniSdkUtil.a(bool))) {
           break label217;
         }
         paramMiniAppConfig.isSdkMode = true;
@@ -205,7 +205,7 @@ public class AppBrandLaunchManager
         return;
         QMLog.w("miniapp-process_AppBrandLaunchManager", "hard coder disabled");
       }
-    } while (!bkpw.a(bool));
+    } while (!MiniSdkUtil.a(bool));
     paramResultReceiver = null;
     if (bool)
     {
@@ -300,10 +300,10 @@ public class AppBrandLaunchManager
     {
       try
       {
-        if (!bkpw.a(true)) {
+        if (!MiniSdkUtil.a(true)) {
           return;
         }
-        if (arbw.a("mini_sdk_prelaunch_all_enable", 1) == 1)
+        if (MiniAppConfProcessor.a("mini_sdk_prelaunch_all_enable", 1) == 1)
         {
           i = 1;
           if (i != 0) {
@@ -421,7 +421,7 @@ public class AppBrandLaunchManager
     label33:
     for (boolean bool = true;; bool = false)
     {
-      if (bkpw.a(bool)) {}
+      if (MiniSdkUtil.a(bool)) {}
       return;
     }
   }
@@ -437,7 +437,7 @@ public class AppBrandLaunchManager
     label27:
     for (boolean bool = true;; bool = false)
     {
-      if (bkpw.a(bool)) {}
+      if (MiniSdkUtil.a(bool)) {}
       return;
     }
   }
@@ -452,7 +452,7 @@ public class AppBrandLaunchManager
     label23:
     for (boolean bool = true;; bool = false)
     {
-      if (bkpw.a(bool)) {}
+      if (MiniSdkUtil.a(bool)) {}
       return;
     }
   }
@@ -467,7 +467,7 @@ public class AppBrandLaunchManager
     label23:
     for (boolean bool = true;; bool = false)
     {
-      if (bkpw.a(bool)) {}
+      if (MiniSdkUtil.a(bool)) {}
       return;
     }
   }
@@ -498,7 +498,7 @@ public class AppBrandLaunchManager
     {
       return;
       if (!paramMiniAppConfig.isEngineTypeMiniGame()) {}
-      for (boolean bool = true; (bool) && (bkpw.a(bool)); bool = false)
+      for (boolean bool = true; (bool) && (MiniSdkUtil.a(bool)); bool = false)
       {
         MiniSdkLauncher.preLaunchMiniApp(paramContext, paramMiniAppConfig);
         return;
@@ -520,7 +520,8 @@ public class AppBrandLaunchManager
         ThreadManagerV2.executeOnFileThread(new AppBrandLaunchManager.3(this));
         doPreloadApp(true, true);
         doPreloadApp(false, true);
-        ThreadManager.getFileThreadHandler().postDelayed(new AppBrandLaunchManager.4(this), 10000L);
+        long l = MiniAppConfProcessor.a("mini_sdk_prelaunch_all_delay_time", 60000);
+        ThreadManager.getFileThreadHandler().postDelayed(new AppBrandLaunchManager.4(this), l);
         if ((SplashMiniGameStarter.hasPreloaded) && (SplashMiniGameStarter.curData != null)) {
           if (SplashMiniGameStarter.hasClickJumpBtn) {
             MiniProgramLpReportDC04746.report(SplashMiniGameStarter.curData.appId, SplashMiniGameStarter.curData.version, 1, 1);

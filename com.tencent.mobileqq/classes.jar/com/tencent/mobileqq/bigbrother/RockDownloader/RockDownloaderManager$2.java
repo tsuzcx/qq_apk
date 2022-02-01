@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import aqgi;
-import aqgj;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 
-public class RockDownloaderManager$2
+class RockDownloaderManager$2
   implements Runnable
 {
   public void run()
   {
-    aqgj.a(new RockDownloadInfo("biz_src_kandian", "com.tencent.now"), new aqgi(this));
+    RockDownloaderProxy.a(new RockDownloadInfo("biz_src_kandian", "com.tencent.now"), new RockDownloaderManager.2.1(this));
   }
 }
 

@@ -1,6 +1,5 @@
 package cooperation.qappcenter;
 
-import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,7 +11,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class QAppCenterPluginProxyActivityTools
   extends PluginProxyActivity
 {
-  public static boolean a;
+  public static boolean a = false;
   
   public static void a(Activity paramActivity)
   {
@@ -67,7 +66,7 @@ public class QAppCenterPluginProxyActivityTools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qappcenter.QAppCenterPluginProxyActivityTools
  * JD-Core Version:    0.7.0.1
  */

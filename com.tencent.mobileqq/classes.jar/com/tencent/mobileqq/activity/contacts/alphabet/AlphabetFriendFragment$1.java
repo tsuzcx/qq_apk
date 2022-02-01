@@ -4,7 +4,7 @@ import android.os.Vibrator;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class AlphabetFriendFragment$1
+class AlphabetFriendFragment$1
   implements Runnable
 {
   AlphabetFriendFragment$1(AlphabetFriendFragment paramAlphabetFriendFragment) {}
@@ -28,7 +28,7 @@ public class AlphabetFriendFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment.1
  * JD-Core Version:    0.7.0.1
  */

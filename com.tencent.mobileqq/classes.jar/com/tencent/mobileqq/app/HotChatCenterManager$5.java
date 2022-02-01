@@ -2,15 +2,14 @@ package com.tencent.mobileqq.app;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anwa;
-import bhhs;
+import com.tencent.mobileqq.utils.SharedPreferencesHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 
-public class HotChatCenterManager$5
+class HotChatCenterManager$5
   implements Runnable
 {
-  public HotChatCenterManager$5(anwa paramanwa) {}
+  HotChatCenterManager$5(HotChatCenterManager paramHotChatCenterManager) {}
   
   public void run()
   {
@@ -35,13 +34,13 @@ public class HotChatCenterManager$5
       }
     }
     if ((localObject1 != null) && (this.this$0.jdField_a_of_type_AndroidContentSharedPreferences != null)) {
-      bhhs.a(this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit(), "hotchat_new_unread_list", (Object[])localObject1).commit();
+      SharedPreferencesHandler.a(this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit(), "hotchat_new_unread_list", (Object[])localObject1).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatCenterManager.5
  * JD-Core Version:    0.7.0.1
  */

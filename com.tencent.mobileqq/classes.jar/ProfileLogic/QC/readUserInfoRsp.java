@@ -9,11 +9,11 @@ public final class readUserInfoRsp
   extends JceStruct
 {
   static ArrayList<profileItem> cache_itemlist = new ArrayList();
-  public int flag;
-  public int index;
-  public int itemid;
-  public ArrayList<profileItem> itemlist;
-  public int listend;
+  public int flag = 0;
+  public int index = 0;
+  public int itemid = 0;
+  public ArrayList<profileItem> itemlist = null;
+  public int listend = 0;
   public String urlprefix = "";
   
   static

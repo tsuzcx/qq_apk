@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="30.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textStyle="bold" android:textColor="@color/bp" android:gravity="bottom|center" android:id="@id/o8p" android:paddingBottom="2.0dip" android:layout_width="60.0dip" android:layout_height="wrap_content" android:singleLine="true" android:shadowColor="@color/al3" android:shadowRadius="1.0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/j_" android:textColor="@color/al3" android:ellipsize="none" android:gravity="center" android:id="@id/o8g" android:background="@drawable/dql" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="5.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" />
-</RelativeLayout>
+<DateTimeView android:textAppearance="@style/zn" android:id="@id/jl7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

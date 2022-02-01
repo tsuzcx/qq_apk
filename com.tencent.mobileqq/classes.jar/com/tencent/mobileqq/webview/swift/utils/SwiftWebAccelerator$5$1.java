@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
 import android.os.Bundle;
-import biiq;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 
 class SwiftWebAccelerator$5$1
@@ -38,7 +37,7 @@ class SwiftWebAccelerator$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.5.1
  * JD-Core Version:    0.7.0.1
  */

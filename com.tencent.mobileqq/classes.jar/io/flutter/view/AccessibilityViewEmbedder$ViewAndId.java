@@ -19,7 +19,7 @@ class AccessibilityViewEmbedder$ViewAndId
     do
     {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      if (!(paramObject instanceof ViewAndId)) {
         return false;
       }
       paramObject = (ViewAndId)paramObject;
@@ -34,7 +34,7 @@ class AccessibilityViewEmbedder$ViewAndId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.view.AccessibilityViewEmbedder.ViewAndId
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agqo;
-import ahcw;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -19,13 +17,13 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class ClickedWaveView
   extends ImageView
 {
-  static final int jdField_a_of_type_Int = AIOUtils.dp2px(0.01F, BaseApplicationImpl.getContext().getResources());
-  static final int b = AIOUtils.dp2px(60.0F, BaseApplicationImpl.getContext().getResources());
-  agqo jdField_a_of_type_Agqo = null;
+  static final int jdField_a_of_type_Int = AIOUtils.a(0.01F, BaseApplicationImpl.getContext().getResources());
+  static final int b = AIOUtils.a(60.0F, BaseApplicationImpl.getContext().getResources());
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   Scroller jdField_a_of_type_AndroidWidgetScroller = null;
   ClickedWaveView.MovingRadiusRunnable jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$MovingRadiusRunnable = new ClickedWaveView.MovingRadiusRunnable(this);
+  ClickedWaveView.OnTouchReceive jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$OnTouchReceive = null;
   int c = 20;
   int d = 0;
   
@@ -47,7 +45,7 @@ public class ClickedWaveView
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new DecelerateInterpolator());
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
@@ -69,8 +67,8 @@ public class ClickedWaveView
     for (;;)
     {
       return bool;
-      if (this.jdField_a_of_type_Agqo != null) {
-        this.jdField_a_of_type_Agqo.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$OnTouchReceive != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$OnTouchReceive.a();
       }
       if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable))) {
         ((CustomFrameAnimationDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).unscheduleSelf((Runnable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -78,15 +76,15 @@ public class ClickedWaveView
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(jdField_a_of_type_Int, 0, b, 0, 900);
       this.c = jdField_a_of_type_Int;
       this.d = 30;
-      ahcw.a(this, this.jdField_a_of_type_AndroidOsBundle.getInt("type"), this.jdField_a_of_type_AndroidOsBundle.getInt("id"));
+      PokeItemHelper.a(this, this.jdField_a_of_type_AndroidOsBundle.getInt("type"), this.jdField_a_of_type_AndroidOsBundle.getInt("id"));
       postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$MovingRadiusRunnable, 20L);
       return true;
       setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable))) {
         ((CustomFrameAnimationDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).d();
       }
-      if ((paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Agqo != null)) {
-        this.jdField_a_of_type_Agqo.a(this.jdField_a_of_type_AndroidOsBundle);
+      if ((paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$OnTouchReceive != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$OnTouchReceive.a(this.jdField_a_of_type_AndroidOsBundle);
       }
     }
   }
@@ -101,14 +99,14 @@ public class ClickedWaveView
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public void setOnTouchReceive(agqo paramagqo)
+  public void setOnTouchReceive(ClickedWaveView.OnTouchReceive paramOnTouchReceive)
   {
-    this.jdField_a_of_type_Agqo = paramagqo;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$OnTouchReceive = paramOnTouchReceive;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ClickedWaveView
  * JD-Core Version:    0.7.0.1
  */

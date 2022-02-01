@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aytz;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.unique;
@@ -17,7 +16,7 @@ public class OcrRecogResult
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<OcrRecogResult> CREATOR = new aytz();
+  public static final Parcelable.Creator<OcrRecogResult> CREATOR = new OcrRecogResult.1();
   @unique
   public String filename;
   public String language;
@@ -27,7 +26,7 @@ public class OcrRecogResult
   
   public OcrRecogResult() {}
   
-  public OcrRecogResult(Parcel paramParcel)
+  protected OcrRecogResult(Parcel paramParcel)
   {
     this.filename = paramParcel.readString();
     this.saveTime = paramParcel.readLong();

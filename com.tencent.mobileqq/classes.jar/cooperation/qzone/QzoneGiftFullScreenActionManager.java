@@ -2,14 +2,14 @@ package cooperation.qzone;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import awrl;
-import awrn;
-import awrq;
-import awsc;
-import awsn;
-import awso;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.magicface.magicfaceaction.Action;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.magicface.magicfaceaction.MagicfaceActionDecoder;
+import com.tencent.mobileqq.magicface.model.MagicfaceResLoader;
+import com.tencent.mobileqq.magicface.service.MagicfacePlayManager;
+import com.tencent.mobileqq.magicface.service.SoundPoolUtil;
 import cooperation.qzone.cache.CacheManager;
 import java.io.File;
 import java.util.ArrayList;
@@ -22,26 +22,26 @@ public class QzoneGiftFullScreenActionManager
   public static final String MAGICFACE_RECEIVE_SOUND = "receiveSound";
   public static final String MAGICFACE_RECEIVE_XML = "receive.xml";
   public static final String TAG = "QzoneGiftFullScreenActionManager";
-  awrn actionGlobalData = null;
-  awrl currentMagicfaceAction;
+  ActionGlobalData actionGlobalData = null;
+  Action currentMagicfaceAction;
   String epId;
   volatile boolean isRelease = false;
   volatile boolean isShutDown = false;
   volatile boolean isStart = false;
-  awrq magicfaceActionDecoder;
+  MagicfaceActionDecoder magicfaceActionDecoder;
   QzoneGiftFullScreenActionManager.MagicfaceActionListener magicfaceActionListener;
-  List<awrl> magicfaceActions;
+  List<Action> magicfaceActions;
   QzoneGiftFullScreenActionManager.MagicfaceCloseListener magicfaceCloseListener;
-  awsn magicfacePlayManager;
-  awsc magicfaceResLoader;
+  MagicfacePlayManager magicfacePlayManager;
+  MagicfaceResLoader magicfaceResLoader;
   QzoneGiftFullScreenViewController magicfaceViewController;
-  awso soundPoolUtil;
+  SoundPoolUtil soundPoolUtil;
   
   public QzoneGiftFullScreenActionManager(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController)
   {
     this.magicfaceViewController = paramQzoneGiftFullScreenViewController;
-    this.magicfaceActionDecoder = new awrq();
-    this.soundPoolUtil = new awso();
+    this.magicfaceActionDecoder = new MagicfaceActionDecoder();
+    this.soundPoolUtil = new SoundPoolUtil();
   }
   
   private void filterAction()
@@ -52,7 +52,7 @@ public class QzoneGiftFullScreenActionManager
       this.magicfaceActions = getValidActions(false);
       return;
     }
-    int[] arrayOfInt1 = splitVersion("8.4.10");
+    int[] arrayOfInt1 = splitVersion("8.5.5");
     int[] arrayOfInt2 = splitVersion(this.actionGlobalData.b);
     int i;
     if ((arrayOfInt1 != null) && (arrayOfInt2 != null) && (arrayOfInt1.length == arrayOfInt2.length))
@@ -104,44 +104,44 @@ public class QzoneGiftFullScreenActionManager
     return str + File.separator + paramString + File.separator;
   }
   
-  private List<awrl> getValidActions(boolean paramBoolean)
+  private List<Action> getValidActions(boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.magicfaceActions.iterator();
     for (;;)
     {
-      awrl localawrl;
+      Action localAction;
       if (localIterator.hasNext())
       {
-        localawrl = (awrl)localIterator.next();
-        if (localawrl == null) {
+        localAction = (Action)localIterator.next();
+        if (localAction == null) {
           continue;
         }
         if (paramBoolean)
         {
-          if (!"default".equals(localawrl.a)) {
+          if (!"default".equals(localAction.a)) {
             continue;
           }
-          localArrayList.add(localawrl);
+          localArrayList.add(localAction);
         }
       }
       else
       {
         return localArrayList;
       }
-      if (!"default".equals(localawrl.a)) {
-        localArrayList.add(localawrl);
+      if (!"default".equals(localAction.a)) {
+        localArrayList.add(localAction);
       }
     }
   }
   
-  public static awrn hasAction(String paramString1, String paramString2)
+  public static ActionGlobalData hasAction(String paramString1, String paramString2)
   {
-    paramString1 = new awsc(paramString2).a("receive.xml");
+    paramString1 = new MagicfaceResLoader(paramString2).a("receive.xml");
     if (paramString1 == null) {
       return null;
     }
-    return new awrq().a(paramString1);
+    return new MagicfaceActionDecoder().a(paramString1);
   }
   
   private void initActionData(String paramString)
@@ -149,29 +149,29 @@ public class QzoneGiftFullScreenActionManager
     this.isStart = true;
     this.isShutDown = false;
     this.magicfacePlayManager.a();
-    this.magicfaceResLoader = new awsc(paramString);
+    this.magicfaceResLoader = new MagicfaceResLoader(paramString);
     this.magicfacePlayManager.a(this.magicfaceResLoader);
     this.magicfacePlayManager.a(this.soundPoolUtil);
   }
   
-  private void onEndMagicface(awrn paramawrn)
+  private void onEndMagicface(ActionGlobalData paramActionGlobalData)
   {
     if (this.magicfaceCloseListener != null) {
       this.magicfaceCloseListener.magicfaceClose();
     }
     this.isStart = false;
     if (this.magicfaceActionListener != null) {
-      this.magicfaceActionListener.magicfaceActionEnd(paramawrn);
+      this.magicfaceActionListener.magicfaceActionEnd(paramActionGlobalData);
     }
   }
   
-  private void onStartMagicface(awrn paramawrn)
+  private void onStartMagicface(ActionGlobalData paramActionGlobalData)
   {
     if (this.magicfaceActionListener != null) {
-      this.magicfaceActionListener.magicfaceActionStart(paramawrn);
+      this.magicfaceActionListener.magicfaceActionStart(paramActionGlobalData);
     }
-    if ((paramawrn != null) && (paramawrn.a != null)) {
-      paramawrn.a();
+    if ((paramActionGlobalData != null) && (paramActionGlobalData.a != null)) {
+      paramActionGlobalData.a();
     }
   }
   
@@ -283,14 +283,14 @@ public class QzoneGiftFullScreenActionManager
     this.magicfaceActionListener = paramMagicfaceActionListener;
   }
   
-  public void setMagicfacePlayManager(awsn paramawsn)
+  public void setMagicfacePlayManager(MagicfacePlayManager paramMagicfacePlayManager)
   {
-    this.magicfacePlayManager = paramawsn;
+    this.magicfacePlayManager = paramMagicfacePlayManager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenActionManager
  * JD-Core Version:    0.7.0.1
  */

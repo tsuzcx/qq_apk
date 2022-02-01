@@ -1,12 +1,11 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkqf;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
-public class NavigationProxyImpl$1
+class NavigationProxyImpl$1
   implements Runnable
 {
-  public NavigationProxyImpl$1(bkqf parambkqf, MiniAppInfo paramMiniAppInfo) {}
+  NavigationProxyImpl$1(NavigationProxyImpl paramNavigationProxyImpl, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {

@@ -3,13 +3,11 @@ package com.tencent.av.ui;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import mhn;
-import min;
 
-public class QAVPtvTemplateAdapter$6
+class QAVPtvTemplateAdapter$6
   implements Runnable
 {
-  public QAVPtvTemplateAdapter$6(mhn parammhn, String paramString, boolean paramBoolean, long paramLong) {}
+  QAVPtvTemplateAdapter$6(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter, String paramString, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
@@ -19,11 +17,11 @@ public class QAVPtvTemplateAdapter$6
     Object localObject1;
     if (i < this.this$0.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localObject1 = (min)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localObject1 != null) && (((min)localObject1).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
+      localObject1 = (QavListItemBase.ItemInfo)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if ((localObject1 != null) && (((QavListItemBase.ItemInfo)localObject1).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
       {
-        ((min)localObject1).b = false;
-        ((min)localObject1).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+        ((QavListItemBase.ItemInfo)localObject1).b = false;
+        ((QavListItemBase.ItemInfo)localObject1).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
         j = i;
         if (i >= k)
         {
@@ -63,11 +61,11 @@ public class QAVPtvTemplateAdapter$6
         {
           localObject1 = localObject2;
           if (j != -1) {
-            localObject1 = (min)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(j);
+            localObject1 = (QavListItemBase.ItemInfo)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(j);
           }
         }
         if (localObject1 != null) {
-          this.this$0.a(this.jdField_a_of_type_Long, (min)localObject1);
+          this.this$0.a(this.jdField_a_of_type_Long, (QavListItemBase.ItemInfo)localObject1);
         }
       }
       return;
@@ -81,7 +79,7 @@ public class QAVPtvTemplateAdapter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.QAVPtvTemplateAdapter.6
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,15 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.widget.Toast;
-import anvx;
-import ashz;
-import avzi;
-import bhhy;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.jsp.DeviceApiPlugin;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.StartupTracker;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -25,36 +25,36 @@ public abstract class VasWebviewUiPlugin
 {
   private static final String TAG = "VasWebviewUiPlugin";
   protected QQBrowserActivity activity;
-  protected boolean isHomePageWatingBind;
+  protected boolean isHomePageWatingBind = false;
   
   public VasWebviewUiPlugin()
   {
     this.mPluginNameSpace = String.valueOf(getPluginBusiness());
   }
   
-  protected void OnActivityCreate() {}
+  void OnActivityCreate() {}
   
   void OnActivityDestroy()
   {
-    if (avzi.jdField_a_of_type_Boolean) {
-      avzi.a(false, null, false);
+    if (DeviceApiPlugin.jdField_a_of_type_Boolean) {
+      DeviceApiPlugin.a(false, null, false);
     }
-    if (avzi.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) {
-      avzi.jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
+    if (DeviceApiPlugin.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) {
+      DeviceApiPlugin.jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
     }
   }
   
-  protected void OnActivityPause()
+  void OnActivityPause()
   {
-    if (avzi.jdField_a_of_type_Boolean) {
-      avzi.a(false, null, true);
+    if (DeviceApiPlugin.jdField_a_of_type_Boolean) {
+      DeviceApiPlugin.a(false, null, true);
     }
   }
   
   void OnActivityResume()
   {
-    if (avzi.jdField_a_of_type_Boolean) {
-      avzi.a(true, this.mRuntime.a(), true);
+    if (DeviceApiPlugin.jdField_a_of_type_Boolean) {
+      DeviceApiPlugin.a(true, this.mRuntime.a(), true);
     }
   }
   
@@ -63,7 +63,7 @@ public abstract class VasWebviewUiPlugin
     if (QLog.isColorLevel()) {
       QLog.i("VasWebviewUiPlugin", 2, "decodeUrl:" + paramString);
     }
-    String str1 = paramString.replace("[uin]", this.activity.getAppRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.4.10.4875").replace("[sid]", "").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+    String str1 = paramString.replace("[uin]", this.activity.getAppRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.5.5.5105").replace("[sid]", "").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
     Intent localIntent = this.activity.getIntent();
     String str2 = localIntent.getStringExtra("updateTime");
     paramString = str1;
@@ -101,7 +101,7 @@ public abstract class VasWebviewUiPlugin
       return false;
     }
     String str = "Web_uiplugin_step_" + paramLong;
-    bhhy.a(null, str);
+    StartupTracker.a(null, str);
     if (paramLong == 1L) {}
     for (;;)
     {
@@ -129,7 +129,7 @@ public abstract class VasWebviewUiPlugin
       }
       finally
       {
-        bhhy.a(str, null);
+        StartupTracker.a(str, null);
       }
       if (paramLong == 8589934597L)
       {
@@ -140,7 +140,7 @@ public abstract class VasWebviewUiPlugin
         if (paramLong == 8589934600L)
         {
           bool = onActivityResult(((Integer)paramMap.get("requestCode")).intValue(), ((Integer)paramMap.get("resultCode")).intValue(), (Intent)paramMap.get("data"));
-          bhhy.a(str, null);
+          StartupTracker.a(str, null);
           return bool;
         }
         if (paramLong == 8589934598L) {
@@ -171,18 +171,18 @@ public abstract class VasWebviewUiPlugin
     do
     {
       return;
-      if (ashz.a().a()) {
+      if (WebIPCOperator.a().a()) {
         break;
       }
     } while (!paramBoolean2);
-    Toast.makeText(BaseApplication.getContext(), anvx.a(2131715414), 0).show();
+    Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131715880), 0).show();
     return;
     if (paramBoolean1)
     {
-      ashz.a().b(paramBundle);
+      WebIPCOperator.a().b(paramBundle);
       return;
     }
-    ashz.a().a(paramBundle);
+    WebIPCOperator.a().a(paramBundle);
   }
   
   protected void webviewLoadUrl(String paramString)
@@ -200,7 +200,7 @@ public abstract class VasWebviewUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebviewUiPlugin
  * JD-Core Version:    0.7.0.1
  */

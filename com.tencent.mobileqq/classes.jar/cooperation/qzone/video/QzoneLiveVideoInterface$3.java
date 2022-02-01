@@ -1,6 +1,6 @@
 package cooperation.qzone.video;
 
-import biis;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.webviewwrapper.IWebviewOnClassLoaded;
 
@@ -21,10 +21,10 @@ final class QzoneLiveVideoInterface$3
         if (!QzoneLiveVideoInterface.isBestPerformanceDevice()) {
           break;
         }
-        if (!biis.a())
+        if (!SwiftWebAccelerator.TbsAccelerator.a())
         {
           long l = System.currentTimeMillis();
-          biis.b();
+          SwiftWebAccelerator.TbsAccelerator.b();
           QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator init cost " + (System.currentTimeMillis() - l));
           if (this.val$listener == null) {
             break;
@@ -44,7 +44,7 @@ final class QzoneLiveVideoInterface$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.video.QzoneLiveVideoInterface.3
  * JD-Core Version:    0.7.0.1
  */

@@ -9,16 +9,15 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.SeekBar;
-import vsm;
 
 public class RotationSeekBar
   extends SeekBar
 {
   private static float jdField_a_of_type_Float = -1.0F;
   private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private vsm jdField_a_of_type_Vsm;
-  private float[] jdField_a_of_type_ArrayOfFloat;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
+  private RotationSeekBar.OnRotationChangeListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar$OnRotationChangeListener;
+  private float[] jdField_a_of_type_ArrayOfFloat = null;
   
   public RotationSeekBar(Context paramContext)
   {
@@ -93,13 +92,13 @@ public class RotationSeekBar
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Vsm != null)) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Vsm.a();
+    if ((paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar$OnRotationChangeListener != null)) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar$OnRotationChangeListener.a();
     }
     return super.dispatchTouchEvent(a(paramMotionEvent));
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_ArrayOfFloat != null)
@@ -137,14 +136,14 @@ public class RotationSeekBar
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnRotationChangeListener(vsm paramvsm)
+  public void setOnRotationChangeListener(RotationSeekBar.OnRotationChangeListener paramOnRotationChangeListener)
   {
-    this.jdField_a_of_type_Vsm = paramvsm;
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar$OnRotationChangeListener = paramOnRotationChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar
  * JD-Core Version:    0.7.0.1
  */

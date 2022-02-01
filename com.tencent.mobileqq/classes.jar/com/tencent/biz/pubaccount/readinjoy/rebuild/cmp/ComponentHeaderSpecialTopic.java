@@ -7,26 +7,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.preparse.RIJPreParseData;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJAppSetting;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URL;
-import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pjr;
-import pkh;
-import pqa;
-import pqf;
-import pqu;
-import pqw;
-import qfw;
-import rfw;
 import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
 import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
-import uvs;
 
 public class ComponentHeaderSpecialTopic
   extends ComponentHeaderBase
@@ -90,7 +90,7 @@ public class ComponentHeaderSpecialTopic
           localException.printStackTrace();
           localObject = null;
         }
-        Object localObject = pqa.a((String)localObject);
+        Object localObject = RIJPreParseData.a((String)localObject);
         paramArticleInfo.mHeaderIconUrl = ((URL)localObject);
         return localObject;
       }
@@ -102,14 +102,14 @@ public class ComponentHeaderSpecialTopic
   {
     try
     {
-      JSONObject localJSONObject = pqf.a();
+      JSONObject localJSONObject = RIJTransMergeKanDianReport.a();
       localJSONObject.put("feeds_source", paramString);
-      localJSONObject.put("kandian_mode", pqu.a());
-      String str = pqw.c(this.jdField_a_of_type_Rfw.a.a());
-      if (uvs.a(this.jdField_a_of_type_Rfw.a.e())) {}
+      localJSONObject.put("kandian_mode", RIJAppSetting.a());
+      String str = RIJFeedsType.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a());
+      if (ReadinjoyReportUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.e())) {}
       for (paramString = "0X8009357";; paramString = "0X800744D")
       {
-        olh.a(null, "CliOper", "", "", paramString, paramString, 0, 0, str, "", "", localJSONObject.toString(), false);
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", paramString, paramString, 0, 0, str, "", "", localJSONObject.toString(), false);
         return;
       }
       return;
@@ -142,15 +142,15 @@ public class ComponentHeaderSpecialTopic
   
   private void d()
   {
-    String str = b(this.jdField_a_of_type_Rfw.a.a());
+    String str = b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a());
     if (!TextUtils.isEmpty(str)) {
-      pkh.a(getContext(), str);
+      ReadInJoyUtils.a(getContext(), str);
     }
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560182, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560260, this, true);
   }
   
   public void a()
@@ -164,36 +164,28 @@ public class ComponentHeaderSpecialTopic
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131376153));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376144));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131376538));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376529));
   }
   
-  public void a(Object paramObject)
+  public void a(IReadInJoyModel paramIReadInJoyModel)
   {
-    super.a(paramObject);
-    if ((paramObject instanceof qfw)) {
-      a((qfw)paramObject);
-    }
-  }
-  
-  public void a(qfw paramqfw)
-  {
-    if ((paramqfw.a()) && (paramqfw.c() == 1)) {}
+    if ((paramIReadInJoyModel.a()) && (paramIReadInJoyModel.c() == 1)) {}
     ArticleInfo localArticleInfo;
     for (int i = 0;; i = 8)
     {
       setVisibility(i);
-      if ((paramqfw.a()) && (paramqfw.c() == 1)) {
-        localArticleInfo = paramqfw.a();
+      if ((paramIReadInJoyModel.a()) && (paramIReadInJoyModel.c() == 1)) {
+        localArticleInfo = paramIReadInJoyModel.a();
       }
-      switch (paramqfw.c())
+      switch (paramIReadInJoyModel.c())
       {
       default: 
         return;
       }
     }
-    paramqfw = a(localArticleInfo);
-    if (paramqfw == null) {
+    paramIReadInJoyModel = a(localArticleInfo);
+    if (paramIReadInJoyModel == null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
     }
     for (;;)
@@ -201,7 +193,15 @@ public class ComponentHeaderSpecialTopic
       this.jdField_a_of_type_AndroidWidgetTextView.setText(a(localArticleInfo));
       return;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
-      pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramqfw, getContext());
+      ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramIReadInJoyModel, getContext());
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    super.a(paramObject);
+    if ((paramObject instanceof IReadInJoyModel)) {
+      a((IReadInJoyModel)paramObject);
     }
   }
   
@@ -217,7 +217,7 @@ public class ComponentHeaderSpecialTopic
     }
     for (;;)
     {
-      a(pqw.b(this.jdField_a_of_type_Rfw.a.a()));
+      a(RIJFeedsType.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a()));
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       d();
@@ -226,7 +226,7 @@ public class ComponentHeaderSpecialTopic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSpecialTopic
  * JD-Core Version:    0.7.0.1
  */

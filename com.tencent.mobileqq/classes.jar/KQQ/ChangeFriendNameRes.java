@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ChangeFriendNameRes
   extends JceStruct
 {
-  public byte cResult;
+  public byte cResult = 0;
   
   public ChangeFriendNameRes() {}
   

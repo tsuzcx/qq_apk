@@ -18,7 +18,7 @@ public class TPDownloadParamData
   private String downloadFileID;
   private int endTimeMS;
   private int expectDelay;
-  private Map<String, String> extInfoMap;
+  private Map<String, Object> extInfoMap;
   private boolean extraParam;
   private long fileDuration;
   private String fileMD5;
@@ -126,7 +126,7 @@ public class TPDownloadParamData
     return this.expectDelay;
   }
   
-  public Map<String, String> getExtInfoMap()
+  public Map<String, Object> getExtInfoMap()
   {
     return this.extInfoMap;
   }
@@ -336,7 +336,7 @@ public class TPDownloadParamData
     this.expectDelay = paramInt;
   }
   
-  public void setExtInfoMap(Map<String, String> paramMap)
+  public void setExtInfoMap(Map<String, Object> paramMap)
   {
     this.extInfoMap = paramMap;
   }
@@ -478,7 +478,7 @@ public class TPDownloadParamData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.api.proxy.TPDownloadParamData
  * JD-Core Version:    0.7.0.1
  */

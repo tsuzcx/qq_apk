@@ -48,6 +48,151 @@ public class Storage
     }
   }
   
+  /* Error */
+  private boolean commitCache(String arg1, String paramString2)
+  {
+    // Byte code:
+    //   0: aload_2
+    //   1: invokestatic 65	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifne +123 -> 127
+    //   7: aload_0
+    //   8: invokevirtual 131	com/tencent/qqmini/sdk/cache/Storage:getCurrentSize	()J
+    //   11: ldc2_w 132
+    //   14: lmul
+    //   15: aload_2
+    //   16: invokevirtual 139	java/lang/String:length	()I
+    //   19: i2l
+    //   20: ladd
+    //   21: ldc2_w 80
+    //   24: lcmp
+    //   25: ifle +33 -> 58
+    //   28: ldc 15
+    //   30: ldc 141
+    //   32: invokestatic 104	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   35: aload_0
+    //   36: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
+    //   39: ifnull +10 -> 49
+    //   42: aload_0
+    //   43: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
+    //   46: invokevirtual 144	com/tencent/qqmini/sdk/cache/DiskLruCache:flush	()V
+    //   49: iconst_1
+    //   50: ireturn
+    //   51: astore_1
+    //   52: aload_1
+    //   53: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   56: iconst_1
+    //   57: ireturn
+    //   58: aload_0
+    //   59: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
+    //   62: aload_1
+    //   63: invokevirtual 151	com/tencent/qqmini/sdk/cache/DiskLruCache:edit	(Ljava/lang/String;)Lcom/tencent/qqmini/sdk/cache/DiskLruCache$Editor;
+    //   66: astore_3
+    //   67: aload_3
+    //   68: ifnull +13 -> 81
+    //   71: aload_3
+    //   72: iconst_0
+    //   73: aload_2
+    //   74: invokevirtual 157	com/tencent/qqmini/sdk/cache/DiskLruCache$Editor:set	(ILjava/lang/String;)V
+    //   77: aload_3
+    //   78: invokevirtual 160	com/tencent/qqmini/sdk/cache/DiskLruCache$Editor:commit	()V
+    //   81: aload_0
+    //   82: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
+    //   85: ifnull +42 -> 127
+    //   88: aload_0
+    //   89: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
+    //   92: aload_1
+    //   93: aload_2
+    //   94: invokevirtual 166	android/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   97: pop
+    //   98: getstatic 40	com/tencent/qqmini/sdk/cache/Storage:mMapList	Ljava/util/concurrent/ConcurrentHashMap;
+    //   101: astore_1
+    //   102: aload_1
+    //   103: monitorenter
+    //   104: aload_0
+    //   105: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
+    //   108: ldc 11
+    //   110: getstatic 40	com/tencent/qqmini/sdk/cache/Storage:mMapList	Ljava/util/concurrent/ConcurrentHashMap;
+    //   113: invokevirtual 170	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
+    //   116: invokeinterface 175 1 0
+    //   121: idiv
+    //   122: invokevirtual 179	android/util/LruCache:trimToSize	(I)V
+    //   125: aload_1
+    //   126: monitorexit
+    //   127: aload_0
+    //   128: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
+    //   131: ifnull +10 -> 141
+    //   134: aload_0
+    //   135: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
+    //   138: invokevirtual 144	com/tencent/qqmini/sdk/cache/DiskLruCache:flush	()V
+    //   141: iconst_0
+    //   142: ireturn
+    //   143: astore_2
+    //   144: aload_1
+    //   145: monitorexit
+    //   146: aload_2
+    //   147: athrow
+    //   148: astore_1
+    //   149: ldc 15
+    //   151: aload_1
+    //   152: invokevirtual 107	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   155: aload_1
+    //   156: invokestatic 110	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   159: aload_0
+    //   160: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
+    //   163: ifnull -114 -> 49
+    //   166: aload_0
+    //   167: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
+    //   170: invokevirtual 144	com/tencent/qqmini/sdk/cache/DiskLruCache:flush	()V
+    //   173: iconst_1
+    //   174: ireturn
+    //   175: astore_1
+    //   176: aload_1
+    //   177: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   180: iconst_1
+    //   181: ireturn
+    //   182: astore_1
+    //   183: aload_1
+    //   184: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   187: goto -46 -> 141
+    //   190: astore_1
+    //   191: aload_0
+    //   192: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
+    //   195: ifnull +10 -> 205
+    //   198: aload_0
+    //   199: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
+    //   202: invokevirtual 144	com/tencent/qqmini/sdk/cache/DiskLruCache:flush	()V
+    //   205: aload_1
+    //   206: athrow
+    //   207: astore_2
+    //   208: aload_2
+    //   209: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   212: goto -7 -> 205
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	215	0	this	Storage
+    //   0	215	2	paramString2	String
+    //   66	12	3	localEditor	DiskLruCache.Editor
+    // Exception table:
+    //   from	to	target	type
+    //   42	49	51	java/io/IOException
+    //   104	127	143	finally
+    //   144	146	143	finally
+    //   0	35	148	java/lang/Throwable
+    //   58	67	148	java/lang/Throwable
+    //   71	81	148	java/lang/Throwable
+    //   81	104	148	java/lang/Throwable
+    //   146	148	148	java/lang/Throwable
+    //   166	173	175	java/io/IOException
+    //   134	141	182	java/io/IOException
+    //   0	35	190	finally
+    //   58	67	190	finally
+    //   71	81	190	finally
+    //   81	104	190	finally
+    //   146	148	190	finally
+    //   149	159	190	finally
+    //   198	205	207	java/io/IOException
+  }
+  
   public static void destroy()
   {
     synchronized (mMapList)
@@ -65,6 +210,83 @@ public class Storage
       }
     }
     mMapList.clear();
+  }
+  
+  private void flushCache(String arg1, Storage.StorageCallback paramStorageCallback, String paramString2)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(???))
+        {
+          if (getCurrentSize() * 1000L + ???.length() > 10485760L)
+          {
+            QMLog.e("Storage", "exceeded the limit size");
+            if (paramStorageCallback != null) {
+              paramStorageCallback.onFailed(paramString2, "exceeded the limit size");
+            }
+          }
+          DiskLruCache.Editor localEditor = this.mDiskCache.edit(paramString2);
+          if (localEditor != null)
+          {
+            localEditor.set(0, ???);
+            localEditor.commit();
+          }
+          if (this.mLruCache != null) {
+            this.mLruCache.put(paramString2, ???);
+          }
+        }
+      }
+      catch (Throwable ???)
+      {
+        if (paramStorageCallback == null) {
+          continue;
+        }
+        paramStorageCallback.onFailed(paramString2, ???.getMessage());
+        QMLog.e("Storage", ???.getMessage(), ???);
+        if (this.mDiskCache == null) {
+          continue;
+        }
+        try
+        {
+          this.mDiskCache.flush();
+          return;
+        }
+        catch (Throwable ???)
+        {
+          ???.printStackTrace();
+          return;
+        }
+      }
+      finally
+      {
+        if (this.mDiskCache == null) {
+          break label224;
+        }
+      }
+      synchronized (mMapList)
+      {
+        this.mLruCache.trimToSize(10485760 / mMapList.keySet().size());
+        if (paramStorageCallback != null) {
+          paramStorageCallback.onSuccess(paramString2, "ok");
+        }
+        if (this.mDiskCache == null) {}
+      }
+    }
+    try
+    {
+      this.mDiskCache.flush();
+      label224:
+      throw ???;
+    }
+    catch (Throwable paramStorageCallback)
+    {
+      for (;;)
+      {
+        paramStorageCallback.printStackTrace();
+      }
+    }
   }
   
   public static String getCacheDir(String paramString1, String paramString2, String paramString3)
@@ -128,11 +350,11 @@ public class Storage
     //   11: ifnull +87 -> 98
     //   14: aload_1
     //   15: aload_2
-    //   16: invokestatic 204	com/tencent/qqmini/sdk/cache/Storage:getToken	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   16: invokestatic 265	com/tencent/qqmini/sdk/cache/Storage:getToken	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   19: astore 6
     //   21: getstatic 40	com/tencent/qqmini/sdk/cache/Storage:mMapList	Ljava/util/concurrent/ConcurrentHashMap;
     //   24: aload 6
-    //   26: invokevirtual 148	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   26: invokevirtual 198	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   29: checkcast 2	com/tencent/qqmini/sdk/cache/Storage
     //   32: astore 4
     //   34: aload 4
@@ -146,8 +368,8 @@ public class Storage
     //   50: getstatic 40	com/tencent/qqmini/sdk/cache/Storage:mMapList	Ljava/util/concurrent/ConcurrentHashMap;
     //   53: aload_1
     //   54: aload_2
-    //   55: invokestatic 204	com/tencent/qqmini/sdk/cache/Storage:getToken	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   58: invokevirtual 148	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   55: invokestatic 265	com/tencent/qqmini/sdk/cache/Storage:getToken	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   58: invokevirtual 198	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   61: checkcast 2	com/tencent/qqmini/sdk/cache/Storage
     //   64: astore 4
     //   66: aload 4
@@ -159,12 +381,12 @@ public class Storage
     //   78: aload_0
     //   79: aload_1
     //   80: aload_2
-    //   81: invokespecial 217	com/tencent/qqmini/sdk/cache/Storage:<init>	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+    //   81: invokespecial 277	com/tencent/qqmini/sdk/cache/Storage:<init>	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
     //   84: astore_3
     //   85: getstatic 40	com/tencent/qqmini/sdk/cache/Storage:mMapList	Ljava/util/concurrent/ConcurrentHashMap;
     //   88: aload 6
     //   90: aload_3
-    //   91: invokevirtual 221	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   91: invokevirtual 278	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   94: pop
     //   95: aload 7
     //   97: monitorexit
@@ -306,8 +528,8 @@ public class Storage
     //   7: aload_0
     //   8: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
     //   11: aload_1
-    //   12: invokevirtual 270	android/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   15: checkcast 144	java/lang/String
+    //   12: invokevirtual 316	android/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   15: checkcast 135	java/lang/String
     //   18: astore 4
     //   20: aload 4
     //   22: astore_3
@@ -321,14 +543,14 @@ public class Storage
     //   38: ifnull +103 -> 141
     //   41: aload_0
     //   42: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   45: invokevirtual 262	com/tencent/qqmini/sdk/cache/DiskLruCache:isClosed	()Z
+    //   45: invokevirtual 308	com/tencent/qqmini/sdk/cache/DiskLruCache:isClosed	()Z
     //   48: ifeq +7 -> 55
     //   51: aload_0
     //   52: invokespecial 117	com/tencent/qqmini/sdk/cache/Storage:reCreateCache	()V
     //   55: aload_0
     //   56: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
     //   59: aload_1
-    //   60: invokevirtual 273	com/tencent/qqmini/sdk/cache/DiskLruCache:get	(Ljava/lang/String;)Lcom/tencent/qqmini/sdk/cache/DiskLruCache$Snapshot;
+    //   60: invokevirtual 319	com/tencent/qqmini/sdk/cache/DiskLruCache:get	(Ljava/lang/String;)Lcom/tencent/qqmini/sdk/cache/DiskLruCache$Snapshot;
     //   63: astore_2
     //   64: aload 4
     //   66: astore 5
@@ -338,7 +560,7 @@ public class Storage
     //   73: astore_3
     //   74: aload_2
     //   75: iconst_0
-    //   76: invokevirtual 279	com/tencent/qqmini/sdk/cache/DiskLruCache$Snapshot:getString	(I)Ljava/lang/String;
+    //   76: invokevirtual 325	com/tencent/qqmini/sdk/cache/DiskLruCache$Snapshot:getString	(I)Ljava/lang/String;
     //   79: astore 5
     //   81: aload_2
     //   82: astore_3
@@ -346,7 +568,7 @@ public class Storage
     //   84: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
     //   87: aload_1
     //   88: aload 5
-    //   90: invokevirtual 280	android/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   90: invokevirtual 166	android/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   93: pop
     //   94: aload_2
     //   95: astore_3
@@ -360,10 +582,10 @@ public class Storage
     //   105: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
     //   108: ldc 11
     //   110: getstatic 40	com/tencent/qqmini/sdk/cache/Storage:mMapList	Ljava/util/concurrent/ConcurrentHashMap;
-    //   113: invokevirtual 126	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
-    //   116: invokeinterface 282 1 0
+    //   113: invokevirtual 170	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
+    //   116: invokeinterface 175 1 0
     //   121: idiv
-    //   122: invokevirtual 230	android/util/LruCache:trimToSize	(I)V
+    //   122: invokevirtual 179	android/util/LruCache:trimToSize	(I)V
     //   125: aload_1
     //   126: monitorexit
     //   127: aload 5
@@ -371,14 +593,14 @@ public class Storage
     //   130: aload_2
     //   131: ifnull +10 -> 141
     //   134: aload_2
-    //   135: invokevirtual 283	com/tencent/qqmini/sdk/cache/DiskLruCache$Snapshot:close	()V
+    //   135: invokevirtual 326	com/tencent/qqmini/sdk/cache/DiskLruCache$Snapshot:close	()V
     //   138: aload 5
     //   140: astore_3
     //   141: aload_3
     //   142: invokestatic 65	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   145: ifne +96 -> 241
     //   148: aload_3
-    //   149: invokestatic 288	com/tencent/qqmini/sdk/cache/DiskLruCacheUtil:decode	(Ljava/lang/String;)[Ljava/lang/String;
+    //   149: invokestatic 331	com/tencent/qqmini/sdk/cache/DiskLruCacheUtil:decode	(Ljava/lang/String;)[Ljava/lang/String;
     //   152: areturn
     //   153: astore 4
     //   155: aload_1
@@ -402,7 +624,7 @@ public class Storage
     //   182: aload_2
     //   183: ifnull -42 -> 141
     //   186: aload_2
-    //   187: invokevirtual 283	com/tencent/qqmini/sdk/cache/DiskLruCache$Snapshot:close	()V
+    //   187: invokevirtual 326	com/tencent/qqmini/sdk/cache/DiskLruCache$Snapshot:close	()V
     //   190: aload 4
     //   192: astore_3
     //   193: goto -52 -> 141
@@ -416,7 +638,7 @@ public class Storage
     //   206: aload_3
     //   207: ifnull +7 -> 214
     //   210: aload_3
-    //   211: invokevirtual 283	com/tencent/qqmini/sdk/cache/DiskLruCache$Snapshot:close	()V
+    //   211: invokevirtual 326	com/tencent/qqmini/sdk/cache/DiskLruCache$Snapshot:close	()V
     //   214: aload_1
     //   215: athrow
     //   216: astore_1
@@ -503,181 +725,32 @@ public class Storage
     ThreadManager.executeOnDiskIOThreadPool(new Storage.2(this, paramString2, paramString3, paramStorageCallback, paramString1));
   }
   
-  /* Error */
-  public boolean writeSync(String arg1, String paramString2, String paramString3)
+  public boolean writeSync(String paramString1, String paramString2, String paramString3)
   {
-    // Byte code:
-    //   0: aload_3
-    //   1: aload_2
-    //   2: invokestatic 315	com/tencent/qqmini/sdk/cache/DiskLruCacheUtil:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   5: astore_2
-    //   6: aload_2
-    //   7: ifnull +35 -> 42
-    //   10: aload_2
-    //   11: invokevirtual 318	java/lang/String:length	()I
-    //   14: ldc_w 319
-    //   17: if_icmplt +25 -> 42
-    //   20: ldc 15
-    //   22: ldc_w 321
-    //   25: invokestatic 104	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   28: iconst_0
-    //   29: ireturn
-    //   30: astore_1
-    //   31: ldc 15
-    //   33: ldc_w 323
-    //   36: aload_1
-    //   37: invokestatic 110	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   40: iconst_0
-    //   41: ireturn
-    //   42: aload_0
-    //   43: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   46: ifnull +159 -> 205
-    //   49: aload_0
-    //   50: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   53: invokevirtual 262	com/tencent/qqmini/sdk/cache/DiskLruCache:isClosed	()Z
-    //   56: ifeq +7 -> 63
-    //   59: aload_0
-    //   60: invokespecial 117	com/tencent/qqmini/sdk/cache/Storage:reCreateCache	()V
-    //   63: aload_2
-    //   64: invokestatic 65	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   67: ifne +124 -> 191
-    //   70: aload_0
-    //   71: invokevirtual 325	com/tencent/qqmini/sdk/cache/Storage:getCurrentSize	()J
-    //   74: ldc2_w 257
-    //   77: lmul
-    //   78: aload_2
-    //   79: invokevirtual 318	java/lang/String:length	()I
-    //   82: i2l
-    //   83: ladd
-    //   84: ldc2_w 80
-    //   87: lcmp
-    //   88: ifle +34 -> 122
-    //   91: ldc 15
-    //   93: ldc_w 321
-    //   96: invokestatic 104	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   99: aload_0
-    //   100: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   103: ifnull -75 -> 28
-    //   106: aload_0
-    //   107: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   110: invokevirtual 328	com/tencent/qqmini/sdk/cache/DiskLruCache:flush	()V
-    //   113: iconst_0
-    //   114: ireturn
-    //   115: astore_1
-    //   116: aload_1
-    //   117: invokevirtual 331	java/io/IOException:printStackTrace	()V
-    //   120: iconst_0
-    //   121: ireturn
-    //   122: aload_0
-    //   123: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   126: aload_1
-    //   127: invokevirtual 335	com/tencent/qqmini/sdk/cache/DiskLruCache:edit	(Ljava/lang/String;)Lcom/tencent/qqmini/sdk/cache/DiskLruCache$Editor;
-    //   130: astore_3
-    //   131: aload_3
-    //   132: ifnull +13 -> 145
-    //   135: aload_3
-    //   136: iconst_0
-    //   137: aload_2
-    //   138: invokevirtual 341	com/tencent/qqmini/sdk/cache/DiskLruCache$Editor:set	(ILjava/lang/String;)V
-    //   141: aload_3
-    //   142: invokevirtual 344	com/tencent/qqmini/sdk/cache/DiskLruCache$Editor:commit	()V
-    //   145: aload_0
-    //   146: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
-    //   149: ifnull +42 -> 191
-    //   152: aload_0
-    //   153: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
-    //   156: aload_1
-    //   157: aload_2
-    //   158: invokevirtual 280	android/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   161: pop
-    //   162: getstatic 40	com/tencent/qqmini/sdk/cache/Storage:mMapList	Ljava/util/concurrent/ConcurrentHashMap;
-    //   165: astore_1
-    //   166: aload_1
-    //   167: monitorenter
-    //   168: aload_0
-    //   169: getfield 96	com/tencent/qqmini/sdk/cache/Storage:mLruCache	Landroid/util/LruCache;
-    //   172: ldc 11
-    //   174: getstatic 40	com/tencent/qqmini/sdk/cache/Storage:mMapList	Ljava/util/concurrent/ConcurrentHashMap;
-    //   177: invokevirtual 126	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
-    //   180: invokeinterface 282 1 0
-    //   185: idiv
-    //   186: invokevirtual 230	android/util/LruCache:trimToSize	(I)V
-    //   189: aload_1
-    //   190: monitorexit
-    //   191: aload_0
-    //   192: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   195: ifnull +10 -> 205
-    //   198: aload_0
-    //   199: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   202: invokevirtual 328	com/tencent/qqmini/sdk/cache/DiskLruCache:flush	()V
-    //   205: iconst_1
-    //   206: ireturn
-    //   207: astore_2
-    //   208: aload_1
-    //   209: monitorexit
-    //   210: aload_2
-    //   211: athrow
-    //   212: astore_1
-    //   213: ldc 15
-    //   215: aload_1
-    //   216: invokevirtual 107	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   219: aload_1
-    //   220: invokestatic 110	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   223: aload_0
-    //   224: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   227: ifnull -199 -> 28
-    //   230: aload_0
-    //   231: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   234: invokevirtual 328	com/tencent/qqmini/sdk/cache/DiskLruCache:flush	()V
-    //   237: iconst_0
-    //   238: ireturn
-    //   239: astore_1
-    //   240: aload_1
-    //   241: invokevirtual 331	java/io/IOException:printStackTrace	()V
-    //   244: iconst_0
-    //   245: ireturn
-    //   246: astore_1
-    //   247: aload_1
-    //   248: invokevirtual 331	java/io/IOException:printStackTrace	()V
-    //   251: goto -46 -> 205
-    //   254: astore_1
-    //   255: aload_0
-    //   256: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   259: ifnull +10 -> 269
-    //   262: aload_0
-    //   263: getfield 89	com/tencent/qqmini/sdk/cache/Storage:mDiskCache	Lcom/tencent/qqmini/sdk/cache/DiskLruCache;
-    //   266: invokevirtual 328	com/tencent/qqmini/sdk/cache/DiskLruCache:flush	()V
-    //   269: aload_1
-    //   270: athrow
-    //   271: astore_2
-    //   272: aload_2
-    //   273: invokevirtual 331	java/io/IOException:printStackTrace	()V
-    //   276: goto -7 -> 269
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	279	0	this	Storage
-    //   0	279	2	paramString2	String
-    //   0	279	3	paramString3	String
-    // Exception table:
-    //   from	to	target	type
-    //   0	6	30	java/lang/Throwable
-    //   106	113	115	java/io/IOException
-    //   168	191	207	finally
-    //   208	210	207	finally
-    //   63	99	212	java/lang/Throwable
-    //   122	131	212	java/lang/Throwable
-    //   135	145	212	java/lang/Throwable
-    //   145	168	212	java/lang/Throwable
-    //   210	212	212	java/lang/Throwable
-    //   230	237	239	java/io/IOException
-    //   198	205	246	java/io/IOException
-    //   63	99	254	finally
-    //   122	131	254	finally
-    //   135	145	254	finally
-    //   145	168	254	finally
-    //   210	212	254	finally
-    //   213	223	254	finally
-    //   262	269	271	java/io/IOException
+    do
+    {
+      try
+      {
+        paramString2 = DiskLruCacheUtil.encode(paramString3, paramString2);
+        if ((paramString2 != null) && (paramString2.length() >= 1048576))
+        {
+          QMLog.e("Storage", "exceeded the limit size");
+          return false;
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        QMLog.e("Storage", "data encode failed.", paramString1);
+        return false;
+      }
+      if (this.mDiskCache == null) {
+        break;
+      }
+      if (this.mDiskCache.isClosed()) {
+        reCreateCache();
+      }
+    } while (commitCache(paramString1, paramString2));
+    return true;
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.nearby.now.view;
 
 import android.view.View;
 import android.widget.ListView;
+import com.tencent.av.utils.UITools;
 import com.tencent.mobileqq.nearby.now.model.Comments;
 import java.util.List;
-import mvk;
 
 class ShortVideoCommentsView$25
   implements Runnable
@@ -13,7 +13,7 @@ class ShortVideoCommentsView$25
   
   public void run()
   {
-    int i = mvk.b(this.this$0.getContext());
+    int i = UITools.b(this.this$0.getContext());
     if (ShortVideoCommentsView.a() * this.this$0.a.a.size() + ShortVideoCommentsView.b(this.this$0).getMeasuredHeight() >= i)
     {
       ShortVideoCommentsView.a(this.this$0).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.this$0).getMeasuredHeight());

@@ -1,9 +1,13 @@
 package com.etrump.mixlayout;
 
+import com.etrump.mixlayout.api.IEMCollection;
+import com.etrump.mixlayout.api.IETFont;
+
 public class EMCollection
+  implements IEMCollection
 {
-  private int[] mEmoticonIndexArray;
-  private ETEngine mEngine;
+  private int[] mEmoticonIndexArray = null;
+  private ETEngine mEngine = null;
   
   public EMCollection(ETEngine paramETEngine)
   {
@@ -62,19 +66,19 @@ public class EMCollection
     return -1;
   }
   
-  public boolean retrieve(String paramString, ETFont paramETFont)
+  public boolean retrieve(String paramString, IETFont paramIETFont)
   {
-    if ((this.mEngine != null) && (paramString != null) && (paramETFont != null))
+    if ((this.mEngine != null) && (paramString != null) && (paramIETFont != null))
     {
       int i = getStringCount(paramString);
-      this.mEmoticonIndexArray = this.mEngine.native_emoticonRetrieveCollection(paramString, i, paramETFont);
+      this.mEmoticonIndexArray = this.mEngine.native_emoticonRetrieveCollection(paramString, i, (ETFont)paramIETFont);
     }
     return this.mEmoticonIndexArray != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.etrump.mixlayout.EMCollection
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas;
 
 import android.text.TextUtils;
-import bhpe;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -9,10 +9,10 @@ import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class VasMonitorHandler$2
+class VasMonitorHandler$2
   implements Runnable
 {
-  public VasMonitorHandler$2(bhpe parambhpe, AppRuntime paramAppRuntime, boolean paramBoolean) {}
+  VasMonitorHandler$2(VasMonitorHandler paramVasMonitorHandler, AppRuntime paramAppRuntime, boolean paramBoolean) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class VasMonitorHandler$2
     if (!this.jdField_a_of_type_Boolean)
     {
       bool1 = true;
-      localObject3 = VasQuickUpdateManager.getJSONFromLocal((AppRuntime)localObject1, "monitorAppid", bool1, null);
+      localObject3 = VasUpdateUtil.a((AppRuntime)localObject1, "monitorAppid", bool1, null);
       if (localObject3 == null) {}
     }
     for (;;)
@@ -82,7 +82,7 @@ public class VasMonitorHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasMonitorHandler.2
  * JD-Core Version:    0.7.0.1
  */

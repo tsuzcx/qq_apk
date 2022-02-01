@@ -8,10 +8,10 @@ public final class AcsGetMsgListReq
   extends JceStruct
 {
   static AcsHead cache_head = new AcsHead();
-  public AcsHead head;
-  public int record_size;
-  public int record_start;
-  public long uin;
+  public AcsHead head = null;
+  public int record_size = 0;
+  public int record_start = 0;
+  public long uin = 0L;
   
   public AcsGetMsgListReq() {}
   

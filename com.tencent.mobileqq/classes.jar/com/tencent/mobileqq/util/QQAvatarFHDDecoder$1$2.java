@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.util;
 
-import bhaf;
-import bhag;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 
-public class QQAvatarFHDDecoder$1$2
+class QQAvatarFHDDecoder$1$2
   implements Runnable
 {
-  public QQAvatarFHDDecoder$1$2(bhag parambhag, String paramString) {}
+  QQAvatarFHDDecoder$1$2(QQAvatarFHDDecoder.1 param1, String paramString) {}
   
   public void run()
   {
-    if (bhaf.a(this.jdField_a_of_type_Bhag.a)) {
+    if (QQAvatarFHDDecoder.a(this.jdField_a_of_type_ComTencentMobileqqUtilQQAvatarFHDDecoder$1.a)) {
       return;
     }
-    Setting localSetting = bhaf.a(this.jdField_a_of_type_Bhag.a).getQQHeadSettingFromDB(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bhag.a.a(localSetting);
+    Setting localSetting = QQAvatarFHDDecoder.a(this.jdField_a_of_type_ComTencentMobileqqUtilQQAvatarFHDDecoder$1.a).getQQHeadSettingFromDB(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqUtilQQAvatarFHDDecoder$1.a.a(localSetting);
   }
 }
 

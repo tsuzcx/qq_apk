@@ -5,11 +5,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class LocalMultiProcConfig
 {
@@ -68,6 +68,8 @@ public class LocalMultiProcConfig
   public static final String QZONE_SUPER_FONT_ENABLED = "qzone_super_font_enabled";
   public static final String QZONE_SUPER_FONT_SAVE_DATA = "qzone_super_font_save_data";
   public static final String QZONE_SYNC_KUOLIE = "QZone_synckuolie";
+  public static final String QZONE_TROOP_REDPOINT_PULL_AMOUNT_THRESHOLD = "qzone_troop_redpoint_pull_amount_threshold";
+  public static final String QZONE_TROOP_REDPOINT_PULL_TIME_THRESHOLD = "qzone_troop_redpoint_pull_time_threshold";
   public static final String QZONE_WATER_MARK = "WaterMark";
   public static final String QZONE_WNS_NET_CLOSE = "qzone_wns_net";
   public static final String SHARPP_SO_MD5_AND_LENGTH = "sharpPSoMD5AndLength";
@@ -182,10 +184,10 @@ public class LocalMultiProcConfig
   @SuppressLint({"InlinedApi"})
   private static SharedPreferences getPreferences(String paramString)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
     if (Build.VERSION.SDK_INT > 10) {}
     for (int i = 4;; i = 0) {
-      return localBaseApplicationImpl.getSharedPreferences(paramString, i);
+      return localMobileQQ.getSharedPreferences(paramString, i);
     }
   }
   
@@ -220,14 +222,14 @@ public class LocalMultiProcConfig
   
   public static void loadAllConfig()
   {
-    QLog.d("LocalMultiProcConfig", 3, "loadAllConfig");
+    QLog.d("LocalMultiProcConfig", 4, "loadAllConfig");
     if (cacheState == 0) {
       return;
     }
     defultMap = getPreferences("QZ_QQ_shared_setting").getAll();
-    if (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount()))
+    if (!TextUtils.isEmpty(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount()))
     {
-      acountMap = getPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_" + "QZ_QQ_shared_preference").getAll();
+      acountMap = getPreferences(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount() + "_" + "QZ_QQ_shared_preference").getAll();
       return;
     }
     QLog.d("LocalMultiProcConfig", 1, "uin is 0");

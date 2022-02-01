@@ -14,8 +14,13 @@ public class WebCoreService
   extends Service
 {
   private static final int jdField_a_of_type_Int = ;
-  private static WebCoreService jdField_a_of_type_ComTencentMobileqqWebprocessWebCoreService;
+  private static WebCoreService jdField_a_of_type_ComTencentMobileqqWebprocessWebCoreService = null;
   public static boolean a;
+  
+  static
+  {
+    jdField_a_of_type_Boolean = false;
+  }
   
   /* Error */
   public static void a()
@@ -23,20 +28,20 @@ public class WebCoreService
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 32	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   3: getstatic 34	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   6: astore_0
-    //   7: new 34	android/content/Intent
+    //   7: new 36	android/content/Intent
     //   10: dup
     //   11: aload_0
     //   12: ldc 2
-    //   14: invokespecial 37	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   14: invokespecial 39	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   17: astore_1
     //   18: aload_0
     //   19: aload_1
-    //   20: invokevirtual 43	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
+    //   20: invokevirtual 45	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
     //   23: pop
     //   24: iconst_1
-    //   25: putstatic 45	com/tencent/mobileqq/webprocess/WebCoreService:jdField_a_of_type_Boolean	Z
+    //   25: putstatic 21	com/tencent/mobileqq/webprocess/WebCoreService:jdField_a_of_type_Boolean	Z
     //   28: ldc 2
     //   30: monitorexit
     //   31: return
@@ -74,18 +79,18 @@ public class WebCoreService
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: new 34	android/content/Intent
+    //   3: new 36	android/content/Intent
     //   6: dup
-    //   7: getstatic 32	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   7: getstatic 34	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   10: ldc 2
-    //   12: invokespecial 37	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   12: invokespecial 39	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   15: astore_0
     //   16: invokestatic 64	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   19: aload_0
     //   20: invokevirtual 70	com/tencent/qphone/base/util/BaseApplication:stopService	(Landroid/content/Intent;)Z
     //   23: pop
     //   24: iconst_0
-    //   25: putstatic 45	com/tencent/mobileqq/webprocess/WebCoreService:jdField_a_of_type_Boolean	Z
+    //   25: putstatic 21	com/tencent/mobileqq/webprocess/WebCoreService:jdField_a_of_type_Boolean	Z
     //   28: ldc 2
     //   30: monitorexit
     //   31: return
@@ -191,7 +196,7 @@ public class WebCoreService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebCoreService
  * JD-Core Version:    0.7.0.1
  */

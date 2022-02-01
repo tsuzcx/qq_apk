@@ -1,30 +1,28 @@
 package com.tencent.mobileqq.redtouch;
 
-import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import bbbp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.statistics.UEC;
+import com.tencent.mobileqq.tianshu.data.TianShuReportData;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.tianshu.TianShuReportData;
 import mqq.app.Foreground;
+import mqq.app.QActivityLifecycleCallbacks;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class RedTouchLifeTimeManager
   extends BroadcastReceiver
 {
-  private static RedTouchLifeTimeManager jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager;
+  private static RedTouchLifeTimeManager jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager = null;
   private long jdField_a_of_type_Long;
-  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new bbbp(this);
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  QActivityLifecycleCallbacks jdField_a_of_type_MqqAppQActivityLifecycleCallbacks = new RedTouchLifeTimeManager.2(this);
+  private boolean jdField_a_of_type_Boolean = false;
   private String b;
   private String c;
   private String d;
@@ -49,7 +47,7 @@ public class RedTouchLifeTimeManager
   
   private void a()
   {
-    UEC.a().a(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
+    Foreground.addActivityLifeCallback(this.jdField_a_of_type_MqqAppQActivityLifecycleCallbacks);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.plugin.state.change");
     BaseApplicationImpl.getApplication().registerReceiver(this, localIntentFilter);
@@ -64,14 +62,14 @@ public class RedTouchLifeTimeManager
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     QLog.i("RedTouchLifeTimeManager", 1, "triggleReport time = " + l + " class name " + this.jdField_a_of_type_JavaLangString);
     TianShuReportData localTianShuReportData = new TianShuReportData();
-    localTianShuReportData.mActionId = 133;
-    localTianShuReportData.mActionValue = ((int)l);
-    localTianShuReportData.mItemId = String.valueOf(this.c);
-    localTianShuReportData.mTraceId = String.valueOf(this.d);
-    localTianShuReportData.mTraceNum = 1;
-    localTianShuReportData.mOperTime = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-    localTianShuReportData.mAppId = "vab_red";
-    localTianShuReportData.mPageId = "vab_red";
+    localTianShuReportData.d = 133;
+    localTianShuReportData.jdField_e_of_type_Int = ((int)l);
+    localTianShuReportData.g = String.valueOf(this.c);
+    localTianShuReportData.b = String.valueOf(this.d);
+    localTianShuReportData.jdField_a_of_type_Int = 1;
+    localTianShuReportData.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+    localTianShuReportData.jdField_e_of_type_JavaLangString = "vab_red";
+    localTianShuReportData.f = "vab_red";
     ThreadManager.getSubThreadHandler().post(new RedTouchLifeTimeManager.1(this, localTianShuReportData));
   }
   
@@ -113,7 +111,7 @@ public class RedTouchLifeTimeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,27 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaba;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.subscribe.beans.ShareInfoBean;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.IOException;
 import java.util.Map;
-import zsf;
 
-public class SubscribeShareHelper$5
+class SubscribeShareHelper$5
   implements Runnable
 {
-  public SubscribeShareHelper$5(aaba paramaaba, Map paramMap, Runnable paramRunnable) {}
+  SubscribeShareHelper$5(SubscribeShareHelper paramSubscribeShareHelper, Map paramMap, Runnable paramRunnable) {}
   
   public void run()
   {
     try
     {
-      if (aaba.a(this.this$0) == null) {
+      if (SubscribeShareHelper.a(this.this$0) == null) {
         return;
       }
-      localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), aaba.a(this.this$0).e(), "GET", null, null);
+      localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), SubscribeShareHelper.a(this.this$0).e(), "GET", null, null);
       if (localObject == null) {
         break label132;
       }
@@ -61,7 +60,7 @@ public class SubscribeShareHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeShareHelper.5
  * JD-Core Version:    0.7.0.1
  */

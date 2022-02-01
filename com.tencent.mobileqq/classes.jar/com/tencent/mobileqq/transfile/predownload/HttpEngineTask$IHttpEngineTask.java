@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.transfile.predownload;
 
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.INetEngineListener;
 
 public abstract interface HttpEngineTask$IHttpEngineTask
-  extends INetEngine.INetEngineListener
+  extends INetEngineListener
 {
   public abstract void onPreDownloadStart(HttpEngineTask paramHttpEngineTask);
 }

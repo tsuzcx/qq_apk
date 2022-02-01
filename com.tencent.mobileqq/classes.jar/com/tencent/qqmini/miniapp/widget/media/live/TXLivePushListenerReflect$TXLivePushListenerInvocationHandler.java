@@ -15,6 +15,43 @@ class TXLivePushListenerReflect$TXLivePushListenerInvocationHandler
     this.listener = paramITXLivePushListener;
   }
   
+  private void livePushOnPushEvent(Object[] paramArrayOfObject)
+  {
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
+    {
+      if (((paramArrayOfObject[0] instanceof Integer)) && ((paramArrayOfObject[1] instanceof Bundle)))
+      {
+        if (QMLog.isColorLevel()) {
+          QMLog.e("TXLivePushListenerRefle", "onPushEvent code:" + paramArrayOfObject[0]);
+        }
+        if (this.listener != null) {
+          this.listener.onPushEvent(((Integer)paramArrayOfObject[0]).intValue(), (Bundle)paramArrayOfObject[1]);
+        }
+      }
+      if ((paramArrayOfObject[1] instanceof Bundle))
+      {
+        paramArrayOfObject = (Bundle)paramArrayOfObject[1];
+        if (QMLog.isColorLevel()) {
+          QMLog.e("TXLivePushListenerRefle", "onPushEvent params:" + paramArrayOfObject.toString());
+        }
+      }
+    }
+  }
+  
+  private void liverPushOnNetStatus(Object[] paramArrayOfObject)
+  {
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 1) && ((paramArrayOfObject[0] instanceof Bundle)))
+    {
+      paramArrayOfObject = (Bundle)paramArrayOfObject[0];
+      if (QMLog.isColorLevel()) {
+        QMLog.e("TXLivePushListenerRefle", "onNetStatus params:" + paramArrayOfObject.toString());
+      }
+      if (this.listener != null) {
+        this.listener.onNetStatus(paramArrayOfObject);
+      }
+    }
+  }
+  
   public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     QMLog.e("TXLivePushListenerRefle", "TXLivePushListenerInvocationHandler invoke:" + paramMethod.getName());
@@ -30,45 +67,20 @@ class TXLivePushListenerReflect$TXLivePushListenerInvocationHandler
       }
     }
     if ("onNetStatus".equals(paramMethod.getName())) {
-      if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 1) && ((paramArrayOfObject[0] instanceof Bundle)))
-      {
-        paramObject = (Bundle)paramArrayOfObject[0];
-        if (QMLog.isColorLevel()) {
-          QMLog.e("TXLivePushListenerRefle", "onNetStatus params:" + paramObject.toString());
-        }
-        if (this.listener != null) {
-          this.listener.onNetStatus(paramObject);
-        }
-      }
+      liverPushOnNetStatus(paramArrayOfObject);
     }
     for (;;)
     {
       return null;
-      if (("onPushEvent".equals(paramMethod.getName())) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
-      {
-        if (((paramArrayOfObject[0] instanceof Integer)) && ((paramArrayOfObject[1] instanceof Bundle)))
-        {
-          if (QMLog.isColorLevel()) {
-            QMLog.e("TXLivePushListenerRefle", "onPushEvent code:" + paramArrayOfObject[0]);
-          }
-          if (this.listener != null) {
-            this.listener.onPushEvent(((Integer)paramArrayOfObject[0]).intValue(), (Bundle)paramArrayOfObject[1]);
-          }
-        }
-        if ((paramArrayOfObject[1] instanceof Bundle))
-        {
-          paramObject = (Bundle)paramArrayOfObject[1];
-          if (QMLog.isColorLevel()) {
-            QMLog.e("TXLivePushListenerRefle", "onPushEvent params:" + paramObject.toString());
-          }
-        }
+      if ("onPushEvent".equals(paramMethod.getName())) {
+        livePushOnPushEvent(paramArrayOfObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.live.TXLivePushListenerReflect.TXLivePushListenerInvocationHandler
  * JD-Core Version:    0.7.0.1
  */

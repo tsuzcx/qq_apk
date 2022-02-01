@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.activity.history.link.search;
 
-import ajws;
 import android.os.Bundle;
 import android.os.Message;
-import bhec;
-import bkyc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
+import com.tencent.mobileqq.utils.HistoryChatMsgSearchKeyUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.ArrayList;
 
-public class LinkMessageResultAdapter$1
+class LinkMessageResultAdapter$1
   implements Runnable
 {
-  public LinkMessageResultAdapter$1(ajws paramajws, String paramString, int paramInt, long paramLong) {}
+  LinkMessageResultAdapter$1(LinkMessageResultAdapter paramLinkMessageResultAdapter, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
@@ -26,10 +25,10 @@ public class LinkMessageResultAdapter$1
     Object localObject4;
     if (this.jdField_a_of_type_Int == 1)
     {
-      ??? = this.this$0.a(ajws.a(this.this$0), this.jdField_a_of_type_JavaLangString);
-      bhec.a(ajws.a(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+      ??? = this.this$0.a(LinkMessageResultAdapter.a(this.this$0), this.jdField_a_of_type_JavaLangString);
+      HistoryChatMsgSearchKeyUtil.a(LinkMessageResultAdapter.a(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
       localObject2 = new ArrayList();
-      localObject4 = ajws.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
+      localObject4 = LinkMessageResultAdapter.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
       if (QLog.isColorLevel()) {
         QLog.i("LinkMessageResultAdapter", 2, "loadMessageResult, get: messageItems[] = " + localObject2);
       }
@@ -38,17 +37,17 @@ public class LinkMessageResultAdapter$1
     {
       synchronized (this.this$0.a)
       {
-        if (ajws.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
+        if (LinkMessageResultAdapter.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
         {
           if (this.jdField_a_of_type_Int != 1) {
             continue;
           }
-          localajws = this.this$0;
+          localLinkMessageResultAdapter = this.this$0;
           if (((ArrayList)localObject2).size() < 20)
           {
-            ajws.a(localajws, bool);
-            ajws.a(this.this$0, (ChatHistorySearchData)localObject4);
-            localObject2 = ajws.a(this.this$0).obtainMessage(2, localObject2);
+            LinkMessageResultAdapter.a(localLinkMessageResultAdapter, bool);
+            LinkMessageResultAdapter.a(this.this$0, (ChatHistorySearchData)localObject4);
+            localObject2 = LinkMessageResultAdapter.a(this.this$0).obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
             ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
@@ -63,7 +62,7 @@ public class LinkMessageResultAdapter$1
           if (this.jdField_a_of_type_Int != 2) {
             break;
           }
-          ??? = this.this$0.a(ajws.b(this.this$0), "");
+          ??? = this.this$0.a(LinkMessageResultAdapter.b(this.this$0), "");
           break;
         }
         bool = false;
@@ -71,13 +70,13 @@ public class LinkMessageResultAdapter$1
         if (this.jdField_a_of_type_Int != 2) {
           continue;
         }
-        ajws localajws = this.this$0;
+        LinkMessageResultAdapter localLinkMessageResultAdapter = this.this$0;
         if (((ArrayList)localObject2).size() < 20)
         {
           bool = true;
-          ajws.b(localajws, bool);
-          ajws.b(this.this$0, (ChatHistorySearchData)localObject4);
-          localObject2 = ajws.b(this.this$0).obtainMessage(2, localObject2);
+          LinkMessageResultAdapter.b(localLinkMessageResultAdapter, bool);
+          LinkMessageResultAdapter.b(this.this$0, (ChatHistorySearchData)localObject4);
+          localObject2 = LinkMessageResultAdapter.b(this.this$0).obtainMessage(2, localObject2);
           ((Message)localObject2).arg1 = 2;
           localObject4 = new Bundle();
           ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
@@ -91,7 +90,7 @@ public class LinkMessageResultAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.search.LinkMessageResultAdapter.1
  * JD-Core Version:    0.7.0.1
  */

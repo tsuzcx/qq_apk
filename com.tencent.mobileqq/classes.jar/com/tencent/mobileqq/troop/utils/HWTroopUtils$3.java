@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.utils;
 
-import awzf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.model.TroopInfoManager;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -13,15 +13,15 @@ import java.util.List;
 import tencent.im.oidb.cmd0xe83.oidb_0xe83.AppInfo;
 import tencent.im.oidb.cmd0xe83.oidb_0xe83.RspBody;
 
-public final class HWTroopUtils$3
+final class HWTroopUtils$3
   implements Runnable
 {
-  public HWTroopUtils$3(QQAppInterface paramQQAppInterface, String paramString) {}
+  HWTroopUtils$3(QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    awzf localawzf = (awzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOPINFO_MANAGER);
-    Object localObject = localawzf.a(this.jdField_a_of_type_JavaLangString);
+    TroopInfoManager localTroopInfoManager = (TroopInfoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOPINFO_MANAGER);
+    Object localObject = localTroopInfoManager.a(this.jdField_a_of_type_JavaLangString);
     if (localObject != null) {
       try
       {
@@ -44,7 +44,7 @@ public final class HWTroopUtils$3
             {
               localAppInfo.push_red_point.set(0);
               localRspBody.infos.set((List)localObject);
-              localawzf.a(this.jdField_a_of_type_JavaLangString, localRspBody.toByteArray());
+              localTroopInfoManager.a(this.jdField_a_of_type_JavaLangString, localRspBody.toByteArray());
               return;
             }
           }

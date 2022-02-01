@@ -8,11 +8,11 @@ public final class CSRespPushStreamMsg
   extends JceStruct
 {
   static StreamInfo cache_stStreamInfo;
-  public int iSeq;
-  public long lKey;
-  public short shResetSeq;
-  public short shVersion;
-  public StreamInfo stStreamInfo;
+  public int iSeq = 0;
+  public long lKey = 0L;
+  public short shResetSeq = 0;
+  public short shVersion = 0;
+  public StreamInfo stStreamInfo = null;
   
   public CSRespPushStreamMsg() {}
   

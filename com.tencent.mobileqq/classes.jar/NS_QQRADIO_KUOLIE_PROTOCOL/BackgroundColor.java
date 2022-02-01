@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class BackgroundColor
   extends JceStruct
 {
-  public int beginVal;
-  public int endVal;
+  public int beginVal = 0;
+  public int endVal = 0;
   
   public BackgroundColor() {}
   

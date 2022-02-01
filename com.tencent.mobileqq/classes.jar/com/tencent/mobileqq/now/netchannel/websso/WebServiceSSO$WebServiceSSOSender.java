@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.now.netchannel.websso;
 
-import ayqd;
-import ayqf;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 import okhttp3.Dispatcher;
 
-public class WebServiceSSO$WebServiceSSOSender
+class WebServiceSSO$WebServiceSSOSender
 {
   final int jdField_a_of_type_Int = 10;
   final ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(10);
@@ -26,11 +24,11 @@ public class WebServiceSSO$WebServiceSSOSender
     ThreadManager.executeOnSubThread(new WebServiceSSO.WebServiceSSOSender.2(this));
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, ayqd paramayqd)
+  public void a(String paramString, byte[] paramArrayOfByte, SSOCallback paramSSOCallback)
   {
-    paramString = new ayqf(this, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet(), paramString, paramArrayOfByte);
+    paramString = new WebServiceSSO.WebServiceSSOSender.RequestCallable(this, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet(), paramString, paramArrayOfByte);
     paramString = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(paramString);
-    this.jdField_b_of_type_JavaUtilConcurrentExecutorService.submit(new WebServiceSSO.WebServiceSSOSender.1(this, paramString, paramayqd));
+    this.jdField_b_of_type_JavaUtilConcurrentExecutorService.submit(new WebServiceSSO.WebServiceSSOSender.1(this, paramString, paramSSOCallback));
   }
 }
 

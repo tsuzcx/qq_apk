@@ -1,6 +1,5 @@
 package com.tencent.biz.webviewplugin;
 
-import aara;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +7,7 @@ import android.os.Parcelable.Creator;
 public final class NewerGuidePlugin$PhoneInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhoneInfo> CREATOR = new aara();
+  public static final Parcelable.Creator<PhoneInfo> CREATOR = new NewerGuidePlugin.PhoneInfo.1();
   public String a;
   public String b;
   public String c;
@@ -16,7 +15,7 @@ public final class NewerGuidePlugin$PhoneInfo
   
   public NewerGuidePlugin$PhoneInfo() {}
   
-  public NewerGuidePlugin$PhoneInfo(Parcel paramParcel)
+  protected NewerGuidePlugin$PhoneInfo(Parcel paramParcel)
   {
     this.a = paramParcel.readString();
     this.b = paramParcel.readString();
@@ -39,7 +38,7 @@ public final class NewerGuidePlugin$PhoneInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.PhoneInfo
  * JD-Core Version:    0.7.0.1
  */

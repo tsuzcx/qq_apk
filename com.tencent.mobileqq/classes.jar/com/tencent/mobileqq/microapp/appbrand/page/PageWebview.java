@@ -68,7 +68,7 @@ public class PageWebview
   
   private void onWebViewReady$164d4c8c(com.tencent.mobileqq.microapp.a.c paramc)
   {
-    if (StringUtil.isEmpty(this.wxssJsStr))
+    if (StringUtil.a(this.wxssJsStr))
     {
       String str = paramc.g(this.mRouteUrl);
       if (!TextUtils.isEmpty(str)) {
@@ -161,7 +161,7 @@ public class PageWebview
   
   public void loadPageWebviewJs$164d4c8c(com.tencent.mobileqq.microapp.a.c paramc)
   {
-    if (StringUtil.isEmpty(this.mRouteUrl)) {}
+    if (StringUtil.a(this.mRouteUrl)) {}
     while ((this.hasFLoad) || (!this.hasLoadHtmlFinish)) {
       return;
     }
@@ -172,7 +172,7 @@ public class PageWebview
     this.hasFLoad = true;
   }
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.onWebviewScrollListener != null) {

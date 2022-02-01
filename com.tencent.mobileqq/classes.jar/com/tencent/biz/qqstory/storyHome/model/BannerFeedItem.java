@@ -4,23 +4,21 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.SerializationPB.BannerFeed;
 import com.tencent.biz.qqstory.base.SerializationPB.CommentLikeFeed;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerShareInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import wjs;
-import wke;
-import ybs;
-import ybt;
-import zdl;
 
 public class BannerFeedItem
-  extends CommentLikeFeedItem<ybt, QQUserUIItem>
+  extends CommentLikeFeedItem<BannerHomeFeed, QQUserUIItem>
 {
   public String blurb;
   public String content;
@@ -31,7 +29,7 @@ public class BannerFeedItem
   public long recommendId = -1L;
   public String recommendTitle = "";
   public String schema;
-  public ybs shareInfo = new ybs();
+  public BannerFeedItem.ShareInfo shareInfo = new BannerFeedItem.ShareInfo();
   
   protected int assignType()
   {
@@ -75,8 +73,8 @@ public class BannerFeedItem
     this.feedId = paramString;
     paramString = new QQUserUIItem();
     paramString.convertFrom((qqstory_struct.UserInfo)paramBannerFeed.user.get());
-    this.mOwner = ((wke)wjs.a(2)).a(paramString);
-    zdl.a(this.mOwner);
+    this.mOwner = ((UserManager)SuperManager.a(2)).a(paramString);
+    AssertUtils.a(this.mOwner);
     this.ownerId = this.mOwner.getUnionId();
     this.date = String.valueOf(paramBannerFeed.date.get());
     super.setDate(this.date);
@@ -186,9 +184,9 @@ public class BannerFeedItem
   }
   
   @NonNull
-  public ybt generateHomeFeed()
+  public BannerHomeFeed generateHomeFeed()
   {
-    return new ybt(this);
+    return new BannerHomeFeed(this);
   }
   
   public int getCommentLikeType()
@@ -208,7 +206,7 @@ public class BannerFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    this.mOwner = ((wke)wjs.a(2)).a(this.ownerId);
+    this.mOwner = ((UserManager)SuperManager.a(2)).a(this.ownerId);
   }
   
   public void readFromLocalByte(byte[] paramArrayOfByte)
@@ -232,7 +230,7 @@ public class BannerFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.BannerFeedItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package cooperation.qqreader.ui;
 
 import android.content.Intent;
-import bmgm;
+import cooperation.qqreader.utils.Log;
 
 class ForceUserUpdateActivity$8
   implements Runnable
@@ -14,7 +14,7 @@ class ForceUserUpdateActivity$8
     if (localIntent1 != null)
     {
       localIntent1 = (Intent)localIntent1.getParcelableExtra("origin_intent");
-      bmgm.d("ForceUserUpdateActivity", "finishForceUpdateIfNeeded: finish");
+      Log.d("ForceUserUpdateActivity", "finishForceUpdateIfNeeded: finish");
       Intent localIntent2 = new Intent();
       if (localIntent1 != null) {
         localIntent2.putExtras(localIntent1);
@@ -29,13 +29,13 @@ class ForceUserUpdateActivity$8
     {
       this.this$0.finish();
       return;
-      bmgm.a("ForceUserUpdateActivity", "finishForceUpdateIfNeeded: currentIntent = null");
+      Log.a("ForceUserUpdateActivity", "finishForceUpdateIfNeeded: currentIntent = null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.ui.ForceUserUpdateActivity.8
  * JD-Core Version:    0.7.0.1
  */

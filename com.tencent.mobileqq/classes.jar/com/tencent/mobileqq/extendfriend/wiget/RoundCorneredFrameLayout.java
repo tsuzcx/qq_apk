@@ -26,7 +26,7 @@ public class RoundCorneredFrameLayout
   public RoundCorneredFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.a = AIOUtils.dp2px(a(paramContext, paramAttributeSet), paramContext.getResources());
+    this.a = AIOUtils.a(a(paramContext, paramAttributeSet), paramContext.getResources());
   }
   
   int a(Context paramContext, AttributeSet paramAttributeSet)
@@ -37,7 +37,7 @@ public class RoundCorneredFrameLayout
     return i;
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     int i = getWidth();
     int j = getHeight();
@@ -58,7 +58,7 @@ public class RoundCorneredFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.RoundCorneredFrameLayout
  * JD-Core Version:    0.7.0.1
  */

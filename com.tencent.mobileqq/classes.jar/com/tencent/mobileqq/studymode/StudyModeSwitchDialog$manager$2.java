@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.studymode;
 
-import bdve;
-import bdvs;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -13,23 +11,23 @@ import mqq.manager.Manager;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mobileqq/studymode/ModeSwitchManager;", "invoke"}, k=3, mv={1, 1, 16})
-public final class StudyModeSwitchDialog$manager$2
+final class StudyModeSwitchDialog$manager$2
   extends Lambda
-  implements Function0<bdve>
+  implements Function0<ModeSwitchManager>
 {
-  public StudyModeSwitchDialog$manager$2(bdvs parambdvs)
+  StudyModeSwitchDialog$manager$2(StudyModeSwitchDialog paramStudyModeSwitchDialog)
   {
     super(0);
   }
   
   @NotNull
-  public final bdve invoke()
+  public final ModeSwitchManager invoke()
   {
-    Manager localManager = bdvs.a(this.this$0).app.getManager(QQManagerFactory.STUDY_MODE_SWITCHER_MANAGER);
+    Manager localManager = StudyModeSwitchDialog.a(this.this$0).app.getManager(QQManagerFactory.STUDY_MODE_SWITCHER_MANAGER);
     if (localManager == null) {
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.studymode.ModeSwitchManager");
     }
-    return (bdve)localManager;
+    return (ModeSwitchManager)localManager;
   }
 }
 

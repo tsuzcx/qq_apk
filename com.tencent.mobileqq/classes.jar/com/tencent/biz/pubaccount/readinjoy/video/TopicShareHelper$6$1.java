@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bisl;
-import sga;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class TopicShareHelper$6$1
   implements Runnable
@@ -10,14 +9,14 @@ class TopicShareHelper$6$1
   
   public void run()
   {
-    if ((sga.a(this.a.this$0) != null) && (sga.a(this.a.this$0).isShowing())) {
-      sga.a(this.a.this$0).dismiss();
+    if ((TopicShareHelper.a(this.a.this$0) != null) && (TopicShareHelper.a(this.a.this$0).isShowing())) {
+      TopicShareHelper.a(this.a.this$0).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper.6.1
  * JD-Core Version:    0.7.0.1
  */

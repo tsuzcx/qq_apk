@@ -2,15 +2,15 @@ package com.tencent.mobileqq.transfile.predownload;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.qphone.base.util.QLog;
 
 public class HttpEngineTask
   extends AbsPreDownloadTask
-  implements INetEngine.INetEngineListener
+  implements INetEngineListener
 {
   public HttpNetReq httpReq;
   private HttpEngineTask.IHttpEngineTask mCallback;
@@ -35,7 +35,7 @@ public class HttpEngineTask
   
   protected void realCancel()
   {
-    this.app.getNetEngine(0).cancelReq(this.httpReq);
+    ((IHttpEngineService)this.app.getRuntimeService(IHttpEngineService.class, "all")).cancelReq(this.httpReq);
   }
   
   protected void realStart()
@@ -43,7 +43,7 @@ public class HttpEngineTask
     if (QLog.isColorLevel()) {
       QLog.d("PreDownload.Task", 2, "start: " + this);
     }
-    this.app.getNetEngine(0).sendReq(this.httpReq);
+    ((IHttpEngineService)this.app.getRuntimeService(IHttpEngineService.class, "all")).sendReq(this.httpReq);
     this.httpReq.mCallback = this;
     this.mCallback.onPreDownloadStart(this);
   }

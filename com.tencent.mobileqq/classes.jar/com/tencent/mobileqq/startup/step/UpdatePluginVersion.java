@@ -12,14 +12,14 @@ import java.io.File;
 public class UpdatePluginVersion
   extends Step
 {
-  public static final String[] a = { "qwallet_plugin.apk", "qqdataline.apk", "qlink_plugin.apk", "qqsmartdevice.apk", "qqreaderplugin.apk", "readinjoy_plugin.apk", "comic_plugin.apk", "QQWifiPlugin.apk", "group_video_plugin.apk", "qqpim_plugin.apk", "qqindividuality_plugin.apk", "LiveRoomPlugin.apk", "qzone_live_video_plugin.apk", "qzone_vertical_video_plugin.apk" };
+  public static final String[] a = { "expand.apk", "qwallet_plugin.apk", "qqdataline.apk", "qlink_plugin.apk", "qqsmartdevice.apk", "qqreaderplugin.apk", "readinjoy_plugin.apk", "comic_plugin.apk", "QQWifiPlugin.apk", "group_video_plugin.apk", "qqpim_plugin.apk", "qqindividuality_plugin.apk", "LiveRoomPlugin.apk", "qzone_live_video_plugin.apk", "qzone_vertical_video_plugin.apk" };
   
   protected boolean doStep()
   {
     Object localObject2 = BaseApplicationImpl.sApplication.getApplicationContext();
     SharedPreferences localSharedPreferences = ((Context)localObject2).getSharedPreferences("update_plugin_version", 0);
     Object localObject1 = localSharedPreferences.getString("cur_version", "");
-    String str1 = AppSetting.f();
+    String str1 = AppSetting.g();
     QLog.d("UpdatePluginVersion", 1, (String)localObject1 + ", " + str1);
     if (!str1.equals(localObject1))
     {
@@ -30,6 +30,7 @@ public class UpdatePluginVersion
       {
         String str2 = a[i];
         File localFile = new File((File)localObject1, str2 + ".cfg");
+        QLog.d("UpdatePluginVersion", 1, "clear start " + str2);
         boolean bool;
         if (localFile.exists())
         {

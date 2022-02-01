@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.core.net;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.ac;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 
 public class w
@@ -16,7 +16,7 @@ public class w
   
   public void a()
   {
-    this.a.sender.i();
+    this.a.sender.k();
   }
   
   public void a(MsfSocketInputBuffer paramMsfSocketInputBuffer, int paramInt)

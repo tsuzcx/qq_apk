@@ -13,20 +13,20 @@ class RequestJsPlugin$7
   {
     if (paramBoolean)
     {
-      RequestJsPlugin.access$2000(this.this$0, this.val$req, paramJSONObject);
+      RequestJsPlugin.access$1100(this.this$0, this.val$req, paramJSONObject);
       return;
     }
     if (paramJSONObject != null)
     {
-      RequestJsPlugin.access$2100(this.this$0, this.val$req, paramJSONObject, paramJSONObject.optString("errMsg"));
+      RequestJsPlugin.access$1200(this.this$0, this.val$req, paramJSONObject, paramJSONObject.optString("errMsg"));
       return;
     }
-    RequestJsPlugin.access$2100(this.this$0, this.val$req, null, "do not support addGroupApp!");
+    RequestJsPlugin.access$1200(this.this$0, this.val$req, null, "do not support addGroupApp!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RequestJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

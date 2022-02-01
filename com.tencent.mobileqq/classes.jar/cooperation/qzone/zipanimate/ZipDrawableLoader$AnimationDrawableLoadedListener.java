@@ -13,7 +13,7 @@ public class ZipDrawableLoader$AnimationDrawableLoadedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.zipanimate.ZipDrawableLoader.AnimationDrawableLoadedListener
  * JD-Core Version:    0.7.0.1
  */

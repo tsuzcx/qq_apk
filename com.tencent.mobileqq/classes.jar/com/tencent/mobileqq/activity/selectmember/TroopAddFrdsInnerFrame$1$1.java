@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alyp;
-import bbcm;
+import com.tencent.mobileqq.relationx.batchAdd.BatchAddFriendData;
 import java.util.ArrayList;
 
-public class TroopAddFrdsInnerFrame$1$1
+class TroopAddFrdsInnerFrame$1$1
   implements Runnable
 {
-  public TroopAddFrdsInnerFrame$1$1(alyp paramalyp, ArrayList paramArrayList) {}
+  TroopAddFrdsInnerFrame$1$1(TroopAddFrdsInnerFrame.1 param1, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bbcm.a(this.jdField_a_of_type_Alyp.a.a.app, this.jdField_a_of_type_Alyp.a.a, this.jdField_a_of_type_Alyp.a.b, this.jdField_a_of_type_JavaUtilArrayList);
+    BatchAddFriendData.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopAddFrdsInnerFrame$1.a.a.app, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopAddFrdsInnerFrame$1.a.a, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopAddFrdsInnerFrame$1.a.b, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame.1.1
  * JD-Core Version:    0.7.0.1
  */

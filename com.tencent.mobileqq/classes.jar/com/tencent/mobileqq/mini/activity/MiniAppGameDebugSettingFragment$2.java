@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class MiniAppGameDebugSettingFragment$2
   implements CompoundButton.OnCheckedChangeListener
@@ -14,7 +13,6 @@ class MiniAppGameDebugSettingFragment$2
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     MiniAppGameDebugSettingFragment.access$000(this.this$0).edit().putBoolean("pref_key_use_old_desktop", paramBoolean).apply();
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

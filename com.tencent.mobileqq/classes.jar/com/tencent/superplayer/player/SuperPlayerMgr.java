@@ -5,6 +5,7 @@ import android.os.Build.VERSION;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.text.TextUtils;
 import android.view.Surface;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKUtils;
 import com.tencent.superplayer.api.ISuperPlayer;
@@ -32,8 +33,8 @@ import com.tencent.superplayer.preload.PreloadPlayerInfo;
 import com.tencent.superplayer.preload.PreloadPlayerMgr;
 import com.tencent.superplayer.report.ISPReporter;
 import com.tencent.superplayer.report.SPReportHelper;
+import com.tencent.superplayer.utils.CommonUtil;
 import com.tencent.superplayer.utils.LogUtil;
-import com.tencent.superplayer.utils.Utils;
 import com.tencent.superplayer.view.ISPlayerVideoView;
 import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
 import com.tencent.superplayer.view.SPlayerVideoView;
@@ -133,12 +134,18 @@ public class SuperPlayerMgr
       }
       this.mReporter.onVideoFrameCheckResult((int)paramLong1);
       return;
+      if ((!(paramObject instanceof String)) || (TextUtils.isEmpty((String)paramObject))) {
+        break;
+      }
+      this.mReporter.onQuicInfoUpdate((String)paramObject);
+      return;
     }
   }
   
   private void handleOnSeekComplete()
   {
     this.mIsSeeking = false;
+    this.mReporter.onSeekComplete();
   }
   
   private void handleOnVideoPrepared()
@@ -191,7 +198,7 @@ public class SuperPlayerMgr
   
   private void initTagAndToken()
   {
-    this.mPlayerTag = Utils.createPlayerTag();
+    this.mPlayerTag = CommonUtil.a();
     this.mTAG = (this.mPlayerTag + "-" + "SuperPlayerMgr.java");
     this.mToken = TVKUtils.getMd5(SystemClock.uptimeMillis() + "-" + Math.random());
     if ((this.mToken != null) && (this.mToken.length() > 24)) {
@@ -810,6 +817,7 @@ public class SuperPlayerMgr
       return;
     }
     this.mPlayState.changeStateAndNotify(10);
+    this.mReporter.onRelease();
     SuperPlayerSDKMgr.getPlayerPool().remove(this);
     this.mPlayerMgrInternal.release();
   }
@@ -955,6 +963,20 @@ public class SuperPlayerMgr
     this.mPlayerMgrInternal.setPlaySpeedRatio(paramFloat);
   }
   
+  public void setPlayerActive()
+  {
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.setPlayerActive();
+    }
+  }
+  
+  public void setReportContentId(String paramString)
+  {
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.setReportContentId(paramString);
+    }
+  }
+  
   public void setSurface(Surface paramSurface)
   {
     LogUtil.i(this.mTAG, "api call : setSurface");
@@ -1035,7 +1057,7 @@ public class SuperPlayerMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerMgr
  * JD-Core Version:    0.7.0.1
  */

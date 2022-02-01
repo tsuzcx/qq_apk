@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -23,8 +22,9 @@ public class TroopTagViewActivity
   
   public TroopTagViewActivity()
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangClass = TroopTagViewActivity.TroopTagViewFragment.class;
+    this.mFragmentClass = TroopTagViewActivity.TroopTagViewFragment.class;
   }
   
   public void a(String paramString)

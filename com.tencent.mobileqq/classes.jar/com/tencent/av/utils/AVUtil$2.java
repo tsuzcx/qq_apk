@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import mqq.util.WeakReference;
 
-public final class AVUtil$2
+final class AVUtil$2
   implements Runnable
 {
   public void run()
@@ -60,7 +60,7 @@ public final class AVUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.AVUtil.2
  * JD-Core Version:    0.7.0.1
  */

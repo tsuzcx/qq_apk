@@ -1,26 +1,21 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
 import android.text.TextUtils;
-import anrf;
-import aseg;
-import asej;
-import asel;
-import asem;
-import asen;
-import awyr;
-import bnox;
-import bofz;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CameraEmoRoamingHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.mqsafeedit.MD5;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.gif.video.GIFCreator;
+import dov.com.qq.im.capture.CaptureContext;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Timer;
@@ -28,10 +23,10 @@ import java.util.Timer;
 public class CameraEmoSingleSend
   extends AsyncStep
 {
-  private anrf jdField_a_of_type_Anrf;
-  private aseg jdField_a_of_type_Aseg;
-  private asen jdField_a_of_type_Asen;
+  private CameraEmoRoamingHandler jdField_a_of_type_ComTencentMobileqqAppCameraEmoRoamingHandler;
   private CameraEmotionData jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData;
+  private CameraEmoRoamingManager jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoRoamingManager;
+  private CameraEmotionRoamingDBManager jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private Timer jdField_a_of_type_JavaUtilTimer;
   public boolean a;
@@ -54,9 +49,9 @@ public class CameraEmoSingleSend
     for (;;)
     {
       ((CameraEmotionData)localObject2).RomaingType = ((String)???);
-      this.jdField_a_of_type_Asen.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-      this.jdField_a_of_type_Asen.a();
-      this.jdField_a_of_type_Anrf.a(5, paramBoolean, 14);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager.a();
+      this.jdField_a_of_type_ComTencentMobileqqAppCameraEmoRoamingHandler.a(5, paramBoolean, 14);
       localObject2 = new HashMap();
       if (paramBoolean)
       {
@@ -88,15 +83,15 @@ public class CameraEmoSingleSend
       String str = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
       this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath = paramString;
       this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.md5 = str;
-      this.jdField_a_of_type_Asen.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-      paramString = new asem(this);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+      paramString = new CameraEmoSingleSend.3(this);
       if (!a())
       {
         QLog.d("CameraEmoSingleSend", 1, "uploadCameraEmo, net not support");
         paramString.a(12, this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
         return;
       }
-      this.jdField_a_of_type_Aseg.a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoRoamingManager.a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, paramString);
       return;
     }
     a(false, 14);
@@ -126,14 +121,14 @@ public class CameraEmoSingleSend
         }
         QLog.d("CameraEmoSingleSend", 1, new Object[] { "resend, emoOriginalPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoOriginalPath, " emoPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath, " emoId:", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoId) });
         this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.RomaingType = "failed";
-        this.jdField_a_of_type_Asen.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-        this.jdField_a_of_type_Anrf.notifyUI(4, true, null);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+        this.jdField_a_of_type_ComTencentMobileqqAppCameraEmoRoamingHandler.notifyUI(4, true, null);
         return 7;
         bool2 = false;
         break;
       }
       label244:
-      this.jdField_a_of_type_Asen.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
     }
     for (;;)
     {
@@ -163,7 +158,7 @@ public class CameraEmoSingleSend
             }
             long l = System.currentTimeMillis();
             ??? = a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoOriginalPath);
-            ((bnox)???).a(new asel(this, (bnox)???, l));
+            ((GIFCreator)???).a(new CameraEmoSingleSend.2(this, (GIFCreator)???, l));
           }
           QLog.d("CameraEmoSingleSend", 1, new Object[] { "upload no need wait, timer canceled, emoPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath });
           return 7;
@@ -177,14 +172,9 @@ public class CameraEmoSingleSend
     }
   }
   
-  public bnox a(String paramString)
-  {
-    return new bnox(paramString);
-  }
-  
   public QQAppInterface a()
   {
-    return (QQAppInterface)bofz.a();
+    return (QQAppInterface)CaptureContext.a();
   }
   
   public StatisticCollector a()
@@ -192,30 +182,35 @@ public class CameraEmoSingleSend
     return StatisticCollector.getInstance(BaseApplication.getContext());
   }
   
+  public GIFCreator a(String paramString)
+  {
+    return new GIFCreator(paramString);
+  }
+  
   public void a()
   {
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null)
     {
-      this.jdField_a_of_type_Asen = ((asen)localQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER));
-      this.jdField_a_of_type_Anrf = ((anrf)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CAMERA_EMOTICON_HANDLER));
-      this.jdField_a_of_type_Aseg = ((aseg)localQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER));
+      this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager = ((CameraEmotionRoamingDBManager)localQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER));
+      this.jdField_a_of_type_ComTencentMobileqqAppCameraEmoRoamingHandler = ((CameraEmoRoamingHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CAMERA_EMOTICON_HANDLER));
+      this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoRoamingManager = ((CameraEmoRoamingManager)localQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER));
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    awyr.c(paramString, paramInt);
+    EmoticonManager.c(paramString, paramInt);
   }
   
   public boolean a()
   {
-    return NetworkUtil.isNetSupport(BaseApplication.getContext());
+    return NetworkUtil.d(BaseApplication.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend
  * JD-Core Version:    0.7.0.1
  */

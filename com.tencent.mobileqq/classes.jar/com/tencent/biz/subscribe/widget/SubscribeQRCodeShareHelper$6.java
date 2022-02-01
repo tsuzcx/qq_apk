@@ -1,21 +1,20 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaau;
 import android.content.Intent;
-import aupt;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 import java.io.File;
 import java.net.URI;
 
-public class SubscribeQRCodeShareHelper$6
+class SubscribeQRCodeShareHelper$6
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$6(aaau paramaaau) {}
+  SubscribeQRCodeShareHelper$6(SubscribeQRCodeShareHelper paramSubscribeQRCodeShareHelper) {}
   
   public void run()
   {
-    if (aaau.a(this.this$0))
+    if (SubscribeQRCodeShareHelper.a(this.this$0))
     {
-      String str = aaau.a(this.this$0, aaau.a(this.this$0));
+      String str = SubscribeQRCodeShareHelper.a(this.this$0, SubscribeQRCodeShareHelper.a(this.this$0));
       File localFile = new File(str);
       Intent localIntent = new Intent();
       localIntent.putExtra("forward_type", 1);
@@ -30,13 +29,13 @@ public class SubscribeQRCodeShareHelper$6
       localIntent.putExtra("filePath", str);
       localIntent.putExtra("shareQQType", 13);
       localIntent.putExtra("reqType", 1);
-      aupt.a(aaau.a(this.this$0), localIntent, 21);
+      ForwardBaseOption.a(SubscribeQRCodeShareHelper.a(this.this$0), localIntent, 21);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.6
  * JD-Core Version:    0.7.0.1
  */

@@ -19,17 +19,17 @@ public final class FileStoragePushFSSvcList
   static ArrayList<FileStorageServerListInfo> cache_vUpLoadList;
   static ArrayList<FileStorageServerListInfo> cache_vUrlEncodeServiceList;
   static ArrayList<FileStorageServerListInfo> cache_vVipEmotionList;
-  public BigDataChannel bigDataChannel;
-  public DomainIpChannel domainIpChannel;
-  public FmtIPInfo fmtIPInfo;
-  public byte[] pttlist;
-  public ArrayList<FileStorageServerListInfo> vC2CPicDownList;
-  public ArrayList<FileStorageServerListInfo> vGPicDownLoadList;
-  public ArrayList<FileStorageServerListInfo> vPicDownLoadList;
-  public ArrayList<FileStorageServerListInfo> vQzoneProxyServiceList;
-  public ArrayList<FileStorageServerListInfo> vUpLoadList;
-  public ArrayList<FileStorageServerListInfo> vUrlEncodeServiceList;
-  public ArrayList<FileStorageServerListInfo> vVipEmotionList;
+  public BigDataChannel bigDataChannel = null;
+  public DomainIpChannel domainIpChannel = null;
+  public FmtIPInfo fmtIPInfo = null;
+  public byte[] pttlist = null;
+  public ArrayList<FileStorageServerListInfo> vC2CPicDownList = null;
+  public ArrayList<FileStorageServerListInfo> vGPicDownLoadList = null;
+  public ArrayList<FileStorageServerListInfo> vPicDownLoadList = null;
+  public ArrayList<FileStorageServerListInfo> vQzoneProxyServiceList = null;
+  public ArrayList<FileStorageServerListInfo> vUpLoadList = null;
+  public ArrayList<FileStorageServerListInfo> vUrlEncodeServiceList = null;
+  public ArrayList<FileStorageServerListInfo> vVipEmotionList = null;
   
   public FileStoragePushFSSvcList() {}
   

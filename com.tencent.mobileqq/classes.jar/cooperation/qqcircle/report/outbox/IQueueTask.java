@@ -1,6 +1,6 @@
 package cooperation.qqcircle.report.outbox;
 
-import com.tencent.component.app.common.SmartParcelable;
+import com.tencent.mobileqq.qcircle.api.db.util.SmartParcelable;
 
 public abstract interface IQueueTask
   extends SmartParcelable
@@ -39,7 +39,7 @@ public abstract interface IQueueTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.IQueueTask
  * JD-Core Version:    0.7.0.1
  */

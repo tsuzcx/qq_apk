@@ -3,9 +3,9 @@ package com.tencent.mobileqq.transfile;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
-import bhbx;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.OutputStream;
@@ -135,7 +135,7 @@ public class QZoneRecentPhotoDownloader
     //   117: aload_2
     //   118: invokestatic 114	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:insertMtype	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   121: aload 4
-    //   123: invokestatic 120	com/tencent/mobileqq/utils/HttpDownloadUtil:download	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/io/File;)Z
+    //   123: invokestatic 120	com/tencent/mobileqq/utils/HttpDownloadUtil:download	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/io/File;)Z
     //   126: ifeq +102 -> 228
     //   129: aload 5
     //   131: invokestatic 126	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
@@ -276,7 +276,7 @@ public class QZoneRecentPhotoDownloader
     if (localObject != null)
     {
       paramOutputStream = paramURLDrawableHandler;
-      if (bhbx.a(((URL)localObject).getProtocol(), "troop_photo_qzone"))
+      if (Utils.a(((URL)localObject).getProtocol(), "troop_photo_qzone"))
       {
         paramURLDrawableHandler = ((URL)localObject).getFile();
         paramDownloadParams = new File(paramURLDrawableHandler);

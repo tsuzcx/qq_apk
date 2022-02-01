@@ -9,8 +9,8 @@ public final class QzmallDecoSet
 {
   static QzmallCustomPraise cache_stCustomPraise = new QzmallCustomPraise();
   static PolymorphicPraise cache_stPolymorphicPraise = new PolymorphicPraise();
-  public QzmallCustomPraise stCustomPraise;
-  public PolymorphicPraise stPolymorphicPraise;
+  public QzmallCustomPraise stCustomPraise = null;
+  public PolymorphicPraise stPolymorphicPraise = null;
   
   public QzmallDecoSet() {}
   

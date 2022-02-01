@@ -16,7 +16,7 @@ public final class SDKConfig
   @JvmField
   public static int RES_TYPE = 0;
   @NotNull
-  public static final String SDK_VER = "4.0.2.08-PCG";
+  public static final String SDK_VER = "4.0.2.3.2020092316-PCG";
   private static float USER_SAMPLE_RATIO;
   private static int VER_TYPE;
   
@@ -36,7 +36,7 @@ public final class SDKConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.SDKConfig
  * JD-Core Version:    0.7.0.1
  */

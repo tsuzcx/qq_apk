@@ -2,13 +2,6 @@ package com.tencent.biz.subscribe.widget.textview;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aaba;
-import aacw;
-import aacx;
-import aacy;
-import aacz;
-import aada;
-import aanb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -17,35 +10,38 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bkzi;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView.ItemPreClickListener;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.event.FollowUpdateEvent;
 import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.biz.subscribe.widget.SubscribeShareHelper;
+import com.tencent.biz.videostory.support.VSReporter;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ActionSheet;
 import cooperation.qzone.util.QzonePublicAccountHelper;
 import java.util.ArrayList;
-import uuc;
-import zsd;
 
 public class FollowTextView
   extends TextView
   implements View.OnClickListener, SimpleEventReceiver
 {
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private aada jdField_a_of_type_Aada;
+  private BaseWidgetView.ItemPreClickListener jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView$ItemPreClickListener;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private zsd jdField_a_of_type_Zsd;
+  private FollowTextView.FollowChangeListener jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView$FollowChangeListener;
   protected boolean a;
   private volatile boolean b = true;
   private boolean c;
@@ -64,6 +60,7 @@ public class FollowTextView
   public FollowTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
     a();
   }
   
@@ -74,12 +71,12 @@ public class FollowTextView
     String str3;
     if (paramStFeed != null)
     {
-      if (StringUtil.isEmpty(paramStFeed.id.get())) {
+      if (StringUtil.a(paramStFeed.id.get())) {
         break label100;
       }
       str1 = paramStFeed.id.get();
       str2 = paramStFeed.poster.id.get();
-      str3 = "auth_" + aaba.a(a());
+      str3 = "auth_" + SubscribeShareHelper.a(a());
       if (!paramBoolean) {
         break label114;
       }
@@ -88,7 +85,7 @@ public class FollowTextView
     label114:
     for (paramStFeed = "follow";; paramStFeed = "un_follow")
     {
-      aanb.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
+      VSReporter.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
       return;
       str1 = paramStFeed.poster.nick.get();
       break;
@@ -97,16 +94,16 @@ public class FollowTextView
   
   private void d()
   {
-    bkzi localbkzi = bkzi.a(getContext());
-    localbkzi.a(String.format(getContext().getResources().getString(2131695031), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
-    localbkzi.a(2131696176, 3);
-    localbkzi.c(2131690697);
-    localbkzi.setOnDismissListener(new aacy(this));
-    localbkzi.a(new aacz(this, localbkzi));
-    if (!localbkzi.isShowing())
+    ActionSheet localActionSheet = ActionSheet.create(getContext());
+    localActionSheet.setMainTitle(String.format(getContext().getResources().getString(2131695270), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
+    localActionSheet.addButton(2131696427, 3);
+    localActionSheet.addCancelButton(2131690800);
+    localActionSheet.setOnDismissListener(new FollowTextView.3(this));
+    localActionSheet.setOnButtonClickListener(new FollowTextView.4(this, localActionSheet));
+    if (!localActionSheet.isShowing())
     {
       this.b = true;
-      localbkzi.show();
+      localActionSheet.show();
     }
   }
   
@@ -135,7 +132,7 @@ public class FollowTextView
     c();
   }
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("FollowTextView", 2, "follow");
@@ -152,34 +149,34 @@ public class FollowTextView
     Object localObject = (QQAppInterface)localObject;
     if (paramBoolean)
     {
-      uuc.a((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new aacw(this), false, 0, true);
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).followUin((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new FollowTextView.1(this), false, 0, true);
       return;
     }
-    uuc.a((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new aacx(this), true);
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).unfollowUin((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new FollowTextView.2(this), true);
   }
   
   protected boolean a()
   {
-    return (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (StringUtil.isEmpty(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get()));
+    return (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (StringUtil.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get()));
   }
   
   protected void b()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2130839041;
+      i = 2130839109;
       setBackgroundResource(i);
       if (!this.jdField_a_of_type_Boolean) {
-        break label43;
+        break label46;
       }
     }
-    label43:
+    label46:
     for (int i = -9211021;; i = Color.parseColor("#bdbfc9"))
     {
       setTextColor(i);
-      setText(2131690739);
+      setText(2131690843);
       return;
-      i = 2130839039;
+      i = 2130839107;
       break;
     }
   }
@@ -188,7 +185,7 @@ public class FollowTextView
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2130839128;
+      i = 2130839196;
       setBackgroundResource(i);
       if (!this.jdField_a_of_type_Boolean) {
         break label47;
@@ -198,9 +195,9 @@ public class FollowTextView
     for (int i = -1493172225;; i = -1)
     {
       setTextColor(i);
-      setText(2131690745);
+      setText(2131690849);
       return;
-      i = 2130839126;
+      i = 2130839194;
       break;
     }
   }
@@ -212,7 +209,7 @@ public class FollowTextView
     return localArrayList;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (!isInEditMode()) {
@@ -233,8 +230,8 @@ public class FollowTextView
       }
       else
       {
-        if (this.jdField_a_of_type_Zsd != null) {
-          this.jdField_a_of_type_Zsd.a();
+        if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView$ItemPreClickListener != null) {
+          this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView$ItemPreClickListener.a();
         }
         if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.get() == 0) {
           a(true);
@@ -245,7 +242,7 @@ public class FollowTextView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     SimpleEventBus.getInstance().unRegisterReceiver(this);
@@ -279,9 +276,9 @@ public class FollowTextView
     }
   }
   
-  public void setFollowStateChangeListener(aada paramaada)
+  public void setFollowStateChangeListener(FollowTextView.FollowChangeListener paramFollowChangeListener)
   {
-    this.jdField_a_of_type_Aada = paramaada;
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView$FollowChangeListener = paramFollowChangeListener;
   }
   
   public void setIsInNightMode(boolean paramBoolean)
@@ -289,9 +286,9 @@ public class FollowTextView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setItemPreClickListener(zsd paramzsd)
+  public void setItemPreClickListener(BaseWidgetView.ItemPreClickListener paramItemPreClickListener)
   {
-    this.jdField_a_of_type_Zsd = paramzsd;
+    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView$ItemPreClickListener = paramItemPreClickListener;
   }
   
   public void setNoneReportType(boolean paramBoolean)
@@ -326,7 +323,7 @@ public class FollowTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.FollowTextView
  * JD-Core Version:    0.7.0.1
  */

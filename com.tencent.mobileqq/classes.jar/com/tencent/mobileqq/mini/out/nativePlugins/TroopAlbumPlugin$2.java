@@ -2,13 +2,13 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import cooperation.qzone.remote.logic.WebEventListener;
 
 class TroopAlbumPlugin$2
   implements WebEventListener
 {
-  TroopAlbumPlugin$2(TroopAlbumPlugin paramTroopAlbumPlugin, String paramString, NativePlugin.JSContext paramJSContext) {}
+  TroopAlbumPlugin$2(TroopAlbumPlugin paramTroopAlbumPlugin, String paramString, JSContext paramJSContext) {}
   
   public void onWebEvent(String paramString, Bundle paramBundle)
   {

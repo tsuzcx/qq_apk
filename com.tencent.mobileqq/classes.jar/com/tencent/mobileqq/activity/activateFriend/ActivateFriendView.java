@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import afma;
-import afmc;
-import afmd;
-import afme;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -12,16 +8,17 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import anvi;
-import aohe;
-import aohf;
-import bheg;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.avatar.api.IQQAvatarService;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.data.ActivateFriendItem;
 import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -29,27 +26,27 @@ import java.util.Iterator;
 
 public class ActivateFriendView
   extends LinearLayout
-  implements FaceDecoder.DecodeTaskCompletionListener
+  implements DecodeTaskCompletionListener
 {
-  private static final int jdField_a_of_type_Int = ViewUtils.dpToPx(85.0F);
-  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private static final int jdField_b_of_type_Int = ViewUtils.dpToPx(70.0F);
-  private static final int jdField_c_of_type_Int = ViewUtils.dpToPx(70.0F);
-  private static final int d = ViewUtils.dpToPx(52.0F);
-  private afma jdField_a_of_type_Afma;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afmc(this);
-  anvi jdField_a_of_type_Anvi = new afmd(this);
-  public aohe a;
-  aohf jdField_a_of_type_Aohf = new afme(this);
+  private static final int jdField_a_of_type_Int = ViewUtils.b(85.0F);
+  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
+  private static final int jdField_b_of_type_Int = ViewUtils.b(70.0F);
+  private static final int jdField_c_of_type_Int = ViewUtils.b(70.0F);
+  private static final int d = ViewUtils.b(52.0F);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ActivateFriendView.1(this);
+  private ActivateFriendGrid.GridCallBack jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack = null;
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ActivateFriendView.2(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
+  ActivateFriendsManager jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager;
+  ActivateFriendsObserver jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsObserver = new ActivateFriendView.3(this);
+  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
   private ArrayList<ActivateFriendItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
   private boolean jdField_a_of_type_Boolean = true;
   private ArrayList<ActivateFriendViewItem> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private boolean jdField_c_of_type_Boolean = true;
-  private int e;
+  private int e = 0;
   
   public ActivateFriendView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -58,12 +55,12 @@ public class ActivateFriendView
   
   private Bitmap a(String paramString)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.getBitmapFromCache(1, paramString);
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, paramString);
     if (localBitmap != null) {
       return localBitmap;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing()) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.requestDecodeFace(paramString, 1, true, (byte)0);
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, 1, true, (byte)0);
     }
     return jdField_a_of_type_AndroidGraphicsBitmap;
   }
@@ -77,7 +74,7 @@ public class ActivateFriendView
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing())
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
     {
       if (paramBitmap != null) {
         this.jdField_a_of_type_JavaUtilHashtable.put(paramString, paramBitmap);
@@ -109,7 +106,7 @@ public class ActivateFriendView
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      jdField_a_of_type_AndroidGraphicsBitmap = bheg.a();
+      jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.c();
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     paramQQAppInterface = this.jdField_b_of_type_JavaUtilArrayList.iterator();
@@ -118,14 +115,14 @@ public class ActivateFriendView
     }
     this.jdField_b_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
     }
-    this.jdField_a_of_type_Aohe = ((aohe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anvi);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Aohf);
+    this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager = ((ActivateFriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsObserver);
     this.e = 0;
     int k = this.jdField_a_of_type_JavaUtilArrayList.size();
     int i;
@@ -135,9 +132,9 @@ public class ActivateFriendView
     default: 
       i = -2;
       j = 0;
-      label198:
+      label210:
       if (j >= k) {
-        break label592;
+        break label604;
       }
       paramQQAppInterface = a(i);
       paramQQAppInterface.setBirthday(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).birthdayDesc);
@@ -145,18 +142,18 @@ public class ActivateFriendView
       if (!TextUtils.isEmpty(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).nickName))
       {
         paramQQAppInterface.setNickName(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).nickName);
-        label289:
+        label301:
         paramQQAppInterface.setHead(a(paramArrayList));
         if (this.jdField_a_of_type_Boolean) {
           paramQQAppInterface.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         }
         if (this.jdField_a_of_type_Boolean)
         {
-          if ((!getResources().getString(2131689516).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).birthdayDesc)) && (!this.jdField_a_of_type_Aohe.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type))) {
-            break label472;
+          if ((!getResources().getString(2131689522).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).birthdayDesc)) && (!this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type))) {
+            break label484;
           }
           paramQQAppInterface.setChecked(false);
-          paramQQAppInterface.setBirthday(getResources().getString(2131689516));
+          paramQQAppInterface.setBirthday(getResources().getString(2131689522));
         }
       }
       break;
@@ -165,7 +162,7 @@ public class ActivateFriendView
     {
       this.jdField_b_of_type_JavaUtilArrayList.add(paramQQAppInterface);
       j += 1;
-      break label198;
+      break label210;
       i = jdField_a_of_type_Int;
       break;
       i = jdField_b_of_type_Int;
@@ -174,13 +171,13 @@ public class ActivateFriendView
       break;
       i = d;
       break;
-      paramQQAppInterface.setNickName(ContactUtils.getBuddyName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList, true));
-      break label289;
-      label472:
-      if ((this.jdField_a_of_type_Aohe.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)) || (this.jdField_a_of_type_Aohe.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)))
+      paramQQAppInterface.setNickName(ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList, true));
+      break label301;
+      label484:
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)) || (this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)))
       {
         paramQQAppInterface.setChecked(false);
-        paramQQAppInterface.setBirthday(getResources().getString(2131689519));
+        paramQQAppInterface.setBirthday(getResources().getString(2131689525));
       }
       else
       {
@@ -188,15 +185,15 @@ public class ActivateFriendView
         paramQQAppInterface.setChecked(true);
       }
     }
-    label592:
-    if (this.jdField_a_of_type_Afma != null) {
-      this.jdField_a_of_type_Afma.a(this.e);
+    label604:
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack.a(this.e);
     }
   }
   
-  public void setGridCallBack(afma paramafma)
+  public void setGridCallBack(ActivateFriendGrid.GridCallBack paramGridCallBack)
   {
-    this.jdField_a_of_type_Afma = paramafma;
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack = paramGridCallBack;
   }
   
   public void setSkinable(boolean paramBoolean)
@@ -211,7 +208,7 @@ public class ActivateFriendView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendView
  * JD-Core Version:    0.7.0.1
  */

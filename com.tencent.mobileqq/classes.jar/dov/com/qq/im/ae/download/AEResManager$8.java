@@ -1,20 +1,18 @@
 package dov.com.qq.im.ae.download;
 
-import bnku;
-
-public class AEResManager$8
+class AEResManager$8
   implements Runnable
 {
-  public AEResManager$8(bnku parambnku, String paramString, long paramLong1, long paramLong2) {}
+  AEResManager$8(AEResManager paramAEResManager, String paramString, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    bnku.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+    AEResManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.download.AEResManager.8
  * JD-Core Version:    0.7.0.1
  */

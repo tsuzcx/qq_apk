@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.KandianUGStatisticUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRecommendUGInfo;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Iterator;
 import java.util.List;
-import oqt;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tgb;
-import tjl;
 
-public class WebFastAdapter$5
+class WebFastAdapter$5
   implements Runnable
 {
-  public WebFastAdapter$5(tgb paramtgb, DownloadInfo paramDownloadInfo) {}
+  WebFastAdapter$5(WebFastAdapter paramWebFastAdapter, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -37,8 +36,8 @@ public class WebFastAdapter$5
             j = i;
             if (localJSONObject.optString("kd_ug_rsp_info") != null)
             {
-              tjl localtjl = new tjl(localJSONObject.optString("kd_ug_rsp_info"), tgb.a(localJSONObject));
-              if ((TextUtils.isEmpty(localtjl.b)) || (!localtjl.b.equals(this.a.d))) {
+              FastWebRecommendUGInfo localFastWebRecommendUGInfo = new FastWebRecommendUGInfo(localJSONObject.optString("kd_ug_rsp_info"), WebFastAdapter.a(localJSONObject));
+              if ((TextUtils.isEmpty(localFastWebRecommendUGInfo.b)) || (!localFastWebRecommendUGInfo.b.equals(this.a.d))) {
                 continue;
               }
               j = i;
@@ -52,7 +51,7 @@ public class WebFastAdapter$5
                 j = i;
                 localObject1 = localJSONObject.getJSONObject("id_recommend_category_txt");
                 j = i;
-                ((JSONObject)localObject1).put("text", localtjl.g);
+                ((JSONObject)localObject1).put("text", localFastWebRecommendUGInfo.g);
                 j = i;
                 ((JSONObject)localObject1).put("label_ug_progress_progress", 100);
                 str = "";
@@ -78,9 +77,9 @@ public class WebFastAdapter$5
                   }
                 }
                 j = i;
-                oqt.a(oqt.a(localtjl.a, (String)localObject1, "20"));
+                KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(localFastWebRecommendUGInfo.a, (String)localObject1, "20"));
                 j = i;
-                oqt.a(oqt.a(localtjl.a, (String)localObject1, "11"));
+                KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(localFastWebRecommendUGInfo.a, (String)localObject1, "11"));
                 i = k;
               }
               catch (JSONException localJSONException2)
@@ -105,7 +104,7 @@ public class WebFastAdapter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.5
  * JD-Core Version:    0.7.0.1
  */

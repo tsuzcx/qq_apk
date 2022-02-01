@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahvi;
 import android.content.Context;
 import android.content.res.Resources;
-import bdla;
 import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.wtogether.util.ChooseFileAssistant;
+import com.tencent.av.wtogether.util.WTEntranceHelper;
+import com.tencent.av.wtogether.util.WTogetherUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mzq;
-import nab;
-import nad;
 
 public class QavWTAppInfo
   extends PlusPanelAppInfo
@@ -31,7 +31,7 @@ public class QavWTAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839220;
+    return 2130839289;
   }
   
   public int getAppID()
@@ -60,42 +60,49 @@ public class QavWTAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698215);
+    return BaseApplicationImpl.getContext().getString(2131698491);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (paramBaseChatPie.app.getAVNotifyCenter().a(paramBaseChatPie.getActivity(), 4, paramSessionInfo.curType, paramSessionInfo.curFriendUin)) {}
+    if (paramBaseChatPie.a.getAVNotifyCenter().a(paramBaseChatPie.a(), 4, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) {}
     do
     {
       return;
       int i;
       if (!AppNetConnInfo.isNetSupport())
       {
-        paramahvi = BaseApplicationImpl.getContext();
-        i = paramahvi.getResources().getDimensionPixelSize(2131299080);
-        QQToast.a(paramahvi, -1, paramahvi.getString(2131695738), 0).b(i);
+        paramPlusPanelViewModel = BaseApplicationImpl.getContext();
+        i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299166);
+        QQToast.a(paramPlusPanelViewModel, -1, paramPlusPanelViewModel.getString(2131695982), 0).b(i);
         return;
       }
-      if (!nad.a())
+      if (!WTogetherUtil.a())
       {
-        paramahvi = BaseApplicationImpl.getContext();
-        i = paramahvi.getResources().getDimensionPixelSize(2131299080);
-        QQToast.a(paramahvi, -1, paramahvi.getString(2131695753), 0).b(i);
+        paramPlusPanelViewModel = BaseApplicationImpl.getContext();
+        i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299166);
+        QQToast.a(paramPlusPanelViewModel, -1, paramPlusPanelViewModel.getString(2131696000), 0).b(i);
         return;
       }
-      if (paramSessionInfo.curType == 0)
+      if ((paramBaseChatPie.a.isVideoChatting()) || (paramBaseChatPie.a.getAVNotifyCenter().b()))
       {
-        paramBaseChatPie.hidePanel();
-        paramahvi.b(paramBaseChatPie);
-        mzq.a().a(paramSessionInfo);
-        nab.a(paramBaseChatPie.getActivity(), 1, paramSessionInfo.curType, paramSessionInfo.curFriendUin);
-        paramBaseChatPie.getActivity().setCanLock(false);
-        bdla.b(paramBaseChatPie.app, "dc00898", "", "", "0X800B61B", "0X800B61B", 0, 0, "", "", "", "");
+        paramPlusPanelViewModel = BaseApplicationImpl.getContext();
+        i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299166);
+        QQToast.a(paramPlusPanelViewModel, 2131695981, 1).b(i);
+        return;
+      }
+      if (paramSessionInfo.jdField_a_of_type_Int == 0)
+      {
+        paramBaseChatPie.an();
+        paramPlusPanelViewModel.b(paramBaseChatPie);
+        ChooseFileAssistant.a().a(paramSessionInfo);
+        WTEntranceHelper.a(paramBaseChatPie.a(), 1, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString);
+        paramBaseChatPie.a().setCanLock(false);
+        ReportController.b(paramBaseChatPie.a, "dc00898", "", "", "0X800B61B", "0X800B61B", 0, 0, "", "", "", "");
         return;
       }
     } while (!QLog.isColorLevel());
-    QLog.i("QavWTAppInfo", 2, "clickToolQavWatchTogether, not support chat, [" + paramSessionInfo.curType + "]");
+    QLog.i("QavWTAppInfo", 2, "clickToolQavWatchTogether, not support chat, [" + paramSessionInfo.jdField_a_of_type_Int + "]");
   }
 }
 

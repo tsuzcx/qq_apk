@@ -3,9 +3,9 @@ package com.tencent.mobileqq.olympic;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import ayym;
 import com.tencent.mobileqq.ocr.activity.ScanBaseActivity;
 import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import com.tencent.mobileqq.olympic.utils.OlympicUtil;
 
 public class ScannerResultReceiver
   extends ResultReceiver
@@ -20,7 +20,7 @@ public class ScannerResultReceiver
   
   public void a(ScanBaseActivity paramScanBaseActivity)
   {
-    ayym.b("ScannerResultReceiver", new Object[] { "setActivity activity:", paramScanBaseActivity, this });
+    OlympicUtil.b("ScannerResultReceiver", new Object[] { "setActivity activity:", paramScanBaseActivity, this });
     this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanBaseActivity = paramScanBaseActivity;
   }
   
@@ -31,14 +31,14 @@ public class ScannerResultReceiver
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    ayym.b("ScannerResultReceiver", new Object[] { "mResultReceiver.onReceiveResult, resultCode=", Integer.valueOf(paramInt), this });
+    OlympicUtil.b("ScannerResultReceiver", new Object[] { "mResultReceiver.onReceiveResult, resultCode=", Integer.valueOf(paramInt), this });
     if (paramInt == 0)
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanBaseActivity.a)) {
         this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanBaseActivity.b();
       }
       if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityOlympicToolBaseActivity != null) {
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityOlympicToolBaseActivity.f();
+        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityOlympicToolBaseActivity.e();
       }
     }
   }

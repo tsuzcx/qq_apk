@@ -5,131 +5,94 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import bmhv;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.widget.SeekBar;
+import androidx.annotation.UiThread;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJThreadHandler;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJSmartCropUtils;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.utils.IStrategy;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.utils.IStrategy.URLCallback;
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.player.ErrorCode;
+import com.tencent.biz.pubaccount.readinjoy.video.player.wrapper.IPlayer;
+import com.tencent.biz.pubaccount.readinjoy.video.player.wrapper.IVideoView;
 import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.SuperPlayerOption;
-import com.tencent.tmediacodec.util.LogUtils;
-import com.tencent.util.VersionUtils;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
-import olh;
-import omx;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pjr;
-import qbx;
-import qbz;
-import qca;
-import qcb;
-import qcc;
-import qcd;
-import qce;
-import qcf;
-import qci;
-import qcj;
-import qcl;
-import set;
-import seu;
-import spp;
-import spr;
-import stn;
-import stp;
-import stv;
-import sty;
-import sur;
-import sus;
-import swx;
 
 public class VideoView
   extends FrameLayout
-  implements Runnable
+  implements VideoPlayController.OnStateChangeListener, Runnable
 {
-  public static int AUTO_PLAYMODE_ALLPLAY = 0;
-  public static int AUTO_PLAYMODE_WIFI_ONLY = 1;
+  public static final int MSG_FOR_UPDATE_VIDEO_PLAY_POSITION = -2;
   public static int PLAYMODE_AUTO = 1;
   public static int PLAYMODE_CLICK = 2;
   public static int PLAYMODE_DISABLE = 3;
   public static int PLAYMODE_SCROOL = 0;
-  private static final String REPORT_PLAY_DURATION_ACTION_NAME = "0X8007408";
-  private static final String TAG = "gifvideo.VideoView";
+  public static final int PROGRESS_REFRESH_INTERNAL = 100;
   private static Drawable mLoadingDrawable;
-  private int autoPlayMode = AUTO_PLAYMODE_ALLPLAY;
-  private long channelId;
-  private String dtPgid;
-  private long fileSize;
-  private ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener = new qcb(this);
-  private Runnable hideCoverRunnable = new VideoView.7(this);
+  private ArticleInfo articleInfo;
+  private Runnable hideCoverRunnable = new VideoView.5(this);
   private int iconHeight;
   private int iconWidth;
-  private boolean isLoop = true;
-  private boolean isMute = true;
-  private boolean isPlayIconVisible;
+  private boolean isManualPause;
+  private boolean isPlayIconVisible = false;
   public int[] lastLocation = new int[2];
   private AtomicInteger mAction = new AtomicInteger(0);
-  private int mBusiType;
   private Context mContext;
   private NativeReadInjoyImageView mCoverImageView;
   private String mCoverUrl;
-  @NotNull
-  private stp mFactory;
-  private qce mOnCheckShownListener;
-  private qcf mOnProgressChangedListener;
+  private VideoView.OnCheckShownListener mOnCheckShownListener;
+  private VideoView.OnProgressChangedListener mOnProgressChangedListener;
+  private NativeReadInjoyImageView mPlayIconImageView;
   private String mPlayIconUrl;
-  private NativeReadInjoyImageView mPlayImageView;
-  public Handler mProgressHandler = new Handler(Looper.getMainLooper());
+  protected Handler mProgressHandler = new Handler(Looper.getMainLooper());
   private AtomicInteger mState = new AtomicInteger(0);
-  private qci mStrategy;
   private String mVid;
-  @Nullable
-  private stn mVideoPlayer;
   private String mVideoUrl;
-  @Nullable
-  private stv mVideoView;
-  public boolean needInterceptGlobalLayoutChanged;
-  private spr onVideoPluginInstallListener = new qbz(this);
-  private String openingUrl = "";
-  private String pUin;
+  private IVideoView mVideoView;
+  public boolean needInterceptGlobalLayoutChanged = false;
   private ObjectAnimator playCoverAnimator;
   private ObjectAnimator playIconAnimator;
   private int playMode = PLAYMODE_SCROOL;
-  private String playSessionId;
-  private String preparedUrl = "";
   private List<String> reportList = new ArrayList();
-  private String reportR5;
-  private Runnable reportRunnable = new VideoView.8(this);
-  private String rowKey;
-  private long startTime;
+  private Runnable showCoverRunnable = new VideoView.6(this);
+  private boolean showVideoMask = true;
+  private long startTime = 0L;
+  public String suffix;
+  public String tag = "ptsVideoView";
+  private Handler uiHandler = new VideoView.2(this, Looper.myLooper());
   private boolean useVid = true;
-  private qbx videoPlayListener;
-  private spp videoPluginInstall;
-  private int xyaxis = 0;
+  private View.OnClickListener videoCoverClickListener = new VideoView.4(this);
+  private VideoMaskController videoMaskController;
+  private VideoPlayController videoPlayController;
+  private VideoPlayListener videoPlayListener;
+  private View.OnClickListener videoViewClickListener = new VideoView.3(this);
+  private FrameLayout videoViewLayout;
+  private int xyAxis = 0;
   
   public VideoView(Context paramContext)
   {
@@ -149,252 +112,10 @@ public class VideoView
     init();
   }
   
-  private void changeState(int paramInt)
-  {
-    QLog.d("gifvideo.VideoView", 2, getTag() + " change state from " + this.mState.get() + " to " + paramInt);
-    this.mState.set(paramInt);
-  }
-  
-  private void commonOptimizeConfig(sty paramsty)
-  {
-    if (paramsty != null)
-    {
-      paramsty.b(true);
-      paramsty.a(bmhv.g());
-    }
-  }
-  
-  private SuperPlayerOption commonPlayerOption(boolean paramBoolean)
-  {
-    LogUtils.setLogEnable(QLog.isColorLevel());
-    SuperPlayerOption localSuperPlayerOption = SuperPlayerOption.obtain();
-    localSuperPlayerOption.isPrePlay = paramBoolean;
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(357);
-    localSuperPlayerOption.bufferPacketMinTotalDurationMs = localAladdinConfig.getIntegerFromString("bufferPacketMinTotalDurationMs", 0);
-    localSuperPlayerOption.preloadPacketDurationMs = localAladdinConfig.getIntegerFromString("preloadPacketDurationMs", 0);
-    localSuperPlayerOption.minBufferingPacketDurationMs = localAladdinConfig.getIntegerFromString("minBufferingPacketDurationMs", 0);
-    localSuperPlayerOption.enableCodecReuse = set.a.c();
-    localSuperPlayerOption.enableVideoFrameCheck = set.a.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("gifvideo.VideoView", 2, "commonPlayerOption: " + localSuperPlayerOption);
-    }
-    return localSuperPlayerOption;
-  }
-  
-  private stv createVideoView()
-  {
-    return this.mFactory.a(this.mContext, VersionUtils.isIceScreamSandwich());
-  }
-  
-  private void disPlayCoverAndDoStop()
-  {
-    try
-    {
-      QLog.d("gifvideo.VideoView", 1, getTag() + " stopPlay");
-      this.preparedUrl = "";
-      this.openingUrl = "";
-      if (getCurrentState() != 10) {
-        reportDtVideoEnd();
-      }
-      displayCover();
-      doStop();
-      reportPlayDurtion();
-      return;
-    }
-    finally {}
-  }
-  
-  private void doDestroy()
-  {
-    try
-    {
-      ThreadManager.getUIHandler().removeCallbacks(this.hideCoverRunnable);
-      removeAutoPlayObserver();
-      if (this.mVideoPlayer != null) {
-        this.mVideoPlayer.d();
-      }
-      this.mAction.set(6);
-      changeState(0);
-      this.mVideoPlayer = null;
-      this.mVideoView = null;
-      this.mFactory = null;
-      this.openingUrl = "";
-      this.preparedUrl = "";
-      this.mVideoUrl = "";
-      this.mCoverUrl = "";
-      this.videoPlayListener = null;
-      if (this.videoPluginInstall != null)
-      {
-        this.videoPluginInstall.b();
-        this.videoPluginInstall = null;
-      }
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.reportRunnable);
-      return;
-    }
-    finally {}
-  }
-  
-  private void doIfInited()
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.mVideoPlayer == null) {
-          break label70;
-        }
-        int i = this.mAction.get();
-        switch (i)
-        {
-        case 4: 
-        case 5: 
-        default: 
-          return;
-        }
-      }
-      finally {}
-      doStart();
-      continue;
-      doDestroy();
-      continue;
-      label70:
-      QLog.d("gifvideo.VideoView", 1, "video player is null");
-      changeState(-1);
-    }
-  }
-  
-  private void doIfInstalled()
-  {
-    switch (this.mAction.get())
-    {
-    default: 
-      return;
-    }
-    doInit();
-  }
-  
-  /* Error */
-  private void doIfPrepared()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 340	com/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView:mVideoPlayer	Lstn;
-    //   6: ifnull +30 -> 36
-    //   9: aload_0
-    //   10: getfield 136	com/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView:mAction	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   13: invokevirtual 362	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   16: istore_1
-    //   17: iload_1
-    //   18: tableswitch	default:+18 -> 36, 3:+21->39
-    //   37: monitorexit
-    //   38: return
-    //   39: aload_0
-    //   40: invokespecial 521	com/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView:playVideo	()V
-    //   43: goto -7 -> 36
-    //   46: astore_2
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload_2
-    //   50: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	51	0	this	VideoView
-    //   16	2	1	i	int
-    //   46	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	46	finally
-    //   39	43	46	finally
-  }
-  
-  private void doInit()
-  {
-    if (this.mVideoPlayer == null) {
-      try
-      {
-        if (this.mVideoPlayer == null)
-        {
-          if (this.videoPluginInstall == null) {
-            this.videoPluginInstall = new spp();
-          }
-          if (!this.videoPluginInstall.a()) {
-            break label68;
-          }
-          changeState(3);
-          initVideoPlayer(new VideoView.2(this));
-          initAutoPlayObserver();
-        }
-        for (;;)
-        {
-          return;
-          label68:
-          doInstall();
-        }
-        changeState(4);
-      }
-      finally {}
-    }
-    doIfInited();
-  }
-  
-  private void doInstall()
-  {
-    if (!this.videoPluginInstall.a())
-    {
-      QLog.d("gifvideo.VideoView", 1, "not installed, now install");
-      changeState(1);
-      this.videoPluginInstall.a(this.onVideoPluginInstallListener);
-      this.videoPluginInstall.a();
-      return;
-    }
-    changeState(2);
-    doIfInstalled();
-  }
-  
-  private void doPause()
-  {
-    if (this.mVideoPlayer != null)
-    {
-      if (this.mState.get() != 8) {
-        this.mVideoPlayer.b();
-      }
-      changeState(8);
-      return;
-    }
-    QLog.d("gifvideo.VideoView", 2, "video player is null");
-    changeState(-1);
-  }
-  
-  private void doStart()
-  {
-    initVideoPlayerProperties(true);
-  }
-  
-  private void doStop()
-  {
-    if (this.mVideoPlayer != null)
-    {
-      if (getCurrentState() != 9)
-      {
-        if (this.videoPlayListener != null) {
-          this.videoPlayListener.b();
-        }
-        this.mVideoPlayer.c();
-        resetVideoView();
-        changeState(9);
-      }
-      return;
-    }
-    QLog.d("gifvideo.VideoView", 2, "video player is null");
-    changeState(-1);
-  }
-  
   private static Drawable getLoadingDrawable()
   {
     if (mLoadingDrawable == null) {
-      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850739);
+      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130851165);
     }
     return mLoadingDrawable;
   }
@@ -403,76 +124,60 @@ public class VideoView
   {
     if (this.mCoverImageView != null)
     {
-      QLog.d("gifvideo.VideoView", 1, getTag() + " hidecover alpha: " + this.mCoverImageView.getAlpha());
+      QLog.d(this.tag, 1, "hidecover alpha: " + this.mCoverImageView.getAlpha());
       if (this.playIconAnimator == null)
       {
         this.playIconAnimator = ObjectAnimator.ofFloat(this.mCoverImageView, "alpha", new float[] { 1.0F, 0.0F });
         this.playIconAnimator.setDuration(300L);
-        this.playIconAnimator.addListener(new qcd(this));
+        this.playIconAnimator.addListener(new VideoView.7(this));
       }
       if (this.playCoverAnimator == null)
       {
         this.playCoverAnimator = this.playIconAnimator.clone();
-        this.playCoverAnimator.setTarget(this.mPlayImageView);
+        this.playCoverAnimator.setTarget(this.mPlayIconImageView);
       }
       this.playIconAnimator.start();
       this.playCoverAnimator.start();
     }
   }
   
-  private void init()
+  private void initVideoCover()
   {
-    setTag(Integer.valueOf(new Random().nextInt()));
-    this.mContext = getContext();
-    doInit();
-  }
-  
-  private void initAutoPlayObserver()
-  {
-    ViewTreeObserver localViewTreeObserver = getViewTreeObserver();
-    if ((localViewTreeObserver != null) && (localViewTreeObserver.isAlive())) {
-      localViewTreeObserver.addOnGlobalLayoutListener(this.globalLayoutListener);
-    }
-  }
-  
-  private void initVideoPlayer(Runnable paramRunnable)
-  {
-    ThreadManager.post(new VideoView.4(this, paramRunnable), 10, null, false);
-  }
-  
-  private void initVideoPlayerListeners()
-  {
-    if (this.mVideoPlayer != null) {
-      this.mVideoPlayer.a(new qcc(this));
-    }
-  }
-  
-  private void initVideoPlayerProperties(boolean paramBoolean)
-  {
-    if (this.mVideoPlayer != null)
-    {
-      this.mVideoPlayer.a(this.isMute);
-      this.mVideoPlayer.b(this.isLoop);
-      ThreadManager.getUIHandler().post(new VideoView.5(this, paramBoolean));
-    }
-  }
-  
-  private void initViews()
-  {
-    removeAllViews();
-    setBackgroundColor(Color.parseColor("#000000"));
-    if ((this.mVideoView != null) && (this.mVideoPlayer != null) && (this.mVideoView.a() != null))
-    {
-      this.mVideoView.a().setBackgroundColor(Color.parseColor("#000000"));
-      addView(this.mVideoView.a(), -1, -1);
-      attachVideoView(this.mVideoView);
-    }
     this.mCoverImageView = new NativeReadInjoyImageView(this.mContext);
     this.mCoverImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    if (Build.VERSION.SDK_INT >= 21) {
+      this.mCoverImageView.setClipToOutline(true);
+    }
     addView(this.mCoverImageView, -1, -1);
+    this.mCoverImageView.setOnClickListener(this.videoCoverClickListener);
     setVideoCover();
-    this.mPlayImageView = new NativeReadInjoyImageView(this.mContext);
-    this.mPlayImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+  }
+  
+  private void initVideoFrameLayout()
+  {
+    if (this.videoViewLayout == null)
+    {
+      this.videoViewLayout = new FrameLayout(this.mContext);
+      this.videoViewLayout.setContentDescription("videoviewFL");
+      this.videoViewLayout.setBackgroundDrawable(getResources().getDrawable(2130841881));
+      addView(this.videoViewLayout, -1, -1);
+    }
+  }
+  
+  private void initVideoMaskController()
+  {
+    if ((this.showVideoMask) && (this.videoMaskController == null))
+    {
+      this.videoMaskController = new VideoMaskController(getContext(), this, this.videoPlayController.a());
+      this.videoMaskController.a(VideoMaskController.class.getSimpleName() + "." + this.suffix);
+      this.videoMaskController.a().b().c().a(this.articleInfo);
+    }
+  }
+  
+  private void initVideoPlayIcon()
+  {
+    this.mPlayIconImageView = new NativeReadInjoyImageView(this.mContext);
+    this.mPlayIconImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     Object localObject = new FrameLayout.LayoutParams(-2, -2);
     if (this.iconWidth != 0) {
       ((FrameLayout.LayoutParams)localObject).width = this.iconWidth;
@@ -481,151 +186,59 @@ public class VideoView
       ((FrameLayout.LayoutParams)localObject).height = this.iconHeight;
     }
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
-    addView(this.mPlayImageView, (ViewGroup.LayoutParams)localObject);
-    localObject = this.mPlayImageView;
-    if (this.isPlayIconVisible) {}
+    addView(this.mPlayIconImageView, (ViewGroup.LayoutParams)localObject);
+    localObject = this.mPlayIconImageView;
+    if (shouldShowPlayIcon()) {}
     for (int i = 0;; i = 4)
     {
       ((NativeReadInjoyImageView)localObject).setVisibility(i);
+      this.mPlayIconImageView.setImageResource(2130842886);
       setPlayIcon();
       return;
     }
   }
   
-  private boolean isValidState()
+  private void initVideoView()
   {
-    if ((this.mVideoPlayer == null) || (this.mVideoPlayer.a() < 200L)) {}
-    while ((this.mAction.get() == 5) || (this.mAction.get() == 4)) {
-      return false;
-    }
-    return true;
-  }
-  
-  private void playVideo()
-  {
-    if (this.mVideoPlayer != null)
+    if ((this.mVideoView != null) && (this.mVideoView.a() != null))
     {
-      if (this.mState.get() != 7)
-      {
-        reportLoadTime();
-        changeState(7);
-        this.mVideoPlayer.a();
-        if (this.videoPlayListener != null) {
-          this.videoPlayListener.a();
-        }
-        if (this.mCoverImageView.getVisibility() == 0) {
-          hideCover();
-        }
-        reportDt();
-      }
-      return;
-    }
-    QLog.d("gifvideo.VideoView", 1, "video player is null");
-    changeState(-1);
-  }
-  
-  private void removeAutoPlayObserver()
-  {
-    ViewTreeObserver localViewTreeObserver = getViewTreeObserver();
-    if ((localViewTreeObserver != null) && (localViewTreeObserver.isAlive())) {
-      localViewTreeObserver.removeGlobalOnLayoutListener(this.globalLayoutListener);
+      this.mVideoView.a().setBackgroundColor(Color.parseColor("#000000"));
+      this.videoViewLayout.removeAllViews();
+      this.videoViewLayout.addView(this.mVideoView.a(), -1, -1);
+      setClipChildren(false);
+      ((ViewGroup)getParent()).setClipChildren(false);
+      setVideoViewClickListener();
     }
   }
   
-  private void reportDt()
+  private void onIdle()
   {
-    if (!TextUtils.isEmpty(this.dtPgid))
-    {
-      if (this.isLoop) {
-        ThreadManager.getSubThreadHandler().postDelayed(this.reportRunnable, 100L);
-      }
-    }
-    else {
-      return;
-    }
-    reportDtVideoStart();
+    displayCover();
+    hideLoading();
   }
   
-  private void reportDtVideoEnd()
+  private void removeHideCoverRunnable()
   {
-    if ((this.mVideoPlayer != null) && (this.mVideoView != null) && (this.playSessionId != null) && (!TextUtils.isEmpty(this.dtPgid)))
-    {
-      long l2 = this.mVideoPlayer.b();
-      long l1 = l2;
-      if (l2 == 0L) {
-        l1 = this.mVideoPlayer.a();
-      }
-      sur.a(sus.a((VideoInfo)null).b(this.dtPgid).d(this.channelId).c(this.rowKey).d(this.pUin).e(this.mVideoPlayer.a()).e(this.playSessionId).a(1).b(System.currentTimeMillis()).d(this.mVideoView.a().getWidth()).e(this.mVideoView.a().getHeight()).c(l1).a("dt_vdend"));
-      this.playSessionId = null;
+    ThreadManager.getUIHandler().removeCallbacks(this.hideCoverRunnable);
+    if (this.playCoverAnimator != null) {
+      this.playCoverAnimator.cancel();
+    }
+    if (this.playIconAnimator != null) {
+      this.playIconAnimator.cancel();
     }
   }
   
-  private void reportDtVideoStart()
+  private void removeShowCoverRunnable()
   {
-    if ((this.mVideoPlayer != null) && (this.mVideoView != null) && (!TextUtils.isEmpty(this.dtPgid)) && (this.mVideoView.a() != null))
-    {
-      this.playSessionId = omx.b();
-      sur.a(sus.a((VideoInfo)null).b(this.dtPgid).d(this.channelId).c(this.rowKey).d(this.pUin).e(this.mVideoPlayer.a()).e(this.playSessionId).a(1).a(System.currentTimeMillis()).d(this.mVideoView.a().getWidth()).e(this.mVideoView.a().getHeight()).a("dt_vdstart"));
-    }
-  }
-  
-  private void reportLoadTime()
-  {
-    if ((this.mCoverImageView.getVisibility() == 0) && (!this.reportList.contains(this.mVideoUrl)))
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = this.startTime;
-      olh.a(null, "", "0X800A587", "0X800A587", 0, 0, this.fileSize + "", "", l1 - l2 + "", "", false);
-      if (!TextUtils.isEmpty(this.mVideoUrl)) {
-        this.reportList.add(this.mVideoUrl);
-      }
-    }
-  }
-  
-  private void reportPlayDurtion()
-  {
-    long l1;
-    long l2;
-    if (!TextUtils.isEmpty(this.reportR5))
-    {
-      l1 = System.currentTimeMillis();
-      l2 = this.startTime;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.reportR5);
-      localJSONObject.put("playduration", l1 - l2);
-      olh.a(null, "", "0X8007408", "0X8007408", 0, 0, "", "", "", localJSONObject.toString(), false);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("gifvideo.VideoView", 1, localJSONException.getMessage());
-    }
-  }
-  
-  private void resetVideoView()
-  {
-    ThreadManager.getUIHandler().post(new VideoView.10(this));
-  }
-  
-  private void selectUrlByVid()
-  {
-    if ((this.mBusiType == 2) || (this.mBusiType == 6)) {
-      requestUrlByVid(qcl.a(), new qca(this));
-    }
-    while (!this.useVid) {
-      return;
-    }
-    openVideoByVid(this.mVid);
+    ThreadManager.getUIHandler().removeCallbacks(this.showCoverRunnable);
   }
   
   private void setPlayIcon()
   {
-    if ((this.mPlayImageView != null) && (!TextUtils.isEmpty(this.mPlayIconUrl))) {}
+    if ((this.mPlayIconImageView != null) && (!TextUtils.isEmpty(this.mPlayIconUrl))) {}
     try
     {
-      this.mPlayImageView.setImagePlaceHolder(getLoadingDrawable()).setImage(new URL(this.mPlayIconUrl));
+      this.mPlayIconImageView.setImagePlaceHolder(getLoadingDrawable()).setImage(new URL(this.mPlayIconUrl));
       return;
     }
     catch (Exception localException)
@@ -639,7 +252,7 @@ public class VideoView
     if ((this.mCoverImageView != null) && (!TextUtils.isEmpty(this.mCoverUrl))) {}
     try
     {
-      pjr.a(this.mCoverImageView, new URL(this.mCoverUrl), this.mContext);
+      ReadInJoyDisplayUtils.a(this.mCoverImageView, new URL(this.mCoverUrl), this.mContext);
       return;
     }
     catch (Exception localException)
@@ -648,54 +261,56 @@ public class VideoView
     }
   }
   
-  private boolean shouldPlay()
+  private boolean shouldShowPlayIcon()
   {
-    QLog.d("gifvideo.VideoView", 1, "auto play mode: " + this.autoPlayMode);
-    return (this.autoPlayMode != AUTO_PLAYMODE_WIFI_ONLY) || (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1);
+    return (this.isPlayIconVisible) && (!VideoPlayController.a.a());
   }
   
-  public void attachVideoView(stv paramstv)
+  public void clearVideoViewClick()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("gifvideo.VideoView", 2, "attachVideoView: ");
+    if ((this.mVideoView != null) && (this.mVideoView.a() != null)) {
+      this.mVideoView.a().setOnClickListener(null);
     }
-    if (this.mVideoPlayer == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("gifvideo.VideoView", 2, "attachVideoView: videoplayer null");
-      }
-      return;
-    }
-    this.mVideoPlayer.a(paramstv);
-    this.mVideoPlayer.a(this.xyaxis);
   }
   
+  @UiThread
   public void destroy()
   {
-    QLog.d("gifvideo.VideoView", 1, "destroy");
-    doDestroy();
+    QLog.d(this.tag, 1, "destroy");
+    this.videoPlayController.d();
   }
   
   public void displayCover()
   {
-    ThreadManager.getUIHandler().removeCallbacks(this.hideCoverRunnable);
-    ThreadManager.getUIHandler().post(new VideoView.15(this));
+    removeHideCoverRunnable();
+    removeShowCoverRunnable();
+    if (RIJThreadHandler.a())
+    {
+      this.showCoverRunnable.run();
+      return;
+    }
+    ThreadManager.getUIHandler().post(this.showCoverRunnable);
   }
   
   public int getAction()
   {
-    return this.mAction.get();
+    return this.videoPlayController.b().get();
+  }
+  
+  public ArticleInfo getArticleInfo()
+  {
+    return this.articleInfo;
   }
   
   public int getCurrentState()
   {
-    return this.mState.get();
+    return this.videoPlayController.a().get();
   }
   
   public long getPercentage()
   {
-    if (this.mVideoPlayer != null) {
-      return this.mVideoPlayer.b();
+    if (this.videoPlayController.a() != null) {
+      return this.videoPlayController.a().b();
     }
     return 0L;
   }
@@ -705,44 +320,68 @@ public class VideoView
     return this.playMode;
   }
   
-  public stn getVideoPlayer()
-  {
-    return this.mVideoPlayer;
-  }
-  
-  public String getVideoUrl()
-  {
-    return this.mVideoUrl;
-  }
-  
   public String getVideoVid()
   {
     return this.mVid;
   }
   
+  public IVideoView getVideoView()
+  {
+    return this.mVideoView;
+  }
+  
   public void hideCover()
   {
+    removeHideCoverRunnable();
+    removeShowCoverRunnable();
     ThreadManager.getUIHandler().post(this.hideCoverRunnable);
   }
   
-  public boolean isIDLE()
+  public void hideLoading()
   {
-    return getCurrentState() == 0;
+    QLog.d(this.tag, 1, "hideLoading");
+    if (this.videoMaskController != null) {
+      this.videoMaskController.m();
+    }
   }
   
-  public boolean isInited()
+  public void hideVideoError()
   {
-    return getCurrentState() >= 4;
+    QLog.d(this.tag, 1, "hideVideoError");
+    if (this.videoMaskController != null) {
+      this.videoMaskController.k();
+    }
+  }
+  
+  public void init()
+  {
+    this.suffix = (new Random().nextInt() + "");
+    this.tag = (this.tag + "." + this.suffix);
+    this.mContext = getContext();
+    setClickable(true);
+    setBackgroundColor(Color.parseColor("#000000"));
+    initVideoFrameLayout();
+    initVideoCover();
+    initVideoPlayIcon();
+    initPTSVideoPlayManager();
+    initVideoMaskController();
+  }
+  
+  public void initPTSVideoPlayManager()
+  {
+    this.videoPlayController = new VideoPlayController(this, this.mState, this.mAction);
+    this.videoPlayController.g(this.suffix);
+    this.videoPlayController.a(this);
   }
   
   public boolean isMute()
   {
-    return this.isMute;
+    return this.videoPlayController.a();
   }
   
   public boolean isPlaying()
   {
-    return getCurrentState() == 7;
+    return this.videoPlayController.a().get() == 7;
   }
   
   public boolean isShown()
@@ -753,16 +392,39 @@ public class VideoView
     return super.isShown();
   }
   
-  public boolean isStop()
+  @UiThread
+  public void onComplete() {}
+  
+  @UiThread
+  public void onDestroy()
   {
-    return getCurrentState() == 9;
+    QLog.d(this.tag, 2, "onDestroy");
+    removeShowCoverRunnable();
+    removeHideCoverRunnable();
+    hideLoading();
+    if ((this.mVideoView != null) && (this.mVideoView.a() != null)) {
+      removeView(this.mVideoView.a());
+    }
+    this.isManualPause = false;
+    this.mVideoView = null;
+    this.mVideoUrl = "";
+    this.mCoverUrl = "";
+    this.videoPlayListener = null;
+    removePlayProgressMessage();
+    if (this.videoMaskController != null) {
+      this.videoMaskController.c();
+    }
+    this.videoPlayController.b(this);
   }
   
-  protected void onDetachedFromWindow()
+  @UiThread
+  public void onError()
   {
-    super.onDetachedFromWindow();
-    QLog.d("gifvideo.VideoView", 1, "detachedFromWindow");
-    destroy();
+    hideLoading();
+    String str1 = ErrorCode.a(this.videoPlayController.b(), this.videoPlayController.c(), this.videoPlayController.a());
+    String str2 = HardCodeUtil.a(2131716256);
+    QLog.d(this.tag, 1, "errorMsg: " + str1);
+    showVideoError(1, str1, str2);
   }
   
   public void onFinishTemporaryDetach()
@@ -772,6 +434,43 @@ public class VideoView
     setPlayIcon();
   }
   
+  @UiThread
+  public void onInit()
+  {
+    initVideoView();
+    this.videoPlayController.b(this.xyAxis);
+    if (this.videoMaskController != null)
+    {
+      this.videoMaskController.a(this.videoPlayController.a());
+      this.videoMaskController.a();
+    }
+  }
+  
+  @UiThread
+  public void onPause()
+  {
+    removePlayProgressMessage();
+    if (this.videoMaskController != null) {
+      this.videoMaskController.i();
+    }
+  }
+  
+  @UiThread
+  public void onPlay()
+  {
+    postPlayProgressMessage();
+    hideCover();
+    hideLoading();
+    if (this.mOnProgressChangedListener != null) {
+      this.mProgressHandler.postDelayed(this, 500L);
+    }
+    if (this.videoMaskController != null) {
+      this.videoMaskController.h();
+    }
+    postPlayProgressMessage();
+    hideVideoError();
+  }
+  
   public void onScrollFromList(boolean paramBoolean)
   {
     if (this.playMode == PLAYMODE_AUTO)
@@ -779,83 +478,102 @@ public class VideoView
       if ((paramBoolean) && (this.mAction.get() != 3)) {
         startPlay();
       }
-      if ((!paramBoolean) && (this.mAction.get() != 5)) {
+      if ((!paramBoolean) && (this.mAction.get() != 6)) {
         stop();
       }
     }
   }
   
+  @UiThread
+  public void onSeekComplete()
+  {
+    if (this.mOnProgressChangedListener != null) {
+      this.mProgressHandler.postDelayed(this, 500L);
+    }
+  }
+  
+  public void onStateChanged(int paramInt1, int paramInt2)
+  {
+    ThreadManager.getUIHandler().post(new VideoView.1(this, paramInt2));
+  }
+  
+  @UiThread
+  public void onStop()
+  {
+    displayCover();
+    this.mProgressHandler.removeCallbacksAndMessages(null);
+    if (this.videoMaskController != null) {
+      this.videoMaskController.b();
+    }
+    removePlayProgressMessage();
+    hideLoading();
+    if (this.mVideoView != null) {
+      this.mVideoView.b();
+    }
+    if (this.videoPlayListener != null) {
+      this.videoPlayListener.b();
+    }
+  }
+  
   public void openVideo()
   {
-    ThreadManager.post(new VideoView.13(this), 10, null, false);
+    ThreadManager.getSubThreadHandler().post(new VideoView.8(this));
   }
   
-  public void openVideoByUrl(String paramString)
-  {
-    sty localsty = new sty(101, "", swx.a(paramString));
-    commonOptimizeConfig(localsty);
-    if ((this.mContext != null) && (this.mVideoPlayer != null))
-    {
-      QLog.d("gifvideo.VideoView", 2, getTag() + " opening " + paramString);
-      changeState(5);
-      this.mVideoPlayer.a(this.mContext, localsty, 0L, commonPlayerOption(false));
-    }
-  }
-  
-  public void openVideoByVid(String paramString)
-  {
-    sty localsty = new sty(1, paramString);
-    commonOptimizeConfig(localsty);
-    if ((this.mContext != null) && (this.mVideoPlayer != null))
-    {
-      QLog.d("gifvideo.VideoView", 2, getTag() + " opening " + paramString);
-      changeState(5);
-      this.mVideoPlayer.a(this.mContext, localsty, 0L, commonPlayerOption(false));
-      return;
-    }
-    QLog.d("gifvideo.VideoView", 2, "video player is null");
-  }
-  
+  @UiThread
   public void pause()
   {
-    QLog.d("gifvideo.VideoView", 2, "pause");
-    if ((this.mVideoPlayer != null) && (this.mState.get() == 7))
-    {
-      this.mAction.set(4);
-      changeState(8);
-      this.mVideoPlayer.b();
-      reportDtVideoEnd();
-    }
+    QLog.d(this.tag, 2, "pause");
+    this.videoPlayController.b();
   }
   
-  public void requestUrlByVid(qci paramqci, qcj paramqcj)
+  public void postPlayProgressMessage()
   {
-    this.mStrategy = paramqci;
-    if (this.mStrategy != null) {
-      this.mStrategy.a(this.mVid, paramqcj);
+    removePlayProgressMessage();
+    if (this.uiHandler != null)
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = -2;
+      this.uiHandler.sendMessageDelayed(localMessage, 100L);
     }
   }
   
+  public void removePlayProgressMessage()
+  {
+    if (this.uiHandler != null) {
+      this.uiHandler.removeMessages(-2);
+    }
+  }
+  
+  public void requestUrlByVid(IStrategy paramIStrategy, IStrategy.URLCallback paramURLCallback)
+  {
+    this.videoPlayController.a(paramIStrategy, paramURLCallback);
+  }
+  
+  public void resetVideoMaskController()
+  {
+    if (this.videoMaskController != null) {
+      this.videoMaskController.d();
+    }
+  }
+  
+  @UiThread
   public void resume()
   {
-    if (this.mVideoPlayer != null)
-    {
-      this.mVideoPlayer.a();
-      reportDtVideoStart();
-    }
+    this.videoPlayController.c();
   }
   
   public void run()
   {
     long l2;
-    if ((this.mVideoPlayer != null) && (this.mOnProgressChangedListener != null))
+    if (this.mOnProgressChangedListener != null)
     {
       this.mProgressHandler.postDelayed(this, 500L);
       l2 = 0L;
     }
     try
     {
-      l1 = this.mVideoPlayer.b();
+      l1 = this.videoPlayController.a().b();
       this.mOnProgressChangedListener.a(l1);
       return;
     }
@@ -866,75 +584,82 @@ public class VideoView
         long l1 = l2;
         if (QLog.isColorLevel())
         {
-          QLog.e("gifvideo.VideoView", 2, "run: " + QLog.getStackTraceString(localException));
+          QLog.e(this.tag, 2, "run: " + QLog.getStackTraceString(localException));
           l1 = l2;
         }
       }
     }
   }
   
-  public void setAutoPlayMode(int paramInt)
+  public void setArticleInfo(ArticleInfo paramArticleInfo)
   {
-    this.autoPlayMode = paramInt;
+    this.articleInfo = paramArticleInfo;
+    if ((paramArticleInfo != null) && (paramArticleInfo.mTitle != null))
+    {
+      String str = paramArticleInfo.mTitle.substring(0, Math.min(paramArticleInfo.mTitle.length(), 2));
+      this.tag = ("ptsVideoView." + this.suffix + "." + str);
+      this.videoPlayController.g(this.tag);
+    }
+    if (this.videoMaskController != null) {
+      this.videoMaskController.a(paramArticleInfo);
+    }
+    this.videoPlayController.a(paramArticleInfo);
+    this.videoPlayController.a(this);
   }
   
-  public void setChannelId(long paramLong)
-  {
-    this.channelId = paramLong;
-  }
+  @Deprecated
+  public void setAutoPlayMode(int paramInt) {}
   
   public void setCoverUrl(String paramString)
   {
     this.mCoverUrl = paramString;
+    if ((getHeight() > 0) && (getHeight() > 0)) {
+      this.mCoverUrl = RIJSmartCropUtils.a(this.mCoverUrl, getWidth(), getHeight());
+    }
     setVideoCover();
   }
   
   public void setDtPgid(String paramString)
   {
-    this.dtPgid = paramString;
-  }
-  
-  public void setFileSize(long paramLong)
-  {
-    this.fileSize = paramLong;
+    this.videoPlayController.e(paramString);
   }
   
   public void setLoop(boolean paramBoolean)
   {
-    this.isLoop = paramBoolean;
-    if (this.mVideoPlayer != null) {
-      this.mVideoPlayer.b(this.isLoop);
-    }
+    this.videoPlayController.a(paramBoolean);
+  }
+  
+  public void setManualPause(boolean paramBoolean)
+  {
+    this.isManualPause = paramBoolean;
+    this.videoPlayController.c(paramBoolean);
   }
   
   public void setMute(boolean paramBoolean)
   {
-    this.isMute = paramBoolean;
-    if (this.mVideoPlayer != null) {
-      this.mVideoPlayer.a(paramBoolean);
-    }
+    this.videoPlayController.b(paramBoolean);
   }
   
-  public void setOnCheckShownListener(qce paramqce)
+  public void setOnCheckShownListener(VideoView.OnCheckShownListener paramOnCheckShownListener)
   {
-    this.mOnCheckShownListener = paramqce;
+    this.mOnCheckShownListener = paramOnCheckShownListener;
   }
   
-  public void setOnProgressChangedListener(qcf paramqcf)
+  public void setOnProgressChangedListener(VideoView.OnProgressChangedListener paramOnProgressChangedListener)
   {
-    this.mOnProgressChangedListener = paramqcf;
+    this.mOnProgressChangedListener = paramOnProgressChangedListener;
   }
   
   public void setPlayIconSize(int paramInt1, int paramInt2)
   {
     this.iconWidth = Utils.dp2px(paramInt1);
     this.iconHeight = Utils.dp2px(paramInt2);
-    if (this.mPlayImageView != null)
+    if (this.mPlayIconImageView != null)
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mPlayImageView.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mPlayIconImageView.getLayoutParams();
       localLayoutParams.width = this.iconWidth;
       localLayoutParams.height = this.iconHeight;
-      this.mPlayImageView.setLayoutParams(localLayoutParams);
+      this.mPlayIconImageView.setLayoutParams(localLayoutParams);
     }
   }
   
@@ -948,10 +673,10 @@ public class VideoView
   {
     this.isPlayIconVisible = paramBoolean;
     NativeReadInjoyImageView localNativeReadInjoyImageView;
-    if (this.mPlayImageView != null)
+    if (this.mPlayIconImageView != null)
     {
-      localNativeReadInjoyImageView = this.mPlayImageView;
-      if (!this.isPlayIconVisible) {
+      localNativeReadInjoyImageView = this.mPlayIconImageView;
+      if (!shouldShowPlayIcon()) {
         break label32;
       }
     }
@@ -968,41 +693,35 @@ public class VideoView
     this.playMode = paramInt;
   }
   
-  public void setPuin(String paramString)
-  {
-    this.pUin = paramString;
-  }
-  
   public void setReportR5(String paramString)
   {
-    this.reportR5 = paramString;
-  }
-  
-  public void setRowKey(String paramString)
-  {
-    this.rowKey = paramString;
+    this.videoPlayController.f(paramString);
   }
   
   public void setScaleType(int paramInt)
   {
     switch (paramInt)
     {
+    default: 
+      paramInt = 0;
     }
     for (;;)
     {
       try
       {
-        this.xyaxis = 0;
-        if (this.mVideoPlayer != null) {
-          this.mVideoPlayer.a(this.xyaxis);
-        }
+        this.videoPlayController.b(paramInt);
         return;
       }
       finally {}
-      this.xyaxis = 1;
+      paramInt = 1;
       continue;
-      this.xyaxis = 2;
+      paramInt = 2;
     }
+  }
+  
+  public void setShowVideoMask(boolean paramBoolean)
+  {
+    this.showVideoMask = paramBoolean;
   }
   
   public void setUseVid(boolean paramBoolean)
@@ -1012,83 +731,107 @@ public class VideoView
   
   public void setVideoBusiType(int paramInt)
   {
-    this.mBusiType = paramInt;
+    this.videoPlayController.a(paramInt);
   }
   
-  public void setVideoPlayListener(qbx paramqbx)
+  public void setVideoPlayListener(VideoPlayListener paramVideoPlayListener)
   {
-    this.videoPlayListener = paramqbx;
+    this.videoPlayController.a(paramVideoPlayListener);
   }
   
   public void setVideoUrl(String paramString)
   {
     this.mVideoUrl = paramString;
+    this.videoPlayController.a(this.mVideoUrl);
   }
   
   public void setVideoVid(String paramString)
   {
-    if (paramString != null) {}
     try
     {
-      if (!paramString.equals(this.mVid)) {
-        stop();
+      if ((this.mVid != null) && (!TextUtils.equals(this.mVid, paramString))) {
+        displayCover();
       }
       this.mVid = paramString;
+      this.videoPlayController.b(paramString);
       return;
     }
     finally {}
   }
   
+  public void setVideoView(IVideoView paramIVideoView)
+  {
+    this.mVideoView = paramIVideoView;
+  }
+  
+  public void setVideoViewClickListener()
+  {
+    if ((this.mVideoView != null) && (this.mVideoView.a() != null)) {
+      this.mVideoView.a().setOnClickListener(this.videoViewClickListener);
+    }
+  }
+  
+  public void showLoading()
+  {
+    QLog.d(this.tag, 1, "showLoading");
+    if (this.videoMaskController != null) {
+      this.videoMaskController.l();
+    }
+    this.mPlayIconImageView.setVisibility(4);
+  }
+  
+  public void showVideoError(int paramInt, String paramString1, String paramString2)
+  {
+    QLog.d(this.tag, 1, new Object[] { "showVideoError: " + paramInt, paramString1, paramString2 });
+    if (this.videoMaskController != null) {
+      this.videoMaskController.a(paramInt, paramString1, paramString2);
+    }
+  }
+  
+  @UiThread
   public boolean startPlay()
   {
-    QLog.d("gifvideo.VideoView", 2, getTag() + "receive startPlay");
-    if (!shouldPlay())
-    {
-      QLog.d("gifvideo.VideoView", 1, "should not play");
-      return false;
-    }
-    if ((TextUtils.isEmpty(this.mVid)) && (TextUtils.isEmpty(this.mVideoUrl)))
-    {
-      QLog.d("gifvideo.VideoView", 1, "vid or url is null, reture");
-      return false;
-    }
-    if (!isInited())
-    {
-      QLog.d("gifvideo.VideoView", 2, "has not inited, init");
-      this.mAction.set(3);
-      init();
-      return true;
-    }
-    if ((getCurrentState() == 7) || (this.mAction.get() == 3))
-    {
-      QLog.d("gifvideo.VideoView", 2, "isPlaying or has started " + getCurrentState() + " " + this.mAction.get());
-      return true;
-    }
-    if (((!TextUtils.isEmpty(this.preparedUrl)) && (!this.preparedUrl.equals(this.mVideoUrl))) || (getVisibility() != 0))
-    {
-      QLog.d("gifvideo.VideoView", 2, "preparedUrl != mVideoUrl, " + this.preparedUrl + " " + this.mVideoUrl + " " + getVisibility());
-      return false;
-    }
-    this.mAction.set(3);
-    ThreadManager.post(new VideoView.11(this), 10, null, false);
+    return startPlay(3);
+  }
+  
+  public boolean startPlay(int paramInt)
+  {
+    QLog.d(this.tag, 2, "receive startPlay");
+    this.videoPlayController.c(paramInt);
     return true;
   }
   
+  @UiThread
   public void stop()
   {
-    QLog.d("gifvideo.VideoView", 2, getTag() + " receive stop current action is " + this.mAction.get());
-    if (!isInited())
-    {
-      QLog.d("gifvideo.VideoView", 2, "has not inited, return");
-      return;
+    QLog.d(this.tag, 2, "receive stop current action is " + this.mAction.get());
+    setManualPause(false);
+    this.videoPlayController.a();
+  }
+  
+  public void updateProgress(int paramInt)
+  {
+    if (this.videoPlayController != null) {
+      this.videoPlayController.d(paramInt);
     }
-    ThreadManager.post(new VideoView.12(this), 10, null, false);
-    this.mProgressHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void updateSeekBarImmediately()
+  {
+    IPlayer localIPlayer = this.videoPlayController.a();
+    if ((localIPlayer != null) && (this.videoMaskController != null))
+    {
+      long l1 = localIPlayer.b();
+      long l2 = localIPlayer.a();
+      int i = Math.min((int)((float)l1 * 100.0F / (float)l2 + 0.5D) + 1, 100);
+      this.videoMaskController.a().setProgress(i);
+      this.videoPlayController.h();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView
  * JD-Core Version:    0.7.0.1
  */

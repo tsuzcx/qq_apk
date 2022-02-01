@@ -67,7 +67,7 @@ public class ReportClientInfo
   
   public int a()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getLongAccountUin(), true);
+    a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getLongAccountUin(), true);
     return 7;
   }
 }

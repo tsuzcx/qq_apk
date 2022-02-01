@@ -1,26 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.profilecard.base.utils.LongClickCopyAction.ICopyListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class ChatSettingForTroop$40
-  implements Runnable
+  implements LongClickCopyAction.ICopyListener
 {
   ChatSettingForTroop$40(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onCopyContent(String paramString)
   {
-    TroopManager localTroopManager = (TroopManager)this.this$0.app.getManager(QQManagerFactory.TROOP_MANAGER);
-    if (localTroopManager != null) {
-      localTroopManager.a(this.this$0.a.troopUin);
-    }
+    ReportController.b(this.a.app, "grp_set", "", "", "grp_data", "grp_set_copy", 0, 0, paramString, "", "", "");
   }
+  
+  public void onShowCopyMenu() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.40
  * JD-Core Version:    0.7.0.1
  */

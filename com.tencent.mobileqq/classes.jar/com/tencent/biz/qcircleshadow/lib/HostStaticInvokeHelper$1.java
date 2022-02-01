@@ -1,29 +1,22 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import ayra;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.AuthTips;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
 
 final class HostStaticInvokeHelper$1
-  extends ayra
+  implements ThreadPool.Job<Object>
 {
-  HostStaticInvokeHelper$1(HostStaticInvokeHelper.AccountIdentityCallBack paramAccountIdentityCallBack) {}
+  HostStaticInvokeHelper$1(HostStaticInvokeHelper.InvokeNormalCallBack paramInvokeNormalCallBack) {}
   
-  public void getAccountIdentitySuccess(cmd0x9ae.RspBody paramRspBody)
+  public Object run(ThreadPool.JobContext paramJobContext)
   {
-    if (paramRspBody != null)
-    {
-      boolean bool = paramRspBody.bool_has_been_authenticated.get();
-      paramRspBody = paramRspBody.msg_auth_tips.string_tips_action_url.get();
-      this.val$callBack.onSuccess(bool, paramRspBody);
-    }
+    this.val$callBack.onSuccess();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.HostStaticInvokeHelper.1
  * JD-Core Version:    0.7.0.1
  */

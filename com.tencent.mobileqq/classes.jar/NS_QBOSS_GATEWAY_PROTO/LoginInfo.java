@@ -8,10 +8,10 @@ public final class LoginInfo
   extends JceStruct
 {
   public String strAuthKey = "";
-  public long uAuthType;
-  public long uHostUin;
-  public long uPtId;
-  public long uUserIpNet;
+  public long uAuthType = 0L;
+  public long uHostUin = 0L;
+  public long uPtId = 0L;
+  public long uUserIpNet = 0L;
   
   public LoginInfo() {}
   

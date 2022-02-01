@@ -31,6 +31,7 @@ public class PreDownloadConstants
   public static final int BUSINESS_FACE_SCAN = 10061;
   public static final int BUSINESS_FACE_SCAN_MODEL = 10061;
   public static final int BUSINESS_FONT = 10003;
+  public static final int BUSINESS_GAMECENTER_HIPPY = 10097;
   public static final int BUSINESS_GIF = 10041;
   public static final int BUSINESS_HOT_FRIEND = 10042;
   public static final int BUSINESS_INDIVIDUAL_SIGN = 10018;
@@ -41,6 +42,7 @@ public class PreDownloadConstants
   public static final int BUSINESS_MUTUAL_MARK_INTIMATE = 10089;
   public static final HashMap<Integer, String> BUSINESS_NAME = new PreDownloadConstants.1();
   public static final HashMap<Integer, String> BUSINESS_NAME_ENG = new PreDownloadConstants.2();
+  public static final int BUSINESS_ONLINE_STATUS_ANIMATION = 10096;
   public static final int BUSINESS_PLUGIN_COMICS = 10011;
   public static final int BUSINESS_PLUGIN_DATA_LINE = 10013;
   public static final int BUSINESS_PLUGIN_QLINK = 10060;
@@ -112,6 +114,7 @@ public class PreDownloadConstants
   public static final String DEPARTMENT_PLT = "plt";
   public static final String DEPARTMENT_PRD = "prd";
   public static final String DEPARTMENT_QQPAY = "qqpay";
+  public static final String DEPARTMENT_SED = "sed";
   public static final String DEPARTMENT_VAC = "vac";
   public static final String DEPARTMENT_VAS = "vas";
   public static final String DEPARTMENT_YOUTU = "youtu";
@@ -175,6 +178,7 @@ public class PreDownloadConstants
     sPreDownloadWhiteList.add(Integer.valueOf(10069));
     sPreDownloadWhiteList.add(Integer.valueOf(10073));
     sPreDownloadWhiteList.add(Integer.valueOf(10095));
+    sPreDownloadWhiteList.add(Integer.valueOf(10096));
   }
 }
 

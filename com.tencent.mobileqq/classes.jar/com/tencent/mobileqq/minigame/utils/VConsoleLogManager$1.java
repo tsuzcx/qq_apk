@@ -1,10 +1,7 @@
 package com.tencent.mobileqq.minigame.utils;
 
-import Override;
-import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 
 class VConsoleLogManager$1
   extends WebViewClient
@@ -14,13 +11,6 @@ class VConsoleLogManager$1
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     VConsoleLogManager.access$000(this.this$0, true);
-  }
-  
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
 }
 

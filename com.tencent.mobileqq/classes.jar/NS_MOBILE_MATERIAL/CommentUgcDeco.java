@@ -8,7 +8,7 @@ public final class CommentUgcDeco
   extends JceStruct
 {
   static CommentBubble cache_stBubble = new CommentBubble();
-  public CommentBubble stBubble;
+  public CommentBubble stBubble = null;
   
   public CommentUgcDeco() {}
   

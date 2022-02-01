@@ -3,18 +3,17 @@ package com.tencent.open.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjpp;
 
 public class CreateVirtualResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<CreateVirtualResult> CREATOR = new bjpp();
+  public static final Parcelable.Creator<CreateVirtualResult> CREATOR = new CreateVirtualResult.1();
   public long a;
   public String a;
   
   public CreateVirtualResult() {}
   
-  public CreateVirtualResult(Parcel paramParcel)
+  protected CreateVirtualResult(Parcel paramParcel)
   {
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -41,7 +40,7 @@ public class CreateVirtualResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.model.CreateVirtualResult
  * JD-Core Version:    0.7.0.1
  */

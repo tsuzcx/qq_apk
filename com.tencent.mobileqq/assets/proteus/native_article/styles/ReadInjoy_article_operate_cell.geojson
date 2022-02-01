@@ -245,10 +245,10 @@
             {
                 "view_type":"UIButton",
                 "view_id":"id_biu",
+                "default_visible":"YES",
                 "right_of_view":"id_collect",
                 "margin_left":"4",
                 "event_type":"cmd_biu_click",
-                "default_visible":"YES",
                 "align_parent_center_vertical":"YES",
                 "height":{
                     "type":"relative",
@@ -270,6 +270,26 @@
                             "click_type": "single"
                         }
                     ]
+                }
+            },
+            {
+                "view_type":"UIButton",
+                "view_id":"id_share",
+                "default_visible":"YES",
+                "right_of_view":"id_collect",
+                "margin_left":"4",
+                "event_type":"cmd_share_click",
+                "align_parent_center_vertical":"YES",
+                "height":{
+                    "type":"relative",
+                    "value":"46"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"46"
+                },
+                "attributes":{
+                    "setImage:":"share_bottom_icon"
                 }
             }
         ]

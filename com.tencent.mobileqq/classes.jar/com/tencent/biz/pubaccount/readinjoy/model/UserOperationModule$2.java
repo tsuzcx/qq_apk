@@ -1,22 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import qia;
-import rao;
-import rap;
+import com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyManager;
+import com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyManager.Companion;
 
-public class UserOperationModule$2
+class UserOperationModule$2
   implements Runnable
 {
-  public UserOperationModule$2(qia paramqia, String paramString) {}
+  UserOperationModule$2(UserOperationModule paramUserOperationModule, String paramString) {}
   
   public void run()
   {
-    rao.a.a().a(true, this.a);
+    RIJPushNotifyManager.a.a().a(true, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.2
  * JD-Core Version:    0.7.0.1
  */

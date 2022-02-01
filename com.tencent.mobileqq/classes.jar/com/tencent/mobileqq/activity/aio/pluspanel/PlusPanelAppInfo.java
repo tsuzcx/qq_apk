@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.activity.aio.pluspanel;
 
-import ahmu;
-import ahve;
-import ahvi;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import azlv;
-import bhgd;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.pluspanel.AIOPlusPanelAppInfoConfigProcessor;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 
@@ -77,9 +76,10 @@ public abstract class PlusPanelAppInfo
   private boolean a(Context paramContext, String paramString1, String paramString2)
   {
     QLog.i("PlusPanelAppInfo", 2, "onMiniAppJump jumpUrl:" + paramString1);
-    if ((!TextUtils.isEmpty(paramString1)) && (MiniAppLauncher.isMiniAppUrl(paramString1)))
+    IMiniAppService localIMiniAppService = (IMiniAppService)QRoute.api(IMiniAppService.class);
+    if ((!TextUtils.isEmpty(paramString1)) && (localIMiniAppService.isMiniAppUrl(paramString1)))
     {
-      MiniAppLauncher.startMiniApp(paramContext, a(paramString1, paramString2), 2053, null);
+      localIMiniAppService.startMiniApp(paramContext, a(paramString1, paramString2), 2053, null);
       return true;
     }
     return false;
@@ -93,9 +93,9 @@ public abstract class PlusPanelAppInfo
     return 0;
   }
   
-  public azlv createConfigProcessor()
+  AIOPlusPanelAppInfoConfigProcessor createConfigProcessor()
   {
-    return new ahve(this);
+    return new PlusPanelAppInfo.1(this);
   }
   
   public abstract int defaultDrawableID();
@@ -122,22 +122,22 @@ public abstract class PlusPanelAppInfo
   
   public abstract String getTitle();
   
-  public void handlePanelClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void handlePanelClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     boolean bool1 = false;
     if ("miniapp".equals(this.actionType)) {
-      bool1 = a(paramBaseChatPie.getActivity(), this.action, paramBaseChatPie.sessionInfo.curFriendUin);
+      bool1 = a(paramBaseChatPie.a(), this.action, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     }
     boolean bool2 = bool1;
     if (!bool1)
     {
       bool2 = bool1;
       if ("web".equals(this.actionType)) {
-        bool2 = a(paramBaseChatPie.getActivity(), this.action);
+        bool2 = a(paramBaseChatPie.a(), this.action);
       }
     }
     if (!bool2) {
-      onPlusPanelAppClick(paramahvi, paramBaseChatPie, paramSessionInfo);
+      onPlusPanelAppClick(paramPlusPanelViewModel, paramBaseChatPie, paramSessionInfo);
     }
   }
   
@@ -183,20 +183,22 @@ public abstract class PlusPanelAppInfo
     return this.uinType == 1;
   }
   
-  protected abstract void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo);
+  protected void onChatPieLifeCycle(int paramInt) {}
+  
+  protected abstract void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo);
   
   protected void showSelGAudioChatEntryActionSheet(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, int paramInt, boolean paramBoolean, String paramString)
   {
     if (paramInt == 10) {
-      bhgd.b(paramBoolean);
+      QAVGroupConfig.Report.b(paramBoolean);
     }
-    ahmu.a(paramBaseChatPie.app, paramBaseChatPie.mActivity, paramSessionInfo, paramInt, paramBoolean, paramBaseChatPie.app.getCurrentUin(), paramString);
-    paramBaseChatPie.hidePanel();
+    VideoItemBuilder.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramSessionInfo, paramInt, paramBoolean, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString);
+    paramBaseChatPie.an();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo
  * JD-Core Version:    0.7.0.1
  */

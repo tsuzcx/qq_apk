@@ -9,14 +9,14 @@ public final class RequestBindMobileV2
 {
   static byte[] cache_encrptBindMobileInfo;
   static int cache_type = 0;
-  public byte[] encrptBindMobileInfo;
-  public boolean isChangeBind;
-  public boolean isFromChangeBind;
-  public boolean isFromUni;
-  public boolean isSecNewReq;
+  public byte[] encrptBindMobileInfo = null;
+  public boolean isChangeBind = false;
+  public boolean isFromChangeBind = false;
+  public boolean isFromUni = false;
+  public boolean isSecNewReq = false;
   public String mobileNo = "";
   public String nationCode = "";
-  public long originBinder;
+  public long originBinder = 0L;
   public int type = 0;
   
   static

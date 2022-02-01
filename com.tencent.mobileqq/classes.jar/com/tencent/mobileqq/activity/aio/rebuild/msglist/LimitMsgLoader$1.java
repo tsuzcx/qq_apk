@@ -1,0 +1,21 @@
+package com.tencent.mobileqq.activity.aio.rebuild.msglist;
+
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
+
+class LimitMsgLoader$1
+  implements Comparator<MessageRecord>
+{
+  LimitMsgLoader$1(LimitMsgLoader paramLimitMsgLoader) {}
+  
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.LimitMsgLoader.1
+ * JD-Core Version:    0.7.0.1
+ */

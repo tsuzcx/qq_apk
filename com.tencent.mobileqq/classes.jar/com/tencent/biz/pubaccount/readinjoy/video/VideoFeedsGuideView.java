@@ -19,9 +19,6 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import com.tencent.mobileqq.util.DisplayUtil;
-import siu;
-import siv;
-import siw;
 
 public class VideoFeedsGuideView
   extends View
@@ -32,16 +29,16 @@ public class VideoFeedsGuideView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private siu jdField_a_of_type_Siu;
-  private siv jdField_a_of_type_Siv;
-  private siw jdField_a_of_type_Siw;
+  private VideoFeedsGuideView.AnimateHandler jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGuideView$AnimateHandler;
+  private VideoFeedsGuideView.AnimateListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGuideView$AnimateListener;
+  private VideoFeedsGuideView.GuideViewMoveAnimateListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGuideView$GuideViewMoveAnimateListener;
   public int b;
   private int c;
   private int d;
   private int e;
-  private int f;
+  private int f = 0;
   private int g;
-  private int h;
+  private int h = 0;
   private int i = 0;
   
   static
@@ -77,20 +74,20 @@ public class VideoFeedsGuideView
   
   private void a()
   {
-    this.b = DisplayUtil.dip2px(getContext(), 150.0F);
-    this.jdField_a_of_type_Int = DisplayUtil.dip2px(getContext(), 180.0F);
-    this.c = DisplayUtil.dip2px(getContext(), 8.0F);
-    this.e = DisplayUtil.dip2px(getContext(), 70.0F);
-    this.g = DisplayUtil.dip2px(getContext(), 70.0F);
+    this.b = DisplayUtil.a(getContext(), 150.0F);
+    this.jdField_a_of_type_Int = DisplayUtil.a(getContext(), 180.0F);
+    this.c = DisplayUtil.a(getContext(), 8.0F);
+    this.e = DisplayUtil.a(getContext(), 70.0F);
+    this.g = DisplayUtil.a(getContext(), 70.0F);
     this.d = this.e;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130843172);
-    this.jdField_a_of_type_Siu = new siu(this, null);
-    this.jdField_a_of_type_Siv = new siv(this, null);
-    this.jdField_a_of_type_Siw = new siw(this, null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130843320);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGuideView$AnimateHandler = new VideoFeedsGuideView.AnimateHandler(this, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGuideView$AnimateListener = new VideoFeedsGuideView.AnimateListener(this, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGuideView$GuideViewMoveAnimateListener = new VideoFeedsGuideView.GuideViewMoveAnimateListener(this, null);
   }
   
   private void a(Canvas paramCanvas)
@@ -110,7 +107,7 @@ public class VideoFeedsGuideView
     {
       invalidate();
       if (paramBoolean) {
-        this.jdField_a_of_type_Siu.sendEmptyMessageDelayed(0, 300L);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGuideView$AnimateHandler.sendEmptyMessageDelayed(0, 300L);
       }
       return;
       this.h = 0;
@@ -123,7 +120,7 @@ public class VideoFeedsGuideView
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator.setDuration(200L);
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, this.d });
-    localValueAnimator.addUpdateListener(this.jdField_a_of_type_Siw);
+    localValueAnimator.addUpdateListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGuideView$GuideViewMoveAnimateListener);
     localValueAnimator.setDuration(500L);
     localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -133,7 +130,7 @@ public class VideoFeedsGuideView
     localObjectAnimator.setStartDelay(400L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator).after(localAnimatorSet);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this.jdField_a_of_type_Siv);
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGuideView$AnimateListener);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
   
@@ -177,7 +174,7 @@ public class VideoFeedsGuideView
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() * 5 / 6 - this.h - this.d, getHeight() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.i == 0) {
       return;
@@ -190,7 +187,7 @@ public class VideoFeedsGuideView
     d(paramCanvas);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(a(paramInt1, true), a(paramInt2, false));
   }
@@ -203,7 +200,7 @@ public class VideoFeedsGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView
  * JD-Core Version:    0.7.0.1
  */

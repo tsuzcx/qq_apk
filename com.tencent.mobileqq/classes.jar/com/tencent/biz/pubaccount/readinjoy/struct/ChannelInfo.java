@@ -14,18 +14,18 @@ public class ChannelInfo
   public static final int VIDEO_CHANNEL_TYPE = 3;
   public int mChannelID = -1;
   public String mChannelName = "";
-  public int mChannelType;
+  public int mChannelType = 0;
   public int mFollowNum;
   public int mFontColor = -16777216;
   public int mFrameColor = -3355444;
   public String mHeaderPicUrl;
-  public boolean mIsFirstReq;
+  public boolean mIsFirstReq = false;
   public boolean mIsFollowed;
   public boolean mIsSystemRecomm;
   public boolean mIsTopic;
-  public String mJumpUrl;
-  public boolean mShow;
-  public int mSortOrder;
+  public String mJumpUrl = null;
+  public boolean mShow = false;
+  public int mSortOrder = 0;
   
   public ChannelInfo clone()
   {
@@ -59,7 +59,7 @@ public class ChannelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo
  * JD-Core Version:    0.7.0.1
  */

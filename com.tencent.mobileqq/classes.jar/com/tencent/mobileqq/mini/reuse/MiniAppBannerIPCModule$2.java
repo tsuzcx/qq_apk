@@ -16,7 +16,7 @@ final class MiniAppBannerIPCModule$2
     localBundle.putString("apkgName", this.val$apkgInfo.apkgName);
     localBundle.putString("iconUrl", this.val$apkgInfo.iconUrl);
     localBundle.putParcelable("appConfig", this.val$apkgInfo.appConfig);
-    QIPCClientHelper.getInstance().callServer(MiniAppBannerIPCModule.NAME, this.val$action, localBundle, null);
+    QIPCClientHelper.getInstance().callServer("MiniAppBannerIPCModule", this.val$action, localBundle, null);
   }
 }
 

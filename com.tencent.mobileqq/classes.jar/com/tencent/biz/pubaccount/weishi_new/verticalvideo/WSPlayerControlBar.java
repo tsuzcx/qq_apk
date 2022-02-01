@@ -11,11 +11,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.baseui.IPlayModeChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar;
-import vmp;
 
 public class WSPlayerControlBar
   extends RelativeLayout
+  implements IPlayModeChangeListener
 {
   private int jdField_a_of_type_Int = 1;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -43,9 +45,9 @@ public class WSPlayerControlBar
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560084, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar = ((RotationSeekBar)paramContext.findViewById(2131380963));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131380964));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560163, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar = ((RotationSeekBar)paramContext.findViewById(2131381420));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131381421));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setPadding(0, 0, 0, 0);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setProgress(0);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setMax(1000);
@@ -61,7 +63,7 @@ public class WSPlayerControlBar
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841856);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841999);
       AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getBackground();
       if (localAnimationDrawable != null)
       {
@@ -75,7 +77,7 @@ public class WSPlayerControlBar
     {
       for (;;)
       {
-        vmp.d("WS_VIDEO_seekBar", "showLoadingProgressBar error:" + localOutOfMemoryError);
+        WSLog.d("WS_VIDEO_seekBar", "showLoadingProgressBar error:" + localOutOfMemoryError);
       }
     }
   }
@@ -107,10 +109,10 @@ public class WSPlayerControlBar
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {}
     for (Object localObject = Integer.valueOf(this.jdField_a_of_type_AndroidWidgetImageView.getVisibility());; localObject = "null")
     {
-      vmp.b("WS_VIDEO_ProgressBar", localObject);
+      WSLog.b("WS_VIDEO_ProgressBar", localObject);
       if (this.jdField_a_of_type_AndroidWidgetImageView != null)
       {
-        vmp.b("WS_VIDEO_ProgressBar", "WSPlayerControlBar hideLoadingProgressBar() hide");
+        WSLog.b("WS_VIDEO_ProgressBar", "WSPlayerControlBar hideLoadingProgressBar() hide");
         c();
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
@@ -161,7 +163,7 @@ public class WSPlayerControlBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar
  * JD-Core Version:    0.7.0.1
  */

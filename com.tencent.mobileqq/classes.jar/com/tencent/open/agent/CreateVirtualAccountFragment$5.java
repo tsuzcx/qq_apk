@@ -3,9 +3,9 @@ package com.tencent.open.agent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.support.v4.app.FragmentActivity;
-import bgyo;
-import bheg;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 import java.io.BufferedInputStream;
@@ -30,9 +30,9 @@ class CreateVirtualAccountFragment$5
           localObject2 = new File(this.a);
           localObject1 = new BitmapFactory.Options();
           localObject2 = new BufferedInputStream(new FileInputStream((File)localObject2));
-          ((BitmapFactory.Options)localObject1).inSampleSize = ((int)bheg.a((InputStream)localObject2, CreateVirtualAccountFragment.a(this.this$0).getWidth(), CreateVirtualAccountFragment.a(this.this$0).getHeight()));
+          ((BitmapFactory.Options)localObject1).inSampleSize = ((int)ImageUtil.a((InputStream)localObject2, CreateVirtualAccountFragment.a(this.this$0).getWidth(), CreateVirtualAccountFragment.a(this.this$0).getHeight()));
           ((BufferedInputStream)localObject2).close();
-          localObject1 = bgyo.a(this.a, (BitmapFactory.Options)localObject1);
+          localObject1 = BitmapManager.a(this.a, (BitmapFactory.Options)localObject1);
           localObject2 = localObject1;
           if (localObject1 != null) {}
           localObject2 = localObject1;
@@ -69,7 +69,7 @@ class CreateVirtualAccountFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.CreateVirtualAccountFragment.5
  * JD-Core Version:    0.7.0.1
  */

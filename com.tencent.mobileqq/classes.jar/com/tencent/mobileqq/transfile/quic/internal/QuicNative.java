@@ -3,7 +3,7 @@ package com.tencent.mobileqq.transfile.quic.internal;
 public class QuicNative
 {
   private QuicNative.QuicCallback callback;
-  private boolean cleared;
+  private boolean cleared = false;
   private int handleId;
   private byte[] srvMessage;
   

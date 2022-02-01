@@ -1,26 +1,34 @@
 package com.tencent.mobileqq.activity;
 
-import anri;
-import anvk;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.mobileqq.widget.QQToast;
 
 class FriendProfileMoreInfoActivity$5
-  implements Runnable
+  implements ConditionSearchManager.IConfigListener
 {
   FriendProfileMoreInfoActivity$5(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    Card localCard = ((anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(this.this$0.app.getCurrentAccountUin());
-    this.this$0.app.runOnUiThread(new FriendProfileMoreInfoActivity.5.1(this, localCard));
-    this.this$0.a.f();
+    if ((this.a.a == 1) || (this.a.a == 2))
+    {
+      if (paramBoolean) {
+        break label55;
+      }
+      FriendProfileMoreInfoActivity.a(this.a);
+      QQToast.a(this.a, 2131691137, 0).b(this.a.getTitleBarHeight());
+    }
+    label55:
+    while (paramInt != 2) {
+      return;
+    }
+    FriendProfileMoreInfoActivity.a(this.a);
+    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.5
  * JD-Core Version:    0.7.0.1
  */

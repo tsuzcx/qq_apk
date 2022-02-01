@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import bdla;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class SelectMemberActivity$19
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  SelectMemberActivity$19(SelectMemberActivity paramSelectMemberActivity, String paramString) {}
+  SelectMemberActivity$19(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdla.b(this.this$0.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_add", 0, 0, this.val$troopUin, String.valueOf(this.this$0.getResultUins().size()), "", "");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.19
  * JD-Core Version:    0.7.0.1
  */

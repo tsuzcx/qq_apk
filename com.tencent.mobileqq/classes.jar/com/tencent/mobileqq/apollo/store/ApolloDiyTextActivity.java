@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.store;
 
-import Override;
 import android.annotation.TargetApi;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -22,7 +21,7 @@ public class ApolloDiyTextActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    this.b = "cmgame_process.ApolloDiyTextActivity";
+    this.a = "cmgame_process.ApolloDiyTextActivity";
     super.doOnCreate(paramBundle);
     return false;
   }
@@ -36,7 +35,7 @@ public class ApolloDiyTextActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloDiyTextActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -40,7 +40,7 @@ public class FrameLoading
     localRelativeLayout.setGravity(17);
     RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_CooperationQqreaderViewLoadingImageView = new LoadingImageView(paramContext);
-    int i = DisplayUtil.dip2px(paramContext, 35.0F);
+    int i = DisplayUtil.a(paramContext, 35.0F);
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(i, i);
     localLayoutParams2.addRule(14);
     localRelativeLayout.addView(this.jdField_a_of_type_CooperationQqreaderViewLoadingImageView, localLayoutParams2);
@@ -50,19 +50,19 @@ public class FrameLoading
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams2.addRule(3, this.jdField_a_of_type_CooperationQqreaderViewLoadingImageView.getId());
-    localLayoutParams2.setMargins(0, DisplayUtil.dip2px(paramContext, 15.0F) + ImmersiveUtils.getStatusBarHeight(getContext()), 0, 0);
+    localLayoutParams2.setMargins(0, DisplayUtil.a(paramContext, 15.0F) + ImmersiveUtils.getStatusBarHeight(getContext()), 0, 0);
     localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams2);
     addView(localRelativeLayout, localLayoutParams1);
   }
   
   public void setLoadingText(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131716500, new Object[] { Integer.valueOf(paramInt) }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131716995, new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.view.FrameLoading
  * JD-Core Version:    0.7.0.1
  */

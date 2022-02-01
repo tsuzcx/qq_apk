@@ -2,14 +2,14 @@ package com.tencent.mobileqq.transfile.chatpic;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import anud;
-import anwf;
-import azkf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.CustomError;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.FlashPicHelper;
+import com.tencent.mobileqq.app.HotChatHelper;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.PicResult;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.mobileqq.transfile.TransferResult;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
@@ -33,9 +33,9 @@ public class PicDownloadExplicitError
   
   static
   {
-    M_MAP.put(Integer.valueOf(1), new PicDownloadExplicitError.ExplicitError(2130838110, 2131689963));
-    M_MAP.put(Integer.valueOf(2), new PicDownloadExplicitError.ExplicitError(-1, 2131689964));
-    M_MAP.put(Integer.valueOf(3), new PicDownloadExplicitError.ExplicitError(-1, 2131689965));
+    M_MAP.put(Integer.valueOf(1), new PicDownloadExplicitError.ExplicitError(2130838182, 2131690005));
+    M_MAP.put(Integer.valueOf(2), new PicDownloadExplicitError.ExplicitError(-1, 2131690006));
+    M_MAP.put(Integer.valueOf(3), new PicDownloadExplicitError.ExplicitError(-1, 2131690007));
   }
   
   private PicDownloadExplicitError(int paramInt)
@@ -43,7 +43,7 @@ public class PicDownloadExplicitError
     this.mErrCode = paramInt;
   }
   
-  private static PicDownloadExplicitError getError(azkf paramazkf)
+  private static PicDownloadExplicitError getError(PicResult paramPicResult)
   {
     return null;
   }
@@ -62,7 +62,7 @@ public class PicDownloadExplicitError
       if ((localObject instanceof MessageForPic))
       {
         localObject = (MessageForPic)localObject;
-        if ((anwf.a((MessageRecord)localObject)) || (anud.a((MessageRecord)localObject))) {
+        if ((HotChatHelper.a((MessageRecord)localObject)) || (FlashPicHelper.a((MessageRecord)localObject))) {
           return null;
         }
       }
@@ -128,7 +128,7 @@ public class PicDownloadExplicitError
         return BaseApplicationImpl.getApplication().getResources().getString(i);
       }
     }
-    return BaseApplicationImpl.getApplication().getResources().getString(2131689963);
+    return BaseApplicationImpl.getApplication().getResources().getString(2131690005);
   }
   
   public static String getFailedTip(URLDrawable paramURLDrawable)
@@ -144,8 +144,8 @@ public class PicDownloadExplicitError
     if ((paramObject instanceof TransferResult)) {
       return getError((TransferResult)paramObject);
     }
-    if ((paramObject instanceof azkf)) {
-      return getError((azkf)paramObject);
+    if ((paramObject instanceof PicResult)) {
+      return getError((PicResult)paramObject);
     }
     return null;
   }

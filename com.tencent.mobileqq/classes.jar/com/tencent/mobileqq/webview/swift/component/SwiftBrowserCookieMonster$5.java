@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import biig;
+import com.tencent.biz.AuthorizeConfig;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nro;
 
 final class SwiftBrowserCookieMonster$5
   implements Runnable
 {
-  SwiftBrowserCookieMonster$5(List paramList, biig parambiig) {}
+  SwiftBrowserCookieMonster$5(List paramList, SwiftPreloadCookieManager paramSwiftPreloadCookieManager) {}
   
   public void run()
   {
-    Set localSet = nro.a().a("pskey");
+    Set localSet = AuthorizeConfig.a().a("pskey");
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
@@ -24,14 +23,14 @@ final class SwiftBrowserCookieMonster$5
         if (QLog.isColorLevel()) {
           QLog.i("SwiftBrowserCookieMonster", 2, str + " doesn't need pskey any more,so delete! ");
         }
-        this.jdField_a_of_type_Biig.b(str, "p_skey");
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftPreloadCookieManager.b(str, "p_skey");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.5
  * JD-Core Version:    0.7.0.1
  */

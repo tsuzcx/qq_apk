@@ -4,12 +4,11 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import sfx;
 
-public class RecommendADVideoFeedsManager$2
+class RecommendADVideoFeedsManager$2
   implements Runnable
 {
-  public RecommendADVideoFeedsManager$2(sfx paramsfx, ViewBase paramViewBase, boolean paramBoolean, View paramView) {}
+  RecommendADVideoFeedsManager$2(RecommendADVideoFeedsManager paramRecommendADVideoFeedsManager, ViewBase paramViewBase, boolean paramBoolean, View paramView) {}
   
   public void run()
   {
@@ -24,7 +23,7 @@ public class RecommendADVideoFeedsManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.RecommendADVideoFeedsManager.2
  * JD-Core Version:    0.7.0.1
  */

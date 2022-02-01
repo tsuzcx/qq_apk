@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.home;
 
-import bdla;
-import uot;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class Conversation$6
   implements Runnable
@@ -10,13 +10,13 @@ class Conversation$6
   
   public void run()
   {
-    long l = uot.a().a();
-    bdla.b(this.this$0.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.a), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
+    long l = ServiceAccountFolderManager.a().a();
+    ReportController.b(this.this$0.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.a), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.6
  * JD-Core Version:    0.7.0.1
  */

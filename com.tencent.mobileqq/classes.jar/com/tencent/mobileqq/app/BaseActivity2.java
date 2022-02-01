@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import Override;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -19,9 +18,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import anqz;
-import aodk;
-import bcwh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
@@ -29,8 +25,10 @@ import com.tencent.mobileqq.activity.fling.FlingHandler;
 import com.tencent.mobileqq.activity.fling.FlingTrackerHandler;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.mobileqq.shortvideo.AIOShortVideoUtil;
 import com.tencent.mobileqq.startup.step.InitSkin;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.theme.ThemeNavigationBarUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -46,24 +44,24 @@ public class BaseActivity2
 {
   private static final int DEFAULT_FLING_ACTION = 2;
   protected static final String TAG = "BaseActivity2";
-  public static boolean mAppForground = true;
-  private static aodk shakeListener;
+  static boolean mAppForground = true;
+  private static ShakeListener shakeListener;
   private static boolean snapChecked;
-  public static BaseActivity2 topActivity;
+  static BaseActivity2 topActivity;
   private String className = getClass().getSimpleName();
   protected long currentActivityStayTime;
-  public boolean isPause = true;
+  boolean isPause = true;
   public String lastLoginUin;
   public boolean mActNeedImmersive = true;
   protected boolean mCanLock = true;
   private FlingHandler mFlingHandler;
   public boolean mNeedStatusTrans = true;
   private BroadcastReceiver mScreenReceiver;
-  protected int mStopFlag;
+  protected int mStopFlag = 0;
   public SystemBarCompact mSystemBarComp;
   public int[] mWindowLocation;
   SkinnableActivityProcesser processer;
-  public ScreenShot screenShot;
+  ScreenShot screenShot;
   
   private void cleanScreenShot()
   {
@@ -149,12 +147,12 @@ public class BaseActivity2
   
   public int getTitleBarHeight()
   {
-    return getResources().getDimensionPixelSize(2131299080);
+    return getResources().getDimensionPixelSize(2131299166);
   }
   
   public void initNavigationBarColor()
   {
-    ImmersiveUtils.c(getWindow());
+    ThemeNavigationBarUtil.a(getWindow());
   }
   
   @TargetApi(24)
@@ -252,8 +250,8 @@ public class BaseActivity2
     {
       if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
       {
-        bcwh.d = System.currentTimeMillis();
-        QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_CREATE ", Long.valueOf(bcwh.d) });
+        AIOShortVideoUtil.e = System.currentTimeMillis();
+        QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_CREATE ", Long.valueOf(AIOShortVideoUtil.e) });
       }
     }
     catch (Exception paramBundle)
@@ -296,18 +294,18 @@ public class BaseActivity2
           {
             paramBundle = new IntentFilter();
             paramBundle.addAction("android.intent.action.SCREEN_OFF");
-            this.mScreenReceiver = new anqz(this, null);
+            this.mScreenReceiver = new BaseActivity2.MyScreenReceiver(this, null);
             registerReceiver(this.mScreenReceiver, paramBundle);
             if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
             {
               getWindow().addFlags(67108864);
               if (this.mActNeedImmersive)
               {
-                this.mSystemBarComp = new SystemBarCompact(this, true, getResources().getColor(2131167084));
+                this.mSystemBarComp = new SystemBarCompact(this, true, getResources().getColor(2131167091));
                 if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
                   break;
                 }
-                this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130846157));
+                this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130846481));
               }
             }
             initNavigationBarColor();
@@ -390,8 +388,8 @@ public class BaseActivity2
     super.onResume();
     if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
     {
-      bcwh.f = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_RESUME ", Long.valueOf(bcwh.f) });
+      AIOShortVideoUtil.i = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_RESUME ", Long.valueOf(AIOShortVideoUtil.i) });
     }
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onResume ");
@@ -451,8 +449,8 @@ public class BaseActivity2
     super.onStart();
     if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
     {
-      bcwh.e = System.currentTimeMillis();
-      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_START ", Long.valueOf(bcwh.e) });
+      AIOShortVideoUtil.g = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_START ", Long.valueOf(AIOShortVideoUtil.g) });
     }
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onStart");

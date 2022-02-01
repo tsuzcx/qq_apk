@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import alti;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
-public class RMVideoRecordState$1
+class RMVideoRecordState$1
   implements Runnable
 {
-  public RMVideoRecordState$1(alti paramalti, RMVideoStateMgr paramRMVideoStateMgr) {}
+  RMVideoRecordState$1(RMVideoRecordState paramRMVideoRecordState, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class RMVideoRecordState$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.io.Serializable;
-import rqv;
 
 public class SocializeFeedsInfo$BiuCommentInfo
   implements Parcelable, Serializable, Cloneable
 {
-  public static final Parcelable.Creator<BiuCommentInfo> CREATOR = new rqv();
+  public static final Parcelable.Creator<BiuCommentInfo> CREATOR = new SocializeFeedsInfo.BiuCommentInfo.1();
   public static final int OP_TYPE_AT = 1;
   public static final int OP_TYPE_BIU = 0;
   public static final int OP_TYPE_TOPIC = 2;
@@ -26,7 +25,7 @@ public class SocializeFeedsInfo$BiuCommentInfo
   
   public SocializeFeedsInfo$BiuCommentInfo() {}
   
-  public SocializeFeedsInfo$BiuCommentInfo(Parcel paramParcel)
+  protected SocializeFeedsInfo$BiuCommentInfo(Parcel paramParcel)
   {
     this.mBiuTime = paramParcel.readInt();
     this.mUin = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
@@ -118,7 +117,7 @@ public class SocializeFeedsInfo$BiuCommentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo
  * JD-Core Version:    0.7.0.1
  */

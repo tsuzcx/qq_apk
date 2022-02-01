@@ -28,7 +28,7 @@ public class PortalManager$PortalConfig
   public String hotTopic;
   public String hotUrl;
   public int id;
-  public boolean isHit;
+  public boolean isHit = false;
   public String leftCloudImageMD5;
   public String leftCloudImageUrl;
   List<PortalManager.LogoConfig> logoList = new ArrayList();

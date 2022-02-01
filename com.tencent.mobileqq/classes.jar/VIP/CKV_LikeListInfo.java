@@ -10,8 +10,8 @@ public final class CKV_LikeListInfo
   extends JceStruct
 {
   static Map<Long, CKV_LikeInfo> cache_mLikeList = new HashMap();
-  public long iLstCheckTime;
-  public Map<Long, CKV_LikeInfo> mLikeList;
+  public long iLstCheckTime = 0L;
+  public Map<Long, CKV_LikeInfo> mLikeList = null;
   
   static
   {

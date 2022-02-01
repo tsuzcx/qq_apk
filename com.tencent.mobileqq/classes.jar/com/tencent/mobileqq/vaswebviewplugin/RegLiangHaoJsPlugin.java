@@ -2,11 +2,14 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
 import android.content.Intent;
-import biaq;
-import bifw;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
+import com.tencent.mobileqq.loginregister.ILoginRegisterApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vip.lianghao.data.LiangHaoUinData;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -21,6 +24,17 @@ public class RegLiangHaoJsPlugin
   public RegLiangHaoJsPlugin()
   {
     this.mPluginNameSpace = "haomaReg";
+  }
+  
+  public static void webViewPageStartBuyForResult(Activity paramActivity, Intent paramIntent, LiangHaoUinData paramLiangHaoUinData)
+  {
+    ILoginRegisterApi localILoginRegisterApi = (ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramIntent);
+    localIntent.putExtra("lh_request_code", 2);
+    localIntent.putExtra("lh_uin", paramLiangHaoUinData.a);
+    localIntent.putExtra("lh_light", paramLiangHaoUinData.b);
+    QPublicFragmentActivity.Launcher.a(paramActivity, localIntent, QPublicTransFragmentActivity.class, localILoginRegisterApi.getLHBuyFragment(), 2);
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -69,7 +83,7 @@ public class RegLiangHaoJsPlugin
     }
     paramString1 = paramJsBridgeListener.optString("uin", "");
     paramJsBridgeListener = paramJsBridgeListener.optString("highlight", "");
-    LiangHaoBuyFragment.a(this.mActivity, this.mActivity.getIntent(), new biaq(paramString1, paramJsBridgeListener));
+    webViewPageStartBuyForResult(this.mActivity, this.mActivity.getIntent(), new LiangHaoUinData(paramString1, paramJsBridgeListener));
     return true;
   }
   
@@ -81,7 +95,7 @@ public class RegLiangHaoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.RegLiangHaoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

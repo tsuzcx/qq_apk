@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import acnf;
-import acnh;
-import aooh;
-import auea;
+import com.tencent.imcore.message.BaseMsgProxy;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MultiMsgProxy;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -43,7 +43,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
         QLog.d("AIOImageProviderService", 2, "out of memory", localOutOfMemoryError);
         this.this$0.jdField_d_of_type_Boolean = false;
         continue;
-        List localList = AIOImageProviderService.a(this.this$0).getMessageFacade().getMessagesFromDB(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_d_of_type_Long, arrayOfInt, 60);
+        List localList = AIOImageProviderService.a(this.this$0).getMessageFacade().a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_d_of_type_Long, arrayOfInt, 60);
         continue;
         if ((AIOImageProviderService.a(this.this$0).getMultiMessageProxy() != null) && (!this.this$0.jdField_c_of_type_Boolean)) {
           continue;
@@ -52,7 +52,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
         this.this$0.b();
         this.this$0.jdField_d_of_type_Boolean = false;
         continue;
-        localList = auea.a(AIOImageProviderService.a(this.this$0).getMultiMessageProxy().a(this.this$0.jdField_a_of_type_Long));
+        localList = FileManagerUtil.a(AIOImageProviderService.a(this.this$0).getMultiMessageProxy().a(this.this$0.jdField_a_of_type_Long));
         continue;
         localArrayList1.addAll(0, localList);
         localArrayList2.addAll(0, this.this$0.a(localList));
@@ -83,7 +83,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
       if (QLog.isColorLevel()) {
         QLog.d("AIOImageProviderService", 2, "[IncreasinglyLoadTask] start");
       }
-      if ((this.this$0.jdField_a_of_type_Ahts == null) && (this.this$0.jdField_a_of_type_Ahtb == null))
+      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack == null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService$AIOImageProviderListener == null))
       {
         this.this$0.jdField_d_of_type_Boolean = false;
         this.this$0.b();
@@ -105,7 +105,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
         this.this$0.jdField_d_of_type_Boolean = false;
       }
     }
-    arrayOfInt = new int[8];
+    arrayOfInt = new int[9];
     int[] tmp189_187 = arrayOfInt;
     tmp189_187[0] = -20000;
     int[] tmp195_189 = tmp189_187;
@@ -122,21 +122,23 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
     tmp225_219[6] = -2017;
     int[] tmp232_225 = tmp225_219;
     tmp232_225[7] = -2071;
-    tmp232_225;
+    int[] tmp239_232 = tmp232_225;
+    tmp239_232[8] = -3017;
+    tmp239_232;
     if (!this.this$0.jdField_c_of_type_Boolean)
     {
       localObject4 = AIOImageProviderService.a(this.this$0).getMessageProxy(this.this$0.jdField_a_of_type_Int).a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, arrayOfInt);
       localObject2 = localObject4;
       if (((List)localObject4).size() < 60)
       {
-        localObject2 = AIOImageProviderService.a(this.this$0).getMessageFacade().getAllMessages(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, arrayOfInt, 60);
+        localObject2 = AIOImageProviderService.a(this.this$0).getMessageFacade().a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, arrayOfInt, 60);
         this.this$0.jdField_d_of_type_Int = ((List)localObject2).size();
       }
     }
     for (;;)
     {
       if (this.this$0.jdField_c_of_type_Boolean) {
-        break label809;
+        break label816;
       }
       localArrayList1.addAll((Collection)localObject2);
       localArrayList2.addAll(this.this$0.a((List)localObject2));
@@ -145,7 +147,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
         break label135;
       }
       if (localArrayList2.size() <= 0) {
-        break label885;
+        break label892;
       }
       AIOImageProviderService.a(this.this$0, localArrayList2);
       if (QLog.isColorLevel()) {
@@ -153,12 +155,12 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
       }
       this.this$0.jdField_d_of_type_Boolean = false;
       break;
-      if (!acnh.a(this.this$0.jdField_a_of_type_Int)) {
-        break label677;
+      if (!UinTypeUtil.g(this.this$0.jdField_a_of_type_Int)) {
+        break label684;
       }
       localObject2 = this.this$0;
       ((AIOImageProviderService)localObject2).jdField_c_of_type_Long -= 1L;
-      localObject2 = AIOImageProviderService.a(this.this$0).getMessageFacade().getMessagesFromDB(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_c_of_type_Long, arrayOfInt, 60);
+      localObject2 = AIOImageProviderService.a(this.this$0).getMessageFacade().a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Long, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_c_of_type_Long, arrayOfInt, 60);
       this.this$0.jdField_d_of_type_Int = ((List)localObject2).size();
       localObject4 = this.this$0;
       ((AIOImageProviderService)localObject4).e += 1;
@@ -167,7 +169,7 @@ class AIOImageProviderService$IncreasinglyLoadMediaTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.IncreasinglyLoadMediaTask
  * JD-Core Version:    0.7.0.1
  */

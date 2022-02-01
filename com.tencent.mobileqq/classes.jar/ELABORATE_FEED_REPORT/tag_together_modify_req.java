@@ -11,12 +11,12 @@ public final class tag_together_modify_req
 {
   static Map<Integer, String> cache_mapExt;
   static tag_deatail_info cache_stTagDetailInfo = new tag_deatail_info();
-  public Map<Integer, String> mapExt;
+  public Map<Integer, String> mapExt = null;
   public String sPgcFeedKey = "";
-  public tag_deatail_info stTagDetailInfo;
-  public long uModifyType;
-  public long uPgcAppid;
-  public long uPgcUin;
+  public tag_deatail_info stTagDetailInfo = null;
+  public long uModifyType = 0L;
+  public long uPgcAppid = 0L;
+  public long uPgcUin = 0L;
   
   static
   {

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.statistics.crash;
 
 import android.os.Looper;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.RequiresApi;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RenderInSubThreadMonitor
@@ -34,7 +34,7 @@ public class RenderInSubThreadMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.crash.RenderInSubThreadMonitor
  * JD-Core Version:    0.7.0.1
  */

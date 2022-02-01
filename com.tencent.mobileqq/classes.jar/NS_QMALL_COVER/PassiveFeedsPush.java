@@ -8,7 +8,7 @@ public final class PassiveFeedsPush
   extends JceStruct
 {
   static QzmallCustomBubbleSkin cache_stBubbleSkin = new QzmallCustomBubbleSkin();
-  public QzmallCustomBubbleSkin stBubbleSkin;
+  public QzmallCustomBubbleSkin stBubbleSkin = null;
   
   public PassiveFeedsPush() {}
   

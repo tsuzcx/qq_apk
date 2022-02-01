@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afnz;
-import agih;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOAssist;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.HelperProvider;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class BaseChatPie$8
@@ -16,14 +16,14 @@ class BaseChatPie$8
   {
     Object localObject = paramView.getTag();
     if (!(localObject instanceof Integer)) {}
-    while (afnz.b())
+    while (AIOAssist.b())
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    String str = this.this$0.sessionInfo.curFriendUin;
-    if (this.this$0.sessionInfo.curType == 1006) {
-      str = this.this$0.sessionInfo.contactUin;
+    String str = this.a.a();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1006) {
+      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
     }
     int i = ((Integer)localObject).intValue();
     switch (i)
@@ -31,21 +31,21 @@ class BaseChatPie$8
     }
     for (;;)
     {
-      this.this$0.helperProvider.a(i, this.this$0.sessionInfo.curType);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioHelperHelperProvider.a(i, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       break;
-      BaseChatPie.access$600(this.this$0, str);
+      this.a.b(str);
       continue;
-      BaseChatPie.access$700(this.this$0, str);
+      this.a.a(str);
       continue;
-      BaseChatPie.access$800(this.this$0);
+      this.a.m();
       continue;
-      BaseChatPie.access$900(this.this$0);
+      this.a.n();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.8
  * JD-Core Version:    0.7.0.1
  */

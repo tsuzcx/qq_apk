@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.upgrade;
 
-import bgvp;
-import bgvu;
-
-public class NewUpgradeDialog$YYBDownloadListener$5
+class NewUpgradeDialog$YYBDownloadListener$5
   implements Runnable
 {
-  public NewUpgradeDialog$YYBDownloadListener$5(bgvu parambgvu) {}
+  NewUpgradeDialog$YYBDownloadListener$5(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener) {}
   
   public void run()
   {
-    bgvp.d(this.a.a);
+    NewUpgradeDialog.d(this.a.a);
   }
 }
 

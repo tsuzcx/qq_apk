@@ -9,14 +9,13 @@ import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import boew;
 
 public class SliderView
   extends ImageView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-  private boew jdField_a_of_type_Boew;
+  private SliderListener jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderListener;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -43,8 +42,8 @@ public class SliderView
   
   private void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Boew != null) {
-      this.jdField_a_of_type_Boew.a(paramFloat);
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderListener != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderListener.a(paramFloat);
     }
   }
   
@@ -85,15 +84,15 @@ public class SliderView
   
   private void c()
   {
-    if (this.jdField_a_of_type_Boew != null) {
-      this.jdField_a_of_type_Boew.a();
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderListener != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderListener.a();
     }
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Boew != null) {
-      this.jdField_a_of_type_Boew.b();
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderListener != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderListener.b();
     }
   }
   
@@ -118,14 +117,14 @@ public class SliderView
     }
   }
   
-  public void setSliderListener(boew paramboew)
+  public void setSliderListener(SliderListener paramSliderListener)
   {
-    this.jdField_a_of_type_Boew = paramboew;
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimelineSliderListener = paramSliderListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.timeline.SliderView
  * JD-Core Version:    0.7.0.1
  */

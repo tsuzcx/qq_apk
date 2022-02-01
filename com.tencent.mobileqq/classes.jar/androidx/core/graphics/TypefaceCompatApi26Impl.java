@@ -337,115 +337,115 @@ public class TypefaceCompatApi26Impl
     //   179: aload_3
     //   180: aload_2
     //   181: invokestatic 306	androidx/core/provider/FontsContractCompat:prepareFontData	(Landroid/content/Context;[Landroidx/core/provider/FontsContractCompat$FontInfo;Landroid/os/CancellationSignal;)Ljava/util/Map;
-    //   184: astore 10
-    //   186: aload_0
-    //   187: invokespecial 198	androidx/core/graphics/TypefaceCompatApi26Impl:newFamily	()Ljava/lang/Object;
-    //   190: astore_2
-    //   191: aload_2
-    //   192: ifnonnull +5 -> 197
-    //   195: aconst_null
-    //   196: areturn
-    //   197: aload_3
-    //   198: arraylength
-    //   199: istore 7
-    //   201: iconst_0
-    //   202: istore 5
-    //   204: iconst_0
-    //   205: istore 6
-    //   207: iload 5
-    //   209: iload 7
-    //   211: if_icmpge +97 -> 308
-    //   214: aload_3
-    //   215: iload 5
-    //   217: aaload
-    //   218: astore 11
-    //   220: aload 10
-    //   222: aload 11
-    //   224: invokevirtual 257	androidx/core/provider/FontsContractCompat$FontInfo:getUri	()Landroid/net/Uri;
-    //   227: invokeinterface 312 2 0
-    //   232: checkcast 314	java/nio/ByteBuffer
-    //   235: astore_1
-    //   236: aload_1
+    //   184: astore_2
+    //   185: aload_0
+    //   186: invokespecial 198	androidx/core/graphics/TypefaceCompatApi26Impl:newFamily	()Ljava/lang/Object;
+    //   189: astore 10
+    //   191: aload 10
+    //   193: ifnonnull +5 -> 198
+    //   196: aconst_null
+    //   197: areturn
+    //   198: aload_3
+    //   199: arraylength
+    //   200: istore 7
+    //   202: iconst_0
+    //   203: istore 5
+    //   205: iconst_0
+    //   206: istore 6
+    //   208: iload 5
+    //   210: iload 7
+    //   212: if_icmpge +96 -> 308
+    //   215: aload_3
+    //   216: iload 5
+    //   218: aaload
+    //   219: astore_1
+    //   220: aload_2
+    //   221: aload_1
+    //   222: invokevirtual 257	androidx/core/provider/FontsContractCompat$FontInfo:getUri	()Landroid/net/Uri;
+    //   225: invokeinterface 312 2 0
+    //   230: checkcast 314	java/nio/ByteBuffer
+    //   233: astore 11
+    //   235: aload 11
     //   237: ifnonnull +12 -> 249
     //   240: iload 5
     //   242: iconst_1
     //   243: iadd
     //   244: istore 5
-    //   246: goto -39 -> 207
-    //   249: aload 11
-    //   251: invokevirtual 315	androidx/core/provider/FontsContractCompat$FontInfo:getTtcIndex	()I
-    //   254: istore 9
-    //   256: aload 11
-    //   258: invokevirtual 283	androidx/core/provider/FontsContractCompat$FontInfo:getWeight	()I
-    //   261: istore 8
-    //   263: aload 11
-    //   265: invokevirtual 288	androidx/core/provider/FontsContractCompat$FontInfo:isItalic	()Z
-    //   268: ifeq +28 -> 296
-    //   271: iconst_1
-    //   272: istore 6
-    //   274: aload_0
-    //   275: aload_2
-    //   276: aload_1
-    //   277: iload 9
-    //   279: iload 8
-    //   281: iload 6
-    //   283: invokespecial 317	androidx/core/graphics/TypefaceCompatApi26Impl:addFontFromBuffer	(Ljava/lang/Object;Ljava/nio/ByteBuffer;III)Z
-    //   286: ifne +16 -> 302
-    //   289: aload_0
-    //   290: aload_2
+    //   246: goto -38 -> 208
+    //   249: aload_1
+    //   250: invokevirtual 315	androidx/core/provider/FontsContractCompat$FontInfo:getTtcIndex	()I
+    //   253: istore 9
+    //   255: aload_1
+    //   256: invokevirtual 283	androidx/core/provider/FontsContractCompat$FontInfo:getWeight	()I
+    //   259: istore 8
+    //   261: aload_1
+    //   262: invokevirtual 288	androidx/core/provider/FontsContractCompat$FontInfo:isItalic	()Z
+    //   265: ifeq +31 -> 296
+    //   268: iconst_1
+    //   269: istore 6
+    //   271: aload_0
+    //   272: aload 10
+    //   274: aload 11
+    //   276: iload 9
+    //   278: iload 8
+    //   280: iload 6
+    //   282: invokespecial 317	androidx/core/graphics/TypefaceCompatApi26Impl:addFontFromBuffer	(Ljava/lang/Object;Ljava/nio/ByteBuffer;III)Z
+    //   285: ifne +17 -> 302
+    //   288: aload_0
+    //   289: aload 10
     //   291: invokespecial 232	androidx/core/graphics/TypefaceCompatApi26Impl:abortCreation	(Ljava/lang/Object;)V
     //   294: aconst_null
     //   295: areturn
     //   296: iconst_0
     //   297: istore 6
-    //   299: goto -25 -> 274
+    //   299: goto -28 -> 271
     //   302: iconst_1
     //   303: istore 6
     //   305: goto -65 -> 240
     //   308: iload 6
-    //   310: ifne +10 -> 320
+    //   310: ifne +11 -> 321
     //   313: aload_0
-    //   314: aload_2
-    //   315: invokespecial 232	androidx/core/graphics/TypefaceCompatApi26Impl:abortCreation	(Ljava/lang/Object;)V
-    //   318: aconst_null
-    //   319: areturn
-    //   320: aload_0
-    //   321: aload_2
-    //   322: invokespecial 234	androidx/core/graphics/TypefaceCompatApi26Impl:freeze	(Ljava/lang/Object;)Z
-    //   325: ifne +5 -> 330
-    //   328: aconst_null
-    //   329: areturn
-    //   330: aload_0
-    //   331: aload_2
-    //   332: invokevirtual 236	androidx/core/graphics/TypefaceCompatApi26Impl:createFromFamiliesWithDefault	(Ljava/lang/Object;)Landroid/graphics/Typeface;
-    //   335: astore_1
-    //   336: aload_1
-    //   337: ifnonnull +5 -> 342
-    //   340: aconst_null
-    //   341: areturn
-    //   342: aload_1
-    //   343: iload 4
-    //   345: invokestatic 321	android/graphics/Typeface:create	(Landroid/graphics/Typeface;I)Landroid/graphics/Typeface;
-    //   348: areturn
-    //   349: astore_2
-    //   350: goto -202 -> 148
-    //   353: astore_1
-    //   354: aconst_null
-    //   355: areturn
+    //   314: aload 10
+    //   316: invokespecial 232	androidx/core/graphics/TypefaceCompatApi26Impl:abortCreation	(Ljava/lang/Object;)V
+    //   319: aconst_null
+    //   320: areturn
+    //   321: aload_0
+    //   322: aload 10
+    //   324: invokespecial 234	androidx/core/graphics/TypefaceCompatApi26Impl:freeze	(Ljava/lang/Object;)Z
+    //   327: ifne +5 -> 332
+    //   330: aconst_null
+    //   331: areturn
+    //   332: aload_0
+    //   333: aload 10
+    //   335: invokevirtual 236	androidx/core/graphics/TypefaceCompatApi26Impl:createFromFamiliesWithDefault	(Ljava/lang/Object;)Landroid/graphics/Typeface;
+    //   338: astore_1
+    //   339: aload_1
+    //   340: ifnonnull +5 -> 345
+    //   343: aconst_null
+    //   344: areturn
+    //   345: aload_1
+    //   346: iload 4
+    //   348: invokestatic 321	android/graphics/Typeface:create	(Landroid/graphics/Typeface;I)Landroid/graphics/Typeface;
+    //   351: areturn
+    //   352: astore_2
+    //   353: goto -205 -> 148
+    //   356: astore_1
+    //   357: aconst_null
+    //   358: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	356	0	this	TypefaceCompatApi26Impl
-    //   0	356	1	paramContext	Context
-    //   0	356	2	paramCancellationSignal	android.os.CancellationSignal
-    //   0	356	3	paramArrayOfFontInfo	androidx.core.provider.FontsContractCompat.FontInfo[]
-    //   0	356	4	paramInt	int
-    //   202	43	5	i	int
-    //   205	104	6	j	int
-    //   199	13	7	k	int
-    //   261	19	8	m	int
-    //   254	24	9	n	int
-    //   24	197	10	localObject	Object
-    //   218	46	11	localFontInfo	androidx.core.provider.FontsContractCompat.FontInfo
+    //   0	359	0	this	TypefaceCompatApi26Impl
+    //   0	359	1	paramContext	Context
+    //   0	359	2	paramCancellationSignal	android.os.CancellationSignal
+    //   0	359	3	paramArrayOfFontInfo	androidx.core.provider.FontsContractCompat.FontInfo[]
+    //   0	359	4	paramInt	int
+    //   203	42	5	i	int
+    //   206	103	6	j	int
+    //   200	13	7	k	int
+    //   259	20	8	m	int
+    //   253	24	9	n	int
+    //   24	310	10	localObject	Object
+    //   233	42	11	localByteBuffer	ByteBuffer
     // Exception table:
     //   from	to	target	type
     //   61	65	67	java/lang/Throwable
@@ -453,18 +453,18 @@ public class TypefaceCompatApi26Impl
     //   82	113	144	java/lang/Throwable
     //   145	147	147	finally
     //   156	160	162	java/lang/Throwable
-    //   82	113	349	finally
-    //   31	45	353	java/io/IOException
-    //   61	65	353	java/io/IOException
-    //   68	76	353	java/io/IOException
-    //   76	80	353	java/io/IOException
-    //   123	127	353	java/io/IOException
-    //   130	138	353	java/io/IOException
-    //   138	142	353	java/io/IOException
-    //   156	160	353	java/io/IOException
-    //   160	162	353	java/io/IOException
-    //   163	168	353	java/io/IOException
-    //   171	175	353	java/io/IOException
+    //   82	113	352	finally
+    //   31	45	356	java/io/IOException
+    //   61	65	356	java/io/IOException
+    //   68	76	356	java/io/IOException
+    //   76	80	356	java/io/IOException
+    //   123	127	356	java/io/IOException
+    //   130	138	356	java/io/IOException
+    //   138	142	356	java/io/IOException
+    //   156	160	356	java/io/IOException
+    //   160	162	356	java/io/IOException
+    //   163	168	356	java/io/IOException
+    //   171	175	356	java/io/IOException
   }
   
   @Nullable
@@ -532,7 +532,7 @@ public class TypefaceCompatApi26Impl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.core.graphics.TypefaceCompatApi26Impl
  * JD-Core Version:    0.7.0.1
  */

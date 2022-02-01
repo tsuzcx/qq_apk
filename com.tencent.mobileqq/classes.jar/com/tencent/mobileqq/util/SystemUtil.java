@@ -9,37 +9,16 @@ import java.lang.reflect.Method;
 
 public class SystemUtil
 {
-  public static final String APP_ROOT = "/data/data/com.tencent.mobileqq/files/";
-  private static final String KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage";
-  private static final String KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code";
-  private static final String KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name";
-  public static String TAG = "SystemUtil";
-  static boolean isCheckMiui;
-  static boolean isMiui;
+  public static String a;
+  static boolean a;
+  static boolean b;
   
-  public static void checkMIUI()
+  static
   {
-    boolean bool2 = true;
-    isCheckMiui = true;
-    boolean bool1 = bool2;
-    if (TextUtils.isEmpty(getSystemProperty("ro.miui.ui.version.code")))
-    {
-      bool1 = bool2;
-      if (TextUtils.isEmpty(getSystemProperty("ro.miui.ui.version.name"))) {
-        if (TextUtils.isEmpty(getSystemProperty("ro.miui.internal.storage"))) {
-          break label50;
-        }
-      }
-    }
-    label50:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      isMiui = bool1;
-      return;
-    }
+    jdField_a_of_type_JavaLangString = "SystemUtil";
   }
   
-  public static long getSDCardAvailableSize()
+  public static long a()
   {
     try
     {
@@ -52,20 +31,7 @@ public class SystemUtil
     return 0L;
   }
   
-  public static long getSystemAvailableSize()
-  {
-    try
-    {
-      StatFs localStatFs = new StatFs("/data/data/com.tencent.mobileqq/files/");
-      long l = localStatFs.getBlockSize();
-      l = localStatFs.getAvailableBlocks() * l / 1024L;
-      return l;
-    }
-    catch (Exception localException) {}
-    return 0L;
-  }
-  
-  public static String getSystemProperty(String paramString)
+  public static String a(String paramString)
   {
     try
     {
@@ -80,12 +46,29 @@ public class SystemUtil
     return null;
   }
   
-  public static boolean isCheckMiui()
+  public static void a()
   {
-    return isCheckMiui;
+    boolean bool2 = true;
+    jdField_a_of_type_Boolean = true;
+    boolean bool1 = bool2;
+    if (TextUtils.isEmpty(a("ro.miui.ui.version.code")))
+    {
+      bool1 = bool2;
+      if (TextUtils.isEmpty(a("ro.miui.ui.version.name"))) {
+        if (TextUtils.isEmpty(a("ro.miui.internal.storage"))) {
+          break label50;
+        }
+      }
+    }
+    label50:
+    for (bool1 = bool2;; bool1 = false)
+    {
+      b = bool1;
+      return;
+    }
   }
   
-  public static boolean isExistSDCard()
+  public static boolean a()
   {
     boolean bool1 = false;
     try
@@ -100,7 +83,34 @@ public class SystemUtil
     return false;
   }
   
-  public static boolean isFlyme()
+  public static long b()
+  {
+    try
+    {
+      StatFs localStatFs = new StatFs("/data/data/com.tencent.mobileqq/files/");
+      long l = localStatFs.getBlockSize();
+      l = localStatFs.getAvailableBlocks() * l / 1024L;
+      return l;
+    }
+    catch (Exception localException) {}
+    return 0L;
+  }
+  
+  public static boolean b()
+  {
+    if (jdField_a_of_type_Boolean) {
+      return b;
+    }
+    a();
+    return b;
+  }
+  
+  public static boolean c()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean d()
   {
     boolean bool = false;
     try
@@ -115,18 +125,9 @@ public class SystemUtil
     return false;
   }
   
-  public static boolean isMIUI()
+  public static boolean e()
   {
-    if (isCheckMiui) {
-      return isMiui;
-    }
-    checkMIUI();
-    return isMiui;
-  }
-  
-  public static boolean isMeizu()
-  {
-    return (!TextUtils.isEmpty(getSystemProperty("ro.meizu.product.model"))) || ("meizu".equalsIgnoreCase(Build.BRAND)) || ("22c4185e".equalsIgnoreCase(Build.BRAND));
+    return (!TextUtils.isEmpty(a("ro.meizu.product.model"))) || ("meizu".equalsIgnoreCase(Build.BRAND)) || ("22c4185e".equalsIgnoreCase(Build.BRAND));
   }
 }
 

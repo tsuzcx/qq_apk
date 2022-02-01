@@ -2,15 +2,14 @@ package com.tencent.biz.qqstory.debug.activities;
 
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.database.PromoteTaskEntry;
+import com.tencent.biz.qqstory.model.StoryPromoteTaskManager;
 import java.util.Collections;
 import java.util.List;
-import wij;
-import wjq;
 
-public class DebugPromoteTaskCode$4
+class DebugPromoteTaskCode$4
   implements Runnable
 {
-  public DebugPromoteTaskCode$4(wij paramwij, String paramString1, String paramString2) {}
+  DebugPromoteTaskCode$4(DebugPromoteTaskCode paramDebugPromoteTaskCode, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -34,7 +33,7 @@ public class DebugPromoteTaskCode$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.4
  * JD-Core Version:    0.7.0.1
  */

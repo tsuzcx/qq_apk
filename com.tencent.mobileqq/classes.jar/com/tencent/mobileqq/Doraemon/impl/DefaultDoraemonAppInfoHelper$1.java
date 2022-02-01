@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.Doraemon.impl;
 
-import adap;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -16,10 +15,10 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.json.JSONObject;
 
-public class DefaultDoraemonAppInfoHelper$1
+class DefaultDoraemonAppInfoHelper$1
   implements Runnable
 {
-  public DefaultDoraemonAppInfoHelper$1(adap paramadap) {}
+  DefaultDoraemonAppInfoHelper$1(DefaultDoraemonAppInfoHelper paramDefaultDoraemonAppInfoHelper) {}
   
   public void run()
   {
@@ -28,7 +27,7 @@ public class DefaultDoraemonAppInfoHelper$1
     long l2;
     try
     {
-      ??? = "https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=8.4.10&data_version=" + this.this$0.b;
+      ??? = "https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=8.5.5&data_version=" + this.this$0.b;
       localObject7 = BaseApplicationImpl.getApplication().getRuntime();
       if (localObject7 == null)
       {
@@ -76,7 +75,7 @@ public class DefaultDoraemonAppInfoHelper$1
       {
         this.this$0.jdField_a_of_type_OrgJsonJSONObject = localJSONObject;
         this.this$0.jdField_a_of_type_JavaUtilMap.clear();
-        BaseApplicationImpl.getApplication().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)localObject7).putLong("version", l1).putString("app_version", "8.4.10").apply();
+        BaseApplicationImpl.getApplication().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)localObject7).putLong("version", l1).putString("app_version", "8.5.5").apply();
         return;
       }
     }
@@ -84,7 +83,7 @@ public class DefaultDoraemonAppInfoHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.1
  * JD-Core Version:    0.7.0.1
  */

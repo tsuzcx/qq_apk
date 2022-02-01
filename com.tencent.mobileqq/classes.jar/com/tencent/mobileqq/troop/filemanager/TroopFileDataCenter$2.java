@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import bflo;
-
-public class TroopFileDataCenter$2
+class TroopFileDataCenter$2
   implements Runnable
 {
-  public TroopFileDataCenter$2(bflo parambflo) {}
+  TroopFileDataCenter$2(TroopFileDataCenter paramTroopFileDataCenter) {}
   
   public void run()
   {
-    bflo.a(this.this$0);
+    TroopFileDataCenter.a(this.this$0);
   }
 }
 

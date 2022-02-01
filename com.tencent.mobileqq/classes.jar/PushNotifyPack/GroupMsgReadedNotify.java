@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupMsgReadedNotify
   extends JceStruct
 {
-  public long lGroupCode;
-  public long lGroupMsgSeq;
-  public long lMemberSeq;
-  public long lOpType;
+  public long lGroupCode = 0L;
+  public long lGroupMsgSeq = 0L;
+  public long lMemberSeq = 0L;
+  public long lOpType = 0L;
   
   public GroupMsgReadedNotify() {}
   
@@ -40,7 +40,7 @@ public final class GroupMsgReadedNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushNotifyPack.GroupMsgReadedNotify
  * JD-Core Version:    0.7.0.1
  */

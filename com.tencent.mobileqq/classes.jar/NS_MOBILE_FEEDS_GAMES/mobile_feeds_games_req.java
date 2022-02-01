@@ -15,9 +15,9 @@ public final class mobile_feeds_games_req
   public int iLastGamesRes = -1;
   public int iNextGamesStatus = -1;
   public int iType = -1;
-  public Map<String, String> mapExt;
-  public Map<Integer, String> mapRsp;
-  public st_Games_OpData opData;
+  public Map<String, String> mapExt = null;
+  public Map<Integer, String> mapRsp = null;
+  public st_Games_OpData opData = null;
   
   static
   {

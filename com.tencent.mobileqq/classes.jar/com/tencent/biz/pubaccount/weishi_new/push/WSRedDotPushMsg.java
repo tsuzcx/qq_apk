@@ -5,18 +5,16 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import org.json.JSONObject;
-import viu;
-import vjc;
 
 public class WSRedDotPushMsg
-  extends viu
+  extends WSBasePushMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSRedDotPushMsg> CREATOR = new vjc();
+  public static final Parcelable.Creator<WSRedDotPushMsg> CREATOR = new WSRedDotPushMsg.1();
   public String mFeedIds;
   public IWSPushBaseStrategy mStrategyInfo;
   
-  public WSRedDotPushMsg(Parcel paramParcel)
+  protected WSRedDotPushMsg(Parcel paramParcel)
   {
     super(paramParcel);
     this.mFeedIds = paramParcel.readString();
@@ -41,7 +39,7 @@ public class WSRedDotPushMsg
     return 0;
   }
   
-  public void parseJson(JSONObject paramJSONObject)
+  protected void parseJson(JSONObject paramJSONObject)
   {
     super.parseJson(paramJSONObject);
     this.mFeedIds = paramJSONObject.optString("feedids");
@@ -62,7 +60,7 @@ public class WSRedDotPushMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg
  * JD-Core Version:    0.7.0.1
  */

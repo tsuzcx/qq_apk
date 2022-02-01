@@ -11,15 +11,15 @@ class ReplyTextItemBuilder$9$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTag(2131378470, this.jdField_a_of_type_JavaLangString);
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTag(2131378471, Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgSenderUin));
+    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTag(2131378901, this.jdField_a_of_type_JavaLangString);
+    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTag(2131378902, Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgSenderUin));
     this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidTextSpannableString);
     this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(" " + this.this$0.jdField_b_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.9.1
  * JD-Core Version:    0.7.0.1
  */

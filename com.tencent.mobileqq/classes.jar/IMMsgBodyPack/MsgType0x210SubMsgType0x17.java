@@ -12,12 +12,12 @@ public final class MsgType0x210SubMsgType0x17
   static ModFriendGroup cache_stModFriendGroup;
   static ModGroupName cache_stModGroupName;
   static ModGroupSort cache_stModGroupSort;
-  public long dwOpType;
-  public AddGroup stAddGroup;
-  public DelGroup stDelGroup;
-  public ModFriendGroup stModFriendGroup;
-  public ModGroupName stModGroupName;
-  public ModGroupSort stModGroupSort;
+  public long dwOpType = 0L;
+  public AddGroup stAddGroup = null;
+  public DelGroup stDelGroup = null;
+  public ModFriendGroup stModFriendGroup = null;
+  public ModGroupName stModGroupName = null;
+  public ModGroupSort stModGroupSort = null;
   
   public MsgType0x210SubMsgType0x17() {}
   

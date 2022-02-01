@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import aioz;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicData;
 
 class ReadInJoyCommentComponentFragment$9
   implements Runnable
 {
-  ReadInJoyCommentComponentFragment$9(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, aioz paramaioz) {}
+  ReadInJoyCommentComponentFragment$9(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, ZhituPicData paramZhituPicData) {}
   
   /* Error */
   public void run()
@@ -13,7 +13,7 @@ class ReadInJoyCommentComponentFragment$9
     // Byte code:
     //   0: aload_0
     //   1: getfield 14	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment$9:this$0	Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;
-    //   4: invokestatic 28	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;)Laioi;
+    //   4: invokestatic 28	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;)Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituManager;
     //   7: astore_1
     //   8: aload_1
     //   9: ifnull +26 -> 35
@@ -22,7 +22,7 @@ class ReadInJoyCommentComponentFragment$9
     //   16: invokestatic 31	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment:a	(Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;)Z
     //   19: ifeq +16 -> 35
     //   22: aload_1
-    //   23: invokevirtual 36	aioi:c	()V
+    //   23: invokevirtual 36	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:c	()V
     //   26: aload_0
     //   27: getfield 14	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment$9:this$0	Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment;
     //   30: iconst_0
@@ -31,8 +31,8 @@ class ReadInJoyCommentComponentFragment$9
     //   35: new 42	java/io/File
     //   38: dup
     //   39: aload_0
-    //   40: getfield 16	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment$9:a	Laioz;
-    //   43: getfield 47	aioz:b	Ljava/lang/String;
+    //   40: getfield 16	com/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentComponentFragment$9:a	Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituPicData;
+    //   43: getfield 47	com/tencent/mobileqq/activity/aio/zhitu/ZhituPicData:b	Ljava/lang/String;
     //   46: invokespecial 50	java/io/File:<init>	(Ljava/lang/String;)V
     //   49: invokevirtual 54	java/io/File:toURI	()Ljava/net/URI;
     //   52: invokevirtual 60	java/net/URI:toURL	()Ljava/net/URL;
@@ -114,7 +114,7 @@ class ReadInJoyCommentComponentFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.9
  * JD-Core Version:    0.7.0.1
  */

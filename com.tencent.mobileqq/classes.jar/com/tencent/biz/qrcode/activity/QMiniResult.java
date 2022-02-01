@@ -4,19 +4,18 @@ import android.graphics.RectF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zjw;
 
 public class QMiniResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<QMiniResult> CREATOR = new zjw();
+  public static final Parcelable.Creator<QMiniResult> CREATOR = new QMiniResult.1();
   public float a;
   public RectF a;
   public String a;
   
   public QMiniResult() {}
   
-  public QMiniResult(Parcel paramParcel)
+  protected QMiniResult(Parcel paramParcel)
   {
     this.jdField_a_of_type_Float = paramParcel.readFloat();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -42,7 +41,7 @@ public class QMiniResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QMiniResult
  * JD-Core Version:    0.7.0.1
  */

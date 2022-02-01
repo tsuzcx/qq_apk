@@ -1,37 +1,36 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.List;
-import pwb;
-import pwf;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import uuc;
 
-public final class ReadinjoySPEventReport$3
+final class ReadinjoySPEventReport$3
   implements Runnable
 {
-  public ReadinjoySPEventReport$3(boolean paramBoolean) {}
+  ReadinjoySPEventReport$3(boolean paramBoolean) {}
   
   public void run()
   {
-    if ((!this.a) && (!pwb.c())) {}
-    label285:
-    label293:
-    label299:
-    label304:
+    if ((!this.a) && (!ReadinjoySPEventReport.c())) {}
+    label295:
+    label303:
+    label309:
+    label314:
     for (;;)
     {
       return;
       if (this.a)
       {
-        pwb.c(System.currentTimeMillis());
-        pwb.a(true);
+        ReadinjoySPEventReport.c(System.currentTimeMillis());
+        ReadinjoySPEventReport.a(true);
       }
-      pwb.b(this.a);
+      ReadinjoySPEventReport.b(this.a);
       Object localObject;
-      if (pwb.b(9))
+      if (ReadinjoySPEventReport.b(9))
       {
         ArrayList localArrayList = new ArrayList();
         oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
@@ -39,14 +38,14 @@ public final class ReadinjoySPEventReport$3
         localAttributeList.att_name.set("isOn");
         PBStringField localPBStringField = localAttributeList.att_value;
         if (!this.a) {
-          break label285;
+          break label295;
         }
         localObject = String.valueOf(1);
         localPBStringField.set((String)localObject);
         localArrayList.add(localAttributeList);
         if (!this.a)
         {
-          long l = pwb.e();
+          long l = ReadinjoySPEventReport.e();
           l = (System.currentTimeMillis() - l) / 1000L;
           localObject = new oidb_cmd0x80a.AttributeList();
           ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
@@ -57,40 +56,40 @@ public final class ReadinjoySPEventReport$3
           localAttributeList.att_id.set(3);
           localAttributeList.att_name.set("isScreenTime");
           localPBStringField = localAttributeList.att_value;
-          if (!pwb.d()) {
-            break label293;
+          if (!ReadinjoySPEventReport.d()) {
+            break label303;
           }
           localObject = "1";
           label231:
           localPBStringField.set((String)localObject);
           localArrayList.add(localAttributeList);
         }
-        uuc.a(9, localArrayList);
+        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPushEffectEvent(9, localArrayList);
         if (!this.a) {
-          break label299;
+          break label309;
         }
-        pwb.d(System.currentTimeMillis());
-        pwb.c(0);
+        ReadinjoySPEventReport.d(System.currentTimeMillis());
+        ReadinjoySPEventReport.c(0);
       }
       for (;;)
       {
-        if (pwf.a != 1) {
-          break label304;
+        if (ReadinjoySPEventReport.ForeBackGround.a != 1) {
+          break label314;
         }
-        pwb.d(false);
+        ReadinjoySPEventReport.d(false);
         return;
         localObject = String.valueOf(0);
         break;
         localObject = "0";
         break label231;
-        pwb.a();
+        ReadinjoySPEventReport.a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.3
  * JD-Core Version:    0.7.0.1
  */

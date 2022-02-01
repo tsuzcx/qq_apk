@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agki;
-import aiin;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager;
 
-public class StickerRecHelper$1
+class StickerRecHelper$1
   implements Runnable
 {
-  public StickerRecHelper$1(agki paramagki, aiin paramaiin) {}
+  StickerRecHelper$1(StickerRecHelper paramStickerRecHelper, StickerRecManager paramStickerRecManager) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class StickerRecHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.StickerRecHelper.1
  * JD-Core Version:    0.7.0.1
  */

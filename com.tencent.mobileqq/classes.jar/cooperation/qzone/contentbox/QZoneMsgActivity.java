@@ -1,7 +1,5 @@
 package cooperation.qzone.contentbox;
 
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,19 +15,21 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import anvx;
-import aoyr;
-import bivu;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.app.qqdaily.ArkCollector;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
+import com.tencent.mobileqq.widget.navbar.OnItemSelectListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import common.config.service.QZoneConfigHelper;
 import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.api.FeedViewHolderInterface;
 import cooperation.qzone.api.QZoneApiProxy;
 import cooperation.qzone.provider.LocalPhotoGroupData;
@@ -38,26 +38,18 @@ import cooperation.qzone.remote.logic.RemoteRequestSender;
 import cooperation.qzone.remote.logic.WebEventListener;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.util.QZLog;
-import uuc;
 
 public class QZoneMsgActivity
   extends IphoneTitleBarActivity
-  implements bivu, WebEventListener
+  implements OnItemSelectListener, WebEventListener
 {
   public static final String SP_LAST_UPDATE_TIME_READ = "SP_LAST_UPDATE_TIME_READ";
   private static final String TAG = "QZoneMsgActivity";
   private static final String TAG2 = "[PhotoAlbum]QZoneMsgActivity";
-  aoyr arkCollector;
+  ArkCollector arkCollector;
+  private ClassLoader mClassLoader = null;
   private Fragment mCurFragment;
   PlusMenuContainer plusMenuContainer;
-  
-  private static MiniAppInfo createAppInfo(INTERFACE.StApiAppInfo paramStApiAppInfo)
-  {
-    if (paramStApiAppInfo == null) {
-      return null;
-    }
-    return MiniAppInfo.from(paramStApiAppInfo);
-  }
   
   public static void launchContentBoxMiniProgram(long paramLong, Context paramContext)
   {
@@ -66,14 +58,14 @@ public class QZoneMsgActivity
       QZLog.e("QZoneMsgActivity", "empty mini prog appid");
       return;
     }
-    MiniAppLauncher.launchMiniAppById(paramContext, String.valueOf(paramLong), null, null, null, null, 2009);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById(paramContext, String.valueOf(paramLong), null, null, null, null, 2009, null);
   }
   
   public static boolean open(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (QZoneConfigHelper.enableQZoneContextBox(paramQQAppInterface))
+    if (QZoneHelper.enableQZoneContextBox(paramQQAppInterface))
     {
-      long l = QZoneConfigHelper.enableQZoneContentBoxMiniProgram();
+      long l = QZoneHelper.enableQZoneContentBoxMiniProgram();
       if (l != 0L) {
         launchContentBoxMiniProgram(l, paramContext);
       }
@@ -137,26 +129,26 @@ public class QZoneMsgActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    int i = 2130850149;
+    int i = 2130850547;
     super.doOnCreate(paramBundle);
-    setContentView(2131562414);
+    setContentView(2131562552);
     setTitle(QZoneApiProxy.getSubFeedTitle(this));
-    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131376760);
+    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131377159);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        i = 2130850150;
+        i = 2130850548;
       }
       paramBundle = getDrawable(i);
       localNavBarCommon.setRightImage(paramBundle);
-      localNavBarCommon.setRightImageDesc(getString(2131696155));
+      localNavBarCommon.setRightImageDesc(getString(2131696406));
       localNavBarCommon.setOnItemSelectListener(this);
       this.mCurFragment = getSupportFragmentManager().findFragmentByTag("QZoneMsgFragment");
       if (this.mCurFragment != null) {
         break label231;
       }
       this.mCurFragment = new QZoneMsgFragment();
-      getSupportFragmentManager().beginTransaction().add(2131367252, this.mCurFragment, "QZoneMsgFragment").commit();
+      getSupportFragmentManager().beginTransaction().add(2131367438, this.mCurFragment, "QZoneMsgFragment").commit();
     }
     for (;;)
     {
@@ -164,12 +156,12 @@ public class QZoneMsgActivity
       long l = LocalMultiProcConfig.getLong("SP_LAST_UPDATE_TIME_READ", 0L);
       QLog.d("[PhotoAlbum]QZoneMsgActivity", 1, new Object[] { "getTravelGroup SP_LAST_UPDATE_TIME_READ lastUpdateTime:", Long.valueOf(l) });
       RemoteHandleManager.getInstance().getSender().getTravelGroup(l);
-      this.arkCollector = new aoyr();
+      this.arkCollector = new ArkCollector();
       getWindow().setFlags(16777216, 16777216);
       return true;
       paramBundle = getResources();
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        i = 2130850150;
+        i = 2130850548;
       }
       paramBundle = paramBundle.getDrawable(i);
       break;
@@ -197,6 +189,22 @@ public class QZoneMsgActivity
   {
     super.doOnResume();
     this.arkCollector.c();
+  }
+  
+  public ClassLoader getClassLoader()
+  {
+    ClassLoader localClassLoader3 = super.getClassLoader();
+    ClassLoader localClassLoader2 = this.mClassLoader;
+    ClassLoader localClassLoader1 = localClassLoader2;
+    if (localClassLoader2 == null) {
+      localClassLoader1 = QzonePluginProxyActivity.getQZonePluginClassLoaderInUI();
+    }
+    if (localClassLoader1 != null)
+    {
+      this.mClassLoader = localClassLoader1;
+      return localClassLoader1;
+    }
+    return localClassLoader3;
   }
   
   public void hideMoreOperation()
@@ -241,9 +249,9 @@ public class QZoneMsgActivity
       paramView = new Intent();
       paramView.putExtra("need_finish", true);
       paramView.putExtra("uin", "2290230341");
-      paramView.putExtra("uinname", anvx.a(2131719159));
+      paramView.putExtra("uinname", HardCodeUtil.a(2131719716));
       paramView.putExtra("uintype", 1008);
-      uuc.a(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).gotoProfileForResult(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
       return;
     case 4: 
       initMoreOperation();
@@ -298,7 +306,7 @@ public class QZoneMsgActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgActivity
  * JD-Core Version:    0.7.0.1
  */

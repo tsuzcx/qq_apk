@@ -3,10 +3,9 @@ package com.tencent.open.appcommon.js;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
-import bjia;
-import bjob;
+import com.tencent.open.downloadnew.MyAppDialog;
 
-public class AppInterface$2
+class AppInterface$2
   implements Runnable
 {
   AppInterface$2(AppInterface paramAppInterface, DialogInterface.OnClickListener paramOnClickListener) {}
@@ -14,22 +13,22 @@ public class AppInterface$2
   public void run()
   {
     Resources localResources = this.this$0.activity.getResources();
-    bjob localbjob = new bjob(this.this$0.activity);
-    localbjob.a(2131691592, this.a, true);
-    localbjob.b(2131691593, this.a, true);
-    localbjob.a(localResources.getString(2131691596));
-    localbjob.b(localResources.getString(2131691581));
-    localbjob.setCancelable(false);
-    localbjob.setOnDismissListener(new bjia(this));
+    MyAppDialog localMyAppDialog = new MyAppDialog(this.this$0.activity);
+    localMyAppDialog.a(2131691708, this.a, true);
+    localMyAppDialog.b(2131691709, this.a, true);
+    localMyAppDialog.a(localResources.getString(2131691712));
+    localMyAppDialog.b(localResources.getString(2131691697));
+    localMyAppDialog.setCancelable(false);
+    localMyAppDialog.setOnDismissListener(new AppInterface.2.1(this));
     if ((this.this$0.activity != null) && (!this.this$0.activity.isFinishing())) {
-      localbjob.show();
+      localMyAppDialog.show();
     }
-    this.this$0.tipDialog = localbjob;
+    this.this$0.tipDialog = localMyAppDialog;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appcommon.js.AppInterface.2
  * JD-Core Version:    0.7.0.1
  */

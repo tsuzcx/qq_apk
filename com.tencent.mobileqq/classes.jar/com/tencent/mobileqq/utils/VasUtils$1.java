@@ -7,10 +7,10 @@ import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class VasUtils$1
+final class VasUtils$1
   implements Runnable
 {
-  public VasUtils$1(Context paramContext, String paramString) {}
+  VasUtils$1(Context paramContext, String paramString) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public final class VasUtils$1
       FragmentActivity localFragmentActivity = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
       if ((localFragmentActivity.getChatFragment() != null) && (localFragmentActivity.getChatFragment().a() != null))
       {
-        localFragmentActivity.getChatFragment().a().refreshMagicFaceItem();
+        localFragmentActivity.getChatFragment().a().Z();
         if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
           QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_JavaLangString, 0).a();
         }

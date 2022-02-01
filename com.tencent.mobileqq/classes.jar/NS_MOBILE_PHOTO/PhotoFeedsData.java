@@ -20,14 +20,14 @@ public final class PhotoFeedsData
   static cell_id cache_pss_cell_id;
   static cell_like cache_pss_cell_like;
   static cell_operation cache_pss_cell_operation;
-  public Album album;
-  public int appid;
-  public ArrayList<Photo> photolist;
-  public cell_comm pss_cell_comm;
-  public cell_comment pss_cell_comment;
-  public cell_id pss_cell_id;
-  public cell_like pss_cell_like;
-  public cell_operation pss_cell_operation;
+  public Album album = null;
+  public int appid = 0;
+  public ArrayList<Photo> photolist = null;
+  public cell_comm pss_cell_comm = null;
+  public cell_comment pss_cell_comment = null;
+  public cell_id pss_cell_id = null;
+  public cell_like pss_cell_like = null;
+  public cell_operation pss_cell_operation = null;
   
   static
   {

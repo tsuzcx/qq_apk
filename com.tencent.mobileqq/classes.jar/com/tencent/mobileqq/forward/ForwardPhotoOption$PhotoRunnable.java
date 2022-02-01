@@ -2,8 +2,8 @@ package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
 import android.content.Context;
-import bmux;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMShortVideoUtils;
 import java.lang.ref.WeakReference;
 
 class ForwardPhotoOption$PhotoRunnable
@@ -22,13 +22,13 @@ class ForwardPhotoOption$PhotoRunnable
       QLog.d("ForwardOption.ForwardPhotoOption", 2, "preload peak");
     }
     if (((this.a.get() instanceof Activity)) && (!((Activity)this.a.get()).isFinishing())) {
-      bmux.a((Context)this.a.get());
+      QIMShortVideoUtils.a((Context)this.a.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPhotoOption.PhotoRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas.ipc.remote;
 
 import android.os.Bundle;
-import bhzd;
 import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.vip.PbProtocol;
 import eipc.EIPCModule;
 import eipc.EIPCResult;
 
@@ -17,14 +17,14 @@ class LiveDelivery$2
     localEIPCResult.data = new Bundle();
     localEIPCResult.data.putBoolean("isSuccess", paramBoolean);
     if (paramObject != null) {
-      localEIPCResult.data.putByteArray("rspBytes", bhzd.a((byte[])paramObject));
+      localEIPCResult.data.putByteArray("rspBytes", PbProtocol.a((byte[])paramObject));
     }
     this.val$moudle.callbackResult(this.val$callbackId, localEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.LiveDelivery.2
  * JD-Core Version:    0.7.0.1
  */

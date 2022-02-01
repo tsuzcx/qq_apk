@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import asey;
-import asfa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -14,9 +14,9 @@ class EmoticonGroupStoreFragment$5
   
   public void run()
   {
-    Object localObject = (asey)EmoticonGroupStoreFragment.a(this.this$0).getManager(QQManagerFactory.EMOFROMGROUP_DB_MANAGER);
+    Object localObject = (EmoticonFromGroupDBManager)EmoticonGroupStoreFragment.a(this.this$0).getManager(QQManagerFactory.EMOFROMGROUP_DB_MANAGER);
     if (localObject != null) {
-      ((asey)localObject).b();
+      ((EmoticonFromGroupDBManager)localObject).b();
     }
     localObject = new CopyOnWriteArrayList(EmoticonGroupStoreFragment.a(this.this$0).a());
     if ((localObject != null) && (!((List)localObject).isEmpty()))
@@ -50,7 +50,7 @@ class EmoticonGroupStoreFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment.5
  * JD-Core Version:    0.7.0.1
  */

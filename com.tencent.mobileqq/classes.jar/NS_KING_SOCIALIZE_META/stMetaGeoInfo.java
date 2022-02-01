@@ -10,7 +10,7 @@ public final class stMetaGeoInfo
   public float altitude = -10000000.0F;
   public String city = "";
   public String country = "";
-  public int distance;
+  public int distance = 0;
   public String district = "";
   public float latitude = 9.0E+008F;
   public float longitude = 9.0E+008F;

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.listentogether.fragment;
 
 import android.graphics.Bitmap;
-import axkp;
+import com.tencent.mobileqq.musicgene.AlbumDecodeHandler;
 
 class ListenTogetherPlayFragment$2
   implements Runnable
 {
-  ListenTogetherPlayFragment$2(ListenTogetherPlayFragment paramListenTogetherPlayFragment, axkp paramaxkp, Bitmap paramBitmap) {}
+  ListenTogetherPlayFragment$2(ListenTogetherPlayFragment paramListenTogetherPlayFragment, AlbumDecodeHandler paramAlbumDecodeHandler, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axkp.run(null, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_ComTencentMobileqqMusicgeneAlbumDecodeHandler.run(null, this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

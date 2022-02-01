@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import bhyo;
-import bhyq;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 
-public final class ApolloSSOConfig$3
+final class ApolloSSOConfig$3
   implements Runnable
 {
-  public ApolloSSOConfig$3(bhyo parambhyo) {}
+  ApolloSSOConfig$3(DownloadTask paramDownloadTask) {}
   
   public void run()
   {
-    bhyq.a(this.a, null);
+    DownloaderFactory.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig.3
  * JD-Core Version:    0.7.0.1
  */

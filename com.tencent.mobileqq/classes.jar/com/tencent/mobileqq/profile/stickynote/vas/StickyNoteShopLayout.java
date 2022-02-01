@@ -14,14 +14,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import azuk;
-import azul;
-import azum;
-import azun;
-import bhyv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.vip.JceProtocol;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -33,13 +29,13 @@ public class StickyNoteShopLayout
 {
   public static final String a;
   public int a;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new azul(this);
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new StickyNoteShopLayout.3(this);
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private azun jdField_a_of_type_Azun;
-  private boolean jdField_a_of_type_Boolean;
+  private StickyNoteVasAdapter jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString = "";
-  private int c;
+  private int c = 0;
   
   static
   {
@@ -91,17 +87,17 @@ public class StickyNoteShopLayout
   
   private void c()
   {
-    View.inflate(getContext(), 2131561440, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131378076));
+    View.inflate(getContext(), 2131561547, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131378497));
     StaggeredGridLayoutManager localStaggeredGridLayoutManager = new StaggeredGridLayoutManager(3, 1);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localStaggeredGridLayoutManager);
-    this.jdField_a_of_type_Azun = new azun(getContext(), null);
-    this.jdField_a_of_type_Azun.a(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Azun);
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter = new StickyNoteVasAdapter(getContext(), null);
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.a(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setBackgroundColor(-1);
-    findViewById(2131379899).setOnClickListener(this);
-    findViewById(2131368577).setOnClickListener(this);
+    findViewById(2131380328).setOnClickListener(this);
+    findViewById(2131368807).setOnClickListener(this);
     a();
   }
   
@@ -119,27 +115,27 @@ public class StickyNoteShopLayout
     }
   }
   
-  public azun a()
+  public StickyNoteVasAdapter a()
   {
-    return this.jdField_a_of_type_Azun;
+    return this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Azun);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter);
   }
   
   public void a(int paramInt)
   {
     setVisibility(paramInt);
-    if (this.jdField_a_of_type_Azun.getItemCount() == 0) {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.getItemCount() == 0) {
       a(false);
     }
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Azun.a();
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.a();
   }
   
   public void a(boolean paramBoolean)
@@ -149,15 +145,15 @@ public class StickyNoteShopLayout
       break label68;
     }
     label68:
-    while ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Azun.a() >= 30) && (paramBoolean)) {
+    while ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.a() >= 30) && (paramBoolean)) {
       return;
     }
-    bhyv localbhyv = new bhyv("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetSuixintieSigFontReq");
-    GetSuixintieSigFontReq localGetSuixintieSigFontReq = new GetSuixintieSigFontReq(bhyv.a(), this.jdField_b_of_type_Int, this.c, "", this.jdField_b_of_type_JavaLangString);
+    JceProtocol localJceProtocol = new JceProtocol("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetSuixintieSigFontReq");
+    GetSuixintieSigFontReq localGetSuixintieSigFontReq = new GetSuixintieSigFontReq(JceProtocol.a(), this.jdField_b_of_type_Int, this.c, "", this.jdField_b_of_type_JavaLangString);
     if (this.jdField_a_of_type_Int == 1) {}
     for (String str = "getSuixintieSigFont";; str = "getExtendFriendSigFont")
     {
-      localbhyv.a(str, localGetSuixintieSigFontReq, new GetSuixintieSigFontRsp(), new azuk(this, paramBoolean), false);
+      localJceProtocol.a(str, localGetSuixintieSigFontReq, new GetSuixintieSigFontRsp(), new StickyNoteShopLayout.1(this, paramBoolean), false);
       if (paramBoolean) {
         break;
       }
@@ -190,19 +186,19 @@ public class StickyNoteShopLayout
   public void setAppId(int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Azun != null) {
-      this.jdField_a_of_type_Azun.a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.a(paramInt);
     }
   }
   
   public void setItemId(int paramInt)
   {
-    this.jdField_a_of_type_Azun.c(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.c(paramInt);
   }
   
-  public void setShopCallback(azum paramazum)
+  public void setShopCallback(StickyNoteShopLayout.StickyNoteShopSetting paramStickyNoteShopSetting)
   {
-    this.jdField_a_of_type_Azun.a(paramazum);
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.a(paramStickyNoteShopSetting);
   }
   
   public void setUseId(int paramInt)

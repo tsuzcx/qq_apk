@@ -29,7 +29,7 @@ public class SearchRecommendAdapter$TitleDecoration
     }
     if ((paramRecyclerView.getAdapter().getItemViewType(i) == 1) && (i > 0))
     {
-      paramRect.set(0, ViewUtils.dpToPx(20.0F), 0, 0);
+      paramRect.set(0, ViewUtils.b(20.0F), 0, 0);
       return;
     }
     paramRect.set(0, 0, 0, 0);
@@ -57,7 +57,7 @@ public class SearchRecommendAdapter$TitleDecoration
         return;
       }
       if ((paramRecyclerView.getAdapter().getItemViewType(k) == 1) && (k > 0)) {
-        paramCanvas.drawRect(paramState.getLeft(), paramState.getTop() - ViewUtils.dpToPx(20.0F), paramRecyclerView.getWidth(), paramState.getTop() - ViewUtils.dpToPx(20.0F) + 2, this.paint);
+        paramCanvas.drawRect(paramState.getLeft(), paramState.getTop() - ViewUtils.b(20.0F), paramRecyclerView.getWidth(), paramState.getTop() - ViewUtils.b(20.0F) + 2, this.paint);
       }
       label107:
       i += 1;

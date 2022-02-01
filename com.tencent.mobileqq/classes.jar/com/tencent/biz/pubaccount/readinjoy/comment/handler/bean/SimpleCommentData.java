@@ -3,19 +3,18 @@ package com.tencent.biz.pubaccount.readinjoy.comment.handler.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData.CommentLinkData;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import java.util.List;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import pgr;
-import pkh;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "contentSrc", "", "businessInfo", "", "(ILjava/lang/String;)V", "articleId", "getArticleId", "()Ljava/lang/String;", "setArticleId", "(Ljava/lang/String;)V", "authorId", "", "getAuthorId", "()J", "getBusinessInfo", "setBusinessInfo", "getContentSrc", "()I", "setContentSrc", "(I)V", "linkDataList", "", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/BaseCommentData$CommentLinkData;", "getLinkDataList", "()Ljava/util/List;", "setLinkDataList", "(Ljava/util/List;)V", "reportScene", "getReportScene", "setReportScene", "rowKey", "getRowKey", "setRowKey", "src", "getSrc", "describeContents", "readFromParcel", "", "toString", "writeToParcel", "flags", "CREATOR", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class SimpleCommentData
   implements Parcelable
 {
-  public static final pgr CREATOR = new pgr(null);
+  public static final SimpleCommentData.CREATOR CREATOR = new SimpleCommentData.CREATOR(null);
   private int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
   @NotNull
@@ -35,7 +34,7 @@ public class SimpleCommentData
     this.jdField_c_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = pkh.a();
+    this.jdField_a_of_type_Long = ReadInJoyUtils.a();
     this.jdField_b_of_type_Int = 20;
   }
   
@@ -44,12 +43,6 @@ public class SimpleCommentData
   public final long a()
   {
     return this.jdField_a_of_type_Long;
-  }
-  
-  @Nullable
-  public final List<BaseCommentData.CommentLinkData> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(@NotNull Parcel paramParcel)
@@ -76,20 +69,15 @@ public class SimpleCommentData
     }
   }
   
-  public final void a(@Nullable List<BaseCommentData.CommentLinkData> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
   public final int b()
   {
     return this.jdField_a_of_type_Int;
   }
   
-  @NotNull
-  public final String b()
+  @Nullable
+  public final List<BaseCommentData.CommentLinkData> b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public final void b(int paramInt)
@@ -103,6 +91,11 @@ public class SimpleCommentData
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
+  public final void b(@Nullable List<BaseCommentData.CommentLinkData> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
   public final int c()
   {
     return this.jdField_b_of_type_Int;
@@ -111,7 +104,7 @@ public class SimpleCommentData
   @NotNull
   public final String c()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public final void c(@NotNull String paramString)
@@ -128,12 +121,18 @@ public class SimpleCommentData
   @NotNull
   public final String d()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
   public int describeContents()
   {
     return 0;
+  }
+  
+  @NotNull
+  public final String e()
+  {
+    return this.jdField_c_of_type_JavaLangString;
   }
   
   @NotNull
@@ -154,7 +153,7 @@ public class SimpleCommentData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
 
-import uno;
-
-public class ReadInJoyArticleBottomVideoView$1$4
+class ReadInJoyArticleBottomVideoView$1$4
   implements Runnable
 {
-  public ReadInJoyArticleBottomVideoView$1$4(uno paramuno) {}
+  ReadInJoyArticleBottomVideoView$1$4(ReadInJoyArticleBottomVideoView.1 param1) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ReadInJoyArticleBottomVideoView$1$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.1.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import aici;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -9,13 +8,13 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Window;
-import aslo;
-import assw;
-import assy;
-import bhdj;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
+import com.tencent.mobileqq.extendfriend.utils.ExtendFriendReport;
+import com.tencent.mobileqq.extendfriend.utils.ExtendFriendSendMsgHelper;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -45,7 +44,7 @@ public class QZoneNavigateToQQTransparentFragment
     localIntent.putExtra("uinname", paramString2);
     localIntent.putExtra("entrance", 23);
     localIntent.putExtra("uintype", 1045);
-    localIntent.putExtra("key_limitchat_enter_type", aici.b);
+    localIntent.putExtra("key_limitchat_enter_type", 1);
     localIntent.putExtras(new Bundle());
     paramFragmentActivity.startActivity(localIntent);
     paramFragmentActivity.finish();
@@ -58,9 +57,9 @@ public class QZoneNavigateToQQTransparentFragment
       QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showCampusVerifyDialog() activity is null or is not onResume() just return");
       return;
     }
-    QQCustomDialog localQQCustomDialog = bhdj.a(paramFragmentActivity, 230);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(paramFragmentActivity, 230);
     localQQCustomDialog.setOnDismissListener(new QZoneNavigateToQQTransparentFragment.2(paramFragmentActivity));
-    localQQCustomDialog.setMessage(paramFragmentActivity.getString(2131698524)).setNegativeButton(paramFragmentActivity.getString(2131698522), new QZoneNavigateToQQTransparentFragment.4()).setPositiveButton(paramFragmentActivity.getString(2131698523), new QZoneNavigateToQQTransparentFragment.3(paramBoolean, paramFragmentActivity, paramInt, paramString1, paramString2)).show();
+    localQQCustomDialog.setMessage(paramFragmentActivity.getString(2131698816)).setNegativeButton(paramFragmentActivity.getString(2131698814), new QZoneNavigateToQQTransparentFragment.4()).setPositiveButton(paramFragmentActivity.getString(2131698815), new QZoneNavigateToQQTransparentFragment.3(paramBoolean, paramFragmentActivity, paramInt, paramString1, paramString2)).show();
   }
   
   private static void showMatchCountDialog(FragmentActivity paramFragmentActivity)
@@ -70,9 +69,9 @@ public class QZoneNavigateToQQTransparentFragment
       QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showMatchCountDialog() activity is null or is not onResume() just return");
       return;
     }
-    QQCustomDialog localQQCustomDialog = bhdj.a(paramFragmentActivity, 230);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(paramFragmentActivity, 230);
     localQQCustomDialog.setOnDismissListener(new QZoneNavigateToQQTransparentFragment.5(paramFragmentActivity));
-    localQQCustomDialog.setMessage(paramFragmentActivity.getString(2131698526)).setPositiveButton(paramFragmentActivity.getString(2131698525), new QZoneNavigateToQQTransparentFragment.6()).show();
+    localQQCustomDialog.setMessage(paramFragmentActivity.getString(2131698818)).setPositiveButton(paramFragmentActivity.getString(2131698817), new QZoneNavigateToQQTransparentFragment.6()).show();
   }
   
   private static void showToast(FragmentActivity paramFragmentActivity, String paramString)
@@ -164,10 +163,10 @@ public class QZoneNavigateToQQTransparentFragment
       try
       {
         localObject = Base64.decode(str4, 0);
-        assy.a(localFragmentActivity.app).a(localFragmentActivity.app, String.valueOf(l), str3, (byte[])localObject, 1, new QZoneNavigateToQQTransparentFragment.1(this, localFragmentActivity));
+        ExtendFriendSendMsgHelper.a(localFragmentActivity.app).a(localFragmentActivity.app, String.valueOf(l), str3, (byte[])localObject, 1, new QZoneNavigateToQQTransparentFragment.1(this, localFragmentActivity));
         localObject = localBundle.getString("extend_friend_campus_algorithm_id");
-        str2 = localBundle.getString("extend_friend_campus_current_tab", aslo.a);
-        assw.a().a(1, String.valueOf(l), "", "0", (String)localObject, str2);
+        str2 = localBundle.getString("extend_friend_campus_current_tab", ExtendFriendManager.a);
+        ExtendFriendReport.a().a(1, String.valueOf(l), "", "0", (String)localObject, str2);
         return;
       }
       catch (Throwable localThrowable)
@@ -183,7 +182,7 @@ public class QZoneNavigateToQQTransparentFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneNavigateToQQTransparentFragment
  * JD-Core Version:    0.7.0.1
  */

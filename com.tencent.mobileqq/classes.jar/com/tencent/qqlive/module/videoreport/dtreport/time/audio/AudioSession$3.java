@@ -11,7 +11,7 @@ class AudioSession$3
 {
   AudioSession$3(AudioSession paramAudioSession) {}
   
-  public void onPageIn(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet)
+  public void onPageIn(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet, int paramInt)
   {
     paramPageInfo = paramSet.iterator();
     while (paramPageInfo.hasNext())
@@ -31,7 +31,7 @@ class AudioSession$3
     }
   }
   
-  public void onPageUpdate(PageInfo paramPageInfo) {}
+  public void onPageUpdate(PageInfo paramPageInfo, int paramInt) {}
 }
 
 
